@@ -2,7 +2,7 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop-git
-pkgver=v1.11.0.r130.g6cef1a3e0
+pkgver=v1.11.0.r135.g83079a8b4
 _semver_pat='s/v([0-9]+\.[0-9]+\.[0-9]+)\..+\.(.+)/\1-\2/g'
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
@@ -29,14 +29,15 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/session-desktop
-  echo "Applying patch"
-  sed -i "s/\"version\": \".*\",/\"version\": \"$(sed -E "$_semver_pat" <<< "$pkgver")\",/" package.json
+  cd "$srcdir/session-desktop"
   source /usr/share/nvm/init-nvm.sh && nvm install 18.15.0
 }
 
 build() {
   cd "$srcdir/session-desktop"
+  # To have the correct version from pkgver(), which runs after prepare()
+  echo "Applying patch"
+  sed -i "s/\"version\": \".*\",/\"version\": \"$(sed -E "$_semver_pat" <<< "$pkgver")\",/" package.json
   source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v18.15.0 --silent
   export SIGNAL_ENV=production
   yarn
