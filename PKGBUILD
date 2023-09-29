@@ -12,7 +12,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='C++ and QML APIs for easy inclusion of 3D graphics'
 depends=('qt5-declarative' 'assimp')
 makedepends=('git' 'vulkan-headers')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
