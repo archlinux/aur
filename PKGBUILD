@@ -6,7 +6,7 @@ pkgver=0.9.7
 _vdrapi=2.6.3
 pkgrel=2
 pkgdesc="History of the latest viewed channels"
-url='https://vdr-projects.e-tobi.net/projects/plg-zaphistory'
+url='https://github.com/vdr-projects/vdr-plugin-zaphistory'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
