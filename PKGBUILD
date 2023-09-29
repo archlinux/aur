@@ -1,7 +1,7 @@
 
 _gitfolder="picom"
 pkgname=picom-allusive
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Smooth animations picom fork, builds upon and cleans up picom-pijulius"
 arch=(i686 x86_64)
