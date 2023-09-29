@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=exoscale-cli-git
-pkgver=1.73.0.r0.g968fc649
+pkgver=1.74.0.r1.g96a32d26
 pkgrel=1
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
