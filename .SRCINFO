@@ -1,7 +1,7 @@
 pkgbase = fastvideods-encoder-git
 	pkgdesc = Encoder for the FastVideoDS format
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gericom/FastVideoDSEncoder
 	arch = i686
 	arch = x86_64

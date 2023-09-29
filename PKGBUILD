@@ -3,7 +3,7 @@
 pkgname=fastvideods-encoder-git
 
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Encoder for the FastVideoDS format"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ md5sums=("SKIP" "594a84df360613bbd562f4b77c743850")
 
 prepare() {
 	# move to the source directory
-	cd FastVideoDSEncoder
+	cd "${srcdir}/FastVideoDSEncoder"
 
 	# apply the patch
 	patch --forward --strip 1 --input ../fix-library-path.patch
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	# move to the source directory
-	cd FastVideoDSEncoder
+	cd "${srcdir}/FastVideoDSEncoder"
 
 	# build the project
 	dotnet build FastVideoDS.sln --property:Configuration=Release --output Build/
@@ -37,15 +37,15 @@ build() {
 
 package() {
 	# move to the source directory
-	cd FastVideoDSEncoder
+	cd "${srcdir}/FastVideoDSEncoder"
 
 	# make the required directories
-	mkdir -p ${pkgdir}/usr/share/fastvideods-encoder/
-	mkdir -p ${pkgdir}/usr/bin/
+	mkdir -p "${pkgdir}/usr/share/fastvideods-encoder/"
+	mkdir -p "${pkgdir}/usr/bin/"
 
 	# copy the build files to the package directory
-	mv Build/* ${pkgdir}/usr/share/fastvideods-encoder/
+	install -Dm755 Build/* "${pkgdir}/usr/share/fastvideods-encoder/"
 
 	# make a symlink to the executable
-	ln -s /usr/share/fastvideods-encoder/FastVideoDSEncoder ${pkgdir}/usr/bin/FastVideoDSEncoder
+	ln -s /usr/share/fastvideods-encoder/FastVideoDSEncoder "${pkgdir}/usr/bin/FastVideoDSEncoder"
 }
