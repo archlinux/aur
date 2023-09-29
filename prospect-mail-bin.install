@@ -3,7 +3,7 @@ post_install() {
 #!/bin/bash
 
 # Link to the binary
-ln -sf '/opt/Prospect Mail/prospect-mail' '/usr/local/bin/prospect-mail'
+ln -sf '/opt/Prospect Mail/prospect-mail' '/usr/bin/prospect-mail'
 
 # SUID chrome-sandbox for Electron 5+
 chmod 4755 '/opt/Prospect Mail/chrome-sandbox' || true
@@ -25,6 +25,6 @@ post_remove() {
 #!/bin/bash
 
 # Delete the link to the binary
-rm -f '/usr/local/bin/prospect-mail'
+rm -f '/usr/bin/prospect-mail'
 
 }
