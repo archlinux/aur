@@ -2,49 +2,29 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-xmltv2vdr
-pkgver=0.1.1_74_gec7bd92
-_gitver=ec7bd920d94e55f2d21bfa076b7e900b7b2b7537
+pkgver=0.2.2
 _vdrapi=2.6.3
-pkgrel=9
+pkgrel=1
 pkgdesc="Add epg info from epg sources into vdr"
 url='https://github.com/vdr-projects/vdr-plugin-xmltv2vdr'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('pcre' 'curl' 'enca' 'libxslt' 'libzip' 'sqlite' "vdr-api=${_vdrapi}")
-makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=${_gitver}"
-        "xmltv2vdr_newmakefile_v2.diff"
-        "xmltv2vdr_gcc721_fixes.diff"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-xmltv2vdr/archive/refs/tags/$pkgver.tar.gz"
         "50-$_plugname.conf")
-backup=("etc/vdr/conf.avail/50-$_plugname.conf"
-        "var/lib/epgsources/epgdata2xmltv")
-md5sums=('SKIP'
-         '0642898237a478d4c74bceb568c50050'
-         'ebcdb9f3a9537fdaae15782e7648c026'
-         'e295ea355768bd373f64eb4b0f760840')
-
-pkgver() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
-  git describe --tags --abbrev=7 | sed 's/-/_/g;s/v//'
-}
-
-prepare() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
-  patch -p1 -i "$srcdir/xmltv2vdr_newmakefile_v2.diff"
-  patch -p1 -i "$srcdir/xmltv2vdr_gcc721_fixes.diff"
-}
+backup=("etc/vdr/conf.avail/50-$_plugname.conf")
+sha256sums=('f12a1af9b3cd5aa6eaa46b81721efa3a0495393378bd766e2449593226076e1e'
+            'e4026eb61fd31dd51cb33cb5d0fbf1fbfb9b36205c9c6fbe94bb9b5dc177080b')
 
 build() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make
-  make -j1 -C dist/epgdata2xmltv
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make DESTDIR="$pkgdir" install
-  make DESTDIR="$pkgdir" install -C dist/epgdata2xmltv
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
 
