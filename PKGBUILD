@@ -1,8 +1,8 @@
 # Maintainer: poly000 <pedajilao@163.com>
 pkgname=c2rust
 _pkgname=c2rust
-pkgver=0.17.0
-pkgrel=3
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="Migrate C code to Rust"
 url="https://github.com/immunant/c2rust"
 
@@ -16,7 +16,7 @@ makedepends=('cargo' 'llvm' 'clang' 'cmake' 'openssl' 'python')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/immunant/c2rust/archive/v${pkgver}.tar.gz")
 
-sha256sums=('7a178ad0f858e6169aa5c0edc85e04c754b954de4d0c3336d90a98ec8f583512')
+sha256sums=('cf72bd59cac5ff31553c5d1626f130167d4f72eaabcffc27630dee2a95f4707e')
 
 build() {
     cd "$srcdir/${_pkgname}-${pkgver}"
