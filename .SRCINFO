@@ -1,7 +1,7 @@
 pkgbase = mathicsscript
 	pkgdesc = A more advanced command-line interface to Mathics.
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = mathicsscript
 	depends = python-term-background>=1.0.1
 	optdepends = python-yaml: Used for admin-tools/make-tables.sh to build JSON tables
 	optdepends = python-pyqt5: For inte ractive display of graphs via matplotlib
-	optdepends = python-cariosvg: For rendering plots and graphs as SVGs via matplotlib
+	optdepends = python-cairosvg: For rendering plots and graphs as SVGs via matplotlib
 	optdepends = python-cson: for xasy
 	optdepends = python-matplotlib: For rendering SVG plots
 	source = mathicsscript-6.0.0.tar.gz::https://github.com/Mathics3/mathicsscript/releases/download/6.0.0/mathicsscript-6.0.0.tar.gz

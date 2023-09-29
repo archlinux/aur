@@ -3,7 +3,7 @@
 
 pkgname=mathicsscript
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A more advanced command-line interface to Mathics."
 arch=("any")
 url="https://mathics.org/"
@@ -21,7 +21,7 @@ depends=("mathics>6.0.0"
 optdepends=(
     "python-yaml: Used for admin-tools/make-tables.sh to build JSON tables"
     "python-pyqt5: For inte ractive display of graphs via matplotlib"
-    "python-cariosvg: For rendering plots and graphs as SVGs via matplotlib"
+    "python-cairosvg: For rendering plots and graphs as SVGs via matplotlib"
     "python-cson: for xasy"
     "python-matplotlib: For rendering SVG plots"
 )
