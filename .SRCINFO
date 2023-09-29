@@ -1,0 +1,16 @@
+pkgbase = hamonikr-onboard-layout-ko
+	pkgdesc = Korean Keyboard Layout for onboard
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/hamonikr/hamonikr-onboard-layout-ko
+	arch = any
+	license = GPL3
+	depends = onboard
+	source = https://github.com/hamonikr/hamonikr-onboard-layout-ko/raw/cd745c731a33102f2489ccede2ac5dcf0d7f3e6a/usr/share/onboard/layouts/Compact-ko.onboard
+	source = https://github.com/hamonikr/hamonikr-onboard-layout-ko/raw/cd745c731a33102f2489ccede2ac5dcf0d7f3e6a/usr/share/onboard/layouts/Full-Keyboard-ko.onboard
+	source = https://github.com/hamonikr/hamonikr-onboard-layout-ko/raw/cd745c731a33102f2489ccede2ac5dcf0d7f3e6a/usr/share/onboard/layouts/Middle-Keyboard-ko.onboard
+	sha256sums = cec35230669f63668432d7122b1e3fdf00e7ea6e7b2132b8057f042f582ca1ba
+	sha256sums = 527bacbbfdacfb69bedbb1228356d3f3ad8d456ba1cce9f271eef8ee38a20d5f
+	sha256sums = 1bdd7d91dec0f41db4a81cef36b1a100a0ccde55ec597496742b36d6c9c1f644
+
+pkgname = hamonikr-onboard-layout-ko
