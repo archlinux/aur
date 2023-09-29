@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop-bin'
 pkgver=0.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Music Assistant Companion App"
 arch=('x86_64')
 url="https://github.com/music-assistant/music-assistant-desktop"
@@ -16,7 +16,7 @@ package() {
   cd "$srcdir/"
 
   curl -L -o music-assistant-companion.desktop https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v$pkgver/musicassistant.desktop
-  curl -L -o music-assistant-desktop.png https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v$pkgver/src-tauri/icons/128x128.png
+  curl -L -o music-assistant-companion.png https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v$pkgver/src-tauri/icons/128x128.png
   curl -L -o squeezelite $url/releases/download/v$pkgver/squeezelite-x86_64-unknown-linux-gnu
 
   install -DCm644 ./music-assistant-companion.desktop "$pkgdir/usr/share/applications/music-assistant-companion.desktop"
