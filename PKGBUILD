@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -19,7 +19,7 @@ checkdepends=('python-pytest'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('5dac2712bd38a3ff0812b8650a68b232601d1474091b380a8b5bc102c8c0d80a')
+sha256sums=('90d838dc7861674794e3ca79f64c23c5d8fa76b9aa29db834b246771964c0881')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -38,7 +38,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_mkdocstrings-python() {
