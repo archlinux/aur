@@ -1,11 +1,11 @@
 pkgbase = ltex-ls-bin
 	pkgdesc = LTeX Language Server: LSP language server for LanguageTool with support for LaTeX, Markdown, and others
 	pkgver = 16.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/valentjn/ltex-ls
 	arch = any
 	license = MPL2
-	depends = java-runtime=11
+	depends = java-runtime>=11
 	depends = bash
 	provides = ltex-ls
 	conflicts = ltex-ls
