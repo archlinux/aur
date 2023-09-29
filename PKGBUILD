@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=6.0
+pkgver=6.0.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -122,6 +122,14 @@ END
 
 build() {
   cd Waterfox
+
+  # Optimize flags
+  CFLAGS=${CFLAGS//-mtune=generic/-mtune=native}
+  CXXFLAGS=${CXXFLAGS//-mtune=generic/-mtune=native}
+  CFLAGS=${CFLAGS//-march=generic/-march=native}
+  CXXFLAGS=${CXXFLAGS//-march=generic/-march=native}
+  export CFLAGS
+  export CXXFLAGS
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
