@@ -19,7 +19,7 @@ build() {
 }
 
 package_python-pyshark() {
-  depends=('wireshark-cli' 'python-py' 'python-lxml' 'python-packaging')
+  depends=('wireshark-cli' 'python-py' 'python-lxml' 'python-packaging' 'python-appdirs')
   cd "${srcdir}/${pkgbase}-${pkgver}/src"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 ../README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"

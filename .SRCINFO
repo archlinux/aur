@@ -18,3 +18,4 @@ pkgname = python-pyshark
 	depends = python-py
 	depends = python-lxml
 	depends = python-packaging
+	depends = python-appdirs
