@@ -7,7 +7,7 @@ index f7dbb7b..bfb1c32 100644
      - type: file
        format: json
 -      filename: ./logs/mautrix-whatsapp.log
-+      filename: /var/log/mautrix-whatsapp.log
++      filename: /var/log/mautrix-whatsapp/mautrix-whatsapp.log
        max_size: 100
        max_backups: 10
        compress: true

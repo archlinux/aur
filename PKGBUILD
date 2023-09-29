@@ -3,7 +3,7 @@
 
 pkgname=mautrix-whatsapp
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('x86_64' 'aarch64')
 license=('AGPL')
@@ -23,7 +23,7 @@ sha256sums=('47972a8d3e6ad9a804376525cd311edd1eaca51dbe55536adae9e05ad46c91c6'
             '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
             '2e5ecb77aa175c1ebce40a5ff560bb5ee26ed39b3d1f4cf6d62db2ad604050b4'
             'c353ac242c501063c7c45169e1e65e7a75fe7d681f73409e76682e7537466965'
-            '5df866bd5b943867109d5a9b06d715c282df757c6f97819b403c59365cf6cd8f')
+            'ba3205d04127cfa47cfdbfc6043dc927da8fd44258cd185b70dbdfb5fb2505cc')
 
 build() {
   cd "$srcdir/whatsapp-$pkgver"
