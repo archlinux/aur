@@ -12,7 +12,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides a way to display web content in a QML application'
 depends=('qt5-webengine')
 makedepends=('git')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
