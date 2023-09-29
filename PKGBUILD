@@ -3,7 +3,7 @@
 _base=requests-ratelimiter
 pkgname=python-${_base}
 pkgdesc="Rate-limiting for the requests library"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 arch=(any)
 url="https://github.com/JWCook/${_base}"
@@ -12,7 +12,7 @@ depends=(python-requests python-pyrate-limiter)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest python-requests-mock)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('7fc9bb3f67b2637cf54d56114c62b8058212b3e33ab053c3acf91b081cce986b89367a2078615e163de500b8d5036e47291f6b155ead1064e0fbfbe2d8e9bf97')
+sha512sums=('9bf64f4dbc9c1c20dbcc4eb3a766e7b85ddb2db28816556cafd4aefba52b95f998ac8df72f3b6eb4e922c8e3c5bc48fac2f21a353fdfc8f3ca519799be3f7ebb')
 
 build() {
   cd ${_base}-${pkgver}
