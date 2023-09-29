@@ -7,8 +7,8 @@
 
 pkgname=signal-desktop-arm
 _pkgname=Signal-Desktop
-pkgver=6.31.0
-pkgrel=1
+pkgver=6.32.0
+pkgrel=2
 pkgdesc="Signal Private Messenger for Linux - ARM (aarch64)"
 license=('AGPL-3.0-only')
 conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-beta-bin')
@@ -21,7 +21,6 @@ depends=(
   'libvips'
   'libxss'
   'openjpeg2'
-  'fpm'
 )
 makedepends=(
   'git'
@@ -31,15 +30,16 @@ makedepends=(
   'npm'
   'python'
   'yarn'
+  'fpm'
 )
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
-sha512sums=('ad24c573938f543763949d11ac11366af2f9a3c8b9b78cd28c2c3beca354e5b17ee56af21fd0d866b9d66a9631bcb114c844be05627ae70c5d1c1e264992f42e'
+sha512sums=('48e9d9d078739ffe8e8dc74801b827f1ef4594c67791fa475a215f82f38bc00b94892dac536dac86d9e8dbce286990eff9ed9085503992de4be76bb248283c13'
             'ba6887afeb7a135a1042c4708f6f15199840273fcc8a56992cd135ff478c22e3b2bdb7d59cda487ffc6e396d27b843259ffe0ee9597d397ee4362cffb0f6296f')
-b2sums=('62d1fba58334fba9670c806894bf18d2eae9a2f1affe714eda50a7200585bc499fc733cb5e8ef1ff378bcd74b1104a97a7d17aad95f6c5fa5caddaf9c16e3387'
+b2sums=('f4bb993701b2560c56c0a2dadb10c6e624ac2f1bc7772b56f5eca7eb9b8092b3706ff34fc70190e93d18272a99aef83cc1ab8b2426d8c2c3010cba9d0c44be9c'
         '3cd41a4addcd4b712ee687b6636e1b370ff14479133ceb53eba3db041e20b56fb78ccbc2b24fe6571c5054e5b352b6ac2bf0864c18d004fb1abbcdf34bc09ff4')
 
 prepare() {
