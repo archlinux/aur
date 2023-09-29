@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps5000
-pkgver=2.1.122_3r5287
+pkgver=2.1.123_3r5325
 pkgrel=1
 pkgdesc="Library for PicoScope 5000 series in PicoScope 7 Beta"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000/libps5000_${pkgver//_/-}_amd64.deb")
-md5sums=('6530dc57ae3155e055108fa6f913f77c')
+md5sums=('7495ef24b30435b71b27a5e510526d30')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
