@@ -1,7 +1,7 @@
 pkgbase = weave-gitops
 	pkgdesc = Weave GitOps is a simple open source developer platform for people who want cloud native applications, without needing Kubernetes expertise.
-	pkgver = 0.29.0
-	pkgrel = 2
+	pkgver = 0.33.0
+	pkgrel = 1
 	url = https://github.com/weaveworks/weave-gitops
 	arch = i686
 	arch = pentium4
@@ -19,7 +19,7 @@ pkgbase = weave-gitops
 	provides = gitops-server
 	conflicts = gitops
 	conflicts = gitops-server
-	source = weave-gitops-0.29.0.tar.gz::https://github.com/weaveworks/weave-gitops/archive/refs/tags/v0.29.0.tar.gz
-	sha256sums = 7fddd95b1de3b57dae6f03049850174da39b213326d962e627335ed185afddac
+	source = weave-gitops-0.33.0.tar.gz::https://github.com/weaveworks/weave-gitops/archive/refs/tags/v0.33.0.tar.gz
+	sha256sums = fd113049b4670578a8af6c99462aac57acb9e77f6a745b65a5a575b11cf7937e
 
 pkgname = weave-gitops
