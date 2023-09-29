@@ -3,8 +3,8 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.15.1
-_commit="ca1f8aeac9db5423b602da4f28169928c35f2831"
+pkgver=0.16.0
+_commit="f1cf1923833c077e2c8d50c4dbbf89a1775493a7"
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
 arch=('any')
@@ -19,8 +19,7 @@ makedepends=('python-setuptools'
 checkdepends=('python-pytest'
               'python-numpy'
               'python-pytz'
-              'python-requests-unixsocket'
-              'python-six')
+              'python-requests-unixsocket')
 #             'python-adal'
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/${_commit}.tar.gz"
@@ -29,7 +28,7 @@ source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
         'fix-h5type-test.patch')
-md5sums=('30429d290557be7054b7b3dc13629d50'
+md5sums=('ad7e81d8d6498e9118b6b0f5c6332430'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -52,7 +51,7 @@ build() {
 #   cd ${srcdir}/${_pyname}-${pkgver}
     cd ${srcdir}/${_pyname}-${_commit}
     python setup.py build
-    python setup.py egg_info # need for ln -rs ...
+    python setup.py egg_info # need for release = metadata.version; ln -rs ...
 #   python -m build --wheel --no-isolation
 
     msg "Building Docs"
