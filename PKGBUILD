@@ -1,6 +1,6 @@
 # Maintainer: Boyan <boyan@confest.im>
 pkgname=eunomia-bin
-pkgver=1.0.3
+pkgver=1.0.3.1
 pkgrel=1
 pkgdesc="FOL proof checker"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
 provides=('eunomia')
 conflicts=('eunomia')
 
-source_x86_64=("https://github.com/Girjoaba/Eunomia/releases/download/v${pkgver}/Eunomia-${pkgver}.jar")
+source_x86_64=("https://github.com/Girjoaba/Eunomia/releases/download/${pkgver}/Eunomia-${pkgver}.jar")
 sha256sums_x86_64=('1ca98a27b28b9a9dbac0f7520bee4ca4c4eb0802b33018fb2cd67bde7cc91896')
 
 package() {
