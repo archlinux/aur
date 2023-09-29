@@ -1,7 +1,7 @@
 pkgbase = anituner
 	pkgdesc = Create, edit and convert Windows animated cursors
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gdgsoft.com/anituner
 	arch = i686
 	arch = x86_64
