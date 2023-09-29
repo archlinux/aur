@@ -12,7 +12,7 @@ install="$pkgname.install"
 license=('Apache')
 makedepends=('git')
 depends=('git' 'ruby' 'ruby-bundler' 'sqlite' 'python' 'libxslt' 'nodejs' 'ruby-eventmachine')
-conflicts=('beef' 'beef-git' 'beef-xss' 'beefproject')
+conflicts=('beef' 'beef-git' 'beef-xss' 'beef-xss-git' 'beefproject')
 source=("git+https://github.com/beefproject/beef.git")
 sha256sums=('SKIP')
 

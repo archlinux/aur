@@ -1,6 +1,6 @@
 pkgbase = beefproject-git
 	pkgdesc = The Browser Exploitation Framework that focuses on the web browser.
-	pkgver = v0.5.1.0
+	pkgver = v0.5.1.0.r271.g7b948b8d
 	pkgrel = 1
 	epoch = 1
 	url = http://beefproject.com/
@@ -19,6 +19,7 @@ pkgbase = beefproject-git
 	conflicts = beef
 	conflicts = beef-git
 	conflicts = beef-xss
+	conflicts = beef-xss-git
 	conflicts = beefproject
 	source = git+https://github.com/beefproject/beef.git
 	sha256sums = SKIP
