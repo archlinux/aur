@@ -1,7 +1,7 @@
 pkgbase = snpeff
 	pkgdesc = Genetic variant annotation and effect prediction toolbox. doi:10.4161/fly.19695
 	pkgver = 5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pcingola.github.io/SnpEff/
 	arch = any
 	license = MIT

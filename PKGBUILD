@@ -1,10 +1,10 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 # Previous Maintainer: Clint Valentine <valentine.clint@gmail.com>
 pkgname=snpeff
 _pkgname=SnpEff
 _pkg2=SnpSift
 pkgver=5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Genetic variant annotation and effect prediction toolbox. doi:10.4161/fly.19695"
 arch=('any')
 url="https://pcingola.github.io/SnpEff/"
