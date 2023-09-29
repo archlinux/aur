@@ -6,7 +6,7 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc="A plugin manager for mpv"
 arch=('any')
-url="https://pypi.org/project/$name/"
+url="https://pypi.org/project/$_name/"
 license=('MPL-2.0')
 depends=('python>=3.6.0' 'python-gitpython' 'python-requests' 'python-importlib-metadata')
 makedepends=('python-build' 'python-installer' 'python-wheel')
