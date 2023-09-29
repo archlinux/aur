@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=openshift-codeready-bin
-pkgver=2.26.0
+pkgver=2.27.0
 pkgrel=1
 pkgdesc="CodeReady tools for OpenShift (crc), binary release"
 provides=('crc')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha256sums=(
-    '8b1d72a39356804a29dacbab1a8330ed61e3dc6a702598bcdb9e734eb56baed2'
+    'ca45f327942db030353c465784f251f129a8aa88a7a5a32736eac7df989e895d'
 )
 
 options=("!strip")
