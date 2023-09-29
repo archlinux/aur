@@ -1,14 +1,14 @@
 pkgbase = snip
 	pkgdesc = A simple snippet manager for your predefined Ultisnips Snippet Directory
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://gitlab.com/a4to/snip
 	arch = any
 	license = MIT
 	depends = neovim
-	source = https://software.concise.cc/x86_64/snip-1.1.5-1-any.pkg.tar.xz
+	source = https://software.concise.cc/x86_64/snip-1.1.6-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 9dd85d7ba840a7954ba0538761854708
-	sha512sums = c89b2de121fc29f7538f43990013213512e6a9f5f98ffcfed5ca90448408aa54de60fe9ba616ff3235da280e97f54ddd086baca52e5cece65ce9182ef18bb020
+	md5sums = a718eefb7a632371b9d4633c7d75c7a2
+	sha512sums = 9fdb969350c542a98dfaf6861920b11bdb153637b5f27a0e25b1d93ddaee31253ee1c0fda6a6aab6998c4bb3d1cdb25c4a09561730dd4d9661798ffa4f250682
 
 pkgname = snip
