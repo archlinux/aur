@@ -1,6 +1,6 @@
 pkgbase = firedragon-unsigned-extensions
 	pkgdesc = FireDragon modified to allow installation of unsigned extensions
-	pkgver = 117.0.1
+	pkgver = 118.0.1
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
@@ -70,14 +70,13 @@ pkgbase = firedragon-unsigned-extensions
 	options = !debug
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/117.0.1/source/firefox-117.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/117.0.1/source/firefox-117.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/118.0.1/source/firefox-118.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/118.0.1/source/firefox-118.0.1.source.tar.xz.asc
 	source = firedragon.desktop
 	source = git+https://gitlab.com/dr460nf1r3/common.git
 	source = git+https://gitlab.com/dr460nf1r3/settings.git
-	source = librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=117.0.1-1
+	source = librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=118.0.1-1
 	source = librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git
-	source = cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git#commit=55505034ef73b466820115c530a76069bc32056e
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = 7ea4203b5cf9e59f80043597e2c9020291754fcab784a337586b5f5e1370c416
 	sha256sums = SKIP
