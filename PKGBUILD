@@ -7,8 +7,8 @@
 
 pkgbase=curl-http3-ngtcp2
 pkgname=(curl-http3-ngtcp2 libcurl-http3-ngtcp2-compat libcurl-http3-ngtcp2-gnutls)
-_tag='51ca9c12f959b7e97c1e67d0bebb33aa0d1f28b2' # git rev-parse v${_tag_name}
-pkgver=8.2.1
+_tag='8c537ee308eca91d0a240315b24025048ae54e61' # git rev-parse v${_tag_name}
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="command line tool and library for transferring data with URLs - compiled with HTTP/3 support (using ngtcp2 and nghttp3)"
 arch=('x86_64')
