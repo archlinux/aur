@@ -18,25 +18,25 @@ sha256sums=('6d48ab4b5200d41201ff1cb62f3306b70ea9a006b9e3e0dabe30a247dccb4686')
 
 pkgver() {
   cd "$_pkgname-$pkgver"
-  echo $pkgver
+  echo "$pkgver"
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/opt/$pkgname"
+  install -dm 755 "$pkgdir/opt/$_pkgname"
 
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md VERSION INSTALL.txt
   install -Dm 644 doc/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   rm -rf doc README.md VERSION INSTALL.txt install
 
-  cp -a * "$pkgdir/opt/$pkgname/"
+  cp -a * "$pkgdir/opt/$_pkgname/"
 
   cat >"$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/bin/sh
-cd /opt/$pkgname
+cd /opt/$_pkgname
 exec ruby $_pkgname "\$@"
 EOF
 
