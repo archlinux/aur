@@ -4,7 +4,7 @@ _pkggit=diun
 
 pkgname=diun-bin
 pkgver=4.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Receive notifications when an image is updated on a Docker registry."
 arch=('x86_64')
 url="https://github.com/crazy-max/diun"
@@ -18,7 +18,7 @@ sha256sums=('b8cfc7e6fece0c88c49b661663abfd358ff84475fd6506cca3b3c7571a48b9e8'
 
 package() {
   cd "${srcdir}"
-  install -Dm755 ${_pkggit} ${pkgdir}/usr/bin/${_pkggit}
+  install -Dm755 ${_pkggit} ${pkgdir}/usr/local/bin/${_pkggit}
   install -Dm755 diun.service ${pkgdir}/etc/systemd/system/diun.service
   install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
   install -Dm644 LICENSE ${pkgdir}/usr/share/doc/${pkgname}/LICENSE

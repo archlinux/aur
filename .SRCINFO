@@ -1,7 +1,7 @@
 pkgbase = diun-bin
 	pkgdesc = Receive notifications when an image is updated on a Docker registry.
 	pkgver = 4.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crazy-max/diun
 	arch = x86_64
 	license = MIT
