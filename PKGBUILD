@@ -11,7 +11,7 @@ pkgname=(
   ppsspp-git
   ppsspp-assets-git
 )
-pkgver=1.15.4.r1211.308e983a99
+pkgver=1.16.5.r44.aa411c2f09
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64 aarch64)
@@ -38,32 +38,10 @@ makedepends=(
 options=(!lto)
 source=(
   git+https://github.com/hrydgard/ppsspp.git
-  git+https://github.com/Kingcom/armips.git
-  git+https://github.com/discordapp/discord-rpc.git
-  git+https://github.com/hrydgard/ppsspp-ffmpeg.git
-  armips-filesystem::git+https://github.com/Kingcom/filesystem.git
-  git+https://github.com/google/cpu_features.git
-  git+https://github.com/KhronosGroup/glslang.git
-  git+https://github.com/hrydgard/ppsspp-lang.git
-  ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
-  git+https://github.com/Tencent/rapidjson.git
-  git+https://github.com/KhronosGroup/SPIRV-Cross.git
-  git+https://github.com/RetroAchievements/rcheevos.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
 b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
         'c6bcdfedee866dfdcc82a8c333c31ff73ed0beec65b63acec8bc8186383c0bc9f0912f21bb9715b665e8dc1793b1a85599761f9037856fa54ad8aa3bfdbfd468'
         '328e2ba47b78d242b0ec6ba6bfa039c77a36d1ef7246e5c2c2432d8e976e9360baf505eb05f48408ede1a30545cbbb7f875bf5ebd0252cef35523d449b8254a0')
 
@@ -74,21 +52,24 @@ pkgver() {
 
 prepare() {
   cd ppsspp
-  for submodule in assets/lang ext/miniupnp ffmpeg; do
-    git submodule init ${submodule}
-    git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
-    git -c protocol.file.allow=always submodule update ${submodule}
-  done
-  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,SPIRV-Cross,rcheevos}; do
-    git submodule init ${submodule}
-    git config submodule.${submodule}.url ../${submodule#*/}
-    git -c protocol.file.allow=always submodule update ${submodule}
-  done
-  cd ext/armips
-  for submodule in ext/filesystem; do
-    git submodule init ${submodule}
-    git config submodule.${submodule}.url ../../../armips-${submodule#*/}
-    git -c protocol.file.allow=always submodule update ${submodule}
+  _ppsspp_submodules=(
+    ffmpeg
+    assets/lang
+    ext/miniupnp
+    ext/armips
+    ext/cpu_features
+    ext/discord-rpc
+    ext/glslang
+    ext/rapidjson
+    ext/SPIRV-Cross
+    ext/rcheevos
+    ext/naett
+    ext/libchdr
+  )
+  # Explicitly set origin URL for submodules using relative paths
+  git remote set-url origin https://github.com/hrydgard/ppsspp.git
+  for path in ${_ppsspp_submodules[@]}; do
+    git submodule update --init --filter=tree:0 --recursive "$path"
   done
 }
 
