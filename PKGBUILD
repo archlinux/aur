@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: syntheit <daniel@matv.io>
 pkgname=tagspaces
-pkgver=5.4.6
-pkgrel=2
+pkgver=5.5.1
+pkgrel=1
 _electronversion=25
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3: Tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('e96a0c9b44073c4228ca8441edbbd71f11ce0947b0bd39681bfe968e702167de'
+sha256sums=('40c61766e8febd6b8bed7439bc8b0803a2fa4534b947e35ced6a11ca2861e88c'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
             '99a8679718609b93f61ac8119fbeb080ca0ec5e5f2d99b08e673fa86a3d8b32b')
 
