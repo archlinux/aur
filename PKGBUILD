@@ -3,7 +3,7 @@
 
 pkgname=fgallery
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc='a modern, minimalist javascript photo gallery'
 url='https://www.thregr.org/~wavexx/software/fgallery/'
@@ -14,7 +14,7 @@ optdepends=('7-zip: for faster and higher-compression zip archiving'
     'jpegoptim: for JPEG size optimization'
     'pngcrush: for PNG size optimization'
     'python-pyqt6: for use with fcaption'
-    'libcpanel-json-xs-perl'
+    'perl-cpanel-json-xs'
   )
 source=("https://www.thregr.org/~wavexx/software/fgallery/releases/fgallery-${pkgver}.zip")
 sha256sums=('16f174c2445edf04cf506f7f18407191ac6f675078c0477d908f6b5111cac67d')
