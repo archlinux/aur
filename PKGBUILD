@@ -171,10 +171,6 @@ END
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
-  # OpenSUSE KDE patches
-  patch -Np1 -i "${_patches_dir}"/kde-upstream/firefox-kde.patch
-  patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
-
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
 
