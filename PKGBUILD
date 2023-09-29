@@ -46,7 +46,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "git+https://gitlab.com/dr460nf1r3/settings.git"
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=118.0.1-1"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git")
-sha256sums=('7ea4203b5cf9e59f80043597e2c9020291754fcab784a337586b5f5e1370c416'
+sha256sums=('a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
