@@ -1,7 +1,7 @@
 pkgbase = godot-mono-enhanced
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine built properly
 	pkgver = 4.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://godotengine.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = godot-mono-enhanced
 	makedepends = nuget
 	makedepends = python
 	makedepends = git
+	makedepends = rsync
 	depends = embree3
 	depends = freetype2
 	depends = graphite
