@@ -12,7 +12,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Static and runtime integration of SCXML models into Qt code'
 depends=('qt5-declarative')
 makedepends=('git')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
