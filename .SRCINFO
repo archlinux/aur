@@ -18,7 +18,6 @@ pkgbase = beefproject
 	conflicts = beef
 	conflicts = beef-git
 	conflicts = beef-xss
-	conflicts = beef-xss-git
 	conflicts = beefproject-git
 	source = https://github.com/beefproject/beef/archive/refs/tags/v0.5.4.0.zip
 	sha256sums = 6d48ab4b5200d41201ff1cb62f3306b70ea9a006b9e3e0dabe30a247dccb4686

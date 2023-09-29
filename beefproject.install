@@ -14,7 +14,7 @@ post_install() {
     cat << EOF
 Certainly, here are the simplified steps:
 
-1. Open the BeEF Framework configuration file with a text editor using sudo and edit the username and password in the `config.yaml` file.
+1. Open the BeEF Framework configuration file with a text editor using sudo and edit the username and password in the config.yaml file.
 
     ~$ sudo nano /opt/beef/config.yaml
 
