@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=snip
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="A simple snippet manager for your predefined Ultisnips Snippet Directory"
 arch=(any)
@@ -12,10 +12,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'ac8a7a4172f6172a1aaed210cbd44e8dd2aaf234e283511e530203e3ddf34a891fcfeee53ba08517a238130713b0f5981111bb572d01dd3192f74a367409055d'
+  'ffd0c51b3e9f6b9162676a17853ebad345432394ca8bfd778a0139876a9f7999f7e27ec8c1377cc3639662ffa551f6a29c13b4ba770a69261f86f8273164e3e8'
 )
 md5sums=(
-  'c2d41dfa8deec2437258d7c26e165d79'
+  '99075dac671f0a7ace0edd6a75ea1302'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -34,6 +34,6 @@ package() {
   install -Dm755 usr/share/man/man1/${pkgname}.1.gz "${pkgdir}usr/share/man/man1/${pkgname}.1.gz"
   install -Dm755 usr/share/${pkgname}/plugged/${pkgname}/plugin/${pkgname}.vim "${pkgdir}/usr/share/${pkgname}/plugin/${pkgname}.vim"
 
-  install -Dm755 usr/share/${pkgname}/plugged/${pkgname}/plugin/${pkgname}.vim "${pkgdir}${_vimDir}/plugin/${pkgname}.vim"
+  install -Dm755 usr/share/${pkgname}/plugged/${pkgname}/plugin/${pkgname}.vim "${pkgdir}${_vimDir}/plugged/${pkgname}/plugin/${pkgname}.vim"
 
 }
