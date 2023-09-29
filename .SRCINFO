@@ -1,12 +1,12 @@
 pkgbase = sake-app
 	pkgdesc = Web application that generate new sub-addresses for the SAKE OpenSMTPD filter
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/breard-r/sake-app
 	arch = any
 	license = Apache
 	license = MIT
-	source = https://git.what.tf/rodolphe/sake-app/releases/download/v0.4.0/sake-app_v0.4.0.tar.gz
-	sha256sums = fae8b28c0a9550fabb80d23d9151048c823d0e8038fae6313a9c278ae5aaba97
+	source = https://git.what.tf/rodolphe/sake-app/releases/download/v0.5.0/sake-app_v0.5.0.tar.gz
+	sha256sums = cb8c431341303a67fe72d2287d05a90dd7c198295bd7e44d09d061475a9ac16b
 
 pkgname = sake-app

@@ -1,13 +1,13 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=sake-app
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Web application that generate new sub-addresses for the SAKE OpenSMTPD filter"
 arch=('any')
 url="https://github.com/breard-r/sake-app"
 license=('Apache' 'MIT')
 source=("https://git.what.tf/rodolphe/${pkgname}/releases/download/v${pkgver}/${pkgname}_v${pkgver}.tar.gz")
-sha256sums=('fae8b28c0a9550fabb80d23d9151048c823d0e8038fae6313a9c278ae5aaba97')
+sha256sums=('cb8c431341303a67fe72d2287d05a90dd7c198295bd7e44d09d061475a9ac16b')
 
 package() {
   cd "${pkgname}_v${pkgver}"
