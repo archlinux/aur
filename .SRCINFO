@@ -1,6 +1,6 @@
 pkgbase = mdatp-bin
 	pkgdesc = Microsoft Defender Advanced Threat Protection for Endpoints
-	pkgver = 101.98.89
+	pkgver = 101.23072.0021
 	pkgrel = 0
 	url = https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/linux-install-manually
 	install = mdatp.install
@@ -8,10 +8,10 @@ pkgbase = mdatp-bin
 	license = custom: commercial
 	depends = systemd
 	depends = libselinux
-	provides = mdatp=101.98.89
-	source = https://packages.microsoft.com/debian/11/prod/pool/main/m/mdatp/mdatp_101.98.89.amd64.deb
+	provides = mdatp=101.23072.0021
+	source = https://packages.microsoft.com/debian/11/prod/pool/main/m/mdatp/mdatp_101.23072.0021.amd64.deb
 	source = mdatp-user.conf
-	sha256sums = 582d1b94508d2d84432e1e4e049d6dbc712cca437ac82a2f25650703843a2f24
+	sha256sums = 45c0dd0dc355044c38629a7f903c994669a523a1ce93cddc66e603937c1dae70
 	sha256sums = d516a208a443dd35716250f9a9ef9b12f7e752ba91a213c70cb4592ab8c0435c
 
 pkgname = mdatp-bin
