@@ -4,7 +4,7 @@ pkgname="anituner"
 pkgdesc="Create, edit and convert Windows animated cursors"
 
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 
 arch=(i686 x86_64)
 
@@ -16,15 +16,12 @@ makedepends=(unzip gendesk icoutils)
 
 provides=(anituner)
 
-source=("https://download.gdgsoft.com/anitun2p.zip")
-md5sums=("f0cff36790da5e3f9b02a65aa4d64101")
+source=("https://download.gdgsoft.com/anitun2p.zip" "anituner" "anituner-atd.xml" "LICENSE")
+md5sums=("f0cff36790da5e3f9b02a65aa4d64101" "be9cfcd1a8c5f57cfae60e6739e0fceb" "2c084aaadfb308a757c12ca19c012f9f" "337e55594ad95557e6659ae8e0a91164")
 
 prepare() {
-	# make a temporary directory and move into it
-	mkdir -p "${startdir}/tmp" && cd "${startdir}/tmp"
-
 	# extract the icon out of the executable
-	wrestool -x -n MAINICON "${srcdir}/AniTuner.exe" -o AniTuner.ico
+	wrestool -x -n MAINICON AniTuner.exe -o AniTuner.ico
 
 	# get the highest quality PNG from the icon file
 	icotool -x AniTuner.ico -i 6 --output AniTuner.png
@@ -40,36 +37,28 @@ prepare() {
 }
 
 package() {
-	# rename the default configuration file
-	mv "${srcdir}/AniTunerPref.xml" "${srcdir}/AniTunerPrefDefault.xml"
-
-	# make the required directories
-	mkdir -p "${pkgdir}/usr/share/anituner"
+	# make a directory for the AniTuner samples
 	mkdir -p "${pkgdir}/usr/share/anituner/Samples"
 
-	mkdir -p "${pkgdir}/usr/bin"
-
-	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/usr/share/pixmaps"
-	mkdir -p "${pkgdir}/usr/share/mime/packages"
-
 	# copy all of AniTuner's files
-	install -Dm755 "${srcdir}/AniTuner.exe" "${pkgdir}/usr/share/anituner"
-	install -Dm644 "${srcdir}/AniTuner.chm" "${pkgdir}/usr/share/anituner"
-	install -Dm644 "${srcdir}/AniTunerPrefDefault.xml" "${pkgdir}/usr/share/anituner"
-	install -Dm644 "${srcdir}/Readme.txt" "${pkgdir}/usr/share/anituner"
-	install -Dm644 "${srcdir}/Samples/"* "${pkgdir}/usr/share/anituner/Samples"
+	install -Dm755 AniTuner.exe "${pkgdir}/usr/share/anituner"
+	install -Dm644 AniTunerPref.xml "${pkgdir}/usr/share/anituner/AniTunerPrefDefault.xml"
 
-	# remove the symlink to the ZIP from the package files
-	rm -f "${pkgdir}/usr/share/anituner/anitun2p.zip"
+	install -Dm644 AniTuner.chm "${pkgdir}/usr/share/anituner/AniTuner.chm"
+	install -Dm644 Readme.txt "${pkgdir}/usr/share/anituner/Readme.txt"
+
+	install -Dm644 Samples/* "${pkgdir}/usr/share/anituner/Samples"
 
 	# copy the executable script
-	install -v -Dm755 "${startdir}/anituner" "${pkgdir}/usr/bin"
+	install -Dm755 anituner "${pkgdir}/usr/bin/anituner"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 "${startdir}/tmp/AniTuner.png" "${pkgdir}/usr/share/pixmaps"
-	install -Dm644 "${startdir}/tmp/AniTuner.desktop" "${pkgdir}/usr/share/applications"
+	install -Dm644 AniTuner.png "${pkgdir}/usr/share/pixmaps/AniTuner.png"
+	install -Dm644 AniTuner.desktop "${pkgdir}/usr/share/applications/AniTuner.desktop"
 
 	# copy the custom MIME type
-	install -Dm644 "${startdir}/anituner-atd.xml" "${pkgdir}/usr/share/mime/packages"
+	install -Dm644 anituner-atd.xml "${pkgdir}/usr/share/mime/packages/anituner-atd.xml"
+
+	# copy the license file
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
