@@ -1,0 +1,26 @@
+post_upgrade() {
+  set -e
+  cd /opt/beef
+  rm -f Gemfile.lock
+  /usr/bin/bundle config build.nokogiri --use-system-libraries
+  /usr/bin/bundle config set --local path 'vendor/bundle'
+  bundle install
+  /usr/bin/bundle update
+  rm -f Gemfile.lock
+}
+
+post_install() {
+  post_upgrade
+    cat << EOF
+Certainly, here are the simplified steps:
+
+1. Open the BeEF Framework configuration file with a text editor using sudo and edit the username and password in the `config.yaml` file.
+
+    ~$ sudo nano /opt/beef/config.yaml
+
+2. Start BeEF with sudo:
+
+    ~$ sudo beef 
+
+EOF
+}
