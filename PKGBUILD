@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-	sed -i 's/Terminal=true/Terminal=false/g' squashfs-root/blessing.${_pkgname}.desktop
+	#sed -i 's/Terminal=true/Terminal=false/g' squashfs-root/blessing.${_pkgname}.desktop
 	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" "squashfs-root/blessing.${_pkgname}.desktop"
 	
 	# Fix permissions; .AppImage permissions are 700 for all directories
