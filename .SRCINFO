@@ -1,7 +1,7 @@
 pkgbase = neosurf-git
 	pkgdesc = A NetSurf fork with various improvements
 	pkgver = 16.r0.g21ddcde
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CobaltBSD/neosurf
 	arch = x86_64
 	license = GPL2
@@ -32,6 +32,10 @@ pkgbase = neosurf-git
 	depends = wayland
 	depends = zlib
 	source = neosurf::git+https://github.com/CobaltBSD/neosurf.git
+	source = neosurf-gtk.desktop
+	source = neosurf-vi.desktop
 	sha256sums = SKIP
+	sha256sums = d74ca71905c6336357ad7be9eb3be874623a3c86bddcc08501854e053f9e79f3
+	sha256sums = bab0e4af03f7ecd5f86cc37c9ca6990e4ad73a4db4ee5248f2cbcde1dca5e28d
 
 pkgname = neosurf-git

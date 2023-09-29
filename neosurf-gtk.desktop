@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Neosurf Gtk
+Comment=A NetSurf fork with various improvements
+GenericName=Web Browser
+Keywords=Internet;WWW;Browser;Web;Explorer;
+Exec=neosurf-gtk %u
+Icon=neosurf
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+Categories=Network;WebBrowser;
