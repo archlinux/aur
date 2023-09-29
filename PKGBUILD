@@ -3,13 +3,13 @@
 # Contributor: Uladzimir Panasiuk <v.s.panasyuk+AUR(at)gmail.com>
 pkgname=epson-printer-utility
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.'
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
 license=('LGPL' 'custom:Epson License Agreement')
 options=('strip')
-depends=('qt4' 'ld-lsb=3')
+depends=('qt5-base' 'ld-lsb=3')
 install="$pkgname.install"
 source=("https://download3.ebz.epson.net/dsc/f/03/00/14/68/92/d73ac45cccd3c5c349dbe365b5e99ae3112cbe49/${pkgname}_${pkgver}-1_amd64.deb"
   'ecbd.service'
