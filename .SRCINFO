@@ -1,0 +1,23 @@
+pkgbase = jetporch
+	pkgdesc = Jet is a general-purpose, community-driven IT automation platform for configuration, deployment, orchestration, patching, and arbitrary task execution workflows.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://jetporch.com/
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	makedepends = gzip
+	makedepends = tar
+	makedepends = gcc
+	makedepends = cargo
+	makedepends = openssl
+	makedepends = make
+	makedepends = pkg-config
+	provides = jetporch
+	source = jetporch-0.0.1.tar.gz::https://github.com/jetporch/jetporch/archive/refs/tags/v0.0.1.tar.gz
+	source = jetporch-examples.tar.gz::https://github.com/jetporch/jetporch_examples/archive/main.tar.gz
+	sha256sums = 863676e16ac5b1d5e59d1ffab855d5e4b87bde6a1b994c588f5c80151f4b0fe9
+	sha256sums = f7f1c57805d923a5e16dbef26b883f9edd195bf045629cdf9d386d1352fcd993
+
+pkgname = jetporch
