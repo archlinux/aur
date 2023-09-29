@@ -7,9 +7,10 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=117.0.1
+pkgver=118.0
 pkgrel=1
-pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
+# DEPRECATED pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
+pkgdesc="Librewolf fork build using custom branding & settings"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
   'usr/lib/firedragon/distribution/policies.json')
@@ -43,7 +44,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('7ea4203b5cf9e59f80043597e2c9020291754fcab784a337586b5f5e1370c416'
+sha256sums=('d0f996116ae234dc7bd59e0d77ddefe268179d7500d16a9488309c826547c97c'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -176,9 +177,9 @@ END
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
-  # OpenSUSE KDE patches
-  patch -Np1 -i "${_patches_dir}"/kde-upstream/firefox-kde.patch
-  patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
+  # OpenSUSE KDE patches --> These seem to be DEPRECATED as of 2023-09-29
+  # patch -Np1 -i "${_patches_dir}"/kde-upstream/firefox-kde.patch
+  # patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
