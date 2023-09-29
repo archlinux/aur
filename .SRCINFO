@@ -1,18 +1,19 @@
 pkgbase = myks-bin
-	pkgdesc = Configuration framework for managing Kubernetes clusters
-	pkgver = 2.0.1
+	pkgdesc = A configuration framework for Kubernetes applications
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/mykso/myks
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = myks
+	optdepends = carvel-tools: for vendir and ytt
+	optdepends = git: for git
+	optdepends = helm: for helm
 	conflicts = myks
-	conflicts = myks-bin
-	conflicts = myks-git
-	source_x86_64 = myks_2.0.1_linux_amd64.tar.gz::https://github.com/mykso/myks/releases/download/v2.0.1/myks_2.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7b224675686a03eea1c2c117e9efe2b9c17c899781d6416e8d33c20371743168
-	source_aarch64 = myks_2.0.1_linux_arm64.tar.gz::https://github.com/mykso/myks/releases/download/v2.0.1/myks_2.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 983a987864258ec0427ea3abde03e88b1da48c7d4078901c72e7ab502c05ce8a
-
+	provides = myks
+	arch = aarch64
+	source_aarch64 = https://github.com/mykso/myks/releases/download/v2.0.4/myks_2.0.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e4149237c913e16ff40a1dd26c29d50b2ed24dbc9d17e9c41120e7aa5ddfe59
+	arch = x86_64
+	source_x86_64 = https://github.com/mykso/myks/releases/download/v2.0.4/myks_2.0.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 433646270e00e7c6be7da68bdd1203ca8a55ea5d2def3912d45007bbd335eab7
+	
 pkgname = myks-bin
