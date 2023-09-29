@@ -1,7 +1,7 @@
 # Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 
 pkgname=kiri-git
-pkgver=1.2.0.r112.gd8f0568
+pkgver=1.2.0.r133.gf5ee662
 pkgrel=1
 pkgdesc="A tool for reviewing Schematics and Layouts of Git-versioned Kicad-projects, visually"
 url="https://github.com/leoheck/kiri"
