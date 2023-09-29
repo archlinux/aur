@@ -1,0 +1,14 @@
+pkgbase = gibo-bin
+	pkgdesc = Command-line tool to help you easily access .gitignore boilerplates
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = https://github.com/simonwhitaker/gibo
+	install = gibo.install
+	arch = x86_64
+	license = custom:UNLICENSE
+	source = https://github.com/simonwhitaker/gibo/releases/download/v3.0.7/gibo_Linux_x86_64.tar.gz
+	source = gibo.install
+	b2sums = d60c3006dc74d5d2fd8578fd06a284c56cecc2849484310176ea57198a9aec92ccec3f4ecf1df755fa6578466ab145c029542437aa3deb20175c6884b2a58d89
+	b2sums = a8516b43198e9353eaf0fe49d50cb50ea2ac096b0366deabd33795b2c6d52ede6264d5615acdf78117550dbd2dc13999bca66fc9d1b10a090e7cee344c487f97
+
+pkgname = gibo-bin
