@@ -85,6 +85,5 @@ pkgbase = firedragon-unsigned-extensions
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = firedragon-unsigned-extensions

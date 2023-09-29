@@ -52,7 +52,6 @@ sha256sums=('a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
