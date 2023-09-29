@@ -35,5 +35,5 @@ package() {
   ln -s /usr/bin/ffmpeg "${pkgdir}/opt/${_package}/converter/build/linux/64/ffmpeg"
   ln -s /usr/bin/ffprobe "${pkgdir}/opt/${_package}/converter/build/linux/64/ffprobe"
   ln -s /usr/bin/ffplay "${pkgdir}/opt/${_package}/converter/build/linux/64/ffplay"
-  ln -s "/opt/${_package}/bin/net.downloadhelper.coapp-linux-64" "${pkgdir}/usr/bin/vdhcoapp"
+  ln -s "/opt/vdhcoapp/vdhcoapp" "${pkgdir}/usr/bin/vdhcoapp"
 }
