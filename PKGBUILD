@@ -5,7 +5,8 @@ _electron=electron25
 _appname=insomnia
 pkgname="$_appname-electron-bin"
 _dirname="Insomnia.Core"
-pkgver=2023.5.3
+epoch=1
+pkgver=8.1.0
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
@@ -20,7 +21,7 @@ source=("$url/releases/download/core@$pkgver/$_dirname-$pkgver.tar.gz"
 				"https://raw.githubusercontent.com/$_repo/core@$pkgver/LICENSE"
         "$_appname.sh"
 				"$_appname.desktop")
-b2sums=('665a8f6fa1eb8d5e3d064cf2a5ce4b1e5712885952c0acd9750fc6830420590e0d0276ef0ab3d5b3d38d213f4b5dc2d18709d79c9a6ae04cb5adbf83c1c4d2fa'
+b2sums=('97cd5d166450bed3a4a54d037051f0f5e4a2a67721f0e891ecf47f86ee41eeb25814f116362029fb559b63698d12cb5fee6ac3978b0351227030a5518709946d'
         'e6733afc6be4ad5349cfcebaad5644253b67f90ba940722fee181648f4c63a65fb7ce66115f6b14d6b60dcba420cab71d0b34c6e4ce1313bc7ac92f332c04313'
         'fc24b3075490bfed6f56aba46b33b50edcc9ead95e00d8209d38ed052f5d3514ea789a13c51eb1cf7d53807f6aa171c833222122634bfff6edc5c5f7936f1eff'
         'd7f795312b38ccd63cdc9a9333a5cdb3d1271b07d6855bc10c4711e143f0a30bd819cda931d99ed0090536ffa84b551a8d134299f614506b0e344c15afe19f6c')
