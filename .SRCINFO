@@ -1,6 +1,6 @@
 pkgbase = gdm-settings-beta
 	pkgdesc = A settings app for Gnome's Login Manager, GDM
-	pkgver = 3.3
+	pkgver = 4.beta0
 	pkgrel = 1
 	url = https://gdm-settings.github.io
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = gdm-settings-beta
 	depends = polkit
 	provides = gdm-settings
 	conflicts = gdm-settings
-	source = gdm-settings-3.3.tar.gz::https://github.com/gdm-settings/gdm-settings/archive/refs/tags/v3.3.tar.gz
-	sha256sums = 0e04af6ba3b6b6b476745aa7d178a8cc67576aebd61122b1a7bb9855b7e9d6fe
+	source = gdm-settings-4.beta0.tar.gz::https://github.com/gdm-settings/gdm-settings/archive/refs/tags/v4.beta0.tar.gz
+	sha256sums = fd03e13f94eecddae7e79fff6222133371c2089a102abfc8ddb0b67df928974f
 
 pkgname = gdm-settings-beta
