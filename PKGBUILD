@@ -1,6 +1,6 @@
 # Maintainer: Boyan <boyan@confest.im>
 pkgname=eunomia-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="FOL proof checker"
 arch=('x86_64')
