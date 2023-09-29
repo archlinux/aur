@@ -31,9 +31,13 @@ prepare() {
 package() {
   cp -Rfp "${srcdir}/${pkgname}/"* "${pkgdir}/"
   mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/libalpm/hooks"
   mkdir -p "${pkgdir}/opt/${_package}/converter/build/linux/64/"
   ln -s /usr/bin/ffmpeg "${pkgdir}/opt/${_package}/converter/build/linux/64/ffmpeg"
   ln -s /usr/bin/ffprobe "${pkgdir}/opt/${_package}/converter/build/linux/64/ffprobe"
   ln -s /usr/bin/ffplay "${pkgdir}/opt/${_package}/converter/build/linux/64/ffplay"
   ln -s "/opt/vdhcoapp/vdhcoapp" "${pkgdir}/usr/bin/vdhcoapp"
+
+  # Install Hooks
+  cp -fpL "${srcdir}/"*.hook "${pkgdir}/usr/share/libalpm/hooks/"
 }
