@@ -1,8 +1,9 @@
-# Maintainer: Librewish <librewish@gmail.com>
+# Maintainer: steeltitanium <steeltitanium1 at gmail dot com>
+# Contributor: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-desktop-git
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -24,7 +25,6 @@ depends=(
         'swayidle'
         'grim'
         'slurp'
-        'wdisplays'
         'kanshi'
         'gammastep'
         'qt5-wayland'

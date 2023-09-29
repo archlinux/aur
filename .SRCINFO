@@ -1,7 +1,7 @@
 pkgbase = wayfire-desktop-git
 	pkgdesc = A meta package to use Wayfire as a desktop
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayfire.org/
 	arch = any
 	depends = wayfire
@@ -18,7 +18,6 @@ pkgbase = wayfire-desktop-git
 	depends = swayidle
 	depends = grim
 	depends = slurp
-	depends = wdisplays
 	depends = kanshi
 	depends = gammastep
 	depends = qt5-wayland
