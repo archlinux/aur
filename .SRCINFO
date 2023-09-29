@@ -1,0 +1,17 @@
+pkgbase = cdtray
+	pkgdesc = Play your audio CDs directly from the system tray
+	pkgver = 2.0.rc1
+	pkgrel = 1
+	url = https://github.com/son-link/CD-Tray
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = python-psutil
+	depends = gst-python
+	source = https://github.com/son-link/CD-Tray/archive/refs/tags/v.2.0.rc1.tar.gz
+	sha512sums = 151eeb7828fe4eed7feebb6c634e2b8c
+
+pkgname = cdtray
