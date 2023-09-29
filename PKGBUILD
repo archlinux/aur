@@ -12,7 +12,7 @@ license=('GPL3')
 pkgdesc='Virtual keyboard framework'
 depends=('qt5-declarative' 'qt5-svg' 'hunspell')
 makedepends=('git')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
