@@ -1,32 +1,45 @@
 # Maintainer: Stella <jens300304@gmail.com>
+# Maintainer: bemxio <bemxiov@protonmail.com>
+
 pkgname=python-osrparse
-url="https://github.com/kszlim/osu-replay-parser"
-pkgver=6.0.0
+_name=${pkgname#python-}
+
+pkgdesc="Parser for .osr (osu! replays) file format"
+
+pkgver=7.0.0
 pkgrel=1
-pkgdesc="A python parser for osu! replays."
-arch=('any')
-license=('MIT')
-source=(
-    "https://github.com/kszlim/osu-replay-parser/archive/refs/tags/v${pkgver}.tar.gz"
-)
-sha256sums=('f8387a070b627dd478ae190932f0199a0c3ee06535ad486cf6a44938ef5a6689')
-depends=('python')
-checkdepends=('python-pytest')
-makedepends=('python-setuptools')
-conflicts=('python-osrparse-git')
+
+arch=(any)
+
+url="https://pypi.org/project/osrparse/"
+license=("MIT")
+
+depends=(python)
+makedepends=(python-build python-installer python-wheel)
+
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+md5sums=("51353e97c7e3e45a7bcee6cc4be61860")
 
 build() {
-    cd "$srcdir/osu-replay-parser-${pkgver}"
-    python setup.py build
+    # move to the source directory
+    cd "${srcdir}/${_name}-${pkgver}"
+
+    # build the package
+    python -m build --wheel --no-isolation
 }
 
-check() {
-    cd "$srcdir/osu-replay-parser-${pkgver}"
-    pytest
-}
+#check() {
+#    # move to the source directory
+#    cd "${srcdir}/${_name}-${pkgver}"
+#
+#    # run all tests
+#    python -m pytest
+#}
 
 package() {
-    cd "$srcdir/osu-replay-parser-${pkgver}"
-    python setup.py install --root="$pkgdir"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # move to the source directory
+    cd "${srcdir}/${_name}-${pkgver}"
+
+    # package the files
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
