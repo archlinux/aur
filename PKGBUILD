@@ -12,7 +12,7 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='QPA plugin for running an application via a browser using streamed WebGL commands'
 depends=(qt5-websockets qt5-declarative)
 makedepends=(git)
-groups=(qt qt5)
+groups=(qt5)
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
