@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Mixing Station for Desktop
+Exec=/usr/bin/mixing-station-pc
+Icon=mixing-station-pc
+Terminal=false
+Type=Application
+Categories=AudioVideo

@@ -1,0 +1,20 @@
+pkgbase = mixing-station-pc-bin
+	pkgdesc = Remote control digital mixers
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://mixingstation.app/
+	arch = any
+	license = unknown
+	depends = java-runtime
+	provides = mixing-station-pc
+	conflicts = mixing-station-pc
+	source = mixing-station-pc.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release
+	source = mixing-station-pc.desktop
+	source = mixing-station-pc.png
+	source = mixing-station-pc.sh
+	sha256sums = SKIP
+	sha256sums = 2f923b4a4d449e975bb4fa3fb6f8934df5eba9251a74f12932232f05d32bb1f6
+	sha256sums = 80e8008f52ddb51d3b069d5fb3aaebaef398d27a0224d60d31f3c03a796fd671
+	sha256sums = b93eaaea70843227d0116f276127dcab83d07c1eac69af1c5c9424e8c602f5a5
+
+pkgname = mixing-station-pc-bin
