@@ -1,0 +1,30 @@
+pkgbase = python-hwrt
+	pkgdesc = HandWriting Recognition Toolkit, draw and get the LaTeX command
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/hwrt/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.6.0
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pymysql
+	depends = python-pillow
+	depends = python-natsort
+	depends = python-matplotlib
+	depends = python-yaml
+	depends = python-flask
+	depends = python-click
+	depends = python-setuptools
+	depends = python-jinja
+	depends = python-bootstrap-flask
+	depends = python-nntoolkit
+	depends = python-h5py
+	depends = python-keras
+	source = https://files.pythonhosted.org/packages/source/h/hwrt/hwrt-0.2.1.tar.gz
+	sha256sums = 38d425cc7524794c61f6e4444e14300db28c4e989f2851b2708cd57a50c0902e
+
+pkgname = python-hwrt
