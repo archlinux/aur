@@ -1,6 +1,6 @@
 pkgbase = oscal-cli
 	pkgdesc = A simple open source command line tool to support common operations over OSCAL content.
-	pkgver = 0.3.3
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/usnistgov/oscal-cli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = oscal-cli
 	makedepends = java-environment>=11
 	makedepends = git
 	depends = java-environment>=11
-	source = oscal-cli::git+https://github.com/usnistgov/oscal-cli
+	source = oscal-cli::git+https://github.com/usnistgov/oscal-cli#tag=v1.0.2
 	sha256sums = SKIP
 
 pkgname = oscal-cli
