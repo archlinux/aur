@@ -5,7 +5,7 @@
 pkgbase=lx-music-desktop-git
 pkgname=(lx-music-desktop-git lx-music-desktop-electron-git)
 pkgdesc=一个免费的音乐查找助手
-pkgver=2.4.1.0da63c6e
+pkgver=2.5.0.ac7daa70
 pkgrel=1
 arch=(x86_64 aarch64 armv7l)
 url=https://github.com/lyswhut/lx-music-desktop
