@@ -2,7 +2,7 @@
 
 pkgname=simplex-desktop-appimage
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!"
 arch=('x86_64')
 url="https://simplex.chat/"
@@ -13,9 +13,7 @@ options=(!strip) # necessary otherwise the AppImage file in the package is trunc
 source=(
     https://github.com/simplex-chat/simplex-chat/releases/download/v${pkgver}/simplex-desktop-${arch}.AppImage
 )
-sha512sums=(
-    8d7d5bcd53071d0af1c47d488a4e6d6db9126fe29a977058245db754290fe93bc097a516f2432cb005e6f589d78eec50d97476f59272b6169eae043dfb08a12b
-)
+sha512sums=('8d7d5bcd53071d0af1c47d488a4e6d6db9126fe29a977058245db754290fe93bc097a516f2432cb005e6f589d78eec50d97476f59272b6169eae043dfb08a12b')
 _filename="simplex-desktop-${arch}.AppImage"
 _squashfs_desktop_file="chat.simplex.app.desktop"
 _desktop_file="/usr/share/applications/simplex-desktop.desktop"
