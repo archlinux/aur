@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=PolarProxy
+Comment=PolarProxy is a transparent TLS and SSL inspection proxy created for incident responders, malware analysts and security researchers. PolarProxy decrypts and re-encrypts TLS traffic, while also saving the decrypted traffic in a PCAP file that can be loaded into Wireshark or an intrusion detection system (IDS).
+Path=/opt/polarproxy
+Exec=PolarProxy
+Icon=polarproxy
+Terminal=true

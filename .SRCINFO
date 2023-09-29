@@ -1,0 +1,18 @@
+pkgbase = polarproxy-bin
+	pkgdesc = Transparent TLS and SSL inspection proxy primarily designed for incident responders and malware researchers to intercept, decrypt, and re-encrypt TLS encrypted traffic from malware while saving it in a PCAP file.
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = https://www.netresec.com/?page=PolarProxy
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	source = polarproxy-bin.tar.gz::https://www.netresec.com/?download=PolarProxy
+	source = polarproxy_icon.png
+	source = polarproxy.desktop
+	b2sums = 2d8df8af9cb986e454e417638af05ffdb19840ac1ed0420fdb161afb3f10c124134b95b2045a65d202d040ab02f0ed11b17e176c0435ec95f90385eaf1994ef3
+	b2sums = d16df3c5469813bd5600bc8d56302c31e2e45ff0b6be582a3b12b28c9cfe64ac687aff8c4fdf49f6d09081b09242dd5df9ca1e88b345ccabf08f744094f5a4ea
+	b2sums = e805d3513b453b5f7be9e02c06426956bcf63928bdb983efafff6c62a5801a37039428c87665f8c63db84df0d3e837773b5d646695f39d79959f9e2821afca92
+
+pkgname = polarproxy-bin
