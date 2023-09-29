@@ -7,7 +7,7 @@ pkgdesc='Transparent TLS and SSL inspection proxy primarily designed for inciden
 arch=('x86_64')
 url='https://www.netresec.com/?page=PolarProxy'
 license=('GPL2')
-depends=('glibc' 'gcc-libs' 'zlib')
+depends=('glibc' 'gcc-libs' 'zlib' 'lttng-ust2.12')
 source=("$pkgname.tar.gz::https://www.netresec.com/?download=PolarProxy"
 "polarproxy_icon.png"
 "polarproxy.desktop"
@@ -25,12 +25,15 @@ package() {
 	install -d "${pkgdir}/opt/${pkgname%-bin}"
 	install -d "${pkgdir}/usr/share/applications"
 	install -d "${pkgdir}/usr/share/icons"
+  install -d "${pkgdir}/etc/systemd/system/"
   install -dm755 "${pkgdir}"/usr/bin/
 
 	install -m644 "polarproxy_icon.png" "${pkgdir}/usr/share/icons/${pkgname%-bin}.png"
 	install -m644 "polarproxy.desktop" "${pkgdir}/usr/share/applications"
   ln -s /opt/${pkgname%-bin}/PolarProxy "${pkgdir}"/usr/bin/polarproxy
 
+
+	install -m644 "${srcdir}/PolarProxy.service" "${pkgdir}/etc/systemd/system/"
   cp -r "${srcdir}/"* "${pkgdir}/opt/${pkgname%-bin}"
   chmod +x "${pkgdir}/opt/${pkgname%-bin}"/PolarProxy
 

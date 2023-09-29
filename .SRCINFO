@@ -8,6 +8,7 @@ pkgbase = polarproxy-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib
+	depends = lttng-ust2.12
 	source = polarproxy-bin.tar.gz::https://www.netresec.com/?download=PolarProxy
 	source = polarproxy_icon.png
 	source = polarproxy.desktop
