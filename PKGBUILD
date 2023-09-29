@@ -2,7 +2,7 @@
 
 _gemname=google-apis-compute_v1
 pkgname=ruby-$_gemname
-pkgver=0.78.0
+pkgver=0.79.0
 pkgrel=1
 pkgdesc='simple REST client for Compute Engine API V1'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-google-apis-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('33293dba9842e12f19f2007f461ffc8044d525a14cde52fb66398a19393cb139')
+sha256sums=('7616944a1b4f23560c5de337e07e0f5ecfd69ccf084ccd7ed2498fbdb26e1fac')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
