@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/graveljp/smugcli"
 license=('MIT')
 depends=('python-bottle' 'python-rauth' 'python-requests' 'python-requests-oauthlib' 'python-hachoir' 'python-six' 'python-jsonpath-ng')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=('smugcli::git+https://github.com/graveljp/smugcli/#branch=master')
 md5sums=('SKIP')
 
