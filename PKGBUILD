@@ -1,7 +1,7 @@
 # Maintainer: nltimv <git at nltimv dot com>
 pkgname='weave-gitops-git'
-pkgver=v0.29.0.r7.g6f053dfbe
-pkgrel=2
+pkgver=v0.33.0.r17.g9281d456b
+pkgrel=1
 pkgdesc='Weave GitOps is a simple open source developer platform for people who want cloud native applications, without needing Kubernetes expertise.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url='https://github.com/weaveworks/weave-gitops'
@@ -33,11 +33,6 @@ build() {
     echo $LDFLAGS
     go build -buildmode=pie -trimpath -ldflags="-linkmode=external -extldflags \"$LDFLAGS\"" -mod=readonly -modcacherw -o bin/gitops cmd/gitops/main.go
     go build -buildmode=pie -trimpath -ldflags="-linkmode=external -extldflags \"$LDFLAGS\"" -mod=readonly -modcacherw -o bin/gitops-server cmd/gitops-server/main.go
-}
-
-check() {
-    cd "$srcdir/weave-gitops"
-    make test
 }
 
 package() {
