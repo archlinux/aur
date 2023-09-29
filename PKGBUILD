@@ -1,11 +1,11 @@
 # Maintainer: bemxio <bemxiov@protonmail.com>
 
 pkgname=fastvideods-encoder-git
+pkgdesc="Encoder for the FastVideoDS format"
 
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 
-pkgdesc="Encoder for the FastVideoDS format"
 arch=(i686 x86_64)
 
 url="https://github.com/Gericom/FastVideoDSEncoder"
