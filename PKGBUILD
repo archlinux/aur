@@ -3,7 +3,7 @@
 pkgname=waterfox-bin
 _pkgver=6.0.2
 pkgver=G${_pkgver}
-pkgrel=0
+pkgrel=1
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
 url="https://www.waterfox.net"
