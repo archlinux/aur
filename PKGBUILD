@@ -2,7 +2,7 @@
 
 _pkgname=flightcore
 pkgname=$_pkgname-bin
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage=flight-core_${pkgver}_amd64.AppImage
 source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage"
-        "$url/raw/main/LICENSE")
-sha256sums=('4e03f3b40dfb55bc3d31777e6b9b6798a91e3de272357ec43bda55ece15453be'
+        $pkgver-LICENSE::"$url/raw/v2.10.1/LICENSE")
+sha256sums=('f88d3c9f936611cd7f59a32f38e5c80e97ee8bbf640c822d16a6e80fd3303d04'
             'SKIP')
 
 prepare() {
@@ -23,18 +23,16 @@ prepare() {
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
   # Edit the shortcut
-  cd squashfs-root/usr/share/applications
-  mv flight-core.desktop $_pkgname.desktop
-  sed -i -E "s|Exec=flight-core|Exec=$_pkgname|g" $_pkgname.desktop
-  sed -i -E "s|Icon=flight-core|Icon=$_pkgname|g" $_pkgname.desktop
+  mv squashfs-root/usr/share/applications/flight-core.desktop $srcdir/$_pkgname.desktop
+  sed -i 's/flight-core/flightcore/g' $_pkgname.desktop
 }
 
 package() {
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm644 $pkgver-LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   cd squashfs-root/usr
   for i in 32x32 128x128 256x256@2; do
     install -Dm644 share/icons/hicolor/$i/apps/flight-core.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
   done
-  install -Dm644 share/applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 bin/flight-core "$pkgdir/usr/bin/$_pkgname"
 }
