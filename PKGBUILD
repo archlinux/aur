@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop'
 pkgver=0.0.17
-pkgrel=1
-pkgdesc="Music Assistant Desktop app"
+pkgrel=2
+pkgdesc="Music Assistant Companion app"
 arch=('x86_64')
 url="https://github.com/music-assistant/music-assistant-desktop"
 conflicts=(squeezelite music-assistant-desktop-bin)
@@ -28,6 +28,6 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 	install -DCm644 ./musicassistant.desktop "$pkgdir/usr/share/applications/musicassistant.desktop"
   install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/musicassistant.png"
-  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/music-assistant-desktop
+  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/music-assistant-companion
   install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
 }

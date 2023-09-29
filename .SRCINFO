@@ -1,7 +1,7 @@
 pkgbase = music-assistant-desktop
-	pkgdesc = Music Assistant Desktop app
+	pkgdesc = Music Assistant Companion app
 	pkgver = 0.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/music-assistant/music-assistant-desktop
 	arch = x86_64
 	license = Apache-2.0
