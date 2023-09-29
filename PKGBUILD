@@ -2,8 +2,10 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.5.7
-pkgrel=3
+pkgver=0.5.8_pre1
+_pkgver=${pkgver/_/-}
+pkgrel=0
+epoch=
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloud-fs/cloud-fs.github.io"
@@ -17,14 +19,14 @@ backup=()
 options=(!strip)
 install=
 source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html")
-source_x86_64=("${pkgname}-2-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/clouddrive-2-linux-x86_64-${pkgver}.tgz")
-source_aarch64=("${pkgname}-2-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/clouddrive-2-linux-aarch64-${pkgver}.tgz")
+source_x86_64=("${pkgname}-2-${_pkgver}-x86_64.tgz::${url}/releases/download/v${_pkgver}/clouddrive-2-linux-x86_64-${_pkgver}.tgz")
+source_aarch64=("${pkgname}-2-${_pkgver}-aarch64.tgz::${url}/releases/download/v${_pkgver}/clouddrive-2-linux-aarch64-${_pkgver}.tgz")
 sha256sums=('445a37f017c646fe8fcd3cdd24c159e7fed733ace7197b972070d76aca3b83b7')
-sha256sums_x86_64=('2786d0758d1931fded8c9e100842716223b88eb7bea3548cd35e2b0b23fb1420')
-sha256sums_aarch64=('dca197266a6abfb74af5c4268327b4c97785a04b84edd924915b22f2a7a2b8b5')
+sha256sums_x86_64=('13956c6760736b67ec20993abf2772df2d73d2b24b69607a64b5a866e14e7410')
+sha256sums_aarch64=('c8a785ebe8120b02008bf113b892b72ad467625b143df021d650fda5d306e00d')
 noextract=(
-    ${pkgname}-2-x86_64-${pkgver}.tgz
-    ${pkgname}-2-aarch64-${pkgver}.tgz)
+    ${pkgname}-2-x86_64-${_pkgver}.tgz
+    ${pkgname}-2-aarch64-${_pkgver}.tgz)
 
 _install_path="opt/${pkgname}"
 
@@ -33,7 +35,7 @@ package() {
     install -dm755 ${pkgdir}/${_install_path} \
         "${pkgdir}"/media/clouddrive
 
-    bsdtar xf "${pkgname}-2-${CARCH}-${pkgver}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
+    bsdtar xf "${pkgname}-2-${_pkgver}-${CARCH}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
 
     sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
 
