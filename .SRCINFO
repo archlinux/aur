@@ -1,15 +1,15 @@
 pkgbase = r-extrafont
-	pkgdesc = Tools for using fonts
-	pkgver = 0.17
-	pkgrel = 1
+	pkgdesc = Tools for Using Fonts
+	pkgver = 0.19
+	pkgrel = 3
 	url = https://cran.r-project.org/package=extrafont
 	arch = any
 	license = GPL2
-	depends = r>=2.15
 	depends = r-extrafontdb
 	depends = r-rttf2pt1
 	optdepends = r-fontcm
-	source = https://cran.r-project.org/src/contrib/extrafont_0.17.tar.gz
-	sha256sums = 2f6d7d79a890424b56ddbdced361f8b9ddede5edd33e090b816b88a99315332d
+	source = https://cran.r-project.org/src/contrib/extrafont_0.19.tar.gz
+	md5sums = 5b65dd0344de4d5e99842c602697b124
+	sha256sums = 4e8f90152df13fc5dee573222a26b4d66553493fdf6af1c7777e59521ccdab8d
 
 pkgname = r-extrafont
