@@ -4,7 +4,7 @@ pkgname=gdm-settings-beta
 pkgdesc="A settings app for Gnome's Login Manager, GDM"
 url="https://gdm-settings.github.io"
 pkgver=4.beta0
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(AGPL3)
 depends=(gdm libadwaita glib2 python-gobject gettext polkit)
@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/gdm-settings/gdm-set
 sha256sums=(fd03e13f94eecddae7e79fff6222133371c2089a102abfc8ddb0b67df928974f)
 
 build() {
-   arch-meson --buildtype=release "${srcdir}/${_pkgname}-${pkgver}" build
+   arch-meson "${srcdir}/${_pkgname}-${pkgver}" build
    meson compile -C build
 }
 
