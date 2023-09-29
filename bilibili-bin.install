@@ -11,7 +11,7 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 post_install() {
-	  note "使用愉快,目前维护者一个要中考一个要高考，时间根本没有,有什么问题请到aur页面发评论也看不到，各位积极报名维护者！！"
+	  note "使用愉快,目前维护者一个要中考两个要高考，时间根本没有,有什么问题请到aur页面发评论也看不到，各位积极报名维护者！！"
 }
 post_upgrade() {
     post_install
