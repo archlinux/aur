@@ -3,17 +3,19 @@
 
 pkgname=fgallery
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='a modern, minimalist javascript photo gallery'
 url='https://www.thregr.org/~wavexx/software/fgallery/'
 license=('GPL2')
-depends=('fbida' 'imagemagick' 'lcms' 'perl>=5.14' 'perl-json' 'perl-image-exiftool' 'zip')
-optdepends=('facedetect-git: to center thumbnails on subject face'
-    'jpegoptim: to optimize JPEG files'
-    'p7zip: for faster compression'
-    'pngcrush: to optimize PNG files'
-    'python-pyqt4: to use fcaption')
+depends=('fbida' 'imagemagick' 'lcms2' 'perl>=5.14' 'perl-image-exiftool' 'zip')
+optdepends=('7-zip: for faster and higher-compression zip archiving'
+    'facedetect-git: for face detection'
+    'jpegoptim: for JPEG size optimization'
+    'pngcrush: for PNG size optimization'
+    'python-pyqt6: for use with fcaption'
+    'libcpanel-json-xs-perl'
+  )
 source=("https://www.thregr.org/~wavexx/software/fgallery/releases/fgallery-${pkgver}.zip")
 sha256sums=('16f174c2445edf04cf506f7f18407191ac6f675078c0477d908f6b5111cac67d')
 
