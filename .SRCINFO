@@ -1,0 +1,16 @@
+pkgbase = fmq-bin
+	pkgdesc = Frontmatter query utils
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/thales-maciel/fmq
+	arch = x86_64
+	license = MIT
+	provides = fmq
+	conflicts = fmq
+	conflicts = fmq
+	source_x86_64 = fmq-bin-0.0.1::https://github.com/thales-maciel/fmq/releases/download/v0.0.1/fmq
+	source_x86_64 = fmq-bin-0.0.1-README.md::https://github.com/thales-maciel/fmq/raw/v0.0.1/README.md
+	sha512sums_x86_64 = 90f839d2dd9303fddfcc17af6f2c9067e75c44a22937839f30db1a526dc1d9129eab9500234e08ff234078b7dce8b57ec7dac678864bfedbbee03bd94ca9ee2e
+	sha512sums_x86_64 = 68aa7bf068d6242108b443c06a00289302acf63a50b822a644dbe991661effdc8e3bc67cdf3b085a11f64c1b4a2dda3aab4dda5f1ec516d32f1032f79b0f2695
+
+pkgname = fmq-bin
