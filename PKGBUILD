@@ -4,14 +4,14 @@
 _gitname=captdriver
 pkgname=${_gitname}-git
 pkgver=r138.a3036a4
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source CUPS driver for Canon CAPT printers (not stable, formerly foo2capt)'
 arch=('any')
 url='https://github.com/mounaiban/captdriver'
 depends=('cups')
 install=${pkgname}.install
 license=('GPL')
-makedepends=('automake' 'git' 'gcc')
+makedepends=('git')
 source=("$_gitname::git+https://github.com/mounaiban/captdriver.git" "capt.rules")
 md5sums=('SKIP' '58d3dc5cd1cf6b9e2e44d71885b0f9d5')
 
