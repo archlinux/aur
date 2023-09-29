@@ -23,8 +23,7 @@ sha256sums=(SKIP
             'b93eaaea70843227d0116f276127dcab83d07c1eac69af1c5c9424e8c602f5a5')
 
 pkgver() {
-	jar xf mixing-station-pc.jar META-INF/MANIFEST.MF
-	sed -n 's/^Implementation-Version: //p' META-INF/MANIFEST.MF | tr -d '\r\n'
+	bsdtar -xOf mixing-station-pc.jar META-INF/MANIFEST.MF | sed -n 's/^Implementation-Version: //p' | tr -d '\r\n'
 }
 
 package() {
