@@ -7,7 +7,7 @@ _name=${pkgname#python-}
 pkgdesc="Parser for .osr (osu! replays) file format"
 
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 
 arch=(any)
 
@@ -42,4 +42,7 @@ package() {
 
     # package the files
     python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    # bundle the license in the package
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

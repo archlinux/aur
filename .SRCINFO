@@ -1,7 +1,7 @@
 pkgbase = python-osrparse
 	pkgdesc = Parser for .osr (osu! replays) file format
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/osrparse/
 	arch = any
 	license = MIT
