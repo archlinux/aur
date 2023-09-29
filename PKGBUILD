@@ -13,7 +13,7 @@ pkgdesc='Provides WebSocket communication compliant with RFC 6455'
 depends=('qt5-base')
 makedepends=('qt5-declarative' 'git')
 optdepends=('qt5-declarative: QML bindings')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
