@@ -10,12 +10,11 @@ pkgbase = python-nntoolkit
 	makedepends = python-wheel
 	depends = python>=3.6.0
 	depends = python-numpy
-	depends = cython
 	depends = python-h5py
 	depends = python-keras
 	depends = python-natsort
-	depends = python-pytest
-	depends = python-pyaml
+	depends = python-yaml
+	depends = python-click
 	source = https://files.pythonhosted.org/packages/source/n/nntoolkit/nntoolkit-0.2.2.tar.gz
 	sha256sums = f9cf5b1cc6ad4c2b778c945959f0afc60619a62bec0eefacef4b28fb4f44f88d
 

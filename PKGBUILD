@@ -8,7 +8,7 @@ pkgdesc="Toolkit to train neural networks"
 arch=('any')
 url="https://pypi.org/project/$_name/"
 license=('MIT')
-depends=('python>=3.6.0' 'python-numpy' 'cython' 'python-h5py' 'python-keras' 'python-natsort' 'python-pytest' 'python-pyaml')
+depends=('python>=3.6.0' 'python-numpy' 'python-h5py' 'python-keras' 'python-natsort' 'python-yaml' 'python-click')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('f9cf5b1cc6ad4c2b778c945959f0afc60619a62bec0eefacef4b28fb4f44f88d')
