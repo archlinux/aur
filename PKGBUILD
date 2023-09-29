@@ -13,7 +13,7 @@ pkgdesc='Qt module and API for defining 3D content in Qt Quick'
 depends=('qt5-declarative')
 makedepends=('git' 'assimp')
 optdepends=('assimp: assimp import plugin')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-quick3d-assimp-5.1.patch)
