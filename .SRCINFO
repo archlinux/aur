@@ -1,7 +1,7 @@
 pkgbase = resource-hacker
 	pkgdesc = A resource editor for 32/64-bit Windows applications
 	pkgver = 5.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.angusj.com/resourcehacker
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,10 @@ pkgbase = resource-hacker
 	depends = wine
 	provides = resource-hacker
 	source = http://www.angusj.com/resourcehacker/resource_hacker.zip
-	md5sums = 672f980eee75e8223060661227ba884f
+	source = resource-hacker
+	source = LICENSE
+	md5sums = 442a925aadf491489e8545f8aa89302f
+	md5sums = d22c27bfeda3b660598ab6c918728d55
+	md5sums = f686b88c5279285dfa50e4e5a54a538c
 
 pkgname = resource-hacker

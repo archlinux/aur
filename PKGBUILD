@@ -1,33 +1,27 @@
 # Maintainer: bemxio <bemxiov@protonmail.com>
 
-pkgname='resource-hacker'
-pkgdesc='A resource editor for 32/64-bit Windows applications'
+pkgname="resource-hacker"
+pkgdesc="A resource editor for 32/64-bit Windows applications"
 
 pkgver=5.1.7
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 
-url='http://www.angusj.com/resourcehacker'
-license=('freeware')
+url="http://www.angusj.com/resourcehacker"
+license=("freeware")
 
 depends=(wine)
 makedepends=(unzip gendesk icoutils)
 
 provides=(resource-hacker)
 
-source=('http://www.angusj.com/resourcehacker/resource_hacker.zip')
-md5sums=('672f980eee75e8223060661227ba884f')
+source=("http://www.angusj.com/resourcehacker/resource_hacker.zip" "resource-hacker" "LICENSE")
+md5sums=("442a925aadf491489e8545f8aa89302f" "d22c27bfeda3b660598ab6c918728d55" "f686b88c5279285dfa50e4e5a54a538c")
 
 prepare() {
-	# make a temporary directory for generated files
-	mkdir -p ${startdir}/tmp
-
-	# move into the temporary directory
-	cd ${startdir}/tmp
-
 	# extract the icon out of the executable
-	wrestool -x -n MAINICON ${srcdir}/ResourceHacker.exe -o ResourceHacker.ico
+	wrestool -x -n MAINICON ResourceHacker.exe -o ResourceHacker.ico
 
 	# get the highest quality PNG from the icon file
 	icotool -x ResourceHacker.ico -i 1 -o ResourceHacker.png
@@ -38,30 +32,29 @@ prepare() {
 		--pkgdesc "${pkgdesc}" \
 		--exec resource-hacker \
 		--icon ResourceHacker.png \
-		--categories 'Development;Utility'
-
-	# rename the generated .desktop file
-	mv "Resource Hacker.desktop" ResourceHacker.desktop
+		--categories "Development;Utility"
 }
 
 package() {
-	# make the required directories
-	mkdir -p ${pkgdir}/usr/share/resource-hacker
-	mkdir -p ${pkgdir}/usr/bin
-
-	mkdir -p ${pkgdir}/usr/share/applications
-	mkdir -p ${pkgdir}/usr/share/pixmaps
+	# make a directory for the Resource Hacker help & samples
+	mkdir -p "${pkgdir}/usr/share/resource-hacker/help" "${pkgdir}/usr/share/resource-hacker/samples"
 
 	# copy all of Resource Hacker's files
-	cp -r ${srcdir}/* ${pkgdir}/usr/share/resource-hacker
+	install -Dm755 ResourceHacker.exe "${pkgdir}/usr/share/resource-hacker/ResourceHacker.exe"
 
-	# remove the symlink to the ZIP from the package files
-	rm -f ${pkgdir}/usr/share/resource-hacker/resource_hacker.zip
+	install -Dm644 ReadMe.txt "${pkgdir}/usr/share/resource-hacker/ReadMe.txt"
+	install -Dm644 changes.txt "${pkgdir}/usr/share/resource-hacker/changes.txt"
 
-	# copy the script
-	cp -r ${startdir}/resource-hacker ${pkgdir}/usr/bin
+	install -Dm644 help/* "${pkgdir}/usr/share/resource-hacker/help"
+	install -Dm644 samples/* "${pkgdir}/usr/share/resource-hacker/samples"
+
+	## copy the executable script
+	install -Dm755 resource-hacker "${pkgdir}/usr/bin/resource-hacker"
 
 	# copy the extracted icon and the generated .desktop file
-	cp -r ${startdir}/tmp/ResourceHacker.png ${pkgdir}/usr/share/pixmaps
-	cp -r ${startdir}/tmp/ResourceHacker.desktop ${pkgdir}/usr/share/applications
+	install -Dm644 ResourceHacker.png "${pkgdir}/usr/share/pixmaps/ResourceHacker.png"
+	install -Dm644 "Resource Hacker.desktop" "${pkgdir}/usr/share/applications/ResourceHacker.desktop"
+
+	# copy the license file
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
