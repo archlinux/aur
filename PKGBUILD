@@ -17,19 +17,14 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname-$pkgver.tar.gz)
+source=(rust-analyzer-up.sh)
 noextract=()
-md5sums=() #autofill using updpkgsums
+md5sums=(SKIP) #autofill using updpkgsums
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make
+  cp rust-analyzer-up.sh /home/$user/.local/bin
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install
+  echo ok
 }

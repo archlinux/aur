@@ -5,6 +5,7 @@ pkgbase = rust-analyzer-up
 	arch = any
 	license = MIT
 	depends = curl
-	source = rust-analyzer-up-1.0.tar.gz
+	source = rust-analyzer-up.sh
+	md5sums = SKIP
 
 pkgname = rust-analyzer-up
