@@ -1,10 +1,13 @@
 pkgbase = rust-analyzer-up
-	pkgdesc = Bash script to manual update rust-analyzer from repository.
+	pkgdesc = Bash script to manual update rust-analyzer from repository. Script update not needs.
 	pkgver = 1.0
-	pkgrel = 1
-	arch = any
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/rust-analyzer-up
+	arch = x86_64
 	license = MIT
 	depends = curl
+	provides = rust-analyzer
+	conflicts = rust-analyzer
 	source = rust-analyzer-up.sh
 	md5sums = SKIP
 
