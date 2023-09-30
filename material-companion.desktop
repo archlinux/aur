@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Material Companion
+Comment=Material Companion
+GenericName=Material Companion
+Exec=material-companion %U
+Icon=material-companion
+Type=Application
+StartupNotify=true
+Categories=Game;Network
