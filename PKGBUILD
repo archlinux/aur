@@ -1,7 +1,7 @@
 # Maintainer: asamk <asamk@gmx.de>
 
 pkgname=signal-cli
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('java-environment>=17' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "${pkgname}.sh")
-sha512sums=('c47554e024f7efe28da41c5a2f6ac56f5983b3479b3addcfddd9f3e2994b3a984dd61aba68b65b50576d49716c0807efc8464dec1ac3f9693dd2c536f794b00f'
+sha512sums=('d6a5d9a602d968f1d2717008b12461c2800f6db73c1d023e2790a9554cf3621c28d7d627cc6335d6eb3aca4ebcda006f1bef5ad3f6587dd3fe022cfa26fad667'
             'SKIP'
             'f58d7851c53eae1874692f032a489cb6fb459763a4195afaf93ddd4c65939e1e4e2bbf50438e04800aded466266c3a2a37fcc0f5168f61b8e711fcf03e8e8d12')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
@@ -21,7 +21,7 @@ build() {
 	cd "${srcdir}"
 	cd "${pkgname}-${pkgver}"
 
-	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon installDist
+	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon installDist -Plibsignal_client_path="/usr/share/java/libsignal-client/libsignal-client.jar"
 
 	cd man
 	make
@@ -59,6 +59,6 @@ package() {
 	cd "build/install/${pkgname}"
 
 	rm -f lib/commons-logging-*.jar
-	rm -f lib/libsignal-client-*.jar
+	rm -f lib/libsignal-client*.jar
 	install -m644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
 }
