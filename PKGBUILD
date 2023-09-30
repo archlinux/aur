@@ -1,4 +1,5 @@
 # Maintainer: Amaan Hashmi-Ubhi <amaanhub at protonmail dot com>
+# Contributor: matoro <matoro at airmail.cc>
 # Contributor: Max Gautier <mg+archlinux@max.gautier.name>
 
 pkgname=nodejs-resume-cli
