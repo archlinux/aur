@@ -1,7 +1,7 @@
 pkgbase="rt-env"
 pkgname="rt-env-git"
 pkgver=1.1.2.225.3520
-pkgrel=1
+pkgrel=2
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
 license=("Apache-2.0" "GPL-2.0")
@@ -41,8 +41,7 @@ package() {
 if [ -L ${_lnenv}  ] || [ -d ${_lnenv}  ];
 	then rm -rf ${_lnenv}-old; mv ${_lnenv} ${_lnenv}-old; fi;
 ln -s ${_env_root} ${_lnenv}" > "${pkgdir}${_env_root}/lnenv.sh"
-	chmod 777 ${pkgdir}${_env_root}/env.sh
-	chmod 777 ${pkgdir}${_env_root}/lnenv.sh
+	chown -R $USER:`id -g -n $USER` ${pkgdir}${_env_root}
 }
 
 (
