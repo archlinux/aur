@@ -1,0 +1,21 @@
+pkgbase = sklauncher-bin
+	pkgdesc = Secure and modern Minecraft Launcher
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://skmedix.pl
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	makedepends = gendesk
+	depends = java-runtime
+	provides = sklauncher
+	conflicts = sklauncher
+	conflicts = sklauncher-git
+	noextract = SKlauncher-3.1.1.jar
+	source = https://skmedix.pl/_data/SKlauncher-3.1.1.jar
+	source = sklauncher
+	md5sums = 30b2b8976783b2d54677d2b27a3298d0
+	md5sums = 3207598439df0c86594f3ef52a25cef1
+
+pkgname = sklauncher-bin
