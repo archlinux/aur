@@ -1,6 +1,6 @@
 pkgbase = r-genetonic
 	pkgdesc = Enjoy Analyzing And Integrating The Results From Differential Expression Analysis And Functional Enrichment Analysis
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeneTonic
 	arch = any
@@ -51,7 +51,7 @@ pkgbase = r-genetonic
 	optdepends = r-magrittr
 	optdepends = r-org.hs.eg.db
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneTonic_2.4.1.tar.gz
-	sha256sums = e5a206d985860b993a3f7b88c58ed5c86bfef4b7c46d837db8b43a0fe9f69211
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneTonic_2.4.2.tar.gz
+	sha256sums = 7d20a5125fc44335c30a583904658a36779dfc22efe50b36507ba07821db74ed
 
 pkgname = r-genetonic
