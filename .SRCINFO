@@ -1,0 +1,19 @@
+pkgbase = godot-csharp-bin
+	pkgdesc = The Godot Engine is a free, all-in-one, cross-platform game engine that makes it easy for you to create 2D and 3D games.
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/godotengine/godot
+	arch = x86_64
+	license = MIT
+	depends = dotnet-sdk
+	provides = godot
+	conflicts = godot-mono-bin
+	conflicts = godot-mono-enhanced
+	source = godot.desktop
+	source = icon.svg
+	sha512sums = b5ecd28ab5ae8abbb5456ec1fe2674ece1e8b73a0be96c2c85729ffefc45dbd5a994525b1a75976d7fc8e1fefd7c4909210985bd7a638c5a166b9dc6e54d1027
+	sha512sums = 6d23510ae1632be4b9bb6b58a3ce1d1ba6c36a4e23ac6aa4af0232126136767d88b1f480d41a800ea4baf657151070a8a96a665607292d59ed90cb21c3f6d7dd
+	source_x86_64 = https://github.com/godotengine/godot/releases/download/4.1.1-stable/Godot_v4.1.1-stable_mono_linux_x86_64.zip
+	sha512sums_x86_64 = 3cb7c2bd0348c92d730ebb76e30ec30bddc8d73716f399ecc6238ba4adb55be2dbb9fbb0fe0b487928b0dd08a8e53d61281cd08d952a43526d64f4492a17a2c7
+
+pkgname = godot-csharp-bin

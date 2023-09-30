@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Godot
+Comment=The Godot Engine is a free, all-in-one, cross-platform game engine that makes it easy for you to create 2D and 3D games.
+Exec=/usr/bin/godot %U
+Icon=godot
+Terminal=false
+Type=Application
+Categories=Utility;Development;
