@@ -1,6 +1,6 @@
 pkgbase = uiua
 	pkgdesc = An array-oriented stack programming language
-	pkgver = r1249.g1ec1901
+	pkgver = r1327.g3a4b02c
 	pkgrel = 1
 	url = https://www.uiua.org
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = uiua
 	depends = gcc-libs
 	depends = alsa-lib
 	options = !lto
-	source = uiua::git+https://github.com/uiua-lang/uiua#commit=1ec1901eae24f75343af2ae02df36b5dc131c8ba
+	source = uiua::git+https://github.com/uiua-lang/uiua#commit=3a4b02c2d51510c0742a21264f6e365a51a1249e
 	b2sums = SKIP
 
 pkgname = uiua

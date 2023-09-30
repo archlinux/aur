@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
-pkgver=r1249.g1ec1901
+pkgver=r1327.g3a4b02c
 pkgrel=1
 pkgdesc='An array-oriented stack programming language'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'alsa-lib')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='1ec1901eae24f75343af2ae02df36b5dc131c8ba'
+_commit='3a4b02c2d51510c0742a21264f6e365a51a1249e'
 source=("$pkgname::git+https://github.com/uiua-lang/uiua#commit=$_commit")
 b2sums=('SKIP')
 
@@ -30,7 +30,7 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release --features audio
 }
 
 check() {
