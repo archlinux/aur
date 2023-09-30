@@ -3,7 +3,7 @@
 _name=kdav
 pkgname=${_name}5
 pkgver=5.110.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A DAV protocol implemention with KJobs'
 arch=(x86_64)
@@ -11,8 +11,8 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kio5)
 makedepends=(extra-cmake-modules doxygen qt5-tools)
-conflicts=("$_name<5.111")
-replaces=("$_name<5.111")
+conflicts=("$_name<1:5.111")
+replaces=("$_name<1:5.111")
 provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
