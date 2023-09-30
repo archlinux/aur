@@ -1,0 +1,37 @@
+pkgbase = kfilemetadata5
+	pkgdesc = A library for extracting file metadata
+	pkgver = 5.110.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = catdoc
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = libappimage
+	makedepends = kdegraphics-mobipocket
+	depends = ki18n5
+	depends = karchive5
+	depends = kconfig5
+	depends = kcoreaddons5
+	depends = exiv2
+	depends = poppler-qt5
+	depends = taglib
+	depends = ffmpeg
+	depends = ebook-tools
+	optdepends = catdoc: Extract text from Office 98 files
+	optdepends = kdegraphics-mobipocket: MOBI extractor
+	optdepends = libappimage: AppImage extractor
+	provides = kfilemetadata=5.110.0
+	conflicts = kfilemetadata<5.111
+	replaces = kfilemetadata<5.111
+	source = https://download.kde.org/stable/frameworks/5.110/kfilemetadata-5.110.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.110/kfilemetadata-5.110.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = 892ec8817ab6f75ff5bc86c7efa6ee10e76155d2a3421dd290f6ee822322aa1e
+	sha256sums = SKIP
+
+pkgname = kfilemetadata5
