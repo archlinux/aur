@@ -2,7 +2,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 pkgname=linux-steam-integration
 pkgver=0.7.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/getsolus/linux-steam-integration"
 arch=('x86_64')
@@ -14,10 +14,12 @@ provides=('liblsi-redirect.so-64' 'liblsi-intercept.so-64' 'liblsi-redirect.so-3
 _commit=93d6b89129d970b6203a7d6f6396a26bc6ce3fdb  # branch/master
 source=("git+https://github.com/getsolus/linux-steam-integration.git#commit=$_commit"
         'git+https://github.com/intel/libnica.git'
-        'partially-revert-2877813.patch')
+        'partially-revert-2877813.patch'
+        'use-steam-runtime.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '77d459a53f30f1ae4aae408d49e70bc6caa3dc895e6c1ee8239a90b3661ebd0b')
+            '77d459a53f30f1ae4aae408d49e70bc6caa3dc895e6c1ee8239a90b3661ebd0b'
+            '31fa5343372a98e294278daf913dc2d02c47f0fece482f759793372e4195efb2')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -28,6 +30,10 @@ prepare() {
   # Partially revert 2877813 | Upstream issue #82
   # https://github.com/clearlinux/linux-steam-integration/pull/2
   patch -Np1 -i ../partially-revert-2877813.patch
+
+  # Use steam runtime by default
+  # https://github.com/getsolus/packages/issues/160
+  patch -Np1 -i ../use-steam-runtime.patch
 
   # Bump glew
   sed -i 's/libGLEW.so.2.1/libGLEW.so.2.2/g' src/intercept/main.c

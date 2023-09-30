@@ -1,7 +1,7 @@
 pkgbase = linux-steam-integration
 	pkgdesc = Helper for enabling better Steam integration on Linux
 	pkgver = 0.7.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/getsolus/linux-steam-integration
 	arch = x86_64
 	license = LGPL2.1
@@ -19,8 +19,10 @@ pkgbase = linux-steam-integration
 	source = git+https://github.com/getsolus/linux-steam-integration.git#commit=93d6b89129d970b6203a7d6f6396a26bc6ce3fdb
 	source = git+https://github.com/intel/libnica.git
 	source = partially-revert-2877813.patch
+	source = use-steam-runtime.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 77d459a53f30f1ae4aae408d49e70bc6caa3dc895e6c1ee8239a90b3661ebd0b
+	sha256sums = 31fa5343372a98e294278daf913dc2d02c47f0fece482f759793372e4195efb2
 
 pkgname = linux-steam-integration

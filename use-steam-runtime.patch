@@ -1,0 +1,22 @@
+From 5d3ba397e4a20a941b9f70efaf2194b7f6cbdf44 Mon Sep 17 00:00:00 2001
+From: Troy Harvey <harveydevel@gmail.com>
+Date: Sat, 9 Sep 2023 14:02:02 +1000
+Subject: [PATCH] Use steam runtime by default
+
+---
+ src/lsi/lsi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lsi/lsi.c b/src/lsi/lsi.c
+index 0ab9346..5d7078f 100644
+--- a/src/lsi/lsi.c
++++ b/src/lsi/lsi.c
+@@ -201,7 +201,7 @@ void lsi_config_load_defaults(LsiConfig *config)
+         /* Very simple right now, but in future we'll expand the options and
+          * things that LSI knows about */
+         config->force_32 = false;
+-        config->use_native_runtime = true;
++        config->use_native_runtime = false;
+         config->use_libintercept = true;
+         config->use_libredirect = true;
+         config->use_unity_hack = true;
