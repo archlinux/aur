@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd $_pyname-$pkgver
-  python -m build --no-isolation --wheel -x
+  python -m build --no-isolation --wheel --skip-dependency-check
 }
 
 package() {
