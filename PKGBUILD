@@ -10,8 +10,8 @@ url='https://apps.kde.org/cervisia/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kdesdk)
-depends=(kdesu kparts hicolor-icon-theme kinit)
-makedepends=(extra-cmake-modules kdoctools)
+depends=(kdesu5 kparts5 hicolor-icon-theme kinit)
+makedepends=(extra-cmake-modules kdoctools5)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('9d00461a980ce27398a7703bf996fdafe4f6b65355209041a9e5de3be6c2e856'
             'SKIP')
