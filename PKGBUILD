@@ -2,7 +2,7 @@
 _pkgname=godot
 pkgname=godot3-bin
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced cross-platform 2D and 3D game engine (3.X Branch)"
 arch=("x86_64")
 url='https://godotengine.org'
@@ -31,7 +31,7 @@ package() {
 	install -Dm644 org.godotengine.Godot.desktop "${pkgdir}/usr/share/applications/org.godotengine.Godot3-bin.desktop"
 	install -Dm644 org.godotengine.Godot.xml "${pkgdir}/usr/share/mime/packages/org.godotengine.Godot3-bin.xml"
 	install -Dm644 org.godotengine.Godot.appdata.xml "${pkgdir}/usr/share/metainfo/org.godotengine.Godot3-bin.appdata.xml"
-	install -Dm644 godot.6.gz "${pkgdir}/usr/share/man/man6/godot3-bin.6.zip"
+	install -Dm644 godot.6.gz "${pkgdir}/usr/share/man/man6/godot3-bin.6.gz"
 	cd "${srcdir}/godot-${pkgver}-stable/misc/dist"
 
 	install -Dm644 project_icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/godot3-bin.svg"
