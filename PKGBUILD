@@ -4,13 +4,13 @@
 
 pkgname=kinit
 pkgver=5.110.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Process launcher to speed up launching KDE applications'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kio)
-makedepends=(extra-cmake-modules kdoctools)
+depends=(kio5)
+makedepends=(extra-cmake-modules kdoctools5)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz{,.sig})
 install=kinit.install
