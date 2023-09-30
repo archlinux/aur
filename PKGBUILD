@@ -3,7 +3,7 @@
 
 pkgname=ynote-desktop-bin
 _pkgname=${pkgname%-bin}
-pkgver=7.2.9
+pkgver=7.2.12
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux"
 arch=('x86_64')
@@ -22,9 +22,9 @@ depends=('gtk3'
 makedepends=('tar')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=(${_pkgname}-${pkgver}.deb::"https://cowork-common-public-cdn.lx.netease.com/artifact%2F2023%2F08%2F17%2Fd430aaec.deb"
+source=(${_pkgname}-${pkgver}.deb::"https://cowork-common-public-cdn.lx.netease.com/artifact%2F2023%2F09%2F27%2F4ee7d008.deb"
         "LICENSE.html::https://note.youdao.com/license.html")
-sha256sums=('061407e893e25c232755a0680aff2371b0e68ba6e91fd05126e4303fe71a4ed7'
+sha256sums=('40dba6e1d6e23de64e005a47734bf2a9d9326b09734e725e94623895b77bfb21'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460')
 
 _install() {
