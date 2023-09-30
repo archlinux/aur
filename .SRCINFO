@@ -1,0 +1,10 @@
+pkgbase = rust-analyzer-up
+	pkgdesc = Bash script to manual update rust-analyzer from repository.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = curl
+	source = rust-analyzer-up-1.0.tar.gz
+
+pkgname = rust-analyzer-up
