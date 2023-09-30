@@ -1,0 +1,24 @@
+pkgbase = kuickshow
+	pkgdesc = A very fast and convenient image viewer
+	pkgver = 0.10.2
+	pkgrel = 2
+	url = https://userbase.kde.org/KuickShow
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = docbook-xsl
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools5
+	depends = hicolor-icon-theme
+	depends = imlib
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = ki18n5
+	depends = kiconthemes5
+	depends = kio5
+	depends = kxmlgui5
+	depends = kinit
+	source = https://download.kde.org/stable/kuickshow/kuickshow-0.10.2.tar.xz
+	sha256sums = 5acecd64e9e9fe4d093665a2768e5c7d05c1845c572c7e36243bfd6cd4575357
+
+pkgname = kuickshow
