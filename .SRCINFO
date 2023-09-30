@@ -1,7 +1,7 @@
 pkgbase = r-rmysql
 	pkgdesc = Database Interface and 'MySQL' Driver for R
 	pkgver = 0.10.26
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RMySQL
 	arch = x86_64
 	license = GPL2

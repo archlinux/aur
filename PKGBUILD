@@ -5,7 +5,7 @@ _pkgname=RMySQL
 _pkgver=0.10.26
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Database Interface and 'MySQL' Driver for R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -35,6 +35,7 @@ check() {
   cd "$_pkgname/tests"
 
   # create database for tests
+  export HOME="$srcdir" # make sure mariadb doesn't read ~/.my.cnf
   export MARIADB_HOME="$srcdir/mariadb"
   mkdir -p "$MARIADB_HOME/data"
   cat > "$MARIADB_HOME/my.cnf" << EOF
