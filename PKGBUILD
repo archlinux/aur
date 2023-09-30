@@ -1,7 +1,7 @@
 # Maintainer: Andrii Zymohliad <azymohliad@pm.me>
 pkgname=watchmate-git
-pkgver=v0.1.0
-pkgrel=2
+pkgver=0.4.5.r0.3fb3fa8
+pkgrel=1
 pkgdesc='InfiniTime smart watch companion app'
 arch=('any')
 url='https://github.com/azymohliad/watchmate'
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --long | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
