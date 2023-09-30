@@ -1,29 +1,31 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-clhpp-git
-pkgver=2022.09.30.0.g4a11574
+pkgver=2023.04.17.22.g0cc3a7d
 pkgrel=1
 pkgdesc='OpenCLTM API C++ bindings. (GIT Version)'
 arch=('any')
 url='http://khronosgroup.github.io/OpenCL-CLHPP'
 license=('apache')
-makedepends=('git'
-             'python'
-             'cmake'
-             'ruby'
-             'doxygen'
-             )
+makedepends=(
+  'git'
+  'python'
+  'cmake'
+  'ruby'
+  'doxygen'
+)
 provides=('opencl-clhpp')
 conflicts=('opencl-clhpp')
 source=(
-        'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
-        'git+https://github.com/ThrowTheSwitch/CMock.git'
-        'git+https://github.com/ThrowTheSwitch/Unity.git'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            )
+  'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
+  'git+https://github.com/ThrowTheSwitch/CMock.git'
+  'git+https://github.com/ThrowTheSwitch/Unity.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd OpenCL-CLHPP
@@ -38,12 +40,13 @@ prepare() {
 
   cd OpenCL-CLHPP
   git config submodule.external/CMock.url "${srcdir}/CMock"
-  git config submodule.external/Unity.url "${srcdir}/Unity"
-  git -c protocol.file.allow=always submodule update --init external/CMock external/Unity
+  git -c protocol.file.allow=always submodule update --init \
+    external/CMock
 
   cd external/CMock
   git config submodule.vendor/unity.url "${srcdir}/Unity"
-  git -c protocol.file.allow=always submodule update --init vendor/unity
+  git -c protocol.file.allow=always submodule update --init \
+    vendor/unity
 
 }
 
@@ -59,7 +62,8 @@ build() {
 }
 
 check() {
-  (cd build; ctest --output-on-failure)
+  cd build
+  ctest --output-on-failure
 }
 
 package() {

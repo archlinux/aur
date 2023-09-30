@@ -1,6 +1,6 @@
 pkgbase = opencl-clhpp-git
 	pkgdesc = OpenCLTM API C++ bindings. (GIT Version)
-	pkgver = 2022.09.30.0.g4a11574
+	pkgver = 2023.04.17.22.g0cc3a7d
 	pkgrel = 1
 	url = http://khronosgroup.github.io/OpenCL-CLHPP
 	arch = any
