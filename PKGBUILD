@@ -1,6 +1,6 @@
 # Maintainer: Paragoumba <aur@paragoumba.fr>
 # Contributor: Mario Ray MahardhikZza <leledumbo_cool@yahoo.co.id>
-# Contributor: James "trinitronx" Cuzella
+# Contributor: James Cuzella <james.cuzella@lyraphase.com>
 
 _package=net.downloadhelper.coapp
 pkgname=vdhcoapp-bin
