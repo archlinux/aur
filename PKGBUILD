@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.4.392
+pkgver=1.4.394
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -22,17 +22,15 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "https://github.com/denoland/deno_std/archive/refs/tags/0.170.0.tar.gz"
         "001_vendor_patch_1.diff"
         "001_vendor_patch_2.diff"
-        "002_multi_def_patch_1.diff"
         "002_multi_def_patch_2.diff"
        )
 
-sha256sums=('8312474fad9289cb8570cce2f0b53e6d4afd6b6099172a88f2af7a5b7ab6679c'
+sha256sums=('0a6a93e067687f13244c0c7f075ca2097a15ab9eb92f15c6c1cb9d629318f506'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
             '519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0'
             '369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752'
             '937a39f116c4310c4989cf71b9e174b6dc7bfdd84c6632e5dd0b47508cffef86'
             '144101b799267869395ba2fe85ab8549be277b18af9545c106675f620e73a85b'
-            '6c1adcf6a21ab6a2949eee9770fe19ef453758dc2e1d3f7a071f07c66d5c92b2'
             '1ee399808579aa05f38b9c27dfd23e9102f38fffb437233d360b0c076118312f')
 prepare() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
@@ -40,7 +38,6 @@ prepare() {
   patch -p1 < ../001_vendor_patch_1.diff
   patch -p1 < ../001_vendor_patch_2.diff
   msg "Patching multi definitions..."
-  patch -p1 < ../002_multi_def_patch_1.diff
   patch -p1 < ../002_multi_def_patch_2.diff
 
 }
