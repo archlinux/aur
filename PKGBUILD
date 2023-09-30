@@ -2,7 +2,7 @@
 
 pkgname=signal-cli-native
 _pkgname=signal-cli
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Provides a commandline for secure Signal messaging (graalvm native build)."
 arch=('any')
@@ -14,23 +14,15 @@ depends=('libsignal-client')
 makedepends=('jdk17-graalvm-bin' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${_pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc")
-sha512sums=('c47554e024f7efe28da41c5a2f6ac56f5983b3479b3addcfddd9f3e2994b3a984dd61aba68b65b50576d49716c0807efc8464dec1ac3f9693dd2c536f794b00f'
+sha512sums=('d6a5d9a602d968f1d2717008b12461c2800f6db73c1d023e2790a9554cf3621c28d7d627cc6335d6eb3aca4ebcda006f1bef5ad3f6587dd3fe022cfa26fad667'
             'SKIP')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
-
-prepare() {
-	cd "${srcdir}"
-	cd "${_pkgname}-${pkgver}"
-
-	sed -i -z "s/implementation(project(\":lib\"))\n}/implementation(project(\":lib\"))\n    implementation(files(\"\/usr\/share\/java\/libsignal-client\/libsignal-client.jar\"))\n}/" build.gradle.kts
-	sed -i -z "s/configurations {/configurations.all {\n    exclude(group = \"org.signal\", module = \"libsignal-client\")\n}\n\nconfigurations {/" build.gradle.kts
-}
 
 build() {
 	cd "${srcdir}"
 	cd "${_pkgname}-${pkgver}"
 
-	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon nativeCompile
+	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon nativeCompile -Plibsignal_client_path="/usr/share/java/libsignal-client/libsignal-client.jar"
 
 	cd man
 	make
