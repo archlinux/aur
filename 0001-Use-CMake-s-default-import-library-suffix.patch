@@ -1,4 +1,4 @@
-From e9ac5ed92f5bb2fe3b6c8cf03871fc18731e562b Mon Sep 17 00:00:00 2001
+From 4a881ca6aab722bb2416b23d6db94ae7fcf516f2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
 Subject: [PATCH 01/12] Use CMake's default import library suffix
@@ -13,10 +13,10 @@ Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
  5 files changed, 21 insertions(+), 6 deletions(-)
 
 diff --git a/cmake/QtPriHelpers.cmake b/cmake/QtPriHelpers.cmake
-index c619a50f30..903c49133e 100644
+index f1d45cdcf6..32ca058969 100644
 --- a/cmake/QtPriHelpers.cmake
 +++ b/cmake/QtPriHelpers.cmake
-@@ -518,9 +518,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
+@@ -523,9 +523,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
          qt_path_join(private_pri_file_path "${target_path}" "${private_pri_file_name}")
          list(APPEND pri_files "${private_pri_file_path}")
  
@@ -31,7 +31,7 @@ index c619a50f30..903c49133e 100644
              ${CMAKE_EXTRA_SHARED_LIBRARY_SUFFIXES}
              ${CMAKE_STATIC_LIBRARY_SUFFIX})
          if(MSVC)
-@@ -971,9 +975,13 @@ CONFIG += ${private_config_joined}
+@@ -976,9 +980,13 @@ CONFIG += ${private_config_joined}
          list(APPEND inputs "${preliminary_pri_root}/${cfg}/${pri_data_cmake_file}")
      endforeach()
  
@@ -98,7 +98,7 @@ index 24ed125f12..73ebe453d3 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
 diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
-index d50ec5257a..44a173b5bc 100644
+index bde53f4b3f..b16f3b66ff 100644
 --- a/src/corelib/Qt6CoreMacros.cmake
 +++ b/src/corelib/Qt6CoreMacros.cmake
 @@ -524,7 +524,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
@@ -110,5 +110,5 @@ index d50ec5257a..44a173b5bc 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.41.0
+2.42.0
 

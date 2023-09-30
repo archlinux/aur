@@ -1,4 +1,4 @@
-From 32e60a018448dadd0d614b9b8746e227526ab9be Mon Sep 17 00:00:00 2001
+From 05840b79ff61ca8af9c73d95087c2d9a91120c06 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
 Subject: [PATCH 09/12] Find fontconfig via pkg-config for correct handling of
@@ -33,10 +33,10 @@ index 0000000000..1a52327ae6
 +    set(Fontconfig_FOUND 1)
 +endif()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 56941e6224..90c0c0857c 100644
+index c7d20b5e7d..05f10b1936 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -696,7 +696,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
+@@ -695,7 +695,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
          text/unix/qfontconfigdatabase.cpp text/unix/qfontconfigdatabase_p.h
          text/unix/qfontenginemultifontconfig.cpp text/unix/qfontenginemultifontconfig_p.h
      LIBRARIES
@@ -59,5 +59,5 @@ index d8319c120b..afb3cf96bb 100644
  qt_find_package(gbm PROVIDED_TARGETS gbm::gbm MODULE_NAME gui QMAKE_LIB gbm)
  qt_find_package(WrapSystemHarfbuzz 2.6.0 PROVIDED_TARGETS WrapSystemHarfbuzz::WrapSystemHarfbuzz MODULE_NAME gui QMAKE_LIB harfbuzz)
 -- 
-2.41.0
+2.42.0
 
