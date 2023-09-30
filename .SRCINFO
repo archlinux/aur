@@ -1,6 +1,6 @@
 pkgbase = rust-std-android
 	pkgdesc = Android targets for Rust
-	pkgver = 1.72.0
+	pkgver = 1.72.1
 	pkgrel = 1
 	epoch = 1
 	url = https://www.rust-lang.org/
@@ -11,7 +11,7 @@ pkgbase = rust-std-android
 	makedepends = ninja
 	makedepends = python
 	makedepends = android-ndk>=r25
-	depends = rust=1:1.72.0
+	depends = rust=1:1.72.1
 	optdepends = android-ndk
 	optdepends = cargo-ndk
 	conflicts = rust-nightly
@@ -20,8 +20,8 @@ pkgbase = rust-std-android
 	options = !lto
 	options = !strip
 	options = !buildflags
-	source = https://static.rust-lang.org/dist/rustc-1.72.0-src.tar.xz
-	sha256sums = d307441f8ee78a7e94f72cb5c81383822f13027f79e67a5551bfd2c2d2db3014
+	source = https://static.rust-lang.org/dist/rustc-1.72.1-src.tar.xz
+	sha256sums = aea58d962ff1c19521b9f587aad88285f0fd35b6b6738b031a7a15bb1b70a7c3
 
 pkgname = rust-std-i686-linux-android
 	pkgdesc = i686-linux-android target for the Rust standard library

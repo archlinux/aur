@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgbase=rust-std-android
 epoch=1
-pkgver=1.72.0
+pkgver=1.72.1
 pkgrel=1
 pkgdesc="Android targets for Rust"
 arch=(x86_64)
@@ -44,7 +44,7 @@ source=(
   "https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.xz"
 )
 sha256sums=(
-  'd307441f8ee78a7e94f72cb5c81383822f13027f79e67a5551bfd2c2d2db3014'
+  'aea58d962ff1c19521b9f587aad88285f0fd35b6b6738b031a7a15bb1b70a7c3'
 )
 
 prepare() {
@@ -91,8 +91,8 @@ jemalloc = true
 compression-formats = ["gz"]
 
 [target.i686-linux-android]
-cc = "${NDKTOOLCHAIN}/i686-linux-android19-clang"
-cxx = "${NDKTOOLCHAIN}/i686-linux-android19-clang++"
+cc = "${NDKTOOLCHAIN}/i686-linux-android21-clang"
+cxx = "${NDKTOOLCHAIN}/i686-linux-android21-clang++"
 ar = "${NDKTOOLCHAIN}/llvm-ar"
 ranlib = "${NDKTOOLCHAIN}/llvm-ranlib"
 
@@ -109,20 +109,20 @@ ar = "${NDKTOOLCHAIN}/llvm-ar"
 ranlib = "${NDKTOOLCHAIN}/llvm-ranlib"
 
 [target.arm-linux-androideabi]
-cc = "${NDKTOOLCHAIN}/armv7a-linux-androideabi19-clang"
-cxx = "${NDKTOOLCHAIN}/armv7a-linux-androideabi19-clang++"
+cc = "${NDKTOOLCHAIN}/armv7a-linux-androideabi21-clang"
+cxx = "${NDKTOOLCHAIN}/armv7a-linux-androideabi21-clang++"
 ar = "${NDKTOOLCHAIN}/llvm-ar"
 ranlib = "${NDKTOOLCHAIN}/llvm-ranlib"
 
 [target.armv7-linux-androideabi]
-cc = "${NDKTOOLCHAIN}/armv7a-linux-androideabi19-clang"
-cxx = "${NDKTOOLCHAIN}/armv7a-linux-androideabi19-clang++"
+cc = "${NDKTOOLCHAIN}/armv7a-linux-androideabi21-clang"
+cxx = "${NDKTOOLCHAIN}/armv7a-linux-androideabi21-clang++"
 ar = "${NDKTOOLCHAIN}/llvm-ar"
 ranlib = "${NDKTOOLCHAIN}/llvm-ranlib"
 
 [target.thumbv7neon-linux-androideabi]
-cc = "${NDKTOOLCHAIN}/armv7a-linux-androideabi19-clang"
-cxx = "${NDKTOOLCHAIN}/armv7a-linux-androideabi19-clang++"
+cc = "${NDKTOOLCHAIN}/armv7a-linux-androideabi21-clang"
+cxx = "${NDKTOOLCHAIN}/armv7a-linux-androideabi21-clang++"
 ar = "${NDKTOOLCHAIN}/llvm-ar"
 ranlib = "${NDKTOOLCHAIN}/llvm-ranlib"
 EOF
