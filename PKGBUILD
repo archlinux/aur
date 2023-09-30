@@ -2,7 +2,7 @@
 
 _pkgname='rofi-rbw'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r2.g84c929e
+pkgver=1.2.0.r3.gce65e72
 pkgrel=1
 pkgdesc='Rofi frontend for Bitwarden'
 arch=('x86_64')
@@ -31,7 +31,7 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  pip install --prefix=/usr --root="${pkgdir}" .
+  pip install --isolated --no-deps --ignore-installed --root="${pkgdir}" .
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
   install -Dvm644 "docs/${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
