@@ -1,6 +1,6 @@
 pkgbase = cinnamon-applet-places-center
 	pkgdesc = Provides an easy-to-read layout to access your places
-	pkgver = 5.8
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://cinnamon-spices.linuxmint.com/applets/view/128
 	arch = any
