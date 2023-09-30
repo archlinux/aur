@@ -1,7 +1,7 @@
 # Maintainer: Cem Kaya<cemkaya.boun@gmail.com>
 # Contributor: Cem Kaya <cemkaya.boun@gmail.com>
 pkgname=dell-g15-controller
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="AWCC alternative for Dell G15 with keyboard backlight control, power mode control and fan control."
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("${pkgname}::https://github.com/cemkaya-mpi/Dell-G15-Controller/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('42b55f4e69e5424427a231febb5f620722842720f340a6f65e3c45f8b77833ef')
+sha256sums=('a0b45285b645603363dbac5613dbf618c1cea020f7c4985cb4c329fa498a833f')
 
 package() {
   cd "${srcdir}/Dell-G15-Controller-$pkgver"
@@ -36,6 +36,7 @@ package() {
   cp "elc.py" "$pkgdir/opt/$pkgname/elc.py"
   cp "hidreport.py" "$pkgdir/opt/$pkgname/hidreport.py"
   cp "main.py" "$pkgdir/opt/$pkgname/main.py"
+  cp "patch.py" "$pkgdir/opt/$pkgname/patch.py"
   #Install desktop entry
   cp "dell-g15-controller.desktop" "$pkgdir/usr/share/applications/dell-g15-controller.desktop"
 

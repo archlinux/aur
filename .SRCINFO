@@ -1,6 +1,6 @@
 pkgbase = dell-g15-controller
 	pkgdesc = AWCC alternative for Dell G15 with keyboard backlight control, power mode control and fan control.
-	pkgver = 3.3
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://github.com/cemkaya-mpi/Dell-G15-Controller
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dell-g15-controller
 	depends = polkit
 	optdepends = acpi_call: For power and fan speed options.
 	optdepends = polkit: for privilege escalation
-	source = dell-g15-controller::https://github.com/cemkaya-mpi/Dell-G15-Controller/archive/refs/tags/v3.3.tar.gz
-	sha256sums = 42b55f4e69e5424427a231febb5f620722842720f340a6f65e3c45f8b77833ef
+	source = dell-g15-controller::https://github.com/cemkaya-mpi/Dell-G15-Controller/archive/refs/tags/v3.4.tar.gz
+	sha256sums = a0b45285b645603363dbac5613dbf618c1cea020f7c4985cb4c329fa498a833f
 
 pkgname = dell-g15-controller
