@@ -1,7 +1,7 @@
-From e5cd1303ef4dab4e25ad01d4795b80a32cafa469 Mon Sep 17 00:00:00 2001
+From 04208ea372acef47175b48ad85959b43b8042831 Mon Sep 17 00:00:00 2001
 From: David Runge <dvzrv@archlinux.org>
 Date: Mon, 31 Oct 2022 09:45:13 +0100
-Subject: [PATCH 2/4] Adapt login.defs for PAM and util-linux
+Subject: [PATCH 2/3] Adapt login.defs for PAM and util-linux
 
 etc/login.defs:
 Remove unused login.defs options, that are either irrelevant due to the
@@ -36,10 +36,17 @@ options silently ignored by shadow when built with PAM enabled):
 * ULIMIT
 
 Removed options because they are not availablbe with PAM enabled:
+* BCRYPT_MIN_ROUNDS
+* BCRYPT_MAX_ROUNDS
 * CONSOLE_GROUPS
 * CONSOLE
 * MD5_CRYPT_ENAB
 * PREVENT_NO_AUTH
+
+Removed encryption methods (`ENCRYPT_METHOD`), because they are unsafe
+or not available with PAM:
+* BCRYPT
+* MD5
 
 Removed options because they are not supported by login from util-linux:
 * ERASECHAR
@@ -58,12 +65,12 @@ from util-linux:
 man/login.defs.5.xml:
 Remove unavailable options from man 5 login.defs.
 ---
- etc/login.defs       | 212 +------------------------------------------
- man/login.defs.5.xml | 150 +-----------------------------
- 2 files changed, 8 insertions(+), 354 deletions(-)
+ etc/login.defs       | 228 +------------------------------------------
+ man/login.defs.5.xml | 150 +---------------------------
+ 2 files changed, 8 insertions(+), 370 deletions(-)
 
 diff --git a/etc/login.defs b/etc/login.defs
-index 114dbcd9..7c633a57 100644
+index 114dbcd9..797ca6b3 100644
 --- a/etc/login.defs
 +++ b/etc/login.defs
 @@ -3,6 +3,8 @@
@@ -295,7 +302,7 @@ index 114dbcd9..7c633a57 100644
  #
  # Which fields may be changed by regular users using chfn(1) - use
  # any combination of letters "frwh" (full name, room number, work
-@@ -298,38 +141,14 @@ CHFN_AUTH		yes
+@@ -298,38 +141,13 @@ CHFN_AUTH		yes
  #
  CHFN_RESTRICT		rwh
  
@@ -326,7 +333,7 @@ index 114dbcd9..7c633a57 100644
 -# If set to MD5, MD5-based algorithm will be used for encrypting password
  # If set to SHA256, SHA256-based algorithm will be used for encrypting password
  # If set to SHA512, SHA512-based algorithm will be used for encrypting password
- # If set to BCRYPT, BCRYPT-based algorithm will be used for encrypting password
+-# If set to BCRYPT, BCRYPT-based algorithm will be used for encrypting password
  # If set to YESCRYPT, YESCRYPT-based algorithm will be used for encrypting password
  # If set to DES, DES-based algorithm will be used for encrypting password (default)
  # MD5 and DES should not be used for new hashes, see crypt(5) for recommendations.
@@ -334,7 +341,29 @@ index 114dbcd9..7c633a57 100644
  #
  # Note: If you use PAM, it is recommended to use a value consistent with
  # the PAM modules configuration.
-@@ -381,17 +200,6 @@ CHFN_RESTRICT		rwh
+@@ -353,21 +171,6 @@ CHFN_RESTRICT		rwh
+ #SHA_CRYPT_MIN_ROUNDS 5000
+ #SHA_CRYPT_MAX_ROUNDS 5000
+ 
+-#
+-# Only works if ENCRYPT_METHOD is set to BCRYPT.
+-#
+-# Define the number of BCRYPT rounds.
+-# With a lot of rounds, it is more difficult to brute-force the password.
+-# However, more CPU resources will be needed to authenticate users if
+-# this value is increased.
+-#
+-# If not specified, 13 rounds will be attempted.
+-# If only one of the MIN or MAX values is set, then this value will be used.
+-# If MIN > MAX, the highest value will be used.
+-#
+-#BCRYPT_MIN_ROUNDS 13
+-#BCRYPT_MAX_ROUNDS 13
+-
+ #
+ # Only works if ENCRYPT_METHOD is set to YESCRYPT.
+ #
+@@ -381,17 +184,6 @@ CHFN_RESTRICT		rwh
  #
  #YESCRYPT_COST_FACTOR 5
  
@@ -352,7 +381,7 @@ index 114dbcd9..7c633a57 100644
  #
  # Should login be allowed if we can't cd to the home directory?
  # Default is no.
-@@ -406,12 +214,6 @@ DEFAULT_HOME	yes
+@@ -406,12 +198,6 @@ DEFAULT_HOME	yes
  #
  NONEXISTENT	/nonexistent
  
@@ -365,7 +394,7 @@ index 114dbcd9..7c633a57 100644
  #
  # If defined, this command is run when removing a user.
  # It should remove any at/cron/print jobs etc. owned by
-@@ -459,14 +261,6 @@ USERGROUPS_ENAB yes
+@@ -459,14 +245,6 @@ USERGROUPS_ENAB yes
  #
  #GRANT_AUX_GROUP_SUBIDS yes
  
@@ -688,5 +717,5 @@ index ab62fa86..d82c47f1 100644
    </refsect1>
  
 -- 
-2.39.0
+2.42.0
 

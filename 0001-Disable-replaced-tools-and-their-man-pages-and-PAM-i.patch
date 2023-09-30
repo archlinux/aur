@@ -1,7 +1,12 @@
-From 2af563cb1ff3fc84549d58b64325be9606684c43 Mon Sep 17 00:00:00 2001
+From c6fe55f198b1e3bd3087f9213193d94f5c1c3d31 Mon Sep 17 00:00:00 2001
 From: David Runge <dvzrv@archlinux.org>
 Date: Sat, 5 Nov 2022 23:40:18 +0100
-Subject: [PATCH 1/4] Disable replaced tools and man pages
+Subject: [PATCH 1/3] Disable replaced tools and their man pages and PAM
+ integration
+
+etc/pam.d/Makefile.am:
+Disable installation of PAM integration for chfn, chsh and login tools
+as they are provided by util-linux.
 
 man/Makefile.am, man/*/Makefile.am:
 Disable man pages for chfn, chsh, login, logoutd, newgrp, nologin, vigr,
@@ -14,7 +19,8 @@ Remove the use of login, nologin, chfn, chsh, logoutd, vipw and vigr, as
 they are either not used or replaced by util-linux.
 Move newgrp to replace sg (instead of it being a symlink).
 ---
- man/Makefile.am       | 19 ++-----------------
+ etc/pam.d/Makefile.am |  3 ---
+ man/Makefile.am       | 20 +++-----------------
  man/cs/Makefile.am    |  8 ++------
  man/da/Makefile.am    |  8 +-------
  man/de/Makefile.am    | 11 +----------
@@ -33,10 +39,25 @@ Move newgrp to replace sg (instead of it being a symlink).
  man/zh_CN/Makefile.am | 11 +----------
  man/zh_TW/Makefile.am |  4 ----
  src/Makefile.am       | 18 +++++++-----------
- 19 files changed, 24 insertions(+), 148 deletions(-)
+ 20 files changed, 25 insertions(+), 151 deletions(-)
 
+diff --git a/etc/pam.d/Makefile.am b/etc/pam.d/Makefile.am
+index 38ff26ae..a19ad431 100644
+--- a/etc/pam.d/Makefile.am
++++ b/etc/pam.d/Makefile.am
+@@ -2,10 +2,7 @@
+ # and also cooperate to make a distribution for `make dist'
+ 
+ pamd_files = \
+-	chfn \
+-	chsh \
+ 	groupmems \
+-	login \
+ 	passwd
+ 
+ pamd_acct_tools_files = \
 diff --git a/man/Makefile.am b/man/Makefile.am
-index 4382df60..078db349 100644
+index 89d97937..d2741036 100644
 --- a/man/Makefile.am
 +++ b/man/Makefile.am
 @@ -8,10 +8,8 @@ endif
@@ -50,11 +71,12 @@ index 4382df60..078db349 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -27,12 +25,8 @@ man_MANS = \
+@@ -26,12 +24,9 @@ man_MANS = \
+ 	man8/grpconv.8 \
  	man8/grpunconv.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
++	man8/lastlog.8 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
 -	man1/newgrp.1 \
@@ -63,7 +85,7 @@ index 4382df60..078db349 100644
  	man1/passwd.1 \
  	man5/passwd.5 \
  	man8/pwck.8 \
-@@ -44,9 +38,7 @@ man_MANS = \
+@@ -43,9 +38,7 @@ man_MANS = \
  	man5/suauth.5 \
  	man8/useradd.8 \
  	man8/userdel.8 \
@@ -72,9 +94,9 @@ index 4382df60..078db349 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/limits.5 \
-@@ -74,10 +66,8 @@ endif
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
+@@ -77,10 +70,8 @@ endif
  
  man_XMANS = \
  	chage.1.xml \
@@ -85,9 +107,9 @@ index 4382df60..078db349 100644
  	expiry.1.xml \
  	faillog.5.xml \
  	faillog.8.xml \
-@@ -92,12 +82,9 @@ man_XMANS = \
+@@ -94,12 +85,9 @@ man_XMANS = \
+ 	grpck.8.xml \
  	gshadow.5.xml \
- 	lastlog.8.xml \
  	limits.5.xml \
 -	login.1.xml \
  	login.access.5.xml \
@@ -98,7 +120,7 @@ index 4382df60..078db349 100644
  	newuidmap.1.xml \
  	newusers.8.xml \
  	nologin.8.xml \
-@@ -109,14 +96,12 @@ man_XMANS = \
+@@ -111,14 +99,12 @@ man_XMANS = \
  	shadow.3.xml \
  	shadow.5.xml \
  	sg.1.xml \
@@ -112,22 +134,26 @@ index 4382df60..078db349 100644
 -	vipw.8.xml
 +	usermod.8.xml
  
- login_defs_v = \
- 	CHFN_AUTH.xml \
+ if ENABLE_LASTLOG
+ man_XMANS += lastlog.8.xml
 diff --git a/man/cs/Makefile.am b/man/cs/Makefile.am
-index 3b2be0ce..50290f4a 100644
+index 84407d71..c5ef7cf5 100644
 --- a/man/cs/Makefile.am
 +++ b/man/cs/Makefile.am
-@@ -13,14 +13,10 @@ man_MANS = \
+@@ -12,11 +12,8 @@ man_MANS = \
+ 	man1/groups.1 \
  	man8/grpck.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man8/nologin.8 \
  	man5/passwd.5 \
 -	man5/shadow.5 \
 -	man1/su.1 \
 -	man8/vipw.8
 +	man5/shadow.5
+ 
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
+@@ -24,6 +21,5 @@ endif
  
  EXTRA_DIST = $(man_MANS) \
  	man1/id.1 \
@@ -158,7 +184,7 @@ index a3b09224..e45bef66 100644
  man_nopam = 
  
 diff --git a/man/de/Makefile.am b/man/de/Makefile.am
-index 3cd302ee..dee3e2a1 100644
+index 671432d3..333d5524 100644
 --- a/man/de/Makefile.am
 +++ b/man/de/Makefile.am
 @@ -3,10 +3,8 @@ mandir = @mandir@/de
@@ -172,10 +198,10 @@ index 3cd302ee..dee3e2a1 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -22,12 +20,8 @@ man_MANS = \
+@@ -21,12 +19,8 @@ man_MANS = \
+ 	man8/grpconv.8 \
  	man8/grpunconv.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
@@ -185,7 +211,7 @@ index 3cd302ee..dee3e2a1 100644
  	man1/passwd.1 \
  	man5/passwd.5 \
  	man8/pwck.8 \
-@@ -36,13 +30,10 @@ man_MANS = \
+@@ -35,13 +29,10 @@ man_MANS = \
  	man1/sg.1 \
  	man3/shadow.3 \
  	man5/shadow.5 \
@@ -198,8 +224,8 @@ index 3cd302ee..dee3e2a1 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/limits.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/fi/Makefile.am b/man/fi/Makefile.am
 index 26a1a848..f02b92f3 100644
 --- a/man/fi/Makefile.am
@@ -217,7 +243,7 @@ index 26a1a848..f02b92f3 100644
  # Outdated manpages
  #	passwd.1 (https://bugs.launchpad.net/ubuntu/+bug/384024)
 diff --git a/man/fr/Makefile.am b/man/fr/Makefile.am
-index 230d2126..1955e94a 100644
+index 335e0298..9962c038 100644
 --- a/man/fr/Makefile.am
 +++ b/man/fr/Makefile.am
 @@ -3,10 +3,8 @@ mandir = @mandir@/fr
@@ -231,10 +257,10 @@ index 230d2126..1955e94a 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -22,12 +20,8 @@ man_MANS = \
+@@ -21,12 +19,8 @@ man_MANS = \
+ 	man8/grpconv.8 \
  	man8/grpunconv.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
@@ -244,7 +270,7 @@ index 230d2126..1955e94a 100644
  	man1/passwd.1 \
  	man5/passwd.5 \
  	man8/pwck.8 \
-@@ -36,13 +30,10 @@ man_MANS = \
+@@ -35,13 +29,10 @@ man_MANS = \
  	man1/sg.1 \
  	man3/shadow.3 \
  	man5/shadow.5 \
@@ -257,20 +283,19 @@ index 230d2126..1955e94a 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/limits.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/hu/Makefile.am b/man/hu/Makefile.am
-index e659aef1..ae80da49 100644
+index 205bb0a8..3d813179 100644
 --- a/man/hu/Makefile.am
 +++ b/man/hu/Makefile.am
-@@ -2,16 +2,12 @@
+@@ -2,15 +2,11 @@
  mandir = @mandir@/hu
  
  man_MANS = \
 -	man1/chsh.1 \
  	man1/gpasswd.1 \
  	man1/groups.1 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
 -	man1/newgrp.1 \
  	man1/passwd.1 \
@@ -279,8 +304,8 @@ index e659aef1..ae80da49 100644
 -	man1/su.1
 +	man1/sg.1
  
- EXTRA_DIST = $(man_MANS)
-  
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/id/Makefile.am b/man/id/Makefile.am
 index 21f3dbe9..6d10b930 100644
 --- a/man/id/Makefile.am
@@ -295,7 +320,7 @@ index 21f3dbe9..6d10b930 100644
  
  EXTRA_DIST = $(man_MANS)
 diff --git a/man/it/Makefile.am b/man/it/Makefile.am
-index 94460aac..ecf5bd18 100644
+index b76187fa..1f62e20e 100644
 --- a/man/it/Makefile.am
 +++ b/man/it/Makefile.am
 @@ -3,10 +3,8 @@ mandir = @mandir@/it
@@ -309,10 +334,10 @@ index 94460aac..ecf5bd18 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -22,12 +20,8 @@ man_MANS = \
+@@ -21,12 +19,8 @@ man_MANS = \
+ 	man8/grpconv.8 \
  	man8/grpunconv.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
@@ -322,7 +347,7 @@ index 94460aac..ecf5bd18 100644
  	man1/passwd.1 \
  	man5/passwd.5 \
  	man8/pwck.8 \
-@@ -36,13 +30,10 @@ man_MANS = \
+@@ -35,13 +29,10 @@ man_MANS = \
  	man1/sg.1 \
  	man3/shadow.3 \
  	man5/shadow.5 \
@@ -335,10 +360,10 @@ index 94460aac..ecf5bd18 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/limits.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/ja/Makefile.am b/man/ja/Makefile.am
-index ffb75a98..b88c490a 100644
+index 13f18da1..3401a085 100644
 --- a/man/ja/Makefile.am
 +++ b/man/ja/Makefile.am
 @@ -3,9 +3,7 @@ mandir = @mandir@/ja
@@ -351,10 +376,10 @@ index ffb75a98..b88c490a 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -18,10 +16,7 @@ man_MANS = \
+@@ -17,10 +15,7 @@ man_MANS = \
+ 	man8/grpck.8 \
  	man8/grpconv.8 \
  	man8/grpunconv.8 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
@@ -362,7 +387,7 @@ index ffb75a98..b88c490a 100644
  	man8/newusers.8 \
  	man1/passwd.1 \
  	man5/passwd.5 \
-@@ -30,13 +25,10 @@ man_MANS = \
+@@ -29,13 +24,10 @@ man_MANS = \
  	man8/pwunconv.8 \
  	man1/sg.1 \
  	man5/shadow.5 \
@@ -375,8 +400,8 @@ index ffb75a98..b88c490a 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/limits.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/ko/Makefile.am b/man/ko/Makefile.am
 index c269f0bb..9616cb3e 100644
 --- a/man/ko/Makefile.am
@@ -398,7 +423,7 @@ index c269f0bb..9616cb3e 100644
  #	newgrp.1
  
 diff --git a/man/pl/Makefile.am b/man/pl/Makefile.am
-index 724d25f3..fa6675b9 100644
+index b2f096f7..00817d37 100644
 --- a/man/pl/Makefile.am
 +++ b/man/pl/Makefile.am
 @@ -4,7 +4,6 @@ mandir = @mandir@/pl
@@ -409,10 +434,10 @@ index 724d25f3..fa6675b9 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -16,14 +15,10 @@ man_MANS = \
+@@ -15,14 +14,10 @@ man_MANS = \
+ 	man8/groupmod.8 \
  	man1/groups.1 \
  	man8/grpck.8 \
- 	man8/lastlog.8 \
 -	man8/logoutd.8 \
 -	man1/newgrp.1 \
  	man1/sg.1 \
@@ -423,10 +448,10 @@ index 724d25f3..fa6675b9 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/porttime.5
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/ru/Makefile.am b/man/ru/Makefile.am
-index 8a776a87..29e1b843 100644
+index 84d55d9e..b65f4881 100644
 --- a/man/ru/Makefile.am
 +++ b/man/ru/Makefile.am
 @@ -3,10 +3,8 @@ mandir = @mandir@/ru
@@ -440,10 +465,10 @@ index 8a776a87..29e1b843 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -22,12 +20,8 @@ man_MANS = \
+@@ -21,12 +19,8 @@ man_MANS = \
+ 	man8/grpconv.8 \
  	man8/grpunconv.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
@@ -453,7 +478,7 @@ index 8a776a87..29e1b843 100644
  	man1/passwd.1 \
  	man5/passwd.5 \
  	man8/pwck.8 \
-@@ -36,13 +30,10 @@ man_MANS = \
+@@ -35,13 +29,10 @@ man_MANS = \
  	man1/sg.1 \
  	man3/shadow.3 \
  	man5/shadow.5 \
@@ -466,10 +491,10 @@ index 8a776a87..29e1b843 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/limits.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/sv/Makefile.am b/man/sv/Makefile.am
-index e64b7bc8..fbb2a716 100644
+index 70329edf..58fa80e5 100644
 --- a/man/sv/Makefile.am
 +++ b/man/sv/Makefile.am
 @@ -3,7 +3,6 @@ mandir = @mandir@/sv
@@ -480,10 +505,10 @@ index e64b7bc8..fbb2a716 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -16,18 +15,13 @@ man_MANS = \
+@@ -15,18 +14,13 @@ man_MANS = \
+ 	man1/groups.1 \
  	man8/grpck.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man8/logoutd.8 \
 -	man1/newgrp.1 \
 -	man8/nologin.8 \
@@ -498,8 +523,8 @@ index e64b7bc8..fbb2a716 100644
 -	man8/vipw.8
 +	man8/userdel.8
  
- man_nopam = \
- 	man5/limits.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/tr/Makefile.am b/man/tr/Makefile.am
 index 8d8b9166..4fe3632a 100644
 --- a/man/tr/Makefile.am
@@ -521,7 +546,7 @@ index 8d8b9166..4fe3632a 100644
  	man8/userdel.8 \
  	man8/usermod.8
 diff --git a/man/uk/Makefile.am b/man/uk/Makefile.am
-index 30c86272..82dc3a82 100644
+index 3fb5ffb3..e13c8fee 100644
 --- a/man/uk/Makefile.am
 +++ b/man/uk/Makefile.am
 @@ -3,10 +3,8 @@ mandir = @mandir@/uk
@@ -535,10 +560,10 @@ index 30c86272..82dc3a82 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -22,12 +20,8 @@ man_MANS = \
+@@ -21,12 +19,8 @@ man_MANS = \
+ 	man8/grpconv.8 \
  	man8/grpunconv.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
@@ -548,7 +573,7 @@ index 30c86272..82dc3a82 100644
  	man1/passwd.1 \
  	man5/passwd.5 \
  	man8/pwck.8 \
-@@ -36,13 +30,10 @@ man_MANS = \
+@@ -35,13 +29,10 @@ man_MANS = \
  	man1/sg.1 \
  	man3/shadow.3 \
  	man5/shadow.5 \
@@ -561,10 +586,10 @@ index 30c86272..82dc3a82 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/login.access.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/zh_CN/Makefile.am b/man/zh_CN/Makefile.am
-index e9d8f2c2..c2e6cdfd 100644
+index a8b93a56..42ad764d 100644
 --- a/man/zh_CN/Makefile.am
 +++ b/man/zh_CN/Makefile.am
 @@ -3,10 +3,8 @@ mandir = @mandir@/zh_CN
@@ -578,10 +603,10 @@ index e9d8f2c2..c2e6cdfd 100644
  	man1/expiry.1 \
  	man5/faillog.5 \
  	man8/faillog.8 \
-@@ -22,12 +20,8 @@ man_MANS = \
+@@ -21,12 +19,8 @@ man_MANS = \
+ 	man8/grpconv.8 \
  	man8/grpunconv.8 \
  	man5/gshadow.5 \
- 	man8/lastlog.8 \
 -	man1/login.1 \
  	man5/login.defs.5 \
 -	man8/logoutd.8 \
@@ -591,7 +616,7 @@ index e9d8f2c2..c2e6cdfd 100644
  	man1/passwd.1 \
  	man5/passwd.5 \
  	man8/pwck.8 \
-@@ -36,13 +30,10 @@ man_MANS = \
+@@ -35,13 +29,10 @@ man_MANS = \
  	man1/sg.1 \
  	man3/shadow.3 \
  	man5/shadow.5 \
@@ -604,8 +629,8 @@ index e9d8f2c2..c2e6cdfd 100644
 -	man8/vipw.8
 +	man8/usermod.8
  
- man_nopam = \
- 	man5/limits.5 \
+ if ENABLE_LASTLOG
+ man_MANS += man8/lastlog.8
 diff --git a/man/zh_TW/Makefile.am b/man/zh_TW/Makefile.am
 index c36ed2c7..26696b67 100644
 --- a/man/zh_TW/Makefile.am
@@ -627,7 +652,7 @@ index c36ed2c7..26696b67 100644
  	man8/userdel.8 \
  	man8/usermod.8
 diff --git a/src/Makefile.am b/src/Makefile.am
-index a1a2e4e3..53cd7953 100644
+index 585a0b7e..69ec939a 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -3,7 +3,7 @@ EXTRA_DIST = \
@@ -639,20 +664,20 @@ index a1a2e4e3..53cd7953 100644
  suidperms = 4755
  sgidperms = 2755
  
-@@ -24,9 +24,9 @@ AM_CPPFLAGS = \
+@@ -27,9 +27,9 @@ AM_CFLAGS = $(LIBBSD_CFLAGS)
  # and installation would be much simpler (just two directories,
  # $prefix/bin and $prefix/sbin, no install-data hacks...)
  
 -bin_PROGRAMS   = groups login
 -sbin_PROGRAMS  = nologin
--ubin_PROGRAMS  = faillog lastlog chage chfn chsh expiry gpasswd newgrp passwd
+-ubin_PROGRAMS  = faillog chage chfn chsh expiry gpasswd newgrp passwd
 +bin_PROGRAMS   = groups
 +sbin_PROGRAMS  =
 +ubin_PROGRAMS  = faillog lastlog chage expiry gpasswd newgrp passwd
  if ENABLE_SUBIDS
  ubin_PROGRAMS += newgidmap newuidmap
  endif
-@@ -43,22 +43,20 @@ usbin_PROGRAMS = \
+@@ -49,22 +49,20 @@ usbin_PROGRAMS = \
  	grpck \
  	grpconv \
  	grpunconv \
@@ -677,7 +702,7 @@ index a1a2e4e3..53cd7953 100644
  if WITH_SU
  suidbins      += su
  endif
-@@ -131,18 +129,16 @@ sulogin_LDADD  = $(LDADD) $(LIBCRYPT) $(LIBECONF)
+@@ -137,18 +135,16 @@ sulogin_LDADD  = $(LDADD) $(LIBCRYPT) $(LIBECONF)
  useradd_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBACL) $(LIBATTR) $(LIBECONF) -ldl
  userdel_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBECONF) -ldl
  usermod_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBACL) $(LIBATTR) $(LIBECONF) -ldl
@@ -698,5 +723,5 @@ index a1a2e4e3..53cd7953 100644
  		chmod $(suidperms) $(DESTDIR)$(usbindir)/$$i; \
  	done
 -- 
-2.39.0
+2.42.0
 

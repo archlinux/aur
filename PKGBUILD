@@ -10,12 +10,12 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=shadow-selinux
-pkgver=4.13
-pkgrel=3
+pkgver=4.14.0
+pkgrel=4
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=(x86_64 aarch64)
 url="https://github.com/shadow-maint/shadow"
-license=(BSD)
+license=(BSD-3-Clause)
 groups=(selinux)
 depends=(
   acl libacl.so
@@ -26,44 +26,54 @@ depends=(
   pam-selinux libpam.so libpam_misc.so
   'libsemanage>=3.2'
 )
-makedepends=(docbook-xsl itstool libcap libxslt)
+makedepends=(
+  docbook-xsl
+  itstool
+  libcap
+  libxslt
+)
 backup=(
   etc/default/useradd
   etc/login.defs
-  etc/pam.d/{chage,{,ch,chg}passwd,group{add,del,mems,mod},newusers,shadow,user{add,del,mod}}
+  etc/pam.d/chpasswd
+  etc/pam.d/groupmems
+  etc/pam.d/newusers
+  etc/pam.d/passwd
 )
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-# NOTE: distribution patches are taken from https://gitlab.archlinux.org/archlinux/packaging/upstream/shadow/-/commits/v4.13.0.arch1
+# NOTE: distribution patches are taken from https://gitlab.archlinux.org/archlinux/packaging/upstream/shadow/-/commits/v4.14.0.arch2
 source=(
-  https://github.com/shadow-maint/shadow/releases/download/$pkgver/shadow-$pkgver.tar.xz{,.asc}
-  0001-Disable-replaced-tools-and-man-pages.patch
+  $url/releases/download/$pkgver/${pkgname/-selinux}-$pkgver.tar.xz{,.asc}
+  0001-Disable-replaced-tools-and-their-man-pages-and-PAM-i.patch
   0002-Adapt-login.defs-for-PAM-and-util-linux.patch
   0003-Add-Arch-Linux-defaults-for-login.defs.patch
-  0004-Add-Arch-Linux-defaults-for-etc-pam.d.patch
   shadow.{timer,service}
+  shadow.{sysusers,tmpfiles}
   useradd.defaults
 )
-sha512sums=('2949a728c3312bef13d23138d6b79caf402781b1cb179e33b5be546c1790971ec20778d0e9cd3dbe09691d928ffcbe88e60da42fab58c69a90d5ebe5e3e2ab8e'
+sha512sums=('ff960481d576f9db5a9f10becc4e1a74c03de484ecfdcd7f1ea735fded683d7ba0f9cd895dc6a431b77e5a633752273178b1bcda4cefaa5adbf0f143c9a0c86f'
             'SKIP'
-            '23215dbc4efa5cb321f32442be30b92f79f1e008c7418ee5daac27540785c1674e790a5e4ee755e9a5a086589be8437e25efbee4a4668918b14337b86309192b'
-            '26160ba1bc42619077dd826fc6e472196e47f4f2e29f9a70d68373a73df9d6187e3a2671369a223e230b05b42af113c38aacf24cd6cb99fbc00b8baca71ab6b7'
-            '3b8bec1dc5dfdc5a3b7b3a4579c05d7fc71ac80c87bdb35031820c2442efcae5dfcc97c763ca9430c1dc3f5d3827dc391999cb67e89d3758d31bdc694dff4601'
-            'fcedd59f0c1294ca03ff2553591058295073e9c795500f66e571e34635016898b999afa816c5994846e459bf743d2c7a358a5be1f561a86a75846df2112194e1'
+            'ac119fd4a7867021923c54d54612499313686bb2faa957133f63c77700b8777dd87628fd4f36d4e4c1160700624a776510bc5d450ef5be1adc128552edfcb062'
+            '57166e14262df3ddcf03008a34ef603a624a31b6d40b18b9fc4d8be50fb857540dea2ffc9dab81c91bcd87bbb3b0dee381219ebd3e68f71864c64a33d5ec7b15'
+            '16c00e8ae1e4f86c9075e08b420ddd5e948345db5611390167ce08d7e3e4ec469954b255b3384d855484803ce3fa5d78c88ff8ae722c0215b692b9dece2ed6f6'
             'e4edf705dd04e088c6b561713eaa1afeb92f42ac13722bff037aede6ac5ad7d4d00828cfb677f7b1ff048db8b6788238c1ab6a71dfcfd3e02ef6cb78ae09a621'
             '2c8689b52029f6aa27d75b8b05b0b36e2fc322cab40fdfbb50cdbe331f61bc84e8db20f012cf9af3de8c4e7fdb10c2d5a4925ca1ba3b70eb5627772b94da84b3'
-            'e9ffea021ee4031b9ad3a534bfb94dbf9d0dfd45a55ecac5dedb2453ea0c17fb80bbb9ad039686bc1f3349dc371977eb548e3a665c56531469c22f29fc4eced8')
-b2sums=('315ab8a7e598aeefb50c11293e20cfa0982c3c3ae21c35ae243d09a4facf97a13c1d672990876e74ef94f5284402acf14997663743e2aaefa6cfc4369b7d24dc'
+            '5afac4a96b599b0b8ed7be751e7160037c3beb191629928c6520bfd3f2adcd1c55c31029c92c2ff8543e6cd9e37e2cd515ba4e1789c6d66f9c93b4e7f209ee7a'
+            '97a6a57c07502e02669dc1a91bffc447dba7d98d208b798d80e07de0d2fdf9d23264453978d2d3d1ba6652ca1f2e22cdadc4309c7b311e83fa71b00ad144f877'
+            '706ba6e7fa8298475f2605a28daffef421c9fa8d269cbd5cbcf7f7cb795b40a24d52c20e8d0b73e29e6cd35cd7226b3e9738dc513703e87dde04c1d24087a69c')
+b2sums=('6e9a6108f856953ec91c597e46ad4f912101a829c7b3ff3389510be43f56f0a70425bd562119282d73df269df45af354e626741ad748f9c1e6f27b74a462a62c'
         'SKIP'
-        'e109e09f7709270e6042389f74ee59f44d95c3bd02aa57fedbe27f1e111d36fdb2fc4bb9f837916bfd83ebfa7d1d0859a50d6fefe573da3fd6f849cfd61a0187'
-        '9d3490810bc94c8809442e9e3928fd4dfc62a22e7134ecc63098a1e2ab5db6c64867f6f067641bb7bccf712a7269b67c36434d2ae3ed3e0a206ac66eef299dc9'
-        '92474c0a9cd8bc4df08984a304c73122a9711f1e4c036361e1dcbc027b1e43e007d1e35cdd5db4295829603a097ab360adb66289c4b479a5d5ccee4947f72da7'
-        'aee9aaadae6d49872b4eb98334fbffee7a49b1625b81019927908ac79753364fdac4d87433fcd5d2d2327d7b65eddcfc2edabe7c6a2a67ad7b101ab0bf6deaad'
+        '77b6e4bc6dc070b992728440fc29a8ed04e8f51cc7e58628f294c68bec7f102c8a80af6a41cf9a3c37d33e7a40ead4f4729f2e68412ab5606e6ecbd3008f5048'
+        'e6359de24e563564979fd0b7915a3227239a84f175cb188392097394d4d41c782100655cbd0a779b6dfde7eddcf8b314ab15eb15ca891287a820547551d54c04'
+        'fe88e173ea5531c083c1f3fb640cad1de463ce5446cb097bd30bc54e9082ba0540a57a9effd11c0779196583cf58bfc7066ab10ef4088f78c7d74928a73889b2'
         '5cfc936555aa2b2e15f8830ff83764dad6e11a80e2a102c5f2bd3b7c83db22a5457a3afdd182e3648c9d7d5bca90fa550f59576d0ac47a11a31dfb636cb18f2b'
         'a69191ab966f146c35e7e911e7e57c29fffd54436ea014aa8ffe0dd46aaf57c635d0a652b35916745c75d82b3fca7234366ea5f810b622e94730b45ec86f122c'
-        'd5bea0cfc2e6d3d1749c65440ca911533d41b6f8117fe09e9efec23524637cfa823d230303a7fbb45d3cd251bf8036d48b9b21049ced208f7ed191fcbd75e879')
+        '511c4ad9f3be530dc17dd68f2a3387d748dcdb84192d35f296b88f82442224477e2a74b1841ec3f107b39a5c41c2d961480e396a48d0578f8fd5f65dbe8d9f04'
+        'd727923dc6ed02e90ef31f10b3427df50afbfe416bd03c6de0c341857d1bb33ab6168312bd4ba18d19d0653020fb332cbcfeeb24e668ae3916add9d01b89ccb4'
+        'f743922062494fe342036b3acb8b747429eb33b1a13aa150daa4bb71a84e9c570cfcc8527a5f846e3ea7020e6f23c0b10d78cf2ba8363eea0224e4c34ea10161')
 validpgpkeys=(66D0387DB85D320F8408166DB175CFA98F192AF2)  # Serge Hallyn <sergeh@kernel.org>
 
 prepare() {
@@ -82,25 +92,27 @@ prepare() {
 
 build() {
   local configure_options=(
-    --prefix=/usr
     --bindir=/usr/bin
-    --sbindir=/usr/bin
+    --disable-account-tools-setuid  # no setuid for chgpasswd, chpasswd, groupadd, groupdel, groupmod, newusers, useradd, userdel, usermod
+    --enable-man
     --libdir=/usr/lib
     --mandir=/usr/share/man
+    --prefix=/usr
+    --sbindir=/usr/bin
     --sysconfdir=/etc
-    --disable-account-tools-setuid
-    --enable-man
-    --with-fcaps
-    --with-libpam
-    --with-group-name-max-length=32
     --with-audit
-    --with-bcrypt
-    --with-yescrypt
+    --with-fcaps  # use capabilities instead of setuid for setuidmap and setgidmap
+    --with-group-name-max-length=32
+    --with-libpam  # PAM integration for chpasswd, groupmems, newusers, passwd
+    --without-libbsd  # shadow can use internal implementation for getting passphrase
+    --without-nscd  # we do not ship nscd anymore
     --with-selinux
-    --without-su
+    --without-su  # su is provided by util-linux
   )
 
   cd "${pkgname/-selinux}-$pkgver"
+  # add extra check, preventing accidental deletion of other user's home dirs when using `userdel -r <user with home in />`
+  export CFLAGS="$CFLAGS -DEXTRA_CHECK_HOME_DIR"
   ./configure "${configure_options[@]}"
 
   # prevent excessive overlinking due to libtool
@@ -125,4 +137,13 @@ package() {
   install -vDm 644 ../shadow.service -t "$pkgdir/usr/lib/systemd/system/"
   install -vdm 755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
   ln -s ../shadow.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/shadow.timer"
+
+  install -vDm 644 ../${pkgname/-selinux}.sysusers "$pkgdir/usr/lib/sysusers.d/${pkgname/-selinux}.conf"
+  install -vDm 644 ../${pkgname/-selinux}.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/${pkgname/-selinux}.conf"
+
+  # adapt executables to match the modes used by tmpfiles.d, so that pacman does not complain:
+  chmod 750 "$pkgdir/usr/bin/groupmems"
+
+  # manually add PAM config for chpasswd and newusers: https://github.com/shadow-maint/shadow/issues/810
+  install -vDm 644 etc/pam.d/{chpasswd,newusers} -t "$pkgdir/etc/pam.d/"
 }
