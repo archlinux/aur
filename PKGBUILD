@@ -3,7 +3,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=mogan
-pkgver=1.1.4
+pkgver=1.1.5
 _tagver=v${pkgver//_/-}
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
@@ -28,8 +28,8 @@ prepare() {
 build() {
   cd "${pkgname}"
   xrepo update-repo
-  xmake config --yes
-  xmake build --yes --verbose --all
+  xmake config -m release --yes
+  xmake build --yes --verbose --diagnosis --jobs=8 --all
 }
 
 package() {
