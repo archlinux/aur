@@ -1,6 +1,6 @@
 pkgbase = r-jasprobustttests
 	pkgdesc = A robust T-Test module for JASP
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspRobustTTests
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-jasprobustttests
 	depends = r-robtt
 	depends = r-jaspbase
 	depends = r-jaspgraphs
-	source = jaspRobustTTests_0.18.0.tar.gz::https://github.com/jasp-stats/jaspRobustTTests/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = e3fad53e2fa96259a4c7adacfa5f2b8a578839b5bbb3bee963aba7b208192bf9
+	source = jaspRobustTTests_0.18.1.tar.gz::https://github.com/jasp-stats/jaspRobustTTests/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = 8c22d48b032d86cd0fca7fcfc810c36e8c091249bdbbdcb6ce9fb23c8fc3db22
 
 pkgname = r-jasprobustttests
