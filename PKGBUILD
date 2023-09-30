@@ -2,7 +2,7 @@
 pkgname=godot-csharp-bin
 pkgver=4.1.1
 pkgrel=1
-pkgdesc="The Godot Engine is a free, all-in-one, cross-platform game engine that makes it easy for you to create 2D and 3D games."
+pkgdesc="The Godot Engine (C#) is a free, all-in-one, cross-platform game engine that makes it easy for you to create 2D and 3D games."
 arch=("x86_64")
 url="https://github.com/godotengine/godot"
 license=("MIT")
