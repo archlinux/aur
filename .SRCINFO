@@ -1,6 +1,6 @@
 pkgbase = r-jaspsummarystatistics
 	pkgdesc = Summary Statistics Module for JASP
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspSummaryStatistics
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-jaspsummarystatistics
 	depends = r-jaspdescriptives
 	depends = r-suppdists
 	depends = r-bayesplay
-	source = jaspSummaryStatistics_0.18.0.tar.gz::https://github.com/jasp-stats/jaspSummaryStatistics/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = 341e889c4948a391a8e82eec161daedc05bd347f5755506586ff121fe6ddca1e
+	source = jaspSummaryStatistics_0.18.1.tar.gz::https://github.com/jasp-stats/jaspSummaryStatistics/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = e30c3de6bb63c0b433aeb4492fbeedef78d5ab1c4ebb108ce02d4b1593ddae92
 
 pkgname = r-jaspsummarystatistics
