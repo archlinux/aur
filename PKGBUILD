@@ -10,10 +10,10 @@ url='https://apps.kde.org/kopete/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-network)
-depends=(knotifyconfig kcmutils ktexteditor kcontacts kidentitymanagement libkleo qca-qt5 kdelibs4support khtml
+depends=(knotifyconfig5 kcmutils5 ktexteditor5 kcontacts5 kidentitymanagement libkleo qca-qt5 kdelibs4support khtml
          libidn libotr)
-makedepends=(extra-cmake-modules libgadu jsoncpp kdoctools kdesignerplugin kdnssd kinit)
-optdepends=('libgadu: Gadu-Gadu protocol' 'kdnssd: bonjour protocol')
+makedepends=(extra-cmake-modules libgadu jsoncpp kdoctools5 kdesignerplugin kdnssd5 kinit)
+optdepends=('libgadu: Gadu-Gadu protocol' 'kdnssd5: bonjour protocol')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('c650536b8e2d3062233617c76bae05e9005c4671a1b0388106acac0539d29cab'
             'SKIP')
