@@ -5,11 +5,10 @@ pkgbase = spicetify-cli
 	url = https://github.com/spicetify/spicetify-cli
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = LGPL2.1
 	makedepends = go
-        optdepends = xdg-utils: Allows for opening directories in default file manager
-	source = https://github.com/spicetify/spicetify-cli/archive/v2.24.2.tar.gz
+	optdepends = xdg-utils: Allows for opening directories in default file manager
+	source = spicetify-cli-2.24.2.tar.gz::https://github.com/spicetify/spicetify-cli/archive/v2.24.2.tar.gz
 	sha256sums = 7c9b68289e5fe0eef945138a520496f276e03e72395a22b9ab52b5d3ae83ebb8
 
 pkgname = spicetify-cli
-
