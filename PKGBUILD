@@ -106,7 +106,6 @@ build() {
   cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja
   cmake --build ./build --config Release --target all
   popd
-  make protocols
   make release
   pushd hyprctl
   make all
