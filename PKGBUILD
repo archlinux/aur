@@ -3,20 +3,21 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
 license=('GPL2')
-depends=('git' 'hicolor-icon-theme' 'python-importlib-metadata' 'python-numpy'
-         'python-polib' 'python-pyqt5' 'python-qtpy')
+depends=('git' 'hicolor-icon-theme' 'python-numpy' 'python-polib' 'python-pyqt5'
+         'python-qtpy')
 makedepends=('python-build' 'python-installer' 'python-jaraco.packaging'
              'python-rst.linker' 'python-setuptools-scm' 'python-sphinx'
-             'python-wheel')
-checkdepends=('appstream-glib' 'desktop-file-utils')
+             'python-wheel' 'rsync')
+checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest')
 optdepends=('python-pygments: syntax highlighting'
+            'python-pyinotify: file system change monitoring'
             'python-send2trash: enables "Send to Trash" functionality.'
-            'tcl: to use the built-in ssh-askpass handler')
+            'tk: to use the built-in ssh-askpass handler')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz"
         '0001-Unvendorize-polib.py.patch')
 sha256sums=('8f4f91e3cf7a4dd951c8c7b3d10d4461e1b367c68136af87c34be6cf0f2825ab'
@@ -34,20 +35,23 @@ build() {
   cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 
-  make prefix=/usr man
+  make prefix=/usr doc
 }
 
 check() {
   cd "$pkgname-$pkgver"
   desktop-file-validate share/applications/*.desktop
   appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
+
+  # Run the unit tests
+  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
 }
 
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  make prefix=/usr DESTDIR="$pkgdir" install-man
+  make prefix=/usr DESTDIR="$pkgdir" install-doc
 
   install -Dm644 "contrib/_${pkgname}" -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 "contrib/$pkgname-completion.bash" \
