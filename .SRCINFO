@@ -1,0 +1,17 @@
+pkgbase = hy3
+	pkgdesc = Hyprland plugin for i3 like tiling
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = https://github.com/outfoxxed/hy3
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = hyprland=0.30.0
+	conflicts = hyprland-git
+	source = hy3-0.30.0.tar.gz::https://github.com/outfoxxed/hy3/archive/refs/tags/hl0.30.0.tar.gz
+	sha256sums = 18c23136d3bf0d1b0f7229cdd092c99a0bdf64d45e69b70fcdde1a2a0d531f05
+
+pkgname = hy3
