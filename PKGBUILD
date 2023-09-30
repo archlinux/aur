@@ -1,7 +1,7 @@
 # Maintainer : Adrien Czerny <adrien@czerny.fr>
 
 pkgname=cinnamon-applet-places-center
-pkgver=5.8
+pkgver=2.2
 pkgrel=1
 pkgdesc=" Provides an easy-to-read layout to access your places "
 arch=('any')
