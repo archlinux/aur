@@ -1,9 +1,9 @@
-# Maintainer: matoro <matoro at airmail.cc>
+# Maintainer: Amaan Hashmi-Ubhi <amaanhub at protonmail dot com>
 # Contributor: Max Gautier <mg+archlinux@max.gautier.name>
 
 pkgname=nodejs-resume-cli
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.0.8
+pkgrel=1
 pkgdesc="The command line tool for JSON Resume"
 arch=(any)
 url="https://github.com/jsonresume/resume-cli"
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname:7}/-/${pkgname:7}-${pkgver}.tgz")
 noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=('1274d5e87a343cd2e40279034d57f771cfc8580a1f3c71df03b0ac080edc12126ad939b4540ab9120d4c2cd86aa2a47cb44ee56b2072a64090997c9e6f56c8ea')
+sha512sums=('e036f284b413c7f7f64bcdd437b289b114afe1c0517c78c618898063e2c134aa034de3e0d53abebf9651a31a50ad71e812941d77ffc1ca476e22cff26f58ccbd')
 
 package() {
    npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
