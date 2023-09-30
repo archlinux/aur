@@ -1,0 +1,13 @@
+pkgbase = cinnamon-applet-places-center
+	pkgdesc = Provides an easy-to-read layout to access your places
+	pkgver = 5.8
+	pkgrel = 1
+	url = https://cinnamon-spices.linuxmint.com/applets/view/128
+	arch = any
+	groups = cinnamon-applets
+	license = GPL
+	depends = cinnamon
+	source = https://cinnamon-spices.linuxmint.com/files/applets/placesCenter@scollins.zip
+	sha512sums = 504cd0c1892dfb28b582d566dba3d563484e65bf8015cf7234e8c7d0ae414b34594edef5bfb39f6bec04c079c2918c8443c62ea0fb68f4f8285925350d17a99f
+
+pkgname = cinnamon-applet-places-center
