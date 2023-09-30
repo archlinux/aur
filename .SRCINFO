@@ -1,0 +1,18 @@
+pkgbase = drawterm-9front-git
+	pkgdesc = 9front drawterm fork git repository
+	pkgver = r537.c4ea4d2
+	pkgrel = 1
+	url = http://drawterm.9front.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	depends = xorg-server
+	provides = drawterm
+	conflicts = drawterm
+	source = drawterm-9front-git::git://git.9front.org/plan9front/drawterm
+	md5sums = SKIP
+
+pkgname = drawterm-9front-git
