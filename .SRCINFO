@@ -1,0 +1,16 @@
+pkgbase = snoop
+	pkgdesc = Search through file contents in a given folder.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/philippun1/snoop/
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	optdepends = python-nautilus: Nautilus extension
+	source = https://gitlab.gnome.org/philippun1/snoop//-/archive/0.2/snoop-0.2.tar.gz
+	sha256sums = d61e89e898fd6791c386f8c0d2e25bd4f808171ff47780792f83c37f7e65bc49
+
+pkgname = snoop
