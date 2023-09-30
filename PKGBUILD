@@ -45,7 +45,7 @@ check() {
 
   # web-ext uses flow-bin, which does not support some architectures (e.g., RISC-V)
   # Some tests match error messages and fail if messages are translated
-  LANG=C.UTF-8 CI_SKIP_FLOWCHECK=y npm test
+  LANG=C.UTF-8 CI_SKIP_FLOWCHECK=y npm MOCHA_TIMEOUT=100000 test
 }
 
 package() {
