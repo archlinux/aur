@@ -3,7 +3,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
@@ -13,7 +13,7 @@ depends=('git' 'hicolor-icon-theme' 'python-numpy' 'python-polib' 'python-pyqt5'
 makedepends=('python-build' 'python-installer' 'python-jaraco.packaging'
              'python-rst.linker' 'python-setuptools-scm' 'python-sphinx'
              'python-wheel' 'rsync')
-checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest')
+checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('python-pygments: syntax highlighting'
             'python-pyinotify: file system change monitoring'
             'python-send2trash: enables "Send to Trash" functionality.'
@@ -43,8 +43,10 @@ check() {
   desktop-file-validate share/applications/*.desktop
   appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
 
+  # Not running the unit tests because users don't know how to build in a chroot
+
   # Run the unit tests
-  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
+#  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
 }
 
 package() {

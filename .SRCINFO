@@ -1,13 +1,12 @@
 pkgbase = git-cola
 	pkgdesc = The highly caffeinated Git GUI
 	pkgver = 4.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git-cola.github.io
 	arch = any
 	license = GPL2
 	checkdepends = appstream-glib
 	checkdepends = desktop-file-utils
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-jaraco.packaging
