@@ -4,8 +4,8 @@
 # https://github.com/phnx47/pkgbuilds
 
 pkgname=proto
-pkgdesc='A multi-language version and dependency manager'
-pkgver=0.18.5
+pkgdesc='Pluggable multi-language version manager'
+pkgver=0.19.0
 pkgrel=1
 license=('MIT')
 _gh_owner='moonrepo'
@@ -15,10 +15,10 @@ arch=('x86_64')
 depends=('git')
 makedepends=('cargo')
 options=('!lto')
-_sha='442ff45697fe90786920a10cdd64180c2600731a'
+_sha='5816d4f032cc1ad49022469c094b9b345f998b9c'
 _short_sha="${_sha::7}"
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
-sha256sums=('71a901d7e8e1ab10860ea8939ac497bc7883a91244c0b52eaac0b9ba476e882b')
+sha256sums=('d9a7308c3928c98b80320b606d090aee1a4090eec3329137432fbffa611a89bc')
 
 prepare() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
