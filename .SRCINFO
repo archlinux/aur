@@ -1,0 +1,23 @@
+pkgbase = aura-browser
+	pkgdesc = Browser for a fully immersed Big Screen experience allowing you to navigate the world wide web using just your remote control
+	pkgver = 5.27.8
+	pkgrel = 2
+	url = https://plasma-bigscreen.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	depends = kirigami2
+	depends = ki18n5
+	depends = qt5-webengine
+	depends = qt5-multimedia
+	depends = qt5-virtualkeyboard
+	source = https://download.kde.org/stable/plasma/5.27.8/aura-browser-5.27.8.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.8/aura-browser-5.27.8.tar.xz.sig
+	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
+	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
+	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
+	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
+	sha256sums = 1081be5dd4493f3670967f4c05672214ee361b2e7fc4ea0c0d8d76c81368c324
+	sha256sums = SKIP
+
+pkgname = aura-browser
