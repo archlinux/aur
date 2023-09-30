@@ -135,7 +135,6 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/hyprland" assets/*.png
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
   install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions" "example/hyprland.desktop"
-  install -Dm0644 -t "$pkgdir/usr/share/xdg-desktop-portal" assets/hyprland-portals.conf
   install -Dm0755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.12032"
 }
 # vi: et ts=2 sw=2
