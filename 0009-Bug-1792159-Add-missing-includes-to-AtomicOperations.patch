@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rosenauer <wr@rosenauer.org>
+Date: Mon, 6 Mar 2023 03:29:00 +0200
+Subject: [PATCH] Bug 1792159 - Add missing includes to
+ AtomicOperationsGenerated.h
+
+---
+ mozglue/misc/SIMD_avx2.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mozglue/misc/SIMD_avx2.cpp b/mozglue/misc/SIMD_avx2.cpp
+index a1467c7a5593b33d7dc99c61277b3e66e0de9988..d93bc879fc8454423a9fc488f21c6c05c1ce5e90 100644
+--- a/mozglue/misc/SIMD_avx2.cpp
++++ b/mozglue/misc/SIMD_avx2.cpp
+@@ -58,7 +58,7 @@ __m256i CmpEq256(__m256i a, __m256i b) {
+   return _mm256_cmpeq_epi64(a, b);
+ }
+ 
+-#  if defined(__GNUC__) && !defined(__clang__)
++#  if 0
+ 
+ // See the comment in SIMD.cpp over Load32BitsIntoXMM. This is just adapted
+ // from that workaround. Testing this, it also yields the correct instructions

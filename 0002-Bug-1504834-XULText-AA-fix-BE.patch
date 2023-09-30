@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Martin Sirringhaus <msirringhaus@suse.de>
+Date: Mon, 25 Nov 2019 09:31:46 +0200
+Subject: [PATCH] Bug 1504834 - XULText-AA-fix BE
+
+For FF68, AntiAliasing of XULTexts seem to be broken on big endian (s390x). Text and icons of the sandwich-menu to the
+
+right of the address bar, as well as plugin-windows appears transparant, which usually means unreadable (white on white).
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1504834#c9
+---
+ gfx/skia/skia/src/opts/SkBlitMask_opts.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gfx/skia/skia/src/opts/SkBlitMask_opts.h b/gfx/skia/skia/src/opts/SkBlitMask_opts.h
+index 8e673a972869c8e1cac0ed3db4aa34a9b7f4cf6b..3dcde0bb81273ee509322863285dd6d8d7a96648 100644
+--- a/gfx/skia/skia/src/opts/SkBlitMask_opts.h
++++ b/gfx/skia/skia/src/opts/SkBlitMask_opts.h
+@@ -210,6 +210,8 @@ namespace SK_OPTS_NS {
+             //   ~~~>
+             // a = 1*aa + d(1-1*aa) = aa + d(1-aa)
+             // c = 0*aa + d(1-1*aa) =      d(1-aa)
++            // TODO: Check this for endian-issues!
++            //       Do we need to switch 255 to the front for all of those tuples?
+             return (aa & Sk4px(skvx::byte16{0,0,0,255, 0,0,0,255, 0,0,0,255, 0,0,0,255}))
+                  + d.approxMulDiv255(aa.inv());
+         };

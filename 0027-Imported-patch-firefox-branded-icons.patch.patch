@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Martin Sirringhaus <msirringhaus@suse.de>
+Date: Tue, 21 May 2019 17:27:05 +0200
+Subject: [PATCH] Imported patch firefox-branded-icons.patch
+
+---
+ browser/branding/branding-common.mozbuild | 3 +++
+ browser/installer/package-manifest.in     | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/branding-common.mozbuild
+index 4e737310b37bc0bdbe4367e51c0f245eefbdbb50..0faf21fb931a0ed72495197d2152fd74bde6455e 100644
+--- a/browser/branding/branding-common.mozbuild
++++ b/browser/branding/branding-common.mozbuild
+@@ -30,6 +30,9 @@ def FirefoxBranding():
+         FINAL_TARGET_FILES.chrome.icons.default += [
+             'default128.png',
+             'default16.png',
++            'default22.png',
++            'default24.png',
++            'default256.png',
+             'default32.png',
+             'default48.png',
+             'default64.png',
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index ee420cf6363d598cd20b37bef6199dbe77f605c0..0f7d804e47a8c97dbd28081320c7ee271fd23725 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -224,10 +224,13 @@
+ @RESPATH@/chrome/toolkit.manifest
+ #ifdef MOZ_GTK
+ @RESPATH@/browser/chrome/icons/default/default16.png
++@RESPATH@/browser/chrome/icons/default/default22.png
++@RESPATH@/browser/chrome/icons/default/default24.png
+ @RESPATH@/browser/chrome/icons/default/default32.png
+ @RESPATH@/browser/chrome/icons/default/default48.png
+ @RESPATH@/browser/chrome/icons/default/default64.png
+ @RESPATH@/browser/chrome/icons/default/default128.png
++@RESPATH@/browser/chrome/icons/default/default256.png
+ #endif
+ @RESPATH@/browser/features/*
+ 

@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rosenauer <wr@rosenauer.org>
+Date: Sun, 27 Dec 2020 10:48:12 +0100
+Subject: [PATCH] mozilla-libavcodec58_91.patch
+
+---
+ dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
+index 51d25c97e7ba425db041a31800df6203ae71bf66..dbf08a48c9b55adc1508a288915cb15d96de74ea 100644
+--- a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
++++ b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
+@@ -41,6 +41,8 @@ static const char* sLibs[] = {
+ #else
+   "libavcodec.so.60",
+   "libavcodec.so.59",
++  "libavcodec.so.58.134",
++  "libavcodec.so.58.91",
+   "libavcodec.so.58",
+   "libavcodec-ffmpeg.so.58",
+   "libavcodec-ffmpeg.so.57",

@@ -1,0 +1,178 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Mon, 6 Apr 2020 19:32:39 +0200
+Subject: [PATCH] Bug 847568 - Support system harfbuzz
+
+Allow building against system-wide harfbuzz.
+
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=847568
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ config/system-headers.mozbuild  | 7 +++++++
+ dom/base/moz.build              | 3 +++
+ gfx/moz.build                   | 4 +++-
+ gfx/skia/generate_mozbuild.py   | 3 +++
+ gfx/skia/moz.build              | 3 +++
+ gfx/thebes/moz.build            | 3 +++
+ intl/unicharutil/util/moz.build | 3 +++
+ netwerk/dns/moz.build           | 3 +++
+ toolkit/library/moz.build       | 3 +++
+ toolkit/moz.configure           | 9 +++++++++
+ 10 files changed, 40 insertions(+), 1 deletion(-)
+
+diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
+index 4d2f15e18c1c0755a1e28fd8e20a87f41e2f4eeb..daf1222bdb06aba229ed939212763c79b935366a 100644
+--- a/config/system-headers.mozbuild
++++ b/config/system-headers.mozbuild
+@@ -1235,6 +1235,13 @@ if CONFIG['OS_TARGET'] == 'Android':
+         'vr/gvr/capi/include/gvr.h',
+     ]
+ 
++if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
++    system_headers += [
++	'harfbuzz/hb-glib.h',
++	'harfbuzz/hb-ot.h',
++	'harfbuzz/hb.h',
++    ]
++
+ if CONFIG['MOZ_JACK']:
+     system_headers += [
+         'jack/jack.h',
+diff --git a/dom/base/moz.build b/dom/base/moz.build
+index 19990d90ff73533898c9cf017e4c52852114e93d..817344b497cb24398ebce2428313596c63d70c02 100644
+--- a/dom/base/moz.build
++++ b/dom/base/moz.build
+@@ -609,6 +609,9 @@ FINAL_LIBRARY = "xul"
+ if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
+     CXXFLAGS += CONFIG["MOZ_GTK3_CFLAGS"]
+ 
++if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
++    CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
++
+ GeneratedFile(
+     "UseCounterList.h",
+     script="gen-usecounters.py",
+diff --git a/gfx/moz.build b/gfx/moz.build
+index 56ea317bedfc68d504248b5d3b79cd36e8bc388a..6cc19f84709bbe3be4ff830e3a6dd29189048c6f 100644
+--- a/gfx/moz.build
++++ b/gfx/moz.build
+@@ -10,6 +10,9 @@ with Files("**"):
+ with Files("wr/**"):
+     BUG_COMPONENT = ("Core", "Graphics: WebRender")
+ 
++if not CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
++    DIRS += ["harfbuzz/src"]
++
+ DIRS += [
+     "cairo",
+     "2d",
+@@ -20,7 +23,6 @@ DIRS += [
+     "gl",
+     "layers",
+     "graphite2/src",
+-    "harfbuzz/src",
+     "ots/src",
+     "thebes",
+     "ipc",
+diff --git a/gfx/skia/generate_mozbuild.py b/gfx/skia/generate_mozbuild.py
+index 39675ea9c2e939580f7e11fe17c10b0b49f4ed4c..6262eec29395c873bd1d10377a54b99ca16e92e5 100755
+--- a/gfx/skia/generate_mozbuild.py
++++ b/gfx/skia/generate_mozbuild.py
+@@ -91,6 +91,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
+         '-Wno-unused-private-field',
+     ]
+ 
++if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
++    CXXFLAGS += CONFIG['MOZ_HARFBUZZ_CFLAGS']
++
+ if CONFIG['MOZ_WIDGET_TOOLKIT'] in ('gtk', 'android'):
+     LOCAL_INCLUDES += [
+         "/gfx/cairo/cairo/src",
+diff --git a/gfx/skia/moz.build b/gfx/skia/moz.build
+index 1d92936263a091eac0dc90fdb0038982e711d5c3..afef373e62af4273aa2b21f3fd3103dc5670ea00 100644
+--- a/gfx/skia/moz.build
++++ b/gfx/skia/moz.build
+@@ -601,6 +601,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
+         '-Wno-unused-private-field',
+     ]
+ 
++if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
++    CXXFLAGS += CONFIG['MOZ_HARFBUZZ_CFLAGS']
++
+ if CONFIG['MOZ_WIDGET_TOOLKIT'] in ('gtk', 'android'):
+     LOCAL_INCLUDES += [
+         "/gfx/cairo/cairo/src",
+diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
+index 71903756ea1949136cdc25e3b7cd83eeb68dc6ea..8af85a4ed663292583310efea06ada8c60eb908d 100644
+--- a/gfx/thebes/moz.build
++++ b/gfx/thebes/moz.build
+@@ -294,6 +294,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
+ 
+ DEFINES["GRAPHITE2_STATIC"] = True
+ 
++if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
++    CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
++
+ CXXFLAGS += ["-Werror=switch"]
+ 
+ include("/tools/fuzzing/libfuzzer-config.mozbuild")
+diff --git a/intl/unicharutil/util/moz.build b/intl/unicharutil/util/moz.build
+index 2bbd00415cae9d6a27b66d9eef50add3ada9ba96..f66bd37695d41eea709abea1239dfcd2cbb503d1 100644
+--- a/intl/unicharutil/util/moz.build
++++ b/intl/unicharutil/util/moz.build
+@@ -24,6 +24,9 @@ UNIFIED_SOURCES += [
+     "nsUnicodeProperties.cpp",
+ ]
+ 
++if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
++    CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
++
+ include("/ipc/chromium/chromium-config.mozbuild")
+ 
+ GeneratedFile(
+diff --git a/netwerk/dns/moz.build b/netwerk/dns/moz.build
+index 17612ff1b396891c8942f53d3f39fbca8bdca6cb..d6d51948da54c7fbca53662050d33019e7e0dea6 100644
+--- a/netwerk/dns/moz.build
++++ b/netwerk/dns/moz.build
+@@ -109,4 +109,7 @@ LOCAL_INCLUDES += [
+     "/netwerk/protocol/http",
+ ]
+ 
++if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
++    CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
++
+ USE_LIBS += ["icu"]
+diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
+index 939d4f6a4b8da54c064ebbbda541b412979d5bab..1d964af4f1e237ef419b15c954a5a3b663c9ce92 100644
+--- a/toolkit/library/moz.build
++++ b/toolkit/library/moz.build
+@@ -285,6 +285,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+         "-lgvr",
+     ]
+ 
++if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
++    OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
++
+ if CONFIG["MOZ_SYSTEM_JPEG"]:
+     OS_LIBS += CONFIG["MOZ_JPEG_LIBS"]
+ 
+diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index 5cf3ef5454a6580e14a06db7e448336d58452586..115febb3d533eb69cecbe0931b00be4e910e20de 100644
+--- a/toolkit/moz.configure
++++ b/toolkit/moz.configure
+@@ -675,6 +675,15 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+ 
+ set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
+ 
++# HarfBuzz
++# ==============================================================
++option('--with-system-harfbuzz', help="Use system harfbuzz (located with pkgconfig)")
++
++system_harfbuzz = pkg_check_modules('MOZ_HARFBUZZ', 'harfbuzz >= 2.7.4',
++                                    when='--with-system-harfbuzz')
++
++set_config('MOZ_SYSTEM_HARFBUZZ', depends_if(system_harfbuzz)(lambda _: True))
++
+ # Apple platform decoder support
+ # ==============================================================
+ @depends(toolkit)
