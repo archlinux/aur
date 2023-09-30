@@ -1,7 +1,7 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
 pkgname=unreal-engine-bin
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="The world's most open and advanced real-time 3D creation tool"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('android-ndk: Android build support'
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the zip file manually from https://www.unrealengine.com/linux')
 source=("manual://Linux_Unreal_Engine_${pkgver}.zip" 'unreal-engine.desktop' 'unreal-engine.xml' {16,24,32,48,64,256}.png)
-sha256sums=('26232ad9232b54e61a5201d3358c7e981ac866a0235423330c2d7669f7668de3'
+sha256sums=('e347441ce64c482bbdef5121fd6b2b540446460c871123faa9764920bb09dce9'
             '8a71e10dee1d44ad6f85d993bdf25dd4835f6415e983125ac79a912ee0c3d905'
             '752dc3628639adb84ebda281040ec106227431eb7a5f92375511d96c6ceacf91'
             '16197bc88f2ec77ad2690fae280bf3584c54c7d7b018d8fa4086b7c00fd4effc'
