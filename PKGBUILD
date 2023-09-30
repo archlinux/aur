@@ -41,7 +41,7 @@ build() {
   arch-meson "${_plug}" build \
     --buildtype=release \
     --native-file=native_config \
-    -Dstatic-llvm=false \
+    -Dstatic-llvm=false
 
   meson compile -C build
 }
