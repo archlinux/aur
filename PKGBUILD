@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.36.0.285.gda400ed3a9
+pkgver=0.36.0.453.g84fa7ea411
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -85,7 +85,7 @@ makedepends=(
   'nasm'
   'ladspa'
   'vulkan-headers'
-  'ffnvcodec-headers'
+  'ffnvcodec-headers-git'
   'python-mako'
   'python-jinja'
   'python-markupsafe'
@@ -242,7 +242,7 @@ prepare() {
     '-Dhtml-build=enabled'
 
     # Fix Build
-    '-Dc_link_args=-Wl,-Bsymbolic -lstdc++'
+    '-Dc_link_args=-lstdc++'
     )
 
 if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
