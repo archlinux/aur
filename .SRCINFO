@@ -1,0 +1,21 @@
+pkgbase = python-bincopy
+	pkgdesc = Mangling of various file formats that conveys binary information
+	pkgver = 19.1.0
+	pkgrel = 1
+	url = https://github.com/eerimoq/bincopy
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-argparse-addons
+	depends = python-humanfriendly
+	depends = python-pyelftools
+	source = bincopy-19.1.0.tar.gz::https://github.com/eerimoq/bincopy/archive/refs/tags/19.1.0.tar.gz
+	sha512sums = a7fd582fec4946954b8ec29d29c671482dac66ba85b784e1c1fcdf045f7f2bebf99726caa1c591993ee462b2b63d8c77f5c03b42b3b150a4b0579fc54a12efa2
+	b2sums = 0d54fa10aa09c69949931069a73460af746e78b6829a2cd5db52d650bb0469427d9367e577bb4e2706c8826cbf7a6ca162efb8082b02621b5e3ee31a2e9767b6
+
+pkgname = python-bincopy

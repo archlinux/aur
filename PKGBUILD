@@ -2,7 +2,7 @@
 
 _name=bincopy
 pkgname=python-bincopy
-pkgver=19.0.0
+pkgver=19.1.0
 pkgrel=1
 pkgdesc="Mangling of various file formats that conveys binary information"
 arch=(any)
@@ -22,8 +22,8 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('3bc16d5f6c8fbcbf9b24ca5328046510fc96a2e34dbfeb6b15fe386330ed635093b250f71ae44b7b74b9003b0b005a353145194e371e97fb4b84474ae15bc8a2')
-b2sums=('1daa66771cc68cd8b4d831a1d416b0bf1de60516cc4214bc4c13d52e363b37e0caee13463d67937a3393d28f73fbdb478daf7374817e3362f9cf9d8665aa7d36')
+sha512sums=('a7fd582fec4946954b8ec29d29c671482dac66ba85b784e1c1fcdf045f7f2bebf99726caa1c591993ee462b2b63d8c77f5c03b42b3b150a4b0579fc54a12efa2')
+b2sums=('0d54fa10aa09c69949931069a73460af746e78b6829a2cd5db52d650bb0469427d9367e577bb4e2706c8826cbf7a6ca162efb8082b02621b5e3ee31a2e9767b6')
 
 build() {
   cd $_name-$pkgver
