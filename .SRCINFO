@@ -1,0 +1,23 @@
+pkgbase = jupyterlab-rise
+	pkgdesc = RISE: "Live" Reveal.js JupyterLab Slideshow Extension
+	pkgver = 0.41.0
+	pkgrel = 1
+	url = https://github.com/jupyterlab-contrib/rise
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-jupyter-packaging
+	makedepends = python-hatch-jupyter-builder
+	makedepends = npm
+	depends = jupyterlab
+	depends = python-hatchling
+	depends = python-hatch-nodejs-version
+	source = jupyterlab-rise-0.41.0.tar.gz::https://github.com/jupyterlab-contrib/rise/archive/refs/tags/v0.41.0.tar.gz
+	source = install.json
+	sha256sums = 9bcefaaedacda0cde21687209fa8348e6d3e2793a35d480bcd27862e2f942aed
+	sha256sums = 140fd4e44ebdc1d8d5a56c3f583d829dd316dd930e2c654c1abea4ffef62c8af
+
+pkgname = jupyterlab-rise
