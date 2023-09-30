@@ -3,43 +3,52 @@
 # Contributer: Bruce Zhang
 
 pkgname=lx-music
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
-_electron=electron22
+_electron=electron
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
 url='https://github.com/lyswhut/lx-music-desktop'
 license=('Apache')
 depends=("${_electron}")
-makedepends=('asar' 'jq' 'moreutils' 'yarn' 'git' 'node-gyp')
+makedepends=('asar' 'npm' 'git' 'node-gyp'
+# 'jq' 'moreutils'
+)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop"
         'dev-app-update.yml'
         )
-sha256sums=('36cc146e3f324170ff36443cde58b6f006eed74a74c602685226dfb529fc7d73'
+sha256sums=('a4bbe38b9a99e3422294c0737b0da12a21d6a90a141fe9d92d3aacf2028d5d3e'
             '1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
             '732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
             'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
 
 prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
-	local electronDist="/usr/lib/${_electron}"
-	local electronVersion="$(< $electronDist/version)"
-	# electronVersion="${electronVersion%.*}.0"
-	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
-	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
-	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+	# electron from archlinux official repo does not work, skip patching.
+
+	# local electronDist="/usr/lib/${_electron}"
+	# local electronVersion="$(< $electronDist/version)"
+	# # electronVersion="${electronVersion%.*}.0"
+	# jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
+	# jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
+	# jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
 
 	sed -i "s|__ELECTRON__|${_electron}|g" "${srcdir}/${pkgname}.sh"
+
+
+
+	# jq ".compilerOptions.module = 'nodenext'" tsconfig.json | sponge tsconfig.json
+	# sed -i 's|esnext|nodenext|g;s|ESNext|esnext|g' tsconfig.json
+	# sed -i 's|NodeJS.Timer|NodeJS.Timeout|g' src/main/modules/sync/server/server/server.ts
 }
 
 build() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
 	export HOME=${srcdir}
-	yarn add eslint-plugin-n
-	yarn install
-	yarn run pack:dir
+	npm ci
+	npm run pack:dir
 }
 
 package() {
