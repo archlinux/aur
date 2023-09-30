@@ -6,6 +6,7 @@ _upkgname='Insomnia'
 pkgname="${_pkgname}-bin"
 pkgver=8.1.0
 pkgrel=1
+epoch=1
 pkgdesc='API Client and Design Platform for GraphQL and REST'
 arch=('x86_64')
 url='https://insomnia.rest'
