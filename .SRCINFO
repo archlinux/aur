@@ -7,14 +7,11 @@ pkgbase = spongebob-cli-git
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	depends = mpv
-	depends = youtube-dl
 	depends = python-requests
-	depends = python-urllib3
-	depends = python-termcolor
 	depends = python-beautifulsoup4
 	depends = python-prettytable
-	depends = python-halo
+	optdepends = mpv: default video player
+	optdepends = wget: default video downloader
 	provides = spongebob-cli
 	conflicts = spongebob-cli
 	source = spongebob-cli::git+https://github.com/trakBan/spongebob-cli#branch=main
