@@ -1,0 +1,24 @@
+pkgbase = kdesu5
+	pkgdesc = Integration with su for elevated privileges
+	pkgver = 5.110.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	depends = kpty5
+	depends = kconfig5
+	provides = kdesu=5.110.0
+	conflicts = kdesu<5.111
+	replaces = kdesu<5.111
+	source = https://download.kde.org/stable/frameworks/5.110/kdesu-5.110.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.110/kdesu-5.110.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = 29671f196e3881307d44d12654b2f86ec6af31f053f062065b64077b29998552
+	sha256sums = SKIP
+
+pkgname = kdesu5
