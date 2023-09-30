@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-websockets-static
-_qtver=6.5.2
+_qtver=6.5.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtwebsockets-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('204bd7b0dffb54c934abc6cf0eb5e3016f11b3c9721a67b4875a6b21bb8b5c76')
+sha256sums=('04e2ae17594d56cf2930c99dbd2a97eb88ff514b445c17ff7b86e8978fc7a7c3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
