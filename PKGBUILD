@@ -15,12 +15,12 @@ build() {
   cd "$pkgname-$pkgver"
   export GO111MODULE="auto"
   export GOPATH="$srcdir"
-  go build -gccgoflags="-X 'main.version=$pkgver'" -o spicetify
+  go build -ldflags="-X 'main.version=$pkgver'" -o spicetify
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  ./spicetify -v
+  test "v$(./spicetify -v)" = "v$pkgver" || exit 1
 }
 
 package() {
