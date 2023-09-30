@@ -1,0 +1,25 @@
+pkgbase = krunner5
+	pkgdesc = Framework for providing different actions given a string query
+	pkgver = 5.110.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools5
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	depends = plasma-framework
+	depends = threadweaver5
+	provides = krunner=5.110.0
+	conflicts = krunner<5.111
+	replaces = krunner<5.111
+	source = https://download.kde.org/stable/frameworks/5.110/krunner-5.110.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.110/krunner-5.110.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = a18c18e252f8a36bb866b0df8846d55d670336fd11f6d97291d872cd04867260
+	sha256sums = SKIP
+
+pkgname = krunner5
