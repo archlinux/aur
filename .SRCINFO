@@ -1,0 +1,15 @@
+pkgbase = mdpls-git
+	pkgdesc = A language server that provides a live HTML preview of your markdown in your browser.
+	pkgver = 0.1.0.6.g3076150
+	pkgrel = 1
+	url = https://github.com/euclio/mdpls
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cargo
+	provides = mdpls=0.1.0.6.g3076150
+	conflicts = mdpls
+	source = mdpls-git::git+https://github.com/euclio/mdpls
+	sha256sums = SKIP
+
+pkgname = mdpls-git
