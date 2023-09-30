@@ -1,0 +1,186 @@
+diff --git a/build.bash b/build.bash
+index 704394f..0db5fbb 100755
+--- a/build.bash
++++ b/build.bash
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-set -eu
++set -e
+ 
+ vecho() { ${vecho-:} "$@"; }
+ executable_p() { command -v "$1" >/dev/null 2>&1; }
+@@ -33,9 +33,7 @@ test -n "${1-}" || die "usage: $0 build-directory"
+ outd=$1
+ srcd=$(dirname $0)
+ mudir=$outd/mupdf
+-muinc="-I $mudir/include -I $mudir/thirdparty/freetype/include"
+-
+-test -d $mudir || die muPDF wasn\'t found in $outd/, consult $srcd/BUILDING
++mudeps=('freetype2' 'gumbo' 'harfbuzz' 'libjpeg' 'libopenjp2' 'x11' 'zlib')
+ 
+ mkdir -p $outd/{$wsid,lablGL}
+ 
+@@ -45,8 +43,7 @@ mbt=${mbt:-release}
+ test -n "${gmk:-}" && gmk=false || gmk=true
+ 
+ mulibs="$mudir/build/$mbt/libmupdf.a $mudir/build/$mbt/libmupdf-third.a"
+-make="make -C "$mudir" build=$mbt -j $mjobs libs"
+-$make -q -s || $make
++
+ 
+ oincs() {
+     local b=$1 incs
+@@ -77,7 +74,7 @@ oflags() {
+             f="-g -strict-sequence -strict-formats -alert @all-missing-mli";;
+         *) f="-g -strict-sequence -strict-formats -alert @all -warn-error @A";;
+     esac
+-    echo $(oincs $outd $1) $f
++    echo $(oincs $outd $1) -I +unix -I +str $f
+ }
+ 
+ cflags() {
+@@ -85,7 +82,7 @@ cflags() {
+         version.o) f=-DLLPP_VERSION=$ver;;
+         lablGL/*.o) f="-g -Wno-pointer-sign -Werror -O2";;
+         link.o)
+-            f="-g -std=c11 $muinc -Wall -Werror -Wextra -pedantic "
++            f="$CFLAGS -g -std=c11 $(pkg-config --cflags "${mudeps[@]}") -Wall -Wextra -pedantic "
+             test "${mbt-}" = "debug" || f+="-O2 "
+             $darwin && f+="-DMACOS -D_GNU_SOURCE -DGL_H='<OpenGL/gl.h>'" \
+                     || f+="-D_POSIX_C_SOURCE -DGL_H='<GL/gl.h>'"
+@@ -104,39 +101,6 @@ mflags() {
+ }
+ 
+ overs=$(ocamlc -vnum 2>/dev/null) || overs=""
+-if test "$overs" != "4.14.0~rc1"; then
+-    url=https://caml.inria.fr/pub/distrib/ocaml-4.14/ocaml-4.14.0~rc1.tar.xz
+-    txz=$outd/$(basename $url)
+-    keycmd="printf $url; digest $txz;"
+-    isfresh $txz "$(eval $keycmd)" || {
+-        if executable_p wget; then dl() { wget "$1" -O "$2"; }
+-        elif executable_p curl; then dl() { curl -L "$1" -o "$2"; }
+-        else die "no program to fetch remote urls found"
+-        fi
+-        dl $url $txz
+-        eval $keycmd >$txz.past
+-    } && vecho "fresh $txz"
+-    absprefix=$(realpath $outd)
+-    export PATH=$absprefix/bin:$PATH
+-    ocamlc=$absprefix/bin/ocamlc
+-    keycmd="printf $url; digest $ocamlc;"
+-    isfresh $ocamlc "$(eval $keycmd)" || (
+-        # This will needlessly re{configure,make} ocaml since "past"
+-        # of configure/make is hard to ascertain. "Better safe than
+-        # sorry" approach is taken here. The check will work for a
+-        # single ocaml url/version, but _will_ redo _everything_
+-        # otherwise (even if fully built artifacts are available)
+-        tar xf $txz -C $outd
+-        bn=$(basename $url)
+-        cd $outd/${bn%.tar.xz}
+-        ./configure --disable-ocamldoc --disable-ocamltest      \
+-                    --enable-debugger=no --prefix=$absprefix
+-        make -j $mjobs world
+-        make install
+-        eval $keycmd >$absprefix/bin/ocamlc.past
+-    ) && vecho "fresh ocamlc"
+-    overs=$(ocamlc -vnum 2>/dev/null)
+-fi
+ 
+ while read k v; do
+     case "$k" in
+@@ -307,7 +271,7 @@ for m in ml_gl ml_glarray ml_raw; do
+ done
+ 
+ libs="str.cma unix.cma"
+-clibs="-L$mudir/build/$mbt -lmupdf -lmupdf-third -lpthread"
++clibs="-ljbig2dec $(pkg-config --libs "${mudeps[@]}") -lmupdf -lpthread"
+ if $darwin; then
+     mcomp=$ccomp
+     clibs+=" -framework Cocoa -framework OpenGL"
+@@ -320,7 +284,7 @@ else
+     bocamlc wsi/x11/xlib.o
+ fi
+ 
+-cmd="ocamlc -custom $libs -o $outd/llpp $cobjs $modules -cclib \"$clibs\""
++cmd="ocamlc -custom $libs -o $outd/llpp $cobjs $modules -cclib \"$clibs\" -I +unix -I +str"
+ keycmd="digest $outd/llpp $cobjs $modules $mulibs"
+ isfresh "$outd/llpp" "$cmd$(eval $keycmd)" || {
+     echo linking $outd/llpp
+diff --git a/glutils.ml b/glutils.ml
+index a49f879..9558a7f 100644
+--- a/glutils.ml
++++ b/glutils.ml
+@@ -27,7 +27,7 @@ let drawstring size x y s =
+   Gl.disable `blend;
+   Gl.disable `texture_2d
+ 
+-let drawstringf size x y = Printf.kprintf (drawstring size (x+1) (y+size+1))
++let drawstringf size x y = Printf.ksprintf (drawstring size (x+1) (y+size+1))
+ let redisplay = ref false
+ let postRedisplay who =
+   Utils.vlog "redisplay for [%S]" who;
+diff --git a/link.c b/link.c
+index ecf6189..d5fba49 100644
+--- a/link.c
++++ b/link.c
+@@ -1522,11 +1522,12 @@ static void *mainloop (void UNUSED_ATTR *unused)
+             if (pdf && nameddest && *nameddest) {
+                 fz_point xy;
+                 struct pagedim *pdim;
+-                int pageno = pdf_lookup_anchor (state.ctx, pdf, nameddest,
+-                                                &xy.x, &xy.y);
+-                pdim = pdimofpageno (pageno);
++                fz_location loc = fz_resolve_link (state.ctx, (fz_document*)pdf, nameddest,
++						   &xy.x, &xy.y);
++
++                pdim = pdimofpageno (loc.page);
+                 xy = fz_transform_point (xy, pdim->ctm);
+-                printd ("a %d %d %d", pageno, (int) xy.x, (int) xy.y);
++                printd ("a %d %d %d", loc.page, (int) xy.x, (int) xy.y);
+             }
+ 
+             state.gen++;
+diff --git a/main.ml b/main.ml
+index a2f439c..263ac06 100644
+--- a/main.ml
++++ b/main.ml
+@@ -53,7 +53,7 @@ let adderrmsg src msg =
+   S.newerrmsgs := true;
+   Glutils.postRedisplay src
+ 
+-let settextfmt fmt = Printf.kprintf (fun s -> S.text := s) fmt
++let settextfmt fmt = Printf.ksprintf (fun s -> S.text := s) fmt
+ let impmsg fmt = Printf.ksprintf (fun s -> showtext '!' s) fmt
+ let adderrfmt src fmt = Printf.ksprintf (fun s -> adderrmsg src s) fmt
+ 
+diff --git a/utils.ml b/utils.ml
+index 80eccde..60bce66 100644
+--- a/utils.ml
++++ b/utils.ml
+@@ -26,7 +26,7 @@ let exntos = function
+ 
+ let onoffs = function | true -> "on" | false -> "off"
+ 
+-let error fmt = Printf.kprintf failwith fmt
++let error fmt = Printf.ksprintf failwith fmt
+ 
+ module IntSet = Set.Make (struct type t = int let compare = (-) end)
+ 
+@@ -182,7 +182,7 @@ let filecontents path =
+      s
+ 
+ let getcmdoutput errfun cmd =
+-  let reperror fmt = Printf.kprintf errfun fmt in
++  let reperror fmt = Printf.ksprintf errfun fmt in
+   let clofail s e = error "failed to close %s: %s" s e in
+   match Unix.pipe () with
+   | exception exn ->
+@@ -249,7 +249,7 @@ let r32 s pos = ((r16 s (pos+2)) lsl 16) lor (r16 s pos)
+ let r32s s pos = Bytes.get_int32_le s pos |> Int32.to_int
+ 
+ let vlogf = ref ignore
+-let vlog fmt = Printf.kprintf !vlogf fmt
++let vlog fmt = Printf.ksprintf !vlogf fmt
+ 
+ let pipef ?(closew=true) cap f cmd =
+   match Unix.pipe () with
