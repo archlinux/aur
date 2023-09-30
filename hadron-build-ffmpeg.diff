@@ -1,5 +1,5 @@
 diff --git a/packages/hadron-build/lib/target.js b/packages/hadron-build/lib/target.js
-index 7cdfc91c9..46bea1d13 100644
+index ca5fb7610..3dcc717e6 100644
 --- a/packages/hadron-build/lib/target.js
 +++ b/packages/hadron-build/lib/target.js
 @@ -10,7 +10,6 @@ const path = require('path');
