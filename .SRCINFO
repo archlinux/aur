@@ -1,6 +1,6 @@
 pkgbase = python-anesthetic
 	pkgdesc = nested sampling post-processing
-	pkgver = 2.3.5
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/handley-lab/anesthetic
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-anesthetic
 	depends = python-pandas
 	provides = anesthetic
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/a/anesthetic/anesthetic-2.3.5.tar.gz
-	sha256sums = f7828ee290f1f949382de8f6c672eb4333dd6b27e3ed8cdffc88a78f97c7417b
+	source = https://files.pythonhosted.org/packages/source/a/anesthetic/anesthetic-2.4.0.tar.gz
+	sha256sums = 7b367bcffa0168c4ec97c47c12b8f313ca2abfde7ab1a5303811265bf02f83aa
 
 pkgname = python-anesthetic
