@@ -2,16 +2,16 @@
 
 pkgname=cutefish-settings
 pkgver=0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
 url="https://github.com/cutefishos/settings"
 license=('GPL')
 groups=('cutefish')
-depends=('fishui' 'fontconfig' 'freetype2' 'icu' 'kcoreaddons' 'libxcursor'
-         'modemmanager-qt' 'networkmanager-qt'
+depends=('fishui' 'fontconfig' 'freetype2' 'icu' 'kcoreaddons5' 'libxcursor'
+         'modemmanager-qt5' 'networkmanager-qt5'
          # qml:
-         'bluez-qt' 'bluedevil' 'libcutefish' 'qt5-quickcontrols')
+         'bluez-qt5' 'bluedevil' 'libcutefish' 'qt5-quickcontrols')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/settings/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         $pkgname-qt5_create_translation.patch::https://github.com/cutefishos/settings/pull/74.patch)
