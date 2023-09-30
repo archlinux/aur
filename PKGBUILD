@@ -7,11 +7,11 @@ pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
 arch=('x86_64')
 url="https://sourceforge.net/projects/snmpb/"
 license=('GPL2')
-makedepends=(bison flex qt5-base libtomcrypt)
+makedepends=(bison flex qt5-base git)
 source=("$pkgname-code::git+https://git.code.sf.net/p/snmpb/code"
-		"git+https://gitlab.ibr.cs.tu-bs.de/nm/libsmi.git"
-		"libtomcrypt-1.18.2.tar.gz::https://github.com/libtom/libtomcrypt/archive/refs/tags/v1.18.2.tar.gz"
-		"qwt-6.2.0.zip::https://sourceforge.net/projects/qwt/files/qwt/6.2.0/qwt-6.2.0.zip/download")
+	"git+https://gitlab.ibr.cs.tu-bs.de/nm/libsmi.git"
+	"libtomcrypt-1.18.2.tar.gz::https://github.com/libtom/libtomcrypt/archive/refs/tags/v1.18.2.tar.gz"
+	"qwt-6.2.0.zip::https://sourceforge.net/projects/qwt/files/qwt/6.2.0/qwt-6.2.0.zip/download")
 sha256sums=('SKIP'
             'SKIP'
             'd870fad1e31cb787c85161a8894abb9d7283c2a654a9d3d4c6d45a1eba59952c'
@@ -59,11 +59,11 @@ build() {
 }
 
 package() {
-	# install package
+	# Install package
 	cd "$srcdir"/$pkgname-$pkgver
 	make INSTALL_PREFIX="$pkgdir"/usr install
 
-	# install license files
+	# Install license files
 	install -Dvm644 "$srcdir"/$pkgname-$pkgver/license.txt \
 		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
