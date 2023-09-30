@@ -6,8 +6,8 @@
 _pkgbase=bemenu
 pkgbase=bemenu-git
 pkgname=(bemenu-git bemenu-ncurses-git bemenu-x11-git bemenu-wayland-git)
-pkgver=0.6.7.r1.g81b5091
-pkgrel=2
+pkgver=0.6.16.r4.ga04dea3
+pkgrel=1
 
 # Wayland without wlroots is not supported.
 # https://github.com/Cloudef/bemenu/issues/79#issuecomment-572867783
@@ -16,7 +16,11 @@ url='https://github.com/Cloudef/bemenu'
 arch=(x86_64)
 license=(GPL3 LGPL3)
 
-makedepends=(libxinerama libxkbcommon ncurses pango wayland wayland-protocols wlroots scdoc)
+makedepends=(
+	git ncurses scdoc
+	libxinerama libxkbcommon pango
+	wayland wayland-protocols wlroots
+)
 
 source=(git+https://github.com/Cloudef/bemenu)
 sha256sums=('SKIP')

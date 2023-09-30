@@ -1,19 +1,20 @@
 pkgbase = bemenu-git
 	pkgdesc = Dynamic menu library and client program inspired by dmenu
-	pkgver = 0.6.7.r1.g81b5091
-	pkgrel = 2
+	pkgver = 0.6.16.r4.ga04dea3
+	pkgrel = 1
 	url = https://github.com/Cloudef/bemenu
 	arch = x86_64
 	license = GPL3
 	license = LGPL3
+	makedepends = git
+	makedepends = ncurses
+	makedepends = scdoc
 	makedepends = libxinerama
 	makedepends = libxkbcommon
-	makedepends = ncurses
 	makedepends = pango
 	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = wlroots
-	makedepends = scdoc
 	source = git+https://github.com/Cloudef/bemenu
 	sha256sums = SKIP
 
