@@ -1,6 +1,6 @@
 pkgbase = qwertone-git
 	pkgdesc = Turns your PC into musical instrument
-	pkgver = v0.1.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/azymohliad/qwertone
 	arch = x86_64
