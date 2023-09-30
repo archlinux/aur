@@ -1,4 +1,4 @@
-From f597ecb1b6cc9e2bf5ba1bc700657f9503a4c597 Mon Sep 17 00:00:00 2001
+From 3d42c26b0a850af6efdb3db396abb25be8ecf4e6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 7 Oct 2020 12:13:37 +0200
 Subject: [PATCH 02/12] Fix finding D-Bus
@@ -20,5 +20,5 @@ index e2a58790c4..8e0ed81f89 100644
 +    set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB ${DBus1_LIBRARY})
 +endif()
 -- 
-2.41.0
+2.42.0
 

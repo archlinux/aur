@@ -1,4 +1,4 @@
-From 7dcf8d7aee9f42832c980f2fd6f6a78502d2f9be Mon Sep 17 00:00:00 2001
+From ef814f75d92d6f0111da272c28eaee6ea7943127 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 08/12] Fix crashes in rasterization code using setjmp
@@ -28,7 +28,7 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 0e04b722b4..56941e6224 100644
+index 84c51c75cf..c7d20b5e7d 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
 @@ -175,7 +175,7 @@ qt_internal_add_module(Gui
@@ -235,7 +235,7 @@ index 3c222c49e1..813cfc08dc 100644
          *araster = 0;
          return ErrRaster_Memory_Overflow;
 diff --git a/src/gui/painting/qt_attribution.json b/src/gui/painting/qt_attribution.json
-index d0f2468e6a..d1d7d2e17a 100644
+index 59c03053e9..43d9033d38 100644
 --- a/src/gui/painting/qt_attribution.json
 +++ b/src/gui/painting/qt_attribution.json
 @@ -4,7 +4,7 @@
@@ -248,5 +248,5 @@ index d0f2468e6a..d1d7d2e17a 100644
          "Description": "FreeType is a freely available software library to render fonts.",
          "Homepage": "http://www.freetype.org",
 -- 
-2.41.0
+2.42.0
 
