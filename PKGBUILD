@@ -8,7 +8,7 @@
 #
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.5.r1203936.7af4e65956a8
+pkgver=6.6.r1217087.22fcf2404f56
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
@@ -130,8 +130,8 @@ _package() {
   ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
