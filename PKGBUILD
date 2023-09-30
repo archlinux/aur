@@ -9,7 +9,7 @@
 _pkgname=godot
 pkgname=godot3
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
 license=(MIT)
@@ -66,16 +66,17 @@ build() {
 package() {
   # make godot3 compatible with godot
   cd "$srcdir/$_pkgname-$pkgver-stable/misc/dist/linux/"
+  gzip -9 ${_pkgname}.6
 
   sed -i 's/Godot Engine/Godot Engine 3 LTS/g' org.godotengine.Godot.desktop
   
   cd $srcdir/$_pkgname-$pkgver-stable
   install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+    "$pkgdir/usr/share/applications/org.godotengine.Godot3.desktop"
   install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   install -Dm755 bin/godot.x11.opt.tools.64 "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/$pkgname.6"
+  install -Dm644 misc/dist/linux/godot.6.gz "$pkgdir/usr/share/man/man6/$pkgname.6"
   install -Dm644 misc/dist/linux/org.godotengine.Godot.xml \
     "$pkgdir/usr/share/mime/packages/org.godotengine.Godot3.xml"
 }
