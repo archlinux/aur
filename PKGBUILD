@@ -2,7 +2,7 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20230827
+pkgver=20230930
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
@@ -12,88 +12,88 @@ depends=(akonadi-calendar
          akonadi-contacts
          akonadi-mime
          akonadi-notes
-         attica
-         baloo
+         attica5
          baloo-widgets
+         baloo5
          bash-completion
-         bluez-qt
+         bear
+         bluez-qt5
          breeze-icons
          calendarsupport
-         clang
          cmake
          extra-cmake-modules
-         frameworkintegration
+         frameworkintegration5
          gcc
          gettext
          git
-         kactivities
-         kactivities-stats
-         karchive
-         kauth
-         kbookmarks
-         kcalendarcore
-         kcmutils
-         kcodecs
-         kcompletion
-         kconfig
-         kconfigwidgets
-         kcontacts
-         kcoreaddons
-         kcrash
-         kdav
-         kdbusaddons
-         kdeclarative
+         kactivities-stats5
+         kactivities5
+         karchive5
+         kauth5
+         kbookmarks5
+         kcalendarcore5
+         kcmutils5
+         kcodecs5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcontacts5
+         kcoreaddons5
+         kcrash5
+         kdav5
+         kdbusaddons5
+         kdeclarative5
          kdelibs4support
          kdesignerplugin
-         kdesu
-         kdnssd
-         kdoctools
+         kdesu5
+         kdnssd5
+         kdoctools5
          kemoticons
-         kfilemetadata
-         kglobalaccel
-         kguiaddons
-         kholidays
+         kfilemetadata5
+         kglobalaccel5
+         kguiaddons5
+         kholidays5
          khtml
-         ki18n
-         kiconthemes
+         ki18n5
+         kiconthemes5
          kidentitymanagement
-         kidletime
+         kidletime5
          kimap
          kinit
-         kio
+         kio5
          kirigami-addons
          kirigami2
-         kitemmodels
-         kitemviews
-         kjobwidgets
+         kitemmodels5
+         kitemviews5
+         kjobwidgets5
          kjs
          kmailtransport
          kmime
-         knewstuff
-         knotifications
-         knotifyconfig
+         knewstuff5
+         knotifications5
+         knotifyconfig5
          konqueror
-         kpackage
-         kparts
-         kpeople
+         kpackage5
+         kparts5
+         kpeople5
          kpeoplevcard
          kpimtextedit
-         kplotting
-         kpty
-         kquickcharts
+         kplotting5
+         kpty5
+         kquickcharts5
          kross
-         krunner
-         kservice
+         krunner5
+         kservice5
          ktextaddons
-         ktexteditor
-         ktextwidgets
-         kunitconversion
-         kwallet
-         kwayland
+         ktexteditor5
+         ktextwidgets5
+         kunitconversion5
+         kwallet5
+         kwayland5
          kweathercore
-         kwidgetsaddons
-         kwindowsystem
-         kxmlgui
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
          libakonadi
          libkcddb
          libkcompactdisc
@@ -107,25 +107,24 @@ depends=(akonadi-calendar
          libkscreen
          libksysguard
          libktorrent
-         linux-lts-headers
          mailcommon
          make
-         modemmanager-qt
-         networkmanager-qt
+         modemmanager-qt5
+         networkmanager-qt5
          ninja
          plasma-framework
-         prison
+         prison5
          pulseaudio-qt
-         purpose
-         qqc2-desktop-style
+         purpose5
+         qqc2-desktop-style5
          qt5-base
          qt5-declarative
          qt5-webengine
-         solid
-         sonnet
-         syndication
-         syntax-highlighting
-         threadweaver)
+         solid5
+         sonnet5
+         syndication5
+         syntax-highlighting5
+         threadweaver5)
 optdepends=(kate
             kdevelop
             plasma-sdk
