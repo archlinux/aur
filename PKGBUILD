@@ -3,10 +3,10 @@
 _pypiname=PyQt5-stubs
 pkgname=python-pyqt5-stubs
 pkgver=5.15.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PEP561 stub files for the PyQt5 framework'
-url="https://github.com/stlehmann/PyQt5-stubs"
-makedepends=('python-pip')
+url="https://github.com/python-qt-tools/PyQt5-stubs"
+makedepends=('python-pip' 'python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pypiname:0:1}/$_pypiname/$_pypiname-$pkgver.tar.gz")

@@ -1,11 +1,12 @@
 pkgbase = python-pyqt5-stubs
 	pkgdesc = PEP561 stub files for the PyQt5 framework
 	pkgver = 5.15.6.0
-	pkgrel = 1
-	url = https://github.com/stlehmann/PyQt5-stubs
+	pkgrel = 2
+	url = https://github.com/python-qt-tools/PyQt5-stubs
 	arch = any
 	license = GPL3
 	makedepends = python-pip
+	makedepends = python-setuptools
 	source = https://pypi.org/packages/source/P/PyQt5-stubs/PyQt5-stubs-5.15.6.0.tar.gz
 	sha256sums = 91270ac23ebf38a1dc04cd97aa852cd08af82dc839100e5395af1447e3e99707
 
