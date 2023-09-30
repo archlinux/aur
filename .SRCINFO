@@ -1,0 +1,26 @@
+pkgbase = anura
+	pkgdesc = A fully-featured game engine, the tech behind the spectacular Frogatto & Friends
+	pkgver = 4.0.0
+	pkgrel = 4
+	url = https://github.com/anura-engine/anura
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	makedepends = glm
+	depends = libgl
+	depends = mesa
+	depends = glew
+	depends = cairo
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	depends = libpng
+	depends = boost-libs
+	source = git+https://github.com/anura-engine/anura.git#tag=v4.0.0
+	source = git+https://github.com/sweetkristas/imgui.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = anura
