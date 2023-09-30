@@ -1,21 +1,21 @@
 pkgbase = python-sncosmo-doc
 	pkgdesc = Documentation for SNCosmo
-	pkgver = 2.10.0
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://sncosmo.readthedocs.io
 	arch = any
 	license = BSD
-	makedepends = python-sncosmo=2.10.0
+	makedepends = python-sncosmo=2.10.2
 	makedepends = python-numpydoc
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-gallery
 	makedepends = python-iminuit
 	makedepends = graphviz
-	source = https://github.com/sncosmo/sncosmo/archive/v2.10.0.tar.gz
+	source = https://github.com/sncosmo/sncosmo/archive/v2.10.2.tar.gz
 	source = https://c3.lbl.gov/nugent/templates/sn1a_flux.v1.2.dat.gz
 	source = https://c3.lbl.gov/nugent/templates/sn2p_flux.v1.2.dat.gz
 	source = doc-use-local-data.patch
-	md5sums = 088188d5e3c19f220eaa8b48a3ae5d2a
+	md5sums = bca954e1c65dec518d91779d0d60679c
 	md5sums = 86a80d4b02030abbeb9941131053082a
 	md5sums = 121927c70484bf2f11298465210fc1a1
 	md5sums = f277218e6347977f675dada2ad5859ee
