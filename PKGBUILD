@@ -5,7 +5,7 @@
 
 pkgname=moon
 pkgdesc='Task runner and repo management tool for the web ecosystem'
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 license=('MIT')
 _gh_owner='moonrepo'
@@ -14,10 +14,10 @@ url="https://github.com/${_gh_owner}/${_gh_repo}"
 arch=('x86_64' 'aarch64')
 makedepends=('cargo')
 options=('!lto')
-_sha='8dda1785423933eebdaf7a15f3f2d05cdeaacaf5'
+_sha='b09a9d1a864bba87f2cd692be09a3390fc00c98c'
 _short_sha="${_sha::7}"
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
-sha256sums=('3c1d2f9c6767f7b130d6ec098f3d4faee675107387c4f6b1e3f8c3abdaf4a5a7')
+sha256sums=('55f91074f0b2209032964a6ff619de98ce2d0a3540251cd1f8286049e89f05b8')
 
 prepare() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
