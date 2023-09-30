@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-fuzzy-app-search-git
 	pkgdesc = Fuzzy application search results for Gnome Search
-	pkgver = 5.0.14.r2.g0e3aa8a
-	pkgrel = 2
+	pkgver = 5.0.15.r0.g595fada
+	pkgrel = 1
 	url = https://gitlab.com/Czarlie/gnome-fuzzy-app-search
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell<=1:44.6
+	depends = gnome-shell>=1:45.0
 	provides = gnome-shell-extension-fuzzy-app-search
 	conflicts = gnome-shell-extension-fuzzy-app-search
 	conflicts = gnome-fuzzy-app-search
