@@ -3,7 +3,7 @@
 
 pkgname=seriousrunner
 pkginstdir=seriousrunner
-pkgver=1.1
+pkgver=1.1.1
 _srcname="Serious-Runner-$pkgver"
 pkgrel=1
 pkgdesc="Serious Runner program that loads and runs content created by users."
@@ -13,7 +13,7 @@ license=('GPL2')
 
 makedepends=('cmake' 'make' 'sed' 'qt5-base' 'libarchive' 'xz' 'bzip2')
 source=("https://github.com/tx00100xt/Serious-Runner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5a429ef0f4c649b7a883867e9ad297e6afdd6af6baa1639a5289476ce450e532')
+sha256sums=('530b421aa4fe1fe6fdf0e2ee9ac0f2b00861b28a9f277098b10f20a38fd337e0')
 
 build() {
 	mkdir "$_srcname"/build && cd "$_srcname"/build
