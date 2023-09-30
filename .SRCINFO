@@ -1,6 +1,6 @@
 pkgbase = python-pglast
 	pkgdesc = PostgreSQL language AST and statement prettifier
-	pkgver = 5.2
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://github.com/lelit/pglast
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-pglast
 	makedepends = python-sphinx
 	depends = python
 	depends = python-setuptools
-	source = python-pglast::git+https://github.com/lelit/pglast#commit=b3621287060efee72af488161c60dd61cc53bce7
+	source = python-pglast::git+https://github.com/lelit/pglast#commit=3e83be0a36b092f191e8c4a4f8ef54974be72414
 	source = github.com-pganalyze-libpg_query::git+https://github.com/pganalyze/libpg_query
 	b2sums = SKIP
 	b2sums = SKIP
