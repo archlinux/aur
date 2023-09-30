@@ -7,15 +7,14 @@ pkgname=(
   "vapoursynth-plugin-${_plug}-bin"
 #  "avisynth-plugin-${_plug}-bin"
 )
-pkgver=2.31
-pkgrel=3
+pkgver=2053.0.0.501
+pkgrel=1
 pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
 arch=('x86_64')
 url='https://www.rationalqm.us/dgdecnv/dgdecnv.html'
 license=('custom:Donald A. Graft')
-source=("https://www.rationalqm.us/dgdecnv/binaries/dgdecnv_linux_${pkgver/./}.zip")
-#        https://www.rationalqm.us/dgdecnv/binaries/dgdecnv_linux_231.zip
-sha256sums=('5dce497d6bd3f3f24cc4a44dffb62508dd419a21269a3e77dad86505de0ef380')
+source=("https://www.rationalqm.us/dgdecnv/binaries/dgdecnv_linux_${pkgver##*.}.zip")
+sha256sums=('b3fbf9c7b694a0d4f826c1ac83d239523be7dc35013925c52929e1244d80ca48')
 DLAGENTS=('https::/usr/bin/curl -A "Chrome/88.0.4324.182" -o %o %u')
 
 package_dgindexnv-bin() {
@@ -27,7 +26,7 @@ package_dgindexnv-bin() {
   conflicts=(
     'dgindexnv'
     'dgnvindex-bin'
-     )
+  )
   provides=('dgindexnv')
   replaces=('dgnvindex-bin')
 
