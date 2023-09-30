@@ -1,6 +1,6 @@
 pkgbase = libime-jyutping-git
 	pkgdesc = A library make use of libime to implement jyutping (粵拼) input method, also includes engine for fcitx 5 (git version)
-	pkgver = 1.0.6.r0.gfaa5cf2
+	pkgver = 1.0.7.r0.ge85e70e
 	pkgrel = 1
 	url = https://github.com/fcitx/libime-jyutping
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = libime-jyutping-git
 	license = GPL3
 	makedepends = boost
 	makedepends = extra-cmake-modules
+	makedepends = fmt
 	makedepends = ninja
 	makedepends = git
 	makedepends = python

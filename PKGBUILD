@@ -2,14 +2,14 @@
 
 _pkgname=libime-jyutping
 pkgname=${_pkgname}-git
-pkgver=1.0.6.r0.gfaa5cf2
+pkgver=1.0.7.r0.ge85e70e
 pkgrel=1
 pkgdesc="A library make use of libime to implement jyutping (粵拼) input method, also includes engine for fcitx 5 (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/libime-jyutping"
 license=('LGPL' 'GPL3')
 depends=('fcitx5-chinese-addons-git' 'fcitx5-git')
-makedepends=('boost' 'extra-cmake-modules' 'ninja' 'git' 'python')
+makedepends=('boost' 'extra-cmake-modules' 'fmt' 'ninja' 'git' 'python')
 source=("git+https://github.com/fcitx/libime-jyutping.git")
 sha512sums=('SKIP')
 
