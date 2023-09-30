@@ -15,7 +15,7 @@ makedepends=('nodejs' 'pnpm' 'fnm' 'rust' 'dbus')
 
 source=("${reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('3c4e3b3978b87ef64f25f450d920f5ee877f505e206b595814741bba43670aaa8894c338460170fb8ef96d88dc614e844b1b5c1a70c30c13a8af30771a479e1f')
+sha512sums=('9c65867544615a32771eb973c7fd3000885217b60a204f94325d2ef71b2c784e0f3df91a6fc8f7d00f15ec84ec58f19d92409038554118812f17560e738e939f')
 
 build(){
     fnm install 20.5.0 && fnm use 20.5.0
