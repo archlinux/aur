@@ -1,0 +1,24 @@
+pkgbase = modemmanager-qt5
+	pkgdesc = Qt wrapper for ModemManager DBus API
+	pkgver = 5.110.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	depends = modemmanager
+	depends = qt5-base
+	provides = modemmanager-qt=5.110.0
+	conflicts = modemmanager-qt<5.111
+	replaces = modemmanager-qt<5.111
+	source = https://download.kde.org/stable/frameworks/5.110/modemmanager-qt-5.110.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.110/modemmanager-qt-5.110.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = 3b9c2a548b3032a180088b59f93955f415ea19b1ec7f0639ce01e1d4b31a0423
+	sha256sums = SKIP
+
+pkgname = modemmanager-qt5
