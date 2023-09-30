@@ -1,8 +1,8 @@
 diff --git a/packages/compass-preferences-model/src/global-config.ts b/packages/compass-preferences-model/src/global-config.ts
-index e808198eb..f4443e6cd 100644
+index 30d287c2f..a8477996d 100644
 --- a/packages/compass-preferences-model/src/global-config.ts
 +++ b/packages/compass-preferences-model/src/global-config.ts
-@@ -196,8 +196,6 @@ export interface ParsedGlobalPreferencesResult {
+@@ -195,8 +195,6 @@ export interface ParsedGlobalPreferencesResult {
    preferenceParseErrors: string[];
  }
  
@@ -11,7 +11,7 @@ index e808198eb..f4443e6cd 100644
  export async function parseAndValidateGlobalPreferences(
    sources: GlobalPreferenceSources = {}
  ): Promise<ParsedGlobalPreferencesResult> {
-@@ -206,6 +204,16 @@ export async function parseAndValidateGlobalPreferences(
+@@ -205,6 +203,16 @@ export async function parseAndValidateGlobalPreferences(
    );
    let argv = sources.argv;
    if (!argv) {
@@ -28,7 +28,7 @@ index e808198eb..f4443e6cd 100644
      argv = process.argv.slice(argvStartIndex);
    }
    const cliPreferences = parseCliArgs(argv);
-@@ -295,11 +303,17 @@ export function getHelpText(): string {
+@@ -294,11 +302,17 @@ export function getHelpText(): string {
      text += `  ${path}\n`;
    }
    if (globalConfigPaths.length > 0) {
