@@ -10,6 +10,6 @@ pkgbase = nzb-monkey-go-bin
 	provides = nzb-monkey-go
 	conflicts = nzb-monkey-go-git
 	source = https://github.com/Tensai75/nzb-monkey-go/releases/download/v0.1.7/nzb-monkey-go_v0.1.7-linux-amd64.zip
-	sha256sums = afadbbac0203054d7fb0047abae1f006bdae59f500e44d91cc7ba904de404722
+	sha256sums = 51dcbbb91be60c6d00631fda3136470824d4ffdef952b291121b9ebb4e9b0400
 
 pkgname = nzb-monkey-go-bin
