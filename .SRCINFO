@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-translations
 	pkgdesc = A cross-platform application and UI framework (Translations, android)
-	pkgver = 6.5.2
+	pkgver = 6.5.3
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = android-aarch64-qt6-translations
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.5/6.5.2/submodules/qttranslations-everywhere-src-6.5.2.tar.xz
-	sha256sums = 337c45637e757e754c2f0ea65c20de3e6e53a841dda1253db15baa622515beeb
+	source = https://download.qt.io/official_releases/qt/6.5/6.5.3/submodules/qttranslations-everywhere-src-6.5.3.tar.xz
+	sha256sums = 83b44c0ddcf9c28e836f63c21a3fea2fb2c24cb630eefc79984f5bec44e949e3
 
 pkgname = android-aarch64-qt6-translations
