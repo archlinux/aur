@@ -1,11 +1,11 @@
 pkgbase = oasis-node
 	pkgdesc = Node for Oasis Network blockchain
-	pkgver = 22.2.5
+	pkgver = 22.2.11
 	pkgrel = 1
 	url = https://github.com/oasisprotocol/oasis-core
 	arch = any
 	provides = oasis-node
-	source = https://github.com/oasisprotocol/oasis-core/releases/download/v22.2.5/oasis_core_22.2.5_linux_amd64.tar.gz
-	md5sums = 06807e44f56c82a4aae91d657acbd183
+	source = https://github.com/oasisprotocol/oasis-core/releases/download/v22.2.11/oasis_core_22.2.11_linux_amd64.tar.gz
+	md5sums = 2374b9ff3a1a96cb6c633696327a381a
 
 pkgname = oasis-node
