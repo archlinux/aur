@@ -1,6 +1,6 @@
 pkgbase = nzb-monkey-go-bin
 	pkgdesc = NZBLNK-URI handler supporting SABnzbd, NZBGet & Synology DS (Go-based)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Tensai75/nzb-monkey-go
 	install = nzb-monkey-go.install
@@ -9,7 +9,7 @@ pkgbase = nzb-monkey-go-bin
 	optdepends = xdg-utils: register nzblink handler
 	provides = nzb-monkey-go
 	conflicts = nzb-monkey-go-git
-	source = https://github.com/Tensai75/nzb-monkey-go/releases/download/v0.1.6/nzb-monkey-go_v0.1.6-amd64-linux.zip
-	sha256sums = 2b745dcc0992e3da09bece3d5470d7235a4c5e620c0408233205638dbc108c32
+	source = https://github.com/Tensai75/nzb-monkey-go/releases/download/v0.1.7/nzb-monkey-go_v0.1.7-linux-amd64.zip
+	sha256sums = afadbbac0203054d7fb0047abae1f006bdae59f500e44d91cc7ba904de404722
 
 pkgname = nzb-monkey-go-bin
