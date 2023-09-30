@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-declarative
-_qtver=6.5.2
+_qtver=6.5.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -23,8 +23,8 @@ groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Exclude-qmltime-when-cross-compiling.patch')
-sha256sums=('f3a11fe54e9fac77c649e46e39f1cbe161e9efe89bad205115ba2861b1eb8719'
-            '8fb0047a8dd719b3ad22963392d65c4f5e15f9eae331422ca6d2bf2caa3137aa')
+sha256sums=('404dd6d2d206bb882ecd6622f0c708c9d6bd724a4d83776e13c49761c159d215'
+            'c0eef3b3326f906e829279c224abd30dbd3d887aacd563e68a1ec0732c299214')
 
 prepare () {
   cd $_pkgfqn
