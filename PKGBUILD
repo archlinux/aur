@@ -3,9 +3,8 @@
 # Contributor: Pavel Lymarev <x-user at bk dot ru>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
-
 pkgname=openjk-git
-pkgver=r3722.802c9b1b0
+pkgver=r3732.26b871955
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=("x86_64")
@@ -27,7 +26,6 @@ conflicts=(
 )
 source=(
     "${pkgname}::git+https://github.com/JACoders/OpenJK.git"
-    "fix-gcc13.patch::https://github.com/JACoders/OpenJK/pull/1155.patch"
     'openjkmp.png'
     'openja.png'
     'openjo.png'
@@ -37,7 +35,6 @@ source=(
 )
 b2sums=(
     'SKIP'
-    '5b7fac065e7613065b6ee0c16a891338d8770bf6af5e6c2b00414c867637ae9a43b3cdbd1bac18dbcf94467567a2e894cd2fef83a07b329ef3d9655e86a9c5b4'
     'b38394fdd39de7b9cb2dc32322effedfb157c51811d36c9e26c4bc41105a0915669f22e038a8bcfdce3f6226b0abef5eb123bec405eb4a63ea9f064de92639b5'
     '37b0a14fb3951e6c3823f9f3c7ab6c98a7ef8ee9458a6cf8f10c8659b66a14a6d46da8d2c2105d2ccd47065e64c292e42a94a3ebd05b0bc3ed988c90bd322e29'
     'eca10a82232e9c0cebf60fa2577f519947cde8091072794a997a54b9c7109cc08d38b0e4119dda0e7ee9340b9b06b540b9e40ec0c7c27ec8868eea9e62d19a8c'
@@ -51,11 +48,6 @@ pkgver() {
     printf "r%s.%s"                  \
         "$(git rev-list --count HEAD)"   \
         "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    # Fix building error with GCC 13
-    patch --directory="$pkgname" --forward --strip=1 --input="${srcdir}/fix-gcc13.patch"
 }
 
 build() {
