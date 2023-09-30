@@ -4,14 +4,32 @@
 
 pkgname=ksysguard
 pkgver=5.22.0
-_dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='Track and control the processes running in your system'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(ksystemstats)
-makedepends=(extra-cmake-modules kdoctools)
+depends=(gcc-libs
+         glibc
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kdbusaddons5
+         ki18n5
+         kiconthemes5
+         kio5
+         knewstuff5
+         knotifications5
+         ksystemstats
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
+         libksysguard
+         lm_sensors
+         qt5-base)
+makedepends=(extra-cmake-modules
+             kdoctools5)
 source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('0f9c624e5fbb2aee906d8d9563c5a7eb09eaf38bc8e4382c072f9e6d8854622d'
             'SKIP')
