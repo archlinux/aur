@@ -4,7 +4,7 @@
 
 pkgname=crowdsec-bin
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
@@ -32,11 +32,11 @@ source=(
 	crowdsec-bin.install
 )
 sha256sums=('489d2dbd009f1255714f7448116562c4608452a8010ee4677803c10e02a7fbbf'
-            '34d216d8fa8832c854cc6e15b793be60878717e019e060fa57fa84e6ac32ace7')
+	'3a792ee7328f5fcb2b397afffad1981efe19d6de0606ea25953ede6b12872955')
 
 package() {
 	# create directories
-	install -dm755 $pkgdir{/usr/lib/{crowdsec/plugins,systemd/system},/etc/crowdsec{,/hub,/notifications,/console,/acquis.d,/scenarios,/postoverflows,/collections},/usr/bin,/var/lib/crowdsec/data/,/opt/crowdsec/}
+	install -dm755 $pkgdir{/usr/lib/{crowdsec/plugins,systemd/system},/etc/crowdsec{,/hub,/notifications,/console,/acquis.d,/scenarios,/postoverflows,/collections,/bouncers},/usr/bin,/var/lib/crowdsec/data/,/opt/crowdsec/}
 
 	cd "$srcdir/crowdsec-v${pkgver}"
 	sed -ie 's|plugin_dir:.*|plugin_dir: /usr/lib/crowdsec/plugins/|' config/config.yaml
