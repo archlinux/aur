@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-ibm-runtime
 	pkgdesc = IBM Client for Qiskit Runtime
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ibm-runtime
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-qiskit-ibm-runtime
 	depends = python-typing_extensions
 	depends = python-urllib3
 	depends = python-websocket-client
-	source = qiskit-ibm-runtime-0.12.1.tar.gz::https://github.com/Qiskit/qiskit-ibm-runtime/archive/0.12.1.tar.gz
-	b2sums = 641f2bf17881ef41d2591c52e0356189ea887747f683a338e08ffa7ec07c32560d97d4b91b4038bd42c408def3e2ce74356feba25d3e2437b6386d08930b15bc
+	source = qiskit-ibm-runtime-0.12.2.tar.gz::https://github.com/Qiskit/qiskit-ibm-runtime/archive/0.12.2.tar.gz
+	b2sums = 3bb76456b24836ea52b9fb1c37f8919f7bac075e956cdd4e5d8b5fb43c01e3c9296072556da7add4146fb15d3ab8f8403db68c7f67cd238e94babb7470278bfd
 
 pkgname = python-qiskit-ibm-runtime
