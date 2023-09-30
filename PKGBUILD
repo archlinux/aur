@@ -2,8 +2,8 @@
 
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
-pkgver=0.8.3
-pkgrel=3
+pkgver=0.8.4
+pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
     aarch64
@@ -57,10 +57,10 @@ optdepends=('webkit2gtk-hvml: to support two HVML-specific attributes hvml-handl
 backup=()
 options=('!strip')
 install=
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver//./-}.tar.gz"
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz"
 #         "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch"
         )
-sha256sums=('61f8a9819245bc571dc5bb32c8b3af1d6dc2d0b8a2c9d763d3057b615f7d7dc5')
+sha256sums=('901cd7330290dea47e0270b869ded7b5e7cd3596461ad92257c8ae72753ae2b7')
 
 prepare() {
     install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
@@ -83,11 +83,16 @@ EOF
     install -Dm0755 /dev/stdin ${srcdir}/run-xguipro << EOF
 #!/usr/bin/env bash
 
-if [ ! -f /var/tmp/purcmc.sock ] && ! lsof /var/tmp/purcmc.sock; then
+set -e
+
+purc_socket="/var/tmp/purcmc.sock"
+
+if [ ! -f "$socket_file"  ] && ! lsof "$socket_file"; then
     xguipro
 else
-    if [ -f /var/tmp/purcmc.sock ]; then
-        rm -rf /var/tmp/purcmc.sock
+    if [ -f "$socket_file" ] && lsof "$socket_file"; then
+        fuser -k "$socket_file"
+        rm -rf "$socket_file"
     fi
     xguipro
 fi
@@ -105,7 +110,7 @@ package_xguipro-gtk3() {
         libsoup)
     options=('!strip')
 
-    cd "${srcdir}/xGUI-Pro-ver-${pkgver//./-}/"
+    cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
 
 # # Ninja build
 # # see：https://wiki.archlinux.org/title/CMake_package_guidelines
@@ -142,7 +147,7 @@ package_xguipro-gtk3() {
     ninja -C build-gtk3
 
 # ninja install
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/xGUI-Pro-ver-${pkgver//./-}/build-gtk3 install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk3 install
 
     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh

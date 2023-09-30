@@ -1,7 +1,7 @@
 pkgbase = xguipro
 	pkgdesc = xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.
-	pkgver = 0.8.3
-	pkgrel = 3
+	pkgver = 0.8.4
+	pkgrel = 1
 	url = https://github.com/HVML/xGUI-Pro
 	arch = x86_64
 	arch = aarch64
@@ -38,8 +38,8 @@ pkgbase = xguipro
 	provides = run-xguipro
 	conflicts = xguipro
 	options = !strip
-	source = xguipro-0.8.3.tar.gz::https://github.com/HVML/xGUI-Pro/archive/refs/tags/ver-0-8-3.tar.gz
-	sha256sums = 61f8a9819245bc571dc5bb32c8b3af1d6dc2d0b8a2c9d763d3057b615f7d7dc5
+	source = xguipro-0.8.4.tar.gz::https://github.com/HVML/xGUI-Pro/archive/refs/tags/ver-0.8.4.tar.gz
+	sha256sums = 901cd7330290dea47e0270b869ded7b5e7cd3596461ad92257c8ae72753ae2b7
 
 pkgname = xguipro-gtk3
 	pkgdesc = xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit. (gtk3)
