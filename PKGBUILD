@@ -2,7 +2,7 @@
 
 pkgbase=purc
 pkgname=purc
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -71,14 +71,14 @@ optdepends=('python-numpy: Scientific tools for Python'
     'webkit2gtk-hvml: Web content engine for GTK (HVML)'
     'webkit2gtk: Web content engine for GTK'
     'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver//./-}.tar.gz")
-sha256sums=('6b1df2b3cab2acff5f2c300df4f2a879662647e0db4ba622d38886f9c81a3baf')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
+sha256sums=('06a34ab3207dbb5e1751163e83f39f004fff3e6fc05ea9a9555b40326560618d')
 options=('!strip')
 
 build() {
-    cd "${srcdir}/PurC-ver-${pkgver//./-}/"
+    cd "${srcdir}/PurC-ver-${pkgver}/"
 
-    sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
+#     sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
 
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 # gcc build
@@ -108,5 +108,5 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/PurC-ver-${pkgver//./-}/build install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/PurC-ver-${pkgver}/build install
 }
