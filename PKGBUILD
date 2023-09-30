@@ -3,7 +3,7 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r16212.g2aeed6134'
+pkgver='r16304.gfa3b3c1e9'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
@@ -12,8 +12,8 @@ pkgdesc='The official GUI for MongoDB - git version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron24'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
+_electronpkg='electron26'
+depends=("$_electronpkg-bin" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
@@ -25,9 +25,9 @@ source=(
 	'fix-argv.diff'
 )
 sha512sums=('SKIP'
-            'ec052448ea2a375941944026b7b5419d48c67c324af5b75647376737a8f0f98f544cb335c948625c2e06f779a52c58ff2996561e1db977146faef4793d41d3e5'
+            '5a08541d194838b15b9bd7e58ea6998a8ffc3cb5ce2fe702d41d14dfd0a1becddfcee04f018a5fd9f0992d18b86c56d062f9b11ebda21e3b51815280198dc8da'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
-            '6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e')
+            'e350765c6694133b7dec1e1e8b4a5fa610c2d18ee8ea15ecc3aa6e63fb9bb1c5f64f4d2a67cc2a38738f5c1c843cc3120edf42627b1079f1cb73a1919398b8db')
 
 _sourcedirectory="$pkgname"
 
