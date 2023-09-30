@@ -1,7 +1,7 @@
 pkgbase = share-preview-bin
 	pkgdesc = Preview and debug websites metadata tags for social media share.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/rafaelmardojai/share-preview
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = share-preview-bin
 	depends = glib2
 	provides = share-preview
 	conflicts = share-preview
-	source = share-preview-bin-0.3.0.tar.xz::https://github.com/rafaelmardojai/share-preview/releases/download/0.3.0/share-preview-0.3.0-bin.tar.xz
-	sha256sums = 8b2eb00280011808aa54fe7fa76bb4f362c0361d4cb01b23d6c62fa843d0d24e
+	source = share-preview-bin-0.4.0.tar.xz::https://github.com/rafaelmardojai/share-preview/releases/download/0.4.0/share-preview-0.4.0-bin.tar.xz
+	sha256sums = 730c8183eeace31587955df6f1db35c78f787798b2cef901c3d8090b21fae367
 
 pkgname = share-preview-bin
