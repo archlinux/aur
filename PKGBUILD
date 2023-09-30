@@ -9,7 +9,7 @@ url="https://github.com/patrick-kidger/${_base}"
 license=(Apache)
 depends=(python-jax python-jaxtyping python-typing_extensions)
 makedepends=(python-build python-installer python-hatchling python-wheel)
-checkdepends=(python-pytest python-beartype)
+checkdepends=(python-pytest python-beartype python-optax)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('d5ecb3e6a91b0a1af4b273b8207a6d5d0fd4f82690c9598bd824fb0aa8c515d2bea2bbd7c32a1fea1ddad859d92c1b44ee1db0129bf01ea7f8353d1db6fe44a3')
 
