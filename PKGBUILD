@@ -4,6 +4,7 @@
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 # Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 # Contributor: whitels <2959471117@qq.com>
+# Contributor: wxt1221 <3264117476@qq.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.12.0
