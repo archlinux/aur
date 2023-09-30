@@ -1,0 +1,23 @@
+pkgbase = plank-player
+	pkgdesc = Multimedia Player for playing local files on Plasma Bigscreen allowing navigation with just a remote control
+	pkgver = 5.27.8
+	pkgrel = 2
+	url = https://plasma-bigscreen.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	depends = kirigami2
+	depends = ki18n5
+	depends = qt5-multimedia
+	depends = qt5-graphicaleffects
+	depends = hicolor-icon-theme
+	source = https://download.kde.org/stable/plasma/5.27.8/plank-player-5.27.8.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.8/plank-player-5.27.8.tar.xz.sig
+	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
+	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
+	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
+	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
+	sha256sums = 93180c8c2293190de55ab4171cda85af8961ae21a56d216547c0ff657cacedad
+	sha256sums = SKIP
+
+pkgname = plank-player
