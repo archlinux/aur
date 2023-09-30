@@ -2,7 +2,7 @@
 
 pkgname=stm8cubemx
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 _pkg_file_name=en.${pkgname}_v${pkgver}.zip
 pkgdesc="STM8CubeMX: a user-friendly software tool that uses graphical wizards to configure STM8 microcontrollers"
@@ -10,7 +10,9 @@ arch=(any)
 url="https://www.st.com/en/development-tools/stm8cubemx.html"
 license=('custom')
 groups=()
-depends=('java-runtime' 'bash')
+depends=('java-runtime>=17'
+    'archlinux-java-run'
+    'bash')
 makedepends=('imagemagick' 'xdg-user-dirs')
 checkdepends=()
 optdepends=()
@@ -59,7 +61,7 @@ EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/env bash
-exec java -jar /opt/${pkgname}/STM8CubeMX "\$@"
+exec archlinux-java-run --min 17 -- -jar /opt/${pkgname}/STM8CubeMX "\$@"
 EOF
 
     #icon and desktop file
