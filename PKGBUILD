@@ -2,7 +2,7 @@
 # Contributor: Blessing-Studio <3424968114@qq.com>
 pkgname=wonderlab-appimage
 _pkgname=wonderlab
-pkgver=1.2.7-1.1
+pkgver=1.2.7_1.1
 pkgrel=1
 pkgdesc="下一代跨平台 Minecraft 启动器"
 arch=('x86_64' 'aarch64')
