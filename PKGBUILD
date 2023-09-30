@@ -2,13 +2,33 @@
 
 pkgname=kjots
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A note taking application for KDE'
 url='https://www.kde.org/applications/utilities/kjots/'
 arch=(x86_64)
 license=(GPL)
-depends=(kontactinterface akonadi akonadi-notes kpimtextedit grantlee)
-makedepends=(extra-cmake-modules kdoctools ktextaddons)
+depends=(akonadi
+         akonadi-notes
+         gcc-libs
+         glibc
+         grantlee
+         kbookmarks5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         ki18n5
+         kio5
+         kitemmodels5
+         kmime
+         kontactinterface
+         kparts5
+         kpimtextedit
+         kwidgetsaddons5
+         ktextaddons
+         kxmlgui5
+         qt5-base)
+makedepends=(extra-cmake-modules
+             kdoctools5)
 source=(https://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('0f10f26aa1967ff99eaf247fdfd890971052e75fe2598eb6384cc89cd4b36092'
             'SKIP')
