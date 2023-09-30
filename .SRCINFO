@@ -1,13 +1,13 @@
 pkgbase = pdfgui_tools-bin
 	pkgdesc = A user interface tool developed in Qt and Python that integrates with poppler for PDF document management (binary release)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/TheWatcherMultiversal/pdfgui_tools
 	arch = x86_64
 	license = GPL3
 	depends = poppler
 	depends = python-pyqt5
-	source = https://github.com/TheWatcherMultiversal/pdfgui_tools/releases/download/v1.0.3/pdfgui_tools_stable-release_1.0.3_all.tar.gz
-	sha256sums = e0ccab1b5676d4f61bbab5955ee8f0a861a910afebb321443f9c08c6b9e4f66a
+	source = https://github.com/TheWatcherMultiversal/pdfgui_tools/releases/download/v1.0.4/pdfgui_tools_stable-release_1.0.4_all.tar.gz
+	sha256sums = 17d2259a99731665ff72e05e6edb8afe1dde944662651c8ac59584247131dd74
 
 pkgname = pdfgui_tools-bin
