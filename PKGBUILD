@@ -6,7 +6,7 @@
 _quake=vkQuake
 pkgname=vkquake
 pkgver=1.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
@@ -32,15 +32,9 @@ build() {
   [[ -d build ]] && rm -rf build
   mkdir build && cd build
 
-  export CFLAGS="$CFLAGS -DDO_USERDIRS=1"
-  export CXXFLAGS="$CXXFLAGS -DDO_USERDIRS=1"
-  meson setup ../ \
-  --prefix /usr \
-  --libexecdir lib \
-  --sbindir bin \
-  --buildtype plain \
-  --auto-features enabled \
-  --wrap-mode nodownload \
+  CFLAGS="$CFLAGS -DDO_USERDIRS=1"
+  CXXFLAGS="$CXXFLAGS -DDO_USERDIRS=1"
+  arch-meson \
   -D use_codec_mp3=enabled \
   -D use_codec_flac=enabled \
   -D use_codec_vorbis=enabled \
@@ -66,7 +60,7 @@ package() {
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
   install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/vkquake.png"
-  install -Dm644 "$srcdir/$pkgname.svg" "$pkgdir/usr/share/icons/vkquake.svg"
+  install -Dm644 "$srcdir/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/vkquake.svg"
   install -Dm644 readme.md "$pkgdir"/usr/share/doc/vkquake/readme.md
 
 }
