@@ -1,12 +1,11 @@
 pkgname=hath-rust
 pkgdesc="Hentai@Home but rusty"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
 license=("GPL3")
 options=("!lto") # https://github.com/briansmith/ring/issues/1444
-depends=("openssl")
 makedepends=("rust" "git")
 source=(
     "git+$url.git#tag=v$pkgver"

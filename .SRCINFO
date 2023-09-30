@@ -1,13 +1,12 @@
 pkgbase = hath-rust
 	pkgdesc = Hentai@Home but rusty
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/james58899/hath-rust
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = git
-	depends = openssl
 	options = !lto
 	source = git+https://github.com/james58899/hath-rust.git#tag=v1.0.2
 	source = hath-rust.service
