@@ -1,53 +1,72 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>                                                                                    │    │
 # Contributor: Crowdsec Team <debian@crowdsec.net>
 
 pkgname=crowdsec-bin
-_pkgname=crowdsec
-pkgver=1.4.6
+pkgver=1.5.4
 pkgrel=1
-pkgdesc="The open-source and collaborative IPS (binary version)"
-arch=('x86_64' 'aarch64')
-url="https://crowdsec.net"
+pkgdesc="The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI"
+arch=('any')
+url="https://github.com/crowdsecurity/crowdsec"
 license=('MIT')
-install=crowdsec-bin.install
-source=(crowdsec-bin.install
-	crowdsec-upgrade.service
-	crowdsec-upgrade.timer)
-backup=('etc/crowdsec/config.yaml' 
-	'etc/crowdsec/console.yaml' 
-	'etc/crowdsec/profiles.yaml' 
-	'etc/crowdsec/simulation.yaml' 
-	'etc/crowdsec/notifications/email.yaml'
-	'etc/crowdsec/notifications/http.yaml'
-	'etc/crowdsec/notifications/slack.yaml'
-	'etc/crowdsec/notifications/splunk.yaml')
-
-
-source_x86_64=(https://packagecloud.io/crowdsec/crowdsec/ubuntu/pool/jammy/main/c/crowdsec/${_pkgname}_${pkgver}_amd64.deb)
-source_aarch64=(https://packagecloud.io/crowdsec/crowdsec/ubuntu/pool/jammy/main/c/crowdsec/${_pkgname}_${pkgver}_arm64.deb)
-optdepends=(
-	'docker: Used to run metabase container for statistics'
-	'libnewt: Used for interactive mode of crowdsec_wizard.sh'
-)
-
 provides=('crowdsec')
-
-prepare() {
-   bsdtar -xf ${srcdir}/data.tar.zst 
- 
-}
-
+conflicts=('crowdsec')
+install=crowdsec-bin.install
+depends=(
+	'ca-certificates'
+	'glibc'
+	'sqlite'
+	'jq'
+	'systemd'
+)
+makedepends=(
+	sed
+)
+backup=(
+	etc/crowdsec/config.yaml
+	etc/crowdsec/local_api_credentials.yaml
+	etc/crowdsec/online_api_credentials.yaml
+)
+source=(
+	"$pkgname-v${pkgver}.tgz"::https://github.com/crowdsecurity/crowdsec/releases/download/v${pkgver}/crowdsec-release.tgz
+	crowdsec-bin.install
+)
+sha256sums=('489d2dbd009f1255714f7448116562c4608452a8010ee4677803c10e02a7fbbf'
+            '34d216d8fa8832c854cc6e15b793be60878717e019e060fa57fa84e6ac32ace7')
 
 package() {
-   mkdir -p ${pkgdir}{'/etc','/usr'}
-   cp -r ${srcdir}/etc/crowdsec ${pkgdir}/etc
-   cp -r ${srcdir}/usr ${pkgdir}
-   cp -r ${srcdir}/lib/systemd ${pkgdir}/usr/lib 
-   install -Dm644 -t "$pkgdir"/usr/lib/systemd/system crowdsec-upgrade.*
-}
+	# create directories
+	install -dm755 $pkgdir{/usr/lib/{crowdsec/plugins,systemd/system},/etc/crowdsec{,/hub,/notifications,/console,/acquis.d,/scenarios,/postoverflows,/collections},/usr/bin,/var/lib/crowdsec/data/,/opt/crowdsec/}
 
-sha256sums=('ef36af8a02a3996465b0e297d4502dbfaea2725ee19eca2d7c6d9004dd181f60'
-            'f80645f04b5014ae2495f530bf076e48e850bd394fb8689ea2682a1573f2dffc'
-            'c13d17811fea705bd53581de4966ade9b669742c63ec840c4848ad7e07cca36f')
-sha256sums_x86_64=('f59d885215c2bd4720f357ce22586bae418e3c438602e6851604c1c1f0d315a5')
-sha256sums_aarch64=('e4b1ed7720f54d50c39d4a53e7f1602b0f90149557505ce9b29065525c3dac2a')
+	cd "$srcdir/crowdsec-v${pkgver}"
+	sed -ie 's|plugin_dir:.*|plugin_dir: /usr/lib/crowdsec/plugins/|' config/config.yaml
+	sed -ie 's|usr/local/bin/crowdsec|usr/bin/crowdsec|' config/crowdsec.service
+	find ./config -type f -regex '.*_win_?.*\.yaml' -delete
+
+	# config
+	install -m640 ./config/{config,console,profiles,simulation,acquis,local_api_credentials,online_api_credentials,dev,user}.yaml -t $pkgdir/etc/crowdsec/
+	install -m640 ./config/context.yaml $pkgdir/etc/crowdsec/console/context.yaml
+	cp -R ./config/patterns $pkgdir/etc/crowdsec/
+
+	# systemd
+	install -m640 ./config/crowdsec.service $pkgdir/usr/lib/systemd/system/crowdsec.service
+
+	# executables
+	install -m755 ./cmd/{crowdsec-cli/cscli,crowdsec/crowdsec} -t $pkgdir/usr/bin/
+
+	# plugins
+	install -m700 ./cmd/notification-dummy/notification-dummy $pkgdir/usr/lib/crowdsec/plugins/dummy
+	install -m640 ./cmd/notification-dummy/dummy.yaml -t $pkgdir/etc/crowdsec/notifications
+	install -m700 ./cmd/notification-email/notification-email $pkgdir/usr/lib/crowdsec/plugins/email
+	install -m640 ./cmd/notification-email/email.yaml -t $pkgdir/etc/crowdsec/notifications
+	install -m700 ./cmd/notification-http/notification-http $pkgdir/usr/lib/crowdsec/plugins/http
+	install -m640 ./cmd/notification-http/http.yaml -t $pkgdir/etc/crowdsec/notifications
+	install -m700 ./cmd/notification-slack/notification-slack $pkgdir/usr/lib/crowdsec/plugins/slack
+	install -m640 ./cmd/notification-slack/slack.yaml -t $pkgdir/etc/crowdsec/notifications
+	install -m700 ./cmd/notification-splunk/notification-splunk $pkgdir/usr/lib/crowdsec/plugins/splunk
+	install -m640 ./cmd/notification-splunk/splunk.yaml -t $pkgdir/etc/crowdsec/notifications
+
+	# extras
+	install -m640 ./config/crowdsec.cron.daily -t $pkgdir/opt/crowdsec/
+	install -m740 ./wizard.sh -t $pkgdir/opt/crowdsec/
+}

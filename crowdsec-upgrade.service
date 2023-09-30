@@ -1,4 +1,0 @@
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/cscli --error hub upgrade
-ExecStartPost=systemctl reload crowdsec
