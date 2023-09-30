@@ -29,10 +29,10 @@ build-gnudatalanguage:
   artifacts:
     paths:
       - $PKG_NAME*.pkg.tar.zst
-      - src/gdl-*/build/Testing/Temporary/LastTest.log
+      - src/gdl/build/Testing/Temporary/LastTest.log
     when: always
   before_script:
-    - sed -i "s/^tolerance=0.01/tolerance=${TOLERANCE:-0.01}/" src/gdl-*/testsuite/test_tic_toc.pro
+    - sed -i "s/^tolerance=0.01/tolerance=${TOLERANCE:-0.01}/" src/gdl/testsuite/test_tic_toc.pro
   extends: .arch-buildx-only
   needs: ["extract-gnudatalanguage"]
   

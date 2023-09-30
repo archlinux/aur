@@ -5,7 +5,7 @@
 
 pkgname=gnudatalanguage
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
@@ -13,7 +13,7 @@ license=("GPL")
 depends=("eccodes" "expat" "fftw" "gcc-libs" "glibc" "glpk" "graphicsmagick"
          "gsl" "hdf4" "hdf5" "libgeotiff" "libpng" "libtiff" "libtirpc" "libx11"
          "netcdf" "openmpi" "plplot" "proj" "python" "readline" "shapelib"
-         "udunits" "wxgtk3" "wxwidgets-common" "zlib")
+         "udunits" "wxwidgets-common" "wxwidgets-gtk3" "zlib")
 makedepends=("cmake" "eigen" "python-numpy")
 checkdepends=("openssh")
 optdepends=("cuda")
