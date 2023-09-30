@@ -1,6 +1,6 @@
 pkgbase = r-jaspaudit
 	pkgdesc = Audit Module for JASP
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspAudit
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-jaspaudit
 	depends = r-jaspbase
 	depends = r-jaspgraphs
 	depends = r-jfa
-	source = jaspAudit_0.18.0.tar.gz::https://github.com/jasp-stats/jaspAudit/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = 5293008085c359dc528cda4a6aad58c0cb09c1933b6738cb51d0921d56c38363
+	source = jaspAudit_0.18.1.tar.gz::https://github.com/jasp-stats/jaspAudit/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = afdb6f563a9ac9ca6c02159f9cf7498a0122041b5e4804baec6431dfe7ae13af
 
 pkgname = r-jaspaudit
