@@ -1,0 +1,15 @@
+pkgbase = grafana-apprise-adapter-git
+	pkgdesc = Send grafana alerts to apprise for notifications
+	pkgver = 0.1.0.r32.g520f47f
+	pkgrel = 1
+	url = https://github.com/ammgws/grafana-apprise-adapter
+	arch = any
+	license = custom:BSD-3-Clause
+	makedepends = git
+	makedepends = rust
+	provides = grafana-apprise-adapter
+	conflicts = grafana-apprise-adapter
+	source = grafana-apprise-adapter::git+https://github.com/ammgws/grafana-apprise-adapter
+	sha1sums = SKIP
+
+pkgname = grafana-apprise-adapter-git
