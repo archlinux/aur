@@ -1,6 +1,6 @@
 pkgbase = opencl-headers-git
 	pkgdesc = OpenCL (Open Computing Language) header files. (GIT Version)
-	pkgver = 2023.04.17.1.ge049b16
+	pkgver = 2023.04.17.8.g1ebe961
 	pkgrel = 1
 	url = https://www.khronos.org/registry/cl/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = opencl-headers-git
 	makedepends = git
 	makedepends = python
 	makedepends = cmake
-	provides = opencl-headers=2:2023.04.17.1.ge049b16
+	provides = opencl-headers=2:2023.04.17.8.g1ebe961
 	conflicts = opencl-headers
 	source = git+https://github.com/KhronosGroup/OpenCL-Headers.git
 	sha256sums = SKIP

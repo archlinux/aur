@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-headers-git
-pkgver=2023.04.17.1.ge049b16
+pkgver=2023.04.17.8.g1ebe961
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -22,7 +22,6 @@ pkgver() {
   echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
-
 build() {
   cmake -S OpenCL-Headers -B build \
     -DCMAKE_BUILD_TYPE=Release \
@@ -33,7 +32,8 @@ build() {
 }
 
 check() {
-  (cd build; ctest --output-on-failure)
+  cd build
+  ctest --output-on-failure
 }
 
 package() {
