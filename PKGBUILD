@@ -2,13 +2,23 @@
 
 pkgname=kproperty
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A property editing framework with editor widget similar to what is known from Qt Designer'
 arch=(x86_64)
 url='https://apps.kde.org/kexi-3.3/'
 license=(GPL2)
-depends=(kwidgetsaddons kguiaddons kcoreaddons kconfig)
-makedepends=(extra-cmake-modules python qt5-tools doxygen qt5-doc)
+depends=(gcc-libs
+         glibc
+         kconfig5
+         kcoreaddons5
+         kguiaddons5
+         kwidgetsaddons5
+         qt5-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             python
+             qt5-doc
+             qt5-tools)
 source=(https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('67af0c2d74715957bd5373a6a30589ff0a996cb1d267dfd0538dccaa9a768dfa'
             'SKIP')
