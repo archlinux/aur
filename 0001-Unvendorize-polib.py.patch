@@ -1,0 +1,56 @@
+From 14ce521c426cc18bd94d10461b5607fb719fcf00 Mon Sep 17 00:00:00 2001
+Message-Id: <14ce521c426cc18bd94d10461b5607fb719fcf00.1682369949.git.fedora@sicherha.de>
+From: Christoph Erhardt <fedora@sicherha.de>
+Date: Mon, 24 Apr 2023 22:11:10 +0200
+Subject: [PATCH] Unvendorize polib.py
+
+---
+ cola/i18n.py   | 2 +-
+ pyproject.toml | 2 +-
+ setup.cfg      | 1 +
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/cola/i18n.py b/cola/i18n.py
+index 15eaf2de..50272e7f 100644
+--- a/cola/i18n.py
++++ b/cola/i18n.py
+@@ -2,10 +2,10 @@
+ from __future__ import absolute_import, division, print_function, unicode_literals
+ import locale
+ import os
++import polib
+ import sys
+ 
+ from . import core
+-from . import polib
+ from . import resources
+ 
+ 
+diff --git a/pyproject.toml b/pyproject.toml
+index adaf843c..964998e5 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -24,7 +24,7 @@ git-dag = "cola.dag:main"
+ git-cola-sequence-editor = "cola.sequenceeditor:main"
+ 
+ [build-system]
+-requires = ["setuptools>=42", "setuptools_scm[toml]>=3.4.1"]
++requires = ["setuptools>=42", "setuptools_scm[toml]>=3.4.1", "polib>=1.1.1"]
+ build-backend = "setuptools.build_meta"
+ 
+ [tool.black]
+diff --git a/setup.cfg b/setup.cfg
+index c9da4f56..ac3cdc4d 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -35,6 +35,7 @@ packages =
+ include_package_data = true
+ install_requires =
+ 	importlib_metadata; python_version<"3.8"
++	polib >= 1.1.1
+ 	PyQt5 >= 5.6.0; python_version>="3.0"
+ 	qtpy >= 1.1.0
+ zip_safe = false
+-- 
+2.40.0
+
