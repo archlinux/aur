@@ -8,6 +8,10 @@ notice() {
     echo -e "\033[36m $1 \033[0m "
 }
 
+fail() {
+    echo -e "\033[41;37m 失败 \033[0m $1"
+}
+
 root_dir=$(cd `dirname $0`/.. && pwd -P)
 package_dir="$root_dir/package.nw"
 export PATH="$root_dir/node/bin:$PATH"
@@ -22,7 +26,7 @@ fi
 
 PY_VERSION=`python -V 2>&1|awk '{print $2}'|awk -F '.' '{print $1}'`
 if [ $PY_VERSION != 2 ]; then
-  hash python2 2>/dev/null || { echo >&2 "I require python2 but it's not installed.  Aborting."; exit 1; }
+  hash python2 2>/dev/null || { fail "I require python2 but it's not installed.  Aborting."; exit 1; }
   ln -s "$( which python2 )" "$root_dir/node/bin/python"
 fi
 
@@ -41,7 +45,9 @@ python3 --version
 
 # these modules are only available in windows
 cd "${package_dir}/node_modules" && \
-rm -fr "vscode-windows-ca-certs" "vscode-windows-registry" "vscode-windows-registry-node" "windows-process-tree"
+rm -fr "vscode-windows-ca-certs" \
+"vscode-windows-registry" "vscode-windows-registry-node" "windows-process-tree" \
+"node-pty" "node-pty-node"
 
 rm -fr "${package_dir}/node_modules/vscode-ripgrep/bin/"* # redownload bin on linux
 # https://github.com/microsoft/ripgrep-prebuilt
@@ -52,8 +58,19 @@ mkdir -p tmp && cd tmp
 #     notice "非ACTION模式, 设置镜像源"
 #     export https_proxy="http://127.0.0.1:7890"
 # fi
-wget https://github.com/microsoft/ripgrep-prebuilt/releases/download/v12.1.1-1/ripgrep-v12.1.1-1-x86_64-unknown-linux-musl.tar.gz -O ripgrep-v12.1.1-1-x86_64-unknown-linux-musl.tar.gz
-tar xvf ripgrep-v12.1.1-1-x86_64-unknown-linux-musl.tar.gz -C ../bin && \
+
+# ripgrep版本
+ripgrep_version="12.1.1-1"
+# ripgrep路径
+ripgrep_path="$root_dir/cache/ripgrep-v${ripgrep_version}-x86_64-unknown-linux-musl.tar.gz"
+mkdir -p "$root_dir/cache"
+# 文件不存在，下载
+if [ ! -f "$ripgrep_path" ];then
+  wget https://github.com/microsoft/ripgrep-prebuilt/releases/download/v12.1.1-1/ripgrep-v12.1.1-1-x86_64-unknown-linux-musl.tar.gz \
+  -O "${ripgrep_path}.tmp"
+  mv "${ripgrep_path}.tmp" "${ripgrep_path}"
+fi
+tar xvf "$ripgrep_path" -C ../bin && \
 cd .. && rm -rf tmp
 
 (cd "${package_dir}/node_modules" && \
@@ -71,7 +88,7 @@ export JOBS=$max_thread
 (cd "${package_dir}/node_modules_tmp" && npm install \
     extract-file-icon \
     native-keymap \
-    node-pty \
+    node-pty@1.0.0 \
     native-watchdog \
     oniguruma \
     spdlog@0.11.1 \
@@ -86,6 +103,10 @@ notice "rebuild node-pty"
 cd "$package_dir/node_modules_tmp/node_modules" && \
 cp -fr "node-pty" "node-pty-node" && \
 cd "node-pty" && nw-gyp rebuild --arch=x64 "--target=$NW_VERSION" --dist-url=https://registry.npmmirror.com/-/binary/nwjs
+mkdir -p "$package_dir/node_modules/node-pty/build/Release" && \
+cp -rf "$package_dir/node_modules_tmp/node_modules/node-pty/lib" "$package_dir/node_modules/node-pty/lib" && \
+cp -rf "$package_dir/node_modules_tmp/node_modules/node-pty/package.json" "$package_dir/node_modules/node-pty/package.json" && \
+cp -rf "$package_dir/node_modules/node-pty" "$package_dir/node_modules/node-pty-node"
 
 notice "rebuild native-watchdog"
 cd "$package_dir/node_modules_tmp/node_modules/native-watchdog" && \
@@ -112,6 +133,7 @@ find -name "*.a" -delete && \
 find -name "*.lib" -delete && \
 find -name "*.mk" -delete)
 
+# TODO: 检查路径包含空格时，是否正常
 notice "copy node files"
 (cd "${package_dir}/node_modules_tmp/node_modules" && \
 find -name "*.node" | xargs -I{} \cp -rf {} ${package_dir}/node_modules/{})
