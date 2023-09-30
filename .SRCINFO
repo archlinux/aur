@@ -20,12 +20,12 @@ pkgbase = pot-translation-bin
 	conflicts = pot-translation
 	conflicts = pot-translation-git
 	source_x86_64 = pot-2.6.0-x86_64.deb::https://github.com/pot-app/pot-desktop/releases/download/2.6.0/pot_2.6.0_amd64.deb
-	sha512sums_x86_64 = 17cc2c23676469251e779bd6c2730a76f753e50998bd50ea328cfccece5b3a0227a4f63a540bbbc831dd771c5483f673093d27400ff6ea08e1725a2db369cf02
+	sha512sums_x86_64 = f373fb838eafa607787795d7606adc375ef0c5731040d545376bf0aed82c9c68cc0c8c33f6572b1f23371be943ccc8c169e810f015293d91f0b2deb4f0f0fcfe
 	source_i686 = pot-2.6.0-i686.deb::https://github.com/pot-app/pot-desktop/releases/download/2.6.0/pot_2.6.0_i386.deb
-	sha512sums_i686 = 23d7968a4e0cffeeda5f04557150084755dc0b1e66557b6680d6bf69d523995084c9110a19fcc42b3621e1928ddbe5d413032b7e048eaafa02af677682c50f93
+	sha512sums_i686 = b19a4173af27fbb7652b61b4ae892cd8072dc456fd50f24794ad6e2f1acf2c95c956eedf808e4ddbc218d72832d13322b237cf99448f97e8972a330a8092c981
 	source_aarch64 = pot-2.6.0-aarch64.deb::https://github.com/pot-app/pot-desktop/releases/download/2.6.0/pot_2.6.0_arm64.deb
-	sha512sums_aarch64 = 5d739d5ec07b003eb65c939b0434d04d10cca8bbfa74bd166758d4b1c26a229a691d0da15d8e7a1e76f70b4ee17296376142af0daba6fecdebf70cb12cc42225
+	sha512sums_aarch64 = ba529886952692204a591416abff4395865c53a87576ec63aad50a6d9fab8fb2c3c9ae766a113568561d03581d209f052024630be1656dd35026ac168844864d
 	source_armv7h = pot-2.6.0-armv7h.deb::https://github.com/pot-app/pot-desktop/releases/download/2.6.0/pot_2.6.0_armhf.deb
-	sha512sums_armv7h = 5e2ddf71fa35704617cc8f5d5b60f09395b79ba525a84637226486548a088fb2a423b44e92a0cd1d6905bd1ff2ef1bd7dcaf57b0a9bc08ec31e1346d07fcf932
+	sha512sums_armv7h = 0695d824625f2da6ffa37a8c1d76f413a95b4963def868e223dfc56233aa52d087143f9a21e78457b8dad6be44afb4f4dedaf6b82b9f31dbff45375114ecc082
 
 pkgname = pot-translation-bin
