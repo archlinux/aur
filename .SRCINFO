@@ -1,6 +1,6 @@
 pkgbase = r-markdown
 	pkgdesc = Render Markdown with 'commonmark'
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=markdown
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-markdown
 	optdepends = r-rcurl
 	optdepends = r-rmarkdown
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/markdown_1.8.tar.gz
-	md5sums = 40652e4961999ba37b2fd65f87082ba4
-	sha256sums = 0de97777c0a8262a1e24ca34cc81a3bef2952d46bdc4c6a619ddb56c9ba0e5ab
+	source = https://cran.r-project.org/src/contrib/markdown_1.9.tar.gz
+	md5sums = 3992577cbfe850366b9ce2532b1fc3bd
+	sha256sums = 70c557b9644442e8a932cfa76a4143f0a73f5461aab5d90b2b0ad177f5d80108
 
 pkgname = r-markdown
