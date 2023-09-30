@@ -3,7 +3,7 @@
 _name=kholidays
 pkgname=${_name}5
 pkgver=5.110.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='KDE library for regional holiday information'
 arch=(x86_64)
@@ -12,8 +12,8 @@ license=(LGPL)
 depends=(qt5-base)
 makedepends=(extra-cmake-modules qt5-declarative qt5-tools qt5-doc doxygen)
 optdepends=('qt5-declarative: QML bindings')
-conflicts=("$_name<5.111")
-replaces=("$_name<5.111")
+conflicts=("$_name<1:5.111")
+replaces=("$_name<1:5.111")
 provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
