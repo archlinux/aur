@@ -10,8 +10,8 @@ arch=(x86_64)
 url='https://userbase.kde.org/Color_Management'
 license=(GPL)
 groups=(kde-applications kde-graphics)
-depends=(colord libxrandr kitemmodels kdeclarative kirigami-addons)
-makedepends=(extra-cmake-modules kcmutils)
+depends=(colord libxrandr kitemmodels5 kdeclarative5 kirigami-addons)
+makedepends=(extra-cmake-modules kcmutils5)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('e2d754420b8997a098df788929e4290e4b6c6886e9eda596aa4c621b0b210345'
             'SKIP')
