@@ -2,7 +2,7 @@
 # Contributor: Mike Yuan <me@yhndnzj.com>
 
 pkgname=ast-grep
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc='A fast and polyglot tool for code structural search, lint, rewriting at large scale'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ast-grep/ast-grep/archive/$pkgver.tar.gz")
-sha256sums=('531a0d25ea7e287a9e018aa237ed6f69f24eb6865f9b920f3bdfb0d85c3ce4bd')
-b2sums=('81a1f91260623d7ee713c273da9760913bd0ef4dd2ee3e08745825e5b019ea2a06b805c820fca986b9e034fdf9dbb3c0d989c0fc72a5a0115c232d85f2f2440b')
+sha256sums=('0cb0271124128f6060781db3278ff38e0ca10cdca9b3b649c7e822868dbaaf38')
+b2sums=('67a7dfeb6b70be7c1d31533bb745f28013492267ef5bff91ce82d2e9e2519b6fe0d99269d2849ff57e864908c95136a9c48625aab74eaf3f4d00c6d2ea6d8c05')
 options=('!lto')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
@@ -30,11 +30,11 @@ build() {
     cargo build --frozen --release --all-features --package ast-grep
 }
 
-# check() {
-#     cd "$pkgname-$pkgver"
-#
-#     cargo test --frozen --all-features
-# }
+check() {
+    cd "$pkgname-$pkgver"
+
+    RUSTFLAGS="$RUSTFLAGS -C debug-assertions" cargo test --frozen --all-features
+}
 
 package() {
     cd "$pkgname-$pkgver"
