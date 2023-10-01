@@ -7,8 +7,8 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.12.1_1
-pkgrel=1
+pkgver=1.12.1
+pkgrel=2
 epoch=4
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 license=('MIT')
@@ -21,7 +21,7 @@ source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-
         "${_pkgname}.svg"
         "${_pkgname}.desktop"
         "LICENSE")
-sha256sums=('4fba789c9f23c35be3474e884655e3bb209011fce1045d08d8c19679145730bc'
+sha256sums=('623b45f42e85abe9fccc268aab2a16696a5f83a7846f5ce8089a5d03dc454894'
             '6f95b66035d7aa6744bb5200f7cb3f5450a82e84303a039fa256803e99631ad5'
             '047cca58d6cac6432476219a342ec43c2d2bb3f9c9784694dff4e30f929484be'
             '3e7b5ca32d3f29532a7101511006092a746a0433514a718f9f9c7d7342fb13b5'
