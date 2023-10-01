@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop-bin'
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc="Music Assistant Companion App"
 arch=('x86_64')
@@ -9,7 +9,7 @@ conflicts=(music-assistant-desktop)
 provides=(music-assistant-companion)
 dependencies=(curl)
 license=('Apache-2.0')
-md5sums=('58d7d47cb853874ee93e1a4c054f8f2b')
+md5sums=('5ae64d53b1c718c34aa7246195e36311')
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/music-assistant-companion-${pkgver}")
 
 package() {
