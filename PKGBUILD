@@ -1,7 +1,7 @@
 # Maintainer: Max Martin <max at maxjmartin dot com>
 
 pkgname=circumflex
-pkgver=3.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="A command line tool for browsing Hacker News in your terminal"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b48cde13d031b7f5a4b3b6e656307fea100c0c57202f714ac612295e1d40f45e')
+sha256sums=('949dde816b75b85ec48bb0158931d540f6bc07606d92f441881201d4b8680a49')
 
 build() {
     cd $pkgname-$pkgver
