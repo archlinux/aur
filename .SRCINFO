@@ -1,7 +1,7 @@
 pkgbase = mangohud-git
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more.
-	pkgver = 0.6.9.1.r84.gbc8acf9
-	pkgrel = 2
+	pkgver = 0.7.0.r11.gefd1c07
+	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = mangohud-git
 	depends = libx11
 	depends = python-matplotlib
 	depends = python-numpy
+	depends = sdl2
 	depends = spdlog
 	depends = vulkan-icd-loader
 	optdepends = libxnvctrl: NVIDIA GPU stats by XNVCtrl
