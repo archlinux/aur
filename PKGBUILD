@@ -3,13 +3,13 @@
 # Contributor: librewish
 pkgname=whitesur-kvantum-theme-git
 _gitname=WhiteSur-kde
-pkgver=r110.248d4c0
+pkgver=r113.9f66519
 pkgrel=1
 pkgdesc="WhiteSur theme for Kvantum"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
-depends=('kvantum-qt5')
+depends=('kvantum')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=(
