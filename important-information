@@ -1,2 +1,2 @@
 Beforehand, you need to download the zip file from https://deviantart.com/grindgod/art/The-Gimp-TextureBox-385558228
-Then, open the `PKGBUILD` and change `://filename` in `source` to the name of the downloaded zip file.
+Then, open the `PKGBUILD`, change `://filename` in `source` to the name of the downloaded zip file, and install it using `makepkg -i`.
