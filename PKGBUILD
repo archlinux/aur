@@ -1,15 +1,15 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@tutanota.com>
 # Contributor: reflexing <reflexing@reflexing.ru>
 # Contributor: Alexander Zubkov <green@msu.ru>
 # Contributor: nsf
 
 pkgname=ttf-paratype
 pkgver=2.005
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='ParaType font family with extended cyrillic and latin character sets'
 arch=('any')
-url='https://company.paratype.com/pt-sans-pt-serif'
+url='https://www.paratype.com'
 license=('custom:OFL')
 
 provides=(
@@ -21,21 +21,17 @@ provides=(
 	'ttf-pt-mono'
 )
 
-# Fix curl
-# https://bbs.archlinux.org/viewtopic.php?pid=1340708#p1340708
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
-
 source=(
 	# PT Sans
-	'https://company.paratype.com/system/attachments/629/original/ptsans.zip'
-	'https://company.paratype.com/system/attachments/632/original/ptsansexpert.zip'
+	'https://info.paratype.ru/wp-content/uploads/2019/07/ptsans-1.zip'
+	'https://info.paratype.ru/wp-content/uploads/2019/07/PTSansExpert.zip'
 
 	# PT Serif
-	'https://company.paratype.com/system/attachments/634/original/ptserif.zip'
-	'https://company.paratype.com/system/attachments/635/original/ptserifexpert.zip'
+	'https://info.paratype.ru/wp-content/uploads/2019/07/ptserif.zip'
+	'https://info.paratype.ru/wp-content/uploads/2019/07/ptserifexpert.zip'
 
 	# PT Mono
-	'https://company.paratype.com/system/attachments/631/original/ptmono.zip'
+	'https://info.paratype.ru/wp-content/uploads/2019/07/ptmono.zip'
 
 	# Font config file
 	'54-paratype.conf'
