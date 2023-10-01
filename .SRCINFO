@@ -1,0 +1,24 @@
+pkgbase = plasma-vault
+	pkgdesc = Plasma applet and services for creating encrypted vaults
+	pkgver = 5.27.8
+	pkgrel = 2
+	url = https://kde.org/plasma-desktop/
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = networkmanager-qt5
+	optdepends = encfs: to use encFS for encryption
+	optdepends = cryfs: to use cryFS for encryption
+	optdepends = gocryptfs: to use gocryptfs for encryption
+	source = https://download.kde.org/stable/plasma/5.27.8/plasma-vault-5.27.8.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.8/plasma-vault-5.27.8.tar.xz.sig
+	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
+	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
+	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
+	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
+	sha256sums = 8907a8a86529cecdf3e1a8c7b2c7ba5986701c9fd4324e80a78031707bdadee4
+	sha256sums = SKIP
+
+pkgname = plasma-vault

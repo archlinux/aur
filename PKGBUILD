@@ -3,13 +3,13 @@
 pkgname=plasma-vault
 pkgver=5.27.8
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma applet and services for creating encrypted vaults'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 groups=(plasma)
-depends=(plasma-workspace networkmanager-qt)
+depends=(plasma-workspace networkmanager-qt5)
 makedepends=(extra-cmake-modules)
 optdepends=('encfs: to use encFS for encryption' 'cryfs: to use cryFS for encryption' 'gocryptfs: to use gocryptfs for encryption')
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
