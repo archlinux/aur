@@ -1,0 +1,11 @@
+pkgbase = proton-experimental-symlink
+	pkgdesc = Symlinks Proton Experimental as wine, DO NOT BUILD AS ROOT!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/crwn1337/proton-experimental-symlink
+	arch = any
+	license = MIT
+	provides = wine
+	conflicts = wine
+
+pkgname = proton-experimental-symlink
