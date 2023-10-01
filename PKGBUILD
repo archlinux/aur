@@ -4,7 +4,7 @@
 
 pkgname=fmq-bin
 _pkgname=fmq
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Frontmatter query utils"
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=("MIT")
 conflicts=("$_pkgname" "${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname" "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('90f839d2dd9303fddfcc17af6f2c9067e75c44a22937839f30db1a526dc1d9129eab9500234e08ff234078b7dce8b57ec7dac678864bfedbbee03bd94ca9ee2e' '68aa7bf068d6242108b443c06a00289302acf63a50b822a644dbe991661effdc8e3bc67cdf3b085a11f64c1b4a2dda3aab4dda5f1ec516d32f1032f79b0f2695')
+sha512sums_x86_64=('2593ffb41ed2b54d5ed610ea829cad0be96c1bc0ba29705faea5e4d0abd9fc1f5d478597e640cdffd020dccd155dac1dfb6e0692aa8e9558c98f11474f377306' '68aa7bf068d6242108b443c06a00289302acf63a50b822a644dbe991661effdc8e3bc67cdf3b085a11f64c1b4a2dda3aab4dda5f1ec516d32f1032f79b0f2695')
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/$_pkgname"
