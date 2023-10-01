@@ -1,0 +1,19 @@
+pkgbase = kicad-storybook-git
+	pkgdesc = A tool to automatically generate images & READMEs for KiCad symbols & footprints
+	pkgver = r5.b474cfc
+	pkgrel = 1
+	url = https://github.com/and3rson/kicad-storybook
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = imagemagick
+	depends = kicad>=7.0.0
+	depends = python-sexpdata
+	provides = kicad-storybook
+	conflicts = kicad-storybook
+	source = kicad-storybook::git+https://github.com/and3rson/kicad-storybook.git#branch=main
+	md5sums = SKIP
+
+pkgname = kicad-storybook-git
