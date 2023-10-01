@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1962e6955..31401f8dc 100644
+index dce5cd161..100980dd5 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -360,12 +360,13 @@ endif()
+@@ -366,12 +366,13 @@ endif()
  
  option(BUILD_SHARED_LIBS "Build shared library" OFF)
  set(XXHASH_BUILD_XXHSUM OFF CACHE BOOL "Build the xxhsum binary")
@@ -20,8 +20,8 @@ index 1962e6955..31401f8dc 100644
  
  if(USE_VULKAN)
  	option(BUILD_EXTERNAL "Build external dependencies in /External" OFF)
-@@ -374,8 +375,8 @@ if(USE_VULKAN)
- 	option(ENABLE_GLSLANG_BINARIES "Builds glslangValidator and spirv-remap" OFF)
+@@ -380,8 +381,8 @@ if(USE_VULKAN)
+ 	option(ENABLE_GLSLANG_BINARIES "Builds glslang and spirv-remap" OFF)
  	option(ENABLE_HLSL "Enables HLSL input support" OFF)
  	option(ENABLE_PCH "Enables Precompiled header" OFF)
 -	add_subdirectory(core/deps/glslang EXCLUDE_FROM_ALL)
@@ -31,7 +31,7 @@ index 1962e6955..31401f8dc 100644
  endif()
  
  if(NOT LIBRETRO)
-@@ -422,13 +423,13 @@ if(NOT LIBRETRO)
+@@ -428,13 +429,13 @@ if(NOT LIBRETRO)
  			target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
  		endif()
  	endif()
@@ -47,7 +47,7 @@ index 1962e6955..31401f8dc 100644
  	find_package(Lua)
  	if(NOT APPLE AND LUA_FOUND)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_LUA)
-@@ -438,9 +439,9 @@ if(NOT LIBRETRO)
+@@ -444,9 +445,9 @@ if(NOT LIBRETRO)
  	endif()
  endif()
  
@@ -60,7 +60,7 @@ index 1962e6955..31401f8dc 100644
  
  if(NOT WITH_SYSTEM_ZLIB)
  	target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/core/deps/libchdr/deps/zlib-1.2.11")
-@@ -479,25 +480,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
+@@ -485,25 +486,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_PULSEAUDIO)
  		target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBPULSE)
  	endif()
@@ -89,29 +89,20 @@ index 1962e6955..31401f8dc 100644
  
  if(NINTENDO_SWITCH AND USE_GLES)
  	pkg_check_modules(GLESV2 IMPORTED_TARGET glesv2)
-@@ -1248,7 +1248,7 @@ if(USE_VULKAN)
- 		target_compile_definitions(${PROJECT_NAME} PUBLIC VK_USE_PLATFORM_MACOS_MVK)
- 	endif()
- 
--	add_subdirectory(core/deps/Vulkan-Headers)
-+	find_package(VulkanHeaders)
+@@ -1267,9 +1267,9 @@ if(USE_VULKAN)
+ 	add_subdirectory(core/deps/Vulkan-Headers)
  	target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Headers)
  
- 	if (APPLE)
-@@ -1256,10 +1256,8 @@ if(USE_VULKAN)
- 		target_compile_definitions(${PROJECT_NAME} PRIVATE VMA_USE_STL_SHARED_MUTEX=0)
- 	endif()
- 	
--	add_library(VulkanMemoryAllocator INTERFACE)
+-	add_subdirectory(core/deps/VulkanMemoryAllocator)
+-	target_compile_definitions(VulkanMemoryAllocator INTERFACE $<$<BOOL:${APPLE}>:VMA_USE_STL_SHARED_MUTEX=0>) # Only available on macOS 10.12+
 -	target_compile_options(VulkanMemoryAllocator INTERFACE $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:AppleClang,Clang>>:-Wno-nullability-completeness>)
--	target_include_directories(VulkanMemoryAllocator INTERFACE core/deps/VulkanMemoryAllocator/include)
--	target_link_libraries(${PROJECT_NAME} PRIVATE VulkanMemoryAllocator)
 +	find_package(VulkanMemoryAllocator)
-+	target_link_libraries(${PROJECT_NAME} PRIVATE GPUOpen::VulkanMemoryAllocator)
++	target_compile_definitions(GPUOpen::VulkanMemoryAllocator INTERFACE $<$<BOOL:${APPLE}>:VMA_USE_STL_SHARED_MUTEX=0>) # Only available on macOS 10.12+
++	target_compile_options(GPUOpen::VulkanMemoryAllocator INTERFACE $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:AppleClang,Clang>>:-Wno-nullability-completeness>)
+ 	target_link_libraries(${PROJECT_NAME} PRIVATE GPUOpen::VulkanMemoryAllocator)
  
  	target_compile_definitions(${PROJECT_NAME} PRIVATE USE_VULKAN HAVE_VULKAN)
- 	target_sources(${PROJECT_NAME} PRIVATE
-@@ -1468,7 +1466,7 @@ if("arm64" IN_LIST ARCHITECTURE)
+@@ -1474,7 +1474,7 @@ if("arm64" IN_LIST ARCHITECTURE)
  	target_sources(${PROJECT_NAME} PRIVATE core/rec-ARM64/rec_arm64.cpp core/rec-ARM64/arm64_regalloc.h)
  endif()
  if("x86" IN_LIST ARCHITECTURE OR "x86_64" IN_LIST ARCHITECTURE)
@@ -134,7 +125,7 @@ index a1619f310..de4ee10de 100644
  int ShaderCompiler::initCount;
  
 diff --git a/core/rend/vulkan/shaders.h b/core/rend/vulkan/shaders.h
-index 148122335..5761a4f35 100644
+index e53311b18..8c5439a22 100644
 --- a/core/rend/vulkan/shaders.h
 +++ b/core/rend/vulkan/shaders.h
 @@ -20,7 +20,7 @@
@@ -146,54 +137,3 @@ index 148122335..5761a4f35 100644
  
  #include <glm/glm.hpp>
  #include <map>
-diff --git a/core/rend/vulkan/vmallocator.cpp b/core/rend/vulkan/vmallocator.cpp
-index 6a441d2c5..9b288e05a 100644
---- a/core/rend/vulkan/vmallocator.cpp
-+++ b/core/rend/vulkan/vmallocator.cpp
-@@ -70,5 +70,5 @@ void VMAllocator::Init(vk::PhysicalDevice physicalDevice, vk::Device device, vk:
- 
- 	VkResult rc = vmaCreateAllocator(&allocatorInfo, &allocator);
- 	if (rc != VK_SUCCESS)
--		vk::throwResultException((vk::Result)rc, "vmaCreateAllocator failed");
-+		vk::detail::throwResultException((vk::Result)rc, "vmaCreateAllocator failed");
- }
-diff --git a/core/rend/vulkan/vmallocator.h b/core/rend/vulkan/vmallocator.h
-index 4d61d4f10..b9b0746d9 100644
---- a/core/rend/vulkan/vmallocator.h
-+++ b/core/rend/vulkan/vmallocator.h
-@@ -65,7 +65,7 @@ public:
- 		void *p;
- 		VkResult res = vmaMapMemory(allocator, allocation, &p);
- 		if (res != VK_SUCCESS)
--			vk::throwResultException((vk::Result)res, "vmaMapMemory failed");
-+			vk::detail::throwResultException((vk::Result)res, "vmaMapMemory failed");
- 		VkMemoryPropertyFlags flags;
- 		vmaGetMemoryTypeProperties(allocator, allocInfo.memoryType, &flags);
- 		if ((flags & VK_MEMORY_PROPERTY_HOST_CACHED_BIT) && (flags & VK_MEMORY_PROPERTY_HOST_COHERENT_BIT) == 0)
-@@ -116,7 +116,7 @@ public:
- 		VmaAllocationInfo allocInfo;
- 		VkResult rc = vmaAllocateMemory(allocator, (VkMemoryRequirements*)&memoryRequirements, &allocCreateInfo, &vmaAllocation, &allocInfo);
- 		if (rc != VK_SUCCESS)
--			vk::throwResultException((vk::Result)rc, "vmaAllocateMemory failed");
-+			vk::detail::throwResultException((vk::Result)rc, "vmaAllocateMemory failed");
- 		return Allocation(allocator, vmaAllocation, allocInfo);
- 	}
- 
-@@ -126,7 +126,7 @@ public:
- 		VmaAllocationInfo allocInfo;
- 		VkResult rc = vmaAllocateMemoryForImage(allocator, (VkImage)image, &allocCreateInfo, &vmaAllocation, &allocInfo);
- 		if (rc != VK_SUCCESS)
--			vk::throwResultException((vk::Result)rc, "vmaAllocateMemoryForImage failed");
-+			vk::detail::throwResultException((vk::Result)rc, "vmaAllocateMemoryForImage failed");
- 		vmaBindImageMemory(allocator, vmaAllocation, (VkImage)image);
- 
- 		return Allocation(allocator, vmaAllocation, allocInfo);
-@@ -138,7 +138,7 @@ public:
- 		VmaAllocationInfo allocInfo;
- 		VkResult rc = vmaAllocateMemoryForBuffer(allocator, (VkBuffer)buffer, &allocCreateInfo, &vmaAllocation, &allocInfo);
- 		if (rc != VK_SUCCESS)
--			vk::throwResultException((vk::Result)rc, "vmaAllocateMemoryForBuffer failed");
-+			vk::detail::throwResultException((vk::Result)rc, "vmaAllocateMemoryForBuffer failed");
- 		vmaBindBufferMemory(allocator, vmaAllocation, (VkBuffer)buffer);
- 
- 		return Allocation(allocator, vmaAllocation, allocInfo);
