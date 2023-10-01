@@ -1,0 +1,17 @@
+pkgbase = jkps-git
+	pkgdesc = Shows keystates, keys per second, total keys and current beats per minute.
+	pkgver = 0.3.r3.g52103f2
+	pkgrel = 1
+	url = https://github.com/JekiTheMonkey/JKPS
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = sfml
+	provides = jkps
+	conflicts = jkps
+	options = !buildflags
+	source = git+https://github.com/JekiTheMonkey/JKPS.git
+	sha256sums = SKIP
+
+pkgname = jkps-git
