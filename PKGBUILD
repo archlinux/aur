@@ -1,29 +1,32 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=speedtest-librespeed
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A graphical librespeed client written using gtk4 + libadwaita"
 arch=('any')
 url="https://github.com/Ketok4321/speedtest"
 license=('GPL3')
 depends=('libadwaita' 'python-aiohttp' 'python-cairo' 'python-gobject')
-makedepends=('blueprint-compiler' 'meson')
+makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6e9f92c151b4c4017ea85755edf5f4de34e79b4d562e429b78f0e36b09178256')
+_commit=a1af19f339a6c81cad09ad69f71961505c2ba406  # tags/v1.1.1^0
+source=("git+https://github.com/Ketok4321/speedtest.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd speedtest
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
-  cd "speedtest-$pkgver"
+  cd speedtest
 
   # Binary name conflicts with speedtest-cli & ookla-speedtest-bin
   sed -i "s/Exec=speedtest/Exec=$pkgname/g" data/xyz.ketok.Speedtest.desktop.in
-
-  # Update version
-  sed -i "s/1.0.1/$pkgver/g" meson.build
 }
 
 build() {
-  arch-meson "speedtest-$pkgver" build
+  arch-meson speedtest build
   meson compile -C build
 }
 
