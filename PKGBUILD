@@ -1,34 +1,44 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=waffle
-_pkgver=0.7.0
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
-pkgver=0.7.0
-pkgrel=4
-pkgdesc='Create Waffle Chart Visualizations in R'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Create Waffle Chart Visualizations"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
+  r-curl
+  r-dt
   r-extrafont
   r-ggplot2
   r-gridextra
   r-gtable
+  r-htmlwidgets
+  r-plyr
   r-rcolorbrewer
+  r-rlang
+  r-stringr
 )
 optdepends=(
-  r-testthat
+  r-dplyr
+  r-ggthemes
+  r-knitr
+  r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ae05c344ea7c1227d34ea6645d563bd21908c634f1d114b7f2cca43b465455e2')
+md5sums=('5d8baee6c96eb2a1e7b8001ef159f45e')
+sha256sums=('e650803b4ec3c6a0aca02b1d9430d23d603d86f9782d90b96f698a6b692de09f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
