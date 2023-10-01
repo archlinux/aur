@@ -2,9 +2,9 @@
 # Contributor: Blessing-Studio <3424968114@qq.com>
 pkgname=wonderlab-appimage
 _pkgname=wonderlab
-pkgver=1.2.7.f1a3
+pkgver=1.2.7.f1a4
 pkgrel=2
-pkgdesc="下一代跨平台 Minecraft 启动器"
+pkgdesc="Next generation cross-platform Minecraft launcher"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Blessing-Studio/WonderLab.Override"
 license=('AGPL3')
