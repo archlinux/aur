@@ -1,6 +1,6 @@
 pkgbase = renoise
 	pkgdesc = A music composition program
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://www.renoise.com
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = renoise
 	optdepends = jack: For JACK audio support
 	conflicts = renoise3-demo
 	options = !strip
-	source_x86_64 = file://rns_342_linux_x86_64.tar.gz
+	source_x86_64 = file://rns_343_linux_x86_64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = file://rns_342_linux_arm64.tar.gz
+	source_aarch64 = file://rns_343_linux_arm64.tar.gz
 	sha256sums_aarch64 = SKIP
-	source_armv7h = file://rns_342_linux_armhf.tar.gz
+	source_armv7h = file://rns_343_linux_armhf.tar.gz
 	sha256sums_armv7h = SKIP
 
 pkgname = renoise
