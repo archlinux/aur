@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=cando
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together, including Cando"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'sbcl' 'pkg-config')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl' 'cando')
 conflicts=('cando-git' 'clasp-cl' 'clasp-cl-git')
 source=("https://github.com/clasp-developers/clasp/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('e0e22791d9008c1caf197f1b7b40c304132af8d96925ab54dc8c0fd62ae928d72c3de1f2af5e3dcd6428061aa8554613083b589750f808fa02fcfa5f9252786d')
+sha512sums=('5cb3642fbfe5f936e733cae95b4746d86fec9af6017b04ccd6b87eded4f80eae48c2965af104688eaa54648ec99b21a79bf0f0f69637eab8ca7a909dd9987832')
 
 build() {
   cd clasp-$pkgver
