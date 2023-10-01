@@ -1,6 +1,6 @@
 pkgbase = fvtt-player-client-omegarogue
 	pkgdesc = Foundry VTT Desktop Client
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/OmegaRogue/fvtt-player-client
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = fvtt-player-client-omegarogue
 	depends = nodejs
 	provides = fvtt-player-client
 	conflicts = fvtt-player-client
-	source = fvtt-player-client-omegarogue-1.4.1.tar.gz::https://github.com/OmegaRogue/fvtt-player-client/archive/1.4.1.tar.gz
+	source = fvtt-player-client-omegarogue-1.4.2.tar.gz::https://github.com/OmegaRogue/fvtt-player-client/archive/1.4.2.tar.gz
 	source = fvtt-desktop-client.desktop
 	source = fvtt-desktop-client
-	sha256sums = efc96021b9d18cbea72a01eedb723b85e6fc344a920b251174c586a3fcd869a6
+	sha256sums = 7e473bb5babe3bf67bd03598d8ac337d317670f97259ce209d0fb7df307123e3
 	sha256sums = f23835dbdc669c2915ba44c650973a00c9606912c421fc36ff72092658df8b4a
 	sha256sums = db5c0491dad5e13a153b488a7a08229d8002a82b5471d26a0c98da285ed6fd9b
 
