@@ -1,13 +1,15 @@
 pkgbase = simplemoji
 	pkgdesc = Fast Application for look your amazing emojis write in Rust
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
-	url = https://github.com/SergioRibera/simplemoji
+	url = https://github.com/SergioRibera/Simplemoji
 	arch = x86_64
-	license = MIT
+	license = MIT OR Apache-2.0
 	depends = noto-fonts-emoji
 	depends = noto-fonts
-	source = https://github.com/SergioRibera/simplemoji/releases/download/v0.1.3/simplemoji-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums = SKIP
+	provides = simplemoji
+	conflicts = simplemoji
+	source = https://github.com/SergioRibera/Simplemoji/releases/download/v0.1.4/simplemoji-0.1.4-x86_64.tar.gz
+	sha256sums = 9c69bbb1f65be17befe2acd3121c3be45d2cc36e32995cb8c07597b733b02f7a
 
 pkgname = simplemoji
