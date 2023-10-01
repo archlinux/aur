@@ -116,7 +116,7 @@ _local_qt_repo="${local_qt_repo}"
 _pkgvermajmin="6.6"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta1"
+_dev_suffix="rc"
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -172,7 +172,7 @@ makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "l
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 source=()
-sha256sums=('65d2370489a95787121da96dad2a47250068aeacead13682dd06bd717f990aec')
+sha256sums=('e34194a051f451e2ca8909a00992d4ce93d54b30398e8128f0f8407fd8521327')
 conflicts=('litehtml')
 
 if ! $_build_from_local_src_tree; then
