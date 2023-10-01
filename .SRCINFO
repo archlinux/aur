@@ -1,0 +1,18 @@
+pkgbase = salawat-bin
+	pkgdesc = A prayer times (Adhan) app for Windows and GNU/Linux written in JavaFX
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/DBChoco/Salawat
+	arch = x86_64
+	license = MIT
+	depends = zstd
+	depends = gtk3
+	depends = alsa-lib
+	depends = nss
+	provides = salawat
+	conflicts = salawat-appimage
+	conflicts = salawat
+	source = Salawat-1.3.0-linux.tar.gz::https://github.com/DBChoco/Salawat/releases/download/v1.3.0/Salawat-1.3.0-linux.tar.gz
+	md5sums = c623351938306b5c437aa1d680004dab
+
+pkgname = salawat-bin
