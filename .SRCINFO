@@ -3,6 +3,7 @@ pkgbase = moonlight-qt-git
 	pkgver = v4.3.1.r252.gaa74e693
 	pkgrel = 2
 	url = https://moonlight-stream.org
+	arch = aarch64
 	arch = x86_64
 	license = GPL
 	makedepends = git
