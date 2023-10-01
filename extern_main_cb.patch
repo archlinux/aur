@@ -1,0 +1,13 @@
+diff --git a/library/mainloop.h b/library/mainloop.h
+index bb9b970..e2f920f 100644
+--- a/library/mainloop.h
++++ b/library/mainloop.h
+@@ -24,7 +24,7 @@ void mainloop_remove_connection(struct _osdg_connection *conn);
+ timestamp_t mainloop_ping(struct _osdg_connection** connList, unsigned int connCount);
+ int mainloop_calc_timeout(timestamp_t nextPing);
+ 
+-const struct osdg_main_loop_callbacks *main_cb;
++extern const struct osdg_main_loop_callbacks *main_cb;
+ 
+ static inline void main_loop_start_cb(void)
+ {
