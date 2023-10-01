@@ -2,12 +2,12 @@
 
 pkgname=libcutefish
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="System library for Cutefish applications"
 arch=('x86_64')
 url="https://github.com/cutefishos/libcutefish"
 license=('GPL')
-depends=('bluez-qt' 'kscreen' 'modemmanager-qt' 'networkmanager-qt' 'qt5-quickcontrols2'
+depends=('bluez-qt5' 'kscreen' 'modemmanager-qt5' 'networkmanager-qt5' 'qt5-quickcontrols2'
          # via dbus:
          'accountsservice')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')

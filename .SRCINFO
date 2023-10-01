@@ -1,0 +1,22 @@
+pkgbase = libcutefish
+	pkgdesc = System library for Cutefish applications
+	pkgver = 0.7
+	pkgrel = 3
+	url = https://github.com/cutefishos/libcutefish
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = bluez-qt5
+	depends = kscreen
+	depends = modemmanager-qt5
+	depends = networkmanager-qt5
+	depends = qt5-quickcontrols2
+	depends = accountsservice
+	source = https://github.com/cutefishos/libcutefish/archive/0.7/libcutefish-0.7.tar.gz
+	source = libkscreen-5.27.patch
+	sha512sums = a6a83f10f7e3309ce1cbf4cb607328cb7448364ae66af1f36e8dd41ae1682a70fd9dccf18b84f205e7445d27a7b81e9d14d5f5eae383cc20fdbb81e7ee08fae6
+	sha512sums = 1a197f3b04b51162468b3882bd14af5962766c578c26a16ff31467f5479f1102094c20c47ce7c57c93644ad36454ea6012b16ac8ccef74c2b45ed3dc52f64597
+
+pkgname = libcutefish
