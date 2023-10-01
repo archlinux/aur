@@ -1,0 +1,15 @@
+pkgbase = knetstats
+	pkgdesc = Network interface and statistics viewer
+	pkgver = 2.0.0.alpha
+	pkgrel = 1
+	url = https://github.com/telans/KNetStats
+	arch = x86_64
+	license = GPL-2
+	makedepends = cmake
+	makedepends = qt5-base
+	depends = kwidgetsaddons<6
+	depends = qt5-base
+	source = knetstats-2.0.0.alpha.tar.gz::https://github.com/telans/KNetStats/archive/v2.0.0.alpha.tar.gz
+	sha256sums = SKIP
+
+pkgname = knetstats
