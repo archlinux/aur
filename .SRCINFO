@@ -1,6 +1,6 @@
 pkgbase = libopenshot-audio-git
 	pkgdesc = A high-quality audio editing and playback library used by libopenshot (git version)
-	pkgver = 0.1.8.r103.g12a1529
+	pkgver = 0.3.2.r6.g08c2cdd
 	pkgrel = 1
 	url = https://www.openshot.org/
 	arch = x86_64
@@ -8,8 +8,14 @@ pkgbase = libopenshot-audio-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = alsa-lib
+	makedepends = zlib
 	makedepends = freetype2
 	makedepends = libx11
+	source = git+https://github.com/OpenShot/libopenshot-audio.git
+	sha256sums = SKIP
+
+pkgname = libopenshot-audio-git
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
@@ -17,8 +23,10 @@ pkgbase = libopenshot-audio-git
 	provides = libopenshot-audio
 	provides = libopenshot-audio.so
 	conflicts = libopenshot-audio
-	source = git+https://github.com/OpenShot/libopenshot-audio.git
-	sha256sums = SKIP
+	options = !emptydirs
 
-pkgname = libopenshot-audio-git
-
+pkgname = libopenshot-audio-docs-git
+	pkgdesc = A high-quality audio editing and playback library used by libopenshot (documentation; git version)
+	arch = any
+	provides = libopenshot-audio-docs
+	conflicts = libopenshot-audio-docs
