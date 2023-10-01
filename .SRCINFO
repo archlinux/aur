@@ -1,0 +1,14 @@
+pkgbase = tiawa-base
+	pkgdesc = base packages for Tiawa
+	pkgver = 0.1
+	pkgrel = 1
+	url = git@gitlab.com:tiawa/tiawa-base.git
+	arch = any
+	license = MIT
+	depends = bat
+	depends = btop
+	depends = eza
+	depends = starship
+	depends = zsh
+
+pkgname = tiawa-base
