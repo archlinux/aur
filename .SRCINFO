@@ -1,6 +1,6 @@
 pkgbase = python-gpsoauth
 	pkgdesc = A python client library for Google Play Services OAuth.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/simon-weber/gpsoauth
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-gpsoauth
 	depends = python
 	depends = python-requests
 	depends = python-pycryptodomex
-	source = gpsoauth-1.0.2.tar.gz::https://github.com/simon-weber/gpsoauth/archive/1.0.2.tar.gz
-	sha256sums = 1c728fdf61aba57cc205fe93ca585a4a3f7f1b4229af70f0aee63980b5f4267a
+	source = gpsoauth-1.0.3.tar.gz::https://github.com/simon-weber/gpsoauth/archive/1.0.3.tar.gz
+	sha256sums = 7e26b55d311bc639ef52d2b6c1aaacce63f88e76b8457aec4b8f3157ff0721f0
 
 pkgname = python-gpsoauth
