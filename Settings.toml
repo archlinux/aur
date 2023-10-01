@@ -1,0 +1,24 @@
+# your discord api token
+API_TOKEN 	= "FIXME"
+
+# postgresql connection settings, change as required
+# make sure to create user/password and database
+# hostname can also be set to unix path
+DB_HOSTNAME 	= "FIXME"
+DB_NAME		= "dab-rs"
+DB_USERNAME 	= "dab-rs_user"
+DB_PASSWORD 	= "FIXME"
+
+# filesystem settings
+USERDATA_DIR 	= "/var/lib/dab-rs"
+RESOURCE_DIR 	= "/usr/share/dab-rs/resources"
+LOG_PATH 	= "/var/log/dab-rs/activity.log"
+
+# bot behaviour settings
+# you can keep these defaults
+BUS_SIZE 	= 200
+COMMAND_ROOT	= "dab"
+DEFAULT_LOCALE	= "en-US"
+CHIME_DURATION_MAX_MS		= 3000
+FILE_SIZE_LIMIT_KILOBYTES	= 5000
+CONNECTION_TIMEOUT_MILLISECONDS	= 10000

@@ -1,0 +1,27 @@
+pkgbase = dab-rs
+	pkgdesc = Announcement Bot for Discord, implemented in Rust
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Sir-Photch/dab-rs
+	install = dab-rs.install
+	arch = any
+	license = AGPL3
+	makedepends = cargo
+	depends = opus
+	depends = ffmpeg
+	depends = postgresql
+	backup = etc/dab-rs/Settings.toml
+	source = dab-rs-0.3.0.tar.gz::https://github.com/Sir-Photch/dab-rs/archive/v0.3.0.tar.gz
+	source = Settings.toml
+	source = dab-rs.service
+	source = dab-rs.install
+	source = sysusers-dab-rs.conf
+	source = tmpfiles-dab-rs.conf
+	sha512sums = 1ea5bd1ae2ea74d859045b3801372e6ca18dd9c9a40ee10e29d55f2870bfc333dfbda79c2fc68aa37cc09c0d767563a837427de28caf338d719853f11754b018
+	sha512sums = fad6d2eae7f5e06afbe63bf41a62eee0327290355ffd5662f7472d6e737af627a3b738055b5dba51895b8bb71fbd1806f8d47c15461a01da3b1debaec734c50d
+	sha512sums = db962f08a4d40dc4b5893590d5538ad9937a53681b85d51e15185a55106f2e2cfd6305aeeb1d72aaba4678119c7f917d20021dd4479ff35e677e3ff4d6ed44c6
+	sha512sums = a11cbcadb260a16ad4b4b269c753c208fe2c143f7d6930427a072c59042298bf88c251fce2391270fcee0725d834427606f6e16742746b3754cdf35ae44dfa05
+	sha512sums = c62743413f379c0d3e8b64a61d2abecba4e20348b7d3caecccb5cff13ca6c7b9bd06a45ca3126af29e92ac69f086878cf62ee684a49fdfc1b0c91a8cf7e2791d
+	sha512sums = 2736f6d2a07c345f65a8df770b4ff72857b239b3f219d495adbef63f6ffd910d633e7e31e0f2b2cc427bb1c473851b9e782b9bb88943041ecef6fae0960c5cb4
+
+pkgname = dab-rs

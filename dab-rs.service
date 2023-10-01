@@ -1,0 +1,42 @@
+[Unit]
+Description=dab-rs Discord Bot
+Wants=network-online.target
+Requires=postgresql.service
+After=network-online.target postgresql.service
+
+[Service]
+Type=simple
+User=dab-rs
+Group=dab-rs
+
+ExecStart=/usr/bin/dab-rs -c /etc/dab-rs/Settings.toml
+Restart=on-failure
+RestartSec=30s
+
+WorkingDirectory=~
+StateDirectory=dab-rs
+LogsDirectory=dab-rs
+ConfigurationDirectory=dab-rs
+
+ProtectSystem=strict
+PrivateTmp=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectHostname=true
+ProtectKernelModules=true
+PrivateUsers=true
+ProtectClock=true
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
