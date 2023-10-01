@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=varhandle
-_pkgver=2.0.5
+_pkgver=2.0.6
 pkgname=r-${_pkgname,,}
-pkgver=2.0.5
-pkgrel=4
+pkgver=2.0.6
+pkgrel=1
 pkgdesc='Functions for Robust Variable Handling'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b0ee653e0343e292547d2a7052e60a2e7d97d1d5528246862522e67346882d0')
+sha256sums=('4e7afd3ef77343c61508b0465b588751dc089c264faabf7bed60e9f4d9e1c577')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,12 +1,12 @@
 pkgbase = r-varhandle
 	pkgdesc = Functions for Robust Variable Handling
-	pkgver = 2.0.5
-	pkgrel = 4
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=varhandle
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/varhandle_2.0.5.tar.gz
-	sha256sums = 9b0ee653e0343e292547d2a7052e60a2e7d97d1d5528246862522e67346882d0
+	source = https://cran.r-project.org/src/contrib/varhandle_2.0.6.tar.gz
+	sha256sums = 4e7afd3ef77343c61508b0465b588751dc089c264faabf7bed60e9f4d9e1c577
 
 pkgname = r-varhandle
