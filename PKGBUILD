@@ -38,48 +38,6 @@ sha256sums=('5a6f8e5a8065bb17100a9a9ef47656d4df62e047d299f11ab4d36bb9f465d714'
 
 package() {
 	install -d "$pkgdir/usr/share/themes/"
-	cp -a --no-preserve=ownership \
-		"Catppuccin-Mocha-Standard-Blue-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Blue-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Blue-Dark" \
-        "Catppuccin-Mocha-Standard-Flamingo-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Flamingo-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Flamingo-Dark" \
-        "Catppuccin-Mocha-Standard-Green-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Green-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Green-Dark" \
-        "Catppuccin-Mocha-Standard-Lavender-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Lavender-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Lavender-Dark" \
-        "Catppuccin-Mocha-Standard-Maroon-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Maroon-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Maroon-Dark" \
-        "Catppuccin-Mocha-Standard-Mauve-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Mauve-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Mauve-Dark" \
-        "Catppuccin-Mocha-Standard-Peach-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Peach-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Peach-Dark" \
-        "Catppuccin-Mocha-Standard-Pink-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Pink-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Pink-Dark" \
-        "Catppuccin-Mocha-Standard-Red-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Red-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Red-Dark" \
-        "Catppuccin-Mocha-Standard-Rosewater-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Rosewater-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Rosewater-Dark" \
-        "Catppuccin-Mocha-Standard-Sapphire-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Sapphire-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Sapphire-Dark" \
-        "Catppuccin-Mocha-Standard-Sky-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Sky-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Sky-Dark" \
-        "Catppuccin-Mocha-Standard-Teal-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Teal-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Teal-Dark" \
-        "Catppuccin-Mocha-Standard-Yellow-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Yellow-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Yellow-Dark" \
-		"$pkgdir/usr/share/themes"
+	cp -r -a --no-preserve=ownership \
+    Catppuccin-Mocha-* "$pkgdir/usr/share/themes"
 }
