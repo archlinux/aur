@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=5d36a041fec44bde0194ee2816466110903a57f4
+_mozc_commit=1d7616cabe97eb6b5f50aa4bbbc26db78a6ea0dd
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -25,12 +25,12 @@ _dict=(
 #       skk-jisyo
 #       sudachidict
        )
-_sudachidict_date=20230711
+_sudachidict_date=20230927
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5220.102
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -57,11 +57,11 @@ for dict in "${_dict[@]}"; do
 done
 sha512sums=('SKIP'
             'SKIP'
-            'fa7f9e210d8afaf11b0ea72e1d05b3649b299a1342903b595928f2bb373c7d3f078f002487669b004d4b3105e7ad9b13099ca10d18ef3a5f7d837cf2e9a94a4f'
-            'b1fc978c332957cbd4be873809d8c7c08d48922a05f60d90893e534d5626f357069300c163010346ef7e93aecd8a206b272b33a12ac76fe94d4c201acf491b0d'
-            'e55cbac056c14f9c3e62e250860b5372d5d78deebf29da2024187f517b544085a0bb454ebc5bfce19a43385d350932867f8b084c433aa0224e01e2c02efd5a08'
-            'd27e65cd76f0047875e11eb7c2e270ce8c27ccd4b66b4546c684a74f22fdbaf76aa26033dacdb0547dde4f292dd618c8d5377e4185ab3548b5d7609383d86f96'
-            '63fc0c2508ada87949a7f77e7974dbdd0c371d8b64ac9002be872b0524d5f866448ee22304bbc1980e7ae207903933f6e047ca5a7d409992cb9fbc77ba9e1a3c'
+            '7ce5cb0e8fa4a170216a646ba6c90c767669511f58fe4afb1b2a045f5210a4dd22f2f88d93bd1cef2fbb7334bf7bbff912f0b0b1fbb4751defc152561de28e31'
+            '757f77995bc1d1ccc57f7f0a1f5cd07cf906fd0a1262851d963bd4574f37dcb18870eef261ebbdcc4becb551bafe99974542b1a5b854ec69bce05df3a68b1d14'
+            '66ad5357b722ba4f54a3861c993cd047424ec210ba2931f38b90bc27758984ac29369baa511451b3e656196173fe0b049d3dfd1ade24a4dc389b86b9e0b9cd7e'
+            '1edbceb3d08226d487d4baa199a5936f521c97363abdbc15592cfb50e7672f797fbb90ecf2b5ddbd0cbb54f482d073629fcf47afa298b9be6254649aad71cce9'
+            '2d065fbfbfdf8294e053625a891043ca640aa39c8fc5959d7b6544c12a1ad321f19b8f5c8c6beb49b2d4e694a73f66ff32f7c6ec6989c9d73addcf461c49b6af'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '8e32c97b62257d953bbc1e7cd15821df8a7c13eb97f0b9cdf569d9f474a58f9870c159bdd8fece581d0e9c57c399436604b493eb78b35f0edeff9dcc90c5be69'
@@ -93,7 +93,7 @@ prepare() {
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
 
   # nm -f posix
-  sed 's|nm \-f p |nm -f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
+  sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 }
 
 build() {

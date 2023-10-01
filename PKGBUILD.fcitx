@@ -25,12 +25,12 @@ _dict=(
 #       skk-jisyo
 #       sudachidict
        )
-_sudachidict_date=20230711
+_sudachidict_date=20230927
 
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.29.5220.102
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -83,7 +83,7 @@ prepare() {
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
 
   # nm -f posix
-  sed 's|nm \-f p |nm -f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
+  sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 }
 
 build() {
