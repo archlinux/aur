@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pkgdu
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A tool to display packages disk usage size"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('3b365a680837c47420cf63e3004c4d196b6ddea7f5b57b04de131115039d300d5c9c278761d84b9829cd5490e62b2513f7ff32aba1d5ec450dea1e4470f36657')
+b2sums=('4961ace4708f5745df1f06647cf64471fa693d104f6ca41a9943ea8288bd0a9289694288d1759183ebc8815f8cd5881d97f163af48c96d549600b6d328a50f2f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
