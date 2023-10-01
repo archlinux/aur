@@ -3,7 +3,7 @@
 cpaname=Devel-CallChecker
 cpanauthor=ZEFRAM
 pkgname=perl-devel-callchecker
-pkgver=0.008
+pkgver=0.009
 pkgrel=1
 pkgdesc="Perl Devel::CallChecker CPAN module"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl' 'perl-dynaloader-functions')
 makedepends=('perl-module-build' 'perl-test-pod' 'perl-test-pod-coverage')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('5d584e0bf55942517fbb13bea5bff0bdf0d0287c0912030e853fa028a69011dc')
+sha256sums=('7a46caef9c48908f00fe8985dcecc4ec55f42e6c4efaafce9dbdaf9d45a37bc4')
 
 build() {
     cd "${srcdir}/${cpaname}-${pkgver}"
