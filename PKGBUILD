@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=6.1.r111232.g468615f204
+pkgver=6.1.r112250.g6f7bf64dbc
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -77,7 +77,7 @@ makedepends=(
   amf-headers
   avisynthplus
   clang
-  ffnvcodec-headers
+  ffnvcodec-headers-git
   git
   ladspa
   mesa
@@ -97,8 +97,8 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch')
 sha256sums=('SKIP'
-            'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'
-            'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a')
+            '9b94b90a33dc8ac9693d72c825e9c444df914428fce7cca61117146ee8f8c07b'
+            '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
