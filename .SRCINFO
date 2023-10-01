@@ -1,7 +1,7 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)
 	pkgver = 7.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.virtualbox.org/
 	arch = x86_64
 	license = GPL2
