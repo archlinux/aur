@@ -259,7 +259,6 @@ done
                                 -DCMAKE_INSTALL_PREFIX:PATH=${_installprefix} \
                                 -DBUILD_qtwebengine=OFF \
                                 -DINPUT_linker=mold \
-                                -DLLVM_INSTALL_DIR:PATH=/opt/clang/latest \
 				-DCMAKE_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
 				${additional_args}
                                 ${_srcdir}
