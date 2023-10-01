@@ -1,15 +1,15 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 
 pkgname=python-gbinder
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Python bindings for libgbinder"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/erfanoabdi/gbinder-python"
 license=('GPL')
 depends=('libgbinder')
-makedepends=('git' 'python-setuptools' 'cython0')
-_commit="423dc366561c82515f4f2f46017535e7d81ce5b1"
+makedepends=('git' 'python-setuptools' 'cython')
+_commit="a2c5093c734e59df9f592010020cf081dadce81f"
 source=(${pkgname}::git+https://github.com/erfanoabdi/gbinder-python.git#commit=${_commit})
 sha512sums=('SKIP')
 
