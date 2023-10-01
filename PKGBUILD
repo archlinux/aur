@@ -12,20 +12,20 @@
 # You can also manually add or remove WireGuard *.conf files using the GUI interface.
 
 # IMPORTANT NOTE ABOUT USAGE:
-# Upstream set a 15-character limit for the config filenames.
 # If a config's filename is longer than 15 characters, you cannot activate the tunnel.
+# This is due to a limitation of interface names on Linux.
 
 pkgname=wireguird
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="GUI frontend to connect to and manage WireGuard tunnels (GTK3)"
 arch=('x86_64')
 url="https://github.com/UnnoTed/wireguird"
 license=('MIT')
-depends=('wireguard-tools' 'gtk3' 'libayatana-appindicator' 'openresolv')
+depends=('wireguard-tools' 'polkit' 'gtk3' 'libayatana-appindicator' 'openresolv')
 makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=(306ac55506cd2d74909351f9be8000b9e83d99280214e1618693b665b8b73485)
+sha256sums=(653ed74a7fbf3a53d3bad5eca7856570419e9a23cb297f68125313bf5790dc98)
 
 prepare() {
 
