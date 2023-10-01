@@ -38,6 +38,6 @@ sha256sums=('40d375531d49a0ca988bafe609fe885875c19d00a5bf3f12658eda4a594b6e67'
             '025f1c6d9e5d1ba05bbd04c562fd9aeaa0a73d4701b79e7b099c02bcb80442bd')
 package() {
     install -d "$pkgdir/usr/share/themes"
-    cp -a --no-preserve=ownership \
+    cp -r -a --no-preserve=ownership \
       Catppuccin-Frappe-* "$pkgdir/usr/share/themes"
 }
