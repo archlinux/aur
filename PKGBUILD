@@ -1,4 +1,5 @@
-# Maintainer: Isaac Aronson <i at linux dotcom>
+# Maintainer: Garlicbreadwolfs
+# Contributor: Isaac Aronson <i at linux dotcom>
 # Contributor: Dan Serban
 # Contributor: Jim Casteel
 # Contributor: dryes <joswiseman@gmail>
@@ -8,7 +9,7 @@
 # Contributor: Florijan Hamzic <florijanh@gmail.com>
 pkgname='sphinx'
 pkgver=2.2.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Free open-source SQL full-text search engine.'
 arch=('i686' 'x86_64')
 url='http://www.sphinxsearch.com/'
@@ -17,7 +18,7 @@ depends=('unixodbc' 'expat' 'libmariadbclient' 'postgresql-libs')
 optdepends=('postgresql')
 backup=('etc/conf.d/sphinx')
 install='sphinx.install'
-source=("http://sphinxsearch.com/files/${pkgname}-${pkgver}-release.tar.gz"
+source=("https://sphinxsearch.com/files/${pkgname}-${pkgver}-release.tar.gz"
     'sphinx.conf.d'
     'sphinx.rc.d' 
     'sphinx.service'
