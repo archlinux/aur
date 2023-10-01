@@ -1,6 +1,6 @@
 pkgbase = clasp-cl
 	pkgdesc = Bringing Common Lisp and C++ Together
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/clasp-developers/clasp
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = clasp-cl
 	conflicts = cando-git
 	conflicts = clasp-cl-git
 	options = !strip
-	source = clasp-cl-2.3.0.tar.gz::https://github.com/clasp-developers/clasp/archive/refs/tags/2.3.0.tar.gz
-	sha512sums = e0e22791d9008c1caf197f1b7b40c304132af8d96925ab54dc8c0fd62ae928d72c3de1f2af5e3dcd6428061aa8554613083b589750f808fa02fcfa5f9252786d
-	b2sums = 5d7ab74502ec892d5caaf339b52db7bbbf5f24ed8e80a44bf7509d556a448f761c17cf489bcbd14019552a4facae81200c62f37c7e147016ea9d67ba6b57fe32
+	source = clasp-cl-2.4.0.tar.gz::https://github.com/clasp-developers/clasp/archive/refs/tags/2.4.0.tar.gz
+	sha512sums = 5cb3642fbfe5f936e733cae95b4746d86fec9af6017b04ccd6b87eded4f80eae48c2965af104688eaa54648ec99b21a79bf0f0f69637eab8ca7a909dd9987832
+	b2sums = 743e409e1b90882c544c040ca0b98b591edb12aab7d26f6e20475cec3095c94e6e820b40701a79e9374538a7beb2dec24fd127b1931b8b390e8872c3f2182f4f
 
 pkgname = clasp-cl
