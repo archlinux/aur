@@ -14,20 +14,20 @@ depends=(
   'glibc' # 'libc.so'
   'qt5-base' # 'libQt5Core.so' 'libQt5DBus.so' 'libQt5Gui.so' 'libQt5Network.so' 'libQt5Widgets.so'
   'kdelibs4support' # 'libKF5KDELibs4Support.so'
-  'kcmutils' # 'libKF5KCMUtils.so'
-  'kconfig' # 'libKF5ConfigCore.so' 'libKF5ConfigGui.so'
-  'kconfigwidgets' # 'libKF5ConfigWidgets.so'
-  'kcoreaddons' # 'libKF5CoreAddons.so'
-  'kguiaddons' # 'libKF5GuiAddons.so'
-  'ki18n' # 'libKF5I18n.so'
-  'kiconthemes' # 'libKF5IconThemes.so'
-  'kio' # 'libKF5KIOCore.so' 'libKF5KIOWidgets.so'
-  'knotifications' # 'libKF5Notifications.so'
-  'kservice' # 'libKF5Service.so'
-  'kwallet' # 'libKF5Wallet.so'
-  'kwidgetsaddons' # 'libKF5WidgetsAddons.so'
-  'kwindowsystem' # 'libKF5WindowSystem.so'
-  'kxmlgui' # 'libKF5XmlGui.so'
+  'kcmutils5' # 'libKF5KCMUtils.so'
+  'kconfig5' # 'libKF5ConfigCore.so' 'libKF5ConfigGui.so'
+  'kconfigwidgets5' # 'libKF5ConfigWidgets.so'
+  'kcoreaddons5' # 'libKF5CoreAddons.so'
+  'kguiaddons5' # 'libKF5GuiAddons.so'
+  'ki18n5' # 'libKF5I18n.so'
+  'kiconthemes5' # 'libKF5IconThemes.so'
+  'kio5' # 'libKF5KIOCore.so' 'libKF5KIOWidgets.so'
+  'knotifications5' # 'libKF5Notifications.so'
+  'kservice5' # 'libKF5Service.so'
+  'kwallet5' # 'libKF5Wallet.so'
+  'kwidgetsaddons5' # 'libKF5WidgetsAddons.so'
+  'kwindowsystem5' # 'libKF5WindowSystem.so'
+  'kxmlgui5' # 'libKF5XmlGui.so'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -52,9 +52,9 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '79140506876558d256c3c0e4a94425aa4c4108cd677e4854065c64b4b7ec9409'
+  'd7bc520fa960e831e24f56c15b2c45afec5d5c4ec4fb1a584d1cbcfca7c6d885'
 )
-
+options=('debug')
 
 pkgver() {
   cd kwooty

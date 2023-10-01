@@ -1,15 +1,3 @@
-diff --git a/src/core.h b/src/core.h
-index d55eb30..7dcdea4 100644
---- a/src/core.h
-+++ b/src/core.h
-@@ -31,6 +31,7 @@
- #include "utilities/utility.h"
- using namespace UtilityNamespace;
- 
-+Q_NAMESPACE
- class MyTreeView;
- class CentralWidget;
- class ItemParentUpdater;
 diff --git a/src/utilities/utility.h b/src/utilities/utility.h
 index de2c9fe..d0a3f59 100644
 --- a/src/utilities/utility.h
