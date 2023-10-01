@@ -1,13 +1,15 @@
+# https://docs.crowdsec.net/docs/user_guides/building#binary-installation
+
 post_install() {
-    cd /opt/crowdsec
     cscli hub update >/dev/null 2>&1
-    readarray -t collections < <(cscli collections list --output json --all | jq -r '.[] | map(select(.status | contains ("disabled")) | .name) | unique | .[]')
-    if [ ${#collections} -gt 0 ]; then
-        cscli collections install ${collections[@]} >/dev/null 2>&1
-    fi
+    # readarray -t collections < <(cscli collections list --output json --all | jq -r '.[] | map(select(.status | contains ("disabled")) | .name) | unique | .[]')
+    # if [ ${#collections} -gt 0 ]; then
+    #     cscli collections install ${collections[@]} >/dev/null 2>&1
+    # fi
+    cscli collections install crowdsecurity/linux
     cscli parsers install "crowdsecurity/whitelists"
+    cscli machines add --force "$(</etc/machine-id)" --auto
     cscli capi register
-    cscli machines add --force "$(< /etc/machine-id)" --auto
     systemctl daemon-reload
     systemctl enable --now crowdsec
 }
@@ -19,17 +21,22 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-    cscli hub update
     config_backup="/tmp/crowdsec_upgrade_$1_$2"
     if [ -d "$config_backup" ]; then
         cscli config restore "$config_backup"
         rm -rf "$config_backup"
     fi
+    cscli hub update
+    cscli collections upgrade --all
     systemctl daemon-reload
     systemctl reload crowdsec
 }
 
 pre_remove() {
-    cd /opt/crowdsec/
-    sh ./wizard.sh --uninstall
+    cscli dashboard stop
+}
+
+post_remove() {
+    rm -f /var/log/crowdsec*.log
+    systemctl daemon-reload
 }
