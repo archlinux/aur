@@ -1,6 +1,6 @@
 pkgbase = python-zipstream-ng
 	pkgdesc = A modern and easy to use streamable zip file generator
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/pR0Ps/zipstream-ng
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-zipstream-ng
 	depends = python
 	provides = python-zipstream
 	conflicts = python-zipstream
-	source = https://github.com/pR0Ps/zipstream-ng/archive/v1.6.0.tar.gz
-	sha256sums = efc2ed98d176437c8c61a8db9c77a4afd1027fd8d13f5fe1a34ea4d8c2fa724d
+	source = https://github.com/pR0Ps/zipstream-ng/archive/v1.7.0.tar.gz
+	sha256sums = 50d870ec52f9cace47f47cd61b9d7b65d4fd9dbd4e4e8ac13af1cfc90db9e0f0
 
 pkgname = python-zipstream-ng
