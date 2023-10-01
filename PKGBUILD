@@ -2,7 +2,7 @@
 _name=starc
 
 pkgname="${_name}-appimage"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Intuitive writing app with smart features and a streamlined process for film, TV, radio, stage and more."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 source=("${pkgname}-${pkgver}::https://github.com/story-apps/starc/releases/download/v${pkgver}/${_name}-setup.AppImage"
 		"${_name}.desktop.patch"
 		"${_name}.sh")
-sha256sums=('c217d3bea86e4f4b9c78ad7e0a5a7a2ab5d67aed37bbb7c89aa0712139376d97'
+sha256sums=('efa62371b54fafed081245b302087d9befa26581e45bbb7fcc8d6a42d5ed6b2f'
 			'd004ebb0e333f4d3e3072cc0fa9db65cd79bdcfb959d8b86faec568643a75b91'
 			'642005557de950e4fd37bc87fe2fb051e7f93f61e7287161fe3c99c9918977c7')
 
