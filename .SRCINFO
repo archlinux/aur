@@ -7,6 +7,7 @@ pkgbase = river-bsp-layout
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
+	provides = river-bsp-layout
 	source = river-bsp-layout-1.1.1.tar.gz::https://github.com/areif-dev/river-bsp-layout/archive/refs/tags/v1.1.1.tar.gz
 	b2sums = 21becbfc35e59aabd61df100ae9f6c963f0b64b598c5a62f720a0ca1754bffd907b815ac44bdad998101712a975f17439c7cbfad36a9996c3025c4b362c64636
 
