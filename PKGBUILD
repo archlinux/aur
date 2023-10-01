@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=noto-fonts-main
-pkgver=20230524
-pkgrel=2
+pkgver=20230930
+pkgrel=1
 epoch=2
 pkgdesc='Google Noto for Latin, Greek, Cyrillic scripts.'
 arch=('any')
@@ -11,7 +11,7 @@ provides=('noto-fonts')
 conflicts=('noto-fonts'
            'noto-fonts-extra')
 source=("https://www.markusweimar.de/public/noto-fonts-main-${pkgver}.tar.zst")
-sha256sums=('b618391d9ce0b1fd4f2d3d953229fff991a67b48b74651711332688c6f8e12c2')
+sha256sums=('36a01570546c0f2fbdabdc23b286117126c1f12b7458084df1d78d1ffd037c1b')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
