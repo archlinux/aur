@@ -1,0 +1,18 @@
+pkgbase = kcm-fcitx
+	pkgdesc = KDE Config Module for Fcitx
+	pkgver = 0.5.6
+	pkgrel = 2
+	url = https://github.com/fcitx/kcm-fcitx
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = fcitx-qt5
+	depends = knewstuff5
+	depends = kcmutils5
+	source = https://download.fcitx-im.org/kcm-fcitx/kcm-fcitx-0.5.6.tar.xz
+	source = https://download.fcitx-im.org/kcm-fcitx/kcm-fcitx-0.5.6.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = a3d378ecd9ea9fa5bcc42c75e5b0b0ac2ba6c94fda93b7213d821546bb83b5904c75c2fc9482cd7b47fbf5ad81a0641b7ec345aa2e630c8795bf8d5b89f9cd3b
+	sha512sums = SKIP
+
+pkgname = kcm-fcitx
