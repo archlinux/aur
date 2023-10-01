@@ -1,0 +1,24 @@
+pkgbase = classicube-bin
+	pkgdesc = Play ClassiCube, our sandbox block game inspired by other similar sandbox block games, today for free! Just click one of the buttons below to start playing!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.classicube.net
+	arch = x86_64
+	arch = arm7h
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = curl
+	depends = openal
+	depends = zenity
+	conflicts = classicube-git
+	source_x86_64 = https://cdn.classicube.net/client/release/nix64/ClassiCube.tar.gz
+	source_x86_64 = https://gitlab.com/classicubeaur/classicube-setupscript/-/archive/1.0.0-1/classicube-setupscript-1.0.0-1.tar.bz2
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://cdn.classicube.net/client/release/rpi64/ClassiCube.tar.gz
+	source_aarch64 = https://gitlab.com/classicubeaur/classicube-setupscript/-/archive/1.0.0-1/classicube-setupscript-1.0.0-1.tar.bz2
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = classicube-bin
