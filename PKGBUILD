@@ -3,7 +3,7 @@
 cpaname=DynaLoader-Functions
 cpanauthor=ZEFRAM
 pkgname=perl-dynaloader-functions
-pkgver=0.003
+pkgver=0.004
 pkgrel=1
 pkgdesc="Perl DynaLoader::Functions CPAN module"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 makedepends=(perl-test-pod{,-coverage})
 depends=('perl' 'perl-module-build')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('3eb2347214bce796ffad8d57e29b206094f0557446aeba4f8b334920121ea183')
+sha256sums=('5e8e424671a0b2f1d9dff30e5f99087e7555880eb5d79a328b31f4cd4992983d')
 
 build() {
     cd "${srcdir}/${cpaname}-${pkgver}"
