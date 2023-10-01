@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfml-git
-pkgver=2.5.0.r125.g59df9d0d
+pkgver=2.6.0.r637.g9d1d9cde
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
@@ -31,9 +31,11 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr . \
         -DCMAKE_BUILD_TYPE=RelWithDebugInfo \
-        -DSFML_BUILD_DOC=false \
-        -DSFML_BUILD_EXAMPLES=false \
-        -DSFML_INSTALL_PKGCONFIG_FILES=true # prints a warning if pkg-config not supported
+        -DBUILD_SHARED_LIBS=ON \
+        -DSFML_BUILD_DOC=OFF \
+        -DSFML_BUILD_EXAMPLES=OFF \
+        -DSFML_INSTALL_PKGCONFIG_FILES=ON
+        # prints a warning if pkg-config not supported
   make
   make doc
 }
