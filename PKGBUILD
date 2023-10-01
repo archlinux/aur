@@ -3,24 +3,18 @@
 
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
-pkgver=1.4.0
-pkgrel=5
+pkgver=1.4.1
+pkgrel=1
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
 checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
-         0001-Start-of-new-dev-version-v1.4.1.patch::https://github.com/bit-team/backintime/commit/5202a3e46c134756a5ecd883947fa4d9ed2d557f.patch
-         0002-fix-Set-show-hidden-files-button-value-before-connec.patch::https://github.com/bit-team/backintime/commit/37018e0eaf342a7431d69ee0c571405d610500f2.patch)
-sha256sums=('97227a2e5926f08e37bca3fa325e9017b29fe991612340666a376e2eb8804885'
-            'fa1f3785f78ddff02bcb4e2ef434d4dae5990a1d36600373b30ba67e8e15ed4e'
-            'b918ebc11d94cbbcee1e5a1c62f2f74e82874546bc70e6b178dc7e61595623b6')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('fd9482f94981b2df0da568e09376a0961e873c37ccf641d4cc91effc810c4e94')
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  patch -p1 -i ../0001-Start-of-new-dev-version-v1.4.1.patch
-  patch -p1 -i ../0002-fix-Set-show-hidden-files-button-value-before-connec.patch
 }
 
 build() {

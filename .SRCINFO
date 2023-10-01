@@ -1,6 +1,6 @@
 pkgbase = backintime
-	pkgver = 1.4.0
-	pkgrel = 5
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
@@ -11,16 +11,12 @@ pkgbase = backintime
 	checkdepends = python-pyfakefs
 	checkdepends = oxygen-icons
 	makedepends = python
-	source = backintime-1.4.0.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.4.0.tar.gz
-	source = 0001-Start-of-new-dev-version-v1.4.1.patch::https://github.com/bit-team/backintime/commit/5202a3e46c134756a5ecd883947fa4d9ed2d557f.patch
-	source = 0002-fix-Set-show-hidden-files-button-value-before-connec.patch::https://github.com/bit-team/backintime/commit/37018e0eaf342a7431d69ee0c571405d610500f2.patch
-	sha256sums = 97227a2e5926f08e37bca3fa325e9017b29fe991612340666a376e2eb8804885
-	sha256sums = fa1f3785f78ddff02bcb4e2ef434d4dae5990a1d36600373b30ba67e8e15ed4e
-	sha256sums = b918ebc11d94cbbcee1e5a1c62f2f74e82874546bc70e6b178dc7e61595623b6
+	source = backintime-1.4.1.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = fd9482f94981b2df0da568e09376a0961e873c37ccf641d4cc91effc810c4e94
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version.
-	depends = backintime-cli=1.4.0
+	depends = backintime-cli=1.4.1
 	depends = libnotify
 	depends = polkit
 	depends = python-dbus
