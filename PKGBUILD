@@ -2,7 +2,7 @@
 
 _pkgname=pugixml
 pkgname=mingw-w64-${_pkgname}
-_majordotminor=1.13
+_majordotminor=1.14
 pkgver=${_majordotminor}
 pkgrel=1
 pkgdesc='Light-weight, simple and fast XML parser for C++ with XPath support (mingw-w64)'
@@ -13,7 +13,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://github.com/zeux/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('40c0b3914ec131485640fa57e55bf1136446026b41db91c1bef678186a12abbe')
+sha256sums=('2f10e276870c64b1db6809050a75e11a897a8d7456c4be5c6b2e35a11168a015')
 
 _srcdir="${_pkgname}-${_majordotminor}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
