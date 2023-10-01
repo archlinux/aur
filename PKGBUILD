@@ -5,7 +5,7 @@
 _pkgname=nyxt
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc='A keyboard-driven web browser designed for power users'
 arch=('i686' 'x86_64')
 url='https://nyxt.atlas.engineer'
@@ -37,8 +37,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_pkgname"
-	git submodule init
-	git submodule update
+	git submodule update --init --recursive --jobs "$(nproc)"
 }
 
 build() {
