@@ -1,6 +1,6 @@
 pkgbase = mint-artwork
 	pkgdesc = Linux Mint Artwork and Resources.
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 0
 	epoch = 2
 	url = http://packages.linuxmint.com/pool/main/m/mint-artwork
@@ -27,8 +27,8 @@ pkgbase = mint-artwork
 	options = !zipman
 	options = !ccache
 	backup = etc/lightdm/lightdm-gtk-greeter.conf
-	source = mint-artwork_1.7.5.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_1.7.5.tar.xz
-	md5sums = aae10cf1f1eb1770443c040e06336a49
-	sha256sums = c9dd85c860339d71a71c92e432c48da88c74b1b28797770d32beeda6e7bb0650
+	source = mint-artwork_1.7.6.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_1.7.6.tar.xz
+	md5sums = 86158e65dbe95853b6f84b4cfbb40012
+	sha256sums = bb5843d2aebb6ca60abffc4caaa83103aebad2fd37c6354be17ef3c6737019ff
 
 pkgname = mint-artwork
