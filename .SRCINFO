@@ -1,13 +1,13 @@
 pkgbase = quake3e-git
 	pkgdesc = Improved Quake III Arena Engine
-	pkgver = r2146.3fb70d37
+	pkgver = r2342.b465a4db
 	pkgrel = 1
 	url = https://github.com/ec-/Quake3e
 	install = quake3e-git.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = git
-	makedepends = libxxf86dga
 	provides = quake3
 	source = git+https://github.com/ec-/Quake3e.git
 	source = quake3e.desktop

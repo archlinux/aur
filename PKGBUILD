@@ -1,14 +1,14 @@
 # Maintainer: zoidby
 
 pkgname=quake3e-git
-pkgver=r2146.3fb70d37
+pkgver=r2342.b465a4db
 pkgrel=1
 provides=('quake3')
 pkgdesc="Improved Quake III Arena Engine"
 url="https://github.com/ec-/Quake3e"
 license=('GPL')
-arch=('x86_64')
-makedepends=('git' 'libxxf86dga')
+arch=('x86_64' 'aarch64')
+makedepends=('git')
 source=('git+https://github.com/ec-/Quake3e.git'
 'quake3e.desktop'
 'quake3e.png')
@@ -28,13 +28,18 @@ build() {
     }
 
 package() {
-    install -D -m 755 $srcdir/Quake3e/build/release-linux-x86_64/quake3e.x64 $pkgdir/opt/quake3/quake3e.x64
-    install -D -m 755 $srcdir/Quake3e/build/release-linux-x86_64/quake3e.ded.x64 $pkgdir/opt/quake3/quake3e.ded.x64
-    install -D -m 644 $srcdir/Quake3e/build/release-linux-x86_64/quake3e_opengl_x86_64.so $pkgdir/opt/quake3/quake3e_opengl_x86_64.so
-    install -D -m 644 $srcdir/Quake3e/build/release-linux-x86_64/quake3e_vulkan_x86_64.so $pkgdir/opt/quake3/quake3e_vulkan_x86_64.so
+	# Fix stray filename on x86_64
+	if [ -e "$srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.x64" ]; then
+		mv $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.x64 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.x86_64
+		fi
+
+    install -D -m 755 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.${CARCH} $pkgdir/opt/quake3/quake3e.${CARCH}
+    install -D -m 755 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.${CARCH} $pkgdir/opt/quake3/quake3e.ded.${CARCH}
+    install -D -m 644 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e_opengl_${CARCH}.so $pkgdir/opt/quake3/quake3e_opengl_${CARCH}.so
+    install -D -m 644 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e_vulkan_${CARCH}.so $pkgdir/opt/quake3/quake3e_vulkan_${CARCH}.so
     mkdir -p $pkgdir/usr/bin
-    ln -s /opt/quake3/quake3e.x64 $pkgdir/usr/bin/quake3e
-    ln -s /opt/quake3/quake3e.ded.x64 $pkgdir/usr/bin/quake3e.ded
+    ln -s /opt/quake3/quake3e.${CARCH} $pkgdir/usr/bin/quake3e
+    ln -s /opt/quake3/quake3e.ded.${CARCH} $pkgdir/usr/bin/quake3e.ded
     install -D -m 644 quake3e.desktop $pkgdir/usr/share/applications/quake3e.desktop
     install -D -m 644 quake3e.png $pkgdir/usr/share/pixmaps/quake3e.png
     }
