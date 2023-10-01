@@ -1,6 +1,6 @@
 base16
-base16-*-x86_64.pkg.tar.xz
+base16-*.tar.zst
+base16-*.tar.xz
 LICENSE
 pkg/
-PKGBUILD
 src/

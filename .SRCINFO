@@ -1,6 +1,6 @@
 pkgbase = base16
 	pkgdesc = base16 (hex) encode/decode data and print to standard output
-	pkgver = 20170923
+	pkgver = 20230917
 	pkgrel = 1
 	url = https://github.com/emanuelduss/Scripts/blob/master/base16
 	arch = i686
@@ -8,8 +8,6 @@ pkgbase = base16
 	license = custom
 	depends = perl
 	source = https://raw.githubusercontent.com/emanuelduss/Scripts/master/base16
-	source = https://raw.githubusercontent.com/emanuelduss/Scripts/master/LICENSE
 	sha256sums = 4482327de7e082f08e26d41c4a5b9d8e5adeb1780fc98ae22fb2cdec54f3c24d
-	sha256sums = 1aa1b3610e6a8f9776bbacfddd3c6818244dc3268c8661f41b6aed7293fadb2d
 
 pkgname = base16
