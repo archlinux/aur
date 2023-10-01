@@ -1,7 +1,7 @@
 pkgbase = r8168-dkms
 	pkgdesc = A kernel module for Realtek 8168 network cards (DKMS version)
-	pkgver = 8.051.02
-	pkgrel = 4
+	pkgver = 8.052.01
+	pkgrel = 1
 	url = https://github.com/mtorromeo/r8168
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,9 @@ pkgbase = r8168-dkms
 	depends = dkms
 	provides = r8168
 	conflicts = r8168
-	source = r8168-dkms::git+https://github.com/mtorromeo/r8168.git#tag=8.051.02
-	source = r8168-dkms-v6.1.patch::https://github.com/mtorromeo/r8168/pull/47.patch
+	source = r8168-dkms::git+https://github.com/mtorromeo/r8168.git#tag=8.052.01
 	source = dkms.conf
-	source = r8168-dkms-v6.4.patch
 	sha256sums = SKIP
-	sha256sums = b7ef09e7496715b7576b7a3bff5a96e0e07c0bb02cd5bb5805415be20b883f60
 	sha256sums = d37b8acbd4fe06f81538581712a04751a96fc37bad3a4bd3ae8329f8744c49b3
-	sha256sums = 69fd10d72e9a90b7527d1de3c9df44df92927d708dd74828d61598ef6837bde7
 
 pkgname = r8168-dkms
