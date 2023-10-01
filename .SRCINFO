@@ -1,7 +1,7 @@
 pkgbase = crowdsec-bin
 	pkgdesc = The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI
 	pkgver = 1.5.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/crowdsecurity/crowdsec
 	install = crowdsec-bin.install
 	arch = any

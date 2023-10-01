@@ -1,7 +1,7 @@
 # https://docs.crowdsec.net/docs/user_guides/building#binary-installation
 
 post_install() {
-    cscli hub update >/dev/null 2>&1
+    cscli hub update
     # readarray -t collections < <(cscli collections list --output json --all | jq -r '.[] | map(select(.status | contains ("disabled")) | .name) | unique | .[]')
     # if [ ${#collections} -gt 0 ]; then
     #     cscli collections install ${collections[@]} >/dev/null 2>&1
@@ -17,23 +17,23 @@ post_install() {
 pre_upgrade() {
     config_backup="/tmp/crowdsec_upgrade_$1_$2"
     rm -rf "$config_backup"
-    cscli config backup "$config_backup"
+    cscli config backup "$config_backup" --error
 }
 
 post_upgrade() {
     config_backup="/tmp/crowdsec_upgrade_$1_$2"
     if [ -d "$config_backup" ]; then
-        cscli config restore "$config_backup" &&
-            rm -rf "$config_backup" || echo -e "\n**config backup restore failed: ${config_backup}**"
+        cscli config restore "$config_backup" --error &&
+            rm -rf "$config_backup" || echo -e "\n**Config backup restore failed: ${config_backup}**\n"
     fi
     cscli hub update
-    cscli collections upgrade --all
+    cscli collections upgrade --error --all
     systemctl daemon-reload
     systemctl reload crowdsec
 }
 
 pre_remove() {
-    cscli dashboard stop
+    cscli dashboard stop --error
 }
 
 post_remove() {
