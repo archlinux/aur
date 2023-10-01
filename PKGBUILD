@@ -2,7 +2,7 @@
 pkgname=cs-nginx-bouncer
 _pkgname=crowdsec-nginx-bouncer
 pkgver=1.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://doc.crowdsec.net/docs/bouncers/nginx"

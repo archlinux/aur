@@ -11,8 +11,7 @@ post_install() {
 	command -v cscli > /dev/null
 
 	if [ "$?" -eq "0" ] ; then
-		SUFFIX=`date +%s`
-		API_KEY=`cscli bouncers add crowdsec-nginx-bouncer-${SUFFIX} -o raw`
+		API_KEY=`cscli bouncers add crowdsec-nginx-bouncer -o raw`
 		export API_KEY
 		IFS=: read HOST PORT <<< `sudo cscli config show --key "Config.API.Server.ListenURI"`
 		echo "Bouncer registered to the CrowdSec Local API."
