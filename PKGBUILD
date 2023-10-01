@@ -6,8 +6,8 @@
 # Maintainer: Kazel <address at domain dot tld>
 
 pkgname=wineasio
-pkgver=1.1.0
-pkgrel=7
+pkgver=1.2.0
+pkgrel=1
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
