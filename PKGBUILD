@@ -7,10 +7,13 @@ arch=('x86_64')
 url="https://github.com/areif-dev/river-bsp-layout"
 license=('GPL3')
 depends=(
-    'gcc-libs'
+  'gcc-libs'
 )
 makedepends=(
   'cargo'
+)
+provides=(
+  'river-bsp-layout'
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
