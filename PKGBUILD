@@ -2,17 +2,15 @@
 # Contributor: Will Elliott <troutcobbler at gmail dot com>
 
 pkgbase=eww
-pkgname=(eww-x11)
-#pkgname=(eww-{wayland,x11})
+pkgname=(eww-{wayland,x11})
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Standalone widget system made in Rust"
 url='https://github.com/elkowar/eww'
 arch=(x86_64)
 license=(MIT)
 makedepends=(cargo-nightly git)
-depends=(gtk3)
-#depends=(gtk3 gtk-layer-shell)
+depends=(gtk3 gtk-layer-shell)
 provides=(eww)
 conflicts=(eww)
 install=$pkgbase.install
@@ -33,8 +31,8 @@ prepare() {
 build() {
 	cd $pkgbase
 
-	#export CARGO_TARGET_DIR=target_wayland
-	#cargo build --frozen --release --no-default-features --features=wayland
+	export CARGO_TARGET_DIR=target_wayland
+	cargo build --frozen --release --no-default-features --features=wayland
 
 	export CARGO_TARGET_DIR=target_x11
 	cargo build --frozen --release --no-default-features --features=x11

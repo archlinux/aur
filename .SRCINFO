@@ -1,7 +1,7 @@
 pkgbase = eww
 	pkgdesc = Standalone widget system made in Rust
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/elkowar/eww
 	install = eww.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = eww
 	makedepends = cargo-nightly
 	makedepends = git
 	depends = gtk3
+	depends = gtk-layer-shell
 	provides = eww
 	conflicts = eww
 	source = git+https://github.com/elkowar/eww?signed#commit=d58d91de78d2b9984a1bbb8314be197bc0e283dc
@@ -16,6 +17,11 @@ pkgbase = eww
 	validpgpkeys = 94E8F34BCE4F4BA8ED9B29BD50E76B4711E4C3E4
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	b2sums = SKIP
+
+pkgname = eww-wayland
+	pkgdesc = Standalone widget system made in Rust (Wayland backend)
+	depends = gtk3
+	depends = gtk-layer-shell
 
 pkgname = eww-x11
 	pkgdesc = Standalone widget system made in Rust (X11 backend)
