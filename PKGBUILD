@@ -1,7 +1,7 @@
 pkgbase="rt-env"
 pkgname="rt-env-git"
-pkgver=1.1.2.225.3520
-pkgrel=2
+pkgver=1.1.2.225.3521
+pkgrel=1
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
 license=("Apache-2.0" "GPL-2.0")
