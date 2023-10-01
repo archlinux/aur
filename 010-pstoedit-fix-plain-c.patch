@@ -1,0 +1,41 @@
+--- a/src/pstoedit.cpp
++++ b/src/pstoedit.cpp
+@@ -327,6 +327,11 @@ extern FILE *yyin;				// used by lexer
+ 						// otherwise we could declare it locally where it is used
+ 
+ 
++extern "C" DLLEXPORT void loadpstoeditplugins_plainC(const char *progname, int verbose)
++{
++  return loadpstoeditplugins(progname, cerr, (bool) verbose);
++}
++
+ static void usage(ostream & outstream, bool forTeX, bool withdetails, bool withcategories )
+ {
+ 	if (withcategories) {
+--- a/src/pstoedit.h
++++ b/src/pstoedit.h
+@@ -100,8 +100,13 @@ void clearPstoeditDriverInfo_plainC(struct DriverDescription_S * ptr);
+ 
+ #ifdef __cplusplus
+ extern "C" DLLEXPORT
+-#endif
+ void loadpstoeditplugins(const char* progname, std::ostream & errstream, bool verbose);
++#endif
++
++#ifdef __cplusplus
++extern "C" DLLEXPORT
++#endif
++void loadpstoeditplugins_plainC(const char* progname, int verbose);
+ 
+ #ifdef __cplusplus
+ extern "C" DLLEXPORT
+--- a/src/pstoedit.h
++++ b/src/pstoedit.h
+@@ -37,6 +37,7 @@
+ #endif
+ 
+ #include "pstoedll.h"
++#include <stdbool.h>
+ 
+ typedef int (*execute_interpreter_function)(int argc, const char * const argv[]);
+ 
