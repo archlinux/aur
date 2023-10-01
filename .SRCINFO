@@ -1,7 +1,7 @@
 pkgbase = music-assistant-desktop
 	pkgdesc = Music Assistant Companion app
-	pkgver = 0.0.18
-	pkgrel = 3
+	pkgver = 0.0.19
+	pkgrel = 1
 	url = https://github.com/music-assistant/music-assistant-desktop
 	arch = x86_64
 	license = Apache-2.0
@@ -23,7 +23,7 @@ pkgbase = music-assistant-desktop
 	provides = music-assistant-desktop
 	conflicts = squeezelite
 	conflicts = music-assistant-desktop-bin
-	source = music-assistant-desktop-0.0.18.tar.gz::https://github.com/music-assistant/music-assistant-desktop/archive/v0.0.18.tar.gz
-	md5sums = 6499044d05bb1bce9a98e3b886d97d63
+	source = music-assistant-desktop-0.0.19.tar.gz::https://github.com/music-assistant/music-assistant-desktop/archive/v0.0.19.tar.gz
+	md5sums = 1a35a57b979697a425ee822dcb67661e
 
 pkgname = music-assistant-desktop
