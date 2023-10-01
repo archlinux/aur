@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=json-schema-for-humans
-pkgver=0.45.2
+pkgver=0.46
 pkgrel=1
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=(any)
@@ -32,16 +32,14 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('086d4023a266d11e7f207e33a02a91289afb08046320ac8b4ba71a12e62a7283')
+sha256sums=('ccfa59a733469b1a5fc4b35c5cfe1c1cb8d8ceb608b7f1c774ebfc0b2eddd4e1')
 
 _archive="$pkgname-$pkgver"
 
 build() {
   cd "$_archive"
 
-  # Due to a bug in poetry when there is a nesting of git directories
-  # See https://github.com/pypa/build/issues/384 for more info
-  GIT_CEILING_DIRECTORIES="$PWD/.." python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 check() {
