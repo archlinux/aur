@@ -1,7 +1,7 @@
 pkgbase = moonlight-qt-git
 	pkgdesc = GameStream client for PCs (Windows, Mac, and Linux) (master branch)
-	pkgver = r1636.71a6ef6
-	pkgrel = 1
+	pkgver = v4.3.1.r252.gaa74e693
+	pkgrel = 2
 	url = https://moonlight-stream.org
 	arch = x86_64
 	license = GPL

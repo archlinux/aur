@@ -2,8 +2,8 @@
 # Contributor: SoftwareRat <jaguar5018@gmail.com>
 
 pkgname=moonlight-qt-git
-pkgver=r1636.71a6ef6
-pkgrel=1
+pkgver=v4.3.1.r252.gaa74e693
+pkgrel=2
 pkgdesc='GameStream client for PCs (Windows, Mac, and Linux) (master branch)'
 arch=('x86_64')
 license=('GPL')
@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
   cd "$pkgname"
   git submodule update --init --recursive
-  qmake PREFIX="$pkgdir/usr" "CONFIG+=discord-rpc" moonlight-qt.pro
+  qmake PREFIX="$pkgdir/usr" moonlight-qt.pro
 }
 
 build() {
