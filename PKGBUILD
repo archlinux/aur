@@ -7,16 +7,18 @@ pkgdesc="MPRIS plugin for mpv. (GIT version)"
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/hoyon/mpv-mpris'
-depends=('mpv'
-         'glib2'
-         )
+depends=(
+  'mpv'
+  'glib2'
+)
 makedepends=('git')
-checkdepends=('jq'
-              'playerctl'
-              'socat'
-              'sound-theme-freedesktop'
-              'xorg-server-xvfb'
-              )
+checkdepends=(
+  'jq'
+  'playerctl'
+  'socat'
+  'sound-theme-freedesktop'
+  'xorg-server-xvfb'
+)
 provides=('mpv-mpris')
 conflicts=('mpv-mpris')
 source=('git+https://github.com/hoyon/mpv-mpris.git')
