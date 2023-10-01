@@ -2,7 +2,7 @@
 # Contributor: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=spadfs-utils
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 pkgdesc="SPAD filesystem userspace utilities"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="http://www.jikos.cz/~mikulas/spadfs/"
 license=(unknown)
 optdepends=('spadfs-dkms: DKMS kernel module')
 source=(http://www.jikos.cz/~mikulas/spadfs/download/spadfs-${pkgver}.tar.gz)
-sha256sums=('0a703fe1a6a592740b35eff19fc3380c0a678cce9c1df7760a0dfc9b11acfb18')
+sha256sums=('0dd506310113676ee5ca69e67b38ba583467df9030d51157d22954ba2d94b522')
 
 package() {
 	cd spadfs-${pkgver}
