@@ -4,7 +4,7 @@
 
 pkgname=crowdsec-bin
 pkgver=1.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
@@ -35,7 +35,7 @@ source=(
     crowdsec-bin.install
 )
 sha256sums=('489d2dbd009f1255714f7448116562c4608452a8010ee4677803c10e02a7fbbf'
-    '1c2a41ed7c111eadc491a19257cfeeb6d7054b76bccca449f55424c4eeb345f4')
+            '3298076feb60111a61c2697d7359e359e3cac9d61e4b8de8492538794e3f2b4a')
 
 prepare() {
     cd "$srcdir/crowdsec-v${pkgver}"
