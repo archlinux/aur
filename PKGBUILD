@@ -37,7 +37,7 @@ build() {
 
 check() {
   cd mpv-mpris
-  DISPLAY=:0.0 make test
+  make test
 }
 
 package() {
