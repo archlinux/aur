@@ -1,0 +1,19 @@
+pkgbase = cutefish-filemanager
+	pkgdesc = Cutefish File Manager, simple to use, beautiful, and retain the classic PC interactive design
+	pkgver = 0.8
+	pkgrel = 2
+	url = https://github.com/cutefishos/filemanager
+	arch = x86_64
+	groups = cutefish
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = fishui
+	depends = kio5
+	depends = solid5
+	source = https://github.com/cutefishos/filemanager/archive/0.8/cutefish-filemanager-0.8.tar.gz
+	source = fix-build.patch
+	sha512sums = af3f1caa982c19e14357346d6227034086020977f21b4f06af500d5d92845d142ee530fb151649fd2e7dadbd1837eb13c400968a3b407412baed7044fb60101d
+	sha512sums = d01169ed902847a30cb6468c153e16876a6c21d795a47a7f530ae503fe79e5a1824214ce08b5ba0451a2c59512677df1e1504f0fd11b44e111ca079789edc667
+
+pkgname = cutefish-filemanager

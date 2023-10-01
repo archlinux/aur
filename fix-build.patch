@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8538766..8af3179 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,9 +91,8 @@ target_link_libraries(cutefish-filemanager
+ )
+ 
+ file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
++qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+ add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(cutefish-filemanager translations)
+ 
+ install(TARGETS cutefish-filemanager RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ install(FILES cutefish-filemanager.desktop DESTINATION "/usr/share/applications")
