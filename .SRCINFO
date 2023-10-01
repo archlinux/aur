@@ -1,7 +1,7 @@
 pkgbase = wonderlab-appimage
 	pkgdesc = Next generation cross-platform Minecraft launcher
 	pkgver = 1.2.7
-	pkgrel = 0.5
+	pkgrel = 0.6
 	url = https://github.com/Blessing-Studio/WonderLab.Override
 	arch = x86_64
 	arch = aarch64
