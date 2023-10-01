@@ -1,7 +1,7 @@
 # Maintainer: pappy <pa314159@users.noreply.github.com>
 
 pkgname=octoprint
-pkgver=1.8.7
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
@@ -9,6 +9,7 @@ url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
 		python-argon2_cffi
+		python-babel
 		python-blinker
 		python-click
 		python-colorlog
@@ -17,14 +18,15 @@ depends=(
 		python-filetype
 		python-flask-assets
 		python-flask-babel
-		python-future
+		python-flask-login
+		python-flask-limiter # aur
 		python-frozendict
 		python-future
 		python-markdown
 		python-netaddr
 		python-netifaces
 		python-passlib
-		python-pathvalidate
+		python-pathvalidate # aur
 		python-pkginfo
 		python-psutil
 		python-pylru # aur
@@ -56,7 +58,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OctoPrint/OctoPrint/arc
 options=(!distcc !ccache)
 # The OctoPrint team has the bad habbit of changing and retagging
 # released versions, so we cannot reliably use any hash
-sha256sums=('SKIP'
+sha256sums=('96419b42733fe9d1b86a2f2a8d4ef13a70d46bc616fedb2b64e7de2530db1dd2'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             'b07af51817cd209cdf019d6347ce5d62121ccbf20835dad8bb8316a80bc82346'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
@@ -83,7 +85,7 @@ package() {
 	source $pkgdir/usr/lib/$pkgname/bin/activate
 
 	pushd $srcdir/OctoPrint-${pkgver}
-	pip --no-cache-dir install --install-option '--optimize=1' .
+	pip --no-cache-dir install  . --compile
 	popd
 
 	find $pkgdir/usr/lib/$pkgname/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;
