@@ -3,8 +3,8 @@
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=openframeworks
-pkgver=0.11.2
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64')
@@ -15,12 +15,10 @@ options=(!strip)
 install=openframeworks.install
 source=(
   "of-make-workspace"
-  "https://openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux64gcc6_release.tar.gz"
-  "https://gist.githubusercontent.com/kerrickstaley/7f8c65a27a1f4e79a942235b87c1f0c0/raw/28f7d0dd94237076f72b8eaf2e009831d7d61a5d/fix-libsndfile-error.patch"
+  "https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz"
 )
 sha256sums=('b4fc38288595df566f770018d871970fb13fb2ad4af7e9e5cddc60288f338806'
-            '9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c'
-            '67693b69e2c36861d14ce9fa57b6855898c48fa4ed90e6aa14d7ce3a779b6110')
+            '942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b')
 
 _name="of_v${pkgver}_linux64gcc6_release"
 
@@ -29,6 +27,7 @@ prepare() {
 
   export OF_ROOT=${srcdir}/${_name}
   export LC_ALL=C
+  export CXXFLAGS="-Wall -Wno-error -Wno-format-security"
 
   ARCH=$(uname -m)
 
@@ -37,10 +36,6 @@ prepare() {
   else
     LIBSPATH=linux
   fi
-
-  msg2 "Apply patch to fix libsndfile error..."
-  cd ${srcdir}/${_name}
-  patch -p1 < ${srcdir}/fix-libsndfile-error.patch
 }
 
 build() {
