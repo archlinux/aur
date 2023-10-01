@@ -3,16 +3,18 @@ post_install() {
 
 To setup dab-rs, you need to create a database and user in postgresql:
 
-# sudo -u postgres -- psql -c \\
-	\"CREATE USER dab-rs_user WITH PASSWORD 'A_SECURE_PASSWORD_THAT_I_HAVE_REPLACED'; \\
-	 CREATE DATABASE dab-rs OWNER dab-rs_user; \\
-	 GRANT ALL PRIVILEGES ON DATABASE dab-rs TO dab-rs_user; \\
-	 REVOKE CONNECT ON DATABASE dab-rs FROM PUBLIC;\"
+# sudo -u postgres -- psql \\
+	-c \"CREATE USER dab_rs_user WITH PASSWORD 'A_SECURE_PASSWORD_THAT_I_HAVE_REPLACED';\" \\
+	-c \"CREATE DATABASE dab_rs OWNER dab_rs_user;\" \\
+	-c \"GRANT ALL PRIVILEGES ON DATABASE dab_rs TO dab_rs_user;\" \\
+	-c \"REVOKE CONNECT ON DATABASE dab_rs FROM PUBLIC;\"
 
 Then update the configuration in /etc/dab-rs/Settings.toml.
 Finally enable/start the service:
 
 # systemctl enable --now dab-rs.service
+
+Consider clearing your shell history to remove the database password.
 
 ^ ^ ^ ^ ^ ^ ^ ^ ^ ^"
 }
