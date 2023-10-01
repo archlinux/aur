@@ -5,7 +5,7 @@
 pkgbase=qtkeychain
 pkgname=(qtkeychain-qt5 qtkeychain-qt6)
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides support for secure credentials storage'
 arch=(x86_64)
 url='https://github.com/frankosterfeld/qtkeychain'
@@ -28,7 +28,7 @@ build() {
 
 package_qtkeychain-qt5() {
   depends+=(qt5-base)
-  optdepends=('kwallet: kwallet backend')
+  optdepends=('kwallet5: kwallet backend')
   conflicts=(qtkeychain)
   provides=(qtkeychain)
   replaces=(qtkeychain)

@@ -1,0 +1,27 @@
+pkgbase = qtkeychain
+	pkgdesc = Provides support for secure credentials storage
+	pkgver = 0.14.1
+	pkgrel = 2
+	url = https://github.com/frankosterfeld/qtkeychain
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = qt6-tools
+	makedepends = qt6-declarative
+	makedepends = clang
+	depends = libsecret
+	source = https://github.com/frankosterfeld/qtkeychain/archive/0.14.1/qtkeychain-0.14.1.tar.gz
+	sha256sums = afb2d120722141aca85f8144c4ef017bd74977ed45b80e5d9e9614015dadd60c
+
+pkgname = qtkeychain-qt5
+	depends = libsecret
+	depends = qt5-base
+	optdepends = kwallet5: kwallet backend
+	provides = qtkeychain
+	conflicts = qtkeychain
+	replaces = qtkeychain
+
+pkgname = qtkeychain-qt6
+	depends = libsecret
+	depends = qt6-base
