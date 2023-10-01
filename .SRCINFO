@@ -1,6 +1,6 @@
 pkgbase = clue
 	pkgdesc = Clue is a programming language that compiles blazingly fast into Lua code with a syntax similar to languages like C or Rust.
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://github.com/ClueLang/Clue
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = clue
 	license = MIT
 	makedepends = cargo
 	makedepends = rust
-	source = git+https://github.com/ClueLang/Clue.git#tag=v3.4.2
+	source = git+https://github.com/ClueLang/Clue.git#tag=v3.4.3
 	sha256sums = SKIP
 
 pkgname = clue
