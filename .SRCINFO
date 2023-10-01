@@ -1,18 +1,19 @@
 pkgbase = websurfx-git
 	pkgdesc = An open-source alternative to Searx that provides clean, ad-free, and organic results with incredible speed while keeping privacy and security in mind.
-	pkgver = 0.6.0.r115.35f709f
+	pkgver = v1.0.0.r0.gca30fd5
 	pkgrel = 1
-	url = https://github.com/neon-mmd/websurfx.git
+	url = https://github.com/neon-mmd/websurfx
 	install = websurfx-git.install
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
 	depends = rustup
 	depends = cargo
-	depends = redis
+	depends = luajit
+	optdepends = redis: A redis cache server for distributed caching
 	provides = websurfx-git
 	conflicts = websurfx-edge-git
-	source = git+https://github.com/neon-mmd/websurfx.git
+	source = git+https://github.com/neon-mmd/websurfx
 	md5sums = SKIP
 
 pkgname = websurfx-git

@@ -1,17 +1,17 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=websurfx-git
-pkgver=0.6.0.r115.35f709f
+pkgver=v1.0.0.r0.gca30fd5
 pkgrel=1
 epoch=
 pkgdesc="An open-source alternative to Searx that provides clean, ad-free, and organic results with incredible speed while keeping privacy and security in mind."
 arch=('x86_64')
-url="https://github.com/neon-mmd/websurfx.git"
+url="https://github.com/neon-mmd/websurfx"
 license=('AGPL3')
 groups=()
-depends=(rustup cargo redis)
+depends=(rustup cargo luajit)
 makedepends=(git)
 checkdepends=()
-optdepends=()
+optdepends=('redis: A redis cache server for distributed caching')
 provides=(websurfx-git)
 conflicts=(websurfx-edge-git)
 replaces=()
@@ -25,8 +25,9 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd websurfx
-	printf "0.6.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd websurfx
+    git checkout stable
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -42,6 +43,8 @@ package() {
 	cp -rf public/ ${pkgdir}/opt/websurfx/public/
 	install -Dm755 target/release/websurfx "${pkgdir}/usr/bin/websurfx"
 	install -Dm644 websurfx/config.lua "${pkgdir}/etc/xdg/websurfx/config.lua"
+	install -Dm644 websurfx/allowlist.txt "${pkgdir}/etc/xdg/websurfx/allowlist.txt"
+	install -Dm644 websurfx/blocklist.txt "${pkgdir}/etc/xdg/websurfx/blocklist.txt"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
