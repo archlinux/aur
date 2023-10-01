@@ -39,47 +39,5 @@ sha256sums=('40d375531d49a0ca988bafe609fe885875c19d00a5bf3f12658eda4a594b6e67'
 package() {
     install -d "$pkgdir/usr/share/themes"
     cp -a --no-preserve=ownership \
-        "Catppuccin-Frappe-Standard-Blue-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Blue-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Blue-Dark" \
-        "Catppuccin-Frappe-Standard-Flamingo-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Flamingo-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Flamingo-Dark" \
-        "Catppuccin-Frappe-Standard-Green-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Green-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Green-Dark" \
-        "Catppuccin-Frappe-Standard-Lavender-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Lavender-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Lavender-Dark" \
-        "Catppuccin-Frappe-Standard-Maroon-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Maroon-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Maroon-Dark" \
-        "Catppuccin-Frappe-Standard-Mauve-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Mauve-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Mauve-Dark" \
-        "Catppuccin-Frappe-Standard-Peach-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Peach-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Peach-Dark" \
-        "Catppuccin-Frappe-Standard-Pink-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Pink-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Pink-Dark" \
-        "Catppuccin-Frappe-Standard-Red-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Red-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Red-Dark" \
-        "Catppuccin-Frappe-Standard-Rosewater-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Rosewater-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Rosewater-Dark" \
-        "Catppuccin-Frappe-Standard-Sapphire-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Sapphire-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Sapphire-Dark" \
-        "Catppuccin-Frappe-Standard-Sky-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Sky-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Sky-Dark" \
-        "Catppuccin-Frappe-Standard-Teal-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Teal-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Teal-Dark" \
-        "Catppuccin-Frappe-Standard-Yellow-Dark-hdpi" \
-        "Catppuccin-Frappe-Standard-Yellow-Dark-xhdpi" \
-        "Catppuccin-Frappe-Standard-Yellow-Dark" \
-                "$pkgdir/usr/share/themes"
+      Catppuccin-Frappe-* "$pkgdir/usr/share/themes"
 }
