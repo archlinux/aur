@@ -11,7 +11,7 @@ pkgbase = xdman-beta-bin
 	optdepends = firefox-extension-xdman8-browser-monitor-bin: Browser extension for Firefox
 	provides = xdman
 	conflicts = xdman
-	source = https://github.com/subhra74/xdm/releases/download/8.0.29/-8.0.29-1.fc36.x86_64.rpm
+	source = https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
 	sha256sums = dbb47e7fbd03cc82aa4678886003d56e1d5222ecb4a52a83e0e6461fadc27ea3
 
 pkgname = xdman-beta-bin

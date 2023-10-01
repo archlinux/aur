@@ -13,7 +13,7 @@ optdepends=('librewolf-extension-xdman8-browser-monitor-bin: Browser extension f
             'firefox-extension-xdman8-browser-monitor-bin: Browser extension for Firefox')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$url/releases/download/$pkgver/$_pkgname_gtk-$pkgver-1.fc36.x86_64.rpm")
+source=("$url/releases/download/$pkgver/xdman_gtk-$pkgver-1.fc36.x86_64.rpm")
 sha256sums=('dbb47e7fbd03cc82aa4678886003d56e1d5222ecb4a52a83e0e6461fadc27ea3')
 
 package() {
