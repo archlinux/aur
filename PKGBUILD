@@ -1,14 +1,14 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 _sdkver=7.0.306
 pkgname=ryujinx-git
-pkgver=r2975.eb528ae0f
+pkgver=r3053.651e24fed
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
 license=('MIT')
 depends=('sh' 'glibc' 'zlib' 'hicolor-icon-theme' 'gcc-libs' 'libx11' 'fontconfig')
-makedepends=('git')
+makedepends=('git' 'desktop-file-utils')
 provides=(Ryujinx)
 conflicts=(Ryujinx)
 install=ryujinx.install
@@ -34,22 +34,25 @@ build() {
 
 	cd "Ryujinx"
 
-	$DOTNET_ROOT/dotnet publish -c Release -r linux-x64 -o ../publish -p:DebugType=embedded -p:ExtraDefineConstants="DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR" src/Ryujinx --self-contained true
-	$DOTNET_ROOT/dotnet publish -c Release -r linux-x64 -o ../publish_ava -p:DebugType=embedded -p:ExtraDefineConstants="DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR" src/Ryujinx.Ava --self-contained true
+	_args="-c Release -r linux-x64 -p:Version=$(git describe --tags) -p:DebugType=embedded -p:ExtraDefineConstants=DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR"
+
+	$DOTNET_ROOT/dotnet publish $_args -o ../publish --self-contained src/Ryujinx
+	$DOTNET_ROOT/dotnet publish $_args -o ../publish_ava --self-contained src/Ryujinx.Ava
 }
 
 package() {
 	mkdir -p "$pkgdir/opt/ryujinx/"
 	mkdir -p "$pkgdir/usr/bin/"
 
-	install -D "Ryujinx/distribution/linux/Ryujinx.desktop" "$pkgdir/usr/share/applications/Ryujinx.desktop"
-	install -D "Ryujinx/distribution/misc/Logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/Ryujinx.svg"
+	install -D "Ryujinx/distribution/linux/Ryujinx.desktop" "$pkgdir/usr/share/applications/ryujinx.desktop"
+	install -D "Ryujinx/distribution/misc/Logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
 
 	cp -R "publish/"* "$pkgdir/opt/ryujinx/"
 	cp -R "publish_ava/"* "$pkgdir/opt/ryujinx/"
 
 	chmod +x "$pkgdir/opt/ryujinx/Ryujinx.sh"
 
-	ln -s "/opt/ryujinx/Ryujinx" "$pkgdir/usr/bin/Ryujinx"
-	ln -s "/opt/ryujinx/Ryujinx.sh" "$pkgdir/usr/bin/Ryujinx.sh"
+	ln -s "/opt/ryujinx/Ryujinx.sh" "$pkgdir/usr/bin/ryujinx"
+	desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
+	desktop-file-edit --set-icon="ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 }
