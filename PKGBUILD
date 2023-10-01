@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
@@ -23,7 +23,7 @@ source=(
   "https://github.com/wineasio/wineasio/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  'aa26ec986878d3fee1b99d0b31d0085379a78fcace20defbaf9627f007e2f2cc'
+  '13f20c7b3d45b474833e6c60cb58bcad7295e97dd39239bf00f85c02272cc0f4'
 )
 
 prepare(){
@@ -39,10 +39,10 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -D -m755 build32/"$pkgname".dll.so "$pkgdir"/usr/lib32/wine/i386-unix/"$pkgname".dll.so
-  install -D -m644 build32/"$pkgname".dll "$pkgdir"/usr/lib32/wine/i386-windows/"$pkgname".dll
-  install -D -m755 build64/"$pkgname".dll.so "$pkgdir"/usr/lib/wine/x86_64-unix/"$pkgname".dll.so
-  install -D -m644 build64/"$pkgname".dll "$pkgdir"/usr/lib/wine/x86_64-windows/"$pkgname".dll
+  install -D -m755 build32/"$pkgname"32.dll.so "$pkgdir"/usr/lib32/wine/i386-unix/"$pkgname"32.dll.so
+  install -D -m644 build32/"$pkgname"32.dll "$pkgdir"/usr/lib32/wine/i386-windows/"$pkgname"32.dll
+  install -D -m755 build64/"$pkgname"64.dll.so "$pkgdir"/usr/lib/wine/x86_64-unix/"$pkgname"64.dll.so
+  install -D -m644 build64/"$pkgname"64.dll "$pkgdir"/usr/lib/wine/x86_64-windows/"$pkgname"64.dll
   install -D -m755 gui/wineasio-settings "$pkgdir"/usr/bin/wineasio-settings
   install -D -m644 gui/settings.py "$pkgdir"/usr/share/"$pkgname"/settings.py
   install -D -m644 gui/ui_settings.py "$pkgdir"/usr/share/"$pkgname"/ui_settings.py

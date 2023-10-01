@@ -1,7 +1,7 @@
 pkgbase = wineasio
 	pkgdesc = ASIO driver implementation for Wine
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wineasio/wineasio
 	install = wineasio.install
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = wineasio
 	depends = realtime-privileges
 	depends = wine
 	source = https://github.com/wineasio/wineasio/releases/download/v1.2.0/wineasio-1.2.0.tar.gz
-	sha256sums = aa26ec986878d3fee1b99d0b31d0085379a78fcace20defbaf9627f007e2f2cc
+	sha256sums = 13f20c7b3d45b474833e6c60cb58bcad7295e97dd39239bf00f85c02272cc0f4
 
 pkgname = wineasio
