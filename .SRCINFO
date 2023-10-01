@@ -11,7 +11,6 @@ pkgbase = mingw-w64-vtk-git
 	makedepends = mingw-w64-utf8cpp
 	makedepends = mingw-w64-wine
 	makedepends = mingw-w64-pegtl2
-	makedepends = mingw-w64-exprtk
 	makedepends = mingw-w64-nlohmann-json
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt5-base
