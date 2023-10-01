@@ -17,5 +17,5 @@ pkgname = ant-dracula-kde-theme-git
 
 pkgname = ant-dracula-kvantum-theme-git
 	pkgdesc = Ant Dracula theme for Kvantum Qt style
-	depends = kvantum-qt5
+	depends = kvantum
 	provides = ant-dracula-kvantum-theme

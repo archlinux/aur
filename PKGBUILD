@@ -36,7 +36,7 @@ package_ant-dracula-kde-theme-git() {
 package_ant-dracula-kvantum-theme-git() {
   provides=("ant-dracula-kvantum-theme")
   pkgdesc="Ant Dracula theme for Kvantum Qt style"
-  depends=(kvantum-qt5)
+  depends=(kvantum)
 
   cd "${_pkgname}/kde"
 
