@@ -1,4 +1,5 @@
-# Maintainer: Alex thetan1735@protonmail.com
+# Maintainer: Alex thetan1735 at protonmail dot com
+# Contributor: ohfp/lsf <lsf at pfho dot net>
 
 pkgname=librewolf-kde-appmenu
 _pkgname=librewolf
