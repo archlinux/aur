@@ -1,14 +1,14 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=squiid
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A modular calculator written in Rust. Intended to be the successor to ImaginaryInfinity Calculator."
+pkgdesc="Advanced calculator written in Rust, featuring a terminal user interface supporting both RPN and algebraic input."
 arch=('any')
 url="https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid"
 license=('GPLv3')
 makedepends=('cargo' 'cmake')
 source=("https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('50c62ad3995229117b5c74ca79a2e8862f94766f0343ddf435f74bc8567e201047413e60fd4f045b2c30ffe7ef16507ebcaa15d664a30d804c0c2e19cee6d7fe')
+sha512sums=('85c07828fffb2c203d0e11cc9b6c06b0a6decffa637ee4bd3da862a292a0f68af0d4cd9b38d4d247c86190a0c4649a7bbdbe79e5f205b2f3933b984b51589183')
 
 prepare() {
 	cd "$pkgname-$pkgver"
