@@ -7,7 +7,7 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.12.1
+pkgver=1.12.1_1
 pkgrel=1
 epoch=4
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
@@ -45,4 +45,5 @@ package() {
     #https://aur.archlinux.org/packages/bilibili-bin#comment-898393
     #https://aur.archlinux.org/packages/bilibili-bin#comment-898390
     #有点离谱哈，不知道为啥
+    #感谢 Peternal 对 SVG图标 的授权
 }

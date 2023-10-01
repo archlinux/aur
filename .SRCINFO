@@ -1,6 +1,6 @@
 pkgbase = bilibili-bin
 	pkgdesc = 哔哩哔哩官方客户端linux移植版。Bilibili official desktop client
-	pkgver = 1.12.1
+	pkgver = 1.12.1_1
 	pkgrel = 1
 	epoch = 4
 	url = https://github.com/msojocs/bilibili-linux
@@ -10,7 +10,7 @@ pkgbase = bilibili-bin
 	depends = ffmpeg
 	depends = electron
 	depends = libappindicator-gtk3
-	source = https://github.com/msojocs/bilibili-linux/releases/download/v1.12.1-1/bilibili-v1.12.1-1-x86_64.tar.gz
+	source = https://github.com/msojocs/bilibili-linux/releases/download/v1.12.1_1-1/bilibili-v1.12.1_1-1-x86_64.tar.gz
 	source = bilibili
 	source = bilibili.svg
 	source = bilibili.desktop
