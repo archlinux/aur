@@ -1,7 +1,7 @@
 pkgbase = yandex-messenger
 	pkgdesc = Yandex Messenger is designed for communication: send text messages, make audio and video calls in private and group chats, subscribe to and create channels. Communicate with colleagues in a private space.
 	pkgver = 2.155.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://yandex.ru/support/messenger/install.html
 	arch = x86_64
 	license = custom
