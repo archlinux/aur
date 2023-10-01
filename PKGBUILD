@@ -8,7 +8,8 @@ arch=('x86_64')
 url="https://github.com/noborus/ov"
 license=('MIT')
 makedepends=('go' 'git')
-source=("$pkgname::git+https://github.com/noborus/ov.git#tag=v$pkgver")
+_tag="v$pkgver"
+source=("$pkgname::git+https://github.com/noborus/ov.git#tag=$_tag")
 b2sums=('SKIP')
 
 prepare() {
@@ -19,7 +20,6 @@ prepare() {
 build() {
     cd "$pkgname"
 
-    local version="$(git describe --tags --abbrev=0)"
     local revision="$(git rev-parse --short "v$pkgver")"
 
     export CGO_CFLAGS="$CFLAGS"
@@ -32,7 +32,7 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags="-linkmode=external -X main.Version=$version -X main.Revision=$revision -extldflags '$LDFLAGS'" \
+        -ldflags="-linkmode=external -X main.Version=$_tag -X main.Revision=$revision -extldflags '$LDFLAGS'" \
         -o build
 }
 
