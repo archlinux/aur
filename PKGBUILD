@@ -29,7 +29,7 @@ source=(
 	"cs-nginx-bouncer.install"
 )
 sha256sums=('2bb65903558598fc72c20de512267cbf0759d79f0e038c5a3b8ecf2626470d3f'
-            '5ea1545fd33ad3859ea2700161f40c1e266b6375743243156a74942f849311e1')
+            '40b787d90acc63c8c1d30895a1505c4c235cd5ff8d889bffd3bb71d6da0ba88a')
 
 prepare() {
 	cd "$_pkgname-v$pkgver"
