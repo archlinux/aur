@@ -2,20 +2,23 @@
 # Contributor: quininer
 
 pkgname=ruffle-git
-pkgver=r9265.ea78bf2d3
+pkgver=r10589.673aa78f9
 pkgrel=2
 epoch=1
 pkgdesc="A Flash Player emulator written in Rust"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://ruffle.rs/"
 license=(Apache MIT)
-depends=(alsa-lib gtk3)
-makedepends=(git cargo python jdk-openjdk at-spi2-core)
+depends=(alsa-lib gtk3
+
+         # namcap implicit depends
+         glibc gcc-libs glib2 zlib openssl hicolor-icon-theme)
+makedepends=(git cargo clang python jdk-openjdk at-spi2-core)
 provides=(ruffle)
 conflicts=(ruffle)
+options=(!lto)
 source=("git+https://github.com/ruffle-rs/ruffle.git")
 sha256sums=('SKIP')
-options=(!lto)
 
 pkgver() {
   cd "ruffle/desktop"
