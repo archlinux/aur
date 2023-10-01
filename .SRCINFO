@@ -1,0 +1,20 @@
+pkgbase = cutefish-launcher
+	pkgdesc = CutefishOS's full-screen application launcher
+	pkgver = 0.8
+	pkgrel = 2
+	url = https://github.com/cutefishos/launcher
+	arch = x86_64
+	groups = cutefish
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = fishui
+	depends = kwindowsystem5
+	depends = libcutefish
+	source = https://github.com/cutefishos/launcher/archive/0.8/cutefish-launcher-0.8.tar.gz
+	source = https://github.com/cutefishos/launcher/commit/62cb76ed.patch
+	sha512sums = c439e259bb7e82ba2dacac55f792a3d78db6c4c2c194d01a1ac0dc36ff73c632dce1accd4617bd6e693bea828951dc6a4afdb6e9ad098eced7defcae7447833b
+	sha512sums = 1b558d3ae774b6f6d8c3f36f83a296fdadad75c8199fa990585d13237be0ee659dce4814ae8bf2b1bae6de863a11b3d11c478da918c4a4a03754e1efa73ec8c0
+
+pkgname = cutefish-launcher
