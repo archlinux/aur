@@ -1,14 +1,12 @@
 pkgbase = gimp-brushbox
 	pkgdesc = Set of brushes, presets, dynamics made by GrindGod
 	pkgver = 2.1
-	pkgrel = 4
-	url = https://grindgod.deviantart.com/art/The-Gimp-BrushBox-v2-1-382881674
+	pkgrel = 5
+	url = https://deviantart.com/grindgod/art/The-Gimp-TextureBox-385558228
 	arch = any
 	license = CCPL:cc-by-nc-sa
 	depends = gimp
-	options = !strip
-	source = manual://the_gimp_brushbox_v2_1_by_grindgod_d6byhe2.zip
-	sha256sums = 0cc922ece8eb59ce84b784ab50ddd60b97b4991590cddcd1fd2fa76220928523
+	source = ://filename.zip
+	sha256sums = SKIP
 
 pkgname = gimp-brushbox
-
