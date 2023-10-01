@@ -1,0 +1,12 @@
+pkgbase = aarch64-glibc-bleeding-edge-toolchain
+	pkgdesc = Ready-to-use cross-compilation toolchain provided by bootlin.com
+	pkgver = 2023.08
+	pkgrel = 1
+	url = https://toolchains.bootlin.com/
+	arch = x86_64
+	license = GPL
+	source = https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--glibc--bleeding-edge-2023.08-1.tar.bz2
+	sha256sums = 62094460b853970dcba91cae4314bfd1210bb2963be540f7b69be882f5f795ba
+
+pkgname = aarch64-glibc-bleeding-edge-toolchain
+	options = !strip
