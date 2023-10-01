@@ -1,29 +1,36 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-zimg-git
-pkgver=3.0.3.132.g71394bd
+pkgver=3.0.5.150.g7143181
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171334'
 license=('custom:WTFPL')
-depends=('lib32-gcc-libs'
-         'lib32-glibc'
-         "zimg=${pkgver}"
-         )
-makedepends=('git')
-provides=("lib32-zimg=${pkgver}"
-          'libzimg.so'
-          )
+depends=(
+  'lib32-gcc-libs'
+  'lib32-glibc'
+  "zimg=${pkgver}"
+)
+makedepends=(
+  'git'
+  'cmake'
+)
+provides=(
+  "lib32-zimg=${pkgver}"
+  'libzimg.so'
+)
 conflicts=('lib32-zimg')
-source=('git+https://github.com/sekrit-twc/zimg.git'
-        'git+https://github.com/sekrit-twc/graphengine.git'
-        'git+https://github.com/google/googletest.git'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            )
+source=(
+  'git+https://github.com/sekrit-twc/zimg.git'
+  'git+https://github.com/sekrit-twc/graphengine.git'
+  'git+https://github.com/google/googletest.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 options=('debug')
 
 pkgver() {
