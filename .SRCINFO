@@ -1,12 +1,12 @@
 pkgbase = spadfs-utils
 	pkgdesc = SPAD filesystem userspace utilities
-	pkgver = 1.0.17
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = http://www.jikos.cz/~mikulas/spadfs/
 	arch = x86_64
 	license = unknown
 	optdepends = spadfs-dkms: DKMS kernel module
-	source = http://www.jikos.cz/~mikulas/spadfs/download/spadfs-1.0.17.tar.gz
-	sha256sums = 0a703fe1a6a592740b35eff19fc3380c0a678cce9c1df7760a0dfc9b11acfb18
+	source = http://www.jikos.cz/~mikulas/spadfs/download/spadfs-1.0.18.tar.gz
+	sha256sums = 0dd506310113676ee5ca69e67b38ba583467df9030d51157d22954ba2d94b522
 
 pkgname = spadfs-utils
