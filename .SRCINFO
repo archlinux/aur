@@ -1,7 +1,7 @@
 pkgbase = openframeworks
 	pkgdesc = An open source C++ toolkit for creative coding.
 	pkgver = 0.11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openframeworks.cc/
 	install = openframeworks.install
 	arch = x86_64

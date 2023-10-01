@@ -4,7 +4,7 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=openframeworks
 pkgver=0.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64')
@@ -37,21 +37,6 @@ prepare() {
   else
     LIBSPATH=linux
   fi
-
-  pushd `dirname $0` > /dev/null
-  SCRIPTPATH=`pwd`
-  popd > /dev/null
-
-  BUILD="install"
-  JOBS=1
-  while getopts tj: opt ; do
-    case "$opt" in
-      t)  # testing, only build Debug
-	      BUILD="test" ;;
-      j)  # make job count for parallel build
-	      JOBS="$OPTARG"
-    esac
-  done
 
   msg2 "Apply patch to fix libsndfile error..."
   cd ${srcdir}/${_name}
