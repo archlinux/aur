@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-mpris-git
-pkgver=0.9.1.ged9f36b
+pkgver=1.1.0.gf759c86
 pkgrel=1
 pkgdesc="MPRIS plugin for mpv. (GIT version)"
 arch=('x86_64')
@@ -28,10 +28,6 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  sed '110i--no-config \\' -i mpv-mpris/test/setup
-}
-
 build() {
   cd mpv-mpris
   make
@@ -39,7 +35,7 @@ build() {
 
 check() {
   cd mpv-mpris
-  make test
+  DISPLAY=:0.0 make test
 }
 
 package() {
