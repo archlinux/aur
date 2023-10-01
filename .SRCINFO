@@ -10,6 +10,6 @@ pkgbase = gaffer-bin
 	noextract = gaffer-1.3.4.0-linux.tar.gz
 	options = !strip
 	source = https://github.com/GafferHQ/gaffer/releases/download/1.3.4.0/gaffer-1.3.4.0-linux.tar.gz
-	md5sums = 0a5bda80ffa48d88437cf432f94dfeab
+	md5sums = b5720b8d0178435fab8af29a3df4289f
 
 pkgname = gaffer-bin
