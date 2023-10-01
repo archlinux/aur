@@ -1,17 +1,17 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 
 pkgname=('bluez-plugins-ps3')
-pkgver=5.69
+pkgver=5.70
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' )
+makedepends=('dbus' 'libical' 'alsa-lib' 'json-c' 'ell' 'systemd-libs') 
 source=( https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz
          fake-ps3.patch 
 )
 
-sha256sums=( 'bc5a35ddc7c72d0d3999a0d7b2175c8b7d57ab670774f8b5b4900ff38a2627fc'
+sha256sums=( '37e372e916955e144cb882f888e4be40898f10ae3b7c213ddcdd55ee9c009278'
              '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
 )
 
@@ -42,7 +42,7 @@ check() {
 
 package_bluez-plugins-ps3() {
   pkgdesc="bluez plugins ( add support for non shanwan fake ps3 controllers )"
-  depends=('systemd')
+  depends=('systemd-libs')
   conflicts=('bluez-plugins')
 
   cd bluez-${pkgver}
