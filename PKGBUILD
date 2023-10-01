@@ -4,7 +4,7 @@
 # Contributor: pandan <predrg@gmail.com>
 
 pkgname=webdis
-pkgver=0.1.7
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='REST server for Redis data'
 arch=('x86_64' 'i686')
@@ -15,13 +15,13 @@ install='webdis.install'
 source=("https://github.com/nicolasff/webdis/archive/$pkgver.tar.gz"
         'webdis.service'
         'webdis.logrotate')
-sha256sums=('932e8b2d75ea6093759c4f9a228c34de664a1d41c2ef3aaa57fa61cdc38024a2'
+sha256sums=('4ee465f85999aeba3743a8ed6c7d79690bffe7a8ffb6c7ddec1d4bb6bd1d8685'
             '3c77e6968a0926c8b56755acab430f32c3e883f50b2f6f59d4dce2501bf247a7'
             'f409fefee8533e60db6a6340c021b77b57f55cfcbf26ae4acdc3b672c7aa79b7')
 
 build() {
   make -C "$pkgname-$pkgver" LDFLAGS+="-levent -pthread" \
-    CFLAGS+="-I. -Ihttp-parser -Iformats -Ijansson/src"
+    CFLAGS+="-Isrc -Isrc/http-parser -Isrc/formats -Isrc/jansson/src"
 }
 
 package() {
