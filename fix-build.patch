@@ -1,0 +1,59 @@
+diff --git a/notificationd/CMakeLists.txt b/notificationd/CMakeLists.txt
+index 6e7f6d0..7225c9c 100644
+--- a/notificationd/CMakeLists.txt
++++ b/notificationd/CMakeLists.txt
+@@ -38,8 +38,7 @@ install(TARGETS cutefish-notificationd
+ )
+ 
+ file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
++qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+ add_custom_target(notificationd_translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(cutefish-notificationd notificationd_translations)
+ 
+ install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-notificationd/translations)
+diff --git a/polkit-agent/CMakeLists.txt b/polkit-agent/CMakeLists.txt
+index f888e47..ff5bfe4 100644
+--- a/polkit-agent/CMakeLists.txt
++++ b/polkit-agent/CMakeLists.txt
+@@ -30,9 +30,8 @@ target_link_libraries(cutefish-polkit-agent
+ )
+ 
+ file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
++qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+ add_custom_target(polkit-agent-translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(cutefish-polkit-agent polkit-agent-translations)
+ 
+ install(TARGETS cutefish-polkit-agent
+     DESTINATION ${CMAKE_INSTALL_BINDIR}
+diff --git a/settings-daemon/CMakeLists.txt b/settings-daemon/CMakeLists.txt
+index 47c71c7..97a50b5 100644
+--- a/settings-daemon/CMakeLists.txt
++++ b/settings-daemon/CMakeLists.txt
+@@ -78,9 +78,8 @@ target_link_libraries(${TARGET}
+ )
+ 
+ file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
++qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+ add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(${TARGET} translations)
+ 
+ install(TARGETS ${TARGET} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${TARGET}/translations)
+diff --git a/shutdown-ui/CMakeLists.txt b/shutdown-ui/CMakeLists.txt
+index cf1193e..42cd8ab 100644
+--- a/shutdown-ui/CMakeLists.txt
++++ b/shutdown-ui/CMakeLists.txt
+@@ -15,9 +15,8 @@ target_link_libraries(cutefish-shutdown
+ )
+ 
+ file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
++qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+ add_custom_target(shutdown-translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(cutefish-shutdown shutdown-translations)
+ install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/cutefish-shutdown/translations)
+ 
+ install(TARGETS cutefish-shutdown RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
