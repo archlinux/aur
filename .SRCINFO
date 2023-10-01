@@ -1,7 +1,7 @@
 pkgbase = hysteria
 	pkgdesc = A powerful, lightning fast and censorship resistant proxy
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://hysteria.network/
 	install = hysteria.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hysteria
 	depends = glibc
 	depends = acl
 	depends = shadow
-	source = hysteria-git::git+https://github.com/apernet/hysteria.git#tag=app/v2.0.2
+	source = hysteria-git::git+https://github.com/apernet/hysteria.git#tag=app/v2.0.3
 	source = hysteria@.service
 	source = hysteria-server@.service
 	source = sysusers.conf
