@@ -1,5 +1,5 @@
 pkgbase = ytfe
-	pkgdesc = YouTube frontend
+	pkgdesc = Lightweight YouTube client using the LCL toolkit
 	pkgver = 1.19.0
 	pkgrel = 1
 	url = http://oscomp.hu

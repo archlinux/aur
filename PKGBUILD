@@ -2,7 +2,7 @@
 pkgname=ytfe
 pkgver=1.19.0
 pkgrel=1
-pkgdesc="YouTube frontend"
+pkgdesc="Lightweight YouTube client using the LCL toolkit"
 arch=('x86_64' 'i686')
 url="http://oscomp.hu"
 license=('custom')
