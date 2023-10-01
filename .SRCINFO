@@ -1,0 +1,13 @@
+pkgbase = brother-dcp7057-cups-bin
+	pkgdesc = CUPS wrapper for Brother DCP-7057 printer
+	pkgver = 3.1.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadend.aspx?c=cn&lang=zh&prod=dcp7057_cn&os=128&dlid=dlf101125_000&flang=9&type3=10033
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://d.brother-movie.com/HL2240D/brgenml1cupswrapper-3.1.0-1.i386.deb
+	md5sums = 9d31b628b552959419f2f6c05e16b84a
+
+pkgname = brother-dcp7057-cups-bin
