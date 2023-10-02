@@ -15,7 +15,7 @@ depends=(sile
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('3b90ab0a61b2feb3d6bc1174e4c0559326356f3e99cbbab092e37859554251fb')
+sha256sums=('4cfaabfa9f789bc2e04195f2a9aba6d2cf4523b029dcb594297aa414916f7469')
 
 package() {
 	cd "$_archive"
