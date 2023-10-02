@@ -1,16 +1,16 @@
 pkgbase = git-ssh-git
 	pkgdesc = An SSH key manager for git
-	pkgver = r276.2b204e9
+	pkgver = r255.c72efd3
 	pkgrel = 1
 	url = https://github.com/pyamsoft/git-ssh.git
 	arch = any
 	license = GPLv2
 	makedepends = git
 	depends = git
+	optdepends = socat: For use with HTTP proxies
 	provides = git-ssh
 	conflicts = git-ssh
 	source = git-ssh::git+https://github.com/pyamsoft/git-ssh.git#branch=main
 	sha256sums = SKIP
 
 pkgname = git-ssh-git
-

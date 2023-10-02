@@ -1,4 +1,6 @@
 ##
+# shellcheck shell=bash
+#
 # Maintainer: pyamsoft <developer(dot)pyamsoft(at)gmail(dot)com>
 ##
 
@@ -8,7 +10,7 @@ pkgname=git-ssh-git
 # shellcheck disable=SC2034
 pkgdesc="An SSH key manager for git"
 # shellcheck disable=SC2034
-pkgver=r276.2b204e9
+pkgver=r298.e28d095
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -18,7 +20,9 @@ makedepends=('git')
 # shellcheck disable=SC2034
 depends=('git')
 # shellcheck disable=SC2034
-optdepends=()
+optdepends=(
+  "socat: For use with HTTP proxies"
+)
 # shellcheck disable=SC2034
 provides=('git-ssh')
 # shellcheck disable=SC2034
@@ -58,7 +62,13 @@ package() {
     return 1
   }
 
+  # Open up the umask in case you are running something more restrictive
+  umask 0022
+
+  # Mark the script executable
   chmod 755 "${_gitname}"
+
+  # shellcheck disable=SC2154
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/doc/${_gitname}"
   mkdir -p "${pkgdir}/usr/share/licenses/${_gitname}"
