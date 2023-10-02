@@ -2,7 +2,7 @@
 pkgname=cs-nginx-bouncer
 _pkgname=crowdsec-nginx-bouncer
 pkgver=1.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://doc.crowdsec.net/docs/bouncers/nginx"
@@ -46,7 +46,7 @@ package() {
 	install -dm755 $pkgdir/etc/nginx/lua/templates/crowdsec/
 
 	install -Dm644 {nginx,$pkgdir/etc/nginx/conf.d}/crowdsec_nginx.conf
-	install -Dm644 cs-nginx-bouncer-nginx-module.conf -t $pkgdir/etc/nginx/modules
+	install -Dm644 $srcdir/cs-nginx-bouncer-nginx-module.conf -t $pkgdir/etc/nginx/modules
 	cp -R lua-mod/lib/* $pkgdir/etc/nginx/lua/plugins/crowdsec/
 	cp -R lua-mod/templates/* $pkgdir/etc/nginx/lua/templates/crowdsec/
 	install -Dm600 lua-mod/config_example.conf $pkgdir/etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
