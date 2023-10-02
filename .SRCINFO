@@ -1,13 +1,15 @@
 pkgbase = python-pydash
 	pkgdesc = The kitchen sink of Python utility libraries for doing "stuff" in a functional way. Based on the Lo-Dash Javascript library.
-	pkgver = 5.1.0
+	pkgver = 7.0.6
 	pkgrel = 1
 	url = https://github.com/dgilland/pydash
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-setuptools
-	source = python-pydash-5.1.0.tar.gz::https://github.com/dgilland/pydash/archive/v5.1.0.tar.gz
-	sha256sums = 283cd607eea38b0b209b23a7d6239dec993933e699672c854d937848f1d1d134
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = python-pydash-7.0.6.tar.gz::https://github.com/dgilland/pydash/archive/v7.0.6.tar.gz
+	sha256sums = f60e43ff71f0031650e603b5e754ebe78b9cdb333f3a0397ce78627dbf099371
 
 pkgname = python-pydash
