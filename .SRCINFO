@@ -1,0 +1,14 @@
+pkgbase = sile-ptable
+	pkgdesc = Paragraph boxes, framed boxes and table packages for the SILE typesetting system
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Omikhleia/ptable.sile
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = sile
+	depends = sile-silex
+	source = https://github.com/Omikhleia/ptable.sile/archive/v2.0.0/ptable.sile-2.0.0.tar.gz
+	sha256sums = 3a7e82d54d2fe1fe57f6c1040dd3d4dc8724e2a81539d9f15b54b9a08b83d1f4
+
+pkgname = sile-ptable
