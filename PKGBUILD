@@ -1,10 +1,10 @@
-# Maintainer: realfanyujun
+# Maintainer: fanyujun <dlutfyj@outlook.com>
 # Contributor:
 
 _name="py-motmetrics"
 pkgname="python-motmetrics"
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='The py-motmetrics library provides a Python implementation of metrics for benchmarking multiple object trackers (MOT).'
 arch=(any)
 url="https://github.com/cheind/$_name"
