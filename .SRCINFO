@@ -1,0 +1,12 @@
+pkgbase = slos-gimpainter
+	pkgdesc = A brush package for GIMP 2.10.20 or Later
+	pkgver = 20220429
+	pkgrel = 1
+	url = https://github.com/SenlinOS/SLOS-GIMPainter
+	arch = any
+	license = MIT
+	depends = gimp
+	source = 20220429.zip::https://github.com/SenlinOS/SLOS-GIMPainter/archive/c2550f554dc9e59da343a5fee4e406afcb51c1f1.zip
+	sha256sums = e828a75aafc3de56fad2091f65074c079ed1abe93827017fde6ead067d5b3c06
+
+pkgname = slos-gimpainter
