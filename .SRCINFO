@@ -1,7 +1,7 @@
 pkgbase = materia-blur-kde
 	pkgdesc = Materia Blur (discontinued) theme for KDE Plasma 5
 	pkgver = 20200312
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PapirusDevelopmentTeam/materia-kde
 	arch = any
 	license = GPL3
@@ -16,5 +16,4 @@ pkgname = materia-blur-kde
 
 pkgname = kvantum-theme-materia-blur
 	pkgdesc = Materia Blur (discontinued) theme for KDE Plasma 5
-	depends = kvantum-qt5
-
+	depends = kvantum

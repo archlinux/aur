@@ -4,7 +4,7 @@ pkgbase=materia-blur-kde
 pkgbase_orig=materia-kde
 pkgname=(materia-blur-kde kvantum-theme-materia-blur)
 pkgver=20200312
-pkgrel=1
+pkgrel=2
 pkgdesc="Materia Blur (discontinued) theme for KDE Plasma 5"
 arch=(any)
 url="https://github.com/PapirusDevelopmentTeam/${pkgbase_orig}"
@@ -27,7 +27,7 @@ package_materia-blur-kde() {
 
 package_kvantum-theme-materia-blur() {
     pkgdesc="Materia Blur (discontinued) theme for KDE Plasma 5"
-    depends=(kvantum-qt5)
+    depends=(kvantum)
 
     cd ${pkgbase_orig}-${pkgver}
     install -d "${pkgdir}"/usr/share/Kvantum
