@@ -1,7 +1,7 @@
 pkgbase = wg++
 	pkgdesc = WebGrab+Plus is a multi-site incremental xmltv epg grabber
 	pkgver = 5.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://webgrabplus.com/
 	arch = any
 	license = custom
