@@ -4,7 +4,7 @@
 _name="py-motmetrics"
 pkgname="python-motmetrics"
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='The py-motmetrics library provides a Python implementation of metrics for benchmarking multiple object trackers (MOT).'
 arch=(any)
 url="https://github.com/cheind/$_name"
