@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.4.16.0
+pkgver=2.5.4.0
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -32,7 +32,7 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('a8cea8b6087610e5154fbbe028548ab4fc773eb36531eef44ffb42351bc0b0f0')
+sha256sums=('2e262ae5e5281f839651cd706e417c83c58294a26527ec184b466a2ba6ca31dc')
 
 _srcdir="OpenImageIO-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -52,6 +52,16 @@ _flags=(
 	-DSTOP_ON_WARNING=OFF
 	-DOPTIONAL_DEPS=''
 	-DREQUIRED_DEPS='JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw;Libheif;Ptex' )
+
+prepare() {
+	cd "${_srcdir}"
+	
+	sed -i 's/ + sizeof(m_padding)//' 'src/libtexture/imagecache_pvt.h'
+	sed -i 's/sizeof(\*this) == member_size,/sizeof(*this) == sizeof(*this),/' 'src/libtexture/imagecache_pvt.h'
+	sed -i 's/int m_padding = 0;/#if UINTPTR_MAX > 4294967295\nint m_padding = 0;\n#endif/' 'src/libtexture/imagecache_pvt.h'
+	
+	#sed -i 's/os.path.join(OIIO_BUILD_ROOT, "bin", app)/os.path.join(OIIO_BUILD_ROOT, "bin", app, ".exe")/' 'testsuite/runtest.py'
+}
 
 build() {
 	for _arch in ${_architectures}; do
@@ -76,7 +86,8 @@ build() {
 #	for _arch in ${_architectures}; do
 #		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON -DOIIO_BUILD_TESTS=ON -DOIIO_DOWNLOAD_MISSING_TESTDATA=ON
 #		cmake --build "build-${_arch}"
-#		WINEEXEC=${_arch}-wine cmake --build "build-${_arch}" --target test
+#		sed -i "s/wrapper_cmd = \"\"/wrapper_cmd = \"${_arch}-wine\"/" "${_srcdir}/testsuite/runtest.py"
+#		cmake --build "build-${_arch}" --target test
 #	done
 #}
 
