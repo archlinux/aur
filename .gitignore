@@ -1,6 +1,8 @@
-*
-
-!PKGBUILD
-!.SRCINFO
-!.gitignore
+*.bak
+*.gz
+*.xz
+*.zst
+*.sh
+src
+pkg
 !pythonz.sh
