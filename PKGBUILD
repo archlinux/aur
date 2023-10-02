@@ -4,12 +4,12 @@
 pkgname='pseint'
 pkgver=20230517
 pkgrel=1
-pkgdesc="A tool for learning programming basis with a simple spanish pseudocode."
+pkgdesc='A tool for learning programming basis with a simple spanish pseudocode.'
 arch=('x86_64')
 url='https://sourceforge.net/projects/pseint'
 license=('GPL2')
-conflicts=('pseint-bin')
-makedepends=("gendesk")
+conflicts=("$pkgname-bin")
+makedepends=('gendesk')
 depends=('wxwidgets-gtk3')
 noextract=(creator.psz)
 source=("https://netactuate.dl.sourceforge.net/project/$pkgname/$pkgver/$pkgname-src-$pkgver.tgz")
