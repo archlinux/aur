@@ -1,13 +1,13 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs-git
-pkgver=2.3.1.r29.ccef0bb
+pkgver=3.0.2.r23.1c775d0
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/tavianator/bfs"
 license=('BSD')
 groups=()
-depends=('acl' 'libcap' 'oniguruma')
+depends=('acl' 'libcap' 'liburing' 'oniguruma')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
