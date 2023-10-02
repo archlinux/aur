@@ -31,8 +31,9 @@ post_install() {
 
 post_upgrade() {
 	if (( $(vercmp "$2" "1.0.5-6") < 0 )); then
+		TMP="$(mktemp)"
 		grep -Ev "^${NGINX_LUA_MODULE_PATCH}" /etc/nginx/nginx.conf > "$TMP"
-		cp "$TMP" /etc/nginx/nginx.conf
+		mv "$TMP" /etc/nginx/nginx.conf
 
 		echo -e "\n**NEW: Please add the following line to your nginx conf file:"
 		echo -e "==> include /etc/nginx/modules-enabled/*.conf; <==\n"

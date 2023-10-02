@@ -2,7 +2,7 @@
 pkgname=cs-nginx-bouncer
 _pkgname=crowdsec-nginx-bouncer
 pkgver=1.0.5
-pkgrel=8
+pkgrel=9
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://doc.crowdsec.net/docs/bouncers/nginx"
@@ -30,8 +30,8 @@ source=(
 	"cs-nginx-bouncer.install"
 )
 sha256sums=('2bb65903558598fc72c20de512267cbf0759d79f0e038c5a3b8ecf2626470d3f'
-            '48b8356f3652ae766496a28714a661c30c9616c12b9cb39ff75dfa78f4677f99'
-            'e398b3ffdf16ef45d417017558372bba79aed0ffd63f512eefbe236505dd5cfd')
+	'48b8356f3652ae766496a28714a661c30c9616c12b9cb39ff75dfa78f4677f99'
+	'abbe1fc9710433fab497efe662c49e1bcbacc6084aa2787636e1b36048aa14da')
 
 prepare() {
 	cd "$_pkgname-v$pkgver"
