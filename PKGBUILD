@@ -12,7 +12,7 @@ source=("https://files.pythonhosted.org/packages/a8/fc/bcffc20e99ecf96652df2ad5c
 
 build() {
     cd "$_pkgname-$pkgver"
-    hatch build
+    hatch build --clean
 }
 
 package() {
