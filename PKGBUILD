@@ -2,7 +2,7 @@
 pkgname=lektor
 _pkgname=Lektor
 pkgver=3.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A static content management system."
 arch=(any)
 url="https://www.getlektor.com"
@@ -12,7 +12,7 @@ depends=(python python-pip
     python-click python-pyasn1 python-ndg-httpsclient
     python-mistune1 python-inifile python-exifread python-slugify
     python-filetype)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/L/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('7c1645643a3aa0a6c8e8c13534c348299387524bd4872ce45a2aca8778e6b5b2')
