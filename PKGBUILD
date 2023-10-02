@@ -65,12 +65,12 @@ package() {
   cd "${_basename}"
   if [[ "$CARCH" == 'x86_64' ]] || [[ "$CARCH" == 'x86_64_v3' ]]; then
     install -dm755 "$pkgdir"/usr/lib/wine/x86_64-{windows,unix}
-    install -m644 build64/wineasio.dll "$pkgdir"/usr/lib/wine/x86_64-windows/wineasio.dll
-    install -m644 build64/wineasio.dll.so "$pkgdir"/usr/lib/wine/x86_64-unix/wineasio.dll.so
+    install -m644 build64/wineasio64.dll "$pkgdir"/usr/lib/wine/x86_64-windows/
+    install -m644 build64/wineasio64.dll.so "$pkgdir"/usr/lib/wine/x86_64-unix/
   fi
   install -dm755 "$pkgdir"/usr/lib32/wine/i386-{windows,unix}
-  install -m644 build32/wineasio.dll "$pkgdir"/usr/lib32/wine/i386-windows/wineasio.dll
-  install -m644 build32/wineasio.dll.so "$pkgdir"/usr/lib32/wine/i386-unix/wineasio.dll.so
+  install -m644 build32/wineasio32.dll "$pkgdir"/usr/lib32/wine/i386-windows/
+  install -m644 build32/wineasio32.dll.so "$pkgdir"/usr/lib32/wine/i386-unix/
 
   cd "$srcdir"
   install -D -m755 setup_wineasio.sh "$pkgdir"/usr/bin/setup_wineasio
