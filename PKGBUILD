@@ -29,7 +29,6 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# Rust version
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
@@ -57,3 +56,4 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
+
