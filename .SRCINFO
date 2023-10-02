@@ -1,0 +1,15 @@
+pkgbase = haskell-neolua
+	pkgdesc = A CLI adapter to map Lua's CLI to Neovim's CLI for lua interpretation.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nvim-neorocks/neorocks#readme
+	arch = x86_64
+	license = GPL2
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-optparse-applicative
+	depends = uusi
+	source = https://hackage.haskell.org/packages/archive/neolua/1.0.0/neolua-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = haskell-neolua
