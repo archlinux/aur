@@ -1,8 +1,8 @@
-# Maintainer: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=pokemon-revolution-online-bin
-__PROCLIENT_VER=20230803
-pkgver=20230803+asset0.5
+__PROCLIENT_VER=20230928
+pkgver=20230928+asset0.5
 pkgrel=0.1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -12,13 +12,11 @@ depends=('vulkan-driver' 'opengl-driver')
 makedepends=('git')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
-options=(debug)
 __LIN_DESKTOP_ASSET_COMMIT=da21f5467ed5b29d59cc67df3ccdc7686d763406  #tag 0.5
 source=("git+https://gitlab.com/fabiscafe/pro_assets_lin_desktop.git#commit=${__LIN_DESKTOP_ASSET_COMMIT}"
-        "PROClient_linux-${__PROCLIENT_VER}.tar.gz::https://ddl.pokemonrevolution.net/PROClient_linux.tar.gz"
-)
+        "PROClient_linux-${__PROCLIENT_VER}.tar.gz::https://ddl.pokemonrevolution.net/PROClient_linux.tar.gz")
 sha512sums=('SKIP'
-            '4cc30314c1aa5da9a9e0c6a03d90352fac76d10a459bf14e1ab548fdaacd055149f7e8704ed5466b4ec4dc8e8be414b70fe74a6c80ae6d54fa7363a728733309')
+            '76321fbb0f1cea2961215373158cd6382e281ee412d41285e489c636ae72fa2cc3c8673217c7fedda990cd7941d0f545542cfcc8d6ebc3667f19b1b8f1fb0026')
 
 pkgver() {
     cd pro_assets_lin_desktop
