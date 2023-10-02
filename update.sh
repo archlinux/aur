@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-latest_version=$(source ./PKGBUILD && rm -rf ${_pkgname} && url=$(echo ${source[0]} | sed "s/${_pkgname}:://") && git clone ${url} $_pkgname && pkgver)
-current_version=$(cat PKGBUILD | grep pkgver= | awk -F'=' '{print $2}')
+#taken from https://bbs.archlinux.org/viewtopic.php?id=131666 by falconindy
+awk -v newsums="$(makepkg -g)" '
+BEGIN {
+  if (!newsums) exit 1
+}
 
-if ! [ "$latest_version" = "$current_version" ]; then
-  echo Updating the package with the latest version
-  echo latest: $latest_version
-  echo current: $current_version
-  sed -i.bak "s/$current_version/$latest_version/g" PKGBUILD
-  sed -i.bak "s/pkgrel=[^d.]/pkgrel=1/g" PKGBUILD
-  ./pkgsum.sh
-  if which makepkg &> /dev/null; then
-    makepkg --printsrcinfo > .SRCINFO
-  else
-    mksrcinfo
-  fi
+/^[[:blank:]]*(md|sha)[[:digit:]]+sums=/,/\)[[:blank:]]*$/ {
+  if (!i) print newsums; i++
+  next
+}
+
+1
+' PKGBUILD > PKGBUILD.new && mv PKGBUILD{.new,}
+if which makepkg &> /dev/null; then
+  makepkg --printsrcinfo > .SRCINFO
 else
-  echo Nothing to update.
+  mksrcinfo
 fi

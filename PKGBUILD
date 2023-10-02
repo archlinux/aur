@@ -3,8 +3,8 @@
 _pkgname=adns
 pkgname=adns-git
 epoch=1
-pkgver=adns.r1.5.1.0.g571b072
-pkgrel=2
+pkgver=adns.r1.6.0.0.gccaa001
+pkgrel=1
 pkgdesc="An asyncronous replacement resolver library"
 arch=('i686' 'x86_64')
 url="https://www.chiark.greenend.org.uk/~ian/adns"
