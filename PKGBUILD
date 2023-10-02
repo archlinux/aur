@@ -1,32 +1,60 @@
-# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
+# Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
+# Contributer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 # Contributer: LSUtigers3131
 
 _pkgname=libpamac
 pkgname=$_pkgname-nosnap
-pkgver=11.5.4
+pkgver=11.6.2
 pkgrel=1
 epoch=1
-pkgdesc="Library for Pamac package manager based on libalpm - flatpak support enabled"
+_srcdir="$_pkgname-$pkgver"
+pkgdesc="Pamac package manager library based on libalpm. Without Snap support"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
-depends=('pacman' 'flatpak' 'appstream-glib' 'archlinux-appstream-data')
-makedepends=('gettext' 'itstool' 'vala' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
-options=(!emptydirs)
-conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac' 'libpamac-full-dev' 'libpamac-full')
+depends=(
+    'appstream-glib'
+    'archlinux-appstream-data'
+    'dbus-glib'
+    'flatpak'
+    'git'
+    'glib2'
+    'gnutls'
+    'json-glib'
+    'libnotify'
+    'libsoup3'
+    'pacman'
+    'polkit'
+    'vte3'    
+)
+makedepends=(
+    'asciidoc'
+    'gettext'
+    'gobject-introspection'
+    'intltool'
+    'meson'
+    'ninja'
+    'vala'
+)
+provides=('libpamac')
+conflicts=(
+    'libpamac'
+    'libpamac-aur'
+    'libpamac-full'
+    'libpamac-flatpak'
+)
+options=(!emptydirs !strip)
+backup=('etc/pamac.conf')
+install='pamac.install'
 source=($_pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha512sums=('ed0ec2ae781502efc87c870d6c9612799c3a693e287a3c6bb04aa0d1cc0d70cae8d276812aa3c3d9adf6cdd72e0f63f9384d7cafd467ba126491267029ff5c9c')
+sha256sums=('87c5ed7f7db615628e8e4e151be3ef6d328513c02cd1aaf102b8577cb7269987')
 
 build() {
-  arch-meson -Denable-flatpak=true -Denable-snap=false $_pkgname-$pkgver build
-  meson compile -C build
-}
-
-check() {
-  meson test -C build --print-errorlogs
+	arch-meson "$_srcdir" 'build' -Denable-snap=false -Denable-flatpak=true
+	meson compile -C 'build'
 }
 
 package() {
-  backup=('etc/pamac.conf')
-  meson install -C build --destdir "$pkgdir"
+	meson install -C 'build' --destdir="$pkgdir"
+	install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
