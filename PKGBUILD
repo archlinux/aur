@@ -4,7 +4,7 @@
 
 pkgname=remarshal
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert between CBOR, JSON, MessagePack, TOML, and YAML'
 arch=(any)
 url="https://github.com/dbohdan/$pkgname"
@@ -17,6 +17,7 @@ _pydeps=(cbor2
 depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-build python-installer python-wheel python-poetry-core)
+conflicts=(pandoc)
 options=('!emptydirs')
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")

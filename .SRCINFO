@@ -1,7 +1,7 @@
 pkgbase = remarshal
 	pkgdesc = Convert between CBOR, JSON, MessagePack, TOML, and YAML
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbohdan/remarshal
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = remarshal
 	depends = python-tomlkit
 	depends = python-u-msgpack
 	depends = python-yaml
+	conflicts = pandoc
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/r/remarshal/remarshal-0.17.1.tar.gz
 	sha256sums = 826a41d3e3ed9d45422811488d7b28cc146a8d5b2583b18db36302f87091a86d
