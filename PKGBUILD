@@ -12,25 +12,25 @@ arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(GPL)
 makedepends=(
-	cmake
-	curl
-	dht
-	glibmm-2.68
-	gtk4
-	gtkmm-4.0
-	intltool
-	libb64
-	libdeflate
-	libevent
-	libnatpmp
-	miniupnpc
-	ninja
-	npm
+  cmake
+  curl
+  dht
+  glibmm-2.68
+  gtk4
+  gtkmm-4.0
+  intltool
+  libb64
+  libdeflate
+  libevent
+  libnatpmp
+  miniupnpc
+  ninja
+  npm
   qt5-tools
-	qt6-base
-	qt6-svg
-	qt6-tools
-	systemd
+  qt6-base
+  qt6-svg
+  qt6-tools
+  systemd
 )
 source=(https://github.com/transmission/transmission/releases/download/$pkgver/transmission-$pkgver.tar.xz
         ban-xunlei.patch
@@ -55,28 +55,31 @@ build() {
   export CFLAGS+=" -ffat-lto-objects"
   cd $pkgbase-$pkgver
 
-  cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DENABLE_CLI=ON \
-	  -DENABLE_DAEMON=ON \
-	  -DENABLE_GTK=ON \
-	  -DENABLE_MAC=OFF \
-	  -DENABLE_QT=ON \
-	  -DREBUILD_WEB=ON \
-	  -DENABLE_TESTS=ON \
-	  -DENABLE_UTILS=ON \
-	  -DENABLE_UTP=ON \
-	  -DINSTALL_LIB=ON \
-      -DUSE_SYSTEM_B64=ON \
-      -DUSE_SYSTEM_DEFLATE=ON \
-      -DUSE_SYSTEM_DHT=ON \
-	  -DUSE_SYSTEM_EVENT2=ON \
-      -DUSE_SYSTEM_MINIUPNPC=ON \
-      -DUSE_SYSTEM_NATPMP=ON \
-      -DUSE_SYSTEM_PSL=ON \
-      -DUSE_SYSTEM_UTP=OFF \
-	  -DWITH_CRYPTO=openssl \
-	  -S . -B build
+  cmake \
+    -S . \
+    -B build \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_CLI=ON \
+    -DENABLE_DAEMON=ON \
+    -DENABLE_GTK=ON \
+    -DENABLE_MAC=OFF \
+    -DENABLE_QT=ON \
+    -DREBUILD_WEB=ON \
+    -DENABLE_TESTS=ON \
+    -DENABLE_UTILS=ON \
+    -DENABLE_UTP=ON \
+    -DINSTALL_LIB=ON \
+    -DUSE_SYSTEM_B64=ON \
+    -DUSE_SYSTEM_DEFLATE=ON \
+    -DUSE_SYSTEM_DHT=ON \
+    -DUSE_SYSTEM_EVENT2=ON \
+    -DUSE_SYSTEM_MINIUPNPC=ON \
+    -DUSE_SYSTEM_NATPMP=ON \
+    -DUSE_SYSTEM_PSL=ON \
+    -DUSE_SYSTEM_UTP=OFF \
+    -DWITH_CRYPTO=openssl
 
   cmake --build build --config Release
 }
