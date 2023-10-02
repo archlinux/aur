@@ -19,6 +19,7 @@ sha256sums=('f3373b0ad0d0f518d72c05504e282cb4fa9d0c9b11f1f7c1a29c4117354ff9e2') 
 # Función 'prepare': Prepara el entorno antes de compilar el paquete.
 prepare(){
     cd $pkgname
+
     # Utilidad 'gendesk' para generar el archivo .desktop.
     gendesk -f -n \
         --pkgname="$pkgname" \
