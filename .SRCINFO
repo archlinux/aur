@@ -1,14 +1,14 @@
 pkgbase = instant-markdown-d
-	pkgdesc = Instantly-updating Markdown Server
-	pkgver = 0.2.0
+	pkgdesc = Small instant Markdown preview server
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/suan/instant-markdown-d
+	url = https://github.com/instant-markdown/instant-markdown-d
 	arch = any
 	license = APACHE
 	makedepends = npm
 	depends = nodejs
-	noextract = instant-markdown-d-0.2.0.tgz
-	source = https://registry.npmjs.org/instant-markdown-d/-/instant-markdown-d-0.2.0.tgz
-	sha512sums = f1e55c5b261f943eec1b5999384b9e4b047032c9a615e0b2d617328e427ea0bb64fc929c3205163c6b34a5fe5d997157c512623cfc70a9085a900abb45596df5
+	noextract = instant-markdown-d-0.3.0.tgz
+	source = https://registry.npmjs.org/instant-markdown-d/-/instant-markdown-d-0.3.0.tgz
+	sha512sums = 867f89c85a4e9b0045000dea375eda2bb84ca4d337ff7fddaa7f2194c667ca59202025e7d06fa2091b89a3c4e0616c33c9d8ac067c1bfdc010f28871a248eb39
 
 pkgname = instant-markdown-d

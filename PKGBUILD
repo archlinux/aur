@@ -1,18 +1,18 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
-_npmver=0.2.0
+_npmver=0.3.0
 pkgname=instant-markdown-d
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='Instantly-updating Markdown Server'
+pkgdesc='Small instant Markdown preview server'
 arch=('any')
-url='https://github.com/suan/instant-markdown-d'
+url='https://github.com/instant-markdown/instant-markdown-d'
 license=('APACHE')
 depends=('nodejs')
 makedepends=('npm')
 optdepends=()
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${_npmver}.tgz")
 noextract=("${pkgname}-${_npmver}.tgz")
-sha512sums=('f1e55c5b261f943eec1b5999384b9e4b047032c9a615e0b2d617328e427ea0bb64fc929c3205163c6b34a5fe5d997157c512623cfc70a9085a900abb45596df5')
+sha512sums=('867f89c85a4e9b0045000dea375eda2bb84ca4d337ff7fddaa7f2194c667ca59202025e7d06fa2091b89a3c4e0616c33c9d8ac067c1bfdc010f28871a248eb39')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "$srcdir/${pkgname}-${_npmver}.tgz"
