@@ -7,30 +7,36 @@ NGINX_LUA_MODULE_PATCH="$(cat <<-EOF
 EOF
 )"
 
+pre_install() {
+	mkdir -p /etc/nginx/modules
+}
+
 post_install() {
-	command -v cscli > /dev/null
+	API_KEY=`cscli bouncers add crowdsec-nginx-bouncer -o raw`
+	export API_KEY
+	IFS=: read HOST PORT <<< `sudo cscli config show --key "Config.API.Server.ListenURI"`
+	echo "Bouncer registered to the CrowdSec Local API."
 
-	if [ "$?" -eq "0" ] ; then
-		API_KEY=`cscli bouncers add crowdsec-nginx-bouncer -o raw`
-		export API_KEY
-		IFS=: read HOST PORT <<< `sudo cscli config show --key "Config.API.Server.ListenURI"`
-		echo "Bouncer registered to the CrowdSec Local API."
+	CROWDSEC_LAPI_URL="http://${HOST:-'127.0.0.1'}:${PORT:-'8080'}"
+	export CROWDSEC_LAPI_URL
 
-		CROWDSEC_LAPI_URL="http://${HOST:-'127.0.0.1'}:${PORT:-'8080'}"
-		export CROWDSEC_LAPI_URL
-	
-		TMP=$(mktemp -p /tmp/)
-		install -m600 /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf "$TMP"
-		envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf >/dev/null
-		sed -E -i.old "1s:^:${NGINX_LUA_MODULE_PATCH//$'\n'/\\n}\\n:" /etc/nginx/nginx.conf
-	else
-		echo "cscli is not present, unable to register the bouncer to the CrowdSec Local API."
-		return
-	fi
+	TMP=$(mktemp -p /tmp/)
+	install -m600 /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf "$TMP"
+	envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf >/dev/null
 	
 	echo installing lua-resty-http and lua-cjson using luarocks
 	luarocks install lua-resty-http
 	luarocks install lua-cjson
+}
+
+post_upgrade() {
+	if (( $(vercmp "$2" "1.0.5-6") < 0 )); then
+		grep -Ev "^${NGINX_LUA_MODULE_PATCH}" /etc/nginx/nginx.conf > "$TMP"
+		cp "$TMP" /etc/nginx/nginx.conf
+
+		echo -e "\n**NEW: Please add the following line to your nginx conf file:"
+		echo -e "==> include /etc/nginx/modules-enabled/*.conf; <==\n"
+	fi
 }
 
 post_remove() {
@@ -38,10 +44,8 @@ post_remove() {
 	luarocks remove lua-resty-http
 	luarocks remove lua-cjson
 
-	TMP="$(mktemp)"
-	grep -Ev "^${NGINX_LUA_MODULE_PATCH}" /etc/nginx/nginx.conf > "$TMP"
-	cp "$TMP" /etc/nginx/nginx.conf
-
-	echo -e "\nDon't forget to uninstall the plugin!"
-	cscli bouncers list
+	if ! cscli bouncers remove crowdsec-nginx-bouncer --error; then
+		echo -e "\nDon't forget to uninstall the plugin!"
+		cscli bouncers list
+	fi
 }
