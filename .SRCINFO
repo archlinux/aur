@@ -1,13 +1,13 @@
 pkgbase = cargo-aur-bin
 	pkgdesc = Prepare Rust projects to be released on the Arch Linux User Repository.
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/fosskers/cargo-aur
 	arch = x86_64
 	license = MIT
 	provides = cargo-aur
 	conflicts = cargo-aur
-	source = https://github.com/fosskers/cargo-aur/releases/download/v1.5.0/cargo-aur-1.5.0-x86_64.tar.gz
-	sha256sums = 78b1a5e42b6e8d6aabbe00bf9d9bdac6bd83a4bcec2e65d8abc6af1d642c73ca
+	source = https://github.com/fosskers/cargo-aur/releases/download/v1.6.0/cargo-aur-1.6.0-x86_64.tar.gz
+	sha256sums = fce5b7250aa0c6f5a873ba900284b32a9de92c8f826330dcd44ebfb3a2841d0d
 
 pkgname = cargo-aur-bin
