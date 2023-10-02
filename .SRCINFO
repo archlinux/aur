@@ -1,0 +1,11 @@
+pkgbase = deeptitle
+	pkgdesc = DeepTitle - An automatic subtitle translator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dev-Aligator/deeptitle
+	arch = any
+	license = MIT
+	source = git+https://github.com/Dev-Aligator/deeptitle.git
+	sha256sums = SKIP
+
+pkgname = deeptitle
