@@ -1,26 +1,25 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
-# MAKEFLAGS=-j18
+
+#MAKEFLAGS=-j18 # NOTE Can be usseful when got OOM
+
 _ENABLE_CUDA=1
-_ENABLE_TENSORRT=0  #NOTE: not working due https://github.com/microsoft/onnxruntime/issues/15131
+_ENABLE_TENSORRT=0  # NOTE: not working due https://github.com/microsoft/onnxruntime/issues/15131
 
 pkgbase=python-onnxruntime
 # Not split DNNL EP to another package as it's needed unconditionally at runtime if built at compile time
 # https://github.com/microsoft/onnxruntime/blob/v1.9.1/onnxruntime/python/onnxruntime_pybind_state.cc#L533
-pkgname=('onnxruntime'
-         'python-onnxruntime'
-         )
+pkgname=(
+  'onnxruntime'
+  'python-onnxruntime'
+)
 pkgver=1.15.1
 pkgdesc='Cross-platform, high performance scoring engine for ML models'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/onnxruntime'
 license=('MIT')
-depends=(
-  'nsync'
-  'libre2.so'
-  'openmpi'
-)
+
 # if [[ $_ENABLE_TENSORRT = 1 ]]; then
 #   depends+=('protobuf' 'libprotobuf.so')
 # else
@@ -30,6 +29,8 @@ depends=(
 makedepends=(
   'git'
   'cmake'
+  'gcc-libs'
+  'glibc'
   'cxxopts'
   'pybind11'
   'abseil-cpp'
@@ -43,10 +44,12 @@ makedepends=(
   'python-coloredlogs'
   'python-flatbuffers'
   'python-numpy'
-  'python-pip'
-  'python-setuptools'
   'python-protobuf'
   'python-sympy'
+  'python-setuptools'
+  'python-installer'
+  'python-wheel'
+  'python-build'
   'chrpath'
   'nsync'
 )
@@ -84,7 +87,6 @@ fi
 _CUDA_ARCHITECTURES="52-real;53-real;60-real;61-real;62-real;70-real;72-real;75-real;80-real;86-real;87-real;89-real;90-real;90-virtual"
 
 prepare() {
-  echo $MAKEFLAGS
   cd onnxruntime
 
   # Use System Dlnn
@@ -109,10 +111,14 @@ prepare() {
   sed 's|${DEP_SHA1_cxxopts}|&\n\ \ \ \ \FIND_PACKAGE_ARGS NAMES cxxopts|g' \
     -i cmake/external/onnxruntime_external_deps.cmake
 
+#   # Find system mimalloc
+#   sed 's|${DEP_SHA1_mimalloc}|&\n\ \ \ \ \ \ \FIND_PACKAGE_ARGS NAMES mimalloc|g' \
+#     -i cmake/external/onnxruntime_external_deps.cmake
+
   # Find system nsync
   sed -e 's|NAMES nsync|&_cpp|g' \
       -e '282aadd_library(nsync::nsync_cpp ALIAS nsync_cpp)' \
-      -i cmake/external/onnxruntime_external_deps.cmake \
+      -i cmake/external/onnxruntime_external_deps.cmake
 
   if [[ $_ENABLE_TENSORRT = 1 ]]; then
     # Update Tensorboard 00d59e65d866a6d4b9fe855dce81ee6ba8b40c4f
@@ -127,11 +133,11 @@ prepare() {
   fi
 
   patch -Np1 -i "${srcdir}/install-orttraining-files.diff"
-  # Force use bundled flatbuffers due fail build
-  sed '/NAMES Flatbuffers/s/^/#/g' -i cmake/external/onnxruntime_external_deps.cmake
-  # Same with Protobuf
-  sed '/NAMES Protobuf/s/^/#/g' -i cmake/external/onnxruntime_external_deps.cmake
-#   patch -Np1 -i "${srcdir}/system-flatbuffers.patch"
+#   # Force use bundled flatbuffers due fail build
+#   sed '/NAMES Flatbuffers/s/^/#/g' -i cmake/external/onnxruntime_external_deps.cmake
+#   # Same with Protobuf
+#   sed '/NAMES Protobuf/s/^/#/g' -i cmake/external/onnxruntime_external_deps.cmake
+# #   patch -Np1 -i "${srcdir}/system-flatbuffers.patch"
 
   # fix build with gcc12(?), take idea from https://github.com/microsoft/onnxruntime/pull/11667 and https://github.com/microsoft/onnxruntime/pull/10014
   sed 's|dims)|TensorShape(dims))|g' \
@@ -159,7 +165,7 @@ build() {
   fi
 
   # Gcc 12+
-  CXXFLAGS+=" -Wno-maybe-uninitialized"
+  CXXFLAGS+=" -Wno-maybe-uninitialized -Wno-error=restrict"
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=2/_FORTIFY_SOURCE=0}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=2/_FORTIFY_SOURCE=0}"
 
@@ -179,8 +185,9 @@ build() {
     -Donnxruntime_USE_MPI=ON
     -Donnxruntime_USE_DNNL=ON
     -Donnxruntime_USE_PREINSTALLED_EIGEN=ON
-    -Deigen_SOURCE_PATH=$(pkg-config --cflags eigen3 | sed 's|-I||g')
+    -Deigen_SOURCE_PATH="$(pkg-config --cflags eigen3 | sed 's|-I||g')"
     -DCMAKE_CXX_STANDARD=17
+    -DCMAKE_IGNORE_PATH=/usr/lib/cmake/flatbuffers/\;/lib/cmake/flatbuffers/\;/usr/lib/cmake/protobuf/\;/lib/cmake/protobuf/
   )
 
   # Use protobuf-lite instead of full protobuf to workaround symbol conflicts
@@ -208,25 +215,33 @@ build() {
     )
   fi
 
-  cd onnxruntime/cmake
-  cmake -S . -B ../../build \
+  cmake -S onnxruntime/cmake -B build \
   "${_cmake_args[@]}" \
   "$@"
-  cd "${srcdir}"
 
-  LC_ALL=C cmake --build build -v
+  LC_ALL=C cmake --build build #-v
 
   (
-  cd build;
-  python ../onnxruntime/setup.py bdist_wheel -d ../dist
+  cd build
+  install -Dm644 ../onnxruntime/docs/python/README.rst docs/python/README.rst
+  ln -s ../onnxruntime/setup.py .
+  python -m build --wheel --no-isolation
   )
 
 }
 
 package_onnxruntime() {
-  depends+=(
-    'onednn'
-    'abseil-cpp'
+  depends=(
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # ld-linux-x86-64.so libc.so ibm.so
+    'onednn' # libdnnl.so
+    'openmpi' 'libmpi.so'
+    'abseil-cpp' # libabsl_hash.so libabsl_raw_hash_set.so libabsl_raw_logging_internal.so libabsl_throw_delegate.so
+    'nsync' # libnsync_cpp.so
+  )
+  provides=(
+    'libonnxruntime.so'
+    'libonnxruntime_providers_shared.so'
   )
 
   DESTDIR="${pkgdir}" cmake --install build
@@ -234,22 +249,30 @@ package_onnxruntime() {
   # installed as split packages
   rm -vf "${pkgdir}/usr/lib/"libonnxruntime_providers_{tensorrt,cuda}.so
 
+  chrpath -d "${pkgdir}/usr/bin/"*
   chrpath -d "${pkgdir}/usr/lib/"libonnxruntime.so.*
 
   install -Dm644 onnxruntime/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 onnxruntime/ThirdPartyNotices.txt "${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt"
-
 }
 
 package_python-onnxruntime() {
+  pkgdesc+=' (Python Bindings)'
   depends=(
     'onnxruntime'
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # ld-linux-x86-64.so libc.so libm.so
+    'abseil-cpp' # libabsl_hash.so libabsl_raw_hash_set.so libabsl_raw_logging_internal.so libabsl_throw_delegate.so
+    'openmpi' 'libmpi.so'
+    'nsync' # libnsync_cpp.so
     'python-coloredlogs'
     'python-flatbuffers'
     'python-numpy'
-    'python-protobuf'
+#     'python-protobuf'
     'python-sympy'
     'python-packaging'
+    'python-setuptools'
+    'python-requests'
   )
   optdepends=(
     # https://github.com/microsoft/onnxruntime/pull/9969
@@ -268,7 +291,7 @@ package_python-onnxruntime() {
     'python-importlib-metadata'
   )
 
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" build/dist/*.whl
 
   _PY_ORT_DIR="$(python -c 'import site; print(site.getsitepackages()[0])')/onnxruntime"
   # already installed by `cmake --install`, and not useful as this path is not looked up by the linker
@@ -280,25 +303,28 @@ package_python-onnxruntime() {
 }
 
 package_onnxruntime-cuda() {
+  pkgdesc+=' (CUDA execution provider)'
   depends=(
-    'cudnn'
-    'nccl'
-    'openmpi'
-    'nsync'
-    'abseil-cpp'
+    'gcc-libs' # libgcc_s.so libstdc++.so 
+    'glibc' # ld-linux-x86-64.so libc.so libm.so
+    'cudnn' # libcudnn.so
+    'nccl' # libnccl.so
+    'openmpi' 'libmpi.so'
+    'nsync' # libnsync_cpp.so
+    'abseil-cpp' # libabsl_hash.so libabsl_raw_hash_set.so libabsl_raw_logging_internal.so libabsl_throw_delegate.so
+    'cuda' 'libcublas.so' 'libcudart.so' # libcublasLt.so libcufft.so
   )
   conflicts=('python-onnxruntime-cuda')
   replaces=('python-onnxruntime-cuda')
-  pkgdesc+=' (CUDA execution provider)'
 
-  cd build
-  install -Dm755 libonnxruntime_providers_cuda.so -t "${pkgdir}/usr/lib"
+  install -Dm755 build/libonnxruntime_providers_cuda.so -t "${pkgdir}/usr/lib"
 
   install -Ddm755 "${pkgdir}/usr/share/licenses"
   ln -s onnxruntime "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_onnxruntime-tensorrt() {
+  pkgdesc+=' (TensorRT execution provider)'
   depends=(
     'tensorrt'
 #     'protobuf' 'libprotobuf.so'
@@ -307,8 +333,7 @@ package_onnxruntime-tensorrt() {
   )
   pkgdesc+=' (TENSORRT execution provider)'
 
-  cd build
-  install -Dm755 libonnxruntime_providers_tensorrt.so -t "${pkgdir}/usr/lib"
+  install -Dm755 build/libonnxruntime_providers_tensorrt.so -t "${pkgdir}/usr/lib"
 
   install -Ddm755 "${pkgdir}/usr/share/licenses"
   ln -s onnxruntime "${pkgdir}/usr/share/licenses/${pkgname}"
