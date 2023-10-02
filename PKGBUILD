@@ -13,7 +13,7 @@ depends=(python python-xmltodict python-scipy python-pandas python-numpy)
 conflicts=()
 makedepends=(python-setuptools)
 source=($_name-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca53d1de1bb6dfafbf8d493d74014926e240d44bcb96c105514dbffa1f439530')
+sha256sums=('ec637ba10f02105c8a6d7a702ff85a06dd4487343a61274f0ced52ec43d25320')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"

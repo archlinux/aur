@@ -12,7 +12,7 @@ pkgbase = python-motmetrics
 	depends = python-pandas
 	depends = python-numpy
 	source = py-motmetrics-1.4.0.tar.gz::https://github.com/cheind/py-motmetrics/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = ca53d1de1bb6dfafbf8d493d74014926e240d44bcb96c105514dbffa1f439530
+	sha256sums = ec637ba10f02105c8a6d7a702ff85a06dd4487343a61274f0ced52ec43d25320
 
 pkgname = python-motmetrics
 	depends = python
