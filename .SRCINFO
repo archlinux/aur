@@ -1,6 +1,6 @@
 pkgbase = zrepl
 	pkgdesc = One-stop ZFS backup & replication solution
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://zrepl.github.io/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zrepl
 	makedepends = go
 	provides = zrepl
 	conflicts = zrepl-bin
-	source = https://github.com/zrepl/zrepl/archive/v0.6.0.tar.gz
-	sha256sums = 4acfde9e7a09eca2de3de5c7d2987907ae446b345b69133e4b3c58a99c294465
+	source = https://github.com/zrepl/zrepl/archive/v0.6.1.tar.gz
+	sha256sums = 0bf1dcf634a43af81cd9a0d7b9ae65f63a5938c35d3e6cd804177c8db52929f4
 
 pkgname = zrepl
