@@ -1,11 +1,11 @@
 pkgbase = ttf-lxgw-wenkai
 	pkgdesc = An open-source Chinese font derived from Fontworks' Klee One.
-	pkgver = 1.300
+	pkgver = 1.310
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwWenKai
 	arch = any
 	license = custom:OFL
-	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.300/lxgw-wenkai-v1.300.tar.gz
-	sha256sums = a4f37cb2217ff03efcb04717a05faf6780487985b25c0ba4e0705024ff86dcef
+	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.310/lxgw-wenkai-v1.310.tar.gz
+	sha256sums = 61b9c75ce2f7592571309582c90e1b7023d241929e4c66a4a1b47677198de883
 
 pkgname = ttf-lxgw-wenkai
