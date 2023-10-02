@@ -3,7 +3,7 @@
 _pkgbase=Nordic
 pkgbase=nordic-kde-git
 pkgname=(nordic-kde-git kvantum-theme-nordic-git sddm-nordic-theme-git)
-pkgver=2.2.0.r2.g59251a3
+pkgver=2.2.0.r71.gff8165c
 pkgrel=1
 pkgdesc="Theme for KDE Plasma 5 using the awesome Nord color pallete"
 arch=(any)
@@ -48,7 +48,7 @@ package_nordic-kde-git() {
 
 package_kvantum-theme-nordic-git() {
     pkgdesc="Nordic theme for KDE Plasma 5"
-    depends=(kvantum-qt5)
+    depends=(kvantum)
     provides=(kvantum-theme-nordic)
 
     cd ${_pkgbase}/kde
