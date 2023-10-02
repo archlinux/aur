@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=dbplyr
-_cranver=2.3.3
+_cranver=2.3.4
 pkgname=r-${_cranname,,}
 pkgdesc="A ‘dplyr’ Back End for Databases"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -52,7 +52,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("5eae3346d05008440a4daa7f135c31f1a4e74e4eb8d74bdbef8425d667f94dbd38bc36aeb447d9034f13acb30301d6f3b74e900a9c4636913c870ab25947e184")
+b2sums=('03a200a9a6452ff3996fcb6c79980dbaec3c1f32ba3fc77b77804fcb2c774c7b2c723c045780406bf5cb388346fb7e9bd322a15b68017f2733cfb32db05ef933')
 
 build() {
     mkdir -p "${srcdir}/build/"
