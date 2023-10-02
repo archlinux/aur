@@ -3,7 +3,7 @@ pkgbase = xdman8-bin
 	pkgver = 0.0.1
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/subhra74/xdm
+	url = https://aur.archlinux.org/packages/xdman-beta-bin
 	arch = any
 	license = GPL3
 

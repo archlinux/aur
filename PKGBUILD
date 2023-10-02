@@ -7,7 +7,7 @@ pkgrel=1
 epoch=1
 pkgdesc="metapackage - migrate to $_newpkg"
 arch=('any')
-url="https://github.com/subhra74/xdm"
+url="https://aur.archlinux.org/packages/xdman-beta-bin"
 license=('GPL3')
 
 package() {
