@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=websurfx-git
-pkgver=v1.0.0.r0.gca30fd5
+pkgver=v1.0.0.r722.99ec846
 pkgrel=1
 epoch=
 pkgdesc="An open-source alternative to Searx that provides clean, ad-free, and organic results with incredible speed while keeping privacy and security in mind."
@@ -26,8 +26,7 @@ validpgpkeys=()
 
 pkgver() {
     cd websurfx
-    git checkout stable
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "v1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
