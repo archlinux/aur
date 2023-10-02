@@ -10,6 +10,7 @@ pkgbase = encoder-benchmark-git
 	depends = ffmpeg
 	depends = gcc-libs
 	depends = glibc
+	conflicts = encoder-benchmark
 	source = encoder-benchmark-git::git+https://github.com/Proryanator/encoder-benchmark.git#branch=main
 	sha256sums = SKIP
 
