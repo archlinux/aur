@@ -1,29 +1,20 @@
 #!/usr/bin/env bash
 
-get_latest() {
-  wget -q -O- 'https://github.com/kimwalisch/primesieve/wiki/Downloads' | \
-  sed -n 's,.*primesieve-\([0-9][^>]*\)\.tar.*,\1,p' | \
-  grep -v '\(linux\|mac\|win\)' | \
-  sort -r | \
-  head -1
+#taken from https://bbs.archlinux.org/viewtopic.php?id=131666 by falconindy
+awk -v newsums="$(makepkg -g)" '
+BEGIN {
+  if (!newsums) exit 1
 }
 
-latest_version=$1
-#latest_version=$(get_latest)
-current_version=$(cat PKGBUILD | grep pkgver= | awk -F'=' '{print $2}')
+/^[[:blank:]]*(md|sha)[[:digit:]]+sums=/,/\)[[:blank:]]*$/ {
+  if (!i) print newsums; i++
+  next
+}
 
-if ! [ "$latest_version" = "$current_version" ]; then
-  echo Updating the package with the latest version
-  echo latest: $latest_version
-  echo current: $current_version
-  sed -i.bak "s/$current_version/$latest_version/g" PKGBUILD
-  sed -i.bak "s/pkgrel=[^d.]/pkgrel=1/g" PKGBUILD
-  ./pkgsum.sh
-  if which makepkg &> /dev/null; then
-    makepkg --printsrcinfo > .SRCINFO
-  else
-    mksrcinfo
-  fi
+1
+' PKGBUILD > PKGBUILD.new && mv PKGBUILD{.new,}
+if which makepkg &> /dev/null; then
+  makepkg --printsrcinfo > .SRCINFO
 else
-  echo Nothing to update.
+  mksrcinfo
 fi

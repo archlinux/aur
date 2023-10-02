@@ -1,24 +1,16 @@
 pkgbase = python-doitlive
 	pkgdesc = Because sometimes you need to do it live
-	pkgver = 4.3.0
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://github.com/sloria/doitlive
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/sloria/doitlive/archive/4.3.0.tar.gz
-	sha256sums = 9641ce3024c2585defea63e87fc8f7384d6fac466db6ead5c3509093fe859377
+	source = https://github.com/sloria/doitlive/archive/4.4.0.tar.gz
+	sha256sums = cf1d08cdbb3c8c9bec4472c586688210164b3175d5eaddb32682da6f6b385a69
 
 pkgname = python-doitlive
 	pkgdesc = Because sometimes you need to do it live for Python 3
 	depends = python
 	depends = python-click-didyoumean
 	depends = python-click-completion
-
-pkgname = python2-doitlive
-	pkgdesc = Because sometimes you need to do it live for Python 2
-	depends = python2
-	depends = python-click-didyoumean
-	depends = python-click-completion
-
