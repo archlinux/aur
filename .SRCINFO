@@ -1,6 +1,6 @@
 pkgbase = noveldown-git
 	pkgdesc = Webnovel downloader and EPUB converter
-	pkgver = r41.6a9b48f
+	pkgver = r60.ed77851
 	pkgrel = 1
 	url = https://github.com/potatoeggy/noveldown
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = noveldown-git
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-ebooklib
+	depends = python-httpx
 	source = git+https://github.com/potatoeggy/noveldown.git
 	sha256sums = SKIP
 

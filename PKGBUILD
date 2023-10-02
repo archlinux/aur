@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chen <danielchen04 at hotmail dot ca>
 
 pkgname=noveldown-git
-pkgver=r41.6a9b48f
+pkgver=r60.ed77851
 pkgrel=1
 pkgdesc="Webnovel downloader and EPUB converter"
 url="https://github.com/potatoeggy/noveldown"
@@ -14,6 +14,7 @@ depends=(
 	"python-beautifulsoup4"
 	"python-lxml"
 	"python-ebooklib"
+  "python-httpx"
 )
 makedepends=("git" "python-build" "python-installer" "python-poetry-core")
 provides=()
