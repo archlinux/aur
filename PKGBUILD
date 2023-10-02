@@ -1,7 +1,7 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=moondust-project-git
 pkgver=r1151.g1a881ab9b
-pkgrel=2
+pkgrel=3
 pkgdesc="Moondust Project (formerly known as PGE Project) is a free and open-source game engine and development kit for it, giving developers the ability to create platform games. (Build from source)"
 arch=('x86_64')
 url="https://github.com/WohlSoft/Moondust-Project"
@@ -102,12 +102,12 @@ package() {
     mv "${pkgdir}/opt/moondust/pge_engine.license.gpl3.txt" "${pkgdir}/usr/share/licenses/moondust/pge_engine.license.gpl3.txt"
     mv "${pkgdir}/opt/moondust/pge_engine.license.mit.txt" "${pkgdir}/usr/share/licenses/moondust/pge_engine.license.mit.txt"
 
-    mkdir -p "${pkgdir}/usr/share/docs"
-    cp -r "${pkgdir}/opt/moondust/help" "${pkgdir}/usr/share/docs/moondust"
-    cp "${pkgdir}/opt/moondust/"*".txt" "${pkgdir}/usr/share/docs/moondust/"
+    mkdir -p "${pkgdir}/usr/share/doc"
+    cp -r "${pkgdir}/opt/moondust/help" "${pkgdir}/usr/share/doc/moondust"
+    cp "${pkgdir}/opt/moondust/"*".txt" "${pkgdir}/usr/share/doc/moondust/"
     rm "${pkgdir}/opt/moondust/"*".txt"
 
-    mv "${pkgdir}/usr/share/docs/moondust/GPLv3.md" "${pkgdir}/usr/share/licenses/moondust/GPLv3.md"
+    mv "${pkgdir}/usr/share/doc/moondust/GPLv3.md" "${pkgdir}/usr/share/licenses/moondust/GPLv3.md"
 
     #rm "${pkgdir}/opt/moondust/"*".ini"
 

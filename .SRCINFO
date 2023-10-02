@@ -1,7 +1,7 @@
 pkgbase = moondust-project-git
 	pkgdesc = Moondust Project (formerly known as PGE Project) is a free and open-source game engine and development kit for it, giving developers the ability to create platform games. (Build from source)
 	pkgver = r1151.g1a881ab9b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WohlSoft/Moondust-Project
 	install = moondust-project.install
 	arch = x86_64
