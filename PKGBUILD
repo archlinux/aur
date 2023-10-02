@@ -2,7 +2,7 @@
 pkgname=python-galois
 _name=${pkgname#python-}
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
 arch=('any')
 url="https://github.com/mhostetter/galois"
@@ -23,10 +23,11 @@ checkdepends=(
     'python-pytest-benchmark'
 )
 source=("${_name}-${pkgver}.tar.gz::https://github.com/mhostetter/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('1fd73273be785a5f04d2a191c7c91c2f0cacfed43e8dde8e2037248014c55ec2c5e81badf26376adba46282bfe322b7b3b549370b11232149f1726d2579c4bd2')
+b2sums=('f625b844c153ed195ae9e0812bb5c3335a4b948c3e77e5a478a9b797ebc70fb258033e0b820303bdef9c3f5a1c88e08177c4c11371d09dfbcd19729c53de45d8')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
     python -m build --wheel --no-isolation
 }
 
