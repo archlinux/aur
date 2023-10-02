@@ -5,9 +5,9 @@
 
 pkgname=qt5-base-headless
 _basever=5.15.10
-pkgver=5.15.10+kde+r162
+pkgver=5.15.10+kde+r163
 pkgrel=1
-_commit=9d613932ab4cbf09d162b5529199f166be2280d6
+_commit=a08b9184feb0809e3b30ad8c845f3828da2c0dda
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -21,7 +21,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'shared-mime-info: Freedesktop.org Shared MIME Info')
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn=qtbase
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qmake-cflags.patch
