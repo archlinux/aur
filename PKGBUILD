@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=4.0.4
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more'
 license=('MIT')
@@ -35,7 +35,7 @@ package() {
   pip3 install --user --upgrade --force-reinstall --no-deps setuptools wheel
   python3 ./setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
-  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
+  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" >/dev/null 2>&1 ||
   cd "$srcdir/${pkgname}"
 
   install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin"
@@ -44,15 +44,11 @@ package() {
   install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 usr/share/doc/${pkgname}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 usr/share/man/man1/${pkgname}.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+  install -Dm755 usr/share/${pkgname}/ocr/ocr.js -t "${pkgdir}/usr/share/${pkgname}/ocr"
+  install -Dm644 usr/share/${pkgname}/ocr/package.json -t "${pkgdir}/usr/share/${pkgname}/ocr"
 
-  which node 2>/dev/null && {
-    install -Dm755 usr/share/${pkgname}/ocr/ocr.js -t "${pkgdir}/usr/share/${pkgname}/ocr"
-    install -Dm644 usr/share/${pkgname}/ocr/package.json -t "${pkgdir}/usr/share/${pkgname}/ocr"
-    which yarn 2>/dev/null && {
-      cd "${pkgdir}/usr/share/${pkgname}/ocr" && yarn install
-    } || {
-      cd "${pkgdir}/usr/share/${pkgname}/ocr" && npm install
-    } || true
-  } || true
+  cd "${pkgdir}/usr/share/${pkgname}/ocr" && while read -r file; do
+    install -Dm644 "$file" -t "${pkgdir}/usr/share/${pkgname}/ocr/node_modules";
+  done < <(find . -type f ${pkgdir}/usr/share/${pkgname}/ocr/node_modules)
 
 }
