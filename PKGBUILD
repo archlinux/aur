@@ -2,7 +2,7 @@
 
 pkgname=linkding-cli
 _name=${pkgname//-/_}
-pkgver=2023.8.0
+pkgver=2023.10.0
 pkgrel=1
 pkgdesc="A CLI to interact with a linkding instance"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/bachya/linkding-cli"
 license=('MIT')
 depends=('python-importlib-metadata' 'python-typer' 'python-ruamel-yaml' 'python' 'python-aiolinkding')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=(e44795d6dc522071ed7adf216ced19b73588c40fdf106ae39d1968d10f5ac1c583dc84410dcb093c47cc50567d78574266502d40518cdeac486f842f4478ff19)
+sha512sums=(0f5385939fdf97d66abf77a7f08c8befe4c80450d04bb6c3faa48bba9fa0713bb8f6d441b1afa83dff2911e0250b92747a80818d48d407344aedcdcb5852b3d5)
 
 makedepends=(python-build python-installer python-poetry-core)
 
