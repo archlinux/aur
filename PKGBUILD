@@ -1,7 +1,7 @@
 # Maintainer: e-dong <eric2043@gmail.com>
 pkgname=encoder-benchmark-git
 pkgver=v0.6.0.alpha.r4.gb7633c1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A tool to benchmark your hardware's real-time video encoding capabilities."
 arch=("x86_64")
@@ -39,7 +39,7 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-	cd "$pkgname"
+    cd "$pkgname"
     cargo build --release --frozen --all-features
 }
 
