@@ -1,18 +1,11 @@
 pkgbase = xdman8-bin
-	pkgdesc = Open source download accelerator and video downloader (binary release)
-	pkgver = 8.0.29
-	pkgrel = 4
+	pkgdesc = metapackage - migrate to xdman-beta-bin
+	pkgver = 0.0.1
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/subhra74/xdm
-	arch = x86_64
+	arch = any
 	license = GPL3
-	depends = ffmpeg
-	depends = gtk3>=3.22.0
-	optdepends = librewolf-extension-xdman8-browser-monitor-bin: Browser extension for LibreWolf
-	optdepends = firefox-extension-xdman8-browser-monitor-bin: Browser extension for Firefox
-	provides = xdman8
-	conflicts = xdman8
-	conflicts = xdman8-beta-git
-	source = https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
-	sha256sums = dbb47e7fbd03cc82aa4678886003d56e1d5222ecb4a52a83e0e6461fadc27ea3
 
 pkgname = xdman8-bin
+	depends = xdman-beta-bin
