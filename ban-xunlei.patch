@@ -1,64 +1,84 @@
-From 9f6f662eeb5d6a1a7fe6544387fc30ada17cb7fe Mon Sep 17 00:00:00 2001
-From: Hexhu <i@hexhu.net>
-Date: Sun, 14 Jun 2020 07:46:12 -0700
-Subject: [PATCH] apply noxunlei patch
-
-
-diff --git a/libtransmission/handshake.c b/libtransmission/handshake.c
-index bab0e2d28..bfad9b124 100644
---- a/libtransmission/handshake.c
-+++ b/libtransmission/handshake.c
-@@ -271,6 +271,9 @@ static handshake_parse_err_t parseHandshake(tr_handshake* handshake, struct evbu
-     handshake->havePeerID = true;
-     dbgmsg(handshake, "peer-id is [%*.*s]", PEER_ID_LEN, PEER_ID_LEN, peer_id);
+diff --git a/libtransmission/handshake.cc b/libtransmission/handshake.cc
+index 6be04586c..8cbaf6edf 100644
+--- a/libtransmission/handshake.cc
++++ b/libtransmission/handshake.cc
+@@ -20,6 +20,7 @@
+ #include "handshake.h"
+ #include "log.h"
+ #include "peer-io.h"
++#include "peer-mgr.h"
+ #include "timer.h"
+ #include "tr-assert.h"
+ #include "tr-buffer.h"
+@@ -110,6 +111,9 @@ tr_handshake::ParseResult tr_handshake::parse_handshake(tr_peerIo* peer_io)
+         return ParseResult::PeerIsSelf;
+     }
  
-+    /* Error if the client is banned. */
-+    if (tr_peerMgrClientIsBanned(peer_id)) return HANDSHAKE_ENCRYPTION_WRONG;
++    /* bans leetch-only clients */
++    if (tr_peerMgrClientIsBanned(peer_id)) return ParseResult::PeerIsLeetcher;
 +
-     tor = tr_torrentFindFromHash(handshake->session, hash);
- 
-     if (memcmp(peer_id, tr_torrentGetPeerId(tor), PEER_ID_LEN) == 0)
-diff --git a/libtransmission/peer-mgr.c b/libtransmission/peer-mgr.c
-index d1239cc16..d2ad0ac57 100644
---- a/libtransmission/peer-mgr.c
-+++ b/libtransmission/peer-mgr.c
-@@ -2080,7 +2080,7 @@ static bool myHandshakeDoneCB(tr_handshake* handshake, tr_peerIo* io, bool readA
-             atom->flags |= ADDED_F_UTP_FLAGS;
-         }
- 
--        if ((atom->flags2 & MYFLAG_BANNED) != 0)
-+        if (((atom->flags2 & MYFLAG_BANNED) != 0) | tr_peerMgrClientIsBanned(peer_id))
-         {
-             tordbg(s, "banned peer %s tried to reconnect", tr_atomAddrStr(atom));
-         }
-@@ -4365,3 +4365,15 @@ static void makeNewPeerConnections(struct tr_peerMgr* mgr, int const max)
- 
-     tr_free(candidates);
+     return ParseResult::Ok;
  }
-+
-+bool
-+tr_peerMgrClientIsBanned (const uint8_t * peer_id)
+ 
+diff --git a/libtransmission/handshake.h b/libtransmission/handshake.h
+index c9b6582c4..2d0769b1e 100644
+--- a/libtransmission/handshake.h
++++ b/libtransmission/handshake.h
+@@ -80,6 +80,7 @@ private:
+         EncryptionWrong,
+         BadTorrent,
+         PeerIsSelf,
++        PeerIsLeetcher,
+     };
+ 
+     enum class State
+diff --git a/libtransmission/peer-mgr.cc b/libtransmission/peer-mgr.cc
+index f17577647..aa8df86a9 100644
+--- a/libtransmission/peer-mgr.cc
++++ b/libtransmission/peer-mgr.cc
+@@ -968,6 +968,22 @@ void tr_peerMgrPieceCompleted(tr_torrent* tor, tr_piece_index_t p)
+     tor->set_needs_completeness_check();
+ }
+ 
++bool tr_peerMgrClientIsBanned(const tr_peer_id_t& peer_id_arr)
 +{
-+    if (peer_id == NULL) return false;
-+    bool banned = false;
++    const char* peer_id = peer_id_arr.data();
++    bool banned = peer_id_arr.empty();
++    // Names like '-XL0012-','-DL3760-', '-FD51YC-', etc.
 +    banned |= !memcmp(peer_id+1, "SD", 2);
 +    banned |= !memcmp(peer_id+1, "XL", 2);
-+    //if (banned)
-+    //  tr_logAddNamedError ("Client banned.", "(Client filter)");
++    banned |= !memcmp(peer_id+1, "QD", 2);
++    banned |= !memcmp(peer_id+1, "XF", 2);
++    banned |= !memcmp(peer_id+1, "BN", 2);
++    banned |= !memcmp(peer_id, "Xunlei", 6);
++    banned |= !memcmp(peer_id, "Thunder", 7);
++    banned |= !memcmp(peer_id, "QQDownload", 10);
 +    return banned;
 +}
++
+ namespace
+ {
+ namespace handshake_helpers
+@@ -1069,6 +1085,10 @@ void create_bit_torrent_peer(tr_torrent* tor, std::shared_ptr<tr_peerIo> io, str
+         {
+             tr_logAddTraceSwarm(s, fmt::format("banned peer {} tried to reconnect", atom->display_name()));
+         }
++        else if (!result.peer_id.has_value() || tr_peerMgrClientIsBanned(result.peer_id.value()))
++        {
++            tr_logAddDebugSwarm(s, fmt::format("banned leetch-only peer {} tried to reconnect", atom->display_name()));
++        }
+         else if (result.io->is_incoming() && s->peerCount() >= s->tor->peerLimit())
+         {
+             /* too many peers already */
 diff --git a/libtransmission/peer-mgr.h b/libtransmission/peer-mgr.h
-index 2dd414a97..672d7d4ba 100644
+index 4566e685b..25d106b33 100644
 --- a/libtransmission/peer-mgr.h
 +++ b/libtransmission/peer-mgr.h
-@@ -136,4 +136,7 @@ void tr_peerMgrGotBadPiece(tr_torrent* tor, tr_piece_index_t pieceIndex);
+@@ -222,4 +222,7 @@ void tr_peerMgrGotBadPiece(tr_torrent* tor, tr_piece_index_t piece_index);
  
  void tr_peerMgrPieceCompleted(tr_torrent* tor, tr_piece_index_t pieceIndex);
  
-+/* Check if the client is banned. XunLei is banned because it never uploads.*/
-+bool tr_peerMgrClientIsBanned(const uint8_t* peer_id);
++/* Check if the client is banned. XunLei is banned because it is leetch-only (never uploads). */
++bool tr_peerMgrClientIsBanned(const tr_peer_id_t& peer_id);
 +
  /* @} */
--- 
-2.27.0
-
