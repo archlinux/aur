@@ -12,6 +12,7 @@ url="https://zealdocs.org/"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'libarchive' 'qt6-webengine')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja')
+provides=(${_appname})
 conflicts=(${_appname})
 source=("${_appname}::git+https://github.com/zealdocs/${_appname}#branch=main")
 sha1sums=('SKIP')
