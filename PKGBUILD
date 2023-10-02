@@ -5,14 +5,14 @@
 
 pkgname=sleuthkit-java
 pkgver=4.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
 license=('CPL', 'custom:"IBM Public Licence"', 'GPL2')
-depends=(java-runtime=8 java8-openjfx sleuthkit)
+depends=(java-runtime=17 java17-openjfx sleuthkit)
 optdepends=('sqlite-jdbc: For JDBC SQLite support')
-makedepends=(ant java-environment=8)
+makedepends=(ant java-environment=17)
 source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz")
 sha512sums=('f3efe1339edc9eb07023975a1e2e2dc7bc47d61d838aada941b7591e2c5beb74fc5298ebf68ae71875bf8f0f09c0d7929a11762fa47840e7e18398d3ff80b9fc')
 
