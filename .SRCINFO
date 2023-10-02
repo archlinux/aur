@@ -1,14 +1,13 @@
 pkgbase = lpm-git
 	pkgdesc = A lite-xl plugin manager.
-	pkgver = latest.r2.g74ced20
+	pkgver = continuous.r0.gd6650d1
 	pkgrel = 1
-	url = https://github.com/adamharrison/lite-xl-plugin-manager
+	url = https://github.com/lite-xl/lite-xl-plugin-manager
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
-	makedepends = vim
-	depends = lite-xl
+	makedepends = meson
 	depends = lua
 	depends = zlib
 	depends = libzip
@@ -16,7 +15,7 @@ pkgbase = lpm-git
 	depends = mbedtls2
 	provides = lpm
 	conflicts = lpm
-	source = git+https://github.com/adamharrison/lite-xl-plugin-manager
+	source = git+https://github.com/lite-xl/lite-xl-plugin-manager
 	sha256sums = SKIP
 
 pkgname = lpm-git

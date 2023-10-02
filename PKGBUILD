@@ -1,20 +1,20 @@
-# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+# Maintainer: Giulio Lettieri <giulio.lettieri@gmail.com>
+# Contributor: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=latest.r2.g74ced20
+pkgver=continuous.r0.gd6650d1
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
-url="https://github.com/adamharrison/lite-xl-plugin-manager"
+url="https://github.com/lite-xl/lite-xl-plugin-manager"
 license=('MIT')
-depends=('lite-xl' 'lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
-# vim needed for xxd
-makedepends=('git' 'vim')
+depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
+makedepends=('git' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/adamharrison/lite-xl-plugin-manager")
+source=("git+https://github.com/lite-xl/lite-xl-plugin-manager")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,24 +24,18 @@ pkgver() {
 
 prepare() {
   cd "${_gitname}"
-  git submodule update --init lib/microtar
+  git submodule update --init --depth 1 lib/microtar
+
+  FULL_VERSION=`git describe --tags --long`
 }
 
 build() {
   cd "${_gitname}"
-  lua -e 'io.open("src/lpm.luac", "wb"):write(string.dump(assert(loadfile("src/lpm.lua"))))'
-  xxd -i src/lpm.luac > src/lpm.lua.c
-  git tag -d latest
-  FULL_VERSION=`git describe --tags | tail -c +2`
-  gcc -DLPM_VERSION='"'$FULL_VERSION-$CARCH-linux'"' -DLPM_STATIC \
-    src/lpm.c src/lpm.lua.c lib/microtar/src/microtar.c \
-    -Ilib/microtar/src -I/usr/include/mbedtls2 \
-    -lz -lgit2 -lzip -llua -lm \
-    -L/usr/lib/mbedtls2 -lmbedtls -lmbedx509 -lmbedcrypto \
-    -o lpm
+  CFLAGS="$CFLAGS -DLPM_VERSION='\"$FULL_VERSION\"'"
+  arch-meson -Dstatic=true . build
+  meson compile -C build
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  cp "${srcdir}/${_gitname}"/lpm "$pkgdir/usr/bin"
+  install -D "${srcdir}/${_gitname}/build/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
