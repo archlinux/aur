@@ -1,7 +1,7 @@
 pkgbase = cs-nginx-bouncer
 	pkgdesc = CrowdSec bouncer for Nginx
 	pkgver = 1.0.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://doc.crowdsec.net/docs/bouncers/nginx
 	install = cs-nginx-bouncer.install
 	arch = any
@@ -17,8 +17,10 @@ pkgbase = cs-nginx-bouncer
 	backup = etc/nginx/conf.d/crowdsec_nginx.conf
 	backup = etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
 	source = crowdsec-nginx-bouncer-1.0.5.tar.gz::https://github.com/crowdsecurity/cs-nginx-bouncer/releases/download/v1.0.5/crowdsec-nginx-bouncer.tgz
+	source = cs-nginx-bouncer-nginx-module.conf
 	source = cs-nginx-bouncer.install
 	sha256sums = 2bb65903558598fc72c20de512267cbf0759d79f0e038c5a3b8ecf2626470d3f
-	sha256sums = 40b787d90acc63c8c1d30895a1505c4c235cd5ff8d889bffd3bb71d6da0ba88a
+	sha256sums = 48b8356f3652ae766496a28714a661c30c9616c12b9cb39ff75dfa78f4677f99
+	sha256sums = e398b3ffdf16ef45d417017558372bba79aed0ffd63f512eefbe236505dd5cfd
 
 pkgname = cs-nginx-bouncer
