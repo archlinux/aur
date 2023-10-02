@@ -2,7 +2,7 @@
 
 pkgname='tropy'
 pkgver='1.14.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
@@ -31,7 +31,7 @@ source=(
   'tropy.sh'
   "https://github.com/tropy/tropy/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('0d9f2694407bd54552097fb620c4f7ca9fd885a8adc0a21a5ea63e368a8c672e'
+sha256sums=('0fdf0fcaa4676bc3a2835a7ef6b4a9f6b809a37e48775f62d9f4fab52da43901'
             'b85d83fd8e28b8ed93f28f022366b1152bc83184dacaedd373ea7f911fbc7fb1')
 
 build() {
