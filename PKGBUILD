@@ -14,8 +14,7 @@ url="https://gitlab.com/veilid/veilid/-/archive/v0.2.3/veilid-v$pkgver.tar"
 license=('Mozilla')
 groups=()
 depends=()
-makedepends=("cargo"
-             "git")
+makedepends=("cargo")
 checkdepends=()
 optdepends=()
 provides=(veilid-cli)
