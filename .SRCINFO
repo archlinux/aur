@@ -1,7 +1,7 @@
 pkgbase = lektor
 	pkgdesc = A static content management system.
 	pkgver = 3.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.getlektor.com
 	arch = any
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = lektor
 	depends = python-click
 	depends = python-pyasn1
 	depends = python-ndg-httpsclient
-	depends = python-mistune
+	depends = python-mistune1
 	depends = python-inifile
 	depends = python-exifread
 	depends = python-slugify

@@ -2,7 +2,7 @@
 pkgname=lektor
 _pkgname=Lektor
 pkgver=3.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A static content management system."
 arch=(any)
 url="https://www.getlektor.com"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=(python python-pip
     python-requests python-babel python-flask python-watchdog
     python-click python-pyasn1 python-ndg-httpsclient
-    python-mistune python-inifile python-exifread python-slugify
+    python-mistune1 python-inifile python-exifread python-slugify
     python-filetype)
 makedepends=(python-build python-installer python-wheel)
 options=(!emptydirs)
