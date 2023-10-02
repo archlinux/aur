@@ -3,20 +3,18 @@
 
 pkgname=aqualung
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High quality music player w/ gapless support"
 arch=(i686 x86_64)
 url="https://aqualung.jeremyevans.net/"
-license=(GPL)
+license=(GPL2)
 depends=(gtk2 libxml2 alsa-lib sndio jack libpulse liboggz libusb-compat
          libifp ffmpeg libvorbis libsndfile lua52 wavpack libcdio-paranoia
-         libmad flac liblrdf libmpcdec libsamplerate)
-makedepends=(git ladspa libcddb speex lame libmodplug)
-optdepends=('libcddb: CDDB / FreeDB support'
-            'speex: Oggz speex support (playback)'
-            'lame: MP3 audio support (encode)'
-            'libmodplug: MOD files support (playback .mod .s3m .xm .it ...)')
-_commit=44a3f40d784010a183e1f61cbd02615ff5568358
+         libmad flac liblrdf libmpcdec libsamplerate libcddb speex lame libmodplug # mac
+
+         # namcap implicit depends
+         glibc glib2 bzip2 zlib libogg gdk-pixbuf2 cairo pango libcdio hicolor-icon-theme)
+makedepends=(git)
 source=("git+https://github.com/jeremyevans/aqualung.git#tag=${pkgver}"
         aqualung.desktop)
 sha256sums=('SKIP'
@@ -42,10 +40,10 @@ check() {
 package() {
   cd "${pkgname}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "src/img/icon_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png"
-  install -Dm644 "src/img/icon_24.png" "${pkgdir}/usr/share/icons/hicolor/24x24/apps/${_pkgname}.png"
-  install -Dm644 "src/img/icon_32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
-  install -Dm644 "src/img/icon_48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
-  install -Dm644 "src/img/icon_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgname}.png"
+  install -Dm644 "src/img/icon_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/aqualung.png"
+  install -Dm644 "src/img/icon_24.png" "${pkgdir}/usr/share/icons/hicolor/24x24/apps/aqualung.png"
+  install -Dm644 "src/img/icon_32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/aqualung.png"
+  install -Dm644 "src/img/icon_48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/aqualung.png"
+  install -Dm644 "src/img/icon_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/aqualung.png"
   install -Dm644 "${srcdir}/aqualung.desktop" "${pkgdir}/usr/share/applications/aqualung.desktop"
 }
