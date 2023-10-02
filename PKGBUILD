@@ -4,12 +4,12 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="package otf-macos running in archlinux kde"
 arch=("any")
-url="https://github.com/xMuu/arch-kde-fontconfig"
+url="github.com/xMuu/arch-kde-fontconfig"
 # or url="https://gitee.com/yunshanyao/otf-macos"
 license=('custom')
 depends=('pacman')
 source=(
-	"${pkgname}::git+https://${url}.git"		
+	"${pkgname}::git+https://${url}.git"
 )
 sha256sums=('SKIP')
 
