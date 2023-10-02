@@ -41,6 +41,10 @@ warning() {
     echo -en "\e[33;1mWARNING\e[0m: " >&2;
     echo "$@" >&2;
 }
+error() {
+    echo -en "\e[31;1mERROR\e[0m: " >&2;
+    echo "$@" >&2;
+}
 
 pkgver() {
     local index_file="${srcdir}/zig-version-index.json";
@@ -76,12 +80,12 @@ prepare() {
     echo "" >&2;
     local actual_hash="$(sha256sum "$newfile" | grep -oE '^\w+')"
     if [[ "$expected_hash" != "$actual_hash" ]]; then
-        echo "ERROR: Expected hash $expected_hash for $newfile, but got $actual_hash" >&2;
+        error "Expected hash $expected_hash for $newfile, but got $actual_hash" >&2;
         exit 1;
     fi;
     echo "Using minisign to check signature";
     if ! minisign -V -P "$ZIG_MINISIGN_KEY" -m "$newfile" -x "$newfile_sig"; then
-        echo "ERROR: Failed to check signature for $newfile" >&2;
+        error "Failed to check signature for $newfile" >&2;
         exit 1;
     fi
     echo "Extracting file";
