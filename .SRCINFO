@@ -1,0 +1,22 @@
+pkgbase = insomnium-bin
+	pkgdesc = API Client and Design Platform for GraphQL and REST
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ArchGPT/insomnium
+	arch = x86_64
+	license = MIT
+	depends = libxss
+	depends = nss
+	depends = gtk3
+	depends = alsa-lib
+	optdepends = libappindicator-gtk3: StatusNotifierItem support
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
+	provides = insomnium
+	conflicts = insomnium
+	conflicts = insomnium-git
+	source = insomnium-0.1.1.deb::https://github.com/ArchGPT/insomnium/releases/download/v0.1.1a/Insomnium.ubuntu-v0.1.1.deb
+	source = insomnia.svg
+	sha256sums = 00de1dc4e0e35527391178cf44cd736198914cf0e70658d5c73e13a16bc4e067
+	sha256sums = 1ef035acb2f4ae1f6665cdcb03514cd3ef51d254365a85caa8cc4f81d7e821f3
+
+pkgname = insomnium-bin
