@@ -1,7 +1,7 @@
 pkgname=caches-manager
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
-pkgdesc="A simple script that helps keep selected directories clean by symlinking or binding to tmpfs ramdisk."
+pkgdesc="A simple script that helps keep selected directories clean by symlinking or mounting to tmpfs ramdisk."
 arch=('any')
 url="https://github.com/HanabishiRecca/${pkgname}"
 license=('MIT')
@@ -9,7 +9,7 @@ options=('!strip')
 
 _snapshot="${pkgname}-${pkgver}"
 source=("${_snapshot}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('69553fb7b92d5104488687be1e6346f84ba06f726fc70791081a32b3a7613d1e')
+sha256sums=('79af2d3406dd5d976f99e98e481f0dadf4925ead5dd4ca347dc2c43c05afcab9')
 
 package() {
     local bin="${pkgdir}/usr/bin"
