@@ -2,7 +2,7 @@
 
 pkgname=varicad-view
 _pkgname=varicad-view
-pkgver=2023.2.07
+pkgver=2023.2.08
 pkgrel=1
 pkgdesc="Free viewer, convertor & printing software working with 2D DWG, DXF, 3D STEP formats."
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=(custom)
 makedepends=()
 depends=(libx11 libxcomposite libxdamage libxext libxfixes libxrender mime-types gtk2 hicolor-icon-theme)
 provides=(varicad-view)
-source=("https://www.varicad.com/userdata/files/release/en/VariCAD_View_2023-en-2.07-1.$CARCH.rpm")
+source=("https://www.varicad.com/userdata/files/release/en/VariCAD_View_2023-en-2.08-1.$CARCH.rpm")
 url="https://www.varicad.com/"
-sha256sums=('efb66240c7be1548d843c896198dd6e2031dea186f5d5bff2537c4d652af7cc3')
+sha256sums=('d5a5a97f0a0abd08d97fa7fa3e3dbc720c786a5b82f0fb81b9b2ed32217096f5')
 
 package() {
   # Contents of this function are inspired by the install script located at:
@@ -49,10 +49,10 @@ package() {
     $pkgdir/usr/share/mimelnk/application/x-varicad"$addon".desktop
 
   # documentation
-  for install_file in $(ls $srcdir/usr/share/doc/packages/VariCAD_View_2022-en) ;
+  for install_file in $(ls $srcdir/usr/share/doc/packages/VariCAD_View_2023-en) ;
   do
     install -Dm644 \
-      $srcdir/usr/share/doc/packages/VariCAD_View_2022-en/$install_file \
+      $srcdir/usr/share/doc/packages/VariCAD_View_2023-en/$install_file \
       $pkgdir/usr/share/doc/$pkgname/$install_file
   done
 }
