@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-uri-db
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc="Perl module representing database URIs"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-module-build>=0.30' 'perl-uri>=1.40' 'perl-uri-nested>=0.10')
 makedepends=()
 url='https://metacpan.org/release/URI-db'
-source=('http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-db-0.20.tar.gz')
-md5sums=('07121e39f191d9aef43577e164bb4fac')
-sha512sums=('0623f61a5d415e577f50aeedc55c1965c2c4d93c9cffaebd176daf66c626354e785c5f3971ea86bb67ba913962a94ee435bcaa4f64327bc553bc14b04ec444de')
-_distdir="URI-db-0.20"
+source=('http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-db-0.21.tar.gz')
+md5sums=('9c58d10308052cb3d947e1c9b3330b39')
+sha512sums=('ee59b8dec9253f43e7b5313cc9dd924b743edeec346371d99135cfbc8d8b38066ac2c24e0f92404ba2a18daf108f04aa465c7f07d749cb9fb6f6247724e8c168')
+_distdir="URI-db-0.21"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
