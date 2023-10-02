@@ -2,7 +2,7 @@
 
 _pkgname=wooting-profile-switcher
 pkgname="${_pkgname}-bin"
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Automatically switch Wooting keyboard profiles based on focused window "
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/ShayBox/${_pkgname}"
 license=('MIT')
 depends=("libusb-1.0.so" "libwebkit2gtk-4.1.so")
 source=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha512sums=("8fe38e9c15f4c03298db576b50e0235b0ffb868aa53bab96bc9d73a16ef62d360c49b09ab1884149455ef7386ee058fd6bf2bd533a79afa79c5e2f033f819b8b")
+sha512sums=("2a094d5cf9c2c1de330892182bc7ea61ad07cb11290f3597b0fa2aebb032beeb7debbb4bffff455e977a4b7b09ca42ecee90f558293b8e28b729bda4955b765c")
 
 prepare() {
   tar -zxvf data.tar.gz
