@@ -1,0 +1,15 @@
+pkgbase = veilid-cli-git
+	pkgdesc = A text user interface to talk to veilid-server and operate it manually
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://gitlab.com/veilid/veilid/-/archive/v0.2.3/veilid-v0.2.3.tar
+	arch = x86_64
+	license = Mozilla
+	makedepends = cargo
+	makedepends = git
+	provides = veilid-cli
+	conflicts = veilid-cli
+	source = https://gitlab.com/veilid/veilid/-/archive/v0.2.3/veilid-v0.2.3.tar
+	md5sums = e7a4928d35dfeb795c48ca091f15610c
+
+pkgname = veilid-cli-git
