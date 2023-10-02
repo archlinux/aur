@@ -1,6 +1,6 @@
 pkgbase = matchama-kde
 	pkgver = r265.8525e05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/cscs/matchama-kde
 	arch = any
 	license = GPL3
@@ -32,7 +32,7 @@ pkgname = matchama-kde-wallpapers
 
 pkgname = kvantum-theme-matchama
 	pkgdesc = Matcha theme for Kvantum
-	depends = kvantum-qt5
+	depends = kvantum
 	provides = kvantum-theme-matchama
 	provides = kvantum-theme-matcha
 	conflicts = kvantum-theme-matchama
