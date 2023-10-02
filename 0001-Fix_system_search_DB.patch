@@ -1,0 +1,76 @@
+diff -aurN a/MainWindow.cpp b/MainWindow.cpp
+--- a/MainWindow.cpp	2023-09-30 23:04:24.000000000 +0300
++++ b/MainWindow.cpp	2023-10-02 18:42:54.817319836 +0300
+@@ -137,9 +137,10 @@
+     // Set pathd
+ #ifdef PLATFORM_UNIX
+     strEngineDirPath     = strHomeDirPath + strEngineDirPathSuffix;
+-    //strExecDirPath       = QCoreApplication::applicationFilePath();
+-#endif
++    strExecDirPath       = QCoreApplication::applicationFilePath();
++#else
+     strExecDirPath       = QDir::currentPath();
++#endif
+     strRunnerDirPath     = strHomeDirPath + strRunnerDirPathSuffix;
+     strGameDirFEpath     = strRunnerDirPath + "/SamTFE";
+     strGameDirSEpath     = strRunnerDirPath + "/SamTSE";
+@@ -282,7 +283,7 @@
+ }
+ 
+ // Test DB update need?
+-bool MainWindow::TestDBupdateNeed()
++int MainWindow::TestDBupdateNeed()
+ {
+     int iLocalDBsize = 0;
+     QFile scanFile(strRunnerDBPath);
+@@ -290,14 +291,16 @@
+         iLocalDBsize = scanFile.size();
+         scanFile.close();
+     }
+-    if(iLocalDBsize == iRemoteSizeDB){
+-        return true;
+-    }
+-    return false;
++    return iLocalDBsize;
+ }
+ 
+ // Search and install DB
+ bool MainWindow::SearchDB(){
++
++    if (QFile(strRunnerDBPath).exists() && !TestDBupdateNeed()){
++       QFile file(strRunnerDBPath);
++       file.remove();
++    }
+     if (!QFile(strRunnerDBPath).exists()){
+         if (!QDir(strRunnerDirPath).exists()){
+             QDir().mkdir(strRunnerDirPath);
+@@ -782,7 +785,8 @@
+ 
+ void MainWindow::on_pushButton_update_db_clicked()
+ {
+-    if(TestDBupdateNeed()) {
++    int iLocalDBsize = TestDBupdateNeed();
++    if((iLocalDBsize == iRemoteSizeDB) && (iLocalDBsize !=0 )) {
+         MsgBox(INFO, "The latest version of the database is installed. No update required!");
+         return;
+     }
+@@ -1259,7 +1263,6 @@
+         m_downloader.GetLevel(strGameDirPath, strDownloadLink);
+     }
+ }
+-
+ void MainWindow::on_pushButton_fe_bestmaps_download_clicked()
+ {
+     if(m_downloader.locked_action) {return;}
+diff -aurN a/MainWindow.h b/MainWindow.h
+--- a/MainWindow.h	2023-09-30 23:04:24.000000000 +0300
++++ b/MainWindow.h	2023-10-02 18:16:07.161147610 +0300
+@@ -184,7 +184,7 @@
+     void  ReScanLocalDB();
+     void  HideProgressBars();
+     void  HideLabelsText();
+-    bool  TestDBupdateNeed();
++    int   TestDBupdateNeed();
+     void  MakeDifficultyScript(int iDifficulty, QString strPath);
+     void  StartLevel(QString strSqlTable, int iXPLUS, int iDifficulty);
+     void  StartMod(QString strSqlTable, int iDifficulty);

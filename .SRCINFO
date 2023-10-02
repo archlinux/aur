@@ -1,7 +1,7 @@
 pkgbase = seriousrunner
 	pkgdesc = Serious Runner program that loads and runs content created by users.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/Serious-Runner
 	arch = x86_64
 	license = GPL2
@@ -19,5 +19,7 @@ pkgbase = seriousrunner
 	depends = xz
 	depends = bzip2
 	source = https://github.com/tx00100xt/Serious-Runner/archive/refs/tags/v1.1.tar.gz
+	source = 0001-Fix_system_search_DB.patch
 	sha256sums = 530b421aa4fe1fe6fdf0e2ee9ac0f2b00861b28a9f277098b10f20a38fd337e0
+	sha256sums = 148a2ba597789d646678956bf11f3699adc11dfb03aa97f3f11ed429a74e5c25
 pkgname = seriousrunner
