@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=moul-assh
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=2
 pkgdesc='make your ssh client smarter'
 url='https://github.com/moul/assh'
