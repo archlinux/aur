@@ -3,7 +3,7 @@
 # Contributor: BStrauss3 <bstrauss at acm dot org>
 
 pkgname=perccli
-pkgver=7.2312.0.0
+pkgver=7.2313.00
 pkgrel=1
 pkgdesc='Proprietary controller binary for DELL PERC RAID cards.'
 url='https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=mgkfv'

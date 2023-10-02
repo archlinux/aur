@@ -1,6 +1,6 @@
 pkgbase = perccli
 	pkgdesc = Proprietary controller binary for DELL PERC RAID cards.
-	pkgver = 7.2312.0.0
+	pkgver = 7.2313.00
 	pkgrel = 1
 	url = https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=mgkfv
 	arch = x86_64
