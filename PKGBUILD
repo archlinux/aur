@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 
 pkgname="insomnium-bin"
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="API Client and Design Platform for GraphQL and REST"
 arch=("x86_64")
@@ -15,11 +15,11 @@ optdepends=(
 provides=("insomnium")
 conflicts=("insomnium" "insomnium-git")
 source=(
-  "insomnium-${pkgver}.deb::$url/releases/download/v${pkgver}a/Insomnium.ubuntu-v${pkgver}.deb"
+  "insomnium-${pkgver}.deb::$url/releases/download/v${pkgver}/Insomnium.Core-${pkgver}-alpha.0.deb"
   "insomnia.svg"
 )
 sha256sums=(
-  '00de1dc4e0e35527391178cf44cd736198914cf0e70658d5c73e13a16bc4e067'
+  '28228c376517c26c86940d7ee59f0d8c05b69c5d9b6ed7ec7f95c9f2e6bcec32'
   '1ef035acb2f4ae1f6665cdcb03514cd3ef51d254365a85caa8cc4f81d7e821f3'
 )
 
