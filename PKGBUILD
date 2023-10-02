@@ -2,7 +2,7 @@
 
 pkgname=clipboard-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (binary version)."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -17,9 +17,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${pkgver}-amd64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-amd64.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-arm64.zip")
 source_riscv64=("${_pkgname}-${pkgver}-riscv64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-riscv64.zip")
-sha256sums_x86_64=('0668f46306cc0ebfb670ba65d597ed1c9ad0851814924954c3f20d84e41aa23d')
-sha256sums_aarch64=('c3a5e06b943d3e00e55e6167fd3f049aef8c38c1cc9135991f892ee562010ff5')
-sha256sums_riscv64=('7e02c6ffb460ed70cc6ae77acd30685fbcec562193bfe59b4a1e278034d7852a')
+sha256sums_x86_64=('c7940c38e48dcf021103a1a91bc36a4ce43b9d00555e055914e1208cc807c925')
+sha256sums_aarch64=('12ca83817768759617316d4cccb5e227c3633f6473db9836aad8e0a9aca5973c')
+sha256sums_riscv64=('d584d81850334f95803e836a486025bf06ffaa47dd90f0ffe3205ac9e78a7fd0')
 
 package() {
 
