@@ -1,42 +1,40 @@
-# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp
 pkgver=0.10.1
-pkgrel=1
-pkgdesc="Language server for Typst"
-arch=('i686' 'x86_64')
-url="https://github.com/nvarner/typst-lsp"
-license=('Apache' 'MIT')
-depends=('gcc-libs')
-makedepends=('rust')
-source=("$pkgname-$pkgver-src.tar.gz::https://github.com/nvarner/typst-lsp/archive/refs/tags/v$pkgver.tar.gz")
+pkgrel=2
+pkgdesc='Language server for Typst'
+arch=(i686 x86_64)
+url="https://github.com/nvarner/$pkgname"
+license=(Apache MIT)
+depends=(gcc-libs
+         glibc)
+makedepends=(cargo)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('11a96fb8c141ef59b697baa9b768aa46a6baa694de9ffa1180d7620041958783')
 
-
 prepare() {
-  cd "typst-lsp-$pkgver"
+	cd "$_archive"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
-  if [ ! -f "Cargo.lock" ]; then
-    cargo update
-  fi
-  cargo fetch
+build() {
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "typst-lsp-$pkgver"
-
-  #cargo test \
-  #  --frozen
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test  --frozen --all-features
 }
 
 package() {
-  cd "typst-lsp-$pkgver"
-
-  cargo install \
-    --locked \
-    --no-track \
-    --root "$pkgdir/usr" \
-    --path .
-
-  install -Dm644 "LICENSE-MIT.txt" -t "$pkgdir/usr/share/licenses/typst-lsp"
+	cd "$_archive"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/typst-lsp/" "LICENSE-MIT.txt"
 }
