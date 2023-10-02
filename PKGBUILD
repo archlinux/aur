@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: syntheit <daniel@matv.io>
 pkgname=tagspaces
-pkgver=5.5.1
+pkgver=5.5.2
 pkgrel=1
 _electronversion=25
 pkgdesc="An offline, open source, document manager with tagging support"
@@ -10,11 +10,10 @@ url="https://www.tagspaces.org"
 license=('AGPL3')
 depends=("electron${_electronversion}" 'libnotify' 'libsecret' 'xdg-utils')
 makedepends=('git' 'libxcrypt-compat' 'npm')
-optdepends=('libappindicator-gtk3: Tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('40c61766e8febd6b8bed7439bc8b0803a2fa4534b947e35ced6a11ca2861e88c'
+sha256sums=('1b8c8197965a0d2acfe303d950a4973cd195f830927908054f43aa6e3b499d3f'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
             '99a8679718609b93f61ac8119fbeb080ca0ec5e5f2d99b08e673fa86a3d8b32b')
 
