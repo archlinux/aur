@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.3.2.oss.r0.gb4688c518
+pkgver=3.4.r1.g251876672
 pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
@@ -46,7 +46,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//g;s/.oss//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
