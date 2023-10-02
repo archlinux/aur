@@ -1,0 +1,14 @@
+pkgbase = opensmtpd-filter-spamassassin
+	pkgdesc = OpenSMTPD filter for spamassassin
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://www.umaxx.net
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = go
+	depends = glibc
+	source = filter-spamassassin-0.7.tar.gz::https://www.umaxx.net/dl/filter-spamassassin-0.7.tar.gz
+	sha256sums = f15a9e3f2848a3c206c532341729ddb6ca2b5c2f42fa63a79550c6dc34f88605
+
+pkgname = opensmtpd-filter-spamassassin
