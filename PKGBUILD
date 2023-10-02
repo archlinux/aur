@@ -1,6 +1,6 @@
 # Maintainer : Nicolas Guillaumin <nicolas plus archlinux at guillaumin dot me>
 pkgname=perl-redisdb
-pkgver=2.54
+pkgver=2.57
 pkgrel=1
 pkgdesc='Perl extension to access redis database (RedisDB)'
 _dist=RedisDB
@@ -11,7 +11,7 @@ depends=(perl perl-redisdb-parser perl-try-tiny perl-uri-redis)
 makedepends=(perl-test-failwarnings perl-test-tcp)
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/Z/ZW/ZWON/$_dist-$pkgver.tar.gz")
-md5sums=(8e3cb9078f04a8f23ff4cc7e69adf56c)
+md5sums=(fb1e1561180b06a6faabab835a422224)
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
