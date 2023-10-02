@@ -3,7 +3,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=cty
-pkgver=3329
+pkgver=3331
 pkgrel=1
 pkgdesc="The package represents databases of entities (countries), prefixes and callsigns
 	that are used by amateur (ham) radio logging software - CONTESTING VERSION."
@@ -22,5 +22,5 @@ package() {
 	chmod 644 * old/*
 	cp -R *.{cty,dat} old $pkgdir/usr/share/cty
 }
-md5sums=('6f04f856b42cf0170158e711551f0146')
-sha256sums=('517e525ef352bc92252dd6d82ebea9ba31e1f88affa36255e0c12bca80824498')
+md5sums=('9377142948e59e09eed70a692318d8a9')
+sha256sums=('0e24d85982f4c359e0d00a0b64c5c404be0d943f49c6794cf460a386d4c07abe')
