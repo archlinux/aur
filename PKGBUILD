@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=shift-cli
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="A tool to run automated tasks for maintaining your Laravel projects."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/laravel-shift/cli"
 license=('MIT')
 depends=('php')
 makedepends=("php-box" "git")
-_tag_commit=451ca14d15171080d6029caca41103791779d58a
+_tag_commit=cee60f6173deaee9159eccae1f10f5d0a12efe04
 source=("${pkgname}-${pkgver}::git+${url}#commit=$_tag_commit")
 b2sums=('SKIP')
 
