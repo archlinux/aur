@@ -1,6 +1,6 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_rockname=textsubsuper.sile
+_rockname=smartquotes.sile
 pkgname=("sile-${_rockname%.sile}")
 pkgver=1.0.0
 _rockrel=1

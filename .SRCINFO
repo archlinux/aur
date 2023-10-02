@@ -1,14 +1,14 @@
-pkgbase = sile-textsubsuper
+pkgbase = sile-smartquotes
 	pkgdesc = Typographic quotation marks with the SILE typesetting system
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Omikhleia/textsubsuper.sile
+	url = https://github.com/Omikhleia/smartquotes.sile
 	arch = any
 	license = MIT
 	makedepends = luarocks
 	depends = sile
 	depends = sile-silex
-	source = https://github.com/Omikhleia/textsubsuper.sile/archive/v1.0.0/textsubsuper.sile-1.0.0.tar.gz
-	sha256sums = 3b90ab0a61b2feb3d6bc1174e4c0559326356f3e99cbbab092e37859554251fb
+	source = https://github.com/Omikhleia/smartquotes.sile/archive/v1.0.0/smartquotes.sile-1.0.0.tar.gz
+	sha256sums = 4cfaabfa9f789bc2e04195f2a9aba6d2cf4523b029dcb594297aa414916f7469
 
-pkgname = sile-textsubsuper
+pkgname = sile-smartquotes
