@@ -1,6 +1,6 @@
 pkgbase = lite-xl-git
 	pkgdesc = A lightweight text editor written in Lua (master branch)
-	pkgver = v2.1.1.r2172.86fa90a7
+	pkgver = v2.1.1.r2256.f996f7a9
 	pkgrel = 1
 	url = https://lite-xl.github.io/
 	arch = x86_64
