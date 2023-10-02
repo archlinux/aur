@@ -1,0 +1,24 @@
+pkgbase = gog-dandara-trials-of-fear-edition
+	pkgdesc = Gravity-defying 2D metroidvania platformer. GOG version.
+	pkgver = 1.3.7.37619
+	pkgrel = 1
+	url = https://www.gog.com/en/game/dandara_trials_of_fear_edition
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	options = !strip
+	source = dandara-trials-of-fear-edition_latest.sh::gogdownloader://dandara_trials_of_fear_edition/en3installer0
+	source = gog-dandara-trials-of-fear-edition.desktop
+	source = dandara-trials-of-fear-edition.bash
+	sha512sums = SKIP
+	sha512sums = ee107b9737c0e08a6eab2c3edd828ad34c2526ac9a16bc6c9ad5e4f2df66a281af102f105825f6194069282fd523a68f9d98b8caac40a50ebc5d11bf7d3344e0
+	sha512sums = 4b8eac70f29a4881447ac2b8a2743fc7ac5f7057fc4638b712c89fd81a4983ef3bf1eb30a222c1279ce53b0ef3946ae9eb4ffe7ddc4a6a9f4ef74618c8093a01
+
+pkgname = gog-dandara-trials-of-fear-edition

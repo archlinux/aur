@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dandara: Trials of Fear Edition
+Comment=Gravity-defying 2D metroidvania platformer
+Exec=dandara-trials-of-fear-edition
+Icon=gog-dandara-trials-of-fear-edition
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
