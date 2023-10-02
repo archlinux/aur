@@ -1,7 +1,7 @@
 # Maintainer: aquabeam <laithbahodi@gmail.com>
 
 pkgname=org-rust
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 url=https://github.com/hydrobeam/org-rust
 pkgdesc='CLI tool for converting Org-Mode documents to other formats'
@@ -14,26 +14,28 @@ sha256sums=(SKIP)
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --manifest-path="$pkgname-$pkgver/Cargo.toml"  --locked --target="$CARCH-unknown-linux-gnu"
+  # cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --manifest-path=./Cargo.toml  --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  cd "$pkgname-$pkgver"
   cargo build --frozen --release
 
   find target/release -name "$pkgname.fish" | xargs dirname > out_dir
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --release --locked
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   local OUT_DIR=$(<out_dir)
 
