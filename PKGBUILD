@@ -1,13 +1,13 @@
 # Maintainer: robiot <me@robiot.dev>
 
 pkgname=xclicker
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A blazing fast gui autoclicker for linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/robiot/xclicker'
 license=('GPL-3.0')
-makedepends=('meson' 'libx11' 'libxi' 'libxtst' 'pkgconf')
+makedepends=('meson' 'libx11' 'libxi' 'libxtst' 'pkgconf', 'gtk3')
 sha512sums=('SKIP')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
