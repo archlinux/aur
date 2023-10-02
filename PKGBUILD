@@ -1,13 +1,13 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname="bambustudio-git"
-pkgver=01.06.00.65.15.g693af0c9
+pkgver=01.07.01.62.4.g5ef759ce
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
 license=('AGPLv3')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'harmonyos-sans-git')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'm4' 'pkgconf')
 provides=("BambuStudio")
 conflicts=("BambuStudio")
