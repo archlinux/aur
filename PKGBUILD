@@ -2,7 +2,7 @@
 
 
 pkgname=lucene-grep-bin
-pkgver=2023.01.30
+pkgver=2023.09.29
 pkgrel=1
 pkgdesc="Grep-like utility based on Lucene Monitor compiled with GraalVM native-image"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/dainiusjocas/lucene-grep"
 license=('APACHE')
 provides=(lucene-grep)
 source=("https://github.com/dainiusjocas/lucene-grep/releases/download/v${pkgver}/lmgrep-v${pkgver}-linux-amd64-static.zip")
-sha256sums=('710bbecf763dc69463bb7964574e8c3c282526df3b7afc5891441b9fbb88b0c5')
+sha256sums=('07dbb263a957cbfd188620c5ed5974f6c182dda608cd8f9f99d20a8659f82835')
 
 package() {
   mkdir -p $pkgdir/usr/bin
