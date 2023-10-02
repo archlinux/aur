@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = dremio-bin
+
+[Action]
+Description = Creating dremio runtime directories...
+When = PostTransaction
+
+Exec = /usr/bin/bash -c "mkdir -p /opt/dremio/data && chown dremio:dremio $_ && mkdir -p /opt/dremio/log && chown dremio:dremio $_ && mkdir -p /opt/dremio/run && chown dremio:dremio $_"
