@@ -7,8 +7,8 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.12.1
-pkgrel=2
+pkgver=1.12.1_2
+pkgrel=1
 epoch=4
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 license=('MIT')
@@ -16,7 +16,7 @@ depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
 arch=('any')
 url='https://github.com/msojocs/bilibili-linux'
 install="${pkgname}.install"
-source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-${pkgrel}/bilibili-v${pkgver}-${pkgrel}-x86_64.tar.gz"
+source=("https://ghproxy.com/https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver//_/-}/bilibili-v${pkgver//_/-}-x86_64.tar.gz"
         "${_pkgname}"
         "${_pkgname}.svg"
         "${_pkgname}.desktop"
