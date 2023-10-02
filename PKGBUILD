@@ -1,8 +1,8 @@
 # Maintainer : eggz
 pkgname=ffmpeg-nocuda
-pkgver=6.0
+pkgver=6.1
 gitver=n${pkgver}
-pkgrel=5
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -61,7 +61,6 @@ depends=(
     'vmaf'
     'xz'
     'zlib'
-
 )
 makedepends=('git' 'avisynthplus' 'ffnvcodec-headers' 'ladspa' 'nasm' 'srt')
 optdepends=('avisynthplus: for reading AviSynth scripts as input'
@@ -72,10 +71,14 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
 conflicts=('ffmpeg')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver"
-	040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch
+source=(
+#"git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver"
+"git+https://git.ffmpeg.org/ffmpeg.git"
+	'040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+	'060-ffmpeg-fix-segfault-with-avisynthplus.patch'
 )
 sha256sums=(
+'SKIP'
 'SKIP'
 'SKIP'
 )
@@ -89,16 +92,13 @@ prepare() {
 
   msg2 "Patching gitsource"
   echo "Applying $patch"
-  #git apply $patch || exit 2
   patch -Np1 -i $patch
  done <<< $(ls ../*.patch 2> /dev/null)
 }
 
 build() {
-    cd ${srcdir}/ffmpeg 
-    
+    cd ${srcdir}/ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
-    
     ./configure \
         --prefix='/usr' \
         --disable-debug \
@@ -107,7 +107,14 @@ build() {
         --disable-hwaccel=cuda \
 	--disable-nvdec \
 	--disable-nvenc \
+        --prefix='/usr' \
+        --disable-debug \
+        --disable-static \
+        --disable-stripping \
+        --enable-amf \
         --enable-avisynth \
+        --enable-cuda-llvm \
+        --enable-lto \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
@@ -116,6 +123,7 @@ build() {
         --enable-libaom \
         --enable-libass \
         --enable-libbluray \
+        --enable-libbs2b \
         --enable-libdav1d \
         --enable-libdrm \
         --enable-libfreetype \
@@ -123,24 +131,28 @@ build() {
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
-        --enable-libmfx \
+        --enable-libjxl \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
+        --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
         --enable-librav1e \
+        --enable-librsvg \
         --enable-libsoxr \
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
+        --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libv4l2 \
         --enable-libvidstab \
         --enable-libvmaf \
         --enable-libvorbis \
+        --enable-libvpl \
         --enable-libvpx \
         --enable-libwebp \
         --enable-libx264 \
@@ -148,9 +160,12 @@ build() {
         --enable-libxcb \
         --enable-libxml2 \
         --enable-libxvid \
-        --enable-omx \
+        --enable-libzimg \
+        --enable-opencl \
+        --enable-opengl \
         --enable-shared \
-        --enable-version3
+        --enable-version3 \
+        --enable-vulkan
     make
     make tools/qt-faststart
 }
