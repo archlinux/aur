@@ -1,0 +1,15 @@
+pkgbase = p2pvpn
+	pkgdesc = Server-less Virtual Private Network
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://gitlab.com/Monsterovich/p2pvpn
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = java-environment-common
+	makedepends = ant
+	depends = java-runtime
+	source = p2pvpn-0.11.2.tar.gz::https://gitlab.com/Monsterovich/p2pvpn/-/archive/0.11.2/p2pvpn-0.11.2.tar.gz
+	sha256sums = 7c964099f0e15c6e710aa69cbeee020b2cec6fae7788ac9d8b4bd4250cb6d491
+
+pkgname = p2pvpn
