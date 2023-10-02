@@ -1,6 +1,6 @@
 pkgbase = chapter_converter
 	pkgdesc = Convert between several different video chapter file formats.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/fireattack/chapter_converter
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = chapter_converter
 	depends = python
 	depends = python-chardet
 	depends = python-pyperclip
-	source = https://files.pythonhosted.org/packages/source/c/chapter_converter/chapter_converter-1.2.0.tar.gz
-	sha512sums = 7371744542def96b542944095f4a23bd0739f310cf68628db969fea9ecfef8b65799f241456aa2c5cd76d93b065aab1dc836c7d8201d3cda3bba32c9cf3457be
+	source = https://files.pythonhosted.org/packages/source/c/chapter_converter/chapter_converter-1.2.1.tar.gz
+	sha512sums = e182a5b5aa225c6e84ec817509fae9769d8676270796a0ff9793eb2484c292d3056281726032e62fb87ffeab94454f2d36b323abe0e2b0cf54d1d613818b60b2
 
 pkgname = chapter_converter

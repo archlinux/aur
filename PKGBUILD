@@ -1,7 +1,7 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
 pkgname=chapter_converter
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Convert between several different video chapter file formats.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-chardet' 'python-pyperclip')
 makedepends=('python-build' 'python-pip')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('7371744542def96b542944095f4a23bd0739f310cf68628db969fea9ecfef8b65799f241456aa2c5cd76d93b065aab1dc836c7d8201d3cda3bba32c9cf3457be')
+sha512sums=('e182a5b5aa225c6e84ec817509fae9769d8676270796a0ff9793eb2484c292d3056281726032e62fb87ffeab94454f2d36b323abe0e2b0cf54d1d613818b60b2')
 
 build() {
   cd "$pkgname-$pkgver"
