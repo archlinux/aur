@@ -1,0 +1,13 @@
+pkgbase = sile-silex
+	pkgdesc = Extension layer for SILE and resilient
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Omikhleia/silex.sile
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = sile
+	source = https://github.com/Omikhleia/silex.sile/archive/v0.3.0/silex.sile-0.3.0.tar.gz
+	sha256sums = 6dd31484854506cd70c8d63ee8dd48f8ff34ea737a61602ee80107806286171b
+
+pkgname = sile-silex
