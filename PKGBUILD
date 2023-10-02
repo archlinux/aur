@@ -5,7 +5,7 @@
 
 _pkgname=gnuplot
 pkgname=$_pkgname-nogui
-pkgver=5.4.8
+pkgver=5.4.9
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=("x86_64")
@@ -19,7 +19,7 @@ conflicts=("gnuplot" "gnuplot-nox")
 replaces=("gnuplot-notk")
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"lua53_compat.patch")
-sha256sums=('931279c7caad1aff7d46cb4766f1ff41c26d9be9daf0bcf0c79deeee3d91f5cf'
+sha256sums=('a328a021f53dc05459be6066020e9a71e8eab6255d3381e22696120d465c6a97'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
