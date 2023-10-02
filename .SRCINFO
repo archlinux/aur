@@ -1,0 +1,16 @@
+pkgbase = encoder-benchmark-git
+	pkgdesc = A tool to benchmark your hardware's real-time video encoding capabilities.
+	pkgver = v0.6.0.alpha.r4.gb7633c1
+	pkgrel = 1
+	url = https://github.com/Proryanator/encoder-benchmark
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	source = encoder-benchmark-git::git+https://github.com/Proryanator/encoder-benchmark.git#branch=main
+	sha256sums = SKIP
+
+pkgname = encoder-benchmark-git

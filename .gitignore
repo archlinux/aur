@@ -1,0 +1,5 @@
+# local makepkg build files
+pkg
+src
+encoder-benchmark-git*
+
