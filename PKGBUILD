@@ -1,7 +1,7 @@
 # Maintainer: JinguTech <xiuluo dot android at gmail dot com>
 # Contributor: Alkindi42
 pkgname=joplin-beta
-pkgver=2.11.9
+pkgver=2.12.18
 pkgrel=1
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
@@ -21,7 +21,7 @@ license=('MIT')
 sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
             'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
             'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
-            '84606c285c4fa34a6236aa808af5d9d41cc1671197c35683e0e57177500ff7e1')
+            'a85f2133e5b71d829fbc9438d2e3191172f8af2e270906745203a8fa36aac307')
 
 
 # local npm cache directory
@@ -47,60 +47,46 @@ _get_yarn_bin() {
 prepare() {
   local cache=$(_get_cache)
   local yarn_bin=$(_get_yarn_bin)
-  msg2 "Yarn cache directory: $cache"
-  msg2 "Yarn binary: ${yarn_bin}"
+  echo "Yarn cache directory: $cache"
+  echo "Yarn binary: ${yarn_bin}"
 
-  msg2 "Disabling husky (git hooks)"
+  echo "Disabling husky (git hooks)"
   sed -i '/"husky": ".*"/d' "${srcdir}/joplin-${pkgver}/package.json"
 
   # There are so many people
-  msg2 "Checking Node PATH"
+  echo "Checking Node PATH"
   local w_node=$(which node)
   if [[ $w_node != "/usr/bin/node" ]]; then
-    msg2 "WARNING: Using path ${w_node} beware its not the defualt path, check if you are using nvm or similar"
+    echo "WARNING: Using path ${w_node} beware its not the defualt path, check if you are using nvm or similar"
   fi
 
-  msg2 "Tweaking .yarnrc"
+  echo "Tweaking .yarnrc"
   yq -i -y ".cacheFolder=(\"${cache}\")" "${srcdir}/joplin-${pkgver}/.yarnrc.yml"
 
-  msg2 "Tweaking lerna.json"
+  echo "Tweaking lerna.json"
   local tmp_json="$(mktemp --tmpdir="$srcdir")"
   local lerna_json="${srcdir}/joplin-${pkgver}/lerna.json"
 
-  msg2 "Deleting app-mobile"
+  echo "Deleting app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
-
-  if [[ ${pkgver} == 2.9.17 ]]; then
-
-    msg2 "******************* BEGIN: TEMPORARY FIX FOR VERSION 2.9.17 ONLY **********************"
-
-        # Let yarn resolve version ^2.12.1 of nan package to 2.17.0 instead of 2.15.0 (https://github.com/nodejs/nan/pull/943)
-        local package_json=${srcdir}/joplin-${pkgver}/package.json
-        cp $package_json $package_json.bak
-        jq '. + {"resolutions": {"nan@^2.12.1": "2.17.0"}}' $package_json.bak > $package_json
-
-    msg2 "******************* END: TEMPORARY FIX FOR VERSION 2.9.17 ONLY ************************"
-
-  fi
 }
-
 
 build() {
   local cache=$(_get_cache)
   local yarn_bin=$(_get_yarn_bin)
-  msg2 "Yarn cache directory: $cache"
+  echo "Yarn cache directory: $cache"
   cd "${srcdir}/joplin-${pkgver}"
 
   # Force Lang
   # INFO: https://github.com/alfredopalhares/joplin-pkgbuild/issues/25
   export LANG=en_US.utf8
 
-  msg2 "Installing dependencies through Yarn 3..."
+  echo "Installing dependencies through Yarn 3..."
   # FSevents is on the optinal dependencies and its Mac Only
   eval $yarn_bin
 
-  msg2 "Building the workspace"
+  echo "Building the workspace"
   $yarn_bin workspace @joplin/lib install
   $yarn_bin workspace @joplin/renderer install
   $yarn_bin workspace @joplin/app-desktop install
@@ -111,7 +97,7 @@ build() {
 # Something related with the number of allowed processes I guess
 check() {
   cd "${srcdir}/joplin-${pkgver}"
-  msg2 "Not Running any tests for now"
+  echo "Not Running any tests for now"
   #npm run test || exit 0
 }
 
@@ -125,11 +111,11 @@ package() {
   #cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/node_modules/@joplin/"
   #ln -sf "../../../fork-uslug" "."
 
-  msg2 "Building Desktop with packaged Electron..."
+  echo "Building Desktop with packaged Electron..."
   cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/"
   #electron_dir="/usr/lib/electron"
   #electron_version=$(cat /usr/lib/electron/version)
-  #msg2 "Using Electron Version ${electron_version}"
+  #echo "Using Electron Version ${electron_version}"
   ## Current version of electron does not work
   ##USE_HARD_LINKS=false yarn run dist -- --publish=never  --linux  --x64 \
   #sed -i "s/const forceAbiArgs = '--force-abi 89';/const forceAbiArgs = ''/" tools/electronRebuild.js
@@ -139,21 +125,21 @@ package() {
   # # --dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
   #    # FIXME: Using packaged electron breaks the interface
 
-  msg2 "Packaging the desktop..."
+  echo "Packaging the desktop..."
   # TODO: Cleanup app.asar file
   cd dist/linux-unpacked/
   mkdir -p "${pkgdir}/usr/share/joplin"
   cp -R "." "${pkgdir}/usr/share/joplin"
-  msg2 "Installing LICENSE..."
+  echo "Installing LICENSE..."
   cd "${srcdir}/joplin-${pkgver}/"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  msg2 "Installing startup script and desktop file..."
+  echo "Installing startup script and desktop file..."
   cd "${srcdir}"
   install -Dm755 ${srcdir}/joplin-desktop.sh "${pkgdir}/usr/bin/joplin-desktop"
   install -Dm644 ${srcdir}/joplin.desktop -t "${pkgdir}/usr/share/applications"
 
-  msg2 "Installing icons"
+  echo "Installing icons"
   local -r src_icon_dir="${srcdir}/joplin-${pkgver}/packages/app-desktop/build/icons"
   local -i size
   for size in 16 22 24 32 36 48 64 72 96 128 192 256 512; do
