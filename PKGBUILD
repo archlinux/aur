@@ -1,6 +1,6 @@
 # Maintainer: laserK3000 <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
 pkgname=mvimpact-acquire
-pkgver=2.49.0
+pkgver=2.50.1
 pkgrel=1
 epoch=
 pkgdesc="Driver API for controlling Matrix Vision and other genicam hardware and for image acquisition."
@@ -27,16 +27,15 @@ source=("http://static.matrix-vision.com/mvIMPACT_Acquire/$pkgver/mvGenTL_Acquir
         resize_usbfs_buffersize.sh
         52-mvbf3.rules
         52-u3v.rules
-        "$pkgname-$pkgver.patch"
+        # "$pkgname-$pkgver.patch"
         $pkgname.install)
 noextract=()
-sha256sums=('e83655a7f20a9331d93d9143eff375830ac1853c7d024d02a32e147a9670aa15'
+sha256sums=('a59dd901be28c59a855127059410bd9ebaa8e6b40408937d85bdbfa975896ae2'
             '45fcfa2f540d825452b1c145bc23bc65870d2228520d14fdfabc8d8ff7c82f02'
             '42e03169a98e5188a8dbfa01a4c133e500487010d2d6ea06fe8650c0c2b246f8'
             '6675ce72edfd64de34ba54cbb992deb8d5906d96326c4ba0d1feb3e3aa9aad64'
             'e050da6fa99e8bebac9fd099cb107c3f0233759af5c6026307547985880c5bbb'
             'b3b3259b284fc7d6abe4a4d67ca448fad6fee3b6fb246c979c2552caddd1078f'
-            '1bd556c2d8e95dc9c8dea20107cc9962c6926a2593ff498d2e73f8d7b410de75'
             '6d2b16a4617d001ba9fd93c72405c18ebcceaae628feea5c262d74096702f3e4')
 validpgpkeys=()
 
@@ -54,15 +53,19 @@ GENILIBPATH=Linux64_x64
 # KM_SRC_DIR=$DEF_DIRECTORY=/kernelmodules/linux/mvBlueNAOS
 # BN_MODNAME="mvpci"
 
-prepare() {
-	cd "$srcdir"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
+# prepare() {
+# 	cd "$srcdir"
+# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+# }
 
 build() {
-	cd "$srcdir/mvIMPACT_Acquire-x86_64-$pkgver"
-	# ./configure --prefix=/usr
+    export MVIMPACT_ACQUIRE_SOURCE_DIR="$srcdir/mvIMPACT_Acquire-x86_64-$pkgver"
+    export WX_CONF_TOOL=$(which wx-config)
+    export FLTK_CONF_TOOL=$(which fltk-config)
+    
+    cd "$MVIMPACT_ACQUIRE_SOURCE_DIR"
 	make 'x86_64'
+
     cd "$srcdir"
     echo 'export GENICAM_ROOT='$DEF_DIRECTORY'/runtime' >> $GENICAM_EXPORT_FILE
     echo 'export GENICAM_ROOT_V'$GENICAM_VERSION'='$DEF_DIRECTORY'/runtime' >> $GENICAM_EXPORT_FILE
