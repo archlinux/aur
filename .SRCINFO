@@ -1,0 +1,25 @@
+pkgbase = sile-resilient
+	pkgdesc = Advanced book classes and packages for the SILE typesetting system
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/Omikhleia/resilient.sile
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = sile
+	depends = sile-barcodes
+	depends = sile-couyards
+	depends = sile-embedders
+	depends = sile-fancytoc
+	depends = sile-labelrefs
+	depends = sile-markdown
+	depends = sile-printoptions
+	depends = sile-ptable
+	depends = sile-qrcode
+	depends = sile-silex
+	depends = sile-textsubsuper
+	depends = sile-silex
+	source = https://github.com/Omikhleia/resilient.sile/archive/v2.2.0/resilient.sile-2.2.0.tar.gz
+	sha256sums = 61da3a31ea86677906d40be3580d00d177b72ac240c9c686b9be0d044d6417ad
+
+pkgname = sile-resilient
