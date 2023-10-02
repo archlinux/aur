@@ -1,14 +1,14 @@
 pkgbase = termscp-bin
 	pkgdesc = A feature rich terminal UI file transfer and explorer with support for SCP/SFTP/FTP/S3
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 2
 	url = https://github.com/veeso/termscp
 	arch = x86_64
 	license = MIT
 	depends = smbclient
-	source = termscp-bin-0.12.1::https://github.com/veeso/termscp/releases/download/v0.12.1/termscp-v0.12.1-x86_64-unknown-linux-gnu.tar.gz
+	source = termscp-bin-0.12.2::https://github.com/veeso/termscp/releases/download/v0.12.2/termscp-v0.12.2-x86_64-unknown-linux-gnu.tar.gz
 	source = https://raw.githubusercontent.com/veeso/termscp/main/LICENSE
-	sha256sums = 428605ad130124858e749edc0d3221a5ca039885669f989f55c349e29c5b3a3d
+	sha256sums = d2e21c3a92cea328f6a951f6d79df038417af230f6de29c06473ea9ed299bf95
 	sha256sums = c66100d7a3296a222483de266bd548754b44a416d0b0a3495f7bc78a3f4f58cc
 
 pkgname = termscp-bin
