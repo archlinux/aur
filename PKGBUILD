@@ -1,8 +1,8 @@
 # Maintainer: Lancia Greggori <lanciagreggori@gmail.com>
 
-pkgname='herbe'
-pkgver='1.0.0'
-pkgrel='3'
+pkgname=herbe
+pkgver=1.0.0
+pkgrel=3
 pkgdesc='Daemon-less notifications without D-Bus'
 arch=('x86_64')
 url='https://github.com/dudik/herbe'
@@ -18,6 +18,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make PREFIX='/usr' DESTDIR="$pkgdir/" install
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
 	install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
