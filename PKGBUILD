@@ -17,7 +17,6 @@ source_aarch64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/AutoBuil
 sha512sums_x86_64=('SKIP')
 sha512sums_aarch=('SKIP')
 _appimage="${_pkgname}-${arch}.AppImage"
-noextract=("${_appimage}")
 
 prepare() {
 	chmod +x "${_appimage}"
