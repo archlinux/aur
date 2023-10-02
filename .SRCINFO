@@ -1,8 +1,8 @@
 pkgbase = python-motmetrics
 	pkgdesc = The py-motmetrics library provides a Python implementation of metrics for benchmarking multiple object trackers (MOT).
-	pkgver = 1.4
-	pkgrel = 1
-	url = https://github.com/realfanyujun/py-motmetrics
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = https://github.com/cheind/py-motmetrics
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -11,7 +11,7 @@ pkgbase = python-motmetrics
 	depends = python-scipy
 	depends = python-pandas
 	depends = python-numpy
-	source = py-motmetrics-1.4.tar.gz::https://github.com/realfanyujun/py-motmetrics/archive/1.4.tar.gz
+	source = py-motmetrics-1.4.0.tar.gz::https://github.com/cheind/py-motmetrics/archive/1.4.0.tar.gz
 	sha256sums = ca53d1de1bb6dfafbf8d493d74014926e240d44bcb96c105514dbffa1f439530
 
 pkgname = python-motmetrics

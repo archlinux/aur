@@ -1,13 +1,13 @@
 # Maintainer: realfanyujun
-# Contributor:  Christoph Heindl (developed the source code) <christoph.heindl@gmail.com>
+# Contributor:
 
 _name="py-motmetrics"
 pkgname="python-motmetrics"
-pkgver=1.4
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 pkgdesc='The py-motmetrics library provides a Python implementation of metrics for benchmarking multiple object trackers (MOT).'
 arch=(any)
-url="https://github.com/realfanyujun/$_name"
+url="https://github.com/cheind/$_name"
 license=(MIT)
 depends=(python python-xmltodict python-scipy python-pandas python-numpy)
 conflicts=()
