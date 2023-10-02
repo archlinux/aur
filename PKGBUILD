@@ -5,12 +5,15 @@ pkgbase=python-pyalsaaudio-git
 pkgname=(python-pyalsaaudio-git)
 _pkgname=pyalsaaudio
 pkgver=0.9.2.r17.g67adbf0
-pkgrel=1
+pkgrel=2
 pkgdesc="ALSA wrappers for Python (development version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://larsimmisch.github.io/pyalsaaudio/"
 license=('custom: PSF')
-makedepends=('python-setuptools' 'alsa-lib')
+depends=('alsa-lib' 'glibc')
+conflicts=('python-pyalsaaudio')
+provides=('python-pyalsaaudio')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("git+https://github.com/larsimmisch/${_pkgname}.git")
 md5sums=('SKIP')
 
@@ -19,21 +22,18 @@ pkgver() {
   git describe --long --tags | sed 's/^v//; s/-/.r/; s/-/./g'
 }
 
+_archive="${_pkgname}"
+
 build() {
-  # build for python 3
-  cd ${_pkgname}
-  python setup.py build
+  cd "${_archive}"
+
+  python -m build --wheel --no-isolation
 }
 
-# package for python 3
-package_python-pyalsaaudio-git() {
-  depends=('python' 'alsa-lib')
-  pkgdesc="${pkgdesc/Python/Python 3}"
-  conflicts=('python-pyalsaaudio')
-  provides=('python-pyalsaaudio')
+package() {
+  cd "${_archive}"
 
-  cd ${_pkgname}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
