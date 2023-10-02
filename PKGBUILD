@@ -1,6 +1,6 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=thextech-adventuresofdemo
-pkgver=v1.3.r2135.g99a27077
+pkgver=v1.3.r2276.gb431ff31
 pkgrel=2
 pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with AoD game assets."
 arch=('i386' 'x86_64' 'aarch64')
@@ -32,6 +32,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/TheXTech"
+	if [ -d build ]; then rm -rf build; fi
 	mkdir build
     cd build
     cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DUSE_FREEIMAGE_SYSTEM_LIBS=ON -DUSE_SYSTEM_SDL2=ON -DUSE_SYSTEM_LIBS=OFF -DUSE_STATIC_LIBC=ON -DPGE_SHARED_SDLMIXER=OFF -DTHEXTECH_FIXED_ASSETS_PATH=/usr/share/games/thextech-aod -DTHEXTECH_USER_DIR_NAME=.thextech-aod ..
