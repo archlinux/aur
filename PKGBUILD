@@ -7,7 +7,7 @@
 pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt libtransmission-noxunlei)
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(GPL)
@@ -26,6 +26,7 @@ makedepends=(
 	miniupnpc
 	ninja
 	npm
+  qt5-tools
 	qt6-base
 	qt6-svg
 	qt6-tools
