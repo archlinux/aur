@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'd3868934b55f70d93b62701d0745087411d9e298f6a19d41e7aa3f9343662e75bbfb3972d5384bc365b768d7d465a93c5efa94869c8a03ac236f084aa88c8681'
+  '6950370392bd0f1fde9270e570600898eb3d710260a11cf3fa27772f0bb0ac1147d98166b77b67b39f79289b50e3c86cd70b79926b05b143e72b619396f6e4c2'
 )
 md5sums=(
-  '241e38cf38faa075691ecb2696f9f5a3'
+  '24a3424ffbf0d0e406bb6f2f8b95b764'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -48,7 +48,7 @@ package() {
   install -Dm644 usr/share/${pkgname}/ocr/package.json -t "${pkgdir}/usr/share/${pkgname}/ocr"
 
   cd "${pkgdir}/usr/share/${pkgname}/ocr" && while read -r file; do
-    install -Dm644 "$file" -t "${pkgdir}/usr/share/${pkgname}/ocr/node_modules";
-  done < <(find . -type f ${pkgdir}/usr/share/${pkgname}/ocr/node_modules)
+    install -Dm644 "$file" -t "${pkgdir}/usr/share/${pkgname}/ocr/tesseract"
+  done < <(find . -type f ${pkgdir}/usr/share/${pkgname}/ocr/tesseract)
 
 }
