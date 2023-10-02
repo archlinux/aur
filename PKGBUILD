@@ -2,7 +2,7 @@
 
 pkgname=lite-xl-git
 _pkgname=${pkgname%-git}
-pkgver=v2.1.1.r2172.86fa90a7
+pkgver=v2.1.1.r2256.f996f7a9
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua (master branch)'
 arch=('x86_64')
@@ -34,7 +34,7 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  arch-meson _build
+  arch-meson -Duse_system_lua=true _build
 }
 
 build() {
