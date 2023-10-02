@@ -16,7 +16,7 @@ depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
 arch=('any')
 url='https://github.com/msojocs/bilibili-linux'
 install="${pkgname}.install"
-source=("https://ghproxy.com/https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver//_/-}/bilibili-v${pkgver//_/-}-x86_64.tar.gz"
+source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver//_/-}/bilibili-v${pkgver//_/-}-x86_64.tar.gz"
         "${_pkgname}"
         "${_pkgname}.svg"
         "${_pkgname}.desktop"
