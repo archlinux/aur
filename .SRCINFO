@@ -1,13 +1,13 @@
 pkgbase = papeer
 	pkgdesc = Scrape the web in the eink era. Convert websites into ebooks and markdown.
-	pkgver = 0.7.2
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/lapwat/papeer
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	depends = glibc
-	source = papeer-0.7.2.tar.gz::https://github.com/lapwat/papeer/archive/v0.7.2.tar.gz
-	sha256sums = 83796debf86f374d817b3bf9a93ccc6c218ef9625435eb6e109c5500f97a1953
+	source = papeer-0.8.1.tar.gz::https://github.com/lapwat/papeer/archive/v0.8.1.tar.gz
+	sha256sums = 42424374a44eb041ab71caa219828dd5ae2cf5b6b9b01270887938ea8669cf77
 
 pkgname = papeer
