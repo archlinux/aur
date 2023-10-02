@@ -45,4 +45,14 @@ package() {
   install -Dm644 usr/share/doc/${pkgname}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 usr/share/man/man1/${pkgname}.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 
+  which node 2>/dev/null && {
+    install -Dm755 usr/share/${pkgname}/ocr/ocr.js -t "${pkgdir}/usr/share/${pkgname}/ocr"
+    install -Dm644 usr/share/${pkgname}/ocr/package.json -t "${pkgdir}/usr/share/${pkgname}/ocr"
+    which yarn 2>/dev/null && {
+      cd "${pkgdir}/usr/share/${pkgname}/ocr" && yarn install
+    } || {
+      cd "${pkgdir}/usr/share/${pkgname}/ocr" && npm install
+    } || true
+  } || true
+
 }
