@@ -1,20 +1,21 @@
-# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp
-pkgver=0.7.2
-pkgrel=1.1
+pkgver=0.10.1
+pkgrel=2
 pkgdesc='Language server for Typst'
 arch=(i686 x86_64)
 url="https://github.com/nvarner/$pkgname"
 license=(Apache MIT)
 depends=(gcc-libs
-         glibc)
+         glibc
+         libcurl.so
+         libcrypto.so)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('45023dc67276b87856ce5189ae904f408162521dde390d302ca01a928765ca08')
-
+sha256sums=('11a96fb8c141ef59b697baa9b768aa46a6baa694de9ffa1180d7620041958783')
 
 prepare() {
 	cd "$_archive"
@@ -25,6 +26,7 @@ build() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=' -ffat-lto-objects'
 	cargo build --frozen --release --all-features
 }
 
@@ -37,5 +39,5 @@ check() {
 package() {
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -Dm644 "LICENSE-MIT.txt" -t "$pkgdir/usr/share/licenses/typst-lsp"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/typst-lsp/" "LICENSE-MIT.txt"
 }
