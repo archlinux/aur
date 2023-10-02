@@ -3,14 +3,14 @@
 pkgname=string-theory
 _ghname=string_theory
 pkgdesc='Flexible UTF-8 string library and type-safe formatter for C++'
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/zrax/string_theory'
 license=('MIT')
 makedepends=('cmake')
 source=("https://github.com/zrax/${_ghname}/releases/download/${pkgver}/${_ghname}-${pkgver}.tar.gz")
-sha256sums=('164744cc68d1f7d1eb77585e2801616d59b6f3d7f495816e736d90fdfa2ce216')
+sha256sums=('2b43daf9424e3136327e71b70abe0b15d51427653778df7b149574ef1dfec890')
 
 build() {
     mkdir -p "${srcdir}/build"
