@@ -2,20 +2,19 @@
 # Original Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=(cling-git cling-jupyter-git)
-pkgver=r4811.19a2c1b7
+pkgver=r5123.45318c5a
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
 url="https://root.cern.ch/cling"
 license=('custom:Cling Release License')
-makedepends=('cmake' 'libffi' 'git' 'python' 'jupyter-notebook')
+makedepends=('cmake' 'libffi' 'git' 'python' 'jupyter-notebook' 'ninja')
+options=('!lto')  # getting huge RAM usage with LTO (and extra/llvm disables LTO as well)
 source=(
-    "llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
-    "clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
-    "cling::git+http://root.cern.ch/git/cling.git#branch=master"
+    "cling-llvm::git+https://github.com/root-project/llvm-project.git#branch=cling-llvm13"
+    "cling::git+https://github.com/root-project/cling.git#branch=master"
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
 )
@@ -26,20 +25,21 @@ pkgver() {
 }
 
 prepare() {
-    if [ ! -h "$srcdir/llvm/tools/clang" ]; then
-        ln -s "$srcdir/clang" "$srcdir/llvm/tools/clang"
+    if [ ! -h "$srcdir/cling-llvm/llvm/tools/clang" ]; then
+        ln -s "../../clang" "$srcdir/cling-llvm/llvm/tools/clang"
     fi
-
-    if [ ! -h "$srcdir/llvm/tools/cling" ]; then
-        ln -s "$srcdir/cling" "$srcdir/llvm/tools/cling"
+    if [ ! -h "$srcdir/cling-llvm/llvm/tools/cling" ]; then
+        ln -s "$srcdir/cling" "$srcdir/cling-llvm/llvm/tools/cling"
     fi
 }
 
 build() {
     mkdir -p "$srcdir/cling-build"
-    cd "$srcdir/cling-build"
 
     cmake \
+        -S "$srcdir/cling-llvm/llvm" \
+        -B "$srcdir/cling-build" \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/opt/cling" \
         -DLLVM_TARGETS_TO_BUILD="host;NVPTX" \
@@ -50,23 +50,19 @@ build() {
         -DLLVM_ENABLE_SPHINX=OFF \
         -DLLVM_ENABLE_DOXYGEN=OFF \
         -DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
-        "$srcdir/llvm"
 
-    make -C tools/clang
-    make -C tools/cling
+    ninja -C "$srcdir/cling-build" #clang cling
 }
 
 package_cling-git() {
     depends=('libffi')
 
-    cd "$srcdir/cling-build"
-    make -C tools/clang DESTDIR="$pkgdir" install
-    make -C tools/cling DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C "$srcdir/cling-build" install
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"
 
-    install -Dm644 "$srcdir/llvm/tools/cling/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/cling/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_cling-jupyter-git() {

@@ -1,6 +1,6 @@
 pkgbase = cling-git
 	pkgdesc = Interactive C++ interpreter built on the top of LLVM and Clang libraries.
-	pkgver = r4811.19a2c1b7
+	pkgver = r5123.45318c5a
 	pkgrel = 1
 	url = https://root.cern.ch/cling
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = cling-git
 	makedepends = git
 	makedepends = python
 	makedepends = jupyter-notebook
-	source = llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches
-	source = clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches
-	source = cling::git+http://root.cern.ch/git/cling.git#branch=master
-	sha256sums = SKIP
+	makedepends = ninja
+	options = !lto
+	source = cling-llvm::git+https://github.com/root-project/llvm-project.git#branch=cling-llvm13
+	source = cling::git+https://github.com/root-project/cling.git#branch=master
 	sha256sums = SKIP
 	sha256sums = SKIP
 
