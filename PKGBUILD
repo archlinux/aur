@@ -4,15 +4,15 @@
 # https://github.com/michaellass/AUR
 
 pkgname=qt-dab
-pkgver=4.7
+pkgver=6.1
 _prefix=qt-dab- # name of tarball and contents change from release to release
-_tagname=4.7/5.4 # tag names may combine v4 and v5
+_tagname=6.1 # tag names may combine v4 and v5
 _pkgver=${_tagname//\//-}
-_fullname=${pkgname}-4
-_fullname_s=${pkgname}-s4
+_fullname=${pkgname}-6
+_fullname_s=${pkgname}-s6
 _binary=${pkgname}-${pkgver}
 pkgrel=1
-pkgdesc="Software DAB decoder for use with various SDR devices (version 4, formerly dab-maxi)"
+pkgdesc="Software DAB decoder for use with various SDR devices (formerly dab-maxi)"
 arch=(x86_64)
 url="https://www.sdr-j.tk/"
 license=('GPL2')
@@ -24,9 +24,9 @@ optdepends=('airspy: Support for Airspy'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
 source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_tagname}.tar.gz"
-        "https://github.com/JvanKatwijk/qt-dab/commit/a9d1817f0a940a7b8caf65e29016f94dec3d0c93.patch")
-sha256sums=('1da2813dd03a5d0ca2965e8dfa0152b3aaaeec7e749ce1788ae085af3676cbe5'
-            '6c30604dd396fb947bd3865249c17c8271b7487225479ea2e1837e6858a0ccde')
+        "0001-Fix-compilation.patch")
+sha256sums=('c29d7ef891364114c1ee47ab396e7e4ea75cd9e9077a27878ed51683cceb7793'
+            '88315e5e3bee137deb768e2cede03bb33987255ec30f7ea2ce3e567bda90c046')
 
 prepare() {
 	cd "${_prefix}${pkgname}-${_pkgver}"
@@ -34,8 +34,8 @@ prepare() {
 	# The program is officially called Qt-DAB.
 	sed -i 's/Qt_DAB/Qt-DAB/g' ${_fullname_s}/${_fullname}.desktop
 
-	# https://github.com/JvanKatwijk/qt-dab/pull/294
-	patch -p1 < "${srcdir}"/a9d1817f0a940a7b8caf65e29016f94dec3d0c93.patch
+	# Fix compilation
+	patch -p1 < "${srcdir}"/0001-Fix-compilation.patch
 }
 
 build() {
