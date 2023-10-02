@@ -1,0 +1,13 @@
+pkgbase = systemrescue-usbwriter-appimage
+	pkgdesc = Tool to write SystemRescue to a USB memory stick
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/systemrescue/systemrescue-usbwriter
+	arch = x86_64
+	license = GPL3
+	depends = fuse2
+	options = !strip
+	source = sysrescueusbwriter-x86_64.AppImage::https://fastly-cdn.system-rescue.org/download/usbwriter/1.0.2/sysrescueusbwriter-x86_64.AppImage
+	sha256sums = aa3a408942670419802678ef355166d677bb4067e18e836fcca2fa9169721281
+
+pkgname = systemrescue-usbwriter-appimage
