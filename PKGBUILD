@@ -1,26 +1,25 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: halhen <halhen at k2h dot se>
 
 pkgname=xmlfs
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Mount XML files as directory structures'
 license=('GPL')
-arch=('x86_64' 'i686')
+arch=('any')
 url='http://github.com/halhen/xmlfs'
 depends=('fuse' 'libxml2')
-source=("git://github.com/halhen/xmlfs.git#tag=$pkgver")
-md5sums=('SKIP')
+source=("https://github.com/halhen/xmlfs/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1b6e4d8d3f6615f2c82a5ff65524f5b33cc43eb92a4f301d8020f2144ad24985')
 
 build() {
-  make -C "$pkgname"
+  cd "${pkgname}-${pkgver}"
+  make -C .
 }
 
 package() {
-  cd "$pkgname"
-
-  make PREFIX=/usr MANPREFIX=/usr/man DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  make PREFIX=/usr MANPREFIX=/usr/man DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
