@@ -14,7 +14,7 @@ sha256sums=(SKIP)
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target="$CARCH-unknown-linux-gnu"
+  cargo fetch --manifest-path="$pkgname-$pkgver/Cargo.toml"  --locked --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
