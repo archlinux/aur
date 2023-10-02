@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '6950370392bd0f1fde9270e570600898eb3d710260a11cf3fa27772f0bb0ac1147d98166b77b67b39f79289b50e3c86cd70b79926b05b143e72b619396f6e4c2'
+  'd7566d3bf49ec7b4a73f4550bad8050de944a0ca9fe07421fbde9f970f4ab0bb244f4bd224ff7067c87b803a512a700f063e82924cd04bfaed6bd254d17db7f1'
 )
 md5sums=(
-  '24a3424ffbf0d0e406bb6f2f8b95b764'
+  '1e3ee5da82c783a5d998abe41bd72b29'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -46,9 +46,6 @@ package() {
   install -Dm644 usr/share/man/man1/${pkgname}.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
   install -Dm755 usr/share/${pkgname}/ocr/ocr.js -t "${pkgdir}/usr/share/${pkgname}/ocr"
   install -Dm644 usr/share/${pkgname}/ocr/package.json -t "${pkgdir}/usr/share/${pkgname}/ocr"
-
-  cd "${srcdir}/usr/share/${pkgname}/ocr" && while read -r file; do
-    install -Dm644 "$file" -t "${pkgdir}/usr/share/${pkgname}/ocr/tesseract"
-  done < <(find . -type f ${pkgdir}/usr/share/${pkgname}/ocr/tesseract)
+  install -Dm644 usr/share/${pkgname}/ocr/tesseract.js -t "${pkgdir}/usr/share/${pkgname}/ocr"
 
 }
