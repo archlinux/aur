@@ -1,0 +1,13 @@
+pkgbase = sile-couyards
+	pkgdesc = Pendant ornaments (culs-de-lampe) for the SILE typesetting system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Omikhleia/couyards.sile
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = sile
+	source = https://github.com/Omikhleia/couyards.sile/archive/v1.0.0/couyards.sile-1.0.0.tar.gz
+	sha256sums = e17f7cd175f4c7921855a1a84ee6a15dd2cbab8f6e908c2d1d662680cb75c65d
+
+pkgname = sile-couyards
