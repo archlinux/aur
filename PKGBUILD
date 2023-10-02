@@ -16,13 +16,13 @@ arch=('x86_64')
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_STATIC_LIBS=OFF
+    -DBUILD_STATIC_LIBS=ON
   cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 $pkgname-$pkgver/README.md "$pkgdir"/usr/share/doc/$pkgname/
+  install -Dm644 $pkgname-$pkgver/README.md -t "$pkgdir"/usr/share/doc/$pkgname/
   install -Dm644 $pkgname-$pkgver/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
