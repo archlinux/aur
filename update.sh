@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 
-get_latest() {
-  wget -q -O- 'https://github.com/kimwalisch/primesieve/wiki/Downloads' | \
-  sed -n 's,.*primesieve-\([0-9][^>]*\)\.tar.*,\1,p' | \
-  grep -v '\(linux\|mac\|win\)' | \
-  sort -r | \
-  head -1
-}
-
 latest_version=$1
-#latest_version=$(get_latest)
 current_version=$(cat PKGBUILD | grep pkgver= | awk -F'=' '{print $2}')
 
 if ! [ "$latest_version" = "$current_version" ]; then
@@ -24,6 +15,7 @@ if ! [ "$latest_version" = "$current_version" ]; then
   else
     mksrcinfo
   fi
+  rm -f *.bak
 else
   echo Nothing to update.
 fi

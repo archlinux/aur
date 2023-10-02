@@ -13,3 +13,8 @@ BEGIN {
 
 1
 ' PKGBUILD > PKGBUILD.new && mv PKGBUILD{.new,}
+if which makepkg &> /dev/null; then
+  makepkg --printsrcinfo > .SRCINFO
+else
+  mksrcinfo
+fi

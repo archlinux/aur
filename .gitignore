@@ -2,5 +2,6 @@ pkg
 src
 *.gz
 *.xz
+*.zst
 *.bak
 *.new
