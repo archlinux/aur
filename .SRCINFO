@@ -1,0 +1,14 @@
+pkgbase = sile-textsubsuper
+	pkgdesc = Typographic quotation marks with the SILE typesetting system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Omikhleia/textsubsuper.sile
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = sile
+	depends = sile-silex
+	source = https://github.com/Omikhleia/textsubsuper.sile/archive/v1.0.0/textsubsuper.sile-1.0.0.tar.gz
+	sha256sums = 3b90ab0a61b2feb3d6bc1174e4c0559326356f3e99cbbab092e37859554251fb
+
+pkgname = sile-textsubsuper
