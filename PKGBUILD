@@ -3,7 +3,7 @@
 
 pkgname=php-codesniffer-woocommerce
 _pkgname=woocommerce-sniffs
-pkgver=0.1.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="PHP CodeSniffer rules (sniffs) for WooCommerce."
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('php-codesniffer' 'php-codesniffer-wordpress' 'php-codesniffer-phpcompatibilitywp')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d1baa25306237ecaa126cadd5e9fd8db8ba8c936258e037e6589e66eb2d9e421')
+b2sums=('a4bb34bd2327f9d7d3aa47ecec77fd23c719c6e4a117e0a1ecf3fa652f4fd8e3e3b86fe0a4f2ee3fc0b4e63cea0864adde4378610f7ee5b6cc23956db260c524')
 
 package() {
   install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/WooCommerce"
