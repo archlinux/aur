@@ -9,7 +9,7 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Hyphen -> underscore
-pkgver=0.12.0_dev.381+1a0e6bcdb
+pkgver=0.12.0_dev.700+376242e58
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
@@ -46,29 +46,53 @@ error() {
     echo "$@" >&2;
 }
 
-pkgver() {
+# Fetch the version index, deleting any cached version.
+refresh_version_index() {
+    FORCE_REFRESH=1 fetch_version_index
+}
+# NOTE: If we put version-index in `source` then it would be cached
+#
+# Instead, fetch it by hand.
+fetch_version_index() {
     local index_file="${srcdir}/zig-version-index.json";
-    # Invalidate old verison-index.json
-    #
-    # If we put version-index in `source` then it would be cached...
-    if [[ -x "$index_file" ]]; then
-        rm "$index_file";
+    if [[ -f "$index_file" ]]; then
+        if [[ $FORCE_REFRESH -eq 1 ]]; then
+            # When ordered to 'refresh', we invalidate old verison-index.json
+            echo "Deleting existing version index file (refreshing)" >&2;
+            rm "$index_file";
+        else
+            echo $index_file;
+            return 0;
+        fi
     fi
-    curl -sS "https://ziglang.org/download/index.json" -o "$index_file"
+    # Fallthrough to download index file
+    echo "Downloading version index..." >&2;
+    if ! curl -sS "https://ziglang.org/download/index.json" -o "$index_file"; then
+        error "Failed to download version index";
+        exit 1;
+    else
+        echo "Successfully downloaded version index (date: $(jq -r .master.date $index_file))" >&2;
+    fi
+    echo "$index_file"
+}
+
+pkgver() {
+    local index_file="$(fetch_version_index)"
     jq -r .master.version "$index_file" | sed 's/-/_/'
 }
 
 prepare() {
+    local index_file="$(refresh_version_index)";
     local newver="$(pkgver)";
     pushd "${srcdir}" > /dev/null;
-    local index_file="zig-version-index.json";
     local newurl="$(jq -r ".master.\"${CARCH}-linux\".tarball" $index_file)";
     local newurl_sig="$newurl.minisig";
     local newfile="zig-linux-${CARCH}-${newver}.tar.xz";
     local newfile_sig="$newfile.minisig";
-    source+=("${newfile}:${newurl}" "${newfile_sig}:${newurl_sig}")
+    # NOTE: The Arch Build System unfortunately doesn't handle dynamically added sources.
+    # source+=("${newfile}:${newurl}" "${newfile_sig}:${newurl_sig}")
     local expected_hash="$(jq -r ".master.\"${CARCH}-linux\".shasum" "$index_file")"
-    sha256sums+=("$expected_hash" "SKIP")
+    # sha256sums+=("$expected_hash" "SKIP")
     if [[ -f "$newfile" && -f "$newfile_sig" ]]; then
         echo "Reusing existing $newfile (and signature)";
     else
