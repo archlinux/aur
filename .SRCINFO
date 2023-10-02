@@ -10,6 +10,8 @@ pkgbase = typst-lsp
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	depends = libcurl.so
+	depends = libcrypto.so
 	source = https://github.com/nvarner/typst-lsp/archive/v0.10.1/typst-lsp-0.10.1.tar.gz
 	sha256sums = 11a96fb8c141ef59b697baa9b768aa46a6baa694de9ffa1180d7620041958783
 

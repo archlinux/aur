@@ -9,7 +9,9 @@ arch=(i686 x86_64)
 url="https://github.com/nvarner/$pkgname"
 license=(Apache MIT)
 depends=(gcc-libs
-         glibc)
+         glibc
+         libcurl.so
+         libcrypto.so)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
@@ -24,6 +26,7 @@ build() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=' -ffat-lto-objects'
 	cargo build --frozen --release --all-features
 }
 
