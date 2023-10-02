@@ -1,37 +1,50 @@
 # Maintainer: Yngve Levinsen <yngve.levinsen@ess.eu>
 
-pkgname=pyorbit-git
-pkgver=3.0
+pkgname=madx-git
+pkgver=5.09.00.r24.g2f1e95ed
 pkgrel=1
-pkgdesc="Accelerator Optics simulation code"
-url="https://gitlab.esss.lu.se"
-license=('MIT')
-depends=('python' 'fftw' 'gcc-libs' 'glibc' 'openmpi')
-provides=('pyorbit')
-makedepends=('git')
+pkgdesc="Accelerator Optics simulation code, git master version"
+url="http://cern.ch/mad"
+license=("custom")
+depends=('libx11' 'lapack')
+conflicts=('madx-dev' 'nmap')
+provides=('madx')
+makedepends=('git' 'cmake')
 arch=('i686' 'x86_64')
-source=("git+https://gitlab.esss.lu.se/andreishishlo/pyorbit.git"
-        "pyorbit.sh")
-sha256sums=('SKIP'
-            '3fa7cda28609f94e73dc9275be116d64ba93169271985403943d4c57267eebfe')
+_gitname=MAD-X
+source=("git+https://github.com/MethodicalAcceleratorDesign/${_gitname}.git")
+sha256sums=('SKIP')
 
-#pkgver() {
-#    cd pyorbit
-#    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
-#    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+    cd $_gitname
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-    cd $srcdir/pyorbit
-    source setupEnvironment.sh
-    rm environment.yml
-    make clean
-    make
+    cd $srcdir/
+    [ -d "build" ] && rm -rf build
+    mkdir build
+    cd build
+
+
+    cmake -DCMAKE_C_COMPILER=gcc \
+          -DCMAKE_Fortran_COMPILER=gfortran \
+          -DBLA_VENDOR=Generic \
+          -DMADX_STATIC=OFF \
+          -DMADX_ONLINE=OFF \
+          -DBUILD_SHARED_LIBS=ON \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+         ../$_gitname
+
+      make
 }
 
 package() {
-    install -D -m755 pyorbit.sh ${pkgdir}/usr/bin/pyorbit
-    install -D -m755 ${srcdir}/pyorbit/bin/pyORBIT3 ${pkgdir}/usr/bin/pyORBIT3
-    install -dD ${srcdir}/pyorbit/py ${pkgdir}/usr/share/pyorbit/lib/python/
-    cp -r ${srcdir}/pyorbit/py/orbit ${pkgdir}/usr/share/pyorbit/lib/python/
+    cd ${srcdir}/build
+    make DESTDIR=${pkgdir} install
+
+    cd ${srcdir}/$_gitname
+    install -D -m644 License.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
 }
