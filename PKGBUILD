@@ -3,7 +3,7 @@
 
 pkgname=osmin
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Satellite Navigator & Tracker On-Road/Off-Road for Mobile"
 arch=('x86_64' 'aarch64')
 url="https://github.com/janbar/osmin"
@@ -23,7 +23,11 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  cmake -B build -DBUILD_DEVICE_MOBILE=ON -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ . 
+  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_DEVICE_MOBILE=ON \
+    -DCMAKE_C_COMPILER=/usr/bin/clang \
+    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+    -DCMAKE_BUILD_TYPE=Release . 
   cmake --build build/
 }
 
