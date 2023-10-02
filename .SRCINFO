@@ -1,7 +1,7 @@
 pkgbase = veretino
 	pkgdesc = A simple tool for checking folder-wide data integrity
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/artemvlas/veretino
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,6 @@ pkgbase = veretino
 	makedepends = gcc
 	depends = qt5-base
 	source = https://github.com/artemvlas/veretino/archive/refs/tags/0.2.4.tar.gz
-	sha256sums = 399fbfe0a2ccdb30108a21a8e857520f5d09a31c296c8b119e0caf5505536f47
+	sha256sums = f414ac494580aa25aeeebf4f9e5fe989d11ea43aeea2b246631b275ccba4bc34
 
 pkgname = veretino
