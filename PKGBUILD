@@ -1,6 +1,6 @@
 pkgname=utena-launcher
 _pkgname=launchre
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1.0
 pkgdesc='launcher make by slint, hope I will get my revolution'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt5-base')
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/launchre/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9c459978f546520520801e413d117625eef3d03a1a45402febd66fd2cc005c87')
+sha256sums=('1e053cfa35e3f1bf569190016b977fca7d6da7008dc9d9a9e3c843ee6c5fd132')
 
 build() {
   cd ${_pkgname}-$pkgver
