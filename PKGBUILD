@@ -3,18 +3,17 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.22.4
+pkgver=0.22.9
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('GPL')
 depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg')
-makedepends=('cmake' 'git' 'libqalculate' 'muparser' 'pybind11' 'python')
+makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python')
 optdepends=('ddgr: duckduckgo search plugin'
             'libarchive: documentation plugin'
             'libqalculate: calculator plugin'
-            'muparser: another calculator plugin'
             'python: python extension'
             'python-docker: docker plugin'
             'python-googletrans: google translate plugin'
@@ -60,7 +59,6 @@ build() {
     -DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
     -DQHOTKEY_INSTALL=OFF \
     -DBUILD_APPLICATIONS_XDG=ON \
-    -DBUILD_CALCULATOR_MUPARSER=ON \
     -DBUILD_CALCULATOR_QALCULATE=ON \
     -DBUILD_CHROMIUM=ON \
     -DBUILD_CLIPBOARD=ON \
