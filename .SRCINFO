@@ -1,7 +1,7 @@
 pkgbase = metacubexd-bin
 	pkgdesc = Clash.Meta Dashboard, The Official One, XD
-	pkgver = 1.122.1
-	pkgrel = 2
+	pkgver = 1.123.0
+	pkgrel = 1
 	url = https://github.com/MetaCubeX/metacubexd
 	arch = any
 	license = MIT

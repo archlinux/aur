@@ -2,8 +2,8 @@
 
 pkgname=metacubexd-bin
 _pkgname=metacubexd
-pkgver=1.122.1
-pkgrel=2
+pkgver=1.123.0
+pkgrel=1
 pkgdesc='Clash.Meta Dashboard, The Official One, XD'
 arch=('any')
 _repo="MetaCubeX/${_pkgname}"
