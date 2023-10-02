@@ -47,7 +47,7 @@ package() {
   install -Dm755 usr/share/${pkgname}/ocr/ocr.js -t "${pkgdir}/usr/share/${pkgname}/ocr"
   install -Dm644 usr/share/${pkgname}/ocr/package.json -t "${pkgdir}/usr/share/${pkgname}/ocr"
 
-  cd "${pkgdir}/usr/share/${pkgname}/ocr" && while read -r file; do
+  cd "${srcdir}/usr/share/${pkgname}/ocr" && while read -r file; do
     install -Dm644 "$file" -t "${pkgdir}/usr/share/${pkgname}/ocr/tesseract"
   done < <(find . -type f ${pkgdir}/usr/share/${pkgname}/ocr/tesseract)
 
