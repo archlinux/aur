@@ -1,13 +1,12 @@
 pkgbase = python-pyalsaaudio-git
 	pkgdesc = ALSA wrappers for Python (development version)
-	pkgver = 0.8.4.r25.g12f8076
+	pkgver = 0.9.2.r17.g67adbf0
 	pkgrel = 1
 	url = http://larsimmisch.github.io/pyalsaaudio/
 	arch = i686
 	arch = x86_64
 	license = custom: PSF
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = alsa-lib
 	source = git+https://github.com/larsimmisch/pyalsaaudio.git
 	md5sums = SKIP
