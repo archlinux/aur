@@ -1,7 +1,7 @@
 diff -Naur a/product.json b/product.json
 --- a/product.json	2023-09-06 14:00:16.000000000 +0200
-+++ b/product.json	2023-09-09 21:58:18.767460665 +0200
-@@ -1,4 +1,109 @@
++++ b/product.json	2023-10-02 18:01:49.267880091 +0200
+@@ -1,6 +1,111 @@
  {
 +	"quality": "stable",
 +	"auth": {
@@ -109,8 +109,11 @@ diff -Naur a/product.json b/product.json
 +	"commit": "@COMMIT@",
 +	"date": "@DATE@",
  	"nameShort": "Code - OSS",
- 	"nameLong": "Code - OSS",
+-	"nameLong": "Code - OSS",
++	"nameLong": "Visual Studio Code",
  	"applicationName": "code-oss",
+ 	"dataFolderName": ".vscode-oss",
+ 	"win32MutexName": "vscodeoss",
 diff -Naur a/src/main.js b/src/main.js
 --- a/src/main.js	2022-09-01 00:05:32.000000000 +0200
 +++ b/src/main.js	2022-09-04 04:30:24.685459144 +0200
