@@ -1,8 +1,8 @@
 pkgbase = xmlfs
 	pkgdesc = Mount XML files as directory structures
 	pkgver = 0.1.1
-	pkgrel = 3
-	url = http://github.com/halhen/xmlfs
+	pkgrel = 4
+	url = https://github.com/halhen/xmlfs
 	arch = any
 	license = GPL
 	depends = fuse

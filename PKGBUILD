@@ -4,11 +4,11 @@
 
 pkgname=xmlfs
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Mount XML files as directory structures'
 license=('GPL')
 arch=('any')
-url='http://github.com/halhen/xmlfs'
+url='https://github.com/halhen/xmlfs'
 depends=('fuse' 'libxml2')
 source=("https://github.com/halhen/xmlfs/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('1b6e4d8d3f6615f2c82a5ff65524f5b33cc43eb92a4f301d8020f2144ad24985')
