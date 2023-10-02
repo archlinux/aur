@@ -36,7 +36,7 @@ post_upgrade() {
 		mv "$TMP" /etc/nginx/nginx.conf
 
 		echo -e "\n**NEW: Please add the following line to your nginx conf file:"
-		echo -e "==> include /etc/nginx/modules-enabled/*.conf; <==\n"
+		echo -e "==> include /etc/nginx/modules/*.conf; <==\n"
 	fi
 }
 
