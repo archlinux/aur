@@ -3,7 +3,7 @@
 pkgname=bruno-bin
 _pkgname=bruno
 pkgdesc="Opensource IDE For Exploring and Testing Api's"
-pkgver=0.17.0
+pkgver=$BRUNO_VERSION
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -32,8 +32,3 @@ package() {
 
     install -D -m0644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
-
-sha256sums=(
-    e0517d484816b883d049aace053684be0760453911d5c69162bfdb8df1664cb1
-    8891070a847e5047bf77d38d88d7dfbab1beab41e37c802b9f5b23f2bbb9c7be
-)
