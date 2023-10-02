@@ -5,13 +5,13 @@
 _pkgname=libksysguard
 pkgname=libksysguard-light
 pkgver=5.27.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries for ksysguard to retrieve information on the current status of computer hardware without the big dependency on qt5-webengine'
 arch=(x86_64)
 url='   https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(libxres knewstuff)
-makedepends=(extra-cmake-modules kdoctools qt5-tools)
+depends=(libxres knewstuff5)
+makedepends=(extra-cmake-modules kdoctools5 qt5-tools)
 conflicts=(libksysguard 'ksysguard<5.21.90')
 groups=(plasma)
 replaces=(libksysguard)
