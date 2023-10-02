@@ -1,7 +1,7 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=moondust-project-stable-bin
 pkgver=0.4.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Moondust Project (formerly known as PGE Project) is a free and open-source game engine and development kit for it, giving developers the ability to create platform games. (Binary package - stable branch)"
 arch=('x86_64')
 url="https://github.com/WohlSoft/Moondust-Project"
@@ -79,9 +79,9 @@ package() {
     mv "${pkgdir}/opt/moondust/pge_engine.license.gpl3.txt" "${pkgdir}/usr/share/licenses/moondust/pge_engine.license.gpl3.txt"
     mv "${pkgdir}/opt/moondust/pge_engine.license.mit.txt" "${pkgdir}/usr/share/licenses/moondust/pge_engine.license.mit.txt"
 
-    mkdir -p "${pkgdir}/usr/share/docs"
-    cp -r "${pkgdir}/opt/moondust/help" "${pkgdir}/usr/share/docs/moondust"
-    cp "${pkgdir}/opt/moondust/"*".txt" "${pkgdir}/usr/share/docs/moondust/"
+    mkdir -p "${pkgdir}/usr/share/doc"
+    cp -r "${pkgdir}/opt/moondust/help" "${pkgdir}/usr/share/doc/moondust"
+    cp "${pkgdir}/opt/moondust/"*".txt" "${pkgdir}/usr/share/doc/moondust/"
 
     rm "${pkgdir}/opt/moondust/"*".ini"
 
