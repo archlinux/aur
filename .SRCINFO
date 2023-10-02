@@ -1,14 +1,14 @@
 pkgbase = krusader-git
 	pkgdesc = Advanced twin panel file manager for KDE. (GIT version)
-	pkgver = 2.8.0.dev.r6241.g5fec71dd
+	pkgver = 2.9.0.dev.r6678.gf6ae0c9b
 	pkgrel = 1
 	url = http://www.krusader.org
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
-	makedepends = kdoctools
+	makedepends = kdoctools5
 	makedepends = git
-	depends = kparts
+	depends = kparts5
 	depends = hicolor-icon-theme
 	optdepends = xz: LZMA and XZ archive support
 	optdepends = unzip: ZIP decompression support
@@ -26,11 +26,10 @@ pkgbase = krusader-git
 	optdepends = kdiff3: file contents comparison
 	optdepends = krename: advanced rename tool
 	optdepends = konsole: terminal
-	optdepends = ktexteditor: file editing support
+	optdepends = ktexteditor5: file editing support
 	provides = krusader
 	conflicts = krusader
 	source = git+https://anongit.kde.org/krusader
 	sha1sums = SKIP
 
 pkgname = krusader-git
-

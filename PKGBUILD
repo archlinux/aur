@@ -2,14 +2,14 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.8.0.dev.r6241.g5fec71dd
+pkgver=2.9.0.dev.r6678.gf6ae0c9b
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
 url='http://www.krusader.org'
 license=('GPL')
-depends=('kparts' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git')
+depends=('kparts5' 'hicolor-icon-theme')
+makedepends=('extra-cmake-modules' 'kdoctools5' 'git')
 optdepends=('xz: LZMA and XZ archive support'
             'unzip: ZIP decompression support'
             'zip: ZIP archive support'
@@ -27,7 +27,7 @@ optdepends=('xz: LZMA and XZ archive support'
             'kdiff3: file contents comparison'
             'krename: advanced rename tool'
             'konsole: terminal'
-            'ktexteditor: file editing support')
+            'ktexteditor5: file editing support')
 provides=('krusader')
 conflicts=('krusader')
 source=('git+https://anongit.kde.org/krusader')
