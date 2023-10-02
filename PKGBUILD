@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=doBy
-_pkgver=4.6.18
+_pkgver=4.6.19
 pkgname=r-${_pkgname,,}
-pkgver=4.6.18
+pkgver=4.6.19
 pkgrel=1
 pkgdesc='Groupwise Statistics, LSmeans, Linear Contrasts, Utilities'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3f773ebacc86052c56dcd43b42b6e48b6f678a5ea02c225e258428d48e06e6a5')
+sha256sums=('db648cf187c28a61a9f18f008939448cf654affca8c994a19cb8aa9f1c5c1b92')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
