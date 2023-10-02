@@ -41,7 +41,7 @@ prepare() {
 		echo "Skipping creating subdirectory '$pkgname-$pkgver': Directory already exists."
 	fi
 	tar -xf "data.tar.xz" -C "${pkgname}-${pkgver}"
-	tar -xf "control.tar.gz" -C "${pkgname}-${pkgver}"
+	tar -xf "control.tar.xz" -C "${pkgname}-${pkgver}"
 }
 
 pkgver() {
