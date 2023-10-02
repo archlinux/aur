@@ -1,7 +1,7 @@
 # Maintainer: e-dong <eric2043@gmail.com>
 pkgname=encoder-benchmark-git
-pkgver=v0.6.0.alpha.r4.gb7633c1
-pkgrel=2
+pkgver=0.6.0.alpha.r9.gdc9663e
+pkgrel=1
 epoch=
 pkgdesc="A tool to benchmark your hardware's real-time video encoding capabilities."
 arch=("x86_64")
@@ -25,26 +25,26 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cd "$pkgname"
     cargo build --release --frozen --all-features
 }
 
 check() {
-    export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
@@ -56,4 +56,3 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
-
