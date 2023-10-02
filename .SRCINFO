@@ -1,7 +1,7 @@
 pkgbase = python-pyalsaaudio-git
 	pkgdesc = ALSA wrappers for Python (development version)
 	pkgver = 0.8.4.r25.g12f8076
-	pkgrel = 2
+	pkgrel = 1
 	url = http://larsimmisch.github.io/pyalsaaudio/
 	arch = i686
 	arch = x86_64
@@ -18,11 +18,3 @@ pkgname = python-pyalsaaudio-git
 	depends = alsa-lib
 	provides = python-pyalsaaudio
 	conflicts = python-pyalsaaudio
-
-pkgname = python2-pyalsaaudio-git
-	pkgdesc = ALSA wrappers for Python 2 (development version)
-	depends = python2
-	depends = alsa-lib
-	provides = python2-pyalsaaudio
-	conflicts = python2-pyalsaaudio
-

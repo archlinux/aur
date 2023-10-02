@@ -1,6 +1,7 @@
 *.bak
 *.gz
 *.xz
+*.zst
 src
 pkg
 pyalsaaudio
