@@ -2,7 +2,7 @@
 
 pkgname=moul-assh
 pkgver=2.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc='make your ssh client smarter'
 url='https://github.com/moul/assh'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -14,7 +14,7 @@ conflicts=(assh)
 depends=(glibc)
 makedepends=(go)
 
-_commit='610085dfcc7eab4a282b0db65beddb4840f95032'
+_commit='869f9789172e5c778ced5121ca4ac5abdf29bd57'
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
