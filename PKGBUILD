@@ -46,6 +46,6 @@ package() {
   install -Dm644 "$OUT_DIR/$pkgname".fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
   install -Dm644 "$OUT_DIR/$pkgname".1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "README.org" "$pkgdir/usr/share/doc/${pkgname}/README.org"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
