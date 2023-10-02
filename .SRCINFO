@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libvpx
 	pkgdesc = VP8 and VP9 codec (mingw-w64)
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.13.1
+	pkgrel = 1
 	url = http://www.webmproject.org/
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-libvpx
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://chromium.googlesource.com/webm/libvpx#tag=d6eb9696aa72473c1a11d34d928d35a3acc0c9a9
+	source = git+https://chromium.googlesource.com/webm/libvpx#tag=9d36fd0ac716fb3357b498ec9c04f71c6ab1022b
 	source = configure.patch
 	sha256sums = SKIP
 	sha256sums = 24861b8d90eee9a5a953807b002ea05b86769df668b5a72a0b6e95f10969c3b6

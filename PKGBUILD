@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
-_tag=d6eb9696aa72473c1a11d34d928d35a3acc0c9a9
+_tag=9d36fd0ac716fb3357b498ec9c04f71c6ab1022b
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag}
         'configure.patch')
 sha256sums=('SKIP'
