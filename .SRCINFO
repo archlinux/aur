@@ -1,16 +1,16 @@
 pkgbase = r-sodium
 	pkgdesc = A Modern and Easy-to-Use Crypto Library
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sodium
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = libsodium
+	depends = libsodium>=1.0.3
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/sodium_1.2.1.tar.gz
-	b2sums = 52e2035cf3b50de405836fdb7b56f895c9b3ec7fe156460c7a33da4e6cb30c2429578686abe0b3c6005b4f01b535fcc29efa127f05b3311437f750047b9f332b
+	source = https://cran.r-project.org/src/contrib/sodium_1.3.0.tar.gz
+	b2sums = a353bed15fc1ae25eb821f574e7813bb469a7fb145242e9b0bf7cf1b9ebcba138061c978e9a962033c094a574b61080d09fc22d0161c214da4c57c12486636af
 
 pkgname = r-sodium
