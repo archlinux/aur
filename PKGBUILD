@@ -33,7 +33,6 @@ build() {
     fi
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     bsdtar -xf "${srcdir}"/python-${pkgver}-embed-${target}.zip
-    gendef python3.dll
     gendef python${_pybasever}.dll
     sed -i "s|PyEval_InitThreads@0|PyEval_InitThreads|g" python${_pybasever}.def
     ${_arch}-dlltool --dllname python${_pybasever}.dll --def python${_pybasever}.def --output-lib libpython${_pybasever}.dll.a
@@ -52,7 +51,7 @@ package() {
     install -d "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     cp -r ../Include/* "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     install -m644 ../PC/pyconfig.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}
-    install -m755 python*.dll "$pkgdir"/usr/${_arch}/bin
+    install -m755 python${_pybasever}.dll "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m644 *.pyd "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m755 python.exe "$pkgdir"/usr/${_arch}/bin/python${_pybasever}.exe
