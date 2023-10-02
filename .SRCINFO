@@ -1,13 +1,13 @@
-pkgbase = sile-qrcode
+pkgbase = sile-barcodes
 	pkgdesc = Barcodes package for the SILE typesetting system
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Omikhleia/qrcode.sile
+	url = https://github.com/Omikhleia/barcodes.sile
 	arch = any
 	license = MIT
 	makedepends = luarocks
 	depends = sile
-	source = https://github.com/Omikhleia/qrcode.sile/archive/v1.0.0/qrcode.sile-1.0.0.tar.gz
-	sha256sums = ffb49d1be5c5a58887093d0848a73bf642011cb55def99353d3a4b876167c0d6
+	source = https://github.com/Omikhleia/barcodes.sile/archive/v1.0.0/barcodes.sile-1.0.0.tar.gz
+	sha256sums = 9e37074ef34328793b9fa52a4dcc6b18f2a34be714a87d0eed72cd71ea1dcc04
 
-pkgname = sile-qrcode
+pkgname = sile-barcodes

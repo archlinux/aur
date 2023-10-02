@@ -1,6 +1,6 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_rockname=qrcode.sile
+_rockname=barcodes.sile
 pkgname=("sile-${_rockname%.sile}")
 pkgver=1.0.0
 _rockrel=1
@@ -13,7 +13,7 @@ depends=(sile)
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ffb49d1be5c5a58887093d0848a73bf642011cb55def99353d3a4b876167c0d6')
+sha256sums=('9e37074ef34328793b9fa52a4dcc6b18f2a34be714a87d0eed72cd71ea1dcc04')
 
 package() {
 	cd "$_archive"
