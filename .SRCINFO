@@ -1,0 +1,25 @@
+pkgbase = solar2d
+	pkgdesc = Simple to learn and use, completely free and open source 2D game engine
+	pkgver = 2023.3697
+	pkgrel = 1
+	url = https://solar2d.com/
+	arch = x86_64
+	license = MIT
+	makedepends = squashfs-tools
+	depends = glu
+	depends = zlib
+	depends = openal
+	depends = freetype2
+	depends = libpng
+	depends = libjpeg
+	depends = openssl-1.1
+	depends = curl
+	depends = sdl2
+	depends = java-runtime
+	provides = Solar2D
+	provides = Solar2DBuilder
+	provides = Solar2DSimulator
+	source = https://github.com/coronalabs/corona/releases/download/3697/Solar2D-Linux-2023.3697_amd64.snap
+	sha256sums = 509a1aaf622bf41490dcfe63aa040ba4f327e9e1a4c2a7b5aa32c749a059f31a
+
+pkgname = solar2d
