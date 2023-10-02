@@ -14,17 +14,15 @@ sha1sums=('84f50b96070a96e59b5208eef1e1463d985a7087')
 arch=('x86_64')
 
 build() {
-  cd $pkgname-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_SHARED_LIBS=ON .
-  make
+  cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_STATIC_LIBS=OFF
+  cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 $pkgname-$pkgver/README.md "$pkgdir"/usr/share/doc/$pkgname/
+  install -Dm644 $pkgname-$pkgver/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
