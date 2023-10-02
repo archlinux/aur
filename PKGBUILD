@@ -2,13 +2,13 @@
 
 pkgname=autopsy
 pkgver=4.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
 license=('Apache-2.0')
 _skver=4.12.1
-depends=(java-runtime=17 testdisk sleuthkit 'sleuthkit-java=4.12.1' java11-openjfx)
+depends=(java-runtime=17 testdisk sleuthkit 'sleuthkit-java=4.12.1' java17-openjfx)
 makedepends=()
 optdepends=('opencv: media files (64-bit)'
 			'perl-parse-registry: regripper')
