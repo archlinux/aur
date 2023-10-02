@@ -3,7 +3,7 @@
 
 pkgname='python-schedule'
 _name=${pkgname#python-}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Python job scheduling for humans.'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest'
               'python-mock')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('b2a4d22d7d045d3ac765630b370169e5f80aae33cb40bb76e16afc55a62751e851cca5adc1651ee855108a4f849d107adef2fa146794d3445667937a1bf8278c')
+sha512sums=('f2802bb7c49afd649f3e4650366bcd03c64db0301e929c981e1888323b6debac1280d668dad0e2fd7149534cfccefc46eaaafc0a009828ba11606c6a2cfbcc81')
 
 package() {
   cd "${srcdir}/schedule-${pkgver}"
