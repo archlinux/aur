@@ -31,7 +31,7 @@ conflicts=('i3-wm')
 backup=('etc/i3/config')
 source=("$url/downloads/i3-$pkgver.tar.xz"{,.asc}
         "https://github.com/orestisfl/i3/commit/c305798d42.patch"
-        "https://gist.githubusercontent.com/The-Repo-Club/b7111e9028cdfb3e6c60614cdfd19875/raw/178d5273fa91dcf6ed03d96187e78e841c814f35/x.diff")
+        "https://gist.githubusercontent.com/HeCodes2Much/b7111e9028cdfb3e6c60614cdfd19875/raw/178d5273fa91dcf6ed03d96187e78e841c814f35/x.diff")
 b2sums=('fa179f445ba4286bfeec98dc7a2e1dfad14bda6874e84878a48ee5890ed4cf3a90fc542e8e14aedaaba3abebc8d280284a3b00e838da70a783064a4bd271ca41'
         '9afac91e427f2a24120b257e6fb2dcc0879a86bc7957fe4562099778f3ee8300a70e71b7e0170d1eab89940ca89a42937da9eb5bd3015f9aabb82a96459a566a'
         'e8e9ef5d8ff25b010fe36ff395f7fb4368e4d8bcb843b42ce06758184cc7b6854ec7efc71c91bc18290de2d4aba3b878453f47f84abc5ab3a0877c523014d701'
