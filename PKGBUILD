@@ -1,8 +1,8 @@
 # Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 
 pkgname=kicad-diff-git
-pkgver=r381.4500fef
-pkgrel=1
+pkgver=r386.be291c6
+pkgrel=2
 pkgdesc=" Scripts for performing image diffs between pcbnew layout revisions Resources"
 url="https://github.com/leoheck/KiCad-Diff"
 license=("MIT")
@@ -10,14 +10,10 @@ arch=("x86_64")
 provides=("kicad-diff")
 conflicts=("kicad-diff")
 makedepends=("git" "python-pip")
-depends=("patch" "dos2unix" "python" "kicad" "imagemagick" "xdotool" "perl-rename")
+depends=("patch" "dos2unix" "python" "kicad" "imagemagick" "xdotool" "perl-rename" "python-pexpect" "python-wxpython")
 
 source=("KiCad-Diff::git+https://github.com/leoheck/KiCad-Diff.git")
 sha256sums=("SKIP")
-
-prepare() {
-	pip install -r KiCad-Diff/requirements.txt
-}
 
 package() {
 	mkdir -p "$pkgdir/opt/KiCad-Diff/"
