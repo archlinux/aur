@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 
-if [ -f ~/.avrbuild ]; then
-    source ~/.avrbuild
-else
+if [ ! -f ~/.avr ]; then
     echo "configuration file not found:"
-    echo "$ cat ~/.avrbuild
-repository_name=avr
-repository_location=/foo/\$repository_name/\$(uname -m)
+    echo "$ cat ~/.avr
+[build]
+    repositoryName=avr
+    repositoryLocation=/foo/avr/x86_64
 "
     exit 1
 fi
+
+function getconfig {
+    git config -f ~/.avr --get "$1"
+}
 
 location="$(pwd)"
 
 function released_version {
     name=$1
 
-    pacman -Ss $name | grep -e "^$repository_name/$name " | cut -d" " -f2
+    pacman -Ss $name | grep -e "^$(getconfig build.repositoryName)/$name " | cut -d" " -f2
 }
 
 current_arch=$(uname -m)
@@ -45,6 +48,7 @@ for name in $(find . -mindepth 1 -maxdepth 1 -type d -not -name "\.*"); do
     fi
 done
 
+repository_location=$(getconfig build.repositoryLocation)
 failures=()
 for package in ${packages[@]} ; do
     cd "$location/$package"

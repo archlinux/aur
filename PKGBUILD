@@ -2,15 +2,18 @@
 
 pkgname=aurbuild
 pkgdesc="Collection of scripts to build and release packages from 'aur shaped' repositories"
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
-arch=("any")
-url="https://github.com/vbouchaud/aur/tree/main/aurbuild"
-license=("MIT")
+arch=('any')
+url='https://github.com/vbouchaud/aur/tree/main/aurbuild'
+license=('MIT')
+depends=(
+    git
+)
 
 sha256sums=(
     35e3cbe726e28f2f624acbe4fce8af09715e55537df7aa22ac89f00cde399515
-    ef5af3d6a3755a1816cc2648c03d500b8d56895ee0fc5d724c9fc63b36296df3
+    3303bdfb8fa30e6913f6158f0cd86913dc0c9c83302dad6bd87738a0b5f5b026
 )
 
 source=(
