@@ -1,0 +1,7 @@
+post_install() {
+	echo "bootlin toolchain installed to /opt/powerpc-440fp-glibc-bleeding-edge"
+	echo "The PATH variable will be updated on re-login. To immediately load it:"
+	echo ""
+	echo "	source /etc/profile.d/powerpc-440fp-glibc-bleeding-edge.sh"
+	echo ""
+}
