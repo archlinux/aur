@@ -2,12 +2,13 @@
 
 pkgname="trunk-bin"
 pkgver="0.17.5"
-pkgrel=1
+pkgrel=2
 pkgdesc="A WASM web application bundler for Rust."
 arch=('x86_64')
 url="https://github.com/thedodd/trunk"
 license=('MIT/Apache-2.0')
 provides=("trunk")
+conflicts=("trunk")
 source=(
     "${pkgname%-bin}-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz"
     "https://raw.githubusercontent.com/thedodd/${pkgname%-bin}/v$pkgver/LICENSE-APACHE"
