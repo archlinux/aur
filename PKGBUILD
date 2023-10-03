@@ -13,7 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
 license=('GPL')
 depends=('qt5-base')
-makedepends=('cmake' 'ninja' 'qtutilities' 'mesa' 'perl-yaml-libyaml' 'qt5-declarative')
+makedepends=('cmake' 'ninja' 'qtutilities' 'perl-yaml-libyaml' 'qt5-declarative')
 optdepends=(
   'qt5-declarative: Qt Quick integration'
   "$pkgname-doc: API documentation"
