@@ -16,7 +16,6 @@ pkgbase = tageditor-git
 	makedepends = qt5-tools
 	makedepends = git
 	makedepends = ninja
-	makedepends = mesa
 	makedepends = reflective-rapidjson-git
 	depends = libqtutilities-git.so
 	depends = libtagparser-git.so

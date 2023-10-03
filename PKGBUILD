@@ -26,7 +26,7 @@ depends=('libqtutilities-git.so' 'libtagparser-git.so' 'libc++utilities-git.so' 
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 [[ $_js_provider == script ]] && depends+=('qt5-script')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
-makedepends=('cmake' 'qt5-tools' 'git' 'ninja' 'mesa')
+makedepends=('cmake' 'qt5-tools' 'git' 'ninja')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson-git')
 checkdepends=('cppunit' 'jq' 'appstream')
 provides=("${_name}")
