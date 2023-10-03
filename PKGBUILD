@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=qtalarm
-pkgver=4700238.2.5.0
-pkgrel=1
+pkgver=4700238.2.5.1
+pkgrel=0
 pkgdesc="Cross-platform Alarm Clock written with QT5"
 arch=('i686' 'x86_64')
 url="https://random-hackery.net/page/qtalarm/"
@@ -10,13 +10,13 @@ depends=('qt5-base' 'qt5-multimedia' 'gst-plugins-base' 'gst-plugins-good')
 optdepends=('noto-fonts: unicode support for alarm list widget')
 makedepends=(make gcc)
 source=(
-https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.0.tar.gz
-https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.0.tar.gz.asc
+https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.1.tar.gz
+https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.1.tar.gz.asc
 )
 validpgpkeys=('914897EC41BD3AED1CD9EC3DE41FF9C889B141CC')
 md5sums=(
-efc3a06ca68f2e79371687e2cbea0436
-1bc12cde6a6d0aa8da13719003eb3c6f
+71d911196400de49aba0362c8513fa7b
+e5aa166a80d79e56ecaf19c78fb8f0c6
 )
 
 build() {
@@ -28,16 +28,9 @@ build() {
 }
 
 package() {
-mkdir $pkgdir/usr/
-mkdir $pkgdir/usr/share/
-mkdir $pkgdir/usr/share/icons/
-mkdir $pkgdir/usr/share/icons/hicolor/
-mkdir $pkgdir/usr/share/icons/hicolor/48x48
-mkdir $pkgdir/usr/share/icons/hicolor/16x16
-mkdir $pkgdir/usr/share/icons/hicolor/24x24
-mkdir $pkgdir/usr/share/icons/hicolor/48x48/apps/
-mkdir $pkgdir/usr/share/icons/hicolor/16x16/apps/
-mkdir $pkgdir/usr/share/icons/hicolor/24x24/apps/
+mkdir -p $pkgdir/usr/share/icons/hicolor/48x48/apps/
+mkdir -p $pkgdir/usr/share/icons/hicolor/16x16/apps/
+mkdir -p $pkgdir/usr/share/icons/hicolor/24x24/apps/
 
 mkdir $pkgdir/usr/bin/
 mkdir $pkgdir/usr/share/applications/

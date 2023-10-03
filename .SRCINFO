@@ -1,7 +1,7 @@
 pkgbase = qtalarm
 	pkgdesc = Cross-platform Alarm Clock written with QT5
-	pkgver = 4700238.2.5.0
-	pkgrel = 1
+	pkgver = 4700238.2.5.1
+	pkgrel = 0
 	url = https://random-hackery.net/page/qtalarm/
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = qtalarm
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	optdepends = noto-fonts: unicode support for alarm list widget
-	source = https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.0.tar.gz
-	source = https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.0.tar.gz.asc
+	source = https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.1.tar.gz
+	source = https://random-hackery.net/data/qtalarm/src/QTalarm-2.5.1.tar.gz.asc
 	validpgpkeys = 914897EC41BD3AED1CD9EC3DE41FF9C889B141CC
-	md5sums = efc3a06ca68f2e79371687e2cbea0436
-	md5sums = 1bc12cde6a6d0aa8da13719003eb3c6f
+	md5sums = 71d911196400de49aba0362c8513fa7b
+	md5sums = e5aa166a80d79e56ecaf19c78fb8f0c6
 
 pkgname = qtalarm
