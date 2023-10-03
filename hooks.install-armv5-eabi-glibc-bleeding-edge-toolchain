@@ -2,6 +2,6 @@ post_install() {
 	echo "bootlin toolchain installed to /opt/armv5-eabi-glibc-bleeding-edge"
 	echo "The PATH variable will be updated on re-login. To immediately load it:"
 	echo ""
-	echo "	source /etc/profile.d/armv5-eabi-glibc-bleeding-edge.sh"
+	echo "	source /etc/profile.d/armv5-eabi-glibc-bleeding-edge-toolchain.sh"
 	echo ""
 }
