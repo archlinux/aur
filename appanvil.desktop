@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=AppAnvil
+Exec=/usr/bin/appanvil
+Icon=security
+Comment=Graphical user interface for the AppArmor security module
+Terminal=false
+Categories=Security;System;
