@@ -1,7 +1,7 @@
 # Maintainer: Shapiro <shapiro at quantentunnel dot de>
 
 pkgname='veracrypt-inyourlanguage'
-_pkgname='veracrypt'
+_pkgname='VeraCrypt'
 pkgver=1.26.7
 pkgrel=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.'
@@ -13,7 +13,7 @@ conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-git-no
 depends=('fuse2>=2.8.0' 'wxwidgets-gtk3' 'libsm' 'device-mapper')
 makedepends=('git' 'yasm' 'libxml2' 'coreutils')
 optdepends=('sudo: mounting encrypted volumes as nonroot users')
-source=(https://veracrypt.fr/code/VeraCrypt/snapshot/VeraCrypt_${pkgver}.tar.gz
+source=(https://veracrypt.fr/code/${_pkgname}/snapshot/${_pkgname}_${pkgver}.tar.gz
         select_lang.sh
         veracrypt.desktop)
 sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd'
@@ -25,12 +25,12 @@ prepare() {
 }
 
 build() {
-  cd VeraCrypt_${pkgver}/src
+  cd ${_pkgname}_${pkgver}/src
   make PKG_CONFIG_PATH=/usr/lib/pkgconfig WX_CONFIG=/usr/bin/wx-config
 }
 
 package() {
-  cd VeraCrypt_${pkgver}/src
+  cd ${_pkgname}_${pkgver}/src
   make DESTDIR="$pkgdir/" install
   rm -r "$pkgdir/usr/sbin"
   rm -r "$pkgdir/usr/share/veracrypt"
