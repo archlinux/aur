@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
@@ -47,5 +47,6 @@ package() {
   install -D -m644 gui/settings.py "$pkgdir"/usr/share/"$pkgname"/settings.py
   install -D -m644 gui/ui_settings.py "$pkgdir"/usr/share/"$pkgname"/ui_settings.py
   install -D -m644 README.md "$pkgdir"/usr/share/"$pkgname"/README.md
+  install -D -m755 wineasio-register "$pkgdir"/usr/bin/wineasio-register
 }
 # vim:set ts=2 sw=2 et:
