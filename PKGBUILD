@@ -1,6 +1,6 @@
 pkgname=python-adafruit-nrfutil-git
 _pkgname=Adafruit_nRF52_nrfutil
-pkgver=20181018.7a327fd
+pkgver=20220629.1361059
 pkgrel=1
 pkgdesc="Modified version of Nordic's nrfutil 0.5.x for use with the Adafruit Feather nRF52"
 _url="github.com/adafruit/${_pkgname}"
@@ -14,7 +14,7 @@ depends=( # Based on requirements.txt
 	'python-behave'
 )
 makedepends=('git')
-source=("${_pkgname}::git://${_url}")
+source=("${_pkgname}::git+https://${_url}")
 md5sums=('SKIP')
 
 pkgver() {
