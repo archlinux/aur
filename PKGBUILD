@@ -4,8 +4,8 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
 license=('GPL2')
@@ -32,14 +32,7 @@ depends=(
 optdepends=('python-mysqlclient: Ampache and Prokyon 3 support'
   'python-irc: IRC notification support')
 conflicts=('idjc-git')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-  getargspec.patch)
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  patch -Np1 -i ../getargspec.patch
-}
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -60,5 +53,4 @@ package() {
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
-sha256sums=('6c15d1b7e034220a21dd656dcf2e8e36202090968ac4840095ec18f43b3617f4'
-            '93dbe6545764e82d3c707286ed6f42b2a71f4a61567e6ce13e25a102370fabb5')
+sha256sums=('71328e2e253cc877f82e41a8808e481f0785f3a8b0117c874ce6e19b5f277568')
