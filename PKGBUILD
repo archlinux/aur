@@ -8,7 +8,7 @@
 
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
-pkgver=2.12.15
+pkgver=2.12.18
 groups=('joplin')
 pkgrel=1
 install="joplin.install"
@@ -24,7 +24,7 @@ source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
     'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
     '16aed6c4881efcef3fd86f7c07afb4c743e24d9da342438a8167346a015629e0'
-'1ab8cac6ded11abc5a6437b58342b519466cbf869bf3e7cc0a651413ff8faa0a')
+'a85f2133e5b71d829fbc9438d2e3191172f8af2e270906745203a8fa36aac307')
 
 # local npm cache directory
 _yarn_cache="yarn-cache"
