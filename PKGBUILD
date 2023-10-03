@@ -15,7 +15,7 @@ source=(
 	"binaryninja-demo.desktop"
 )
 sha1sums=(
-	'9101e4e0a12b8afb61c586bf6214652ce3db164f' # BinaryNinja-demo.zip
+	'd66a02784fda3e9c7cb3fc45c65ea15bf421748a' # BinaryNinja-demo.zip
 	'de0caa6928230dc5eb0dda8b45b9f03d4db294a2' # wrapper bash script
 	'4d039660be12df5f13ab3b848f413fa9f2f41e87' # logo
 	'b650efdf8b007b5c9245fed32dca304ddde07f65' # .desktop file
