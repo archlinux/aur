@@ -1,0 +1,17 @@
+pkgbase = parvaj-bin
+	pkgdesc = Easy and fast (both in the sense of performance and development speed) VHDL simulation tool, integrating GHDL and GTKWave.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/machitgarha/parvaj
+	arch = x86_64
+	license = AGPL3
+	depends = fuse2
+	depends = gtkwave
+	depends = ghdl-gcc-git
+	options = !strip
+	source = https://github.com/machitgarha/parvaj/releases/download/0.5.2/parvaj-x86_64.AppImage
+	source = LICENSE::https://github.com/machitgarha/parvaj/raw/master/LICENSE.md
+	sha256sums = 7806fc0cea5e8dafb2a86019daff22b5a402880d3b42dae8b4dddbfd66952954
+	sha256sums = 73ad60d6126608f92c89b0f973f2f925f5e6e5860b4b032bfeec78b1b1cc381d
+
+pkgname = parvaj-bin
