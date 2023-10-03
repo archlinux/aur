@@ -1,6 +1,6 @@
 pkgbase = casa6-bin
 	pkgdesc = NRAO's Common Astronomy Software Applications package
-	pkgver = 6.5.6
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://casa.nrao.edu/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = casa6-bin
 	depends = libselinux
 	provides = casa
 	options = !strip
-	source = https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.5.6-22-py3.8.el8.tar.xz
-	md5sums = 7c01de29d983fd27e4bb19d4e8286c3b
+	source = https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.6.0-20-py3.8.el7.tar.xz
+	md5sums = 4574fd6367749218b8bfd46b25903eb8
 
 pkgname = casa6-bin

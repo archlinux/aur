@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 pkgname=casa6-bin
-pkgver=6.5.6
-ver_=22
+pkgver=6.6.0
+ver_=20
 pkgrel=1
 pkgdesc="NRAO's Common Astronomy Software Applications package"
 url="https://casa.nrao.edu/"
@@ -10,9 +10,9 @@ license=('GPL')
 depends=('lsb-release' 'libselinux')
 conflict=("casa")
 provides=("casa")
-instname="casa-${pkgver}-${ver_}-py3.8.el8"
+instname="casa-${pkgver}-${ver_}-py3.8.el7"
 source=("https://casa.nrao.edu/download/distro/casa/release/rhel/${instname}.tar.xz")
-md5sums=("7c01de29d983fd27e4bb19d4e8286c3b")
+md5sums=("4574fd6367749218b8bfd46b25903eb8")
 instdir="/opt"
 options=("!strip")
 package() {
