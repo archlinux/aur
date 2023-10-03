@@ -55,7 +55,7 @@ package(){
     # Instala el archivo .desktop en la ubicación (-t) adecuada.
     install -Dvm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
-    # Instala el archivo de licencia en la ubicación adecuada.
+    # Instalar icono de pseint-bin.
     install -Dvm644 "imgs/icon.icns" "$pkgdir/usr/share/pixmaps/$_pkgname.icns"
 
     # Crea un archivo ejecutable en la ubicación /usr/bin/$_pkgname que ejecuta el programa wxPSeInt(pseint).
