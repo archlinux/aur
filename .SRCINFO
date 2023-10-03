@@ -1,6 +1,6 @@
 pkgbase = bmputil-git
 	pkgdesc = A management utility for debuggers running the Black Magic Debug firmware
-	pkgver = r80.2cfa609
+	pkgver = r83.e197489
 	pkgrel = 1
 	url = https://github.com/blackmagic-debug/bmputil
 	arch = any

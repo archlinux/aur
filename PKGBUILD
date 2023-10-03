@@ -2,7 +2,7 @@
 
 _pkgname='bmputil'
 pkgname="${_pkgname}-git"
-pkgver=r80.2cfa609
+pkgver=r83.e197489
 pkgrel=1
 pkgdesc='A management utility for debuggers running the Black Magic Debug firmware'
 arch=('any')
