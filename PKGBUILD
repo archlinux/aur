@@ -2,12 +2,12 @@
 # Contributor: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
 pkgname=neolink
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An RTSP bridge to Reolink IP cameras."
 arch=('x86_64')
 url="https://github.com/QuantumEntangledAndy/${pkgname}"
 license=('AGPL3')
-depends=('gst-rtsp-server')
+depends=('gst-rtsp-server' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good')
 makedepends=('git' 'rust')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantumEntangledAndy/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
