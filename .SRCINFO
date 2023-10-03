@@ -1,6 +1,6 @@
 pkgbase = decklink-sdk
 	pkgdesc = Blackmagic DeckLink SDK
-	pkgver = 12.6
+	pkgver = 12.7
 	pkgrel = 1
 	epoch = 1
 	url = https://www.blackmagicdesign.com/support/family/capture-and-playback
@@ -10,7 +10,7 @@ pkgbase = decklink-sdk
 	provides = blackmagic-decklink-sdk
 	conflicts = blackmagic-decklink-sdk
 	replaces = blackmagic-decklink-sdk
-	source = Blackmagic_DeckLink_SDK_12.6.zip::https://swr.cloud.blackmagicdesign.com/DeckLink/v12.6/Blackmagic_DeckLink_SDK_12.6.zip?verify=1695408028-411ImQQLaYIjEji4fhtw7IMD477Is2FJ3qCvhKH5%2BEM%3D
-	sha256sums = e4c8070837f3935501b74c2ad4e0bb0711f2652802208ebb623401c8dbd26c4f
+	source = Blackmagic_DeckLink_SDK_12.7.zip::https://swr.cloud.blackmagicdesign.com/DeckLink/v12.7/Blackmagic_DeckLink_SDK_12.7.zip?verify=1696371580-8tW13U5VBcbotGf0Fe37I7MR%2BNR0XTsXMOIXnC%2F8WWs%3D
+	sha256sums = 787fa24a3efef94a0c0353016524bc71f4a5268c5f48e3c6dc5f9ab38c2c083e
 
 pkgname = decklink-sdk
