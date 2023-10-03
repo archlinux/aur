@@ -9,7 +9,7 @@ pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
-depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
+depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls2"
          "qt6-svg" "curl" "jack" "gtk-update-icon-cache"
          "speexdsp" "pciutils" "libajantv2" "librist" "onevpl"
          "libdatachannel" "qrcodegencpp-cmake")
