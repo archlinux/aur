@@ -35,6 +35,7 @@ optdepends=(
     'liboauth: Web albums'
     'libchamplain: Map Viewer'
     'libheif: heif/heic/avif file support'
+    'yelp: View help and documentation from the app'
 )
 provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})

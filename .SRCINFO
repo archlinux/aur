@@ -30,6 +30,7 @@ pkgbase = pix-git
 	optdepends = liboauth: Web albums
 	optdepends = libchamplain: Map Viewer
 	optdepends = libheif: heif/heic/avif file support
+	optdepends = yelp: View help and documentation from the app
 	provides = pix-git
 	provides = pix
 	conflicts = pix
