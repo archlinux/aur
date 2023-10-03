@@ -1,7 +1,7 @@
 pkgbase = solv
 	pkgdesc = SOLution Validation tool that analyzes Microsoft Visual Studio solutions
-	pkgver = 0.13.0
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/aegoroff/solv
 	arch = i686
 	arch = x86_64
