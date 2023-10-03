@@ -18,7 +18,8 @@
 #     tor-browser -u
 
 
-pkgname='tor-browser-bin'
+_appname='tor-browser'
+pkgname="${_appname}-bin"
 pkgver='12.5.6'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
@@ -34,9 +35,9 @@ optdepends=('zenity: simple dialog boxes'
 	'gst-libav: H.264 video'
 	'libpulse: PulseAudio audio driver'
 	'libnotify: Gnome dialog boxes')
-provides=(tor-browser)
-conflicts=(tor-browser)
-install="tor-browser.install"
+provides=("${_appname}")
+conflicts=("${_appname}")
+install="${_appname}.install"
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
 _tag_i686='linux32'
@@ -59,12 +60,12 @@ _sed_escape() {
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
 
-source_i686=("${_urlbase}/tor-browser-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
-source_x86_64=("${_urlbase}/tor-browser-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
-source=("tor-browser.desktop.in"
-	    "tor-browser.in"
-	    "tor-browser.png"
-	    "tor-browser.svg")
+source_i686=("${_urlbase}/${_appname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/${_appname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
+source=("${_appname}.desktop.in"
+	    "${_appname}.in"
+	    "${_appname}.png"
+	    "${_appname}.svg")
 
 ### IMPORTANT #################################################################
 # No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
@@ -79,15 +80,15 @@ sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
 sha256sums_x86_64=("$(_dist_checksum "${_tag_x86_64}")"
                    'SKIP')
 
-noextract=("tor-browser-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"
-           "tor-browser-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz")
+noextract=("${_appname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"
+           "${_appname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz")
 
 package() {
 
 	cd "${srcdir}"
 
 	local _sed_subst="
-		s/@PACKAGE_NAME@/$(_sed_escape "tor-browser")/g
+		s/@PACKAGE_NAME@/$(_sed_escape "${_appname}")/g
 		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
 		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
 		s/@PACKAGE_SUFFIX@/$(_sed_escape "${_pkgsuffx}")/g
@@ -95,22 +96,22 @@ package() {
 	"
 
 	install -dm755 "${pkgdir}/usr/bin"
-	sed "${_sed_subst}" "tor-browser.in" > "${pkgdir}/usr/bin/tor-browser"
-	chmod +x "${pkgdir}/usr/bin/tor-browser"
+	sed "${_sed_subst}" "${_appname}.in" > "${pkgdir}/usr/bin/${_appname}"
+	chmod +x "${pkgdir}/usr/bin/${_appname}"
 
 	install -dm755 \
 		"${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
 		"${pkgdir}/usr/share/icons/hicolor/128x128/apps"
 
-	install -Dm644 "${srcdir}/tor-browser.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tor-browser.png"
-	install -Dm644 "${srcdir}/tor-browser.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tor-browser.svg"
+	install -Dm644 "${srcdir}/${_appname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_appname}.png"
+	install -Dm644 "${srcdir}/${_appname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg"
 
 	install -dm755 "${pkgdir}/usr/share/applications"
-	sed "${_sed_subst}" "tor-browser.desktop.in" > \
-		"${pkgdir}/usr/share/applications/tor-browser.desktop"
+	sed "${_sed_subst}" "${_appname}.desktop.in" > \
+		"${pkgdir}/usr/share/applications/${_appname}.desktop"
 
-	install -Dm444 "tor-browser-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz" \
-		"${pkgdir}/opt/tor-browser/tor-browser-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz"
+	install -Dm444 "${_appname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz" \
+		"${pkgdir}/opt/${_appname}/${_appname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz"
 
 }
 
