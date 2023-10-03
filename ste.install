@@ -1,0 +1,18 @@
+post_install() {
+    /usr/bin/getent group ste >/dev/null 2>&1 ||  /usr/bin/groupadd -g 216 ste &>/dev/null
+    # SUID mitigation
+    chown root:ste /usr/bin/ste
+    chmod 4750 /usr/bin/ste
+    echo "To run ste without sudo, add your user to the ste group:"
+    echo "$ sudo gpasswd --add <username> ste"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if /usr/bin/getent group ste >/dev/null 2>&1; then
+        /usr/bin/groupdel ste
+    fi
+}
