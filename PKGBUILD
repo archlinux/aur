@@ -62,7 +62,11 @@ package() {
 
   ln -s /etc/elasticsearch "$pkgdir"/usr/share/elasticsearch/config
   ln -s /var/log/elasticsearch "$pkgdir"/usr/share/elasticsearch/logs
-  ln -s /usr/lib/jvm/java-20-openjdk "$pkgdir"/usr/share/elasticsearch/jdk
+
+  # Dynamically determine what version jre-openjdk-headless provides and symlink it.
+  jreopenjdkheadless_version=$(pacman -Ql jre-openjdk-headless| grep -Pom1 '(?<=jre-openjdk-headless )/usr/lib/jvm/java-[0-9]+-openjdk/')
+  [ -z "${jreopenjdkheadless_version}" ] && echo "Unable to determine jre-openjdk-headless version automatically" && exit 1
+  ln -s "${jreopenjdkheadless_version}" "$pkgdir"/usr/share/elasticsearch/jdk
 
   install -Dm644 "$srcdir"/elasticsearch.service "$pkgdir"/usr/lib/systemd/system/elasticsearch.service
   install -Dm644 "$srcdir"/elasticsearch@.service "$pkgdir"/usr/lib/systemd/system/elasticsearch@.service
