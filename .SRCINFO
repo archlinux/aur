@@ -12,7 +12,6 @@ pkgbase = videodownloader
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt5-tools
-	makedepends = mesa
 	depends = qtutilities
 	depends = openssl
 	depends = desktop-file-utils
@@ -21,4 +20,3 @@ pkgbase = videodownloader
 	sha256sums = 59adbb242250235d0e580fbb858c3eb30c724f5463defc49330015e2233927ed
 
 pkgname = videodownloader
-
