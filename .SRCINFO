@@ -1,31 +1,44 @@
 pkgbase = casacore-git
 	pkgdesc = Suite of c++ libraries for radio astronomy data processing
-	pkgver = r23271.a4231ee8b
+	pkgver = r23274.adc7333f9
 	pkgrel = 1
 	url = http://casacore.github.io/casacore/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = make
-	makedepends = pkg-config
-	makedepends = binutils
-	makedepends = boost
-	makedepends = boost-libs
+	makedepends = git
 	makedepends = cmake
 	makedepends = gcc-fortran
-	makedepends = gcc
-	makedepends = flex
-	makedepends = git
-	makedepends = bison
-	makedepends = blas-openblas
-	makedepends = cfitsio
-	makedepends = wcslib
-	makedepends = python-numpy
+	makedepends = gsl
+	makedepends = boost
+	depends = boost-libs
+	depends = fftw
+	depends = gsl
+	depends = openblas
+	depends = lapack
+	depends = cfitsio
+	depends = wcslib
+	depends = python-numpy
 	optdepends = sofa: only for testing casacore measures
-	optdepends = fftw
-	optdepends = hdf5
-	optdepends = ncurses
+	optdepends = fftw: a library for computing the discrete Fourier transform
+	optdepends = hdf5: general purpose library and file format for storing scientific data
+	optdepends = ncurses: curses emulation library
 	provides = casacore-git
+	provides = libcasa_casa.so=7
+	provides = libcasa_coordinates.so=7
+	provides = libcasa_derivedmscal.so=7
+	provides = libcasa_fits.so=7
+	provides = libcasa_images.so=7
+	provides = libcasa_lattices.so=7
+	provides = libcasa_meas.so=7
+	provides = libcasa_measures.so=7
+	provides = libcasa_mirlib.so=7
+	provides = libcasa_msfits.so=7
+	provides = libcasa_ms.so=7
+	provides = libcasa_python3.so=7
+	provides = libcasa_scimath_f.so=7
+	provides = libcasa_scimath.so=7
+	provides = libcasa_tables.so=7
 	conflicts = casacore
 	source = casacore-git::git+https://github.com/casacore/casacore.git
 	md5sums = SKIP
