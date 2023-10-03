@@ -1,16 +1,16 @@
---- wordplay-7.22.orig/wordplay.c
-+++ wordplay-7.22/wordplay.c
+--- wordplay-master/wordplay.c
++++ wordplay-8/wordplay.c
 @@ -142,7 +142,7 @@
  #define max(A, B) ((A) > (B) ? (A) : (B))
  #define min(A, B) ((A) < (B) ? (A) : (B))
 
 -#define DEFAULT_WORD_FILE "words721.txt"
 +#define DEFAULT_WORD_FILE "/usr/share/wordplay/words721.txt"
- #define WORDBLOCKSIZE 4096
+ #define WORDBLOCKSIZE 16384
  #define MAX_WORD_LENGTH 128
  #define SAFETY_ZONE MAX_WORD_LENGTH + 1
---- wordplay-7.22.orig/words721.txt
-+++ wordplay-7.22/words721.txt
+--- wordplay-master/words721.txt
++++ wordplay-8/words721.txt
 @@ -7172,6 +7172,7 @@
  DUCTILE
  DUCTWORK
@@ -19,8 +19,8 @@
  DUDLEY
  DUE
  DUEL
---- wordplay-7.22.orig/wordplay.1
-+++ wordplay-7.22/wordplay.1
+--- wordplay-master/wordplay.1
++++ wordplay-8/wordplay.1
 @@ -0,0 +1,156 @@
 +.TH FOO 1 "DECEMBER 1996" "" "Commands"
 +.SH NAME

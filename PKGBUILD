@@ -1,22 +1,26 @@
-# Contributor: Yumi Nanako <yumileroy [at] yahoo.com>
+# Maintainer: nous at artixlinux.org
+# Contributor: Yumi Nanako <yumileroy [at] yahoo.com>#
 
 pkgname=wordplay
-pkgver=7.22
-pkgrel=5
+pkgver=8
+pkgrel=1
 pkgdesc="Wordplay generates anagrams of words or phrases. For example, Debian GNU/Linux = laud benign unix, nubian lug index, dang nubile unix, or I debug in lax nun."
 arch=('i686' 'x86_64')
 url="http://hsvmovies.com/static_subpages/personal_orig/wordplay/index.html"
 license=('GPL')
 depends=('words')
-source=(http://archive.ubuntu.com/ubuntu/pool/universe/w/wordplay/${pkgname}_${pkgver}.orig.tar.gz
-	wordplay_7.22-1.diff)
-md5sums=('785f8a6e9410b2634e88f0bceb7e1743' 'e937490b802a4adcdbb960adf43bbc86')
+source=(${pkgname}-${pkgver}.zip::https://github.com/mendelmunkis/wordplay/archive/refs/heads/master.zip
+#http://archive.ubuntu.com/ubuntu/pool/universe/w/wordplay/${pkgname}_${pkgver}.orig.tar.gz
+	wordplay_8-1.diff)
+md5sums=('bec24fb9bcc24e11732402d49728705e'
+         'f30b3f8f40cd787d2011476857f1fb8d')
 
 build() {
   cd "$srcdir/"
-  cp -R ${pkgname}-${pkgver}.orig ${pkgname}-${pkgver}
-
-  patch -p0 -i wordplay_7.22-1.diff
+  cp -a ${pkgname}-master ${pkgname}-${pkgver}
+pwd
+ls
+  patch -p0 -i wordplay_8-1.diff
   cd ${pkgname}-${pkgver}
 
   make
