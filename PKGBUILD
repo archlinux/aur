@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=exoscale-cli
-pkgver=1.74.0
+pkgver=1.74.1
 pkgrel=1
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
@@ -23,6 +23,8 @@ build() {
   # But `make build` will bake the latest git tag into the binary.
   # To provide this information to the build process we set it here.
   git init
+  git config --local user.email "tooling@exoscale.ch"
+  git config --local user.name "Exoscale Tooling"
   git add Makefile
   git commit -m "dummy commit"
   git tag v${pkgver}
