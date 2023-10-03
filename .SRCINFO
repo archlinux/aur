@@ -1,24 +1,18 @@
-pkgbase = pypy-lxml
+pkgbase = pypy3-lxml
 	pkgdesc = The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt
-	pkgver = 4.5.0
+	pkgver = 4.9.2
 	pkgrel = 1
 	url = http://lxml.de/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = pypy
-	makedepends = pypy3
 	makedepends = libxslt
-	source = https://pypi.python.org/packages/source/l/lxml/lxml-4.5.0.tar.gz
-	sha256sums = 8620ce80f50d023d414183bf90cc2576c2837b88e00bea3f33ad2630133bbb60
-
-pkgname = pypy-lxml
-	pkgdesc = The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt for Pypy
-	depends = pypy
-	depends = libxslt
+	makedepends = pypy3
+	makedepends = pypy3-setuptools
+	source = https://pypi.python.org/packages/source/l/lxml/lxml-4.9.2.tar.gz
+	sha256sums = 2455cfaeb7ac70338b3257f41e21f0724f4b5b0c0e7702da67ee6c3640835b67
 
 pkgname = pypy3-lxml
 	pkgdesc = The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt for Pypy 3
 	depends = pypy3
 	depends = libxslt
-

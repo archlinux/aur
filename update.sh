@@ -10,11 +10,6 @@ if ! [ "$latest_version" = "$current_version" ]; then
   sed -i.bak "s/$current_version/$latest_version/g" PKGBUILD
   sed -i.bak "s/pkgrel=[^d.]/pkgrel=1/g" PKGBUILD
   ./pkgsum.sh
-  if which makepkg &> /dev/null; then
-    makepkg --printsrcinfo > .SRCINFO
-  else
-    mksrcinfo
-  fi
   rm -f *.bak
 else
   echo Nothing to update.

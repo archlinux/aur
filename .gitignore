@@ -2,4 +2,6 @@ src
 pkg
 *.gz
 *.xz
+*.zst
 *.bak
+lxml*

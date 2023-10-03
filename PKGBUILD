@@ -1,47 +1,31 @@
 # Maintainer: Fernando Ortiz <nandub+arch@nandub.info>
 # Contributor: Michael Beasley <youvegotmoxie@gmail.com>
 
-pkgbase=pypy-lxml
-pkgname=('pypy-lxml' 'pypy3-lxml')
-pkgver=4.5.0
+pkgbase=pypy3-lxml
+pkgname=('pypy3-lxml')
+pkgver=4.9.2
 pkgrel=1
 pkgdesc="The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt"
 license=('BSD')
 arch=('i686' 'x86_64')
-makedepends=('pypy' 'pypy3' 'libxslt')
+makedepends=('libxslt' 'pypy3' 'pypy3-setuptools')
 url="http://lxml.de/"
 source=(https://pypi.python.org/packages/source/l/lxml/lxml-${pkgver}.tar.gz)
-sha256sums=('8620ce80f50d023d414183bf90cc2576c2837b88e00bea3f33ad2630133bbb60')
-
-prepare() {
-  # copy folder, so we can cleanly build for both python versions
-  cp -rup lxml-$pkgver pypy3lxml-$pkgver
-}
+sha256sums=('2455cfaeb7ac70338b3257f41e21f0724f4b5b0c0e7702da67ee6c3640835b67')
 
 build() {
-  # build for pypy
-  cd lxml-$pkgver
-  pypy setup.py build
-
   # build for pypy3
-  cd ../pypy3lxml-$pkgver
+  cd lxml-$pkgver
+
   pypy3 setup.py build
-}
-
-package_pypy-lxml() {
-   depends=('pypy' 'libxslt')
-   pkgdesc+=" for Pypy"
-
-   cd lxml-$pkgver
-   pypy setup.py install --prefix=/opt/pypy --root="$pkgdir" --optimize=1
-   install -Dm644 LICENSES.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_pypy3-lxml() {
   depends=('pypy3' 'libxslt')
   pkgdesc+=" for Pypy 3"
 
-  cd pypy3lxml-$pkgver
+  cd lxml-$pkgver
+
   pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
   install -Dm644 LICENSES.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
