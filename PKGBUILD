@@ -3,8 +3,8 @@
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 
 pkgname=gnome-bluetooth
-pkgver=3.34.5
-pkgrel=4
+pkgver=3.34.5+r16+g61cfff1c
+pkgrel=1
 pkgdesc="GNOME Bluetooth Subsystem (legacy)"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"
 arch=(x86_64)
@@ -29,7 +29,7 @@ makedepends=(
 )
 checkdepends=(python-dbusmock)
 provides=(libgnome-bluetooth.so)
-_commit=736eadbfb693d9594371470ad83370d327df6f74  # tags/3.34.5^0
+_commit=61cfff1cf33e195c254a9a80abee7b377a6d8d36  # gnome-3-34
 source=("git+https://gitlab.gnome.org/GNOME/gnome-bluetooth.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -41,14 +41,15 @@ pkgver() {
 prepare() {
   cd gnome-bluetooth
 
-  # Remove bluetooth-sendto, shipped in gnome-bluetooth-3.0
-  sed -i "/'sendto'/d" meson.build
+  # Fix build with newer Meson
+  git cherry-pick -n f02378b9d587b8b3295e4d0e0b477c850535df22
 }
 
 build() {
   local meson_options=(
     -D gtk_doc=true
     -D icon_update=false
+    -D sendto=false
   )
 
   arch-meson gnome-bluetooth build "${meson_options[@]}"
