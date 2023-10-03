@@ -7,27 +7,50 @@ pkgdesc="A program for ripping and encoding Audio-CDs, encoding files from disk.
 arch=('x86_64')
 url='https://kde.org/applications/en/unmaintained/org.kde.kaudiocreator'
 license=('GPL')
-depends=('kdelibs4support'
-         'knotifyconfig'
-         'kcmutils'
-         'libdiscid'
-         'libkcompactdisc'
-         'taglib'
-         'libmusicbrainz5'
-         )
-makedepends=('git'
-             'extra-cmake-modules'
-             'kdoctools'
-             'doxygen'
-             'python'
-             )
+depends=(
+  'gcc-libs' # libgcc_s.so
+  'glibc' # libstdc++.so libc.so
+  'qt5-base' # libQt5Core.so libQt5Gui.so libQt5Network.so libQt5Widgets.so
+  'bash'
+  'taglib' # libtag.so
+  'libmusicbrainz5' 'libmusicbrainz5.so'
+  'libdiscid' # libdiscid.so
+  'kcodecs5' # libKF5Codecs.so
+  'kcompletion5' # libKF5Completion.so
+  'knotifyconfig5' # libKF5NotifyConfig.so
+  'ktextwidgets5' # libKF5TextWidgets.so
+  'kconfigwidgets5' # libKF5ConfigWidgets.so
+  'kconfig5' # libKF5ConfigCore.so libKF5ConfigGui.so
+  'kcmutils5' # libKF5KCMUtils.so
+  'phonon-qt5' # libphonon4qt5.so
+  'kxmlgui5' # libKF5XmlGui.so
+  'libkcompactdisc' # libKF5CompactDisc.so
+  'kcoreaddons5' # libKF5CoreAddons.so
+  'kio5' # libKF5KIOCore.so libKF5KIOWidgets.so
+  'kwidgetsaddons5' # libKF5WidgetsAddons.so
+  'knotifications5' # libKF5Notifications.so
+  'ki18n5' # libKF5I18n.so
+  'solid5' # libKF5Solid.so
+  'kservice5' # libKF5Service.so
+  'kdelibs4support' # libKF5KDELibs4Support.so
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'git'
+  'extra-cmake-modules'
+  'kdoctools5'
+  'doxygen'
+  'python'
+)
 conflicts=('kaudiocreator')
 provides=('kaudiocreator')
-source=('git+https://invent.kde.org/unmaintained/kaudiocreator.git'
-        'git+https://invent.kde.org/multimedia/libkcddb.git#branch=release/20.04')
-sha256sums=('SKIP'
-            'SKIP'
-            )
+source=(
+  'git+https://invent.kde.org/unmaintained/kaudiocreator.git'
+  'git+https://invent.kde.org/multimedia/libkcddb.git#branch=release/20.04')
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd kaudiocreator
@@ -36,8 +59,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build{,-libkcddb}
-
   sed -e 's|SHARED|STATIC|g' \
       -e 's|PRIVATE musicbrainz|&5|g' \
       -i libkcddb/libkcddb/CMakeLists.txt
@@ -48,23 +69,26 @@ prepare() {
 }
 
 build() {
-  cd build-libkcddb
-  cmake "${srcdir}/libkcddb" \
+  cmake -S libkcddb -B build-libkcddb \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_INSTALL_PREFIX="${srcdir}/fakeroot/usr" \
     -DBUILD_TESTING=OFF
 
-  make install
+  cmake --build build-libkcddb
+  cmake --install build-libkcddb
 
-  cd "${srcdir}/build"
-  cmake "${srcdir}/kaudiocreator" \
+  cmake -S kaudiocreator -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTING=OFF \
+    -DBUILD_TESTING=ON \
     -DKF5Cddb_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5Cddb"
 
-  make
+  cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
