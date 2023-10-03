@@ -1,6 +1,6 @@
 pkgbase = onedriver
 	pkgdesc = Native Linux filesystem for Microsoft OneDrive
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 0
 	url = https://github.com/jstaf/onedriver
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = onedriver
 	makedepends = go
 	depends = fuse2
 	depends = webkit2gtk
-	source = onedriver-0.13.0.tar.gz::https://github.com/jstaf/onedriver/archive/refs/tags/v0.13.0.tar.gz
-	sha512sums = aa831017c4d9612fbdea1e2fab05864f84074e6b80e7613ae739d2954e7b6e975d6a1aaaaba330c0038dae69839dcf608576a96a88797cf575791fae65673d4a
+	source = onedriver-0.14.0.tar.gz::https://github.com/jstaf/onedriver/archive/refs/tags/v0.14.0.tar.gz
+	sha512sums = 09bd2246df6c153f49006313796cf6ffdd4623d48b87366fbafc4fa503276c072cdc349dd5fcb258e55ca9550171b5cbaf7dccc1dc8f2ebf0dd07cfe56e3f08a
 
 pkgname = onedriver
