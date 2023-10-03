@@ -1,21 +1,18 @@
 pkgbase = eclipse-cpp-bin
-	pkgdesc = Highly extensible IDE
-	pkgver = 2021.06
+	pkgdesc = Highly extensible IDE (C/C++ version)
+	pkgver = 2023.09
 	pkgrel = 1
 	url = https://www.eclipse.org
 	arch = x86_64
 	license = EPL
 	makedepends = tar
-	depends = java-environment>=11
-	depends = python
-	depends = libsecret
 	provides = eclipse-cpp
 	conflicts = eclipse-cpp
-	source = https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
+	source = https://mirrors.bfsu.edu.cn/eclipse/technology/epp/downloads/release/2023-09/R/eclipse-cpp-2023-09-R-linux-gtk-x86_64.tar.gz
 	source = eclipse-cpp.desktop
 	source = eclipse-cpp.png
-	sha512sums = ff3038cdc15cc6a43b9d374f2035cea59209ee0b46a3f45ff99af22899240ff5f8898eb3b77eb0ee122f10307602ee3963d3417f1af86f1fb7af9d0d8a47fcde
-	sha512sums = 7f83cadc9827f4caaa80b68caaf3c9ffe629f861bb0ea0d6fe8b473f7e0f26a7e088aed48e3dbd757e2363c5375a7c2af2f33fd429e9ee1f50d72c3ffb868b49
+	sha512sums = 62bb58ce22873a5af2205c520bd28a3971fdcb0e7a27aeaeb2e7b717dfd2e7ce613f52885f459dddaf1274d19100f5561b6277cbea38c4c90142688ef8f990e5
+	sha512sums = 2156b0f409fe99673c731d084d8c617b0c8bf4dfd26a2d78f8d0f75c95c28cabde0dc8704ed6d2bb86bdda897949ee13ba0ee8c2e4ac8cadecd938934a24eca4
 	sha512sums = 7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f
 
 pkgname = eclipse-cpp-bin
