@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export PATH="$PATH:/opt/aarch64-glibc-bleeding-edge/bin"
