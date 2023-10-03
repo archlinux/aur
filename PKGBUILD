@@ -5,7 +5,7 @@
 
 pkgbase=openal-git
 pkgname=(openal-git openal-examples-git)
-pkgver=1.21.0.r11.g7e767702
+pkgver=1.23.1.r242.g340a22be
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
@@ -17,12 +17,12 @@ makedepends=(alsa-lib libpulse fluidsynth portaudio jack qt5-base sdl2
 optdepends=('qt5-base: alsoft-config GUI Configurator'
             'fluidsynth: MIDI rendering'
             'libmysofa: makemhr tool')
-source=("git+https://github.com/kcat/openal-soft")
+source=("git+https://github.com/kcat/openal-soft.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd openal-soft
-  git describe --long --tags | sed 's/^openal-soft-//;s/-/.r/;s/-/./g'
+  git describe --long --tags --exclude=makemhr | sed 's/^openal-soft-//;s/-/.r/;s/-/./g'
 }
 
 build() {
@@ -34,7 +34,7 @@ build() {
 }
 
 package_openal-git() {
-  provides=("openal=$pkgver")
+  provides=("openal=$pkgver" libopenal.so)
   conflicts=("openal")
 
   DESTDIR="$pkgdir" cmake --install build
