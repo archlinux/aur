@@ -1,6 +1,6 @@
 pkgbase = ste-git
 	pkgdesc = Command Space-Time explorer
-	pkgver = r22.8e680b6
+	pkgver = r24.3067a91
 	pkgrel = 1
 	url = https://github.com/fabiensanglard/st
 	arch = x86_64

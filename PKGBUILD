@@ -3,7 +3,7 @@
 _gitname=st
 _pkgname=${_gitname}e
 pkgname=${_pkgname}-git
-pkgver=r22.8e680b6
+pkgver=r24.3067a91
 pkgrel=1
 pkgdesc="Command Space-Time explorer"
 arch=(x86_64)
@@ -36,6 +36,8 @@ build() {
 package() {
     cd "${srcdir}/${_gitname}"
     make DESTDIR="$pkgdir" install prefix=/usr
+    # setuid
+    chmod 4755 "${pkgdir}/usr/bin/${_pkgname}"
 
     # license
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
