@@ -3,7 +3,7 @@
 _gitname=st
 _pkgname=${_gitname}e
 pkgname=${_pkgname}-git
-pkgver=r24.3067a91
+pkgver=r31.1d4e4ca
 pkgrel=1
 pkgdesc="Command Space-Time explorer"
 arch=(x86_64)
@@ -13,13 +13,14 @@ depends=(
     gcc-libs
 )
 makedepends=(
+    clang
     git
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
+    cd "${srcdir}/${_gitname}"
 
     (
         set -o pipefail
@@ -30,14 +31,15 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
+    export CC=clang
+    export CXX=clang++
     make
 }
 
 package() {
     cd "${srcdir}/${_gitname}"
-    make DESTDIR="$pkgdir" install prefix=/usr
     # setuid
-    chmod 4755 "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm4755 bin/${_pkgname} -t "$pkgdir"/usr/bin
 
     # license
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

@@ -1,10 +1,11 @@
 pkgbase = ste-git
 	pkgdesc = Command Space-Time explorer
-	pkgver = r24.3067a91
+	pkgver = r31.1d4e4ca
 	pkgrel = 1
 	url = https://github.com/fabiensanglard/st
 	arch = x86_64
 	license = MIT
+	makedepends = clang
 	makedepends = git
 	depends = gcc-libs
 	source = git+https://github.com/fabiensanglard/st.git
