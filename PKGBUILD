@@ -2,8 +2,8 @@
 
 pkgname='veracrypt-inyourlanguage'
 _pkgname='veracrypt'
-pkgver=1.25.9
-pkgrel=5
+pkgver=1.26.7
+pkgrel=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.'
 url='https://www.veracrypt.fr'
 arch=('x86_64' 'i686' 'arm64' 'armhf')
@@ -13,30 +13,27 @@ conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-git-no
 depends=('fuse2>=2.8.0' 'wxwidgets-gtk3' 'libsm' 'device-mapper')
 makedepends=('git' 'yasm' 'libxml2' 'coreutils')
 optdepends=('sudo: mounting encrypted volumes as nonroot users')
-source=(https://launchpad.net/${_pkgname}/trunk/${pkgver}/+download/VeraCrypt_${pkgver}_Source.tar.bz2
+source=(https://veracrypt.fr/code/VeraCrypt/snapshot/VeraCrypt_${pkgver}.tar.gz
         select_lang.sh
-        veracrypt_starter.sh
         veracrypt.desktop)
-sha512sums=('9b11c8d8e85770ae05960fef8fc9639731e4f9caf0cc4e50bc8c9c92b45d44c80eaeff483d3ab048fd6a82cc873a6027820e21abde7ddb92b3c368f85b837cf2'
-            '2a9cca7377bb5ef001b61359d3b3b52e5a47f80f2894b574e58eb9ba3031e76499f6e4c3d6bde670ecff09e5426938dd9233b0ed553fc745b07d6956fa3d13d6'
-            '5ec80c7da8199a7a4fe3506cbae7583f437ee09edf2819f35996c62f7e14c43f19e8211b9c9eedc9f85f083ea1a01246ab2ebe9ad6ef0316b502fb954fc8d211'
-			'c82ba12401bacc8726796a0e2968f1bfb390cef7927cc560a40a07bff53caaad44ab8ce810e6b3eb074e6e3da34f65c30a50d306a4b0fda62d26043d4595f639')
+sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd'
+            '1ad5b969744fa983c8b4702a4288e761f2684960a1cd8d6c95479c21d2f16933137453af743f53fce0240afb48ce4968dc66d8d708390f6eed557ce25a264998'
+            'e0d915815501c04c15db6d0bbad50933cbc5d70e322d4da847ff3168eb7c46b7ae032483d363df9e06e15447db8f889b5809ba96231ef800b58f131305c0ce83')
 
 prepare() {
   bash $srcdir/../select_lang.sh
 }
 
 build() {
-  cd src
+  cd VeraCrypt_${pkgver}/src
   make PKG_CONFIG_PATH=/usr/lib/pkgconfig WX_CONFIG=/usr/bin/wx-config
 }
 
 package() {
-  cd src
+  cd VeraCrypt_${pkgver}/src
   make DESTDIR="$pkgdir/" install
   rm -r "$pkgdir/usr/sbin"
   rm -r "$pkgdir/usr/share/veracrypt"
-  install -Dm 755 "${srcdir}/veracrypt_starter.sh" "${pkgdir}/usr/bin"
   install -Dm 644 "${srcdir}/veracrypt.desktop" "${pkgdir}/usr/share/applications"
 }
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #~~ Script for PKGBUILD
-#~~ Select GUI-language for Veracrypt
+#~~ Select GUI-language for Veracrypt 1.26.7 and higher (x86_64) Linux
 #~~ by Shapiro <shapiro at quantentunnel dot de>
-#~~ v1.2
+#~~ v1.3
 
 country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl pt-br ro sk sl sv th tr uk uz vi zh-cn zh-hk zh-tw"
 clear
@@ -35,7 +35,7 @@ echo "40. Chinese (Hong Kong): zh-hk   41. Chinese (Taiwan): zh-tw"
 echo ""
 read -p "==> " var
 if [[ "$country_codes" == *"$var"* ]]; then
-	cp "./Translations/Language.$var.xml" "./src/Common/Language.xml"
+	cp "./VeraCrypt_1.26.7/Translations/Language.$var.xml" "./VeraCrypt_1.26.7/src/Common/Language.xml"
 	case "$var" in
 	ar)
 		echo "Language set to: Arabic (ar)"
