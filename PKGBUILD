@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2023.09.15
-platform=RB_20230913
+pkgver=2023.10.03
+platform=RB_20231002
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
         "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop"
         "ffmpeg_mathops.patch::https://git.videolan.org/?p=ffmpeg.git;a=patch;h=effadce6c756247ea8bae32dc13bb3e6f464f0eb")
-sha256sums=('ac31a4753549532ae94f09a2919699e8d92d1f3dc6953e2fd0881991a10558d4'
-            '2c968ae2c6753f9fe4892714567c75b744db2521895eb77b391ff17910ead692'
+sha256sums=('53c272b0f172fcca0c27a4573520085df5ef2c02b34e20c6a8bd2e5bb1dbc2e1'
+            '222d25fdffc567424225d335daa852f2ae32a62fd62e5bb63de02957a22be7e2'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380'
             'a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f')
 
@@ -98,6 +98,8 @@ ac_add_options --disable-maintenance-service
 #mk_add_options PYTHON=/usr/bin/python2
 EOF
 
+  # Fix compilation
+  # https://www.linuxquestions.org/questions/slackware-14/regression-on-current-with-ffmpeg-4175727691/#post6446145
   cd platform/media/ffvpx
   patch -Np1 -i "${srcdir}/ffmpeg_mathops.patch"
 }
