@@ -1,24 +1,23 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=bilili
-pkgver=1.4.13
+pkgver=1.4.14
 pkgrel=1
 pkgdesc='bilibili video and danmaku downloader | B站视频、弹幕下载器'
 arch=('any')
-url='https://github.com/SigureMo/bilili'
+url='https://github.com/yutto-dev/bilili'
 license=('GPL3')
 depends=('python-requests' 'python-biliass' 'ffmpeg')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://pypi.io/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('78aae85dbf82c9e35db13e8ca1b02b419f0e426126ad6b8c0307f2d290032752')
+sha256sums=('58c58e12f838fd355c016c0d9b2255c423c388d4ce7b2407928e6a0320ceff59')
 
 build() {
     cd "$pkgname-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    rm -rf "$pkgdir/usr/lib/"*"/site-packages/tests" || true
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
