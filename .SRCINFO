@@ -16,7 +16,6 @@ pkgbase = qtforkawesome-git
 	makedepends = qtutilities-git
 	makedepends = qt5-declarative
 	depends = qt5-base
-	depends = mesa
 	optdepends = qt5-declarative: Qt Quick integration
 	optdepends = qtforkawesome-doc: API documentation
 	provides = libqtforkawesome-git.so

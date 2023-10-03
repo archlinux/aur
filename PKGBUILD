@@ -13,7 +13,7 @@ pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
 license=('GPL')
-depends=('qt5-base' 'mesa')
+depends=('qt5-base')
 optdepends=(
   'qt5-declarative: Qt Quick integration'
   "$_name-doc: API documentation"
