@@ -4,7 +4,7 @@
 # Contributor: Francisco Giordano <frangio.1@gmail.com>
 
 pkgname=truffle
-pkgver=5.7.3
+pkgver=5.11.5
 pkgrel=1
 pkgdesc='Development framework for Ethereum smart contracts'
 url='https://github.com/trufflesuite/truffle'
@@ -15,7 +15,7 @@ depends=('nodejs')
 makedepends=('npm')
 noextract=("$pkgname-$pkgver.tgz")
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('7faa8c5a8b6861bcfe5cb0821f328f5f228bf63c923817a755b6fc05c498a716')
+sha256sums=('bbc24698fc9964cd80acc8952500f708ef18984096eba9e75f40db3486392347')
 
 package() {
 	npm install -g --production --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$pkgname-$pkgver.tgz"
