@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('python-boto3: for Route53 support'
 checkdepends=('python-pytest' 'python-vcrpy' 'python-boto3' 'python-localzone' 'python-softlayer'
               'python-zeep' 'python-dnspython' 'bind')
 source=("https://github.com/AnalogJ/lexicon/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('4ba799c6f7a01b8209f5274337258d0525efff366b297fff2fcff1d40c7ee58850fa8c3743bf9d29a1a082288e1f615cd94036a9cdc7be9f85e46f26fe3d7fbc')
+sha512sums=('582efefb93d9f122cf3f900ddc7cf615295855645f6d9621f14c11067e441eb67349adf40e5159b75e8c5703d1cfd874364d392ce2994feb89949d371b4b55be')
 
 build() {
   cd lexicon-$pkgver
