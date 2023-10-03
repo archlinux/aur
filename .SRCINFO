@@ -3,10 +3,13 @@ pkgbase = mips32el-musl-bleeding-edge-toolchain
 	pkgver = 2023.08
 	pkgrel = 1
 	url = https://toolchains.bootlin.com/
+	install = hooks.install-mips32el-musl-bleeding-edge-toolchain
 	arch = x86_64
 	license = GPL
 	source = https://toolchains.bootlin.com/downloads/releases/toolchains/mips32el/tarballs/mips32el--musl--bleeding-edge-2023.08-1.tar.bz2
+	source = profile.sh-mips32el-musl-bleeding-edge-toolchain
 	sha256sums = d267cbc5ecb9e22bab2edd95450ae314f7d75d2eac34574f8df87d5778d8ae07
+	sha256sums = b1be15136b35ace1fdc7712628e3b2e89470fc04b5897f971c2ca6fcd6405e50
 
 pkgname = mips32el-musl-bleeding-edge-toolchain
 	options = !strip
