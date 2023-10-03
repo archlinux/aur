@@ -39,16 +39,13 @@ source=(
 	# cubeb submodules
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
-	# commit 62889adfde94710f280868c1b7dc4be4cc8cc229 causes crashes
-	fiber.diff
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'e8c9f4a658474befb699407d9f40a0420b6a529b8c4f07493a91f3a3d11e2034')
+            'SKIP')
 
 pkgver() {
 	cd Cemu
