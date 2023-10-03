@@ -1,13 +1,16 @@
 pkgbase = neolink
 	pkgdesc = An RTSP bridge to Reolink IP cameras.
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QuantumEntangledAndy/neolink
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
 	makedepends = rust
 	depends = gst-rtsp-server
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-good
 	conflicts = neolink-git
 	backup = etc/neolink.toml
 	source = neolink-0.6.2.tar.gz::https://github.com/QuantumEntangledAndy/neolink/archive/refs/tags/v0.6.2.tar.gz
