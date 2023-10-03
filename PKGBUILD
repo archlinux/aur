@@ -3,7 +3,7 @@
 pkgname=ppm-git
 _pkgname=ppm
 _gitname=plugin-manager
-pkgver=latest.r0.g1360bdc
+pkgver=continuous.r0.g67c3d18
 pkgrel=1
 pkgdesc='A plugin manager for the Pragtical editor'
 arch=('x86_64' 'aarch64')
