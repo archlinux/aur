@@ -1,4 +1,4 @@
-pkgbase = pypy3-lxml
+pkgbase = pypy-lxml
 	pkgdesc = The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt
 	pkgver = 4.9.2
 	pkgrel = 1

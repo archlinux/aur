@@ -1,7 +1,7 @@
 # Maintainer: Fernando Ortiz <nandub+arch@nandub.info>
 # Contributor: Michael Beasley <youvegotmoxie@gmail.com>
 
-pkgbase=pypy3-lxml
+pkgbase=pypy-lxml
 pkgname=('pypy3-lxml')
 pkgver=4.9.2
 pkgrel=1
