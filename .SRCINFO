@@ -1,8 +1,8 @@
 pkgbase = wordplay
 	pkgdesc = Wordplay generates anagrams of words or phrases. For example, Debian GNU/Linux = laud benign unix, nubian lug index, dang nubile unix, or I debug in lax nun.
 	pkgver = 8
-	pkgrel = 1
-	url = http://hsvmovies.com/static_subpages/personal_orig/wordplay/index.html
+	pkgrel = 2
+	url = https://github.com/mendelmunkis/wordplay
 	arch = i686
 	arch = x86_64
 	license = GPL

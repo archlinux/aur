@@ -3,10 +3,10 @@
 
 pkgname=wordplay
 pkgver=8
-pkgrel=1
+pkgrel=2
 pkgdesc="Wordplay generates anagrams of words or phrases. For example, Debian GNU/Linux = laud benign unix, nubian lug index, dang nubile unix, or I debug in lax nun."
 arch=('i686' 'x86_64')
-url="http://hsvmovies.com/static_subpages/personal_orig/wordplay/index.html"
+url="https://github.com/mendelmunkis/wordplay"
 license=('GPL')
 depends=('words')
 source=(${pkgname}-${pkgver}.zip::https://github.com/mendelmunkis/wordplay/archive/refs/heads/master.zip
