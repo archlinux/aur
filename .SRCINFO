@@ -1,15 +1,17 @@
 pkgbase = python-ttkwidgets
 	pkgdesc = Collection of widgets for Tkinter's ttk extensions
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/RedFantom/ttkwidgets
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = tk
 	depends = python-pillow
-	source = python-ttkwidgets-0.12.0.tar.gz::https://github.com/RedFantom/ttkwidgets/archive/0.12.0.tar.gz
-	sha512sums = 0face6cbb3d40f20c70d848c39c11b460a53a0866536e879c14d5b69d59e18414b54bcad163753481df9bc7ec226308774287b91ee2cdd2826e383b783fc4e93
+	source = ttkwidgets-0.13.0.tar.gz::https://files.pythonhosted.org/packages/source/t/ttkwidgets/ttkwidgets-0.13.0.tar.gz
+	sha512sums = 085c4e3c2e915e2bdae14731ba0d11f017aa103e60aaceb9e1700311074e609e569ae77d50e76eb598a96aab354a1a62062f8417201f262f34e51d344918f223
 
 pkgname = python-ttkwidgets
