@@ -1,7 +1,7 @@
 # Maintainer: Ido Perlmuter <ido@ido50.net>
 pkgname=sqlar-fossil
-pkgver=c4e365a36a
-pkgrel=2
+pkgver=f9267bb61a
+pkgrel=1
 pkgdesc="Compressed archives in SQLite databases, including a fuse filesystem"
 arch=('any')
 url="https://sqlite.org/sqlar/doc/trunk/README.md"
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-fossil}"
-	CFLAGS= make all
+    CFLAGS="-Wno-misleading-indentation -Wno-return-local-addr -O2" make all
 }
 
 package() {
