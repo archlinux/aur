@@ -2,14 +2,13 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=0.21.0.31436.g14994bd9f7
+pkgver=0.22.0.34522.gd8636dd058
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
 url='https://www.freecad.org/'
 license=('LGPL')
 depends=(
-adios2
 boost-libs
 fmt
 glew
@@ -33,9 +32,10 @@ qt5-x11extras
 qt5-xmlpatterns
 qt5-base
 shared-mime-info
-xerces-c
 vtk
 verdict
+xerces-c
+yaml-cpp
 )
 makedepends=(
 boost
@@ -44,6 +44,7 @@ coin
 eigen
 git
 ninja
+nlohmann-json
 python-shiboken2
 shiboken2
 swig
@@ -57,8 +58,6 @@ optdepends=(
 'libspnav: 3D mouse support'
 'openscad: OpenSCAD support'
 'graphviz: dependency graph support'
-'python-markdown: markdown support in addon manager'
-'python-gitpython: support downloading addons with git'
 'python-pip: support installing python dependencies for addons'
 'calculix-ccx: FEM solver backend'
 )
