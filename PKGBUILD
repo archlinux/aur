@@ -29,7 +29,7 @@ depends=(
 )
 makedepends=(
   'extra-cmake-modules'
-  'kdoctools'
+  'kdoctools5'
   'git'
   'python'
 )
