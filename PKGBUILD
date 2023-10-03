@@ -10,7 +10,7 @@ arch=("any")
 license=("BSD")
 url="https://github.com/BRML/climin"
 depends=('python' 'python-numpy' 'python-scipy')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 source=("git://github.com/BRML/climin.git")
 sha512sums=("SKIP")
 
