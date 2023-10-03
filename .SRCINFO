@@ -1,6 +1,6 @@
 pkgbase = kicost
 	pkgdesc = KiCAD script to convert BOM xml into spreadsheet
-	pkgver = 1.1.17
+	pkgver = 1.1.18
 	pkgrel = 1
 	url = https://github.com/xesscorp/KiCost/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = kicost
 	depends = python-validators
 	depends = python-wxpython
 	depends = python-colorama
-	source = kicost-1.1.17.tar.gz::https://github.com/xesscorp/KiCost/archive/v1.1.17.tar.gz
-	sha512sums = 2af1e62554d09ba31b68607a9425b37db85ecc92500775bb889debe318c7767cdc0b7b145ee58958b2fc747fc5b2265383f2184434708705bc0f414b8b80fb74
+	source = kicost-1.1.18.tar.gz::https://github.com/xesscorp/KiCost/archive/v1.1.18.tar.gz
+	sha512sums = 442cd84024a6ddaa1bfc5a85e16011c2c3e2b55d09497d87ac04b378e99ec88cb36c278348e5220e4520fbf134396b23994d28287a382d94454cbca18c4facaa
 
 pkgname = kicost
