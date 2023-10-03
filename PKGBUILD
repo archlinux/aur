@@ -1,14 +1,14 @@
 # Maintainer: shurizzle <shura1991@gmail.com>
 
 pkgname=otf-commit-mono
-pkgver=1.138
+pkgver=1.139
 pkgrel=1
 pkgdesc="An anonymous and neutral programming typeface focused on creating a better reading experience."
 arch=(any)
 url='https://commitmono.com/'
 license=('custom:SIL Open Font License v1.1')
-source=("commit-mono.zip::https://github.com/eigilnikolajsen/commit-mono/releases/download/${pkgver}/CommitMono-${pkgver}.zip")
-sha256sums=('7ecad1d1acc524f731bb4822a795f3c2750be32efb6a6966fabf6ed821f22d6e')
+source=("commit-mono.zip::https://github.com/eigilnikolajsen/commit-mono/releases/download/v${pkgver}/CommitMono-${pkgver}.zip")
+sha256sums=('5cf3b126f8a7c02414b6b25e16c9fe700e3d18f88d9ccdc0aadae8b92e17b078')
 
 package() {
   local size weight srcdir fontdir
