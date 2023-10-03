@@ -1,11 +1,9 @@
-# Maintainer: grufo
-# Maintainer: jugs
-# Contributor: madmurphy <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: Sebastian Jug <seb AT stianj DOT ug>
 # Contributor: midgard <arch.midgard AT janmaes DOT com>
 # Contributor: TrialnError <autumn-wind AT web DOT de>
 # Contributor: Yardena Cohen <yardenack AT gmail DOT com>
 # Contributor: Max Roder <maxroder AT web DOT de>
-# Contributor: Sebastian Jug <seb AT stianj DOT ug>
 # Contributor: BrLi
 
 #
