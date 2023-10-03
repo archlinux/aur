@@ -27,7 +27,7 @@ depends=('libqtutilities-qt6.so' 'libtagparser.so' 'libc++utilities.so' 'desktop
 [[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
 [[ $_js_provider == script ]] && depends+=('qt6-script')
 [[ $_js_provider == qml ]] && depends+=('qt6-declarative')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang' 'mesa')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 checkdepends=('cppunit' 'jq' 'appstream')
 url="https://github.com/Martchus/${_reponame}"

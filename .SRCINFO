@@ -17,7 +17,6 @@ pkgbase = tageditor-qt6
 	makedepends = qt6-tools
 	makedepends = qt6-declarative
 	makedepends = clang
-	makedepends = mesa
 	makedepends = reflective-rapidjson
 	depends = libqtutilities-qt6.so
 	depends = libtagparser.so
