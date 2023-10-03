@@ -1,29 +1,13 @@
 Description: Fix linux paths
 
---- vdhcoapp.old/app/converter.js
-+++ vdhcoapp.new/app/converter.js
-@@ -44,7 +44,7 @@
- else
- 	throw new Error("Unsupported architecture",process.arch);
- 
--const binaryDir = path.join(path.dirname(process.execPath),"..","converter","build",platform,arch);
-+const binaryDir = platform == "linux" ? "/usr/bin" : path.join(path.dirname(process.execPath),"..","converter","build",platform,arch);
- const binaryPath = path.join(binaryDir,"ffmpeg");
- const probeBinaryPath = path.join(binaryDir,"ffprobe");
- const playBinaryPath = path.join(binaryDir,"ffplay");
-
 --- vdhcoapp.old/app/native-autoinstall.js
 +++ vdhcoapp.new/app/native-autoinstall.js
-@@ -82,7 +82,11 @@
- 		mode = "system";
- 	var config;
- 	try {
--		config = JSON.parse(fs.readFileSync(path.resolve(path.dirname(process.execPath),"../config.json"),"utf8"));
-+		if(process.platform == "linux") {
-+			config = JSON.parse(fs.readFileSync(path.resolve(path.dirname(process.execPath),"../share/vdhcoapp/config.json"),"utf8"));
-+		} else {
-+			config = JSON.parse(fs.readFileSync(path.resolve(path.dirname(process.execPath),"../config.json"),"utf8"));
-+		}
- 	} catch(err) {
- 		DisplayMessage("Cannot read config file: "+err.message,"Error");
- 		process.exit(-1);
+@@ -64,7 +64,7 @@
+   }
+   let config;
+   try {
+-    config = JSON.parse(fs.readFileSync(path.resolve(path.dirname(process.execPath), "./config.json"), "utf8"));
++    config = JSON.parse(fs.readFileSync(path.resolve(path.dirname(process.execPath), "../share/vdhcoapp/config.json"), "utf8"));
+   } catch (err) {
+     DisplayMessage("Cannot read config file: " + err.message, "Error");
+     process.exit(-1);
