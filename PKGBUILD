@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 pkgname=python-gtts
 _name=gTTS
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Python library and CLI tool to interface with Google Translate's text-to-speech API"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-click' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-cov' 'python-testfixtures')
 source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('90dbdd49aadac924176e8e8337cfd50156dd2e10e7f4ee7ef59f7c6089a6b6c3')
+sha256sums=('a41eb4bc1fa91174159f65ba9ba2225a7733bf16eb3c8c53aef9b225ccffa235')
 
 build() {
   cd "$_name-$pkgver"
@@ -28,5 +28,5 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
