@@ -1,6 +1,6 @@
 # Maintainer: Rizzzi Git <rizzzigit@gmail.com>
 
-tmlver="2023.08.3.1"
+tmlver="2023.08.3.2"
 terrariaver="1.4.4.9"
 pkgrel=1
 epoch=0
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-  "29af64cf7b616f4afcf1a77791b5d2058b7ea57a3687842205119d19943aa6f2"
+  "f0467848e729dab75801f00c3670a856a52954ba2b2aef22d27de20a61f96a17"
 )
 
 noextract=("tml-$tmlver.zip")
@@ -33,7 +33,7 @@ package() {
     mkdir -p "$rootdir"
   fi
 
-  cp "tml-$tmlver.zip" "$packfile"
+  install -Dm600 "tml-$tmlver.zip" "$packfile"
   echo "$tmlver" > "$rootdir/ver.txt"
 
   if [[ ! -e $bindir ]]
