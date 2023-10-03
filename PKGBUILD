@@ -1,8 +1,8 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy'
-pkgver='1.14.0'
-pkgrel=2
+pkgver='1.15.0'
+pkgrel=1
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
@@ -32,7 +32,7 @@ source=(
   "https://github.com/tropy/tropy/archive/refs/tags/v${pkgver}.tar.gz")
 
 sha256sums=('0fdf0fcaa4676bc3a2835a7ef6b4a9f6b809a37e48775f62d9f4fab52da43901'
-            'b85d83fd8e28b8ed93f28f022366b1152bc83184dacaedd373ea7f911fbc7fb1')
+            '390b0574d26039a75dc1e48c41891038ff830721ab5cc226dac364950e7198b0')
 
 build() {
   cd "${srcdir}/tropy-${pkgver}"
@@ -46,26 +46,34 @@ package() {
   install -dm755 "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/share/icons"
   install -dm755 "${pkgdir}/usr/share/mime"
+  install -dm755 "${pkgdir}/usr/share/metainfo"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cd "${srcdir}"
   install -Dm755 tropy.sh "${pkgdir}/usr/bin/tropy"
 
   cd "tropy-${pkgver}/dist/Tropy-linux-x64"
-  install -m644 -t "${pkgdir}/usr/share/applications" tropy.desktop
+  install -m644 -t "${pkgdir}/usr/share/applications" \
+    org.tropy.Tropy.desktop
+  install -m644 -t "${pkgdir}/usr/share/metainfo" \
+    org.tropy.Tropy.metainfo.xml
 
   cd resources
   install -m644 -t "${pkgdir}/usr/lib/tropy/" app.asar
   cp -r app.asar.unpacked "${pkgdir}/usr/lib/tropy"
 
-  find "${pkgdir}/usr/lib/tropy" -type d -print0 | xargs -I {} -0 chmod 755 "{}"
-  find "${pkgdir}/usr/lib/tropy" -type f -print0 | xargs -I {} -0 chmod 644 "{}"
+  find "${pkgdir}/usr/lib/tropy" -type d -print0 | \
+    xargs -I {} -0 chmod 755 "{}"
+  find "${pkgdir}/usr/lib/tropy" -type f -print0 | \
+    xargs -I {} -0 chmod 644 "{}"
 
   cp -r mime "${pkgdir}/usr/share/" 
   cp -r icons "${pkgdir}/usr/share/" 
 
-  find "${pkgdir}/usr/lib/tropy" -type d -print0 | xargs -I {} -0 chmod 755 "{}"
-  find "${pkgdir}/usr/share" -type f -print0 | xargs -I {} -0 chmod 644 "{}"
+  find "${pkgdir}/usr/share" -type d -print0 | \
+    xargs -I {} -0 chmod 755 "{}"
+  find "${pkgdir}/usr/share" -type f -print0 | \
+    xargs -I {} -0 chmod 644 "{}"
 
   cd app.asar.unpacked
   install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
