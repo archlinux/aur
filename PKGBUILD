@@ -7,14 +7,12 @@ pkgver=5.2228
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Application to flash your MediaTek (MTK) SmartPhone.'
-url='http://spflashtools.com/category/linux'
+url="http://${_pkgname}s.com/category/linux"
 _url="${url%/*/*}"
 license=('unknown')
-conflicts=("$_pkgname" "$pkgname")
+conflicts=("$pkgname-bin")
 makedepends=('gendesk' 'unzip')
-#depends=('')
-noextract=()
-source=("$_pkgname-$pkgver.zip::$_url/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip")
+source=("$_url/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip")
 sha256sums=('18b11eed341fd57feb7fbc58a7b8eb93429bacc7d25a993878af8a0b6e98df10')  # 'makepkg -g' to generate it.
 
 
@@ -22,31 +20,34 @@ sha256sums=('18b11eed341fd57feb7fbc58a7b8eb93429bacc7d25a993878af8a0b6e98df10') 
 prepare(){
     # Utilidad 'gendesk' para generar el archivo .desktop.
     gendesk -f -n \
-        --pkgname="$_pkgname" \
+        --pkgname="$pkgname" \
         --pkgdesc="$pkgdesc" \
-        --name="$_pkgname" \
-        --genericname="$_pkgname" \
+        --name="$pkgname" \
+        --genericname="$pkgname" \
         --comment="$pkgdesc" \
-        --exec="$_pkgname" \
-        --path="/opt/$_pkgname" \
-        --icon="$_pkgname" \
+        --exec="$pkgname" \
+        --path="/opt/$pkgname" \
+        --icon="$pkgname" \
         --categories='Development,Education'
 }
 
 
 # Función 'package': Crea el paquete instalable.
 package() {
-    # Crear el directorio de destino si no existe.
-    install -d "$pkgdir/opt/$pkgname/"
+    # Asegurarse que el directorio de destino exista.
+    mkdir -p "$pkgdir/opt/$pkgname"
 
-    # Extraer solo el contenido del ZIP "-j" y sobreescríbalo "-o" en el directorio de destino "-d".
-    unzip -oj "$_pkgname-$pkgver.zip" -d "$pkgdir/opt/$pkgname/"  
-
-    # Permisos de ejecución.
-    chmod +x $pkgdir/opt/$pkgname/flash_tool{,.sh}
+    # Directorio de descompresión de la herramienta spflashtool5.
+    local -r dirspflash="$srcdir/SP_Flash_Tool_v${pkgver}_Linux/"
 
     # Sustituir la URL en Credits.txt porque se requiere la de Linux, no la de Windows.
-    sed -Ei 's|(https://spflashtools.com/category/)windows|\1linux|g' "$pkgdir/opt/$pkgname/Credits.txt"
+    sed -Ei 's|('"$_url"'/category/)windows|\1linux|g' "$dirspflash/Credits.txt"
+
+    # Permisos de ejecución.
+    chmod +x $dirspflash/flash_tool{,.sh}
+
+    # Copia el contenido del directorio al directorio de destino.
+    cp -r "$dirspflash"* "$pkgdir/opt/$pkgname/"
 
     # Script de ejecución.
     install -Dvm755 <(echo -e '#!/usr/bin/env bash
@@ -56,10 +57,16 @@ LD_LIBRARY_PATH="$dirname:$dirname/lib"
 export LD_LIBRARY_PATH
 "$dirname/$appname" "$@"') \
     $pkgdir/usr/bin/$pkgname
+
+    # Instalar el archivo .desktop en la ubicación (-t) adecuada.
+    install -Dvm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+
+    # Instalar el icono de spflashtool5.
+    install -Dvm644 "../icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
 ## Test.
-# rm -rf spflashtool* src/
+# rm -rf spflashtool* SP* src/ pkg/
 # makepkg --printsrcinfo > .SRCINFO
 
 ## References.
