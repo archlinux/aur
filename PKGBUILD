@@ -39,7 +39,7 @@ depends=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
-makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'mesa' 'boost')
+makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'boost')
 checkdepends=('cppunit' 'syncthing' 'iproute2' 'appstream')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')

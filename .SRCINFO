@@ -17,7 +17,6 @@ pkgbase = syncthingtray-git
 	makedepends = ninja
 	makedepends = qt5-tools
 	makedepends = git
-	makedepends = mesa
 	makedepends = boost
 	makedepends = kio
 	makedepends = plasma-framework
@@ -39,4 +38,3 @@ pkgbase = syncthingtray-git
 	sha256sums = SKIP
 
 pkgname = syncthingtray-git
-
