@@ -2,9 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python312
-pkgver=3.12.0rc3
+pkgver=3.12.0
 pkgrel=1
-_pyver=3.12.0
 _pybasever=3.12
 _pymajver=3
 pkgdesc="Major release 3.12 of the Python high-level programming language"
@@ -14,13 +13,13 @@ url="https://www.python.org/"
 depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
-source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('96397e891e98802b1d399dee3ceaeb9bcf0aa2566c8a7b1cce4d0196c277506a')
+source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
+sha256sums=('795c34f44df45a0e9b9710c8c71c15c671871524cd412ca14def212e8ccb155d')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
 )
-provides=("python=$_pyver")
+provides=("python=$pkgver")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
