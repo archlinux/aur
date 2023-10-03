@@ -1,12 +1,12 @@
 pkgbase = hyprland-monitor-attached
 	pkgdesc = Run bash script when you attach the monitor on Hyprland
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/coffebar/hyprland-monitor-attached
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = git+https://github.com/coffebar/hyprland-monitor-attached#commit=dfa6128
+	source = git+https://github.com/coffebar/hyprland-monitor-attached#commit=72551d6
 	sha256sums = SKIP
 
 pkgname = hyprland-monitor-attached
