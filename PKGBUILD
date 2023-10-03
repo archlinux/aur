@@ -1,5 +1,5 @@
-# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
-# Contributor: The-Repo-Club <The-Repo-Club@github.com>
+# Maintainer: HeCodes2Much <HeCodes2Much@github.com>
+# Contributor: HeCodes2Much <HeCodes2Much@github.com>
 # shellcheck disable=all
 
 pkgname=pacmanity
@@ -7,7 +7,7 @@ pkgver=2021.11.14
 pkgrel=1
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
 arch=('x86_64')
-url="https://github.com/The-Repo-Club/$pkgname"
+url="https://github.com/HeCodes2Much/$pkgname"
 license=('GPL')
 makedepends=('git')
 depends=('pacman>=6.0' 'gist>=4.5.0')

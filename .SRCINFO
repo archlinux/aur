@@ -2,14 +2,14 @@ pkgbase = pacmanity
 	pkgdesc = Keeps a list of installed packages in a Gist at your GitHub account
 	pkgver = 2021.11.14
 	pkgrel = 1
-	url = https://github.com/The-Repo-Club/pacmanity
+	url = https://github.com/HeCodes2Much/pacmanity
 	install = pacmanity.install
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = pacman>=6.0
 	depends = gist>=4.5.0
-	source = pacmanity-2021.11.14.tar.gz::https://github.com/The-Repo-Club/pacmanity/archive/2021.11.14.tar.gz
+	source = pacmanity-2021.11.14.tar.gz::https://github.com/HeCodes2Much/pacmanity/archive/2021.11.14.tar.gz
 	sha256sums = 64c874b208126a0cf6e28b81b15912dae87010cd48b01c09b20564cd1646e1c5
 
 pkgname = pacmanity
