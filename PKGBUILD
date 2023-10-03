@@ -18,8 +18,6 @@ md5sums=('bec24fb9bcc24e11732402d49728705e'
 build() {
   cd "$srcdir/"
   cp -a ${pkgname}-master ${pkgname}-${pkgver}
-pwd
-ls
   patch -p0 -i wordplay_8-1.diff
   cd ${pkgname}-${pkgver}
 
