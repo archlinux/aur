@@ -2,7 +2,7 @@
 
 pkgname='tropy-bin'
 pkgver='1.15.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
@@ -26,19 +26,22 @@ source=(
   "https://github.com/tropy/tropy/releases/download/v${pkgver}/tropy-${pkgver}-x64.tar.bz2")
 
 sha256sums=('0fdf0fcaa4676bc3a2835a7ef6b4a9f6b809a37e48775f62d9f4fab52da43901'
-            '3d50f585ffcc2e4cc603eddb7447cae6295eea723f203a52807638bbbc39a2ef')
+            '747a3385121d29c0a22eaf39c56518a358b9b76301baac7da89bd38bbcb6c7e2')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/tropy"
   install -dm755 "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/share/icons"
   install -dm755 "${pkgdir}/usr/share/mime"
+  install -dm755 "${pkgdir}/usr/share/metainfo"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cd "${srcdir}"
   install -Dm755 tropy.sh "${pkgdir}/usr/bin/tropy"
   install -m644 -t "${pkgdir}/usr/share/applications" \
     org.tropy.Tropy.desktop
+  install -m644 -t "${pkgdir}/usr/share/metainfo" \
+    org.tropy.Tropy.metainfo.xml
 
   cd resources
   install -m644 -t "${pkgdir}/usr/lib/tropy/" app.asar
