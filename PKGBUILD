@@ -50,7 +50,7 @@ makedepends=(
   'git'
   'cmake'
   'extra-cmake-modules'
-  'kdoctools'
+  'kdoctools5'
   'python'
 )
 optdepends=(
