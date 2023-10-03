@@ -4,7 +4,7 @@
 
 pkgname=friture
 pkgver=0.49
-pkgrel=2
+pkgrel=3
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
 url="https://friture.org/"
@@ -13,7 +13,7 @@ depends=('python-appdirs' 'python-docutils' 'python-multipledispatch' 'python-nu
   'python-pa-ringbuffer' 'python-pyqt5' 'python-pyrr' 'python-rtmixer'
   'python-sounddevice')
 optdepends=('jack: for JACK I/O support')
-makedepends=('cython' 'python-pip' 'python-setuptools' 'python-wheel')
+makedepends=('cython0' 'git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=(
   "https://github.com/tlecomte/friture/archive/refs/tags/v${pkgver}.tar.gz"
   python3.11.patch
@@ -28,13 +28,13 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  python setup.py build
+  python3 -m build -nwx
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  python setup.py install --root="${pkgdir}/"
+  python3 -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 resources/images/friture.iconset/icon_512x512.png \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
@@ -45,4 +45,4 @@ package() {
 }
 
 sha256sums=('9643c56c4901ae892e16a35c418099bb28784bc4baeebfcf1cd8ea0f9b5de743'
-            '253b32b6e4b4855fe06f9fc8b4a6ed03eb0241a434ddc6ad9baa2bf2b3939250')
+  '253b32b6e4b4855fe06f9fc8b4a6ed03eb0241a434ddc6ad9baa2bf2b3939250')
