@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.22.9
+pkgver=0.22.10
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -85,10 +85,6 @@ package() {
   cd build
 
   make DESTDIR="$pkgdir/" install
-  
-  # remove some trash
-  rm -r "$pkgdir/usr/share/albert/python/plugins/.archive"
-  rm -r "$pkgdir/usr/share/albert/python/plugins/.git"*
 }
 
 # vim:set ts=2 sw=2 et:
