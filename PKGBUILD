@@ -1,18 +1,29 @@
+# Maintainer: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgbase=gtksourceview5
-pkgname=(gtksourceview5 gtksourceview5-docs)
-pkgver=5.8.0
+pkgname=(
+  gtksourceview5
+  gtksourceview5-docs
+)
+pkgver=5.10.0
 pkgrel=1
 pkgdesc="A text widget adding syntax highlighting and more to GNOME"
 url="https://wiki.gnome.org/Projects/GtkSourceView"
 arch=(x86_64)
 license=(LGPL)
 depends=(
+  cairo
+  fontconfig
+  fribidi
+  gdk-pixbuf2
+  glib2
   gtk4
+  hicolor-icon-theme
   libxml2
+  pango
   pcre2
 )
 makedepends=(
@@ -23,7 +34,7 @@ makedepends=(
   vala
 )
 checkdepends=(xorg-server-xvfb)
-_commit=21ca89f7947d232f1ebd12b2a7780994d7771ea4  # tags/5.8.0^0
+_commit=fd0b63d6926a3b2cdfbc4fafc1d16bcab5eced3b  # tags/5.10.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gtksourceview.git#commit=$_commit")
 b2sums=('SKIP')
 
