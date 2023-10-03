@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 #~~ Script for PKGBUILD
-#~~ Select GUI-language for Veracrypt 1.25.7 and higher (x86_64) Linux
-#~~ by Shapiro <shapiro@quantentunnel.de>
-#~~ v1.1 (option for Corsican language and fancy ascii-art included)
+#~~ Select GUI-language for Veracrypt
+#~~ by Shapiro <shapiro at quantentunnel dot de>
+#~~ v1.2
 
-country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl pt-br ro ru sk sl sv th tr uk uz vi zh-cn zh-hk zh-tw"
+country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl pt-br ro sk sl sv th tr uk uz vi zh-cn zh-hk zh-tw"
 clear
 echo ""
 echo '____   ____                  _________                        __'
@@ -21,17 +21,17 @@ echo '        |_|_||_|  \_, \___/\_,_|_|   |_\__,_|_||_\__, |\_,_\__,_\__, \___|
 echo '                  |__/                           |___/          |___/'
 echo ""
 echo ""
-echo "Enter the country code for your preferred language (i.e. de for German):"
+echo " Enter the country code for your preferred language (i.e. de for German):"
 echo ""
 echo " 1. Arabic: ar   2. Belarusian: be   3. Bulgarian: bg   4. Catalan: ca   5. Corsican: co"
-echo " 6. Czech: cs   7. Danish: da   8. German: de   9. Greek: el   10. English: en (DEFAULT)"
+echo " 6. Czech: cs   7. Danish: da   8. German: de   9. Greek: el   10. English (DEFAULT): en"
 echo "11. Spanish: es   12. Estonian: et   13. Basque: eu   14. Persian: fa   15. Finnish: fi"
 echo "16. French: fr   17. Hebrew: he   18. Hungarian: hu   19. Indonesian: id   20. Italian: it"
 echo "21. Japanese: ja   22. Georgian: ka   23. Korean: ko   24. Latvian: lv   25. Burmese: my"
 echo "26. Dutch: nl   27. Norwegian: nn   28. Polish: pl   29. Portuguese/Brazil: pt-br   30. Romanian: ro"
-echo "31. Russian: ru   32. Slovak: sk   33. Slovenian: sl   34. Swedish: sv   35. Thai: th"
-echo "36. Turkish: tr   37. Ukrainian: uk   38. Uzbek/Cyrillic: uz   39. Vietnamese: vi"
-echo "40. Chinese/Simplified: zh-cn   41. Chinese/Hong Kong: zh-hk   42. Chinese/Taiwan: zh-tw"
+echo "31. Slovak: sk   32. Slovenian: sl   33. Swedish: sv   34. Thai: th   35. Turkish: tr"
+echo "36. Ukrainian: uk   37. Uzbek (Cyrillic): uz   38. Vietnamese: vi   39. Chinese (Simplified): zh-cn"
+echo "40. Chinese (Hong Kong): zh-hk   41. Chinese (Taiwan): zh-tw"
 echo ""
 read -p "==> " var
 if [[ "$country_codes" == *"$var"* ]]; then
@@ -124,9 +124,6 @@ if [[ "$country_codes" == *"$var"* ]]; then
 	ro)
 		echo "Language set to: Romanian (ro)"
 		;;
-	ru)
-		echo "Language set to: Russian (ru)"
-		;;
 	sk)
 		echo "Language set to: Slovak (sk)"
 		;;
@@ -152,10 +149,10 @@ if [[ "$country_codes" == *"$var"* ]]; then
 		echo "Language set to: Vietnamese (vi)"
 		;;
 	zhcn)
-		echo "Language set to: Chinese/Simplified (zhcn)"
+		echo "Language set to: Chinese/Simplified (zh-cn)"
 		;;
 	zhhk)
-		echo "Language set to: Chinese/Hong Kong (zhhk)"
+		echo "Language set to: Chinese/Hong Kong (zh-hk)"
 		;;
 	zhtw)
 		echo "Language set to: Chinese/Taiwan (zh-tw)"

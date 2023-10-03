@@ -1,12 +1,12 @@
-# Maintainer: Shapiro <shapiro@quantentunnel.de>
+# Maintainer: Shapiro <shapiro at quantentunnel dot de>
 
 pkgname='veracrypt-inyourlanguage'
 _pkgname='veracrypt'
 pkgver=1.25.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.'
 url='https://www.veracrypt.fr'
-arch=('x86_64')
+arch=('x86_64' 'i686' 'arm64' 'armhf')
 license=('Apache 2.0' 'TrueCrypt 3.0')
 provides=('veracrypt')
 conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-git-no-gost' 'veracrypt-trans')
@@ -18,9 +18,9 @@ source=(https://launchpad.net/${_pkgname}/trunk/${pkgver}/+download/VeraCrypt_${
         veracrypt_starter.sh
         veracrypt.desktop)
 sha512sums=('9b11c8d8e85770ae05960fef8fc9639731e4f9caf0cc4e50bc8c9c92b45d44c80eaeff483d3ab048fd6a82cc873a6027820e21abde7ddb92b3c368f85b837cf2'
-            '1c6b79ef584958f803a2f2a6268c301ee095db4b2f9f90503cd20dcc9a4558bc27e9bc95f6f73d3c6d116c35eeeb6661b82f6c33c6368f71c35d234efbf98737'
-            '631b0a50154e8c99ba8143a27a0146e24aaec34a64fa08be168ea0bce5e0b0b8b3812b880305cd94528638484500c114921c92e164b2acd07440fe689b752d25'
-            '31008f51fa85a7bc2542eeefc4e0ba813a5327ce5c0f6e5926de9ca79ec5b9b312ec998984be60e7d623e1f8722a228f78c659d2e4dacee89f0d5abcb1ade7ff')
+            '2a9cca7377bb5ef001b61359d3b3b52e5a47f80f2894b574e58eb9ba3031e76499f6e4c3d6bde670ecff09e5426938dd9233b0ed553fc745b07d6956fa3d13d6'
+            '5ec80c7da8199a7a4fe3506cbae7583f437ee09edf2819f35996c62f7e14c43f19e8211b9c9eedc9f85f083ea1a01246ab2ebe9ad6ef0316b502fb954fc8d211'
+			'c82ba12401bacc8726796a0e2968f1bfb390cef7927cc560a40a07bff53caaad44ab8ce810e6b3eb074e6e3da34f65c30a50d306a4b0fda62d26043d4595f639')
 
 prepare() {
   bash $srcdir/../select_lang.sh
