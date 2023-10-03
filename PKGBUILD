@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=xplico
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)"
 url="http://www.xplico.org/"
@@ -10,16 +10,16 @@ depends=(
   apache
   json-c
   lame
-  mariadb-clients
   libmaxminddb
   libnet
   libpcap
+  mariadb-clients
   ndpi
   net-tools
-  pecl-mcrypt
   perl
   php
   php-apache
+  php-mcrypt
   php-sqlite
   python-httplib2
   python-psycopg2

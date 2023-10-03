@@ -1,7 +1,7 @@
 pkgbase = xplico
 	pkgdesc = Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.xplico.org/
 	install = xplico.install
 	arch = i686
@@ -10,16 +10,16 @@ pkgbase = xplico
 	depends = apache
 	depends = json-c
 	depends = lame
-	depends = mariadb-clients
 	depends = libmaxminddb
 	depends = libnet
 	depends = libpcap
+	depends = mariadb-clients
 	depends = ndpi
 	depends = net-tools
-	depends = pecl-mcrypt
 	depends = perl
 	depends = php
 	depends = php-apache
+	depends = php-mcrypt
 	depends = php-sqlite
 	depends = python-httplib2
 	depends = python-psycopg2
@@ -38,4 +38,3 @@ pkgbase = xplico
 	sha256sums = 17e363bfe2d9bf1faec5ccbe6d3c7480e8510c9cb14fd056a117329dff4fa94a
 
 pkgname = xplico
-
