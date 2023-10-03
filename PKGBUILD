@@ -1,7 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2023
-pkgver=2023.0.1
+pkgver=2023.0.3
 pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64' 'aarch64')
@@ -10,7 +11,7 @@ license=('custom')
 depends=('java-runtime>=9' 'sane')
 source=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb"
         "$pkgname.desktop")
-sha256sums=('69f461c7d542551154268527aacd5bcc5d325e9cf7c8480b8858cc441f71bec9'
+sha256sums=('250c79c892e3c16e154572ccfbf54d0d714df19707271971c8a0c8cdcfbe844b'
             'fdcba512d02c666e3f116afeb6811457483e09ad29f934b5bce13c862fd473d6')
 
 prepare() {
