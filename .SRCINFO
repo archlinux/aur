@@ -1,23 +1,26 @@
 pkgbase = snpeff
 	pkgdesc = Genetic variant annotation and effect prediction toolbox. doi:10.4161/fly.19695
-	pkgver = 5.1
-	pkgrel = 3
+	pkgver = 5.2
+	pkgrel = 2
 	url = https://pcingola.github.io/SnpEff/
 	arch = any
 	license = MIT
 	makedepends = maven
 	makedepends = java-environment>=12
+	makedepends = git
 	depends = java-runtime>=12
 	depends = python
 	depends = perl
 	depends = antlr4
 	provides = SnpSift
-	source = SnpEff-5.1.tar.gz::https://github.com/pcingola/SnpEff/archive/refs/tags/v5.1.tar.gz
+	source = SnpEff-5.2.tar.gz::https://github.com/pcingola/SnpEff/archive/refs/tags/v5.2.tar.gz
 	source = SnpSift-5.1.tar.gz::https://github.com/pcingola/SnpSift/archive/refs/tags/v5.1.tar.gz
+	source = https.patch::https://patch-diff.githubusercontent.com/raw/pcingola/SnpSift/pull/84.patch
 	source = snpSift.sh
 	source = snpEff.sh
-	sha512sums = eb12a126f71536eb04132e40b5f3e0bea33b6512dce999a70e5c170d2839d739ea8b52e5b38822e83c544693aec7ece20f13674634ae3971a6f08659dc7b9640
+	sha512sums = df0cdb4ddde60491789494a809e8fb28a7b6c5f1b18c1f639a76828a4d2c19d27d019cb0b2362c5fa8734c21b770377b8eec6e8beb76fda287e4eda016f380e7
 	sha512sums = 074139695584227d3e523962b81ed1cd1687a146b973ec761e5c42fccf865b6f01bd8fc1280a1f73e7c9ab3292bfc3358d56a572f0795bd05fa879011a4ad950
+	sha512sums = eb802167761ea7de0b7fdb60b0cc9440d40ea21fe6ed164dc900452e224d71039a8e187e1b7a6499b91338580378c33aa678a23b81f3e27f0f939a4cd3ef6a0c
 	sha512sums = 9819376173c372cec8ae3f28d1b3857a1b63690bf16213e6f26ebd5d29150616c8f8a3d0ecf8d9ba24c34e24f28ab56edecf8c9cee3c578ae673da7c65c48f0d
 	sha512sums = 0eb2339b55969cc065b8c15bee06d8728b0576689217777bf24e209409d61210f91e814bb1a5dddc651dd2a3f35d0f3911bd3161d6d3275604ea58cf83f9086a
 
