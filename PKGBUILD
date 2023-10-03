@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=convco
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Conventional commits, changelog, versioning, validation'
 url='https://convco.github.io'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/convco/convco/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e63e07e3d98aa0bcce10824d9aa2de89f0bda90bad3a322311dba4efe7a1d13')
-b2sums=('4d5d94fe63d32235e6f147dc2a38cc5b9affdd621c5bc9d23e7e4b159d56daf33c72586ce62447de81865ce807838be5229ce43a2adebf42069d188d7b02bd88')
+sha256sums=('8e5253e5968f364f86d2f1cfb24c95a68890bf620886c644c7df981b803bb808')
+b2sums=('b493df913eb2a058bde5a1950c52117fa9ff76d8bc6188d674de480bc320291b3381b148706ed05a526fb9c1a7e00d7c98edaeba7ca325e07958161c20066f8e')
 
 case $CARCH in
   x86_64|i686|aarch64)
