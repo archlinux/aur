@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+function getconfig {
+    git config -f ~/.avr --get "$1"
+}
+
+function load {
+    tmpdir=$(mktemp -d)
+    pkgdir="${1}"
+
+    source "${pkgdir}/PKGBUILD"
+    latest=$(_latest)
+
+    if [ "$latest" != "$(echo -e "${latest//v}\n$pkgver" | sort -V | head -n1)" ]; then
+        prefix="${_pkgname:-${pkgname}}"
+        export "${prefix^^}_VERSION=${latest//v}"
+        source "${pkgdir}/PKGBUILD.tpl"
+
+        sha256="\nsha256sums=(\n"
+        for uri in ${source[@]}; do
+            srcname="${uri%%::*}"
+            if [ ! -z ${srcname} ]; then
+                srcname=$(basename ${uri})
+            fi
+            srcuri="${uri##*::}"
+            curl -s -L -o $tmpdir/$srcname $srcuri
+            sha256+="    $(sha256sum $tmpdir/$srcname | cut -d' ' -f1)\n"
+        done
+        sha256+=")\n"
+
+        envsubst "\$${prefix^^}_VERSION" < "${pkgdir}/PKGBUILD.tpl" > "${pkgdir}/PKGBUILD"
+
+        printf "${sha256}" >> "${pkgdir}/PKGBUILD"
+
+        cd "$pkgdir"
+        makepkg --printsrcinfo > .SRCINFO
+        cd ..
+
+        git add "${pkgdir}/PKGBUILD" "${pkgdir}/.SRCINFO"
+        git ci -m "bumping $pkgname to version $latest"
+        aurpublish "$pkgdir"
+        git push origin main
+    fi
+}
+
+cd $(getconfig update.localRepositoryLocation)
+git pull origin main
+
+for result in $(find . -mindepth 2 -maxdepth 2 -type f -name ".autoupdate"); do
+    package=$(echo $result | cut -d'/' -f 2)
+    if [ -f "${package}/PKGBUILD" ]; then
+        ( load "${package}" )
+    fi
+done

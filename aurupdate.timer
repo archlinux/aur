@@ -1,0 +1,10 @@
+[Unit]
+Description=Update AUR PKGBUILD hourly
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

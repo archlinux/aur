@@ -1,0 +1,10 @@
+[Unit]
+Description=Update AUR PKGBUILD
+After=network-online.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Nice=19
+ExecStart=/usr/bin/aurupdate
+Restart=no
