@@ -2,7 +2,7 @@
 # Maintainer: SeriousM4x <maxi at quoss dot org>
 
 pkgname='upsnap-bin'
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='A simple wake on lan web app written with SvelteKit, Go and PocketBase.'
 url='https://github.com/seriousm4x/UpSnap'
@@ -13,17 +13,17 @@ conflicts=('UpSnap')
 depends=('sudo' 'libcap')
 optdepends=('nmap: to scan for network devices')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.0/UpSnap_4.1.0_linux_arm64.zip")
-sha256sums_aarch64=('4b8c8529465597ea41525eb91d7c91a31ee4a60545aaa2279e7bf08e10c40ec6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.1/UpSnap_4.1.1_linux_arm64.zip")
+sha256sums_aarch64=('2abe4449006092e085e69c9642cec35c508857f9cfbdba681a22754a192c1374')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.0/UpSnap_4.1.0_linux_armv6.zip")
-sha256sums_armv6h=('b5db95b53a3f06fe9cb440c2a57e6e93628b74d6a261dfe6ee3934728670fc61')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.1/UpSnap_4.1.1_linux_armv6.zip")
+sha256sums_armv6h=('4dbfe6d5e397f5cab2c9740bce7d1b2c839edfa453dea6305796d2d899875676')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.0/UpSnap_4.1.0_linux_armv7.zip")
-sha256sums_armv7h=('7d56a4df9d8c9952cab0dddd848e1320988443cf88866d91ac1edbfa387931f7')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.1/UpSnap_4.1.1_linux_armv7.zip")
+sha256sums_armv7h=('fdb3e359155fa8edae32014612694352db56d61c60c99c024ee30cc03e14d439')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.0/UpSnap_4.1.0_linux_amd64.zip")
-sha256sums_x86_64=('0bac57329906c16aa155f68ba0e1e4032492bafa1111052e520dd475b9ec7340')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.1.1/UpSnap_4.1.1_linux_amd64.zip")
+sha256sums_x86_64=('a94d55ae29e45dbcfce732c535aa4b6d088daeb98a381f90e2fccb2c63b1d345')
 
 package() {
   # bin
