@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=kicad-storybook-git
-pkgver=r5.b474cfc
+pkgver=r2.4dfd2e8
 pkgrel=1
 pkgdesc="A tool to automatically generate images & READMEs for KiCad symbols & footprints "
 arch=(i686 x86_64)
