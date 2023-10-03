@@ -10,6 +10,7 @@ pkgbase = thetroposphere
 	makedepends = qt6-tools
 	makedepends = qt6-positioning
 	makedepends = cmake
+	makedepends = clang
 	depends = libcontemporary
 	source = thetroposphere::https://github.com/theCheeseboard/theTroposphere/archive/v1.0.tar.gz
 	sha256sums = fe728c121cda29e88067e32e05bcf345a67c13d390c41863d013bb37601e0d63
