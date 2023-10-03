@@ -1,13 +1,13 @@
-pkgbase = generate-app-icons-git
+pkgbase = generate-app-icons
 	pkgdesc = A CLI for generate app icons for ios ipad Watch Mac Android devices
-	pkgver = 1.0.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://dnrops.gitee.io
 	arch = any
 	license = MIT
 	provides = generate-app-icons
 	conflicts = generate-app-icons
-	source = generate-app-icons-git::git+https://gitlab.com/andrew_ryan/generate-app-icons
+	source = generate-app-icons::git+https://gitlab.com/andrew_ryan/generate-app-icons
 	sha256sums = SKIP
 
-pkgname = generate-app-icons-git
+pkgname = generate-app-icons

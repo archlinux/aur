@@ -1,7 +1,7 @@
 # Maintainer: Andrew Ryan <dnrops@outlook.com>
 #
 
-pkgname=generate-app-icons-git
+pkgname=generate-app-icons
 _pkgname="generate-app-icons"
 pkgver=1.0.0
 pkgrel=1
