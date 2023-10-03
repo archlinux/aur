@@ -1,6 +1,6 @@
 pkgbase = python-pycparser-git
 	pkgdesc = C parser and AST generator written in Python
-	pkgver = 2.21.r2.g6a7edee
+	pkgver = 2.21.r24.gf740995
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/eliben/pycparser
@@ -9,6 +9,7 @@ pkgbase = python-pycparser-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-ply
+	provides = python-pycparser
 	conflicts = python-pycparser
 	source = git+https://github.com/eliben/pycparser
 	sha256sums = SKIP

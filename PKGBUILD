@@ -4,13 +4,14 @@
 # Contributor: lang2 <wenzhi.liang@gmail.com>
 
 pkgname=python-pycparser-git
-pkgver=2.21.r2.g6a7edee
+pkgver=2.21.r24.gf740995
 pkgrel=1
 epoch=1
 pkgdesc='C parser and AST generator written in Python'
 url='https://github.com/eliben/pycparser'
 makedepends=('git' 'python-setuptools')
 depends=('python-ply')
+provides=('python-pycparser')
 conflicts=('python-pycparser')
 arch=('any')
 license=('BSD')
