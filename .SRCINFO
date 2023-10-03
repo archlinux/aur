@@ -1,11 +1,11 @@
 pkgbase = kvkonqi
 	pkgdesc = A Kvantum theme that looks like Breeze theme
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Niru2169/KvKonqi
 	arch = any
 	license = GPL3
-	depends = kvantum-qt5
+	depends = kvantum
 	source = kvkonqi-dark@v1.1.tar.gz::https://github.com/Niru2169/KvKonqi/releases/download/v1.1/KvKonqiDark.tar.gz
 	source = kvkonqi-light@v1.1.tar.gz::https://github.com/Niru2169/KvKonqi/releases/download/v1.1/KvKonqiLight.tar.gz
 	sha256sums = 844fafaa191f641e64cab0ddf6b3434c62537145d48ef8c162dc85a64779e0b2
