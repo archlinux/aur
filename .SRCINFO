@@ -2,7 +2,7 @@ pkgbase = proctl
 	pkgdesc = Github Project Manager
 	pkgver = 2022.02.21
 	pkgrel = 1
-	url = https://github.com/The-Repo-Club/proctl
+	url = https://github.com/HeCodes2Much/proctl
 	arch = any
 	groups = therepoclub
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = proctl
 	optdepends = git: generating default config automatically
 	optdepends = fzf: -pick-license, -pick-language, -new-template flags
 	optdepends = ncurses: for the colors
-	source = proctl-2022.02.21.tar.gz::https://github.com/The-Repo-Club/proctl/archive/2022.02.21.tar.gz
+	source = proctl-2022.02.21.tar.gz::https://github.com/HeCodes2Much/proctl/archive/2022.02.21.tar.gz
 	sha256sums = 013bdc6ce2a3c69da020d38de4e241a257a5fbb0bf0b1bb32bccacd2f0364ca9
 
 pkgname = proctl

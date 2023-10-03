@@ -1,5 +1,5 @@
-# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
-# Contributor: The-Repo-Club <The-Repo-Club@github.com>
+# Maintainer: HeCodes2Much <HeCodes2Much@github.com>
+# Contributor: HeCodes2Much <HeCodes2Much@github.com>
 # shellcheck disable=all
 
 pkgname=proctl
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Github Project Manager"
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/The-Repo-Club/$pkgname"
+url="https://github.com/HeCodes2Much/$pkgname"
 license=('MIT')
 depends=('bash' 'coreutils')
 optdepends=('git: generating default config automatically' 'fzf: -pick-license, -pick-language, -new-template flags' 'ncurses: for the colors')
