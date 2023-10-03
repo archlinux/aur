@@ -1,5 +1,5 @@
-# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
-# Contributor: The-Repo-Club <The-Repo-Club@github.com>
+# Maintainer: HeCodes2Much <HeCodes2Much@github.com>
+# Contributor: HeCodes2Much <HeCodes2Much@github.com>
 # shellcheck disable=all
 
 pkgname=shellfetch
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Shell System Information Fetcher"
 arch=('any')
 groups=('linuxrepos')
-url="https://github.com/The-Repo-Club/$pkgname"
+url="https://github.com/HeCodes2Much/$pkgname"
 license=('MIT')
 depends=('bash' 'xorg-xrandr' 'figlet' 'ncurses')
 makedepends=('git')
