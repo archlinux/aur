@@ -1,8 +1,8 @@
 # Maintainer: Sergii Fesenko <sergii_f@loutlook.com>
 
 pkgname=txr-git
-_pkgname=txr
-pkgver=271.r0.884002da
+_pkgname=${pkgname%-git}
+pkgver=291.r0.bf5a4cbe
 pkgrel=1
 pkgdesc="A programming language for convenient data munging"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha256sums=(
   'b884b3d595bcc45514d4a200ad11017d54506bcb9952497c5feaa2cf87871113'
 )
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd $_pkgname
   git describe --tags --long | sed 's/txr-/v/; s/-/.r/; s/-g/./; s/^v//'
 }
 
@@ -48,4 +48,3 @@ package() {
   install -m644 -D -t "$pkgdir/usr/share/vim/vimfiles/syntax" txr.vim tl.vim
   install -m644 -D ../ftdetect.vim "$pkgdir/usr/share/vim/vimfiles/ftdetect/txr.vim"
 }
-

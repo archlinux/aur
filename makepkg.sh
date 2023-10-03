@@ -9,4 +9,5 @@ docker run \
   --network host \
   -e PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin \
   \
-  sfesenko/makepkg "$@"
+  sfesenko/makepkg "$@" && makepkg --printsrcinfo > .SRCINFO
+
