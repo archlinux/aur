@@ -4,8 +4,8 @@
 # Maintainer: Kim Larsson <kim@cunimb.org>
 
 pkgname=emacs-yaml-mode
-pkgver=0.0.15
-pkgrel=2
+pkgver=0.0.16
+pkgrel=1
 pkgdesc="Emacs major mode for editing files in the YAML data serialization format"
 arch=('any')
 url="https://github.com/yoshiki/yaml-mode"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('emacs')
 install=emacs-yaml-mode.install
 source=("$pkgname-$pkgver.taz.gz::https://github.com/yoshiki/${pkgname#emacs-}/archive/$pkgver.tar.gz")
-md5sums=('c8391814f5ffbd21881f6392f45c43d6')
+md5sums=('4debb1c5433d8c23a1c77e4b86526691')
 
 build() {
   cd ${pkgname#emacs-}-$pkgver
