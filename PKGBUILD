@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 
 pkgname=gildas
-pkgver=aug23a
+pkgver=oct23a
 pkgrel=1
 pkgdesc='GILDAS'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(gcc-fortran cfitsio gtk2)
 optdepends=(python-numpy)
 
 source=("https://www.iram.fr/~gildas/dist/gildas-src-$pkgver.tar.xz")
-sha512sums=('c8c71f692787e4d1ab4965f941b6c9a8bd8e4b5fdfffd430265e4fd04ce95d15eddbee36aff97c1d107cecc4d7a9b582be57a196d735449ee7aa8476d8cbc6e9')
+sha512sums=('b61dbb3b34a72e77e9601543be70f61bdbee2adf6b1b53bf510c8b6f3e2b6b4ef4b04ecea253658cadff0e3fbf86515e61bf98cfd1b43b12beb7910af228e928')
 options=('!strip')
 
 build() {
