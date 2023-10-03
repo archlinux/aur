@@ -2,7 +2,7 @@
 
 pkgname=aarch64be-glibc-bleeding-edge-toolchain
 pkgver=2023.08
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Ready-to-use cross-compilation toolchain provided by bootlin.com"
 arch=("x86_64")
 url="https://toolchains.bootlin.com/"
