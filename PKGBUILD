@@ -34,10 +34,8 @@ prepare(){
 
 # Función 'package': Crea el paquete instalable.
 package() {
-    # Asegurarse que el directorio de destino exista.
-    mkdir -p "$pkgdir/opt/$pkgname"
 
-    # Directorio de descompresión de la herramienta spflashtool5.
+    # Simplificar nombre del directorio de descompresión de la herramienta spflashtool5.
     local -r dirspflash="$srcdir/SP_Flash_Tool_v${pkgver}_Linux/"
 
     # Sustituir la URL en Credits.txt porque se requiere la de Linux, no la de Windows.
@@ -46,7 +44,8 @@ package() {
     # Permisos de ejecución.
     chmod +x $dirspflash/flash_tool{,.sh}
 
-    # Copia el contenido del directorio al directorio de destino.
+    # Cree el directorio de destino y copia en él, el contenido de spflashtool5.
+    mkdir -p "$pkgdir/opt/$pkgname"
     cp -r "$dirspflash"* "$pkgdir/opt/$pkgname/"
 
     # Script de ejecución.
