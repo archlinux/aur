@@ -1,19 +1,19 @@
 pkgbase = tsuru-bin
 	pkgdesc = tsuru-client is a tsuru command line tool for application developers.
-	pkgver = 1.17.1
+	pkgver = 1.17.2
 	pkgrel = 1
 	url = https://tsuru.io
 	license = BSD-3-Clause
 	conflicts = tsuru
 	provides = tsuru
 	arch = aarch64
-	source_aarch64 = https://github.com/tsuru/tsuru-client/releases/download/1.17.1/tsuru_1.17.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 774d004806a882fcf1c986f0314b51b2ce9aa8eb840681086710eb43aa07368c
+	source_aarch64 = https://github.com/tsuru/tsuru-client/releases/download/1.17.2/tsuru_1.17.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = a1b66547b457dfc69849ad86d99c0cd840040f4d9fb0043dd4d4b40b10af1d39
 	arch = i686
-	source_i686 = https://github.com/tsuru/tsuru-client/releases/download/1.17.1/tsuru_1.17.1_linux_386.tar.gz
-	sha256sums_i686 = d615a715d1322aa7e43f50c70b14822e9151cc09cbc5dc0b4eb77e6f05f7d696
+	source_i686 = https://github.com/tsuru/tsuru-client/releases/download/1.17.2/tsuru_1.17.2_linux_386.tar.gz
+	sha256sums_i686 = 674fc2ce62b93d5047ac1aae9c76cb3210404cd4432cd6f32b43746b61bdd933
 	arch = x86_64
-	source_x86_64 = https://github.com/tsuru/tsuru-client/releases/download/1.17.1/tsuru_1.17.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = af8ea0a512c616cea072a33d1c68b7c93d85b32d8f0a207f25e8837327b64060
+	source_x86_64 = https://github.com/tsuru/tsuru-client/releases/download/1.17.2/tsuru_1.17.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = bd2d9b8cfc6f4279fac773ac15774f1847812da5b36624b591bdaff97a18ed4b
 	
 pkgname = tsuru-bin
