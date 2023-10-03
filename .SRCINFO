@@ -1,13 +1,13 @@
 pkgbase = bmputil
 	pkgdesc = A management utility for debuggers running the Black Magic Debug firmware
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/blackmagic-debug/bmputil
 	arch = any
 	license = MIT OR Apache-2.0
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/blackmagic-debug/bmputil/archive/refs/tags/v0.1.0.tar.gz
-	b2sums = ab7d61bcab90b04fa4126dcd55ddbb905902c98f9a11dff174203f8230523c6e8a5f1c9cb86b7686388694089fcf0f1004cb0bd3c0ed3aa877e763d18e978086
+	source = https://github.com/blackmagic-debug/bmputil/archive/refs/tags/v0.1.1.tar.gz
+	b2sums = d9f1039db3bc2fa49e1787748a5cc634c5bb81eda9b42fc0043c15dfe34ab59351e9225340e97eef386502f08d2490034f8c9df3ec6f152639694b265c1d77a2
 
 pkgname = bmputil
