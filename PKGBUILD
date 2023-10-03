@@ -11,6 +11,7 @@ depends=(
 	'bat'
 	'btop'
 	'eza'
+	'git'
 	'nano'
 	'starship'
 	'zsh'

@@ -8,6 +8,7 @@ pkgbase = tiawa-base
 	depends = bat
 	depends = btop
 	depends = eza
+	depends = git
 	depends = nano
 	depends = starship
 	depends = zsh
