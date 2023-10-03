@@ -15,7 +15,6 @@ pkgbase = qtforkawesome-qt6
 	makedepends = qtutilities-qt6
 	makedepends = qt6-declarative
 	makedepends = clang
-	makedepends = mesa
 	depends = qt6-base
 	optdepends = qt6-declarative: Qt Quick integration
 	optdepends = qtforkawesome-doc: API documentation
