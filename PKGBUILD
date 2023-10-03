@@ -16,7 +16,7 @@ pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
 depends=('qt5-base' 'libqtutilities-git.so' 'libpasswordfile-git.so' 'libc++utilities-git.so' 'openssl'
          'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
-makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'mesa' 'kirigami2')
+makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'kirigami2')
 optdepends=('kirigami2: Qt Quick GUI')
 provides=("${_name}")
 conflicts=("${_name}")

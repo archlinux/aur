@@ -13,7 +13,6 @@ pkgbase = passwordmanager-git
 	makedepends = ninja
 	makedepends = qt5-tools
 	makedepends = git
-	makedepends = mesa
 	makedepends = kirigami2
 	depends = qt5-base
 	depends = libqtutilities-git.so
