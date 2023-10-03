@@ -13,6 +13,7 @@ depends=(
 	'eza'
 	'git'
 	'nano'
+	'nftables'
 	'starship'
 	'zsh'
 )
