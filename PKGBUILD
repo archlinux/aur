@@ -3,7 +3,7 @@
 
 pkgname=php-phalcon
 _pkgname=cphalcon
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
