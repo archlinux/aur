@@ -1,6 +1,6 @@
 pkgbase = xivlauncher
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/goatcorp/XIVLauncher.Core
@@ -46,7 +46,7 @@ pkgbase = xivlauncher
 	depends = jxrlib
 	optdepends = steam
 	options = !strip
-	source = XIVLauncher.Core::git+https://github.com/goatcorp/XIVLauncher.Core.git#tag=1.0.4
+	source = XIVLauncher.Core::git+https://github.com/goatcorp/XIVLauncher.Core.git#tag=1.0.5
 	source = XIVLauncher.desktop
 	sha512sums = SKIP
 	sha512sums = 5ac774f858d4015c59e6758e2a706b93e822bca9c046ed87210deabc141ac101020d2654fbcf8314f9409a4cfcf921d1e26ec0a3b0beab02d1bcd045fb6e6f14
