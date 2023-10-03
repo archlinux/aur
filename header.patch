@@ -7,7 +7,7 @@ index 1b15b348..decff003 100644
  # option setting
  option(BUILD_PR_FLOW "If ON, build PR flow." ON)
 -option(BUILD_STATIC_LIB "If ON, build static lib." ON)
-+option(BUILD_STATIC_LIB "If ON, build static lib." OFF)
++option(BUILD_STATIC_LIB "If ON, build static lib." ON)
  
  if(NOT BUILD_STATIC_LIB)
      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
@@ -45,6 +45,20 @@ index f542d49b..ccb7b66e 100755
  RUN_IEDA="OFF"
  NO_BUILD="OFF"
  DEL_BUILD="OFF"
+diff --git a/src/utility/log/CMakeLists.txt b/src/utility/log/CMakeLists.txt
+index 78838005..0f2d91a1 100644
+--- a/src/utility/log/CMakeLists.txt
++++ b/src/utility/log/CMakeLists.txt
+@@ -9,7 +9,7 @@ SET(LINK_unwind "unwind")
+ 
+ if(BUILD_STATIC_LIB)
+   ADD_LIBRARY(log ${SRC})
+-  SET(LINK_glog   "libglog.a")
++#  SET(LINK_glog   "libglog.a")
+   SET(LINK_gflags "libgflags.a")
+ else()
+   ADD_LIBRARY(log SHARED ${SRC})
+
 diff --git a/src/database/basic/geometry/IdbGeometry.h b/src/database/basic/geometry/IdbGeometry.h
 index ec16907c..3ca8a89f 100644
 --- a/src/database/basic/geometry/IdbGeometry.h

@@ -24,11 +24,9 @@ pkgbase = ieda
 	provides = iEDA
 	provides = iSTA
 	provides = iPower
-	provides = ista_cpp.cpython-311-x86_64-linux-gnu.so
-	provides = ipower_cpp.cpython-311-x86_64-linux-gnu.so
 	source = iEDA::git+https://github.com/OSCC-Project/iEDA.git
 	source = local://header.patch
 	sha256sums = SKIP
-	sha256sums = 5b5effd588e498146b92987ee22a5ed209838c6e58dc900e2ceb6e48791862d2
+	sha256sums = e132290a1640c3d347afdb243da2a61e0cc4bef8a3312fc05e2fc16a98487b74
 
 pkgname = ieda

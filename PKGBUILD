@@ -12,12 +12,12 @@ depends=('flex' 'boost-libs' 'google-glog' 'gtest'
          'gflags' 'tcl' 'yaml-cpp' 'libunwind'
          'metis' 'gmp')
 makedepends=('gcc' 'cmake' 'ninja' 'boost' 'eigen' 'git')
-provides=('iEDA' 'iSTA' 'iPower' 'ista_cpp.cpython-311-x86_64-linux-gnu.so' 'ipower_cpp.cpython-311-x86_64-linux-gnu.so')
+provides=('iEDA' 'iSTA' 'iPower')
 conflicts=()
 source=("iEDA::git+https://github.com/OSCC-Project/iEDA.git"
         "local://header.patch")
 sha256sums=('SKIP'
-            '5b5effd588e498146b92987ee22a5ed209838c6e58dc900e2ceb6e48791862d2')
+            'e132290a1640c3d347afdb243da2a61e0cc4bef8a3312fc05e2fc16a98487b74')
 
 prepare() {
   cd iEDA
