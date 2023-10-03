@@ -1,7 +1,7 @@
 pkgbase = xplayer
 	pkgdesc = Simple media player. X-Apps Project.
 	pkgver = 2.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linuxmint/xplayer
 	arch = i686
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = xplayer
 	optdepends = lirc: Infrared remote control plugin
 	optdepends = zeitgeist: Zeitgeist interface plugin
 	optdepends = grilo: Grilo plugins
+	optdepends = yelp: View help and documentation from the app
 	provides = xplayer
 	conflicts = xplayer-git
 	source = xplayer-2.4.2.tar.gz::https://github.com/linuxmint/xplayer/archive/2.4.2.tar.gz

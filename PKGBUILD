@@ -2,7 +2,7 @@
 
 pkgname=xplayer
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple media player. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -21,6 +21,7 @@ optdepends=(
     'lirc: Infrared remote control plugin'
     'zeitgeist: Zeitgeist interface plugin'
     'grilo: Grilo plugins'
+    'yelp: View help and documentation from the app'
 )
 provides=($pkgname)
 conflicts=('xplayer-git')
