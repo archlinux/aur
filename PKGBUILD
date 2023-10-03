@@ -7,8 +7,11 @@ pkgdesc="Ready-to-use cross-compilation toolchain provided by bootlin.com"
 arch=("x86_64")
 url="https://toolchains.bootlin.com/"
 license=("GPL")
-source=("https://toolchains.bootlin.com/downloads/releases/toolchains/armv5-eabi/tarballs/armv5-eabi--glibc--bleeding-edge-2023.08-1.tar.bz2")
-sha256sums=('79e017a9f7455a679eeb734c029cf17b32c62c30e85e39d48154645f2bef7f11')
+source=("https://toolchains.bootlin.com/downloads/releases/toolchains/armv5-eabi/tarballs/armv5-eabi--glibc--bleeding-edge-2023.08-1.tar.bz2"
+        "profile.sh-armv5-eabi-glibc-bleeding-edge-toolchain")
+install="hooks.install-armv5-eabi-glibc-bleeding-edge-toolchain"
+sha256sums=('79e017a9f7455a679eeb734c029cf17b32c62c30e85e39d48154645f2bef7f11'
+            '0393a397690b72ed670dcd34aa3fd2b5f85f2edac4dd08b7837377b7ff8110ef')
 
 build() {
 	cd "armv5-eabi--glibc--bleeding-edge-2023.08-1"
@@ -24,4 +27,7 @@ package() {
 	mkdir -p "$pkgdir/opt/armv5-eabi-glibc-bleeding-edge/"
 	cp -a * "$pkgdir/opt/armv5-eabi-glibc-bleeding-edge/"
 	rm -f "$pkgdir/opt/armv5-eabi-glibc-bleeding-edge/{buildroot.config,relocate-sdk.sh,summary.csv,share/buildroot/sdk-location}"
+
+	mkdir -p "$pkgdir/etc/profile.d/"
+	install -m0644 "$srcdir/profile.sh-armv5-eabi-glibc-bleeding-edge-toolchain" "$pkgdir/etc/profile.d/armv5-eabi-glibc-bleeding-edge-toolchain.sh"
 }
