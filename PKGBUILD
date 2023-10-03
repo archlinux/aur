@@ -10,16 +10,16 @@ license=('GPL')
 depends=('gtksourceview4' 'enchant' 'desktop-file-utils' 'libsm'
         'libpeas' 'xapps' 'gspell')
 makedepends=('git' 'gobject-introspection' 'meson' 'intltool' 'itstool')
+optdepends=(
+    'yelp: View help and documentation from the app'
+)
 provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
 url="https://github.com/linuxmint/${_pkgbasename}"
 
-source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git")
+source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
-prepare() {
-    cd ${srcdir}/${pkgname}
-}
 
 pkgver() {
     cd ${srcdir}/${pkgname}

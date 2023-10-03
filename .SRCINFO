@@ -19,6 +19,7 @@ pkgbase = xed-git
 	depends = libpeas
 	depends = xapps
 	depends = gspell
+	optdepends = yelp: View help and documentation from the app
 	provides = xed-git
 	provides = xed
 	conflicts = xed
