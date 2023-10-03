@@ -4,8 +4,8 @@ _name=foo-yc20
 _faust_version=0.9.73-mr2
 _faust_commit=40a919756d09c6b2de19b3299b7eef55997551dc
 pkgname="${_name}-git"
-pkgver=1.3.0.r330.b99d4a3
-pkgrel=3
+pkgver=1.3.0.r338.0076948
+pkgrel=1
 pkgdesc="An emulation of the Yamaha YC-20 combo organ as an LV2 plugin and a standalone program (git version)"
 arch=('x86_64' 'armv7l')
 url="https://github.com/sampov2/foo-yc20"
@@ -15,7 +15,7 @@ groups=('pro-audio' 'lv2-plugins')
 makedepends=('git')
 provides=("${_name}")
 conflicts=("${_name}")
-source=("${_name}::git+https://github.com/sampov2/foo-yc20.git"
+source=("${_name}::git+https://github.com/sampov2/foo-yc20.git#branch=master"
         # we need an obsolete version of FAUST as a build dependency,
         # for which there is, unfortuantely, no release tag or archive
         # just a branch, so we pin the commit for the checkout archive we're retrieving
