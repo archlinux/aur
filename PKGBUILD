@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 pkgver=4.0.0.gf391178af
-pkgrel=1
+pkgrel=2
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
@@ -40,12 +40,10 @@ provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-cmake-harfbuzz.patch'
         'mapnik-datasource-ogr-test.patch'
-        'mapnik-plugins-input-csv_utils-trim_if.patch'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
             '90f541c0845e3c7005564fa113771ce01cf2bcfd57662b7fa8849aabf4151638'
             '3fcf178e646df526e9a5c278f56ad16e4f75d2f27108e7b33419649a46b92f52'
-            'ec3034bbfc06604aefdf4c2caec7e44aff9dda65d893f2829b89f29e0d9c9c1f'
             'SKIP')
 
 pkgver() {
@@ -57,7 +55,6 @@ prepare() {
   cd mapnik || exit
   patch -Np1 < ../mapnik-cmake-harfbuzz.patch
   patch -Np1 < ../mapnik-datasource-ogr-test.patch
-  patch -Np1 < ../mapnik-plugins-input-csv_utils-trim_if.patch
   git submodule init \
     test/data
   git config submodule.test/data.url "$srcdir"/test-data
