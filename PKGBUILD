@@ -4,7 +4,7 @@
 
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="Mattermost Desktop for Linux (binary)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_x86_64=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${
 source_aarch64=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
 sha256sums=('8659351ccebf1fa46bf0ecae0f12261f003edd7cbab21a0a53628efbec02e141'
             'cc5507133b6ef1ccaf130263f4e2527b55eecf6427eb36a899bab695bcb3803c')
-sha256sums_x86_64=('86d8ca18ed7a42cd51544e14e3b0dd37c6cda541f8243fcb90c39ea084662cf2')
-sha256sums_aarch64=('2d084c488ad60d94d706725f2caa61e5eeadc471af412a84bbe3f58f5cce8938')
+sha256sums_x86_64=('6d188ee6060cee7ae791b1c13f707dcc02b6615e4f3a4737b2d12c6d9278f150')
+sha256sums_aarch64=('67853a25bc1ab2b6baf503c727dffb5b0312c61d0ef6be1021eff10b75917f8c')
 
 package() {
     _pkg=${srcdir}/${_pkgname}-${pkgver}-linux-x64
