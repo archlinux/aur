@@ -1,7 +1,7 @@
 # Maintainer: Max Roder <maxroder@mailbox.org>
 
 pkgname='pmwiki'
-pkgver='2.3.25'
+pkgver='2.3.26'
 pkgrel='1'
 pkgdesc='Wiki software based on PHP'
 url='http://www.pmwiki.org'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('php')
 install='pmwiki.install'
 source=("http://www.pmwiki.org/pub/${pkgname}/${pkgname}-${pkgver}.tgz")
-sha256sums=('d63bcea15a73b3dbabe95dd507e9e4fce4a91d067a977491a501db08870bb117')
+sha256sums=('e39b5deab37e0ce2b287872c5bec8390b2b689e3551521ad33f990c2c5533606')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
