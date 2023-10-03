@@ -1,0 +1,17 @@
+pkgbase = libappanvil-git
+	pkgdesc = A library for AppAnvil, a graphical user interface for the AppArmor security module
+	pkgver = r1357.c6ed7591
+	pkgrel = 1
+	url = https://github.com/jack-ullery/libappanvil
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = cmake
+	makedepends = clang
+	makedepends = bison
+	makedepends = flex
+	source = git+https://github.com/jack-ullery/libappanvil.git
+	md5sums = SKIP
+
+pkgname = libappanvil-git
