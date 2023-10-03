@@ -1,13 +1,14 @@
 pkgbase = abcde-musicbrainz-meta
 	pkgdesc = Depencies for enabling Musicbrainz support in abcde
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://abcde.einval.com/
 	arch = any
 	license = GPL
 	depends = abcde
 	depends = perl-webservice-musicbrainz
 	depends = perl-musicbrainz-discid
+	depends = perl-io-socket-ssl
+	depends = perl-lwp-protocol-https
 
 pkgname = abcde-musicbrainz-meta
-
