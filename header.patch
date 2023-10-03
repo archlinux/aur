@@ -1,0 +1,256 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b15b348..decff003 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ project(iEDA)
+ 
+ # option setting
+ option(BUILD_PR_FLOW "If ON, build PR flow." ON)
+-option(BUILD_STATIC_LIB "If ON, build static lib." ON)
++option(BUILD_STATIC_LIB "If ON, build static lib." OFF)
+ 
+ if(NOT BUILD_STATIC_LIB)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+@@ -30,7 +30,7 @@ option(BUILD_PYTHON "If ON, build python interface." OFF)
+ if(BUILD_PYTHON)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+ endif()
+-option(BUILD_GUI "If ON, build GUI." OFF)
++option(BUILD_GUI "If ON, build GUI." ON)
+ 
+ set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_VERBOSE_MAKEFILE OFF)
+@@ -80,4 +80,4 @@ add_subdirectory(src/evaluation)
+ add_subdirectory(src/analysis)
+ add_subdirectory(src/operation)
+ add_subdirectory(src/platform)
+-add_subdirectory(src/solver)
+\ No newline at end of file
++add_subdirectory(src/solver)
+
+diff --git a/build.sh b/build.sh
+index f542d49b..ccb7b66e 100755
+--- a/build.sh
++++ b/build.sh
+@@ -20,10 +20,10 @@ set -e
+ 
+ # variables
+ IEDA_WORKSPACE=$(cd "$(dirname "$0")";pwd)
+-BINARY_TARGET="iEDA"
++BINARY_TARGET="iEDA iPower iSTA"
+ BINARY_DIR="${IEDA_WORKSPACE}/bin"
+ BUILD_DIR="${IEDA_WORKSPACE}/build"
+-CPP_COMPILER_PATH="g++-10"
++CPP_COMPILER_PATH="g++"
+ RUN_IEDA="OFF"
+ NO_BUILD="OFF"
+ DEL_BUILD="OFF"
+diff --git a/src/database/basic/geometry/IdbGeometry.h b/src/database/basic/geometry/IdbGeometry.h
+index ec16907c..3ca8a89f 100644
+--- a/src/database/basic/geometry/IdbGeometry.h
++++ b/src/database/basic/geometry/IdbGeometry.h
+@@ -37,6 +37,7 @@
+ #include <iostream>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace idb {
+ 
+diff --git a/src/evaluation/source/util/EvalLog.cpp b/src/evaluation/source/util/EvalLog.cpp
+index c775b144..f02d52c6 100644
+--- a/src/evaluation/source/util/EvalLog.cpp
++++ b/src/evaluation/source/util/EvalLog.cpp
+@@ -30,7 +30,7 @@ namespace eval {
+  * @param {int} size
+  * @return {*}
+  */
+-void SignalHandle(const char* data, int size)
++void SignalHandle(const char* data, size_t size)
+ {
+   std::ofstream fs("glog_dump.log", std::ios::app);
+   std::string str = std::string(data, size);
+diff --git a/src/operation/iCTS/api/CTSAPI.hh b/src/operation/iCTS/api/CTSAPI.hh
+index 86ff3565..66d35105 100644
+--- a/src/operation/iCTS/api/CTSAPI.hh
++++ b/src/operation/iCTS/api/CTSAPI.hh
+@@ -27,6 +27,10 @@
+ #include <string_view>
+ #include <type_traits>
+ #include <vector>
++#include <optional>
++#include <cstdint>
++#include <algorithm>
++#include <memory>
+ 
+ #include "../../../database/interaction/ids.hpp"
+ 
+diff --git a/src/operation/iFP/source/module/tap_cell/tapcell.h b/src/operation/iFP/source/module/tap_cell/tapcell.h
+index 4af86b51..570d80ae 100644
+--- a/src/operation/iFP/source/module/tap_cell/tapcell.h
++++ b/src/operation/iFP/source/module/tap_cell/tapcell.h
+@@ -19,6 +19,7 @@
+ #include <iostream>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ using std::pair;
+ using std::string;
+diff --git a/src/operation/iPDN/source/module/pdn_plan/pdn_plan.h b/src/operation/iPDN/source/module/pdn_plan/pdn_plan.h
+index e46b5c34..b351da81 100644
+--- a/src/operation/iPDN/source/module/pdn_plan/pdn_plan.h
++++ b/src/operation/iPDN/source/module/pdn_plan/pdn_plan.h
+@@ -19,6 +19,7 @@
+ #include <map>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "ipdn_basic.h"
+ #include "pdn_cut_stripe.h"
+diff --git a/src/operation/iPDN/source/module/pdn_via/pdn_via.h b/src/operation/iPDN/source/module/pdn_via/pdn_via.h
+index 837399ce..b919a44f 100644
+--- a/src/operation/iPDN/source/module/pdn_via/pdn_via.h
++++ b/src/operation/iPDN/source/module/pdn_via/pdn_via.h
+@@ -18,6 +18,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace idb {
+ class IdbLayer;
+diff --git a/src/operation/iPL/api/ids.hh b/src/operation/iPL/api/ids.hh
+index 37146d80..8d781467 100644
+--- a/src/operation/iPL/api/ids.hh
++++ b/src/operation/iPL/api/ids.hh
+@@ -30,6 +30,7 @@
+ #include <map>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace ids {
+ 
+diff --git a/src/operation/iPL/source/module/detail_placer/database/DPPin.hh b/src/operation/iPL/source/module/detail_placer/database/DPPin.hh
+index 3ac24314..d15500d4 100644
+--- a/src/operation/iPL/source/module/detail_placer/database/DPPin.hh
++++ b/src/operation/iPL/source/module/detail_placer/database/DPPin.hh
+@@ -28,6 +28,7 @@
+ #define IPL_DPPIN_H
+ 
+ #include <string>
++#include <cstdint>
+ 
+ namespace ipl {
+ 
+diff --git a/src/operation/iPL/source/module/logger/Log.cc b/src/operation/iPL/source/module/logger/Log.cc
+index 257ee372..fc89cb19 100644
+--- a/src/operation/iPL/source/module/logger/Log.cc
++++ b/src/operation/iPL/source/module/logger/Log.cc
+@@ -26,6 +26,7 @@
+ 
+ #include "Log.hh"
+ 
++#include <cstddef>
+ #include <filesystem>
+ #include <fstream>
+ #include <functional>
+@@ -40,7 +41,7 @@ namespace ipl {
+  * @param {int} size
+  * @return {*}
+  */
+-void SignalHandle(const char* data, int size)
++void SignalHandle(const char* data, size_t size)
+ {
+   std::ofstream fs("glog_dump.log", std::ios::app);
+   std::string str = std::string(data, size);
+diff --git a/src/operation/iPL/source/module/macro_placer/database/Coordinate.hh b/src/operation/iPL/source/module/macro_placer/database/Coordinate.hh
+index 931c8c3f..dfe0d1ad 100644
+--- a/src/operation/iPL/source/module/macro_placer/database/Coordinate.hh
++++ b/src/operation/iPL/source/module/macro_placer/database/Coordinate.hh
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ #include <string>
++#include <cstdint>
+ 
+ namespace ipl::imp {
+ 
+diff --git a/src/operation/iPL/source/module/macro_placer/database/FPInst.hh b/src/operation/iPL/source/module/macro_placer/database/FPInst.hh
+index 96889fc2..25c19718 100644
+--- a/src/operation/iPL/source/module/macro_placer/database/FPInst.hh
++++ b/src/operation/iPL/source/module/macro_placer/database/FPInst.hh
+@@ -19,6 +19,7 @@
+ #include <iostream>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "FPRect.hh"
+ #include "Coordinate.hh"
+diff --git a/src/operation/iPL/source/module/topology_manager/TopologyManager.hh b/src/operation/iPL/source/module/topology_manager/TopologyManager.hh
+index d41fb76c..ddf6973c 100644
+--- a/src/operation/iPL/source/module/topology_manager/TopologyManager.hh
++++ b/src/operation/iPL/source/module/topology_manager/TopologyManager.hh
+@@ -31,6 +31,7 @@
+ #include <string>
+ #include <unordered_map>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "data/Rectangle.hh"
+ 
+diff --git a/src/third_party/lefdef/def/def/def.y b/src/third_party/lefdef/def/def/def.y
+index 8f29d324..adb78491 100644
+--- a/src/third_party/lefdef/def/def/def.y
++++ b/src/third_party/lefdef/def/def/def.y
+@@ -50,7 +50,7 @@
+ //  6170 - defiTimingDisable.cpp
+ //  6180 - defiVia.cpp
+ //  6500 - def parser, error, def.y
+-%pure-parser
++%define api.pure
+ %lex-param {defrData *defData}
+ %parse-param {defrData *defData}
+ 
+diff --git a/src/third_party/salt/refine/flip.cpp b/src/third_party/salt/refine/flip.cpp
+index 5dad3766..84c96a62 100644
+--- a/src/third_party/salt/refine/flip.cpp
++++ b/src/third_party/salt/refine/flip.cpp
+@@ -3,7 +3,7 @@
+ #include "salt/base/eval.h"
+ 
+ #include <algorithm>
+-
++#include <array>
+ namespace salt {
+ 
+ void GetDirId(const Point& a, const Point& b, bool low, int& dir, DTYPE& dist) {  // b is the center/base
+diff --git a/src/utility/log/Log.cc b/src/utility/log/Log.cc
+index c4bcdb2c..f2124e46 100644
+--- a/src/utility/log/Log.cc
++++ b/src/utility/log/Log.cc
+@@ -39,7 +39,7 @@ namespace ieda {
+  * @param data
+  * @param size
+  */
+-void SignalHandle(const char* data, int size)
++void SignalHandle(const char* data, size_t size)
+ {
+   std::ofstream fs("glog_dump.log", std::ios::app);
+   std::string str = std::string(data, size);
+diff --git a/src/utility/tcl/ScriptEngine.hh b/src/utility/tcl/ScriptEngine.hh
+index 522e9878..cdee8af9 100644
+--- a/src/utility/tcl/ScriptEngine.hh
++++ b/src/utility/tcl/ScriptEngine.hh
+@@ -24,7 +24,7 @@
+ 
+ #pragma once
+ 
+-#include <tcl8.6/tcl.h>
++#include <tcl.h>
+ 
+ #include <memory>
+ #include <mutex>
