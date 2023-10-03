@@ -1,7 +1,7 @@
 pkgbase = eww
 	pkgdesc = Standalone widget system made in Rust
 	pkgver = 0.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/elkowar/eww
 	install = eww.install
 	arch = x86_64

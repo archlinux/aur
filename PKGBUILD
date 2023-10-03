@@ -4,7 +4,7 @@
 pkgbase=eww
 pkgname=(eww-{wayland,x11})
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Standalone widget system made in Rust"
 url='https://github.com/elkowar/eww'
 arch=(x86_64)
@@ -24,8 +24,7 @@ validpgpkeys=(
 
 prepare() {
 	cd $pkgbase
-	cargo update
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
