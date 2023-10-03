@@ -1,6 +1,6 @@
 pkgbase = kicad-storybook-git
 	pkgdesc = A tool to automatically generate images & READMEs for KiCad symbols & footprints
-	pkgver = r2.4dfd2e8
+	pkgver = r3.bce4e2d
 	pkgrel = 1
 	url = https://github.com/and3rson/kicad-storybook
 	arch = i686
