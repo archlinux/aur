@@ -1,6 +1,6 @@
 pkgbase = python-pyzotero
 	pkgdesc = A Python wrapper for the Zotero API
-	pkgver = 1.5.10
+	pkgver = 1.5.15
 	pkgrel = 1
 	url = https://github.com/urschrei/pyzotero
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pyzotero
 	depends = python-feedparser
 	depends = python-bibtexparser
 	depends = python-pytz
-	source = pyzotero-1.5.10.tar.gz::https://github.com/urschrei/pyzotero/archive/v1.5.10.tar.gz
-	sha512sums = 437935696fb5f9cff083d609a23c847c345e6d37079afa9993cf1fb3dd0bd562ec10aa3b3344c8ae2075b4920bbbe2ce06ca05610e38c2f98bbb62ac64f9b9a2
+	source = pyzotero-1.5.15.tar.gz::https://files.pythonhosted.org/packages/source/p/pyzotero/pyzotero-1.5.15.tar.gz
+	sha512sums = 0061e08983aaef115a88e181093b5e7bca521f5a627dfbfc7ccdf56ff7d606aca2c1d70001dc3c93cc621b621d1909f9d0f6acb25a65b04e0bf9764ed969de8b
 
 pkgname = python-pyzotero

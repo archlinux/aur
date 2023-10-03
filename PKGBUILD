@@ -1,14 +1,15 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-pyzotero')
-pkgver=1.5.10
+pkgver=1.5.15
 pkgrel=1
 _name=pyzotero
 pkgdesc="A Python wrapper for the Zotero API"
 arch=('any')
 url="https://github.com/urschrei/$_name"
 license=('MIT')
-source=("$_name-$pkgver.tar.gz::https://github.com/urschrei/pyzotero/archive/v$pkgver.tar.gz")
-sha512sums=('437935696fb5f9cff083d609a23c847c345e6d37079afa9993cf1fb3dd0bd562ec10aa3b3344c8ae2075b4920bbbe2ce06ca05610e38c2f98bbb62ac64f9b9a2')
+#~source=("$_name-$pkgver.tar.gz::https://github.com/urschrei/pyzotero/archive/v$pkgver.tar.gz")
+source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('0061e08983aaef115a88e181093b5e7bca521f5a627dfbfc7ccdf56ff7d606aca2c1d70001dc3c93cc621b621d1909f9d0f6acb25a65b04e0bf9764ed969de8b')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools-scm' 'python-toml')
 depends=('python-requests' 'python-feedparser' 'python-bibtexparser' 'python-pytz')
 
