@@ -1,6 +1,6 @@
 pkgbase = topiary
 	pkgdesc = The universal code formatter
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://topiary.tweag.io/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = topiary
 	depends = gcc-libs
 	provides = topiary
 	conflicts = topiary
-	source = topiary-0.2.3.tar.gz::https://github.com/tweag/topiary/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = 880414f2a71ccbff334f25ae58db63ce7efaba78d00644bb9754056b637a4b73
+	source = topiary-0.3.0.tar.gz::https://github.com/tweag/topiary/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 3baa3fdd4fbc167bbd9c6eb87650d14ba0f6717806cb4b7f254dee8d0c77fb07
 
 pkgname = topiary
