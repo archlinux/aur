@@ -1,11 +1,10 @@
 pkgbase = perl-musicbrainz-discid
 	pkgdesc = MusicBrainz::DiscID module
 	pkgver = 0.06
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/MusicBrainz-DiscID
 	arch = x86_64
-	license = GPL
-	license = PerlArtistic
+	license = MIT
 	depends = glibc
 	depends = libdiscid
 	depends = perl
