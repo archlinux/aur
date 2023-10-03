@@ -1,7 +1,7 @@
 # Maintainer: Elias Werberich <elias@werberich.de>
 
 pkgname=changie
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 epoch=0
 pkgdesc="Automated changelog tool for preparing releases with lots of customization options."
