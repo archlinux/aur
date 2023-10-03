@@ -1,0 +1,16 @@
+pkgbase = tiawa-devenv
+	pkgdesc = Tiawa development environment
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/tiawa/tiawa-devenv
+	arch = any
+	license = MIT
+	depends = git-lfs
+	depends = python
+	optdepends = jq: JSON processing
+	optdepends = podman: container management
+	optdepends = podman-compose: container management
+	optdepends = python-pipenv: Python package management
+	optdepends = shellcheck: shell script linting
+
+pkgname = tiawa-devenv
