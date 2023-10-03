@@ -140,13 +140,26 @@ def extract_footprint_libraries(footprints_dir: Path, images_dir: Path):
     return libs
 
 
-def main(symbols_dir: Path, footprints_dir: Path, images_dir: Path, readme_file: Path):
+def main(
+    symbols_dir: Path,
+    footprints_dir: Path,
+    images_dir: Path,
+    readme_file: Path,
+    no_credits: bool,
+):
     Path(images_dir).mkdir(parents=True, exist_ok=True)
 
     symbol_libraries = extract_symbol_libraries(symbols_dir, images_dir)
     footprint_libraries = extract_footprint_libraries(footprints_dir, images_dir)
 
     with readme_file.open("w") as fobj:
+        if not no_credits:
+            print(
+                "This listing was generated with [kicad-storybook](https://github.com/and3rson/kicad-storybook).",
+                file=fobj,
+            )
+            print(file=fobj)
+
         print("# Symbols", file=fobj)
         print(file=fobj)
         for lib_name, symbols in symbol_libraries.items():
@@ -184,10 +197,17 @@ if __name__ == "__main__":
     )
     parser.add_argument("images_dir", help="Directory to write images to")
     parser.add_argument("readme_file", help="Destination README.md file")
+    parser.add_argument(
+        "--no-credits",
+        action="store_true",
+        help="Do not include the message about the README being auto-generated",
+        default=False,
+    )
     args = parser.parse_args()
     main(
         Path(args.symbols_dir),
         Path(args.footprints_dir),
         Path(args.images_dir),
         Path(args.readme_file),
+        no_credits=args.no_credits,
     )
