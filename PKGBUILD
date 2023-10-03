@@ -24,6 +24,7 @@ optdepends=(
     'lirc: Infrared remote control plugin'
     'zeitgeist: Zeitgeist interface plugin'
     'grilo: Grilo plugins'
+    'yelp: View help and documentation from the app'
 )
 provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})

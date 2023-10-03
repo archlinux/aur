@@ -33,6 +33,7 @@ pkgbase = xplayer-git
 	optdepends = lirc: Infrared remote control plugin
 	optdepends = zeitgeist: Zeitgeist interface plugin
 	optdepends = grilo: Grilo plugins
+	optdepends = yelp: View help and documentation from the app
 	provides = xplayer-git
 	provides = xplayer
 	conflicts = xplayer
