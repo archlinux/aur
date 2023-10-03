@@ -1,7 +1,7 @@
 pkgbase = auto-cpufreq
 	pkgdesc = Automatic CPU speed & power optimizer
-	pkgver = 1.9.9
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq.install
 	arch = any
@@ -17,9 +17,13 @@ pkgbase = auto-cpufreq
 	optdepends = cpufreqctl: CPU Power Manager
 	optdepends = gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell
 	optdepends = thermald: recommended to have running alongside by upstream
-	source = auto-cpufreq-1.9.9.tar.gz::https://github.com/AdnanHodzic/auto-cpufreq/archive/v1.9.9.tar.gz
+	optdepends = gobject-introspection: auto-cpufreq-gtk gui
+	optdepends = cairo: auto-cpufreq-gtk gui
+	optdepends = gtk3: auto-cpufreq-gtk gui
+	optdepends = python-gobject: auto-cpufreq-gtk gui
+	source = auto-cpufreq-2.0.0.tar.gz::https://github.com/AdnanHodzic/auto-cpufreq/archive/v2.0.0.tar.gz
 	source = auto-cpufreq.service
-	b2sums = d82550a5dd553da52b784a91b7201da9fc72202de70b012712cd99c11b24284bc3586f0611004f7d8bf44b314baf96fa8d8a8a862f11dcb4561734f57b339776
+	b2sums = 672fdf026d5223432bac05c8262d30eca487aab5b5d6db2ecb48f4fb7e550a2a152549963b4be9959ada6df54fd94835379634c12116fff867a0f7aca6bfdc64
 	b2sums = 90d9a6e0a86d01803527462e0ed0ce93d04d245c2c99ab773f31e1eb46dd86b209f98af50967bbdb6627563b0aae0ca4bbc861c812576a243b07c40a483c37db
 
 pkgname = auto-cpufreq
