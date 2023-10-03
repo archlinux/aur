@@ -4,8 +4,8 @@
 
 pkgname=tango-jtango
 _pkgname=JTango
-pkgver=9.7.0
-_subver=9.6.9
+pkgver=9.7.2
+_subver=9.7.1
 pkgrel=1
 pkgdesc="TANGO kernel Java implementation."
 arch=('x86_64' 'armv7h')
@@ -15,7 +15,7 @@ groups=('tango-controls')
 depends=('jdk11-openjdk' 'maven')
 conflicts=('tango')
 source=("https://gitlab.com/tango-controls/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e1b8031ad439b47466cb19c3e18d15d01fb09e62adf5b6176dad06539738314d')
+sha256sums=('6bbbb17a8f858a698fdbe0265973f34c344b2f0e920bddfeefcfc987bbe33391')
 
 _java_home='/usr/lib/jvm/java-11-openjdk/'
 _install_path='/usr/share/java'

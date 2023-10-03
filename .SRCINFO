@@ -1,6 +1,6 @@
 pkgbase = tango-jtango
 	pkgdesc = TANGO kernel Java implementation.
-	pkgver = 9.7.0
+	pkgver = 9.7.2
 	pkgrel = 1
 	url = https://www.tango-controls.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tango-jtango
 	depends = jdk11-openjdk
 	depends = maven
 	conflicts = tango
-	source = https://gitlab.com/tango-controls/JTango/-/archive/9.7.0/JTango-9.7.0.tar.gz
-	sha256sums = e1b8031ad439b47466cb19c3e18d15d01fb09e62adf5b6176dad06539738314d
+	source = https://gitlab.com/tango-controls/JTango/-/archive/9.7.2/JTango-9.7.2.tar.gz
+	sha256sums = 6bbbb17a8f858a698fdbe0265973f34c344b2f0e920bddfeefcfc987bbe33391
 
 pkgname = tango-jtango
