@@ -1,6 +1,6 @@
 # Maintainer: e-dong <eric2043@gmail.com>
 pkgname=encoder-benchmark-git
-pkgver=0.6.0.alpha.r9.gdc9663e
+pkgver=0.6.0.alpha.r4.gb7633c1
 pkgrel=1
 epoch=
 pkgdesc="A tool to benchmark your hardware's real-time video encoding capabilities."
@@ -12,44 +12,44 @@ depends=('ffmpeg' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
 checkdepends=()
 optdepends=()
-provides=()
+provides=('encoder-benchmark')
 conflicts=('encoder-benchmark')
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+https://github.com/Proryanator/encoder-benchmark.git#branch=main")
+source=("git+https://github.com/Proryanator/encoder-benchmark.git#branch=main")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-    cd "$pkgname"
+    cd encoder-benchmark
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$pkgname"
+    cd encoder-benchmark
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname"
+    cd encoder-benchmark
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release --frozen --all-features
 }
 
 check() {
-    cd "$pkgname"
+    cd encoder-benchmark
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$pkgname"
+    cd encoder-benchmark
     find target/release \
         -maxdepth 1 \
         -executable \
