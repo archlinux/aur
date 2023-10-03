@@ -3,7 +3,7 @@
 _pkgname=ensemble-chorus
 pkgname="${_pkgname}-git"
 pkgver=0.0.1.r56.59baeb8
-pkgrel=1
+pkgrel=2
 pkgdesc="An LV2/VST2 plugin and stand-alone application emulating a string ensemble chorus"
 arch=('i686' 'x86_64')
 url="https://github.com/jpcima/ensemble-chorus"
@@ -46,7 +46,7 @@ prepare() {
   for submodule in DSPFilters gsl-lite rtaudio predef pugixml JUCE; do
     git config submodule.thirdparty/${submodule}.url "${srcdir}/${submodule}"
   done
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # https://github.com/WeAreROLI/JUCE/commit/4e0adb2af8b424c43d22bd431011c9a6c57d36b6.patch
   ( cd thirdparty/JUCE; patch -N -r - -p1 -i "${srcdir}/juce-pixel.patch" || exit 0; )
