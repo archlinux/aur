@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=friture-git
-pkgver=v0.49.r1.ge12cd9a
+pkgver=0.49.r12.g2972d2b
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
@@ -9,20 +9,20 @@ url="https://friture.org/"
 license=('GPL3')
 depends=('python-appdirs' 'python-docutils' 'python-multipledispatch' 'python-numpy' 'python-pa-ringbuffer' 'python-pyqt5' 'python-pyrr' 'python-rtmixer' 'python-sounddevice')
 optdepends=('jack: for JACK I/O support')
-makedepends=('cython' 'git' 'python-pip' 'python-setuptools' 'python-wheel')
+makedepends=('cython0' 'git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 conflicts=("${pkgname%-git}")
-replaces=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/tlecomte/friture.git")
 
 build() {
   cd ${pkgname%-git}
-  python setup.py build
+  python3 -m build -nwx
 }
 
 package() {
   cd ${pkgname%-git}
 
-  python setup.py install --root="${pkgdir}/"
+  python3 -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 resources/images/friture.iconset/icon_512x512.png \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
@@ -34,7 +34,9 @@ package() {
 
 pkgver() {
   cd friture
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags |
+    sed 's/\([^-]*-g\)/r\1/;s/-/./g' |
+    sed s/v//
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
