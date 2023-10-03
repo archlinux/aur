@@ -1,6 +1,6 @@
 pkgbase = kicad-wayland
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools, patched for Wayland
-	pkgver = 7.0.7
+	pkgver = 7.0.8
 	pkgrel = 1
 	url = http://kicad.org/
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = kicad-wayland
 	optdepends = kicad-library-3d: for 3D models of components
 	provides = kicad
 	conflicts = kicad
-	source = kicad::git+https://gitlab.com/kicad/code/kicad.git#commit=2176a654cd7c0d125645484b53c9324ec3d34aaf
+	source = kicad::git+https://gitlab.com/kicad/code/kicad.git#commit=063d9c830514d46de163bd0ae2bb1df66309f11e
 	source = fix-archive-permissions.patch
 	source = fix-version-string.patch
 	source = make-kicad-work-in-native-wayland.patch

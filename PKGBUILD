@@ -8,7 +8,7 @@
 
 _appname=kicad
 pkgname="$_appname-wayland"
-pkgver=7.0.7
+pkgver=7.0.8
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools, patched for Wayland'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
 )
 provides=("$_appname")
 conflicts=("$_appname")
-_commit='2176a654cd7c0d125645484b53c9324ec3d34aaf'
+_commit='063d9c830514d46de163bd0ae2bb1df66309f11e'
 source=(
   "$_appname::git+https://gitlab.com/kicad/code/kicad.git#commit=$_commit"
   'fix-archive-permissions.patch'
@@ -72,7 +72,7 @@ build() {
     -B build \
     -S "$_appname" \
     -G Ninja \
-    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D KICAD_USE_OCE=ON \
     -D KICAD_USE_EGL=ON \
