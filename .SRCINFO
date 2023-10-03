@@ -1,6 +1,6 @@
 pkgbase = sad-git
 	pkgdesc = Space Age seD
-	pkgver = r726.369079d
+	pkgver = r1912.d43aa8c
 	pkgrel = 1
 	url = https://github.com/ms-jpq/sad
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = sad-git
 	md5sums = SKIP
 
 pkgname = sad-git
-

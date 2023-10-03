@@ -1,6 +1,6 @@
 # Maintainer: Ido Perlmuter <ido@ido50.net>
 pkgname=sad-git
-pkgver=r726.369079d
+pkgver=r1912.d43aa8c
 pkgrel=1
 pkgdesc="Space Age seD"
 arch=("x86_64")
