@@ -3,10 +3,13 @@
 pkgname=aurupdate
 pkgdesc="Collection of scripts to automatically update packages from 'aur shaped' repositories"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/vbouchaud/aur/tree/main/aurupdate"
 license=("MIT")
+depends=(
+    git
+)
 
 sha256sums=(
     35e3cbe726e28f2f624acbe4fce8af09715e55537df7aa22ac89f00cde399515
