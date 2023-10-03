@@ -3,7 +3,7 @@
 
 pkgname=setzer
 pkgver=60
-pkgrel=1
+pkgrel=2
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
 url='https://github.com/cvfosammmm/setzer'
@@ -12,6 +12,7 @@ depends=(
 	'gspell'
 	'gtk3'
 	'gtksourceview4'
+	'libhandy'
 	'poppler-glib'
 	'python-cairo'
 	'python-bibtexparser'

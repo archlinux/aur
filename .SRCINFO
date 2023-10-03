@@ -1,7 +1,7 @@
 pkgbase = setzer
 	pkgdesc = LaTeX editor written in Python with Gtk
 	pkgver = 60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cvfosammmm/setzer
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = setzer
 	depends = gspell
 	depends = gtk3
 	depends = gtksourceview4
+	depends = libhandy
 	depends = poppler-glib
 	depends = python-cairo
 	depends = python-bibtexparser
