@@ -1,18 +1,21 @@
 pkgbase = rtl-sdr-git
-	pkgdesc = Tuner for DVB-T sticks based on the Realtek RTL2832U, which can be used as a cheap SDR, since the chip allows transferring the raw I/Q samples to the host.
-	pkgver = 0.6.0.r31.ga4eab76
+	pkgdesc = Driver for Realtek RTL2832U, allowing general purpose software defined radio (SDR).
+	pkgver = 0.8.0.r2.gfe22586
 	pkgrel = 1
-	epoch = 1
-	url = https://osmocom.org/projects/rtl-sdr/wiki
+	url = https://github.com/librtlsdr/librtlsdr
+	install = rtl-sdr.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = libusb
+	depends = libusb>=1.0
 	provides = rtl-sdr
-	source = rtl-sdr::git://git.osmocom.org/rtl-sdr.git
-	md5sums = SKIP
+	conflicts = rtl-sdr
+	source = rtl-sdr::git+https://github.com/librtlsdr/librtlsdr
+	source = rtlsdr.conf
+	sha256sums = SKIP
+	sha256sums = 678ecf05c85e79f29048c7093aee18c90e0e50dcd47ca61d842938b608ef3215
 
 pkgname = rtl-sdr-git

@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>> RTL-SDR-compatible DVB stick cannot be used for both DVB and SDR at once (driver conflict). This package provides /usr/lib/modprobe.d/rtlsdr.conf to blacklist the DVB drivers."
+}
+
+post_upgrade() {
+  post_install
+}
+
