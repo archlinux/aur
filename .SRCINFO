@@ -1,6 +1,6 @@
 pkgbase = gnome-multi-writer-git
 	pkgdesc = Write an ISO file to multiple USB devices at once
-	pkgver = 3.35.90.r324.469c911
+	pkgver = 3.35.90.r332.6a6d4d9
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/MultiWriter
 	install = gnome-multi-writer.install
@@ -19,8 +19,8 @@ pkgbase = gnome-multi-writer-git
 	depends = libgusb
 	depends = udisks2
 	optdepends = gnome-icon-theme-extras: show device icons
+	provides = gnome-multi-writer
 	conflicts = gnome-multi-writer
-	replaces = gnome-multi-writer
 	source = gnome-multi-writer::git+https://gitlab.gnome.org/GNOME/gnome-multi-writer
 	sha256sums = SKIP
 
