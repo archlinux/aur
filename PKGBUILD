@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
-pkgver=r1327.g3a4b02c
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='An array-oriented stack programming language'
 arch=('x86_64')
@@ -10,14 +10,14 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'alsa-lib')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='3a4b02c2d51510c0742a21264f6e365a51a1249e'
+_commit='0a9f202bd0e2796c1f49378676f28caef2e9d6d1'
 source=("$pkgname::git+https://github.com/uiua-lang/uiua#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
 
-  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/^v//'
 }
 
 prepare() {
