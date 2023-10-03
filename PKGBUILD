@@ -7,8 +7,11 @@ pkgdesc="Ready-to-use cross-compilation toolchain provided by bootlin.com"
 arch=("x86_64")
 url="https://toolchains.bootlin.com/"
 license=("GPL")
-source=("https://toolchains.bootlin.com/downloads/releases/toolchains/powerpc-440fp/tarballs/powerpc-440fp--musl--bleeding-edge-2023.08-1.tar.bz2")
-sha256sums=('bb55c1a0b4cce5ea40b6fbbd81259bb295c31e71e150dfd4df8f27add4fd75fb')
+source=("https://toolchains.bootlin.com/downloads/releases/toolchains/powerpc-440fp/tarballs/powerpc-440fp--musl--bleeding-edge-2023.08-1.tar.bz2"
+        "profile.sh-powerpc-440fp-musl-bleeding-edge-toolchain")
+install="hooks.install-powerpc-440fp-musl-bleeding-edge-toolchain"
+sha256sums=('bb55c1a0b4cce5ea40b6fbbd81259bb295c31e71e150dfd4df8f27add4fd75fb'
+            'fe521257bb4eef50fcdff57b8dd77f9bacf35e07f0740bd5cb9bb61c209e3522')
 
 build() {
 	cd "powerpc-440fp--musl--bleeding-edge-2023.08-1"
@@ -24,4 +27,7 @@ package() {
 	mkdir -p "$pkgdir/opt/powerpc-440fp-musl-bleeding-edge/"
 	cp -a * "$pkgdir/opt/powerpc-440fp-musl-bleeding-edge/"
 	rm -f "$pkgdir/opt/powerpc-440fp-musl-bleeding-edge/{buildroot.config,relocate-sdk.sh,summary.csv,share/buildroot/sdk-location}"
+
+	mkdir -p "$pkgdir/etc/profile.d/"
+	install -m0644 "$srcdir/profile.sh-powerpc-440fp-musl-bleeding-edge-toolchain" "$pkgdir/etc/profile.d/powerpc-440fp-musl-bleeding-edge-toolchain.sh"
 }
