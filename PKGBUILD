@@ -3,7 +3,7 @@
 pkgname="insomnium-bin"
 pkgver=0.1.3
 pkgrel=1
-pkgdesc="API Client and Design Platform for GraphQL and REST"
+pkgdesc="API Client and Design Platform for GraphQL and REST (Privacy focused Insomnia fork)"
 arch=("x86_64")
 url="https://github.com/ArchGPT/insomnium"
 license=("MIT")
