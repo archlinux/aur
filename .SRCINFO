@@ -1,11 +1,11 @@
 pkgbase = uam
 	pkgdesc = Utopia Alternative Miner
-	pkgver = 1.1.353
+	pkgver = 1.2.603
 	pkgrel = 1
 	url = https://u.is
 	arch = x86_64
 	license = Unknown
-	source = uam-1.1.353.deb::https://update.u.is/downloads/uam/linux/uam-latest_amd64.deb
-	sha256sums = 0b4895b6b1a501fda70689a8a4e9a2b6b42fa9d2fe1ea19670c9d19ad383c00e
+	source = uam-1.2.603.deb::https://update.u.is/downloads/uam/linux/uam-latest_amd64.deb
+	sha256sums = 8e4a1d9d23facbf28a74cba8dbd05aed4d74ab245f97d16e10ed92c546adefdf
 
 pkgname = uam
