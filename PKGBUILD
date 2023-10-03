@@ -5,7 +5,7 @@
 pkgname=tachidesk-preview-bin
 _pkgname=tachidesk-server
 _PkgName=Tachidesk-Server
-pkgver=0.7.0_r1372
+pkgver=0.7.0_r1377
 pkgrel=1
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
@@ -13,9 +13,10 @@ pkgdesc="A free and open source manga reader that runs extensions built for Tach
 arch=("any")
 url="https://github.com/Suwayomi/Tachidesk-Server-preview"
 license=("MPL2")
-depends=("java-runtime>=8" "libc++")
+depends=("java-runtime=11" "libc++")
 optdepends=("electron: running in Electron")
 provides=("$pkgname" "$_pkgname")
+conflicts=("tachidesk")
 _jar="$_PkgName-v$_pkgver-r$_revnum.jar"
 _assets="$_PkgName-v$_pkgver-r$_revnum-linux-assets"
 source=("$url/releases/download/v$_pkgver-r$_revnum/$_jar"
