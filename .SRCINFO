@@ -8,6 +8,7 @@ pkgbase = lunarml-git
 	makedepends = git
 	makedepends = make
 	makedepends = mlton
+	makedepends = lua
 	depends = gmp
 	depends = glibc
 	provides = lunarml
