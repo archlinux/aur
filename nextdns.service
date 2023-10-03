@@ -2,7 +2,7 @@
 Description=NextDNS DNS53 to DoH proxy.
 ConditionFileIsExecutable=/usr/bin/nextdns
 After=network.target
-Before=nss-lookup.target
+Before=network-online.target nss-lookup.target
 Wants=nss-lookup.target
 
 [Service]

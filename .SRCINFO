@@ -1,7 +1,7 @@
 pkgbase = nextdns-unprivileged
 	pkgdesc = The NextDNS DoH client running as unprivileged user.
 	pkgver = 1.40.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextdns/nextdns
 	install = nextdns.install
 	arch = x86_64
