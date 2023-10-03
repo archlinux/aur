@@ -2,12 +2,13 @@
 
 pkgname=elasticsearch
 pkgver=8.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('aarch64' 'x86_64')
 url="https://www.elastic.co/elasticsearch/"
 license=('custom:Elastic-2.0')
 depends=('jre-openjdk-headless' 'libxml2')
+makedepends=('jdk17-openjdk')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch7' 'elasticsearch-bin')
 source=(
@@ -38,6 +39,9 @@ backup=('etc/elasticsearch/elasticsearch.yml'
 
 build() {
   cd $pkgname-$pkgver
+  echo "Building using java-17-openjdk..."
+  # For now as jre-openjdk-headless upgraded to JDK21 experiencing warnings treated as errors.
+  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
   ./gradlew --no-daemon :modules:systemd:assemble
   ./gradlew --no-daemon :distribution:archives:linux-tar:assemble
 }
