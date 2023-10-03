@@ -17,7 +17,7 @@ pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
 depends=('qt6-base' 'libqtutilities-qt6.so' 'libpasswordfile.so' 'libc++utilities.so' 'openssl'
          'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'clang')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('3ccac8a8adc156bbb1fb7995efae7f6f9f816fd706933abe2d5040cc47347a2a')

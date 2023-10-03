@@ -13,7 +13,6 @@ pkgbase = passwordmanager-qt6
 	makedepends = ninja
 	makedepends = qt6-tools
 	makedepends = clang
-	makedepends = mesa
 	makedepends = qt6-declarative
 	depends = qt6-base
 	depends = libqtutilities-qt6.so
