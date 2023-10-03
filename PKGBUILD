@@ -2,15 +2,15 @@
 # Contributor: David P. <megver83@parabola.nu>
 
 pkgname=linphone-desktop
-pkgver=5.0.18
-pkgrel=3
+pkgver=5.1.2
+pkgrel=1
 pkgdesc='A free VoIP and video softphone based on the SIP protocol'
 arch=(x86_64)
 url='http://linphone.org'
 license=(GPL)
-depends=('qt5-base' 'libxcrypt-compat' 'v4l-utils' 'glew')
+depends=('qt5-base' 'qt5-multimedia' 'libxcrypt-compat' 'v4l-utils' 'glew')
 makedepends=('coreutils' 'git' 'gendesk' 'cmake' 'yasm' 'nasm' 'doxygen' 'perl' 'python-pystache' 'python-six' 'libpulse' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-tools')
-source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=88f05be"
+source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=c3daf71"
         "linphone.png::https://gitlab.linphone.org/BC/public/linphone-desktop/-/raw/8dfd384e3df08b200c8eb382b740da6839961bf0/linphone-app/assets/icons/hicolor/128x128/apps/icon.png"
         )
 sha512sums=('SKIP'
