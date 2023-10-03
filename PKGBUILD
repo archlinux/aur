@@ -2,7 +2,7 @@
 # Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
-pkgver=3.19.5
+pkgver=3.20.0
 pkgrel=1
 pkgname=petsc
 _config=linux-c-opt
@@ -34,12 +34,10 @@ optdepends=('trilinos: support for trilinos'
   )
 
 install=petsc.install
-source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
-        test_optdepends.sh
-        hypre_global_error.error_flag-0.patch)
-sha512sums=('d321609c554958d589980b5ae96b71d054612a312400e42dca6813f0f4a09d36c5d7f6acad470d23eb34907cf140bf82a306849efc704d9657ad2d21603ea537'
-            '6fff53b92426672655e357938526e62a5636d96ba27ee5c34df3c5045fabcf60855f2f76de30527fab40a866003642f47b7fa164f57077731de9841efdad5b46'
-            '5f828fa109f822fdc42f6e649900dec8642636fef78c511484147af84675adc620c3eb313ff22e21ec064fa53833549d9884d21b1125f31033b49c8632ac2ee9')
+source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
+        test_optdepends.sh)
+sha512sums=('ab767e010043e077a1f2d51f837e83fc1222ddbe060873d0e6593830c2422e56e0038a704de95fd4b06dc5f79bb5d0a159a5906dcf8f2a8d366f4e0415ab6172'
+            '6fff53b92426672655e357938526e62a5636d96ba27ee5c34df3c5045fabcf60855f2f76de30527fab40a866003642f47b7fa164f57077731de9841efdad5b46')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
