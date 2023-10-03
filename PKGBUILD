@@ -17,3 +17,7 @@ depends=(
 	'starship'
 	'zsh'
 )
+optdepends=(
+	'amd-ucode: AMD microcode'
+	'intel-ucode: Intel microcode'
+)

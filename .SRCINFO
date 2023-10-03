@@ -13,5 +13,7 @@ pkgbase = tiawa-base
 	depends = nftables
 	depends = starship
 	depends = zsh
+	optdepends = amd-ucode: AMD microcode
+	optdepends = intel-ucode: Intel microcode
 
 pkgname = tiawa-base
