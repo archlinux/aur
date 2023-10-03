@@ -50,7 +50,7 @@ package() {
 }
 
 sha256sums=('5fec5ed5373d94dcaf8b17ddd78d05ccdfd0faa8b4695d9e926d8e71278ea08e'
-            'ab84cce7f5aa167deff0065c7d3d17ef5509af751f665c4acf53b635099995db'
+            '627734881c9bcefd8577aa2d761e3b535195b3ccd7cd99f9bf63c5586f4ca8e2'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             '3f5faa33c0c70b0aeded126428f10b20ca1848e1ede43e5c6c7a76ac3f64be30'
             'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
