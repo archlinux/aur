@@ -1,0 +1,22 @@
+pkgbase = perl-anyevent-websocket-client
+	pkgdesc = WebSocket client, connection and message for AnyEvent (via MetaCPAN distribution)
+	pkgver = 0.55
+	pkgrel = 1
+	url = https://metacpan.org/release/AnyEvent-WebSocket-Client
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-memory-cycle
+	depends = perl
+	depends = perl-anyevent-connector
+	depends = perl-moo
+	depends = perl-perlx-maybe
+	depends = perl-protocol-websocket
+	depends = perl-uri-ws
+	depends = perl-ev
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/AnyEvent-WebSocket-Client-0.55.tar.gz
+	sha256sums = 55cf0ea6f93f8f4932ead5f9a89b027642ed60381a93528411c7e9331dd4c025
+
+pkgname = perl-anyevent-websocket-client
