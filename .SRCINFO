@@ -1,0 +1,23 @@
+pkgbase = gz-msgs9
+	pkgdesc = Messages for Gazebo robot simulation.
+	pkgver = 9.5.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-msgs
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=3
+	makedepends = pkg-config
+	depends = gz-math=7
+	depends = gz-tools=2
+	depends = gz-utils=2
+	depends = protobuf-c
+	depends = protobuf
+	depends = python
+	depends = tinyxml2
+	provides = gz-msgs=9
+	source = https://github.com/gazebosim/gz-msgs/archive/gz-msgs9_9.5.0.tar.gz
+	sha256sums = b0ee93979a1aaf035b193006052fb6339a52511a3db04ec995f79e39ef798b14
+
+pkgname = gz-msgs9
