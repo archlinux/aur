@@ -2,7 +2,7 @@
 # Contributor: Gunnar Bretthauer <taijian@posteo.de>
 
 pkgname=duplicacy
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gilbertchen/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0670fa82b6c56a5b8ca8c9c0af69dfeac442b84b98c34a8af9e65b5241eeef39')
+sha256sums=('995160e17b716ed1ccbd5e83e60de0f32359a459485a82486f3aac3009650fd2')
 
 prepare() {
   cd "$pkgname-$pkgver/$pkgname"
