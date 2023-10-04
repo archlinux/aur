@@ -2,7 +2,8 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-spacy-en_core_web_md
-pkgver=3.6.0
+_pkg="${pkgname#python-spacy-}"
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="English pipeline optimized for CPU. Components: tok2vec, tagger, parser, senter, ner, attribute_ruler, lemmatizer."
 arch=(any)
@@ -10,16 +11,16 @@ url="https://spacy.io/models/en#en_core_web_md"
 license=(MIT)
 depends=(python-spacy)
 makedepends=(python-setuptools)
-source=("https://github.com/explosion/spacy-models/releases/download/en_core_web_md-${pkgver}/en_core_web_md-${pkgver}.tar.gz")
-sha256sums=("b79ce388adb3c5fbcd37577254769ba851950392ab9667a789550b5a6931c8a6")
+source=("https://github.com/explosion/spacy-models/releases/download/$_pkg-$pkgver/$_pkg-$pkgver.tar.gz")
+sha256sums=("af9594ee67e3ac4d2fb2b972b21550810011e230096e8597e4fdda68f59dc2f3")
 
 build() {
-	cd en_core_web_md-${pkgver}
+	cd $_pkg-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-	cd en_core_web_md-${pkgver}
+	cd $_pkg-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
