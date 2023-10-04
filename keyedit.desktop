@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Name=Kreative KeyEdit
+Comment=Create and edit keyboard layouts
+Exec=java -jar /usr/lib/keyedit.jar %F
+Icon=/usr/share/icons/hicolor/256x256/apps/keyedit.png
+Terminal=false
+Type=Application
+Categories=Development;
+MimeType=application/x-kkbx;application/x-keylayout;

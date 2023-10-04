@@ -1,0 +1,31 @@
+pkgbase = bitsnpicas-git
+	pkgdesc = Kreative BitsNPicas, with MapEdit and KeyEdit, in the latest snapshot version
+	pkgver = 2.0.2.adef9ec
+	pkgrel = 1
+	url = https://github.com/kreativekorp/bitsnpicas
+	arch = any
+	license = MPL
+	makedepends = jdk-openjdk
+	makedepends = make
+	makedepends = git
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = bash
+	provides = bitsnpicas
+	source = bitsnpicas-git::git+https://github.com/kreativekorp/bitsnpicas.git#branch=master
+	source = bitsnpicas
+	source = bitsnpicas.desktop
+	source = mapedit
+	source = mapedit.desktop
+	source = keyedit
+	source = keyedit.desktop
+	sha256sums = SKIP
+	sha256sums = c883633d8588c94eb30fee7ded3b0115ab69d8e8d43fbbe4e1ebec21816b6bc8
+	sha256sums = 0a2fde77db8fb7008e19f978dbcc5f696ad9ae28884a8528e550742a2fc8964c
+	sha256sums = 0c0e0ffb55f39453e1edbfa7c528d5a384ea424dc323219699a8f6b6f8465c24
+	sha256sums = 45ca46408b2a4fdd0e0a8af4608dbeb794a7e2a9c76da9e4c5ae7808c6d8317c
+	sha256sums = 9edaf143ad281c1a6b5ba27df2cf3ea56887c3a71caae315bb678edb4d4d54c9
+	sha256sums = 69e786b235a81c9532e186bc270ea5b71c639b17140d76ef8cc32c7a5aea7665
+
+pkgname = bitsnpicas-git

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+java -Xmx1024M -jar /usr/lib/mapedit.jar "$@"

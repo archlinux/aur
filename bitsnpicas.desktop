@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Name=Kreative Bits'n'Picas
+Comment=Create, edit, and convert bitmap fonts
+Exec=java -jar /usr/lib/bitsnpicas.jar edit %F
+Icon=/usr/share/icons/hicolor/512x512/apps/bitsnpicas.png
+Terminal=false
+Type=Application
+Categories=Development;
+MimeType=application/x-font-kbitx;application/x-font-kpcax;application/x-font-kbits;application/x-font-kpcas;application/x-font-bdf;application/x-font-cybiko;application/x-font-fnt;application/x-font-fontx;application/x-font-fzx;application/x-font-cvt;application/x-font-hex;application/x-font-psf;application/x-font-rbf;application/x-font-rb11;application/x-font-rb12;application/x-font-sbf;application/x-font-sfd;application/x-font-u8m;image/png;image/gif;image/jpeg;image/bmp;
