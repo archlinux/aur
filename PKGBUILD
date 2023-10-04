@@ -2,7 +2,7 @@
 
 pkgname=gz-launch6
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -10,7 +10,6 @@ arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
 license=('Apache')
 depends=(
-  'cli11'
   'gz-common=5'
   'gz-gui=7'
   'gz-math=7'
@@ -40,7 +39,6 @@ build() {
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
            -DBUILD_TESTING=OFF \
-           -DGZ_UTILS_VENDOR_CLI11=false \
            -Wno-dev
   cmake --build build
 }

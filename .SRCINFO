@@ -1,14 +1,13 @@
 pkgbase = gz-launch6
 	pkgdesc = Run and manage programs and plugins.
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-launch
 	arch = any
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	depends = cli11
 	depends = gz-common=5
 	depends = gz-gui=7
 	depends = gz-math=7
