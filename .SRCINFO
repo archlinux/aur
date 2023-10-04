@@ -1,0 +1,18 @@
+pkgbase = perl-plack-middleware-csrfblock
+	pkgdesc = Block CSRF Attacks with minimal changes to your app
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/release/Plack-Middleware-CSRFBlock
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-digest-sha1
+	depends = perl-html-parser
+	depends = perl-plack
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/M/MA/MATTP/Plack-Middleware-CSRFBlock-0.10.tar.gz
+	sha256sums = eb5ba4f4b391236d9c16111917db5905bac2c02bec93908850b97aa72fa31d3f
+
+pkgname = perl-plack-middleware-csrfblock
