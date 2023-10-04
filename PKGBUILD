@@ -1,7 +1,7 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy'
-pkgver='1.15.0'
+pkgver='1.15.1'
 pkgrel=1
 pkgdesc='Explore your research photos'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
   "https://github.com/tropy/tropy/archive/refs/tags/v${pkgver}.tar.gz")
 
 sha256sums=('0fdf0fcaa4676bc3a2835a7ef6b4a9f6b809a37e48775f62d9f4fab52da43901'
-            '390b0574d26039a75dc1e48c41891038ff830721ab5cc226dac364950e7198b0')
+            'e4d1b7a36f5cc0c7cd1621b713d7aeb6a6988aa935d4e4d34a488789c85a9e62')
 
 build() {
   cd "${srcdir}/tropy-${pkgver}"
