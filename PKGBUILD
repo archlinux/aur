@@ -1,13 +1,13 @@
 # Contributor: Mark Gallagher <mark@fts.scot>
 pkgname=perl-mason
 pkgver=2.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful, high-performance templating for the web and beyond (via MetaCPAN distribution)'
 _dist=Mason
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'perl-capture-tiny' 'perl-class-load' 'perl-class-unload' 'perl-devel-globaldestruction' 'perl-exception-class' 'perl-pathtools' 'perl-guard' 'perl-ipc-system-simple' 'perl-json' 'perl-log-any' 'perl-method-signatures-simple' 'perl-moose' 'perl-moosex-strictconstructor' 'perl-moosex-hasdefaults' 'perl-scalar-util' 'perl-try-tiny')
+depends=('perl' 'perl-capture-tiny' 'perl-class-load' 'perl-class-unload' 'perl-devel-globaldestruction' 'perl-exception-class' 'perl-pathtools' 'perl-guard' 'perl-ipc-system-simple' 'perl-json' 'perl-log-any' 'perl-method-signatures-simple' 'perl-moose' 'perl-moosex-strictconstructor' 'perl-moosex-hasdefaults' 'perl-scalar-list-utils' 'perl-try-tiny')
 makedepends=('perl-test-class-most' 'perl-test-longstring')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/J/JS/JSWARTZ/$_dist-$pkgver.tar.gz")

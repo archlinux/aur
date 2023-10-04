@@ -1,7 +1,7 @@
 pkgbase = perl-mason
 	pkgdesc = Powerful, high-performance templating for the web and beyond (via MetaCPAN distribution)
 	pkgver = 2.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Mason
 	arch = any
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = perl-mason
 	depends = perl-moose
 	depends = perl-moosex-strictconstructor
 	depends = perl-moosex-hasdefaults
-	depends = perl-scalar-util
+	depends = perl-scalar-list-utils
 	depends = perl-try-tiny
 	options = !emptydirs
 	options = purge
