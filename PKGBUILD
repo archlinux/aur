@@ -2,7 +2,7 @@
 # Contributor/Original maintainer: Alex Palaistras <alex@deuill.org>
 
 pkgname=binaryninja-demo
-pkgver=3.4.4271 # pulled from latest binary
+pkgver=3.5.4526 # pulled from latest binary
 pkgrel=1
 pkgdesc="Binary Ninja is a binary multi-tool and reversing platform"
 arch=('x86_64')
