@@ -5,13 +5,14 @@ pkgbase = certspotter
 	url = https://github.com/SSLMate/certspotter
 	install = certspotter.install
 	arch = x86_64
+	arch = i686
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = MPL2
 	makedepends = go>=1.19
 	makedepends = lowdown
-	source = certspotter-0.16.0-1.tar.gz::https://github.com/SSLMate/certspotter/archive/v0.16.0.tar.gz
+	source = certspotter-0.16.0.tar.gz::https://github.com/SSLMate/certspotter/archive/v0.16.0.tar.gz
 	sha512sums = 418647a317b240bf7bf6589b7596045e2ef18001a97badc1f2eedd962f841696292792c005e6c3b75198e8457679e78f3f95380805b335f28038eb25f929052b
 
 pkgname = certspotter
