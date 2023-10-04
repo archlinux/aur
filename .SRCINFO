@@ -1,6 +1,6 @@
 pkgbase = r-shinyvalidate
 	pkgdesc = Input Validation for Shiny Apps
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shinyvalidate
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-shinyvalidate
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/shinyvalidate_0.1.2.tar.gz
-	sha256sums = 4751015af9fe37b03885cdf261bafff72deea425bd331a82ebaba9998332fa56
+	source = https://cran.r-project.org/src/contrib/shinyvalidate_0.1.3.tar.gz
+	sha256sums = c8fc3ff191ac994b0707f2306a59271b4246797dde8f235515e89807eec71407
 
 pkgname = r-shinyvalidate

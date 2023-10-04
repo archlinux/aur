@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=shinyvalidate
-_pkgver=0.1.2
+_pkgver=0.1.3
 pkgname=r-${_pkgname,,}
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Input Validation for Shiny Apps'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4751015af9fe37b03885cdf261bafff72deea425bd331a82ebaba9998332fa56')
+sha256sums=('c8fc3ff191ac994b0707f2306a59271b4246797dde8f235515e89807eec71407')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
