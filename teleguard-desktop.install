@@ -19,6 +19,6 @@ post_upgrade() {
 post_remove() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 	rm /usr/bin/teleguard_desktop
-	echo "Masaka..?"
+	echo "TeleGuard hopes to see you again"
 	update-desktop-database -q
 }
