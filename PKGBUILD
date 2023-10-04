@@ -1,28 +1,27 @@
 # Contributor: Nathan Owe. ndowens04 at gmail dot com
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xaric
-pkgver=0.13.7
+pkgver=0.13.9
 pkgrel=1
-pkgdesc="A UNIX irc client similar to (and forked from) BitchX and ircII."
+pkgdesc='A UNIX irc client similar to (and forked from) BitchX and ircII.'
 arch=('i686' 'x86_64')
-url="http://xaric.org"
+url='http://xaric.org'
 license=('GPL')
 depends=('openssl')
-conflicts=('xaric-git')
-conflicts=()
-replaces=()
+conflicts=("${pkgname}-git")
 source=("http://xaric.org/software/xaric/releases/$pkgname-$pkgver.tar.gz")
-md5sums=('46f4460dfab17819dd6d7e543be75206')
-sha1sums=('c0cded0d57beddb11b04926b9c748835ef9da876')
-sha256sums=('fd8cd677e2403e44ff525eac7c239cd8d64b7448aaf56a1272d1b0c53df1140c')
+md5sums=('09555effce003019724d2e0e123885e3')
+sha1sums=('06cfa26f9c5577e0f70b1a8754e628e1aa98c328')
+sha256sums=('cb6c23fd20b9f54e663fff7cab22e8c11088319c95c90904175accf125d2fc11')
+sha512sums=('98d7f38fcd8b087c437f61dbf37ad5cb6018d5d4b1e32903bac974406f849f7f13d638510c3965c33d7118ecaac4e9d0a246c8e9b2150210fcd850194b241cad')
+b2sums=('e1769265c646a1d8931258e64b1a2054afca261b50b05c17a7afa15d6a88f66641ca405f0fda74b2353adb9c6d7908d1e8679d94a80e7b731d97472e0525da70')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make LIBS="-lncursesw -lpthread"
+	cd "$srcdir/$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make CPPFLAGS='-fcommon' LIBS="-lncursesw -lpthread"
 }
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR=$pkgdir/ install
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR=$pkgdir/ install
 }
-
