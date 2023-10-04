@@ -4,6 +4,7 @@ pkgbase = bitw-git
 	pkgrel = 1
 	url = https://github.com/mvdan/bitw
 	arch = x86_64
+	arch = i686
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64

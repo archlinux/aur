@@ -4,7 +4,7 @@ pkgname="$_pkgname-git"
 pkgver='r91.gae87ee7'
 pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation - git version'
-arch=('x86_64' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
 license=('BSD')
 makedepends=('git' 'go>=1.19')
@@ -39,18 +39,12 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
 	go build -v -o "$srcdir/$_bindir/" './...'
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	export GOPATH="$srcdir/$_gopath"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	go test -v './...'
 }
 
