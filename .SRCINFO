@@ -1,0 +1,16 @@
+pkgbase = perl-plack-middleware-deflater
+	pkgdesc = Compress response body with Gzip or Deflate
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://metacpan.org/release/Plack-Middleware-Deflater
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-plack
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Plack-Middleware-Deflater-0.12.tar.gz
+	sha256sums = 28da95e7da4c8b5591ac454509c92176cd0842960ce074fde30f9a1075dcc275
+
+pkgname = perl-plack-middleware-deflater
