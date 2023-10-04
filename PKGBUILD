@@ -1,7 +1,7 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=osdctl
-pkgver=0.18.0
-pkgrel=1
+pkgver=0.19.1
+pkgrel=2
 pkgdesc="CLI for the OSD utilities"
 arch=("any")
 conflicts=()
