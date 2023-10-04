@@ -1,6 +1,6 @@
 pkgname=bwplotka-bingo
 _pkgname=bingo
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Automated versioning of Go package level binaries'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('go')
 conflicts=(bingo)
 source=("https://github.com/bwplotka/bingo/archive/v$pkgver.tar.gz")
-sha256sums=('70de460387b9d94b14ac9a3747a24c5b20a622a69bf6ca1b9524f265264ddb08')
+sha256sums=('bb524d1973e6403706f387e0ee002e6bb258c0875a7d9a63fe386cb0ee961eeb')
 
 
 build() {
