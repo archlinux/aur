@@ -1,0 +1,26 @@
+pkgbase = gz-fuel-tools8
+	pkgdesc = A client library and command line tools for interacting with Gazebo Fuel servers.
+	pkgver = 8.1.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-fuel-tools
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=3
+	makedepends = pkg-config
+	depends = curl
+	depends = gz-common=5
+	depends = gz-math=7
+	depends = gz-msgs=9
+	depends = gz-utils=2
+	depends = jsoncpp
+	depends = libyaml
+	depends = libzip
+	depends = tinyxml2
+	optdepends = ruby
+	provides = gz-fuel-tools=8
+	source = https://github.com/gazebosim/gz-fuel-tools/archive/gz-fuel-tools8_8.1.0.tar.gz
+	sha256sums = 1a5585a8139ddef1f86ae9e70951319f41c046cb51c47cdfe8cfa7b6353bd12a
+
+pkgname = gz-fuel-tools8
