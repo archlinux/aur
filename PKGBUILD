@@ -1,5 +1,5 @@
-# Contributor: Daniele Basso <d dot bass 05 at proton dot me>
 # Maintainer: Noel Jacob <noeljacob at gmail dot com>
+# Contributor: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun-git
 pkgver=1.0.2.r20.bab9889
 pkgrel=1
@@ -9,8 +9,7 @@ url="https://github.com/oven-sh/bun"
 license=('MIT')
 makedepends=(bun clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip zig git)
 conflicts=(bun bun-bin)
-source=($url/pull/4998.diff)
-sha256sums=('363d7413e233875ddbdd736faaa30fa773f70d78dc4ad9cb5ea1bd5d5bf62bc6')
+provides=(bun)
 
 pkgver() {
   cd "$pkgname"
@@ -29,7 +28,6 @@ prepare() {
 
   cd "$pkgname"
   git checkout .
-  git apply ../4998.diff
 
   bun install -g @oven/zig
   bun install
@@ -44,12 +42,12 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
-  ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
-  ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
-  ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
+#  mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
+#  ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
+#  ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
+#  ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
 
-  make jsc-build jsc-copy-headers headers -j1
+#  make jsc-build jsc-copy-headers headers -j1
 
   make release-bindings
   make release -j1

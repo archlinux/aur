@@ -24,11 +24,8 @@ pkgbase = bun-git
 	makedepends = unzip
 	makedepends = zig
 	makedepends = git
+	provides = bun
 	conflicts = bun
 	conflicts = bun-bin
-	source = bun-git::git+https://github.com/oven-sh/bun.git
-	source = https://github.com/oven-sh/bun/pull/4998.diff
-	sha256sums = SKIP
-	sha256sums = f69c733728012f25f8d22c407720c2063631ecec71f602f4f87272d9a5f3c8c8
 
 pkgname = bun-git
