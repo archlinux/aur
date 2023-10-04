@@ -1,0 +1,34 @@
+pkgbase = gz-sim7
+	pkgdesc = Open source robotics simulator
+	pkgver = 7.6.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-sim
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=3
+	makedepends = pkg-config
+	makedepends = pybind11
+	makedepends = python
+	depends = eigen
+	depends = gz-common=5
+	depends = gz-fuel-tools=8
+	depends = gz-gui=7
+	depends = gz-math=7
+	depends = gz-msgs=9
+	depends = gz-physics=6
+	depends = gz-plugin=2
+	depends = gz-rendering=7
+	depends = gz-sensors=7
+	depends = gz-transport=12
+	depends = gz-utils=2
+	depends = protobuf
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = sdformat=13
+	provides = gz-sim=7
+	source = https://github.com/gazebosim/gz-sim/archive/gz-sim7_7.6.0.tar.gz
+	sha256sums = 872c08cb3cefe4b865daa3454256ba16ac993339bcad4a620930fbb51392c5e3
+
+pkgname = gz-sim7
