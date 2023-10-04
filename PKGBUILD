@@ -3,7 +3,7 @@
 
 pkgname=klystrack
 pkgver=1.7.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Tracker for making chiptune-like music on a modern computer"
 arch=('i686' 'x86_64')
 url="http://kometbomb.github.io/klystrack/"
@@ -32,6 +32,7 @@ prepare() {
 
   # Fix from Pavle's klystrack-git PKGBUILD
   sed -i 's/Default.kt/\/usr\/share\/klystrack\/Default\.kt/' "${srcdir}/${pkgname}-${pkgver}/src/main.c"
+  sed -i '/CFLAGS :=/ a CFLAGS += -fcommon' Makefile
 
   sed -i 's/^CFG = debug/CFG = release/' "${srcdir}/${pkgname}-${pkgver}/klystron/Makefile"
   sed -i 's/^CFG := debug/CFG = release/' "${srcdir}/${pkgname}-${pkgver}/Makefile"
