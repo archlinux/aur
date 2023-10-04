@@ -1,0 +1,19 @@
+pkgbase = python-fitutils
+	pkgdesc = Utility function and classes for fitting
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://pypi.org/project/fitutils/
+	arch = any
+	license = custom:BSD 3-Clause License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.4.0
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	noextract = fitutils-0.2.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/source/f/fitutils/fitutils-0.2.2.tar.gz
+	sha256sums = 7a75eb9cc513b2bd9889330b41cecf02aeaeb9c14d2d2f47e90b1df5eb56e590
+
+pkgname = python-fitutils
