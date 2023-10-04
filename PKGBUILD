@@ -31,7 +31,6 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
-  'pkg-config'
   'pybind11'
   'python'
   )
