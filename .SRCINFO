@@ -8,7 +8,6 @@ pkgbase = gz-plugin2
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = glibc
 	depends = gz-utils=2
 	provides = gz-plugin=2
