@@ -3,9 +3,9 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo[@]gmail.com>
 pkgname=python-demjson3
 _pkgname=${pkgname#python-}
-pkgver=3.0.5
-pkgrel=2
-pkgdesc="Fork of demjson to purely support Python 3. Python module for JSON data encoding, including jsonlint."
+pkgver=3.0.6
+pkgrel=1
+pkgdesc="encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 7159"
 arch=('any')
 url="https://github.com/nielstron/demjson3"
 license=('LGPL3')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 provides=('demjson' 'python-demjson')
 conflicts=('demjson' 'python-demjson' 'nodejs-jsonlint')
-sha256sums=('ab9aabdd85695f3684fc296f39766a2730f6c8de81d23f7048073dfe2f616d80')
+sha256sums=('37c83b0c6eb08d25defc88df0a2a4875d58a7809a9650bd6eee7afd8053cdbac')
 # https://warehouse.pypa.io/api-reference/integration-guide.html#querying-pypi-for-package-urls
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 
