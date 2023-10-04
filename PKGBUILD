@@ -3,34 +3,26 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr
-pkgver=5.6.0
-pkgrel=3
+pkgver=5.7.0
+pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('gdb' 'capnproto')
-makedepends=('git' 'cmake' 'gdb' 'ninja')
+depends=('gdb' 'capnproto' 'gcc-libs' 'glibc' 'zlib')
+optdepends=(
+  'python: for rr-collect-symbols.py'
+  'bash: for signal-rr-recording.sh'
+)
+makedepends=('git' 'cmake' 'ninja' 'patch' 'pkg-config')
 options=(!strip)
 
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/rr-debugger/${pkgname}/archive/${pkgver}.tar.gz
-	https://github.com/rr-debugger/rr/commit/2979c60ef8bbf7c940afd90172ddc5d8863f766e.patch
-	https://github.com/rr-debugger/rr/commit/2248c85c424e8c257ca88af2732782574d6a3544.patch
 )
-sha1sums=('9a047cbd1c47ef1585293ba090c5cd2d56519fa6'
-          '7faf899f31ee8e9e47a6ab8dce261cf64b235c6c'
-          '69e2324990d81a8013391537bd3ebd4460c673d9')
-
-prepare() {
-	cd $pkgname-$pkgver
-	mkdir -p build
-	patch -p1 -N -i ../2979c60ef8bbf7c940afd90172ddc5d8863f766e.patch
-	patch -p1 -N -i ../2248c85c424e8c257ca88af2732782574d6a3544.patch
-}
+sha1sums=('0f7d634a7341f08d96a6e14d0de4dd7117577250')
 
 build() {
-	cd $pkgname-$pkgver/build
 	cmake \
 		-GNinja \
 		-Ddisable32bit=true \
@@ -40,17 +32,17 @@ build() {
 		-DWILL_RUN_TESTS=OFF \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_CXX_STANDARD=14 \
-		..
+		-Wno-dev \
+		-B build \
+		-S "$pkgname-$pkgver"
 
-	cmake --build .	 -- -v
+	cmake --build build
 }
 
 package() {
-	cd $pkgname-$pkgver/build
-	DESTDIR="${pkgdir}" cmake --build . -- -v install
+	DESTDIR="${pkgdir}" cmake --build build -- -v install
 	if check_option 'debug' n; then
 		find "${pkgdir}/usr/bin" -type f -executable -exec strip $STRIP_BINARIES {} + || :
 	fi
-	cd ..
-	install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
+	install -D "$pkgname-$pkgver"/LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
 }
