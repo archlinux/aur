@@ -1,0 +1,34 @@
+pkgbase = python-clawpack
+	pkgdesc = Package for solving hyperbolic systems of partial differential equations
+	pkgver = 5.9.1
+	pkgrel = 1
+	url = https://github.com/clawpack/clawpack
+	arch = x86_64
+	license = custom:BSD-3-clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = python-matplotlib
+	optdepends = petsc: for petclaw support
+	optdepends = python-scipy: for euler support
+	source = clawpack-5.9.1::git+https://github.com/clawpack/clawpack.git#tag=v5.9.1
+	source = github.com-clawpack-pyclaw::git+https://github.com/clawpack/pyclaw.git#commit=d346bcd8303c10f9bb8f63e01fe498787ae4d2a0
+	source = github.com-clawpack-visclaw::git+https://github.com/clawpack/visclaw.git#commit=6518e7a4daa568de8573141d3da1860c3a2a8987
+	source = github.com-clawpack-clawutil::git+https://github.com/clawpack/clawutil.git#commit=6f3e18eec124798d5a662d596c5135adca0b0aee
+	source = github.com-clawpack-riemann::git+https://github.com/clawpack/riemann.git#commit=a53a9795eeab687fedebcaa0d25a526cad5c80ec
+	source = github.com-clawpack-amrclaw::git+https://github.com/clawpack/amrclaw.git#commit=2d90d97f1d00c15f4f469ae1f625c889d8bcfaf3
+	source = github.com-clawpack-geoclaw::git+https://github.com/clawpack/geoclaw.git#commit=db6ef3ae09731f21abf7bd581e6b03170715708c
+	source = github.com-clawpack-classic::git+https://github.com/clawpack/classic.git#commit=2d0f3d2449d8bd9ea8361031c9d25f44bd1d11f9
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = python-clawpack
