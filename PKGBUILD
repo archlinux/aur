@@ -1,8 +1,8 @@
 # Maintainer:  Jay Chu <tothesong at gmail dot com>
+# Maintainer:  Ciki Momogi <cikimomogi@protonmail.com>
 # Contributor: Carson Rueter <roachh at proton mail dot com>
 # Contributor: xXR01I1Xx <xxr01i1xx@tuta.io>
 # Contributor: Ewhal <ewhal@pantsu.cat>
-# Contributor: Ciki Momogi <cikimomogi@protonmail.com>
 
 pkgname=session-desktop-bin
 pkgver=1.11.3
