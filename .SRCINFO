@@ -9,9 +9,9 @@ pkgbase = bunjs-bin
 	provides = bun
 	conflicts = bun
 	conflicts = bun-bin
-	source_x86_64 = bun-x64-1.0.3.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.3/bun-linux-x64.zip
+	source_x86_64 = bun-x64-1.0.4.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.4/bun-linux-x64.zip
 	sha256sums_x86_64 = 944108ae6204708744d92aa72a5571a62abd69edb03517a91d8eb58d6aa4e7ce
-	source_aarch64 = bun-aarch64-1.0.3.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.3/bun-linux-aarch64.zip
+	source_aarch64 = bun-aarch64-1.0.4.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.4/bun-linux-aarch64.zip
 	sha256sums_aarch64 = d0a140bdfc93254d73fca78a55bc45c7af888f3e18cccb02322cada26ef7d102
 
 pkgname = bunjs-bin

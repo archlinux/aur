@@ -17,7 +17,7 @@ _baseline=''
 _baseline_sha256sums='79300fcfb410385f6bd73736ccdf83cd87e0e0e8427346f68551da70b6813c85'
 if [[ $CARCH == 'x86_64' && $(cat /proc/cpuinfo | grep avx2) = '' ]];then
   _baseline='-baseline'
-  sha256sums_x86_64=(sha256sums_x86_64_baseline)
+  sha256sums_x86_64=($_baseline_sha256sums)
 fi
 source_x86_64=("bun-x64-${pkgver}.zip::https://github.com/oven-sh/bun/releases/download/bun-v${pkgver}/bun-linux-x64${_baseline}.zip")
 source_aarch64=("bun-aarch64-${pkgver}.zip::https://github.com/oven-sh/bun/releases/download/bun-v${pkgver}/bun-linux-aarch64.zip")
