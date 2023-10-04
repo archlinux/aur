@@ -3,8 +3,8 @@
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname="onnxruntime-cuda-bin"
-pkgver=1.15.1
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="Cross-platform, high performance ML inferencing and training accelerator (CUDA execution provider)"
 arch=("x86_64")
 url="https://www.onnxruntime.ai/"
@@ -21,8 +21,8 @@ depends=("cudnn"
          "abseil-cpp")
 source=("https://github.com/microsoft/onnxruntime/releases/download/v$pkgver/onnxruntime-linux-x64-gpu-$pkgver.tgz"
         "onnxruntime.zip::https://github.com/microsoft/onnxruntime/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('eab891393025edd5818d1aa26a42860e5739fcc49e3ca3f876110ec8736fe7f1'
-            '55a3dcb9dc959a007e8d043509a9dc0b5dbccdfe9e7f8a5ea75f7add0a71e733')
+b2sums=('3ddfdc7b1611d554c74e2a68443726cdb704a4314a4d11ef3ca275ff9b59905e3c104d9121ba4813dc746adad811cf4a1a53ee77ab94a8025e413e8c7006dcac'
+        '99f52bf67792c2f527f48b5004b24b345dd7aad3c50401ab042d9f6f97e638f996258212fa1072813f153973cbecaa0424a35f87c84f956c05cf21d39da42099')
 options=("!strip")
 
 package(){
