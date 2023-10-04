@@ -2,7 +2,7 @@
 
 pkgname="rofi-playerctl-git"
 pkgdesc="Control media players with a rofi menu"
-url="https://github.com/mrHeavenli/akkufetch"
+url="https://github.com/mrHeavenli/rofi-playerctl"
 
 pkgver=20230803
 pkgrel=1
