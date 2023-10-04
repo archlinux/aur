@@ -8,7 +8,6 @@ pkgbase = gz-tools2
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	provides = gz-tools=2
 	source = https://github.com/gazebosim/gz-tools/archive/gz-tools2_2.0.0.tar.gz
 	sha256sums = 5e3788d5a1d5fa40724f1484cda716e0c050f01d2c516efa9f8a00877e74ef64
