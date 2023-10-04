@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly
-pkgver=0.7.19
+pkgver=0.7.20
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers'
 arch=('x86_64')
@@ -20,7 +20,7 @@ prepare() {
 build() {
     local _ldflags='-linkmode=external'
     _ldflags+=" -X main.DefaultBuildkitdImage=docker.io/earthly/buildkitd:v${pkgver}"
-    _ldflags+=" -X main.Version=${pkgver}"
+    _ldflags+=" -X main.Version=v${pkgver}"
     _ldflags+=" -X main.GitSha=$(git -C earthly rev-parse HEAD)"
     local _tags='dfrunmount,dfrunsecurity,dfsecrets,dfssh,dfrunnetwork,dfheredoc,forceposix'
     export CGO_CPPFLAGS="$CPPFLAGS"
