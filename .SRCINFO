@@ -1,6 +1,6 @@
 pkgbase = temptations-git
 	pkgdesc = Remake of the MSX game Temptations
-	pkgver = 0.7855fbf
+	pkgver = 0.e566082
 	pkgrel = 1
 	url = https://github.com/pipagerardo/temptations
 	arch = x86_64
