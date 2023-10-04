@@ -22,7 +22,6 @@ makedepends=(
   'boost'
   'doxygen'
   'gz-cmake=3'
-  'pkg-config'
   )
 optdepends=(
   'ogre=1.9.0: Ogre classic rendering engine plugin'

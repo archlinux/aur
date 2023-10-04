@@ -9,7 +9,6 @@ pkgbase = gz-rendering7
 	makedepends = boost
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = freeimage
 	depends = gz-common=5
 	depends = gz-math=7
