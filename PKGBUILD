@@ -1,9 +1,9 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell-config')
-pkgver=0.5.19
+pkgver=0.5.20
 pkgrel=1
 pkgdesc="nwg-shell configuration utility"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell-config"
 license=('MIT')
 provides=('nwg-shell-config')
@@ -12,7 +12,7 @@ depends=('python' 'python-gobject' 'python-i3ipc' 'python-geopy' 'playerctl' 'gt
 makedepends=('python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v"$pkgver".tar.gz")
 
-md5sums=('d3c1a191abd8a3ec3fcc914e9e332390')
+md5sums=('cc4d188d7f090cb1e5ae5d2d678259b6')
 
 package() {
   cd "${pkgname}-${pkgver}"
