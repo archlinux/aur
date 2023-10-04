@@ -24,7 +24,6 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
-  'pkg-config'
   )
 optdepends=(
   'ruby'

@@ -8,7 +8,6 @@ pkgbase = gz-fuel-tools8
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = curl
 	depends = gz-common=5
 	depends = gz-math=7
