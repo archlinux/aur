@@ -3,10 +3,10 @@
 pkgname='veracrypt-inyourlanguage'
 _pkgname='VeraCrypt'
 pkgver=1.26.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.'
 url='https://www.veracrypt.fr'
-arch=('x86_64' 'i686' 'arm64' 'armhf')
+arch=('x86_64' 'i686' 'arm64' 'armhf' 'aarch64')
 license=('Apache 2.0' 'TrueCrypt 3.0')
 provides=('veracrypt')
 conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-git-no-gost' 'veracrypt-trans')
