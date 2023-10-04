@@ -7,19 +7,23 @@ pkgname=spotify-dev
 _pkgname=spotify
 pkgver=1.2.20.1210
 _commit=g2a8a8a57
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
 depends=('alsa-lib'
 	'at-spi2-core'
-	'electron'
 	'gtk3'
+	'libayatana-appindicator'
 	'libcurl-gnutls'
+	'libdbusmenu-glib'
 	'libglvnd'
 	'libice'
-	'libsm')
+	'libsm'
+	'nss'
+	'nspr'
+	'vulkan-icd-loader')
 optdepends=('ffmpeg: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
