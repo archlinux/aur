@@ -1,0 +1,17 @@
+pkgbase = perl-test-class-most
+	pkgdesc = Test Classes the easy way (via MetaCPAN distribution)
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Class-Most
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-test-class
+	depends = perl-test-most
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/O/OV/OVID/Test-Class-Most-0.08.tar.gz
+	sha256sums = 634cded86bba5dde07ced72ffb8a46705ff93aa844b98e96bde05540234c7dff
+
+pkgname = perl-test-class-most
