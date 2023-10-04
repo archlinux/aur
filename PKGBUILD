@@ -1,7 +1,7 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=bloop-desktop-bin
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A fast code search engine written in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('bloop-desktop')
 source=(
   "https://github.com/BloopAI/bloop/releases/download/v${pkgver}/bloop_${pkgver}_amd64.deb"
 )
-sha256sums=('363853c2ae72f865f142999f7ae2afc03e1198890b56cefa12ecd21e16ea936c')
+sha256sums=('c2dae8e8fa8d11fe0d366143b0593431bd5c984a1673c5c551c55c06ff4ad834')
 
 package() {
   cd "$srcdir"
