@@ -8,7 +8,8 @@ pkgdesc="A powerful knowledge base integrated with time management running on lo
 arch=('x86_64')
 url="https://github.com/Acreom/releases"
 license=('custom:Commercial')
-#conflicts=('obsidian')
+provides=("acreom=${pkgver}")
+conflicts=('acreom')
 options+=('!strip')
 source=("$url/releases/download/v$pkgver/$_appimage")
 noextract=($_appimage)

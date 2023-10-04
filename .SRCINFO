@@ -5,6 +5,8 @@ pkgbase = acreom-bin
 	url = https://github.com/Acreom/releases
 	arch = x86_64
 	license = custom:Commercial
+	provides = acreom=1.10.2
+	conflicts = acreom
 	noextract = acreom-1.10.2.AppImage
 	options = !strip
 	source = https://github.com/Acreom/releases/releases/download/v1.10.2/acreom-1.10.2.AppImage
