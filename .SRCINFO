@@ -1,6 +1,6 @@
 pkgbase = duplicacy-git
 	pkgdesc = A new generation cloud backup tool based on lock-free deduplication
-	pkgver = v2.7.2.r29.0d8a37f
+	pkgver = v3.2.2.r0.5012014
 	pkgrel = 1
 	url = https://duplicacy.com/
 	arch = x86_64
