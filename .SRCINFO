@@ -1,0 +1,17 @@
+pkgbase = gz-utils2
+	pkgdesc = Classes and functions for robot applications.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-utils
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = gz-cmake=3
+	makedepends = doxygen
+	depends = cli11
+	provides = gz-utils=2
+	source = https://github.com/gazebosim/gz-utils/archive/gz-utils2_2.1.0.tar.gz
+	sha256sums = 667d5000ff02ea332e6d4aa9fba1e31b2d3d153e69d40693918a8bb44330ca57
+
+pkgname = gz-utils2
