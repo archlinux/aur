@@ -8,7 +8,6 @@ pkgbase = gz-launch6
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = cli11
 	depends = gz-common=5
 	depends = gz-gui=7

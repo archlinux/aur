@@ -26,7 +26,6 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
-  'pkg-config'
   )
 optdepends=(
   'libwebsockets: a websocket server for simulation'
