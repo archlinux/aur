@@ -8,7 +8,6 @@ pkgbase = gz-sensors7
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = gz-common=5
 	depends = gz-math=7
 	depends = gz-msgs=9
