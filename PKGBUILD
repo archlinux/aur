@@ -1,4 +1,4 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=fog-vmfusion
 pkgname=ruby-$_gemname
@@ -6,7 +6,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc='This library can be used as a module for fog or as standalone provider to use the VMWARE FUSION in applications.'
 arch=(any)
-url='http://rubygems.org/gems/fog-vmfusion'
+url='https://rubygems.org/gems/fog-vmfusion'
 license=(MIT)
 depends=(ruby ruby-fog-core ruby-fission)
 options=(!emptydirs)
