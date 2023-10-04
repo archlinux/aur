@@ -1,34 +1,41 @@
 pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = http://scikit-image.org
 	arch = i686
 	arch = x86_64
 	license = BSD
 	checkdepends = python-pytest>=5.2.0
-	checkdepends = python-pytest-cov>=2.7.0
+	checkdepends = python-astropy>=5.0
+	checkdepends = python-pytest-cov>=2.11.0
+	checkdepends = python-dask
+	checkdepends = python-imread
 	checkdepends = python-matplotlib>=3.5
+	checkdepends = python-matplotlib>=3.5
+	checkdepends = python-numpydoc>=1.5
 	checkdepends = python-pytest-localserver
+	checkdepends = python-pywavelets>=1.1.1
+	checkdepends = python-scikit-learn
+	checkdepends = python-simpleitk
 	checkdepends = python-pooch>=1.6.0
 	makedepends = cython>=0.29.32
 	makedepends = python-setuptools
 	makedepends = python-numpy
-	makedepends = meson-python
+	makedepends = meson-python>=0.14
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pythran
 	makedepends = python-packaging>=21
-	depends = python-numpy>=1.21.1
+	depends = python-numpy>=1.22
 	depends = python-scipy>=1.8
 	depends = python-networkx>=2.8
 	depends = python-pillow>=9.0.1
-	depends = python-pywavelets>=1.1.1
 	depends = python-imageio>=2.27
 	depends = python-tifffile>=2022.8.12
 	depends = python-packaging>=21
-	depends = python-lazy-loader>=0.2
+	depends = python-lazy-loader>=0.3
 	optdepends = python-matplotlib>=3.5
 	optdepends = freeimage: for reading various types of image file formats
 	optdepends = python-pyamg: fast cg_mg mode of random walker segmentation
@@ -37,9 +44,10 @@ pkgbase = python-scikit-image
 	optdepends = python-dask>2021.1.0: used to speed up certain functions
 	optdepends = python-cloudpickle>=0.2.1: necessary to provide the processes scheduler for dask
 	optdepends = python-pooch>=1.6.0
-	optdepends = python-scikit-learn>=0.24.0
+	optdepends = python-scikit-learn>=1.1
+	optdepends = python-pywavelets>=1.1.1
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scikit_image/scikit_image-0.21.0.tar.gz
-	sha256sums = b33e823c54e6f11873ea390ee49ef832b82b9f70752c8759efd09d5a4e3d87f0
+	source = https://files.pythonhosted.org/packages/source/s/scikit_image/scikit_image-0.22.0.tar.gz
+	sha256sums = 018d734df1d2da2719087d15f679d19285fce97cd37695103deadfaef2873236
 
 pkgname = python-scikit-image
