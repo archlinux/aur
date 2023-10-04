@@ -2,7 +2,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2023.09.12
-pkgrel=2
+pkgrel=3
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -26,6 +26,7 @@ depends=(
     'python-netifaces'
     'python-numpy'
     'python-yaml'
+    'spdlog'
     'tinyxml'  # urdfdom
     'tinyxml2'
 )
@@ -35,17 +36,17 @@ makedepends=(
   'python-vcstool'
 )
 source=(
-    "ros2::git+https://github.com/ros2/ros2.git#tag=release-${_rosdist_short}-${pkgver//.}"
-    "ros2_base::git+https://github.com/ros2/variants.git#branch=master"
+    "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
+    "ros2-variants-0.10.0.tar.gz::https://github.com/ros2/variants/archive/0.10.0.tar.gz"
 )
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('fd40b4d80eb9c27f57b2b59ad8a947cd5f7f34fc67c8df1d7cc0a659127fc9f7'
+            'df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6')
 
 prepare() {
     # Clone the repos
     printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
-    vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
+    vcs import $srcdir/ros2/src < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
 
     # Apply patches
     printf "Patching sources\n"
