@@ -1,0 +1,15 @@
+pkgbase = perl-simple-accessor
+	pkgdesc = very simple, light and powerful accessor (via MetaCPAN distribution)
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://metacpan.org/release/Simple-Accessor
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Simple-Accessor-1.13.tar.gz
+	sha256sums = 5af6066c7a9f58ab963e36d12052bcc5b20e80ee32f3899ea882a79192882226
+
+pkgname = perl-simple-accessor
