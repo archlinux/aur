@@ -12,7 +12,6 @@ license=('Apache')
 depends=('cli11')
 makedepends=(
   'cmake'
-  'pkg-config'
   'gz-cmake=3'
   'doxygen'
   )

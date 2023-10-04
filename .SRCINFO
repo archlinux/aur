@@ -6,7 +6,6 @@ pkgbase = gz-utils2
 	arch = any
 	license = Apache
 	makedepends = cmake
-	makedepends = pkg-config
 	makedepends = gz-cmake=3
 	makedepends = doxygen
 	depends = cli11
