@@ -1,0 +1,23 @@
+From 3b6f9ff7b32c44b51a4c5c0ea2fda2edd32335ed Mon Sep 17 00:00:00 2001
+From: Dave Cross <dave@dave.org.uk>
+Date: Mon, 24 Jul 2023 17:42:39 +0100
+Subject: [PATCH] Fixes issue #48
+
+---
+ t/methods.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/methods.t b/t/methods.t
+index 6eb452c..554bdba 100644
+--- a/t/methods.t
++++ b/t/methods.t
+@@ -84,7 +84,7 @@ plan skip_all => 'pandoc executable required' unless pandoc;
+     my ( $in, $out ) = ('# x');
+     is $pandoc->run( [], in => \$in, out => \$out ), 0, 'run';
+     like $out,
+-      qr{<h1 (data-number="1" )?id="x"><span class="header-section-number">1</span> x</h1>},
++      qr{<h1 (data-number="1" )?id="x"><span class="header-section-number">1</span>\sx</h1>},
+       'use default arguments';
+ 
+     is $pandoc->run( '-t' => 'latex', { in => \$in, out => \$out } ), 0, 'run';
+

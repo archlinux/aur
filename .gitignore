@@ -1,0 +1,4 @@
+Pandoc-*.tar.gz
+*.tar.xz
+pkg
+src

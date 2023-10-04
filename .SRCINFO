@@ -1,0 +1,22 @@
+pkgbase = perl-pandoc
+	pkgdesc = wrapper for the mighty Pandoc document converter (via MetaCPAN distribution)
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://metacpan.org/release/Pandoc
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-exception
+	depends = perl
+	depends = perl-file-which
+	depends = perl-http-tiny
+	depends = perl-ipc-run3
+	depends = perl-json-pp
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/V/VO/VOJ/Pandoc-0.9.1.tar.gz
+	source = gh-issue-49.patch
+	sha256sums = dc9429b9b76e25f0a36a2f2294678b056202af00c5325fd0fffd3ad193b82ed3
+	sha256sums = 09d89d03e3d8c7fda31b98b77a695168d6df3c32a058dff272666b8702bdbf6b
+
+pkgname = perl-pandoc
