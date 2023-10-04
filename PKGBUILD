@@ -1,17 +1,17 @@
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=libclc-git
-pkgver=17.0.0_r464818.04ed822dcc21
+pkgver=18.0.0_r476723.8641cdf397d8
 pkgrel=1
 epoch=1
 groups=('chaotic-mesa-git')
 pkgdesc="Library requirements of the OpenCL C programming language (git version)"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://libclc.llvm.org/"
 license=('MIT')
 provides=('libclc')
 conflicts=('libclc')
-makedepends=('clang' 'llvm-libs' 'spirv-llvm-translator' 'polly' 'git' 'python' 'ninja' 'cmake')
+makedepends=('clang' 'llvm-libs' 'llvm' 'spirv-llvm-translator' 'polly' 'git' 'python' 'ninja' 'cmake')
 source=('llvm-project-git::git+https://github.com/llvm/llvm-project.git')
 md5sums=('SKIP')
 
@@ -41,7 +41,6 @@ build() {
    cmake ../libclc -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_DATADIR=/usr/lib \
     -DLIBCLC_TARGETS_TO_BUILD="all"
 
     ninja all
