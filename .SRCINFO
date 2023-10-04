@@ -8,7 +8,6 @@ pkgbase = gz-gui7
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = protobuf
 	depends = tinyxml2
 	depends = gz-utils=2

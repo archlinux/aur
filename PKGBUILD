@@ -26,7 +26,6 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
-  'pkg-config'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
