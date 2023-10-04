@@ -18,10 +18,10 @@ depends=('webkit2gtk'
 	libsoup
 )
 source=("${_url}/releases/download/v${pkgver}/ctool_tauri_linux.deb"
-	https://github.com/baiy/Ctool/blob/master/LICENSE
+	https://raw.githubusercontent.com/baiy/Ctool/master/LICENSE
 )
 sha256sums=('b47704172f1d2c1fd9b13ebedb19ca80c693f7c59fdce412f69772a9c10b7955'
-            '6203116f5707c1f8836d7e70934d141a772379fe83ff813d0b7fbb14864ac9bd')
+            '459af2e36090998e7807b1d2a5b8d6a381bf94b69cbd2ec68e7943a09e2ce1e2')
 package() {
 	tar -xvpf ${srcdir}/data.tar.gz -C $pkgdir
 	chown root:root -R $pkgdir
