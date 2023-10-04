@@ -1,0 +1,20 @@
+pkgbase = perl-mason-plugin-psgihandler
+	pkgdesc = PSGI handler for Mason
+	pkgver = 0.06
+	pkgrel = 1
+	url = https://metacpan.org/release/Mason-Plugin-PSGIHandler
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-mason
+	depends = perl-plack
+	depends = perl-file-sharedir
+	depends = perl-try-tiny
+	depends = perl-devel-stacktrace
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JS/JSWARTZ/Mason-Plugin-PSGIHandler-0.06.tar.gz
+	sha256sums = ffde514fa5514aae39a8969b209bae3b05ac9bf584ff310a5c17194d4887db93
+
+pkgname = perl-mason-plugin-psgihandler
