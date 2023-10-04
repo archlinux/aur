@@ -1,14 +1,14 @@
 # Maintainer:  Lyle Tafoya <lyle.tafoya@gmail.com>
 
 pkgname=omega-rebirth-git
-pkgver=v0.3.0.r0.g2b98b5d
-pkgrel=1
+pkgver=v0.5.0.r0.g78c89a4
+pkgrel=0
 pkgdesc='Modern fork of the classic 1987 roguelike "Omega"'
 arch=('i686' 'x86_64')
 url='https://github.com/Lyle-Tafoya/Omega'
 license=('GPL')
 depends=('ncurses')
-makedepends=('git')
+makedepends=('git' 'cmake' 'gzip')
 source=('git+https://github.com/Lyle-Tafoya/Omega.git')
 sha256sums=('SKIP')
 provides=('omega-rebirth')
@@ -20,20 +20,21 @@ pkgver() {
 }
 
 build() {
+
   mkdir "${srcdir}/Omega/build"
   cd "${srcdir}/Omega/build"
-  sed -i 's|#define OMEGALIB.*|#define OMEGALIB "/var/games/omega-rebirth/"|' "${srcdir}/Omega/src/defs.h"
-  cmake .. -DCMAKE_BUILD_TYPE=Release
-  make
+  cmake .. -DCMAKE_BUILD_TYPE='Release' -DCMAKE_CXX_FLAGS='-DOMEGALIB=\"/var/games/omega-rebirth/\"'
+  cmake --build .
 }
 
 package() {
-  cd ${srcdir}/Omega
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/var/games"
-  cp "${srcdir}/Omega/build/omega" "${pkgdir}/usr/bin/omega-rebirth"
-  cp -r "${srcdir}/Omega/build/lib" "${pkgdir}/var/games/omega-rebirth"
-  chown -R root:games "${pkgdir}/var/games"
-  chmod 0755 "${pkgdir}/usr/bin/omega-rebirth"
-  chmod -R 0775 "${pkgdir}/var/games/"
+  install -Dm755 "${srcdir}/Omega/build/omega" "${pkgdir}/usr/bin/omega-rebirth"
+  install -dm775 "${pkgdir}/var/games"
+  mv "${srcdir}/Omega/build/lib" "${pkgdir}/var/games/omega-rebirth"
+  install -dm775 "${pkgdir}/var/games/omega-rebirth/saves"
+  chown -R root:games "${pkgdir}/var/games/"
+  chmod 775 "${pkgdir}/var/games/omega-rebirth"
+  find "${pkgdir}/var/games/omega-rebirth" -type f -exec chmod 664 {} \;
+  gzip "${srcdir}/Omega/docs/omega.6"
+  install -Dm644 "${srcdir}/Omega/docs/omega.6.gz" "${pkgdir}/usr/share/man/man6/omega.6.gz"
 }
