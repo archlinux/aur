@@ -1,0 +1,18 @@
+pkgbase = perl-plack-middleware-profiler-nytprof
+	pkgdesc = Middleware for Profiling a Plack App
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://metacpan.org/release/Plack-Middleware-Profiler-NYTProf
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-devel-nytprof
+	depends = perl-plack
+	depends = perl-file-which
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/K/KI/KITANO/Plack-Middleware-Profiler-NYTProf-0.17.tar.gz
+	sha256sums = 601f0c0d4e5ee562811e19a8a469900d674b85f1e6263a1b56e1af3748d9e04b
+
+pkgname = perl-plack-middleware-profiler-nytprof
