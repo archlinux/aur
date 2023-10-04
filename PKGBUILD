@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
 depends=('java-runtime>=8' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<5')
-makedepends=('git' 'binutils')
+makedepends=('git')
 #provides=('sdn-controller')
 conflicts=('omada-sdn-controller')
 source=(
@@ -24,10 +24,8 @@ sha256sums=('28a004ae360d68de463265b65b7335124fcf6be99f02e69047c2644f4c678aa0'
             'SKIP')
 
 prepare(){
-    ar x ${_basepkgname}_v${pkgver}_${_baseos}.deb
-    rm -rf control.tar.xz debian-binary
-    tar --xz -xvf data.tar.xz
-    rm -rf data.tar.xz
+    mkdir -p debsource
+    bsdtar -O -xf ${_basepkgname}_v${pkgver}_${_baseos}.deb data.tar.xz | bsdtar -C debsource -xJf -
 }
 package() {
     #cd ${_basepkgname}

@@ -6,7 +6,6 @@ pkgbase = omada-controller
 	arch = x86_64
 	license = custom
 	makedepends = git
-	makedepends = binutils
 	depends = java-runtime>=8
 	depends = java-jsvc
 	depends = curl
