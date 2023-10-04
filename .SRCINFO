@@ -1,23 +1,17 @@
 pkgbase = iraf-bin
-	pkgdesc = Image Reduction and Analysis Facility
-	pkgver = 2.16
-	pkgrel = 11
-	url = http://iraf.noao.edu/
-	install = iraf-bin.install
+	pkgdesc = IRAF - Image Reduction and Analysis Facility
+	pkgver = 2.17.1
+	pkgrel = 1
+	url = https://github.com/iraf-community/iraf
 	arch = x86_64
-	license = CDDL
-	license = MIT
+	license = custom
+	depends = bash
+	depends = cfitsio
+	depends = expat
+	optdepends = xgterm: to start irafcl in xgterm
 	provides = iraf
 	conflicts = iraf
-	noextract = iraf.lnux.x86_64.tar.gz
-	noextract = x11iraf-v2.0BETA-bin.linux.tar.gz
-	options = !strip
-	source = ftp://iraf.noao.edu/iraf/v216/PCIX/iraf.lnux.x86_64.tar.gz
-	source = http://iraf.noao.edu/x11iraf/x11iraf-v2.0BETA-bin.linux.tar.gz
-	source = iraf-firstrun.sh
-	md5sums = 2e351177d6678b356bec13667137687c
-	md5sums = 059c26f38f2656d1acf9d3972cf761b0
-	md5sums = 92ee4b50477f8c5ab9d6105b90188eb8
+	source = https://ftp.debian.org/debian/pool/main/i/iraf/iraf_2.17.1-3_amd64.deb
+	sha256sums = ddaebe21fd0676fd6bcc43c1e8cd285db57bcd5af10c3c032f69c2d42bee3a9e
 
 pkgname = iraf-bin
-
