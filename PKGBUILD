@@ -1,12 +1,12 @@
 # Maintainer: coldbug <coldBug@e.mail.de>
 pkgname=dr14_t.meter-git
-pkgver=v1.0.15.r175.gecb431d
+pkgver=v1.0.15.r190.g9a22d1a
 pkgrel=1
 pkgdesc="DR14 T.meter is a command line tool for computing the Dynamic Range of your music"
 arch=(any)
 url="https://github.com/simon-r/dr14_t.meter"
 license=('GPL3')
-depends=('python' 'flac' 'lame' 'faad2' 'ffmpeg' 'vorbis-tools' 'python-numpy')
+depends=('python' 'flac' 'lame' 'faad2' 'ffmpeg' 'vorbis-tools' 'python-numpy' 'python-mutagen')
 optdepends=('python-matplotlib: plot support for python' 'python-scipy: dyn compression')
 makedepends=('git')
 provides=("${pkgname%-git}")

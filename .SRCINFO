@@ -1,6 +1,6 @@
 pkgbase = dr14_t.meter-git
 	pkgdesc = DR14 T.meter is a command line tool for computing the Dynamic Range of your music
-	pkgver = v1.0.15.r175.gecb431d
+	pkgver = v1.0.15.r190.g9a22d1a
 	pkgrel = 1
 	url = https://github.com/simon-r/dr14_t.meter
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = dr14_t.meter-git
 	depends = ffmpeg
 	depends = vorbis-tools
 	depends = python-numpy
+	depends = python-mutagen
 	optdepends = python-matplotlib: plot support for python
 	optdepends = python-scipy: dyn compression
 	provides = dr14_t.meter
@@ -22,4 +23,3 @@ pkgbase = dr14_t.meter-git
 	md5sums = SKIP
 
 pkgname = dr14_t.meter-git
-
