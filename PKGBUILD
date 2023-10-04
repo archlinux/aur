@@ -4,7 +4,7 @@ pkgname=python-spacy-de_dep_news_trf
 _pkg="${pkgname#python-spacy-}"
 pkgver=3.7.2
 pkgrel=1
-pkgdesc="German transformer pipeline (Transformer(name='bert-base-german-cased', piece_encoder='bert-wordpiece', stride=136, type='bert', width=768, window=176, vocab_size=30000)). Components: transformer, tagger, morphologizer, parser, lemmatizer (trainable_lemmatizer)."
+pkgdesc="German transformer pipeline. Components: transformer, tagger, morphologizer, parser, lemmatizer (trainable_lemmatizer)."
 url="https://spacy.io/models/de#de_dep_news_trf"
 depends=(
     python-spacy
