@@ -1,6 +1,6 @@
 # Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-distro
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Download and verify ISOs with GnuPG and shasums"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://codeberg.org/bashuser30/$pkgname"
 source=("$url/archive/v$pkgver.tar.gz")
 license=('GPL3')
 depends=('bash' 'gnupg' 'jq' 'wget')
-sha256sums=('36776f505cea47646fe4aec8f725705adb3b9da4e7821c3ea075d76947fff898')
+sha256sums=('1195d3e0dbc51dfb06c09e4314e81097c9f99434588ecc8aeec021a21fa8e960')
 
 package() {
     cd "$srcdir/$pkgname"
