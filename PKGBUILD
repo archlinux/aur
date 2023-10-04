@@ -86,6 +86,6 @@ package() {
 	done
 
 	# Disable the official Telegram Desktop updater
-	mkdir -p "$pkgdir/etc/tdesktop"
-	echo "/usr/bin/telegram-desktop" >"$pkgdir/etc/tdesktop/externalupdater"
+	mkdir -p "$pkgdir/usr/share/TelegramDesktop/externalupdater.d"
+	echo "/usr/bin/telegram-desktop" >"$pkgdir/usr/share/TelegramDesktop/externalupdater.d/telegram-desktop.conf"
 }
