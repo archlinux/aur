@@ -1,6 +1,6 @@
 pkgbase = r-bootnet
 	pkgdesc = Bootstrap Methods for Various Network Estimation Routines
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bootnet
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-bootnet
 	optdepends = r-lavaan
 	optdepends = r-psychtools
 	optdepends = r-relaimpo
-	source = https://cran.r-project.org/src/contrib/bootnet_1.5.5.tar.gz
-	sha256sums = 41d41331daf03ddfc65277adfdf805ce9cb1fd9ce36a50c3da805a331be412d4
+	source = https://cran.r-project.org/src/contrib/bootnet_1.5.6.tar.gz
+	sha256sums = e808b13e1aea3c2ea1165f87354354f4f9f7520827d4e1b5a44f137dcf1073d2
 
 pkgname = r-bootnet
