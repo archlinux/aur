@@ -1,0 +1,15 @@
+pkgbase = tree-sitter-typst-git
+	pkgdesc = A TreeSitter grammar for the Typst language.
+	pkgver = v0.8.0.2.r11.g791cac4
+	pkgrel = 1
+	url = https://github.com/uben0/tree-sitter-typst
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = tree-sitter-cli
+	provides = tree-sitter-typst
+	source = tree-sitter-typst::git+https://github.com/uben0/tree-sitter-typst
+	b2sums = SKIP
+
+pkgname = tree-sitter-typst-git
