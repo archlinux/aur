@@ -1,7 +1,7 @@
 diff -Naur a/product.json b/product.json
 --- a/product.json	2023-09-06 14:00:16.000000000 +0200
-+++ b/product.json	2023-10-02 18:01:49.267880091 +0200
-@@ -1,6 +1,111 @@
++++ b/product.json	2023-10-04 21:33:55.353809741 +0200
+@@ -1,6 +1,112 @@
  {
 +	"quality": "stable",
 +	"auth": {
@@ -53,7 +53,7 @@ diff -Naur a/product.json b/product.json
 +		"ms-vsliveshare.vsliveshare": ["contribMenuBarHome", "contribShareMenu", "contribStatusBarItems", "diffCommand", "documentFiltersExclusive", "fileSearchProvider", "findTextInFiles", "notebookCellExecutionState", "notebookLiveShare", "terminalDimensions", "terminalDataWriteEvent", "textSearchProvider"],
 +		"ms-vscode.js-debug": ["portsAttributes", "findTextInFiles", "workspaceTrust", "tunnels"],
 +		"ms-toolsai.vscode-ai-remote": ["resolvers"],
-+		"ms-python.python": ["contribEditorContentMenu", "quickPickSortByLabel", "portsAttributes", "testObserver", "envShellEvent", "quickPickItemTooltip", "terminalDataWriteEvent", "saveEditor"],
++		"ms-python.python": ["contribEditorContentMenu", "quickPickSortByLabel", "portsAttributes", "testObserver", "quickPickItemTooltip", "terminalDataWriteEvent", "saveEditor"],
 +		"ms-dotnettools.dotnet-interactive-vscode": ["notebookMessaging", "languageConfigurationAutoClosingPairs"],
 +		"GitHub.codespaces": ["contribEditSessions", "contribMenuBarHome", "contribRemoteHelp", "contribViewsRemote", "resolvers", "tunnels", "terminalDataWriteEvent", "treeViewReveal", "notebookKernelSource"],
 +		"ms-vscode.azure-repos": ["extensionRuntime", "fileSearchProvider", "textSearchProvider"],
@@ -68,10 +68,11 @@ diff -Naur a/product.json b/product.json
 +		"GitHub.vscode-pull-request-github": ["contribCommentThreadAdditionalMenu", "tokenInformation", "contribShareMenu", "fileComments", "contribCommentPeekContext", "codiconDecoration", "diffCommand", "contribCommentEditorActionsMenu", "readonlyMessage", "treeViewMarkdownMessage", "shareProvider", "quickDiffProvider"],
 +		"GitHub.copilot": ["inlineCompletionsAdditions"],
 +		"GitHub.copilot-nightly": ["inlineCompletionsAdditions"],
-+		"GitHub.copilot-chat": ["handleIssueUri", "interactive", "interactiveUserActions", "terminalContextMenu", "terminalDataWriteEvent", "terminalSelection", "terminalQuickFixProvider", "chatSlashCommands", "readonlyMessage", "mappedEditsProvider", "aiRelatedInformation"],
++		"GitHub.copilot-chat": ["handleIssueUri", "interactive", "interactiveUserActions", "terminalContextMenu", "terminalDataWriteEvent", "terminalSelection", "terminalQuickFixProvider", "chatSlashCommands", "chatVariables", "chatAgents", "readonlyMessage", "chatProvider", "mappedEditsProvider", "aiRelatedInformation"],
 +		"GitHub.remotehub": ["contribRemoteHelp", "contribMenuBarHome", "contribViewsRemote", "contribViewsWelcome", "documentFiltersExclusive", "extensionRuntime", "fileSearchProvider", "quickPickSortByLabel", "workspaceTrust", "scmSelectedProvider", "scmValidation", "textSearchProvider", "timeline"],
 +		"ms-python.gather": ["notebookCellExecutionState"],
 +		"ms-python.vscode-pylance": ["notebookCellExecutionState"],
++		"ms-python.debugpy": ["portsAttributes"],
 +		"ms-toolsai.jupyter-renderers": ["contribNotebookStaticPreloads"],
 +		"ms-toolsai.jupyter": ["notebookDeprecated", "notebookMessaging", "notebookMime", "notebookCellExecutionState", "portsAttributes", "quickPickSortByLabel", "notebookKernelSource", "interactiveWindow", "notebookControllerAffinityHidden", "contribNotebookStaticPreloads", "quickPickItemTooltip", "notebookExecution"],
 +		"dbaeumer.vscode-eslint": ["notebookCellExecutionState"],
@@ -128,10 +129,10 @@ diff -Naur a/src/main.js b/src/main.js
  	// Support JS Flags
  	const jsFlags = getJSFlags(cliArgs);
  	if (jsFlags) {
-diff -Naur a/src/vs/editor/browser/widget/media/diffEditor.css b/src/vs/editor/browser/widget/media/diffEditor.css
---- a/src/vs/editor/browser/widget/media/diffEditor.css	2022-09-01 00:05:32.000000000 +0200
-+++ b/src/vs/editor/browser/widget/media/diffEditor.css	2022-09-29 06:01:33.775897418 +0200
-@@ -13,8 +13,8 @@
+diff -Naur a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/browser/widget/diffEditor/style.css
+--- a/src/vs/editor/browser/widget/diffEditor/style.css	2023-10-03 06:06:10.000000000 +0200
++++ b/src/vs/editor/browser/widget/diffEditor/style.css	2023-10-04 21:27:43.122393566 +0200
+@@ -161,8 +161,8 @@
  }
  
  /* colors not externalized: using transparancy on background */
