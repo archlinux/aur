@@ -7,7 +7,7 @@ _pkgname=notesnook
 pkgname=$_pkgname-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
 pkgver=2.6.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/streetwriters/notesnook"
 license=('GPL3')
@@ -49,7 +49,7 @@ prepare() {
   # Edit the shortcut
   cd squashfs-root
   sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" $_pkgname.desktop
-  sed -i '/X-AppImage-Version=2.6.6/d; /actions=undefined/d' $_pkgname.desktop
+  sed -i "/X-AppImage-Version=$pkgver/d; /actions=undefined/d" $_pkgname.desktop
   sed -i 's/--no-sandbox //g' $_pkgname.desktop
 }
 
