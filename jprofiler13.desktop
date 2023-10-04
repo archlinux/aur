@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JProfiler 13
+GenericName=JProfiler 13
+Comment=Launch JProfiler 13
+Icon=jprofiler13
+Categories=Development;
+Exec=jprofiler13
