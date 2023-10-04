@@ -1,6 +1,6 @@
 pkgbase = python-telegram-bot
 	pkgdesc = A library that provides a Python interface to the Telegram Bot API
-	pkgver = 20.4
+	pkgver = 20.6
 	pkgrel = 1
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = python-telegram-bot
 	optdepends = python-cachetools: for use a variant of LRUCache
 	optdepends = python-apscheduler: for job queue support
 	optdepends = python-pytz: for job queue support
-	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v20.4/python-telegram-bot-20.4.tar.gz
-	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v20.4/python-telegram-bot-20.4.tar.gz.asc
+	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v20.6/python-telegram-bot-20.6.tar.gz
+	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v20.6/python-telegram-bot-20.6.tar.gz.asc
 	validpgpkeys = 4CBA518847044E289548BD9FA2B984A9073022B2
-	sha512sums = 6a0013d82ec029d527fa8088ec7ec7348b9261f59c5f9da244a6267d502f6756c0d469cad15dee47fd6b77579fea39eec3887c3ed3ee3bc003844dafd6b69193
+	sha512sums = 3a14e8af52e94e38e19f786e2ee757c79a0424a73aa9b3c91816d3f1e224818a78b569f557c493674543c3b1f3d1bdde70f9a6032085fa2b078b6832e6ec1b2f
 	sha512sums = SKIP
 
 pkgname = python-telegram-bot
