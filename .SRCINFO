@@ -1,0 +1,21 @@
+pkgbase = perl-plack-app-websocket
+	pkgdesc = WebSocket server as a PSGI application (via MetaCPAN distribution)
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/Plack-App-WebSocket
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-anyevent-websocket-server
+	depends = perl-devel-globaldestruction
+	depends = perl-plack
+	depends = perl-scalar-list-utils
+	depends = perl-try-tiny
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOSHIOITO/Plack-App-WebSocket-0.08.tar.gz
+	sha256sums = 1703869de90b20ee00e7cdf8d0a153fcfe9b3dbc89bf6a8f62554dabb06d969b
+
+pkgname = perl-plack-app-websocket
