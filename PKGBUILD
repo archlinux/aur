@@ -10,6 +10,7 @@ url="https://github.com/mellowagain/rpc-wine"
 license=('MIT')
 depends=('rapidjson' 'wine')
 makedepends=('git' 'make')
+options=('!buildflags')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=discord-rpc-wine.install
