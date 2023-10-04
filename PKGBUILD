@@ -12,13 +12,7 @@ pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=(x86_64)
 url="https://github.com/telegramdesktop/tdesktop"
 license=(GPL3)
-depends=(
-	desktop-file-utils
-	glib2
-	hicolor-icon-theme
-	libdbus
-	libx11
-)
+depends=(fontconfig glib2 hicolor-icon-theme glibc libx11 freetype2)
 makedepends=(
 	chrpath
 )
@@ -53,9 +47,6 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
 install="$pkgname.install"
 
 package() {
-
-	cd "$srcdir/"
-
 	# Creating needed directories
 	install -dm755 "$pkgdir/usr/bin"
 	install -dm755 "$pkgdir/usr/share/pixmaps/"
