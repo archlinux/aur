@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.47.r1.gd8b9a74d
+pkgver=2.0.55.r0.gdb53f3b9
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 	'cmake>=3.21.1'
 	'cubeb'
 	'curl'
-	'fmt9>=9.1'
+	'fmt>=9'
 	'git'
 	'glib2'
 	'glm'
@@ -32,6 +32,7 @@ makedepends=(
 	'hidapi'
 	'libgl'
 	'libpng'
+	'libusb'
 	'libzip'
 	'nasm'
 	'openssl'
@@ -93,6 +94,7 @@ package() {
 		'libgtk-3.so'
 		'libhidapi-hidraw.so'
 		'libssl.so'
+		'libusb-1.0.so'
 		'libwayland-client.so'
 		'libz.so'
 		'libzarchive.so'

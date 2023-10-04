@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.47.r1.gd8b9a74d
+	pkgver = 2.0.55.r0.gdb53f3b9
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cemu-git
 	makedepends = cmake>=3.21.1
 	makedepends = cubeb
 	makedepends = curl
-	makedepends = fmt9>=9.1
+	makedepends = fmt>=9
 	makedepends = git
 	makedepends = glib2
 	makedepends = glm
@@ -19,6 +19,7 @@ pkgbase = cemu-git
 	makedepends = hidapi
 	makedepends = libgl
 	makedepends = libpng
+	makedepends = libusb
 	makedepends = libzip
 	makedepends = nasm
 	makedepends = openssl
@@ -63,6 +64,7 @@ pkgname = cemu-git
 	depends = libgtk-3.so
 	depends = libhidapi-hidraw.so
 	depends = libssl.so
+	depends = libusb-1.0.so
 	depends = libwayland-client.so
 	depends = libz.so
 	depends = libzarchive.so
