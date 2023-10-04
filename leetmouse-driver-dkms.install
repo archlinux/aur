@@ -1,0 +1,9 @@
+pre_remove() {
+    # Unbind all currently bound mice from leetmouse and rebind them to usbhid
+    /usr/lib/udev/leetmouse_manage unbind_all
+}
+
+post_remove() {
+	# Unload the kernel module from memory
+	rmmod leetmouse
+}
