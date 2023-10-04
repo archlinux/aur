@@ -1,0 +1,17 @@
+pkgbase = perl-module-build-prereqs-fromcpanfile
+	pkgdesc = construct prereq parameters of Module::Build from cpanfile
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Module-Build-Prereqs-FromCPANfile
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-module-cpanfile
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOSHIOITO/Module-Build-Prereqs-FromCPANfile-0.02.tar.gz
+	sha256sums = 94d17867bea8e04bf8a636bcbfb78c5d432cb8fbc0e046b88445c3983e089e29
+
+pkgname = perl-module-build-prereqs-fromcpanfile
