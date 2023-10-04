@@ -3,7 +3,7 @@
 _reponame=dell-bios-fan-control
 pkgname=dell-bios-fan-control-git
 pkgver=r5.2700610
-pkgrel=3
+pkgrel=4
 pkgdesc="A user space utility to set control of fans by bios on some Dell XPS Laptops."
 arch=('i686' 'x86_64')
 url="https://github.com/TomFreudenberg/dell-bios-fan-control"
@@ -17,8 +17,8 @@ source=('git+https://github.com/TomFreudenberg/dell-bios-fan-control.git'
   'dell-bios-fan-control.service'
   'dell-bios-fan-control-resume.service')
 sha256sums=('SKIP'
-  '0a7e12c6c720be14411654b934a7b045a121510079f42788f30af06cedd659c6'
-  'dcffe0315aa7b0a18debe9f08c7d61ea809b511069a0a2d8331616045f743df5')
+            '0a7e12c6c720be14411654b934a7b045a121510079f42788f30af06cedd659c6'
+            '7781e69248514a3624f34e9281b6dd04ad29e0f9fe331400450ae5941055d884')
 
 pkgver() {
   cd "${srcdir}/${_reponame}"

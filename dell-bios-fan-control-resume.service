@@ -7,7 +7,7 @@ Wants=dell-bios-fan-control-resume.service
 Type=simple
 # FIXME: need a sleep for some reason, otherwise the service does restart but
 # it has no effect.
-ExecStart=/bin/sh -c '/bin/sleep 10 && /bin/systemctl --no-block restart dell-bios-fan-control.service'
+ExecStart=/bin/sh -c '/bin/sleep 20 && /bin/systemctl --no-block restart dell-bios-fan-control.service'
 
 [Install]
 WantedBy=suspend.target
