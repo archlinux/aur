@@ -4,7 +4,7 @@ pkgname="$_pkgname-git"
 pkgver='0.16.0.r0.g4ca81ab'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor - git version'
-arch=('x86_64' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$_pkgname"
 license=('MPL2')
 makedepends=('git' 'go>=1.19' 'lowdown')
@@ -35,7 +35,7 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-X=main.Version=$(git rev-parse HEAD)"
+	export GOFLAGS="-buildmode=pie -trimpath '-ldflags=-X=main.Version=$(git rev-parse HEAD) -linkmode=external' -mod=readonly -modcacherw"
 	go build -v -o "$srcdir/$_bindir/" './...'
 
 	# Build man pages
@@ -45,12 +45,6 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	export GOPATH="$srcdir/$_gopath"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-X=main.Version=$(git rev-parse HEAD)"
 	go test -v './...'
 }
 

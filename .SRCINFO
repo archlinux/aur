@@ -5,6 +5,7 @@ pkgbase = certspotter-git
 	url = https://github.com/SSLMate/certspotter
 	install = certspotter.install
 	arch = x86_64
+	arch = i686
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64
