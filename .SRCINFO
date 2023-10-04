@@ -1,7 +1,7 @@
 pkgbase = rua
 	pkgdesc = AUR helper in Rust providing control, review, patch application and safe build options
-	pkgver = 0.19.7
-	pkgrel = 2
+	pkgver = 0.19.9
+	pkgrel = 1
 	url = https://github.com/vn971/rua
 	arch = x86_64
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = rua
 	optdepends = shellcheck: allows checking PKGBUILD scripts, taking care of special variables
 	optdepends = sudo: allows package installation via sudo, if desired
 	options = !lto
-	source = rua-0.19.7.tar.gz::https://github.com/vn971/rua/archive/v0.19.7.tar.gz
-	b2sums = 204c6e85b018dcb360847a370d31a1e860896c5ba36dbd3bc5c53ae6db0f0011f6009c22fecaedbb829ab6bb054a689c72d1b46bc62de8cf748165423d83804c
+	source = rua-0.19.9.tar.gz::https://github.com/vn971/rua/archive/v0.19.9.tar.gz
+	b2sums = 9e1a0aed20e3137101e29878575027f70f4cc7c77619b0f2212185163f145690952577436bc7c7df333de01ac9c7960f723089df4283114c9852fb392ba0a334
 
 pkgname = rua
