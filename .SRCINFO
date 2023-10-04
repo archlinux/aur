@@ -1,0 +1,18 @@
+pkgbase = duplicacy-ix-git
+	pkgdesc = Cloud backup tool based on lock-free deduplication with Linux/POSIX enhancement (special file/hardlinks/flags)
+	pkgver = v3.2.2.ix.r0.28efe91
+	pkgrel = 1
+	url = https://duplicacy.com/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = duplicacy
+	conflicts = duplicacy
+	conflicts = duplicacy-git
+	source = git+https://github.com/jkl1337/duplicacy#branch=ix
+	sha256sums = SKIP
+
+pkgname = duplicacy-ix-git
