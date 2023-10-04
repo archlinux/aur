@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=elasticsearch-bin
 pkgver=8.10.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Log analyzer. search, store and analyze logs"
 arch=('x86_64')
 url='https://elastic.co'
@@ -26,6 +26,9 @@ sha256sums=(
 package() {
     mkdir -p "${pkgdir}/opt"
     cp -R "${srcdir}/elasticsearch-${pkgver}" "${pkgdir}/opt/elasticsearch"
+    mkdir -p "${pkgdir}/etc/elasticsearch"
+    cp -R "${srcdir}/elasticsearch-${pkgver}/config/." "${pkgdir}/etc/elasticsearch/"
+    chmod 755 -R "${pkgdir}/opt/elasticsearch/jdk/bin" "${pkgdir}/opt/elasticsearch/jdk/lib"
     install -Dm0644 "elasticsearch.service" "${pkgdir}/etc/systemd/system/elasticsearch.service"
     install -Dm0644 "sysctl.conf" "${pkgdir}/usr/lib/sysctl.d/elasticsearch.conf"
     install -Dm0644 "users.conf" "${pkgdir}/usr/lib/sysusers.d/elasticsearch.conf"
