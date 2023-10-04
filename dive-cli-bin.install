@@ -1,0 +1,10 @@
+post_install() {
+	echo ''
+	echo 'To use dive cli Kurtosis installed and running.'
+    echo "Please visit https://docs.kurtosis.com/install/#ii-install-the-cli for more information."
+	echo ''
+}
+
+post_upgrade() {
+	post_install
+}
