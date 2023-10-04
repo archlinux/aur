@@ -1,7 +1,7 @@
 pkgbase = org-rust
 	pkgdesc = CLI tool for converting Org-Mode documents to other formats
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hydrobeam/org-rust
 	arch = x86_64
 	license = MIT

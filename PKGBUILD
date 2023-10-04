@@ -2,7 +2,7 @@
 
 pkgname=org-rust
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 url=https://github.com/hydrobeam/org-rust
 pkgdesc='CLI tool for converting Org-Mode documents to other formats'
 arch=('x86_64')
@@ -14,7 +14,6 @@ sha256sums=(SKIP)
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  # cd "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   cargo fetch --locked --manifest-path=./Cargo.toml  --target="$CARCH-unknown-linux-gnu"
 }
