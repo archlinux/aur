@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.12pre+3+g40ec46e6ea
+pkgver=4.12pre+10+g48ba63c
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -46,7 +46,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd gzdoom
-    git describe --tags --match '[Gg]*' | sed -r 's/^[Gg]//;s/-/+/g'
+    git describe --tags --abbrev=7 --match '[Gg]*' | sed -r 's/^[Gg]//;s/-/+/g'
 }
 
 prepare() {
