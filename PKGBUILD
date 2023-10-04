@@ -2,9 +2,9 @@
 
 pkgname='plugdata-bin'
 _name='plugdata'
-pkgdesc='Plugin wrapper around PureData with a new GUI made with JUCE, allowing patching in DAWs'
-pkgver=0.7.1
-pkgrel=4
+pkgdesc='Plugin wrapper around Pure Data with a new JUCE GUI, allowing patching in DAWs'
+pkgver=0.8.0
+pkgrel=1
 groups=('lv2-plugins' 'vst3-plugins' 'clap-plugins' 'pro-audio')
 depends=('freetype2' 'libx11' 'libxrandr' 'libxext' 'libxinerama' 'webkit2gtk' 'libxrender' 'libxinerama' 'libxcursor' 'alsa-lib' 'curl')
 makedepends=()
