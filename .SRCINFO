@@ -1,0 +1,15 @@
+pkgbase = perl-image-epeg
+	pkgdesc = Thumbnail jpegs at lightning speed (via MetaCPAN distribution)
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://metacpan.org/release/Image-Epeg
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Image-Epeg-0.13.tar.gz
+	sha256sums = d700d0e54799e162839652b6e9e91dbd8bb666e1f374faca901bb017e2541532
+
+pkgname = perl-image-epeg
