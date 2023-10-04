@@ -2,7 +2,7 @@
 
 pkgname=gz-garden
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gazebo Garden: toolbox of development libraries and cloud services for robotics simulation."
 arch=('any')
 url="https://github.com/gazebosim/${pkgname}"
@@ -22,5 +22,5 @@ depends=(
   'gz-sim=7'
   'gz-transport=12'
   'gz-utils=2'
-  'sdformat=13'
+  'sdformat13'
   )

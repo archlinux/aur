@@ -1,7 +1,7 @@
 pkgbase = gz-garden
 	pkgdesc = Gazebo Garden: toolbox of development libraries and cloud services for robotics simulation.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-garden
 	arch = any
 	license = Apache
@@ -19,6 +19,6 @@ pkgbase = gz-garden
 	depends = gz-sim=7
 	depends = gz-transport=12
 	depends = gz-utils=2
-	depends = sdformat=13
+	depends = sdformat13
 
 pkgname = gz-garden
