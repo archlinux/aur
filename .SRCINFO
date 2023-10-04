@@ -1,6 +1,6 @@
 pkgbase = r-biomartr
 	pkgdesc = Genomic Data Retrieval
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=biomartr
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-biomartr
 	optdepends = r-rmarkdown
 	optdepends = r-seqinr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/biomartr_1.0.4.tar.gz
-	sha256sums = 2008c202575344da527854b18748656744a137f4d5fd238f82a8d8cabcf96443
+	source = https://cran.r-project.org/src/contrib/biomartr_1.0.5.tar.gz
+	sha256sums = d45daf3c5c130f0990e281a71a46a01ab69ae7b69a7fc2da20dc653f1b21dc92
 
 pkgname = r-biomartr
