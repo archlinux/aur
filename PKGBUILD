@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=exoscale-cli-bin
-pkgver=1.74.1
+pkgver=1.74.2
 pkgrel=1
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('exoscale-cli')
 
 source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/exoscale-cli_${pkgver}_linux_amd64.tar.gz"
         "https://github.com/exoscale/cli/releases/download/v${pkgver}/exoscale-cli_${pkgver}_linux_amd64.tar.gz.sig")
-sha256sums=('4914abdca752cde77182e0f3aded7d3fb3a24431653ac02675a50b2c03f9f95f'
+sha256sums=('746a3fb2bbb29d104e2e61bf3cd194d85d02f808f8dfb7d80bebb75cebec47de'
             'SKIP')
 
 package() {
