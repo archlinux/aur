@@ -1,0 +1,15 @@
+pkgbase = perl-session-token
+	pkgdesc = Secure, efficient, simple random session token generation (From MetaCPAN distribution)
+	pkgver = 1.503
+	pkgrel = 1
+	url = https://metacpan.org/release/Session-Token
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/F/FR/FRACTAL/Session-Token-1.503.tar.gz
+	sha256sums = 32c3df96ef455c71870363acd950ddc4fbc848c594f4bc55b21b44cf979f79a1
+
+pkgname = perl-session-token
