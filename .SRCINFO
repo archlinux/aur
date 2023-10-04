@@ -1,7 +1,7 @@
 pkgbase = python-svdtools
 	pkgdesc = Python package to handle vendor-supplied, often buggy SVD files.
-	pkgver = 0.3.2
-	pkgrel = 0
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/rust-embedded/svdtools
 	arch = any
 	license = MIT,
@@ -13,8 +13,8 @@ pkgbase = python-svdtools
 	optdepends = svd2rust: Generate Rust register maps (`struct`s) from SVD files
 	options = !strip
 	options = !lto
-	source = svdtools-0.3.2.tar.gz::https://github.com/rust-embedded/svdtools/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 05030af231f1d39f591bd37d5d21de4b40a077bc025b77901c27f643f29a80e7
+	source = svdtools-0.3.3.tar.gz::https://github.com/rust-embedded/svdtools/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = e8ec3f141595d355fe6f5c9ff6b45c098f22f1ba7ccf3614811cecf7e58f014a
 
 pkgname = python-svdtools
 	pkgdesc = Python package to handle vendor-supplied, often buggy SVD files. (python)

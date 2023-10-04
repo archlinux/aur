@@ -2,8 +2,8 @@
 
 pkgbase=python-svdtools
 pkgname=(python-svdtools svdtools-rust)
-pkgver=0.3.2
-pkgrel=0
+pkgver=0.3.3
+pkgrel=1
 epoch=
 pkgdesc="Python package to handle vendor-supplied, often buggy SVD files."
 arch=('any')
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("${pkgbase#python-}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('05030af231f1d39f591bd37d5d21de4b40a077bc025b77901c27f643f29a80e7')
+sha256sums=('e8ec3f141595d355fe6f5c9ff6b45c098f22f1ba7ccf3614811cecf7e58f014a')
 #validpgpkeys=()
 
 package_python-svdtools() {
