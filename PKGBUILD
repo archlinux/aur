@@ -21,7 +21,6 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
-  'pkg-config'
   'util-linux-libs'  # uuid
   )
   provides=("${_pkgbase}=${_pkgmaj}")

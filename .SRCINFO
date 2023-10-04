@@ -8,7 +8,6 @@ pkgbase = gz-transport12
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	makedepends = util-linux-libs
 	depends = cppzmq
 	depends = gz-msgs=9
