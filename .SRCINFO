@@ -1,0 +1,14 @@
+pkgbase = python-inkex
+	pkgdesc = Python extensions for Inkscape core, separated out from main repository.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://gitlab.com/inkscape/extensions
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/i/inkex/inkex-1.3.0.tar.gz
+	sha256sums = 7f41aba0cc2ad1f205c8f231a11bb2d881874bb7ec186d79b53200a07f459928
+
+pkgname = python-inkex
+	depends = python
