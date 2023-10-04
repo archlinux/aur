@@ -28,9 +28,8 @@ prepare(){
     bsdtar -O -xf ${_basepkgname}_v${pkgver}_${_baseos}.deb data.tar.xz | bsdtar -C debsource -xJf -
 }
 package() {
-    #cd ${_basepkgname}
-    #cd ${_basepkgname}_v${pkgver}_${_baseos} # use when TP Link provides a .tar.gz package
-    cd opt/tplink/EAPController #use when TP Link only provides a .deb package
+    #cd ${_basepkgname}_v${pkgver}_${_baseos}
+    cd debsource/opt/tplink/EAPController 
 
     # Install required source files.
     local BASEDIR="${pkgdir}/opt/omada-controller"
