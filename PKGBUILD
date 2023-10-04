@@ -22,14 +22,14 @@ _clangbuild=
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62188.6054ffa0f4b
+pkgver=r62217.618d1e35d89
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-runtime' 'fmt' 'libaacs' 'libass'
+  'gperf' 'hicolor-icon-theme' 'java-environment<21' 'fmt' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
@@ -79,7 +79,7 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   cheat-sse-build.patch
-  kodi-fmt-10.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/23453.patch
+  kodi-fmt-10.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/23571.patch
   flatb23.patch::https://github.com/xbmc/xbmc/commit/35be40daa39965a9ea5b3569eb7d515e6a14da5d.patch
   0001-ffmpeg-fix-build-with-binutils-update.patch
 )
@@ -103,7 +103,7 @@ b2sums=('SKIP'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        '8c46990a06bc43eb5f5a38e559cae2bdca188f2fec2f58141b5cbedef7576ffbdf528234e893efdf957739141c01a10539c57ce102044cb46f83ba6867c95c1c'
+        '45e4a4fc3ddd3bc2329b42a3f72c3e4fae1adb93e9d4b945a5aba3a70bee3ddce416fcb19061ad2263d1f247da5fc7143944408fb5294b762e45ac2f0981c06a'
         'bdc249920685a3738f872d9ea19a5c46b244d437d30b7dad958dcf33b5bfb88782c1a73bd15dcb1c26f0b643f1e4711775621a2753a1b5668efacc2144fd06e6'
         '7e15afcc0cc7f529e6c491c985968bc53be413424b890e4eab2ce8e3d0f21b08347698e660e0f4f0cc50c5279f052be7a2d84d5351509d34193066d797a44130')
 
@@ -121,8 +121,8 @@ prepare() {
   rm -rf system/certs # remove not needed cacert
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+
   patch -p1 -i ../0001-ffmpeg-fix-build-with-binutils-update.patch
-  patch -p1 -i ../kodi-fmt-10.patch
   patch -p1 -i ../flatb23.patch
 
   if [[ -n "$_clangbuild" ]]; then
