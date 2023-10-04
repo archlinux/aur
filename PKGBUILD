@@ -2,7 +2,7 @@
 
 _reponame=rpc-wine
 pkgname=discord-rpc-wine-git
-pkgver=1.0.0.r0.g7e4d38e
+pkgver=1.0.0.r2.ge432eb6
 pkgrel=1
 pkgdesc="discord-rpc implementation for Wine allowing Wine games to interact with native Discord"
 arch=('x86_64' 'i686')
