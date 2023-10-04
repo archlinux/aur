@@ -1,5 +1,6 @@
 # Maintainer: Pablo Hardouin <pablohardouin02 at gmail dot com>
-pkgname="MrPython"
+_pkgname="MrPython"
+pkgname="mrpython"
 pkgver="5.1.3beta"
 pkgrel=1
 pkgdesc="A simplified programming environment for Python (3.x) - based on IDLE"
@@ -15,12 +16,12 @@ source=("${pkgname}::https://github.com/nohtyprm/MrPython/archive/refs/tags/v${p
 md5sums=('SKIP')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 	sed -i 's/\.\/mrpython\/Application\.py/\/opt\/mrpython\/Application\.py/' mrpython.sh
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
 	# Licence
 	install -Dm644 LICENSE.python "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.python"
