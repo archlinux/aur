@@ -1,0 +1,20 @@
+pkgbase = cli-compressors
+	pkgdesc = Metapackage to pull all cli compression tools available in the Arch Linux repositories
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	depends = lz4
+	depends = zstd
+	depends = gzip
+	depends = lzma
+	depends = brotli
+	depends = zopfli
+	depends = bzip2
+	depends = lzop
+	depends = lzip
+	depends = xz
+	depends = zip
+	depends = unrar
+	depends = lzo
+
+pkgname = cli-compressors
