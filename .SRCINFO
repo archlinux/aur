@@ -6,7 +6,6 @@ pkgbase = gz-cmake3
 	arch = any
 	license = Apache
 	makedepends = cmake
-	makedepends = pkg-config
 	makedepends = doxygen
 	provides = gz-cmake=3
 	source = https://github.com/gazebosim/gz-cmake/archive/gz-cmake3_3.4.1.tar.gz

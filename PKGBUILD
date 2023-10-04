@@ -9,7 +9,7 @@ pkgdesc="A set of CMake modules that are used by the C++-based Gazebo projects."
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
 license=('Apache')
-makedepends=('cmake' 'pkg-config' 'doxygen')
+makedepends=('cmake' 'doxygen')
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('eb9c97331244ffd85c91345798829d1264a9cd925342f9a160d3ec1d544e39ae')
