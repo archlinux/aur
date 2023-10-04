@@ -1,12 +1,8 @@
-# Gaia Sky 3.5.5-1
-
-## Features
-- improve default pane background, touch up mini-map layout.
-- add collapsible groups and per-group 'select all' and 'select none' controls to dataset manager.
-- add transparency support (encoded in diffuse texture/color) to shadow maps.
-- add support for scattering diffuse material properties in default and tessellation shaders.
-- update umbra and penumbra highlight colors.
+# Gaia Sky 3.5.5-2
 
 ## Bug Fixes
-- regression where all actions were printed to stdout.
-- unexpected and weird behaviour when spamming repeatedly left buttons in new UI.
+- crash fetching entity elevation due to the focus not being set yet.
+
+## Build System
+- add check for revision >= 2 in release script.
+- automate creation of HTML downloads table and properly use 'pkgver' and 'pkgrel' fields in AUR package.
