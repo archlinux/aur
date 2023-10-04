@@ -1,24 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dviasm-git
-pkgver=20150412.r2.gcc03d91
+pkgver=20230823
 pkgrel=1
-epoch=
-pkgdesc="A TeX utility program for editing DVI files directly."
+pkgdesc='A TeX utility program for editing DVI files directly.'
 arch=('any')
-url="https://github.com/khaledhosny/dviasm"
-license=('GPL')
-groups=()
-depends=('python2')
+url='https://github.com/aminophen/dviasm'
+license=('GPL3')
+depends=('python')
 makedepends=('git')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('dviasm' 'texlive-core')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
+conflicts=("${pkgname%-*}" 'texlive-core')
 source=("$pkgname::git+https://github.com/khaledhosny/dviasm"
         'http://tug.org/TUGboat/Articles/tb28-2/tb89cho.pdf'
         'http://ajt.ktug.kr/assets/2008/5/1/0201cho.pdf')
@@ -34,15 +24,14 @@ sha256sums=('SKIP'
             'ca59060b7f74e82330d371ca06d8e9cd17ca7962fb303c53c33f1b2da270a833')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+	cd "$srcdir/$pkgname"
+	git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 dviasm.py $pkgdir/usr/bin/dviasm
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
-  install -Dm644 $srcdir/tb89cho.pdf $pkgdir/usr/share/doc/$pkgname/tb89cho.pdf
-  install -Dm644 $srcdir/0201cho.pdf $pkgdir/usr/share/doc/$pkgname/0201cho.pdf
+	cd "$srcdir/$pkgname"
+	install -Dm755 dviasm.py $pkgdir/usr/bin/dviasm
+	install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+	install -Dm644 $srcdir/tb89cho.pdf $pkgdir/usr/share/doc/${pkgname%-*}/tb89cho.pdf
+	install -Dm644 $srcdir/0201cho.pdf $pkgdir/usr/share/doc/${pkgname%-*}/0201cho.pdf
 }
-
