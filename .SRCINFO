@@ -8,7 +8,6 @@ pkgbase = gz-math7
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	makedepends = pybind11
 	makedepends = python
 	makedepends = ruby
