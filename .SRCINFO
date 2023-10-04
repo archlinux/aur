@@ -1,0 +1,23 @@
+pkgbase = gz-sensors7
+	pkgdesc = Provides numerous sensor models designed to generate realistic data from simulation environments.
+	pkgver = 7.3.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-sensors
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=3
+	makedepends = pkg-config
+	depends = gz-common=5
+	depends = gz-math=7
+	depends = gz-msgs=9
+	depends = gz-rendering=7
+	depends = gz-transport=12
+	depends = protobuf
+	depends = sdformat=13
+	provides = gz-sensors=7
+	source = https://github.com/gazebosim/gz-sensors/archive/gz-sensors7_7.3.0.tar.gz
+	sha256sums = 91d6d72fc110f77374f211af0edc8c3d4a0fc355969aba76b789afcbd1328930
+
+pkgname = gz-sensors7
