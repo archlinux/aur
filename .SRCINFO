@@ -1,17 +1,17 @@
 pkgbase = perl-crypt-jwt
 	pkgdesc = JSON Web Token (JWT, JWS, JWE) as defined by RFC7519, RFC7515, RFC7516
-	pkgver = 0.034
+	pkgver = 0.035
 	pkgrel = 1
 	url = https://metacpan.org/release/Crypt-JWT
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-cryptx>=0.034
-	depends = perl-json-maybexs>=1.003005
+	depends = perl-cryptx>=0.067
+	depends = perl-json>=0
 	depends = perl>=5.006
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/M/MI/MIK/Crypt-JWT-0.034.tar.gz
-	md5sums = c5f6b30220356ee5147b7668d8bd442f
-	sha512sums = 0fc2012aeb5721d9b5992faf827da5e681353db3eff5fe26367001f5c583af61b2ec277b360938f3659890b0754d86d4248b8507a6538bc5794457efcfa77a09
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIK/Crypt-JWT-0.035.tar.gz
+	md5sums = 8857ef3c2746e0399e403a39f88a865c
+	sha512sums = f8e579c290eef074d43946259bea163905a1c27646022d59ec425a431e5a253bc414f89331d136a10036a229f499dae8529bde3820a1baca57541e5931c8db28
 
 pkgname = perl-crypt-jwt
