@@ -1,0 +1,16 @@
+pkgbase = perl-datetime-format-dateparse
+	pkgdesc = Parses Date::Parse compatible formats (via MetaCPAN distribution)
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/DateTime-Format-DateParse
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JH/JHOBLITT/DateTime-Format-DateParse-0.05.tar.gz
+	sha256sums = f6eca4c8be66ce9992ee150932f8fcf07809fd3d1664caf200b8a5fd3a7e5ebc
+
+pkgname = perl-datetime-format-dateparse
