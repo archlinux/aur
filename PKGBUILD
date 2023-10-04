@@ -2,7 +2,8 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-spacy-en_core_web_trf
-pkgver=3.7.1
+_pkg="${pkgname#python-spacy-}"
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="English transformer pipeline (roberta-base). Components: transformer, tagger, parser, ner, attribute_ruler, lemmatizer."
 arch=(any)
@@ -17,16 +18,16 @@ makedepends=(
     python-wheel
     python-setuptools
 )
-source=("https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-${pkgver}/en_core_web_trf-${pkgver}.tar.gz")
-sha256sums=("99b2fb0f49f8d8edf6353b8e953d47d5498e0b39014245d8fe4d2910e77bdaee")
+source=("https://github.com/explosion/spacy-models/releases/download/$_pkg-$pkgver/$_pkg-$pkgver.tar.gz")
+sha256sums=("756e9f0c35564a11ee87216898c3ab2b8884e71ca21948c88d1a3553f308c285")
 
 build() {
-    cd en_core_web_trf-${pkgver}
+	cd $_pkg-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd en_core_web_trf-${pkgver}
+	cd $_pkg-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
