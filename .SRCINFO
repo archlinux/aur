@@ -1,0 +1,16 @@
+pkgbase = perl-moosex-hasdefaults
+	pkgdesc = default "is" to "ro" or "rw" for all attributes (via MetaCPAN distribution)
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-HasDefaults
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-moose
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/S/SA/SARTAK/MooseX-HasDefaults-0.03.tar.gz
+	sha256sums = 1efe4b6639ee8f8f9f57c4c56dd1d65b596819a82c7ac0f8a3046a80d2e51f83
+
+pkgname = perl-moosex-hasdefaults
