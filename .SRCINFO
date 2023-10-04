@@ -1,0 +1,14 @@
+pkgbase = rofi-playerctl-git
+	pkgdesc = Control media players with a rofi menu
+	pkgver = 20230803
+	pkgrel = 1
+	url = https://github.com/mrHeavenli/akkufetch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = rofi
+	depends = playerctl
+	source = git+https://github.com/mrHeavenli/rofi-playerctl.git
+	sha256sums = SKIP
+
+pkgname = rofi-playerctl-git
