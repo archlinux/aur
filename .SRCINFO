@@ -1,0 +1,22 @@
+pkgbase = gz-math7
+	pkgdesc = General purpose math library for robot applications.
+	pkgver = 7.3.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-math
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=3
+	makedepends = pkg-config
+	makedepends = pybind11
+	makedepends = python
+	makedepends = ruby
+	makedepends = swig
+	depends = eigen
+	depends = gz-utils=2
+	provides = gz-math=7
+	source = https://github.com/gazebosim/gz-math/archive/gz-math7_7.3.0.tar.gz
+	sha256sums = 320afb30f43727340718743c0f8d94e61e9c1083c17927701efe75087f9cc6d0
+
+pkgname = gz-math7
