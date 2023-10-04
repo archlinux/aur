@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=damo
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="DAMON user-space tool"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL2')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('164063c5754679037b0b37bb53a305fb250d7b45f7ab553ffb957f80050486a1')
-b2sums=('6881ae14a297abd75f1856463794e1d39f17d16fb93abad29bceb32e2782b31bd3a22cdc6b78a66c8696667d167e0e15c0b14380e37fd89daa26fc2897ece71e')
+sha256sums=('713545c2f59512ecff4abc0a8b0f8e6b34e24ecaf973b48f381a86e404bf26f6')
+b2sums=('496b48ac5523463bb4ea7ae6787eeb02879ad3b5a3a94901147af27e8c2189d8c217134893a76707f21ce7337ff86c952abeb5d97222b29142b07b8b583e0775')
 
 build() {
   cd "$pkgname-$pkgver"
