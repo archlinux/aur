@@ -1,4 +1,4 @@
-# Maintainer: xiliuya <xiliuya@163.com>
+# Maintainer: xiliuya <xiliuya@aliyun.com>
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec-bin
 pkgver=19.0.0
