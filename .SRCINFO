@@ -1,0 +1,20 @@
+pkgbase = perl-slack-webhook
+	pkgdesc = Slack WebHook with preset layout & colors for sending slack notifications (via MetaCPAN distribution)
+	pkgver = 0.003
+	pkgrel = 1
+	url = https://metacpan.org/release/Slack-WebHook
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test2-tools-explain
+	makedepends = perl-test2-plugin-nowarnings
+	makedepends = perl-test-mockmodule
+	depends = perl
+	depends = perl-json-xs
+	depends = perl-simple-accessor
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Slack-WebHook-0.003.tar.gz
+	sha256sums = 8056195fc956b276aaafb7c8627fdac91ac5ba19bd1fb21f36b70e70aeb2a0a3
+
+pkgname = perl-slack-webhook
