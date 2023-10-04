@@ -8,7 +8,6 @@ pkgbase = gz-msgs9
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = gz-math=7
 	depends = gz-tools=2
 	depends = gz-utils=2
