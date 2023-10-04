@@ -11,7 +11,7 @@ function load {
     source "${pkgdir}/PKGBUILD"
     latest=$(_latest)
 
-    if [ "$latest" != "$(echo -e "${latest//v}\n$pkgver" | sort -V | head -n1)" ]; then
+    if [ "${latest//v}" != "$(echo -e "${latest//v}\n$pkgver" | sort -V | head -n1)" ]; then
         prefix="${_pkgname:-${pkgname}}"
         export "${prefix^^}_VERSION=${latest//v}"
         source "${pkgdir}/PKGBUILD.tpl"
