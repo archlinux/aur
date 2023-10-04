@@ -2,46 +2,55 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-extra-meta
-pkgver=3.34.0
+pkgver=44
 pkgrel=1
-pkgdesc='Meta package for installing the gnome-extra group'
+pkgdesc='Meta package to install gnome-extra'
 arch=(any)
-url='https://www.archlinux.org/'
+url='https://www.gnome.org/'
 license=(GPL)
 depends=(
-	accerciser
-	dconf-editor
-	devhelp
-	evolution
-	five-or-more
-	four-in-a-row
-	ghex
-	gnome-builder
-	gnome-chess
-	gnome-devel-docs
-	gnome-klotski
-	gnome-mahjongg
-	gnome-mines
-	gnome-nettool
-	gnome-nibbles
-	gnome-robots
-	gnome-sound-recorder
-	gnome-sudoku
-	gnome-taquin
-	gnome-tetravex
-	gnome-tweaks
-	hitori
-	iagno
-	lightsoff
-	nautilus-sendto
-	polari
-	quadrapassel
-	swell-foop
-	sysprof
-	tali
-	gnome-code-assistance
-	gnome-multi-writer
-	gnome-recipes
-	gnome-usage
+  accerciser
+  d-spy
+  dconf-editor
+  devhelp
+  endeavour
+  evolution
+  file-roller
+  five-or-more
+  four-in-a-row
+  geary
+  gedit
+  ghex
+  gitg
+  glade
+  gnome-2048
+  gnome-boxes
+  gnome-builder
+  gnome-chess
+  gnome-devel-docs
+  gnome-dictionary
+  gnome-games
+  gnome-klotski
+  gnome-mahjongg
+  gnome-mines
+  gnome-multi-writer
+  gnome-nibbles
+  gnome-notes
+  gnome-recipes
+  gnome-robots
+  gnome-sound-recorder
+  gnome-sudoku
+  gnome-taquin
+  gnome-terminal
+  gnome-tetravex
+  gnome-tweaks
+  hitori
+  iagno
+  lightsoff
+  polari
+  quadrapassel
+  seahorse
+  swell-foop
+  sysprof
+  tali
 )
-
