@@ -21,7 +21,7 @@ source=("${_url}/releases/download/v${pkgver}/ctool_tauri_linux.deb"
 	https://github.com/baiy/Ctool/blob/master/LICENSE
 )
 sha256sums=('b47704172f1d2c1fd9b13ebedb19ca80c693f7c59fdce412f69772a9c10b7955'
-	'ba90c39387c4e93fc868640ef6964d5823ff68dff0243148d174a29d76fc2ae7')
+            '6203116f5707c1f8836d7e70934d141a772379fe83ff813d0b7fbb14864ac9bd')
 package() {
 	tar -xvpf ${srcdir}/data.tar.gz -C $pkgdir
 	chown root:root -R $pkgdir
