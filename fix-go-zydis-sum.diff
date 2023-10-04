@@ -1,0 +1,13 @@
+diff --git a/go.sum b/go.sum
+index 5c464f7..05824af 100644
+--- a/go.sum
++++ b/go.sum
+@@ -2,7 +2,7 @@ github.com/codecat/go-libs v0.0.0-20200803144627-d62d53b721bb h1:cNqHPPdZB9Qlo6/
+ github.com/codecat/go-libs v0.0.0-20200803144627-d62d53b721bb/go.mod h1:xJW98cHEb+Kbuu0qmoKzExh3blthZqojIYOFo27VgvE=
+ github.com/fatih/color v1.11.0 h1:l4iX0RqNnx/pU7rY2DB/I+znuYY0K3x6Ywac6EIr0PA=
+ github.com/fatih/color v1.11.0/go.mod h1:ELkj/draVOlAH/xkhN6mQ50Qd0MPOk5AAr3maGEBuJM=
+-github.com/jpap/go-zydis v0.0.0-20210127041937-82defce55489 h1:GhiNwL3amzHh2ubehMibuhwK8xInQnTNz4S+XbgfQFQ=
++github.com/jpap/go-zydis v0.0.0-20210127041937-82defce55489 h1:FSBNZ1HrI9MzQ06F6FXnvqyBS2bRrM127rnpWPeqWXA=
+ github.com/jpap/go-zydis v0.0.0-20210127041937-82defce55489/go.mod h1:LmpEEJWmJqw1YGLCmr33BNO4eXPEMaqMr04koAaXjvI=
+ github.com/mattn/go-colorable v0.1.8 h1:c1ghPdyEDarC70ftn0y+A/Ee++9zz8ljHG1b13eJ0s8=
+ github.com/mattn/go-colorable v0.1.8/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
