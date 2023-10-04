@@ -1,0 +1,18 @@
+pkgbase = xgterm-bin
+	pkgdesc = X11/GUI utilities and applications for IRAF (xgterm, ximtool, xtapemon)
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/iraf-community/x11iraf
+	arch = x86_64
+	license = custom
+	depends = libxaw
+	depends = ncurses
+	depends = tcl
+	depends = xaw3d
+	optdepends = iraf: to use with irafcl
+	provides = xgterm
+	conflicts = xgterm
+	source = https://ftp.debian.org/debian/pool/main/x/x11iraf/xgterm_2.1+dfsg-1_amd64.deb
+	sha256sums = 26ab665668e8584fef16bfb68c6ecd264794f01386ec83ddbeb14c8a15aeb206
+
+pkgname = xgterm-bin
