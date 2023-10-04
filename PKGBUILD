@@ -3,7 +3,7 @@
 
 pkgname='omada-controller'
 pkgver=5.12.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
 _basepkgpath='upload/software/2023/202309/20230920'
@@ -19,66 +19,31 @@ source=(
     "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.deb"
     "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
-noextract=("https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.deb")
+noextract=(${_basepkgname}_v${pkgver}_${_baseos}.deb)
 sha256sums=('28a004ae360d68de463265b65b7335124fcf6be99f02e69047c2644f4c678aa0'
             'SKIP')
 
 prepare(){
-    mkdir -p debsource
-    bsdtar -O -xf ${_basepkgname}_v${pkgver}_${_baseos}.deb data.tar.xz | bsdtar -C debsource -xJf -
+    mkdir -p tp_source
+    bsdtar -O -xf ${_basepkgname}_v${pkgver}_${_baseos}.deb data.tar.xz | bsdtar -C tp_source -xJf -
 }
 package() {
-    #cd ${_basepkgname}_v${pkgver}_${_baseos}
-    cd debsource/opt/tplink/EAPController 
 
     # Install required source files.
-    local BASEDIR="${pkgdir}/opt/omada-controller"
-    install -dm 755 "${BASEDIR}"
+    local TP_SRC="tp_source/opt/tplink/EAPController"
+    local DEST="$pkgdir/opt/omada-controller"
+    install -dm 755 $DEST
+    install -Dm644 $TP_SRC/lib/* -t $DEST/lib
+    install -Dm755 $TP_SRC/bin/* -t $DEST/bin
+    install -Dm644 $TP_SRC/properties/* -t $DEST/properties
 
-    # Install JAR libraries.
-    install -dm 755 "${BASEDIR}/lib"
+    ln -sf /usr/bin/mongod "$DEST/bin/mongod"
 
-    for file in lib/*; do
-        install -m 644 "${file}" "${BASEDIR}/lib/"
-    done
 
-    # Install binaries.
-    install -dm 755 "${BASEDIR}/bin"
-
-    for file in bin/*; do
-        install -m 755 "${file}" "${BASEDIR}/bin/"
-    done
-
-    # Install keystore. - keystore no longer available since version 5.3.1
-    #install -dm 755 "${BASEDIR}/keystore"
-
-    #for file in keystore/*; do
-    #    install -m 644 "${file}" "${BASEDIR}/keystore/"
-    #done
-
-    # Install *.properties config files.
-    install -dm 755 "${BASEDIR}/properties"
-
-    for file in properties/*; do
-        install -m 644 "${file}" "${BASEDIR}/properties/"
-    done
-
-    ln -sf /usr/bin/mongod "${BASEDIR}/bin/mongod"
-
-    ### Install scripts ####
-
-    # Install systemd units.
-    cd "${srcdir}/omada-controller-scripts"
-    install -dm 755 "${pkgdir}/usr/lib/systemd/system"
-    install -m 644 "omada-controller.service" "${pkgdir}/usr/lib/systemd/system/"
-
-    # Install sysusers configuration.
-    install -dm 755 "${pkgdir}/usr/lib/sysusers.d"
-    install -m 644 "omada-controller.conf" "${pkgdir}/usr/lib/sysusers.d/"
-
-    # Install ALPM hook and script.
-    install -dm 755 "${pkgdir}/usr/share/libalpm/hooks"
-    install -m 644 omada-init-user-dirs.hook "${pkgdir}/usr/share/libalpm/hooks/"
-    install -dm 755 "${pkgdir}/usr/share/libalpm/scripts"
-    install -m 755 omada-init-user-dirs.sh "${pkgdir}/usr/share/libalpm/scripts/omada-init-user-dirs"
+    # Install omada-controller-scripts.
+    local SCRIPT_SRC="$srcdir/omada-controller-scripts"
+    install -Dm644 $SCRIPT_SRC/omada-controller.service "$pkgdir/usr/lib/systemd/system/omada-controller.service"
+    install -Dm644 $SCRIPT_SRC/omada-controller.conf "$pkgdir/usr/lib/sysusers.d/omada-controller.conf"
+    install -Dm644 $SCRIPT_SRC/omada-init-user-dirs.hook "$pkgdir/usr/share/libalpm/hooks/omada-init-user-dirs.hook"
+    install -Dm755 $SCRIPT_SRC/omada-init-user-dirs.sh "$pkgdir/usr/share/libalpm/scripts/omada-init-user-dirs"
 }
