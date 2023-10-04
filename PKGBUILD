@@ -2,7 +2,7 @@
 
 pkgname=python-numpy-groupies
 _name=numpy-groupies
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='Optimised tools for group-indexing operations for python numpy'
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=(
     'python-numba: for numba backend'
     'python-pandas: for pandas backend'
 )
-_commit=dbae25b2bbb20a66ca08d2908af54e868847db11
+_commit=162fdb9bcf32c8748c264b513d15eb9390b498a6
 source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
