@@ -1,6 +1,6 @@
 pkgbase = r-jfa
 	pkgdesc = Bayesian and Classical Audit Sampling
-	pkgver = 0.6.7
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=jfa
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-jfa
 	optdepends = r-rmarkdown
 	optdepends = r-samplingbook
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/jfa_0.6.7.tar.gz
-	sha256sums = 2b0328d4bbc06c19e3005274e0deccd1104a85aa0c9d7b34de93c84e93c8d12b
+	source = https://cran.r-project.org/src/contrib/jfa_0.7.0.tar.gz
+	sha256sums = a748c6521121c989a87af0631871903c7418b9cb9f5da87646fee61bc479d794
 
 pkgname = r-jfa
