@@ -2,28 +2,37 @@
 # Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=5.9.31
-pkgrel=2
+pkgver=5.12.7
+pkgrel=1
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
-_basepkgpath='upload/software/2023/202303/20230321'
+_basepkgpath='upload/software/2023/202309/20230920'
 _baseos='Linux_x64'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
 depends=('java-runtime>=8' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<5')
-makedepends=('git')
+makedepends=('git' 'binutils')
 #provides=('sdn-controller')
 conflicts=('omada-sdn-controller')
 source=(
-    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.tar.gz"
+    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.deb"
     "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
-sha256sums=('ad2ae2a0d0e0cc22444b96277a4947218a6ba2982f36c535e3572a359020870c'
+noextract=("https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.deb")
+sha256sums=('28a004ae360d68de463265b65b7335124fcf6be99f02e69047c2644f4c678aa0'
             'SKIP')
+
+prepare(){
+    ar x ${_basepkgname}_v${pkgver}_${_baseos}.deb
+    rm -rf control.tar.xz debian-binary
+    tar --xz -xvf data.tar.xz
+    rm -rf data.tar.xz
+}
 package() {
     #cd ${_basepkgname}
-    cd ${_basepkgname}_v${pkgver}_${_baseos}
+    #cd ${_basepkgname}_v${pkgver}_${_baseos} # use when TP Link provides a .tar.gz package
+    cd opt/tplink/EAPController #use when TP Link only provides a .deb package
 
     # Install required source files.
     local BASEDIR="${pkgdir}/opt/omada-controller"
