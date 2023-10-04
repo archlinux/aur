@@ -3,24 +3,24 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r85.61dd56c
+pkgver=r91.e67428f
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
-depends=('cosmic-icons' 'fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire'
-         'libpulse' 'libseat.so' 'libxkbcommon' 'pop-launcher' 'systemd-libs' 'wayland')
+depends=('fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse'
+         'libseat.so' 'libxkbcommon' 'pop-launcher' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'mold')
 checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
             'qt5-wayland: Screenshots')
 provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
-          'cosmic-comp' 'cosmic-launcher' 'cosmic-notifications' 'cosmic-osd'
+          'cosmic-comp' 'cosmic-icons' 'cosmic-launcher' 'cosmic-notifications' 'cosmic-osd'
           'cosmic-panel' 'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
           'cosmic-workspaces-epoch' 'xdg-desktop-portal-cosmic')
 conflicts=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
-           'cosmic-comp' 'cosmic-launcher' 'cosmic-notifications' 'cosmic-osd'
+           'cosmic-comp' 'cosmic-icons' 'cosmic-launcher' 'cosmic-notifications' 'cosmic-osd'
            'cosmic-panel' 'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
            'cosmic-workspaces-epoch' 'xdg-desktop-portal-cosmic')
 backup=('etc/cosmic-comp/config.ron')
@@ -30,6 +30,7 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-applibrary.git'
         'git+https://github.com/pop-os/cosmic-bg.git'
         'git+https://github.com/pop-os/cosmic-comp.git'
+        'git+https://github.com/pop-os/cosmic-icons.git'
         'git+https://github.com/pop-os/cosmic-launcher.git'
         'git+https://github.com/pop-os/cosmic-notifications.git'
         'git+https://github.com/pop-os/cosmic-osd.git'
@@ -40,6 +41,7 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
         'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -64,6 +66,7 @@ _submodules=(
   cosmic-applibrary
   cosmic-bg
   cosmic-comp
+  cosmic-icons
   cosmic-launcher
   cosmic-notifications
   cosmic-osd
@@ -74,6 +77,9 @@ _submodules=(
   cosmic-workspaces-epoch
   xdg-desktop-portal-cosmic
 )
+
+  # Remove cosmic-icons from array for `cargo fetch`
+_repos=("${(@)${_submodules}:#cosmic-icons>}")
 
 prepare() {
   cd "$srcdir/cosmic-epoch"
@@ -86,8 +92,8 @@ prepare() {
     git -c protocol.file.allow=always submodule update "${submodule#*::}"
   done
 
-  for submodule in "${_submodules[@]}"; do
-    pushd "${submodule#*::}"
+  for repo in "${_repos[@]}"; do
+    pushd "${repo#*::}"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
     popd
   done
