@@ -1,7 +1,7 @@
 pkgname=foxtelgo
 _pkgname=FoxtelGo
-pkgver=1.0.6
-pkgrel=5
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
 url="https://gitlab.com/foxtelgo/application"
