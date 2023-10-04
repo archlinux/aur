@@ -3,8 +3,8 @@
 _pkgname="dolphin"
 _pkgname_tabopts="$_pkgname-tabopts"
 pkgname="$_pkgname_tabopts"
-pkgver=23.08.0
-pkgrel=2
+pkgver=23.08.1
+pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -51,7 +51,7 @@ if [ x"$_pkgname_tabopts" == x"$pkgname" ] ; then
     "https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
   )
   sha256sums+=(
-    '4ab0f3ee83c0c62f7346031780d46a57d4002f6585c2de3fadfa6708e4ff59de'
+    '05ce21772ee91482f72151c1ef9ddcb62ccff5fc3cd297117215082ba1ec15e6'
   )
 else
   # x-git package

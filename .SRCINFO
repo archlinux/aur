@@ -1,7 +1,7 @@
 pkgbase = dolphin-tabopts
 	pkgdesc = KDE File Manager - with extended tab options
-	pkgver = 23.08.0
-	pkgrel = 2
+	pkgver = 23.08.1
+	pkgrel = 1
 	url = https://invent.kde.org/xiota/dolphin/-/merge_requests/1
 	arch = i686
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = dolphin-tabopts
 	provides = dolphin
 	conflicts = dolphin
 	source = dolphin-tabopts-1.patch::https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch
-	source = https://download.kde.org/stable/release-service/23.08.0/src/dolphin-23.08.0.tar.xz
+	source = https://download.kde.org/stable/release-service/23.08.1/src/dolphin-23.08.1.tar.xz
 	sha256sums = 7e649204637ccd1d3c9e9e748e69f73ac97e1c308c63eda592353ca7df21cb0d
-	sha256sums = 4ab0f3ee83c0c62f7346031780d46a57d4002f6585c2de3fadfa6708e4ff59de
+	sha256sums = 05ce21772ee91482f72151c1ef9ddcb62ccff5fc3cd297117215082ba1ec15e6
 
 pkgname = dolphin-tabopts
