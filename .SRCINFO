@@ -1,0 +1,14 @@
+pkgbase = MrPython
+	pkgdesc = A simplified programming environment for Python (3.x) - based on IDLE
+	pkgver = 5.1.3beta
+	pkgrel = 1
+	url = https://github.com/nohtyprm/MrPython
+	arch = x86_64
+	license = PSF
+	depends = python
+	provides = MrPython
+	conflicts = MrPython
+	source = MrPython::https://github.com/nohtyprm/MrPython/archive/refs/tags/v5.1.3beta.zip
+	md5sums = SKIP
+
+pkgname = MrPython
