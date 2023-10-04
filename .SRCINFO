@@ -1,6 +1,6 @@
 pkgbase = python-qiskit
 	pkgdesc = An open-source SDK for working with quantum computers at the level of extended quantum circuits, operators, and primitives
-	pkgver = 0.25.2
+	pkgver = 0.25.2.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Qiskit/qiskit
@@ -43,7 +43,7 @@ pkgbase = python-qiskit
 	optdepends = python-tweedledum: synthesizing and manipulating quantum circuits
 	provides = python-qiskit-terra
 	conflicts = python-qiskit-terra
-	source = qiskit-0.25.2.tar.gz::https://github.com/Qiskit/qiskit/archive/0.25.2.tar.gz
-	b2sums = 6bf11f841372a4be5e836457c87ce30b70a93f4e00cdd4af32f17bcbe9af5fd6c09f92f6734888c899ddf5dba59fa3b249995dcf85df2606b55a727562e4dc0e
+	source = qiskit-0.25.2.1.tar.gz::https://github.com/Qiskit/qiskit/archive/0.25.2.1.tar.gz
+	b2sums = d4f47bb9c42eecbe1e8cd23af799ee0a604de9ae90762fdf8c36c4b39aa263e58800135a6e58d93eb22b35f5d2b9e13c56c0281435b06e2584949cc6128c76b4
 
 pkgname = python-qiskit
