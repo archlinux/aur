@@ -1,6 +1,6 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = r1119.86e50778
+	pkgver = r1125.2bd885f8
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = valent-git
 	depends = gnutls
 	depends = gstreamer
 	depends = json-glib
-	depends = libadwaita>=1.4
-	depends = libpeas-2.so
+	depends = libadwaita
+	depends = libpeas-2
 	depends = libportal-gtk4
 	depends = libpulse
 	depends = libsysprof-capture
