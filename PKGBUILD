@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=asciinema-agg
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="asciinema gif generator"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=(https://github.com/asciinema/agg/archive/v$pkgver/agg-$pkgver.tar.gz)
-sha256sums=('8a4b81733085d81de1076e2964dedf729a8603941de11659d775478293d9efd0')
+sha256sums=('1089e47a8e6ca7f147f74b2347e6b29d94311530a8b817c2f30f19744e4549c1')
 
 build() {
   cd agg-$pkgver
