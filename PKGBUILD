@@ -1,7 +1,7 @@
 # Maintainer: Hendrik Werner <hendrik.to@gmail.com>
 
 pkgname=tiawa-base
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='Tiawa base packages'
 arch=('any')
