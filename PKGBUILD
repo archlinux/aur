@@ -8,7 +8,7 @@ pkgdesc="systemd-networkd plugin to share Internet connection from your Android 
 arch=('x86_64')
 license=('MIT')
 makedepends=('git')
-depends=('usb_modeswitch')
+depends=('usb_modeswitch' 'net-tools')
 sha256sums=('SKIP')  # 'makepkg -g' to generate it.
 
 # Función de construcción del paquete

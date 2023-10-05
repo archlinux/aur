@@ -7,6 +7,7 @@ pkgbase = android-tethering
 	license = MIT
 	makedepends = git
 	depends = usb_modeswitch
+	depends = net-tools
 	source = git+https://gitlab.com/dakataca/android-tethering.git
 	sha256sums = SKIP
 
