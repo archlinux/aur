@@ -2,8 +2,8 @@
 # Note about this package: I am creating this package because the `godot-mono` maintainer does not base their PKGBUILD off of `godot`, leading to missing out on all of the changes that the godot in extra has. They have never commented in their 
 _pkgname=godot-mono
 pkgname=godot-mono-enhanced
-pkgver=4.1.1
-pkgrel=4
+pkgver=4.1.2
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
@@ -15,7 +15,7 @@ makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python gi
 provides=('godot-mono' 'godot' 'godot-mono-bin')
 conflicts=('godot-mono' 'godot-mono-bin')
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/godot-${pkgver}-stable.tar.xz")
-md5sums=('9db5c3a474891ca8f64688534550d5ff')
+sha512sums=('d9e3c948aeece3586632ed2a8c94ca2107a6b5b4bb1ae8dc264e350fbfcb4cc1f4cd4cf7fdcd61a5b0351511c12e34d83275a79d5e0361e2eee67c8447b5f831')
 
 prepare() {
   # Update the MIME info, ref FS#77810
