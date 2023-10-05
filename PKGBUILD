@@ -3,7 +3,7 @@
 pkgname=python-weasel
 _pkg="${pkgname#python-}"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and easy workflow system"
 url="https://github.com/explosion/weasel/"
 depends=(
@@ -12,7 +12,7 @@ depends=(
     'python-srsly'
     'python-typer'
     'python-cloudpathlib'
-    'python-smart-open'
+    'python-smart_open'
     'python-requests'
     'python-pydantic')
 makedepends=(
