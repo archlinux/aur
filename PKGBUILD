@@ -2,7 +2,7 @@
 
 pkgname=fileshelter
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted software to share files over the Web"
 arch=('x86_64')
 url="https://github.com/epoupon/fileshelter"
@@ -24,12 +24,8 @@ build() {
   cd $pkgname-$pkgver
   mkdir build || true
   cd build
-  cmake -DSYSTEM_INSTALL=ON \
-        -DCMAKE_BUILD_TYPE=Release \
+  cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_BINDIR=bin \
-        -DCMAKE_INSTALL_DATADIR=share \
-        -DCMAKE_INSTALL_MANDIR=share/man \
         ..
   make
 }

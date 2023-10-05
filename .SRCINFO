@@ -1,7 +1,7 @@
 pkgbase = fileshelter
 	pkgdesc = A self-hosted software to share files over the Web
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/epoupon/fileshelter
 	arch = x86_64
 	license = GPL
