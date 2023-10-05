@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-bad
-pkgver=1.22.5
+pkgver=1.22.6
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
@@ -27,7 +27,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
-sha256sums=('e64e75cdafd7ff2fc7fc34e855b06b1e3ed227cc06fa378d17bbcd76780c338c')
+sha256sums=('b4029cd2908a089c55f1d902a565d007495c95b1442d838485dc47fb12df7137')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
