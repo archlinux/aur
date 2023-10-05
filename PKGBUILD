@@ -1,0 +1,36 @@
+# Maintainer: steve finkel <mrsteve0924 at verizon dot net>
+_pkgname=wstroke
+pkgname=$_pkgname-git
+pkgver=r91.e7a0041
+pkgrel=1
+pkgdesc="a mouse gesture plug-in for wayfire. port of easystroke"
+arch=('x86_64')
+url="https://github.com/dkondor/wstroke"
+license=('ISC')
+depends=('wayfire-git' 'wlroots>=0.16' 'nlohmann-json' 'glib2' 'gtk3' 'gtkmm3' 'boost-libs')
+makedepends=('git' 'meson' 'ninja')
+optdepends=('wcm-git' 'libinput>=1.70')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+source=('git+https://github.com/dkondor/wstroke')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$_pkgname"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+}
+
+build() {
+	cd "$srcdir/$_pkgname"
+	meson build --prefix=/usr
+	ninja -C build
+}
+
+
+package() {
+	cd "$srcdir/$_pkgname"
+	DESTDIR="$pkgdir/" ninja -C build install
+}
