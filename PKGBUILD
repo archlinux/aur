@@ -1,18 +1,21 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Ray Del Rosario <michael@raydelrosario.com>
 
 pkgname=infracost
-pkgver=0.10.17
+pkgver=0.10.29
 pkgrel=1
 pkgdesc='Cloud cost estimates for Terraform'
 url='https://github.com/infracost/infracost'
 arch=('x86_64')
 license=('Apache')
+conflicts=('infracost-bin')
+provides=('infracost')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'git' 'gcc')
 # checkdepends=('git' 'terraform')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('034b8fa4ce467895190586953b5622bcff870d1bf868e55d13d1b1ffde37dce7')
+sha256sums=('d74e32dd75b132d27d3d42ce345caf020c6a6e7e061c72f479d52307bd21d691')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -25,7 +28,7 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	export GOFLAGS="-buildvcs=false -buildmode=pie -trimpath -mod=readonly -modcacherw"
 	cd "$pkgname-$pkgver"
 	go build \
 		-o build \
