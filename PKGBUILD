@@ -3,14 +3,14 @@
 
 pkgname=purple-gowhatsapp
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp Web, Powered by go-whatsapp"
 arch=('x86_64' 'i686')
 url="https://github.com/hoehermann/purple-gowhatsapp"
 license=('GPLv3')
 depends=('libpurple')
 makedepends=('go' 'cmake' )
-optdepends=("gdk-pixbuf2: Pictures", "libopusfile: Sound")
+optdepends=("gdk-pixbuf2: Pictures", "opusfile: Sound")
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hoehermann/purple-gowhatsapp/archive/refs/tags/v${pkgver}.tar.gz" "purple-config.cmake")
