@@ -12,6 +12,7 @@ pkgbase = tiawa-base
 	depends = nano
 	depends = nftables
 	depends = noto-fonts-emoji
+	depends = openssh
 	depends = starship
 	depends = ttf-nerd-fonts-symbols
 	depends = ttf-nerd-fonts-symbols-mono
