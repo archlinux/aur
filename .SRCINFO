@@ -1,11 +1,14 @@
 pkgbase = qmk-hid
 	pkgdesc = Commandline tool for interacting with QMK devices over HID
 	pkgver = 0.1.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FrameworkComputer/qmk_hid
 	arch = x86_64
 	license = BSD
 	makedepends = cargo
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = libcap
 	options = !lto
 	source = qmk-hid-0.1.11.tar.gz::https://github.com/FrameworkComputer/qmk_hid/archive/v0.1.11.tar.gz
 	b2sums = e898d27cfe8350f4a8cd2938a3d066935093daf1292f41fc10b8f1937059f2b59e4ac34a987f26c8258a5d3b15a900059024fe3a18ed793f7e3b524939ab4c71
