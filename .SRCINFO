@@ -1,7 +1,7 @@
 pkgbase = mouse-actions-cli-bin
 	pkgdesc = Use your mouse to execute commands, for X11 and Wayland. You can use gestures, hot corners and modifier keys. Mouse-actions is a mix between Easystroke and Compiz edge commands. This is the CLI only version!
 	pkgver = 0.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jersou/mouse-actions
 	install = mouse-actions.install
 	arch = x86_64
