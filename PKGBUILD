@@ -7,7 +7,7 @@
 pkgname=spotify-edge
 pkgver=1.2.20.1210
 _commit=g2a8a8a57
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service. Edge version.'
 arch=('x86_64')
 url='https://www.spotify.com'
@@ -22,11 +22,13 @@ makedepends=('squashfs-tools')
 _snapid='pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7'
 _snaprev='69'
 source=(
+    'spotify.sh'
     'spotify.protocol'
     'LICENSE'
     "https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap"
 )
 sha512sums=(
+    'da48b628a4ea925dd8521133ebf364b261b11aed252d264dde6605d915cdb631919ffe672c58534bcdb60869e5d87a49a60a8198780b99517123f0031e83fdb1'
     '999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
     '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
     'afa25daeafedb7da1c44c0e6c4c6e8160d5a0935c39acdb5256582603e56152b988142e0bb0ae5027e986f1d1bdb44627936f0f71e5f836568c66878355af590'
@@ -63,8 +65,8 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/spotify.png"
     done
 
-    # Symlink spotify binary which is located in /opt
-    ln -sf /opt/spotify/spotify "${pkgdir}/usr/bin/spotify"
+    # Copy launch script which allows the use of custom flags
+    install -Dm 755 spotify.sh "${pkgdir}/usr/bin/spotify"
 
     # Copy protocol file for KDE
     install -Dm 644 "${srcdir}/spotify.protocol" "${pkgdir}/usr/share/kservices5/spotify.protocol"
