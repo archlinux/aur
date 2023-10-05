@@ -4,7 +4,7 @@ _pkgname="dolphin"
 _pkgname_tabopts="$_pkgname-tabopts"
 pkgname="$_pkgname_tabopts"
 pkgver=23.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -40,7 +40,7 @@ source=(
   "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
 )
 sha256sums=(
-  '7e649204637ccd1d3c9e9e748e69f73ac97e1c308c63eda592353ca7df21cb0d'
+  'a50de534a6049ec4e232b6bddb8b39a105287bd0f6eac934e4eaac50df6f0004'
 )
 
 if [ x"$_pkgname_tabopts" == x"$pkgname" ] ; then
