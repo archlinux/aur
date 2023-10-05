@@ -1,8 +1,8 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 # Contributor: Carson Rueter <roachh at proton mail dot com>
 pkgname=vscodium-bin-features
-pkgver=1.74.0
-pkgrel=5
+pkgver=1.82.0
+pkgrel=1
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
 url='https://github.com/microsoft/vscode'
@@ -13,11 +13,14 @@ provides=('vscodium-bin-features')
 conflicts=('vscodium-bin-features')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
-        'patch.py')
-md5sums=('a79c54f622b6c12c78bca12753711c7a'
-         'd3911dc497ccc9aa520d6e46149a9399')
+        'patch.py'
+        'patch.json')
+md5sums=('1bcee9b164af06e67f2d557663828d12'
+         'c081d5e736a56b0d8f93cab92183f418'
+         '4f8f660d360e605b3b7b0321c97c6d69')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
-  install -Dm 755 "${srcdir}/patch.py" "${pkgdir}/opt/${pkgname}/patch.py"
+  install -Dm 755 "${srcdir}/patch.py" "${pkgdir}/usr/share/${pkgname}/patch.py"
+  install -Dm 644 "${srcdir}/patch.json" "${pkgdir}/usr/share/${pkgname}/patch.json"
 }
