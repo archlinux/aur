@@ -2,7 +2,7 @@
 
 pkgname=gz-rendering7
 pkgver=7.4.2
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="C++ library designed to provide an abstraction for different rendering engines."
@@ -15,7 +15,7 @@ depends=(
   'gz-math=7'
   'gz-plugin=2'
   'gz-utils=2'
-  'ogre-next'
+  'ogre-1.9'
   )
 makedepends=(
   'cmake'
@@ -23,9 +23,7 @@ makedepends=(
   'doxygen'
   'gz-cmake=3'
   )
-optdepends=(
-  'ogre=1.9.0: Ogre classic rendering engine plugin'
-  'optix: Nvidia OptiX rendering engine plugin')
+optdepends=('optix: Nvidia OptiX rendering engine plugin')
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('b35d41ae611f96bb755aa4dd1f31b389f514220bdae9192d24ba2b17cbcd2def')
