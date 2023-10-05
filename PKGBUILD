@@ -1,4 +1,4 @@
-# Maintainer: Josh Cass <aur@darkstar.mozmail.com>
+# Maintainer: Josh Cass <archlinux.okyuf@passmail.net>
 pkgname=quarkuscli-bin
 pkgver=3.4.2
 pkgrel=1
