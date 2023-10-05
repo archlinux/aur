@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gst-plugins-good
 	pkgdesc = GStreamer Multimedia Framework Good Plugins (mingw-w64)
-	pkgver = 1.22.5
+	pkgver = 1.22.6
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = mingw-w64-gst-plugins-good
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.5.tar.xz
-	sha256sums = b67b31313a54c6929b82969d41d3cfdf2f58db573fb5f491e6bba5d84aea0778
+	source = http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.6.tar.xz
+	sha256sums = b3b07fe3f1ce7fe93aa9be7217866044548f35c4a7792280eec7e108a32f9817
 
 pkgname = mingw-w64-gst-plugins-good
