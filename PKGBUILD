@@ -2,7 +2,7 @@
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=debian-keyring
-pkgver=2023.05.26
+pkgver=2023.09.24
 pkgrel=1
 pkgdesc="GnuPG keys for Debian (non-archive)"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(gnupg)
 
 source=("https://httpredir.debian.org/debian/pool/main/d/debian-keyring/${pkgname}_${pkgver}_all.deb")
-sha256sums=('bdd9ed523f148ecdb4b181bc8f13ea2a47f58abcd570db23b7b51541f491df12')
+sha256sums=('11674f9f76024ffe17ce899635f6cf094fe62895b88437776c4b85ffbd414f67')
 
 package() {
     bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
