@@ -1,6 +1,6 @@
 pkgbase = fsl
 	pkgdesc = A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data
-	pkgver = 6.0.7.3
+	pkgver = 6.0.7.4
 	pkgrel = 1
 	url = http://www.fmrib.ox.ac.uk/fsl/
 	arch = x86_64
