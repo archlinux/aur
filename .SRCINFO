@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libsoup3
 	pkgdesc = HTTP client/server library (mingw-w64)
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://download.gnome.org/sources/libsoup
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-libsoup3
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=b78cb58ee9b47f8ffe18697ee3b096743a01e6a8
+	source = git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=007f59ff142e2781cd169a49925e54b9a5aa91da
 	sha256sums = SKIP
 
 pkgname = mingw-w64-libsoup3
