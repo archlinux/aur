@@ -3,7 +3,7 @@
 
 pkgname=bicep-bin
 _name=${pkgname%-bin}
-pkgver=0.21.1
+pkgver=0.22.6
 pkgrel=1
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(x86_64)
@@ -23,7 +23,7 @@ source=(
   "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/Azure/$_name/v$pkgver/LICENSE"
 )
 sha256sums=(
-  'ec03a5fb9c73695046cb3234fc223814e4d548b44235472306a179dfde7a39a4'
+  '9840aa055655ee7273ff03e58912f165bfffd46d983f4c1df9ef31597fd2c2ed'
   'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383'
 )
 
