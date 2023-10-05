@@ -8,6 +8,8 @@ pkgbase = mouse-actions-cli-bin
 	license = MIT
 	provides = mouse-actions
 	source = mouse-actions-cli-bin-0.4.4.tar.gz::https://github.com/jersou/mouse-actions/releases/download/v0.4.4/mouse-actions-v0.4.4.tar.gz
+	source = 80-mouse-actions.rules
 	sha256sums = 2cfc47a5fee31ca08714fe205ce07972e2b9a927465210b2dc796f05b003431b
+	sha256sums = 27e69cdde6bcbb696b345efc7646c9be04357243dd8afa3f0a5c521d5cd87b1b
 
 pkgname = mouse-actions-cli-bin
