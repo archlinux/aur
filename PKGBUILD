@@ -3,7 +3,7 @@
 
 _crate="svg2pdf"
 pkgname="svg2pdf"
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Convert SVG files to PDFs.'
 url='https://crates.io/crates/svg2pdf'
@@ -12,8 +12,8 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf/0.7.1/download")
-sha512sums=('1837f566441f7c006723acc5ffac5df1edb1ee7fae6b150783dab94253af8b5da8475e5c4fdca72624fd3a0a0f1ae1becb101cd5cefdebb5e46ce771aca83910')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf/0.8.0/download")
+sha512sums=('2dc50638e135181266ad8abece3448fc8da368fd30500fb1bd9ce16887e2c52fd4224b257a3fdc796e5a98584e67dbb673b41354bb30ace819cf99a395294a06')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
