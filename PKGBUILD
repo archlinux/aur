@@ -24,7 +24,7 @@ makedepends=(
 	patch
 )
 
-_commit=036ec2d
+_commit=a050819
 source=("${pkgname}::git+${url}.git#commit=$_commit")
 pkgver() {
   cd $srcdir/${pkgname}

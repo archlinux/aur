@@ -18,7 +18,7 @@ pkgbase = moab-git
 	depends = blas
 	depends = lapack
 	provides = moab-git
-	source = moab-git::git+https://bitbucket.org/fathomteam/moab.git#commit=036ec2d
+	source = moab-git::git+https://bitbucket.org/fathomteam/moab.git#commit=a050819
 	md5sums = SKIP
 
 pkgname = moab-git
