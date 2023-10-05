@@ -1,0 +1,7 @@
+post_install() {
+  cat << 'EOF'
+    try it out:
+
+      pkgx node@18 --eval 'console.log("pkgx: run anything")'
+EOF
+}
