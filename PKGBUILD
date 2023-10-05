@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=6.1.54
+_pkgver=6.1.55
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -14,7 +14,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The LTS Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://www.kernel.org/"
+url="https://www.kernel.org"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('ef72f8ed95da240e24fcdad7716a94473f3fb7478746a310442286b134880353'
-            '2f656276d0bc0d1b029bb1ebc6babe309bcd1ea7aeb334f53cd35ea245ee7db1'
-            'c13dd1d7fb2bae2682f3eb9b0e8ac7b24dcc951082265674e1b9e3a8035ae4d0')
+sha256sums=('ca0056bb352f8e9a6ed2f2360396a44ff95089a113b3e527b21fe7f1c6e5006f'
+            'ce382462349099a7ab52f649e4043425ee7e01d9cf91b6e570b75502e6062cda'
+            '75f7492a7cba4ccb47c2cf2fd554db68bf69d02c41340e637afdb22fce8efa1e')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.1.54-1-lts-bin() {
+package_linux6.1.55-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -79,7 +79,7 @@ package_linux6.1.54-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux6.1.54-1-lts-headers-bin() {
+package_linux6.1.55-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -88,7 +88,7 @@ package_linux6.1.54-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.1.54-1-lts-docs-bin() {
+package_linux6.1.55-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
