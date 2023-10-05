@@ -1,7 +1,7 @@
 # Maintainer: erdii <me@erdii.net>
 
 pkgname=calicoctl-bin
-pkgver=3.26.1
+pkgver=3.26.2
 pkgrel=1
 pkgdesc='command line tool to manage Calico resources and perform administrative functions'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
@@ -13,15 +13,16 @@ sha256sums=()
 
 case "$CARCH" in
   x86_64) _pkgarch="amd64"
-    sha256sums+=('c8f61c1c8e2504410adaff4a7255c65785fe7805eebfd63340ccd3c472aa42cf')
+    sha256sums+=('eba9bc34f44801a513c48f730a409dc1ece0ebfd9c1acc21fd3adf0eff93ecdc')
     ;;
   arm*) _pkgarch="armv7"
-    sha256sums+=('e0083216053b5eb05d5d4ce641506c8cad62fac79ed96a05921a7410144ffb43')
+    sha256sums+=('03f5bb67ebb706a6504fd1ad9a0cbdd8afc0ef1e169833837f89e7324bf82171')
     ;;
   aarch64) _pkgarch="arm64"
-    sha256sums+=('bba2fbdd6d2998bca144ae12c2675d65c4fbf51c0944d69b1b2f20e08cd14c22')
+    sha256sums+=('44de9118f481a1125e2d50cdfbb55073e744dd8e71d2be45eeb2757302910c67')
     ;;
 esac
+
 
 source+=("${pkgname}-${pkgver}::https://github.com/projectcalico/calico/releases/download/v${pkgver}/calicoctl-linux-${_pkgarch}")
 
