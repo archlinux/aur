@@ -1,6 +1,6 @@
 pkgbase = marcador
 	pkgdesc = Lightweight bookmark manager with rofi integration
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://pypi.org/project/marcador
 	arch = any
@@ -15,8 +15,9 @@ pkgbase = marcador
 	depends = python-serde
 	depends = python-appdirs
 	depends = python-toml
+	depends = python-requests
 	provides = marcador
-	source = https://github.com/joajfreitas/marcador/archive/refs/tags/0.5.2.tar.gz
-	sha256sums = 89ecd8e8a54a4d0e8a0dcdcc6ad9b8542385a5126005d5f5ed02537cb53b2652
+	source = https://github.com/joajfreitas/marcador/archive/refs/tags/0.5.3.tar.gz
+	sha256sums = 74523b3d715c347e97bdc62091e4494e36f7793dcde5a6106cea135825fa637c
 
 pkgname = marcador
