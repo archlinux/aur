@@ -1,15 +1,14 @@
 # Maintainer: Lukas Pöschl <lukas@smart-ies.de>
 
 pkgbase=linux-morphius
-pkgver=6.5.2
+pkgver=6.5.5
 pkgrel=1
 pkgdesc='Linux-morphius'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
-provides=(chromeos-acpi-dkms-git)
-conflicts=(chromeos-acpi-dkms-git)
+
 makedepends=(
   bc
   cpio
@@ -23,6 +22,7 @@ makedepends=(
   xz
   clang
 )
+
 options=('!strip')
 _srcname=linux-$pkgver-arch1
 source=(
@@ -37,9 +37,9 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 
-b2sums=('b1c4580c3363e2aed81dc61cd8f623d8583fe9cbf7aefb14c6868593ffebda1a3c1810e78c09c18a219b4311701fb55190505889cef7237ae4c196053c543d44'
-        '79582031a5bff3bc9edf514293f3366e70a77c5a489fbd4d8089bff07a347287abc2df16418b13a9d0ee4663daa0f2b4c7c667ce83965e9aa343fe306370ffd7'
-        '90355822a922ea715802a95548ba890e511ba4f333fa2b3d60a67405cec0dea6787039f3dd0a99dabcc6a7a10c920221e29d18b0456edf4cc4aa529d6eea9438')
+b2sums=('d4d7c082a627dd35e7b994adea0011efe57e22f03c6d548bf09f524074a0293fdb4c2980db914bc93493ff0b29e804b777111d0756d52cc1c1d026e6dec3d2e4'
+        'ff5e44410d9982a2ca6b74da5d9a8f50255be08f37d600f85db6eb21059e98467aedae37f506c3d65458c3a66ea97a2ec5147c5c9b2271eaceca0235fad14f2d'
+        'bf90bebe4d5f03eeef1949bdcfe430c11679849c74331856e87be4b8803c0c4e445e9f937ae4c4578e7897e1c6cee1143e961bf397f1d165eb54d5bb2e6c926b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -109,6 +109,9 @@ _package() {
     'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
   )
+
+  provides=(chromeos-acpi-dkms-git)
+  conflicts=(chromeos-acpi-dkms-git)
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"

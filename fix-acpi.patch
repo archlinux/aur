@@ -1,8 +1,8 @@
 diff --git a/drivers/platform/chrome/chromeos_acpi.c b/drivers/platform/chrome/chromeos_acpi.c
-index 50d8a4d..57f78b2 100644
+index 1312aaa..57f78b2 100644
 --- a/drivers/platform/chrome/chromeos_acpi.c
 +++ b/drivers/platform/chrome/chromeos_acpi.c
-@@ -1,257 +1,797 @@
+@@ -1,286 +1,797 @@
 -// SPDX-License-Identifier: GPL-2.0-only
 -/*
 - * ChromeOS specific ACPI extensions
@@ -81,15 +81,32 @@ index 50d8a4d..57f78b2 100644
 +#define CHSW_RECOVERY_EC	0x00000004   /* recovery button depressed */
 +#define CHSW_DEVELOPER_MODE	0x00000020   /* developer switch set */
 +#define CHSW_WP			0x00000200   /* write-protect (optional) */
-+
+ 
+-static unsigned int chromeos_acpi_gpio_groups;
 +/* the following defines are copied from
 + * vboot_reference:firmware/lib/vboot_nvstorage.c.
 + */
 +#define RECOVERY_OFFSET              2
 +#define VBNV_RECOVERY_RW_INVALID_OS  0x43
-+
+ 
+-/* Parse the ACPI package and return the data related to that attribute */
+-static int chromeos_acpi_handle_package(struct device *dev, union acpi_object *obj,
+-					int pkg_num, int sub_pkg_num, char *name, char *buf)
+-{
+-	union acpi_object *element = obj->package.elements;
 +#define MAX_VBOOT_CONTEXT_BUFFER_SIZE 64  /* Should be enough for anything. */
-+
+ 
+-	if (pkg_num >= obj->package.count)
+-		return -EINVAL;
+-	element += pkg_num;
+-
+-	if (element->type == ACPI_TYPE_PACKAGE) {
+-		if (sub_pkg_num >= element->package.count)
+-			return -EINVAL;
+-		/* select sub element inside this package */
+-		element = element->package.elements;
+-		element += sub_pkg_num;
+-	}
 +/*
 + * Structure containing one ACPI exported integer along with the validity
 + * flag.
@@ -98,7 +115,35 @@ index 50d8a4d..57f78b2 100644
 +	unsigned cad_value;
 +	bool	 cad_is_set;
 +};
-+
+ 
+-	switch (element->type) {
+-	case ACPI_TYPE_INTEGER:
+-		return sysfs_emit(buf, "%d\n", (int)element->integer.value);
+-	case ACPI_TYPE_STRING:
+-		return sysfs_emit(buf, "%s\n", element->string.pointer);
+-	case ACPI_TYPE_BUFFER:
+-		{
+-			int i, r, at, room_left;
+-			const int byte_per_line = 16;
+-
+-			at = 0;
+-			room_left = PAGE_SIZE - 1;
+-			for (i = 0; i < element->buffer.length && room_left; i += byte_per_line) {
+-				r = hex_dump_to_buffer(element->buffer.pointer + i,
+-						       element->buffer.length - i,
+-						       byte_per_line, 1, buf + at, room_left,
+-						       false);
+-				if (r > room_left)
+-					goto truncating;
+-				at += r;
+-				room_left -= r;
+-
+-				r = sysfs_emit_at(buf, at, "\n");
+-				if (!r)
+-					goto truncating;
+-				at += r;
+-				room_left -= r;
+-			}
 +struct chromeos_vbc {
 +	/**
 +	 * Read vboot context to buffer
@@ -210,44 +255,24 @@ index 50d8a4d..57f78b2 100644
 +	struct acpi_attribute *attributes;
 +	struct acpi_attribute_group *groups;
 +};
- 
--static unsigned int chromeos_acpi_gpio_groups;
++
 +static struct chromeos_acpi_dev chromeos_acpi = { };
- 
--/* Parse the ACPI package and return the data related to that attribute */
--static int chromeos_acpi_handle_package(struct device *dev, union acpi_object *obj,
--					int pkg_num, int sub_pkg_num, char *name, char *buf)
++
 +int chromeos_set_need_recovery(void)
- {
--	union acpi_object *element = obj->package.elements;
++{
 +	if (!chromeos_legacy_set_need_recovery())
 +		return 0;
 +	return vbc_write_byte(RECOVERY_OFFSET, VBNV_RECOVERY_RW_INVALID_OS);
 +}
- 
--	if (pkg_num >= obj->package.count)
--		return -EINVAL;
--	element += pkg_num;
--
--	if (element->type == ACPI_TYPE_PACKAGE) {
--		if (sub_pkg_num >= element->package.count)
--			return -EINVAL;
--		/* select sub element inside this package */
--		element = element->package.elements;
--		element += sub_pkg_num;
--	}
++
 +EXPORT_SYMBOL(chromeos_set_need_recovery);
  
--	switch (element->type) {
--	case ACPI_TYPE_INTEGER:
--		return sysfs_emit(buf, "%d\n", (int)element->integer.value);
--	case ACPI_TYPE_STRING:
--		return sysfs_emit(buf, "%s\n", element->string.pointer);
--	case ACPI_TYPE_BUFFER:
--		return sysfs_emit(buf, "%s\n", element->buffer.pointer);
--	default:
--		dev_err(dev, "element type %d not supported\n", element->type);
--		return -EINVAL;
+-			buf[at] = 0;
+-			return at;
+-truncating:
+-			dev_info_once(dev, "truncating sysfs content for %s\n", name);
+-			sysfs_emit_at(buf, PAGE_SIZE - 4, "..\n");
+-			return PAGE_SIZE - 1;
 +/*
 + * Lifted from vboot_reference:firmware/lib/vboot_nvstorage.c and formatted.
 + *
@@ -264,7 +289,10 @@ index 50d8a4d..57f78b2 100644
 +			if (crc & 0x8000)
 +				crc ^= (0x1070 << 3);
 +			crc <<= 1;
-+		}
+ 		}
+-	default:
+-		dev_err(dev, "element type %d not supported\n", element->type);
+-		return -EINVAL;
  	}
 +	return (u8)(crc >> 8);
  }
@@ -433,11 +461,7 @@ index 50d8a4d..57f78b2 100644
 +	}
 +	return size;
 +}
- 
--	status = acpi_evaluate_object(ACPI_HANDLE(dev), name, NULL, &output);
--	if (ACPI_FAILURE(status)) {
--		dev_err(dev, "failed to retrieve %s. %s\n", name, acpi_format_exception(status));
--		return count;
++
 +/*
 + * To show attribute value just access the container structure's `value'
 + * field.
@@ -449,7 +473,11 @@ index 50d8a4d..57f78b2 100644
 +	paa = container_of(attr, struct acpi_attribute, dev_attr);
 +	return snprintf(buf, PAGE_SIZE, paa->value);
 +}
-+
+ 
+-	status = acpi_evaluate_object(ACPI_HANDLE(dev), name, NULL, &output);
+-	if (ACPI_FAILURE(status)) {
+-		dev_err(dev, "failed to retrieve %s. %s\n", name, acpi_format_exception(status));
+-		return count;
 +/*
 + * create_sysfs_attribute() create and initialize an ACPI sys fs attribute
 + *			    structure.
@@ -509,7 +537,7 @@ index 50d8a4d..57f78b2 100644
 +	if (!paa) {
 +		printk(MY_ERR "out of memory in %s!\n", __func__);
 +		return NULL;
-+	}
+ 	}
 +	sysfs_attr_init(&paa->dev_attr.attr);
 +	paa->dev_attr.attr.mode = 0444;  /* read only */
 +	paa->dev_attr.show = show_acpi_attribute;
@@ -523,7 +551,7 @@ index 50d8a4d..57f78b2 100644
 +	} else {
 +		snprintf((char *)paa->dev_attr.attr.name, room_left,
 +			 "%s.%d", name, instance);
- 	}
++	}
 +	paa->next_acpi_attr = chromeos_acpi.attributes;
 +	chromeos_acpi.attributes = paa;
 +	return paa;

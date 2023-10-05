@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.5.2-arch1 Kernel Configuration
+# Linux/x86 6.5.5-arch1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 16.0.6"
 CONFIG_GCC_VERSION=0
@@ -29,7 +29,7 @@ CONFIG_THREAD_INFO_IN_TASK=y
 CONFIG_INIT_ENV_ARG_LIMIT=32
 # CONFIG_COMPILE_TEST is not set
 # CONFIG_WERROR is not set
-CONFIG_LOCALVERSION="-morphius"
+CONFIG_LOCALVERSION=""
 CONFIG_LOCALVERSION_AUTO=y
 CONFIG_BUILD_SALT=""
 CONFIG_HAVE_KERNEL_GZIP=y
@@ -4068,7 +4068,7 @@ CONFIG_MEDIA_TEST_SUPPORT=y
 # Media core support
 #
 CONFIG_VIDEO_DEV=y
-# CONFIG_MEDIA_CONTROLLER is not set
+CONFIG_MEDIA_CONTROLLER=y
 CONFIG_DVB_CORE=y
 # end of Media core support
 
@@ -4076,9 +4076,18 @@ CONFIG_DVB_CORE=y
 # Video4Linux options
 #
 CONFIG_VIDEO_V4L2_I2C=y
+CONFIG_VIDEO_V4L2_SUBDEV_API=y
 # CONFIG_VIDEO_ADV_DEBUG is not set
 # CONFIG_VIDEO_FIXED_MINOR_RANGES is not set
+CONFIG_V4L2_FWNODE=y
+CONFIG_V4L2_ASYNC=y
 # end of Video4Linux options
+
+#
+# Media controller options
+#
+# CONFIG_MEDIA_CONTROLLER_DVB is not set
+# end of Media controller options
 
 #
 # Digital TV options
@@ -4334,10 +4343,7 @@ CONFIG_MEDIA_ATTACH=y
 # IR I2C driver auto-selected by 'Autoselect ancillary drivers'
 #
 CONFIG_VIDEO_IR_I2C=y
-
-#
-# Camera sensor devices
-#
+CONFIG_VIDEO_CAMERA_SENSOR=y
 # CONFIG_VIDEO_AR0521 is not set
 # CONFIG_VIDEO_HI556 is not set
 # CONFIG_VIDEO_HI846 is not set
@@ -4405,7 +4411,6 @@ CONFIG_VIDEO_IR_I2C=y
 # CONFIG_VIDEO_ST_VGXY61 is not set
 # CONFIG_VIDEO_CCS is not set
 # CONFIG_VIDEO_ET8EK8 is not set
-# end of Camera sensor devices
 
 #
 # Lens drivers
@@ -5179,6 +5184,7 @@ CONFIG_SND_INTEL_SOUNDWIRE_ACPI=m
 CONFIG_SND_USB=y
 CONFIG_SND_USB_AUDIO=m
 # CONFIG_SND_USB_AUDIO_MIDI_V2 is not set
+CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER=y
 # CONFIG_SND_USB_UA101 is not set
 # CONFIG_SND_USB_USX2Y is not set
 # CONFIG_SND_USB_CAIAQ is not set
