@@ -1,0 +1,20 @@
+pkgbase = probe-rs
+	pkgdesc = A collection of on chip debugging tools to communicate with microchips.
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/probe-rs/probe-rs
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libusb
+	depends = libftdi
+	depends = openssl
+	depends = systemd-libs
+	source = probe-rs-0.21.0.tar.gz::https://crates.io/api/v1/crates/probe-rs/0.21.0/download
+	sha512sums = 366249a9ce892d797263d0feec85fbaa44cb6786b7bc7e5032859548814fe69b2cdbe5ce1767837ca1b96dd03ddf75b9f7d7ddd2697b38d9f627dea41899557f
+
+pkgname = probe-rs
