@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=4.0.315
-Type=Application
-Name=Dolphin Triforce Emulator
-Comment=A Triforce Emulator
-Icon=dolphin-emu-triforce
-Exec=dolphin-emu-triforce
-Categories=Game;
-
