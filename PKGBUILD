@@ -3,7 +3,7 @@
 
 pkgname=ieda
 pkgver=0.949.97089a9e
-pkgrel=1
+pkgrel=2
 pkgdesc="An pen-source from netlist to GDS EDA platform for ASIC design."
 arch=('any')
 url="https://github.com/OSCC-Project/iEDA/"
@@ -17,7 +17,7 @@ conflicts=()
 source=("iEDA::git+https://github.com/OSCC-Project/iEDA.git"
         "local://header.patch")
 sha256sums=('SKIP'
-            'e132290a1640c3d347afdb243da2a61e0cc4bef8a3312fc05e2fc16a98487b74')
+            '524c12716ece494676f9f7bbe4b26e64a8c98779cf31d0801cf0149af4219e7a')
 
 prepare() {
   cd iEDA
@@ -27,8 +27,8 @@ prepare() {
 }
 
 build() {
-  cd iEDA
-  ./build.sh
+  cmake -B "$srcdir/build" -S "$srcdir/iEDA" -DBUILD_STATIC_LIB:BOOL=ON -DBUILD_GUI:BOOL=ON -DCMAKE_RUNTIME_OUTPUT_DIRECTORY:FILEPATH="$srcdir/build/bin" -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
+  cmake --build "$srcdir/build" -j 128 --target iEDA iSTA iPower 
 }
 
 package() {

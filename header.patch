@@ -1,64 +1,20 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1b15b348..decff003 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -20,7 +20,7 @@ project(iEDA)
+diff --git a/src/apps/CMakeLists.txt b/src/apps/CMakeLists.txt
+index 060453ff..62bfaa3c 100644
+--- a/src/apps/CMakeLists.txt
++++ b/src/apps/CMakeLists.txt
+@@ -1,9 +1,9 @@
+ # SET(CMAKE_BUILD_TYPE "Release")
+ # SET(CMAKE_BUILD_TYPE "Debug")
  
- # option setting
- option(BUILD_PR_FLOW "If ON, build PR flow." ON)
--option(BUILD_STATIC_LIB "If ON, build static lib." ON)
-+option(BUILD_STATIC_LIB "If ON, build static lib." ON)
+-if(NOT DEFINED CMD_BUILD)
+-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../../scripts/design/sky130_gcd)
+-endif()
++# if(NOT DEFINED CMD_BUILD)
++#     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../../scripts/design/sky130_gcd)
++# endif()
  
- if(NOT BUILD_STATIC_LIB)
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-@@ -30,7 +30,7 @@ option(BUILD_PYTHON "If ON, build python interface." OFF)
- if(BUILD_PYTHON)
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
- endif()
--option(BUILD_GUI "If ON, build GUI." OFF)
-+option(BUILD_GUI "If ON, build GUI." ON)
- 
- set(CMAKE_CXX_STANDARD 20)
- set(CMAKE_VERBOSE_MAKEFILE OFF)
-@@ -80,4 +80,4 @@ add_subdirectory(src/evaluation)
- add_subdirectory(src/analysis)
- add_subdirectory(src/operation)
- add_subdirectory(src/platform)
--add_subdirectory(src/solver)
-\ No newline at end of file
-+add_subdirectory(src/solver)
-
-diff --git a/build.sh b/build.sh
-index f542d49b..ccb7b66e 100755
---- a/build.sh
-+++ b/build.sh
-@@ -20,10 +20,10 @@ set -e
- 
- # variables
- IEDA_WORKSPACE=$(cd "$(dirname "$0")";pwd)
--BINARY_TARGET="iEDA"
-+BINARY_TARGET="iEDA iPower iSTA"
- BINARY_DIR="${IEDA_WORKSPACE}/bin"
- BUILD_DIR="${IEDA_WORKSPACE}/build"
--CPP_COMPILER_PATH="g++-10"
-+CPP_COMPILER_PATH="g++"
- RUN_IEDA="OFF"
- NO_BUILD="OFF"
- DEL_BUILD="OFF"
-diff --git a/src/utility/log/CMakeLists.txt b/src/utility/log/CMakeLists.txt
-index 78838005..0f2d91a1 100644
---- a/src/utility/log/CMakeLists.txt
-+++ b/src/utility/log/CMakeLists.txt
-@@ -9,7 +9,7 @@ SET(LINK_unwind "unwind")
- 
- if(BUILD_STATIC_LIB)
-   ADD_LIBRARY(log ${SRC})
--  SET(LINK_glog   "libglog.a")
-+#  SET(LINK_glog   "libglog.a")
-   SET(LINK_gflags "libgflags.a")
- else()
-   ADD_LIBRARY(log SHARED ${SRC})
-
+ add_executable(iEDA
+     ieda_main.cpp
 diff --git a/src/database/basic/geometry/IdbGeometry.h b/src/database/basic/geometry/IdbGeometry.h
 index ec16907c..3ca8a89f 100644
 --- a/src/database/basic/geometry/IdbGeometry.h
@@ -111,6 +67,18 @@ index 4af86b51..570d80ae 100644
  
  using std::pair;
  using std::string;
+diff --git a/src/operation/iMP/source/utility/logger/Logger.hpp b/src/operation/iMP/source/utility/logger/Logger.hpp
+index 8311bc37..563fce6c 100644
+--- a/src/operation/iMP/source/utility/logger/Logger.hpp
++++ b/src/operation/iMP/source/utility/logger/Logger.hpp
+@@ -23,6 +23,7 @@
+ #include <string>
+ #include <thread>
+ #include <vector>
++#include <algorithm>
+ 
+ #include "LogLevel.hpp"
+ namespace imp {
 diff --git a/src/operation/iPDN/source/module/pdn_plan/pdn_plan.h b/src/operation/iPDN/source/module/pdn_plan/pdn_plan.h
 index e46b5c34..b351da81 100644
 --- a/src/operation/iPDN/source/module/pdn_plan/pdn_plan.h
@@ -242,6 +210,21 @@ index 5dad3766..84c96a62 100644
  namespace salt {
  
  void GetDirId(const Point& a, const Point& b, bool low, int& dir, DTYPE& dist) {  // b is the center/base
+diff --git a/src/utility/log/CMakeLists.txt b/src/utility/log/CMakeLists.txt
+index 78838005..127e6ea7 100644
+--- a/src/utility/log/CMakeLists.txt
++++ b/src/utility/log/CMakeLists.txt
+@@ -9,8 +9,8 @@ SET(LINK_unwind "unwind")
+ 
+ if(BUILD_STATIC_LIB)
+   ADD_LIBRARY(log ${SRC})
+-  SET(LINK_glog   "libglog.a")
+-  SET(LINK_gflags "libgflags.a")
++  #SET(LINK_glog   "libglog.a")
++  #SET(LINK_gflags "libgflags.a")
+ else()
+   ADD_LIBRARY(log SHARED ${SRC})
+ endif()
 diff --git a/src/utility/log/Log.cc b/src/utility/log/Log.cc
 index c4bcdb2c..f2124e46 100644
 --- a/src/utility/log/Log.cc

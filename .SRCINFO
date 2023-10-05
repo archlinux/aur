@@ -1,7 +1,7 @@
 pkgbase = ieda
 	pkgdesc = An pen-source from netlist to GDS EDA platform for ASIC design.
 	pkgver = 0.949.97089a9e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OSCC-Project/iEDA/
 	arch = any
 	license = custom:MulanPSL2
@@ -27,6 +27,6 @@ pkgbase = ieda
 	source = iEDA::git+https://github.com/OSCC-Project/iEDA.git
 	source = local://header.patch
 	sha256sums = SKIP
-	sha256sums = e132290a1640c3d347afdb243da2a61e0cc4bef8a3312fc05e2fc16a98487b74
+	sha256sums = 524c12716ece494676f9f7bbe4b26e64a8c98779cf31d0801cf0149af4219e7a
 
 pkgname = ieda
