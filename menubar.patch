@@ -1,8 +1,8 @@
 diff --git a/gedit/gedit-app.c b/gedit/gedit-app.c
-index 5532d5975..671208c35 100644
+index 9ddac418d..d1cbd0dae 100644
 --- a/gedit/gedit-app.c
 +++ b/gedit/gedit-app.c
-@@ -627,6 +627,7 @@ add_accelerator (GtkApplication *app,
+@@ -641,6 +641,7 @@ add_accelerator (GtkApplication *app,
  static gboolean
  show_menubar (void)
  {
@@ -10,3 +10,64 @@ index 5532d5975..671208c35 100644
  	GtkSettings *settings = gtk_settings_get_default ();
  	gboolean result;
  
+@@ -1172,6 +1173,7 @@ gedit_app_create_window_impl (GeditApp *app)
+ 	GeditWindow *window;
+ 
+ 	window = g_object_new (GEDIT_TYPE_WINDOW, "application", app, NULL);
++	_gedit_window_set_menu_bar_from_app (window, GTK_APPLICATION(app));
+ 
+ 	gedit_debug_message (DEBUG_APP, "Window created");
+ 
+diff --git a/gedit/gedit-window.c b/gedit/gedit-window.c
+index 930899bb5..968eccc30 100644
+--- a/gedit/gedit-window.c
++++ b/gedit/gedit-window.c
+@@ -2781,6 +2781,34 @@ gedit_window_init (GeditWindow *window)
+ 	gedit_debug_message (DEBUG_WINDOW, "END");
+ }
+ 
++void
++_gedit_window_set_menu_bar_from_app (GeditWindow *window, GtkApplication *app)
++{
++	GtkWidget   *container;
++	GtkWidget   *menubar;
++	GMenuModel  *menumodel;
++	gboolean     visible;
++
++	g_object_get(G_OBJECT(window), "show-menubar", &visible, NULL);
++	if(! visible) return;
++
++	menumodel = gtk_application_get_menubar(app);
++	if(! menumodel) return;
++
++	menubar   = gtk_menu_bar_new_from_model(menumodel);
++	gtk_widget_show_all(menubar);
++
++	container = gtk_paned_get_child2(GTK_PANED(window->priv->hpaned));
++	if(! GTK_IS_BOX(container)) {
++		g_free(menubar);
++		return;
++	}
++
++	g_object_set(G_OBJECT(window), "show-menubar", FALSE, NULL);
++	gtk_box_pack_start(GTK_BOX(container), menubar, FALSE, FALSE, 0);
++	gtk_box_reorder_child(GTK_BOX(container), menubar, 0);
++}
++
+ /**
+  * gedit_window_get_active_view:
+  * @window: a #GeditWindow.
+diff --git a/gedit/gedit-window.h b/gedit/gedit-window.h
+index 8417cb1b2..1c1d9608d 100644
+--- a/gedit/gedit-window.h
++++ b/gedit/gedit-window.h
+@@ -152,6 +152,9 @@ GList		*_gedit_window_get_all_tabs		(GeditWindow         *window);
+ 
+ GFile		*_gedit_window_pop_last_closed_doc	(GeditWindow         *window);
+ 
++void		_gedit_window_set_menu_bar_from_app	(GeditWindow         *window,
++							 GtkApplication      *app);
++
+ G_END_DECLS
+ 
+ #endif  /* GEDIT_WINDOW_H  */
