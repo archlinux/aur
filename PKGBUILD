@@ -8,7 +8,6 @@ pkgdesc='Quickly check commit log of Arch and AUR packages'
 arch=('x86_64')
 url="https://github.com/Necoro/arch-log"
 license=('GPL')
-depends=('glibc')
 makedepends=('go>=1.20' 'git')
 source=('git+https://github.com/Necoro/arch-log')
 sha256sums=('SKIP')
