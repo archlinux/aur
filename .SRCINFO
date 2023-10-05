@@ -1,6 +1,6 @@
 pkgbase = pypy3-numpy
 	pkgdesc = Scientific tools for Python
-	pkgver = 1.25.2
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://www.numpy.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pypy3-numpy
 	depends = pypy3
 	optdepends = blas-openblas: faster linear algebra
 	options = staticlibs
-	source = https://github.com/numpy/numpy/releases/download/v1.25.2/numpy-1.25.2.tar.gz
-	sha256sums = fd608e19c8d7c55021dffd43bfe5492fab8cc105cc8986f813f8c3c048b38760
+	source = https://github.com/numpy/numpy/releases/download/v1.26.0/numpy-1.26.0.tar.gz
+	sha256sums = f93fc78fe8bf15afe2b8d6b6499f1c73953169fad1e9a8dd086cdff3190e7fdf
 
 pkgname = pypy3-numpy
