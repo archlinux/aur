@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-libav
-pkgver=1.22.5
+pkgver=1.22.6
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework ffmpeg Plugin (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-meson' 'yasm')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("${url}src/gst-libav/gst-libav-${pkgver}.tar.xz")
-sha256sums=('8583f0c1f4fcb01eed11fa1e3c21126543a8bd739ed4fc1db31f756a5ab01d9a')
+sha256sums=('7789e6408388a25f23cbf948cfc5c6230d735bbcd8b7f37f4a01c9e348a1e3a7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
