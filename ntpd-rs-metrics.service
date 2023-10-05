@@ -1,0 +1,32 @@
+[Unit]
+Description=Network Time Service (ntpd-rs) metrics exporter
+Documentation=https://github.com/pendulum-project/ntpd-rs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+Restart=on-failure
+RestartSec=2
+ExecStartPre=/usr/bin/ntp-ctl --config /etc/ntpd-rs/ntp.toml validate
+ExecStart=/usr/bin/ntp-metrics-exporter --config /etc/ntpd-rs/ntp.toml
+Environment="RUST_LOG=info"
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+ProtectHome=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+ProtectProc=invisible
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target

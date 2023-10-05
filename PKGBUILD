@@ -9,10 +9,12 @@ makedepends=('cargo')
 license=('Apache')
 source=(
   "https://github.com/pendulum-project/ntpd-rs/archive/refs/tags/v$pkgver.tar.gz"
-  'ntpd-rs.service')
+  'ntpd-rs.service'
+  'ntpd-rs-metrics.service')
 backup=('etc/ntpd-rs/ntp.toml')
 b2sums=('326210ccfe346a51205c9ad122a3e7910d61c06696dda50d9f389c3c642da7317a00041173add2bf59ea1585971137fbb8cd576c8f7e3f5ad6c41f8745d218ba'
-        '9846b7e6e13e5912c9d3d8a65ac9720aff7cd0875d8617ed281a56e06346257e2597cabf96ad5b3014c67ca6c2733c43e896fc4be5de74b36406558f49cce38f')
+        '9846b7e6e13e5912c9d3d8a65ac9720aff7cd0875d8617ed281a56e06346257e2597cabf96ad5b3014c67ca6c2733c43e896fc4be5de74b36406558f49cce38f'
+        '80355c29433138805efd4acbdb6c684a206afae43f75466d3996c100dea534d099049131279ad8d1e5c80ebaa6792b7101cccad91d085e5630c5356c295a3c22')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,6 +26,7 @@ build() {
 
 package() {
   install -Dm644 ntpd-rs.service "$pkgdir/usr/lib/systemd/system/ntpd-rs.service"
+  install -Dm644 ntpd-rs-metrics.service "$pkgdir/usr/lib/systemd/system/ntpd-rs-metrics.service"
 
   cd "$pkgname-$pkgver"
   install -Dm644 docs/examples/conf/ntp.toml.default "$pkgdir/etc/ntpd-rs/ntp.toml"
