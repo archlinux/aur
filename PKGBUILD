@@ -53,13 +53,13 @@ package() {
     sed -i 's/^Icon=.*/Icon=spotify-client/' "${pkgdir}"/opt/spotify/spotify.desktop
 
     # Desktop Entry
-    install -Dm644 "${pkgdir}"/opt/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
+    install -Dm 644 "${pkgdir}"/opt/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
 
     # Copy icons
-    install -Dm644 "${pkgdir}"/opt/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
+    install -Dm 644 "${pkgdir}"/opt/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
 
     for size in 22 24 32 48 64 128 256 512; do
-        install -Dm644 "${pkgdir}/opt/spotify/icons/spotify-linux-$size.png" \
+        install -Dm 644 "${pkgdir}/opt/spotify/icons/spotify-linux-$size.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/spotify.png"
     done
 
@@ -67,7 +67,7 @@ package() {
     ln -sf /opt/spotify/spotify "${pkgdir}/usr/bin/spotify"
 
     # Copy protocol file for KDE
-    install -Dm644 "${srcdir}/spotify.protocol" "${pkgdir}/usr/share/kservices5/spotify.protocol"
+    install -Dm 644 "${srcdir}/spotify.protocol" "${pkgdir}/usr/share/kservices5/spotify.protocol"
 
     # Install license
     # https://www.spotify.com/legal/end-user-agreement
