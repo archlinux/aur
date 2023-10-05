@@ -1,12 +1,12 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
 license=('MIT')
-depends=("dotnet-sdk" "msbuild")
+depends=("dotnet-sdk")
 optdepends=()
 makedepends=(
     'git'
@@ -28,7 +28,7 @@ makedepends=(
     'nuget'
     'xorg-server-xvfb'
 )
-provides=('godot-mono')
+provides=('godot' 'godot-mono')
 conflicts=('godot-mono-bin')
 source=(${pkgname}::git+https://github.com/godotengine/godot.git)
 md5sums=('SKIP')
@@ -60,7 +60,7 @@ package() {
     # I have to use TERM=xterm because of an bug in mono
     cat > "${pkgdir}/usr/bin/${pkgname}" <<-EOF
 		#!/usr/bin/env bash
-		/opt/godot-mono/bin/godot.linuxbsd.editor.x86_64.mono
+		/opt/godot-mono/bin/godot.linuxbsd.editor.x86_64.mono "\$@"
 	EOF
     
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
