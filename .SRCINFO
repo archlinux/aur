@@ -1,6 +1,6 @@
 pkgbase = snkrx-drmfree-git
 	pkgdesc = A replayable arcade shooter where you control a snake of heroes, automatically patched to run without Steam.
-	pkgver = r93.2453a18
+	pkgver = r118.6b93a64
 	pkgrel = 1
 	url = https://store.steampowered.com/app/915310/SNKRX/
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = snkrx-drmfree-git
 	provides = SNKRX
 	conflicts = SNKRX
 	conflicts = snkrx-git
-	source = SNKRX::git+https://github.com/a327ex/SNKRX.git
+	source = git+https://github.com/a327ex/SNKRX.git
 	source = SNKRX.desktop
-	sha256sums = SKIP
-	sha256sums = 4754794790e7e128ec8930f70b3100078c24e2d3a3eba7ff9bfc0919a914648a
+	b2sums = SKIP
+	b2sums = c9fc3e0630da2e60ebd1917a620538ea45c515aef2357e4938c62fcee738d6d2f6f6babe3eed7e87262f04d042137b7a5acbf0ddd4de116c14c3bc68eef530b0
 
 pkgname = snkrx-drmfree-git

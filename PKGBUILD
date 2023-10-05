@@ -1,6 +1,6 @@
 # Maintainer: GCMarvin <GCMarvin@users.noreply.github.com>
 pkgname=snkrx-drmfree-git
-pkgver=r93.2453a18
+pkgver=r118.6b93a64
 pkgrel=1
 pkgdesc='A replayable arcade shooter where you control a snake of heroes, automatically patched to run without Steam.'
 arch=('any')
@@ -10,10 +10,10 @@ depends=('love')
 makedepends=('git')
 provides=('SNKRX')
 conflicts=('SNKRX' 'snkrx-git')
-source=('SNKRX::git+https://github.com/a327ex/SNKRX.git'
+source=('git+https://github.com/a327ex/SNKRX.git'
         'SNKRX.desktop')
-sha256sums=('SKIP'
-            '4754794790e7e128ec8930f70b3100078c24e2d3a3eba7ff9bfc0919a914648a')
+b2sums=('SKIP'
+        'c9fc3e0630da2e60ebd1917a620538ea45c515aef2357e4938c62fcee738d6d2f6f6babe3eed7e87262f04d042137b7a5acbf0ddd4de116c14c3bc68eef530b0')
 
 pkgver() {
     cd "${srcdir}/SNKRX/"
@@ -21,16 +21,14 @@ pkgver() {
 }
 
 prepare() {
-    rm -r "${srcdir}/SNKRX/"{"engine/love/","builds/",".gitignore",*".sh"}
-    sed -Ei "/steam\.|luasteam/d" "${srcdir}/SNKRX/"{*,*/*,*/*/*}".lua"
+    find "${srcdir}/SNKRX/" -type f -name '*.lua' -exec sed -Ei "/steam\.|luasteam/d" "{}" \;
 }
 
 package() {
-    rm -r "${srcdir}/SNKRX/.git/"
-    mkdir -p "${pkgdir}/usr/"{"bin/","share/"{"applications/","/licenses/${pkgname}/"}}
-    cp -r "${srcdir}/SNKRX/" "${pkgdir}/usr/share/"
-    cp "${srcdir}/SNKRX.desktop" "${pkgdir}/usr/share/applications/"
-    cp "${srcdir}/SNKRX/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
-    echo "#!/usr/bin/love /usr/share/SNKRX/" > "${pkgdir}/usr/bin/SNKRX"
-    chmod 755 "${pkgdir}/usr/bin/SNKRX"
+    cd "${srcdir}"
+    find "SNKRX" -type f \( -name '*.lua' -or -name 'gamecontrollerdb.txt' -or -wholename '*/assets/*' \) -exec \
+        install -Dm 644 "{}" "${pkgdir}/usr/share/{}" \;
+    install -Dm 644 "SNKRX.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dm 644 "SNKRX/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm 755 <(echo '#!/usr/bin/love /usr/share/SNKRX/') "${pkgdir}/usr/bin/SNKRX"
 }
