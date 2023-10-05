@@ -5,15 +5,15 @@ _pkgname='invoiceninja-desktop'
 _repo='admin-portal'
 pkgname="${_pkgname}"
 pkgdesc="Desktop version for Invoice Ninja"
-pkgver=5.0.121
+pkgver=5.0.125
 pkgrel=1
 url="https://github.com/invoiceninja/$_repo"
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" "invoiceninja-desktop.desktop")
 provides=("${_pkgname}")
-makedepends=(fvm-bin)
+makedepends=(fvm-bin ninja clang)
 arch=('i686' 'x86_64')
 license=('unknown')
-sha256sums=('1059e354cb5bd08ed273a953c9fb3f9b3fa90535780726b44a358f4ae487a63f'
+sha256sums=('407effc7dcb177fc3c864159a4bc5bc623d8994b42acd740f259d1c538453c91'
             'beb5d95b727169634e0ee42bf4d4f556ac1fa2d2f73a9d9a61c29820c13dc1c6')
 
 package() {
