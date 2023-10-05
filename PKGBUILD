@@ -1,7 +1,7 @@
 pkgname=googlekeep
 _pkgname=GoogleKeep
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Unnofficial Google Keep desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/googlekeep-desktop/application"
@@ -12,7 +12,6 @@ conflicts=("googlekeep-bin")
 source=("https://gitlab.com/googlekeep-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
-
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
@@ -22,7 +21,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
-
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
