@@ -9,14 +9,10 @@ makedepends=('cargo')
 license=('Apache')
 source=(
   "https://github.com/pendulum-project/ntpd-rs/archive/refs/tags/v$pkgver.tar.gz"
-  'ntpd-rs.service'
-  'ntpd-rs.sysusers'
-  'ntpd-rs.tmpfiles')
+  'ntpd-rs.service')
 backup=('etc/ntpd-rs/ntp.toml')
 b2sums=('326210ccfe346a51205c9ad122a3e7910d61c06696dda50d9f389c3c642da7317a00041173add2bf59ea1585971137fbb8cd576c8f7e3f5ad6c41f8745d218ba'
-        '252cffc8dded82646dca6dec49342f8cd1343567c20b0e99295fb71476d4137c124c387a9d5ed81dc02fe4b5c13346c11c02c93c3b3c1b002cf69bd9fa7d3454'
-        'd30f4da96152294c1f2bc063691899af71a1c0e00bd1da92dc870158c4994df6c5598c7d35037b0fb7c6767ad573a0bb32ac0d2f2426a7e44fc4622ab7bd1627'
-        '0e5e1aa9380f2e118b29ab871009c470d8874cb9753f0ab638df468b45c36f02a88f07dc9a62a0e045030b0c2319c8a51e742aa5f6cc03cf61d62b2c8dc19fa1')
+        '9846b7e6e13e5912c9d3d8a65ac9720aff7cd0875d8617ed281a56e06346257e2597cabf96ad5b3014c67ca6c2733c43e896fc4be5de74b36406558f49cce38f')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -27,8 +23,6 @@ build() {
 }
 
 package() {
-  install -Dm644 ntpd-rs.sysusers "$pkgdir/usr/lib/sysusers.d/ntpd-rs.conf"
-  install -Dm644 ntpd-rs.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/ntpd-rs.conf"
   install -Dm644 ntpd-rs.service "$pkgdir/usr/lib/systemd/system/ntpd-rs.service"
 
   cd "$pkgname-$pkgver"

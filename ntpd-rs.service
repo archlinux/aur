@@ -8,8 +8,7 @@ ConditionCapability=CAP_SYS_TIME
 
 [Service]
 Type=simple
-User=ntpd-rs
-Group=ntpd-rs
+DynamicUser=yes
 Restart=on-failure
 RestartSec=2
 ExecStartPre=/usr/bin/ntp-ctl --config /etc/ntpd-rs/ntp.toml validate
@@ -17,14 +16,12 @@ ExecStart=/usr/bin/ntp-daemon --config /etc/ntpd-rs/ntp.toml
 Environment="RUST_LOG=info"
 RuntimeDirectory=ntpd-rs
 
-CapabilityBoundingSet=CAP_SYS_TIME
-AmbientCapabilities=CAP_SYS_TIME
+CapabilityBoundingSet=CAP_SYS_TIME CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_SYS_TIME CAP_NET_BIND_SERVICE
 NoNewPrivileges=yes
-PrivateTmp=yes
 PrivateDevices=yes
 ProtectHome=yes
 LockPersonality=yes
-ProtectSystem=strict
 MemoryDenyWriteExecute=yes
 ProtectProc=invisible
 ProtectControlGroups=yes
@@ -35,8 +32,6 @@ ProtectKernelTunables=yes
 RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
 RestrictNamespaces=yes
 RestrictSUIDSGID=yes
-ReadOnlyDirectories=/
-ReadWriteDirectories=/var/lib/ntpd-rs
 
 [Install]
 WantedBy=multi-user.target
