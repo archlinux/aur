@@ -1,16 +1,17 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 pkgname=linux-firmware-amlogic-ophub
-pkgver=20230725.c1f334c
+pkgver=20230822.e46ae8b
 pkgrel=1
 pkgdesc="Firmware files for Linux - for AArch64 Amlogic platform, complete set, collected by ophub"
 arch=('aarch64')
+makedepends=('git')
 url="https://github.com/ophub/firmware"
 license=('GPL2' 'GPL3' 'custom')
 conflicts=('linux-firmware')
 provides=("linux-firmware=${pkgver}")
 options=(!strip)
-source=("git+${url}.git")
+source=("git+${url}.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
