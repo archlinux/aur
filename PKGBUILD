@@ -4,7 +4,7 @@
 # Contributor: Erwin Van de Velde <erwin.vandevelde@gmail.com>
 
 pkgname=rdiff-backup
-pkgver=2.2.6
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Reverse differential backup tool, over a network or locally"
 arch=(x86_64)
@@ -42,7 +42,7 @@ source=(
   "rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash.tar.gz::https://github.com/rdiff-backup/rdiff-backup-filesrepo/archive/$_rdiff_backup_filesrepo_hash.tar.gz"
 )
 sha256sums=(
-  '5c7aeda0e37e1c0720a18831cb612d57802319118759af2896ae0f7308c8d629'
+  '2e0039ea1fbfbdf60f5782e79a61bfaa08d50991596b5fee213a4b29eab271f3'
   '96395a278b0b2b23a2005449ab50a771cdd168683e5942bfcfa3d04f5980c9f2'
 )
 
