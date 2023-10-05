@@ -7,7 +7,7 @@ pkgver=5.2228
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Application to flash your MediaTek (MTK) SmartPhone.'
-url="http://${_pkgname}s.com/category/linux"
+url="https://${_pkgname}s.com/category/linux"
 _url="${url%/*/*}"
 license=('unknown')
 conflicts=("$pkgname-bin")
@@ -36,10 +36,11 @@ prepare(){
 package() {
 
     # Simplificar nombre del directorio de descompresión de la herramienta spflashtool5.
-    local -r dirspflash="$srcdir/SP_Flash_Tool_v${pkgver}_Linux/"
+    local -r dirspflash="SP_Flash_Tool_v${pkgver}_Linux/"
 
     # Sustituir la URL en Credits.txt porque se requiere la de Linux, no la de Windows.
-    sed -Ei 's|('"$_url"'/category/)windows|\1linux|g' "$dirspflash/Credits.txt"
+    sed -Ei 's|(^'"${_url}"'/category/)windows$|\1linux\n|g' "$dirspflash/Credits.txt"
+
 
     # Permisos de ejecución.
     chmod +x $dirspflash/flash_tool{,.sh}
