@@ -3,7 +3,7 @@
 pkgname=tiawa-base
 pkgver=0.3
 pkgrel=1
-pkgdesc='base packages for Tiawa'
+pkgdesc='Tiawa base packages'
 arch=('any')
 url='https://gitlab.com/tiawa/tiawa-base'
 license=('MIT')
