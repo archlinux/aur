@@ -1,0 +1,11 @@
+diff --git a/Rmixmod/src/Makevars.in b/Rmixmod/src/Makevars.in
+index 7eb53d5..fa9730b 100644
+--- a/Rmixmod/src/Makevars.in
++++ b/Rmixmod/src/Makevars.in
+@@ -35,5 +35,5 @@ $(SHLIB): mixmod
+ 
+ mixmod:
+ 	(cd $(MIXMODDIR) && $(MAKE) -f mixmod_r.mk)
+-	(if test ! -z $(RMIXMOD_XML) ; then cd $(IOSTREAMDIR) && $(MAKE) -f mixmod_iostream_r.mk ; fi)
++	(if test ! -z $(RMIXMOD_XML) ; then cd $(IOSTREAMDIR) && $(MAKE) LIBXMLXX_CFLAGS="$(LIBXMLXX_CFLAGS)" -f mixmod_iostream_r.mk ; fi)
+ 	$(RANLIB) $(MIXMODLIB)

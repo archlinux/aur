@@ -1,15 +1,19 @@
 pkgbase = r-rmixmod
 	pkgdesc = Classification with Mixture Modelling
 	pkgver = 2.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=Rmixmod
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL3
+	makedepends = r-rcppeigen
+	depends = glibmm
+	depends = libxml++2.6
 	depends = r-rcpp
-	depends = r-rcppeigen
-	depends = make
 	source = https://cran.r-project.org/src/contrib/Rmixmod_2.1.9.tar.gz
+	source = fix-libxmlxx.patch
+	md5sums = 6e02da6f0e72ace0f2c6c9d761c6d67c
+	md5sums = 98c555181a4b06b18ad6565b22a43dbe
 	sha256sums = d87eeb1de611ce0e421141a3b3d11cae819d327fbc510314a820ddf982a09453
+	sha256sums = 2849f3da407a8d3fc6d081274d66af67f63879e9976fa1997bebf07112147cf5
 
 pkgname = r-rmixmod
