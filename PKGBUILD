@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=bicep
-pkgver=0.21.1
+pkgver=0.22.6
 pkgrel=1
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(dotnet-sdk)
 checkdepends=(git)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('03dabaa0bbfb8056464f59184179621e68bf0684132a9081c52f19d1c046da18')
+sha256sums=('3382080e8fe44580532dacd417462927a44bdd74fac39994b045aefa7a19eeff')
 
 _archive="$pkgname-$pkgver"
 
