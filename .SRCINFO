@@ -1,12 +1,12 @@
 pkgbase = zfs-dkms-helper
 	pkgdesc = meta package to add version requirement of linux/linux-headers packages against latest ZFS stable release
-	pkgver = 2.1.12
+	pkgver = 2.1.13
 	pkgrel = 1
 	arch = any
 	license = BSD3
 	depends = zfs-dkms
-	depends = linux<6.4.99
-	depends = linux-headers<6.4.99
+	depends = linux<6.5.99
+	depends = linux-headers<6.5.99
 	options = !debug
 
 pkgname = zfs-dkms-helper

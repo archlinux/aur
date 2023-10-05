@@ -1,5 +1,5 @@
 pkgname=zfs-dkms-helper
-pkgver=2.1.12
+pkgver=2.1.13
 pkgrel=1
 pkgdesc="meta package to add version requirement of linux/linux-headers packages against latest ZFS stable release"
 arch=('any')
@@ -8,6 +8,6 @@ options=('!debug')
 
 depends=(
     'zfs-dkms'
-    'linux<6.4.99'
-    'linux-headers<6.4.99'
+    'linux<6.5.99'
+    'linux-headers<6.5.99'
 )
