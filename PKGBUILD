@@ -12,6 +12,8 @@ depends=(
 	'btop'
 	'eza'
 	'git'
+	'man-db'
+	'man-pages'
 	'nano'
 	'nftables'
 	'noto-fonts-emoji'
