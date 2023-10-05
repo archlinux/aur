@@ -18,8 +18,8 @@ pkgname=glibc-widevine
 provides=("glibc=2.35")
 conflicts=("glibc")
 pkgver=2.35
-_commit=28ea43f8d64f0dd1f2de75525157730e1532e600
-pkgrel=5.2
+_commit=c84018a05aec80f5ee6f682db0da1130b0196aef
+pkgrel=5.3
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
@@ -32,7 +32,7 @@ source=(git+https://sourceware.org/git/glibc.git#commit=${_commit}
         disable-clone3.diff
         0001-sys-libs-glibc-add-support-for-SHT_RELR-sections.patch
         0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch
-        0003-glibc-2.35-make-4.4-MAKEFLAGS.patch
+        0003-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch
        )
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
@@ -45,7 +45,7 @@ b2sums=('SKIP'
         'edef5f724f68ea95c6b0127bd13a10245f548afc381b2d0a6d1d06ee9f87b7dd89c6becd35d5ae722bf838594eb870a747f67f07f46e7d63f8c8d1a43cce4a52'
         '7da85639771d4972e913b0458906bbccf1b30143940669e1b58b0ceab2e8dffc3a6c4b641a842e63b49a9b7ff01dddc3f1296d35ab505f67b6e625e208d01a8c'
         'b10f7479a283fdb1916f72e9d8cc9304e068d87f3805a9d2c51e748c79c9547735405e1e86a438ffe87d5ba0adece555740c221fe3bf84990c21e2737d3bb197'
-        '7b5d512df13ba1747a5a099bc7b9ff7d44ba94176c18d65fe37ab0145214f43949597bdffb3ee8c46954f7cedd0d1e708a237ccdb491a163493f5b43eac7bdda')
+        'e7467882e2f9faf66d1cce60bc824ff496b7c12a2ea6cd54038818d92936cea0ccc5ca8ee29d126c0737603837c9c09145e110934e4b2f3230b32e31cd2c315e')
 
 prepare() {
   mkdir -p glibc-build
@@ -65,8 +65,8 @@ prepare() {
   # dl-tls: libwidevinecdm 64Byte alignment
   patch -p1 -i "$srcdir"/0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch
 
-  # patch for make-4.4 in combination with older glibc
-  patch -p1 -i "$srcdir"/0003-glibc-2.35-make-4.4-MAKEFLAGS.patch
+  # nscd: Do not rebuild getaddrinfo (bug 30709)
+  patch -p1 -i "$srcdir"/0003-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch
 }
 
 build() {
