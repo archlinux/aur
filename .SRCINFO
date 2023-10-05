@@ -1,7 +1,7 @@
 pkgbase = javafx-scenebuilder
 	pkgdesc = Scene Builder is an open source tool that allows for drag and drop design of JavaFX user interfaces.
 	pkgver = 21.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gluonhq.com/products/scene-builder/
 	arch = x86_64
 	arch = i686
