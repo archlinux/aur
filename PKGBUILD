@@ -3,7 +3,7 @@
 pkgname=python-pdftopng
 _pkgname=pdftopng
 pkgver=0.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A PDF to PNG conversion library (based on pdftoppm from poppler)"
 arch=('x86_64')
 url="https://github.com/vinayak-mehta/pdftopng"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('poppler' 'python-click')
 makedepends=('pybind11' 'python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/vinayak-mehta/$_pkgname/archive/v$pkgver.tar.gz"
-        "https://github.com/freedesktop/poppler/raw/fcdff7bb19e2ac0fab6505f17e0c18c8faa86323/utils/numberofcharacters.h"
+        "https://gitlab.freedesktop.org/poppler/poppler/-/raw/48914b5d5fc12ae96d4f3ac3fc9c6fd08a1d6496/utils/numberofcharacters.h"
         "setOverprintPreview.patch"
         "c++17.patch")
 sha256sums=('2b0cda9b7e151d67a182bb753138309c3a6b035939577c5527a34a2c1ef96b64'
