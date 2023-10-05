@@ -1,0 +1,20 @@
+pkgbase = tiawa-de-base
+	pkgdesc = Tiawa desktop environment base
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/tiawa/tiawa-de-base
+	arch = any
+	license = MIT
+	depends = adobe-source-code-pro-fonts
+	depends = adobe-source-sans-fonts
+	depends = adobe-source-serif-fonts
+	depends = brightnessctl
+	depends = ddcutil
+	depends = drawing
+	depends = firefox
+	depends = kitty
+	depends = mate-polkit
+	depends = playerctl
+	depends = zathura
+
+pkgname = tiawa-de-base
