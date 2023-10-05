@@ -1,11 +1,11 @@
 _pkgname=Siril
-_pkgver=1.0.6
+_pkgver=1.2.0
 _appimage="${_pkgname}-${_pkgver}-x86_64.AppImage"
 _desktopfile="org.free_astro.siril.desktop"
 
 pkgname=siril-appimage
-pkgver='1.0.6'
-pkgrel=2
+pkgver='1.2.0'
+pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone). Appimage version."
 arch=('x86_64')
 license=('GPL3')
@@ -20,7 +20,7 @@ optdepends=('libpng: PNG import'
             'libcurl-gnutls: check for updates'
             'gnuplot: photometry graphs creation')
 source=("${_appimage}::https://free-astro.org/download/${_appimage}")
-sha256sums=('2d97a05f250984bc27f7f38dacc518cd19c5dfbc55a1cd13a1f3792736dc3958')
+sha256sums=('43460ac640b2901205114f16d3be7ea39484bef811c9d78ff1220b09127711e4')
 
 prepare() {
     chmod +x ${_appimage}
