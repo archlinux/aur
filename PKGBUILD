@@ -2,7 +2,7 @@
 _base=mouse-actions
 pkgname=$_base-gui-bin
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Use your mouse to execute commands, for X11 and Wayland. You can use gestures, hot corners and modifier keys. Mouse-actions is a mix between Easystroke and Compiz edge commands. This is the GUI version but you can still use CLI!"
 arch=('x86_64')
 url="https://github.com/jersou/$_base"
