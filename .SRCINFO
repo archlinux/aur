@@ -1,0 +1,19 @@
+pkgbase = mdformat-tables-git
+	pkgver = v0.4.1.r0.c169887
+	pkgrel = 1
+	url = https://github.com/executablebooks/mdformat-tables
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-flit
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = mdformat
+	provides = mdformat-tables
+	conflicts = mdformat-tables
+	source = mdformat-tables::git+https://github.com/executablebooks/mdformat-tables.git
+	sha256sums = SKIP
+
+pkgname = mdformat-tables-git
