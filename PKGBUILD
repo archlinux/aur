@@ -13,6 +13,7 @@ depends=(
 )
 optdepends=(
 	'jq: JSON processing'
+	'namcap: Pacman package analysis'
 	'podman: container management'
 	'podman-compose: container management'
 	'python-pipenv: Python package management'

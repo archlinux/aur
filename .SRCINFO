@@ -8,6 +8,7 @@ pkgbase = tiawa-devenv
 	depends = git-lfs
 	depends = python
 	optdepends = jq: JSON processing
+	optdepends = namcap: Pacman package analysis
 	optdepends = podman: container management
 	optdepends = podman-compose: container management
 	optdepends = python-pipenv: Python package management
