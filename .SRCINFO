@@ -1,0 +1,22 @@
+pkgbase = mdformat-gfm-git
+	pkgdesc = Mdformat plugin for GitHub-Flavored Markdown compatibility
+	pkgver = 0.3.5.r4.735781e
+	pkgrel = 1
+	url = https://github.com/hukkin/mdformat-gfm
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-flit
+	makedepends = python-installer
+	depends = mdformat
+	depends = python-mdit_py_plugins
+	depends = python-markdown-it-py
+	depends = mdformat-tables
+	provides = mdformat-gfm
+	conflicts = mdformat-gfm
+	source = mdformat-gfm::git+https://github.com/hukkin/mdformat-gfm.git
+	sha256sums = SKIP
+
+pkgname = mdformat-gfm-git
