@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=terrascan
-pkgver=1.18.1
+pkgver=1.18.3
 pkgrel=1
 pkgdesc="Detect compliance and security violations across Infrastructure as Code"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('terrascan')
 license=('Apache-2')
 makedepends=('go>=1.19' 'git' 'gzip' 'tar' 'gcc')
 source=("https://github.com/accurics/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6539b5c9cd3b6498deaa7d9f714ead3453f6ed7a510bef82a70b146fe5a3d97d')
+sha256sums=('214f96d009d2aed4e589b456e469c7ebc2225329c124a082f05d961e481e158b')
 
 build() {
 	cd "${pkgname}-${pkgver}"
