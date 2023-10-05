@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=snitch
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Lightweight C++20 testing framework"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("Boost")
 depends=("gcc-libs")
 makedepends=("cmake" "python")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cschreib/snitch/archive/v${pkgver}.tar.gz")
-b2sums=("ad69fef7c15e8b2f65c88aeba3817f1129b21e3e1b83e29f3d042fd92009aa643efd7b3d222753fb489ded747fcfa3011c39f6fd69fa5e1c55382a137fb3fbcf")
+b2sums=("f77bfe38a498ffb502acd275aec68b347a90e684331f7dfa8329a1cc669512c23d92ef7674b30da9f9d56503efff1affbe77b35b8e64aa821ccbc98d178d3e52")
 
 build() {
   cmake -B "build_shared/" -S "${pkgname}-${pkgver}" \
