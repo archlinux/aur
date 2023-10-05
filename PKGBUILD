@@ -6,7 +6,7 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.30
+pkgver=0.0.31
 pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'discord-launcher.sh'
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses')
-sha512sums=('2da18ea98c429345b97e6168cebf8b3422f1f1d8a60e5e2ab0154732cc033774a75b94f85e5b834acbdf7362c13f3707bb767ad6c19290fc39a2a10997aff554'
+sha512sums=('596f0e2271e61798594d97a85728eea2bfa851db7f1e8b7fa65e1631dfeb347fa8d6087556854c0e775b88678a03b8ece97d0c1293b156e7ea908f6570645248'
             'b246e5be3b0f25d489aa208f493cfd0adfab0ace0d7fe49444be9434f11c0ad75c3a14bea70f92f94874e2d86aafd25e60472887935ab10dfec41b43f861dffc'
             SKIP
             SKIP)
