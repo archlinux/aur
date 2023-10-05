@@ -1,6 +1,6 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=material-companion
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='MaterialCompanion'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('material-companion')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MaterialFoundry/MaterialCompanion/archive/v${pkgver}.tar.gz"
 		material-companion.desktop
 		material-companion)
-sha256sums=('32c6e8c51bab39061b957c51d3ceafc85890cbb7424de5e8158eda6d6e91cded'
+sha256sums=('4b2a442defe420e1bea12c1b608a69f1113aaa08fb99176896c0e659b11ba36e'
             'ffd52de96b51e26aef5044413c311d19f829514f5463342eebcf3fdcef03f41d'
             '1ccb8679f88551b552c08a8cf11c24fa46d80d9fd6f890722861b59bce210387')
 prepare() {
