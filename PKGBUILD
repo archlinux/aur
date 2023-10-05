@@ -2,7 +2,7 @@
 # Contributor: Bart Louwers <sleeping@emeel.net>
 
 pkgname=ut
-pkgver=1.1.9
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="UT: C++20 μ(micro)/Unit Testing Framework"
 arch=("any")
@@ -10,13 +10,15 @@ url="https://boost-ext.github.io/ut"
 license=("Boost")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/boost-ext/ut/archive/v${pkgver}.tar.gz")
-b2sums=("9439d4f9466c76f6bf225d202a531dfd43585d2d13e53ae4a728a7403c62efccf7a1fb772ba4279823e22ec0bba9442df6330f0963d6cc57cb4328c8e2fbe9c3")
+b2sums=("fde257f7553163028a4959925965d3ec4c45babb681dec454209352ede255fc250b146a93c21a954d877d163ebd47b12000ae03b5e20cf9c1a9046a274935b22")
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
+    -D BOOST_UT_ALLOW_CPM_USE:BOOL="OFF" \
     -D BOOST_UT_BUILD_BENCHMARKS:BOOL="OFF" \
     -D BOOST_UT_BUILD_EXAMPLES:BOOL="OFF" \
     -D BOOST_UT_BUILD_TESTS:BOOL="OFF" \
+    -D BOOST_UT_USE_WARNINGS_AS_ERORS:BOOL="OFF" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 
