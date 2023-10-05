@@ -1,15 +1,15 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
-_electron_version=19
+_electron_version=24
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=1178.7fca992
+pkgver=1418.35b06c1
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('i686' 'x86_64')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' "electron$_electron_version")
+depends=('gtk3' 'http-parser' 'libappindicator-gtk3' 'libnotify' 'libxcrypt-compat' 'libxss' "electron$_electron_version")
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
@@ -45,7 +45,10 @@ prepare() {
 build() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
+    _node_version=$(jq -r '.engines.node' package.json)
     nvm use "$_node_version"
+    # 'husky install' doesn't work outside of a git repository
+    [[ -d .git ]] || git init
     npm install --no-save --no-audit --no-progress --no-fund
     # electron-builder only generates /usr/share/* assets for target package
     # types 'apk', 'deb', 'freebsd', 'p5p', 'pacman', 'rpm' and 'sh', so build a
