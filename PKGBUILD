@@ -1,22 +1,24 @@
-# Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer : Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
+# Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
+# Maintainer : Sergey Kostrukov <sergey at kostrukov dot com>
+# Contributor : Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
 # Contributor : Marcio Silva <marcionps at gmail dot com>
 
 _pkgname=todoist
 
 pkgname="${_pkgname}"-appimage
-pkgver=8.8.0
-pkgrel=2
+pkgver=8.8.2
+pkgrel=1
 pkgdesc="The to-do list to organize work & life."
 arch=('x86_64')
 url="https://todoist.com/"
 license=('custom:Commercial')
-depends=('zlib' 'fuse2' 'appimagelauncher')
+depends=('zlib' 'fuse2')
+optdepends=('appimagelauncher: desktop integration')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://electron-dl.todoist.com/linux/Todoist-linux-x86_64-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('35aebeed8a72c468c42ee677ad67aba11b17bb32f55aee56b1f266d73e721d71')
+sha256sums_x86_64=('dd22d421a15f1a2e79d21ef62a257ce64db7d66a5f55d89095123e2a16224888')
 
 prepare() {
     chmod +x "${_appimage}"
