@@ -2,7 +2,7 @@
 
 pkgname=pkgx
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Run Anything'
 arch=('x86_64')
 url='https://pkgx.sh'
@@ -19,6 +19,17 @@ source=(
 sha512sums=(
   'c5846e9f79c6e1e3e73dc0568f0f98f0d37c153c0c6469596ba715dedc70812cca400a3d64ccbb4cb7c0dde448bf57c764d49fcec8d764080fde15ed6f3dc2ee'
 )
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  # See also:
+  # https://github.com/pkgxdev/pkgx/blob/b25a84479b82daaa61f064306ae7ea8e56249587/.github/workflows/cd.yml#L33-L34
+  cat > src/modes/version.ts << EOF
+    export default function() {
+      return '${pkgver}'
+    }
+EOF
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
