@@ -2,7 +2,7 @@
 _base=MicroStructPy
 pkgname=python-${_base,,}
 pkgdesc="Microstructure modeling, mesh generation, analysis, and visualization"
-pkgver=1.5.8
+pkgver=1.5.9
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/kip-hart/${_base}"
@@ -12,7 +12,7 @@ depends=(python-aabbtree pybind11 python-lsq-ellipse python-matplotlib python-me
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9b25d7edd953eaf2457457d3fcd12835e585bca64fd57eaebc6c50702f3c9481e2ed741b8242aece217f8cc811fa0164f027ac84d9fd80d99d126e96199f260e')
+sha512sums=('007af18687c7f8f4839d7ca6bbf1b922c51968cf1578f80acdff95203875a48a1b0702a113b600c08fc362a64701248320d04485c0b6ab79d95e31be7f1148d3')
 
 build() {
   cd ${_base}-${pkgver}
