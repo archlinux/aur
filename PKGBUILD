@@ -1,20 +1,20 @@
 # Maintainer: Josh Cass <aur@darkstar.mozmail.com>
 pkgname=quarkuscli-bin
-pkgver=3.1.0
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='Create projects, manage extensions and perform build and development tasks for Quarkus, the Kubernetes Native Java stack tailored for OpenJDK HotSpot and GraalVM.'
 url='https://github.com/quarkusio/quarkus'
-source_x86_64=("https://github.com/quarkusio/quarkus/releases/download/$pkgver.Final/quarkus-cli-$pkgver.Final.tar.gz")
+source_x86_64=("https://github.com/quarkusio/quarkus/releases/download/$pkgver/quarkus-cli-$pkgver.tar.gz")
 arch=('x86_64')
 license=('Apache')
-depends=()
+depends=('java-runtime')
 optdepends=()
 conflicts=()
 provides=('quarkus')
-sha256sums_x86_64=('528228677ba93c3d57ee60acfd3bee4153bd5d5c939c34a3e315763a21d458e8')
+sha256sums_x86_64=('754f805aed00facbc89be5f5ff0b4674d145d4c501d76a05efb1133cfce0a908')
 
 package() {
-  install -Dm0755 "${srcdir}/quarkus-cli-$pkgver.Final/bin/quarkus" "${pkgdir}/usr/bin/quarkus"
-  install -Dm0644 "${srcdir}/quarkus-cli-$pkgver.Final/bin/quarkus.bat" "${pkgdir}/usr/bin/quarkus.bat"
-  install -Dm0644 "${srcdir}/quarkus-cli-$pkgver.Final/lib/quarkus-cli-$pkgver.Final-runner.jar" "${pkgdir}/usr/lib/quarkus-cli-$pkgver.Final-runner.jar"
+  install -Dm0755 "${srcdir}/quarkus-cli-$pkgver/bin/quarkus" "${pkgdir}/usr/bin/quarkus"
+  install -Dm0644 "${srcdir}/quarkus-cli-$pkgver/bin/quarkus.bat" "${pkgdir}/usr/bin/quarkus.bat"
+  install -Dm0644 "${srcdir}/quarkus-cli-$pkgver/lib/quarkus-cli-$pkgver-runner.jar" "${pkgdir}/usr/lib/quarkus-cli-$pkgver-runner.jar"
 }
