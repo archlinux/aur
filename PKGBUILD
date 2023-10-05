@@ -15,7 +15,7 @@ source=(
 arch=('x86_64')
 depends=('cnquery')
 
-sha256sums=('7f3301cbdc21fae4c63fd5e97f10dceb65c57ef9e2c3a995073fb12cda3d342a'
+sha256sums=('5c499e0de51e1fbc1cc7a172488747931fb3b5dedf1a47e5e56c8455b8b4bf95'
             )
 
 

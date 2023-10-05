@@ -7,6 +7,6 @@ pkgbase = cnspec
 	license = MPL 2.0
 	depends = cnquery
 	source = https://releases.mondoo.com/cnspec/9.0.0/cnspec_9.0.0_linux_amd64.tar.gz
-	sha256sums = 7f3301cbdc21fae4c63fd5e97f10dceb65c57ef9e2c3a995073fb12cda3d342a
+	sha256sums = 5c499e0de51e1fbc1cc7a172488747931fb3b5dedf1a47e5e56c8455b8b4bf95
 
 pkgname = cnspec
