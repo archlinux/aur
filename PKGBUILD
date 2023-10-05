@@ -1,14 +1,15 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
+_tag=nym-binaries-v2023.1-milka
 pkgname=nym
-pkgver=1.1.26
+pkgver=2023.1
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
 url='https://nymtech.net/'
 license=('Apache-2.0' 'MIT' 'CC0')
 depends=('openssl')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'libgit2')
 source=(
     'nym.sysusers'
     'nym.tmpfiles'
@@ -25,7 +26,7 @@ install='nym.install'
 
 prepare() {
     # NOTE: Build process requires cloned git repo
-    git clone https://github.com/nymtech/nym.git -b nym-binaries-v$pkgver
+    git clone https://github.com/nymtech/nym.git -b $_tag
     cd nym
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
