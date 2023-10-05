@@ -12,6 +12,7 @@ _url="${url%/*/*}"
 license=('unknown')
 conflicts=("$pkgname-bin")
 makedepends=('gendesk' 'unzip')
+depends=('rsync')
 source=("$_url/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip")
 sha256sums=('18b11eed341fd57feb7fbc58a7b8eb93429bacc7d25a993878af8a0b6e98df10')  # 'makepkg -g' to generate it.
 
@@ -41,13 +42,11 @@ package() {
     # Sustituir la URL en Credits.txt porque se requiere la de Linux, no la de Windows.
     sed -Ei 's|(^'"${_url}"'/category/)windows$|\1linux\n|g' "$dirspflash/Credits.txt"
 
-
     # Permisos de ejecución.
     chmod +x $dirspflash/flash_tool{,.sh}
 
     # Cree el directorio de destino y copia en él, el contenido de spflashtool5.
-    mkdir -p "$pkgdir/opt/$pkgname"
-    cp -r "$dirspflash"* "$pkgdir/opt/$pkgname/"
+    rsync -a "$dirspflash" --mkpath "$pkgdir/opt/$pkgname/"
 
     # Script de ejecución.
     install -Dvm755 <(echo -e '#!/usr/bin/env bash
@@ -70,6 +69,9 @@ export LD_LIBRARY_PATH
 # makepkg --printsrcinfo > .SRCINFO
 
 ## References.
+# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=densify
+# https://wiki.archlinux.org/title/Desktop_entries#How_to_use
+# https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=spflashtool-bin
 # https://spflashtools.com/category/linux
 # https://androidmtk.com/flash-stock-rom-using-smart-phone-flash-tool
