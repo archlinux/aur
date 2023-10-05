@@ -9,9 +9,12 @@ pkgbase = python-mplug
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.6.0
-	depends = python-gitpython
-	depends = python-requests
-	depends = python-importlib-metadata
+	depends = python<4.0.0
+	depends = python-gitpython>=3.1.7
+	depends = python-gitpython<4.0.0
+	depends = python-requests>=2.24.0
+	depends = python-requests<3.0.0
+	depends = python-importlib-metadata>=1.7.0
 	noextract = mplug-0.2.1-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/m/mplug/mplug-0.2.1-py3-none-any.whl
 	sha256sums = 86af8db456b9da9eddb58b00f20470d293b32a47b6bf4e58408917d5b4a5b8e3
