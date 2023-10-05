@@ -1,7 +1,7 @@
 # Maintainer: Chau Duong <duongdominhchau@gmail.com>
 _pkgname=mdformat-admon
 pkgname="${_pkgname}-git"
-pkgver=1.0.2
+pkgver=v1.0.2.r1.282ca53
 pkgrel=1
 pkgdesc="An mdformat plugin for admonitions."
 arch=(any)
@@ -15,8 +15,15 @@ makedepends=(
     python-flit
     python-installer
 )
-source=("${_pkgname}::git+https://github.com/KyleKing/mdformat-admon.git")
+source=("${_pkgname}::git+${url}.git")
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 sha256sums=(SKIP)
+
+pkgver() {
+	cd "$_pkgname"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 build() {
 	cd "$_pkgname"
