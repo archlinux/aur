@@ -1,6 +1,6 @@
 pkgname=wiki-loves-monuments-wallpapers
 pkgver=2022
-pkgrel=1
+pkgrel=2
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop"
 url="https://www.wikilovesmonuments.org"
 arch=('any')
@@ -9,16 +9,6 @@ depends=()
 makedepends=('imagemagick')
 source=(
     'wiki-loves-monuments-wallpapers.xml'
-    'image-20991114.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b3/Tomb_of_Safdarjung%2C_New_Delhi.jpg'
-    'image-21487842.jpg::https://upload.wikimedia.org/wikipedia/commons/1/19/Acueducto_de_Segovia_01.jpg'
-    'image-21559786.jpg::https://upload.wikimedia.org/wikipedia/commons/9/97/Maintenon_-_Chateau_03.jpg'
-    'image-21788290.jpg::https://upload.wikimedia.org/wikipedia/commons/f/fd/Teatro_Comunale.jpg'
-    'image-21376194.jpg::https://upload.wikimedia.org/wikipedia/commons/5/50/Rear_side_of_Tajmahal.jpg'
-    'image-21690293.jpg::https://upload.wikimedia.org/wikipedia/commons/5/57/Basilica_of_Our_Lady_of_the_Pillar_and_the_Ebro_River%2C_Zaragoza.jpg'
-    'image-21526260.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7b/Cementerio_Argentino_de_Puerto_Darwin.jpg'
-    'image-21194681.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3e/The_windmills_of_Kinderdijk.JPG'
-    'image-21647920.jpg::https://upload.wikimedia.org/wikipedia/commons/3/35/%28zetem%29_Komorniki_gmina_Polkowice_-_Zesp%C3%B3%C5%82_dworsko-folwarczny.jpg'
-    'image-21733243.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c1/Battistero_all%27interno_del_Complesso_Monumentale_di_San_Pietro.jpg'
     'image-28778252.jpg::https://upload.wikimedia.org/wikipedia/commons/1/18/RhB_Ge_4-4_II_Wiesener_Viadukt.jpg'
     'image-28191648.jpg::https://upload.wikimedia.org/wikipedia/commons/2/2c/%E9%B9%BF%E6%B8%AF%E6%96%BD%E9%80%B2%E7%9B%8A%E5%8F%A4%E5%8E%9D.jpg'
     'image-28750104.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6f/Egyetemi_K%C3%B6nyvt%C3%A1r4.JPG'
@@ -138,17 +128,7 @@ source=(
     'image-123969783.jpg::https://upload.wikimedia.org/wikipedia/commons/5/57/Mosteiro_da_Serra_do_Pilar_%281%29.jpg'
 )
 sha1sums=(
-    '1595dd9e66944036a387d19934f8097c002bebbf'
-    'f33f3cdd4d3c2485bc119ff4a72c54d260c3668d'
-    '9f46d71d43317e3a84776c23af0e4c960f06aff0'
-    '2d78387c4a6c49c5f335337e9f160e66ab891f46'
-    '946b86c4cb0b66929b9e6d316232df46998e018a'
-    'a1758176af9eb6da9a65e53ffa09d9871e8645ab'
-    '8015c37e7bd96f1b37ad6481c24d25d6bd2c9d84'
-    '73e302b7a7b47345906bb633b72909eff9f79b24'
-    'f9dc793ff7cabcc00f40a94a06d21e37d5ad5cd8'
-    '28961b5d2809f8ce918e652a7a32ef9fb4a05e07'
-    '4411d17d9ef5b44bcbab40f0283a683de02c9958'
+    'fa3f287d98abac5fd3d0e9e0140e53ab38c248d3'
     '446f35f73cab88628be827ea4d459c8d3e9451ff'
     'f1f4b6899cc447ae8d744459171c459535265b85'
     'a6ede93e8a9d99f5fc342828d55acb2141de58e1'
@@ -268,18 +248,17 @@ sha1sums=(
     '7f2bd737a0bc67f6a6c29bf1fa843faf51f02ad7'
 )
 _index=(
-    104 84 70 57 45 32 25 11 1 105 93 71 58 46 33 26 12 2 116 106 94 85 72 59 47
-    34 13 117 107 95 86 73 48 35 27 14 3 108 96 87 74 60 36 4 118 97 75 61 49 37
-    28 15 5 119 109 88 76 62 50 38 29 16 6 120 110 98 77 63 39 17 7 121 99 78 64
-    51 40 30 18 122 111 79 65 52 31 19 123 112 100 89 66 41 20 8 124 113 90 80
-    67 42 21 9 125 114 91 81 68 53 43 22 126 101 92 82 69 54 44 23 127 115 102
-    83 55 24 10 103 56
+    106 107 108 109 110 111 112 113 114 115 116 117 94 74 60 47 35 22 15 1 95 83
+    61 48 36 23 16 2 96 84 75 62 49 37 24 3 97 85 76 63 38 25 17 4 98 86 77 64
+    50 26 87 65 51 39 27 18 5 99 78 66 52 40 28 19 6 100 88 67 53 29 7 89 68 54
+    41 30 20 8 101 69 55 42 21 9 102 90 79 56 31 10 103 80 70 57 32 11 104 81 71
+    58 43 33 12 91 82 72 59 44 34 13 105 92 73 45 14 93 46
 )
 _ultrawide=(
-    0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 1 1 0 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 1 1 0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0
+    1 1 0 1 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0
+    0 0 0
 )
 
 prepare() {
@@ -291,7 +270,7 @@ prepare() {
         image=${source[j]%%::*}
         echo "-> ($((i + 1))/$count) $image" >&2
         file=$srcdir/$pkgname/$image
-        if [ -f "$file" ]; then
+        if [[ -f $file ]]; then
             continue
         fi
         convert "$srcdir/$image" \
