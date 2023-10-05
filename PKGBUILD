@@ -2,7 +2,7 @@
 _base=islpy
 pkgname=python-${_base}
 pkgdesc="Python wrapper for isl, an integer set library"
-pkgver=2023.2.2
+pkgver=2023.2.3
 pkgrel=1
 arch=(x86_64)
 url="https://documen.tician.de/${_base}"
