@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
 pkgver=2022
-pkgrel=2
+pkgrel=3
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -9,19 +9,6 @@ depends=()
 makedepends=('imagemagick')
 source=(
     'wiki-loves-earth-wallpapers.xml'
-    'image-32652128.jpg::https://upload.wikimedia.org/wikipedia/commons/2/28/%D0%9A%D0%B0%D1%80%D0%BF%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_05.jpg'
-    'image-33032133.jpg::https://upload.wikimedia.org/wikipedia/commons/8/87/Amanhecer_no_Hercules_--.jpg'
-    'image-33097376.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e6/Hommik_Mukri_rabas.jpg'
-    'image-32897997.jpg::https://upload.wikimedia.org/wikipedia/commons/8/8e/Na_Golem_Krchin.jpg'
-    'image-32508241.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c8/%D0%9F%D1%96%D0%B2%D0%BE%D1%81%D1%82%D1%80%D1%96%D0%B2.jpg'
-    'image-32499968.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a5/%D0%A0%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2%D0%B0_%D0%BF%D0%B0%D0%BB%D1%96%D1%82%D1%80%D0%B0.jpg'
-    'image-33388754.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d0/Ha%C3%AFzer_%C3%A0_Bouira.jpg'
-    'image-33388751.jpg::https://upload.wikimedia.org/wikipedia/commons/e/eb/Cascade_de_A%C3%AFn_Legradj_%C3%A0_Bordj_Bou_Arreredj.jpg'
-    'image-33694656.jpg::https://upload.wikimedia.org/wikipedia/commons/2/26/%D0%97%D0%B8%D0%BC%D0%BE%D0%B2%D0%B8%D0%B9_%D0%9A%D1%83%D0%BA%D1%83%D0%BB%D1%8C.JPG'
-    'image-32503435.jpg::https://upload.wikimedia.org/wikipedia/commons/1/1b/NDO%C3%96_490_Rosenau_aHP_Rotbuche_Zaglbaueralm_Stamm.jpg'
-    'image-32881191.jpg::https://upload.wikimedia.org/wikipedia/commons/0/04/Aiguamolls_de_l%27Empord%C3%A0_2.jpg'
-    'image-33290221.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bf/Brandganzen_Ezumakeeg.JPG'
-    'image-33388758.jpg::https://upload.wikimedia.org/wikipedia/commons/0/04/Main_du_juive_%C3%A0_Tikjda.jpg'
     'image-40526867.jpg::https://upload.wikimedia.org/wikipedia/commons/5/53/Shangrila_Resorts.jpg'
     'image-40071439.jpg::https://upload.wikimedia.org/wikipedia/commons/9/9f/Steinbock_14962940265.jpg'
     'image-40230459.jpg::https://upload.wikimedia.org/wikipedia/commons/4/46/Spinne_Bratental_Ps.jpg'
@@ -135,22 +122,12 @@ source=(
     'image-118639446.jpg::https://upload.wikimedia.org/wikipedia/commons/2/20/Mediterranean_chameleon.jpg'
     'image-121279438.jpg::https://upload.wikimedia.org/wikipedia/commons/5/55/Iberian_Ibex_in_the_snow.jpg'
     'image-119881117.jpg::https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_Kangaroos_at_Sturt_National_Park_NSW.jpg'
+    'image-118466321.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b0/Windkraftanlagen_in_Ostfriesland.jpg'
+    'image-118521943.jpg::https://upload.wikimedia.org/wikipedia/commons/d/de/DSC6600_Rheinaue_Bremengrund_Schwan_am_Rhein.jpg'
+    'image-118224154.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3a/Natur_und_Industrie.jpg'
 )
 sha1sums=(
-    '4da650ee903b913f3c9a0d00e4b553f37b4af4f0'
-    'e58397f4cee346f2beeabc95d8902eba1db691a9'
-    '1246b2cffb3709013d410024a322a8ff63760e99'
-    '7d08f021a40eb746e137ab6efdf81a68c1737fee'
-    'abeb3d5451ab18603c9cd55ee9b232e54e642d2e'
-    'fd06e10ac50b7999c411b7d5bf4265a35aa9ad5a'
-    'd189597c5f094e13617914ef26fb3697f6c07e83'
-    '5e59420adc6948b4d22a810bfc8e1653d25e1c31'
-    '945cd2e928139d1b758f42c8c58a65d439b2df01'
-    '71a26c2de875ca3c923df7e0004d6ed1e094edd8'
-    'db0aeae0b586e73c7357f5b310142472c3aca256'
-    '2401a7bda9a6cf1daba5b2a10af8f8c22ffc8ad5'
-    'fb1368bbf31222a67e1d1bf4db4ba5a81250dfa0'
-    'bca517aea6d6c56fb3565fbd678e95aca75e87b3'
+    'ce1a33b6ebf5be7541464591b5ea4ea87ec9972f'
     '618a970c1e3d30ef51290b74caeceb4d3f0acd0d'
     '4e6f8c49653e307439a48db9bc5a29dfd91a5419'
     '1321ed421c246a67c221093e3137565989801d9d'
@@ -254,7 +231,7 @@ sha1sums=(
     '3a50cddd1f8970165d6d3ef9a85be9b933b7e97a'
     'b60627d72a0a35bf1caff34491edc01e14329cd4'
     '98d4bfbf240be9e1fdf94d8410cb4f35886eac6d'
-    'd4670b089967ff6a303d7ffb4b3c8dbc0ab913a8'
+    '169da8e3e5539e64d82e5a2f8114d9d7984b289e'
     'f3a5f1a6893125f0c7e542006a544b4512f5659b'
     'cd24247964818e0e22fee4a0d654493a3bb6c7d1'
     '0b2acc406965261645829d688855ec3b9499de6a'
@@ -264,20 +241,22 @@ sha1sums=(
     '2564be1fc7f8e82ed6a0e7da8dda4baf4d341697'
     'aff0236703f65e874864d7d2d4a76c694d24ac6d'
     'bef122556c2d13a10e6d72d40423b3b3bc6ad29e'
+    'a329304f2bd5b5ba9fccf6e88e0c7907ea4dc250'
+    'de00f4063b4a9c2c519de56aca4f09f3d03bc8ae'
+    'd4116ab7216fd85cdb9d3a7881cce0d741e6eafb'
 )
 _index=(
-    109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 77
-    63 53 41 27 14 1 92 78 64 54 42 28 2 93 79 65 55 15 3 94 80 66 56 43 29 16
-    81 67 30 17 4 95 82 68 57 44 31 18 96 83 69 58 45 32 19 5 97 84 70 20 6 98
-    85 71 59 46 33 21 7 99 86 47 34 22 8 100 87 72 48 35 9 101 88 73 49 36 23 10
-    102 89 60 50 37 11 103 90 74 51 38 24 12 104 91 75 61 39 25 13 76 62 52 40
-    26 105 106 107 108
+    96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115
+    116 64 50 40 28 14 1 79 65 51 41 29 15 80 66 52 42 2 81 67 53 43 30 16 3 68
+    54 17 4 82 69 55 44 31 18 5 83 70 56 45 32 19 6 84 71 57 7 85 72 58 46 33 20
+    8 86 73 34 21 9 87 74 59 35 22 88 75 60 36 23 10 89 76 47 37 24 90 77 61 38
+    25 11 91 78 62 48 26 12 63 49 39 27 13 92 93 94 95
 )
 _ultrawide=(
-    1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 1
-    0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 1 0 0 0 0 1 0 0 1 0 1
-    0 0 0 0 1 1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 1
+    1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0
+    0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 1 0 0 1 0 1 0 0 0
+    1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 1
 )
 
 prepare() {

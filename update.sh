@@ -11,8 +11,8 @@ export LC_ALL=C
 #_debug=1
 _dir=$(realpath "$(dirname "$BASH_SOURCE")")
 _pkgname=wiki-loves-earth-wallpapers
-_firstyear=2014
-_lastyear= # If set, skips retrieving list from "Commons:Wiki Loves Earth"
+_firstyear=2015
+_lastyear=2022 # If set, skips retrieving list from "Commons:Wiki Loves Earth"
 _limit=0
 _pkgver=0
 _pkgrel=1
@@ -21,7 +21,6 @@ _xml=$_dir/$_pkgname.xml
 _agent=$(printf '%s (https://aur.archlinux.org/packages/%s/ %s) curl/%s\n' \
     "${0##*/}" "$_pkgname" "aur@lkr.ms" \
     "$(curl --version | awk 'NR == 1 { print $2 }')")
-_temp=$(mktemp)
 
 : >"$_json"
 
@@ -59,6 +58,8 @@ _wrap() {
 END { if (l != "") { print l } }' | _indent
 }
 
+_pagetemp=()
+_pagepid=()
 while IFS= read -r page; do
     [[ -n $page ]] || continue
     if [[ ! $page =~ (^|[^0-9])(2[0-9]{3})($|[^0-9]) ]]; then
@@ -68,31 +69,34 @@ while IFS= read -r page; do
     year=${BASH_REMATCH[2]}
     ((year >= _firstyear)) || continue
 
-    echo "Parsing '$page'..." >&2
-    section=$(_wiki_json action=parse \
-        page="$page" prop=sections | jq -r '
+    _temp=$(mktemp)
+    _pagetemp[${#_pagetemp[@]}]=$_temp
+    (
+        echo "Parsing '$page'..." >&2
+        section=$(_wiki_json action=parse \
+            page="$page" prop=sections | jq -r '
 [ .parse.sections[] | select(.line | test("winners?$"; "i")) ] | first | .index')
-    if [[ -z $section ]]; then
-        echo "ERROR: no \"winners\" section on '$page'" >&2
-        exit 1
-    fi
+        if [[ -z $section ]]; then
+            echo "ERROR: no \"winners\" section on '$page'" >&2
+            exit 1
+        fi
 
-    echo "Parsing '$page' section #$section..." >&2
-    titles=$(_wiki_json action=parse \
-        page="$page" section="$section" prop=images | jq -r '
+        echo "Parsing '$page' section #$section..." >&2
+        titles=$(_wiki_json action=parse \
+            page="$page" section="$section" prop=images | jq -r '
 [ .parse.images[] | select(test("\\.jpe?g$";"i")) | "File:" + . ] | join("|")')
-    if [[ -z ${titles:+1} ]]; then
-        echo "ERROR: no images on '$page'" >&2
-        exit 1
-    fi
+        if [[ -z ${titles:+1} ]]; then
+            echo "ERROR: no images on '$page'" >&2
+            exit 1
+        fi
 
-    echo "Retrieving image information..." >&2
-    _wiki_json action=query titles="$titles" prop=imageinfo \
-        iiprop="canonicaltitle|extmetadata|sha1|size|url" |
-        jq \
-            --arg titles "$titles" \
-            --argjson year "$year" \
-            --argjson limit $((_limit)) '
+        echo "Retrieving image information..." >&2
+        _wiki_json action=query titles="$titles" prop=imageinfo \
+            iiprop="canonicaltitle|extmetadata|sha1|size|url" |
+            jq \
+                --arg titles "$titles" \
+                --argjson year "$year" \
+                --argjson limit $((_limit)) '
 (.query.normalized | map( { (.from): .to } ) | add) as $normalized |
   ($titles | split("|") | to_entries |
     map( { ($normalized[.value] // .value): .key } ) | add) as $titles |
@@ -108,12 +112,13 @@ while IFS= read -r page; do
     .pageid = $pageid ] |
   sort_by(.index) |
   if $limit > 0 then limit($limit; .[]) else .[] end' >"$_temp"
-    if [[ ! -s $_temp ]]; then
-        echo "ERROR: no hi-res landscape images on '$page'" >&2
-        exit 1
-    fi
+        if [[ ! -s $_temp ]]; then
+            echo "ERROR: no hi-res landscape images on '$page'" >&2
+            exit 1
+        fi
 
-    cat "$_temp" >>"$_json"
+    ) &
+    _pagepid[${#_pagepid[@]}]=$!
 done < <(
     if ((!_lastyear)); then
         echo "Parsing 'Commons:Wiki Loves Earth'..." >&2
@@ -125,6 +130,19 @@ done < <(
         done
     fi
 )
+
+if [[ -n ${_pagepid+1} ]]; then
+    _status=0
+    for _pid in "${_pagepid[@]}"; do
+        wait "$_pid" || _status=$?
+    done
+    ((!_status)) || exit "$_status"
+fi
+
+if [[ -n ${_pagetemp+1} ]]; then
+    cat "${_pagetemp[@]}" >>"$_json"
+    rm -f "${_pagetemp[@]}"
+fi
 
 _pkgver=$(jq -s '[ .[].year ] | max' <"$_json")
 _count=$(jq -s 'length' <"$_json")
@@ -164,7 +182,7 @@ cat <<XML >>"$_xml"
 XML
 
 echo "Generating PKGBUILD..." >&2
-if [[ -e "$_dir/PKGBUILD" ]] && SH=$(
+if [[ -e $_dir/PKGBUILD ]] && SH=$(
     . "$_dir/PKGBUILD" || exit
     if [[ $_pkgver != "$pkgver" ]]; then
         _pkgrel=1
