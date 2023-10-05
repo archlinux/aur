@@ -7,10 +7,10 @@
 # https://github.com/stha09/chromium-patches/releases
 
 _use_suffix=1
-pkgver=24.8.3
+pkgver=24.8.5
 _chromiumver=112.0.5615.204
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
