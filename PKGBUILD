@@ -7,8 +7,8 @@ pkgdesc="A privacy-first, open-source platform for knowledge sharing and managem
 arch=("x86_64")
 url="https://logseq.com"
 repo="https://github.com/logseq/logseq.git"
-branch=master
-dev=n
+branch=master # feat/db
+dev=n # y
 license=("AGPL3")
 depends=()
 makedepends=("git" "yarn" "npm" "clojure" "nodejs>=16")
