@@ -7,7 +7,13 @@ pkgdesc="Mdformat plugin for GitHub-Flavored Markdown compatibility"
 arch=(any)
 url="https://github.com/hukkin/mdformat-gfm"
 license=('MIT')
-depends=(mdformat python-mdit_py_plugins python-markdown-it-py mdformat-tables)
+depends=(
+    mdformat
+    mdformat-tables
+    python-linkify-it-py
+    python-markdown-it-py
+    python-mdit_py_plugins
+)
 makedepends=(
     python-pip
     python-build
