@@ -1,0 +1,4 @@
+pkg/
+src/
+python-xxhash-git/
+python-xxhash-git-*.pkg.tar.zst

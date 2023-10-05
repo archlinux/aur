@@ -1,0 +1,20 @@
+pkgbase = python-xxhash-git
+	pkgdesc = Python binding for xxHash
+	pkgver = v3.4.1.r2.g78fab13
+	pkgrel = 1
+	url = https://github.com/ifduyue/python-xxhash-git
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = xxhash
+	provides = python-xxhash
+	conflicts = python-xxhash
+	source = python-xxhash-git::git+https://github.com/ifduyue/python-xxhash.git
+	sha512sums = SKIP
+
+pkgname = python-xxhash-git
