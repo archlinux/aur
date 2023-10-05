@@ -1,32 +1,30 @@
-# Maintainer: Radek Podgorny <radek@podgorny.cz>
-
-pkgname=python-blitzdb
-pkgver=0.3.3
-pkgrel=1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Radek Podgorny <radek@podgorny.cz>
+_base=blitzdb
+pkgname=python-${_base}
 pkgdesc="A document-oriented database written purely in Python"
-arch=('any')
-depends=('python')
-makedepends=('python-setuptools')
-url="https://github.com/adewes/blitzdb"
-license=('MIT')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/3c/7f/52906526e58705c42261916cdc11c67f099dd6543c74d4a88a58a0015e86/blitzdb-0.3.3.tar.gz)
-md5sums=('fd7615fb2665e81d0909f860d4e50034')
-sha256sums=('d6090dad0cefd1276f776c0fb3df79becf90ca1153a667e3ced6b7739eb0e222')
+pkgver=0.4.4
+pkgrel=1
+arch=(any)
+url="https://github.com/adewes/${_base}"
+license=(MIT)
+depends=(python-six)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+# checkdepends=(python-pytest python-faker python-sqlalchemy)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('0ca22113f52f36d0fd8e55de8b26582edb10e19aae10a79ecb89ed852566f0fd5ba73a02608920a0f65e990f026d367834c4ac0d1e71f546cad8c14f7377d576')
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg2 'Building...'
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m pytest
+# }
+
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg2 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
-
-  msg2 'Cleaning up pkgdir...'
-  rm -rf "$pkgdir/usr/lib/python3.5/site-packages/blitzdb/tests"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --prefix=/usr --destdir="${pkgdir}" dist/*.whl
 }
