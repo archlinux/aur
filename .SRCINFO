@@ -1,6 +1,6 @@
 pkgbase = python-flippernested
 	pkgdesc = Recover keys from collected nonces using the Flipper Zero
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/AloneLiberty/FlipperNestedRecovery
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-flippernested
 	depends = python-protobuf
 	depends = python-pyserial
 	depends = xz
-	source = FlipperNestedRecovery-2.3.1.tar.gz::https://github.com/AloneLiberty/FlipperNestedRecovery/archive/refs/tags/v2.3.1.tar.gz
-	b2sums = 5b9268494a5ed83a7f851b1eea9834360249cadcd65c00cb850386633c5320505a149c6793076b871121eb9711e5adac3fe014d5ac0f77fa27bbd2e1e465a825
+	source = FlipperNestedRecovery-2.3.2.tar.gz::https://github.com/AloneLiberty/FlipperNestedRecovery/archive/refs/tags/v2.3.2.tar.gz
+	b2sums = 41a5c9e362225f819e04544526279c222a922760a474c1663ae38a4b267ea748e0230fbb44c1a9a1936ed77428198416b838d5ce61e96e4ea0999085f6f22695
 
 pkgname = python-flippernested
