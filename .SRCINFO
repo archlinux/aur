@@ -1,7 +1,7 @@
 pkgbase = krunner5
 	pkgdesc = Framework for providing different actions given a string query
 	pkgver = 5.110.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
@@ -11,7 +11,7 @@ pkgbase = krunner5
 	makedepends = doxygen
 	makedepends = qt5-tools
 	makedepends = qt5-doc
-	depends = plasma-framework
+	depends = plasma-framework5
 	depends = threadweaver5
 	provides = krunner=5.110.0
 	conflicts = krunner<5.111
