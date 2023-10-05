@@ -1,0 +1,31 @@
+<svg width="64" height="64" version="1.1" viewBox="0 0 16.9 16.9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<clipPath id="e">
+<rect width="16.9" height="16.9" color="#000000" fill="#808000"/>
+</clipPath>
+<linearGradient id="d" x1="4.61" x2="8.74" y1="4.77" y2="13.4" gradientTransform="translate(.428 .0866)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#118eff" offset="0"/>
+<stop stop-color="#08ff0d" offset="1"/>
+</linearGradient>
+<linearGradient id="c" x1="5.58" x2="13.3" y1="3.69" y2="8.5" gradientTransform="translate(.428 .0866)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#118eff" offset="0"/>
+<stop stop-color="#162baf" offset="1"/>
+</linearGradient>
+<linearGradient id="b" x1="13" x2="6.14" y1="10.1" y2="13.4" gradientTransform="translate(.428 .0866)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#162baf" offset="0"/>
+<stop stop-color="#00031a" offset="1"/>
+</linearGradient>
+<radialGradient id="a" cx="8.57" cy="8.57" r="8.36" gradientUnits="userSpaceOnUse">
+<stop stop-color="#f6ff2b" offset="0"/>
+<stop stop-color="#ff870a" offset="1"/>
+</radialGradient>
+</defs>
+<rect transform="matrix(1.01 0 0 1.01 -.166 -.166)" x=".6" y=".6" width="22.2" height="22.2" rx="3.96" ry="3.96" clip-path="url(#e)" color="#000000" fill="url(#a)" stroke="#000" stroke-dashoffset="3.41" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".972" stroke-width=".792"/>
+<rect width="16.9" color="#000000" fill="#808000" stroke="#808000" stroke-dashoffset="3.41" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".972" stroke-width="1.2"/>
+<g>
+<path d="m16.2 11c-1.44-4.21-5.58-9.8-14.1-8.17l3.04 1.32c3.24 0.535 6.84 1.82 8.62 5.2z" color="#000000" fill="url(#c)"/>
+<path d="m13.7 9.26c-3.25-0.993-7.38-0.0346-9.17 4.12l0.611 0.0633c2.26-4.01 6.06-3.6 11-2.46" color="#000000" fill="url(#b)" stroke="#000" stroke-dashoffset="3.41" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".972" stroke-width=".4"/>
+<path d="m2.07 2.79c2.8 3.4 5.81 5.96 5.61 11.9l-1.17 0.0156 2.26 1.88 2.43-1.93-1.43 0.017c-0.245-4.69-0.642-6.99-4.25-10.5" color="#000000" fill="url(#d)" stroke="#000" stroke-dashoffset="3.41" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".972" stroke-width=".4"/>
+</g>
+<path d="m16.2 11c-1.44-4.21-5.58-9.82-14.1-8.19m3.44 1.35c3.24 0.535 6.39 1.74 8.17 5.12" color="#000000" fill="none" stroke="#000" stroke-dashoffset="3.41" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".972" stroke-width=".4"/>
+</svg>

@@ -1,6 +1,7 @@
 
 post_install() {
 	echo "Remember to add your user to group 'input'. Ex 'sudo usermod -a -G input \$USER'"
+	echo "⚠️ The adding your user to 'input' and the udev rule included in this package may cause security problems. An application launched with your user can listen to your input events ⚠️"
 }
 
 post_upgrade() {

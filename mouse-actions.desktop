@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Mouse Actions
+Exec=/usr/bin/mouse-actions-gui
+Type=Application
+Icon=mouse-actions
+Categories=Utility;Accessibility;
+GenericName=Mouse guestures and hotkeys to control your desktop
