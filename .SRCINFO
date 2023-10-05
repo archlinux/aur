@@ -1,19 +1,19 @@
 pkgbase = firefox-extension-privacybadger
 	pkgdesc = Block third party tracking in your browser
-	pkgver = 2023.5.10
+	pkgver = 2023.9.12
 	pkgrel = 1
 	url = https://www.eff.org/privacybadger
 	arch = any
 	groups = firefox-addons
 	license = GPL3
 	makedepends = unzip
-	noextract = privacybadger-2023.5.10.xpi
-	source = privacybadger-2023.5.10.xpi::https://www.eff.org/files/privacy-badger-eff-2023.5.10.xpi
-	source = privacybadger-2023.5.10.xpi.sig::https://www.eff.org/files/privacy-badger-eff-2023.5.10.xpi.sig
+	noextract = privacybadger-2023.9.12.xpi
+	source = privacybadger-2023.9.12.xpi::https://www.eff.org/files/privacy-badger-eff-2023.9.12.xpi
+	source = privacybadger-2023.9.12.xpi.sig::https://www.eff.org/files/privacy-badger-eff-2023.9.12.xpi.sig
 	validpgpkeys = 88F8662241B0C16C16E3B5A7950FC3999D80F309
-	sha256sums = 91957f75a5e5b35282a53532d9cdd3e338cb498e5ab0265610cf3d928fee6f61
+	sha256sums = ff7c1cd7bfc23f0592d6c7332fe8be8dacc7f76e258512576ff16812423b79e7
 	sha256sums = SKIP
-	b2sums = 2cbcbbb78ae0d2e54f22e05d29e42fa2b18c078c985fef988ced222eed64478bb9ff483e8e81502c9e82d8e0fbd6233224d5ab38e1deff4ff71cbf93657a995c
+	b2sums = 1481088ba54d70a0857fa98751c3940098420539763263f35e69e3ee1cc59426c77b5c5440905d4c5083ab1262557fa15b404e4f95086ed0876656e35c86f3e6
 	b2sums = SKIP
 
 pkgname = firefox-extension-privacybadger
