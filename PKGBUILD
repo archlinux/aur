@@ -5,7 +5,7 @@
 
 pkgname=vscodium-features
 pkgver=1.82.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
 url='https://github.com/microsoft/vscode'
