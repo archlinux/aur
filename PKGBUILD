@@ -21,13 +21,42 @@ pkgver() {
 
 package() {
    # make folders
-   mkdir -p "${pkgdir}/usr/share/aurorae/themes"
-   mkdir -p "${pkgdir}/usr/share/color-schemes"
-   mkdir -p "${pkgdir}/usr/share/plasma/desktoptheme"
-   mkdir -p "${pkgdir}/usr/share/plasma/look-and-feel"
-   mkdir -p "${pkgdir}/usr/share/Kvantum"
-   mkdir -p "${pkgdir}/usr/share/sddm/themes"
-   mkdir -p "${pkgdir}/usr/share/wallpapers"
+   install -d "${pkgdir}/usr/share/aurorae/themes"
+   # https://gist.github.com/RShirohara/83decd90c69fee0995e5046c8c875469
+   cp -r "${srcdir}/${_gitname}/aurorae/normal"/* "${pkgdir}/usr/share/aurorae/themes"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur_x1.25"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur_x1.5"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur_x1.75"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark_x1.25"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark_x1.5"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark_x1.75"
+   cp -r "${srcdir}/${_gitname}/aurorae/sharp"/* "${pkgdir}/usr/share/aurorae/themes"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-sharp"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-sharp_x1.25"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-sharp_x1.5"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-sharp_x1.75"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-sharp"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-sharp_x1.25"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-sharp_x1.5"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-sharp_x1.75"
+   cp -r "${srcdir}/${_gitname}/aurorae/opaque"/* "${pkgdir}/usr/share/aurorae/themes"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-opaque"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-opaque_x1.25"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-opaque_x1.5"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-opaque_x1.75"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-opaque"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-opaque_x1.25"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-opaque_x1.5"
+   cp -r "${srcdir}/${_gitname}/aurorae/common/assets-dark"/*.svg "${pkgdir}/usr/share/aurorae/themes/WhiteSur-dark-opaque_x1.75"
+
+   install -d "${pkgdir}/usr/share/color-schemes"
+   install -d "${pkgdir}/usr/share/plasma/desktoptheme"
+   install -d "${pkgdir}/usr/share/plasma/look-and-feel"
+   install -d "${pkgdir}/usr/share/Kvantum"
+   install -d "${pkgdir}/usr/share/sddm/themes"
+   install -d "${pkgdir}/usr/share/wallpapers"
    
    # aurorae theme
    cp -r "${srcdir}/${_gitname}/aurorae"/* "${pkgdir}/usr/share/aurorae/themes"
@@ -43,12 +72,12 @@ package() {
    # look and feel
    cp -r "${srcdir}/${_gitname}/plasma/look-and-feel"/* "${pkgdir}/usr/share/plasma/look-and-feel"
    # wallpaper
-   cp -r "${srcdir}/${_gitname}/wallpaper/${_themeName}" "${pkgdir}/usr/share/wallpapers"
+   cp -r "${srcdir}/${_gitname}/wallpaper"/* "${pkgdir}/usr/share/wallpapers"
    # sddm
    cp -r "${srcdir}/${_gitname}/sddm/${_themeName}" "${pkgdir}/usr/share/sddm/themes"
    
    # latte
-   mkdir -p "$HOME/.config/latte"
+   install -d "$HOME/.config/latte"
    cp -r "${srcdir}/${_gitname}/latte-dock"/* "$HOME/.config/latte"
    printf "%b" "\e[1;33m==> WARNING: \e[0mThe package installed a latte-dock theme which is not deleted on removal. (Located in $HOME/.config/latte)\n"
 
