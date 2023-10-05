@@ -1,21 +1,24 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Gregory G Danielson III <gregdan3@protonmail.com>
 
 ## GPG key is available for download from upstream's repo
 
 pkgname=doppler-cli
-pkgver=3.57.1
+pkgver=3.66.0
 pkgrel=1
 pkgdesc="CLI utility for Doppler, environment and secrets manager"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('Apache')
 url='https://github.com/dopplerhq/cli'
+conflicts=('doppler-cli-bin')
+provides=('doppler-cli')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'git' 'gcc')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz"
-  "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz.sig")
-sha256sums=('f5a3461f9929c57a3cf6d10223517b489d1facda66e910776519eec1dde4ba0f'
+    "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz.sig")
+sha256sums=('6560b284b7192459e8363224f1c35f069cec2ee9a2ac064b5f7f4577cac0e770'
             'SKIP')
 validpgpkeys=('B70BD7FCA460C4A3D0EEB965D3D593D50EE79DEC')
 
@@ -31,7 +34,7 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildvcs=false -buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	go build -o build -ldflags="-linkmode=external -X ${url#https://}/pkg/version.ProgramVersion=$pkgver"
 	build/cli completion bash > build/doppler.bash
