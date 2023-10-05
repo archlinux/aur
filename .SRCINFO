@@ -1,6 +1,6 @@
 pkgbase = kde-development-environment-meta
 	pkgdesc = Metapackage to install a full KDE development environment
-	pkgver = 20230930
+	pkgver = 20231005
 	pkgrel = 1
 	url = https://phabricator.kde.org/T3722
 	arch = any
@@ -109,7 +109,7 @@ pkgbase = kde-development-environment-meta
 	depends = modemmanager-qt5
 	depends = networkmanager-qt5
 	depends = ninja
-	depends = plasma-framework
+	depends = plasma-framework5
 	depends = prison5
 	depends = pulseaudio-qt
 	depends = purpose5

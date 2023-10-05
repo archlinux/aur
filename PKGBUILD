@@ -2,7 +2,7 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20230930
+pkgver=20231005
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
@@ -112,7 +112,7 @@ depends=(akonadi-calendar
          modemmanager-qt5
          networkmanager-qt5
          ninja
-         plasma-framework
+         plasma-framework5
          prison5
          pulseaudio-qt
          purpose5
