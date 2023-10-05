@@ -1,8 +1,8 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=beaver-notes
-pkgver=0.0.8
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
 _electron=electron13
@@ -12,10 +12,10 @@ license=('MIT')
 depends=('libdbus-1.so' 'libatk-bridge-2.0.so' 'libatk-1.0.so' 'libgdk_pixbuf-2.0.so' 'libatspi.so' 'libxkbcommon.so' 'libcairo.so' 'libgdk-3.so' 'libpango-1.0.so' 'libasound.so' 'libgtk-3.so' 'nspr' 'libcups' 'mesa' 'libxshmfence' 'libxcomposite' 'libdrm' 'libxfixes' 'libxrandr' 'libxdamage' 'nss' 'hicolor-icon-theme' 'expat' 'libxcb' 'glibc' 'glib2' 'gcc-libs' 'libx11')
 makedepends=('npm' 'yarn' 'nodejs' 'imagemagick' 'libxcrypt-compat')
 provides=('beaver-notes')
-source=("https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop"
 	"beaver-notes-arch.patch")
-sha256sums=("f78d8883323de371ec0202a29689347b1802a8260e13f6d1cc53050bb53b5dde"
+sha256sums=("1d3ff72a47160b0baa3701d16cc993d32458ba117e6a4870f64c91ecd6db8080"
             "988dc1020793d118dd2dc20745881ee6f4db221c61be503dc762f0d43318dfee"
             "5e318eb95c555c0f6c7c700e41b37758af3fc6c8c4c4926f9fc3c0bc8602c685")
 
@@ -53,4 +53,7 @@ package() {
 	
 	# Install icon
 	install -Dm 644 buildResources/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/beaver-notes.png
+
+	# Install license
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
