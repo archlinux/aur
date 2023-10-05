@@ -2,7 +2,7 @@
 # Contributor: René 'Necoro' Neumann <arch@necoro.dev>
 pkgname=arch-log-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.0.r1.g1530b20
+pkgver=0.4.0.r3.gd200944
 pkgrel=1
 pkgdesc='Quickly check commit log of Arch and AUR packages'
 arch=('x86_64')

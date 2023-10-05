@@ -1,13 +1,12 @@
 pkgbase = arch-log-git
 	pkgdesc = Quickly check commit log of Arch and AUR packages
-	pkgver = 0.1.0.r1.g1530b20
+	pkgver = 0.4.0.r3.gd200944
 	pkgrel = 1
 	url = https://github.com/Necoro/arch-log
 	arch = x86_64
 	license = GPL
-	makedepends = go>=1.20
+	makedepends = go>=1.21
 	makedepends = git
-	depends = glibc
 	conflicts = arch-log
 	source = git+https://github.com/Necoro/arch-log
 	sha256sums = SKIP
