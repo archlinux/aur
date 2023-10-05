@@ -14,7 +14,10 @@ depends=(
 	'git'
 	'nano'
 	'nftables'
+	'noto-fonts-emoji'
 	'starship'
+	'ttf-nerd-fonts-symbols'
+	'ttf-nerd-fonts-symbols-mono'
 	'zsh'
 )
 optdepends=(
