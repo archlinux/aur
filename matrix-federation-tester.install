@@ -1,0 +1,3 @@
+function post_install(){
+	echo "Edit /etc/default/matrix-federation-tester to modify environment variables"
+}

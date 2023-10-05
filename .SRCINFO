@@ -1,0 +1,17 @@
+pkgbase = matrix-federation-tester-git
+	pkgdesc = Tester for matrix federation written in golang.
+	pkgver = r119.d48d783
+	pkgrel = 1
+	url = https://github.com/matrix-org/matrix-federation-tester
+	install = matrix-federation-tester.install
+	arch = x86_64
+	license = none
+	makedepends = go
+	provides = matrix-federation-tester
+	backup = etc/default/matrix-federation-tester
+	source = git+https://github.com/matrix-org/matrix-federation-tester.git
+	source = matrix-federation-tester.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = matrix-federation-tester-git

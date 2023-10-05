@@ -1,0 +1,15 @@
+[Unit]
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=matrix-federation-tester
+EnvironmentFile=/etc/default/matrix-federation-tester
+Restart=always
+RestartSec=3
+ExecStart=/usr/bin/matrix-federation-tester
+Environment=GODEBUG=tls13=1
+
+[Install]
+WantedBy=multi-user.target
