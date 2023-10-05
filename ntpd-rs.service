@@ -15,6 +15,7 @@ ExecStartPre=/usr/bin/ntp-ctl --config /etc/ntpd-rs/ntp.toml validate
 ExecStart=/usr/bin/ntp-daemon --config /etc/ntpd-rs/ntp.toml
 Environment="RUST_LOG=info"
 RuntimeDirectory=ntpd-rs
+StateDirectory=ntpd-rs
 
 CapabilityBoundingSet=CAP_SYS_TIME CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_SYS_TIME CAP_NET_BIND_SERVICE
