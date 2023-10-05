@@ -1,7 +1,7 @@
 pkgbase = g2clib
 	pkgdesc = GRIB2 encoder/decoder (C version)
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NOAA-EMC/NCEPLIBS-g2c
 	arch = i686
 	arch = x86_64
