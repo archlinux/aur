@@ -5,7 +5,7 @@ pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=stable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.18.13
+_pkgver=1.18.14
 
 # makepkg doesn't support hyphens in pkgver. They'll be replaced with underscores.
 pkgver=${_pkgver//-/_}
@@ -18,7 +18,7 @@ depends=("dotnet-runtime" "opengl-driver" "openal")
 source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_pkgver.tar.gz"
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "vintagestory.desktop")
-md5sums=("c8f2c4f19206a71d3a8af34069e89ba2"
+md5sums=("a1969e8ce96e53b8ce85fdc9216c71a6"
          "26ff9ca4fb0a583589f26f2c274d4ec6")
 
 prepare() {
