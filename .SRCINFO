@@ -1,7 +1,7 @@
 pkgbase = flutter-beta
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
 	pkgver = 3.15.0_15.2.pre
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flutter.dev
 	install = flutter.install
 	arch = x86_64

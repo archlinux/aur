@@ -2,7 +2,7 @@
 
 pkgname=flutter-beta
 pkgver=3.15.0_15.2.pre
-pkgrel=1
+pkgrel=2
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-beta}.dev"
@@ -25,35 +25,20 @@ sha256sums=('c47316000da43434d3d08e622256b6ea8d13c5d69d1199b535c039b210167675'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
 build() {
-  rm -rf "${srcdir}/${pkgname%-beta}/bin/cache" "${srcdir}/${pkgname%-beta}/.pub-cache"
-  "${srcdir}/${pkgname%-beta}/bin/internal/update_dart_sdk.sh"
-  "${srcdir}/${pkgname%-beta}/bin/flutter" --no-version-check precache
+  cd "${srcdir}/${pkgname%-beta}"
+  "${srcdir}/${pkgname%-beta}/bin/${pkgname%-beta}" doctor
 }
 
 package() {
+  rm -rf "${srcdir}/${pkgname%-beta}/bin/cache" "${srcdir}/${pkgname%-beta}/.pub-cache"
   install -Dm644 "${srcdir}/${pkgname%-beta}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname%-beta}.sh" "${pkgdir}/etc/profile.d/${pkgname%-beta}.sh"
   install -Dm755 "${srcdir}/${pkgname%-beta}.csh" "${pkgdir}/etc/profile.d/${pkgname%-beta}.csh"
   install -dm755 "${pkgdir}/opt/${pkgname%-beta}"
   install -dm755 "${pkgdir}/usr/bin"
   cp -ra "${srcdir}/${pkgname%-beta}" "${pkgdir}/opt/"
-
-  # Version override
-  echo "${pkgver}" > "${pkgdir}/opt/${pkgname%-beta}/version"
-  mkdir -p "${pkgdir}/opt/${pkgname%-beta}/packages/flutter_tools/.dart_tool"
-
-  # Addition of read rights for end-users
   find "${pkgdir}/opt/${pkgname%-beta}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-beta}" -type f -exec chmod a+r {} +
-
-  # Addition of read/write rights for end-users
-  chmod a+rw "${pkgdir}/opt/${pkgname%-beta}" "${pkgdir}/opt/${pkgname%-beta}/.pub-preload-cache" 
-  chmod -R a+rw "${pkgdir}/opt/${pkgname%-beta}/version" "${pkgdir}/opt/${pkgname%-beta}/bin/cache" "${pkgdir}/opt/${pkgname%-beta}/.git" "${pkgdir}/opt/${pkgname%-beta}/packages/flutter_tools/.dart_tool/"
-  find "${pkgdir}/opt/${pkgname%-beta}" -name "pubspec.lock" -exec chmod a+rw {} +
-  find "${pkgdir}/opt/${pkgname%-beta}" -name "package_config.json" -exec chmod a+rw {} +
-
-  # Fix git ref migrations (will produce warnings on update)
-  mv "${pkgdir}/opt/${pkgname%-beta}/.git" "${pkgdir}/opt/${pkgname%-beta}/.git-refs"
-
+  chmod a+rw "${pkgdir}/opt/${pkgname%-beta}/version"
   ln -s "/opt/${pkgname%-beta}/bin/${pkgname%-beta}" "${pkgdir}/usr/bin/${pkgname%-beta}"
 }
