@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 
-#MAKEFLAGS=-j18 # NOTE Can be usseful when got OOM
+# MAKEFLAGS=-j2 # NOTE Can be usseful when got OOM
 
 _ENABLE_CUDA=1
 _ENABLE_TENSORRT=0  # NOTE: not working due https://github.com/microsoft/onnxruntime/issues/15131
@@ -13,7 +13,7 @@ pkgname=(
   'onnxruntime'
   'python-onnxruntime'
 )
-pkgver=1.15.1
+pkgver=1.16.0
 pkgdesc='Cross-platform, high performance scoring engine for ML models'
 pkgrel=1
 arch=('x86_64')
@@ -40,7 +40,7 @@ makedepends=(
   'eigen'
 #   'flatbuffers'
   'onednn'
-  're2'
+#   're2'
   'python-coloredlogs'
   'python-flatbuffers'
   'python-numpy'
@@ -117,27 +117,23 @@ prepare() {
 
   # Find system nsync
   sed -e 's|NAMES nsync|&_cpp|g' \
-      -e '282aadd_library(nsync::nsync_cpp ALIAS nsync_cpp)' \
+      -e '295aadd_library(nsync::nsync_cpp ALIAS nsync_cpp)' \
       -i cmake/external/onnxruntime_external_deps.cmake
 
   if [[ $_ENABLE_TENSORRT = 1 ]]; then
-    # Update Tensorboard 00d59e65d866a6d4b9fe855dce81ee6ba8b40c4f
-    sed -e 's|373eb09e4c5d2b3cc2493f0949dc4be6b6a45e81|00d59e65d866a6d4b9fe855dce81ee6ba8b40c4f|g' \
-        -e 's|67b833913605a4f3f499894ab11528a702c2b381|ff427b6a135344d86b65fa2928fbd29886eefaec|g' \
+    # Update Tensorboard a01ceb5957d9ecd56314df115c09e3ddb60d12f7
+    sed -e 's|373eb09e4c5d2b3cc2493f0949dc4be6b6a45e81|a01ceb5957d9ecd56314df115c09e3ddb60d12f7|g' \
+        -e 's|ff427b6a135344d86b65fa2928fbd29886eefaec|113750f323d131859ac4e17070d2c9417e80d701|g' \
         -i cmake/deps.txt
 
-    # Update onnx_tensorrt 6872a9473391a73b96741711d52b98c2c3e25146
-    sed -e 's|ba6a4fb34fdeaa3613bf981610c657e7b663a699|6872a9473391a73b96741711d52b98c2c3e25146|g' \
-        -e 's|62119892edfb78689061790140c439b111491275|75462057c95f7fdbc256179f0a0e9e4b7be28ae3|g' \
+    # Update onnx_tensorrt 6ba67d3428e05f690145373ca87fb8d32f98df45
+    sed -e 's|0462dc31ae78f48744b6141ae376df1f96d3f459|6ba67d3428e05f690145373ca87fb8d32f98df45|g' \
+        -e 's|67b833913605a4f3f499894ab11528a702c2b381|113750f323d131859ac4e17070d2c9417e80d701|g' \
         -i cmake/deps.txt
   fi
 
   patch -Np1 -i "${srcdir}/install-orttraining-files.diff"
-#   # Force use bundled flatbuffers due fail build
-#   sed '/NAMES Flatbuffers/s/^/#/g' -i cmake/external/onnxruntime_external_deps.cmake
-#   # Same with Protobuf
-#   sed '/NAMES Protobuf/s/^/#/g' -i cmake/external/onnxruntime_external_deps.cmake
-# #   patch -Np1 -i "${srcdir}/system-flatbuffers.patch"
+#   patch -Np1 -i "${srcdir}/system-flatbuffers.patch"
 
   # fix build with gcc12(?), take idea from https://github.com/microsoft/onnxruntime/pull/11667 and https://github.com/microsoft/onnxruntime/pull/10014
   sed 's|dims)|TensorShape(dims))|g' \
@@ -146,11 +142,6 @@ prepare() {
   # fix missing #include <iostream>
   sed '11a#include <iostream>' \
     -i orttraining/orttraining/test/training_api/trainer/trainer.cc
-
-  # Silence cmake warning
-  sed -e 's|PRIVATE  |PRIVATE |g' \
-      -e 's|2">|2>"|g' \
-      -i cmake/onnxruntime_mlas.cmake
 
 #   cd onnxruntime/core/flatbuffers/schema
 #   python compile_schema.py --flatc /usr/bin/flatc
@@ -179,7 +170,7 @@ build() {
     -DCMAKE_SKIP_RPATH=OFF
     -Donnxruntime_ENABLE_PYTHON=ON
     -Donnxruntime_BUILD_SHARED_LIB=ON
-    -Donnxruntime_BUILD_UNIT_TESTS=ON
+    -Donnxruntime_BUILD_UNIT_TESTS=OFF
     -Donnxruntime_ENABLE_TRAINING=ON
     -Donnxruntime_ENABLE_LAZY_TENSOR=OFF
     -Donnxruntime_USE_MPI=ON
@@ -188,6 +179,7 @@ build() {
     -Deigen_SOURCE_PATH="$(pkg-config --cflags eigen3 | sed 's|-I||g')"
     -DCMAKE_CXX_STANDARD=17
     -DCMAKE_IGNORE_PATH=/usr/lib/cmake/flatbuffers/\;/lib/cmake/flatbuffers/\;/usr/lib/cmake/protobuf/\;/lib/cmake/protobuf/
+    -DBUILD_TESTING=OFF
   )
 
   # Use protobuf-lite instead of full protobuf to workaround symbol conflicts
@@ -249,7 +241,6 @@ package_onnxruntime() {
   # installed as split packages
   rm -vf "${pkgdir}/usr/lib/"libonnxruntime_providers_{tensorrt,cuda}.so
 
-  chrpath -d "${pkgdir}/usr/bin/"*
   chrpath -d "${pkgdir}/usr/lib/"libonnxruntime.so.*
 
   install -Dm644 onnxruntime/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
