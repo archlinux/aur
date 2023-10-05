@@ -3,14 +3,15 @@
 pkgname=python-cloudpathlib
 _pkg="${pkgname#python-}"
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python pathlib-style classes for cloud storage services such as Amazon S3, Azure Blob Storage, and Google Cloud Storage."
 url="https://github.com/drivendataorg/cloudpathlib"
 makedepends=(
 	'python-build'
 	'python-installer'
 	'python-setuptools'
-	'python-wheel')
+	'python-wheel'
+    'python-flit-core')
 license=('MIT')
 arch=(any)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drivendataorg/$_pkg/archive/refs/tags/v$pkgver.tar.gz")
