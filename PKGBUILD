@@ -8,7 +8,7 @@ pkgdesc="A plugin manager for mpv"
 arch=('any')
 url="https://pypi.org/project/$_name/"
 license=('MPL-2.0')
-depends=('python>=3.6.0' 'python-gitpython' 'python-requests' 'python-importlib-metadata')
+depends=('python>=3.6.0' 'python<4.0.0' 'python-gitpython>=3.1.7' 'python-gitpython<4.0.0' 'python-requests>=2.24.0' 'python-requests<3.0.0' 'python-importlib-metadata>=1.7.0')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
 noextract=("${_name//-/_}-$pkgver-py3-none-any.whl")
