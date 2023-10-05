@@ -1,14 +1,13 @@
 pkgbase = snkrx-git
-	pkgdesc = A replayable arcade shooter where you control a snake of heroes.
-	pkgver = r68.8f933c9
+	pkgdesc = A replayable arcade shooter where you control a snake of heroes. Fork with all steam dependencies removed.
+	pkgver = r123.08e0307
 	pkgrel = 1
 	url = https://codeberg.org/phel/SNKRX
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = love
-	provides = SNRXK
-	conflicts = SNRXK
+	provides = SNKRX
+	conflicts = SNKRX
 	source = git+https://codeberg.org/phel/SNKRX.git
 	source = SNKRX.sh
 	source = SNKRX.desktop
@@ -17,4 +16,4 @@ pkgbase = snkrx-git
 	sha256sums = bd4ba1b6d5dc40114bf5d7ea31da9dc43fd3e9aa82550de7735effad1b7cc5a2
 
 pkgname = snkrx-git
-
+	depends = love

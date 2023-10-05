@@ -1,16 +1,16 @@
 # Maintainer: Nimrod Maclomhair <nimrod4garoa@gmail.com>
 pkgname=snkrx-git
-pkgver=r68.8f933c9
+pkgver=r123.08e0307
 pkgrel=1
-pkgdesc="A replayable arcade shooter where you control a snake of heroes."
+pkgdesc="A replayable arcade shooter where you control a snake of heroes. Fork with all steam dependencies removed."
 arch=("any")
 url="https://codeberg.org/phel/SNKRX"
 license=('MIT')
 groups=()
-depends=("love")
+depends=()
 makedepends=('git')
-provides=("SNRXK")
-conflicts=("SNRXK")
+provides=("SNKRX")
+conflicts=("SNKRX")
 backup=()
 options=()
 source=('git+https://codeberg.org/phel/SNKRX.git'
@@ -27,18 +27,18 @@ pkgver() {
 }
 
 package() {
+
+	depends+=("love")
+
 	cd "$srcdir/SNKRX"
 	
 	mkdir --parents "$pkgdir/usr/share/SNKRX"
 	cp -r -t "$pkgdir/usr/share/SNKRX" *
 	
-	mkdir --parents "$pkgdir/usr/bin"
-	install ../SNKRX.sh "$pkgdir/usr/bin/SNKRX"
+	install -D ../SNKRX.sh "$pkgdir/usr/bin/SNKRX"
 	
-	mkdir --parents "$pkgdir/usr/share/pixmaps"
-	cp assets/images/icon.png "$pkgdir/usr/share/pixmaps/SNKRX.png"
+	install -D assets/images/icon.png "$pkgdir/usr/share/pixmaps/SNKRX.png"
 	
-	mkdir --parents "$pkgdir/usr/share/applications"
-	cp ../SNKRX.desktop "$pkgdir/usr/share/applications/."
+	install -D -t "$pkgdir/usr/share/applications/." ../SNKRX.desktop 
 	
 }
