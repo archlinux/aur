@@ -2,7 +2,7 @@
 # Contributor: Carson Rueter <roachh at proton mail dot com>
 pkgname=vscodium-bin-features
 pkgver=1.82.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
 url='https://github.com/microsoft/vscode'
@@ -16,7 +16,7 @@ source=("${pkgname}.hook"
         'patch.py'
         'patch.json')
 md5sums=('1bcee9b164af06e67f2d557663828d12'
-         'c081d5e736a56b0d8f93cab92183f418'
+         '67726a5b05e16c9b1ed03d127f0ebc1e'
          '4f8f660d360e605b3b7b0321c97c6d69')
 
 package() {
