@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=gtkcord4
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
@@ -35,10 +35,10 @@ package() {
     cd "${pkgname}/build"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    sed -i "s/Chat;/Chat;InstantMessaging;/" "${srcdir}/${pkgname}/nix/xyz.diamondb.gtkcord4.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/nix/xyz.diamondb.gtkcord4.desktop" "${pkgdir}/usr/share/applications/gtkcord4.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/xyz.diamondb.gtkcord4.metainfo.xml" "${pkgdir}/usr/share/metainfo/gtkcord4.metainfo.xml"
-    install -Dm644 "${srcdir}/${pkgname}/internal/icons/png/logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gtkcord4.png"
-    install -Dm644 "${srcdir}/${pkgname}/internal/icons/svg/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gtkcord4.png"
+    sed -i "s/Chat;/Chat;InstantMessaging;/" "${srcdir}/${pkgname}/nix/so.libdb.gtkcord4.desktop"
+    install -Dm644 "${srcdir}/${pkgname}/nix/so.libdb.gtkcord4.desktop" "${pkgdir}/usr/share/applications/so.libdb.gtkcord4.desktop"
+    install -Dm644 "${srcdir}/${pkgname}/so.libdb.gtkcord4.metainfo.xml" "${pkgdir}/usr/share/metainfo/so.libdb.gtkcord4.metainfo.xml"
+    install -Dm644 "${srcdir}/${pkgname}/.github/logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gtkcord4.png"
+    install -Dm644 "${srcdir}/${pkgname}/internal/icons/hicolor/scalable/apps/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gtkcord4.svg"
 }
 
