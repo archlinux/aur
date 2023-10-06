@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14187.4bdf8d9f0
+pkgver=r14217.69e645c94
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -46,8 +46,8 @@ depends=(
     postgresql
 )
 makedepends=(cmake git)
-source=(git+https://github.com/PointCloudLibrary/pcl GNU13-Eigen3.4.90.patch)
-sha256sums=(SKIP SKIP)
+source=(git+https://github.com/PointCloudLibrary/pcl)
+sha256sums=(SKIP)
 conflicts=(pcl)
 provides=(pcl)
 
@@ -58,11 +58,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/pcl"
-	patch -p1 -i $srcdir/GNU13-Eigen3.4.90.patch
-
-	rm -rf "$srcdir/build"
-	mkdir  "$srcdir/build"
+	mkdir  -p "$srcdir/build"
 	cd     "$srcdir/build"
 
 	cmake "${srcdir}/pcl" \
