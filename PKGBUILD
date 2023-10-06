@@ -3,7 +3,7 @@
 
 pkgname="python-multiscaledeformableattention"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library of MultiScaleDeformableAttention, the CUDA operator proposed by Deformable DETR.'
 arch=(any)
 url="https://github.com/fundamentalvision/Deformable-DETR"

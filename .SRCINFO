@@ -1,7 +1,7 @@
 pkgbase = python-multiscaledeformableattention
 	pkgdesc = Python library of MultiScaleDeformableAttention, the CUDA operator proposed by Deformable DETR.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fundamentalvision/Deformable-DETR
 	arch = any
 	license = MIT
