@@ -15,6 +15,8 @@ depends=(
 	'imagemagick' # generating lockscreen images
 	'maim'
 	'picom'
+	'pulseaudio'
+	'pulseaudio-alsa'
 	'tiawa-de-base'
 	'xclip'
 	'xorg-server'
