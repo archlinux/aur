@@ -1,0 +1,18 @@
+pkgbase = libafterimage
+	pkgdesc = Generic image manipulation library
+	pkgver = 1.20
+	pkgrel = 7
+	url = http://www.afterstep.org/afterimage
+	arch = x86_64
+	license = GPL
+	depends = librsvg
+	source = https://downloads.sourceforge.net/project/afterstep/libAfterImage/1.20/libAfterImage-1.20.tar.bz2
+	source = libafterimage-libpng15.patch
+	source = libafterimage-ldflags.patch
+	source = header-install.patch
+	sha256sums = 6e233253f4d1dd22dfce9f9a245cc036d814fc99ba7f6732f4e345de62cfe458
+	sha256sums = bbf95bcddc4c48dcde88745dc9cb772ca53b625e8e466b9d565e4183ce71dbe3
+	sha256sums = a38f2e46bb69f6749c5e48cff60f51fae6bda19d268f0c7f16dfbd74d34d2f64
+	sha256sums = 6e1c5fd8acbbbc1c83f0ca490f08b7602d37a2295cb4741eef6f3b88fb638203
+
+pkgname = libafterimage

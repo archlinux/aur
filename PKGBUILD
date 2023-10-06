@@ -4,7 +4,7 @@
 
 pkgname=libafterimage
 pkgver=1.20
-pkgrel=6
+pkgrel=7
 pkgdesc="Generic image manipulation library"
 url="http://www.afterstep.org/afterimage"
 license=('GPL')
