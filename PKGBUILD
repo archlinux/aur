@@ -3,7 +3,7 @@
 
 pkgname=homed-automation
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="HOMEd Automation is simple service for home automations, part of HOMEd project"
 arch=("armv7h" "i686" "x86_64")
 url="https://wiki.homed.dev/"
@@ -36,6 +36,7 @@ build() {
 package() {
   cd "${srcdir}/homed-service-automation-${pkgver}"
   make INSTALL_ROOT="${pkgdir}/" install
+  mkdir -p ${pkgdir}/opt/homed-automation
   install -Dm644 "deploy/systemd/homed-automation.service" "${pkgdir}/etc/systemd/system/homed-automation.service"
   install -Dm644 "deploy/data/etc/homed/homed-automation.conf" "${pkgdir}/etc/homed/homed-automation.conf"
 }
