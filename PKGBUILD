@@ -7,7 +7,7 @@ _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
 pkgver=0.0.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
@@ -24,7 +24,7 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses')
 sha512sums=('596f0e2271e61798594d97a85728eea2bfa851db7f1e8b7fa65e1631dfeb347fa8d6087556854c0e775b88678a03b8ece97d0c1293b156e7ea908f6570645248'
-            'b246e5be3b0f25d489aa208f493cfd0adfab0ace0d7fe49444be9434f11c0ad75c3a14bea70f92f94874e2d86aafd25e60472887935ab10dfec41b43f861dffc'
+            'dff276383dca7670d6c06fc9ba5cd34f15ee5011271b4e77704b838eeb09c842019f8ebf2cfc6f8214be20c6ea414b743d0591bbef8067a863c3eeb880a16701'
             SKIP
             SKIP)
 
@@ -35,18 +35,18 @@ prepare() {
   # HACKS FOR SYSTEM ELECTRON
   asar e Discord/resources/app.asar Discord/resources/app
   rm Discord/resources/app.asar
-  sed -i "s|process.resourcesPath|'/usr/lib/$_pkgname'|" Discord/resources/app/app_bootstrap/buildInfo.js
+  sed -i "s|process.resourcesPath|'/usr/lib/${_pkgname}/resources'|" Discord/resources/app/app_bootstrap/buildInfo.js
   sed -i "s|exeDir,|'/usr/share/pixmaps',|" Discord/resources/app/app_bootstrap/autoStart/linux.js
-  asar p Discord/resources/app Discord/resources/app.asar --unpack-dir '**'
+  asar p Discord/resources/app Discord/resources/app.asar
   rm -rf Discord/resources/app
 }
 
 package() {
   # Install the app
-  install -d "$pkgdir"/usr/lib/$_pkgname
+  install -d "${pkgdir}/usr/lib/${_pkgname}/resources"
 
   # Copy Relevanat data
-  cp -r Discord/resources/*  "$pkgdir"/usr/lib/$_pkgname/
+  cp -r Discord/resources/*  "${pkgdir}/usr/lib/${_pkgname}/resources/"
 
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 "${srcdir}/discord-launcher.sh" "${pkgdir}/usr/bin/${_pkgname}"

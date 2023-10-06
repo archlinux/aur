@@ -1,7 +1,7 @@
 pkgbase = discord_arch_electron
 	pkgdesc = Discord (popular voice + video app) using the system provided electron for increased security and performance
 	pkgver = 0.0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discord.com
 	arch = x86_64
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = discord_arch_electron
 	source = LICENSE.html::https://discord.com/terms
 	source = OSS-LICENSES.html::https://discord.com/licenses
 	sha512sums = 596f0e2271e61798594d97a85728eea2bfa851db7f1e8b7fa65e1631dfeb347fa8d6087556854c0e775b88678a03b8ece97d0c1293b156e7ea908f6570645248
-	sha512sums = b246e5be3b0f25d489aa208f493cfd0adfab0ace0d7fe49444be9434f11c0ad75c3a14bea70f92f94874e2d86aafd25e60472887935ab10dfec41b43f861dffc
+	sha512sums = dff276383dca7670d6c06fc9ba5cd34f15ee5011271b4e77704b838eeb09c842019f8ebf2cfc6f8214be20c6ea414b743d0591bbef8067a863c3eeb880a16701
 	sha512sums = SKIP
 	sha512sums = SKIP
 
