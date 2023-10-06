@@ -3,7 +3,7 @@
 pkgname=mongodb44
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=4.4.22
+pkgver=4.4.24
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
@@ -28,7 +28,7 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-4.4.15-adjust-cache-alignment-assumptions.patch.arm64
         mongodb-4.4.10-boost-1.81.patch
         mongodb-4.4.8-gcc-13.patch)
-sha256sums=('c49a510df786f73714bb24c35b0f171d15d0dfc30b05eb29004ee49c8683c4a8'
+sha256sums=('9729fd1dc0b2f8539f121440c83db85b1898d49c0ce0eed0c9159f9e5b2debfc'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '184b67c3a9fa894bd4eb8a79fd8bb580904b96c361cd30fd55fe4b1f2e46f507'
@@ -45,6 +45,7 @@ _scons_args=(
   CC="${CC:-gcc}"
   CXX="${CXX:-g++}"
   AR="${AR:-ar}"
+  MONGO_DISTMOD=arch
 
   --use-system-pcre
   --use-system-snappy
