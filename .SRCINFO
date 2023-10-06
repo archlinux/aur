@@ -1,0 +1,16 @@
+pkgbase = python-unicodeit
+	pkgdesc = Converts LaTeX tags to unicode
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/svenkreiss/unicodeit
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.io/packages/source/u/unicodeit/unicodeit-0.7.5.tar.gz
+	sha256sums = f100df7a1b8c64d7b5160859426b641cd9f30218173c5a3450842370e242a168
+
+pkgname = python-unicodeit
