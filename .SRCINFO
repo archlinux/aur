@@ -1,18 +1,17 @@
 pkgbase = roadrunner
 	pkgdesc = High-performance PHP application server, load-balancer and process manager written in Golang
-	pkgver = 2023.2.2
+	pkgver = 2023.3.0
 	pkgrel = 1
 	epoch = 1
 	url = https://roadrunner.dev/
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.21
-	depends = php>=7.4
 	options = !buildflags
-	source = roadrunner-2023.2.2.tar.gz::https://github.com/spiral/roadrunner/archive/v2023.2.2.tar.gz
+	source = roadrunner-2023.3.0.tar.gz::https://github.com/spiral/roadrunner/archive/v2023.3.0.tar.gz
 	source = rr.full.sample.yaml
 	source = rr.minimal.sample.yaml
-	sha256sums = 94fcc6674f7084b5a8aef09e73900c87f87846d304c0921a0166c1318ae4be12
+	sha256sums = 6d4c4089c41740ca302eef04a84d9d39b8676d7a9b894ba448462eab691ddbcd
 	sha256sums = SKIP
 	sha256sums = SKIP
 
