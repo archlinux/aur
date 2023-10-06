@@ -1,7 +1,7 @@
 pkgbase = inceptum-git
 	pkgdesc = An advanced minecraft launcher written in java
-	pkgver = 0.3.1.r2.g7dee852
-	pkgrel = 2
+	pkgver = 0.3.1.r71.gc7eabc3
+	pkgrel = 1
 	url = https://git.frohnmeyer-wds.de/JfMods/Inceptum
 	arch = x86_64
 	license = GPL3

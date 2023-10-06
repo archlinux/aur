@@ -2,7 +2,7 @@
 
 _name=inceptum
 pkgname=$_name-git
-pkgver=0.3.1.r70.g0bd675f
+pkgver=0.3.1.r71.gc7eabc3
 pkgrel=1
 pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
@@ -38,7 +38,6 @@ package() {
 
     install -Dm644 "$_name.conf" "$pkgdir/etc/conf.d/$_name"
     echo "u $_name - \"Inceptum\"" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-    echo "Z /srv/$_name 0750 $_name $_name" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+    echo "Z /srv/$_name 2750 $_name $_name" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
     install -Dm644 "$srcdir/$_name.service" "$pkgdir/usr/lib/systemd/system/$_name.service"
-    install -dm2755 "$pkgdir/srv/$_name"
 }
