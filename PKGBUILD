@@ -6,10 +6,10 @@
 pkgbase=rustrover-eap
 pkgname=("${pkgbase}" "${pkgbase}-jre")
 pkgver=232.9921.62
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust IDE by JetBrains"
 arch=('x86_64' 'aarch64')
-optdepends=('rust-src: Rust toolchain')
+depends=('glib2')
 options=('!strip')
 url="https://www.jetbrains.com/rust/"
 license=('custom:jetbrains')
