@@ -2,10 +2,10 @@
 
 pkgname=cbftp-svn
 pkgver=r1244
-pkgrel=1
+pkgrel=2
 pkgdesc='an advanced multi-purpose FTP/FXP client that focuses on efficient large-scale data spreading, while also supporting most regular FTP/FXP use cases in a modern way. It runs in a terminal and provides a semi-graphical user interface through ncurses.'
 arch=('x86_64')
-url='https://cbftp.eu'
+url='https://cbftp.glftpd.io'
 depends=('openssl' 'ncurses')
 makedepends=('subversion' 'gcc')
 optdepends=()
@@ -14,7 +14,7 @@ conflicts=('cbftp')
 replaces=('cbftp')
 license=('MIT')
 _srcname=cbftp
-source=("svn+https://cbftp.eu/svn/cbftp/")
+source=("svn+https://cbftp.glftpd.io/svn/cbftp/")
 sha256sums=('SKIP')
 
 pkgver() {
