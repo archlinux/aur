@@ -10,5 +10,5 @@ User=dex
 Group=dex
 ProtectSystem=full
 
-[Intall]
+[Install]
 WantedBy=multi-user.target
