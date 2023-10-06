@@ -1,7 +1,7 @@
 appname=amethyst
 pkgname=$appname-player-git
-pkgver=8a9d30d14d17122f229a60ace66e02f92a4c00c2
-pkgrel=4
+pkgver=git
+pkgrel=1
 pkgdesc="Audio Player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Geoxor/$appname"
@@ -12,7 +12,6 @@ md5sums=('SKIP')
 
 prepare(){
 	cd "$appname"
-	git checkout $pkgver
 	gendesk -n -f --pkgname "$appname" --pkgdesc "$pkgdesc" --exec="/opt/$appname/$appname"
 	git submodule update --init --recursive
 	yarn
