@@ -8,6 +8,7 @@ pkgbase = tiawa-utils
 	optdepends = aria2: download utility
 	optdepends = ffmpeg: audio/video manipulation
 	optdepends = graphviz: graph visualization
+	optdepends = imagemagick: image manipulation
 	optdepends = jpegoptim: image optimizer
 	optdepends = optipng: image optimizer
 	optdepends = rar

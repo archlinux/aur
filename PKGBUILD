@@ -13,6 +13,7 @@ optdepends=(
 	'aria2: download utility'
 	'ffmpeg: audio/video manipulation'
 	'graphviz: graph visualization'
+	'imagemagick: image manipulation'
 	'jpegoptim: image optimizer'
 	'optipng: image optimizer'
 	'rar'
