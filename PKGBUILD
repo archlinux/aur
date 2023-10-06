@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=ruby-slather
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc='Test coverage reports for Xcode projects'
 arch=(any)
@@ -17,7 +17,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/slather-$pkgver.gem)
 noextract=(slather-$pkgver.gem)
-sha256sums=('53a515514bde30eec597dcd61c9cabd4881eb9d6920d4ce49c36ca20727cb14d')
+sha256sums=('7c44574e78a30d11b48e1fc4ca366151b2c2bbae9edfb043cc0c28f3368e89ff')
 
 package() {
   local _gemdir="$pkgdir/$(ruby -e'puts Gem.default_dir')"
