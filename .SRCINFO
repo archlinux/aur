@@ -1,13 +1,14 @@
 pkgbase = homed-automation
 	pkgdesc = HOMEd Automation is simple service for home automations, part of HOMEd project
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.homed.dev/
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
+	depends = curl
 	depends = qt5-mqtt
 	backup = etc/homed/homed-automation.conf
 	source = https://github.com/u236/homed-service-automation/archive/refs/tags/1.1.0.tar.gz
