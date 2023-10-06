@@ -1,0 +1,16 @@
+pkgbase = libxsd-frontend
+	pkgdesc = A compiler frontend for the W3C XML Schema definition language
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.codesynthesis.com/projects/libxsd-frontend/
+	arch = x86_64
+	license = MIT
+	makedepends = build2
+	depends = gcc-libs
+	depends = glibc
+	depends = libcutl
+	depends = xerces-c
+	source = https://www.codesynthesis.com/download/xsd/4.2/libxsd-frontend-2.1.0.tar.gz
+	sha256sums = 98321b9c2307d7c4e1eba49da6a522ffa81bdf61f7e3605e469aa85bfcab90b1
+
+pkgname = libxsd-frontend
