@@ -4,7 +4,7 @@
 
 pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
-_basever=5.15.10
+_basever=5.15.11
 pkgver=$_basever
 pkgrel=1
 arch=('any')
@@ -17,7 +17,7 @@ _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/${_pkgfqn}.tar.xz"
          qt5-webengine-python3.patch
          no-qmake.patch)
-sha256sums=('b545cb83c60934adc9a6bbd27e2af79e5013de77d46f5b9f5bb2a3c762bf55ca'
+sha256sums=('7426b1eaab52ed169ce53804bdd05dfe364f761468f888a0f15a308dc1dc2951'
             '398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32'
             'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498')
 
