@@ -1,0 +1,19 @@
+pkgbase = python-fenicsx-plotly
+	pkgdesc = A package for plotting FEniCS objects using plotly
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/finsberg/fenicsx-plotly
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-fenics-dolfinx
+	depends = python-ipywidgets
+	depends = python-plotly
+	source = fenicsx-plotly-0.3.0.tar.gz::https://github.com/finsberg/fenicsx-plotly/archive/v0.3.0.tar.gz
+	sha512sums = 456fa4e617b233a5bd28768c0e99812c730ae01a2c9937ef3ffa0f529cf82372b5e3d8596cb4bab7630d835e8f4abdfc58e30d26e08576c83333c58b9859e016
+
+pkgname = python-fenicsx-plotly
