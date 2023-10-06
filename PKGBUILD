@@ -6,10 +6,9 @@
 pkgbase=rustrover-eap
 pkgname=("${pkgbase}" "${pkgbase}-jre")
 pkgver=232.9921.62
-pkgrel=3
+pkgrel=4
 pkgdesc="Rust IDE by JetBrains"
 arch=('x86_64' 'aarch64')
-depends=('glib2')
 options=('!strip')
 url="https://www.jetbrains.com/rust/"
 license=('custom:jetbrains')
@@ -22,9 +21,10 @@ sha256sums_x86_64=('1f67e1a82f5cbb7c84382c7f251ae06b1e2699fa7d2fa4129e23ec2e4325
 sha256sums_aarch64=('fca556502e9a532ee4ad7a3c0a470377f9f4ecb7d9b7d8311467a107b29fc868')
 
 package_rustrover-eap() {
+  depends=('glib2')
   optdepends=('rust-src: Rust toolchain'
               "${pkgbase}-jre: JetBrains custom Java Runtime (Recommended)"
-              "java-runtime: JRE - Required if ${pkgbase}-jre is not installed")
+              "java-runtime=17: JRE - Required if ${pkgbase}-jre is not installed")
 
   install -dm 755 "${pkgdir}/opt/${pkgbase}"
   cp -a "RustRover-${pkgver}/." "${pkgdir}/opt/${pkgbase}"
@@ -43,6 +43,7 @@ package_rustrover-eap() {
 
 
 package_rustrover-eap-jre() {
+  license=('GPL2')
   pkgdesc='JBR (JetBrains Runtime) for RustRover - a patched JRE'
   url='https://github.com/JetBrains/JetBrainsRuntime'
 
