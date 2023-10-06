@@ -1,7 +1,7 @@
 pkgbase = homed-automation
 	pkgdesc = HOMEd Automation is simple service for home automations, part of HOMEd project
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.homed.dev/
 	arch = armv7h
 	arch = i686
