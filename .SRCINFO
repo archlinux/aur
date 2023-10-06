@@ -6,7 +6,6 @@ pkgbase = trackma-wrapper-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = coreutils
 	depends = mpv
 	depends = animdl
 	depends = trackma
