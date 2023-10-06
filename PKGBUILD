@@ -2,7 +2,7 @@
 
 pkgname=cutadapt
 _name=cutadapt
-pkgver=4.4
+pkgver=4.5
 pkgrel=1
 pkgdesc='Remove adapter sequences from high-throughput sequencing reads. doi:10.14806/ej.17.1.200'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
             'python-setuptools-scm'
             )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4554157c673022e1c433fcd6e3b803008fef60c8e71c01215e4aa04b0f09fe83')
+sha256sums=('33e56678bb3ba90fd7045d03184b83e135f61e8a6b9f29aa3db8c63611a08e94')
 
 build() {
     cd "$_name-$pkgver"
