@@ -1,4 +1,4 @@
-pkgbase = solar2d
+pkgbase = solar2d-bin
 	pkgdesc = Simple to learn and use, completely free and open source 2D game engine
 	pkgver = 2023.3697
 	pkgrel = 1
@@ -16,10 +16,9 @@ pkgbase = solar2d
 	depends = curl
 	depends = sdl2
 	depends = java-runtime
-	provides = Solar2D
-	provides = Solar2DBuilder
-	provides = Solar2DSimulator
 	source = https://github.com/coronalabs/corona/releases/download/3697/Solar2D-Linux-2023.3697_amd64.snap
+	source = https://raw.githubusercontent.com/coronalabs/corona/685b98d1154c140b5bac138317621dc8ee2fa103/LICENSE.md
 	sha256sums = 509a1aaf622bf41490dcfe63aa040ba4f327e9e1a4c2a7b5aa32c749a059f31a
+	sha256sums = 8b3bad18f5a69906b8f03a4c525af48b76bdc7a46540c633ea0b1bdcc43b4176
 
-pkgname = solar2d
+pkgname = solar2d-bin
