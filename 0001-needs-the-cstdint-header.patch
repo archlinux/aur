@@ -1,0 +1,37 @@
+From 195bacebd6d9690ab882c061ddec12306fb3b3a7 Mon Sep 17 00:00:00 2001
+From: Oden Eriksson <oe@nux.se>
+Date: Fri, 4 Aug 2023 15:52:47 +0200
+Subject: [PATCH] needs the cstdint header
+
+---
+ src/http/httphost.h | 1 +
+ src/http/sha1.h     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git src/http/httphost.h b/src/http/httphost.h
+index e42da3d..336aae8 100644
+--- src/http/httphost.h
++++ src/http/httphost.h
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <string>
++#include <cstdint>
+ 
+ class CookieManager;
+ 
+diff --git src/http/sha1.h b/src/http/sha1.h
+index 96480cf..db53478 100644
+--- src/http/sha1.h
++++ src/http/sha1.h
+@@ -6,6 +6,7 @@
+ 
+ #include <iostream>
+ #include <string>
++#include <cstdint>
+ 
+ void base64_encode(const unsigned char *src, size_t len, char *destination);
+ 
+-- 
+2.41.0
+
