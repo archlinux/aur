@@ -5,10 +5,13 @@ pkgbase = python-dolfin
 	url = https://bitbucket.org/fenics-project/dolfin
 	arch = x86_64
 	license = LGPL3
-	checkdepends = openssh
 	checkdepends = python-pytest
 	checkdepends = python-decorator
 	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = dolfin=2019.1.0.post0
 	depends = python-pkgconfig
 	depends = python-ply
