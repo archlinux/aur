@@ -2,20 +2,21 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-depends=('exiv2' 'imagemagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv')
+depends=('exiv2' 'imagemagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme'
+'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg')
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above
 # These dependencies are disabled in the cmake call below: 'freeimage' 'devil-ilut' 'poppler-qt5'
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('003f94c30fed99746202499eb87041a25944e98f4bedcf9f07cf3600b56d4974')
+sha256sums=('9157fdfb323daed10c992d0de2aacdebbdd3ff57e7a9f715de140f9cc5cc2dab')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -23,7 +24,7 @@ prepare() {
   # To build PhotoQt with less features, add -Dxxxx=OFF to
   # the next line (where xxxx is the respective CMake option).
   # to use GraphicsMagick instead of ImageMagick add: -DIMAGEMAGICK=OFF -DGRAPHICSMAGICK=ON
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=ON -DCHROMECAST=OFF
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=ON -DCHROMECAST=OFF -DRESVG=ON
 
 }
 
