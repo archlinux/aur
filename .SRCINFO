@@ -1,0 +1,23 @@
+pkgbase = fuse-nullfs-git
+	pkgdesc = FUSE nullfs drivers
+	pkgver = r15.0884f87
+	pkgrel = 1
+	url = https://github.com/xrgtn/nullfs
+	arch = x86_64
+	license = GPL
+	makedepends = fuse2
+	makedepends = git
+	depends = fuse2
+	depends = gcc-libs
+	provides = fuse-nullfs
+	provides = nul1fs
+	provides = nullfs
+	provides = nulnfs
+	conflicts = fuse-nullfs
+	conflicts = nul1fs
+	conflicts = nullfs
+	conflicts = nulnfs
+	source = nullfs::git+https://github.com/xrgtn/nullfs.git
+	sha256sums = SKIP
+
+pkgname = fuse-nullfs-git
