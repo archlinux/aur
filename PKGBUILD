@@ -4,7 +4,7 @@
 _pkgname='usbimager'
 pkgname="${_pkgname}-x11"
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives (X11 Frontend)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://gitlab.com/bztsrc/usbimager'
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'makefile.patch')
-sha256sums=('c6bf80f1f296283ee7b3b76ae7e1303a31e937ca0fdd787503006ae7a6beaae2'
+sha256sums=('cd9facd9269ecb9eae4f513e6c7f9766e928d40064ae6e83841bdf6083cd0eb5'
             'a8622b5584d5458b608096f24ab2e52e40f1970baaf4e4cd1ffd69b64d149828')
 
 prepare() {
