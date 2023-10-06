@@ -30,7 +30,7 @@ depends=('love' 'lua51-lsqlite3')
 makedepends=('unzip' 'python' 'python-requests')
 source=("$pkgname-$pkgver.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/$pkgver/artifacts?artifactName=linux.main&\$format=zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('7f6848a4370116ea119866c1db6cbe9246b49a5266a74ea82b0a6921fdfcf832')
+sha256sums=('7f55d8e7fa24b64cebcdf953cc38a66ce1cc4776ddd235e1d430d353ef973356')
 
 
 prepare() {
@@ -48,6 +48,7 @@ package() {
     install -Dm644 olympus.desktop "$pkgdir/usr/share/applications/olympus.desktop"
     install -Dm644 olympus.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/olympus.png"
     install -Dm755 olympus "$pkgdir/usr/lib/olympus/olympus"
+    install -Dm755 find-love "$pkgdir/usr/lib/olympus/find-love"
     mkdir -p "$pkgdir/usr/bin"
     ln -s "/usr/lib/olympus/olympus" "$pkgdir/usr/bin/olympus"
     
