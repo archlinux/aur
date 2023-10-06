@@ -1,6 +1,6 @@
 pkgname=typecho
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A PHP Blogging Platform'
 arch=(any)
 url='https://typecho.org/'
@@ -18,7 +18,7 @@ optdepends=('apache: Web server'
 	    'php-pgsql: PHP extension for postgresql'
            )
 source=("https://github.com/typecho/typecho/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b711f50511f60ab228c880f57bc848c678b58a56e3d9b2f037d27308ca75d8212fc14fb1292646048bbe8afb0fc99edb7bf06f8a5386f72d29a8e2a4d59bed32')
+b2sums=('63fad7919d28b31cc4a82031826ea514a326cc86925121832c8c32e1d35614ec2cf728b68fc932a716fc6ff1de6508d8db77ada2806c6f4516cd3e76f2ca32e7')
 
 package() {
   mkdir -p "$pkgdir/usr/share/webapps/$pkgname/usr/uploads"
