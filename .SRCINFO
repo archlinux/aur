@@ -1,0 +1,13 @@
+pkgbase = libgedit-gtksourceview-langspec-twig
+	pkgdesc = Twig language specifications for libgedit-gtksourceview
+	pkgver = r1.e75762c
+	pkgrel = 1
+	url = https://github.com/gerryd/libgedit-gtksourceview-langspec-twig
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = gedit>=46
+	source = libgedit-gtksourceview-langspec-twig::git+https://github.com/gerryd/libgedit-gtksourceview-langspec-twig.git
+	sha256sums = SKIP
+
+pkgname = libgedit-gtksourceview-langspec-twig
