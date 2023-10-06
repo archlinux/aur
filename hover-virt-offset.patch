@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..5d146b541 100644
+index ef3523211..a2a0cd558 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -993,6 +993,115 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
+@@ -993,6 +993,113 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
    return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
  }
  
@@ -59,8 +59,6 @@ index ef3523211..5d146b541 100644
 +  }
 +  const auto MSABI =
 +      Record->getASTContext().getTargetInfo().getCXXABI().isMicrosoft();
-+  if (MSABI && Method == Record->getDestructor())
-+    return 0;
 +  if (Record->getNumBases() == 0) {
 +    uint64_t Id = 0;
 +    for (const auto *MD : Record->methods()) {
@@ -118,7 +116,7 @@ index ef3523211..5d146b541 100644
  void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (ND.isInvalidDecl())
      return;
-@@ -1039,6 +1148,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1039,6 +1146,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      }
      return;
    }
@@ -134,7 +132,7 @@ index ef3523211..5d146b541 100644
  }
  
  HoverInfo::PassType::PassMode getPassMode(QualType ParmType) {
-@@ -1074,10 +1192,9 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
+@@ -1074,10 +1190,9 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
  
    // For non-function-call-like operators (e.g. operator+, operator<<) it's
    // not immediately obvious what the "passed as" would refer to and, given
@@ -148,7 +146,7 @@ index ef3523211..5d146b541 100644
    if (!FD || FD->isOverloadedOperator() || FD->isVariadic())
      return;
  
-@@ -1102,8 +1219,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
+@@ -1102,8 +1217,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
      return;
  
    // If we found a matching argument, also figure out if it's a
@@ -159,7 +157,7 @@ index ef3523211..5d146b541 100644
    if (const auto *E = N->ASTNode.get<Expr>()) {
      if (E->getType().isConstQualified())
        PassType.PassBy = HoverInfo::PassType::ConstRef;
-@@ -1138,8 +1255,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
+@@ -1138,8 +1253,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
        }
      } else if (const auto *CtorCall =
                     CastNode->ASTNode.get<CXXConstructExpr>()) {
