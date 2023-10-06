@@ -1,0 +1,4 @@
+/pkg
+/src
+/opentofu-bin-*.pkg.*
+/tofu_*.zip
