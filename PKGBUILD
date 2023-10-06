@@ -6,64 +6,72 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-pkgver=26.0.0
-_chromiumver=116.0.5845.62
-_gcc_patchset=116-patchset-2
-# shellcheck disable=SC2034
-pkgrel=1
-
+pkgver=26.3.0
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
-# shellcheck disable=SC2034
+pkgrel=1
+_chromiumver=116.0.5845.228
+_gcc_patchset=116-patchset-2
 pkgdesc='Build cross platform desktop apps with web technologies'
-# shellcheck disable=SC2034
 arch=('x86_64')
-# shellcheck disable=SC2034
-url='https://electronjs.org/'
-# shellcheck disable=SC2034
+url='https://electronjs.org'
 license=('MIT' 'custom')
-# shellcheck disable=SC2034
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
-# shellcheck disable=SC2034
-makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
-             'qt5-base' 'java-runtime-headless' 'libnotify' 'lld' 'llvm'
-             'ninja' 'npm' 'pciutils' 'pipewire' 'python' 'python-httplib2'
-             'python-requests' 'python-pyparsing' 'python-six' 'wget' 'yarn')
-# shellcheck disable=SC2034
-optdepends=('kde-cli-tools: file deletion support (kioclient5)'
-            'pipewire: WebRTC desktop sharing under Wayland'
+depends=(c-ares
+         gtk3
+         libevent
+         libffi
+         nss)
+makedepends=(clang
+             git
+             gn
+             gperf
+             harfbuzz-icu
+             http-parser
+             java-runtime-headless
+             libnotify
+             lld
+             llvm
+             ninja
+             npm
+             pciutils
+             pipewire
+             python
+             python-httplib2
+             python-pyparsing
+             python-requests
+             python-six
+             qt5-base
+             wget
+             yarn)
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'kde-cli-tools: file deletion support (kioclient5)'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
-# shellcheck disable=SC2034
 options=('!lto') # Electron adds its own flags for ThinLTO
-# shellcheck disable=SC2034
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
         "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
+        https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
         "electron-launcher.sh"
         "electron.desktop"
-        https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
         REVERT-disable-autoupgrading-debug-info.patch
-        random-build-fixes.patch
         default_app-icon.patch
         jinja-python-3.10.patch
         use-system-libraries-in-node.patch
-        std-vector-non-const.patch
-       )
-# shellcheck disable=SC2034
+        std-vector-non-const.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
-            '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'e938c6ee7087eed8f0de83ffb0ca89e328575808fafa4fe3950aeb1bc58b9411'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c')
+
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -77,7 +85,7 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [jsoncpp]=jsoncpp
-  # [libaom]=aom
+  #[libaom]=aom      # https://aomedia.googlesource.com/aom/+/706ee36dcc82
   #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
   [libdrm]=
   [libjpeg]=libjpeg
@@ -87,7 +95,7 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  #[re2]=re2
+  [re2]=re2
   [snappy]=snappy
   [woff2]=woff2
   [zlib]=minizip
@@ -98,9 +106,6 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  # adapt chromium x.y.z..84 patch for .62
-  sed -i '495,$d' random-build-fixes.patch
-
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
   sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
@@ -126,17 +131,12 @@ EOF
   export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
   echo "Linking chromium from sources..."
-  ln -s chromium-mirror src
+  ln -sfn chromium-mirror src
 
   depot_tools/gclient.py sync -D \
       --nohooks \
       --with_branch_heads \
       --with_tags
-
-  (
-    cd src/electron
-    patch -Np1 -i ../../std-vector-non-const.patch
-  )
 
   echo "Running hooks..."
   # python "${srcdir}/depot_tools/gclient.py" runhooks
@@ -152,16 +152,14 @@ EOF
     --gs-url-base=chromium-optimization-profiles/pgo_profiles
   depot_tools/download_from_google_storage.py --no_resume --extract --no_auth \
     --bucket chromium-nodejs -s src/third_party/node/node_modules.tar.gz.sha1
-  # Create sysmlink to system clang-format
-  ln -s /usr/bin/clang-format src/buildtools/linux64
-  # Create sysmlink to system Node.js
-  mkdir -p src/third_party/node/linux/node-linux-x64/bin
-  ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
+
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
-  cd src/electron
+
+  pushd src
+  pushd electron
   yarn install --frozen-lockfile
-  cd ..
+  popd
 
   echo "Applying local patches..."
 
@@ -170,9 +168,6 @@ EOF
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
-  # Build fixes
-  patch -Np1 -i ../random-build-fixes.patch
-
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
   patch -Np1 -i ../patches/chromium-114-ruy-include.patch
@@ -180,11 +175,19 @@ EOF
   patch -Np1 -i ../patches/chromium-116-object_paint_properties_sparse-include.patch
   patch -Np1 -i ../patches/chromium-116-profile_view_utils-include.patch
 
+  # Link to system tools required by the build
+  mkdir -p third_party/node/linux/node-linux-x64/bin
+  ln -sfn /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  ln -sfn /usr/bin/java third_party/jdk/current/bin/
+  ln -sfn /usr/bin/clang-format buildtools/linux64
 
   # Electron specific fixes
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
   patch -Np1 -i "${srcdir}/use-system-libraries-in-node.patch"
   patch -Np1 -i "${srcdir}/default_app-icon.patch"  # Icon from .desktop file
+  pushd electron
+  patch -Np1 -i "${srcdir}/std-vector-non-const.patch"
+  popd
 
   # Allow building against system libraries in official builds
   echo "Patching Chromium for using system libraries..."
@@ -195,14 +198,10 @@ EOF
   # added benefit of not having to list all the remaining libraries
   local _lib
   for _lib in ${_unwanted_bundled_libs[@]}; do
-    third_party_dir="third_party/$_lib"
-    if [ ! -d "${third_party_dir}" ]; then
-      third_party_dir="base/${third_party_dir}"
-    fi
-    find "${third_party_dir}" -type f \
-        \! -path "${third_party_dir}/chromium/*" \
-        \! -path "${third_party_dir}/google/*" \
-        \! -path 'third_party/harfbuzz-ng/utils/hb_scoped.h' \
+    find "third_party/$_lib" -type f \
+      \! -path "third_party/$_lib/chromium/*" \
+      \! -path "third_party/$_lib/google/*" \
+      \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
         \! -regex '.*\.\(gn\|gni\|isolate\)' \
         -delete
   done
@@ -212,6 +211,8 @@ EOF
 }
 
 build() {
+  cd src
+
   export CC=clang
   export CXX=clang++
   export AR=ar
@@ -234,7 +235,7 @@ build() {
     'use_custom_libcxx=false'
     'use_sysroot=false'
     'use_system_libffi=true'
-    'is_component_ffmpeg=false'
+    'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
     'enable_rust=false'
@@ -271,12 +272,10 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
-  cd src
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
   gn gen out/Release \
       --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}"
-  ninja -C out/Release electron
-  ninja -C out/Release electron_dist_zip
+  ninja -C out/Release electron electron_dist_zip
   # ninja -C out/Release third_party/electron_node:headers
 }
 
