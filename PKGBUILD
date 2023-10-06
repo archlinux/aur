@@ -60,6 +60,12 @@
 # CLANGD_HOVERALIGN:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Show offset of virtual methods
+# Limitations: do not work for multiple inherits; do not work for overrides methods (look original method)
+# CLANGD_HOVERVIRTOFF:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_BRANCH:=main}
@@ -73,10 +79,11 @@
 : ${CLANGD_HOVERINHEX:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERALIGN:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_HOVERVIRTOFF:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=5
+pkgrel=6
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -96,7 +103,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-hex-formats.patch'
         'hover-bit-fields-mask.patch'
         'hover-align.patch'
-        'hover-align-mask-comp.patch')
+        'hover-align-mask-comp.patch'
+        'hover-virt-offset.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             'c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3'  # doxygen-more-fields
@@ -109,7 +117,8 @@ sha256sums=('SKIP'
             'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
             'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff'  # hover-bit-fields-mask
             '3d639ec99a36d17dbb9e926e30807d9e57587fb2eac55d42616a2f41d90281f9'  # hover-align
-            '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76') # hover-align-mask-comp
+            '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76'  # hover-align-mask-comp
+            '2d50c4dc914305296216773fbe2b2ba988b61411286721be3e8c6a80f658f550') # hover-virt-offset
 
 pkgver() {
     cd llvm-project
@@ -141,6 +150,9 @@ prepare() {
         else
             patch -p1 -i ${srcdir}/hover-align.patch
         fi
+    fi
+    if [ "$CLANGD_HOVERVIRTOFF" != "n" ]; then
+        patch -p1 -i ${srcdir}/hover-virt-offset.patch
     fi
 
     # LSP patches

@@ -1,0 +1,97 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index ef3523211..4ea7f0dc2 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -993,6 +993,76 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
+   return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
+ }
+ 
++static uint64_t getVirtualCXXMethodsCount(const CXXRecordDecl *Record) {
++  uint64_t Count = 0;
++  for (const auto &Base :
++       Record->bases()) { // FIXME: Calc only for first or last base
++    const auto *BaseRecord = Base.getType()->getAsCXXRecordDecl();
++    if (BaseRecord)
++      Count += getVirtualCXXMethodsCount(BaseRecord);
++    break;
++  }
++  const auto MSABI =
++      Record->getASTContext().getTargetInfo().getCXXABI().isMicrosoft();
++  for (const auto *MD : Record->methods()) {
++    if (!MD->isVirtual() || MD->hasAttr<OverrideAttr>())
++      continue;
++    if (!MSABI && Record->getDestructor() == MD)
++      Count++;
++    Count++;
++  }
++  return Count;
++}
++static constexpr auto InvalidVirtualCXXMethodId =
++    std::numeric_limits<uint64_t>::max();
++static uint64_t findVirtualCXXMethodId(const CXXMethodDecl *Method,
++                                       const CXXRecordDecl *Record = nullptr) {
++  if (!Method->isVirtual() || Method->hasAttr<OverrideAttr>())
++    return InvalidVirtualCXXMethodId; // FIXME: Find id from override.
++  if (!Record) {
++    Record = Method->getParent();
++    if (Record)
++      Record = Record->getDefinition();
++    // FIXME: Depend type may not affect vtable. Check on mixins?
++    if (!Record || Record->isInvalidDecl() || Record->isDependentType())
++      return InvalidVirtualCXXMethodId;
++  }
++  const auto MSABI =
++      Record->getASTContext().getTargetInfo().getCXXABI().isMicrosoft();
++  if (Record->getNumBases() == 0) {
++    uint64_t Id = 0;
++    for (const auto *MD : Record->methods()) {
++      if (!MD->isVirtual() || MD->hasAttr<OverrideAttr>())
++        continue;
++      if (MD == Method)
++        return Id;
++      if (!MSABI && Record->getDestructor() == MD)
++        Id++;
++      Id++;
++    }
++  } else {
++    // TODO: Recursive search for override attribute
++    for (const auto &Base :
++         Record->bases()) { // FIXME: Calc only for first or last base
++      const auto *BaseRecord = Base.getType()->getAsCXXRecordDecl();
++      if (!BaseRecord)
++        continue;
++      uint64_t Id = getVirtualCXXMethodsCount(BaseRecord);
++      for (const auto *MD : Record->methods()) {
++        if (!MD->isVirtual() || MD->hasAttr<OverrideAttr>())
++          continue;
++        if (MD == Method)
++          return Id;
++        if (!MSABI && Record->getDestructor() == MD)
++          Id++;
++        Id++;
++      }
++      break;
++    }
++  }
++  return InvalidVirtualCXXMethodId;
++}
++
+ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+   if (ND.isInvalidDecl())
+     return;
+@@ -1039,6 +1109,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+     }
+     return;
+   }
++
++  if (const auto *MD = llvm::dyn_cast<CXXMethodDecl>(&ND)) {
++    if (MD->isVirtual()) {
++      auto Id = findVirtualCXXMethodId(MD);
++      if (Id != InvalidVirtualCXXMethodId) {
++        HI.Offset = Id * Ctx.getTargetInfo().getPointerWidth(LangAS::Default);
++      }
++    }
++  }
+ }
+ 
+ HoverInfo::PassType::PassMode getPassMode(QualType ParmType) {
