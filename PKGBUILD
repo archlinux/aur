@@ -10,7 +10,7 @@ url='https://sourceforge.net/projects/pseint'
 license=('GPL2')
 conflicts=("$pkgname-bin")
 makedepends=('gendesk')
-depends=('wxwidgets-gtk3')
+depends=('wxwidgets-gtk3' 'rsync')
 noextract=(creator.psz)
 source=("https://netactuate.dl.sourceforge.net/project/$pkgname/$pkgver/$pkgname-src-$pkgver.tgz")
 sha256sums=('f3373b0ad0d0f518d72c05504e282cb4fa9d0c9b11f1f7c1a29c4117354ff9e2')  # 'makepkg -g' to generate it.
@@ -63,11 +63,8 @@ build(){
 package(){
     cd "$pkgname"
 
-    # Crear ruta de destino transitoria.
-    mkdir -p $pkgdir/opt/$pkgname
-
-    # Copiar el contenido compilado a la ruta de destino transitoria.
-    cp -rv bin/* $pkgdir/opt/$pkgname
+    # Crear el directorio de destino y copiar en él, el contenido de pseint.
+    rsync -a bin/ --mkpath "$pkgdir/opt/$pkgname/"
 
     # Instalar el archivo .desktop en la ubicación (-t) adecuada.
     install -Dvm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"

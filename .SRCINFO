@@ -7,6 +7,7 @@ pkgbase = pseint
 	license = GPL2
 	makedepends = gendesk
 	depends = wxwidgets-gtk3
+	depends = rsync
 	conflicts = pseint-bin
 	noextract = creator.psz
 	source = https://netactuate.dl.sourceforge.net/project/pseint/20230517/pseint-src-20230517.tgz
