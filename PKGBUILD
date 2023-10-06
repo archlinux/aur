@@ -46,7 +46,7 @@ depends=(libxtst
 	libxext libxfixes libxcb libglvnd libpulse gcc-libs)
 provides=()
 options=(!strip) # or it will error
-source=("https://app-1320188180.cos.ap-nanjing.myqcloud.com/pc/install/6.6.3/shalou6.6.3.deb")
+source=("https://app-1320188180.cos.ap-nanjing.myqcloud.com/pc/install/${pkgver}/shalou${pkgver}.deb")
 sha256sums=('5200bf5423b8f5c4186d6cfb737d89963cc4077f0d72733594177b5262f6d5a3')
 
 package() {
