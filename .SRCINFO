@@ -1,6 +1,6 @@
 pkgbase = dex-idp
 	pkgdesc = OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
-	pkgver = 2.30.0
+	pkgver = 2.37.0
 	pkgrel = 1
 	url = https://github.com/dexidp/dex
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dex-idp
 	makedepends = go
 	depends = glibc
 	backup = etc/dex.yaml
-	source = git+https://github.com/dexidp/dex#tag=v2.30.0
+	source = git+https://github.com/dexidp/dex#tag=08bb7fb98b164ab078be17ecda4077b2d21c9bb3
 	source = dex.service
 	source = dex.sysusers
 	sha256sums = SKIP
