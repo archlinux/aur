@@ -4,7 +4,7 @@
 # instead of "hatsunotsus+aur(at)gmail(dot)com"
 # I probably won't read your email
 
-pkgname=solar2d
+pkgname=solar2d-bin
 pkgver=2023.3697
 pkgrel=1
 pkgdesc="Simple to learn and use, completely free and open source 2D game engine"
