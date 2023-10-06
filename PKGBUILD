@@ -1,49 +1,27 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer:
 
-pkgbase=nullfs
-pkgname=(nul1fs nulnfs nullfs)
-pkgver=latest
+_newpkg='fuse-nullfs-git'
+_pkgname="nullfs"
+pkgbase="$_pkgname"
+pkgname=(
+  'nul1fs'
+  'nullfs'
+  'nulnfs'
+)
+pkgver=0.0.1
 pkgrel=1
-pkgdesc="FUSE nullfs drivers"
+epoch=1
+pkgdesc="metapackage - migrate to $_newpkg"
 arch=('any')
-url="https://github.com/xrgtn/nullfs"
-depends=('fuse')
-makedepends=('git')
-license=('GPL')
-source=("git+https://github.com/xrgtn/nullfs.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgbase"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
-build() {
-  cd "$srcdir/$pkgbase"
-
-  make nul1fs
-  make nulnfs
-  g++ -lfuse -o nullfs nullfs.c++
-}
 
 package_nul1fs() {
-  install -Dm 755 "$srcdir/$pkgbase/nul1fs" \
-    "$pkgdir/usr/bin/nul1fs"
+  depends=("$_newpkg")
 }
 
 package_nulnfs() {
-  install -Dm 755 "$srcdir/$pkgbase/nulnfs" \
-    "$pkgdir/usr/bin/nulnfs"
-
+  depends=("$_newpkg")
 }
 
 package_nullfs() {
-  install -Dm 755 "$srcdir/$pkgbase/nullfs" \
-    "$pkgdir/usr/bin/nullfs"
-
+  depends=("$_newpkg")
 }
-
-# Copy README? LICENSE?

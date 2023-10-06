@@ -1,18 +1,15 @@
 pkgbase = nullfs
-	pkgdesc = FUSE nullfs drivers
-	pkgver = latest
+	pkgdesc = metapackage - migrate to fuse-nullfs-git
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://github.com/xrgtn/nullfs
+	epoch = 1
 	arch = any
-	license = GPL
-	makedepends = git
-	depends = fuse
-	source = git+https://github.com/xrgtn/nullfs.git
-	md5sums = SKIP
 
 pkgname = nul1fs
-
-pkgname = nulnfs
+	depends = fuse-nullfs-git
 
 pkgname = nullfs
+	depends = fuse-nullfs-git
 
+pkgname = nulnfs
+	depends = fuse-nullfs-git
