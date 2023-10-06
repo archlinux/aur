@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-connectivity
-_basever=5.15.10
+_basever=5.15.11
 pkgver=5.15.10+kde+r6
 pkgrel=1
-_commit=9a4e6f887f35b8018c30afdeaaef152a875c9a2b
+_commit=e33b82889625b6a72e0be91c5023a30d53136a80
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
