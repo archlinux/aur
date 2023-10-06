@@ -3,7 +3,7 @@
 # Contributor: Cenk Alti <cenkalti@gmail.com>
 
 pkgname='container-manager-bin'
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Manager for Docker containers'
 url='https://github.com/cenkalti/container-manager'
@@ -14,8 +14,8 @@ conflicts=('container-manager')
 depends=('docker')
 backup=('etc/container-manager.yaml')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cenkalti/container-manager/releases/download/v2.0.0/container-manager_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1c9e8453d78427b4fc345b117f479a77f1937e649bc36739610bb59b86037bf5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cenkalti/container-manager/releases/download/v2.1.0/container-manager_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('4e0f428f93ebd4f5f68b9aa2ec43f890359964c2698e84048e10f2e2f45d1c07')
 
 package() {
   install -Dm755 "./container-manager" "${pkgdir}/usr/bin/container-manager"
