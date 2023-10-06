@@ -10,7 +10,6 @@ pkgrel=1
 pkgdesc="Simple to learn and use, completely free and open source 2D game engine"
 arch=('x86_64')
 url='https://solar2d.com/'
-provides=('Solar2D' 'Solar2DBuilder' 'Solar2DSimulator')
 license=('MIT')
 depends=('glu' 'zlib' 'openal' 'freetype2' 'libpng' 'libjpeg' 'openssl-1.1' 'curl' 'sdl2' 'java-runtime')
 makedepends=('squashfs-tools')
