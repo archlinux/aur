@@ -1,6 +1,6 @@
 pkgbase = rabbithole
 	pkgdesc = The Meta-Window Manager. An extra-dimensional, lightning-fast UI made for enhancing productivity—A second brain interface. Built from the awesome window manager framework. GitHub Master branch.
-	pkgver = b0.8.1.r5
+	pkgver = b0.8.3.r21
 	pkgrel = 1
 	url = https://github.com/SaintRyoh/rabbithole
 	install = rabbithole.install
@@ -23,7 +23,7 @@ pkgbase = rabbithole
 	depends = beautyline
 	depends = linux-wifi-hotspot
 	conflicts = awesome-git
-	source = rabbithole::git+https://github.com/SaintRyoh/rabbithole.git
+	source = rabbithole::git+https://github.com/SaintRyoh/rabbithole.git#branch=AUR
 	md5sums = SKIP
 
 pkgname = rabbithole

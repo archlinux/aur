@@ -1,6 +1,6 @@
 # Maintainer: LycanDarko lycandarko (at) proton.me
 pkgname=rabbithole
-pkgver=b0.8.1.r5
+pkgver=b0.8.3.r21
 pkgrel=1
 epoch=
 pkgdesc="The Meta-Window Manager. An extra-dimensional, lightning-fast UI made for enhancing productivity—A second brain interface. Built from the awesome window manager framework. GitHub Master branch."
