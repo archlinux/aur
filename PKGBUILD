@@ -54,5 +54,16 @@ package() {
 	mv $pkgdir/lib/ $pkgdir/usr/lib/
 	mv $pkgdir/bin/ $pkgdir/usr/bin/
 	chown root:root -R $pkgdir
+	chmod 755 $pkgdir/etc/
+	chmod 755 $pkgdir/etc/udev/
+	chmod 755 $pkgdir/etc/udev/rules.d/
+	chmod 755 $pkgdir/opt/
+	chmod 755 $pkgdir/usr/
+	chmod 755 $pkgdir/usr/bin/
+	chmod 755 $pkgdir/usr/lib/
+	chmod 755 $pkgdir/usr/lib/udev/
+	chmod 755 $pkgdir/usr/lib/udev/rules.d/
+	chmod 755 $pkgdir/usr/share/
+	chmod 755 $pkgdir/usr/share/applications/
 	# todo: a lot of qt5 lib remain undeleted, I am not sure, so I keep them there.
 }
