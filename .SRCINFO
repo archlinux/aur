@@ -1,13 +1,14 @@
 pkgbase = python-tulir-telethon
 	pkgdesc = is a fork of Telethon library with custom patches from Tulir.
 	pkgver = 1.30.0a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tulir/Telethon
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-pyaes
 	depends = python-rsa
 	depends = python

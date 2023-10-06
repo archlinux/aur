@@ -2,7 +2,7 @@
 
 pkgname=python-tulir-telethon
 pkgver=1.30.0a2
-pkgrel=1
+pkgrel=2
 pkgdesc="is a fork of Telethon library with custom patches from Tulir."
 arch=('any')
 url="https://github.com/tulir/Telethon"
@@ -23,7 +23,7 @@ source=("https://files.pythonhosted.org/packages/source/${_basename::1}/${_basen
 
 # template start; name=python-wheel; version=1;
 depends+=('python')
-makedepends+=(python-build python-installer python-wheel)
+makedepends+=(python-build python-installer python-wheel python-setuptools)
 
 build() {
 	cd "${srcdir}/${_dirname}"
