@@ -9,7 +9,7 @@ arch=(x86_64)
 provides=('bililiverecorder')
 conflicts=('bililiverecorder')
 license=(GPL3)
-makedepends=('npm' 'dotnet-sdk>=6.0.22.sdk414-1' 'dotnet-sdk<7.0')
+makedepends=('npm' 'dotnet-sdk-6.0-bin>6.0.22.sdk400')
 source=(
   "${pkgname%-git}::git+https://github.com/BililiveRecorder/BililiveRecorder#branch=dev"
   "webui-source::git+https://github.com/BililiveRecorder/BililiveRecorder-WebUI.git"

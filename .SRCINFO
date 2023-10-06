@@ -6,7 +6,7 @@ pkgbase = bililiverecorder-git
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
-	makedepends = dotnet-sdk-7.0
+	makedepends = dotnet-sdk-6.0-bin>6.0.22.sdk400
 	provides = bililiverecorder
 	conflicts = bililiverecorder
 	source = bililiverecorder::git+https://github.com/BililiveRecorder/BililiveRecorder#branch=dev
