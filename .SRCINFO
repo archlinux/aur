@@ -1,0 +1,19 @@
+pkgbase = qt5-3d
+	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics
+	pkgver = 5.15.11
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = qt5-declarative
+	depends = assimp
+	source = git+https://invent.kde.org/qt/qt/qt3d#commit=c1f8fa2578d99e07f5e581f26bd532695b9534f9
+	sha256sums = SKIP
+
+pkgname = qt5-3d
