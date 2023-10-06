@@ -1,0 +1,19 @@
+pkgbase = homed-web
+	pkgdesc = HOMEd Web is web interface for all HOMEd services, part of HOMEd project
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://wiki.homed.dev/
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-mqtt
+	depends = qt5-websockets
+	backup = etc/homed/homed-web.conf
+	source = https://github.com/u236/homed-service-web/archive/refs/tags/1.1.0.tar.gz
+	source = git+https://github.com/u236/homed-service-common.git
+	sha512sums = 6da1babf82b94b9f7d84db4ff00b7f389eef4f0c93ca129b4ef79a273da884658209c45173e6f066e2805fcde97bd63892781fbde7dd5c19ac5713fcadfd34ae
+	sha512sums = SKIP
+
+pkgname = homed-web
