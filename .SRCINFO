@@ -1,7 +1,7 @@
 pkgbase = r-genomeinfodb
 	pkgdesc = Utilities for manipulating chromosome names, including modifying them to follow a particular naming style
-	pkgver = 1.36.0
-	pkgrel = 2
+	pkgver = 1.36.4
+	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html
 	arch = any
 	license = Artistic2.0
@@ -23,7 +23,7 @@ pkgbase = r-genomeinfodb
 	optdepends = r-runit
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.36.0.tar.gz
-	b2sums = 2bd7ed553f7a2bbe37f71d4eee98152907f47f206f657fbdbfc192d385671715be397407e3a3feb827ec73f2f1e52ce1beac68a0460de0224ed3b3c1368eddd5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.36.4.tar.gz
+	b2sums = 5db013dd07fe04a1249731ffd9bd7424d7ace589ccce408c6c467fca2282861385c69403475c14ecea1925e6cfd00d10702b961b2dccc070538f811f34ccbf79
 
 pkgname = r-genomeinfodb
