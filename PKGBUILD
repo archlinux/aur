@@ -2,18 +2,18 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=gst
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="a GTK system utility designed to stress and monitor various hardware components like CPU and RAM"
 arch=('any')
 url="https://gitlab.com/leinardi/gst"
 license=('GPL3')
-depends=('python>=3.6' 'python-humanfriendly' 'python-injector' 'python-peewee' 'python-psutil' 'python-gobject' 'python-pyxdg' 'python-yaml' 'python-requests' 'python-rx' 'gobject-introspection' 'lm_sensors' 'stress-ng' 'dmidecode')
+depends=('python>=3' 'python-humanfriendly' 'python-injector' 'python-peewee' 'python-psutil' 'python-gobject' 'python-pyxdg' 'python-yaml' 'python-requests' 'python-rx' 'gobject-introspection' 'lm_sensors' 'stress-ng' 'dmidecode')
 makedepends=('pkg-config' 'meson' 'ninja' 'appstream-glib')
 provides=()
-conflicts=('smalltalk')
+conflicts=()
 source=("https://gitlab.com/leinardi/gst/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6d78f96a7f8663ca81be34cbea7295a75da41b4a49f5cb1c6cd1d0478d60a3f5')
+sha256sums=('ede76b222572b24d4e196fa3d649a845da5819b6185b6ca84ef61192ca026f1d')
 
 build() {
 	if [[ -d "$srcdir/build" ]]; then
