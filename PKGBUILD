@@ -1,31 +1,41 @@
-appname=amethyst
-pkgname=$appname-player-git
-pkgver=git
-pkgrel=1
-pkgdesc="Audio Player"
-arch=('x86_64' 'aarch64')
-url="https://github.com/Geoxor/$appname"
-license=('MIT')
-makedepends=('gcc-multilib' 'git' 'gendesk' 'yarn' 'libxcrypt-compat')
-source=("https://github.com/Geoxor/$appname/")
-md5sums=('SKIP')
+# Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
 
-prepare(){
-	cd "$appname"
-	gendesk -n -f --pkgname "$appname" --pkgdesc "$pkgdesc" --exec="/opt/$appname/$appname"
-	git submodule update --init --recursive
+pkgname=amethyst-player-git
+pkgver=RELEASE.rREVISION
+pkgrel=1
+pkgdesc="Amethyst is an Electron-based cross-platform audio player with a node-based audio routing system."
+arch=('x86_64' 'aarch64')
+url="https://github.com/Geoxor/amethyst"
+license=('MIT')
+makedepends=('gcc-multilib' 'git' 'gendesk' 'yarn' 'libxcrypt-compat' 'libvips')
+source=("git+https://github.com/Geoxor/amethyst.git"
+        "git+https://github.com/Geoxor/amethyst.discord.git")
+md5sums=('SKIP'
+         'SKIP')
+
+pkgver() {
+	cd "amethyst"
+	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "amethyst"
+	gendesk -n -f --pkgname "amethyst" --pkgdesc "$pkgdesc" --exec="/opt/amethyst/amethyst"
+	git submodule init
+	git config submodule.src/plugins/amethyst.discord.url "$srcdir/amethyst.discord"
+	git -c protocol.file.allow=always submodule update
 	yarn
 }
 
 build() {
-	cd "$appname"
+	cd "amethyst"
 	yarn build && yarn electron-builder --linux dir --publish never
 }
 
 package() {
-	cd "$appname"
-	install -Dm644 "$appname.desktop" "$pkgdir/usr/share/applications/$appname.desktop"
-	install -d "$pkgdir/opt/$appname" && cp -r release/build/linux-unpacked/* "$pkgdir/opt/$appname"
-	install -Dm644 assets/icon.svg "$pkgdir/usr/share/pixmaps/$appname.svg"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$appname"
+	cd "amethyst"
+	install -Dm644 "amethyst.desktop" "$pkgdir/usr/share/applications/amethyst.desktop"
+	install -d "$pkgdir/opt/amethyst" && cp -r release/build/linux-unpacked/* "$pkgdir/opt/amethyst"
+	install -Dm644 assets/icon.svg "$pkgdir/usr/share/pixmaps/amethyst.svg"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/amethyst"
 }
