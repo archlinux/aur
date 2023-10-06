@@ -1,0 +1,12 @@
+pkgbase = libxsd
+	pkgdesc = An open-source, cross-platform W3C XML Schema to C++ data binding compiler (runtime library)
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://www.codesynthesis.com/products/xsd
+	arch = any
+	license = GPL2
+	makedepends = build2
+	source = https://www.codesynthesis.com/download/xsd/4.2/libxsd-4.2.0.tar.gz
+	sha256sums = 55caf0038603883eb39ac4caeaacda23a09cf81cffc8eb55a854b6b06ef2c52e
+
+pkgname = libxsd
