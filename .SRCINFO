@@ -1,7 +1,7 @@
 pkgbase = r-plotroc
 	pkgdesc = Generate Useful ROC Curve Charts for Print and Interactive Use
-	pkgver = 2.3.0
-	pkgrel = 3
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=plotROC
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = r-plotroc
 	optdepends = r-stringr
 	optdepends = r-survivalroc
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/plotROC_2.3.0.tar.gz
-	sha256sums = ef0c0937f28df4512c2c0a53ef9b2b2ffbc4667a8abae3d8892fc51a334c5f4d
+	source = https://cran.r-project.org/src/contrib/plotROC_2.3.1.tar.gz
+	sha256sums = 2f2c7ebec7b9cb8ad41b5ade1951b9d9f0ec12611ec369e12b10a34e5bb05b96
 
 pkgname = r-plotroc
