@@ -58,7 +58,7 @@ check() {
     -S ${pkgname}-${pkgver}/cpp/demo \
     -B build_demo
   cmake --build build_demo
-  ctest -E "(demo_poisson_mpi_*|demo_hyperelasticity_mpi_*|demo_biharmonic_mpi_*)" --test-dir build_demo
+  ctest -E "(demo_poisson_mpi_*|demo_hyperelasticity_mpi_*|demo_biharmonic_mpi_*|demo_poisson_matrix_free_mpi_*|demo_interpolation-io_mpi_*|emo_interpolation_different_meshes_mpi_*)" --test-dir build_demo
 }
 
 package() {
