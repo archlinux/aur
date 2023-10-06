@@ -6,10 +6,12 @@ pkgname=vcluster-git
 _pkgname=vcluster
 pkgdesc='Create fully functional virtual Kubernetes clusters'
 pkgver=0.16.1.r4.ga45458f2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://vcluster.com"
 license=('apache')
+provides=(vcluster)
+conflicts=(vcluster)
 makedepends=(
     'go'
     'git'
