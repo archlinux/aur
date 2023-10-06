@@ -11,7 +11,7 @@ url='http://pseint.sourceforge.net'
 license=('GPL2')
 conflicts=("$_pkgname")
 makedepends=('gendesk')
-depends=('wxwidgets-gtk3')
+depends=('wxwidgets-gtk3' 'rsync')
 noextract=(creator.psz)
 source=("$_pkgname-$pkgver.tgz::https://cfhcable.dl.sourceforge.net/project/$_pkgname/$pkgver/$_pkgname-l64-$pkgver.tgz")
 sha256sums=('1208bbf2247f0b5f89c0b6f85ee0ab9816a89c102a6d4ab7a041109b1425cb4d')  # 'makepkg -g' to generate it.
@@ -46,11 +46,8 @@ pkgver(){
 package(){
     cd $_pkgname
 
-    # Crear ruta de destino transitoria.
-    mkdir -p $pkgdir/opt/$_pkgname
-
-    # Copiar el contenido compilado a la ruta de destino transitoria.
-    cp -rv . $pkgdir/opt/$_pkgname
+    # Crear el directorio de destino y copiar en él, el contenido de pseint-bin.
+    rsync -a . --mkpath "$pkgdir/opt/$_pkgname/"
 
     # Instala el archivo .desktop en la ubicación (-t) adecuada.
     install -Dvm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"

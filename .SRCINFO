@@ -7,6 +7,7 @@ pkgbase = pseint-bin
 	license = GPL2
 	makedepends = gendesk
 	depends = wxwidgets-gtk3
+	depends = rsync
 	conflicts = pseint
 	noextract = creator.psz
 	source = pseint-20230517.tgz::https://cfhcable.dl.sourceforge.net/project/pseint/20230517/pseint-l64-20230517.tgz
