@@ -3,8 +3,8 @@
 pkgver=r570.b4f35ce
 _pkgname=streamdeck-ui
 pkgname=streamdeck-ui-develop
-pkgrel=1
-pkgdesc="A Linux compatible UI for the Elgato Stream Deck (development pre-releases)"
+pkgrel=2
+pkgdesc="A Linux compatible UI for the Elgato Stream Deck (development branch)"
 arch=('any')
 url="https://github.com/streamdeck-linux-gui/streamdeck-linux-gui"
 license=('MIT')
