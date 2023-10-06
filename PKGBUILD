@@ -3,7 +3,7 @@
 pkgver=r570.b4f35ce
 _pkgname=streamdeck-ui
 pkgname=streamdeck-ui-develop
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck (development branch)"
 arch=('any')
 url="https://github.com/streamdeck-linux-gui/streamdeck-linux-gui"
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}" || exit
+  cd "${_pkgname}" || exit
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 "${srcdir}/60-streamdeck.rules" "${pkgdir}/usr/lib/udev/rules.d/60-streamdeck.rules"
   install -Dm 644 "${srcdir}/streamdeck-ui.desktop" "${pkgdir}/usr/share/applications/streamdeck-ui.desktop"
