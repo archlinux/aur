@@ -3,7 +3,7 @@
 pkgname="sklauncher-bin"
 pkgdesc="Secure and modern Minecraft Launcher"
 
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 
 arch=(i686 x86_64)
@@ -17,8 +17,8 @@ makedepends=(unzip gendesk)
 provides=(sklauncher)
 conflicts=(sklauncher sklauncher-git)
 
-source=("https://skmedix.pl/_data/SKlauncher-${pkgver}.jar" "sklauncher")
-md5sums=("30b2b8976783b2d54677d2b27a3298d0" "3207598439df0c86594f3ef52a25cef1")
+source=("https://skmedix.pl/binaries_/SKlauncher-${pkgver}.jar" "sklauncher")
+md5sums=("e98a84b4bcc5e9b2b76e985c6688cad5" "3207598439df0c86594f3ef52a25cef1")
 
 noextract=("SKlauncher-${pkgver}.jar")
 
