@@ -3,7 +3,7 @@
 pkgname=mongodb50
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=5.0.18
+pkgver=5.0.21
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
@@ -27,9 +27,8 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-5.0.2-skip-reqs-check.patch
         mongodb-5.0.2-boost-1.79.patch
         mongodb-5.0.5-no-force-lld.patch
-        mongodb-4.4.10-boost-1.81.patch
-        mongodb-4.4.8-gcc-13.patch)
-sha256sums=('b6f4240c1c1761165b22e493e3d249e53f73cd87bfe0143cba5d6f5069571f12'
+        mongodb-4.4.10-boost-1.81.patch)
+sha256sums=('92702a6fa6d3d4aa4ed468b8b0a846db63ad08f84e47734c9a1463520b1e50f3'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25'
@@ -40,13 +39,13 @@ sha256sums=('b6f4240c1c1761165b22e493e3d249e53f73cd87bfe0143cba5d6f5069571f12'
             '4ff40320e04bf8c3e05cbc662f8ea549a6b8494d1fda64b1de190c88587bfafd'
             'a04aec4f8bd99ad213e31eb45a9e1658695442082e7c4f8c4044f6326eaa1acd'
             'f79f65824f81753d41d2274a6904930db11b06fe08f1442a24c30060cab27e32'
-            '7bfeadf2fb7e13bd93c4515faada070410ddd8e276cc947b5b2b2292539051b7'
-            '99ca771ae8d8f2617b1cf002586e10e1501dbde80407f5a555bfed4ab183569e')
+            '7bfeadf2fb7e13bd93c4515faada070410ddd8e276cc947b5b2b2292539051b7')
 
 _scons_args=(
   CC="${CC:-gcc}"
   CXX="${CXX:-g++}"
   AR="${AR:-ar}"
+  MONGO_DISTMOD=arch
 
   --use-system-pcre
   --use-system-snappy
