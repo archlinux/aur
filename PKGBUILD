@@ -3,10 +3,10 @@
 
 pkgbase=pyside2
 pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
-_qtver=5.15.10
+_qtver=5.15.11
 _clangver=16.0.6
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -30,15 +30,8 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-serialport: QtSerialPort bindings'
             'qt5-quickcontrols2: QtQuickControls2 bindings')
 _pkgfqn=pyside-setup-opensource-src-$_qtver
-source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz
-        python3.11.patch)
-sha256sums=('2af691d3613a41f83a60439b46568fc2c696dbfae42f7cd7b07152d115ead33a'
-            'e91549f7d3da412e864af26f604d0023b80233a7165f50fa21e53cbe861db886')
-
-prepare() {
-  patch -d $_pkgfqn -p1 < python3.11.patch # Fix build with Python 3.11
-  sed -e 's|0x030AFFFF|0x030BFFFF|' -i $_pkgfqn/sources/shiboken2/libshiboken/pep384impl.h
-}
+source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz)
+sha256sums=('da567cd3b7854d27a0b4afe3e89de8b2f98b7a6d57393be56f1fc13f770faf29')
 
 build() {
   cmake -B build -S $_pkgfqn \
