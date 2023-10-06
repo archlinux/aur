@@ -1,0 +1,14 @@
+pkgbase = puffin-internet-terminal-demo-bin
+	pkgdesc = The wicked fast web browser from CloudMosa Inc.
+	pkgver = 8.2.4.705
+	pkgrel = 1
+	url = https://www.puffin.com/
+	arch = x86_64
+	arch = i686
+	license = custom
+	source_x86_64 = https://download.puffinbrowser.com/repo/pool/stable/amd64/puffin-internet-terminal-demo_8.2.4.705_amd64.deb
+	sha256sums_x86_64 = bc94930c3678c11cd94486fd03d03adcc4e9cea4e440f3b4b26dffd9abc59284
+	source_i686 = https://download.puffinbrowser.com/repo/pool/stable/i386/puffin-internet-terminal-demo_8.2.4.705_i386.deb
+	sha256sums_i686 = f68184307eb7fefc0c620d986673e31b8ca94f195972659a483251189e4d1d1e
+
+pkgname = puffin-internet-terminal-demo-bin
