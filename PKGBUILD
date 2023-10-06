@@ -6,7 +6,7 @@
 pkgname=xonotic-autobuild
 pkgver=20230622
 pkgrel=1
-pkgdesc="A free, fast-paced crossplatform first-person shooter"
+pkgdesc="A free, fast-paced cross-platform first person shooter"
 arch=('x86_64' 'aarch64')
 url="http://xonotic.org"
 license=('GPL')
@@ -29,43 +29,59 @@ prepare() {
 }
 
 build() {
+  # compile engine
+  make -C Xonotic/source/darkplaces \
+    CPUOPTIMIZATIONS="${CFLAGS}" \
+    DP_FS_BASEDIR=/usr/share/xonotic/ \
+    DP_LINK_TO_LIBJPEG=1 \
+    cl-release
 
-	# compile engine
-	make -C $srcdir/Xonotic/source/darkplaces CPUOPTIMIZATIONS="${CFLAGS}" DP_FS_BASEDIR=/usr/share/xonotic/ DP_LINK_TO_LIBJPEG=1 sdl-release
-	make -C $srcdir/Xonotic/source/darkplaces CPUOPTIMIZATIONS="${CFLAGS}" DP_FS_BASEDIR=/usr/share/xonotic/ DP_LINK_TO_LIBJPEG=1 sv-release
+  make -C Xonotic/source/darkplaces \
+    CPUOPTIMIZATIONS="${CFLAGS}" \
+    DP_FS_BASEDIR=/usr/share/xonotic/ \
+    DP_LINK_TO_LIBJPEG=1 \
+    sdl-release
 
-	cd $srcdir/Xonotic/source/d0_blind_id
-	sh autogen.sh
-	./configure --prefix=/usr
-	make
+  make -C Xonotic/source/darkplaces \
+    CPUOPTIMIZATIONS="${CFLAGS}" \
+    DP_FS_BASEDIR=/usr/share/xonotic/ \
+    DP_LINK_TO_LIBJPEG=1 \
+    sv-release
+
+  cd Xonotic/source/d0_blind_id
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	
-	cd $srcdir/Xonotic
+  cd Xonotic
+  # data
+  install -d "$pkgdir"/usr/share/xonotic/
+  mv data "$pkgdir"/usr/share/xonotic/
 
-	mkdir -p $pkgdir/usr/share/xonotic/
-	cp -r data $pkgdir/usr/share/xonotic/
-	cp -r server $pkgdir/usr/share/xonotic/
+  # server stuff
+  cp -r server "$pkgdir"/usr/share/xonotic/
 
-	# binaries
-	install -Dm755 source/darkplaces/darkplaces-dedicated $pkgdir/usr/bin/xonotic-dedicated
-	install -Dm755 source/darkplaces/darkplaces-sdl $pkgdir/usr/bin/xonotic-sdl
+  # binaries
+  install -Dm755 source/darkplaces/darkplaces-dedicated "$pkgdir"/usr/bin/xonotic-dedicated
+  install -Dm755 source/darkplaces/darkplaces-sdl "$pkgdir"/usr/bin/xonotic-sdl
 
-	# convenience files
-	install -Dm644 misc/logos/xonotic.desktop -t $pkgdir/usr/share/applications
-  	
-	for size in 16 22 24 32 48 64 128 256 512; do
-		install -Dm644 misc/logos/icons_png/xonotic_${size}.png \
-		"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/xonotic.png"
-	done
-	
-	# key
-	install -Dm644 key_0.d0pk $pkgdir/usr/share/xonotic/key_0.d0pk
-  	
-	# crypto stuff
-	cd source/d0_blind_id
-	make DESTDIR=$pkgdir install
+  # convenience files
+  install -d "$pkgdir"/usr/share/applications
+  install -Dm644 misc/logos/xonotic.desktop -t $pkgdir/usr/share/applications
+
+  for size in 16 22 24 32 48 64 128 256 512; do
+    install -Dm644 misc/logos/icons_png/xonotic_${size}.png \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/xonotic.png"
+  done
+
+  # key
+  install -Dm644 key_0.d0pk "$pkgdir"/usr/share/xonotic/key_0.d0pk
+
+  # crypto stuff
+  cd source/d0_blind_id
+  make DESTDIR="$pkgdir" install
 }
 
 # vim: ts=2:sw=2 et:
