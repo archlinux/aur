@@ -8,5 +8,6 @@ pkgbase = tiawa
 	depends = tiawa-base
 	optdepends = tiawa-de: desktop environment
 	optdepends = tiawa-devenv: development environment
+	optdepends = tiawa-utils: various utilities
 
 pkgname = tiawa

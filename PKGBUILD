@@ -13,4 +13,5 @@ depends=(
 optdepends=(
 	'tiawa-de: desktop environment'
 	'tiawa-devenv: development environment'
+	'tiawa-utils: various utilities'
 )
