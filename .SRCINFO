@@ -1,0 +1,19 @@
+pkgbase = homed-zigbee
+	pkgdesc = HOMEd ZigBee is a ZigBee to MQTT gateway, part of HOMEd project
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://wiki.homed.dev/
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-mqtt
+	depends = qt5-serialport
+	backup = etc/homed/homed-zigbee.conf
+	source = https://github.com/u236/homed-service-zigbee/archive/refs/tags/3.5.2.tar.gz
+	source = git+https://github.com/u236/homed-service-common.git
+	sha512sums = 67e73b9fcbfb2768dbcb9fccbc5fb75cac5f266b0134da6a9ffe8c154906028ca4d87108453cf3e8bea3ce049f5a5f0f907e9a4131fabba93530104efb060ddc
+	sha512sums = SKIP
+
+pkgname = homed-zigbee
