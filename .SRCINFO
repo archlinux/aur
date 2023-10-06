@@ -1,0 +1,20 @@
+pkgbase = qt5-sensors
+	pkgdesc = Provides access to sensor hardware and motion gesture recognition
+	pkgver = 5.15.11
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = qt5-declarative
+	makedepends = git
+	depends = qt5-base
+	optdepends = qt5-declarative: QML bindings
+	optdepends = iio-sensor-proxy: iio-sensor-proxy backend
+	source = git+https://invent.kde.org/qt/qt/qtsensors#commit=a41492b23cde20d1e00427d31e4637d06aea3638
+	sha256sums = SKIP
+
+pkgname = qt5-sensors
