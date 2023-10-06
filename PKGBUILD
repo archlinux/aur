@@ -5,8 +5,8 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=dropbox-cli
-pkgver=2022.12.05
-pkgrel=2
+pkgver=2023.09.06
+pkgrel=1
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="http://www.${pkgname%-cli}.com"
@@ -18,8 +18,8 @@ source=(
   "${pkgname%-cli}d-fallback.patch"
 )
 sha256sums=(
-  "74f005606ee3c52b0430773d66420e4257309fcbe6fb260cfb203eb57d46378f"
-  "9ae702ebf0699ac56fbf99c577ddaf22701dfd1c9e40d6ec5ac56475c2636f48"
+  "a7334c5003287d6bc94c59bfbd9a9b2e9e82047c8b35732c739f8cb4ecfeedbc"
+  "3e4f5d44c58dbeb586bb9539551ea1206e8a1e4b025ac316c42ba24c53c8f077"
 )
 
 prepare() {
