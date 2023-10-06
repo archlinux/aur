@@ -13,8 +13,8 @@ makedepends=('git')
 checkdepends=()
 optdepends=()
 conflicts=(awesome-git)
-install=${pkgname}.install
-source=(${pkgname}::git+$url.git)
+install=rabbithole.install
+source=(${pkgname}::git+$url.git#branch=AUR)
 md5sums=('SKIP')
 
 prepare() {
@@ -31,8 +31,14 @@ package() {
     # Install the rabbithole config to /usr/share/rabbithole
     install -dm755 "$pkgdir/usr/share/rabbithole"
     cp -r "$srcdir/$pkgname/"* "$pkgdir/usr/share/rabbithole"
-	# Install the rabbithole.desktop to /usr/share/xsessions
-	install -Dm644 "$srcdir/$pkgname/installer/rabbithole.desktop" "$pkgdir/usr/share/xsessions/rabbithole.desktop"
-	# Install readme to /usr/share/doc/rabbithole
-	install -Dm644 "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/rabbithole"
+    
+    # Install the rabbithole.desktop to /usr/share/xsessions
+    install -Dm644 "$srcdir/$pkgname/installer/rabbithole.desktop" "$pkgdir/usr/share/xsessions/rabbithole.desktop"
+    
+    # Install readme to /usr/share/doc/rabbithole
+    install -Dm644 "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/rabbithole"
+    
+    # Install rabbithole script to /usr/bin
+    install -Dm755 "$srcdir/$pkgname/installer/rabbithole" "$pkgdir/usr/bin/rabbithole"
+    chmod +x "$pkgdir/usr/bin/rabbithole"
 }
