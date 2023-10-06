@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=17.1.r55.g227859b5a8
+pkgver=18.r0.g0ffac0b692
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
