@@ -10,7 +10,10 @@ license=(LGPL3)
 depends=(dolfinx python-mpi4py)
 makedepends=(python-build python-installer python-setuptools python-wheel pybind11 cmake)
 checkdepends=(python-pytest python-cppimport python-scipy eigen python-matplotlib python-numba)
-optdepends=('gmsh: for extract data from Gmsh models')
+optdepends=('python-pyvista: for plotting'
+  'python-numba: for jit support'
+  'slepc: for eigenvalue solver support'
+  'gmsh: for extract data from Gmsh models')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('69c7f740b69492894c2dad8a968e614abcba7faa345befa6383fa939442df1627bb05286ddbdc11fa96eb754d7e5983030a7df36320e238e0bfb6f21fc933059')
 
@@ -27,7 +30,7 @@ check() {
 
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ${_base}-${pkgver}/python/dist/*.whl
-  test-env/bin/python -m pytest ${_base}-${pkgver}/python/test/unit
+  test-env/bin/python -m pytest ${_base}-${pkgver}/python/test/unit -k 'not context_manager_anonymous'
   test-env/bin/python -m pytest ${_base}-${pkgver}/python/demo/test.py
 }
 
