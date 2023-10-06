@@ -129,10 +129,9 @@ EOF
       --with_branch_heads \
       --with_tags
 
-  (
-    cd src/electron || exit
-    patch -Np1 -i ../../std-vector-non-const.patch
-  )
+  pushd src/electron
+  patch -Np1 -i ../../std-vector-non-const.patch
+  popd
 
   echo "Running hooks..."
   # python "${srcdir}/depot_tools/gclient.py" runhooks
@@ -155,9 +154,9 @@ EOF
   ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
-  cd src/electron || exit
+  pushd src/electron
   yarn install --frozen-lockfile
-  cd ..
+  pushd ..
 
   echo "Applying local patches..."
 
@@ -233,7 +232,7 @@ build() {
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
-  cd src || exit
+  pushd src
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
   GN_EXTRA_ARGS='
     custom_toolchain = "//build/toolchain/linux/unbundle:default"
