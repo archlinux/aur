@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/actualbudget/actual-server"
 license=('MIT')
 groups=()
-depends=('yarn' 'nodejs=18.18.0') 
+depends=('yarn' 'nodejs>=18.18.0') 
 makedepends=('git' 'gcc' 'make')
 optdepends=()
 provides=()
