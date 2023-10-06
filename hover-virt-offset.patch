@@ -1,11 +1,20 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..5b54e7f4a 100644
+index ef3523211..88706ad64 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -993,6 +993,85 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
+@@ -993,6 +993,115 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
    return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
  }
  
++static auto getRecordOfMethodDecl(const CXXMethodDecl *Method) {
++  const auto *Record = Method->getParent();
++  if (Record)
++    Record = Record->getDefinition();
++  // FIXME: Depend type may not affect vtable. Check on mixins?
++  if (!Record || Record->isInvalidDecl() || Record->isDependentType())
++    return static_cast<const CXXRecordDecl *>(nullptr);
++  return Record;
++}
 +static uint64_t getVirtualCXXMethodsCount(const CXXRecordDecl *Record) {
 +  uint64_t Count = 0;
 +  for (const auto &Base :
@@ -15,10 +24,21 @@ index ef3523211..5b54e7f4a 100644
 +      Count += getVirtualCXXMethodsCount(BaseRecord);
 +    break;
 +  }
++  static auto IsOverride = [](const CXXMethodDecl *Method,
++                              const CXXRecordDecl *Record) {
++    if (Method->size_overridden_methods() == 0)
++      return false;
++    for (const auto *MD : Method->overridden_methods()) {
++      const auto *RD = getRecordOfMethodDecl(MD);
++      if (RD && Record->isDerivedFrom(RD))
++        return true;
++    }
++    return false;
++  };
 +  const auto MSABI =
 +      Record->getASTContext().getTargetInfo().getCXXABI().isMicrosoft();
 +  for (const auto *MD : Record->methods()) {
-+    if (!MD->isVirtual() || MD->hasAttr<OverrideAttr>())
++    if (!MD->isVirtual() || IsOverride(MD, Record))
 +      continue;
 +    if (!MSABI && Record->getDestructor() == MD)
 +      Count++;
@@ -33,19 +53,18 @@ index ef3523211..5b54e7f4a 100644
 +  if (!Method->isVirtual())
 +    return InvalidVirtualCXXMethodId; // FIXME: Find id from override.
 +  if (!Record) {
-+    Record = Method->getParent();
-+    if (Record)
-+      Record = Record->getDefinition();
-+    // FIXME: Depend type may not affect vtable. Check on mixins?
-+    if (!Record || Record->isInvalidDecl() || Record->isDependentType())
++    Record = getRecordOfMethodDecl(Method);
++    if (!Record)
 +      return InvalidVirtualCXXMethodId;
 +  }
++  if (Method == Record->getDestructor())
++    return 0;
 +  const auto MSABI =
 +      Record->getASTContext().getTargetInfo().getCXXABI().isMicrosoft();
 +  if (Record->getNumBases() == 0) {
 +    uint64_t Id = 0;
 +    for (const auto *MD : Record->methods()) {
-+      if (!MD->isVirtual() || MD->hasAttr<OverrideAttr>())
++      if (!MD->isVirtual())
 +        continue;
 +      if (MD == Method)
 +        return Id;
@@ -54,15 +73,25 @@ index ef3523211..5b54e7f4a 100644
 +      Id++;
 +    }
 +  } else {
-+    // TODO: Recursive search for override attribute
-+    if (Method->hasAttr<OverrideAttr>()) {
-+      for (const auto &MD : Method->overridden_methods()) {
-+        if (MD->hasAttr<OverrideAttr>())
-+          continue;
-+        const auto *Record = MD->getThisType()->getAsCXXRecordDecl();
-+        return findVirtualCXXMethodId(MD, Record);
++    static auto GetBaseMethod = [](const CXXMethodDecl *Method,
++                                   const CXXRecordDecl *Record) {
++      const CXXMethodDecl *Base = Method;
++      if (Method->size_overridden_methods() == 0)
++        return Base;
++      for (const auto *MD : Method->overridden_methods()) {
++        const auto *RD = getRecordOfMethodDecl(MD);
++        if (RD && Record->isDerivedFrom(RD)) {
++          Record = RD;
++          Base = MD;
++        }
 +      }
-+      return InvalidVirtualCXXMethodId;
++      return Base;
++    };
++
++    const auto *BaseMethod = GetBaseMethod(Method, Record);
++    if (BaseMethod != Method) {
++      const auto *Record = BaseMethod->getThisType()->getAsCXXRecordDecl();
++      return findVirtualCXXMethodId(BaseMethod, Record);
 +    }
 +    for (const auto &Base :
 +         Record->bases()) { // FIXME: Calc only for first or last base
@@ -71,7 +100,8 @@ index ef3523211..5b54e7f4a 100644
 +        continue;
 +      uint64_t Id = getVirtualCXXMethodsCount(BaseRecord);
 +      for (const auto *MD : Record->methods()) {
-+        if (!MD->isVirtual() || MD->hasAttr<OverrideAttr>())
++        const auto *BaseMethod = GetBaseMethod(MD, Record);
++        if (!MD->isVirtual() || BaseMethod != MD)
 +          continue;
 +        if (MD == Method)
 +          return Id;
@@ -88,7 +118,7 @@ index ef3523211..5b54e7f4a 100644
  void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (ND.isInvalidDecl())
      return;
-@@ -1039,6 +1118,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1039,6 +1148,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      }
      return;
    }
@@ -104,3 +134,39 @@ index ef3523211..5b54e7f4a 100644
  }
  
  HoverInfo::PassType::PassMode getPassMode(QualType ParmType) {
+@@ -1074,10 +1192,9 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
+ 
+   // For non-function-call-like operators (e.g. operator+, operator<<) it's
+   // not immediately obvious what the "passed as" would refer to and, given
+-  // fixed function signature, the value would be very low anyway, so we choose
+-  // to not support that.
+-  // Both variadic functions and operator() (especially relevant for lambdas)
+-  // should be supported in the future.
++  // fixed function signature, the value would be very low anyway, so we
++  // choose to not support that. Both variadic functions and operator()
++  // (especially relevant for lambdas) should be supported in the future.
+   if (!FD || FD->isOverloadedOperator() || FD->isVariadic())
+     return;
+ 
+@@ -1102,8 +1219,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
+     return;
+ 
+   // If we found a matching argument, also figure out if it's a
+-  // [const-]reference. For this we need to walk up the AST from the arg itself
+-  // to CallExpr and check all implicit casts, constructor calls, etc.
++  // [const-]reference. For this we need to walk up the AST from the arg
++  // itself to CallExpr and check all implicit casts, constructor calls, etc.
+   if (const auto *E = N->ASTNode.get<Expr>()) {
+     if (E->getType().isConstQualified())
+       PassType.PassBy = HoverInfo::PassType::ConstRef;
+@@ -1138,8 +1255,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
+       }
+     } else if (const auto *CtorCall =
+                    CastNode->ASTNode.get<CXXConstructExpr>()) {
+-      // We want to be smart about copy constructors. They should not show up as
+-      // type conversion, but instead as passing by value.
++      // We want to be smart about copy constructors. They should not show up
++      // as type conversion, but instead as passing by value.
+       if (CtorCall->getConstructor()->isCopyConstructor())
+         PassType.PassBy = HoverInfo::PassType::Value;
+       else

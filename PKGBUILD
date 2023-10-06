@@ -83,14 +83,14 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=7
+pkgrel=8
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
              'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx')
-options=('staticlibs' '!lto') # Getting thousands of test failures with LTO
+options=('!strip')
 source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-doxygen.patch'
         'doxygen-more-fields.patch'
@@ -118,7 +118,7 @@ sha256sums=('SKIP'
             'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff'  # hover-bit-fields-mask
             '3d639ec99a36d17dbb9e926e30807d9e57587fb2eac55d42616a2f41d90281f9'  # hover-align
             '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76'  # hover-align-mask-comp
-            'fa8fdb4ef84940e74a1ee42d9fde00a5e025f423b25aa1740ebb429807ab1e8b') # hover-virt-offset
+            '2bf381440e4d97b3e4ac1839737677f40d80a7caf30f7f1398095d8678409f96') # hover-virt-offset
 
 pkgver() {
     cd llvm-project
@@ -194,7 +194,7 @@ build() {
 package() {
     cd build
 
-    cmake --install . --prefix "$pkgdir"/opt/clangd --strip --component clangd
+    cmake --install . --prefix "$pkgdir"/opt/clangd --component clangd
     # Install headers
     mkdir "$pkgdir"/opt/clangd/lib
     cp -r lib/clang "$pkgdir"/opt/clangd/lib/clang
