@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
 arch=(x86_64)
@@ -29,12 +29,12 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  # mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
-  # ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
-  # ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
-  # ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
+  mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
+  ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
+  ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
+  ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
 
-  # make jsc-build jsc-copy-headers -j1
+  make jsc-build jsc-copy-headers -j1
 
   make release-bindings
   make release -j1
