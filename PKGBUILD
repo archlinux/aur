@@ -1,7 +1,7 @@
 # Maintainer: TheBill2001 <tuantran1632001@gmail.com>
 
 pkgname=reflex-lexer
-pkgver=3.3.8
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="RE/flex is the regex-centric, fast lexical analyzer generator for C++ with full Unicode support."
 arch=('x86_64') # The program seems to be able to be compiled for ARM (based on pull#181) but I can find any document about it.
@@ -15,7 +15,7 @@ optdepends=(
 )
 provides=("reflex" "${pkgname}")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c50f8ee84437af4a89f91721441d830098f0d064630237f195e3f17941c8b957')
+sha256sums=('b974c628d30775638e4f530e8c10768df2b2b789735e2599ab9d8a8cc431ceda')
 
 build() {
     cd "RE-flex-${pkgver}"
