@@ -2,7 +2,7 @@
 
 pkgname=leapp-bin
 _pkgname=leapp
-pkgver=0.20.1
+pkgver=0.20.2
 _pkgdate=20220112
 pkgrel=1
 pkgdesc="Leapp is a Desktop DevTool that handles the management and security of your cloud credentials for you, converted from .deb package"
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 source=(
     "Leapp_${pkgver}_amd64.deb::https://asset.noovolari.com/${pkgver}/Leapp_${pkgver}_amd64.deb"
 )
-sha512sums=('9379fd1ad5c8d332885d7c3859e7a60fc2b266fb06533baeb37de103fe38092839a1616a293ac25897422ab721894d1723d124befc89d06aeee1bb686adf501b')
+sha512sums=('a9f64f095773ff0a2478f943137d4dbfb6e24efde6a96bb33ab8d875afb19f69a06759d7fbb569a6373c64fcd08d3af5ae375af1af803e225f8f92702aefbf0b')
 
 package() {
     cd ${srcdir}
