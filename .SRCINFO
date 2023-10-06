@@ -1,0 +1,23 @@
+pkgbase = python-multiscaledeformableattention
+	pkgdesc = Python library of MultiScaleDeformableAttention, the CUDA operator proposed by Deformable DETR.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fundamentalvision/Deformable-DETR
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = cuda
+	depends = gcc
+	depends = python-pytorch
+	optdepends = python-pytorch
+	optdepends = python-pytorch-cuda
+	optdepends = python-pytorch-opt-cuda
+	source = Deformable-DETR.zip::https://github.com/fundamentalvision/Deformable-DETR/archive/refs/heads/main.zip
+	sha256sums = cad9494f22e6293c33bb210a81ac4d4b7eee92bbaaf696ead965322b9b90739b
+
+pkgname = python-multiscaledeformableattention
+	depends = python
+	depends = cuda
+	depends = gcc
+	depends = python-pytorch
