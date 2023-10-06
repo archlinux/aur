@@ -1,6 +1,6 @@
 pkgbase = tiawa-devenv
 	pkgdesc = Tiawa development environment
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://gitlab.com/tiawa/tiawa-devenv
 	arch = any
