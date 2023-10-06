@@ -7,7 +7,7 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=3.78.22}
+: ${_pkgver:=3.79.17}
 
 # update version
 case "${_autoupdate::1}" in
@@ -22,7 +22,7 @@ case "${_autoupdate::1}" in
 
     _pkgver_new=$(
       printf '%s' "$_filename" \
-        | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+).AppImage$@\1@'
+        | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+)(-.*)?.AppImage$@\1@'
     )
 
     # update _pkgver
@@ -41,7 +41,7 @@ esac
 
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.78.22
+pkgver=3.79.17
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
