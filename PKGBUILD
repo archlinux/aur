@@ -8,7 +8,7 @@ url="https://github.com/actualbudget/actual-server"
 license=('MIT')
 groups=()
 depends=('yarn' 'nodejs>=16') 
-makedepends=('git' 'gcc' 'make')
+makedepends=('git' 'gcc' 'make' 'nodejs-lts-hydrogen')
 optdepends=()
 provides=()
 conflicts=()
