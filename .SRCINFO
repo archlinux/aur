@@ -1,4 +1,5 @@
 pkgbase = shalou
+	pkgdesc = 沙漏验机 - 是一款专业的苹果验机助手、苹果刷机助手
 	pkgver = 6.6.3
 	pkgrel = 1
 	url = www.shalou.net
