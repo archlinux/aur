@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=fenicsx-plotly
 pkgname=python-${_base}
-pkgdesc="A package for plotting FEniCS objects using plotly"
+pkgdesc="Lightweight library for plotting FEniCS x objects using plotly"
 pkgver=0.3.0
 pkgrel=1
 arch=(any)

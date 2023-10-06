@@ -1,5 +1,5 @@
 pkgbase = python-fenicsx-plotly
-	pkgdesc = A package for plotting FEniCS objects using plotly
+	pkgdesc = Lightweight library for plotting FEniCS x objects using plotly
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/finsberg/fenicsx-plotly
