@@ -2,7 +2,7 @@
 
 pkgname=python-jupyter_ascending
 _pkgname="${pkgname#python-}"
-pkgver=0.1.25
+pkgver=0.1.26
 pkgrel=1
 pkgdesc='Edit Jupyter notebooks using your favorite editor'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('b4cf552b1749b670916b4c31aad73d42155734755a3f88baf7dfacb6bcab3cb88ab4d3918d9b164244e08ea6bb10af3e5a1b44f88e04a7c80a3b5386719f2b60')
+sha512sums=('f939de2acce7805a274971f32c96ac0d8e569fda22e34d3ada34526e0a82e9f9e308ac88553cd7420017771540b3767d3037b9d3da7b8351c668aa2eab654131')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
