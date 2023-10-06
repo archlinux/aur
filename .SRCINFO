@@ -15,7 +15,7 @@ pkgbase = ros-noetic-flir-camera-description
     depends = ros-noetic-urdf
     depends = ros-noetic-xacro
     depends = ros-noetic-robot-state-publisher
-    source = ros-noetic-flir-camera-description-0.2.5.tar.gz::https://github.com/ros-drivers/pointgrey_camera_driver/archive/0.2.5.tar.gz
+    source = ros-noetic-flir-camera-description-0.2.5.tar.gz::https://github.com/ros-drivers/flir_camera_driver/archive/0.2.5.tar.gz
     sha256sums = 0ba5d2ac9564565fe27a15566c638654be2ab9e91cb8251853fa6c248b9ba380
 
 pkgname = ros-noetic-flir-camera-description
