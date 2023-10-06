@@ -3,7 +3,7 @@
 pkgname=libxsd-frontend
 pkgver=2.1.0
 _xsdver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A compiler frontend for the W3C XML Schema definition language'
 arch=(x86_64)
 url='https://www.codesynthesis.com/projects/libxsd-frontend/'
@@ -29,6 +29,7 @@ build() {
 package() {
   cd build
   bpkg install config.install.root="$pkgdir"/usr libxsd-frontend
+  rm "$pkgdir"/usr/lib/pkgconfig/libxsd-frontend.static.pc
 
   install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
