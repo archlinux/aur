@@ -1,6 +1,6 @@
 pkgbase = tiawa-utils
 	pkgdesc = Tiawa utilities
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://gitlab.com/tiawa/tiawa-utils
 	arch = any
