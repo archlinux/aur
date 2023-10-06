@@ -14,6 +14,6 @@ pkgbase = python-fenicsx-plotly
 	depends = python-ipywidgets
 	depends = python-plotly
 	source = fenicsx-plotly-0.3.0.tar.gz::https://github.com/finsberg/fenicsx-plotly/archive/v0.3.0.tar.gz
-	sha512sums = 456fa4e617b233a5bd28768c0e99812c730ae01a2c9937ef3ffa0f529cf82372b5e3d8596cb4bab7630d835e8f4abdfc58e30d26e08576c83333c58b9859e016
+	sha512sums = 99ad1b55fe484559437531d7ff4f93d81ffa4994b568bbf2131fc8a9f2d19802de1116814cb89f0bd355fe9b27832ec97bfeb4c61bd1ca9a930ed5172d832764
 
 pkgname = python-fenicsx-plotly
