@@ -13,8 +13,11 @@ url='https://solar2d.com/'
 license=('MIT')
 depends=('glu' 'zlib' 'openal' 'freetype2' 'libpng' 'libjpeg' 'openssl-1.1' 'curl' 'sdl2' 'java-runtime')
 makedepends=('squashfs-tools')
-source=("https://github.com/coronalabs/corona/releases/download/3697/Solar2D-Linux-${pkgver}_amd64.snap")
-sha256sums=('509a1aaf622bf41490dcfe63aa040ba4f327e9e1a4c2a7b5aa32c749a059f31a')
+# The license file is available in the same commit from which the snap was built from
+source=("https://github.com/coronalabs/corona/releases/download/3697/Solar2D-Linux-${pkgver}_amd64.snap"
+        "https://raw.githubusercontent.com/coronalabs/corona/685b98d1154c140b5bac138317621dc8ee2fa103/LICENSE.md")
+sha256sums=('509a1aaf622bf41490dcfe63aa040ba4f327e9e1a4c2a7b5aa32c749a059f31a'
+            '8b3bad18f5a69906b8f03a4c525af48b76bdc7a46540c633ea0b1bdcc43b4176')
 
 prepare() {
     echo "Extracting snap file..."
@@ -25,6 +28,8 @@ package() {
     # Install files
     install -d "${pkgdir}/opt/Solar2D"
     cp -r "${srcdir}/${pkgname}/usr/local/bin/Solar2D/." "${pkgdir}/opt/Solar2D"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Desktop Entry
     sed -i 's|${SNAP}/meta/gui/solar2d.png|solar2d|g' "${srcdir}/${pkgname}/meta/gui/solar2d.desktop"
