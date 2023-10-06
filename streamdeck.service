@@ -1,0 +1,10 @@
+[Unit]
+Description=Streamdeck-UI: A Linux compatible UI for the Elgato Stream Deck.
+
+[Service]
+Type=simple
+ExecStart=python /usr/bin/streamdeck -n
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
