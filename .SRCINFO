@@ -1,6 +1,6 @@
 pkgbase = r-matrixtests
 	pkgdesc = Fast Statistical Hypothesis Tests on Rows and Columns of Matrices
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=matrixTests
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-matrixtests
 	optdepends = r-moments
 	optdepends = r-nortest
 	optdepends = r-pmcmrplus
-	source = https://cran.r-project.org/src/contrib/matrixTests_0.2.2.tar.gz
-	sha256sums = b9d8becfa604d54170fce33f2b6a82d9bdaf1e21cb6924070cf07315347bf575
+	source = https://cran.r-project.org/src/contrib/matrixTests_0.2.3.tar.gz
+	sha256sums = eaeb732fa5b63165d4ca872f675eb488c546a338ab6054a56deeebdf1900f134
 
 pkgname = r-matrixtests
