@@ -1,0 +1,11 @@
+--- pom-org.xml	2023-09-17 21:20:54.000000000 +0200
++++ pom.xml	2023-10-06 15:13:20.286364324 +0200
+@@ -814,7 +814,7 @@
+ 				 	<descriptors>
+ 						<descriptor>src/assembly/zip.xml</descriptor>
+ 					 </descriptors>
+-					<finalName>mtg-desktop-companion-</finalName>
++					<finalName>mtg-desktop-companion</finalName>
+ 				</configuration>
+ 				<executions>
+ 					<execution>
