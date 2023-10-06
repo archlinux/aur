@@ -1,0 +1,20 @@
+pkgbase = ros-noetic-flir-camera-driver
+    pkgdesc = ROS - driver for Flir cameras
+    pkgver = 0.2.5
+    pkgrel = 1
+    url = https://github.com/ros-drivers/flir_camera_driver
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = ros-noetic-spinnaker-camera-driver
+    depends = ros-noetic-flir-camera-description
+    source = ros-noetic-flir-camera-description-0.2.5.tar.gz::https://github.com/ros-drivers/pointgrey_camera_driver/archive/0.2.5.tar.gz
+    sha256sums = 0ba5d2ac9564565fe27a15566c638654be2ab9e91cb8251853fa6c248b9ba380
+
+pkgname = ros-noetic-flir-camera-driver
