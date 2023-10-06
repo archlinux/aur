@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..4ea7f0dc2 100644
+index ef3523211..5b54e7f4a 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -993,6 +993,76 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
+@@ -993,6 +993,85 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
    return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
  }
  
@@ -30,7 +30,7 @@ index ef3523211..4ea7f0dc2 100644
 +    std::numeric_limits<uint64_t>::max();
 +static uint64_t findVirtualCXXMethodId(const CXXMethodDecl *Method,
 +                                       const CXXRecordDecl *Record = nullptr) {
-+  if (!Method->isVirtual() || Method->hasAttr<OverrideAttr>())
++  if (!Method->isVirtual())
 +    return InvalidVirtualCXXMethodId; // FIXME: Find id from override.
 +  if (!Record) {
 +    Record = Method->getParent();
@@ -55,6 +55,15 @@ index ef3523211..4ea7f0dc2 100644
 +    }
 +  } else {
 +    // TODO: Recursive search for override attribute
++    if (Method->hasAttr<OverrideAttr>()) {
++      for (const auto &MD : Method->overridden_methods()) {
++        if (MD->hasAttr<OverrideAttr>())
++          continue;
++        const auto *Record = MD->getThisType()->getAsCXXRecordDecl();
++        return findVirtualCXXMethodId(MD, Record);
++      }
++      return InvalidVirtualCXXMethodId;
++    }
 +    for (const auto &Base :
 +         Record->bases()) { // FIXME: Calc only for first or last base
 +      const auto *BaseRecord = Base.getType()->getAsCXXRecordDecl();
@@ -79,7 +88,7 @@ index ef3523211..4ea7f0dc2 100644
  void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (ND.isInvalidDecl())
      return;
-@@ -1039,6 +1109,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1039,6 +1118,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      }
      return;
    }

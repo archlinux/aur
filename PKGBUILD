@@ -62,7 +62,7 @@
 #   'y' - apply this patch
 #
 # Show offset of virtual methods
-# Limitations: do not work for multiple inherits; do not work for overrides methods (look original method)
+# Limitations: do not work for multiple inherits
 # CLANGD_HOVERVIRTOFF:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
@@ -83,7 +83,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=6
+pkgrel=7
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -118,7 +118,7 @@ sha256sums=('SKIP'
             'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff'  # hover-bit-fields-mask
             '3d639ec99a36d17dbb9e926e30807d9e57587fb2eac55d42616a2f41d90281f9'  # hover-align
             '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76'  # hover-align-mask-comp
-            '2d50c4dc914305296216773fbe2b2ba988b61411286721be3e8c6a80f658f550') # hover-virt-offset
+            'fa8fdb4ef84940e74a1ee42d9fde00a5e025f423b25aa1740ebb429807ab1e8b') # hover-virt-offset
 
 pkgver() {
     cd llvm-project
