@@ -1,0 +1,22 @@
+pkgbase = tiawa-de-i3
+	pkgdesc = Tiawa desktop i3 environment
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/tiawa/tiawa-de-i3
+	arch = any
+	license = MIT
+	depends = feh
+	depends = i3-wm
+	depends = i3lock
+	depends = i3status
+	depends = imagemagick
+	depends = maim
+	depends = picom
+	depends = tiawa-de-base
+	depends = xclip
+	depends = xorg-server
+	depends = xorg-xinit
+	depends = xorg-xrandr
+	provides = tiawa-de
+
+pkgname = tiawa-de-i3
