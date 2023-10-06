@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WonderLab
+Type=Application
+Terminal=false
+Exec=env LC_CTYPE=en_US.UTF-8 /usr/bin/WonderLab.Override/wonderlab
+Icon=/usr/share/icons/wonderlab.png
+Categories=Game;ActionGame;AdventureGame;Simulation;
+Keywords=game;minecraft;launcher;mc
+Comment=Next generation cross-platform Minecraft launcher
+Comment[zh_CN]=下一代跨平台 Minecraft 启动器

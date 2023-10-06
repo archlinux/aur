@@ -1,7 +1,7 @@
 # Maintainer: Blessing-Studio  <Blessing-Studio @ Github>
 pkgname=wonderlab-git
 _pkgname=WonderLab.Override
-pkgver=1.2.6
+pkgver=1.2.8
 pkgrel=1
 epoch=
 pkgdesc="下一代跨平台 Minecraft 启动器"
@@ -10,11 +10,11 @@ url="https://github.com/Blessing-Studio/WonderLab.Override"
 groups=()
 license=('AGPL3')
 depends=()
-makedepends=('dotnet-sdk-bin' 'dotnet-runtime-bin')
+makedepends=('dotnet-sdk' 'dotnet-runtime')
 options=('!strip' '!emptydirs')
 conflicts=('wonderlab')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/master.tar.gz")
-sha512sums=('SKIP')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/master.tar.gz" "wonderlab.desktop")
+sha512sums=('SKIP' 'f1bdc93d55f94d55eafc648bd94d38120535ba81cc7078ee90de55f9506e16efbdfb7fab5d413e1d1800e13a9b1d85445a726bee6b646011772044edcc4210ba')
 build() {
 	cd "$_pkgname-master"
 	dotnet publish wonderlab/wonderlab.csproj --configuration Release --arch x64 --os linux -p:PublishSingleFile=false --sc true
@@ -22,10 +22,12 @@ build() {
 
 package(){
 	cd "$_pkgname-master"
-	mkdir -p "${pkgdir}/usr/share/WonderLab"
+	mkdir -p "${pkgdir}/usr/share/WonderLab.Override"
 	mkdir -p "${pkgdir}/usr/share/icons/"
-	cp -a wonderlab/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/usr/share/WonderLab"
+	mkdir -p "${pkgdir}/usr/bin/"
+	cp -a wonderlab/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/usr/share/WonderLab.Override"
 	cp -a "wonderlab/bin/Release/net7.0/linux-x64/publish/Assets/wonderlab.png" "${pkgdir}/usr/share/icons/wonderlab.png"
-	install -Dm644 "wonderlab/bin/Release/net7.0/linux-x64/publish/wonderlab.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -Dm644 ../../wonderlab.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	ln -s "${pkgdir}/usr/share/WonderLab.Override/" "${pkgdir}/usr/bin/"
 	rm -rf wonderlab/bin wonderlab/obj
 }
