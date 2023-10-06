@@ -13,11 +13,14 @@ optdepends=('adios2: for use ADIOS2 writer'
   'kahip: for compute graph partition in parallel'
   'parmetis: for parallel graph partitioning'
   'slepc: for use SLEPc eigen solver')
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('69c7f740b69492894c2dad8a968e614abcba7faa345befa6383fa939442df1627bb05286ddbdc11fa96eb754d7e5983030a7df36320e238e0bfb6f21fc933059')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
+  include-functional.patch::${url}/pull/2810.patch)
+sha512sums=('69c7f740b69492894c2dad8a968e614abcba7faa345befa6383fa939442df1627bb05286ddbdc11fa96eb754d7e5983030a7df36320e238e0bfb6f21fc933059'
+  'bb15f3e7420520ba6814bb92edc1f16e7a893de273b81f20b9fab89a3a2370c3d54dccfe61e2f9cc78e937d9f204a8f50bb28111519cc278969526265ffbbf00')
 
 prepare() {
-  sed -i '/#include <random>/a #include <functional>' ${pkgname}-${pkgver}/cpp/test/common/sort.cpp
+  cd ${pkgname}-${pkgver}
+  patch -p1 -i ../include-functional.patch
 }
 
 build() {

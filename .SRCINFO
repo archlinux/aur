@@ -18,6 +18,8 @@ pkgbase = dolfinx
 	optdepends = parmetis: for parallel graph partitioning
 	optdepends = slepc: for use SLEPc eigen solver
 	source = dolfinx-0.7.0.tar.gz::https://github.com/FEniCS/dolfinx/archive/v0.7.0.tar.gz
+	source = include-functional.patch::https://github.com/FEniCS/dolfinx/pull/2810.patch
 	sha512sums = 69c7f740b69492894c2dad8a968e614abcba7faa345befa6383fa939442df1627bb05286ddbdc11fa96eb754d7e5983030a7df36320e238e0bfb6f21fc933059
+	sha512sums = bb15f3e7420520ba6814bb92edc1f16e7a893de273b81f20b9fab89a3a2370c3d54dccfe61e2f9cc78e937d9f204a8f50bb28111519cc278969526265ffbbf00
 
 pkgname = dolfinx
