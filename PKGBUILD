@@ -12,6 +12,7 @@ depends=(
 	'python'
 )
 optdepends=(
+	'diff-so-fancy: diff formatting'
 	'jq: JSON processing'
 	'namcap: Pacman package analysis'
 	'podman: container management'

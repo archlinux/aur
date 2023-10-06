@@ -7,6 +7,7 @@ pkgbase = tiawa-devenv
 	license = MIT
 	depends = git-lfs
 	depends = python
+	optdepends = diff-so-fancy: diff formatting
 	optdepends = jq: JSON processing
 	optdepends = namcap: Pacman package analysis
 	optdepends = podman: container management
