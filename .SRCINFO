@@ -1,0 +1,18 @@
+pkgbase = qt5-quick3d
+	pkgdesc = Qt module and API for defining 3D content in Qt Quick
+	pkgver = 5.15.11+kde+r1
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt5
+	license = GPL3
+	makedepends = git
+	makedepends = assimp
+	depends = qt5-declarative
+	optdepends = assimp: assimp import plugin
+	source = git+https://invent.kde.org/qt/qt/qtquick3d#commit=f3c3c2041f4800a7fc1904771f5c6af036167dc9
+	source = qt5-quick3d-assimp-5.1.patch
+	sha256sums = SKIP
+	sha256sums = 57a3ac54c46f86d1f99ce20653bb34215cbd65fbd36f7ee802360336e88f268e
+
+pkgname = qt5-quick3d
