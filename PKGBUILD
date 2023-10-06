@@ -2,7 +2,7 @@
 _base=wslink
 pkgname=python-${_base}
 pkgdesc="Python/JavaScript library for communicating over WebSocket"
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 arch=(any)
 url="https://github.com/kitware/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-cryptography: SSL support'
   'ipython: jupyter backend support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2181ed52bebd90b9be06d4f5f9447d17e75fd8a23e2f35ed202bceb0bb917e5c7432a52414a09f4d3b0a0ea268fb521a3b2af865456425df0cc878f07ed342e5')
+sha512sums=('fb5f9fbd77ad48db93e11a6a3a71d9d08f30b94be454354fbe3bc2251cb4995a2c3c8e4cbdd6c3d77200e5b13b644a760b45e9e07fbe0235c964d7b14c26264b')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/python/MANIFEST.in
