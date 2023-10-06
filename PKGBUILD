@@ -6,7 +6,10 @@ pkgdesc="沙漏验机 - 是一款专业的苹果验机助手、苹果刷机助�
 arch=(x86_64)
 url="www.shalou.net"
 license=('custom')
-depends=(libxrender
+depends=(libxtst
+	libxcursor
+	cairo
+	libxrender
 	libxi
 	expat
 	wayland
@@ -50,5 +53,6 @@ package() {
 	bsdtar -xvf data.tar.* -C $pkgdir
 	mv $pkgdir/lib/ $pkgdir/usr/lib/
 	mv $pkgdir/bin/ $pkgdir/usr/bin/
+	chown root:root -R $pkgdir
 	# todo: a lot of qt5 lib remain undeleted, I am not sure, so I keep them there.
 }
