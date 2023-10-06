@@ -18,3 +18,10 @@ pkgbase = rustrover-eap
 	sha256sums_aarch64 = fca556502e9a532ee4ad7a3c0a470377f9f4ecb7d9b7d8311467a107b29fc868
 
 pkgname = rustrover-eap
+	optdepends = rust-src: Rust toolchain
+	optdepends = rustrover-eap-jre: JetBrains custom Java Runtime (Recommended)
+	optdepends = java-runtime: JRE - Required if rustrover-eap-jre is not installed
+
+pkgname = rustrover-eap-jre
+	pkgdesc = JBR (JetBrains Runtime) for RustRover - a patched JRE
+	url = https://github.com/JetBrains/JetBrainsRuntime
