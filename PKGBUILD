@@ -2,36 +2,37 @@
 # Contributor: kevku <kevku@gmx.com>
 
 pkgname=xsd
-pkgver=4.0.0
-_pkgver=4.0.0+dep
-pkgrel=5
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='An open-source, cross-platform W3C XML Schema to C++ data binding compiler'
 arch=(x86_64)
 url='https://www.codesynthesis.com/products/xsd'
 license=(GPL2)
-depends=(xerces-c)
-source=(https://www.codesynthesis.com/download/${pkgname}/4.0/${pkgname}-${_pkgver}.tar.bz2
-        xsdcxx.patch
-        gcc-11.patch)
-sha256sums=('eca52a9c8f52cdbe2ae4e364e4a909503493a0d51ea388fc6c9734565a859817'
-            '93f2e6a9dc942cf1fcab7edbe9c38fc102cbaf86f8b667b70aad4e8e2d1e2fd3'
-            'd57e0aed8784d2b947983209b6513c81ac593c9936c3d7b809b4cd60d4c28607')
-
-prepare() {
-  patch -d $pkgname-$_pkgver -p1 < xsdcxx.patch
-  patch -d $pkgname-$_pkgver/libxsd-frontend -p1 < gcc-11.patch # Fix build with GCC 11
-}
+depends=(gcc-libs
+         glibc
+         libcutl
+         libxsd-frontend
+         xerces-c)
+makedepends=(build2)
+source=(https://www.codesynthesis.com/download/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.gz)
+sha256sums=('2bed17c601cfb984f9a7501fd5c672f4f18eac678f5bdef6016971966add9145')
 
 build() {
-  cd $pkgname-$_pkgver
-  make CXXFLAGS="${CXXFLAGS} -std=c++14"
+  bpkg create -d build cc                       \
+    config.cxx=g++                              \
+    config.cc.coptions="${CXXFLAGS} ${LDFLAGS}"
+  cd build
+  bpkg add "$srcdir"/$pkgname-$pkgver --type dir
+  bpkg rep-fetch
+  bpkg build xsd ?sys:libxerces-c/* ?sys:libxsd-frontend/* ?sys:libcutl/*
 }
 
 package() {
-  cd $pkgname-$_pkgver
-  make install_prefix="$pkgdir/usr" install
-
-  # Fix conflicts with mono
+  cd build
+  bpkg install config.install.root="$pkgdir"/usr xsd
+# Fix conflicts with mono
   mv "$pkgdir"/usr/bin/xsd{,cxx}
   mv "$pkgdir"/usr/share/man/man1/xsd{,cxx}.1
+
+  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
