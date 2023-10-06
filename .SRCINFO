@@ -6,13 +6,14 @@ pkgbase = dex-idp
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = git
 	depends = glibc
 	backup = etc/dex.yaml
 	source = git+https://github.com/dexidp/dex#tag=08bb7fb98b164ab078be17ecda4077b2d21c9bb3
 	source = dex.service
 	source = dex.sysusers
 	sha256sums = SKIP
-	sha256sums = 4e49dc8d12d123fdd78c33cb3b9f903811f93d415c1c650feffc1d52ed176ef8
+	sha256sums = d8383089d904ad2407101f71ae08fbfddc50d888fe61c6203a7a9fd7b45181ac
 	sha256sums = 610ae818f2ff08ac41f6beb227510bff5c55699041e94cbcfec44dfa5553e688
 
 pkgname = dex-idp
