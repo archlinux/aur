@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-slab
-pkgver=2.001
-pkgrel=2
+pkgver=2.002
+pkgrel=1
 epoch=3
 pkgdesc='Roboto Slab is a slab serif addition to the Roboto type family.'
 arch=('any')
