@@ -1,13 +1,13 @@
 # Maintainer: Vinicius Moura Longaray <vmouralongaray@gmail.com>
 pkgname=spectrum-git
-pkgver=r273.6f0f905
+pkgver=r275.eea444e
 pkgrel=1
 pkgdesc="Console-based music player with equalizer written in C++."
 arch=("any")
 url="https://github.com/v1nns/spectrum"
 license=("MIT")
-depends=()
-makedepends=("git" "cmake" "ninja" "alsa-lib" "ffmpeg" "fftw" "curl" "libxml++")
+depends=("alsa-lib" "ffmpeg" "fftw" "curl" "libxml++")
+makedepends=("git" "cmake" "ninja")
 provides=("spectrum")
 conflicts=("spectrum")
 source=("spectrum::git+https://github.com/v1nns/spectrum")
