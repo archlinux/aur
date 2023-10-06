@@ -1,0 +1,20 @@
+pkgbase = intel-i915-backport-dkms
+	pkgdesc = Out of tree dkms driver for i915, with GPU debugging (on Max, Flex and Arc GPUs), SR-IOV, VM_BIND and ULLS (Ultra Low Latency Submission) supported
+	pkgver = 23.7.17_230608.25
+	pkgrel = 1
+	url = https://dgpu-docs.intel.com/releases/index.html
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = flex
+	makedepends = bison
+	makedepends = git
+	depends = dkms
+	depends = linux-headers
+	depends = linux<6
+	source = git+https://github.com/intel-gpu/intel-gpu-i915-backports.git
+	source = dkms.conf
+	sha512sums = SKIP
+	sha512sums = 3e5a334bfdc84e3032ee6d18a5a042ec32cc997c537f98a91ea2e29aa23c0a693089f6e63127ac4efc81c09cb2de3057cf97762ab9e069a466fe9b8f68428461
+
+pkgname = intel-i915-backport-dkms
