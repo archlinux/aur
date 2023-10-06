@@ -1,7 +1,7 @@
 _electron='electron25'
 
 pkgname=webcord
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
@@ -9,7 +9,7 @@ _repo='WebCord'
 url="https://github.com/SpacingBat3/${_repo}"
 license=('MIT')
 depends=("${_electron}")
-makedepends=('npm')
+makedepends=('npm' 'esbuild')
 options=('!strip' '!emptydirs')
 
 _snapshot="${_repo}-${pkgver}"
@@ -20,14 +20,12 @@ source=(
 )
 
 sha256sums=(
-    'ba747ccc0bcab7c0831a06b751f4b5881c330272caa8eaa5e86a7c46b7643536'
+    '735092e9410c9f03f0a3079cec5fa191c45f8359b537847a57756ae891a5af79'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '5923151d1cc05d7e2ab0cb2103921f5f3985e08e48c74e7aa12003b32c0e2bae'
 )
 
 prepare() {
-    npm i -E --ignore-scripts --include=optional --prefix=. "esbuild@0.19.3"
-
     cd "${_snapshot}"
     npm ci --omit=dev --ignore-scripts --prefix=.
     rm -r "sources/code/build"
@@ -36,9 +34,20 @@ prepare() {
 
 build() {
     cd "${_snapshot}"
-    npx esbuild "sources/code/**/*.ts" \
-        --outbase="sources" --outdir="app" --minify \
-        --platform=node --target=es2022 --format=cjs --supported:dynamic-import=false
+
+    local common=(
+        --outbase="sources"
+        --outdir="app"
+        --minify
+        --platform=node
+        --target=es2022
+    )
+
+    esbuild "sources/code/**/*.ts" \
+        "${common[@]}" --format=cjs
+
+    esbuild "sources/code/**/*.mts" \
+        "${common[@]}" --format=esm --out-extension:".js=.mjs"
 }
 
 package() {
@@ -58,7 +67,7 @@ package() {
     ln -sT "${lib}/sources/assets/icons/app.png" "${pkgdir}${icons}/${pkgname}.png"
 
     local exec="${pkgdir}${bin}/${pkgname}"
-    echo "#!/bin/sh
+    echo -n "#!/bin/sh
 exec '${_electron}' '${lib}' \"\$@\"
 " > "${exec}"
     chmod +x "${exec}"
