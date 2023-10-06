@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
         cd "$srcdir/${_pkgname}"
-        install -Dm755 "eztrackma" "$pkgdir/usr/local/bin/eztrackma"
+        install -Dm755 "eztrackma" "$pkgdir/usr/bin/eztrackma"
 }
