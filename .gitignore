@@ -1,1 +1,5 @@
 *.tar.gz
+pkg/
+src/
+*.zst
+streamdeck-ui/
