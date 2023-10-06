@@ -1,0 +1,14 @@
+pkgbase = tp_smapi-lts
+	pkgdesc = Modules for ThinkPad's SMAPI functionality
+	pkgver = 0.43
+	pkgrel = 343
+	url = https://github.com/evgeni/tp_smapi
+	arch = x86_64
+	license = GPL
+	makedepends = linux-lts-headers
+	makedepends = git
+	source = git+https://github.com/evgeni/tp_smapi#commit=a63729ab30d85430048f65c37f29188ab484cd52
+	sha256sums = SKIP
+
+pkgname = tp_smapi-lts
+	depends = linux-lts
