@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Geoxor/$appname"
 license=('MIT')
 makedepends=('gcc-multilib' 'git' 'gendesk' 'yarn' 'libxcrypt-compat')
-source=("git+https://github.com/Geoxor/$appname/")
+source=("https://github.com/Geoxor/$appname/")
 md5sums=('SKIP')
 
 prepare(){
