@@ -5,7 +5,7 @@
 
 pkgname=pleroma
 pkgver=2.5.5
-pkgrel=2
+pkgrel=1
 pkgdesc='A microblogging server software that can federate other servers that support ActivityPub'
 url='https://git.pleroma.social/pleroma/pleroma'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
