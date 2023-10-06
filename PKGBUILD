@@ -22,12 +22,11 @@ build() {
 
 package(){
 	cd "$_pkgname-master"
-	mkdir -p "${pkgdir}/usr/share/WonderLab.Override"
+	mkdir -p "${pkgdir}/usr/bin/WonderLab.Override"
 	mkdir -p "${pkgdir}/usr/share/icons/"
 	mkdir -p "${pkgdir}/usr/bin/"
-	cp -a wonderlab/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/usr/share/WonderLab.Override"
+	cp -a wonderlab/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/usr/bin/WonderLab.Override"
 	cp -a "wonderlab/bin/Release/net7.0/linux-x64/publish/Assets/wonderlab.png" "${pkgdir}/usr/share/icons/wonderlab.png"
 	install -Dm644 ../../wonderlab.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-	ln -s "${pkgdir}/usr/share/WonderLab.Override/" "${pkgdir}/usr/bin/"
 	rm -rf wonderlab/bin wonderlab/obj
 }
