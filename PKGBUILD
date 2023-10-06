@@ -2,7 +2,7 @@
 # Contributor: Pawel Mosakowski <pawel at mosakowski dot net>
 
 pkgname=appgate-sdp
-pkgver=6.2.2
+pkgver=6.2.3
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) desktop client"
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=(
   "10-appgate-tun.network"
 )
 sha256sums=(
-  "e716f00422d3959d1c136ef79f712bca465212be7d7598d05a15532bdd56f5ae"
+  "5ba3fcdfe0cf776551cf9d9428f269f83d56723803c325d8731eab5621db9a59"
   "2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9"
 )
 
