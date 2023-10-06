@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="1.7.0-2"
+_fullver="1.7.0-3"
 pkgname="xpipe-ptb"
 pkgver="1.7.0"
-pkgrel="2"
+pkgrel="3"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
@@ -36,5 +36,5 @@ package() {
 	install -d "$pkgdir"/usr/bin
 	ln -s "/opt/$pkgname/cli/bin/xpipe" "$pkgdir/usr/bin/${pkgname}"
 	install -d "$pkgdir"/etc/bash_completion.d
-	ln -s "/opt/xpipe/cli/xpipe_completion" "$pkgdir/etc/bash_completion.d/${pkgname}"
+	ln -s "/opt/$pkgname/cli/xpipe_completion" "$pkgdir/etc/bash_completion.d/${pkgname}"
 }
