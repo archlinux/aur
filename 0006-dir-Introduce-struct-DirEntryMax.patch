@@ -1,0 +1,184 @@
+From ffd16089036e05a9db4065eb4d5ae8a217811a78 Mon Sep 17 00:00:00 2001
+From: Mark Vitale <mvitale@sinenomine.net>
+Date: Fri, 15 Sep 2023 15:01:56 -0400
+Subject: [PATCH 6/6] dir: Introduce struct DirEntryMax
+
+Since the introduction of AFS3, the directory package has allocated
+space for each directory entry by allocating a DirEntry struct followed
+by 0-8 contiguous DirEntryX structs, as needed. This is implemented by:
+
+ - afs_dir_NameBlobs    calculates the number of blocks needed
+ - FindBlobs		allocates and returns index of entry
+ - afs_dir_GetBlob	returns pointer to 1st DirEntry struct
+
+After this, we populate DirEntry (and any contiguous DirEntryX blocks)
+with open code.  Most existing code write the entry's name via a string
+copy operation to DirEntry->name, which is only 16 bytes long.  The
+maximum supported directory name is AFSNAMEMAX 256 (+1 for the required
+terminating nul).  Therefore, for dir entry names that are 16 bytes or
+longer, OpenAFS routinely does string copies that look like buffer
+overruns, but are "safe" (barring undefined behavior) due to the
+guaranteed presence of sufficient additional DirEntryX blocks.
+
+Recent changes in the OpenAFS build chain have made this approach no
+longer viable:
+
+1)
+Linux 6.3 commit 439a1bcac648fe9b59210cde8991fb2acf37bdab 'fortify: Use
+__builtin_dynamic_object_size() when available' modified the hardening
+of several kernel string operations when running with
+CONFIG_FORTIFY_SOURCE=y.
+
+2)
+gcc 13 commit 79a89108dd352cd9288f5de35481b1280c7588a5
+'__builtin_dynamic_object_size: Recognize builtin' provides some
+enhancements to _builtin_object_size.  The Linux commit above will now
+use these when the kernel is built with gcc 13.
+
+When OpenAFS is built under Linux 6.3 or higher and gcc 13 or higher,
+the hardened strlcpy will BUG for directory entry names longer than 16
+characters.
+
+Since there are multiple places where OpenAFS writes directory names,
+there are several symptoms that may manifest.  However, the first one is
+usually a kernel BUG at cache manager initialization if running with
+afsd -dynroot _and_ there are any cell names 15 characters or longer in
+the client CellServDB.  (A 15-character cellname reaches the 16
+character limit when -dyrnoot adds the RW mountpoint ".<cellname>".)
+
+Create a new overlay struct - DirEntryMax - with a name size of
+AFSNAMEMAX + 1.  Whenever we write a directory name, cast the existing
+DirEntry pointer to DirEntryMax so that any hardening will be satisfied
+that there is sufficient space for the name.  However, the actual
+guarantee that this is true is still provided by the OpenAFS directory
+routines mentioned above - all of these remain unchanged.
+
+Change-Id: I6da5c6c295f051be90017084e5b3a3ef24d1271f
+---
+ src/afs/LINUX/osi_vnodeops.c |  4 ++--
+ src/afs/afs_dynroot.c        |  4 ++--
+ src/dir/dir.c                |  4 ++--
+ src/dir/dir.h                | 34 +++++++++++++++++++++++++++++++++-
+ 4 files changed, 39 insertions(+), 7 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index fb62752e6..4e33a189e 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -426,7 +426,7 @@ afs_linux_readdir(struct file *fp, void *dirbuf, filldir_t filldir)
+     int code;
+     int offset;
+     afs_int32 dirpos;
+-    struct DirEntry *de;
++    struct DirEntryMax *de;
+     struct DirBuffer entry;
+     ino_t ino;
+     int len;
+@@ -531,7 +531,7 @@ afs_linux_readdir(struct file *fp, void *dirbuf, filldir_t filldir)
+ 	    goto unlock_out;
+         }
+ 
+-	de = (struct DirEntry *)entry.data;
++	de = entry.data;
+ 	ino = afs_calc_inum (avc->f.fid.Cell, avc->f.fid.Fid.Volume,
+ 			     ntohl(de->fid.vnode));
+ 	len = strlen(de->name);
+diff --git a/src/afs/afs_dynroot.c b/src/afs/afs_dynroot.c
+index 281b168eb..79f5d9254 100644
+--- a/src/afs/afs_dynroot.c
++++ b/src/afs/afs_dynroot.c
+@@ -228,7 +228,7 @@ afs_dynroot_addDirEnt(struct DirHeader *dirHeader, int *curPageP,
+ {
+     char *dirBase = (char *)dirHeader;
+     struct PageHeader *pageHeader;
+-    struct DirEntry *dirEntry;
++    struct DirEntryMax *dirEntry;
+     int sizeOfEntry, i, t1, t2;
+     int curPage = *curPageP;
+     int curChunk = *curChunkP;
+@@ -257,7 +257,7 @@ afs_dynroot_addDirEnt(struct DirHeader *dirHeader, int *curPageP,
+ 	dirHeader->alloMap[curPage] = EPP - 1;
+     }
+ 
+-    dirEntry = (struct DirEntry *)(pageHeader + curChunk);
++    dirEntry = (struct DirEntryMax *)(pageHeader + curChunk);
+     dirEntry->flag = 1;
+     dirEntry->length = 0;
+     dirEntry->next = 0;
+diff --git a/src/dir/dir.c b/src/dir/dir.c
+index bc5bb046d..b31a9ac46 100644
+--- a/src/dir/dir.c
++++ b/src/dir/dir.c
+@@ -99,7 +99,7 @@ afs_dir_Create(dir_file_t dir, char *entry, void *voidfid)
+     int blobs, firstelt;
+     int i;
+     struct DirBuffer entrybuf, prevbuf, headerbuf;
+-    struct DirEntry *ep;
++    struct DirEntryMax *ep;
+     struct DirHeader *dhp;
+     int code;
+     size_t rlen;
+@@ -127,7 +127,7 @@ afs_dir_Create(dir_file_t dir, char *entry, void *voidfid)
+     /* First, we fill in the directory entry. */
+     if (afs_dir_GetBlob(dir, firstelt, &entrybuf) != 0)
+ 	return EIO;
+-    ep = (struct DirEntry *)entrybuf.data;
++    ep = entrybuf.data;
+ 
+     ep->flag = FFIRST;
+     ep->fid.vnode = htonl(vfid[1]);
+diff --git a/src/dir/dir.h b/src/dir/dir.h
+index f5c8eef42..a26dab0c0 100644
+--- a/src/dir/dir.h
++++ b/src/dir/dir.h
+@@ -11,6 +11,8 @@
+ 
+ #define __AFS_DIR_H
+ 
++#include <afs/afsint.h>
++
+ #define AFS_PAGESIZE 2048	/* bytes per page */
+ #define NHASHENT 128		/* entries in the hash tbl */
+ #define MAXPAGES 128		/* max pages in a dir */
+@@ -51,7 +53,37 @@ struct DirHeader {
+     unsigned short hashTable[NHASHENT];
+ };
+ 
+-struct DirEntry {
++/*
++ * This struct is just a copy of DirEntry with the maximum supported name
++ * length.  It provides a more logical view of a maximum directory entry name
++ * which consists of a DirEntry struct followed by 8 consecutive DirEntryX
++ * structs.
++ *
++ * Using this helps us convince safety-minded string functions (e.g.
++ * CONFIG_FORTIFY_SOURCE) that an OpenAFS directory entry name really does fit
++ * in the allotted space, and thus avoid undefined behavior.
++ *
++ * NOTE: The size of name[] should be considered an upper bound for the current
++ * users of the directory package. (The directory package limit for an entry
++ * are actually much higher; up to an entire directory page.)  However, the
++ * actual amount of space available/allocated for a given directory entry name
++ * may often be smaller.
++ */
++struct DirEntryMax {
++    /* A directory entry - the biggest. */
++    char flag;
++    char length;
++    unsigned short next;
++    struct MKFid fid;
++    char name[AFSNAMEMAX + 1];	/* max possible plus terminating NUL */
++};
++
++/*
++ * This struct formerly described the format of directory entries in AFS2.
++ * Since the introduction of DirEntryX in AFS3, DirEntry merely describes the
++ * minimum possible directory entry.
++*/
++ struct DirEntry {
+     /* A directory entry */
+     char flag;
+     char length;		/* currently unused */
+-- 
+2.42.0
+
