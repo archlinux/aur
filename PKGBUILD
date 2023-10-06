@@ -18,6 +18,7 @@ depends=(
 	'nftables'
 	'noto-fonts-emoji'
 	'openssh'
+	'reflector'
 	'starship'
 	'ttf-nerd-fonts-symbols'
 	'ttf-nerd-fonts-symbols-mono'
