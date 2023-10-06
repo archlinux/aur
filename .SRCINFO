@@ -6,12 +6,14 @@ pkgbase = python-fenics-plotly
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = openssh
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-dolfin
 	depends = python-ipywidgets
 	depends = python-plotly
-	source = https://github.com/finsberg/fenics-plotly/archive/v2022.0.0.tar.gz
+	source = fenics-plotly-2022.0.0.tar.gz::https://github.com/finsberg/fenics-plotly/archive/v2022.0.0.tar.gz
 	sha512sums = 456fa4e617b233a5bd28768c0e99812c730ae01a2c9937ef3ffa0f529cf82372b5e3d8596cb4bab7630d835e8f4abdfc58e30d26e08576c83333c58b9859e016
 
 pkgname = python-fenics-plotly
