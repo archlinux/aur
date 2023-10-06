@@ -1,0 +1,17 @@
+pkgbase = qt5-quicktimeline
+	pkgdesc = Qt module for keyframe-based timeline construction
+	pkgver = 5.15.11
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = git
+	depends = qt5-declarative
+	source = git+https://invent.kde.org/qt/qt/qtquicktimeline#commit=b1b4b882dabaa036c3fb73c4a879ba8efbb02ded
+	sha256sums = SKIP
+
+pkgname = qt5-quicktimeline
