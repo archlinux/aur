@@ -2,9 +2,9 @@ pkgdesc="ROS - The pybind11 package."
 url='https://github.com/ipab-slmc/pybind11_catkin'
 
 pkgname='ros-noetic-pybind11-catkin'
-pkgver='2.5.0'
+pkgver='2.10.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -28,7 +28,7 @@ depends=(
 
 _dir="pybind11_catkin-release-release-noetic-pybind11_catkin"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/wxmerkt/pybind11_catkin-release/archive/release/noetic/pybind11_catkin/${pkgver}.tar.gz")
-sha256sums=('c5a9b7f752989d63b0abd0dd7b2526b6d857997f0917d7a4772a02d3e06ea356')
+sha256sums=('709c9c07f4049985ae5cc920306abfa58bfd62a8325ba8fd0a28f78e2d42a594')
 
 
 build() {
