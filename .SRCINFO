@@ -1,12 +1,12 @@
 pkgbase = rustrover-eap
 	pkgdesc = Rust IDE by JetBrains
 	pkgver = 232.9921.62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/rust/
 	arch = x86_64
 	arch = aarch64
 	license = custom:jetbrains
-	depends = rust-src
+	optdepends = rust-src: Rust toolchain
 	options = !strip
 	source = rustrover-eap.desktop
 	source = jetbrains-eap-3.3.docx

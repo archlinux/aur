@@ -1,12 +1,14 @@
-# Maintainer:
-# Contributor: Serge K <arch@phnx47.net>
+# Maintainer: Serge K <arch@phnx47.net>
+
+# For Issues, Pull Requests
+# https://github.com/phnx47/pkgbuilds
 
 pkgname=rustrover-eap
 pkgver=232.9921.62
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust IDE by JetBrains"
 arch=('x86_64' 'aarch64')
-depends=('rust-src')
+optdepends=('rust-src: Rust toolchain')
 options=('!strip')
 url="https://www.jetbrains.com/rust/"
 license=('custom:jetbrains')
