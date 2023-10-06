@@ -1,0 +1,17 @@
+pkgbase = vcluster-git
+	pkgdesc = Create fully functional virtual Kubernetes clusters
+	pkgver = 0.16.1.r4.ga45458f2
+	pkgrel = 1
+	url = https://vcluster.com
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = apache
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = vcluster::git+https://github.com/loft-sh/vcluster#branch=main
+	sha256sums = SKIP
+
+pkgname = vcluster-git
