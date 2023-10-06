@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music-git
-pkgver=1.20.0.r3.g1ed43e1
-pkgrel=5
-_electronversion=22
+pkgver=1.20.0.r101.g375fb08
+pkgrel=1
+_electronversion=27
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
 depends=("electron${_electronversion}" 'libsecret')
-makedepends=('git' 'nodejs>=16.0.0' 'npm' 'yarn')
+makedepends=('git' 'nodejs>=16.0.0' 'npm')
 optdepends=('libnotify: desktop notifications')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,16 +29,17 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
-  yarn install
-  yarn run clean
+  export npm_config_cache="$srcdir/npm_cache"
+  npm install
+  npm run clean
+  npm run tsc-and-copy
   HOME="$srcdir/.electron-gyp" ./node_modules/.bin/electron-builder --linux dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-git}"
+  install -Dm644 pack/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-git}"
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
