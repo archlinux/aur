@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..88706ad64 100644
+index ef3523211..5d146b541 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
 @@ -993,6 +993,115 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
@@ -57,10 +57,10 @@ index ef3523211..88706ad64 100644
 +    if (!Record)
 +      return InvalidVirtualCXXMethodId;
 +  }
-+  if (Method == Record->getDestructor())
-+    return 0;
 +  const auto MSABI =
 +      Record->getASTContext().getTargetInfo().getCXXABI().isMicrosoft();
++  if (MSABI && Method == Record->getDestructor())
++    return 0;
 +  if (Record->getNumBases() == 0) {
 +    uint64_t Id = 0;
 +    for (const auto *MD : Record->methods()) {
