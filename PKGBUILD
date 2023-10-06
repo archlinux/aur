@@ -3,13 +3,13 @@
 
 pkgname=homed-automation
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HOMEd Automation is simple service for home automations, part of HOMEd project"
 arch=("armv7h" "i686" "x86_64")
 url="https://wiki.homed.dev/"
 license=("GPL3")
 backup=("etc/homed/homed-automation.conf")
-depends=("qt5-mqtt")
+depends=("curl" "qt5-mqtt")
 makedepends=("qt5-tools")
 source=(
   "https://github.com/u236/homed-service-automation/archive/refs/tags/${pkgver}.tar.gz"
