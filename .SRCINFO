@@ -19,6 +19,7 @@ pkgbase = tiawa-base
 	depends = ttf-nerd-fonts-symbols
 	depends = ttf-nerd-fonts-symbols-mono
 	depends = zsh
+	depends = zsh-syntax-highlighting
 	optdepends = amd-ucode: AMD microcode
 	optdepends = intel-ucode: Intel microcode
 

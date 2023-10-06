@@ -22,6 +22,7 @@ depends=(
 	'ttf-nerd-fonts-symbols'
 	'ttf-nerd-fonts-symbols-mono'
 	'zsh'
+	'zsh-syntax-highlighting'
 )
 optdepends=(
 	'amd-ucode: AMD microcode'
