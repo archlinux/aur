@@ -74,7 +74,6 @@ _buildfiptool() {
 _buildimage() {
   _plat=$1; _bpir=$2; _atfdev=$3; _stretch=$4; _rest="${@:5}"
   cd "${srcdir}/${_gitname}"
-  rm -f build/${_plat}/release/${_bpir}-atf-${_atfdev}-*.bin
   sed -i 's/.*entry = get_partition_entry.*fip.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-fip");/' \
          plat/mediatek/${_plat}/bl2_boot_mmc.c
   sed -i 's/.*entry = get_partition_entry.*boot.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-boot");/' \
@@ -101,6 +100,7 @@ _installimage() {
 }
 
 build() {
+  rm -rf "${srcdir}/${_gitname}"/build/*
   if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/nostretch-mkimage"  ] || \
      [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/stretch-mkimage" ]; then _buildmkimage
   fi
