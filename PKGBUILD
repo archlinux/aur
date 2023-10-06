@@ -9,7 +9,7 @@
 # Contributor: Florijan Hamzic <florijanh@gmail.com>
 pkgname='sphinx'
 pkgver=2.2.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Free open-source SQL full-text search engine.'
 arch=('i686' 'x86_64')
 url='http://www.sphinxsearch.com/'
@@ -17,6 +17,7 @@ license=('GPL')
 depends=('unixodbc' 'expat' 'libmariadbclient' 'postgresql-libs')
 optdepends=('postgresql')
 backup=('etc/conf.d/sphinx')
+conflicts=("sphinx-beta" "sphinx-bin")
 install='sphinx.install'
 source=("https://sphinxsearch.com/files/${pkgname}-${pkgver}-release.tar.gz"
     'sphinx.conf.d'

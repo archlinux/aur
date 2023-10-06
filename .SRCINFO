@@ -1,7 +1,7 @@
 pkgbase = sphinx
 	pkgdesc = Free open-source SQL full-text search engine.
 	pkgver = 2.2.11
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.sphinxsearch.com/
 	install = sphinx.install
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = sphinx
 	depends = libmariadbclient
 	depends = postgresql-libs
 	optdepends = postgresql
+	conflicts = sphinx-beta
+	conflicts = sphinx-bin
 	backup = etc/conf.d/sphinx
 	source = https://sphinxsearch.com/files/sphinx-2.2.11-release.tar.gz
 	source = sphinx.conf.d
