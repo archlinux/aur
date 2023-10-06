@@ -1,0 +1,12 @@
+pkgbase = tiawa
+	pkgdesc = Tiawa environment
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/tiawa/tiawa
+	arch = any
+	license = MIT
+	depends = tiawa-base
+	optdepends = tiawa-de: desktop environment
+	optdepends = tiawa-devenv: development environment
+
+pkgname = tiawa
