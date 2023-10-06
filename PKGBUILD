@@ -9,7 +9,6 @@ arch=(any)
 url="https://github.com/fundamentalvision/Deformable-DETR"
 license=(MIT)
 depends=(python cuda gcc python-pytorch)
-optdepends=(python-pytorch python-pytorch-cuda python-pytorch-opt-cuda)
 conflicts=()
 makedepends=(python-setuptools)
 source=(Deformable-DETR.zip::"$url/archive/refs/heads/main.zip")
