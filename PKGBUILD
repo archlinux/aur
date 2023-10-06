@@ -1,4 +1,4 @@
-# Maintainer: Garlicbreadwolfs <garlicbreadwolfs@riseup.net>
+# Maintainer: Garlicbreadwolfs
 # Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
@@ -9,14 +9,14 @@
 pkgname=cinnamon-disable-nm
 _origpkgname=cinnamon
 pkgver=5.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience (without NetworkManager version)"
 arch=(x86_64)
 url="https://github.com/linuxmint/cinnamon"
 license=(GPL2)
 depends=(accountsservice caribou cinnamon-control-center cinnamon-menus cinnamon-screensaver
          cinnamon-session cinnamon-settings-daemon cjs gnome-backgrounds gsound
-         gstreamer libcroco libgnomekbd libkeybinder3 librsvg muffin
+         gstreamer libgnomekbd libkeybinder3 librsvg muffin
          nemo polkit-gnome python-cairo python-dbus
          python-gobject python-pam python-pexpect python-pillow python-pyinotify
          python-pytz python-tinycss2 python-xapp python-requests timezonemap xapps xdg-desktop-portal-xapp)
