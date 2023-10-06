@@ -1,6 +1,6 @@
 pkgbase = nzbget-git
 	pkgdesc = Download from Usenet using .nzb files
-	pkgver = 21.4.r2397.6ddacdb2
+	pkgver = 21.4.r2400.c6db0ecb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/nzbget-ng/nzbget
@@ -21,6 +21,6 @@ pkgbase = nzbget-git
 	source = nzbget-git::git+https://github.com/nzbget-ng/nzbget.git#branch=develop
 	source = nzbget.service
 	sha256sums = SKIP
-	sha256sums = 66b2c2fbe949f6406a49674d28a2bdd258b20780ba47a586b640d6cc4d99f7c2
+	sha256sums = 4f8b03b7a52bfb7595c73cb551d2f75bde4a68c4916e4a28dbd359cd4184f097
 
 pkgname = nzbget-git

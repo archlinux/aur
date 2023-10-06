@@ -1,8 +1,9 @@
-# Maintainer: selfdenial <hidden>
+# Maintainer: selfdenial <selfdenial@pm.me>
+# Contributor: Nicola Hinssen <nicola.hinssen@gmail.com>
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=21.4.r2397.6ddacdb2
+pkgver=21.4.r2400.c6db0ecb
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
@@ -24,7 +25,7 @@ install=nzbget.install
 source=("$pkgname::git+https://github.com/nzbget-ng/nzbget.git#branch=develop"
         "nzbget.service")
 sha256sums=('SKIP'
-            '66b2c2fbe949f6406a49674d28a2bdd258b20780ba47a586b640d6cc4d99f7c2')
+            '4f8b03b7a52bfb7595c73cb551d2f75bde4a68c4916e4a28dbd359cd4184f097')
 
 pkgver() {
   cd "$pkgname"

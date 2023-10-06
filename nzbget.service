@@ -1,6 +1,6 @@
 [Unit]
 Description=NZBGet Daemon
-Documentation=http://nzbget.net/Documentation
+Documentation=https://nzbget-ng.github.io/Documentation
 After=network.target
 
 [Service]
