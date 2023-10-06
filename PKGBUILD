@@ -8,10 +8,10 @@ arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
 license=('GPL3')
 makedepends=('make')
-depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'ffmpeg')
+depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-wand' 'python-gobject' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'ffmpeg')
 optdepends=('yt-dlp: YouTube channel support')
+provides=('yuki-iptv')
 conflicts=('yuki-iptv')
-replaces=('yuki-iptv')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('f55ee559ab71cf9cbd20778aa1cc8fa6ec220a0e720816190316a7993c28280da4ad1227c2ca215183f7234e8fc9ed0786e1c013262eef5ea90c086800b38fbb')
 
