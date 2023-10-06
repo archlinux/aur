@@ -1,7 +1,5 @@
-# Maintainer: Serge K <arch@phnx47.net>
-
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
+# Maintainer:
+# Contributor: Serge K <arch@phnx47.net>
 
 pkgname=rustrover-eap
 pkgver=232.9921.62
