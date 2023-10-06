@@ -5,6 +5,7 @@ pkgbase = tiawa-de-i3
 	url = https://gitlab.com/tiawa/tiawa-de-i3
 	arch = any
 	license = MIT
+	depends = dmenu
 	depends = feh
 	depends = i3-wm
 	depends = i3lock

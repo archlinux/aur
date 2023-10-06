@@ -8,6 +8,7 @@ arch=('any')
 url='https://gitlab.com/tiawa/tiawa-de-i3'
 license=('MIT')
 depends=(
+	'dmenu'
 	'feh' # setting desktop background
 	'i3-wm'
 	'i3lock'
