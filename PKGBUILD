@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-location
-_basever=5.15.10
+_basever=5.15.11
 pkgver=5.15.10+kde+r5
 pkgrel=1
-_commit=3b946d0c5c8aaed3757bdcbbcd3b45cb79494471
+_commit=b4c42e255ee0f04eec4cf5cde35398f3c303ddb9
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
