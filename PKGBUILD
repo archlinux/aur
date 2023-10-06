@@ -2,7 +2,7 @@
 # Contributor: Sergey Moryakov <sergey@nqnet.org>
 
 pkgname=homed-web
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="HOMEd Web is web interface for all HOMEd services, part of HOMEd project"
 arch=("armv7h" "i686" "x86_64")
@@ -16,7 +16,7 @@ source=(
   "git+https://github.com/u236/homed-service-common.git"
 )
 sha512sums=(
-  "6da1babf82b94b9f7d84db4ff00b7f389eef4f0c93ca129b4ef79a273da884658209c45173e6f066e2805fcde97bd63892781fbde7dd5c19ac5713fcadfd34ae"
+  "da0ef31206519927ea70a40719b1ff1b1ee723e9ebbc943dc408b3192830799aa56ace4b85d05feef342685fbd924b7907204b484b0528b3fa186291b70b8d09"
   "SKIP"
 )
 
@@ -36,7 +36,6 @@ build() {
 package() {
   cd "${srcdir}/homed-service-web-${pkgver}"
   make INSTALL_ROOT="${pkgdir}/" install
-  mkdir -p ${pkgdir}/opt/homed-web
   install -Dm644 "deploy/systemd/homed-web.service" "${pkgdir}/etc/systemd/system/homed-web.service"
   install -Dm644 "deploy/data/etc/homed/homed-web.conf" "${pkgdir}/etc/homed/homed-web.conf"
 }
