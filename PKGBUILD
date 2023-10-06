@@ -1,27 +1,30 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libcutl
-pkgver=1.10.0
+pkgver=1.11.0
+_xsdver=4.2
 pkgrel=1
 pkgdesc='A C++ utility library'
 arch=(x86_64)
 url='https://www.codesynthesis.com/projects/libcutl/'
 license=(MIT)
-makedepends=()
+makedepends=(build2)
 depends=(gcc-libs
          glibc)
-source=(https://www.codesynthesis.com/download/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.gz)
-sha256sums=('bdee4b10ce621f18ec91e9ba63d539a2d74542a1d443e0e3f819861ab689d2f6')
+source=(https://www.codesynthesis.com/download/xsd/$_xsdver/$pkgname-$pkgver.tar.gz)
+sha256sums=('bb78ff87d6cb1a2544543ffe7941f0aeb8f9dcaf7dd46e9acef3e032ed7881dc')
 
 build() {
-  cd $pkgname-$pkgver
-  CXXFLAGS+=" -std=c++14" \
-  ./configure \
-    --prefix=/usr
-  make
+  bpkg create -d build cc          \
+    config.cxx=g++                 \
+    config.cc.coptions="${CFLAGS}"
+  cd build
+  bpkg add "$srcdir"/$pkgname-$pkgver --type dir
+  bpkg rep-fetch
+  bpkg build libcutl
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd build
+  bpkg install config.install.root="$pkgdir"/usr libcutl
 }
