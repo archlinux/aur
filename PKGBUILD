@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.11.r110.gc2fc190
+pkgver=0.14.11.r137.g3dfc8a0
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -28,13 +28,13 @@ _luadeps=(cassowary
           socket
           vstruct
           zlib)
-depends=(glibc
-         fontconfig
+depends=(fontconfig
          freetype2
-         harfbuzz
          gentium-plus-font
-         git
+         glibc
+         harfbuzz
          icu
+         luajit
          libpng # this goes with libtexpdf if ever split out to a library package
          "${_luadeps[@]/#/lua51-}"
          zlib)
@@ -50,7 +50,7 @@ optdepends=('libertinus-font: default math font'
             'noto-fonts-cjk: default font for tate enabled classes'
             'ttf-hack: default mono font')
 makedepends=(cargo
-             luajit
+             git
              jq)
 checkdepends=(poppler)
 provides=(libtexpdf.so
