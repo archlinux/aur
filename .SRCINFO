@@ -1,0 +1,17 @@
+pkgbase = tiawa-utils
+	pkgdesc = Tiawa utilities
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.com/tiawa/tiawa-utils
+	arch = any
+	license = MIT
+	optdepends = aria2: download utility
+	optdepends = graphviz: graph visualization
+	optdepends = jpegoptim: image optimizer
+	optdepends = optipng: image optimizer
+	optdepends = rar
+	optdepends = rsync
+	optdepends = unzip
+	optdepends = zip
+
+pkgname = tiawa-utils
