@@ -1,13 +1,22 @@
 pkgbase = vcluster-bin
 	pkgdesc = Create fully functional virtual Kubernetes clusters
-	pkgver = 0.15.0
-	pkgrel = 0
+	pkgver = 0.16.1
+	pkgrel = 1
 	url = https://vcluster.com
 	arch = x86_64
-	license = Apache
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = apache
 	provides = vcluster
 	conflicts = vcluster
-	source = vcluster-0.15.0::https://github.com/loft-sh/vcluster/releases/download/v0.15.0/vcluster-linux-amd64
-	sha256sums = e80ff494d705324b9a9f8a8998402a687f47fe219e0a6d0a50e06a851591bbdf
+	source_x86_64 = vcluster-0.16.1::https://github.com/loft-sh/vcluster/releases/download/v0.16.1/vcluster-linux-amd64
+	sha256sums_x86_64 = 51fcf6148707f9779f1ddc99981d9eef538056191c24812bf6e9655ec84a2953
+	source_armv7l = vcluster-0.16.1::https://github.com/loft-sh/vcluster/releases/download/v0.16.1/vcluster-linux-arm
+	sha256sums_armv7l = 366cc9c8e2d9669410ed91e4ca2bbc4fbd26fd1e24717a4268714b7b842d9cda
+	source_armv7h = vcluster-0.16.1::https://github.com/loft-sh/vcluster/releases/download/v0.16.1/vcluster-linux-arm
+	sha256sums_armv7h = 366cc9c8e2d9669410ed91e4ca2bbc4fbd26fd1e24717a4268714b7b842d9cda
+	source_aarch64 = vcluster-0.16.1::https://github.com/loft-sh/vcluster/releases/download/v0.16.1/vcluster-linux-arm64
+	sha256sums_aarch64 = 40b285f7a1d5344c6afb602e34db902cf73f7604100db510e84f6d864076cc9b
 
 pkgname = vcluster-bin
