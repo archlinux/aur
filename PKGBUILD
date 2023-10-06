@@ -2,7 +2,7 @@
 
 _gemname=google-apis-storage_v1
 pkgname=ruby-$_gemname
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='simple REST client for Cloud Storage JSON API V1'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-google-apis-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('457b7397d2064022fd66ecd94cde8f8b39e748c00bb984b7398e40b24f81388d')
+sha256sums=('e53f390ffde1fc30562abd574594a74ea585f4837f1d652d9c7b7f4a6f96da4c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
