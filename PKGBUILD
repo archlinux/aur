@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -22,14 +22,16 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz
         0002-LINUX-Make-sysctl-definitions-more-concise.patch
         0003-Linux-6.5-Use-register_sysctl.patch
         0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
-        0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch)
+        0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch
+        0006-dir-Introduce-struct-DirEntryMax.patch)
 sha256sums=('9fec11364623549e8db7374072f5c8f01b841f6bfe7e85673cbce35ff43ffb07'
             '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
-            '81f3cf88040eee89ed180d683ba1a42107ea4a6c7057fd3dac679be9a9a9ab01'
-            '873c2b3816eed95e1799954d299e4411aa8079f267077dc1a3a3c564d3e2524c'
-            'da4b625e6885ae9bccc7428b1556751ea134510540e59fa4e8170cfba4d454dc'
-            '42d2363ac0bcd5e87afc60ac656bb1ead8ab885d0deca6b0f8318b9bbf191b67'
-            '05a52fcc975b940cf15ba78ec2f76c00580f2db939bea32bcd99ef4c1dfdad1b')
+            'e27ff48ca676ac8d4dc95209bd3b84fe13bb14861aa4a0e0776f3dfe7559ffab'
+            '4e71ad2009125187632cdb48b2d5eccc9bcaa8ab0733751fed432cfe661ea86e'
+            'daaa1361d5db967bd8b72fff4038cfc933a7027e3c70d10ef6ff673a5d176cb6'
+            '40e50688a2d4d85eb9b971aaa8563e577db15550aa56c44eab8fe2a688d3f013'
+            'c0792690ed273ce464966b22e36ca431196a913ded6f0def4a46154076fd0eff'
+            'be7e1b0304ff61ed899286fdd18ebdbe71cbbe3eb20f6ac38c5799083b339a4a')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
@@ -40,6 +42,7 @@ prepare() {
   patch -p1 < "${srcdir}"/0003-Linux-6.5-Use-register_sysctl.patch
   patch -p1 < "${srcdir}"/0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
   patch -p1 < "${srcdir}"/0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch
+  patch -p1 < "${srcdir}"/0006-dir-Introduce-struct-DirEntryMax.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
