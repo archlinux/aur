@@ -1,4 +1,4 @@
-# Maintainer: Josef Vybíhal <josef.vybihal@gmail.com
+# Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
 
 #  shellcheck disable=SC2034
 pkgname=jetporch-git
