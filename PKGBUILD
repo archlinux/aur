@@ -1,14 +1,13 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 
 pkgname=smart-notifier
-pkgver=0.28_7
+pkgver=0.28_8
 pkgrel=1
 pkgdesc='Graphical hard disk health status notifier'
 arch=('any')
 url="https://salsa.debian.org/debian/smart-notifier"
 license=('GPL2')
 depends=('python' 'python-dbus' 'python-gobject' 'dbus' 'smartmontools>=5.34' 'gtk3')
-# TODO: make sure python-gi == python-gobject
 makedepends=()
 optdepends=()
 provides=()
