@@ -2,7 +2,7 @@
 # Contributor: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
 pkgname=neolink
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An RTSP bridge to Reolink IP cameras."
 arch=('x86_64')
 url="https://github.com/QuantumEntangledAndy/${pkgname}"
