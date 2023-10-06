@@ -2,7 +2,7 @@
 _pkgname=kubo
 _pkgplgname=$_pkgname-s3
 pkgname=$_pkgplgname-git
-pkgver=0.22.0.r0.g3f884d3
+pkgver=0.23.0.r0.g3a1a041
 pkgrel=1
 pkgdesc="IPFS Kubo with S3 Datastore Implementation"
 arch=('x86_64')
