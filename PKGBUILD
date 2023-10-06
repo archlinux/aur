@@ -18,5 +18,6 @@ depends=(
 	'kitty'
 	'mate-polkit'
 	'playerctl'
+	'xdg-user-dirs'
 	'zathura'
 )

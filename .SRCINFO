@@ -15,6 +15,7 @@ pkgbase = tiawa-de-base
 	depends = kitty
 	depends = mate-polkit
 	depends = playerctl
+	depends = xdg-user-dirs
 	depends = zathura
 
 pkgname = tiawa-de-base
