@@ -13,11 +13,12 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.3.0_devel.178339.03c1e67b6ca
-pkgrel=1
+pkgver=23.3.0_devel.178641.348eee9c974
+pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
-              wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
+                            wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git clang-opencl-headers-minimal-git
+                            rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-driver opengl-driver)
@@ -97,7 +98,7 @@ package_mesa-minimal-git() {
                         zstd llvm-libs-minimal-git zlib expat libxext libxcb systemd-libs
                         glibc libx11 libxfixes gcc-libs
                         xcb-util-keysyms
-)
+    )
 
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
@@ -123,8 +124,9 @@ package_opencl-rusticl-mesa-minimal-git() {
     conflicts=(opencl-clover-mesa opencl-rusticl-mesa)
     provides=(opencl-rusticl-mesa opencl-driver)
     depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools-git
-    mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git clang-minimal-git
-    expat libelf zstd lm_sensors zlib gcc-libs glibc)
+                    mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git
+                    clang-opencl-headers-minimal-git expat libelf zstd lm_sensors zlib gcc-libs glibc
+    )
     
     
     cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
