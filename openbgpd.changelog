@@ -1,3 +1,20 @@
+## 8.2 - 2023-10-02
+    * Update ASPA support to follow draft-ietf-sidrops-aspa-verification-16
+      and draft-ietf-sidrops-aspa-profile-16 by making the ASPA lookup
+      tables AFI-agnostic.
+
+    * Fix a fatal error in the Linux netlink parser which was triggered
+      because of a mismatched netlink message size.
+
+    * Rework UPDATE message generation to use the new ibuf API instead
+      of the hand-rolled solution before. 
+
+    * Improve error message in bgpctl for features not supported by the
+      portable version of OpenBGPD.
+
+    * Adjusted example GRACEFUL_SHUTDOWN filter rule in the example config
+      to only match on ebgp sessions.
+
 ## 8.1 - 2023-07-12
     * Include OpenBSD 7.3 errata 002:
       Avoid fatal errors in bgpd(8) due to incorrect refcounting and
