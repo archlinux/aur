@@ -14,7 +14,7 @@ pkgname=(
     'tcl-simpleitk'
 )
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
@@ -24,6 +24,7 @@ conflicts=()
 depends=('gcc-libs' 'insight-toolkit')
 makedepends=(
     'cmake'
+    'eigen'
     'git'
     'openjpeg2'
     'python-installer'
