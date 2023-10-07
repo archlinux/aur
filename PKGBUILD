@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=29.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -74,7 +74,7 @@ makedepends=(
   "websocketpp" # Deps of Websocket plugin (headers-only lib)
 
   # Deps of obs-browser
-  "cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1"
+  "cef-minimal-obs=103.0.0_5060_shared_textures_2594+gc69ad37+chromium_103.0.5060.134_1"
 )
 optdepends=(
   "jack: JACK support"
