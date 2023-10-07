@@ -1,0 +1,19 @@
+pkgbase = querym-bin
+	pkgdesc = A free, open-source, and cross-platform GUI tool designed to make database management accessible and efficient.
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://querymaster.io
+	arch = x86_64
+	license = GPL3
+	makedepends = squashfuse
+	depends = bash
+	depends = electron23
+	depends = hicolor-icon-theme
+	provides = querym=0.5.4
+	conflicts = querym
+	source = querym-0.5.4.AppImage::https://github.com/querymx/querym/releases/download/v0.5.4/querym-0.5.4-linux_x86_64.AppImage
+	source = querym.sh
+	sha256sums = 1588696d57b86b1ba7934da62816a96bda0a112349360e19e1f5d788f84ede80
+	sha256sums = 920075186b082e134ae5ade5f38835abd5c2ed7e626363c05550c3d857983860
+
+pkgname = querym-bin
