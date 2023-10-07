@@ -1,6 +1,6 @@
 pkgbase = kodi-matrix-mpp-git
-	pkgver = r58204.f8fdeb6b1b1.481f5d6
-	pkgrel = 8
+	pkgver = r58206.f8fdeb6b1b.a39ad4e
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = aarch64
 	arch = arm7f
@@ -37,6 +37,7 @@ pkgbase = kodi-matrix-mpp-git
 	makedepends = lzo
 	makedepends = mesa
 	makedepends = nasm
+	makedepends = pcre
 	makedepends = python-pycryptodomex
 	makedepends = python-pillow
 	makedepends = python-pybluez
@@ -58,6 +59,7 @@ pkgbase = kodi-matrix-mpp-git
 	makedepends = libxkbcommon
 	makedepends = libinput
 	makedepends = flatbuffers
+	makedepends = librga-multi
 	makedepends = mpp-git
 	noextract = libdvdcss-1.4.2-Leia-Beta-5.tar.gz
 	noextract = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz
@@ -71,6 +73,7 @@ pkgbase = kodi-matrix-mpp-git
 	options = strip
 	source = git+https://github.com/xbmc/xbmc.git#branch=Matrix
 	source = git+https://github.com/xbmc/inputstream.ffmpegdirect.git#branch=Matrix
+	source = git+https://github.com/xbmc/repo-binary-addons.git#branch=Matrix
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
@@ -85,6 +88,7 @@ pkgbase = kodi-matrix-mpp-git
 	source = 0003-rkmpp-4.patch
 	source = 0004-flatbuffers.patch
 	source = 0006-ffmpegdirect-buildsys.patch
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da
@@ -144,7 +148,7 @@ pkgname = kodi-matrix-mpp-git
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r58204.f8fdeb6b1b1.481f5d6
+	provides = kodi=r58206.f8fdeb6b1b.a39ad4e
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -157,7 +161,7 @@ pkgname = kodi-matrix-mpp-git-eventclients
 	pkgdesc = Kodi Event Clients (Matrix branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r58204.f8fdeb6b1b1.481f5d6
+	provides = kodi-eventclients=r58206.f8fdeb6b1b.a39ad4e
 	conflicts = kodi-eventclients
 
 pkgname = kodi-matrix-mpp-git-tools-texturepacker
@@ -166,14 +170,14 @@ pkgname = kodi-matrix-mpp-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r58204.f8fdeb6b1b1.481f5d6
+	provides = kodi-tools-texturepacker=r58206.f8fdeb6b1b.a39ad4e
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-matrix-mpp-git-dev
 	pkgdesc = Kodi dev files (Matrix branch) with Rockchip MPP hardware acceleration
 	depends = kodi-matrix-mpp-git
-	provides = kodi-matrix-dev=r58204.f8fdeb6b1b1.481f5d6
-	provides = kodi-dev=r58204.f8fdeb6b1b1.481f5d6
+	provides = kodi-matrix-dev=r58206.f8fdeb6b1b.a39ad4e
+	provides = kodi-dev=r58206.f8fdeb6b1b.a39ad4e
 	conflicts = kodi-matrix-dev
 	conflicts = kodi-dev
 
