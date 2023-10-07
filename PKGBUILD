@@ -2,7 +2,7 @@
 pkgname=final2x-bin
 _pkgname=Final2x
 pkgver=1.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="2^x Image Super-Resolution"
 arch=('x86_64')
 license=('BSD')
@@ -10,10 +10,10 @@ conflicts=("${pkgname%-bin}")
 url="https://github.com/Tohrusky/Final2x"
 depends=('bash' 'electron25')
 makedepends=('asar')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/2023-08-14/${_pkgname}-linux-pip-x64-deb.deb"
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/2023-08-14/${_pkgname}-ubuntu-x64-deb.deb"
     "LICENSE::https://raw.githubusercontent.com/Tohrusky/Final2x/2023-08-14/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('2d5d429e637090b9e15518e7ff23ff0c51795b28a226ce11b5d80302962946dc'
+sha256sums=('3640dd43368e03cbf36f208a2951056c10e5b9bc332e53d9d911d4486afff17e'
             '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
             '13481be9e800c82f5964e8c5962887bb673ccc6a04cdd502787c63766484c0af')
 build() {
