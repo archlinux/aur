@@ -4,7 +4,7 @@
 
 _name=kdoctools
 pkgname=${_name}5
-pkgver=5.110.0
+pkgver=5.111.0
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=(x86_64)
@@ -17,7 +17,7 @@ replaces=("$_name<5.111")
 provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('923c7e2edbe948275317014ac3c57897ebc657f556a1d0c353f363c3ee7d05bc'
+sha256sums=('39a9126a8f4067afc02b4d9afdc6cfa5fe870843678428dd3a4f14e1d2104ebe'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
