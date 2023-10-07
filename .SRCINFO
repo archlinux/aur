@@ -14,6 +14,7 @@ pkgbase = libayatana-common
 	makedepends = gobject-introspection
 	makedepends = intltool
 	depends = dconf
+	depends = zenity
 	source = libayatana-common-0.9.8.tar.gz::https://github.com/AyatanaIndicators/libayatana-common/archive/0.9.8.tar.gz
 	md5sums = 28150f38786e44c2485fa3bea6476b3d
 
