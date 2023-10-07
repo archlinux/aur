@@ -2,7 +2,7 @@
 
 _pkgname=nperf-gui
 pkgname=nperf-gui-appimage
-pkgver=latest
+pkgver=1.12.3
 pkgrel=0
 pkgdesc="Nperf wide-area network speed test application."
 arch=('x86_64')
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL')
 provides=('nperf-gui')
 _filename="nPerf-${pkgver}-${arch}.AppImage"
-source=("https://repo.nperf.com/linux/nperf/nPerf-latest-x86_64.AppImage")
+source=("https://repo.nperf.com/linux/nperf/nPerf-${pkgver}-${arch}.AppImage")
 md5sums=('e97cfe46df5f7ba3e58df79f7f5a902e')
 options=(!strip)
 prepare() 
