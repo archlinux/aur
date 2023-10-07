@@ -1,0 +1,16 @@
+pkgbase = python-lxml-stubs
+	pkgdesc = Type stubs for the lxml package
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lxml/lxml-stubs
+	arch = any
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.org/packages/source/l/lxml-stubs/lxml-stubs-0.4.0.tar.gz
+	sha512sums = 1d78fc3969be736bd33070eb568f0e1f9bc9827ba707e2507f2de50a0ac982c5eddc0a16698d440173324f3a1298fcf656daa5e3ede360c4cf7e37245eb84bdf
+
+pkgname = python-lxml-stubs
