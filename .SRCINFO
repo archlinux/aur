@@ -1,0 +1,17 @@
+pkgbase = obscura
+	pkgdesc = Symmetric file encryption using Argon2-based passphrases
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jocke-l/obscura
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-cryptography
+	depends = python-argon2-cffi
+	source = obscura-0.1.0.tar.gz::https://github.com/jocke-l/obscura/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = 5ddbdc8eaaae5cc2b5a89c6898278fd79df4d64dc8eb38a5da6fed2a0ee5bab88c765fccfcd1a566669189c02ccfcd5d699c0164332f39e108cd8288b33a7d6f
+
+pkgname = obscura
