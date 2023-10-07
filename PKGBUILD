@@ -5,14 +5,14 @@ _shortpkgname=yam-formatter
 pkgdesc='A sweet little formatter for YAML'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chainguard-dev/yam'
-pkgrel=3
+pkgrel=1
 license=('Apache-2.0')
 makedepends=('go' 'git')
 source=('git+https://github.com/chainguard-dev/yam')
 md5sums=('SKIP')
 provides=($_shortpkgname)
 conflicts=($_shortpkgname)
-pkgver=r58.8d3c53b
+pkgver=r59.ba45c39
 
 pkgver() {
     cd yam
