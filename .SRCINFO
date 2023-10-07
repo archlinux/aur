@@ -1,7 +1,7 @@
 pkgbase = clash-for-windows-bin
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron.
 	pkgver = 0.20.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = clash-for-windows-bin
 	source = clash-for-windows.desktop
 	source = cfw
 	sha256sums = 0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782
-	sha256sums = d541a05f491ad5be9c90e0e8780757d5bc0a9199a7dce90bf451e2154f87ba70
+	sha256sums = e6d131e956e48e55efca7267a896bc66f5cca82758852d8a1fafa5ce169659f5
 	sha256sums = d2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318
 	source_x86_64 = clash-for-windows-bin-0.20.37-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.37/Clash.for.Windows-0.20.37-x64-linux.tar.gz
 	sha256sums_x86_64 = 111f7ed1543b232b8fbf99e49191952ffc71a8cf0ad2b98e91643b6e4bcdde03
