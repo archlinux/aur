@@ -1,16 +1,16 @@
 pkgbase = prepros-bin
 	pkgdesc = Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect.
-	pkgver = 7.16.0
-	pkgrel = 2
+	pkgver = 7.17.0
+	pkgrel = 1
 	url = https://prepros.io
 	arch = x86_64
 	license = custom:proprietary
 	makedepends = asar
 	depends = bash
 	depends = electron25
-	source = prepros-7.16.0.deb::https://downloads.prepros.io/v7/7.16.0/Prepros-7.16.0.deb
+	source = prepros-7.17.0.deb::https://downloads.prepros.io/v7/7.17.0/Prepros-7.17.0.deb
 	source = prepros.sh
-	sha256sums = 575c041c05717d1c13926de752c60effc5b4c4247be390d488d74b446a3c0ad7
+	sha256sums = 59d8f34ac6769dd991125afadfe7e490527b55f9d9b33e928241d0e2ce9a9fe5
 	sha256sums = 4ec2ed24f8f45b49a479a3546325e8defd05b75b1abf8ef9a321b1047cadabad
 
 pkgname = prepros-bin
