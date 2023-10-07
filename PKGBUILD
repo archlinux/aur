@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('spacebar-client-git')
-pkgver=r250.e111c18
+pkgver=r415.79345f7
 pkgrel=1
 pkgdesc="Open source, themeable and extendable discord-compatible native Spacebar client"
 arch=('any')
@@ -33,7 +33,7 @@ package() {
     cd client
     install -d ${pkgdir}/opt/spacebar-client
     cp -r build/* ${pkgdir}/opt/spacebar-client
-    sudo npm install -g serve
+    npm install -g serve
     cd ${srcdir}/spacebarchat-client-aur
     install -Dm0644 "spacebar-client.service" "${pkgdir}/etc/systemd/system/spacebar-client.service"
 
