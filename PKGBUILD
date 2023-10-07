@@ -2,11 +2,10 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='core'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.1'
+pkgver='0.16.2'
 pkgrel='1'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library"
-# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
@@ -14,7 +13,7 @@ depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-base_bigstring>=0.16.0' 'oc
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5f9f4400b6e42b74ffd57223cb67884368d324739565bbb20162547ede8bd6d0ece3cc265503b674829f9cf373784e8036d4c73e26e9196aa5446de69b63e181')
+sha512sums=('2e68556773549e0bf302c8733c9fc57df3c0fd73a1b547dc17097f74c5b5482c816ef89853b437e49452da7c124ef32a8a0de0dff64d71145b2ab11befbe5bb2')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -26,6 +25,10 @@ build() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
+
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
