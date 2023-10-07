@@ -1,6 +1,6 @@
 # Maintainer: nuvole <mitltlatltl@gmail.com>
 pkgname=intel-i915-backport-dkms
-pkgver=23.7.17_230608.25
+pkgver=$(curl -s "https://raw.githubusercontent.com/intel-gpu/intel-gpu-i915-backports/backport/main/versions" | grep -i "BACKPORTS_RELEASE_TAG" | grep -Eo '[0-9.]+' | tail -n 2 | tr "\n" "_" | sed "s/_//2")
 pkgrel=1
 pkgdesc="Out of tree dkms driver for i915, with GPU debugging (on Max, Flex and Arc GPUs), SR-IOV, VM_BIND and ULLS (Ultra Low Latency Submission) supported"
 arch=('x86_64')
