@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=heatmaply
-_pkgver=1.4.2
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Interactive Cluster Heat Maps Using 'plotly' and 'ggplot2'"
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-tidyselect
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a92b1ccee11371467f30833255c9ebef2259b6cbdf489181a0adac056c5ea7d')
+sha256sums=('aca4dd8b0181aa97969c8c25c73343e294c4d9c24e7cbf52e97fecbed5a92db3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
