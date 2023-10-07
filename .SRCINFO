@@ -1,6 +1,6 @@
 pkgbase = haruhishot
 	pkgdesc = One day Haruhi Suzumiya made a wlr screenshot tool
-	pkgver = 0.3.12
+	pkgver = 0.3.15
 	pkgrel = 1.0
 	url = https://github.com/Decodetalkers/haruhishot
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = haruhishot
 	depends = wayland
 	depends = wlroots
 	depends = qt5-base
-	source = haruhishot-v0.3.12.tar.gz::https://github.com/Decodetalkers/haruhishot/archive/refs/tags/v0.3.12.tar.gz
-	sha256sums = cd4db3db575ae84bb520aefdabfe9992296d7c649407bdf3a645a77a80e57f29
+	source = haruhishot-v0.3.15.tar.gz::https://github.com/Decodetalkers/haruhishot/archive/refs/tags/v0.3.15.tar.gz
+	sha256sums = 0ecb5b16b9260c8998913bfd20298f922f91bbd5ee91abac1fb5172e8e3b91e5
 
 pkgname = haruhishot
