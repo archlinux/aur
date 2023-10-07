@@ -19,7 +19,6 @@ pkgbase = chromium-unstable-bin
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	provides = chromium-browser-unstable
 	conflicts = chromium-unstable
 	conflicts = chromium-unstable-avx2
 	conflicts = chromium-unstable-avx2-bin
