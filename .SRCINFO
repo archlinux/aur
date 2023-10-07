@@ -1,6 +1,6 @@
 pkgbase = nawk-git
 	pkgdesc = The version of awk described in "The AWK Programming Language".
-	pkgver = 20221215.r240.5e49ea4
+	pkgver = 20231001.r288.d8e4368
 	pkgrel = 1
 	url = https://github.com/onetrueawk/awk
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = nawk-git
 	conflicts = nawk
 	options = !makeflags
 	source = nawk-git::git+https://github.com/onetrueawk/awk
+	source = nawk-git-bsd::git+https://github.com/onetrueawk/awk#branch=bsd-features
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = nawk-git
