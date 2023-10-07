@@ -1,0 +1,6 @@
+#!/bin/bash
+
+post_install() {
+	echo "Running ps7_libps6000a deb postinst..."
+	/opt/picoscope/scripts/ps7_libps6000a_postinst
+}
