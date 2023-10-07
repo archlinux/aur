@@ -1,18 +1,20 @@
 pkgbase = r-argparse
-	pkgdesc = Command line argument parser library for R
-	pkgver = 2.1.3
-	pkgrel = 1
+	pkgdesc = Command Line Optional and Positional Argument Parser
+	pkgver = 2.2.2
+	pkgrel = 2
 	url = https://cran.r-project.org/package=argparse
-	arch = i686
-	arch = x86_64
-	license = GPL2
-	license = GPL3
-	depends = r
+	arch = any
+	license = GPL
+	checkdepends = r-testthat
 	depends = python
-	depends = r-r6
-	depends = r-jsonlite
 	depends = r-findpython
-	source = https://cran.r-project.org/src/contrib/argparse_2.1.3.tar.gz
-	sha256sums = aeda31a54a8d7a0a511cfbf7c5868637e129922671d43938165867437fb6a66e
+	depends = r-jsonlite
+	depends = r-r6
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/argparse_2.2.2.tar.gz
+	md5sums = fe22b79b423ac686d072694fe30b8617
+	sha256sums = b62c9bf5e6ca35fb7a2e614a916815c04cbf6c6db3f89f99b4df76470a4a856d
 
 pkgname = r-argparse
