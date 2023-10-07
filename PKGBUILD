@@ -4,7 +4,7 @@
 
 _name=prison
 pkgname=${_name}5
-pkgver=5.110.0
+pkgver=5.111.0
 pkgrel=1
 pkgdesc='A barcode API to produce QRCode barcodes and DataMatrix barcodes'
 arch=(x86_64)
@@ -18,7 +18,7 @@ replaces=("$_name<5.111")
 provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('677170740a5cd8c80917b301f3e874fef7e8ca1aad1507d558f6e087c21f2a05'
+sha256sums=('ec25f821d2e641960d477c88bdb99b5147ae5f808620abfc6c28f946ffb6deff'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
