@@ -5,11 +5,11 @@
 #############
 function getconf {
   conf=$(cat /boot/bootcfg/${1} 2>/dev/null)
-  if [ -z "$conv" ]; then
-    conv="${2}"
-    echo -n "${conv}" >"/boot/bootcfg/${1}"
+  if [ -z "$conf" ]; then
+    conf="${2}"
+    echo -n "${conf}" >"/boot/bootcfg/${1}"
   fi
-  echo "${conv}"
+  echo "${conf}"
 }
 
 #################
@@ -145,15 +145,17 @@ fi
 # Create and write fip image #
 ##############################
 if [ -L ${fipdevicel} ]; then
-  if [ -f "/boot/${target}-atf-${atfdevice}-bl31.bin" ]; then
-    bl31="--soc-fw /boot/${target}-atf-${atfdevice}-bl31.bin"
-  else
-    bl31=""
+  bl31="/boot/${target}-atf-${atfdevice}-bl31.bin"
+  imageid=$(od --skip-bytes=$((4*14)) --read-bytes=4 --address-radix=n -x \
+              $linux | sed 's/ //g')
+  socfw=""; ntfw=""; ntfwconfig=""; tosfwextra2=""
+  [ -f "$bl31" ]   && socfw="--soc-fw $bl31"
+  [ -f "$linux" ]  && ntfw="--nt-fw $linux"
+  if [[ "$imageid" == "5241644d" ]]; then # We have a linux kernel image
+    [ -f "$atfdtb" ] && ntfwconfig="--nt-fw-config $atfdtb"
+    [ -f "$initrd" ] && tosfwextra2="--tos-fw-extra2 $initrd"
   fi
-  fiptool --verbose create $tmp/fip.bin $bl31 \
-               --nt-fw "$linux" \
-        --nt-fw-config "$atfdtb" \
-       --tos-fw-extra2 "$initrd"
+  fiptool --verbose create $tmp/fip.bin $socfw $ntfw $ntfwconfig $tosfwextra2
   fiptool info $tmp/fip.bin
   echo Writing FIP to: ${fipdevicel}
   dd bs=1M of=${fipdevicel} if=/dev/zero 2>/dev/null
