@@ -1,9 +1,8 @@
 pkgbase = qt5-doc
 	pkgver = 5.15.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = any
-	groups = qt
 	groups = qt5
 	license = GPL3
 	license = LGPL3

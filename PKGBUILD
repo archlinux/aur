@@ -6,13 +6,13 @@ pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
 _basever=5.15.11
 pkgver=$_basever
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite' 'libxkbfile'
              'gperf' 'nss' 'clang' 'nodejs')
-groups=('qt' 'qt5')
+groups=('qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/${_pkgfqn}.tar.xz"
          qt5-webengine-python3.patch
