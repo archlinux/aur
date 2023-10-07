@@ -2,7 +2,7 @@
 
 pkgname=mediadownloader-git
 pkgver=3.4.0.r11.g22649a4
-pkgrel=1
+pkgrel=2
 pkgdesc="This project is a Qt/C++ based GUI frontend to CLI multiple CLI based tools that deal with downloading online media."
 arch=('x86_64' 'aarch64')
 url="https://github.com/mhogomchungu/media-downloader"
@@ -20,7 +20,7 @@ makedepends=("gcc"
 optdepends=("yt-dlp: for downloading youtube videos"
             "gallery-dl: for downloading instagram media"
             "wget: for downloading regular files off the internet"
-            "aria2c: for downloading large files off the internet")
+            "aria2: for downloading large files off the internet")
 
 pkgver() {
     cd "media-downloader"
