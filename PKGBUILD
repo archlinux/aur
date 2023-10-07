@@ -13,7 +13,7 @@ pkgname=(
     'ruby-simpleitk'
     'tcl-simpleitk'
 )
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
@@ -21,20 +21,20 @@ url="http://www.simpleitk.org/"
 license=('Apache')
 provides=()
 conflicts=()
-depends=('gcc-libs' 'insight-toolkit>=5.3.0')
+depends=('gcc-libs' 'insight-toolkit')
 makedepends=(
     'cmake'
     'git'
     'openjpeg2'
-    'python'
+    'python-installer'
     'python-numpy'
-    'python-pip'
     'python-virtualenv'
+    'python-wheel'
     'swig'
     'tcl'
     'tk'
     'java-environment'
-    'lua53'
+    'lua'
     'mono'
     'r'
     'ruby'
@@ -42,7 +42,7 @@ makedepends=(
 optdepends=()
 source=("git+https://github.com/SimpleITK/SimpleITK#tag=v${pkgver}")
 sha256sums=('SKIP')
-_lua53_version=$(pacman -Qi lua53 | grep '^Version' | grep -Eo '[0-9]\.[0-9]\.[0-9]')
+_lua_version=$(lua -v | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -65,10 +65,8 @@ prepare() {
     JAVA_HOME=$_java_home \
         cmake \
             -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_CXX_FLAGS:STRING="-std=c++14" \
-            -DLUA_VERSION_STRING:STRING="$_lua53_version" \
-            -DLUA_EXECUTABLE:FILEPATH="/usr/bin/lua5.3" \
-            -DLUA_INCLUDE_DIR:FILEPATH="/usr/include/lua5.3" \
+            -DCMAKE_CXX_FLAGS:STRING="-std=c++17" \
+            -DLUA_VERSION_STRING:STRING="$_lua_version" \
             -DBUILD_SHARED_LIBS:BOOL=ON \
             -DBUILD_TESTING:BOOL=OFF \
             -DBUILD_EXAMPLES:BOOL=OFF \
@@ -103,31 +101,23 @@ package_simpleitk() {
 package_python-simpleitk() {
     depends=('simpleitk' 'python' 'python-numpy')
 
-    cd "${srcdir}/${_pkgname}/build"
-
-    local _py_version
-    _py_version=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-
-    PIP_CONFIG_FILE=/dev/null \
-        pip install \
-            --ignore-installed \
-            --isolated \
-            --no-deps \
-            --root="$pkgdir" \
-            "${srcdir}/${_pkgname}/build/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
-
-    python -O -m compileall "${pkgdir}/usr/lib/python${_py_version}/site-packages/SimpleITK"
+    python -m installer \
+        --destdir="$pkgdir" \
+        "${srcdir}/${_pkgname}/build/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
 }
 
 package_lua-simpleitk() {
-    depends=('simpleitk' 'lua53')
+    depends=('simpleitk' 'lua')
 
     cd "${srcdir}/${_pkgname}/build"
 
-    install -d -Dm755 "$pkgdir/usr/lib/lua/5.3/"
+    local _lua_version_maj_min
+    _lua_version_maj_min=$(lua -v | grep -Eo '[0-9]+\.[0-9]+')
+
+    install -d -Dm755 "$pkgdir/usr/lib/lua/$_lua_version_maj_min/"
     install -Dm755 \
         "${srcdir}/${_pkgname}/build/Wrapping/Lua/lib/$_pkgname.so" \
-        "$pkgdir/usr/lib/lua/5.3/$_pkgname.so"
+        "$pkgdir/usr/lib/lua/$_lua_version_maj_min/$_pkgname.so"
 }
 
 package_tcl-simpleitk() {
@@ -179,5 +169,5 @@ package_ruby-simpleitk() {
 
     install -Dm755 \
         "${srcdir}/${_pkgname}/build/Wrapping/Ruby/lib/simpleitk.so" \
-        "$pkgdir/usr/lib/ruby/gems/${_lua53_version}/gems/ruby-simpleitk-${pkgver}/lib/simpleitk.so"
+        "$pkgdir/usr/lib/ruby/gems/${_lua_version}/gems/ruby-simpleitk-${pkgver}/lib/simpleitk.so"
 }

@@ -1,6 +1,6 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://www.simpleitk.org/
 	arch = x86_64
@@ -8,21 +8,21 @@ pkgbase = simpleitk
 	makedepends = cmake
 	makedepends = git
 	makedepends = openjpeg2
-	makedepends = python
+	makedepends = python-installer
 	makedepends = python-numpy
-	makedepends = python-pip
 	makedepends = python-virtualenv
+	makedepends = python-wheel
 	makedepends = swig
 	makedepends = tcl
 	makedepends = tk
 	makedepends = java-environment
-	makedepends = lua53
+	makedepends = lua
 	makedepends = mono
 	makedepends = r
 	makedepends = ruby
 	depends = gcc-libs
-	depends = insight-toolkit>=5.3.0
-	source = git+https://github.com/SimpleITK/SimpleITK#tag=v2.2.1
+	depends = insight-toolkit
+	source = git+https://github.com/SimpleITK/SimpleITK#tag=v2.3.0
 	sha256sums = SKIP
 
 pkgname = simpleitk
@@ -33,7 +33,7 @@ pkgname = java-simpleitk
 
 pkgname = lua-simpleitk
 	depends = simpleitk
-	depends = lua53
+	depends = lua
 
 pkgname = mono-simpleitk
 	depends = simpleitk
