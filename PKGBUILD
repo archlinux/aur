@@ -4,8 +4,8 @@
 
 _name=krunner
 pkgname=${_name}5
-pkgver=5.110.0
-pkgrel=2
+pkgver=5.111.0
+pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -17,7 +17,7 @@ replaces=("$_name<5.111")
 provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('a18c18e252f8a36bb866b0df8846d55d670336fd11f6d97291d872cd04867260'
+sha256sums=('895c178e710e7c710bb11cb41eabc6a6cdc5e9ae3b67995977eeb36a371a22c8'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
