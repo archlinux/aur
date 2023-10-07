@@ -1,4 +1,4 @@
-pkgbase = foot
+pkgbase = foot-fullscreen-translucency
 	pkgdesc = Fast, lightweight, and minimalistic Wayland terminal emulator
 	pkgver = 1.15.3
 	pkgrel = 1
