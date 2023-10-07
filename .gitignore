@@ -1,4 +1,3 @@
-faustlive-pr-*.patch
 pkg/
 src/
 *.tar.*
