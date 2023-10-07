@@ -5,6 +5,7 @@ pkgbase = cgames
 	url = http://www.muppetlabs.com/~breadbox/software/cgames.html
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	depends = ncurses
 	source = http://www.muppetlabs.com/~breadbox/pub/software/cgames-2.2b.tar.gz
