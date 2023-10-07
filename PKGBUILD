@@ -3,10 +3,10 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=S4Vectors
-_bcver=0.38.1
+_bcver=0.38.2
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Foundation of vector-like and list-like containers in Bioconductor"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/${_bcname}"
@@ -28,7 +28,7 @@ optdepends=(
     "r-summarizedexperiment"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("6058f754fe594e2bdc11a5414c6d135037ea4918008f1b9eb99a0009b9237226528eb01b43cfe8da639d288c8c02bc094fd19f0c619c60bd035cdd2b34539dda")
+b2sums=("5adbe9f7a21e34964efb46b766357c36df4c030378fbfbbea880760eb591471c268e0eb5e94a4d5838e8514b2201212f02a32ff43cce872f401719487fda0cc1")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
