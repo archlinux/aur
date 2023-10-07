@@ -1,5 +1,5 @@
 pkgbase = fan2go-tui-git
-	pkgdesc = A simple daemon providing dynamic fan speed control based on temperature sensors
+	pkgdesc = Terminal UI for fan2go.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/markusressel/fan2go-tui
