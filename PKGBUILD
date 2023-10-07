@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fzf-make
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Fuzzy finder for Makefile"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('245f07120b5c02e163770824748d4827f05d5125f71bdab65fdc9c2c36a1e62d')
+sha256sums=('fb02098490910df85a6f04004493287db984d8a01f1d01f1ef1a3cee816a3fa6')
 
 prepare() {
   cd "$pkgname-$pkgver"
