@@ -1,0 +1,25 @@
+pkgbase = python-trogon
+	pkgdesc = Automatically generate a Textual TUI for your Click CLI
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://pypi.org/project/trogon
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mypy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-validate-pyproject
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-textual
+	depends = python-black
+	provides = trogon
+	conflicts = trogon
+	options = !strip
+	source = trogon-0.5.0.tar.gz::https://files.pythonhosted.org/packages/source/t/trogon/trogon-0.5.0.tar.gz
+	sha256sums = 61a57f0f1a38227d90601cd020f46960be8e36947b5e56c6932c2e01ecc5042a
+
+pkgname = python-trogon
