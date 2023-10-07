@@ -1,6 +1,6 @@
 pkgbase = r-lisaclust
 	pkgdesc = lisaClust: Clustering of Local Indicators of Spatial Association
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lisaClust
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-lisaclust
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lisaClust_1.8.1.tar.gz
-	sha256sums = 6b8587bbaa8e2d402ed4926535aa4db88f36b812512cab23b59286f50a0747ed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lisaClust_1.8.2.tar.gz
+	sha256sums = c1c2b2be4cba09240b2537cf1d551931fab907687766afaf37e8128dc72aee57
 
 pkgname = r-lisaclust
