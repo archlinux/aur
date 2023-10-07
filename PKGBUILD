@@ -1,12 +1,7 @@
 # Maintainer: hertg <aur@her.tg>
-# This file is generated automatically
-_version=v0.2.0
-_versionWithoutPrefix=0.2.0
-_pkgname=lightdm-theme-neon
-_pkgver=v0.2.0
-_source=${_pkgname}-${_version}::https://github.com/hertg/lightdm-neon/archive/refs/tags/v0.2.0.tar.gz
-pkgname=$_pkgname
-pkgver=$_pkgver
+# This file is generated automatically via CI
+pkgname=lightdm-theme-neon
+pkgver=0.2.1
 pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
 pkgrel=1
 arch=('any')
@@ -16,17 +11,20 @@ makedepends=('npm' 'git')
 optdepends=()
 provides=()
 conflicts=()
-source=($_source)
+source=("${pkgname}-0.2.1.tar.gz::https://github.com/hertg/lightdm-neon/archive/refs/tags/v0.2.1.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd $pkgname
   npm install
   npm run build
 }
 
 package() {
-  cd $pkgname
-  install -dm755 ${pkgdir}/usr/share/web-greeter/themes/neon
-  cp -r public/. ${pkgdir}/usr/share/web-greeter/themes/neon
+  # note: the directory is called "lightdm-neon-{version}", because the github 
+  # archive extracts to a directory called "{repository}-{version}", not what
+  # is specified in the source() of the PKGBUILD
+
+  cd ${srcdir}/lightdm-neon-${pkgver}
+  install -dm755 "${pkgdir}/usr/share/web-greeter/themes/neon"
+  cp -r public/. "${pkgdir}/usr/share/web-greeter/themes/neon"
 }
