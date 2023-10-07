@@ -4,7 +4,7 @@
 
 pkgname=lx-music
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 _electron=electron
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ url='https://github.com/lyswhut/lx-music-desktop'
 license=('Apache')
 depends=("${_electron}")
 makedepends=('asar' 'npm' 'git' 'node-gyp'
-# 'jq' 'moreutils'
+'jq' 'moreutils'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "$pkgname.sh"
@@ -28,26 +28,21 @@ prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
 	# electron from archlinux official repo does not work, skip patching.
 
-	# local electronDist="/usr/lib/${_electron}"
-	# local electronVersion="$(< $electronDist/version)"
-	# # electronVersion="${electronVersion%.*}.0"
-	# jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
-	# jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
-	# jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+	local electronDist="/usr/lib/${_electron}"
+	local electronVersion="$(< $electronDist/version)"
+	# electronVersion="${electronVersion%.*}.0"
+	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
+	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
+	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
 
 	sed -i "s|__ELECTRON__|${_electron}|g" "${srcdir}/${pkgname}.sh"
 
-
-
-	# jq ".compilerOptions.module = 'nodenext'" tsconfig.json | sponge tsconfig.json
-	# sed -i 's|esnext|nodenext|g;s|ESNext|esnext|g' tsconfig.json
-	# sed -i 's|NodeJS.Timer|NodeJS.Timeout|g' src/main/modules/sync/server/server/server.ts
 }
 
 build() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
 	export HOME=${srcdir}
-	npm ci
+	npm install
 	npm run pack:dir
 }
 

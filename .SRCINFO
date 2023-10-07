@@ -1,7 +1,7 @@
 pkgbase = lx-music
 	pkgdesc = An Electron-based music player
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,8 @@ pkgbase = lx-music
 	makedepends = npm
 	makedepends = git
 	makedepends = node-gyp
+	makedepends = jq
+	makedepends = moreutils
 	depends = electron
 	source = lx-music-2.5.0.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/refs/tags/v2.5.0.tar.gz
 	source = lx-music.sh
