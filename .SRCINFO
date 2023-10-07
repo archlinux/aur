@@ -1,22 +1,23 @@
 pkgbase = godmode-appimage
 	pkgdesc = AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!
-	pkgver = 1.0.0_beta.8
+	pkgver = 1.0.0_beta.9
 	pkgrel = 1
 	url = https://smol.ai/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = squashfuse
 	depends = glibc
 	depends = zlib
 	depends = hicolor-icon-theme
-	provides = godmode=1.0.0_beta.8
+	provides = godmode=1.0.0_beta.9
 	conflicts = godmode
 	options = !strip
-	source = LICENSE::https://raw.githubusercontent.com/smol-ai/GodMode/v1.0.0-beta.8/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/smol-ai/GodMode/v1.0.0-beta.9/LICENSE
 	sha256sums = 5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68
-	source_aarch64 = godmode-1.0.0_beta.8-aarch64.AppImage::https://github.com/smol-ai/GodMode/releases/download/v1.0.0-beta.8/GodMode-1.0.0-beta.8-arm64.AppImage
-	sha256sums_aarch64 = a33cb0f3a38ed27e1af738f2e52692446f02bd14ec0a6fd682e1bf72e8a3dc68
-	source_x86_64 = godmode-1.0.0_beta.8-x86_64.AppImage::https://github.com/smol-ai/GodMode/releases/download/v1.0.0-beta.8/GodMode-1.0.0-beta.8.AppImage
-	sha256sums_x86_64 = 898ce499048f8c0fb9d8bbf6ab76b6d9d82e7782caf2ba693eca05403493e7fd
+	source_aarch64 = godmode-1.0.0_beta.9-aarch64.AppImage::https://github.com/smol-ai/GodMode/releases/download/v1.0.0-beta.9/GodMode-1.0.0-beta.9-arm64.AppImage
+	sha256sums_aarch64 = ec53324cd62d8726b064820afadfdc2d2e79185060a567249d6c2c41243ca187
+	source_x86_64 = godmode-1.0.0_beta.9-x86_64.AppImage::https://github.com/smol-ai/GodMode/releases/download/v1.0.0-beta.9/GodMode-1.0.0-beta.9.AppImage
+	sha256sums_x86_64 = 79ee0d4d7c3ebc4daa574368a212e35b2f943aca42a35bf07f5972525b72d106
 
 pkgname = godmode-appimage
