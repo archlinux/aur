@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib-cuda
-pkgver=0.4.16
-pkgrel=4
+pkgver=0.4.18
+pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -69,7 +69,8 @@ prepare() {
 
 build() {
     cd $srcdir/jax-jaxlib-v$pkgver
-    bazel run --action_env=JAXLIB_RELEASE --verbose_failures=true \
+    bazel --output_user_root=$srcdir/bazel \
+        run --action_env=JAXLIB_RELEASE --verbose_failures=true \
         //jaxlib/tools:build_wheel -- --cpu x86_64 --output_path=$PWD/dist
 }
 
