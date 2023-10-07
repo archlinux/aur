@@ -14,7 +14,7 @@ pkgbase = ayatana-indicator-bluetooth
 	makedepends = vala
 	depends = bluez
 	depends = blueman
-	depends = libayatana-common>=0.9.5
+	depends = libayatana-common>=0.9.9
 	options = !emptydirs
 	source = ayatana-indicator-bluetooth-22.9.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/archive/22.9.1.tar.gz
 	md5sums = d168da67f12e49e8cca9f1f7404b016e
