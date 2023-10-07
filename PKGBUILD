@@ -1,7 +1,8 @@
 # Maintainer: Ricard Lado <ricard@lado.one>
+
 pkgname=oink
-pkgver=0.1.2
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="A lightweight DDNS client for Porkbun "
 arch=(x86_64)
 url="https://github.com/RLado/Oink"
@@ -10,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 backup=(etc/oink_ddns/config.json)
 source=("https://github.com/RLado/Oink/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0365374054fdd76a0668b7a57ab42ff94146353a3aba712517112075eec3ba35')
+sha256sums=('f227fdb94b6503ff4358eb1252ef96b10fc6f2773dc49ad4424151a65dc49dc1')
 
 build() {
 	cd "Oink-${pkgver}"
