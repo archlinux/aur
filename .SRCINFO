@@ -1,0 +1,26 @@
+pkgbase = shared-mime-info
+	pkgdesc = Freedesktop.org Shared MIME Info
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/
+	install = shared-mime-info.install
+	arch = x86_64
+	license = GPL2
+	makedepends = gettext
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = meson
+	depends = libxml2
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	options = !makeflags
+	source = git+https://gitlab.freedesktop.org/xdg/shared-mime-info.git#commit=8e80a317f5c61a7f410330abea441e0b0b9280b5
+	source = git+https://gitlab.freedesktop.org/xdg/xdgmime.git#commit=92f6a09fda2b23c2ab95cede8eb0612ca96bd0f7
+	source = update-mime-database.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f08efbcbac9d2bd18a805b8dcf3ed06d7763b97eca5935aa64d65593774b6501
+
+pkgname = shared-mime-info

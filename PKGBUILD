@@ -2,13 +2,13 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-_commit=a2ffb2810ebb387182612e3503dfe29455d4536d # = master 2022-12-15
-pkgver=2.2+13+ga2ffb28
+_commit=8e80a317f5c61a7f410330abea441e0b0b9280b5 # = master 2023-10-07 = v2.3
+pkgver=2.3
 pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
-depends=('libxml2' 'glib2')
+depends=('libxml2' 'glib2' 'glibc' 'gcc-libs')
 makedepends=('gettext' 'xmlto' 'docbook-xsl' 'git' 'meson')
 install=shared-mime-info.install
 # https://gitlab.freedesktop.org/xdg/shared-mime-info
