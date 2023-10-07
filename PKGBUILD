@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music-git
-pkgver=1.20.0.r101.g375fb08
-pkgrel=3
-_electronversion=23
+pkgver=2.0.0.r1.g2d69dfd
+pkgrel=1
+_electronversion=22
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
@@ -17,7 +17,7 @@ source=('git+https://github.com/th-ch/youtube-music.git'
         "${pkgname%-git}.sh"
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            '8472f1fc00ff41392dc445365e89a0424c972ef1ba01c7afae2e033c214d8bf2'
+            '840e0f62ca9e0889739cefa475baa862c5a6c25f547a3bb920bf483f0c33dc12'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
 pkgver() {
@@ -32,7 +32,7 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   npm install
   npm run clean
-  npm run tsc-and-copy
+  npm run build
   HOME="$srcdir/.electron-gyp" ./node_modules/.bin/electron-builder --linux dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
@@ -44,9 +44,8 @@ package() {
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
-  for icon_size in 16 24 32 48 64 128 256 512 1024; do
-    icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -Dm644 assets/generated/icons/png/${icon_size}x${icon_size}.png \
-      $pkgdir$icons_dir/${pkgname%-git}.png
+  for i in 16 24 32 48 64 128 256 512 1024; do
+    install -Dm644 "assets/generated/icons/png/${i}x${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-git}.png"
   done
 }
