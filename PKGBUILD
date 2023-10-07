@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('spacebar-git')
-pkgver=r3672.8279cd0
+pkgver=r3678.6bf4637
 pkgrel=1
 pkgdesc="Spacebar is a free, opensource selfhostable discord-compatible chat, voice and video platform"
 arch=('any')

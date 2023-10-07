@@ -1,6 +1,6 @@
 pkgbase = spacebar-git
 	pkgdesc = Spacebar is a free, opensource selfhostable discord-compatible chat, voice and video platform
-	pkgver = r3672.8279cd0
+	pkgver = r3678.6bf4637
 	pkgrel = 1
 	url = https://github.com/spacebarchat/server
 	arch = any
