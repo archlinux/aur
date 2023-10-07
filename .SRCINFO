@@ -1,6 +1,6 @@
 pkgbase = aylurs-gtk-shell-git
 	pkgdesc = Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system.
-	pkgver = v1.3.0.r0.g364fde9
+	pkgver = v1.3.0.r9.g5158079
 	pkgrel = 1
 	url = https://github.com/Aylur/ags
 	arch = x86_64
