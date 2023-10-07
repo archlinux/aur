@@ -1,22 +1,36 @@
 pkgbase = python-tensorboardx
 	pkgdesc = Tensorboard for PyTorch
-	pkgver = 2.5
+	pkgver = 2.6.2.2
 	pkgrel = 1
 	url = https://github.com/lanpa/tensorboardX
 	arch = any
 	license = MIT
-	checkdepends = python-future
-	checkdepends = python-pytest
+	checkdepends = python-boto3
+	checkdepends = python-flake8
+	checkdepends = python-imageio==2.27
 	checkdepends = python-matplotlib
-	checkdepends = python-crc32c
-	makedepends = python-setuptools
+	checkdepends = python-moto
+	checkdepends = python-numpy
+	checkdepends = python-onnx
+	checkdepends = python-protobuf==4.22.3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-soundfile
+	checkdepends = python-tensorboard
+	checkdepends = python-torch
+	checkdepends = python-torchvision
+	checkdepends = python-visdom
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-protobuf
 	optdepends = python-crc32c: speed up
 	optdepends = python-soundfile: 200x speed up the add_audio() function
 	conflicts = python-tensorboard-git
-	source = https://files.pythonhosted.org/packages/source/t/tensorboardX/tensorboardX-2.5.tar.gz
-	sha256sums = 5238ac5eac4a26d8f8381d7f54a2fcd530a134db841af9a9a6427beca93c6776
+	source = https://files.pythonhosted.org/packages/source/t/tensorboardX/tensorboardX-2.6.2.2.tar.gz
+	sha256sums = c6476d7cd0d529b0b72f4acadb1269f9ed8b22f441e87a84f2a3b940bb87b666
 
 pkgname = python-tensorboardx

@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=tensorboardX
 pkgname=python-tensorboardx
-pkgver=2.5
+pkgver=2.6.2.2
 pkgrel=1
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
@@ -11,23 +11,45 @@ depends=(
     'python-numpy'
     'python-protobuf'
     )
-makedepends=('python-setuptools' 'git')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools-scm'
+    'python-wheel'
+    )
 optdepends=(
     'python-crc32c: speed up'
     'python-soundfile: 200x speed up the add_audio() function'
     )
 checkdepends=(
-    'python-future'
-    'python-pytest'
+    'python-boto3'
+    'python-flake8'
+    'python-imageio==2.27'
     'python-matplotlib'
-    'python-crc32c'
+    'python-moto'
+    'python-numpy'
+    'python-onnx'
+    'python-protobuf==4.22.3'
+    'python-pytest'
+    'python-pytest-cov'
+    'python-soundfile'
+    'python-tensorboard'
+    'python-torch'
+    'python-torchvision'
+    'python-visdom'
     )
 conflicts=('python-tensorboard-git')
 source+=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5238ac5eac4a26d8f8381d7f54a2fcd530a134db841af9a9a6427beca93c6776')
+sha256sums=('c6476d7cd0d529b0b72f4acadb1269f9ed8b22f441e87a84f2a3b940bb87b666')
+
+build() {
+	cd "${srcdir}/${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
 	cd "${srcdir}/${_name}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	python setup.py install --optimize=1 --root="${pkgdir}"
 }
