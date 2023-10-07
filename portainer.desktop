@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Portainer
 Comment=A lightweight docker management UI
-Exec=xdg-open http://localhost:9000
+Exec=xdg-open http://localhost:9443
 Icon=portainer
 Type=Application
 Categories=GNOME;GTK;System;Utility;
