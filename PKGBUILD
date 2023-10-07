@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.37.0.r5.g5eee229a3
+pkgver=2.42.0.r4.g277352dd2
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -68,17 +68,28 @@ prepare() {
 build() {
 	_destdir="$srcdir/../staging"
 	mkdir -p "$_destdir"
-	echo "destdir: $_destdir"
+	echo "--- Destination dir: $_destdir"
 
+	echo "--- Applying patches ..."
 	cd "${pkgname}"
 	git apply "${srcdir}/0001-build-sh.patch"
 
+	echo "--- Building otel ..."
 	CGO_ENABLED=1 ./builds/otel.sh "$_destdir"
+
+	echo "--- Building fluent_bit ..."
 	./builds/fluent_bit.sh "$_destdir"
+
+	echo "--- Building systemd ..."
 	./builds/systemd.sh "$_destdir"
+
+	echo "--- Building ops_agent_diagnostics ..."
 	./builds/ops_agent_diagnostics.sh "$_destdir"
+
+	echo "--- Building agent_wrapper ..."
 	./builds/agent_wrapper.sh "$_destdir"
 
+	echo "--- Building ..."
 	BUILD_DISTRO=arch CODE_VERSION="${pkgver}" DESTDIR="$_destdir" \
 		./build.sh
 }
