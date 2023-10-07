@@ -2,7 +2,7 @@
 
 _pkgname=firefox-extension-return-youtube-dislike
 pkgname=$_pkgname-bin
-pkgver=3.0.0.9
+pkgver=3.0.0.10
 pkgrel=1
 pkgdesc='Returns ability to see dislike statistics on youtube (binary release)'
 url="https://addons.mozilla.org/addon/return-youtube-dislikes"
@@ -13,9 +13,9 @@ provides=($_pkgname)
 depends=('firefox')
 groups=('firefox-addons')
 noextract=("return_youtube_dislikes-$pkgver.xpi")
-_url=https://addons.mozilla.org/firefox/downloads/file/4107777
+_url=https://addons.mozilla.org/firefox/downloads/file/4147411
 source=("$_url/return_youtube_dislikes-$pkgver.xpi")
-sha256sums=('025aa38442c58a466382c7dd7796bf5890083a22b091e764566899605c60e1a3')
+sha256sums=('bcf4a5d271341a3dab3337bd6d5328f762c8b6b3447562316c166f902be3ad84')
 
 package() {
   install -Dm644 return_youtube_dislikes-$pkgver.xpi "$pkgdir/usr/lib/firefox/browser/extensions/{762f9885-5a13-4abd-9c77-433dcd38b8fd}.xpi"
