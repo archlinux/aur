@@ -1,12 +1,12 @@
 pkgbase = r-gfa
 	pkgdesc = Group Factor Analysis
-	pkgver = 1.0.3
-	pkgrel = 4
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=GFA
 	arch = any
 	license = MIT
 	depends = r
-	source = https://cran.r-project.org/src/contrib/GFA_1.0.3.tar.gz
-	sha256sums = 0357b163e83662d4e8a229a27d377226ce8f84afc20eafc0cd8c47dab1de5183
+	source = https://cran.r-project.org/src/contrib/GFA_1.0.4.tar.gz
+	sha256sums = e62f3656a7b8bcf9bacd4690ca76fa46d6cc95748bb760a8b0ffe58e32c10926
 
 pkgname = r-gfa
