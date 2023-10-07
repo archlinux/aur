@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=picoscope7beta
 pkgver=7.1.12_1r16747
-pkgrel=2
+pkgrel=3
 pkgdesc="PicoScope 7 Test and Measurment Early Access"
 arch=('x86_64')
 url="https://oem.picotech.com/p7beta/download"
@@ -20,7 +20,7 @@ optdepends=('ps7b_libps2000: Support for PicoScope 2000 series'
         'ps7b_libps6000: Support for PicoScope 6000 series'
         'ps7b_libps6000a: Support for PicoScope 6000a series'
         )
-provides=()
+provides=(picoscope7)
 conflicts=(picoscope7)
 replaces=()
 backup=()
