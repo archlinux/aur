@@ -1,6 +1,6 @@
 # Maintainer: Jens Nachtigall <aur.jens@nachtigall.email>
 pkgname="maven39"
-pkgver="3.9.4"
+pkgver="3.9.5"
 pkgrel=1
 pkgdesc="Java project management and project comprehension tool (v3.9)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('java-environment>=8' 'bash' 'procps-ng')
 makedepends=('java-environment>=8')
 source=("$pkgname-$pkgver.tar.gz::https://dlcdn.apache.org/maven/maven-3/$pkgver/binaries/apache-maven-$pkgver-bin.tar.gz")
-sha512sums=('deaa39e16b2cf20f8cd7d232a1306344f04020e1f0fb28d35492606f647a60fe729cc40d3cba33e093a17aed41bd161fe1240556d0f1b80e773abd408686217e')
+sha512sums=('4810523ba025104106567d8a15a8aa19db35068c8c8be19e30b219a1d7e83bcab96124bf86dc424b1cd3c5edba25d69ec0b31751c136f88975d15406cab3842b')
 
 package() {
 	install -dm755 "$pkgdir/opt"
