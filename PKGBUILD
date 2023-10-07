@@ -7,13 +7,13 @@
 
 pkgname=incus
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/incus"
 license=('APACHE')
 depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'cowsql' 'libuv' 'ebtables' 'raft' 'sqlite' 'libcap' 'acl')
-makedepends=('go<2:1.21' 'git' 'tcl' 'apparmor' 'libseccomp' 'systemd')
+makedepends=('go' 'git' 'tcl' 'apparmor' 'libseccomp' 'systemd')
 conflicts=("lxd")
 optdepends=(
     'lvm2: lvm2 support'

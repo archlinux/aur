@@ -1,11 +1,11 @@
 pkgbase = incus
 	pkgdesc = Daemon based on liblxc offering a REST API to manage containers
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linuxcontainers.org/incus
 	arch = x86_64
 	license = APACHE
-	makedepends = go<2:1.21
+	makedepends = go
 	makedepends = git
 	makedepends = tcl
 	makedepends = apparmor
