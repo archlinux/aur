@@ -1,0 +1,16 @@
+pkgbase = fan2go-tui-git
+	pkgdesc = A simple daemon providing dynamic fan speed control based on temperature sensors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/markusressel/fan2go-tui
+	arch = x86_64
+	license = AGPL3
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = fan2go-tui
+	conflicts = fan2go-tui
+	source = git+https://github.com/markusressel/fan2go-tui
+	sha256sums = SKIP
+
+pkgname = fan2go-tui-git
