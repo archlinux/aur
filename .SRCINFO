@@ -1,10 +1,10 @@
 pkgbase = typora-plugin
 	pkgdesc = A minimal markdown editor and reader. with obgnail/typora_plugin plugin.
-	pkgver = 1.7.5+plugin+1.4.15
+	pkgver = 1.7.5+plugin+1.5.2
 	pkgrel = 1
 	url = https://typora.io/
 	arch = x86_64
-	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
+	license = custom:"Copyright © 2015 Abner Lee All Rights Reserved."
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
@@ -13,8 +13,8 @@ pkgbase = typora-plugin
 	provides = typora
 	conflicts = typora
 	source = https://typora.io/linux/typora_1.7.5_amd64.deb
-	source = https://github.com/obgnail/typora_plugin/archive/refs/tags/1.4.15.tar.gz
+	source = https://github.com/obgnail/typora_plugin/archive/refs/tags/1.5.2.tar.gz
 	sha512sums = 35627c94a4f3d11952b3c35d8818832db7ebaf6d3fe534fbdf3f07b67f90ed11b8a128a80a1e898c128a4a568196ee6501eb2e3075a2668a35438903d35b17cb
-	sha512sums = 1dc167964305d1bbcbefc6ca5618d0a03a93229eae7db1eaa8712d88428fbf44e6f6f9a2499021a69e3d770f56b6d220b390eaa25869b5c716e731893914402c
+	sha512sums = 4df17a7133703e7d46dde675fcdd710bc86d00be89499e3027a1cc3dc3a354b395ca87810accb64f47cba420dc0cd0e422ba198edc3ec870b79f720c640d20f8
 
 pkgname = typora-plugin
