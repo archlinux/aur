@@ -1,6 +1,6 @@
 pkgbase = tachidesk-preview-bin
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
-	pkgver = 0.7.0_r1377
+	pkgver = 0.7.0_r1383
 	pkgrel = 1
 	url = https://github.com/Suwayomi/Tachidesk-Server-preview
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = tachidesk-preview-bin
 	provides = tachidesk-preview-bin
 	provides = tachidesk-server
 	conflicts = tachidesk
-	noextract = Tachidesk-Server-v0.7.0-r1377.jar
-	source = https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1377/Tachidesk-Server-v0.7.0-r1377.jar
-	source = https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1377/Tachidesk-Server-v0.7.0-r1377-linux-assets.tar.gz
+	noextract = Tachidesk-Server-v0.7.0-r1383.jar
+	source = https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1383/Tachidesk-Server-v0.7.0-r1383.jar
+	source = https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1383/Tachidesk-Server-v0.7.0-r1383-linux-assets.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 

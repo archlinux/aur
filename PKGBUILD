@@ -5,7 +5,7 @@
 pkgname=tachidesk-preview-bin
 _pkgname=tachidesk-server
 _PkgName=Tachidesk-Server
-pkgver=0.7.0_r1377
+pkgver=0.7.0_r1383
 pkgrel=1
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
