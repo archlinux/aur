@@ -3,7 +3,7 @@
 pkgname=bruno-bin
 _pkgname=bruno
 pkgdesc="Opensource IDE For Exploring and Testing Api's"
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha256sums=(
-    87e4d3168811e779d1f667a430e086c088b4999fd562748cd3549d1d0eedb1cc
+    0f638f47ef5918e0b5b005714cc97fdf0eca9add6864425d24cfa62689c96956
     8891070a847e5047bf77d38d88d7dfbab1beab41e37c802b9f5b23f2bbb9c7be
 )
