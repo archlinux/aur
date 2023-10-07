@@ -1,30 +1,30 @@
 pkgbase = r-testthat
 	pkgdesc = Unit Testing for R
-	pkgver = 3.1.10
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=testthat
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.1
-	depends = r-brio
-	depends = r-callr>=3.5.1
-	depends = r-cli>=3.4.0
-	depends = r-desc
-	depends = r-digest
-	depends = r-ellipsis>=0.2.0
-	depends = r-evaluate
-	depends = r-jsonlite
-	depends = r-lifecycle
-	depends = r-magrittr
-	depends = r-pkgload>=1.3.0
-	depends = r-praise
+	depends = r>=3.6.0
+	depends = r-brio>=1.1.3
+	depends = r-callr>=3.7.3
+	depends = r-cli>=3.6.1
+	depends = r-desc>=1.4.2
+	depends = r-digest>=0.6.33
+	depends = r-ellipsis>=0.3.2
+	depends = r-evaluate>=0.21
+	depends = r-jsonlite>=1.8.7
+	depends = r-lifecycle>=1.0.3
+	depends = r-magrittr>=2.0.3
+	depends = r-pkgload>=1.3.2.1
+	depends = r-praise>=1.0.0
 	depends = r-processx>=3.8.2
-	depends = r-ps>=1.3.4
-	depends = r-r6>=2.2.0
-	depends = r-rlang>=1.0.1
-	depends = r-waldo>=0.5.0
-	depends = r-withr>=2.4.3
+	depends = r-ps>=1.7.5
+	depends = r-r6>=2.5.1
+	depends = r-rlang>=1.1.1
+	depends = r-waldo>=0.5.1
+	depends = r-withr>=2.5.0
 	optdepends = r-covr
 	optdepends = r-curl>=0.9.5
 	optdepends = r-diffviewer>=0.1.0
@@ -35,7 +35,7 @@ pkgbase = r-testthat
 	optdepends = r-usethis
 	optdepends = r-vctrs>=0.1.0
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/testthat_3.1.10.tar.gz
-	b2sums = 9fcdfb2119f5446815cd3a03c849a87be0e1048d54bb360db45d94b431f2b64469595bcfe9077379700c7675f300a93f744ef445598699ca774b7f513b78a1a3
+	source = https://cran.r-project.org/src/contrib/testthat_3.2.0.tar.gz
+	b2sums = 654cad527ed81955bd4508866ea7ff81915203fae252ba7f85f123fac74ca4f59f455a78ac50af4cb3df3187f323c9b446382e23669ba8a670413117bd160b7d
 
 pkgname = r-testthat
