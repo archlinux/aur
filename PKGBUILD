@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagefanreloaded-avalonia-bin
 _pkgname=ImageFanReloaded-Avalonia
-pkgver=1.2023.09.07
+pkgver=1.2023.10.01
 pkgrel=1
 pkgdesc="ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing."
 arch=("aarch64" "x86_64")
@@ -13,11 +13,11 @@ options=('!strip' 'staticlibs')
 depends=('gcc-libs' 'fontconfig' 'glibc' 'dotnet-runtime-6.0' 'ttf-dejavu' 'ttf-ms-fonts')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname}-Linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname}-Linux-x64.zip")
-sha256sums_aarch64=('7958087afe6aa61f09b50be2aeca77a8f532021dd2b96f448972b28b0b7c6290')
-sha256sums_x86_64=('c9f2f0a5946ede4e9796050ea6c564a4e8af08e8f9776234a7fe50b06331d476')
-prepare() {
+sha256sums_aarch64=('a63a4968a85a6eb8866eee9c0a4baa044343c31e76036c339d8026e179c24870')
+sha256sums_x86_64=('751ea535923197904fc9af4b94114487709eeb4b71ba0872995ab382afb0c24b')
+build() {
     convert "${srcdir}/${_pkgname}-Linux-"*/ApplicationIcon.ico "${srcdir}/${pkgname%-bin}.png"
-    gendesk -f -n --categories "Graphics" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Graphics" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
