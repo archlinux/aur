@@ -1,0 +1,22 @@
+pkgbase = recaf-dev4-git
+	pkgdesc = A modern Java bytecode editor. dev4 (beta) branch.
+	pkgver = r3816.5945a284
+	pkgrel = 1
+	url = https://github.com/Col-E/Recaf/tree/dev4
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = java-environment
+	makedepends = jdk17-openjdk
+	depends = java-runtime
+	depends = java17-openjfx
+	depends = ttf-font
+	provides = recaf-4
+	source = recaf::git+https://github.com/Col-E/Recaf#branch=dev4
+	source = recaf-4
+	source = recaf-4.desktop
+	sha256sums = SKIP
+	sha256sums = 34a64f21c7b5de1435e8e111f6d4bacfa1d0d735b7dab412ad669fe1376810db
+	sha256sums = 3d89d8b9c46ef27edaddcc0d612fed3ac0537ecee6aa049fc4fb2a2bbbbdfe54
+
+pkgname = recaf-dev4-git

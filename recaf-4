@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+# Repurposed from minecraft-world-downloader
+
+# A LOT of people are still using Java 8 while this program
+# requires Java 17+. I wrote this quick & dirty script that automatically chooses the right 
+# Java version using archlinux-java status.
+# It prioritizes the "default" version, but if it's lower than 17 it'll choose another one.
+
+# Grab the current available Java versions
+JAVAS=$(archlinux-java status)
+JAVAS="${JAVAS/Available Java environments:/""}"   
+
+# Split into an array for easier access in the loop (thanks https://stackoverflow.com/a/24628676)
+SAVEIFS=$IFS
+IFS=$'\n'
+JAVAS_ARR=($JAVAS)
+IFS=$SAVEIFS
+
+# Define vars
+DEFAULT_JAVA_VERSION=''
+DEFAULT_JAVA_VERSION_VALID=false
+OTHER_VALID_JAVA_VERSIONS=()
+
+# Checks for the version
+# 0 if valid, 1 if invalid
+is_java_version_valid() {
+    if [[ $1 =~ ^java-([1][7-9]|[2-9][0-9])-(.*)$ ]]; then 
+        return 0
+    fi
+    return 1
+}
+
+arrLen="${#JAVAS_ARR[@]}"
+
+# Loop over every version
+for (( i=0; i<${arrLen}; i++ )); do
+    VER="${JAVAS_ARR[$i]/  /""}"
+    if [[ "$VER" == *"(default)"* ]]; then
+        DEFAULT_JAVA_VERSION="${VER/ (default)/""}"
+        if is_java_version_valid $VER; then DEFAULT_JAVA_VERSION_VALID=true
+        fi
+    else
+        if is_java_version_valid $VER; then OTHER_VALID_JAVA_VERSIONS+=($VER)
+        fi
+    fi
+done
+
+# Choose the right Java path from the data above
+JAVA_PATH=''
+if [ "$DEFAULT_JAVA_VERSION_VALID" = true ] ; then
+    JAVA_PATH="/usr/lib/jvm/${DEFAULT_JAVA_VERSION}"
+elif [[ "${#OTHER_VALID_JAVA_VERSIONS[@]}" = 0 ]]; then
+    echo "No suitable Java version found. Exiting."
+    exit 1
+else
+    # just doing it the lazy way choosing the 1st one
+    JAVA_PATH="/usr/lib/jvm/${OTHER_VALID_JAVA_VERSIONS[0]}"
+fi
+
+# Find the executable in the path
+JAVA_EXECUTABLE=$(find $JAVA_PATH -type f -name "java")
+
+# & finally launch the world downloader jar
+$JAVA_EXECUTABLE -jar "/usr/share/java/recaf-4/recaf-4.jar"
