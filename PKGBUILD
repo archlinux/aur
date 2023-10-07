@@ -2,12 +2,11 @@
 
 pkgname=yuki-iptv-bin
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
 license=('GPL3')
-makedepends=('make')
 depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-wand' 'python-gobject' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'ffmpeg')
 optdepends=('yt-dlp: YouTube channel support')
 provides=('yuki-iptv')
