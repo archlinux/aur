@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgname=python-scooby
 _name=${pkgname#python-}
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('72eb95e79bd976cd7800d4caf8f15eb0f55ec3b9f33c1b1cd5323143fc0cd479e53fdca0ed64b1dfbac7d681ae3d6907daf7832e856c2ccb86d212ad1020abd7')
+sha512sums=('519ab835cd742112bb8e7f6945563507f0acb3da8da645c7057d9c77b195a862d6c29df0d65d22c6d087808f892f2e3667d11ed9bccf75de2d4fef15edd2230a')
 
 build() {
     cd "$_name-$pkgver"
