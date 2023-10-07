@@ -4,7 +4,7 @@
 
 _name=kunitconversion
 pkgname=${_name}5
-pkgver=5.110.0
+pkgver=5.111.0
 pkgrel=1
 pkgdesc='Support for unit conversion'
 arch=(x86_64)
@@ -17,7 +17,7 @@ replaces=("$_name<5.111")
 provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('aafd3fbbf77a3ae1a9600c1b8199531c15ccf1c07e80fa317a429e12fe037c20'
+sha256sums=('054062cc779ae51e78776a4d748ffffc9e3d3dc2d7bb300342319c714ec02321'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
