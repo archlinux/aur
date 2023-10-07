@@ -10,10 +10,10 @@ Change-Id: Ib883c9087377c9f1a0dfacc45a27e3e67ccf042e
 ---
 
 diff --git a/AUTHORS b/AUTHORS
-index 12191cb..cd402b8 100644
+index 6714ac1..b49ab12 100644
 --- a/AUTHORS
 +++ b/AUTHORS
-@@ -927,6 +927,7 @@ Mohit Bhalla <bhallam@amazon.com>
+@@ -934,6 +934,7 @@ Mohit Bhalla <bhallam@amazon.com>
  Moiseanu Rares-Marian <moiseanurares@gmail.com>
  Momoka Yamamoto <momoka.my6@gmail.com>
  Momoko Hattori <momohatt10@gmail.com>
@@ -22,10 +22,10 @@ index 12191cb..cd402b8 100644
  Mrunal Kapade <mrunal.kapade@intel.com>
  Munira Tursunova <moonira@google.com>
 diff --git a/third_party/wayland-protocols/BUILD.gn b/third_party/wayland-protocols/BUILD.gn
-index ec97e7b..f6eaf60 100644
+index c84ec11..dffa0aa 100644
 --- a/third_party/wayland-protocols/BUILD.gn
 +++ b/third_party/wayland-protocols/BUILD.gn
-@@ -133,7 +133,10 @@ wayland_protocol("text_input_extension_protocol") {
+@@ -141,7 +141,10 @@ wayland_protocol("text_input_extension_protocol") {
  }
  
  wayland_protocol("text_input_protocol") {
@@ -38,7 +38,7 @@ index ec97e7b..f6eaf60 100644
  
  wayland_protocol("touchpad_haptics_protocol") {
 diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
-index 7c2b0f5..1cd02ef 100644
+index ae763d4..f8a7209 100644
 --- a/ui/ozone/platform/wayland/BUILD.gn
 +++ b/ui/ozone/platform/wayland/BUILD.gn
 @@ -221,6 +221,8 @@ source_set("wayland") {
@@ -85,29 +85,29 @@ index c84c084..0817e78 100644
  DECLARE_WAYLAND_OBJECT_TRAITS(zxdg_exporter_v1)
  DECLARE_WAYLAND_OBJECT_TRAITS(zxdg_exported_v1)
 diff --git a/ui/ozone/platform/wayland/host/wayland_connection.cc b/ui/ozone/platform/wayland/host/wayland_connection.cc
-index eea6763..1d8a4c4 100644
+index ad3bbd6..995b1e2 100644
 --- a/ui/ozone/platform/wayland/host/wayland_connection.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_connection.cc
-@@ -520,6 +520,14 @@ void WaylandConnection::Global(void* data,
-     connection->text_input_extension_v1_ =
-         wl::Bind<zcr_text_input_extension_v1>(
-             registry, name, std::min(version, kMaxTextInputExtensionVersion));
-+  } else if (!connection->text_input_manager_v3_ &&
+@@ -647,6 +647,14 @@ void WaylandConnection::HandleGlobal(wl_registry* registry,
+              strcmp(interface, "zcr_text_input_extension_v1") == 0) {
+     text_input_extension_v1_ = wl::Bind<zcr_text_input_extension_v1>(
+         registry, name, std::min(version, kMaxTextInputExtensionVersion));
++  } else if (!text_input_manager_v3_ &&
 +             strcmp(interface, "zwp_text_input_manager_v3") == 0) {
-+    connection->text_input_manager_v3_ = wl::Bind<zwp_text_input_manager_v3>(
++    text_input_manager_v3_ = wl::Bind<zwp_text_input_manager_v3>(
 +        registry, name, std::min(version, kMaxTextInputManagerVersion));
-+    if (!connection->text_input_manager_v3_) {
++    if (!text_input_manager_v3_) {
 +      LOG(ERROR) << "Failed to bind to zwp_text_input_manager_v3 global";
 +      return;
 +    }
-   } else if (!connection->xdg_decoration_manager_ &&
+   } else if (!xdg_decoration_manager_ &&
               strcmp(interface, "zxdg_decoration_manager_v1") == 0) {
-     connection->xdg_decoration_manager_ =
+     xdg_decoration_manager_ = wl::Bind<zxdg_decoration_manager_v1>(
 diff --git a/ui/ozone/platform/wayland/host/wayland_connection.h b/ui/ozone/platform/wayland/host/wayland_connection.h
-index 153ebb3..cc08959 100644
+index 6659bc5..f9739ea 100644
 --- a/ui/ozone/platform/wayland/host/wayland_connection.h
 +++ b/ui/ozone/platform/wayland/host/wayland_connection.h
-@@ -148,6 +148,9 @@ class WaylandConnection {
+@@ -149,6 +149,9 @@ class WaylandConnection {
    zcr_text_input_extension_v1* text_input_extension_v1() const {
      return text_input_extension_v1_.get();
    }
@@ -117,7 +117,7 @@ index 153ebb3..cc08959 100644
    zwp_linux_explicit_synchronization_v1* linux_explicit_synchronization_v1()
        const {
      return linux_explicit_synchronization_.get();
-@@ -436,6 +439,7 @@ class WaylandConnection {
+@@ -447,6 +450,7 @@ class WaylandConnection {
    wl::Object<zcr_stylus_v2> zcr_stylus_v2_;
    wl::Object<zwp_text_input_manager_v1> text_input_manager_v1_;
    wl::Object<zcr_text_input_extension_v1> text_input_extension_v1_;
