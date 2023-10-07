@@ -16,9 +16,9 @@
 
 
 pkgbase=llvm-minimal-git
-pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git)
-pkgver=18.0.0_r471494.8c567e64f808
-pkgrel=1
+pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
+pkgver=18.0.0_r477072.116a1aeff5ea
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -175,7 +175,7 @@ package_llvm-minimal-git() {
     rm "$pkgdir"/usr/lib/libRemarks.so
 
     # prepare folders in srcdir to store files that are placed in other package_*() functions
-    mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/spirv-llvm-translator/usr/{bin,include/LLVMSPIRVLib/,lib/pkgconfig}}
+    mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/18/include,include/clang/Basic}}
     
     # The llvm runtime libraries go into llvm-libs-minimal-git
     mv -f "$pkgdir"/usr/lib/lib{LLVM-*.so,LTO.so.*,Remarks.so.*} "$srcdir"/llvm-libs/usr/lib
@@ -183,6 +183,11 @@ package_llvm-minimal-git() {
     # The clang runtime libraries go into clang-libs-minimal-git
     mv -f "$pkgdir"/usr/lib/libclang{,-cpp}.so* "$srcdir"/clang-libs/usr/lib
 
+    # clang opencl files go to clang-opencl-headers-git
+    
+    mv -f "$pkgdir"/usr/lib/clang/18/include/opencl* "$srcdir"/clang-opencl-headers/usr/lib/clang/18/include
+    mv -f "$pkgdir"/usr/include/clang/Basic/OpenCL* "$srcdir"/clang-opencl-headers/usr/include/clang/Basic
+    
     # clang-minimal-git files go to a separate package
     mkdir -p "$srcdir"/clang/usr/{bin,include,lib,lib/cmake,share}
     mv -f "$pkgdir"/usr/lib/{libear,libscanbuild,clang} "$srcdir"/clang/usr/lib
@@ -195,9 +200,6 @@ package_llvm-minimal-git() {
     mv -f "$pkgdir"/usr/bin/{analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "$srcdir"/clang/usr/bin/
     mv -f "$pkgdir"/usr/share/{clang,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/usr/share/
     
-#    sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
-
-  
     if [[ $CARCH == x86_64 ]]; then
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
         # Header stub is taken from Fedora
@@ -259,12 +261,26 @@ package_clang-minimal-git(){
 package_clang-libs-minimal-git() {
     pkgdesc="clang runtime libraries, trunk version"
     depends=(llvm-libs-minimal-git="$pkgver-$pkgrel")
-    # clang-libs doesn't exist in repos at this time, but it's cleaner to provide & conflict it.
-    # TODO: Once repo clang-libs comes into existence, verify if changes are needed to this package
+    # the functionality offered by this package is part of the clang repo pacakge.
+    # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
+
     provides=('clang-libs')
-    conflicts=('clang-libs')
+    conflicts=("clang<$pkgver-$pkgrel" 'clang-libs')
     
     cp --preserve --recursive "$srcdir"/clang-libs/* "$pkgdir"/
+
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
+}
+
+package_clang-opencl-headers-minimal-git() {
+    pkgdesc="clang headers & include files for OpenCL, trunk version"
+    depends=(clang-libs-minimal-git="$pkgver-$pkgrel")
+    # the functionality offered by this package is part of the clang repo pacakge.
+    # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
+    provides=('clang-opencl-headers')
+    conflicts=("clang<$pkgver-$pkgrel" 'clang-opencl-headers')
+    
+    cp --preserve --recursive "$srcdir"/clang-opencl-headers/* "$pkgdir"/
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
