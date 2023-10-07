@@ -7,9 +7,10 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
+_commit=cb9f500d0854b167862b3c599e4b89212d66c5c6
 pkgname=h2o-git
-pkgver=2.2.0.7429
-pkgrel=1
+pkgver=2.2.0.7433
+pkgrel=2
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -19,7 +20,6 @@ url="https://github.com/h2o/h2o"
 license=('MIT')
 options=('lto')
 
-_commit=c2b6faf27ec24be5725bfce55045191a9b1eb233
 #source=("git+https://github.com/h2o/h2o.git"
 source=("git+https://github.com/h2o/h2o.git?commit=${_commit}?signed/"
 	'h2o.service')
