@@ -115,12 +115,6 @@ build() {
   _buildimage mt7986 bpir3  emmc  nostretch DRAM_USE_DDR4=1 BROM_HEADER_TYPE=sdmmc
 }
  
-_installimage() {
-  _plat=$1; _bpir=$2
-  cd "${srcdir}/${_gitname}/build/${_plat}/release"
-  install -vDt "$pkgdir/boot" -m644 ${_bpir}-atf-*.bin
-}
-
 package_bpir64-atf-git() {
   pkgdesc='ATF BPI-R64 & BPI-R3 images'
   depends=("linux" "dtc" "bpir64-atf-git-fiptool")
@@ -129,8 +123,10 @@ package_bpir64-atf-git() {
   cd "${srcdir}"
   install -m755 -vDt "$pkgdir/usr/bin" bpir-writefip
   install -Dt "${pkgdir}/usr/share/libalpm/hooks/" -m644 95-atf.hook
-  _installimage mt7622 bpir64
-  _installimage mt7986 bpir3
+  for _folder in "${srcdir}/${_gitname}/build/"*; do
+    cd "$_folder/release"
+    install -vDt "$pkgdir/boot" -m644 *-atf-*.bin
+  done
 }
 
 package_bpir64-atf-git-fiptool() {
