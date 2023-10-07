@@ -2,7 +2,7 @@
 _base=rocket-fft
 pkgname=python-${_base}
 pkgdesc="Rocket-FFT extends Numba by scipy.fft and numpy.fft"
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 arch=(any)
 url="https://github.com/styfenschaer/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numba)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-scipy)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('b81b7079b69cbb3b0dd2a433c4ec7178353f8301acdcde9a0c04853010a0e03e7c49b343b25beb76cfbfb8b7efeefbad794a397c08089231ee1609dcc25a4903')
+sha512sums=('913501498e35aa354ec11570bdf6aa42db768a80723673da1711242927b64824427c3394e327b73e5dcca716b13e209dc2d9defc28635b4a035e98b75f098b3f')
 
 build() {
   cd ${_base}-${pkgver}
@@ -23,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not numpy_like_dtypes and not numpy_like_axes'
+  test-env/bin/python -m pytest --ignore=tests/test_numpy_like.py
 }
 
 package() {
