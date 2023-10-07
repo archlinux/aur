@@ -1,8 +1,9 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
+
 pkgname=junit-system-rules
 pkgver=1.19.0
 _commit=f4782ebfd72c08bd3f00aa04ad20fe499c5463b4 # git rev-parse "system-rules-$pkgver^{}"
-pkgrel=7
+pkgrel=8
 pkgdesc='A collection of JUnit rules for testing code that uses java.lang.System'
 arch=('any')
 url='https://stefanbirkner.github.io/system-rules/'

@@ -1,0 +1,18 @@
+pkgbase = junit-system-rules
+	pkgdesc = A collection of JUnit rules for testing code that uses java.lang.System
+	pkgver = 1.19.0
+	pkgrel = 8
+	url = https://stefanbirkner.github.io/system-rules/
+	arch = any
+	license = CPL
+	makedepends = git
+	makedepends = jdk8-openjdk
+	makedepends = maven
+	depends = junit
+	source = junit-system-rules::git+https://github.com/stefanbirkner/system-rules.git?signed#commit=f4782ebfd72c08bd3f00aa04ad20fe499c5463b4
+	source = junit-system-rules-1.19.0_update-maven-jar-plugin.patch
+	validpgpkeys = F4AF40991AECE57728B0034F9ECE1F68817F4996
+	sha512sums = SKIP
+	sha512sums = ec9fb99770b406ac3e56c49820e33ff255958566724534f0d6afc340ebfb1fbbd7043fc188d39d553ca230058ff7d592ede8729feb8434c6090849bb26a7dea4
+
+pkgname = junit-system-rules
