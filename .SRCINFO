@@ -1,6 +1,6 @@
 pkgbase = glew-wayland-git
-	pkgdesc = The OpenGL Extension Wrangler Library
-	pkgver = 2.2.0.r41.g5a2307f
+	pkgdesc = The OpenGL Extension Wrangler Library (wayland enabled)
+	pkgver = 2.2.0.r49.gc43940a
 	pkgrel = 1
 	url = https://github.com/nigels-com/glew
 	arch = i686
