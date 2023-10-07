@@ -1,0 +1,17 @@
+pkgbase = libutempter-git
+	pkgdesc = A library for utmp/wtmp updates
+	pkgver = 1.2.1.alt1.r14.g9f29181
+	pkgrel = 1
+	url = https://github.com/altlinux/libutempter
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = systemd
+	depends = glibc
+	provides = libutempter=1.2.1.alt1.r14.g9f29181
+	conflicts = libutempter
+	source = git+https://github.com/altlinux/libutempter.git
+	sha256sums = SKIP
+
+pkgname = libutempter-git
