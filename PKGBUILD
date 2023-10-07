@@ -1,9 +1,9 @@
 # Maintainer: Rustmilian
 
 pkgname=glew-osmesa-git
-pkgver=2.2.0.r41.g5a2307f
+pkgver=2.2.0.r49.gc43940a
 pkgrel=1
-pkgdesc="The OpenGL Extension Wrangler Library"
+pkgdesc="The OpenGL Extension Wrangler Library (software rendering)"
 arch=('i686' 'x86_64')
 url="https://github.com/nigels-com/glew"
 license=('BSD' 'MIT' 'GPL')
