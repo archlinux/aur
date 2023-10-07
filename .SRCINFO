@@ -11,6 +11,7 @@ pkgbase = ayatana-indicator-a11y
 	makedepends = cmake-extras
 	makedepends = systemd
 	makedepends = intltool
+	depends = accountsservice
 	depends = glibc
 	depends = glib2
 	depends = onboard
