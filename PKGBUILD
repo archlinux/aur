@@ -8,14 +8,14 @@ _gitbranch="bpir"
 #_gitbranch="mtksoc"
 pkgname=bpir64-atf-git
 epoch=2
-pkgver=v2.8r12169.30aa84c97
-pkgrel=3
+pkgver=v2.8r12614.f84551673
+pkgrel=1
 pkgdesc='ATF BPI-R64 & BPI-R3 images including fiptool'
 _ubootpkgver=2023.01
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
-arch=(aarch64)
+arch=(aarch64 x86_64)
 depends=(linux)
-makedepends=(git)
+makedepends=(git dtc)
 replaces=(bpir64-mkimage)
 license=(GPL)
 source=("git+${_gitroot}.git#branch=${_gitbranch}"
@@ -56,19 +56,19 @@ _buildmkimage() {
   sed -i '/kwbimage.o \\/d' ./tools/Makefile
   # reduce objects being build, as they are not linked anyway
   sed -i 's/FIT_OBJS-y :=.*/FIT_OBJS-y := fit_common.o boot\/image-fit.o/' ./tools/Makefile
-  ARCH=arm64 make clean
-  ARCH=arm64 make my_defconfig
-  ARCH=arm64 make tools-only
+  ARCH=arm64 make $_crossc clean
+  ARCH=arm64 make $_crossc my_defconfig
+  ARCH=arm64 make $_crossc tools-only
   mv -vf tools/mkimage nostretch-mkimage
   patch -p1 -N -r - < "${srcdir}/mtkimage-gpt-expand.patch"
-  ARCH=arm64 make tools-only
+  ARCH=arm64 make $_crossc tools-only
   mv -vf tools/mkimage stretch-mkimage
 }
 
 _buildfiptool() {
   cd "${srcdir}/${_gitname}/tools/fiptool"
   sed -i '/-Werror/d' ./Makefile
-  make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
+  make $_crossc HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
 }
 
 _buildimage() {
@@ -81,7 +81,7 @@ _buildimage() {
   touch plat/mediatek/${_plat}/platform.mk
   unset CXXFLAGS CPPFLAGS LDFLAGS
   export CFLAGS=-Wno-error
-  make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 USE_MKIMAGE=1 \
+  make $_crossc PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 USE_MKIMAGE=1 \
        MKIMAGE="${srcdir}/u-boot-${_ubootpkgver}/${_stretch}-mkimage" ${_rest} all # MTK_BL33_IS_64BIT=1 
   if [[ "${_stretch}" == "stretch" ]]; then
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-header.bin bs=1 count=440 if=build/${_plat}/release/bl2.img
@@ -101,6 +101,8 @@ _installimage() {
 
 build() {
   rm -rf "${srcdir}/${_gitname}"/build/*
+  echo "$(uname -m)"
+  [[ "$(uname -m)" != "aarch64" ]] && export _crossc="CROSS_COMPILE=aarch64-linux-gnu-"
   if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/nostretch-mkimage"  ] || \
      [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/stretch-mkimage" ]; then _buildmkimage
   fi
