@@ -2,7 +2,7 @@
 
 pkgname=dosbox-x-sdl2
 _pkgname=dosbox-x
-pkgver=2023.09.01
+pkgver=2023.10.06
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
@@ -13,9 +13,7 @@ makedepends=(glu)
 optdepends=()
 conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz)
-sha256sums=('71bf4477ae1640406fa24023f51766ab158ebf26f0e2f317f6fd7bd84c15b4e6')
-
-# Using git source to work around bug 4436: https://github.com/joncampbell123/dosbox-x/issues/4436
+sha256sums=('65f756e29f9c9b898fdbd22b0cb9b3b24c6e3becb5dcda588aa20a3fde9539a5')
 
 build() {
   cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
