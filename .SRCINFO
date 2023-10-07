@@ -1,6 +1,6 @@
 pkgbase = eelu-login
 	pkgdesc = A command-line tool that allows staff and students to log in to the Egyptian E-Learning University Moodle platform quickly and easily through the command-line interface.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/anas-elgarhy/eelu-login
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = eelu-login
 	makedepends = cargo
 	provides = eelu-login
 	replaces = eelu-login
-	source = eelu-login-0.3.1.tar.gz::https://static.crates.io/crates/eelu-login/eelu-login-0.3.1.crate
-	sha256sums = b91f53e1dde891b7f3eab3d80f78fc707fc3bfeef80f574bd5c8dc8081202f64
+	source = eelu-login-0.3.2.tar.gz::https://static.crates.io/crates/eelu-login/eelu-login-0.3.2.crate
+	sha256sums = e48bf9bb49a7c6497bbdd91f9c7f62cbdf9e4536ec990a0ec44bc09547b0a9eb
 
 pkgname = eelu-login
