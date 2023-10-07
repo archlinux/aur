@@ -1,0 +1,15 @@
+pkgbase = base64-converter
+	pkgdesc = Base64 graphical text converter can convert in real time from/to base64 format
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/denix666/base64-converter
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/base64-converter/releases/download/v0.1.3/base64-converter_linux_x86_64.tar.gz
+	source = base64-converter.png
+	source = base64-converter.desktop
+	sha256sums = 9837f3458598be631b3bbbc341c12cc12f220ec23b63616bd7ce79f8f51e7fbb
+	sha256sums = 0d02774f19b2ffbbd21c61735fa736dee8b90bbdf545c5f8285d587b2241d21f
+	sha256sums = 9a182ea3bee3dcbd6180afef4be248c93ad0d4fc591abfe822cd41aa4f3e2197
+
+pkgname = base64-converter

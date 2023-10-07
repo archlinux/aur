@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/bin/base64-converter
+Icon=/usr/share/pixmaps/base64-converter.png
+Name=Base64 converter
+Terminal=false
+Type=Application
+Categories=Utility
+Encoding=UTF-8
+Comment=Base64 graphical text converter can convert in real time from/to base64 format
