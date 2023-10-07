@@ -11,8 +11,8 @@ _itkver=5.2.1
 # _vtkver=9.1.0
 _vtkver=9.2.6
 pkgname=itk-snap
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -41,17 +41,16 @@ makedepends=(
   gtest
 )
 options=(!emptydirs)
-# upstream did not create a git tag for 4.0.1
-# but according to the git log message, this commit should be release 4.0.1
+# upstream did not create a git tag for 4.0.2
+# but according to the git log message, this commit should be release 4.0.2
 source=(
   "vtk-${_vtkver}.tar.gz::https://github.com/Kitware/VTK/archive/refs/tags/v${_vtkver}.tar.gz"
   "itk-${_itkver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${_itkver}.tar.gz"
-  "${pkgname}-${pkgver}::git+https://github.com/pyushkevich/itksnap.git#commit=95a41ee3a84cb7f986df2f59cf1994a608ab980b"
+  "${pkgname}-${pkgver}::git+https://github.com/pyushkevich/itksnap.git#commit=38c577fd3571139e0182c86719bdb5fd581a7b75"
 )
 sha512sums=('3ccb19cd98e691828e285d2d85aef890c4796d91588e02c401102feefb26c120f9d5195a79d1e7a04b037bf0bf0898b9791a341e0733d92234ca644e62da19b0'
             'cccb64766acaebe49ee2dd8b82b7b5aaa6a35e97f2cc7738ad7f3cd65006b73b880ac59341cd640abd64c2ac665633f01504760071f5492e40aa97e7ba6db2a9'
-            'SKIP'
-)
+            'SKIP')
 
 prepare() {
   # we need to build itk 5.2.1 with gcc 12, gcc 13 is not working
