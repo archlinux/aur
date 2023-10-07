@@ -1,15 +1,18 @@
 # Maintainer: Eric Woudstra ericwouds AT gmail DOT com
- 
+
+#NOEXTRACT="1"
+
 _gitname="arm-trusted-firmware"
 _gitroot=https://github.com/ericwoud/${_gitname}
 #_gitroot=https://github.com/mtk-openwrt/${_gitname}
+#_gitbranch="wip"
 _gitbranch="bpir"
 #_gitbranch="master"
 #_gitbranch="mtksoc"
 pkgname=bpir64-atf-git
 epoch=2
 pkgver=v2.8r12614.f84551673
-pkgrel=1
+pkgrel=2
 pkgdesc='ATF BPI-R64 & BPI-R3 images including fiptool'
 _ubootpkgver=2023.01
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
@@ -26,6 +29,13 @@ source=("git+${_gitroot}.git#branch=${_gitbranch}"
 )
 sha256sums=(SKIP SKIP SKIP SKIP SKIP)
 install=${pkgname}.install
+
+export CARCH=aarch64
+if [[ "$(uname -m)" != "aarch64" ]]; then
+  makedepends+=(aarch64-linux-gnu-gcc lib32-glibc)
+  export _crossc="CROSS_COMPILE=aarch64-linux-gnu-"
+  export _hostcc="aarch64-linux-gnu-gcc"
+fi
  
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -56,28 +66,29 @@ _buildmkimage() {
   sed -i '/kwbimage.o \\/d' ./tools/Makefile
   # reduce objects being build, as they are not linked anyway
   sed -i 's/FIT_OBJS-y :=.*/FIT_OBJS-y := fit_common.o boot\/image-fit.o/' ./tools/Makefile
-  ARCH=arm64 make $_crossc clean
-  ARCH=arm64 make $_crossc my_defconfig
-  ARCH=arm64 make $_crossc tools-only
+  ARCH=arm64 make clean
+  ARCH=arm64 make my_defconfig
+  ARCH=arm64 make tools-only
   mv -vf tools/mkimage nostretch-mkimage
   patch -p1 -N -r - < "${srcdir}/mtkimage-gpt-expand.patch"
-  ARCH=arm64 make $_crossc tools-only
+  ARCH=arm64 make tools-only
   mv -vf tools/mkimage stretch-mkimage
 }
 
 _buildfiptool() {
   cd "${srcdir}/${_gitname}/tools/fiptool"
   sed -i '/-Werror/d' ./Makefile
-  make $_crossc HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
+  [ ! -z "$_hostcc" ] && export HOSTCC=$_hostcc
+  make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
 }
 
 _buildimage() {
   _plat=$1; _bpir=$2; _atfdev=$3; _stretch=$4; _rest="${@:5}"
   cd "${srcdir}/${_gitname}"
-  sed -i 's/.*entry = get_partition_entry.*fip.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-fip");/' \
-         plat/mediatek/${_plat}/bl2_boot_mmc.c
-  sed -i 's/.*entry = get_partition_entry.*boot.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-boot");/' \
-         plat/mediatek/${_plat}/bl2_boot_mmc.c
+  _file="plat/mediatek/apsoc_common/bl2/bl2_boot_mmc.c"
+  [ -f "$_file" ] || _file="plat/mediatek/${_plat}/bl2_boot_mmc.c"
+  sed -i 's/.*entry = get_partition_entry.*fip.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-fip");/' $_file
+  sed -i 's/.*entry = get_partition_entry.*boot.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-boot");/' $_file
   touch plat/mediatek/${_plat}/platform.mk
   unset CXXFLAGS CPPFLAGS LDFLAGS
   export CFLAGS=-Wno-error
@@ -89,8 +100,9 @@ _buildimage() {
   else
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin                   if=build/${_plat}/release/bl2.img
   fi
-#  BL31 will be inside BL2, so no need for it. If bl31 is present separately, it will be loaded from fip (not from bl2).
-# dd   of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-bl31.bin                  if=build/${_plat}/release/bl31.bin
+  if [ -z "$(cat bl2/bl2.mk | grep bl31.bin.o)" ]; then # bl31.bin is not being build in, so add it
+    dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-bl31.bin                  if=build/${_plat}/release/bl31.bin
+  fi
 }
 
 _installimage() {
@@ -102,7 +114,6 @@ _installimage() {
 build() {
   rm -rf "${srcdir}/${_gitname}"/build/*
   echo "$(uname -m)"
-  [[ "$(uname -m)" != "aarch64" ]] && export _crossc="CROSS_COMPILE=aarch64-linux-gnu-"
   if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/nostretch-mkimage"  ] || \
      [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/stretch-mkimage" ]; then _buildmkimage
   fi
