@@ -1,0 +1,18 @@
+pkgbase = swift-bin-nightly
+	pkgdesc = Nightly binary builds of the Swift programming language
+	pkgver = 2023_10_04_a
+	pkgrel = 1
+	url = https://www.swift.org/
+	arch = x86_64
+	license = apache
+	depends = libutil-linux
+	depends = libxml2
+	depends = ncurses5-compat-libs
+	optdepends = python36: required for REPL
+	provides = swift-language
+	replaces = swift-language-bin
+	options = !strip
+	source = https://download.swift.org/development/centos7/swift-DEVELOPMENT-SNAPSHOT-2023-10-04-a/swift-DEVELOPMENT-SNAPSHOT-2023-10-04-a-centos7.tar.gz
+	sha256sums = 5c6f4fa52789d92db128800c57fe3e1a1f4f1fc38ab518badec04a68cfa406ee
+
+pkgname = swift-bin-nightly
