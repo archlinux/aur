@@ -1,8 +1,9 @@
 pkgbase = linux-bpir64-git
 	pkgver = 6.3.9.bpi
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.kernel.org/
 	arch = aarch64
+	arch = x86_64
 	license = GPL2
 	makedepends = kmod
 	makedepends = inetutils

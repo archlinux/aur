@@ -20,8 +20,8 @@ _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 pkgver=6.3.9.bpi
-pkgrel=4
-arch=('aarch64')
+pkgrel=5
+arch=('aarch64' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'git')
@@ -43,6 +43,7 @@ source=('defconfig'
 md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 export LOCALVERSION=""
+[[ "$(uname -m)" != "aarch64" ]] && export MAKEFLAGS+=" ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-"
 
 [[ "$_lto" == "true" ]] && _llvm="LLVM=1" || _llvm=""
 
