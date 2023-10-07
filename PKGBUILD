@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=2.0.0.rc.1.r1.g6efa7c4
+pkgver=2.0.0.rc.4.r0.g2be2f52
 pkgrel=1
 _nodeversion=18
 pkgdesc="A desktop app for YouTube Music"
@@ -40,7 +40,7 @@ prepare() {
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   nvm install "$_nodeversion"
-  yarn --frozen-lockfile
+  yarn --immutable
 }
 
 build() {
