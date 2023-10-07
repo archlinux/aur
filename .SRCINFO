@@ -1,0 +1,16 @@
+pkgbase = r-bibtex
+	pkgdesc = Bibtex Parser
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = https://cran.r-project.org/package=bibtex
+	arch = any
+	license = GPL
+	checkdepends = r-devtools
+	checkdepends = r-testthat
+	depends = r-backports
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bibtex_0.5.1.tar.gz
+	md5sums = c74ef856ea66f1c3bf23d2920c64c148
+	sha256sums = f3c1a0a4e666c4addd73ff13ce8ce073d73d10ebca36d333328ade8a0b493ed1
+
+pkgname = r-bibtex
