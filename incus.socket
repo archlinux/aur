@@ -1,0 +1,12 @@
+[Unit]
+Description=Incus - unix socket
+Documentation=man:incusd(1)
+
+[Socket]
+ListenStream=/var/lib/incus/unix.socket
+SocketMode=0660
+SocketGroup=incus
+Service=incus.service
+
+[Install]
+WantedBy=sockets.target

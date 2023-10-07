@@ -1,0 +1,23 @@
+[Unit]
+Description=Incus Container Hypervisor
+After=network-online.target lxcfs.service
+Requires=network-online.target lxcfs.service incus.socket
+Documentation=man:incusd(1)
+
+[Service]
+Environment=INCUS_OVMF_PATH=/usr/share/ovmf/x64
+ExecStart=/usr/bin/incusd --group=incusd --logfile=/var/log/incus/incus.log
+ExecStartPost=/usr/bin/incusd waitready --timeout=600
+ExecStop=/usr/bin/incusd shutdown
+TimeoutStartSec=600s
+TimeoutStopSec=30s
+Restart=on-failure
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+Delegate=yes
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
