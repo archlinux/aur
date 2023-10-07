@@ -1,7 +1,7 @@
 pkgbase = folia-server-builder
 	pkgdesc = Easily create your own Folia server
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Rajala1404/folia-server-builder
 	arch = any
 	license = GPL-3.0
