@@ -23,6 +23,7 @@ build() {
         # By default, it uses the c99 compiler instead of cc?????
         export CC=cc
         ./configure --prefix=/usr --no-static
+        export LD_LIBRARY_PATH="$pkgname/out/lib"
         make
 }
 
