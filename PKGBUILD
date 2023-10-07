@@ -1,9 +1,10 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
+
 pkgname=hashdeep
 pkgver=4.4
-pkgrel=6
+pkgrel=7
 pkgdesc="cross-platform tools to message digests for any number of files"
 arch=('x86_64')
 url="https://github.com/jessek/hashdeep"
@@ -12,7 +13,7 @@ depends=('gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jessek/hashdeep/archive/refs/tags/v$pkgver.tar.gz"
         "hashdeep-4.4-fix-errors-found-by-clang.patch::https://github.com/jessek/hashdeep/commit/6ef69a26126ee4e69a25392fd456b8a66c51dffd.patch")
 sha256sums=('ad78d42142f9a74fe8ec0c61bc78d6588a528cbb9aede9440f50b6ff477f3a7f'
-            '7a7fbca4339ca64589386d12d560c04e0929da9065b7e9c0dd1f441bc6fc0fbc')
+            'e690df50252700517bf3f62f8f83930469108dd2869808bcbc8f7bac1b47ffc7')
 
 prepare() {
     cd "$pkgname-$pkgver"
