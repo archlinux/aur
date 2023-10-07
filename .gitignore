@@ -1,0 +1,5 @@
+/*.log*
+/*.tar.*
+/pkg/
+/src/
+/verovio-version-*/

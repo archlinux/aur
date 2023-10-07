@@ -1,0 +1,29 @@
+diff --git a/include/json/jsonxx.h b/include/json/jsonxx.h
+index 8c5b5a1..1fd610f 100644
+--- a/include/json/jsonxx.h
++++ b/include/json/jsonxx.h
+@@ -43,13 +43,13 @@
+     __pragma(warning(push)) __pragma(warning(disable:4127)) \
+     if( jsonxx::Assertions ) \
+     __pragma(warning(pop)) \
+-      jsonxx::assertion(__FILE__,__LINE__,#__VA_ARGS__,bool(__VA_ARGS__)); \
++      jsonxx::assertion("jsonxx.h",__LINE__,#__VA_ARGS__,bool(__VA_ARGS__)); \
+   __pragma(warning(push)) __pragma(warning(disable:4127)) \
+   } while(0) \
+   __pragma(warning(pop))
+ #else
+ #define JSONXX_ASSERT(...) do { if( jsonxx::Assertions ) \
+-  jsonxx::assertion(__FILE__,__LINE__,#__VA_ARGS__,bool(__VA_ARGS__)); } while(0)
++  jsonxx::assertion("jsonxx.h",__LINE__,#__VA_ARGS__,bool(__VA_ARGS__)); } while(0)
+ #endif
+ 
+ namespace jsonxx {
+@@ -65,7 +65,7 @@ enum Settings {
+   // values
+   Parser = Permissive,  // permissive or strict parsing
+   UnquotedKeys = Disabled, // support of unquoted keys
+-  Assertions = Enabled  // enabled or disabled assertions (these asserts work both in DEBUG and RELEASE builds)
++  Assertions = Disabled  // enabled or disabled assertions (these asserts work both in DEBUG and RELEASE builds)
+ };
+ 
+ #ifdef _MSC_VER
