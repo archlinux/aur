@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps6000
 pkgver=2.1.123_6r5325
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for PicoScope 6000 series in PicoScope 7 Beta"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps6000/"
@@ -11,7 +11,7 @@ groups=()
 depends=(libusb)
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(ps7_libps6000)
 replaces=()
 backup=()
 options=(!strip)
