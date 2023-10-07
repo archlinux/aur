@@ -2,7 +2,7 @@
 
 _app_name=restfox
 pkgname="${_app_name}-bin"
-pkgver=0.0.8
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Offline-first web HTTP client"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://restfox.dev'
 license=('MIT')
 provides=('restfox')
 source=("${pkgname}-${pkgver}.deb::https://github.com/flawiddsouza/Restfox/releases/download/v${pkgver}/${_app_name}_${pkgver}_amd64.deb")
-sha512sums=('1c494362aaf2706c9dca642b339c983d0a214ef352b6ab5554dc5911c2fba35b13aa45907e594868030b6a007daf2e74375b2fb0058c7137e6f0d6a3cef317ba')
+sha512sums=('00d7d8cd546a776f483b99b4b10eee5efc9486b9ed68708a1828eb22fcca2f1db5ec4c0ccc3ea71d3d09beb005becd426310bb4b6a9c0125137d4f53744bd43d')
 
 prepare() {
     tar xf "${srcdir}"/data.tar.zst
