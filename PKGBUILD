@@ -32,7 +32,7 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 options=(!zipman)
 
 prepare() {
-  patch -d $pkgname-$pkgver -p1 < 043c3521.patch # Fix markdown rendering
+  patch -d $_pkgname-$pkgver -p1 < 043c3521.patch # Fix markdown rendering
 }
 
 build() {
