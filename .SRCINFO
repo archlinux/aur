@@ -1,5 +1,5 @@
-pkgbase = foot-fullscreen-translucency
-	pkgdesc = Fast, lightweight, and minimalistic Wayland terminal emulator
+pkgbase = foot-fullscreen-transparency
+	pkgdesc = Fast, lightweight, and minimalistic Wayland terminal emulator, with a patch for fullscreen transparency
 	pkgver = 1.15.3
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
@@ -24,9 +24,9 @@ pkgbase = foot-fullscreen-translucency
 	optdepends = xdg-utils: URI launching
 	optdepends = bash-completion: bash completions for foot itself
 	backup = etc/xdg/foot/foot.ini
-	source = foot-fullscreen-translucency-1.15.3.tar.gz::https://codeberg.org/dnkl/foot/archive/1.15.3.tar.gz
+	source = foot-fullscreen-transparency-1.15.3.tar.gz::https://codeberg.org/dnkl/foot/archive/1.15.3.tar.gz
 	source = 0003-make-foot-great-again.patch
 	sha256sums = 65006a0643ec185a0e24578365e2e7469ddeba6bd543645a15d9bbb5ec501670
 	sha256sums = 89c1d38a880b4e1620741f1cd00268293eb587c67d5e0a0e15b260f15835943c
 
-pkgname = foot-fullscreen-translucency
+pkgname = foot-fullscreen-transparency
