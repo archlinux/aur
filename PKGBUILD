@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libpicoipp
 pkgver=1.4.0_4r161
-pkgrel=6
+pkgrel=7
 pkgdesc="Library for Pico Technology PicoScope 7 Beta Oscilloscope Software"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicoipp/"
@@ -11,7 +11,7 @@ groups=()
 depends=(gcc-libs)
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(ps7_libpicoipp)
 replaces=()
 backup=()
 options=(!strip)
