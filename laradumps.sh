@@ -1,6 +1,8 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron25
-_ASAR="/opt/laradumps/resources/app.asar"
+APPDIR="/opt/laradumps"
+_ELECTRON=/usr/bin/electron26
+export LD_LIBRARY_PATH="${APPDIR}"
+_ASAR="${APPDIR}/resources/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
