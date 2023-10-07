@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r16304.gfa3b3c1e9'
+pkgver='r16338.g524975291'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -12,8 +12,8 @@ pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron26'
-depends=("$_electronpkg-bin" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
+_electronpkg='electron25'
+depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
