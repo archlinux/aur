@@ -1,7 +1,7 @@
 # Maintainer: Noel Jacob <noeljacob at gmail dot com>
 # Contributor: thdxr (original PKGBUILD)
 # Contributor: 37h4n (aarch64 support added by Ethan Reece <aur at ethanreece dot com>)
-# Contrubutor: sh!zeeg (shizeeque@gmail.com) support for non-avx2 CPUs, shell completions.
+# Contributor: sh!zeeg (shizeeque@gmail.com) support for non-avx2 CPUs, shell completions.
 pkgname=bunjs-bin
 pkgver=1.0.4
 pkgrel=1
