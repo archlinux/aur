@@ -1,17 +1,17 @@
 pkgbase = werckmeister-bin
 	pkgdesc = An open source Sheet Music MIDI Compiler
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = http://werckme.github.io
 	arch = x86_64
 	license = GPL3
 	depends = alsa-lib
 	depends = glibc
 	depends = gcc-libs
-	provides = werckmeister=1.4.0
+	provides = werckmeister=1.4.1
 	conflicts = werckmeister
 	options = !strip
-	source = werckmeister-1.4.0.sh::https://github.com/werckme/werckmeister/releases/download/v1.4.0/werckmeister-1.4.0-Linux.sh
-	sha256sums = e49954bec9831d09bcebaa1613c3bfbf97d3c9b7b055492c2255deff419319ef
+	source = werckmeister-1.4.1.sh::https://github.com/werckme/werckmeister/releases/download/v1.4.1/werckmeister-1.4.1-Linux.sh
+	sha256sums = 130e86bd7fe4eccbaf43787c325c00d1ba709ae3e4c2c012310ace89fc717b43
 
 pkgname = werckmeister-bin
