@@ -1,54 +1,43 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: <dbermond@archlinux.org>
 
 pkgname=pthreadpool-git
-pkgver=r56.6673a4c
-pkgrel=2
-pkgdesc='A pthread-based thread pool implementation for C/C++ (git version)'
-arch=('i386' 'x86_64')
+pkgver=0.1.r144.g4fe0e1e
+pkgrel=1
+pkgdesc='A portable thread pool implementation for C/C++ (git version)'
+arch=('x86_64')
 url='https://github.com/Maratyszcza/pthreadpool/'
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cmake' 'python' 'gtest')
 provides=('pthreadpool')
 conflicts=('pthreadpool')
-source=('git+https://github.com/Maratyszcza/pthreadpool.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/Maratyszcza/pthreadpool.git'
+        'git+https://github.com/Maratyszcza/FXdiv.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-    cd pthreadpool
-    
-    # git, no tags available
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C pthreadpool describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd pthreadpool
-    
-    cmake \
-        -DBUILD_GMOCK:BOOL='OFF' \
-        -DBUILD_GTEST:BOOL='OFF' \
+    cmake -B build -S pthreadpool \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DPTHREADPOOL_BUILD_BENCHMARKS:BOOL='OFF' \
-        -Wno-dev \
-        .
-    make
+        -DFXDIV_SOURCE_DIR:STRING="${srcdir}/FXdiv" \
+        -DGOOGLETEST_SOURCE_DIR:STRING='/usr/src/googletest' \
+        -Wno-dev
+    cmake --build build
 }
 
 check() {
-    cd pthreadpool
-    
-    make test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd pthreadpool
-    
-    make DESTDIR="$pkgdir" install
-    
+    DESTDIR="$pkgdir" cmake --install build
     rm "${pkgdir}/usr/include/fxdiv.h"
-    
-    # license
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 pthreadpool/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,9 +1,8 @@
 pkgbase = pthreadpool-git
-	pkgdesc = A pthread-based thread pool implementation for C/C++ (git version)
-	pkgver = r56.6673a4c
-	pkgrel = 2
+	pkgdesc = A portable thread pool implementation for C/C++ (git version)
+	pkgver = 0.1.r144.g4fe0e1e
+	pkgrel = 1
 	url = https://github.com/Maratyszcza/pthreadpool/
-	arch = i386
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -14,7 +13,8 @@ pkgbase = pthreadpool-git
 	provides = pthreadpool
 	conflicts = pthreadpool
 	source = git+https://github.com/Maratyszcza/pthreadpool.git
+	source = git+https://github.com/Maratyszcza/FXdiv.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pthreadpool-git
-
