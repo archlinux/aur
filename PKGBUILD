@@ -1,20 +1,19 @@
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-moosex-types-perl'
-pkgver='0.101343'
+pkgver='0.101344'
 pkgrel='1'
 pkgdesc="Moose types that check against Perl syntax"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-moosex-types' 'perl-params-util')
-makedepends=()
-url='https://metacpan.org/release/MooseX-Types-Perl'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/MooseX-Types-Perl-0.101343.tar.gz')
-md5sums=('cbb223342a6048053bc4743c34fd5850')
-sha512sums=('a3ad0f1b3dcde93f23254f084faadde7d3b03076f045802d7757c5580b2d0fb6cb748143a99fcd650492fc7da8938e28d8e0b7714070386638d972ab7d799e9a')
-_distdir="MooseX-Types-Perl-0.101343"
+depends=('perl-moosex-types')
+checkdepends=('perl-moose')
+url='https://metacpan.org/dist/MooseX-Types-Perl'
+source=(https://cpan.metacpan.org/authors/id/R/RJ/RJBS/MooseX-Types-Perl-$pkgver.tar.gz)
+md5sums=('d4cdcae30d6cbc6c7dc66e01539eecc5')
+_distdir="MooseX-Types-Perl-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +41,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
