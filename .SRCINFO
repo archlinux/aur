@@ -1,7 +1,7 @@
 pkgbase = youtube-music-bin
 	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)
-	pkgver = 1.20.0
-	pkgrel = 5
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://th-ch.github.io/youtube-music
 	install = youtube-music.install
 	arch = x86_64
@@ -11,13 +11,12 @@ pkgbase = youtube-music-bin
 	depends = libsecret
 	depends = nss
 	optdepends = libnotify: desktop notifications
-	optdepends = libappindicator-gtk3: tray icon
 	provides = youtube-music
 	conflicts = youtube-music
-	source = https://github.com/th-ch/youtube-music/releases/download/v1.20.0/youtube-music_1.20.0_amd64.deb
-	source = https://github.com/th-ch/youtube-music/raw/v1.20.0/license
+	source = https://github.com/th-ch/youtube-music/releases/download/v2.0.0/youtube-music_2.0.0_amd64.deb
+	source = https://github.com/th-ch/youtube-music/raw/v2.0.0/license
 	source = youtube-music.sh
-	sha256sums = dbefcfdcab7df20be27690b9ecb0762816be61988b0371af7b2f0afb24b66494
+	sha256sums = b511abf7f3b00bc6679ea78e83efee33846d84c727270ccdb8194b41347b3c67
 	sha256sums = e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08
 	sha256sums = 3769e2d994ad011e8481f3ed448557cd9e5b5f1a805d84b4944639c807440d8c
 
