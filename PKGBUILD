@@ -3,7 +3,7 @@
 _pkgname=okular
 pkgname=okular-no-purpose
 pkgver=23.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -21,13 +21,19 @@ conflicts=(okular)
 replaces=(kdegraphics-okular)
 replaces=(okular)
 provides=(okular)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/graphics/okular/-/commit/043c3521.patch)
 sha256sums=('43b3732d701692324967e767ecf69f6b4d957765b5aba24a4dfa6efc8a494817'
-            'SKIP')
+            'SKIP'
+            'cc700b975e2eb4e07356ad3c0ce2c927698d1a0b6b0da89d386d7181f40ef1e6')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < 043c3521.patch # Fix markdown rendering
+}
 
 build() {
   cmake -B build -S $_pkgname-$pkgver \
