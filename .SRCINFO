@@ -1,6 +1,6 @@
 pkgbase = fluidd-git
 	pkgdesc = Klipper web frontend
-	pkgver = r1653.8841557a
+	pkgver = r1686.35667236
 	pkgrel = 1
 	url = https://docs.fluidd.xyz/
 	arch = any

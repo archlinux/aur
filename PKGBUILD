@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=fluidd-git
 _pkgname="${pkgname%-git}"
-pkgver=r1653.8841557a
+pkgver=r1686.35667236
 pkgrel=1
 pkgdesc="Klipper web frontend"
 arch=(any)
@@ -28,18 +28,14 @@ build() {
   cd "$srcdir/$_pkgname"
 
   npm install --no-update-notifier --no-audit --cache "${srcdir}/npm-cache"
-  ./node_modules/.bin/vite build
+  npm run build
 }
 
 package() {
   cd "$srcdir/$_pkgname"
 
   install -dm755 "${pkgdir}/usr/share/webapps"
-  cp -r dist "$pkgdir/usr/share/webapps/${_pkgname}"
-
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "${pkgdir}"
+  cp -dr --no-preserve=ownership dist "$pkgdir/usr/share/webapps/${_pkgname}"
 
   install -Dm644 "${srcdir}/fluidd-klipper.cfg" "${pkgdir}/usr/share/doc/${_pkgname}/fluidd-klipper.cfg"
   install -Dm644 "${srcdir}/fluidd-nginx.conf" "${pkgdir}/usr/share/doc/${_pkgname}/fluidd-nginx.conf"
