@@ -11,10 +11,9 @@ pkgbase = ayatana-indicator-display
 	makedepends = cmake-extras
 	makedepends = glib2
 	makedepends = systemd
-	makedepends = hicolor-icon-theme
 	makedepends = properties-cpp
 	depends = xsct
-	depends = libayatana-common
+	depends = libayatana-common>=0.9.9
 	depends = geoclue
 	depends = hicolor-icon-theme
 	conflicts = redshift
