@@ -2,7 +2,7 @@
 
 pkgname=bruno
 pkgdesc="Opensource IDE For Exploring and Testing Api's"
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-    'a0a4e5bd751fa33dc6e8cec06663f2daaef15ef9f2928b436d4402370814c982'
+    '9ffefef45599811f1b7c449c886b6207f72d8a30e84248b1b4925f5c46121192'
 )
 
 _ensure_local_nvm() {
