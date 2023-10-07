@@ -10,7 +10,7 @@ arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kio5)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
+makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc)
 conflicts=("$_name<1:5.111")
 replaces=("$_name<1:5.111")
 provides=($_name=$pkgver)
