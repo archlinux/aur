@@ -3,7 +3,7 @@
 _pkgname=librewolf-extension-bitwarden
 pkgname=$_pkgname-bin
 pkgver=2023.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A secure and free password manager for all of your devices (binary release)'
 url="https://addons.mozilla.org/addon/bitwarden-password-manager"
 arch=('any')
@@ -13,7 +13,7 @@ provides=($_pkgname)
 depends=('librewolf')
 groups=('librewolf-addons')
 noextract=("bitwarden_password_manager-$pkgver.xpi")
-_number=4140393
+_number=4170561
 source=("https://addons.mozilla.org/firefox/downloads/file/$_number/bitwarden_password_manager-$pkgver.xpi")
 sha256sums=('46d4fe10ea3a1757a6a4c0d728f3f765d93883f742a3ebb73f36aeb80eec55a9')
 
