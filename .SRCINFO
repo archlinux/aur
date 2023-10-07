@@ -1,17 +1,27 @@
 pkgbase = electronim-bin
 	pkgdesc = A Self Contained Desktop Version Of electronim Made With Electron
-	pkgver = 0.0.95
+	pkgver = 0.0.96
 	pkgrel = 1
 	url = https://github.com/manusa/electronim
 	arch = x86_64
 	license = Apache
+	makedepends = squashfuse
 	depends = bash
 	depends = electron25
-	provides = electronim=0.0.95
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = dbus
+	depends = glibc
+	depends = libx11
+	depends = glib2
+	provides = electronim=0.0.96
 	conflicts = electronim
-	source = electronim-0.0.95.AppImage::https://github.com/manusa/electronim/releases/download/v0.0.95/electronim-linux-x86_64.AppImage
+	source = electronim-0.0.96.AppImage::https://github.com/manusa/electronim/releases/download/v0.0.96/electronim-linux-x86_64.AppImage
 	source = electronim.sh
-	sha256sums = 69f045bdc81ce3ae484ff9c0d7bd2e2e5e06489187b74f345ede83ae55be0148
-	sha256sums = be837ef65c85241d02a30b6fc7693f7b66a59963521f657335ec73212e2ee020
+	sha256sums = 0d2f5e797bbb695e98eb2d5bfbf10ec59e9560fe948e76eee10e1072ecb7b8a1
+	sha256sums = cd1ded3da68ea90e137b4408f9c2143948fa35e080f0173200518503b81d9690
 
 pkgname = electronim-bin
