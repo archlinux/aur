@@ -1,7 +1,7 @@
 #Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 
 pkgname=moar-bin
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
@@ -13,8 +13,8 @@ provides=(moar)
 source=("${pkgname%-bin}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386"
         "${pkgname%-bin}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
 noextract=(${pkgname%-bin}-${pkgver}.tar.gz)
-sha256sums=('e9953109c8c50694b794e76d04512ae7cb82503d1b5b198cd542c187e828e7ee'
-            '010400e74f1ed362801d55bb7efb517ecf0fe73bc84ea355404d5c32907484dd')
+sha256sums=('8d154d5835de3aeb63280557e254f68d6058b4da6bd083ddb407a96bb6e97884'
+            '56f381bfa113333a28aad6cdb40bf2c81b99338b6806d3ab1039b17df4a676f3')
 
 prepare() {
 

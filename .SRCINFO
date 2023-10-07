@@ -1,6 +1,6 @@
 pkgbase = moar-bin
 	pkgdesc = A pager designed to just do the right thing without any configuration.
-	pkgver = 1.17.0
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = https://github.com/walles/moar
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = moar-bin
 	optdepends = highlight: source code syntax highlighter
 	provides = moar
 	conflicts = moar
-	noextract = moar-1.17.0.tar.gz
-	source = moar::https://github.com/walles/moar/releases/download/v1.17.0/moar-v1.17.0-linux-386
-	source = moar-1.17.0.tar.gz::https://github.com/walles/moar/archive/v1.17.0.tar.gz
-	sha256sums = e9953109c8c50694b794e76d04512ae7cb82503d1b5b198cd542c187e828e7ee
-	sha256sums = 010400e74f1ed362801d55bb7efb517ecf0fe73bc84ea355404d5c32907484dd
+	noextract = moar-1.17.1.tar.gz
+	source = moar::https://github.com/walles/moar/releases/download/v1.17.1/moar-v1.17.1-linux-386
+	source = moar-1.17.1.tar.gz::https://github.com/walles/moar/archive/v1.17.1.tar.gz
+	sha256sums = 8d154d5835de3aeb63280557e254f68d6058b4da6bd083ddb407a96bb6e97884
+	sha256sums = 56f381bfa113333a28aad6cdb40bf2c81b99338b6806d3ab1039b17df4a676f3
 
 pkgname = moar-bin
