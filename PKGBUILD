@@ -3,8 +3,8 @@
 # Contributor: Daniel Eklöf <daniel at ekloef dot se>
 # Contributor: raf@notashelf.dev
 
-pkgname=foot-fullscreen-translucency
-pkgdesc='Fast, lightweight, and minimalistic Wayland terminal emulator'
+pkgname=foot-fullscreen-transparency
+pkgdesc='Fast, lightweight, and minimalistic Wayland terminal emulator, with a patch for fullscreen transparency'
 pkgver=1.15.3
 pkgrel=1
 url="https://codeberg.org/dnkl/foot"
