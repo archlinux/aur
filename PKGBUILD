@@ -2,17 +2,17 @@
 # Contributor: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=jdupes-git
-pkgver=1.27.3.r19.g39eab01
+pkgver=1.27.3.r32.g81b9ced
 pkgrel=1
 pkgdesc='A program for identifying duplicate files residing within specified directories (git)'
 arch=(i686 x86_64)
-url=https://github.com/jbruchon/jdupes
+url=https://www.jdupes.com
 license=(MIT)
 depends=(glibc libjodycode-git xxhash)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+"${url}".git
+source=(git+https://codeberg.org/jbruchon/jdupes.git
         jdupes-system-xxhash.patch)
 sha256sums=('SKIP'
             'b4df170f8ea5569808e0c4f84a1af24282ea53233db760d97531e50df8eea1c4')
