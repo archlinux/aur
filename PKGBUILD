@@ -9,7 +9,7 @@ pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-hardlinks")
-url="https://github.com/archlinux-jerry/pkgbuilds/tree/master/kernel-modules-hook-hardlinks"
+url="https://github.com/archlinux-jerry/pkgbuilds/tree/master/kernel-modules-hook-bindmount"
 license=('GPL3')
 source=("linux-modules-cleanup.conf"
         "10-linux-modules-pre.hook"
