@@ -2,7 +2,7 @@
 
 pkgname=mediadownloader-git
 pkgver=3.4.0.r11.g22649a4
-pkgrel=2
+pkgrel=3
 pkgdesc="This project is a Qt/C++ based GUI frontend to CLI multiple CLI based tools that deal with downloading online media."
 arch=('x86_64' 'aarch64')
 url="https://github.com/mhogomchungu/media-downloader"
@@ -11,8 +11,10 @@ sha512sums=("SKIP"
            "114e167464acf31269d2b5c3ffd1742bc231b4cbcf5fc885b8716081deba249174b7afaecf0a7316ed35b508da03207191a33608de8b3f89f2a70d311001f821")
 source=("git+https://github.com/mhogomchungu/media-downloader.git"
         "mediadownloader.desktop")
-conflicts=("mediadownloader")
-provides=("mediadownloader")
+conflicts=("mediadownloader"
+           "mediadownloader-bin")
+provides=("mediadownloader"
+          "mediadownloader-bin")
 makedepends=("gcc"
              "cmake"
              "qt5-base"
