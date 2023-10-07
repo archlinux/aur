@@ -5,15 +5,17 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.4.1.r13.gf3a248e
+pkgver=1.5.0.r0.gd6d1f74
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio (Git version)"
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
 license=("GPL3")
-depends=("glibc" "hicolor-icon-theme")
-makedepends=("git" "go")
-optdepends=("wine: A required dependency (made optional for flexbility)")
+depends=("glibc" "hicolor-icon-theme" "libgles" "libxcursor" "libxfixes"
+         "libxkbcommon" "libxkbcommon-x11" "libx11" "wayland")
+makedepends=("git" "go" "vulkan-headers" "wayland-protocols")
+optdepends=("vulkan-driver: Vulkan support in GUI"
+            "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar")
 source=("git+${url}")
 sha256sums=("SKIP")
@@ -28,10 +30,14 @@ build() {
 
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
 
+  # Needed for RELRO support (which is a security feature)
+  export CGO_LDFLAGS="${LDFLAGS}"
+
   # Make sure Vinegar rebuilds
   make clean
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" all
+  # Enable all Gio features (overriding default upstream behavior)
+  make VINEGAR_GOFLAGS="" DESTDIR="${pkgdir}" PREFIX="/usr" all
 }
 
 package() {
