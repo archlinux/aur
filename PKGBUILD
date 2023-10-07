@@ -1,7 +1,7 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
 pkgname=coreos-installer
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Installer for CoreOS disk images"
 url="https://github.com/coreos/coreos-installer"
@@ -9,7 +9,7 @@ depends=('cargo')
 arch=('x86_64')
 license=('APACHE')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/coreos/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a8c7610bebef4acb4a2c4387cd58ecede78828c2da2de16546bea998045e3665')
+sha256sums=('43a45a326163318b526fd42f67ffe8dad9079bcc23c112f02b71ca9774b3aaf2')
 
 build() {
   cd "${pkgname}-${pkgver}"
