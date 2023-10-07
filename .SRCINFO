@@ -11,7 +11,7 @@ pkgbase = ayatana-indicator-datetime
 	makedepends = ayatana-indicator-messages>=0.9.0
 	makedepends = intltool
 	makedepends = properties-cpp
-	depends = libayatana-common>=0.9.5
+	depends = libayatana-common>=0.9.9
 	depends = evolution-data-server
 	depends = libaccounts-glib
 	depends = libical

@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-indicator-datetime"
 license=("GPL3")
 makedepends=("cmake-extras" "ayatana-indicator-messages>=0.9.0" "intltool" "properties-cpp")
-depends=("libayatana-common>=0.9.5" "evolution-data-server" "libaccounts-glib" "libical" "glib2" "dconf" "gcc-libs" "glibc" "libnotify")
+depends=("libayatana-common>=0.9.9" "evolution-data-server" "libaccounts-glib" "libical" "glib2" "dconf" "gcc-libs" "glibc" "libnotify")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("99664ac08ec27e2ae4a676b4324beffc")
 
