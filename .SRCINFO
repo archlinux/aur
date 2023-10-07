@@ -11,7 +11,7 @@ pkgbase = ayatana-indicator-power
 	makedepends = intltool
 	depends = glib2
 	depends = systemd
-	depends = libayatana-common
+	depends = libayatana-common>=0.9.9
 	depends = libnotify
 	depends = dconf
 	depends = librda
