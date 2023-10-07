@@ -1,8 +1,8 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=libaegis
-pkgver=0.1.11
-pkgrel=3
+pkgver=0.1.12
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 depends=()
@@ -11,7 +11,7 @@ url="https://github.com/jedisct1/libaegis.git"
 license=('MIT')
 options=('lto')
 
-_commit=1f7ce77dc0c3d37cd3bc30f1cf7fc6f87635851b
+_commit=2e042ee49765a4036f3e56839bd143b4f35dc814
 source=("git+https://github.com/jedisct1/libaegis.git?commit=${_commit}?signed/")
 # mruby-Rakefile.patch
 # h2o-libressl-3.6.2.patch
