@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux
-pkgver=6.5.6.arch1
+pkgver=6.5.6.arch2
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -40,12 +40,12 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('78e36d4214547051c24df2140f4ce09428d6c515ad9a71b38b28e8094a95d2f6'
             'SKIP'
-            '6bcbfc08709ac59fb8408b7b274cc56bdaffde0d83de497b772ceefd33fca95d'
+            '90fbe7cd6c6b3e469e0f929e6ab17f7ea07c8127b91eed813004fb9aaa03a6d7'
             'SKIP'
             '46451dbc3305d4c2e726a2f1943bddf697c5bb6815d93e5baed80bca82e53fdc')
 b2sums=('6fec33a0ee1700694c43c2271263d23408f3ad53f71200717ebd3843dd0aecb5235a058439e63e304da276978f1e4148ae1aac78a22166b2ca236b137a406c0f'
         'SKIP'
-        'def8ad75552fd6c460b112904e2546098ba7b3e8d652f891ca7b99c2d05b91908422a600ab886984a9ef8c9e5288df62280150a78bea826247ecbe4f4f454cb0'
+        'ad312c97dfb3a2e1a342d5ae7de644702b83e46a6342d0c719342d91ec8b017157ad1d8bc9249bc88ebbca03cb5dbdc65d0ed237b18dbb6a2aaeeee66cf2be70'
         'SKIP'
         '9a1770eed7e306ddd532b1df9d62c52b4f6c938d147473bed6ba92a4139654f313d7033bb6bc509f4054fa757acf33a8d73b6f36fed2a134f72d1724bf2db717')
 
