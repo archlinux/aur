@@ -1,6 +1,6 @@
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Maintainer: Luna D. Dragon (nullrequest) <nullreques [@] vivaldi.net>
 # Maintainer: memchr <memchr@proton.me>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # shellcheck disable=SC2034,SC1091,SC2148,SC2155,SC2154
 # Use build.conf to override default build options
@@ -13,7 +13,7 @@ echo -e "\
 #######
 
 pkgbase="${_kernel_name}"
-pkgver=6.5.3.arch1
+pkgver=6.5.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
