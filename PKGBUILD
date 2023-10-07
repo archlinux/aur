@@ -3,8 +3,8 @@
 pkgname='veracrypt-inyourlanguage'
 _pkgname='VeraCrypt'
 pkgver=1.26.7
-pkgrel=3
-pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.'
+pkgrel=4
+pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages for installation.'
 url='https://www.veracrypt.fr'
 arch=('x86_64' 'i686' 'arm64' 'armhf' 'aarch64')
 license=('Apache 2.0' 'TrueCrypt 3.0')
@@ -16,7 +16,7 @@ optdepends=('sudo: mounting encrypted volumes as nonroot users')
 source=(https://veracrypt.fr/code/${_pkgname}/snapshot/${_pkgname}_${pkgver}.tar.gz
         select_lang.sh)
 sha512sums=('c803c6301a8a7b6d8efc74284070c01629a760dceaa518f2287d62709bd25450fec75f2fa0e2ab0eb57993faec9cba4d51104273a56a88fa288a1e14bcf868bd'
-            '1ad5b969744fa983c8b4702a4288e761f2684960a1cd8d6c95479c21d2f16933137453af743f53fce0240afb48ce4968dc66d8d708390f6eed557ce25a264998')
+            '12f9ad1fcdaa6a7b96165a40b56e7c6ea7502e88b8c7f432555acef5e252baccd07e83fc7d2091f4de77d803a65eb5dd13562adc1f11d769590805b944f2adaa')
 
 prepare() {
   bash $srcdir/../select_lang.sh

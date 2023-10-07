@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #~~ Script for PKGBUILD
-#~~ Select GUI-language for Veracrypt 1.26.7 and higher (x86_64) Linux
+#~~ Select GUI-language for Veracrypt 1.26.7 and higher Linux
 #~~ by Shapiro <shapiro at quantentunnel dot de>
-#~~ v1.3
+#~~ v1.4: Automatic language selection depending on system locale.
 
 country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl pt-br ro sk sl sv th tr uk uz vi zh-cn zh-hk zh-tw"
 clear
@@ -21,19 +21,10 @@ echo '        |_|_||_|  \_, \___/\_,_|_|   |_\__,_|_||_\__, |\_,_\__,_\__, \___|
 echo '                  |__/                           |___/          |___/'
 echo ""
 echo ""
-echo " Enter the country code for your preferred language (i.e. de for German):"
-echo ""
-echo " 1. Arabic: ar   2. Belarusian: be   3. Bulgarian: bg   4. Catalan: ca   5. Corsican: co"
-echo " 6. Czech: cs   7. Danish: da   8. German: de   9. Greek: el   10. English (DEFAULT): en"
-echo "11. Spanish: es   12. Estonian: et   13. Basque: eu   14. Persian: fa   15. Finnish: fi"
-echo "16. French: fr   17. Hebrew: he   18. Hungarian: hu   19. Indonesian: id   20. Italian: it"
-echo "21. Japanese: ja   22. Georgian: ka   23. Korean: ko   24. Latvian: lv   25. Burmese: my"
-echo "26. Dutch: nl   27. Norwegian: nn   28. Polish: pl   29. Portuguese/Brazil: pt-br   30. Romanian: ro"
-echo "31. Slovak: sk   32. Slovenian: sl   33. Swedish: sv   34. Thai: th   35. Turkish: tr"
-echo "36. Ukrainian: uk   37. Uzbek (Cyrillic): uz   38. Vietnamese: vi   39. Chinese (Simplified): zh-cn"
-echo "40. Chinese (Hong Kong): zh-hk   41. Chinese (Taiwan): zh-tw"
-echo ""
-read -p "==> " var
+echo "Currently over 40 languages are available. The GUI of the compiled VeraCrypt"
+echo "will be set to your system locale, if it is supported."
+echo "Detecting locale..."
+var=$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)
 if [[ "$country_codes" == *"$var"* ]]; then
 	cp "./VeraCrypt_1.26.7/Translations/Language.$var.xml" "./VeraCrypt_1.26.7/src/Common/Language.xml"
 	case "$var" in
@@ -158,12 +149,8 @@ if [[ "$country_codes" == *"$var"* ]]; then
 		echo "Language set to: Chinese/Taiwan (zh-tw)"
 		;;
 	esac
-elif [[ "$var" == en ]]; then
-		echo "Language set to: English (en)"
+
 else
-	echo
-	echo "[WARNING] Invalid input. Using default setting."
-	echo "[WARNING] Language set to: English (en)"
-	echo
+	echo "Language set to: English (en)"
 fi
 
