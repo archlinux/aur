@@ -2,7 +2,7 @@
 
 pkgname=libaegis
 pkgver=0.1.11
-pkgrel=1
+pkgrel=3
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 depends=()
@@ -11,7 +11,7 @@ url="https://github.com/jedisct1/libaegis.git"
 license=('MIT')
 options=('lto')
 
-_commit=54e16f8aef4769c7e1e10149b8532a72f1771f04
+_commit=1f7ce77dc0c3d37cd3bc30f1cf7fc6f87635851b
 source=("git+https://github.com/jedisct1/libaegis.git?commit=${_commit}?signed/")
 # mruby-Rakefile.patch
 # h2o-libressl-3.6.2.patch
@@ -29,7 +29,9 @@ build() {
 
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DFAVOR-PERFORMANCE=1 ..
+        cmake -DCMAKE_INSTALL_PREFIX=/usr/ \
+              -DCMAKE_C_FLAGS="$CFLAGS -DFAVOR_PERFORMANCE" \
+              ..
         make
 }
 
