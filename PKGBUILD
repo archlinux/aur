@@ -42,6 +42,7 @@ source=('defconfig'
 #       "src/mt7986a.dtsi::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi"
 md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
+export CARCH=aarch64
 export LOCALVERSION=""
 [[ "$(uname -m)" != "aarch64" ]] && export MAKEFLAGS+=" ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-"
 
