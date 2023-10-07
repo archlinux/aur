@@ -1,13 +1,17 @@
 pkgbase = r-findpython
-	pkgdesc = R package designed to find an acceptable python binary
-	pkgver = 1.0.7
-	pkgrel = 1
+	pkgdesc = Functions to Find an Acceptable Python Binary
+	pkgver = 1.0.8
+	pkgrel = 2
 	url = https://cran.r-project.org/package=findpython
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
+	checkdepends = python
+	checkdepends = r-testthat
 	depends = r
-	source = https://cran.r-project.org/src/contrib/findpython_1.0.7.tar.gz
-	sha256sums = 59f904b9c2ec84b589380de59d13afbf14d1ec3b670e3a07e820298aaf04c149
+	optdepends = r-reticulate
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/findpython_1.0.8.tar.gz
+	md5sums = 5ca1c2cb21b5e747182c14d92691912b
+	sha256sums = 0f8a90cbafd4949c0333a86808383a358fb7ec3268953d8a4887d5d22264cdb7
 
 pkgname = r-findpython
