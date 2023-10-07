@@ -2,7 +2,7 @@
 
 pkgname=oink
 pkgver=1.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A lightweight DDNS client for Porkbun "
 arch=(x86_64)
 url="https://github.com/RLado/Oink"
