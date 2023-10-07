@@ -1,6 +1,6 @@
 pkgbase = stremio-service-bin
 	pkgdesc = Companion app for Stremio Web
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/Stremio/stremio-service
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = stremio-service-bin
 	depends = gtk3
 	depends = cairo
 	conflicts = stremio-service
-	source = https://github.com/Stremio/stremio-service/releases/download/v0.1.6/stremio-service_amd64.deb
-	sha256sums = ec708e51b85cff21c203afb66ec1c63aef2f39dc3ac2156fdaae08f5d432d000
+	source = https://github.com/Stremio/stremio-service/releases/download/v0.1.8/stremio-service_amd64.deb
+	sha256sums = 6ac4a8c309aace567aaf9ac8c078c3236d03b06b81da9dc3557aeafd5e375911
 
 pkgname = stremio-service-bin

@@ -1,12 +1,12 @@
 # Maintainer: onurmercury <onurmercury at proton dot me>
 
 # New releases and details about builds can be found at:
-# https://github.com/Stremio/stremio-service/
+# https://github.com/Stremio/stremio-service
 
 _debname=stremio-service
 
 pkgname=${_debname}-bin
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Companion app for Stremio Web"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('glib2'
          'cairo')
 conflicts=('stremio-service')
 source=("https://github.com/Stremio/stremio-service/releases/download/v${pkgver}/${_debname}_amd64.deb")
-sha256sums=('ec708e51b85cff21c203afb66ec1c63aef2f39dc3ac2156fdaae08f5d432d000')
+sha256sums=('6ac4a8c309aace567aaf9ac8c078c3236d03b06b81da9dc3557aeafd5e375911')
 
 package() {
 
