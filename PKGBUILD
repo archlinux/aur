@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=agendapp
 _pkgname=Agendapp
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="One of the best software to simplify school calendar management and facilitate classroom notes."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'electron20')
 makedepends=('gendesk' 'npm' 'nodejs' 'asar')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('12729576705f4bf9ef7eb98377801486de952adad61d3d6b6f094cbab3c0f282'
+sha256sums=('4f2da0179188a66c165dcf9288c3b7a8a56844b5a88c5d4f781ad34fbebb53e3'
             '4ee53923ca6dc0f262f669c69224639eccb43884b29c0f6976c40e57abe750cd')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
