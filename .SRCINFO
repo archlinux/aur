@@ -1,6 +1,6 @@
 pkgbase = python-ara
 	pkgdesc = ARA Records Ansible and makes it easier to understand and troubleshoot.
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/ansible-community/ara
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-ara
 	optdepends = python-pygments
 	optdepends = python-psycopg2
 	provides = ara
-	source = https://files.pythonhosted.org/packages/d8/21/64905ea535a94e72508b0a3a7d0fae28ac420f1db63729d660dd29c22a4d/ara-1.6.1.tar.gz
-	sha256sums = 90812ee38308b87db357d34f9fd9dd422c87edb3cdc0248a83f65b1bf0691b6d
+	source = https://files.pythonhosted.org/packages/8f/d7/7e26eb07b57a4b5489e4c3601c448774211c9906c9d4cc7251c041b82c05/ara-1.7.0.tar.gz
+	sha256sums = f2623f34e8fd542ee70f82d02cc36907e11b2d306e7b548106a33157171af58c
 
 pkgname = python-ara
