@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=etherealengine-control-center-bin
 _appname=Ethereal-Engine-Control-Center
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="One stop solution for all your Metaverse needs. A desktop app for managing Ethereal Engine cluster. "
 arch=('x86_64')
@@ -12,11 +12,12 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('libxext' 'libx11' 'libdrm' 'pango' 'libdbusmenu-glib' 'glib2' 'cairo' 'at-spi2-core' 'libcups' 'libxfixes' 'mesa' 'nss' 'gtk3' 'glibc' 'libxdamage' \
     'nspr' 'gdk-pixbuf2' 'gtk2' 'bash' 'hicolor-icon-theme' 'alsa-lib' 'dbus' 'libxcomposite' 'libxcb' 'dbus-glib' 'gcc-libs' 'expat' 'libxrandr' 'libxkbcommon')
+makedepends=('squashfuse')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/v${pkgver}/LICENSE")
-sha256sums=('21fe9ede658bdea84f7cdf6a4487f7e181e4d864dc6935b1ccd5cac8ea91704a'
+sha256sums=('56c44d8c514a48e526904e6e54388a975a2f39927f3a5df27b99818d1f234680'
             'd346da664afe040f323eb3aecc74d5bb2a8b6d61a7ff53ccfaf1611add61a41d')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
