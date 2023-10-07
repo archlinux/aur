@@ -1,12 +1,12 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=edir
 pkgver=2.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to rename, remove, and copy files and directories using your editor"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
-depends=("python>=3.6")
+depends=("python>=3.6" "python-platformdirs")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
