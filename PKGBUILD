@@ -4,7 +4,7 @@
 
 _name=networkmanager-qt
 pkgname=${_name}5
-pkgver=5.110.0
+pkgver=5.111.0
 pkgrel=1
 pkgdesc='Qt wrapper for NetworkManager API'
 arch=(x86_64)
@@ -17,7 +17,7 @@ replaces=("$_name<5.111")
 provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('1837f9b4795124f7fb0e63d75ea8f29b575e5a9f3ff5ae5e26861a0eddddd4ae'
+sha256sums=('b8edc45629de379f26a67b44654311f40fd8ea866fa3a2cfb9774cd995b3762e'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
