@@ -1,0 +1,22 @@
+pkgbase = r-bspm
+	pkgdesc = Bridge to System Package Manager
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bspm
+	arch = any
+	license = MIT
+	checkdepends = r-tinytest
+	depends = gobject-introspection-runtime
+	depends = pyalpm
+	depends = python-dbus
+	depends = python-gobject
+	depends = r
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/bspm_0.5.5.tar.gz
+	source = fix-dbus.patch
+	md5sums = 86d4bc20c4b90d6d61873e554e0a20f4
+	md5sums = 36f5173c5c892c7c525ff320f99952ab
+	sha256sums = d49d91ec3e0caaf698596a17ce391dafc146b9cfa0f8ce5183b1ef41d142a61d
+	sha256sums = 7a80496e502ddab4f4682e791b626b0a2ccb405ee2c138a0932cd112b86987c0
+
+pkgname = r-bspm
