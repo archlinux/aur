@@ -7,5 +7,8 @@ fetch-sums:
 prepare:
 	makepkg --printsrcinfo > .SRCINFO
 
+checksums:
+	makepkg -g
+
 clean:
 	rm -rf pkg/ src/ checksums* *tar*
