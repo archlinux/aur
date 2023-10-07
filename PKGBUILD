@@ -30,7 +30,14 @@ build() {
 
 package() {
   cd $_name
-  install -dm755 "$pkgdir/usr/share"
-  mv dist "$pkgdir/usr/share/$_name-archlinux"
+  install -dm755 "$pkgdir/usr/share/$_name-archlinux"
+
+  # install resources (css, js, json, svg)
+  mv dist "$pkgdir/usr/share/$_name-archlinux/resources"
+
+  # install the generated PHP sources
+  cp -r php "$pkgdir/usr/share/$_name-archlinux"
+
+  # install the license
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
