@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastfetch-bin
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in C."
 arch=('x86_64')
@@ -25,10 +25,12 @@ optdepends=(
   'xfconf: Needed for XFWM theme and XFCE Terminal font'
   'zlib: Faster image output when using kitty graphics protocol'
 )
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-Linux.tar.gz")
-sha256sums=('16bcbfb18d5cceac0199542f79ac7fe19d3cc5ad87673bb69587454793018141')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-Linux.deb")
+sha256sums=('7d1506ac227a72e70336e02abf7f6be9a46d9fff9182309a74bd4aaff94bb33a')
+build() {
+    bsdtar -xf "${srcdir}/data.tar.gz"
+}
 package() {
-    cd "${srcdir}/${pkgname%-bin}-${pkgver}-Linux"
     cp --parents -a usr "${pkgdir}"
     mv "${pkgdir}/usr/share/licenses/${pkgname%-bin}" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
