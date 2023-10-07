@@ -9,17 +9,15 @@ _gitroot=https://github.com/ericwoud/${_gitname}
 _gitbranch="bpir"
 #_gitbranch="master"
 #_gitbranch="mtksoc"
-pkgname=bpir64-atf-git
+pkgbase=bpir64-atf-git
+pkgname=("$pkgbase")
 epoch=2
 pkgver=v2.8r12614.f84551673
-pkgrel=2
-pkgdesc='ATF BPI-R64 & BPI-R3 images including fiptool'
+pkgrel=3
 _ubootpkgver=2023.01
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64 x86_64)
-depends=(linux)
 makedepends=(git dtc)
-replaces=(bpir64-mkimage)
 license=(GPL)
 source=("git+${_gitroot}.git#branch=${_gitbranch}"
         "uboot${_ubootpkgver}::https://github.com/u-boot/u-boot/archive/refs/tags/v${_ubootpkgver}.tar.gz"
@@ -28,13 +26,13 @@ source=("git+${_gitroot}.git#branch=${_gitbranch}"
         'mtkimage-gpt-expand.patch'
 )
 sha256sums=(SKIP SKIP SKIP SKIP SKIP)
-install=${pkgname}.install
 
 export CARCH=aarch64
-if [[ "$(uname -m)" != "aarch64" ]]; then
-  makedepends+=(aarch64-linux-gnu-gcc lib32-glibc)
+if [[ "$(uname -m)" == "aarch64" ]]; then
+  pkgname+=("$pkgbase-fiptool")
+else
+  makedepends+=(aarch64-linux-gnu-gcc)
   export _crossc="CROSS_COMPILE=aarch64-linux-gnu-"
-  export _hostcc="aarch64-linux-gnu-gcc"
 fi
  
 pkgver() {
@@ -78,7 +76,6 @@ _buildmkimage() {
 _buildfiptool() {
   cd "${srcdir}/${_gitname}/tools/fiptool"
   sed -i '/-Werror/d' ./Makefile
-  [ ! -z "$_hostcc" ] && export HOSTCC=$_hostcc
   make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
 }
 
@@ -105,31 +102,41 @@ _buildimage() {
   fi
 }
 
-_installimage() {
-  _plat=$1; _bpir=$2
-  cd "${srcdir}/${_gitname}/build/${_plat}/release"
-  install -vDt "$pkgdir/boot" -m644 ${_bpir}-atf-*.bin
-}
-
 build() {
   rm -rf "${srcdir}/${_gitname}"/build/*
   echo "$(uname -m)"
   if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/nostretch-mkimage"  ] || \
      [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/stretch-mkimage" ]; then _buildmkimage
   fi
-  _buildfiptool
+  [ -z "$_crossc" ] && _buildfiptool
   _buildimage mt7622 bpir64 sdmmc stretch   DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
   _buildimage mt7622 bpir64 emmc  stretch   DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
   _buildimage mt7986 bpir3  sdmmc nostretch DRAM_USE_DDR4=1
   _buildimage mt7986 bpir3  emmc  nostretch DRAM_USE_DDR4=1 BROM_HEADER_TYPE=sdmmc
 }
  
-package() {
+_installimage() {
+  _plat=$1; _bpir=$2
+  cd "${srcdir}/${_gitname}/build/${_plat}/release"
+  install -vDt "$pkgdir/boot" -m644 ${_bpir}-atf-*.bin
+}
+
+package_bpir64-atf-git() {
+  pkgdesc='ATF BPI-R64 & BPI-R3 images'
+  depends=("linux" "dtc" "bpir64-atf-git-fiptool")
+  replaces=(bpir64-mkimage)
+  install=${pkgname}.install
   cd "${srcdir}"
   install -m755 -vDt "$pkgdir/usr/bin" bpir-writefip
   install -Dt "${pkgdir}/usr/share/libalpm/hooks/" -m644 95-atf.hook
-  cd "${srcdir}/${_gitname}/tools/fiptool"
-  install -m755 -vDt "$pkgdir/usr/bin" fiptool
   _installimage mt7622 bpir64
   _installimage mt7986 bpir3
 }
+
+package_bpir64-atf-git-fiptool() {
+  pkgdesc='ATF BPI-R64 & BPI-R3 fiptool'
+  depends=()
+  cd "${srcdir}/${_gitname}/tools/fiptool"
+  install -m755 -vDt "$pkgdir/usr/bin" fiptool
+}
+
