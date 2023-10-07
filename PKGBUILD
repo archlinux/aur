@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=godmode
 _pkgname=GodMode
-pkgver=1.0.0_beta.8
+pkgver=1.0.0_beta.9
 pkgrel=1
 pkgdesc="AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!"
 arch=('x86_64')
@@ -13,7 +13,10 @@ depends=('expat' 'glib2' 'libxcb' 'libxcomposite' 'nspr' 'at-spi2-core' 'libxfix
     'gtk3' 'gcc-libs' 'mesa' 'libxdamage' 'libdrm' 'libxrandr' 'libxkbcommon' 'alsa-lib' 'nss' 'glibc' 'hicolor-icon-theme')
 makedepends=('npm>=7' 'gendesk' 'nodejs>=18')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('4cd12659fb53e46154266838c22bbb2c6b2464b67366fd299f783c2b7f5c63de')
+sha256sums=('77579ff221d403c48f507639f3df9f2ac597d70065d4cefe1cfa78649f99009a')
+prepare() {
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+}
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
     npm ci
@@ -29,7 +32,6 @@ package() {
         install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/release/build/linux-unpacked/resources/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    gendesk -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
