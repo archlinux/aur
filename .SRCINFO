@@ -13,7 +13,7 @@ pkgbase = ayatana-indicator-printers
 	makedepends = libcups
 	makedepends = systemd
 	depends = cups
-	depends = libayatana-common
+	depends = libayatana-common>=0.9.9
 	optdepends = system-config-printer
 	source = ayatana-indicator-printers-22.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-printers/archive/22.9.0.tar.gz
 	md5sums = addeb28c59e862e4832b5fb36ede61d4
