@@ -1,8 +1,8 @@
 pkgbase = libjodycode-git
 	pkgdesc = Shared code used by several utilities written by Jody Bruchon (git)
-	pkgver = 3.1.r18.ge8b48a3
+	pkgver = 3.1.r48.g79cb4f9
 	pkgrel = 1
-	url = https://github.com/jbruchon/libjodycode
+	url = https://codeberg.org/jbruchon/libjodycode
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = libjodycode-git
 	depends = glibc
 	provides = libjodycode
 	conflicts = libjodycode
-	source = git+https://github.com/jbruchon/libjodycode.git
+	source = git+https://codeberg.org/jbruchon/libjodycode.git
 	sha256sums = SKIP
 
 pkgname = libjodycode-git

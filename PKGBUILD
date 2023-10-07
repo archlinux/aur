@@ -1,11 +1,11 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=libjodycode-git
-pkgver=3.1.r18.ge8b48a3
+pkgver=3.1.r48.g79cb4f9
 pkgrel=1
 pkgdesc='Shared code used by several utilities written by Jody Bruchon (git)'
 arch=(i686 x86_64)
-url=https://github.com/jbruchon/libjodycode
+url=https://codeberg.org/jbruchon/libjodycode
 license=(MIT)
 depends=(glibc)
 makedepends=(git)
