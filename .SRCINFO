@@ -1,6 +1,6 @@
 pkgbase = oxygen-desktop
 	pkgdesc = The desktop application for Oxygen, which is an AI assistant that helps you analyze investment opportunities.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/virattt/oxygen-desktop
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = oxygen-desktop
 	depends = libxcb
 	depends = mesa
 	conflicts = oxygen-desktop
-	source = oxygen-desktop-0.0.7.tar.gz::https://github.com/virattt/oxygen-desktop/archive/refs/tags/v0.0.7.tar.gz
-	sha256sums = 621ab2fb7da7f597bfcbad966fa88c930f9293dc8728314b1fe86a243cd9058a
+	source = oxygen-desktop-0.0.8.tar.gz::https://github.com/virattt/oxygen-desktop/archive/refs/tags/v0.0.8.tar.gz
+	sha256sums = bf4b78a3000f183f9773f629d5b3f38c061f4d06b7c9a0ca6dc83107df223893
 
 pkgname = oxygen-desktop

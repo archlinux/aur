@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oxygen-desktop
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="The desktop application for Oxygen, which is an AI assistant that helps you analyze investment opportunities."
 arch=('any')
@@ -11,12 +11,13 @@ depends=('at-spi2-core' 'libxext' 'nspr' 'nss' 'dbus' 'libx11' 'bash' 'glib2' 'm
     'libxkbcommon' 'cairo' 'libdrm' 'libxrandr' 'alsa-lib' 'python' 'libxcomposite' 'gcc-libs' 'libxdamage' 'pango' 'libcups' 'libxcb' 'mesa')
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('621ab2fb7da7f597bfcbad966fa88c930f9293dc8728314b1fe86a243cd9058a')
+sha256sums=('bf4b78a3000f183f9773f629d5b3f38c061f4d06b7c9a0ca6dc83107df223893')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    npm ci
+    1npm ci
     sed '103,105d' -i package.json
     sed '89,101d' -i package.json
+    sed '82,88d' -i package.json
     npm run build
 }
 package() {
