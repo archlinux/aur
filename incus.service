@@ -6,7 +6,7 @@ Documentation=man:incusd(1)
 
 [Service]
 Environment=INCUS_OVMF_PATH=/usr/share/ovmf/x64
-ExecStart=/usr/bin/incusd --group=incusd --logfile=/var/log/incus/incus.log
+ExecStart=/usr/bin/incusd --group=incus --logfile=/var/log/incus/incus.log
 ExecStartPost=/usr/bin/incusd waitready --timeout=600
 ExecStop=/usr/bin/incusd shutdown
 TimeoutStartSec=600s

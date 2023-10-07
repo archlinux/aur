@@ -7,7 +7,7 @@
 
 pkgname=incus
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/incus"
@@ -36,7 +36,7 @@ validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67'  # Stéphane Graber <st
 sha256sums=('771b6f438e369f729eaaa6dfd938f14dcc8de09dbc9da23c7c80c6d14f02653b'
             'SKIP'
             'b5a6aae662fd18d8f85b9106d204ae9fee61996bf2785d43578c5c955049957b'
-            'b781fe13230e6a2be4b9d45cbd3c6a5acc553f193a17ab6d6987f62a888da39b'
+            'b3e45f028d81ae1d84939f641349257db0b2b5dcaecf7b8b95661be22d83c21b'
             'd7c334814dca020437668111f69885bce98cb4e6be8eb5e23df1688ebc4031f2')
 
 prepare() {
