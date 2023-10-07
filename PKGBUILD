@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dialogcraft
 _pkgname=DialogCraft
-pkgver=0.9.5
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libx11' 'libxcb' 'libxext' 'cairo' 'libdrm' 'expat' 'at-spi2-core' 'me
     'libxkbcommon' 'gcc-libs' 'libxcomposite' 'glibc' 'hicolor-icon-theme' 'glib2' 'alsa-lib' 'pango' 'dbus' 'libxdamage')
 makedepends=('gendesk' 'npm' 'nodejs>=16')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('86e2ef625b60cd06bae6ba091fdc1546a188be5a11d93147eb860b04ce3c634a')
+sha256sums=('3dc33ae27b8880859055a82f5b8149fd1e2e9b7a64ef13749b92acc2cf742bb9')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
 }
