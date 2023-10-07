@@ -6,7 +6,7 @@ pkgdesc="Installer Tool for Python Programs"
 url="https://github.com/bulletmark/$pkgname"
 license=(GPL3)
 arch=(any)
-depends=("python>=3.11" "sudo" "python-looseversion")
+depends=("python>=3.11" "sudo")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")

@@ -12,7 +12,6 @@ pkgbase = pinstall
 	makedepends = python-setuptools-scm
 	depends = python>=3.11
 	depends = sudo
-	depends = python-looseversion
 	source = pinstall-1.8.tar.gz::https://github.com/bulletmark/pinstall/archive/1.8.tar.gz
 	sha1sums = fb0c3f37109d44a164fbdaabc48bbdb193e53911
 
