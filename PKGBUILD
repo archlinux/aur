@@ -1,6 +1,6 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=python-opnieuw
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A general-purpose retrying library, written in pure Python"
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a34484e2f7b136649691eeefc89f46a95783b3ccab0cc33c118713c037374397')
+sha256sums=('b2884a17b7acca433924d42af7685e3305098b220e545632fed8d9d7abdf2078')
 
 build() {
 	cd "opnieuw-$pkgver"
