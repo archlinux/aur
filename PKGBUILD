@@ -2,8 +2,8 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=FMPy
 pkgname=python-${_base,,}
-_gitcommit=e0ff3b4c9f194dacb193b0a1bb32b7a7f6730745
-pkgver=0.3.16
+_gitcommit=57c220b5456474ec8b689d3cefb2a240e6931cf5
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
@@ -11,12 +11,13 @@ arch=(any)
 license=('custom:BSD-2-clause')
 depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack python-numpy python-pytz sundials) # rpclib
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git)
-checkdepends=(python-pytest python-dask python-scipy) # jupyter-nbformat
-optdepends=('python-matplotlib'
-  'python-kaleido'
-  'jupyter-notebook'
-  'python-plotly'
-  'python-dash-bootstrap-components') # python-pyqt5 python-pyqtgraph python-pyqt5-webengine
+checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
+optdepends=('python-matplotlib: for plot results'
+  'python-kaleido: '
+  'jupyter-notebook: '
+  'python-plotly: '
+  'python-dash-bootstrap-components: '
+  'python-pyqtgraph: for graphical user interface') # python-pyqt5 python-pyqt5-webengine
 source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
   git+https://github.com/modelica/Reference-FMUs.git)
@@ -47,13 +48,15 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# check() {
-#   cd ${_base}
-#   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m installer dist/*.whl
-#   PATH="${srcdir}/${_base}/test-env/bin:$PATH"
-#   test-env/bin/python -m pytest tests -k 'not cmake and not simulate and not create_juypter_notebook' --ignore=test_fmu_container.py
-# }
+check() {
+  cd ${_base}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  PATH="${srcdir}/${_base}/test-env/bin:$PATH"
+  test-env/bin/python -m pytest tests \
+    -k 'not cmake and not simulate and not create_juypter_notebook' \
+    --ignore=test_fmu_container.py
+}
 
 package() {
   cd ${_base}
