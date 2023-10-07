@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=mainsail-git
 _pkgname="${pkgname%-git}"
-pkgver=r1559.c589a495
+pkgver=r2110.1a7aca66
 pkgrel=1
 pkgdesc="Klipper web frontend"
 arch=(any)
@@ -28,22 +28,14 @@ build() {
   cd "$srcdir/$_pkgname"
 
   npm install --no-update-notifier --no-audit --cache "${srcdir}/npm-cache"
-  ./node_modules/.bin/vite build
+  npm run build
 }
 
 package() {
   cd "$srcdir/$_pkgname"
 
   install -dm755 "${pkgdir}/usr/share/webapps"
-  cp -r dist "$pkgdir/usr/share/webapps/${_pkgname}"
-
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/cli/issues/1103 for details.
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "${pkgdir}"
+  cp -dr --no-preserve=ownership dist "$pkgdir/usr/share/webapps/${_pkgname}"
 
   install -Dm644 "${srcdir}/mainsail-klipper.cfg" "${pkgdir}/usr/share/doc/${_pkgname}/mainsail-klipper.cfg"
   install -Dm644 "${srcdir}/mainsail-nginx.conf" "${pkgdir}/usr/share/doc/${_pkgname}/mainsail-nginx.conf"
