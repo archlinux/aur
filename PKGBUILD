@@ -24,23 +24,25 @@ _clangbuild=
 pkgbase=kodi-nexus-mpp-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpegdirect")
 pkgver=r62294.e75ba45eef3.457d9a5
-pkgrel=5
+pkgrel=1
 arch=('aarch64' 'arm7f')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-runtime' 'libaacs' 'libass'
+  'gperf' 'hicolor-icon-theme' 'java-runtime<21' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'python-pycryptodomex' 'python-pillow' 'python-pybluez'
+  'pcre' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'ghostscript' 'meson' 'gtest' 'graphviz'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
-  'libinput' 'mpp-git' 'flatbuffers'
+  'libinput' 'flatbuffers'
+  # mpp
+  'mpp-git' 'librga-multi'
 )
 options=(!lto strip)
 
@@ -73,6 +75,7 @@ _libudfread_version="1.1.2"
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
   "git+https://github.com/xbmc/inputstream.ffmpegdirect.git#branch=$_codename"
+  "git+https://github.com/xbmc/repo-binary-addons.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
@@ -101,6 +104,7 @@ noextract=(
 
 b2sums=('SKIP'
         'SKIP'
+        'SKIP'
         '2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c'
         'db4d05836d8fbb3637ae50bdbfc0e4b612ee6b3be24addfea94ce772c3bf28d58b63a3f252d6f9f016f72f8cbb841cc1820b091226b136f4c4664385a32da73c'
         'c94feb5a03a12efa5b7767965118d2500a088299ea36f3b82e46d157e45893e6b04503cb50f179ca681bac914457607fab26acfa6e304752b355c407578572d1'
@@ -126,6 +130,8 @@ pkgver() {
 }
 
 prepare() {
+  # use our local source, no network access should be allowed during build()
+  sed -i "s|https://github.com/xbmc/repo-binary-addons.git $_codename|file://${srcdir}/repo-binary-addons/.git makepkg|" xbmc/cmake/addons/bootstrap/repositories/binary-addons.txt
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir -p "$srcdir/kodi-build"
   [[ -d ffdirect-build ]] && rm -rf ffdirect-build
