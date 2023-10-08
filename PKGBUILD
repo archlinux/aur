@@ -1,31 +1,34 @@
-# Maintainer: lmartinez
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: lmartinez
+
 pkgname=fnott-git
-pkgver=1.0.1.r2.g5845372
-pkgrel=2
-pkgdesc="Keyboard-driven and lightweight Wayland notification daemon"
-arch=('x86_64')
-url="https://codeberg.org/dnkl/fnott"
-license=('MIT')
-depends=('dbus' 'fcft' 'wlroots')
-makedepends=('git' 'meson' 'scdoc' 'wayland-protocols' 'tllist')
-provides=('fnott')
-conflicts=('fnott')
-source=("$pkgname::git+$url")
+pkgver=1.4.1.r4.g222ca03
+pkgrel=1
+pkgdesc='Keyboard driven and lightweight Wayland notification daemon'
+arch=(x86_64)
+url=https://codeberg.org/dnkl/fnott
+license=(MIT)
+depends=(dbus fcft wlroots)
+makedepends=(git meson scdoc tllist wayland-protocols)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver()  {
-  cd "$pkgname"
-  git describe --long | sed 's/-/.r/;s/-/./'
+  git -C $pkgname describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-  meson --prefix=/usr --buildtype=release --wrap-mode=nofallback -Db_lto=true build
-  ninja -C build
+  arch-meson $pkgname $pkgname/build
+  meson compile -C $pkgname/build
+}
+
+check() {
+  meson test -C $pkgname/build
 }
 
 package() {
-  cd "$pkgname"
-  DESTDIR="$pkgdir/" ninja -C build install
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  meson install -C $pkgname/build --destdir "$pkgdir"
+  install -Dm0644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }

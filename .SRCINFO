@@ -1,22 +1,21 @@
 pkgbase = fnott-git
-	pkgdesc = Keyboard-driven and lightweight Wayland notification daemon
-	pkgver = 1.0.1.r2.g5845372
-	pkgrel = 2
+	pkgdesc = Keyboard driven and lightweight Wayland notification daemon
+	pkgver = 1.4.1.r4.g222ca03
+	pkgrel = 1
 	url = https://codeberg.org/dnkl/fnott
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = meson
 	makedepends = scdoc
-	makedepends = wayland-protocols
 	makedepends = tllist
+	makedepends = wayland-protocols
 	depends = dbus
 	depends = fcft
 	depends = wlroots
 	provides = fnott
 	conflicts = fnott
-	source = fnott-git::git+https://codeberg.org/dnkl/fnott
+	source = fnott-git::git+https://codeberg.org/dnkl/fnott.git
 	md5sums = SKIP
 
 pkgname = fnott-git
-
