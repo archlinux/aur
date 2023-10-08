@@ -1,7 +1,7 @@
 # Maintainer: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm-ollama
-pkgver=0.1.0
+pkgver=2
 pkgrel=1
 pkgdesc='Setup service to run ollama models via litellm'
 arch=(any)
@@ -10,17 +10,22 @@ depends=(
 	litellm
 	ollama
 )
-backup=(etc/litellm-ollama/litellm-ollama.env)
+backup=(
+	etc/litellm-ollama/litellm-ollama.env
+	etc/litellm-ollama/litellm-ollama.argconf
+)
 install=litellm-ollama.install
 source=(
 	'litellm-ollama@.service'
+	'litellm-ollama.argconf'
 	'litellm-ollama.install'
 	'sysusers-litellm-ollama.conf'
 	'tmpfiles-litellm-ollama.conf'
 	'litellm-ollama.env'
 )
 
-sha512sums=('33ebaba40507448641bf42b483a3b15706ded6b111753a40be67f51fef52dd568f8fa50dd6c7e5bffbf53ede28cce648b9b99df993572aeee3b159de897e888e'
+sha512sums=('fd1054bd794b43d7da2cc6e20621197debe0babd5b1ab3379148f842b45b9835492516689ef2b503d98f4b63bc7facb7d52ff3aadc7e264264f096fe32d39960'
+            'baad7bd889d88acb2ace1a34709602c25bdbbc5ca52ffb58492c8650c7cbc15bda0e862366f2a7d2b9d85adafca88806ab8b1947f6e9c24c67b6b27011ccbf7b'
             'b9493c66cb699af763eb828fe54ed974d8bdc3e1fb5fd5aabb2bc0040f317088f28661b7964d23f3495fee6afbcf093334cb24cfa20d831ebf3bacb72c6e58c3'
             'ff9f5761112a6bc9a588588fa13ce552dd0d0f1e36873014a3b6aa07938caf6e61b9052b5aa4ce3f54239d6a53f42e26fb3e980250a08db09063be70d68070cd'
             'd4c3034ea25e2776f4b9072f3f55b8b6dad4a8c31a748d4661fc1f1d87b77d416ea52b1bba4690a81c2c16034c87dacd13e49bc7323eba989b67d096fdc473e2'
@@ -29,8 +34,9 @@ sha512sums=('33ebaba40507448641bf42b483a3b15706ded6b111753a40be67f51fef52dd568f8
 package() {
 	cd "$srcdir"
 
-	install -Dm644 "$pkgname.env" "$pkgdir/etc/$pkgname/$pkgname.env"
-	
+	install -Dm640 "$pkgname.env" "$pkgdir/etc/$pkgname/$pkgname.env"
+	install -Dm640 "$pkgname.argconf" "$pkgdir/etc/$pkgname/$pkgname.argconf"
+
 	mkdir -p "$pkgdir/var/lib/$pkgname/.config/litellm"
 	ln -s "/etc/$pkgname/$pkgname.env" "$pkgdir/var/lib/$pkgname/.config/litellm/.env.litellm"
 

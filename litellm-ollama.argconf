@@ -1,0 +1,12 @@
+# LiteLLM launch parameters
+
+# Port on which LiteLLM will listen, default 8000
+# PORT="--port=8000"
+
+# Enable telemetry bound to LiteLLM developers, default True
+# TELEMETRY="--telemetry=True"
+
+# Model parameters
+# TEMPERATURE="--temperature=0.2"
+# MAX_TOKENS="--max_tokens=2000"
+
