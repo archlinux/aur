@@ -1,6 +1,6 @@
 pkgbase = passwordsafe-bin
 	pkgdesc = Popular secure and convenient password manager
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://pwsafe.org/
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = passwordsafe-bin
 	depends = qrencode
 	depends = glibc
 	depends = util-linux-libs
-	provides = passwordsafe=1.17.0
+	provides = passwordsafe=1.18.0
 	conflicts = passwordsafe
-	source = passwordsafe-1.17.0.deb::https://github.com/pwsafe/pwsafe/releases/download/1.17.0/passwordsafe-linuxmint21-1.17-amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/pwsafe/pwsafe/1.17.0/LICENSE
-	sha256sums = 5b85f6ea5e5138db109dd6f1e5a48f394d70255317e10d747f1b1f059d594a61
+	source = passwordsafe-1.18.0.deb::https://github.com/pwsafe/pwsafe/releases/download/1.18.0/passwordsafe-linuxmint21-1.18-amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/pwsafe/pwsafe/1.18.0/LICENSE
+	sha256sums = 787e1eb425363ecc7b95a65f2f1255bc1205dc6116cc29ffd2f0c9736db00c81
 	sha256sums = c423e5a75b647f900aca691a7f48ddc131f2f8c3d3daaa597093cf576c92ba79
 
 pkgname = passwordsafe-bin
