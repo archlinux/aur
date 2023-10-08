@@ -10,7 +10,12 @@ pkgdesc='Parity checking library'
 arch=('x86_64')
 url='http://parchive.sourceforge.net'
 license=('GPL')
-depends=('libsigc++')
+depends=(
+  'gcc-libs' # libgcc_s.so libstdc++.so
+  'glibc' # libc.so libm.so
+  'libsigc++' # libsigc-2.0.so
+  )
+provides=('libpar2.so')
 source=(
   "http://downloads.sourceforge.net/sourceforge/parchive/${pkgname}-${pkgver}.tar.gz"
   'libpar2-0.2-bugfixes.patch'
