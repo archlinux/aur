@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apifox-bin
 _pkgname=Apifox
-pkgver=2.3.18
+pkgver=2.3.19
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=('aarch64' 'x86_64')
@@ -17,8 +17,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::https://cdn.apifox.cn/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://cdn.apifox.cn/download/${_pkgname}-linux-deb-latest.zip")
 source=("LICENSE.html")
 sha256sums=('3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('7a62190aede4c22ac75e2a0d83ae07e0b4444fa52c906a20792db3d5c3262851')
-sha256sums_x86_64=('b978bc992d423a1dac2da9fcd7d7b0d01f62584fc0bb92fa241a991a1ac999ea')
+sha256sums_aarch64=('960cee0178f0dd44abd37cfb2c64daf9de245ae994959fce532606aa9f62aeec')
+sha256sums_x86_64=('57e20e69a6f59367791b5c6c523d7a3a48c654c8239a3d868e0ff29046ee83fd')
 build() {
     bsdtar -xf "${pkgname%-bin}_${pkgver}_"*.deb
     bsdtar -xf "${srcdir}/data.tar.xz"
