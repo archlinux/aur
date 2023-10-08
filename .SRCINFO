@@ -1,0 +1,62 @@
+pkgbase = objfw
+	pkgdesc = Portable, lightweight framework for the Objective-C language
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://objfw.nil.im/
+	arch = x86_64
+	groups = objfw
+	license = custom:QPL
+	license = GPL3
+	license = GPL2
+	makedepends = clang
+	source = objfw-1.0.4.tar.gz::https://objfw.nil.im/downloads/objfw-1.0.4.tar.gz
+	sha256sums = c62c61fc3f1b2d5c1d78369c602a6e82b32ade5c8ec0e9c410646d1554bf1e26
+
+pkgname = libobjfw
+	pkgdesc = ObjFW library
+	depends = glibc
+	depends = gcc-libs
+	depends = libobjfwrt
+	depends = bash
+
+pkgname = libobjfwrt
+	pkgdesc = ObjFW Objective-C runtime library
+	depends = glibc
+	depends = gcc-libs
+
+pkgname = libobjfwtls
+	pkgdesc = TLS support for ObjFW
+	depends = glibc
+	depends = gcc-libs
+	depends = libobjfw
+	depends = libobjfwrt
+	depends = openssl
+
+pkgname = ofarc
+	pkgdesc = Utility for handling ZIP, Tar and LHA archives
+	depends = glibc
+	depends = gcc-libs
+	depends = libobjfw
+	depends = libobjfwrt
+
+pkgname = ofdns
+	pkgdesc = Utility for performing DNS requests on the command line
+	depends = glibc
+	depends = gcc-libs
+	depends = libobjfw
+	depends = libobjfwrt
+
+pkgname = ofhash
+	pkgdesc = Utility to hash files with various cryptographic hash functions
+	depends = glibc
+	depends = gcc-libs
+	depends = libobjfw
+	depends = libobjfwrt
+
+pkgname = ofhttp
+	pkgdesc = Command line downloader for HTTP(S)
+	depends = glibc
+	depends = gcc-libs
+	depends = libobjfw
+	depends = libobjfwrt
+	depends = libobjfwtls
