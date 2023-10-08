@@ -10,7 +10,8 @@ arch=('any')
 url='https://github.com/vinceliuice/Matcha-kde'
 license=('GPL3')
 optdepends=('plasma-desktop: Plasma desktop themes'
-            'qogir-icon-theme: Recommended icon themes')
+            'qogir-icon-theme: Recommended icon themes'
+	    'kvantum: Kvantum application style')
 makedepends=('git')
 provides=('matcha-kde')
 conflicts=('matcha-kde')

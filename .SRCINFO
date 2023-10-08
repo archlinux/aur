@@ -8,6 +8,7 @@ pkgbase = matcha-kde-git
 	makedepends = git
 	optdepends = plasma-desktop: Plasma desktop themes
 	optdepends = qogir-icon-theme: Recommended icon themes
+	optdepends = kvantum: Kvantum application style
 	provides = matcha-kde
 	conflicts = matcha-kde
 	source = git+https://github.com/vinceliuice/Matcha-kde.git
