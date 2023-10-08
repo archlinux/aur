@@ -3,8 +3,8 @@
 _pkgname="memos"
 pkgname="${_pkgname}-git"
 pkgver=0.16.0.r12.gdfaf2ee2
-pkgrel=1
-pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
+pkgrel=2
+pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
 arch=("any")
 license=('MIT')
