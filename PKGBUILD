@@ -14,8 +14,7 @@ sha256sums=('cba655d3cd6e779d73da28cf41729d94bcf5fc6968af0dd922fa6189099e58e9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	awk '/Copyright \(c\)/,/THIS SOFTWARE\./' strlcpy.c xkblayout.c | \
-		sed 's/^[ *]\+//' > LICENSE
+	awk '/Copyright \(c\)/,/THIS SOFTWARE\./' strlcpy.c xkblayout.c | sed 's/^[ *]\+//' > LICENSE
 }
 
 build() {
