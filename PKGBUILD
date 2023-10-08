@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=liburcu-git
-pkgver=0.14.0.r5.g106ed13
+pkgver=0.14.0.r59.g1c64a40
 pkgrel=1
 pkgdesc="Userspace RCU implementation"
 arch=('i686' 'x86_64')
@@ -44,7 +44,5 @@ package() {
   cd "userspace-rcu"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/liburcu"
-
-  rm "$pkgdir/usr/share/doc/userspace-rcu/LICENSE"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/liburcu"
 }

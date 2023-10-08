@@ -1,6 +1,6 @@
 pkgbase = liburcu-git
 	pkgdesc = Userspace RCU implementation
-	pkgver = 0.14.0.r5.g106ed13
+	pkgver = 0.14.0.r59.g1c64a40
 	pkgrel = 1
 	url = https://liburcu.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = liburcu-git
 	license = custom
 	makedepends = git
 	depends = glibc
-	provides = liburcu=0.14.0.r5.g106ed13
+	provides = liburcu=0.14.0.r59.g1c64a40
 	conflicts = liburcu
 	options = staticlibs
 	source = git+https://github.com/urcu/userspace-rcu.git
