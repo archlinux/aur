@@ -6,6 +6,7 @@ pkgbase = python-audioread
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-flit-core
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
