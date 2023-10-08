@@ -1,0 +1,13 @@
+diff --git a/interactiveDisplay/R/interactiveDisplay.R b/interactiveDisplay/R/interactiveDisplay.R
+index 2de4775..311cc1a 100644
+--- a/interactiveDisplay/R/interactiveDisplay.R
++++ b/interactiveDisplay/R/interactiveDisplay.R
+@@ -23,8 +23,6 @@ function(object){
+ ###   Helper Functions
+ ################################################################################
+ 
+-if (!requireNamespace("BiocManager", quietly=TRUE))
+-    install.packages("BiocManager")
+ .usePackage <- function(p) {
+   if (!is.element(p, installed.packages()[,1])){
+     stop(paste("The required package, '",p,"', is missing.  Please install it by
