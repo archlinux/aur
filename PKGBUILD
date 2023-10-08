@@ -1,6 +1,6 @@
 # Maintainer: mosquito <mosquito@email.cn>
 pkgname=bobibo
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A cli-app, convert pictures to ascii arts."
 arch=("x86_64")
@@ -10,6 +10,8 @@ makedepends=('go>=1.18')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/orzation/bobibo/archive/v${pkgver}.tar.gz")
 
 build() {
+ cd "$srcdir/$pkgname-$pkgver"
+
   export GOPATH="$srcdir"/gopath
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -17,13 +19,12 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_ENABLED=1
 
-  cd "$srcdir/$pkgname-$pkgver/cli"
   make build
   go clean -modcache
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/cli"
+ cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
-sha256sums=('679c4db39d407aedc797621183f37ba270a441ee505c4a079b5401296e24e756')
+sha256sums=('ce3633f19a5d88a42ff7539ca36b8ed15413c23a2c43aa02bb9c2ce43e4f3522')

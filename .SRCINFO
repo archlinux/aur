@@ -1,11 +1,12 @@
 pkgbase = bobibo
 	pkgdesc = A cli-app, convert pictures to ascii arts.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/orzation/bobibo
 	arch = x86_64
 	license = GPL3
 	makedepends = go>=1.18
-	source = bobibo-1.3.0.tar.gz::https://github.com/orzation/bobibo/archive/v1.3.0.tar.gz
+	source = bobibo-1.4.0.tar.gz::https://github.com/orzation/bobibo/archive/v1.4.0.tar.gz
+	sha256sums = ce3633f19a5d88a42ff7539ca36b8ed15413c23a2c43aa02bb9c2ce43e4f3522
 
 pkgname = bobibo
