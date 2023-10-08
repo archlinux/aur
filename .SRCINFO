@@ -1,6 +1,6 @@
 pkgbase = peass-ng
 	pkgdesc = Privilege Escalation Awesome Scripts SUITE new generation
-	pkgver = 59c6f6e6
+	pkgver = 041e379c
 	pkgrel = 1
 	url = https://github.com/carlospolop/PEASS-ng
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = peass-ng
 	makedepends = github-cli
 	provides = peass-ng
 	conflicts = peass
-	source = git+https://github.com/carlospolop/PEASS-ng.git
-	sha512sums = SKIP
+	source = LICENSE::https://raw.githubusercontent.com/carlospolop/PEASS-ng/master/LICENSE
+	sha512sums = 4b7e5df3047455f4ecd4e81af40f12f243f80ef66d460dd15c8ed41be0929d344113d0ce2862b6fd51ae096a2e4da11af2797da4b1acbf9f4308653bc4211da4
 
 pkgname = peass-ng
