@@ -15,7 +15,7 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=20.0.1.u1
+pkgver=21.u31
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
@@ -31,7 +31,7 @@ makedepends=(
   gdk-pixbuf2
   glib2
   gperf
-  gradle
+  gradle7
   gtk2
   gtk3
   java-environment-openjdk=17
@@ -39,6 +39,7 @@ makedepends=(
   libx11
   libxtst
   pango
+  perl
   python
   qt5-base
   ruby
@@ -53,7 +54,7 @@ source=(
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
 )
-b2sums=('f90129048df11e7b313681c974731ce8b47bb01a3a3e60b70b93385a9d924127f2420310faec79d84a23fb669fb0d8c003142494054d672c44e978ce44b5c788'
+b2sums=('125079b6250fac52850ad11b12fb5436c45d14969298ea3123c57f332200db130e8928ca25579620b62715937bfe061e9dbf07c55acf2499aa1d550b9522d51a'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         '609ffbc0938922f00ccebab6d1e9ab0d54b84f088f75c10c0eb4211ff1b33438481d76092eae8811a5e9f53dfc3ff422f7aa4e98abd8fc27fb73f1c3d4661c41'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e')
