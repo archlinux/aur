@@ -1,4 +1,4 @@
-# Maintainer: Harriet O'Brien <harrietobrien at protonmail dot com>
+# Maintainer: Harriet O'Brien <harrietobrien at pm dot me>
 # Contributor: Jorge Martínez <siorys at disroot dot org>
 pkgname=krita-beta-appimage
 _name=krita
