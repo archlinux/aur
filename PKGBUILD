@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.2.beta0.r0.g6695becb762
+pkgver=10.2.beta6.r0.g2f1a76dc24a
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(palp brial cliquer maxima-fas gfan sympow nauty python-rpy2 python-fpyl
   gap lcalc lrcalc arb eclib gd python-cvxopt singular linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml giac libhomfly libbraiding symmetrica threejs-sage python-primecountpy)
-optdepends=('cython0: to compile cython code'
+optdepends=('cython: to compile cython code'
   'python-pkgconfig: to compile cython code'
   'jmol: alternative 3D plot engine'
   'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
@@ -51,17 +51,15 @@ optdepends=('cython0: to compile cython code'
   'topcom: to compute triangulations of point configurations'
   'python-database-cubic-hecke: cubic Hecke algebras'
   'msolve: polynomial system solving via msolve')
-makedepends=(cython0 boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
+makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch
-        sagemath-tdlib-0.9.patch
-        sagemath-singular-4.3.2.p7.patch)
+        sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            'e30548705529bf274309cd58e0f02dea89c51524a8c5330c80ef17392c353275')
+            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 _pkgs=(standard mcqd tdlib coxeter3 sirocco meataxe bliss)
 
 pkgver() {
@@ -76,8 +74,6 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # update to tdlib 0.9 (Fedora)
   patch -p1 -i ../sagemath-tdlib-0.9.patch
-# fixes for singular 4.3.2.p7 https://github.com/sagemath/sage/pull/35934
-  patch -p1 -i ../sagemath-singular-4.3.2.p7.patch
 
   ./bootstrap
 }
