@@ -1,10 +1,10 @@
-# Maintainer: Brett Cornwall <ainola@archlinux.org>
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor: Brett Cornwall <ainola@archlinux.org>
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 # Contributor: Omar Pakker
 
 pkgname=wlroots0.15
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc='Modular Wayland compositor library'
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
