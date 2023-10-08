@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-trouble-git
-pkgver=2.8.0.r6.g40aad00
+pkgver=2.9.0.r0.g2ea761f
 pkgrel=1
 pkgdesc="A pretty diagnostics list for Neovim powered by LSP"
 arch=('any')
@@ -26,7 +26,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	local dirs=(lua plugin)
+	local dirs=(doc lua plugin)
 	find "${dirs[@]}" -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
