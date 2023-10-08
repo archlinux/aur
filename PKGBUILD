@@ -10,11 +10,11 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=coreutils-selinux
-pkgver=9.3
-pkgrel=1
+pkgver=9.4
+pkgrel=2
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64' 'aarch64')
-license=('GPL3')
+license=('GPL-3.0-or-later' 'GFDL-1.3-or-later')
 url='https://www.gnu.org/software/coreutils/'
 groups=('selinux')
 depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl' 'libselinux')
@@ -23,7 +23,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig})
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-sha256sums=('adbcfcfe899235b71e8768dcf07cd532520b7f54f9a8064843f8d199a904bbaa'
+sha256sums=('ea613a4cf44612326e917201bbbcdfbd301de21ffc3b59b6e5c07e040b275e52'
             'SKIP')
 
 prepare() {
@@ -40,8 +40,8 @@ prepare() {
 
   # tail -F fails to find out that files are removed, in test VM
   # so disable the tests which verify this
-  sed '/^  tests\/tail-2\/assert\.sh\s/d' -i tests/local.mk
-  sed '/^  tests\/tail-2\/inotify-dir-recreate\.sh\s/d' -i tests/local.mk
+  sed '/^  tests\/tail\/assert\.sh\s/d' -i tests/local.mk
+  sed '/^  tests\/tail\/inotify-dir-recreate\.sh\s/d' -i tests/local.mk
 
   # some tests create directories with long name, which does not work on GitHub Actions
   sed '/^  tests\/du\/long-from-unreadable\.sh\s/d' -i tests/local.mk
