@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=desktop-schedule-bin
 _pkgname="Desktop.Schedule"
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A concise yet elegant desktop course schedule.简洁而不失优雅的桌面课程表"
 arch=("x86_64")
@@ -14,8 +14,8 @@ makedepends=('asar' 'gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64-setup-${pkgver}.tar.gz"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/TimFang4162/desktop-schedule/master/build/icons/256x256.png"
     "${pkgname%-bin}.sh")
-sha256sums=('21eddf849102ed23f12fc6d6887aaefa6dd25d4ffa4a431faf23b1beadba95ef'
-            'd76c98caf36bd316cc607b893d1b11b23dbeeda19b9d684eeba566d74cf7590a'
+sha256sums=('fdfaecc9d2d63d0e9c9b29f098eea1609e0663ad7611ff2b097c25621ed0add2'
+            'f121ff2d43234e56c2d88542e89f68464464ecf51ba6e0b11ff24019f6599e6f'
             'b2dbd2571c60c57a113b92967b113e3edd0baf47898945f52b06f1e479ecefe9')
 build() {
     asar e "${srcdir}/${_pkgname//./ }-linux-x64-setup-${pkgver}/resources/app.asar" "${srcdir}/app.asar.unpacked"

@@ -1,6 +1,6 @@
 pkgbase = desktop-schedule-bin
 	pkgdesc = A concise yet elegant desktop course schedule.简洁而不失优雅的桌面课程表
-	pkgver = 1.0.6
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/TimFang4162/desktop-schedule
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = desktop-schedule-bin
 	makedepends = gendesk
 	depends = bash
 	depends = electron16
-	provides = desktop-schedule=1.0.6
+	provides = desktop-schedule=1.1.0
 	conflicts = desktop-schedule
-	source = desktop-schedule-1.0.6.tar.gz::https://github.com/TimFang4162/desktop-schedule/releases/download/v1.0.6/Desktop.Schedule-linux-x64-setup-1.0.6.tar.gz
+	source = desktop-schedule-1.1.0.tar.gz::https://github.com/TimFang4162/desktop-schedule/releases/download/v1.1.0/Desktop.Schedule-linux-x64-setup-1.1.0.tar.gz
 	source = desktop-schedule.png::https://raw.githubusercontent.com/TimFang4162/desktop-schedule/master/build/icons/256x256.png
 	source = desktop-schedule.sh
-	sha256sums = 21eddf849102ed23f12fc6d6887aaefa6dd25d4ffa4a431faf23b1beadba95ef
-	sha256sums = d76c98caf36bd316cc607b893d1b11b23dbeeda19b9d684eeba566d74cf7590a
+	sha256sums = fdfaecc9d2d63d0e9c9b29f098eea1609e0663ad7611ff2b097c25621ed0add2
+	sha256sums = f121ff2d43234e56c2d88542e89f68464464ecf51ba6e0b11ff24019f6599e6f
 	sha256sums = b2dbd2571c60c57a113b92967b113e3edd0baf47898945f52b06f1e479ecefe9
 
 pkgname = desktop-schedule-bin
