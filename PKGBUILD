@@ -1,13 +1,13 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=actual-server
 pkgver=23.9.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual-server"
 license=('MIT')
 groups=()
-depends=('yarn' 'nodejs>=16' 'nodejs<20') 
+depends=('yarn' 'nodejs-lts-hydrogen') 
 makedepends=('git' 'gcc' 'make')
 optdepends=()
 provides=()
