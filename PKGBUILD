@@ -1,11 +1,11 @@
 # Maintainer: autinerd <autinerd-arch at kuyateh dot eu>
 
 pkgname=arcticons-icon-theme-git
-pkgver=7.2.6.r5.gae27e6d0e
+pkgver=7.3.7.r0.g844f78947
 pkgrel=1
 pkgdesc='A monotone line-based icon pack for android - freedesktop version (git version)'
 arch=('any')
-optdepends=('inkscape: for generationg the symbolic icons')
+optdepends=('inkscape: for generating the symbolic icons')
 url='https://github.com/Donnnno/Arcticons'
 license=('GPL3')
 options=(!strip)
