@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('bash' 'electron25')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('03f3900ccb17b9c0105032df56ba6a210c28a4e0ffd580bd4a2d4a67ed85cf23'
+sha256sums=('28d3b7ff9a15a54db0a05347239154cdc056b3e8fc9f41ed2bb96fbd1ab0e4b7'
             '86ae43875d59517bf852d4364d66cc858c4d06aad130d495c742844e3a495b7d')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
