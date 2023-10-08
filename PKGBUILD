@@ -1,7 +1,7 @@
 # Maintainer: Georg Graßnick <dev.grassnick at mailbox dot org>
 
 pkgname=ymuse
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon"
 arch=("x86_64" "aarch64")
@@ -14,7 +14,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 sha512sums=(
-	"11227b20c28d3c5118e8d977e936ea822e15ec71981297f825b145969009bf5ab0a754a5806b0bfdb4913392a557a434becda6c359a2f975c055764bf1095c08"
+	"f347d66aee6e801869d45a4f60a44a5682d62dca11dbbd9c829f8a15bf6b487a3d7230f0df5f899823cc0da08780676d44064d501cd01769c915e359f7a3e886"
 )
 
 build() {
@@ -26,7 +26,7 @@ build() {
 
 	cd "${pkgname}-${pkgver}"
 	go generate
-	go build -ldflags "-s -w -X main.version=${pkgver} -X main.commit=$(git rev-parse HEAD) -X main.date=$(date --iso-8601=seconds)"
+	go build -ldflags "-s -w -X main.version=${pkgver} -X main.date=$(date --iso-8601=seconds)"
 }
 
 package() {
