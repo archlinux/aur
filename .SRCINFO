@@ -1,6 +1,6 @@
 pkgbase = airisp-git
 	pkgdesc = An ISP tool for Air MCU
-	pkgver = 1.2.7.0.r0.g914c259
+	pkgver = 1.2.7.0.r8.g95a8154
 	pkgrel = 1
 	url = https://github.com/Air-duino/AirISP
 	arch = x86_64
