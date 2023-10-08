@@ -1,7 +1,7 @@
 pkgbase = gradle7
 	pkgdesc = Powerful build system for the JVM
 	pkgver = 7.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gradle.org/
 	arch = any
 	license = Apache
@@ -27,8 +27,8 @@ pkgbase = gradle7
 	sha512sums = a50b6cf8281b56b80f55a20ac9316e1eed6887da1d191ad575dec140c9819711644d7077c4dc693b8cb0f1b08ceba0033ba88b5ad138d33ffb73b786c0d4bf81
 
 pkgname = gradle7
-	optdepends = gradle-doc: gradle documentation
-	optdepends = gradle-src: gradle sources
+	optdepends = gradle7-doc: gradle documentation
+	optdepends = gradle7-src: gradle sources
 	provides = gradle
 	conflicts = gradle
 

@@ -6,7 +6,7 @@
 pkgbase=gradle7
 pkgname=('gradle7' 'gradle7-doc' 'gradle7-src')
 pkgver=7.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful build system for the JVM'
 url='https://gradle.org/'
 arch=('any')
@@ -53,30 +53,30 @@ package_gradle7() {
   provides=('gradle')
   conflicts=('gradle')
   optdepends=(
-    'gradle-doc: gradle documentation'
-    'gradle-src: gradle sources'
+    'gradle7-doc: gradle documentation'
+    'gradle7-src: gradle sources'
   )
 
   # install profile.d script
   install -Dm 755 "${srcdir}/${pkgbase%7}.sh" "${pkgdir}/etc/profile.d/${pkgbase%7}.sh"
 
   # create the necessary directory structure
-  install -d "${pkgdir}/usr/share/java/${pkgname}/bin"
-  install -d "${pkgdir}/usr/share/java/${pkgname}/lib/plugins"
-  install -d "${pkgdir}/usr/share/java/${pkgname}/init.d"
+  install -d "${pkgdir}/usr/share/java/${pkgname%7}/bin"
+  install -d "${pkgdir}/usr/share/java/${pkgname%7}/lib/plugins"
+  install -d "${pkgdir}/usr/share/java/${pkgname%7}/init.d"
   install -d "${pkgdir}/usr/bin"
 
   # copy across jar files
-  install -Dm 644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/lib"
-  install -Dm 644 lib/plugins/*.jar "${pkgdir}/usr/share/java/${pkgname}/lib/plugins"
+  install -Dm 644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname%7}/lib"
+  install -Dm 644 lib/plugins/*.jar "${pkgdir}/usr/share/java/${pkgname%7}/lib/plugins"
 
   # copy across supporting text documentation and scripts
-  install -m 644 NOTICE "${pkgdir}/usr/share/java/${pkgname}"
-  install -m 755 bin/gradle "${pkgdir}/usr/share/java/${pkgname}/bin"
-  install -m 644 init.d/*.* "${pkgdir}/usr/share/java/${pkgname}/init.d"
+  install -m 644 NOTICE "${pkgdir}/usr/share/java/${pkgname%7}"
+  install -m 755 bin/gradle "${pkgdir}/usr/share/java/${pkgname%7}/bin"
+  install -m 644 init.d/*.* "${pkgdir}/usr/share/java/${pkgname%7}/init.d"
 
   # link gradle script to /usr/bin
-  ln -s /usr/share/java/${pkgname}/bin/${pkgname} "${pkgdir}/usr/bin"
+  ln -s /usr/share/java/${pkgname%7}/bin/${pkgname%7} "${pkgdir}/usr/bin"
 }
 
 package_gradle7-doc() {
@@ -86,8 +86,8 @@ package_gradle7-doc() {
   options=('!strip')
 
   cd ${pkgbase%7}-${pkgver}/dist
-  install -d "${pkgdir}/usr/share/java/gradle/docs"
-  cp -r docs/* "${pkgdir}/usr/share/java/gradle/docs"
+  install -d "${pkgdir}/usr/share/java/${pkgname%-*}/docs"
+  cp -r docs/* "${pkgdir}/usr/share/java/${pkgname%-*}/docs"
 }
 
 package_gradle7-src() {
@@ -97,8 +97,8 @@ package_gradle7-src() {
   options=('!strip')
 
   cd ${pkgbase%7}-${pkgver}/dist
-  install -d "${pkgdir}/usr/share/java/gradle/src"
-  cp -r src/* "${pkgdir}/usr/share/java/gradle/src"
+  install -d "${pkgdir}/usr/share/java/${pkgname%-*}/src"
+  cp -r src/* "${pkgdir}/usr/share/java/${pkgname%-*}/src"
 }
 
 # vim: ts=2 sw=2 et:
