@@ -1,0 +1,22 @@
+pkgbase = python-handcalcs
+	pkgdesc = Python library for converting Python calculations into rendered latex
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://github.com/connorferster/handcalcs
+	arch = any
+	license = Apache2
+	checkdepends = python-pytest
+	checkdepends = python-forallpeople
+	checkdepends = python-pint
+	checkdepends = python-sympy
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	depends = python-more-itertools
+	depends = jupyter-nbconvert
+	depends = python-innerscope
+	depends = python-pyparsing
+	source = https://pypi.org/packages/source/h/handcalcs/handcalcs-1.6.5.tar.gz
+	sha512sums = 6a1d632cfdc07f9c9f4298eb1ab320c9ada1868024cd7e4a92201c3fda3bf94297ecf576884f71c53f1e899db6c32ad9a8f8f77ee8c3cf3bd8bd50302fa77612
+
+pkgname = python-handcalcs
