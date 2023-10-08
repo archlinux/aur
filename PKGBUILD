@@ -1,12 +1,13 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-patches-bin'
 pkgver="2.193.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Patches for ReVanced'
 arch=('any')
 url="https://github.com/revanced/revanced-patches"
 license=('GPL3')
 depends=('java-environment>=17')
+provides=('revanced-patches')
 conflicts=('revanced-patches')
 source=("${url}/releases/download/v${pkgver}/revanced-patches-${pkgver}.jar"
         "${url}/raw/v${pkgver}/LICENSE")

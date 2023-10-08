@@ -1,11 +1,12 @@
 pkgbase = revanced-patches-bin
 	pkgdesc = Patches for ReVanced
 	pkgver = 2.193.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/revanced/revanced-patches
 	arch = any
 	license = GPL3
 	depends = java-environment>=17
+	provides = revanced-patches
 	conflicts = revanced-patches
 	source = https://github.com/revanced/revanced-patches/releases/download/v2.193.0/revanced-patches-2.193.0.jar
 	source = https://github.com/revanced/revanced-patches/raw/v2.193.0/LICENSE
