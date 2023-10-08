@@ -1,0 +1,19 @@
+pkgbase = insomnium
+	pkgdesc = A fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC.This is a fork of Kong/insomnia
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://archgpt.dev/insomnium
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm>=8.19.0
+	makedepends = nodejs>=18.17.0
+	depends = bash
+	depends = electron25
+	conflicts = insomnium
+	source = insomnium-0.2.0.tar.gz::https://github.com/ArchGPT/insomnium/archive/refs/tags/core@0.2.0.tar.gz
+	source = insomnium.sh
+	sha256sums = f1125deaef02819ea67506f16aadc34f963c791ea3e5c6d9cf7fadeee2da5e49
+	sha256sums = e1f4bb1b5904e927b90e3a15bed63a0d9d893f45492c178ca1457bb1038000dc
+
+pkgname = insomnium
