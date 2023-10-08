@@ -22,4 +22,6 @@ sha256sums=('4995809cda2e809333a54d822fa70168991d9d56d8f10b0eb7a0ef47ca7fcaf9')
 
 package() {
     tar xf $srcdir/data.tar.xz -C $pkgdir
+    install -Ddm0755 $pkgdir/usr/bin
+    ln -s $pkgdir/opt/Session/session-desktop $pkgdir/usr/bin/session-messenger-desktop
 }
