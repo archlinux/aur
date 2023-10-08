@@ -5,9 +5,8 @@ _pkgname=linuxqq
 _Pkgname=Linuxqq
 _disname=qq
 
-pkgname="${_pkgname}"-appimage
-pkgver=3.2.1_17153
-_pkgnum=b69de82d
+pkgname="${_pkgname}"-appimage-latest
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
@@ -15,18 +14,34 @@ url="https://im.qq.com/linuxqq/"
 license=('custom')
 options=(!strip)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
+makedepends=('nodejs')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq' 'linuxqq-nt-bwrap')
 
-source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgnum}/${_pkgname}_${pkgver//_/-}_x86_64.AppImage")
-source_aarch64=("${_Pkgname}-${pkgver}-aarch64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgnum}/${_pkgname}_${pkgver//_/-}_arm64.AppImage")
-sha256sums_x86_64=('b52429da00415f7aa1231a01c1bb708b3e31132b96bd2809140d8eb555bb18d8')
-sha256sums_aarch64=('f6e372ea1963b82990443bd59f6dde8339d746ca5e0395931c51cbf7111f1f79')
+source=("get_latest" "package.json" "package-lock.json")
+sha256sums=('212d7493d21e7f1cd208f2183fde3ab971f0196b2f8af7a1629ca880f2d97081'
+            '5e0cd25fab289fe73b89e034c803e7c1dc45b1880bd3bc1f4f6f31f084d16981'
+            '0b44039655560b55f13fb228758901b699ba63c6999f619d81fa3f3284f57f47')
 
-_appimage="${_Pkgname}-${pkgver}-${arch}.AppImage"
-noextract=("${_appimage}")
+_appimage="${_Pkgname}-${arch}.AppImage"
 
 prepare() {
+    npm install
+    local url=$(
+        case $CARCH in
+            "x86_64")
+                ./get_latest x64
+                ;;
+            "aarch64")
+                ./get_latest arm
+                ;;
+            *)
+                exit 1;
+                ;;
+        esac
+    )
+    curl -o ${_appimage} ${url}
+
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
 }

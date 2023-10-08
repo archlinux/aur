@@ -12,6 +12,11 @@ const url = `https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/${file}.js`
 const re = RegExp('https://dldir1.qq.com/qqfile/qq/QQNT/(\\w+)/linuxqq_(\\d+.\\d+.\\d+-\\d+)_x86_64.AppImage', 'g');
 const res = syncRequest('GET', url);
 
+const arch = process.argv.slice(2)[0];
+if (arch == undefined) {
+  process.exit(1);
+}
+
 fs.mkdtemp(path.join(os.tmpdir(), "/"), (err, directory) => {
   if (err) throw err;
 
@@ -22,16 +27,14 @@ fs.mkdtemp(path.join(os.tmpdir(), "/"), (err, directory) => {
   fs.writeFileSync(path.join(directory, `${file}.js`), res.body);
 
   seajs.use(`${file}`, function (config) {
-    let array;
-
-    if ((array = re.exec(config.x64DownloadUrl.appimage)) !== null) {
-      console.log(`pkgver=${array[2]}`.replace("-", "_"));
-      console.log(`_pkgnum=${array[1]}`);
+    let urls = config[arch + 'DownloadUrl'];
+    if (urls == undefined || urls.appimage == undefined) {
+      process.exit(1);
     }
+    console.log(urls.appimage);
   });
 
   fs.rm(directory, { recursive: true }, (err) => {
     if (err) throw err;
   });
 });
-

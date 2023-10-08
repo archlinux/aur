@@ -1,0 +1,25 @@
+pkgbase = linuxqq-appimage-latest
+	pkgdesc = New Linux QQ based on Electron
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://im.qq.com/linuxqq/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = nodejs
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = qq
+	provides = linuxqq
+	conflicts = linuxqq
+	conflicts = linuxqq-nt-bwrap
+	options = !strip
+	source = get_latest
+	source = package.json
+	source = package-lock.json
+	sha256sums = 212d7493d21e7f1cd208f2183fde3ab971f0196b2f8af7a1629ca880f2d97081
+	sha256sums = 5e0cd25fab289fe73b89e034c803e7c1dc45b1880bd3bc1f4f6f31f084d16981
+	sha256sums = 0b44039655560b55f13fb228758901b699ba63c6999f619d81fa3f3284f57f47
+
+pkgname = linuxqq-appimage-latest
