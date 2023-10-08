@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flashpoint-launcher
-pkgver=12.0.0
-pkgrel=3
+pkgver=12.1.1
+pkgrel=1
 pkgdesc="A desktop application used to browse, manage and play games from Flashpoint Archive"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
@@ -12,7 +12,7 @@ depends=('php' 'alsa-lib' 'nspr' 'glib2' 'pango' 'libxdamage' 'at-spi2-core' 'ex
     'libxkbcommon' 'mesa' 'nss' 'dbus' 'libxcb' 'libxfixes' 'libx11' 'cairo' 'libxcomposite' 'libdrm' 'glibc' 'gcc-libs')
 makedepends=('gendesk' 'npm>=8' 'nodejs>=16.20.1' 'rust' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fed4c510e96ffe5c2741554641332e4ebc3a931c48052b29c95140bae1af8332')
+sha256sums=('43be71ade5f220b5296d0e2f29c808c65e95b58adf461e42c1b4b756ebb464a1')
 build() {
     cd "${srcdir}/launcher-${pkgver}"
     yarn

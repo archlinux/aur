@@ -1,7 +1,7 @@
 pkgbase = flashpoint-launcher
 	pkgdesc = A desktop application used to browse, manage and play games from Flashpoint Archive
-	pkgver = 12.0.0
-	pkgrel = 3
+	pkgver = 12.1.1
+	pkgrel = 1
 	url = http://bluemaxima.org/flashpoint/
 	arch = x86_64
 	license = MIT
@@ -37,7 +37,7 @@ pkgbase = flashpoint-launcher
 	depends = gcc-libs
 	conflicts = flashpoint-launcher
 	conflicts = flashpoint
-	source = flashpoint-launcher-12.0.0.tar.gz::https://github.com/FlashpointProject/launcher/archive/refs/tags/12.0.0.tar.gz
-	sha256sums = fed4c510e96ffe5c2741554641332e4ebc3a931c48052b29c95140bae1af8332
+	source = flashpoint-launcher-12.1.1.tar.gz::https://github.com/FlashpointProject/launcher/archive/refs/tags/12.1.1.tar.gz
+	sha256sums = 43be71ade5f220b5296d0e2f29c808c65e95b58adf461e42c1b4b756ebb464a1
 
 pkgname = flashpoint-launcher
