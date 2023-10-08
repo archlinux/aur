@@ -1,0 +1,12 @@
+pkgbase = bip39-standalone
+	pkgdesc = A tool for converting BIP39 mnemonic phrases to addresses and private keys.
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/iancoleman/bip39
+	arch = any
+	license = MIT
+	optdepends = nginx: reverse-proxy
+	source = https://github.com/iancoleman/bip39/releases/download/0.5.6/bip39-standalone.html
+	sha256sums = 129b03505824879b8a4429576e3de6951c8599644c1afcaae80840f79237695a
+
+pkgname = bip39-standalone
