@@ -8,7 +8,7 @@
 pkgname=selinux-refpolicy-arch
 _reponame=selinux-policy-arch
 _policyname=refpolicy-arch
-pkgver=20221101
+pkgver=20231002
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs with Arch Linux patches"
 arch=('any')
@@ -18,7 +18,7 @@ groups=('selinux')
 makedepends=('git' 'python' 'checkpolicy>=3.0' 'semodule-utils')
 depends=('policycoreutils>=3.0')
 install="${pkgname}.install"
-_commit=a1a2e9125d444217672207e0d34be5daae32f9ce
+_commit=764fad1925d7237f627eff8cf78ec2b1bf748e87
 source=("git+https://github.com/archlinuxhardened/${_reponame}#commit=${_commit}"
         'config')
 sha256sums=('SKIP'
