@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-bin
-pkgver=3.2.9
+pkgver=3.2.10
 pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=("aarch" "x86_64")
@@ -14,9 +14,9 @@ source_aarch=("${pkgname%-bin}-${pkgver}-aarch.deb::${url}/releases/download/v${
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE")
 sha256sums=('84378c42abc60e52c641be1d9d3b5b74e587adbfce6a1be75276524120055edd')
-sha256sums_aarch=('1444a6d2f7068d51f6a57b518b1e841aa3ef6a6dc9284d6495c5b6557be31fca')
-sha256sums_x86_64=('50821c06dd8c09f2ae49e299c53b22ee169f601ec8c75f3a12048f1b6ee46244')
-prepare() {
+sha256sums_aarch=('7bcd1af5548ff9c09fcc74d019dfa5eeb061a742a61f9af67e8f0fd7557c9f16')
+sha256sums_x86_64=('a51727860584ffbf1f31f41926a23207919f19847b6f9694a1d1f79ee40bec93')
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin} %U --no-sandbox|g;s|Utility|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
