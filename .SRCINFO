@@ -1,8 +1,8 @@
 pkgbase = blanket-git
 	pkgdesc = Improve focus and increase your productivity by listening to different sounds.
-	pkgver = 0.6.0.r88.g112d87d
+	pkgver = 0.6.0.r166.g2059aab
 	pkgrel = 1
-	url = https://apps.gnome.org/app/com.rafaelmardojai.Blanket
+	url = https://apps.gnome.org/Blanket
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
@@ -13,7 +13,7 @@ pkgbase = blanket-git
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-python
-	depends = libadwaita>=1.4
+	depends = libadwaita
 	depends = python-gobject
 	provides = blanket
 	conflicts = blanket
