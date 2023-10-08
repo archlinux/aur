@@ -30,7 +30,7 @@ package() {
   mkdir -p "$pkgdir"/opt
 
   # Install
-  cp -r mercury_${pkgver}_linux_x64/ "$pkgdir"/opt/$_pkgname
+  cp -r mercury_115.3.0_linux_x64/ "$pkgdir"/opt/$_pkgname
 
   # Launchers
   install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
