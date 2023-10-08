@@ -1,0 +1,14 @@
+pkgbase = dynstr
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitea.privatedns.org/xavi/dynstr
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	source = dynstr-0.1.0.tar.gz::https://gitea.privatedns.org/xavi/dynstr/archive/v0.1.0-rc1.tar.gz
+	sha512sums = 3c83382c8a080d44d5573b007f1f15a7236c4746ade1429b4be825e9c73f51d8b66bee9662cc6b650d17f106015577e48dbd299d52a7cdebb7f2d9bfa1bba4bc
+
+pkgname = dynstr
