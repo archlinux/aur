@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgbase=rust-std-android
 epoch=1
-pkgver=1.72.1
+pkgver=1.73.0
 pkgrel=1
 pkgdesc="Android targets for Rust"
 arch=(x86_64)
@@ -44,7 +44,7 @@ source=(
   "https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.xz"
 )
 sha256sums=(
-  'aea58d962ff1c19521b9f587aad88285f0fd35b6b6738b031a7a15bb1b70a7c3'
+  '6eaf672dbea2e6596af8c999f5e6924b9af4bb8b02166bfe0b928e68aa75ae62'
 )
 
 prepare() {
