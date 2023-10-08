@@ -1,0 +1,40 @@
+--- a/src/solvers/cholmod.jl.orig    2022-11-11 07:24:15.860939080 +0000
++++ b/src/solvers/cholmod.jl 2022-11-11 07:24:39.462357069 +0000
+@@ -194,21 +194,6 @@
+                 from www.julialang.org, which ship with the correct
+                 versions of all dependencies.
+                 """
+-        elseif BUILD_VERSION.major != current_version.major
+-            @warn """
+-                CHOLMOD version incompatibility
+-
+-                Julia was compiled with CHOLMOD version $BUILD_VERSION. It is
+-                currently linked with version $current_version.
+-                This might cause Julia to terminate when working with
+-                sparse matrix factorizations, e.g. solving systems of
+-                equations with \\.
+-
+-                It is recommended that you use Julia with the same major
+-                version of CHOLMOD as the one used during the build, or
+-                download the generic binaries from www.julialang.org,
+-                which ship with the correct versions of all dependencies.
+-                """
+         end
+ 
+         intsize = sizeof(SuiteSparse_long)
+@@ -232,15 +232,6 @@ function __init__()
+                  """
+         end
+ 
+-        # Register gc tracked allocator if CHOLMOD is new enough
+-        if current_version >= v"3.0.0"
+-            cnfg = cglobal((:SuiteSparse_config, :libsuitesparseconfig), Ptr{Cvoid})
+-            unsafe_store!(cnfg, cglobal(:jl_malloc, Ptr{Cvoid}), 1)
+-            unsafe_store!(cnfg, cglobal(:jl_calloc, Ptr{Cvoid}), 2)
+-            unsafe_store!(cnfg, cglobal(:jl_realloc, Ptr{Cvoid}), 3)
+-            unsafe_store!(cnfg, cglobal(:jl_free, Ptr{Cvoid}), 4)
+-        end
+-
+     catch ex
+         @error "Error during initialization of module CHOLMOD" exception=ex,catch_backtrace()
+     end

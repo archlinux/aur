@@ -1,0 +1,304 @@
+From e08e14449fdec30d83ae2b9f0d6d1f4a9acf0b75 Mon Sep 17 00:00:00 2001
+From: pchintalapudi <34727397+pchintalapudi@users.noreply.github.com>
+Date: Mon, 17 Apr 2023 19:37:59 +0000
+Subject: [PATCH] Bring in newpm (new pass manager) updates to master (#47038)
+
+* Workaround missing ASAN global
+* Add alias analysis at O2 instead of O3
+* Disable runtime unrolling
+* Make SimpleLoopUnswitch act like LoopUnswitch
+* Add --time-passes support
+* Only add verification passes in debug mode
+* Hide assertion function
+---
+ src/codegen.cpp   | 11 ++++++++++-
+ src/jitlayers.cpp | 49 ++++++++++++++++++++++++++++++++++++-----------
+ src/jitlayers.h   | 17 ++++++++++++----
+ src/pipeline.cpp  | 27 ++++++++++++++------------
+ 4 files changed, 76 insertions(+), 28 deletions(-)
+
+diff --git a/src/codegen.cpp b/src/codegen.cpp
+index b6b86ba4442e1..fb8cefe5eb44f 100644
+--- a/src/codegen.cpp
++++ b/src/codegen.cpp
+@@ -8838,6 +8838,15 @@ extern "C" void jl_init_llvm(void)
+     clopt = llvmopts.lookup("enable-tail-merge"); // NOO TOUCHIE; NO TOUCH! See #922
+     if (clopt->getNumOccurrences() == 0)
+         cl::ProvidePositionalOption(clopt, "0", 1);
++#ifdef JL_USE_NEW_PM
++    // For parity with LoopUnswitch
++    clopt = llvmopts.lookup("unswitch-threshold");
++    if (clopt->getNumOccurrences() == 0)
++        cl::ProvidePositionalOption(clopt, "100", 1);
++    clopt = llvmopts.lookup("enable-unswitch-cost-multiplier");
++    if (clopt->getNumOccurrences() == 0)
++        cl::ProvidePositionalOption(clopt, "false", 1);
++#endif
+     // if the patch adding this option has been applied, lower its limit to provide
+     // better DAGCombiner performance.
+     clopt = llvmopts.lookup("combiner-store-merge-dependence-limit");
+@@ -8916,7 +8925,7 @@ extern "C" JL_DLLEXPORT void jl_init_codegen_impl(void)
+ extern "C" JL_DLLEXPORT void jl_teardown_codegen_impl() JL_NOTSAFEPOINT
+ {
+     // output LLVM timings and statistics
+-    reportAndResetTimings();
++    jl_ExecutionEngine->printTimers();
+     PrintStatistics();
+ }
+ 
+diff --git a/src/jitlayers.cpp b/src/jitlayers.cpp
+index c7e202b98efab..29665d4e420b9 100644
+--- a/src/jitlayers.cpp
++++ b/src/jitlayers.cpp
+@@ -1103,6 +1103,8 @@ namespace {
+         std::unique_ptr<TargetMachine> TM;
+         int optlevel;
+         PMCreator(TargetMachine &TM, int optlevel) : TM(cantFail(createJTMBFromTM(TM, optlevel).createTargetMachine())), optlevel(optlevel) {}
++        // overload for newpm compatibility
++        PMCreator(TargetMachine &TM, int optlevel, std::vector<std::function<void()>> &) : PMCreator(TM, optlevel) {}
+         PMCreator(const PMCreator &other) : PMCreator(*other.TM, other.optlevel) {}
+         PMCreator(PMCreator &&other) : TM(std::move(other.TM)), optlevel(other.optlevel) {}
+         friend void swap(PMCreator &self, PMCreator &other) {
+@@ -1128,16 +1131,21 @@ namespace {
+     struct PMCreator {
+         orc::JITTargetMachineBuilder JTMB;
+         OptimizationLevel O;
+-        PMCreator(TargetMachine &TM, int optlevel) : JTMB(createJTMBFromTM(TM, optlevel)), O(getOptLevel(optlevel)) {}
++        std::vector<std::function<void()>> &printers;
++        PMCreator(TargetMachine &TM, int optlevel, std::vector<std::function<void()>> &printers) JL_NOTSAFEPOINT : JTMB(createJTMBFromTM(TM, optlevel)), O(getOptLevel(optlevel)), printers(printers) {}
+ 
+         auto operator()() {
+-            return std::make_unique<NewPM>(cantFail(JTMB.createTargetMachine()), O);
++            auto NPM = std::make_unique<NewPM>(cantFail(JTMB.createTargetMachine()), O);
++            printers.push_back([NPM = NPM.get()]() JL_NOTSAFEPOINT {
++                NPM->printTimers();
++            });
++            return NPM;
+         }
+     };
+ #endif
+ 
+     struct OptimizerT {
+-        OptimizerT(TargetMachine &TM, int optlevel) : optlevel(optlevel), PMs(PMCreator(TM, optlevel)) {}
++        OptimizerT(TargetMachine &TM, int optlevel, std::vector<std::function<void()>> &printers) : optlevel(optlevel), PMs(PMCreator(TM, optlevel, printers)) {}
+ 
+         OptimizerResultT operator()(orc::ThreadSafeModule TSM, orc::MaterializationResponsibility &R) {
+             TSM.withModuleDo([&](Module &M) {
+@@ -1247,10 +1255,14 @@ llvm::DataLayout jl_create_datalayout(TargetMachine &TM) {
+     return jl_data_layout;
+ }
+ 
+-JuliaOJIT::PipelineT::PipelineT(orc::ObjectLayer &BaseLayer, TargetMachine &TM, int optlevel)
++JuliaOJIT::PipelineT::PipelineT(orc::ObjectLayer &BaseLayer, TargetMachine &TM, int optlevel, std::vector<std::function<void()>> &PrintLLVMTimers)
+ : CompileLayer(BaseLayer.getExecutionSession(), BaseLayer,
+     std::make_unique<CompilerT>(orc::irManglingOptionsFromTargetOptions(TM.Options), TM, optlevel)),
+-  OptimizeLayer(CompileLayer.getExecutionSession(), CompileLayer, OptimizerT(TM, optlevel)) {}
++  OptimizeLayer(CompileLayer.getExecutionSession(), CompileLayer, OptimizerT(TM, optlevel, PrintLLVMTimers)) {}
++
++#ifdef _COMPILER_ASAN_ENABLED_
++int64_t ___asan_globals_registered;
++#endif
+ 
+ JuliaOJIT::JuliaOJIT()
+   : TM(createTargetMachine()),
+@@ -1285,10 +1297,10 @@ JuliaOJIT::JuliaOJIT()
+         ),
+ #endif
+     Pipelines{
+-        std::make_unique<PipelineT>(ObjectLayer, *TM, 0),
+-        std::make_unique<PipelineT>(ObjectLayer, *TM, 1),
+-        std::make_unique<PipelineT>(ObjectLayer, *TM, 2),
+-        std::make_unique<PipelineT>(ObjectLayer, *TM, 3),
++        std::make_unique<PipelineT>(ObjectLayer, *TM, 0, PrintLLVMTimers),
++        std::make_unique<PipelineT>(ObjectLayer, *TM, 1, PrintLLVMTimers),
++        std::make_unique<PipelineT>(ObjectLayer, *TM, 2, PrintLLVMTimers),
++        std::make_unique<PipelineT>(ObjectLayer, *TM, 3, PrintLLVMTimers),
+     },
+     OptSelLayer(Pipelines)
+ {
+@@ -1393,6 +1405,11 @@ JuliaOJIT::JuliaOJIT()
+         reinterpret_cast<void *>(static_cast<uintptr_t>(msan_workaround::MSanTLS::origin)), JITSymbolFlags::Exported);
+     cantFail(GlobalJD.define(orc::absoluteSymbols(msan_crt)));
+ #endif
++#ifdef _COMPILER_ASAN_ENABLED_
++    orc::SymbolMap asan_crt;
++    asan_crt[mangle("___asan_globals_registered")] = JITEvaluatedSymbol::fromPointer(&___asan_globals_registered, JITSymbolFlags::Exported);
++    cantFail(JD.define(orc::absoluteSymbols(asan_crt)));
++#endif
+ }
+ 
+ JuliaOJIT::~JuliaOJIT() = default;
+@@ -1583,6 +1600,16 @@ size_t JuliaOJIT::getTotalBytes() const
+ }
+ #endif
+ 
++void JuliaOJIT::printTimers()
++{
++#ifdef JL_USE_NEW_PM
++    for (auto &printer : PrintLLVMTimers) {
++        printer();
++    }
++#endif
++    reportAndResetTimings();
++}
++
+ JuliaOJIT *jl_ExecutionEngine;
+ 
+ // destructively move the contents of src into dest
+diff --git a/src/jitlayers.h b/src/jitlayers.h
+index d8c06df44176f..7f07034586c80 100644
+--- a/src/jitlayers.h
++++ b/src/jitlayers.h
+@@ -42,9 +42,7 @@
+ // and feature support (e.g. Windows, JITEventListeners for various profilers,
+ // etc.). Thus, we currently only use JITLink where absolutely required, that is,
+ // for Mac/aarch64.
+-// #define JL_FORCE_JITLINK
+-
+-#if defined(_OS_DARWIN_) && defined(_CPU_AARCH64_) || defined(JL_FORCE_JITLINK)
++#if defined(_OS_DARWIN_) && defined(_CPU_AARCH64_) || defined(_COMPILER_ASAN_ENABLED_) || defined(JL_FORCE_JITLINK)
+ # if JL_LLVM_VERSION < 130000
+ #  pragma message("On aarch64-darwin, LLVM version >= 13 is required for JITLink; fallback suffers from occasional segfaults")
+ # endif
+@@ -91,6 +89,12 @@ struct OptimizationOptions {
+     }
+ };
+ 
++// LLVM's new pass manager is scheduled to replace the legacy pass manager
++// for middle-end IR optimizations. However, we have not qualified the new
++// pass manager on our optimization pipeline yet, so this remains an optional
++// define
++// #define JL_USE_NEW_PM
++
+ struct NewPM {
+     std::unique_ptr<TargetMachine> TM;
+     StandardInstrumentations SI;
+@@ -103,6 +107,8 @@ struct NewPM {
+     NewPM(std::unique_ptr<TargetMachine> TM, OptimizationLevel O, OptimizationOptions options = OptimizationOptions::defaults());
+ 
+     void run(Module &M);
++
++    void printTimers();
+ };
+ 
+ struct AnalysisManagers {
+@@ -420,7 +426,7 @@ class JuliaOJIT {
+         std::unique_ptr<WNMutex> mutex;
+     };
+     struct PipelineT {
+-        PipelineT(orc::ObjectLayer &BaseLayer, TargetMachine &TM, int optlevel);
++        PipelineT(orc::ObjectLayer &BaseLayer, TargetMachine &TM, int optlevel, std::vector<std::function<void()>> &PrintLLVMTimers);
+         CompileLayerT CompileLayer;
+         OptimizeLayerT OptimizeLayer;
+     };
+@@ -490,6 +496,7 @@ class JuliaOJIT {
+     TargetIRAnalysis getTargetIRAnalysis() const;
+ 
+     size_t getTotalBytes() const;
++    void printTimers();
+ 
+     JITDebugInfoRegistry &getDebugInfoRegistry() JL_NOTSAFEPOINT {
+         return DebugRegistry;
+@@ -522,6 +529,8 @@ class JuliaOJIT {
+     jl_locked_stream dump_compiles_stream;
+     jl_locked_stream dump_llvm_opt_stream;
+ 
++    std::vector<std::function<void()>> PrintLLVMTimers;
++
+     ResourcePool<orc::ThreadSafeContext, 0, std::queue<orc::ThreadSafeContext>> ContextPool;
+ 
+ #ifndef JL_USE_JITLINK
+diff --git a/src/pipeline.cpp b/src/pipeline.cpp
+index ae2b1c3202f04..4403653a9d8e4 100644
+--- a/src/pipeline.cpp
++++ b/src/pipeline.cpp
+@@ -146,7 +146,7 @@ namespace {
+             // Opts.Recover = CodeGenOpts.SanitizeRecover.has(Mask);
+             // Opts.UseAfterScope = CodeGenOpts.SanitizeAddressUseAfterScope;
+             // Opts.UseAfterReturn = CodeGenOpts.getSanitizeAddressUseAfterReturn();
+-            MPM.addPass(RequireAnalysisPass<ASanGlobalsMetadataAnalysis, Module>());
++            // MPM.addPass(RequireAnalysisPass<ASanGlobalsMetadataAnalysis, Module>());
+             // MPM.addPass(ModuleAddressSanitizerPass(
+             //     Opts, UseGlobalGC, UseOdrIndicator, DestructorKind));
+             //Let's assume the defaults are actually fine for our purposes
+@@ -173,11 +173,13 @@ namespace {
+         // }
+     }
+ 
+-    void addVerificationPasses(ModulePassManager &MPM, bool llvm_only) {
++#ifdef JL_DEBUG_BUILD
++    static inline void addVerificationPasses(ModulePassManager &MPM, bool llvm_only) {
+         if (!llvm_only)
+             MPM.addPass(llvm::createModuleToFunctionPassAdaptor(GCInvariantVerifierPass()));
+         MPM.addPass(VerifierPass());
+     }
++#endif
+ 
+     auto basicSimplifyCFGOptions() {
+         return SimplifyCFGOptions()
+@@ -244,9 +246,9 @@ namespace {
+ 
+ //Use for O1 and below
+ void buildBasicPipeline(ModulePassManager &MPM, PassBuilder *PB, OptimizationLevel O, OptimizationOptions options) {
+-// #ifdef JL_DEBUG_BUILD
++#ifdef JL_DEBUG_BUILD
+     addVerificationPasses(MPM, options.llvm_only);
+-// #endif
++#endif
+     invokePipelineStartCallbacks(MPM, PB, O);
+     MPM.addPass(ConstantMergePass());
+     if (!options.dump_native) {
+@@ -320,9 +322,9 @@ static void buildBasicPipeline(ModulePassManager &MPM, PassBuilder *PB, Optimiza
+ 
+ //Use for O2 and above
+ void buildFullPipeline(ModulePassManager &MPM, PassBuilder *PB, OptimizationLevel O, OptimizationOptions options) {
+-// #ifdef JL_DEBUG_BUILD
++#ifdef JL_DEBUG_BUILD
+     addVerificationPasses(MPM, options.llvm_only);
+-// #endif
++#endif
+     invokePipelineStartCallbacks(MPM, PB, O);
+     MPM.addPass(ConstantMergePass());
+     {
+@@ -382,7 +384,7 @@ static void buildFullPipeline(ModulePassManager &MPM, PassBuilder *PB, Optimizat
+ #endif
+             LPM2.addPass(LICMPass(LICMOptions()));
+             JULIA_PASS(LPM2.addPass(JuliaLICMPass()));
+-            LPM2.addPass(SimpleLoopUnswitchPass());
++            LPM2.addPass(SimpleLoopUnswitchPass(true, true));
+             LPM2.addPass(LICMPass(LICMOptions()));
+             JULIA_PASS(LPM2.addPass(JuliaLICMPass()));
+             //LICM needs MemorySSA now, so we must use it
+@@ -399,7 +401,7 @@ static void buildFullPipeline(ModulePassManager &MPM, PassBuilder *PB, Optimizat
+             //We don't know if the loop end callbacks support MSSA
+             FPM.addPass(createFunctionToLoopPassAdaptor(std::move(LPM), /*UseMemorySSA = */false));
+         }
+-        FPM.addPass(LoopUnrollPass());
++        FPM.addPass(LoopUnrollPass(LoopUnrollOptions().setRuntime(false)));
+         JULIA_PASS(FPM.addPass(AllocOptPass()));
+         FPM.addPass(SROAPass());
+         FPM.addPass(InstSimplifyPass());
+@@ -541,11 +543,8 @@ PIC->addClassToPassName(decltype(CREATE_PASS)::name(), NAME);
+         // Register the AA manager first so that our version is the one used.
+         FAM.registerPass([&] JL_NOTSAFEPOINT {
+             AAManager AA;
+-            // TODO: Why are we only doing this for -O3?
+-            if (O.getSpeedupLevel() >= 3) {
+-                AA.registerFunctionAnalysis<BasicAA>();
+-            }
+             if (O.getSpeedupLevel() >= 2) {
++                AA.registerFunctionAnalysis<BasicAA>();
+                 AA.registerFunctionAnalysis<ScopedNoAliasAA>();
+                 AA.registerFunctionAnalysis<TypeBasedAA>();
+             }
+@@ -603,6 +602,10 @@ void NewPM::run(Module &M) {
+ #endif
+ }
+ 
++void NewPM::printTimers() {
++    SI.getTimePasses().print();
++}
++
+ OptimizationLevel getOptLevel(int optlevel) {
+     switch (std::min(std::max(optlevel, 0), 3)) {
+         case 0:
