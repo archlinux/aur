@@ -1,10 +1,10 @@
 # Maintainer: Diego Frias <styx5242@gmail.com>
-# Maintainer: Ayoub Canon <imkonnu@gmail.com>
+# Maintainer: Absobel <imkonnu@gmail.com>
 
 pkgname=projectable-git
 _pkgname=projectable
 _bin=prj
-pkgver=1.3.0.7.g3524d8e
+pkgver=1.3.0.9.gcd26095
 pkgrel=1
 pkgdesc="A TUI file manager built for projects."
 arch=('any')
