@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=drumlabooh
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Drumlabooh is LV2/VSTi drum machine that supports Hydrogen, Drumlabooh and SFZ drumkits'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'alsa-lib' 'freetype2' 'libx11' 'libx11' 'libxcomposi
 depends=('glibc' 'gcc-libs' 'alsa-lib' 'freetype2')
 provides=("drumlabooh")
 source=("https://github.com/psemiletov/drumlabooh/archive/${pkgver}.tar.gz")
-md5sums=('7953234fdb1577521840a9a22060eb4e')
+md5sums=('a3593ea90440df1f9fc89adeeb8f1618')
 
 build() {
 	cd "${srcdir}/drumlabooh-${pkgver}"

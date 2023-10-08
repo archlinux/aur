@@ -1,6 +1,6 @@
 pkgbase = drumlabooh
 	pkgdesc = Drumlabooh is LV2/VSTi drum machine that supports Hydrogen, Drumlabooh and SFZ drumkits
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/psemiletov/drumlabooh
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = drumlabooh
 	depends = alsa-lib
 	depends = freetype2
 	provides = drumlabooh
-	source = https://github.com/psemiletov/drumlabooh/archive/1.0.0.tar.gz
-	md5sums = 7953234fdb1577521840a9a22060eb4e
+	source = https://github.com/psemiletov/drumlabooh/archive/2.0.0.tar.gz
+	md5sums = a3593ea90440df1f9fc89adeeb8f1618
 
 pkgname = drumlabooh
