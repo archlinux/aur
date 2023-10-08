@@ -1,0 +1,16 @@
+pkgbase = subtitleedit-cli-git
+	pkgdesc = Subtitle Edit CLI (without System.Drawing)
+	pkgver = 31.ce52de3
+	pkgrel = 1
+	url = https://www.nikse.dk/SubtitleEdit
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk-6.0
+	depends = dotnet-runtime-6.0
+	optdepends = tesseract: OCR support
+	optdepends = ffmpeg: Waveform extraction
+	source = git+https://github.com/SubtitleEdit/subtitleedit-cli.git
+	sha256sums = SKIP
+
+pkgname = subtitleedit-cli-git
