@@ -1,7 +1,7 @@
 pkgbase = monokle-bin
 	pkgdesc = Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management.
-	pkgver = 2.3.3
-	pkgrel = 3
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://monokle.io/
 	arch = aarch64
 	arch = x86_64
@@ -32,13 +32,13 @@ pkgbase = monokle-bin
 	depends = sh
 	depends = libcups
 	depends = libxcb
-	provides = monokle=2.3.3
+	provides = monokle=2.4.0
 	conflicts = monokle
-	source = LICENSE::https://raw.githubusercontent.com/kubeshop/monokle/v2.3.3/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/kubeshop/monokle/v2.4.0/LICENSE
 	sha256sums = 7a89ae90e9c88d5de936743c0432f43051d79d286aff3c4e669b2b3252b84528
-	source_aarch64 = monokle-bin-2.3.3-aarch64.deb::https://github.com/kubeshop/monokle/releases/download/v2.3.3/Monokle-linux-2.3.3-arm64.deb
-	sha256sums_aarch64 = 323525e3a6aea7b2822e0f2505b9225aac76928f10542a3c3348049fcf4fb337
-	source_x86_64 = monokle-bin-2.3.3-x86_64.deb::https://github.com/kubeshop/monokle/releases/download/v2.3.3/Monokle-linux-2.3.3-amd64.deb
-	sha256sums_x86_64 = 2da3d1fffc9ab1ce0c3433f4fcc603d59744311913fefd6d9117d9910c6675db
+	source_aarch64 = monokle-bin-2.4.0-aarch64.deb::https://github.com/kubeshop/monokle/releases/download/v2.4.0/Monokle-linux-2.4.0-arm64.deb
+	sha256sums_aarch64 = b4a4203af4343e83a92aca1bc65d3fb3449741a47c54ad813a6ee508319f75d7
+	source_x86_64 = monokle-bin-2.4.0-x86_64.deb::https://github.com/kubeshop/monokle/releases/download/v2.4.0/Monokle-linux-2.4.0-amd64.deb
+	sha256sums_x86_64 = 4c35ffe9edcc812c8e1dd8f68214ac61c9f639ceb2d5b11d7c0af6a6af6325e3
 
 pkgname = monokle-bin
