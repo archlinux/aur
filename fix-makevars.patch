@@ -1,0 +1,20 @@
+diff --git a/affxparser/src/Makevars b/affxparser/src/Makevars
+index 0a17fa5..6c95175 100644
+--- a/affxparser/src/Makevars
++++ b/affxparser/src/Makevars
+@@ -1,5 +1,5 @@
+ ## -Wno-unused-private-field gives notes/errors with some compiler
+-MYCXXFLAGS = -Wno-sign-compare -O0
++MYCXXFLAGS = -Wno-sign-compare
+ 
+ %.o: %.cpp
+ 	$(CXX) $(ALL_CPPFLAGS) $(ALL_CXXFLAGS) $(MYCXXFLAGS) -c $< -o $@
+@@ -131,7 +131,7 @@ C_OBJECTS=$(PKG_C_SOURCES:.c=.o)
+ 
+ OBJECTS=$(CPP_OBJECTS) $(C_OBJECTS)
+ 
+-all: myclean $(SHLIB)
++all: $(SHLIB)
+ 
+ myclean:
+ 	rm -f $(OBJECTS)
