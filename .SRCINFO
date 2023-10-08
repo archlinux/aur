@@ -1,7 +1,7 @@
 pkgbase = auto-cpufreq
 	pkgdesc = Automatic CPU speed & power optimizer
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq.install
 	arch = any
@@ -23,7 +23,9 @@ pkgbase = auto-cpufreq
 	optdepends = python-gobject: auto-cpufreq-gtk gui
 	source = auto-cpufreq-2.0.0.tar.gz::https://github.com/AdnanHodzic/auto-cpufreq/archive/v2.0.0.tar.gz
 	source = auto-cpufreq.service
+	source = 001-fix-icon-n-style-locations.patch
 	b2sums = 672fdf026d5223432bac05c8262d30eca487aab5b5d6db2ecb48f4fb7e550a2a152549963b4be9959ada6df54fd94835379634c12116fff867a0f7aca6bfdc64
 	b2sums = 90d9a6e0a86d01803527462e0ed0ce93d04d245c2c99ab773f31e1eb46dd86b209f98af50967bbdb6627563b0aae0ca4bbc861c812576a243b07c40a483c37db
+	b2sums = 22e24748e379722335d0e5c48c8f137bd262cc415dfd74aef7d32f6ceededc471da9c7a0985d72dc599dfe7b6ed56d4cbac0c49d59d5fdab548664f0c3cc04af
 
 pkgname = auto-cpufreq
