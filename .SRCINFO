@@ -1,8 +1,8 @@
 pkgbase = shortwave-git
 	pkgdesc = Find and listen to internet radio stations
-	pkgver = 3.2.0.r25.gd22eaa8
+	pkgver = 3.2.0.r111.g0513ea6
 	pkgrel = 1
-	url = https://apps.gnome.org/app/de.haeckerfelix.Shortwave
+	url = https://apps.gnome.org/Shortwave
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
