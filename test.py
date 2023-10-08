@@ -179,9 +179,6 @@ def check_packages(tensorflow_path, python_tensorflow_path):
 def main():
     patterns = [
         ('tensorflow-amd-git-*.pkg.tar.zst', 'python-tensorflow-amd-git-*.pkg.tar.zst'),
-        # ('tensorflow-opt-amd-git-*.pkg.tar.zst', 'python-tensorflow-opt-amd-git-*.pkg.tar.zst'),
-        # When I run the haswell optimized instructions on my machine, I get a wall of HIP_ERROR_OutOfMemory errors.
-        # I suspect I cannot test this, since I have an AMD cpu.
     ]
     
     for tensorflow_pattern, python_tensorflow_pattern in patterns:
