@@ -2,10 +2,10 @@
 # Contributor: Chilledheart <hukeyue@hotmail.com>
 
 pkgname=yass-proxy
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
-_pkgver=1.4.4
-_pkgrel=2
+_pkgver=1.4.5
+_pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(x86_64)
 url="https://github.com/Chilledheart/yass"
@@ -17,7 +17,7 @@ checkdepends=(curl)
 provides=(yass-proxy)
 conflicts=(yass-proxy-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.gz")
-sha256sums=('939967ea99fce87320aa187229615eb8c377400ea3e6be916026ef2a5e54371e')
+sha256sums=('abe4a76fbd2800af110910b710d0b32d26c0124a15d0080a270397284efe0d54')
 
 prepare() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
@@ -57,8 +57,9 @@ package(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/yass/LICENSE
+  install -Dm644 ./build-linux-amd64/LICENSE ${pkgdir}/usr/share/licenses/yass/LICENSE
   DESTDIR=${pkgdir} ninja -C build-linux-amd64 install
+  rm -rf ${pkgdir}/usr/share/doc
 
   popd
 }
