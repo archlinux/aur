@@ -1,0 +1,7 @@
+mender-cli
+
+src
+pkg
+
+*.zst
+*.tar.gz
