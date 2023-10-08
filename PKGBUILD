@@ -70,11 +70,6 @@ prepare() {
 build() {
   cd "${pkgname}" || exit 1
   source "${srcdir}/.venv/bin/activate"
-  if command -v schedtool >/dev/null 2>&1; then
-    # Set current shell and all descendents as SCHED_BATCH, see schedtool(8)
-    schedtool -B $$
-    prefix_cmd='schedtool -B -n20 -e '
-  fi
   build_jobs=$(nproc)
   if [[ -z "$NO_SMART_JOB_COUNT" ]]; then
     if [[ ${build_jobs} -gt 1 ]]; then
