@@ -1,0 +1,7 @@
+post_upgrade() {
+  echo ">>    See revanced wiki: https://github.com/revanced/revanced-documentation/wiki/Using-the-ReVanced-CLI-and-installing-ReVanced"
+}
+
+post_install() {
+  post_upgrade
+}
