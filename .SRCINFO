@@ -1,6 +1,6 @@
 pkgbase = feishin-bin
 	pkgdesc = Rewrite of Sonixd
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = feishin-bin
 	provides = feishin
 	conflicts = feishin
 	source = feishin.desktop
-	source = https://github.com/jeffvli/feishin/releases/download/v0.4.0/Feishin-0.4.0-linux-x64.tar.xz
+	source = https://github.com/jeffvli/feishin/releases/download/v0.4.1/Feishin-0.4.1-linux-x64.tar.xz
 	sha256sums = bb664e5e807946fce7d02f14231f8830fac146b4d6641165b2e7cae7eeb1839f
-	sha256sums = d92dbf500f6d537c00b4ec11f0ff36ad4ff0908e277863a001a1ab122e4db2d5
+	sha256sums = 63caf7dbdaceef3f15db13ffb91b234c525fbd39fecf2780633aba7ca0f15ece
 
 pkgname = feishin-bin
