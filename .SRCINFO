@@ -1,0 +1,16 @@
+pkgbase = python-forallpeople
+	pkgdesc = Python SI units library
+	pkgver = 2.6.7
+	pkgrel = 1
+	url = https://github.com/connorferster/forallpeople
+	arch = any
+	license = Apache2
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	depends = python
+	source = https://pypi.org/packages/source/f/forallpeople/forallpeople-2.6.7.tar.gz
+	sha512sums = 526f7c9c7ffcd1a06b734053fef5ff83769ce0469e0255f7e483199bcfe5113edbc5f2fc2c48e6b328d76f0c2f56a52c3971b3635fe15c26217e01f87a00ef49
+
+pkgname = python-forallpeople
