@@ -1,16 +1,16 @@
 pkgbase = monarch-bin
 	pkgdesc = a tool for building Flutter widgets in isolation. It makes it easy to build, test and debug complex UIs.
-	pkgver = 2.1.10
-	pkgrel = 3
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = https://monarchapp.io/
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	provides = monarch=2.1.10
+	provides = monarch=2.2.2
 	conflicts = monarch
-	source = monarch-2.1.10.tar.xz::https://d148mrbia1nlbw.cloudfront.net/linux/monarch_linux_2.1.10.tar.xz
-	source = LICENSE::https://raw.githubusercontent.com/Dropsource/monarch/monarch-binaries-2.1.10/LICENSE
-	sha256sums = f8eedfeafb19a391aecddbdfbee58d8eb7928a68136243efcb424ce60cd1508c
+	source = monarch-2.2.2.tar.xz::https://d148mrbia1nlbw.cloudfront.net/linux/monarch_linux_2.2.2.tar.xz
+	source = LICENSE::https://raw.githubusercontent.com/Dropsource/monarch/monarch-binaries-2.2.2/LICENSE
+	sha256sums = 04b40bd8aeb398f35c1354c500401b3b071f5f55c137aef7342c6988d15bb07d
 	sha256sums = 6d103cf91ac337450bdb2c10aa56dce34c723e30c3a44e3dd2acb4fdda142729
 
 pkgname = monarch-bin
