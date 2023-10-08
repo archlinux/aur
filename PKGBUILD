@@ -2,7 +2,7 @@
 
 _pkgname=mercury-browser
 pkgname=${_pkgname}-bin
-pkgver=115.3.0
+pkgver=115.4.0
 pkgrel=1
 pkgdesc="Firefox fork with compiler optimizations and patches from Librewolf, Waterfox, and GNU IceCat."
 arch=('x86_64')
