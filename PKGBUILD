@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=2.1.0.r0.g88a5efe
+pkgver=2.1.1.r84.g3294b1c
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
-url="https://apps.gnome.org/app/com.github.gi_lom.dialect"
+url="https://apps.gnome.org/Dialect"
 license=('GPL3')
 depends=('dbus-python' 'gst-python' 'libadwaita' 'libsoup3' 'python-gobject' 'python-gtts')
 makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson')
