@@ -43,7 +43,7 @@ cd "${oldwd}"
 
 
 jarfile=apktool.jar
-libdir="/usr/share/android-apktool"
+libdir="/usr/share/java/android-apktool"
 if [ ! -r "$libdir/$jarfile" ]
 then
     echo `basename "$prog"`": can't find $jarfile"

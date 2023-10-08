@@ -3,23 +3,31 @@
 
 _pkgname=android-apktool
 pkgname=${_pkgname}-bin
-pkgver=2.8.1
+
+pkgdesc="A tool for reverse engineering Android apk files"
+
+pkgver=2.9.0
 pkgrel=1
-pkgdesc='A tool for reverse engineering Android apk files'
-arch=('any')
-url='https://github.com/iBotPeaches/Apktool'
-license=('Apache')
-depends=('java-runtime>=8')
-conflicts=('android-apktool' 'android-apktool-git')
-provides=('android-apktool')
-source=("https://github.com/iBotPeaches/Apktool/releases/download/v${pkgver}/apktool_${pkgver}.jar"
-        'apktool')
+
+arch=(i686 x86_64)
+
+url="https://github.com/iBotPeaches/Apktool"
+license=("Apache")
+
+depends=("java-runtime>=8")
+
+provides=(android-apktool)
+conflicts=(android-apktool android-apktool-git)
+
+source=("https://github.com/iBotPeaches/Apktool/releases/download/v${pkgver}/apktool_${pkgver}.jar" "apktool")
+md5sums=("246e7208cfb92c73d21e4e6a8909dda1" "2d55a165b924e5bbe2dd1d4427f128fd")
+
 noextract=("apktool_${pkgver}.jar")
-sha256sums=('7b4a8e1703e228d206db29644b71141687d8a111b55b039b08b02dfa443ab0f9'
-            'f1d4cf2eb2d12512dbbe583cd7fb35b8b8a44e0e3a1d5e88015ab01d9bc1ce62')
-changelog=Changelog
 
 package() {
-  install -Dm 0755 "${srcdir}/apktool" "${pkgdir}/usr/bin/apktool"
-  install -Dm 0644 "${srcdir}/apktool_${pkgver}.jar" "${pkgdir}/usr/share/${_pkgname}/apktool.jar"
+    # copy the main .jar file
+    install -Dm644 "apktool_${pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}/apktool.jar"
+
+    # copy the executable script
+    install -Dm755 "apktool" "${pkgdir}/usr/bin/apktool"
 }
