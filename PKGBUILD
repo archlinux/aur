@@ -1,12 +1,13 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-integrations-bin'
 pkgver="0.119.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Integrations containing helper classes for ReVanced. Originally maintained by Vanced.'
 arch=('any')
 url="https://github.com/revanced/revanced-integrations"
 license=('GPL3')
 depends=('revanced-cli')
+provides=('revanced-integrations')
 conflicts=('revanced-integrations')
 source=("integrations-${pkgver}.apk::${url}/releases/download/v${pkgver}/revanced-integrations-${pkgver}.apk"
         "${url}/raw/v${pkgver}/LICENSE")
