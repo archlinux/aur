@@ -2,8 +2,8 @@
 # Co-Maintainer: Martin Rys <https://rys.pw/contact>
 
 pkgname=loot
-pkgver=0.21.0
-_pkglibver=0.21.0
+pkgver=0.22.0
+_pkglibver=0.22.1
 pkgrel=1
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
@@ -15,16 +15,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
 )
-sha256sums=('e729a1da8ae6eb28a444370c7dbe3f0eb6c502fe99cce96487935a70df4e713d'
-            '9cdf082670b71d1f3c89e3916e9dbc3a41a12cc74f55613a897a93f1c9f4a267'
+sha256sums=('742666e11cffdfa523b95bd1e3c7bad3392e4f105d660eebf8f791bb81d21c5e'
+            '43a2dac9463b8cc532787e6177fb056bdae73b14a611f743724191d0120f8aa9'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
 )
-
-# https://github.com/loot/loot/issues/1920
-prepare() {
-	sed -i 's/ICU 71.1 EXACT/ICU 71.1/' "${srcdir}/${pkgname}-${pkgver}/CMakeLists.txt"
-	sed -i 's/ICU 71.1 EXACT/ICU 71.1/' "${srcdir}/lib${pkgname}-${pkgver}/CMakeLists.txt"
-}
 
 build() {
 	# libloot
