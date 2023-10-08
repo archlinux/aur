@@ -1,13 +1,13 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 _pkgname=esp-idf
 pkgname=${_pkgname}-git
-pkgver=5.1.dev.r3405.8ba96ab873
+pkgver=5.2.dev.r3213.4e04c00d1c
 pkgrel=1
 pkgdesc='Espressif IoT Development Framework. Official development framework for ESP32.'
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
 url="https://github.com/espressif/esp-idf"
 license=('Apache')
-depends=('cmake' 'git' 'libusb' 'python' 'python-click' 'python-cryptography' 'python-future' 'python-pyelftools' 'python-pyparsing' 'python-pyserial' 'python-virtualenv')
+depends=('ccache' 'cmake' 'dfu-util' 'git' 'gperf' 'libusb' 'ninja' 'python')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 options=('!strip')
