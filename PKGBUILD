@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.0.r12.ga6dc929
-pkgrel=6
+pkgrel=7
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -60,13 +60,13 @@ license=(GPL3)
 # To manage dependency rebuild easily, this will prevent you to rebuild FFmpeg on non-updated system
 # Only for default set of features
 _aomver=3
-_dav1dver=1.0.0
+_dav1dver=1.3.0
 _ffnvcodecver=12.0.16.0
 _libjxl=0.7.0
 _libristver=0.2.7
 _libvpxver=1.13
 _srtver=1.5
-_svtav1ver=1.5
+_svtav1ver=1.7
 _vidstabver=1.1.1
 _vmafver=2
 _vulkanver=1.3.240
