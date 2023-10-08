@@ -1,7 +1,7 @@
 pkgbase = kpar2
 	pkgdesc = PAR2 verification and repair program for KDE4
 	pkgver = 0.4.5
-	pkgrel = 9
+	pkgrel = 10
 	url = http://code.google.com/p/kpar2kde4
 	arch = x86_64
 	license = GPL3

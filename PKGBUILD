@@ -3,27 +3,34 @@
 
 pkgname=kpar2
 pkgver=0.4.5
-pkgrel=9
+pkgrel=10
 pkgdesc="PAR2 verification and repair program for KDE4"
 arch=('x86_64')
 url='http://code.google.com/p/kpar2kde4'
 license=('GPL3')
-depends=('kde-cli-tools'
-         'kdelibs'
-         'libpar2'
-         )
-makedepends=('cmake'
-             'automoc4'
-             )
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/kpar2kde4/kpar2-${pkgver}.tar.gz"
-        'kpar2.desktop.diff'
-        )
-sha256sums=('91c4d12600e9d9346e37ac2bec98cf6331e9491d510aeda1e12b0c15e3f1324e'
-            '48d28e11b739b111f7a3731be8e4973774f561e346104cb28f595eb530dfd31d'
-            )
+depends=(
+  'kde-cli-tools'
+  'kdelibs'
+  'libpar2'
+)
+makedepends=(
+  'cmake'
+  'automoc4'
+)
+source=(
+  "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/kpar2kde4/kpar2-${pkgver}.tar.gz"
+  'kpar2.desktop.diff'
+  'new_cmake.diff'
+)
+sha256sums=(
+  '91c4d12600e9d9346e37ac2bec98cf6331e9491d510aeda1e12b0c15e3f1324e'
+  '48d28e11b739b111f7a3731be8e4973774f561e346104cb28f595eb530dfd31d'
+  'SKIP'
+)
 
 prepare() {
   patch -d "kpar2-${pkgver}" -p0 -i "${srcdir}/kpar2.desktop.diff"
+  sed 's|2.6|3.5|g' -i "kpar2-${pkgver}/CMakeLists.txt"
 }
 
 build() {
