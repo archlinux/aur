@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.61.3
+pkgver=3.62.2
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash' 'electron22')
 makedepends=('gendesk' 'npm>=9' 'asar' 'yarn' 'nodejs>=18' 'python>=3.11')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('5866f6d26553f935800f998436460610e06639fc3061cc576242bb8e26723022'
+sha256sums=('d49dec4c7c6022d2b05eb0f3c6ed9d38d2c824b70f203210427aa179f8fe2413'
             'a9c3d8f93463b29f4a07461ec08ef46c6b3709b9cbfd1a48ddeb98f26a370ae4')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
@@ -25,13 +25,14 @@ build() {
     else
         mkdir .git
     fi
+    sed '/deb/d' -i electron-builder.json
     yarn install
     yarn electron-rebuild
     node scripts/download-pandoc.js
     node scripts/download-plantuml.js
-    sed '/deb/d' -i electron-builder.json
     yarn build
     yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
+    find ./out -regex '.*app.asar.unpacked/node_modules/node-pty/build/Release/pty.node$' | grep pty.node
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
