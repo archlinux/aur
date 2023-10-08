@@ -1,10 +1,10 @@
 # Maintainer: Eduard Tanase <eduard dot tanase1 at gmail dot com>
 pkgname=openbci-gui
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform application for the OpenBCI Cyton and Ganglion."
 arch=('x86_64')
-url="https://github.com/github/codeql-cli-binaries"
+url="https://github.com/OpenBCI/OpenBCI_GUI"
 license=('MIT')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-${pkgrel}-x86_64.zip::https://github.com/OpenBCI/OpenBCI_GUI/releases/download/v${pkgver}/openbcigui_v${pkgver}_2023-08-21_16-14-34_linux64.zip"
