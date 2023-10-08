@@ -4,10 +4,10 @@ url='https://github.com/flexible-collision-library'
 pkgname=fcl-git
 pkgver=r860.3f3d98a3
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 makedepends=('cmake')
-depends=('boost' 'libccd-git')
+depends=('boost' 'libccd')
 optdepends=('octomap: collision detection with octrees'
             'tinyxml: support for global penetration depth test'
             'flann: support for fast approximate nearest neighbor searches')
