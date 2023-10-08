@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.18.10
+pkgver=0.18.11
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -17,9 +17,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/v${pkgver}/LICENSE")
 sha256sums=('bcb1a9f42beeababd8267db00d5b7bfec20e671b8c47374b80dbd25b655146ec')
-sha256sums_aarch64=('87c36b6071e0050dd0c33a28ead6ca851db812dfaa1c41a1c636190481a2734f')
-sha256sums_armv7h=('37b44c23045fa246d35d14cc32e799b9ffdd5829cd7b77a982849b6ba2c35951')
-sha256sums_x86_64=('3aca72de00f6144dc1229403a0d11173f39068ffe942c082c35a0b7f3d82e810')
+sha256sums_aarch64=('df09b3a515e173984ea0ab4319bd49b9deeb98a1f85efbb07361a0e453ed4917')
+sha256sums_armv7h=('57b80f37b09d928e5f1657ce16996a032344d9c6602550e56145c2ff47344d9b')
+sha256sums_x86_64=('5cb4a09041512dd231cd0e9940205b4692b925421c1af7634c9a8353f1f82d4b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s| %U| --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
