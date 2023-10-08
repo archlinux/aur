@@ -19,7 +19,7 @@ optdepends=(
     'python-gtkspellcheck: spellcheck plugin'
     'python-scrape-schema-recipe: web import plugins'
 )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'intltool')
 source=('git+https://github.com/thinkle/gourmet.git')
 md5sums=('SKIP')
 

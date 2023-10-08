@@ -6,6 +6,7 @@ pkgbase = gourmet-git
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = intltool
 	depends = python
 	depends = python-argcomplete
 	depends = python-beautifulsoup4
