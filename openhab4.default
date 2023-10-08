@@ -1,1 +1,3 @@
 EXTRA_JAVA_OPTS=""
+OPENHAB_USERDATA=/var/lib/openhab4
+OPENHAB_CONF=/etc/openhab4

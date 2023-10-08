@@ -24,3 +24,39 @@ diff -Nur openhab4.orig/runtime/bin/oh_dir_layout openhab4.new/runtime/bin/oh_di
  fi
  
  if [ -z ${OPENHAB_BACKUPS} ]; then
+diff -Naur openhab4.orig/runtime/bin/backup openhab4.new/runtime/bin/backup
+--- openhab4.orig/runtime/bin/backup	2023-09-10 04:59:10.000000000 +1000
++++ openhab4.new/runtime/bin/backup	2023-10-08 15:42:07.852539486 +1100
+@@ -84,10 +84,10 @@
+   }
+ 
+   ## Set path variables
+-  if [ -r /etc/profile.d/openhab.sh ]; then
+-    . /etc/profile.d/openhab.sh
+-  elif [ -r /etc/default/openhab ]; then
+-    . /etc/default/openhab
++  if [ -r /etc/profile.d/openhab4.sh ]; then
++    . /etc/profile.d/openhab4.sh
++  elif [ -r /etc/default/openhab4 ]; then
++    . /etc/default/openhab4
+   fi
+ 
+   if [ "$bInteractive" = "0" ];then
+diff -Naur openhab4.orig/runtime/bin/restore openhab4.new/runtime/bin/restore
+--- openhab4.orig/runtime/bin/restore	2023-09-10 04:59:10.000000000 +1000
++++ openhab4.new/runtime/bin/restore	2023-10-08 15:42:21.468943408 +1100
+@@ -68,10 +68,10 @@
+   WorkingDir="$(cd "$(dirname "$0")" && cd ../.. && pwd -P)"
+ 
+   ## Set path variables
+-  if [ -r /etc/profile.d/openhab.sh ]; then
+-    . /etc/profile.d/openhab.sh
+-  elif [ -r /etc/default/openhab ]; then
+-    . /etc/default/openhab
++  if [ -r /etc/profile.d/openhab4.sh ]; then
++    . /etc/profile.d/openhab4.sh
++  elif [ -r /etc/default/openhab4 ]; then
++    . /etc/default/openhab4
+   fi
+   if [ -z "$OPENHAB_CONF" ];       then OPENHAB_CONF="$WorkingDir/conf"; fi
+   if [ -z "$OPENHAB_USERDATA" ];   then OPENHAB_USERDATA="$WorkingDir/userdata"; fi
