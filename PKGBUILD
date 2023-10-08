@@ -2,13 +2,13 @@
 # Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 pkgname=materialx-git
-pkgver=1.38.8.r0.g9273433
+pkgver=1.38.8.r12.gf583ea1
 pkgrel=1
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache')
-depends=(glibc gcc-libs libglvnd libx11 libxt python python-setuptools opencolorio)
+depends=(glibc gcc-libs libglvnd libx11 libxt python python-setuptools opencolorio zenity)
 makedepends=(cmake chrpath git libxinerama libxcursor pybind11)
 provides=('materialx')
 conflicts=('materialx')
