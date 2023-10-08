@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-soxr
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='High quality, one-dimensional sample-rate conversion library for Python'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
 )
 
 sha512sums=(
-  'b542868e10bee1af9296877b7ecf33cb99e4c4f1dc2d07324a465e3286933cf8a8d274cb58d7fd391889721f64de1ef787d35765dd2e02768126d8c31ec02861'
+  'da9cc246d20c904e18fa01dfc94b0af8b430bb3d9235ab42a042ef120ec789e960a63f8e15dd79f80e9a3107ea20ebbad22f4861011ddca77ec6179fa3e6d363'
 )
 
 prepare() {
