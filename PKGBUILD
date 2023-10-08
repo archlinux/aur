@@ -12,7 +12,7 @@ depends=('libxcb' 'xcb-util-wm')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git://github.com/baskerville/${_pkgname}.git")
+source=("git+https://github.com/baskerville/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
