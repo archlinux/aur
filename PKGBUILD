@@ -1,20 +1,22 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 arch=(x86_64)
 url=https://wayfire.org
 license=(custom:MIT)
-depends=('wayfire>=0.7' 'wf-shell>=0.7' gtk3)
+depends=("wayfire>=${pkgver%.*}" "wf-shell>=${pkgver%.*}" gtk3)
 makedepends=(wayland-protocols meson ninja glm)
 source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-b2sums=(cf0fe0d1c1e1fa2660a28a61cd9d52ac6fa3c9cceab43788b75f4359e1495dd2ddd767cb1f030afec4dadc2b7ef3c260ba83566a70a794dee8d3bb34427754fd)
+b2sums=('4d845edc631bda6b3fbee181d64897b366f4e73af7fef0e912f0a5dc9c7db4dc731319b6c25ce3e2206cc05c908ee402e01ed914cba4ccc63b0d52b9980b7414')
 
 build ()
 {
 	rm -rf build
-	arch-meson "${pkgname}-${pkgver}" build -Dwf_shell=enabled
+	arch-meson "${pkgname}-${pkgver}" build \
+		--auto-features=disabled \
+		-Dwf_shell=enabled
 	ninja -C build
 }
 
