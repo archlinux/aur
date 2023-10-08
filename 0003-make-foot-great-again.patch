@@ -1,0 +1,84 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 84a8aef4..9332efed 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -63,7 +63,7 @@
+   instead of the one least recently.
+ * Starlight theme (the default theme) updated to [V4][starlight-v4]
+ * Background transparency (alpha) is now disabled in fullscreened
+-  windows ([#1416][1416]).
++  windows ([#1416][1416]) by default but can be enabled with `fullscreen_alpha`.
+ * Foot server systemd units now use the standard
+   graphical-session.target ([#1281][1281]).
+ * If `$XDG_RUNTIME_DIR/foot-$WAYLAND_DISPLAY.sock` does not exist,
+diff --git a/meson.build b/meson.build
+index aeb2daa6..6a19db47 100644
+--- a/meson.build
++++ b/meson.build
+@@ -73,6 +73,9 @@ add_project_arguments(
+   (get_option('b_pgo') == 'use'
+     ? ['-DFOOT_PGO_ENABLED=1']
+     : []) +
++  (get_option('fullscreen_alpha')
++    ? ['-DFOOT_FULLSCREEN_ALPHA_ENABLED=1']
++    : []) +
+   cc.get_supported_arguments(
+     ['-pedantic',
+      '-fstrict-aliasing',
+@@ -388,6 +391,7 @@ summary(
+     'Documentation': scdoc.found(),
+     'Themes': get_option('themes'),
+     'IME': get_option('ime'),
++    'Fullscreen alpha': get_option('fullscreen_alpha'),
+     'Grapheme clustering': utf8proc.found(),
+     'Wayland: xdg-activation-v1': xdg_activation,
+     'Wayland: fractional-scale-v1': fractional_scale,
+diff --git a/meson_options.txt b/meson_options.txt
+index d16e23ae..153c5453 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -7,6 +7,9 @@ option('themes', type: 'boolean', value: true,
+ option('ime', type: 'boolean', value: true,
+        description: 'IME (Input Method Editor) support')
+ 
++option('fullscreen_alpha', type: 'boolean', value: false,
++       description: 'Enables transparency on fullscreen windows')
++
+ option('grapheme-clustering', type: 'feature',
+        description: 'Enables grapheme clustering using libutf8proc. Requires fcft with harfbuzz support to be useful.')
+ 
+diff --git a/render.c b/render.c
+index 48957a0a..21f335eb 100644
+--- a/render.c
++++ b/render.c
+@@ -534,6 +534,13 @@ render_cell(struct terminal *term, pixman_image_t *pix,
+         }
+ 
+         else if (cell->attrs.bg_src == COLOR_DEFAULT) {
++#if defined(FOOT_FULLSCREEN_ALPHA_ENABLED) && FOOT_FULLSCREEN_ALPHA_ENABLED
++            /*
++             * Note: I don't care about the stupid ass wayland
++             * protocol I want transparent fullscreen windows.
++             */
++            alpha = term->colors.alpha;
++#else
+             if (term->window->is_fullscreen) {
+                 /*
+                  * Note: disable transparency when fullscreened.
+@@ -559,6 +566,7 @@ render_cell(struct terminal *term, pixman_image_t *pix,
+             } else {
+                 alpha = term->colors.alpha;
+             }
++#endif
+         }
+     }
+ 
+@@ -2163,7 +2171,7 @@ render_csd_button_maximize_maximized(
+             { x_margin + shrink, y_margin + thick, thick, width - 2 * thick - shrink },
+             { x_margin + width - thick - shrink, y_margin + thick, thick, width - 2 * thick - shrink },
+             { x_margin + shrink, y_margin + width - thick - shrink, width - 2 * shrink, thick }});
+-    
++
+     pixman_image_unref(src);
+ 
+ }

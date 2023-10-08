@@ -1,0 +1,36 @@
+pkgbase = foot-fullscreen-transparency-git
+	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
+	pkgver = 1.15.3
+	pkgrel = 1
+	url = https://codeberg.org/dnkl/foot
+	arch = x86_64
+	arch = aarch64
+	license = mit
+	checkdepends = check
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = python
+	makedepends = wayland-protocols
+	makedepends = tllist
+	depends = libxkbcommon
+	depends = wayland
+	depends = pixman
+	depends = fontconfig
+	depends = libutf8proc
+	depends = ncurses
+	depends = fcft>=3.0.0
+	optdepends = foot-terminfo: alternative to ncurses' terminfo, with additional non-standard capabilities
+	optdepends = libnotify: desktop notifications
+	optdepends = xdg-utils: URI launching
+	optdepends = bash-completion: bash completions for foot itself
+	provides = foot
+	conflicts = foot
+	replaces = foot-themes
+	source = git+https://codeberg.org/dnkl/foot.git
+	source = 0003-make-foot-great-again.patch
+	sha256sums = SKIP
+	sha256sums = 89c1d38a880b4e1620741f1cd00268293eb587c67d5e0a0e15b260f15835943c
+
+pkgname = foot-fullscreen-transparency-git
