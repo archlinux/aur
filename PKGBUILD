@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-bin
 _pkgname=PicList
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="a cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
 arch=('x86_64')
@@ -10,13 +10,14 @@ _githuburl="https://github.com/Kuingsmile/PicList"
 license=('MIT')
 conflits=("${pkgname%-bin}")
 depends=('bash' 'electron22' 'gcc-libs' 'glibc')
+makedepends=('asar' 'squashfuse')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Kuingsmile/PicList/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('623f8d554b8b8c88cd6f0fc4f2340810214b88412dd78e9c5dfe66e202e18a03'
+sha256sums=('f3e7f74d8288342ebdf5453fa9cf3454846270ee52746bd7201a2f78c20a72b3'
             'cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c'
             '704784c2cb1b6de71435ebd327d9720ecd2293c4635c9f27dd884173355df190')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
