@@ -2,7 +2,7 @@
 # Maintainer: Jan Niklas Böhm <mail@jnboehm.com>
 
 pkgname=goredo
-pkgver=1.30.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Go implementation of djb's redo, a Makefile replacement that sucks less"
 url=http://www.goredo.cypherpunks.ru/
@@ -14,11 +14,11 @@ conflicts=("redo")
 makedepends=('git' 'go>=1.14')
 
 validpgpkeys=('7531BB84FAF0BF35960C63B93A528DDE952C7E93')
-source=("${url}/download/${pkgname}-${pkgver}.tar.zst.sig"
+source=("${url}/download/${pkgname}-${pkgver}.tar.zst.asc"
         "${url}/download/${pkgname}-${pkgver}.tar.zst")
 # cross check with http://www.goredo.cypherpunks.ru/Install.html
 sha256sums=('SKIP'
-            '825b20daaf2315de33e82b8ace567769f271fd2ec0c3a2c2c45012fee1cb9548')
+            'b914629354b87b47a3530dfe4a308e252794f8cc611e3d47cec06c8e7782f9e4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
