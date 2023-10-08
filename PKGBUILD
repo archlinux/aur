@@ -2,8 +2,8 @@
 # -*- sh -*-
 
 pkgname='makesure'
-pkgver=0.9.20
-pkgrel=4
+pkgver=0.9.21
+pkgrel=1
 pkgdesc="Simple AWK-based task/command runner with declarative goals and dependencies"
 arch=('any')
 url='https://github.com/xonixx/makesure'
@@ -22,13 +22,10 @@ package() {
 }
 
 sha256sums=(
-  '5dcb79e08c014134b6032f075685428c7d3e2b1e41d1f27fddcb5e85bd9badca'
-)
-sha512sums=(
-  'b5058ba56d48c8538f37e80f882ba6e295a695aafca852e5a1a3438e772a4a870404befba7e348799eba302b8c04be6d44f2e348d9c1523a1ecdd6fe81a50092'
+  'dbbca22612d44fc3c2d972f399160202068099fee2d7c6cb5b2bbc5833448bd5'
 )
 b2sums=(
-  '88ec34b02d887d5eb8661f57121e8ffa6f39c505f889059a0db0d3ec48f04a117ebdb3cfb9901a6a164ebfe08fa1cee27b7501ab09de30cfcc122bbeb4b73fc5'
+  'cae03a297553c4e681a111f3ab854ac1d1b35211ad744806f6577d0d33ed1b300461a312d22be3cbe790a1e66bd9828058d94b498e8b3491a2e3513072cc2a4d'
 )
 
 # eof
