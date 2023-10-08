@@ -31,10 +31,6 @@ _sourcedirectory="compass-$_pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Due to a bug in lerna, having a git repo in the parent directory is not supported (this is the case in some AUR helpers),
-	# we init a git repo in our source directory to make sure this doesn't happen
-	git init
-
 	# Disable husky command
 	sed -i '/husky install/d' 'package.json'
 
