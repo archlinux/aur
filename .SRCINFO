@@ -15,4 +15,3 @@ pkgbase = rwhoisd
 	sha256sums = 5b58420875108a78fef4c47b7463b4a20bb6d443fda5c31ab89e75f87bc65b01
 
 pkgname = rwhoisd
-

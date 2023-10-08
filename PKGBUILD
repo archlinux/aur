@@ -23,7 +23,7 @@ build() {
   sed -i 's/\/usr\/local\/bin\/rwhois/\/usr\/bin\/rwhois/' common/conf.h 
 
   ./configure --prefix=/usr --sysconfdir=/var/lib --sbindir=/usr/bin
-  make
+  make -j1
 }
 
 package() {
