@@ -1,0 +1,36 @@
+pkgbase = r-regsem
+	pkgdesc = Regularized Structural Equation Modeling
+	pkgver = 1.9.5
+	pkgrel = 2
+	url = https://cran.r-project.org/package=regsem
+	arch = x86_64
+	license = GPL
+	makedepends = r-rcpparmadillo
+	depends = blas
+	depends = lapack
+	depends = r-lavaan
+	depends = r-rcpp
+	depends = r-rsolnp
+	optdepends = r-caret
+	optdepends = r-colorspace
+	optdepends = r-ga
+	optdepends = r-glmnet
+	optdepends = r-islr
+	optdepends = r-knitr
+	optdepends = r-lbfgs
+	optdepends = r-markdown
+	optdepends = r-matrixstats
+	optdepends = r-nlcoptim
+	optdepends = r-nloptr
+	optdepends = r-numderiv
+	optdepends = r-optimx
+	optdepends = r-plyr
+	optdepends = r-psych
+	optdepends = r-semplot
+	optdepends = r-snowfall
+	optdepends = r-stringr
+	source = https://cran.r-project.org/src/contrib/regsem_1.9.5.tar.gz
+	md5sums = c248f10f794c10229eba611f3e252dd4
+	sha256sums = 7392bd644efe82f96da0df470a962de398f1d0162273cba1ff31c2ecd7f17a53
+
+pkgname = r-regsem
