@@ -11,7 +11,7 @@ pkgbase = xwinfo-git
 	depends = xcb-util-wm
 	provides = xwinfo
 	conflicts = xwinfo
-	source = git://github.com/baskerville/xwinfo.git
+	source = git+https://github.com/baskerville/xwinfo.git
 	md5sums = SKIP
 
 pkgname = xwinfo-git
