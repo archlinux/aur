@@ -8,6 +8,7 @@ pkgbase = caja-rename
 	arch = pentium4
 	license = GPL3
 	makedepends = cmake
+	makedepends = cmake-extras
 	makedepends = intltool
 	depends = caja
 	depends = gtk3
