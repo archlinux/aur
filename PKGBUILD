@@ -2,13 +2,13 @@
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.15.2.r4.g85ed0202
+pkgver=0.16.0.r12.gdfaf2ee2
 pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
 url="https://github.com/usememos/${_pkgname}"
 arch=("any")
 license=('MIT')
-makedepends=("go" "git" "buf" "nodejs")
+makedepends=("go" "git" "nodejs")
 provides=("$pkgname")
 backup=('etc/memos.conf')
 source=(
@@ -31,9 +31,6 @@ pkgver(){
 
 
 build(){
-    # generate protobuf
-    cd "$srcdir/$_pkgname/proto" && buf generate
-
     # build frontend
     cd "$srcdir/$_pkgname/web"
     mkdir -p "$srcdir/bin"
@@ -41,6 +38,7 @@ build(){
     
     export PATH="$PATH:$srcdir/bin"
     pnpm i --frozen-lockfile
+    pnpm type-gen
     pnpm build
     cp -r "dist" "$srcdir/$_pkgname/server/"
 

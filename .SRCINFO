@@ -1,13 +1,12 @@
 pkgbase = memos-git
 	pkgdesc = A lightweight, self-hosted memo hub. Open Source and Free forever.
-	pkgver = 0.15.2.r4.g85ed0202
+	pkgver = 0.16.0.r12.gdfaf2ee2
 	pkgrel = 1
 	url = https://github.com/usememos/memos
 	arch = any
 	license = MIT
 	makedepends = go
 	makedepends = git
-	makedepends = buf
 	makedepends = nodejs
 	provides = memos-git
 	backup = etc/memos.conf
