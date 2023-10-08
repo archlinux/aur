@@ -2,8 +2,8 @@
 pkgname=wp-desktop-bin
 _appname=WordPress.com
 _pkgname=wpcom
-pkgver=8.0.2
-pkgrel=2
+pkgver=8.0.3
+pkgrel=1
 pkgdesc="WordPress.com for Desktop"
 arch=("x86_64")
 url="https://apps.wordpress.com/desktop/"
@@ -16,7 +16,7 @@ depends=('bash' 'electron24' 'hicolor-icon-theme')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_downurl}/releases/download/v${pkgver}/wordpress.com-linux-deb-${pkgver}.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('27cd82824a89c392eee1378762989ac1f1cdf5b325f3f6d33cbc2b3e7426f221'
+sha256sums=('87efe96a1b88263df6bf21b11480c7427e275fe28c42fcf52aabde577743d186'
             '4ab04d97219c81e2e4533ef52fa64cbf6292cd3b902529b0abe1f1dabf75edf2')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
