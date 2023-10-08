@@ -1,0 +1,27 @@
+pkgbase = r-puma
+	pkgdesc = Propagating Uncertainty in Microarray Analysis(including Affymetrix tranditional 3' arrays and exon arrays and Human Transcriptome Array 2.0)
+	pkgver = 3.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/puma
+	arch = x86_64
+	license = LGPL
+	depends = r-affy
+	depends = r-affyio
+	depends = r-biobase
+	depends = r-mclust
+	depends = r-oligo
+	depends = r-oligoclasses
+	optdepends = r-affydata
+	optdepends = r-annotate
+	optdepends = r-limma
+	optdepends = r-pumadata
+	optdepends = r-rocr
+	optdepends = r-snow
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/puma_3.42.0.tar.gz
+	source = fix-lto.patch
+	md5sums = ec485bb2cd3bc9d97a2badb8b1c0be2d
+	md5sums = 885d25cbb9335808ed144d24c323737c
+	sha256sums = 5b7b32a5b2aa5d6c237870296a1f41927efe3ceb9d1df612559f31f010f6c529
+	sha256sums = f8a3b4534b24c2a2a0d7c607cdac148b8b18706b2bf8fcf69b70142b54241bf7
+
+pkgname = r-puma

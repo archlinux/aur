@@ -1,0 +1,13 @@
+diff --git a/puma/src/user_eval.c b/puma/src/user_eval.c
+index f531d0b..ac948ca 100644
+--- a/puma/src/user_eval.c
++++ b/puma/src/user_eval.c
+@@ -66,7 +66,7 @@ void user_eval(DDOUBLE xvar[],IINTEGER mode) {
+     #undef   X
+     #include "o8cons.h"
+     
+-    void    eval_extern(IINTEGER mode);
++    extern void (*eval_extern)(IINTEGER mode);
+     DDOUBLE* d1_malloc(IINTEGER size1, IINTEGER init); 
+ 
+     static DDOUBLE   *fusave,xhelp,xincr,sd1,sd2,sd3,d1,d2,d3;
