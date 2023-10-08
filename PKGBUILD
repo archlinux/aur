@@ -1,7 +1,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=actual-server
-pkgver=23.9.0
-pkgrel=7
+pkgver=23.10.0
+pkgrel=1
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual-server"
@@ -24,7 +24,7 @@ source=(
     'tmpfiles'
 )
 noextract=()
-sha256sums=('7b2637cae563c74a00bd857f99fa05533d91ebce78cf79fa10876779af2abd69'
+sha256sums=('3b76c4713be3296b680b3046bcf5737dc177680ba4a20f1416e23234eca9cca9'
             '6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067'
             '4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5'
             'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b')
