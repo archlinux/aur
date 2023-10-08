@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=video-trimmer
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Trim videos quickly"
 arch=('x86_64')
-url="https://apps.gnome.org/app/org.gnome.gitlab.YaLTeR.VideoTrimmer"
+url="https://apps.gnome.org/VideoTrimmer"
 license=('GPL3')
 depends=('ffmpeg' 'gst-plugins-good' 'libadwaita')
 makedepends=('blueprint-compiler' 'cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
 source=("https://gitlab.gnome.org/YaLTeR/video-trimmer/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('c6fb54d8315b0933584eba379f7d32cc24e0f9abb99341aedcfd81fdc7477380')
+sha256sums=('6bada3db4a553a2dab543e18228233262f3ab177e73de2360e17236a13c51c5f')
 
 prepare() {
   cd "$pkgname-v$pkgver"
