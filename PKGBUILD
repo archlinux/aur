@@ -1,5 +1,5 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
-# Maintainer: Konstantin Liberty <jon909 at gmail dot com>
+# Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=protontricks
 pkgver=1.10.5
