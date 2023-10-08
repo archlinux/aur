@@ -1,0 +1,13 @@
+diff --git a/src/runtime_options.c b/src/runtime_options.c
+index 742ec0d..854d160 100644
+--- a/src/runtime_options.c
++++ b/src/runtime_options.c
+@@ -429,7 +429,7 @@ int parse_args( int argc, char* argv[] )
+     }
+ 
+     lua_getglobal( config_lua_values, "config_dir" );
+-    configDir = ( char* )luaL_optstring( config_lua_values, -1, ".config/x48ng" );
++    configDir = ( char* )luaL_optstring( config_lua_values, -1, "x48ng" );
+ 
+     lua_getglobal( config_lua_values, "rom" );
+     romFileName = ( char* )luaL_optstring( config_lua_values, -1, "rom" );

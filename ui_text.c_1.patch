@@ -1,0 +1,13 @@
+diff --git a/src/ui_text.c b/src/ui_text.c
+index 9fad6e3..9505a38 100644
+--- a/src/ui_text.c
++++ b/src/ui_text.c
+@@ -10,7 +10,7 @@
+ #include <unistd.h>
+ #include <locale.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include "emulator.h"
+ #include "romio.h"
