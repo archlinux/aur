@@ -1,6 +1,8 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron21
-_ASAR="/opt/notes-nc/app.asar"
+_ELECTRON=/usr/bin/electron26
+APPDIR="/opt/notes-nc"
+export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/resources/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else

@@ -1,19 +1,20 @@
 pkgbase = notes-nc-bin
 	pkgdesc = Cross-platform Notes desktop application for markdown notes
-	pkgver = 0.7.2
-	pkgrel = 3
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/mscharley/notes-nc
 	arch = x86_64
 	license = MIT
+	makedepends = squashfuse
 	depends = bash
-	depends = electron21
-	provides = notes-nc=0.7.2
+	depends = electron26
+	provides = notes-nc=0.8.0
 	conflicts = notes-nc
-	source = notes-nc-0.7.2.AppImage::https://github.com/mscharley/notes-nc/releases/download/v0.7.2/Notes-0.7.2.AppImage
-	source = LICENSE.md::https://raw.githubusercontent.com/mscharley/notes-nc/v0.7.2/LICENSE.md
+	source = notes-nc-0.8.0.AppImage::https://github.com/mscharley/notes-nc/releases/download/v0.8.0/Notes-0.8.0.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/mscharley/notes-nc/v0.8.0/LICENSE.md
 	source = notes-nc.sh
-	sha256sums = 0aed5df1e7d6d17064f2182545600637e788f6adf0a45c248c3cd08a8e5f6c5c
+	sha256sums = e0408b98f96518be982163e9268e9b715b8e76abb09b1d7fd36df08467586c59
 	sha256sums = 3dcc1e196d70d5503a020194e91d5d663f428c349622d1f0eb545ec2f354264b
-	sha256sums = 81b61b6f614c7201ffede6615ea9ee73b3e3d5e91ee599e436c32e9b1f5a1253
+	sha256sums = df5d3adbf973a867d59ca29b5a50b0f117bbd4dbc9cc1e83cf9729d89f67203c
 
 pkgname = notes-nc-bin
