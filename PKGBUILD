@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-bin
 _pkgname=MooTool
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Handy tool set for developers. 开发者常备小工具"
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('libxrender' 'libx11' 'glibc' 'zlib' 'java-runtime' 'libxext' 'libxi' 'alsa-lib' 'libxtst' 'sh')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
     "LICENSE.txt::https://raw.githubusercontent.com/rememberber/MooTool/v${pkgver}/LICENSE.txt")
-sha256sums=('bc8433336cb5999d06a8da1c3d19604717f7f7cba95bcb7eb27287e688b978c8'
+sha256sums=('5ba92526fd8d334791bcfe5e7574c25c88fbb083a4d6877a61463ca51d2d1834'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.gz"
