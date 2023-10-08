@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=airgorah-bin
 _appname="com.martin-olivier.${pkgname%-bin}"
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A WiFi auditing software that can perform deauth attacks and passwords cracking"
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 depends=('cairo' 'pango' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'gtk4' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_${CARCH}.pkg.tar.zst"
     "LICENSE::https://raw.githubusercontent.com/martin-olivier/airgorah/v${pkgver}/LICENSE")
-sha256sums=('72361dae5ef00b5a2f4ecfdbc9937e7abe77aad9bedce00e17df001cc04b4eaa'
+sha256sums=('8c96ada9892709e9dc03987b15851c8101fdb95179d464471f938e5ed4b4f7c3'
             'f15292d482b98b47c9ceb28e1f540c4522c10b19c52ebd416d10e540999570d0')
 build() {
     sed "s|/usr/share/pixmaps/${pkgname%-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
