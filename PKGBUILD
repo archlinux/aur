@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=photo-location-map
 _pkgname="Photo Location Map"
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Display the locations where photos were taken on a map. "
 arch=('x86_64')
@@ -10,10 +10,10 @@ _githuburl="https://github.com/TomoyukiAota/photo-location-map"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=('bash' 'electron22')
-makedepends=('gendesk' 'npm' 'nodejs' 'asar')
+makedepends=('gendesk' 'npm' 'nodejs>=18' 'asar')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('aea73a2d1add2096b7d314b327ac5d457299a8a3ca7eba81766a4aeb4fd6f360'
+sha256sums=('7b52017ea897316582c93e8fe59512c5eb36b9029ca0021c9045f147e0f8299e'
             'f0e0921b786b5c38eb74a9e3ae1a6925f0fc20b73401d3834659d77d962487d3')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
