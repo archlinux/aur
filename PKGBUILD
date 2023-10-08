@@ -94,7 +94,7 @@ prepare() {
   # When upstream changes the name of the wheel, people who have built this package once will get a duplicate .whl file.
   # This confuses `WHEEL_PACKAGE=$(find ...` and makes the python -m installer line fail.
   # So clean tmprocm between builds.
-  [ -d "$srcdir"/tmprocm ] && rm "$srcdir"/tmprocm/*
+  rm -f "$srcdir"/tmprocm/*
   
   # Allow any bazel version
   echo "*" > tensorflow-upstream-rocm/.bazelversion
