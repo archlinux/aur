@@ -1,0 +1,18 @@
+pkgbase = mdcat
+	pkgdesc = Sophisticated Markdown rendering for the terminal
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/swsnr/mdcat
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = asciidoctor
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	optdepends = less: for mdless
+	options = !lto
+	source = mdcat-2.0.4.tar.gz::https://github.com/swsnr/mdcat/archive/mdcat-2.0.4.tar.gz
+	sha256sums = 9ed5ddeb9588f42220ee039c429e43188fe1f36b902c9e63b4092d0cd2d8123a
+
+pkgname = mdcat
