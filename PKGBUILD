@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kSamples
-_pkgver=1.2-9
+_pkgver=1.2-10
 pkgname=r-${_pkgname,,}
-pkgver=1.2.9
-pkgrel=4
+pkgver=1.2.10
+pkgrel=1
 pkgdesc='K-Sample Rank Tests and their Combinations'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-suppdists
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba3ec4af3dfcf7cf12f0b784ef67bfea565e16985647ead904629886cc1542ff')
+sha256sums=('2d66cc0511fb1be3190c5a285dcd93d02419468ee1ff5ae6d0838f16df2b578d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

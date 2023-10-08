@@ -1,13 +1,13 @@
 pkgbase = r-ksamples
 	pkgdesc = K-Sample Rank Tests and their Combinations
-	pkgver = 1.2.9
-	pkgrel = 4
+	pkgver = 1.2.10
+	pkgrel = 1
 	url = https://cran.r-project.org/package=kSamples
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-suppdists
-	source = https://cran.r-project.org/src/contrib/kSamples_1.2-9.tar.gz
-	sha256sums = ba3ec4af3dfcf7cf12f0b784ef67bfea565e16985647ead904629886cc1542ff
+	source = https://cran.r-project.org/src/contrib/kSamples_1.2-10.tar.gz
+	sha256sums = 2d66cc0511fb1be3190c5a285dcd93d02419468ee1ff5ae6d0838f16df2b578d
 
 pkgname = r-ksamples
