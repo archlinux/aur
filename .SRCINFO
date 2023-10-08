@@ -1,0 +1,19 @@
+pkgbase = emby-theater-free-bin
+	pkgdesc = Emby Theater is an Electron app for Emby. Free version.
+	pkgver = 3.0.20
+	pkgrel = 2
+	url = https://t.me/EmbyNoisyX/147
+	arch = x86_64
+	license = GPL2
+	depends = alsa-lib
+	depends = libglvnd
+	depends = libpulse
+	optdepends = libcec
+	optdepends = vulkan-mesa-layers
+	options = !strip
+	options = !emptydirs
+	backup = etc/emby-theater.conf
+	source = https://github.com/Brx86/yun/releases/download/2/Emby.for.Linux_3.0.20_v2.3.Carnival.deb
+	sha256sums = 0767d32b72fb02c06a904f2ecafcac9617ce28569f6320e09adf465d427c455d
+
+pkgname = emby-theater-free-bin
