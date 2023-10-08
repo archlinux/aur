@@ -1,6 +1,6 @@
 pkgbase = radarr
 	pkgdesc = Movie download automation for usenet and torrents.
-	pkgver = 4.7.5.7809
+	pkgver = 5.0.3.8127
 	pkgrel = 1
 	url = https://github.com/Radarr/Radarr
 	arch = x86_64
@@ -30,11 +30,11 @@ pkgbase = radarr
 	sha512sums = 2ef38a061f4438349f7dafe209328fe9de5f44712f16435805e2622050be45a3fffd1838d9fccef2d6aa7603cf05b01280df6fed957b66d2d67ceaeeedcd5f6f
 	sha512sums = c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e
 	sha512sums = c5a3387a72b0ee51d111b351527f47c59a2000696d165d93ffa86d1e4c732aee3e156c4e9132517efe1c9804223b3a655f089e234ce0f0783f7d5877d1d6af86
-	source_x86_64 = https://github.com/Radarr/Radarr/releases/download/v4.7.5.7809/Radarr.master.4.7.5.7809.linux-core-x64.tar.gz
-	sha512sums_x86_64 = d9d582761c59de1ecf449d86a340875600d4e7e3bc46143ebbe44b50b1193f62f6fc1b5548fcbb8ad089c4a6bd6e654e6f9a658d2b07e9f25e23629fc937438a
-	source_aarch64 = https://github.com/Radarr/Radarr/releases/download/v4.7.5.7809/Radarr.master.4.7.5.7809.linux-core-arm64.tar.gz
-	sha512sums_aarch64 = caac9ab677929aea176daecb32b55ad30b9ece7c45085d156dc62d0383a7c25864af8d98808c1bc2ab916c9e3b3320fc59acc8204d1ce70473540e92c50d659d
-	source_armv7h = https://github.com/Radarr/Radarr/releases/download/v4.7.5.7809/Radarr.master.4.7.5.7809.linux-core-arm.tar.gz
-	sha512sums_armv7h = ddd074f7e49db8d4a87917af592ff4efd7558a1fba61f52213a6c3b6848f5746f22ab0cb6d8a939554bbbb7b0c1538114d129258f83669be7320a40253cb8d76
+	source_x86_64 = https://github.com/Radarr/Radarr/releases/download/v5.0.3.8127/Radarr.master.5.0.3.8127.linux-core-x64.tar.gz
+	sha512sums_x86_64 = 676dd6e148ed5fd25847a222a270b9bd92bfc86b879089ea0ba3f767c198e329669689706f00af511276d672f97712fea77a0a361590c872fa24f6eaae452782
+	source_aarch64 = https://github.com/Radarr/Radarr/releases/download/v5.0.3.8127/Radarr.master.5.0.3.8127.linux-core-arm64.tar.gz
+	sha512sums_aarch64 = b6ab24e311e9098d49cd2f5957b55712fbe2ab9ef1523c330d43fa2c15083a691aafc71585a047641a75642c42d0cdfb5195081ff8fc6917c93ad00d406d4f3b
+	source_armv7h = https://github.com/Radarr/Radarr/releases/download/v5.0.3.8127/Radarr.master.5.0.3.8127.linux-core-arm.tar.gz
+	sha512sums_armv7h = 0c7cecb506587f78ae3887956ad51ca5454c7f940c538c67daee22e1c26c298286aebb479457d5b316fd6ff7bbdae7b94fcd27e52ab9b464c5ffa840904a093d
 
 pkgname = radarr
