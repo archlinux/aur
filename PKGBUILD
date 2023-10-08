@@ -2,7 +2,7 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='Library for producing CycloneDX SBOM (Software Bill of Materials) files'
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
 conflicts=('python-cyclonedx-lib-git')
 options=('!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('a1499302d7fa88bcc7a01502f64bc4d4d8c87187119acdc57f99a9a1efefc2fb698ba71066412f6f3e598f799d08e3749ca2a87b64ce2490590ca089701b17e0')
+sha512sums=('b6150c861514456d36761e959ab8b0fd66fced7e3dc33f932d9105f0e86297fcacc8e8057fb36f861a5f4006264705844c76997d42f2bc52eef5a7c0dbeb1bbf')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
