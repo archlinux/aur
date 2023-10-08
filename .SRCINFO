@@ -1,7 +1,7 @@
 pkgbase = vscodium-bin-features
 	pkgdesc = Unblock some features in VSCodium
 	pkgver = 1.82.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/microsoft/vscode
 	install = vscodium-bin-features.install
 	arch = any
@@ -17,6 +17,6 @@ pkgbase = vscodium-bin-features
 	source = patch.json
 	md5sums = 1bcee9b164af06e67f2d557663828d12
 	md5sums = 67726a5b05e16c9b1ed03d127f0ebc1e
-	md5sums = 4f8f660d360e605b3b7b0321c97c6d69
+	md5sums = 5cdf96d72d223e73827626bc3bb3e176
 
 pkgname = vscodium-bin-features
