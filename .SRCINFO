@@ -1,7 +1,7 @@
 pkgbase = libpar2
 	pkgdesc = Parity checking library
 	pkgver = 0.2
-	pkgrel = 9
+	pkgrel = 10
 	url = http://parchive.sourceforge.net
 	arch = x86_64
 	license = GPL
