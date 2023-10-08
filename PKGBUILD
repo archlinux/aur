@@ -4,7 +4,7 @@ pkgname="anituner"
 pkgdesc="Create, edit and convert Windows animated cursors"
 
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 
 arch=(i686 x86_64)
 
@@ -17,7 +17,7 @@ makedepends=(unzip gendesk icoutils)
 provides=(anituner)
 
 source=("https://download.gdgsoft.com/anitun2p.zip" "anituner" "anituner-atd.xml" "LICENSE")
-md5sums=("f0cff36790da5e3f9b02a65aa4d64101" "be9cfcd1a8c5f57cfae60e6739e0fceb" "2c084aaadfb308a757c12ca19c012f9f" "337e55594ad95557e6659ae8e0a91164")
+md5sums=("f0cff36790da5e3f9b02a65aa4d64101" "be9cfcd1a8c5f57cfae60e6739e0fceb" "2c084aaadfb308a757c12ca19c012f9f" "2c89a8cdf5a8ef238b07897d28c419a1")
 
 prepare() {
 	# extract the icon out of the executable
@@ -41,7 +41,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/anituner/Samples"
 
 	# copy all of AniTuner's files
-	install -Dm755 AniTuner.exe "${pkgdir}/usr/share/anituner"
+	install -Dm755 AniTuner.exe "${pkgdir}/usr/share/anituner/AniTuner.exe"
 	install -Dm644 AniTunerPref.xml "${pkgdir}/usr/share/anituner/AniTunerPrefDefault.xml"
 
 	install -Dm644 AniTuner.chm "${pkgdir}/usr/share/anituner/AniTuner.chm"

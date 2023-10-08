@@ -1,7 +1,7 @@
 pkgbase = anituner
 	pkgdesc = Create, edit and convert Windows animated cursors
 	pkgver = 2.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gdgsoft.com/anituner
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,6 @@ pkgbase = anituner
 	md5sums = f0cff36790da5e3f9b02a65aa4d64101
 	md5sums = be9cfcd1a8c5f57cfae60e6739e0fceb
 	md5sums = 2c084aaadfb308a757c12ca19c012f9f
-	md5sums = 337e55594ad95557e6659ae8e0a91164
+	md5sums = 2c89a8cdf5a8ef238b07897d28c419a1
 
 pkgname = anituner
