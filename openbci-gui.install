@@ -1,0 +1,24 @@
+PACKAGE_NAME='openbci-gui'
+
+post_install() {
+	echo
+	echo "==> ${PACKAGE_NAME} will be copied to ~/.local/opt/${PACKAGE_NAME} the first time"
+	echo "==> you run \`openbci\` as your normal user. Just start it and have fun!"
+	echo
+}
+
+post_upgrade() {
+	echo
+	echo "==> The copy of ${PACKAGE_NAME} in your home directory will be upgraded the"
+	echo '==> first time you run it as your normal user. Just start it and have fun!'
+	echo
+}
+
+post_remove() {
+	echo
+	echo "==> You will have to remove the ${PACKAGE_NAME} directory in your home directory by"
+	echo '==> hand. As your normal user, do:'
+	echo '==> '
+	echo "==> rm -rf ~/.local/opt/${PACKAGE_NAME}"
+	echo
+}

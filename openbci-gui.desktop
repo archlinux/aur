@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=OpenBCI_GUI
+Icon=openbci-gui
+Exec=openbci
+Terminal=False
