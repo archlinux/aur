@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=revezone
-pkgver=1.0.0_alpha.14
+pkgver=1.0.0_alpha.17
 pkgrel=1
 pkgdesc="A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features."
 arch=('any')
@@ -12,10 +12,10 @@ depends=('bash' 'electron25')
 makedepends=('nodejs>=18' 'pnpm' 'npm>=9' 'gendesk' 'asar')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('9d008c0f36309c1fc389927c8590d84d2b753d7bff89839dab9980f3984bd3ff'
+sha256sums=('8a04568fc2c80db24a53ab0aef76b9915ab5c5440c319a3aef4e5e1b4eb9ead1'
             '629038063f6bf56f6077a581c50db9ef77b8aa570e852c702fb97e5c207909a0')
 prepare() {
-    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}"
