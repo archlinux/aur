@@ -1,16 +1,16 @@
 pkgbase = zabbix-agent2-plugin-postgresql
 	pkgdesc = Loadable plugin for PostreSQL integration in Zabbix agent2
-	pkgver = 6.4.6
+	pkgver = 6.4.7
 	pkgrel = 1
 	epoch = 1
 	url = https://cdn.zabbix.com/zabbix-agent2-plugins/sources/postgresql
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	depends = zabbix-agent2=6.4.6
-	source = https://cdn.zabbix.com/zabbix-agent2-plugins/sources/postgresql/zabbix-agent2-plugin-postgresql-6.4.6.tar.gz
+	depends = zabbix-agent2=6.4.7
+	source = https://cdn.zabbix.com/zabbix-agent2-plugins/sources/postgresql/zabbix-agent2-plugin-postgresql-6.4.7.tar.gz
 	source = postgresql.conf
-	sha256sums = a78e85e527a80daa2dafb8b07742454c1d33c6c98a6c9194c418be4e21b7aab6
+	sha256sums = bc1f7026274d1fa07249d837c6b58d326dfced7fcba9a5ddc97e1e40868d3f62
 	sha256sums = 0d6c00e85997b125513c1786cfa6755c8bbcbf9c671a083285e68ef77b5fd801
 
 pkgname = zabbix-agent2-plugin-postgresql
