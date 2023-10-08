@@ -1,11 +1,11 @@
 pkgbase = cura-binary-data
 	pkgdesc = Binary data (firmwares and such) for cura
-	pkgver = 5.3.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/Ultimaker/cura-binary-data
 	arch = any
 	license = AGPL
-	source = cura-binary-data-5.3.0.tar.gz::https://github.com/Ultimaker/cura-binary-data/archive/5.3.0.tar.gz
-	sha512sums = 76082a0410410c04071cbec4b8a10b34b73ffe84ecd23b2e2ef9bcc2db7ae43ca8f8f849dfed0338f1379d3ff80dd2d92b3bc7af31511c91ceed6f6a636daa5f
+	source = cura-binary-data-5.4.0.tar.gz::https://github.com/Ultimaker/cura-binary-data/archive/5.4.0.tar.gz
+	sha512sums = 3e8fa2b01e85275b727cd6ba341aa83aaaaf3936b80120c2e8fa0102b69e2694c49164c09f9565263604f5bc499a397ccf6329c925c8f850f4e7c6399cb0f8a7
 
 pkgname = cura-binary-data
