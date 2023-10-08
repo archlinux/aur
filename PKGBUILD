@@ -4,10 +4,10 @@
 _pkgname=android-apktool
 pkgname=${_pkgname}-bin
 
-pkgdesc="A tool for reverse engineering Android apk files"
+pkgdesc="A tool for reverse engineering Android .apk files"
 
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 
