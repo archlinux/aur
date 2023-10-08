@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 _sdkver=7.0.401
 pkgname=ryujinx-git
-pkgver=r3064.e40470bbe
+pkgver=r3065.ac4f2c1e7
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -56,8 +56,9 @@ package() {
 	cp -R "publish_ava/"* "$pkgdir/opt/ryujinx/"
 
 	chmod +x "$pkgdir/opt/ryujinx/Ryujinx.sh"
-
 	ln -s "/opt/ryujinx/Ryujinx.sh" "$pkgdir/usr/bin/ryujinx"
+
 	desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
+	desktop-file-edit --set-key="StartupWMClass" --set-value="Ryujinx.Ava" "$pkgdir/usr/share/applications/ryujinx.desktop"
 	desktop-file-edit --set-icon="ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 }
