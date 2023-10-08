@@ -3,13 +3,13 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.8.5
-_commit=08dd95f5d9282346f0d4a3e8fc6b20811dc3d063
+pkgver=1.9.0
+_commit=a60876745af20ecc8489ec6997c6c195949b99ac
 _octagramcommit=a6ced5a1d623afed17284fbaa395dd3a8b019a14
-_luacommit=03a2bd9e172549cb16c0718b2c9b68e8c5678085
-_charcodecommit=e8a49f503769427f9c0b14e40b2e1f02417515b2
+_luacommit=757a01445905f89bf58af0d7da8e283c5fbfd973
+_charcodecommit=3e73214fdf5d162517a74762433f486b70a5c0e1
 _protocommit=d92f572379774a202c88e2ea6ad47d9dc040a127
-pkgrel=5
+pkgrel=1
 epoch=1
 pkgdesc="Rime input method engine"
 arch=('x86_64')

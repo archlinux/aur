@@ -1,0 +1,34 @@
+pkgbase = librime
+	pkgdesc = Rime input method engine
+	pkgver = 1.9.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/rime/librime
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gtest
+	makedepends = ninja
+	depends = boost-libs
+	depends = capnproto
+	depends = opencc
+	depends = yaml-cpp
+	depends = leveldb
+	depends = librime-data
+	depends = lua
+	depends = google-glog
+	depends = marisa
+	source = git+https://github.com/rime/librime.git#commit=a60876745af20ecc8489ec6997c6c195949b99ac
+	source = git+https://github.com/lotem/librime-octagram.git#commit=a6ced5a1d623afed17284fbaa395dd3a8b019a14
+	source = git+https://github.com/hchunhui/librime-lua.git#commit=757a01445905f89bf58af0d7da8e283c5fbfd973
+	source = git+https://github.com/rime/librime-charcode.git#commit=3e73214fdf5d162517a74762433f486b70a5c0e1
+	source = git+https://github.com/lotem/librime-proto.git#commit=d92f572379774a202c88e2ea6ad47d9dc040a127
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = librime
