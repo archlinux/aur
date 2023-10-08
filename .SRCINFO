@@ -1,0 +1,13 @@
+pkgbase = catppuccinifier-cli-bin
+	pkgdesc = An comand line tool to catppuccinifiy your images.
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://github.com/lighttigerXIV/catppuccinifier
+	arch = x86_64
+	makedepends = unzip
+	provides = catppuccinifier
+	conflicts = catppuccinifier
+	source = https://github.com/lighttigerXIV/catppuccinifier/releases/download/8.0.0/Catppuccinifer-Linux-8.0.0.zip
+	md5sums = SKIP
+
+pkgname = catppuccinifier-cli-bin
