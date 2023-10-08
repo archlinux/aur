@@ -4,7 +4,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=neovim-git
-pkgver=0.9.0.r873.g93d390ca7a
+pkgver=0.9.0.r1966.g9abced6ad9
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
