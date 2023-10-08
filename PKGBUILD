@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://www.precice.org"
 license=('LGPL3')
 depends=('boost' 'libxml2' 'openmpi' 'petsc' 'python-numpy')
+conflicts=('petsc-complex')
 makedepends=('cmake' 'eigen')
 optdepends=()
 provides=('precice')
