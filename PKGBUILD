@@ -3,7 +3,7 @@
 
 pkgname=python-audioread
 _pkgname=audioread
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="cross-library (GStreamer + Core Audio + MAD + FFmpeg) audio decoding for Python"
 arch=('any')
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-flit-core python-installer python-setuptools python-wheel)
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('57766a926f522e9a05ccd07d438d0c8998fc53d0489efeb40a256d7ca42b1369')
+sha256sums=('98367fc46c436922e5c5b6aae59606c60c7ced36a0336cb8845fe85d0b2de383')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
