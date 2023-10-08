@@ -2,7 +2,7 @@
 _pkgname=bashhub-client
 pkgname=${_pkgname}
 # renovate: datasource=github-releases depName=rcaloras/bashhub-client
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=6
 pkgdesc='saves every terminal command entered across all sessions and system to the cloud'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://${_repo_prefix}/${_repo_name}"
 source=(
   ${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz
 )
-sha256sums=('c3a43a50137f599a46d7371c4e6da98ce2c51c6104167b22fb5c0cf7414c0c50')
+sha256sums=('6db2cc0aacab771aac4d9da9c3d5af51f5a5638b54556943eff15310aad83fac')
 license=('Apache')
 depends=(
 	python
