@@ -9,9 +9,14 @@ arch=('x86_64')
 url='http://code.google.com/p/kpar2kde4'
 license=('GPL3')
 depends=(
+  'gcc-libs' # libstdc++.so 
+  'glibc' # libc.so
+  'qt4' # libQtCore.so libQtGui.so
   'kde-cli-tools'
-  'kdelibs'
-  'libpar2'
+  'kdelibs' # libkdecore.so libkdeui.so libkio.so
+  'libpar2' 'libpar2.so'
+  'libsigc++' 'libsigc-2.0.so'
+  'hicolor-icon-theme'
 )
 makedepends=(
   'cmake'
@@ -20,12 +25,10 @@ makedepends=(
 source=(
   "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/kpar2kde4/kpar2-${pkgver}.tar.gz"
   'kpar2.desktop.diff'
-  'new_cmake.diff'
 )
 sha256sums=(
   '91c4d12600e9d9346e37ac2bec98cf6331e9491d510aeda1e12b0c15e3f1324e'
   '48d28e11b739b111f7a3731be8e4973774f561e346104cb28f595eb530dfd31d'
-  'SKIP'
 )
 
 prepare() {
