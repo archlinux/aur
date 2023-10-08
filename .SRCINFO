@@ -1,7 +1,7 @@
 pkgbase = wf-config
 	pkgdesc = A library for managing configuration files, written for wayfire
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayfire.org
 	arch = x86_64
 	license = custom:MIT

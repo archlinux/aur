@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-config
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for managing configuration files, written for wayfire"
 arch=(x86_64)
 url=https://wayfire.org
@@ -14,7 +14,8 @@ b2sums=('d56cd04c18c2cd8c0bac86493ad662244bde0e9cce1caf81d0fff34d9f2df2470c1aa8c
 
 build() {
 	rm -rf build
-	arch-meson "${pkgname}-${pkgver}" build
+	arch-meson "${pkgname}-${pkgver}" build \
+		--auto-features=disabled
 	ninja -C build
 }
 
