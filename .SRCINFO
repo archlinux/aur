@@ -1,6 +1,6 @@
 pkgbase = rmup
 	pkgdesc = A TUI music player written in Rust
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://gitlab.com/jcheatum/rmup
 	arch = i686
