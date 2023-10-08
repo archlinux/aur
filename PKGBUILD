@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=messages4desktop-bin
 _appname=GoogleMessages
-pkgver=p20230924
+pkgver=p20231008
 pkgrel=1
 pkgdesc="Google Messages on your desktop."
 arch=('x86_64')
@@ -13,9 +13,9 @@ depends=('bash' 'electron')
 makedepends=('gendesk' 'asar')
 source=("${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/${pkgver}/linux.7z"
     "${pkgname%-bin}.sh")
-sha256sums=('e6c49c05a50eb32b0e626b6d0e971c277cbb41f92220d5efa06b3c5f8d0eee55'
+sha256sums=('b9c1d1bc2383bc3912a191cc73b6865c9ba7713ec3dac5b5bb69151e48cdf7d6'
             '3efbacfb2f57f840d4c602f4dad0cd97934040a099d3463a37a3901372ee7662')
-prepare() {
+build() {
     asar pack "${srcdir}/dist/${_appname}-linux-x64/resources/app" "${srcdir}/app.asar"
     gendesk -q -f -n --categories "Network;Utility" --name "Google Messages" --exec "${pkgname%-bin}"
 }
