@@ -1,0 +1,16 @@
+post_install() {
+	echo "v v v v v v v v v v
+
+Example how to get started with orca-mini:
+
+> pull orca-mini
+# sudo -u litellm-ollama -- bash -c 'ollama serve & ollama pull orca-mini; kill -INT \$!'
+
+> enable service for orca-mini
+# systemctl enable --now litellm-ollama@orca-mini.service
+
+> test API
+# litellm --test
+
+^ ^ ^ ^ ^ ^ ^ ^ ^ ^"
+}

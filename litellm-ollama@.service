@@ -1,0 +1,37 @@
+[Unit]
+Description=LiteLLM Ollama model server
+
+[Service]
+Type=simple
+User=litellm-ollama
+Group=litellm-ollama
+
+ExecStart=/usr/bin/litellm --model ollama/%i --api_base http://localhost:11434
+Restart=on-failure
+RestartSec=30s
+
+WorkingDirectory=~
+StateDirectory=litellm-ollama
+
+ProtectSystem=strict
+PrivateTmp=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectHostname=true
+ProtectKernelModules=true
+PrivateUsers=true
+ProtectClock=true
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
