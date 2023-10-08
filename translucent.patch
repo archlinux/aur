@@ -1,7 +1,7 @@
 diff -Naur a/product.json b/product.json
 --- a/product.json	2023-09-06 14:00:16.000000000 +0200
-+++ b/product.json	2023-10-04 21:33:55.353809741 +0200
-@@ -1,6 +1,112 @@
++++ b/product.json	2023-10-08 18:24:17.723549291 +0200
+@@ -1,6 +1,122 @@
  {
 +	"quality": "stable",
 +	"auth": {
@@ -10,6 +10,16 @@ diff -Naur a/product.json b/product.json
 +		"redirectUrl": "https://vscode-redirect.azurewebsites.net/",
 +		"clientId": "aebc6443-996d-45c2-90f0-388ff96faa56"
 +	},
++	"extensionsGallery": {
++		"nlsBaseUrl": "https://www.vscode-unpkg.net/_lp/",
++		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
++		"itemUrl": "https://marketplace.visualstudio.com/items",
++		"publisherUrl": "https://marketplace.visualstudio.com/publishers",
++		"resourceUrlTemplate": "https://{publisher}.vscode-unpkg.net/{publisher}/{name}/{version}/{path}",
++		"controlUrl": "https://az764295.vo.msecnd.net/extensions/marketplace.json"
++	},
++	"profileTemplatesUrl": "https://az764295.vo.msecnd.net/profile-templates/profile-templates.json",
 +	"configurationSync.store": {
 +		"url": "https://vscode-sync.trafficmanager.net/",
 +		"stableUrl": "https://vscode-sync.trafficmanager.net/",
@@ -115,6 +125,18 @@ diff -Naur a/product.json b/product.json
  	"applicationName": "code-oss",
  	"dataFolderName": ".vscode-oss",
  	"win32MutexName": "vscodeoss",
+@@ -32,7 +148,10 @@
+ 	"reportIssueUrl": "https://github.com/microsoft/vscode/issues/new",
+ 	"nodejsRepository": "https://nodejs.org",
+ 	"urlProtocol": "code-oss",
+-	"webviewContentExternalBaseUrlTemplate": "https://{{uuid}}.vscode-cdn.net/insider/ef65ac1ba57f57f2a3961bfe94aa20481caca4c6/out/vs/workbench/contrib/webview/browser/pre/",
++	"webUrl": "https://vscode.dev",
++	"webEndpointUrl": "https://main.vscode-cdn.net",
++	"webEndpointUrlTemplate": "https://{{uuid}}.vscode-cdn.net/{{quality}}/{{commit}}",
++	"webviewContentExternalBaseUrlTemplate": "https://{{uuid}}.vscode-cdn.net/{{quality}}/{{commit}}/out/vs/workbench/contrib/webview/browser/pre/",
+ 	"builtInExtensions": [
+ 		{
+ 			"name": "ms-vscode.js-debug-companion",
 diff -Naur a/src/main.js b/src/main.js
 --- a/src/main.js	2022-09-01 00:05:32.000000000 +0200
 +++ b/src/main.js	2022-09-04 04:30:24.685459144 +0200
