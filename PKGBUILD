@@ -33,7 +33,7 @@
 # have been modified.
 
 pkgname=ventoy
-pkgver=1.0.95
+pkgver=1.0.96
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
@@ -122,18 +122,18 @@ noextract=(
   squashfs-tools-"$_squash_ver".tar.gz
   device-mapper-"$_dm_ver"-2.el5.src.rpm
   zstd-"$_zstd1_ver".tar.gz
-  xz-embedded-20130513.tar.gz
+  xz-embedded-"$_xz_embed_ver".tar.gz
   busybox-"$_busybox_ver".tar.bz2
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('ae6275cd3abe53bccf44352395cbee2b44be468cc4f1ee05217675f5dd004442'
+sha256sums=('054c02b4ce3d5bf97d95b6d583b7a57020f90e47d650ee87b1e855cc223c0886'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b'
             'SKIP'
             'c6f691aa91afbaab811a369fe729f61d8e5b58bb5ad79a45446c9ee849c1a60b'
-            'SKIP' # GitHub cannot be trusted to maintain a stable checksum
-            'SKIP' # GitHub cannot be trusted to maintain a stable checksum
+            'SKIP' # GitHub cannot be trusted to maintain a stable patch checksum
+            'SKIP' # GitHub cannot be trusted to maintain a stable patch checksum
             '7994ad5a63d00446da2e95da1f3f03355b272f096d7eb9830417ab14393b3ace'
             '313aa962c7f80a02f41758d90d6f67687c77c74a6126b060337f248bc1b637f6'
             '7a35eae33d5372a7c0da1188de798726f68825513b7ae3ebe97aaaa52114f039'
