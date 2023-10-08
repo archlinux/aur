@@ -4,12 +4,12 @@
 pkgname=vex
 pkgver=0.0.1
 pkgrel=2
-pkgdesc="Executes all permutations of a shell command with a pattern syntax"
+pkgdesc='Executes all permutations of a shell command with a pattern syntax'
 arch=('x86_64')
 url="https://github.com/briansteffens/vex"
 license=('GPL')
 depends=('gcc-libs')
-makedepends=("rust" "cargo")
+makedepends=('rust' 'cargo')
 source=("${pkgname%-*}::git+https://github.com/briansteffens/vex.git")
 md5sums=('SKIP')
 
