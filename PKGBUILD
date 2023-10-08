@@ -5,7 +5,7 @@
 pkgname=alchemy-viewer
 pkgdesc="A Second Life client with focus on performance and code correctness."
 pkgver=7.0.0.2170
-pkgrel=1
+pkgrel=3
 _project_id=200
 _releasename="Alchemy Project PBR"
 _releasename_underscored="${_releasename// /_}"
@@ -32,7 +32,7 @@ optdepends=(
 	'nvidia-libgl: NVIDIA support'
 	'nvidia-utils: NVIDIA support'
 	'wine: More up-to-date, less buggy SLVoice support')
-provides=('alchemy-viewer')
+provides=('alchemy-viewer' 'alchemy-next-viewer-bin')
 replaces=('alchemy-next-viewer-bin')
 source=('https://git.alchemyviewer.org/api/v4/projects/'"${_project_id}"'/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.xz")
 sha256sums=('505a493b6668bef7b9200acb74903109e2cb3b4689f2d492b29a65c3f6cb2641')
