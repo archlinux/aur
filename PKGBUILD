@@ -3,14 +3,13 @@
 
 pkgname='makesure'
 pkgver=0.9.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple AWK-based task/command runner with declarative goals and dependencies"
 arch=('any')
 url='https://github.com/xonixx/makesure'
 license=('MIT')
 depends=('awk' 'sh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-install="$pkgname.install"
 
 package() {
   cd "$pkgname-$pkgver"
