@@ -1,8 +1,8 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 
 pkgname="insomnium-bin"
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="API Client and Design Platform for GraphQL and REST (Privacy focused Insomnia fork)"
 arch=("x86_64")
 url="https://github.com/ArchGPT/insomnium"
@@ -14,14 +14,8 @@ optdepends=(
 )
 provides=("insomnium")
 conflicts=("insomnium" "insomnium-git")
-source=(
-  "insomnium-${pkgver}.deb::$url/releases/download/core@${pkgver}/Insomnium.Core-${pkgver}.deb"
-  "insomnia.svg"
-)
-sha256sums=(
-  '5395e29e7b7605d7e0d7834488d3c325667da96780a750f5cea8a316a7e77d85'
-  '1ef035acb2f4ae1f6665cdcb03514cd3ef51d254365a85caa8cc4f81d7e821f3'
-)
+source=("insomnium-${pkgver}.deb::$url/releases/download/core@${pkgver}/Insomnium.Core-${pkgver}.deb")
+sha256sums=('971f1bb71a9b0f6e80b8fdb6d3b33cfdfaa2451b95473ae7ed3d9ab4e668e59f')
 
 prepare() {
   bsdtar xf data.tar.xz
@@ -32,11 +26,12 @@ package() {
   mv usr "$pkgdir"
 
   rm -rf "$pkgdir/usr/share/doc"
-  rm -rf "$pkgdir/usr/share/icons"
-
   mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  cp "insomnia.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/insomnia.svg"
+
   mv "$pkgdir/usr/share/applications/insomnia.desktop" "$pkgdir/usr/share/applications/insomnium.desktop"
+  mv "$pkgdir/usr/share/icons/hicolor/0x0/apps/insomnia.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/insomnium.png"
+
+  sed -i -e "s/Icon=insomnia/Icon=insomnium/g" "$pkgdir/usr/share/applications/insomnium.desktop"
 
   mkdir -p "$pkgdir/usr/bin"
   ln -sf "/opt/Insomnium/insomnia" "$pkgdir/usr/bin/insomnium"
