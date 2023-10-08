@@ -2,14 +2,14 @@
 # Co-maintainer: Egor Vorontsov <sdoregor@sdore.me>
 
 pkgname=orbitfight
-pkgver=0.8.1
+pkgver=0.9
 pkgrel=2
 pkgdesc="A game in C++ written with SFML, very in-development"
 arch=('x86_64')
 url="https://github.com/Ilya246/${pkgname}"
 license=('GPL3')
 depends=('ttf-hack')
-makedepends=('sfml' 'gendesk')
+makedepends=('sfml' 'gendesk' 'git')
 source=("git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
