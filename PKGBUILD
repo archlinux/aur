@@ -2,7 +2,7 @@
 
 pkgname=drumlabooh
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Drumlabooh is LV2/VSTi drum machine that supports Hydrogen, Drumlabooh and SFZ drumkits'
 arch=('x86_64')
 license=('GPL')
