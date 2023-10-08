@@ -2,7 +2,8 @@
 # Contributor: Alex Leray <alexandre@stdin.fr>
 
 pkgname=inkscape-axidraw-bin
-pkgver=3.9.3
+pkgver=3.9.4
+_zipname="AxiDraw_${pkgver//./}_LinX86"
 pkgrel=1
 pkgdesc='Inkscape extension for Axidraw'
 provides=('inkscape-axidraw' 'inkscape-eggbot')
@@ -12,19 +13,19 @@ depends=('python' 'inkscape')
 license=('GPL2')
 arch=('x86_64')
 source=(
-  "https://cdn.evilmadscientist.com/dl/ad/public/${pkgver//./}/ad-ink_lin-x86_${pkgver//./}.zip"
+  "https://cdn.evilmadscientist.com/dl/ad/public/${pkgver//./}/${_zipname}.zip"
 )
 sha256sums=(
-  '11785f19a6826a449ac05e0cb3e3d3eab3317157c15f744cb85f2e410ee42b19'
+  '14e49a4cf0520d2a6da73c248c88cba8b1a5100581457e156e29e4d6b14a26fb'
 )
 
 package() {
   echo >&2 'Packaging the Inkscape extension'
   mkdir -p "${pkgdir}/usr/share/inkscape/extensions"
-  cp -R --preserve=mode -T "${srcdir}/ad-ink_lin-x86_${pkgver//./}" \
+  cp -R --preserve=mode -T "${srcdir}/${_zipname}" \
     "${pkgdir}/usr/share/inkscape/extensions/axidraw"
 
   echo >&2 'Packaging the license of included SVG fonts'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    "${srcdir}/ad-ink_lin-x86_${pkgver//./}/svg_fonts/OFL.txt"
+    "${srcdir}/${_zipname}/svg_fonts/OFL.txt"
 }
