@@ -12,11 +12,11 @@ source=(https://pypi.python.org/packages/source/s/sip/sip-$pkgver.tar.gz)
 sha256sums=('f0dc3287a0b172e5664931c87847750d47e4fdcda4fe362b514af8edd655b469')
 
 build() {
-  cd $pkgname-$pkgver
+  cd sip-$pkgver
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd sip-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
