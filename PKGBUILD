@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=acodec-bin
-pkgver=2.5.3
-pkgrel=4
+pkgver=2.5.4
+pkgrel=1
 pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/albertus82/acodec"
@@ -13,12 +13,12 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/downloa
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-aarch64-bin.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-x86-bin.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-x86_64-bin.tar.gz")
-sha256sums_aarch64=('10f8dd863dba60161595816e80a33b55017d6f271b81b836a3481c6f9cf5289d')
-sha256sums_armv7h=('37c56e6f284ad91162956d37b35d46d7d12aed724cf2aaf8a80466abb086275d')
-sha256sums_i686=('410987e5d2ce450c93c09d1a4e77f82d3d5feea263cae00d4a223c4ead651656')
-sha256sums_x86_64=('484305580b11565c256057db00d3c5f2be27575a763bc66912c18f65205d9c93')
-prepare() {
-    gendesk -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
+sha256sums_aarch64=('6cd4820eb31ba2aaf8d83d7fb250c248a97a90f0d3b651501ce10187922483bf')
+sha256sums_armv7h=('326442abe0b053e571d1bafe08a2ab7d1a26d14488b5f9473c7f7eeaa8fb7dd3')
+sha256sums_i686=('32e94dae17ff3e80341d4d5ebcb4a503e6b6c73a9a74e27c24cfa60771d5a342')
+sha256sums_x86_64=('42ba192af6a7b23ee11a9568ece9e7a3cb32ca99e9088b9cc8211c45b6e7b364')
+build() {
+    gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
     cp "${srcdir}/${pkgname%-bin}.desktop" "${srcdir}/${pkgname%-bin}w.desktop"
     sed "s|Name=${pkgname%-bin}|Name=${pkgname%-bin}w|g;s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin}w|g" \
         -i "${srcdir}/${pkgname%-bin}w.desktop"

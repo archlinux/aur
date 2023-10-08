@@ -1,7 +1,7 @@
 pkgbase = acodec-bin
 	pkgdesc = Encoder & decoder for various algorithms with graphical user interface.
-	pkgver = 2.5.3
-	pkgrel = 4
+	pkgver = 2.5.4
+	pkgrel = 1
 	url = https://github.com/albertus82/acodec
 	arch = aarch64
 	arch = armv7h
@@ -11,15 +11,15 @@ pkgbase = acodec-bin
 	depends = java-runtime
 	depends = hicolor-icon-theme
 	depends = bash
-	provides = acodec=2.5.3
+	provides = acodec=2.5.4
 	conflicts = acodec
-	source_aarch64 = acodec-2.5.3-aarch64.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.3/acodec-2.5.3-gtk-linux-aarch64-bin.tar.gz
-	sha256sums_aarch64 = 10f8dd863dba60161595816e80a33b55017d6f271b81b836a3481c6f9cf5289d
-	source_armv7h = acodec-2.5.3-armv7h.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.3/acodec-2.5.3-gtk-linux-armhf-bin.tar.gz
-	sha256sums_armv7h = 37c56e6f284ad91162956d37b35d46d7d12aed724cf2aaf8a80466abb086275d
-	source_i686 = acodec-2.5.3-i686.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.3/acodec-2.5.3-gtk-linux-x86-bin.tar.gz
-	sha256sums_i686 = 410987e5d2ce450c93c09d1a4e77f82d3d5feea263cae00d4a223c4ead651656
-	source_x86_64 = acodec-2.5.3-x86_64.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.3/acodec-2.5.3-gtk-linux-x86_64-bin.tar.gz
-	sha256sums_x86_64 = 484305580b11565c256057db00d3c5f2be27575a763bc66912c18f65205d9c93
+	source_aarch64 = acodec-2.5.4-aarch64.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.4/acodec-2.5.4-gtk-linux-aarch64-bin.tar.gz
+	sha256sums_aarch64 = 6cd4820eb31ba2aaf8d83d7fb250c248a97a90f0d3b651501ce10187922483bf
+	source_armv7h = acodec-2.5.4-armv7h.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.4/acodec-2.5.4-gtk-linux-armhf-bin.tar.gz
+	sha256sums_armv7h = 326442abe0b053e571d1bafe08a2ab7d1a26d14488b5f9473c7f7eeaa8fb7dd3
+	source_i686 = acodec-2.5.4-i686.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.4/acodec-2.5.4-gtk-linux-x86-bin.tar.gz
+	sha256sums_i686 = 32e94dae17ff3e80341d4d5ebcb4a503e6b6c73a9a74e27c24cfa60771d5a342
+	source_x86_64 = acodec-2.5.4-x86_64.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.4/acodec-2.5.4-gtk-linux-x86_64-bin.tar.gz
+	sha256sums_x86_64 = 42ba192af6a7b23ee11a9568ece9e7a3cb32ca99e9088b9cc8211c45b6e7b364
 
 pkgname = acodec-bin
