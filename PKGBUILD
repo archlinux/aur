@@ -6,8 +6,8 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language
-_swiftver=swift-5.8.1-RELEASE
-pkgver=5.8.1
+_swiftver=swift-5.9-RELEASE
+pkgver=5.9
 pkgrel=1
 
 pkgdesc="The Swift programming language and debugger"
@@ -16,12 +16,11 @@ url="https://swift.org/"
 license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
 makedepends=('clang' 'cmake' 'git' 'ninja' 'patch' 'python-six' 'rsync' 'swig')
-provides=('swift-language')
 source=(
     "git+https://github.com/apple/swift#tag=${_swiftver}"
-    "cmark::git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
+    "apple-cmark::git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
     "llbuild::git+https://github.com/apple/swift-llbuild#tag=${_swiftver}"
-    "swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=1.0.3"
+    "swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=1.2.2"
     "swift-driver::git+https://github.com/apple/swift-driver#tag=${_swiftver}"
     "swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
     "swiftpm::git+https://github.com/apple/swift-package-manager#tag=${_swiftver}"
@@ -31,17 +30,19 @@ source=(
     "swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=${_swiftver}"
     "swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=${_swiftver}"
     "swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=${_swiftver}"
-    "llvm-project::git+https://github.com/apple/llvm-project#tag=${_swiftver}"
+    "apple-llvm-project::git+https://github.com/apple/llvm-project#tag=${_swiftver}"
     "0001-arch-aur-patches.patch"
     "0002-stdint.patch"
     # swift src to check afterwards
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
     "yams::git+https://github.com/jpsim/Yams#tag=5.0.1"
     "sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=${_swiftver}"
+    "swift-asn1::git+https://github.com/apple/swift-asn1#tag=0.7.0"
     "swift-atomics::git+https://github.com/apple/swift-atomics#tag=1.0.2"
+    "swift-certificates::git+https://github.com/apple/swift-certificates#tag=0.4.1"
     "swift-cmark-gfm::git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
     "swift-collections::git+https://github.com/apple/swift-collections#tag=1.0.1"
-    "swift-crypto::git+https://github.com/apple/swift-crypto#tag=2.2.3"
+    "swift-crypto::git+https://github.com/apple/swift-crypto#tag=2.5.0"
     "swift-docc::git+https://github.com/apple/swift-docc#tag=${_swiftver}"
     "swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#tag=${_swiftver}"
     "swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#tag=${_swiftver}"
@@ -73,6 +74,8 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '3941d6e2ff26ee0bf2d0ae37ed618d1cb36af85e256b0b84dd4e5d8549ec2982'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
