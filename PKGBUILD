@@ -2,7 +2,7 @@
 
 pkgname=(otto-kde-git kvantum-theme-otto-git)
 pkgver=r14.fd67d36
-pkgrel=1
+pkgrel=2
 pkgdesc="Otto Theme for Kde Plasma"
 arch=('any')
 url="https://www.opencode.net/jomada/otto"
@@ -37,7 +37,7 @@ package_otto-kde-git() {
 
 package_kvantum-theme-otto-git() {
 	pkgdesc="Otto theme for kvantum"
-	depends=(kvantum-qt5)
+	depends=(kvantum)
 
 	cd otto
 	install -d "${pkgdir}/usr/share"
