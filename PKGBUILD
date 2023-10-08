@@ -3,7 +3,7 @@
 
 pkgname=materialx
 pkgver=1.38.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
 url="https://materialx.org/"
@@ -17,7 +17,8 @@ depends=(glibc
 		python
 		python-setuptools
 		opencolorio
-		dos2unix)
+		dos2unix
+		zenity)
 makedepends=(cmake
 			chrpath
 			libxinerama
@@ -115,7 +116,7 @@ package() {
 	cp ${srcdir}/{materialx-grapheditor.desktop,materialx-view.desktop} ${pkgdir}/usr/share/applications
 	install -Dm644 ${srcdir}/materialx.xml ${pkgdir}/usr/share/mime/model/materialx.xml
 	mv ${pkgdir}/usr/{LICENSE,THIRD-PARTY.md} ${pkgdir}/usr/share/licenses/materialx/
-	
+
 	# Remove empty dirs
 	find ${pkgdir}/usr -empty -type d -delete
 }
