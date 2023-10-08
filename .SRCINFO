@@ -1,7 +1,7 @@
 pkgbase = android-apktool-bin
-	pkgdesc = A tool for reverse engineering Android apk files
+	pkgdesc = A tool for reverse engineering Android .apk files
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iBotPeaches/Apktool
 	arch = i686
 	arch = x86_64
