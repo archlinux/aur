@@ -5,7 +5,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2023.09.02.a.r9.g550a0ce12
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2023.10.07.a.r27.g254450981
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -13,12 +13,11 @@ url="https://swift.org/"
 license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
 makedepends=('clang' 'cmake' 'git' 'ninja' 'patch' 'python-six' 'rsync' 'swig')
-provides=('swift-language')
 source=(
     'git+https://github.com/apple/swift#branch=main'
-    'cmark::git+https://github.com/apple/swift-cmark#branch=main'
+    'apple-cmark::git+https://github.com/apple/swift-cmark#branch=main'
     'llbuild::git+https://github.com/apple/swift-llbuild#branch=main'
-    'swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.2.2'
+    'swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.2.3'
     'swift-atomics::git+https://github.com/apple/swift-atomics#commit=1.0.2'
     'swift-collections::git+https://github.com/apple/swift-collections#commit=1.0.1'
     'swift-crypto::git+https://github.com/apple/swift-crypto#commit=2.5.0'
@@ -33,15 +32,15 @@ source=(
     'swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#branch=main'
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#branch=main'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main'
-    'llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20220421'
+    'apple-llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20220421'
     'swift-llvm-bindings::git+https://github.com/apple/swift-llvm-bindings#branch=stable/20220421'
     '0001-arch-aur-patches.patch'
     '0002-stdint.patch'
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=5.0.1'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
-    'swift-asn1::git+https://github.com/apple/swift-asn1#commit=0.7.0'
-    'swift-certificates::git+https://github.com/apple/swift-certificates#commit=0.4.1'
+    'swift-asn1::git+https://github.com/apple/swift-asn1#commit=0.8.0'
+    'swift-certificates::git+https://github.com/apple/swift-certificates#commit=0.6.0'
     'swift-cmark::git+https://github.com/apple/swift-cmark#branch=gfm'
     'swift-docc::git+https://github.com/apple/swift-docc#branch=main'
     'swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main'
