@@ -1,0 +1,26 @@
+pkgbase = litellm
+	pkgdesc = Call all LLM APIs using the OpenAI format
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://pypi.org/project/litellm/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = uvicorn
+	depends = python
+	depends = python-appdirs
+	depends = python-click
+	depends = python-dotenv
+	depends = python-fastapi
+	depends = python-importlib-metadata
+	depends = python-jinja
+	depends = python-openai
+	depends = python-tiktoken
+	depends = python-tokenizers
+	optdepends = ollama: serve local ollama models
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-0.5.6.tar.gz
+	sha256sums = 33ff15df6d4c84ca6c703e3df088d9b91611b6653faf36386f3c3893e3d5fd80
+
+pkgname = litellm
