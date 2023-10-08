@@ -1,14 +1,14 @@
 pkgbase = sklauncher-bin
 	pkgdesc = Secure and modern Minecraft Launcher
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://skmedix.pl
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = unzip
 	makedepends = gendesk
-	depends = java-runtime
+	depends = java-runtime>=17
 	provides = sklauncher
 	conflicts = sklauncher
 	conflicts = sklauncher-git

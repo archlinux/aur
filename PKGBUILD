@@ -4,14 +4,14 @@ pkgname="sklauncher-bin"
 pkgdesc="Secure and modern Minecraft Launcher"
 
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 
 url="https://skmedix.pl"
 license=("unknown")
 
-depends=(java-runtime)
+depends=("java-runtime>=17")
 makedepends=(unzip gendesk)
 
 provides=(sklauncher)
@@ -24,10 +24,10 @@ noextract=("SKlauncher-${pkgver}.jar")
 
 prepare() {
 	# extract the JAR file
-	unzip -o -d SKlauncher-${pkgver} SKlauncher-${pkgver}.jar
+	unzip -o -d "SKlauncher-${pkgver}" "SKlauncher-${pkgver}.jar"
 
 	# get the icon out of the extracted JAR file
-	cp -r SKlauncher-${pkgver}/logo.png SKlauncher.png
+	cp -r "SKlauncher-${pkgver}/logo.png" SKlauncher.png
 
 	# generate a .desktop file
 	gendesk -f -n \
