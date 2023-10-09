@@ -12,7 +12,7 @@ license=(GPL-3.0-only)
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmnamenoscope-$_npmver.tgz)
 noextract=($_npmnamenoscope-$_npmver.tgz)
-sha1sums=(eab24c85f8d581dcaedca61439b3274b05083652)
+sha1sums=(098ba3da684a9b16b83201d168cea6a942aafcee)
 
 package() {
   cd $srcdir
