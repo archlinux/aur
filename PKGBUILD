@@ -14,7 +14,6 @@ depends=(networkmanager qt5-base)
 makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc)
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
-provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
 sha256sums=('b8edc45629de379f26a67b44654311f40fd8ea866fa3a2cfb9774cd995b3762e'
