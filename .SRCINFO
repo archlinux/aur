@@ -1,7 +1,7 @@
 pkgbase = h2o-git
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
 	pkgver = 2.2.0.7433
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/h2o/h2o
 	arch = i686
 	arch = x86_64
