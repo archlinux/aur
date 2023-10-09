@@ -1,6 +1,6 @@
 pkgbase = nordlayer
 	pkgdesc = Proprietary VPN client for linux
-	pkgver = 2.6.5
+	pkgver = 3.0.0
 	pkgrel = 0
 	url = https://nordlayer.com
 	install = nordlayer.install
@@ -12,7 +12,7 @@ pkgbase = nordlayer
 	replaces = nordvpnteams-bin
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://downloads.nordlayer.com/linux/latest/debian/pool/main/nordlayer_2.6.5_amd64.deb
-	sha512sums_x86_64 = 5d71c7acf0a6a6f96689d4cbffc2fc3b64079463727a0ffd9f17bfbf5936907abbf0b8ad3bd2edf9f2e3efd70474fa64d699dbb8a9d402de56a8efb5243ea7ad
+	source_x86_64 = https://downloads.nordlayer.com/linux/latest/debian/pool/main/nordlayer_3.0.0_amd64.deb
+	sha512sums_x86_64 = ab268ec215022eca8f6a8f82b20e559a1e4eba89e088550b09b80306eba6ca07ce3a22880f277c780541449f5d9f9f933e952015d8614c52af83071fd980eaaa
 
 pkgname = nordlayer
