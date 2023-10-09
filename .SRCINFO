@@ -1,7 +1,7 @@
 pkgbase = wgrib
 	pkgdesc = Program to manipulate, inventory, and decode GRIB files
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cpc.ncep.noaa.gov/products/wesley/wgrib.html
 	arch = x86_64
 	license = custom

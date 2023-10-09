@@ -2,7 +2,7 @@
 
 pkgname=wgrib
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to manipulate, inventory, and decode GRIB files"
 arch=('x86_64')
 url="https://www.cpc.ncep.noaa.gov/products/wesley/wgrib.html"
