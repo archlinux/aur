@@ -7,3 +7,4 @@
 !.SRCINFO
 !add-av_stream_get_first_dts-for-chromium.patch
 !ffmpeg-vmaf2.x.patch
+!libavcodec.patch
