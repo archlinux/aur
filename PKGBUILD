@@ -3,7 +3,7 @@ _pkglib="roninengine"
 _pkgbase="ronin-engine"
 pkgname=${_pkgbase}-unstable-git
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 url="https://github.com/badcast/${_pkgbase}"
 pkgdesc="RoninEngine - The Ronin Engine Framework. For World simulation, UI intersection, Game Emulation, 2D game, etc. (dev-state, unstable, alpha-version)"
 arch=(x86_64)
@@ -13,6 +13,7 @@ optdepends=('library-brainmap: override base AI::NavMesh')
 makedepends=('cmake' 'gcc' 'make' 'pkgconf')
 source=("git+${url}.git")
 provides=("lib${_pkglib}.so")
+replaces=("ronin-engine")
 conflicts=("${_pkgbase}-static-git")
 md5sums=('SKIP')
 

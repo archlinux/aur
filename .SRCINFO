@@ -1,7 +1,7 @@
 pkgbase = ronin-engine-unstable-git
 	pkgdesc = RoninEngine - The Ronin Engine Framework. For World simulation, UI intersection, Game Emulation, 2D game, etc. (dev-state, unstable, alpha-version)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/badcast/ronin-engine
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = ronin-engine-unstable-git
 	optdepends = library-brainmap: override base AI::NavMesh
 	provides = libroninengine.so
 	conflicts = ronin-engine-static-git
+	replaces = ronin-engine
 	source = git+https://github.com/badcast/ronin-engine.git
 	md5sums = SKIP
 
