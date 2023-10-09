@@ -1,23 +1,23 @@
-# Maintainer: Phil Ruffwind <rf@rufflewind.com>
+# Maintainer: Dino Morelli <dino@ui3.info>
+
 pkgname=stack-bin
-pkgver=2.1.3
+_pkgname=stack
+pkgver=2.13.1
 pkgrel=1
-pkgdesc="The Haskell Tool Stack (tool only -- libraries not included)"
-arch=(aarch64 i686 x86_64)
-url=https://hackage.haskell.org/package/stack
-license=(BSD3)
+pkgdesc="The Haskell Tool Stack. Packaged from upstream binary release."
+arch=('x86_64')
+url="https://github.com/commercialhaskell/${_pkgname}"
+license=('custom:BSD3')
 depends=(gmp zlib)
 provides=(stack)
-conflicts=(stack)
-source_aarch64=(https://github.com/commercialhaskell/stack/releases/download/v$pkgver/stack-$pkgver-linux-aarch64.tar.gz)
-source_i686=(https://github.com/commercialhaskell/stack/releases/download/v$pkgver/stack-$pkgver-linux-i386.tar.gz)
-source_x86_64=(https://github.com/commercialhaskell/stack/releases/download/v$pkgver/stack-$pkgver-linux-x86_64.tar.gz)
-sha256sums_aarch64=('1212c3ef9c4e901c50b086f1d778c28d75eb27cb4529695d2f1a16ea3f898a6d')
-sha256sums_i686=('4acd97f4c91b1d1333c8d84ea38f690f0b5ac5224ba591f8cdd1b9d0e8973807')
-sha256sums_x86_64=('c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673')
-
+conflicts=(stack stack-static)
+source=("https://github.com/commercialhaskell/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch}.tar.gz")
+sha256sums=('45281bb2385e928916ec8bcbc7ab790ce8721bbf805f3d0752544ada22ad5ea3')
 package() {
-    cd "$srcdir/stack-$pkgver-linux-"*/
-    install -Dm755 stack "$pkgdir/usr/bin/stack"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/stack/LICENSE"
+  cd ${srcdir}/${_pkgname}-${pkgver}-linux-${arch}
+  install -Dm755 stack "${pkgdir}/usr/bin/stack"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 ChangeLog.md "${pkgdir}/usr/share/doc/${_pkgname}/ChangeLog.md"
+  install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${_pkgname}/CONTRIBUTING.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
