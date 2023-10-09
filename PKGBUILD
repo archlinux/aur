@@ -32,6 +32,8 @@ build() {
     sed -i 's/\bintptr_t\b/__intptr_t/g' src/qscint/src/xmlMatchedTagsHighlighter.cpp
     sed -i 's/\bintptr_t\b/__intptr_t/g' src/qscint/src/xmlMatchedTagsHighlighter.h
     sed -i '5503s/^/bool isClearSwpFile = false;\n/' src/cceditor/ccnotepad.cpp
+    sed -i 's/NotePad--/notepad--/g' CMakeLists.txt
+    sed -i '7s/NotePad--/notepad--/' src/linux/usr/share/applications/NotePad--.desktop
 
     cmake -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr \
