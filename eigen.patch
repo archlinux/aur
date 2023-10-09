@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0868430..e45a02c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,6 +29,9 @@ find_package(catkin REQUIRED COMPONENTS
+ 
+ find_package(Boost COMPONENTS signals)
+ find_package(Eigen3 REQUIRED)
++if (NOT DEFINED EIGEN3_INCLUDE_DIR)
++    get_target_property(EIGEN3_INCLUDE_DIR Eigen3::Eigen INTERFACE_INCLUDE_DIRECTORIES)
++endif ()
+ # Resolve system dependency on yaml-cpp, which apparently does not
+ # provide a CMake find_package() module.
+ find_package(PkgConfig REQUIRED)
