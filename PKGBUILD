@@ -3,7 +3,7 @@
 
 _pkgname=freetube
 pkgname=${_pkgname}-bin
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64' 'aarch64')
@@ -28,5 +28,5 @@ package() {
     ln -s "/opt/FreeTube/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-md5sums_x86_64=('14e7b70a67568726b1a558eebde7bae6')
-md5sums_aarch64=('fce7589547d0451762a8f6236983db0a')
+md5sums_x86_64=('43a2e6e8cb4877a29edb444ef30e8ede')
+md5sums_aarch64=('c30bd6084f0dc738ba3623fff62f9699')
