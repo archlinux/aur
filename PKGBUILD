@@ -1,7 +1,6 @@
 # Maintainer: Christophe Noisel <cnoisel at proton.me>
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
-# Contributor: herb  <herb@archlinux.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Lubosz <lubosz at gmail dot com>
 
 pkgname=planner-git
 pkgver=0.14.91
