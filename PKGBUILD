@@ -1,53 +1,44 @@
-# Maintainer:
-# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
-# Contributor: Lubosz <lubosz at gmail dot com>
+# Maintainer: Christophe Noisel <cnoisel at proton.me>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: herb  <herb@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+
 pkgname=planner-git
-pkgver=0.14.6.r166.de43d65
-pkgrel=2
-pkgdesc="A project management tool for planning, scheduling and tracking projects."
-arch=('i686' 'x86_64')
-url="https://wiki.gnome.org/Apps/Planner"
+pkgver=0.14.91
+pkgrel=1
+pkgdesc='Project management application for GNOME (lastest version from git)'
+arch=('x86_64')
 license=('GPL')
-depends=('libgnomecanvas' 'gnome-vfs' 'libxslt' 'pygtk')
-makedepends=('git' 'gnome-common' 'rarian')
-provides=("${pkgname%-git}" 'libplanner-1.so')
-conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.gnome.org/GNOME/planner.git')
+url='https://wiki.gnome.org/Apps/Planner'
+depends=('glib2>=2.56', # glib, gmodule, gobject
+	'gtk3>=3.22', # gtk3, gail
+	'libxml2>=2.6.27',
+	'libxslt>=1.1.23', #libxslt, libexslt
+	'libgda>=5.0') # database export feature is enabled by arch-meson
+makedepends=('git' 'meson')
+conflicts=('planner')
+provides=('planner')
+options=('!emptydirs')
+source=("git+https://gitlab.gnome.org/World/planner.git")
 sha256sums=('SKIP')
+install=planner.install
 
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long | sed 's/^PLANNER_//;s/\([^-]*-\)g/r\1/;s/_/./;s/_/./;s/-/./g'
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	sed -i 's/python/python2/g' tests/python/task-test.py
-}
+# https://wiki.archlinux.org/title/Meson_package_guidelines#Template
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	export PYTHON=/usr/bin/python2
-	export CFLAGS=-Wno-error
+	# 'git clone' done in "./planner" directory :
+	arch-meson planner build
+	meson compile -C build
+}
 
-	NOCONFIGURE=1 ./autogen.sh
-	./configure \
-		--prefix=/usr \
-		--disable-python \
-		--disable-gtk-doc \
-		--disable-dotnet \
-		--disable-update-mimedb \
-		--disable-eds-backend \
-		--disable-eds \
-		--disable-static
-	make
+check() {
+	meson test -C build --print-errorlogs
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	meson install -C build --destdir "$pkgdir"
+}
 
-	# Remove conflicting files
-	cd "$pkgdir/usr/share/mime"
-	find . -maxdepth 1 -type f -exec rm "{}" \;
+pkgver() {
+	git -C 'planner' describe --long --tags --exclude continuous | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
