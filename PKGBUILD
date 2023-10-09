@@ -3,7 +3,7 @@ url="https://github.com/jackal/jackal_robot"
 
 pkgname="ros-noetic-jackal-robot"
 pkgver="0.7.9"
-arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+arch=('x86_64')
 pkgrel=1
 license=("BSD")
 
