@@ -1,7 +1,8 @@
 pkgbase = alchemy-viewer
 	pkgdesc = A Second Life client with focus on performance and code correctness.
 	pkgver = 7.0.0.2170
-	pkgrel = 3
+	pkgrel = 4
+	epoch = 1696809895
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
