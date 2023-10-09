@@ -1,19 +1,19 @@
-# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Maintainer:  inalone <me@inal.one>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=ttf-perfectdos
-pkgver=1
+pkgver=2
 pkgrel=2
 pkgdesc='Fonts similar to what BIOS/DOS looks like'
 arch=('any')
 license=('custom:free')
-url='http://www.dafont.com/perfect-dos-vga-437.font'
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-sha256sums=('cf5c22a3094e5452e473a912086d2c81d014b3e762235218a958b289757a7d5d')
-source=('perfectdos.zip::http://img.dafont.com/dl/?f=perfect_dos_vga_437')
+url='https://archive.org/details/LessPerfectDOSVGA'
+depends=('fontconfig')
+sha256sums=('0ec6f3179c60f41f296a0430c22318a211fbff026c8c8b678df835bb070fa329')
+source=('https://archive.org/compress/LessPerfectDOSVGA/formats=TRUETYPE%20FONT&file=/LessPerfectDOSVGA.zip')
 
 package() {
   cd "$srcdir"
-  install -Dm644 'Perfect DOS VGA 437.ttf'      "$pkgdir/usr/share/fonts/TTF/Perfect DOS VGA 437.ttf"
-  install -Dm644 'Perfect DOS VGA 437 Win.ttf'  "$pkgdir/usr/share/fonts/TTF/Perfect DOS VGA 437 Win.ttf"
+  install -Dm644 'MorePerfectDOSVGA.ttf'      "$pkgdir/usr/share/fonts/TTF/MorePerfectDOSVGA.ttf"
+  install -Dm644 'LessPerfectDOSVGA.ttf'  "$pkgdir/usr/share/fonts/TTF/LessPerfectDOSVGA.ttf"
 }
