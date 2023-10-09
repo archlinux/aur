@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-winextras-static
 	pkgdesc = Classes and functions that enable you to use Windows-specific functions (mingw-w64)
-	pkgver = 5.15.10
+	pkgver = 5.15.11
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt5-winextras-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtwinextras#commit=5afc77f5347113b607ca0262505f3406e1be5bf4
+	source = git+https://invent.kde.org/qt/qt/qtwinextras#commit=1bf19cc6a7972d8543485786418b6631459d3469
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-winextras-static
