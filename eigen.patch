@@ -1,0 +1,17 @@
+--- CMakeLists.txt	2021-04-08 09:17:08.000000000 -0700
++++ CMakeLists.txt	2023-10-09 16:19:16.802493371 -0700
+@@ -7,6 +7,9 @@
+ find_package(Qt5 COMPONENTS Widgets REQUIRED)
+ 
+ find_package(Eigen3 REQUIRED)
++if (NOT DEFINED EIGEN3_INCLUDE_DIRS)
++  get_target_property(EIGEN3_INCLUDE_DIRS Eigen3::Eigen INTERFACE_INCLUDE_DIRECTORIES)
++endif()
+ 
+ catkin_package(
+   INCLUDE_DIRS include
+@@ -60,4 +63,3 @@
+ install(DIRECTORY fonts
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+ )
+-
