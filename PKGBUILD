@@ -1,8 +1,9 @@
 # Contributor: solopasha <daron439 at gmail dot com>
+# Contributor: Aron Young <tkf6fkt at gmail dot com>
 # Maintainer: asuka minato
 
 pkgname=remnote
-pkgver=1.12.51
+pkgver=1.12.52
 pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64' 'aarch64')
@@ -12,7 +13,7 @@ license=('custom:Commercial')
 _appimage="RemNote-${pkgver}.AppImage"
 source=("https://download.remnote.io/remnote-desktop/RemNote-$pkgver.AppImage"
 	remnote.sh)
-sha256sums=('eb1b701c635b5a263a1fc3e39a85aa6990caa957ff8a078cb880bd572df04d38'
+sha256sums=('b4347664ab64d465d3a1fa0161f49e02c5f1c2ba6788214621fedff3438f7363'
             'c6bd5671157a94676ca8ca47163e329b645bc5a679e8b1e90f3cdbddb4ad869e')
 
 prepare() {
