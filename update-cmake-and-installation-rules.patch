@@ -1,0 +1,205 @@
+From c785afef63f99917167df87b3b63bd76686a93a0 Mon Sep 17 00:00:00 2001
+From: "SM9()" <me@sm9.dev>
+Date: Mon, 9 Oct 2023 10:30:01 +0100
+Subject: [PATCH] Update CMakeLists.txt to find and link against libgit2 using
+ PkgConfig. Signed-off-by: Michael Bolden Jnr / SM9(); <me@sm9.dev>
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73bee65..0019aa0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,9 @@ if (BUNDLE_LIBGIT2)
+   )
+   target_link_libraries(git2cpp libgit2package)
+ else()
+-  target_link_libraries(git2cpp LibGit2::LibGit2)
++  find_package(PkgConfig REQUIRED)
++  pkg_search_module(LibGit2 REQUIRED libgit2)
++  target_link_libraries(git2cpp ${LibGit2_LIBRARIES})
+ endif()
+
+ set_target_properties(git2cpp PROPERTIES
+--
+2.42.0
+
+From be07c1ab151fcf193515eca6942b0cd818a15968 Mon Sep 17 00:00:00 2001
+From: "SM9()" <me@sm9.dev>
+Date: Mon, 9 Oct 2023 11:59:43 +0100
+Subject: [PATCH] Add Version.cmake to extract project version from Git
+ Signed-off-by: Michael Bolden Jnr / SM9(); <me@sm9.dev>
+
+---
+ CMakeLists.txt      |  6 +++++-
+ cmake/Version.cmake | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
+ create mode 100644 cmake/Version.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73bee65..f3379a8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ cmake_minimum_required(VERSION 3.5.1)
+
++include(cmake/Version.cmake)
++
+ project (libgit2cpp)
+
+ # Build options
+@@ -49,7 +51,9 @@ if (BUNDLE_LIBGIT2)
+   )
+   target_link_libraries(git2cpp libgit2package)
+ else()
+-  target_link_libraries(git2cpp LibGit2::LibGit2)
++  find_package(PkgConfig REQUIRED)
++  pkg_search_module(LibGit2 REQUIRED libgit2)
++  target_link_libraries(git2cpp ${LibGit2_LIBRARIES})
+ endif()
+
+ set_target_properties(git2cpp PROPERTIES
+diff --git a/cmake/Version.cmake b/cmake/Version.cmake
+new file mode 100644
+index 0000000..d61a5e5
+--- /dev/null
++++ b/cmake/Version.cmake
+@@ -0,0 +1,33 @@
++set(VERSION "0.0.0" CACHE STRING "libgit2cpp Version")
++set(COMMIT_HASH "")
++set(COMMIT_COUNT 0)
++
++find_package(Git)
++
++if (Git_FOUND AND VERSION STREQUAL "0.0.0")
++    message(STATUS "No version defined, fetching one from git")
++
++    execute_process(
++            COMMAND ${GIT_EXECUTABLE} rev-list --count HEAD
++            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
++            OUTPUT_VARIABLE COMMIT_COUNT
++            OUTPUT_STRIP_TRAILING_WHITESPACE
++            ERROR_QUIET
++    )
++
++    execute_process(
++            COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
++            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
++            OUTPUT_VARIABLE COMMIT_HASH
++            OUTPUT_STRIP_TRAILING_WHITESPACE
++            ERROR_QUIET
++    )
++
++    set(VERSION "r${COMMIT_COUNT}.${COMMIT_HASH}")
++endif ()
++
++message(STATUS "Version: ${VERSION}")
++string(REGEX REPLACE "([0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9])?)(.*)" "\\1" VERSION_FOR_CMAKE "${VERSION}")
++message(STATUS "Version for CMake: ${VERSION_FOR_CMAKE}")
++
++#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/version.h)
+--
+2.42.0
+
+From 71fe3641ab06652a9f499375a2392dc6db8e140a Mon Sep 17 00:00:00 2001
+From: "SM9()" <me@sm9.dev>
+Date: Mon, 9 Oct 2023 10:39:47 +0100
+Subject: [PATCH] Add CMake installation rules Signed-off-by: Michael Bolden
+ Jnr / SM9(); <me@sm9.dev>
+
+---
+ CMakeLists.txt            |  2 ++
+ cmake/InstallConfig.cmake |  1 +
+ cmake/InstallRules.cmake  | 60 +++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 63 insertions(+)
+ create mode 100644 cmake/InstallConfig.cmake
+ create mode 100644 cmake/InstallRules.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73bee65..21d5e59 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,3 +90,5 @@ if(BUILD_LIBGIT2CPP_EXAMPLES)
+
+   file(COPY test.sh DESTINATION . FILE_PERMISSIONS ${EXE_PERM})
+ endif()
++
++include(cmake/InstallRules.cmake)
+diff --git a/cmake/InstallConfig.cmake b/cmake/InstallConfig.cmake
+new file mode 100644
+index 0000000..d9ce767
+--- /dev/null
++++ b/cmake/InstallConfig.cmake
+@@ -0,0 +1 @@
++include("${CMAKE_CURRENT_LIST_DIR}/git2cppTargets.cmake")
+diff --git a/cmake/InstallRules.cmake b/cmake/InstallRules.cmake
+new file mode 100644
+index 0000000..7f126fb
+--- /dev/null
++++ b/cmake/InstallRules.cmake
+@@ -0,0 +1,60 @@
++set(CMAKE_INSTALL_LIBDIR lib CACHE PATH "")
++
++include(CMakePackageConfigHelpers)
++include(GNUInstallDirs)
++
++set(package git2cpp)
++
++install(
++        DIRECTORY include/
++        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
++        COMPONENT git2cpp_Development
++)
++
++install(
++        TARGETS git2cpp
++        EXPORT git2cppTargets
++        INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
++)
++
++if (NOT DEFINED VERSION)
++    set(VERSION "1.0.0")
++endif()
++
++write_basic_package_version_file(
++        "${package}ConfigVersion.cmake"
++        VERSION ${VERSION}
++        COMPATIBILITY SameMajorVersion
++        ARCH_INDEPENDENT
++)
++
++set(
++        git2cpp_INSTALL_CMAKEDIR "${CMAKE_INSTALL_DATADIR}/${package}"
++        CACHE PATH "CMake package config location relative to the install prefix"
++)
++
++mark_as_advanced(git2cpp_INSTALL_CMAKEDIR)
++
++install(
++        FILES cmake/InstallConfig.cmake
++        DESTINATION "${git2cpp_INSTALL_CMAKEDIR}"
++        RENAME "${package}Config.cmake"
++        COMPONENT git2cpp_Development
++)
++
++install(
++        FILES "${PROJECT_BINARY_DIR}/${package}ConfigVersion.cmake"
++        DESTINATION "${git2cpp_INSTALL_CMAKEDIR}"
++        COMPONENT git2cpp_Development
++)
++
++install(
++        EXPORT git2cppTargets
++        NAMESPACE git2cpp::
++        DESTINATION "${git2cpp_INSTALL_CMAKEDIR}"
++        COMPONENT git2cpp_Development
++)
++
++if(PROJECT_IS_TOP_LEVEL)
++    include(CPack)
++endif()
+--
+2.42.0
+
