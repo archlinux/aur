@@ -15,7 +15,7 @@ options=('!libtool')
 # packages have the prefix 'gtk-engine-'
 conflicts=('gtk-rezlooks-engine')
 replaces=('gtk-rezlooks-engine')
-source=( 'https://mirrors.evowise.com/gentoo/distfiles/39179-rezlooks-0.6.tar.gz')
+source=( 'https://github.com/t-wissmann/rezlooks-gtk-engine/raw/main/rezlooks-0.6.tar.gz')
 sha256sums=('a7dbc45ba32b8f1f40a097d7bafbdff595464c4af16a5bbb9febf63d15cab699')
 
 prepare() {
