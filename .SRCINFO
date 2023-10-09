@@ -1,6 +1,6 @@
 pkgbase = watchmate-git
 	pkgdesc = InfiniTime smart watch companion app
-	pkgver = 0.1.0
+	pkgver = 0.4.5.r0.3fb3fa8
 	pkgrel = 1
 	url = https://github.com/azymohliad/watchmate
 	arch = any
