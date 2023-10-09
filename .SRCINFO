@@ -1,0 +1,21 @@
+pkgbase = sharing-gui
+	pkgdesc = Easily share files to multiple devices on the LAN/Public Network.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://sharing-gui.yuanx.me/
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = asar
+	makedepends = nodejs
+	makedepends = yarn
+	depends = bash
+	depends = electron21
+	conflicts = sharing-gui
+	source = sharing-gui-1.4.0.tar.gz::https://github.com/imyuanx/sharing-GUI/archive/refs/tags/v1.4.0.tar.gz
+	source = sharing-gui.sh
+	sha256sums = 090e58817bf3dd3859ac4353cbb4634ac69f03a086a70d8e789dded5fdae6578
+	sha256sums = 3a0ae784d64cbd97f499db35b9d8c179ec55bc11f559ebbfd0517957bb747095
+
+pkgname = sharing-gui
