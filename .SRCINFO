@@ -1,7 +1,7 @@
 pkgbase = sway-scratch
 	pkgdesc = Automatically starting named scratchpads for sway
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aokellermann/sway-scratch
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = sway-scratch
 	depends = gcc-libs
 	optdepends = sway: sway support
 	optdepends = i3-wm: i3 support
-	source = sway-scratch::git+https://github.com/aokellermann/sway-scratch?signed#tag=e1af0f5ab37f5eb9ef4bef57a4ae512675671d81
-	sha256sums = SKIP
+	source = sway-scratch-0.2.1.tar.gz::https://github.com/aokellermann/sway-scratch/archive/v0.2.1.tar.gz
+	b2sums = b20c7530f9b885141054fcdaf195d61013748597d7f3f5aeae0be8aac62a9d51f9c6f9efd1dbd2bef95319530314b1083cc90ac7d70fd02f8ac7cc9b09fef989
 
 pkgname = sway-scratch
