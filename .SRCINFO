@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-j5345dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J5345DW
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://www.brother.co.uk/support/mfc-j5345dw/downloads
+	install = brother-mfc-j5345dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	source = https://download.brother.com/welcome/dlf105471/mfcj5345dwpdrv-3.5.0-1.i386.rpm
+	sha256sums = 33e72e7cf76a87101ac8349ec51d0c7738aa7c923f65d10aa5a8980806a1f4d5
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j5345dw
