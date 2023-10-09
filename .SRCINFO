@@ -1,8 +1,8 @@
 pkgbase = notepad---git
-	pkgdesc = Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。
-	pkgver = 1.23.r113.g12b1a07
+	pkgdesc = 这是一个使用 C++ 编写的文本编辑器 Notepad--,可以支持 Win/Linux/Mac 平台。
+	pkgver = 2.9.r0.g7e34bfd
 	pkgrel = 1
-	url = https://gitee.com/cxasm/notepad--
+	url = https://github.com/cxasm/notepad--
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -15,7 +15,7 @@ pkgbase = notepad---git
 	provides = notepad--
 	provides = notepadplugin
 	conflicts = notepad--
-	source = notepad---git::git+https://gitee.com/cxasm/notepad--.git#branch=cmake-dev
+	source = notepad---git::git+https://github.com/cxasm/notepad--.git
 	sha256sums = SKIP
 
 pkgname = notepad---git
