@@ -1,7 +1,7 @@
 # Maintainer: Anders Damsgaard <anders@adamsgaard.dk>
 
 pkgname='sacc'
-pkgver=1.06
+pkgver=1.07
 pkgrel=1
 pkgdesc='sacc(omys), simple console gopher client with TLS support'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ license=('ISC')
 depends=('libretls' 'ncurses')
 optdepends=('xclip')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.lz")
-sha512sums=('fb00a3b8e41041c35108c0af1042cdfede80a35376b03b43bdac4031db9b23d16d6f4384fae8c015a7e41931a2b23949c6b83c26089f0b3f92e3ccce21c379b8')
+sha512sums=('4ac2daa6d1d85bac420f75d0cb188b0b9aa6cd6799390b1924b14eec911bef20a2e8a296ca3ff905389ac80bf8e2ba7e080bf88e8c5ae06def4c53f8b912f6cc')
 
 build() {
   make -C "${pkgname}-${pkgver}"
