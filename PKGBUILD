@@ -4,7 +4,7 @@
 
 pkgname=gtk-engine-rezlooks
 pkgver=0.6
-pkgrel=12
+pkgrel=13
 pkgdesc="Clean looking gtk theme engine based on the cairo-enabled CVS clearlooks engine code."
 arch=('i686' 'x86_64')
 url="https://www.gnome-look.org/p/1080201/"
