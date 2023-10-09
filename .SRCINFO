@@ -1,0 +1,16 @@
+pkgbase = ros-noetic-jackal-desktop
+	pkgdesc = ROS - Packages for working with Jackal from a ROS desktop.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/jackal/jackal_desktop
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-jackal-msgs
+	depends = ros-noetic-jackal-viz
+	source = ros-noetic-jackal-desktop-0.4.1.tar.gz::https://github.com/jackal/jackal_desktop/archive/0.4.1.tar.gz
+	sha256sums = 17637450e38712cc8d773c60e1527780b2aa33b2522b4342241163eb72f2e618
+
+pkgname = ros-noetic-jackal-desktop
