@@ -1,0 +1,17 @@
+pkgbase = ros-noetic-hector-imu-attitude-to-tf
+	pkgdesc = ROS - hector_imu_attitude_to_tf is a lightweight node that can be used to publish the roll/pitch attitude angles reported via a imu message to tf.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://wiki.ros.org/hector_imu_attitude_to_tf
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-tf
+	source = ros-noetic-hector-imu-attitude-to-tf-0.5.2.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_slam/archive/0.5.2.tar.gz
+	sha256sums = c4c94b75062c1849c720b6c21d9fdea8dbd14e96a17c0ee80c630f3c8ea740fd
+
+pkgname = ros-noetic-hector-imu-attitude-to-tf
