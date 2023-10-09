@@ -1,0 +1,5 @@
+post_install() {
+	echo "  mkdir -p ~/.config/mpv/scripts; cd \$_"
+	echo "  ln -s /usr/share/mpv/scripts/lastfm.lua"
+	echo "  create ~/.config/lastfm with: \$login = 'vpupkin'; \$password = 'mycoolpassword';"
+}
