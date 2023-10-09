@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsvg
-_pkgver=2.5.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Render SVG Images into PDF, PNG, (Encapsulated) PostScript, or Bitmap Arrays"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,22 +16,34 @@ depends=(
   librsvg
   r
 )
+checkdepends=(
+  r-magick
+  r-png
+  r-testthat
+)
 optdepends=(
   r-ggplot2
   r-knitr
   r-magick
+  r-png
   r-rmarkdown
   r-spelling
   r-svglite
+  r-testthat
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cd4f97f9721a1bab32b1bcfc6d4ca154')
-sha256sums=('b5ddafaefe0ab8f4cb5305dcbc8a9cbafaa5210c2c51cc28480a21a2210c23be')
+md5sums=('0936b7aab088f55d727d0827a53e89d0')
+sha256sums=('4b448cc0f40c98d8c342499d6fe18377c8541f7c0696b999e27b0c7ba48e4970')
 
 build() {
   mkdir -p build
   R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
