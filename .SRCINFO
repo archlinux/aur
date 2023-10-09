@@ -1,7 +1,7 @@
 pkgbase = rt-pyocd-git
 	pkgdesc = RT_Thread DAP-Link 调试实例!
-	pkgver = 0.2.0.0.g8c6a063
-	pkgrel = 6
+	pkgver = 0.2.1.0.gb0ac742
+	pkgrel = 1
 	url = https://github.com/RT-Thread-Studio/sdk-debugger-pyocd
 	install = rt-pyocd-git.install
 	arch = x86_64
