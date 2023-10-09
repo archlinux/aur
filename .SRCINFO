@@ -1,0 +1,21 @@
+pkgbase = wayfire-plugins-dbusqt
+	pkgdesc = Wayfire plugin to expose a few internal features via DBus. This plugin is a temporary waypoint until protocols are developed to cater to all the needs
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://gitlab.com/wayfireplugins/dbusqt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = glm
+	makedepends = wayfire
+	makedepends = qt5-base
+	makedepends = libdbusmenu-qt5
+	source = https://gitlab.com/wayfireplugins/dbusqt/-/archive/v0.8.0/dbusqt-v0.8.0.tar.gz
+	md5sums = e6776eafd520529b59baa547942022fc
+
+pkgname = wayfire-plugins-dbusqt
+	depends = wayfire
+	depends = qt5-base
+	depends = libdbusmenu-qt5
