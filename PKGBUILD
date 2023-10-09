@@ -2,12 +2,12 @@
 
 pkgname=harmonoid-bin
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more."
 arch=("x86_64")
 url="https://github.com/harmonoid/harmonoid"
 license=("custom")
-depends=("mpv" "xdg-user-dirs")
+depends=("mpv" "xdg-user-dirs" "xdg-utils")
 makedepends=()
 optdepends=()
 options=(!strip)
