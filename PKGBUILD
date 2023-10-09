@@ -1,50 +1,52 @@
-# Maintainer: Yen Chi Hsuan <yan12125@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Yen Chi Hsuan <yan12125@gmail.com>
 # Contributor: Alain Kalker <a.c.kalker@gmail.com>
 # Contributor: Marti Raudsepp <marti@juffo.org>
 
-_pkgname=libdwarf
-pkgname=${_pkgname}-git
-pkgver=20150310
+pkgname=libdwarf-git
+pkgver=0.7.0.r318.gdf4cc3f4
 pkgrel=1
-pkgdesc="A library for handling DWARF Debugging Information Format"
-arch=(i686 x86_64)
+pkgdesc="A library for handling DWARF debugging information format"
+arch=('i686' 'x86_64')
+url="https://www.prevanders.net/dwarf.html"
 license=('GPL' 'LGPL')
-url="http://www.prevanders.net/dwarf.html"
-depends=('elfutils')
+depends=('glibc' 'zlib' 'zstd')
 makedepends=('git')
-source=("libdwarf"::"git://git.code.sf.net/p/libdwarf/code")
-md5sums=('SKIP')
-provides=('libdwarf')
+checkdepends=('python')
+provides=("libdwarf=$pkgver" 'libdwarf.so')
 conflicts=('libdwarf')
-options+=('staticlibs')
+options=('staticlibs')
+source=("git+https://github.com/davea42/libdwarf-code.git")
+sha256sums=('SKIP')
+
+
+pkgver() {
+  cd "libdwarf-code"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
+}
 
 build() {
-  cd "$srcdir"/libdwarf
-  ./configure --prefix=/usr --enable-shared
+  cd "libdwarf-code"
+
+  sh autogen.sh
+  ./configure \
+    --prefix="/usr" \
+    --enable-shared
   make
 }
 
-pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+check() {
+  cd "libdwarf-code"
+
+  make check
 }
 
 package() {
-  cd "$srcdir"/libdwarf/libdwarf
+  cd "libdwarf-code"
 
-  install -d $pkgdir/usr/lib
-  install -m 644 libdwarf.a $pkgdir/usr/lib
-  install -m 644 libdwarf.so $pkgdir/usr/lib
-
-  install -d $pkgdir/usr/include/libdwarf
-  install dwarf.h libdwarf.h $pkgdir/usr/include/libdwarf
-
-  install -dm 755 $pkgdir/usr/share/doc/${_pkgname}
-  install README NEWS *.pdf $pkgdir/usr/share/doc/${_pkgname}
-
-  # dwarfdump
-  cd "$srcdir"/libdwarf/dwarfdump
-  install -Dm755 dwarfdump $pkgdir/usr/bin/dwarfdump
-  install -Dm644 dwarfdump.1 $pkgdir/usr/share/man/man1/dwarfdump.1
-  install -Dm644 dwarfdump.conf $pkgdir/usr/lib/dwarfdump.conf
+  make DESTDIR="$pkgdir" install
 }

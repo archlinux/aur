@@ -1,19 +1,22 @@
 pkgbase = libdwarf-git
-	pkgdesc = A library for handling DWARF Debugging Information Format
-	pkgver = 20150310
+	pkgdesc = A library for handling DWARF debugging information format
+	pkgver = 0.7.0.r318.gdf4cc3f4
 	pkgrel = 1
-	url = http://www.prevanders.net/dwarf.html
+	url = https://www.prevanders.net/dwarf.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	checkdepends = python
 	makedepends = git
-	depends = elfutils
-	provides = libdwarf
+	depends = glibc
+	depends = zlib
+	depends = zstd
+	provides = libdwarf=0.7.0.r318.gdf4cc3f4
+	provides = libdwarf.so
 	conflicts = libdwarf
 	options = staticlibs
-	source = libdwarf::git://git.code.sf.net/p/libdwarf/code
-	md5sums = SKIP
+	source = git+https://github.com/davea42/libdwarf-code.git
+	sha256sums = SKIP
 
 pkgname = libdwarf-git
-
