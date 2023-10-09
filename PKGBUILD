@@ -1,7 +1,7 @@
 # Maintainer: Anima <animafps@pm.me>
 pkgname=irqbalance-openrc
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon that distributes interrupts over the processors"
 url="https://github.com/Irqbalance/irqbalance"
 arch=('any')
@@ -42,7 +42,7 @@ package() {
         cd irqbalance-$pkgver
 	make DESTDIR="$pkgdir" install
         cd ..
-	install -m755 -D "$srcdir"/irqbalance.initd "$pkgdir"/etc/init.d/irqblance
+	install -m755 -D "$srcdir"/irqbalance.initd "$pkgdir"/etc/init.d/irqbalance
 	install -m644 -D "$srcdir"/irqbalance.confd "$pkgdir"/etc/conf.d/irqbalance
 }
 sha256sums=('19a1feb379803cc27f86a71cf1b94bb2e103811691ff7448119d8f1e88645bd3'
