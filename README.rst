@@ -30,6 +30,17 @@ Usage
 
 If everything worked, the GUI for F5 VPN should be visible. Assuming continuous Internet connectivity, you should remain connected for several hours.
 
+Troubleshooting
+---------------
+
+If you get an error that looks like
+
+   .. code-block:: shell
+
+        f5vpn: error while loading shared libraries: libicuuc.so.72: cannot open shared object file: No such file or directory
+
+that means that your version of `qt5-webkit <https://aur.archlinux.org/packages/qt5-webkit>`_ is out-of-date with your `icu <https://archlinux.org/packages/core/x86_64/icu/>`_ version, and rebuilding the latest version of `qt5-webkit <https://aur.archlinux.org/packages/qt5-webkit>`_ (or installing the latest prebuilt package) will fix your issue.
+
 CLI-Only Alternatives
 ---------------------
 
