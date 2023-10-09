@@ -3,9 +3,10 @@
 #~~ Script for PKGBUILD
 #~~ Select GUI-language for Veracrypt 1.26.7 and higher Linux
 #~~ by Shapiro <shapiro at quantentunnel dot de>
-#~~ v1.4: Automatic language selection depending on system locale.
+#~~ v1.5: Automatic language selection depending on system locale.
 
-country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl pt-br ro sk sl sv th tr uk uz vi zh-cn zh-hk zh-tw"
+country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl ro sk sl sv th tr uk uz vi"
+country_codes2="pt_BR zh_CN zh_HK zh_TW"
 clear
 echo ""
 echo '____   ____                  _________                        __'
@@ -24,8 +25,24 @@ echo ""
 echo "Currently over 40 languages are available. The GUI of the compiled VeraCrypt"
 echo "will be set to your system locale, if it is supported."
 echo "Detecting locale..."
-var=$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)
-if [[ "$country_codes" == *"$var"* ]]; then
+var=$(locale | grep LANG | cut -d= -f2 | cut -d. -f1)
+if [[ "$country_codes2" == *"$var"* ]]; then
+	if [[ $var == "pt_BR" ]]; then
+		var="pt-br"
+		echo "Language set to: Portuguese/Brazil (pt_BR)"
+	elif [[ $var == "zh_CN" ]]; then
+		var="zh-cn"
+		echo "Language set to: Chinese/Simplified (zh_CN)"
+	elif [[ $var == "zh_HK" ]]; then
+		var="zh-hk"
+		echo "Language set to: Chinese/Hong Kong (zh_HK)"	
+	elif [[ $var == "zh_TW" ]]; then
+		var="zh-tw"
+		echo "Language set to: Chinese/Taiwan (zh_TW)"
+	cp "./VeraCrypt_1.26.7/Translations/Language.$var.xml" "./VeraCrypt_1.26.7/src/Common/Language.xml"
+	fi
+else
+	var=$(echo $var | cut -d_ -f1)
 	cp "./VeraCrypt_1.26.7/Translations/Language.$var.xml" "./VeraCrypt_1.26.7/src/Common/Language.xml"
 	case "$var" in
 	ar)
@@ -109,9 +126,6 @@ if [[ "$country_codes" == *"$var"* ]]; then
 	pl)
 		echo "Language set to: Polish (pl)"
 		;;
-	ptbr)
-		echo "Language set to: Portuguese/Brazil (ptbr)"
-		;;
 	ro)
 		echo "Language set to: Romanian (ro)"
 		;;
@@ -139,18 +153,6 @@ if [[ "$country_codes" == *"$var"* ]]; then
 	vi)
 		echo "Language set to: Vietnamese (vi)"
 		;;
-	zhcn)
-		echo "Language set to: Chinese/Simplified (zh-cn)"
-		;;
-	zhhk)
-		echo "Language set to: Chinese/Hong Kong (zh-hk)"
-		;;
-	zhtw)
-		echo "Language set to: Chinese/Taiwan (zh-tw)"
-		;;
 	esac
-
-else
-	echo "Language set to: English (en)"
 fi
 
