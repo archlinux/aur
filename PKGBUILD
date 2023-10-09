@@ -8,7 +8,7 @@ url="https://github.com/simon-r/dr14_t.meter"
 license=('GPL3')
 depends=('python' 'flac' 'lame' 'faad2' 'ffmpeg' 'vorbis-tools' 'python-numpy' 'python-mutagen')
 optdepends=('python-matplotlib: plot support for python' 'python-scipy: dyn compression')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "dr14_tmeter")
 source=('dr14_t.meter::git+https://github.com/simon-r/dr14_t.meter.git#branch=master')
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
