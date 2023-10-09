@@ -1,19 +1,19 @@
 # Maintainer: Zach Hoffman <zrhoffman@apche.org>
 pkgname=f5fpc
-pkgver=7243.2023.0720.1
-pkgrel=2
+pkgver=7244.2023.0827.1
+pkgrel=1
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(x86_64 armv7h)
 
 source=('LICENSE')
-mirror=vpn.univie.ac.at
-source_x86_64=("linux_f5cli-${pkgver}-${pkgrel}.${CARCH}.deb::https://${mirror}/public/download/linux_f5cli.${CARCH}.deb")
-source_armv7h=("linux_f5cli-${pkgver}-${pkgrel}.${CARCH}.deb::https://${mirror}/public/download/linux_f5cli.armhf.deb")
-b2sums_x86_64=('a3a6ab26ee170314a26946fed09d1d99cec8faff20412bb6d1bb070c6d83e676a85f274370f225d2c10f84676824d61da68cc67321d5bafa6c294db23ab4fdbc')
-b2sums_armv7h=('8a5797e18e69c77795485b64823bd8e561e9f8222239795a8cbbea09ac6b5bdf69ed6c2e384063bd5268f9bfa8124c5a2fadebd0215db9620040178c946c63b5')
+mirror=www3.uwsp.edu
+source_x86_64=("linux_f5cli-${pkgver}-${pkgrel}.x86_64.deb::https://${mirror}/public/download/linux_f5cli.x86_64.deb")
+source_armv7h=("linux_f5cli-${pkgver}-${pkgrel}.armv7h.deb::https://${mirror}/public/download/linux_f5cli.armhf.deb")
+b2sums_x86_64=('11e87a1022cca1e10c447f2fb243135adf7d63354d0a6d107036f3d2a7ea139c5c640537300ad1a9589acf187dcd3ce483fbd474941f5d34c29762ba95f1803d')
+b2sums_armv7h=('ad0f8a35fd7cabfa4895ae29fe167d7ea8b59d3719f98776c1acabb3130a6ed125deee84ad60d53197de9bde370f15d8a3f6022308b003e43d59ccf6608d0840')
 b2sums=('c864e69799ffc4c13bf8af7d76bcc8beed195d9a41acb01d459aaa0c3cd5bae75290ef7be1fa6a0bfd6472e1c3f8df3a7f5d59767861ded0dc4a373a3ead447c')
-sha512sums_x86_64=('94eb2f2dfd404c0f6c98f5186d35f81372d10ca29003919c5f967813f02cf7adbcd430bac8293d8bee92d277f867de312e9ac6497e7178729c9237de31ef0ca8')
-sha512sums_armv7h=('8af15d6af4985e76a35e8ffb8d04e6c5fc1630a036eecbb2a1bdf6140ed26ffee56af12ff6a884f7bde48f663d48240da726f9e296dbb74e2f536c63f7eae78e')
+sha512sums_x86_64=('41a44f283022a38f7bbcf0c94f50a8a5a93892f47947e38d7513421693f8bd1c48bbcef0258d27a1d379bed0a7375f950f434383b4d34537517c0b2dcf096a05')
+sha512sums_armv7h=('3faf8ecd73b6d5e681f02e6505f901d72831214c1f3f4934ce566fd15e77d1ba4069af2dc566ee06954771a6dfef5addd8a29ad015f4f66dfea59e463d2088e2')
 sha512sums=('f2ca5fd5052b307c147ac315eb0cda45a6eaf071de30eef6841c74dac239c2d3bc5a0e1513e4bbd5b3057384676b346428609cb366c3d1086acda982acde7a61')
 
 depends=(openssl)
