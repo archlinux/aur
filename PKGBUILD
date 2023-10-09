@@ -12,7 +12,6 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kactivities5 kdeclarative5 kwayland5 kirigami2)
 makedepends=(extra-cmake-modules qt5-tools qt5-doc kdoctools5 doxygen)
-provides=($_name=$pkgver)
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
