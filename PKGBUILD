@@ -1,14 +1,14 @@
 # Maintainer: Milkii Brewster (aur [a] milkmiruku [dot] com)
 pkgname=mpv-last-fm-scrobbler-git
-pkgver=r7.5a2d39d
+pkgver=r9.43178a4
 pkgrel=1
 epoch=
 pkgdesc="last.fm scrobbler for mpv"
 arch=('any')
-url="https://github.com/l29ah/mpv-plugins/tree/master/last.fm-scrobbler"
+url="https://github.com/Feqzz/mpv-lastfm-scrobbler"
 license=('unknown')
 groups=()
-depends=('mpv')
+depends=('mpv' 'scrobbler')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -19,7 +19,7 @@ backup=()
 options=()
 install="echo.install"
 changelog=
-source=("mpv-last-fm-scrobbler-git::git+https://github.com/l29ah/mpv-plugins")
+source=("mpv-last-fm-scrobbler-git::git+https://github.com/Feqzz/mpv-lastfm-scrobbler")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -41,7 +41,6 @@ build() {
 }
 
 package() {
-	cd "$pkgname"/last.fm-scrobbler/
+	cd "$pkgname"
 	install -D -m644 lastfm.lua "${pkgdir}/usr/share/mpv/scripts/lastfm.lua" 
-	install -D -m644 lastfm.pl "${pkgdir}/usr/bin/lastfm.pl"
 }
