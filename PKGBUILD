@@ -2,7 +2,7 @@
 
 pkgname=gz-physics6
 pkgver=6.5.1
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Abstract physics interface designed to support simulation and rapid development of robot applications."
@@ -16,6 +16,8 @@ depends=(
   'gz-plugin=2'
   'gz-utils=2'
   'sdformat=13'
+  'bullet'
+  'libdart'
   )
 makedepends=(
   'cmake'
@@ -23,8 +25,8 @@ makedepends=(
   'gz-cmake=3'
   )
 optdepends=(
-  'libdart: DARTsim physics plugin'
-  'bullet: bullet physics plugin'
+  #'libdart: DARTsim physics plugin'
+  #'bullet: bullet physics plugin'
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")

@@ -1,7 +1,7 @@
 pkgbase = gz-physics6
 	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
 	pkgver = 6.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-physics
 	arch = any
 	license = Apache
@@ -14,8 +14,8 @@ pkgbase = gz-physics6
 	depends = gz-plugin=2
 	depends = gz-utils=2
 	depends = sdformat=13
-	optdepends = libdart: DARTsim physics plugin
-	optdepends = bullet: bullet physics plugin
+	depends = bullet
+	depends = libdart
 	provides = gz-physics=6
 	source = https://github.com/gazebosim/gz-physics/archive/gz-physics6_6.5.1.tar.gz
 	sha256sums = 4c8f7aef073124817bc54bb9427f6ba72c5b0d5e177e62e95f1dc18fd611d05a
