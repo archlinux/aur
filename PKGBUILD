@@ -2,14 +2,14 @@
 
 pkgname=bruno
 pkgdesc="Opensource IDE For Exploring and Testing Api's"
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
 license=('MIT')
 _electron=electron21
 depends=(
-    "$_electron"
+    "${_electron}"
 )
 makedepends=(
     'nvm'
@@ -18,10 +18,12 @@ makedepends=(
 
 source=(
    "${pkgname}-${pkgver}.tar.gz::https://github.com/usebruno/bruno/archive/v${pkgver}.tar.gz"
+   com.usebruno.app.Bruno.desktop
 )
 
 sha256sums=(
-    '8406b7d1c62d234c92a0653587b5c6097f4defe9b605011c6bd99edd5a45a8e5'
+    'f06365bf55e74c9468a556582b7e2e48960491cdeb72798aceaf7bef75a06e0a'
+    '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051'
 )
 
 _ensure_local_nvm() {
@@ -37,7 +39,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
     nvm install
 
@@ -50,8 +52,9 @@ prepare() {
 build() {
     _ensure_local_nvm
     export NODE_ENV=production
+    export NODE_OPTIONS=--openssl-legacy-provider
 
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
     npm run build:bruno-query
     npm run build:graphql-docs
@@ -59,21 +62,27 @@ build() {
 
     electronDist="/usr/lib/${_electron}"
     electronVer="$(cat ${electronDist}/version)"
-    sed -i -e "s~\"dist\":.*~\"dist\": \"electron-builder --linux --x64 --dir --config electron-builder-config.js -c.electronDist=$electronDist -c.electronVersion=$electronVer\",~g" packages/bruno-electron/package.json
+    sed -i -e "s~\"dist\":.*~\"dist\": \"electron-builder --linux --x64 --dir --config electron-builder-config.js -c.electronDist=${electronDist} -c.electronVersion=${electronVer}\",~g" packages/bruno-electron/package.json
 
     npm run build:electron
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    install -Dm0644 com.usebruno.app.Bruno.desktop -t "${pkgdir}/usr/share/applications/"
 
-    install -Dm0755 /dev/null "$pkgdir/usr/bin/$pkgname"
-    cat >>"$pkgdir/usr/bin/$pkgname" <<EOD
+    cd "${pkgname}-${pkgver}"
+
+    install -Dm0755 /dev/null "${pkgdir}/usr/bin/${pkgname}"
+    cat >> "${pkgdir}/usr/bin/${pkgname}" <<EOD
 #! /usr/bin/sh
-exec $_electron /usr/lib/bruno "\$@"
+ELECTRON_IS_DEV=0 exec ${_electron} /usr/lib/bruno "\$@"
 EOD
 
-    install -Dm0644 license.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -d "$pkgdir/usr/lib/$pkgname/"
-    asar e "packages/bruno-electron/out/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
+    install -Dm0644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -d "${pkgdir}/usr/lib/${pkgname}/"
+    asar e packages/bruno-electron/out/linux-unpacked/resources/app.asar "${pkgdir}/usr/lib/${pkgname}/"
+
+    for i in 16 24 48 64 128 256 512 1024; do
+        install -Dm644 "packages/bruno-electron/resources/icons/png/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/com.usebruno.app.Bruno.png"
+    done
 }

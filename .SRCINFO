@@ -1,6 +1,6 @@
 pkgbase = bruno
 	pkgdesc = Opensource IDE For Exploring and Testing Api's
-	pkgver = 0.21.1
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://www.usebruno.com/
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = bruno
 	makedepends = nvm
 	makedepends = asar
 	depends = electron21
-	source = bruno-0.21.1.tar.gz::https://github.com/usebruno/bruno/archive/v0.21.1.tar.gz
-	sha256sums = 8406b7d1c62d234c92a0653587b5c6097f4defe9b605011c6bd99edd5a45a8e5
+	source = bruno-0.22.0.tar.gz::https://github.com/usebruno/bruno/archive/v0.22.0.tar.gz
+	source = com.usebruno.app.Bruno.desktop
+	sha256sums = f06365bf55e74c9468a556582b7e2e48960491cdeb72798aceaf7bef75a06e0a
+	sha256sums = 7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051
 
 pkgname = bruno
