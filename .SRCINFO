@@ -39,6 +39,7 @@ pkgbase = ferdium
 	conflicts = ferdium-beta
 	conflicts = ferdium-git
 	conflicts = ferdium-electron
+	options = !strip
 	source = ferdium::git+https://github.com/ferdium/ferdium-app#tag=v6.5.1
 	sha512sums = SKIP
 
