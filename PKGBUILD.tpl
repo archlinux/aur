@@ -2,7 +2,7 @@
 
 pkgname=bruno-bin
 _pkgname=bruno
-pkgdesc="Opensource IDE For Exploring and Testing Api's"
+pkgdesc="Opensource API Client for Exploring and Testing APIs"
 pkgver=$BRUNO_VERSION
 pkgrel=1
 arch=('x86_64')
