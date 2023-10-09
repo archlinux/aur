@@ -1,0 +1,26 @@
+pkgbase = ros-noetic-hector-mapping
+	pkgdesc = ROS - hector_mapping is an SLAM approach that can be used without odometry as well as on platforms that exhibit roll/pitch motion (of the sensor, the platform or both).
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://wiki.ros.org/hector_mapping
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-visualization-msgs
+	depends = ros-noetic-tf
+	depends = ros-noetic-message-filters
+	depends = ros-noetic-laser-geometry
+	depends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	depends = eigen
+	depends = boost
+	source = ros-noetic-hector-mapping-0.5.2.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_slam/archive/0.5.2.tar.gz
+	source = eigen.patch
+	sha256sums = c4c94b75062c1849c720b6c21d9fdea8dbd14e96a17c0ee80c630f3c8ea740fd
+	sha256sums = 8b3c532af9520440ccd9c693fb71c1138734f1b8c7ea46011d7ad94f865b1c48
+
+pkgname = ros-noetic-hector-mapping
