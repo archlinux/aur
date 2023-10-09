@@ -7,12 +7,12 @@
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.6
-pkgrel=4
+pkgrel=5
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
 url="https://sourceforge.net/projects/tuxguitar/"
 license=('LGPL')
-depends=('jre-openjdk' 'alsa-lib')
+depends=('java-runtime' 'alsa-lib')
 makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'jdk-openjdk' 'maven')
 optdepends=('fluidsynth')
 source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
@@ -47,6 +47,9 @@ build() {
     cd $_i
     mvn clean install
   ); done
+  # adapt LD_LIBRARY_PATH to Arch location
+  sed -i 's,^LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/jni$,LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/jvm/default-runtime/lib/server,' \
+      "build-scripts/tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch/tuxguitar.sh"
 }
 
 package_tuxguitar-common () {

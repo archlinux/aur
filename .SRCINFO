@@ -1,7 +1,7 @@
 pkgbase = tuxguitar
 	pkgdesc = multitrack guitar tablature editor and player
 	pkgver = 1.5.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sourceforge.net/projects/tuxguitar/
 	arch = any
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = tuxguitar
 	makedepends = fluidsynth
 	makedepends = jdk-openjdk
 	makedepends = maven
-	depends = jre-openjdk
+	depends = java-runtime
 	depends = alsa-lib
 	optdepends = fluidsynth
 	source = https://downloads.sourceforge.net/tuxguitar/tuxguitar-1.5.6-src.tar.gz
