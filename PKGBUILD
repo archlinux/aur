@@ -43,4 +43,5 @@ build() {
 package() {
 	cd "$pkgname"
 	install -D -m644 lastfm.lua "${pkgdir}/usr/share/mpv/scripts/lastfm.lua" 
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
