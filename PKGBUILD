@@ -2,11 +2,12 @@
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
 arch=('x86_64')
 url="https://sourceforge.net/projects/snmpb/"
 license=('GPL2')
+depends=(qwt)
 makedepends=(bison flex qt5-base git)
 source=("$pkgname-code::git+https://git.code.sf.net/p/snmpb/code"
 	"git+https://gitlab.ibr.cs.tu-bs.de/nm/libsmi.git"

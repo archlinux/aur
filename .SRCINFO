@@ -1,14 +1,15 @@
 pkgbase = snmpb
 	pkgdesc = SnmpB is a desktop SNMP browser and MIB editor written in Qt.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 6
 	url = https://sourceforge.net/projects/snmpb/
 	arch = x86_64
 	license = GPL2
 	makedepends = bison
 	makedepends = flex
 	makedepends = qt5-base
-	makedepends = libtomcrypt
+	makedepends = git
+	depends = qwt
 	source = snmpb-code::git+https://git.code.sf.net/p/snmpb/code
 	source = git+https://gitlab.ibr.cs.tu-bs.de/nm/libsmi.git
 	source = libtomcrypt-1.18.2.tar.gz::https://github.com/libtom/libtomcrypt/archive/refs/tags/v1.18.2.tar.gz
