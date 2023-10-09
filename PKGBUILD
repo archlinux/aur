@@ -1,4 +1,5 @@
-# Maintainer: Daniel Eklöf <daniel at ekloef dot se>
+# Maintainer: Fazzi <faaris.ansari@proton.me>
+# Previous Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 
 # Select PGO (Performance Guided Optimizations) build type.
 #
@@ -29,7 +30,7 @@
 
 PGO=auto
 
-pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
+pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic, with a patch for fullscreen transparency (git)'
 pkgname=foot-fullscreen-transparency-git
 pkgver=1.15.3.r53.g1c9d98d5
 pkgrel=1
