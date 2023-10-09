@@ -9,7 +9,7 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.15.4
+pkgver=1.16.5
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -22,6 +22,7 @@ makedepends=(
   glew
   glu
   libglvnd
+  libpng
   libzip
   ninja
   python
@@ -29,10 +30,11 @@ makedepends=(
   qt5-multimedia
   qt5-tools
   sdl2
+  sdl2_ttf
   snappy
   zlib
 )
-_tag=8349d970011aaa22aa7ad0e040bb03a2c540ac9d
+_tag=1ae710d44152b655ea1b5ede9cd1faa69e3836da
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
@@ -44,11 +46,13 @@ source=(
   git+https://github.com/hrydgard/ppsspp-lang.git
   ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
+  git+https://github.com/RetroAchievements/rcheevos.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -74,7 +78,7 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,SPIRV-Cross}; do
+  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,rcheevos,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
@@ -98,7 +102,8 @@ build() {
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSE_SYSTEM_ZSTD=ON \
-    -DUSING_QT_UI=OFF
+    -DUSING_QT_UI=OFF \
+    -Wno-dev
   cmake --build build-sdl
   cmake -S ppsspp -B build-qt -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
@@ -108,21 +113,26 @@ build() {
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSE_SYSTEM_ZSTD=ON \
-    -DUSING_QT_UI=ON
+    -DUSING_QT_UI=ON \
+    -Wno-dev
   cmake --build build-qt
 }
 
 package_ppsspp() {
   depends=(
+    fontconfig
+    gcc-libs
     glew
     glibc
     hicolor-icon-theme
     libgl
+    libpng
     libzip
     ppsspp-assets
     qt5-base
     qt5-multimedia
     sdl2
+    sdl2_ttf
     snappy
     zlib
     zstd
