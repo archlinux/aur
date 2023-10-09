@@ -1,6 +1,6 @@
 pkgbase = mpv-last-fm-scrobbler-git
 	pkgdesc = last.fm scrobbler for mpv
-	pkgver = 0.1
+	pkgver = r7.5a2d39d
 	pkgrel = 1
 	url = https://github.com/l29ah/mpv-plugins/tree/master/last.fm-scrobbler
 	install = echo.install
