@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-cuda
 	pkgdesc = Complete solution to record, convert and stream audio and video. Includes cuda support.
-	pkgver = 5.1.2
+	pkgver = 6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -90,10 +90,9 @@ pkgbase = ffmpeg-cuda
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
-	source = add-av_stream_get_first_dts-for-chromium.patch
-	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = SKIP
-	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
+	source = ffmpeg-cuda-6.0.tar.xz::https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
+	source = libavcodec.patch
+	sha256sums = 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
+	sha256sums = 4a5cda5821a89527f764fe5a0404dada0e4058f4f6b1a7afe28c14229d3aee9f
 
 pkgname = ffmpeg-cuda

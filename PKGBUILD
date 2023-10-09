@@ -12,7 +12,7 @@
 # https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 
 pkgname=ffmpeg-cuda
-pkgver=5.1.2
+pkgver=6.0
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
@@ -111,26 +111,23 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
 source=(
-  "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
-  'add-av_stream_get_first_dts-for-chromium.patch'
+  "${pkgname}-${pkgver}.tar.xz::https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
+  'libavcodec.patch'
 )
-b2sums=('SKIP'
-        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
-validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
+sha256sums=(
+    "57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082"
+    "4a5cda5821a89527f764fe5a0404dada0e4058f4f6b1a7afe28c14229d3aee9f"
+)
 
-pkgver() {
-  cd ffmpeg
-  git describe --tags | sed 's/^n//'
-}
-
+_dir=ffmpeg-${pkgver}
 prepare() {
-  cd ffmpeg
-  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+  cd $_dir
+  patch -p1 -i ${srcdir}/libavcodec.patch
 }
 
 build() {
+  
   local _cflags='-I/opt/cuda/include'
   local _ldflags='-L/opt/cuda/lib64'
   local _nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
@@ -151,7 +148,7 @@ build() {
 #                    -gencode arch=compute_89,code=compute_89 \
 #                    -O2'
 
-  cd ffmpeg
+  cd ${_dir}
 
   ./configure \
     --prefix=/usr \
@@ -224,8 +221,8 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C ffmpeg install install-man
-  install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
+  make DESTDIR="${pkgdir}" -C ${_dir} install install-man
+  install -Dm 755 ${_dir}/tools/qt-faststart "${pkgdir}"/usr/bin/
 
-  install -Dm 644 ffmpeg/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 ${_dir}/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
