@@ -1,0 +1,12 @@
+--- CMakeLists.txt	2021-04-08 09:17:08.000000000 -0700
++++ CMakeLists.txt	2023-10-09 15:49:41.756021276 -0700
+@@ -4,6 +4,9 @@
+ find_package(catkin REQUIRED COMPONENTS cv_bridge geometry_msgs hector_map_tools image_transport nav_msgs sensor_msgs)
+
+ find_package(Eigen3 REQUIRED)
++if (NOT DEFINED EIGEN3_INCLUDE_DIRS)
++  get_target_property(EIGEN3_INCLUDE_DIRS Eigen3::Eigen INTERFACE_INCLUDE_DIRECTORIES)
++endif ()
+ find_package(OpenCV REQUIRED)
+
+ catkin_package(

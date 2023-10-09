@@ -1,0 +1,23 @@
+pkgbase = ros-noetic-hector-compressed-map-transport
+	pkgdesc = ROS - hector_compressed_map_transport provides means for transporting compressed map data through the use of image_transport.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://wiki.ros.org/hector_compressed_map_transport
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-hector-map-tools
+	depends = ros-noetic-image-transport
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-cv-bridge
+	depends = eigen
+	source = ros-noetic-hector-compressed-map-transport-0.5.2.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_slam/archive/0.5.2.tar.gz
+	source = eigen.patch
+	sha256sums = c4c94b75062c1849c720b6c21d9fdea8dbd14e96a17c0ee80c630f3c8ea740fd
+	sha256sums = 14a40823d9b8b8869d0cb1386140de95e73d51f08e7ecd89995e1e700c19b494
+
+pkgname = ros-noetic-hector-compressed-map-transport
