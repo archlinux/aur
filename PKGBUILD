@@ -4,8 +4,8 @@
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 
 pkgname=python-pypuppetdb
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc='Library for working with the PuppetDB REST API'
 arch=('any')
 url='https://github.com/voxpupuli/pypuppetdb'
@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python-sphinx_rtd_theme'
              'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-cov' 'python-mock' 'python-httpretty')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/voxpupuli/pypuppetdb/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('6a71e58024695738576bc87415565c4b25407750fcc005f593e793c0b66e71d74905cdf279bb21ea5c1927220d51341a1cf7011ad918b492ea26870d6214718e')
+sha512sums=('a1f924c2fa63a915581c48a14512388e949d39ff3420b79a323b50949d2bf8fadcf6d92951480e0926d07dc18d82d1f46a35e80e812e5f0daa8f7cc0622c39de')
 
 build() {
   cd ${pkgname#python-}-${pkgver}
