@@ -1,6 +1,6 @@
 pkgbase = typioca-git
 	pkgdesc = Minimal, terminal based typing speed tester
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/bloznelis/typioca
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = typioca-git
 	makedepends = go
 	provides = typioca
 	conflicts = typioca
-	source = git+https://github.com/bloznelis/typioca
+	source = git+https://github.com/bloznelis/typioca#tag=2.6.0
 	sha256sums = SKIP
 
 pkgname = typioca-git
