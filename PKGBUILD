@@ -28,6 +28,7 @@ ros_depends=(
 
 depends=(
     ${ros_depends[@]}
+    eigen
     qt5-base
     qt5-imageformats
 )
