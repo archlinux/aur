@@ -1,6 +1,6 @@
 pkgbase = perl-app-cmd
 	pkgdesc = write command line apps with less suffering
-	pkgver = 0.335
+	pkgver = 0.336
 	pkgrel = 1
 	url = https://metacpan.org/release/App-Cmd
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = perl-app-cmd
 	depends = perl-sub-install>=0
 	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-0.335.tar.gz
-	md5sums = 6f9291dc322db5305402d486edfcdf01
-	sha512sums = 1d2706dbfcb36ba04cc0205d034823d90827cde7627028b3b834024bd6d71f60166607d0848183679b172e54270d92732741d00b505af219e4d2c4cf0de740b5
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-0.336.tar.gz
+	md5sums = 0f6de016a007ee84101925f47bf91570
+	sha512sums = 1d700a2a79b08b32d986cb56f145ee3014a0f827ca77370cf4569d839c6c914b865781caa0cf38cb162f1a5db5a7c4d729e7672ff73f6f6d0d2bc52e4249ca39
 
 pkgname = perl-app-cmd
