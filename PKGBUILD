@@ -7,13 +7,13 @@ arch=('x86_64')
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (.NET 4.8 version)"
 provides=('mpf-check')
 depends=('mono')
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 license=('GPL3')
-source=('https://github.com/SabreTools/MPF/releases/download/2.6.5/MPF.Check_2.6.5-net48.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/2.6.6/MPF.Check_2.6.6-net48.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('8075bc9883b56419853d2ec53bdccca5369960268e3fd9f848c5897f5921f9bd'
+sha256sums=('ce2854ee601cff5062003a394d691cdb0c781d71090db336abbcacfe35589794'
 'SKIP'
 'SKIP')
 
@@ -37,7 +37,7 @@ package() {
 	install -Dm 644 ${srcdir}/mi.dll ${pkgdir}/opt/${_prgname}/mi.dll
 	install -Dm 644 ${srcdir}/Microsoft.Management.Infrastructure.dll ${pkgdir}/opt/${_prgname}/Microsoft.Management.Infrastructure.dll
 	install -Dm 644 ${srcdir}/Microsoft.Management.Infrastructure.Native.dll ${pkgdir}/opt/${_prgname}/Microsoft.Management.Infrastructure.Native.dll
-	install -Dm 644 ${srcdir}/Microsoft.Management.Infrastructure.Native.Unmanaged.dll ${pkgdir}/opt/${_prgname}/Microsoft.Management.Infrastructure.Native.Unmanaged.dll
+	install -Dm 644 ${srcdir}/microsoft.management.infrastructure.native.unmanaged.dll ${pkgdir}/opt/${_prgname}/microsoft.management.infrastructure.native.unmanaged.dll
 	install -Dm 644 ${srcdir}/miutils.dll ${pkgdir}/opt/${_prgname}/miutils.dll
 	install -Dm 755 ${srcdir}/MPF.Check.exe ${pkgdir}/opt/${_prgname}/MPF.Check.exe
 	install -Dm 644 ${srcdir}/MPF.Check.exe.config ${pkgdir}/opt/${_prgname}/MPF.Check.exe.config
@@ -57,13 +57,9 @@ package() {
 	install -Dm 644 ${srcdir}/SabreTools.Serialization.dll ${pkgdir}/opt/${_prgname}/SabreTools.Serialization.dll
 	install -Dm 644 ${srcdir}/SharpCompress.dll ${pkgdir}/opt/${_prgname}/SharpCompress.dll
 	install -Dm 644 ${srcdir}/System.Buffers.dll ${pkgdir}/opt/${_prgname}/System.Buffers.dll
-	install -Dm 644 ${srcdir}/System.Configuration.ConfigurationManager.dll ${pkgdir}/opt/${_prgname}/System.Configuration.ConfigurationManager.dll
 	install -Dm 644 ${srcdir}/System.Memory.dll ${pkgdir}/opt/${_prgname}/System.Memory.dll
 	install -Dm 644 ${srcdir}/System.Numerics.Vectors.dll ${pkgdir}/opt/${_prgname}/System.Numerics.Vectors.dll
 	install -Dm 644 ${srcdir}/System.Runtime.CompilerServices.Unsafe.dll ${pkgdir}/opt/${_prgname}/System.Runtime.CompilerServices.Unsafe.dll
-	install -Dm 644 ${srcdir}/System.Security.AccessControl.dll ${pkgdir}/opt/${_prgname}System.Security.AccessControl.dll
-	install -Dm 644 ${srcdir}/System.Security.Permissions.dll ${pkgdir}/opt/${_prgname}/System.Security.Permissions.dll
-	install -Dm 644 ${srcdir}/System.Security.Principal.Windows.dll ${pkgdir}/opt/${_prgname}/System.Security.Principal.Windows.dll
 	install -Dm 644 ${srcdir}/System.Text.Encoding.CodePages.dll ${pkgdir}/opt/${_prgname}/System.Text.Encoding.CodePages.dll
 	install -Dm 644 ${srcdir}/System.Threading.Tasks.Extensions.dll ${pkgdir}/opt/${_prgname}/System.Threading.Tasks.Extensions.dll
 	install -Dm 644 ${srcdir}/UnshieldSharp.dll ${pkgdir}/opt/${_prgname}/UnshieldSharp.dll
