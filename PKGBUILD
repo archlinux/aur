@@ -18,11 +18,9 @@ conflicts=("${_pkgname}")
 
 source=(
     "${_pkgname}::git+${url}.git"
-    "update-cmake-and-installation-rules.patch"
 )
 
-sha512sums=('SKIP'
-            'afee43c99ed71cfefccd079834249f3da36311c14dd88eee5a18ddfbfd7861d09676f0d78aed12f10d14fe12bb8bab75305625058aacb567a3da90536fc01b34')
+sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || return 1
@@ -32,8 +30,6 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}" || return 1
     rm -rf build && mkdir -p build || return 1
-
-    patch -Np1 -i "${srcdir}/update-cmake-and-installation-rules.patch" || return 1
 }
 
 build() {
