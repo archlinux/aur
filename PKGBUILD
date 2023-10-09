@@ -2,14 +2,15 @@
 
 _name=gtranslator
 pkgname=$_name-git
-pkgver=40.0.r5212.df06d5a6
+pkgver=45.2.r5722.1315ed6a
 pkgrel=1
-pkgdesc='Translation Editor, an enhanced gettext po file editor for the GNOME'
+pkgdesc='An enhanced gettext po file editor for the GNOME desktop environment'
 arch=('x86_64')
-url='https://wiki.gnome.org/Apps/Gtranslator'
+url='https://projects.gnome.org/gtranslator/'
 license=('GPL3')
-depends=(gtksourceview4 gspell gettext libgda libdazzle libhandy)
-makedepends=(meson gobject-introspection git gtk-doc itstool)
+depends=('gtksourceview5' 'gettext' 'libadwaita' 'libgda6' 'iso-codes'
+         'hicolor-icon-theme')
+makedepends=('meson' 'gobject-introspection' 'yelp-tools' 'git')
 conflicts=($_name)
 provides=($_name)
 source=("git+https://gitlab.gnome.org/GNOME/$_name")
@@ -22,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_name build -Dgtk_doc=true
+  arch-meson $_name build
   meson compile -C build
 }
 
@@ -31,5 +32,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir="$pkgdir"
 }
