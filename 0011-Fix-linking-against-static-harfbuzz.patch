@@ -1,4 +1,4 @@
-From cff1619ac4e1e7f190357dc5b6f9a569c9e22914 Mon Sep 17 00:00:00 2001
+From 716c10c6e40754024812695949098b5d1d41232d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:22:56 +0200
 Subject: [PATCH 11/32] Fix linking against static harfbuzz
@@ -25,5 +25,5 @@ index 3f77f67a07..f6da787b13 100644
          },
          "imf": {
 -- 
-2.41.0
+2.42.0
 

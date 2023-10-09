@@ -1,4 +1,4 @@
-From 49e14061fa7b828779878fcde4e70b0b031086fd Mon Sep 17 00:00:00 2001
+From 3e661746886b8ca742435eae2f5021ba3ccc040a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
 Subject: [PATCH 21/32] Allow usage of static version with CMake
@@ -887,7 +887,7 @@ index 5a5bc4d61d..97150fb244 100644
      )
  endif()
 diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
-index eaf9011c3d..65869c5122 100644
+index eaf9011c3d..de09c85b90 100644
 --- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 @@ -1,13 +1,13 @@
@@ -908,8 +908,11 @@ index eaf9011c3d..65869c5122 100644
              $$VERSION ${_Qt5$${CMAKE_MODULE_NAME}_FIND_VERSION_EXACT}
              ${_Qt5$${CMAKE_MODULE_NAME}_DEPENDENCIES_FIND_QUIET}
              ${_Qt5$${CMAKE_MODULE_NAME}_FIND_DEPENDENCIES_REQUIRED}
-@@ -17,17 +17,25 @@ foreach(_module_dep ${_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES})
+@@ -15,19 +15,27 @@ foreach(_module_dep ${_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES})
+         )
+     endif()
  endforeach()
++!!ENDIF
  
  !!IF !isEmpty(CMAKE_RELEASE_TYPE)
 -    _populate_$${CMAKE_MODULE_NAME}_plugin_properties(Qt5::$$CMAKE_MODULE_NAME Qt5::$$CMAKE_PLUGIN_NAME $$CMAKE_PLUGIN_NAME RELEASE \"$${CMAKE_PLUGIN_LOCATION_RELEASE}\")
@@ -917,7 +920,6 @@ index eaf9011c3d..65869c5122 100644
 +    _populate_$${CMAKE_MODULE_NAME}_plugin_properties_static(${QT_VARIANT_PREFIX}Qt5::$$CMAKE_MODULE_NAME ${QT_VARIANT_PREFIX}Qt5::$$CMAKE_PLUGIN_NAME $$CMAKE_PLUGIN_NAME RELEASE \"$${CMAKE_PLUGIN_LOCATION_RELEASE_STATIC}\")
 +!!ELSE
 +    _populate_$${CMAKE_MODULE_NAME}_plugin_properties(${QT_VARIANT_PREFIX}Qt5::$$CMAKE_MODULE_NAME ${QT_VARIANT_PREFIX}Qt5::$$CMAKE_PLUGIN_NAME $$CMAKE_PLUGIN_NAME RELEASE \"$${CMAKE_PLUGIN_LOCATION_RELEASE}\")
-+!!ENDIF
  !!ENDIF
  !!ENDIF
  
@@ -1089,5 +1091,5 @@ index 2a575958ae..ca0e3be3b5 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.41.0
+2.42.0
 

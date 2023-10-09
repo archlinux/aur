@@ -1,4 +1,4 @@
-From 511dc70a41721926177d5429b928dae0d9766f70 Mon Sep 17 00:00:00 2001
+From f64f48aa8a335b7fc872138b0d10f9fb832058cc Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:58:28 +0200
 Subject: [PATCH 05/32] Don't add resource files to LIBS parameter
@@ -24,5 +24,5 @@ index ee9a41838b..8d1dcae85b 100644
      if (project->isActiveConfig("dll")) {
          QString destDir = "";
 -- 
-2.41.0
+2.42.0
 

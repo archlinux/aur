@@ -1,4 +1,4 @@
-From 1bed841db4ffc9375f0688a0ceb1597844d9ed02 Mon Sep 17 00:00:00 2001
+From d2866fb33b4e0cc5938d2f71487aaa0d8ee2660a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:56:55 +0200
 Subject: [PATCH 13/32] Fix linking against shared/static MariaDB
@@ -22,5 +22,5 @@ index 28ccbeadcd..7262914c64 100644
                  { "type": "mysqlConfig", "query": "--libs", "cleanlibs": true },
                  { "type": "mysqlConfig", "query": "--libs_r", "cleanlibs": false },
 -- 
-2.41.0
+2.42.0
 
