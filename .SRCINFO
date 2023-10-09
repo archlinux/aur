@@ -1,0 +1,27 @@
+pkgbase = gz-gui8
+	pkgdesc = Graphical interfaces for robotics applications
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-gui
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=3
+	makedepends = vulkan-headers
+	depends = protobuf
+	depends = tinyxml2
+	depends = gz-utils=2
+	depends = gz-math=7
+	depends = gz-common=5
+	depends = gz-plugin=2
+	depends = gz-transport=13
+	depends = gz-rendering=8
+	depends = gz-msgs=10
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	provides = gz-gui=8
+	source = https://github.com/gazebosim/gz-gui/archive/gz-gui8_8.0.0.tar.gz
+	sha256sums = 4bb54ca7259fc312b6891d7054f04a3d8b89b150ffb31fb2fe50c717e20feac8
+
+pkgname = gz-gui8
