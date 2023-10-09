@@ -1,7 +1,7 @@
 # Maintainer: Anima <animafps@pm.me>
 pkgname=irqbalance-openrc
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon that distributes interrupts over the processors"
 url="https://github.com/Irqbalance/irqbalance"
 arch=('any')
@@ -28,7 +28,8 @@ build() {
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--mandir=/usr/share/man \
-		--infodir=/usr/share/info
+		--infodir=/usr/share/info\
+                --sbindir=/usr/bin
 	make
 }
 

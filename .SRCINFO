@@ -1,7 +1,7 @@
 pkgbase = irqbalance-openrc
 	pkgdesc = Daemon that distributes interrupts over the processors
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Irqbalance/irqbalance
 	arch = any
 	license = GPL-2.0-or-later
