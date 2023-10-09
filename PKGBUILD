@@ -5,8 +5,8 @@
 pkgname=alchemy-viewer
 pkgdesc="A Second Life client with focus on performance and code correctness."
 pkgver=7.0.0.2170
-pkgrel=4
-epoch=1696809895
+pkgrel=5
+epoch=1
 _project_id=200
 _releasename="Alchemy Project PBR"
 _releasename_underscored="${_releasename// /_}"
