@@ -1,0 +1,21 @@
+pkgbase = ros-noetic-jackal-viz
+	pkgdesc = ROS - Visualization launchers and helpers for Jackal.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/jackal/jackal_desktop
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-jackal-description
+	depends = ros-noetic-joint-state-publisher
+	depends = ros-noetic-joint-state-publisher-gui
+	depends = ros-noetic-rqt-console
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rqt-robot-monitor
+	depends = ros-noetic-rviz
+	source = ros-noetic-jackal-viz-0.4.1.tar.gz::https://github.com/jackal/jackal_desktop/archive/0.4.1.tar.gz
+	sha256sums = 17637450e38712cc8d773c60e1527780b2aa33b2522b4342241163eb72f2e618
+
+pkgname = ros-noetic-jackal-viz
