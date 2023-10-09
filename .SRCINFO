@@ -8,7 +8,6 @@ pkgbase = gz-common5
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
-	makedepends = pkg-config
 	depends = assimp
 	depends = ffmpeg4.4
 	depends = freeimage
