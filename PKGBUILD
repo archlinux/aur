@@ -3,8 +3,8 @@
 
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-bin)
-pkgver=1.2.2
-pkgrel=3
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 url="https://github.com/rustdesk/rustdesk"
 license=('GPL3')
