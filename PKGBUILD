@@ -17,7 +17,6 @@ optdepends=('catdoc: Extract text from Office 98 files'
 makedepends=(extra-cmake-modules catdoc doxygen qt5-tools qt5-doc libappimage kdegraphics-mobipocket)
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
-provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
 sha256sums=('8f46dc99401ddddf3518ce7bda4ec8d2c7630f5bedd948fc5718c5ef99d96dc7'
