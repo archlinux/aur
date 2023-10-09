@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=fuc
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Modern, performance focused unix commands"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 checkdepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SUPERCILEX/fuc/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8fa22647b9a8939e18884325a0d5640cfe5a88ea33bbb14781a2135b5464f465')
+sha256sums=('5301e4634b8de57d1afb4111b0623f2c3967f9a160a043914f0fa400a77dfbc3')
 
 _commands=('cpz' 'rmz')
 
