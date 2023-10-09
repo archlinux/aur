@@ -1,10 +1,10 @@
 # Maintainer: jkl
 _pkgname=dupluxy
 pkgname=$_pkgname-git
-pkgver=v0.1.0.r1.e3e8740
+pkgver=v0.1.0.r0.2d5338f
 _duplicacyver=v3.2.3
-pkgrel=1
-pkgdesc="Cloud backup tool based on lock-free deduplication with Linux/POSIX enhancement (special file/hardlinks/flags)"
+pkgrel=2
+pkgdesc="Duplicacy based cloud backup tool based on lock-free deduplication with Linux/POSIX enhancement and hardlinks"
 arch=('x86_64' 'i686')
 url="https://www.dupluxy.com/"
 license=('custom')
@@ -56,7 +56,7 @@ build() {
 }
 
 check() {
-  cd "$_pkgname/$_pkgname"
+  cd "$_pkgname/src"
 
   git checkout master
 
