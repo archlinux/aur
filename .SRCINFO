@@ -1,0 +1,16 @@
+pkgbase = matm-git
+	pkgdesc = A tool to watch anime, movies, tv shows and read manga from the comfort of the cli!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/crolbar/matm
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = mpv
+	depends = fzf
+	optdepends = vlc: an alternative video player for movies
+	source = git+https://github.com/crolbar/matm
+	md5sums = SKIP
+
+pkgname = matm-git
