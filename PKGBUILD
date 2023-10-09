@@ -3,7 +3,7 @@
 _pkgname=mercury-browser
 pkgname=${_pkgname}-bin
 pkgver=115.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox fork with compiler optimizations and patches from Librewolf, Waterfox, and GNU IceCat."
 arch=('x86_64')
 url="https://thorium.rocks/mercury"
@@ -30,7 +30,8 @@ package() {
   mkdir -p "$pkgdir"/opt
 
   # Install
-  cp -r mercury_115.3.0_linux_x64/ "$pkgdir"/opt/$_pkgname
+  mv mercury_115.3.0_linux_x64/  mercury_${pkgver}_linux_x64/
+  cp -r mercury_${pkgver}_linux_x64/mercury/ "$pkgdir"/opt/$_pkgname
 
   # Launchers
   install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
