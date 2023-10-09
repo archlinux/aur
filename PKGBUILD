@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=rng-rename
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A CLI tool to rename files to randomly generated strings."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
