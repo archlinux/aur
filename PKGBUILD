@@ -7,7 +7,7 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth-nox
 pkgname=(gdm-plymouth-nox libgdm-plymouth-nox)
-pkgver=44.1
+pkgver=45.0.1
 pkgrel=1
 pkgdesc="Display manager and login screen, but without xorg-server"
 url="https://wiki.gnome.org/Projects/GDM"
@@ -29,7 +29,7 @@ makedepends=(
   meson
 )
 checkdepends=(check)
-_commit=b622872c5f24960c18900ebf14b5233b8701a8f9  # tags/44.1^0
+_commit=ef5620737de697d215f655722617e49f4a9a448e  # tags/45.0.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
         )
@@ -44,9 +44,6 @@ sha256sums=('SKIP'
 prepare() {
   cd $_pkgbase
   
-  # https://gitlab.gnome.org/GNOME/gdm/-/issues/730
-  git cherry-pick -n b29510dbc51ccf71a7c0ed656d21634a83766c0c
-
   # Don't start ssh-agent by default
   git apply -3 ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 }
