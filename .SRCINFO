@@ -1,0 +1,14 @@
+pkgbase = ssh-agent-env-var
+	pkgdesc = An /etc/profile.d script to set the environment variable for ssh-agent
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/SSH_keys#Start_ssh-agent_with_systemd_user
+	install = ssh-agent.install
+	arch = any
+	license = GPL
+	optdepends = openssh: ssh-agent and its systemd user unit
+	conflicts = systemd-ssh-agent>1.0.0-1
+	source = ssh-auth-sock.sh
+	sha256sums = c04f183ce1b97cb225aea1db2ae908dc70669066935717ea3d5b171bc10455a0
+
+pkgname = ssh-agent-env-var
