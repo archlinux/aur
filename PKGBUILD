@@ -2,8 +2,8 @@
 # Contributor: Carlo Sala <carlosalag@protonmail.com>
 
 pkgname=surfshark-gui-bin
-pkgver=1.6.0
-pkgrel=2040
+pkgver=1.7.1
+pkgrel=2125
 pkgdesc="Official Surfshark VPN client"
 package="surfshark_${pkgver}-${pkgrel}_amd64.deb"
 url="https://surfshark.com"
@@ -34,7 +34,7 @@ conflicts=('surfshark-vpn-gui'
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${package}::https://ocean.surfshark.com/debian/pool/main/s/surfshark/${package}")
-sha512sums=('3d1690c303e42645d7d45df9f089b83cfd8f931c67e3197a69b2cff00cd36a2bd4dc7ab34e4b41c902fb42bef3f2e716f9596b37708f5649bf49ecdd1d7ddbc8')
+sha512sums=('f7f165b1e8c78024421056ac14b32ba0b466da98d4f84b27a12a583f3f3c18322cace594da055c423d6e3e11d7540029274c82a588b0aee0a984edce23279873')
 
 prepare() {
     tar xf data.tar.xz
