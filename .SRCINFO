@@ -33,6 +33,7 @@ pkgbase = ferdium-nightly-bin
 	conflicts = ferdium-beta
 	conflicts = ferdium-git
 	conflicts = ferdium-electron
+	options = !strip
 	source_x86_64 = ferdium-nightly-bin-6.5.2-nightly.1-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.5.2-nightly.1/Ferdium-linux-6.5.2-nightly.1-amd64.deb
 	sha512sums_x86_64 = 5e6edda6045915538681bf39918239c01521c9985f3bb05b3986158c68bdf87b2147ace5c7540711ea8823ac9a481e803939bd553b5bb8fb24927b6b183303de
 	source_armv7l = ferdium-nightly-bin-6.5.2-nightly.1-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.5.2-nightly.1/Ferdium-linux-6.5.2-nightly.1-armv7l.deb
