@@ -1,6 +1,6 @@
 pkgbase = z-library-bin
 	pkgdesc = Z-library application
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://singlelogin.se
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = z-library-bin
 	depends = libsecret
 	depends = libappindicator-gtk3
 	source = https://go-to-zlibrary.se/soft/zlibrary-setup-latest.deb
-	sha256sums = d2b7e66c18b58a51385090b7b116b8506ca60b79d7e61ee2f075623188db2c10
+	sha256sums = 7fbdcefcea789dea4e2cde07593fdfa2c35626e94d03e017047ee96f597fefe3
 
 pkgname = z-library-bin
