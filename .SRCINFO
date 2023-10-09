@@ -1,0 +1,15 @@
+pkgbase = ros-noetic-jackal-simulator
+	pkgdesc = ROS - For simulating Jackal
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/jackal/jackal_simulator
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-jackal-gazebo
+	source = ros-noetic-jackal-simulator-0.4.0.tar.gz::https://github.com/jackal/jackal_simulator/archive/0.4.0.tar.gz
+	sha256sums = 6062601f647560e402eb7a1a6829c9d8711b1025f712ae9dd935ca05c261ba31
+
+pkgname = ros-noetic-jackal-simulator
