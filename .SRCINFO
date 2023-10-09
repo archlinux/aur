@@ -1,6 +1,6 @@
 pkgbase = session-desktop
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.10.4
+	pkgver = 1.11.4
 	pkgrel = 1
 	url = https://getsession.org
 	install = session-desktop.install
@@ -10,7 +10,7 @@ pkgbase = session-desktop
 	makedepends = git-lfs
 	makedepends = nvm
 	makedepends = yarn
-	makedepends = nodejs>=14.16.0
+	makedepends = nodejs
 	depends = libxtst
 	depends = nss
 	depends = alsa-lib

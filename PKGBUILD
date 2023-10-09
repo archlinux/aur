@@ -1,13 +1,13 @@
-# Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
+# Maintainer: Antony Ho <ntonyworkshop@gmail.com>
 pkgname=session-desktop
-pkgver=1.10.4
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
 license=('GPL-3.0')
 depends=(libxtst nss alsa-lib libxss libnotify xdg-utils)
-makedepends=('git' 'git-lfs' 'nvm' 'yarn' 'nodejs>=14.16.0')
+makedepends=('git' 'git-lfs' 'nvm' 'yarn' 'nodejs')
 optdepends=('libappindicator-gtk3: for tray support')
 provides=(session-messenger-desktop)
 conflicts=(session-desktop-bin session-desktop-git session-desktop-appimage)
@@ -21,20 +21,20 @@ sha256sums=('SKIP'
 prepare() {
   cd $srcdir/session-desktop
   git checkout v$pkgver
-  source /usr/share/nvm/init-nvm.sh && nvm install 16
+  source /usr/share/nvm/init-nvm.sh
   git lfs install
   nvm install
   nvm use
 }
 
 build() {
-  cd "$srcdir/session-desktop"
-  source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v16 --silent
-  export SIGNAL_ENV=production
+  cd $srcdir/session-desktop
+  source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix
   yarn install
-  yarn generate
   export SIGNAL_ENV=production
-  $(yarn bin)/electron-builder --config.extraMetadata.environment=$SIGNAL_ENV --publish=never --config.directories.output=release --linux tar.xz
+  yarn build-everything
+  sed -i 's/\"target\": \[\"deb\", \"rpm\", \"freebsd\"\]/\"target\": \"tar.xz\"/g' package.json
+  $(yarn bin)/electron-builder --config.extraMetadata.environment=$SIGNAL_ENV --publish=never --config.directories.output=release --linux
 }
 
 package() {
