@@ -6,7 +6,7 @@
 
 pkgname=openafs
 pkgver=1.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -94,6 +94,10 @@ package() {
 
   # install tmpfiles.d entry for /afs
   install -Dm644 "${srcdir}/tmpfiles.d-openafs.conf" "${pkgdir}/usr/lib/tmpfiles.d/openafs.conf"
+
+  # rename backup which is a script installed as part of tar
+  mv "${pkgdir}/usr/bin/backup" "${pkgdir}/usr/bin/backup-openafs"
+  mv "${pkgdir}/usr/share/man/man8/backup.8" "${pkgdir}/usr/share/man/man8/backup-openafs.8"
 
   # if kauth was installed rename kpasswd which is already provided by krb5 and move PAM libs
   if [ $ENABLE_KAUTH -eq 1 ]; then

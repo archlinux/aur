@@ -1,7 +1,7 @@
 pkgbase = openafs
 	pkgdesc = Open source implementation of the AFS distributed file system
 	pkgver = 1.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	install = openafs.install
 	arch = i686
