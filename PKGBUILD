@@ -87,6 +87,10 @@ build() {
   export VERBOSE=1
   export OPENSSL_ENABLE_SHA1_SIGNATURES=1
 
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
   CFLAGS=$(echo $CFLAGS  | sed -e 's/-fstack-clash-protection//' )
   CXXFLAGS=$(echo $CXXFLAGS  | sed -e 's/-fstack-clash-protection//' )
   export EXTRA_CFLAGS="$CFLAGS"
