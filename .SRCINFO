@@ -1,0 +1,13 @@
+pkgbase = aladdin-2fa-desktop-bin
+	pkgdesc = 2FA Push and OTP authenticator for JaCarta Authentication Server (JAS)
+	pkgver = 1.2.0.23
+	pkgrel = 1
+	url = https://aladdin-rd.ru
+	arch = x86_64
+	license = unknown
+	options = !strip
+	options = !emptydirs
+	source = https://www.aladdin-rd.ru/upload/downloads/aladdin-2fa/aladdin-2fa-desktop-x64-1.2.0.23.deb
+	sha512sums = c1c5e4dbdd6851a6a39e8bba5d710e262a31589ed90d8a60886887dc65724b8a087c0cd91c07a718a0a0471069991dee96c4519b0c599a78d22589da20bc2427
+
+pkgname = aladdin-2fa-desktop-bin
