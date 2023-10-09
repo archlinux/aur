@@ -1,7 +1,7 @@
 pkgbase = epic-piano-instrument
 	pkgdesc = Epic Piano - The virtual instrument based on the RoninEngine framework that allows you to unleash your creative potential and craft music of epic proportions.
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/badcast/epic-piano-instrument
 	arch = x86_64
 	license = GPLv3
@@ -10,7 +10,12 @@ pkgbase = epic-piano-instrument
 	makedepends = make
 	makedepends = pkgconf
 	depends = ronin-engine
+	depends = hicolor-icon-theme
 	source = git+https://github.com/badcast/epic-piano-instrument.git
-	md5sums = SKIP
+	source = epic-piano-instrument.desktop
+	source = epic-piano-instrument-icon.png
+	sha256sums = SKIP
+	sha256sums = 3cceec90fcaebcea5400d3ca588bac8a170e64cd35b51960d0f369a47f4b48a5
+	sha256sums = 8434f3dfe581ff89f222b6eb6c8bc3f847c4e20bc2153ea6778d550899c15be4
 
 pkgname = epic-piano-instrument

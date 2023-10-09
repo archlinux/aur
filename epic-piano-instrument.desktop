@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Epic Piano Instrument (Ronin Engine)
+Comment=The virtual instrument based on the RoninEngine framework that allows you to unleash your creative potential and craft music of epic proportions.
+GenericName=Epic Piano
+Exec=epic-piano-instrument
+Icon=epic-piano-instrument-icon
+StartupNotify=true
+Type=Application
+Categories=Audio;
+Keywords=epi;epic-piano;piano;music;playonfire;badcast-for-cast;
