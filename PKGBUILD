@@ -1,9 +1,9 @@
 # Maintainer: Camren Mumme <camren.mumme@gmail.com>
 _npmname=@tgra/cli
 _npmnamenoscope=cli
-_npmver=1.0.3
+_npmver=1.2.0
 pkgname=tegra
-pkgver=1.0.3
+pkgver=1.2.0
 pkgrel=4
 pkgdesc="A command line interface for @tgra/profiler to build Tegra images from a Tegra profile."
 arch=(any)
