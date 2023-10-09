@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-rosdoc-lite
-    pkgdesc="ROS - This ROS package wraps documentation tools like doxygen, sphinx, and epydoc, making it convenient to generate ROS package documentation."
-    pkgver=0.2.11
-    pkgrel=1
-    url='http://wiki.ros.org/rosdoc_lite'
+    pkgdesc = "ROS - This ROS package wraps documentation tools like doxygen, sphinx, and epydoc, making it convenient to generate ROS package documentation."
+    pkgver = 0.2.11
+    pkgrel = 1
+    url = 'http://wiki.ros.org/rosdoc_lite'
     arch = i686
     arch = x86_64
     arch = aarch64
