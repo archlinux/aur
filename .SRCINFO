@@ -1,0 +1,23 @@
+pkgbase = ros-noetic-laser-proc
+    pkgdesc = ROS - Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
+    pkgver = 0.1.6
+    pkgrel = 1
+    url = https://github.com/ros-perception/laser_proc
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = ros-noetic-roscpp
+    depends = ros-noetic-rosconsole
+    depends = ros-noetic-sensor-msgs
+    depends = ros-noetic-pluginlib
+    depends = ros-noetic-nodelet
+    source = ros-noetic-laser-proc-0.1.6.tar.gz::https://github.com/ros-perception/laser_proc/archive/0.1.6.tar.gz
+    sha256sums = ce421a0cd53d0bed992b28c4baeab17f398caddd3d953c82d46982cfe0c08fd4
+
+pkgname = ros-noetic-laser-proc
