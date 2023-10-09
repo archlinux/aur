@@ -1,4 +1,4 @@
-From 958d0705b8a8faed9d8a07b3e1ea3949317211f9 Mon Sep 17 00:00:00 2001
+From 0a5405232e44b2d9d26276a3553b6c67e0e9f545 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 32/32] Fix crashes in rasterization code using setjmp
@@ -231,7 +231,7 @@ index 0143e9b602..803a676e1a 100644
          *araster = 0;
          return ErrRaster_Memory_Overflow;
 diff --git a/src/gui/painting/qt_attribution.json b/src/gui/painting/qt_attribution.json
-index 0e87d30aa2..8566ce0048 100644
+index 1a2b907606..746a41efa8 100644
 --- a/src/gui/painting/qt_attribution.json
 +++ b/src/gui/painting/qt_attribution.json
 @@ -4,7 +4,7 @@
@@ -244,5 +244,5 @@ index 0e87d30aa2..8566ce0048 100644
          "Description": "FreeType is a freely available software library to render fonts.",
          "Homepage": "http://www.freetype.org",
 -- 
-2.41.0
+2.42.0
 

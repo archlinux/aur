@@ -1,4 +1,4 @@
-From a58a8c47e247696eb9061c949ad1567de5307afd Mon Sep 17 00:00:00 2001
+From 823153dcc57354cbcd5e06646c3170e4f09767c5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
 Subject: [PATCH 08/32] Fix linking against static D-Bus
@@ -54,5 +54,5 @@ index accaa4f5ed..4b11c74caa 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.41.0
+2.42.0
 
