@@ -3,7 +3,7 @@ url='https://github.com/jackal/jackal'
 
 pkgname='ros-noetic-jackal-control'
 pkgver='0.8.8'
-arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+arch=('x86_64')
 pkgrel=1
 license=("BSD")
 
