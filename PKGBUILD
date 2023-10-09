@@ -2,7 +2,7 @@
 
 _pkgname=youtube-dl-gui
 pkgname=$_pkgname-bin
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="A cross-platform GUI for youtube-dl made in Electron and node.js (binary release)"
 url="https://github.com/StefanLobbenmeier/youtube-dl-gui"
@@ -13,7 +13,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage=Open-Video-Downloader-$pkgver.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('b7e45d10fb6005896e608bd0c230df6ab91b7f9488e091972887e837063bb0d2')
+sha256sums=('9ead12d7de796ef2f259f7bd09f84e9adbaccc6227b8d5a599478327df184a39')
 
 _fix_permissions() (
   target=$1
