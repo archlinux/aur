@@ -16,7 +16,6 @@ optdepends=('kdeconnect: sharing to smartphone via KDE Connect'
             'prison5: QR code plugin')
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
-provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
 sha256sums=('311d1857dd1d548a7e11d13515e942484374bf3f23036aee65625ef33163efa9'
