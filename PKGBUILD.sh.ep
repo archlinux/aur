@@ -18,7 +18,7 @@
 
 % end
 \
-pkgver=5.15.10
+pkgver=5.15.11
 pkgrel=1
 arch=(<%== include 'fragments/mingw-w64-qt5-non_any_archs' %>)
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"

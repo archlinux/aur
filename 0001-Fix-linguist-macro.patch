@@ -1,4 +1,4 @@
-From 7e93bb1841baab628c38a52c13ca3c7ce30a75ef Mon Sep 17 00:00:00 2001
+From 1d74021c2dbe09de704ba198a6b0b3d776a7c52a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
 Subject: [PATCH] Fix linguist macro
@@ -40,5 +40,5 @@ index 0ccf59f3c..01f5f3cd6 100644
              DEPENDS ${qm_dep} VERBATIM
          )
 -- 
-2.41.0
+2.42.0
 
