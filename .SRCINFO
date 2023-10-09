@@ -1,0 +1,21 @@
+pkgbase = ros-noetic-jackal-gazebo
+	pkgdesc = ROS - Launchfiles to use Jackal in Gazebo.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/jackal/jackal_simulator
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-roslaunch
+	depends = ros-noetic-gazebo-ros
+	depends = ros-noetic-gazebo-ros-control
+	depends = ros-noetic-gazebo-plugins
+	depends = ros-noetic-hector-gazebo-plugins
+	depends = ros-noetic-jackal-control
+	depends = ros-noetic-jackal-description
+	source = ros-noetic-jackal-gazebo-0.4.0.tar.gz::https://github.com/jackal/jackal_simulator/archive/0.4.0.tar.gz
+	sha256sums = 6062601f647560e402eb7a1a6829c9d8711b1025f712ae9dd935ca05c261ba31
+
+pkgname = ros-noetic-jackal-gazebo
