@@ -39,6 +39,7 @@ pkgbase = ferdium-nightly
 	conflicts = ferdium-beta
 	conflicts = ferdium-git
 	conflicts = ferdium-electron
+	options = !strip
 	source = ferdium-nightly::git+https://github.com/ferdium/ferdium-app#tag=v6.5.2-nightly.1
 	sha512sums = SKIP
 
