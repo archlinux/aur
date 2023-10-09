@@ -15,7 +15,6 @@ makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc qt5-declarative)
 optdepends=('qt5-declarative: QML bindings')
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
-provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
 sha256sums=('ec25f821d2e641960d477c88bdb99b5147ae5f808620abfc6c28f946ffb6deff'
