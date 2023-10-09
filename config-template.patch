@@ -9,12 +9,12 @@
  
  ## Private key file.
  ## Contains the secret private key used to store the passwords safely.
-@@ -93,7 +93,7 @@ database_url = "sqlite:///data/users.db?mode=rwc"
- ## would still have to perform an (expensive) brute force attack to find
- ## each password.
- ## Randomly generated on first run if it doesn't exist.
+@@ -96,7 +96,7 @@ database_url = "sqlite:///data/users.db?mode=rwc"
+ ## Alternatively, you can use key_seed to override this instead of relying on
+ ## a file.
+ ## Env variable: LLDAP_KEY_FILE
 -key_file = "/data/private_key"
 +key_file = "/var/lib/lldap/data/private_key"
  
- ## Ignored attributes.
- ## Some services will request attributes that are not present in LLDAP. When it
+ ## Seed to generate the server private key, see key_file above.
+ ## This can be any random string, the recommendation is that it's at least 12

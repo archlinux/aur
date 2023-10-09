@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lldap
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Light LDAP implementation'
 arch=('x86_64')
@@ -11,18 +11,16 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'rust' 'wasm-pack' 'rust-wasm' 'wasm-bindgen')
 backup=('etc/lldap.toml')
 options=('!lto')
-_commit='252132430cdbf22f3c8e549e1826f9c68ae0e6ae'
+_commit='6f04530700cbe00e979c84483a8310b1339e9d6e'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'config-template.patch'
-  'Cargo.lock.patch'
   'systemd.service'
   'sysusers.conf'
   'tmpfiles.conf'
 )
 b2sums=('SKIP'
-        '469c0e188396a25087a81c3c751a6ba17736d177fbf4695125781361212f6b60918d1b082bf0b133ffd1cafb17e101d61819f2a812fb46f354d8ab77bde1e0ad'
-        'e9027e99d2ea2779ece257c8ec5ceb94dd3068959588c9d595cc2f8bedc7387398dbd2f39f1188f9e3484a396e62630d676767bf3156d11243aadc084f92baf8'
+        '3c1a5d25ecd028b11c42ef92dd4e9763d2817c63157fb9b31e1e6283cd1195063eeb7fb0867362cfd585921c09a1010e3a2c8545e69cd2d304d708d385a2da2c'
         'a03e0d02f423626e3c5796f2867b7a8f2207949987cb655967c85952db2f283c5fd0a5d1bc869332aec04ede54aa0f9740b507110ac5b604eb5703afe315f43a'
         'e491337a2ba4ca68ed6afe3a0779a608f718da4107547276562582bc24b7ab21af724b4026adfe3b845ef9e81284bb54da548b8f48b4b1b1bf8525316f990f82'
         '1caff6be850db02f3dcd8d4ca12a2f18acf40c2900cb2d0866cf3a3c131bda9c9bf5d32a072f250f1d0700ac7dd3e43f05d4d33dd2e5f21c6a983a57e1c5adcc')
@@ -35,9 +33,6 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-
-  # patch Cargo
-  patch -p1 -i "$srcdir/Cargo.lock.patch"
 
   # patch configuration template
   patch -p1 -i "$srcdir/config-template.patch"
