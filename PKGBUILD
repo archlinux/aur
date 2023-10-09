@@ -4,7 +4,7 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.12.5
+pkgver=3.12.6
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -48,14 +48,25 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=a8471d81b36ea1d9dc90a7d35f9ad0631feaf1ae
-source=(git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag})
-b2sums=(SKIP)
+_tag=d11567122daaba250860c24219810931ace4ce5c
+source=(
+  git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag}
+  git+https://github.com/Joshua-Ashton/reshade.git
+  git+https://github.com/KhronosGroup/SPIRV-Headers.git
+)
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
   cd gamescope
   meson subprojects download
-  sed 's/glslangValidator/glslang/g' -i src/meson.build
+  git submodule init src/reshade
+  git config submodule.src/reshade.url ../reshade
+  git submodule init thirdparty/SPIRV-Headers
+  git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+  git -c protocol.file.allow=always submodule update
+
 }
 
 pkgver() {
@@ -64,8 +75,6 @@ pkgver() {
 }
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.15/pkgconfig'
-  export LDFLAGS="$LDFLAGS -lrt"
   arch-meson gamescope build \
     -Dforce_fallback_for=stb \
     -Dpipewire=enabled
