@@ -1,0 +1,24 @@
+pkgbase = gz-harmonic
+	pkgdesc = Gazebo Harmonic: toolbox of development libraries and cloud services for robotics simulation.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-harmonic
+	arch = any
+	license = Apache
+	depends = gz-cmake=3
+	depends = gz-common=5
+	depends = gz-fuel-tools=9
+	depends = gz-gui=8
+	depends = gz-launch=7
+	depends = gz-math=7
+	depends = gz-msgs=10
+	depends = gz-physics=7
+	depends = gz-plugin=2
+	depends = gz-rendering=8
+	depends = gz-sensors=8
+	depends = gz-sim=8
+	depends = gz-transport=13
+	depends = gz-utils=2
+	depends = sdformat=14
+
+pkgname = gz-harmonic
