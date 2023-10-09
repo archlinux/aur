@@ -2,8 +2,8 @@
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.16.0.r12.gdfaf2ee2
-pkgrel=2
+pkgver=0.16.0.r23.g425b43b3
+pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
 arch=("any")
@@ -37,7 +37,7 @@ build(){
     corepack enable --install-directory "$srcdir/bin"
     
     export PATH="$PATH:$srcdir/bin"
-    pnpm i --frozen-lockfile
+    pnpm install --store-dir=$srcdir/pnpm-store --frozen-lockfile
     pnpm type-gen
     pnpm build
     cp -r "dist" "$srcdir/$_pkgname/server/"
