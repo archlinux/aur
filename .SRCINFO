@@ -1,0 +1,15 @@
+pkgbase = termtree
+	pkgdesc = A file tree view
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/bendikMichal/termtree
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	makedepends = make
+	depends = glibc
+	source = git+https://github.com/bendikMichal/termtree
+	md5sums = SKIP
+
+pkgname = termtree
