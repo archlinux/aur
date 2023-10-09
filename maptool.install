@@ -1,7 +1,7 @@
 post_install() {
-	xdg-mime install /opt/maptool/lib/maptool-MapTool-MimeInfo.xml
+	xdg-mime install '/usr/share/java/maptool/maptool-mimeinfo.xml'
 }
 
 pre_remove() {
-	xdg-mime uninstall /opt/maptool/lib/maptool-MapTool-MimeInfo.xml
+	xdg-mime uninstall '/usr/share/java/maptool/maptool-mimeinfo.xml'
 }
