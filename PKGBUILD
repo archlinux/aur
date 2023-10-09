@@ -21,5 +21,5 @@ build() {
 }
 
 package() {
-	ninja -C build install
+	DESTDIR=${pkgdir} ninja -C build install
 }
