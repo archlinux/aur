@@ -1,7 +1,7 @@
 # Maintainer: Vianney Bouchaud <aur dot vianney at bouchaud dot org>
 
 pkgname=bruno
-pkgdesc="Opensource IDE For Exploring and Testing Api's"
+pkgdesc="Opensource API Client for Exploring and Testing APIs"
 pkgver=0.22.0
 pkgrel=1
 arch=('x86_64')
