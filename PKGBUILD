@@ -26,7 +26,7 @@ ros_depends=(
     ros-noetic-robot-state-publisher
     ros-noetic-sick-tim
     ros-noetic-urdf
-    ros-noetic-velodyne_description
+    ros-noetic-velodyne-description
     ros-noetic-xacro
 )
 
@@ -34,7 +34,7 @@ depends=(
     ${ros_depends[@]}
 )
 
-_dir="jackal-${pkgver}/jackal_control"
+_dir="jackal-${pkgver}/jackal_description"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jackal/jackal/archive/${pkgver}.tar.gz")
 sha256sums=('ef3f56b7cb56b3230ea755a797e7e59f41ed51143d7fab25a5579c4e5ea890eb')
 
