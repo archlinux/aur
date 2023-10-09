@@ -23,14 +23,14 @@
 
 _qt_module=qttools
 pkgname=mingw-w64-qt5-tools-static
-pkgver=5.15.10
+pkgver=5.15.11
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-vulkan-headers')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=9f7af2d08eea7c2a2a2bfe7e6a9b73d1b99f5123
+_commit=38ae810be3fb4984f75b55a16d3413e35d701af1
 _basever=$pkgver
 pkgver+=+kde+r3
 makedepends+=('git')
@@ -41,7 +41,7 @@ _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Fix-linguist-macro.patch')
 sha256sums=('SKIP'
-            '54d1369b171cb85550cd7cd7ff37d0aec319164ae6f3236935136adda5527841')
+            '7625444dcf3e2eb3406fdceb951d9cfaee136f45aef26ea8f83b2f1d9b3ecabc')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
