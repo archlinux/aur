@@ -1,7 +1,7 @@
 # Maintainer: honjow
 pkgname=libextest-git
 _pkgname=extest
-pkgver=r3.6437b18
+pkgver=r6.12dc4d4
 pkgrel=1
 pkgdesc="X11 XTEST reimplementation primarily for Steam Controller on Wayland"
 arch=('x86_64')
@@ -19,13 +19,15 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    
+    rustup default stable
     rustup target add i686-unknown-linux-gnu
-    cargo build --release
+    cargo build --release --target x86_64-unknown-linux-gnu --target i686-unknown-linux-gnu
 }
 
 package() {
     cd "${_pkgname}"
     install -dm755 "${pkgdir}/usr/lib/"
-    install -m755 "target/i686-unknown-linux-gnu/release/libextest.so" "${pkgdir}/usr/lib/libextest.so" 
+    install -dm755 "${pkgdir}/usr/lib32/"
+    install -m755 "target/x86_64-unknown-linux-gnu/release/libextest.so" "${pkgdir}/usr/lib/libextest.so" 
+    install -m755 "target/i686-unknown-linux-gnu/release/libextest.so" "${pkgdir}/usr/lib32/libextest.so" 
 }

@@ -1,6 +1,6 @@
 pkgbase = libextest-git
 	pkgdesc = X11 XTEST reimplementation primarily for Steam Controller on Wayland
-	pkgver = r3.6437b18
+	pkgver = r6.12dc4d4
 	pkgrel = 1
 	url = https://github.com/Supreeeme/extest
 	arch = x86_64
