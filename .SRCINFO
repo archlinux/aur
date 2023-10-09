@@ -1,0 +1,16 @@
+pkgbase = wayfire-plugins-qtshell
+	pkgdesc = Implementation of qt-shell protocol for Wayfire in the form of wayfire plugin
+	pkgver = 0.8.0.1
+	pkgrel = 1
+	url = https://gitlab.com/wayfireplugins/qt-shell
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = glm
+	depends = wayfire
+	source = https://gitlab.com/wayfireplugins/qt-shell/-/archive/v0.8.0.1/qt-shell-v0.8.0.1.tar.gz
+	md5sums = 7222f3368874f06e54b622e503764c21
+
+pkgname = wayfire-plugins-qtshell
