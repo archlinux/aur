@@ -1,4 +1,5 @@
 # Maintainer: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=libspelling
 pkgname=(
@@ -6,8 +7,8 @@ pkgname=(
   libspelling-docs
 )
 pkgver=0.2.0
-pkgrel=0.1
-pkgdesc="A spellcheck library for GTK 4."
+pkgrel=1
+pkgdesc="Spellcheck library for GTK 4"
 url="https://gitlab.gnome.org/chergert/libspelling"
 arch=(x86_64)
 license=(LGPL)
