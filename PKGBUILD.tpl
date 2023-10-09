@@ -24,7 +24,6 @@ source=(
 package() {
     cd $pkgdir
 
-    # There should be a way to only use the asar file but I don't know how to make it work yet.
     tar -vxf $srcdir/data.tar.xz
 
     mkdir -p usr/bin
