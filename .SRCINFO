@@ -1,0 +1,18 @@
+pkgbase = bruno-git
+	pkgdesc = Opensource IDE For Exploring and Testing Api's
+	pkgver = 0.22.0.r2.g239caa1
+	pkgrel = 1
+	url = https://www.usebruno.com/
+	arch = x86_64
+	license = MIT
+	makedepends = nvm
+	makedepends = asar
+	depends = electron21
+	provides = bruno
+	conflicts = bruno
+	source = bruno::git+https://github.com/usebruno/bruno#branch=main
+	source = com.usebruno.app.Bruno.desktop
+	sha256sums = SKIP
+	sha256sums = 7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051
+
+pkgname = bruno-git
