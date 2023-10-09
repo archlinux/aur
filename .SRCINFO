@@ -1,0 +1,18 @@
+pkgbase = birklehof-tk-getraenkekarte-bin
+	pkgdesc = A Svelte app
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Birklehof/tk-getraenkekarte
+	arch = x86_64
+	license = custom
+	makedepends = squashfuse
+	depends = bash
+	depends = electron22
+	provides = birklehof-tk-getraenkekarte=0.0.1
+	conflicts = birklehof-tk-getraenkekarte
+	source = birklehof-tk-getraenkekarte-0.0.1.AppImage::https://github.com/Birklehof/tk-getraenkekarte/releases/download/v0.0.1/birklehof-tk-getraenkekarte-0.0.1-x86_64.AppImage
+	source = birklehof-tk-getraenkekarte.sh
+	sha256sums = dc4207d924e15ecb00c15aa0ceaf534ab8d18bdf9c0494e360f637a46effa77f
+	sha256sums = dfccc3a8762c418508411d7846064b3e1131203d79bccc5c853a8bb9d75bb220
+
+pkgname = birklehof-tk-getraenkekarte-bin
