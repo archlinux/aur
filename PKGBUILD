@@ -6,7 +6,7 @@
 pkgname=alchemy-next-viewer-git
 pkgver=7.0.0.54028.ef16fabfec
 pkgrel=1
-epoch=1696809895
+epoch=1
 pkgdesc="A Second Life client with focus on performance and code correctness."
 arch=('x86_64')
 license=('LGPL')
