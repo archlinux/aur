@@ -1,11 +1,11 @@
 pkgbase = avbroot
 	pkgdesc = Application for patching Android A/B-style OTA images for root access
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/chenxiaolong/avbroot
 	arch = x86_64
 	license = GPL
-	source = https://github.com/chenxiaolong/avbroot/releases/download/v2.1.1/avbroot-2.1.1-x86_64-unknown-linux-gnu.zip
-	md5sums = 2d5ec6864bbd3b5560c9ec8ea4621668
+	source = https://github.com/chenxiaolong/avbroot/releases/download/v2.2.0/avbroot-2.2.0-x86_64-unknown-linux-gnu.zip
+	md5sums = f03bee04a504bedb0473bc2f03dcdf1c
 
 pkgname = avbroot
