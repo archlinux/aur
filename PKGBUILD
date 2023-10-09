@@ -15,14 +15,14 @@ _additional_qmake_args+='-- -no-feature-geoservices_mapbox -no-feature-geoservic
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.15.10
+pkgver=5.15.11
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=664701dc3acfca37500bc84ba03eed4953b684e9
+_commit=b4c42e255ee0f04eec4cf5cde35398f3c303ddb9
 _basever=$pkgver
 pkgver+=+kde+r4
 makedepends+=('git')
