@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.12.5.plus1
+pkgver=3.12.7.plus1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -43,7 +43,7 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=0db1438756c01bfdc74ae7fdde2b8c7dc51b87ff
+_tag=af3c0da0cd791ac0c09c59b8dd05d65bf83c3ca5
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
@@ -51,6 +51,7 @@ source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
         "git+https://github.com/nothings/stb.git"
+	"git+https://github.com/Joshua-Ashton/reshade.git"
         0001-libdisplay-info-cta-be-more-lenient-about.patch
         )
 
@@ -60,6 +61,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+	'SKIP'
         'SKIP'
         '3f1c2b4b3c35f6879e4dfe457103c27cc30abf265240b234efdf77487adb852a72c755a3099c7aed9a3e83f07ebbaee78343894ec74f0723e390c219f34568a3')
 
@@ -72,6 +74,7 @@ prepare() {
   git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
   git config submodule.subprojects/openvr.url "$srcdir/openvr"
   git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
+  git config submodule.src/reshade.url "$srcdir/reshade"
   git -c protocol.file.allow=always submodule update
 
   # make stb.wrap use our local clone
