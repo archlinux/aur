@@ -1,7 +1,7 @@
 pkgbase = fuc-bin
 	pkgdesc = Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SUPERCILEX/fuc
 	arch = aarch64
 	arch = x86_64
@@ -20,11 +20,15 @@ pkgbase = fuc-bin
 	noextract = rmz-x86_64-1.1.9
 	source_aarch64 = cpz-aarch64-1.1.9::https://github.com/SUPERCILEX/fuc/releases/download/1.1.9/cpz-aarch64-unknown-linux-gnu
 	source_aarch64 = rmz-aarch64-1.1.9::https://github.com/SUPERCILEX/fuc/releases/download/1.1.9/rmz-aarch64-unknown-linux-gnu
+	source_aarch64 = https://raw.githubusercontent.com/SUPERCILEX/fuc/master/README.md
 	sha256sums_aarch64 = c0959b9bfc4f1bdf597cf36c3699877c388ae68bf620f99ed91d68fb7e2844a1
 	sha256sums_aarch64 = 768f21f68d1d62f7452e7f95d3a6f01afe1791f4d80b8348ae00e86267281acd
+	sha256sums_aarch64 = SKIP
 	source_x86_64 = cpz-x86_64-1.1.9::https://github.com/SUPERCILEX/fuc/releases/download/1.1.9/cpz-x86_64-unknown-linux-gnu
 	source_x86_64 = rmz-x86_64-1.1.9::https://github.com/SUPERCILEX/fuc/releases/download/1.1.9/rmz-x86_64-unknown-linux-gnu
+	source_x86_64 = https://raw.githubusercontent.com/SUPERCILEX/fuc/master/README.md
 	sha256sums_x86_64 = 8b9695b3287f86e664b704bfe907c48736cc886d4c093fc78a7be0f66b085219
 	sha256sums_x86_64 = 7143dc245b2835f16434fc1951616849fc700ee3c1079b20fcd01e9440c1357c
+	sha256sums_x86_64 = SKIP
 
 pkgname = fuc-bin
