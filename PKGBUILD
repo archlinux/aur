@@ -11,14 +11,14 @@ _qt_module=qtvirtualkeyboard
 pkgname=mingw-w64-qt5-virtualkeyboard
 #_fix_deps_of_static_3rdparty_libs='s:\(-L\/.*\/lib.*\.a\) \(\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\2\3\4 \1 \5:g'        # -L is used (pre Qt 5.13)
 _fix_deps_of_static_3rdparty_libs='s:\(LIBS *= *\)\(.*\)\(\/build\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\1 \3\4\5 \2 \6:g' # absolute paths are used (Qt 5.13 and above)
-pkgver=5.15.10
+pkgver=5.15.11
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
 depends=('mingw-w64-pkg-config' 'mingw-w64-qt5-declarative' 'mingw-w64-qt5-svg')
 makedepends=('mingw-w64-gcc')
 license=('GPL3')
-_commit=72373522141dd3206183eb5fa56ae1c36a6d4c2b
+_commit=817378aa10176fd26eed36542bc657e48d9dd42e
 _basever=$pkgver
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
