@@ -1,0 +1,18 @@
+pkgbase = ros-noetic-urg-c
+    pkgdesc = ROS - Packaging for URG Helper / URG Widget / URG Library / urg_c.
+    pkgver = 1.0.405
+    pkgrel = 1
+    url = https://github.com/ros-drivers/urg_c
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    source = ros-noetic-urg-c-1.0.405.tar.gz::https://github.com/ros-drivers/urg_c/archive/1.0.405.tar.gz
+    sha256sums = 9d1cd3cb8eafaec29d267196b375b33fa4f3ee035cd3f52888122a78f54e483f
+
+pkgname = ros-noetic-urg-c
