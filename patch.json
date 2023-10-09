@@ -211,7 +211,10 @@
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/*.bicep}",
-					"important": true
+					"important": true,
+					"whenNotInstalled": [
+						"ms-azuretools.rad-vscode-bicep"
+					]
 				}
 			]
 		},
