@@ -1,0 +1,21 @@
+pkgbase = ros-noetic-velodyne-msgs
+    pkgdesc = ROS - ROS message definitions for Velodyne 3D LIDARs.
+    pkgver = 1.7.0
+    pkgrel = 1
+    url = https://github.com/ros-drivers/velodyne
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = ros-noetic-message-generation
+    depends = ros-noetic-std-msgs
+    depends = ros-noetic-message-runtime
+    source = ros-noetic-velodyne-msgs-1.7.0.tar.gz::https://github.com/ros-drivers/velodyne/archive/1.7.0.tar.gz
+    sha256sums = 49e813a75d1e5e653ed7f409b6e84b61af8296e1d7c98d8c20fee47771a2658a
+
+pkgname = ros-noetic-velodyne-msgs
