@@ -9,7 +9,7 @@
 
 _qt_module=qtdatavis3d
 pkgname=mingw-w64-qt5-datavis3d
-pkgver=5.15.10
+pkgver=5.15.11
 pkgrel=1
 arch=('any')
 pkgdesc="Qt Data Visualization module (mingw-w64)"
@@ -17,7 +17,7 @@ depends=('mingw-w64-qt5-base')
 optdepends=('mingw-w64-qt5-declarative: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=d366b0aad8454355acac79eddbab445c1108b1e9
+_commit=d7af24d26b9fbb83bf57b2b7245d280eb78e8b22
 _basever=$pkgver
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
