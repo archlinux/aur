@@ -13,6 +13,7 @@ license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electron")
 appbranch="develop"
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
+options=(!strip)
 provides=(
     'ferdium'
 )
