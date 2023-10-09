@@ -2,7 +2,7 @@ pkgdesc="ROS - Clearpath OutdoorNav URDF description"
 url='https://github.com/cpr-application/cpr_onav_description'
 
 pkgname='ros-noetic-cpr-onav-description'
-pkgver='0.1.2'
+pkgver='0.1.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=("BSD")
@@ -31,7 +31,7 @@ depends=(
 
 _dir="cpr_onav_description-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cpr-application/cpr_onav_description/archive/${pkgver}.tar.gz")
-sha256sums=('')
+sha256sums=('9c2136aa4784bc4eddbdbb5a7d897201b0060115ad4015adcaad7268edbffd65')
 
 build() {
     # Use ROS environment variables
