@@ -1,8 +1,8 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
 pkgdesc='GUI to monitor and manage Tailscale'
@@ -13,6 +13,7 @@ depends=(
   hicolor-icon-theme
   kconfig
   kcoreaddons
+  kguiaddons5
   ki18n
   kirigami-addons
   kirigami2
@@ -25,7 +26,7 @@ depends=(
 )
 makedepends=(cmake extra-cmake-modules)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('619252bdc0d64dd1a5eb40f600b51130845cdfb190e5aac9746939ba7375c735')
+sha256sums=('bee908a1cfcf15e108c3d5899e977d507fe2c922c0c32920177b1e65835e0463')
 
 build() {
   cmake -B build -S KTailctl-$pkgver \
