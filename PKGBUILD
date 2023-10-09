@@ -1,7 +1,7 @@
 # Maintainer: Antony Kellermann <antony@aokellermann.dev>
 
 pkgname=yaycache
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Flexible yay cache cleaning'
 arch=('x86_64')
@@ -10,27 +10,26 @@ license=('GPL')
 depends=(pacman-contrib)
 makedepends=('asciidoc' 'git')
 optdepends=('sudo: privilege elevation')
-_tag=434af60d4671e7a0784bdd1213fb39acdd93ba55 # git rev-parse v{pkgver}
-source=("${pkgname}::git+$url?signed#tag=${_tag}")
-b2sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+b2sums=('2d8c447337a3e24695ca5562cd17b04fb5ad9dac4df812251605c9d83685bd46d7fd5d745b382078024d92862a1df4403233a1d2d7c7bcf42b8ffdbced6d0ba3')
 
 prepare() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   ./autogen.sh
 }
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make check
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
