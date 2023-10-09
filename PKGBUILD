@@ -27,7 +27,7 @@ depends=(
 )
 
 _dir="realsense-ros-31d7c2b328b1b4d72a9e24d946341705b7b8907c/realsense2_description"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/IntelRealSense/realsense-ros/archive/31d7c2b328b1b4d72a9e24d946341705b7b8907c.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IntelRealSense/realsense-ros/archive/31d7c2b328b1b4d72a9e24d946341705b7b8907c.tar.gz")
 sha256sums=('3cc1bb0ba1c4499142486a682583ae0d049b6b8e22295f07a62754f3e6ce7068')
 
 build() {
