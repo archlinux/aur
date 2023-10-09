@@ -1,0 +1,25 @@
+pkgbase = ros-noetic-robot-upstart
+    pkgdesc = ROS - robot_upstart package provides scripts which may be used to install and uninstall Ubuntu Linux upstart jobs which launch groups of roslaunch files.
+    pkgver = 0.4.2
+    pkgrel = 1
+    url = https://github.com/clearpathrobotics/robot_upstart
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = ros-noetic-roslaunch
+    depends = ros-noetic-xacro
+    depends = ros-noetic-roslint
+    depends = ros-noetic-rosunit
+    depends = daemontools-encore
+    depends = net-tools
+    depends = util-linux
+    source = ros-noetic-robot-upstart-0.4.2.tar.gz::https://github.com/clearpathrobotics/robot_upstart/archive/0.4.2.tar.gz
+    sha256sums = a44f17af0c428837316c7f4d9fc393e74cd6f6c9286e1915f84d57348e418d06
+
+pkgname = ros-noetic-robot-upstart
