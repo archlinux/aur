@@ -1,6 +1,6 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
-	pkgver = 1.9.3
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = scanpy
 	depends = python-seaborn
 	depends = python-h5py
 	depends = python-tqdm
-	depends = python-scikit-learn>=0.21.2
+	depends = python-scikit-learn>=0.24
 	depends = python-statsmodels>=0.10.0
 	depends = python-patsy
 	depends = python-networkx>=2.3
@@ -44,7 +44,7 @@ pkgbase = scanpy
 	optdepends = python-dask: Dask parallelization
 	provides = scanpy
 	provides = python-scanpy
-	source = https://files.pythonhosted.org/packages/source/s/scanpy/scanpy-1.9.3.tar.gz
-	sha256sums = dfe65f9acd9f4c1740079a099f89fa6a44b6f0ef75ecaf85247ad4af859144d7
+	source = https://files.pythonhosted.org/packages/source/s/scanpy/scanpy-1.9.5.tar.gz
+	sha256sums = 1d90f95cd5e103c9e0cc41fd84c1f2d81d86d6337cbe294316578ed071d39d82
 
 pkgname = scanpy
