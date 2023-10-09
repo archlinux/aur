@@ -7,7 +7,7 @@ pkgver=0.6
 pkgrel=12
 pkgdesc="Clean looking gtk theme engine based on the cairo-enabled CVS clearlooks engine code."
 arch=('i686' 'x86_64')
-url="http://www.gnome-look.org/content/show.php?content=39179"
+url="https://www.gnome-look.org/p/1080201/"
 license=('GPL')
 depends=('gtk2')
 options=('!libtool')
