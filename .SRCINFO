@@ -1,0 +1,25 @@
+pkgbase = irqbalance-openrc
+	pkgdesc = Daemon that distributes interrupts over the processors
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/Irqbalance/irqbalance
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = glib2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = ncurses
+	makedepends = numactl
+	provides = irqbalance
+	conflicts = irqbalance
+	source = irqbalance-openrc-1.9.2.tar.gz::https://github.com/Irqbalance/irqbalance/archive/v1.9.2.tar.gz
+	source = musl.patch
+	source = irqbalance.confd
+	source = irqbalance.initd
+	sha256sums = 19a1feb379803cc27f86a71cf1b94bb2e103811691ff7448119d8f1e88645bd3
+	sha256sums = c98932f04ff362e16aaece28bda2cb3ab90e882935bc2a98f207360d2f761b2e
+	sha256sums = 98bb18cd977a0706c3e63a36a7dfb2aa01cd84cabb719da0ea5bf795e5d02413
+	sha256sums = 7c6b7a0c0385fcc63a693bb705bc378a333ff69a6ec100ce9695de1d92bca262
+
+pkgname = irqbalance-openrc

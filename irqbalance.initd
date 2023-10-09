@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/irqbalance/files/irqbalance.init,v 1.5 2012/01/07 22:04:49 vapier Exp $
+
+command="/usr/sbin/irqbalance"
+command_args="--foreground $IRQBALANCE_OPTS"
+pidfile="/run/$RC_SVCNAME.pid"
+command_background=true
+
+depends() {
+	need localmount
+	after bootmisc hwdrivers modules
+}
+
+start_pre() {
+	checkpath --quiet --directory --mode 0755 \
+		--owner root:root /run/irqbalance
+}
