@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=copilot-cli
-pkgver=1.30.0
+pkgver=1.31.0
 pkgrel=1
 epoch=1
 pkgdesc='A tool to help deploy containerized applications on Amazon ECS'
@@ -35,4 +35,4 @@ package() {
   "$pkgdir/usr/bin/copilot" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_copilot"
 }
 
-sha256sums=('dbb0842c71924f61fd72ad292c93a0ea62ef00f2d03f9e20521a81e1b2ef850b')
+sha256sums=('adde82ca3fb2dcebeb5367c9bdbf6fbbd7d5a0e23a308625c3c6dd689d2741d1')
