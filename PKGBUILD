@@ -1,6 +1,6 @@
 # Maintainer: Oleg "KawaiDesu" Vasilev <mail@zeym.org>
 pkgname=victoriametrics-bin
-pkgver=1.91.2
+pkgver=1.94.0
 pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$
         "victoriametrics.sysusers"
         "victoriametrics.tmpfiles"
         "victoriametrics.default")
-sha256sums=('ccbfeb2f312040dc8a29175a30c408142cdf85956c2b5aedea6746f00fd4ab52'
+sha256sums=('9d9b19955f2d34793f4fa59c1eadebcb53b653ab145b2e329707e81d01891265'
             'c47defa8ff60515a704daeb01eedebf08e15e85bcd37217c40c7133b6302c967'
             'ad4911f772a1a52d1bd5ba4236d27a84aabbb10fc057d2906bf50f30d179d4a4'
             'e26f3359d0afc3bf0f236a9b4b05554ed9256d477ef4b4f1b013898fac7a723c'
