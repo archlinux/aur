@@ -1,13 +1,13 @@
 # Maintainer: honjow
 pkgname=libextest-git
 _pkgname=extest
-pkgver=r6.12dc4d4
+pkgver=r7.c570311
 pkgrel=1
 pkgdesc="X11 XTEST reimplementation primarily for Steam Controller on Wayland"
 arch=('x86_64')
 url="https://github.com/Supreeeme/extest"
 license=('MIT')
-makedepends=('cargo' 'rustup')
+makedepends=('rustup')
 provides=(libextest)
 source=("git+$url")
 sha256sums=('SKIP')
