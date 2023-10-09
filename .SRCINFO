@@ -1,4 +1,4 @@
-pkgbase = ros-noetic-hector-
+pkgbase = ros-noetic-hector-map-tools
 	pkgdesc = ROS - hector_map_tools contains some functions related to accessing information from OccupancyGridMap maps.
 	pkgver = 0.5.2
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = ros-noetic-hector-
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-nav-msgs
 	depends = eigen
-	source = ros-noetic-hector--0.5.2.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_slam/archive/0.5.2.tar.gz
+	source = ros-noetic-hector-map-tools-0.5.2.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_slam/archive/0.5.2.tar.gz
 	sha256sums = c4c94b75062c1849c720b6c21d9fdea8dbd14e96a17c0ee80c630f3c8ea740fd
 
-pkgname = ros-noetic-hector-
+pkgname = ros-noetic-hector-map-tools

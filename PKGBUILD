@@ -1,7 +1,7 @@
 pkgdesc="ROS - hector_map_tools contains some functions related to accessing information from OccupancyGridMap maps."
 url='https://wiki.ros.org/hector_map_tools'
 
-pkgname='ros-noetic-hector-'
+pkgname='ros-noetic-hector-map-tools'
 pkgver='0.5.2'
 arch=('x86_64')
 pkgrel=1
