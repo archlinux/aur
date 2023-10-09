@@ -2,13 +2,14 @@
 
 pkgname="sysinfo"
 pkgver="0.1.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="sysinfo shows system information like the hardware configuration and resource usage in a compact, clearly arranged and
 visually pleasing style."
 arch=("any")
 url="https://github.com/IngoMeyer441/sysinfo"
 license=("MIT")
 depends=("bash" "gawk")
+conflicts=("xfce4-sysinfo")
 source=("https://github.com/IngoMeyer441/sysinfo/archive/v${pkgver}.tar.gz"
         "version.sh_no_phony.patch")
 sha256sums=("7ffe3c2a3897222aa53b6c279c9d93c4fb7227710c3f88b09a4f05d8a52fbabb"
