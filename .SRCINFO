@@ -1,6 +1,6 @@
 pkgbase = foot-fullscreen-transparency-git
-	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
-	pkgver = 1.15.3
+	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic, with a patch for fullscreen transparency (git)
+	pkgver = 1.15.3.r53.g1c9d98d5
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
