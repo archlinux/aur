@@ -1,7 +1,7 @@
 pkgbase = motogt
 	pkgdesc = 2D top-viewed game where you drive a MotoGP bike
-	pkgver = 20110505
-	pkgrel = 5
+	pkgver = 20170406
+	pkgrel = 1
 	url = http://motogt.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,12 @@ pkgbase = motogt
 	depends = freeglut
 	depends = libpng
 	depends = sfml1.6
-	source = http://prdownloads.sourceforge.net/motogt/MotoGT-20110505.zip
+	source = https://sourceforge.net/code-snapshots/git/m/mo/motogt/code.git/motogt-code-3fdecfabc26fd2d837c44d92dfe7bf1bed31d4c3.zip
 	source = motogt
-	source = cumulative.patch.gz
 	source = MotoGT.desktop
 	source = MotoGT.png
-	md5sums = 5fa3a8ba52ea75bc46f011906ddc6747
+	md5sums = f13593f2833c15b72cc5c07907ac880f
 	md5sums = fe654d2910156d66efce53f82a1add08
-	md5sums = ad6beb3cb02e2a1800da9c64615436d2
 	md5sums = 969b607bd91ebf06f2efd6e0d6595a28
 	md5sums = 7d426217b802a5691e568134cef89160
 
