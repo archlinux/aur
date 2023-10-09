@@ -1,0 +1,19 @@
+pkgbase = ros-noetic-hector-nav-msgs
+	pkgdesc = ROS - hector_nav_msgs contains messages and services used in the hector_slam stack.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://wiki.ros.org/hector_nav_msgs
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	source = ros-noetic-hector-nav-msgs-0.5.2.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_slam/archive/0.5.2.tar.gz
+	sha256sums = c4c94b75062c1849c720b6c21d9fdea8dbd14e96a17c0ee80c630f3c8ea740fd
+
+pkgname = ros-noetic-hector-nav-msgs
