@@ -1,0 +1,19 @@
+pkgbase = flexplayer
+	pkgdesc = FlexPlayer plays multiple video files in a grid. FlexPlayer is a desktop application built in Electron.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ricmsd/flexplayer
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nodejs>=18.17.1
+	depends = bash
+	depends = electron26
+	conflicts = flexplayer
+	source = flexplayer-1.0.0.tar.gz::https://github.com/ricmsd/flexplayer/archive/refs/tags/v1.0.0.tar.gz
+	source = flexplayer.sh
+	sha256sums = d9e6c2dae1938aa6337ff7db9a5e548b2afad442b289717688c6c8675278b6a8
+	sha256sums = 7261077a05a935bc244f6d707e5690bad821858c27ddb452147d7f158c9c7b4e
+
+pkgname = flexplayer
