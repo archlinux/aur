@@ -1,5 +1,7 @@
 post_install() {
 	echo "  mkdir -p ~/.config/mpv/scripts; cd \$_"
-	echo "  ln -s /usr/share/mpv/scripts/lastfm.lua"
-	echo "  create ~/.config/lastfm with: \$login = 'vpupkin'; \$password = 'mycoolpassword';"
+	echo "  ln -s /usr/share/mpv/scripts/mpv-lastfm.lua"
+	echo "  scrobbler add-user"
+	echo "  create a file ~/.mpv/script-opts/lastfm.conf with the following content:"
+	echo "  -- username=<your last.fm user name>"
 }
