@@ -2,7 +2,7 @@ ahoyapi: v2
 commands:
 
   configure:
-    cmd: "updpkgsums & makepkg --printsrcinfo > .SRCINFO"
+    cmd: "updpkgsums && makepkg --printsrcinfo > .SRCINFO"
 
   build:
     cmd: "makepkg --printsrcinfo > .SRCINFO && makepkg"
