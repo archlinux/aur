@@ -326,7 +326,6 @@
 			"quickPickSortByLabel",
 			"portsAttributes",
 			"testObserver",
-			"envShellEvent",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
 			"saveEditor"
@@ -443,7 +442,10 @@
 			"terminalSelection",
 			"terminalQuickFixProvider",
 			"chatSlashCommands",
+			"chatVariables",
+			"chatAgents",
 			"readonlyMessage",
+			"chatProvider",
 			"mappedEditsProvider",
 			"aiRelatedInformation"
 		],
@@ -467,6 +469,9 @@
 		],
 		"ms-python.vscode-pylance": [
 			"notebookCellExecutionState"
+		],
+		"ms-python.debugpy": [
+			"portsAttributes"
 		],
 		"ms-toolsai.jupyter-renderers": [
 			"contribNotebookStaticPreloads"
