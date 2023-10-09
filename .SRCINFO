@@ -1,0 +1,17 @@
+pkgbase = ros-noetic-hector-geotiff-launch
+	pkgdesc = ROS - Contains launch files for the hector_geotiff mapper.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://wiki.ros.org/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-hector-geotiff
+	depends = ros-noetic-hector-geotiff-plugins
+	depends = ros-noetic-hector-trajectory-server
+	source = ros-noetic-hector-geotiff-launch-0.5.2.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_slam/archive/0.5.2.tar.gz
+	sha256sums = c4c94b75062c1849c720b6c21d9fdea8dbd14e96a17c0ee80c630f3c8ea740fd
+
+pkgname = ros-noetic-hector-geotiff-launch
