@@ -11,7 +11,7 @@ conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha512sums=('3a9dc955cd183f36fae1895ff49299a1bd06ed81aa2cf75dbde8642dcb711cb4e7fc702c3ef457cf9e2d49251a0fd37482480363feea30d4f034d6962b447e5a')
+sha512sums=('3e0140743381aebd47e86e94b841de2823bdc79979b349daf3be56667850bfb43568267b984feb71ab20cf6265ca96fdd235d55912fe074f81b8ef9abf6b063a')
 
 prepare() {
   cd ${pkgname}-${pkgver}
