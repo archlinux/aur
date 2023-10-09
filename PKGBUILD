@@ -2,7 +2,7 @@
 
 pkgname=gz-launch6
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -25,6 +25,7 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
+  'libwebsockets'
   )
 optdepends=(
   'libwebsockets: a websocket server for simulation'
