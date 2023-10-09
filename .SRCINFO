@@ -1,23 +1,23 @@
 pkgbase = groupsdomainsextractor
 	pkgdesc = Find all domains of specific group and copy it to clipboard
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://github.com/PolishFiltersTeam/ScriptsPlayground/blob/master/Readme_GDE.md
+	url = https://github.com/FiltersHeroes/ScriptsPlayground/blob/master/Readme_GDE.md
 	arch = any
-	license = MIT
-	makedepends = unzip
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	depends = python-certifi
-	depends = python-urllib3
 	depends = python-beautifulsoup4
 	depends = python-tldextract
-	depends = python-pysimplegui
-	depends = python-appdirs
-	depends = python-html5lib
-	source = https://github.com/PolishFiltersTeam/ScriptsPlayground/releases/download/GDE-1.2.2/GDE.zip
-	source = LICENSE.txt
-	sha256sums = de399487adc99094dbaf00a22658befbb58b5d17ddcea8d3bc70c4e5de003363
-	sha256sums = 84c872a68ddd7b81d71673d560480dcaf0d83a7f694bb6521b2dbcebd2d2c912
+	depends = python-requests
+	depends = python-qtpy
+	depends = qt5-python-bindings
+	depends = python-platformdirs
+	depends = gettext
+	source = https://github.com/FiltersHeroes/ScriptsPlayground/releases/download/GDE-1.3.0/GDE-1.3.0.tar.gz
+	sha256sums = 40ff6372ba05c2d7001c70f3086eb3ec6a16c5c7bcb1a6dfc0ddab5e973486ea
 
 pkgname = groupsdomainsextractor
-
