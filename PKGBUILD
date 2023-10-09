@@ -14,7 +14,6 @@ depends=(plasma-framework5 threadweaver5)
 makedepends=(extra-cmake-modules kdoctools5 doxygen qt5-tools qt5-doc)
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
-provides=($_name=$pkgver)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
 sha256sums=('895c178e710e7c710bb11cb41eabc6a6cdc5e9ae3b67995977eeb36a371a22c8'
