@@ -1,7 +1,7 @@
 pkgbase = dremio-bin
 	pkgdesc = The Easy and Open Data Lakehouse Platform
 	pkgver = 24.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dremio.com
 	arch = any
 	license = Apache

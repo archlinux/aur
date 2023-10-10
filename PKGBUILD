@@ -6,14 +6,15 @@ provides=("dremio")
 license=("Apache")
 depends=("jdk8-openjdk")
 
+# Use get-latest.sh to generate pkgver and _pkgstr
+
 pkgver=24.2.2
 _pkgstr=202309281602050954-7d5e877f
-_archive=dremio-community-$pkgver-$_pkgstr
 
-pkgrel=1
+pkgrel=2
 arch=("any")
 
-# curl -sI https://download.dremio.com/community-server/dremio-community-LATEST.tar.gz | grep location | cut -f2 -d' '
+_archive=dremio-community-$pkgver-$_pkgstr
 
 source=("$pkgname.hook" "https://download.dremio.com/community-server/$pkgver-$_pkgstr/$_archive.tar.gz")
 sha256sums=('11386376716ef81ae2194c52dc9ce8f2e55effa9fcb572cc3c1e498d54316859'
