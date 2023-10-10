@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnt-git
-pkgver=1.2.6.r0.gc3261d7
+pkgver=1.2.6.r2.ga8ea2c1
 pkgrel=1
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
 arch=('any')
@@ -58,13 +58,15 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/vnt-cli@.service" <<EOF
 [Unit]
 Description=VNT CLI Service for %i.
-After=network.target
+After = network.target syslog.target
+Wants = network.target
 
 [Service]
-Type=exec
+Type=forking
 User=%i
 Restart=on-abort
 ExecStart=/usr/bin/vnt-cli
+ExecStop=/usr/bin/vnt-cli --stop
 
 [Install]
 WantedBy=multi-user.target
