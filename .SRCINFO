@@ -1,12 +1,21 @@
 pkgbase = passbox
-	pkgdesc = A password manager for your code
+	pkgdesc = A versatile toolbox primarily designed for password management and note-taking.
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://passbox.app
+	url = https://github.com/zzk13180/passbox
 	arch = x86_64
-	license = unknown
-	source = https://passbox.app/download/bin/passbox-linux
-	sha256sums = SKIP
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = pnpm>=8.7.6
+	makedepends = nodejs>=20.6.3
+	depends = bash
+	depends = electron24
+	depends = hicolor-icon-theme
+	conflicts = passbox
+	source = passbox-1.0.0.tar.gz::https://github.com/zzk13180/passbox/archive/refs/tags/1.0.0.tar.gz
+	source = passbox.sh
+	sha256sums = 6b0b177b75be068f7e628f107989a761741e7dc860937074f3efe351c27eb4db
+	sha256sums = c91715d64d6e6acb173078c0e0cc7053877894279ae08540f1c03f70eb4a154a
 
 pkgname = passbox
-
