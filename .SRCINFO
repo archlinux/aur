@@ -6,7 +6,7 @@ pkgbase = gnome-shell-extension-weather-oclock-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell>=1:45.0
+	depends = gnome-shell
 	depends = gnome-weather
 	provides = gnome-shell-extension-weather-oclock
 	conflicts = gnome-shell-extension-weather-oclock

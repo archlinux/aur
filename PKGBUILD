@@ -6,7 +6,7 @@ pkgdesc="Display the current weather inside the pill next to the clock."
 arch=('any')
 url="https://github.com/CleoMenezesJr/weather-oclock"
 license=('GPL3')
-depends=('gnome-shell>=1:45.0' 'gnome-weather')
+depends=('gnome-shell' 'gnome-weather')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
