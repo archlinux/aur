@@ -6,7 +6,7 @@ pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=5.17.1
 pkgrel=3
-_wwwpkgname=AdminLTE
+_wwwpkgname=web
 _wwwpkgver=5.20.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
@@ -25,8 +25,8 @@ conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/dnsmasq.d/01-pihole.conf' 'etc/pihole/adlists.list' 'etc/dnsmasq.conf' 'etc/sudoers.d/pihole')
 
-source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
-	    $pkgname-admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
+source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz
+	    $pkgname-admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/refs/tags/v$_wwwpkgver.tar.gz
         "https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-core-$pkgver-$pkgrel.patch"
         "https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-admin-$_wwwpkgver-$pkgrel.patch"
 	    dnsmasq.include
@@ -43,7 +43,7 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 )
 
 sha256sums=('507d7ce2424666374f7a566c9486a20696ca2be78587e8934a6236acf095af4e'
-            'fe302a23f9bef6fdd979010cb212c2dde9a4af442afd8c87aba929aad2c8d118'
+            '1af025e1d1a4132b59ac0fe3e35ecf55c19f7fd22b6b5c69fae707bfb5ca8894'
             '50a5830c2e8181bf22fcb6419844f60c8e5b175b521afaec47925a8b93df8db5'
             '0e000426e6501807c08fe1cb46630d1f9a62c4f0b31117dbc405c2358c3b5466'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
