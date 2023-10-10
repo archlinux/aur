@@ -37,7 +37,7 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
   export LDFLAGS="-static"
-  make $(nproc) win64 HAVE_LIBLO=false
+  make -j$(nproc) win64 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
   export CC=gcc
@@ -49,7 +49,7 @@ build() {
   export WIN32=$_win32
   export WIN64=$_win64
   export JACKBRIDGE_FLAGS="-D__WIDL_objidl_generated_name_0000000C="
-  make $(nproc) wine64
+  make -j$(nproc) wine64
 }
 
 package() {
