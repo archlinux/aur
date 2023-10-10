@@ -1,7 +1,7 @@
 pkgbase = rime-ls
 	pkgdesc = A language server for Rime input method engine
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/wlh320/rime-ls
 	arch = x86_64
 	license = BSD3
