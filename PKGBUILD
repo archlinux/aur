@@ -25,6 +25,10 @@ prepare() {
 build() {
   cd $pkgname
 
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
   export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS} -Wno-error=return-type -Wno-error=dangling-reference -Wno-error=deprecated-declarations -Wno-error=odr"
   make anura
 }
