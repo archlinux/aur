@@ -1,0 +1,68 @@
+pkgbase = libportal-inputcapture
+	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap
+	pkgver = 0.6+r58+g3e6c1bf
+	pkgrel = 1
+	url = https://github.com/whot/libportal
+	arch = x86_64
+	license = LGPL3
+	checkdepends = python-dbusmock
+	checkdepends = python-pytest
+	checkdepends = xorg-server-xvfb
+	makedepends = gi-docgen
+	makedepends = git
+	makedepends = gjs
+	makedepends = gobject-introspection
+	makedepends = gtk3
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = qt5-base
+	makedepends = qt5-x11extras
+	makedepends = vala
+	makedepends = xdg-desktop-portal
+	source = git+https://github.com/whot/libportal#commit=3e6c1bf9b34e73729ddeda9d58f050ab1bcc633c
+	b2sums = SKIP
+
+pkgname = libportal-inputcapture
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	depends = xdg-desktop-portal
+	provides = libportal.so
+	provides = libportal
+	conflicts = libportal
+	replaces = libportal
+
+pkgname = libportal-inputcapture-gtk3
+	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap - GTK 3 backend
+	depends = libgdk-3.so
+	depends = libgtk-3.so
+	depends = libportal
+	provides = libportal-gtk3.so
+	provides = libportal-gtk3
+	conflicts = libportal-gtk3
+	replaces = libportal-gtk3
+
+pkgname = libportal-inputcapture-gtk4
+	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap - GTK 4 backend
+	depends = libgtk-4.so
+	depends = libportal
+	provides = libportal-gtk4.so
+	provides = libportal-gtk4
+	conflicts = libportal-gtk4
+	replaces = libportal-gtk4
+
+pkgname = libportal-inputcapture-qt5
+	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap - Qt 5 backend
+	depends = libportal
+	depends = qt5-base
+	depends = qt5-x11extras
+	provides = libportal-qt5.so
+	provides = libportal-qt5
+	conflicts = libportal-qt5
+	replaces = libportal-qt5
+
+pkgname = libportal-inputcapture-docs
+	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap - documentation
+	provides = libportal-docs
+	conflicts = libportal-docs
+	replaces = libportal-docs
