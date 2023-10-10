@@ -2,8 +2,8 @@
 
 pkgname=bruno-bin
 _pkgname=bruno
-pkgdesc="Opensource IDE For Exploring and Testing Api's"
-pkgver=0.22.0
+pkgdesc="Opensource API Client for Exploring and Testing APIs"
+pkgver=0.22.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -24,7 +24,6 @@ source=(
 package() {
     cd $pkgdir
 
-    # There should be a way to only use the asar file but I don't know how to make it work yet.
     tar -vxf $srcdir/data.tar.xz
 
     mkdir -p usr/bin
@@ -34,6 +33,6 @@ package() {
 }
 
 sha256sums=(
-    966b99dbace9d37e8e50ebbf831e342b49a27f3529d200c2edff63788428f855
+    d99d6b547c7a9f97b2a4e3d10d821b730df988b86c795f18135eeaf2b7fdea10
     8891070a847e5047bf77d38d88d7dfbab1beab41e37c802b9f5b23f2bbb9c7be
 )
