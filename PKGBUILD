@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgver=0.42.3
-pkgrel=1
+pkgrel=2
 pkgname=python-pyvista
 _name=${pkgname#python-}
 pkgdesc='3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK)'
@@ -16,11 +16,11 @@ sha512sums=('822d8829b3ccb4110040007e2f59393969ce5a2de8c320abbe2e2f017b815ee0d26
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
