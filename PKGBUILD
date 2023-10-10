@@ -10,8 +10,12 @@ license=(Apache-2.0)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=('cargo')
-makedepends=('git' 'rust')
+depends=(cargo
+    systemd
+    procps-ng)
+makedepends=(git
+    rust)
+optdepends=('iptables: Linux kernel packet control tool (using legacy interface)')
 backup=()
 options=('!strip' '!lto')
 install=
@@ -28,7 +32,6 @@ prepare() {
     cd "${srcdir}/${pkgbase%-git}/"
 
     git submodule update --init --recursive
-#     git tag --delete nightly
 }
 
 build() {
@@ -65,6 +68,17 @@ ExecStart=/usr/bin/vnt-cli
 
 [Install]
 WantedBy=multi-user.target
+EOF
+
+    install -Dm644 /dev/stdin "${pkgdir}/etc/sysctl.d/80-vnt.conf" <<EOF
+net.ipv4.ip_forward = 1
+EOF
+
+    install -Dm644 /dev/stdin "${pkgdir}/etc/vnt/iptables-vnt.rules" <<EOF
+*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING ! -o vnt-tun -s 10.26.0.0/24 -j MASQUERADE
+COMMIT
 EOF
 }
 
