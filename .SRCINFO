@@ -1,0 +1,20 @@
+pkgbase = bump-pydantic
+	pkgdesc = Convert Pydantic from V1 to V2 ♻
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/pydantic/bump-pydantic
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python-libcst
+	depends = python-rich
+	depends = python-typer
+	depends = python-typing_extensions
+	source = git+https://github.com/pydantic/bump-pydantic.git#tag=0.6.1
+	b2sums = SKIP
+
+pkgname = bump-pydantic
