@@ -1,5 +1,5 @@
---- a/Linux_DRM_1.14.1_1/sources/src601/ast_drv.c	2023-07-17 08:08:24.000000000 +0200
-+++ b/Linux_DRM_1.14.1_1/sources/src601/ast_drv.c	2023-08-18 21:22:19.726786569 +0200
+--- a/Linux_DRM_1.14.2_2/sources/src601/ast_drv.c	2023-07-17 08:08:24.000000000 +0200
++++ b/Linux_DRM_1.14.2_2/sources/src601/ast_drv.c	2023-08-18 21:22:19.726786569 +0200
 @@ -35,6 +35,7 @@
  #include <drm/drm_gem_vram_helper.h>
  #include <drm/drm_module.h>

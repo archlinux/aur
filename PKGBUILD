@@ -5,8 +5,8 @@ _pkgbase="${pkgname%-*}"
 
 provides=("$_pkgbase")
 
-pkgver="1.14.1"
-pkgrel="1"
+pkgver="1.14.2"
+pkgrel="2"
 pkgdesc="ASPEED Graphics Linux DRM Driver"
 url="https://www.aspeedtech.com/tw/support_driver/"
 license=("MIT")
@@ -18,8 +18,8 @@ install=${_pkgbase}.install
 source=("https://www.aspeedtech.com/file/support/Linux_DRM_${pkgver}_${pkgrel}.tar.gz"
         "001-ast_drv-drm_fbdev_generic.patch"
         "dkms.conf")
-sha512sums=("2290e2ad32d39815d78cf753373cec43539bf7f913ca0781144bb0cd573bbe9644cd58c76be16f1a2ccbf0cb5cdd5a22579b10ea52b09cf278a66bd32965de8a"
-            "93c75399dce4640649b866344448c96dceaa141e4d42666a89503431c7283dc94edf2f335ccad6eef247be57f2a6beb95a3f7b3019d3df9f4d80960b205e81b7"
+sha512sums=("7e94978c62a50a6cd677820e04049c7c7dec16661ab72d0b4cdaf457799076ef1c510f093efb26eaaa25c1c9766a74f071610c1288628f7bd46a7a88cb1481d3"
+            "4f9ad030f2c9d35ac96972171703422add2d730878f3858f8cfec6d2dbf2a83c8b52ec53d5f43667ec48ebcce0600296ce2af57db727418a2b11d948eeb0d9be"
             "11c62f667560ec7b540e804a0e18af2b6293fcb5c7e971bbd556ebd781acabc81bd3f1a445659e676fbb5c35688059452230a7779674f0d807400a47172dc12c")
 
 prepare() {
