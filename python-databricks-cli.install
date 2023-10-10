@@ -1,0 +1,16 @@
+post_install () {
+	common
+}
+
+post_upgrade() {
+	common
+}
+
+common () {
+	echo 'The python databricks cli have been deprecated in favour of (go) databricks cli'
+	echo 'and the 0.18 release will be the last one and this software won't be supported'
+	echo 'by databricks any more'
+	echo
+	echo 'The new supported client is available at:
+	echo '- https://aur.archlinux.org/packages/databricks-cli-bin'
+}

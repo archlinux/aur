@@ -2,25 +2,26 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
-pkgver=0.17.7
-pkgrel=4
+pkgver=0.18.0
+pkgrel=1
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
 url='https://github.com/databricks/databricks-cli'
 license=('Apache')
 depends=(
-  'python>3.6'
+  'python>3.7'
   'python-click>=7.0'
   'python-pyjwt>=1.7.0'
   'python-oauthlib>=3.1.0'
-  "python-requests>=2.17.3" "python-requests<2.30.0" # https://github.com/databricks/databricks-cli/issues/636
+  "python-requests>=2.17.3"
   'python-tabulate>=0.7.7'
   'python-six>=1.10.0'
-  'python-urllib3>=1.26.7' 'python-urllib3<2.0.0'
+  'python-urllib3>=1.26.7' 'python-urllib3<3'
 )
 makedepends=(python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/databricks/databricks-cli/archive/$pkgver.tar.gz")
-sha512sums=('18719493b3c42cd0bab5a98c372134e74a89a3522ab42d15822f11ab7d500558fd6dfd36717d21477d7e3a1eda789ede5c943387110d446a96f304a3845ae0ee')
+sha512sums=('dcd67de2716dfd9d744bf2375fd69c74469084ab009ea90f62d1b8546ccde0a4f1db6a600caeca34e1dc22b9fae1ea89d6a7936fa54b7cd3ce002c4b4a60c63d')
+install="${pkgname}.install"
 
 
 build() {
