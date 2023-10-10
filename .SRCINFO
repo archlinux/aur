@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-geographic-msgs
 	pkgdesc = ROS - ROS messages for Geographic Information Systems.
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/geographic_msgs
 	arch = any
 	license = BSD
@@ -17,6 +17,8 @@ pkgbase = ros-noetic-geographic-msgs
 	depends = ros-noetic-uuid-msgs
 	depends = ros-noetic-std-msgs
 	source = ros-noetic-geographic-msgs-0.5.6.tar.gz::https://github.com/ros-geographic-info/geographic_info/archive/0.5.6.tar.gz
+	source = https://github.com/ros-geographic-info/geographic_info/pull/50.patch
 	sha256sums = 0e0e30544c26aba82e9436650848b1442ac5cb4a51157c5acbfdc348d6aadaae
+	sha256sums = 87b4cb2e8538092c6b05c9959447c6bf190da0760b0c32c6c514cc72f86e5fcc
 
 pkgname = ros-noetic-geographic-msgs
