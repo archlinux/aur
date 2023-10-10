@@ -1,0 +1,4 @@
+# meta-data for package-build-building
+
+pkgname="stainless"
+url="https://github.com/epfl-lara/stainless"
