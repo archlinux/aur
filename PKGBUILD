@@ -1,34 +1,31 @@
-# Maintainer: Emil Edholm <emil@edholm.it>
+# Maintainer: a821
+# Contributor: Emil Edholm <emil@edholm.it>
 
-_pkgname=honggfuzz
-pkgname=${_pkgname}-git
-pkgver=0.7.r119.g33cce5d
+pkgname=honggfuzz-git
+pkgver=2.6.r11.g4856852e
 pkgrel=1
-pkgdesc="A general-purpose, easy-to-use fuzzer with interesting analysis options"
-arch=('i686' 'x86_64')
-url="http://google.github.io/honggfuzz/"
+pkgdesc="Security oriented, feedback-driven, evolutionary, easy-to-use fuzzer"
+arch=('x86_64')
+url="https://honggfuzz.dev"
 license=('Apache')
-depends=('binutils'
-         'libunwind')
-makedepends=()
-optdepends=()
-conflicts=()
-provides=(${_pkgname})
-#install=''
-source=('git://github.com/google/honggfuzz')
+depends=('binutils' 'libunwind')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://github.com/google/honggfuzz.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "$pkgname" describe --tags | sed -e 's/-/.r/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  make
+    unset CFLAGS
+    make -C "$pkgname"
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  install -Dm755 honggfuzz "$pkgdir/usr/bin/honggfuzz"
+    make -C "$pkgname" DESTDIR="$pkgdir" PREFIX=/usr install
 }
+
+# vim: set ts=4 sw=4 et:
