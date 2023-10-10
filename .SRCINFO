@@ -1,6 +1,6 @@
 pkgbase = moodle
 	pkgdesc = An open-source software learning management system
-	pkgver = 4.2.2
+	pkgver = 4.3
 	pkgrel = 1
 	url = https://moodle.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = moodle
 	depends = php-sodium>=8.0
 	conflicts = moodle-plus
 	options = !strip
-	source = https://download.moodle.org/download.php/direct/stable402/moodle-4.2.2.tgz
-	sha256sums = 7308aa16a5afd4e6d33e3f50760caab335f50ea5aab4c839eb041f85f0d670ea
+	source = https://download.moodle.org/download.php/direct/stable403/moodle-4.3.tgz
+	sha256sums = ccb04553269da6ca8678484108fae1dca2969fa7f7cc2cbae18c5304c2c81ac9
 
 pkgname = moodle
