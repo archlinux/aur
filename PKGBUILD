@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=querym-bin
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="A free, open-source, and cross-platform GUI tool designed to make database management accessible and efficient."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash' 'electron23' 'hicolor-icon-theme')
 makedepends=('squashfuse')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_${CARCH}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('1588696d57b86b1ba7934da62816a96bda0a112349360e19e1f5d788f84ede80'
+sha256sums=('1ead091c86fbebaa5c6e5e4d02187f7f14cff6b8bd567342f8e2158a1fe48e02'
             '920075186b082e134ae5ade5f38835abd5c2ed7e626363c05550c3d857983860')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
