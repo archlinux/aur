@@ -1,7 +1,7 @@
 pkgbase = python-pyexecjs
 	pkgdesc = Run JavaScript code from Python.
 	pkgver = 1.6.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/PyExecJS2
 	changelog = changelog
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyexecjs
 	optdepends = v8: Google JavaScript engine
 	optdepends = nodejs: built on Chrome V8 JavaScript engine
 	optdepends = phantomjs: a headless WebKit
-	optdepends = js: Mozilla JavaScript engine (spidermonkey)
+	optdepends = js115: Mozilla JavaScript engine (spidermonkey)
 	provides = python-pyexecjs
 	conflicts = python-pyexecjs
 	source = https://files.pythonhosted.org/packages/source/P/PyExecJS2/PyExecJS2-1.6.1.tar.gz
