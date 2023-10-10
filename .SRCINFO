@@ -1,0 +1,26 @@
+pkgbase = xresconv-gui-bin
+	pkgdesc = 批量转表工具的GUI版本，依赖electron
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/xresloader/xresconv-gui
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = bash
+	depends = electron25
+	provides = xresconv-gui=2.4.1
+	conflicts = xresconv-gui
+	source = xresconv-gui.png::https://raw.githubusercontent.com/xresloader/xresconv-gui/v2.4.1/doc/logo.png
+	source = xresconv-gui.sh
+	sha256sums = 3383900bc8b96fe4f9fcd7c851f925bc995aa3db9c054e5838c1e2703bf57898
+	sha256sums = e1acc9dab2e88b185cfe4f65d587bcf9cfd0a78b40673a44c8a2f1964316381b
+	source_aarch64 = xresconv-gui-bin-2.4.1-aarch64.tar.gz::https://github.com/xresloader/xresconv-gui/releases/download/v2.4.1/xresconv-gui-linux-arm64.tar.xz
+	sha256sums_aarch64 = 6faa1b3ffdd26df957ff6b88a44031dff85a41609918c753e5f7461673490643
+	source_armv7h = xresconv-gui-bin-2.4.1-armv7h.tar.gz::https://github.com/xresloader/xresconv-gui/releases/download/v2.4.1/xresconv-gui-linux-armv7l.tar.xz
+	sha256sums_armv7h = 764344ac701ef894e19c1598b15c83a7b54c799022b2a6fd4f45526bce54586d
+	source_x86_64 = xresconv-gui-bin-2.4.1-x86_64.tar.gz::https://github.com/xresloader/xresconv-gui/releases/download/v2.4.1/xresconv-gui-linux-x64.tar.xz
+	sha256sums_x86_64 = cab293d47e071684823f8567246cf8423439ca7908c35b95e4611961aa0062eb
+
+pkgname = xresconv-gui-bin
