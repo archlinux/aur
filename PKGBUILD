@@ -3,7 +3,7 @@
 # Contributor: kartikmohta
 # Contributor: calvertdw
 pkgname=ros2-arch-deps
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
@@ -70,9 +70,11 @@ depends=('asio'
          'python-rospkg'
          'python-rosdistro'
          'python-rosdep'
+         'sip4'
+         'python-pyqt5-sip4'
+         'python-sip4'
 )
 
-makedepends=('sip4' 'python-pyqt5-sip4' 'python-sip4')
 optdepends=('python-pydot: running the node graph in rqt'
             'python-pyqtgraph: for plotting in rqt'
             'python-matplotlib: for plotting in rqt')
