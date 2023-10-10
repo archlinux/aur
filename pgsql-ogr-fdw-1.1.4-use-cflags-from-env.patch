@@ -1,0 +1,25 @@
+From 8ba3c6e01446d2a6f115eb6dd8814d6413331363 Mon Sep 17 00:00:00 2001
+From: Baudouin Feildel <baudouin@feildel.fr>
+Date: Tue, 9 Oct 2018 22:38:51 +0200
+Subject: [PATCH 1/1] Use CFLAGS from environment
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8ff2b08..7f15785 100644
+--- a/Makefile
++++ b/Makefile
+@@ -36,7 +36,7 @@ endif
+ # Build the utility program after PGXS to override the
+ # PGXS environment
+ 
+-CFLAGS = $(GDAL_CFLAGS)
++CFLAGS = $(GDAL_CFLAGS) $(CFLAGS)
+ LIBS = $(GDAL_LIBS)
+ 
+ ogr_fdw_info$(X): ogr_fdw_info.o ogr_fdw_common.o stringbuffer.o
+-- 
+2.19.1
+

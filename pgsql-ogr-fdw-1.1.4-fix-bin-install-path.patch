@@ -1,0 +1,25 @@
+From be49122667625525c85ec9eec2534ca1212a732b Mon Sep 17 00:00:00 2001
+From: Baudouin Feildel <baudouin@feildel.fr>
+Date: Tue, 9 Oct 2018 22:01:10 +0200
+Subject: [PATCH] Fix bin install path
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 5be50bb..b76a0f5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -46,7 +46,7 @@ clean-exe:
+ 	rm -f ogr_fdw_info$(X) ogr_fdw_info.o stringbuffer.o
+
+ install-exe: all
+-	$(INSTALL_PROGRAM) ogr_fdw_info$(X) '$(DESTDIR)$(bindir)'
++	$(INSTALL_PROGRAM) -D ogr_fdw_info$(X) '$(DESTDIR)$(bindir)/ogr_fdw_info$(X)'
+
+ all: ogr_fdw_info$(X)
+
+--
+2.19.1
+
