@@ -33,8 +33,7 @@ build() {
   yarn install
   export SIGNAL_ENV=production
   yarn build-everything
-  sed -i 's/\"target\": \[\"deb\", \"rpm\", \"freebsd\"\]/\"target\": \"tar.xz\"/g' package.json
-  $(yarn bin)/electron-builder --config.extraMetadata.environment=$SIGNAL_ENV --publish=never --config.directories.output=release --linux
+  $(yarn bin)/electron-builder --config.extraMetadata.environment=$SIGNAL_ENV --publish=never --config.directories.output=release --linux=tar.xz
 }
 
 package() {
