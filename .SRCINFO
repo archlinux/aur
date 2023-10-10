@@ -6,7 +6,7 @@ pkgbase = gnome-shell-extension-fuzzy-app-search-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell>=1:45.0
+	depends = gnome-shell
 	provides = gnome-shell-extension-fuzzy-app-search
 	conflicts = gnome-shell-extension-fuzzy-app-search
 	conflicts = gnome-fuzzy-app-search

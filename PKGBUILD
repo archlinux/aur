@@ -7,7 +7,7 @@ pkgdesc="Fuzzy application search results for Gnome Search"
 arch=('any')
 url="https://gitlab.com/Czarlie/gnome-fuzzy-app-search"
 license=('GPL3')
-depends=('gnome-shell>=1:45.0')
+depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gnome-fuzzy-app-search')
