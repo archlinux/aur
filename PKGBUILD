@@ -1,14 +1,16 @@
 # Maintainer: dario loi <dario13 loi at gmail dot com>
 pkgname=staplegl-git
 pkgver=v0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only C++20 OpenGL wrapper"
 arch=('any')
 url="https://github.com/dario-loi/staplegl"
 license=('MIT')
 source=("https://github.com/dario-loi/staplegl.git")
 md5sums=('SKIP')
-optdepends=('glfw: to compile the examples', 'tbb: for the multithreading in the batches example')
+optdepends=('glfw: to compile the examples', 'tbb: for the multithreading in the batches example',
+'cmake: to compile the examples', 'doxygen: to generate the documentation locally')
+
 
 package() {
     # Extract the source code
