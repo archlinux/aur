@@ -2,13 +2,13 @@
 
 pkgname=tango-accesscontrol
 _pkgname=TangoAccessControl
-pkgver=2.19
+pkgver=2.20
 _pkgver=${_pkgname}-Release-${pkgver}
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="combined from svn/TangoAccessControl and svn/TangoAccessControl/AbstractClasses"
 arch=('x86_64')
-url="https://gitlab.com/tango-controls/TangoAccessControl"
+url="https://gitlab.com/tango-controls/${_pkgname}"
 license=('GPL3')
 depends=('tango-cpp' 'tango-database')
 source=(
@@ -17,7 +17,7 @@ source=(
 )
        
 sha256sums=(
-  'd507194f67fc8b7cf06b89d0117937c3e82ff733d952b5f192581eb3f55155ee'
+  '5ee39b580971a541f4dcc317cf69125fbecfd206a5b8b6544e1314e6bc914ee6'
   '883e32ba0309313d0929a329d11b2843c7dee018aa71d4c316779f0888fa4c48'
 )
 
