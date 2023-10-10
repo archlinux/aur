@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 
 pkgname=boundary-bin
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Network resources access controller"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("boundary-controller.service"
 source_x86_64=("boundary-${pkgver}.zip::https://releases.hashicorp.com/boundary/${pkgver}/boundary_${pkgver}_linux_amd64.zip")
 sha256sums=('7fed68123ae0ef4571e22968824ea4f6a9adf1585ef6804bb1023190c1527a9b'
             '9803913afaee12c34addc93648d2a3c3ea736995f4979224de75def8ab36e2ed')
-sha256sums_x86_64=('7e549922c0cb31e46fbbbb52eaa6cfccbf40046b8a50844adf644c9ef335cb97')
+sha256sums_x86_64=('08de61de0c4aa47608ab414199c50eed1569993ea56b0d058004c7fb2bd1d560')
 options=("!strip")
 
 package() {
