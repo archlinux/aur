@@ -12,7 +12,7 @@ provides=("logseq-desktop")
 conflicts=("logseq-desktop")
 install="$_pkgname.install"
 source=(
-    "$url/releases/download/$pkgver/logseq-linux-x64-$pkgver.zip"
+    "$url/releases/download/$pkgver/Logseq-linux-x64-$pkgver.zip"
     "$_pkgname.desktop"
     "$_pkgname.sh"
 )
