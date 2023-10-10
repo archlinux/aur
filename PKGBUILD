@@ -37,6 +37,10 @@ prepare() {
 build() {
   cd ruby-${pkgver}
 
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
   ./configure \
     --prefix=/usr \
     --program-suffix=-2.7 \
