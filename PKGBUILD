@@ -22,10 +22,10 @@ source_aarch64=(
 )
 # for CARCH in x86_64 aarch64; do;
 #   pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=);
-#   [ "$CARCH" == aarch64 ] && arch=arm64 || arch=amd64;
 #   CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
 # done
 # for CARCH in x86_64 aarch64; do;
+#   [ "$CARCH" == aarch64 ] && arch=arm64 || arch=amd64;
 #   echo "sha256sums_${CARCH}=("
 #   sha256sum clickhouse*"${pkgver}_${arch}.deb" | sed -r 's|(\w+).+|  \1|';
 #   echo ')'
