@@ -5,19 +5,20 @@
 
 pkgname=tango-cpp
 _pkgname=cppTango
-pkgver=9.4.2
+_pkgver="9.5.0"
+pkgver="9.5.0"
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
 arch=('x86_64' 'armv7h')
-url="https://www.tango-controls.org/"
+url="https://gitlab.com/tango-controls/${_pkgname}"
 license=('GPL3')
-depends=('tango-idl' 'omniorb>=4.2.2' 'omniorb<4.3.0' 'zeromq' 'cppzmq' 'libjpeg-turbo')
+depends=('tango-idl' 'omniorb>=4.3.0' 'zeromq' 'cppzmq' 'libjpeg-turbo')
 makedepends=('doxygen' 'cmake')
 conflicts=('tango')
-source=("https://gitlab.com/tango-controls/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a067ab969e5cd7abf01bd989e227904858b7a1c374c4ee115f313a9f9c4f114d')
-_dir="${_pkgname}-${pkgver}"
+source=("https://gitlab.com/tango-controls/${_pkgname}/-/archive/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz")
+sha256sums=('8f8cd49d5287f66f84088a1cf2fa427c98a4a567fb81cce8479e1b14c4307b16')
+_dir="${_pkgname}-${_pkgver}"
 
 
 build() {
@@ -26,7 +27,7 @@ build() {
   then
     _MMX=-DTANGO_JPEG_MMX=OFF
   fi
-  cmake -B build -S "${_pkgname}-${pkgver}" $_MMX -DTANGO_IDL_BASE=/usr -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -S "${_pkgname}-${_pkgver}" $_MMX -DTANGO_IDL_BASE=/usr -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
 
