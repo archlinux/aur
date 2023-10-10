@@ -1,0 +1,16 @@
+post_install() {
+	common
+}
+
+post_upgrade() {
+	common
+}
+
+common() {
+	echo "This package is not longer officially supported by Databricks through customer"
+	echo "technical support channels, and it's recommended using Databricks asset bundles"
+	echo "using the new databricks-cli[https://aur.archlinux.org/packages/databricks-cli-bin]"
+	echo
+	echo "Check it out the migration guide at"
+	echo "- https://docs.databricks.com/en/archive/dev-tools/dbx/dbx-migrate.html"
+}

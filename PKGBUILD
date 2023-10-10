@@ -2,14 +2,14 @@
 pkgname=python-dbx
 _name=dbx
 pkgver=0.8.18
-pkgrel=2
+pkgrel=3
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
 url="https://docs.databricks.com/dev-tools/dbx.html"
 license=('CUSTOM')
 depends=(
 	'python>=3.8'
-	"python-databricks-cli>=0.17" "python-databricks-cli<0.18"
+	"python-databricks-cli>=0.17" "python-databricks-cli<=0.18"
 	"python-click>=8.1.0" "python-click<9.0.0"
 	"python-rich<14.0.0" # Upstream requires 12.5.1, but 13.x.x looks compatible
 	"python-typer>=0.7.0" "python-typer<1.0.0"
@@ -34,6 +34,7 @@ optdepends=(
 makedepends=(python-build python-installer)
 source=($pkgname-$pkgver.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v$pkgver.tar.gz)
 sha512sums=('3f3acd3652fcbccf29b8616daaf9f7d10ffa0f5ea54277bee3c0439f024a8462367ae99f37a29df37fde1595b5bcd9d327b7f57f948aaee57143a436716c5a6d')
+install="${pkgname}.install"
 
 build() {
 	cd "$_name-$pkgver"
