@@ -1,9 +1,9 @@
 # Maintainer: 4s3ti <4s3ti@4s3ti.net>
 
-pkgver=r570.b4f35ce
+pkgver=r571.c6dd6e3
 _pkgname=streamdeck-ui
 pkgname=streamdeck-ui-develop
-pkgrel=3
+pkgrel=1
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck (development branch)"
 arch=('any')
 url="https://github.com/streamdeck-linux-gui/streamdeck-linux-gui"
