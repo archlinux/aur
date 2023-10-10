@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 # Contributor: David Birks <david at tellus dot space>
@@ -7,7 +7,7 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2023.4
+pkgver=2023.5
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -17,9 +17,9 @@ depends=('gtk3' 'iputils' 'libnotify' 'nss')
 makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nodejs>=16' 'npm>=8.3' 'protobuf')
 options=('!lto')
 install="$pkgname.install"
-_tag=a64b10fdd4c9fefa6d25fd2a94c0ea6cbc7eebc0  # tags/2023.4^0
+_tag=93fcf31a5ea75fff5277d2698df1670d5019552f  # tags/2023.5^0
 _commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by raksooo, public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'no-rpm.diff'
         "$pkgname.sh")
@@ -67,6 +67,7 @@ build() {
   cd "$srcdir/mullvadvpn-app"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
@@ -87,8 +88,16 @@ build() {
   go clean -modcache
 
   echo "Building Rust code in release mode using ${RUSTC_VERSION}..."
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+
+  cargo_crates_to_build=(
+    -p mullvad-daemon --bin mullvad-daemon
+    -p mullvad-cli --bin mullvad
+    -p mullvad-setup --bin mullvad-setup
+    -p mullvad-problem-report --bin mullvad-problem-report
+    -p talpid-openvpn-plugin --lib
+    -p mullvad-exclude --bin mullvad-exclude
+  )
+  cargo build --frozen --release "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   mkdir -p build/shell-completions
@@ -111,7 +120,7 @@ build() {
     mullvad-exclude
   )
   for binary in ${binaries[*]}; do
-    cp target/release/${binary} dist-assets/${binary}
+    cp "target/release/${binary}" "dist-assets/${binary}"
   done
 
   # Build Electron GUI
@@ -160,7 +169,7 @@ package() {
     "$pkgdir/usr/share/applications/"
 
   for icon_size in 16 32 48 64 128 256 512 1024; do
-    icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -Dm644 ${icons_dir}/$pkgname.png -t "$pkgdir/${icons_dir}/"
+    icons_dir="usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+    install -Dm644 "${icons_dir}/$pkgname.png" -t "$pkgdir/${icons_dir}/"
   done
 }
