@@ -10,7 +10,7 @@ license=('custom:Harman Connected Services, Inc. (“Harman”) SDK License Agre
 depends=('jdk11-openjdk')
 makedepends=('wget' 'unzip')
 source=()
-_sha256sum='3f67214f22e698c4e9241356643808d8e94c35f3e3a2012d894c20d6b14368a5'
+_sha256sum='fa0b531d7b40caa380474f8a4ad2bb8184f1aac427c4229aad65ab4f2469263f'
 install="$pkgname.install"
 
 package() {
