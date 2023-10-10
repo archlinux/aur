@@ -1,7 +1,7 @@
 pkgbase = duckcloud
 	pkgdesc = A cloud for your family
 	pkgver = 23.10.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://duckcloud.co
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = duckcloud
 	source = duckcloud.sysusers
 	sha256sums = e92898e491c1ca266c380388293dd21cc538218780516b5d0597590cc7459757
 	sha256sums = 5fc25ddfc97831e04945cced120fb77818a0ae67e96fd7f7ee2c0cc5f6136b32
-	sha256sums = 7fce4fa98f399717e892ed834b886d35f5f543b486502d0ac9b92b1e608f4119
+	sha256sums = ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead
 
 pkgname = duckcloud
