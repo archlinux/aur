@@ -1,13 +1,13 @@
 pkgbase = scrape-cli
 	pkgdesc = CLI utility to scrape emails from websites
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/lawzava/scrape
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = scrape-cli-1.8.0.tar.gz::https://github.com/lawzava/scrape/archive/refs/tags/v1.8.0.tar.gz
-	sha256sums = fce2d37eb0a756a63044dfc3282e8fc5c11dec0502ee7fc8652d7b62a1fe200f
+	source = scrape-cli-1.9.0.tar.gz::https://github.com/lawzava/scrape/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = b0c277dc6c87861c911df6265cded2bf9233d5942bba0aa49f6eb03e9071c487
 
 pkgname = scrape-cli

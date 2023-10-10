@@ -2,8 +2,8 @@
 
 pkgname=scrape-cli
 _name=scrape
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="CLI utility to scrape emails from websites"
 arch=(x86_64)
 url="https://github.com/lawzava/scrape"
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=(go)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fce2d37eb0a756a63044dfc3282e8fc5c11dec0502ee7fc8652d7b62a1fe200f')
+sha256sums=('b0c277dc6c87861c911df6265cded2bf9233d5942bba0aa49f6eb03e9071c487')
 
 _archive="$_name-$pkgver"
 
