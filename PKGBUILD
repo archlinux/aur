@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2023.10.02.00
+pkgver=2023.10.09.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -46,7 +46,7 @@ source=(
   "0001-Fix-build-with-fmt-10.patch"
 )
 sha256sums=(
-  'a37900e7fae549253fb58d4007f90bdcca05565b7dd55cee7c748d055ed8399c'
+  'f7e92f4007c151480f91b57c6b687b376a91a8c4dd3a7184588166b45445861c'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
