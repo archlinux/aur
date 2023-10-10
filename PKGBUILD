@@ -1,29 +1,35 @@
 # Maintainer: Aron Young <tkf6fkt at gmail dot com>
+# Maintainer: Asuka Minato
 
 pkgname=flashbrowser-bin
 _dirname=FlashBrowser-linux-x64
-pkgver=0.7
-pkgrel=4
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="A browser dedicating to supporting adobe flash."
 arch=(x86_64 aarch64 i686)
 url="https://flash.pm/browser/"
 license=(unknown)
 depends=(electron9 nodejs bash)
-makedepends=(imagemagick git)
+makedepends=(imagemagick git innoextract)
 provides=(flashbrowser)
 conflicts=(flashbrowser-git)
 source=(
-	"https://github.com/radubirsan/FlashBrowser/releases/download/v${pkgver}/FlashBrowser-linux-x64.zip"
+	#	"https://github.com/radubirsan/FlashBrowser/releases/download/v${pkgver}/FlashBrowser-linux-x64.zip"
+	"https://github.com/radubirsan/FlashBrowser/releases/download/v0.81/v0.81_FlashBrowser_x64.exe"
 	"git+https://github.com/Hadaward/flashplayer-plugin.git"
 	$pkgname.desktop
 )
-sha256sums=('0c649e024c64232401bfab316165d2bc8bda7fc997efdbbb03ba3d09a61054d6'
-            'SKIP'
-            'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
+sha256sums=('ce573c0b8c54161b468056ab6c62214edea12b05c1c25e1bbb6e54ace8a703ec'
+	'SKIP'
+	'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
+
+prepare() {
+	innoextract *.exe
+}
 
 package() {
 	install -d "$pkgdir/opt/$pkgname/"
-	cp -av "$srcdir/$_dirname/resources/app" "$pkgdir/opt/$pkgname/"
+	cp -av "$srcdir/app/resources/app" "$pkgdir/opt/$pkgname/"
 
 	bsdtar -xf $srcdir/flashplayer-plugin/32.0.0.363/linux.zip -C $srcdir/
 	cp -av $srcdir/lib* "$pkgdir/opt/$pkgname/app/flashver/"
@@ -46,7 +52,7 @@ package() {
 		elif [ $i = '48' ]; then
 			layer=3
 		elif [ $i = '256' ]; then layer=4; fi
-		convert "$srcdir/$_dirname/resources/app/icon.ico[${layer}]" -define icon:auto-resize=${i} \
+		convert "$srcdir/app/resources/app/icon.ico[${layer}]" -define icon:auto-resize=${i} \
 			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
 	done
 }
