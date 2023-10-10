@@ -8,7 +8,7 @@ pkgbase = rime-ls
 	makedepends = clang
 	makedepends = cargo
 	depends = librime
-	source = rime-ls-0.2.3.tar.gz::https://github.com/wlh320/rime-ls/archive/refs/tags/v0.2.3.tar.gz
+	source = rime-ls-0.2.4.tar.gz::https://github.com/wlh320/rime-ls/archive/refs/tags/v0.2.4.tar.gz
 	sha512sums = 3b9451af802d0e5a56c62eeb33c2022c10cd9196fab980ec8e1dea6014b92ffe0d03264115c8b6c345b19ae7f67507d604665bb795e11a27af4149f620bca9c7
 
 pkgname = rime-ls
