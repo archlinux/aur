@@ -1,7 +1,7 @@
 pkgbase = python-pyvista
 	pkgdesc = 3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK)
 	pkgver = 0.42.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pyvista.org
 	arch = any
 	license = MIT
