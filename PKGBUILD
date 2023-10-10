@@ -5,7 +5,7 @@
 # Contributor: Tássio Virgínio <tassiovirginio@gmail.com>
 
 pkgname='beekeeper-studio-bin'
-pkgver=3.9.20
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("https://github.com/beekeeper-studio/beekeeper-studio/releases/do
 source_aarch64=("https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v${pkgver}/beekeeper-studio_${pkgver}_arm64.deb")
 
 sha256sums=('1409fbbc5265c85da91684660c87f85d74c3fdc63a2d355169f40dac5cc7a078')
-sha256sums_x86_64=('19c7b0a9d9d4c03ae7df7e68e31d03af685f1230be7507638b36aa0968996654')
-sha256sums_aarch64=('331d3af9e94bff9641434df6229737750a21114c4e207ea8fd9fe2ab3524bc56')
+sha256sums_x86_64=('60222ca115ea313386702fde245ab47dad71150a4c73f482d6d3a045a4dcf9c9')
+sha256sums_aarch64=('72f453e4e5aa1b4e7d38ff8a3103b747a8898d6a13b99c3b3cdaa9cd75314ede')
 
 
 package() {
