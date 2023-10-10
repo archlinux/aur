@@ -1,58 +1,39 @@
-# Maintainer: Conor Anderson <conor@conr.ca>
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Conor Anderson <conor@conr.ca>
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=wire-desktop-git
-_pkgname=${pkgname%-git}
-pkgver=3.11.3259.r488.g38cb57bd
+pkgver=3.32.3079.r59.ga4e2f8ac
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
-url='https://wire.com/'
+url="https://wire.com/"
+_githuburl="https://github.com/wireapp/wire-desktop"
 license=('GPL3')
-provides=('wire-desktop')
-conflicts=('wire-desktop')
-depends=('electron6' 'xdg-utils')
-makedepends=('git' 'npm' 'yarn')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+depends=('bash' 'electron26' 'xdg-utils')
+makedepends=('git' 'npm>=6.14.18' 'nodejs>=14.21.3' 'yarn' 'gendesk')
 optdepends=('emoji-font: colorful emoji')
-source=("git+https://github.com/wireapp/wire-desktop.git"
-        "${_pkgname}.desktop")
+source=("${pkgname%-git}.git::git+${_githuburl}.git"
+        "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787')
-
+            'f472bd72db26cb19739dd463ec75ff69bacab3f367d887ce2da170ff12148b4f')
 pkgver() {
-    cd "${_pkgname}"
+    cd "${srcdir}/${pkgname%-git}.git"
     git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 prepare() {
-    # Create launcher script
-    cat << EOF > "${_pkgname}-launcher"
-#!/usr/bin/env sh
-
-electron6 "/usr/lib/${_pkgname}" "\$@"
-EOF
+    gendesk -q -f -n --categories "Network" --name "${pkgname%-git}" --exec "${pkgname%-git}"
 }
-
 build() {
-    cd "${_pkgname}"
+    cd "${srcdir}/${pkgname%-git}.git"
     yarn
-    BUILD_NUMBER="$(echo ${pkgver} | cut -d. -f3)" LINUX_TARGET=dir ENABLE_ASAR=false yarn build:linux
+    yarn build:linux:internal
 }
-
 package() {
-    # Place files
-    install -d "${pkgdir}/usr/lib/${_pkgname}"
-    cp -a "${_pkgname}/wrap/dist/linux-unpacked/resources/app/"{electron,node_modules,package.json} "${pkgdir}/usr/lib/${_pkgname}"
-
-    # Place launcher script
-    install -Dm755 "${_pkgname}-launcher" "${pkgdir}/usr/bin/${_pkgname}"
-
-    # Place desktop entry and icon
-    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${_pkgname}.desktop"
-    local res
-    for res in 32x32 256x256; do
-        install -Dm644 "${_pkgname}/resources/icons/${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
-    done
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/wrap/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-git}/resources"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=4 sw=4 et:
