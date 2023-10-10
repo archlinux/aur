@@ -11,6 +11,7 @@ license=(MIT)
 makedepends=(cargo git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=(!lto)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 

@@ -9,6 +9,7 @@ pkgbase = wttrbar-git
 	makedepends = git
 	provides = wttrbar
 	conflicts = wttrbar
+	options = !lto
 	source = wttrbar-git::git+https://github.com/bjesus/wttrbar.git
 	sha256sums = SKIP
 
