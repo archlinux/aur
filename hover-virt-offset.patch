@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..371b3c289 100644
+index ef3523211..4cbbcfcd1 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -993,6 +993,122 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
+@@ -993,6 +993,131 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
    return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
  }
  
@@ -23,7 +23,7 @@ index ef3523211..371b3c289 100644
 +static uint64_t getVirtualCXXMethodsCount(const CXXRecordDecl *Record) {
 +  uint64_t Count = 0;
 +  for (const auto &Base :
-+       Record->bases()) { // FIXME: Calc only for first or last base
++       Record->bases()) {
 +    const auto *BaseRecord = Base.getType()->getAsCXXRecordDecl();
 +    if (BaseRecord) {
 +      auto VirtualMethodsInBase = getVirtualCXXMethodsCount(BaseRecord);
@@ -60,7 +60,7 @@ index ef3523211..371b3c289 100644
 +static uint64_t findVirtualCXXMethodId(const CXXMethodDecl *Method,
 +                                       const CXXRecordDecl *Record = nullptr) {
 +  if (!Method->isVirtual())
-+    return InvalidVirtualCXXMethodId; // FIXME: Find id from override.
++    return InvalidVirtualCXXMethodId;
 +  if (!Record) {
 +    Record = getRecordOfMethodDecl(Method);
 +    if (!Record)
@@ -94,18 +94,10 @@ index ef3523211..371b3c289 100644
 +      }
 +      return Base;
 +    };
-+
-+    const auto *BaseMethod = GetBaseMethod(Method, Record);
-+    if (BaseMethod != Method) {
-+      const auto *Record = BaseMethod->getThisType()->getAsCXXRecordDecl();
-+      return findVirtualCXXMethodId(BaseMethod, Record);
-+    }
-+    for (const auto &Base :
-+         Record->bases()) { // FIXME: Calc only for first or last base
-+      const auto *BaseRecord = Base.getType()->getAsCXXRecordDecl();
-+      if (!BaseRecord)
-+        continue;
-+      uint64_t Id = getVirtualCXXMethodsCount(BaseRecord);
++    auto GetMethodId = [MSABI](const CXXMethodDecl *Method,
++                               const CXXRecordDecl *Record,
++                               uint64_t IdOffset = 0) {
++      uint64_t Id = IdOffset;
 +      for (const auto *MD : Record->methods()) {
 +        const auto *BaseMethod = GetBaseMethod(MD, Record);
 +        if (!MD->isVirtual() || BaseMethod != MD)
@@ -116,8 +108,25 @@ index ef3523211..371b3c289 100644
 +          Id++;
 +        Id++;
 +      }
-+      break;
++      return InvalidVirtualCXXMethodId;
++    };
++
++    const auto *BaseMethod = GetBaseMethod(Method, Record);
++    if (BaseMethod != Method) {
++      const auto *Record = BaseMethod->getThisType()->getAsCXXRecordDecl();
++      return findVirtualCXXMethodId(BaseMethod, Record);
 +    }
++    for (const auto &Base :
++         Record->bases()) {
++      const auto *BaseRecord = Base.getType()->getAsCXXRecordDecl();
++      if (!BaseRecord)
++        continue;
++      uint64_t IdOffset = getVirtualCXXMethodsCount(BaseRecord);
++      if (IdOffset == 0)
++        continue;
++      return GetMethodId(Method, Record, IdOffset);
++    }
++    return GetMethodId(Method, Record);
 +  }
 +  return InvalidVirtualCXXMethodId;
 +}
@@ -125,7 +134,7 @@ index ef3523211..371b3c289 100644
  void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (ND.isInvalidDecl())
      return;
-@@ -1039,6 +1155,18 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1039,6 +1164,18 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      }
      return;
    }
