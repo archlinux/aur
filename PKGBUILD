@@ -37,7 +37,7 @@ source=(
 )
 sha256sums=('489d2dbd009f1255714f7448116562c4608452a8010ee4677803c10e02a7fbbf'
             '27bd6974d92a5cb2eb3ff0739861a1cc1da4e99c71677595c1c485312fd69cf9'
-            '72672e29bd154c3208d142ba434e72c084b5c6bd1f5e29f38b7c9eed5446c4a2')
+            'a97e2c4bc07470dad890fca27b6da7c4a9ac9762551a0888dd812d2da63200ad')
 
 prepare() {
 	cd "$srcdir/crowdsec-v${pkgver}"
