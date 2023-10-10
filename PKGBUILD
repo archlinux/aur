@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkcompactdisc
-pkgver=23.08.1
+pkgver=23.08.2
 pkgrel=1
 pkgdesc='A library for interfacing with CDs'
 url='https://www.kde.org/'
@@ -12,7 +12,7 @@ license=(GPL LGPL FDL)
 depends=(solid5 ki18n5 phonon-qt5)
 makedepends=(extra-cmake-modules)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('c5f7042780a9956db0cbf0361e6923e9582a62d50e3b429a282ea70e2e1a1ff7'
+sha256sums=('87fbab213367a30420a9140fb32f9954a62bf36fcd4896f3b33afb149b5564f1'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
