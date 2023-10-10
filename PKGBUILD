@@ -55,7 +55,7 @@ build() {
              -DDAGMC_ROOT=/opt/DAGMC \
              -DOPENMC_USE_MPI=ON \
              -DHDF5_PREFER_PARALLEL=ON \
-	     -DCMAKE_INSTALL_PREFIX=/opt/openmc
+	     -DCMAKE_INSTALL_PREFIX=/opt/openmc	 
     _ccores=`cat /proc/cpuinfo |grep CPU|wc -l`
   	if [ "x$1" != "x" ]; then
 		_ccores=$1
@@ -67,5 +67,11 @@ package() {
 	cd $srcdir/${pkgname}/build 
 	make DESTDIR="$pkgdir/" install
 	pip install --break-system-packages ../
-	mv $srcdir/${pkgname} $pkgdir/opt/openmc
+	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
+
+	# installed to opt, inform user how to set paths
+	_path_msg="$'\n'INFO: OpenMC and its dependencies were installed to the 
+			   non-standard location /opt. Run bash 
+			   ~/.cache/yay/openmc-git/set_paths.sh before attempting to
+			   use openmc$'\n'"
 }

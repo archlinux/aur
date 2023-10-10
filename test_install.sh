@@ -1,11 +1,5 @@
  # set non-standard paths
-arch=$(uname -m)
-python_version=$(python -V 2>&1 | cut -d' ' -f2 | cut -d'.' -f1-2)
-export PATH=$PATH:/opt/openmc/bin:$HOME/.local/lib/python$python_version/site-packages
-export PYTHONPATH=$PYTHONPATH:/opt/MOAB/lib/python$python_version/site-packages
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/MOAB/lib
-var=`echo /opt/nuclear-data/*hdf5 | head -n1`
-export OPENMC_CROSS_SECTIONS=$var/cross_sections.xml
+bash set_paths.sh
 
 # test geometry build
 python ~/.cache/yay/openmc-git/step_to_h5m.py
