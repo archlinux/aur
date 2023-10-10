@@ -1,4 +1,4 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Contributor: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=logcat-color3
@@ -16,7 +16,7 @@ conflicts=(logcat-color)
 source=("git+https://github.com/yan12125/logcat-color3?signed#tag=$_tag")
 sha256sums=('SKIP')
 validpgpkeys=(
-  'E62545315B012B69C8C94A1D56EC201BFC794362'  # Chih-Hsuan Yen <yan12125@archlinux.org>
+  'E62545315B012B69C8C94A1D56EC201BFC794362'
 )
 
 pkgver() {
