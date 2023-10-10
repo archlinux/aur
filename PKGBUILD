@@ -25,6 +25,6 @@ package () {
   install -d "${pkgdir}/usr/bin/"
   ln -s "/opt/${pkgname}/uppaal" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -D -m755 "${srcdir}/uppaal5.desktop" "${pkgdir}/usr/share/applications/uppaal5.desktop"
+  install -D -m644 "${srcdir}/uppaal5.desktop" "${pkgdir}/usr/share/applications/uppaal5.desktop"
 }
 
