@@ -1,0 +1,17 @@
+pkgbase = aeolus-vst3-bin
+	pkgdesc = Aeolus Organ Synth (VST3)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Archie3d/aeolus_plugin
+	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
+	license = GPL
+	makedepends = unzip
+	depends = glibc
+	provides = aeolus-vst3
+	options = !strip
+	source = https://github.com/Archie3d/aeolus_plugin/releases/download/v0.2.0/Aeolus-standalone-vst3-linux-0.2.0.zip
+	sha256sums = fd0f8c0a7a6112ac68412301979ad934cd97afa03adbaee29a39875097a3ad06
+
+pkgname = aeolus-vst3-bin
