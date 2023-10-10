@@ -14,6 +14,8 @@ pkgbase = python-sip
 	depends = python-ply
 	provides = sip
 	provides = python-sip
+	conflicts = sip
+	conflicts = python-sip
 	source = https://pypi.python.org/packages/source/s/sip/sip-6.7.11.tar.gz
 	sha256sums = f0dc3287a0b172e5664931c87847750d47e4fdcda4fe362b514af8edd655b469
 

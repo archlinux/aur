@@ -6,6 +6,7 @@ pkgdesc='A tool that makes it easy to create Python bindings for C and C++ libra
 url='https://www.riverbankcomputing.com/software/sip/intro'
 license=('custom:"sip"')
 provides=(sip python-sip)
+conflicts=(sip python-sip)
 depends=(
     python-toml 
     python-packaging 
