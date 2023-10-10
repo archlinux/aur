@@ -1,6 +1,6 @@
 # Maintainer: Baudouin Feildel <baudouin_aur@feildel.fr>
 pkgname=pgsql-ogr-fdw
-pkgver=1.0.9
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="PostgreSQL foreign data wrapper for OGR"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
 	"$pkgname-$pkgver-fix-bin-install-path.patch"
 	"$pkgname-$pkgver-use-cflags-from-env.patch")
 sha256sums=(
-	'a0eb072b08fe63fe065983cc67fa2f36af9010455932a78307cdf919d970be95'
+	'7bacb28ace465773544d76d8ad7b7bfb95245c6ad68aa2c58f785b54da93234a'
 	'bbde8139a04293d0c51ed13a4baedddfe206a19f34b27084776032d715847822'
 	'bf052972161e4b5317d747dca15bccd7538daf6441722ee74b2fb068a72fd0e3')
 
