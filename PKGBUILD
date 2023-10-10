@@ -4,6 +4,7 @@
 # Contributor: Mark Wagie <mark_at_manjaro_dot_org>
 # Contributor: Jonathon Fernyhough
 # Contributor: realqhc <https://github.com/realqhc>
+# Contributor: Brett Alcox <https://github.com/brettalcox>
 
 # Archlinux credits:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -14,7 +15,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=44.5
+pkgver=45.0
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,6 +31,8 @@ depends=(
   iio-sensor-proxy
   lcms2
   libcanberra
+  libdisplay-info
+  libei
   libgudev
   libinput
   libsm
@@ -53,20 +56,20 @@ makedepends=(
   xorg-server-xvfb
 )
 checkdepends=(
+  gnome-session
   python-dbusmock
   wireplumber
   zenity
 )
-provides=(mutter=$pkgver libmutter-12.so)
+provides=(mutter=$pkgver libmutter-13.so)
 conflicts=(mutter)
-_commit=1511e6e1cdc8fa1a84f6fbbb169777ac26ba7f44  # tags/44.5^0
-_scaling_commit=c71847d5e7f2e08e8bf4e81257c24bbcd422d355
+_commit=4f6c91847088d7d6476b88575b3a6601b819b443  # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-  "https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/mutter-45/mutter-45.0-x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
 b2sums=('SKIP'
-        'b35c478f8cdf2cd47e70ce593ec1f36c1c8ba7756bf806ab9c1e94b75ac02ab828e9d11aea41c7b811e3496cc739d211c002ce35539b9b0ba71cbf447e4cfb3b')
+        'c25a4c909aa9a07d3c0a131a8419d510583ecdd883950c82ff487b0f578a13b2cb093c54b966cb48509c77ffdcc93cbadcd67318173454fb8cb424f01fd0bcb5')
 
 pkgver() {
   cd mutter
@@ -76,13 +79,8 @@ pkgver() {
 prepare() {
   cd mutter
 
-  # Unbreak tests with Mesa 23.1
-  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3047
-  git cherry-pick -n '5a83e8ef8250526a40e8e69c^..d65883e0d7d70987e3888b86'
-
   # Add scaling support using randr under x11
-  patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+  patch -p1 -i "${srcdir}/mutter-45.0-x11-Add-support-for-fractional-scaling-using-Randr.patch"
 }
 
 build() {
@@ -90,6 +88,7 @@ build() {
     -D docs=false
     -D egl_device=true
     -D installed_tests=false
+    -D libdisplay_info=true
     -D wayland_eglstream=true
   )
 
@@ -100,28 +99,19 @@ build() {
   meson compile -C build
 }
 
-_check() (
+check() (
   export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
   glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
 
-  pipewire &
-  _p1=$!
+  export NO_AT_BRIDGE=1 GTK_A11Y=none
+  export MUTTER_DEBUG_DUMMY_MODE_SPECS="800x600@10.0"
 
-  wireplumber &
-  _p2=$!
-
-  trap "kill $_p1 $_p2; wait" EXIT
-
-  #meson test -C build --print-errorlogs -t 3 || :
+  xvfb-run -s '-nolisten local +iglx -noreset' \
+    mutter/src/tests/meta-dbus-runner.py --launch=pipewire --launch=wireplumber \
+    meson test -C build --print-errorlogs -t 5 --setup plain || :
 )
-
-check() {
-  dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-    bash -c "$(declare -f _check); _check"
-}
 
 package() {
   meson install -C build --destdir "$pkgdir"
 }
-
