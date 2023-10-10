@@ -1,6 +1,6 @@
 pkgbase = python-marisa-trie
 	pkgdesc = Static memory-efficient & fast Trie-like structures for Python (based on marisa-trie C++ library)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/pytries/marisa-trie
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-marisa-trie
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/m/marisa-trie/marisa-trie-1.0.0.tar.gz
-	sha256sums = d8a68301f023a724eb379aaa1b10f88a9e1a458cc8a41b527c62507859b4a4d2
+	source = https://files.pythonhosted.org/packages/source/m/marisa-trie/marisa-trie-1.1.0.tar.gz
+	sha256sums = 5bf43ed0cf36af4578fe7b034cf95f532439766516680e4bd603723611ebd56b
 
 pkgname = python-marisa-trie
