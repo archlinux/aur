@@ -1,6 +1,6 @@
 pkgbase = rustdesk
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://rustdesk.com/
 	install = rustdesk.install
@@ -43,13 +43,13 @@ pkgbase = rustdesk
 	options = !strip
 	options = !makeflags
 	options = !lto
-	source = rustdesk-1.2.2.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/1.2.2.tar.gz
+	source = rustdesk-1.2.3.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/1.2.3.tar.gz
 	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz
 	source = flutter_rust_bridge-1.75.0.tar.gz::https://github.com/fzyzcjy/flutter_rust_bridge/archive/refs/tags/v1.75.0.tar.gz
-	md5sums = 6cef8a5aaa5c1feb42899a662a8e4aa9
+	md5sums = 801dab597be686334779f8fa7e4f1353
 	md5sums = 97115fa5fc6d8d63bdf13dc57fc20861
 	md5sums = 9cb4a6717db959e082db75200e75d3e1
-	sha256sums = 6dca487f7d05eb3a698138470ab171742b213b617adbdbee4f476afb2526c80f
+	sha256sums = 49d562e56cffea9f8e6f9facd6e6f0c5d51114dd6d154e23c8a441311fb8ac18
 	sha256sums = 7048e51a89c99a5b6cac6d8ae416121264effa76da34dba5c0e7cf85519c8e98
 	sha256sums = 6efb71ac8086699da74dad6736c32ddb20db5dcabe167c49a8c3a650675eb84b
 
