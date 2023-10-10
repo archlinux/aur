@@ -26,7 +26,7 @@
 
 pkgname="cryptopro-csp-k1"
 pkgver=5.0.12900
-pkgrel=2
+pkgrel=3
 _pkgver_patch="7"
 _cades_version="2.0.14892"
 _pkgver="$pkgver-$_pkgver_patch"
@@ -47,6 +47,9 @@ depends=(
     'libxml2'
     'ccid'
     'acsccid'
+)
+optdepends=(
+    'rutoken-plugin: Rutoken PKCS11 keys support'
 )
 makedepends=(
     'libarchive'
@@ -70,6 +73,8 @@ package() {
     bsdtar -xf "cprocsp-rdr-pcsc-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-jacarta-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-rutoken-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-rdr-cpfkc-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-rdr-cryptoki-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-cptools-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-cloud-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "lsb-cprocsp-devel-${_pkgver}.noarch.rpm" -C "$pkgdir"
@@ -84,4 +89,5 @@ package() {
 
     mkdir -p "$pkgdir/etc/ld.so.conf.d/"
     echo "/opt/cprocsp/lib/amd64" > "$pkgdir/etc/ld.so.conf.d/cryptopro-csp-k1.conf"
+    echo "/usr/lib/mozilla/plugins" >> "$pkgdir/etc/ld.so.conf.d/cryptopro-csp-k1.conf"
 }

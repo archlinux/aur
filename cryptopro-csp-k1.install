@@ -508,6 +508,43 @@ post_install() {
     cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_6 300
     cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_7 8
 
+    # cprocsp-rdr-cpfkc
+    cpconfig -ini '\config\apppath' -add string librdrcpfkc.so /opt/cprocsp/lib/amd64/librdrcpfkc.so
+    cpconfig -ini '\config\KeyCarriers\rutokenfkc' -add string DLL librdrcpfkc.so
+    cpconfig -ini '\config\KeyCarriers\rutokenfkc_nfc' -add string DLL librdrcpfkc.so
+    cpconfig -ini '\config\KeyCarriers\smartparkfkc' -add string DLL librdrcpfkc.so
+    cpconfig -hardware media -add rutokenfkc -name 'rutokenfkc' > /dev/null
+    cpconfig -hardware media -configure rutokenfkc -connect Default -add hex atr 3b8b015275746f6b656e20445320c1
+    cpconfig -hardware media -configure rutokenfkc -connect Default -add hex mask ffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure rutokenfkc -connect Default -add string Name 'Rutoken FKC'
+    cpconfig -hardware media -add rutokenfkc_nfc -name 'rutokenfkc_nfc' > /dev/null
+    cpconfig -hardware media -configure rutokenfkc_nfc -connect Default -add hex atr 3B88800152745343778183206A
+    cpconfig -hardware media -configure rutokenfkc_nfc -connect Default -add hex mask ffffffffffffffffffffffffff
+    cpconfig -hardware media -configure rutokenfkc_nfc -connect Default -add string Name 'Rutoken FKC NFC'
+    cpconfig -hardware media -configure rutokenfkc_nfc -connect Contact -add hex atr 3B9C968011405275746F6B656E4543507363C0
+    cpconfig -hardware media -configure rutokenfkc_nfc -connect Contact -add hex mask fffffefffffffffffffffffffffffffffffffe
+    cpconfig -hardware media -configure rutokenfkc_nfc -connect Contact -add string Name 'Rutoken FKC NFC'
+    cpconfig -hardware media -add smartparkfkc -name 'smartparkfkc' > /dev/null
+    cpconfig -hardware media -configure smartparkfkc -connect Default -add hex atr 00000000534D4152545041524B20464B43
+    cpconfig -hardware media -configure smartparkfkc -connect Default -add hex mask 00000000ffffffffffffffffffffffffff
+    cpconfig -hardware media -configure smartparkfkc -connect Default -add string Name 'SmartPark FKC'
+    cpconfig -hardware media -configure smartparkfkc -connect Combi -add hex atr 3B9E00008031C0654D4700000272F7418107
+    cpconfig -hardware media -configure smartparkfkc -connect Combi -add hex mask FFFF0000FFFFFFFFFFFF300002FFFFFFFFFF
+    cpconfig -hardware media -configure smartparkfkc -connect Combi -add string Name 'SmartPark FKC Combi'
+
+    # cprocsp-rdr-cryptoki
+    cpconfig -ini '\config\apppath' -add string librdrcryptoki.so /opt/cprocsp/lib/amd64/librdrcryptoki.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add long Group 1
+    cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add string DLL librdrcryptoki.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_rutoken\PNP cryptoki\Default' -add string pkcs11_dll librtpkcs11ecp.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_esmart' -add long Group 1
+    cpconfig -ini '\config\KeyDevices\cryptoki_esmart' -add string DLL librdrcryptoki.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_esmart\PNP cryptoki\Default' -add string pkcs11_dll libisbc_pkcs11_main.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_jacarta' -add long Group 1
+    cpconfig -ini '\config\KeyDevices\cryptoki_jacarta' -add string DLL librdrcryptoki.so
+    cpconfig -ini '\config\KeyDevices\cryptoki_jacarta\PNP cryptoki\Default' -add string pkcs11_dll libjcPKCS11-2.so
+    cpconfig -ini '\config\debug' -add long cryptoki 1
+
     # cprocsp-rdr-cloud-64
     cpconfig -ini '\config\apppath' -add string librdrcloud.so /opt/cprocsp/lib/amd64/librdrcloud.so
     cpconfig -ini '\config\KeyDevices\Cloud' -add string DLL librdrcloud.so
