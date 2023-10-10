@@ -1,14 +1,14 @@
 pkgbase = python-bivalve
     pkgdesc = A bi-directional shell-like socket protocol framework using asyncio
-	pkgver = 0.1
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/lainproliant/bivalve
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/bivalve/bivalve-0.1.tar.gz
-    sha256sums = db4ce0cc28efa7266937614e1b01c2313b7542acfcbb0968430cea6a48554361
+	source = https://files.pythonhosted.org/packages/source/b/bivalve/bivalve-0.15.tar.gz
+    sha256sums = 762ec16196d552fe8638ce48b7dbe253f8fb38a9b97c0b62387c339ba649be81
 
 pkgname = python-bivalve
 	depends = python
