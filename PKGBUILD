@@ -2,8 +2,8 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.5.8_pre5
-_pkgver=${pkgver/_/-}
+_pkgver=0.5.8-pre6
+pkgver=${_pkgver/-/_}
 pkgrel=1
 epoch=
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
@@ -22,8 +22,8 @@ source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.githu
 source_x86_64=("${pkgname}-2-${_pkgver}-x86_64.tgz::${url}/releases/download/v${_pkgver}/clouddrive-2-linux-x86_64-${_pkgver}.tgz")
 source_aarch64=("${pkgname}-2-${_pkgver}-aarch64.tgz::${url}/releases/download/v${_pkgver}/clouddrive-2-linux-aarch64-${_pkgver}.tgz")
 sha256sums=('445a37f017c646fe8fcd3cdd24c159e7fed733ace7197b972070d76aca3b83b7')
-sha256sums_x86_64=('a789258fa91b0444da27a0e00c95ec1eab0810452d9ac129a9abb31f6f0d00f7')
-sha256sums_aarch64=('2312761f43e8772b09ad43875437168bf9f1c5617dc2f53ecfc7be4eb881fd77')
+sha256sums_x86_64=('44b8422459675e1ab1dbe6b32144ec1d4360173b43539251b86966ab73146ec7')
+sha256sums_aarch64=('e3c543dcf380aed482e3e60b8579d79981839716fbe7130d6b63ab3e33586c49')
 noextract=(
     ${pkgname}-2-x86_64-${_pkgver}.tgz
     ${pkgname}-2-aarch64-${_pkgver}.tgz)
@@ -35,7 +35,7 @@ package() {
     install -dm755 ${pkgdir}/${_install_path} \
         "${pkgdir}"/media/clouddrive
 
-    bsdtar xf "${pkgname}-2-${_pkgver}-${CARCH}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
+    bsdtar -xf "${pkgname}-2-${_pkgver}-${CARCH}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
 
 #     sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
 
@@ -53,7 +53,7 @@ Wants=network-online.target
 After=network-online.target network.target
 
 [Service]
-Type=exec
+Type=forking
 ExecStart=clouddrive
 
 [Install]
