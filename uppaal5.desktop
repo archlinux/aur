@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=Uppaal is an integrated tool environment for modeling, validation and verification of real-time systems modeled as networks of timed automata, extended with data types (bounded integers, arrays, etc.).
+Exec=/usr/bin/uppaal5
+GenericName=
+Icon=/opt/uppaal5/res/uppaal.ico
+Name=UPPAAL 5
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

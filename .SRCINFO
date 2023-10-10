@@ -1,7 +1,7 @@
 pkgbase = uppaal5
 	pkgdesc = Uppaal is an integrated tool environment for modeling, validation and verification of real-time systems modeled as networks of timed automata, extended with data types (bounded integers, arrays, etc.).
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uppaal.org/
 	arch = x86_64
 	license = custom
@@ -9,6 +9,8 @@ pkgbase = uppaal5
 	depends = jre11-openjdk
 	noextract = uppaal-5.0.0-linux64.zip
 	source = https://download.uppaal.org/uppaal-5.0/uppaal-5.0.0/uppaal-5.0.0-linux64.zip
+	source = uppaal5.desktop
 	sha256sums = 86d66d8cd25c00f6f45156617f3a7566f1f4fe7aed74dd171bfc9ef27a2c61ce
+	sha256sums = 0cde44f7653b898ac8504e8a0c3821c507e3c482020a4615e98605992dfd6e4e
 
 pkgname = uppaal5
