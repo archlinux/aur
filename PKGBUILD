@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=3.0.6.813
+pkgver=3.0.8.1010
 pkgrel=1
 pkgdesc="Cross-Platform Universal Log Viewer."
 arch=('aarch64' 'x86_64')
@@ -18,12 +18,12 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_githuburl}/release
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip")
 source=("LICENSE::https://raw.githubusercontent.com/carina-studio/ULogViewer/${pkgver}/LICENSE")
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea')
-sha256sums_aarch64=('791cc6cbe2400e6ddb960499ae19372253b786fef29adadd54021b02f0f1eaee')
-sha256sums_x86_64=('932ded8b83596d4cdda6c3d0513864b91e9f31abb28371adc810fb38fe5c3e46')
-prepare() {
+sha256sums_aarch64=('d8d95f4012bb8a99df494aecbc1b8dce90a588c045ad3bb04ce81ecc8f11df47')
+sha256sums_x86_64=('64d4bb498af437fea8a980255c7add17b70985e1d93cd947a5d82cf677e45b25')
+build() {
     mkdir -p "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz" -C "${srcdir}/${pkgname%-bin}"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "/opt/${pkgname%-bin}/${_pkgname}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
