@@ -1,13 +1,13 @@
 pkgbase = rcm
 	pkgdesc = rc file (dotfiles) management
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/thoughtbot/rcm
 	arch = any
 	license = BSD
 	provides = rcm
 	conflicts = rcm-git
-	source = https://thoughtbot.github.io/rcm/dist/rcm-1.3.5.tar.gz
-	sha256sums = 24741e7f26f16a049324baa86af700443c4281e2cde099729d74c4d4b29ebe2d
+	source = https://thoughtbot.github.io/rcm/dist/rcm-1.3.6.tar.gz
+	sha256sums = f4fdfbc451d1fb5764531290a202a0a871f6b81ba3c01a6b76c49435c85080a5
 
 pkgname = rcm

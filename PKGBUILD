@@ -4,7 +4,7 @@
 # Contributor: Max Falk <gmdfalk@gmail.com>
 # Contributor: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 pkgname=rcm
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="rc file (dotfiles) management"
 arch=('any')
@@ -13,7 +13,9 @@ license=('BSD')
 source=("https://thoughtbot.github.io/$pkgname/dist/$pkgname-$pkgver.tar.gz")
 conflicts=(${pkgname}-git)
 provides=(${pkgname})
-sha256sums=(24741e7f26f16a049324baa86af700443c4281e2cde099729d74c4d4b29ebe2d)
+sha256sums=(
+  f4fdfbc451d1fb5764531290a202a0a871f6b81ba3c01a6b76c49435c85080a5
+)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
