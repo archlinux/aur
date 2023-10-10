@@ -1,7 +1,30 @@
 Version history
 ===============
 
+0.10.16
+-------
+
+2023-10-07
+
+Physics: Fix a bug with walkers in overlapping blocker fields that appears
+only in Lix versions 0.10.13, 0.10.14, and 0.10.15. The bug was: Trap a walker
+between two overlapping blockers on a slope, observe the walker bop up and
+down (0.10.13 through 0.10.15) instead of staying fixed on its height
+(0.10.12 and earlier). This bug triggered an assertion failure in debugging
+builds. This fix reverts the walker behavior to 0.10.12 and earlier.
+
+Fix a crash in the editor: When you copy-pasted a tile on a torus map,
+resulting in an offset copy that went beyond the torus seam, then moved the
+resulting tile, Lix crashed. Now, copy-pasting wraps coordinates correctly.
+
+Enlarge number displays for large resolutions, e.g., 1920x1080. Now, numbers
+won't be abbreviated anymore. The bug was, e.g., that the tweaker displayed
+a four-digit tick count of "...4" instead of "1234".
+
+
+
 0.10.15
+-------
 
 2023-08-30
 
