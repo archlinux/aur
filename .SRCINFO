@@ -9,6 +9,7 @@ pkgbase = matm-git
 	makedepends = cargo
 	depends = mpv
 	depends = fzf
+	depends = zathura-cb
 	optdepends = vlc: an alternative video player for movies
 	source = git+https://github.com/crolbar/matm
 	md5sums = SKIP
