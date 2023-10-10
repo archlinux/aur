@@ -1,0 +1,42 @@
+diff --git a/gdsfmt/src/Makevars b/gdsfmt/src/Makevars
+index 0140469..3d4d197 100755
+--- a/gdsfmt/src/Makevars
++++ b/gdsfmt/src/Makevars
+@@ -6,7 +6,7 @@
+ PKG_CPPFLAGS = -DUSING_R -D_FILE_OFFSET_BITS=64 -I../inst/include -ICoreArray
+ 
+ # to set flags for the linker
+-PKG_LIBS = ./liblzma.a -lpthread
++PKG_LIBS = -lz -llz4 -llzma -lpthread
+ 
+ SOURCES = \
+ 	R_CoreArray.cpp \
+@@ -65,27 +65,11 @@ OBJECTS = \
+ 	CoreArray/dStream.o \
+ 	CoreArray/dStruct.o \
+ 	CoreArray/dSparse.o \
+-	CoreArray/dVLIntGDS.o \
+-	ZLIB/adler32.o \
+-	ZLIB/compress.o \
+-	ZLIB/crc32.o \
+-	ZLIB/deflate.o \
+-	ZLIB/infback.o \
+-	ZLIB/inffast.o \
+-	ZLIB/inflate.o \
+-	ZLIB/inftrees.o \
+-	ZLIB/trees.o \
+-	ZLIB/uncompr.o \
+-	ZLIB/zutil.o \
+-	LZ4/lz4.o \
+-	LZ4/lz4hc.o \
+-	LZ4/lz4frame.o \
+-	LZ4/xxhash.o
++	CoreArray/dVLIntGDS.o
+ 
+ 
+ all: $(SHLIB)
+ 
+-$(SHLIB): liblzma.a
+ 
+ 
+ ZLIB/adler32.o:
