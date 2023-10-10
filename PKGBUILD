@@ -3,13 +3,13 @@
 
 _pkgname=rcm
 pkgname=${_pkgname}-git
-pkgver=v1.3.0.r12.gee63185
+pkgver=v1.3.6.r0.gef34b0b
 pkgrel=1
 pkgdesc="rc file (dotfiles) management"
 arch=("any")
 url="https://github.com/thoughtbot/$_pkgname"
 license=("BSD")
-makedepends=("git" "ruby-mustache")
+makedepends=("git" "python-pystache")
 source=("$pkgname::git+https://github.com/thoughtbot/${_pkgname}.git")
 options=(!emptydirs)
 conflicts=($_pkgname)
