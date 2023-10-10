@@ -11,7 +11,7 @@
 
 pkgname=ros2-humble
 pkgver=2023.09.25
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/humble/"
 arch=('any')
@@ -19,6 +19,7 @@ license=('Apache')
 depends=(
     'ros2-arch-deps'
     'qt6-base'
+    'nvidia-cg-toolkit'
     'assimp'
     'gmock'
 )
