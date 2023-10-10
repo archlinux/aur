@@ -1,6 +1,6 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 44.5
+	pkgver = 45.0
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
@@ -26,6 +26,8 @@ pkgbase = mutter-performance
 	depends = iio-sensor-proxy
 	depends = lcms2
 	depends = libcanberra
+	depends = libdisplay-info
+	depends = libei
 	depends = libgudev
 	depends = libinput
 	depends = libsm
@@ -35,17 +37,15 @@ pkgbase = mutter-performance
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=1511e6e1cdc8fa1a84f6fbbb169777ac26ba7f44
+	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=4f6c91847088d7d6476b88575b3a6601b819b443
 	source = mr1441.patch
-	source = mr3113.patch
 	sha256sums = SKIP
-	sha256sums = a6e07de13e44a721f235f557882ca7ef050324dcd3532fb278d677aba71abd80
-	sha256sums = 1edb49dfb19bd30208c823eca87fb1f930c4d3dbc559e3c1a5707a824646f399
+	sha256sums = ac0806cb296e9690c084e23b74694c1fe0441342d35f10f31bf1451962b5f4a7
 
 pkgname = mutter-performance
 	groups = gnome
 	provides = mutter
-	provides = libmutter-12.so
+	provides = libmutter-13.so
 	conflicts = mutter
 
 pkgname = mutter-performance-docs
