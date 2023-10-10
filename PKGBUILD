@@ -1,39 +1,22 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
+# Contributor: Code Liger <codeliger@protonmail.com>
 
-# Maintainer: Code Liger <codeliger@protonmail.com>
 pkgname=video-compare
-pkgver=20220816
+pkgver=20230807
 pkgrel=1
-epoch=
-pkgdesc="Split screen video comparison tool using FFmpeg and SDL2 "
+pkgdesc="Split screen video comparison tool using FFmpeg and SDL2"
 arch=('x86_64')
 url="https://github.com/pixop/video-compare"
 license=('GPL')
-groups=()
 depends=('ffmpeg' 'sdl2' 'sdl2_ttf')
-makedepends=('git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/pixop/video-compare.git")
-noextract=()
-md5sums=("SKIP")
-validpgpkeys=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pixop/video-compare/archive/${pkgver}.tar.gz")
+sha256sums=("44ed24fa05991ff92e7054e55c4d77ca41adfb633fb53e5db5add77d48a4c736")
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "${pkgname}-${pkgver}"
 	make
 }
 
 package() {
-	install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname/$pkgname"
+	install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}-${pkgver}/${pkgname}"
 }
