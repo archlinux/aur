@@ -1,0 +1,15 @@
+pkgbase = tessla
+	pkgdesc = TeSSLa toolchain bundle
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://tessla.io
+	arch = any
+	license = Apache
+	depends = java-runtime>=11
+	noextract = tessla-2.0.0.jar
+	source = tessla-2.0.0.jar::https://git.tessla.io/tessla/tessla/builds/1520/artifacts/raw/target/scala-3.2.2/tessla-assembly-2.0.0.jar
+	source = tessla
+	sha256sums = 1f8f4b5406a2843e38655fad95ed1bfec5de1aacb46d0dbdb5f92088cc001ad3
+	sha256sums = 2d9931705d32832b11aaee1ed212f53bc62da1266ddd7db010e63861eb3c55c1
+
+pkgname = tessla
