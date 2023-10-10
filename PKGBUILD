@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leafview-bin
 _pkgname=LeafView
-pkgver=2.6.6
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron."
 arch=("x86_64")
@@ -9,13 +9,13 @@ url="https://github.com/sprout2000/leafview"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron26' 'hicolor-icon-theme')
+depends=('bash' 'electron27' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/sprout2000/leafview/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh")
-sha256sums=('eca84d429e4d0c1e32e6669df37ba24519990a7aabc8020f8fb366a180822f16'
+sha256sums=('16bc94275617704bc62150af2331bc044228c60fc6295922ba9149e78d54875b'
             'f172a0a7953ce3cda2b0cb38f6a3d28e7dfa9824a8c62de981520af32b9c138f'
-            'f82f53478b857c64d80fdbf56e24b9abef7961b13b60dd67a926a326b3934c33')
+            '7db08f9d379e88437338bef85f056ec85be9ce542536529540d06a3fa2ffaa5b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
