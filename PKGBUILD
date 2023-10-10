@@ -2,7 +2,7 @@
 # Contributor: Ross Whitfield <whitfieldre@ornl.gov>
 
 pkgver=4.4.5
-pkgrel=3
+pkgrel=4
 pkgname='python-pycifrw'
 _name='PyCifRW'
 pkgdesc='CIF/STAR file support for Python'
@@ -16,11 +16,11 @@ sha512sums=('f1484789fc9f32b7fc9f2c0ab176992a571e4c5bf8d7794e0f1c1c0a7d1c8271133
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
