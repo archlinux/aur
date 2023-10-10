@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=media-hoarder-bin
 _pkgname="Media Hoarder"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The media frontend for data hoarders and movie lovers"
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('dbus' 'hicolor-icon-theme' 'glib2' 'cairo' 'expat' 'libx11' 'libxshmfe
     'gcc-libs' 'at-spi2-core' 'libxcb' 'alsa-lib' 'glibc' 'gtk3' 'libxrandr' 'libxkbcommon' 'libdrm' 'libcups' 'gdk-pixbuf2' \
     'libxdamage' 'nspr' 'libxfixes')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb"
-    "LICENSE::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/master/LICENSE.md")
-sha256sums=('d79f3f6982c323132cf3e80fa97ac324558729a26b14cb46b3598fe92e496ca7'
+    "LICENSE::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md")
+sha256sums=('e41141dbf6d1414bc9a5d0eea505c242c527e7396c2cc1fd631e2f0d7d55fd00'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin} %U --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
