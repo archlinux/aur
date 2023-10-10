@@ -1,41 +1,34 @@
 # Maintainer: BenObiWan <benobiwan @t gmail dot com>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 pkgname=zsdx-git
-pkgver=1799.29ffb12
+pkgver=2097.a74690cf
 pkgrel=1
 epoch=
 pkgdesc="A free 2D Zelda fangame."
 arch=('any')
-url="http://www.zelda-solarus.com/"
+url="https://www.solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-dx/"
 license=('custom')
-groups=()
 depends=('solarus-git')
 makedepends=('git' 'cmake' 'zip' )
-checkdepends=()
-optdepends=()
 provides=('zsdx')
 conflicts=('zsdx')
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname"::'git://github.com/christopho/zsdx.git#branch=master')
-noextract=()
+source=("git+https://gitlab.com/solarus-games/games/zsdx.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+cd "${srcdir}/${pkgname%-git}"
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-
-  cmake -D CMAKE_INSTALL_PREFIX="/usr" -D CMAKE_BUILD_TYPE=Release .
-  make
+cmake -B build -S "${pkgname%-git}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}/" PREFIX="/usr" install
+DESTDIR="$pkgdir" cmake --install build
+install -Dm755 "$srcdir/zsdx/license.txt" "$pkgdir/usr/share/licenses/zsdx-git/LICENSE"
 }
