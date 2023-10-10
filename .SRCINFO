@@ -1,0 +1,16 @@
+pkgbase = epub-tools-bin
+	pkgdesc = Command line utilities for working with epub files - binary installation
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/dino-/epub-tools
+	arch = x86_64
+	license = ISC
+	depends = glibc
+	depends = gmp
+	depends = zlib
+	provides = epub-tools
+	conflicts = epub-tools
+	source = https://github.com/dino-/epub-tools/releases/download/3.1/epub-tools-3.1-linux.tar.gz
+	sha256sums = 6c872d0b8455692e27a440ad422c350e60729bb0d80b0e1f2be2268d2ff9ee72
+
+pkgname = epub-tools-bin
