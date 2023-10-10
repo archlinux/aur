@@ -2,7 +2,7 @@
 _pkgname="gnome-shell-extension-colorblind-filters"
 pkgname="${_pkgname}-git"
 _uuid="colorblind-filters@G-dH.github.com"
-pkgver=r51.4a0147c
+pkgver=r55.8dc2626
 pkgrel=1
 pkgdesc="A GNOME Shell extension for main panel that offers full-screen color filters that should help color-blind users and developers."
 arch=(any)
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-	make zip
+  make zip
 }
 
 package() {
