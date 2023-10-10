@@ -83,7 +83,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=11
+pkgrel=12
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -118,7 +118,7 @@ sha256sums=('SKIP'
             'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff'  # hover-bit-fields-mask
             '3d639ec99a36d17dbb9e926e30807d9e57587fb2eac55d42616a2f41d90281f9'  # hover-align
             '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76'  # hover-align-mask-comp
-            '0d36c97bd487c34d21ab69bd2d4b16aae6a4c3acac843dd18460fc6d3b5052d0') # hover-virt-offset
+            'bc04d0bbab39f7e9948ab2818c3ba9780c48149e6d1cde7c8f4b71ceb9e550d1') # hover-virt-offset
 
 pkgver() {
     cd llvm-project

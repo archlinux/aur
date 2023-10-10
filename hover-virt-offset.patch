@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..26b86deaa 100644
+index ef3523211..371b3c289 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -993,6 +993,113 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
+@@ -993,6 +993,122 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
    return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
  }
  
@@ -10,9 +10,14 @@ index ef3523211..26b86deaa 100644
 +  const auto *Record = Method->getParent();
 +  if (Record)
 +    Record = Record->getDefinition();
-+  // FIXME: Depend type may not affect vtable. Check on mixins?
-+  if (!Record || Record->isInvalidDecl() || Record->isDependentType())
++  if (!Record || Record->isInvalidDecl())
 +    return static_cast<const CXXRecordDecl *>(nullptr);
++  if (Record->isDependentType()) {
++    for (const auto &Base : Record->bases()) {
++      if (Base.getType()->isDependentType())
++        return static_cast<const CXXRecordDecl *>(nullptr);
++    }
++  }
 +  return Record;
 +}
 +static uint64_t getVirtualCXXMethodsCount(const CXXRecordDecl *Record) {
@@ -20,9 +25,13 @@ index ef3523211..26b86deaa 100644
 +  for (const auto &Base :
 +       Record->bases()) { // FIXME: Calc only for first or last base
 +    const auto *BaseRecord = Base.getType()->getAsCXXRecordDecl();
-+    if (BaseRecord)
-+      Count += getVirtualCXXMethodsCount(BaseRecord);
-+    break;
++    if (BaseRecord) {
++      auto VirtualMethodsInBase = getVirtualCXXMethodsCount(BaseRecord);
++      if (VirtualMethodsInBase) {
++        Count += VirtualMethodsInBase;
++        break;
++      }
++    }
 +  }
 +  static auto IsOverride = [](const CXXMethodDecl *Method,
 +                              const CXXRecordDecl *Record) {
@@ -116,7 +125,7 @@ index ef3523211..26b86deaa 100644
  void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (ND.isInvalidDecl())
      return;
-@@ -1039,6 +1146,17 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1039,6 +1155,18 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      }
      return;
    }
@@ -125,7 +134,8 @@ index ef3523211..26b86deaa 100644
 +    if (MD->isVirtual()) {
 +      auto Id = findVirtualCXXMethodId(MD);
 +      if (Id != InvalidVirtualCXXMethodId) {
-+        const auto PointerSize = Ctx.getTargetInfo().getPointerWidth(LangAS::Default);
++        const auto PointerSize =
++            Ctx.getTargetInfo().getPointerWidth(LangAS::Default);
 +        HI.Offset = Id * PointerSize;
 +        HI.Size = PointerSize;
 +      }
