@@ -1,0 +1,24 @@
+pkgbase = ghostty-git
+	pkgdesc = 👻
+	pkgver = r3139.01a80135
+	pkgrel = 1
+	url = https://github.com/mitchellh/ghostty
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	makedepends = git
+	makedepends = zig
+	depends = bzip2
+	depends = freetype2
+	depends = harfbuzz
+	depends = libpng
+	depends = pixman
+	depends = zlib
+	depends = fontconfig
+	depends = gtk4
+	provides = ghostty
+	conflicts = ghostty
+	source = git+https://github.com/mitchellh/ghostty
+	sha256sums = SKIP
+
+pkgname = ghostty-git
