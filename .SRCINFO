@@ -1,0 +1,14 @@
+pkgbase = r-pbdmpi
+	pkgdesc = R Interface to MPI for HPC Clusters (Programming with Big Data Project)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pbdMPI
+	arch = x86_64
+	license = MPL2
+	depends = openmpi
+	depends = r-float
+	source = https://cran.r-project.org/src/contrib/pbdMPI_0.5-0.tar.gz
+	md5sums = a643799993c8ecf9c2d1cff9e3e615b9
+	sha256sums = fd70950c4d0df37713e50df9b999873a11e7c5473b5d0dd94997e706e518dd71
+
+pkgname = r-pbdmpi
