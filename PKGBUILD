@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=44
+pkgver=45
 pkgrel=1
 pkgdesc='Meta package to install GNOME'
 arch=(any)
@@ -11,7 +11,6 @@ license=(GPL)
 depends=(
   baobab
   cheese
-  eog
   epiphany
   evince
   gdm
@@ -54,12 +53,15 @@ depends=(
   gvfs-mtp
   gvfs-nfs
   gvfs-smb
+  loupe
   malcontent
   nautilus
   orca
   rygel
   simple-scan
+  snapshot
   sushi
+  tecla
   totem
   tracker3-miners
   xdg-desktop-portal-gnome
