@@ -2,7 +2,7 @@
 
 pkgname=python-pycksum
 _pkgname=pycksum
-pkgver=0.4.2
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Python implementation of cksum algorithm"
 arch=(any)
@@ -10,8 +10,8 @@ url="https://pypi.python.org/pypi/pycksum"
 license=('MIT')
 depends=('python')
 makedepends=('python-distribute')
-source=(https://pypi.python.org/packages/1a/19/ec22db87da5c522b08fefdc424e8e367e55e074f51d09995806f237b0ccf/$_pkgname-$pkgver.tar.gz)
-md5sums=('0b73ade01884ba153a8d8c5f155ac4d3')
+source=(https://files.pythonhosted.org/packages/01/16/7f9059522a923f48ac4c69924cde6c842e4e3a62299e275251b45653218f/$_pkgname-$pkgver.tar.gz)
+sha256sums=('92a5c155723a8f0bcf353e8e6ffdc284df93edadf573aa53f3b945476ad0ad92')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
