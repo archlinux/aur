@@ -1,6 +1,6 @@
 pkgbase = mount-zip
 	pkgdesc = FUSE file system for ZIP archives
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/google/mount-zip
 	arch = x86_64
@@ -8,13 +8,12 @@ pkgbase = mount-zip
 	checkdepends = python
 	makedepends = boost
 	makedepends = make
-	makedepends = pandoc
 	makedepends = pkgconf
 	depends = boost-libs
 	depends = icu
 	depends = fuse2>=2.7
 	depends = libzip>=1.0
-	source = https://github.com/google/mount-zip/archive/refs/tags/v1.0.9.tar.gz
-	sha256sums = 9c03b798bb6334854153b6f8d3d77165b8dc63abef486405ede37623bcbe81c8
+	source = https://github.com/google/mount-zip/archive/refs/tags/v1.0.10.tar.gz
+	sha256sums = 4ae2abab42bbe651717750daec100121eb55e03238c671eaacd6f1ab06fb4a85
 
 pkgname = mount-zip
