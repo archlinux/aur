@@ -1,6 +1,6 @@
 pkgbase = python-fundamentalanalysis
 	pkgdesc = Fully-fledged Fundamental Analysis package
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://pypi.org/project/fundamentalanalysis
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-fundamentalanalysis
 	depends = python
 	depends = python-requests
 	depends = python-pandas
-	source = https://files.pythonhosted.org/packages/source/f/fundamentalanalysis/fundamentalanalysis-0.3.0.tar.gz
-	sha256sums = 74fa698e1d253318c3a926ce9fb40c51123baa4ed378cff2e9162e2b83f634e2
+	source = https://files.pythonhosted.org/packages/source/f/fundamentalanalysis/fundamentalanalysis-0.3.1.tar.gz
+	sha256sums = 6b3be0e456ac550b957ead85cf15e413c0c9e063877c6631dbca9dd09c4b8cd3
 
 pkgname = python-fundamentalanalysis
