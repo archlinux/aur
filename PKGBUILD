@@ -2,7 +2,7 @@
 
 pkgname=remotepc-bin
 altpkgname=remotepc
-pkgver=4.17.2
+pkgver=4.17.3
 pkgrel=1
 provides=('remotepc')
 pkgdesc="Access your remote computer from any Windows, Mac, or Linux computer, iOS or Android device, or via the web"
@@ -14,7 +14,7 @@ internalnum="310320"
 license=('custom')
 install="services.install"
 source=(${altpkgname}-${pkgver}.deb::${dlurl}/${shortname}/${internalnum}/${altpkgname}.deb)
-sha1sums=('862cdc1f343bddd0d5dd9cf2e62ee12da8ea28dd')
+sha1sums=('ec0bd491cab4feb9061b5e888148912db0827680')
 
 package() {
  cd ${srcdir}
@@ -39,9 +39,10 @@ package() {
  mkdir -pv "${pkgdir}/etc/systemd/user"
  mkdir -pv "${pkgdir}/usr/bin"
  
- cp -fv "${pkgdir}/opt/remotepc/remotepc.service" "${pkgdir}/etc/systemd/system/"
- cp -fv "${pkgdir}/opt/remotepc/remotepc_installer.service" "${pkgdir}/etc/systemd/system/"
- cp -fv "${pkgdir}/opt/remotepc/remotepc-desktop.service" "${pkgdir}/etc/systemd/user/"
+ cp -fv "${pkgdir}/opt/remotepc/config/service/remotepc.service" "${pkgdir}/etc/systemd/system/"
+ cp -fv "${pkgdir}/opt/remotepc/config/service/remotepc_installer.service" "${pkgdir}/etc/systemd/system/"
+ cp -fv "${pkgdir}/opt/remotepc/config/service/remotepc-nativelisteners.service" "${pkgdir}/etc/systemd/user/"
+ cp -fv "${pkgdir}/opt/remotepc/config/service/remotepc-desktop@.service" "${pkgdir}/etc/systemd/user/"
 
  # Make symlink to binary executable
  ln -sfv "${pkgdir}/opt/remotepc/remotepc" "${pkgdir}/usr/bin/remotepc"
