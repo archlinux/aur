@@ -1,5 +1,6 @@
 pkgbase = stainless-git
 	pkgdesc = Verification framework and tool for higher-order Scala programs
+	pkgver = VERSION
 	url = https://github.com/epfl-lara/stainless
 	arch = x86_64
 	license = Apache-2.0
