@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.2.343
+pkgver=5.2.351
 pkgrel=1
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ makedepends=(git cmake python3)
 depends=(logrotate libxcrypt-compat)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
 options=(!buildflags !makeflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=6631b63ca12edac9acf8882ee0b8914168e2a1c0
-		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=47881a6bfd8fdd4b3de5e9a53c7dd350052ef981
-		git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=d736663911d5281a72f10ae928a385ac00162c89
-		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=96629cfa4ebca1eb8ba192665f0b17187cd28f2d)
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=f7861024d02a48abba8aa81096bbfe13fe0813b9
+		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=7dd8a1391fc5c0f95f41429afd77575ce88e0cb4
+		git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=3fce559af33854154c0ca74765afbd8591f840e4
+		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=3cedef6ac2ee1c0eda6ede5cc53acfcc06cc4599)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
