@@ -21,14 +21,17 @@ Type=notify
 NotifyAccess=main
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
-
-# Specify where the binary is located
-Environment="DATAHOME=/usr/share/duckcloud"
-
 User=duckcloud
-
-ExecStart=/usr/bin/duckcloud run --dir=${DATAHOME}
 SyslogIdentifier=duckcloud
+
+# Specify where all the data is located by updating the path in
+# both "ExecStart" and "ReadWritePaths"
+#
+# ExecStart one indicate to the server where it must put the data.
+# ReadWritePaths give write permission to the folder. All the remaining
+# filesystem is read-only.
+ReadWritePaths=/usr/share/duckcloud
+ExecStart=/usr/bin/duckcloud run --dir=/usr/share/duckcloud
 
 
 
@@ -41,7 +44,7 @@ SyslogIdentifier=duckcloud
 PrivateTmp=true
 PrivateDevices=true
 
-# # We give no capabilities to a service by default
+# We give no capabilities to a service by default
 # CapabilityBoundingSet=
 # AmbientCapabilities=
 
@@ -51,45 +54,44 @@ PrivateDevices=true
 # # - No modifications allowed to Control Groups
 # # - Hostname
 # # - System Clock
-# ProtectSystem=strict
-# ProtectKernelTunables=true
-# ProtectKernelModules=true
-# ProtectControlGroups=true
-# ProtectClock=true
-# ProtectHostname=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectClock=true
 
-# # Prevent access to the following:
-# # - /home directory
-# # - Kernel logs
-# ProtectHome=tmpfs
-# ProtectKernelLogs=true
 
-# # Make sure that the process can only see PIDs and process details of itself,
-# # and the second option disables seeing details of things like system load and
-# # I/O etc
-# ProtectProc=invisible
-# ProcSubset=pid
+# Prevent access to the following:
+# - /home directory
+# - Kernel logs
+ProtectHome=true
+ProtectKernelLogs=true
 
-# # While not needed, we set these options explicitly
-# # - This process has been given access to the host network
-# # - It can also communicate with any IP Address
-# PrivateNetwork=false
-# RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-# IPAddressAllow=any
+# Make sure that the process can only see PIDs and process details of itself,
+# and the second option disables seeing details of things like system load and
+# I/O etc
+ProtectProc=invisible
+ProcSubset=pid
 
-# # Restrict system calls to a sane bunch
-# SystemCallArchitectures=native
-# SystemCallFilter=@system-service
-# SystemCallFilter=~@privileged @resources @obsolete
+# While not needed, we set these options explicitly
+# - This process has been given access to the host network
+# - It can also communicate with any IP Address
+PrivateNetwork=false
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+IPAddressAllow=any
 
-# # Misc restrictions
-# RestrictSUIDSGID=true
-# RemoveIPC=true
-# NoNewPrivileges=true
-# RestrictRealtime=true
-# RestrictNamespaces=true
-# LockPersonality=true
-# PrivateUsers=true
+# Restrict system calls to a sane bunch
+SystemCallArchitectures=native
+
+# Misc restrictions
+RestrictSUIDSGID=true
+RemoveIPC=true
+NoNewPrivileges=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+PrivateUsers=true
 
 [Install]
 WantedBy=multi-user.target
