@@ -1,0 +1,15 @@
+post_install() {
+    echo "Before you can enroll your device, you need to enable the service and timer and then reboot:"
+    echo "'sudo systemctl enable intune-daemon.service'"
+    echo "'systemctl --user enable intune-agent.service intune-agent.timer'"
+    echo "Don't forget to reboot after running the above commands!"
+
+    # Replace the os-release file, since Intune currently only supports Ubuntu systems
+    mv /etc/os-release /etc/os-release.bak #backup current link file
+    cp /opt/microsoft/intune/share/os-release /etc/os-release #place Ubuntu based os-release file
+}
+
+post_remove() {
+    # Put back original os-release file
+    mv /etc/os-release.bak /etc/os-release
+}
