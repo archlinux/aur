@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-caffeine-git
 _uuid=caffeine@patapon.info
 pkgver=50.r2.g3c9a447
-pkgrel=1
+pkgrel=2
 pkgdesc="Disable the screensaver and auto suspend"
 arch=('any')
 url="https://github.com/eonpatapon/gnome-shell-extension-caffeine"
@@ -28,20 +28,14 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  bsdtar -xvf "$_uuid.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar -xvf "${_uuid}.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
 
-  install -Dm644 "$_uuid/schemas/org.gnome.shell.extensions.caffeine.gschema.xml" -t \
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
+
+  install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.caffeine.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
 
-  cd "$_uuid/locale"
-  for lang in $(ls *.po); do
-    echo "lang: ${lang}"
-    lang=${lang::-3}
-    install -d "$pkgdir/usr/share/locale/${lang//_/-}/LC_MESSAGES"
-    msgfmt -c -o "$pkgdir/usr/share/locale/${lang//_/-}/LC_MESSAGES/${pkgname%-git}.mo" "${lang}.po"
-  done
-
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"{locale,schemas}
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
