@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=okular
-pkgver=23.08.1
-pkgrel=2
+pkgver=23.08.2
+pkgrel=1
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -17,20 +17,14 @@ optdepends=('ebook-tools: mobi and epub support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
             'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)'
             'kde-cli-tools: to configure web shortcuts' 'plasma-workspace: to configure web shortcuts')
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/graphics/okular/-/commit/043c3521.patch)
-sha256sums=('43b3732d701692324967e767ecf69f6b4d957765b5aba24a4dfa6efc8a494817'
-            'SKIP'
-            'cc700b975e2eb4e07356ad3c0ce2c927698d1a0b6b0da89d386d7181f40ef1e6')
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('25a69e1e666925e52c57d1b09beb72ad3a61a61328daf042359c3f6a740f2edd'
+            'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
 
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < 043c3521.patch # Fix markdown rendering
-}
- 
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF
