@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-caffeine
 _uuid=caffeine@patapon.info
 pkgver=50
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Extension for GNOME shell to disable screensaver and auto suspend'
 arch=('any')
@@ -21,8 +21,7 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-    bsdtar -xvf "${_uuid}.zip" -C "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-    chown -R root:root "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+    bsdtar -xvf "${_uuid}.zip" -C "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}" --no-same-owner
 
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
