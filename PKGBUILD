@@ -4,7 +4,7 @@
 
 pkgname=crowdsec-bin
 pkgver=1.5.4
-pkgrel=7
+pkgrel=8
 pkgdesc="The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
@@ -36,8 +36,8 @@ source=(
 	crowdsec.sysusers
 )
 sha256sums=('489d2dbd009f1255714f7448116562c4608452a8010ee4677803c10e02a7fbbf'
-	'27bd6974d92a5cb2eb3ff0739861a1cc1da4e99c71677595c1c485312fd69cf9'
-	'72672e29bd154c3208d142ba434e72c084b5c6bd1f5e29f38b7c9eed5446c4a2')
+            '27bd6974d92a5cb2eb3ff0739861a1cc1da4e99c71677595c1c485312fd69cf9'
+            '72672e29bd154c3208d142ba434e72c084b5c6bd1f5e29f38b7c9eed5446c4a2')
 
 prepare() {
 	cd "$srcdir/crowdsec-v${pkgver}"
@@ -77,5 +77,5 @@ package() {
 	# extras
 	install -m640 ./config/crowdsec.cron.daily -t $pkgdir/opt/crowdsec/
 	install -m740 ./wizard.sh -t $pkgdir/opt/crowdsec/
-	install -m644 "$srcdir/crowdsec.sysusers" -t "$pkgdir/usr/lib/sysusers.d/"
+	install -m644 "$srcdir/crowdsec.sysusers" "$pkgdir/usr/lib/sysusers.d/crowdsec.conf"
 }
