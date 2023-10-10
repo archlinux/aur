@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Christopher Snowhill <kode54 at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Linux Gamers <linuxgamers@protonmail.com>
 
 pkgname=yuzu-mainline-bin
