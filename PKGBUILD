@@ -34,7 +34,7 @@ optdepends=('ipython: for ipython support'
   'python-boto3: for s3 support'
   'python-matplotlib: for plotting support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('a76a705da43d578b828d6dd90713e19cda674ac71b628451593eb31e984d9cf827f8bf964d249ef27f8a4214eb99ed3af9ba1c9ff1b981515c6e9625113f64c6')
+sha512sums=('577e37833b2d03b38a9b2709cd40c4cf7b04f57a32009983290c8cbccfe2c97122e8e5af505cc02fde1698a11c3e680ca1d076dd268242d2c8542350d5f604d6')
 
 build() {
   cd ${_base}-${pkgver}
