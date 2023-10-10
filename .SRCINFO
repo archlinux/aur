@@ -1,12 +1,13 @@
 pkgbase = vapoursynth-plugin-d2vsource-git
 	pkgdesc = Plugin for Vapoursynth: d2vsource (GIT version)
-	pkgver = 1.2.16.g700523c
-	pkgrel = 2
+	pkgver = 1.3.0.g564701e
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166399
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
 	depends = vapoursynth
+	depends = ffmpeg
 	depends = libavutil.so
 	depends = libavformat.so
 	depends = libavcodec.so
@@ -14,8 +15,6 @@ pkgbase = vapoursynth-plugin-d2vsource-git
 	conflicts = vapoursynth-plugin-d2vsource
 	options = debug
 	source = d2vsource::git+https://github.com/dwbuiten/d2vsource.git
-	source = https://patch-diff.githubusercontent.com/raw/dwbuiten/d2vsource/pull/52.diff
 	sha256sums = SKIP
-	sha256sums = ef7130f38fbc3a7a036d2fdf9ced4746b35cd794955c3c52c0d9c323f8498f3c
 
 pkgname = vapoursynth-plugin-d2vsource-git
