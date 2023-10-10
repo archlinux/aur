@@ -1,7 +1,7 @@
 pkgbase = bazelisk-bin
 	pkgdesc = A user-friendly launcher for Bazel
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/bazelisk
 	arch = x86_64
 	license = Apache
