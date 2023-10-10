@@ -1,0 +1,11 @@
+pkgbase = gnome-shell-extension-force-show-osk
+	pkgdesc = Show the on-screen keyboard regardless of whether the touch mode is enabled
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/crimist/force-show-osk
+	arch = any
+	depends = gnome-shell
+	source = https://github.com/crimist/force-show-osk/archive/refs/tags/1.0.tar.gz
+	sha256sums = 0fb3aa1efd5e80714a5d8b12bc73fe2ded1deb2161ea550e5d51d6ab390aebb8
+
+pkgname = gnome-shell-extension-force-show-osk
