@@ -2,15 +2,15 @@
 # Contributor: Radeox <dawid.weglarz95@gmail.com>
 pkgname=gnome-shell-extension-forge
 _uuid=forge@jmmaranan.com
-pkgver=72
-pkgrel=2
+pkgver=75
+pkgrel=1
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
 url="https://github.com/forge-ext/forge"
 license=('GPL3')
-depends=('gnome-shell<=1:44.6')
+depends=('gnome-shell')
 makedepends=('git')
-_commit=bfecdb620a8f41d966de08b7751d443376d9474b  # tags v44-72^0
+_commit=11a6f3684c556588d2c1c08ec611d1f7be6fb904  # tags/v44-75^0
 source=("git+https://github.com/forge-ext/forge.git#commit=${_commit}")
 sha256sums=('SKIP')
 
