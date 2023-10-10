@@ -2,7 +2,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse
-pkgver=23.7.4.5
+pkgver=23.9.1.1854
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('x86_64' 'aarch64')
@@ -24,19 +24,21 @@ source_aarch64=(
 #   pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=);
 #   [ "$CARCH" == aarch64 ] && arch=arm64 || arch=amd64;
 #   CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
+# done
+# for CARCH in x86_64 aarch64; do;
 #   echo "sha256sums_${CARCH}=("
 #   sha256sum clickhouse*"${pkgver}_${arch}.deb" | sed -r 's|(\w+).+|  \1|';
 #   echo ')'
 # done
 sha256sums_x86_64=(
-  37dd296418c3cab1dfd07a82b50a67ea1a62a1ff5d39a6ea7b6c892a94f9707b
-  dbb6ddcfe08c8f24eeeb80a0c3e28569ccae1fecfc1d35a764ef8f912b62f511
-  2dce6c339ace6042aba2428fa53cfc0c98b7b3543e2224caf832e0e5bd8faf7f
+  c6b8c6c3641f80356504a4125fb43b2f49aa91b0b99b3c2a46585b8ede8d0865
+  7127d1c31b70cfa81723c321c9d2d6a5d064233417fe6dacdeec1cc0dd205ec3
+  6dd09b4c16f5ccca2a619eaa10df712994d024538ff7b550e2aa6ea6cc6d975f
 )
 sha256sums_aarch64=(
-  a6d67fc43dd50dff8d80abff0a4f6da4d96213502dc51c7c4e1f642632cbe50a
-  99e23c6d58e6027cddbe39165e4348aa239c7a0ecf336ffeced7b19303b63ada
-  e0c76abe8ef3b2d62e9435be8f060eb33367055a995fd893709f3f80ad34a578
+  ad10c3ae26f8488bea97745a88496716ba914aeac20465e23e3e376224e756d3
+  c1af443e94844baf048e574bed7d34e14b320b5f388ac0aa7578242c0ee845f1
+  e6a9f414f04064b2d1a19207007c2db94c04db5eabf4b834a214ec9ed73f7444
 )
 _noextract_x86_64=(
   clickhouse-client_"${pkgver}"_amd64.deb
