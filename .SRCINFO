@@ -20,10 +20,10 @@ pkgbase = bambustudio-bin
 	depends = ttf-harmonyos-sans
 	conflicts = bambustudio
 	conflicts = bambustudio-git
-	source = bambustudio-01.07.07.88.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v01.07.07.88/Bambu_Studio_Linux_Fedora_v01.07.07.88-20231010083344.AppImage
+	source = bambustudio-01.07.07.88.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v01.07.07.88/Bambu_Studio_Linux_Fedora-v01.07.07.88-20231010083344.AppImage
 	source = BambuStudio.desktop
 	source = bambu-studio
-	md5sums = 17ae1c4a56627ca5dcbe4b95ae9e3616
+	md5sums = 47fdd5cfb3ec376b713c73ad886e861a
 	md5sums = c2729c29cbd01844507e1f0562762191
 	md5sums = dfc63a9eabda3cc7172695bb1ba09c51
 
