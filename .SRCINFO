@@ -1,0 +1,16 @@
+pkgbase = libsdbus-c++0
+	pkgdesc = High-level C++ D-Bus library for Linux in modern C++ (library).
+	pkgver = 0.8.3
+	pkgrel = 4
+	url = https://github.com/Kistler-Group/sdbus-cpp
+	arch = x86_64
+	license = GPL2
+	depends = glibc>=2.14
+	depends = gcc-libs>=3.0
+	depends = systemd-libs>=243
+	conflicts = sdbus-cpp
+	replaces = sdbus-cpp
+	source = source.deb::http://http.us.debian.org/debian/pool/main/s/sdbus-cpp/libsdbus-c++0_0.8.3-0.8.3_amd64.deb
+	sha256sums = 3c534db269fdf6b3f52b48c0f10ca2065c41473e5de11717368f9d39cc734e89
+
+pkgname = libsdbus-c++0
