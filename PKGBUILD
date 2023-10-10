@@ -1,13 +1,13 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 
 pkgname=arrayfire
-pkgver=3.8.3
-pkgrel=3
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
 license=('BSD')
-depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-oneapi-mkl')
+depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-oneapi-mkl' 'intel-oneapi-tbb')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
@@ -17,16 +17,16 @@ optdepends=('cuda: Required for using CUDA backend'
 options=('!lto')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2"
         'arrayfire-boost-1.76.0.patch')
-sha512sums=('4c56814274fa1092516cd38f42e9d3fd4cc4a380da1ad710cc3b5fd8ea2a456682efd20be7579e601d59c33b4acc263f0baec5df6483da660d5afb832d2f09a1'
+sha512sums=('731995b8a8783e2fbdf04f9c89b31efc888deaa4046f623b932c2fabd83ea3e8d1d779d17148e01a4b30f2be64ba2d850f556129acff2004e3ecd780227fe025'
             '92e34c28e4b6222febef5a3047f4faf64756a50b46a68507931b989984bbc6729aa4d1560dc267650f1890cb1ad7aa0866dd3debc0073f9103f764af7618d795')
 
 prepare() {
-  cd "${srcdir}/arrayfire-full-${pkgver}"
+  cd "${srcdir}/arrayfire-full-v${pkgver}"
   patch -Np1 -i "${srcdir}/arrayfire-boost-1.76.0.patch"
 }
 
 build() {
-  cd "${srcdir}/arrayfire-full-${pkgver}"
+  cd "${srcdir}/arrayfire-full-v${pkgver}"
 
   cmake \
       -GNinja \
@@ -58,7 +58,7 @@ build() {
 # }
 
 package() {
-  cd "${srcdir}/arrayfire-full-${pkgver}"
+  cd "${srcdir}/arrayfire-full-v${pkgver}"
 
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
