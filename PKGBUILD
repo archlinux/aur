@@ -11,6 +11,8 @@ license=('PROPRIETARY')
 # for CARCH in x86_64 aarch64; do;
 #   pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=);
 #   CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
+# done
+# for CARCH in x86_64 aarch64; do;
 #   echo "sha256sums_${CARCH}=("
 #   sha256sum "docker-scout_${pkgver}_${CARCH}.tar.gz" | sed -r 's|(\w+).+|  \1|';
 #   echo ')'
