@@ -29,4 +29,5 @@ build() {
 package() {
 	cd "${srcdir}/${_srcname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
+	chmod u+s "${pkgdir}/usr/bin/maildrop"
 }
