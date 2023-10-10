@@ -1,6 +1,6 @@
 pkgbase = glsl-language-server
 	pkgdesc = A language server implementation for GLSL
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/svenstaro/glsl-language-server
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = glsl-language-server
 	makedepends = ninja
 	makedepends = python
 	depends = gcc-libs
-	source = git+https://github.com/svenstaro/glsl-language-server#tag=0.4.1
+	depends = glibc
+	source = git+https://github.com/svenstaro/glsl-language-server#tag=0.5.0
 	sha512sums = SKIP
 
 pkgname = glsl-language-server

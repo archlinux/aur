@@ -1,12 +1,12 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=glsl-language-server
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A language server implementation for GLSL"
 arch=('x86_64')
 url="https://github.com/svenstaro/glsl-language-server"
 license=(MIT)
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git' 'ninja' 'python')
 source=(git+https://github.com/svenstaro/glsl-language-server#tag=$pkgver)
 sha512sums=('SKIP')
