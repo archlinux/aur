@@ -1,6 +1,7 @@
 # Maintainer: Georg Wagner <puxplaying_at_gmail_dot_com>
 # Contributor: Mark Wagie <mark@manjaro.org>
 # Contributor: realqhc <https://github.com/realqhc>
+# Contributor: Brett Alcox <https://github.com/brettalcox>
 
 # Arch credits:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -12,7 +13,7 @@
 
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
-pkgver=44.4
+pkgver=45.0
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -21,29 +22,51 @@ arch=(x86_64)
 depends=(
   accountsservice
   bolt
+  cairo
   colord-gtk4
   cups-pk-helper
+  dconf
+  fontconfig
   gcr
+  gdk-pixbuf2
+  glib2
   gnome-bluetooth-3.0
   gnome-color-manager
   gnome-desktop-4
   gnome-online-accounts
   gnome-settings-daemon
-  gnome-shell
+  gnutls
   gsettings-desktop-schemas
   gsound
+  gtk3
   gtk4
+  hicolor-icon-theme
+  krb5
   libadwaita
+  libcolord
+  libcups
+  libepoxy
   libgnomekbd
+  libgoa
   libgtop
   libgudev
   libibus
   libmalcontent
   libmm-glib
+  libnm
   libnma-gtk4
+  libpulse
   libpwquality
+  libsecret
+  libwacom
+  libx11
+  libxi
+  libxml2
+  pango
+  polkit
   smbclient
   sound-theme-freedesktop
+  tecla
   udisks2
   upower
 )
@@ -62,6 +85,12 @@ checkdepends=(
 optdepends=(
   'fwupd: device security panel'
   'gnome-remote-desktop: screen sharing'
+
+  # Cannot be a depend because when gnome-shell checkdepends on
+  # gnome-control-center depends on gnome-shell depends on libmutter-12.so, it
+  # makes building gnome-shell against libmutter-13.so impossible
+  'gnome-shell: multitasking panel'
+
   'gnome-user-share: WebDAV file sharing'
   'malcontent: application permission control'
   'networkmanager: network settings'
@@ -73,18 +102,18 @@ optdepends=(
 groups=(gnome)
 conflicts=($_pkgname)
 provides=($_pkgname)
-_commit=abc71ea659f7c3efece766edb0365c78cc4b3df5  # tags/44.4^0
+_commit=e4d0d5abf9cb716cb01cda17751b162d4bfea5b0  # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-  "display-Allow-fractional-scaling-to-be-enabled.patch::https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/7da15e2567e77e1a589dc3135de2b4af119ecdde/debian/patches/ubuntu/display-Allow-fractional-scaling-to-be-enabled.patch"
-  "display-Support-UI-scaled-logical-monitor-mode.patch::https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/40a04c330a95e178463371bf8570d8e6258dd906/debian/patches/ubuntu/display-Support-UI-scaled-logical-monitor-mode.patch"
-  "pixmaps-dir.diff::https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/8cafecb50c62f56dbe0a6cffb947b81aacbd4c41/pixmaps-dir.diff"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/master/gnome-control-center-45.0-display-Allow-fractional-scaling-to-be-enabled.patch"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/master/gnome-control-center-45.0-display-Support-UI-scaled-logical-monitor-mode.patch"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/8cafecb50c62f56dbe0a6cffb947b81aacbd4c41/pixmaps-dir.diff"
 )
 b2sums=('SKIP'
         'SKIP'
-        '828fd901dab24a9741989201f314514c2b19676ce43b7b4b474bf5e850ec84e7adf448ca08654b26b887ec3f7fb6089b41d67871bc5ce85281a57c784e31ead1'
-        'a7c10136b40ebd9e14eb21e3b1b65066d3e35524f7b1256f0a44094c39d8631ac8aa4e549e72cb096f43ac6f1e4853cc6935354b6c382989779189139be7d58f'
+        '968494b571fa09217b45ac94e02e931b0761a73cfcadde879d7a5d66f5ccd420d521b39d2eaf6dcfcf77ac7edbf3e7e3cabee54323ab641f2dbf6c6a04b122e3'
+        '7d0cd2fd2faa08ff5608b2e3965b6dafb829ff4de97c41b45a575126d926cb9c78197b0dc125e67d3007a5529559dbfba14039e64b658c788f7552af7c3146c1'
         '2a73d860ee17a40d847f9afc0e4be7f54b3bf8b67c133b6b61bffe83ca58de6542aea0ed96c8e4e104ee80e6089fb8c493048b95c6dae68f115826ce4984f315')
 
 pkgver() {
@@ -103,8 +132,8 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Support UI scaled logical monitor mode (Marco Trevisan, Robert Ancell)
-  patch -p1 -i "${srcdir}/display-Support-UI-scaled-logical-monitor-mode.patch"
-  patch -p1 -i "${srcdir}/display-Allow-fractional-scaling-to-be-enabled.patch"
+  patch -p1 -i "${srcdir}/gnome-control-center-45.0-display-Support-UI-scaled-logical-monitor-mode.patch"
+  patch -p1 -i "${srcdir}/gnome-control-center-45.0-display-Allow-fractional-scaling-to-be-enabled.patch"
 }
 
 build() {
@@ -118,7 +147,8 @@ build() {
 }
 
 check() {
-  GTK_A11Y=none meson test -C build --print-errorlogs
+  GTK_A11Y=none dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
+    meson test -C build --print-errorlogs
 }
 
 package() {
