@@ -1,0 +1,20 @@
+pkgbase = decibels
+	pkgdesc = Play audio files
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/vixalien/decibels
+	arch = any
+	license = GPL-3.0
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = typescript
+	depends = gjs
+	depends = libadwaita
+	source = git+https://github.com/vixalien/decibels.git#commit=0b130b2bbc919d5f266b131f917c4bdd34b069e0
+	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = decibels
