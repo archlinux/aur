@@ -1,21 +1,20 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop'
 pkgver=0.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Music Assistant Companion app"
 arch=('x86_64')
 url="https://github.com/music-assistant/music-assistant-desktop"
 conflicts=(squeezelite music-assistant-desktop-bin)
 provides=(squeezelite music-assistant-desktop)
 license=('Apache-2.0')
-makedepends=(cargo git rust webkit2gtk base-devel curl wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
+makedepends=(cargo git yarn rust webkit2gtk base-devel curl wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
 md5sums=('b116bab9bb224e2853648c15fd67b125')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   git submodule update --init --recursive
-	sudo npm install -g yarn
   yarn
   cd frontend-source
   git clone --branch tauri-app https://github.com/music-assistant/frontend .

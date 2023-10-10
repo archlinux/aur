@@ -1,12 +1,13 @@
 pkgbase = music-assistant-desktop
 	pkgdesc = Music Assistant Companion app
 	pkgver = 0.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/music-assistant/music-assistant-desktop
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
+  makedepends = yarn
 	makedepends = rust
 	makedepends = webkit2gtk
 	makedepends = base-devel
