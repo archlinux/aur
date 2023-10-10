@@ -1,0 +1,19 @@
+pkgbase = d8vk-bin
+	pkgdesc = Direct3D 8 to Vulkan translation library (Windows DLL binary files)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AlpyneDreams/d8vk
+	arch = x86_64
+	license = LGPL
+	depends = vulkan-icd-loader
+	depends = dxvk
+	optdepends = lib32-vulkan-icd-loader: 32-bit Windows application support
+	provides = d8vk
+	conflicts = d8vk
+	options = !strip
+	source = https://github.com/AlpyneDreams/d8vk/releases/download/d8vk-v1.0/d8vk-v1.0.tar.gz
+	source = setup_d8vk.sh
+	sha256sums = 072fef14d13a73b3476997fd64a4167425d6629946464cf843e3f6e3ed9e5f10
+	sha256sums = a81e9cf0268610415f455cd2417a09fcddfb8d72291a07f297f3ed38416fb2f4
+
+pkgname = d8vk-bin
