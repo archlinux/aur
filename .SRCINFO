@@ -1,6 +1,6 @@
 pkgbase = ros2-humble
 	pkgdesc = A set of software libraries and tools for building robot applications
-	pkgver = 2023.07.24
+	pkgver = 2023.09.25
 	pkgrel = 1
 	url = https://docs.ros.org/en/humble/
 	install = ros2-humble.install
@@ -11,7 +11,7 @@ pkgbase = ros2-humble
 	depends = qt6-base
 	depends = assimp
 	depends = gmock
-	source = ros2::git+https://github.com/ros2/ros2#tag=release-humble-20230724
+	source = ros2::git+https://github.com/ros2/ros2#tag=release-humble-20230925
 	sha256sums = SKIP
 
 pkgname = ros2-humble
