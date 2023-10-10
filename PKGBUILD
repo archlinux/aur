@@ -1,4 +1,5 @@
-# Maintainer: Baudouin Feildel <baudouin_aur@feildel.fr>
+# Maintainer: Guillermo Duran < gds506 at gmail dot com >
+# Previous Maintainer: Baudouin Feildel <baudouin_aur@feildel.fr>
 pkgname=pgsql-ogr-fdw
 pkgver=1.1.4
 pkgrel=1
