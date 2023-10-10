@@ -70,6 +70,11 @@
 # CLANGD_HOVERLAYOUTEVERYHERE:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Hide definition from hover info for functions and variables
+# CLANGD_HOVERNODEFS:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_BRANCH:=main}
@@ -85,10 +90,11 @@
 : ${CLANGD_HOVERALIGN:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERVIRTOFF:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERLAYOUTEVERYHERE:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=14
+pkgrel=15
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -110,7 +116,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-align.patch'
         'hover-align-mask-comp.patch'
         'hover-virt-offset.patch'
-        'hover-layout-everyhere.patch')
+        'hover-layout-everyhere.patch'
+        'hover-no-defs.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             'c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3'  # doxygen-more-fields
@@ -125,7 +132,8 @@ sha256sums=('SKIP'
             '3d639ec99a36d17dbb9e926e30807d9e57587fb2eac55d42616a2f41d90281f9'  # hover-align
             '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76'  # hover-align-mask-comp
             '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
-            '154cbe13075c1baf34f8c34008e291ecbf1e6fd30bd144fd0f49ac6cc1fdda1a') # hover-layout-everyhere
+            '154cbe13075c1baf34f8c34008e291ecbf1e6fd30bd144fd0f49ac6cc1fdda1a'  # hover-layout-everyhere
+            '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6') # hover-no-defs
 
 pkgver() {
     cd llvm-project
@@ -163,6 +171,9 @@ prepare() {
     fi
     if [ "$CLANGD_HOVERLAYOUTEVERYHERE" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-layout-everyhere.patch
+    fi
+    if [ "$CLANGD_HOVERNODEFS" != "n" ]; then
+        patch -p1 -i ${srcdir}/hover-no-defs.patch
     fi
 
     # LSP patches
