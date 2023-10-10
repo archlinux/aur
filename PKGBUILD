@@ -1,7 +1,7 @@
 # Maintainer: Bink <B-Interactive@users.noreply.github.com>
 
 pkgname=air-sdk
-pkgver=50.2.3.5
+pkgver=50.2.3.6
 pkgrel=1
 pkgdesc="A multi-operating system, multi-screen runtime that allows you to leverage your web development skills to build and deploy rich Internet applications to the desktop and mobile devices."
 arch=('x86_64' 'i686')
