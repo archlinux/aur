@@ -1,17 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Luke Street <luke.street@encounterpc.com>
 pkgname=gnome-shell-extension-gamemode-git
-pkgver=8.r2.gf4b5a35
+pkgver=5.r19.gf4b5a35
 pkgrel=1
 pkgdesc="GNOME Shell extension for Feral Interactive's GameMode"
 arch=('any')
 url="https://github.com/gicmo/gamemode-extension"
 license=('GPL2')
-depends=('gamemode' 'gnome-shell<=1:44.6')
+depends=('gamemode' 'gnome-shell')
 makedepends=('meson' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/gicmo/gamemode-extension.git')
+#source=('git+https://github.com/gicmo/gamemode-extension.git')
+source=('git+https://github.com/fjsevilla-dev/gamemode-extension.git')
 sha256sums=('SKIP')
 
 pkgver() {
