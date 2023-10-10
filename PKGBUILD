@@ -13,6 +13,7 @@ arch=('x86_64')
 url="https://www.courier-mta.org/maildrop/"
 license=('GPL3')
 depends=('courier-unicode' 'libidn2' 'pcre2')
+optdepends=('courier-authlib: for LDAP, MySQL or PostgreSQL based mail authentication')
 conflicts=('courier-mta')
 source=(http://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
 sha512sums=('93364747c603d1d566f756e7ba8b10fd38d10749b269f1bf64596a56fe2b06f529f4b59b6256a5be0c44169f2c8cc9dcd7de91b3cc03288719ffee5db330b1d5')
