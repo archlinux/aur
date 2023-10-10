@@ -94,7 +94,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=15
+pkgrel=16
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -129,8 +129,8 @@ sha256sums=('SKIP'
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
             'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff'  # hover-bit-fields-mask
-            '3d639ec99a36d17dbb9e926e30807d9e57587fb2eac55d42616a2f41d90281f9'  # hover-align
-            '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76'  # hover-align-mask-comp
+            '542992c8490ca4271b16638e7554c3ab3f9f51432b067fa8ffdb82811a70d208'  # hover-align
+            '61e04987bc714eb1cd4eff4e7a98968fe7a51bce12426708d2439a6e9bff51bb'  # hover-align-mask-comp
             '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
             '154cbe13075c1baf34f8c34008e291ecbf1e6fd30bd144fd0f49ac6cc1fdda1a'  # hover-layout-everyhere
             '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6') # hover-no-defs
