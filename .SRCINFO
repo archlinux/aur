@@ -1,7 +1,7 @@
 pkgbase = ultraleap-hand-tracking-service
 	pkgdesc = Ultraleap Hand Tracking service and SDK for development.
 	pkgver = 5.15.0.0_6eec32f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/northstar-archlinux/ultraleap-hand-tracking-service.git
 	install = ultraleap-hand-tracking-service.install
 	arch = x86_64

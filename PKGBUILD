@@ -2,7 +2,7 @@
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-service
 pkgver=5.15.0.0_6eec32f3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Ultraleap Hand Tracking service and SDK for development."
 arch=("x86_64")
@@ -35,6 +35,10 @@ validpgpkeys=()
 
 prepare() {
     tar xzf "data.tar.gz"
+
+    # Remove last line to replace it with something more sensible
+    sed -i '$ d' "${srcdir}/usr/lib/x86_64-linux-gnu/cmake/LeapSDK/leapsdk-config.cmake"
+    echo "include(/usr/lib/cmake/LeapC/LeapCTargets.cmake)" >> "${srcdir}/usr/lib/x86_64-linux-gnu/cmake/LeapSDK/leapsdk-config.cmake"
 }
 
 package() {
