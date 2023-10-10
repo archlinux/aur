@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark at manjaro dot org>
 
 pkgname=watchmate
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="PineTime smart watch companion app for Linux phone and desktop"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('bluez' 'libadwaita')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20fffabf236131ade01515a777c250c7511ef1d3af99f9f4c4bf1f489f273f36')
+sha256sums=('b76dcb7daa7f2cc8c917c5b59522706ea32d0aca94ec9c08c0ef506f62eda937')
 
 prepare() {
   cd "$pkgname-$pkgver"
