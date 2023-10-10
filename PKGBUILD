@@ -1,18 +1,16 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Filip Graliński <filipg@amu.edu.pl>
 
-if [ x"$CARGO_HOME" == "x" ] ; then
-  if [ x"$SRCDEST" == "x" ] ; then
-    export CARGO_HOME="$startdir/cargo"
-  else
-    export CARGO_HOME="$SRCDEST/cargo"
-  fi
+if [ x"$SRCDEST" == "x" ] ; then
+  : ${CARGO_HOME:=$startdir/cargo}
+else
+  : ${CARGO_HOME:=$SRCDEST/cargo}
 fi
 
 _gitname="tokenizers"
 _pkgname="python-$_gitname"
 pkgname="$_pkgname"
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='Fast State-of-the-Art Tokenizers optimized for Research and Production'
 arch=('i686' 'x86_64')
