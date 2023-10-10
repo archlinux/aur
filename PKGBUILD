@@ -2,14 +2,14 @@
 
 _name=gtranslator
 pkgname=$_name-git
-pkgver=45.2.r5722.1315ed6a
+pkgver=45.2.r5728.2efbde35
 pkgrel=1
 pkgdesc='An enhanced gettext po file editor for the GNOME desktop environment'
 arch=('x86_64')
 url='https://projects.gnome.org/gtranslator/'
 license=('GPL3')
 depends=('gtksourceview5' 'gettext' 'libadwaita' 'libgda6' 'iso-codes'
-         'hicolor-icon-theme')
+         'hicolor-icon-theme' 'libspelling')
 makedepends=('meson' 'gobject-introspection' 'yelp-tools' 'git')
 conflicts=($_name)
 provides=($_name)

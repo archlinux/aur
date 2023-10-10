@@ -1,6 +1,6 @@
 pkgbase = gtranslator-git
 	pkgdesc = An enhanced gettext po file editor for the GNOME desktop environment
-	pkgver = 45.2.r5722.1315ed6a
+	pkgver = 45.2.r5728.2efbde35
 	pkgrel = 1
 	url = https://projects.gnome.org/gtranslator/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = gtranslator-git
 	depends = libgda6
 	depends = iso-codes
 	depends = hicolor-icon-theme
+	depends = libspelling
 	provides = gtranslator
 	conflicts = gtranslator
 	source = git+https://gitlab.gnome.org/GNOME/gtranslator
