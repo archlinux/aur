@@ -11,7 +11,7 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
-pkgver=3.6.0
+pkgver=3.7.2
 pkgrel=4
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64)
@@ -21,15 +21,31 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
-             openssl pcre2 libpng podofo poppler postgresql-libs qhull
+             openssl pcre2 libpng podofo-0.9 poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd hdf4)
+
+optdepends=('postgresql: postgresql database support'
+            'mariadb: mariadb database support'
+            'perl: perl binding support'
+            'unixodbc: when present while building, will add odbc support'
+            'libkml: when present while building, adds kml support'
+)
+options=('!emptydirs')
 # armadillo brunsli lerc libkml rasterlite2 sfcgal tiledb
 # ogdi
 changelog=$pkgbase.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('f57b57bb460bf4cb3d601f981e3315b164bcf2f6da1f1b7e72f9ce771e58e4c88619833ca366b6a7c70ed1032bcf3c959f81d60254e136b40fb715937a7e5a59')
+source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
+md5sums=('d6ffb51d21a619d0f242957a6078ffb3')
+
+prepare() {
+# Fix build with podofo-0.9
+  sed -e 's|podofo.h|podofo/podofo.h|' -i $_pkgbase-$pkgver/frmts/pdf/pdfsdk_headers.h
+}
 
 build() {
+  opt_libs=""
+  [[ "$(ldconfig -p | grep libkml.so)" ]] && { echo "Found libkml.so"; opt_libs+=" -DGDAL_USE_LIBKML=ON"; }
+
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_IPO=ON \
@@ -77,7 +93,10 @@ build() {
     -DGDAL_USE_WEBP=ON \
     -DGDAL_USE_XERCESC=ON \
     -DGDAL_USE_ZLIB=ON \
-    -DGDAL_USE_ZSTD=ON
+    -DGDAL_USE_ZSTD=ON \
+    -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
+    -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
+    $opt_libs
   make -C build
 }
 
@@ -87,17 +106,17 @@ package_gdal-hdf4 () {
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd
            hdf4)
   optdepends=('arrow: Arrow/Parquet support'
-              'cfitsio: FITS support'
-              'hdf5: HDF5 support'
-              'libheif: HEIF support'
-              'mariadb-libs: MySQL support'
-              'netcdf: netCDF support'
-              'openexr: EXR support'
-              'openjpeg2: JP2 support'
-              'podofo: PDF support'
-              'poppler: PDF support'
-              'postgresql-libs: PostgreSQL support'
-              'libwebp: WebP support')
+             'cfitsio: FITS support'
+             'hdf5: HDF5 support'
+             'libheif: HEIF support'
+             'mariadb-libs: MySQL support'
+             'netcdf: netCDF support'
+             'openexr: EXR support'
+             'openjpeg2: JP2 support'
+             'podofo: PDF support'
+             'poppler: PDF support'
+             'postgresql-libs: PostgreSQL support'
+             'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
   install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/
