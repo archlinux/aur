@@ -3,11 +3,12 @@
 
 pkgname=bazelisk-bin
 pkgver=1.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A user-friendly launcher for Bazel'
 arch=('x86_64')
 url='https://github.com/bazelbuild/bazelisk'
 license=('Apache')
+provides=('bazelisk')
 conflicts=('bazelisk')
 source=(
   "bazelisk-linux-amd64-${pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${pkgver}/bazelisk-linux-amd64"
