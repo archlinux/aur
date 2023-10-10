@@ -1,8 +1,6 @@
-diff --git a/src/gfx/freeimage.cpp b/src/gfx/freeimage.cpp
-index 2f685279a..e4b0a8c4a 100644
---- a/src/gfx/freeimage.cpp
-+++ b/src/gfx/freeimage.cpp
-@@ -209,12 +209,6 @@ bool GfxProviderFreeImage::readbitmapFreeimage(FileSystemAccess*, const LocalPat
+--- freeimage.cpp.old	2023-10-10 17:44:29.522212542 -0300
++++ freeimage.cpp	2023-10-10 17:47:32.768202551 -0300
+@@ -209,11 +209,7 @@
  
  #ifdef HAVE_FFMPEG
  
@@ -11,24 +9,23 @@ index 2f685279a..e4b0a8c4a 100644
 -#else
 -#define CAP_TRUNCATED CODEC_CAP_TRUNCATED
 -#endif
--
++#define CAP_TRUNCATED 0
+ 
  const char *GfxProviderFreeImage::supportedformatsFfmpeg()
  {
-     return  ".264.265.3g2.3gp.3gpa.3gpp.3gpp2.mp3"
-@@ -313,7 +307,7 @@ bool GfxProviderFreeImage::readbitmapFfmpeg(FileSystemAccess* fa, const LocalPat
+@@ -313,7 +309,7 @@
  
      // Find decoder for video stream
      AVCodecID codecId = codecParm->codec_id;
--    AVCodec* decoder = avcodec_find_decoder(codecId);
+-    auto decoder = avcodec_find_decoder(codecId);
 +    const AVCodec* decoder = avcodec_find_decoder(codecId);
      if (!decoder)
      {
          LOG_warn << "Codec not found: " << codecId;
-@@ -330,11 +324,6 @@ bool GfxProviderFreeImage::readbitmapFfmpeg(FileSystemAccess* fa, const LocalPat
+@@ -330,10 +326,6 @@
  
      // Force seeking to key frames
      formatContext->seek2any = false;
--    videoStream->skip_to_keyframe = true;
 -    if (decoder->capabilities & CAP_TRUNCATED)
 -    {
 -        codecContext->flags |= CAP_TRUNCATED;
