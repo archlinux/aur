@@ -1,7 +1,7 @@
 pkgbase = python-pyvcf3
 	pkgdesc = Variant Call Format (VCF) parser for Python3
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/dridk/PyVCF3
 	arch = x86_64
 	license = custom
@@ -11,6 +11,8 @@ pkgbase = python-pyvcf3
 	depends = cython
 	depends = python-pysam
 	depends = python-setuptools
+	provides = python-pyvcf
+	conflicts = python-pyvcf
 	source = PyVCF3-1.0.3.tar.gz::https://files.pythonhosted.org/packages/source/P/PyVCF3/PyVCF3-1.0.3.tar.gz
 	sha256sums = 4b16d71c8b97010487e2c939fb4d5707b7bbfa4e2b313df9dba3e372c5ba031d
 
