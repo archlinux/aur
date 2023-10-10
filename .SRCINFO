@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-pandaocr.pro
 	pkgdesc = 多功能多引擎OCR文字识别、翻译、朗读、语音合成、日漫游戏机翻汉化、验证码识别、图床上传、以图搜图、扫码工具
-	pkgver = 5.49
+	pkgver = 5.51
 	pkgrel = 1
 	url = https://github.com/miaomiaosoft/PandaOCR.Pro
 	install = deepin-wine-pandaocr.pro.install
@@ -13,18 +13,20 @@ pkgbase = deepin-wine-pandaocr.pro
 	depends = sh
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
-	noextract = PandaOCR.Pro-5.49.zip
-	source = com.pandaocr.pro.spark_1.0.0_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/reading/com.pandaocr.pro.spark/com.pandaocr.pro.spark_1.0.0_i386.deb
-	source = PandaOCR.Pro-5.49.zip::https://github.com/miaomiaosoft/PandaOCR.Pro/releases/download/5.49/PandaOCR.Pro_5.49.zip
+	provides = PandaOCR.Pro=5.51
+	conflicts = pandaocr
+	noextract = PandaOCR.Pro-5.51.zip
+	source = com.pandaocr.pro.spark_1.0.0_i386.deb::https://d.store.deepinos.org.cn/store/reading/com.pandaocr.pro.spark/com.pandaocr.pro.spark_1.0.0_i386.deb
+	source = PandaOCR.Pro-5.51.zip::https://github.com/miaomiaosoft/PandaOCR.Pro/releases/download/5.51/PandaOCR.Pro_5.51.zip
 	source = deepin-wine-pandaocr.pro.install
 	source = deepin-wine-pandaocr.pro.desktop
 	source = run.sh
-	source = LICENSE.md::https://github.com/miaomiaosoft/PandaOCR.Pro/raw/main/README.md
+	source = LICENSE.md::https://raw.githubusercontent.com/miaomiaosoft/PandaOCR.Pro/5.51/README.md
 	sha256sums = f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f
-	sha256sums = e8a35d0d08198d8928f7b5cd4ada9bf83150822c5daf44d62245d7f4e11755fa
+	sha256sums = fab872bfb08d598e766daf74391254a7e18ad3cc01801b4584bf7afa3d4c8686
 	sha256sums = fba9300589f8e39390cbbd82e3042d494f70b166881460e4e8ce8b75265da481
 	sha256sums = 21fc8ca36649a1085d71f7391c2ec1378d2322a12a1713ce00eefc1072c90f3b
-	sha256sums = 260bfb712d1c38c39f239c4116601817a6df182e1cc4cea896676579276be448
-	sha256sums = 80c6ab59c68cfe0975dc846a8df6ebf75812f3e6ed6e5a649e035fc99ccb422d
+	sha256sums = 92b86d395f4cc2b711ebe10f8691c2df1ef3f0931be0864e7be37a896894935b
+	sha256sums = 7f05578539c3b961a2e425524d933c839d6c259f30d21e136bbab0daf05d13b6
 
 pkgname = deepin-wine-pandaocr.pro
