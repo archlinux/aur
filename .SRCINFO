@@ -1,7 +1,7 @@
 pkgbase = gstarcad-bin
 	pkgdesc = 浩辰 CAD.Free trial for 30 days
-	pkgver = 23.1.1
-	pkgrel = 4
+	pkgver = 24.0
+	pkgrel = 1
 	url = https://www.gstarcad.com/cad_linux/
 	arch = aarch64
 	arch = armv7h
@@ -38,14 +38,14 @@ pkgbase = gstarcad-bin
 	depends = libglvnd
 	depends = glibc
 	depends = libdrm
-	provides = gstarcad=23.1.1
+	provides = gstarcad=24.0
 	conflicts = gstarcad
 	options = !strip
-	source_aarch64 = gstarcad-23.1.1-aarch64.deb::https://hccad.gstarcad.cn/linux2023/v3.0/v23.1.1/deb/gstarcad_23.1.1_arm64.deb
-	sha256sums_aarch64 = 29de9bb281ada1a1f22e4b15b8e05e4ff1a588873b0f86b64e28db287d2c77f2
-	source_armv7h = gstarcad-23.1.1-armv7h.deb::https://hccad.gstarcad.cn/linux2023/v3.0/v23.1.1/deb/gstarcad_23.1.1_arm64.deb
-	sha256sums_armv7h = 29de9bb281ada1a1f22e4b15b8e05e4ff1a588873b0f86b64e28db287d2c77f2
-	source_x86_64 = gstarcad-23.1.1-x86_64.deb::https://hccad.gstarcad.cn/linux2023/v3.0/v23.1.1/deb/gstarcad_23.1.1_amd64.deb
-	sha256sums_x86_64 = fe5abf637b282efe0822670e4bea11c6655b502a28b9132cdbfd10ce4d63f62a
+	source_aarch64 = gstarcad-24.0-aarch64.deb::https://hccad.gstarcad.cn/linux2024/v4.0/0928/deb/gstarcad_24.0_arm64.deb
+	sha256sums_aarch64 = 9a829507750f456bcbd3b7e59579d1f2909531acdfd6e97b408b31876e744810
+	source_armv7h = gstarcad-24.0-armv7h.deb::https://hccad.gstarcad.cn/linux2024/v4.0/0928/deb/gstarcad_24.0_arm64.deb
+	sha256sums_armv7h = 9a829507750f456bcbd3b7e59579d1f2909531acdfd6e97b408b31876e744810
+	source_x86_64 = gstarcad-24.0-x86_64.deb::https://hccad.gstarcad.cn/linux2024/v4.0/0928/deb/gstarcad_24.0_amd64.deb
+	sha256sums_x86_64 = 314b1903fc388557cd53a3bebe04e616df10841418d6e01402bd4a7af576f546
 
 pkgname = gstarcad-bin
