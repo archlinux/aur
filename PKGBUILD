@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.0.0-beta3
+_pkgver=30.0.0-rc1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -134,9 +134,6 @@ prepare() {
 
   patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
   patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
-
-  cd plugins/obs-websocket
-  git cherry-pick -n 417725801c25561ed3ac316a71aa332847623913
 }
 
 build() {
@@ -151,9 +148,9 @@ build() {
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -Wno-dev \
-    -DBETA="$_pkgver"
+    -DRELEASE_CANDIDATE="$_pkgver"
+#    -DBETA="$_pkgver"
 #    -DOBS_VERSION_OVERRIDE="$_pkgver"
-#    -DRELEASE_CANDIDATE="$_pkgver"
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-rc-$pkgrel\" //|" build/config/obsconfig.h
 
