@@ -30,8 +30,7 @@ package() {
   bsdtar xvf "build/${_uuid}.shell-extension.zip" \
     -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale" \
-    "$pkgdir/usr/share/"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale" "$pkgdir/usr/share"
 
   install -Dm644 "schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
