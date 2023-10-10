@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..a0c74c84a 100644
+index ef3523211..26b86deaa 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
 @@ -993,6 +993,113 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
@@ -134,39 +134,3 @@ index ef3523211..a0c74c84a 100644
  }
  
  HoverInfo::PassType::PassMode getPassMode(QualType ParmType) {
-@@ -1074,10 +1192,9 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
- 
-   // For non-function-call-like operators (e.g. operator+, operator<<) it's
-   // not immediately obvious what the "passed as" would refer to and, given
--  // fixed function signature, the value would be very low anyway, so we choose
--  // to not support that.
--  // Both variadic functions and operator() (especially relevant for lambdas)
--  // should be supported in the future.
-+  // fixed function signature, the value would be very low anyway, so we
-+  // choose to not support that. Both variadic functions and operator()
-+  // (especially relevant for lambdas) should be supported in the future.
-   if (!FD || FD->isOverloadedOperator() || FD->isVariadic())
-     return;
- 
-@@ -1102,8 +1219,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
-     return;
- 
-   // If we found a matching argument, also figure out if it's a
--  // [const-]reference. For this we need to walk up the AST from the arg itself
--  // to CallExpr and check all implicit casts, constructor calls, etc.
-+  // [const-]reference. For this we need to walk up the AST from the arg
-+  // itself to CallExpr and check all implicit casts, constructor calls, etc.
-   if (const auto *E = N->ASTNode.get<Expr>()) {
-     if (E->getType().isConstQualified())
-       PassType.PassBy = HoverInfo::PassType::ConstRef;
-@@ -1138,8 +1255,8 @@ void maybeAddCalleeArgInfo(const SelectionTree::Node *N, HoverInfo &HI,
-       }
-     } else if (const auto *CtorCall =
-                    CastNode->ASTNode.get<CXXConstructExpr>()) {
--      // We want to be smart about copy constructors. They should not show up as
--      // type conversion, but instead as passing by value.
-+      // We want to be smart about copy constructors. They should not show up
-+      // as type conversion, but instead as passing by value.
-       if (CtorCall->getConstructor()->isCopyConstructor())
-         PassType.PassBy = HoverInfo::PassType::Value;
-       else

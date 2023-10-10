@@ -118,7 +118,7 @@ sha256sums=('SKIP'
             'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff'  # hover-bit-fields-mask
             '3d639ec99a36d17dbb9e926e30807d9e57587fb2eac55d42616a2f41d90281f9'  # hover-align
             '96da98f5f29fb569a71a4d28ac53157a245e406f561665559f718547818bca76'  # hover-align-mask-comp
-            'f933f05ca3b8cf451b8b8e27c220c0fe3485ee25fa3f1e95d4c90e085e2759b8') # hover-virt-offset
+            '0d36c97bd487c34d21ab69bd2d4b16aae6a4c3acac843dd18460fc6d3b5052d0') # hover-virt-offset
 
 pkgver() {
     cd llvm-project
