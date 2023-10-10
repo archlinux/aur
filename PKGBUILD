@@ -7,7 +7,7 @@ pkgname='ros-noetic-geodesy'
 pkgver='0.5.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-noetic-uuid-msgs
@@ -57,9 +57,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
-        -DPYTHON_BASENAME=-python3.9 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
