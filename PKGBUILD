@@ -1,5 +1,5 @@
 pkgname=harrison-xt-plugins-bin
-pkgver=9.0.1
+pkgver=9.2.105
 pkgrel=1
 pkgdesc="Harrison Consoles LV2 XT Plugin Suite"
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=('glibc' 'libcurl-gnutls')
 makedepends=('xdg-user-dirs' 'unzip')
 
 ## Variables
-_archive="`xdg-user-dir DOWNLOAD`/Mixbus32C-${pkgver}-Linux-64bit-gcc5"
-_installer="Mixbus32C-${pkgver}-x86_64-gcc5"
-_app="Mixbus32C_x86_64-$pkgver"
+_archive="`xdg-user-dir DOWNLOAD`/Mixbus-${pkgver}-Linux-64bit-gcc5"
+_installer="Mixbus-${pkgver}-x86_64"
+_app="Mixbus_x86_64-$pkgver"
 
 prepare () {
 	## Extract Harrison Plugins Archive
