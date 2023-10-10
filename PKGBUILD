@@ -1,7 +1,7 @@
 pkgbase='python-xeno'
 pkgname=('python-xeno')
 _module='xeno'
-pkgver='7.3.0'
+pkgver='7.3.1'
 pkgrel=1
 pkgdesc="The Python dependency injector from outer space."
 url="https://github.com/lainproliant/xeno"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('541da170a25ce4727fa7fef3a5c41f142c4d52d2064a962bacf89ffb6d2a3866')
+sha256sums=('e922e2d115b0f95da6767c09a98427a6cd9f4da9074799784526ece277a04435')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
