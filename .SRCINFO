@@ -1,18 +1,16 @@
 pkgbase = terminalpp-bin
 	pkgdesc = Minimalist, fast, cross-platform terminal emulator
-	pkgver = 0.8.0
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://terminalpp.com
 	arch = x86_64
 	license = MIT
 	depends = libxft
 	depends = hicolor-icon-theme
-	depends = gcc-libs
 	provides = terminalpp
-	source = terminalpp-bin-0.8.0.rpm::https://github.com/terminalpp/terminalpp/releases/download/v0.8.0/terminalpp.rpm
+	source = terminalpp-bin-0.8.4.rpm::https://github.com/terminalpp/terminalpp/releases/download/v0.8.4/terminalpp.rpm
 	source = LICENSE::https://github.com/terminalpp/terminalpp/raw/master/LICENSE.md
-	sha256sums = cd9f949dd84931737a2afe028df8eae831a2b04c1f97d72c6511f41c6eebec8b
+	sha256sums = c04fb7e59d9f7ebb9a3b6899fb507b8265b60a6f10bf40ab59a818783bf06a7a
 	sha256sums = 5560b44d8082b623c288cefd5de25c8be7b6b3711bb2f4af070deb057d2d8de7
 
 pkgname = terminalpp-bin
-
