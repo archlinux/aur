@@ -1,0 +1,20 @@
+pkgbase = mu-epub-viewer-bin
+	pkgdesc = Epub viewer on Electron that support text translation.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/azu/mu-epub-reader
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron16
+	depends = hicolor-icon-theme
+	provides = mu-epub-viewer=1.1.4
+	conflicts = mu-epub-viewer
+	source = mu-epub-viewer-1.1.4.AppImage::https://github.com/azu/mu-epub-reader/releases/download/v1.1.4/mu-epub-viewer-1.1.4.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/azu/mu-epub-reader/v1.1.4/LICENSE
+	source = mu-epub-viewer.sh
+	sha256sums = 638b33189eda422f481464d4e6c81eb455192908f1cc35017dfc6b2f3e5f22b9
+	sha256sums = 8696e42debf4f04bd943baa459cfa5d17ef59407a1e9d3b705af1f9e56407c72
+	sha256sums = 789d97cbb39549333dd1b8cb44504e1befc77300b7e51ba92384018f949411ce
+
+pkgname = mu-epub-viewer-bin
