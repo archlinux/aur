@@ -1,6 +1,6 @@
 pkgbase = dremio-bin
 	pkgdesc = The Easy and Open Data Lakehouse Platform
-	pkgver = 24.1.0
+	pkgver = 24.2.2
 	pkgrel = 1
 	url = https://www.dremio.com
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = dremio-bin
 	depends = jdk8-openjdk
 	provides = dremio
 	source = dremio-bin.hook
-	source = https://download.dremio.com/community-server/24.1.0-202306130653310132-d30779f6/dremio-community-24.1.0-202306130653310132-d30779f6.tar.gz
+	source = https://download.dremio.com/community-server/24.2.2-202309281602050954-7d5e877f/dremio-community-24.2.2-202309281602050954-7d5e877f.tar.gz
 	sha256sums = 11386376716ef81ae2194c52dc9ce8f2e55effa9fcb572cc3c1e498d54316859
-	sha256sums = cc68a065f6095029a81478867d392835ccd2272b0bd9bf3893565cfde8066572
+	sha256sums = edfd3bbbb69172c9a973dcb0d4d08a223ae2c8f49c8bd32634e5fa0f0c38544b
 
 pkgname = dremio-bin

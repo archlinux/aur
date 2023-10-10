@@ -6,18 +6,18 @@ provides=("dremio")
 license=("Apache")
 depends=("jdk8-openjdk")
 
-pkgver=24.1.0
-_pkgstr=202306130653310132-d30779f6
+pkgver=24.2.2
+_pkgstr=202309281602050954-7d5e877f
 _archive=dremio-community-$pkgver-$_pkgstr
 
 pkgrel=1
 arch=("any")
 
-#curl -sI https://download.dremio.com/community-server/dremio-community-LATEST.tar.gz | grep location | cut -f2 -d' '
+# curl -sI https://download.dremio.com/community-server/dremio-community-LATEST.tar.gz | grep location | cut -f2 -d' '
 
 source=("$pkgname.hook" "https://download.dremio.com/community-server/$pkgver-$_pkgstr/$_archive.tar.gz")
 sha256sums=('11386376716ef81ae2194c52dc9ce8f2e55effa9fcb572cc3c1e498d54316859'
-            'cc68a065f6095029a81478867d392835ccd2272b0bd9bf3893565cfde8066572')
+            'edfd3bbbb69172c9a973dcb0d4d08a223ae2c8f49c8bd32634e5fa0f0c38544b')
 
 package() {
     mkdir -p $pkgdir/opt
