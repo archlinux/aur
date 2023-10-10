@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgname=python-scooby
 _name=${pkgname#python-}
 pkgdesc='A Great Dane turned Python environment detective'
@@ -15,11 +15,11 @@ sha512sums=('519ab835cd742112bb8e7f6945563507f0acb3da8da645c7057d9c77b195a862d6c
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
