@@ -1,5 +1,6 @@
 # Maintainer: Sankalp Gambhir <sankalp.gambhir42@gmail.com>
 pkgname=stainless-git
+pkgver=VERSION
 pkgdesc="Verification framework and tool for higher-order Scala programs"
 arch=(x86_64)
 url="https://github.com/epfl-lara/stainless"
