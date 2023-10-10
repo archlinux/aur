@@ -1,6 +1,6 @@
 pkgbase = vscodium-bin
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
-	pkgver = 1.83.0.23277
+	pkgver = 1.83.0.23283
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium
 	install = vscodium-bin.install
@@ -35,9 +35,9 @@ pkgbase = vscodium-bin
 	sha256sums = 01ba3d33e76804e2346d08f4eda256a29610c9eb59432e4b016d05ad93d901ba
 	sha256sums = 63b9f3e07dcfe92f59e851fdeeaed6ee986950672f75cc950489bce67e85d884
 	sha256sums = 1841d08fdb512f32433eefa21132bf7ad13e106cb45ca3218d0da7b7be9cfc81
-	source_x86_64 = https://github.com/VSCodium/vscodium/releases/download/1.83.0.23277/VSCodium-linux-x64-1.83.0.23277.tar.gz
-	sha256sums_x86_64 = 00decaad90e136a0abe822c11f4f590354b7201b1f70b40148ff440dfcb2bb2d
-	source_aarch64 = https://github.com/VSCodium/vscodium/releases/download/1.83.0.23277/VSCodium-linux-arm64-1.83.0.23277.tar.gz
-	sha256sums_aarch64 = 92ecbdc5eb95c8bc0fa7164d2817db56b1ef4202ae60aa71f57f9369ceb90867
+	source_x86_64 = https://github.com/VSCodium/vscodium/releases/download/1.83.0.23283/VSCodium-linux-x64-1.83.0.23283.tar.gz
+	sha256sums_x86_64 = c2e52c39cba19d0301233604e86499fc6052d66c56fc83acbbd07e9f4d4ba404
+	source_aarch64 = https://github.com/VSCodium/vscodium/releases/download/1.83.0.23283/VSCodium-linux-arm64-1.83.0.23283.tar.gz
+	sha256sums_aarch64 = 8a1c9967d34a1cbacd5890a3e960432fabb8ed7b9145a2e01dcf9e2b63071763
 
 pkgname = vscodium-bin
