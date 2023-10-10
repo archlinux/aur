@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-compat-57
 	pkgdesc = Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
-	pkgver = 3.4.11
+	pkgver = 3.4.13
 	pkgrel = 1
 	url = http://ffmpeg.org/
 	arch = i686
@@ -64,12 +64,14 @@ pkgbase = ffmpeg-compat-57
 	provides = libswresample.so=2
 	provides = libswscale.so=4
 	options = !lto
-	source = http://ffmpeg.org/releases/ffmpeg-3.4.11.tar.xz
-	source = http://ffmpeg.org/releases/ffmpeg-3.4.11.tar.xz.asc
+	source = http://ffmpeg.org/releases/ffmpeg-3.4.13.tar.xz
+	source = http://ffmpeg.org/releases/ffmpeg-3.4.13.tar.xz.asc
 	source = fs56089.patch
+	source = binutils.patch::https://git.videolan.org/?p=ffmpeg.git;a=patch;h=effadce6c756247ea8bae32dc13bb3e6f464f0eb
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
-	sha256sums = 9c310072bcdcc78a1ee82a36b2b6e648b21dd2e790618200e45876d4d96e32e6
+	sha256sums = fb6bb7f1cff858430343e449955f7c6b134fc7ffee4d1f8fcda7e686a9f2e05a
 	sha256sums = SKIP
 	sha256sums = 0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427
+	sha256sums = a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f
 
 pkgname = ffmpeg-compat-57
