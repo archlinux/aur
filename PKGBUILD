@@ -3,13 +3,13 @@
 # Contributor: sanduhrs <stefan.auditor@erdfisch.de>
 pkgname=gnome-shell-extension-caffeine-git
 _uuid=caffeine@patapon.info
-pkgver=50.r0.g763798b
+pkgver=50.r2.g3c9a447
 pkgrel=1
 pkgdesc="Disable the screensaver and auto suspend"
 arch=('any')
 url="https://github.com/eonpatapon/gnome-shell-extension-caffeine"
 license=('GPL2')
-depends=('gnome-shell>=1:45.0')
+depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
