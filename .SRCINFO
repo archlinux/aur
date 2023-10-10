@@ -1,7 +1,7 @@
 pkgbase = telegram-tdlib-purple-minimal-git
 	pkgdesc = libpurple/pidgin Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies
 	pkgver = 0.8.1.r518.1cc2a5d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BenWiederhake/tdlib-purple
 	arch = x86_64
 	arch = aarch64
