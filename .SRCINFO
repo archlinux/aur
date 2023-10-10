@@ -1,6 +1,6 @@
 pkgbase = carla-bridges-win64
 	pkgdesc = Carla Windows VST 64-Bit Bridge (Stable)
-	pkgver = 2.5.5
+	pkgver = 2.5.7
 	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = carla-bridges-win64
 	provides = carla-bridges-win64
 	conflicts = carla-bridges-win64
 	conflicts = carla-bridges-win
-	source = https://github.com/falkTX/Carla/archive/refs/tags/v2.5.5.tar.gz
-	sha512sums = 93d0fd7c97956446701328f4b98db508a64df9ae6f476871ba7c1ec3f7cc420c206622a01ce5aec2e98079a714264dac5f3f662e0c3d0fad83cc1f1dbeac119a
-	b2sums = fd34d827eea5fb4b7a9fcd57827adde9fae1f0fe2ee02fcccfc4b2d0f72a31872f52956b32455666471cf573fcd04abe3d432c3d38407c6dabe8f95287da388c
+	source = https://github.com/falkTX/Carla/archive/refs/tags/v2.5.7.tar.gz
+	sha512sums = c634ade64ff8ab66b0c06b17e33ea6fc758837e19156abbfe214d81fc084d96278bc49cb2941ab7328ed4452bb539cde5afa7f16352b18349ffddd1b53a65f3d
+	b2sums = b7ed18f0743caeb3a95d43756ce640ac3bad510979387f720f2bf819143587fc608d0a7e612554e7ef7dd3cccd3353eaa22964dba5cb8f9d3dc5b0310502f9ce
 
 pkgname = carla-bridges-win64
