@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 # Contributor: Linus Färnstrand <linus at mullvad dot net>
@@ -6,10 +6,10 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2023.5
-_channel=beta
-_rel=2
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+_channel=stable
+_rel=1
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=61de744604b843af7eb465d4a5af59b9fc9544a2  # tags/2023.5-beta2^0
+_tag=93fcf31a5ea75fff5277d2698df1670d5019552f  # tags/2023.5^0
 _commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by raksooo, public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
@@ -119,7 +119,7 @@ build() {
     mullvad-exclude
   )
   for binary in ${binaries[*]}; do
-    cp target/release/${binary} dist-assets/${binary}
+    cp "target/release/${binary}" "dist-assets/${binary}"
   done
 
   # Build Electron GUI
@@ -168,7 +168,7 @@ package() {
     "$pkgdir/usr/share/applications/"
 
   for icon_size in 16 32 48 64 128 256 512 1024; do
-    icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -Dm644 ${icons_dir}/${pkgname%-beta}.png -t "$pkgdir/${icons_dir}/"
+    icons_dir="usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+    install -Dm644 "${icons_dir}/${pkgname%-beta}.png" -t "$pkgdir/${icons_dir}/"
   done
 }
