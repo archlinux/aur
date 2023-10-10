@@ -1,14 +1,13 @@
 pkgbase = python-colcon-bash
 	pkgdesc = An extension for colcon-core to provide Bash scripts.
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-bash
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/source/c/colcon-bash/colcon-bash-0.4.2.tar.gz
-	sha256sums = 86950ca62293b655ef8d655d2994d110321fff2fc6739c46a64f005a0cee1bdd
+	source = https://files.pythonhosted.org/packages/source/c/colcon-bash/colcon-bash-0.5.0.tar.gz
+	sha256sums = 29a223a66828e18aad9b8db5087f7114e388601830091830ca17b095ada2cbac
 
 pkgname = python-colcon-bash
-
