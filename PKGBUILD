@@ -4,7 +4,7 @@
 # Tested with Kernel 4.16, Dell D3000 SuperSpeed USB 3.0 Docking Station, 17e9:4318 DisplayLink
 
 pkgname='evdi-git'
-pkgver=1.13.0.r0.gfe857b5
+pkgver=1.14.1.r0.g83bb793
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -47,38 +47,42 @@ prepare() {
     fi
   done
 
-  # Fix build for kernel 5.4
-  #sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i 'module/Makefile'
-
-  sed -e 's:-Werror::g' -i 'Makefile'
+  #sed -e 's:-Werror::g' -i 'Makefile'
 }
 
 build() {
   cd "${_srcdir}"
-  # DKMS builds are hard to debug. We can build it here to debug the errors.
-  if :; then
-    # We only need to build the library in this step, dmks will build the module
-    cd 'library'
-  fi
   CFLAGS="${CFLAGS/-fno-plt/}"
-  make
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  # DKMS builds are hard to debug. We can build it here to debug the errors.
+  #make -j1 -C 'module'
+  make -j1 -C 'library'
 }
 
 package() {
   cd "${_srcdir}"
-  install -Dpm755 "library/lib${pkgname%-git}.so"* -t "${pkgdir}/usr/lib/"
+  make -C 'library' -j1 install DESTDIR="${pkgdir}" PREFIX='/usr'
 
 if ! :; then
   pushd "${pkgdir}/usr/lib/" > /dev/null
+  local _libase
   local _libs=(*.so.*)
-  if [ "${#_libs[@]}" -ne 1 ]; then
-    echo "Too many libs"
+  if [ "${#_libs[@]}" -eq 2 ]; then
+    _libs="${_libs[1]}"
+    for _libase in *.so*; do
+      if [ "${_libase}" != "${_libs}" ]; then
+        ln -sf "${_libs}" "${_libase}"
+      fi
+    done
+  elif [ "${#_libs[@]}" -eq 1 ]; then
+    _libs="${_libs[0]}"
+    _libase="${_libs%.so*}.so"
+    ln -sf "${_libs}" "${_libase}"
+    ln -sf "${_libs}" "${_libase}.0" # bad soname
+  else
+    echo 'Unhandled libs'
     false
   fi
-  _libs="${_libs[0]}"
-  local _libase="${_libs%.so*}.so"
-  ln -sf "${_libs}" "${_libase}"
-  ln -sf "${_libs}" "${_libase}.0" # bad soname
   popd > /dev/null
 fi
 
