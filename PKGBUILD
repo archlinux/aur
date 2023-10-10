@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qcalc-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Quasar Calculator"
 arch=('x86_64')
@@ -9,10 +9,11 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
+makedepends=('squashfuse')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Q.Calc-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/from104/qcalc/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('91b0df10ca2456fdf3a4865acbc31d98bb49f82acde048c7e84ab9a267c71716'
+sha256sums=('a5b6233d5bf9ac73fd8d14f4e82acf0099e0f0ee57cbd59e3a306e16b0f19353'
             '3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b'
             '91fb24e21e74a3f1982f9f3794213b2129a8cd525be385dceee4814f642c95d1')
 build() {
