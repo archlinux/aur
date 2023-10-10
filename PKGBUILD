@@ -27,12 +27,12 @@ prepare() {
 }
 
 package() {
-  install -d "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-  cp ${srcdir}/Linux_DRM_${pkgver}_${pkgrel}/sources/src601/{Makefile,ast_dp.c,ast_dp501.c,ast_dram_2500.c,ast_dram_tables.h,ast_drv.c,ast_drv.h,ast_i2c.c,ast_main.c,ast_mm.c,ast_mode.c,ast_post.c,ast_tables.h} "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-  cp ${srcdir}/Linux_DRM_${pkgver}_${pkgrel}/COPYING "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/LICENSE
+  install -d "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}_${pkgrel}/
+  cp ${srcdir}/Linux_DRM_${pkgver}_${pkgrel}/sources/src601/{Makefile,ast_dp.c,ast_dp501.c,ast_dram_2500.c,ast_dram_tables.h,ast_drv.c,ast_drv.h,ast_i2c.c,ast_main.c,ast_mm.c,ast_mode.c,ast_post.c,ast_tables.h} "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}_${pkgrel}/
+  cp ${srcdir}/Linux_DRM_${pkgver}_${pkgrel}/COPYING "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}_${pkgrel}/LICENSE
 
-  install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+  install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}_${pkgrel}/dkms.conf
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
     -e "s/@PKGVER@/${pkgver}_${pkgrel}/" \
-    -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+    -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}_${pkgrel}/dkms.conf
 }
