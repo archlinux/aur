@@ -3,7 +3,7 @@
 
 basepkgname=pulseaudio-qt-git
 pkgname=pulseaudio-qt6-git
-pkgver=1.3.0_r755.gbf29bf8
+pkgver=1.3.0_r756.gda98bd2
 pkgrel=1
 pkgdesc='Qt bindings for libpulse'
 arch=($CARCH)
