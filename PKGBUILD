@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1816.1450a14
+pkgver=r1875.88e751c
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -40,11 +40,11 @@ prepare() {
 build() {
   cd "$_pkgname"
   make \
-    LOCALCW_INCLUDE= \
-    GPIO_INCLUDE= \
-    SOAPYSDR_INCLUDE=SOAPYSDR \
-    STEMLAB_DISCOVERY=STEMLAB_DISCOVERY_NOAVAHI \
-    SATURN_INCLUDE=
+    GPIO= \
+    MIDI=ON \
+    SATURN= \
+    SOAPYSDR=ON \
+    AUDIO=PULSE
 }
 
 package() {
