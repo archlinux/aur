@@ -5,7 +5,7 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=44.4
+pkgver=45.0
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -21,6 +21,8 @@ depends=(
   iio-sensor-proxy
   lcms2
   libcanberra
+  libdisplay-info
+  libei
   libgudev
   libinput
   libsm
@@ -44,11 +46,12 @@ makedepends=(
   xorg-server-xvfb
 )
 _checkdepends=(
+  gnome-session
   python-dbusmock
   wireplumber
   zenity
 )
-_commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586  # tags/44.4^0
+_commit=4f6c91847088d7d6476b88575b3a6601b819b443  # tags/45.0^0
 source=(
   "$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   'mr1441.patch'
@@ -73,6 +76,7 @@ build() {
     -D docs=true
     -D egl_device=true
     -D installed_tests=false
+    -D libdisplay_info=true
     -D wayland_eglstream=true
     -D tests=false
   )
@@ -84,26 +88,18 @@ build() {
   meson compile -C build
 }
 
-_check_internal() (
+_check() (
   export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
   glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
 
-  pipewire &
-  _p1=$!
+  export NO_AT_BRIDGE=1 GTK_A11Y=none
+  export MUTTER_DEBUG_DUMMY_MODE_SPECS="800x600@10.0"
 
-  wireplumber &
-  _p2=$!
-
-  trap "kill $_p1 $_p2; wait" EXIT
-
-  meson test -C build --print-errorlogs -t 3
+  xvfb-run -s '-nolisten local +iglx -noreset' \
+    mutter/src/tests/meta-dbus-runner.py --launch=pipewire --launch=wireplumber \
+    meson test -C build --print-errorlogs -t 5 --setup plain
 )
-
-_check_disabled() {
-  dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-    bash -c "$(declare -f _check_internal); _check_internal"
-}
 
 _pick() {
   local p="$1" f d; shift
@@ -117,7 +113,7 @@ _pick() {
 
 package_mutter-dynamic-buffering() {
   conflicts=(mutter)
-  provides=(mutter libmutter-12.so)
+  provides=(mutter libmutter-13.so)
 
   meson install -C build --destdir "$pkgdir"
 
