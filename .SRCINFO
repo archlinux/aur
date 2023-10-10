@@ -1,7 +1,7 @@
 pkgbase = python-yamlpath
 	pkgdesc = Command-line get/set/merge/validate/scan/convert/diff processors for YAML/JSON/Compatible data using powerful, intuitive, command-line friendly syntax.
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wwkimball/yamlpath/wiki
 	arch = any
 	license = ISC

@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgname=python-yamlpath
 _name=${pkgname#python-}
 pkgdesc='Command-line get/set/merge/validate/scan/convert/diff processors for YAML/JSON/Compatible data using powerful, intuitive, command-line friendly syntax.'
@@ -15,11 +15,11 @@ sha512sums=('ab4f9c370a344d88f2089e3fd1ffd1307e77ed071ee30537b215c79d57aa1779e42
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
