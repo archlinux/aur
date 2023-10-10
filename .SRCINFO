@@ -1,0 +1,14 @@
+pkgbase = python-subprocess_shell
+	pkgdesc = A shell for subprocess
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gitlab.com/notEvil/subprocess_shell
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://pypi.io/packages/source/s/subprocess-shell/subprocess_shell-0.0.2.tar.gz
+	sha256sums = 2b13bcf26001c2ec375ca6974f6c15692087cb1aa69cbefb9603523ede3b67b9
+
+pkgname = python-subprocess_shell
