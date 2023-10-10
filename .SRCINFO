@@ -1,11 +1,12 @@
 pkgbase = viber
 	pkgdesc = Proprietary cross-platform IM and VoIP software
 	pkgver = 21.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.viber.com
 	arch = x86_64
 	license = custom
 	depends = libxss
+	depends = xcb-util-cursor
 	depends = xcb-util-image
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil

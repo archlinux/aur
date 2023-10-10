@@ -6,12 +6,12 @@
 
 pkgname=viber
 pkgver=21.0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
 url='https://www.viber.com'
 license=('custom')
-depends=('libxss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'libxss'
+depends=('libxss' 'xcb-util-cursor' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'libxss'
 	'openssl' 'libpulse' 'alsa-lib' 'nss' 'libxcomposite' 'libxcursor' 'libxdamage'
 	'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-libav' 'libxslt' 'openssl-1.1')
 options=('!strip')
