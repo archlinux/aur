@@ -22,8 +22,8 @@ pkgname=(
   pipewire-full-vulkan-git
   pipewire-full-ffmpeg-git
 )
-pkgver=0.3.79.r67.g9c834427
-pkgrel=2
+pkgver=0.3.81.r33.g4b940100
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -93,8 +93,6 @@ prepare() {
   # libspa-jack.so would still link to /usr/lib/libjack.so,
   # which provided by both pipewire-jack and jack2,
   patch -Np1 < ../jack-link-pipewire-jack.patch
-  # remove export of LD_LIBRARY_PATH for pw-jack as it would add /usr/lib
-  sed -i '/LD_LIBRARY_PATH/d' pipewire-jack/src/pw-jack.in
 }
 
 build() {
