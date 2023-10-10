@@ -18,10 +18,12 @@ After=network.target
 
 [Service]
 Type=notify
+TimeoutSec=120
 NotifyAccess=main
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 User=duckcloud
+Group=duckcloud
 SyslogIdentifier=duckcloud
 
 # Specify where all the data is located by updating the path in

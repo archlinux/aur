@@ -1,13 +1,13 @@
 # Maintainer: Peltoche <pierre.peltier@protonmail.com>
 pkgname=duckcloud
 pkgver=23.10.2
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A cloud for your family"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url=https://duckcloud.co
 license=(AGPL3)
-depends=()
+depends=(glibc)
 makedepends=(go)
 optdepends=()
 
@@ -18,9 +18,9 @@ source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.
         LICENSE)
 
 sha256sums=('e92898e491c1ca266c380388293dd21cc538218780516b5d0597590cc7459757'
-            '5fc25ddfc97831e04945cced120fb77818a0ae67e96fd7f7ee2c0cc5f6136b32'
+            'c8284658d295ba32b118784532da5ce2cc7c4ac167a26181d0685683dedb3623'
             'ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead'
-            'e72c5169f2a66e3f97a7a43e24a93dcc092955db5741a4664ee58bea1c7faca7'
+            '5b3e34975e2bfa4a2c55e5a12fc970d103d8635512579dc2ac533b4787d66f9f'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 
 prepare() {

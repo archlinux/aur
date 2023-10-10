@@ -1,7 +1,7 @@
 pkgbase = duckcloud
 	pkgdesc = A cloud for your family
 	pkgver = 23.10.2
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://duckcloud.co
 	arch = x86_64
@@ -11,15 +11,16 @@ pkgbase = duckcloud
 	arch = aarch64
 	license = AGPL3
 	makedepends = go
+	depends = glibc
 	source = https://github.com/theduckcompany/duckcloud/archive/refs/tags/23.10.2.tar.gz
 	source = duckcloud.service
 	source = duckcloud.sysusers
 	source = duckcloud.tmpfiles
 	source = LICENSE
 	sha256sums = e92898e491c1ca266c380388293dd21cc538218780516b5d0597590cc7459757
-	sha256sums = 5fc25ddfc97831e04945cced120fb77818a0ae67e96fd7f7ee2c0cc5f6136b32
+	sha256sums = c8284658d295ba32b118784532da5ce2cc7c4ac167a26181d0685683dedb3623
 	sha256sums = ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead
-	sha256sums = e72c5169f2a66e3f97a7a43e24a93dcc092955db5741a4664ee58bea1c7faca7
+	sha256sums = 5b3e34975e2bfa4a2c55e5a12fc970d103d8635512579dc2ac533b4787d66f9f
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 
 pkgname = duckcloud
