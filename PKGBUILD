@@ -44,13 +44,14 @@ makedepends=(
   wayland-protocols
 )
 _tag=af3c0da0cd791ac0c09c59b8dd05d65bf83c3ca5
+_tag_stb=5736b15f7ea0ffb08dd38af21067c314d6a3aae9
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
         "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
-        "git+https://github.com/nothings/stb.git"
+        "git+https://github.com/nothings/stb.git#commit=${_tag_stb}"
 	"git+https://github.com/Joshua-Ashton/reshade.git"
         0001-libdisplay-info-cta-be-more-lenient-about.patch
         )
@@ -79,6 +80,7 @@ prepare() {
 
   # make stb.wrap use our local clone
   sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
+  sed -i "s|master|$_tag_stb|" "subprojects/stb.wrap"
 
   meson subprojects download
 

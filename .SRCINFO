@@ -37,7 +37,7 @@ pkgbase = gamescope-plus
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
 	source = git+https://github.com/ValveSoftware/openvr.git
 	source = git+https://github.com/Joshua-Ashton/vkroots.git
-	source = git+https://github.com/nothings/stb.git
+	source = git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9
 	source = git+https://github.com/Joshua-Ashton/reshade.git
 	source = 0001-libdisplay-info-cta-be-more-lenient-about.patch
 	b2sums = SKIP
