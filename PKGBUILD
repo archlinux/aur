@@ -1,8 +1,8 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura
-pkgver=4.0.0
-pkgrel=4
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends"
 arch=('x86_64')
 url="https://github.com/anura-engine/anura"
