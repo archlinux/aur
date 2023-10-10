@@ -1,5 +1,5 @@
 pkgname=carla-bridges-win32
-pkgver=2.5.5
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="Carla Windows VST 32-Bit Bridge (Stable)"
 arch=('x86_64')
@@ -10,8 +10,8 @@ provides=('carla-bridges-win32')
 depends=('wine' 'carla')
 makedepends=('gcc-multilib' 'git' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-winpthreads')
 source=("https://github.com/falkTX/Carla/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('93d0fd7c97956446701328f4b98db508a64df9ae6f476871ba7c1ec3f7cc420c206622a01ce5aec2e98079a714264dac5f3f662e0c3d0fad83cc1f1dbeac119a')
-b2sums=('fd34d827eea5fb4b7a9fcd57827adde9fae1f0fe2ee02fcccfc4b2d0f72a31872f52956b32455666471cf573fcd04abe3d432c3d38407c6dabe8f95287da388c')
+sha512sums=('c634ade64ff8ab66b0c06b17e33ea6fc758837e19156abbfe214d81fc084d96278bc49cb2941ab7328ed4452bb539cde5afa7f16352b18349ffddd1b53a65f3d')
+b2sums=('b7ed18f0743caeb3a95d43756ce640ac3bad510979387f720f2bf819143587fc608d0a7e612554e7ef7dd3cccd3353eaa22964dba5cb8f9d3dc5b0310502f9ce')
 
   _path=$PATH
   _cflags=$CFLAGS
@@ -35,7 +35,7 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
   export LDFLAGS="-static"
-  make win32 HAVE_LIBLO=false
+  make -j$(proc) win32 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
   export CC=gcc 
@@ -46,7 +46,7 @@ build() {
   export LDFLAGS=$_ldflags
   export WIN32=$_win32
   export JACKBRIDGE_FLAGS="-D__WIDL_objidl_generated_name_0000000C="
-  make wine32 TESTBUILD=false
+  make -j$(proc) wine32 TESTBUILD=false
 }
 
 package() {
