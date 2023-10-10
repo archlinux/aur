@@ -12,8 +12,8 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.40.1
-pkgrel=2
+pkgver=1.41.0
+pkgrel=1
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
@@ -49,7 +49,7 @@ package() {
     install -vDm 644 "$srcdir/${origname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${origname}.conf"
 }
 
-sha256sums=('5fec5ed5373d94dcaf8b17ddd78d05ccdfd0faa8b4695d9e926d8e71278ea08e'
+sha256sums=('f13439f3c797769add028bff68974d88452add8b026b6da55fa056020ffbe479'
             '627734881c9bcefd8577aa2d761e3b535195b3ccd7cd99f9bf63c5586f4ca8e2'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             '3f5faa33c0c70b0aeded126428f10b20ca1848e1ede43e5c6c7a76ac3f64be30'
