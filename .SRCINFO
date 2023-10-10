@@ -1,0 +1,23 @@
+pkgbase = lib32-zeromq
+	pkgdesc = Fast messaging system built on sockets
+	pkgver = 4.3.5
+	pkgrel = 1
+	url = https://www.zeromq.org
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = xmlto
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libpgm
+	depends = lib32-libsodium
+	depends = zeromq
+	source = git+https://github.com/zeromq/libzmq.git?signed#tag=v4.3.5
+	source = lib32-zeromq-openpgm.patch
+	validpgpkeys = A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E
+	sha256sums = SKIP
+	sha256sums = 59d3b09f15096fee4effb1916d0788243f41f6a0aa166ae53a8d876abc63fc48
+
+pkgname = lib32-zeromq

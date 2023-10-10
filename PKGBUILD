@@ -3,8 +3,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=lib32-zeromq
-pkgver=4.3.4
-pkgrel=2
+pkgver=4.3.5
+pkgrel=1
 pkgdesc='Fast messaging system built on sockets'
 arch=(x86_64)
 url=https://www.zeromq.org
@@ -22,9 +22,9 @@ makedepends=(
   ninja
   xmlto
 )
-_tag=7824f6762fa526c5bfb0baa23a6839ecf5988e91
+_tag=622fc6dde99ee172ebaa9c8628d85a7a1995a21d
 source=(
-  git+https://github.com/zeromq/libzmq.git?signed#tag=${_tag}
+  git+https://github.com/zeromq/libzmq.git?signed#tag=v${pkgver}
   lib32-zeromq-openpgm.patch
 )
 validpgpkeys=(A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E) # Luca Boccassi <luca.boccassi@gmail.com>
