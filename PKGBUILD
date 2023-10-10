@@ -2,9 +2,9 @@
 
 _target=arm-linux-gnueabi
 pkgname=$_target-gcc
-_pkgver=11.2.0
+_pkgver=13.2.0
 pkgver=$_pkgver
-_islver=0.24
+_islver=0.26
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM GNU EABI little-endian target'
 arch=(x86_64 i686 armv7h)
@@ -94,6 +94,7 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir/usr/share/"{man/man7,info}
 }
-sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
             'SKIP'
-            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
+            '5eac8664e9d67be6bd0bee5085d6840b8baf738c06814df47eaf4166d9776436')
+
