@@ -10,6 +10,7 @@ pkgbase = gnome-shell-extension-desktop-icons-ng-git
 	makedepends = meson
 	makedepends = glib2
 	depends = gnome-shell>=3.38
+	depends = nautilus
 	provides = gnome-shell-extension-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng
 	source = git+https://gitlab.com/rastersoft/desktop-icons-ng.git#branch=port-to-gnome-45
