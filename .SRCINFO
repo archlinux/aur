@@ -1,7 +1,7 @@
 pkgbase = keepassxc-allow-aur-extension-origin
 	pkgdesc = Cross-platform community-driven port of Keepass password manager
 	pkgver = 2.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keepassxc.org/
 	arch = x86_64
 	license = GPL
