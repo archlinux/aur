@@ -3,7 +3,7 @@
 _pkgname=vcprompt
 pkgname=$_pkgname-git
 pkgver=20201228.g850bf44
-pkgrel=1
+pkgrel=2
 pkgdesc="Version control information in your prompt"
 arch=(x86_64)
 url="https://github.com/powerman/vcprompt"
@@ -12,7 +12,7 @@ depends=('sqlite' 'perl')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(git://github.com/powerman/${_pkgname}.git)
+source=("git+https://github.com/powerman/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
