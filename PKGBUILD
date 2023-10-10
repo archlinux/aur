@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=drm_info
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 license=(MIT)
 pkgdesc='Small utility to dump info about DRM devices'
@@ -10,7 +10,7 @@ arch=(x86_64 aarch64)
 url=https://gitlab.freedesktop.org/emersion/drm_info
 conflicts=(drm_info-git)
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-b2sums=('c546063429391ab14043307c3d9e3d00bb35b6d819cabb1982c9ee4b46c6f864de73a4376df911dc836fb9e434317f039c75416ca098196bb14be1889b59e00c')
+b2sums=('345b682156c2736102b14aa4f415ee676aa50342aaa0f30f23ac5fdf823883423e2a8c17a08d0e46b3e9a09a418d5a6578cba76037d18c498faed88041021e32')
 
 build() {
 	rm -rf build
