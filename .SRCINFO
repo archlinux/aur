@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-windowisready_remover-git
+	pkgdesc = GNOME shell extension that removes the annoying "Windows is Ready" notification.
+	pkgver = r35.f8bfd6f
+	pkgrel = 1
+	url = https://github.com/nunofarruca/WindowIsReady_Remover
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-windowisready_remover
+	conflicts = gnome-shell-extension-windowisready_remover
+	source = gnome-shell-extension-windowisready_remover-git::git+https://github.com/nunofarruca/WindowIsReady_Remover
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-windowisready_remover-git
