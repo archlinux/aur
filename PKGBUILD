@@ -1,6 +1,6 @@
-# Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
+# Maintainer: Manuel Coenen <dev+aur@manuelsbrain.de>
 pkgname=rfm
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Command-line interface to perform file management on RepRapFirmware based devices."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('rfm')
 conflicts=('rfm')
 source=("https://github.com/wilriker/rfm/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('018eb0eae03f1efb1f94d029cabd3c287fda36d2c91b9433637d1a81d5a09cd2')
+sha256sums=('9eeef7ed740313020566e311cf88cf00cc1b704b16295eb2f2fdea46c679905a')
 
 build() {
 	cd "${pkgname}-${pkgver}"
