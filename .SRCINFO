@@ -14,8 +14,10 @@ pkgbase = duckcloud
 	source = https://github.com/theduckcompany/duckcloud/archive/refs/tags/23.10.2.tar.gz
 	source = duckcloud.service
 	source = duckcloud.sysusers
+	source = LICENSE
 	sha256sums = e92898e491c1ca266c380388293dd21cc538218780516b5d0597590cc7459757
 	sha256sums = 5fc25ddfc97831e04945cced120fb77818a0ae67e96fd7f7ee2c0cc5f6136b32
 	sha256sums = ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 
 pkgname = duckcloud
