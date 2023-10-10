@@ -4,7 +4,7 @@
 _arch=amd64
 
 pkgname=kenku-fm-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Online tabletop audio sharing for Discord"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('kenku-fm')
 url="https://github.com/owlbear-rodeo/kenku-fm"
 
 source=("${url}/releases/download/v${pkgver}/kenku-fm_${pkgver}_${_arch}.deb")
-md5sums=('3846d9bb8d302625e8ec82fc29515be7')
+md5sums=('8fedb8b146027ea6768b5223f049bfd8')
 
 
 prepare() {
