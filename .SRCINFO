@@ -1,7 +1,7 @@
 pkgbase = easyconnect-cas
 	pkgdesc = Accessing CAS's network resources over vpn connection.
 	pkgver = 7.6.3.0.86415
-	pkgrel = 1
+	pkgrel = 2
 	url = https://newvpn.arp.cn/com/installClient.html
 	install = easyconnect-cas.install
 	arch = x86_64

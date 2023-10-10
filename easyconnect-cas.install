@@ -2,7 +2,7 @@ pre_install() {
 	#打包的时候替换
 	PAK_ARCH="amd64"
 	#错误输出位置
-	ERR_OUT=/tmp/EasyConnectSDU.install.error
+	ERR_OUT=/tmp/EasyConnectCAS.install.error
 
 	#清空之前可能存在的错误日志信息
 	if [ -f $ERR_OUT ]
@@ -154,7 +154,7 @@ pre_remove() {
 
 	    pidof svpnservice
 	    if [ $? -eq 0 ];then
-	        killall svpnservice 
+	        killall svpnservice
 	    fi
 	    pidof svpnservice
 	    if [ $? -eq 0 ];then
