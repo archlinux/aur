@@ -1,30 +1,30 @@
 diff --git a/include/control.h b/include/control.h
-index f99ababd8..fcd5e54d4 100644
+index d9dcbf173..401365725 100644
 --- a/include/control.h
 +++ b/include/control.h
 @@ -87,7 +87,7 @@ public:
-         opt_printconf = false;
-         opt_noautoexec = false;
-         opt_securemode = false;
--        opt_fastlaunch = false;
-+        opt_fastlaunch = true;
-         opt_fullscreen = false;
-         opt_showcycles = false;
-         opt_earlydebug = false;
+     bool opt_noautoexec = false;
+     bool opt_securemode = false;
+     bool opt_fullscreen = false;
+-    bool opt_fastlaunch = false;
++    bool opt_fastlaunch = true;
+     bool opt_showcycles = false;
+     bool opt_earlydebug = false;
+     bool opt_logfileio = false;
 diff --git a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
-index a54b9a3e2..b25f865ee 100644
+index 77a0e2917..859b4cea4 100644
 --- a/src/gui/sdlmain.cpp
 +++ b/src/gui/sdlmain.cpp
-@@ -6953,7 +6953,7 @@ bool DOSBOX_parse_argv() {
+@@ -6892,7 +6892,7 @@ bool DOSBOX_parse_argv() {
              fprintf(stderr,"  -set <section property=value>           Set the config option (overriding the config file).\n");
              fprintf(stderr,"                                          Make sure to surround the string in quotes to cover spaces.\n");
              fprintf(stderr,"  -time-limit <n>                         Kill the emulator after 'n' seconds\n");
 -            fprintf(stderr,"  -fastlaunch                             Fast launch mode (skip the BIOS logo and welcome banner)\n");
-+            fprintf(stderr,"  -launchlogo                             Show launch logo (show the launch logo and welcome banner)\n");
++            fprintf(stderr,"  -launchlogo                             Show launch logo (show the BIOS logo and welcome banner)\n");
  #if C_DEBUG
              fprintf(stderr,"  -helpdebug                              Show debug-related options\n");
  #endif
-@@ -7074,8 +7074,8 @@ bool DOSBOX_parse_argv() {
+@@ -7060,8 +7060,8 @@ bool DOSBOX_parse_argv() {
          else if (optname == "fastbioslogo") {
              control->opt_fastbioslogo = true;
          }
