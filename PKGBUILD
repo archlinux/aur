@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgname=python-yaml2rst
 _name=${pkgname#python-}
 pkgdesc='A Simple Tool and Python-Module for Documenting YAML Files'
@@ -14,11 +14,11 @@ sha512sums=('a2886ff5cafc4996b5faf94907e88d6882f7a220d60cb8a766ca9af13012adb043b
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
