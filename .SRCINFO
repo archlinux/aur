@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 44.5
+	pkgver = 45.0
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
@@ -43,12 +43,13 @@ pkgbase = gnome-shell-performance
 	optdepends = gst-plugin-pipewire: Screen recording
 	optdepends = gst-plugins-good: Screen recording
 	optdepends = power-profiles-daemon: Power profile switching
+	optdepends = python-gobject: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=44.5
-	provides = gnome-shell=1:44.5
+	provides = gnome-shell=45.0
+	provides = gnome-shell=1:45.0
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=d49cc6fa355d59d3a4c878ae89885cb1c571bfda
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=2127c62b210f605747e019e6e2abee82516e3ccb
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	b2sums = SKIP
 	b2sums = SKIP
@@ -73,4 +74,4 @@ pkgname = gnome-shell-performance
 	depends = mutter
 	depends = unzip
 	depends = upower
-	depends = libmutter-12.so
+	depends = libmutter-13.so

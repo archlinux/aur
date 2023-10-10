@@ -20,7 +20,7 @@ _merge_requests_to_use=()
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=44.5
+pkgver=45.0
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -74,12 +74,13 @@ optdepends=(
   'gst-plugin-pipewire: Screen recording'
   'gst-plugins-good: Screen recording'
   'power-profiles-daemon: Power profile switching'
+  'python-gobject: gnome-shell-test-tool performance tester'
   'switcheroo-control: Multi-GPU support'
 )
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=d49cc6fa355d59d3a4c878ae89885cb1c571bfda  # tags/44.5^0
+_commit=2127c62b210f605747e019e6e2abee82516e3ccb  # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
@@ -178,6 +179,7 @@ build() {
 }
 
 _check() (
+  export NO_AT_BRIDGE=1 GTK_A11Y=none
   export XDG_RUNTIME_DIR="$PWD/rdir"
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
@@ -192,6 +194,6 @@ if [ -n "$_enable_check" ]; then
 fi
 
 package() {
-  depends+=(libmutter-12.so)
+  depends+=(libmutter-13.so)
   meson install -C build --destdir "$pkgdir"
 }
