@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-transparent-top-bar-git
 	makedepends = git
 	makedepends = ruby-sass
 	makedepends = zip
-	depends = gnome-shell>=1:45.0
+	depends = gnome-shell
 	provides = gnome-shell-extension-transparent-top-bar
 	conflicts = gnome-shell-extension-transparent-top-bar
 	source = git+https://github.com/lamarios/gnome-shell-extension-transparent-top-bar.git
