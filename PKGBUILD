@@ -3,13 +3,13 @@
 pkgname=plasma5-applets-kde-arch-update-notifier
 _pkgname=kde-arch-update-plasmoid
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A KDE plasmoid for your system tray notifying you of available updates with AUR Support"
 url="https://github.com/I-Dream-in-Code/$_pkgname"
 arch=('any')
 license=('GPL')
 depends=("fakeroot" "konsole" "pacman-contrib" "plasma-desktop" "plasma-framework" "qt5-xmlpatterns")
-optdepends=("checkupdates-aur" "snapd" "yakuake")
+optdepends=("snapd" "yakuake")
 makedepends=("cmake" "git" "extra-cmake-modules")
 conflicts=(plasma5-applets-kde-arch-update-notifier-git)
 replaces=(plasma5-applets-kde-arch-update-notifier-git)
