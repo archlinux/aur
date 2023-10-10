@@ -5,5 +5,5 @@
  
  project(TangoTest LANGUAGES CXX
 -        VERSION 3.0)
-+        VERSION 3.7)
++        VERSION 3.8)
 

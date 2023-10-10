@@ -2,12 +2,12 @@
 
 pkgname=tango-test
 _pkgname=TangoTest
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="A famous TANGO server developed for testing."
 arch=('x86_64')
-url="https://www.tango-controls.org/"
+url="https://gitlab.com/tango-controls/${_pkgname}"
 license=('GPL3')
 depends=('tango-cpp')
 makedepends=('cmake')
@@ -16,8 +16,8 @@ source=(
   "cmake_version.patch"
 )
 sha256sums=(
-  '4c3eabf9922ffcfd3aa2f4962881f9d4c6d6164345163d0e3c6169cd8894a6d0'
-  'd614869c15e1b433d0118632d71030162acb6bf7d3ea1b0cef29a3c588edaf35'
+  '4111fe1499def4746b9d6d1830f2fbc9a21b785f80ba0b957795077fb68d02d1'
+  'af54571ed8374c85899b219680fdfa7547b7d9ea3cc0cbf17fefe9212a629628'
 )
 
 prepare() {
