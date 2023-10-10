@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-bin
-_pkgver=6.0.3
+_pkgver=6.0.4
 pkgver=G${_pkgver}
 pkgrel=1
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
@@ -19,13 +19,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("waterfox-g=${_pkgver}" "waterfox=${pkgver}")
 source=('waterfox.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
-noextract=("${source[1]##*/}")
-
-prepare() {
-    # Extract archive
-    mkdir "${srcdir}"/waterfox
-    tar -xf "${srcdir}"/waterfox-"${pkgver}".tar.bz2 -C "${srcdir}"/waterfox
-}
 
 package() {
 	# Create the necessary directories.
@@ -76,4 +69,4 @@ END
 }
 
 sha512sums=('d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6'
-            'daccfc3bd3106ee676fc4b0c5a8e7d00c36503603faf443cc6df7b44122b1297d060a9101d6d1e74bfe4ae2592298ee7d82b2575994ab2ea2d5e826ece1db8ec')
+            '3c3eae08dfcc6b47a67ac722dcbc818cd459191e6746768ad4c77dde6639ad2f757969bdbe9f8b528eff8cdfe3d590bb50fbd24b29b7aa3435a41e4b8cd982f6')
