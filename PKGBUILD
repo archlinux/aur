@@ -53,7 +53,7 @@ Wants=network-online.target
 After=network-online.target network.target
 
 [Service]
-Type=forking
+Type=exec
 ExecStart=clouddrive
 
 [Install]
