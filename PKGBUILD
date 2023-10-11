@@ -6,13 +6,13 @@ url="https://github.com/SabreTools/MPF"
 arch=('x86_64')
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)"
 provides=('mpf-check')
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 license=('GPL3')
-source=('https://github.com/SabreTools/MPF/releases/download/2.7.0/MPF.Check_2.7.0_net7.0_linux-x64_release.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/2.7.1/MPF.Check_2.7.1_net7.0_linux-x64_release.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('8310ebd77866ad7c4060e6ca27cddc6daced33e32561409aeb307757dd15a14b'
+sha256sums=('ad81a30870180e94ac2821cc83ac4da2d3634ea7ab6e7745efecc99c0bac2ce6'
 'SKIP'
 'SKIP')
 options=('!strip')
@@ -20,7 +20,7 @@ options=('!strip')
 package() {
 
 	# install mpf-check distribution
-	install -Dm 755 ${srcdir}/MPF.Check ${pkgdir}/usr/bin/MPF.Check
+	install -Dm 755 ${srcdir}/${_prgname} ${pkgdir}/usr/bin/${_prgname}
 	install -Dm 644 ${srcdir}/MPF.Check.dll.config \
 		${pkgdir}/usr/lib/${_prgname}/MPF.Check.dll.config
 
