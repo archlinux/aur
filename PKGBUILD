@@ -2,8 +2,8 @@
 
 _pkgname='pulseaudio-module-xrdp'
 pkgname="${_pkgname}-git"
-pkgver='0.7.r0.gf4b5d14'
-pkgrel='1'
+pkgver=0.7.r2.ge7cb327
+pkgrel=1
 pkgdesc='PulseAudio modules for xrdp. Git version, devel branch.'
 arch=('i686' 'x86_64')
 url='https://github.com/neutrinolabs/pulseaudio-module-xrdp'
