@@ -1,6 +1,6 @@
 pkgbase = rofi-playerctl-git
 	pkgdesc = Control media players with a rofi menu
-	pkgver = 20230803
+	pkgver = 20231011
 	pkgrel = 1
 	url = https://github.com/mrHeavenli/rofi-playerctl
 	arch = any

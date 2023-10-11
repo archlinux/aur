@@ -4,7 +4,7 @@ pkgname="rofi-playerctl-git"
 pkgdesc="Control media players with a rofi menu"
 url="https://github.com/mrHeavenli/rofi-playerctl"
 
-pkgver=20230803
+pkgver=20231011
 pkgrel=1
 
 license=("GPL3")
