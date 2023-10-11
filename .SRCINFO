@@ -1,0 +1,15 @@
+pkgbase = fastme
+	pkgdesc = a comprehensive, accurate and fast distance-based phylogeny inference program
+	pkgver = 2.1.6.3
+	pkgrel = 1
+	url = http://www.atgc-montpellier.fr/fastme/usersguide.php
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = autoconf
+	depends = gcc-libs
+	depends = glibc
+	source = fastme-2.1.6.3.tgz::https://gite.lirmm.fr/atgc/FastME/-/archive/v2.1.6.3/FastME-v2.1.6.3.tar.gz
+	sha1sums = a643d3943816369c6f07ef0092ccafb5820f7063
+
+pkgname = fastme
