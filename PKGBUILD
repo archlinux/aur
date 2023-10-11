@@ -9,6 +9,7 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-config-ini-reader-ordered>=0' 'perl-devel-lexalias>=0' 'perl-eval-closure>=0.11' 'perl-file-homedir>=0' 'perl-module-runtime>=0' 'perl-package-stash>=0' 'perl-padwalker>=0' 'perl-try-tiny>=0' 'perl>=5.006' perl-proc-invokeeditor perl-app-nopaste)
+optdepends=('perl-term-readline-gnu')
 makedepends=()
 url='https://metacpan.org/release/Reply'
 source=('http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Reply-0.42.tar.gz')

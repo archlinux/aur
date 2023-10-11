@@ -17,6 +17,7 @@ pkgbase = perl-reply
 	depends = perl>=5.006
 	depends = perl-proc-invokeeditor
 	depends = perl-app-nopaste
+	optdepends = perl-term-readline-gnu
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Reply-0.42.tar.gz
 	md5sums = 194495d634db7d8636e42ea49295914a
