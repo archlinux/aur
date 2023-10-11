@@ -9,9 +9,30 @@ pkgdesc="A new mobile app SDK to help developers and designers build modern mobi
 arch=("x86_64" "aarch64")
 url="https://${pkgname}.dev"
 license=("custom" "BSD" "CCPL")
-depends=("git" "glu" "java-environment" "libglvnd" "unzip")
-optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "ninja" "perl" "python")
-makedepends=("python")
+depends=( # commands first
+	 "bash"
+	 "curl"
+	 "file" # base-devel, but runtime dependency
+	 "git"
+	 "coreutils" # explicit dependency to mkdir, rm
+	 "unzip"
+	 "which" # base-devel, but runtime dependency
+	 "xz"
+	 "zip"
+	 # runtime shared libraries
+	 "glu" # libGLU.so.1 required for flutter test
+	 "libglvnd" # https://github.com/flutter/engine/pull/16924
+)
+optdepends=("android-sdk: develop for Android devices"
+	    "java-environment: develop for Android devices"
+            "android-studio"
+            "intellij-idea-community-edition"
+            "intellij-idea-ultimate-edition"
+	    "clang: clang++ is required for Linux development"
+	    "cmake: CMake is required for Linux development"
+            "ninja: ninja is required for Linux development"
+	    "pkgconf: pkg-config is required for Linux development" # base-devel, but runtime dependency
+	    "gtk3: GTK 3.0 development libraries are required for Linux development")
 backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
 options=("!emptydirs")
 install="${pkgname}.install"
