@@ -1,6 +1,6 @@
 # Maintainer: mosquito <mosquito@email.cn>
 pkgname=bobibo
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A cli-app, convert pictures to ascii arts."
 arch=("x86_64")
@@ -27,4 +27,4 @@ package() {
  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
-sha256sums=('ce3633f19a5d88a42ff7539ca36b8ed15413c23a2c43aa02bb9c2ce43e4f3522')
+sha256sums=('ee0c6b8aad954bbbf52b837bbde8a318af154f50f251ccea80c08c039ee23489')
