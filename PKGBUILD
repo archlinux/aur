@@ -2,17 +2,17 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.40.2-beta.0'
+_pkgver='1.40.3-beta.4'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
-# If you're running on armv7h or aarch64, use the electron24-bin package from the AUR for the electron24 dependency
-# If you're running on armv7h, you have to add it to the arch and source arrays of the electron24-bin AUR dependency
+# If you're running on armv7h or aarch64, use the electron25-bin package from the AUR for the electron25 dependency
+# If you're running on armv7h, you have to add it to the arch and source arrays of the electron25-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron26'
-depends=("$_electronpkg-bin" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
+_electronpkg='electron25'
+depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
@@ -21,7 +21,7 @@ source=(
 	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
 )
-sha512sums=('12955eedf3b8f7fddf13fce3e9051d3dcc2e15339ad4bec1d0edafc8087324a220fb269d8a69431e89a8e05e4a20bc2a258a2247be0a71cf665e07d1a654f20d'
+sha512sums=('3d46f7626950e289a4a87a5556d42b3380b3ece626a2068e1375572de1bdf4d8131a58984b7f0bb0941cf67c9ec0f8eac7079e967a335400ea3f200b6f30df82'
             '5a08541d194838b15b9bd7e58ea6998a8ffc3cb5ce2fe702d41d14dfd0a1becddfcee04f018a5fd9f0992d18b86c56d062f9b11ebda21e3b51815280198dc8da'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
             'e350765c6694133b7dec1e1e8b4a5fa610c2d18ee8ea15ecc3aa6e63fb9bb1c5f64f4d2a67cc2a38738f5c1c843cc3120edf42627b1079f1cb73a1919398b8db')
