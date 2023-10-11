@@ -1,7 +1,7 @@
 pkgbase = chezmoi_modify_manager
 	pkgdesc = Tools for chezmoi to handle mixed settings and state
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VorpalBlade/chezmoi_modify_manager
 	arch = x86_64
 	arch = i686

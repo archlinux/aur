@@ -2,7 +2,7 @@
 pkgname=chezmoi_modify_manager
 _pkgver=2.1.5
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/chezmoi_modify_manager"
@@ -36,13 +36,15 @@ check() {
 }
 
 package() {
+    local _cmd_name="target/release/${pkgname}"
     cd "$pkgname-$_pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$_cmd_name"
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
     mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
-    "target/release/$pkgname" --bpaf-complete-style-zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-    "target/release/$pkgname" --bpaf-complete-style-bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    # TODO: Where do completions for these go?
-    #"target/release/$pkgname" --bpaf-complete-style-fish
-    #"target/release/$pkgname" --bpaf-complete-style-elvish
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/"
+    "$_cmd_name" --bpaf-complete-style-zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    "$_cmd_name" --bpaf-complete-style-bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    "$_cmd_name" --bpaf-complete-style-fish > "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    # TODO: Where do completions for elvish go?
+    #"$_cmd_name" --bpaf-complete-style-elvish
 }
