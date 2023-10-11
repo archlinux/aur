@@ -1,8 +1,7 @@
 pkgbase = revanced-cli-bin
 	pkgdesc = Command line application as an alternative to the ReVanced Manager
 	pkgver = 4.0.1
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/revanced/revanced-cli
 	install = revanced-cli.install
 	arch = any

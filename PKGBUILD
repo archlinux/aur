@@ -1,8 +1,7 @@
 # Maintainer: 46620 <46620osu@gmail.com>
 pkgname='revanced-cli-bin'
-epoch=1
 pkgver="4.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line application as an alternative to the ReVanced Manager'
 arch=('any')
 url="https://github.com/revanced/revanced-cli"
