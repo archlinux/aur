@@ -1,4 +1,4 @@
-_engver=23.05.1
+_engver=23.10.0
 
 o3de_python_install() {
     if [ ! "$(logname 2>&1 >/dev/null)" ]; then
