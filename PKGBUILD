@@ -3,7 +3,7 @@
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=protonmail-bridge-bin
-pkgver=3.4.2
+pkgver=3.5.1
 pkgrel=1
 _pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
@@ -21,7 +21,7 @@ conflicts=('protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("https://protonmail.com/download/bridge/protonmail-bridge_${pkgver}-${_pkgrel}_amd64.deb"
         "https://raw.githubusercontent.com/ProtonMail/proton-bridge/master/LICENSE")
-sha256sums=('fc9e1543e720d321218d095abc03a7b293ceda49de97a0f7d13912f65ad4927b'
+sha256sums=('037989c971757513e2d0cf54b2514a5933d596803e7da6ec8fd764042de136bb'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
 
 prepare() {
