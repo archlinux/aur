@@ -1,0 +1,18 @@
+pkgbase = altus-bin
+	pkgdesc = Desktop client for WhatsApp Web with themes, notifications and multiple account support
+	pkgver = 4.8.6
+	pkgrel = 1
+	url = https://github.com/amanharwara/altus
+	arch = x86_64
+	license = GPL3
+	makedepends = squashfuse
+	depends = bash
+	depends = electron22
+	provides = altus=4.8.6
+	conflicts = altus
+	source = altus-4.8.6.AppImage::https://github.com/amanharwara/altus/releases/download/4.8.6/Altus-4.8.6-x86_64.AppImage
+	source = altus.sh
+	sha256sums = 936984e708665eac38852c51c838b984e5df715bad0acc435c7cdba22f1d6914
+	sha256sums = 0612fc1718b11785478d6b3eeb3f7fcc7a3b77721e3a93a8cc3119a3b612af90
+
+pkgname = altus-bin
