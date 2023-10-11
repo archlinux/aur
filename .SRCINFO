@@ -1,0 +1,17 @@
+pkgbase = msalsdk-dbusclient-bin
+	pkgdesc = Microsoft Authentication Library cross platform. Dbus client for talking to MSAL broker
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msalsdk-dbusclient
+	install = msalsdk-dbusclient-bin.install
+	arch = x86_64
+	license = Unknown
+	depends = glibc>=2.14
+	depends = gcc-libs>=3.0
+	depends = systemd-libs>=243
+	depends = sdbus-cpp0
+	depends = microsoft-identity-broker>=1.0
+	source_x86_64 = https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msalsdk-dbusclient/msalsdk-dbusclient_1.0.1_amd64.deb
+	sha256sums_x86_64 = d1d1eee986c6181db1937e2a44eeb32f0c53aa5f1397c978f06f0ad15d147c50
+
+pkgname = msalsdk-dbusclient-bin
