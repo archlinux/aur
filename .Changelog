@@ -1,10 +1,14 @@
 # redumper-bin .Changelog
 
-## 2023-10-09, redumnper-bin 
+## 2023-10-10, redumper-bin build_268-1
+
+* Bump to build_228 release.
+
+## 2023-10-09, redumper-bin build_266-1
 
 * Started maintenance of `.Changelog`.
 
-* Bump to v2.6.6 release.
+* Bump to build_226 release.
 
 # FAQ
 
