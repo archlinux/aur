@@ -3,7 +3,7 @@
 
 pkgname="python-onnxsim"
 pkgver=0.4.33
-pkgrel=2
+pkgrel=3
 pkgdesc='ONNX Simplifier is presented to simplify the ONNX model.'
 arch=(any)
 url="https://github.com/daquexian/onnx-simplifier"
@@ -11,16 +11,16 @@ license=(MIT)
 depends=(python python-onnx python-onnxoptimizer python-onnxruntime python-protobuf python-rich)
 conflicts=()
 makedepends=(python-setuptools)
-source=(onnx-simplifier-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a87d104505f941ccb96a91ac31f451ee25f00996934f330a39c4cce3f5498131')
+source=(onnx-simplifier-master.zip::"$url/archive/refs/heads/master.zip")
+sha256sums=('8fa93121d62fb42956ea6e69cbb2bab1609a319ad9404e1004473c1ae3299ea0')
 
 build() {
-  cd "${srcdir}/onnx-simplifier-$pkgver"
+  cd "${srcdir}/onnx-simplifier"
   python setup.py build
 }
 
 package(){
   depends+=()
-  cd "${srcdir}/onnx-simplifier-$pkgver"
+  cd "${srcdir}/onnx-simplifier"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
