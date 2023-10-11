@@ -1,6 +1,6 @@
 pkgbase = curl-http3
 	pkgdesc = An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3
-	pkgver = 8.2.1
+	pkgver = 8.4.0
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = curl-http3
 	depends = zlib
 	depends = zstd
 	depends = libzstd.so
-	source = https://curl.haxx.se/download/curl-8.2.1.tar.gz
-	source = https://curl.haxx.se/download/curl-8.2.1.tar.gz.asc
-	source = git+https://github.com/cloudflare/quiche.git#tag=0.17.2
+	source = https://curl.haxx.se/download/curl-8.4.0.tar.gz
+	source = https://curl.haxx.se/download/curl-8.4.0.tar.gz.asc
+	source = git+https://github.com/cloudflare/quiche.git#tag=0.18.0
 	source = git+https://github.com/google/boringssl.git
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
-	sha512sums = d0a906f4dff4c485e6dae930d9a7530147f4c0a0cbb46a83cb9be9d7bd6b9c320386c8be5bcdd3749f2d468b0daf39d06e8c581bab1fa792fd26da409a575cbd
+	sha512sums = 375d241effccde852cfba32aa61be406f6c6e8ef2773b48d57bfa1ff99fdf414dc08bdb6b3a65930e53b28e31246a4bc396c81054ae9c560a3bf58cca0ae78b0
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
