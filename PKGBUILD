@@ -42,7 +42,7 @@ package() {
 #     sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
 
     install -Dm755 /dev/stdin  "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/bin/env bash
+#!/usr/bin/env bash
 
 cd /opt/clouddrive
 ./clouddrive
