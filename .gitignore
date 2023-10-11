@@ -1,0 +1,5 @@
+*
+!.gitignore
+!netchangexec.sh
+!netchangexec@.service
+!PKGBUILD

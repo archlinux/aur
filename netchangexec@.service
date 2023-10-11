@@ -1,0 +1,13 @@
+[Unit]
+Description=run command when network connection changes.
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Environment="SCRIPT_ARGS=%I"
+ExecStart=/usr/bin/netchangexec $SCRIPT_ARGS
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
