@@ -16,6 +16,7 @@ depends=(
   libsodium
 )
 makedepends=(git)
+provides=('libsodium.so')
 source=(git+https://github.com/jedisct1/libsodium.git#tag=${pkgver})
 sha256sums=(SKIP)
 
