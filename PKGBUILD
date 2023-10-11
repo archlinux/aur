@@ -1,15 +1,15 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=eyedropper
-pkgver=0.6.0
-_commit=e90c2437fdc46e6123871d08422063f2c005bee0 # tags/v0.6.0
+pkgver=1.0.0
+_commit=0658771fd44c180299e8431610f385a1e5d65c63 # tags/v1.0.0
 pkgrel=1
 pkgdesc='A simple to use color picker and editor'
 arch=(x86_64)
 url=https://github.com/FineFindus/eyedropper
 license=(GPL3)
 depends=(libadwaita gtk4)
-makedepends=(rust git meson)
+makedepends=(rust git meson blueprint-compiler)
 checkdepends=(appstream-glib)
 source=("git+$url#commit=$_commit")
 md5sums=(SKIP)
