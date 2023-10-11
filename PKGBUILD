@@ -2,8 +2,8 @@
 
 _pkgname='xorgxrdp'
 pkgname="$_pkgname-git"
-pkgver='0.2.18.r41.ga07c9c8'
-pkgrel='1'
+pkgver=0.2.18.r47.gaafceeb
+pkgrel=1
 pkgdesc='Xorg drivers for xrdp. Git version, devel branch.'
 arch=('i686' 'x86_64')
 url='https://github.com/neutrinolabs/xorgxrdp'
