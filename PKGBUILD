@@ -2,17 +2,18 @@
 
 _framework='anastasis'
 pkgname="${_framework}-gtk"
-pkgver='0.3.2'
+pkgver='0.4.0'
 pkgrel=1
 pkgdesc='Graphical user interface for GNU Anastasis'
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/${_framework}"
 license=('GPL')
-depends=('anastasis' 'jansson' 'gnunet' 'gnunet-gtk' 'gtk3' 'libgcrypt'
-         'libmicrohttpd' 'postgresql' 'taler-exchange' 'taler-merchant')
+depends=('anastasis' 'imagemagick' 'jansson' 'gnunet' 'gnunet-gtk' 'glade'
+         'gtk3' 'libgcrypt' 'libharu' 'libmicrohttpd' 'postgresql'
+         'taler-exchange' 'taler-merchant')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("ftp://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('b71d341f323e9a6b3fadd60abf7b7a8073413609bad850541261592f0018523b7421be913359a01b7feba0bb162c2b5e3a874c4bd24cf673b0e9b6e1629f04de')
+sha512sums=('3bad56ba4c5c5d5c97790ef3d70829dafd9e96f939feafb1f1193a7d9548e08c7dd2db63347c63ccefbc080a3cd0a613e3f99c4355a8de972092c9158b350acc')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
