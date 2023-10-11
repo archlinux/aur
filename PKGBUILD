@@ -11,8 +11,8 @@ url="https://www.decentsamples.com/product/decent-sampler-plugin/"
 license=('nonfree')
 depends=('alsa-lib' 'freetype2')
 provides=('decent-sampler')
-source=("https://archive.org/download/decent-sampler-linux-static-download-mirror/Decent_Sampler-1.9.2-Linux-Static-x86_64.tar.gz" "decent-sampler.png" "decent-sampler.desktop" "application-decent-sampler.xml")
-sha256sums=('d0aa56e798a7a5204d2462ba9e06cdc6ec1a7b93fa5e63937f9258bb51600cb5' 'f2eb1d90eb08cf725a139b2c05c48a3b40b245aa8c92aea34c5ec6f35630e31b' '23420f5a6839ce70c3f28fe8e3abd45b47b722be9805ebfbf5630bd4cda17ca1' 'f45eefe4e35d6973e55af2ff3a07d392273b2141dc8ff025c0f86597bbb90bb8')
+source=("https://archive.org/download/decent-sampler-linux-static-download-mirror/Decent_Sampler-1.9.3-Linux-Static-x86_64.tar.gz" "decent-sampler.png" "decent-sampler.desktop" "application-decent-sampler.xml")
+sha256sums=('4bf3696eea773921bcfa936a923af41bdb2b3a9f6c3054803b1543eaa0e19677' 'f2eb1d90eb08cf725a139b2c05c48a3b40b245aa8c92aea34c5ec6f35630e31b' '23420f5a6839ce70c3f28fe8e3abd45b47b722be9805ebfbf5630bd4cda17ca1' 'f45eefe4e35d6973e55af2ff3a07d392273b2141dc8ff025c0f86597bbb90bb8')
 
 package() {
 	cd "Decent_Sampler-${pkgver}-Linux-Static-x86_64"
