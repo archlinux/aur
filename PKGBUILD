@@ -4,7 +4,7 @@
 
 pkgname=wlroots0.15
 pkgver=0.15.1
-pkgrel=4
+pkgrel=5
 license=('MIT')
 pkgdesc='Modular Wayland compositor library'
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
@@ -56,8 +56,9 @@ build() {
     arch-meson \
       --includedir    /usr/include/wlroots0.15 \
       --libdir        /usr/lib/wlroots0.15 \
+      -Dexamples=false \
       wlroots-"$pkgver" build
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
