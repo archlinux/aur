@@ -2,16 +2,16 @@
 # Contributor: Artem Senichev <artemsen@gmail.com>
 
 pkgname=swaykbdd
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc='Per-window keyboard layouts for Sway (KBDD replacement)'
+pkgdesc='Automatic keyboard layout switching in Sway'
 arch=('x86_64')
 license=('MIT')
 makedepends=('meson')
 depends=('json-c')
 url='https://github.com/artemsen/swaykbdd'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('eaf8771ae0ddac09c0e89bdfd895ce85')
+md5sums=('83811823bdceff67d617d122bdba9af7')
 
 build() {
   arch-meson ${pkgname}-${pkgver} build
