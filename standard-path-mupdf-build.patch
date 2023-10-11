@@ -1,0 +1,14 @@
+diff --git a/pdf_viewer_build_config.pro b/pdf_viewer_build_config.pro
+index a09b861..0154e5d 100644
+--- a/pdf_viewer_build_config.pro
++++ b/pdf_viewer_build_config.pro
+@@ -88,7 +88,8 @@ unix:!mac {
+     QMAKE_CXXFLAGS += -std=c++17
+ 
+     CONFIG(linux_app_image){
+-        LIBS += -ldl -Lmupdf/build/release -lmupdf -lmupdf-third -lmupdf-threads -lharfbuzz -lz
++        DEFINES += LINUX_STANDARD_PATHS
++        LIBS += -ldl -lmupdf -lz
+     } else {
+         DEFINES += NON_PORTABLE
+         DEFINES += LINUX_STANDARD_PATHS

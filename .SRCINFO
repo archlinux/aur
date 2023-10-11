@@ -1,7 +1,7 @@
 pkgbase = sioyek-git
 	pkgdesc = PDF viewer for research papers and technical books.
 	pkgver = 2.0.0.r105.g2cdf61c
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/ahrm/sioyek
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = sioyek-git
 	conflicts = sioyek
 	source = git+https://github.com/ahrm/sioyek.git
 	source = sioyek-mupdf-1.23.patch
+	source = standard-path-mupdf-build.patch
 	sha256sums = SKIP
 	sha256sums = 30021646fda45c40af4579067ccb098bff4b2934ff42ace7b02a61fd1c8bc573
+	sha256sums = 3f781450b34cf06bb3d9f5499c197f8be1fb6b9d25a77f98b03a226149a096c1
 
 pkgname = sioyek-git

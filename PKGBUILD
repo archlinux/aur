@@ -5,7 +5,7 @@
 
 pkgname=sioyek-git
 pkgver=2.0.0.r105.g2cdf61c
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
@@ -16,9 +16,11 @@ makedepends=(git qt5-3d mujs)
 provides=(sioyek)
 conflicts=(sioyek)
 source=("git+https://github.com/ahrm/sioyek.git"
-        "sioyek-mupdf-1.23.patch")
+        "sioyek-mupdf-1.23.patch"
+        "standard-path-mupdf-build.patch")
 sha256sums=('SKIP'
-            '30021646fda45c40af4579067ccb098bff4b2934ff42ace7b02a61fd1c8bc573')
+            '30021646fda45c40af4579067ccb098bff4b2934ff42ace7b02a61fd1c8bc573'
+            '3f781450b34cf06bb3d9f5499c197f8be1fb6b9d25a77f98b03a226149a096c1')
 
 pkgver() {
   cd "sioyek"
@@ -28,10 +30,8 @@ pkgver() {
 prepare() {
   cd "sioyek"
 
+  patch --forward --strip=1 --input="${srcdir}/standard-path-mupdf-build.patch"
   patch --forward --strip=1 --input="${srcdir}/sioyek-mupdf-1.23.patch"
-  sed -i 's/-lmupdf-threads/-lfreetype -lgumbo -ljbig2dec -lopenjp2 -ljpeg/' pdf_viewer_build_config.pro
-  sed -i '/#define LINUX_STANDARD_PATHS/s/\/\///' pdf_viewer/main.cpp
-  sed -i 's/-lmupdf-third//' pdf_viewer_build_config.pro
 }
 
 build() {
