@@ -2,7 +2,7 @@
 
 _gemname=google-apis-sqladmin_v1beta4
 pkgname=ruby-$_gemname
-pkgver=0.55.0
+pkgver=0.56.0
 pkgrel=1
 pkgdesc='simple REST client for Cloud SQL Admin API V1beta4'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-google-apis-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('34ee741535458ea6a61b6392e953e5b4c5068aacf3e2421af22da5e8c7d87b79')
+sha256sums=('1306651c0ed815a61a4b41fda88f5f4fd83e68463d9a22982ddb2c786a3b9bb2')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
