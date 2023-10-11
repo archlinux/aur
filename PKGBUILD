@@ -3,8 +3,8 @@
 
 pkgname=bruno-electron-bin
 _pkgname=bruno
-pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=0.22.1
+pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
+pkgver=0.23.0
 pkgrel=1
 conflicts=('bruno' 'bruno-bin' 'bruno-git')
 arch=('x86_64')
