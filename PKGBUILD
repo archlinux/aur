@@ -4,7 +4,7 @@ _framework='taler'
 _module='merchant'
 
 pkgname="${_framework}-${_module}"
-pkgver='0.9.2'
+pkgver='0.9.3'
 pkgrel=1
 pkgdesc='Merchant logic implementation(s) and support code'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('jansson' 'libgcrypt' 'postgresql' 'gnunet' 'qrencode'
          'taler-exchange')
 source=("http://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
-sha256sums=('f861fad36426708e1d3d95be1b5d4d6f75e62a575fc07c527c33acd36299a659'
+sha256sums=('56d8568e7b720ca85d148f0af81110fa30cd837bf5cb86621c9754893f1d4d20'
             'SKIP')
 
 build() {
