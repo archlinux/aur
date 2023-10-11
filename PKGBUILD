@@ -5,11 +5,11 @@
 
 _basename=qt5-wayland
 pkgname=qt5-wayland-decorations
-_basever=5.15.10
-pkgver=5.15.10+kde+r62
+_basever=5.15.11
+pkgver=5.15.11+kde+r59
 pkgrel=1
-_commit=8167ea2432a8313ffd130e071aa31570de52e97b
-_patchcommit=4c11bfec543396e0ec06a5c7e84c8c34b97b9b59
+_commit=4de268cbaf6ff3b633429577f06d3d746a3b202a
+_patchcommit=2ff721c9b7894cb8dfd2912744209ac3d9733484
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -31,8 +31,7 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  cd $_pkgfqn
-  patch --strip=1 --input="${srcdir}/qtwayland-decoration-support-backports-from-qt6.patch"
+  patch --directory="$_pkgfqn" --strip=1 --input="${srcdir}/qtwayland-decoration-support-backports-from-qt6.patch"
 }
 
 build() {
