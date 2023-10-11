@@ -4,7 +4,7 @@
 
 _pkgauthor="chainner-org"
 _pkgname="chainner"
-pkgname="${_pkgname}-bin"
+pkgname="${_pkgname}20-bin"
 pkgver=0.20.1
 pkgrel=1
 pkgdesc='Node-based image processing and AI upscaling GUI'
