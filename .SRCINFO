@@ -1,0 +1,11 @@
+pkgbase = scala-scala3-symlink
+	pkgdesc = Replace scala with scala3
+	pkgver = 1
+	pkgrel = 1
+	url = https://scala-lang.org
+	arch = any
+	license = Apache
+	depends = scala3
+	conflicts = scala
+
+pkgname = scala-scala3-symlink
