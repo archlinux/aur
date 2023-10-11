@@ -1,6 +1,6 @@
 pkgbase = hugo-extended-cli
 	pkgdesc = Extended version of Hugo
-	pkgver = 0.118.2
+	pkgver = 0.119.0
 	pkgrel = 1
 	url = https://gohugo.io/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = hugo-extended-cli
 	conflicts = hugo
 	conflicts = hugo-git
 	conflicts = hugo-extended-bin
-	source_x86_64 = hugo-extended-cli-0.118.2-x86_64.tar.gz::https://github.com/gohugoio/hugo/releases/download/v0.118.2/hugo_extended_0.118.2_linux-amd64.tar.gz
+	source_x86_64 = hugo-extended-cli-0.119.0-x86_64.tar.gz::https://github.com/gohugoio/hugo/releases/download/v0.119.0/hugo_extended_0.119.0_linux-amd64.tar.gz
 	md5sums_x86_64 = SKIP
-	source_aarch64 = hugo-extended-cli-0.118.2-aarch64.tar.gz::https://github.com/gohugoio/hugo/releases/download/v0.118.2/hugo_extended_0.118.2_linux-arm64.tar.gz
+	source_aarch64 = hugo-extended-cli-0.119.0-aarch64.tar.gz::https://github.com/gohugoio/hugo/releases/download/v0.119.0/hugo_extended_0.119.0_linux-arm64.tar.gz
 	md5sums_aarch64 = SKIP
 
 pkgname = hugo-extended-cli
