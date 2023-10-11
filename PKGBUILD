@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=lorem
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Simple app to generate the Lorem Ipsum placeholder text"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('4457a976d311ce9c44871bbf9946b294e12d4bbda6b578a87d4d3431410ce272c14f3f51fabccff973ebfc700a397b109d346088d0cc777ee58658c902b91bd4')
+b2sums=('e060bf8c41cc26a7298009ce1735204a7484921e782db538ae59b31d9c6eb72ad9e65aacd70b20b4452a9ab959a82f4d2d1037df9b855d1e9a1540135f91b885')
 
 build() {
   arch-meson $pkgname-$pkgver build
