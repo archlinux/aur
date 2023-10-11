@@ -1,7 +1,6 @@
 # Maintainer: Raihan Ahamed <raihan1999ahamed@gmail.com>
 
-pkgbase=libssc
-pkgname=$pkgbase-git
+pkgname=libssc-git
 pkgdesc="Library to expose Qualcomm Sensor Core sensors"
 pkgver=0.1.3+r6+g586b412
 pkgrel=1
@@ -26,16 +25,16 @@ source=("git+https://codeberg.org/DylanVanAssche/libssc.git#commit=$_commit")
 sha256sums=(SKIP)
 
 pkgver() {
-    cd $pkgbase
+    cd libssc
     git describe --tags | sed 's/-rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-    cd $pkgbase
+    cd libssc
 }
 
 build() {
-    arch-meson $pkgbase build
+    arch-meson libssc build
     meson compile -C build
 }
 
