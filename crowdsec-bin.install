@@ -6,8 +6,7 @@ post_install() {
     # if [ ${#collections} -gt 0 ]; then
     #     cscli collections install ${collections[@]} >/dev/null 2>&1
     # fi
-    cscli collections install crowdsecurity/linux
-    cscli parsers install "crowdsecurity/whitelists"
+    cscli collections install crowdsecurity/linux crowdsecurity/whitelist-good-actors
     cscli machines add --force "$(</etc/machine-id)" --auto
     cscli capi register
     systemctl daemon-reload
