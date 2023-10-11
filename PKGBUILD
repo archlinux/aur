@@ -5,7 +5,7 @@
 pkgname=languagetool-snapshot
 _pkgname="${pkgname%-snapshot}"
 _date=20231010
-_revision=6.3
+_revision=6.4
 pkgver=$_revision.$_date
 pkgrel=1
 pkgdesc='Style and Grammar Checker for 25+ Languages (daily snapshot)'

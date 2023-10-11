@@ -1,6 +1,6 @@
 pkgbase = languagetool-snapshot
 	pkgdesc = Style and Grammar Checker for 25+ Languages (daily snapshot)
-	pkgver = 6.3.20231010
+	pkgver = 6.4.20231010
 	pkgrel = 1
 	url = https://www.languagetool.org
 	arch = any
