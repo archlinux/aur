@@ -1,0 +1,18 @@
+pkgbase = sdbus-cpp0
+	pkgdesc = a high-level C++ D-Bus library designed to provide expressive, easy-to-use API - Version 0
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/Kistler-Group/sdbus-cpp
+	arch = x86_64
+	license = LGPL2.1
+	license = custom:sdbus-c++ LGPL Exception 1.0
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = systemd
+	depends = expat
+	depends = systemd-libs
+	provides = libsdbus-c++0.so.0.8.3
+	source = https://github.com/Kistler-Group/sdbus-cpp/archive/v0.8.3/sdbus-cpp-0.8.3.tar.gz
+	sha256sums = 0fd575ae0f463773dd9141242d1133731e2b780fd6526650ce992ba711d88628
+
+pkgname = sdbus-cpp0
