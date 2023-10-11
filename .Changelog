@@ -1,12 +1,21 @@
 # mpf-check-bin .Changelog
 
-## 2024-10-11, mpf-check-bin 2.7.1-1
+## 2023-10-11, mpf-check-bin 2.7.1-1
 
 * Bump to 2.7.0 (2.6.7 was skipped).
 
 ## 2023-10-10, mpf-check-bin 2.7.0-2 (uncommitted)
 
  * Made use of `_prgname` variable in package()
+
+## 2023-10-10, mpf-check-bin 2.7.1.1-1
+
+* Bump to 2.7.1.1
+  * Quick 2.7.1 re-release: "Fix options loading for Check"
+
+## 2023-10-10, mpf-check-bin 2.7.1-1
+
+* Bump to 2.7.1.
 
 ## 2023-10-10, mpf-check-bin 2.7.0-1
 
