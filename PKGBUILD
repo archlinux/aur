@@ -2,7 +2,7 @@
 
 pkgname=scala-scala3-symlink
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Replace scala with scala3 and scalac with scalac3'
 arch=('any')
 url='https://scala-lang.org'
@@ -13,7 +13,7 @@ conflicts=('scala')
 package() {
     install -d "$pkgdir/usr/bin"
 
-    ln -s scala3 "$pkgdir/usr/bin/scala3"
-    ln -s scalac3 "$pkgdir/usr/bin/scalac3"
+    ln -s scala3 "$pkgdir/usr/bin/scala"
+    ln -s scalac3 "$pkgdir/usr/bin/scalac"
 }
 
