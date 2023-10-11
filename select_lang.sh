@@ -5,7 +5,7 @@
 #~~ by Shapiro <shapiro at quantentunnel dot de>
 #~~ v1.5: Automatic language selection depending on system locale.
 
-country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl ro sk sl sv th tr uk uz vi"
+country_codes="ar be bg ca co cs da de el en es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl ro sk sl sv th tr uk uz vi"
 country_codes2="pt_BR zh_CN zh_HK zh_TW"
 clear
 echo ""
@@ -71,6 +71,9 @@ else
 		;;
 	el)
 		echo "Language set to: Greek (el)"
+		;;
+	en)
+		echo "Language set to: English (en)"
 		;;
 	es)
 		echo "Language set to: Spanish (es)"
