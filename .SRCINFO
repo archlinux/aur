@@ -1,7 +1,7 @@
 pkgbase = apk-installer
 	pkgdesc = 一款可运行于windows、macos的Apk安装器软件,快速安装Apk至手机。
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zhujiaming/apk-installer
 	arch = any
 	license = ISC
