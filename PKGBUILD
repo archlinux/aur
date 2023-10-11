@@ -2,7 +2,7 @@
 
 pkgname=go-cqhttp-bin
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 
 pkgdesc='Lightweight, native cross-platform implementation of cqhttp in Golang.'
@@ -22,10 +22,10 @@ source_x86_64=("${pkgname}-x86_64-${origin_pkgver}.tar.gz::https://github.com/Mr
 source_armv7h=("${pkgname}-armv7h-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_armv7.tar.gz")
 source_aarch64=("${pkgname}-aarch64-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_arm64.tar.gz")
 
-sha256sums_i686=('2c801a1facabd0687280ee324496f0b42f8da6ecc0937a9bee5cef5d2b07c105')
-sha256sums_x86_64=('29483e687c368cc14727faf50e9c785ef27bcdfce5ae005d5c78ad216b00ffc1')
-sha256sums_armv7h=('6597e3498a881491383f80c1d58536a57612381695557c58c21e2d4589fb3811')
-sha256sums_aarch64=('537a3a28deef985cbc6ce3ba6519a1219e7a909f4bbc42e86355c99d8b054c25')
+sha256sums_i686=('492f12a6bb5c5d81241193a4bdc649ca2aafc1380c43f0482652f52c2cd4d835')
+sha256sums_x86_64=('64bf7b1d5e6456bfad43db8e5dd455d12679ed37ea0e91106b50cd7900050de2')
+sha256sums_armv7h=('e48a56a9a0d94729decd6d3ba37ccfe82de6e5c9ea29a791c7e51005b7d7a34a')
+sha256sums_aarch64=('cc7fad4a1ab177a771752bd5f27df91e6a28fb899b339d6725d7477c70000046')
 
 package() {
     cd "${srcdir}"
