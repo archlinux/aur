@@ -1,10 +1,11 @@
 pkgbase = mutter-vrr
 	pkgdesc = Window manager and compositor for GNOME (with VRR)
-	pkgver = 44.5
+	pkgver = 45.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
+	checkdepends = gnome-session
 	checkdepends = python-dbusmock
 	checkdepends = wireplumber
 	checkdepends = zenity
@@ -27,6 +28,8 @@ pkgbase = mutter-vrr
 	depends = iio-sensor-proxy
 	depends = lcms2
 	depends = libcanberra
+	depends = libdisplay-info
+	depends = libei
 	depends = libgudev
 	depends = libinput
 	depends = libsm
@@ -36,12 +39,12 @@ pkgbase = mutter-vrr
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=1511e6e1cdc8fa1a84f6fbbb169777ac26ba7f44
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=4f6c91847088d7d6476b88575b3a6601b819b443
 	source = vrr.patch
 	sha256sums = SKIP
-	sha256sums = 1f511a50b5032467a78a21b30a27541374d839cc04ee32a595bd9743dc220cd8
+	sha256sums = d1a4e72db1dfb17b792262fb7e03e3fd4a7eaa6296824e08192577c1e631b8cf
 
 pkgname = mutter-vrr
 	provides = mutter
-	provides = libmutter-12.so
+	provides = libmutter-13.so
 	conflicts = mutter

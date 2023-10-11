@@ -2,7 +2,7 @@
 
 #pkgbase=mutter-vrr
 pkgname=mutter-vrr
-pkgver=44.5
+pkgver=45.0
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -18,6 +18,8 @@ depends=(
   iio-sensor-proxy
   lcms2
   libcanberra
+  libdisplay-info
+  libei
   libgudev
   libinput
   libsm
@@ -41,18 +43,19 @@ makedepends=(
   xorg-server-xvfb
 )
 checkdepends=(
+  gnome-session
   python-dbusmock
   wireplumber
   zenity
 )
-_commit=1511e6e1cdc8fa1a84f6fbbb169777ac26ba7f44  # tags/44.5^0
+_commit=4f6c91847088d7d6476b88575b3a6601b819b443  # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   vrr.patch
 )
 sha256sums=(
   'SKIP'
-  '1f511a50b5032467a78a21b30a27541374d839cc04ee32a595bd9743dc220cd8'
+  'd1a4e72db1dfb17b792262fb7e03e3fd4a7eaa6296824e08192577c1e631b8cf'
 )
 pkgver() {
   cd mutter
@@ -61,11 +64,6 @@ pkgver() {
 
 prepare() {
   cd mutter
-
-  # Unbreak tests with Mesa 23.1
-  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3047
-  git cherry-pick -n '5a83e8ef8250526a40e8e69c^..d65883e0d7d70987e3888b86'
   git apply -3 ../vrr.patch
 }
 
@@ -101,9 +99,16 @@ _check() (
 )
 
 check() {
-  # checks may fail do to ENABLE_VRR in monitors.xml
-  # dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-  #   bash -c "$(declare -f _check); _check"
+  #export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
+  #mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+  #glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
+
+  #export NO_AT_BRIDGE=1 GTK_A11Y=none
+  #export MUTTER_DEBUG_DUMMY_MODE_SPECS="800x600@10.0"
+
+  #xvfb-run -s '-nolisten local +iglx -noreset' \
+  #mutter/src/tests/meta-dbus-runner.py --launch=pipewire --launch=wireplumber \
+  #meson test -C build --print-errorlogs -t 5 --setup plain
   echo "It's fine. Pinky promise!"
 }
 
@@ -118,7 +123,7 @@ _pick() {
 }
 
 package_mutter-vrr() {
-  provides=(mutter libmutter-12.so)
+  provides=(mutter libmutter-13.so)
   conflicts=(mutter)
 
   meson install -C build --destdir "$pkgdir"
@@ -128,8 +133,9 @@ package_mutter-vrr() {
 
 #package_mutter-vrr-docs() {
 #  pkgdesc+=" (documentation)"
-#  provides=(mutter-docs)
-#  conflicts=(mutter-docs)
 #  depends=()
+#
 #  mv docs/* "$pkgdir"
 #}
+
+# vim:set sw=2 sts=-1 et:
