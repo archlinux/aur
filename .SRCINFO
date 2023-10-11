@@ -1,7 +1,7 @@
 pkgbase = scala-scala3-symlink
-	pkgdesc = Replace scala with scala3
+	pkgdesc = Replace scala with scala3 and scalac with scalac3
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scala-lang.org
 	arch = any
 	license = Apache

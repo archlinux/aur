@@ -2,8 +2,8 @@
 
 pkgname=scala-scala3-symlink
 pkgver=1
-pkgrel=1
-pkgdesc='Replace scala with scala3'
+pkgrel=2
+pkgdesc='Replace scala with scala3 and scalac with scalac3'
 arch=('any')
 url='https://scala-lang.org'
 license=('Apache')
@@ -13,9 +13,7 @@ conflicts=('scala')
 package() {
     install -d "$pkgdir/usr/bin"
 
-    local _file
-    for _file in scala; do
-        ln -s scala3 "$pkgdir/usr/bin/$_file"
-    done
+    ln -s scala3 "$pkgdir/usr/bin/scala3"
+    ln -s scalac3 "$pkgdir/usr/bin/scalac3"
 }
 
