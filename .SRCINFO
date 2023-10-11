@@ -1,6 +1,6 @@
 pkgbase = x16-rom-git
 	pkgdesc = ROM files for The 8-Bit Guy's Commander X16
-	pkgver = r44.r1.g47b36e91
+	pkgver = r44.r24.g91bd44b5
 	pkgrel = 1
 	url = http://commanderx16.com/
 	install = x16-rom.install
@@ -9,6 +9,7 @@ pkgbase = x16-rom-git
 	license = unknown
 	makedepends = git
 	makedepends = cc65
+	makedepends = lzsa
 	optdepends = x16-emulator-git: emulator for the ROMs
 	provides = x16-rom
 	conflicts = x16-rom

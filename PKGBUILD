@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom-git
-pkgver=r44.r1.g47b36e91
+pkgver=r44.r24.g91bd44b5
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://commanderx16.com/"
 license=('unknown')
 groups=('commander-x16')
 depends=()
-makedepends=('git' 'cc65')
+makedepends=('git' 'cc65' 'lzsa')
 optdepends=('x16-emulator-git: emulator for the ROMs')
 provides=('x16-rom')
 conflicts=('x16-rom')
