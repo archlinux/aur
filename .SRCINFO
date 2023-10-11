@@ -1,0 +1,23 @@
+pkgbase = cairo-dock-wayland-git
+	pkgdesc = Light eye-candy fully themable animated dock with wayland support
+	pkgver = 3.4.99.r.bf8da4ef
+	pkgrel = 1
+	url = http://glx-dock.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = dbus-glib
+	depends = glu
+	depends = gtk3
+	depends = librsvg
+	depends = wayland
+	optdepends = wayfire-plugins-scale-ipc: Additional functionality on wayfire
+	provides = cairo-dock
+	conflicts = cairo-dock
+	source = cairo-dock::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new
+	sha256sums = SKIP
+
+pkgname = cairo-dock-wayland-git
