@@ -1,19 +1,19 @@
 pkgbase = aniship-bin
 	pkgdesc = A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops.
 	pkgver = 0.0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://t.me/aniship
 	arch = x86_64
 	license = custom
+	makedepends = squashfuse
+	makedepends = asar
 	depends = bash
 	depends = electron16
-	depends = gcc-libs
-	depends = glibc
 	provides = aniship=0.0.4.2
 	conflicts = aniship
 	source = aniship-0.0.4.2.AppImage::https://github.com/progzone122/AniShip/releases/download/v0.0.4.2night/setup-0.0.4-2.AppImage
 	source = aniship.sh
 	sha256sums = 1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2
-	sha256sums = 5fb5356053631c4ac7ad2ab51f0f4738569d918b9c4407f7db64ba05d7be8896
+	sha256sums = 79c7eb23fcafd633fb357bc462ac457d781f027dfe1ccb55ee966dec94c32489
 
 pkgname = aniship-bin
