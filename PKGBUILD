@@ -1,7 +1,7 @@
 # Maintainer: Lawstorant <forest10pl@gmail.com>
 
 pkgname=gnome-control-center-vrr
-pkgver=44.4
+pkgver=45.0
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with VRR toggle)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -85,7 +85,7 @@ optdepends=(
 conflicts=(gnome-control-center)
 provides=(gnome-control-center)
 groups=(gnome)
-_commit=e4d0d5abf9cb716cb01cda17751b162d4bfea5b0  # tags/45.0^0
+_commit=e4d0d5abf9cb716cb01cda17751b162d4bfea5b0 # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
@@ -108,18 +108,17 @@ prepare() {
   cd "$srcdir"
   mv gnome-control-center gnome-control-center-vrr
   cd "$pkgname"
-  
+
   # Install bare logos into pixmaps, not icons
   git apply -3 ../pixmaps-dir.diff
 
   # Apply the VRR MR
-  patch -p1 < ../734.patch
+  patch -p1 <../734.patch
 
   git submodule init subprojects/gvc
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git -c protocol.file.allow=always submodule update
 }
-
 
 build() {
   local meson_options=(

@@ -1,6 +1,6 @@
 pkgbase = gnome-control-center-vrr
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with VRR toggle)
-	pkgver = 44.4
+	pkgver = 45.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
