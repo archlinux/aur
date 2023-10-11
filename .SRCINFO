@@ -1,0 +1,19 @@
+pkgbase = netchangexec
+	pkgdesc = Executes command when network connection changes
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/detiam/netchangexec
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	depends = systemd
+	depends = awk
+	depends = bash
+	depends = iproute
+	depends = grep
+	source = netchangexec.sh
+	source = netchangexec@.service
+	sha256sums = ff03f08b3eb7eb5eff36735c7cb47af24a8eee14ca626af864bad4578fbfc9cb
+	sha256sums = 6c6a3cd810341bf9aed88b7eb64923bed973eedb2d0fb09efd79d31c0981a463
+
+pkgname = netchangexec

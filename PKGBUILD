@@ -5,7 +5,7 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="Executes command when network connection changes"
 arch=(i686 x86_64)
-url="https://github.com/detiam/$_pkgname"
+url="https://github.com/detiam/$pkgname"
 license=('GPL-3.0')
 depends=('systemd' 'awk' 'bash' 'iproute' 'grep')
 
