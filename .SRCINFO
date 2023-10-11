@@ -1,13 +1,14 @@
 pkgbase = tscdriver
 	pkgdesc = Drivers for TSC Printers
-	pkgver = 1.2.06
+	pkgver = 1.2.08
 	pkgrel = 1
 	url = https://www.tscprinters.com
 	arch = x86_64
 	license = custom:proprietary
 	makedepends = unzip
 	depends = gtk2
-	source = tscdriver-1.2.06.zip::https://fs.tscprinters.com/system/files/linux64_v1.2.06.zip
-	sha256sums = 54ab6552d1a0834db816e462a548b65156bd4702e67baa9e895b849f9d487a68
+	depends = libusb
+	source = tscdriver-1.2.08.zip::https://fs.tscprinters.com/system/files/linux64_v1.2.08.zip
+	sha256sums = f3e57ce1b971f7868956f0ece66969892a8eaceba8f4ce33e6298e67069ff19a
 
 pkgname = tscdriver

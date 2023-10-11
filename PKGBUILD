@@ -1,19 +1,20 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=tscdriver
-pkgver=1.2.06
+pkgver=1.2.08
 pkgrel=1
 pkgdesc="Drivers for TSC Printers"
 arch=(x86_64)
 url="https://www.tscprinters.com"
 license=('custom:proprietary')
-depends=(gtk2)
+depends=(gtk2 libusb)
 makedepends=(unzip)
 source=("$pkgname-$pkgver.zip::https://fs.tscprinters.com/system/files/linux64_v${pkgver}.zip")
-sha256sums=('54ab6552d1a0834db816e462a548b65156bd4702e67baa9e895b849f9d487a68')
+sha256sums=('f3e57ce1b971f7868956f0ece66969892a8eaceba8f4ce33e6298e67069ff19a')
 
 prepare() {
-  tar xf "Linux64_v$pkgver/barcodedriver-${pkgver}_x86-64.tar.gz"
+  unzip linux64_v${pkgver}/Linux64_v${pkgver}.zip
+  tar xf Linux64_v${pkgver}/barcodedriver-${pkgver}-x86_64.tar.gz
 }
 
 package() {
