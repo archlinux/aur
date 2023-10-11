@@ -1,0 +1,34 @@
+From bf8f419ca9f2d8bce48591710aa25f08e3fc67f8 Mon Sep 17 00:00:00 2001
+From: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+Date: Wed, 11 Oct 2023 17:19:05 +0900
+Subject: [PATCH] Fix build error when both clock_gettime and GetTickCount64
+ are available
+
+---
+ lib/nghttp2_time.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/nghttp2_time.c b/lib/nghttp2_time.c
+index 2a5f1a6ff5..dd5a65591f 100644
+--- a/lib/nghttp2_time.c
++++ b/lib/nghttp2_time.c
+@@ -44,7 +44,9 @@ static uint64_t time_now_sec(void) {
+ }
+ #endif /* HAVE_GETTICKCOUNT64 */
+ 
+-#ifdef HAVE_CLOCK_GETTIME
++#ifdef HAVE_GETTICKCOUNT64
++uint64_t nghttp2_time_now_sec(void) { return GetTickCount64() / 1000; }
++#elif defined(HAVE_CLOCK_GETTIME)
+ uint64_t nghttp2_time_now_sec(void) {
+   struct timespec tp;
+   int rv = clock_gettime(CLOCK_MONOTONIC, &tp);
+@@ -55,8 +57,6 @@ uint64_t nghttp2_time_now_sec(void) {
+ 
+   return (uint64_t)tp.tv_sec;
+ }
+-#elif defined(HAVE_GETTICKCOUNT64)
+-uint64_t nghttp2_time_now_sec(void) { return GetTickCount64() / 1000; }
+ #else  /* !HAVE_CLOCK_GETTIME && !HAVE_GETTICKCOUNT64 */
+ uint64_t nghttp2_time_now_sec(void) { return time_now_sec(); }
+ #endif /* !HAVE_CLOCK_GETTIME && !HAVE_GETTICKCOUNT64 */
