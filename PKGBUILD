@@ -44,8 +44,10 @@ md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 export CARCH=aarch64
 export LOCALVERSION=""
-[[ "$(uname -m)" != "aarch64" ]] && export MAKEFLAGS+=" ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-"
-
+if [[ "$(uname -m)" != "aarch64" ]]; then
+  makedepends+=(aarch64-linux-gnu-gcc)
+  export MAKEFLAGS+=" ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-"
+fi
 [[ "$_lto" == "true" ]] && _llvm="LLVM=1" || _llvm=""
 
 prepare() {
