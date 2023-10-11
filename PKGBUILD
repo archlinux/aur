@@ -3,7 +3,7 @@
 _framework='taler'
 
 pkgname='sync'
-pkgver='0.8.3'
+pkgver='0.9.3'
 pkgrel=1
 pkgdesc='Backup and synchronization service'
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ url="https://${_framework}.net/"
 license=('AGPL')
 groups=("${_framework}")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-depends=('gnunet' 'taler-exchange' 'taler-merchant')
+depends=('gnunet' 'libmicrohttpd' 'postgresql' 'taler-exchange' 'taler-merchant')
 source=("http://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
-sha256sums=('a61a11acc239c989d69d1112d7e71011d96d178629504e41e930aa93fc3d9c75'
+sha256sums=('bbdf9184e7ada4b49516f377593e90fbe1b9de6fc359f2a84e98eae7ba4d86fc'
             'SKIP')
 
 build() {

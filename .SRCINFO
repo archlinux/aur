@@ -1,6 +1,6 @@
 pkgbase = sync
 	pkgdesc = Backup and synchronization service
-	pkgver = 0.8.3
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://taler.net/
 	arch = i686
@@ -8,14 +8,16 @@ pkgbase = sync
 	groups = taler
 	license = AGPL
 	depends = gnunet
+	depends = libmicrohttpd
+	depends = postgresql
 	depends = taler-exchange
 	depends = taler-merchant
 	conflicts = sync-git
 	conflicts = sync-bin
-	source = http://ftp.gnu.org/gnu/taler/sync-0.8.3.tar.gz
-	source = http://ftp.gnu.org/gnu/taler/sync-0.8.3.tar.gz.sig
+	source = http://ftp.gnu.org/gnu/taler/sync-0.9.3.tar.gz
+	source = http://ftp.gnu.org/gnu/taler/sync-0.9.3.tar.gz.sig
 	validpgpkeys = D8423BCB326C7907033929C7939E6BE1E29FC3CC
-	sha256sums = a61a11acc239c989d69d1112d7e71011d96d178629504e41e930aa93fc3d9c75
+	sha256sums = bbdf9184e7ada4b49516f377593e90fbe1b9de6fc359f2a84e98eae7ba4d86fc
 	sha256sums = SKIP
 
 pkgname = sync
