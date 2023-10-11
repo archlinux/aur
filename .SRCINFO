@@ -21,7 +21,7 @@ pkgbase = linux-aarch64-lts
 	sha256sums = f9ebfe3ddc5152d87b37e33be30e31875d137433be10a57ce29d2eae7b6e91b1
 	sha256sums = 013ab7f5bcf2cd486e819fb13fde1f673ac72978984a8befea13938eaf8ddd8e
 	sha256sums = bcb8a42654df5f9670367950daaa01b165c15618f827d18b7b2a8d53d39227a4
-	sha256sums = c13f96bebcc02c8550aace2231579fa2fa5a38250bc766245eed97cc977f9733
+	sha256sums = 0555c25029c46e9db7950854b8ef12f949ab42342ec6ba70f75f50a64ee55a2b
 
 pkgname = linux-aarch64-lts
 	pkgdesc = The AArch64 multi-platform LTS Linux kernel and modules
