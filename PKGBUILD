@@ -1,9 +1,9 @@
-# Maintainer: Robin Candau <antiz@archlinux.org>
+# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Contributor: Robin Candau <antiz@archlinux.org>
 
 pkgname=gnome-shell-extension-caffeine
-_uuid=caffeine@patapon.info
 pkgver=50
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Extension for GNOME shell to disable screensaver and auto suspend'
 arch=('any')
@@ -20,8 +20,27 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-    bsdtar -xvf "${_uuid}.zip" -C "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}" --no-same-owner
+
+    local _uuid=caffeine@patapon.info
+
+    install -d \
+        "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}" \
+        "${pkgdir}/usr/share/glib-2.0/"
+
+    # Extract extension artifact to system extension directory.
+    bsdtar -xvf "${_uuid}.zip" \
+        -C "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}" \
+        --no-same-owner
+
+    # Move settings schema to system schema dir and remove compiled schema (a
+    # pacman hook generates those)
+    mv "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas" \
+        "${pkgdir}/usr/share/glib-2.0/"
+    rm "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
+
+    # Move local to system locale directory
+    mv "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/locale" \
+        "${pkgdir}/usr/share"
 
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
