@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-privacy-menu
-pkgver=11.0
+pkgver=21.0
 pkgrel=1
 pkgdesc="Privacy Quick Settings Menu GNOME Extension"
 arch=('any')
