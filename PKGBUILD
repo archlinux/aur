@@ -14,7 +14,7 @@ source=("https://download.brother.com/welcome/dlf105353/mfcj1010dwpdrv-3.5.0-1.i
 sha256sums=('6cbee398c4f961d4918767c26bb443977acba7e1897cb5f959b6350c80462e74')
 depends=('perl' 'cups')
 depends_x86_64=('lib32-glibc')
-optdepends=('brscan5' 'scan-key-tool')
+optdepends=('brscan5' 'brscan-skey')
 install="$pkgname.install"
 
 package() {
