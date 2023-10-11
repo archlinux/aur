@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2023.09.10
+pkgver=2023.10.11
 pkgrel=1
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
   'yarn'
 )
 source=("${pkgname}.png::https://www.notion.so/images/logo-ios.png")
-sha256sums=('c97a529a23f7984939940f0e78ad16b25e466d603fe8601f6538819142d4fd46')
+sha256sums=('483846a85e43e22879445047b83b22033e70fcc25ab34809ebadb7f856507ee0')
 
 _name=Notion
 
