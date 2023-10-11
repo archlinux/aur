@@ -1,7 +1,7 @@
 pkgbase = python-onnxsim
 	pkgdesc = ONNX Simplifier is presented to simplify the ONNX model.
 	pkgver = 0.4.33
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/daquexian/onnx-simplifier
 	arch = any
 	license = MIT
