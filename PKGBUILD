@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.7.11.r1505.2882d9c
+pkgver=0.7.11.r1507.57429ab
 pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
@@ -12,12 +12,15 @@ makedepends=(cargo git)
 optdepends=('ffmpeg: extract audio by downloader' 'yt-dlp: download files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=(!lto)
 source=("$pkgname::git+$url.git")
 sha256sums=(SKIP)
 
 pkgver() {
-  cd $pkgname
-  printf '%s.r%s.%s' "$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #cd $pkgname
+  #printf '%s.r%s.%s' "$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  git -C $pkgname describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -34,5 +37,5 @@ check() {
 
 package() {
   install -Dm755 "target/release/${pkgname%-git}"{,-server} -t "$pkgdir/usr/bin"
-  install -Dm644 $pkgname/LICENSE_MIT -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm644 $pkgname/LICENSE_MIT "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }

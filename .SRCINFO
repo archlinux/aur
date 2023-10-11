@@ -22,6 +22,7 @@ pkgbase = termusic-git
 	optdepends = yt-dlp: download files
 	provides = termusic
 	conflicts = termusic
+	options = !lto
 	source = termusic-git::git+https://github.com/tramhao/termusic.git
 	sha256sums = SKIP
 
