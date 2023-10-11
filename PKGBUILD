@@ -10,29 +10,51 @@ arch=(x86_64)
 depends=(
   accountsservice
   bolt
+  cairo
   colord-gtk4
   cups-pk-helper
+  dconf
+  fontconfig
   gcr
+  gdk-pixbuf2
+  glib2
   gnome-bluetooth-3.0
   gnome-color-manager
   gnome-desktop-4
   gnome-online-accounts
   gnome-settings-daemon
-  gnome-shell
+  gnutls
   gsettings-desktop-schemas
   gsound
+  gtk3
   gtk4
+  hicolor-icon-theme
+  krb5
   libadwaita
+  libcolord
+  libcups
+  libepoxy
   libgnomekbd
+  libgoa
   libgtop
   libgudev
   libibus
   libmalcontent
   libmm-glib
+  libnm
   libnma-gtk4
+  libpulse
   libpwquality
+  libsecret
+  libwacom
+  libx11
+  libxi
+  libxml2
+  pango
+  polkit
   smbclient
   sound-theme-freedesktop
+  tecla
   udisks2
   upower
 )
@@ -51,6 +73,7 @@ checkdepends=(
 optdepends=(
   'fwupd: device security panel'
   'gnome-remote-desktop: screen sharing'
+  'gnome-shell: multitasking panel'
   'gnome-user-share: WebDAV file sharing'
   'malcontent: application permission control'
   'networkmanager: network settings'
@@ -62,7 +85,7 @@ optdepends=(
 conflicts=(gnome-control-center)
 provides=(gnome-control-center)
 groups=(gnome)
-_commit=abc71ea659f7c3efece766edb0365c78cc4b3df5  # tags/44.4^0
+_commit=e4d0d5abf9cb716cb01cda17751b162d4bfea5b0  # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
