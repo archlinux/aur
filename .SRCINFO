@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = master.ac7876a
+	pkgver = b1369
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = armv7h

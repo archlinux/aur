@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-git
-pkgver=master.ac7876a
+pkgver=b1369
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -35,9 +35,12 @@ package() {
 
   cmake --install ./build
 
-  for i in build/bin/*; do
+  rm -rf "${pkgdir}/usr/bin/"*
+
+  cd "${srcdir}/${pkgname%-git}/build/bin/"
+  for i in *; do
     install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${pkgname%-git}-${i//build\/bin\//}"
+      "${pkgdir}/usr/bin/${pkgname%-git}-${i}"
   done
   mv "${pkgdir}/usr/bin/${pkgname%-git}-main" \
     "${pkgdir}/usr/bin/${pkgname%-git}"
