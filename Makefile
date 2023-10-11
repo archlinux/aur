@@ -1,4 +1,4 @@
-VERSION ?= 0.13.1
+VERSION ?= 0.13.2
 
 all: clean set-version prepare pkg
 
@@ -9,12 +9,12 @@ prepare:
 	makepkg --printsrcinfo > .SRCINFO
 
 set-version:
-	sed -i 's/^VERSION ?= \(.*\)/VERSION ?= $(VERSION)/' Makefile
-	sed -i 's/pkgver=\(.*\)/pkgver="$(VERSION)"/' PKGBUILD
+	sed -i 's/^VERSION ?= \(.*\)/VERSION ?= $(VERSION:v%=%)/' Makefile
+	sed -i 's/pkgver=\(.*\)/pkgver="$(VERSION:v%=%)"/' PKGBUILD
 
 publish:
 	git add .
-	git commit -m "Update to $(VERSION)"
+	git commit -m "Update to $(VERSION:v%=%)"
 	git push origin master
 
 clean:
