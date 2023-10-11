@@ -2,7 +2,7 @@
 
 pkgname=keepassxc-allow-aur-extension-origin-bin
 pkgver=2.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform community-driven port of Keepass password manager (binary version)"
 arch=('x86_64')
 url="https://keepassxc.org/"
@@ -12,7 +12,7 @@ depends=(argon2 botan curl hicolor-icon-theme libxtst
 optdepends=('xclip: keepassxc-cli clipboard support under X server'
             'wl-clipboard: keepassxc-cli clipboard support under Wayland')
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('0eededb770e883c2fe06fa105202fc8381a243cd5be0e601b5beaebb9682b6c6')
+sha256sums=('899ba336a8271155da72e916474019ef1aba663d061a62869308f1c630be7c86')
 provides=(org.freedesktop.secrets keepassxc)
 conflicts=(keepassxc)
 
