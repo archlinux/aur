@@ -1,5 +1,5 @@
 pkgname=newrelic-infra
-pkgver=1.36.0
+pkgver=1.47.2
 pkgrel=1
 license=('Apache')
 arch=('x86_64')
@@ -9,7 +9,7 @@ source=(
 	"https://raw.githubusercontent.com/newrelic/infrastructure-agent/${pkgver}/assets/examples/infrastructure/newrelic-infra-template.yml.example"
 )
 
-sha256sums=('990fcf1b0ff391396aff66661a9f1179aa0fc3b6403c4703d8053854363ebe5c'
+sha256sums=('a5f1b9fc17dfd47bdcb572309687e543d9035bdefd3506b7c4eb66d19efb8876'
             '60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0')
 
 package() {

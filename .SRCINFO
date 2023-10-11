@@ -1,12 +1,12 @@
 pkgbase = newrelic-infra
-	pkgver = 1.36.0
+	pkgver = 1.47.2
 	pkgrel = 1
 	url = https://github.com/newrelic/infrastructure-agent
 	arch = x86_64
 	license = Apache
-	source = https://download.newrelic.com/infrastructure_agent/linux/apt/pool/main/n/newrelic-infra/newrelic-infra_systemd_1.36.0_amd64.deb
-	source = https://raw.githubusercontent.com/newrelic/infrastructure-agent/1.36.0/assets/examples/infrastructure/newrelic-infra-template.yml.example
-	sha256sums = 990fcf1b0ff391396aff66661a9f1179aa0fc3b6403c4703d8053854363ebe5c
+	source = https://download.newrelic.com/infrastructure_agent/linux/apt/pool/main/n/newrelic-infra/newrelic-infra_systemd_1.47.2_amd64.deb
+	source = https://raw.githubusercontent.com/newrelic/infrastructure-agent/1.47.2/assets/examples/infrastructure/newrelic-infra-template.yml.example
+	sha256sums = a5f1b9fc17dfd47bdcb572309687e543d9035bdefd3506b7c4eb66d19efb8876
 	sha256sums = 60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0
 
 pkgname = newrelic-infra
