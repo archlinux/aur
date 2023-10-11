@@ -86,6 +86,8 @@ bindkey "^[[A" history-substring-search-up                      # Up key
 bindkey "^[[B" history-substring-search-down                    # Down key
 bindkey ";5A" history-beginning-search-backward                 # Ctrl-Up key
 bindkey ";5B" history-beginning-search-forward                  # Ctrl-Down key
+bindkey "^[[1;5A" history-beginning-search-backward             # Ctrl-Up key
+bindkey "^[[1;5B" history-beginning-search-forward              # Ctrl-Down key
 
 bindkey '^[Oc' forward-word                                     #
 bindkey '^[Od' backward-word                                    #
