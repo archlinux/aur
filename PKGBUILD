@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BWStest
-_pkgver=0.2.2
+_pkgver=0.2.3
 pkgname=r-${_pkgname,,}
-pkgver=0.2.2
-pkgrel=4
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='Baumgartner Weiss Schindler Test of Equal Distributions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('faff1dd698f1673a6befacb94d14281077d4c19be035a0a3bf85d77c1dfd5509')
+sha256sums=('4bc4cc27fcf0aa60c6497048b74528923aae852c98480900204835a8ebd714b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
