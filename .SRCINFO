@@ -1,7 +1,7 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.79.r67.g9c834427
-	pkgrel = 2
+	pkgver = 0.3.81.r36.ge90bf470
+	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -51,7 +51,7 @@ pkgname = pipewire-common-git
 	license = LGPL
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-common-git=0.3.79.r67.g9c834427-2
+	depends = libpipewire-common-git=0.3.81.r36.ge90bf470-1
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
@@ -75,14 +75,14 @@ pkgname = pipewire-common-git
 	optdepends = pipewire-common-zeroconf-git: Zeroconf support
 	optdepends = realtime-privileges: realtime privileges with rt module
 	optdepends = rtkit: realtime privileges with rtkit module
-	provides = pipewire=0.3.79
+	provides = pipewire=0.3.81
 	conflicts = pipewire
 
 pkgname = libpipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor - client library
 	depends = glibc
 	depends = gcc-libs
-	provides = libpipewire=0.3.79
+	provides = libpipewire=0.3.81
 	provides = libpipewire-0.3.so
 	conflicts = libpipewire
 

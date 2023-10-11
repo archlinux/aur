@@ -19,8 +19,8 @@ pkgname=(
   pipewire-common-v4l2-git
   pipewire-common-x11-bell-git
 )
-pkgver=0.3.79.r67.g9c834427
-pkgrel=2
+pkgver=0.3.81.r36.ge90bf470
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -80,9 +80,6 @@ pkgver() {
 
 prepare() {
   cd pipewire
-
-  # remove export of LD_LIBRARY_PATH for pw-jack as it would add /usr/lib
-  sed -i '/LD_LIBRARY_PATH/d' pipewire-jack/src/pw-jack.in
 }
 
 build() {
