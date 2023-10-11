@@ -1,7 +1,7 @@
 pkgbase = r-svglite
 	pkgdesc = An 'SVG' Graphics Device
-	pkgver = 2.1.1
-	pkgrel = 3
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=svglite
 	arch = x86_64
 	license = GPL
@@ -19,8 +19,8 @@ pkgbase = r-svglite
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/svglite_2.1.1.tar.gz
-	md5sums = 95ce45d5f57c8e82b7b2322fbe4868fb
-	sha256sums = 48700169eec1b05dbee9e2bae000aa84c544617b018cb3ac431a128cfd8dac56
+	source = https://cran.r-project.org/src/contrib/svglite_2.1.2.tar.gz
+	md5sums = 0a81b2dd4e1f55970106aabe66b064c7
+	sha256sums = c2c163e17de8174408062b969a1fc298aa1dba957dc0acc1c898384bb76c0030
 
 pkgname = r-svglite
