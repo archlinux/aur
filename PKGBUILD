@@ -1,20 +1,20 @@
 # Maintainer: Robin H. <robin at blckct dot io>
 pkgname=alfaview-beta
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc='High quality audio video conferencing for professional online meetings and live classes'
 arch=('x86_64')
 url='https://alfaview.com/'
 license=('unknown')
 # not sure about the deps, copy-pasted from debian package (feedback required)
-depends=('ttf-roboto' 'libsecret' 'xdg-utils' 'freetype2' 'fontconfig' 'gst-plugins-bad' 'libxfixes' 'alsa-lib' 'libxkbcommon' 'dbus' 'libpulse' 'libtiff5')
+depends=('ttf-roboto' 'libsecret' 'xdg-utils' 'freetype2' 'fontconfig' 'gst-plugins-good' 'gst-plugins-bad' 'libxfixes' 'alsa-lib' 'libxkbcommon' 'dbus' 'libpulse' 'libtiff5')
 conflicts=('alfaview')
 provides=("alfaview=${pkgver}")
 options=('!strip')
 install="$pkgname.install"
 source=("https://assets.alfaview.com/beta/linux/deb/alfaview_${pkgver}.deb")
 noextract=("alfaview_${pkgver}.deb")
-sha256sums=('6ef70a33dac1507645be814a5bf92c8eb82a25fa2f7076a80cd11c4968472535')
+sha256sums=('ad33a4a6b9be17580bc3a5738a4c24e8689aeadce84a6ed8473d9c7508e35b79')
 
 prepare() {
 	mkdir -p deb-data
