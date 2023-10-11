@@ -10,6 +10,7 @@ pkgbase = matm-bin
 	depends = zathura-cb
 	optdepends = vlc: an alternative video player for movies
 	provides = matm
+	conflicts = matm-git
 	source = https://github.com/crolbar/matm/releases/download/v1.0/matm-1.0.tar.zst
 	md5sums = SKIP
 

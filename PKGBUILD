@@ -9,6 +9,7 @@ url="https://github.com/crolbar/matm"
 license=('GPL3')
 depends=('mpv' 'fzf' 'zathura-cb')
 provides=('matm')
+conflicts=('matm-git')
 optdepends=('vlc: an alternative video player for movies')
 source=("https://github.com/crolbar/matm/releases/download/v$pkgver/matm-$pkgver.tar.zst")
 md5sums=('SKIP')
