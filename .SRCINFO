@@ -1,14 +1,14 @@
 pkgbase = pass-it-on-server
 	pkgdesc = Pass-it-on server component
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/kwheelans/pass-it-on
 	arch = any
 	license = MIT
 	makedepends = cargo
 	depends = openssl
 	conflicts = pass-it-on-server-bin
-	source = https://github.com/kwheelans/pass-it-on/archive/refs/tags/v0.6.0.tar.gz
-	b2sums = a485f187e3d58623df78a308848c21cce423ec507a5ca64bef4d87e80bf8ef170a3f311358e32b069f6d40818387a7f38e14eb2ec98e5089997404d537b1d3fb
+	source = https://github.com/kwheelans/pass-it-on/archive/refs/tags/v0.6.1.tar.gz
+	b2sums = ec2529c92c2ae950b467837f4ce18c51d3bd0ff6ae8e8daa014a3211d421b6102662e8ff56a62796c3d624e45ac66e51f47ad18d6b8677074907bdc03de09961
 
 pkgname = pass-it-on-server
