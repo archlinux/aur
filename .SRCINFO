@@ -1,0 +1,16 @@
+pkgbase = r-unitizer
+	pkgdesc = Interactive R Unit Tests
+	pkgver = 1.4.20
+	pkgrel = 1
+	url = https://cran.r-project.org/package=unitizer
+	arch = any
+	license = GPL
+	depends = r-crayon
+	depends = r-diffobj
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/unitizer_1.4.20.tar.gz
+	md5sums = a0e2e77bc73d40eff1e07cd684a16e80
+	sha256sums = 5afb6d3aebd17689c277a69970b6c7e4f81c0b359ed7f1dbf4257ddafa7e5268
+
+pkgname = r-unitizer
