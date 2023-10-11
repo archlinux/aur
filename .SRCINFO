@@ -1,7 +1,7 @@
 pkgbase = mpf-check-bin
 	pkgdesc = Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)
 	pkgver = 2.7.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SabreTools/MPF
 	arch = x86_64
 	license = GPL3
