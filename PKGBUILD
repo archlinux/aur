@@ -4,7 +4,7 @@
 
 pkgname=firefox-xdg
 _pkgname=${pkgname//-xdg/}
-pkgver=118.0.1
+pkgver=118.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org but with .mozilla moved to .config"
 url="https://www.mozilla.org/firefox/"
@@ -75,22 +75,25 @@ source=(
   identity-icons-brand.svg
   # Rebased from https://phabricator.services.mozilla.com/D6995
   firefox-xdg-support.diff
+  0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/118.0.2-1/0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch\?ref_type=tags\&inline=false
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95'
+sha256sums=('89626520f2f0f782f37c074b94690e0f08dcf416be2b992f4aad68df5d727b21'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '5732867242b1a2372646c9e6a20bac4c889f1913290c8bc181405cf2f0646242')
-b2sums=('eef2b6f4d4f090535a8f74fa5ae3774288aa82142b8bb70c7ca913222a941ac9b7f8d9e6b6739a2ce67dff6f1bec0a9a21d11d015e3437013badf82335206b58'
+            '5732867242b1a2372646c9e6a20bac4c889f1913290c8bc181405cf2f0646242'
+            '2406c4c2e18d535c0c7900fe7b176137ae130a75806a19516854894555b69e72')
+b2sums=('e7b166903dc13ddaf514dea7833de0f464611551b054e5c2e336d3e1995f9c0d3bf6cfbd3cb9306be672d6451b6343e56025c99d0fed4b1d23fd6ea8e519ac9c'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'b5b8c8bf500687a8432e74857b1f4a29a0d80d940b0861bb637a43b4bc6406c6347c051d5ab65f8e15eae144edc82040a478a4105578379852ef1d0402279298')
+        'b5b8c8bf500687a8432e74857b1f4a29a0d80d940b0861bb637a43b4bc6406c6347c051d5ab65f8e15eae144edc82040a478a4105578379852ef1d0402279298'
+        'b2f4cb63aefd82a06af8b867bf77b6376589277828502783741f84b687d122ff6097b693ef469866dffea323668819b105dfbdaea9dbc1eda58024549729dc47')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -112,6 +115,10 @@ prepare() {
   sed -i 's|psutil>=5.4.2,<=5.9.4|psutil>=5.4.2,<=5.9.5|g' ./python/sites/mach.txt
   sed -i 's|zstandard>=0.11.1,<=0.19.0|zstandard>=0.11.1,<=0.21.0|g' ./python/sites/mach.txt
   sed -i 's|vendored:third_party/python/typing_extensions||g' ./python/sites/mach.txt
+
+  # Unbreak build with Rust 1.73.0
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1849874
+  patch -Np1 -i ../0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
