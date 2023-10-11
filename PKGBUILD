@@ -5,7 +5,7 @@
 
 pkgname=sioyek-git
 pkgver=2.0.0.r105.g2cdf61c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
