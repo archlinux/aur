@@ -1,0 +1,17 @@
+pkgbase = python-jumpcutter
+	pkgdesc = Jumpcut silent parts of your videos automagically
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://pypi.org/project/jumpcutter/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-moviepy
+	depends = python-tqdm
+	source = https://files.pythonhosted.org/packages/source/j/jumpcutter/jumpcutter-0.1.6.tar.gz
+	md5sums = 664185983281e283bdd36ca1a276af3c
+
+pkgname = python-jumpcutter
