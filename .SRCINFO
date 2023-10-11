@@ -5,9 +5,13 @@ pkgbase = epub-tools
 	url = https://github.com/dino-/epub-tools
 	arch = x86_64
 	license = ISC
+	makedepends = stack
+	depends = glibc
 	depends = gmp
 	depends = zlib
-	source = https://github.com/dino-/epub-tools/releases/download/3.1/epub-tools-3.1-linux.tar.gz
-	sha256sums = 6c872d0b8455692e27a440ad422c350e60729bb0d80b0e1f2be2268d2ff9ee72
+	provides = epub-tools
+	conflicts = epub-tools
+	source = epub-tools-3.1.tar.gz::https://github.com/dino-/epub-tools/archive/refs/tags/3.1.tar.gz
+	sha256sums = 0c448ef7df752dce48e79aecc0300d6cca365a0f224b4db597388837d53c49d0
 
 pkgname = epub-tools
