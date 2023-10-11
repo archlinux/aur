@@ -1,10 +1,10 @@
-# Maintainer: Franco Masotti <franco dot masotti at student dot unife dot it>
+# Maintainer: Franco Masotti <franco dot masotti at tutanota dot com>
 pkgname=gnupot
-pkgver=0.5.1.r0.g4ba6b04
-pkgrel=1
+pkgver=0.5.1.r4.g339d295
+pkgrel=2
 pkgdesc="A fully free, highly customizable and very efficient shell wrapper for git and SSH, which imitates Dropbox."
 arch=('any')
-url="https://github.com/frnmst/gnupot"
+url="https://codeberg.org/frnmst-archives/gnupot"
 license=('GPL3')
 depends=('coreutils'
 	'bash' 
@@ -19,7 +19,7 @@ depends=('coreutils'
 	'gawk')
 makedepends=('coreutils' 'sed' 'git>=2.4')
 install=.INSTALL
-source=('git://github.com/frnmst/gnupot.git#branch=master')
+source=('git+https://codeberg.org/frnmst-archives/gnupot#branch=master')
 md5sums=('SKIP')
 
 build() {

@@ -1,9 +1,9 @@
 post_install() {
 	echo "To setup GNUpot: gnupot -n"
-	echo "For more information, visit the wiki at https://github.com/frnmst/gnupot/wiki"
+	echo "For more information, visit the wiki at https://codeberg.org/frnmst-archives/gnupot/wiki"
 }
 
 post_upgrade() {
 	echo "To update GNUpot you must run the setup again with: gnupot -n"
-	echo "For more information, visit the wiki at https://github.com/frnmst/gnupot/wiki"
+	echo "For more information, visit the wiki at https://codeberg.org/frnmst-archives/gnupot/wiki"
 }
