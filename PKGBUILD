@@ -1,20 +1,25 @@
-# Maintainer: Niklas Wojtkowiak <aur.7xcqe@passmail.com>
+# Maintainer: Mihók Martin <mihok.martin@protonmail.com>
+# Contributor: Niklas Wojtkowiak <aur.7xcqe@passmail.com>
 _pkgname='spacedrive'
 pkgname="${_pkgname}-bin"
-pkgver='2023.1.0'
-pkgrel=2.1
+pkgver='0.1.0'
+pkgrel='1'
+epoch='1'
 pkgdesc="A file manager from the future."
 arch=('x86_64')
 url="https://spacedrive.com"
-_url_source='https://github.com/Nim1com/spacedrive'
+_url_source='https://github.com/spacedriveapp/spacedrive'
 license=('AGPL3')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("$_url_source/releases/download/desktop@${pkgver}/data.tar.xz")
-sha256sums=('8df5efae0fa10b72eb129e76f02a9156267c2d7799d29052cfdac5593773390c')
+source=("${_url_source}/releases/download/${pkgver}/Spacedrive-linux-x86_64.deb")
+sha256sums=('9c38bea4466551a67a28f1b43e0e0262b6893179b2566f7e72b5ec3aa2f47db7')
+depends=('libheif')
 
 package() {
-  tar -xvf 'data.tar.xz' -C "${pkgdir}" --strip-components=1
-  install -dv "${pkgdir}/usr/bin"
+  ar x "Spacedrive-linux-x86_64.deb"
+  tar -xf "${srcdir}/data.tar.gz" --directory "${srcdir}"
+  chmod -R 755 "${srcdir}/usr/share/"
+  install -Dm755 "${srcdir}/usr/bin/spacedrive" "${pkgdir}/usr/bin/spacedrive"
+  install -dm755 "${pkgdir}/usr/share/"
+  cp -r "${srcdir}/usr/share/" "${pkgdir}/usr/"
 }
 
