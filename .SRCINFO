@@ -1,6 +1,6 @@
 pkgbase = epanet-git
 	pkgdesc = The Water Distribution System Hydraulic and Water Quality Analysis Toolkit
-	pkgver = 2.2.r1078.39ffaeb
+	pkgver = 2.2.r1086.7b64012
 	pkgrel = 1
 	url = https://github.com/OpenWaterAnalytics/EPANET
 	arch = x86_64
