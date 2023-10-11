@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frappe-books-bin
 _appname="Frappe Books"
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
 url="https://frappebooks.com/"
@@ -14,7 +14,7 @@ depends=('electron18-bin' 'hicolor-icon-theme' 'bash' 'gcc-libs' 'glibc')
 makededpends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('f4b74b5fff75e89380b4a8deb20573cbb1c4dc43e52c5a249f05fc47a3769048'
+sha256sums=('28aeb88e77b59dc19d01cbe8ddf1f026b818d20fc0585496ea18561771b00ef4'
             '979fa8d61b7c359499ea139044294bfcfe96d59afdb534cd3b03eddf9d6e97b0')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
