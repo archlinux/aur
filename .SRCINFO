@@ -1,7 +1,7 @@
 pkgbase = r-reactr
 	pkgdesc = React Helpers
-	pkgver = 0.4.4
-	pkgrel = 4
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=reactR
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = r-reactr
 	optdepends = r-shiny
 	optdepends = r-usethis
 	optdepends = r-v8
-	source = https://cran.r-project.org/src/contrib/reactR_0.4.4.tar.gz
-	sha256sums = 5cb88fb365a986cba36c99c26f6c96692c5fa85fd3be7fe7564dd3d7878c8095
+	source = https://cran.r-project.org/src/contrib/reactR_0.5.0.tar.gz
+	sha256sums = e79e3f37c2f28ae70c912efe203dbca35094ce017e497421c049e1221817f192
 
 pkgname = r-reactr

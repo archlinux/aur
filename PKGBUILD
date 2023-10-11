@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=reactR
-_pkgver=0.4.4
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
-pkgver=0.4.4
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='React Helpers'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-v8
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5cb88fb365a986cba36c99c26f6c96692c5fa85fd3be7fe7564dd3d7878c8095')
+sha256sums=('e79e3f37c2f28ae70c912efe203dbca35094ce017e497421c049e1221817f192')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
