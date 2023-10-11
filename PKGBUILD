@@ -5,7 +5,8 @@ _pkgname=FastME
 pkgver=2.1.6.3
 pkgrel=1
 arch=('x86_64')
-pkgdesc="a comprehensive, accurate and fast distance-based phylogeny inference program"
+pkgdesc="a comprehensive, accurate and fast distance-based phylogeny inference program \
+	 https://doi.org/10.1093/molbev/msv150"
 url='http://www.atgc-montpellier.fr/fastme/usersguide.php'
 license=('GPL3')
 depends=('gcc-libs' 'glibc')
