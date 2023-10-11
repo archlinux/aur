@@ -1,7 +1,7 @@
 pkgbase = gchat
 	pkgdesc = Unofficial Google Chat app
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dcrousso/GChat
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = gchat
 	source = gchat-1.0.1.tar.gz::https://github.com/dcrousso/GChat/archive/refs/tags/v1.0.1.tar.gz
 	source = gchat.sh
 	sha256sums = 6ac16d881642d156d9e3c01367edba538cde61efef2c46d07be0e504a42199bf
-	sha256sums = 659d2f3a7462ed330b7f13d66a344a1d98eb624db31edc58d5e7885d07e15917
+	sha256sums = 3065e9082cc84406701ceb93a1c9254fa723dc58fe39672655de1b842c6b605e
 
 pkgname = gchat
