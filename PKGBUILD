@@ -1,7 +1,8 @@
-# Maintainer: Sieve Lau <sievelau@gmail.com>
+# Maintainer: Maximilian Bräutigam <mail@xbra.de>
+# Contributor: Sieve Lau <sievelau@gmail.com>
 # Contributor: Sherlock-Holo <sherlockya@gmail.com> 
 pkgname=dns-over-https-git
-pkgver=r346.32f3ad7
+pkgver=r358.967ca01
 pkgrel=1
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
@@ -16,7 +17,7 @@ source=("git+https://github.com/m13253/dns-over-https"
 backup=('etc/dns-over-https/doh-client.conf'
         'etc/dns-over-https/doh-server.conf')
 md5sums=('SKIP'
-         '085b6f2ffbc847204a09d119b51dcaab')
+         '325a2ab8a23549d6c5e53afaa0d8a740')
 
 pkgver(){
         cd $srcdir/${pkgname%-git}

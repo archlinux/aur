@@ -9,7 +9,7 @@ index e65c210..06a9188 100644
 +PREFIX = /usr
  
  ifeq ($(GOROOT),)
- GOBUILD = go build
+ GOBUILD = go build -ldflags "-s -w"
 diff --git a/systemd/Makefile b/systemd/Makefile
 index cf437ab..ced08d4 100644
 --- a/systemd/Makefile
