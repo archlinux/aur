@@ -1,21 +1,21 @@
 pkgbase = redis-viewer-bin
 	pkgdesc = A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.
-	pkgver = 2.3.1
-	pkgrel = 3
+	pkgver = 2.3.2
+	pkgrel = 1
 	url = https://github.com/redisviewer/RedisViewer
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = bash
-	depends = electron8
+	depends = electron9
 	depends = glibc
-	provides = redis-viewer=2.3.1
+	provides = redis-viewer=2.3.2
 	conflicts = redis-viewer
-	source = redis-viewer-2.3.1.deb::https://github.com/redisviewer/RedisViewer/releases/download/v2.3.1/Redis.Viewer-2.3.1.deb
-	source = LICENSE::https://raw.githubusercontent.com/redisviewer/RedisViewer/v2.3.1/LICENSE
+	source = redis-viewer-2.3.2.deb::https://github.com/redisviewer/RedisViewer/releases/download/v2.3.2/Redis.Viewer-2.3.2.deb
+	source = LICENSE::https://raw.githubusercontent.com/redisviewer/RedisViewer/v2.3.2/LICENSE
 	source = redis-viewer.sh
-	sha256sums = 9a06f66d0afb4491c61d46d3ce64dac5c3d08db7e738d625afa1187d82d5720e
+	sha256sums = d67d3ba3a77d4cf4bd41139aa72c39c401e0f2f7d80075158b9f659ff2679365
 	sha256sums = 68f3ca5eaa3a59b7e01cbafc7848cb20ea108627ed0c94023e7536adfeeb3e89
-	sha256sums = 53979f6b74406057a8e9fc21cdbd14fcfd730c8c8847bcbd169dff65b8bb7783
+	sha256sums = baac66b85f91470eeb4f233da7aa1be5ef910d5bfcc71ea764a446f8dffb54dd
 
 pkgname = redis-viewer-bin
