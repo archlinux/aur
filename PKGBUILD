@@ -24,8 +24,11 @@ package() {
 #!/bin/sh
 # Snapgene Viewer is not localized and genbank exports are invalid in other
 # locales, so we just set LANG=C.
-QT_QPA_PLATFORM="xcb" LANG=C /opt/gslbiotech/snapgene-viewer/snapgene-viewer.sh
+LANG=C /opt/gslbiotech/snapgene-viewer/snapgene-viewer.sh
 EOF
+
+  sed -i 's`${INSTALLED_DIR}/snapgene-viewer "$@"`QT_QPA_PLATFORM="xcb" ${INSTALLED_DIR}/snapgene-viewer "$@"`' "$pkgdir/opt/gslbiotech/snapgene-viewer/snapgene-viewer.sh"
+    
   chmod a+x "$pkgdir/usr/bin/snapgene-viewer"
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
