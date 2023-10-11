@@ -13,8 +13,10 @@ license=('custom' 'Commercial')
 provides=(${pkgname%-bin} clouddrive)
 conflicts=(${pkgname%-bin} clouddrive)
 replaces=()
-depends=(fuse3)
+depends=(fuse3
+    systemd)
 makedepends=(libarchive)
+optdepends=('docker: Pack, ship and run any application as a lightweight container')
 backup=()
 options=(!strip)
 install=
