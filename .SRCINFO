@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rqt-multiplot
 	pkgdesc = ROS - rqt_multiplot provides a GUI plugin for visualizing numeric values in multiple 2D plots using the Qwt plotting backend.
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://wiki.ros.org/rqt_multiplot
 	arch = i686
@@ -19,11 +19,11 @@ pkgbase = ros-noetic-rqt-multiplot
 	depends = ros-noetic-variant-topic-tools
 	depends = qwt
 	depends = qt5-base
-	source = ros-noetic-rqt-multiplot-0.0.11.tar.gz::https://github.com/ANYbotics/rqt_multiplot_plugin/archive/0.0.11.tar.gz
+	source = ros-noetic-rqt-multiplot-0.0.12.tar.gz::https://github.com/ANYbotics/rqt_multiplot_plugin/archive/dbdc6965843a79415e5310372deb37bc93e0c2a1.tar.gz
 	source = FindQwt.cmake
-	source = 0.0.11.patch
-	sha256sums = 79f0abc3fc26b31dd9d5e6eb01f6cfb5058b425e774c6455513ffe3f76de74b4
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = 0.0.12.patch
+	sha256sums = 40d1f1f35e265ff4f24b0d7b8ac21bea5d88c96ab1a59977c87d941abfb02c74
+	sha256sums = 62fc7abb314220cf9d9ed3cd947c08469c518b76c119007058cd9bf45d555fed
+	sha256sums = 3b904970c78fd73e48eb613710754a68f409e0fedf44b472b8acc6893abbb3e3
 
 pkgname = ros-noetic-rqt-multiplot

@@ -2,7 +2,7 @@ pkgdesc="ROS - rqt_multiplot provides a GUI plugin for visualizing numeric value
 url="https://wiki.ros.org/rqt_multiplot"
 
 pkgname=ros-noetic-rqt-multiplot
-pkgver='0.0.11'
+pkgver='0.0.12'
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('BSD')
@@ -31,19 +31,24 @@ depends=(
     qt5-base
 )
 
-_dir="rqt_multiplot_plugin-${pkgver}"
+_commit="dbdc6965843a79415e5310372deb37bc93e0c2a1"
+_dir="rqt_multiplot_plugin-${_commit}"
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/ANYbotics/rqt_multiplot_plugin/archive/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/ANYbotics/rqt_multiplot_plugin/archive/${_commit}.tar.gz"
     "FindQwt.cmake"
-    "0.0.11.patch"
+    "0.0.12.patch"
 )
-sha256sums=('79f0abc3fc26b31dd9d5e6eb01f6cfb5058b425e774c6455513ffe3f76de74b4' 'SKIP' 'SKIP')
+sha256sums=(
+    '40d1f1f35e265ff4f24b0d7b8ac21bea5d88c96ab1a59977c87d941abfb02c74'
+    '62fc7abb314220cf9d9ed3cd947c08469c518b76c119007058cd9bf45d555fed'
+    '3b904970c78fd73e48eb613710754a68f409e0fedf44b472b8acc6893abbb3e3'
+)
 
 prepare() {
     [ -d ${srcdir}/${_dir}/cmake ] || mkdir ${srcdir}/${_dir}/cmake
     cp ${srcdir}/FindQwt.cmake ${srcdir}/${_dir}/cmake/
     cd ${srcdir}/${_dir}
-    patch -Np1 -i ${srcdir}/0.0.11.patch
+    patch -Np1 -i ${srcdir}/0.0.12.patch
 }
 
 build() {
