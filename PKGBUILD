@@ -3,7 +3,7 @@
 
 pkgbase=nudelta
 pkgname=nudelta
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Open source NuPhy Console alternative"
 url='https://github.com/donn/nudelta'
