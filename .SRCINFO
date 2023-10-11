@@ -1,8 +1,8 @@
 pkgbase = commit
 	pkgdesc = Commit message editor.
-	pkgver = 4.0
-	pkgrel = 2
-	url = https://apps.gnome.org/app/re.sonny.Commit
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://apps.gnome.org/Commit
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
@@ -10,11 +10,12 @@ pkgbase = commit
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
+	depends = libspelling
 	depends = gjs
 	depends = gtksourceview5
 	optdepends = git: git support
 	optdepends = mercurial: mercurial support
-	source = git+https://github.com/sonnyp/Commit.git#commit=a2dfeddd38ed96bbd0f4ce29fb6a1bc5b215ee44
+	source = git+https://github.com/sonnyp/Commit.git#commit=c7db2f4140053755689c35862964f9568c5e284b
 	source = git+https://github.com/sonnyp/troll.git
 	sha256sums = SKIP
 	sha256sums = SKIP
