@@ -2,7 +2,7 @@
 
 pkgname=smart-notifier
 pkgver=0.28_8
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical hard disk health status notifier'
 arch=('any')
 url="https://salsa.debian.org/debian/smart-notifier"
@@ -13,7 +13,8 @@ optdepends=()
 provides=()
 conflicts=()
 install="smart-notifier.install"
-source=("$pkgname-$pkgver"::"git+https://salsa.debian.org/debian/smart-notifier.git#tag=debian/${pkgver/_/-}")
+#source=("$pkgname-$pkgver"::"git+https://salsa.debian.org/debian/smart-notifier.git#tag=debian/${pkgver/_/-}")
+source=("$pkgname-$pkgver"::"git+https://salsa.debian.org/debian/smart-notifier.git#commit=83ce01b349c23d441ae6e02ee4b2810c198f02e8")
 noextract=()
 sha512sums=('SKIP')
 
