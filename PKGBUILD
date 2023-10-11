@@ -1,7 +1,7 @@
 # Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
 
 pkgname=boundary-desktop
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Desktop Client for Boundary"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=("gtk3" "libnotify" "nss" "libxtst" "xdg-utils" "at-spi2-core" "libdrm" 
 # Recommends: pulseaudio | libasound2
 # Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
 source=("${pkgname}_${pkgver}_linux_amd64.deb::https://releases.hashicorp.com/boundary-desktop/${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-b2sums=('df5d23c084d91d265e51caea04272a34428d2d73fdf6f5e80913b4ac2ed1f978e2e29e9217475703c5f22d8e6fa9fe7e6748ef47e5a0bb408b293d19961b40b8')
+b2sums=('2579640fdeb4882c84775fb69a9415f71b59427e1657608b5031761d1a0888b74fdce16f8614800b100be548efc37bb06c72d3f063c75409af37469935fcd497')
 
 package() {
   msg2 "Extracting the data.tar.xz"
