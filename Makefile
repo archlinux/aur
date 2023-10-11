@@ -21,10 +21,10 @@ set-version:
 	sed -i 's/^VERSION ?= \(.*\)/VERSION ?= $(VERSION)/' Makefile
 	sed -i 's/pkgver=\(.*\)/pkgver="$(VERSION)"/' PKGBUILD
 
-clean:
-	rm -rf pkg/ src/ checksums* *tar*
-
 publish:
 	git add .
 	git commit -m "Update to $(VERSION)"
 	git push origin master
+
+clean:
+	rm -rf pkg/ src/ checksums* *tar*
