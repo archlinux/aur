@@ -1,0 +1,21 @@
+pkgbase = ros-noetic-variant-msgs
+	pkgdesc = ROS - Variant messages are designed to accommodate the information content of any invariant message. They are truly generic and can freely be converted to and from specific message objects.
+	pkgver = 0.1.22
+	pkgrel = 1
+	url = https://github.com/ANYbotics/variant
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = LGPL
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	source = ros-noetic-variant-msgs-0.1.22.tar.gz::https://github.com/ANYbotics/variant/archive/83ef3d9e2b2a94d5ca29c226fc030795b70c289b.tar.gz
+	sha256sums = 4d85ec2a9e88bfd31fa78f42fbfdef147a3a2d40b1943f03004bae83e015b2f5
+
+pkgname = ros-noetic-variant-msgs
