@@ -1,21 +1,20 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-armhf
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (armhf)'
 arch=('x86_64')
 url="https://github.com/gportay/${pkgname%-armhf}"
 license=('GPL')
-makedepends=('armhf-musl'
-             'arm-linux-gnueabihf-gcc'
-             'kernel-headers-musl-armhf'
+makedepends=('armv7-eabihf-glibc-bleeding-edge-toolchain'
+             'armv7-eabihf-musl-bleeding-edge-toolchain'
              'git'
              'asciidoctor')
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-armhf}/archive/v$pkgver.tar.gz")
-sha256sums=('8f17afcca200c309b88ed86cd6890fcba95ed83663b71dcca4ed6e2f54d749d7')
+sha256sums=('fc12143995b08c28a09e28a45062b1f41caf21b8bc5dbc4b552c338f6f8d74a5')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
@@ -26,8 +25,8 @@ prepare() {
 
 build() {
 	cd "${pkgname%-armhf}-$pkgver"
-	make CFLAGS= armhf/libiamroot-linux-armhf.so.3
-	make CFLAGS= armhf/libiamroot-musl-armhf.so.1
+	make CFLAGS= PREFIX=/usr armhf/libiamroot-linux-armhf.so.3
+	make CFLAGS= PREFIX=/usr armhf/libiamroot-musl-armhf.so.1
 }
 
 check() {
