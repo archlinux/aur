@@ -38,10 +38,9 @@ build() {
 			cmake -DCMAKE_BUILD_TYPE=Release ..
 			make
 			make install DESTDIR=destdir
-		popd
-	popd
+	popd; popd
 
-	# Build and statically link tdlib-libpurple against tdlib above
+	# Build and statically link libtelegram-tdlib.so against tdlib above
 	mkdir -p build && pushd build
 	cmake \
 		-DTd_DIR="$td_dir"/build/destdir/usr/local/lib/cmake/Td/ \
