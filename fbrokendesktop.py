@@ -50,7 +50,7 @@ def find_missing_desktop_files(desktop_dir: str):
     for df in glob.iglob('*.desktop', root_dir=desktop_dir):
         de = DesktopEntry(path.join(desktop_dir, df))
         if exc := (de.getTryExec() or de.getExec()):
-            cmd = shlex.split(exc)
+            cmd = shlex.split(shlex.quote(exc))
             if is_gapp_cmd(cmd):
                 if not is_valid_gapp_cmd(cmd):
                     yield shlex.quote(de.getFileName())
