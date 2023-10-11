@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
-pkgver=r44.r0.gaf2467c
+pkgver=r44.r7.ge35ecab
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
