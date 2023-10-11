@@ -11,7 +11,7 @@ _pkgver=2023.04
 pkgver=2023.04r84964.fd4ed6b7e8
 pkgrel=1
 pkgdesc='U-Boot for BPI Router Boards'
-arch=('aarch64')
+arch=('aarch64' 'x86_64')
 url='https://github.com/u-boot/u-boot'
 license=(GPL3)
 depends=()
@@ -23,6 +23,12 @@ source=(
 )
 sha256sums=(SKIP SKIP SKIP)
 install=${pkgname}.install
+
+export CARCH=aarch64
+if [[ "$(uname -m)" != "aarch64" ]]; then
+  makedepends+=(aarch64-linux-gnu-gcc)
+  export CROSS_COMPILE=aarch64-linux-gnu-
+fi
 
 pkgver() {
   cd "${srcdir}/u-boot"
@@ -49,7 +55,7 @@ CONFIG_ENV_IS_IN_MMC=n
 CONFIG_DISTRO_DEFAULTS=y
 EOT
   unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
-  ARCH=aarch64 make bpir_my_defconfig
+  ARCH=arm64 make bpir_my_defconfig
 #  export KCFLAGS='-Wno-error=address'
   ARCH=arm64 make u-boot.bin
   cp u-boot.bin u-boot-${_target}.bin
