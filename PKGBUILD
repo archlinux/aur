@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=8.2.1
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('ca-certificates' 'brotli' 'libbrotlidec.so' 'libgssapi_krb5.so'
          'krb5' 'libidn2' 'libidn2.so' 'libnghttp2' 'libpsl' 'libpsl.so'
          'libssh2' 'libssh2.so' 'openssl' 'zlib' 'zstd' 'libzstd.so')
 makedepends=('rust' 'git' 'go' 'cmake')
-_quiche_ref=0.17.2
+_quiche_ref=0.18.0
 source=("https://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc}
 		"git+https://github.com/cloudflare/quiche.git#tag=${_quiche_ref}"
 		"git+https://github.com/google/boringssl.git")
@@ -79,7 +79,7 @@ package() {
   install -Dm644 quiche/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-quiche"
   install -Dm644 quiche/quiche/deps/boringssl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-boringssl"
 }
-sha512sums=('d0a906f4dff4c485e6dae930d9a7530147f4c0a0cbb46a83cb9be9d7bd6b9c320386c8be5bcdd3749f2d468b0daf39d06e8c581bab1fa792fd26da409a575cbd'
+sha512sums=('375d241effccde852cfba32aa61be406f6c6e8ef2773b48d57bfa1ff99fdf414dc08bdb6b3a65930e53b28e31246a4bc396c81054ae9c560a3bf58cca0ae78b0'
             'SKIP'
             'SKIP'
             'SKIP')
