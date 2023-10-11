@@ -1,7 +1,7 @@
 pkgbase = wlroots0.15
 	pkgdesc = Modular Wayland compositor library
 	pkgver = 0.15.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
 	license = MIT
@@ -27,13 +27,12 @@ pkgbase = wlroots0.15
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	optdepends = xorg-xwayland: Xwayland support
-	provides = libwlroots.so
 	options = debug
 	source = wlroots0.15-0.15.1.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.15.1/downloads/wlroots-0.15.1.tar.gz
 	source = wlroots0.15-0.15.1.tar.gz.sig::https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.15.1/downloads/wlroots-0.15.1.tar.gz.sig
 	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
-	validpgpkeys = 9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A
 	validpgpkeys = 4100929B33EEB0FD1DB852797BC79407090047CA
+	validpgpkeys = 9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A
 	sha256sums = 5b92f11a52d978919ed1306e0d54c9d59f1762b28d44f0a2da3ef3b351305373
 	sha256sums = SKIP
 
