@@ -1,6 +1,6 @@
 # Maintainer: crolbar <crolbar@crolbar.com>
 _pkgname="matm"
-pkgname="${_pkgname}-git"
+pkgname="matm-git"
 pkgver=1.0
 pkgrel=1
 pkgdesc="A tool to watch anime, movies, tv shows and read manga from the comfort of the cli!"
@@ -9,6 +9,7 @@ url="https://github.com/crolbar/matm"
 license=('GPL3')
 depends=('mpv' 'fzf' 'zathura-cb')
 makedepends=(git cargo)
+provides=('matm')
 optdepends=('vlc: an alternative video player for movies')
 source=("git+$url")
 md5sums=('SKIP')
@@ -26,6 +27,5 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
 }
