@@ -3,7 +3,7 @@
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
 pkgver=7.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
 url="https://www.apipost.cn/"
@@ -16,7 +16,7 @@ md5sums=("2791c3ccc03468ac87ae11aea610289d"
 package() {
   install -dm755 "${pkgdir}/opt/${_pkgname}"
 
-  cp -rp linux-unpacked/* "${pkgdir}/opt/${_pkgname}"
+  cp -rp dist/linux-unpacked/* "${pkgdir}/opt/${_pkgname}"
 
   install -dm755 "${pkgdir}/usr/bin"
 
