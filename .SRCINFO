@@ -1,6 +1,6 @@
 pkgbase = python-anytree
 	pkgdesc = Simple, lightweight and extensible Tree data structure.
-	pkgver = 2.9.2
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://anytree.readthedocs.io/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-anytree
 	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python-six
-	source = anytree-2.9.2.tar.gz::https://github.com/c0fec0de/anytree/archive/refs/tags/2.9.2.tar.gz
-	sha256sums = 998537d344759a6b14fc365c7171eac520ee1284e8580abf32012619f9635c57
+	source = anytree-2.10.0.tar.gz::https://github.com/c0fec0de/anytree/archive/refs/tags/2.10.0.tar.gz
+	sha256sums = a1c3bfad59b338416a3c9a4dd5e32f5e8b5abfd13464633a2937e571cad91be2
 
 pkgname = python-anytree
