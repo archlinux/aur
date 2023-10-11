@@ -1,9 +1,9 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
 pkgname=c3c-git
 _pkgname=c3c
-pkgver=r1620.4cc30c0d
+pkgver=r1642.db3e9c7e
 pkgrel=1
-pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible"
+pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Git version for x86_64"
 arch=(x86_64)
 url="https://github.com/c3lang/c3c.git"
 license=('LGPL3' 'MIT')
@@ -15,7 +15,7 @@ conflicts=(c3c)
 _repository="https://apt.llvm.org/mantic/"
 _llvmrep="17"
 _llvmver="17"
-_llvmpkgver="_17.0.2~++20231003073140+b2417f51dbbd-1~exp1~20231003073233.15"
+_llvmpkgver="_17.0.3~++20231010073210+37b79e779f44-1~exp1~20231010073307.16"
 source=('git+https://github.com/c3lang/c3c.git'
 	${_repository}'pool/main/l/llvm-toolchain-'${_llvmrep}'/clang-'${_llvmver}${_llvmpkgver}'_amd64.deb'
 	${_repository}'pool/main/l/llvm-toolchain-'${_llvmrep}'/libc++1-'${_llvmver}${_llvmpkgver}'_amd64.deb'
@@ -47,34 +47,34 @@ source=('git+https://github.com/c3lang/c3c.git'
 	${_repository}'pool/main/l/llvm-toolchain-'${_llvmrep}'/mlir-'${_llvmver}'-tools'${_llvmpkgver}'_amd64.deb'
        )
 md5sums=('SKIP'
-	 '87eaa673c4437980292968e7e08dd3d3'
-	 'ac20b64169db25aeb5d1905010320cc4'
-	 'e71146cad86c9ba1f9a19df0d88bb5a8'
-	 '2943477dab99d478901be269831aef8f'
-	 '65c0ebd1fc4e847e80b70751e97f05cc'
-	 '19040b2e9fa0eeadfd4aa5d9ed06f81b'
-	 'ae788f1820a704fe4095e7033c530c7a'
-	 '4281f42d4f2ff6b5d5c3d42db08d0a23'
-	 '870f2040b630de04e5e7f5200ae357c0'
-	 'e31ead287464bd3dd2c933f9ede0d22c'
-	 '1a93bfb7485566f691eb0f35dd2a26a8'
+	 '441922ea5b59119385c2d6a322921194'
+	 'bd9ccf8405e1d10d1b45231eaead3961'
+	 'c7ad18015c592ad9cd798cd480266b7e'
+	 '0aca8e5290b353783c49c36d8c57a04b'
+	 'b56185971baae8cab83b39acba3a4289'
+	 '493bca0f7e56d4e84f29c2058ecbd0d4'
+	 '1d1fc9a43fb7b1de90b9e636253cd38e'
+	 'a11fbd529faa4dd23712d9aa69dc8902'
+	 'd5fdf34bb68e3b24306ab3ebc094472b'
+	 'c7f605bf8e623c5e43b0a2dd6ab6d54f'
+	 '0a6e89492ed2f48816a01234874fece9'
 	 'dc66a491cd5514c069d8151a37ae9e7e'
-	 'a3025e4a60f980764a7095b8410b7eee'
-	 '0ad16be5d580a946e639f5ab556e7ef0'
-	 '8bddc106a4ea42b9c620e54e2fe59491'
-	 '59aeedf6c62c348006133d445419ef8b'
-	 'c4b29f7372db02760d880374048caa2d'
-	 '87b62789bc40f3fb59c75c9b931bf454'
-	 '7f0325c3e5cd7871da93089147cfa7f0'
-	 '75dbdebeef9874db326b42a34184bf04'
-	 '8ad38f68b5fbe2a1535649a8ca0d2088'
-	 '640a7f4630544911e11521fedfc7737c'
-	 'f621c49e76a15ee2adf8b7c520c94c04'
-	 'a07814c9c9bf8339bd1cfefb1d38a619'
-	 'c4d85262801c7ee899217d4ad3e8c6cc'
-	 '965ede053b02aac8d30604ac4f77a4a9'
-	 '0d1b14bb096bb8a1407962c6ec8da7a2'
-	 '002ac420aa53b074f27d66d7b282a4de'
+	 'ed0bd48985d33168951dca7d11d3bf72'
+	 '70d7e2180ab6b8c68c33198987d3bb20'
+	 'ca97a5ca906191643702de33c942d4a9'
+	 'cdd825f1ea159d688d951be26df1dddd'
+	 'a7a5df83dfd206f48fce4a8f07cde22b'
+	 'c2942d658d0674432e73e04b7b3e3de8'
+	 '04b39444d188e5576fcdad1d0110529e'
+	 '399fe60a07c0ad367579a50ccf8b156b'
+	 '407ca87ee865b000e5906df7a93999aa'
+	 'b542dc4d0dce978ded86c1e2aca9e5b6'
+	 'e23bd52cfe2a4ab283fecd2aca64bd48'
+	 'e52e267ae89af0f863d970383fce3949'
+	 '17d6d4a717c444a08d5622deb069be0e'
+	 '4a2ff0c123d7b0d0bd153131f9176f34'
+	 '19a7b50c7c3a27b8a6e1bd3b916284be'
+	 '452bc265f8029f833453f63056c30ac8'
 	)
 
 pkgver() {
