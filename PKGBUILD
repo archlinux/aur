@@ -3,12 +3,12 @@
 
 pkgname="python-onnxsim"
 pkgver=0.4.33
-pkgrel=1
+pkgrel=2
 pkgdesc='ONNX Simplifier is presented to simplify the ONNX model.'
 arch=(any)
 url="https://github.com/daquexian/onnx-simplifier"
 license=(MIT)
-depends=(python python-onnx python-onnxoptimizer python-onnxruntime python-protobuf pyton-rich)
+depends=(python python-onnx python-onnxoptimizer python-onnxruntime python-protobuf python-rich)
 conflicts=()
 makedepends=(python-setuptools)
 source=(onnx-simplifier-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
