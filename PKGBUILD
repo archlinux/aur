@@ -6,8 +6,8 @@
 pkgname=aegisub-arch1t3cht
 pkgver=feature_10
 _aspver=3.7.3
-_vsver=R63
-pkgrel=4
+_vsver=R65-RC1
+pkgrel=5
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=(x86_64)
 url=https://github.com/arch1t3cht/Aegisub
@@ -66,6 +66,7 @@ source=(
   "$pkgname-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
   "$pkgname-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
   "0001-bas-to-bs.patch"
+  "0002-luajit.patch::https://github.com/arch1t3cht/Aegisub/commit/4a97bb0dd25cc9753b85715793f60ff8883d3430.patch"
 )
 noextract=(
   $pkgname-gtest-1.8.1.zip
@@ -75,11 +76,12 @@ sha256sums=(
   '7410109623998b22d6e4b1dbfc1dec84c6d5d10b4d410511cc0277a909c5b512'
   'SKIP'
   'b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c'
-  'ed909b3c58e79bcbb056d07c5d301222ba8001222b4b40d5c1123be35fea9ae2'
+  '99200d6f1ee9145985b1a1fb64888e70ab0ff2ad9056faf4ab4e27da0d4ae468'
   'SKIP'
   '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
   'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
   '693f2c569c2d4321a67c201fcafbd12774bc1f963c41c21f4943d0933e2d0a5f'
+  'a561a52460d0e2332840d177e138f264d4cd9a956443966bbb824d18c9af3f61'
 )
 
 AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
@@ -87,6 +89,7 @@ AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
 prepare() {
   cd Aegisub-$pkgver
   patch -p1 < $srcdir/0001-bas-to-bs.patch
+  patch -p1 < $srcdir/0002-luajit.patch
 
   # If build dir exists (it won't ever if makepkg is passed --cleanbuild)
   # call --reconfigure rather than setup without it which will fail)
@@ -95,21 +98,21 @@ prepare() {
     MESON_FLAGS='--reconfigure'
   else
     # Initialize subproject wraps for bestsource
-    ln -s $srcdir/$pkgname-bestsource subprojects/bestsource
+    ln -s "$srcdir/$pkgname-bestsource" subprojects/bestsource
 
     # Initialize subproject wraps for avisynth
-    ln -s $srcdir/AviSynthPlus-$_aspver subprojects/avisynth
+    ln -s "$srcdir/AviSynthPlus-$_aspver" subprojects/avisynth
 
     # Initialize subproject wraps for vapoursynth
-    ln -s $srcdir/vapoursynth-$_vsver subprojects/vapoursynth
+    ln -s "$srcdir/vapoursynth-$_vsver" subprojects/vapoursynth
 
     # Initialize subproject wraps for luajit
-    ln -s $srcdir/$pkgname-luajit subprojects/luajit
+    ln -s "$srcdir/$pkgname-luajit" subprojects/luajit
 
     # Initialize subproject wraps for gtest
     mkdir subprojects/packagecache
-    ln -s $srcdir/$pkgname-gtest-1.8.1.zip subprojects/packagecache/gtest-1.8.1.zip
-    ln -s $srcdir/$pkgname-gtest-1.8.1-1-wrap.zip subprojects/packagecache/gtest-1.8.1-1-wrap.zip
+    ln -s "$srcdir/$pkgname-gtest-1.8.1.zip" subprojects/packagecache/gtest-1.8.1.zip
+    ln -s "$srcdir/$pkgname-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
   fi
 
   meson subprojects packagefiles --apply bestsource
