@@ -1,7 +1,7 @@
 # Maintainer: Alex Merry <dev@randomguy3.me.uk>
 
 pkgname=get_iplayer
-pkgver=3.31
+pkgver=3.32
 pkgrel=1
 pkgdesc="Allows you to download or stream any iPlayer programme from the BBC in H.264 (Quicktime/mp4) format, any radio programmes in MP3 or RealAudio format"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
     'perl-cgi: web PVR manager')
 install=get_iplayer.install
 source=(https://github.com/get-iplayer/get_iplayer/archive/refs/tags/v${pkgver}.tar.gz)
-md5sums=('bdcdf8c916bab325c5794606962ddcbd')
+sha256sums=('1c69bdd5553a17dde8d8a165f5e35fcc24adcc9afec183b7f1348cae1ad50ef2')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

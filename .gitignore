@@ -1,5 +1,5 @@
 /src
 /pkg
-*.pkg.tar.xz
-*.src.tar.gz
+*.pkg.tar.*
+*.src.tar.*
 v*.tar.gz
