@@ -2,15 +2,15 @@
 
 _pkgname=nocheq
 pkgname=php-$_pkgname-git
-pkgver=r39.6e3c4f8
+pkgver=r40.334fd74
 pkgrel=1
 pkgdesc="Sick of pesky type checking making your code too slow (and correct) ?"
 arch=('i686' 'x86_64')
-url="https://github.com/krakjoe/nocheq"
+url="https://github.com/kornrunner/nocheq"
 license=('PHP')
 depends=('php')
 makedepends=('git')
-source=(git://github.com/krakjoe/nocheq.git)
+source=(git+https://github.com/kornrunner/nocheq.git)
 md5sums=('SKIP')
 _ininame="nocheq.ini"
 _inifile="etc/php/conf.d/$_ininame"

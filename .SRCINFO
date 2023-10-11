@@ -1,16 +1,15 @@
 pkgbase = php-nocheq-git
 	pkgdesc = Sick of pesky type checking making your code too slow (and correct) ?
-	pkgver = r39.6e3c4f8
+	pkgver = r40.334fd74
 	pkgrel = 1
-	url = https://github.com/krakjoe/nocheq
+	url = https://github.com/kornrunner/nocheq
 	arch = i686
 	arch = x86_64
 	license = PHP
 	makedepends = git
 	depends = php
 	backup = etc/php/conf.d/nocheq.ini
-	source = git://github.com/krakjoe/nocheq.git
+	source = git+https://github.com/kornrunner/nocheq.git
 	md5sums = SKIP
 
 pkgname = php-nocheq-git
-
