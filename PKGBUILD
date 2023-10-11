@@ -10,8 +10,8 @@ pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloud-fs/cloud-fs.github.io"
 license=('custom' 'Commercial')
-provides=(${pkgname%-bin} clouddrive)
-conflicts=(${pkgname%-bin} clouddrive)
+provides=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
+conflicts=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
 replaces=()
 depends=(fuse3
     systemd)
