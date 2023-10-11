@@ -1,7 +1,7 @@
 pkgname=ibm-tss
-_commit=ad7738802e4ab8f2040449ea1cc7fd4822035646
+_commit=8842df895d14acdcd733fe2d4fa0a1305c708594
 epoch=1
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A user space TSS for TPM 2.0 by IBM"
 arch=(i686 x86_64)
