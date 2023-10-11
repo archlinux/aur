@@ -1,0 +1,15 @@
+4c4
+< requires = ["hatchling", "hatch-vcs", "hatch-fancy-pypi-readme"]
+---
+> requires = ["hatchling", "hatch-fancy-pypi-readme"]
+16c16,17
+< dynamic = ["version", "readme"]
+---
+> dynamic = ["readme"]
+> version = "23.1.0"
+62,66d62
+< 
+< 
+< [tool.hatch.version]
+< source = "vcs"
+< raw-options = { local_scheme = "no-local-version" }
