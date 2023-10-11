@@ -1,0 +1,10 @@
+[Unit]
+Description=Hexagonrpcd SDSP
+
+[Service]
+User=fastrpc
+Group=fastrpc
+ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-sdsp -s
+
+[Install]
+WantedBy=multi-user.target

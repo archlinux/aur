@@ -1,0 +1,7 @@
+pre_install() {
+  useradd -r -U -d /var/lib/fastrpc -s /usr/bin/nologin fastrpc 2>/dev/null
+}
+
+post_remove() {
+  userdel -r fastrpc 2>/dev/null
+}

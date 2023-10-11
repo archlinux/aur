@@ -1,0 +1,10 @@
+[Unit]
+Description="Hexagonrpcd ADSP RootPD"
+
+[Service]
+User=fastrpc
+Group=fastrpc
+ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-adsp
+
+[Install]
+WantedBy=multi-user.target
