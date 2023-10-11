@@ -1,16 +1,16 @@
 pkgbase = mpf-check-bin
 	pkgdesc = Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)
-	pkgver = 2.6.6
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://github.com/SabreTools/MPF
 	arch = x86_64
 	license = GPL3
 	provides = mpf-check
 	options = !strip
-	source = https://github.com/SabreTools/MPF/releases/download/2.6.6/MPF.Check_2.6.6-net7.0_linux-x64.zip
+	source = https://github.com/SabreTools/MPF/releases/download/2.7.0/MPF.Check_2.7.0_net7.0_linux-x64_release.zip
 	source = https://raw.githubusercontent.com/SabreTools/MPF/master/README.md
 	source = https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE
-	sha256sums = 1cedcc285d3e9d85b2f6abb675f80359ae0eb9062a37602de3b8f2afb30dcc5b
+	sha256sums = 8310ebd77866ad7c4060e6ca27cddc6daced33e32561409aeb307757dd15a14b
 	sha256sums = SKIP
 	sha256sums = SKIP
 

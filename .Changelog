@@ -1,0 +1,25 @@
+# mpf-check-bin .Changelog
+
+## 2023-10-10, mpf-check-bin 2.7.0-1
+
+* Bump to 2.7.0 (2.6.7 was skipped).
+* Started maintenance of `.Changelog`.
+
+## 2023-10-08, mpf-check-bin 2.6.6-2
+
+* Migrated to Linux-native .NET Framework 7-based binary release. Previous  
+PKGBUILDs consumed the .NET Framework 4.8 binary with a `mono` dependency and  
+a convenience script to ease execution.  .NET Framework 4.8 support is  
+expected to be deprecated in MPF 2.6.7.
+
+
+## 2023-10-08, mpf-check-bin 2.6.6-1
+
+* Bump to v2.6.6 release.
+
+# FAQ
+
+## Why consume the release binary rather than compile from source?
+
+I can't be bothered at the moment.
+
