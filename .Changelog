@@ -1,13 +1,17 @@
 # redumper-bin .Changelog
 
-## 2023-10-10, redumper-bin build_268-1
+## 2023-10-10, redumper-bin build_229-1
+
+* Bump to build_229 release.
+* Fixed typos in `.Changelog`.
+
+## 2023-10-10, redumper-bin build_228-1
 
 * Bump to build_228 release.
 
-## 2023-10-09, redumper-bin build_266-1
+## 2023-10-09, redumper-bin build_226-1
 
 * Started maintenance of `.Changelog`.
-
 * Bump to build_226 release.
 
 # FAQ
