@@ -6,9 +6,8 @@
 #               Peng Hao <penghao@linuxdeepin.com>
      
 #               Vufa <countstarlight@gmail.com>
-     
 BOTTLENAME="Deepin-BaiduWenku"
-APPVER="1.2.8"
+APPVER=1.2.8
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files (x86)/wenku-pc/百度文库.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/wenku-pc/百度文库.exe"
@@ -29,7 +28,7 @@ msg() {
     ECHO_LEVEL=("\033[1;32m==> " "\033[1;31m==> ERROR: ")
     echo -e "${ECHO_LEVEL[$1]}\033[1;37m$2\033[0m"
 }
-      
+
 OpenWinecfg() {
     msg 0 "Launching winecfg with ${APPRUN_CMD} in ${WINEPREFIX} ..."
     env WINEPREFIX="${WINEPREFIX}" ${APPRUN_CMD} winecfg
