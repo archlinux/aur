@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-burn-my-windows
 _pkgname=Burn-My-Windows
-pkgver=34
+pkgver=38
 pkgrel=1
 pkgdesc="Disintegrate your apps the old-school way."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gnome-shell')
 makedepends=('zip')
 source=(${url}/archive/v$pkgver.tar.gz)
-b2sums=('835bc210efae117c2bacab0bb72eeaef73c5a60c35ec98f0b8259e77062e0ce4f6416d268c328f2d1afcc41f1814d5ce1f3b115d3cc1b032d2747e582a688e36')
+b2sums=('7df8b00d6ea0616d384b3bf3ec09d6b73824f65f349a18f6e8170dc9d6ef3cba3490ccf65a724c15f1cd7502be69ceb79141e29cb275eb2f6c1bf77419148666')
 
 build() {
   cd "$_pkgname-$pkgver"
