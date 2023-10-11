@@ -2,3 +2,5 @@
 !/PKGBUILD
 !/.SRCINFO
 !.gitignore
+
+!/no-hatch-vcs.diff

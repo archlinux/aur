@@ -1,0 +1,9 @@
+2c2
+< requires = ["hatchling", "hatch-fancy-pypi-readme", "hatch-vcs"]
+---
+> requires = ["hatchling", "hatch-fancy-pypi-readme"]
+25c25,26
+< dynamic = ["version", "readme"]
+---
+> dynamic = ["readme"]
+> version = "0.1.0"
