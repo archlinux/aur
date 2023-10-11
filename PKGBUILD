@@ -1,7 +1,7 @@
 # Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
 
 pkgname=google-cloud-cli-gke-gcloud-auth-plugin
-pkgver=448.0.0
+pkgver=450.0.0
 pkgrel=1
 pkgdesc="A google-cloud-cli component that provides a kubectl authentication plugin for GKE."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 source=(
     "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig_amd64.tar.gz"
     'google-cloud-cli-gke-gcloud-auth-plugin.sh')
-sha256sums=('4604151f24a3891e6ed149138fbf5b2f4533d9d5eb278950fa4f46cb8b76da36'
+sha256sums=('a800ea784fcc852a2f8ab9f6a101c0b73c38fd5a8f91a287d34d535af9e61660'
             '4432c1e71c39cb0914baa4df6c8699adc7e633163da7be87ac159d5b320cb346')
 install="${pkgname}.install"
 
@@ -23,8 +23,8 @@ package() {
 
     # Install plugin manifests and snapshots
     manifests=(
-        "gke-gcloud-auth-plugin-linux-x86_64.manifest"
-        "gke-gcloud-auth-plugin-linux-x86_64.snapshot.json"
+        "gke-gcloud-auth-plugin-linux-${CARCH}.manifest"
+        "gke-gcloud-auth-plugin-linux-${CARCH}.snapshot.json"
         "gke-gcloud-auth-plugin.manifest"
         "gke-gcloud-auth-plugin.snapshot.json"
     )
