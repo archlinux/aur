@@ -6,12 +6,12 @@
 
 pkgname=libdart
 pkgver=6.13.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="https://dartsim.github.io"
 license=('BSD')
-depends=('assimp' 'boost' 'eigen' 'fcl-git' 'libccd-git' 'bullet' 'coin-or-ipopt'
+depends=('assimp' 'boost' 'eigen' 'fcl' 'libccd' 'bullet' 'coin-or-ipopt'
          'nlopt' 'octomap' 'ode' 'openscenegraph' 'tinyxml2' 'urdfdom'
          'glu' 'freeglut' 'libxi' 'libxmu' 'pagmo' 'fmt')
 optdepends=('pagmo: pagmo optimizer support')
@@ -22,7 +22,10 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/dartsim/${_pkgname}/archive/v${pkgver}.tar.gz"
     "gnu13.patch"
 )
-sha256sums=('4da3ff8cee056252a558b05625a5ff29b21e71f2995e6d7f789abbf6261895f7' 'SKIP')
+sha256sums=(
+    '4da3ff8cee056252a558b05625a5ff29b21e71f2995e6d7f789abbf6261895f7'
+    '1a617e94035d4e1259e795908cd76df64f5e64e35a6a8fea250fd264282ead01'
+)
 
 # Make libdart use pagmo 2.18.0 instead of 2.17.0
 prepare(){
