@@ -5,15 +5,15 @@ pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
 pkgver=0.23.0
-pkgrel=2
+pkgrel=3
 conflicts=('bruno' 'bruno-bin' 'bruno-git')
 arch=('x86_64')
 url="https://www.usebruno.com/"
 license=('MIT')
 _electron=electron
 depends=(
-    "${_electron}"
-    "nodejs"
+    "${_electron}>=21.0.0"
+    "nodejs>=18.13.0"
 )
 makedepends=(
     'asar'
