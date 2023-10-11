@@ -1,4 +1,4 @@
-pkgbase = snapgene-veiwer
+pkgbase = snapgene-viewer
 	pkgdesc = Software for plasmid mapping, primer design, and restriction site analysis
 	pkgver = 7.0.2
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = snapgene-veiwer
 	source = https://cdn.snapgene.com/downloads/SnapGeneViewer/7.x/7.0/7.0.2/snapgene_viewer_7.0.2_linux.rpm
 	sha512sums = 13a00197c60239842ed649e4730faa3783beebb04f107ed6d7a03f5523edf98cb8c2037bb87cb700924a6a417d2264e603094a3b3b64771ad460fb1f3caa544d
 
-pkgname = snapgene-veiwer
+pkgname = snapgene-viewer

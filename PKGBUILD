@@ -2,7 +2,7 @@
 # Co-Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 # Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 # Co-Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
-pkgname=snapgene-veiwer
+pkgname=snapgene-viewer
 pkgver=7.0.2
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
