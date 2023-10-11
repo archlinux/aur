@@ -4,7 +4,7 @@
 
 pkgname=cyberghostvpn
 pkgver=1.4.1
-pkgrel=7
+pkgrel=8
 pkgdesc="CyberGhost VPN"
 url="https://www.cyberghostvpn.com"
 arch=(any)
@@ -37,8 +37,9 @@ _archive="${pkgname}-${_variant}-${pkgver}"
 prepare() {
 	# workaround: build certificate to connect to wireguard servers
 	# remove as soon as the certificate is provied by the package
-	_wireguard_certificate_server="washington-s403-i01.cg-dialup.net:1337"
-	true | openssl s_client -verify 5 -connect ${_wireguard_certificate_server} | openssl x509 > "${srcdir}/cg-dialup-net.pem"
+	_wireguard_certificate_servername="washington-s403-i01.cg-dialup.net"
+	_wireguard_certificate_server="102.165.48.72:1337"
+	true | openssl s_client -verify 5 -connect ${_wireguard_certificate_server} -servername ${_wireguard_certificate_servername}| openssl x509 > "${srcdir}/cg-dialup-net.pem"
 
 	sha256sum "${srcdir}/cg-dialup-net.pem"
 	sha256sum --check <( echo "ff0f9f4c75a06dedd1e34cf2a88b95dc879c9ef6173913b40f271355f614744c  ${srcdir}/cg-dialup-net.pem"  )
