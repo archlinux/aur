@@ -1,7 +1,7 @@
 pkgbase = claws-mail-protectedheaders-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
 	pkgver = 4.1.1+90.r13253.20230924.f0b5dc5b4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = claws-mail-protectedheaders-git
 	makedepends = spamassassin
 	makedepends = bogofilter
 	makedepends = dillo
-	makedepends = gumbo-parser
+	makedepends = gumbo-parser>=0.12
 	makedepends = libcanberra
 	makedepends = libgdata
 	makedepends = libical
@@ -60,7 +60,7 @@ pkgbase = claws-mail-protectedheaders-git
 	optdepends = fontconfig: for litehtml_viewer plugin.
 	optdepends = freetype2: for litehtml_viewer plugin.
 	optdepends = gcc-libs: for litehtml_viewer plugin.
-	optdepends = gumbo-parser: for litehtml_viewer plugin.
+	optdepends = gumbo-parser>=0.12: for litehtml_viewer plugin.
 	optdepends = ghostscript: for pdf viewer plugin.
 	optdepends = harfbuzz: for many plugins
 	optdepends = jpilot: for jpilot (palm pilot connection) plugin.

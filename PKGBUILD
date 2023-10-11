@@ -33,7 +33,7 @@ esac
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=4.1.1+90.r13253.20230924.f0b5dc5b4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -70,7 +70,7 @@ makedepends=(
   # dependencies for plugins:
   'bogofilter'
   'dillo'
-  'gumbo-parser'
+  'gumbo-parser>=0.12'
   'libcanberra'
   'libgdata'
   'libical'
@@ -100,7 +100,7 @@ optdepends=(
   'fontconfig:        for litehtml_viewer plugin.'
   'freetype2:         for litehtml_viewer plugin.'
   'gcc-libs:          for litehtml_viewer plugin.'
-  'gumbo-parser:      for litehtml_viewer plugin.'
+  'gumbo-parser>=0.12: for litehtml_viewer plugin.'
   'ghostscript:       for pdf viewer plugin.'
   'harfbuzz:          for many plugins'
   'jpilot:            for jpilot (palm pilot connection) plugin.'
