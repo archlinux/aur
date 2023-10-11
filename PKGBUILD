@@ -176,6 +176,7 @@ build() {
     -D egl_device=true
     -D wayland_eglstream=true
     -D installed_tests=false
+    -D libdisplay_info=true
     -D docs=$(if ! [ -n "$_disable_docs" ]; then echo "true"; else echo "false"; fi)
     -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
   )
