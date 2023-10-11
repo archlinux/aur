@@ -1,0 +1,16 @@
+pkgbase = python-thop
+	pkgdesc = Count the MACs / FLOPs of your PyTorch model.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Lyken17/pytorch-OpCounter
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytorch
+	source = pytorch-OpCounter-master.zip::https://github.com/Lyken17/pytorch-OpCounter/archive/refs/heads/master.zip
+	sha256sums = 9dd5999570452100f8082c360ab3d9cbf9bcad22b7fb87ed8bcfff20dbc02433
+
+pkgname = python-thop
+	depends = python
+	depends = python-pytorch
