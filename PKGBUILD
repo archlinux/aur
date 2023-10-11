@@ -9,7 +9,7 @@ arch=("any")
 license=('MIT')
 depends=('python' 'python-pyxdg')
 source=("fbrokendesktop.py")
-sha256sums=('3c86df99ebf6958f8266f650516ec55b1e452a21ae76f295fb43eb03be181c9d')
+sha256sums=('bafb74744da76aefae86525aac2c9a42aa488a5dfd291ca49ecb6c2861a45f1c')
 
 package() {
 	chmod +x fbrokendesktop.py
