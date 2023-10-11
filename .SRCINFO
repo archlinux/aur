@@ -1,11 +1,15 @@
-pkgbase = slweb
-	pkgdesc = Simple static website generator
-	pkgver = 0.9.0
+pkgbase = libweb
+	pkgdesc = A simple and lightweight web framework
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://strahinja.srht.site/slweb
+	url = https://gitea.privatedns.org/xavi/libweb
+	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = aarch64
 	license = GPL3
-	source = slweb-0.9.0.tar.gz::https://git.sr.ht/~strahinja/slweb/archive/v0.9.0.tar.gz
-	md5sums = 6c7a6c0036cfb7b5d0c45a4373040a87
+	makedepends = dynstr
+	source = libweb-0.1.0.tar.gz::https://gitea.privatedns.org/xavi/libweb/archive/v0.1.0-rc3.tar.gz
+	sha512sums = d7c1d05b6715d7fa903a3dc2687b82d6b99cc3a82303ca5b9d55764f16f61dc7c6af7416f09fce0cbc62bcda58ff4680e38cb6079b304c5fedc480ad1d3578ee
 
-pkgname = slweb
+pkgname = libweb
