@@ -1,7 +1,7 @@
 # Maintainer: Dj Isaac <aur at dejay dot dev>
 # Contributor: Vianney Bouchaud <aur dot vianney at bouchaud dot org>
 
-pkgname=bruno-electron-bin
+pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
 pkgver=0.23.0
