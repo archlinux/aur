@@ -1,0 +1,21 @@
+pkgbase = sleepyneko-git
+	pkgdesc = Minimalist Neovim configuration with the lazy.nvim package manager
+	pkgver = r9.848835e
+	pkgrel = 1
+	url = https://github.com/Nekosis/sleepyneko
+	arch = any
+	license = GPL
+	depends = neovim
+	depends = git
+	depends = tree-sitter
+	depends = tree-sitter-cli
+	depends = nodejs
+	depends = gcc
+	depends = ripgrep
+	depends = fd
+	optdepends = xclip: clipboard support (X11)
+	optdepends = wl-clipboard: clipboard support (Wayland)
+	source = git+https://github.com/Nekosis/sleepyneko.git
+	md5sums = SKIP
+
+pkgname = sleepyneko-git
