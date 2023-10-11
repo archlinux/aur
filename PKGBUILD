@@ -3,11 +3,12 @@
 _pkgname=emoji-keyboard
 pkgname=$_pkgname-bin
 pkgver=4.0.0
-pkgrel=1
-pkgdesc='Type emoji easily! Virtual keyboard-like emoji palette for Linux with [fewer] of features (binary release)'
+pkgrel=2
+pkgdesc='Virtual keyboard like emoji palette (binary release)'
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 arch=('x86_64')
 license=('MIT')
+depends=('libayatana-appindicator' 'webkit2gtk')
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb"
         "$url/raw/v$pkgver/LICENSE")
 sha256sums=('bfc9c56bc3355dd5d2b5f44451eea8ec6b41f7c8afbe6370b38f18a80b083873'
