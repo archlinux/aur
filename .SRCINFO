@@ -1,6 +1,6 @@
 pkgbase = piclist-bin
 	pkgdesc = a cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发.
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://piclist.cn/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = piclist-bin
 	depends = electron22
 	depends = gcc-libs
 	depends = glibc
-	source = piclist-2.6.2.AppImage::https://github.com/Kuingsmile/PicList/releases/download/v2.6.2/PicList-2.6.2.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/Kuingsmile/PicList/v2.6.2/LICENSE
+	source = piclist-2.6.3.AppImage::https://github.com/Kuingsmile/PicList/releases/download/v2.6.3/PicList-2.6.3.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Kuingsmile/PicList/v2.6.3/LICENSE
 	source = piclist.sh
-	sha256sums = f3e7f74d8288342ebdf5453fa9cf3454846270ee52746bd7201a2f78c20a72b3
+	sha256sums = 31c034271d520a6a38c5c2d442ddc994de69ba1e4d17fa7437f656fab53ef838
 	sha256sums = cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c
-	sha256sums = 704784c2cb1b6de71435ebd327d9720ecd2293c4635c9f27dd884173355df190
+	sha256sums = 8ee7b4c5dd2b843f20c3daa32d74a1eff9b5d58fa9d675e48ca00e1c50c83bde
 
 pkgname = piclist-bin

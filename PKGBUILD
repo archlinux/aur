@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-bin
 _pkgname=PicList
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="a cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
 arch=('x86_64')
@@ -14,9 +14,9 @@ makedepends=('asar' 'squashfuse')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Kuingsmile/PicList/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('f3e7f74d8288342ebdf5453fa9cf3454846270ee52746bd7201a2f78c20a72b3'
+sha256sums=('31c034271d520a6a38c5c2d442ddc994de69ba1e4d17fa7437f656fab53ef838'
             'cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c'
-            '704784c2cb1b6de71435ebd327d9720ecd2293c4635c9f27dd884173355df190')
+            '8ee7b4c5dd2b843f20c3daa32d74a1eff9b5d58fa9d675e48ca00e1c50c83bde')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -25,8 +25,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
+    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname%-bin}/resources"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"*.* -t "${pkgdir}/opt/${pkgname%-bin}/usr/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
