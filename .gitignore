@@ -1,4 +1,1 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+.vscode/tasks.json
