@@ -1,21 +1,20 @@
 pkgbase = addressbook-desktop
-	pkgdesc = Backbone React/Redux/MUIv5 Electron Application
+	pkgdesc = Addressbook Desktop Application
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dredwardhyde/addressbook-desktop-app
 	arch = any
 	license = Apache
-	makedepends = pnpm
+	makedepends = npm
 	makedepends = gendesk
 	makedepends = asar
+	makedepends = imagemagick
 	depends = bash
 	depends = electron23
 	conflicts = addressbook-desktop
 	source = addressbook-desktop-1.2.0.tar.gz::https://github.com/dredwardhyde/addressbook-desktop-app/archive/refs/tags/v1.2.0.tar.gz
-	source = addressbook-desktop.png
 	source = addressbook-desktop.sh
 	sha256sums = 03b21c99576b14cc1236a15bbc40c14b5d304a0a8399fe435ee7660dd51a9082
-	sha256sums = 69a031a39efb4564ee88f08d36cb5b606d99429ad77f47f967f88a6a4d40937f
-	sha256sums = 9352ce7cedc9e5ae9bd7532612cd84edd6b82380975bd06a1c7979a1aec15447
+	sha256sums = f820d348c118d37f88d49d81c62e6128a2277b5fa6e9d997153e636b507a74d4
 
 pkgname = addressbook-desktop
