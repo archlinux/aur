@@ -1,0 +1,528 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f7c230a..eeea6a6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.5.1)
+ project(rqt_multiplot)
+ 
+ # Set compiler flags
+-set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
++set(CMAKE_CXX_FLAGS "-std=c++17 ${CMAKE_CXX_FLAGS}")
++set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+ 
+ find_package(catkin REQUIRED
+   COMPONENTS
+@@ -12,38 +13,8 @@ find_package(catkin REQUIRED
+     rqt_gui_cpp
+     variant_topic_tools
+ )
+-
+-if("${qt_gui_cpp_USE_QT_MAJOR_VERSION} " STREQUAL "5 ")
+-  find_package(Qt5Widgets REQUIRED)
+-else()
+-  find_package(Qt4 COMPONENTS QtCore QtGui REQUIRED)
+-  include(${QT_USE_FILE})
+-endif()
+-
+-find_path(
+-  QWT_INCLUDE_DIRS
+-  NAMES
+-    qwt_plot.h
+-  PATHS
+-    /usr/include/qwt-qt4
+-    /usr/include/qwt
+-    /usr/local/include/qwt
+-)
+-
+-if("${qt_gui_cpp_USE_QT_MAJOR_VERSION} " STREQUAL "5 ")
+-  find_library(
+-    QWT_LIBRARIES
+-    NAMES
+-      qwt-qt5
+-  )
+-else()
+-  find_library(
+-    QWT_LIBRARIES
+-    NAMES
+-      qwt-qt4
+-      qwt
+-  )
+-endif()
++find_package(Qwt REQUIRED)
++find_package(Qt5Widgets REQUIRED)
+ 
+ catkin_python_setup()
+ 
+diff --git a/include/rqt_multiplot/PlotZoomer.h b/include/rqt_multiplot/PlotZoomer.h
+index f83be0d..0e319ab 100644
+--- a/include/rqt_multiplot/PlotZoomer.h
++++ b/include/rqt_multiplot/PlotZoomer.h
+@@ -19,6 +19,7 @@
+ #ifndef RQT_MULTIPLOT_PLOT_ZOOMER_H
+ #define RQT_MULTIPLOT_PLOT_ZOOMER_H
+ 
++#include <QPoint>
+ #include <qwt/qwt_plot_zoomer.h>
+ 
+ class QwtPlotCanvas;
+diff --git a/src/rqt_multiplot/CurveData.cpp b/src/rqt_multiplot/CurveData.cpp
+index 1b7480c..88f27dc 100644
+--- a/src/rqt_multiplot/CurveData.cpp
++++ b/src/rqt_multiplot/CurveData.cpp
+@@ -17,6 +17,7 @@
+  ******************************************************************************/
+ 
+ #include "rqt_multiplot/CurveData.h"
++#include <cmath>
+ 
+ namespace rqt_multiplot {
+ 
+@@ -39,36 +40,36 @@ double CurveData::getValue(size_t index, CurveConfig::Axis axis) const {
+     return getPoint(index).x();
+   else if (axis == CurveConfig::Y)
+     return getPoint(index).y();
+-    
++
+   return std::numeric_limits<double>::quiet_NaN();
+ }
+ 
+ QVector<size_t> CurveData::getPointsInDistance(double x, double maxDistance)
+     const {
+   QVector<size_t> indexes;
+-  
++
+   if (!isEmpty()) {
+     for (size_t index = 0; index < getNumPoints(); ++index) {
+-      double distance = fabs(x-getPoint(index).x());
+-      
++      double distance = std::fabs(x-getPoint(index).x());
++
+       if (distance <= maxDistance)
+         indexes.append(index);
+     }
+   }
+-  
++
+   return indexes;
+ }
+ 
+ QPair<double, double> CurveData::getAxisBounds(CurveConfig::Axis axis) const {
+   BoundingRectangle bounds = getBounds();
+-  
++
+   if (axis == CurveConfig::X)
+     return QPair<double, double>(bounds.getMinimum().x(),
+       bounds.getMaximum().x());
+   else if (axis == CurveConfig::Y)
+     return QPair<double, double>(bounds.getMinimum().y(),
+       bounds.getMaximum().y());
+-  
++
+   return QPair<double, double>();
+ }
+ 
+@@ -100,10 +101,10 @@ void CurveData::writeFormatted(QStringList& formattedX, QStringList&
+     formattedY) const {
+   formattedX.clear();
+   formattedY.clear();
+-  
++
+   for (size_t index = 0; index < getNumPoints(); ++index) {
+     QPointF point = getPoint(index);
+-    
++
+     formattedX.append(QString::number(point.x(), 'g', 20));
+     formattedY.append(QString::number(point.y(), 'g', 20));
+   }
+diff --git a/src/rqt_multiplot/CurveDataCircularBuffer.cpp b/src/rqt_multiplot/CurveDataCircularBuffer.cpp
+index f380b21..7674955 100644
+--- a/src/rqt_multiplot/CurveDataCircularBuffer.cpp
++++ b/src/rqt_multiplot/CurveDataCircularBuffer.cpp
+@@ -17,6 +17,7 @@
+  ******************************************************************************/
+ 
+ #include "rqt_multiplot/CurveDataCircularBuffer.h"
++#include <cmath>
+ 
+ namespace rqt_multiplot {
+ 
+@@ -49,34 +50,34 @@ size_t CurveDataCircularBuffer::getNumPoints() const {
+ 
+ QPointF CurveDataCircularBuffer::getPoint(size_t index) const {
+   const Point& point = points_[index];
+-  
++
+   return QPointF(point.x_, point.y_);
+ }
+ 
+ QVector<size_t> CurveDataCircularBuffer::getPointsInDistance(double x,
+     double maxDistance) const {
+   QVector<size_t> indexes;
+-      
++
+   XCoordinateRefMinHeap::ordered_iterator it = std::lower_bound(
+     xMin_.ordered_begin(), xMin_.ordered_end(), x-maxDistance);
+-  
++
+   while (it != xMin_.ordered_end()) {
+-    if (fabs(x-it->x_) <= maxDistance) {
++    if (std::fabs(x-it->x_) <= maxDistance) {
+       size_t index = it->index_;
+-      
++
+       if (points_.array_two().second) {
+         index = (index < points_.array_two().second) ?
+           index+points_.array_one().second :
+           index-points_.array_two().second;
+       }
+-      
++
+       indexes.push_back(index);
+       ++it;
+     }
+     else
+       break;
+   }
+-  
++
+   return indexes;
+ }
+ 
+@@ -84,11 +85,11 @@ BoundingRectangle CurveDataCircularBuffer::getBounds() const {
+   if (!points_.empty()) {
+     QPointF minimum(xMin_.top().x_, yMin_.top());
+     QPointF maximum(xMax_.top(), yMax_.top());
+-    
++
+     return BoundingRectangle(minimum, maximum);
+   }
+-  
+-  
++
++
+   return BoundingRectangle();
+ }
+ 
+@@ -99,13 +100,13 @@ BoundingRectangle CurveDataCircularBuffer::getBounds() const {
+ void CurveDataCircularBuffer::appendPoint(const QPointF& point) {
+   if (points_.full()) {
+     const Point& firstPoint = points_[0];
+-    
++
+     xMin_.erase(firstPoint.xMinHandle_);
+     xMax_.erase(firstPoint.xMaxHandle_);
+     yMin_.erase(firstPoint.yMinHandle_);
+     yMax_.erase(firstPoint.yMaxHandle_);
+   }
+-  
++
+   points_.push_back(point);
+   size_t index = points_.size()-1;
+ 
+@@ -113,16 +114,16 @@ void CurveDataCircularBuffer::appendPoint(const QPointF& point) {
+     index = (points_.array_one().first < points_.array_two().first) ?
+       &points_.back()-points_.array_one().first :
+       &points_.back()-points_.array_two().first;
+-  
++
+   points_.back().xMinHandle_ = xMin_.push(XCoordinateRef(point.x(), index));
+   points_.back().xMaxHandle_ = xMax_.push(point.x());
+   points_.back().yMinHandle_ = yMin_.push(point.y());
+-  points_.back().yMaxHandle_ = yMax_.push(point.y());  
++  points_.back().yMaxHandle_ = yMax_.push(point.y());
+ }
+ 
+ void CurveDataCircularBuffer::clearPoints() {
+   points_.clear();
+-  
++
+   xMin_.clear();
+   xMax_.clear();
+   yMin_.clear();
+diff --git a/src/rqt_multiplot/CurveDataVector.cpp b/src/rqt_multiplot/CurveDataVector.cpp
+index 17c86b1..099d733 100644
+--- a/src/rqt_multiplot/CurveDataVector.cpp
++++ b/src/rqt_multiplot/CurveDataVector.cpp
+@@ -17,6 +17,7 @@
+  ******************************************************************************/
+ 
+ #include "rqt_multiplot/CurveDataVector.h"
++#include <cmath>
+ 
+ namespace rqt_multiplot {
+ 
+@@ -45,18 +46,18 @@ QPointF CurveDataVector::getPoint(size_t index) const {
+ QVector<size_t> CurveDataVector::getPointsInDistance(double x, double
+     maxDistance) const {
+   QVector<size_t> indexes;
+-      
++
+   XCoordinateRefSet::const_iterator it = x_.lower_bound(x-maxDistance);
+-  
++
+   while (it != x_.end()) {
+-    if (fabs(x-it->x_) <= maxDistance) {
++    if (std::fabs(x-it->x_) <= maxDistance) {
+       indexes.push_back(it->index_);
+       ++it;
+     }
+     else
+       break;
+   }
+-  
++
+   return indexes;
+ }
+ 
+@@ -70,22 +71,22 @@ BoundingRectangle CurveDataVector::getBounds() const {
+ 
+ void CurveDataVector::appendPoint(const QPointF& point) {
+   bounds_ += point;
+-  
++
+   if (points_.capacity() < points_.count()+1)
+     points_.reserve(points_.capacity() ? 2*points_.capacity() : 1);
+-    
++
+   points_.append(point);
+-  
++
+   if (x_.capacity() < x_.size()+1)
+     x_.reserve(x_.capacity() ? 2*x_.capacity() : 1);
+-    
++
+   x_.insert(XCoordinateRef(point.x(), points_.size()-1));
+ }
+ 
+ void CurveDataVector::clearPoints() {
+   points_.clear();
+   x_.clear();
+-  
++
+   bounds_.clear();
+ }
+ 
+diff --git a/src/rqt_multiplot/PlotCursor.cpp b/src/rqt_multiplot/PlotCursor.cpp
+index 0b9a7cf..c30c7f8 100644
+--- a/src/rqt_multiplot/PlotCursor.cpp
++++ b/src/rqt_multiplot/PlotCursor.cpp
+@@ -24,11 +24,13 @@
+ #include <QPainter>
+ #include <QPen>
+ #include <QResizeEvent>
++#include <QtMath>
+ 
+ #include <qwt/qwt_plot.h>
+ #include <qwt/qwt_plot_canvas.h>
+ #include <qwt/qwt_plot_curve.h>
+ #include <qwt/qwt_scale_widget.h>
++#include <qwt/qwt_scale_map.h>
+ 
+ #include <rqt_multiplot/CurveData.h>
+ #include <rqt_multiplot/PlotCursorMachine.h>
+diff --git a/src/rqt_multiplot/PlotCursorMachine.cpp b/src/rqt_multiplot/PlotCursorMachine.cpp
+index 0069463..97ef837 100644
+--- a/src/rqt_multiplot/PlotCursorMachine.cpp
++++ b/src/rqt_multiplot/PlotCursorMachine.cpp
+@@ -17,6 +17,7 @@
+  ******************************************************************************/
+ 
+ #include <QEvent>
++#include <QList>
+ 
+ #include "rqt_multiplot/PlotCursorMachine.h"
+ 
+diff --git a/src/rqt_multiplot/PlotCurve.cpp b/src/rqt_multiplot/PlotCurve.cpp
+index 68d65b1..84ac3bc 100644
+--- a/src/rqt_multiplot/PlotCurve.cpp
++++ b/src/rqt_multiplot/PlotCurve.cpp
+@@ -16,6 +16,7 @@
+  * along with this program. If not, see <http://www.gnu.org/licenses/>.       *
+  ******************************************************************************/
+ 
++#include <QPen>
+ #include <rqt_multiplot/CurveDataCircularBuffer.h>
+ #include <rqt_multiplot/CurveDataList.h>
+ #include <rqt_multiplot/CurveDataListTimeFrame.h>
+@@ -39,10 +40,10 @@ PlotCurve::PlotCurve(QObject* parent) :
+   dataSequencer_(new CurveDataSequencer(this)),
+   paused_(true) {
+   qRegisterMetaType<BoundingRectangle>("BoundingRectangle");
+-  
+-  connect(dataSequencer_, SIGNAL(pointReceived(const QPointF&)), 
++
++  connect(dataSequencer_, SIGNAL(pointReceived(const QPointF&)),
+     this, SLOT(dataSequencerPointReceived(const QPointF&)));
+-  
++
+   setData(data_);
+ }
+ 
+@@ -69,12 +70,12 @@ void PlotCurve::setConfig(CurveConfig* config) {
+         SLOT(configStyleConfigChanged()));
+       disconnect(config_->getDataConfig(), SIGNAL(changed()), this,
+         SLOT(configDataConfigChanged()));
+-      
++
+       dataSequencer_->setConfig(0);
+     }
+-    
++
+     config_ = config;
+-    
++
+     if (config) {
+       connect(config, SIGNAL(titleChanged(const QString&)), this,
+         SLOT(configTitleChanged(const QString&)));
+@@ -89,14 +90,14 @@ void PlotCurve::setConfig(CurveConfig* config) {
+         SLOT(configStyleConfigChanged()));
+       connect(config->getDataConfig(), SIGNAL(changed()), this,
+         SLOT(configDataConfigChanged()));
+-      
++
+       configTitleChanged(config->getTitle());
+       configAxisConfigChanged();
+       configColorConfigCurrentColorChanged(config->getColorConfig()->
+         getCurrentColor());
+       configStyleConfigChanged();
+       configDataConfigChanged();
+-      
++
+       dataSequencer_->setConfig(config);
+     }
+   }
+@@ -109,7 +110,7 @@ CurveConfig* PlotCurve::getConfig() const {
+ void PlotCurve::setBroker(MessageBroker* broker) {
+   if (broker != broker_) {
+     broker_ = broker;
+-    
++
+     dataSequencer_->setBroker(broker);
+   }
+ }
+@@ -129,11 +130,11 @@ CurveDataSequencer* PlotCurve::getDataSequencer() const {
+ QPair<double, double> PlotCurve::getPreferredAxisScale(CurveConfig::Axis axis)
+     const {
+   QPair<double, double> axisBounds(0.0, -1.0);
+-  
++
+   if (config_) {
+     CurveAxisScaleConfig* axisScaleConfig = config_->getAxisConfig(axis)->
+       getScaleConfig();
+-    
++
+     if (axisScaleConfig->getType() == CurveAxisScaleConfig::Absolute) {
+       axisBounds.first = axisScaleConfig->getAbsoluteMinimum();
+       axisBounds.second = axisScaleConfig->getAbsoluteMaximum();
+@@ -141,7 +142,7 @@ QPair<double, double> PlotCurve::getPreferredAxisScale(CurveConfig::Axis axis)
+     else if (axisScaleConfig->getType() == CurveAxisScaleConfig::Relative) {
+       if (!data_->isEmpty()) {
+         size_t index = data_->getNumPoints()-1;
+-        
++
+         axisBounds.first = data_->getValue(index, axis)+axisScaleConfig->
+           getRelativeMinimum();
+         axisBounds.second = data_->getValue(index, axis)+axisScaleConfig->
+@@ -151,7 +152,7 @@ QPair<double, double> PlotCurve::getPreferredAxisScale(CurveConfig::Axis axis)
+     else
+       axisBounds = data_->getAxisBounds(axis);
+   }
+-  
++
+   return axisBounds;
+ }
+ 
+@@ -200,7 +201,7 @@ void PlotCurve::pause() {
+ 
+ void PlotCurve::clear() {
+   data_->clearPoints();
+-  
++
+   emit replotRequested();
+ }
+ 
+@@ -218,25 +219,25 @@ void PlotCurve::configAxisConfigChanged() {
+ 
+ void PlotCurve::configColorConfigCurrentColorChanged(const QColor& color) {
+   setPen(color);
+-  
++
+   emit replotRequested();
+ }
+ 
+ void PlotCurve::configStyleConfigChanged() {
+   rqt_multiplot::CurveStyleConfig* styleConfig = config_->getStyleConfig();
+-  
++
+   if (styleConfig->getType() == rqt_multiplot::CurveStyleConfig::Sticks) {
+     setStyle(QwtPlotCurve::Sticks);
+-    
++
+     setOrientation(styleConfig->getSticksOrientation());
+     setBaseline(styleConfig->getSticksBaseline());
+   }
+   else if (styleConfig->getType() == rqt_multiplot::CurveStyleConfig::
+       Steps) {
+     setStyle(QwtPlotCurve::Steps);
+-    
++
+     setCurveAttribute(QwtPlotCurve::Inverted, styleConfig->
+-      areStepsInverted());    
++      areStepsInverted());
+   }
+   else if (styleConfig->getType() == rqt_multiplot::CurveStyleConfig::
+       Points) {
+@@ -244,21 +245,21 @@ void PlotCurve::configStyleConfigChanged() {
+   }
+   else {
+     setStyle(QwtPlotCurve::Lines);
+-    
++
+     setCurveAttribute(QwtPlotCurve::Fitted, styleConfig->
+-      areLinesInterpolated());    
++      areLinesInterpolated());
+   }
+-  
++
+   QPen pen = QwtPlotCurve::pen();
+ 
+   pen.setWidth(styleConfig->getPenWidth());
+   pen.setStyle(styleConfig->getPenStyle());
+-  
++
+   setPen(pen);
+-  
++
+   setRenderHint(QwtPlotItem::RenderAntialiased, styleConfig->
+     isRenderAntialiased());
+-  
++
+   emit replotRequested();
+ }
+ 
+@@ -273,20 +274,20 @@ void PlotCurve::configDataConfigChanged() {
+     data_ = new CurveDataListTimeFrame(config->getTimeFrameLength());
+   else
+     data_ = new CurveDataVector();
+-  
++
+   setData(data_);
+-  
++
+   emit replotRequested();
+ }
+ 
+ void PlotCurve::dataSequencerPointReceived(const QPointF& point) {
+   if (!paused_) {
+     BoundingRectangle oldBounds = getPreferredScale();
+-    
++
+     data_->appendPoint(point);
+-    
++
+     BoundingRectangle bounds = getPreferredScale();
+-    
++
+     if (bounds != oldBounds)
+       emit preferredScaleChanged(bounds);
+ 
