@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-j1010dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J1010DW
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcj1010dw_us_eu_as
+	install = brother-mfc-j1010dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	optdepends = scan-key-tool
+	source = https://download.brother.com/welcome/dlf105353/mfcj1010dwpdrv-3.5.0-1.i386.rpm
+	sha256sums = 6cbee398c4f961d4918767c26bb443977acba7e1897cb5f959b6350c80462e74
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j1010dw

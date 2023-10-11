@@ -1,0 +1,79 @@
+PREFIX=/usr/share
+
+printer_model=""mfcj1010dw""
+printer_name=`echo $printer_model | tr '[a-z]' '[A-Z]'`
+device_name=`echo $printer_name | eval sed -e 's/MFC/MFC-/' -e 's/DCP/DCP-/' -e 's/HL/HL-/' -e 's/FAX/FAX-/'`
+
+ppd_file_name=$PREFIX/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+
+post_install() {
+  post_upgrade;
+
+  echo "Then register the new printer at \"http://localhost:631/\"."
+  print_lpadmin;
+
+  apply_selinux_policy;
+}
+
+post_upgrade() {
+  echo "First, restart CUPS (cups.service) in order to load the new files, e.g. systemctl restart cups.service"
+}
+
+apply_selinux_policy() {
+  if [ "$(which semanage 2> /dev/null)" != '' ];then
+    semanage fcontext -a -t cupsd_rw_etc_t '/opt/brother/Printers/'${printer_model}'/inf(/.*)?'
+    semanage fcontext -a -t bin_t          '/opt/brother/Printers/'${printer_model}'/lpd(/.*)?'
+    semanage fcontext -a -t bin_t          '/opt/brother/Printers/'${printer_model}'/cupswrapper(/.*)?'
+    if [ "$(which restorecon 2> /dev/null)" != '' ];then
+      restorecon -R /opt/brother/Printers/${printer_model}
+    fi
+  fi
+}
+
+print_lpadmin() {
+  uris=$(lpinfo -v)
+
+  for uri in $uris
+  do
+    URI=$(echo $uri | grep ${device_name} | grep usb)
+    if [ "$URI" != '' ];then
+      break;
+    fi
+  done
+
+  if [ "$URI" = '' ];then
+    for uri in $uris
+    do
+      URI=$(echo $uri | grep ${device_name} )
+      if [ "$URI" != '' ];then
+        break;
+      fi
+    done
+  fi
+
+  if [ "$URI" = '' ];then
+    for uri in $uris
+    do
+      URI=$(echo $uri | grep -i Brother | grep usb )
+      if [ "$URI" != '' ];then
+        break;
+      fi
+    done
+  fi
+
+  if [ "$URI" = '' ];then
+    for uri in $uris
+    do
+      URI=$(echo $uri | grep usb )
+      if [ "$URI" != '' ];then
+        break;
+      fi
+    done
+  fi
+
+  if [ "$URI" = '' ];then
+    URI="usb://dev/usb/lp0"
+  fi
+
+  echo "or execute 'lpadmin -p ${printer_name} -E -v $URI -P ${ppd_file_name}'"
+}
