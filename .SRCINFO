@@ -1,26 +1,23 @@
 pkgbase = xperia-flashtool-git
 	pkgdesc = A S1 protocol flashing software for Sony Xperia phones
-	pkgver = master
+	pkgver = 0.9.24.2.r151.g7529dce
 	pkgrel = 1
 	url = http://www.flashtool.net/
 	arch = x86_64
 	license = GPL3+
-	makedepends = p7zip
-	makedepends = ant
-	makedepends = gcc
-	makedepends = expat
-	makedepends = zlib
-	makedepends = make
+	makedepends = git
+	makedepends = base-devel
+	makedepends = gradle
 	makedepends = java-environment-common
-	depends = libselinux
-	depends = libsystemd
+	makedepends = mono-tools
+	depends = systemd-libs
 	depends = glib2
 	depends = mono
-	depends = java-environment
-	source = git://github.com/Androxyde/Flashtool
-	source = Flashtool.desktop
+	depends = java-environment-common
+	options = !strip
+	source = Flashtool::git+https://github.com/Androxyde/Flashtool#branch=master
+	source = xperia-flashtool.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = xperia-flashtool-git
-
