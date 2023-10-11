@@ -1,0 +1,12 @@
+pkgbase = lzsa
+	pkgdesc = Byte-aligned, efficient lossless packer for fast decompression on 8-bit micros
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/emmanuel-marty/lzsa
+	arch = x86_64
+	license = zlib
+	makedepends = clang
+	source = https://github.com/emmanuel-marty/lzsa/archive/refs/tags/1.4.1.tar.gz
+	sha256sums = c65ca1e6a43696f4ca5edc2c98229fba1044806bd21bc2a8ce4b867dc9cfc45c
+
+pkgname = lzsa
