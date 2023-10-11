@@ -1,12 +1,15 @@
 # Maintainer: FirstAirBender <noblechuk5 at web dot de>
 pkgname=crowdsec-nginx-bouncer
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://doc.crowdsec.net/docs/bouncers/nginx"
 _giturl="https://github.com/crowdsecurity/cs-nginx-bouncer"
 license=('MIT')
+replaces=('cs-nginx-bouncer')
+provides=('cs-nginx-bouncer')
+conflicts=('cs-nginx-bouncer')
 depends=(
 	'crowdsec'
 	'nginx-mainline-mod-lua'
@@ -29,8 +32,8 @@ source=(
 	"cs-nginx-bouncer.install"
 )
 sha256sums=('2bb65903558598fc72c20de512267cbf0759d79f0e038c5a3b8ecf2626470d3f'
-	'48b8356f3652ae766496a28714a661c30c9616c12b9cb39ff75dfa78f4677f99'
-	'6f11751ebbbedcf88ba9a08697b2d33f457caa4c57bf46722a67d2018b568607')
+            '48b8356f3652ae766496a28714a661c30c9616c12b9cb39ff75dfa78f4677f99'
+            '6f11751ebbbedcf88ba9a08697b2d33f457caa4c57bf46722a67d2018b568607')
 
 prepare() {
 	cd "$pkgname-v$pkgver"
