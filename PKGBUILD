@@ -43,9 +43,10 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$_cmd_name"
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
     mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/"
     "$_cmd_name" --bpaf-complete-style-zsh > "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
     "$_cmd_name" --bpaf-complete-style-bash > "$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
-    # TODO: Where do completions for these go?
-    #"$_cmd_name" --bpaf-complete-style-fish
+    "$_cmd_name" --bpaf-complete-style-fish > "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname%-git}.fish"
+    # TODO: Where do completions for elvish go?
     #"$_cmd_name" --bpaf-complete-style-elvish
 }
