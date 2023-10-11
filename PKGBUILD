@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager-git
-pkgver=2.1.0.r0.351a1c2
+pkgver=2.1.5.r0.3a60643
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
@@ -10,9 +10,7 @@ depends=('openssl')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=
 source=('chezmoi_modify_manager::git+https://github.com/VorpalBlade/chezmoi_modify_manager')
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
