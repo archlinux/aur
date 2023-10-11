@@ -2,7 +2,7 @@
 
 #  shellcheck disable=SC2034
 pkgname=jetporch-git
-pkgver=r236.50a0f04
+pkgver=r292.807c5e9
 pkgrel=1
 pkgdesc='Jet is a general-purpose, community-driven IT automation platform for configuration, deployment, orchestration, patching, and arbitrary task execution workflows.'
 #arch=('i686' 'x86_64' 'armv6h')
@@ -36,4 +36,5 @@ package() {
   cd "$_gitname"
   install -Dm755 target/release/jetp "${pkgdir}/usr/bin/jetp"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
+  cp -R examples "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 }
