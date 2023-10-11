@@ -4,7 +4,7 @@
 
 pkgname=thunar-archive-plugin-zstd
 _pkgname=thunar-archive-plugin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="thunar-archive-plugin with added zstd support"
 arch=('x86_64')
@@ -12,8 +12,8 @@ url="https://docs.xfce.org/xfce/thunar/archive"
 license=('GPL2')
 conflicts=('thunar-archive-plugin')
 provides=('thunar-archive-plugin')
-depends=('thunar' 'hicolor-icon-theme')
-makedepends=('intltool' 'xfce4-dev-tools' 'zstd')
+depends=('thunar' 'hicolor-icon-theme' 'zstd')
+makedepends=('intltool' 'xfce4-dev-tools')
 optdepends=('file-roller'
             'engrampa'
             'ark'
@@ -21,8 +21,8 @@ optdepends=('file-roller'
 source=("https://archive.xfce.org/src/thunar-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
         "zstd.patch")
 
-sha256sums=('8eca88a358282a5acdea72984db0d930efdf658b4bc5b82ef7bcd06224366ffa'
-            '949175314d08d268b4747e7b13a3ba966056ffe50e8ab5335f216eca8949d6df')
+sha256sums=('a81b3ab1d3cd77c7b3d6db15b37a3c12d65b06e373edc3c21083f02d605d8bed'
+            '89984f89cc4af0072467e681e4d0a753ec118c62a4ccfe5a733425649e1b11c8')
 
 prepare() {
   patch -p1 -u -i "$srcdir/zstd.patch"
