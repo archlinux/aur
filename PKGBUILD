@@ -2,7 +2,7 @@
 pkgdesc="Gnome: Organize the items of the top (menu)bar"
 _pkgname="top-bar-organizer"
 pkgname="gnome-shell-extension-${_pkgname}"
-pkgver=9
+pkgver=10
 pkgrel=1
 arch=(any)
 url="https://gitlab.gnome.org/julianschacher/top-bar-organizer"
@@ -13,7 +13,9 @@ makedepends=(
   git
   glib2
 )
-
+depends=(
+  "gnome-shell>=1:45.0"
+)
 build() {
   cd "${_pkgname}-v${pkgver}" || return
   glib-compile-schemas data/
