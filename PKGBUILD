@@ -1,6 +1,6 @@
 # Maintainer: Jan Trefil <hjantrefil@gmail.com>
 pkgname="rkvm"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Virtual KVM switch for Linux machines"
 # This is a conservative estimate.
@@ -12,7 +12,7 @@ depends=("libevdev>=1.9.0")
 makedepends=("cargo" "clang" "pkgconf")
 optdepends=("openssl: certificate generation")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/htrefil/rkvm/archive/refs/tags/$pkgver.tar.gz")
-md5sums=("c6e247877065faefcf33cfad57c3a712")
+md5sums=("8f1eeece1f60a233097c87ccfb44b402")
 
 prepare() {
     cd "$pkgname-$pkgver"
