@@ -19,7 +19,7 @@ pkgname=(
   pipewire-common-v4l2-git
   pipewire-common-x11-bell-git
 )
-pkgver=0.3.81.r36.ge90bf470
+pkgver=0.3.81.r48.g15e14946
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -94,6 +94,7 @@ build() {
     -D rlimits-install=false
     -D session-managers=[]
     -D udevrulesdir=/usr/lib/udev/rules.d
+    -D selinux=disabled
     -D jack=disabled
     -D vulkan=disabled
     -D ffmpeg=disabled
