@@ -1,10 +1,10 @@
 pkgbase = weather-gtk4
 	pkgdesc = Beautiful and lightweight weather app build using Gtk4, Libadwaita and Python
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amit9838/weather
-	arch = aarch64
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = git
