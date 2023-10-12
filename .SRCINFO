@@ -1,12 +1,12 @@
 pkgbase = rymdport
 	pkgdesc = Cross-platform application for easy encrypted sharing of files, folders, and text between devices.
-	pkgver = 3.4.0
+	pkgver = 3.5.1
 	pkgrel = 2
 	url = https://github.com/Jacalz/rymdport
 	arch = x86_64
 	license = GPLv3
 	makedepends = go
-	source = https://github.com/Jacalz/rymdport/archive/refs/tags/v3.4.0.tar.gz
-	sha256sums = 7e284a2baba6c795f4933eb8d2a6d1a5f6f765295853776921c57e9bed550d5f
+	source = https://github.com/Jacalz/rymdport/archive/refs/tags/v3.5.1.tar.gz
+	sha256sums = fac4b8fd0d3d5e10bdfdf2f0c500eeafe42a8bf3028c957f29c02d7c377fa74b
 
 pkgname = rymdport
