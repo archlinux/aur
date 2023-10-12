@@ -1,0 +1,13 @@
+pkgbase = python-typed-ast
+	pkgdesc = a fork of Python 2 and 3 ast modules with type comment support
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://github.com/python/typed_ast
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = python-typed-ast-1.5.5.tar.gz::https://github.com/python/typed_ast/archive/1.5.5.tar.gz
+	sha256sums = 2e635e70f60b0a69c3e332e4bbbf1afc9140f64418025917df4dd97fc49bbba8
+
+pkgname = python-typed-ast
