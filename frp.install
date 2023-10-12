@@ -4,6 +4,10 @@ pre_upgrade() {
 		echo -e '\tBe sure to read the release notes before upgrading'
 		echo -e '\tSee https://github.com/fatedier/frp/releases/tag/v0.52.0\n'
 	fi
+
+	if (( $(vercmp "$2" "0.52.1-2") < 0 )); then
+		echo -e '\t** New configuration file changes: https://github.com/fatedier/frp#configuration-files **'
+	fi
 }
 
 post_upgrade() {

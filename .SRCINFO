@@ -1,7 +1,7 @@
 pkgbase = frp-bin
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
 	pkgver = 0.52.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fatedier/frp
 	install = frp.install
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgname = frpc-bin
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet. (Client)
 	provides = frpc
 	conflicts = frpc
+	backup = etc/frp/frpc.toml
 	backup = etc/frp/frpc.ini
 	backup = etc/frp/frpc_full.ini
 
@@ -32,5 +33,6 @@ pkgname = frps-bin
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet. (Server)
 	provides = frps
 	conflicts = frps
+	backup = etc/frp/frps.toml
 	backup = etc/frp/frps.ini
 	backup = etc/frp/frps_full.ini

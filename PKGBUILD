@@ -4,7 +4,7 @@ _pkgbase='frp'
 pkgbase='frp-bin'
 pkgname=('frpc-bin' 'frps-bin')
 pkgver=0.52.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 license=('Apache')
@@ -31,7 +31,7 @@ packaging() {
 
 	install -Dm755 "${_srcdir}/${1}" "${pkgdir}/usr/bin/${1}"
 
-	install -Dm640 "${_srcdir}/${1}"{,_full}.ini -t "${pkgdir}/etc/frp/"
+	install -Dm640 "${_srcdir}/${1}".toml -t "${pkgdir}/etc/frp/"
 
 	install -Dm644 "${srcdir}/${1}".service "${pkgdir}/usr/lib/systemd/system/${1}".service
 }
@@ -40,7 +40,7 @@ package_frpc-bin() {
 	pkgdesc="$pkgdesc (Client)"
 	provides=("${pkgname//-bin/}")
 	conflicts=("${pkgname//-bin/}")
-	backup=("etc/frp/${pkgname//-bin/}"{,_full}.ini)
+	backup=("etc/frp/${pkgname//-bin/}"{.toml,{,_full}.ini})
 
 	packaging "${pkgname//-bin/}"
 }
@@ -49,7 +49,7 @@ package_frps-bin() {
 	pkgdesc="$pkgdesc (Server)"
 	provides=("${pkgname//-bin/}")
 	conflicts=("${pkgname//-bin/}")
-	backup=("etc/frp/${pkgname//-bin/}"{,_full}.ini)
+	backup=("etc/frp/${pkgname//-bin/}"{.toml,{,_full}.ini})
 
 	packaging "${pkgname//-bin/}"
 }
