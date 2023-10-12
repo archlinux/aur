@@ -7,10 +7,9 @@ pkgbase = xcsyncd
 	arch = x86_64
 	makedepends = gengetopt
 	conflicts = xcsyncd-git
-	source = git://github.com/reconquest/xcsyncd.git#commit=d457f7a1eb5d4fd43300d5a0946049c37cfb286d
+	source = git+https://github.com/reconquest/xcsyncd.git#commit=d457f7a1eb5d4fd43300d5a0946049c37cfb286d
 	source = makefile.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = xcsyncd
-
