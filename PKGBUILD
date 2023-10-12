@@ -1,27 +1,20 @@
-# Maintainer: WoefulDerelict <WoefulDerelict at GMail dot com>
+# Contributor: WoefulDerelict <WoefulDerelict at GMail dot com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=ladish-git
-pkgver=1.r49.gc5f340d0
+pkgver=1.r126.g71c8e1cf
 pkgrel=1
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
-url="https://github.com/LADI/ladish"
-license=('GPL2')
-depends=('a2jmidid' 'boost' 'dbus-glib' 'flowcanvas<=0.7.1' 'jack' 'laditools-git' 'python2')
-makedepends=('git' 'intltool')
+url="https://ladish.org"
+license=('GPL2' 'custom:AFL2.1')
+depends=('a2jmidid' 'cdbus' 'dbus-glib' 'dbus-python' 'expat' 'glibc' 'gtkmm' 'jack2-dbus' 'libgnomecanvasmm' 'python' 'util-linux-libs')
+makedepends=('boost' 'git' 'intltool')
+optdepends=('laditools: Provides ladi-control-center the default JACK configuration tool in gladish')
 provides=("${pkgname%-*}" 'lash')
 conflicts=("${pkgname%-*}" 'lash')
-source=("${pkgname%-*}::git+https://github.com/alessio/ladish.git")
-sha512sums=('SKIP')
-_branch=master
-
-prepare() {
-  cd "${pkgname%-*}"
-  git checkout ${_branch}
-  sed -i "s|env python|&2|" ladish_control
-  sed -i "s|\(RELEASE = \).*|\1True|" wscript
-}
+source=("${pkgname%-*}::git+https://gitea.ladish.org/LADI/ladish.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
@@ -33,15 +26,21 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}"
-  export PYTHON=/usr/bin/python2
-  export CXX='g++ -std=c++11'
-  python2 waf configure --prefix=/usr \
-              --enable-liblash \
-              --enable-pylash
-  python2 waf
+#  The meson build currently lacks key files, including the dbus .service files, and is not ready for deployment.
+#  When migrating add 'meson' and 'cmake' to the makedepends array.
+
+#  meson setup --prefix /usr --auto-features enabled --wrap-mode nodownload -D b_lto=true -D b_pie=true -D python.bytecompile=1 build
+#  meson compile -C build
+
+  ./waf configure --prefix=/usr \
+                  --enable-gladish \
+                  --enable-liblash
+  ./waf
 }
 
 package() {
   cd "${pkgname%-*}"
-  python2 waf install --destdir="${pkgdir}/"
+#  meson install -C build --destdir "$pkgdir"
+  ./waf install --destdir="${pkgdir}"
+  install -Dm644 afl21.txt "$pkgdir/usr/share/licenses/$pkgname/AFL-2.1.txt"
 }
