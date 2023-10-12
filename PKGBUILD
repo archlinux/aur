@@ -19,7 +19,7 @@ source=(
 )
 
 md5sums=('d5e93fde3669e853e5da3f571ee9c21b'
-         'b3e17700113326a2d67d50d109603379')
+         'b5571178bc45ef76662883dd35e20439')
 
 build() {
   patch "$pkgname-$pkgver"/Makefile Makefile.patch
@@ -49,7 +49,7 @@ check () {
 package() {
   cd "$pkgname-$pkgver"
 
-  make PREFIX="${pkgdir}" LOCALBASE="$pkgdir/usr" install
+  make PREFIX="${pkgdir}/usr" LOCALBASE="$pkgdir/usr" install
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,15 +1,16 @@
 pkgbase = open-usp-tukubai
 	pkgdesc = An open source version of shell commands usp Tukubai.
-	pkgver = 2014061402
-	pkgrel = 2
+	pkgver = 20230322
+	pkgrel = 1
 	url = https://uec.usp-lab.com/TUKUBAI/CGI/TUKUBAI.CGI
 	arch = any
-	license = custom:"MIT"
-	depends = python2
-	source = https://uec.usp-lab.com/TUKUBAI/DOWNLOAD/open-usp-tukubai-2014061402.tar.bz2
-	source = https://gist.githubusercontent.com/MasWag/76a89b3c3056753d1d31/raw/e1d8f62e81618733b1138dd23f1dde0f7e13a32b/Makefile.patch
-	md5sums = be4f69734afd2bdc74d07fc705380c6e
-	md5sums = 14e3dee8ccf6bd0c3cc8e2c2299be33d
+	license = MIT
+	license = custom
+	depends = python
+	conflicts = open-usp-tukubai-git
+	source = https://uec.usp-lab.com/TUKUBAI/DOWNLOAD/open-usp-tukubai-20230322.tar.bz2
+	source = https://gist.githubusercontent.com/MasWag/76a89b3c3056753d1d31/raw/280803d2cca5ad788184554271494941e6adaaa8/Makefile.patch
+	md5sums = d5e93fde3669e853e5da3f571ee9c21b
+	md5sums = b5571178bc45ef76662883dd35e20439
 
 pkgname = open-usp-tukubai
-
