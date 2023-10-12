@@ -22,7 +22,7 @@ pkgname=(
   pipewire-full-vulkan-git
   pipewire-full-ffmpeg-git
 )
-pkgver=0.3.81.r33.g4b940100
+pkgver=0.3.81.r48.g15e14946
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -107,6 +107,7 @@ build() {
     -D rlimits-install=false
     -D session-managers=[]
     -D udevrulesdir=/usr/lib/udev/rules.d
+    -D selinux=disabled
     -D jack-link-pipewire-jack=enabled
     -D vulkan=enabled
     -D pw-cat-ffmpeg=enabled

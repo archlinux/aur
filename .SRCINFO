@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.81.r33.g4b940100
+	pkgver = 0.3.81.r48.g15e14946
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgname = pipewire-full-git
 	license = LGPL
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-full-git=0.3.81.r33.g4b940100-1
+	depends = libpipewire-full-git=0.3.81.r48.g15e14946-1
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
