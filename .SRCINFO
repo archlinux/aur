@@ -1,7 +1,7 @@
 pkgbase = gz-sim8
 	pkgdesc = Open source robotics simulator
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-sim
 	arch = any
 	license = Apache
