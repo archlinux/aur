@@ -1,0 +1,18 @@
+pkgbase = multiplex
+	pkgdesc = Watch torrents with your friends.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/pojntfx/${pkgname}
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = git
+	makedepends = go>=1.20.3
+	depends = gtk4>=4.10.3
+	depends = gobject-introspection
+	depends = libadwaita>=1.3.2
+	depends = mpv
+	source = https://github.com/pojntfx/multiplex/archive/refs/tags/v0.1.2.tar.gz
+	sha512sums = 5f311c2ebdd324856fce6c81f8733571abf8d175def9666fb177fa46dfbc482d0787fab98284c32ac8468f2ef16efc23530c4fcbfdcf71735953f95b70614570
+
+pkgname = multiplex
