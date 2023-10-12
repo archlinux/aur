@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-compass
-pkgver=1.40.2
+pkgver=1.40.3
 pkgrel=1
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
 optdepends=('org.freedesktop.secrets')
 source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-b2sums=('fa9398c45340edf31fa2a074f474dc6ea7644688c38fafb571ca1abd7fb95c8cf42f1d98f25fbd777d5ce58d7dd13fbd28489d1d2d03362a144df486b3432130')
+b2sums=('af456ffed84d903f837fa40f361479f594a1189fbf697b603376896931c9fddd1237b41b8887891f9a5d491b3bbe2e15f6c63603798250068d87e282bba78e8d')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
@@ -19,6 +19,8 @@ package() {
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
     find "${pkgdir}" -type f -exec chmod 644 {} +
+    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/chrome_crashpad_handler
+    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/chrome-sandbox
     chmod +x "${pkgdir}"/usr/lib/mongodb-compass/"MongoDB Compass"
 
     # Remove all unnecessary stuff
