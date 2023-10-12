@@ -9,7 +9,7 @@ post_install() {
     IFS=: read HOST PORT <<< `cscli config show --key "Config.API.Server.ListenURI"`
     export CROWDSEC_LAPI_URL="http://${HOST:-'127.0.0.1'}:${PORT:-'8080'}"
 
-    sed -iE "s|^(api_url\s*:).*|\1 $CROWDSEC_LAPI_URL|" /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
+    sed -Ei "s|^(api_url\s*:).*|\1 $CROWDSEC_LAPI_URL|" /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
 
     systemctl daemon-reload
     systemctl enable --now crowdsec-firewall-bouncer
@@ -22,5 +22,7 @@ post_remove() {
     fi
 
     systemctl daemon-reload
-    systemctl disable --now crowdsec-firewall-bouncer
+    if systemctl is-enabled -q crowdsec-firewall-bouncer; then
+        systemctl disable --now crowdsec-firewall-bouncer
+    fi
 }
