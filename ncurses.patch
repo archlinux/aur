@@ -1,18 +1,18 @@
---- 1/GNUmakef.def
-+++ 2/GNUmakef.def
-@@ -159,10 +159,11 @@
- LIBEXT=.a
- CFLAGS+=-DHAVE_SNPRINTF -DHAVE_VSNPRINTF -DHAVE_STDARG_H
- ifeq ($(WIDE_NCURSES),1)
--CFLAGS+=-I/usr/include/ncursesw/
--LIBCURSES=-lncursesw
-+LIBCURSES=-L../../ncurses/usr/lib/ncurses-golded/lib -lncursesw
-+CFLAGS+=-I../../ncurses/usr/lib/ncurses-golded/include
- else
--LIBCURSES=-lncurses
-+LIBCURSES=-L../../ncurses/usr/lib/ncurses-golded/lib -lncurses
-+CFLAGS+=-I../../ncurses/usr/lib/ncurses-golded/include
- endif
+--- a/GNUmakef.def
++++ b/GNUmakef.def
+@@ -160,10 +160,11 @@
+     LIBEXT=.a
+     CFLAGS+=-DHAVE_SNPRINTF -DHAVE_VSNPRINTF -DHAVE_STDARG_H
+     ifeq ($(WIDE_NCURSES),1)
+-        CFLAGS+=-I/usr/include/ncursesw/
+-        LIBCURSES=-lncursesw
++        LIBCURSES=-L../../ncurses/usr/lib/ncurses-golded/lib -lncursesw
++        CFLAGS+=-I../../ncurses/usr/lib/ncurses-golded/include
+     else
+-        LIBCURSES=-lncurses
++        LIBCURSES=-L../../ncurses/usr/lib/ncurses-golded/lib -lncurses
++        CFLAGS+=-I../../ncurses/usr/lib/ncurses-golded/include
+     endif
  endif
  endif
 --- 1/GNUmakef.prg	2021-12-18 20:20:18.934724854 +0200

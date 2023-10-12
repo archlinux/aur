@@ -1,5 +1,5 @@
 pkgname=golded-plus-git
-pkgver=r1569.e823d0f
+pkgver=r1602.f535cc7
 _ncurses_pkgver=6.2
 _ncurses="ncurses"
 pkgrel=1
@@ -95,5 +95,5 @@ package() {
 
 sha256sums=('SKIP'
             '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
-            'd1fbfeec65ace3ca7b8fc121e21c7896bcce825d5738b670060cdacde13918d6'
+            '3fbd050b9d087f2d386c3208115b11175ba0c6e728dc936c5d77cd244e83c6c3'
             'f8c52480a056045a4ef8adcce6c820d448a2c6b7096940a4fbfc970dfe9c8738')
