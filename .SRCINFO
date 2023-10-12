@@ -1,7 +1,7 @@
 pkgbase = r-slider
 	pkgdesc = Sliding Window Functions
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=slider
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = r-slider
 	optdepends = r-lubridate
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/slider_0.3.0.tar.gz
-	sha256sums = bc6a17ba5f0b27c8504a1d04992108470f24fd5662fbea14c300ac75fb02fca1
+	source = https://cran.r-project.org/src/contrib/slider_0.3.1.tar.gz
+	sha256sums = 200a26795fadb2058e3976af7a697dde7f120645279cfe2580b8c0d6c0a429b0
 
 pkgname = r-slider
