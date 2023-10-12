@@ -2,7 +2,7 @@
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
 pkgver=v0.26.1.r0.g777d825
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source game launcher"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/OpenGamepadUI"
@@ -44,7 +44,7 @@ package() {
         install -Dm755 rootfs/usr/bin/opengamepadui ${pkgdir}/usr/bin
 
 	mkdir -p ${pkgdir}/usr/lib/systemd/user
-	install -Dm644 rootfs/usr/lib/systemd/user/ogui-qam.service ${pkgdir}/usr/lib/systemd/user
+	install -Dm644 rootfs/usr/lib/systemd/user/ogui-overlay-mode.service ${pkgdir}/usr/lib/systemd/user
 	
 	mkdir -p ${pkgdir}/usr/lib/udev/hwdb.d
 	install -Dm644 rootfs/usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb ${pkgdir}/usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb
