@@ -2,8 +2,8 @@
 
 _pkgname=yadp
 pkgname=$_pkgname-git
-pkgver=0.0.0
-pkgrel=2
+pkgver=r37.fdeb07b
+pkgrel=1
 pkgdesc='Yet Another xDelta Patcher (latest commit)'
 arch=('any')
 url='https://github.com/Nhoya/YADP'
