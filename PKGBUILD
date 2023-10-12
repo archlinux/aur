@@ -2,27 +2,30 @@
 pkgname=hiregpt
 _appname=HireGPT
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Job application made easy with OpenAI GPT model"
 arch=('x86_64')
 url="https://github.com/jaejaywoo/HireGPT"
 license=('MIT')
 conflits=("${pkgname}")
 depends=('bash' 'electron23')
-makedepends=('npm' 'gendesk' 'nodejs' 'asar')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=('npm' 'gendesk' 'nodejs>=16' 'asar')
+source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname%-bin}.sh")
-sha256sums=('0314ae43b6671d7e80e261c096c76cdb564c509104b1cfbca20b1340ebb87ebd'
-            '809b269bd9209365ca66ffcbb7d7c3185960abf9f19ef059b16f9a683dbf470b')
+sha256sums=('339df14c582d864a7f4bf1043556ca42e108506d06f1ab77a8cc29a083ec618e'
+            '67230bdc1ec269961c56c3a657834791a6ab9cf3d53362651c89dba812bc64cb')
+prepare() {
+    gendesk -f -q --categories "Utility" --name "${_appname}" --exec "${pkgname}"
+}
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
     npm install
     npm run package
+    asar p "${srcdir}/${_appname}-${pkgver}/out/${_appname}-linux-x64/resources/app" "${srcdir}/app.asar"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    asar pack "${srcdir}/${_appname}-${pkgver}/out/${_appname}-linux-x64/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
     install -Dm644 "${srcdir}/${_appname}-${pkgver}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    gendesk -f -n --icon "${pkgname}" --categories "Utility" --name "${_appname}" --exec "/opt/${pkgname}/${_appname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
