@@ -6,6 +6,7 @@ pkgbase = android-file-transfer-linux
 	arch = any
 	license = GPL3
 	makedepends = base-devel
+	makedepends = qt5-tools
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
