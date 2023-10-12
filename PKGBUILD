@@ -1,9 +1,9 @@
-# Maintainer: M Hickford <mirth.hickford@gmail.com>
 # Maintainer: Brainos <brainos233@gmail.com>
+# Maintainer: M Hickford <mirth.hickford@gmail.com>
 pkgname=git-credential-oauth
 pkgver=0.10.1
 pkgrel=2
-pkgdesc='Git credential helper that securely authenticates to GitHub, GitLab and BitBucket using OAuth'
+pkgdesc='Git credential helper that securely authenticates to GitHub, GitLab, BitBucket, Gerrit and other forges using OAuth'
 arch=('any')
 url="https://github.com/hickford/git-credential-oauth"
 license=('APACHE')
