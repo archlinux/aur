@@ -1,6 +1,6 @@
 _name=setuptools-protobuf
 pkgname=python-setuptools-protobuf
-pkgver=0.1.6
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Plugin for setuptools that adds support for compiling protobuf files."
 arch=('any')
@@ -10,7 +10,7 @@ depends=(python python-setuptools)
 makedepends=(python-build python-installer python-wheel)
 optdepends=(python-mypy-protobuf)
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('f6aa895ced19d634a84c92404326b64d1b5e7e57c4b025feb323e51e1e616cabba5bbbf1bf491ec8cc8fffbeb484eaa582352f261c4c7698b98b1835ea828d0e')
+sha512sums=('88e2b7e64f5865814077ce108e2208b068288359f031fa47a6039f2ad21a3677e58498fd3024952f183de403c022aabc8519c774a10c4f68aa857f782e4f90a7')
 
 
 build() {
