@@ -1,9 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=epub-reader
 _pkgname=Epub-Reader
-_appname=EpubReader
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Epub/Book Reader Application built with ElectronJS"
 arch=('any')
 url="https://mignaway.github.io/epub-reader-website/"
@@ -11,23 +10,23 @@ _githuburl="https://github.com/mignaway/EpubReader"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=('bash' 'electron18')
-makedepends=('yarn' 'nodejs' 'gendesk')
+makedepends=('yarn' 'npm' 'nodejs>=16.13.2' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.sh"
-    "${pkgname}.png")
+    "${pkgname}.sh")
 sha256sums=('db951ca3860576e8810343b145009ccd3b5719185517b227950bb3caa27bbc9c'
-            'acab316db73b9e1f5ba19cba0df5449227fa257b1013f05e37041ad0237180e0'
-            'd034cd2388f2a9e28885ba9a718d510fe8a9744b5dc3ad57b7a4f1a2ef90c8da')
+            '2dc0b57f8c3a7de9f81ac5c8064f376b9c365613b5715ad5a32071d55182476d')
+prepare() {
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+}
 build() {
-    cd "${srcdir}/${_appname}-${pkgver}"
-    yarn install 
-    yarn run build
+    cd "${srcdir}/${_pkgname//-/}-${pkgver}"
+    yarn 
+    yarn dist:linux
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-${pkgver}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname}/${pkgname}.asar"
-    install -Dm755 "${srcdir}/${_appname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
-    gendesk -f -n --icon "${pkgname}" --categories "Utility" --name "${_pkgname}" --exec "/opt/${pkgname}/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname//-/}-${pkgver}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm755 "${srcdir}/${_pkgname//-/}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname//-/}-${pkgver}/src/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
