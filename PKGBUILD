@@ -5,7 +5,7 @@ realname=telegram-tt
 
 pkgname="${_pkgname}"-bin
 pkgver=10.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Telegram Web client version A system Electron version"
 arch=('any')
 url="https://web.telegram.org/a/get/"
@@ -41,5 +41,5 @@ package() {
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${srcdir}/telegram-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/telegram-a.svg"
     install -Dm644 "${srcdir}/${_pkgname}.asar" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.asar"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app-update.yml" "${pkgdir}/usr/share/${_pkgname}/app-update.yml.asar"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app-update.yml" "${pkgdir}/usr/share/${_pkgname}/app-update.yml"
 }
