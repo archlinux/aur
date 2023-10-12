@@ -313,7 +313,7 @@ package() {
     for i in $_tosserModules; do
         pushd "${i}/build-archlinux"
         make DESTDIR="$pkgdir" install
-        popd+
+        popd
     done
     pushd "msged/build-archlinux"
     make DESTDIR="$pkgdir" install
