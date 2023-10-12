@@ -1,0 +1,17 @@
+pkgbase = dwxmlcreator
+	pkgdesc = Dynamic wallpaper creator for GNU/Linux
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/dwxmlcreator
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	source = git+https://github.com/alexkdeveloper/dwxmlcreator.git#tag=1.0.12
+	sha256sums = SKIP
+
+pkgname = dwxmlcreator
