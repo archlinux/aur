@@ -3,7 +3,7 @@
 
 _pkgname=evolution-data-server
 pkgname=$_pkgname-git
-pkgver=3.48.0.r048.g53679b443c
+pkgver=3.50.0.r027.g3a06900142
 pkgrel=1
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
