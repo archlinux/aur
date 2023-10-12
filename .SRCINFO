@@ -1,7 +1,7 @@
 pkgbase = gz-math7
 	pkgdesc = General purpose math library for robot applications.
 	pkgver = 7.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-math
 	arch = any
 	license = Apache
