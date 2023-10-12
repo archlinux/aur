@@ -3,7 +3,7 @@
 
 pkgname=hysteria-bin
 _pkgbase=hysteria
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A powerful, lightning fast and censorship resistant proxy (Binary Release)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("$_pkgbase-$pkgver-$pkgrel-linux-amd64::https://github.com/apernet/hyste
         'hysteria-server@.service'
         'sysusers.conf'
         'tmpfiles.conf')
-sha256sums=('22b0d074c710e9c107e2dc5f0300c6cceb72211cb53ee5a1e4f31859161166a6'
+sha256sums=('554a99bddbb69ec52204784e8443f69e677eae851f6037f3860a99262fd16747'
             'b279cfdac4db4b077f0660b5d8156d50a8bc7bd410036dc356499af43c4e84f5'
             '93b139bcb6ca1500ad7bd43d8a20d0edd4eb36e1b8ca608819dbe6783519deb7'
             '9269693b913e652aca2efadf10e29bd761df83505aef803fdd2223abc72034d9'
