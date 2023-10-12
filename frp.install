@@ -1,3 +1,11 @@
+pre_upgrade() {
+	if (( $(vercmp "$2" "0.52.0-1") < 0 )); then
+		echo -e '\n\tBreaking changes in version 0.52.0+'
+		echo -e '\tBe sure to read the release notes before upgrading'
+		echo -e '\tSee https://github.com/fatedier/frp/releases/tag/v0.52.0\n'
+	fi
+}
+
 post_upgrade() {
 	find /etc/frp \( -iname frpc.ini -o -iname frps.ini \) -perm /o+rw -printf 'Note: Permissions for "%p (%M)" are too open!\n'
 }
