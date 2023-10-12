@@ -1,8 +1,8 @@
 pkgbase = jasper-gtk-theme-git
 	pkgdesc = Jasper gtk theme for linux
-	pkgver = r60.38bd785
+	pkgver = r90.6e3ec69
 	pkgrel = 1
-	url = https://www.pling.com/p/1891521
+	url = https://github.com/vinceliuice/Jasper-gtk-theme
 	install = jasper-theme.install
 	arch = any
 	license = GPL3
