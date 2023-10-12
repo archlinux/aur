@@ -2,7 +2,7 @@
 
 _pkgname=txtreader
 pkgname=$_pkgname-git
-pkgver=0.0.0
+pkgver=r14.dc1f832
 pkgrel=1
 pkgdesc='Simple program for reading txt files (latest commit)'
 url="https://github.com/alexkdeveloper/txtreader"

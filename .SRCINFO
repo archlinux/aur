@@ -1,6 +1,6 @@
 pkgbase = txtreader-git
 	pkgdesc = Simple program for reading txt files (latest commit)
-	pkgver = 0.0.0
+	pkgver = r14.dc1f832
 	pkgrel = 1
 	url = https://github.com/alexkdeveloper/txtreader
 	arch = x86_64
