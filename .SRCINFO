@@ -1,6 +1,6 @@
 pkgbase = tomcat8
 	pkgdesc = Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies
-	pkgver = 8.5.93
+	pkgver = 8.5.94
 	pkgrel = 1
 	url = https://tomcat.apache.org/
 	install = tomcat8.install
@@ -21,7 +21,7 @@ pkgbase = tomcat8
 	backup = etc/tomcat8/server.xml
 	backup = etc/tomcat8/tomcat-users.xml
 	backup = etc/tomcat8/web.xml
-	source = git+https://github.com/apache/tomcat.git#tag=9d9aea65c435a38c737c1e600e6513f9d0980cf1
+	source = git+https://github.com/apache/tomcat.git#tag=36d4f7d698f71cd322204a3b242a97c54860fb8c
 	source = tomcat8.service
 	source = tomcat8.sysusers
 	source = tomcat8.tmpfiles
