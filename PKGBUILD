@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('fluent-icon-theme-git' 'fluent-round-icon-theme-git' 'fluent-cursor-theme-git')
 pkgbase=fluent-icon-theme-git
-pkgver=2023.06.07.r3.gb2c2bdc
+pkgver=2023.06.07.r12.g4c0486a
 pkgrel=1
 pkgdesc="A Fluent design icon theme"
 arch=('any')
-url="https://www.pling.com/p/1477945"
+url="https://github.com/vinceliuice/Fluent-icon-theme"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 makedepends=('git')

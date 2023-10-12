@@ -1,8 +1,8 @@
 pkgbase = fluent-icon-theme-git
 	pkgdesc = A Fluent design icon theme
-	pkgver = 2023.06.07.r3.gb2c2bdc
+	pkgver = 2023.06.07.r12.g4c0486a
 	pkgrel = 1
-	url = https://www.pling.com/p/1477945
+	url = https://github.com/vinceliuice/Fluent-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = git
