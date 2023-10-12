@@ -1,6 +1,6 @@
 # Maintainer: Shadowigor <shadowigorr at gmail dot com>
 pkgname="osync"
-pkgver=v1.2.r3.c55b39c
+pkgver=v1.3
 pkgrel=1
 pkgdesc="A two way filesync script"
 arch=("any")
@@ -10,7 +10,7 @@ depends=('rsync' 'inetutils')
 makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=('git+https://github.com/deajan/osync.git#branch=stable')
+source=('git+https://github.com/deajan/osync.git#tag=v1.3')
 md5sums=('SKIP')
 
 prepare()
@@ -23,5 +23,5 @@ prepare()
 package()
 {
     cd "$pkgname"
-    echo n | FAKEROOT="$pkgdir" bash ./install.sh > /dev/null
+    echo n | bash ./install.sh --prefix="$pkgdir" > /dev/null
 }
