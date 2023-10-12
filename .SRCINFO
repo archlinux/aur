@@ -1,13 +1,13 @@
 pkgbase = gui-butler
 	pkgdesc = A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project.
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://seansleblanc.itch.io/gui-butler
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = gendesk
-	makedepends = electron25
+	makedepends = nodejs>=18
 	depends = glibc
 	depends = expat
 	depends = cairo
@@ -33,7 +33,10 @@ pkgbase = gui-butler
 	depends = libcups
 	depends = mesa
 	conflicts = gui-butler
+	noextract = butler.zip
 	source = gui-butler-2.3.1.tar.gz::https://github.com/seleb/gui-butler/archive/refs/tags/v2.3.1.tar.gz
+	source = butler.zip::https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
 	sha256sums = 22364d6b0ee54059e28cd7b12d863b3b6e3b1f71a1d672d9d9dce7442bd2bb3d
+	sha256sums = b640fceade5cafc7601b0ee57ba13c85913917eb5440375f7a605126f9ca2e1c
 
 pkgname = gui-butler
