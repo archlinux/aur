@@ -1,0 +1,14 @@
+pkgbase = ride-beta-bin
+	pkgdesc = A remote IDE for Dyalog APL
+	pkgver = 4.5.4043
+	pkgrel = 1
+	url = https://github.com/Dyalog/ride
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = nodejs
+	depends = dyalog-bin
+	source = https://github.com/Dyalog/ride/releases/download/v4.5.4043/ride-4.5.4043-1_amd64.deb
+	sha256sums = dae16b2c43811b1d111dc02beff11a9e2de0fa04a82e50ff2a244bb192292847
+
+pkgname = ride-beta-bin
