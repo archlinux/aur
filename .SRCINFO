@@ -1,9 +1,9 @@
 pkgbase = nwg-panel
 	pkgdesc = GTK3-based panel for sway and Hyprland Wayland compositors
-	pkgver = 0.9.13
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-panel
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-wheel
@@ -27,7 +27,7 @@ pkgbase = nwg-panel
 	optdepends = upower: for multiple batteries support
 	provides = nwg-panel
 	conflicts = nwg-panel-git
-	source = nwg-panel-0.9.13.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.9.13.tar.gz
-	md5sums = d16334977116f72bec89c689eeaadbe5
+	source = nwg-panel-0.9.14.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.9.14.tar.gz
+	md5sums = 16edb0021d69caac593e9e86bfa65988
 
 pkgname = nwg-panel
