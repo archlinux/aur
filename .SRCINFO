@@ -1,0 +1,25 @@
+pkgbase = colord-kde
+	pkgdesc = Interfaces and session daemon to colord for KDE
+	pkgver = 23.08.2
+	pkgrel = 1
+	url = https://userbase.kde.org/Color_Management
+	arch = x86_64
+	groups = kde-applications
+	groups = kde-graphics
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kcmutils5
+	depends = colord
+	depends = libxrandr
+	depends = kitemmodels5
+	depends = kdeclarative5
+	depends = kirigami-addons
+	source = https://download.kde.org/stable/release-service/23.08.2/src/colord-kde-23.08.2.tar.xz
+	source = https://download.kde.org/stable/release-service/23.08.2/src/colord-kde-23.08.2.tar.xz.sig
+	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
+	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
+	sha256sums = 9da7f30013bb12aeb41cf0e49846933523872516124856b46a14206994dc252c
+	sha256sums = SKIP
+
+pkgname = colord-kde
