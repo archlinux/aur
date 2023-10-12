@@ -3,7 +3,7 @@
 #pkgbase=mutter-vrr
 pkgname=mutter-vrr
 pkgver=45.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -72,6 +72,7 @@ build() {
     -D docs=true
     -D egl_device=true
     -D installed_tests=false
+    -D libdisplay_info=true
     -D wayland_eglstream=true
   )
 
@@ -81,22 +82,6 @@ build() {
   arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
-
-_check() (
-  export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-  glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
-
-  pipewire &
-  _p1=$!
-
-  wireplumber &
-  _p2=$!
-
-  trap "kill $_p1 $_p2; wait" EXIT
-
-  meson test -C build --print-errorlogs -t 3
-)
 
 check() {
   #export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
