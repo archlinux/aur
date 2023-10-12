@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=socid-extractor
-pkgver=0.0.25
-pkgrel=2
+pkgver=0.0.26
+pkgrel=1
 pkgdesc="Extract accounts info from personal pages on various sites for OSINT purpose"
 arch=(any)
 url="https://github.com/soxoj/socid-extractor"
@@ -21,7 +21,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0855d099e085b95c767aaf25c06b38f768ab1e779488797f1b470794fbb0c400')
+sha256sums=('0440b4bfa76f70d88f3a6ac77207b4c6437da8b490b88717fdf04c559297dde4')
 
 _archive="$pkgname-$pkgver"
 

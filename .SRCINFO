@@ -1,7 +1,7 @@
 pkgbase = socid-extractor
 	pkgdesc = Extract accounts info from personal pages on various sites for OSINT purpose
-	pkgver = 0.0.25
-	pkgrel = 2
+	pkgver = 0.0.26
+	pkgrel = 1
 	url = https://github.com/soxoj/socid-extractor
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = socid-extractor
 	depends = python-beautifulsoup4
 	depends = python-dateutil
 	depends = python-requests
-	source = socid-extractor-0.0.25.tar.gz::https://github.com/soxoj/socid-extractor/archive/refs/tags/v0.0.25.tar.gz
-	sha256sums = 0855d099e085b95c767aaf25c06b38f768ab1e779488797f1b470794fbb0c400
+	source = socid-extractor-0.0.26.tar.gz::https://github.com/soxoj/socid-extractor/archive/refs/tags/v0.0.26.tar.gz
+	sha256sums = 0440b4bfa76f70d88f3a6ac77207b4c6437da8b490b88717fdf04c559297dde4
 
 pkgname = socid-extractor
