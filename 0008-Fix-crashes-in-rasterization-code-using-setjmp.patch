@@ -1,4 +1,4 @@
-From ef814f75d92d6f0111da272c28eaee6ea7943127 Mon Sep 17 00:00:00 2001
+From b83084b3bbd07fbed4017a78d3464ace6187a86f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 08/12] Fix crashes in rasterization code using setjmp
@@ -28,10 +28,10 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 84c51c75cf..c7d20b5e7d 100644
+index c2c9b96465..7aaf007c8f 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -175,7 +175,7 @@ qt_internal_add_module(Gui
+@@ -174,7 +174,7 @@ qt_internal_add_module(Gui
          painting/qdrawingprimitive_sse2_p.h
          painting/qemulationpaintengine.cpp painting/qemulationpaintengine_p.h
          painting/qfixed_p.h
@@ -40,8 +40,8 @@ index 84c51c75cf..c7d20b5e7d 100644
          painting/qicc.cpp painting/qicc_p.h
          painting/qimagescale.cpp painting/qimagescale_p.h
          painting/qmath_p.h
-@@ -284,6 +284,11 @@ qt_internal_add_module(Gui
-         "(^|/)qplatform.+\\.h$|(^|/)qwindowsystem.+\\.h$"
+@@ -283,6 +283,11 @@ qt_internal_add_module(Gui
+         "(^|/)qrhi\\.h$|(^|/)qrhi_platform\\.h$|(^|/)qshader\\.h$|(^|/)qshaderdescription\\.h$"
  )
  
 +# enable exceptions for painting/qgrayraster.cpp
