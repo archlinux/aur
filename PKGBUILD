@@ -1,10 +1,10 @@
 # $Id: PKGBUILD 278826 2016-10-15 00:15:40Z heftig $
 # Contributor (original patch code): Jan de Groot <jgc@archlinux.org>
 # Contributor (original package maintainer): Ian Hernández <badwolfie@archlinux.info>
-# Contributor (current patch code): Xavier Claessens <xavier.claessens@collabora.com>
+# Contributor (updated Xavier's patch for 43.2): Bryan Lai <bryanlais@gmail.com>
+# Contributor (updated Xavier's patch for 44.1): DragoonAethis <dragoon@dragonic.eu>
 # Contributor (fix for backspace going to parent folder): Jeremy Bicha <jbicha@debian.org>
-# Contributor (updated patch for 43.2): Bryan Lai <bryanlais@gmail.com>
-# Contributor (updated patch for 44.1): DragoonAethis <dragoon@dragonic.eu>
+# Contributor (current patch code): Xavier Claessens <xavier.claessens@collabora.com>
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgbase=nautilus-typeahead
@@ -13,23 +13,30 @@ pkgname=(
   libnautilus-extension-typeahead
 )
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=44.2
+pkgver=45.0
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Files"
 arch=(x86_64)
 license=(GPL)
 depends=(
+  cairo
   dconf
   gdk-pixbuf2
+  glib2
   gnome-autoar
   gnome-desktop-4
+  gstreamer
   gst-plugins-base-libs
+  gtk4
   gvfs
+  hicolor-icon-theme
   libadwaita
   libcloudproviders
   libgexiv2
+  libportal
   libportal-gtk4
+  pango
   tracker3
 )
 makedepends=(
@@ -41,13 +48,13 @@ makedepends=(
   tracker3-miners
 )
 checkdepends=(python-gobject)
-_commit=909e2686a154af01101514b82044026d0359e82f  # tags/44.2^0
+_commit=a15c054a601d99cce1086581da762d25b6fcaa28  # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
   nautilus-restore-typeahead.patch
 )
 b2sums=('SKIP'
-        '6f8409caac8037f30f86c0893226c4463e67834784d8454df9f155e8289caeeafaff596d74d2f7ef0fb346b2193ab86aa90160e321f3b37379879d5471ccdcd4')
+        'b33c789da1948b991939126b14f6583069d07c8949e4fcb66721ab23a29915469c5e8b339d2801423a9e2c4c2d92e5de354b24de7c253c2cc9ceb9ef79b3906a')
 
 pkgver() {
   cd nautilus
