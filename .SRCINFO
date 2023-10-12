@@ -1,7 +1,7 @@
 pkgbase = x-minecraft-launcher-bin
 	pkgdesc = An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!
-	pkgver = 0.35.19
-	pkgrel = 2
+	pkgver = 0.36.0
+	pkgrel = 1
 	url = https://xmcl.app/
 	arch = aarch64
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = x-minecraft-launcher-bin
 	makedepends = gendesk
 	depends = bash
 	depends = electron21
-	provides = x-minecraft-launcher=0.35.19
+	provides = x-minecraft-launcher=0.36.0
 	conflicts = x-minecraft-launcher
 	conflicts = xmcl
-	source = LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/v0.35.19/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/v0.36.0/LICENSE
 	source = x-minecraft-launcher.sh
 	sha256sums = 274fb5c556a3f3fdc5b37ef6f6bbd8e35055b11a816f3ae69efec869f85638f5
-	sha256sums = 6b85cdf6844da008d7c9d0be86dd892d4f7b35bdbdd6359de6d46c01109a3dc7
-	source_aarch64 = x-minecraft-launcher-0.35.19-aarch64.deb::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.19/xmcl-0.35.19-arm64.deb
-	sha256sums_aarch64 = c6e0145593df92f6c9c0e118895a73a0b70247003964affb50282aca0389cd74
-	source_x86_64 = x-minecraft-launcher-0.35.19-x86_64.deb::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.19/xmcl-0.35.19-amd64.deb
-	sha256sums_x86_64 = 7d80b96824354f5d19b654304100de5f345a851dba0d40584a9eaa8f8eae7f3a
+	sha256sums = 02832427680007bec0ad2ea6df5a264e538e88deb9d2c5315e9ed1f374b9101b
+	source_aarch64 = x-minecraft-launcher-0.36.0-aarch64.deb::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.36.0/xmcl-0.36.0-arm64.deb
+	sha256sums_aarch64 = 4743f75c5e12a3a409e16439c4b09131a395406838c08c39f287bcf7cf9baeaf
+	source_x86_64 = x-minecraft-launcher-0.36.0-x86_64.deb::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.36.0/xmcl-0.36.0-amd64.deb
+	sha256sums_x86_64 = 772663d35ce43c003b90de631fcb4135d34b90047b19c1411eab01cf1b622aba
 
 pkgname = x-minecraft-launcher-bin
