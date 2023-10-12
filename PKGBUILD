@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=suppaftp
-pkgver=4.5.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='A super FTP/FTPS command-line interface'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='030d5642283537e91ef56d0ed5267a0ad85a19c5'
+_commit='5bf40b4bc68658180bdfe7c54cae5d9869c64ae6'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
