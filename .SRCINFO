@@ -1,0 +1,18 @@
+pkgbase = rsdkv4-bin
+	pkgdesc = RSDKv4 engine for Sonic 1 and Sonic 2.
+	pkgver = 1.3.2
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = wget
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	source_x86_64 = https://gitlab.com/SonicRSDK/rsdkv4/1.3.2/-/raw/main/RSDKv4-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/SonicRSDK/rsdkv4/1.3.2/-/raw/main/RSDKv4-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = rsdkv4-bin
