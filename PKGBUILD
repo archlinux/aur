@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gromit-mpx
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='On-screen annotation tool'
 arch=('x86_64')
 url='https://github.com/bk138/gromit-mpx/'
@@ -23,13 +23,14 @@ prepare() {
 
 build() {
     cmake -B build -S gromit-mpx \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
