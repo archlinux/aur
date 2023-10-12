@@ -1,18 +1,19 @@
 pkgbase = lucashazardous-music-player-bin
 	pkgdesc = Desktop Electron app for playing and downloading music.
-	pkgver = 2.12.4
+	pkgver = 2.12.5
 	pkgrel = 1
 	url = https://github.com/LucasHazardous/music-player
 	arch = x86_64
 	license = MIT
+	makedepends = squashfuse
 	depends = bash
 	depends = electron26
-	provides = lucashazardous-music-player=2.12.4
+	provides = lucashazardous-music-player=2.12.5
 	conflicts = lucashazardous-music-player
-	source = lucashazardous-music-player-2.12.4.AppImage::https://github.com/LucasHazardous/music-player/releases/download/v2.12.4/music-player-2.12.4.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/LucasHazardous/music-player/main/LICENSE
+	source = lucashazardous-music-player-2.12.5.AppImage::https://github.com/LucasHazardous/music-player/releases/download/v2.12.5/music-player-2.12.5.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/LucasHazardous/music-player/v2.12.5/LICENSE
 	source = lucashazardous-music-player.sh
-	sha256sums = 1c8071a13ed959a669c5e8426ba96cdd7c02c27765af5d80e11a18143260b4ae
+	sha256sums = 3b3ef8988b2365c0baae8a6832bf4985981d24deaa4c97e8fa2c919df93e7cfb
 	sha256sums = 4de62e75233b269ff4b9e1bf7ba805d82bd3cbeab4c204b54043dee4965f849c
 	sha256sums = c6badf0075ca9889e909ab1276c36653934f6ab863779a8bbe5aa304cc7a55a4
 
