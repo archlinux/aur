@@ -1,0 +1,19 @@
+pkgbase = txtreader-git
+	pkgdesc = Simple program for reading txt files (latest commit)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/txtreader
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	provides = txtreader
+	conflicts = txtreader
+	source = git+https://github.com/alexkdeveloper/txtreader.git
+	sha256sums = SKIP
+
+pkgname = txtreader-git
