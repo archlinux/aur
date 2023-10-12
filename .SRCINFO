@@ -1,5 +1,5 @@
 pkgbase = python-lap
-	pkgdesc = lap is a linear assignment problem solver using Jonker-Volgenant algorithm for dense (LAPJV) or sparse (LAPMOD) matrices..
+	pkgdesc = lap is a linear assignment problem solver using Jonker-Volgenant algorithm for dense (LAPJV) or sparse (LAPMOD) matrices.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/gatagat/lap

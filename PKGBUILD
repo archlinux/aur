@@ -4,7 +4,7 @@
 pkgname="python-lap"
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='lap is a linear assignment problem solver using Jonker-Volgenant algorithm for dense (LAPJV) or sparse (LAPMOD) matrices..'
+pkgdesc='lap is a linear assignment problem solver using Jonker-Volgenant algorithm for dense (LAPJV) or sparse (LAPMOD) matrices.'
 arch=(any)
 url="https://github.com/gatagat/lap"
 license=(BSD-2-Clause)
