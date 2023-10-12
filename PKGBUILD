@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-dump-streamer'
-pkgver='2.40'
+pkgver='2.42'
 pkgrel='1'
 pkgdesc="Accurately serialize a data structure as Perl code."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'perl-b-utils>=0')
-makedepends=()
+makedepends=('perl-module-build')
 url='https://metacpan.org/release/Data-Dump-Streamer'
 source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/Data-Dump-Streamer-$pkgver.tar.gz")
-md5sums=('2578bf0e5c3def403152d223aeebb618')
-sha512sums=('db21f42ba477cc644cf1e0c572ad5cace072b35d4760e85edccd4a7ae313d1eee19158dbbdd82f42de47ab26ca5f7528882a2a983df3cc44ea3b57f8bc832f64')
+md5sums=('e10e06a372a259e16eec791e82cbee60')
+sha512sums=('481cc12f8111d83bc97695226531c7eb4ebdbb16ac540de90d8a0c8b1f30cd3dbc62f5def737b9eb08e6c1294fb290d9f347dd90869a7a7278d71ce436787f7d')
 _distdir="Data-Dump-Streamer-$pkgver"
 
 build() {
