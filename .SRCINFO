@@ -7,7 +7,6 @@ pkgbase = pince-git
 	license = GPL3
 	makedepends = git
 	makedepends = qt6-tools
-	makedepends = lsb-release
 	depends = base-devel
 	depends = python3
 	depends = gdb

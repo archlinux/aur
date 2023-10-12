@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
 depends=('base-devel' 'python3' 'gdb')
-makedepends=('git' 'qt6-tools' 'lsb-release')
+makedepends=('git' 'qt6-tools')
 optdepends=(
 	'qt6-wayland: wayland support'
 )
@@ -46,7 +46,7 @@ build() {
 	. <(sed -n '/^compile_libscanmem() /,/^}/p' $_installsh)
 	. <(sed -n '/^install_libscanmem() /,/^}/p' $_installsh)
 	# Execute functions
-	set_install_vars "$(lsb_release -ds)" || exit_on_error
+	set_install_vars "Arch Linux" || exit_on_error
 	install_libscanmem || exit_on_error
 	compile_translations || exit_on_error
 }
