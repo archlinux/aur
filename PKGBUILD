@@ -3,8 +3,8 @@
 
 pkgname=fzf-make
 pkgver=0.8.0
-pkgrel=1
-pkgdesc="A command line tool that executes make target using fuzzy finder with preview window."
+pkgrel=2
+pkgdesc="A command line tool that executes make target using fuzzy finder with preview window"
 arch=('x86_64')
 url="https://github.com/kyu08/fzf-make"
 license=('MIT')
