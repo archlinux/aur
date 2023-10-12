@@ -1,6 +1,6 @@
 pkgbase = komikku
 	pkgdesc = Online/Offline Manga reader based on GNOME | PinePhone/Librem 5 Support
-	pkgver = 1.26.0
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://gitlab.com/valos/Komikku
 	arch = any
@@ -29,8 +29,9 @@ pkgbase = komikku
 	depends = python-rarfile
 	depends = webkit2gtk
 	depends = webkitgtk-6.0
+	depends = python-colorthief
 	optdepends = org.freedesktop.secrets: store passwords safely
-	source = https://gitlab.com/valos/Komikku/-/archive/v1.26.0/Komikku-v1.26.0.tar.gz
-	sha256sums = ba46814c3ce7c196c656bfd8cc07bfdb913242dc24eac9499487c80904e6e5d1
+	source = https://gitlab.com/valos/Komikku/-/archive/v1.27.0/Komikku-v1.27.0.tar.gz
+	sha256sums = 37e22f24c897ce19cec2c6d28a7d784c076f09a00b63614165c9cea6bdec2031
 
 pkgname = komikku
