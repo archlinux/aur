@@ -1,18 +1,18 @@
 pkgbase = dualsensectl-git
 	pkgdesc = Tool for controlling Sony PlayStation 5 DualSense controller on Linux
-	pkgver = v0.4.r1.g602ffe4
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/nowrep/dualsensectl
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = base-devel
+	makedepends = gcc
+	makedepends = make
 	depends = systemd
 	depends = systemd-libs
 	depends = dbus
 	depends = hidapi
 	depends = glibc
-	depends = libudev0-shim
 	conflicts = dualsensectl
 	options = !strip
 	source = dualsensectl::git+https://github.com/nowrep/dualsensectl#branch=main
