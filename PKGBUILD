@@ -4,7 +4,7 @@
 pkgname='gvisor-bin'
 _pkgbin='runsc'
 _pkgshim='containerd-shim-runsc-v1'
-pkgver=20230904.0
+pkgver=20231009.0
 pkgrel=1
 pkgdesc='OCI container sandbox runtime focused on security, efficiency, and ease of use'
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_aarch64=(
 	"$_pkgbin-aarch64-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/aarch64/$_pkgbin"
 	"$_pkgshim-aarch64-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/aarch64/$_pkgshim"
 )
-sha512sums_x86_64=('af3dbb48d8c1476e648ee700228b4cbfb5fbdd8f1dac9e36881f949d2b84559d588c192f5e54e314bb240acc15b3df054ce03f92f4fecf33f2a6f45a9abe5d1e'
-                   '677dbe314190855c807c9ec7cbaed721812d21a8cf042218da1440df6af60d9554bf45f295cf9753cff2ad30a5ef439f215da38e036718619c1b5a5019ffe623')
-sha512sums_aarch64=('0c9cda69b8b765877ec6202ea082dc31afe87ff28714e8dc127114a41dbbee0d5a477ac65b58ed171de3658ccd7de5606295694a654172bb75c07f3bb8dca62c'
-                    '2cc0a33518f3dcb1b341e1a04f821955c96615fcf68583fbd591b51618ace63cadc846efac67cd11b50d44455a2de59df37a2ca5a1afc513bd07aa9a2838b66a')
+sha512sums_x86_64=('a641723d442991cca50fd55b5e1e5c53e1efcad2ae4634ca1e2425ef33cc04515c88b4c43e7e1e0fb4cd61fdc285f08dd914e0ab9271cdcc921807d760b02543'
+                   'fffd6e03bd5aa2481300c3b9cecb02c1c6b64d97560ca12aa19fd886243e84ece370370ac960d6c849a258d47be399c94f7b5ba2b8fcad6787eabc86b0bfba94')
+sha512sums_aarch64=('26e2e9750c05f9919e4e150f6ce2f4e9536444bed6817cc5bb6cdfda374cd123e3f82b30f5c1b55b0b71ddfaffbf150c2fdc3aabecc55a0ed226fdda3f05d8de'
+                    'd6eec33d5ba7f557f19f9499ade502d510cb4e4d9d3525a677fc1942403a984c343be5ecb64f2904823d478e626027b3aea69c9e641240cac3c2c8c9e8feaa00')
 
 package() {
 	install -Dm 755 "$_pkgbin-$CARCH-$pkgver" "$pkgdir/usr/bin/$_pkgbin"
