@@ -2,12 +2,12 @@
 
 pkgname=mixing-station-pc
 pkgver=1.9.8_412
-pkgrel=8
+pkgrel=9
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
 url='https://mixingstation.app/'
 license=('custom:proprietary')
-depends=('jre11-openjdk')
+depends=('jre11-openjdk' 'zenity')
 provides=('mixing-station')
 source=(
     "$pkgname-$pkgver-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release"
