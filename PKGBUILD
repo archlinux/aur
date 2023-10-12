@@ -18,15 +18,16 @@ optdepends=(
 )
 provides=('koka')
 conflicts=('koka')
+_dlfilename="koka-v${pkgver}-linux-x64.tar.gz"
 source=(
-  "https://github.com/koka-lang/koka/releases/download/v${pkgver}/koka-v${pkgver}-linux-x64.tar.gz"
+  "https://github.com/koka-lang/koka/releases/download/v${pkgver}/${_dlfilename}"
 )
-noextract=("koka-v${pkgver}-linux-x64.tar.gz")
+noextract=("${_dlfilename}")
 sha256sums=(
   '2a2acf61187ab36e5c425ca871f23a79a22bdf0c5862feae2837ff0626154fc1'
 )
 
 package() {
   install -d "${pkgdir}/usr"
-  tar -xzf koka-v${pkgver}-linux-x64.tar.gz -C "${pkgdir}/usr"
+  tar -xzf "${_dlfilename}" -C "${pkgdir}/usr"
 }
