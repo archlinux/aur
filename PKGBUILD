@@ -2,7 +2,7 @@
 _pkgname=wazo-desktop
 pkgname=${_pkgname}-appimage
 pkgver=1.13.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Wazo desktop client for wazo VOIP server"
 arch=('x86_64')
 url="https://wazo.io/download/"
@@ -22,11 +22,11 @@ prepare() {
     chmod +x "${_appimage}"
 
     # Extract icons and desktop files from AppImage
-    ./${_appimage} --appimage-extract "wazo.desktop" > /dev/null 2>&1
+    ./${_appimage} --appimage-extract "wazo-desktop.desktop" > /dev/null 2>&1
     ./${_appimage} --appimage-extract "usr/share/icons" > /dev/null 2>&1
     
     # Fix desktop file
-    sed -i "s+Exec=AppRun+Exec=${_installdir}/${_installappimage}+" "squashfs-root/wazo.desktop"
+    sed -i "s+Exec=AppRun+Exec=${_installdir}/${_installappimage}+" "squashfs-root/wazo-desktop.desktop"
 }
 
 package() {
@@ -36,7 +36,7 @@ package() {
     ln -s "/${_installdir}/${_installappimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Install desktop file
-    install -Dm644 "squashfs-root/wazo.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "squashfs-root/wazo-desktop.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     
     # Install icons
     install -dm755 "$pkgdir/usr/share/icons"

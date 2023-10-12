@@ -1,7 +1,7 @@
 pkgbase = wazo-desktop-appimage
 	pkgdesc = Wazo desktop client for wazo VOIP server
 	pkgver = 1.13.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wazo.io/download/
 	arch = x86_64
 	license = unknown
