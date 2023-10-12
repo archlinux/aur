@@ -28,9 +28,10 @@ source=(
   'htick::git+https://github.com/huskyproject/htick.git'
   'hptsqfix::git+https://github.com/huskyproject/hptsqfix.git'
   'msged::git+https://github.com/huskyproject/msged.git'
+  'nltools::git+https://github.com/huskyproject/nltools.git'
 )
 
-_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick hptzip"
+_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick hptzip nltools"
 _prefix=/usr
 _wanna_shared=1
 
@@ -307,6 +308,28 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
+
+    echo "BUILDING nltools"
+    pushd nltools
+    rm -rf build-archlinux
+    rm -rf huskylib smapi fidoconf hptzip
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=OFF \
+        -Dcurses_LIB="/usr/lib/libcursesw.so" \
+        -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
 }
 
 package() {
@@ -324,6 +347,7 @@ package() {
 }
 sha256sums=('73a603d930e184a1d094f53311916b4f8dcd8f7c31ea3373e236e797a3341a15'
             'c5bb6b91f34b23cb1d2f9cff5d8d0956ce372cca3b602ada87ff3b4375498ea7'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
