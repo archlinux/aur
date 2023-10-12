@@ -1,18 +1,18 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=fluent-gtk-theme
-pkgver=2022.12.15
+pkgver=2023.06.20
 pkgrel=1
 pkgdesc='Fluent design GTK theme'
 arch=(any)
 url=https://github.com/vinceliuice/Fluent-gtk-theme
 license=(GPL3)
 options=('!strip')
-makedepends=(gnome-shell)
+makedepends=()
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'fluent-icon-theme: Matching icon theme'
 			'fluent-cursor-theme: Matching cursor theme')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//./-}.tar.gz")
-b2sums=('5c7dffda3374523d722e941ed00ed24e00e3c5565fa2960b2fcccf6240e8b2d454ec5193a9ab6ce4d6ef33d364ee89b19bcbe7a50f23ba916408dde4af70203f')
+b2sums=('62aa4b11df165b46ddc25c15274d2d09ac5aec7c598b04cea9fa7f8fc61e773e303f86a57e69f9e52930f7be6a79ddcb2f2cc1e6c617b795ce58b16eefb04067')
 
 package () {
 	cd "Fluent-gtk-theme-${pkgver//./-}"
