@@ -1,6 +1,6 @@
 pkgbase = python-glcontext
 	pkgdesc = A library providing OpenGL implementation for ModernGL on multiple platforms.
-	pkgver = 2.3.7
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/moderngl/glcontext
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-glcontext
 	makedepends = libx11
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/moderngl/glcontext/archive/refs/tags/2.3.7.tar.gz
-	sha512sums = f2d597dc338c9dab911494d2249fdbb400af0e79e101c0cacb53418af4ac4f4cc261cc22dd6685102401ece6dada193769840eb5836cb03119313a8770cc09e9
+	source = https://github.com/moderngl/glcontext/archive/refs/tags/2.4.0.tar.gz
+	sha512sums = d69adbee5f31d7b870b566f59d2b796a7436ab57ad29c4fe1210ec1e40b782e4705c81ba17a921217f28c5fcb4f9c759c2ebf146bda1af4fd54007c868425427
 
 pkgname = python-glcontext
