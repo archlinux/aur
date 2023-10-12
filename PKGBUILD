@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=weather-vala-git
-pkgver=0.0.0
+pkgver=r16.7a20233
 pkgrel=1
 pkgdesc='Application for viewing the current weather (latest commit)'
 url="https://github.com/alexkdeveloper/weather"
