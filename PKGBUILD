@@ -1,7 +1,8 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: TwoFinger
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=koka-bin
-pkgver=2.3.8
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Koka: a function-oriented language with effect inference"
 arch=('x86_64')
@@ -24,7 +25,7 @@ source=(
 )
 noextract=("${_dlfilename}")
 sha256sums=(
-  '2a2acf61187ab36e5c425ca871f23a79a22bdf0c5862feae2837ff0626154fc1'
+  '7d544c7d7fbd22481949d5644cbe19eb3bae9431b7a8537bea02b0bc55a28322'
 )
 
 package() {
