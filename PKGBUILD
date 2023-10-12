@@ -1,23 +1,36 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=quick-lookup
-pkgver=2.0.0
-pkgrel=2
+_app_id=com.github.johnfactotum.QuickLookup
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Simple GTK dictionary application powered by Wiktionary"
 arch=('any')
 url="https://github.com/johnfactotum/quick-lookup"
 license=('GPL3')
-depends=('gjs' 'gtk4' 'libadwaita' 'webkit2gtk-5.0')
+depends=('gjs' 'gtk4' 'libadwaita' 'webkitgtk-6.0')
+makedepends=('meson')
+checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0732444db4abed0c7a24caf4bd385876a57a4d98682775483c0f835521aed046')
+sha256sums=('aae36cdbccdbd1d182b289eb92843d34ff9eb303cb590a38b881bc663dc7d5bb')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # Correct version
+  sed -i "s/2.1.0/$pkgver/g" meson.build
+}
+
+build () {
+  arch-meson "$pkgname-$pkgver" build
+  meson compile -C build
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  appstream-util validate-relax --nonet "${_app_id}.appdata.xml"
+  desktop-file-validate "${_app_id}.desktop"
+}
 
 package() {
-  _name='com.github.johnfactotum.QuickLookup'
-
-  cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname.js" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$_name.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "$_name.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 "$_name-symbolic.svg" -t \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
-  install -Dm644 "$_name.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
+  meson install -C build --destdir "$pkgdir"
 }
