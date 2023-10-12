@@ -6,7 +6,7 @@
 # Contributor: Jan-Tarek Butt <tarek at ring0 dot de>
 
 pkgname=bootstrap-studio
-pkgver=6.4.5
+pkgver=6.5.1
 pkgrel=1
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
@@ -15,7 +15,7 @@ url="https://bootstrapstudio.io/"
 
 source=("https://releases.bootstrapstudio.io/${pkgver}/Bootstrap%20Studio.AppImage"
 				"bstudio.desktop")
-sha256sums=('90232a0cd442dc7dd60690c90815c1c6f591ba2182ad9ee04468215e21ad1aaf'
+sha256sums=('9b1f4a90cc05cdd8e1ce87ebfb897b3137ab19f492b08f3ecfc8e66a857cbafa'
             'e1c1b0d4b24658fc0ead611cb002dcde431e30256cb8fd0dffb3cfc76f24db84')
 prepare() {
     # Extract AppImage
