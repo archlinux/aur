@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-quicktimeline
-_qtver=6.5.3
+_qtver=6.6.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtquicktimeline-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('fb3e4cec57d88f8130f31288b3f405dacfcae2e60d67c8030bea0ddfca2e7b5b')
+sha256sums=('079e51d4572aed992731628b269f9c3f9c61a6c379bae6c354c949a6d89bb590')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
