@@ -1,13 +1,13 @@
 pkgbase = python-django-reversion
 	pkgdesc = An extension to the Django web framework that provides version control for model instances
-	pkgver = 5.0.4
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://github.com/etianen/django-reversion
 	arch = any
 	license = custom
 	makedepends = python-setuptools
 	depends = python-django
-	source = https://github.com/etianen/django-reversion/archive/v5.0.4.tar.gz
-	sha512sums = 52d0f7548a1622b6e50dbbcc8cfaa4f5ef2aae1e257b227718e1d9b1906529e8ba569418026cc1a7961f7418aba09e7c90ab4020f6c4021e581dfb8fbfd8b193
+	source = https://github.com/etianen/django-reversion/archive/v5.0.6.tar.gz
+	sha512sums = ae74f68b6cbf8ca56c547aa7bf2bad210063eff5c571e5006522c46faf5f731750f8591bed9bb186f8c7a2a940cf843550514c62a25defd03e33a9afb54ac2c5
 
 pkgname = python-django-reversion
