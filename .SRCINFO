@@ -1,6 +1,6 @@
 pkgbase = osync
 	pkgdesc = A two way filesync script
-	pkgver = v1.2.r3.c55b39c
+	pkgver = v1.3
 	pkgrel = 1
 	url = https://github.com/deajan/osync
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = osync
 	depends = inetutils
 	provides = osync
 	conflicts = osync
-	source = git+https://github.com/deajan/osync.git#branch=stable
+	source = git+https://github.com/deajan/osync.git#tag=v1.3
 	md5sums = SKIP
 
 pkgname = osync
