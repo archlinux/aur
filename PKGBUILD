@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Batuhan Baserdem <lastn.firstn[at]gmail>
 pkgname=material-cursors-git
 pkgver=20220817.r43.2a5f302
