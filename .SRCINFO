@@ -1,13 +1,13 @@
 pkgbase = auto-epp-rs
 	pkgdesc = Program that automatically manages the EPP of your AMD CPU using the AMD-Pstate driver (Rewritten in Rust)
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/tfkhdyt/auto-epp-rs
 	arch = x86_64
 	license = GPL3
 	conflicts = auto-epp
 	conflicts = auto-epp-go
-	source = auto-epp-rs-0.0.2.tar.gz::https://github.com/tfkhdyt/auto-epp-rs/releases/download/v0.0.2-1/auto-epp-rs-v0.0.2-1.tar.gz
+	source = auto-epp-rs-0.0.3.tar.gz::https://github.com/tfkhdyt/auto-epp-rs/releases/download/v0.0.3-1/auto-epp-rs-v0.0.3-1.tar.gz
 	md5sums = SKIP
 
 pkgname = auto-epp-rs
