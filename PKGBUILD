@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monokle
 _pkgname=Monokle
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libxext' 'libxfixes' 'dbus' 'expat' 'glibc' 'mesa' 'gtk3' 'libcups' 'l
     'cairo' 'nss' 'alsa-lib' 'libxdamage' 'at-spi2-core' 'nspr' 'pango' 'libx11' 'gcc-libs' 'libdrm' 'libxcb' 'glib2' 'libxrandr' 'python')
 makedepends=('npm' 'nodejs>=20' 'jq' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d8c658a42d3a5ed69cacea6e361997387a9031d0b79adc0575dbe7dae4106424')
+sha256sums=('197042efd4f79eb57552ccb16c1d4d50b0d5dc3aa9d6ef3794f205ad4e3b8766')
 prepare() {
     gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
 }
@@ -36,7 +36,7 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 32 48 64 256;do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/large-icon-${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}x${icons}/apps/${pkgname}.png"
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
