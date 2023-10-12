@@ -1,7 +1,5 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_srcname=koka
-
 pkgname=koka-bin
 pkgver=2.3.8
 pkgrel=1
@@ -31,10 +29,4 @@ sha256sums=(
 package() {
   install -d "${pkgdir}/usr"
   tar -xzf koka-v${pkgver}-linux-x64.tar.gz -C "${pkgdir}/usr"
-
-  # Permission fix
-  find "${pkgdir}" -type d -exec chmod 755 {} +
-  find "${pkgdir}" -type f -exec chmod 644 {} +
-  chmod +x "${pkgdir}/usr/bin/koka"
-  chown -R root:root "${pkgdir}"
 }
