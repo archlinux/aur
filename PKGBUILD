@@ -1,15 +1,15 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=isx2gb
-pkgver=1.02
-_commit=634a309eeb2dcabad083c3271d7bc875a0c36589
+pkgver=1.03
+_commit=89c5fa18f87d68ff1ca2576776dab767454a95ac
 pkgrel=1
 pkgdesc="Nifty replacement for abISX or CVTISX that converts Intelligent Systems eXecutable files into valid GameBoy ROM images and more"
 arch=('x86_64')
 license=('GPL')
 makedepends=('go' 'git')
-url="https://github.com/gitendo/isx2gb"
-source=("git+https://github.com/gitendo/isx2gb.git#commit=$_commit")
+url="https://gitlab.com/gitendo/isx2gb"
+source=("git+https://gitlab.com/gitendo/isx2gb.git#commit=$_commit")
 sha1sums=('SKIP')
 
 build() {
