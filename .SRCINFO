@@ -1,0 +1,20 @@
+pkgbase = weather-vala-git
+	pkgdesc = Application for viewing the current weather
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/weather
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = geoclue
+	depends = libadwaita
+	depends = libgweather-4
+	provides = weather-vala
+	conflicts = weather-vala
+	source = git+https://github.com/alexkdeveloper/weather.git
+	sha256sums = SKIP
+
+pkgname = weather-vala-git
