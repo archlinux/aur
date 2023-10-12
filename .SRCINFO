@@ -1,0 +1,18 @@
+pkgbase = sudoku-gtk3
+	pkgdesc = Sudoku game
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/sudoku
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = qqwing
+	source = git+https://github.com/alexkdeveloper/sudoku.git#tag=1.0.7
+	sha256sums = SKIP
+
+pkgname = sudoku-gtk3
