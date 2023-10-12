@@ -1,0 +1,26 @@
+post_install() {
+    API_KEY=`cscli bouncers add crowdsec-firewall-bouncer -o raw`
+    export API_KEY
+    TMP=$(mktemp)
+    install -m600 /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml "$TMP"
+    envsubst '$API_KEY' < "$TMP" > /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
+    echo "Bouncer registered to the CrowdSec Local API."
+
+    IFS=: read HOST PORT <<< `cscli config show --key "Config.API.Server.ListenURI"`
+    export CROWDSEC_LAPI_URL="http://${HOST:-'127.0.0.1'}:${PORT:-'8080'}"
+
+    sed -iE "s|^(api_url\s*:).*|\1 $CROWDSEC_LAPI_URL|" /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
+
+    systemctl daemon-reload
+    systemctl enable --now crowdsec-firewall-bouncer
+}
+
+post_remove() {
+    if ! cscli bouncers remove crowdsec-firewall-bouncer --error; then
+        echo -e "\nDon't forget to uninstall the crowdsec-firewall-bouncer plugin!"
+        cscli bouncers list
+    fi
+
+    systemctl daemon-reload
+    systemctl disable --now crowdsec-firewall-bouncer
+}
