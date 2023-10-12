@@ -2,7 +2,7 @@
 # GPG: https://keybase.io/greut/pgp_keys.asc
 
 pkgname='eclint'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
@@ -19,7 +19,7 @@ source=(
 )
 
 
-sha256sums=('767c3dbc2b23727681c1adfcde49d78793cb11779eb9b218dfc0fc93beacaff3'
+sha256sums=('9b7dbf290403d5c8232bb3fbcadbf521f4520f2dd33dd0d24fe3eda549fc6da0'
             'SKIP')
 validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
 
