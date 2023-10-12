@@ -8,7 +8,7 @@ url="http://github.com/reconquest/xcsyncd"
 #license=()
 makedepends=(gengetopt)
 source=(
-    "git://github.com/reconquest/xcsyncd.git#commit=d457f7a1eb5d4fd43300d5a0946049c37cfb286d"
+    "git+https://github.com/reconquest/xcsyncd.git#commit=d457f7a1eb5d4fd43300d5a0946049c37cfb286d"
     makefile.patch
 )
 sha256sums=(SKIP SKIP)
