@@ -1,6 +1,6 @@
 VERSION ?= 0.13.1
 
-all: clean set-version checksums prepare pkg
+all: clean set-version checksums prepare
 
 pkg:
 	makepkg -s
