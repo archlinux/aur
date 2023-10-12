@@ -1,7 +1,7 @@
 pkgbase = telegram-a-bin
 	pkgdesc = Official Telegram Web client version A system Electron version
 	pkgver = 10.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://web.telegram.org/a/get/
 	arch = any
 	license = GPL3

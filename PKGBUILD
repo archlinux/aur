@@ -5,7 +5,7 @@ realname=telegram-tt
 
 pkgname="${_pkgname}"-bin
 pkgver=10.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Telegram Web client version A system Electron version"
 arch=('any')
 url="https://web.telegram.org/a/get/"
@@ -32,7 +32,7 @@ prepare() {
 
     # Override app name to fix wmclass mismatch
     asar extract ${srcdir}/squashfs-root/resources/app.asar ${srcdir}/asar_out
-    cat <<< "const app = require('electron').app; app.setName(\"Telegram-A\"); $(cat ${srcdir}/asar_out/dist/electron.js)" > ${srcdir}/asar_out/dist/electron.js
+    cat <<< "require('electron').app.setName(\"Telegram-A\"); $(cat ${srcdir}/asar_out/dist/electron.js)" > ${srcdir}/asar_out/dist/electron.js
     asar pack ${srcdir}/asar_out ${srcdir}/${_pkgname}.asar
 }
 
