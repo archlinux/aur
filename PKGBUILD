@@ -284,6 +284,28 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
+
+    echo "BUILDING nltools"
+    pushd nltools
+    rm -rf build-archlinux
+    rm -rf huskylib smapi fidoconf hptzip
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=OFF \
+        -Dcurses_LIB="/usr/lib/libcursesw.so" \
+        -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
 }
 
 package() {
