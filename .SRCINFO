@@ -1,19 +1,19 @@
 pkgbase = updatecli-bin
 	pkgdesc = A declarative dependency management command line tool.
-	pkgver = 0.62.0
+	pkgver = 0.63.0
 	pkgrel = 1
 	url = https://www.updatecli.io
 	license = Apache
 	conflicts = updatecli
 	provides = updatecli
 	arch = aarch64
-	source_aarch64 = https://github.com/updatecli/updatecli/releases/download/v0.62.0/updatecli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = b0f1a5bcfbd0746bec1824057f9ed69854d740acd4f3cd4f03b2c6d6a04e0963
+	source_aarch64 = https://github.com/updatecli/updatecli/releases/download/v0.63.0/updatecli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fd20a1107a7597c68870a169e54c54c051ec83e8c0ade12f98367e101f895dad
 	arch = armv6h
-	source_armv6h = https://github.com/updatecli/updatecli/releases/download/v0.62.0/updatecli_Linux_arm.tar.gz
-	sha256sums_armv6h = 0c92810eee654d62d507fcf6f14215d2581e5ec2802f7519529e97639dd65178
+	source_armv6h = https://github.com/updatecli/updatecli/releases/download/v0.63.0/updatecli_Linux_arm.tar.gz
+	sha256sums_armv6h = e26cd58c1362fe45e72466c203275f627d39fe937d01030211e780541287c4ff
 	arch = x86_64
-	source_x86_64 = https://github.com/updatecli/updatecli/releases/download/v0.62.0/updatecli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 3f7685c0c242f78176223106303fd6730c30d85a5b01d7774b01fbd67302b97f
+	source_x86_64 = https://github.com/updatecli/updatecli/releases/download/v0.63.0/updatecli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5a5fcf641709d4d65bf6f0cb74a5099edc6fc26b13e71fa4857dda8793cb2d86
 	
 pkgname = updatecli-bin
