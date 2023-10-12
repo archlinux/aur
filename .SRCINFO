@@ -1,5 +1,5 @@
 pkgbase = cinnamon-applet-weather
-	pkgdesc = A flexible menu with grid or list layout options, file browser and emoji search.
+	pkgdesc = View your local weather forecast
 	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://cinnamon-spices.linuxmint.com/applets/view/322
