@@ -1,0 +1,17 @@
+pkgbase = cdbus-git
+	pkgdesc = libdbus helper library (in plain C).
+	pkgver = r28.dd9f112
+	pkgrel = 1
+	url = https://gitea.ladish.org/LADI/cdbus
+	arch = x86_64
+	license = GPL2
+	license = custom:AFL2.1
+	makedepends = git
+	makedepends = python
+	depends = dbus
+	provides = cdbus
+	conflicts = cdbus
+	source = cdbus::git+https://gitea.ladish.org/LADI/cdbus.git
+	sha256sums = SKIP
+
+pkgname = cdbus-git
