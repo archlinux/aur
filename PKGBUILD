@@ -5,11 +5,11 @@ pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A flat colorful design icon theme."
 arch=('any')
-url="https://www.pling.com/p/1279924"
+url="https://github.com/vinceliuice/Tela-icon-theme"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 options=('!strip')
-source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/Tela-icon-theme/archive/$_pkgver.tar.gz")
+source=("$pkgname-$_pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 sha256sums=('74cf173ce079dbec4ae7af628ebb33d0d32e953b0e1d1a6fd56641a228853f09')
 
 prepare() {
