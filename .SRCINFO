@@ -1,5 +1,5 @@
 pkgbase = weather-vala-git
-	pkgdesc = Application for viewing the current weather
+	pkgdesc = Application for viewing the current weather (latest commit)
 	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/alexkdeveloper/weather
