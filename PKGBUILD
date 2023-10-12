@@ -13,7 +13,10 @@ makedepends=('npm' 'nodejs' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
 sha256sums=('2b6fe8fbfd9531233f43123cb962544725daf5a3055070ea32e4d7b923d560d3'
-            'e74688e853e228efcaecbbe8bf3fdf1e9ab2cf34313b6233412380ba63f4db73')
+            '6a4495c353fd0ff229086cb85d04eceae969f8c429fb11a8d335e45e8b16e203')
+prepare() {
+    gendesk -f -n -q --categories "Utility" --name "${_appname}" --exec "${pkgname}"
+}
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
     sed "15s|--out=./.bin|--out=./out|g" -i package.json
@@ -21,10 +24,9 @@ build() {
     npm run build-linux
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-${pkgver}/out/${_appname}-linux-x64/resources/app.asar" "${pkgdir}/opt/${pkgname}/${pkgname}.asar"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${_appname}-${pkgver}/out/${_appname}-linux-x64/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
     install -Dm644 "${srcdir}/${_appname}-${pkgver}/assets/${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${_appname}-${pkgver}/out/${_appname}-linux-x64/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    gendesk -f -n --icon "${pkgname}" --categories "Utility" --name "${_appname}" --exec "/opt/${pkgname}/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
