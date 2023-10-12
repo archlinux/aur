@@ -5,7 +5,7 @@ pkgname=(
   'duckdb'
   'python-duckdb'
 )
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A high-performance analytical database system'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
   'python-wheel'
   'python-setuptools-scm'
 )
-_commit='6536a772329002b05decbfc0a9d3f606e0ec7f55'
+_commit='401c8061c6ece35949cac58c7770cc755710ca86'
 source=("$pkgbase::git+https://github.com/duckdb/duckdb.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -42,14 +42,7 @@ prepare() {
     -S "$pkgbase" \
     -B build \
     -D CMAKE_BUILD_TYPE=Release \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D BUILD_VISUALIZER_EXTENSION=1 \
-    -D BUILD_ICU_EXTENSION=1 \
-    -D BUILD_TPCH_EXTENSION=1 \
-    -D BUILD_TPCDS_EXTENSION=1 \
-    -D BUILD_FTS_EXTENSION=1 \
-    -D BUILD_HTTPFS_EXTENSION=1 \
-    -D BUILD_PARQUET_EXTENSION=1
+    -D CMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
@@ -88,5 +81,5 @@ package_python-duckdb() {
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgbase/LICENSE"
 
   # remove cruft
-  rm -rf "$pkgdir/usr/duckdb" "$pkgdir/usr/"*.list
+  rm -rf "$pkgdir/usr/duckdb" "$pkgdir/usr/duckdb_build" "$pkgdir/usr/"*.list
 }
