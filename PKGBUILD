@@ -1,9 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('colloid-icon-theme-git' 'colloid-cursors-git')
 pkgbase=colloid-icon-theme-git
-pkgver=2022.10.26.r3.g9a658d7
+pkgver=2023.07.01.r3.g5ad181b
 pkgrel=1
 arch=('any')
+url="https://github.com/vinceliuice/Colloid-icon-theme"
 license=('GPL3')
 makedepends=('git')
 options=('!strip')
@@ -24,7 +25,6 @@ prepare() {
 
 package_colloid-icon-theme-git() {
   pkgdesc="Modern and clean icon theme for Linux"
-  url="https://www.pling.com/p/1661983"
   depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
@@ -36,7 +36,6 @@ package_colloid-icon-theme-git() {
 
 package_colloid-cursors-git() {
   pkgdesc="An x-cursor theme inspired by Colloid theme and based on capitaine-cursors"
-  url="https://www.pling.com/p/1831077"
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
