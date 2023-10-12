@@ -1,11 +1,11 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vrf-decompiler'
 _reponame='ValveResourceFormat'
-pkgver='5.0'
+pkgver='6.0'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://github.com/SteamDatabase/$_reponame"
+url="https://github.com/$_reponame/$_reponame"
 license=('MIT')
 depends=('dotnet-runtime>=6.0.0' 'skia-sharp')
 makedepends=('dotnet-sdk>=6.0.0' 'git')
