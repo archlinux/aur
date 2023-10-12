@@ -1,10 +1,10 @@
 pkgbase = hd-idle-go
 	pkgdesc = Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle
 	pkgver = 1.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adelolmo/hd-idle
 	install = hd-idle-go.install
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = go
 	optdepends = logrotate
