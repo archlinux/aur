@@ -1,7 +1,7 @@
 # Maintainer: Peltoche <pierre.peltier@protonmail.com>
 pkgname=duckcloud
-pkgver=23.10.2
-pkgrel=5
+pkgver=23.10.3
+pkgrel=1
 epoch=1
 pkgdesc="A cloud for your family"
 arch=(x86_64 i686 armv6h armv7h aarch64)
