@@ -1,7 +1,7 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-patches-bin'
-pkgver="2.193.0"
-pkgrel=2
+pkgver="2.194.0"
+pkgrel=1
 pkgdesc='Patches for ReVanced'
 arch=('any')
 url="https://github.com/revanced/revanced-patches"
@@ -11,7 +11,7 @@ provides=('revanced-patches')
 conflicts=('revanced-patches')
 source=("${url}/releases/download/v${pkgver}/revanced-patches-${pkgver}.jar"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('101f682361438a4af5d56c01dbd2020da5e59bc6a79c55648db22981575e1e84'
+sha256sums=('9b7a28a83448df3dcc5ae7abe300ad50a59aead245234a88032b79fe1a9a3a51'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
