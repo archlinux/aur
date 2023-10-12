@@ -1,34 +1,36 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: tas <tasgon_@out/look.com>
+# Contributor: QuantMint <qua/ntmint@/protonm/ail.com>
+# Contributor: Cristian Porras <porrascristian@gmail.com>
+# Contributor: Matthew Bentley <matthew@mtbentley.us>
+
 _pkgname=godot-mono
 pkgname=godot-mono-git
-pkgver=4.1.r1867.gba54c34
-pkgrel=2
+pkgver=4.1.r2674.gb137180
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
-arch=('i686' 'x86_64')
+arch=(x86_64 i686)
 url="https://godotengine.org/"
-license=('MIT')
+license=(MIT)
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
-   libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
-   mbedtls2 miniupnpc pcre2 dotnet-sdk)
-makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git)
-provides=('godot-mono' 'godot' 'godot-mono-bin')
-conflicts=('godot-mono' 'godot-mono-bin')
+         libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
+         mbedtls2 miniupnpc pcre2 dotnet-sdk)
+makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync)
+provides=(godot-mono)
+conflicts=(godot-mono)
 source=("git+https://github.com/godotengine/godot.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/godot"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/.stable//'
 }
 
-
 prepare() {
   # Update the MIME info, ref FS#77810
   sed -i 's,xmlns="https://specifications.freedesktop.org/shared-mime-info-spec",xmlns="http://www.freedesktop.org/standards/shared-mime-info",g' \
     "${srcdir}/godot"/misc/dist/linux/org.godotengine.Godot.xml
 }
-
-
 
 build() {
     cd "${srcdir}/godot"
@@ -95,7 +97,7 @@ package() {
 		#!/usr/bin/env bash
 		/opt/godot-mono/bin/godot.linuxbsd.editor.x86_64.mono
 	EOF
-    
+
     chmod a+x ${pkgdir}/usr/bin/${_pkgname}
 
     install -Dm644 \
