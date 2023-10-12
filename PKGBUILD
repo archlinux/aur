@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dicionario.js-bin
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Simple dictionary in which you record your own words."
 arch=('x86_64')
@@ -8,13 +8,13 @@ url="https://github.com/ArthurLobopro/dicionario.js"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron25')
+depends=('bash' 'electron26')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('861fb9c613823fde0829c29e25cddebdb9c17543d9266dde73743a971a2ce187'
-            '12d2ac7c79bda3c21b3c4a975622107eb377c23584dafe632ade4e37a1bcb7c7')
-prepare() {
+sha256sums=('7cf7a8371dda2b74c4a5319fd6e900136552e1815c008bc2a5b85a74407fc88c'
+            'f3edc91995c5d57da033149ecad845a0cc12fa62fc869413aee152ff210e3665')
+build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
     asar pack "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${srcdir}/app.asar"
     sed "s|${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
