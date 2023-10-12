@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Vadim Kaushan <admin@disasm.info>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=lms
 pkgver=3.37.0
