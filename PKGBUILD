@@ -3,7 +3,7 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=cnspec
-orignalVersion="9.0.3"
+orignalVersion="9.1.0"
 pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Security and Policy Framework "
@@ -15,7 +15,7 @@ source=(
 arch=('x86_64')
 depends=('cnquery')
 
-sha256sums=('c61e2d74d00cf8a773cd18ae946872ea7fb1a1acb80a2b7fb08ff045c37804d0'
+sha256sums=('2abec1a54452bd29f52b82f2a3666317a85c1abc69b6f3904b0840c2a486ef3a'
             )
 
 
