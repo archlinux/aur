@@ -1,12 +1,12 @@
 pkgbase = rofi-notion
 	pkgdesc = Quickly create new Notion pages for your databases with rofi as GUI.
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mathix420/rofi-notion
 	arch = any
 	license = MIT
+	makedepends = python>=3.7,
 	makedepends = python-setuptools
-	depends = python>=3.7
 	provides = rofi-notion
 	source = rofi-notion-2.0.4.tar.gz::https://github.com/mathix420/rofi-notion/archive/refs/tags/v2.0.4.tar.gz
 	sha256sums = SKIP
