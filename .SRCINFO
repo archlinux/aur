@@ -11,6 +11,7 @@ pkgbase = dualsensectl-git
 	depends = systemd-libs
 	depends = dbus
 	depends = hidapi
+	depends = glibc
 	depends = libudev0-shim
 	conflicts = dualsensectl
 	options = !strip

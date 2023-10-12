@@ -9,7 +9,7 @@ pkgdesc='Tool for controlling Sony PlayStation 5 DualSense controller on Linux'
 arch=('any')
 url='https://github.com/nowrep/dualsensectl'
 license=('GPL2')
-depends=('systemd' 'systemd-libs' 'dbus' 'hidapi' 'libudev0-shim')
+depends=('systemd' 'systemd-libs' 'dbus' 'hidapi' 'glibc' 'libudev0-shim')
 makedepends=('git' 'base-devel')
 conflicts=('dualsensectl')
 source=("$_pkgname::git+https://github.com/nowrep/dualsensectl#branch=main")
