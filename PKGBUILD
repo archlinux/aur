@@ -1,6 +1,6 @@
 pkgname=texlab-bin
 _pkgname=texlab
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A cross-platform implementation of the Language Server Protocol for LaTeX'
