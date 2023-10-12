@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Robosky <fangyuhao0612@gmail.com>
 pkgname=tela-icon-theme-git
-pkgver=2022.08.28.r32.geb13dc39
+pkgver=2023.06.25.r17.g5066ac9b
 pkgrel=1
 pkgdesc="A flat colorful design icon theme."
 arch=('any')
-url="https://www.pling.com/p/1279924"
+url="https://github.com/vinceliuice/Tela-icon-theme"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 makedepends=('git')
