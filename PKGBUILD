@@ -16,6 +16,17 @@ source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/${pkgname}
 sha256sums=('SKIP'
             'SKIP')
 
+if [ $SKIPPGPCHECK = 0 ] && ! gpg --list-keys 7100E8BFD6199CE0374CB7F003686F8CDE378D41 >/dev/null 2>&1; then
+  warning "This package is signed with a GPG key that is not on your system."
+  warning "To install this package, you either need to import the key:"
+  warning ""
+  warning "    gpg --keyserver keys.openpgp.org --recv-key 7100E8BFD6199CE0374CB7F003686F8CDE378D41"
+  warning ""
+  warning "Or you may install the package without checking the signature:"
+  warning ""
+  warning "    makepkg --skippgpcheck"
+fi
+
 build() {
   cd "${srcdir}/${pkgname}_${pkgver}"
 
