@@ -1,0 +1,21 @@
+pkgbase = mame-dl-git
+	pkgdesc = CLI ROM manager for MAME.
+	pkgver = r4.542436b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/zulc22/mame-dl
+	arch = any
+	license = custom:0BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-requests
+	depends = python-bs4
+	depends = wget
+	provides = mame-dl
+	conflicts = mame-dl
+	source = mame-dl-git::git+https://github.com/zulc22/mame-dl.git
+	sha256sums = SKIP
+
+pkgname = mame-dl-git
