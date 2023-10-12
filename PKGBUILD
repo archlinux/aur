@@ -3,7 +3,7 @@
 
 pkgname="python-cython_bbox"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=4
 pkgdesc='cython_bbox is widely used in object detection tasks. It is implemented in almost all object detection projects.'
 arch=(any)
 url="https://github.com/samson-wang/cython_bbox"
@@ -16,12 +16,12 @@ sha256sums=('a071ea8341810e7a047a0730084aa16e1f6b2f4c2d4c4ba04f129569c501812c')
 
 build() {
   cd "${srcdir}/cython_bbox-master"
+  sed -i '12c DTYPE = float' src/cython_bbox.pyx
   python setup.py build
 }
 
 package(){
   depends+=()
   cd "${srcdir}/cython_bbox-master"
-  sed -i '12c DTYPE = np.float32' src/cython_bbox.pyx
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }

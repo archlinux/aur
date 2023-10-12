@@ -1,7 +1,7 @@
 pkgbase = python-cython_bbox
 	pkgdesc = cython_bbox is widely used in object detection tasks. It is implemented in almost all object detection projects.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/samson-wang/cython_bbox
 	arch = any
 	license = MIT
