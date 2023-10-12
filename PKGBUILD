@@ -22,9 +22,9 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.19.4
+pkgver=1.19.5
 pkgrel=1
-pkgdesc='conky - built for nvidia - Just change one variable to build the git version - defaults to release version.'
+pkgdesc='Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
 arch=('i686' 'x86_64')
