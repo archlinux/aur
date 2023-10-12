@@ -1,0 +1,11 @@
+# Do not make manual changes to this file.
+# It will be overridden by package upgrades.
+# Use `systemctl edit photoprism-import` instead!
+
+[Unit]
+After=network.target
+Description=Import to Photoprism
+
+[Service]
+ExecStart=/usr/bin/photoprism import
+User=photoprism

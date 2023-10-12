@@ -1,7 +1,7 @@
 pkgbase = photoprism
 	pkgdesc = Personal Photo Management powered by Go and Google TensorFlow
 	pkgver = 230923
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/photoprism/photoprism
 	arch = x86_64
 	arch = aarch64
@@ -28,6 +28,8 @@ pkgbase = photoprism
 	source = photoprism.sysusers
 	source = defaults.yml
 	source = photoprism.tmpfiles
+	source = photoprism-import.service
+	source = photoprism-import.timer
 	sha256sums = SKIP
 	sha256sums = a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588
 	sha256sums = bf9ae0945d2ac53ac3db27082162d2b9dda5ba2c564c0e4c4f539f31f8b670af
@@ -36,5 +38,7 @@ pkgbase = photoprism
 	sha256sums = 73afd3b2983d6a31405c5a68f553f1a82a87a0d38483cdb56e32e959840ad1a6
 	sha256sums = f1242a6208a2623815d585d089fa133664dc3ddf5f63b468093da059141fb523
 	sha256sums = ec6f438c9818f982fb2aaa1895a8b07abb41a3c2befd1c3baa2fecbc2d6cc721
+	sha256sums = 76de44acbdfd3f818b9549b77daf187fb740ceccd3c01d42d8308d5edcf49d6c
+	sha256sums = ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8
 
 pkgname = photoprism
