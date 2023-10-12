@@ -1,0 +1,16 @@
+pkgbase = guessnumber
+	pkgdesc = A simple number guessing game
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/guessnumber
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = git+https://github.com/alexkdeveloper/guessnumber.git#tag=1.1.6
+	sha256sums = SKIP
+
+pkgname = guessnumber
