@@ -1,5 +1,6 @@
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Briefly hijacked by: zer0def <zer0def@zer0def.0>
+# Contributor: Morten Linderud <foxboron@archlinux.org>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 # Contributor: Asterios Dimitriou <asterios@pci.gr>
 # Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
@@ -7,7 +8,7 @@
 
 pkgname=incus
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/incus"
@@ -52,7 +53,11 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath"
   export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
-  CGO_LDFLAGS="-static" go build -v -tags "agent" -o bin/ ./cmd/incus-agent/...
+  CGO_LDFLAGS="-static" go build -v -tags "agent,netgo" -o bin/ ./cmd/incus-agent/...
+
+  pushd cmd/lxd-to-incus
+  go build -v -o ../../bin ./...
+  popd
 
   go build -v -tags "netgo" -o bin/ ./cmd/incus-migrate/...
   for tool in fuidshift incus lxc-to-incus incusd incus-benchmark incus-user; do
@@ -63,7 +68,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  for tool in fuidshift incus lxc-to-incus incusd incus-agent incus-benchmark incus-migrate incus-user; do
+  for tool in fuidshift incus lxc-to-incus lxd-to-incus incusd incus-agent incus-benchmark incus-migrate incus-user; do
     install -v -p -Dm755 "bin/$tool" "${pkgdir}/usr/bin/$tool"
   done
 
