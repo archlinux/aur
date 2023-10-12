@@ -9,11 +9,12 @@ pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
 depends=(gtk4
          libcanberra
-         libgdata
+         libgoa
+         libgweather-4
          libical
          libphonenumber
-         libsignon-glib
          nss
+         webkit2gtk-4.1
          webkitgtk-6.0
          )
 makedepends=(git
