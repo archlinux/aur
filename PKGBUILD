@@ -1,13 +1,13 @@
 # Maintainer: Juacrumar <juacrumar at lairen dot eu>
 
 pkgname=pineappl
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='PineAPPL is not an extension of APPLgrid. Installs pineappl_cli, pineappl library and python package'
 arch=('any')
 url="https://n3pdf.github.io/pineappl/"
 license=('GPL3')
-makedepends=("python-setuptools" "maturin" "python-pip")
+makedepends=("python-setuptools" "maturin" "python-pip" "sccache")
 depends=("cargo-c"
          "rust"
          "lhapdf"
@@ -18,7 +18,7 @@ optdepends=()
 provides=("pineappl")
 changelog=
 source=("https://github.com/N3PDF/pineappl/archive/v${pkgver}.tar.gz")
-md5sums=("c9ab86eea2381080032d6d73922003f3")
+md5sums=("d29f47c3a61a0432872977e86caecb95")
 
 build() {
     # Build the python interface
@@ -27,7 +27,6 @@ build() {
 }
 
 package() {
-    echo "DONE"
     # Install the command-line program
 	cd "$pkgname-$pkgver"
     cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track --features=fktable,evolve
