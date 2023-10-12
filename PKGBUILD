@@ -37,6 +37,7 @@ build() {
 
 	# Libsmi
 	cd libsmi
+	autoreconf -i
 	./configure --disable-shared --disable-yang \
 		--with-pathseparator=";" --with-dirseparator="/" \
 		--with-smipath="/usr/share/apps/snmpb/mibs;/usr/share/apps/snmpb/pibs"
