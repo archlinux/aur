@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 
 # options - defaults
 if [ -z "$_pkgver" ] ; then
@@ -7,12 +7,22 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=1.7.5003}
+: ${_pkgver:=1.7.5105}
 
-# first letter, lowercase
-for i in _autoupdate ; do
-  eval "${i}=\$( printf '%s' \"\${$i::1}\" | sed -e 's/^\(.*\)$/\L\1/' )"
-done
+
+# basic info
+_pkgname='pcsx2'
+pkgname="$_pkgname-latest-bin"
+pkgver=1.7.5105
+pkgrel=1
+pkgdesc='A Sony PlayStation 2 emulator'
+url="https://github.com/PCSX2/pcsx2"
+arch=(x86_64)
+license=(
+  'GPL3'
+  'LGPL3'
+)
+
 
 # update version
 case "${_autoupdate::1}" in
@@ -47,25 +57,16 @@ case "${_autoupdate::1}" in
     ;;
 esac
 
-# normal pkgbuild stuff
-_pkgname='pcsx2'
-pkgname="$_pkgname-latest-bin"
-pkgver=1.7.5003
-pkgrel=1
-pkgdesc='A Sony PlayStation 2 emulator'
-arch=(x86_64)
-url="https://github.com/PCSX2/pcsx2"
-license=(
-  'GPL3'
-  'LGPL3'
-)
-options=(!strip !debug)
 
 depends=()
 makedepends=()
 
-provides=("$_pkgname")
-conflicts=(${provides[@]})
+if [ x"$_pkgname" != x"$pkgname" ] ; then
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+fi
+
+options=(!strip !debug)
 
 case "${_autoupdate::1}" in
   'c')
