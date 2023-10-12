@@ -1,0 +1,18 @@
+pkgbase = goldsearch
+	pkgdesc = A game in which you need to look for gold
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/goldsearch
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gstreamer
+	depends = libadwaita
+	source = git+https://github.com/alexkdeveloper/goldsearch.git#tag=1.0.11
+	sha256sums = SKIP
+
+pkgname = goldsearch
