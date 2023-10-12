@@ -1,0 +1,17 @@
+pkgbase = easter
+	pkgdesc = Simple password generator for websites
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/easter
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	source = git+https://github.com/alexkdeveloper/easter.git#tag=1.2.1
+	sha256sums = SKIP
+
+pkgname = easter
