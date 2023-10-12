@@ -1,12 +1,14 @@
 pkgname=husky-tosser-git
 _realpkg=husky
-pkgver=r3389.852e02a5
+pkgver=r3410.d18b6911
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
-makedepends=('git')
+makedepends=('git' 'patchelf' 'gawk' 'perl')
+depends=('perl')
 url="http://husky${_bld_lib}urceforge.net/hpt.html"
 pkgdesc="Husky Fido Tosser hpt: Complete bundle (except msged)"
+provides=("husky-tosser-git")
 conflicts=("husky-git")
 
 source=(
@@ -22,15 +24,14 @@ source=(
   'nltools::git+https://github.com/huskyproject/nltools.git'
   'hptkill::git+https://github.com/huskyproject/hptkill.git'
   'hptzip::git+https://github.com/huskyproject/hptzip.git'
-  'hpt::git+https://github.com/huskyproject/hpt.git'  
+  'hpt::git+https://github.com/huskyproject/hpt.git'
   'htick::git+https://github.com/huskyproject/htick.git'
   'hptsqfix::git+https://github.com/huskyproject/hptsqfix.git'
 )
 
-_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
+_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick hptzip"
 _prefix=/usr
-# Coz libperl fails in shared mode :(
-_wanna_shared=0
+_wanna_shared=1
 
 pkgver() {
     cd ${srcdir}/hpt/
@@ -115,13 +116,11 @@ build() {
     ln -s "../huskylib/huskylib" huskylib
     cp ../cvsdate.h ./
     cmake \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix} \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
-        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
-    cd build-archlinux
-    make
-    cd ..
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}"
+    cmake --build build-archlinux
     popd
 
     echo "BUILDING hpt"
@@ -143,15 +142,14 @@ build() {
         -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
         -Dareafix_LIB="../areafix/build-archlinux/libareafix${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
-    cd build-archlinux
-    make
-    cd ..
+    cmake --build build-archlinux
     popd
 
     echo "BUILDING areastat"
     pushd areastat
     rm -rf build-archlinux
     cp ../cvsdate.h ./
+    cp ../cvsdate.h ./h/
     rm -rf huskylib smapi fidoconf
     ln -s "../huskylib/huskylib" huskylib
     ln -s "../smapi/smapi" smapi
@@ -290,25 +288,27 @@ build() {
 
 package() {
     for i in $_tosserModules; do
-        cd "${srcdir}/${i}/build-archlinux"
+        pushd "${i}/build-archlinux"
         make DESTDIR="$pkgdir" install
+        popd
     done
-    rm -rf ${pkgdir}/usr/lib/*.a
+    RPATH_FOR_PERL_FULL=$(ldd "hpt/build-archlinux/hpt" | grep libperl\.so | awk '{ print $3; }')
+    RPATH_FOR_PERL=$(dirname "${RPATH_FOR_PERL_FULL}")
+    patchelf --set-rpath "${RPATH_FOR_PERL}" "${pkgdir}/usr/bin/hpt"
 }
-
-md5sums=('a1abb8245e098573da0abf7735fc3840'
-         'f4805667cd4f632139783d944c04b4f4'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+sha256sums=('73a603d930e184a1d094f53311916b4f8dcd8f7c31ea3373e236e797a3341a15'
+            'c5bb6b91f34b23cb1d2f9cff5d8d0956ce372cca3b602ada87ff3b4375498ea7'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
