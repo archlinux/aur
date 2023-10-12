@@ -1,4 +1,4 @@
-From b36296b0cc5e7744d7846d3c9e3ed1152a2a7cba Mon Sep 17 00:00:00 2001
+From 0274361d39e2f3118d3bf5f7a6b04b3e2dcbd6fd Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 1 May 2022 23:28:26 +0200
 Subject: [PATCH 12/12] Allow using properties of PkgConfig targets for Wayland

@@ -1,4 +1,4 @@
-From 05840b79ff61ca8af9c73d95087c2d9a91120c06 Mon Sep 17 00:00:00 2001
+From e7bbea84b04d164f0098f073d591d788be327fda Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
 Subject: [PATCH 09/12] Find fontconfig via pkg-config for correct handling of
@@ -33,10 +33,10 @@ index 0000000000..1a52327ae6
 +    set(Fontconfig_FOUND 1)
 +endif()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index c7d20b5e7d..05f10b1936 100644
+index 7aaf007c8f..2c21b19155 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -695,7 +695,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
+@@ -706,7 +706,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
          text/unix/qfontconfigdatabase.cpp text/unix/qfontconfigdatabase_p.h
          text/unix/qfontenginemultifontconfig.cpp text/unix/qfontenginemultifontconfig_p.h
      LIBRARIES
@@ -46,10 +46,10 @@ index c7d20b5e7d..05f10b1936 100644
  
  qt_internal_extend_target(Gui CONDITION APPLE AND NOT MACOS
 diff --git a/src/gui/configure.cmake b/src/gui/configure.cmake
-index d8319c120b..afb3cf96bb 100644
+index 02a80130d5..4b8ef6e83d 100644
 --- a/src/gui/configure.cmake
 +++ b/src/gui/configure.cmake
-@@ -42,7 +42,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 PROVIDED_TARGETS WrapSystemFreetype::Wr
+@@ -43,7 +43,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 PROVIDED_TARGETS WrapSystemFreetype::Wr
  if(QT_FEATURE_system_zlib)
      qt_add_qmake_lib_dependency(freetype zlib)
  endif()
