@@ -3,7 +3,7 @@
 pkgname=python-yt
 _module_name=yt
 pkgver=4.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data."
 arch=(any)
 url="http://yt-project.org"
@@ -23,10 +23,9 @@ depends=(
 )
 makedepends=(
     'cython'
-    'python-setuptools'
+    'python-build'
+    'python-installer'
     'python-wheel'
-    'python-ewah-bool-utils'
-    'python-oldest-supported-numpy'
 )
 optdepends=(
     'jupyterlab: interactive analysis'
