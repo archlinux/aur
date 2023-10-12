@@ -1,13 +1,13 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono-bin
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel."
 arch=("i686" "x86_64")
 url="https://www.godotengine.org"
 license=('MIT')
-provides=("godot" "godot-mono-bin")
-conflicts=("godot-mono")
+provides=("godot" "godot-mono")
+conflicts=("godot")
 depends=("dotnet-sdk")
 source=("godot-mono.desktop" "icons.tar.gz")
 source_i686=("$pkgname-$pkgver-i686.zip::https://github.com/godotengine/godot/releases/download/"$pkgver"-stable/Godot_v"$pkgver"-stable_mono_linux_x86_32.zip")
