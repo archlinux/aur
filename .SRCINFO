@@ -1,4 +1,4 @@
-pkgbase = oblige-obsidian-unstable-git
+pkgbase = oblige-obsidian-unstable
 	pkgdesc = Random level generator for classic Doom, also a fork of OBLIGE. Stable branch.
 	pkgver = v21.20231003
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = oblige-obsidian-unstable-git
 	source = Obsidian::git+https://github.com/obsidian-level-maker/Obsidian#branch=unstable
 	sha256sums = SKIP
 
-pkgname = oblige-obsidian-unstable-git
+pkgname = oblige-obsidian-unstable
