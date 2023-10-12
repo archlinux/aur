@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=colloid-gtk-theme-git
-pkgver=2023.04.11.r19.g5006d204
+pkgver=2023.08.12.r12.gc220ed59
 pkgrel=1
 pkgdesc="Modern and clean Gtk theme for linux"
 arch=('any')
-url="https://www.pling.com/p/1661959"
+url="https://github.com/vinceliuice/Colloid-gtk-theme"
 license=('GPL3')
 makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
