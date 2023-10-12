@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.0.r12.ga6dc929
-pkgrel=7
+pkgrel=8
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -402,6 +402,13 @@ prepare() {
 
   ## Fix building with binutils 2.41
   git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
+
+  ## fix playing ogg files with mplayer
+  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
+
+  ## use non-deprecated nvenc GUID for conftest
+  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
+  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
 
   ### OBS changes
 
