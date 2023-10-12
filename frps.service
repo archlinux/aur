@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=exec
 LoadCredential=config:/etc/frp/frps.ini
+LoadCredential=config_toml:/etc/frp/frps.toml
 DynamicUser=yes
 Restart=on-failure
 RestartSec=5s
