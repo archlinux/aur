@@ -3,7 +3,7 @@
 
 _pkgname=evolution-ews
 pkgname=$_pkgname-git
-pkgver=3.48.0.r018.g74024588
+pkgver=3.50.0.r002.g098b2265
 pkgrel=1
 pkgdesc="MS Exchange integration through Exchange Web Services"
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = evolution-ews-git
 	pkgdesc = MS Exchange integration through Exchange Web Services
-	pkgver = 3.48.0.r018.g74024588
+	pkgver = 3.50.0.r002.g098b2265
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evolution/EWS
 	arch = i686
