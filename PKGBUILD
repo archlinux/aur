@@ -2,28 +2,28 @@
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
 arch=('x86_64')
 url="https://sourceforge.net/projects/snmpb/"
 license=('GPL2')
-depends=(qwt)
-makedepends=(bison flex qt5-base git)
+depends=(qwt qt5-base qt5-svg)
+makedepends=(bison flex git)
 source=("$pkgname-code::git+https://git.code.sf.net/p/snmpb/code"
-	"git+https://gitlab.ibr.cs.tu-bs.de/nm/libsmi.git"
-	"libtomcrypt-1.18.2.tar.gz::https://github.com/libtom/libtomcrypt/archive/refs/tags/v1.18.2.tar.gz"
-	"qwt-6.2.0.zip::https://sourceforge.net/projects/qwt/files/qwt/6.2.0/qwt-6.2.0.zip/download")
+	"https://www.ibr.cs.tu-bs.de/projects/libsmi/download/libsmi-0.5.0.tar.gz"
+	"https://github.com/libtom/libtomcrypt/releases/download/v1.18.2/crypt-1.18.2.tar.xz"
+	"https://sourceforge.net/projects/qwt/files/qwt/6.2.0/qwt-6.2.0.tar.bz2")
 sha256sums=('SKIP'
-            'SKIP'
-            'd870fad1e31cb787c85161a8894abb9d7283c2a654a9d3d4c6d45a1eba59952c'
-            '3e9632a9be6a883db5c496e42ce74cbbf8da02cc3328faa89e2c43e434a2eb76')
+            'f21accdadb1bb328ea3f8a13fc34d715baac6e2db66065898346322c725754d3'
+            '96ad4c3b8336050993c5bc2cf6c057484f2b0f9f763448151567fbab5e767b84'
+            '9194f6513955d0fd7300f67158175064460197abab1a92fa127a67a4b0b71530')
 
 prepare() {
 	mkdir -p $pkgname-$pkgver
 	cp -r $pkgname-code/{app,snmp++,license.txt,Makefile} $pkgname-$pkgver
 
 	# Copy needed Libs
-	cp -r "$srcdir"/libsmi $pkgname-$pkgver/libsmi
+	cp -r "$srcdir"/libsmi-0.5.0 $pkgname-$pkgver/libsmi
 	cp -r "$srcdir"/libtomcrypt-1.18.2 $pkgname-$pkgver/libtomcrypt
 	cp -r "$srcdir"/qwt-6.2.0 $pkgname-$pkgver/qwt
 
@@ -37,25 +37,23 @@ build() {
 
 	# Libsmi
 	cd libsmi
-	./autogen.sh
 	./configure --disable-shared --disable-yang \
 		--with-pathseparator=";" --with-dirseparator="/" \
 		--with-smipath="/usr/share/apps/snmpb/mibs;/usr/share/apps/snmpb/pibs"
-	make
+	make V=0
 
 	# Libtomcrypt
 	cd ../libtomcrypt
-	make CPPFLAGS+=" -DLTM_DESC -DGMP_DESC -DUSE_LTM" EXTRALIBS="-ltommath -lgmp" \
-		-f makefile.shared library
+	make library
 
 	# Qwt
 	cd ../qwt
-	qmake qwt.pro
+	qmake-qt5 qwt.pro
 	make
 
 	# Build snmpb Qt App
 	cd ../app
-	qmake -o makefile.snmpb snmpb.pro
+	qmake-qt5 -o makefile.snmpb snmpb.pro
 	make -f makefile.snmpb
 }
 
