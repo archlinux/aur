@@ -16,12 +16,18 @@ package() {
 	bsdtar -xf data.tar.* -C $pkgdir
 
 	find $pkgdir -name "resources" -type d -print \
-	-exec asar e {}/app.asar {}/app \; \
-	-exec rm {}/app.asar \;
+		-exec asar e {}/app.asar {}/app \; \
+		-exec rm {}/app.asar \;
 
 	find "$pkgdir/opt/Z-Library/resources/app" -name "tor" -path "*/dist/*" -type d -print -exec rm -r {} \; || true # why there is a tor.exe ??
 
 	find $pkgdir/opt -not -path "*/resources/*" -type f -print -delete # saves 200M space
+
+	pushd $pkgdir/opt/Z-Library/resources/app
+
+	cp -a dist public # fix a path bug
+
+	popd
 
 	printf "#!/bin/bash
 electron24 /opt/Z-Library/resources/app
