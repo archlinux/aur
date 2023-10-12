@@ -1,7 +1,7 @@
 # Maintainer: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.39.8
+pkgver=1.39.10
 pkgrel=1
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/OmniSharp/omnisharp-roslyn"
 license=('MIT')
 depends=('dotnet-sdk')
 source=("https://github.com/OmniSharp/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0eda0d39dcf62d3e3a6fd169c9453958696684f9826033a896c1caffa44dd38')
+sha256sums=('b41252cd4326dea2dc4a6ca221c5d4922b479449365edbd93dff05dbf7d809c1')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
