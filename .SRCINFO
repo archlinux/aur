@@ -1,0 +1,26 @@
+pkgbase = cervisia
+	pkgdesc = CVS Frontend
+	pkgver = 23.08.2
+	pkgrel = 1
+	url = https://apps.kde.org/cervisia/
+	arch = x86_64
+	groups = kde-applications
+	groups = kdesdk
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools5
+	depends = kdesu5
+	depends = kparts5
+	depends = hicolor-icon-theme
+	depends = kinit
+	source = https://download.kde.org/stable/release-service/23.08.2/src/cervisia-23.08.2.tar.xz
+	source = https://download.kde.org/stable/release-service/23.08.2/src/cervisia-23.08.2.tar.xz.sig
+	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
+	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
+	sha256sums = a45699a7a72203b453a358e99f0b1d3861f8327aa8d41b78e4057fbce43cc712
+	sha256sums = SKIP
+
+pkgname = cervisia
