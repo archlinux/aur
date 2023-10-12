@@ -4,14 +4,14 @@ pkgver=1.1.0
 pkgrel=2
 pkgdesc="Papirus folder icon set based on distros and the most famous icon themes in the Linux world!"
 arch=('any')
-url="https://www.pling.com/p/1493085"
+url="https://github.com/Adapta-Projects/Papirus-Linux-Universe"
 license=('GPL2')
 depends=('bash' 'papirus-icon-theme')
 optdepends=('papirus-nord: additional icon themes')
 provides=('papirus-folders')
 conflicts=('papirus-folders')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Adapta-Projects/Papirus-Linux-Universe/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('d9919a1c1902666662af6f401678a65ed51a2aa09193eb8d0f2f64d7b0e84bc6')
 
 package() {
