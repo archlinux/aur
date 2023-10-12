@@ -1,10 +1,11 @@
 pkgname=husky-git
 _realpkg=husky
-pkgver=r3389.852e02a5
+pkgver=r3410.d18b6911
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
-makedepends=('git')
+makedepends=('git' 'patchelf' 'gawk' 'perl')
+depends=('perl')
 url="http://husky${_bld_lib}urceforge.net/hpt.html"
 pkgdesc="Husky Fido Tosser hpt: Complete bundle"
 provides=("husky-tosser-git" "husky-msged-git")
@@ -29,10 +30,9 @@ source=(
   'msged::git+https://github.com/huskyproject/msged.git'
 )
 
-_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
+_tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick hptzip"
 _prefix=/usr
-# Coz libperl linking fails in dynamic mode :(
-_wanna_shared=0
+_wanna_shared=1
 
 pkgver() {
     cd ${srcdir}/hpt/
@@ -117,13 +117,11 @@ build() {
     ln -s "../huskylib/huskylib" huskylib
     cp ../cvsdate.h ./
     cmake \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix} \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
-        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
-    cd build-archlinux
-    make
-    cd ..
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}"
+    cmake --build build-archlinux
     popd
 
     echo "BUILDING hpt"
@@ -145,15 +143,14 @@ build() {
         -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
         -Dareafix_LIB="../areafix/build-archlinux/libareafix${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
-    cd build-archlinux
-    make
-    cd ..
+    cmake --build build-archlinux
     popd
 
     echo "BUILDING areastat"
     pushd areastat
     rm -rf build-archlinux
     cp ../cvsdate.h ./
+    cp ../cvsdate.h ./h/
     rm -rf huskylib smapi fidoconf
     ln -s "../huskylib/huskylib" huskylib
     ln -s "../smapi/smapi" smapi
@@ -314,12 +311,16 @@ build() {
 
 package() {
     for i in $_tosserModules; do
-        cd "${srcdir}/${i}/build-archlinux"
+        pushd "${i}/build-archlinux"
         make DESTDIR="$pkgdir" install
+        popd+
     done
-    cd "${srcdir}/msged/build-archlinux"
+    pushd "msged/build-archlinux"
     make DESTDIR="$pkgdir" install
-    rm -rf ${pkgdir}/usr/lib/*.a
+    popd
+    RPATH_FOR_PERL_FULL=$(ldd "hpt/build-archlinux/hpt" | grep libperl\.so | awk '{ print $3; }')
+    RPATH_FOR_PERL=$(dirname "${RPATH_FOR_PERL_FULL}")
+    patchelf --set-rpath "${RPATH_FOR_PERL}" "${pkgdir}/usr/bin/hpt"
 }
 sha256sums=('73a603d930e184a1d094f53311916b4f8dcd8f7c31ea3373e236e797a3341a15'
             'c5bb6b91f34b23cb1d2f9cff5d8d0956ce372cca3b602ada87ff3b4375498ea7'
