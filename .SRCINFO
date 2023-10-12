@@ -1,0 +1,24 @@
+pkgbase = gnome-shell-extension-gsconnect45
+	pkgdesc = KDE Connect for GNOME Shell (with GNOME 45 patches)
+	pkgver = 55.r103.g018c7fe6
+	pkgrel = 1
+	url = https://github.com/GSConnect/gnome-shell-extension-gsconnect
+	install = gnome-shell-extension-gsconnect.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = eslint
+	depends = gnome-shell
+	optdepends = folks: Contacts integration (Evolution)
+	optdepends = libgdata: Contacts integration (GNOME Online Accounts)
+	optdepends = python-nautilus: Nautilus integration
+	optdepends = gsound: Themed sound effects
+	provides = gnome-shell-extension-gsconnect
+	conflicts = gnome-shell-extension-gsconnect
+	source = gnome-shell-extension-gsconnect::git+https://github.com/GSConnect/gnome-shell-extension-gsconnect
+	source = pr1683.patch::https://patch-diff.githubusercontent.com/raw/GSConnect/gnome-shell-extension-gsconnect/pull/1683.patch
+	md5sums = SKIP
+	md5sums = 186d716afa4ee086108751f69006ca72
+
+pkgname = gnome-shell-extension-gsconnect45

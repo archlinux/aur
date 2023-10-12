@@ -1,0 +1,3921 @@
+From 2fb9582f6006a0bbc4eb1df1caf31a90bfd70f3b Mon Sep 17 00:00:00 2001
+From: Ibrahim Ansari <ansari.ibrahim1@gmail.com>
+Date: Sun, 24 Sep 2023 02:52:37 +0530
+Subject: [PATCH 1/6] Migrate preferences code to ESM (mostly)
+
+---
+ .eslintrc.json                 |  3 ++
+ src/extension.js               |  2 +-
+ src/gsconnect-preferences      | 63 ++++++++++------------------------
+ src/preferences/device.js      | 23 ++++++-------
+ src/preferences/keybindings.js | 20 +++++------
+ src/preferences/service.js     | 32 ++++++++---------
+ src/utils/remote.js            | 14 ++++----
+ src/utils/remote.mjs           | 12 -------
+ 8 files changed, 65 insertions(+), 104 deletions(-)
+ delete mode 100644 src/utils/remote.mjs
+
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 78fc6c504..7b5172011 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -294,6 +294,9 @@
+             "files": [
+                 "webextension/**/*.js",
+                 "src/shell/**/*.js",
++                "src/utils/**/*.js",
++                "src/preferences/**/*.js",
++                "src/gsconnect-preferences",
+                 "src/extension.js",
+                 "src/prefs.js"
+             ],
+diff --git a/src/extension.js b/src/extension.js
+index 53ecd5fc3..752d7e88c 100644
+--- a/src/extension.js
++++ b/src/extension.js
+@@ -23,7 +23,7 @@ import * as Keybindings from './shell/keybindings.js';
+ import * as Notification from './shell/notification.js';
+ import * as Input from './shell/input.js';
+ import * as Utils from './shell/utils.js';
+-import Remote from './utils/remote.mjs';
++import * as Remote from './utils/remote.js';
+ import setup from './utils/setup.mjs';
+ 
+ const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
+diff --git a/src/gsconnect-preferences b/src/gsconnect-preferences
+index 5d0b19cce..b28868fa9 100755
+--- a/src/gsconnect-preferences
++++ b/src/gsconnect-preferences
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env gjs
++#!/usr/bin/env -S gjs -m
+ 
+ // SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
+ //
+@@ -6,49 +6,24 @@
+ 
+ // -*- mode: js; -*-
+ 
+-'use strict';
++import Gdk from 'gi://Gdk?version=3.0';
++import 'gi://GdkPixbuf?version=2.0';
++import Gio from 'gi://Gio?version=2.0';
++import GLib from 'gi://GLib?version=2.0';
++import GObject from 'gi://GObject?version=2.0';
++import Gtk from 'gi://Gtk?version=3.0';
+ 
+-imports.gi.versions.Gdk = '3.0';
+-imports.gi.versions.GdkPixbuf = '2.0';
+-imports.gi.versions.Gio = '2.0';
+-imports.gi.versions.GLib = '2.0';
+-imports.gi.versions.GObject = '2.0';
+-imports.gi.versions.Gtk = '3.0';
++import system from 'system';
+ 
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import {Window} from './preferences/service.js';
++import setup, {setupGettext} from './utils/setup.mjs';
++import Config from './config.mjs';
+ 
+ 
+ // Bootstrap
+-function get_datadir() {
+-    const m = /@([^:]+):\d+/.exec(new Error().stack.split('\n')[1]);
+-    let path = null;
+-    const symbolic_link = Gio.File.new_for_path(m[1])
+-        .query_info('standard::*', null, null)
+-        .get_symlink_target();
+-    if (symbolic_link)
+-        path = symbolic_link;
+-    else
+-        path = m[1];
+-
+-    return Gio.File.new_for_path(path).get_parent().get_path();
+-}
+-
+-imports.searchPath.unshift(get_datadir());
+-imports.config.PACKAGE_DATADIR = imports.searchPath[0];
+-
+-// Bootstrap
+-const {setup, setupGettext} = imports.utils.setup;
+-setup(imports.config.PACKAGE_DATADIR);
++setup(GLib.path_get_dirname(GLib.filename_from_uri(import.meta.url)[0]));
+ setupGettext();
+ 
+-// Local Imports
+-const Config = imports.config;
+-const Settings = imports.preferences.service;
+-
+ 
+ /**
+  * Class representing the GSConnect service daemon.
+@@ -70,7 +45,7 @@ const Preferences = GObject.registerClass({
+ 
+     vfunc_activate() {
+         if (this._window === undefined) {
+-            this._window = new Settings.Window({
++            this._window = new Window({
+                 application: this,
+             });
+         }
+@@ -82,7 +57,7 @@ const Preferences = GObject.registerClass({
+         super.vfunc_startup();
+ 
+         // Init some resources
+-        let provider = new Gtk.CssProvider();
++        const provider = new Gtk.CssProvider();
+         provider.load_from_resource(`${Config.APP_PATH}/application.css`);
+         Gtk.StyleContext.add_provider_for_screen(
+             Gdk.Screen.get_default(),
+@@ -90,13 +65,13 @@ const Preferences = GObject.registerClass({
+             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+         );
+ 
+-        let actions = [
++        const actions = [
+             ['refresh', null],
+             ['connect', GLib.VariantType.new('s')],
+         ];
+ 
+-        for (let [name, type] of actions) {
+-            let action = new Gio.SimpleAction({
++        for (const [name, type] of actions) {
++            const action = new Gio.SimpleAction({
+                 name: name,
+                 parameter_type: type,
+             });
+@@ -106,7 +81,7 @@ const Preferences = GObject.registerClass({
+ 
+     vfunc_activate_action(action_name, parameter) {
+         try {
+-            let paramArray = [];
++            const paramArray = [];
+ 
+             if (parameter instanceof GLib.Variant)
+                 paramArray[0] = parameter;
+@@ -129,4 +104,4 @@ const Preferences = GObject.registerClass({
+     }
+ });
+ 
+-(new Preferences()).run([imports.system.programInvocationName].concat(ARGV));
++(new Preferences()).run([system.programInvocationName].concat(ARGV));
+diff --git a/src/preferences/device.js b/src/preferences/device.js
+index d51835305..6f744d96d 100644
+--- a/src/preferences/device.js
++++ b/src/preferences/device.js
+@@ -2,22 +2,21 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
++import Pango from 'gi://Pango';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
+-const Pango = imports.gi.Pango;
+-
+-const Config = imports.config;
+-const Keybindings = imports.preferences.keybindings;
++import Config from '../config.mjs';
++import * as Keybindings from './keybindings.js';
+ 
+ 
+ // Build a list of plugins and shortcuts for devices
+ const DEVICE_PLUGINS = [];
+ const DEVICE_SHORTCUTS = {};
+ 
++// FIXME ESM
+ for (const name in imports.service.plugins) {
+     const module = imports.service.plugins[name];
+ 
+@@ -41,7 +40,7 @@ for (const name in imports.service.plugins) {
+  * @param {Gtk.ListBoxRow} row - The current row
+  * @param {Gtk.ListBoxRow} before - The previous row
+  */
+-function rowSeparators(row, before) {
++export function rowSeparators(row, before) {
+     const header = row.get_header();
+ 
+     if (before === null) {
+@@ -63,7 +62,7 @@ function rowSeparators(row, before) {
+  * @param {Gtk.ListBoxRow} row2 - The second row
+  * @return {number} -1, 0 or 1
+  */
+-function titleSortFunc(row1, row2) {
++export function titleSortFunc(row1, row2) {
+     if (!row1.title || !row2.title)
+         return 0;
+ 
+@@ -249,7 +248,7 @@ const CommandEditor = GObject.registerClass({
+ /**
+  * A widget for configuring a remote device.
+  */
+-var Panel = GObject.registerClass({
++export const Panel = GObject.registerClass({
+     GTypeName: 'GSConnectPreferencesDevicePanel',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+diff --git a/src/preferences/keybindings.js b/src/preferences/keybindings.js
+index b93c936ab..be80dfeae 100644
+--- a/src/preferences/keybindings.js
++++ b/src/preferences/keybindings.js
+@@ -2,13 +2,11 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import Gdk from 'gi://Gdk';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+ 
+ /*
+@@ -32,7 +30,7 @@ const _MODIFIERS = [
+ /**
+  * Response enum for ShortcutChooserDialog
+  */
+-var ResponseType = {
++export const ResponseType = {
+     CANCEL: Gtk.ResponseType.CANCEL,
+     SET: Gtk.ResponseType.APPLY,
+     UNSET: 2,
+@@ -42,7 +40,7 @@ var ResponseType = {
+ /**
+  * A simplified version of the shortcut editor from GNOME Control Center
+  */
+-var ShortcutChooserDialog = GObject.registerClass({
++export const ShortcutChooserDialog = GObject.registerClass({
+     GTypeName: 'GSConnectPreferencesShortcutEditor',
+     Template: 'resource:///org/gnome/Shell/Extensions/GSConnect/ui/preferences-shortcut-editor.ui',
+     Children: [
+@@ -209,7 +207,7 @@ var ShortcutChooserDialog = GObject.registerClass({
+  * @param {number} [grabFlags] - Grab Flags
+  * @param {boolean} %true if available, %false on error or unavailable
+  */
+-async function checkAccelerator(accelerator, modeFlags = 0, grabFlags = 0) {
++export async function checkAccelerator(accelerator, modeFlags = 0, grabFlags = 0) {
+     try {
+         let result = false;
+ 
+@@ -276,7 +274,7 @@ async function checkAccelerator(accelerator, modeFlags = 0, grabFlags = 0) {
+  * @param {string} accelerator - An accelerator as taken by Gtk.ShortcutLabel
+  * @return {string} An accelerator or %null if it should be unset.
+  */
+-async function getAccelerator(summary, accelerator = null) {
++export async function getAccelerator(summary, accelerator = null) {
+     try {
+         const dialog = new ShortcutChooserDialog({
+             summary: summary,
+diff --git a/src/preferences/service.js b/src/preferences/service.js
+index d9bc97f2e..ecfab37df 100644
+--- a/src/preferences/service.js
++++ b/src/preferences/service.js
+@@ -2,18 +2,18 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk';
++import GdkPixbuf from 'gi://GdkPixbuf';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const Gdk = imports.gi.Gdk;
+-const GdkPixbuf = imports.gi.GdkPixbuf;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import system from 'system';
+ 
+-const Config = imports.config;
+-const Device = imports.preferences.device;
+-const Remote = imports.utils.remote;
++import Config from '../config.mjs';
++import {Panel, rowSeparators} from './device.js';
++import {Service} from '../utils/remote.js';
+ 
+ 
+ /*
+@@ -21,7 +21,7 @@ const Remote = imports.utils.remote;
+  */
+ const LOG_HEADER = new GLib.Bytes(`
+ GSConnect: ${Config.PACKAGE_VERSION} (${Config.IS_USER ? 'user' : 'system'})
+-GJS:       ${imports.system.version}
++GJS:       ${system.version}
+ Session:   ${GLib.getenv('XDG_SESSION_TYPE')}
+ OS:        ${GLib.get_os_info('PRETTY_NAME')}
+ --------------------------------------------------------------------------------
+@@ -91,7 +91,7 @@ async function generateSupportLog(time) {
+ /**
+  * "Connect to..." Dialog
+  */
+-var ConnectDialog = GObject.registerClass({
++const ConnectDialog = GObject.registerClass({
+     GTypeName: 'GSConnectConnectDialog',
+     Template: 'resource:///org/gnome/Shell/Extensions/GSConnect/ui/connect-dialog.ui',
+     Children: [
+@@ -132,7 +132,7 @@ var ConnectDialog = GObject.registerClass({
+ });
+ 
+ 
+-var Window = GObject.registerClass({
++export const Window = GObject.registerClass({
+     GTypeName: 'GSConnectPreferencesWindow',
+     Properties: {
+         'display-mode': GObject.ParamSpec.string(
+@@ -173,7 +173,7 @@ var Window = GObject.registerClass({
+         });
+ 
+         // Service Proxy
+-        this.service = new Remote.Service();
++        this.service = new Service();
+ 
+         this._deviceAddedId = this.service.connect(
+             'device-added',
+@@ -198,7 +198,7 @@ var Window = GObject.registerClass({
+         this.service_box.set_focus_vadjustment(this.service_window.vadjustment);
+ 
+         // Device List
+-        this.device_list.set_header_func(Device.rowSeparators);
++        this.device_list.set_header_func(rowSeparators);
+ 
+         // Discoverable InfoBar
+         this.settings.bind(
+@@ -580,7 +580,7 @@ var Window = GObject.registerClass({
+         try {
+             if (!this.stack.get_child_by_name(device.id)) {
+                 // Add the device preferences
+-                const prefs = new Device.Panel(device);
++                const prefs = new Panel(device);
+                 this.stack.add_titled(prefs, device.id, device.name);
+ 
+                 // Add a row to the device list
+diff --git a/src/utils/remote.js b/src/utils/remote.js
+index 232dc8c01..c93bab5d6 100644
+--- a/src/utils/remote.js
++++ b/src/utils/remote.js
+@@ -2,16 +2,14 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+ const SERVICE_NAME = 'org.gnome.Shell.Extensions.GSConnect';
+ const SERVICE_PATH = '/org/gnome/Shell/Extensions/GSConnect';
+ const DEVICE_NAME = 'org.gnome.Shell.Extensions.GSConnect.Device';
+-const DEVICE_PATH = '/org/gnome/Shell/Extensions/GSConnect/Device';
++// const DEVICE_PATH = '/org/gnome/Shell/Extensions/GSConnect/Device';
+ 
+ 
+ const _PROPERTIES = {
+@@ -51,7 +49,7 @@ function _proxyInit(proxy, cancellable = null) {
+ /**
+  * A simple proxy wrapper for devices exported over DBus.
+  */
+-var Device = GObject.registerClass({
++export const Device = GObject.registerClass({
+     GTypeName: 'GSConnectRemoteDevice',
+     Implements: [Gio.DBusInterface],
+     Properties: {
+@@ -222,7 +220,7 @@ var Device = GObject.registerClass({
+ /**
+  * A simple proxy wrapper for the GSConnect service.
+  */
+-var Service = GObject.registerClass({
++export const Service = GObject.registerClass({
+     GTypeName: 'GSConnectRemoteService',
+     Implements: [Gio.DBusInterface],
+     Properties: {
+diff --git a/src/utils/remote.mjs b/src/utils/remote.mjs
+deleted file mode 100644
+index 90eb351b7..000000000
+--- a/src/utils/remote.mjs
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
+-//
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-
+-import GLib from 'gi://GLib';
+-
+-const [filename] = GLib.filename_from_uri(import.meta.url);
+-const dirname = GLib.path_get_dirname(filename);
+-imports.searchPath.unshift(dirname);
+-
+-const Remote = imports.remote;
+-export default Remote;
+
+From f18a0e4ac8f47f485957f108cb044ae968fc6392 Mon Sep 17 00:00:00 2001
+From: Ibrahim Ansari <ansari.ibrahim1@gmail.com>
+Date: Sun, 24 Sep 2023 19:30:18 +0530
+Subject: [PATCH 2/6] Migrate service to ESM (mostly)
+
+---
+ .eslintrc.json                                | 21 +------
+ src/service/backends/lan.js                   | 20 +++----
+ src/service/components/atspi.js               | 12 ++--
+ src/service/components/clipboard.js           | 23 ++++---
+ src/service/components/contacts.js            | 32 ++++------
+ .../components/{__init__.js => index.js}      |  6 +-
+ src/service/components/input.js               | 21 +++----
+ src/service/components/mpris.js               | 14 ++---
+ src/service/components/notification.js        | 14 ++---
+ src/service/components/pulseaudio.js          | 16 ++---
+ src/service/components/session.js             |  8 +--
+ src/service/components/sound.js               | 19 +++---
+ src/service/components/upower.js              | 12 ++--
+ src/service/components/ydotool.js             | 15 ++---
+ src/service/core.js                           | 20 +++----
+ src/service/daemon.js                         | 60 ++++++-------------
+ src/service/device.js                         | 18 +++---
+ src/service/manager.js                        | 20 +++----
+ src/service/nativeMessagingHost.js            | 17 ++----
+ src/service/plugin.js                         | 14 ++---
+ src/service/plugins/battery.js                | 20 +++----
+ src/service/plugins/clipboard.js              | 16 ++---
+ src/service/plugins/connectivity_report.js    | 19 +++---
+ src/service/plugins/contacts.js               | 24 ++++----
+ src/service/plugins/findmyphone.js            | 22 +++----
+ src/service/plugins/mousepad.js               | 20 +++----
+ src/service/plugins/mpris.js                  | 28 ++++-----
+ src/service/plugins/notification.js           | 28 ++++-----
+ src/service/plugins/ping.js                   | 18 +++---
+ src/service/plugins/presenter.js              | 16 ++---
+ src/service/plugins/runcommand.js             | 18 +++---
+ src/service/plugins/sftp.js                   | 22 +++----
+ src/service/plugins/share.js                  | 26 ++++----
+ src/service/plugins/sms.js                    | 34 +++++------
+ src/service/plugins/systemvolume.js           | 18 +++---
+ src/service/plugins/telephony.js              | 22 +++----
+ src/service/ui/contacts.js                    | 22 +++----
+ src/service/ui/legacyMessaging.js             | 19 +++---
+ src/service/ui/messaging.js                   | 32 +++++-----
+ src/service/ui/mousepad.js                    | 18 +++---
+ src/service/ui/notification.js                | 15 +++--
+ src/service/ui/service.js                     | 18 +++---
+ src/service/utils/dbus.js                     | 18 +++---
+ src/service/utils/setup.js                    | 22 ++++---
+ src/service/utils/ui.js                       | 12 ++--
+ src/service/utils/uri.js                      | 12 ++--
+ src/wl_clipboard.js                           | 20 +++----
+ 47 files changed, 419 insertions(+), 522 deletions(-)
+ rename src/service/components/{__init__.js => index.js} (95%)
+
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 7b5172011..be25c3331 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -287,22 +287,7 @@
+         "HAVE_REMOTEINPUT": false
+     },
+     "parserOptions": {
+-        "ecmaVersion": "latest"
+-    },
+-    "overrides": [
+-        {
+-            "files": [
+-                "webextension/**/*.js",
+-                "src/shell/**/*.js",
+-                "src/utils/**/*.js",
+-                "src/preferences/**/*.js",
+-                "src/gsconnect-preferences",
+-                "src/extension.js",
+-                "src/prefs.js"
+-            ],
+-            "parserOptions": {
+-                "sourceType": "module"
+-            }
+-        }
+-    ]
++        "ecmaVersion": "latest",
++        "sourceType": "module"
++    }
+ }
+diff --git a/src/service/backends/lan.js b/src/service/backends/lan.js
+index a5357bf28..43664c15d 100644
+--- a/src/service/backends/lan.js
++++ b/src/service/backends/lan.js
+@@ -2,14 +2,12 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const Config = imports.config;
+-const Core = imports.service.core;
++import Config from '../../config.mjs';
++import * as Core from '../core.js';
+ 
+ 
+ /**
+@@ -25,7 +23,7 @@ const TRANSFER_MAX = 1764;
+ /*
+  * One-time check for Linux/FreeBSD socket options
+  */
+-var _LINUX_SOCKETS = true;
++export let _LINUX_SOCKETS = true;
+ 
+ try {
+     // This should throw on FreeBSD
+@@ -44,7 +42,7 @@ try {
+  *
+  * @param {Gio.SocketConnection} connection - The connection to configure
+  */
+-function _configureSocket(connection) {
++export function _configureSocket(connection) {
+     try {
+         if (_LINUX_SOCKETS) {
+             connection.socket.set_option(6, 4, 10); // TCP_KEEPIDLE
+@@ -78,7 +76,7 @@ function _configureSocket(connection) {
+  * include the TCP port, while the IP address is taken from the UDP packet
+  * itself. We respond by opening a TCP connection to that address.
+  */
+-var ChannelService = GObject.registerClass({
++export const ChannelService = GObject.registerClass({
+     GTypeName: 'GSConnectLanChannelService',
+     Properties: {
+         'certificate': GObject.ParamSpec.object(
+@@ -527,7 +525,7 @@ var ChannelService = GObject.registerClass({
+  * This class essentially just extends Core.Channel to set TCP socket options
+  * and negotiate TLS encrypted connections.
+  */
+-var Channel = GObject.registerClass({
++export const Channel = GObject.registerClass({
+     GTypeName: 'GSConnectLanChannel',
+ }, class LanChannel extends Core.Channel {
+ 
+diff --git a/src/service/components/atspi.js b/src/service/components/atspi.js
+index 33034e6bc..97581d7a4 100644
+--- a/src/service/components/atspi.js
++++ b/src/service/components/atspi.js
+@@ -2,12 +2,8 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-imports.gi.versions.Atspi = '2.0';
+-
+-const Atspi = imports.gi.Atspi;
+-const Gdk = imports.gi.Gdk;
++import Atspi from 'gi://Atspi?version=2.0';
++import Gdk from 'gi://Gdk';
+ 
+ 
+ /**
+@@ -30,7 +26,7 @@ const XKeycode = {
+ /**
+  * A thin wrapper around Atspi for X11 sessions without Pipewire support.
+  */
+-var Controller = class {
++export default class Controller {
+     constructor() {
+         // Atspi.init() return 2 on fail, but still marks itself as inited. We
+         // uninit before throwing an error otherwise any future call to init()
+@@ -312,5 +308,5 @@ var Controller = class {
+             // Silence errors
+         }
+     }
+-};
++}
+ 
+diff --git a/src/service/components/clipboard.js b/src/service/components/clipboard.js
+index d51b9f74f..2d6170c47 100644
+--- a/src/service/components/clipboard.js
++++ b/src/service/components/clipboard.js
+@@ -2,20 +2,21 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gdk = imports.gi.Gdk;
+-const GLib = imports.gi.GLib;
+-const Gtk = imports.gi.Gtk;
+-const Gio = imports.gi.Gio;
+-const GObject = imports.gi.GObject;
++import Gdk from 'gi://Gdk';
++import GLib from 'gi://GLib';
++import Gtk from 'gi://Gtk';
++import Gio from 'gi://Gio';
++import GObject from 'gi://GObject';
+ 
+ 
+ const DBUS_NAME = 'org.gnome.Shell.Extensions.GSConnect.Clipboard';
+ const DBUS_PATH = '/org/gnome/Shell/Extensions/GSConnect/Clipboard';
+ 
+ 
+-var Clipboard = GObject.registerClass({
++/**
++ * The service class for this component
++ */
++const Clipboard = GObject.registerClass({
+     GTypeName: 'GSConnectClipboard',
+     Properties: {
+         'text': GObject.ParamSpec.string(
+@@ -219,10 +220,6 @@ var Clipboard = GObject.registerClass({
+     }
+ });
+ 
+-
+-/**
+- * The service class for this component
+- */
+-var Component = Clipboard;
++export default Clipboard;
+ 
+ // vim:tabstop=2:shiftwidth=2:expandtab
+diff --git a/src/service/components/contacts.js b/src/service/components/contacts.js
+index 966859612..48173c5b5 100644
+--- a/src/service/components/contacts.js
++++ b/src/service/components/contacts.js
+@@ -2,23 +2,21 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Config from '../../config.mjs';
+ 
+-const Config = imports.config;
+-
+-var HAVE_EDS = true;
+-var EBook = null;
+-var EBookContacts = null;
+-var EDataServer = null;
++let HAVE_EDS = true;
++let EBook = null;
++let EBookContacts = null;
++let EDataServer = null;
+ 
+ try {
+-    EBook = imports.gi.EBook;
+-    EBookContacts = imports.gi.EBookContacts;
+-    EDataServer = imports.gi.EDataServer;
++    EBook = (await import('gi://EBook')).default;
++    EBookContacts = (await import('gi://EBookContacts')).default;
++    EDataServer = (await import('gi://EDataServer')).default;
+ } catch (e) {
+     HAVE_EDS = false;
+ }
+@@ -27,7 +25,7 @@ try {
+ /**
+  * A store for contacts
+  */
+-var Store = GObject.registerClass({
++const Store = GObject.registerClass({
+     GTypeName: 'GSConnectContactsStore',
+     Properties: {
+         'context': GObject.ParamSpec.string(
+@@ -611,9 +609,5 @@ var Store = GObject.registerClass({
+     }
+ });
+ 
+-
+-/**
+- * The service class for this component
+- */
+-var Component = Store;
++export default Store;
+ 
+diff --git a/src/service/components/__init__.js b/src/service/components/index.js
+similarity index 95%
+rename from src/service/components/__init__.js
+rename to src/service/components/index.js
+index 1ed8cf6e6..9c35fb430 100644
+--- a/src/service/components/__init__.js
++++ b/src/service/components/index.js
+@@ -2,8 +2,6 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+ 
+ /*
+  * Singleton Tracker
+@@ -18,7 +16,7 @@ const Default = new Map();
+  * @param {string} name - The module name
+  * @return {*} The default instance of a component
+  */
+-function acquire(name) {
++export function acquire(name) {
+     let component;
+ 
+     try {
+@@ -52,7 +50,7 @@ function acquire(name) {
+  * @param {string} name - The module name
+  * @return {null} A %null value, useful for overriding a traced variable
+  */
+-function release(name) {
++export function release(name) {
+     try {
+         const info = Default.get(name);
+ 
+diff --git a/src/service/components/input.js b/src/service/components/input.js
+index 795224ef1..5a4466704 100644
+--- a/src/service/components/input.js
++++ b/src/service/components/input.js
+@@ -2,12 +2,12 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import AtspiController from './atspi.js';
+ 
+ 
+ const SESSION_TIMEOUT = 15;
+@@ -240,7 +240,7 @@ const RemoteSession = GObject.registerClass({
+ });
+ 
+ 
+-class Controller {
++export default class Controller {
+     constructor() {
+         this._nameAppearedId = 0;
+         this._session = null;
+@@ -421,8 +421,7 @@ class Controller {
+                 if (this._checkWayland())
+                     return;
+ 
+-                const fallback = imports.service.components.atspi;
+-                this._session = new fallback.Controller();
++                this._session = new AtspiController();
+ 
+             // Mutter is available and there isn't another session starting
+             } else if (this._sessionStarting === false) {
+@@ -597,9 +596,3 @@ class Controller {
+         }
+     }
+ }
+-
+-
+-/**
+- * The service class for this component
+- */
+-var Component = Controller;
+diff --git a/src/service/components/mpris.js b/src/service/components/mpris.js
+index df9adafae..70c42255e 100644
+--- a/src/service/components/mpris.js
++++ b/src/service/components/mpris.js
+@@ -2,14 +2,12 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+ 
+-
+-var Player = GObject.registerClass({
++export const Player = GObject.registerClass({
+     GTypeName: 'GSConnectMediaPlayerInterface',
+     Properties: {
+         // Application Properties
+@@ -790,7 +788,7 @@ const PlayerProxy = GObject.registerClass({
+ /**
+  * A manager for media players
+  */
+-var Manager = GObject.registerClass({
++const Manager = GObject.registerClass({
+     GTypeName: 'GSConnectMPRISManager',
+     Signals: {
+         'player-added': {
+@@ -1001,5 +999,5 @@ var Manager = GObject.registerClass({
+ /**
+  * The service class for this component
+  */
+-var Component = Manager;
++export default Manager;
+ 
+diff --git a/src/service/components/notification.js b/src/service/components/notification.js
+index 17b31d6d3..0566a2577 100644
+--- a/src/service/components/notification.js
++++ b/src/service/components/notification.js
+@@ -2,14 +2,12 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GjsPrivate from 'gi://GjsPrivate';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GjsPrivate = imports.gi.GjsPrivate;
+-const GObject = imports.gi.GObject;
+-
+-const DBus = imports.service.utils.dbus;
++import * as DBus from '../utils/dbus.js';
+ 
+ 
+ const _nodeInfo = Gio.DBusNodeInfo.new_for_xml(`
+@@ -408,4 +406,4 @@ const Listener = GObject.registerClass({
+ /**
+  * The service class for this component
+  */
+-var Component = Listener;
++export default Listener;
+diff --git a/src/service/components/pulseaudio.js b/src/service/components/pulseaudio.js
+index d3f665724..f772f9f19 100644
+--- a/src/service/components/pulseaudio.js
++++ b/src/service/components/pulseaudio.js
+@@ -2,15 +2,13 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GIRepository from 'gi://GIRepository';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Tweener = imports.tweener.tweener;
+-
+-const GIRepository = imports.gi.GIRepository;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Config from '../../config.mjs';
+ 
+-const Config = imports.config;
++const Tweener = imports.tweener.tweener;
+ 
+ 
+ // Add gnome-shell's typelib dir to the search path
+@@ -18,8 +16,6 @@ const typelibDir = GLib.build_filenamev([Config.GNOME_SHELL_LIBDIR, 'gnome-shell
+ GIRepository.Repository.prepend_search_path(typelibDir);
+ GIRepository.Repository.prepend_library_path(typelibDir);
+ 
+-const Gvc = imports.gi.Gvc;
+-
+ 
+ /**
+  * Extend Gvc.MixerStream with a property for returning a user-visible name
+@@ -265,5 +261,5 @@ const Mixer = GObject.registerClass({
+ /**
+  * The service class for this component
+  */
+-var Component = Mixer;
++export default Mixer;
+ 
+diff --git a/src/service/components/session.js b/src/service/components/session.js
+index 512ace2f5..5d5745025 100644
+--- a/src/service/components/session.js
++++ b/src/service/components/session.js
+@@ -2,10 +2,8 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
+ 
+ 
+ const Session = class {
+@@ -82,5 +80,5 @@ const Session = class {
+ /**
+  * The service class for this component
+  */
+-var Component = Session;
++export default Session;
+ 
+diff --git a/src/service/components/sound.js b/src/service/components/sound.js
+index 4634d50bd..453813fea 100644
+--- a/src/service/components/sound.js
++++ b/src/service/components/sound.js
+@@ -2,23 +2,22 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
++import Gdk from 'gi://Gdk';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GSound from 'gi://GSound';
+ 
+ 
+ /*
+  * Used to ensure 'audible-bell' is enabled for fallback
+  */
+-const WM_SETTINGS = new Gio.Settings({
++/* const WM_SETTINGS = new Gio.Settings({
+     schema_id: 'org.gnome.desktop.wm.preferences',
+     path: '/org/gnome/desktop/wm/preferences/',
+-});
++}); */
+ 
+ 
+-var Player = class Player {
++const Player = class Player {
+ 
+     constructor() {
+         this._playing = new Set();
+@@ -28,7 +27,7 @@ var Player = class Player {
+         if (this._backend === undefined) {
+             // Prefer GSound
+             try {
+-                this._gsound = new imports.gi.GSound.Context();
++                this._gsound = new GSound.Context();
+                 this._gsound.init(null);
+                 this._backend = 'gsound';
+ 
+@@ -176,5 +175,5 @@ var Player = class Player {
+ /**
+  * The service class for this component
+  */
+-var Component = Player;
++export default Player;
+ 
+diff --git a/src/service/components/upower.js b/src/service/components/upower.js
+index f090a92b0..722387b81 100644
+--- a/src/service/components/upower.js
++++ b/src/service/components/upower.js
+@@ -2,11 +2,9 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+ 
+ /**
+@@ -49,7 +47,7 @@ const DeviceState = {
+ /**
+  * A class representing the system battery.
+  */
+-var Battery = GObject.registerClass({
++const Battery = GObject.registerClass({
+     GTypeName: 'GSConnectSystemBattery',
+     Signals: {
+         'changed': {
+@@ -213,5 +211,5 @@ var Battery = GObject.registerClass({
+ /**
+  * The service class for this component
+  */
+-var Component = Battery;
++export default Battery;
+ 
+diff --git a/src/service/components/ydotool.js b/src/service/components/ydotool.js
+index c2a7f5dd4..de0441854 100644
+--- a/src/service/components/ydotool.js
++++ b/src/service/components/ydotool.js
+@@ -2,10 +2,8 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const Gdk = imports.gi.Gdk;
++import Gio from 'gi://Gio';
++import Gdk from 'gi://Gdk';
+ 
+ const keyCodes = new Map([
+     ['1', 2],
+@@ -55,7 +53,7 @@ const keyCodes = new Map([
+     ['/', 53],
+     ['\\', 43],
+ ]);
+-class Controller {
++export default class Controller {
+     constructor() {
+         // laucher for wl-clipboard
+         this._launcher = new Gio.SubprocessLauncher({
+@@ -137,7 +135,7 @@ class Controller {
+                 modifiers_codes.push(input);
+             } else if (typeof input === 'string') {
+                 input = input.toUpperCase();
+-                for (var i = 0; i < input.length; i++) {
++                for (let i = 0; i < input.length; i++) {
+                     if (keyCodes.get(input[i])) {
+                         modifiers_codes.push(keyCodes.get(input[i]));
+                     } else {
+@@ -160,8 +158,3 @@ class Controller {
+         this._args = [];
+     }
+ }
+-
+-/**
+- * The service class for this component
+- */
+-var Component = Controller;
+diff --git a/src/service/core.js b/src/service/core.js
+index 2bd4fb12a..634164037 100644
+--- a/src/service/core.js
++++ b/src/service/core.js
+@@ -2,11 +2,9 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+ 
+ /**
+@@ -14,7 +12,7 @@ const GObject = imports.gi.GObject;
+  *
+  * @return {string} A device type string
+  */
+-function _getDeviceType() {
++export function _getDeviceType() {
+     try {
+         let type = GLib.file_get_contents('/sys/class/dmi/id/chassis_type')[1];
+ 
+@@ -34,7 +32,7 @@ function _getDeviceType() {
+  * The packet class is a simple Object-derived class, offering some conveniences
+  * for working with KDE Connect packets.
+  */
+-var Packet = class Packet {
++export class Packet {
+ 
+     constructor(data = null) {
+         this.id = 0;
+@@ -114,7 +112,7 @@ var Packet = class Packet {
+ 
+         return (Object.keys(this.payloadTransferInfo).length > 0);
+     }
+-};
++}
+ 
+ 
+ /**
+@@ -122,7 +120,7 @@ var Packet = class Packet {
+  * devices. The implementation is responsible for all negotiation of the
+  * underlying protocol.
+  */
+-var Channel = GObject.registerClass({
++export const Channel = GObject.registerClass({
+     GTypeName: 'GSConnectChannel',
+     Properties: {
+         'closed': GObject.ParamSpec.boolean(
+@@ -297,7 +295,7 @@ var Channel = GObject.registerClass({
+  * ChannelService implementations provide Channel objects, emitting the
+  * ChannelService::channel signal when a new connection has been accepted.
+  */
+-var ChannelService = GObject.registerClass({
++export const ChannelService = GObject.registerClass({
+     GTypeName: 'GSConnectChannelService',
+     Properties: {
+         'active': GObject.ParamSpec.boolean(
+@@ -464,7 +462,7 @@ var ChannelService = GObject.registerClass({
+ /**
+  * A class representing a file transfer.
+  */
+-var Transfer = GObject.registerClass({
++export const Transfer = GObject.registerClass({
+     GTypeName: 'GSConnectTransfer',
+     Properties: {
+         'channel': GObject.ParamSpec.object(
+diff --git a/src/service/daemon.js b/src/service/daemon.js
+index a4a34acbe..186ee56d3 100755
+--- a/src/service/daemon.js
++++ b/src/service/daemon.js
+@@ -1,51 +1,25 @@
+-#!/usr/bin/env gjs
++#!/usr/bin/env -S gjs -m
+ 
+ // SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk?version=3.0';
++import 'gi://GdkPixbuf?version=2.0';
++import Gio from 'gi://Gio?version=2.0';
++import 'gi://GIRepository?version=2.0';
++import GLib from 'gi://GLib?version=2.0';
++import GObject from 'gi://GObject?version=2.0';
++import Gtk from 'gi://Gtk?version=3.0';
++import 'gi://Pango?version=1.0';
+ 
+-imports.gi.versions.Gdk = '3.0';
+-imports.gi.versions.GdkPixbuf = '2.0';
+-imports.gi.versions.Gio = '2.0';
+-imports.gi.versions.GIRepository = '2.0';
+-imports.gi.versions.GLib = '2.0';
+-imports.gi.versions.GObject = '2.0';
+-imports.gi.versions.Gtk = '3.0';
+-imports.gi.versions.Pango = '1.0';
++import system from 'system';
+ 
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import './utils/setup.js';
+ 
+-// Bootstrap
+-function get_datadir() {
+-    const m = /@([^:]+):\d+/.exec(new Error().stack.split('\n')[1]);
+-    let path = null;
+-    const symbolic_link = Gio.File.new_for_path(m[1])
+-        .query_info('standard::*', null, null)
+-        .get_symlink_target();
+-    if (symbolic_link)
+-        path = symbolic_link;
+-    else
+-        path = m[1];
+-
+-    return Gio.File.new_for_path(path).get_parent().get_parent().get_path();
+-}
+-
+-imports.searchPath.unshift(get_datadir());
+-imports.config.PACKAGE_DATADIR = imports.searchPath[0];
+-
+-const _setup = imports.service.utils.setup;
+-
+-
+-// Local Imports
+-const Config = imports.config;
+-const Manager = imports.service.manager;
+-const ServiceUI = imports.service.ui.service;
++import Config from '../config.mjs';
++import Manager from './manager.js';
++import * as ServiceUI from './ui/service.js';
+ 
+ 
+ /**
+@@ -272,7 +246,7 @@ const Service = GObject.registerClass({
+         if (!super.vfunc_dbus_register(connection, object_path))
+             return false;
+ 
+-        this.manager = new Manager.Manager({
++        this.manager = new Manager({
+             connection: connection,
+             object_path: object_path,
+         });
+@@ -342,7 +316,7 @@ const Service = GObject.registerClass({
+             continue;
+ 
+         // Force a GC to prevent any more calls back into JS, then chain-up
+-        imports.system.gc();
++        system.gc();
+         super.vfunc_shutdown();
+     }
+ 
+@@ -722,5 +696,5 @@ const Service = GObject.registerClass({
+     }
+ });
+ 
+-(new Service()).run([imports.system.programInvocationName].concat(ARGV));
++(new Service()).run([system.programInvocationName].concat(ARGV));
+ 
+diff --git a/src/service/device.js b/src/service/device.js
+index 759509d2d..9d28e438a 100644
+--- a/src/service/device.js
++++ b/src/service/device.js
+@@ -2,16 +2,13 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const Config = imports.config;
+-const Components = imports.service.components;
+-const Core = imports.service.core;
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
++import Config from '../config.mjs';
++import * as Components from './components/index.js';
++import * as Core from './core.js';
+ 
+ /**
+  * An object representing a remote device.
+@@ -20,7 +17,7 @@ const Core = imports.service.core;
+  * GActionGroup and GActionMap interfaces, like Gio.Application.
+  *
+  */
+-var Device = GObject.registerClass({
++const Device = GObject.registerClass({
+     GTypeName: 'GSConnectDevice',
+     Properties: {
+         'connected': GObject.ParamSpec.boolean(
+@@ -1098,3 +1095,4 @@ var Device = GObject.registerClass({
+     }
+ });
+ 
++export default Device;
+diff --git a/src/service/manager.js b/src/service/manager.js
+index 9d86268ff..ae945af08 100644
+--- a/src/service/manager.js
++++ b/src/service/manager.js
+@@ -2,15 +2,13 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const Config = imports.config;
+-const DBus = imports.service.utils.dbus;
+-const Device = imports.service.device;
++import Config from '../config.mjs';
++import * as DBus from './utils/dbus.js';
++import Device from './device.js';
+ 
+ const DEVICE_NAME = 'org.gnome.Shell.Extensions.GSConnect.Device';
+ const DEVICE_PATH = '/org/gnome/Shell/Extensions/GSConnect/Device';
+@@ -20,7 +18,7 @@ const DEVICE_IFACE = Config.DBUS.lookup_interface(DEVICE_NAME);
+ /**
+  * A manager for devices.
+  */
+-var Manager = GObject.registerClass({
++const Manager = GObject.registerClass({
+     GTypeName: 'GSConnectManager',
+     Properties: {
+         'active': GObject.ParamSpec.boolean(
+@@ -270,7 +268,7 @@ var Manager = GObject.registerClass({
+     _loadDevices() {
+         // Load cached devices
+         for (const id of this.settings.get_strv('devices')) {
+-            const device = new Device.Device({body: {deviceId: id}});
++            const device = new Device({body: {deviceId: id}});
+             this._exportDevice(device);
+             this.devices.set(id, device);
+         }
+@@ -506,3 +504,5 @@ var Manager = GObject.registerClass({
+     }
+ });
+ 
++export default Manager;
++
+diff --git a/src/service/nativeMessagingHost.js b/src/service/nativeMessagingHost.js
+index d83fc7f3f..fd2f9890e 100755
+--- a/src/service/nativeMessagingHost.js
++++ b/src/service/nativeMessagingHost.js
+@@ -1,19 +1,14 @@
+-#!/usr/bin/env gjs
++#!/usr/bin/env -S gjs -m
+ 
+ // SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio?version=2.0';
++import GLib from 'gi://GLib?version=2.0';
++import GObject from 'gi://GObject?version=2.0';
+ 
+-imports.gi.versions.Gio = '2.0';
+-imports.gi.versions.GLib = '2.0';
+-imports.gi.versions.GObject = '2.0';
+-
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const System = imports.system;
++import system from 'system';
+ 
+ 
+ const NativeMessagingHost = GObject.registerClass({
+@@ -215,5 +210,5 @@ const NativeMessagingHost = GObject.registerClass({
+ });
+ 
+ // NOTE: must not pass ARGV
+-(new NativeMessagingHost()).run([System.programInvocationName]);
++(new NativeMessagingHost()).run([system.programInvocationName]);
+ 
+diff --git a/src/service/plugin.js b/src/service/plugin.js
+index f096c1616..0aab57fb7 100644
+--- a/src/service/plugin.js
++++ b/src/service/plugin.js
+@@ -2,19 +2,17 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const Config = imports.config;
++import Config from '../config.mjs';
+ 
+ 
+ /**
+  * Base class for device plugins.
+  */
+-var Plugin = GObject.registerClass({
++const Plugin = GObject.registerClass({
+     GTypeName: 'GSConnectPlugin',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+@@ -248,3 +246,5 @@ var Plugin = GObject.registerClass({
+     }
+ });
+ 
++export default Plugin;
++
+diff --git a/src/service/plugins/battery.js b/src/service/plugins/battery.js
+index 772701315..c7dbe0424 100644
+--- a/src/service/plugins/battery.js
++++ b/src/service/plugins/battery.js
+@@ -2,17 +2,15 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import * as Components from '../components/index.js';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Battery'),
+     description: _('Exchange battery information'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Battery',
+@@ -32,9 +30,9 @@ var Metadata = {
+  * Battery Plugin
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/battery
+  */
+-var Plugin = GObject.registerClass({
++const BatteryPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectBatteryPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class BatteryPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'battery');
+@@ -431,3 +429,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default BatteryPlugin;
+diff --git a/src/service/plugins/clipboard.js b/src/service/plugins/clipboard.js
+index a08125e20..7a0657478 100644
+--- a/src/service/plugins/clipboard.js
++++ b/src/service/plugins/clipboard.js
+@@ -2,15 +2,13 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GObject from 'gi://GObject';
+ 
+-const GObject = imports.gi.GObject;
++import * as Components from '../components/index.js';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Clipboard'),
+     description: _('Share the clipboard content'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Clipboard',
+@@ -47,9 +45,9 @@ var Metadata = {
+  * Clipboard Plugin
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/clipboard
+  */
+-var Plugin = GObject.registerClass({
++const ClipboardPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectClipboardPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class ClipboardPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'clipboard');
+@@ -180,3 +178,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default ClipboardPlugin;
+diff --git a/src/service/plugins/connectivity_report.js b/src/service/plugins/connectivity_report.js
+index 9aaddb2fd..7107ff7af 100644
+--- a/src/service/plugins/connectivity_report.js
++++ b/src/service/plugins/connectivity_report.js
+@@ -2,17 +2,14 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Connectivity Report'),
+     description: _('Display connectivity status'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.ConnectivityReport',
+@@ -30,9 +27,9 @@ var Metadata = {
+  * Connectivity Report Plugin
+  * https://invent.kde.org/network/kdeconnect-kde/-/tree/master/plugins/connectivity_report
+  */
+-var Plugin = GObject.registerClass({
++const ConnectivityReportPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectConnectivityReportPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class ConnectivityReportPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'connectivity_report');
+@@ -162,3 +159,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default ConnectivityReportPlugin;
+diff --git a/src/service/plugins/contacts.js b/src/service/plugins/contacts.js
+index f439961b4..24e0d8379 100644
+--- a/src/service/plugins/contacts.js
++++ b/src/service/plugins/contacts.js
+@@ -2,27 +2,25 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const PluginBase = imports.service.plugin;
+-const Contacts = imports.service.components.contacts;
++import Plugin from '../plugin.js';
++import Contacts from '../components/contacts.js';
+ 
+ /*
+  * We prefer libebook's vCard parser if it's available
+  */
+-var EBookContacts;
++let EBookContacts;
+ 
+ try {
+-    EBookContacts = imports.gi.EBookContacts;
++    EBookContacts = (await import('gi://EBookContacts')).default;
+ } catch (e) {
+     EBookContacts = null;
+ }
+ 
+ 
+-var Metadata = {
++export const Metadata = {
+     label: _('Contacts'),
+     description: _('Access contacts of the paired device'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Contacts',
+@@ -53,14 +51,14 @@ const VCARD_TYPED_META = /([a-z]+)=(.*)/i;
+  * Contacts Plugin
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/contacts
+  */
+-var Plugin = GObject.registerClass({
++const ContactsPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectContactsPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class ContactsPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'contacts');
+ 
+-        this._store = new Contacts.Store(device.id);
++        this._store = new Contacts(device.id);
+         this._store.fetch = this._requestUids.bind(this);
+ 
+         // Notify when the store is ready
+@@ -458,3 +456,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default ContactsPlugin;
+diff --git a/src/service/plugins/findmyphone.js b/src/service/plugins/findmyphone.js
+index 87514de91..b5226bb9f 100644
+--- a/src/service/plugins/findmyphone.js
++++ b/src/service/plugins/findmyphone.js
+@@ -2,18 +2,16 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk';
++import Gio from 'gi://Gio';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import * as Components from '../components/index.js';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Find My Phone'),
+     description: _('Ring your paired device'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.FindMyPhone',
+@@ -36,9 +34,9 @@ var Metadata = {
+  * FindMyPhone Plugin
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/findmyphone
+  */
+-var Plugin = GObject.registerClass({
++const FindMyPhonePlugin = GObject.registerClass({
+     GTypeName: 'GSConnectFindMyPhonePlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class FindMyPhonePlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'findmyphone');
+@@ -247,3 +245,5 @@ const Dialog = GObject.registerClass({
+         this._plugin = plugin;
+     }
+ });
++
++export default FindMyPhonePlugin;
+diff --git a/src/service/plugins/mousepad.js b/src/service/plugins/mousepad.js
+index 969eb0608..a4e40aed2 100644
+--- a/src/service/plugins/mousepad.js
++++ b/src/service/plugins/mousepad.js
+@@ -2,17 +2,15 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk';
++import GObject from 'gi://GObject';
+ 
+-const Gdk = imports.gi.Gdk;
+-const GObject = imports.gi.GObject;
++import * as Components from '../components/index.js';
++import {InputDialog} from '../ui/mousepad.js';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const {InputDialog} = imports.service.ui.mousepad;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Mousepad'),
+     description: _('Enables the paired device to act as a remote mouse and keyboard'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Mousepad',
+@@ -120,7 +118,7 @@ const KeyMapCodes = new Map([
+  *
+  * TODO: support outgoing mouse events?
+  */
+-var Plugin = GObject.registerClass({
++const MousepadPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectMousepadPlugin',
+     Properties: {
+         'state': GObject.ParamSpec.boolean(
+@@ -131,7 +129,7 @@ var Plugin = GObject.registerClass({
+             false
+         ),
+     },
+-}, class Plugin extends PluginBase.Plugin {
++}, class MousepadPlugin extends Plugin {
+     _init(device) {
+         super._init(device, 'mousepad');
+ 
+@@ -379,3 +377,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default MousepadPlugin;
+diff --git a/src/service/plugins/mpris.js b/src/service/plugins/mpris.js
+index 04651e143..a3e9f97c4 100644
+--- a/src/service/plugins/mpris.js
++++ b/src/service/plugins/mpris.js
+@@ -2,20 +2,18 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import * as Components from '../components/index.js';
++import Config from '../../config.mjs';
++import * as DBus from '../utils/dbus.js';
++import  {Player} from '../components/mpris.js';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const Config = imports.config;
+-const DBus = imports.service.utils.dbus;
+-const MPRIS = imports.service.components.mpris;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('MPRIS'),
+     description: _('Bidirectional remote media playback control'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.MPRIS',
+@@ -33,9 +31,9 @@ var Metadata = {
+  *     https://specifications.freedesktop.org/mpris-spec/latest/
+  *     https://github.com/GNOME/gnome-shell/blob/master/js/ui/mpris.js
+  */
+-var Plugin = GObject.registerClass({
++const MPRISPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectMPRISPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class MPRISPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'mpris');
+@@ -448,7 +446,7 @@ var Plugin = GObject.registerClass({
+  */
+ const PlayerRemote = GObject.registerClass({
+     GTypeName: 'GSConnectMPRISPlayerRemote',
+-}, class PlayerRemote extends MPRIS.Player {
++}, class PlayerRemote extends Player {
+ 
+     _init(device, identity) {
+         super._init();
+@@ -904,3 +902,5 @@ const PlayerRemote = GObject.registerClass({
+         }
+     }
+ });
++
++export default MPRISPlugin;
+diff --git a/src/service/plugins/notification.js b/src/service/plugins/notification.js
+index 369761523..8c46780f0 100644
+--- a/src/service/plugins/notification.js
++++ b/src/service/plugins/notification.js
+@@ -2,20 +2,18 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import * as Components from '../components/index.js';
++import Config from '../../config.mjs';
++import Plugin from '../plugin.js';
++import ReplyDialog from '../ui/notification.js';
+ 
+-const Components = imports.service.components;
+-const Config = imports.config;
+-const PluginBase = imports.service.plugin;
+-const NotificationUI = imports.service.ui.notification;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Notifications'),
+     description: _('Share notifications with the paired device'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Notification',
+@@ -162,9 +160,9 @@ function _removeNotification(id, application = null) {
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/notifications
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/sendnotifications
+  */
+-var Plugin = GObject.registerClass({
++const NotificationPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectNotificationPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class NotificationPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'notification');
+@@ -642,7 +640,7 @@ var Plugin = GObject.registerClass({
+ 
+         // If the message has no content, open a dialog for the user to add one
+         if (!message) {
+-            const dialog = new NotificationUI.ReplyDialog({
++            const dialog = new ReplyDialog({
+                 device: this.device,
+                 uuid: uuid,
+                 notification: notification,
+@@ -692,3 +690,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default NotificationPlugin;
+diff --git a/src/service/plugins/ping.js b/src/service/plugins/ping.js
+index 3eb194b44..011ecf02b 100644
+--- a/src/service/plugins/ping.js
++++ b/src/service/plugins/ping.js
+@@ -2,16 +2,14 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Plugin from '../plugin.js';
+ 
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Ping'),
+     description: _('Send and receive pings'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Ping',
+@@ -34,9 +32,9 @@ var Metadata = {
+  * Ping Plugin
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/ping
+  */
+-var Plugin = GObject.registerClass({
++const PingPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectPingPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class PingPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'ping');
+@@ -71,3 +69,5 @@ var Plugin = GObject.registerClass({
+         this.device.sendPacket(packet);
+     }
+ });
++
++export default PingPlugin;
+diff --git a/src/service/plugins/presenter.js b/src/service/plugins/presenter.js
+index 7d9cf9494..3cccab037 100644
+--- a/src/service/plugins/presenter.js
++++ b/src/service/plugins/presenter.js
+@@ -2,15 +2,13 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GObject from 'gi://GObject';
+ 
+-const GObject = imports.gi.GObject;
++import * as Components from '../components/index.js';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Presentation'),
+     description: _('Use the paired device as a presenter'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Presenter',
+@@ -25,9 +23,9 @@ var Metadata = {
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/presenter
+  * https://github.com/KDE/kdeconnect-android/tree/master/src/org/kde/kdeconnect/Plugins/PresenterPlugin/
+  */
+-var Plugin = GObject.registerClass({
++const PresenterPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectPresenterPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class PresenterPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'presenter');
+@@ -61,3 +59,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default PresenterPlugin;
+diff --git a/src/service/plugins/runcommand.js b/src/service/plugins/runcommand.js
+index 44f000547..c57c6c0fa 100644
+--- a/src/service/plugins/runcommand.js
++++ b/src/service/plugins/runcommand.js
+@@ -2,16 +2,14 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Plugin from '../plugin.js';
+ 
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Run Commands'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.RunCommand',
+     description: _('Run commands on your paired device or let the device run predefined commands on this PC'),
+@@ -49,7 +47,7 @@ var Metadata = {
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/remotecommands
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/runcommand
+  */
+-var Plugin = GObject.registerClass({
++const RunCommandPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectRunCommandPlugin',
+     Properties: {
+         'remote-commands': GObject.param_spec_variant(
+@@ -61,7 +59,7 @@ var Plugin = GObject.registerClass({
+             GObject.ParamFlags.READABLE
+         ),
+     },
+-}, class Plugin extends PluginBase.Plugin {
++}, class RunCommandPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'runcommand');
+@@ -252,3 +250,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default RunCommandPlugin;
+diff --git a/src/service/plugins/sftp.js b/src/service/plugins/sftp.js
+index 100749c0a..8d9aafaf1 100644
+--- a/src/service/plugins/sftp.js
++++ b/src/service/plugins/sftp.js
+@@ -2,18 +2,16 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Config from '../../config.mjs';
++import * as Lan from '../backends/lan.js';
++import Plugin from '../plugin.js';
+ 
+-const Config = imports.config;
+-const Lan = imports.service.backends.lan;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('SFTP'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.SFTP',
+     description: _('Browse the paired device filesystem'),
+@@ -48,9 +46,9 @@ const MAX_MOUNT_DIRS = 12;
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/sftp
+  * https://github.com/KDE/kdeconnect-android/tree/master/src/org/kde/kdeconnect/Plugins/SftpPlugin
+  */
+-var Plugin = GObject.registerClass({
++const SFTPPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectSFTPPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class SFTPPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'sftp');
+@@ -486,3 +484,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default SFTPPlugin;
+diff --git a/src/service/plugins/share.js b/src/service/plugins/share.js
+index af0eae600..739639710 100644
+--- a/src/service/plugins/share.js
++++ b/src/service/plugins/share.js
+@@ -2,19 +2,17 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GdkPixbuf from 'gi://GdkPixbuf';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const GdkPixbuf = imports.gi.GdkPixbuf;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import Plugin from '../plugin.js';
++import * as URI from '../utils/uri.js';
+ 
+-const PluginBase = imports.service.plugin;
+-const URI = imports.service.utils.uri;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Share'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Share',
+     description: _('Share files and URLs between devices'),
+@@ -64,9 +62,9 @@ var Metadata = {
+  * TODO: receiving 'text' TODO: Window with textview & 'Copy to Clipboard..
+  *       https://github.com/KDE/kdeconnect-kde/commit/28f11bd5c9a717fb9fbb3f02ddd6cea62021d055
+  */
+-var Plugin = GObject.registerClass({
++const SharePlugin = GObject.registerClass({
+     GTypeName: 'GSConnectSharePlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class SharePlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'share');
+@@ -369,7 +367,7 @@ var Plugin = GObject.registerClass({
+ 
+ 
+ /** A simple FileChooserDialog for sharing files */
+-var FileChooserDialog = GObject.registerClass({
++const FileChooserDialog = GObject.registerClass({
+     GTypeName: 'GSConnectShareFileChooserDialog',
+ }, class FileChooserDialog extends Gtk.FileChooserDialog {
+ 
+@@ -490,3 +488,5 @@ var FileChooserDialog = GObject.registerClass({
+         this.destroy();
+     }
+ });
++
++export default SharePlugin;
+diff --git a/src/service/plugins/sms.js b/src/service/plugins/sms.js
+index 54732097b..4a359fd20 100644
+--- a/src/service/plugins/sms.js
++++ b/src/service/plugins/sms.js
+@@ -2,19 +2,17 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Plugin from '../plugin.js';
++import LegacyMessagingDialog from '../ui/legacyMessaging.js';
++import * as Messaging from '../ui/messaging.js';
++import SmsURI from '../utils/uri.js';
+ 
+-const PluginBase = imports.service.plugin;
+-const LegacyMessaging = imports.service.ui.legacyMessaging;
+-const Messaging = imports.service.ui.messaging;
+-const URI = imports.service.utils.uri;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('SMS'),
+     description: _('Send and read SMS of the paired device and be notified of new SMS'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.SMS',
+@@ -85,7 +83,7 @@ var Metadata = {
+  *
+  * TEXT_MESSAGE: Has a "body" field which contains pure, human-readable text
+  */
+-var MessageEventType = {
++export const MessageEventType = {
+     TEXT_MESSAGE: 0x1,
+ };
+ 
+@@ -97,7 +95,7 @@ var MessageEventType = {
+  * UNREAD: A message not marked as read
+  * READ: A message marked as read
+  */
+-var MessageStatus = {
++export const MessageStatus = {
+     UNREAD: 0,
+     READ: 1,
+ };
+@@ -117,7 +115,7 @@ var MessageStatus = {
+  * FAILED: Failed outgoing messages
+  * QUEUED: Messages queued to send later
+  */
+-var MessageBox = {
++export const MessageBox = {
+     ALL: 0,
+     INBOX: 1,
+     SENT: 2,
+@@ -133,7 +131,7 @@ var MessageBox = {
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/sms
+  * https://github.com/KDE/kdeconnect-android/tree/master/src/org/kde/kdeconnect/Plugins/SMSPlugin/
+  */
+-var Plugin = GObject.registerClass({
++const SMSPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectSMSPlugin',
+     Properties: {
+         'threads': GObject.param_spec_variant(
+@@ -145,7 +143,7 @@ var Plugin = GObject.registerClass({
+             GObject.ParamFlags.READABLE
+         ),
+     },
+-}, class Plugin extends PluginBase.Plugin {
++}, class SMSPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'sms');
+@@ -162,7 +160,7 @@ var Plugin = GObject.registerClass({
+ 
+     get window() {
+         if (this.settings.get_boolean('legacy-sms')) {
+-            return new LegacyMessaging.Dialog({
++            return new LegacyMessagingDialog({
+                 device: this.device,
+                 plugin: this,
+             });
+@@ -473,7 +471,7 @@ var Plugin = GObject.registerClass({
+      */
+     uriSms(uri) {
+         try {
+-            uri = new URI.SmsURI(uri);
++            uri = new SmsURI(uri);
+ 
+             // Lookup contacts
+             const addresses = uri.recipients.map(number => {
+@@ -534,3 +532,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default SMSPlugin;
+diff --git a/src/service/plugins/systemvolume.js b/src/service/plugins/systemvolume.js
+index bf1783c3b..5ffbcf15e 100644
+--- a/src/service/plugins/systemvolume.js
++++ b/src/service/plugins/systemvolume.js
+@@ -2,16 +2,14 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GObject from 'gi://GObject';
+ 
+-const GObject = imports.gi.GObject;
++import * as Components from '../components/index.js';
++import Config from '../../config.mjs';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const Config = imports.config;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('System Volume'),
+     description: _('Enable the paired device to control the system volume'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.SystemVolume',
+@@ -26,9 +24,9 @@ var Metadata = {
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/systemvolume
+  * https://github.com/KDE/kdeconnect-android/tree/master/src/org/kde/kdeconnect/Plugins/SystemvolumePlugin/
+  */
+-var Plugin = GObject.registerClass({
++const SystemVolumePlugin = GObject.registerClass({
+     GTypeName: 'GSConnectSystemVolumePlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class SystemVolumePlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'systemvolume');
+@@ -202,3 +200,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default SystemVolumePlugin;
+diff --git a/src/service/plugins/telephony.js b/src/service/plugins/telephony.js
+index 9fe683af1..af1dae164 100644
+--- a/src/service/plugins/telephony.js
++++ b/src/service/plugins/telephony.js
+@@ -2,18 +2,16 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GdkPixbuf from 'gi://GdkPixbuf';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+-const GdkPixbuf = imports.gi.GdkPixbuf;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import * as Components from '../components/index.js';
++import Plugin from '../plugin.js';
+ 
+-const Components = imports.service.components;
+-const PluginBase = imports.service.plugin;
+ 
+-
+-var Metadata = {
++export const Metadata = {
+     label: _('Telephony'),
+     description: _('Be notified about calls and adjust system volume during ringing/ongoing calls'),
+     id: 'org.gnome.Shell.Extensions.GSConnect.Plugin.Telephony',
+@@ -43,9 +41,9 @@ var Metadata = {
+  * https://github.com/KDE/kdeconnect-kde/tree/master/plugins/telephony
+  * https://github.com/KDE/kdeconnect-android/tree/master/src/org/kde/kdeconnect/Plugins/TelephonyPlugin
+  */
+-var Plugin = GObject.registerClass({
++const TelephonyPlugin = GObject.registerClass({
+     GTypeName: 'GSConnectTelephonyPlugin',
+-}, class Plugin extends PluginBase.Plugin {
++}, class TelephonyPlugin extends Plugin {
+ 
+     _init(device) {
+         super._init(device, 'telephony');
+@@ -243,3 +241,5 @@ var Plugin = GObject.registerClass({
+         super.destroy();
+     }
+ });
++
++export default TelephonyPlugin;
+diff --git a/src/service/ui/contacts.js b/src/service/ui/contacts.js
+index 090eac55f..3ead9600a 100644
+--- a/src/service/ui/contacts.js
++++ b/src/service/ui/contacts.js
+@@ -2,13 +2,13 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk';
++import GdkPixbuf from 'gi://GdkPixbuf';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const Gdk = imports.gi.Gdk;
+-const GdkPixbuf = imports.gi.GdkPixbuf;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import system from 'system';
+ 
+ 
+ /**
+@@ -156,7 +156,7 @@ function getNumberTypeLabel(type) {
+  * @param {string} address - A phone number
+  * @return {string} A (possibly) better display number for the address
+  */
+-function getDisplayNumber(contact, address) {
++export function getDisplayNumber(contact, address) {
+     const number = address.toPhoneNumber();
+ 
+     for (const contactNumber of contact.numbers) {
+@@ -175,7 +175,7 @@ function getDisplayNumber(contact, address) {
+  */
+ const AvatarCache = new WeakMap();
+ 
+-var Avatar = GObject.registerClass({
++export const Avatar = GObject.registerClass({
+     GTypeName: 'GSConnectContactAvatar',
+ }, class ContactAvatar extends Gtk.DrawingArea {
+ 
+@@ -363,7 +363,7 @@ const AddressRow = GObject.registerClass({
+ /**
+  * A widget for selecting contact addresses (usually phone numbers)
+  */
+-var ContactChooser = GObject.registerClass({
++export const ContactChooser = GObject.registerClass({
+     GTypeName: 'GSConnectContactChooser',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+@@ -435,7 +435,7 @@ var ContactChooser = GObject.registerClass({
+             for (let i = 0, len = rows.length; i < len; i++) {
+                 rows[i].destroy();
+                 // HACK: temporary mitigator for mysterious GtkListBox leak
+-                imports.system.gc();
++                system.gc();
+             }
+         }
+ 
+@@ -482,7 +482,7 @@ var ContactChooser = GObject.registerClass({
+             if (row.contact.id === id) {
+                 row.destroy();
+                 // HACK: temporary mitigator for mysterious GtkListBox leak
+-                imports.system.gc();
++                system.gc();
+             }
+         }
+     }
+diff --git a/src/service/ui/legacyMessaging.js b/src/service/ui/legacyMessaging.js
+index dd4fde64a..bda1ab31f 100644
+--- a/src/service/ui/legacyMessaging.js
++++ b/src/service/ui/legacyMessaging.js
+@@ -2,19 +2,17 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const Gio = imports.gi.Gio;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import * as Contacts from '../ui/contacts.js';
++import * as Messaging from '../ui/messaging.js';
++import * as URI from '../utils/uri.js';
++import '../utils/ui.js';
+ 
+-const Contacts = imports.service.ui.contacts;
+-const Messaging = imports.service.ui.messaging;
+-const URI = imports.service.utils.uri;
+-const _ui = imports.service.utils.ui;
+ 
+-
+-var Dialog = GObject.registerClass({
++const Dialog = GObject.registerClass({
+     GTypeName: 'GSConnectLegacyMessagingDialog',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+@@ -226,3 +224,4 @@ var Dialog = GObject.registerClass({
+     }
+ });
+ 
++export default Dialog;
+diff --git a/src/service/ui/messaging.js b/src/service/ui/messaging.js
+index 60c03760e..6f535840e 100644
+--- a/src/service/ui/messaging.js
++++ b/src/service/ui/messaging.js
+@@ -2,20 +2,20 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
++import Pango from 'gi://Pango';
+ 
+-const Tweener = imports.tweener.tweener;
++import system from 'system';
+ 
+-const Gdk = imports.gi.Gdk;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
+-const Pango = imports.gi.Pango;
++import * as Contacts from './contacts.js';
++import * as Sms from '../plugins/sms.js';
++import * as URI from '../utils/uri.js';
++import '../utils/ui.js';
+ 
+-const Contacts = imports.service.ui.contacts;
+-const Sms = imports.service.plugins.sms;
+-const URI = imports.service.utils.uri;
+-const _ui = imports.service.utils.ui;
++const Tweener = imports.tweener.tweener;
+ 
+ 
+ /*
+@@ -460,7 +460,7 @@ const Conversation = GObject.registerClass({
+         conversation.list.foreach(message => {
+             // HACK: temporary mitigator for mysterious GtkListBox leak
+             message.destroy();
+-            imports.system.gc();
++            system.gc();
+         });
+     }
+ 
+@@ -800,7 +800,7 @@ const ConversationSummary = GObject.registerClass({
+ /**
+  * A Gtk.ApplicationWindow for SMS conversations
+  */
+-var Window = GObject.registerClass({
++export const Window = GObject.registerClass({
+     GTypeName: 'GSConnectMessagingWindow',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+@@ -1025,13 +1025,13 @@ var Window = GObject.registerClass({
+ 
+                 if (conversation) {
+                     conversation.destroy();
+-                    imports.system.gc();
++                    system.gc();
+                 }
+ 
+                 // Then the summary widget
+                 row.destroy();
+                 // HACK: temporary mitigator for mysterious GtkListBox leak
+-                imports.system.gc();
++                system.gc();
+             }
+         }
+ 
+@@ -1219,7 +1219,7 @@ var Window = GObject.registerClass({
+ /**
+  * A Gtk.ApplicationWindow for selecting from open conversations
+  */
+-var ConversationChooser = GObject.registerClass({
++export const ConversationChooser = GObject.registerClass({
+     GTypeName: 'GSConnectConversationChooser',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+diff --git a/src/service/ui/mousepad.js b/src/service/ui/mousepad.js
+index 3ef0fef79..5c28603f4 100644
+--- a/src/service/ui/mousepad.js
++++ b/src/service/ui/mousepad.js
+@@ -2,12 +2,10 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const GLib = imports.gi.GLib;
+-const Gdk = imports.gi.Gdk;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import GLib from 'gi://GLib';
++import Gdk from 'gi://Gdk';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+ 
+ /**
+@@ -73,7 +71,7 @@ const isShift = (key) => [Gdk.KEY_Shift_L, Gdk.KEY_Shift_R].includes(key);
+ const isSuper = (key) => [Gdk.KEY_Super_L, Gdk.KEY_Super_R].includes(key);
+ 
+ 
+-var InputDialog = GObject.registerClass({
++export const InputDialog = GObject.registerClass({
+     GTypeName: 'GSConnectMousepadInputDialog',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+@@ -390,7 +388,7 @@ var InputDialog = GObject.registerClass({
+             (Math.abs(this.touchpad_motion_y) < 4);
+ 
+         if (is_click) {
+-            var click_body = {};
++            const click_body = {};
+             switch (gesture_button) {
+                 case 1:
+                     click_body.singleclick = true;
+@@ -444,8 +442,8 @@ var InputDialog = GObject.registerClass({
+     }
+ 
+     _onTouchpadMotionTimeout() {
+-        var diff_x = this.touchpad_motion_x - this.touchpad_motion_prev_x;
+-        var diff_y = this.touchpad_motion_y - this.touchpad_motion_prev_y;
++        const diff_x = this.touchpad_motion_x - this.touchpad_motion_prev_x;
++        const diff_y = this.touchpad_motion_y - this.touchpad_motion_prev_y;
+ 
+         this.device.sendPacket({
+             type: 'kdeconnect.mousepad.request',
+diff --git a/src/service/ui/notification.js b/src/service/ui/notification.js
+index 8cffda108..654e46552 100644
+--- a/src/service/ui/notification.js
++++ b/src/service/ui/notification.js
+@@ -2,20 +2,18 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gio from 'gi://Gio';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const Gio = imports.gi.Gio;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
+-
+-const URI = imports.service.utils.uri;
+-const _ui = imports.service.utils.ui;
++import * as URI from '../utils/uri.js';
++import '../utils/ui.js';
+ 
+ 
+ /**
+  * A dialog for repliable notifications.
+  */
+-var ReplyDialog = GObject.registerClass({
++const ReplyDialog = GObject.registerClass({
+     GTypeName: 'GSConnectNotificationReplyDialog',
+     Properties: {
+         'device': GObject.ParamSpec.object(
+@@ -177,3 +175,4 @@ var ReplyDialog = GObject.registerClass({
+     }
+ });
+ 
++export default ReplyDialog;
+diff --git a/src/service/ui/service.js b/src/service/ui/service.js
+index a3dd81a6d..5f0c3df17 100644
+--- a/src/service/ui/service.js
++++ b/src/service/ui/service.js
+@@ -2,14 +2,14 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import GLib from 'gi://GLib';
++import Gio from 'gi://Gio';
++import GObject from 'gi://GObject';
++import Gtk from 'gi://Gtk';
+ 
+-const GLib = imports.gi.GLib;
+-const Gio = imports.gi.Gio;
+-const GObject = imports.gi.GObject;
+-const Gtk = imports.gi.Gtk;
++import system from 'system';
+ 
+-const Config = imports.config;
++import Config from '../../config.mjs';
+ 
+ 
+ /*
+@@ -17,7 +17,7 @@ const Config = imports.config;
+  */
+ const ISSUE_HEADER = `
+ GSConnect: ${Config.PACKAGE_VERSION} (${Config.IS_USER ? 'user' : 'system'})
+-GJS:       ${imports.system.version}
++GJS:       ${system.version}
+ Session:   ${GLib.getenv('XDG_SESSION_TYPE')}
+ OS:        ${GLib.get_os_info('PRETTY_NAME')}
+ `;
+@@ -26,7 +26,7 @@ OS:        ${GLib.get_os_info('PRETTY_NAME')}
+ /**
+  * A dialog for selecting a device
+  */
+-var DeviceChooser = GObject.registerClass({
++export const DeviceChooser = GObject.registerClass({
+     GTypeName: 'GSConnectServiceDeviceChooser',
+     Properties: {
+         'action-name': GObject.ParamSpec.string(
+@@ -192,7 +192,7 @@ var DeviceChooser = GObject.registerClass({
+ /**
+  * A dialog for reporting an error.
+  */
+-var ErrorDialog = GObject.registerClass({
++export const ErrorDialog = GObject.registerClass({
+     GTypeName: 'GSConnectServiceErrorDialog',
+     Template: 'resource:///org/gnome/Shell/Extensions/GSConnect/ui/service-error-dialog.ui',
+     Children: [
+diff --git a/src/service/utils/dbus.js b/src/service/utils/dbus.js
+index 954f7cec9..8901e69df 100644
+--- a/src/service/utils/dbus.js
++++ b/src/service/utils/dbus.js
+@@ -2,12 +2,10 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const GjsPrivate = imports.gi.GjsPrivate;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Gio from 'gi://Gio';
++import GjsPrivate from 'gi://GjsPrivate';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+ 
+ /*
+@@ -19,11 +17,11 @@ function toDBusCase(string) {
+     }).replace(/[\s_-]+/g, '');
+ }
+ 
+-function toHyphenCase(string) {
++/* function toHyphenCase(string) {
+     return string.replace(/(?:[A-Z])/g, (ltr, offset) => {
+         return (offset > 0) ? `-${ltr.toLowerCase()}` : ltr.toLowerCase();
+     }).replace(/[\s_]+/g, '');
+-}
++} */
+ 
+ function toUnderscoreCase(string) {
+     return string.replace(/(?:^\w|[A-Z]|_|\b\w)/g, (ltr, offset) => {
+@@ -39,7 +37,7 @@ function toUnderscoreCase(string) {
+  * DBus.Interface represents a DBus interface bound to an object instance, meant
+  * to be exported over DBus.
+  */
+-var Interface = GObject.registerClass({
++export const Interface = GObject.registerClass({
+     GTypeName: 'GSConnectDBusInterface',
+     Implements: [Gio.DBusInterface],
+     Properties: {
+@@ -241,7 +239,7 @@ var Interface = GObject.registerClass({
+  * @param {Gio.Cancellable} [cancellable] - an optional Gio.Cancellable
+  * @return {Promise<Gio.DBusConnection>} A new DBus connection
+  */
+-function newConnection(busType = Gio.BusType.SESSION, cancellable = null) {
++export function newConnection(busType = Gio.BusType.SESSION, cancellable = null) {
+     return new Promise((resolve, reject) => {
+         Gio.DBusConnection.new_for_address(
+             Gio.dbus_address_get_for_bus_sync(busType, cancellable),
+diff --git a/src/service/utils/setup.js b/src/service/utils/setup.js
+index 3b7368738..9170a7c8f 100644
+--- a/src/service/utils/setup.js
++++ b/src/service/utils/setup.js
+@@ -2,19 +2,20 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import {watchService} from '../../wl_clipboard.js';
+ 
+-const Gio = imports.gi.Gio;
+-const GIRepository = imports.gi.GIRepository;
+-const GLib = imports.gi.GLib;
++import Gio from 'gi://Gio';
++import GIRepository from 'gi://GIRepository';
++import GLib from 'gi://GLib';
+ 
+-const Config = imports.config;
+-const {setup, setupGettext} = imports.utils.setup;
++import Config from '../../config.mjs';
++import setup, {setupGettext} from '../../utils/setup.mjs';
+ 
+ 
+ // Promise Wrappers
+ try {
+-    const {EBook, EDataServer} = imports.gi;
++    const EBook = (await import('gi://EBook')).default;
++    const EDataServer = (await import('gi://EDataServer')).default;
+ 
+     Gio._promisify(EBook.BookClient, 'connect');
+     Gio._promisify(EBook.BookClient.prototype, 'get_view');
+@@ -58,7 +59,10 @@ Config.CONFIGDIR = GLib.build_filenamev([GLib.get_user_config_dir(), 'gsconnect'
+ Config.RUNTIMEDIR = GLib.build_filenamev([GLib.get_user_runtime_dir(), 'gsconnect']);
+ 
+ // Bootstrap
+-setup(Config.PACKAGE_DATADIR);
++const utilsFolder = GLib.path_get_dirname(GLib.filename_from_uri(import.meta.url)[0]);
++const serviceFolder = GLib.path_get_dirname(utilsFolder);
++const extensionFolder = GLib.path_get_dirname(serviceFolder);
++setup(extensionFolder);
+ setupGettext();
+ 
+ if (Config.IS_USER) {
+@@ -163,7 +167,7 @@ else
+  */
+ if (!globalThis.HAVE_GNOME) {
+     debug('Not running as a Gnome extension');
+-    imports.wl_clipboard.watchService();
++    watchService();
+ }
+ 
+ 
+diff --git a/src/service/utils/ui.js b/src/service/utils/ui.js
+index 35922d32c..ae3fb2b8c 100644
+--- a/src/service/utils/ui.js
++++ b/src/service/utils/ui.js
+@@ -2,14 +2,12 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
++import Gdk from 'gi://Gdk';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import Gtk from 'gi://Gtk';
+ 
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
+-const Gtk = imports.gi.Gtk;
+-
+-const Config = imports.config;
++import Config from '../../config.mjs';
+ 
+ 
+ /*
+diff --git a/src/service/utils/uri.js b/src/service/utils/uri.js
+index 6104ed9bb..e7fca2c4e 100644
+--- a/src/service/utils/uri.js
++++ b/src/service/utils/uri.js
+@@ -2,9 +2,7 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const GLib = imports.gi.GLib;
++import GLib from 'gi://GLib';
+ 
+ 
+ /**
+@@ -83,7 +81,7 @@ const _numberRegex = new RegExp(
+  * @param {string} str - the string to search
+  * @return {Object[]} the list of match objects, as described above
+  */
+-function findUrls(str) {
++export function findUrls(str) {
+     _urlRegexp.lastIndex = 0;
+ 
+     const res = [];
+@@ -107,7 +105,7 @@ function findUrls(str) {
+  * @param {string} [title] - An optional title (eg. alt text, tooltip)
+  * @return {string} the modified text
+  */
+-function linkify(str, title = null) {
++export function linkify(str, title = null) {
+     const text = GLib.markup_escape_text(str, -1);
+ 
+     _urlRegexp.lastIndex = 0;
+@@ -126,7 +124,7 @@ function linkify(str, title = null) {
+ /**
+  * A simple parsing class for sms: URI's (https://tools.ietf.org/html/rfc5724)
+  */
+-var SmsURI = class URI {
++export default class URI {
+     constructor(uri) {
+         _smsRegex.lastIndex = 0;
+         const [, recipients, query] = _smsRegex.exec(uri);
+@@ -167,5 +165,5 @@ var SmsURI = class URI {
+ 
+         return this.body ? `${uri}?body=${escape(this.body)}` : uri;
+     }
+-};
++}
+ 
+diff --git a/src/wl_clipboard.js b/src/wl_clipboard.js
+index 2a11de5ed..8e1dedd9e 100644
+--- a/src/wl_clipboard.js
++++ b/src/wl_clipboard.js
+@@ -2,12 +2,10 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-'use strict';
+-
+-const Gio = imports.gi.Gio;
+-const GjsPrivate = imports.gi.GjsPrivate;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
++import Gio from 'gi://Gio';
++import GjsPrivate from 'gi://GjsPrivate';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
+ // laucher for wl-clipboard
+ const launcher = new Gio.SubprocessLauncher({
+@@ -55,7 +53,7 @@ const TEXT_MIMETYPES = [
+  * A simple clipboard portal, especially useful on Wayland where GtkClipboard
+  * doesn't work in the background.
+  */
+-var Clipboard = GObject.registerClass(
++export const Clipboard = GObject.registerClass(
+     {
+         GTypeName: 'GSConnectShellClipboard',
+     },
+@@ -258,13 +256,13 @@ var Clipboard = GObject.registerClass(
+     }
+ );
+ 
+-var _portal = null;
+-var _portalId = 0;
++let _portal = null;
++let _portalId = 0;
+ 
+ /**
+  * Watch for the service to start and export the clipboard portal when it does.
+  */
+-function watchService() {
++export function watchService() {
+     if (_portalId > 0)
+         return;
+ 
+@@ -288,7 +286,7 @@ function watchService() {
+ /**
+  * Stop watching the service and export the portal if currently running.
+  */
+-function unwatchService() {
++export function unwatchService() {
+     if (_portalId > 0) {
+         Gio.bus_unwatch_name(_portalId);
+         _portalId = 0;
+
+From 5b0af1e15e6facdb77e8f2bda64fe326fb1f8bf8 Mon Sep 17 00:00:00 2001
+From: Ibrahim Ansari <ansari.ibrahim1@gmail.com>
+Date: Sun, 24 Sep 2023 19:32:57 +0530
+Subject: [PATCH 3/6] Remove config.mjs and setup.mjs bridges
+
+---
+ data/config.js.in                    | 32 +++++++++++++++-------------
+ src/config.mjs                       | 12 -----------
+ src/extension.js                     |  4 ++--
+ src/gsconnect-preferences            |  4 ++--
+ src/preferences/device.js            |  3 +--
+ src/preferences/service.js           |  2 +-
+ src/prefs.js                         |  2 +-
+ src/service/backends/lan.js          |  2 +-
+ src/service/components/contacts.js   |  2 +-
+ src/service/components/pulseaudio.js |  2 +-
+ src/service/daemon.js                |  2 +-
+ src/service/device.js                |  2 +-
+ src/service/manager.js               |  2 +-
+ src/service/plugin.js                |  2 +-
+ src/service/plugins/mpris.js         |  2 +-
+ src/service/plugins/notification.js  |  2 +-
+ src/service/plugins/sftp.js          |  2 +-
+ src/service/plugins/systemvolume.js  |  2 +-
+ src/service/ui/service.js            |  2 +-
+ src/service/utils/setup.js           |  4 ++--
+ src/service/utils/ui.js              |  2 +-
+ src/shell/input.js                   |  2 +-
+ src/shell/utils.js                   |  2 +-
+ src/utils/setup.js                   | 12 +++++------
+ src/utils/setup.mjs                  | 12 -----------
+ 25 files changed, 47 insertions(+), 70 deletions(-)
+ delete mode 100644 src/config.mjs
+ delete mode 100644 src/utils/setup.mjs
+
+diff --git a/data/config.js.in b/data/config.js.in
+index 2c19ec4a6..510773b8e 100644
+--- a/data/config.js.in
++++ b/data/config.js.in
+@@ -2,21 +2,23 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-var PACKAGE_VERSION = @PACKAGE_VERSION@;
+-var PACKAGE_URL = '@PACKAGE_URL@';
+-var PACKAGE_BUGREPORT = '@PACKAGE_BUGREPORT@';
+-var PACKAGE_DATADIR = '@PACKAGE_DATADIR@';
+-var PACKAGE_LOCALEDIR = '@PACKAGE_LOCALEDIR@';
+-var GSETTINGS_SCHEMA_DIR = '@GSETTINGS_SCHEMA_DIR@';
+-var GNOME_SHELL_LIBDIR = '@GNOME_SHELL_LIBDIR@';
++export default {
++    PACKAGE_VERSION: @PACKAGE_VERSION@,
++    PACKAGE_URL: '@PACKAGE_URL@',
++    PACKAGE_BUGREPORT: '@PACKAGE_BUGREPORT@',
++    PACKAGE_DATADIR: '@PACKAGE_DATADIR@',
++    PACKAGE_LOCALEDIR: '@PACKAGE_LOCALEDIR@',
++    GSETTINGS_SCHEMA_DIR: '@GSETTINGS_SCHEMA_DIR@',
++    GNOME_SHELL_LIBDIR: '@GNOME_SHELL_LIBDIR@',
+ 
+-var APP_ID = '@APPLICATION_ID@';
+-var APP_PATH = '@APPLICATION_PATH@';
++    APP_ID: '@APPLICATION_ID@',
++    APP_PATH: '@APPLICATION_PATH@',
+ 
+-var IS_USER = false;
++    IS_USER: false,
+ 
+-// External binary paths
+-var OPENSSL_PATH = '@OPENSSL_PATH@';
+-var SSHADD_PATH = '@SSHADD_PATH@';
+-var SSHKEYGEN_PATH = '@SSHKEYGEN_PATH@';
+-var FFMPEG_PATH = '@FFMPEG_PATH@';
++    // External binary paths
++    OPENSSL_PATH: '@OPENSSL_PATH@',
++    SSHADD_PATH: '@SSHADD_PATH@',
++    SSHKEYGEN_PATH: '@SSHKEYGEN_PATH@',
++    FFMPEG_PATH: '@FFMPEG_PATH@',
++};
+diff --git a/src/config.mjs b/src/config.mjs
+deleted file mode 100644
+index 7295c977c..000000000
+--- a/src/config.mjs
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
+-//
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-
+-import GLib from 'gi://GLib';
+-
+-const [filename] = GLib.filename_from_uri(import.meta.url);
+-const dirname = GLib.path_get_dirname(filename);
+-imports.searchPath.unshift(dirname);
+-
+-const Config = imports.config;
+-export default Config;
+diff --git a/src/extension.js b/src/extension.js
+index 752d7e88c..9d960ac11 100644
+--- a/src/extension.js
++++ b/src/extension.js
+@@ -16,7 +16,7 @@ import {
+     ngettext
+ } from 'resource:///org/gnome/shell/extensions/extension.js';
+ 
+-import Config from './config.mjs';
++import Config from './config.js';
+ import * as Clipboard from './shell/clipboard.js';
+ import * as Device from './shell/device.js';
+ import * as Keybindings from './shell/keybindings.js';
+@@ -24,7 +24,7 @@ import * as Notification from './shell/notification.js';
+ import * as Input from './shell/input.js';
+ import * as Utils from './shell/utils.js';
+ import * as Remote from './utils/remote.js';
+-import setup from './utils/setup.mjs';
++import setup from './utils/setup.js';
+ 
+ const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
+ 
+diff --git a/src/gsconnect-preferences b/src/gsconnect-preferences
+index b28868fa9..1bd35a0a5 100755
+--- a/src/gsconnect-preferences
++++ b/src/gsconnect-preferences
+@@ -16,8 +16,8 @@ import Gtk from 'gi://Gtk?version=3.0';
+ import system from 'system';
+ 
+ import {Window} from './preferences/service.js';
+-import setup, {setupGettext} from './utils/setup.mjs';
+-import Config from './config.mjs';
++import setup, {setupGettext} from './utils/setup.js';
++import Config from './config.js';
+ 
+ 
+ // Bootstrap
+diff --git a/src/preferences/device.js b/src/preferences/device.js
+index 6f744d96d..081aee955 100644
+--- a/src/preferences/device.js
++++ b/src/preferences/device.js
+@@ -8,7 +8,7 @@ import GObject from 'gi://GObject';
+ import Gtk from 'gi://Gtk';
+ import Pango from 'gi://Pango';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ import * as Keybindings from './keybindings.js';
+ 
+ 
+@@ -16,7 +16,6 @@ import * as Keybindings from './keybindings.js';
+ const DEVICE_PLUGINS = [];
+ const DEVICE_SHORTCUTS = {};
+ 
+-// FIXME ESM
+ for (const name in imports.service.plugins) {
+     const module = imports.service.plugins[name];
+ 
+diff --git a/src/preferences/service.js b/src/preferences/service.js
+index ecfab37df..e258f225b 100644
+--- a/src/preferences/service.js
++++ b/src/preferences/service.js
+@@ -11,7 +11,7 @@ import Gtk from 'gi://Gtk';
+ 
+ import system from 'system';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ import {Panel, rowSeparators} from './device.js';
+ import {Service} from '../utils/remote.js';
+ 
+diff --git a/src/prefs.js b/src/prefs.js
+index dd20fd20d..4a94ca7b8 100644
+--- a/src/prefs.js
++++ b/src/prefs.js
+@@ -8,7 +8,7 @@ import Adw from 'gi://Adw';
+ 
+ // Bootstrap
+ import * as Utils from './shell/utils.js';
+-import setup from './utils/setup.mjs';
++import setup from './utils/setup.js';
+ import {ExtensionPreferences} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+ 
+ export default class GSConnectExtensionPreferences extends ExtensionPreferences {
+diff --git a/src/service/backends/lan.js b/src/service/backends/lan.js
+index 43664c15d..d28d4e91f 100644
+--- a/src/service/backends/lan.js
++++ b/src/service/backends/lan.js
+@@ -6,7 +6,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ import * as Core from '../core.js';
+ 
+ 
+diff --git a/src/service/components/contacts.js b/src/service/components/contacts.js
+index 48173c5b5..3070f408d 100644
+--- a/src/service/components/contacts.js
++++ b/src/service/components/contacts.js
+@@ -6,7 +6,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ 
+ let HAVE_EDS = true;
+ let EBook = null;
+diff --git a/src/service/components/pulseaudio.js b/src/service/components/pulseaudio.js
+index f772f9f19..028a802a7 100644
+--- a/src/service/components/pulseaudio.js
++++ b/src/service/components/pulseaudio.js
+@@ -6,7 +6,7 @@ import GIRepository from 'gi://GIRepository';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ 
+ const Tweener = imports.tweener.tweener;
+ 
+diff --git a/src/service/daemon.js b/src/service/daemon.js
+index 186ee56d3..c210120c6 100755
+--- a/src/service/daemon.js
++++ b/src/service/daemon.js
+@@ -17,7 +17,7 @@ import system from 'system';
+ 
+ import './utils/setup.js';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ import Manager from './manager.js';
+ import * as ServiceUI from './ui/service.js';
+ 
+diff --git a/src/service/device.js b/src/service/device.js
+index 9d28e438a..bbb1c332c 100644
+--- a/src/service/device.js
++++ b/src/service/device.js
+@@ -6,7 +6,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ import * as Components from './components/index.js';
+ import * as Core from './core.js';
+ 
+diff --git a/src/service/manager.js b/src/service/manager.js
+index ae945af08..30b6cdf9c 100644
+--- a/src/service/manager.js
++++ b/src/service/manager.js
+@@ -6,7 +6,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ import * as DBus from './utils/dbus.js';
+ import Device from './device.js';
+ 
+diff --git a/src/service/plugin.js b/src/service/plugin.js
+index 0aab57fb7..4ced78e9f 100644
+--- a/src/service/plugin.js
++++ b/src/service/plugin.js
+@@ -6,7 +6,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ 
+ 
+ /**
+diff --git a/src/service/plugins/mpris.js b/src/service/plugins/mpris.js
+index a3e9f97c4..0b51f9265 100644
+--- a/src/service/plugins/mpris.js
++++ b/src/service/plugins/mpris.js
+@@ -7,7 +7,7 @@ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+ import * as Components from '../components/index.js';
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ import * as DBus from '../utils/dbus.js';
+ import  {Player} from '../components/mpris.js';
+ import Plugin from '../plugin.js';
+diff --git a/src/service/plugins/notification.js b/src/service/plugins/notification.js
+index 8c46780f0..bb317db63 100644
+--- a/src/service/plugins/notification.js
++++ b/src/service/plugins/notification.js
+@@ -8,7 +8,7 @@ import GObject from 'gi://GObject';
+ import Gtk from 'gi://Gtk';
+ 
+ import * as Components from '../components/index.js';
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ import Plugin from '../plugin.js';
+ import ReplyDialog from '../ui/notification.js';
+ 
+diff --git a/src/service/plugins/sftp.js b/src/service/plugins/sftp.js
+index 8d9aafaf1..83a2dbea6 100644
+--- a/src/service/plugins/sftp.js
++++ b/src/service/plugins/sftp.js
+@@ -6,7 +6,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ import * as Lan from '../backends/lan.js';
+ import Plugin from '../plugin.js';
+ 
+diff --git a/src/service/plugins/systemvolume.js b/src/service/plugins/systemvolume.js
+index 5ffbcf15e..9db02d1df 100644
+--- a/src/service/plugins/systemvolume.js
++++ b/src/service/plugins/systemvolume.js
+@@ -5,7 +5,7 @@
+ import GObject from 'gi://GObject';
+ 
+ import * as Components from '../components/index.js';
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ import Plugin from '../plugin.js';
+ 
+ 
+diff --git a/src/service/ui/service.js b/src/service/ui/service.js
+index 5f0c3df17..b84bb3d21 100644
+--- a/src/service/ui/service.js
++++ b/src/service/ui/service.js
+@@ -9,7 +9,7 @@ import Gtk from 'gi://Gtk';
+ 
+ import system from 'system';
+ 
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ 
+ 
+ /*
+diff --git a/src/service/utils/setup.js b/src/service/utils/setup.js
+index 9170a7c8f..204d473bf 100644
+--- a/src/service/utils/setup.js
++++ b/src/service/utils/setup.js
+@@ -8,8 +8,8 @@ import Gio from 'gi://Gio';
+ import GIRepository from 'gi://GIRepository';
+ import GLib from 'gi://GLib';
+ 
+-import Config from '../../config.mjs';
+-import setup, {setupGettext} from '../../utils/setup.mjs';
++import Config from '../../config.js';
++import setup, {setupGettext} from '../../utils/setup.js';
+ 
+ 
+ // Promise Wrappers
+diff --git a/src/service/utils/ui.js b/src/service/utils/ui.js
+index ae3fb2b8c..d0f31aa97 100644
+--- a/src/service/utils/ui.js
++++ b/src/service/utils/ui.js
+@@ -7,7 +7,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import Gtk from 'gi://Gtk';
+ 
+-import Config from '../../config.mjs';
++import Config from '../../config.js';
+ 
+ 
+ /*
+diff --git a/src/shell/input.js b/src/shell/input.js
+index 86fea67cf..b2ef07e29 100644
+--- a/src/shell/input.js
++++ b/src/shell/input.js
+@@ -4,7 +4,7 @@
+ 
+ import Gio from 'gi://Gio';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ 
+ export class LockscreenRemoteAccess {
+ 
+diff --git a/src/shell/utils.js b/src/shell/utils.js
+index 5626e0edd..0fd4ff778 100644
+--- a/src/shell/utils.js
++++ b/src/shell/utils.js
+@@ -6,7 +6,7 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import Gtk from 'gi://Gtk';
+ 
+-import Config from '../config.mjs';
++import Config from '../config.js';
+ 
+ let St = null; // St is not available for prefs.js importing this file.
+ try {
+diff --git a/src/utils/setup.js b/src/utils/setup.js
+index d17963d0a..eef58dc9f 100644
+--- a/src/utils/setup.js
++++ b/src/utils/setup.js
+@@ -2,18 +2,18 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-const Gio = imports.gi.Gio;
+-const GLib = imports.gi.GLib;
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
+ 
+-const Gettext = imports.gettext;
++import Gettext from 'gettext';
+ 
+-const Config = imports.config;
++import Config from '../config.js';
+ 
+ 
+ /**
+  * Initialise and setup Gettext.
+  */
+-function setupGettext() {
++export function setupGettext() {
+     // Init Gettext
+     String.prototype.format = imports.format.format;
+     Gettext.bindtextdomain(Config.APP_ID, Config.PACKAGE_LOCALEDIR);
+@@ -25,7 +25,7 @@ function setupGettext() {
+  * Initialise and setup Config, GResources and GSchema.
+  * @param {string} extensionPath - The absolute path to the extension directory
+  */
+-function setup(extensionPath) {
++export default function setup(extensionPath) {
+     // Ensure config.js is setup properly
+     Config.PACKAGE_DATADIR = extensionPath;
+     const userDir = GLib.build_filenamev([GLib.get_user_data_dir(), 'gnome-shell']);
+diff --git a/src/utils/setup.mjs b/src/utils/setup.mjs
+deleted file mode 100644
+index 7a14f19e0..000000000
+--- a/src/utils/setup.mjs
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
+-//
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-
+-import GLib from 'gi://GLib';
+-
+-const [filename] = GLib.filename_from_uri(import.meta.url);
+-const dirname = GLib.path_get_dirname(filename);
+-imports.searchPath.unshift(dirname);
+-
+-export const {setup, setupGettext} = imports.setup;
+-export default setup;
+
+From 431f5246ecf514b5e96a7fe5ac6fbc8c4b749e1c Mon Sep 17 00:00:00 2001
+From: Ibrahim Ansari <ansari.ibrahim1@gmail.com>
+Date: Sun, 24 Sep 2023 20:51:16 +0530
+Subject: [PATCH 4/6] Migrate dynamic imports using Gio
+
+---
+ src/preferences/device.js            |  9 +++++----
+ src/service/components/index.js      | 25 ++++++++++++++++++++++--
+ src/service/components/pulseaudio.js |  2 ++
+ src/service/core.js                  |  6 ++++--
+ src/service/device.js                | 11 ++++++-----
+ src/service/manager.js               | 23 ++++++++++++++++++++--
+ src/service/plugin.js                |  3 ++-
+ src/service/plugins/index.js         | 29 ++++++++++++++++++++++++++++
+ 8 files changed, 92 insertions(+), 16 deletions(-)
+ create mode 100644 src/service/plugins/index.js
+
+diff --git a/src/preferences/device.js b/src/preferences/device.js
+index 081aee955..76fc0c73f 100644
+--- a/src/preferences/device.js
++++ b/src/preferences/device.js
+@@ -9,6 +9,7 @@ import Gtk from 'gi://Gtk';
+ import Pango from 'gi://Pango';
+ 
+ import Config from '../config.js';
++import plugins from '../service/plugins/index.js';
+ import * as Keybindings from './keybindings.js';
+ 
+ 
+@@ -16,8 +17,8 @@ import * as Keybindings from './keybindings.js';
+ const DEVICE_PLUGINS = [];
+ const DEVICE_SHORTCUTS = {};
+ 
+-for (const name in imports.service.plugins) {
+-    const module = imports.service.plugins[name];
++for (const name in plugins) {
++    const module = plugins[name];
+ 
+     if (module.Metadata === undefined)
+         continue;
+@@ -422,7 +423,7 @@ export const Panel = GObject.registerClass({
+             this._pluginSettings = {};
+ 
+         if (!this._pluginSettings.hasOwnProperty(name)) {
+-            const meta = imports.service.plugins[name].Metadata;
++            const meta = plugins[name].Metadata;
+ 
+             this._pluginSettings[name] = new Gio.Settings({
+                 settings_schema: Config.GSCHEMA.lookup(meta.id, -1),
+@@ -1056,7 +1057,7 @@ export const Panel = GObject.registerClass({
+     }
+ 
+     _addPlugin(name) {
+-        const plugin = imports.service.plugins[name];
++        const plugin = plugins[name];
+ 
+         const row = new SectionRow({
+             height_request: 48,
+diff --git a/src/service/components/index.js b/src/service/components/index.js
+index 9c35fb430..6e9dbde1c 100644
+--- a/src/service/components/index.js
++++ b/src/service/components/index.js
+@@ -2,12 +2,33 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
+ 
+ /*
+  * Singleton Tracker
+  */
+ const Default = new Map();
+ 
++// Load all components using dynamic import
++const components = {};
++
++const dir = Gio.File.new_for_uri(import.meta.url).get_parent();
++const iter = await dir.enumerate_children_async(
++    Gio.FILE_ATTRIBUTE_STANDARD_NAME,
++    Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
++    GLib.PRIORITY_DEFAULT,
++    null);
++const infos = await iter.next_files_async(100, GLib.PRIORITY_DEFAULT, null);
++iter.close_async(GLib.PRIORITY_DEFAULT, null, null);
++
++for (let i = 0; i < infos.length; i++) {
++    const info = infos[i];
++    const name = info.get_name().replace(/\.js$/, '');
++    if (name === 'index')
++        continue;
++    components[name] = await import(`./${name}.js`);
++}
+ 
+ /**
+  * Acquire a reference to a component. Calls to this function should always be
+@@ -23,10 +44,10 @@ export function acquire(name) {
+         let info = Default.get(name);
+ 
+         if (info === undefined) {
+-            const module = imports.service.components[name];
++            const module = components[name];
+ 
+             info = {
+-                instance: new module.Component(),
++                instance: new module.default(),
+                 refcount: 0,
+             };
+ 
+diff --git a/src/service/components/pulseaudio.js b/src/service/components/pulseaudio.js
+index 028a802a7..6c07974fc 100644
+--- a/src/service/components/pulseaudio.js
++++ b/src/service/components/pulseaudio.js
+@@ -16,6 +16,8 @@ const typelibDir = GLib.build_filenamev([Config.GNOME_SHELL_LIBDIR, 'gnome-shell
+ GIRepository.Repository.prepend_search_path(typelibDir);
+ GIRepository.Repository.prepend_library_path(typelibDir);
+ 
++const Gvc = (await import('gi://Gvc')).default;
++
+ 
+ /**
+  * Extend Gvc.MixerStream with a property for returning a user-visible name
+diff --git a/src/service/core.js b/src/service/core.js
+index 634164037..2246ab9ab 100644
+--- a/src/service/core.js
++++ b/src/service/core.js
+@@ -6,6 +6,8 @@ import Gio from 'gi://Gio';
+ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
++import plugins from './plugins/index.js';
++
+ 
+ /**
+  * Get the local device type.
+@@ -407,12 +409,12 @@ export const ChannelService = GObject.registerClass({
+             },
+         });
+ 
+-        for (const name in imports.service.plugins) {
++        for (const name in plugins) {
+             // Exclude mousepad/presenter capability in unsupported sessions
+             if (!HAVE_REMOTEINPUT && ['mousepad', 'presenter'].includes(name))
+                 continue;
+ 
+-            const meta = imports.service.plugins[name].Metadata;
++            const meta = plugins[name].Metadata;
+ 
+             if (meta === undefined)
+                 continue;
+diff --git a/src/service/device.js b/src/service/device.js
+index bbb1c332c..ddcbff7c1 100644
+--- a/src/service/device.js
++++ b/src/service/device.js
+@@ -9,6 +9,7 @@ import GObject from 'gi://GObject';
+ import Config from '../config.js';
+ import * as Components from './components/index.js';
+ import * as Core from './core.js';
++import plugins from './plugins/index.js';
+ 
+ /**
+  * An object representing a remote device.
+@@ -284,12 +285,12 @@ const Device = GObject.registerClass({
+         // Determine supported plugins by matching incoming to outgoing types
+         const supported = [];
+ 
+-        for (const name in imports.service.plugins) {
++        for (const name in plugins) {
+             // Exclude mousepad/presenter plugins in unsupported sessions
+             if (!HAVE_REMOTEINPUT && ['mousepad', 'presenter'].includes(name))
+                 continue;
+ 
+-            const meta = imports.service.plugins[name].Metadata;
++            const meta = plugins[name].Metadata;
+ 
+             if (meta === undefined)
+                 continue;
+@@ -1002,8 +1003,8 @@ const Device = GObject.registerClass({
+         try {
+             if (this.paired && !this._plugins.has(name)) {
+                 // Instantiate the handler
+-                handler = imports.service.plugins[name];
+-                plugin = new handler.Plugin(this);
++                handler = plugins[name];
++                plugin = new handler.default(this);
+ 
+                 // Register packet handlers
+                 for (const packetType of handler.Metadata.incomingCapabilities)
+@@ -1044,7 +1045,7 @@ const Device = GObject.registerClass({
+         try {
+             if (this._plugins.has(name)) {
+                 // Unregister packet handlers
+-                handler = imports.service.plugins[name];
++                handler = plugins[name];
+ 
+                 for (const type of handler.Metadata.incomingCapabilities)
+                     this._handlers.delete(type);
+diff --git a/src/service/manager.js b/src/service/manager.js
+index 30b6cdf9c..7a548a536 100644
+--- a/src/service/manager.js
++++ b/src/service/manager.js
+@@ -15,6 +15,25 @@ const DEVICE_PATH = '/org/gnome/Shell/Extensions/GSConnect/Device';
+ const DEVICE_IFACE = Config.DBUS.lookup_interface(DEVICE_NAME);
+ 
+ 
++// Load all backends using dynamic import
++const backends = {};
++
++const dir = Gio.File.new_for_uri(import.meta.url).get_parent().resolve_relative_path('backends');
++const iter = await dir.enumerate_children_async(
++    Gio.FILE_ATTRIBUTE_STANDARD_NAME,
++    Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
++    GLib.PRIORITY_DEFAULT,
++    null);
++const infos = await iter.next_files_async(100, GLib.PRIORITY_DEFAULT, null);
++iter.close_async(GLib.PRIORITY_DEFAULT, null, null);
++
++for (let i = 0; i < infos.length; i++) {
++    const info = infos[i];
++    const name = info.get_name().replace(/\.js$/, '');
++    backends[name] = await import(`./backends/${name}.js`);
++}
++
++
+ /**
+  * A manager for devices.
+  */
+@@ -233,9 +252,9 @@ const Manager = GObject.registerClass({
+     }
+ 
+     _loadBackends() {
+-        for (const name in imports.service.backends) {
++        for (const name in backends) {
+             try {
+-                const module = imports.service.backends[name];
++                const module = backends[name];
+ 
+                 if (module.ChannelService === undefined)
+                     continue;
+diff --git a/src/service/plugin.js b/src/service/plugin.js
+index 4ced78e9f..ed2a5ef33 100644
+--- a/src/service/plugin.js
++++ b/src/service/plugin.js
+@@ -7,6 +7,7 @@ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+ import Config from '../config.js';
++import plugins from './plugins/index.js';
+ 
+ 
+ /**
+@@ -40,7 +41,7 @@ const Plugin = GObject.registerClass({
+         this._meta = meta;
+ 
+         if (this._meta === null)
+-            this._meta = imports.service.plugins[name].Metadata;
++            this._meta = plugins[name].Metadata;
+ 
+         // GSettings
+         const schema = Config.GSCHEMA.lookup(this._meta.id, false);
+diff --git a/src/service/plugins/index.js b/src/service/plugins/index.js
+new file mode 100644
+index 000000000..da5fae915
+--- /dev/null
++++ b/src/service/plugins/index.js
+@@ -0,0 +1,29 @@
++// SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
++//
++// SPDX-License-Identifier: GPL-2.0-or-later
++
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++
++
++// Load all plugins using dynamic import
++const plugins = {};
++
++const dir = Gio.File.new_for_uri(import.meta.url).get_parent();
++const iter = await dir.enumerate_children_async(
++    Gio.FILE_ATTRIBUTE_STANDARD_NAME,
++    Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
++    GLib.PRIORITY_DEFAULT,
++    null);
++const infos = await iter.next_files_async(100, GLib.PRIORITY_DEFAULT, null);
++iter.close_async(GLib.PRIORITY_DEFAULT, null, null);
++
++for (let i = 0; i < infos.length; i++) {
++    const info = infos[i];
++    const name = info.get_name().replace(/\.js$/, '');
++    if (name === 'index')
++        continue;
++    plugins[name] = await import(`./${name}.js`);
++}
++
++export default plugins;
+
+From dcae46d9a77ef673b59a38641eb957fc477b2477 Mon Sep 17 00:00:00 2001
+From: Ibrahim Ansari <ansari.ibrahim1@gmail.com>
+Date: Sat, 30 Sep 2023 19:42:58 +0530
+Subject: [PATCH 5/6] Remove top-lvl await/dynamic imports (no mainloop)
+
+---
+ src/service/components/contacts.js   |  6 +--
+ src/service/components/index.js      | 46 ++++++++++++----------
+ src/service/components/pulseaudio.js |  2 +-
+ src/service/manager.js               | 22 +++--------
+ src/service/plugins/contacts.js      |  2 +-
+ src/service/plugins/index.js         | 58 ++++++++++++++++------------
+ src/service/utils/setup.js           |  4 +-
+ 7 files changed, 71 insertions(+), 69 deletions(-)
+
+diff --git a/src/service/components/contacts.js b/src/service/components/contacts.js
+index 3070f408d..5bff3776e 100644
+--- a/src/service/components/contacts.js
++++ b/src/service/components/contacts.js
+@@ -14,9 +14,9 @@ let EBookContacts = null;
+ let EDataServer = null;
+ 
+ try {
+-    EBook = (await import('gi://EBook')).default;
+-    EBookContacts = (await import('gi://EBookContacts')).default;
+-    EDataServer = (await import('gi://EDataServer')).default;
++    EBook = imports.gi.EBook;
++    EBookContacts = imports.gi.EBookContacts;
++    EDataServer = imports.gi.EDataServer;
+ } catch (e) {
+     HAVE_EDS = false;
+ }
+diff --git a/src/service/components/index.js b/src/service/components/index.js
+index 6e9dbde1c..15c1b6a34 100644
+--- a/src/service/components/index.js
++++ b/src/service/components/index.js
+@@ -2,33 +2,37 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-import Gio from 'gi://Gio';
+-import GLib from 'gi://GLib';
++import * as atspi from './atspi.js';
++import * as clipboard from './clipboard.js';
++import * as contacts from './contacts.js';
++import * as input from './input.js';
++import * as mpris from './mpris.js';
++import * as notification from './notification.js';
++import * as pulseaudio from './pulseaudio.js';
++import * as session from './session.js';
++import * as sound from './sound.js';
++import * as upower from './upower.js';
++import * as ydotool from './ydotool.js';
++
++const components = {
++    atspi,
++    clipboard,
++    contacts,
++    input,
++    mpris,
++    notification,
++    pulseaudio,
++    session,
++    sound,
++    upower,
++    ydotool,
++};
+ 
+ /*
+  * Singleton Tracker
+  */
+ const Default = new Map();
+ 
+-// Load all components using dynamic import
+-const components = {};
+-
+-const dir = Gio.File.new_for_uri(import.meta.url).get_parent();
+-const iter = await dir.enumerate_children_async(
+-    Gio.FILE_ATTRIBUTE_STANDARD_NAME,
+-    Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+-    GLib.PRIORITY_DEFAULT,
+-    null);
+-const infos = await iter.next_files_async(100, GLib.PRIORITY_DEFAULT, null);
+-iter.close_async(GLib.PRIORITY_DEFAULT, null, null);
+-
+-for (let i = 0; i < infos.length; i++) {
+-    const info = infos[i];
+-    const name = info.get_name().replace(/\.js$/, '');
+-    if (name === 'index')
+-        continue;
+-    components[name] = await import(`./${name}.js`);
+-}
+ 
+ /**
+  * Acquire a reference to a component. Calls to this function should always be
+diff --git a/src/service/components/pulseaudio.js b/src/service/components/pulseaudio.js
+index 6c07974fc..a42c76678 100644
+--- a/src/service/components/pulseaudio.js
++++ b/src/service/components/pulseaudio.js
+@@ -16,7 +16,7 @@ const typelibDir = GLib.build_filenamev([Config.GNOME_SHELL_LIBDIR, 'gnome-shell
+ GIRepository.Repository.prepend_search_path(typelibDir);
+ GIRepository.Repository.prepend_library_path(typelibDir);
+ 
+-const Gvc = (await import('gi://Gvc')).default;
++const Gvc = imports.gi.Gvc;
+ 
+ 
+ /**
+diff --git a/src/service/manager.js b/src/service/manager.js
+index 7a548a536..9c26f2201 100644
+--- a/src/service/manager.js
++++ b/src/service/manager.js
+@@ -10,28 +10,16 @@ import Config from '../config.js';
+ import * as DBus from './utils/dbus.js';
+ import Device from './device.js';
+ 
++import * as LanBackend from './backends/lan.js';
++
+ const DEVICE_NAME = 'org.gnome.Shell.Extensions.GSConnect.Device';
+ const DEVICE_PATH = '/org/gnome/Shell/Extensions/GSConnect/Device';
+ const DEVICE_IFACE = Config.DBUS.lookup_interface(DEVICE_NAME);
+ 
+ 
+-// Load all backends using dynamic import
+-const backends = {};
+-
+-const dir = Gio.File.new_for_uri(import.meta.url).get_parent().resolve_relative_path('backends');
+-const iter = await dir.enumerate_children_async(
+-    Gio.FILE_ATTRIBUTE_STANDARD_NAME,
+-    Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+-    GLib.PRIORITY_DEFAULT,
+-    null);
+-const infos = await iter.next_files_async(100, GLib.PRIORITY_DEFAULT, null);
+-iter.close_async(GLib.PRIORITY_DEFAULT, null, null);
+-
+-for (let i = 0; i < infos.length; i++) {
+-    const info = infos[i];
+-    const name = info.get_name().replace(/\.js$/, '');
+-    backends[name] = await import(`./backends/${name}.js`);
+-}
++const backends = {
++    lan: LanBackend,
++};
+ 
+ 
+ /**
+diff --git a/src/service/plugins/contacts.js b/src/service/plugins/contacts.js
+index 24e0d8379..d2965e150 100644
+--- a/src/service/plugins/contacts.js
++++ b/src/service/plugins/contacts.js
+@@ -14,7 +14,7 @@ import Contacts from '../components/contacts.js';
+ let EBookContacts;
+ 
+ try {
+-    EBookContacts = (await import('gi://EBookContacts')).default;
++    EBookContacts = imports.gi.EBookContacts;
+ } catch (e) {
+     EBookContacts = null;
+ }
+diff --git a/src/service/plugins/index.js b/src/service/plugins/index.js
+index da5fae915..3d304a044 100644
+--- a/src/service/plugins/index.js
++++ b/src/service/plugins/index.js
+@@ -2,28 +2,38 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-import Gio from 'gi://Gio';
+-import GLib from 'gi://GLib';
++import * as battery from './battery.js';
++import * as clipboard from './clipboard.js';
++import * as connectivity_report from './connectivity_report.js';
++import * as contacts from './contacts.js';
++import * as findmyphone from './findmyphone.js';
++import * as mousepad from './mousepad.js';
++import * as mpris from './mpris.js';
++import * as notification from './notification.js';
++import * as ping from './ping.js';
++import * as presenter from './presenter.js';
++import * as runcommand from './runcommand.js';
++import * as sftp from './sftp.js';
++import * as share from './share.js';
++import * as sms from './sms.js';
++import * as systemvolume from './systemvolume.js';
++import * as telephony from './telephony.js';
+ 
+-
+-// Load all plugins using dynamic import
+-const plugins = {};
+-
+-const dir = Gio.File.new_for_uri(import.meta.url).get_parent();
+-const iter = await dir.enumerate_children_async(
+-    Gio.FILE_ATTRIBUTE_STANDARD_NAME,
+-    Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+-    GLib.PRIORITY_DEFAULT,
+-    null);
+-const infos = await iter.next_files_async(100, GLib.PRIORITY_DEFAULT, null);
+-iter.close_async(GLib.PRIORITY_DEFAULT, null, null);
+-
+-for (let i = 0; i < infos.length; i++) {
+-    const info = infos[i];
+-    const name = info.get_name().replace(/\.js$/, '');
+-    if (name === 'index')
+-        continue;
+-    plugins[name] = await import(`./${name}.js`);
+-}
+-
+-export default plugins;
++export default {
++    battery,
++    clipboard,
++    connectivity_report,
++    contacts,
++    findmyphone,
++    mousepad,
++    mpris,
++    notification,
++    ping,
++    presenter,
++    runcommand,
++    sftp,
++    share,
++    sms,
++    systemvolume,
++    telephony,
++};
+diff --git a/src/service/utils/setup.js b/src/service/utils/setup.js
+index 204d473bf..f809f0afc 100644
+--- a/src/service/utils/setup.js
++++ b/src/service/utils/setup.js
+@@ -14,8 +14,8 @@ import setup, {setupGettext} from '../../utils/setup.js';
+ 
+ // Promise Wrappers
+ try {
+-    const EBook = (await import('gi://EBook')).default;
+-    const EDataServer = (await import('gi://EDataServer')).default;
++    const EBook = imports.gi.EBook;
++    const EDataServer = imports.gi.EDataServer;
+ 
+     Gio._promisify(EBook.BookClient, 'connect');
+     Gio._promisify(EBook.BookClient.prototype, 'get_view');
+
+From dfb6ff5aa091a0c0f2129fbbc43714ea3ec2cfa2 Mon Sep 17 00:00:00 2001
+From: Ibrahim Ansari <ansari.ibrahim1@gmail.com>
+Date: Sat, 30 Sep 2023 22:05:19 +0530
+Subject: [PATCH 6/6] WIP: some hacky bits to get everything in place
+
+---
+ src/gsconnect-preferences               |  7 +------
+ src/preferences/init.js                 | 12 ++++++++++++
+ src/service/daemon.js                   |  2 +-
+ src/service/{utils/setup.js => init.js} |  9 ++++-----
+ src/service/plugins/sftp.js             |  3 +--
+ 5 files changed, 19 insertions(+), 14 deletions(-)
+ create mode 100644 src/preferences/init.js
+ rename src/service/{utils/setup.js => init.js} (97%)
+
+diff --git a/src/gsconnect-preferences b/src/gsconnect-preferences
+index 1bd35a0a5..8988b944d 100755
+--- a/src/gsconnect-preferences
++++ b/src/gsconnect-preferences
+@@ -15,16 +15,11 @@ import Gtk from 'gi://Gtk?version=3.0';
+ 
+ import system from 'system';
+ 
++import './service/init.js';
+ import {Window} from './preferences/service.js';
+-import setup, {setupGettext} from './utils/setup.js';
+ import Config from './config.js';
+ 
+ 
+-// Bootstrap
+-setup(GLib.path_get_dirname(GLib.filename_from_uri(import.meta.url)[0]));
+-setupGettext();
+-
+-
+ /**
+  * Class representing the GSConnect service daemon.
+  */
+diff --git a/src/preferences/init.js b/src/preferences/init.js
+new file mode 100644
+index 000000000..038f60e7a
+--- /dev/null
++++ b/src/preferences/init.js
+@@ -0,0 +1,12 @@
++// SPDX-FileCopyrightText: GSConnect Developers https://github.com/GSConnect
++//
++// SPDX-License-Identifier: GPL-2.0-or-later
++
++import GLib from 'gi://GLib';
++
++import setup, {setupGettext} from '../utils/setup.js';
++
++
++// Bootstrap
++setup(GLib.path_get_dirname(GLib.path_get_dirname(GLib.filename_from_uri(import.meta.url)[0])));
++setupGettext();
+diff --git a/src/service/daemon.js b/src/service/daemon.js
+index c210120c6..2aa882951 100755
+--- a/src/service/daemon.js
++++ b/src/service/daemon.js
+@@ -15,7 +15,7 @@ import 'gi://Pango?version=1.0';
+ 
+ import system from 'system';
+ 
+-import './utils/setup.js';
++import './init.js';
+ 
+ import Config from '../config.js';
+ import Manager from './manager.js';
+diff --git a/src/service/utils/setup.js b/src/service/init.js
+similarity index 97%
+rename from src/service/utils/setup.js
+rename to src/service/init.js
+index f809f0afc..f8599ab63 100644
+--- a/src/service/utils/setup.js
++++ b/src/service/init.js
+@@ -2,14 +2,14 @@
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-import {watchService} from '../../wl_clipboard.js';
++import {watchService} from '../wl_clipboard.js';
+ 
+ import Gio from 'gi://Gio';
+ import GIRepository from 'gi://GIRepository';
+ import GLib from 'gi://GLib';
+ 
+-import Config from '../../config.js';
+-import setup, {setupGettext} from '../../utils/setup.js';
++import Config from '../config.js';
++import setup, {setupGettext} from '../utils/setup.js';
+ 
+ 
+ // Promise Wrappers
+@@ -59,8 +59,7 @@ Config.CONFIGDIR = GLib.build_filenamev([GLib.get_user_config_dir(), 'gsconnect'
+ Config.RUNTIMEDIR = GLib.build_filenamev([GLib.get_user_runtime_dir(), 'gsconnect']);
+ 
+ // Bootstrap
+-const utilsFolder = GLib.path_get_dirname(GLib.filename_from_uri(import.meta.url)[0]);
+-const serviceFolder = GLib.path_get_dirname(utilsFolder);
++const serviceFolder = GLib.path_get_dirname(GLib.filename_from_uri(import.meta.url)[0]);
+ const extensionFolder = GLib.path_get_dirname(serviceFolder);
+ setup(extensionFolder);
+ setupGettext();
+diff --git a/src/service/plugins/sftp.js b/src/service/plugins/sftp.js
+index 83a2dbea6..11d62477f 100644
+--- a/src/service/plugins/sftp.js
++++ b/src/service/plugins/sftp.js
+@@ -7,7 +7,6 @@ import GLib from 'gi://GLib';
+ import GObject from 'gi://GObject';
+ 
+ import Config from '../../config.js';
+-import * as Lan from '../backends/lan.js';
+ import Plugin from '../plugin.js';
+ 
+ 
+@@ -104,7 +103,7 @@ const SFTPPlugin = GObject.registerClass({
+         super.connected();
+ 
+         // Only enable for Lan connections
+-        if (this.device.channel instanceof Lan.Channel) {
++        if (this.device.channel.constructor.name === 'LanChannel') {
+             if (this.settings.get_boolean('automount'))
+                 this.mount();
+         } else {

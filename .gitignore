@@ -1,0 +1,5 @@
+gnome-shell-extension-gsconnect/
+src/
+pkg/
+*.pkg.*
+*.tar.*
