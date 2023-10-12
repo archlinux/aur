@@ -5,17 +5,17 @@
 
 pkgname=courier-maildrop
 _srcname=maildrop
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="mail delivery agent - procmail like but nicer syntax"
 arch=('i686' 'x86_64')
-license=('GPL2')
-url="http://courier-mta.org/maildrop/"
+license=('GPL3')
+url="https://courier-mta.org/maildrop/"
 depends=('courier-authlib>=0.71.0' 'gamin' 'pcre2' 'gdbm' 'courier-unicode>=2.1' 'libidn')
 conflicts=('courier-mta')
 options=('!libtool' '!staticlibs')
-source=(http://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
-sha512sums=('f722cbdf9aeb628ff68dcd280de5d7d37a3fae3692b7de5483cf0563631ff9b2eba9ef9baf3b3e3f6108d40e19b55dabddacaa3a064e6b71210b18f200bc67b7')
+source=(https://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
+sha512sums=('93364747c603d1d566f756e7ba8b10fd38d10749b269f1bf64596a56fe2b06f529f4b59b6256a5be0c44169f2c8cc9dcd7de91b3cc03288719ffee5db330b1d5')
 
 build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
@@ -35,9 +35,4 @@ package() {
 
   make DESTDIR="${pkgdir}" install
   chmod u+s "${pkgdir}/usr/bin/maildrop"
-  cd "${pkgdir}/usr/share/doc/maildrop/html"
-  for _files in *; do
-    install -Dm644 "${_files}" "${pkgdir}/usr/share/htmldoc/${_files}"
-  done
-  rm -rf "${pkgdir}/usr/share/maildrop"
 }
