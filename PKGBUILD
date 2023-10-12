@@ -10,7 +10,7 @@ license=("Apache-2.0")
 
 makedepends=("cosign" "curl")
 optdepends=("wireguard-tools: for debugging")
-conflicts=("webmesh-git")
+conflicts=("webmesh-git" "webmesh")
 
 source=("https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt")
 sha256sums=("859c778434ffcf092bed1c63d13ed7bbf3b12afa65644d40480f4921aab00a8a")
