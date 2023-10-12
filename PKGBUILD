@@ -5,7 +5,7 @@ pkgver=0.1.2
 pkgrel=1
 pkgdesc='Watch torrents with your friends.'
 arch=('x86_64' 'aarch64')
-url='https://github.com/pojntfx/${pkgname}'
+url='https://github.com/pojntfx/multiplex'
 license=('AGPL3')
 depends=('gtk4>=4.10.3' 'gobject-introspection' 'libadwaita>=1.3.2' 'mpv')
 makedepends=('git' 'go>=1.20.3')
