@@ -23,9 +23,10 @@ pkgbase = waylyrics-git
 	optdepends = qcm: NetEase Cloud Music player
 	provides = waylyrics
 	conflicts = waylyrics
+	options = !lto
 	source = git+https://github.com/waylyrics/waylyrics.git
 	source = io.poly000.waylyrics.desktop
 	sha256sums = SKIP
-	sha256sums = a2aad514ea170f2552818798d012e20790cdf66b31f16d01fbbf20ce9e72c76c
+	sha256sums = bd954c5c3e274c5d297168287483dbb06943efddab982be4b2ead359e0c39ba1
 
 pkgname = waylyrics-git

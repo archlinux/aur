@@ -26,7 +26,9 @@ source=("git+${url}.git"
 )
 
 sha256sums=('SKIP'
-            'a2aad514ea170f2552818798d012e20790cdf66b31f16d01fbbf20ce9e72c76c')
+	'bd954c5c3e274c5d297168287483dbb06943efddab982be4b2ead359e0c39ba1')
+
+options=('!lto')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -43,10 +45,6 @@ build() {
 
 	# template files
 	export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
-
-	if [[ $CARCH != x86_64 ]]; then
-		export CARGO_PROFILE_RELEASE_LTO=off
-	fi
 
 	cargo build --locked --release --target-dir target
 }
