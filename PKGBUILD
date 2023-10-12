@@ -2,7 +2,7 @@
 
 pkgname=sdformat14
 pkgver=14.0.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Simulation Description Format (SDFormat) parser and description files."
@@ -32,6 +32,7 @@ build() {
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
            -DBUILD_TESTING=OFF \
+           -DUSE_SYSTEM_PATHS_FOR_PYTHON_INSTALLATION:BOOL=ON \
            -Wno-dev
   cmake --build build
 }
