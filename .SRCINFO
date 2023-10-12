@@ -1,0 +1,15 @@
+pkgbase = crolk-git
+	pkgdesc = Simple gui clock, stopwatch, timer, alarm made with gtk-rs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/crolbar/crolk
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	optdepends = dracula-icons-git: tray icon
+	provides = crolk
+	source = git+https://github.com/crolbar/crolk
+	md5sums = SKIP
+
+pkgname = crolk-git
