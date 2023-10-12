@@ -1,7 +1,7 @@
 pkgbase = texlab-bin
 	pkgdesc = A cross-platform implementation of the Language Server Protocol for LaTeX
 	pkgver = 5.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/latex-lsp/texlab
 	arch = x86_64
 	license = GPL-3.0
