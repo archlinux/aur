@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-pop-shell
 	pkgdesc = GNOME Shell extension for advanced tiling window management
-	pkgver = 1.2.0+293+gb5accce
+	pkgver = 1.2.0+302+g446e152
 	pkgrel = 1
 	url = https://github.com/pop-os/shell
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = gnome-shell-extension-pop-shell
 	makedepends = typescript
 	makedepends = git
 	depends = fd
-	depends = gnome-shell<=1:44.6
+	depends = gnome-shell
 	depends = pop-launcher
 	depends = pop-shell-shortcuts
 	depends = xorg-xprop
 	optdepends = gnome-control-center: keybinding categories
 	optdepends = gnome-shell-extensions: for Native Window Placment extension
-	source = git+https://github.com/pop-os/shell.git#commit=b5acccefcaa653791d25f70a22c0e04f1858d96e
+	source = git+https://github.com/ronanru/pop-shell-gnome-45.git#commit=446e1520bba99376a04f320880ebd8a63a7a689a
 	source = 0001-Remove-schema-handling-from-transpile.sh.patch
 	source = 50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override
 	source = 50_org.gnome.mutter.pop-shell.gschema.override
