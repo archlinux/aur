@@ -6,10 +6,10 @@ pre_upgrade() {
 	fi
 
 	if (( $(vercmp "$2" "0.52.1-2") < 0 )); then
-		echo -e '\t** New configuration file changes: https://github.com/fatedier/frp#configuration-files **'
+		echo -e '\t** New configuration file changes: https://github.com/fatedier/frp#configuration-files **\n'
 	fi
 }
 
 post_upgrade() {
-	find /etc/frp \( -iname frpc.ini -o -iname frps.ini \) -perm /o+rw -printf 'Note: Permissions for "%p (%M)" are too open!\n'
+	find /etc/frp \( -iname frpc.toml -o -iname frps.toml \) -perm /o+rw -printf 'Note: Permissions for "%p (%M)" are too open!\n'
 }
