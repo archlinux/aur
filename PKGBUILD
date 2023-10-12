@@ -109,7 +109,7 @@ options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
-    ( cd llvm-project && patch -p1 -i "$srcdir/0002-stdint.patch" )
+    ( cd apple-llvm-project && patch -p1 -i "$srcdir/0002-stdint.patch" )
 }
 
 #pkgver() {
@@ -121,8 +121,8 @@ build() {
     cd "$srcdir"
     # Fix /usr/include error
     find "$srcdir/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-    find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-    find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/apple-llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/apple-llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
 
     # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
     # Which will break `compiler-rt`

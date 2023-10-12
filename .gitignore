@@ -2,10 +2,10 @@
 /pkg/
 *.tar.xz*
 *.tar.gz*
-/cmark/
+/apple-cmark/
+/apple-llvm-project/
 /indexstore-db/
 /llbuild/
-/llvm-project/
 /sourcekit-lsp/
 /swift-argument-parser/
 /swift-atomics/
