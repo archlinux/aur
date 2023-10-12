@@ -1,6 +1,6 @@
 VERSION ?= 0.13.2
 
-all: clean set-version prepare pkg
+all: clean set-version prepare
 
 pkg:
 	makepkg -s
