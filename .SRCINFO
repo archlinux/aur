@@ -1,7 +1,7 @@
 pkgbase = inform
 	pkgdesc = The Inform 6 compiler, standard library, and PunyInform library
-	pkgver = 6.41.r6
-	pkgrel = 2
+	pkgver = 6.41.r8
+	pkgrel = 1
 	url = https://gitlab.com/DavidGriffith/inform6unix
 	arch = aarch64
 	arch = arm
@@ -16,10 +16,10 @@ pkgbase = inform
 	license = MIT
 	makedepends = frotz
 	makedepends = ruby
-	depends = perl
-	provides = punyinform=4.5
-	source = http://ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.41-r6.tar.gz
-	md5sums = 48a56f0a691ea664dd4840d3d034a01b
-	sha256sums = 609de4f5cfae611cc8e6f3333d7016bdb2e802fe39096c59db50c5b31e14b557
+	optdepends = perl: for blorb scripts
+	provides = punyinform=5.0
+	source = http://ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.41-r8.tar.gz
+	md5sums = fef49de12089ed60cbe4acc83ea2fcda
+	sha256sums = de8a4a8f8c46bdfed10abc58e9ee9255b696568d19884d3293f7892c515cd8e3
 
 pkgname = inform
