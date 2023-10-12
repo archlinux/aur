@@ -4,7 +4,7 @@
 _pkgname='spacedrive'
 pkgname="${_pkgname}-bin"
 pkgver='0.1.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc="A file manager from the future."
 arch=('x86_64')
