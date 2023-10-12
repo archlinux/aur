@@ -1,4 +1,4 @@
-pkgbase = android-file-transfer
+pkgbase = android-file-transfer-linux
 	pkgdesc = Android File Transfer for Linux — a reliable MTP client with a minimalistic UI similar to official Android File Transfer. It just works.
 	pkgver = 4.3
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = android-file-transfer
 	source = android-file-transfer-linux-4.3::https://github.com/MartinVonReichenberg/android-file-transfer-linux/archive/refs/tags/v4.3.tar.gz
 	sha256sums = SKIP
 
-pkgname = android-file-transfer
+pkgname = android-file-transfer-linux
