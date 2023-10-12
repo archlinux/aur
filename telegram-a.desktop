@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Telegram A
+Comment=Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.
+Exec=telegram-a --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=telegram-a
+StartupWMClass=Telegram A
+StartupNotify=true
+Categories=Community;
