@@ -1,12 +1,12 @@
 
 pkgname=ttf-senty-free
-pkgver=20230505.7d8243d2
+pkgver=20231011.49acf683
 pkgrel=1
 pkgdesc="Senty Chinese handwritten font collection from Hanyi."
 arch=('any')
 url="https://www.sentyfont.com/"
 license=('custom:"Free for non-commercial use."')
-source=(
+source=("LICENSE.html::https://www.sentyfont.com/terms%20and%20conditions.htm"
 'https://www.sentyfont.com/index_htm_files/Hanyi%20Senty%20Lingfei%20Scroll.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSenty%20Candy-color-mono.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyBrushSong.ttf'
@@ -14,12 +14,14 @@ source=(
 'https://www.sentyfont.com/index_htm_files/HanyiSentyChalk%202018.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyCrayon-non-color.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyCrayon.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentyCreamPuff.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyDiary.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyFingerPainting.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyFlorCalligraphy.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyFoundation.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyFountainPen.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyGarden.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentyGoldenBell.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyGraffiti.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyJournal.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyJoy.ttf'
@@ -27,16 +29,19 @@ source=(
 'https://www.sentyfont.com/index_htm_files/HanyiSentyMarshmallow.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyMarshmallowChalk-A.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyMarshmallowChalk-B.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentyMaruko.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyMeadow.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyPagoda.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyPailouArch.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyPastel.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentyPea.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyPine.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyPomelo.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyRubber.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentySIlkRoad.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyScholar.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentySeaSpray.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentySnowMountain.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentySong.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentySpringBrush.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentySpringTrip.ttf'
@@ -52,17 +57,23 @@ source=(
 'https://www.sentyfont.com/index_htm_files/SentyBambooGrove.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyCaramel.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyChalk.ttf'
-'https://www.sentyfont.com/index_htm_files/SentyCreamPuff.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyChocolate.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyCreek.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyDew.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyDonut.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyDragonPalace.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyFunPark.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyGoldSand.ttf'
-'https://www.sentyfont.com/index_htm_files/SentyGoldenBell.ttf'
-'https://www.sentyfont.com/index_htm_files/SentyMARUKO.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyMovableType.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyMovableType2.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyPaperCut.ttf'
-'https://www.sentyfont.com/index_htm_files/SentyPea.ttf'
-'https://www.sentyfont.com/index_htm_files/SentySnowMountain.ttf'
+'https://www.sentyfont.com/index_htm_files/SentySandalwood.ttf'
+'https://www.sentyfont.com/index_htm_files/SentySigua.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyTamarind.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyVanilla.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyWEN2017.ttf')
 sha256sums=(
+"2ca158e667c1733c22065ef0760e2e97e1d52865cc1a247145d6117f0c43fa7c"
 '8e9b8b909f85e76047b748fa72d12006b686c96240e7760e3067904c8e853482'
 '7c7c13f7518c5952a2da73e27e3795b704c1eb681422cb29d28cb1fdbcff1416'
 '06c45af868758af5c42a17f0af07e5048aec498aa0aee6dea4e3f808f1ca8770'
@@ -70,12 +81,14 @@ sha256sums=(
 '7e6c24e0b1861f0ea38936466c670e9eb38fb18b68cd2cfc6334b9bf61e485b6'
 '79ced7e171b27f7badef7c037d41981e1fa89a3f45af2d10018356a7536ff3dc'
 'e4728dfdf11d499b33b956a574b8f5c9631692d8f377019c98db93b4ca625c49'
+'023a92053b3bec6c2dae7ce1879b75f87aa7c12ae5c498fbab8d5bd8b1a3b20b'
 '3e3ab74911769e226ffd3345e41800ce7b7fa632aeb9e30e57ebf2694bb1aa8b'
 'b68210ace178c7c1a6eea71592d5e85d2dfb7c3a741e694342991b865e85dff8'
 '54b11e8f91184994d44fc8426791acd10eb0e2e572d1f16631378f9d4b237e3d'
 '4a0f13dc00a17b4eedd29f432a65fb287557d9511dea898025bd4da0eb5cb10d'
 'a2cadfc05f91358031da760109136c422cd4f90aa788e7691fd8963e350729b5'
 '55c68887b2cc8f6013cf7830af571fc6622f8001d4b1d7901c95e6697e6a9f8e'
+'5b44a49034d2f5adc10b4d4606853b5e3af440155b43dd3b5da33c19f89697a6'
 'd65fecde4aff5a4c28b6d2b0aeb01a6fed73a3da3aeda923dd4ddf9578bc3b73'
 '5aa6a76adefff1955e6a96bc68ca3ad21f76a22b7f7fc9cabf88354a32e814da'
 '2e25b9956ac5e904a06da770bb1efcc158542c045bbdbcf1c93e9cddb8dd8bd9'
@@ -83,22 +96,25 @@ sha256sums=(
 '020f080ed7cf83855a620dcbea1bed9ad0625cab36a3f1c7859cf0765bbfd403'
 '59bed234e4f74fef89ece2620d45862796bcc06bfd9799379b0bad6426a67628'
 '2280e5c44ab22b20285f7ea89f1373bdcd7ee6742d553df86c8d14ef35f5c8f1'
+'d3aefbd9e4ff441ce9bfde9e609d7ba269bd6593bdcfa85d497b10ebab3a4e45'
 '6e5042da717c56df9f00a008f021534f1aeafc3816ebae3db472fb1bce709c6a'
 '754eb3539249898f9daffc23b0068561bb9a618a79d517708513b5119fd7e6e5'
 'dd73618e811abb820cb7a734b791c6913958b6fc7cb6cd2e0f625a2139eaa951'
 '4172d45ff3bfa71413f620be23e82c402170d043afac433c7bac91ae1355f75d'
+'e794b2b626ea8b16feb1f2d73c33e0c6795f2af8fbbd9e4ce67c9dcaf1b8f664'
 '34f3f69966add38ddb428b90a69579dc082722fe1ab009321e39aa4ee61f07b9'
 '8bc3f972f8d1f2ea05313ee2cf70a662872d1efd183eb2fd826112e02fa17e97'
 '473c04408b18c83d5d2a3d6092624f299da8368d03785ca3efc4c6cc801fa96d'
 '049b38f3f002d90d434e24e0e1779c9c671af83f206028bad317c0ba42b09f7c'
 '7af3c33624a47b19c1b4019e44c7d3e8bf7698f1b2049511f03f62c48291f1f2'
 'f1dc2b2f2a94877bcd836bb6d39ee5a256f1d611f01873190768a5a13dfab6a0'
+'ad43f01be45eabdb53bcae7bec8a94fa104fe2704ff7e9039c3b1daf01c86849'
 'ed7933da7db2422f7f216e50e658fde61e77c26ea704b10672a31aaed2c1fff5'
 '101f2347ab4956cc2765e62a1f8e61c229e176637fefcf4caeea98a5b1d08ee4'
 '10b98098695a5e724890830c194e241c1d7ad6c81d2ef0f9d10bbf4de24222cd'
 '24d437cec47f74d01716b46c11cc0ce878a8352f22037f614aabe298206f7db9'
 '2475f1eca03c008a785bd0ce2b533c517899a3ba42452524f0eee68c3f6ac203'
-'728f689a0cceb75aeb9204c08e21ec27a5c0cb1785e1e67980e79d906e6c27fb'
+'1077e5de6bfbf7e5a8320d565ac80595df0707d9f008611eb64dc25c858f4547'
 '41b7c2d66406a27d8c16a5aed3d2cfabd34d45e6776cb4a3a20a72ff36641a83'
 '1d1cbbe37f5259e592a64a73c4b158f39c86ad8ea25d05cadf62043262a4e598'
 '1cdf4f5821d5d67b520850c6db9f62b205c8eb9bea535fd9cd1c9222b6c5dd7d'
@@ -108,13 +124,18 @@ sha256sums=(
 '26aee174df5485957aeb6b02686e515917933da23a6c20f33c5fffab92129f09'
 '8893b4b1ebac84822f37e57ade13c271260e7f25f85bcd94f47b4a3aa85d1726'
 'e3f107d4ff19f91da1d40f16f021cedc7afecc60d3eda075d7f9d89ba8dcd9b8'
-'2ef05cc8fc1dcf0c574b476c99e8951ee715a64aedf3e6e896ab72f1182c77f0'
+'fcc9d1ced3a1251b3aeeba37b65cd26481365e04b4f705977a6cff360f0e085e'
+'94a489cd30df83afe53ee5fdbd82273bd2a8086dfe20b806d7ab8a5d9f26dfca'
+'d99e869485ce731fb9380b1b56f92a8129518d45de5ebb1ccb5144c38a0e15c0'
+'9aa898bd514973e6e6dbaa6ef52a82db98c2a8b9d58af7f4c339f69b4d44483f'
+'c1c0d88cd5174666c01fbf84762e4c0882e9501df3683ea2f03e31b3367bfd47'
+'175329833c2b0438bb61ca11828dd6a867ad94f26e80dd27216edf3d37733cf3'
 'dec59596bfaa8814d2eb8ee58faa58e88bdb1106ee67edc295dc2f0ad6b515d6'
-'1653ce71963445ab56ec85160dafe4d0b04d7f7c045cfd8c9a6e275945712332'
-'f5cf39b541170ff7424d52d23b29c33022ce3a1cda2af8b388348a451b24b855'
+'6ebb95bc5e6a83fdb6f8c4c2df96c6cdd8e1744d1354f689ab253722c88a8828'
+'f928740100689118a3f93c93bdd0da51c716c1af9f444bb8d6af52e1076fc219'
 'cf65e94c2596d49834356974bb15eb7e690b64a53ff591e892b7ccf41610ba6f'
-'74bafd052280eb3e711eb60110d7c5276496b1583cb6c1693c5813b093da6263'
-'9d1ac9ca11f5704d10a0bc5179ea613ce2bacc1d38ca0cb591348bf2a1ca1fed'
+'5318f815af148530c6cd5d0a7701f8e2cec7d19bdbb68985db10f6ea9e59c87f'
+'a29e29ebf6e8fdd4ec211407ce8860daad9c17dcbec14697b5e5736d5598d034'
 '5d71d0a21a2009a47ec61c9d93ffca024ac65f9e6266dfffe8eb740adcdcc505'
 'd35e61655552c6c4524a5ca93477a460dddd8a238ca1821dd6d5894e17348ad1'
 'bd49c8a948c296da8fe5534abb5be66c12e8a17918bd29716c29ed5fda0333fc')
@@ -124,5 +145,7 @@ sha256sums=(
 package()
 {
   mkdir -p $pkgdir/usr/share/fonts/TTF/senty/
+  mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   install -m644 *.ttf $pkgdir/usr/share/fonts/TTF/senty/
+  install -m644 LICENSE.html $pkgdir/usr/share/licenses/$pkgname/
 }
