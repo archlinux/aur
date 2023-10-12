@@ -1,4 +1,5 @@
 # Maintainer: Mihók Martin <mihok.martin@protonmail.com>
+# Contributor: FabioLolix <fabio.loli@disroot.org>
 # Contributor: Niklas Wojtkowiak <aur.7xcqe@passmail.com>
 _pkgname='spacedrive'
 pkgname="${_pkgname}-bin"
@@ -12,10 +13,11 @@ _url_source='https://github.com/spacedriveapp/spacedrive'
 license=('AGPL3')
 source=("${_url_source}/releases/download/${pkgver}/Spacedrive-linux-x86_64.deb")
 sha256sums=('9c38bea4466551a67a28f1b43e0e0262b6893179b2566f7e72b5ec3aa2f47db7')
-depends=('libheif')
+depends=(gtk3 ffmpeg4.4 webkit2gtk openssl-1.1 glibc gcc-libs glib2 pango libsoup cairo gdk-pixbuf2 libheif)
+provides=(spacedrive)
+conflicts=(spacedrive)
 
 package() {
-  ar x "Spacedrive-linux-x86_64.deb"
   tar -xf "${srcdir}/data.tar.gz" --directory "${srcdir}"
   chmod -R 755 "${srcdir}/usr/share/"
   install -Dm755 "${srcdir}/usr/bin/spacedrive" "${pkgdir}/usr/bin/spacedrive"
