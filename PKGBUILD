@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=python-pyleri
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Left-right parser for SiriDB'
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('7f8415789bfa7b8264a5f9fd3e26219dbd2b8e63a5d41768e126bc062f239863054c2379ce71ecf87a28822b736ae131b725e9825275dd38fd2224493780d6dd')
+b2sums=(91c523c1325ac60a9b3477a04f16443bd89b17b5f7dd430c27f96fa5fafd07915482fae60ad08044d0922207ad182b1bf0bb4922f8d533b882fb188a4ec8b4c9)
 
 build() {
   cd pyleri-$pkgver
