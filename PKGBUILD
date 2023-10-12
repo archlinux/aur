@@ -23,8 +23,8 @@ source=(https://github.com/aclap-dev/vdhcoapp/releases/download/v${pkgver}/vdhco
 sha256sums=('6679e124d54224ac7b8403459c0d4a4dbb6709281cfd38c5c2c5200a3e43d726'
             'a2b56e6ae3f7f8933e20762baa90e69f63f0802b2e6d213b51e0bc68843e5d27'
             '3287859986d67e15e269965676bf9c75d1e853ea0ec97695811072fb8f10a7a8'
-            'a74a57aac6b2e76ded9524599d3047486f9f2d8f820c5114ad41209c8117ab35'
-            'fddf971ed2d6d976cd6ce34f9f04c9c2d18c03112eccda44ccf887cda0344b7c')
+            'a08c02d934709cdea4392fce155bec0b33147e386ed154bed959c5b78788ea83'
+            'f7406ae5ba7fb6602426ef97540f86e057a7fd6d01a917e5af3638f1d64b2ce9')
 
 prepare() {
   rm control.tar.xz

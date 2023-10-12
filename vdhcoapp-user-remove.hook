@@ -6,4 +6,4 @@ Target = vdhcoapp-bin
 [Action]
 Description = Uninstalling JSON configuration file for current user ...
 When = PreTransaction
-Exec = /bin/sh -c 'sudo -u $SUDO_USER /usr/bin/vdhcoapp uninstall --user'
+Exec = /bin/sh -c 'sudo -u "${SUDO_USER:-$(id -u -n 1000 )}" /usr/bin/vdhcoapp uninstall --user'

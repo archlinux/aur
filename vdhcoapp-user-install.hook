@@ -7,4 +7,4 @@ Target = vdhcoapp-bin
 [Action]
 Description = Installing JSON configuration file for current user ...
 When = PostTransaction
-Exec = /bin/sh -c 'sudo -u $SUDO_USER /usr/bin/vdhcoapp install --user'
+Exec = /bin/sh -c 'sudo -u "${SUDO_USER:-$(id -u -n 1000 )}" /usr/bin/vdhcoapp install --user'
