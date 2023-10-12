@@ -1,6 +1,6 @@
 pkgbase = waylyrics-git
 	pkgdesc = general desktop lyrics with QQMusic/NetEase Cloud Music source
-	pkgver = 0.1.0_r300.g82f1ab8
+	pkgver = 0.1.0_r350.ge187f00
 	pkgrel = 1
 	url = https://github.com/waylyrics/waylyrics
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = waylyrics-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = jq
+	makedepends = mimalloc
 	depends = gtk4
 	optdepends = feeluown-qqmusic: QQMusic player
 	optdepends = feeluown-netease: NetEase Cloud Music player
