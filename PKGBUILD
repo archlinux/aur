@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
 	cd html-builder-cli
-	npm install -g
+	npm install
 }
 
 package() { 
