@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('html-builder-cli-git')
-pkgver=3.0.0.r0.g1efeded
+pkgver=3.0.0.r5.g696e94b
 pkgrel=1
 pkgdesc="The fastest way to package an HTML project into a fully native desktop app"
 arch=('any')
@@ -19,13 +19,9 @@ pkgver() {
 
 build() {
 	cd html-builder-cli
-	sudo npm install -g
+	npm install -g
 }
 
 package() { 
-    echo
-    echo
-    echo 'html-builder-cli has been successfully built and installed globally'
-    echo
-    echo
+echo
 }

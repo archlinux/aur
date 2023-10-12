@@ -1,6 +1,6 @@
 pkgbase = html-builder-cli-git
 	pkgdesc = The fastest way to package an HTML project into a fully native desktop app
-	pkgver = 3.0.0.r0.g1efeded
+	pkgver = 3.0.0.r5.g696e94b
 	pkgrel = 1
 	url = https://github.com/yikuansun/html-builder-cli
 	arch = any
