@@ -3,7 +3,7 @@
 _gitname=yt
 pkgname=python-${_gitname}-git
 pkgver=4.0.0.r2489.g7df628d03
-pkgrel=2
+pkgrel=3
 pkgdesc="python package for data analysis and visualization"
 url="http://yt-project.org"
 arch=(any)
@@ -23,10 +23,9 @@ depends=(
 )
 makedepends=(
     'cython'
-    'python-setuptools'
+    'python-build'
+    'python-installer'
     'python-wheel'
-    'python-ewah-bool-utils'
-    'python-oldest-supported-numpy'
 )
 optdepends=(
     'jupyterlab: interactive analysis'
