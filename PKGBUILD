@@ -10,7 +10,7 @@ license=("Apache-2.0")
 
 makedepends=("make" "go" "nodejs" "yarn")
 optdepends=("wireguard-tools: for debugging")
-conflicts=("webmesh-bin")
+conflicts=("webmesh-bin" "webmesh")
 
 source=("git+https://github.com/webmeshproj/webmesh.git?ref=v$pkgver")
 sha256sums=("SKIP")

@@ -16,6 +16,7 @@ pkgbase = webmesh-git
 	makedepends = yarn
 	optdepends = wireguard-tools: for debugging
 	conflicts = webmesh-bin
+	conflicts = webmesh
 	source = git+https://github.com/webmeshproj/webmesh.git?ref=v0.13.3
 	sha256sums = SKIP
 
