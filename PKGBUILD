@@ -2,7 +2,7 @@
 
 pkgname=cachyos-ananicy-rules-git
 _gitname=ananicy-rules
-pkgver=20230613.r200.geed6f55
+pkgver=20231011.r269.g3dafc3e
 pkgrel=1
 groups=('cachyos')
 arch=('any')
@@ -15,7 +15,7 @@ source=("git+https://github.com/CachyOS/$_gitname")
 sha256sums=('SKIP')
 replaces=('ananicy-rules-git' 'cachyos-ananicy-rules')
 provides=('ananicy-rules-git' 'cachyos-ananicy-rules')
-conflicts=('ananicy-rules-git' 'cachyos-ananicy-rules')
+conflicts=('ananicy-rules-git' 'cachyos-ananicy-rules' 'ananicy-git')
 
 pkgver() {
   cd $_gitname
