@@ -1,0 +1,20 @@
+pkgbase = newsraft-git
+	pkgdesc = Feed reader with ncurses user interface
+	pkgver = 0.21.5259a9112d
+	pkgrel = 1
+	url = https://codeberg.org/grisha/newsraft
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = ncurses
+	depends = sqlite
+	depends = curl
+	depends = expat
+	depends = yajl
+	depends = gumbo-parser
+	provides = newsraft
+	conflicts = newsraft
+	source = git+https://codeberg.org/grisha/newsraft.git
+	sha256sums = SKIP
+
+pkgname = newsraft-git
