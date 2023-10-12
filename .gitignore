@@ -1,4 +1,4 @@
-/pkg/
-/src/
-/libxcb/
-/*.pkg.tar.xz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

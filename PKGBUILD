@@ -1,44 +1,83 @@
-# Maintainer: Philipp A. <flying-sheep@web.de>
+# Maintainer:
+# Contributor: Philipp A. <flying-sheep@web.de>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: NeoRaider <neoraider@universe-factory.net>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=libxcb-git
-pkgver=1.14.r1.g704e0a9
+
+_pkgname="libxcb"
+pkgname="$_pkgname-git"
+pkgver=1.16.r4.g02a7bbe
 pkgrel=1
-pkgdesc='X11 client-side library - git version'
+pkgdesc="X11 client-side library"
 arch=(i686 x86_64)
 url='http://xcb.freedesktop.org'
-depends=(xcb-proto-git libxdmcp libxau)
-makedepends=(git libxslt python xorg-util-macros xorgproto)
-conflicts=(libxcb)
-provides=("libxcb=$pkgver")
-license=(custom)
-source=('git+http://anongit.freedesktop.org/git/xcb/libxcb.git')
-sha256sums=('SKIP')
+license=('custom')
 
-pkgver() {
-  cd "$srcdir/${pkgname%-*}"
-  git describe --tags | sed 's/libxcb-//;s/-/.r/;s/-/./g'
-}
+depends=(
+  # extra/libxcb
+  'glibc'
+  'libxau'
+  'libxdmcp'
+)
+makedepends=(
+  # extra/libxcb
+  'libxslt'
+  'python'
+  'xorg-util-macros'
+  'xorgproto'
+)
+
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # extra/libxcb
+  depends+=('xcb-proto')
+else
+  # aur/libxcb-git
+  depends+=('xcb-proto-git')
+  makedepends+=('git')
+
+  provides=("$_pkgname=${pkgver//.r*}")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source=(
+    "$_pkgname"::"git+http://anongit.freedesktop.org/git/xcb/libxcb.git"
+  )
+  sha256sums=(
+    'SKIP'
+  )
+
+  pkgver() {
+    cd "$srcdir/$_pkgsrc"
+    git describe --tags | sed 's/libxcb-//;s/-/.r/;s/-/./g'
+  }
+fi
 
 build() {
-  cd "$srcdir/${pkgname%-*}"
-
-  ./autogen.sh \
-    --prefix=/usr \
-    --enable-xinput \
-    --enable-xkb \
-    --with-doxygen=no \
+  cd "$srcdir/$_pkgsrc"
+  local _config_options=(
+    --prefix='/usr'
+    --enable-xinput
+    --enable-xkb
     --disable-static
 
+    --with-doxygen=no
+  )
+
+  ./autogen.sh "${_config_options[@]}"
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
-package() {
-  cd "$srcdir/${pkgname%-*}"
+check() {
+  cd "$srcdir/$_pkgsrc"
+  make -k check
+}
 
+package() {
+  cd "$srcdir/$_pkgsrc"
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

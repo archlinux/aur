@@ -1,23 +1,23 @@
 pkgbase = libxcb-git
-	pkgdesc = X11 client-side library - git version
-	pkgver = 1.14.r1.g704e0a9
+	pkgdesc = X11 client-side library
+	pkgver = 1.16.r4.g02a7bbe
 	pkgrel = 1
 	url = http://xcb.freedesktop.org
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = git
 	makedepends = libxslt
 	makedepends = python
 	makedepends = xorg-util-macros
 	makedepends = xorgproto
-	depends = xcb-proto-git
-	depends = libxdmcp
+	makedepends = git
+	depends = glibc
 	depends = libxau
-	provides = libxcb=1.14.r1.g704e0a9
+	depends = libxdmcp
+	depends = xcb-proto-git
+	provides = libxcb=1.16
 	conflicts = libxcb
-	source = git+http://anongit.freedesktop.org/git/xcb/libxcb.git
+	source = libxcb::git+http://anongit.freedesktop.org/git/xcb/libxcb.git
 	sha256sums = SKIP
 
 pkgname = libxcb-git
-
