@@ -2,36 +2,35 @@
 pkgname=autorecord-manager
 _pkgname=LiveAutoRecord
 pkgver=4.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="基于 Electron 的多平台直播自动录制软件"
 arch=('any')
 url="https://github.com/WhiteMinds/LiveAutoRecord"
 license=('LGPL3')
 conflicts=("${pkgname}")
 depends=('bash' 'electron20')
-makedepends=('gendesk' 'nodejs>=18.12.1' 'npm' 'yarn' 'asar')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=('gendesk' 'nodejs>=16.20.1' 'npm>=8.19.4' 'yarn' 'asar')
+source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname%-bin}.sh")
-sha256sums=('bd47c5f59931adee7f43b7bdcabec4370691d8a9da70133344b66d4e4dcb2eb0'
-            '90ad81bb91f541a9171af93750cae3f9ec3f61d7c9c8f26dc5d0072519d83bfe')
+sha256sums=('5735afafaa1decd62301608d6546dd702b63641775fb839232e191a62fc411b4'
+            'a203712105b67a53b7cef617b4d7d5411280c058171b671a0ec60b600eea7d68')
+prepare() {
+    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+}
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    yarn install
+    sed "s|electron-builder\",|electron-builder --linux AppImage\",|g" -i packages/electron/package.json
+    yarn
     cd "${srcdir}/${_pkgname}-${pkgver}/packages/shared"
     yarn build
     cd "${srcdir}/${_pkgname}-${pkgver}/packages/manager"
     yarn build
-    sed "s|electron-builder\",|electron-builder --linux AppImage\",|g" -i "${srcdir}/${_pkgname}-${pkgver}/packages/electron/package.json"
-    yarn app:build
-    asar extract "${srcdir}/${_pkgname}-${pkgver}/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/${_pkgname}-${pkgver}/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
-    asar pack "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname}.asar"
+    yarn app:build -p never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname}.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/packages/electron/build/${pkgver}/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/packages/electron/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

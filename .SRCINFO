@@ -1,21 +1,21 @@
 pkgbase = autorecord-manager
 	pkgdesc = 基于 Electron 的多平台直播自动录制软件
 	pkgver = 4.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WhiteMinds/LiveAutoRecord
 	arch = any
 	license = LGPL3
 	makedepends = gendesk
-	makedepends = nodejs>=18.12.1
-	makedepends = npm
+	makedepends = nodejs>=16.20.1
+	makedepends = npm>=8.19.4
 	makedepends = yarn
 	makedepends = asar
 	depends = bash
 	depends = electron20
 	conflicts = autorecord-manager
-	source = autorecord-manager-4.3.4.tar.gz::https://github.com/WhiteMinds/LiveAutoRecord/archive/refs/tags/v4.3.4.tar.gz
+	source = autorecord-manager-4.3.4.zip::https://github.com/WhiteMinds/LiveAutoRecord/archive/refs/tags/v4.3.4.zip
 	source = autorecord-manager.sh
-	sha256sums = bd47c5f59931adee7f43b7bdcabec4370691d8a9da70133344b66d4e4dcb2eb0
-	sha256sums = 90ad81bb91f541a9171af93750cae3f9ec3f61d7c9c8f26dc5d0072519d83bfe
+	sha256sums = 5735afafaa1decd62301608d6546dd702b63641775fb839232e191a62fc411b4
+	sha256sums = a203712105b67a53b7cef617b4d7d5411280c058171b671a0ec60b600eea7d68
 
 pkgname = autorecord-manager
