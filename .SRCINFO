@@ -1,7 +1,7 @@
 pkgbase = vega-video-editor
 	pkgdesc = Vega is a video editing software.
 	pkgver = 4.0.3_beta.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toshusai/Vega
 	arch = any
 	license = custom
@@ -34,6 +34,7 @@ pkgbase = vega-video-editor
 	depends = libx11
 	depends = alsa-lib
 	depends = bash
+	optdepends = nvm: Use to change version to 14 of nodejs
 	conflicts = vega-video-editor
 	source = vega-video-editor-4.0.3_beta.3.tar.gz::https://github.com/toshusai/Vega/archive/refs/tags/v4.0.3-beta.3.tar.gz
 	sha256sums = a5fbb80d4bb0c71ba7e48b5be0a9d410d11582d8a328db3335965403342db439
