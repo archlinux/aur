@@ -1,16 +1,16 @@
 # Maintainer: Kostas Kardaras <kostas.kardaras at gmail dot com>
 
 pkgname=gnome-shell-extension-no-annoyance-2-git
-pkgver=r52.5e9e6a1
+pkgver=r53.33b90a2
 pkgrel=1
 pkgdesc='Another extension, that removes the Window is ready notification and puts the window into focus.'
-url='https://github.com/jirkavrba/noannoyance'
+url='https://github.com/abashurov/noannoyance'
 license=('GPL2')
 arch=('any')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 makedepends=('git' 'zip')
-depends=('gnome-shell>=40')
+depends=('gnome-shell>=45')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
