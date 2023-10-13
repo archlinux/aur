@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-downstream-keyer
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Add a Downstream Keyer dock to OBS studio"
 arch=("x86_64" "aarch64")
@@ -9,7 +9,7 @@ url="https://obsproject.com/forum/resources/downstream-keyer.1254/"
 license=("GPL2")
 depends=("obs-studio>=28")
 makedepends=("cmake" "git")
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=efcf880223f126c1a4879aeb5d5ebce8e00f0691")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=db71004a7805bd69d56be5ce1ba01678db95cfb7")
 sha256sums=("SKIP")
 
 build() {
