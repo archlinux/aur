@@ -1,0 +1,19 @@
+pkgbase = session-lock-qt-git
+	pkgdesc = session-lock-qt
+	pkgver = r36.8c631fb
+	pkgrel = 1
+	url = https://github.com/waycrate/qt-session-lock
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = wayland-protocols
+	depends = qt6-wayland
+	provides = session-lock-qt
+	conflicts = session-lock-qt
+	source = session-lock-qt::git+https://github.com/waycrate/qt-session-lock.git
+	sha256sums = SKIP
+
+pkgname = session-lock-qt-git
