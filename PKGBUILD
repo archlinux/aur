@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-slab
 pkgver=2.002
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc='Roboto Slab is a slab serif addition to the Roboto type family.'
 arch=('any')
 url='https://www.google.com/fonts/specimen/Roboto+Slab'
 license=('Apache')
-_commit='56bcfeddeae694babdb34c19ebe3956b17829699'
+_commit='1be6141f85b68b48c06ccac50d234302d6e59643'
 source=("${pkgname}-${epoch}:${pkgver}-${pkgrel}-LICENSE.txt::https://raw.github.com/googlefonts/robotoslab/${_commit}/LICENSE.txt"
         "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Black.ttf"
         "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Bold.ttf"
