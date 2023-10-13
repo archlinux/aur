@@ -6,5 +6,6 @@ Terminal=false
 Type=Application
 Icon=telegram-a
 StartupWMClass=Telegram A
+MimeType=x-scheme-handler/tg;
 StartupNotify=true
 Categories=Community;

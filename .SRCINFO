@@ -1,7 +1,7 @@
 pkgbase = telegram-a
 	pkgdesc = Official Telegram Web client version A system Electron version
 	pkgver = 10.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://web.telegram.org/a/get/
 	arch = any
 	license = GPL3
@@ -25,7 +25,7 @@ pkgbase = telegram-a
 	source = run_husky_install_only_in_git.patch
 	sha256sums = 19495e827e22680c87367718fb37f67cd14af0794d420678b7890bb0d10ee523
 	sha256sums = f90da929a33048561899c8774969e6a1012dcbf679e0082c835783278b41b780
-	sha256sums = de086bb54da308478eadb00680e6feec6c50b80283a2dd7c1f67132c11e3a216
+	sha256sums = 4d7a0e303b47e0d35d0916ff511e2edb6d4d4af4988609906d7769a483b0f609
 	sha256sums = 7b40d89c682a491507f81e43adfc2793bedd65862017975c182380301455007d
 	sha256sums = be1ec2ce92c6017e55ea79254502e34bf744fdeccd8952bce9eb69d0a7ee231a
 	sha256sums = ecd8513d233fa5da2925ef68a97cd03ddcea81c2a050576e64dcfa8f177aea0b
