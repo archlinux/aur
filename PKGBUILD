@@ -1,12 +1,13 @@
 # Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
+# Contributor: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-screencast-vaapi
 _pkgname=gnome-shell
-pkgver=44.1
-pkgrel=3
+pkgver=45.0
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -57,12 +58,13 @@ optdepends=(
   'gst-plugin-pipewire: Screen recording'
   'gst-plugins-good: Screen recording'
   'power-profiles-daemon: Power profile switching'
+  'python-gobject: gnome-shell-test-tool performance tester'
   'switcheroo-control: Multi-GPU support'
 )
 conflicts=(gnome-shell gnome-shell-debug)
 provides=(gnome-shell)
 groups=(gnome)
-_commit=b0ca64e7775225b7c5d049571a44ef40bf516406  # tags/44.1^0
+_commit=2127c62b210f605747e019e6e2abee82516e3ccb  # tags/45.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
@@ -80,7 +82,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  patch -p1 < ../../screencast-vaapi.patch
+  patch -p1 < $srcdir/screencast-vaapi.patch
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git -c protocol.file.allow=always submodule update
@@ -102,6 +104,8 @@ _check() (
   export XDG_RUNTIME_DIR="$PWD/rdir"
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
+  export NO_AT_BRIDGE=1 GTK_A11Y=none
+
   meson test -C build --print-errorlogs -t 3
 )
 
@@ -111,7 +115,7 @@ check() {
 }
 
 package() {
-  depends+=(libmutter-12.so)
+  depends+=(libmutter-13.so)
   meson install -C build --destdir "$pkgdir"
 }
 
