@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=30.0.0-rc1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -80,7 +80,7 @@ makedepends=(
   "websocketpp" # Deps of Websocket plugin (headers-only lib)
 
   # Deps of obs-browser
-  "cef-minimal-obs=103.0.0_5060_shared_textures_2594+gc69ad37+chromium_103.0.5060.134_1"
+  "cef-minimal-obs=103.0.0_5060_shared_textures_2594+g17f8588+chromium_103.0.5060.134_1"
 )
 optdepends=(
   "jack: JACK support"
