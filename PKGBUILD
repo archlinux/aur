@@ -1,8 +1,8 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="cmake-language-server-git-isolated"
-pkgver="0.1.7.r1.gcd7ba40"
-pkgrel="2"
+pkgver="0.1.7.r3.g68bbc81"
+pkgrel="1"
 pkgdesc="Python based cmake language server"
 arch=("any")
 url="https://github.com/regen100/cmake-language-server"
@@ -27,7 +27,7 @@ build() {
 package() {
     cd "${srcdir}/cmake-language-server" || return
     python -m venv pkg_venv && \
-    pkg_venv/bin/pip install dist/*.whl "pygls==1.0.0" && \
+    pkg_venv/bin/pip install dist/*.whl "pygls==1.1.1" && \
     python -m venv venv_pack && \
     venv_pack/bin/pip install venv-pack2 && \
     venv_pack/bin/venv-pack -p pkg_venv -o pkg_venv.tar && \
