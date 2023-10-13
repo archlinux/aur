@@ -1,6 +1,6 @@
 pkgbase = naps2-bin
 	pkgdesc = NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible.
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://www.naps2.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = naps2-bin
 	optdepends = sane-airscan: airscan support
 	provides = naps2
 	options = !strip
-	source_x86_64 = https://github.com/cyanfish/naps2/releases/download/v7.1.0/naps2-7.1.0-linux-x64.deb
-	b2sums_x86_64 = ec1b65ebd01459bf736e1bdb8f128f4cf12ce21bee1ec7e1ed48c4a8f617eb227634188f24f4b74ea63c9d7b5255ae1d4f7a8275d1c1c381a3e3fe9ea36b758e
+	source_x86_64 = https://github.com/cyanfish/naps2/releases/download/v7.1.1/naps2-7.1.1-linux-x64.deb
+	b2sums_x86_64 = 6bc6dd1cd42cf4fa89ca1caa7666a0d981d3cb28ad09deb5bab3805930fca72f1851a8bf906f0d3ca292f18aab23ccd7ff557d293cba02ad6910493870787453
 
 pkgname = naps2-bin
