@@ -1,6 +1,6 @@
 pkgbase = patat-bin
 	pkgdesc = Terminal-based presentations using Pandoc
-	pkgver = 0.9.0.0
+	pkgver = 0.10.0.0
 	pkgrel = 1
 	url = https://github.com/jaspervdj/patat
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = patat-bin
 	depends = gmp
 	depends = glibc
 	options = !strip
-	source = https://github.com/jaspervdj/patat/releases/download/v0.9.0.0/patat-v0.9.0.0-linux-x86_64.tar.gz
-	md5sums = 42ce3caa5e17be030ad2f86995d8f16e
+	source = https://github.com/jaspervdj/patat/releases/download/v0.10.0.0/patat-v0.10.0.0-linux-x86_64.tar.gz
+	md5sums = 256915425c73d50d5513d341218871dd
 
 pkgname = patat-bin
