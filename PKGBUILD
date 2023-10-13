@@ -2,8 +2,8 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=FMPy
 pkgname=python-${_base,,}
-_gitcommit=57c220b5456474ec8b689d3cefb2a240e6931cf5
-pkgver=0.3.17
+_gitcommit=ddd51e05b5b66d74c9b2d7b3a293e438195a9d19
+pkgver=0.3.18
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
