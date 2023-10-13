@@ -1,7 +1,7 @@
 # Maintainer: Grant G <grant@fig.io>
 
 pkgname='fig'
-pkgver='2.16.0'
+pkgver='2.17.0'
 pkgrel=1
 pkgdesc='Adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'ibus' 'xdg-utils')
 makedepends=('jq' 'xz')
 source=("${pkgname}-${pkgver//_/-}.tar.xz::https://repo.fig.io/generic/stable/asset/${pkgver//_/-}/x86_64/fig.tar.xz")
 
-sha256sums=('cfd49f0aa6fb2903be9050fc5c00d298592cb9886cf38b25827a963d2d4fc1c3')
+sha256sums=('26536b74a3e6e472925896508391ddfc46d6f4e7a8aa8f68c75901c68888f496')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/usr"
