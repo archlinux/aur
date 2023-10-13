@@ -7,7 +7,7 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.19.4
+pkgver=1.19.5
 pkgrel=1
 pkgdesc="Lightweight system monitor for X with lua and nvidia enabled"
 arch=('i686' 'x86_64')
@@ -17,18 +17,18 @@ replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
 depends=(
-  'glibc' 'glib2' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft' 'imlib2'
-  'libxml2' 'libpulse' 'libxnvctrl' 'systemd-libs' 'ncurses' 'curl'
-  libncursesw.so libXNVCtrl.so libsystemd.so libpulse.so libcurl.so
-)
+  'glibc' 'glib2' 'cairo' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft' 'imlib2'
+  'libxml2' 'ncurses' libncursesw.so 'libxnvctrl' libXNVCtrl.so 'systemd-libs' libsystemd.so
+  'libpulse' libpulse.so 'curl' libcurl.so 'fontconfig' 'gcc-libs' 'libx11' 'libxdamage'
+  'pango' 'wayland')
 makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2'
-             'pandoc' 'python-yaml' 'python-jinja')
+             'pandoc' 'python-yaml' 'python-jinja' 'wayland-protocols')
 optdepends=('nvidia: for NV11 and newer GPUs',
   'nvidia-470xx-dkms: for NVE0 (Maxwell) GPUs',
   'nvidia-390xx-dkms: for NVC0 and GF1XX (Fermi) GPUs'
   'nvidia-340xx-dkms: for NV40 and G70 (Curie) GPUs')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('c68439ad1204f96483d19b6377e3917c006de00d')
+sha1sums=('bfe8fe8196879183333d260d0c09c7d65a469733')
 install='conky-lua-nv.install'
 
 prepare() {
@@ -62,6 +62,7 @@ build() {
     -D BUILD_NVIDIA=ON \
     -D BUILD_PULSEAUDIO=ON \
     -D BUILD_JOURNAL=ON \
+    -D BUILD_WAYLAND=ON \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
     -S .
