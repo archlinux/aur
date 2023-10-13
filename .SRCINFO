@@ -1,0 +1,15 @@
+pkgbase = python-blp
+	pkgdesc = Pythonic interface for Bloomberg Open API
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/matthewgilbert/blp
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/blp/blp-0.0.2.tar.gz
+	sha256sums = 094c09b05fb006769f48309588f4200d593299b58566d03e6a188c16296cd98f
+
+pkgname = python-blp
