@@ -2,7 +2,7 @@
 pkgname=hugin-messenger
 _pkgname=hugin-desktop
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain."
 arch=('x86_64')
 url="https://hugin.chat/"
@@ -11,22 +11,24 @@ license=('GPL3')
 conflicts=("${pkgname}")
 depends=('libcups' 'libxfixes' 'at-spi2-core' 'libxrandr' 'alsa-lib' 'libxdamage' 'libxkbcommon' 'gtk3' 'libxcomposite' \
     'expat' 'gcc-libs' 'glib2' 'pango' 'libxcb' 'glibc' 'cairo' 'mesa' 'nss' 'libdrm' 'dbus' 'libxext' 'libx11' 'nspr')
-makedepends=('gendesk' 'npm')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e2f7b264b85122f1817462c055f8d13f1ef2081bd39dbe39106cb031149143cc')
+makedepends=('gendesk' 'npm>=8.11.0' 'nodejs>=16.16.0')
+source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip")
+sha256sums=('0ece1320b2ebd9eeb609badfd04f673275c9def2a06b9ad3178143ce45ff2819')
+prepare() {
+    gendesk -f -n -q --categories "Network" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
+}
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    npm ci
-    sed '30d' -i build.config.json
-    sed "s|snap|AppImage|g" -i build.config.json
+    sed -e '/"deb",/d' -e "s|snap|AppImage|g" -i build.config.json
+    npm install --quiet
+    chmod a+x node_modules/cross-env/src/bin/cross-env.js
     npm run build:linux-x64
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
-    cp -r "${srcdir}/${_pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    cp -r "${srcdir}/${_pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    gendesk -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
