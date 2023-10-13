@@ -296,7 +296,7 @@ build() {
     cp ../cvsdate.h ./
     cmake \
         -Bbuild-archlinux \
-        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
         -Dcurses_LIB="/usr/lib/libcursesw.so" \
         -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
         -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
