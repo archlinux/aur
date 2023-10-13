@@ -3,7 +3,7 @@
 # Contributor: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-mono
-pkgver=0.21.1011
+pkgver=0.21.1013
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("jackett.service"
 sha256sums=('c5605e488bb113452b0bd6e6a7420ea5be8ffd7807cc06cbb6eb6277937c7da8'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1'
-            '42b75a53cb5887021d6718678ae43b8acef060277c83b437959b41ce4bd1875f')
+            '7d3ebe1fb5dc31dec2631fc89e64bedbc8bcd81f07ab2495d5eccdbbb17d0a47')
 
 package() {
     cd "${srcdir}"
