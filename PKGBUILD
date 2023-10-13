@@ -4,7 +4,7 @@
 _name=ManimPango
 
 pkgname=python-manimpango
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="C binding for Pango using Cython used in Manim to render (non-LaTeX) text."
 
@@ -17,6 +17,8 @@ sha512sums=('edee75c06544399d52ffece6e3af643379cd6ca1a4ee3477594eae3e2f4c6c65c76
 
 depends=(
 	'cairo'
+	'fontconfig'
+	'glib'
 	'harfbuzz'
 	'pango'
 	'python'
