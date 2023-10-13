@@ -4,7 +4,7 @@
 pkgname=gtkcord4-bin
 _pkgname=gtkcord4
 pkgver=0.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord client written in go and gtk4 (binary version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/diamondburned/gtkcord4'
@@ -20,7 +20,7 @@ sha256sums_aarch64=('aafdc82a6fface2174e092790dc3c0979bef0fe40fcf3b53c940b1b6d85
 
 package() {
     install -Dm 755 "${srcdir}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm 644 "${srcdir}/share/applications/xyz.diamondb.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/so.libdb.${_pkgname}.desktop"
+    install -Dm 644 "${srcdir}/share/applications/so.libdb.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/so.libdb.${_pkgname}.desktop"
     sed -i "s/Chat;/Chat;InstantMessaging;/" "${pkgdir}/usr/share/applications/so.libdb.${_pkgname}.desktop"
     install -Dm 644 "${srcdir}/share/icons/hicolor/256x256/apps/${_pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.svg"
 }
