@@ -1,0 +1,14 @@
+pkgbase = translitrs-bin
+	pkgdesc = Transliteration utility for Serbian language
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/filiparag/translitRS
+	arch = x86_64
+	license = MIT
+	optdepends = pandoc
+	source = translitrs-bin-0.2.2.tar.gz::https://github.com/filiparag/translitRS/archive/0.2.2.tar.gz
+	source = translitrs-bin-0.2.2::https://github.com/filiparag/translitRS/releases/download/0.2.2/translitrs-0.2.2-gnu_linux-x86_64
+	sha256sums = 79f370acc1c2b0f18ab0e734a3addfbc369b8c663dbb087f5ba2e7d4909216be
+	sha256sums = 0fa152d0b28adb0d0dfeea9a70c171138c4df3c9967c884053a9ef085a59fb05
+
+pkgname = translitrs-bin
