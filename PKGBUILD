@@ -2,7 +2,7 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=caddy-naiveproxy-trojan
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc="Caddy web server with naiveproxy and trojan support"
 arch=('x86_64' 'aarch64')
