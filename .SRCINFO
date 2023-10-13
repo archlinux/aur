@@ -1,6 +1,6 @@
 pkgbase = ufrii-print
 	pkgdesc = Install the official Canon UFRII/UFRII LT driver made for Debian on ArchLinux
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://www.usa.canon.com/support/p/color-imageclass-mf644cdw
 	install = install.sh
@@ -10,8 +10,9 @@ pkgbase = ufrii-print
 	depends = gtk3
 	depends = libjpeg6-turbo
 	depends = libgcrypt
-	depends = libjbig-shared
+	depends = jbigkit
 	depends = zlib
-	depends = wget
+	source = https://gdlp01.c-wss.com/gds/6/0100009236/15/linux-UFRII-drv-v570-us-11.tar.gz
+	sha256sums = e5afaac96abfeb13b36311ee880dcf5942155e1877f9aa36cecca29647d9a232
 
 pkgname = ufrii-print
