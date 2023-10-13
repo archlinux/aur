@@ -9,11 +9,9 @@ pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
 url="https://zfsonlinux.org/"
 license=('CDDL')
-conflicts=('spl-dkms')
-provides=("ZFS-MODULE=${pkgver}" "SPL-MODULE=${pkgver}" 'spl-dkms')
+provides=("ZFS-MODULE=${pkgver}" "SPL-MODULE=${pkgver}")
 # ambiguous, provided for backwards compat, pls don't use
 provides+=('zfs')
-replaces=('spl-dkms')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "0001-only-build-the-module-in-dkms.conf.patch")
 sha256sums=('06b24cbb3cbc1554e2edf2fcd71d1f8bec4febf4412aeac17070877c44302abd'

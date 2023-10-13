@@ -7,10 +7,7 @@ pkgbase = zfs-dkms
 	license = CDDL
 	provides = ZFS-MODULE=2.1.13
 	provides = SPL-MODULE=2.1.13
-	provides = spl-dkms
 	provides = zfs
-	conflicts = spl-dkms
-	replaces = spl-dkms
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.13/zfs-2.1.13.tar.gz
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.13/zfs-2.1.13.tar.gz.asc
 	source = 0001-only-build-the-module-in-dkms.conf.patch
