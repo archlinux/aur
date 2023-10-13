@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pomotro
-_pkgname="${pkgname//p/P}"
+_pkgname=Pomotro
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Desktop Pomodoro Clock"
 arch=('x86_64')
 url="https://github.com/Ranork/Pomotro"
@@ -10,21 +10,23 @@ license=('GPL3')
 conflicts=("${pkgname}")
 depends=('bash' 'electron25')
 makedepends=('gendesk' 'nodejs' 'npm' 'yarn')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh")
-sha256sums=('ece2bec903b745285f459bf8a4a1d4a70af531e10bac7d8d50c6f9701724e0b8'
-            'fbb5b727c29434095c350c36a5a4b05f85a11a727b6857c6b35bc034885b72bd')
+sha256sums=('3cb020ca6153c904dd152478b26a62220dc8ed57cba5f242e0246685d0b24fca'
+            '0396669328b9559c7918b4341f34526b5d54bf5cb90b50a585f1f7a92cf6b430')
+prepare() {
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+}
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    yarn install
     sed "s|win32 --arch=x64|linux AppImage|g" -i package.json
+    yarn
     yarn build
-    asar pack "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}-linux-x64/resources/app" "${srcdir}/${pkgname}.asar"
+    asar p "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}-linux-x64/resources/app" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.asar" -t "${pkgdir}/opt/${pkgname}"
-    gendesk -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
