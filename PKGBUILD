@@ -2,7 +2,7 @@
 _gitfolder="picom"
 pkgname=picom-allusive
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Smooth animations picom fork, builds upon and cleans up picom-pijulius"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/picom-allusive"
@@ -15,7 +15,7 @@ optdepends=('dbus:          To control picom via D-Bus'
             'python:        For picom-convgen.py')
 provides=('compton' 'compton-git' 'picom' 'picom-git')
 conflicts=('compton' 'compton-git' 'picom' 'picom-git')
-source=("${_gitfolder}::git+https://github.com/allusive-dev/picom-allusive.git")
+source=("${_gitfolder}::git+https://github.com/allusive-dev/picom-allusive.git#tag=${pkgver}")
 md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_gitfolder}"
