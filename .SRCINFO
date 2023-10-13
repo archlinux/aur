@@ -1,0 +1,17 @@
+pkgbase = vot-cli-git
+	pkgdesc = The voice-over translation of the video is now available not only in YandexBrowser.
+	pkgver = 1.1.1.r2.g479330d
+	pkgrel = 1
+	url = https://github.com/FOSWLY/vot-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=17
+	provides = vot-cli
+	conflicts = vot-cli
+	source = git+https://github.com/FOSWLY/vot-cli.git
+	b2sums = SKIP
+
+pkgname = vot-cli-git
