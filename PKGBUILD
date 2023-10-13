@@ -3,39 +3,33 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu-git
-pkgver=3.2.0.r1.gf50ffbe
+pkgver=3.3.0.r4.g8bcf47f
 pkgrel=2
 pkgdesc="ncurses interface for QEMU"
 arch=(x86_64)
 url="https://github.com/nemuTUI/nemu"
 license=(BSD)
-depends=(qemu ncurses sqlite udev libusb libarchive)
+depends=(qemu ncurses sqlite json-c libxml2 libarchive glibc sh)
 makedepends=(git cmake)
 provides=(nemu)
 conflicts=(nemu)
 source=("git+https://github.com/nemuTUI/nemu.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd nemu
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd nemu
-  [[ -d build ]] || mkdir build
-}
-
 build() {
-  cd nemu/build
-  cmake .. \
+  cmake -B build -S "nemu" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+
+  cmake --build build
 }
 
 package() {
-  cd nemu/build
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 nemu/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
