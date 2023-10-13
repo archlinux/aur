@@ -1,0 +1,4 @@
+helm
+src
+pkg
+helm-synth*git-*.pkg.tar.*

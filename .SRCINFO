@@ -1,0 +1,92 @@
+pkgbase = helm-synth-git
+	pkgdesc = A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version)
+	pkgver = v0.9.0.r21.gabdedd52
+	pkgrel = 1
+	url = https://tytel.org/helm/
+	arch = x86_64
+	license = GPL3
+	makedepends = alsa-lib
+	makedepends = freetype2
+	makedepends = git
+	makedepends = hicolor-icon-theme
+	makedepends = jack
+	makedepends = libxcursor
+	makedepends = libglvnd
+	makedepends = libx11
+	makedepends = libxext
+	makedepends = libxinerama
+	makedepends = lv2
+	source = helm::git+https://github.com/mtytel/helm.git
+	source = helm-synth-gcc91.patch
+	source = helm-synth-0.9.0-rename_helm-synth.patch
+	sha256sums = SKIP
+	sha256sums = 8a7e45210cef0af82cf8fa857c2219ab8c6e1eb3279ac0f7bc6e7c3546418f08
+	sha256sums = 4f41a6616720fd9665a511c016ac9b683c721fa77226721ddd2bec35fadc16a1
+
+pkgname = helm-synth-git
+	depends = helm-synth-lv2-git=v0.9.0.r21.gabdedd52
+	depends = helm-synth-standalone-git=v0.9.0.r21.gabdedd52
+	depends = helm-synth-vst-git=v0.9.0.r21.gabdedd52
+	provides = helm-synth
+	conflicts = helm-synth
+
+pkgname = helm-synth-common-git
+	pkgdesc = A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version) - common files
+	provides = helm-synth-common
+	conflicts = helm-synth-common
+
+pkgname = helm-synth-lv2-git
+	pkgdesc = A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version) - LV2 plugin
+	groups = pro-audio
+	groups = lv2-plugins
+	depends = alsa-lib
+	depends = libasound.so
+	depends = freetype2
+	depends = libfreetype.so
+	depends = gcc-libs
+	depends = glibc
+	depends = helm-synth-common
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	depends = lv2-host
+	provides = helm-synth-lv2
+	conflicts = helm-synth-lv2
+
+pkgname = helm-synth-standalone-git
+	pkgdesc = A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version) - standalone
+	groups = pro-audio
+	depends = alsa-lib
+	depends = libasound.so
+	depends = freetype2
+	depends = libfreetype.so
+	depends = gcc-libs
+	depends = glibc
+	depends = helm-synth-common
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	provides = helm-synth-standalone
+	conflicts = helm-synth-standalone
+
+pkgname = helm-synth-vst-git
+	pkgdesc = A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version) - VST plugin
+	groups = pro-audio
+	groups = vst-plugins
+	depends = alsa-lib
+	depends = libasound.so
+	depends = freetype2
+	depends = libfreetype.so
+	depends = gcc-libs
+	depends = glibc
+	depends = helm-synth-common
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	depends = vst-host
+	provides = helm-synth-vst
+	conflicts = helm-synth-vst
