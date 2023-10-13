@@ -1,7 +1,7 @@
 pkgbase = bear-graph
 	pkgdesc = Graph view of notes from Bear.app
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chuckleroot/bear-graph
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = bear-graph
 	source = bear-graph-1.0.0.tar.gz::https://github.com/Chuckleroot/bear-graph/archive/refs/tags/v1.0.0.tar.gz
 	source = bear-graph.sh
 	sha256sums = cae1864427aaa86cc378cb7700c1a5a1643bda4575a34aef5ceff096e6cff2be
-	sha256sums = 1c378a0a2292e0bf5395cb605e6089990c36790b895a2f2033eddcdc93d8bd85
+	sha256sums = 3c36eb57194e278f61fcc5e589f45f46b8debfde996cad43d676302621f7c6c5
 
 pkgname = bear-graph
