@@ -64,9 +64,9 @@ prepare() {
 }
 
 pkgver() {
-    pushd "$pkgname"
+    cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    popd
+    cd ..
 }
 
 package() {
