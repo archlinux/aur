@@ -32,6 +32,7 @@ arch=('i686' 'x86_64')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky')
+epoch=1
 
 ## nvidia requirements - comment for non-nvidia
 depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' )
