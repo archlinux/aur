@@ -1,20 +1,17 @@
 #Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 
 pkgname=moar-bin
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
 url='https://github.com/walles/moar'
 license=(BSD)
-optdepends=("highlight: source code syntax highlighter")
-conflicts=(moar)
-provides=(moar)
 source=("${pkgname%-bin}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386"
         "${pkgname%-bin}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
 noextract=(${pkgname%-bin}-${pkgver}.tar.gz)
-sha256sums=('8d154d5835de3aeb63280557e254f68d6058b4da6bd083ddb407a96bb6e97884'
-            '56f381bfa113333a28aad6cdb40bf2c81b99338b6806d3ab1039b17df4a676f3')
+sha256sums=('327f6d514d3d51ed8e04df7c7b2caee59d12d6fb0a002fdc28a695d193dfb89e'
+            'ba3840b57536fc39ada112836179d3c6c6aa7208e8805f5db2bdc59bf69a899a')
 
 prepare() {
 
