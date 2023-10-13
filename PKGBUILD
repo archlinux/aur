@@ -2,7 +2,7 @@
 
 pkgname=resources
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor your system resources and processes"
 url="https://github.com/nokyan/resources"
 arch=('x86_64')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson $pkgname build
   meson compile -C build
 }
