@@ -22,6 +22,8 @@ depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss 
 makedepends=('sed' 'xz')
 optdepends=(
 	'alsa-lib: ALSA support'
+	'dbus-glib: D-Bus support for systemd'
+	'elogind: D-Bus support for non-systemd'
 	'freealut: OpenAL support'
 	'gamemode: Gamemode support'
 	'lib32-libidn11: SLVoice support'
