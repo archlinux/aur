@@ -9,7 +9,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r2002.37e0f8a4
+pkgver=r6359.d19527646
 pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
@@ -17,34 +17,36 @@ arch=('any')
 url="https://github.com/google/fonts"
 license=('custom:SIL Open Font License' 'custom:Ubuntu Font License v1.0')
 
-depends=('noto-fonts'
+depends=('adobe-source-code-pro-fonts'
+         'adobe-source-sans-fonts'
+         'adobe-source-serif-fonts'
+         'cantarell-fonts'
+         'noto-fonts'
          'noto-fonts-extra'
+         'ttf-anonymous-pro'
+         'ttf-caladea'
+         'ttf-croscore'
          'ttf-fira-sans'
          'ttf-fira-mono'
-         'ttf-ubuntu-font-family'
-         'ttf-croscore'
-         'ttf-roboto'
          'ttf-inconsolata'
-         'cantarell-fonts'
+         'ttf-lato'
          'ttf-merriweather'
          'ttf-merriweather-sans'
          'ttf-opensans'
          'ttf-oswald'
          'ttf-quintessential'
-         'ttf-signika')
+         'ttf-roboto'
+         'ttf-roboto-mono'
+         'ttf-signika'
+         'ttf-ubuntu-font-family')
 makedepends=('git' 'fontconfig')
-conflicts=('adobe-source-code-pro-fonts'
-           'adobe-source-sans-pro-fonts'
-           'jsmath-fonts'
+conflicts=('jsmath-fonts'
            'lohit-fonts'
            'ttf-andika'
-           'ttf-anonymous-pro'
            'ttf-arabeyes-fonts'
-           'ttf-caladea'
            'ttf-cardo'
            'ttf-comfortaa'
            'ttf-google-fonts-typewolf'
-           'ttf-lato'
            'ttf-lora-cyrillic'
            'ttf-lekton'
            'ttf-medievalsharp'
@@ -52,20 +54,15 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-oxygen'
            'ttf-oxygen-git'
            'ttf-pt-fonts'
-           'ttf-roboto-mono'
            'ttf-source-code-pro-ibx'
            'ttf-source-sans-pro-ibx'
            'ttf-vollkorn-ibx')
-provides=('adobe-source-code-pro-fonts'
-          'adobe-source-sans-pro-fonts'
-          'jsmath-fonts'
+provides=('jsmath-fonts'
           'lohit-fonts'
           'ttf-andika'
-          'ttf-anonymous-pro'
-          'ttf-caladea'
           'ttf-cardo'
+          'ttf-carlito'
           'ttf-comfortaa'
-          'ttf-lato'
           'ttf-lora-cyrillic'
           'ttf-lekton'
           'ttf-medievalsharp'
@@ -95,13 +92,33 @@ prepare() {
 }
 
 package() {
-  # NOTE: These are the font families that already exist in the [extra] and [community] repos.
-  declare -A omitted_font_families=([cantarell]=1 [noto-sans-tamil]=1 [noto-serif]=1
-                                    [noto-sans]=1 [fira-sans]=1 [fira-mono]=1
-                                    [ubuntu]=1 [ubuntu-mono]=1 [tinos]=1 [arimo]=1
-                                    [cousine]=1 [roboto]=1 [roboto-condensed]=1
-                                    [inconsolata]=1 [merriweather]=1 [merriweather-sans]=1
-                                    [open-sans]=1 [oswald]=1 [quintessential]=1)
+  # NOTE: These are the font families that already exist in the [extra] repo.
+  declare -A omitted_font_families=([anonymous-pro]=1
+                                    [arimo]=1
+                                    [caladea]=1
+                                    [cantarell]=1
+                                    [cousine]=1
+                                    [fira-sans]=1
+                                    [fira-mono]=1
+                                    [inconsolata]=1
+                                    [merriweather]=1
+                                    [merriweather-sans]=1
+                                    [noto-sans]=1
+                                    [noto-serif]=1
+                                    [noto-sans-tamil]=1
+                                    [open-sans]=1
+                                    [oswald]=1
+                                    [quintessential]=1
+                                    [roboto]=1
+                                    [roboto-condensed]=1
+                                    [roboto-mono]=1
+                                    [source-sans-3]=1
+                                    [source-sans-pro]=1
+                                    [source-serif-4]=1
+                                    [source-serif-pro]=1
+                                    [tinos]=1
+                                    [ubuntu]=1
+                                    [ubuntu-mono]=1)
 
 
   while IFS= read -rd '' file; do
