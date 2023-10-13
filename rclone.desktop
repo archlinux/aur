@@ -8,4 +8,4 @@ Exec=/bin/bash -c "killall rclone ; rclone rcd --rc-web-gui ; /usr/bin/xdg-open 
 Icon=/usr/share/pixmaps/rclone.svg
 Terminal=false
 StartupNotify=false
-Comment=Syncthing Web Interface
+Comment=Rclone Web Interface

@@ -2,7 +2,7 @@
 
 pkgname=rclone-appmenu
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds Rclone Web UI to applications menu'
 arch=('any')
 url="https://rclone.org/gui/"
@@ -14,7 +14,7 @@ source=(
 	'rclone.svg'
 )
 
-sha256sums=('930eaae0104027d09e0608bb7b28392c3d711d30f4c2279b0714708c6443922c'
+sha256sums=('152106dfade98291bfd2dba32994ace35f7df55f0c61ebcd449449aeb9b94e08'
             '47d748b825bd9c03ddb9a7f22283a5a552af1874a45ab0484c8be36c9eabd26e')
 
 package() {
