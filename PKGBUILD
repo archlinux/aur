@@ -15,7 +15,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=0.3.80.50.g4be0c5f36
+pkgver=0.3.82.7.g11320cf20
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -96,7 +96,8 @@ build() {
     -D rlimits-install=false \
     -D session-managers=[] \
     -D bluez5-codec-lc3plus=disabled \
-    -D volume=enabled
+    -D volume=enabled \
+    -D selinux=disabled
 
   meson compile -C build
 }
@@ -256,7 +257,7 @@ package_pipewire-git() {
 }
 
 package_libpipewire-git() {
-  pkgdesc+=" - client library (GIT Version)"
+  pkgdesc+=" - client library"
   depends=(
     'gcc-libs'
     'glibc'
@@ -270,7 +271,7 @@ package_libpipewire-git() {
 }
 
 package_pipewire-docs-git() {
-  pkgdesc+=" - documentation (GIT Version)"
+  pkgdesc+=" - documentation"
   provides=("pipewire-docs=${pkgver}")
   conflicts=('pipewire-docs')
   arch=('any')
@@ -281,7 +282,7 @@ package_pipewire-docs-git() {
 }
 
 package_pipewire-audio-git() {
-  pkgdesc+=" - Audio support (GIT Version)"
+  pkgdesc+=" - Audio support"
   depends=(
     "pipewire-git=${pkgver}"
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
@@ -326,7 +327,7 @@ package_pipewire-audio-git() {
 }
 
 package_pipewire-alsa-git() {
-  pkgdesc+=" - ALSA configuration (GIT version)"
+  pkgdesc+=" - ALSA configuration"
   depends=(
     "pipewire-git=${pkgver}"
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
@@ -362,7 +363,7 @@ package_pipewire-alsa-git() {
 }
 
 package_pipewire-ffado-git() {
-  pkgdesc+=" - FireWire support (GIT version)"
+  pkgdesc+=" - FireWire support"
   depends=(
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-git=${pkgver}"
@@ -377,7 +378,7 @@ package_pipewire-ffado-git() {
 }
 
 package_pipewire-jack-git() {
-  pkgdesc+=" - JACK support (GIT version)"
+  pkgdesc+=" - JACK support"
   license+=('GPL2')  # libjackserver
   depends=(
     "pipewire-git=${pkgver}"
@@ -415,7 +416,7 @@ package_pipewire-jack-git() {
 }
 
 package_pipewire-pulse-git() {
-  pkgdesc+=" - PulseAudio replacement (GIT version)"
+  pkgdesc+=" - PulseAudio replacement"
   depends=(
     "pipewire-git=${pkgver}"
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
@@ -458,7 +459,7 @@ package_pipewire-pulse-git() {
 }
 
 package_pipewire-roc-git() {
-  pkgdesc+=" - ROC support (GIT version)"
+  pkgdesc+=" - ROC support"
   depends=(
     "pipewire-git=${pkgver}"
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
@@ -478,7 +479,7 @@ package_pipewire-roc-git() {
 }
 
 package_pipewire-v4l2-git() {
-  pkgdesc+=" - V4L2 interceptor (GIT version)"
+  pkgdesc+=" - V4L2 interceptor"
   depends=(
     "pipewire-git=${pkgver}"
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
@@ -496,7 +497,7 @@ package_pipewire-v4l2-git() {
 }
 
 package_pipewire-x11-bell-git() {
-  pkgdesc+=" - X11 bell (GIT version)"
+  pkgdesc+=" - X11 bell"
   depends=(
     "pipewire-git=${pkgver}"
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
@@ -517,7 +518,7 @@ package_pipewire-x11-bell-git() {
 }
 
 package_pipewire-zeroconf-git() {
-  pkgdesc+=" - Zeroconf support (GIT version)"
+  pkgdesc+=" - Zeroconf support"
   depends=(
     "pipewire-git=${pkgver}"
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
