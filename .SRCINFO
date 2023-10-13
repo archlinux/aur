@@ -1,7 +1,7 @@
 pkgbase = kdeconnect
 	pkgdesc = Adds communication between KDE and your smartphone
 	pkgver = 23.08.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kdeconnect.kde.org/
 	arch = x86_64
 	groups = kde-applications
@@ -16,7 +16,7 @@ pkgbase = kdeconnect
 	depends = kpeoplevcard
 	depends = pulseaudio-qt
 	depends = qqc2-desktop-style5
-	depends = kirigami-addons
+	depends = kirigami-addons5
 	depends = modemmanager-qt5
 	optdepends = sshfs: remote filesystem browser
 	optdepends = python-nautilus: Nautilus integration
