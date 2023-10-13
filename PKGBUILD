@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=waypaper-git
-pkgver=1.2.r5.ga4e2c6e
+pkgver=2.0.r5.g9ff12ac
 pkgrel=1
 pkgdesc='GUI wallpaper setter for both Wayland and X11 window managers that works as a frontend for popular backends like swaybg, swww, and feh.'
 arch=('any')
@@ -12,10 +12,11 @@ depends=('gtk3' 'gdk-pixbuf2' 'python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('swaybg: the wayland backend that supports only static images'
             'swww: the wayland backend that supports animated GIFs'
-            'feh: the x11 backend that supports static images')
+            'feh: the x11 backend that supports static images'
+            'wallutils: another x11 backend')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git+$url.git")
+source=("${pkgname%-*}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -31,4 +32,6 @@ build() {
 package() {
   cd "${pkgname%-*}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "data/${pkgname%-*}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-*}.desktop"
+  install -Dm644 "data/${pkgname%-*}.svg" "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-*}.svg"
 }
