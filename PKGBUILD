@@ -1,9 +1,9 @@
 # Maintainer: PatzminiHD <7.0@gmx.at>
 pkgname=bbprog-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.1
-pkgrel=3
-pkgdesc="Backup a List of locations using rsync"
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Backup a list of entries using rsync or borg"
 arch=('x86_64')
 url="https://github.com/PatzminiHD/bbprog"
 license=('GPL3')
@@ -11,6 +11,7 @@ depends=(
     "icu"
     "zlib"
     "rsync"
+    "borg"
 )
 makedepends=(
     "git"
