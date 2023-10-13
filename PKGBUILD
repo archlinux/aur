@@ -137,9 +137,10 @@ build() {
     CMAKE_CXX_COMPILER_LAUNCHER="$(which ccache)"
     export CMAKE_CXX_COMPILER_LAUNCHER
   fi
-  $prefix_cmd autobuild configure -A 64 -c ReleaseOS -- "${AL_CMAKE_CONFIG[@]}"
+  _logfile="${srcdir}/build.${CARCH}.$(date +%s).log"
+  $prefix_cmd autobuild configure -A 64 -c ReleaseOS -- "${AL_CMAKE_CONFIG[@]}" | tee "$_logfile" 2>&1
   echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
-  $prefix_cmd autobuild build -A64 -c ReleaseOS --no-configure
+  $prefix_cmd autobuild build -A64 -c ReleaseOS --no-configure | tee --append "${srcdir}/build.${CARCH}.$(date +%s).log" 2>&1
 }
 
 package() {
