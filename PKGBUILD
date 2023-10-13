@@ -2,13 +2,21 @@
 # Removes limitation introduced in: https://gitlab.gnome.org/GNOME/vte/-/commit/caf8a6a7a17a3f70fa5fc611c71ffb27a5cfee75
 
 pkgname=vte3-selectall
-pkgver=0.72.2
+pkgver=0.74.0
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget (plus select-all patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64)
 license=(LGPL)
-depends=(gtk3 pcre2 gnutls fribidi systemd  vte-common)
+depends=(
+    cairo
+    fribidi
+    gnutls
+    gtk3
+    pcre2
+    systemd
+    vte-common
+)
 makedepends=(gobject-introspection vala git gtk-doc gperf meson gi-docgen)
 source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
   select-all.diff)
@@ -25,7 +33,12 @@ prepare() {
 }
 
 build() {
-  arch-meson vte build -D docs=true -D b_lto=false
+  local meson_options=(
+    -D b_lto=false
+    -D docs=true
+  )
+
+  arch-meson vte build "${meson_options[@]}"
   meson compile -C build
 }
 
