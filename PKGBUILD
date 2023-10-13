@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.4.0.0.r17787
+pkgver=3.4.0.0.r18023
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
 arch=('x86_64')
@@ -54,21 +54,29 @@ prepare() {
 #  conan config set storage.download_cache="$CONAN_USER_HOME/download_cache"
 #Let's not remove it every time, it's a pain building them.
 #  conan remove "*" --src --builds --force
+## libjpeg frm conan peeks at system libtiff. Temporarily using the system version below.
+
 
   cmake -G "Unix Makefiles" ../audacity \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Daudacity_use_ffmpeg=loaded 
+        -DAUDACITY_BUILD_LEVEL=2 \
+        -Daudacity_has_vst3=off \
+        -Daudacity_use_jpeg=system \
+        -Daudacity_has_networking=off \
+        -Daudacity_lib_preference=system \
+        -Daudacity_use_expat=system \
+        -Daudacity_use_ffmpeg=loaded \
+        -Daudacity_use_zlib=system \
+        -Daudacity_use_curl=system \
+        -Daudacity_use_midi=local \
+        -Daudacity_use_wxwidgets=local 
+
+
+# Old build style....
+#        -Daudacity_use_portaudio=local \
+#        -Daudacity_use_ffmpeg=loaded 
 #	-Daudacity_use_vst3sdk=system
-#        -Daudacity_has_vst3=Off \
-#        -DAUDACITY_BUILD_LEVEL=2 \
-#        -Daudacity_has_networking=off \
-#        -Daudacity_lib_preference=system local \
-#        -Daudacity_use_expat=system \
-#        -Daudacity_use_zlib=system \
-#        -Daudacity_use_curl=system \
-#        -Daudacity_use_portmidi=local \
-#        -Daudacity_use_wxwidgets=local \
 
 }
 
