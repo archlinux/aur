@@ -9,7 +9,7 @@ url="https://github.com/WhiteMinds/LiveAutoRecord"
 license=('LGPL3')
 conflicts=("${pkgname}")
 depends=('bash' 'electron20')
-makedepends=('gendesk' 'nodejs>=16.20.1' 'npm>=8.19.4' 'yarn' 'asar')
+makedepends=('gendesk' 'nodejs>=16.20.1' 'npm>=8.19.4' 'yarn')
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname%-bin}.sh")
 sha256sums=('5735afafaa1decd62301608d6546dd702b63641775fb839232e191a62fc411b4'

@@ -9,7 +9,6 @@ pkgbase = autorecord-manager
 	makedepends = nodejs>=16.20.1
 	makedepends = npm>=8.19.4
 	makedepends = yarn
-	makedepends = asar
 	depends = bash
 	depends = electron20
 	conflicts = autorecord-manager
