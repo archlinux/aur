@@ -1,7 +1,7 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
 	pkgver = 19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openmsx.org/
 	install = openmsx.install
 	arch = i686
