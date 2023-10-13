@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=MatchIt
-_pkgver=4.5.4
+_pkgver=4.5.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,6 +26,7 @@ optdepends=(
   r-gbm
   r-glmnet
   r-gurobi
+  r-highs
   r-knitr
   r-marginaleffects
   r-matching
@@ -38,10 +39,11 @@ optdepends=(
   r-rmarkdown
   r-rsymphony
   r-sandwich
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aed964f649879453bfcb7d45b837e2a5')
-sha256sums=('9b9d935042118115aa14536a60b6a28eb92aa29326315aa65952b976fbfc1a9e')
+md5sums=('868543cc83c7567510e676e52daf3819')
+sha256sums=('ae39cafdd3a52487e3ebff1b49642f516cf64321fea90fa57ce3d545a259859e')
 
 build() {
   mkdir -p build
