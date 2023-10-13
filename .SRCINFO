@@ -1,7 +1,7 @@
 pkgbase = helm-synth-git
 	pkgdesc = A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version)
 	pkgver = v0.9.0.r21.gabdedd52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tytel.org/helm/
 	arch = x86_64
 	license = GPL3
@@ -32,7 +32,7 @@ pkgname = helm-synth-git
 
 pkgname = helm-synth-common-git
 	pkgdesc = A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version) - common files
-	provides = helm-synth-common
+	provides = helm-synth-common=v0.9.0.r21.gabdedd52
 	conflicts = helm-synth-common
 
 pkgname = helm-synth-lv2-git
@@ -45,7 +45,7 @@ pkgname = helm-synth-lv2-git
 	depends = libfreetype.so
 	depends = gcc-libs
 	depends = glibc
-	depends = helm-synth-common
+	depends = helm-synth-common=v0.9.0.r21.gabdedd52
 	depends = libglvnd
 	depends = libx11
 	depends = libxext
@@ -63,7 +63,7 @@ pkgname = helm-synth-standalone-git
 	depends = libfreetype.so
 	depends = gcc-libs
 	depends = glibc
-	depends = helm-synth-common
+	depends = helm-synth-common=v0.9.0.r21.gabdedd52
 	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = libx11
@@ -82,7 +82,7 @@ pkgname = helm-synth-vst-git
 	depends = libfreetype.so
 	depends = gcc-libs
 	depends = glibc
-	depends = helm-synth-common
+	depends = helm-synth-common=v0.9.0.r21.gabdedd52
 	depends = libglvnd
 	depends = libx11
 	depends = libxext

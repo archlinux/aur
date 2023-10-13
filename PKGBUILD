@@ -5,7 +5,7 @@ _pkgname=$_name-synth
 pkgbase=helm-synth-git
 pkgname=(helm-synth{,-common,-lv2,-standalone,-vst}-git)
 pkgver=v0.9.0.r21.gabdedd52
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual analog poly synth LV2 and VST2 plugin and standalone application (git version)"
 arch=(x86_64)
 url="https://tytel.org/helm/"
@@ -112,7 +112,7 @@ package_helm-synth-git() {
 
 package_helm-synth-common-git() {
   pkgdesc+=" - common files"
-  provides=($_pkgname-common)
+  provides=($_pkgname-common=$pkgver)
   conflicts=($_pkgname-common)
 
   mv -v $_pkgname-common-git/* "$pkgdir"
@@ -130,7 +130,7 @@ package_helm-synth-lv2-git() {
     freetype2 libfreetype.so
     gcc-libs
     glibc
-    helm-synth-common
+    helm-synth-common=$pkgver
     libglvnd
     libx11
     libxext
@@ -153,7 +153,7 @@ package_helm-synth-standalone-git() {
     freetype2 libfreetype.so
     gcc-libs
     glibc
-    helm-synth-common
+    helm-synth-common=$pkgver
     hicolor-icon-theme
     libglvnd
     libx11
@@ -177,7 +177,7 @@ package_helm-synth-vst-git() {
     freetype2 libfreetype.so
     gcc-libs
     glibc
-    helm-synth-common
+    helm-synth-common=$pkgver
     libglvnd
     libx11
     libxext
