@@ -1,7 +1,7 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 
 pkgname=mosdns-git
-pkgver=r793.5191aae
+pkgver=r796.2b15f81
 pkgrel=1
 pkgdesc="A DNS forwarder"
 arch=('x86_64')
