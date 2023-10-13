@@ -4,7 +4,7 @@
 
 pkgname=pkgtop
 pkgdesc="Interactive package manager & resource monitor"
-pkgver=2.4.1
+pkgver=2.5.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/orhun/pkgtop"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('8f17780a16584216b434fc6bd37cb8422bf1d1d34ce4b6433bc469987199f4743a9a4a9368aa65db6ec6bc98d30291193be5d92954cf0d758576fc1d8ce501e2')
+sha512sums=('96cdb85688e91e3d1b65c165450a5d148ffb26fe84f75c9759b13b5c2dc26b4a1f9d32c9a14e14299be01e71518988b50ec78cc50b5a35cf579da8e046360046')
 
 build() {
   cd "$pkgname-$pkgver/cmd"
