@@ -3,7 +3,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=openage-git
-pkgver=0.5.0.r0.g7fe57bd71
+pkgver=0.5.1.r9.g401f6a03d
 pkgrel=2
 pkgdesc="A free (as in freedom) clone of the Age of Empires II engine"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
@@ -26,16 +26,24 @@ source=("git+https://github.com/SFTtech/openage.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd openage
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cmake -B build -S "openage" -Wno-dev \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=ON
 
   cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
+
+  cd build
+  ./run.py test --run-all-tests
 }
 
 package() {
