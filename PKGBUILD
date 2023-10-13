@@ -12,17 +12,13 @@ source=("https://github.com/ros-drivers/ackermann_msgs/archive/refs/tags/${pkgve
 sha256sums=('26321df1bc2855adbcefac0a32091ce843271d93791fceff914a3f4c7b06d269')
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S ackermann_msgs-$pkgver -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    colcon build --cmake-args -Wno-dev
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    mkdir -p $pkgdir/opt/ros/humble
+    cp -r $srcdir/install/* $pkgdir/opt/ros/humble
 }
