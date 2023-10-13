@@ -1,0 +1,19 @@
+pkgbase = mapton-latest-bin
+	pkgdesc = Some kind of map application
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/trixon/mapton
+	arch = x86_64
+	license = Apache
+	provides = mapton
+	conflicts = mapton
+	options = !strip
+	options = !debug
+	source = https://github.com/trixon/mapton/releases/download/v3.1.0/mapton-3.1.0-linux.zip
+	source = mapton.desktop
+	source = mapton.png
+	sha256sums = c9633eb261bede1319b6e754fbcdbffd0224b2b4771d4a57d6427b208bd3e185
+	sha256sums = 3cd90ba12fb57b35a577fec6509916bd8480911c46de591316158e78de828478
+	sha256sums = 5d29c2dd3d9d0aae01154de243f11c73cbb1a2d4793164ed9d41c9dda646eaa5
+
+pkgname = mapton-latest-bin

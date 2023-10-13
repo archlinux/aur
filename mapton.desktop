@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Mapton
+Comment=Some kind of map application
+Exec=mapton %F
+Icon=mapton
+Terminal=false
+Categories=Education;
+StartupNotify=true
+StartupWMClass=Mapton
