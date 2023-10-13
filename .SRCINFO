@@ -1,7 +1,7 @@
 pkgbase = screen-recorder-app
 	pkgdesc = A small video recorder application, built with Electron and tailwindcss.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/petya0927/screen-recorder-app
 	arch = x86_64
 	license = MIT
