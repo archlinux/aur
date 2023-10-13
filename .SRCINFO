@@ -1,13 +1,13 @@
 pkgbase = ttf-roboto-slab-variable
 	pkgdesc = Roboto Slab is a slab serif addition to the Roboto type family.
 	pkgver = 2.002
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/fonts/specimen/Roboto+Slab
 	arch = any
 	license = Apache
-	source = ttf-roboto-slab-variable-2.002-1-LICENSE.txt::https://raw.github.com/googlefonts/robotoslab/56bcfeddeae694babdb34c19ebe3956b17829699/LICENSE.txt
-	source = https://raw.github.com/googlefonts/robotoslab/56bcfeddeae694babdb34c19ebe3956b17829699/fonts/variable/RobotoSlab[wght].ttf
+	source = ttf-roboto-slab-variable-2.002-2-LICENSE.txt::https://raw.github.com/googlefonts/robotoslab/1be6141f85b68b48c06ccac50d234302d6e59643/LICENSE.txt
+	source = https://raw.github.com/googlefonts/robotoslab/1be6141f85b68b48c06ccac50d234302d6e59643/fonts/variable/RobotoSlab[wght].ttf
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	sha256sums = 18137628b2731ac8d093c552b3a71abfc958bdb132ecf29a71614309c82836d9
+	sha256sums = 786ae192477447d33c6672c3055fba7cbfe45184c9a79e77a14f15716ca05b16
 
 pkgname = ttf-roboto-slab-variable
