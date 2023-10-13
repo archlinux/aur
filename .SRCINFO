@@ -12,7 +12,7 @@ pkgbase = ayatana-indicator-display
 	makedepends = cmake-extras
 	makedepends = systemd
 	depends = xsct
-	depends = libayatana-common>=0.9.9
+	depends = libayatana-common>=0.9.8
 	depends = geoclue
 	depends = hicolor-icon-theme
 	depends = glib2
