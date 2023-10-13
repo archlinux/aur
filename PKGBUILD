@@ -5,7 +5,7 @@
 pkgname=pkgtop
 pkgdesc="Interactive package manager & resource monitor"
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/orhun/pkgtop"
 license=('GPL3')
