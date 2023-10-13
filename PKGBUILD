@@ -12,7 +12,7 @@ makedepends=('gendesk' 'yarn' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
 sha256sums=('964320fde15be102235feac8e2e1bab115e8fcfe8245645d5411dac114446f27'
-            '000a01f03b4c094ac44e85b1a0301538db831f1a4ae6ec8a0d9f86efd19c3903')
+            '2d6f5f8f18426ce969673d3ab6422da092044974294d9e347284a11adf2be6db')
 prepare() {
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
 }
