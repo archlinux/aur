@@ -3,7 +3,7 @@
 pkgname=telegram-a
 realname=telegram-tt
 pkgver=10.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Telegram Web client version A system Electron version"
 arch=('any')
 url="https://web.telegram.org/a/get/"
@@ -22,7 +22,7 @@ source=("https://github.com/Ajaxy/${realname}/archive/v${pkgver}.tar.gz"
 sha256sums=('19495e827e22680c87367718fb37f67cd14af0794d420678b7890bb0d10ee523'
                 'f90da929a33048561899c8774969e6a1012dcbf679e0082c835783278b41b780'
                 'de086bb54da308478eadb00680e6feec6c50b80283a2dd7c1f67132c11e3a216'
-                'f5be452e2baa2a6508080b292f0341f3a36c9a6ca6633666d313cef64193d86d'
+                '7b40d89c682a491507f81e43adfc2793bedd65862017975c182380301455007d'
                 'be1ec2ce92c6017e55ea79254502e34bf744fdeccd8952bce9eb69d0a7ee231a'
                 'ecd8513d233fa5da2925ef68a97cd03ddcea81c2a050576e64dcfa8f177aea0b'
                 '00f7cf0019c84fbd0da5014fdf3cc6eba35cbed2a3574951bbe57e9fd0ecbcd9'
@@ -36,6 +36,8 @@ prepare() {
     patch -Np1 -i "${srcdir}/set_custom_window_title_from_env.patch"
     patch -Np1 -i "${srcdir}/disable_statoscope.patch"
     patch -Np1 -i "${srcdir}/run_husky_install_only_in_git.patch"
+
+    rm -rf "${srcdir}/${realname}-${pkgver}/dist"
 }
 
 build() {
@@ -49,10 +51,10 @@ build() {
     export TELEGRAM_API_HASH=d524b414d21f4d37f08684c1df41ac9c
 
     npm ci
-    yarn webpack
+    yarn webpack && bash ./deploy/copy_to_dist.sh
     yarn electron-builder install-app-deps
     yarn webpack --config ./webpack-electron.config.ts
-    yarn electron-builder build --linux --config "${srcdir}/electron-builder.yml" -p always
+    yarn electron-builder build --linux --config "${srcdir}/electron-builder.yml"
 }
 
 package() {

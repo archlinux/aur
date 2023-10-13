@@ -1,7 +1,7 @@
 pkgbase = telegram-a
 	pkgdesc = Official Telegram Web client version A system Electron version
 	pkgver = 10.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://web.telegram.org/a/get/
 	arch = any
 	license = GPL3
@@ -26,7 +26,7 @@ pkgbase = telegram-a
 	sha256sums = 19495e827e22680c87367718fb37f67cd14af0794d420678b7890bb0d10ee523
 	sha256sums = f90da929a33048561899c8774969e6a1012dcbf679e0082c835783278b41b780
 	sha256sums = de086bb54da308478eadb00680e6feec6c50b80283a2dd7c1f67132c11e3a216
-	sha256sums = f5be452e2baa2a6508080b292f0341f3a36c9a6ca6633666d313cef64193d86d
+	sha256sums = 7b40d89c682a491507f81e43adfc2793bedd65862017975c182380301455007d
 	sha256sums = be1ec2ce92c6017e55ea79254502e34bf744fdeccd8952bce9eb69d0a7ee231a
 	sha256sums = ecd8513d233fa5da2925ef68a97cd03ddcea81c2a050576e64dcfa8f177aea0b
 	sha256sums = 00f7cf0019c84fbd0da5014fdf3cc6eba35cbed2a3574951bbe57e9fd0ecbcd9
