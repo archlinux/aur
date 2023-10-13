@@ -9,7 +9,7 @@ pkgdesc='a general-purpose programming language and toolchain for maintaining ro
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 url='https://ziglang.org/'
 license=('GPL')
-provides=('zig')
+provides=("zig=0.10.1")
 conflicts=('zig')
 source_x86_64=("https://ziglang.org/download/$pkgver/zig-linux-x86_64-$pkgver.tar.xz")
 source_pentium4=("https://ziglang.org/download/$pkgver/zig-linux-x86-$pkgver.tar.xz")

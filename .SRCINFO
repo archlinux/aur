@@ -9,7 +9,7 @@ pkgbase = zig-0.10-bin
 	arch = armv7h
 	arch = riscv64
 	license = GPL
-	provides = zig
+	provides = zig=0.10.1
 	conflicts = zig
 	source_x86_64 = https://ziglang.org/download/0.10.1/zig-linux-x86_64-0.10.1.tar.xz
 	sha512sums_x86_64 = 1cf88a492b1a47800e213b8801477f4ffabf269f960d27d1849c5aec805b5db3768c83d4daa4a738532b1b7367e8c6812e3eea47c205ea732d7a6269a47e16dc
