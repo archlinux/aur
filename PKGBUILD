@@ -1,48 +1,27 @@
-# Maintainer: Roberto Hueso < roberto at robertohueso dot org >
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Roberto Hueso < roberto at robertohueso dot org >
+
 pkgname=ensmallen
-pkgver=2.17.0
+pkgver=2.19.1
 pkgrel=1
-pkgdesc='Flexible C++ library for efficient mathematical optimization'
-arch=('x86_64')
+pkgdesc="Flexible C++ header library for efficient mathematical optimization"
+arch=(any)
 url="https://ensmallen.org/"
-license=('BSD')
-depends=(
-  'armadillo>=9.800.0'
-  'lapack'
-)
-
-optdepends=(
-  'openmp: parallel computation support'
-)
-
-makedepends=(
-  'cmake>=3.3.2'
-)
+license=(BSD)
+makedepends=(cmake openmp armadillo lapack)
 source=("https://ensmallen.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2803c8cce58f278d6e7eb4a5d8090da10b4cce7a5c6c6e6f65e89de4fc9c9086')
-options=(!emptydirs)
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  mkdir -p build
-}
+sha256sums=('f36ad7f08b0688d2a8152e1c73dd437c56ed7a5af5facf65db6ffd977b275b2e')
 
 build() {
-  cd "${pkgname}-${pkgver}/build"
+  cmake -B build -S "$pkgname-$pkgver" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  cmake \
-      -D CMAKE_INSTALL_PREFIX="/usr" \
-      -D BUILD_TESTS=OFF \
-      -D USE_OPENMP=ON \
-      ..
-  make
+  cmake --build build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/build"
+  DESTDIR="${pkgdir}" cmake --install build
 
-  make DESTDIR="$pkgdir" install
-
-  install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D "$pkgname-$pkgver"/LICENSE.txt  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
