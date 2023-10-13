@@ -1,7 +1,7 @@
 pkgbase = r-reticulate
 	pkgdesc = Interface to 'Python'
 	pkgver = 1.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=reticulate
 	arch = x86_64
 	license = Apache
@@ -27,6 +27,8 @@ pkgbase = r-reticulate
 	depends = r-rcpptoml
 	depends = r-rlang
 	depends = r-withr
+	optdepends = ipython: IPython console app
+	optdepends = python-numpy: translation between R matrices and NumPy arrays
 	optdepends = r-callr
 	optdepends = r-cli
 	optdepends = r-glue
