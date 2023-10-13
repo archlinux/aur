@@ -1,12 +1,13 @@
 pkgbase = loopy-desktop
 	pkgdesc = A tool for thinking in systems
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jchu634/loopy-desktop
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
+	makedepends = npm
 	depends = bash
 	depends = electron21
 	depends = hicolor-icon-theme
