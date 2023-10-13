@@ -15,7 +15,7 @@ options=(!strip)
 source_x86_64=(
 "https://assets.schaeffer-ag.de/fpd/Version-$pkgver/FrontDesign-EU-$pkgver-amd64.AppImage"
 "front-panel-express-eu.desktop")
-md5sums_x86_64=("eb8b7da86c84aa727f00b7990743da4d" "d34b7ed5d87a206fe8b50fd4a8f8e167")
+md5sums_x86_64=("95268b130b2fa2b1af0289f639920998" "d34b7ed5d87a206fe8b50fd4a8f8e167")
 noextract=("FrontDesign-EU-$pkgver-amd64.AppImage")
 
 
