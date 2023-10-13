@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -31,7 +31,6 @@ depends=(
     libfreetype.so
     libiec61883
     libjxl.so
-    libmfx
     libmodplug
     libopenmpt.so
     librav1e.so
@@ -53,6 +52,7 @@ depends=(
     libxvidcore.so
     libzimg.so
     ocl-icd
+    onevpl
     opencore-amr
     openjpeg2
     opus
@@ -78,7 +78,8 @@ makedepends=(
 )
 optdepends=(
     'avisynthplus: AviSynthPlus support'
-    'intel-media-sdk: Intel QuickSync support'
+    'intel-media-sdk: Intel QuickSync support (legacy)'
+    'onevpl-intel-gpu: Intel QuickSync support'
     'ladspa: LADSPA filters'
     'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
@@ -103,7 +104,15 @@ pkgver() {
 }
 
 prepare() {
-    git -C "${pkgname%-headless}" cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb # Fix assembling with binutil as >= 2.41
+    cd "${pkgname%-headless}"
+    # FS#79281: fix assembling with binutil as >= 2.41
+    git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
+    # FS#77813: fix playing ogg files with mplayer
+    git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
+    # use non-deprecated nvenc GUID for conftest
+    git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
+    git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
+
 }
 
 build() {
@@ -134,7 +143,6 @@ build() {
         --enable-libiec61883 \
         --disable-libjack \
         --enable-libjxl \
-        --enable-libmfx \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
@@ -155,6 +163,7 @@ build() {
         --enable-libvidstab \
         --enable-libvmaf \
         --enable-libvorbis \
+        --enable-libvpl \
         --enable-libvpx \
         --enable-libwebp \
         --enable-libx264 \
