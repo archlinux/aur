@@ -5,14 +5,14 @@
 
 pkgname=advancecomp
 pkgdesc="Recompression utilities for .zip .png .mng and .gz files using the 7-zip algorithm"
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 arch=(x86_64 aarch64)
 url="https://github.com/amadvance/${pkgname}"
 license=(GPL3)
 depends=(gcc-libs zlib)
 source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('3beb26e9afdafb62ab13c3c56902b71b5dabccfa458c9930bdfd0a835149c46bed22bfac7b529c341f241bb8f7670c4cda4c50fd34df31b9a3902f8b8b655049')
+sha512sums=('10cc2a72b0cf486868b52cdb78a8dc2c965bfa9f43f712fdf97af58e4b0eac62460a635fe58435e2efbc605ed281b8bf0dc560b08bbbe66ee5a8673ec40ea0a6')
 
 build() {
   cd ${pkgname}-${pkgver}
