@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-messages"
-pkgver="22.9.0"
+pkgver="23.10.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator that collects messages that need a response"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("cmake-extras" "glib2" "gobject-introspection" "gtk-doc" "intltool" "vala" "systemd")
 depends=("accountsservice" "hicolor-icon-theme" "dconf")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("a5ef45313142b4023dc44fdee19c8076")
+md5sums=("b051c879e5cdf5911343ac12ed00a857")
 provides=("indicator-messages")
 conflicts=("indicator-messages")
 
