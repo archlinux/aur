@@ -21,4 +21,8 @@ build() {
 package() {
     mkdir -p $pkgdir/opt/ros/humble
     cp -r $srcdir/install/* $pkgdir/opt/ros/humble
+    rm $pkgdir/opt/ros/humble/*setup.*
+    rm $pkgdir/opt/ros/humble/_local_setup*
+    rm $pkgdir/opt/ros/humble/COLCON_IGNORE
+
 }
