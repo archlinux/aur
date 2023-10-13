@@ -4,12 +4,12 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.9.2
+pkgver=2.10
 pkgrel=1
 pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
 url="https://github.com/metabrainz/picard"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(
   glibc
   hicolor-icon-theme
@@ -36,9 +36,9 @@ optdepends=(
   'qt5-translations: full UI translation'
 )
 source=(https://data.musicbrainz.org/pub/musicbrainz/$pkgname/$pkgname-$pkgver.tar.gz{,.asc})
-sha512sums=('b204acde03ed88090459f7c47b81841e9de1acc71542f272b1191b4fe16a2ef294bf10f34e8bf85c6ebb78cbebad4ce2c9a1fa3acb55de55e9a6b8832ed92ad5'
+sha512sums=('d771a2629163d140edb7d39dfb48a7d2c4d2e3025f3111d3f090036c2ba734f8a4ba08fa1035f2ba4e04c8e80c07a517fe98df430407ee71fac14b289b7316cb'
             'SKIP')
-b2sums=('6708cd82a8ccab4b07d626ccc5fccb47a78503262863e51e6f0dcdca705cc6fd719ed5958bcff701911e18464ea9b0450cec93d2e8834e5f7ec60708bafff8b5'
+b2sums=('5590b9dd9a88244486688d73ea0e565b789da457e5cab5c57d7abad54cae0a52fb574090d45efeb317ee405dbf61185ff6d24d5a7ec7d5afc1db0713a5b09e92'
         'SKIP')
 # NOTE: GPG signed tags and artifacts are being evaluated: https://tickets.metabrainz.org/browse/PICARD-1934
 validpgpkeys=('68990DD0B1EDC129B856958167997E14D563DA7C') # MusicBrainz Picard Developers <picard@metabrainz.org>
