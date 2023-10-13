@@ -9,12 +9,12 @@ arch=('x86_64')
 url="https://github.com/openmc-dev/openmc"
 license=('MIT')
 
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git" "set_paths.sh")
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 depends=(
 	python-lxml
