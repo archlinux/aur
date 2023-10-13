@@ -13,12 +13,12 @@ license=('MIT')
 url="https://manimpango.manim.community"
 
 source=("https://github.com/ManimCommunity/$_name/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
-sha512sums=('edee75c06544399d52ffece6e3af643379cd6ca1a4ee3477594eae3e2f4c6c65c7670b7b03dc65d9ac50ac6bf8087f9345174366ce41f85f4eaba4a3ea4dfae3')
+sha512sums=('da2708375b26d4ff8704c0137aafa1411ff9c4a4240a7798b1b3b7c3901b4b393bcc9b21a258d96a31a208234e526667e7832912da89fc5e933c7975d67c5705')
 
 depends=(
 	'cairo'
 	'fontconfig'
-	'glib'
+	'glib2'
 	'harfbuzz'
 	'pango'
 	'python'
@@ -28,6 +28,14 @@ makedepends=(
 	'python-setuptools'
 	'cython'
 )
+
+prepare()
+{
+	cd "$_name-$pkgver"
+
+	# relax Cython requirement
+	sed -i 's/Cython>=0.29.25,<3.0/Cython>=0.29.25/g' pyproject.toml
+}
 
 build ()
 {
