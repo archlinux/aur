@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index dce5cd161..100980dd5 100644
+index d78b82e2c..80ef2ffad 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -366,12 +366,13 @@ endif()
@@ -44,7 +44,7 @@ index dce5cd161..100980dd5 100644
  	endif()
 -
 +if(FALSE)
- 	find_package(Lua)
+ 	find_package(Lua 5.2)
  	if(NOT APPLE AND LUA_FOUND)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_LUA)
 @@ -444,9 +445,9 @@ if(NOT LIBRETRO)

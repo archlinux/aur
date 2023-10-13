@@ -2,9 +2,9 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=2.1.r384.ge8e382372
+pkgver=2.1.r415.g2a364dee6
 pkgrel=1
-pkgdesc="Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core (fork of reicast)"
+pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/flyinghead/flycast"
 license=('GPL2')
@@ -34,7 +34,7 @@ source=(
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'a0de47f7f43450f50f993e891ae74ebad433ef52559e24751ba83e58706699da0ab0a6b7631bf8c5dd5f13a687a163ad3daa64049771fad09045721bc7b993df'
+	'596d28372f9b398604fae1a136839711d2f754ade4aa12f71d16016bf63e5b9b5e9b50c1d524aafbd1e75bbfc1a82a19e45901e22a76845eb960eb241c2518b6'
 )
 
 pkgver() {
