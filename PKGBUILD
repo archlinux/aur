@@ -8,7 +8,7 @@ arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
 url="https://webmeshproj.github.io"
 license=("Apache-2.0")
 
-makedepends=("make" "go" "nodejs" "yarn")
+makedepends=("make" "go" "upx")
 optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-bin" "webmesh")
 
