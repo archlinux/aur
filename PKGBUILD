@@ -19,15 +19,15 @@ source=("${pkgname}-${epoch}:${pkgver}-${pkgrel}-LICENSE.txt::https://raw.github
         "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-SemiBold.ttf"
         "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Thin.ttf")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
-            '2f28ff96dbee95f6efdfa9b0c28b0bfa49a5afac07f6b11b0560dff4be3a0b78'
-            'e27595c62f218e8c75e9f53ae50c5cfe259d95ba35dd84cc9a4843feb9d1ed80'
-            '5e910236974031f64738e4e7a122319cefabfe3d402214089d07657afe339514'
-            '0c8643dd04fde24e8b7a8cec8b9ad9de1f90f2b88d1d9993c4507f1a0b19cee8'
-            '7987e014d49097a12c7027b41ec4e1c158606bd4bb3f645af272f9f828db9227'
-            'c121e1a28963744ac2da3b5784f841d309a8ba491c454efaf2f6e4580a6ae111'
-            '994cedaa50dd7cd4f16a047295a222a6bad55e647ba769f1eb8b39a81263408f'
-            '33c4ede46609eb172fddb5968bbf0e0ce5e458656ad3e6db7f52de789cad52ab'
-            '048148ed028b54bdfd11d4b9ff1b2e52ac730b2017a022741db78ee9ba0f808f')
+            '23bd6b67031e7fca0b8a5f42d73fb28ab06394f95b2d7faf7db513dcd0ea0a99'
+            '09cd9e359296e2f9482e2445ba921041913b55e652645df083079a85a272fce4'
+            'd92fe6a148ec6fb78af65c6249b8f9cfc95a1d00bd548ccd2cfc33034cca4c81'
+            '30d92e2b447209aa9b39b5fd1d18f3552af12a9d491def5d67d1757cc078f23c'
+            '78b2a573044b5635e35224fca8b44cc2b92dac9695ef18607bf12491ae3aae84'
+            '84836bee027a67ffbc137f8f67269af4824163259b0de4bf90d30b412e67f07e'
+            'fd4d98f8403041d58d67735f4549a42ac7cfc79464d4fac5f02345e1404dd2ca'
+            'e6f84f63a76e65bb43c4fe6445e59167a0298a30f172833e5d6e6e08adcf1c8b'
+            '48f7f72e33e0f4bf6bb6ad3acc3cb8712ab7b9e5c8170dfd1da70726648e83af')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
