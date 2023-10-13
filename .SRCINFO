@@ -1,7 +1,7 @@
 pkgbase = yandex-browser
 	pkgdesc = The web browser from Yandex. Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
 	pkgver = 23.9.1.962
-	pkgrel = 1
+	pkgrel = 2
 	url = https://browser.yandex.com/
 	install = yandex-browser.install
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = yandex-browser
 	depends = libxkbcommon
 	depends = libxkbfile
 	depends = libxrandr
+	depends = squashfs-tools
 	depends = wget
 	depends = xdg-utils
 	depends = harfbuzz-icu

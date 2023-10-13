@@ -9,7 +9,7 @@ if [ ! -x "$XDG_ICON_RESOURCE" ]; then
   echo "Error: Could not find xdg-icon-resource" >&2
   exit 1
 fi
-for icon in product_logo_48.png product_logo_256.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_24.png product_logo_32.png product_logo_16.png ; do
+for icon in product_logo_256.png product_logo_24.png product_logo_32.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_16.png product_logo_48.png ; do
   size="$(echo ${icon} | sed 's/[^0-9]//g')"
   "$XDG_ICON_RESOURCE" install --size "${size}" "/opt/yandex/browser/${icon}" \
     "yandex-browser"
@@ -30,8 +30,28 @@ altlinux_fetch_ffmpeg() {
   rm -fr $temp_dir
 }
 
-# Do not break installation anyway
-/opt/yandex/browser/update-ffmpeg || true
+getOsName() {
+    if [ -f "/etc/os-release" ]
+    then
+        cat "/etc/os-release" | grep "^ID=" | sed "s/ID=//1"
+    fi
+}
+
+codecInstallationRequired() {
+    current_lunux_distro=$( getOsName ) ;
+
+    if [ "$current_lunux_distro" = "ubuntu" ]; then
+        echo "no"
+    else
+        echo "yes"
+    fi
+}
+
+codecs_required=$( codecInstallationRequired )
+if [ "$codecs_required" = "yes" ]; then
+    # Do not break installation anyway
+    /opt/yandex/browser/update_codecs 116 /opt/yandex/browser || true
+fi
 
 # This function uses sed to insert the contents of one file into another file,
 # after the first line matching a given regular expression. If there is no
@@ -103,11 +123,25 @@ if [ ! -x "$XDG_ICON_RESOURCE" ]; then
   echo "Error: Could not find xdg-icon-resource" >&2
   exit 1
 fi
-for icon in product_logo_48.png product_logo_256.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_24.png product_logo_32.png product_logo_16.png ; do
+for icon in product_logo_256.png product_logo_24.png product_logo_32.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_16.png product_logo_48.png ; do
   size="$(echo ${icon} | sed 's/[^0-9]//g')"
   "$XDG_ICON_RESOURCE" uninstall --size "${size}" "yandex-browser"
 done
 
 # Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
 update-desktop-database > /dev/null 2>&1 || true
+}
+post_remove(){
+
+set -e
+
+remove_package_not_native_files() {
+  # /opt/yandex/browser/libffmpeg.so
+  local libffmpeg="/opt/yandex/browser/libffmpeg.so"
+  if [ -f "${libffmpeg}" ]; then
+    rm "${libffmpeg}"
+    echo "removed ${libffmpeg}"
+  fi
+}
+remove_package_not_native_files
 }
