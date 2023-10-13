@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron25
+_ELECTRON=/usr/bin/electron26
 APPDIR="/opt/electronim"
 export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"
 _ASAR="${APPDIR}/resources/app.asar"
