@@ -2,7 +2,7 @@
 
 pkgname=resources
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Monitor your system resources and processes"
 url="https://github.com/nokyan/resources"
 arch=('x86_64')
@@ -15,11 +15,13 @@ sha256sums=('SKIP')
 
 prepare() {
   cd $pkgname
+  export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson $pkgname build
   meson compile -C build
