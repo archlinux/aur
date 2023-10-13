@@ -1,4 +1,5 @@
-# Maintainer: James Groom <OSSYoshiRulz at gmail dot com>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: James Groom <OSSYoshiRulz at gmail dot com>
 pkgname=bizhawk-monort
 _providesName=bizhawk
 pkgver=2.8
