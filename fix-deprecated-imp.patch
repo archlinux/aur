@@ -1,0 +1,44 @@
+--- a/PyWCSTools/wcscon.py	2018-08-22 16:17:28.260143000 +0800
++++ b/PyWCSTools/wcscon.py	2022-08-28 17:57:19.369035437 +0800
+@@ -10,16 +10,16 @@
+ if version_info >= (2,6,0):
+     def swig_import_helper():
+         from os.path import dirname
+-        import imp
++        import importlib
+         fp = None
+         try:
+-            fp, pathname, description = imp.find_module('_wcscon', [dirname(__file__)])
++            fp, pathname, description = importlib.machinery.PathFinder().find_module('_wcs', [dirname(__file__)])
+         except ImportError:
+             import _wcscon
+             return _wcscon
+         if fp is not None:
+             try:
+-                _mod = imp.load_module('_wcscon', fp, pathname, description)
++                _mod = importlib.machinery.SourceFileLoader.import_module('_wcs', fp, pathname, description)
+             finally:
+                 fp.close()
+             return _mod
+--- a/PyWCSTools/wcs.py	2018-08-22 16:17:28.260143000 +0800
++++ b/PyWCSTools/wcs.py	2022-08-28 17:55:32.203953184 +0800
+@@ -10,16 +10,16 @@
+ if version_info >= (2,6,0):
+     def swig_import_helper():
+         from os.path import dirname
+-        import imp
++        import importlib
+         fp = None
+         try:
+-            fp, pathname, description = imp.find_module('_wcs', [dirname(__file__)])
++            fp, pathname, description = importlib.machinery.PathFinder().find_module('_wcs', [dirname(__file__)])
+         except ImportError:
+             import _wcs
+             return _wcs
+         if fp is not None:
+             try:
+-                _mod = imp.load_module('_wcs', fp, pathname, description)
++                _mod = importlib.machinery.SourceFileLoader.import_module('_wcs', fp, pathname, description)
+             finally:
+                 fp.close()
+             return _mod
