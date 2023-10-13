@@ -2,7 +2,7 @@
 # Contributor: James Groom <OSSYoshiRulz at gmail dot com>
 pkgname=bizhawk-monort
 _providesName=bizhawk
-pkgver=2.8
+pkgver=2.9.1
 _archiveName="BizHawk-$pkgver-linux-x64.tar.gz"
 pkgrel=1
 pkgdesc="A multi-system emulator on .NET. Features rerecording and tools for TASing. (Mono runtime)"
@@ -13,11 +13,10 @@ depends=("glibc" "lsb-release" "mono>=6.12" "openal")
 optdepends=(
 	"antimicro: to use unsupported controllers (by mapping to the keyboard)"
 )
-#makedepends=("dotnet-sdk>=6.0.0")
 provides=("$_providesName=$pkgver")
 install="bizhawk-monort.install"
 source=("https://github.com/TASVideos/BizHawk/releases/download/$pkgver/$_archiveName")
-sha512sums=("a9ffbcd914ca1843372f50de7c022107e65b8ded3bc61f04d584a7c5342ad83321a22b9f066a8872431181bcc8de605827911b0c67511c5a2d4e75910c85d1a6")
+sha512sums=("bec7e558963416b3749ef558bc682d1a874a43df8fe3083224ec7c4c0326cdfea662ef5c604eea7c1743d2eeb13656ccf749f0cdb3a413f4985c4b305a95e742")
 
 package() {
 	cd "$srcdir"
