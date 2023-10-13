@@ -6,15 +6,15 @@
 pkgbase=mariadb-git2
 pkgname=('mariadb-libs-git2' 'mariadb-clients-git2' 'mariadb-git2' 'mytop-git2')
 pkgdesc='Fast SQL database server, derived from MySQL'
-pkgver=10.11.3.r24.g7c9f275
+pkgver=11.2.1.r0.g18ddde4
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
 url='https://mariadb.org/'
 makedepends=('boost' 'bzip2' 'cmake' 'cracklib' 'curl' 'jemalloc' 'judy' 'krb5' 'liburing'
-             'libxcrypt' 'libxml2' 'lz4' 'openssl' 'systemd' 'zlib' 'zstd' 'xz')
+             'libxcrypt' 'libxml2' 'lz4' 'openssl' 'pcre2' 'systemd' 'zlib' 'zstd' 'xz')
 source=(
-  "$pkgbase::git+https://github.com/MariaDB/server.git#branch=10.11"
+  "$pkgbase::git+https://github.com/MariaDB/server.git#tag=mariadb-11.2.1"
   '0001-arch-specific.patch'
 )
 sha256sums=(
@@ -44,6 +44,8 @@ build() {
     # build options
     -DCOMPILATION_COMMENT="Arch Linux"
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    #-DCMAKE_BUILD_TYPE=Debug
+    #-DMYSQL_MAINTAINER_MODE=WARN
     -Wno-dev
 
     # file paths
@@ -85,13 +87,17 @@ build() {
     -DWITH_EXTRA_CHARSETS=complex
     -DWITH_JEMALLOC=ON
     -DWITH_LIBWRAP=OFF
-    -DWITH_PCRE=bundled
+    -DWITH_PCRE2=system
     -DWITH_READLINE=ON
     -DWITH_SSL=system
     -DWITH_SYSTEMD=yes
     -DWITH_UNIT_TESTS=OFF
     -DWITH_ZLIB=system
   )
+
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   mkdir -p build
   cd build
@@ -110,11 +116,11 @@ check() {
 
 package_mariadb-libs-git2() {
   pkgdesc='MariaDB libraries'
-  depends=('liburing' 'libxcrypt' 'libcrypt.so' 'openssl' 'zlib' 'zstd')
+  depends=('liburing' 'libxcrypt' 'libcrypt.so' 'openssl' 'pcre2' 'zlib' 'zstd')
   optdepends=('krb5: for gssapi authentication')
   conflicts=('mariadb-libs' 'libmysqlclient'{,-git} 'libmariadbclient'{,-git} 'mariadb-connector-c'{,-git})
   provides=('mariadb-libs' 'libmariadbclient'{,-git2} 'mariadb-connector-c'{,-git2} 'libmariadb.so' 'libmariadbd.so')
-  replaces=('libmariadbclient-git2')
+  replaces=('libmariadbclient')
 
   cd build
 
@@ -130,9 +136,9 @@ package_mariadb-libs-git2() {
   
   ln -s mariadb_config "$pkgdir"/usr/bin/mariadb-config
   ln -s mariadb_config "$pkgdir"/usr/bin/mysql_config
-  install -D -m0644 "$srcdir"/"$pkgbase"/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
-  ln -s mysql_config.1 "$pkgdir"/usr/share/man/man1/mariadb_config.1
-  ln -s mysql_config.1 "$pkgdir"/usr/share/man/man1/mariadb-config.1
+  install -D -m0644 "$srcdir"/"$pkgbase"/man/mariadb_config.1 "$pkgdir"/usr/share/man/man1/mariadb_config.1
+  ln -s mariadb_config.1 "$pkgdir"/usr/share/man/man1/mariadb-config.1
+  ln -s mariadb_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
 
   install -D -m0644 support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
   install -D -m0644 "$srcdir"/"$pkgbase"/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
@@ -226,7 +232,7 @@ package_mariadb-git2() {
   rm usr/bin/mytop
 
   # not needed
-  rm -r usr/{mysql-test,sql-bench}
+  rm -r usr/{mariadb-test,sql-bench}
   rm usr/share/man/man1/mysql-test-run.pl.1
 }
 
