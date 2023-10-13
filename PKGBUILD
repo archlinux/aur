@@ -1,5 +1,5 @@
 pkgname=xdg-desktop-portal-shana
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1.0
 pkgdesc='xdg-desktop-portal-shana'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=("xdg-desktop-portal-gnome: provide gnome backend"
             "xdg-desktop-portal-lxqt: provide lxqt backend")
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/xdg-desktop-portal-shana/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('52d4129cd6db8b91411041e6d4ac7f3e34b62a761eb37fd04db9133de8edbb6c')
+sha256sums=('a1f474e493bade15c198371c6d84a137e46303039b6d064b56ce7e4e78e52643')
 
 build() {
   cd ${pkgname}-$pkgver
