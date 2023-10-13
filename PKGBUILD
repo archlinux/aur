@@ -2,7 +2,7 @@
 pkgname=apple-music-bin
 _pkgname="Apple Music"
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron app that provides a native Apple Music experience for Linux & Windows."
 arch=('x86_64')
 url="https://github.com/Alex313031/apple-music-desktop"
@@ -22,9 +22,11 @@ build() {
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
     cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 144x144 256x256;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
+    install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

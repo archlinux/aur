@@ -1,7 +1,7 @@
 pkgbase = apple-music-bin
 	pkgdesc = An Electron app that provides a native Apple Music experience for Linux & Windows.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alex313031/apple-music-desktop
 	arch = x86_64
 	license = BSD
