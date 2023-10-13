@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=Copulas
 pkgname=python-${_base,,}
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Create tabular synthetic data using copulas-based modeling"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-pandas python-scipy)
 makedepends=(python-build python-installer python-pytest-runner python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('deab9ea9889ea8f9f88a0953cb263fbf50a0baad2e63cb0cdf08428f006973d06147b090f4b58503fb4f646fd2d6c24280d8a4e28b602583e34dd75f64264291')
+sha512sums=('d9146fe09d6fe065d89e2def49227728b30918ec91ea2167267057d632c8641b574ec606e3938348b463962b13128605e54e239dc93b0a52c8de78c81ed42df4')
 
 build() {
   cd ${_base}-${pkgver}
