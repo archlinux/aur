@@ -1,6 +1,6 @@
 pkgbase = python-eigency
 	pkgdesc = Cython interface between the numpy arrays and the Matrix/Array classes of the Eigen C++ library
-	pkgver = 3.4.0.0
+	pkgver = 3.4.0.1
 	pkgrel = 1
 	url = https://github.com/wouterboomsma/eigency
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-eigency
 	makedepends = cython
 	depends = eigen
 	depends = python-numpy
-	source = eigency-3.4.0.0.tar.gz::https://github.com/wouterboomsma/eigency/archive/3.4.0.0.tar.gz
-	sha512sums = 7b1ea92674f29c9bbfa88c8e5a36157d70031f5af615b23a826ff5576d0217a1fa6c2175fb5d71a0bd99a1ab6c417b63029c1fa808bb80eeeab46bc8b96b424e
+	source = eigency-3.4.0.1.tar.gz::https://github.com/wouterboomsma/eigency/archive/3.4.0.1.tar.gz
+	sha512sums = 9eec12a763549f12c8dc3fc1419a8e484baa887c9808f464fdaf19b621f5d560d015e5daa51ee37e8371229cb8377c3f1d65a66ab75489ba04de0f383d20d3d5
 
 pkgname = python-eigency
