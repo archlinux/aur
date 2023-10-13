@@ -22,7 +22,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.19.4
+pkgver=1.19.6
 pkgrel=1
 pkgdesc='Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)'
 url='https://github.com/brndnmtthws/conky'
@@ -32,7 +32,6 @@ arch=('i686' 'x86_64')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky')
-epoch=1
 
 ## nvidia requirements - comment for non-nvidia
 depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' )
