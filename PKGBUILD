@@ -7,7 +7,7 @@
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-unstable" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-dev
-pkgver=120.0.6051.2
+pkgver=120.0.6062.2
 pkgrel=1
 pkgdesc="The popular web browser by Google (Dev Channel)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ _channel=unstable
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
-sha512sums=('c9b2958307d9e94f351fafb34ea64328c11047f0a1d127bf5e3739be8eaeed7882de7559b8973b71d15897ed006662f446d58988feb42df13aaeb8cf30eb94b9'
+sha512sums=('4586268fd773478fb0e1bc019cd37edbf6e2783a6e08fcdf3b99adb6364631a0b0ad67e34971350454ef3f390b2c9afd7add17c868bc64c2238d0323407a2143'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '445eb36a588f49af018ded3d852b63e0523ffac20c25be721f3ef4663591256849432bebb3d9f352e4f53cbe1fb77fa67cf8911c9161f826490a21adbdcc81f4')
 
