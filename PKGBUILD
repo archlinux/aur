@@ -4,7 +4,7 @@
 
 pkgname=mullvad-browser-latest-bin
 pkgver=13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Latest version of Mullvad Browser, a privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
@@ -33,7 +33,7 @@ changelog='mullvad-browser.changelog'
 sha256sums=('62d9068129d0549f70b5a9833ad2d13ae7e13c9f4a8b357c8f990adba889f996'
             'SKIP'
             '0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565'
-            '32331583750b73662fd747a2013daf93a0e140ef2481836a45d70c5362a97049')
+            '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
 
 package() {
   cd mullvad-browser
