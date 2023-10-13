@@ -1,0 +1,16 @@
+pkgbase = rtl8852bu-dkms-git
+	pkgdesc = Kernel module for Realtek RTL8832BU / RTL8852BU WiFi chipset
+	pkgver = 1.19.3.r6.8b02a65
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtl8852bu
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = bc
+	source = dkms.conf
+	source = git+https://github.com/lwfinger/rtl8852bu.git
+	sha256sums = 3bdec70a0d23eb513ca74295f6c0e112b8e4dd661c3841f530a19cbc407efd61
+	sha256sums = SKIP
+
+pkgname = rtl8852bu-dkms-git
