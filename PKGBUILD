@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=('x86_64')
@@ -24,6 +24,11 @@ checkdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/${pkgname}/archive/refs/tags/${pkgver//_/-}.tar.gz")
 b2sums=('5a8c3ccf570ded1dd66e420a22400f1c3320ba385e09a2edb41323e994597dcd812e1742986d34300c76bed54c2a0baf24587d2eaef00e7f03265f3dc632ddda')
 
+prepare() {
+    # Fixes issue with Doxygen trying to resolve reference that makes ninja gen_docs fail
+    sed -i 's/\[documented in CONFIGURE.md\](CONFIGURE.md)/[documented in CONFIGURE.md](CONFIGURE.md#options-for-configuring-liboqs-builds)/g' "${pkgname}-${pkgver//_/-}"/README.md
+}
+
 build() {
     cmake -G Ninja -B build -S "${pkgname}-${pkgver//_/-}"\
         -DBUILD_SHARED_LIBS=ON \
@@ -41,7 +46,7 @@ build() {
         -Wno-dev
     ninja -C build
     # Docs fail to build with doxygen from [extra]
-    #ninja -C build gen_docs
+    ninja -C build gen_docs
 }
 
 check() {
@@ -51,6 +56,6 @@ check() {
 package() {
     ninja -C build install
     install -D -m0644 "${pkgname}-${pkgver//_/-}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    #install -d "${pkgdir}/usr/share/doc/"
-    #cp -r build/docs/html "${pkgdir}/usr/share/doc/${pkgname}"
+    install -d "${pkgdir}/usr/share/doc/"
+    cp -r build/docs/html "${pkgdir}/usr/share/doc/${pkgname}"
 }
