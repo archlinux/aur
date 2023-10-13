@@ -2,8 +2,8 @@
 
 pkgname=sddm-theme-mountain-git
 pkgdesc="Mountain theme for SDDM."
-pkgver=1.1.0.r0.gd6d9b20
-pkgrel=2
+pkgver=1.1.0.r0.g9fc83a2
+pkgrel=3
 arch=('any')
 url="https://github.com/c0rydoras/sddm-mountain-theme.git"
 license=('GPL3')
