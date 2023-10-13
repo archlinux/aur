@@ -13,6 +13,7 @@ url='https://www.shlomifish.org/open-source/projects/fortune-mod/'
 license=('BSD')
 depends=('glibc' 'recode')
 makedepends=('cmake' 'rinutils')
+provides=('fortune-mod')
 conflicts=('fortune-mod')
 source=("https://github.com/shlomif/fortune-mod/releases/download/${pkgname/-off/}-$pkgver/${pkgname/-off/}-$pkgver.tar.xz"
         'not-a-game.patch')

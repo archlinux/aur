@@ -9,6 +9,7 @@ pkgbase = fortune-mod-off
         makedepends = rinutils
         depends = glibc
         depends = recode
+        provides = fortune-mod
         conflicts = fortune-mod
         source = https://github.com/shlomif/fortune-mod/releases/download/fortune-mod-3.20.0/fortune-mod-3.20.0.tar.xz
         source = not-a-game.patch
