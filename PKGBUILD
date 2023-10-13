@@ -32,7 +32,7 @@ build() {
     make DESTDIR="${srcdir}/ncurses" install
     popd
     pushd "${pkgname}"
-    make WIDE_NCURSES=0 USE_NCURSES=1 KOI8=1
+    make WIDE_NCURSES=0 USE_NCURSES=1 KOI8=1 -j$(nproc)
     pushd docs
     make tokentpl.txt
     make tokencfg.txt
@@ -96,4 +96,4 @@ package() {
 sha256sums=('SKIP'
             '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
             '3fbd050b9d087f2d386c3208115b11175ba0c6e728dc936c5d77cd244e83c6c3'
-            'f8c52480a056045a4ef8adcce6c820d448a2c6b7096940a4fbfc970dfe9c8738')
+            '3f445aab458160fd3934de37165cf6d2bd32aacf770b813f2f772d823ef6f2a4')

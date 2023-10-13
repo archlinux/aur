@@ -1,7 +1,26 @@
 #!/bin/bash
-GEDLNX=$(which gedlnx)
-if [ ! -x $GEDLNX ]; then
-    echo gedlnx is not avaiable, sorry
+_luit_encoding=koi8-r
+_golded_lang=ru_RU.KOI8-R
+_locale_check=koi8r
+_locale_message="${_golded_lang} KOI8-R"
+_gedlnx=$(which gedlnx)
+
+if [ ! -x ${_gedlnx} ]; then
+    echo "gedlnx is not avaiable/executable, sorry"
     exit 1
 fi
-TERM=xterm-256color exec /usr/bin/luit -x -encoding koi8-r -- "$GEDLNX" $*
+
+_has_locale=$(locale -a | grep ${_locale_check})
+if [ -z ${_has_locale} ]; then
+   echo -n "Checking system locale presence ${_locale_check}: "
+   echo "Not avaiable!"
+   echo "Add ${_locale_message} to /etc/locale.gen and run"
+   echo "sudo locale-gen"
+   exit 1
+fi
+
+if [ "$TERM" = "rxvt-unicode-256color" ]; then
+    TERM=xterm-256color LANG=${_golded_lang} exec luit -encoding ${_luit_encoding} -x -- "${_gedlnx}" "$@"
+else
+    LANG=${_golded_lang} exec luit -encoding ${_luit_encoding} -x -- "${_gedlnx}" "$@"
+fi
