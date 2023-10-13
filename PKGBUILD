@@ -1,6 +1,6 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-neo-xihei-screen'
-pkgver=1.105
+pkgver=1.106
 pkgrel=1
 pkgdesc="霞鹜新晰黑屏幕阅读版。霞鹜新晰黑 的屏幕阅读版本，将原版 霞鹜新晰黑 加粗 6 个单位后，调整度量数据与 Android 默认字体 Roboto 相同。"
 arch=('any')
@@ -10,7 +10,7 @@ source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWNeoXi
         *.md)
 changelog='changelog.txt'
 conflicts=('ttf-lxgw-neo-xihei-screen')
-sha256sums=('44a9a44d8c9b3fef5b68035c219b7d7ffd4ad55c47eef6a40f093d1706ff36ed'
+sha256sums=('6ddc877be7293c7e6f2e867db50b9f31dcd0bd324dde9d3d68764807d7647c5a'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
