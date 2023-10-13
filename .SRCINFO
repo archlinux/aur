@@ -1,0 +1,14 @@
+pkgbase = files2clip
+	pkgdesc = A simple daemon that consumes files in a directory and pastes them to clipboard
+	pkgver = r3.d596234
+	pkgrel = 1
+	url = https://github.com/alcubierre-drive/files2clip
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = gtk3
+	source = git+http://github.com/alcubierre-drive/files2clip.git
+	md5sums = SKIP
+
+pkgname = files2clip
