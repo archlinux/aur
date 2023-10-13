@@ -3,7 +3,7 @@
 
 pkgname=pkgtop-git
 pkgdesc="Interactive package manager & resource monitor (git)"
-pkgver=2.4.1.r0.g960d88d
+pkgver=2.5.0.r0.g783fc3c
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/orhun/pkgtop"
