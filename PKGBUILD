@@ -1,8 +1,9 @@
-# Maintainer: Lena Fuhrimann
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Lena Fuhrimann
 
-pkgname=nancy-bin
-_pkgname="${pkgname%-bin}"
-pkgver=1.0.42
+_pkgname=nancy
+pkgname=${_pkgname}-bin
+pkgver=1.0.45
 pkgrel=1
 pkgdesc='A tool to check for vulnerabilities in your Golang dependencies'
 arch=(x86_64 i686)
@@ -12,10 +13,10 @@ provides=("${_pkgname}")
 _src="${url}/releases/download/v${pkgver}/${_pkgname}"
 source_x86_64=("${_src}-v${pkgver}-linux-amd64.tar.gz")
 source_i686=("${_src}-v${pkgver}-linux-386.tar.gz")
-sha256sums_x86_64=('9802b08706ace7c60ac2e4552a4d7a8f249a7ca6d6e84d1b30e564024d1cd8e5')
-sha256sums_i686=('ccec38b4ac410fdc0f98383729b32ba74adb7a2d57a86f7bfe70b41879ec63da')
+sha512sums_x86_64=('30466bf6c01598ebb9d076f591a8a80fc715c02629a6e1261e3a5b7835ff58145001352c3e0a82805938c4a4575897db3852ee7177c77df628df00ac6162f020')
+sha512sums_i686=('5ec6b7bacbf12dce2070132eb8d7b782c5e652e7c9349c53086e1cdbb168572e81c0b2e329a799e464a1f641e6856105e000cdb0fb43e3268d248519affd9b31')
 
 package() {
-	install -Dm755 "$_pkgname" -t "${pkgdir}/usr/bin"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 "$_pkgname" -t "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
