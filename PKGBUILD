@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-transition-table
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a Transition Table to the tools menu"
 arch=("x86_64" "aarch64")
@@ -9,7 +9,7 @@ url="https://obsproject.com/forum/resources/transition-table.1174/"
 license=("GPL2")
 depends=("obs-studio>=28")
 makedepends=("cmake" "git")
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=b829abf127ce0f1544cde99f0244a10483c7bbf2")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=1a85ab9de529ff521b7acad206ab55f4da72ac73")
 sha256sums=("SKIP")
 
 build() {
