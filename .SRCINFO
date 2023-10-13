@@ -1,0 +1,25 @@
+pkgbase = python-pingouin
+	pkgdesc = Statistical package for Python
+	pkgver = 0.5.3
+	pkgrel = 0
+	url = https://pingouin-stats.org/build/html/index.html
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-seaborn
+	depends = python-statsmodels
+	depends = python-scikit-learn
+	depends = python-pandas-flavor
+	depends = python-outdated
+	depends = python-tabulate
+	source = https://files.pythonhosted.org/packages/source/p/pingouin/pingouin-0.5.3.tar.gz
+	sha256sums = 7530eb7665d478b7d7da8cae3cdfca8ccb829b29eba1d1bf885fcbff3b23c64b
+
+pkgname = python-pingouin
