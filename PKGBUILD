@@ -3,7 +3,7 @@
 _pkgname=wolfssl
 pkgname=wolfssl-liboqs
 pkgver=5.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, portable, C-language-based SSL/TLS library (with post-quantum cryptography)"
 arch=(x86_64)
 url="https://www.wolfssl.com/"
@@ -29,7 +29,7 @@ validpgpkeys=(
 
 prepare() {
     # git needed because patch does not support binary diffs
-    git apply --directory="$_pkgname-$pkgver-stable" "${srcdir}/liboqs-1.8.patch"
+    git apply --verbose --directory="$_pkgname-$pkgver-stable" "${srcdir}/liboqs-1.8.patch"
 }
 
 build() {
