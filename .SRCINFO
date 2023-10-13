@@ -1,14 +1,14 @@
 pkgbase = python-cppimport
 	pkgdesc = Import C++ files directly from Python!
 	pkgver = 22.08.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tbenthompson/cppimport
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-mako
 	depends = pybind11
