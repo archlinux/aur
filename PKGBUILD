@@ -11,10 +11,10 @@ license=('custom:BSD-3-clause')
 depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest python-autograd python-tensorflow python-pytorch python-jax)
-optdepends=('python-autograd: for support'
-  'python-jax: for support'
-  'python-tensorflow: for support'
-  'python-pytorch: for support')
+optdepends=('python-autograd: for cost function support'
+  'python-jax: for cost function support'
+  'python-tensorflow: for cost function support'
+  'python-pytorch: for cost function support')
 source=($pkgname-$pkgver.tar.gz::https://github.com/${_base}/${_base}/archive/${pkgver}.tar.gz)
 sha512sums=('89ea7055de53bf7cf241c5f5e21f5ac449b3e82fa7c4ecbe572f769c5d75481ff0e8aa0cfbcb4d5666c79ae3dc75eb24bc3426d492998860a60cefa254cc184f')
 
