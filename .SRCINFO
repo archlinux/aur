@@ -1,12 +1,13 @@
 pkgbase = electron-s3-file-manager
 	pkgdesc = A GUI AWS S3 file manager. It supports keyword search, download, upload and preview video.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kelp404/electron-s3-file-manager
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
+	makedepends = nodejs>=18
 	depends = bash
 	depends = make
 	depends = python
