@@ -2,11 +2,11 @@
 # Contributor: tarball <bootctl at gmail dot com>
 
 pkgname=mullvad-browser
-pkgver=12.5.4
-_esrbuildver=102.15.1esr-12.5-1-build1
+pkgver=13.0
+_esrbuildver=115.3.1esr-13.0-1-build3
 # will not build with stable, see mozilla/mp4parse-rust#387; also see "uses" column of
 # https://firefox-source-docs.mozilla.org/writing-rust-code/update-policy.html
-_rustver=1.60.0
+_rustver=1.69.0
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -67,7 +67,7 @@ source=(
   https://cdn.mullvad.net/browser/$pkgver/src-firefox-mullvad-browser-$_esrbuildver.tar.xz{,.asc}
   $pkgname.desktop
 )
-sha256sums=('d1ecc52731ffc69f126c96a39319cf416b7024f657ef01935db952b6fcdfead4'
+sha256sums=('b2991a6f7a52afba0907651d6a0bceb1f4b343bc03863686ca758f8d7ce99d99'
             'SKIP'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
 
