@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-  #export RUSTUP_TOOLCHAIN=stable
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname-v$pkgver" build
   meson compile -C build
 }
