@@ -1,0 +1,26 @@
+From c982ce67525c28554dacd03e697f034510d84e3f Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Tue, 26 Sep 2023 14:52:25 +0200
+Subject: [PATCH] fix(cmake): Fix when multiple .NET packages are installed
+
+---
+ cmake/modules/FindCoreClrEmbed.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindCoreClrEmbed.cmake b/cmake/modules/FindCoreClrEmbed.cmake
+index 41ea53a7..145b71d7 100644
+--- a/cmake/modules/FindCoreClrEmbed.cmake
++++ b/cmake/modules/FindCoreClrEmbed.cmake
+@@ -49,7 +49,8 @@ endif()
+ set(CoreClrEmbed_ROOT_PATH "${CORECLR_RUNTIME_ROOT_PATH}")
+ 
+ 
+-file(GLOB _CORECLR_HOST_ARCH_PATH "${CORECLR_RUNTIME_ROOT_PATH}/packs/Microsoft.NETCore.App.Host.*-${CORECLR_SUBARCH}")
++file(GLOB _CORECLR_HOST_ARCH_PATH_LIST "${CORECLR_RUNTIME_ROOT_PATH}/packs/Microsoft.NETCore.App.Host.*-${CORECLR_SUBARCH}")
++list(POP_FRONT _CORECLR_HOST_ARCH_PATH_LIST _CORECLR_HOST_ARCH_PATH)
+ if (_CORECLR_HOST_ARCH_PATH)
+     get_filename_component(_CORECLR_HOST_ARCH_FILENAME ${_CORECLR_HOST_ARCH_PATH} NAME)
+     string(REPLACE "Microsoft.NETCore.App.Host." "" _CORECLR_COMPUTED_ARCH "${_CORECLR_HOST_ARCH_FILENAME}")
+-- 
+2.42.0
+
