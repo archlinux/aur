@@ -1,6 +1,6 @@
 pkgbase = tytools-git
 	pkgdesc = GUI and command-line tools to manage Teensy devices
-	pkgver = 0.9.7.r0.gb974192
+	pkgver = 0.9.9.r161.gccbf1306b
 	pkgrel = 1
 	url = http://github.com/Koromix/tytools
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = tytools-git
 	makedepends = git
 	makedepends = imagemagick
 	depends = libudev.so
-	depends = qt5-base
+	depends = qt6-base
 	optdepends = teensyduino: Arduino integration
 	provides = tytools
 	provides = ty
 	conflicts = ty
 	conflicts = teensytools
-	source = git+https://github.com/Koromix/tytools.git
+	source = git+https://github.com/Koromix/rygel.git
 	sha256sums = SKIP
 
 pkgname = tytools-git
