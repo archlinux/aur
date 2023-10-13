@@ -18,7 +18,7 @@ pkgbase = doukutsu-save-editor
 	depends = libxkbcommon
 	depends = gtk3
 	depends = at-spi2-core
-	source = git+https://github.com/poly000/doukutsu-save-editor-rs.git#commit=64c01377f1ad8af4067abb80fc383c10543665c5
+	source = git+https://github.com/poly000/doukutsu-save-editor-rs.git#commit=e42cf90
 	sha256sums = SKIP
 
 pkgname = doukutsu-save-editor
