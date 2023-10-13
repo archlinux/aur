@@ -2,7 +2,7 @@
 # Contributor: Integral <luckys68@126.com>
 
 pkgname=linuxqq
-pkgver=3.2.1_17260
+pkgver=3.2.1_17412
 pkgrel=1
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
@@ -12,12 +12,12 @@ license=('custom')
 conflicts=('linuxqq-nt-bwrap')
 depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core' 'libvips' 'openjpeg2')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/5b1d2011/${pkgname}_${pkgver//_/-}_amd64.deb")
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/5b1d2011/${pkgname}_${pkgver//_/-}_arm64.deb")
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/423936b9/${pkgname}_${pkgver//_/-}_amd64.deb")
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/423936b9/${pkgname}_${pkgver//_/-}_arm64.deb")
 source=("linuxqq.sh")
 sha512sums=('a8875ddf6f9a4001836814eaef561ceef89d0d98b81d85a2276c9b475c7b2cd4aa082473bbeb94dd360bf333b33215604b88bc3e98067b621427485d6d48fd29')
-sha512sums_x86_64=('c4f126801eba9aa285a9a97cec772226a3ddb4e559370a99dee7e048a5acd45a34d2a3e66c51d76212165b88f1689e48286664577d75bec16aa648463dd9b8c0')
-sha512sums_aarch64=('7a0c4503523952aceff54093b03023ff2fc9c239e893f9e0693c00bed1ab72634b17a54787b94c550f7b9912b3d84a85f6ccee6741c05e5b3dba1087b342cfde')
+sha512sums_x86_64=('f1951a56f1d2b7fb330963ab3d67118c382554cea14612d76d921b207ddaeed9b3a6ee6329671a19adc52aafe5e0cd72de7527bfab76a27f3b0e6e872de7d8e0')
+sha512sums_aarch64=('284895b78ecdd7c0e5e7bd4b23942378c6c52172b7b5753635d71a1e51882d0aca573976bf9a087dd396b386becb7a555204e51db8654ddc863cd76debaee826')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
