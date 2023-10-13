@@ -28,8 +28,8 @@ build() {
     --without-manpages --without-tests --without-pkg-config \
     --with-static --with-cxx-static --with-abi-version=5
     make clean
-#    make -j8
-#    make DESTDIR="${srcdir}/ncurses" install
+    make -j$(nproc)
+    make DESTDIR="${srcdir}/ncurses" install
     popd
     pushd "${pkgname}"
     make WIDE_NCURSES=1 USE_NCURSES=1 KOI8=1
@@ -64,15 +64,15 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    pushd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    popd
 }
 
 package() {
     pushd "${_ncurses}-${_ncurses_pkgver}"
     make DESTDIR="${pkgdir}" install
     popd
-    
     pushd "${pkgname}"
     mkdir -m 755 -p "${pkgdir}/usr/share/goldedplus"/{docs,charset,colorset,config,template}
     install -d "${pkgdir}/usr/bin"
