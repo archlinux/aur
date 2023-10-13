@@ -10,13 +10,18 @@ source=("git+https://github.com/pgul/binkd.git"
         "binkd.service"
         "binkd@.service"
         "binkd.socket"
-        "binkd.tmpfiles")
+        "binkd.tmpfiles"
+        "ftnaddr.patch"
+        "readcfg.patch"
+        )
 install="binkd.install"
 sha256sums=('SKIP'
             '3f2ddf00b1552ad90a7320c7d904afab13fb2de525568190c80c7d87f67cc0c8'
             '2ebaebb7b525f9eaa1915dfeabba1626422d300f9820981225509203e6dcbc59'
             '2ddcb26a54f7a0f9a8ab5d8819431fb1f2bd961169c6fe5e7afa7f4c89e11786'
-            '5032916082884a938978f0d5168fd053baab230bd34e84008ae637515e04a685')
+            '5032916082884a938978f0d5168fd053baab230bd34e84008ae637515e04a685'
+            '0503990e3dc9911a1ca7272f64e9ff8114cb545bf8fa028e5a4d68f1d15f1fcf'
+            '0a48ca29ff84d3163bee935b03610ff6a93b5a20ad5501f1e20f0251658d0c4f')
 provides=("binkd")
 conflicts=("binkd")
 
@@ -27,6 +32,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/binkd"
+  patch -p1 -i ../ftnaddr.patch
+  patch -p1 -i ../readcfg.patch
   cp mkfls/unix/{Makefile*,configure*,install-sh,mkinstalldirs} .
   ./configure \
     --prefix=/usr           \
