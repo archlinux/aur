@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('html-builder-cli-git')
 pkgver=3.0.0.r5.g696e94b
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest way to package an HTML project into a fully native desktop app"
 arch=('any')
 url="https://github.com/yikuansun/html-builder-cli"
@@ -17,11 +17,8 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cd html-builder-cli
-	npm install
-}
-
 package() { 
-echo
+npm pack html-builder-cli
+npm install -g --prefix "$pkgdir/usr" html-builder-cli-*.tgz
+
 }
