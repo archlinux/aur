@@ -1,0 +1,22 @@
+pkgbase = python-asteroid-filterbanks-git
+	pkgdesc = The PyTorch-based audio source separation toolkit for researchers
+	pkgver = 0.4.0.ge15bb3f
+	pkgrel = 1
+	url = https://asteroid-team.github.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pytorch
+	depends = python-librosa
+	provides = asteroid-filterbanks
+	conflicts = asteroid-filterbanks
+	source = asteroid-filterbanks::git+https://github.com/asteroid-team/asteroid-filterbanks
+	md5sums = SKIP
+
+pkgname = python-asteroid-filterbanks-git
