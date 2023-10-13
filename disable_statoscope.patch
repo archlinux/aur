@@ -1,0 +1,30 @@
+From 179e5f779a799d953bb71c5d15e950a6ce0a34dd Mon Sep 17 00:00:00 2001
+From: Ernesto Castellotti <ernesto@castellotti.net>
+Date: Fri, 13 Oct 2023 11:18:35 +0200
+Subject: [PATCH] Disable statoscope
+
+---
+ webpack.config.ts | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/webpack.config.ts b/webpack.config.ts
+index 840871a49..1a1768824 100644
+--- a/webpack.config.ts
++++ b/webpack.config.ts
+@@ -220,16 +220,6 @@ export default function createConfig(
+       new ProvidePlugin({
+         Buffer: ['buffer', 'Buffer'],
+       }),
+-      new StatoscopeWebpackPlugin({
+-        statsOptions: {
+-          context: __dirname,
+-        },
+-        saveReportTo: path.resolve('./public/statoscope-report.html'),
+-        saveStatsTo: path.resolve('./public/build-stats.json'),
+-        normalizeStats: true,
+-        open: 'file',
+-        extensions: [new WebpackContextExtension()], // eslint-disable-line @typescript-eslint/no-use-before-define
+-      }),
+     ],
+ 
+     devtool: APP_ENV === 'production' && IS_ELECTRON_BUILD ? undefined : 'source-map',

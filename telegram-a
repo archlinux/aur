@@ -1,2 +1,3 @@
 #!/usr/bin/bash
-env ELECTRON_FORCE_IS_PACKAGED=true electron /usr/share/telegram-a/telegram-a.asar "$@"
+
+exec env ELECTRON_FORCE_IS_PACKAGED=true env CUSTOM_APP_NAME=telegram-a env CUSTOM_WINDOW_TITLE="Telegram A" electron /usr/lib/telegram-a "$@"

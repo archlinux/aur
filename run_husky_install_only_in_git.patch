@@ -1,0 +1,22 @@
+From 4e97d0210e240b0e4ac83ce424ce59458222ce3e Mon Sep 17 00:00:00 2001
+From: Ernesto Castellotti <ernesto@castellotti.net>
+Date: Fri, 13 Oct 2023 11:30:45 +0200
+Subject: [PATCH] Run husky install only in git
+
+---
+ package.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index a53d1f8e1..ce9d1c8db 100644
+--- a/package.json
++++ b/package.json
+@@ -30,7 +30,7 @@
+     "test:playwright": "playwright test",
+     "test:record": "playwright codegen localhost:1235",
+     "statoscope:validate-diff": "statoscope validate --input input.json --reference reference.json",
+-    "prepare": "husky install",
++    "prepare": "node -e \"if(require('fs').existsSync('.git')){process.exit(1)}\" || husky install",
+     "postinstall": "(cd dev/eslint-multitab && npm i)",
+     "postversion": "rm -rf .patch-version && npm run update_version"
+   },

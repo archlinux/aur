@@ -1,0 +1,22 @@
+From c11a146b649bf9a97977fb0476bdf9323ef98cfb Mon Sep 17 00:00:00 2001
+From: Ernesto Castellotti <ernesto@castellotti.net>
+Date: Fri, 13 Oct 2023 10:51:26 +0200
+Subject: [PATCH] Set custom window title from env
+
+---
+ src/electron/utils.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/electron/utils.ts b/src/electron/utils.ts
+index 4aa218b42..8ccc28dbc 100644
+--- a/src/electron/utils.ts
++++ b/src/electron/utils.ts
+@@ -39,7 +39,7 @@ export function reloadWindows(isAutoUpdateEnabled = true): void {
+ }
+ 
+ export function getAppTitle(chatTitle?: string): string {
+-  const appName = app.getName();
++  const appName = process.env.CUSTOM_WINDOW_TITLE || app.getName();
+ 
+   if (!chatTitle) {
+     return appName;

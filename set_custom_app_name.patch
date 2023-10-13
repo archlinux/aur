@@ -1,0 +1,24 @@
+From e2a12db540d7f25ac41f60a21453eeeaf2f3d6c7 Mon Sep 17 00:00:00 2001
+From: Ernesto Castellotti <ernesto@castellotti.net>
+Date: Thu, 12 Oct 2023 18:53:05 +0200
+Subject: [PATCH] Allow set custom app name
+
+---
+ src/electron/main.ts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/electron/main.ts b/src/electron/main.ts
+index 51e446123..435234890 100644
+--- a/src/electron/main.ts
++++ b/src/electron/main.ts
+@@ -19,6 +19,10 @@ contextMenu({
+ });
+ 
+ app.on('ready', () => {
++  if ("CUSTOM_APP_NAME" in process.env) {
++    app.setName(process.env.CUSTOM_APP_NAME);
++  }
++  
+   if (IS_MAC_OS) {
+     app.dock.setIcon(nativeImage.createFromPath(path.resolve(__dirname, '../public/icon-electron-macos.png')));
+   }
