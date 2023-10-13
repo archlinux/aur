@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell
-pkgver=1.2.0+302+g446e152
+pkgver=1.2.0+294+g5b7afc6
 pkgrel=1
 pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('fd' 'gnome-shell' 'pop-launcher' 'pop-shell-shortcuts' 'xorg-xprop')
 makedepends=('typescript' 'git')
 optdepends=('gnome-control-center: keybinding categories'
             'gnome-shell-extensions: for Native Window Placment extension')
-_commit=446e1520bba99376a04f320880ebd8a63a7a689a  # branch/master_jammy
-source=("git+https://github.com/ronanru/pop-shell-gnome-45.git#commit=${_commit}"
+_commit=5b7afc619721ff866507c72b95d65e15a252a1d9  # branch/master_mantic
+source=("git+https://github.com/pop-os/shell.git#commit=${_commit}"
         '0001-Remove-schema-handling-from-transpile.sh.patch'
         '50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override'
         '50_org.gnome.mutter.pop-shell.gschema.override'
@@ -28,22 +28,22 @@ sha256sums=('SKIP'
             '59cf3799036e22718577d0a89468605b6ca1e253d9d7133a8afd640188e2ea9d')
 
 pkgver() {
-  cd pop-shell-gnome-45
+  cd shell
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd pop-shell-gnome-45
+  cd shell
   patch -Np1 -i ../0001-Remove-schema-handling-from-transpile.sh.patch
 }
 
 build() {
-  cd pop-shell-gnome-45
+  cd shell
   make
 }
 
 package() {
-  cd pop-shell-gnome-45
+  cd shell
   make DESTDIR="${pkgdir}/" install
 
   # install the schema file
