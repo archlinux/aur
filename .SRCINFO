@@ -1,7 +1,7 @@
 pkgbase = vulkanscenegraph
 	pkgdesc = Vulkan & C++17 based Scene Graph Project
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vsg-dev/VulkanSceneGraph
 	arch = i686
 	arch = x86_64
