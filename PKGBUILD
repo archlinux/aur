@@ -11,7 +11,7 @@ depends=(python-mako pybind11 python-filelock)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('c267cd7d8583631858e1fcf493018385725fa7c2c1d87113e5a49a9e70cb0269')
+sha512sums=('8487672eeaa92ad6711f4328d8b082e2780aaaee2d9cf89560b61f01e95f200c91247db94bf7a07a5b15aff86ce4400d05acce28f19f623b2e62432f97531ef0')
 
 build() {
   cd ${_base}-${pkgver}
