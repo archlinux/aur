@@ -1,6 +1,6 @@
 pkgbase = decent-sampler-bin
 	pkgdesc = a sampling plugin that allows you to play samples in the Decent Sampler format
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://www.decentsamples.com/product/decent-sampler-plugin/
 	arch = x86_64
