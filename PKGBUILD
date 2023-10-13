@@ -1,6 +1,6 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-neo-xihei-screen-full'
-pkgver=1.105
+pkgver=1.106
 pkgrel=1
 pkgdesc="霞鹜新晰黑屏幕阅读版Droid Sans Fallback打底补全版，更适合 PC 及 Android 手机屏幕显示。"
 arch=('any')
@@ -11,7 +11,7 @@ source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWNeoXi
 changelog='changelog.txt'
 provides=('ttf-lxgw-neo-xihei-screen')
 conflicts=('ttf-lxgw-neo-xihei-screen')
-sha256sums=('50ac3ca5209c0ec2532d239582abcba5ea6637935d1d32ea00b74c056f5c3742'
+sha256sums=('2fa4d8098deb4a7555e99cfd445a56a23ab7a599857c3423f545ac0ea1e61e36'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
