@@ -68,7 +68,7 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	pip install --break-system-packages ../
 	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
-	cp set_paths.sh $pkgdir/opt/openmc
+	cp $srcdir/set_paths.sh $pkgdir/opt/openmc
 
 	# installed to opt, inform user how to set paths
 	_path_msg="$'\n'INFO: OpenMC and its dependencies were installed to the 
