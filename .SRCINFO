@@ -1,7 +1,7 @@
 pkgbase = interactive-data-editor-bin
 	pkgdesc = A Software to interactively edit data in a graphical manner
 	pkgver = 2.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://koushikphy.github.io/Interactive_Data_Editor/
 	arch = x86_64
 	license = MIT
@@ -33,8 +33,8 @@ pkgbase = interactive-data-editor-bin
 	provides = interactive-data-editor=2.13.1
 	conflicts = interactive-data-editor
 	source = interactive-data-editor-2.13.1.deb::https://github.com/Koushikphy/Interactive_Data_Editor/releases/download/v2.13.1/interactive-data-editor_2.13.1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/Koushikphy/Interactive_Data_Editor/master/LICENSE
-	sha256sums = 573c64a1f7105d317f1a4c007c0d9c53499ed1609f66bc5420c15cdfa77a0b1b
+	source = LICENSE::https://raw.githubusercontent.com/Koushikphy/Interactive_Data_Editor/v2.13.1/LICENSE
+	sha256sums = 001d2bfd866e318a40056eaa4b95ae52ebc937c784f4c0979f3b275d12aa029e
 	sha256sums = d728fec9e20c7c6b1528b62e2525c7f98d2f99061e5b8e3bbd33d27f27271265
 
 pkgname = interactive-data-editor-bin
