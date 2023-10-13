@@ -1,18 +1,21 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
+
 pkgname=python-croniter
 _name=${pkgname#python-}
-pkgver=1.4.1
-pkgrel=2
+# https://github.com/kiorky/croniter/blob/master/CHANGELOG.rst
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A Python module to provide iteration for datetime object."
 arch=('any')
 url="https://github.com/kiorky/croniter"
 license=('MIT')
-depends=('python' 'python-dateutil')
+depends=('python' 'python-dateutil' 'python-pytz')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytz')
+checkdepends=('python-pytest')
 source=("https://github.com/kiorky/croniter/archive/refs/tags/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('25f3d6f7eb20366405aae60d9fa16fc1dfc9ad5e1f8c737d59123a04a60936b7')
+sha256sums=('4091d6f0d72363c5989c2cb0b39b98318ae00f9eaa2e710f223a5d4f8eb01437')
 
 build() {
   cd "$_name-$pkgver"
