@@ -1,7 +1,7 @@
 pkgbase = super-controller
 	pkgdesc = Give your MIDI devices super powers: take control of the lights, messages, and communication between controllers.
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aolsenjazz/super-controller
 	arch = any
 	license = MIT
@@ -35,6 +35,7 @@ pkgbase = super-controller
 	depends = libxdamage
 	depends = nspr
 	depends = libcups
+	depends = electron19
 	conflicts = super-controller
 	source = super-controller-1.3.5.tar.gz::https://github.com/aolsenjazz/super-controller/archive/refs/tags/v1.3.5.tar.gz
 	sha256sums = 73ea7ef6c4c96b8d15c7bde4185a4cfcb4f4e3b33138b0a6df90ef73c0a91276
