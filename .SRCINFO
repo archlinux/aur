@@ -1,0 +1,15 @@
+pkgbase = p2pvpn-git
+	pkgdesc = Server-less Virtual Private Network. Git-version
+	pkgver = r134.34b8103
+	pkgrel = 1
+	url = https://gitlab.com/Monsterovich/p2pvpn
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = java-environment-common
+	makedepends = ant
+	depends = java-runtime
+	source = git+https://gitlab.com/Monsterovich/p2pvpn.git
+	sha256sums = SKIP
+
+pkgname = p2pvpn-git
