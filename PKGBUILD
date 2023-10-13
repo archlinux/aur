@@ -2,8 +2,8 @@
 
 pkgname=beagle-lib-opencl
 _pkgname=beagle-lib
-pkgver=4.0.0
-pkgrel=6
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="general purpose library for evaluating the likelihood of sequence evolution on trees (with opencl)"
 arch=('i686' 'x86_64')
 url="https://github.com/beagle-dev/beagle-lib"
@@ -14,7 +14,7 @@ makedepends=('cmake' 'make' 'java-environment' 'ocl-icd')
 provides=('beagle-lib')
 conflicts=('beagle-lib-all' 'beagle-lib' 'beagle-lib-cuda')
 source=("https://github.com/beagle-dev/beagle-lib/archive/v${pkgver}.tar.gz")
-sha512sums=('41f390dd7180584b1ca0b2fc798a88aa718f03ea0d40d9831178f0c14c303255470a84a45df580a2b22307e905230af628af8671b70fda4330d67963e114a06e')
+sha512sums=('39476c791b0445d582f723b08bfd6d5e08a858961fce1b5240bc20687c3228e246b3c6a53dc85824a3121b2823a6fcf7b110325cac9e645014f00536755093ba')
 
 prepare() {
   cd $srcdir/$_pkgname-$pkgver
