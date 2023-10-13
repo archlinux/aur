@@ -12,15 +12,15 @@ fi
 
 _has_locale=$(locale -a | grep ${_locale_check})
 if [ -z ${_has_locale} ]; then
-   echo -n "Checking system locale presence ${_locale_check}: "
-   echo "Not avaiable!"
-   echo "Add ${_locale_message} to /etc/locale.gen and run"
-   echo "sudo locale-gen"
-   exit 1
+    echo -n "Checking system locale presence ${_locale_check}: "
+    echo "Not avaiable!"
+    echo "Add ${_locale_message} to /etc/locale.gen and run"
+    echo "sudo locale-gen"
+    exit 1
 fi
 
-if [ "$TERM" = "rxvt-unicode-256color" ]; then
-    TERM=xterm-256color LANG=${_golded_lang} exec luit -encoding ${_luit_encoding} -x -- "${_gedlnx}" "$@"
+if [ "$LANG" = "${_golded_lang}" ]; then
+    exec "${_gedlnx}" "$@"
 else
     LANG=${_golded_lang} exec luit -encoding ${_luit_encoding} -x -- "${_gedlnx}" "$@"
 fi
