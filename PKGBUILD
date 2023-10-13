@@ -28,11 +28,11 @@ build() {
     --without-manpages --without-tests --without-pkg-config \
     --with-static --with-cxx-static --with-abi-version=5
     make clean
-    make -j8
-    make DESTDIR="${srcdir}/ncurses" install
+#    make -j8
+#    make DESTDIR="${srcdir}/ncurses" install
     popd
     pushd "${pkgname}"
-    make WIDE_NCURSES=0 USE_NCURSES=1 KOI8=1
+    make WIDE_NCURSES=1 USE_NCURSES=1 KOI8=1
     pushd docs
     make tokentpl.txt
     make tokencfg.txt
