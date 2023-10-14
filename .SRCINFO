@@ -1,0 +1,19 @@
+pkgbase = gbsplay-git
+	pkgdesc = A command line application for playing GameBoy sound files (GBS)
+	pkgver = 0.0.94.1085
+	pkgrel = 1
+	url = https://github.com/mmitch/gbsplay
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpulse
+	depends = nas
+	provides = gbsplay
+	conflicts = gbsplay
+	source = git+https://github.com/mmitch/gbsplay.git#branch=master
+	source = do-not-update-database.patch
+	sha512sums = SKIP
+	sha512sums = 2de20d227fe5cb17fd29b666fb55438560b6859a2bcccad910a631189a3698f220b29791493b5ab105fcabd92419b04edd220b85a4b5034723a63fe2f4b898ff
+
+pkgname = gbsplay-git
