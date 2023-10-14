@@ -14,7 +14,7 @@ optdepends=()
 provides=('asn1c')
 conflicts=('asn1c')
 options=('!strip')
-source=(git+https://github.com/mouse07410/asn1c.git#branch=vlm_master)
+source=(git+https://github.com/vlm/asn1c.git#branch=master)
 md5sums=('SKIP')
 
 pkgver() {
