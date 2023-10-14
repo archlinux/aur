@@ -6,7 +6,6 @@ pkgbase = unshell-git
 	arch = any
 	license = custom:MIT+NIGGER
 	source = unshell-git-0.8.0::git+https://codeberg.org/coralpink/unshell.git#tag=0.8.0
-	validpgpkeys = 88CF318EE94748D582940E86CC5693B9689DB487
 	md5sums = SKIP
 
 pkgname = unshell-git
