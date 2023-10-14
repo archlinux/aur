@@ -27,12 +27,12 @@ source+=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_na
 sha256sums=('c6476d7cd0d529b0b72f4acadb1269f9ed8b22f441e87a84f2a3b940bb87b666')
 
 build() {
-	cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
