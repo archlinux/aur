@@ -10,8 +10,8 @@ arch=('any')
 license=('unknown')
 depends=('nodejs')
 makedepends=('git' 'npm' 'imagemagick')
-provides=('flashbrowser-git')
-conflicts=('flashbrowser-git' 'flashbrowser-bin')
+provides=('flashbrowser')
+conflicts=('flashbrowser')
 _commit=0d97b175eab39383bc83dba59c17bde1b55c7574  # tags/v0.8.1
 source=("git+https://github.com/radubirsan/FlashBrowser#commit=$_commit"
 	"FlashBrowser.desktop")
