@@ -1,4 +1,4 @@
-# Maintainer: Daniel Menelkir <menelkir@gmail.com>
+# Maintainer: Daniel Menelkir <dmenelkir@gmail.com>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
@@ -6,7 +6,7 @@
 pkgname=mksh
 _pkgver=R59c
 pkgver=59.c
-pkgrel=6
+pkgrel=7
 pkgdesc='MirBSD Korn Shell'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
