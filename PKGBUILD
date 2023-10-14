@@ -9,7 +9,7 @@
 pkgname='amule-dlp-debug-git'
 epoch=0
 pkgver=2.3.3.r10608.20230302.7b3a07ab5
-pkgrel=1
+pkgrel=2
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch. Build with debug information. Latest GIT checkout."
 arch=(
   'i686'
@@ -18,12 +18,19 @@ arch=(
 url="https://github.com/persmule/amule-dlp"
 license=('GPL2')
 depends=(
+  'binutils' # In unstripped debug build, library '/usr/lib/libsframe.so.1' needed in files '/usr/bin/amuled', '/usr/bin/amule', '/usr/bin/amulegui', '/usr/bin/amulecmd', '/usr/bin/amuleweb' according to 'namcap'.
   'boost-libs'
   'crypto++>=6.0.0'
+  'gcc-libs'
   'gd'
   'geoip'
+  'glibc'
+  'libpng'
   'libsm'
   'libupnp'
+  'readline'
+  'zlib'
+  'zstd'
   'wxwidgets-gtk3'
 )
 conflicts=(
@@ -57,12 +64,19 @@ optdepends=(
   'gdb:                   To perform debugging.'
 
   'antileech-debug:       For debugging symbols in antileech.'
+  'binutils-debug:        For debugging symbols in libsframe.'
   'boost-libs-debug:      For debugging symbols in boost libs.'
   'crypto++-debug>=6.0.0: For debugging symbols in crypto++.'
+  'gcc-libs-debug:        For debugging symbols in gcc-libs.'
   'gd-debug:              For debugging symbols in gd.'
   'geoip-debug:           For debugging symbols in geoip.'
+  'glibc-debug:           For debugging symbols in glibc.'
+  'libpng-debug:          For debugging symbols in libpng.'
   'libsm-debug:           For debugging symbols in libsm.'
   'libupnp-debug:         For debugging symbols in libupnp.'
+  'readline-debug:        For debugging symbols in readline.'
+  'zlib-debug:            For debugging symbols in zlib.'
+  'zstd-debug:            For debugging symbols in zstd.'
   'wxwidgets-gtk3-debug:  For debugging symbols in wxWidgets.'
 )
 install='amule.install'

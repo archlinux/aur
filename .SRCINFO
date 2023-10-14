@@ -1,7 +1,7 @@
 pkgbase = amule-dlp-debug-git
 	pkgdesc = An eMule-like client for ed2k p2p network with DLP patch. Build with debug information. Latest GIT checkout.
 	pkgver = 2.3.3.r10608.20230302.7b3a07ab5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/persmule/amule-dlp
 	install = amule.install
@@ -12,23 +12,37 @@ pkgbase = amule-dlp-debug-git
 	makedepends = boost
 	makedepends = gettext
 	makedepends = git
+	depends = binutils
 	depends = boost-libs
 	depends = crypto++>=6.0.0
+	depends = gcc-libs
 	depends = gd
 	depends = geoip
+	depends = glibc
+	depends = libpng
 	depends = libsm
 	depends = libupnp
+	depends = readline
+	depends = zlib
+	depends = zstd
 	depends = wxwidgets-gtk3
 	optdepends = antileech: To use the antileech functionality.
 	optdepends = perl: For xas plugin (xChat2).
 	optdepends = gdb: To perform debugging.
 	optdepends = antileech-debug: For debugging symbols in antileech.
+	optdepends = binutils-debug: For debugging symbols in libsframe.
 	optdepends = boost-libs-debug: For debugging symbols in boost libs.
 	optdepends = crypto++-debug>=6.0.0: For debugging symbols in crypto++.
+	optdepends = gcc-libs-debug: For debugging symbols in gcc-libs.
 	optdepends = gd-debug: For debugging symbols in gd.
 	optdepends = geoip-debug: For debugging symbols in geoip.
+	optdepends = glibc-debug: For debugging symbols in glibc.
+	optdepends = libpng-debug: For debugging symbols in libpng.
 	optdepends = libsm-debug: For debugging symbols in libsm.
 	optdepends = libupnp-debug: For debugging symbols in libupnp.
+	optdepends = readline-debug: For debugging symbols in readline.
+	optdepends = zlib-debug: For debugging symbols in zlib.
+	optdepends = zstd-debug: For debugging symbols in zstd.
 	optdepends = wxwidgets-gtk3-debug: For debugging symbols in wxWidgets.
 	provides = amule=2.3.3.r10608.20230302.7b3a07ab5
 	provides = amule-dlp=2.3.3.r10608.20230302.7b3a07ab5
