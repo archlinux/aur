@@ -141,10 +141,8 @@ build() {
 package() {
   mkdir -p "${pkgdir}"/opt
   mkdir -p "${pkgdir}/usr/local/share/applications"
-# TODO: per-arch
-  _pkgfolder="build-linux-64"
-# Patch shortcut to avoid duplicated entries
-  sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
-  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
-  mv "${srcdir}/${_pkgfolder}" "${pkgdir}/opt/${pkgname}"
+  _build_folder="${srcdir}/build-linux-64/newview/packaged"
+# Patch shortcut maker
+  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${_build_folder}/etc/refresh_desktop_app_entry.sh"
+  mv "${_build_folder}" "${pkgdir}/opt/${pkgname}"
 }
