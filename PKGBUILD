@@ -22,7 +22,8 @@ url="http://www.lwks.com/"
 license=('custom')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit')
 optdepends=('nvidia-utils: only for nVidia users')
-conflicts=('lightworks')
+provides=('lightworks')
+conflicts=('lightworks' 'lwks-beta')
 replaces=('lwks-beta')
 source=(
     "https://lwks.s3.amazonaws.com/betas/public/lightworks/${lwksver}%20Beta%20Revision%20${lwksbuild}%20%28${lwksdate}%29/Lightworks-${lwksver}-Beta-${lwksbuild}.deb"
