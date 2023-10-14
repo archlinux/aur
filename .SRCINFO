@@ -1,6 +1,6 @@
 pkgbase = coppwr-bin
 	pkgdesc = Low level PipeWire control GUI
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://dimtpap.ovh/coppwr
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = coppwr-bin
 	optdepends = xdg-desktop-portal: Camera and Screencast XDP support
 	provides = coppwr
 	conflicts = coppwr
-	source = coppwr::https://github.com/dimtpap/coppwr/releases/download/1.3.0/coppwr
-	source = coppwr-1.3.0.tar.gz::https://github.com/dimtpap/coppwr/archive/refs/tags/1.3.0.tar.gz
-	sha256sums = 95fee1d8679a0e58fec7512e00d752fda7cebdf8b149a6c2dbb73053873ca187
-	sha256sums = 7cf0da3547daa1b8261485fb13db620880de3bc19f7a01eeb1be2f9ecd261e44
+	source = coppwr::https://github.com/dimtpap/coppwr/releases/download/1.4.0/coppwr
+	source = coppwr-1.4.0.tar.gz::https://github.com/dimtpap/coppwr/archive/refs/tags/1.4.0.tar.gz
+	sha256sums = 1ad9a041ebf87c2fc08ca416f18bd540203d5c38860fb083b93049d6cd588576
+	sha256sums = 966bf2b40cb55e3b34275d109c0b029d2570b4ef58ed4e556f9367428ee71177
 
 pkgname = coppwr-bin
