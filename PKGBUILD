@@ -1,10 +1,10 @@
 # Maintainer: 	whitels <2959471117 at qq dot com>
 
 _npmname=wenku8
-_npmver=3.5.0
+_npmver=4.0.0
 _npmrel=1
 pkgname=nodejs-wenku8-downloader # All lowercase
-pkgver=3.5.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="轻小说文库下载器"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
-sha1sums=('a6b7aa573520fe3d29d7258d4f3d9b6ea72c62ff')
+sha1sums=('b5734d16323c1f1305b14b045f7df67fcc80ab3c')
 
 package() {
     cd $srcdir
