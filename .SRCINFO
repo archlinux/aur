@@ -1,0 +1,11 @@
+pkgbase = fuzzel-dmenu-dropin
+	pkgdesc = Makes symlinks to provide dmenu when using fuzzel.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = fuzzel
+	provides = dmenu
+	conflicts = dmenu
+
+pkgname = fuzzel-dmenu-dropin
