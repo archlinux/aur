@@ -1,8 +1,8 @@
 #!/bin/sh
-if [ -e /usr/lib/jvm/java-20-openjfx/lib ]; then
-        JAVAFXPATH=/usr/lib/jvm/java-20-openjfx/lib
+if [ -e /usr/lib/jvm/java-21-openjfx/lib ]; then
+        JAVAFXPATH=/usr/lib/jvm/java-21-openjfx/lib
 else
-        JAVAFXPATH=/usr/lib/jvm/java-20-openjdk/lib
+        JAVAFXPATH=/usr/lib/jvm/java-21-openjdk/lib
 fi
 
 CP="/opt/bluej/boot.jar"
@@ -16,7 +16,7 @@ CP="/opt/bluej/boot.jar"
 JAVAFXJARS=`ls -1 /opt/bluej/javafx* | paste -sd ":" -`
 CP="$CP:$JAVAFXJARS"
 
-archlinux-java-run -a 20 -b 20 -- \
+archlinux-java-run -a 21 -b 21 -- \
         -Djdk.gtk.version=2 \
         -Dawt.useSystemAAFontSettings=on -Xmx512M \
         -cp "$CP" bluej.Boot \
