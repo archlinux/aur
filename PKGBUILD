@@ -17,20 +17,20 @@ install=alchemy.install
 depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc xdg-desktop-portal zlib)
 makedepends=('gcc' 'git' 'python-pip' 'python-virtualenv' 'sed' 'xz')
 optdepends=(
-	'alsa-lib: ALSA support'
-	'dbus-glib: D-Bus support for systemd'
-	'elogind: D-Bus support for non-systemd'
-	'freealut: OpenAL support'
-	'gamemode: Gamemode support'
-	'lib32-libidn11: SLVoice support'
-	'lib32-libsndfile: SLVoice support'
-	'lib32-util-linux: SLVoice support'
-	'lib32-gstreamer0.10: SLVoice support'
-	'libpulse: PulseAudio support'
-	'mesa-libgl: Intel, Radeon, Nouveau support'
-	'nvidia-libgl: NVIDIA support'
-	'nvidia-utils: NVIDIA support'
-	'wine: More up-to-date, less buggy SLVoice support')
+  'alsa-lib: ALSA support'
+  'dbus-glib: D-Bus support for systemd'
+  'elogind: D-Bus support for non-systemd'
+  'freealut: OpenAL support'
+  'gamemode: Gamemode support'
+  'lib32-libidn11: SLVoice support'
+  'lib32-libsndfile: SLVoice support'
+  'lib32-util-linux: SLVoice support'
+  'lib32-gstreamer0.10: SLVoice support'
+  'libpulse: PulseAudio support'
+  'mesa-libgl: Intel, Radeon, Nouveau support'
+  'nvidia-libgl: NVIDIA support'
+  'nvidia-utils: NVIDIA support'
+  'wine: More up-to-date, less buggy SLVoice support')
 provides=('alchemy-viewer')
 replaces=('alchemy-viewer-git')
 source=("${pkgname}.tar.gz"::'https://git-cdn.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${_commit_hash}"'/alchemy-next-'"${_commit_hash}"'.tar.gz')
@@ -144,11 +144,11 @@ build() {
 }
 
 package() {
-	mkdir -p "${pkgdir}"/opt
+  mkdir -p "${pkgdir}"/opt
   mkdir -p "${pkgdir}/usr/local/share/applications"
 
 # Patch shortcut to avoid duplicated entries
-  sed -i 's;Name=Alchemy;Name=Alchemy Viewer (git build);' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
-  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
-  mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
+  sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
+  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
+  mv "${srcdir}/${_pkgfolder}" "${pkgdir}/opt/${pkgname}"
 }
