@@ -1,6 +1,6 @@
 pkgbase = manim-git
 	pkgdesc = Animation engine for explanatory math videos
-	pkgver = 0.17.3.r40.gbff2ea44
+	pkgver = 0.17.3.r45.g7fab9cdbf
 	pkgrel = 1
 	url = https://www.manim.community
 	arch = any

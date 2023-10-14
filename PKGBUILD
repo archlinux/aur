@@ -3,7 +3,7 @@
 # Contributor: Groctel <aur@taxorubio.com>
 _base=manim
 pkgname=${_base}-git
-pkgver=0.17.3.r40.gbff2ea44
+pkgver=0.17.3.r45.g7fab9cdbf
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
@@ -43,7 +43,7 @@ check() {
   Xvfb $DISPLAY -screen 0 1280x1024x24 &
   test-env/bin/python -m pytest \
     --ignore=tests/test_graphical_units \
-    -k 'not good_markup and not font_size and not transparent and not graph_add_vertices and not code_indentation and not background_color and not special_tags_markup and not custom_dirs and not dry_run_with_png_format and not dry_run_with_png_format_skipped_animations and not graph_add_vertices and not good_markup and not special_tags_markup and not font_size and not manim_checkhealth_subcommand and not force_window_opengl_render_with_format'
+    -k 'not good_markup and not font_size and not transparent and not graph_add_vertices and not code_indentation and not background_color and not special_tags_markup and not custom_dirs and not dry_run_with_png_format and not dry_run_with_png_format_skipped_animations and not graph_add_vertices and not good_markup and not special_tags_markup and not font_size and not manim_checkhealth_subcommand and not force_window_opengl_render_with_format and not manim_new_command'
 }
 
 package() {
