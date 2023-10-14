@@ -1,0 +1,13 @@
+pkgbase = python-ghidra-stubs-bin
+	pkgdesc = Generates '.pyi' type stubs for the entire Ghidra API
+	pkgver = 10.4.1.0.4
+	pkgrel = 1
+	url = https://github.com/VDOO-Connected-Trust/ghidra-pyi-generator
+	arch = any
+	license = Apache2
+	makedepends = python-installer
+	depends = python
+	source = ghidra_stubs-10.4.1.0.4-py2.py3-none-any.whl::https://github.com/VDOO-Connected-Trust/ghidra-pyi-generator/releases/download/v10.4.1.0.4/ghidra_stubs-10.4.1.0.4-py2.py3-none-any.whl
+	sha256sums = 13296a8c6912f70a620bede176bd6b7f11822d817e59cdc6e689651e512571e9
+
+pkgname = python-ghidra-stubs-bin
