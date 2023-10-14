@@ -4,8 +4,8 @@
 pkgname=wonderlab-appimage
 _pkgname=wonderlab
 pkgver=1.2.8.1
-pkgrel=0.7
-pkgdesc="Next generation cross-platform Minecraft launcher"
+pkgrel=0.8
+pkgdesc="The next generation cross-platform Minecraft launcher"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Blessing-Studio/WonderLab.Override"
 license=('AGPL3')
