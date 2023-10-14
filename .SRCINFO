@@ -1,7 +1,7 @@
 pkgbase = rawhide
 	pkgdesc = Find files using pretty C expressions
-	pkgver = 3.2
-	pkgrel = 2
+	pkgver = 3.3
+	pkgrel = 1
 	url = https://raf.org/rawhide
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = rawhide
 	depends = pcre
 	backup = etc/rawhide.conf
 	backup = etc/rawhide.conf.d/attributes
-	source = https://raf.org/rawhide/download/rawhide-3.2.tar.gz
-	sha256sums = 73d0f755ec3edb07c714255a4fb2a47b52b6225815fc39c5719b8330f94530ce
+	source = https://raf.org/rawhide/download/rawhide-3.3.tar.gz
+	sha256sums = a51a1360ce4763838b29a548a8e49dcf47a93a922bf1df05c8b7d50ecb9ab09d
 
 pkgname = rawhide
