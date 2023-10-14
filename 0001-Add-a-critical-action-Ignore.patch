@@ -1,0 +1,50 @@
+From 1ba6e724dabf3a91e59b871750e22d420a4b1238 Mon Sep 17 00:00:00 2001
+From: Star Brilliant <m13253@hotmail.com>
+Date: Wed, 5 Oct 2016 22:02:36 +0800
+Subject: [PATCH] Add a critical action: Ignore
+
+---
+ etc/UPower.conf        | 3 ++-
+ src/linux/up-backend.c | 5 +++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/etc/UPower.conf b/etc/UPower.conf
+index e2c6a69..2bda528 100644
+--- a/etc/UPower.conf
++++ b/etc/UPower.conf
+@@ -88,7 +88,8 @@ TimeAction=120
+ # PowerOff
+ # Hibernate
+ # HybridSleep
++# Ignore
+ #
+ # If HybridSleep isn't available, Hibernate will be used
+ # If Hibernate isn't available, PowerOff will be used
+-CriticalPowerAction=HybridSleep
++CriticalPowerAction=Ignore
+diff --git a/src/linux/up-backend.c b/src/linux/up-backend.c
+index 2ba201a..ade64e9 100644
+--- a/src/linux/up-backend.c
++++ b/src/linux/up-backend.c
+@@ -392,6 +392,7 @@ up_backend_get_critical_action (UpBackend *backend)
+ 		{ "HybridSleep", "CanHybridSleep" },
+ 		{ "Hibernate", "CanHibernate" },
+ 		{ "PowerOff", NULL },
++		{ "Ignore", NULL },
+ 	};
+ 	guint i = 0;
+ 	char *action;
+@@ -447,6 +448,10 @@ up_backend_take_action (UpBackend *backend)
+ 	method = up_backend_get_critical_action (backend);
+ 	g_assert (method != NULL);
+ 
++        if (g_strcmp0 (method, "Ignore") == 0) {
++            return;
++        }
++
+ 	/* Take action */
+ 	g_debug ("About to call logind method %s", method);
+ 	g_dbus_proxy_call (backend->priv->logind_proxy,
+-- 
+2.10.0
+

@@ -1,0 +1,52 @@
+pkgbase = upower-nocritical-nosystemd-git
+	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action). Built without systemd dependencies. Latest Git checkout.
+	pkgver = 1.90.2+6.r1677.20230706.029651a
+	pkgrel = 1
+	url = http://upower.freedesktop.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = meson
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	depends = libgudev
+	depends = libimobiledevice
+	depends = libusb
+	optdepends = gobject-introspection-runtime: For /usr/lib/upower/integration-test.py.
+	optdepends = python>=3: For /usr/lib/upower/{integration-test.py,output_checker.py}.
+	optdepends = python-dbus: For /usr/lib/upower/integration-test.py.
+	optdepends = python-dbusmock: For /usr/lib/upower/integration-test.py.
+	optdepends = python-gobject: For For /usr/lib/upower/integration-test.py.
+	optdepends = python-packaging: For /usr/lib/upower/integration-test.py.
+	optdepends = umockdev: For For /usr/lib/upower/integration-test.py.
+	provides = upower=1.90.2+6.r1677.20230706.029651a
+	provides = upower-nocritical=1.90.2+6.r1677.20230706.029651a
+	provides = upower-nosystemd=1.90.2+6.r1677.20230706.029651a
+	provides = upower-git=1.90.2+6.r1677.20230706.029651a
+	conflicts = upower
+	options = emptydirs
+	backup = etc/UPower/UPower.conf
+	source = upower::git+https://gitlab.freedesktop.org/upower/upower.git
+	source = 0001-Add-a-critical-action-Ignore.patch
+	sha256sums = SKIP
+	sha256sums = bf82acf436db8ab06aa90ff2f8841cb977439937b955a92644da785dc612dde3
+
+pkgname = upower-nocritical-nosystemd-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libgudev
+	depends = libimobiledevice
+	depends = libusb
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	provides = upower=1.90.2+6.r1677.20230706.029651a
+	provides = upower-nocritical=1.90.2+6.r1677.20230706.029651a
+	provides = upower-nosystemd=1.90.2+6.r1677.20230706.029651a
+	provides = upower-git=1.90.2+6.r1677.20230706.029651a
+	provides = libupower-glib.so
