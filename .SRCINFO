@@ -1,7 +1,7 @@
 pkgbase = python-pyannote.core-git
 	pkgdesc = Advanced data structures for handling temporal segments with attached labels.
 	pkgver = 5.0.0.g13a43c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyannote/pyannote-core
 	arch = any
 	license = MIT

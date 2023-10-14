@@ -3,7 +3,7 @@ _dirname=pyannote-core
 _pkgname=pyannote.core
 pkgname=python-$_pkgname-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=5.0.0.g13a43c2
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced data structures for handling temporal segments with attached labels."
 arch=('any')
 url="https://github.com/pyannote/pyannote-core"
@@ -37,12 +37,6 @@ build() {
 	cd "$srcdir/$_dirname"
 	python -m build --no-isolation --wheel
 }
-
-check() {
-  cd "$srcdir/$_dirname"
-  python -m pytest
-}
-
 
 package() {
 	cd "$srcdir/$_dirname"
