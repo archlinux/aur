@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=bedroomstudio-git
-pkgver=6a4a7090be3bc2b8afd9a4d76a839c1b35fd5023
+pkgver=c607e3d2fb96d1b2ea46c170a98564bfbd13c101
 pkgrel=1
 pkgdesc='A set of LV2 plugins for bedroom music studios'
 arch=('x86_64')
