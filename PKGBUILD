@@ -5,11 +5,12 @@
 _upstreamname=libnbd
 _pkgname="${_upstreamname}-ocaml"
 pkgname="${_pkgname}-git"
+epoch=0
 pkgver=1.18.0+2.r2050.20230928.42a8518
 # _majorver="$(awk -F. '{print $1}' <<< "${pkgver}")"
 # _minorver="$(awk -F. '{print $2}' <<< "${pkgver}")"
 # _nextminorver="$(awk '{print $1+1}' <<< "${_minorver}")"
-pkgrel=1
+pkgrel=2
 pkgdesc="NBD client library in userspace. Compiled with OCaml bindings. Latest git checkout."
 arch=(
   'i686'
@@ -60,6 +61,8 @@ source=(
 sha256sums=(
   'SKIP'
 )
+# LTO breaks linking into OCaml library, e.g. with building the package `virt-v2v`.
+options+=('!lto')
 
 prepare() {
   cd "${srcdir}/${_upstreamname}"

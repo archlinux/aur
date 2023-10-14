@@ -1,7 +1,8 @@
 pkgbase = libnbd-ocaml-git
 	pkgdesc = NBD client library in userspace. Compiled with OCaml bindings. Latest git checkout.
 	pkgver = 1.18.0+2.r2050.20230928.42a8518
-	pkgrel = 1
+	pkgrel = 2
+	epoch = 0
 	url = https://gitlab.com/nbdkit/libnbd
 	arch = i686
 	arch = x86_64
@@ -30,6 +31,7 @@ pkgbase = libnbd-ocaml-git
 	provides = python-nbd=1.18.0+2.r2050.20230928.42a8518
 	conflicts = libnbd
 	conflicts = libnbd-ocaml
+	options = !lto
 	source = libnbd::git+https://gitlab.com/nbdkit/libnbd.git
 	sha256sums = SKIP
 
