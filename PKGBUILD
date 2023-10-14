@@ -21,9 +21,9 @@ sha512sums=('e7e47f5c99d0536de091204df8eb94fb32471ae550f7861fd0373057af90f8bf4f5
 
 prepare() {
     # Extract Appimage
-    chmod +x "${srcdir}/firefly-desktop-$pkgver.AppImage"
-    "${srcdir}/firefly-desktop-$pkgver.AppImage" --appimage-extract > /dev/null 2>&1
-    chmod -x "${srcdir}/firefly-desktop-$pkgver.AppImage"
+    chmod +x "${srcdir}/firefly-iota-desktop-$pkgver.AppImage"
+    "${srcdir}/firefly-iota-desktop-$pkgver.AppImage" --appimage-extract > /dev/null 2>&1
+    chmod -x "${srcdir}/firefly-iota-desktop-$pkgver.AppImage"
 }
 
 package() {
