@@ -3,7 +3,7 @@
 
 pkgname=iotas
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple note taking"
 arch=('any')
 url="https://gitlab.gnome.org/cheywood/iotas"
@@ -15,7 +15,7 @@ depends=(
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('2868a08e17701c4e9bd489071da9e7e86308205e3a36d5ff34e320e18e48eace7041e8a65bba6c09f2032dfdd575012a15087ae31fbee2182afb39c24b604fd6')
+b2sums=('30407e6457ae52bf0dc3e5f46947d47216535e2c49a66428735953bb5e8c628ec250e31b9a74b29d5d71b724feaa659b077695471822f037143cd3fb36895055')
 
 _srcdir="$pkgname-$pkgver"
 
