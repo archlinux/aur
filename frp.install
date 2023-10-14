@@ -7,6 +7,8 @@ pre_upgrade() {
 
 	if (( $(vercmp "$2" "0.52.1-2") < 0 )); then
 		echo -e '\t** New configuration file changes: https://github.com/fatedier/frp#configuration-files **\n'
+	else
+		echo
 	fi
 
 	echo -e '\tTo switch to the toml configuration, edit the corresponding systemd service file'
