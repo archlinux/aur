@@ -1,7 +1,7 @@
 pkgbase = linux-test-project-git
 	pkgdesc = Collection of tools for testing the Linux kernel and related features
-	pkgver = 20220930.r75.g8cd3bf314
-	pkgrel = 1
+	pkgver = 20230929.r30.g50a587989
+	pkgrel = 2
 	url = https://linux-test-project.github.io/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,11 @@ pkgbase = linux-test-project-git
 	depends = libaio
 	depends = libmnl
 	depends = python
+	depends = glibc
+	depends = openssl
+	depends = libtirpc
 	options = !lto
+	options = !strip
 	source = git+https://github.com/linux-test-project/ltp.git
 	sha256sums = SKIP
 

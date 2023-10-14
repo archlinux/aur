@@ -2,17 +2,17 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=linux-test-project-git
-pkgver=20220930.r75.g8cd3bf314
-pkgrel=1
+pkgver=20230929.r30.g50a587989
+pkgrel=2
 pkgdesc="Collection of tools for testing the Linux kernel and related features"
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://linux-test-project.github.io/"
-depends=(acl bash gawk libcap perl numactl libaio libmnl python)
+depends=(acl bash gawk libcap perl numactl libaio libmnl python glibc openssl libtirpc)
 makedepends=(git)
+options=(!lto !strip)
 source=("git+https://github.com/linux-test-project/ltp.git")
 sha256sums=('SKIP')
-options=(!lto)
 
 pkgver() {
   cd "${srcdir}/ltp"
@@ -32,6 +32,11 @@ build() {
     --with-bash
 
   make
+}
+
+check() {
+  cd "${srcdir}/ltp"
+  make test
 }
 
 package() {
