@@ -1,34 +1,24 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=imibrowser
 pkgver=14.0.4725
-pkgrel=1
+pkgrel=2
 pkgdesc="iReasoning MIB browser tool for SNMP API."
 url="https://www.ireasoning.com/mibbrowser.shtml"
-arch=(x86_64)
-license=(
-	custom
-	GPL
-)
-depends=(jre-openjdk)
-makedepends=(imagemagick)
-provides=(imibrowser)
-conflicts=(imibrowser)
-replaces=(imibrowser)
-source=(
-	$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip
-	iMIBrowser.desktop
-)
-sha256sums=('49acea40220d08b0f5f41ca4f750d52fa59ded779f258d12dbd60a137484b945'
+arch=('x86_64')
+license=('custom' 'GPL')
+depends=('jre-openjdk')
+makedepends=('imagemagick')
+source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
+	"iMIBrowser.desktop")
+sha256sums=('129852e3403ede5a4d47a3febe477e5f533ec45452cc381bad3e1744de37cf72'
             '5d2ca5f1199f429a09f700476753bfdabd111acbf4fdaf7ea43ae8ed3879aa29')
 
 prepare() {
-	# information about license agreement for free Personal Edition version
+	# Information about license agreement for free Personal Edition version
 	printf "Please read carefully through MIB Browser License Agreement (Personal Edition) at\nhttps://www.ireasoning.com/downloadmibbrowserlicense.shtml\n"
 
-    cd "$srcdir"
-
-# create executable /usr/bin file
+# Create executable /usr/bin file
 cat > imibrowser.sh <<EOF
 #!/bin/sh
 nohup /opt/imibrowser/browser.sh &
@@ -36,10 +26,10 @@ EOF
 }
 
 package() {
-    # install /usr/bin executable file
+    # Install /usr/bin executable file
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-	# install application files
+	# Install application files
 	install -d ${pkgdir}/opt/$pkgname/{config,docs,images,lib,mibs}
 	install -Dm755 "$srcdir/ireasoning/mibbrowser/browser.sh" "$pkgdir/opt/$pkgname/browser.sh"
 	install -Dm644 "$srcdir/ireasoning/mibbrowser/audio/alarm.wav" "$pkgdir/opt/$pkgname/audio/alarm.wav"
@@ -48,13 +38,13 @@ package() {
 	cd "$srcdir/ireasoning/mibbrowser"
 	cp -dr --no-preserve='ownership' config docs images lib mibs "$pkgdir/opt/$pkgname"
 
-	# install license files
+	# Install license files
 	install -Dm644 "$srcdir/ireasoning/mibbrowser/license.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/ireasoning/mibbrowser/THIRDPARTYLICENSEREADME.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/THIRDPARTY_LICENSE"
 
-	# install icons
+	# Install icons
 	for d in 16 24 32 48 128 256; do
 		mkdir -p "$pkgdir/usr/share/icons/hicolor/${d}x${d}/apps"
 	done
@@ -71,9 +61,9 @@ package() {
 		"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
 	done
 
-	# install /usr/share/pixmaps png file
+	# Install /usr/share/pixmaps png file
 	install -Dm644 "$srcdir/ireasoning/mibbrowser/images/browser.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-	# install desktop file
+	# Install desktop file
 	install -Dm644 "$srcdir/iMIBrowser.desktop" "$pkgdir/usr/share/applications/iMIBrowser.desktop"
 }
