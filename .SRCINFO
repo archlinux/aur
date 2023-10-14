@@ -1,0 +1,18 @@
+pkgbase = hyprfreeze-git
+	pkgdesc = Utility to suspend a game process (and other programs) in Hyprland
+	pkgver = 0.1.0.r0.g4d3f9d5
+	pkgrel = 1
+	url = https://github.com/Zerodya/hyprfreeze
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = hyprland
+	depends = jq
+	depends = hyprprop
+	provides = hyprfreeze
+	conflicts = hyprfreeze
+	source = git+https://github.com/Zerodya/hyprfreeze
+	md5sums = SKIP
+
+pkgname = hyprfreeze-git
