@@ -263,7 +263,6 @@ build() {
     --mandir=/usr/share/man
     --with-gameuser=:games
     --with-modules
-    --without-libotf
     --without-m17n-flt
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings you set in ~/.emacs.
