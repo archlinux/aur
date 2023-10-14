@@ -1,7 +1,7 @@
 pkgbase = libguestfs-git
 	pkgdesc = Access and modify virtual machine disk image
 	pkgver = 1.51.7+1.r11930.20231006.f8cbd7140
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = https://libguestfs.org
 	install = appliance.install
@@ -50,6 +50,7 @@ pkgbase = libguestfs-git
 	depends = glibc
 	depends = hivex>=1.2.7
 	depends = jansson>=2.7
+	depends = libvirt>=0.10.2
 	depends = libxml2
 	depends = linux>=2.6.34
 	depends = ncurses
@@ -73,7 +74,6 @@ pkgbase = libguestfs-git
 	optdepends = libselinux: Used by the libvirt backend to securely confine the appliance (sVirt).
 	optdepends = libsystemd-journal: For accessing systemd journals.
 	optdepends = libtsk: For filesystem forensics analysis.
-	optdepends = libvirt>=0.10.2
 	optdepends = lua: For LUA bindings.
 	optdepends = nbdkit>=1.12
 	optdepends = netpbm: Render icons from guests.

@@ -11,7 +11,7 @@ _pkgname=libguestfs
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.51.7+1.r11930.20231006.f8cbd7140
-pkgrel=3
+pkgrel=4
 pkgdesc="Access and modify virtual machine disk image"
 arch=(
   "i686"
@@ -36,6 +36,7 @@ depends=(
   'glibc'
   'hivex>=1.2.7'
   'jansson>=2.7'
+  'libvirt>=0.10.2'
   'libxml2'
   'linux>=2.6.34'
   'ncurses'
@@ -50,7 +51,6 @@ depends=(
   #"augeas"
   #"hivex>=1.3.2"
   #"libconfig"
-  #"libvirt"
   #"fuse"
   #"file"
   #"cpio"
@@ -126,7 +126,6 @@ optdepends=(
   "libselinux: Used by the libvirt backend to securely confine the appliance (sVirt)."
   "libsystemd-journal: For accessing systemd journals."
   "libtsk: For filesystem forensics analysis."
-  'libvirt>=0.10.2'
   'lua: For LUA bindings.'
   "nbdkit>=1.12"
   "netpbm: Render icons from guests."
