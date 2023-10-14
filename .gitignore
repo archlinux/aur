@@ -1,0 +1,8 @@
+# Ignore makepkg outputs
+pkg/
+src/
+*.zst
+
+# Ignore downloaded source files
+*.zip
+intiface-engine-flutter-bridge-license.md
