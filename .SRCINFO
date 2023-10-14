@@ -1,6 +1,6 @@
 pkgbase = pass-it-on-server-bin
 	pkgdesc = Pass-it-on server component binary only
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/kwheelans/pass-it-on
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = pass-it-on-server-bin
 	license = MIT
 	provides = pass-it-on-server
 	conflicts = pass-it-on-server
-	source = pass-it-on-server-bin-source-0.6.1.tar.gz::https://github.com/kwheelans/pass-it-on/archive/refs/tags/v0.6.1.tar.gz
+	source = pass-it-on-server-bin-source-0.7.1.tar.gz::https://github.com/kwheelans/pass-it-on/archive/refs/tags/v0.7.1.tar.gz
 	b2sums = f0a2ba384e3bcc6fcce068a847fdf27900a4261201abfc4f62d50396fde669b2973fe5236321be8d839ca3ff6b8cd0401ba04f4c6e3265f6872eac3ff1a120c5
-	source_x86_64 = pass-it-on-server-bin-0.6.1.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.6.1/pass-it-on-server-v0.6.1-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = pass-it-on-server-bin-0.7.1.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.7.1/pass-it-on-server-v0.7.1-x86_64-unknown-linux-gnu.tar.gz
 	b2sums_x86_64 = 5a0af3d43efc56a6db17b97e0fe0855ddc7e2c7b06cf65503c5c98219729d9f4e173e23afe5a29e6a0950e9f0b560e3a669adc1413217b30afc508ca3e044c8f
-	source_aarch64 = pass-it-on-server-bin-0.6.1.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.6.1/pass-it-on-server-v0.6.1-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = pass-it-on-server-bin-0.7.1.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.7.1/pass-it-on-server-v0.7.1-aarch64-unknown-linux-gnu.tar.gz
 	b2sums_aarch64 = c6a9ec0a500a127a0c38b280418c54183a7499c0ea1a048dbed3b648f590d062deb540a8362efa89406ae72f82d7b7afe4eda1b7a953806f7c046d3c9e1e9dbd
 
 pkgname = pass-it-on-server-bin

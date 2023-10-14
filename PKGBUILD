@@ -1,7 +1,7 @@
 # Maintainer: Kevin Wheelans <kevin dot wheelans at proton dot me>
 
 pkgname="pass-it-on-server-bin"
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Pass-it-on server component binary only"
 arch=("x86_64" "aarch64")
