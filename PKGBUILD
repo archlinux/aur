@@ -7,7 +7,7 @@
 # Contributor: vEX <vex at niechift dot com>
 
 pkgname=pcsx2
-pkgver=1.7.5015
+pkgver=1.7.5111
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -59,7 +59,7 @@ makedepends=(
 optdepends=('qt6-wayland: Wayland support'
             'libpipewire: Pipewire support'
             'libpulse: PulseAudio support')
-_tag=a641d2a2de604936907684bb28143183e483ef91
+_tag=1bc77620d9e79699fb77b8cc2efee722a132660c
 options=(!lto)
 source=(
 	"git+https://github.com/PCSX2/pcsx2.git#tag=${_tag}"
@@ -67,13 +67,13 @@ source=(
 	xz-pcsx2::git+https://github.com/PCSX2/xz.git
 	git+https://github.com/google/googletest.git
 	git+https://github.com/fmtlib/fmt.git
-	git+https://github.com/rtissera/libchdr.git
 	git+https://github.com/biojppm/rapidyaml.git
 	git+https://github.com/biojppm/cmake.git
 	git+https://github.com/biojppm/c4core.git
 	git+https://github.com/biojppm/debugbreak.git
 	git+https://github.com/fastfloat/fast_float.git
 	git+https://github.com/KhronosGroup/glslang.git
+	git+https://github.com/webmproject/libwebp.git
 	vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	git+https://github.com/facebook/zstd.git
 	git+https://github.com/RetroAchievements/rcheevos.git
@@ -102,7 +102,7 @@ prepare() {
 		xz-pcsx2::3rdparty/xz/xz
 		googletest::3rdparty/gtest
 		fmt::3rdparty/fmt/fmt
-		libchdr::3rdparty/libchdr/libchdr
+		libwebp::3rdparty/libwebp/libwebp
 		rapidyaml::3rdparty/rapidyaml/rapidyaml
 		glslang::3rdparty/glslang/glslang
 		vulkan-headers::3rdparty/vulkan-headers
