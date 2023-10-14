@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.15.132
+pkgver=6.1.57
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -10,18 +10,19 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
-  xmlto 'python-sphinx<6.0.0' python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
 )
 options=('!strip')
 _srcname=linux-$pkgver
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
+
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
   0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
-  0004-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
-  0005-lg-laptop-Recognize-more-models.patch
+  #0004-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  #0005-lg-laptop-Recognize-more-models.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -31,14 +32,15 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=(
-  '4177b5c4d6e749bb8339ac4aa68eb0932ead9490b956a80d9a597089959618ac'
+  'f9ebfe3ddc5152d87b37e33be30e31875d137433be10a57ce29d2eae7b6e91b1'
   'SKIP'
   '34ff5888b26967abe27a2c0a3c8185f5625412b65ddf9221a7d71fdbaae6c356'
+
   '7bd64ff894475b3415d792ba8466ba7e8f872af56dbf1aeed0d261fe4008b8b5'
   '39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
   '56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
-  '5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde'
-  '067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9'
+  #'5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde'
+  #'067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9'
   'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
   '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6'
 )
@@ -60,8 +62,9 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
+    echo
     echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+    patch -Np1 -F100 -i "../$src"
   done
 
   echo "Setting config..."
