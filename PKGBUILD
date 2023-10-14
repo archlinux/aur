@@ -1,7 +1,7 @@
 # Maintainer: e-dong <eric2043@gmail.com>
 pkgname=encoder-benchmark
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to benchmark your hardware's real-time video encoding capabilities."
 arch=("x86_64")
 url="https://github.com/Proryanator/encoder-benchmark"
@@ -11,7 +11,7 @@ makedepends=('git' 'cargo')
 provides=('encoder-benchmark')
 conflicts=('encoder-benchmark-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-alpha.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('da434fe45173ae89c3f99034dadd40bace42a7a7a8f3a9ba4764ecbfca598f20')
 
 prepare() {
     ln -s "$(pwd)/$pkgname-$pkgver-alpha" "$(pwd)/$pkgname-$pkgver"
