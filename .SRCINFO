@@ -1,6 +1,6 @@
 pkgbase = python-sherpa
 	pkgdesc = Modeling and fitting package for scientific data analysis
-	pkgver = 4.15.1
+	pkgver = 4.16.0
 	pkgrel = 1
 	url = http://cxc.cfa.harvard.edu/contrib/sherpa
 	arch = i686
@@ -20,9 +20,10 @@ pkgbase = python-sherpa
 	makedepends = graphviz
 	makedepends = python-nbsphinx>=0.8.6
 	makedepends = pandoc
-	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.15.1.tar.gz
+	makedepends = python-bokeh
+	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.16.0.tar.gz
 	source = sherpa_local_fftw.patch
-	md5sums = 2682eb18db97fb2efaf02a1b63753b6e
+	md5sums = f827bf013c11749b707670c9bde7b42d
 	md5sums = d1823cc7683442d92450fadff7aed362
 
 pkgname = python-sherpa
@@ -38,3 +39,4 @@ pkgname = python-sherpa
 
 pkgname = python-sherpa-doc
 	pkgdesc = Documentation for Sherpa
+	arch = any

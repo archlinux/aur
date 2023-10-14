@@ -2,7 +2,7 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.15.1
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
@@ -18,7 +18,8 @@ makedepends=('python-setuptools'
              'python-sphinx-astropy'
              'graphviz'
              'python-nbsphinx>=0.8.6'
-             'pandoc')
+             'pandoc'
+             'python-bokeh')
 #'gcc-fortran')
 checkdepends=('python-pytest'
               'python-astropy'
@@ -27,7 +28,7 @@ checkdepends=('python-pytest'
 #             'stk')-xvfb
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('2682eb18db97fb2efaf02a1b63753b6e'
+md5sums=('f827bf013c11749b707670c9bde7b42d'
          'd1823cc7683442d92450fadff7aed362')
 
 get_pyver() {
@@ -49,13 +50,15 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" #-vv --color=yes
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-sherpa() {
@@ -77,6 +80,7 @@ package_python-sherpa() {
 
 package_python-sherpa-doc() {
     pkgdesc="Documentation for Sherpa"
+    arch=('any')
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
