@@ -1,7 +1,7 @@
 # Maintainer: Maxim Llorephie <aur at llorephie dot org>
 pkgname=mfterm-git
 pkgdesc="Terminal for working with Mifare Classic 1-4k tags"
-pkgver=r144.c05f2ee
+pkgver=r148.e13d373
 pkgrel=1
 url="https://github.com/4ZM/mfterm"
 arch=('x86_64' 'i686')
@@ -10,6 +10,8 @@ depends=('libnfc' 'readline' 'bison' 'openssl' 'flex')
 makedepends=('automake')
 source=("$pkgname::git+https://github.com/4ZM/mfterm.git")
 md5sums=('SKIP')
+provides=('mfterm')
+conflicts=('mfterm')
 
 pkgver() {
   cd "$pkgname"
@@ -20,6 +22,7 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations -Wno-error=lto-type-mismatch -Wno-error=stringop-overread -Wno-error=stringop-overflow -Wno-error=stringop-truncation"
   cd "${srcdir}/${pkgname}"
   ./autogen.sh
   ./configure --prefix=/usr
