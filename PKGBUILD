@@ -2,7 +2,7 @@
 
 pkgname=asn1c-git
 _pkgname=asn1c
-pkgver=r2431.fdb68ce2
+pkgver=r2767.84d3a59c
 pkgrel=1
 pkgdesc="An ASN.1 compiler"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=()
 provides=('asn1c')
 conflicts=('asn1c')
 options=('!strip')
-source=(git+https://github.com/vlm/asn1c.git#branch=master)
+source=(git+https://github.com/mouse07410/asn1c.git#branch=vlm_master)
 md5sums=('SKIP')
 
 pkgver() {
