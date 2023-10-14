@@ -84,13 +84,3 @@ pkgname = waterfox-g-arkenfox-autoconfig
 	conflicts = waterfox-g-autoconfig
 	conflicts = waterfox-g-policy
 	conflicts = waterfox-g-user-autoconfig
-
-pkgname = waterfox-current-arkenfox-autoconfig
-	pkgdesc = Use arkenfox user.js system-wide, as Waterfox autoconfig.js policy
-	depends = waterfox-current
-	depends = arkenfox-autoconfig=117.0
-	provides = waterfox-current-autoconfig
-	provides = waterfox-current-policy
-	conflicts = waterfox-current-autoconfig
-	conflicts = waterfox-current-policy
-	conflicts = waterfox-current-user-autoconfig

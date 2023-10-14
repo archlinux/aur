@@ -40,7 +40,7 @@ b2sums=('6b379e58ee3768d70cd6abdd61e36c4c01f2903ec2c24bcdae4a71d5e5f1c1961eeced5
 _browsers_lib=(firefox{,-{esr,developer-edition}} icecat palemoon)
 
 # List of browsers, which install their data in /opt/
-_browsers_opt=(waterfox-{g,current})
+_browsers_opt=(waterfox-g)
 
 # Browsers' full name map (using BASH associative array)
 # This is optional to be defined.
@@ -51,7 +51,6 @@ _fn["firefox-developer-edition"]="Firefox Developer Edition"
 _fn["icecat"]="GNU IceCat"
 _fn["palemoon"]="Palemoon"
 _fn["waterfox-g"]="Waterfox"
-_fn["waterfox-current"]="Waterfox"
 
 # Common package description.
 _cdesc() {
