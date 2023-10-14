@@ -2,7 +2,7 @@
 
 pkgname=python-trl
 _pkgname=${pkgname#python-}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Train transformer language models with reinforcement learning'
 arch=('any')
@@ -15,13 +15,19 @@ depends=(
   'python-pytorch'
   'python-tqdm'
   'python-transformers'
+  'python-tyro'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=()
+optdepends=(
+  'python-diffusers: Diffusion models'
+  'python-peft: Parameter efficient fine-tuning'
+  'python-deepspeed: Low-level routines for distributed training'
+  'bitsandbytes: Quantization support'
+)
 source=(
   "python-trl-$pkgver.tar.gz"::"https://github.com/lvwerra/trl/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('7324b173555acf817b87f5ba7d292b8d25618af26a5812b32ab1c7f3b0b3e7c7')
+sha256sums=('873789ec1eb59ed3adebab7fd7814d001813a4662f6ed814f906d2453fbb0e43')
 
 build() {
   python -m build -nw $_pkgname-$pkgver
