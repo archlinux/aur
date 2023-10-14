@@ -2,14 +2,14 @@
 # Contributor: Sergey A. <murlakatamenka@disroot.org>
 pkgname=tuxclocker
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt overclocking tool for GNU/Linux"
 arch=('x86_64')
 url="https://github.com/Lurkki14/tuxclocker"
 license=('GPL3')
 depends=('boost-libs' 'hicolor-icon-theme' 'libdrm' 'libxnvctrl' 'nvidia-utils'
          'qt5-base' 'qt5-charts')
-makedepends=('boost' 'cuda' 'git' 'meson' 'qt5-tools')
+makedepends=('boost' 'git' 'meson' 'qt5-tools')
 _commit=0f66731013320377a7a683bd1489c2754faffb92  # tags/1.1.0^0
 source=("git+https://github.com/Lurkki14/tuxclocker.git#commit=${_commit}"
         'git+https://github.com/mpark/patterns.git'
@@ -19,7 +19,7 @@ source=("git+https://github.com/Lurkki14/tuxclocker.git#commit=${_commit}"
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '849cc7b46eab203860c69469e6c837dd0456ad5af3926c822388632a319030cf'
+            'dd5628bea92e16f4d8cbee851deceb1e3488cbabfcf34716946923710eb03d24'
             '9e0f528d7f24e501fa9586101231c7f85cf5fbb1709ff354b2abe8d422977d9f')
 
 pkgver() {

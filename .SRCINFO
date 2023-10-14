@@ -1,12 +1,11 @@
 pkgbase = tuxclocker
 	pkgdesc = Qt overclocking tool for GNU/Linux
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lurkki14/tuxclocker
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
-	makedepends = cuda
 	makedepends = git
 	makedepends = meson
 	makedepends = qt5-tools
@@ -25,7 +24,7 @@ pkgbase = tuxclocker
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 849cc7b46eab203860c69469e6c837dd0456ad5af3926c822388632a319030cf
+	sha256sums = dd5628bea92e16f4d8cbee851deceb1e3488cbabfcf34716946923710eb03d24
 	sha256sums = 9e0f528d7f24e501fa9586101231c7f85cf5fbb1709ff354b2abe8d422977d9f
 
 pkgname = tuxclocker

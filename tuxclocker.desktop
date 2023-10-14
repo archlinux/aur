@@ -2,7 +2,7 @@
 Type=Application
 Name=Tuxclocker
 Comment=GPU overclocking utility
-Exec=tuxclocker
+Exec=tuxclocker-qt
 Icon=tuxclocker
 Terminal=false
 Categories=Utility;
