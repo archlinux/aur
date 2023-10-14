@@ -7,7 +7,7 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=connman-git
-pkgver=1.38.r1.gfb1b6fdd
+pkgver=1.42.r10.g53964711
 pkgrel=1
 pkgdesc="Intel's modular network connection manager. Git version."
 url="https://01.org/connman"
@@ -15,8 +15,7 @@ arch=('x86_64')
 license=('GPL2')
 provides=("connman=$pkgver")
 conflicts=('connman')
-replaces=('connman')
-makedepends=('bluez' 'wpa_supplicant' 'openconnect' 'openvpn' 'ppp' 'iwd')
+makedepends=('bluez' 'wpa_supplicant' 'openconnect' 'openvpn' 'ppp' 'iwd' 'git')
 depends=('dbus' 'iptables' 'gnutls' 'glib2')
 optdepends=('bluez: Support for Bluetooth devices'
             'wpa_supplicant: for WiFi devices'
@@ -61,6 +60,12 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-*}"
-	make DESTDIR="$pkgdir" install
+  cd "$srcdir/${pkgname%-*}"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "${srcdir}/${pkgname%-*}/src/main.conf" "${pkgdir}/etc/connman/main.conf"
+  find "${pkgdir}/usr" -name \*.service -exec sed -i 's/s\(bin\)/\1/' {} +
+# See FS#48044
+  sed -i 's/ProtectSystem=full/ProtectSystem=true/' "${pkgdir}"/usr/lib/systemd/system/connman.service
+  rm -r "${pkgdir}"/usr/lib/tmpfiles.d
+
 }
