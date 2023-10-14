@@ -3,7 +3,7 @@
 
 pkgname=python313
 pkgver=3.13.0a1
-pkgrel=1
+pkgrel=2
 _pyver=3.13.0
 _pybasever=3.13
 _pymajver=3
@@ -59,7 +59,7 @@ package() {
   make DESTDIR="${pkgdir}" altinstall maninstall
 
   # Split tests
-  rm -r "$pkgdir"/usr/lib/python*/{test,ctypes/test,distutils/tests,idlelib/idle_test,lib2to3/tests,tkinter/test,unittest/test}
+  rm -r "$pkgdir"/usr/lib/python*/{test,idlelib/idle_test}
 
   # Avoid conflicts with the main 'python' package.
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
