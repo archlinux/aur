@@ -141,7 +141,8 @@ build() {
 package() {
   mkdir -p "${pkgdir}"/opt
   mkdir -p "${pkgdir}/usr/local/share/applications"
-
+# TODO: per-arch
+  _pkgfolder="build-linux-64"
 # Patch shortcut to avoid duplicated entries
   sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
   sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
