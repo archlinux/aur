@@ -1,5 +1,5 @@
 pkgname=ashpd-demo
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1.0
 pkgdesc='asph-demo'
 arch=('x86_64' 'aarch64')
@@ -7,8 +7,8 @@ url='https://github.com/bilelmoussaoui/ashpd'
 license=('MIT')
 depends=('gtk4' 'libadwaita')
 makedepends=('git' 'ninja' 'meson' 'rust')
-source=("$pkgname-${pkgver}.tar.gz::https://github.com/bilelmoussaoui/ashpd/releases/download/0.4.0-demo/ashpd-demo-0.4.0.tar.xz")
-sha256sums=('345f8baaeab64af5dc2ef902cbf705a290f2ad10d6168a442886159eb3345010')
+source=("$pkgname-${pkgver}.tar.gz::https://github.com/bilelmoussaoui/ashpd/releases/download/0.4.1-demo/ashpd-demo-0.4.1.tar.xz")
+sha256sums=('e3d356db030b35993d5ae158edf5ff3fd2be9ac4e874f8c56df6d4f8f2a29793')
 
 build() {
   cd $pkgname-${pkgver}
