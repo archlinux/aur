@@ -5,6 +5,8 @@ pkgbase = neverwinter.nim-bin
 	url = https://github.com/niv/neverwinter.nim
 	arch = any
 	license = MIT
+	provides = neverwinter.nim
+	conflicts = neverwinter.nim
 	source = https://github.com/niv/neverwinter.nim/releases/download/1.6.4/neverwinter.linux.amd64.zip
 	md5sums = ce262d15c6841c7118b26196dda25556
 

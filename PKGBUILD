@@ -6,6 +6,8 @@ pkgdesc="A nim-lang library and utility collection to read and write data files 
 arch=('any')
 url="https://github.com/niv/neverwinter.nim"
 license=('MIT')
+conflicts=('neverwinter.nim')
+provides=('neverwinter.nim')
 source=("https://github.com/niv/neverwinter.nim/releases/download/$pkgver/neverwinter.linux.amd64.zip")
 md5sums=('ce262d15c6841c7118b26196dda25556')
 
