@@ -1,8 +1,8 @@
-# Maintainer: Nguyen Pham Cao <natsukagami at gmail dot com>
+# Maintainer: HackerNCoder <hackerncoder at encryptionin dot space>
+# Contributor: Nguyen Pham Cao <natsukagami at gmail dot com>
 
 pkgname=mpd-mpris-bin
-pkgver=0.4.0
-_pkgver=0.4.0-2
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='An implementation of the MPRIS protocol for MPD.'
 arch=("x86_64" "i686" "aarch64" "armv6h" "armv7h")
@@ -12,20 +12,20 @@ depends=('glibc')
 provides=('mpd-mpris')
 conflicts=('mpd-mpris')
 source=(
-    "${pkgname}.service::https://raw.githubusercontent.com/natsukagami/mpd-mpris/v${_pkgver}/mpd-mpris.service"
-    "${pkgname}-README::https://raw.githubusercontent.com/natsukagami/mpd-mpris/v${_pkgver}/README.md")
-source_x86_64=("${pkgname}-x86_64-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_amd64.tar.gz")
-source_i686=("${pkgname}-386-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_386.tar.gz")
-source_aarch64=("${pkgname}-aarch64-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_arm64.tar.gz")
-source_armv6h=("${pkgname}-armv6h-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_armv6.tar.gz")
-source_armv7h=("${pkgname}-armv7h-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_armv7.tar.gz")
+    "${pkgname}.service::https://raw.githubusercontent.com/natsukagami/mpd-mpris/v${pkgver}/mpd-mpris.service"
+    "${pkgname}-README::https://raw.githubusercontent.com/natsukagami/mpd-mpris/v${pkgver}/README.md")
+source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/mpd-mpris_${pkgver}_linux_amd64.tar.gz")
+source_i686=("${pkgname}-386-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/mpd-mpris_${pkgver}_linux_386.tar.gz")
+source_aarch64=("${pkgname}-aarch64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/mpd-mpris_${pkgver}_linux_arm64.tar.gz")
+source_armv6h=("${pkgname}-armv6h-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/mpd-mpris_${pkgver}_linux_armv6.tar.gz")
+source_armv7h=("${pkgname}-armv7h-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/mpd-mpris_${pkgver}_linux_armv7.tar.gz")
 sha256sums=('e36b7de3fcb9eb53ad62944115b8e43181e34bae1b7068a428f19da5c44b6dc9'
-            '6086e1dc23d3eba00b1a11e45c87f3b8495b286b921a717d8e012ee03403d89d')
-sha256sums_x86_64=('451dec98e41a42aa5aa3f26e5379ba8959e85c87c5751353ec2c75e80ed29bcf')
-sha256sums_i686=('5383ae1d8d88e30b43b02739378e0470332b62abaf56548e7ae37359b94f520f')
-sha256sums_aarch64=('3c16418befc11352d2bd06b248bec431f4abaf2a36a59fbc9115a0199826c42f')
-sha256sums_armv6h=('3205ec0e1d4af2d93f415f6a03fd1c6cf6ba3dcb95e9b4c74f090bc777d36d9b')
-sha256sums_armv7h=('f7befcc7f20c55c22710707dac42f4f31cfbb0d2c0e12c4114d7424aa0b4122d')
+            '96dae9ece0f4fa0d69889d3311166f318152c6f6f29953711a222c70ef285645')
+sha256sums_x86_64=('641d64b844c0eb6f0493e764e718b6a0da40f2b2611e09f7bb490efecb08f78a')
+sha256sums_i686=('cb7e352543be98afb8d6e2569b69a9b05998538e2d7e096f485b12fa985f6a82')
+sha256sums_aarch64=('9cc95881bf8b857f2f44ef92ed722c27e161c67ba2814401165de6b63e873052')
+sha256sums_armv6h=('1bf8d2af1c97e50ca1ef7c0b6577391146a1a806f26383d4312a2254113882f0')
+sha256sums_armv7h=('eac3ed6fd1cf0dcad8c67b426ac403955da378c003d57eaa5e3ea75a2eb83a89')
 
 package() {
     # Install binary
