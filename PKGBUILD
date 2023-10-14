@@ -3,7 +3,7 @@
 
 pkgname=python313
 pkgver=3.13.0a1
-pkgrel=2
+pkgrel=3
 _pyver=3.13.0
 _pybasever=3.13
 _pymajver=3
@@ -20,7 +20,6 @@ validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
 )
-provides=("python=$_pyver")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
