@@ -1,6 +1,6 @@
 pkgbase = godot-git
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = 4.1.r1.4a20869
+	pkgver = 4.2.r58201.a574c0296b
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -24,8 +24,10 @@ pkgbase = godot-git
 	optdepends = libspeechd: Text-to-Speech Support
 	provides = godot
 	conflicts = godot
+	source = godot::git+https://github.com/godotengine/godot.git
 	source = godot.desktop
 	source = icon.png
+	sha256sums = SKIP
 	sha256sums = 2ae039a3879b23e157f2125e0b326fa1ef66d56bfd596c790e8943d27652e93a
 	sha256sums = 99f9d17c4355b274ef0c08069cf6e756a98cd5c9d9d22d1b39f79538134277e1
 

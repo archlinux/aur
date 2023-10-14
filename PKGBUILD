@@ -1,4 +1,4 @@
-# Maintainer: vitalyr <vr@vitalyr.com>
+# Maintainer: VitalyR <vr@vitalyr.com>
 # Maintainer: tas <tasgon_@out/look.com>
 # Maintainer: QuantMint <qua/ntmint@/protonm/ail.com>
 # Contributor: Daniel Segesdi <sege/sdi.d/ani@/gma/il.com>
@@ -7,7 +7,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=4.1.r1.4a20869
+pkgver=4.2.r58201.a574c0296b
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -26,25 +26,15 @@ else
 fi
 
 source=(
+    "${_pkgname}::git+https://github.com/godotengine/godot.git"
 	godot.desktop
 	icon.png
 )
 sha256sums=(
+    'SKIP'
 	'2ae039a3879b23e157f2125e0b326fa1ef66d56bfd596c790e8943d27652e93a'
 	'99f9d17c4355b274ef0c08069cf6e756a98cd5c9d9d22d1b39f79538134277e1'
 )
-
-prepare() {
-    if [ ! -d "${srcdir}/${_pkgname}" ]
-    then
-        cd ${srcdir}
-        git clone https://github.com/godotengine/godot.git --branch master --single-branch --depth 1
-    else
-        cd "${srcdir}/${_pkgname}"
-        git fetch --depth 1 origin master
-        git reset --hard origin/master
-    fi
-}
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
