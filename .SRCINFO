@@ -1,7 +1,7 @@
 pkgbase = waypaper-git
 	pkgdesc = GUI wallpaper setter for both Wayland and X11 window managers that works as a frontend for popular backends like swaybg, swww, and feh.
-	pkgver = 2.0.r5.g9ff12ac
-	pkgrel = 1
+	pkgver = 2.0.2.r0.gbf55f79
+	pkgrel = 2
 	url = https://github.com/anufrievroman/waypaper
 	arch = any
 	license = GPL3

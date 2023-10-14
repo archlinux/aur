@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=waypaper-git
-pkgver=2.0.r5.g9ff12ac
-pkgrel=1
+pkgver=2.0.2.r0.gbf55f79
+pkgrel=2
 pkgdesc='GUI wallpaper setter for both Wayland and X11 window managers that works as a frontend for popular backends like swaybg, swww, and feh.'
 arch=('any')
 url='https://github.com/anufrievroman/waypaper'
@@ -32,6 +32,4 @@ build() {
 package() {
   cd "${pkgname%-*}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 "data/${pkgname%-*}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-*}.desktop"
-  install -Dm644 "data/${pkgname%-*}.svg" "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-*}.svg"
 }
