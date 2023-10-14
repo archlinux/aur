@@ -30,7 +30,7 @@ depends=('love' 'lua51-lsqlite3')
 makedepends=('unzip' 'python' 'python-requests')
 source=("$pkgname-$pkgver.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/$pkgver/artifacts?artifactName=linux.main&\$format=zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('7f55d8e7fa24b64cebcdf953cc38a66ce1cc4776ddd235e1d430d353ef973356')
+sha256sums=('9d32525a22dc4da795b33a2b8f527353e13d484cf5375f0b46a6f0094b5e9571')
 
 
 prepare() {
