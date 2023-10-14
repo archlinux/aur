@@ -1,10 +1,11 @@
 # Maintainer: Robin Lange <robin.langenc@gmail.com>
+# Contributor: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
-pkgver=44.1
+pkgver=45.0.1
 pkgrel=1
 pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
 url="https://wiki.gnome.org/Projects/GDM"
@@ -30,15 +31,15 @@ makedepends=(
   yelp-tools
 )
 checkdepends=(check)
-_commit=b622872c5f24960c18900ebf14b5233b8701a8f9  # tags/44.1^0
+_commit=ef5620737de697d215f655722617e49f4a9a448e  # tags/45.0.1^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
   0001-Xsession-Don-t-start-ssh-agent-by-default.patch
   0002-nvidia-prime.patch
 )
-sha256sums=('SKIP'
-            '39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8'
-            'a1fb80c69454492390e4b7edac0efe55b2178c7031051d3eab99ed8c14d3e0e4')
+md5sums=('SKIP'
+         '48c7fb3c79183ae55b4dcb25cf75204e'
+         '7776ab2a539af7ce44cb3ae04669ffa1')
 
 pkgver() {
   cd gdm
@@ -47,9 +48,6 @@ pkgver() {
 
 prepare() {
   cd gdm
-
-  # https://gitlab.gnome.org/GNOME/gdm/-/issues/730
-  git cherry-pick -n b29510dbc51ccf71a7c0ed656d21634a83766c0c
 
   # Don't start ssh-agent by default
   git apply -3 ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
