@@ -10,7 +10,6 @@ depends=('dmidecode' 'libadwaita' 'nvtop')
 makedepends=('blueprint-compiler' 'cargo' 'meson')
 checkdepends=('appstream-glib')
 options=('!lto')
-_commit=be47f8c560487efc6e6a419d59c69bfbdb819324
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('e0c54fffc8b588e906ea8aa6976af0c435879bb3db6d3e2c4e0aeb13c7fbd753')
 
