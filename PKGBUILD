@@ -1,9 +1,10 @@
-# Maintainer: Andy Alt <andy400-dev at yahoo dot com>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Contributor: Andy Alt <andy400-dev at yahoo dot com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=gimp-plugin-dcamnoise2
 pkgver=0.64
-pkgrel=7
+pkgrel=8
 pkgdesc="Removes noise from images"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/stativ/gimp-plugin-dcamnoise2/src/master/"
