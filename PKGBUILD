@@ -2,13 +2,14 @@
 pkgname=ocaml-libvirt-git
 _pkgname=libvirt-ocaml
 pkgver=r185.94a93bd
-pkgrel=4
+pkgrel=5
 pkgdesc="OCaml bindings for libvirt"
 arch=('i686' 'x86_64')
 url="https://libvirt.org/"
 license=('GPL2')
 depends=('ocaml' 'libvirt')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'git')
+conflicts=('ocaml-libvirt')
 provides=('ocaml-libvirt')
 options=('!strip')
 source=(git+https://gitlab.com/libvirt/libvirt-ocaml.git)
