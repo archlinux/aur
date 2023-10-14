@@ -1,0 +1,18 @@
+pkgbase = bedroomstudio-git
+	pkgdesc = A set of LV2 plugins for bedroom music studios
+	pkgver = 6a4a7090be3bc2b8afd9a4d76a839c1b35fd5023
+	pkgrel = 1
+	url = https://github.com/psemiletov/bedroomstudio
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = lv2
+	provides = bedroomstudio
+	conflicts = bedroomstudio
+	source = git+https://github.com/psemiletov/bedroomstudio.git
+	md5sums = SKIP
+
+pkgname = bedroomstudio-git
