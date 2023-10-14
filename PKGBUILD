@@ -11,7 +11,7 @@ _apswver=3.37.0-r1
 _ubuntuver=18.04
 pkgname=acestream-engine
 pkgver=3.1.74
-pkgrel=2
+pkgrel=3
 pkgdesc="Ace Stream engine"
 arch=("x86_64")
 url="https://acestream.org"
@@ -24,7 +24,6 @@ depends=(
 )
 optdepends=(
   "pygtk: GTK+ gui support"
-  "python2-libappindicator: GTK+ gui support"
 )
 backup=("usr/lib/$pkgname/acestream.conf")
 install="$pkgname.install"

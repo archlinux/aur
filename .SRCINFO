@@ -1,7 +1,7 @@
 pkgbase = acestream-engine
 	pkgdesc = Ace Stream engine
 	pkgver = 3.1.74
-	pkgrel = 2
+	pkgrel = 3
 	url = https://acestream.org
 	install = acestream-engine.install
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = acestream-engine
 	depends = python2-setuptools
 	depends = sqlite
 	optdepends = pygtk: GTK+ gui support
-	optdepends = python2-libappindicator: GTK+ gui support
 	backup = usr/lib/acestream-engine/acestream.conf
 	source = acestream-engine-3.1.74.tar.gz::https://download.acestream.media/linux/acestream_3.1.74_ubuntu_18.04_x86_64.tar.gz
 	source = apsw-3.37.0.tar.gz::https://github.com/rogerbinns/apsw/archive/3.37.0-r1.tar.gz
