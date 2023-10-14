@@ -1,14 +1,14 @@
 pkgbase = obsidian-bin
 	pkgdesc = A powerful knowledge base that works on top of a local folder of plain text Markdown files
-	pkgver = 1.4.14
+	pkgver = 1.4.16
 	pkgrel = 1
 	url = https://github.com/obsidianmd/obsidian-releases
 	arch = x86_64
 	license = custom:Commercial
 	conflicts = obsidian
-	noextract = Obsidian-1.4.14.AppImage
+	noextract = Obsidian-1.4.16.AppImage
 	options = !strip
-	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v1.4.14/Obsidian-1.4.14.AppImage
-	sha256sums = 8aff1adb87ed38aef5229df0b05e27255e5ec73e2214d1fba25bc5f7f5ce284f
+	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v1.4.16/Obsidian-1.4.16.AppImage
+	sha256sums = 821ae29478809a6cb40d17810e0b5304c8c9c334035f3633337d3044fe932a81
 
 pkgname = obsidian-bin
