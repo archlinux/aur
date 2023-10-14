@@ -2,14 +2,14 @@
 
 pkgname=snitch
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight C++20 testing framework"
 arch=("x86_64")
-url="https://github.com/cschreib/snitch"
+url="https://github.com/snitch-org/snitch"
 license=("Boost")
 depends=("gcc-libs")
 makedepends=("cmake" "python")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cschreib/snitch/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/snitch-org/snitch/archive/v${pkgver}.tar.gz")
 b2sums=("f77bfe38a498ffb502acd275aec68b347a90e684331f7dfa8329a1cc669512c23d92ef7674b30da9f9d56503efff1affbe77b35b8e64aa821ccbc98d178d3e52")
 
 build() {
