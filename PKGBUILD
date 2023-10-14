@@ -1,7 +1,7 @@
 # Maintainer: Kevin Wheelans <kevin dot wheelans at proton dot me>
 
 pkgname="pass-it-on-server"
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Pass-it-on server component"
 arch=("any")
@@ -11,7 +11,7 @@ conflicts=("pass-it-on-server-bin")
 depends=("openssl")
 makedepends=("cargo")
 source=("https://github.com/kwheelans/pass-it-on/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ec2529c92c2ae950b467837f4ce18c51d3bd0ff6ae8e8daa014a3211d421b6102662e8ff56a62796c3d624e45ac66e51f47ad18d6b8677074907bdc03de09961')
+b2sums=('f0a2ba384e3bcc6fcce068a847fdf27900a4261201abfc4f62d50396fde669b2973fe5236321be8d839ca3ff6b8cd0401ba04f4c6e3265f6872eac3ff1a120c5')
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
