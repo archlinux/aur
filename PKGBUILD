@@ -3,10 +3,10 @@
 pkgname=callisto
 pkgver=0.1.0
 pkgrel=1
-pkgdesc='A featureful runtime for Lua 5.4'
+pkgdesc='standalone scripting platform for Lua 5.4'
 arch=('x86_64')
 url='https://jtbx.github.io/callisto'
-depends=('readline')
+depends=('readline' 'libbsd')
 license=('GPL')
 options=('!emptydirs')
 source=(https://github.com/jtbx/callisto/releases/download/v$pkgver/callisto-$pkgver.tgz)
