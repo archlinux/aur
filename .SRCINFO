@@ -1,6 +1,6 @@
 pkgbase = whitebox-tools
 	pkgdesc = WhiteboxTools is an advanced geospatial data analysis platform developed by Prof. John Lindsay
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://www.whiteboxgeo.com/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = whitebox-tools
 	license = MIT
 	makedepends = rust
 	depends = python
-	source = https://github.com/jblindsay/whitebox-tools/archive/v2.2.0.tar.gz
-	sha256sums = b7715731e1519be71cf1d05d1d1f93c36d498c218da0a898bab95e16dd403a8e
+	source = https://github.com/jblindsay/whitebox-tools/archive/v2.3.0.tar.gz
+	sha256sums = 295698debe203b6b61092d267e8e57021bb61941422a5432cd830b3ba2cd5ee8
 
 pkgname = whitebox-tools
