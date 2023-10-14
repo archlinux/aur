@@ -10,7 +10,7 @@
 
 pkgname=ttf-google-fonts-git
 pkgver=r6359.d19527646
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
@@ -70,7 +70,6 @@ provides=('jsmath-fonts'
           'ttf-oxygen'
           'ttf-oxygen-git'
           'ttf-pt-fonts'
-          'ttf-roboto-mono'
           'ttf-source-code-pro-ibx'
           'ttf-source-sans-pro-ibx'
           'ttf-vollkorn-ibx')

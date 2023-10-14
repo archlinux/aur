@@ -1,7 +1,7 @@
 pkgbase = ttf-google-fonts-git
 	pkgdesc = TrueType fonts from the Google Fonts project (git version)
 	pkgver = r6359.d19527646
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/google/fonts
 	arch = any
@@ -44,7 +44,6 @@ pkgbase = ttf-google-fonts-git
 	provides = ttf-oxygen
 	provides = ttf-oxygen-git
 	provides = ttf-pt-fonts
-	provides = ttf-roboto-mono
 	provides = ttf-source-code-pro-ibx
 	provides = ttf-source-sans-pro-ibx
 	provides = ttf-vollkorn-ibx
