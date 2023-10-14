@@ -18,8 +18,7 @@ pkgbase = asn1c-mouse07410-git
 	provides = asn1c
 	conflicts = asn1c
 	options = !strip
-	source = git+https://github.com/mouse07410/asn1c.git#branch=master
+	source = git+https://github.com/mouse07410/asn1c.git#branch=vlm_master
 	sha512sums = SKIP
 
 pkgname = asn1c-mouse07410-git
-
