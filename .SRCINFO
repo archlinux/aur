@@ -1,7 +1,7 @@
 pkgbase = picom-allusive
 	pkgdesc = Smooth animations picom fork, builds upon and cleans up picom-pijulius
 	pkgver = 0.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/allusive-dev/picom-allusive
 	arch = i686
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = picom-allusive
 	conflicts = compton-git
 	conflicts = picom
 	conflicts = picom-git
-	source = picom::git+https://github.com/allusive-dev/picom-allusive.git#tag=0.3.2
+	source = ::git+https://github.com/allusive-dev/picom-allusive.git#tag=0.3.2
 	md5sums = SKIP
 
 pkgname = picom-allusive
