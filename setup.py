@@ -4,7 +4,7 @@ from setuptools import setup
 setup(
 name         = 'sofastats',
 description  = 'Statistics Open For All',
-version      = '1.5.5',
+version      = '1.5.6',
 author       = 'Grant Paton-Simpson',
 author_email = 'grant@sofastatistics.com',
 package_dir  = {'sofastats':'sofastats_src'},

@@ -1,7 +1,7 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 
 pkgname=sofastats
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Statistics Open For All"
 arch=('any')
@@ -14,8 +14,8 @@ depends=('bash-completion' 'ghostscript'
          'python-requests' 'python-wxpython')
 makedepends=('python2-distribute')
 replaces=('sofa')
-source=("http://downloads.sourceforge.net/project/sofastatistics/sofastatistics/$pkgver/"$pkgname"_"$pkgver"-1.tar.gz" "setup.py" "sofastats.desktop")
-md5sums=('d50f8f3bcdea7b891c1109114a016400'
+source=("http://downloads.sourceforge.net/projects/sofastatistics/sofastatistics/$pkgver/"$pkgname"-"$pkgver".tar.gz" "setup.py" "sofastats.desktop")
+md5sums=('300ff3613e90e9a89366c763f96b32af'
          '9b3104b2b8636f77330fcf6539ab1bac'
          'f267ddd0371a29a3466bec780eda3fd6')
 
