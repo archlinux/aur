@@ -7,5 +7,5 @@ post_install() {
 	echo "    cmus_status_scrobbler --auth"
 	echo "Follow the instructions."
 	echo "Finally, set the cmus setting"
-	echo '    :set status_display_program=cmus_status_scrobbler "$@" &'
+	echo "    :set status_display_program=cmus_status_scrobbler"
 }
