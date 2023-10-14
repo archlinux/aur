@@ -1,7 +1,4 @@
-*.tar.gz
-*.tar.xz
-src/
-pkg/
-*.run
-*.pkg.tar
-*.xml
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
