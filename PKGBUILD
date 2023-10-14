@@ -2,8 +2,8 @@
 
 _mesonver=$(meson --version)
 pkgname=cryptor
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Simple GUI application for gocryptfs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/moson-mo/cryptor"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('gtk3' 'libgee' 'glib2' 'json-glib')
 makedepends=('vala' 'meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9fdd757db68a8551dbf0dc4aef41981c8396eaaa45236ad66f4b6e38795e4391')
+sha256sums=('43f5dc0691f8c8283ef477a1625174a248320cf0233c96e98c7b25be25149356')
 
 build() {
   arch-meson "$pkgname-$pkgver" build-$_mesonver
