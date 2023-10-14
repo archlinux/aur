@@ -6,16 +6,16 @@
 
 _pkgname=godot-mono
 pkgname=godot-mono-git
-pkgver=4.1.r2674.gb137180
+pkgver=4.1.r2708.g51f81e1
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=(x86_64 i686)
 url="https://godotengine.org/"
 license=(MIT)
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
-         libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
-         mbedtls2 miniupnpc pcre2 dotnet-sdk)
-makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync)
+   libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
+   mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
+makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip python)
 provides=(godot-mono)
 conflicts=(godot-mono)
 source=("git+https://github.com/godotengine/godot.git")
@@ -83,6 +83,7 @@ build() {
     modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd
 }
 
+
 package() {
     install -d \
         "${pkgdir}/opt/${_pkgname}/" \
@@ -92,27 +93,43 @@ package() {
     rsync -a \
         "${srcdir}/godot/bin" "${pkgdir}/opt/${_pkgname}"
 
-    # I have to use TERM=xterm because of an bug in mono
     cat > "${pkgdir}/usr/bin/${_pkgname}" <<-EOF
-		#!/usr/bin/env bash
+		#!/usr/bin/env sh
 		/opt/godot-mono/bin/godot.linuxbsd.editor.x86_64.mono
 	EOF
-
-    chmod a+x ${pkgdir}/usr/bin/${_pkgname}
+    sed -i 's/x86_64.mono/x86_64.mono "$@"/g' "${pkgdir}/usr/bin/${_pkgname}"
+    
+    chmod a+x "${pkgdir}/usr/bin/${_pkgname}"
 
     install -Dm644 \
         "${srcdir}/godot/icon.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
-    cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<-EOF
-		[Desktop Entry]
-		Type=Application
-		Name=Godot Mono
-		GenericName=Godot 2D and 3D game engine
-		Comment=Godot is an Open-Source game engine for 2D and 3D games
-		Keywords=game-dev;development;
-		Categories=Development;
-		Exec=/usr/bin/${_pkgname}
-		Icon=${_pkgname}
-	EOF
+    install -Dm644 \
+	"${srcdir}/godot/LICENSE.txt" \
+	"${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+    [[ -f "${srcdir}/godot/misc/dist/linux/godot.6" ]] && gzip -9 "${srcdir}/godot/misc/dist/linux/godot.6"
+
+    install -Dm644 \
+	"${srcdir}/godot/misc/dist/linux/godot.6.gz" \
+	"${pkgdir}/usr/share/man/man6/${_pkgname}.6.gz"
+
+    install -Dm644 \
+	"${srcdir}/godot/misc/dist/linux/org.godotengine.Godot.xml" \
+	"${pkgdir}/usr/share/mime/packages/org.godotengine.Godot-mono-git.xml"
+
+    if cat "${srcdir}/godot/misc/dist/linux/org.godotengine.Godot.desktop" | grep mono;
+    then
+	:
+    else
+    sed -i 's/Exec=godot/Exec=godot-mono/g' "${srcdir}/godot/misc/dist/linux/org.godotengine.Godot.desktop"
+    sed -i 's/Icon=godot/Icon=godot-mono/g' "${srcdir}/godot/misc/dist/linux/org.godotengine.Godot.desktop"
+    sed -i 's/Name=Godot Engine/Name=Godot Engine Mono/g' "${srcdir}/godot/misc/dist/linux/org.godotengine.Godot.desktop"
+    fi
+
+    install -Dm644 \
+	"${srcdir}/godot/misc/dist/linux/org.godotengine.Godot.desktop"\
+	"${pkgdir}/usr/share/applications/org.godotengine.Godot-mono-git.desktop"
+
 }
