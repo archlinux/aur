@@ -1,7 +1,7 @@
 # Maintainer: PatzminiHD <7.0@gmx.at>
 pkgname=bbprog-git
 _pkgname=${pkgname%-git}
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Backup a list of entries using rsync or borg"
 arch=('x86_64')
