@@ -2,7 +2,7 @@
 
 pkgname=samsung-ml2160
 pkgver=3.00.65
-pkgrel=2
+pkgrel=3
 pkgdesc="Samsung ML-2160 CUPS driver"
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
@@ -10,7 +10,7 @@ license=('custom:samsung')
 depends=('cups' 'ghostscript')
 conflicts=('samsung-unified-driver')
 options=(!strip)
-source=("http://org.downloadcenter.samsung.com/content/DR/200911/20091118145015140/UnifiedLinuxDriver_1.01.tar.gz"
+source=("https://org.downloadcenter.samsung.com/content/DR/200911/20091118145015140/UnifiedLinuxDriver_1.01.tar.gz"
         "ML-2160.ppd")
 md5sums=('b03b7feaf54624a6d07ea3832889fdbc'
          'cf688ffbed12f032ade39db3cc85337a')
