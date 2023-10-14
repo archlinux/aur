@@ -1,7 +1,7 @@
 pkgbase = libguestfs-git
 	pkgdesc = Access and modify virtual machine disk image
 	pkgver = 1.51.7+1.r11930.20231006.f8cbd7140
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://libguestfs.org
 	install = appliance.install
@@ -110,6 +110,7 @@ pkgbase = libguestfs-git
 	conflicts = guestfish
 	conflicts = virt-rescue
 	backup = etc/libguestfs-tools.conf
+	backup = etc/php.d/guestfs_php.ini
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.gpg
 	source = libguestfs::git+https://github.com/libguestfs/libguestfs.git

@@ -11,7 +11,7 @@ _pkgname=libguestfs
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.51.7+1.r11930.20231006.f8cbd7140
-pkgrel=1
+pkgrel=2
 pkgdesc="Access and modify virtual machine disk image"
 arch=(
   "i686"
@@ -21,10 +21,9 @@ url="https://libguestfs.org"
 license=("GPL2" "LGPL2.1")
 backup=(
   "etc/libguestfs-tools.conf"
+  "etc/php.d/guestfs_php.ini"
   "etc/xdg/virt-builder/repos.d/libguestfs.conf"
   "etc/xdg/virt-builder/repos.d/libguestfs.gpg"
-  # "etc/libguestfs-tools.conf"
-  # "etc/php.d/guestfs_php.ini"
 )
 install="appliance.install"
 depends=(
