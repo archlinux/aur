@@ -1,6 +1,6 @@
 pkgbase = dl-distro
 	pkgdesc = Download and verify ISOs with GnuPG and shasums
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://codeberg.org/bashuser30/dl-distro
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dl-distro
 	depends = gnupg
 	depends = jq
 	depends = wget
-	source = https://codeberg.org/bashuser30/dl-distro/archive/v1.5.1.tar.gz
-	sha256sums = be03f08883ece6710bee2378fd2007b7cc19a64f9e095c956364d5fe0a25a840
+	source = https://codeberg.org/bashuser30/dl-distro/archive/v1.5.2.tar.gz
+	sha256sums = de750074d900c9e55d80a92e3ca4c42e2deb19e51cd89bd4cb9e77a1ac2b2eb0
 
 pkgname = dl-distro
