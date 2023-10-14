@@ -8,6 +8,7 @@ url="https://github.com/squattingmonk/nasher.nim"
 license=('MIT')
 depends=('neverwinter.nim-bin')
 optdepends=('nwnsc-bin: alternative compiler')
+conflicts=('neverwinter.nim')
 source=("https://github.com/squattingmonk/nasher/releases/download/$pkgver/nasher_linux.tar.gz")
 md5sums=('8f502cc028aaeda56878f47d7294a0f6')
 
