@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc='Fully feature complete YAML parser and emitter'
 arch=('x86_64')
 url='https://pantoniou.github.io/libfyaml'
+optdepends=('jq')
 license=('MIT')
 source=(https://github.com/pantoniou/libfyaml/releases/download/v${pkgver}/libfyaml-${pkgver}.tar.gz)
 
