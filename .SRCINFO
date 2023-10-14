@@ -1,0 +1,21 @@
+pkgbase = ocaml-nbd-git
+	pkgdesc = OCaml bindings for libnbd.
+	pkgver = 1.18.0+2.r2050.20230928.42a8518
+	pkgrel = 1
+	url = https://gitlab.com/nbdkit/libnbd
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = autoconf
+	makedepends = git
+	makedepends = perl
+	depends = glibc
+	depends = libnbd>=1.18
+	depends = libnbd<1.19
+	depends = ocaml
+	provides = ocaml-nbd=1.18.0+2.r2050.20230928.42a8518
+	conflicts = ocaml-nbd
+	source = libnbd::git+https://gitlab.com/nbdkit/libnbd.git
+	sha256sums = SKIP
+
+pkgname = ocaml-nbd-git
