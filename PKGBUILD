@@ -3,7 +3,7 @@
 # Contributor: ThatOneCalculator <kainoa at t1c dot dev>
 
 pkgname=hyprland-git
-pkgver=0.30.0.r22.3f09b143
+pkgver=0.30.0.r90.962a0de0
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -81,13 +81,11 @@ prepare() {
   if [[ -z "$(git config --get user.name)" ]]; then
     git config user.name local && git config user.email '<>' && git config commit.gpgsign false
   fi
-
   # Pick pull requests from github using `pick_mr <pull request number>`.
 
-  make fixwlr
-  sed -i '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
-  # respect build flags to allow full RELRO
-  sed -i '/CXX/ s|)|) $(CXXFLAGS)|;/CXX/ s|$| $(LDFLAGS)|;' hyprctl/Makefile
+  pushd subprojects/wlroots
+  patch -p1 < ../packagefiles/wlroots-meson-build.patch
+  popd
 }
 
 pkgver() {
@@ -96,44 +94,28 @@ pkgver() {
 
 build() {
   cd Hyprland
-  pushd subprojects/wlroots
-  meson build/ --prefix="$srcdir/tmpwlr" --buildtype=release -Dexamples=false
-  ninja -C build/
-  mkdir -p "$srcdir/tmpwlr"
-  ninja -C build/ install
-  popd
-  pushd subprojects/udis86
-  cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja
-  cmake --build ./build --config Release --target all
-  popd
-  make release
-  pushd hyprctl
-  make all
+
+  arch-meson build --buildtype=release -Db_pch=false -Ddefault_library=shared
+  ln -sf wlroots build/subprojects/wlroots/include/wlr
+  meson compile -C build
 }
 
 package() {
   cd Hyprland
-  find src -name '*.hpp' -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/{}" \;
-  pushd subprojects/wlroots/include
-  find . -name '*.h' -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/wlroots/{}" \;
-  popd
-  pushd subprojects/wlroots/build/include
-  # fix $srcdir reference
-  sed -i '/ICONDIR/ s|".*"|"/usr/share/icons"|' config.h
-  find . -name '*.h' -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/wlroots/{}" \;
-  popd
-  mkdir -p "$pkgdir/usr/include/hyprland/protocols"
-  cp protocols/*-protocol.h "$pkgdir/usr/include/hyprland/protocols"
-  pushd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  popd
-  install -Dm0644 -t "$pkgdir/usr/share/pkgconfig" build/hyprland.pc
-  install -Dm0755 -t "$pkgdir/usr/bin" build/Hyprland
-  install -Dm0755 -t "$pkgdir/usr/bin" hyprctl/hyprctl
-  install -Dm0644 -t "$pkgdir/usr/share/hyprland" "example/hyprland.conf"
-  install -Dm0644 -t "$pkgdir/usr/share/hyprland" assets/*.png
+
+  meson install -C build --destdir "$pkgdir"
+
+  rm -rf "$pkgdir/usr/include/hyprland/wlroots/wlr"
+  ln -sf . "$pkgdir/usr/include/hyprland/wlroots/wlr"
+  # resolve conflicts with system wlr
+  rm "$pkgdir/usr/lib/libwlroots.so"
+  rm "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
+  # resolve conflicts with xdg-desktop-portal-hyprland from repo
+  rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
+  # FIXME: meson.build shall install version.h
+  install -Dm0644 -t "$pkgdir/usr/include/hyprland/src" src/version.h 
+
+  # license
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
-  install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions" "example/hyprland.desktop"
-  install -Dm0755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.12032"
 }
 # vi: et ts=2 sw=2
