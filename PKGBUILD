@@ -2,7 +2,7 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=gst-plugins-rs
-pkgver=0.11.0
+pkgver=1.22.6
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(glibc gcc-libs glib2 pango cairo graphene openssl
          gstreamer gtk4 dav1d libsodium libwebp)
 makedepends=(git rust meson cargo-c clang nasm hotdoc python-tomli)
 options=(!lto)
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=${pkgver}")
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-${pkgver}")
 sha256sums=(SKIP)
 
 prepare() {
