@@ -1,0 +1,14 @@
+pkgbase = afni-atlases
+	pkgdesc = Collection of atlases for use in AFNI
+	pkgver = 1.06
+	pkgrel = 1
+	url = http://afni.nimh.nih.gov
+	arch = any
+	license = custom
+	optdepends = afni
+	source = https://afni.nimh.nih.gov/pub/dist/atlases/afni_atlases_dist.tgz
+	source = LICENSE::https://afni.nimh.nih.gov/pub/dist/src/README.copyright
+	sha256sums = 87fbb5a39f9f54198f3a49684f6f013a57cdbdde0047388906bb278c42ccfc92
+	sha256sums = 86d6a552038e50f15b618c16322cbb342d6c359cd77f3d9c826c220b7542e8e7
+
+pkgname = afni-atlases
