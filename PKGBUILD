@@ -63,7 +63,7 @@ prepare() {
 	export GO111MODULE=on
 
 	printf "\033[34;1mFetching go-ds-s3 plugin\n\033[0m"
-	$govers get github.com/ipfs/go-ds-s3/plugin@latest
+	$govers get github.com/ipfs/go-ds-s3/plugin@v0.9.0
 	echo -en "\ns3ds github.com/ipfs/go-ds-s3/plugin 0" >> plugin/loader/preload_list
 
 	sed -i "s\GOCC ?= go\GOCC ?= ${govers}\g" Rules.mk
