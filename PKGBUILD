@@ -5,7 +5,7 @@ _name=ManimPango
 
 pkgname=python-manimpango
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C binding for Pango using Cython used in Manim to render (non-LaTeX) text."
 
 arch=('x86_64')
