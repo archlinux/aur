@@ -2,7 +2,7 @@
 # Contributor: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell
 pkgver=1.2.0+294+g5b7afc6
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
 url="https://github.com/pop-os/shell"
@@ -21,11 +21,11 @@ source=("git+https://github.com/pop-os/shell.git#commit=${_commit}"
         '50_org.gnome.shell.pop-shell.gschema.override')
 sha256sums=('SKIP'
             'cb5d5652fc2d15bd7c60f8cb38f1ed67cd551db36fbed8603b930d6f024de167'
-            '3528ecf59d625eeb83a909f3e4cd3775e2f3ef7d27dc85dc1c8dc980317fad99'
-            '08f99d7b7721c25a43cd24ce71830e57256daa6995e2500cd9e6cfe219a661e1'
-            '16a372347d46f9079047557ba09a7a2335e5e64d3fa40118dbc6b0d53d8e686c'
-            'cb2f53c3c19ed2123373cd3183c3aad1e85d9a661c9e967c6888b7eae3bb18f0'
-            '59cf3799036e22718577d0a89468605b6ca1e253d9d7133a8afd640188e2ea9d')
+            '6801f3e12a539167a0c2b64c7deccc1726b51e681b0bc932e8a5f628f86e69df'
+            'fcddff7a7689ea0f9ac3d983d224d347e093d5eda1c7c1d875133248f8b812c0'
+            'd3a4ac86303c9065fd76dace64283573079c3bdce4b9a2ca18be5f103eb6fd4c'
+            '77f854c2f4509ed83d3d99a40018914f031f61f945e1acbf527fcc65adb5f252'
+            '7b729a10fe29f2af7bac3022d87fece43ed4094b3ad2a9ac3a61ffc465dadde1')
 
 pkgver() {
   cd shell
@@ -34,7 +34,7 @@ pkgver() {
 
 prepare() {
   cd shell
-  patch -Np1 -i ../0001-Remove-schema-handling-from-transpile.sh.patch
+#  patch -Np1 -i ../0001-Remove-schema-handling-from-transpile.sh.patch
 }
 
 build() {
@@ -47,8 +47,8 @@ package() {
   make DESTDIR="${pkgdir}/" install
 
   # install the schema file
-  install -Dm644 schemas/org.gnome.shell.extensions.pop-shell.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
+#  install -Dm644 schemas/org.gnome.shell.extensions.pop-shell.gschema.xml -t \
+#    "$pkgdir/usr/share/glib-2.0/schemas/"
 
   # install the gnome-control-center keybindings
   install -Dm644 keybindings/*.xml -t \
