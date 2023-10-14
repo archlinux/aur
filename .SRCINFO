@@ -1,0 +1,57 @@
+pkgbase = amule-dlp-debug-git
+	pkgdesc = An eMule-like client for ed2k p2p network with DLP patch. Build with debug information. Latest GIT checkout.
+	pkgver = 2.3.3.r10608.20230302.7b3a07ab5
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/persmule/amule-dlp
+	install = amule.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = boost
+	makedepends = gettext
+	makedepends = git
+	depends = boost-libs
+	depends = crypto++>=6.0.0
+	depends = gd
+	depends = geoip
+	depends = libsm
+	depends = libupnp
+	depends = wxwidgets-gtk3
+	optdepends = antileech: To use the antileech functionality.
+	optdepends = perl: For xas plugin (xChat2).
+	optdepends = gdb: To perform debugging.
+	optdepends = antileech-debug: For debugging symbols in antileech.
+	optdepends = boost-libs-debug: For debugging symbols in boost libs.
+	optdepends = crypto++-debug>=6.0.0: For debugging symbols in crypto++.
+	optdepends = gd-debug: For debugging symbols in gd.
+	optdepends = geoip-debug: For debugging symbols in geoip.
+	optdepends = libsm-debug: For debugging symbols in libsm.
+	optdepends = libupnp-debug: For debugging symbols in libupnp.
+	optdepends = wxwidgets-gtk3-debug: For debugging symbols in wxWidgets.
+	provides = amule=2.3.3.r10608.20230302.7b3a07ab5
+	provides = amule-dlp=2.3.3.r10608.20230302.7b3a07ab5
+	provides = amule-dlp-git=2.3.3.r10608.20230302.7b3a07ab5
+	conflicts = amule
+	conflicts = amule-dlp
+	conflicts = amule-dlp-hg
+	conflicts = amule-dlp-debug-hg
+	conflicts = amule-dlp-hg-debug
+	conflicts = amule-dlp-git
+	conflicts = amule-dlp-git-debug
+	replaces = amule-dlp-debug-hg
+	replaces = amule-dlp-hg-debug
+	options = debug
+	options = !strip
+	options = !lto
+	source = amule-dlp::git+https://github.com/persmule/amule-dlp.git
+	source = amuled.systemd
+	source = amuleweb.systemd
+	source = 0001-allow-to-build-with-autoconf-2.70-and-later.patch
+	sha256sums = SKIP
+	sha256sums = 6dbdd1ad1c3c3d8637b8f4cbd5416f39c8e4277a2f8498577b08bf6cda8dbca9
+	sha256sums = f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2
+	sha256sums = 78b0021d878a8985d87c5f00caa7a1165b9bdf92880a2e3a197db429a7eb6dd8
+
+pkgname = amule-dlp-debug-git
