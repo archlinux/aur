@@ -14,6 +14,13 @@ pkgbase = linux-sched-ext-git
 	makedepends = tar
 	makedepends = xz
 	makedepends = python
+	makedepends = clang
+	makedepends = bpf
+	makedepends = libbpf
+	makedepends = llvm-libs
+	makedepends = llvm
+	makedepends = rust
+	makedepends = lld
 	options = !strip
 	source = git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/6.5/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
@@ -43,3 +50,6 @@ pkgname = linux-sched-ext-git-headers
 
 pkgname = linux-sched-ext-git-scheduler
 	pkgdesc = Schedulers for Linux Kernel based on the sched_ext branch kernel
+	depends = libbpf
+	depends = bpf
+	depends = clang

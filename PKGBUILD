@@ -57,7 +57,7 @@ arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
-makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
+makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python' 'clang' 'bpf' 'libbpf' 'llvm-libs' 'llvm' 'rust' 'lld')
 _lucjanver=6.5
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
@@ -332,6 +332,8 @@ _package-headers() {
 
 _package-scheduler() {
    pkgdesc="Schedulers for $pkgdesc kernel"
+   depends=('libbpf' 'bpf' 'clang')
+
 
    cd $srcdir/sched_ext/tools/sched_ext/build/bin
    
