@@ -3,7 +3,7 @@
 pkgname=telegram-a
 realname=telegram-tt
 pkgver=10.0.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Official Telegram Web client version A system Electron version"
 arch=('any')
 url="https://web.telegram.org/a/get/"
@@ -36,8 +36,6 @@ prepare() {
     patch -Np1 -i "${srcdir}/set_custom_window_title_from_env.patch"
     patch -Np1 -i "${srcdir}/disable_statoscope.patch"
     patch -Np1 -i "${srcdir}/run_husky_install_only_in_git.patch"
-
-    rm -rf "${srcdir}/${realname}-${pkgver}/dist"
 }
 
 build() {
@@ -45,15 +43,11 @@ build() {
 
     # See https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/blob/ab56b44af59db2c3459ddb17840f3ff4afe86cb2/PKGBUILD#L32
     export ENV=production
-    export APP_ENV=production
-    export IS_ELECTRON_BUILD=true
     export TELEGRAM_API_ID=611335
     export TELEGRAM_API_HASH=d524b414d21f4d37f08684c1df41ac9c
 
     npm ci
-    yarn webpack && bash ./deploy/copy_to_dist.sh
-    yarn electron-builder install-app-deps
-    yarn webpack --config ./webpack-electron.config.ts
+    yarn electron:build
     yarn electron-builder build --linux --config "${srcdir}/electron-builder.yml"
 }
 
