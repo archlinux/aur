@@ -1,25 +1,10 @@
 pkgbase = python-tensorboardx
 	pkgdesc = Tensorboard for PyTorch
 	pkgver = 2.6.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lanpa/tensorboardX
 	arch = any
 	license = MIT
-	checkdepends = python-boto3
-	checkdepends = python-flake8
-	checkdepends = python-imageio==2.27
-	checkdepends = python-matplotlib
-	checkdepends = python-moto
-	checkdepends = python-numpy
-	checkdepends = python-onnx
-	checkdepends = python-protobuf==4.22.3
-	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
-	checkdepends = python-soundfile
-	checkdepends = python-tensorboard
-	checkdepends = python-torch
-	checkdepends = python-torchvision
-	checkdepends = python-visdom
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

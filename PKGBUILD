@@ -2,7 +2,7 @@
 _name=tensorboardX
 pkgname=python-tensorboardx
 pkgver=2.6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
 url="https://github.com/lanpa/tensorboardX"
@@ -21,23 +21,6 @@ makedepends=(
 optdepends=(
     'python-crc32c: speed up'
     'python-soundfile: 200x speed up the add_audio() function'
-    )
-checkdepends=(
-    'python-boto3'
-    'python-flake8'
-    'python-imageio==2.27'
-    'python-matplotlib'
-    'python-moto'
-    'python-numpy'
-    'python-onnx'
-    'python-protobuf==4.22.3'
-    'python-pytest'
-    'python-pytest-cov'
-    'python-soundfile'
-    'python-tensorboard'
-    'python-torch'
-    'python-torchvision'
-    'python-visdom'
     )
 conflicts=('python-tensorboard-git')
 source+=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
