@@ -38,7 +38,6 @@ prepare() {
   # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
   # rather than copies shipped in the tarball
   rm -rf Modules/expat
-  rm -rf Modules/zlib
   rm -rf Modules/_ctypes/{darwin,libffi}*
   rm -rf Modules/_decimal/libmpdec
 }
