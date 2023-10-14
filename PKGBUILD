@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.4.420
+pkgver=1.4.422
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -25,7 +25,7 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "002_multi_def_patch_2.diff"
        )
 
-sha256sums=('f6485dd1128a67f4f757a554468ce2acbce6c0a1c43521ef0dbbb69898fca2c9'
+sha256sums=('253a8f9c9bf2ca0907934a58117cadb0d7b149b80f7acf30b74d66ed946057a6'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
             '519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0'
             '369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752'
@@ -54,6 +54,9 @@ build() {
   fi
   # keep deno cache directory out of default $home/.cache/deno
   export DENO_DIR="${srcdir}/${_pkgbasename}-${pkgver}/package/cache"
+  # Rust optimizations
+  export CARGO_HOME="${srcdir}/${_pkgbasename}-${pkgver}/.cargo"
+  export RUSTFLAGS="-C strip=symbols"
 
   mkdir -p package/dist/bin/tools/${arch}/dart-sass
   mkdir -p package/dist/bin/tools/${arch}/deno_dom
