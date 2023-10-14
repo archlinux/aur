@@ -1,6 +1,6 @@
 pkgbase = sofastats
 	pkgdesc = Statistics Open For All
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = http://www.sofastatistics.com/
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = sofastats
 	depends = python-requests
 	depends = python-wxpython
 	replaces = sofa
-	source = http://downloads.sourceforge.net/project/sofastatistics/sofastatistics/1.5.5/sofastats_1.5.5-1.tar.gz
+	source = http://downloads.sourceforge.net/projects/sofastatistics/sofastatistics/1.5.6/sofastats-1.5.6.tar.gz
 	source = setup.py
 	source = sofastats.desktop
-	md5sums = d50f8f3bcdea7b891c1109114a016400
+	md5sums = 300ff3613e90e9a89366c763f96b32af
 	md5sums = 9b3104b2b8636f77330fcf6539ab1bac
 	md5sums = f267ddd0371a29a3466bec780eda3fd6
 
