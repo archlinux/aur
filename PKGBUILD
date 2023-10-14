@@ -1,7 +1,7 @@
 # Maintainer: Luis Marques <luigoalma at gmail dot com>
 
 pkgname=python-haccrypto
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Nintendo Switch XTSN crypto for Python"
 arch=($CARCH)
@@ -11,8 +11,8 @@ depends=('python')
 optdepends=('openssl: for faster crypto operations')
 makedepends=('python-setuptools')
 source=("haccrypto-${pkgver}.tar.gz::https://github.com/luigoalma/haccrypto/archive/v${pkgver}.tar.gz")
-sha256sums=('2b767f7150d69710af8cb461710cfaac3436f17e36a979c0b0abc63f59978ec7')
-sha512sums=('6bdca27076a7c17bb1ed4e648add093f7828cf5f44a1e6e7f066be4253cc42f712f7d02bfce3ffd225f0ad70ca8de872ffa2c81915ff429f2971ec58993e175f')
+sha256sums=('ecb9ca2253adc52841e7a06c359b10dd306ca3fc76d3d3dc0938bf38c234901c')
+sha512sums=('d9fc745f33eb31c4e07eb924414e98d36098c42430412ead149e0dd0115cf745b6fb86bf739123e5aaa42d3f2a5ee4378c1d1e04c4568c4a652f84d5f9aa59f4')
 
 build() {
 	cd haccrypto-${pkgver}
