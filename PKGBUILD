@@ -3,8 +3,8 @@
 pkgname=waylyrics-git
 _pkgname=waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.1.0_r350.ge187f00
-pkgrel=2
+pkgver=0.1.0_r360.g21a6a00
+pkgrel=1
 pkgdesc="general desktop lyrics with QQMusic/NetEase Cloud Music source"
 url="https://github.com/waylyrics/waylyrics"
 conflicts=('waylyrics')
@@ -21,9 +21,12 @@ optdepends=(
 	'qcm: NetEase Cloud Music player'
 )
 
-source=("git+${url}.git")
+source=("git+${url}.git"
+	"${_appname}.desktop"
+)
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+	'bd954c5c3e274c5d297168287483dbb06943efddab982be4b2ead359e0c39ba1')
 
 options=('!lto')
 
@@ -47,10 +50,9 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-
 	install -vDm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
+	cd "$srcdir/$_pkgname"
 	install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
 	install -vDm644 "${_appname}.gschema.xml" -t "${pkgdir}/usr/share/glib-2.0/schemas/"
 
