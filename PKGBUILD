@@ -3,15 +3,15 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=opendht-git
-pkgver=2.3.3.r2.gf590980c
+pkgver=3.0.0.r1.g601758f5
 pkgrel=2
 epoch=1
-pkgdesc="C++14 implementation of the Kademlia DHT (Distributed Hash Table)"
-arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
+pkgdesc="C++17 Distributed Hash Table (DHT) implementation"
+arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://github.com/savoirfairelinux/opendht"
 license=(GPL3)
-depends=(gnutls nettle readline asio jsoncpp argon2)
-makedepends=(git msgpack-cxx cmake cython python-setuptools )
+depends=(gnutls nettle readline jsoncpp argon2 fmt glibc gcc-libs)
+makedepends=(git msgpack-cxx cmake cython python-setuptools cppunit asio)
 optdepends=('python: to use the Python bindings')
 provides=(opendht)
 conflicts=(opendht)
@@ -20,27 +20,24 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%-*}"
-  install -d build
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DOPENDHT_PYTHON=ON \
+  cmake -B build -S "opendht" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
-  make
+    -DOPENDHT_PYTHON=ON
+
+  cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}/build"
-  make DESTDIR="${pkgdir}" install
-  install -D -m644 ../README.md "${pkgdir}/usr/share/doc/opendht/README.md"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -D -m644 opendht/README.md "${pkgdir}/usr/share/doc/opendht/README.md"
 }
 
