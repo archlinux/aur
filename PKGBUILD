@@ -9,7 +9,7 @@
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
 # Contributor: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
 
-pkgname=lwks-beta
+pkgname=lightworks-beta
 lwksver=2023.2
 lwksbuild=141946
 lwksdate="31st%20August"
@@ -22,7 +22,6 @@ url="http://www.lwks.com/"
 license=('custom')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit')
 optdepends=('nvidia-utils: only for nVidia users')
-provides=('lwks-beta')
 conflicts=('lightworks')
 replaces=('lwks-beta')
 source=(
