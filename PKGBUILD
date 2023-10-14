@@ -11,7 +11,7 @@ _pkgname=libguestfs
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.51.7+1.r11930.20231006.f8cbd7140
-pkgrel=2
+pkgrel=3
 pkgdesc="Access and modify virtual machine disk image"
 arch=(
   "i686"
@@ -172,7 +172,6 @@ conflicts=(
   "guestfish"
   "virt-rescue"
 )
-options=()
 source=(
   "${_pkgname}::git+https://github.com/libguestfs/libguestfs.git"
   "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
@@ -191,6 +190,8 @@ sha256sums=(
   '96809e9df6e349b7f5679cd62e42917b42c6f6d5b5b1d6063841d081a83beb27'
   '46ee0c9b3532cbbc38ddce7136b37e30ef71ad7aa004fa2fa552c9f165ee63d5'
 )
+# LTO breaks linking into OCaml library, e.g. with building the package `virt-v2v`.
+options+=('!lto')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
