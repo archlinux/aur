@@ -42,16 +42,19 @@ package_xbydriver-bin() {
     provides=(${pkgname%-bin})
     conflicts=(${pkgname%-bin})
 
-    mkdir -pv "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}
+    if [ -d "${srcdir}/${pkgbase%-appimage}-${pkgver}-${CARCH}" ]; then
+        rm -rf "${srcdir}/${pkgbase%-appimage}-${pkgver}-${CARCH}"
+    fi
+    mkdir -pv "${srcdir}/${pkgbase%-appimage}-${pkgver}-${CARCH}"
     bsdtar -xf "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}.deb -C "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}
     bsdtar -xf "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}/data.tar.xz --strip-components=1 -C ${pkgdir}/
 
-    mv "${pkgdir}/opt/小白羊云盘" "${pkgdir}/opt/${pkgbase%-appimage}"
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/xbyyunpan.desktop"
+    mv "${pkgdir}/opt/小白羊云盘" "${pkgdir}"/opt/${pkgbase%-appimage}
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/xbyyunpan.desktop" << EOF
 [Desktop Entry]
-Name=${pkgbase%-appimage}
+Name=xbydriver
 Name[zh_CN]=小白羊云盘
-Exec="/opt/${pkgbase%-appimage}/xbyyunpan" %U
+Exec="/opt/xbydriver/xbyyunpan" %U
 Terminal=false
 Type=Application
 Icon=xbyyunpan
@@ -68,7 +71,7 @@ EOF
     rm -rf "${pkgdir}/usr/share/icons/hicolor/0x0/apps/xbyyunpan.png"
 
     #修复下载时 aria2c 连接失败的问题
-    sed -i 's|async-dns=false|async-dns=true|g' "${pkgdir}/opt/${pkgbase%-appimage}/resources/engine/aria2.conf"
+    sed -i 's|async-dns=false|async-dns=true|g' "${pkgdir}"/opt/${pkgbase%-appimage}/resources/engine/aria2.conf
 }
 
 package_xbydriver-appimage() {
