@@ -16,17 +16,17 @@ source=($pkgname::git+https://github.com/Chlumsky/msdfgen.git)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $pkgname/
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd $pkgname/
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd $pkgname/
-    cmake -B build -GNinja \
+	cmake -B build -GNinja \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DMSDFGEN_USE_SKIA=OFF \
 	-DMSDFGEN_USE_VCPKG=OFF
-    cmake --build build
+	cmake --build build
 }
 
 package() {
