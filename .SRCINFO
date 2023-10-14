@@ -1,0 +1,23 @@
+pkgbase = libical
+	pkgdesc = An open source reference implementation of the icalendar data type and serialization format
+	pkgver = 3.0.17
+	pkgrel = 1
+	url = https://github.com/libical/libical
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	checkdepends = python-gobject
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gtk-doc
+	makedepends = doxygen
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = glibc
+	depends = glib2
+	depends = icu
+	depends = libxml2
+	source = libical-3.0.17.tar.gz::https://github.com/libical/libical/archive/v3.0.17.tar.gz
+	sha512sums = 11fbb4aba7503a3264b0efa30ad56aa923d31ec193bdb0b87b92bc88db9019fa670c8c9ee7998caa3a870e706446a58ead475f31bd703f0d2cb7aabf0f6a3aa7
+
+pkgname = libical
