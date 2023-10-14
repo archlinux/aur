@@ -1,5 +1,4 @@
-# Former Maintainer: Troy Engel <troyengel+arch@gmail.com>
-# Maintainer: Alexandr Bogomyakov <ab@hexor.ru>
+# Maintainer: Stefan Gehr <stefan@gehr.xyz>
 
 pkgname=cmus-status-scrobbler-git
 _name=cmus-status-scrobbler
