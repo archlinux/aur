@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=6.0.2
+pkgver=6.0.4
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -207,7 +207,7 @@ package_waterfox-g-kpe() {
              'speech-dispatcher: Text-to-Speech'
              'hunspell-en_US: Spell checking, American English'
              'kwaterfoxhelper: KDE Plasma Integration')
-  provides=("waterfox-g=${pkgver}")
+  provides=("waterfox-g=${pkgver}" "waterfox=G${pkgver}")
 
   cd Waterfox
 
