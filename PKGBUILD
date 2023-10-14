@@ -2,7 +2,7 @@
 # Contributor: Roberto Hueso < roberto at robertohueso dot org >
 
 pkgname=ensmallen
-pkgver=2.19.1
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="Flexible C++ header library for efficient mathematical optimization"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://ensmallen.org/"
 license=(BSD)
 makedepends=(cmake openmp armadillo lapack)
 source=("https://ensmallen.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f36ad7f08b0688d2a8152e1c73dd437c56ed7a5af5facf65db6ffd977b275b2e')
+sha256sums=('5c7cea756e544795b3861d171f7cc28ba0a0be6297f84026b0b17e1dfc583f24')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -Wno-dev \
@@ -22,6 +22,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-
   install -D "$pkgname-$pkgver"/LICENSE.txt  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
