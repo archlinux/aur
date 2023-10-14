@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=cargo-wasi
-pkgver=0.1.27
+pkgver=0.1.28
 pkgrel=1
 
 pkgdesc='A lightweight Cargo subcommand to build Rust code for the `wasm32-wasi` target'
@@ -12,7 +12,7 @@ license=('APACHE')
 depends=('rust')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bytecodealliance/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('74d75147a663eeb7466ef6b862d4f672ea9359ed6ca96c8fefe4d5cf0438bb4a')
+sha256sums=('f570fe05b3f16cbc0e5239fc7b26fb4cd402ea47c6e64404a405e1115417c7cb')
 
 build() {
   cd $pkgname-$pkgver

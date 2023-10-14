@@ -1,13 +1,13 @@
 pkgbase = cargo-wasi
 	pkgdesc = A lightweight Cargo subcommand to build Rust code for the `wasm32-wasi` target
-	pkgver = 0.1.27
+	pkgver = 0.1.28
 	pkgrel = 1
 	url = https://bytecodealliance.github.io/cargo-wasi
 	arch = x86_64
 	license = APACHE
 	makedepends = cargo
 	depends = rust
-	source = cargo-wasi-0.1.27.tar.gz::https://github.com/bytecodealliance/cargo-wasi/archive/refs/tags/0.1.27.tar.gz
-	sha256sums = 74d75147a663eeb7466ef6b862d4f672ea9359ed6ca96c8fefe4d5cf0438bb4a
+	source = cargo-wasi-0.1.28.tar.gz::https://github.com/bytecodealliance/cargo-wasi/archive/refs/tags/0.1.28.tar.gz
+	sha256sums = f570fe05b3f16cbc0e5239fc7b26fb4cd402ea47c6e64404a405e1115417c7cb
 
 pkgname = cargo-wasi
