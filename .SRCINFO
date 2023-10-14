@@ -1,7 +1,7 @@
 pkgbase = 64gram-desktop
 	pkgdesc = Unofficial desktop version of Telegram messaging app
 	pkgver = 1.0.98
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/TDesktop-x64/tdesktop
 	arch = x86_64
@@ -49,6 +49,7 @@ pkgbase = 64gram-desktop
 	depends = libsigc++-3.0
 	depends = cppgir
 	depends = glibmm-2.68
+	depends = libxcomposite
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
