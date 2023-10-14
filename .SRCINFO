@@ -1,6 +1,6 @@
 pkgbase = r-collapse
 	pkgdesc = Advanced and Fast Data Transformation
-	pkgver = 1.9.6
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=collapse
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = r-collapse
 	checkdepends = r-data.table
 	checkdepends = r-dplyr
 	checkdepends = r-fixest
+	checkdepends = r-kit
 	checkdepends = r-magrittr
 	checkdepends = r-testthat
 	depends = r-rcpp
@@ -31,8 +32,8 @@ pkgbase = r-collapse
 	optdepends = r-vars
 	optdepends = r-xts
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/collapse_1.9.6.tar.gz
-	md5sums = 5684f2d09b3c99d0cd8a1a49bf48cda4
-	sha256sums = 2f835472e331ce5d21e0547e68c7fde14ace6d71d104b7cd21ff823eadafb51e
+	source = https://cran.r-project.org/src/contrib/collapse_2.0.2.tar.gz
+	md5sums = b0dab5d494ad5a6b5a3a0e85ce5654f6
+	sha256sums = f46e8ecfdee3bc2829ac40cd488b1ff536864c428beadbbbdd1bde4c479a74b6
 
 pkgname = r-collapse
