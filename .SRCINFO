@@ -1,11 +1,11 @@
 pkgbase = axu
 	pkgdesc = A cli tool to check your Arch Linux explicitly installed packages updates
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tfkhdyt/axu
 	arch = x86_64
 	license = GPL3
-	source = axu-1.3.0.tar.gz::https://github.com/tfkhdyt/axu/releases/download/v1.3.0-2/axu-v1.3.0-2.tar.gz
+	source = axu-1.3.0.tar.gz::https://github.com/tfkhdyt/axu/releases/download/v1.3.0-3/axu-v1.3.0-3.tar.gz
 	md5sums = SKIP
 
 pkgname = axu

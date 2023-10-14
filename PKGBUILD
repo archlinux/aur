@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=axu
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A cli tool to check your Arch Linux explicitly installed packages updates"
 arch=("x86_64")
@@ -18,7 +18,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tfkhdyt/$pkgname/releases/d
 md5sums=("SKIP")
 
 build() {
-	cd "$pkgname-$pkgver"
 	./$pkgname completion bash > $pkgname.bash
 	./$pkgname completion zsh > _$pkgname.zsh
 	./$pkgname completion fish > $pkgname.fish
