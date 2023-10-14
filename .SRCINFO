@@ -1,0 +1,23 @@
+pkgbase = python-pyannote.database-git
+	pkgdesc = Reproducible experimental protocols for multimedia (audio, video, text) database
+	pkgver = 5.0.1.gbac3225
+	pkgrel = 1
+	url = https://github.com/pyannote/pyannote-database
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pytest
+	depends = python-pyannote.core-git
+	depends = python-yaml
+	depends = python-pandas
+	depends = python-typer
+	provides = pyannote.database
+	conflicts = pyannote.database
+	source = pyannote-database::git+https://github.com/pyannote/pyannote-database
+	md5sums = SKIP
+
+pkgname = python-pyannote.database-git
