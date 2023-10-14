@@ -1,7 +1,7 @@
 pkgbase = flashbrowser-git
 	pkgdesc = A browser dedicating to supporting adobe flash
-	pkgver = 0.81.r27.g0d97b17
-	pkgrel = 4
+	pkgver = 0.81+r27+g0d97b17
+	pkgrel = 2
 	url = https://flash.pm/browser/
 	arch = any
 	license = unknown
@@ -11,7 +11,8 @@ pkgbase = flashbrowser-git
 	depends = nodejs
 	provides = flashbrowser-git
 	conflicts = flashbrowser-git
-	source = git+https://github.com/radubirsan/FlashBrowser.git
+	conflicts = flashbrowser-bin
+	source = git+https://github.com/radubirsan/FlashBrowser#commit=0d97b175eab39383bc83dba59c17bde1b55c7574
 	source = FlashBrowser.desktop
 	sha256sums = SKIP
 	sha256sums = 33076411d47cf6bb214eb2b43654ca5d005b6c8e405e3f8db377bc148f042985

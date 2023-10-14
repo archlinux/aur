@@ -1,35 +1,29 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=flashbrowser-git
 _reponame=FlashBrowser
-pkgver=0.81.r27.g0d97b17
-pkgrel=4
+pkgver=0.81+r27+g0d97b17
+pkgrel=2
 pkgdesc="A browser dedicating to supporting adobe flash"
 url="https://flash.pm/browser/"
 arch=('any')
 license=('unknown')
 depends=('nodejs')
-makedepends=(
-	'git'
-	'npm'
-	'imagemagick'
-)
+makedepends=('git' 'npm' 'imagemagick')
 provides=('flashbrowser-git')
-conflicts=('flashbrowser-git')
-source=(
-	git+https://github.com/radubirsan/FlashBrowser.git
-	FlashBrowser.desktop
-)
+conflicts=('flashbrowser-git' 'flashbrowser-bin')
+_commit=0d97b175eab39383bc83dba59c17bde1b55c7574  # tags/v0.8.1
+source=("git+https://github.com/radubirsan/FlashBrowser#commit=$_commit"
+	"FlashBrowser.desktop")
 sha256sums=('SKIP'
             '33076411d47cf6bb214eb2b43654ca5d005b6c8e405e3f8db377bc148f042985')
 
 pkgver() {
-	git -C "$srcdir/$_reponame" describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "$srcdir/$_reponame" describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-	cd "$srcdir"
-# create executable /usr/bin file
+# Create executable /usr/bin file
 cat > FlashBrowser.sh <<EOF
 #!/bin/sh
 cd /usr/lib/node_modules/FlashBrowser
@@ -38,26 +32,26 @@ EOF
 }
 
 build() {
-	cd "$srcdir/$_reponame"
-	npm install --legacy-peer-deps --cache "$srcdir/npm-cache"
+	cd $_reponame
+	npm install --legacy-peer-deps --cache "$srcdir"/npm-cache
 
-	# remove all dotfiles, git folders and references to pkgdir
+	# Remove all dotfiles, git folders and references to pkgdir
 	find . -type f -name '.*' -delete
 	find . -type d -name '.git*' | xargs rm -r
 	find . -name 'package.json' -print0 | xargs -r -0 sed -i '/_where/d'
 }
 
 package() {
-	# install nodejs application
-	install -d "$pkgdir/usr/lib/node_modules"
-	cp -r --preserve=mode "$srcdir/$_reponame" "$pkgdir/usr/lib/node_modules"
+	# Install nodejs application
+	install -d "$pkgdir"/usr/lib/node_modules
+	cp -r --preserve=mode "$srcdir"/$_reponame "$pkgdir"/usr/lib/node_modules
 
-	# install /usr/bin executable
-	install -Dm755 "$srcdir/$_reponame.sh" "$pkgdir/usr/bin/$_reponame"
+	# Install /usr/bin executable
+	install -Dm755 "$srcdir"/$_reponame.sh "$pkgdir"/usr/bin/$_reponame
 
-	# install icons
+	# Install icons
 	for d in 16 24 32 48 256; do
-		mkdir -p "$pkgdir/usr/share/icons/hicolor/${d}x${d}/apps"
+		mkdir -p "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
 	done
 
 	for i in 16 24 32 48 256; do
@@ -67,11 +61,11 @@ package() {
 		elif 	[ $i = '48' ];	then layer=3;
 		elif 	[ $i = '256' ];	then layer=4; fi
 
-	convert "$srcdir/$_reponame/icon.ico[${layer}]" -define icon:auto-resize=${i} \
-		"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_reponame}.png"
+	convert "$srcdir"/$_reponame/icon.ico[${layer}] -define icon:auto-resize=${i} \
+		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${_reponame}.png
 	done
 
-	# install desktop entry file
+	# Install desktop entry file
 	install -Dm644 ../$_reponame.desktop \
-		"$pkgdir/usr/share/applications/$_reponame.desktop"
+		"$pkgdir"/usr/share/applications/$_reponame.desktop
 }
