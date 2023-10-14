@@ -1,4 +1,4 @@
-# Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
+# Maintainer: Martino Pilia <martino.pilia@gmail.com>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 # shellcheck disable=SC2010
 _pkgname=SimpleITK
@@ -14,14 +14,17 @@ pkgname=(
     'tcl-simpleitk'
 )
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 provides=()
 conflicts=()
-depends=('gcc-libs' 'insight-toolkit')
+depends=(
+    'gcc-libs'
+    'insight-toolkit'
+)
 makedepends=(
     'cmake'
     'eigen'
@@ -90,7 +93,7 @@ build() {
 
     make all
 
-    LD_LIBRARY_PATH="${srcdir}/${_pkgname}/build/lib" make PythonVirtualEnv dist
+    PIP_CONFIG_FILE=/dev/null LD_LIBRARY_PATH="${srcdir}/${_pkgname}/build/lib" make PythonVirtualEnv dist
 }
 
 package_simpleitk() {
