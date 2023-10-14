@@ -1,9 +1,9 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=python-pydvdid
 _module=pydvdid
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python implementation of the Windows API IDvdInfo2::GetDiscID method, as used by Windows Media Center to compute a 'practically unique' 64-bit CRC for metadata retrieval."
 url="https://github.com/sjwood/pydvdid"
 depends=(python)
