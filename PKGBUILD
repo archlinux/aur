@@ -49,16 +49,16 @@ _disable_debug=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-sched-ext-git
-pkgver=6.4.0.r1186562.g1f602cd4c170
+pkgver=6.6.0.r1216273.gbac7dab4f8f5
 _srcname=sched_ext
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
-_lucjanver=6.4
+_lucjanver=6.5
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
@@ -66,14 +66,7 @@ source=("git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext"
         "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config'
-        # sched_ext Schedulers precompiled
-        "https://mirror.cachyos.org/bpf-sched/scx_atropos"
-        "https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_central"
-        "https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_flatcg"
-        "https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_pair"
-        "https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_qmap"
-        "https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_simple"
-        "https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_userland"
+        "https://mirror.cachyos.org/bpf-sched/scx_nest"
         )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -182,6 +175,9 @@ prepare() {
                            -d DEBUG_PREEMP
         fi
 
+    ### Enable SCHED_EXT
+        scripts/config -e SCHED_CLASS_EXT
+
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
@@ -214,6 +210,13 @@ build() {
   cd $_srcname
 
   _make all
+
+  # Build the sched_ext schedulers
+  cd $srcdir/sched_ext/tools/sched_ext
+  unset CFLAGS
+  unset CXXFLAGS
+  make CC=clang LLVM=1 -j
+
 }
 
 _package() {
@@ -240,7 +243,7 @@ _package() {
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
-  rm "$modulesdir"/{source,build}
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
@@ -328,23 +331,20 @@ _package-headers() {
 }
 
 _package-scheduler() {
-   pkgdesc="Precompiled Schedulers for $pkgdesc kernel"
-   
-   cd $srcdir
+   pkgdesc="Schedulers for $pkgdesc kernel"
 
-   # ATTENTION!
-   # Since currently llvm 16 is required for building these schedukers
-   # They come precompiled
-   # As soon arch did push llvm 16 to the repo's the schedulers can be build correctly
-   # So right now just install them
+   cd $srcdir/sched_ext/tools/sched_ext/build/bin
    
-   install -Dm755 scx_example_central "$pkgdir"/usr/bin/scx_example_central
-   install -Dm755 scx_example_flatcg "$pkgdir"/usr/bin/scx_example_flatcg
-   install -Dm755 scx_example_pair "$pkgdir"/usr/bin/scx_example_pair
-   install -Dm755 scx_example_qmap "$pkgdir"/usr/bin/scx_example_qmap
-   install -Dm755 scx_example_simple "$pkgdir"/usr/bin/scx_example_simple
-   install -Dm755 scx_example_userland "$pkgdir"/usr/bin/scx_example_userland
-   install -Dm755 scx_atropos "$pkgdir"/usr/bin/scx_atropos
+   install -Dm755 scx_central "$pkgdir"/usr/bin/scx_central
+   install -Dm755 scx_flatcg "$pkgdir"/usr/bin/scx_flatcg
+   install -Dm755 scx_pair "$pkgdir"/usr/bin/scx_pair
+   install -Dm755 scx_qmap "$pkgdir"/usr/bin/scx_qmap
+   install -Dm755 scx_rusty "$pkgdir"/usr/bin/scx_rusty
+   install -Dm755 scx_simple "$pkgdir"/usr/bin/scx_simple
+   install -Dm755 scx_userland "$pkgdir"/usr/bin/scx_userland
+   ## Also install scx_nest since it is not upstreamed now
+   cd $srcdir
+   install -Dm755 scx_nest "$pkgdir"/usr/bin/scx_nest
    
 
 }
@@ -358,12 +358,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('SKIP'
-        '0ec7df7055b9f13574b7a2ff4d36f4046dd2e9f9d6462ccc35e12ab3ca36fad90d0e9bd7ec2a8676bdbaf9b1d851caa0dfb2e5f9aff086c536fabb46221544f5'
-        '358b19fb90a490107fc5ca3b644a87adc918ebf3898474b3dc095c570063d30351a5459c947cc78f81f92bf49a3bd03fcf8b60f4dcd1760d621a81d2aca7e3a4'
-        'd13ab55728b87f18e16f23831aed6d5677f14a77733f030a2477514bfb46fd6eb8f108e060e349c9232349ff225284b8c6e3516c6a9d9afe64514b49f52d4352'
-        'a6d9c881ab2ce1fa9c5ce1fb0cd1fadd76e3bcbe1b09572aca561b49ccb373ca94e2127cfdb6dc64b517d531108390f3dcb8684a2be4f17899db8c92232a48ef'
-        '98c81b50f301c5c409de53ff5466189ddc3aa33cc924685ddec92cf7137d7f8bfd0fd8d7658f4ae5504bea162b330f3b973c408acf873f5958ef73da745a9c79'
-        '9ce29ea136cdbaf7bbaed771a9218ac8bd80da199ff10f92e15cd66894d82ae4f4408b4b71f6315559a5e3a9ffc3131279ab084fe697579fb7871909a58c6551'
-        'a530b5ce84c91eb57a64b7f6f07b8f20eabd823cf67154da5c9d4d18a14ad8a661a68f241babf3ce7515c25f5ecfabaf06a922e58bd5fa5ec405ff956c4aecf2'
-        '87afb2f3b2d220444be1879d46d6de562f549c35344153ced9a8af282e8693ff4c5db6493fec174bf35f762b024de4f7a1f33fb78e407b60a1b48c56242d7702'
-        '4f0c708c49eb54709a646962c93d35426d5beb0ff53460ebe3601d9832cbd71664cfad9c5e18d8097d616674c6dd2067926dae90866f83319e354c4376e96463')
+        '8937fc4001143088b4c8dbd775b7d6d04163c8cdb43b3b3cbefdce1ab522f6912811c6c720d84087254c4ef6388dfa72efba304d6189d57cffd657eaa3f5c822'
+        '2244efe07fa60e8259d4167b0d3725ea06eea584e70877c7bb4df2c21772bdcf6bd18c8b4380c7259e226243f1b6486e7ba36309399756172b6b071d07443d16'
+        'be00a0464f3ddbe107d291a785930ff3cb82218482871c4fdb6673bcca59b08a0d68a5675e99bd9d588828a2389d72a8a6b40f15c865851f31209df422fd8521')
