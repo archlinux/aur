@@ -3,7 +3,7 @@
 
 pkgname=wayfire-desktop-git
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -29,7 +29,7 @@ depends=(
         'gammastep'
         'qt5-wayland'
         'qt5ct'
-        'kvantum-qt5'
+        'kvantum'
         'clipman'
         'wl-clipboard'
         'brightnessctl'
