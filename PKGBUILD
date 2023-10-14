@@ -1,7 +1,7 @@
 # Maintainer: Tom Wong-Cornall <tom@wongcornall.com>
 pkgname=rawhide
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="Find files using pretty C expressions"
 arch=('x86_64'
       'i686'
@@ -16,7 +16,7 @@ depends=('acl'
 backup=("etc/rawhide.conf"
         "etc/rawhide.conf.d/attributes")
 source=("$url/download/$pkgname-$pkgver.tar.gz")
-sha256sums=("73d0f755ec3edb07c714255a4fb2a47b52b6225815fc39c5719b8330f94530ce")
+sha256sums=("a51a1360ce4763838b29a548a8e49dcf47a93a922bf1df05c8b7d50ecb9ab09d")
 
 build() {
 	cd "$pkgname-$pkgver"
