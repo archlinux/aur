@@ -1,66 +1,128 @@
 pkgbase = libguestfs-git
 	pkgdesc = Access and modify virtual machine disk image
-	pkgver = 1.42.0.r21.g4837698d8
+	pkgver = 1.51.7+1.r11930.20231006.f8cbd7140
 	pkgrel = 1
-	url = http://libguestfs.org
+	epoch = 0
+	url = https://libguestfs.org
 	install = appliance.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
-	makedepends = qemu-headless
-	makedepends = pcre
-	makedepends = cdrkit
-	makedepends = libvirt
-	makedepends = libconfig
-	makedepends = libxml2
+	makedepends = bison
+	makedepends = coreutils
+	makedepends = flex
+	makedepends = erlang>=23
+	makedepends = git
+	makedepends = gjs
+	makedepends = glib2
 	makedepends = gperf
-	makedepends = rpcsvc-proto
-	makedepends = python
-	makedepends = perl
-	makedepends = perl-string-shellquote
-	makedepends = perl-libintl-perl
-	makedepends = perl-sys-virt
-	makedepends = perl-module-build
-	makedepends = jansson
-	makedepends = po4a
-	makedepends = ruby-rdoc
-	makedepends = ruby-rake
-	makedepends = gobject-introspection
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = gettext
+	makedepends = go>=1.1.1
+	makedepends = java-runtime-headless>=1.6
+	makedepends = libtool
+	makedepends = lua
+	makedepends = ocaml>=4.07
+	makedepends = ocaml-augeas
 	makedepends = ocaml-findlib
-	makedepends = ocaml
-	makedepends = go
+	makedepends = pcre2
+	makedepends = perl
+	makedepends = perl-pod-parser
+	makedepends = php
+	makedepends = po4a
+	makedepends = python>=3.6
+	makedepends = ruby
+	makedepends = ruby-minitest
+	makedepends = ruby-rake
+	makedepends = ruby-rdoc
 	makedepends = rust
-	depends = qemu-headless
-	depends = augeas
-	depends = hivex>=1.3.2
-	depends = libconfig
-	depends = libvirt
-	depends = fuse
-	depends = file
+	makedepends = valgrind
+	makedepends = wget
+	depends = augeas>=1.2.0
+	depends = bash
+	depends = cdrtools
 	depends = cpio
-	depends = wget
-	depends = jansson
-	depends = supermin>=5.1
-	optdepends = python: Python bindings
-	optdepends = ruby: Ruby Bindings
-	optdepends = perl: Perl Bindings
-	optdepends = perl-sys-virt: Sys-Virt tools
-	optdepends = ocaml: Ocaml libs
-	provides = guestfish=1.42.0.r21.g4837698d8
-	provides = libguestfs
+	depends = file
+	depends = gcc-libs
+	depends = glibc
+	depends = hivex>=1.2.7
+	depends = jansson>=2.7
+	depends = libxml2
+	depends = linux>=2.6.34
+	depends = ncurses
+	depends = psmisc
+	depends = supermin>=5.1.18
+	depends = qemu-common>=1.3.0
+	depends = qemu-img>=1.3.0
+	depends = xz
+	depends = zstd
+	optdepends = acl: Library and programs for handling POSIX ACLs.
+	optdepends = bash-completion: For tab-completion of commands in bash.
+	optdepends = curl: Used by virt-builder for downloads.
+	optdepends = fuse: fusermount(1), libfuse and kernel module are all needed if you want guestmount(1) and/or mount-local support.
+	optdepends = gdisk: GPT disk support.
+	optdepends = gnupg: Used by virt-builder for checking digital signatures.
+	optdepends = java-runtime>=1.6: For Java bindings.
+	optdepends = icoutils: Render icons from Windows guests.
+	optdepends = libcap: Library and programs for handling Linux capabilities.
+	optdepends = libconfig: To parse libguestfs's own config files.
+	optdepends = libldm: Library and ldmtool(1) for handling Windows Dynamic Disks.
+	optdepends = libselinux: Used by the libvirt backend to securely confine the appliance (sVirt).
+	optdepends = libsystemd-journal: For accessing systemd journals.
+	optdepends = libtsk: For filesystem forensics analysis.
+	optdepends = libvirt>=0.10.2
+	optdepends = lua: For LUA bindings.
+	optdepends = nbdkit>=1.12
+	optdepends = netpbm: Render icons from guests.
+	optdepends = ocaml: For OCaml bindings.
+	optdepends = ocaml-augeas: For OCaml augeas binding.
+	optdepends = ocaml-gettext: For localizing OCaml virt tools.
+	optdepends = perl: Perl Bindings; Perl module used to test virt-rescue(1).
+	optdepends = perl-sys-virt: Sys-Virt tools.
+	optdepends = php: For PHP bindings.
+	optdepends = python>=3.6: Python bindings
+	optdepends = python-evtx: Used by virt-log(1) to parse Windows Event Log files.
+	optdepends = readline: For nicer command line editing in guestfish(1).
+	optdepends = rpm: To parse the list of applications from RPM-based guests.
+	optdepends = ruby: For ruby bindings.
+	optdepends = wget: For '/usr/bin/update-libguestfs-appliance'.
+	optdepends = yara>=4.0.0: Tool for categorizing files based on their content.
+	provides = libguestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = erlang-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = java-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = lua-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = ocaml-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = perl-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = php-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = python-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = ruby-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = guestfs-bash-completion=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = guestfsd=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = guestfish=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = virt-rescue=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = libguestfs.so
+	provides = libguestfs-gobject-1.0.so
 	conflicts = libguestfs
+	conflicts = guestfsd
+	conflicts = guestfish
+	conflicts = virt-rescue
 	backup = etc/libguestfs-tools.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.gpg
-	source = git+https://github.com/libguestfs/libguestfs
-	source = git+https://git.savannah.gnu.org/git/gnulib.git
-	source = git+https://github.com/libguestfs/libguestfs-common
+	source = libguestfs::git+https://github.com/libguestfs/libguestfs.git
+	source = gnulib::git+https://git.savannah.gnu.org/git/gnulib.git
+	source = libguestfs-common::git+https://github.com/libguestfs/libguestfs-common.git
+	source = libguestfs-1.48.1-disable_php_tests.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/libguestfs/-/raw/main/libguestfs-1.48.1-disable_php_tests.patch
 	source = update-libguestfs-appliance
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = 6f695baf27927a7643b2b3f6a2497ca37e306b2e8640bd6025c49f1fc3b243a379b38ad6183acb099e9d762e5ab55b28bbdfab0c6dbd1d3fe748caa0846b1c5a
+	source = appliance.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 151d7ab43e7150c7d645eb0bad9681ce5ecc59cae44f254f08ef617ce3d9932f
+	sha256sums = 96809e9df6e349b7f5679cd62e42917b42c6f6d5b5b1d6063841d081a83beb27
+	sha256sums = 46ee0c9b3532cbbc38ddce7136b37e30ef71ad7aa004fa2fa552c9f165ee63d5
 
 pkgname = libguestfs-git
-

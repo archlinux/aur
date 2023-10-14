@@ -1,5 +1,5 @@
 post_install() {
-    usr/sbin/update-libguestfs-appliance
+    usr/bin/update-libguestfs-appliance
 }
 
 remove_old_appliance() {
