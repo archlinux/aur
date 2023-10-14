@@ -3,7 +3,7 @@ pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.15.0
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -14,23 +14,22 @@ makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer')
 #            'python-sphinx-asdf'
-#            'python-numpy>=1.10'
-#            'python-jsonschema>=4.0.1'
-#            'python-yaml>=3.10'
+#            'python-sphinx-inline-tabs'
+#            'python-mistune>=3'
+#            'python-numpy'
+#            'python-yaml'
 #            'python-semantic-version>=2.8'
-#            'python-importlib-metadata'
 #            'python-jmespath>=0.6.2'
 #            'python-asdf-standard>=1.0.1'
 #            'python-asdf_transform_schemas>=0.3.0'
+#            'graphviz'
 #            'python-sphinx-astropy'
 #            'python-astropy>=5.0.4'
-#            'graphviz'
 #            'python-toml')
 checkdepends=('python-pytest-doctestplus'
               'python-pytest-openfiles'
               'python-pytest-remotedata'
-              'python-numpy'
-              'python-jsonschema<4.18'
+              'python-jsonschema'
               'python-yaml'
               'python-importlib-metadata'
               'python-semantic-version'
@@ -41,10 +40,10 @@ checkdepends=('python-pytest-doctestplus'
               'python-lz4'
               'python-fsspec'
               'python-aiohttp'
-              'python-requests')    # psutil pulled in by pytest-openfiles
+              'python-requests')    # psutil pulled in by pytest-openfiles; attrs <- aiohttp, jsonschema
 #             'python-virtualenv'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('347b3814aa89e88351fa2c3d0710dc6d')
+md5sums=('95923dd09d9e63889d7fd1c8d9faaf2a')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -78,10 +77,11 @@ check() {
 }
 
 package_python-asdf() {
-    depends=('python>=3.8'
-             'python-numpy>=1.20'
+    depends=('python>=3.9'
+             'python-numpy>=1.22'
              'python-jmespath>=0.6.2'
-             'python-jsonschema<4.18'
+             'python-jsonschema>=4.8'
+             'python-attrs>=20.1.0'
              'python-packaging>=19.0'
              'python-importlib-metadata>=4.11.4'
              'python-yaml>=5.4.1'
