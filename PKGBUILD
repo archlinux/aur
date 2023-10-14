@@ -12,9 +12,9 @@ conflicts=("pass-it-on-server")
 source=("$pkgname-source-$pkgver.tar.gz::https://github.com/kwheelans/pass-it-on/archive/refs/tags/v$pkgver.tar.gz")
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v$pkgver/pass-it-on-server-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v$pkgver/pass-it-on-server-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-b2sums=('ec2529c92c2ae950b467837f4ce18c51d3bd0ff6ae8e8daa014a3211d421b6102662e8ff56a62796c3d624e45ac66e51f47ad18d6b8677074907bdc03de09961')
-b2sums_x86_64=('5246e57f53923e63fd2b842aa6ae76ee650dda1e92efd93dfb7cd4519b690226340846279f0d8e9407d78ff19ece40dce1834b8d09be76e888110e6ba80a9fde')
-b2sums_aarch64=('87fecbddbafffc56b00d27f90f416115d8036da211cc8fb3bc0c416d29bb0f25d6ff6449660eae84c59744b8264bc6819a74a5ffcd5e9dbce0731223b779242b')
+b2sums=('f0a2ba384e3bcc6fcce068a847fdf27900a4261201abfc4f62d50396fde669b2973fe5236321be8d839ca3ff6b8cd0401ba04f4c6e3265f6872eac3ff1a120c5')
+b2sums_x86_64=('5a0af3d43efc56a6db17b97e0fe0855ddc7e2c7b06cf65503c5c98219729d9f4e173e23afe5a29e6a0950e9f0b560e3a669adc1413217b30afc508ca3e044c8f')
+b2sums_aarch64=('c6a9ec0a500a127a0c38b280418c54183a7499c0ea1a048dbed3b648f590d062deb540a8362efa89406ae72f82d7b7afe4eda1b7a953806f7c046d3c9e1e9dbd')
 
 package() {
     _pkgname="pass-it-on-server"
