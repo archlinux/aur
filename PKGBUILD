@@ -2,7 +2,7 @@
 
 pkgname=jinja2-cli
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for Jinja2"
 url="https://github.com/mattrobenolt/jinja2-cli"
 license=('BSD')
