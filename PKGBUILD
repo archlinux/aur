@@ -3,7 +3,7 @@
 pkgbase=xbydriver-appimage
 pkgname=(xbydriver-{bin,appimage})
 pkgver=3.11.26
-pkgrel=0
+pkgrel=1
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gaozhangmin/aliyunpan"
@@ -45,6 +45,30 @@ package_xbydriver-bin() {
     mkdir -pv "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}
     bsdtar -xf "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}.deb -C "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}
     bsdtar -xf "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}/data.tar.xz --strip-components=1 -C ${pkgdir}/
+
+    mv "${pkgdir}/opt/小白羊云盘" "${pkgdir}/opt/${pkgbase%-appimage}"
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/xbyyunpan.desktop"
+[Desktop Entry]
+Name=${pkgbase%-appimage}
+Name[zh_CN]=小白羊云盘
+Exec="/opt/${pkgbase%-appimage}/xbyyunpan" %U
+Terminal=false
+Type=Application
+Icon=xbyyunpan
+StartupWMClass=小白羊云盘
+Comment=小白羊云盘
+Categories=Network;
+EOF
+    local _icon
+    for _icon in 16 32 64 128 256; do
+        install -Dm0644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/xbyyunpan.png" \
+                    -t  "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps"
+    done
+
+    rm -rf "${pkgdir}/usr/share/icons/hicolor/0x0/apps/xbyyunpan.png"
+
+    #修复下载时 aria2c 连接失败的问题
+    sed -i 's|async-dns=false|async-dns=true|g' "${pkgdir}/opt/${pkgbase%-appimage}/resources/engine/aria2.conf"
 }
 
 package_xbydriver-appimage() {
