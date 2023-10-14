@@ -11,8 +11,7 @@ pkgbase = qrae-git
 	depends = qt5-webkit
 	provides = qrae
 	conflicts = qrae
-	source = git://github.com/javierllorente/qrae.git#branch=master
+	source = git+https://github.com/javierllorente/qrae.git#branch=master
 	md5sums = SKIP
 
 pkgname = qrae-git
-

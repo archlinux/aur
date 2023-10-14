@@ -12,7 +12,7 @@ depends=('qt5-webkit')
 makedepends=('git' 'make')
 conflicts=('qrae')
 provides=('qrae')
-source=('git://github.com/javierllorente/qrae.git#branch=master')
+source=('git+https://github.com/javierllorente/qrae.git#branch=master')
 md5sums=('SKIP')
 
 
