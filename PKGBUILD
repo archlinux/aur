@@ -2,7 +2,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=moar
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://github.com/walles/moar'
 license=(BSD)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ba3840b57536fc39ada112836179d3c6c6aa7208e8805f5db2bdc59bf69a899a')
+sha256sums=('2abca0b19b573e071b92e24b384a4d5864ad7cf3dc925ec42cd60f2e78c25da6')
 
 build() {
 
