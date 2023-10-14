@@ -1,0 +1,11 @@
+post_install() {
+	echo ""
+	echo "Before usage with cmus you MUST set up the config file"
+	echo "    cp /usr/share/cmus-status-scrobbler/cmus_status_scrobbler.ini ~/.config/cmus/"
+	echo "Remove all servers from ~/.config/cmus/cmus_status_scrobbler.ini that you do not want to use."
+	echo "Then run"
+	echo "    cmus_status_scrobbler --auth"
+	echo "Follow the instructions."
+	echo "Finally, set the cmus setting"
+	echo '    :set status_display_program=cmus_status_scrobbler "$@" &'
+}

@@ -1,0 +1,16 @@
+pkgbase = cmus-status-scrobbler-git
+	pkgdesc = Standalone scrobbler program, not a continuously running process, written in Python 3 that works together with cmus.
+	pkgver = r74.e970e4d
+	pkgrel = 1
+	url = https://github.com/vjeranc/cmus-status-scrobbler
+	install = cmus-status-scrobbler.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = cmus
+	depends = python
+	source = git+https://github.com/vjeranc/cmus-status-scrobbler
+	b2sums = SKIP
+
+pkgname = cmus-status-scrobbler-git
