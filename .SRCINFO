@@ -1,6 +1,6 @@
 pkgbase = stremio
 	pkgdesc = A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)
-	pkgver = 4.4.160
+	pkgver = 4.4.164
 	pkgrel = 1
 	url = https://www.stremio.com/
 	arch = x86_64
@@ -9,28 +9,29 @@ pkgbase = stremio
 	makedepends = cmake
 	makedepends = librsvg
 	depends = mpv
-	depends = nodejs-lts-gallium
+	depends = nodejs
 	depends = openssl
-	depends = qt5-webengine
 	depends = qt5-base
 	depends = qt5-declarative
+	depends = qt5-webengine
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-translations
 	depends = qt5-webchannel
-	source = git+https://github.com/Stremio/stremio-shell.git#tag=v4.4.160
+	depends = hicolor-icon-theme
+	source = git+https://github.com/Stremio/stremio-shell.git#tag=v4.4.164
 	source = git+https://github.com/Ivshti/libmpv.git
 	source = git+https://github.com/itay-grudev/SingleApplication.git
 	source = git+https://github.com/Ivshti/razerchroma.git
-	source = stremio-4.4.160-server.js::https://dl.strem.io/four/v4.4.160/server.js
-	source = stremio-4.4.160-stremio.asar::https://dl.strem.io/four/v4.4.160/stremio.asar
+	source = stremio-4.4.164-server.js::https://dl.strem.io/four/v4.4.164/server.js
+	source = stremio-4.4.164-stremio.asar::https://dl.strem.io/four/v4.4.164/stremio.asar
 	source = 010-stremio-do-not-download-server-js.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 3088ef4dfb26426cca5d54386a65066d07a20b5c7729742e30522cd96d2786e8
-	sha256sums = b253331df5aef953208691e5bece1e33c8e9705c981979d9392052356c1eb352
+	sha256sums = f6e368543dfa4d82dbc9ba1dd9f350da42d61bd26d80b86aaef5f3bad75d24b6
+	sha256sums = 7d76993cc91c6becdf43b0640dc39af91069358a60e612474f4e1470d52de17a
 	sha256sums = b5eff88b30d8c6030e36ca4949ebf6ff9515efbedc0b9bc748110cd1fbc0671a
 
 pkgname = stremio

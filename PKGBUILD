@@ -1,14 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.160
+pkgver=4.4.164
 pkgrel=1
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
 url='https://www.stremio.com/'
 license=('GPL3')
-depends=('mpv' 'nodejs-lts-gallium' 'openssl' 'qt5-webengine' 'qt5-base' 'qt5-declarative'
-          'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-translations' 'qt5-webchannel')
+depends=('mpv' 'nodejs' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-webengine'
+         'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-translations' 'qt5-webchannel'
+         'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'librsvg')
 source=("git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}"
         'git+https://github.com/Ivshti/libmpv.git'
@@ -21,8 +22,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '3088ef4dfb26426cca5d54386a65066d07a20b5c7729742e30522cd96d2786e8'
-            'b253331df5aef953208691e5bece1e33c8e9705c981979d9392052356c1eb352'
+            'f6e368543dfa4d82dbc9ba1dd9f350da42d61bd26d80b86aaef5f3bad75d24b6'
+            '7d76993cc91c6becdf43b0640dc39af91069358a60e612474f4e1470d52de17a'
             'b5eff88b30d8c6030e36ca4949ebf6ff9515efbedc0b9bc748110cd1fbc0671a')
 
 prepare() {
