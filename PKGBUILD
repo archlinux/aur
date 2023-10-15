@@ -1,14 +1,13 @@
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 pkgname=lxterminal-git
-pkgver=0.3.1.r10.g3779fce
+pkgver=0.4.0.r31.g9b4299c
 pkgrel=1
 pkgdesc="VTE-based terminal emulator (part of LXDE)"
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
-license=('GPL')
-depends=('gtk3' 'fontconfig' 'libx11' 'glib2' 'vte')
-makedepends=('pkgconfig' 'intltool' 'git')
-conflicts=('lxterminal')
+license=('GPL2')
+depends=('vte3')
+makedepends=('intltool' 'git' 'libxslt' 'docbook-xml' 'docbook-xsl')
 provides=('lxterminal')
 groups=('lxde-git')
 source=(git+https://github.com/lxde/lxterminal)
@@ -35,5 +34,5 @@ build() {
 package() {
   cd "lxterminal"
 
-  make DESTDIR="${pkgdir}" install 
+  make DESTDIR="${pkgdir}" install
 }
