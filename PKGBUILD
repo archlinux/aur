@@ -11,8 +11,7 @@
 
 pkgname=lightworks-beta
 lwksver=2023.2
-lwksbuild=141946
-lwksdate="31st%20August"
+lwksbuild=142600
 pkgver=$lwksver
 pkgrel=1
 pkgdesc="Lightworks Beta is the public Beta branch for Lightworks, the professional video editing suite, updated weekly"
@@ -26,11 +25,11 @@ provides=('lightworks')
 conflicts=('lightworks' 'lwks-beta')
 replaces=('lwks-beta')
 source=(
-    "https://lwks.s3.amazonaws.com/betas/public/lightworks/${lwksver}%20Beta%20Revision%20${lwksbuild}%20%28${lwksdate}%29/Lightworks-${lwksver}-Beta-${lwksbuild}.deb"
+    "https://cdn.lwks.com/releases/${lwksver}/lightworks_${lwksver}_r${lwksbuild}.deb"
     )
 
 sha512sums=(
-    '9eb8fabd4fb41f2dc3ee8279b0c885a3bdc26acca1044734a253226a07e271fa8a723e0b0d4f72a32b87c6ff39cee7845b0c30454c5e68702b33676ea7f4aad0'
+    '0d5857a37a9958e8e9ea7340de5771abb35847616f270784e828a3f1f7c92b9fea07547d6333608444701addff7c75a11d60cc144f1bef3c2077f89a8217fbb6'
     )
 
 package() {

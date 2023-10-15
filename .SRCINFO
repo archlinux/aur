@@ -27,7 +27,7 @@ pkgbase = lightworks-beta
 	conflicts = lwks-beta
 	replaces = lwks-beta
 	options = !strip
-	source = https://lwks.s3.amazonaws.com/betas/public/lightworks/2023.2%20Beta%20Revision%20141946%20%2831st%20August%29/Lightworks-2023.2-Beta-141946.deb
-	sha512sums = 9eb8fabd4fb41f2dc3ee8279b0c885a3bdc26acca1044734a253226a07e271fa8a723e0b0d4f72a32b87c6ff39cee7845b0c30454c5e68702b33676ea7f4aad0
+	source = https://cdn.lwks.com/releases/2023.2/lightworks_2023.2_r142600.deb
+	sha512sums = 0d5857a37a9958e8e9ea7340de5771abb35847616f270784e828a3f1f7c92b9fea07547d6333608444701addff7c75a11d60cc144f1bef3c2077f89a8217fbb6
 
 pkgname = lightworks-beta
