@@ -1,13 +1,13 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=axu-bin
-pkgver=1.3.1
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 epoch=
 pkgdesc="A cli tool to check your Arch Linux explicitly installed packages updates"
 arch=("x86_64")
 url="https://github.com/tfkhdyt/axu"
 license=('GPL3')
-depends=()
+depends=("pacman-contrib" "yay" "gawk")
 makedepends=()
 checkdepends=()
 optdepends=()
