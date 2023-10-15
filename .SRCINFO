@@ -1,0 +1,13 @@
+pkgbase = kya-bin
+	pkgdesc = Watches for new screenshots and sends them to Gyazo
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/gert7/kya
+	arch = x86_64
+	license = MIT
+	provides = kya
+	conflicts = kya
+	source = https://github.com/gert7/kya/releases/download/v0.2.5/kya-0.2.5-x86_64.tar.gz
+	sha256sums = a1f2f011ca5a6cf2149ce3078b01751a447adf8ebae09925d7b747df5d87b4bf
+
+pkgname = kya-bin
