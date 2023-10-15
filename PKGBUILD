@@ -11,14 +11,15 @@ license=(GPL2)
 depends=(vegastrike-engine)
 makedepends=(git cmake)
 options=(!strip)
-source=("git+https://github.com/vegastrike/Assets-Production#tag=v${pkgver}")
+source=("Vega-Strike-Assets-Production::git+https://github.com/vegastrike/Assets-Production#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build(){
-  cmake -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}"/Assets-Production/CMakeLists.txt
+  cmake -B build -S "Vega-Strike-Assets-Production" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
-  make -C "${srcdir}" DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-

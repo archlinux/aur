@@ -9,7 +9,7 @@ pkgbase = vegastrike
 	makedepends = cmake
 	depends = vegastrike-engine
 	options = !strip
-	source = git+https://github.com/vegastrike/Assets-Production#tag=v0.8.0
+	source = Vega-Strike-Assets-Production::git+https://github.com/vegastrike/Assets-Production#tag=v0.8.0
 	sha256sums = SKIP
 
 pkgname = vegastrike
