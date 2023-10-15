@@ -4,23 +4,38 @@
 
 _gitname=darling
 pkgbase=$_gitname-git
-pkgname='darling-git'
-pkgver=r4118.894d62c91
+pkgname=(
+    'darling-git' 'darling-extra-git' 'darling-core-git' 'darling-system-git' 'darling-cli-git' 'darling-ffi-git' 'darling-cli-devenv-git'
+    'darling-cli-gui-common-git' 'darling-iokitd-git' 'darling-cli-devenv-gui-common-git' 'darling-cli-extra-git' 'darling-gui-git'
+    'darling-python2-git' 'darling-cli-python2-common-git' 'darling-pyobjc-git' 'darling-ruby-git' 'darling-perl-git'
+    'darling-jsc-webkit-common-git' 'darling-jsc-git' 'darling-iosurface-git' 'darling-cli-devenv-gui-stubs-common-git'
+    'darling-gui-stubs-git'
+)
+pkgver=r4178.fe0da1407
 pkgrel=1
-pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
 url="https://www.darlinghq.org"
 license=('GPL3')
-groups=('darling-git')
-depends=('xz' 'fuse' 'libxml2' 'icu' 'openssl' 'bzip2' 'zlib' 'libsystemd'
-         'wget' 'curl' 'sqlite' 'ruby' 'sed' 'libarchive' 'file' 'python' 'gawk' 'libunwind' 'ffmpeg'
-         'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'libxrandr' 'libxkbcommon' 'lib32-gcc-libs' 'libxkbfile')
-_depends_x86_64=('lib32-clang' 'lib32-bzip2' 'lib32-systemd' 'lib32-libxslt')
-makedepends=('git' 'cmake' 'clang' 'bison' 'flex' 'binutils>=2.28' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2' 'ffmpeg' 'git-lfs' 'llvm' 'vulkan-headers'
-             'libxrandr' 'libxkbcommon' 'libxkbfile')
-_make_depends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
-conflicts=('darling')
-provides=('darling')
+makedepends=(
+    # `depends` for darling-core
+    'xdg-user-dirs'
+
+    # `depends` for darling-cli
+    'fuse'
+
+    # depends for darling-gui
+    'libfreetype.so' 'libjpeg.so' 'libpng' 'libtiff.so' 'libgif.so' 'libEGL.so' 'libfontconfig.so' 'libx11' 'libxext' 'libxrandr'
+    'libxcursor' 'libxkbfile' 'libcairo.so' 'libdbus-1.so' 'libGL.so' 'glu'
+
+    'libswresample.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libpulse.so'
+
+    # optdepends for darling-gui
+    'libvulkan.so' 'llvm-libs'
+
+    # actual makedepends
+    'cmake' 'clang' 'flex' 'bison' 'icu' 'pkg-config' 'llvm' 'libbsd' 'git' 'git-lfs' 'python' 'libxml2' 'vulkan-headers'
+)
+makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 
 # Darling git repo and all submodules.
 source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libressl.git#branch=v2.2.9'
@@ -175,7 +190,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling.git'
         'git+https://github.com/darlinghq/darlingserver.git'
         'git+https://github.com/darlinghq/fmdb.git'
-	'git+https://github.com/darlinghq/indium.git'
+        'git+https://github.com/darlinghq/indium.git'
         'git+https://github.com/darlinghq/lzfse.git'
         'git+https://github.com/darlinghq/xcbuild.git')
 
@@ -368,13 +383,13 @@ prepare() {
 
     cd "$srcdir/$_gitname/src/external/openpam/"
     git submodule init
-    git config submodule.darling/submodules/pam_modules.url "$srcdir/darling-pam_modules"
+    git config submodule.pam_modules.url "$srcdir/darling-pam_modules"
     git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_gitname/src/external/IOKitUser"
     git submodule init
-    git config submodule.darling/submodules/IOGraphics.url "$srcdir/darling-IOGraphics"
-    git config submodule.darling/submodules/IOHIDFamily.url "$srcdir/darling-IOHIDFamily"
+    git config submodule.IOGraphics.url "$srcdir/darling-IOGraphics"
+    git config submodule.IOHIDFamily.url "$srcdir/darling-IOHIDFamily"
     git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_gitname/src/external/metal"
@@ -400,13 +415,245 @@ build() {
     cd "$srcdir/$_gitname/build"
 
     echo "Running cmake."
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    CFLAGS="" CXXFLAGS="" CPPFLAGS="" LDFLAGS="" cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DDEBIAN_PACKAGING=ON -DJSC_UNIFIED_BUILD=ON -DENABLE_METAL=ON
 
     echo "Running make."
     make
 }
 
-package() {
+package_darling-git() {
+    pkgdesc='Translation layer for running macOS software on Linux'
+    depends=('darling-cli-git' 'darling-python2-git' 'darling-ruby-git' 'darling-perl-git' 'darling-gui-git' 'darling-gui-stubs-git' 'darling-pyobjc-git')
+    provides=('darling' 'darling-cli-devenv')
+    conflicts=('darling')
+
+    true
+}
+
+package_darling-extra-git() {
+    pkgdesc='Extra components for Darling that are not part of a typical ("stock") installation'
+    depends=('darling-git' 'darling-jsc-git' 'darling-cli-extra-git')
+    provides=('darling-extra')
+    conflicts=('darling-extra')
+
+    true
+}
+
+package_darling-core-git() {
+    pkgdesc='Core components of Darling'
+    depends=('glibc' 'gcc-libs' 'xdg-user-dirs')
+    depends_x86_64=('lib32-glibc' 'lib32-gcc-libs')
+    provides=('darling-core')
+    conflicts=('darling-core')
+
     cd "$srcdir/$_gitname/build"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=core -P cmake_install.cmake
+}
+
+package_darling-system-git() {
+    pkgdesc='System components of Darling'
+    depends=('darling-core-git')
+    provides=('darling-system')
+    conflicts=('darling-system')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=system -P cmake_install.cmake
+}
+
+package_darling-cli-git() {
+    pkgdesc='CLI components of Darling'
+    depends=(
+        'darling-system-git' 'darling-cli-gui-common-git' 'darling-cli-python2-common-git'
+
+        'fuse'
+    )
+    provides=('darling-cli')
+    conflicts=('darling-cli')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli -P cmake_install.cmake
+}
+
+package_darling-ffi-git() {
+    pkgdesc='libffi built for use within Darling'
+    depends=('darling-core-git')
+    provides=('darling-ffi')
+    conflicts=('darling-ffi')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=ffi -P cmake_install.cmake
+}
+
+package_darling-cli-devenv-git() {
+    pkgdesc='A Darling environment for CLI-only programs for building and developing using the command line developer tools'
+    depends=(
+        'darling-cli-git' 'darling-python2-git' 'darling-ruby-git' 'darling-perl-git' 'darling-cli-devenv-gui-common-git'
+        'darling-cli-devenv-gui-stubs-common-git' 'darling-iosurface-git'
+    )
+    provides=('darling-cli-devenv')
+    conflicts=('darling-cli-devenv' 'darling-gui' 'darling-gui-stubs')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_dev -P cmake_install.cmake
+}
+
+package_darling-cli-gui-common-git() {
+    pkgdesc='Components of Darling that are shared between the CLI and GUI components'
+    depends=('darling-system-git')
+    provides=('darling-cli-gui-common')
+    conflicts=('darling-cli-gui-common')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_gui_common -P cmake_install.cmake
+}
+
+package_darling-iokitd-git() {
+    pkgdesc='IOKit daemon for Darling'
+    depends=('darling-system-git' 'darling-iosurface-git')
+    provides=('darling-iokitd')
+    conflicts=('darling-iokitd')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=iokitd -P cmake_install.cmake
+}
+
+package_darling-cli-devenv-gui-common-git() {
+    pkgdesc='Components of Darling that are shared between the developer environment and the GUI components'
+    depends=('darling-system-git')
+    provides=('darling-cli-devenv-gui-common')
+    conflicts=('darling-cli-devenv-gui-common')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_dev_gui_common -P cmake_install.cmake
+}
+
+package_darling-cli-extra-git() {
+    pkgdesc='Non-standard CLI components of Darling'
+    depends=('darling-cli-git')
+    provides=('darling-cli-extra')
+    conflicts=('darling-cli-extra')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_extra -P cmake_install.cmake
+}
+
+package_darling-gui-git() {
+    pkgdesc='GUI components of Darling'
+    depends=(
+        'darling-system-git' 'darling-cli-devenv-gui-common-git' 'darling-iokitd-git' 'darling-cli-gui-common-git' 'darling-iosurface-git'
+
+        'libfreetype.so' 'libjpeg.so' 'libpng' 'libtiff.so' 'libgif.so' 'libEGL.so' 'libfontconfig.so' 'libx11' 'libxext' 'libxrandr'
+        'libxcursor' 'libxkbfile' 'libcairo.so' 'libdbus-1.so' 'libGL.so' 'glu'
+
+        'libswresample.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libpulse.so'
+    )
+    optdepends=(
+        'libvulkan.so: Metal support'
+        'llvm-libs: Metal support'
+    )
+    provides=('darling-gui')
+    conflicts=('darling-gui')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=gui -P cmake_install.cmake
+}
+
+package_darling-python2-git() {
+    pkgdesc='Python 2 (and associated programs) built for use within Darling'
+    depends=('darling-core-git' 'darling-cli-python2-common-git' 'darling-ffi-git')
+    provides=('darling-python2')
+    conflicts=('darling-python2')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=python -P cmake_install.cmake
+}
+
+package_darling-cli-python2-common-git() {
+    pkgdesc='Components of Darling that are shared between the CLI and Python 2 components'
+    depends=('darling-core-git')
+    provides=('darling-cli-python2-common')
+    conflicts=('darling-cli-python2-common')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_python_common -P cmake_install.cmake
+}
+
+package_darling-pyobjc-git() {
+    pkgdesc='PyObjC built for use within Darling'
+    depends=('darling-gui-stubs-git' 'darling-python2-git')
+    provides=('darling-pyobjc')
+    conflicts=('darling-pyobjc')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=pyobjc -P cmake_install.cmake
+}
+
+package_darling-ruby-git() {
+    pkgdesc='Ruby built for use within Darling'
+    depends=('darling-core-git' 'darling-ffi-git')
+    provides=('darling-ruby')
+    conflicts=('darling-ruby')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=ruby -P cmake_install.cmake
+}
+
+package_darling-perl-git() {
+    pkgdesc='Perl built for use within Darling'
+    depends=('darling-core-git')
+    provides=('darling-perl')
+    conflicts=('darling-perl')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=perl -P cmake_install.cmake
+}
+
+package_darling-jsc-webkit-common-git() {
+    pkgdesc='Components of Darling that are shared between JavaScriptCore and WebKit'
+    depends=('darling-system-git')
+    provides=('darling-jsc-webkit-common')
+    conflicts=('darling-jsc-webkit-common')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=jsc_webkit_common -P cmake_install.cmake
+}
+
+package_darling-jsc-git() {
+    pkgdesc='JavaScriptCore built for use within Darling'
+    depends=('darling-system-git' 'darling-jsc-webkit-common-git')
+    provides=('darling-jsc')
+    conflicts=('darling-jsc')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=jsc -P cmake_install.cmake
+}
+
+package_darling-iosurface-git() {
+    pkgdesc='IOSurface framework built for use within Darling'
+    depends=('darling-system-git')
+    provides=('darling-iosurface')
+    conflicts=('darling-iosurface')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=iosurface -P cmake_install.cmake
+}
+
+package_darling-cli-devenv-gui-stubs-common-git() {
+    pkgdesc='Components of Darling that are shared between the developer environment and GUI stub components'
+    depends=('darling-cli-devenv-gui-common-git')
+    provides=('darling-cli-devenv-gui-stubs-common')
+    conflicts=('darling-cli-devenv-gui-stubs-common')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_dev_gui_stubs_common -P cmake_install.cmake
+}
+
+package_darling-gui-stubs-git() {
+    pkgdesc='GUI stub components of Darling'
+    depends=('darling-gui-git' 'darling-cli-devenv-gui-stubs-common-git')
+    provides=('darling-gui-stubs')
+    conflicts=('darling-gui-stubs')
+
+    cd "$srcdir/$_gitname/build"
+    DESTDIR="$pkgdir" cmake -DCOMPONENT=gui_stubs -P cmake_install.cmake
 }
