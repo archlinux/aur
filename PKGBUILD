@@ -77,6 +77,20 @@ prepare() {
     git -C $srcdir/ros2/src/ros2/rmw_cyclonedds cherry-pick f57732d15be53796d518e12352866124efcaa939
     ## googletest: fix building error with GCC 11
     git -C $srcdir/ros2/src/ament/googletest/googletest cherry-pick 4679637f1c9d5a0728bdc347a531737fad0b1ca3
+    ## rcpputils: fix missing cstdint include
+    git -C $srcdir/ros2/src/ros2/rcpputils cherry-pick f96811a9047fa6a084a885219c88b415bc544487
+    ## eProsima Fast-DDS: fix missing cstdint include
+    git -C $srcdir/ros2/src/eProsima/Fast-DDS cherry-pick -X theirs 02539b98a3a36e711da8f416372cbab2ecc178bb
+    ## libstatistics_collector: Fix missing cstdint include
+    git -C $srcdir/ros2/src/ros-tooling/libstatistics_collector cherry-pick 1c340c97c731019d0c7b40f8c167b0ef666bcf75
+    ## rclcpp: Fix missing stdexcept includes
+    git -C $srcdir/ros2/src/ros2/rclcpp cherry-pick 86c77143c96d85711a87f2a5adcc4d7f0fb0dbeb
+    ## pybind11_vendor: Support for python 3.11
+    git -C $srcdir/ros2/src/ros2/pybind11_vendor checkout 3.0.3
+    ## rosbag2_storage: cherry pick to fix missing cstdint include
+    git -C $srcdir/ros2/src/ros2/rosbag2 cherry-pick 5f5a583ca2e47f6a2ec1bca6076576a99efaaf73
+    ## rosbag2_compression: cherry pick to fix missing cstdint include
+    git -C $srcdir/ros2/src/ros2/rosbag2 cherry-pick 65c889e1fa55dd85a148b27b8c27dadc73238e67
 }
 
 build() {
