@@ -7,11 +7,10 @@ pkgbase = tomlq-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
 	provides = tomlq
 	conflicts = tomlq
 	options = !lto
-	source = tomlq::git+https://github.com/jamesmunns/tomlq
+	source = tomlq-git::git+https://github.com/jamesmunns/tomlq.git
 	sha256sums = SKIP
 
 pkgname = tomlq-git

@@ -1,47 +1,38 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tomlq-git
 _pkg="${pkgname%-git}"
 pkgver=r5.66b1ee6
 pkgrel=1
 pkgdesc='Tool for getting data from TOML files'
-arch=('x86_64')
-url='https://github.com/jamesmunns/tomlq'
-license=('MIT')
-depends=('gcc-libs')
-makedepends=('cargo' 'git')
-provides=("$_pkg")
-conflicts=("$_pkg")
+arch=(x86_64)
+url=https://github.com/jamesmunns/tomlq
+license=(MIT)
+makedepends=(cargo git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!lto')
-source=("$_pkg::git+$url")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkg"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git -C $pkgname rev-list --count HEAD)" "$(git -C $pkgname rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-	cd "$_pkg"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cd "$_pkg"
-	cargo build --frozen --release --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
 }
 
 check() {
-	export RUSTUP_TOOLCHAIN=stable
-	cd "$_pkg"
-	cargo test --frozen --all-features
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
 }
 
 package() {
-	cd "$_pkg"
-	install -Dv "target/release/$_pkg" -t "$pkgdir/usr/bin/"
-	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/{pkgname%-git}"
 }
