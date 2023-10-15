@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-battery-health-charging-git
 _uuid=Battery-Health-Charging@maniacx.github.com
-pkgver=r293.86b124a
+pkgver=r295.72edc97
 pkgrel=1
 pkgdesc="An extension to maximize the battery life of laptops by setting their charging threshold/modes."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=battery-health-charging.install
-source=('git+https://github.com/maniacx/Battery-Health-Charging.git#branch=GN45-main')
+source=('git+https://github.com/maniacx/Battery-Health-Charging.git')
 sha256sums=('SKIP')
 
 pkgver() {
