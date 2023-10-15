@@ -14,7 +14,6 @@ pkgbase = nordvpn-git
 	makedepends = docker
 	depends = iptables
 	depends = iproute2
-	depends = openvpn
 	provides = nordvpn
 	conflicts = openvpn-nordvpn
 	conflicts = nordvpn-bin
