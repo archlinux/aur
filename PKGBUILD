@@ -1,7 +1,7 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 pkgname=ifdnfc-git
 pkgver=r64.0e48e8e
-pkgrel=1
+pkgrel=2
 pkgdesc="PC/SC IFD Handler based on libnfc"
 arch=('x86_64')
 url="https://github.com/nfc-tools/ifdnfc"
@@ -16,7 +16,7 @@ sha256sums=(
 )
 provides=('ifdnfc')
 conflicts=('ifdnfc')
-depends=('libnfc')
+depends=('libnfc' 'pcsclite')
 backup=('etc/reader.conf.d/ifdnfc')
 
 pkgver() {

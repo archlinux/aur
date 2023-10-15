@@ -1,11 +1,12 @@
 pkgbase = ifdnfc-git
 	pkgdesc = PC/SC IFD Handler based on libnfc
 	pkgver = r64.0e48e8e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nfc-tools/ifdnfc
 	arch = x86_64
 	license = GPL3
 	depends = libnfc
+	depends = pcsclite
 	provides = ifdnfc
 	conflicts = ifdnfc
 	backup = etc/reader.conf.d/ifdnfc
