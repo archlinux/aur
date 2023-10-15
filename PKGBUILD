@@ -52,7 +52,7 @@ package() {
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
   bsdtar -xvf "${uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/"
+    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/" --no-same-owner
 
   install -Dm644 schemas/org.gnome.shell.extensions.another-window-session-manager.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
