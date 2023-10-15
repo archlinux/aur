@@ -1,5 +1,5 @@
 pkgname=boringtun-git
-pkgver=0.4.0.r12.g7b6afad
+pkgver=0.5.2.r18.ge1d6360
 pkgrel=1
 pkgdesc="Userspace WireGuard® Implementation in Rust"
 arch=('x86_64' 'i686' 'aarch64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd $pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --match 'boringtun-cli-*' | sed 's/^boringtun-cli-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
