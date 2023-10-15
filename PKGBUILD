@@ -1,45 +1,40 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Original Maintainer: Dave Murphy <davem@devkitpro.org>
+# Maintainer: 46620 <46620osu@gmail.com>
 
-pkgname=libnx-git
-pkgver=1.0.0.r15.gff8a95b
+pkgname=('libnx-git')
+pkgver=4.4.2.r7.gcb6f366a
 pkgrel=1
-pkgdesc="Library for Nintendo Switch (NX) homebrew development (development version)"
+pkgdesc="Nintendo Switch AArch64-only userland library."
 arch=('any')
-url="http://devkitpro.org"
-license=('custom: ISC')
-depends=('devkita64')
+license=('custom')
+url="http://github.com/switchbrew"
+makedepends=('devkitA64')
+groups=('switch-dev')
 conflicts=('libnx')
 provides=('libnx')
-source=("git+https://github.com/switchbrew/libnx.git"
-        "git+https://github.com/switchbrew/switch-examples.git")
-md5sums=('SKIP'
-         'SKIP')
-options=(!strip staticlibs)
+options=(!strip libtool staticlibs)
+source=(
+  ${pkgname}::git+https://github.com/switchbrew/libnx
+)
 
 pkgver() {
-  cd libnx
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  # set environment
-  source /etc/profile.d/devkita64.sh
 
-  make -C libnx
+  cd ${srcdir}/${pkgname}/nx
+  make
+
 }
 
 package() {
-  make -C libnx/nx dist-bin
-  DEVKITPRO="$pkgdir/opt/devkitpro"
-  install -d "$DEVKITPRO"/libnx
-  bsdtar xf libnx/nx/libnx-*.tar.bz2 -C "$DEVKITPRO"/libnx
-  # examples
-  install -d "$DEVKITPRO"/examples
-  cp -rup switch-examples "$DEVKITPRO"/examples/switch
-  rm -rf "$DEVKITPRO"/examples/switch/.git
-  # fix permissions
-  chown -R root:root "$DEVKITPRO"/examples
-  find "$DEVKITPRO"/examples -type d -exec chmod +rx "{}" \+
-  # license
-  install -Dm644 libnx/LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  cd ${srcdir}/${pkgname}/nx
+  make DESTDIR=$pkgdir install
+
 }
+
+sha256sums=('SKIP')
+
