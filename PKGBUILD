@@ -1,7 +1,7 @@
 pkgname=messages
 _pkgname=Messages
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Unnofficial Android messages desktop app"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/androidmessages/application"
