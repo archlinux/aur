@@ -2,7 +2,7 @@
 
 pkgname=ttop-bin
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='System monitoring tool with historical data service, triggers and top-like TUI (binary release)'
 url="https://github.com/inv2004/ttop"
 arch=('x86_64')
@@ -31,5 +31,5 @@ package() {
   install -Dm644 LICENSE$pkgver "$pkgdir/usr/share/licenses/ttop/LICENSE"
   install -Dm644 ttop.png -t "$pkgdir/usr/share/pixmaps"
   install -Dm644 ttop.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm755 ttop -t "$pkgdir/usr/bin"
+  install -Dm755 ttop$pkgver "$pkgdir/usr/bin/ttop"
 }
