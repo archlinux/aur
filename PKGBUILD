@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-gpu-profile-selector-git
 _uuid=GPU_profile_selector@lorenzo9904.gmail.com
 pkgver=gnome.45.r1.g45fee10
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Provides a simple way to switch between GPU profiles on NVIDIA Optimus systems"
 arch=('any')
@@ -34,7 +34,7 @@ package() {
   cd "$srcdir/GPU_profile_selector"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   install -Dm644 schemas/org.gnome.shell.extensions.GPU_profile_selector.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas"
