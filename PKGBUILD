@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=czkawka-cli-bin
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Multi functional app to find duplicates, empty folders, similar images etc (CLI)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('czkawka-cli')
 depends=('gcc-libs')
 source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_czkawka_cli"
         "LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE")
-sha256sums=('ea326ba6ce1fcb3782b695f41935869dd888b6f12115163dc77465c9f440f20f'
+sha256sums=('0b29ae52f7072e76f083715e145a78500e738860597496a09ae334cc6ddde567'
             'fb89cb6b3ae375f493e6d52b6b28ca279f91446975e66cf0836c441f1cbca3fa')
 
 package() {
