@@ -2,22 +2,22 @@
 
 _pkgname=exo
 pkgname=${_pkgname}-devel
-pkgver=4.17.4
+pkgver=4.19.0
 pkgrel=1
-pkgdesc="Extensions to Xfce (Development version)"
+pkgdesc='Extensions to Xfce (Development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://www.xfce.org/"
+url='https://docs.xfce.org/xfce/exo/start'
 license=('GPL2' 'LGPL')
 groups=('xfce4-devel')
-depends=('libxfce4ui>=4.15.1' 'libxfce4util>=4.17.2' 'hicolor-icon-theme')
-makedepends=('intltool' 'gtk-doc')
+depends=('libxfce4ui' 'libxfce4util' 'hicolor-icon-theme')
+makedepends=('gtk-doc')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('83f4b9b9217e96d0991a6cdf060fb1357f32138f4127dcb3e45c3de7de392c82')
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('a0124108c197efcc576a6deeface381416dc7137b6a7e7dfa3060fad62509fb7')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }

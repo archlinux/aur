@@ -1,8 +1,8 @@
 pkgbase = exo-devel
 	pkgdesc = Extensions to Xfce (Development version)
-	pkgver = 4.17.4
+	pkgver = 4.19.0
 	pkgrel = 1
-	url = https://www.xfce.org/
+	url = https://docs.xfce.org/xfce/exo/start
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -10,14 +10,13 @@ pkgbase = exo-devel
 	groups = xfce4-devel
 	license = GPL2
 	license = LGPL
-	makedepends = intltool
 	makedepends = gtk-doc
-	depends = libxfce4ui>=4.15.1
-	depends = libxfce4util>=4.17.2
+	depends = libxfce4ui
+	depends = libxfce4util
 	depends = hicolor-icon-theme
-	provides = exo=4.17.4
+	provides = exo=4.19.0
 	conflicts = exo
-	source = https://archive.xfce.org/src/xfce/exo/4.17/exo-4.17.4.tar.bz2
-	sha256sums = 83f4b9b9217e96d0991a6cdf060fb1357f32138f4127dcb3e45c3de7de392c82
+	source = https://archive.xfce.org/src/xfce/exo/4.19/exo-4.19.0.tar.bz2
+	sha256sums = a0124108c197efcc576a6deeface381416dc7137b6a7e7dfa3060fad62509fb7
 
 pkgname = exo-devel
