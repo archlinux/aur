@@ -8,39 +8,41 @@ arch=('any')
 url="https://github.com/scientific-python/spin"
 license=('BSD')
 depends=(
-	"python>=3.8"
-	"python-click"
-	"python-tomli"
+  "python>=3.8"
+  "python-click"
+  "python-tomli"
 )
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
+  "python-build"
+  "python-installer"
+  "python-wheel"
 )
 checkdepends=(
-	"python-pytest"
+  "python-pytest"
 )
 source=(
-	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-	"b1a0841527f94fdf10415ce4f3b273a36d62c229412aa5e81d4664473405f29c"
+  "b1a0841527f94fdf10415ce4f3b273a36d62c229412aa5e81d4664473405f29c"
 )
 _archive="${_name}-${pkgver}"
 
 build() {
-	cd "${_archive}"
-	python -m build --wheel --no-isolation
+  cd "${_archive}"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "${_archive}"
-	pytest
+  cd "${_archive}"
+  pytest
 }
 
 package() {
-	cd "${_archive}"
-	python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd "${_archive}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 }
+
+# vim: sw=2 ts=2 et:
