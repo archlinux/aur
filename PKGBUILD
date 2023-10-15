@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-rounded-window-corners-git
 pkgver=11.r19.g8ec8275
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
 url="https://github.com/yilozt/rounded-window-corners"
@@ -42,7 +42,7 @@ package() {
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
   bsdtar -xvf "${uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/"
+    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/" --no-same-owner
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale" "$pkgdir/usr/share/"
 
