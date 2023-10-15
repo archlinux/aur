@@ -1,3 +1,18 @@
+## GE-Proton8-17
+
+- added protonfix for Alan Wake (thanks FozziHi)
+- added protonfix for Batman Arkham Asylum (thanks FozziHi)
+- added protonfix for Tokyo Necro (thanks R1kaB3rN)
+- added protonfix for The Song of Saya (thanks R1kaB3rN)
+- added protonfix for YOU and ME and HER: A Love Story (thanks R1kaB3rN)
+- added upstream patch to allow R6 Siege to launch again (https://gitlab.winehq.org/wine/wine/-/merge_requests/3777) (multiplayer still does not work due to anticheat)
+- added fixup for resolution calculation when WINE_FULLSCREEN_FSR is used (thanks Ph42oN and loathingKernel)
+- import upstream proton build changes
+- import upstream VR changes
+- update vkd3d-proton
+- update dxvk
+- update wine to bleeding-edge
+
 ## GE-Proton8-16
 
 - imported build changes from upstream proton

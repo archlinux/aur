@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = GE_Proton8_16
+	pkgver = GE_Proton8_17
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -42,12 +42,12 @@ pkgbase = proton-ge-custom-bin
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
 	provides = proton
-	provides = proton-ge-custom=GE.Proton8_16
+	provides = proton-ge-custom=GE.Proton8_17
 	conflicts = proton-ge-custom
 	options = !strip
 	options = emptydirs
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = GE-Proton8-16_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-16/GE-Proton8-16.tar.gz
+	source = GE-Proton8-17_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-17/GE-Proton8-17.tar.gz
 	source = user_settings.py
 	source = launcher.sh
 	source = pam_limits.conf
