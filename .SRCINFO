@@ -1,0 +1,23 @@
+pkgbase = r-alabaster.ranges
+	pkgdesc = Load and Save Ranges-related Artifacts from File
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/alabaster.ranges
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-alabaster.base
+	depends = r-biocgenerics
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-jsonlite
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.ranges_1.0.0.tar.gz
+	md5sums = 846f2604ddc36ae98f28443f4b12d305
+	sha256sums = af879e64215719d6b2afb823dce503181fc149feb190716ffdb4efd32ac6692d
+
+pkgname = r-alabaster.ranges
