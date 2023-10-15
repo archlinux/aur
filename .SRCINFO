@@ -1,9 +1,10 @@
 pkgbase = ayugram-desktop-git
 	pkgdesc = Unofficial desktop version of Telegram messaging app with ToS breaking features in mind
-	pkgver = 4.9.4.ba93a50
+	pkgver = 4.10.2.464a36b
 	pkgrel = 1
 	url = https://github.com/AyuGram/AyuGramDesktop
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
@@ -40,10 +41,12 @@ pkgbase = ayugram-desktop-git
 	depends = jemalloc
 	depends = abseil-cpp
 	depends = libdispatch
-	depends = openssl-1.1
+	depends = openssl
 	depends = protobuf
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
+	provides = ayugram-desktop
+	conflicts = ayugram-desktop
 	source = tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev
 	source = telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git
@@ -123,8 +126,8 @@ pkgbase = ayugram-desktop-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = ec383da9ec6a0dbca76257cc0dfd810563ae37d0ae8af1356202b47fedb1467d7f218083ecb68a031945dc8a3e6784354c2e633a7f357190b4c57fd31275f68f
+	sha512sums = 7003e5c41b0bd15b064d0e1ebad849f87a4237de64a830419794489fefc133a031802225b0718e3881c7fbc3ab00e08cfb38990612fb691f7ef65f0df1a6dd1a
+	sha512sums = 7ce670334cf724761ca88071bf3dc475f765de48aa145e6d15d11cce8471e76f57e8889c3b06d7e9d4f376da5b4f224c1a2b774cf46e95239da427d34ba7497d
 
 pkgname = ayugram-desktop-git
