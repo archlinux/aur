@@ -1,0 +1,20 @@
+pkgbase = ukrmol-in
+	pkgdesc = Inner region programs for UKRmol+
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://zenodo.org/records/5799110
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = openmpi
+	depends = lapack
+	depends = blas
+	depends = gbtolib
+	source = https://zenodo.org/record/5799110/files/ukrmol-in-3.2.tar.gz?download=1
+	sha256sums = b93017d8d82a359a72f0f2326cef67c5499f3f97b518ec2a9befbfb214b5ecb4
+
+pkgname = ukrmol-in
