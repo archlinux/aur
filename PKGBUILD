@@ -1,6 +1,6 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 pkgname=kmonad-git
-pkgver=0.4.1.r253.ga7c3dc6
+pkgver=0.4.2.r1.g8440eaf
 pkgrel=1
 pkgdesc="An advanced keyboard manager"
 arch=('any')
@@ -28,7 +28,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	stack install --local-bin-path="$pkgdir/usr/bin"
-	install -Dm644 "startup/${pkgname%-git}.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 "startup/${pkgname%-git}@.service" -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	install -Dm644 "doc/faq.md" "$pkgdir/usr/share/doc/$pkgname/faq.md"
