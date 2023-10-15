@@ -1,7 +1,7 @@
 post_install() {
 	echo ""
 	echo 'Also start the kurtosis daemon'
-	echo 'systemctl start ydotoold --user'
+	echo 'systemctl start kurtosis --user'
 	echo ''
 }
 

@@ -8,7 +8,6 @@ ExecStart=/usr/bin/kurtosis engine start
 ExecReload=/usr/bin/kurtosis engine restart
 KillMode=process
 TimeoutSec=180
-SocketMode=0660
 
 [Install]
 WantedBy=default.target
