@@ -6,14 +6,14 @@
 
 pkgname=wine-wow64
 _name=wine
-pkgver=8.17
+pkgver=8.18
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
 source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('3826e20494a919ef1972d91c9391a3ae916d52b55e62e8fb7fc2c9c3ae6a7b363b40d8388cb4b9b3e45bae134a2de46e8158f8eaec7948216d9cd8ef32ab627f'
+sha512sums=('0f8e6b5c6709930bc7f774d92cd025976f6442c3785a224b5988a37152f3a875150b228f12442e9b9c0d9e7884568aca26159df86d48f2550a630625fef3c8b9'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 pkgdesc="A compatibility layer for running Windows programs"
