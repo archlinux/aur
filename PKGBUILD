@@ -10,7 +10,6 @@ url="https://github.com/0xacx/chatGPT-shell-cli.git"
 license=('MIT')
 depends=(jq curl glow)
 makedepends=('git')
-provides=(chatgpt-shell-cli-git)
 conflicts=(chatgpt-shell-cli)
 source=("git+$url")
 sha256sums=('SKIP')

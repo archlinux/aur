@@ -9,7 +9,6 @@ pkgbase = chatgpt-shell-cli-git
 	depends = jq
 	depends = curl
 	depends = glow
-	provides = chatgpt-shell-cli-git
 	conflicts = chatgpt-shell-cli
 	source = git+https://github.com/0xacx/chatGPT-shell-cli.git
 	sha256sums = SKIP
