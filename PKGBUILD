@@ -2,18 +2,36 @@
 # Contributer: Veli Tasalı (tasali) <me@velitasali.com>
 
 pkgbase=gcr-git
-pkgname=(gcr-git gcr-docs-git)
-pkgver=4.1.0+r14+gc8d2e0f
+pkgname=(
+  gcr-git
+  gcr-docs-git
+)
+pkgver=4.1.0+r23+g160601e
 pkgrel=1
 pkgdesc="A library for bits of crypto UI and parsing"
 url="https://gitlab.gnome.org/GNOME/gcr"
 arch=(x86_64)
-license=(GPLv2)
-depends=(glib2 libgcrypt p11-kit openssh libsecret systemd)
-makedepends=(gobject-introspection vala libxslt git gi-docgen gtk3 meson)
-options=(debug)
+license=(GPL2)
+depends=(
+  glib2
+  libgcrypt
+  libsecret
+  openssh
+  p11-kit
+  systemd
+)
+makedepends=(
+  gi-docgen
+  git   
+  gobject-introspection
+  gtk4
+  meson
+  vala
+  libxslt
+)
+_commit=
 source=("git+https://gitlab.gnome.org/GNOME/gcr.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd gcr
@@ -35,8 +53,11 @@ check() {
 }
 
 package_gcr-git() {
-  provides=(gcr libgck-2.so libgcr-4.so libgcr-4-{gtk3,gtk4}.so)
-  conflicts=(gcr gcr-4 gcr-338)
+  provides=(
+    libgck-2.so
+    libgcr-4.so
+  )
+  conflicts=(gcr-4)
   backup=(etc/security/limits.d/10-gcr.conf)
   install=gcr.install
 
@@ -55,7 +76,7 @@ END
 
 package_gcr-docs-git() {
   provides=(gcr-docs)
-  conflicts=(gcr-docs)
+  conflicts=(gcr-4-docs)
   pkgdesc+=" (documentation)"
   depends=()
 
@@ -63,3 +84,4 @@ package_gcr-docs-git() {
 }
 
 # vim:set sw=2 sts=-1 et:
+
