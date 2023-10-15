@@ -1,0 +1,20 @@
+pkgbase = antiduplx-git
+	pkgdesc = Command line tool to find and remove similar pictures
+	pkgver = 1.0.1.r28.895a50c
+	pkgrel = 1
+	url = https://github.com/ermig1979/AntiDuplX
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = nasm
+	makedepends = ninja
+	depends = libjpeg-turbo
+	source = antiduplx-git::git+https://github.com/ermig1979/AntiDuplX.git
+	source = git+https://github.com/ermig1979/Cpl.git
+	source = git+https://github.com/ermig1979/Simd.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = antiduplx-git
