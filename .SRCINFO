@@ -1,4 +1,4 @@
-pkgbase = jdk-microsoft-openjdk
+pkgbase = jdk17-microsoft-openjdk
 	pkgdesc = Microsoft Build of OpenJDK
 	pkgver = 17.0.8.1.u1
 	pkgrel = 1
@@ -38,4 +38,4 @@ pkgbase = jdk-microsoft-openjdk
 	sha256sums = 67c0102694dbfdc1141c6cbc2fa1a7153cbfa81f596744860d7c801a6b1df844
 	sha256sums = 424ee7a00116757a819b62bd670d583eea90e0ebee4a679f54b71980dbb28597
 
-pkgname = jdk-microsoft-openjdk
+pkgname = jdk17-microsoft-openjdk

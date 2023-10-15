@@ -8,7 +8,7 @@ _completever=$_majorver.$_minorver.$_pointver.$_buildver
 _updatever=1
 _jdkver=$_completever.u$_updatever
 
-pkgname=jdk-microsoft-openjdk
+pkgname=jdk17-microsoft-openjdk
 pkgver="${_jdkver}"
 pkgrel=1
 pkgdesc='Microsoft Build of OpenJDK'
