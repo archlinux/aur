@@ -2,17 +2,14 @@
 
 pkgname=gamescope-session-git
 _gitdir=gamescope-session
-pkgver=r145.a2fe720
+pkgver=r206.c11dfac
 pkgrel=1
-pkgdesc="Steam Big Picture Mode session based on gamescope for ChimeraOS"
+pkgdesc="Common gamescope session files"
 arch=('any')
 url="https://github.com/ChimeraOS/gamescope-session"
 license=('MIT')
-conflicts=('steamos-compositor-plus')
 groups=()
 depends=('gamescope')
-optdepends=('chimera: for steam-tweaks integration'
-            'frzr: chimeraos update system')
 makedepends=('git')
 install=gamescope-session.install
 source=("${_gitdir}::git+https://github.com/ChimeraOS/${_gitdir}.git")
@@ -29,8 +26,4 @@ package() {
 	cd "$srcdir/${_gitdir}"
 	cp -rv ${srcdir}/${_gitdir}/usr ${pkgdir}/usr
 	install -Dm644 ${srcdir}/${_gitdir}/LICENSE ${pkgdir}/usr/share/licenses/${_gitdir}/LICENSE
-
-	# font workaround for initial big picture mode startup
-	mkdir -p ${pkgdir}/usr/share/fonts/truetype/ttf-dejavu
-	ln -s /usr/share/fonts/TTF/DejaVuSans.ttf ${pkgdir}/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf
 }
