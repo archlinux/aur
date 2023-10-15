@@ -1,7 +1,7 @@
 # Maintainer: Amritpal Singh  - sysgrammer@protonmail.com
 pkgname=perfmode
-pkgver=3.4.0
-pkgrel=14
+pkgver=3.4.1
+pkgrel=15
 pkgdesc="A fan-control utility for ASUS TUF Gaming series of Laptops"
 arch=('x86_64')
 url="https://github.com/rdseed/perfmode"
@@ -27,4 +27,4 @@ package(){
     mkdir -p "$pkgdir/usr/bin"
     DESTDIR="$pkgdir" make install
 }
-sha256sums=('f3b3bbd08ee3ef14e52f26393046f547deaa86ba309cb6e379cfe3297e7c08dc')
+sha256sums=('5133205289a5a150990234b0778dbad8cfffdae99aac570ae1ca9a991ac5a92b')
