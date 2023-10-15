@@ -36,5 +36,5 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
   bsdtar -xvf bazel-bin/install-extension.runfiles/_main/dist.tar.gz -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/"
+    "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/" --no-same-owner
 }
