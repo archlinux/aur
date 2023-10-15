@@ -4,12 +4,12 @@
 pkgname=maptool
 _pkgname=MapTool
 pkgver=1.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url='https://rptools.net/tools/maptool'
 license=('AGPL3')
-depends=('java-runtime>=17' 'java-openjfx>=17')
+depends=('java-runtime=17' 'java-openjfx=17')
 makedepends=('git' 'dpkg' 'jdk17-openjdk' 'gradle7' 'xdg-utils' 'rpm-tools')
 optdepends=()
 source=(
@@ -45,8 +45,7 @@ package() {
 	cd "${pkgdir}"
 	
 	dpkg-deb -x "${srcdir}/${pkgname}/releases/"*.deb .
-	#mkdir -p "usr/share/licenses/${pkgname}"
-	#mv "${pkgdir}/${_prefix}/share/doc/copyright" "usr/share/licenses/${pkgname}/"
+	
 	install -dm755 "usr/share/java/${pkgname}"
 	rm "${_prefix}/lib/app"/javafx*.jar
 	mv "${_prefix}/lib/app"/*.jar "usr/share/java/${pkgname}"
@@ -54,9 +53,6 @@ package() {
 	
 	install -dm755 'usr/share/pixmaps'
 	mv "${_prefix}/lib/"*.png "usr/share/pixmaps/${pkgname}.png"
-	
-	#rpmextract.sh "${srcdir}/${pkgname}/releases/"*.rpm
-	#mv "usr/share/licenses/maptool-${pkgver}" "usr/share/licenses/${pkgname}"
 	
 	install -dm755 'usr/share/applications'
 	mv "${pkgdir}/${_prefix}/lib/"*.desktop "usr/share/applications/${pkgname}.desktop"
