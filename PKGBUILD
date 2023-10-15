@@ -2,7 +2,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=servo-latest
 _pkgname=servo
-pkgver=r20230910
+pkgver=r20231014
 pkgrel=1
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:Mozilla Public License v2.0')
 provides=('servo')
 conflicts=('servo')
 depends=('gst-plugins-bad' 'libunwind')
-sha256sums=('73981523e38bf1e4d6cfd96efdf3da0e68e8655650f21e5c955a60f163487c30'
+sha256sums=('704d206f6ee794f22c0c77b47fbc4fd189c175ab958ca9995109b57714319e41'
             '5dcb8790a243b850995fd1e9ebd3a8b47a9266a96e266891571934a3fcf9a578'
             '3db78572e8657cca9e9446ce56a057b8a981eb41af318c49a5fe08e7a10fa52a')
 source=(
