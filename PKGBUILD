@@ -21,7 +21,7 @@ build() {
   cd "$srcdir"/TermPDFViewer-v."${pkgver}"
 
   # Compila tu binario C
-  gcc -o term-pdf-wrp src/term-pdf-wrp.c
+  gcc -o term-pdf-wrp "$srcdir"/TermPDFViewer-v."${pkgver}"/term-pdf-wrp.c
 }
 
 package() {
