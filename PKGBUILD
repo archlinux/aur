@@ -2,18 +2,18 @@
 
 pkgname=nvim-lazy
 pkgrel=1
-pkgver=10.5.0
+pkgver="v10.13.4"
 pkgdesc="A modern plugin manager for Neovim."
 arch=("any")
 url="https://github.com/folke/lazy.nvim"
 _srcfolder="${url##*/}"
 license=("Apache")
 depends=("neovim")
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=("SKIP")
 
 package() {
-    cd "${_srcfolder}-${pkgver}"
+    cd "${_srcfolder}-${pkgver##*v}"
     find doc lua -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/share/nvim/site/pack/lazy/start/lazy.nvim/{}" \;
     install -Dm 666 /dev/null "${pkgdir}/usr/share/nvim/site/pack/lazy/start/lazy.nvim/doc/tags"
 }
