@@ -6,7 +6,7 @@ pkgname=(
   gcr-git
   gcr-docs-git
 )
-pkgver=4.1.0+r23+g160601e
+pkgver=4.1.0+r23+160601e7
 pkgrel=1
 pkgdesc="A library for bits of crypto UI and parsing"
 url="https://gitlab.gnome.org/GNOME/gcr"
@@ -29,7 +29,7 @@ makedepends=(
   vala
   libxslt
 )
-_commit=
+_commit=160601e7beef359de3e386132c96339773232b57
 source=("git+https://gitlab.gnome.org/GNOME/gcr.git")
 b2sums=('SKIP')
 
