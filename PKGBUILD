@@ -4,13 +4,14 @@ _majorver=21
 _minorver=0
 _pointver=0
 _buildver=0
-_completever=$_majorver.$_minorver.$_pointver.$_buildver
+_linkver=$_majorver.$_minorver.$_pointver
+_completever=$_linkver.$_buildver
 _updatever=35
 _jdkver=$_completever.u$_updatever
 
 pkgname=jdk-microsoft-openjdk
 pkgver="${_jdkver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft Build of OpenJDK'
 arch=(x86_64)
 url=https://www.microsoft.com/openjdk
@@ -33,11 +34,11 @@ provides=("java-runtime-headless=$_majorver"
           "openjdk$_majorver-src=$_jdkver"
           "openjdk-src=$_jdkver")
 install=install_jdk-microsoft-openjdk.sh
-source=("https://aka.ms/download-jdk/microsoft-jdk-$_completever-linux-x64.tar.gz"
+source=("https://aka.ms/download-jdk/microsoft-jdk-$_linkver-linux-x64.tar.gz"
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-noextract=("microsoft-jdk-$_completever-linux-x64.tar.gz")
+noextract=("microsoft-jdk-$_linkver-linux-x64.tar.gz")
 sha256sums=('01ebc38576660b61cc45fdadb7f1cc59278d0284ef999c98ed8bc55c8946cbf4'
             '3d8e6e986650aa7436a2f0993c0edf7c4f664c5272256df2f34a46a64a0f60c6'
             'd6cc1229daeff37089c47e06e10adc9b90911761c0e4bd803cb1ecf34fd0603d'
@@ -47,7 +48,7 @@ _jvmdir="/usr/lib/jvm/java-$_majorver-microsoft-openjdk"
 
 prepare() {
 	mkdir jdk
-	bsdtar --strip-components=1 -C jdk -xf "microsoft-jdk-$_completever-linux-x64.tar.gz"
+	bsdtar --strip-components=1 -C jdk -xf "microsoft-jdk-$_linkver-linux-x64.tar.gz"
 }
 
 package() {

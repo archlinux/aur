@@ -1,7 +1,7 @@
 pkgbase = jdk-microsoft-openjdk
 	pkgdesc = Microsoft Build of OpenJDK
 	pkgver = 21.0.0.0.u35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/openjdk
 	install = install_jdk-microsoft-openjdk.sh
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = jdk-microsoft-openjdk
 	provides = jdk-openjdk=21.0.0.0.u35
 	provides = openjdk21-src=21.0.0.0.u35
 	provides = openjdk-src=21.0.0.0.u35
-	noextract = microsoft-jdk-21.0.0.0-linux-x64.tar.gz
-	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.0.0-linux-x64.tar.gz
+	noextract = microsoft-jdk-21.0.0-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.0-linux-x64.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
