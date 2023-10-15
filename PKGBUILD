@@ -23,5 +23,6 @@ package() {
 	chmod +x "${pkgdir}/opt/${pkgname}/Firebot v${_mainver}"
 
   install -dm755 "${pkgdir}/usr/bin/"
-  ln -s "${pkgdir}/opt/${pkgname}/Firebot v${_mainver}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${pkgdir}/usr/bin"
+  ln -s "../../opt/${pkgname}/Firebot v${_mainver}" "${pkgname}"
 }
