@@ -1,6 +1,6 @@
 pkgbase = litellm
 	pkgdesc = Call all LLM APIs using the OpenAI format
-	pkgver = 0.5.6
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://pypi.org/project/litellm/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = litellm
 	depends = python-tiktoken
 	depends = python-tokenizers
 	optdepends = ollama: serve local ollama models
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-0.5.6.tar.gz
-	sha256sums = 33ff15df6d4c84ca6c703e3df088d9b91611b6653faf36386f3c3893e3d5fd80
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-0.8.4.tar.gz
+	sha256sums = 6cd4fd109278c2ec6312aadbb299b6465f99ed2727d0ddbd60786a99c20f50fb
 
 pkgname = litellm
