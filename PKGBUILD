@@ -35,18 +35,14 @@ source=(
   config         # the main kernel config file
 
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
-  0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
-  #0004-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
-  #0005-lg-laptop-Recognize-more-models.patch
+  #0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
+  #0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-  C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
@@ -54,11 +50,9 @@ sha256sums=(
   'SKIP'
   'fcf0b005d3cde29b54a61b25bef3efb42a12ac38c039200ac8f4756618270820'
 
-  '7bd64ff894475b3415d792ba8466ba7e8f872af56dbf1aeed0d261fe4008b8b5'
-  '39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
-  '56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
-  #'5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde'
-  #'067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9'
+  'f9ebfe3ddc5152d87b37e33be30e31875d137433be10a57ce29d2eae7b6e91b1'
+  #'39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
+  #'56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
   'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
   '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6'
 )
