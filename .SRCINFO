@@ -1,0 +1,27 @@
+pkgbase = r-alabaster.spatial
+	pkgdesc = Save and Load Spatial 'Omics Data to/from File
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/alabaster.spatial
+	arch = any
+	license = MIT
+	checkdepends = r-png
+	checkdepends = r-testthat
+	depends = r-alabaster.base
+	depends = r-alabaster.sce
+	depends = r-jsonlite
+	depends = r-s4vectors
+	depends = r-spatialexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-digest
+	optdepends = r-knitr
+	optdepends = r-magick
+	optdepends = r-png
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.spatial_1.0.0.tar.gz
+	md5sums = b8804e5e38ef912c8d1a04343f03f748
+	sha256sums = 9588e61c71e5459f346141b1076bb9b55633606aa62b641404bb78513041dfa9
+
+pkgname = r-alabaster.spatial
