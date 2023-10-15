@@ -2,8 +2,8 @@
 
 _pkgname=cwtch
 pkgname=$_pkgname-git
-pkgver=1.12.0.r0.gcc440326
-pkgrel=2
+pkgver=1.13.1.r0.g69b7ddb2
+pkgrel=1
 pkgdesc="UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)"
 arch=('x86_64')
 url="https://cwtch.im/"
@@ -33,15 +33,6 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-
-    # If using the AUR 'flutter'/'flutter-beta' packages, we need a group.
-    if ! id -nG | grep -qw flutterusers ; then
-        if [ "`which flutter`" == "/usr/bin/flutter" ] ; then
-            warning "You are not in the 'flutterusers' group. The build may fail."
-            warning "Run 'sudo usermod -a -G flutterusers $USER' and reboot to fix."
-            warning "You may need to use the flutter-beta package (any channel)."
-        fi
-    fi
 
     flutter="flutter --suppress-analytics"
     # no way to local-enable this... let's try to clean up after ourselves

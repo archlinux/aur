@@ -1,6 +1,6 @@
 pkgbase = cwtch-git
 	pkgdesc = UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)
-	pkgver = 1.12.0.r0.gcc440326
+	pkgver = 1.13.1.r0.g69b7ddb2
 	pkgrel = 1
 	url = https://cwtch.im/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cwtch-git
 	makedepends = flutter
 	makedepends = ninja
 	makedepends = git
-	depends = libcwtch-go
+	depends = cwtch-autobindings
 	provides = cwtch
 	conflicts = cwtch
 	conflicts = cwtch-bin
