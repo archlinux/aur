@@ -7,7 +7,7 @@ pkgrel=7
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages for installation.'
 url='https://www.veracrypt.fr'
 arch=('x86_64' 'i686' 'arm64' 'armhf' 'aarch64')
-license=('custom:TrueCrypt')
+license=('custom')
 provides=('veracrypt')
 conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-trans')
 depends=('fuse2>=2.8.0' 'wxwidgets-gtk3>=3.2' 'libsm' 'device-mapper')
