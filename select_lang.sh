@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #~~ Script for PKGBUILD
-#~~ Select GUI-language for Veracrypt 1.26.7 and higher Linux
+#~~ Select GUI-language for Veracrypt 1.26.7 and higher (Linux)
 #~~ by Shapiro <shapiro at quantentunnel dot de>
-#~~ v1.5: Automatic language selection depending on system locale.
+#~~ v1.5a: Automatic language selection depending on system locale.
 
 country_codes="ar be bg ca co cs da de el en es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl ro sk sl sv th tr uk uz vi"
 country_codes2="pt_BR zh_CN zh_HK zh_TW"
@@ -43,7 +43,7 @@ if [[ "$country_codes2" == *"$var"* ]]; then
 	fi
 else
 	var=$(echo $var | cut -d_ -f1)
-	cp "./VeraCrypt_1.26.7/Translations/Language.$var.xml" "./VeraCrypt_1.26.7/src/Common/Language.xml"
+	cp "./VeraCrypt_1.26.7/Translations/Language.$var.xml" "./VeraCrypt_1.26.7/src/Common/Language.xml" 2> /dev/null
 	case "$var" in
 	ar)
 		echo "Language set to: Arabic (ar)"
