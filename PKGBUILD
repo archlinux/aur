@@ -23,28 +23,17 @@ sha256sums=(
 
 noextract=("tml-$tmlver.zip")
 
+prepare() {
+  rm -rf "$pkgdir/$pkgname"
+}
+
 package() {
-  rootdir="$pkgdir/opt/tModLoader"
-  bindir="$pkgdir/usr/bin"
-  packfile="$rootdir/tml.zip"
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s "/opt/tModLoader/tmodloader.sh" "$pkgdir/usr/bin/tmodloader"
+  ln -s "/opt/tModLoader/tmodloader-server.sh" "$pkgdir/usr/bin/tmodloader-server"
+  ln -s "/opt/tModLoader/tmodloader-familyshare.sh" "$pkgdir/usr/bin/tmodloader-familyshare"
 
-  if [[ ! -e $rootdir ]]
-  then
-    mkdir -p "$rootdir"
-  fi
-
-  install -Dm600 "tml-$tmlver.zip" "$packfile"
-  echo "$tmlver" > "$rootdir/ver.txt"
-
-  if [[ ! -e $bindir ]]
-  then
-    mkdir -p "$bindir"
-  fi
-
-  ln -s "/opt/tModLoader/tmodloader.sh" "$bindir/tmodloader"
-  ln -s "/opt/tModLoader/tmodloader-server.sh" "$bindir/tmodloader-server"
-  ln -s "/opt/tModLoader/tmodloader-familyshare.sh" "$bindir/tmodloader-familyshare"
-
-  cp "$startdir/"*".sh" -rp "$rootdir/"
-  chmod 755 "$rootdir/"*".sh"
+  install -Dm600 "tml-$tmlver.zip" "$pkgdir/opt/tModLoader/tml.zip"
+  install -Dm755 -t "$pkgdir/opt/tModLoader" "$startdir"/*.sh
+  echo "$tmlver" > "$pkgdir/opt/tModLoader/ver.txt"
 }
