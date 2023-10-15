@@ -1,6 +1,6 @@
 pkgbase = r-rstan
 	pkgdesc = R Interface to Stan
-	pkgver = 2.26.23
+	pkgver = 2.32.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rstan
 	arch = x86_64
@@ -22,13 +22,13 @@ pkgbase = r-rstan
 	optdepends = r-coda
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-rstanarm
 	optdepends = r-rstantools
 	optdepends = r-rstudioapi
 	optdepends = r-shinystan
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rstan_2.26.23.tar.gz
-	md5sums = 2e01ed18b705fb0fbd0b90e1577f08dc
-	sha256sums = 91fddeb9460755e02b7fbc7caa964df8d0d77417528ae96ce3e2f6d56fe60d22
+	optdepends = r-v8
+	source = https://cran.r-project.org/src/contrib/rstan_2.32.3.tar.gz
+	md5sums = 6414d45665fbc9aa1fd0e7d4ef3e8d0b
+	sha256sums = a29d9e1abf6d7c7b5ce98e10e60f14f18bad076aff4c7affa4b6263945ba549d
 
 pkgname = r-rstan
