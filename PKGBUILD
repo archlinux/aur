@@ -36,7 +36,7 @@ check() {
 
 package_gcr-git() {
   provides=(gcr libgck-2.so libgcr-4.so libgcr-4-{gtk3,gtk4}.so)
-  conflicts=(gcr)
+  conflicts=(gcr gcr-4)
   backup=(etc/security/limits.d/10-gcr.conf)
   install=gcr.install
 
