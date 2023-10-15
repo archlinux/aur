@@ -16,7 +16,7 @@ package() {
 	tar -xvpf data.tar.xz -C $pkgdir
 	find $pkgdir/opt -type f -not -path "*/resources/*" -delete
 	printf "#!/bin/sh
-electron22 /opt/Chatbox/resources/app.asar
+electron /opt/Chatbox/resources/app.asar
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/chatbox
 	find $pkgdir -name "*.desktop" -exec sed -i -r "s/Exec=.*/Exec=chatbox/" {} \;
 }
