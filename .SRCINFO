@@ -1,0 +1,15 @@
+pkgbase = sweet-folders-git
+	pkgdesc = Sweet folders icons
+	pkgver = r14.b2192ff
+	pkgrel = 1
+	url = https://github.com/EliverLara/Sweet-folders
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = sweet-folders
+	conflicts = sweet-folders
+	options = !strip
+	source = git+https://github.com/EliverLara/Sweet-folders.git
+	sha256sums = SKIP
+
+pkgname = sweet-folders-git
