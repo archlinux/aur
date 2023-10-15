@@ -1,6 +1,6 @@
 pkgbase = termusic-git
 	pkgdesc = Music Player TUI written in Rust
-	pkgver = 0.7.11.r1505.2882d9c
+	pkgver = 0.7.11.r7.g57429ab
 	pkgrel = 1
 	url = https://github.com/tramhao/termusic
 	arch = x86_64
