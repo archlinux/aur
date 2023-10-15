@@ -2,7 +2,7 @@
 
 pkgname='dnsleaktest'
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 url="https://github.com/macvk/$pkgname"
 pkgdesc='An open source script that tests VPN connection for DNS leak'
 arch=('any')
