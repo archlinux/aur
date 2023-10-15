@@ -2,8 +2,8 @@
 
 pkgname=libreoffice-extension-h2orestart
 pkgver=0.5.7
-pkgrel=1
-pkgdesc="LibreOffice extension that import hwp file and present in OpenDocumentText format"
+pkgrel=2
+pkgdesc="LibreOffice extension that import hwp and hwpx file and present in OpenDocumentText format"
 _extname=H2Orestart
 _filename=${_extname}-${pkgver}.oxt
 arch=(any)
