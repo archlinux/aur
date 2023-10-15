@@ -1,4 +1,4 @@
-THIS_JDK='java-17-microsoft-openjdk'
+THIS_JDK='java-21-microsoft-openjdk'
 
 fix_default() {
 	if [ ! -x /usr/bin/java ]; then

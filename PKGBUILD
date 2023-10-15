@@ -1,9 +1,12 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
-_majorver=17
-_completever=$_majorver.0.8
-_updatever=7
-_jdkver="$_completever.u$_updatever"
+_majorver=21
+_minorver=0
+_pointver=0
+_buildver=0
+_completever=$_majorver.$_minorver.$_pointver
+_updatever=35
+_jdkver=$_completever.u$_updatever
 
 pkgname=jdk-microsoft-openjdk
 pkgver="${_jdkver}"
@@ -32,17 +35,23 @@ provides=("java-runtime-headless=$_majorver"
 install=install_jdk-microsoft-openjdk.sh
 source=("https://aka.ms/download-jdk/microsoft-jdk-$_completever-linux-x64.tar.gz"
         freedesktop-java.desktop
-				freedesktop-jconsole.desktop
-				freedesktop-jshell.desktop)
-sha256sums=('7fac02529c57525ee8fed6ea699df9122e12fb3092745d2ce6a461290129e1f6'
-            '7ed68488d8178733a23d4f009977ee6d3bebcdca3ed074fb6d0be6039c451d7d'
-            '67c0102694dbfdc1141c6cbc2fa1a7153cbfa81f596744860d7c801a6b1df844'
-            '424ee7a00116757a819b62bd670d583eea90e0ebee4a679f54b71980dbb28597')
+        freedesktop-jconsole.desktop
+        freedesktop-jshell.desktop)
+noextract=("microsoft-jdk-$_completever-linux-x64.tar.gz")
+sha256sums=('01ebc38576660b61cc45fdadb7f1cc59278d0284ef999c98ed8bc55c8946cbf4'
+            '3d8e6e986650aa7436a2f0993c0edf7c4f664c5272256df2f34a46a64a0f60c6'
+            'd6cc1229daeff37089c47e06e10adc9b90911761c0e4bd803cb1ecf34fd0603d'
+            '4471cb02e32ddff54e65618e94acc66e06ab01e456d5daa3207a943155750db6')
 
 _jvmdir="/usr/lib/jvm/java-$_majorver-microsoft-openjdk"
 
+prepare() {
+	mkdir jdk
+	bsdtar --strip-components=1 -C jdk -xf "microsoft-jdk-$_completever-linux-x64.tar.gz"
+}
+
 package() {
-	cd "jdk-${_jdkver/\.u/+}"
+	cd jdk
 
 	# Copy jdk files
 	install -d "$pkgdir$_jvmdir"
