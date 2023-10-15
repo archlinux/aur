@@ -6,4 +6,11 @@ fi
 
 rm -rf ~/.config/QQ/crash_files/*
 
-/opt/QQ/qq "$@"
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+
+if [[ -f "${XDG_CONFIG_HOME}/qq-flags.conf" ]]; then
+	mapfile -t QQ_USER_FLAGS <<<"$(grep -v '^#' "${XDG_CONFIG_HOME}/qq-flags.conf")"
+	echo "User flags:" "${QQ_USER_FLAGS[@]}"
+fi
+
+exec /opt/QQ/qq "${QQ_USER_FLAGS[@]}" "$@"
