@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/coadmunkee/gnome-shell-extension-espresso.git"
 install=espresso.install
 license=('GPL2')
-depends=('gnome-shell')
+depends=('gnome-shell>=1:45.0-1')
 makedepends=('unzip')
 source=("${pkgname}::https://github.com/coadmunkee/gnome-shell-extension-espresso/archive/refs/tags/v${pkgver}.zip")
 sha256sums=('d4cdbc4a856c73770b3df029dc6ea0bc8c22d6abf2e57c3c1c96b370f616e097')

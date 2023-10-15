@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-espresso
 	arch = any
 	license = GPL2
 	makedepends = unzip
-	depends = gnome-shell
+	depends = gnome-shell>=1:45.0-1
 	source = gnome-shell-extension-espresso::https://github.com/coadmunkee/gnome-shell-extension-espresso/archive/refs/tags/v9.zip
 	sha256sums = d4cdbc4a856c73770b3df029dc6ea0bc8c22d6abf2e57c3c1c96b370f616e097
 
