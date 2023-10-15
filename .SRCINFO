@@ -1,6 +1,6 @@
 pkgbase = ohmysvg
 	pkgdesc = SVG optimizer
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/sonnyp/OhMySVG/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ohmysvg
 	depends = gjs
 	depends = hicolor-icon-theme
 	depends = libadwaita
-	source = ohmysvg-1.2.0.tar.gz::https://github.com/sonnyp/OhMySVG//archive/refs/tags/v1.2.tar.gz
-	b2sums = 7af2eecf131b75b6cb87a13aec76651a865ab4deccc5e72edd568edada46ff865dec208c6061a9d22844fbea3d8e39d66353af11ad2cf457ce8d8a0d5ce304a4
+	source = ohmysvg-1.3.0.tar.gz::https://github.com/sonnyp/OhMySVG//archive/refs/tags/v1.3.tar.gz
+	b2sums = 32b0064c5f247111f62810e2ec47ede9d219f316b874544236bb442368bd3203fa267536936d67d5e857d585941e94927b6219937e08896e863be7ad775a49b6
 
 pkgname = ohmysvg
