@@ -7,8 +7,8 @@
 
 pkgbase=curl-http3-ngtcp2
 pkgname=(curl-http3-ngtcp2 libcurl-http3-ngtcp2-compat libcurl-http3-ngtcp2-gnutls)
-_tag='8c537ee308eca91d0a240315b24025048ae54e61' # git rev-parse v${_tag_name}
-pkgver=8.3.0
+_tag='817204c6e41f66dafbaa704d67f828a4288b3577' # git rev-parse v${_tag_name}
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="command line tool and library for transferring data with URLs - compiled with HTTP/3 support (using ngtcp2 and nghttp3)"
 arch=('x86_64')
@@ -24,6 +24,13 @@ validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 source=("git+https://github.com/curl/curl.git?signed#tag=${_tag}")
 sha512sums=('SKIP')
 
+_backports=(
+  "1f7d8cd478f024bc16cad204a9b62feb6e92a0c5" # make package reproducible
+)
+
+_reverts=(
+)
+
 pkgver() {
   cd "${srcdir}/curl"
   git describe | sed -E 's/curl-([0-9]+)_([0-9]+)_([0-9]+)/\1.\2.\3/g'
@@ -31,6 +38,20 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/curl"
+
+  local _c
+  for _c in "${_backports[@]}"; do
+    if [[ $_c == *..* ]]; then
+      git log --oneline --reverse "${_c}"
+    else
+      git log --oneline -1 "${_c}"
+    fi
+    git cherry-pick -n -m1 "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    git log --oneline -1 "${_c}"
+    git revert -n "${_c}"
+  done
 
   # no '-DEV' in version, release date from tagged commit...
   sed -i \
