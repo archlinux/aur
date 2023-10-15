@@ -5,8 +5,8 @@
 # This prebuilt binary includes HEIF support.
 
 pkgname=czkawka-gui-bin
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="Multi functional app to find duplicates, empty folders, similar images etc (GUI)"
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/downlo
         "LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE"
         "czkawka-gui.png")
 
-sha256sums=('3144391e91bd6034cd49356e71505846eafef92d3d904a7008fed737f9f7db69'
+sha256sums=('e311dd7efd3db8a699b3a27eadae84897b0778540e2c893afb76ce3faee65164'
             'fb89cb6b3ae375f493e6d52b6b28ca279f91446975e66cf0836c441f1cbca3fa'
             '1614565bc6f143b4bb4fc80c71cb1fe0b2ba2719037046719d5a3a89c3f5905e')
 
