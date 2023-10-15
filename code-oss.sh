@@ -20,6 +20,18 @@ in_array() {
 
 }
 
+is_wayland() {
+
+	[[ "${XDG_SESSION_TYPE}" == "wayland" ]] \
+		&& return 0
+
+	[[ -n "${WAYLAND_DISPLAY}" ]] \
+		&& return 0
+
+	return 1
+
+}
+
 main() {
 
 	local -a CODE_USER_FLAGS=()
@@ -30,9 +42,7 @@ main() {
 	[[ -f "${CODE_CONF_PATH}" ]] \
 		&& { mapfile -t CODE_USER_FLAGS <<< "$(sed 's/#.*//' ${CODE_CONF_PATH})"; }
 
-	[[ "${XDG_SESSION_TYPE}" == "wayland" ]] && {
-
-		unset DISPLAY
+	is_wayland && {
 
 		in_array CODE_USER_FLAGS '^--ozone-platform=wayland$' \
 			|| CODE_USER_FLAGS+=('--ozone-platform=wayland')
@@ -42,7 +52,7 @@ main() {
 
 	}
 
-	exec "${CODE_BIN_PATH}" "${CODE_USER_FLAGS[@]}" "$@"
+	exec "${CODE_BIN_PATH}" "$@" "${CODE_USER_FLAGS[@]}"
 
 	exit 0
 
