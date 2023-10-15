@@ -34,7 +34,7 @@ package() {
   cd "$srcdir/battery-status"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
   bsdtar xvf "$_uuid.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/" --no-same-owner
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale" "$pkgdir/usr/share/"
 
