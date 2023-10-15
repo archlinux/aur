@@ -1,0 +1,12 @@
+pkgbase = kurtosis-cli-bin
+	pkgdesc = Kurtosis is a platform for packaging and launching environments of containerized services with a focus on approachability for the average developer.
+	pkgver = 0.84.6
+	pkgrel = 1
+	url = https://github.com/kurtosis-tech/kurtosis
+	arch = x86_64
+	license = Business Source License 1.1
+	depends = docker
+	source = kurtosis-cli-bin-0.84.6.tar.gz::https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.84.6/kurtosis-cli_0.84.6_linux_amd64.tar.gz
+	sha256sums = c583a907acb33f02670ce02eb3f7455be20cd1d364874ba6c5f635458b5a2f7d
+
+pkgname = kurtosis-cli-bin
