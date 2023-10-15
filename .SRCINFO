@@ -1,0 +1,25 @@
+pkgbase = r-alabaster
+	pkgdesc = Umbrella for the Alabaster Framework
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/alabaster
+	arch = any
+	license = MIT
+	depends = r-alabaster.base
+	depends = r-alabaster.bumpy
+	depends = r-alabaster.mae
+	depends = r-alabaster.matrix
+	depends = r-alabaster.ranges
+	depends = r-alabaster.sce
+	depends = r-alabaster.se
+	depends = r-alabaster.spatial
+	depends = r-alabaster.string
+	depends = r-alabaster.vcf
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster_1.0.0.tar.gz
+	md5sums = 8755db5053974ae9995e52dc59ac6dd1
+	sha256sums = 06aac83a3f6d8ebd0d30bdf2ba94a83ddb7cd44875ce7b5a0831e9863e21b14a
+
+pkgname = r-alabaster
