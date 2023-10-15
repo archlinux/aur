@@ -1,7 +1,7 @@
 # Maintainer: Nathan Campolina <spectronp@proton.me>
 pkgname=version
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="What version do I have of ___?"
 arch=('any')
 url="https://github.com/bit101/version"
