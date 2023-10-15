@@ -1,0 +1,20 @@
+pkgbase = gbtolib
+	pkgdesc = A high-performance library for evaluation of molecular integrals
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://zenodo.org/records/5798035
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = openmpi
+	depends = lapack
+	depends = blas
+	provides = gbtolib
+	source = https://zenodo.org/record/5798035/files/GBTOLib-3.0.3.zip?download=1
+	sha256sums = 5110ddf6f3c9993c56ecca99df1fbb071e6402a31e0f599f2db8ad73a72de0b1
+
+pkgname = gbtolib
