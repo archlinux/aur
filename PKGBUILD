@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.7.11.r1507.57429ab
+pkgver=0.7.11.r7.g57429ab
 pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
