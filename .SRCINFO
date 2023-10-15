@@ -3,10 +3,15 @@ pkgbase = kurtosis-cli-bin
 	pkgver = 0.84.6
 	pkgrel = 1
 	url = https://github.com/kurtosis-tech/kurtosis
+	install = kurtosis-cli-bin.install
 	arch = x86_64
 	license = Business Source License 1.1
 	depends = docker
 	source = kurtosis-cli-bin-0.84.6.tar.gz::https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.84.6/kurtosis-cli_0.84.6_linux_amd64.tar.gz
+	source = kurtosis.service
+	source = kurtosis-cli-bin.install
 	sha256sums = c583a907acb33f02670ce02eb3f7455be20cd1d364874ba6c5f635458b5a2f7d
+	sha256sums = 8ed2e5900ec3aa6d5d00f37791eac8b66bedaf3fbeb0521a234c68e0d5633f45
+	sha256sums = 583b06844436a1cbc09c0a889561dc8aac3a692677667735ff3c50188550d3f6
 
 pkgname = kurtosis-cli-bin

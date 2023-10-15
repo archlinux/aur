@@ -1,0 +1,10 @@
+post_install() {
+	echo ""
+	echo 'Also start the kurtosis daemon'
+	echo 'systemctl start ydotoold --user'
+	echo ''
+}
+
+post_upgrade() {
+	post_install
+}
