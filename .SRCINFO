@@ -31,6 +31,7 @@ pkgname = gcr-git
 	provides = libgcr-4-gtk4.so
 	conflicts = gcr
 	conflicts = gcr-4
+	conflicts = gcr-338
 	backup = etc/security/limits.d/10-gcr.conf
 
 pkgname = gcr-docs-git
