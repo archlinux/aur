@@ -1,7 +1,7 @@
 # Prev Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=man-pages-ja
-pkgver=20230915
+pkgver=20231015
 pkgrel=1
 pkgdesc="Man pages for Japanese"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('perl')
 conflicts=('man-pages-ja-git')
 install="${pkgname}.install"
 source=("https://linuxjm.osdn.jp/man-pages-ja-${pkgver}.tar.gz")
-md5sums=('15b1da5ca0c58fc33728076b4bbad25c')
+md5sums=('a3965678b3ecba7955e882a4fc604f9e')
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
