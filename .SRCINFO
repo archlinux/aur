@@ -6,6 +6,8 @@ pkgbase = ifdnfc-git
 	arch = x86_64
 	license = GPL3
 	depends = libnfc
+	provides = ifdnfc
+	conflicts = ifdnfc
 	backup = etc/reader.conf.d/ifdnfc
 	source = ifdnfc::git+https://github.com/nfc-tools/ifdnfc.git
 	source = fix-pcsc-lib-path.patch
@@ -13,4 +15,3 @@ pkgbase = ifdnfc-git
 	sha256sums = 9ac432e7f32f20e312ff7f42e0cf052c3d0ffa2cf4fa6412bc3be51279fe2c9e
 
 pkgname = ifdnfc-git
-

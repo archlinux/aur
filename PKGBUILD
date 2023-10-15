@@ -14,6 +14,8 @@ sha256sums=(
     'SKIP'
     '9ac432e7f32f20e312ff7f42e0cf052c3d0ffa2cf4fa6412bc3be51279fe2c9e'
 )
+provides=('ifdnfc')
+conflicts=('ifdnfc')
 depends=('libnfc')
 backup=('etc/reader.conf.d/ifdnfc')
 
