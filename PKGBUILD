@@ -3,7 +3,7 @@
 
 pkgname=biodiff
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Hex diff viewer using alignment algorithms from biology'
 arch=(x86_64)
 url=https://github.com/8051Enthusiast/biodiff
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('fd04f79c2e5a584378731179075fb82a0a9c08a9a9b940a971899c6f3bb68108f564836f7191ca25c41fee6fd47bd2d8701f35f824ebc60a118ea71ea498b1ef')
 
 prepare() {
-  cargo fetch --locked --manifest-path=$pkgname-$pkgver/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname-$pkgver/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -25,5 +25,5 @@ check() {
 }
 
 package() {
-  install -Dm0755 target/release/$pkgname -t "$pkgdir/usr/bin"
+  install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
 }
