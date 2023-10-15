@@ -10,6 +10,7 @@ pkgbase = quikc-git
 	depends = python
 	optdepends = gcc: GNU C/C++ compiler
 	optdepends = clang: LLVM C/C++ frontend
+	optdepends = pkgconf: for automatic third party dependency resolution
 	provides = quikc
 	conflicts = quikc
 	source = quikc::git+https://github.com/Ramenu/quikc.git

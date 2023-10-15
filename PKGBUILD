@@ -12,7 +12,8 @@ depends=('python')
 license=('MIT')
 source=("$_pkgname::git+$url.git")
 optdepends=('gcc: GNU C/C++ compiler'
-		    'clang: LLVM C/C++ frontend')
+		    'clang: LLVM C/C++ frontend'
+			'pkgconf: for automatic third party dependency resolution')
 conflicts=('quikc')
 provides=('quikc')
 b2sums=('SKIP')
