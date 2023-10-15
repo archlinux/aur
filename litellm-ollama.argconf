@@ -1,6 +1,7 @@
 # LiteLLM launch parameters
 
-# Port on which LiteLLM will listen, default 8000
+# Host and port on which LiteLLM will listen, default 0.0.0.0:8000
+# HOST="--host=0.0.0.0"
 # PORT="--port=8000"
 
 # Enable telemetry bound to LiteLLM developers, default True

@@ -7,7 +7,7 @@ User=litellm-ollama
 Group=litellm-ollama
 
 EnvironmentFile=/etc/litellm-ollama/litellm-ollama.argconf
-ExecStart=/usr/bin/litellm --model ollama/%i --api_base http://localhost:11434 $PORT $TELEMETRY $TEMPERATURE $MAX_TOKENS
+ExecStart=/usr/bin/litellm --model ollama/%i --api_base http://localhost:11434 $HOST $PORT $TELEMETRY $TEMPERATURE $MAX_TOKENS
 Restart=on-failure
 RestartSec=30s
 
