@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=CodinGame
+Comment=CodinGame desktop app built with nativefier
+Icon=codingame-nativefier
+Exec=codingame-nativefier
+StartupNotify=true

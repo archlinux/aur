@@ -1,0 +1,18 @@
+pkgbase = codingame-nativefier
+	pkgdesc = CodinGame desktop app built with nativefier
+	pkgver = 52.0.0
+	pkgrel = 0
+	url = https://www.codingame.com/
+	arch = any
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = codingame-nativefier.desktop
+	source = codingame-nativefier.png
+	sha256sums = 5d9966528191268734d60376967ee75db869a8ca9aa0ce29720fb6fcc162b405
+	sha256sums = 3f9e7c051a98f9be2495351550cc14bf38df863012312da2b1434d5153f868ee
+
+pkgname = codingame-nativefier
