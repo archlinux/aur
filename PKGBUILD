@@ -3,7 +3,7 @@
 
 pkgname=wttrbar-git
 pkgver=0.4.0.r0.gdfa1473
-pkgrel=1
+pkgrel=2
 pkgdesc='Show the weather in Waybar, using the great wttr.io'
 arch=(x86_64)
 url=https://github.com/bjesus/wttrbar
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-  cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -32,5 +32,5 @@ check() {
 }
 
 package() {
-  install -Dm0755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
 }
