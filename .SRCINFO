@@ -1,0 +1,18 @@
+pkgbase = python-spin
+	pkgdesc = A developer tool for scientific Python libraries
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/scientific-python/spin
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-click
+	depends = python-tomli
+	source = https://files.pythonhosted.org/packages/source/s/spin/spin-0.7.tar.gz
+	sha256sums = b1a0841527f94fdf10415ce4f3b273a36d62c229412aa5e81d4664473405f29c
+
+pkgname = python-spin
