@@ -11,7 +11,22 @@ pkgdesc="A full-featured Python and Ruby IDE in PyQt"
 arch=('any')
 url="https://${pkgname}-ide.python-projects.org/"
 license=('GPL3')
-depends=('python-qscintilla-qt6' 'python-pyqt6-webengine' 'python-pyqt6-charts' 'qt6-tools' 'qt6-svg' 'python-editorconfig' 'python-asttokens' 'python-black' 'python-isort' 'python-tomlkit' 'python-coverage' 'python-semver' 'qt6-serialport')
+depends=(
+    'python-asttokens'
+    'python-black'
+    'python-coverage'
+    'python-editorconfig'
+    'python-isort'
+    'python-pyqt6-charts'
+    'python-pyqt6-webengine'
+    'python-qscintilla-qt6'
+    'python-semver'
+    'python-tomlkit'
+    'qt6-serialport'
+    'qt6-svg'
+    'qt6-tools'
+    'qt6-websockets'
+    )
 makedepends=('python-pip')
 conflicts=(${pkgname}-common)
 replaces=(${pkgname}-common)
