@@ -8,8 +8,9 @@ arch=('x86_64')
 repo="North-West-Wind/tradew1nd-standalone"
 url="https://github.com/crowbartools/Firebot"
 license=('GPL3')
-source=("${url}/releases/download/v${pkgver}/firebot-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('6f1eb7d593874d560098789a4a1be85a3c1915145422c9be7ab2fdfbba6525c2')
+source=("${url}/releases/download/v${pkgver}/firebot-v${pkgver}-linux-x64.tar.gz" "firebot.sh")
+sha256sums=('6f1eb7d593874d560098789a4a1be85a3c1915145422c9be7ab2fdfbba6525c2'
+            '7694f96ec45d7b729c01bc9d50a12805a8a040b4e3f8c5fbdccbed57fe10fef6')
 
 prepare() {
   cd $srcdir
@@ -23,6 +24,6 @@ package() {
 	chmod +x "${pkgdir}/opt/${pkgname}/Firebot v${_mainver}"
 
   install -dm755 "${pkgdir}/usr/bin/"
-  cd "${pkgdir}/usr/bin"
-  ln -s "../../opt/${pkgname}/Firebot v${_mainver}" "${pkgname}"
+  cp --no-preserve=mode,ownership "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
