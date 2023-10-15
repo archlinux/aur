@@ -1,7 +1,7 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=jmpx-git
 _pkgname=jmpx
-pkgver=r64.ee67dad
+pkgver=r66.c8a3c5f
 pkgrel=1
 pkgdesc="FM Stereo encoder with RDS support"
 arch=('x86_64')
@@ -12,22 +12,15 @@ makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git"
-	"volumemeter.patch"
 	"jmpx.desktop"
 	"jmpx.png")
 md5sums=('SKIP'
-	'1d77dc08dce4b7e76721ead0dec64357'
 	'1ed74e10f90b110dfae60c4ee2b9f20d'
 	'fb58bdaf4c4c6f236c15ba2a568dcd2d')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${srcdir}/${_pkgname}/
-  patch -p1 -i ../volumemeter.patch
 }
 
 build() {

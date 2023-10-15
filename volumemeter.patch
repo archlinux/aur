@@ -1,9 +1,0 @@
---- jmpx/JMPX/vol/volumemeter.cpp	2023-05-21 20:21:03.334436864 +0900
-+++ JMPX-patched/JMPX/vol/volumemeter.cpp	2023-05-21 20:21:56.821783445 +0900
-@@ -1,5 +1,5 @@
- #include "volumemeter.h"
--
-+#include <QPainterPath>
- #include <iostream>
- Volumemeter::Volumemeter(QWidget *parent) :
-     QWidget(parent)
