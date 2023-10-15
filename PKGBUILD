@@ -9,7 +9,6 @@ arch=(any)
 url="https://github.com/0xacx/chatGPT-shell-cli.git"
 license=('MIT')
 depends=(jq curl glow)
-provides=(chatgpt-shell-cli)
 conflicts=(chatgpt-shell-cli-git)
 source=("git+$url#commit=926587a2234b8ae3754a1db9715f4636205159dc")
 sha256sums=('SKIP')
