@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wayfire
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="3D wayland compositor"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url=https://wayfire.org
 license=(custom:MIT)
 depends=(cairo pango "wf-config>=${pkgver%.*}" libjpeg libinput 'wlroots>=0.16' 'wlroots<0.17')
