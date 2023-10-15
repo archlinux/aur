@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-space-bar-git
 _uuid=space-bar@luchrioh
 pkgver=22.r7.g89a4149
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
 url="https://github.com/christopher-l/space-bar"
@@ -28,7 +28,7 @@ package() {
   cd "$srcdir/space-bar"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   install -Dm644 target/schemas/org.gnome.shell.extensions.space-bar.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
