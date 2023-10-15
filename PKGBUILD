@@ -20,7 +20,7 @@ prepare() {
 build() {
   cd "$srcdir"/TermPDFViewer-v."${pkgver}"
 
-  gcc -o term-pdf-wrp "$srcdir"/TermPDFViewer-v."${pkgver}"/term-pdf-wrp.c
+  gcc -o term-pdf-wrp "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp.c
 }
 
 package() {
