@@ -1,0 +1,24 @@
+pkgbase = r-alabaster.matrix
+	pkgdesc = Load and Save Artifacts from File
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/alabaster.matrix
+	arch = any
+	license = MIT
+	checkdepends = r-chihaya
+	checkdepends = r-testthat
+	depends = r-alabaster.base
+	depends = r-delayedarray
+	depends = r-hdf5array
+	depends = r-rhdf5
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-chihaya
+	optdepends = r-knitr
+	optdepends = r-s4vectors
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.matrix_1.0.0.tar.gz
+	md5sums = 4b93a993b0f4a9b3333da48a8f49ad36
+	sha256sums = 637424bdb91f4f286cc1ed64405c5ef43c8ae96f849b038477536054344e1550
+
+pkgname = r-alabaster.matrix
