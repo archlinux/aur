@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=gnome-shell-extension-transparent-top-bar-git
 pkgver=r66.6cd4532
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell extension that brings back the transparent top bar when free-floating"
 arch=('any')
 url="https://github.com/lamarios/gnome-shell-extension-transparent-top-bar"
@@ -34,7 +34,8 @@ package() {
   _uuid='transparent-top-bar@ftpix.com'
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  bsdtar xvzf "build/$_uuid.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+  bsdtar xvzf "build/$_uuid.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/" --no-same-owner
 
   install -Dm644 src/schemas/ftpix.com.transparentbar.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
