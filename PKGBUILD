@@ -1,6 +1,6 @@
 # Maintainer: Robert Labudda <contact+aur-pter@vonshednob.cc>
 pkgname="pter"
-pkgver='3.8.0'
+pkgver='3.9.0'
 pkgrel='1'
 pkgdesc="Console UI to manage your todo.txt file(s)"
 url="https://codeberg.org/vonshednob/${pkgname}/"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools'
              'python-installer'
              'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('29672889f0a2fe77a327621a436f0a7a08735fea923966d905f9d1e615815334')
+sha256sums=('a0fb507e667d0654314a3818723e7369750cbb6628a5c6ec063cab92498eb36f')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -34,6 +34,6 @@ package() {
     # remove QT UI launcher
     rm "${pkgdir}/usr/bin/qpter"
 
-    # remove template desktop files
-    rm -r "${pkgdir}/usr/share/applications"
+    # remove template desktop file
+    rm "${pkgdir}/usr/share/applications/qpter.desktop"
 }
