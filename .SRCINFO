@@ -1,6 +1,6 @@
 pkgbase = i2pd-qt-git
 	pkgdesc = i2pd with Qt based GUI
-	pkgver = 2.41.0.r3.d733e15
+	pkgver = 2.48.0.r0.6e0a771
 	pkgrel = 1
 	url = https://i2pd.website/
 	arch = any

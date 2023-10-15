@@ -1,7 +1,7 @@
 # Maintainer: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
 
 pkgname=i2pd-qt-git
-pkgver=2.41.0.r3.d733e15
+pkgver=2.48.0.r0.6e0a771
 pkgrel=1
 pkgdesc="i2pd with Qt based GUI "
 arch=('any')
