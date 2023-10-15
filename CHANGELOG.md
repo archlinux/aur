@@ -1,140 +1,232 @@
-# SQLcl Release Notes 23.1.0.089.0929
+# New Features in 23.3.0
 
-## New Features in 23.2.0
+- Named Connections, import secure connections
+- Enhanced Error Reporting
+- Enhanced OCI configuration Support
+- Blockchain & Immutable Tables with Certificates
+- Codescan command Check .sql, .pls, .plb files for for best practice
 
-### Named Connections
+## Named Connections
 
-The connmgr command manages a collection of connections. It allows you to list, show, test and clone connections. It also allows you to import connections from Oracle SQL Developer.
+The connmgr command was introduced in 23.2.0 and it has been extended to include more support for importing connections from SQL Developer.
 
-```sh
-connmgr import <sql-developer-connections.xml>
-connmgr list <connection 1> ... <connection n>
+- `connmgr import <sql-developer-connections.xml>`
+- `connmgr list <connection 1> ... <connection n>`
+- `connmgr show <connection-name> USER: hr URL: jdbc:oracle:thin:@//hostname:1521/ORCL`
+- `connmgr connmgr test DB213P Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production Connection Test Successful`
+- `connmgr clone -ORIGINAL DB213P clone`
 
-connmgr show <connection-name> USER: hr URL: jdbc:oracle:thin:@//hostname:1521/ORCL
+```
+connmgr list
 
-connmgr connmgr test DB213P Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production Connection Test Successful
-
-connmgr clone -ORIGINAL DB213P clone ``` connmgr list ... clone ... 
+<connection 1>
+...
+clone
+...
+<connection n>
 ```
 
-### Saved Connections
+On Windows, the location for storing connections has changed. In 23.2, connection definitions were stored in %HOME%\DBTools; in 23.3, they have been moved to %APPDATA%\DBTools. The command-line flag -migrateconns can be used to migrate 23.2 connections to the new location.
 
-The Connect command has been further expanded to include functionality to allow a user to save a connection. This has two formats.
+For handling ecrypted connections, the following have been added
 
-While a user is connecting with the connect command, a `-save <connection-name>` parameter is supported which allows the user to name the current connection details used as a named connection.
-Secondly, an existing connection previously created, can also be saved using `connect -save <connection-name>`
-Connect or reconnect with that saved connection using `connect -name <connection-name>`
+- SECRET command for registering secure values
+- Adds -key option to connmgr import command to specify a SECRET name for the encryption key
+- Adds -strip_passwords flag to connmgr import to automatically strip passwords from imported connections
+- This release now reports an error on connmgr import with a bad encryption key subsequently imports the connections with stripped passwords (previously, would skip the import of the file).
 
-### OCI DB Metrics
+For example:
 
-The ocidbmetrics command collects metrics from the Oracle Database Dictionary and sends them to the Oracle Cloud Infrastructure (OCI) Metrics service.
+```
+SQL>secret set mysecret oracle
+Secret mysecret stored
 
-The command facilitates setting up a new user with the necessary permissions and initiates the collection of metrics with a 15 second time interval between iterations.
+SQL>secret list
+mysecret
 
-You must have an OCI profile setup to use this feature
-
-```sh
-ocidbmetrics setup myuser
-ocidbmetrics collect -compartmentId [compartmentId_ocid] -region [region_ocid]
+SQL>connmgr import -key mysecret Connections.json
+Importing connection conn1: Success
+Importing connection conn2: Success
+Importing connection conn3: Success
+Importing connection conn4: Success
+4 connection(s) processed
 ```
 
-## Issues Fixed in 23.2.0
+## Enhanced Error Reporting
 
-- PLSQL: SHOW ERRORS PERFORMANCE ISSUES WHEN CONNECTING WITH PECULIAR PASSWORD
-- LIQUIBASE: SQLCL 22.3 HAS \ INSTEAD OF / IN CONTROLLER.XML ON WINDOWS AS COMPARED TO LINUX/UNIX.
-- LIQUIBASE: COMMENTS ADDED TO CONTROLLER.XML FILE IN SQLCL 23.1
-- LIQUIBASE: APEX EXPORT FEEDBACK TO DEPLOYMENT SYSTEM CONVERTS THE NAME TO LOWERCASE
-- LIQUIBASE: SQLCL HAS \ INSTEAD OF / IN CONTROLLER.XML ON WINDOWS AS COMPARED TO LINUX/UNIX.
-- CONNECTIONS: ERROR SHOWN WITH SQLCL WHEN LOGIN.SQL HAS "SHOW CONNECTION"
+As part of 23c Database release, all oracle errors were updated with better explanations and recommendations. In this SQLCL release, links have been added to help clarify error codes that are thrown when there is an issue with a command. The index for all Oracle Errors is now published here
 
-## New features in 23.1.0.089.0929
+For a SQL query, this looks like
+```
+SQL>select * from non-existing-tables;
 
-* New features for 22.4.0
-* named connection..
-* 
+Error starting at line : 1 in command -
+select * from non-existing-tables
+Error at Command Line : 1 Column : 18
+Error report -
+SQL Error: ORA-00933: SQL command not properly ended
+00933. 00000 -  "SQL command not properly ended"
+*Cause:    
+*Action:
 
-## New features in 22.3.0
+More Details :
+https://docs.oracle.com/error-help/db/ora-00933/
+```
 
-* Introduction of new command framework to standardise commands
-* Rewrite of Liquibase suppport to include all new flags and commands
-* Support for two factor authentication in connections
-* Support for connections to ADBs and ADBd with auto creation of Bastions where needed
-* Upgrade of JDBC Drivers to 21.8.0.0.0
-* Standardised numbering across distributions from ZIPs to RPMs
+For any other Oracle errors thrown, we will display the link to the appropraite page. E.g., for PL/SQL
+```
+SQL> BEGIN
 
-## Bugs Fixed
+    non-existing-procedure;
+    END;
+/
+Error starting at line : 1 in command -
+BEGIN
+non_existing_procedure;
+END;
+Error report -
+ORA-06550: line 2, column 1:
+PLS-00201: identifier 'NON_EXISTING_PROCEDURE' must be declared
+ORA-06550: line 2, column 1:
+PL/SQL: Statement ignored
+06550. 00000 -  "line %s, column %s:\n%s"
+*Cause:    Usually a PL/SQL compilation error.
+*Action:
 
-### 22.3.0
+More Details :
+https://docs.oracle.com/error-help/db/ora-06550/
+https://docs.oracle.com/error-help/db/pls-00201/
+```
 
-This is a selection of the bugs fixed in this release, focussing on customers issues, security and usability.
+## Enhanced OCI configuration Support
 
-| bug      | Description                                                                    |
-|----------|--------------------------------------------------------------------------------|
-| 34624954 | FIX ALL VERSIONS SO THEY ALL MATCH FROM ZIP TO 'SHOW VERSION' COMMAND          |
-| 34620477 | APEX EXPORT COMMAND TO EXPORT ALL SUPPORTED TYPES. INCLUDES EXPTYPE            |
-| 34619719 | SHOW DATAPUMP - UPDATED TO NEW COMMAND STRUCTURE                               |
-| 34609419 | UPGRADE JDBC & UCP 22.1.0.0.0_220912                                           |
-| 34605409 | VULNERABILITIES CVE-2022-21510/CVE-2022-21511 IN SQLCL 22.2.1.201.1451         |
-| 34484571 | NEW -SOCKSPROXY OPTION NOT DOCUMENTED IN SQLCL USAGE HELP                      |
-| 34453113 | SQLCL UPDATE TO FULLY SUPPORT JDK17                                            |
-| 34432373 | EXTRA KEYWORDS ADDED TO QUERIES WHEN COPY/PASTING THE CODE IN SQLCL            |
-| 34430175 | INSIGHT: FAILING TO BRING UP LIST OF COLUMNS FOR A TABLE, VIA A SYNONYM.       |
-| 34379593 | ALTER SESSION SET CURRENT SCHEMA SQLCL FAIL ON TRYING TO CREATE CHANGE LOG TABLE|
+- If user has a DEFAULT OCI profile installed, SQLCL will now load it on startup.
+```
+SQLcl: Release 23.3 Production on Fri Sept 08 13:13:13 2023
 
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-# Before You Start
+Connected to:
+Oracle Database 23c Enterprise Edition Release 23.0.0.0.0 - Production
+Version 23.3.0.23.09
 
-## JRE Support
+HR@23c >oci profile
+Configured Profiles:
+    *DEFAULT
+        UKWEST
+HR@23c >     
+``````
+- SQLCL now supports OCI configuration inheritance
+```
+[DEFAULT]
 
-* SQLcl release 22.2.1 requires Oracle Java version 11 or 17.
-* If SQLcl cannot find a local JRE, you will be prompted to enter the location path for the JRE. Note that the prompt wants only the folder, not the java.exe.  For example C:\Program Files\Java\jdk-11.0.11
+user=ocid1.user.oc1..baabaa
+fingerprint=a9:5b:f3:a1:27:d3:89:f8
+key_file=/Users/user/.oci/oci_api_key.pem
+tenancy=ocid1.tenancy.oc1..baabaatenancy
+region=us-phoenix-1
+[UKWEST]
+region=uk-cardiff-1
+```
+## Blockchain & Immutable Tables with Certificates
 
-## Known Issues
-Invoking SQL Recall for a previous statement which has a line exceeding the width of your display, the in-line editor will be unable to access or edit the line with the overflow. Workaround this issue by resizing your terminal display wide enough to prevent line-wrapping.
+In this release, we are including support for managing blockchain and immutable tables and certificates which are used in them.
 
-## Platform Support
+The commands create a user friendly way to manage these objects and use extensions of the PL/SQL packages DBMS_BLOCKCHAIN_TABLE, DBMS_IMMUTABLE_TABLE and DBMS_USER_CERTS
 
-SQLcl release 22.2.1 is available for Windows 10 and Windows Server 2008/2012, Linux or Mac OS X. (See full [Certification] (https://www-sites.oracle.com/database/technologies/appdev/sqldev/certification.html))
-If using a OCI “Thick” connection type, a 21c Oracle Client will be required
+- A blockchain table is an append-only table designed for centralized blockchain applications. V2 blockchain tables support schema evolution, delegate signatures, and countersignatures in addition to the functionality found in V1 blockchain tables. Blockchain tables support only DER encoding for X.509 certificates, not PEM encoding.
+- Immutable tables are read-only tables that protect data against unauthorized modification. They also prevent against accidental data modifications that may be caused by human errors.
+- The certificates command adds and deletes X.509 certificates which are used for signature verification for blockchain tables.
 
+Get more details by using the help for each command
 
-## Installing or Upgrading
+```
+help certificate
 
-All new releases of SQLcl and SQL Developer require a full installation. Download and unzip the file into an empty folder. Ensure the "Use folder names" checkbox is checked when unzipping the file.
+help blockchain_table
+help immutable_table
+```
 
-## Support
-Production Releases - you are supported by Oracle Support under your current database Support license for SQL Developer production releases. Log SQL Developer bugs and issues using [My Oracle Support] (http://support.oracle.com/) for the product.
-## Feedback
-There are a number of different forums supporting the features in SQLcl. When using the forums, be sure to use clear subject lines to initiate a thread and try to avoid using old, unrelated threads for a new issue.
+## CODESCAN Command
 
-For all SQLcl queries, please use the [SQLcl Forum] (https://community.oracle.com/tech/developers/categories/sqlcl)
+Check .sql, .pls, .plb files in the directory for SQL Best Practices violations.
 
-## SQL*Plus List of Unsupported Commands and Features
+This command identifies issues with code using the Trivadis Coding Guidelines which are available on github
 
-### Commands
+For example:
 
-* REPHEADER
-* REPFOOTER
-*System Variables and Environment Settings via the SET Command*
+    SQL>set codescan on
 
- * autoprint
- * autorecovery
- * cmdsep
- * copytypecheck
- * describe
- * eschar
- * flagger
- * flush
- * fullcolname
- * logsource
- * loboffset
- * markup
- * recsep* 
- * recsepchar
- * shiftinout
- * sqlcase
- * sqlprefix
- * sqlterminator
- * tab
- * underline
- * xmloptimizationcheck
+    SQL>BEGIN
+        BEGIN
+            null; 
+        END;
+    END;
+    /
+
+    SQL best practice warning (1,7): G-1010: Try to label your sub blocks 
+
+    PL/SQL procedure successfully completed.
+
+Then fix the problem
+
+    SQL >begin
+
+        <<label>> 
+            BEGIN
+            NULL;
+            END label;
+        END;
+    /
+
+    PL/SQL procedure successfully completed.
+
+You can also codescan a directory
+
+```
+SQL> cd <my code dir>
+
+SQL> CODESCAN
+***** /Users/user/source/file1.sql
+*** 1 distinct warnings
+Warning (25,14): G-2180: Never use quoted identifiers
+***** /Users/user/source/file2.sql
+*** 1 distinct warnings
+Warning (3,15): G-2180: Never use quoted identifiers
+***** /Users/user/source/file3.sql
+*** 2 distinct warnings
+Warning (6,4): G-3130: Try to use ANSI SQL-92 join syntax
+Warning (14,4): G-3145: Avoid using SELECT * directly from a table or view
+```
+
+## Issues Fixed in 23.3.0
+
+- ALL 3RD PARTY LIBRARIES UPDATED TO LATEST AVAILABLE AND CVE FREE
+- SQLCL CANNOT START ON READ-ONLY FILE SYSTEM
+- CONNMGR IMPORT IS NOT SUCCESSFUL IF EXPORTED JSON FILE IS FROM OLDER VERSIONS OF SQL DEVELOPER
+- CONNECT -NAME NOT ABLE TO CONNECT WITH A SAVED ROLE
+- IMPORTING AUTONOMOUS (WALLET) CONNECTIONS FROM SQL DEVELOPER FAILS
+- CONNECT SAVE DOES NOT SAVE THE CONNECTION DETAILS IF SQLCL IS NOT CONNECTED TO ANY USER
+- LIQUIBASE GENERATE APEX OBJECT COMMAND IS CAPTURING WORKSPACEDISPLAYNAME INSTEAD OF WORKSPACE NAME
+- LIQUIBASE COMMANDS ASKING FOR A PASSWORD WHEN IT IS ALREADY CONNECTED
+- LIQUIBASE CLONE CONNECTION IS NOT MAINTAINING CURRENT CONTAINER FOR SOME COMMANDS
+- LIQUIBASE PARSING ERROR USING LOADUPDATEDATA COMMAND
+- LIQUIBASE DATA ISSUE WHEN USING -LIQUIBASE-SCHEMA-NAME
+- LIQUIBASE GENERATE APEX OBJECT COMMAND IS CAPTURING WORKSPACEDISPLAYNAME INSTEAD OF WORKSPACE NAME
+- LIQUIBASE GEO REMOVES ALL BLANK LINES FROM CODE
+- DATAPUMP EXPORT -COPYCLOUD DOES NOT UPLOAD FILES FROM SUBST. VARIABLES
+- OCI PROFILE INHERITANCE NOT SUPPORTED
+- OCI PROFILE SETTING FAILS ON WINDOWS
+- OCI PROFILE AUTHENTICATION ERROR WHEN USING TILDE (~) IN KEY_FILE PROPERTY
+- ANONYMOUS BLOCK WITH PRAGMA FAILS TO RUN WITH SQLCL
+- INVALID COLUMN INDEX ERROR WHEN RUN SQL STATEMENT WITH "Q" NOTATION
+- SERVEROUTPUT OFF SIZE UNLIMITED YET STILL ORU-10027: BUFFER OVERFLOW
+- ACCEPT COMMAND WITH HIDE OPTION DOES NOT WORK WITH REDIRECTION
+
+## Restrictions
+
+This section describes the restrictions on use that upgrading has introduced.
+
+**ORACLE_HOME usage**
+
+When using sqlcl in an ORACLE_HOME, it must be a minimum version of 21c.
