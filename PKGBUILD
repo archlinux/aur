@@ -37,8 +37,8 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   #0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
   #0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
-  add-acs-overrides.patch
-  i915-vga-arbiter.patch
+  1001-add-acs-overrides.patch
+  1002-i915-vga-arbiter.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -53,8 +53,8 @@ sha256sums=(
   '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
   #'39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
   #'56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
-  'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-  '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6'
+  'bdd2a5a56e01e91723907afb40d28bed77b7d5107aba92c85adb3ce6967e713a'
+  '9a698eaf1a0bd740981e909b6ad9bd41300488a2a771843bf30b9bdc94aa3c3b'
 )
 
 export KBUILD_BUILD_HOST=archlinux
