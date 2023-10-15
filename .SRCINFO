@@ -1,7 +1,7 @@
 pkgbase = uyap
 	pkgdesc = UYAP Dokuman Editor, UYAP Sablon Editor
-	pkgver = 5.4.6
-	pkgrel = 2
+	pkgver = 5.4.7
+	pkgrel = 1
 	url = https://uyap.gov.tr/UYAP-Editor
 	install = uyap.install
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = uyap
 	optdepends = akia: sign UYAP documents
 	optdepends = jre8: sign UYAP documents
 	optdepends = cups: print documents
-	source = http://depo.pardus.org.tr/pardus/pool/non-free/u/uyapeditor/uyapeditor_5.4.6_amd64.deb
+	source = http://depo.pardus.org.tr/pardus/pool/non-free/u/uyapeditor/uyapeditor_5.4.7_amd64.deb
 	source = desktop-files.patch
-	sha256sums = 390bc1b49a7eb607e2c0751475b9a00268001cbcfcb6735794f72d110975a909
+	source = java-location.patch
+	sha256sums = dfb95dca8690e60ba8a81b069c5e5c69e1264528f0a8e18fe16895107d4f72e5
 	sha256sums = 19f36882522f236b3e48049c810079cf0ddfb21b76ad2da84e9b70550df4ac19
+	sha256sums = 50a2339b4a467218fd614cb95ebd12b34a2c8d52cf61e6f10a2286605e47c126
 
 pkgname = uyap
