@@ -13,8 +13,7 @@
 
 pkgname=ffmpeg-cuda
 pkgver=6.0
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -112,25 +111,17 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=(
-  "${pkgname}-${pkgver}.tar.xz::https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
-  'libavcodec.patch'
+  "git+https://git.ffmpeg.org/ffmpeg.git#commit=1e888462a1ea2b3f1144b536fd2702d95759ba43"
 )
-sha256sums=(
-    "57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082"
-    "4a5cda5821a89527f764fe5a0404dada0e4058f4f6b1a7afe28c14229d3aee9f"
-)
+sha256sums=("SKIP")
 
-_dir=ffmpeg-${pkgver}
-prepare() {
-  cd $_dir
-  patch -p1 -i ${srcdir}/libavcodec.patch
-}
+_dir=ffmpeg
 
 build() {
   
   local _cflags='-I/opt/cuda/include'
   local _ldflags='-L/opt/cuda/lib64'
-  local _nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
+  #local _nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
 
 #  local _nvccflags='-arch=sm_52 \
 #                    -gencode arch=compute_52,code=sm_52 \
@@ -149,12 +140,12 @@ build() {
 #                    -O2'
 
   cd ${_dir}
-
+  export PATH="/opt/cuda/bin:$PATH"
+    #--nvccflags="$_nvccflags" \
   ./configure \
     --prefix=/usr \
     --extra-cflags="$_cflags" \
     --extra-ldflags="$_ldflags" \
-    --nvccflags="$_nvccflags" \
     --disable-debug \
     --disable-static \
     --disable-stripping \

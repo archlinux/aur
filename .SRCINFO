@@ -1,8 +1,7 @@
 pkgbase = ffmpeg-cuda
 	pkgdesc = Complete solution to record, convert and stream audio and video. Includes cuda support.
 	pkgver = 6.0
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = custom
@@ -90,9 +89,7 @@ pkgbase = ffmpeg-cuda
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = ffmpeg-cuda-6.0.tar.xz::https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
-	source = libavcodec.patch
-	sha256sums = 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
-	sha256sums = 4a5cda5821a89527f764fe5a0404dada0e4058f4f6b1a7afe28c14229d3aee9f
+	source = git+https://git.ffmpeg.org/ffmpeg.git#commit=1e888462a1ea2b3f1144b536fd2702d95759ba43
+	sha256sums = SKIP
 
 pkgname = ffmpeg-cuda
