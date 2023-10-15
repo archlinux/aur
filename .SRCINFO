@@ -9,9 +9,8 @@ pkgbase = flashbrowser-git
 	makedepends = npm
 	makedepends = imagemagick
 	depends = nodejs
-	provides = flashbrowser-git
-	conflicts = flashbrowser-git
-	conflicts = flashbrowser-bin
+	provides = flashbrowser
+	conflicts = flashbrowser
 	source = git+https://github.com/radubirsan/FlashBrowser#commit=0d97b175eab39383bc83dba59c17bde1b55c7574
 	source = FlashBrowser.desktop
 	sha256sums = SKIP

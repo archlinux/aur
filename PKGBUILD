@@ -27,7 +27,7 @@ prepare() {
 cat > FlashBrowser.sh <<EOF
 #!/bin/sh
 cd /usr/lib/node_modules/FlashBrowser
-nohup npm run start &
+npm run start &
 EOF
 }
 
