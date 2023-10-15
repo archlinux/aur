@@ -20,10 +20,8 @@ prepare() {
 build() {
   cd "$srcdir"/TermPDFViewer-v."${pkgver}"
 
-  gcc -o term-pdf-wrapper src/term-pdf-wrapper.c || { 
-    echo "Error: Compilation failed." 
-    exit 1
-  }
+  # Compila tu binario C
+  gcc -o term-pdf-wrapper src/term-pdf-wrapper.c
 }
 
 package() {
