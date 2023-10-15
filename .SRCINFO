@@ -9,7 +9,6 @@ pkgbase = term-pdf
 	depends = python-pip
 	depends = python-pymupdf
 	source = https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.0.0.3.4.tar.gz
-	source = term-pdf-wrapper.c
-	sha256sums = 05c5e6efe954cfe3765f60a94c3c779725c5074b9e33fa1aa4f8d627082494c7
+	sha256sums = 4f571022736a88100a285cb1665952ba06d1a7a1c523b16555915fc7bef8f19a
 
 pkgname = term-pdf

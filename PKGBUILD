@@ -10,21 +10,21 @@ depends=('gcc' 'python-pip' 'python-pymupdf')
 
 source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('05c5e6efe954cfe3765f60a94c3c779725c5074b9e33fa1aa4f8d627082494c7')
+sha256sums=('4f571022736a88100a285cb1665952ba06d1a7a1c523b16555915fc7bef8f19a')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  cp "$srcdir"/term-pdf-wrapper.c "$srcdir"/TermPDFViewer-v."$pkgver"/src/
+  cp "$srcdir"/term-pdf-wrp.c "$srcdir"/TermPDFViewer-v."$pkgver"/src/
 }
 
 build() {
   cd "$srcdir"/TermPDFViewer-v."${pkgver}"
 
   # Compila tu binario C
-  gcc -o term-pdf-wrapper src/term-pdf-wrapper.c
+  gcc -o term-pdf-wrp src/term-pdf-wrp.c
 }
 
 package() {
   # Mueve el binario desde src al directorio de destino
-  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/term-pdf-wrapper "${pkgdir}/usr/bin/term-pdf"
+  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/term-pdf-wrp "${pkgdir}/usr/bin/term-pdf"
 }
