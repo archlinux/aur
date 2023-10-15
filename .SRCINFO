@@ -1,7 +1,7 @@
 pkgbase = btrfs-backup-git
 	pkgdesc = Backup and restore Btrfs subvolumes
 	pkgver = 0.2.1.r0.g02aea34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d-e-s-o/btrfs-backup
 	arch = x86_64
 	license = GPL3

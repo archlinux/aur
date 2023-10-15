@@ -2,13 +2,13 @@
 
 pkgname=btrfs-backup-git
 pkgver=0.2.1.r0.g02aea34
-pkgrel=1
+pkgrel=2
 pkgdesc='Backup and restore Btrfs subvolumes'
 arch=(x86_64)
 url=https://github.com/d-e-s-o/btrfs-backup
 license=(GPL3)
 makedepends=(cargo git)
-depends=(btrfs-progs )
+depends=(btrfs-progs)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -19,8 +19,8 @@ pkgver() {
 }
 
 prepare() {
-  #cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
-  cargo fetch --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  #RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  RUSTUP_TOOLCHAIN=stable cargo fetch --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -32,5 +32,5 @@ build() {
 #}
 
 package() {
-  install -Dm0755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
 }
