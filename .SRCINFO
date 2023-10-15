@@ -1,16 +1,17 @@
 pkgbase = rofi-zeal-git
 	pkgdesc = Search code documentation from rofi
-	pkgver = 1.0.r13.ef0a629
-	pkgrel = 2
+	pkgver = 1.0.3.r2.g1c6f0d3
+	pkgrel = 1
 	url = https://github.com/Zeioth/rofi-zeal.git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = rofi
-	makedepends = zeal
+	depends = rofi
+	depends = zeal
+	optdepends = i3-wm: display man pages
 	provides = rofi-zeal
 	conflicts = rofi-zeal
-	source = git+https://github.com/Zeioth/rofi-zeal.git
-	md5sums = SKIP
+	source = rofi-zeal::git+https://github.com/Zeioth/rofi-zeal.git
+	sha256sums = SKIP
 
 pkgname = rofi-zeal-git
