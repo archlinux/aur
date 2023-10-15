@@ -1,8 +1,8 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=iptvnator-appimage
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IPTV player app, supports m3u+m3u8 playlists, favorites, TV guide, TV archive/catchup and more"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/4gray/iptvnator/"
@@ -20,22 +20,36 @@ sha256sums_armv7h=('4de76fe4a4d3d69a47286e1f7a86834dbf841ec1749a6584f201b0e6725a
 [ $CARCH = "x86_64" ] && _image="$(basename "${source_x86_64[0]}")"
 [ $CARCH = "aarch64" ] && _image="$(basename "${source_aarch64[0]}")"
 [ $CARCH = "armv7h" ] && _image="$(basename "${source_armv7h[0]}")"
-
-prepare() {
-  cd "${srcdir}"
-  chmod +x "${_image}"
-  ./"${_image}" --appimage-extract
-  sed -i -e "s/AppRun/\/usr\/bin\/iptvnator/" "${srcdir}/squashfs-root/iptvnator.desktop"
-  cat > iptvnator.sh <<EOF
-#!/bin/sh
-/opt/iptvnator/iptvnator.AppImage "\$@"
-EOF
-}
+_filename="${_image}"
+_squashfs_desktop_file="iptvnator.desktop"
+_desktop_file="/usr/share/applications/iptvnator.desktop"
+_appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
+_install_path="/opt/appimages/${_appimage_name}"
 
 package() {
-  install -Dm755 "${srcdir}/${_image}" "${pkgdir}/opt/iptvnator/iptvnator.AppImage"
-  install -Dm755 "${srcdir}/iptvnator.sh" "${pkgdir}/usr/bin/iptvnator"
-  install -dm755 "${pkgdir}/usr/share/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-  install -Dm644 "${srcdir}/squashfs-root/iptvnator.desktop" "${pkgdir}/usr/share/applications/iptvnator.desktop"
+	chmod +x "${_filename}"
+	mkdir -p squashfs-root/usr/share/icons/hicolor/{1024x1024,512x512,16x16}/apps
+	./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/iptvnator.png"
+	./${_filename} --appimage-extract iptvnator.desktop
+	sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" "squashfs-root/${_squashfs_desktop_file}"
+
+	# Install icons
+	install -dm755 "${pkgdir}/usr/share/icons"
+	cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
+	chmod -R 755 "${pkgdir}/usr/share/icons"
+	find "${pkgdir}/usr/share/icons" -type f -name "iptvnator.png" -exec chmod 644 {} \;
+
+	# Install .desktop file and image file
+	# Disable appimage desktop integration: https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration
+	# Disable AppimageLauncher integration prompt
+	# https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
+	sed -i -E "s|Exec=${_install_path}|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/iptvnator|" "squashfs-root/${_squashfs_desktop_file}"
+	install -Dm644 "squashfs-root/${_squashfs_desktop_file}" "${pkgdir}/${_desktop_file}"
+	install -Dm755 "${_filename}" "${pkgdir}/${_install_path}"
+	mkdir "${pkgdir}/usr/bin/" && chmod 755 "${pkgdir}/usr/bin/"
+	ln -s "${_install_path}" "${pkgdir}/usr/bin/iptvnator"
+
+	# Disable AppImage integration prompt
+	# https://github.com/electron-userland/electron-builder/issues/1962
+	install -dm755 "${pkgdir}/usr/share/appimagekit"
 }
