@@ -4,7 +4,7 @@ _majorver=21
 _minorver=0
 _pointver=0
 _buildver=0
-_completever=$_majorver.$_minorver.$_pointver
+_completever=$_majorver.$_minorver.$_pointver.$_buildver
 _updatever=35
 _jdkver=$_completever.u$_updatever
 

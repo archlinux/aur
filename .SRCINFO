@@ -1,6 +1,6 @@
 pkgbase = jdk-microsoft-openjdk
 	pkgdesc = Microsoft Build of OpenJDK
-	pkgver = 21.0.0.u35
+	pkgver = 21.0.0.0.u35
 	pkgrel = 1
 	url = https://www.microsoft.com/openjdk
 	install = install_jdk-microsoft-openjdk.sh
@@ -16,20 +16,20 @@ pkgbase = jdk-microsoft-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and fell
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.0.u35
-	provides = jre-openjdk-headless=21.0.0.u35
+	provides = jre21-openjdk-headless=21.0.0.0.u35
+	provides = jre-openjdk-headless=21.0.0.0.u35
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.0.u35
-	provides = jre-openjdk=21.0.0.u35
+	provides = jre21-openjdk=21.0.0.0.u35
+	provides = jre-openjdk=21.0.0.0.u35
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.0.u35
-	provides = jdk-openjdk=21.0.0.u35
-	provides = openjdk21-src=21.0.0.u35
-	provides = openjdk-src=21.0.0.u35
-	noextract = microsoft-jdk-21.0.0-linux-x64.tar.gz
-	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.0-linux-x64.tar.gz
+	provides = jdk21-openjdk=21.0.0.0.u35
+	provides = jdk-openjdk=21.0.0.0.u35
+	provides = openjdk21-src=21.0.0.0.u35
+	provides = openjdk-src=21.0.0.0.u35
+	noextract = microsoft-jdk-21.0.0.0-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.0.0-linux-x64.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
