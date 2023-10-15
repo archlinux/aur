@@ -64,15 +64,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd $_srcname
 
-  # prevent sphinx errors
-  sed -E \
-    -e 's@^\s+(kvm\.mitigate_smt_rsb=1)$@   \1@' \
-    -i "Documentation/admin-guide/hw-vuln/cross-thread-rsb.rst"
-
-  sed -E \
-    -e 's@\t@    @g' \
-    -i "Documentation/ABI/testing/sysfs-bus-nvdimm"
-
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
