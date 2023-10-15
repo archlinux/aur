@@ -3,7 +3,7 @@
 pkgbase=xbydriver-appimage
 pkgname=(xbydriver-{bin,appimage})
 pkgver=3.11.26
-pkgrel=1
+pkgrel=2
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gaozhangmin/aliyunpan"
@@ -63,9 +63,9 @@ Comment=小白羊云盘
 Categories=Network;
 EOF
     local _icon
-    for _icon in 16 32 64 128 256; do
-        install -Dm0644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/xbyyunpan.png" \
-                    -t  "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps"
+    for _icon in 24 64 256; do
+        install -Dm0644 "${pkgdir}/opt/xbydriver/resources/images/icon_${_icon}x${_icon}.png" \
+                    "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/xbyyunpan.png"
     done
 
     rm -rf "${pkgdir}/usr/share/icons/hicolor/0x0/apps/xbyyunpan.png"
