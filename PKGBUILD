@@ -3,7 +3,7 @@ _cargoname=daisycalc
 _exename=daisy
 
 pkgname=daisy
-pkgver=1.1.5
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="A high-precision terminal scientific calculator."
 url="https://git.betalupi.com/Mark/daisy"
@@ -11,11 +11,11 @@ license=('GPL')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargoname/$_cargoname-$pkgver.crate")
-sha1sums=('b2fd2aeec6307ec58b8cefccb980ed40a0976c3a')
+sha1sums=('513133503270e3ba60305bae08f14b2b6721e387')
 
 # Run before commiting:
 # Generate checksums: `makepkg -g`
-# Generate .SRCINFO: `makepkg --printsrcinfo > .SRCINFO``
+# Generate .SRCINFO: `makepkg --printsrcinfo > .SRCINFO`
 
 
 prepare() {
