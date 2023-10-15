@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-display-brightness-ddcutil-git
 _uuid=display-brightness-ddcutil@themightydeity.github.com
 pkgver=r173.ea8a820
-pkgrel=1
+pkgrel=2
 pkgdesc="Display brightness slider for gnome shell using ddcutil backend"
 arch=('any')
 url="https://github.com/daitj/gnome-display-brightness-ddcutil"
@@ -29,7 +29,7 @@ package() {
   cd "$srcdir/gnome-display-brightness-ddcutil"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "dist/${_uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   install -Dm644 README.md screenshot.jpg -t "$pkgdir/usr/share/doc/${pkgname%-git}/"
 
