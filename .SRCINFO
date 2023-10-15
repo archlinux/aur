@@ -1,14 +1,14 @@
 pkgbase = home-assistant-hacs
-	pkgdesc = HACS gives you a powerful UI to handle downloads of all your custom needs
-	pkgver = 1.28.4
+	pkgdesc = Home Assistant Community Store
+	pkgver = 1.33.0
 	pkgrel = 1
-	url = https://hacs.xyz/
+	url = https://hacs.xyz
 	arch = any
-	license = AGPL
-	makedepends = unzip
-	depends = python-aiofiles
-	noextract = hacs.zip
-	source = hacs.zip::https://github.com/hacs/integration/releases/download/1.28.4/hacs.zip
-	sha256sums = 0cfc5e07ab5c24373ff098504592802ba5979005f7f428f7bc99bef863adf9ff
+	license = MIT
+	depends = home-assistant
+	noextract = home-assistant-hacs-1.33.0.zip
+	source = home-assistant-hacs-1.33.0.zip::https://github.com/hacs/integration/releases/download/1.33.0/hacs.zip
+	sha512sums = 0e542a125e2340492b9792ba501e2c500fd3524d59b63e5c714b3f362a9c90871969452b3f15359d77cbf7a75d7e216986b301b740203dddde47e373303982e0
+	b2sums = fbd5040b4771d183cd46e382c1bf9fb3a7846cb828d7736e2cd0495107f4551f3aed38a445e6b7696f4cef6dec926f682e5fbdb9ca82de54ae3ffe86182c2d8d
 
 pkgname = home-assistant-hacs

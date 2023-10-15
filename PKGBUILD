@@ -1,40 +1,24 @@
-# Maintainer: Ewout van Mansom <ewout@vanmansom.name>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=home-assistant-hacs
-pkgdesc='Customize Home Assistant by downloading different integrations and themes'
-pkgver=1.28.4
+pkgver=1.33.0
 pkgrel=1
-arch=(any)
-url='https://hacs.xyz/'
-license=(AGPL)
-depends=(
-  python-aiofiles
-)
-makedepends=(
-  unzip
-)
-_tag=1.28.4
-noextract=(
-  'hacs.zip'
-)
-source=(
-  "hacs.zip::https://github.com/hacs/integration/releases/download/${_tag}/hacs.zip"
-)
-sha256sums=('0cfc5e07ab5c24373ff098504592802ba5979005f7f428f7bc99bef863adf9ff')
+pkgdesc='Home Assistant Community Store'
+arch=('any')
+url='https://hacs.xyz'
+license=('MIT')
+depends=('home-assistant')
+noextract=("$pkgname-$pkgver.zip")
+source=("$pkgname-$pkgver.zip::https://github.com/hacs/integration/releases/download/$pkgver/hacs.zip")
+sha512sums=('0e542a125e2340492b9792ba501e2c500fd3524d59b63e5c714b3f362a9c90871969452b3f15359d77cbf7a75d7e216986b301b740203dddde47e373303982e0')
+b2sums=('fbd5040b4771d183cd46e382c1bf9fb3a7846cb828d7736e2cd0495107f4551f3aed38a445e6b7696f4cef6dec926f682e5fbdb9ca82de54ae3ffe86182c2d8d')
 
-prepare() {
-  cd "$srcdir"
-
-  unzip -o hacs.zip -d "$pkgname-$pkgver"
-}
-
-_hapath="/var/lib/private/hass/"
 package() {
-  cd "$pkgname-$pkgver"
+  local hacs_path="$pkgdir/var/lib/private/hass/custom_components/hacs"
 
-  install -dm700 "$pkgdir/var/lib/private"
-  install -dm755 "$pkgdir/$_hapath/custom_components"
-  cp -dr --preserve=mode,timestamp . "$pkgdir/$_hapath/custom_components/hacs"
+  # ensure private has 0700 perms
+  install -vdm700 "$pkgdir/var/lib/private"
+  install -vd "$hacs_path"
+
+  bsdtar --extract --file "$pkgname-$pkgver.zip" --directory "$hacs_path"
 }
-
-# vim: ts=2 sw=2 ft=PKGBUILD et:
