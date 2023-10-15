@@ -1,4 +1,4 @@
-# Maintainer: Maki <mxmcube@gmail.com>
+# Maintainer: Maki <maki@hotmilk.space>
 
 pkgname=msdfgen-git
 pkgdesc="Multi-channel signed distance field generator"
