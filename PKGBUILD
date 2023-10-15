@@ -8,8 +8,7 @@ url="https://github.com/felipealfonsog/TermPDFViewer"
 license=('MIT')
 depends=('gcc' 'python-pip' 'python-pymupdf')
 
-source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz"
-        "term-pdf-wrapper.c")
+source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
 
 sha256sums=('05c5e6efe954cfe3765f60a94c3c779725c5074b9e33fa1aa4f8d627082494c7')
 
