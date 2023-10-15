@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-battery-health-charging-git
 _uuid=Battery-Health-Charging@maniacx.github.com
 pkgver=r295.72edc97
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension to maximize the battery life of laptops by setting their charging threshold/modes."
 arch=('any')
 url="https://github.com/maniacx/Battery-Health-Charging"
@@ -38,7 +38,7 @@ package() {
   cd "$srcdir/Battery-Health-Charging"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "${_uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
