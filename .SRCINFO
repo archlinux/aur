@@ -1,0 +1,25 @@
+pkgbase = wireguard-ui-bin
+	pkgdesc = A web user interface to manage your WireGuard setup.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/ngoduykhanh/wireguard-ui
+	install = wireguard-ui.install
+	arch = x86_64
+	license = MIT
+	depends = wireguard-tools
+	provides = wireguard-ui
+	conflicts = wireguard-ui
+	source = https://github.com/ngoduykhanh/wireguard-ui/releases/download/v0.5.2/wireguard-ui-v0.5.2-linux-amd64.tar.gz
+	source = wireguard-ui.service
+	source = 99-wg.conf
+	source = wgiptables.sh
+	source = wg-reload.path
+	source = wg-reload.service
+	md5sums = aa38b4b0950e9df0dcf3ddba87516f0a
+	md5sums = 9632dcff1438fdd29befaf0f4db1873c
+	md5sums = 70c4fc283f2195096c491f7be65d6342
+	md5sums = 1fe01c771e1faabcaca6a24c09f299ae
+	md5sums = 9efcd8b52477051ac3297b295e3a777e
+	md5sums = 66b402a7b0ac73787f744931302f3dac
+
+pkgname = wireguard-ui-bin
