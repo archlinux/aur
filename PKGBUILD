@@ -11,7 +11,7 @@ groups=('xfce4-devel')
 url='https://thunar.xfce.org'
 depends=('desktop-file-utils' 'exo' 'gtk3' 'hicolor-icon-theme' 'libgudev'
          'libexif' 'libnotify' 'libpng' 'libxfce4ui' 'libxfce4util')
-makedepends=('intltool' 'xfce4-panel' 'gtk-doc' 'gobject-introspection')
+makedepends=('xfce4-panel' 'gtk-doc' 'gobject-introspection')
 optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
             'xfce4-panel: trash applet'
             'tumbler: for thumbnail previews'

@@ -9,7 +9,6 @@ pkgbase = thunar-devel
 	arch = aarch64
 	groups = xfce4-devel
 	license = GPL
-	makedepends = intltool
 	makedepends = xfce4-panel
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
