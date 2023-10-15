@@ -1,35 +1,33 @@
 # Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=term-pdf
-pkgver=0.0.3.2
+pkgver=0.0.3.4
 pkgrel=1
 pkgdesc="TermPDF Viewer is an open-source PDF file viewer designed to run in the terminal."
 arch=('x86_64')
 url="https://github.com/felipealfonsog/TermPDFViewer"
 license=('MIT')
-depends=('python-pip' 'python-pymupdf')
+depends=('gcc' 'python-pip' 'python-pymupdf')
 
-source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
+source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz"
+        "term-pdf-wrapper.c")
 
-sha256sums=('686cf765766043001b8097e84d872abb4483117191374cc653a246322a95d266')
+sha256sums=('05c5e6efe954cfe3765f60a94c3c779725c5074b9e33fa1aa4f8d627082494c7')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  cd "$srcdir"/TermPDFViewer-v."$pkgver"
+  cp "$srcdir"/term-pdf-wrapper.c "$srcdir"/TermPDFViewer-v."$pkgver"/src/
 }
 
 build() {
   cd "$srcdir"/TermPDFViewer-v."${pkgver}"
 
-  # Instala pyinstaller si aún no está instalado
-  if ! command -v pyinstaller &>/dev/null; then
-    pip install pyinstaller
-  fi
-
-  # Compila termpdf.py en un binario
-  pyinstaller --onefile src/termpdf.py
+  gcc -o term-pdf-wrapper src/term-pdf-wrapper.c || { 
+    echo "Error: Compilation failed." 
+    exit 1
+  }
 }
 
 package() {
-  # Mueve el binario desde src/dist al directorio de destino
-  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/dist/termpdf "${pkgdir}/usr/bin/term-pdf"
+  # Mueve el binario desde src al directorio de destino
+  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/term-pdf-wrapper "${pkgdir}/usr/bin/term-pdf"
 }
