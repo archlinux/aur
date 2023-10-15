@@ -1,6 +1,6 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = python-onnxruntime
 	makedepends = cudnn
 	makedepends = nccl
 	options = debug
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.16.0
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.16.1
 	source = install-orttraining-files.diff
 	source = system-dnnl.diff
 	sha512sums = SKIP
