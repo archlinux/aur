@@ -2,8 +2,8 @@
 
 pkgname=litellm-ollama
 pkgver=3
-pkgrel=1
-pkgdesc='Setup service to run ollama models via litellm'
+pkgrel=2
+pkgdesc='Metapackage to setup ollama models with OpenAI API locally'
 arch=(any)
 license=(MIT)
 depends=(
@@ -24,7 +24,7 @@ source=(
 	'litellm-ollama.env'
 )
 
-sha512sums=('65c0438cb6c52ccafd6c9f9d4ae20a5cd35bceac9e5dac00cc9cdac30c16782eb6d4100bbc89e8868f25040b7527e0b30ad08385de5020a03e0e0cc99ab1e400'
+sha512sums=('931519edb0c099d7f5e34efb6e440bc491aa76f031cbae8f6ffb02e2717c63dcca92fa2ee4a72686e40b9b9928647549ed897a6dc466a342e333d16fbb192489'
             '7f738d1b9e297db69d884248b1a3dfc7acb1efa92403f20427a67332b34a4381fe4c5ad128f8ee6c67a6a3c7615edbba64b4ed91028e6ed7a204f0e30c7dad0b'
             'b9493c66cb699af763eb828fe54ed974d8bdc3e1fb5fd5aabb2bc0040f317088f28661b7964d23f3495fee6afbcf093334cb24cfa20d831ebf3bacb72c6e58c3'
             'ff9f5761112a6bc9a588588fa13ce552dd0d0f1e36873014a3b6aa07938caf6e61b9052b5aa4ce3f54239d6a53f42e26fb3e980250a08db09063be70d68070cd'

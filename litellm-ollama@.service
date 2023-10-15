@@ -21,6 +21,7 @@ ProtectKernelTunables=yes
 NoNewPrivileges=yes
 SystemCallArchitectures=native
 MemoryDenyWriteExecute=true
+# PrivateDevices=yes will stop ollama-cuda (or rocm, if available) from working correctly. Override this if necessary.
 PrivateDevices=yes
 ProtectControlGroups=true
 RestrictSUIDSGID=true
