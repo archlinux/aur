@@ -1,6 +1,6 @@
 pkgbase = perl-tap-formatter-camelcade
 	pkgdesc = Converts test events from TAP::Harness to the TeamCity format
-	pkgver = 2021.1
+	pkgver = 2023.1
 	pkgrel = 1
 	url = https://metacpan.org/release/TAP-Formatter-Camelcade
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = perl-tap-formatter-camelcade
 	depends = perl
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/H/HU/HURRICUP/TAP-Formatter-Camelcade-2021.1.tar.gz
-	sha256sums = 6b14237fd75c6070836f6cc4d6cc174fda5c1e36a22687d3f4ddee7053758673
+	source = https://cpan.metacpan.org/authors/id/H/HU/HURRICUP/TAP-Formatter-Camelcade-2023.1.tar.gz
+	sha256sums = 97019fa8d40c444e6ee50341759f93978625671805b01954e008ce01e9d2c532
 
 pkgname = perl-tap-formatter-camelcade
-
