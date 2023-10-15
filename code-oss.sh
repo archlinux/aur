@@ -44,11 +44,11 @@ main() {
 
 	is_wayland && {
 
-		in_array CODE_USER_FLAGS '^--ozone-platform=wayland$' \
-			|| CODE_USER_FLAGS+=('--ozone-platform=wayland')
+		in_array CODE_USER_FLAGS '^--ozone-platform-hint=auto$' \
+			|| CODE_USER_FLAGS+=('--ozone-platform-hint=auto')
 
-		in_array CODE_USER_FLAGS '^--enable-features=.*UseOzonePlatform' \
-			|| CODE_USER_FLAGS+=('--enable-features=UseOzonePlatform')
+		in_array CODE_USER_FLAGS '^--enable-features=.*WaylandWindowDecorations' \
+			|| CODE_USER_FLAGS+=('--enable-features=WaylandWindowDecorations')
 
 	}
 
