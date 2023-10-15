@@ -9,6 +9,7 @@ pkgbase = vegastrike-engine
 	makedepends = cmake
 	makedepends = boost
 	makedepends = gcc12
+	makedepends = lsb-release
 	depends = boost-libs
 	depends = python
 	depends = freeglut

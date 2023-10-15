@@ -12,7 +12,7 @@ depends=(boost-libs python freeglut gtk3 libvorbis openal sdl glu
 
          # namcap implicit depends
          glibc gcc-libs glib2 zlib libpng libglvnd expat libjpeg-turbo)
-makedepends=(git cmake boost gcc12)
+makedepends=(git cmake boost gcc12 lsb-release)
 source=("git+https://github.com/vegastrike/Vega-Strike-Engine-Source#tag=v${pkgver}"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/vegastrike-delete-include-eval.h.patch"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/vegastrike-std-cerr-fix.patch")
@@ -43,3 +43,6 @@ package() {
   rm -rf ${pkgdir}/usr/include
   rm -rf ${pkgdir}/usr/lib
 }
+
+# lsb-release as makedepends avoid issue if dpkg is installed, recognized as Debian.
+# Don't happen the same if rpm-tools is intalled
