@@ -1,7 +1,7 @@
 pkgbase = python-googlemaps
 	pkgdesc = Python client library for Google Maps Platform
-	pkgver = 4.6.0
-	pkgrel = 2
+	pkgver = 4.10.0
+	pkgrel = 1
 	url = https://github.com/googlemaps/google-maps-services-python
 	changelog = CHANGELOG.md
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-googlemaps
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-requests
-	source = python-googlemaps-4.6.0.tar.gz::https://github.com/googlemaps/google-maps-services-python/archive/v4.6.0.tar.gz
-	sha256sums = fd70fc848940cc3db652f20557de31feeb966065c6d1ca9c8967470867119ff6
+	source = python-googlemaps-4.10.0.tar.gz::https://github.com/googlemaps/google-maps-services-python/archive/v4.10.0.tar.gz
+	sha256sums = cc07f739731ba4e0a4586543ad14470695addff8f30840748b9c3b89e393aa36
 
 pkgname = python-googlemaps
