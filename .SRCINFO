@@ -1,0 +1,21 @@
+pkgbase = r-bg2
+	pkgdesc = Performs Bayesian GWAS analysis for non-Gaussian data using BG2
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BG2
+	arch = any
+	license = GPL3
+	depends = r-caret
+	depends = r-ga
+	depends = r-memoise
+	optdepends = r-biocstyle
+	optdepends = r-formatr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rrblup
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BG2_1.0.0.tar.gz
+	md5sums = 261572229e90f2182464a60b7e938b5b
+	sha256sums = e17b5bddb3afe5364045dbc1451f885decc9f229275dc03b91c54a49c99b3e62
+
+pkgname = r-bg2
