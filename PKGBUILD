@@ -10,7 +10,7 @@ depends=('gcc' 'python-pip' 'python-pymupdf')
 
 source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('4f571022736a88100a285cb1665952ba06d1a7a1c523b16555915fc7bef8f19a')
+sha256sums=('edadcca6626f9bd839816c72df90d331ecd8f1af0604628ea2d167eeb9548461')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
