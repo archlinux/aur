@@ -1,6 +1,6 @@
 pkgbase = r-quickjsr
 	pkgdesc = Interface for the 'QuickJS' Lightweight 'JavaScript' Engine
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=QuickJSR
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = r-quickjsr
 	depends = r-r6
 	depends = r-rcpp
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/QuickJSR_1.0.6.tar.gz
-	md5sums = cb5f14f10210e4e4b505746a433b76ea
-	sha256sums = d3d2def1b874745ee6d10c0694e07b8fcf4d972a7182ab7cb47ae3c0779409d8
+	source = https://cran.r-project.org/src/contrib/QuickJSR_1.0.7.tar.gz
+	md5sums = 30d1a647a5620252f313f93cb7b935f1
+	sha256sums = 3161c243fed64ea215084b44141bea9ee416fa1ef3910aeb78abe55f3d3e9893
 
 pkgname = r-quickjsr
