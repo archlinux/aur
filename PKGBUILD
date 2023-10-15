@@ -3,8 +3,8 @@
 # Contributor: sanduhrs <stefan.auditor@erdfisch.de>
 pkgname=gnome-shell-extension-caffeine-git
 _uuid=caffeine@patapon.info
-pkgver=50.r2.g3c9a447
-pkgrel=2
+pkgver=50.r5.g8bda75e
+pkgrel=1
 pkgdesc="Disable the screensaver and auto suspend"
 arch=('any')
 url="https://github.com/eonpatapon/gnome-shell-extension-caffeine"
@@ -30,7 +30,7 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
