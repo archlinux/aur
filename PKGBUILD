@@ -3,7 +3,7 @@
 _pkgname=cwtch
 pkgname=$_pkgname-bin
 
-_pkgver=1.12.0
+_pkgver=1.13.1
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 
@@ -17,7 +17,7 @@ optdepends=(
     'tor: use system tor instead of packaged'
 )
 source_x86_64=("$url/releases/$_pkgname-v${_pkgver%.0}/$_pkgname-v$_pkgver.tar.gz")
-sha512sums_x86_64=('2cf58bbb8de52b234582aac9b82dc68f4eb39b975a8ad3b797ed6ac955a021fdc71628c833de140c90eaafd381f95ab6bb914e63e9264f6ca3f830006e238556')
+sha512sums_x86_64=('06662539ebbc0c338ce9331b1a9da5c6d0b06c3a6db2b7896b7a14ab6263325b237e5e76f342e3ff152234c2180c3e92cc6985a5e33e5d0726f281384b1b029d')
 
 package() {
     cd "$srcdir/$_pkgname"
