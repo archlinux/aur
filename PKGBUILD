@@ -3,10 +3,10 @@
 _pkgname=autobindings
 pkgname=cwtch-$_pkgname-git
 
-pkgver=0.0.5.r2.g3029ed6
+pkgver=0.0.10.r0.g7ddf09c
 pkgrel=1
 
-pkgdesc="Automatically-generated C bindings for the Cwtch library"
+pkgdesc="Automatically-generated C bindings for the Cwtch library (git)"
 provides=('libcwtch-go' 'cwtch-autobindings')
 conflicts=('libcwtch-go' 'cwtch-autobindings')
 depends=('tor')
@@ -49,5 +49,5 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm0644 build/linux/libCwtch.h -t "$pkgdir/usr/include/"
-    install -Dm0644 build/linux/libCwtch.so -t "$pkgdir/usr/lib/"
+    install -Dm0644 build/linux/libCwtch.x64.so "$pkgdir/usr/lib/libCwtch.so"
 }
