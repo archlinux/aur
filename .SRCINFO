@@ -1,7 +1,7 @@
 pkgbase = pixelflasher
 	pkgdesc = Pixel phone flashing GUI utility with features.
 	pkgver = 5.8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badabing2005/PixelFlasher
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,7 @@ pkgbase = pixelflasher
 	depends = python-bsdiff4
 	depends = python-clipboard
 	depends = python-lz4
+	depends = python-psutil
 	depends = zlib
 	optdepends = android-tools
 	optdepends = scrcpy

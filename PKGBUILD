@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
 pkgver=5.8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('x86_64')
 url="https://github.com/badabing2005/PixelFlasher"
 license=('GPL3')
 depends=('glibc' 'hicolor-icon-theme' 'python-bsdiff4' 'python-clipboard'
-         'python-lz4' 'zlib')
+         'python-lz4' 'python-psutil' 'zlib')
 makedepends=('pyinstaller' 'python-darkdetect' 'python-httplib2' 'python-markdown'
              'python-protobuf' 'python-requests' 'python-six' 'python-wxpython')
 optdepends=('android-tools' 'scrcpy')
