@@ -3,15 +3,15 @@
 _plugin_uri='http://geontime.com/geonkick'
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=2.10.0.r1199.990cb7ba
+pkgver=2.10.2.r34.228bba0
 pkgrel=1
 pkgdesc='A free software percussion synthesizer (git version)'
 arch=(x86_64)
-url='https://gitlab.com/geonkick/geonkick'
-license=(GPL3)
+url='https://geonkick.org'
+license=(GPL-3.0-or-later)
 groups=(lv2-plugins pro-audio vst3-plugins)
 depends=(gcc-libs glibc cairo hicolor-icon-theme libx11 libsndfile)
-makedepends=(cmake git jack lv2 rapidjson sord)
+makedepends=(cmake git jack lv2 rapidjson sord vst3sdk)
 checkdepends=(lv2lint)
 optdepends=(
   'jack: for stand-alone application'
@@ -20,7 +20,7 @@ optdepends=(
 )
 provides=($_pkgname $_pkgname-common $_pkgname-lv2 $_pkgname-standalone $_pkgname-vst3)
 conflicts=($_pkgname $_pkgname-common $_pkgname-lv2 $_pkgname-standalone $_pkgname-vst3)
-source=("$_pkgname::git+https://gitlab.com/geonkick/geonkick.git")
+source=("$_pkgname::git+https://gitlab.com/Geonkick-Synthesizer/geonkick.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,15 +35,13 @@ build() {
     -S $_pkgname \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DGKICK_VST3=ON \
+    -DVST3_SDK_PATH=/usr/src/vst3sdk \
     -W no-dev
   cmake --build $_pkgname-build
 }
 
 check() {
-  cp -av $_pkgname-build/plugin/lv2/*.so $_pkgname/plugin/lv2/$_pkgname.lv2/
-  lv2lint -Mpack -I $_pkgname/plugin/lv2/$_pkgname.lv2/ "$_plugin_uri"
-  rm $_pkgname/plugin/lv2/$_pkgname.lv2/*.so
+  lv2lint -S nowarn -M pack -I $_pkgname/src/plugin/lv2/$_pkgname.lv2 "$_plugin_uri"
 }
 
 
@@ -54,7 +52,7 @@ package() {
   install -vDm 644 data/$_pkgname.desktop \
     -t "$pkgdir"/usr/share/applications
   # documentation
-  install -vDm 644 README.md NEWS.md \
+  install -vDm 644 AUTHORS README.md CHANGELOG.md \
     -t "$pkgdir"/usr/share/doc/$pkgname
   install -vDm 644 doc/*.{md,png} \
     -t "$pkgdir"/usr/share/doc/$pkgname
