@@ -1,0 +1,4 @@
+*.sh
+*.tar.gz
+*.tar.zst
+ally-motion-evdev

@@ -1,0 +1,1 @@
+ACTION=="add|change", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{id/vendor}=="108c", ATTRS{id/product}=="0323", MODE="0660", TAG+="uaccess"

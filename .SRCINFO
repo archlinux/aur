@@ -1,0 +1,18 @@
+pkgbase = ally-motion-evdev-git
+	pkgdesc = Tool to redirect ROG Ally accelerometer and gyro data from iio to evdev for use in games and applications.
+	pkgver = r114.b9b9aab
+	pkgrel = 1
+	url = https://github.com/KWottrich/ally-motion-evdev
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	source = git+https://github.com/KWottrich/ally-motion-evdev.git
+	source = ally-motion-evdev.service
+	source = 65-bmi323.rule
+	sha256sums = SKIP
+	sha256sums = a45e68ebac79aef1f6ff2381834369702f7f33cb3ddd2d2079fa9e9487fefd50
+	sha256sums = 6954a9e1c614be8ff7ebf5456713d31735f1d3b0dfc92365e2c378ca3e99de6d
+
+pkgname = ally-motion-evdev-git

@@ -1,0 +1,10 @@
+[Unit]
+Description=Tool to redirect ROG Ally accelerometer and gyro data from iio to evdev for use in games and applications
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ally-motion-evdev -s
+
+[Install]
+WantedBy=multi-user.target
