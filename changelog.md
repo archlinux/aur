@@ -1,3 +1,16 @@
+## GE-Proton8-19
+
+HOTFIX:
+
+Added workaround that fixes World of Warships login hang introduced in upstream proton since GE-Proton8-5:
+[ValveSoftware#333 (comment)](https://github.com/ValveSoftware/Proton/issues/333#issuecomment-1763560466)
+
+## GE-Proton8-18
+
+HOTFIX:
+
+For some reason the Alan Wake protonfix was missing from the last release even though it was noted in the release notes. This is a small hotfix to actually add it this time.
+
 ## GE-Proton8-17
 
 - added protonfix for Alan Wake (thanks FozziHi)
