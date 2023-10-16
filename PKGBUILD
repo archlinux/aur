@@ -1,7 +1,7 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=comtrya
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="A tool to help provision a fresh OS with the packages and configuration (dotfiles) you need to become productive again."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6592c044cd77ea7677eaed4e3d74aae2b0d0090b51890f26dc94531d16304989')
+sha256sums=('75fb99b528a0ccc132d1c6ef29c2719aad75148223658cf13d980f8c80709682')
 
 build() {
   cd "$pkgname-$pkgver"
