@@ -22,7 +22,7 @@ source=(
 	com.ayugram.desktop.desktop
 	tg.protocol
 	$url/raw/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
-	https://git.killarious.org/ayugram-releases/archlinux-bin/-/raw/4.10.2/ayugram-desktop?ref_type=tags
+	https://git.killarious.org/ayugram-releases/archlinux-bin/-/raw/4.10.2/ayugram-desktop
 )
 
 # Checksums
@@ -49,7 +49,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/applications/"
 
 	# Program
-	install -Dm755 "$srcdir/ayugram-desktop?ref_type=tags:ayugram-desktop" "$pkgdir/usr/bin/ayugram-desktop"
+	install -Dm755 "$srcdir/ayugram-desktop" "$pkgdir/usr/bin/ayugram-desktop"
 
 	# Remove RPATH informations
 	chrpath --delete "$pkgdir/usr/bin/ayugram-desktop"

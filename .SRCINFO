@@ -58,7 +58,7 @@ pkgbase = ayugram-desktop-bin
 	source = https://github.com/AyuGram/AyuGramDesktop/raw/dev/Telegram/Resources/art/icon128.png
 	source = https://github.com/AyuGram/AyuGramDesktop/raw/dev/Telegram/Resources/art/icon256.png
 	source = https://github.com/AyuGram/AyuGramDesktop/raw/dev/Telegram/Resources/art/icon512.png
-	source = https://git.killarious.org/ayugram-releases/archlinux-bin/-/raw/4.10.2/ayugram-desktop?ref_type=tags
+	source = https://git.killarious.org/ayugram-releases/archlinux-bin/-/raw/4.10.2/ayugram-desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
