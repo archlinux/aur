@@ -2,7 +2,7 @@
 
 pkgname=('php-memcache' 'php-legacy-memcache')
 pkgver=8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Memcache module for PHP"
 arch=('x86_64')
 url="https://pecl.php.net/package/memcache"

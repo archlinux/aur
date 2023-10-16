@@ -1,0 +1,23 @@
+pkgbase = php-memcache
+	pkgdesc = Memcache module for PHP
+	pkgver = 8.2
+	pkgrel = 2
+	url = https://pecl.php.net/package/memcache
+	arch = x86_64
+	license = PHP
+	checkdepends = memcached
+	makedepends = php
+	makedepends = php-legacy
+	source = https://pecl.php.net/get/memcache-8.2.tgz
+	sha256sums = b3f0640eacdeb9046c6c86a1546d7fb8a4e9f219e5d9a36a287e59b2dd8208e5
+
+pkgname = php-memcache
+	install = php-memcache.install
+	depends = php
+	backup = etc/php/conf.d/memcache.ini
+
+pkgname = php-legacy-memcache
+	pkgdesc = Memcache module for PHP Legacy
+	install = php-legacy-memcache.install
+	depends = php-legacy
+	backup = etc/php-legacy/conf.d/memcache.ini
