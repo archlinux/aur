@@ -1,16 +1,14 @@
 # Maintainer: westpain <homicide@disroot.org>
 # Co-Maintainer: rikki48 <xdxdxdxdlmao@mail.ru>
 # Switched to rikki48's PKGBUILD because it was more stable than mine, his repo: https://github.com/Dr4iv3rNope/ayugramdesktop-git
-# implement a mandatory `pkgver()` function as per [*VCS package
-# guidelines*](wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function) is currently impossbile, «==> ERROR: pkgver is not allowed to be empty.»
 pkgname=ayugram-desktop-git
-pkgver=4.10.2.464a36b
+pkgver=4.10.2.r4.g464a36b51
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app with ToS breaking features in mind'
 arch=('x86_64' 'aarch64')
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans' 'sqlite3'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans' 'sqlite3' 'glibmm-2.68'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
          'openssl' 'protobuf')
@@ -58,7 +56,6 @@ source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev"
         "telegram-desktop-cld3::git+https://github.com/google/cld3.git"
         "cppgir::git+https://gitlab.com/mnauw/cppgir.git"
         "cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git"
-        "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
         "fix-arch-linux-desktop-portal.patch"
         "workaround-for-dbusactivatable.patch"
         "qt_scale_factor-fix.patch_"
@@ -133,19 +130,13 @@ prepare() {
 }
 
 build() {
-    # Telegram is using unstable glibmm, so we need to compile it
-    meson setup -D maintainer-mode=true --default-library static --prefix "$srcdir/glibmm" glibmm-2.77.0 glibmm-build
-    meson compile -C glibmm-build
-    meson install -C glibmm-build
-
     cd "$srcdir/tdesktop"
 
-    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig:$srcdir/glibmm/lib/pkgconfig'
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     cmake \
         -B build \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_PREFIX_PATH="$srcdir/glibmm" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=2040 \
         -DTDESKTOP_API_HASH=b18441a1ff607e10a989891a5462e627 \
@@ -158,6 +149,11 @@ build() {
 package() {
     cd "$srcdir/tdesktop"
     DESTDIR=$pkgdir ninja -C build install
+}
+
+pkgver() {
+    cd "$srcdir/tdesktop"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 sha512sums=('SKIP'
@@ -197,7 +193,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-	    'SKIP'
             'ec383da9ec6a0dbca76257cc0dfd810563ae37d0ae8af1356202b47fedb1467d7f218083ecb68a031945dc8a3e6784354c2e633a7f357190b4c57fd31275f68f'
             '7003e5c41b0bd15b064d0e1ebad849f87a4237de64a830419794489fefc133a031802225b0718e3881c7fbc3ab00e08cfb38990612fb691f7ef65f0df1a6dd1a'
             '7ce670334cf724761ca88071bf3dc475f765de48aa145e6d15d11cce8471e76f57e8889c3b06d7e9d4f376da5b4f224c1a2b774cf46e95239da427d34ba7497d')
