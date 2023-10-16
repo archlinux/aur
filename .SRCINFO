@@ -1,17 +1,17 @@
 pkgbase = giada-appimage
 	pkgdesc = An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians.
-	pkgver = 0.25.1
-	pkgrel = 3
+	pkgver = 0.26.0
+	pkgrel = 1
 	url = https://www.giadamusic.com
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = giada=0.25.1
+	provides = giada=0.26.0
 	conflicts = giada
 	options = !strip
-	source = giada-0.25.1.AppImage::https://www.giadamusic.com/data/Giada-0.25.1-x86_64.AppImage
-	sha256sums = 530a577c11677fa1f6844ebca8ac249e0ca7a92e4919bbd34f9c6f2367e038da
+	source = giada-0.26.0.AppImage::https://www.giadamusic.com/data/Giada-0.26.0-x86_64.AppImage
+	sha256sums = a846511f3f391d5fc35edeb12fec1c6e8be580c51fc3d8c93fdab4af6457f221
 
 pkgname = giada-appimage

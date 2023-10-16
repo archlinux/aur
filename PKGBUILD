@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=giada-appimage
 _pkgname=Giada
-pkgver=0.25.1
-pkgrel=3
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians."
 arch=('x86_64')
 url="https://www.giadamusic.com"
@@ -14,7 +14,7 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/data/${_pkgname}-${pkgver}-${CARCH}.AppImage")
-sha256sums=('530a577c11677fa1f6844ebca8ac249e0ca7a92e4919bbd34f9c6f2367e038da')
+sha256sums=('a846511f3f391d5fc35edeb12fec1c6e8be580c51fc3d8c93fdab4af6457f221')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
