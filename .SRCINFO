@@ -1,4 +1,4 @@
-pkgbase = mutter
+pkgbase = mutter-mobile
 	pkgdesc = A window manager for GNOME
 	pkgver = 45.rc.r88.g0f08f5a
 	pkgrel = 1

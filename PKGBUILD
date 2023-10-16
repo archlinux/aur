@@ -3,7 +3,6 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 # Contributor: raihan2000 <raihan1999ahamed@gmail.com>
 
-pkgbase=mutter
 pkgname=mutter-mobile
 pkgdesc="A window manager for GNOME"
 pkgver=45.rc.r88.g0f08f5a
