@@ -2,8 +2,8 @@
 # -*- sh -*-
 
 pkgname='python-jetforce'
-_pkgname=${pkgname##python-}
-pkgver=0.10.0
+_pkgname="${pkgname##python-}"
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='An experimental Gemini server written in Python'
 arch=('any')
@@ -37,7 +37,7 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   for fname in {CHANGELOG,README}.md; do
     install -Dm0644 "$fname" "$pkgdir/usr/share/doc/$pkgname/$fname"
@@ -45,10 +45,10 @@ package() {
 }
 
 sha256sums=(
-  '9b0d5a1810810af38aca0511dea8c9096715d2349db357cabbbbc31d327bba4c'
+  'b6e4961cf2b3d1ae9d11b8a66cd7f3b7fd04db263cba38d6150af42fa8175dc8'
 )
 b2sums=(
-  '68d3b0fc678ffafd74ce39c279753750a15b2bc8f33646f5537e2fa2fa0bfc65a62d1adb5e0ec3155d57f341cd9235317296a91b4c59d132671cff79ee8bcdf2'
+  '36eafdd2bcc1661817da147cfb6699c214e079109d894f0588ad872d68d4663af515a7d99fe60f7923a72195d06db1ed846a2f4c4e8155f164a4d8349a26d04f'
 )
 
 # eof
