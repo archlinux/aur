@@ -1,5 +1,17 @@
 # Changelog
 
+## Version 0.9.12
+
+* Bugfix for NeurIPS provider
+* Bugfix for IACR provider
+* Bugfix for PubMed provider
+* Bugfix for `remarkable_dir` argument (#131)
+* Disable SagePub, ScienceDirect, and Taylor & Francis providers due to
+  CloudFlare blocking automated access
+* Disable CiteSeerX due to incomplete results when fetching metadata
+* Improve instructions in the readme
+* Remove `cloudscraper` dependency
+
 ## Version 0.9.11
 
 * Bugfix for SagePub provider
