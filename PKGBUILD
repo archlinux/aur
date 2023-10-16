@@ -28,7 +28,6 @@ depends=(cairo
          opengl-driver
          pango
          pixman
-         pixman
          polkit
          seatd
          systemd-libs
