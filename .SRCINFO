@@ -1,7 +1,7 @@
 pkgbase = python-numpy
 	pkgdesc = Scientific tools for Python
-	pkgver = 1.26.0
-	pkgrel = 3
+	pkgver = 1.26.1
+	pkgrel = 1
 	url = https://www.numpy.org/
 	arch = x86_64
 	license = custom
@@ -17,7 +17,7 @@ pkgbase = python-numpy
 	depends = lapack
 	depends = python
 	optdepends = blas-openblas: faster linear algebra
-	source = https://github.com/numpy/numpy/releases/download/v1.26.0/numpy-1.26.0.tar.gz
-	sha512sums = 0d500c623b274a219740c78ae2febb32a2f167016a9ff529678526e6b3e89a5b732c41defa23460a5da6f7f89d4a7d827f44fa9a1334c78e204b00ce164fb40c
+	source = https://github.com/numpy/numpy/releases/download/v1.26.1/numpy-1.26.1.tar.gz
+	sha512sums = abe5919029fc66961e8f44fdd503b54c291ce75b0d95e3f8bb61ee39a25d62142fbece5734fd7e9cbf65511f9d746fa61796f0d68e6dc2816c0e7747e286e505
 
 pkgname = python-numpy

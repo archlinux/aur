@@ -4,8 +4,8 @@
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname=python-numpy
-pkgver=1.26.0
-pkgrel=3
+pkgver=1.26.1
+pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
@@ -15,14 +15,14 @@ optdepends=('blas-openblas: faster linear algebra')
 makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'gcc-fortran' 'cython')
 checkdepends=('python-pytest' 'python-hypothesis')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha512sums=('0d500c623b274a219740c78ae2febb32a2f167016a9ff529678526e6b3e89a5b732c41defa23460a5da6f7f89d4a7d827f44fa9a1334c78e204b00ce164fb40c')
+sha512sums=('abe5919029fc66961e8f44fdd503b54c291ce75b0d95e3f8bb61ee39a25d62142fbece5734fd7e9cbf65511f9d746fa61796f0d68e6dc2816c0e7747e286e505')
 
 build() {
   cd numpy-$pkgver
   CFLAGS+=" -ffat-lto-objects" \
   CXXFLAGS+=" -ffat-lto-objects" \
   python -m build --wheel --no-isolation \
-    -Csetup-args="-Dblas=blas" \
+    -Csetup-args="-Dblas=cblas" \
     -Csetup-args="-Dlapack=lapack"
 }
 
