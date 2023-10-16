@@ -1,36 +1,44 @@
-# Contributor: Rorschach <r0schach@lavabit.com>
+# Contributor: prurigro <prurigro at gmail dot com>
+# Contributor: Rorschach <r0schach at lavabit dot com>
 # Maintainer:  max.bra <max dot bra at alice dot it>
 
 pkgname=ipscan
 pkgver=3.9.1
-_pkgintver=3.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.'
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="https://angryip.org/"
-depends=('java-runtime>=11')
+url='https://angryip.org'
+depends=('java-runtime')
+makedepends=(jdk17-openjdk)
 
-[[ $CARCH == "i686" ]] && _intarch=linux
-[[ $CARCH == "x86_64" ]] && _intarch=linux64
+source=(ipscan ipscan.desktop build.gradle.patch \
+  "https://github.com/angryip/${pkgname}/archive/refs/tags/${pkgver}.zip")
 
-source=(ipscan.png ipscan ipscan.desktop)
-source_i686+=(https://github.com/angryip/ipscan/releases/download/$_pkgintver/ipscan-$_intarch-$_pkgintver.jar)
-source_x86_64+=(https://github.com/angryip/ipscan/releases/download/$_pkgintver/ipscan-$_intarch-$_pkgintver.jar)
+sha512sums=('e2caf62412c35a7a29128d0ae176aca1e4a45cf81e44b76e4bb23ad1c0633fa8833d674d7d514942a170ab54223b6c4a93ab458f2736107e7bbe9a5e806a7c5e'
+            'c17db5e4ac90af8675e9ac2a8e77f1322beb8bacb578a288bcfbf8da67270004ec40314b2793ea8ed8eeeeb64f9c03b3f80694e38c55be9d213486b825689a0f'
+            '8ec4aae1b2226af984e58acd20ddc7d78268ab53a1f39cb6c85143741638727cf94794597bb9755483968c5f93e37cc96c33c61527529c074782f9447914399a'
+            '0b09e252f56ac6632a377a6757e9b3e1b07b12229112f3c3cc9faf15380d93309ef028e8a5eb2650c061756fbeca453440518aff396f52aa700e37f1c82e3076')
 
-md5sums=('59de9b8055fe037c77bf8339eee31b85'
-         '5b1c941c32a444803677a2061aa55a70'
-         'b9af5f626689374ff6018b150aada64d')
-md5sums_i686=('140fa1898aae905535085a38fff9fa91')
-md5sums_x86_64=('140fa1898aae905535085a38fff9fa91')
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch < ../build.gradle.patch
+  sed -i "s|^version = .*|version = '${pkgver}'|" build.gradle
+  sed -i -E "s|^( *'Version':) version,|\1 '${pkgver}',|g" build.gradle
+}
 
-noextract=($(for i in ${source[@]}; do basename $i; done) ipscan-$_intarch-$_pkgintver.jar)
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  unset _JAVA_OPTIONS
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
+  GRADLE_USER_HOME="${srcdir}" ./gradlew current
+}
 
 package() {
-  cd "$srcdir"
-  install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm644 $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -Dm644 $pkgname-$_intarch-$_pkgintver.jar $pkgdir/usr/share/java/$pkgname/$pkgname-$_intarch-$_pkgintver.jar
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 resources/images/icon256.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 build/libs/ipscan-*-${pkgver}.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 }
 
