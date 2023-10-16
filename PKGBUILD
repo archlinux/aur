@@ -11,6 +11,7 @@ license=('GPL2')
 url='https://angryip.org'
 depends=('java-runtime')
 makedepends=(jdk17-openjdk)
+conflicts=('ipscan-bin ipscan-git')
 
 source=(ipscan ipscan.desktop build.gradle.patch \
   "https://github.com/angryip/${pkgname}/archive/refs/tags/${pkgver}.zip")
