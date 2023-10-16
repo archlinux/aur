@@ -10,11 +10,11 @@ makedepends=('yarn' 'npm' 'go')
 depends=('wireguard-tools')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-		$pkgname.service
-		99-wg.conf
-		wgiptables.sh
-		wg-reload.path
-		wg-reload.service)
+        $pkgname.service
+        99-wg.conf
+        wgiptables.sh
+        wg-reload.path
+        wg-reload.service)
 
 sha256sums=('50a9491b5d83331b306f8cf8b6a3856f27fa00c0040ddb84ea1f6a23436bca1c'
             'c60cbe2d47c616a2f9984c6c57ef60e810c7e57ca5054a318b3da8770bf03b76'
@@ -28,16 +28,16 @@ provides=($pkgname)
 install=$pkgname.install
 
 build() {
-		export GOPATH=$srcdir/$pkgname"-"$pkgver/gopath
+        export GOPATH=$srcdir/$pkgname"-"$pkgver/gopath
         export CGO_CPPFLAGS="${CPPFLAGS}"
         export CGO_CFLAGS="${CFLAGS}"
         export CGO_CXXFLAGS="${CXXFLAGS}"
         export CGO_LDFLAGS="${LDFLAGS}"
         export CGO_ENABLED=1
-        
-		cd $pkgname"-"$pkgver
-		./prepare_assets.sh
-		go build -o $pkgname
+
+        cd $pkgname"-"$pkgver
+        ./prepare_assets.sh
+        go build -o $pkgname
 }
 
 package() {
