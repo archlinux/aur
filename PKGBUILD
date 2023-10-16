@@ -3,7 +3,7 @@
 # Maintainer: cannon < user on aur.archlinux.org >
 
 pkgname=kubecfg-bin
-pkgver=0.33.0
+pkgver=0.34.2
 pkgrel=1
 pkgdesc="A tool for managing complex enterprise Kubernetes environments as code"
 url="https://github.com/kubecfg/kubecfg"
