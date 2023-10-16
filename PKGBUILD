@@ -3,13 +3,13 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=raster
-_cranver=3.6-23
+_cranver=3.6-26
 pkgname=r-${_cranname,,}
 pkgdesc="Geographic Data Analysis and Modeling"
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=(i686 x86_64)
 depends=(
@@ -48,7 +48,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("5261faa2a57e9d7f0ba8ca3a5c0ce1e1135818e5ab457a42c97347f87de7e646ac1119e0f12b350038568af9fef57673af446d9a916456d26081aafbf9636c3f")
+b2sums=("95a51d47b34e46ac07f0359c3930ed9daf37156b587b7d896fc2244a27af3cefdb7ac445accc6eb816c9be3053596800bf81a264be5c06796cb6b06f00b932d6")
 
 build() {
     mkdir -p "${srcdir}/build/"
