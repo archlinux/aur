@@ -1,6 +1,6 @@
 pkgbase = ppsspp
 	pkgdesc = A PSP emulator written in C++
-	pkgver = 1.16.5
+	pkgver = 1.16.6
 	pkgrel = 1
 	url = https://www.ppsspp.org/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ppsspp
 	makedepends = sdl2_ttf
 	makedepends = snappy
 	makedepends = zlib
-	source = git+https://github.com/hrydgard/ppsspp.git#tag=1ae710d44152b655ea1b5ede9cd1faa69e3836da
+	source = git+https://github.com/hrydgard/ppsspp.git#tag=ba0ce344937d17e177ec8656ab957f6b82facdda
 	source = git+https://github.com/Kingcom/armips.git
 	source = git+https://github.com/discordapp/discord-rpc.git
 	source = git+https://github.com/hrydgard/ppsspp-ffmpeg.git
