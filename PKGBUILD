@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rickrack-bin
 _pkgname=Rickrack
-pkgver=2.8.40
-pkgrel=2
+pkgver=2.8.41
+pkgrel=1
 pkgdesc="Generate harmonious colors freely.焰火十二卷(实时色彩工具箱)是一款免费且实用的色彩编辑器."
 arch=('x86_64')
 url="https://eigenmiao.com/rickrack/"
@@ -19,7 +19,7 @@ depends=('libgpg-error' 'libdatrie' 'libdrm' 'qt5-sensors' 'dbus' 'qt5-declarati
     'fcitx-qt5' 'libepoxy' 'libxi' 'systemd-libs' 'xcb-util-renderutil' 'gstreamer' 'tcl' 'pango' 'harfbuzz' 'libxcb' 'qt5-location' 'qt5-multimedia' \
     'libgcrypt' 'e2fsprogs' 'libxinerama' 'xcb-util-image' 'freetype2' 'xcb-util-wm')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/Rickrack_v${pkgver}_en_linux_x86_64.deb")
-sha256sums=('59b7e0bec55e313e0811d7d2ff807aa6a3574a78181ccb31d91ffc08fd215c3d')
+sha256sums=('889218f03aada2ba99b2d5bbd3a7059926fd530b1b9c0d79db937126e2eba2dc')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
