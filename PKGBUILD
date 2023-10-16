@@ -3,7 +3,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64 bootstrap)"
 _commit=3909090108bb2db55330e3eb148aebe664735363  # tags/1.18.0^0
 arch=(any)
@@ -38,6 +38,8 @@ build() {
     ${_arch}-meson \
       -D spectre=disabled \
       -D dwrite=disabled \
+      -D freetype=enabled \
+      -D fontconfig=enabled \
       -D tests=disabled \
       -D symbol-lookup=disabled \
       -D gtk_doc=false \
