@@ -2,7 +2,7 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=4.3.0rc0+220+g19fd8b7e81
+pkgver=4.3.0rc0+222+gadb4f1d91b
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
@@ -48,9 +48,9 @@ depends=(
 # perl-parse-yapp is only needed as build-time dependency if you are actually
 # going to regenerate pidl dissectors (unlikely for the majority of users).
 makedepends=('cmake' 'git' 'ninja' 'python')
-provides=('wireshark' 'wireshark-cli')
-conflicts=('wireshark-common' 'wireshark-gtk' 'wireshark-qt' 'wireshark-cli')
-replaces=('ethereal')
+provides=('wireshark-cli' 'wireshark-qt' 'libwireshark.so' 'libwiretap.so' 'libwsutil.so')
+conflicts=('wireshark' 'wireshark-common' 'wireshark-gtk' 'wireshark-qt' 'wireshark-cli')
+replaces=('wireshark' 'wireshark-common' 'wireshark-gtk' 'wireshark-qt' 'wireshark-cli')
 install=$pkgname.install
 # Mirror: "git+https://github.com/wireshark/wireshark"
 source=("git+https://gitlab.com/wireshark/wireshark.git"
