@@ -1,5 +1,5 @@
 # Maintainer: Limao Luo <luolimao+AUR@gmail.com>
-#
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # (Added from network-manager package)
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinxu.org>
@@ -10,28 +10,18 @@
 
 pkgbase=networkmanager-git
 _gitname=NetworkManager
-pkgname=(networkmanager-git libnm-git)
-pkgver=1.39.10.r30678.g5e4632f021
+pkgname=(networkmanager-git libnm-git nm-cloud-setup-git)
+pkgver=1.45.4.r32631.gaa84b5f935
 pkgrel=1
-pkgdesc="Network Management daemon"
+pkgdesc="Network Management daemon and user application"
 arch=(i686 x86_64)
 url=http://www.gnome.org/projects/$_gitname
 license=(GPL2 LGPL2.1)
 checkdepends=(libx11 python-dbus)
-_pppver=2.4.9
-makedepends=(dnsmasq mobile-broadband-provider-info  meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
-              iproute2 nss polkit wpa_supplicant libsoup systemd libgudev
+makedepends=(dnsmasq mobile-broadband-provider-info  meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc ppp modemmanager
+              iproute2 nss polkit wpa_supplicant libsoup systemd libgudev audit
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs)
-optdepends=( 'iwd: alternative way to connect to wifi'
-    'dhclient: DHCPv6 support'
-    'dnsmasq: connection sharing'
-    'bluez: Bluetooth support'
-    'openresolv: resolvconf support'
-    'ppp: dialup connection support'
-    'rp-pppoe: ADSL support'
-    'modemmanager: cellular network support')
-options=(!libtool !emptydirs)
 source=(git+https://github.com/$_gitname/$_gitname
     NetworkManager.conf
     20-connectivity.conf)
@@ -67,6 +57,7 @@ build() {
         -D polkit=true \
         -D teamdctl=true \
         -D wifi=true \
+        -D libaudit=yes \
         -D config_dhcp_default=internal \
         -D config_dns_rc_manager_default=symlink \
         -D config_logging_backend_default=journal \
@@ -112,12 +103,20 @@ _pick() {
 
 package_networkmanager-git() {
    depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant libsoup openresolv libnewt libndp libteam curl bluez-libs libpsl audit libnm-git)
-    optdepends=('dnsmasq: connection sharing'
+    optdepends=(
+    'dnsmasq: connection sharing'
+    'dhcpcd: alternative DHCP client'
     'bluez: Bluetooth support'
     'openresolv: resolvconf support'
     'ppp: dialup connection support'
     'dhclient: External DHCP client'
-    'modemmanager: cellular network support')
+    'modemmanager: cellular network support'
+    'firewalld: firewall support'
+    'iwd: wpa_supplicant alternative'
+    'polkit: let non-root users control networking'
+    'nftables: connection sharing'
+    'pacrunner: PAC proxy support'
+)
     backup=('etc/NetworkManager/NetworkManager.conf')
     conflicts=('networkmanager')
     provides=('networkmanager')
@@ -130,13 +129,24 @@ package_networkmanager-git() {
   install -Dm644 $srcdir/20-connectivity.conf \
     "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf"
 
+  shopt -s globstar
   _pick libnm "$pkgdir"/usr/include/libnm
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
-  _pick libnm "$pkgdir"/usr/lib/libnm.* 
-  _pick libnm "$pkgdir"/usr/lib/pkgconfig/libnm.pc 
+  _pick libnm "$pkgdir"/usr/lib/libnm.*
+  _pick libnm "$pkgdir"/usr/lib/pkgconfig/libnm.pc
   _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-*
   _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
   _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
+
+  _pick cloud "$pkgdir"/usr/lib/**/*nm-cloud-setup*
+  _pick cloud "$pkgdir"/usr/share/man/**/nm-cloud-setup*
+
+  # Not actually packaged (https://bugs.archlinux.org/task/69138)
+  _pick ovs "$pkgdir"/usr/lib/systemd/system/NetworkManager.service.d/NetworkManager-ovs.conf
+
+  # Restore empty dir
+  install -d usr/lib/NetworkManager/dispatcher.d/no-wait.d
+
 
 }
 
@@ -146,5 +156,13 @@ package_networkmanager-git() {
   conflicts=(libnm)
   depends=(glib2 nss libutil-linux systemd-libs)
   mv libnm/* "$pkgdir"
+}
+
+package_nm-cloud-setup-git() {
+  pkgdesc="Automatically configure NetworkManager in cloud"
+  depends=(networkmanager-git)
+  conflicts=(nm-cloud-setup)
+
+  mv cloud/* "$pkgdir"
 }
 
