@@ -1,0 +1,22 @@
+From 7eb70bf3f7bce0af9e1919d6c875cdb8efca734e Mon Sep 17 00:00:00 2001
+From: brummer10 <brummer-@web.de>
+Date: Sun, 20 Aug 2023 09:54:21 +0200
+Subject: [PATCH] Fix issue #12 Fails to build with glibc 2.38 and
+ -Werror=format-security
+
+---
+ xputty/xfilepicker.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xputty/xfilepicker.c b/xputty/xfilepicker.c
+index 7e77fab..e76cac6 100644
+--- a/xputty/xfilepicker.c
++++ b/xputty/xfilepicker.c
+@@ -222,6 +222,6 @@ void fp_init(FilePicker *filepicker, const char *path) {
+     filepicker->selected_file = NULL;
+     filepicker->path = NULL;
+     filepicker->filter = NULL;
+-    asprintf(&filepicker->path, path);
++    asprintf(&filepicker->path, "%s", path);
+     assert(filepicker->path != NULL);
+ }
