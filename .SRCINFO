@@ -1,7 +1,7 @@
 pkgbase = spotify-dev
 	pkgdesc = A proprietary music streaming service
-	pkgver = 1.2.20.1210
-	pkgrel = 2
+	pkgver = 1.2.22.982
+	pkgrel = 1
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
@@ -23,11 +23,11 @@ pkgbase = spotify-dev
 	provides = spotify
 	conflicts = spotify
 	source = spotify-Release::http://repository.spotify.com/dists/testing/Release
-	source = spotify-1.2.20.1210-x86_64.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.2.20.1210.g2a8a8a57_amd64.deb
+	source = spotify-1.2.22.982-x86_64.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.2.22.982.g794acc0a_amd64.deb
 	source = spotify-x86_64-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages
 	source = LICENSE
 	sha512sums = SKIP
-	sha512sums = a527d6fecec9fa925d8c60e0ba8764ec8f53d3f5268d0b968d3bdeca7d367081f7faa0bcd1fe016491f15e37a1238ad40dbca1fc93b2533e0238e7a7a07f352b
+	sha512sums = fa30eb268fb52a2b5a697b39c4e93e4b625ecef596beb93cdf3509fb798ec16722b5f1aa2592041d7f7209df1e6262891aa451f79f9807d3a89725ba31b79140
 	sha512sums = SKIP
 	sha512sums = 2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615
 
