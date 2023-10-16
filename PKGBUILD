@@ -1,7 +1,7 @@
 # Maintainer: Ivan Fedorov <i@ifedorov.me>
 
 pkgname=rupost-desktop
-pkgver=115.0.109
+pkgver=117.0.131
 pkgrel=1
 pkgdesc="RuPost Desktop - почтовый клиент, созданный на базе нового поколения Thunderbird (Supernova) компанией ООО 'РуПост'"
 arch=("x86_64")
@@ -15,7 +15,7 @@ install=
 source=(
     "https://www.rupost.ru/desktop/download/linux/${pkgname}-${pkgver}.ru.linux-x86_64.deb"
 )
-sha256sums=("2ef3852c9c247c85fe2fa61eaaac370f3124957764df63fb8e4e26096a98f167")
+sha256sums=("505feb9dfe5557966b7c3fc0c4ae872255bc278f28722d42f4430df87c29ae4f")
 
 package() {
     tar -xC "$pkgdir" -f data.tar.xz
