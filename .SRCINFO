@@ -1,0 +1,20 @@
+pkgbase = waycratelock-git
+	pkgdesc = waycratelock, lock for ext-session-lock
+	pkgver = r41.bf28449
+	pkgrel = 1
+	url = https://github.com/waycrate/waycratelock
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = wayland-protocols
+	makedepends = session-lock-qt
+	depends = qt6-wayland
+	depends = qt6-base
+	depends = pam
+	source = waycratelock::git+https://github.com/waycrate/waycratelock.git
+	sha256sums = SKIP
+
+pkgname = waycratelock-git
