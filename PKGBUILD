@@ -1,7 +1,7 @@
 # Maintainer: Lili1228 <aur at gramywpsl dot pl>
 pkgname=86box
 _pkgname=86Box
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -19,7 +19,7 @@ options=('!buildflags')
 source=(
     "86Box.tgz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('8465e86e44bb5fa260f0550479e877a0f4a407eb59a00db8bab6764fecb292b8c9a370451eb71adbf84db990d7ea70e001cd1b2bc096c95caa7526901d20833e')
+sha512sums=('b06a8c50558276f35f98795e0513b5bd39eed3a0d3a8d61bf79b373501cd823ab3ab12fb943e879a240292bca39c507a1a42b1b6f3f9ae596499b685a03acf98')
 
 build() {
     case "$CARCH" in
