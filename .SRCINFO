@@ -22,7 +22,6 @@ pkgbase = python-onnxruntime
 	makedepends = python-coloredlogs
 	makedepends = python-flatbuffers
 	makedepends = python-numpy
-	makedepends = python-protobuf
 	makedepends = python-sympy
 	makedepends = python-setuptools
 	makedepends = python-installer

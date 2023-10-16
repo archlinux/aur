@@ -19,13 +19,6 @@ pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/onnxruntime'
 license=('MIT')
-
-# if [[ $_ENABLE_TENSORRT = 1 ]]; then
-#   depends+=('protobuf' 'libprotobuf.so')
-# else
-#   depends+=('protobuf' 'libprotobuf-lite.so')
-# fi
-
 makedepends=(
   'git'
   'cmake'
@@ -41,12 +34,13 @@ makedepends=(
 #   'flatbuffers'
   'onednn'
 #   're2'
+#   'protobuf'
   'nsync'
   'openmpi'
   'python-coloredlogs'
   'python-flatbuffers'
   'python-numpy'
-  'python-protobuf'
+#   'python-protobuf'
   'python-sympy'
   'python-setuptools'
   'python-installer'
@@ -83,6 +77,7 @@ fi
 if [[ $_ENABLE_TENSORRT = 1 ]]; then
   pkgname+=('onnxruntime-tensorrt')
   makedepends+=('tensorrt')
+#   depends+=('protobuf' 'libprotobuf.so')
 fi
 
 # Check PKGBUILDs of python-pytorch and tensorflow for CUDA architectures built by official packages
@@ -232,6 +227,7 @@ package_onnxruntime() {
     'openmpi' 'libmpi.so'
     'abseil-cpp' # libabsl_hash.so libabsl_raw_hash_set.so libabsl_raw_logging_internal.so libabsl_throw_delegate.so
     'nsync' # libnsync_cpp.so
+#     'protobuf' 'libprotobuf-lite.so'
   )
   provides=(
     'libonnxruntime.so'
@@ -258,6 +254,7 @@ package_python-onnxruntime() {
     'abseil-cpp' # libabsl_hash.so libabsl_raw_hash_set.so libabsl_raw_logging_internal.so libabsl_throw_delegate.so
     'openmpi' 'libmpi.so'
     'nsync' # libnsync_cpp.so
+#     'protobuf' 'libprotobuf-lite.so'
     'python-coloredlogs'
     'python-flatbuffers'
     'python-numpy'
@@ -306,6 +303,7 @@ package_onnxruntime-cuda() {
     'nsync' # libnsync_cpp.so
     'abseil-cpp' # libabsl_hash.so libabsl_raw_hash_set.so libabsl_raw_logging_internal.so libabsl_throw_delegate.so
     'cuda' 'libcublas.so' 'libcudart.so' # libcublasLt.so libcufft.so
+#     'protobuf' 'libprotobuf-lite.so'
   )
   conflicts=('python-onnxruntime-cuda')
   replaces=('python-onnxruntime-cuda')
@@ -320,7 +318,7 @@ package_onnxruntime-tensorrt() {
   pkgdesc+=' (TensorRT execution provider)'
   depends=(
     'tensorrt'
-#     'protobuf' 'libprotobuf.so'
+#     'protobuf' 'libprotobuf-lite.so'
     'nsync'
 #     'flatbuffers'
   )
