@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-16
-_commit=614f8bebd889eac7a2cf0da9f79826a1b56b4550
+_srctag=GE-Proton8-19
+_commit=2093d60d8c1d8caf5399ab93ddaca72b6002b2b0
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=6
+pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -264,12 +264,12 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            'c6254b8890dd7d11a97ff5150fa47bc5762cdd726a51035d5f21deee5457f56c'
-            '8a24ffffaf0d4b981f6e546fd0c986cf425bc5f550c138a82bcc53dec0470e4b'
-            '208c44cf820845f1489946b5340b5ef17a16156958f4814c47f7aae18eaae9dc'
-            '0ebcab4e8fb9b6aa196e8d3bfe7d091dfc93769305d2a1c63f7d6f0a2f4ce03b'
-            'a3a7ffc8a9ede2cde912ba5b9e1ce285fc8333435853c53010885e4062ad1057'
-            '6b5990f8f30f5c055250e6ff46dda6eb40dcf8a3021a0541c7b809881e2ff0d6')
+            '4cf125da2bdf3a5289b457089d73a6c2c25b8475d3fdf1e9917611cb6401bbeb'
+            '99453e3e68643b2fa1e84182a6e25e5cec8031ee17fdeb6e8c205c5612dd18d1'
+            '7010fe40d1eef828ad8696dde6dc2679e2d97d1039536b140776a86fc12e1c0d'
+            '4471abf7dc935e36b8288d51bae8a11dc87c83635bf39ec17971f5d722ee07ea'
+            'eeee053de9dfb1eab2522ee307023538771d88c8e5526c606585659826dcd564'
+            '7dcb882969c8d40766cf03f32b858a60f5c560357894717c0e5f920d5376c48b')
 # Optional patches
 sha256sums+=(
 )
