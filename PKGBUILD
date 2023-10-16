@@ -1,18 +1,18 @@
 # Maintainer: Keybase <linux-packages@keyba.se>
 
 # NOTE: This PKGBUILD is generated and pushed by Keybase's release automation.
-# Any changes made in aur.archlinux.org git repos will get overwritten.  See
+# Any changes made in aur.archlinux.org git repos will get overwritten. See
 # https://github.com/keybase/client/tree/master/packaging/linux/arch.
 
 pkgname=keybase-bin
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=6.2.2_20230726175256+4464bfb32d
+pkgver=6.2.3_20231016183016+06cb935ee3
 src_prefix=https://prerelease.keybase.io/linux_binaries/deb
 deb_pkgver="${pkgver/_/-}"
 deb_pkgver="${deb_pkgver/+/.}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 depends=(fuse libxss gtk3 lsof) # don't change this without changing the SRCINFO template too
                                 # also make sure to change the keybase-git PKGBUILD
@@ -43,4 +43,4 @@ package() {
 
 # You can cross reference these hashes with Keybase Debian repo metadata:
 # https://prerelease.keybase.io/deb/dists/stable/main/binary-amd64/Packages
-sha256sums_x86_64=(5f704992c75d753771794a958f372addc0d1191aa669813b67e797b47a2a6e48)
+sha256sums_x86_64=(462db2ab84cc7fee48251d89c0447be74025414eec0b44a4b6a19f175d10551a)
