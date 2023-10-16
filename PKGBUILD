@@ -1,27 +1,34 @@
-# Maintainer: bitwave
-# Contributor: Bidossessi Sodonon
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: bitwave <github@oomlu.de>
+# Contributor: Stanislas H.B. Sodonon <bidossessi@linuxbenin.com>
 
 pkgname=trelby-git
 _pkgname=trelby
-pkgver=0.r809.580222d
-pkgrel=3
-pkgdesc="Free screenwriting application"
-url=http://www.trelby.org
+pkgver=2.4.9.r0.gd02783b
+pkgrel=1
+pkgdesc="The free, multiplatform, feature-rich screenwriting program!"
+url="https://github.com/limburgher/trelby"
 arch=('any')
-license=(GPL3)
-provides=("$_pkgname")
+license=('GPL2')
+provides=("${_pkgname}")
 depends=(
-    'python2'
-    'python2-setuptools'
-    'python2-lxml'
-    'wxpython'
+    'python'
+    'python-setuptools'
+    'python-lxml'
+    'python-wxpython'
+    'python-reportlab'
+    # 'python-pytest'
 )
-makedepends=('git')
-source=('git+https://github.com/trelby/trelby.git')
-md5sums=('SKIP')
+makedepends=(
+    'git'
+    # 'libxslt'
+)
+source=('git+https://github.com/limburgher/trelby.git')
+sha256sums=('SKIP')
+
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
@@ -30,13 +37,10 @@ package()
   # Force package data inclusion
   gzip -c names.txt > names.txt.gz
   gzip -c dict_en.dat > dict_en.dat.gz
-  python2 setup.py sdist
+  python setup.py sdist
 
-  python2 setup.py install --root="${pkgdir}"
-  mkdir ${pkgdir}/usr/share/applications -p
-  install -Dm 644 trelby.desktop ${pkgdir}/usr/share/applications/trelby.desktop
-  mkdir ${pkgdir}/usr/share/trelby/resources -p
-  install -Dm 644 resources/icon256.png ${pkgdir}/usr/share/trelby/resources/icon256.png
-  mkdir ${pkgdir}/usr/bin -p
-  install -Dm 755 ${pkgdir}/opt/trelby/bin/trelby ${pkgdir}/usr/bin/trelby
+  python setup.py install --root="${pkgdir}"
+  install -Dm644 "trelby.desktop" "${pkgdir}/usr/share/applications/trelby.desktop"
+  install -Dm644 "resources/icon256.png" "${pkgdir}/usr/share/trelby/resources/icon256.png"
+  install -Dm755 "${pkgdir}/opt/trelby/bin/trelby" "${pkgdir}/usr/bin/trelby"
 }
