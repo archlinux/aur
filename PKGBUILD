@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://angryip.org/"
 depends=('java-runtime>=11')
+conflicts=(ipscan ipscan-git)
 
 [[ $CARCH == "i686" ]] && _intarch=linux
 [[ $CARCH == "x86_64" ]] && _intarch=linux64
