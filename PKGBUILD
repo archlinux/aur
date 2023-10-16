@@ -8,15 +8,15 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ngoduykhanh/$_pkgname"
 license=('MIT')
 source=($_pkgname.service
-		99-wg.conf
-		wgiptables.sh
-		wg-reload.path
-		wg-reload.service)
+        99-wg.conf
+        wgiptables.sh
+        wg-reload.path
+        wg-reload.service)
 
-source_i686=(https://github.com/ngoduykhanh/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-386.tar.gz)
-source_x86_64=(https://github.com/ngoduykhanh/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-amd64.tar.gz)
-source_armv7h=(https://github.com/ngoduykhanh/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm.tar.gz)
-source_aarch64=(https://github.com/ngoduykhanh/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm64.tar.gz)
+source_i686=($url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-386.tar.gz)
+source_x86_64=($url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-amd64.tar.gz)
+source_armv7h=($url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm.tar.gz)
+source_aarch64=($url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm64.tar.gz)
 
 sha256sums=('c60cbe2d47c616a2f9984c6c57ef60e810c7e57ca5054a318b3da8770bf03b76'
             'cf5bdce2ce87b5054042a70d8630f40a0f991c64c42786824f660245b943d2be'
