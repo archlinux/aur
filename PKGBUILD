@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/AdguardTeam/AdGuardHome/arc
         "$pkgname.service"
         "$pkgname.install"
 )
-makedepends=(go nodejs-lts-hydrogen npm git)
+makedepends=(go nodejs npm git)
 depends=(glibc)
 install="$pkgname.install"
 b2sums=('9ec4a9f204b532ae88df6968ca9b3849b502ae07ca901da105b577bfe6b2acc0845f598d7718facc4e6741446c0eb2b5ebe9fc38a1a071137994773a7ea452e6'
