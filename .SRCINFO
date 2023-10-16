@@ -1,6 +1,6 @@
 pkgbase = unl0kr
 	pkgdesc = On-screen Keyboard for FDE
-	pkgver = 1.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Grosskopf/arch_unl0kr
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unl0kr
 	makedepends = meson
 	depends = device-mapper
 	depends = cryptsetup
-	depends = mesa
-	source = git+https://gitlab.com/cherrypicker/unl0kr.git#commit=50b6a2373679d09c9bf59eb1933cf14c16428ed0
+	backup = etc/unl0kr.conf
+	source = git+https://gitlab.com/cherrypicker/unl0kr.git#commit=2e5707cbd5d8d9ab1b382f663e57804e1fb063ef
 	source = unl0kr-hooks
 	source = unl0kr-install
 	md5sums = SKIP
