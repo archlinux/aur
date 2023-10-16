@@ -3,7 +3,7 @@
 pkgname=flashbrowser-git
 _reponame=FlashBrowser
 pkgver=0.81+r27+g0d97b17
-pkgrel=2
+pkgrel=3
 pkgdesc="A browser dedicating to supporting adobe flash"
 url="https://flash.pm/browser/"
 arch=('any')
@@ -16,7 +16,7 @@ _commit=0d97b175eab39383bc83dba59c17bde1b55c7574  # tags/v0.8.1
 source=("git+https://github.com/radubirsan/FlashBrowser#commit=$_commit"
 	"FlashBrowser.desktop")
 sha256sums=('SKIP'
-            '33076411d47cf6bb214eb2b43654ca5d005b6c8e405e3f8db377bc148f042985')
+            'c4cf51979c204268bc70533a319e3fdfb913dec0aa8edaea0a7f7a7cb8ca3b78')
 
 pkgver() {
 	git -C "$srcdir/$_reponame" describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
@@ -44,7 +44,7 @@ build() {
 package() {
 	# Install nodejs application
 	install -d "$pkgdir"/usr/lib/node_modules
-	cp -r --preserve=mode "$srcdir"/$_reponame "$pkgdir"/usr/lib/node_modules
+	cp -a "$srcdir"/$_reponame "$pkgdir"/usr/lib/node_modules
 
 	# Install /usr/bin executable
 	install -Dm755 "$srcdir"/$_reponame.sh "$pkgdir"/usr/bin/$_reponame
