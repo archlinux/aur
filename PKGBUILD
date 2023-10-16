@@ -1,7 +1,7 @@
 # Maintainer: Gerard Salvatella <mail@gerardsalvatella.com>
 
 pkgname=yoctolib-cmdlines
-pkgver=43781
+pkgver=55747
 pkgrel=1
 epoch=
 pkgdesc="Cli binaries for Yoctopuce USB devices"
