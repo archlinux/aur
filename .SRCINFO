@@ -1,0 +1,23 @@
+pkgbase = radio-active
+	pkgdesc = Play and record any radio stations around the globe right from your terminal
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/deep5050/radio-active
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-urllib3
+	depends = python-psutil
+	depends = python-pyradios>=1.0.2
+	depends = python-requests-cache
+	depends = python-rich
+	depends = python-pick
+	depends = python-zenlog
+	depends = python-colorlog
+	depends = ffmpeg
+	source = radio-active-2.8.0.tar.gz::https://github.com/deep5050/radio-active/archive/v2.8.0.tar.gz
+	b2sums = e501093f3730d286f8db19a0917d5a1bd32ae15bcabe34f059a022234125cb6aa0d2c1bdeb4565fcd9461bc09a5a3ca7018cb5943f15411285a37fed483e6a3b
+
+pkgname = radio-active
