@@ -5,12 +5,12 @@
 
 # Maintainer: gloof <gloof11@proton.me>
 pkgname=veilid-cli-git
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 epoch=
 pkgdesc="A text user interface to talk to veilid-server and operate it manually"
 arch=(x86_64)
-url="https://gitlab.com/veilid/veilid/-/archive/v0.2.3/veilid-v$pkgver.tar"
+url="https://gitlab.com/veilid/veilid/-/archive/v$pkgver/veilid-v$pkgver.tar"
 license=('MPL 2.0')
 groups=()
 depends=()
@@ -19,14 +19,14 @@ checkdepends=()
 optdepends=()
 provides=(veilid-cli)
 conflicts=(veilid-cli)
-replaces=()
+replaces=(veilid-cli)
 backup=()
 options=()
 install=
 changelog=
 source=("$url")
 noextract=()
-md5sums=('e7a4928d35dfeb795c48ca091f15610c')
+md5sums=('4012c81620d9eab98a011b559dcbb872')
 validpgpkeys=()
 
 prepare() {
