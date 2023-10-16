@@ -1,5 +1,3 @@
-# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
-
 pkgname=perl-data-validate-ip
 pkgver=0.27
 pkgrel=7
