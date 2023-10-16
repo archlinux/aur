@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r149.16d8bb7
+pkgver=r182.29d6f12
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -10,13 +10,8 @@ license=('MIT')
 depends=('acpica'
          'cpio'
          'systemd'
-         'swh-plugins'
-         'ryzenadj-controller-git')
-makedepends=('python-build'
-             'python-installer'
-             'python-wheel'
-             'python-setuptools'
-             'git')
+         'swh-plugins')
+makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/ChimeraOS/device-quirks.git")
 md5sums=('SKIP')
 backup=("etc/device-quirks/device-quirks.conf")
@@ -26,18 +21,9 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-	cd "$srcdir/${_pkgbase}"
-
-	python -m build --wheel --no-isolation
-}
-
 package() {
 	cd "$srcdir/${_pkgbase}"
 
-	# Install python modules
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	
 	# Install binaries
 	install -v -m755 -D -t "${pkgdir}/usr/bin/" usr/bin/*
 
@@ -51,6 +37,7 @@ package() {
 
 	# Install systemd units
 	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/user/" usr/lib/systemd/user/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/system/" usr/lib/systemd/system/*
 
 	# Install firmware DSDT and EDID
 	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
