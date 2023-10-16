@@ -1,6 +1,6 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-cocotb-git
-pkgver=r2445.e9490fab
+pkgver=r3638.13a4c949
 pkgrel=1
 pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/cocotb/cocotb"
 license=('BSD')
 conflicts=('python-cocotb')
 provides=('python-cocotb')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-setuptools' 'python-find_libpython')
 makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
