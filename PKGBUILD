@@ -1,7 +1,7 @@
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
 
 pkgname='qsv'
-pkgver='0.116.0'
+pkgver='0.117.0'
 pkgrel='1'
 pkgdesc='A command line program for CSV files. Fork of xsv.'
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('cargo')
 optdepends=('bash-completion: tab completion for bash')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 
-md5sums=('8a1f5fc801440b6260e4733099c5b545')
-sha512sums=('9d80b1d279ac4fc7ef86241950f8496fed03dc0177fd7974dd155c5aee87021084ad9c35e0b66f7e975a6676a61104ebfb2cc9767ad064d09abf2565996a9fa5')
+md5sums=('fb6bb78cd5e05757b17311411ad503c5')
+sha512sums=('89107394baa468bf12bfcce874047773d26cd2c258c9808164a588b231cc07ca0f033073f45183f07292a43da78bbd349df77979b951bbb1aef1e55e0b6fdf0f')
 
 _features='feature_capable,apply,fetch,foreach,generate,luau,polars,python,to,geocode'
 
