@@ -1,23 +1,26 @@
-From 086461da4b2f83ec842bbe418c8db6dc49bb84c1 Mon Sep 17 00:00:00 2001
-From: Edgar <eDgar>
-Date: Sat, 19 Aug 2023 01:26:28 +0200
-Subject: [PATCH] finite-element.h: #include <cstdint>
+From 40425be69015213c5b402501c5baf87ba0167392 Mon Sep 17 00:00:00 2001
+From: edgar <edgar no reply>
+Date: Mon, 16 Oct 2023 20:02:12 +0200
+Subject: [RFC PATCH] add cstdint to finite-element.h
 
 ---
  cpp/basix/finite-element.h | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/cpp/basix/finite-element.h b/cpp/basix/finite-element.h
-index 085889a4..37d1faed 100644
+index c03e1a37..512a2d10 100644
 --- a/cpp/basix/finite-element.h
 +++ b/cpp/basix/finite-element.h
-@@ -18,6 +18,7 @@
- #include <string>
+@@ -22,6 +22,7 @@
  #include <tuple>
+ #include <utility>
  #include <vector>
 +#include <cstdint>
  
  /// Basix: FEniCS runtime basis evaluation library
  namespace basix
+
+base-commit: eebbc524c4afe2bef7f31ce877d2b80830109391
 -- 
-2.41.0
+2.42.0
+

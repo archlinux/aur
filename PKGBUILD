@@ -14,9 +14,9 @@ makedepends=("boost" "gcc" "git" "pybind11" "python-build" "python-installer" "p
 checkdepends=("python-sympy")
 options=(!emptydirs)
 source=("git+${url}#branch=main"
-        "finite_element_h_cstdint.patch")
+        "0001-add-cstdint-to-finite-element.h.patch")
 sha512sums=('SKIP'
-           'b592508f82fd3efa04135440c36d6837d08592d1d8e3f9e31b9b1b7f3871c7c801deeb9b5a7b9740b2104ce72137f27b3f1897ffca39558b3d6469531cd52bd0')
+           '4e7e1223fed54159e6e9dcf20529b0872cf23d95ebe07ba02a088dda26212b51bbdc608b4d4ef5c347c2ebfe029c022049cd01d354294ed191434cd4a8dd20e3')
 
 provides=("${_base}"
           "fenics-${_base}")
@@ -100,7 +100,7 @@ _base_dir="${startdir}"/src/"${_base}"
 
 prepare() {
   cd "${_base_dir}"
-  patch -Np1 -i ../finite_element_h_cstdint.patch
+  patch -Np1 -i ../0001-add-cstdint-to-finite-element.h.patch
   git -C "${_base_dir}" clean -dfx
 }
 
