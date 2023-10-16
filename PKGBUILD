@@ -12,6 +12,8 @@ license=('MIT')
 makedepends=('cmake')
 source=("doctest-${pkgver}.tar.gz::https://github.com/doctest/doctest/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('19b2df757f2f3703a5e63cee553d85596875f06d91a3333acd80a969ef210856')
+# Build fails with `buildflags` because ld.exe doesn't recognize `-z`
+options=(!buildflags !strip)
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
