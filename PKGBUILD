@@ -52,10 +52,10 @@ if ! :; then
   _srcdir="${_pkgname}"
   source[0]="git+${_giturl}#tag=${pkgver}"
 fi
-md5sums=('801dab597be686334779f8fa7e4f1353'
+md5sums=('502bd04e968d354dd1e62f4802d36ae4'
          '97115fa5fc6d8d63bdf13dc57fc20861'
          '9cb4a6717db959e082db75200e75d3e1')
-sha256sums=('49d562e56cffea9f8e6f9facd6e6f0c5d51114dd6d154e23c8a441311fb8ac18'
+sha256sums=('d5fcdd1af848c64cc718b4c3bc831a85a70176ce26b6d9fb55588e4cddead2a4'
             '7048e51a89c99a5b6cac6d8ae416121264effa76da34dba5c0e7cf85519c8e98'
             '6efb71ac8086699da74dad6736c32ddb20db5dcabe167c49a8c3a650675eb84b')
 
@@ -84,6 +84,7 @@ _dpr_check() {
     for((f=0; f<"${#_dpr[@]}"; f++)); do
       if [ "${_dpr[f]}" != "${depends[f]}" ]; then
         echo 'Flag package out of date: Update _dpr from res/PKGBUILD/depends=()'
+        false
       fi
     done
   )
@@ -179,7 +180,6 @@ prepare() {
   cd "${_srcdir}"
   _flutter_check
   _mod_py
-
   set +u
 }
 
