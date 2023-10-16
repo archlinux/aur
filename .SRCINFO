@@ -1,0 +1,18 @@
+pkgbase = tags
+	pkgdesc = A simple text tagger
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/phastmike/tags
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = json-glib
+	depends = libadwaita
+	source = git+https://github.com/phastmike/tags.git#tag=1.0
+	sha256sums = SKIP
+
+pkgname = tags
