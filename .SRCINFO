@@ -1,6 +1,6 @@
 pkgbase = ttf-monaco-nerd-font-git
 	pkgdesc = Monaco font patched with ryanoasis’s nerd patcher
-	pkgver = 2.2.2
+	pkgver = r23.a65e20d
 	pkgrel = 1
 	url = https://github.com/Karmenzind/monaco-nerd-fonts
 	arch = any
