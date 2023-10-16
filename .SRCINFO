@@ -1,0 +1,19 @@
+pkgbase = picard-appimage-daily
+	pkgdesc = MusicBrainz Picard audio file tagger, unofficial binary builds for the latest development version.
+	pkgver = continuous
+	pkgrel = 1
+	url = https://github.com/phw/picard-daily
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = fuse2
+	conflicts = picard
+	conflicts = picard-git
+	noextract = MusicBrainz-Picard-daily-x86_64.AppImage
+	options = !strip
+	source_x86_64 = MusicBrainz-Picard-daily-x86_64.AppImage::https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/phw/picard-daily/continuous/LICENSE
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = picard-appimage-daily
