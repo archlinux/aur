@@ -10,7 +10,7 @@ url="https://github.com/FEniCS/${_base}"
 license=('MIT')
 groups=('fenics-git')
 depends=("blas-openblas" "petsc" "xtensor" "xtensor-blas")
-makedepends=("boost" "gcc" "git" "pybind11" "python-build" "python-installer" "python-numpy" "python-scikit-build" "python-setuptools")
+makedepends=("boost" "gcc" "git" "pybind11" "python-build" "python-installer" "python-numpy" "python-scikit-build" "python-setuptools" "nanobind")
 checkdepends=("python-sympy")
 options=(!emptydirs)
 source=("git+${url}#branch=main"
