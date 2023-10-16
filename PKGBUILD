@@ -1,17 +1,16 @@
-# system requirements: C++11
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocSingular
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=1
-pkgdesc='Singular Value Decomposition for Bioconductor Packages'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Singular Value Decomposition for Bioconductor Packages"
+arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
   r-beachmat
   r-biocgenerics
   r-biocparallel
@@ -21,7 +20,9 @@ depends=(
   r-rsvd
   r-s4vectors
   r-scaledmatrix
-  gcc
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocstyle
@@ -31,14 +32,20 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('df6d2dd2e0de6864dcc488127f9b0621')
 sha256sums=('6951c0824631b3a861087de1ab4f25abea2f935c1a9d0006f6f98e32b8fe63a8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
