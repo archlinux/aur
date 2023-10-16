@@ -1,0 +1,19 @@
+pkgbase = python-into-dbus
+	pkgdesc = Facilities for converting an object that inhabits core Python types, e.g., lists, ints, dicts, to an object that inhabits dbus-python types, e.g., dbus.Array, dbus.UInt32, dbus.Dictionary based on a specified dbus signature.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/stratis-storage/into-dbus-python
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-hypothesis
+	checkdepends = python-hs-dbus-signature
+	makedepends = git
+	makedepends = python-pylint
+	makedepends = python-setuptools
+	depends = dbus-python
+	depends = python-dbus-signature-pyparsing
+	source = into-dbus-python-0.8.2.tar.gz::https://github.com/stratis-storage/into-dbus-python/archive/v0.8.2.tar.gz
+	sha256sums = df54a6f37ccd3b3f0df7f557ad8d7bdd412152b568beccd8d71cd73d4a9343e6
+
+pkgname = python-into-dbus
