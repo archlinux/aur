@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-asdf
 	pkgdesc = Sphinx plugin for generating documentation from ASDF schemas
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/asdf-format/sphinx-asdf
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-sphinx-asdf
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-asdf/sphinx-asdf-0.2.1.tar.gz
-	sha256sums = 50c097b3a642d9f9fc8dad5947e35130e36718896fa64dd1eeafd175527609f5
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-asdf/sphinx-asdf-0.2.2.tar.gz
+	sha256sums = 44b3d4829df90bf2f9d0dadfd6a1fe1522c040842cd3c61ff4717edd85d0860e
 
 pkgname = python-sphinx-asdf
 	depends = python-asdf
