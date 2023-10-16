@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastfetch-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in C."
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('chafa: Image output as ascii art'
   'xfconf: Needed for XFWM theme and XFCE Terminal font'
   'zlib: Faster image output when using kitty graphics protocol')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-Linux.deb")
-sha256sums=('5fa15a4302624a360cb81740a5bd082624c8b01ca968ec69dc64a49d25ee203e')
+sha256sums=('ef8c1cc866d31822555f53d6ed623b45c4d1550e8c07d9dd224cf6fff7d677ed')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
