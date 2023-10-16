@@ -3,34 +3,42 @@
 # Contributor: Hermann Mayer <hermann.mayer92@gmail.com>
 
 pkgbase=psmoveapi-git
-pkgname=('psmoveapi-git'
-         'python-psmoveapi-git'
-          )
-pkgver=4.0.12.162.g5067d19
+pkgname=(
+  'psmoveapi-git'
+  'python-psmoveapi-git'
+)
+pkgver=4.0.12.164.g3539912
 pkgrel=1
 pkgdesc='Playstation Move Motion Controller API (GIT version)'
 arch=('x86_64')
 url='http://thp.io/2010/psmove'
 license=('BSD')
-makedepends=('git'
-             'cmake'
-             'python-sphinx'
-             'udev'
-             'bluez-libs'
-             'libusb-compat'
-             )
-source=('git+https://github.com/thp/psmoveapi.git'
-        'git+https://github.com/thp/hidapi.git'
-        'git+https://github.com/inspirit/PS3EYEDriver.git'
-        'git+https://github.com/libusb/libusb.git'
-        'add-libv4l2-module.patch'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '271eaa3f1f5c50045873f1583ebc38eb6c9451440a7c98de5b75731058901480'
-            )
+makedepends=(
+  'git'
+  'cmake'
+  'python-sphinx'
+  'systemd-libs'
+  'dbus'
+  'bluez-libs'
+  'v4l-utils'
+  'opencv'
+  'libusb'
+  'libusb-compat'
+)
+source=(
+  'git+https://github.com/thp/psmoveapi.git'
+  'git+https://github.com/thp/hidapi.git'
+  'git+https://github.com/inspirit/PS3EYEDriver.git'
+  'git+https://github.com/libusb/libusb.git'
+  'add-libv4l2-module.patch'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  '271eaa3f1f5c50045873f1583ebc38eb6c9451440a7c98de5b75731058901480'
+)
 options=('debug')
 
 pkgver() {
@@ -70,10 +78,17 @@ build() {
 package_psmoveapi-git() {
   provides=('psmoveapi')
   conflicts=('psmoveapi')
-  depends=('udev'
-           'bluez-libs'
-           'libusb-compat'
-         )
+  depends=(
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # libc.so libm.so
+    'systemd-libs' 'libudev.so'
+    'dbus' # libdbus-1.so
+    'bluez-libs' 'libbluetooth.so'
+    'libusb' 'libusb-1.0.so'
+    'libusb-compat' # libusb-0.1.so
+    'v4l-utils' # libv4l2.so
+    'opencv' # libopencv_calib3d.so libopencv_core.so libopencv_highgui.so libopencv_imgcodecs.so libopencv_imgproc.so libopencv_videoio.so
+  )
 
   DESTDIR="${pkgdir}" cmake --install build
 
@@ -87,11 +102,13 @@ package_psmoveapi-git() {
 
 package_python-psmoveapi-git() {
   pkgdesc='Python bindings for Playstation Move Motion Controller API (GIT version)'
+  arch=('any')
   provides=('python-psmoveapi')
   conflicts=('python-psmoveapi')
-  depends=("psmoveapi-git=${pkgver}"
-           'python'
-           )
+  depends=(
+    "psmoveapi-git=${pkgver}"
+    'python'
+  )
 
   _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
   install -Dm644 psmoveapi/bindings/python/psmoveapi.py "${pkgdir}${_site_packages}/psmoveapi.py"

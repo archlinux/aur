@@ -1,6 +1,6 @@
 pkgbase = psmoveapi-git
 	pkgdesc = Playstation Move Motion Controller API (GIT version)
-	pkgver = 4.0.12.162.g5067d19
+	pkgver = 4.0.12.164.g3539912
 	pkgrel = 1
 	url = http://thp.io/2010/psmove
 	arch = x86_64
@@ -8,8 +8,12 @@ pkgbase = psmoveapi-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python-sphinx
-	makedepends = udev
+	makedepends = systemd-libs
+	makedepends = dbus
 	makedepends = bluez-libs
+	makedepends = v4l-utils
+	makedepends = opencv
+	makedepends = libusb
 	makedepends = libusb-compat
 	options = debug
 	source = git+https://github.com/thp/psmoveapi.git
@@ -24,15 +28,25 @@ pkgbase = psmoveapi-git
 	sha256sums = 271eaa3f1f5c50045873f1583ebc38eb6c9451440a7c98de5b75731058901480
 
 pkgname = psmoveapi-git
-	depends = udev
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	depends = libudev.so
+	depends = dbus
 	depends = bluez-libs
+	depends = libbluetooth.so
+	depends = libusb
+	depends = libusb-1.0.so
 	depends = libusb-compat
+	depends = v4l-utils
+	depends = opencv
 	provides = psmoveapi
 	conflicts = psmoveapi
 
 pkgname = python-psmoveapi-git
 	pkgdesc = Python bindings for Playstation Move Motion Controller API (GIT version)
-	depends = psmoveapi-git=4.0.12.162.g5067d19
+	arch = any
+	depends = psmoveapi-git=4.0.12.164.g3539912
 	depends = python
 	provides = python-psmoveapi
 	conflicts = python-psmoveapi
