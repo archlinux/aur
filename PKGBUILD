@@ -1,7 +1,7 @@
-# Maintainer: Chris Winkler <quidnovum [at] [common mail ending from search engine company]>
+# Maintainer: Benedikt Rips <benedikt.rips@gmail.com>
+# Contributor: Chris Winkler <quidnovum [at] [common mail ending from search engine company]>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Lukas Becker <lukasbecker2 [at] [common mail ending from the company behind the most used search engine]>
-# Contributor: Benedikt Rips <benedikt.rips@gmail.com>
 
 pkgname=zenkit
 pkgver=20211006
