@@ -40,6 +40,7 @@ package() {
 
   install -Dm755 "target/release/istat"         "$pkgdir/usr/bin/istat"
   install -Dm755 "target/release/istat-ipc"     "$pkgdir/usr/bin/istat-ipc"
+  install -Dm755 "target/release/istat-acpi"    "$pkgdir/usr/bin/istat-acpi"
   install -Dm755 "target/release/istat-signals" "$pkgdir/usr/bin/istat-signals"
   install -Dm755 "target/release/istat-sensors" "$pkgdir/usr/bin/istat-sensors"
 
@@ -56,7 +57,8 @@ package() {
   install -Dm644 "doc/istat-ipc-shutdown.1"    "$pkgdir/usr/share/man/man1/istat-ipc-shutdown.1"
   install -Dm644 "doc/istat-ipc-signal.1"      "$pkgdir/usr/share/man/man1/istat-ipc-signal.1"
 
-  install -Dm644 "README.md"          "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "sample_config.toml" "$pkgdir/usr/share/doc/${pkgname}/sample_config.toml"
-  install -Dm644 "LICENSE"            "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md"                   "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "sample_config.toml"          "$pkgdir/usr/share/doc/${pkgname}/sample_config.toml"
+  install -Dm644 "sample_included_config.toml" "$pkgdir/usr/share/doc/${pkgname}/sample_included_config.toml"
+  install -Dm644 "LICENSE"                     "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
