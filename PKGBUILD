@@ -2,10 +2,10 @@
 # Maintainer: Lili1228 <aur at gramywpsl dot pl>
 
 _pkgname=86Box
-_build=b5000
+_build=b5111
 
 pkgname=86box-appimage
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -21,10 +21,10 @@ source_pentium4=("${_pkgname}-${pkgver}-pentium4.appimage::${_source}-Linux-x86-
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-${_build}.AppImage")
 source_arm7h=("${_pkgname}-${pkgver}-arm7h.appimage::${_source}-NDR-Linux-arm32-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
-sha512sums_pentium4=('5898b11495eb57259e20415f8caf2014703d6a620d36b73d857e6fd30ea198375299c959bad2481308ca2bec35c39b566ac5c627a1ee040167a53f52f3bd968a')
-sha512sums_x86_64=('cf65e7b5cd122dc759e8eeecb6d213dcb22d0d07fb065f2ad908b06ade036dbdff25982a26ca6ffe3f9e8717007c0428ae246a8ec5398c99f0f4b82650a2a23f')
-sha512sums_arm7h=('80ab3c67db83a44bc9deef0ee9c2d4fdeed6909ad821008733ec76bda8bab823c8b40e541ef62e3a9fee9210b578bcf365086e629b16f2e46b13ad942949d80f')
-sha512sums_aarch64=('45e727a8efdafa1582f302d6d914968c25332eb798a28928e6ba8fc4a199bfe2c59609dba9d88b09d241f6d57deb3fe821deae21d7364302d09945c3d53b06f2')
+sha512sums_pentium4=('66502116fe111ee01b5e94dca0bdcc85c5d513fb702cfbff5360c519efccfba1ef6d7217da258366d3c992ff08b4103ef2fae55fc9cff516e612d233fc8a1a2a')
+sha512sums_x86_64=('7171d146bf800ae6e9421fd62f6e0f232ada734e73daf8bbbfece3a8ee2ae4ec57fa826d44fe74f3a0d565341ae308070011807fd936dae4f1ef4b54d2233247')
+sha512sums_arm7h=('eec8f209092dc2e5a247db762c2a7614cc7a82bdeda134a19c3342113ccfbcd7583807eeaae5abc69e844a0df47e967b359dad2f309b5d2a63c291e1ce2745dd')
+sha512sums_aarch64=('755efaee7ca16cb1f7404ef229ca55260a215a10f4c4d9a90cca75b7d7ced4acf89ea6d4dada7a9b86c61366b7e36178b912f499c52ebd7a081b2b50ef63d3c7')
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-${CARCH}.appimage"
