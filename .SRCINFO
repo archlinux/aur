@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-doctest
 	pkgdesc = The lightest feature rich C++ single header testing framework
-	pkgver = 2.4.9
+	pkgver = 2.4.11
 	pkgrel = 1
 	url = https://github.com/onqtam/doctest
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mingw-w64-doctest
 	makedepends = cmake
 	options = !buildflags
 	options = !strip
-	source = doctest-2.4.9.tar.gz::https://github.com/doctest/doctest/archive/refs/tags/v2.4.9.tar.gz
-	sha256sums = 19b2df757f2f3703a5e63cee553d85596875f06d91a3333acd80a969ef210856
+	source = doctest-2.4.11.tar.gz::https://github.com/doctest/doctest/archive/refs/tags/v2.4.11.tar.gz
+	sha256sums = 632ed2c05a7f53fa961381497bf8069093f0d6628c5f26286161fbd32a560186
 
 pkgname = mingw-w64-doctest
