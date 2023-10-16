@@ -4,8 +4,8 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname-lts"
-pkgver=6.1.57
-pkgrel=2
+pkgver=6.1.58
+pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
 arch=(x86_64)
@@ -46,7 +46,7 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
-  'f9ebfe3ddc5152d87b37e33be30e31875d137433be10a57ce29d2eae7b6e91b1'
+  'ce987ed3d2f640b3a2a62a0a8573d538a36dfd3cc31e2d7a239ce5a16c1c21ad'
   'SKIP'
   'fcf0b005d3cde29b54a61b25bef3efb42a12ac38c039200ac8f4756618270820'
 
