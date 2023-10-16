@@ -1,6 +1,6 @@
 pkgbase = antiduplx-git
 	pkgdesc = Command line tool to find and remove similar pictures
-	pkgver = 1.0.1.r28.895a50c
+	pkgver = 1.0.1.r30.32cd0c6
 	pkgrel = 1
 	url = https://github.com/ermig1979/AntiDuplX
 	arch = x86_64
