@@ -123,9 +123,8 @@ pkgver() {
          "$(git rev-parse --short=7 HEAD)"
 }
 
-# # There are no tests
+# # Skip tests
 # check (){
-#
 # }
 
 build() {
