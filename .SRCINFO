@@ -1,0 +1,15 @@
+pkgbase = istat-bin
+	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/acheronfail/istat
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gcc-libs
+	optdepends = dbus: sending notifications
+	optdepends = dunst: showing if notifications are paused or not via dunst
+	optdepends = i3-wm: use it as the i3 status_command
+	source = istat-0.0.0.zip::https://github.com/acheronfail/istat/releases/download/0.0.0/istat-x86_64-unknown-linux-gnu.zip
+	sha512sums = c22062a54bb9383818ffd9f505ef86927017df87cd61b3fb8a4fd58cb61be6fbbe9e26e402a91b2a48b42aa2d1a6794fe330d3e0acadfc1fd23f9267260533c0
+
+pkgname = istat-bin
