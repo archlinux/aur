@@ -1,13 +1,14 @@
-# Maintainer: csantosb <csantosb dot inventati dot org>
+# Maintainer: Makus Koch <markus@notsyncing.net>
+
 pkgname=python-cocotb
-pkgver=1.7.2
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
 arch=('any')
 url="http://github.com/cocotb/cocotb/"
 license=('BSD')
-depends=('python' 'python-setuptools')
-makedepends=('git' 'python-pip')
+depends=('python' 'python-setuptools' 'python-find_libpython')
+makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
