@@ -1,7 +1,7 @@
 pkgbase = istat
 	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acheronfail/istat
 	arch = x86_64
 	license = GPL-3.0-only

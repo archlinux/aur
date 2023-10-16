@@ -1,7 +1,7 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=istat
 pkgver="0.7.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
 url="https://github.com/acheronfail/istat"
