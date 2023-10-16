@@ -2,7 +2,7 @@
 # Previous maintainer: Mark Vainomaa <mikroskeem round around a mikroskeem dot eu>
 
 pkgname=quakespasm
-pkgver=0.96.0
+pkgver=0.96.1
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. Stable version with optional Mission pack desktop files."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("https://sourceforge.net/projects/quakespasm/files/Source/${pkgname}-${p
         "${pkgname}-mp1.desktop"
         "${pkgname}-mp2.desktop"
         "${pkgname}-impel.desktop")
-sha256sums=('49ae252c02c1df1a4c1958e92a7cc697538110970b3870dc146105b0ed30c0ec'
+sha256sums=('49a53e451d5e250982a855a8c9d2694c12397f01bd6fad0dea9e3f57f443b5cc'
             '09f6819046421f00dd851c9dc6913e931bf410deb1fc4c11f15ffa56c14a9458'
             '2a1a8ee5f1c2b849cb9e11b61cb2745e791595025acbe779396c41b5ff97ba2a'
             '99a957c430d4a67fd78a9d7f49095a4c00c09a9840c69e347d46863694ebdc76'
