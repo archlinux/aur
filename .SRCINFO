@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-fmtconv-git
 	pkgdesc = Plugin for Vapoursynth: fmtconv (GIT version)
-	pkgver = 30.17.g3eec42f
+	pkgver = 30.29.gf2d8f82
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166504
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vapoursynth-plugin-fmtconv-git
 	provides = vapoursynth-plugin-fmtconv
 	conflicts = vapoursynth-plugin-fmtconv
 	options = debug
-	source = git+https://github.com/EleonoreMizo/fmtconv.git
+	source = git+https://gitlab.com/EleonoreMizo/fmtconv.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-fmtconv-git

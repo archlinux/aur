@@ -2,7 +2,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=30.17.g3eec42f
+pkgver=30.29.gf2d8f82
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/EleonoreMizo/${_plug}.git")
+source=("git+https://gitlab.com/EleonoreMizo/${_plug}.git")
 sha256sums=('SKIP')
 options=('debug')
 
