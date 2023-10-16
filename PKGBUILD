@@ -5,7 +5,7 @@
 _pkgname=freetype2
 _pkgbasename=${_pkgname}-v35
 pkgname=lib32-${_pkgbasename}
-pkgver=2.13.0
+pkgver=2.13.2
 pkgrel=1
 pkgdesc="TrueType font rendering library with v35 bytecode interpreter only"
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=(
   0003-Enable-v35-subpixel-hinting.patch
   0004-Enable-long-PCF-family-names.patch
 )
-sha256sums=('5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c'
+sha256sums=('12991c4e55c506dd7f9b765933e62fd2be2e06d421505d7950a132e4f1bb484d'
  SKIP SKIP SKIP SKIP
 )
 
