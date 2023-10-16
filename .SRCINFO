@@ -1,0 +1,17 @@
+pkgbase = jellyfin-rpc-iced-git
+	pkgdesc = GUI For Jellyfin-RPC
+	pkgver = r10.ea59827
+	pkgrel = 1
+	url = https://github.com/Radiicall/jellyfin-rpc-iced
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = jellyfin-rpc-iced
+	conflicts = jellyfin-rpc-iced
+	source = git+https://github.com/Radiicall/jellyfin-rpc-iced.git
+	md5sums = SKIP
+
+pkgname = jellyfin-rpc-iced-git
