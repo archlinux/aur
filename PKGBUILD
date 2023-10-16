@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="$_pkgname-git"
-pkgver=1.2.0.r291.g40e64d73e
+pkgver=1.2.0.r301.g05b49c75c
 pkgrel=1
 pkgdesc='An advanced drum machine (git version)'
 arch=(x86_64)
@@ -76,7 +76,7 @@ package() {
 
   # install docs
   cd $_pkgname
-  install -vDm644 ChangeLog DEVELOPERS INSTALL.md README.md \
+  install -vDm644 ChangeLog DEVELOPERS.md INSTALL.md README.md \
       -t "$pkgdir"/usr/share/doc/$pkgname
   # install html manual & tutorial
   cd data/doc

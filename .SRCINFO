@@ -1,6 +1,6 @@
 pkgbase = hydrogen-git
 	pkgdesc = An advanced drum machine (git version)
-	pkgver = 1.2.0.r291.g40e64d73e
+	pkgver = 1.2.0.r301.g05b49c75c
 	pkgrel = 1
 	url = https://github.com/hydrogen-music/hydrogen
 	arch = x86_64
