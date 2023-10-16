@@ -1,0 +1,20 @@
+pkgbase = sysstat-mail-report-git
+	pkgdesc = Send periodic email reports with graphs plotted from sysstat data
+	pkgver = r73.039c137
+	pkgrel = 1
+	url = https://github.com/desbma/sysstat_mail_report
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = gnuplot
+	depends = python
+	depends = smtp-forwarder
+	depends = sysstat
+	optdepends = scour: for lossless SVG crunching
+	optdepends = optipng: for lossless PNG crunching
+	optdepends = oxipng: for lossless PNG crunching
+	backup = etc/conf.d/sysstat-mail-report
+	source = git+https://github.com/desbma/sysstat_mail_report
+	sha512sums = SKIP
+
+pkgname = sysstat-mail-report-git
