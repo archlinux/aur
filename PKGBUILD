@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'dbus' 'libxcomposite' 'gcc-libs' 'cairo' 'glibc' 'nss' 'pan
     'nspr' 'gtk3' 'expat' 'at-spi2-core' 'libxrandr' 'libxdamage' 'libcups' 'libx11' 'glib2' 'libxfixes' 'libxext')
 makedepends=('pnpm' 'gendesk' 'npm>=8' 'nodejs>=18.17.5')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6387edc84d3b0ee5774df9b34ad12a546e893a1145ecf7adc3913301d0a87d78')
+sha256sums=('778828a939e61561ebafd7be9b5e80fc1232aca8cc926b19ee0e7d961f518ca4')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
 }
