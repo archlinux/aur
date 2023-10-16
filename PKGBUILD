@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Tool to redirect ROG Ally accelerometer and gyro data from iio to evdev for use in games and applications."
 arch=('x86_64')
 url="https://github.com/KWottrich/ally-motion-evdev"
-makedepends=('git' 'cmake' 'gcc' 'make')
+makedepends=('make')
 source=("git+https://github.com/KWottrich/ally-motion-evdev.git"
         "ally-motion-evdev.service"
         "65-bmi323.rule"
