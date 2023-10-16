@@ -2,7 +2,7 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq
-pkgver=1.9.12
+pkgver=1.9.14
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('jdk11-openjdk' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bisq-network/bisq/archive/v${pkgver}.tar.gz"
 	"https://github.com/bisq-network/bisq/releases/download/v${pkgver}/bisq-${pkgver}.tar.gz.asc"
 	"bisq.desktop")
-sha256sums=('c802d86665105c6738b5268b30c13b88027ee0d9e8f2f82150a529150b431164'
+sha256sums=('e5c1a95a5a67798cbd38460d6fa7e0c753ff3c804091da0bd5917201df52fff8'
             'SKIP'
             '687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
 validpgpkeys=('B493319106CC3D1F252E19CBF806F422E222AA02') # Alejandro García
@@ -25,6 +25,8 @@ provides=("bisq")
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
   msg2 "Building bisq..."
+  sed -i '/vendor = JvmVendorSpec.AZUL/d' build-logic/commons/src/main/groovy/bisq.java-conventions.gradle
+  sed -i '/implementation = JvmImplementation.VENDOR_SPECIFIC/d' build-logic/commons/src/main/groovy/bisq.java-conventions.gradle
   ./gradlew clean :desktop:build -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk -x test
 }
 
