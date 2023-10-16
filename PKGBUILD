@@ -45,14 +45,18 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=118.0.1-1"
-  "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git")
+  "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
+  "0027-bgo-915306-rust-1.73-compatibility-patch1.patch"
+  "0027-bgo-915306-rust-1.73-compatibility-patch2.patch")
 sha256sums=('a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'c43403caec25e4ee947d731f640a6aca3b1c35d1ac6c8994109605e26a20aa69'
+            '7d7c217083097eaed566687b9d1a7493af5f00a18d25734f7db4e1b07a502d9d')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -227,6 +231,10 @@ END
 
   # Update privacy preferences
   patch -Np1 -i "${_patches_dir}"/custom/privacy-preferences.patch
+
+  # Rust 1.73 Compatibility
+  patch -Np1 -i "$srcdir"/0027-bgo-915306-rust-1.73-compatibility-patch1.patch
+  patch -Np1 -i "$srcdir"/0027-bgo-915306-rust-1.73-compatibility-patch2.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
