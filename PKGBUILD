@@ -1,7 +1,7 @@
 # Maintainer: Gerard Salvatella <mail@gerardsalvatella.com>
 
 pkgname=virtualhub
-pkgver=42982
+pkgver=56436
 pkgrel=1
 epoch=
 pkgdesc="Toolbox for Yoctopuce USB devices"
