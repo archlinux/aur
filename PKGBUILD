@@ -2,7 +2,7 @@
 pkgname=x-minecraft-launcher-bin
 _appname=xmcl
 _appname2="X Minecraft Launcher"
-pkgver=0.36.0
+pkgver=0.36.2
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
 arch=('aarch64' 'x86_64')
@@ -19,8 +19,8 @@ source=("LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher
     "${pkgname%-bin}.sh")
 sha256sums=('274fb5c556a3f3fdc5b37ef6f6bbd8e35055b11a816f3ae69efec869f85638f5'
             '02832427680007bec0ad2ea6df5a264e538e88deb9d2c5315e9ed1f374b9101b')
-sha256sums_aarch64=('4743f75c5e12a3a409e16439c4b09131a395406838c08c39f287bcf7cf9baeaf')
-sha256sums_x86_64=('772663d35ce43c003b90de631fcb4135d34b90047b19c1411eab01cf1b622aba')
+sha256sums_aarch64=('21bb8b6ee2e12132da5fb077152408de398f6c9f14d94a680e6abfd14db1ba5f')
+sha256sums_x86_64=('2512500eee42ecf775a102c971caf0eda84ae36ce5694b8645658dee8c8334dd')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar e "${srcdir}/opt/${_appname2}/resources/app.asar" "${srcdir}/app.asar.unpacked"
