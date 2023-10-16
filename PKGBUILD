@@ -1,4 +1,4 @@
-# Maintainer: Witalij Berdinskich radio_rogal[at]keemail.me
+# Maintainer: Vitalij Berdinskih <vitalij_r2 at outlook dot com>
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: John Trengrove <john@retrofilter.com>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
@@ -6,7 +6,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=sqlite-jdbc
-pkgver=3.43.0.0
+pkgver=3.43.2.0
 pkgrel=1
 pkgdesc='JDBC driver for SQLite'
 arch=('x86_64')
@@ -15,6 +15,8 @@ license=('Apache')
 depends=('java-runtime>=8')
 makedepends=('maven')
 source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
+md5sums=('85753c5a34e238e5d1e9a102c9a6e9cd')
+sha256sums=('1e2cd64822af1e47c14dfa4d3bc24570d0977fb8bf18a2a30a422ce0428a4686')
 
 prepare() {
   # remove unused sqlite binaries
@@ -41,4 +43,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('1410b9ac24e2a634c057be0ec715d52ad168a9cae3553978bab83df23d161e11')
