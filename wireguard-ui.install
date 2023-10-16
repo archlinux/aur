@@ -41,7 +41,7 @@ pre_remove() {
 }
 
 post_remove() {
-    rm -fr /opt/wireguard-ui
+    note "Old settings are located in /opt/wireguard-ui/db, skip removing."
 	systemctl --quiet daemon-reload
     sysctl -q --system
 }
