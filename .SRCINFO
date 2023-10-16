@@ -1,0 +1,17 @@
+pkgbase = pear-merger
+	pkgdesc = Fast and accurate Illumina Paired-End reAd mergeR
+	pkgver = 0.9.11
+	pkgrel = 1
+	url = https://github.com/ressy/pear
+	arch = x86_64
+	arch = i686
+	license = CCPL
+	makedepends = git
+	conflicts = pear-merger-git
+	replaces = pear-merger-git
+	source = https://codeload.github.com/ressy/pear/tar.gz/refs/tags/v0.9.11
+	source = no-static.patch
+	sha512sums = 48009ec961a57e99eb35bddaa545644cf563804c93b235ec6acf64f62fde590366e6c4360773456742d22dfa54a559ae84dc1bda8bf34e09614abb9897e903cb
+	sha512sums = SKIP
+
+pkgname = pear-merger
