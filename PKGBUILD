@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Paul <paul@mram.io>
 pkgname=mcpelauncher-msa-ui-qt-git
-pkgver=v0.6.0.r0.g41138a9
-pkgrel=3
+pkgver=0.9.0.r0.ge335369
+pkgrel=1
 pkgdesc="Microsoft Account authentication user interface (Qt) for the mcpelauncher-msa-daemon"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/msa-manifest"
@@ -44,7 +44,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/msa-manifest"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/v//'
 }
 prepare() {
   cd "$srcdir/msa-manifest"
