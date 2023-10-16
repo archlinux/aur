@@ -12,7 +12,7 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -20,13 +20,12 @@ license=('custom')
 depends=(
     'pcre'
     'zlib'
-    'openssl'
     'gperftools'
     'geoip'
     'mailcap'
     'libxcrypt'
-    #'luajit'
-    #'lua-resty-core'
+    'luajit'
+    'lua-resty-core>=0.1.27'
     'libmaxminddb'
 )
 backup=(etc/tengine/fastcgi.conf
@@ -45,6 +44,7 @@ _brotli_ver=1.0.0rc
 _geoip2_ver=3.4
 _fancyidx_ver=0.5.2
 _jdomain_ver=1.4.0
+_tongsuo_ver=8.3.3
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
         service
         logrotate
@@ -52,6 +52,8 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
         geoip2-v${_geoip2_ver}.tar.gz::https://github.com/leev/ngx_http_geoip2_module/archive/refs/tags/${_geoip2_ver}.tar.gz
         fancyindex-v${_fancyidx_ver}.tar.xz::https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_fancyidx_ver}/ngx-fancyindex-${_fancyidx_ver}.tar.xz
         jdomain-v${_jdomain_ver}.tar.gz::https://github.com/nicholaschiasson/ngx_upstream_jdomain/archive/refs/tags/${_jdomain_ver}.tar.gz
+        tongsuo-v${_tongsuo_ver}.tar.gz::https://github.com/Tongsuo-Project/Tongsuo/archive/refs/tags/${_tongsuo_ver}.tar.gz
+        fix-tongsuo-grpc.patch::https://github.com/alibaba/tengine/commit/0facb9e1b5ee968cdccf43ff669285ac49c1e9ec.patch
         )
 sha256sums=('a47dce983dd34389e4c4d1afda03c74c2d3fe1d7a0a51fc86cc2046d2f4a0e5b'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
@@ -59,14 +61,21 @@ sha256sums=('a47dce983dd34389e4c4d1afda03c74c2d3fe1d7a0a51fc86cc2046d2f4a0e5b'
             'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b'
             'ad72fc23348d715a330994984531fab9b3606e160483236737f9a4a6957d9452'
             '04c3d098ed5d8d6016d92a784c7f7692dd8cd65603a7e7d59dd3d4bbdc374656'
-            '3e8021433b1444b3caa1674fe344dc0ed58b8d8275f227c63950f6a156c31883')
+            '3e8021433b1444b3caa1674fe344dc0ed58b8d8275f227c63950f6a156c31883'
+            '038a75a02d8f7063fbc36d6b9a28f136f25959acda2caa577276849b57c4f698'
+            'd2ca0aeb2d25e9813de4d1700634627112013764df6c5161fcf66ea3ab6cfcb0')
+
+prepare() {
+    cd tengine-$pkgver
+
+    patch -Np1 -i ../fix-tongsuo-grpc.patch
+}
 
 build() {
     cd tengine-$pkgver
 
-    #export LUAJIT_LIB=/usr/lib
-    #export LUAJIT_INC=/usr/include/luajit-2.1
-    #--with-ld-opt="${LDFLAGS// /,},-lpcre,-rpath,$LUAJIT_LIB" \
+    export LUAJIT_LIB=/usr/lib
+    export LUAJIT_INC=/usr/include/luajit-2.1
     ./configure \
         --prefix=/etc/tengine \
         --conf-path=/etc/tengine/tengine.conf \
@@ -84,9 +93,11 @@ build() {
         --http-scgi-temp-path=/var/lib/tengine/scgi \
         --http-uwsgi-temp-path=/var/lib/tengine/uwsgi \
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
-        --with-ld-opt="$LDFLAGS" \
+        --with-ld-opt="${LDFLAGS// /,},-lpcre" \
         --with-compat \
         --with-file-aio \
+        --with-openssl=../Tongsuo-${_tongsuo_ver} \
+        --with-openssl-opt="enable-ntls" \
         --with-google_perftools_module \
         --with-http_addition_module \
         --with-http_auth_request_module \
@@ -96,6 +107,7 @@ build() {
         --with-http_geoip_module \
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
+        --with-http_lua_module \
         --with-http_mp4_module \
         --with-http_realip_module \
         --with-http_secure_link_module \
@@ -118,6 +130,7 @@ build() {
         --add-module=./modules/ngx_http_upstream_dynamic_module \
         --add-module=./modules/ngx_http_upstream_session_sticky_module \
         --add-module=./modules/ngx_http_upstream_vnswrr_module \
+        --add-module=./modules/ngx_tongsuo_ntls \
         --add-module=$srcdir/ngx_upstream_jdomain-${_jdomain_ver} \
         --add-dynamic-module=$srcdir/ngx_brotli-${_brotli_ver} \
         --add-dynamic-module=$srcdir/ngx_http_geoip2_module-${_geoip2_ver} \
