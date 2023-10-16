@@ -1,13 +1,19 @@
-pkgbase = python-pyradios
-	pkgdesc = Python client for the Radio Browser API.
-	pkgver = 1.0.2
+pkgbase = radioactive
+	pkgdesc = Play and record any radio stations around the globe right from your terminal.
+	pkgver = 2.8.0
 	pkgrel = 1
-	url = https://github.com/andreztz/pyradios
+	url = https://github.com/deep5050/radio-active
 	arch = any
-	license = GPL3
+	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	source = python-pyradios-1.0.2.tar.gz::https://github.com/andreztz/pyradios/archive/refs/tags/v1.0.2.tar.gz
-	md5sums = ed512d3607f29b5568534b12e1d2035c
+	depends = ffmpeg
+	depends = python-colorlog
+	depends = python-pick
+	depends = python-pyradios=1.0.2
+	depends = python-requests-cache
+	depends = python-rich
+	depends = python-zenlog
+	source = radioactive-2.8.0.tar.gz::https://github.com/deep5050/radio-active/archive/refs/tags/v2.8.0.tar.gz
+	md5sums = 3bd338dd40a91f299ad5877b06176fbd
 
-pkgname = python-pyradios
+pkgname = radioactive
