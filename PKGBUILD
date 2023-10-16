@@ -14,7 +14,7 @@ source=("https://apt.puppetlabs.com/pool/${_ubuntu_release}/puppet/p/puppet-bolt
 md5sums=('0b87843b67e63b0c26d2750a3d68e516')
 
 package() {
-  tar xJf data.tar.xz
+  tar xzf data.tar.gz
 
   mv usr "${pkgdir}"
   mv opt "${pkgdir}"
