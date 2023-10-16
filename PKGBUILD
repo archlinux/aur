@@ -3,7 +3,7 @@
 # Binary provider: DiamivaeBro <assassinssamsa@gmail.com>
 pkgname=ayugram-desktop-bin
 pkgver=4.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop version of Telegram messaging app with ToS breaking features in mind - Static binaries"
 arch=(x86_64)
 url="https://github.com/AyuGram/AyuGramDesktop"
