@@ -1,0 +1,4 @@
+48c48
+< nxbt = libnxctrl[nxbt]~=0.2.1; sys_platform == 'linux'
+---
+> nxbt = libnxctrl[nxbt]~=0.2.1
