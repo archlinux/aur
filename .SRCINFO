@@ -1,0 +1,14 @@
+pkgbase = perl-mro-every
+	pkgdesc = EVERY & EVERY::LAST pseudo-packages using mro.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://metacpan.org/dist/mro-EVERY
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/L/LE/LEMBARK//mro-EVERY-v1.0.1.tar.gz
+	sha512sums = 1705f62a9798b9b258c117bcbf3e592cbfc8313dff1310858c86199154b7c55041d66f822d93fab06c46554961135ef89a0b1a3273456b9e8d421b6d26756adb
+
+pkgname = perl-mro-every
