@@ -1,10 +1,11 @@
 pkgbase = captfencoder-bin
 	pkgdesc = A rapid cross platform network security tool suite, providing network security related code conversion, classical cryptography, cryptography, asymmetric encryption, miscellaneous tools, and aggregating all kinds of online tools.
 	pkgver = 3.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/guyoung/CaptfEncoder
+	arch = aarch64
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = gendesk
 	depends = glu
 	depends = libxcb
@@ -22,9 +23,13 @@ pkgbase = captfencoder-bin
 	depends = pango
 	provides = captfencoder=3.1.2
 	conflicts = captfencoder
-	source = captfencoder-3.1.2.bin::https://github.com/guyoung/CaptfEncoder/releases/download/3.1.2/CaptfEncoder-ubuntu-20-x64-3.1.2.bin
 	source = captfencoder.png::https://raw.githubusercontent.com/guyoung/CaptfEncoder/3.1.2/images/captfencoder-log-1.png
-	sha256sums = dfed9cbb934bae883f5ae2e6b1d71908a6a8238d7bfdf7b243d9d2c272a30462
+	source = LICENSE::https://raw.githubusercontent.com/guyoung/CaptfEncoder/master/LICENSE
 	sha256sums = 3c0c7b76c0bd5964f77f48d9a44ccc00b59784c14fcd2ce511c6129e71c324a8
+	sha256sums = 6eaf5f24b6c27324c0e1c433b511425d93a4c0f67de1749758188511b50eefa0
+	source_aarch64 = captfencoder-3.1.2-aarch64.bin::https://github.com/guyoung/CaptfEncoder/releases/download/3.1.2/CaptfEncoder-aarch64-linux-gnu-3.1.2.bin
+	sha256sums_aarch64 = 69f2c17bbe751978a5aa740bd02dfecfd3e16c36f629d86e56a79581149beef3
+	source_x86_64 = captfencoder-3.1.2-x86_64.bin::https://github.com/guyoung/CaptfEncoder/releases/download/3.1.2/CaptfEncoder-ubuntu-20-x64-3.1.2.bin
+	sha256sums_x86_64 = dfed9cbb934bae883f5ae2e6b1d71908a6a8238d7bfdf7b243d9d2c272a30462
 
 pkgname = captfencoder-bin
