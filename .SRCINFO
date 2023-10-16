@@ -1,0 +1,21 @@
+pkgbase = lib32-gettext
+	pkgdesc = GNU internationalization library (32-bit)
+	pkgver = 0.22.3
+	pkgrel = 1
+	url = https://www.gnu.org/software/gettext/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-acl
+	depends = lib32-gcc-libs
+	depends = gettext
+	options = !docs
+	source = https://ftp.gnu.org/pub/gnu/gettext/gettext-0.22.3.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/gettext/gettext-0.22.3.tar.gz.sig
+	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
+	validpgpkeys = 68D94D8AAEEAD48AE7DC5B904F494A942E4616C2
+	validpgpkeys = 9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D
+	sha512sums = cd27e73cc6c106951cca43a200555d279b8c877c4d17bf53de9e187e466c5e9dba0551c7bd21bba4f46772f198361fa37da320495516a5b8fd9e6c85b24eb859
+	sha512sums = SKIP
+
+pkgname = lib32-gettext
