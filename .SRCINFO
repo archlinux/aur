@@ -1,6 +1,6 @@
 pkgbase = kiauto-git
 	pkgdesc = KiCad automation scripts.
-	pkgver = 476.717b6cb
+	pkgver = 891.f489865
 	pkgrel = 1
 	url = https://github.com/INTI-CMNB/KiAuto
 	arch = i686

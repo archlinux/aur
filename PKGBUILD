@@ -2,7 +2,7 @@
 
 _pkgname=kiauto
 pkgname=kiauto-git
-pkgver=476.717b6cb
+pkgver=891.f489865
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="KiCad automation scripts."
