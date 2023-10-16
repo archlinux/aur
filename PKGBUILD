@@ -1,7 +1,7 @@
 _pkgname=waycratelock
 pkgname=waycratelock-git
 pkgver=r41.bf28449
-pkgrel=2
+pkgrel=3
 pkgdesc="waycratelock, lock for ext-session-lock"
 url="https://github.com/waycrate/waycratelock"
 arch=('x86_64' 'aarch64')
