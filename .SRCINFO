@@ -1,6 +1,6 @@
 pkgbase = plymouth-kcm-git
 	pkgdesc = KCM to manage the Plymouth (Boot) theme
-	pkgver = v5.26.90.r117.g622e920
+	pkgver = 5.26.90.r117.g622e920
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plymouth-kcm
 	arch = x86_64

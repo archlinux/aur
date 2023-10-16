@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plymouth-kcm-git
-pkgver=v5.26.90.r117.g622e920
+pkgver=5.26.90.r117.g622e920
 pkgrel=1
 pkgdesc='KCM to manage the Plymouth (Boot) theme'
 arch=(x86_64)
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
