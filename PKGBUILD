@@ -11,7 +11,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=('electron22' 'hicolor-icon-theme' 'bash')
-makdedepends=('asar')
+makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('16afa40dd351ec6d056e2fbe3851b161b80514e9e9773c72d09561e6dfe2f21b'

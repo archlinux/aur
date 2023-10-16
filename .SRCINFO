@@ -5,6 +5,7 @@ pkgbase = thedesk-bin
 	url = https://thedesk.top/
 	arch = x86_64
 	license = GPL3
+	makedepends = asar
 	depends = electron22
 	depends = hicolor-icon-theme
 	depends = bash
