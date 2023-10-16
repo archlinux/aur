@@ -1,11 +1,13 @@
 _pkgname=waycratelock
 pkgname=waycratelock-git
 pkgver=r41.bf28449
-pkgrel=3
+pkgrel=4
 pkgdesc="waycratelock, lock for ext-session-lock"
 url="https://github.com/waycrate/waycratelock"
 arch=('x86_64' 'aarch64')
 license=('GPL')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 makedepends=('git' 'ninja' 'cmake' 'wayland-protocols' 'session-lock-qt')
 depends=('qt6-wayland' 'qt6-base' 'pam')
 source=("${_pkgname}::git+${url}.git")
