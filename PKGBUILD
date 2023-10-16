@@ -1,5 +1,6 @@
-# Maintainer: Santiago Torres-Arias <santiago in el archlinux organization>
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
+# Contributor: Santiago Torres-Arias <santiago in el archlinux organization>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=mingw-w64-doctest
 pkgver=2.4.9
