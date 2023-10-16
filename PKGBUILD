@@ -2,7 +2,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia"
-pkgver="0.30.0"
+pkgver="0.31.0"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)"
 arch=(any)
@@ -53,13 +53,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/release
         "nvidia.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
-sha256sums=('68a79b2c1ae1a56c046e6ecf07f0b3a8135461d387f6ad0d8f0623a7f300ca80'
+sha256sums=('863bf5ba1051f223a30efeb0160846784e9b68266d95c7a1c8bac36b19122536'
             '10223a97a622ea7e641b4305a9a4f7bf0cb0526dacfbfa5970171558b3a63488')
 options=(!makeflags !buildflags !strip)
 
 build() {
 	cd "$srcdir/hyprland-source"
-	make fixwlr
 	patch --directory="$srcdir/hyprland-source/subprojects/wlroots/" --forward --strip=0 \
 		--input="${srcdir}/nvidia.patch"
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
@@ -79,5 +78,6 @@ package() {
 	install -Dm644 hyprland-source/example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 hyprland-source/example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 hyprland-source/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install -Dm755 "${srcdir}/tmpwlr/lib/libwlroots.so.12032" -t "${pkgdir}/usr/lib"
+	mv "${srcdir}/tmpwlr/lib/libwlroots.so.12" "${srcdir}/tmpwlr/lib/libwlroots.so.12032". 
+	#install -Dm755 "${srcdir}/tmpwlr/lib/libwlroots.so.12032" -t "${pkgdir}/usr/lib"
 }
