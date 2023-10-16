@@ -17,6 +17,8 @@ pkgbase = plymouth-kcm-git
 	makedepends = kcmutils-git
 	depends = systemsettings
 	depends = plymouth
+	provides = plymouth-kcm
+	conflicts = plymouth-kcm
 	source = plymouth-kcm::git+https://invent.kde.org/plasma/plymouth-kcm.git
 	sha256sums = SKIP
 
