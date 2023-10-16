@@ -3,18 +3,18 @@
 # Contributor: Yuuta Liang <yuuta@yuuta.moe>
 
 pkgname=openbgpd
-pkgver=8.2
+pkgver=8.3
 pkgrel=1
 pkgdesc="A FREE implementation of the Border Gateway Protocol, Version 4"
 arch=(x86_64)
 url="https://www.openbgpd.org"
 license=('ISC')
-depends=(libevent)
+depends=('libevent' 'libmnl')
 source=(https://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-${pkgver}.tar.gz{,.asc}
         bgpd.service
         sysusers.conf)
 changelog=openbgpd.changelog
-sha256sums=('0d1d0356f87de850c04200755ac28cf75f36da0e3040bbc277e063dd754a2181'
+sha256sums=('a1e4e59694c16f82e551ee74499000807e218731ec549b8f495c7ada942ec3fe'
             'SKIP'
             '374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6'
             '00165fa765f95ad0a99df2744401b7892384601f70a98d6d0097144cb55f9d68')

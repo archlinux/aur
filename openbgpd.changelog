@@ -1,3 +1,19 @@
+## 8.3 - 2023-10-13
+    * bgpd 8.1 and 8.2 could send a bad COMMUNITY attribute when
+      non-transitive ext-communities are present. A workaround is to
+      add a filter rule to clear non-transitive ext-communities:
+            match to ebgp set ext-community delete ovs *
+      This fix is included in OpenBSD 7.4.
+
+    * Fix a possible fatal error in the RDE when "announce add-path send all"
+      is used. The error is triggered by an ineligible path which is wrongly
+      distributed.
+
+    * Fix selection of the local nexthop for the alternate address family.
+      This is used by 'announce IPv6 unicast' over an IPv4 session or
+      vice-versa.
+
+
 ## 8.2 - 2023-10-02
     * Update ASPA support to follow draft-ietf-sidrops-aspa-verification-16
       and draft-ietf-sidrops-aspa-profile-16 by making the ASPA lookup
