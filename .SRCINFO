@@ -1,0 +1,23 @@
+pkgbase = plymouth-kcm-git
+	pkgdesc = KCM to manage the Plymouth (Boot) theme
+	pkgver = v5.26.90.r117.g622e920
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/plymouth-kcm
+	arch = x86_64
+	groups = kf6-git
+	license = LGPL
+	makedepends = cmake-git
+	makedepends = extra-cmake-modules-git
+	makedepends = kauth-git
+	makedepends = karchive-git
+	makedepends = knewstuff-git
+	makedepends = kio-git
+	makedepends = ki18n-git
+	makedepends = kconfig-git
+	makedepends = kcmutils-git
+	depends = systemsettings
+	depends = plymouth
+	source = plymouth-kcm::git+https://invent.kde.org/plasma/plymouth-kcm.git
+	sha256sums = SKIP
+
+pkgname = plymouth-kcm-git
