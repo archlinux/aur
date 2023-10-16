@@ -5,10 +5,12 @@ pkgdesc="NordVPN client for Linux"
 arch=('x86_64' 'arm64')
 url="https://github.com/NordSecurity/nordvpn-linux"
 license=('GPL3')
-makedepends=('git' 'go' 'rust' 'mage' 'docker')
+makedepends=('go' 'mage' 'docker')
 depends=('iptables' 'iproute2')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn' 'nordvpn-bin' 'nordvpn-cli-bin' 'nordvpn-git')
+source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f68d839fca739d5bf7dfd905e558949e461d28fa815ccd88440889c15c3d3e6c')
 install=nordvpn.install
 
 prepare() {
@@ -16,12 +18,19 @@ prepare() {
    	echo "You are not a member of the docker group. Docker is required to build the package."
         exit 1
     fi
-    git clone https://github.com/NordSecurity/nordvpn-linux -b ${pkgver} "nordvpn-linux-${pkgver}"
+    bsdtar -xf "${pkgver}.tar.gz"
+    cd "nordvpn-linux-${pkgver}"
+    patch --forward --strip=1 --input="${srcdir}/../ci_env.sh.patch"
+    patch --forward --strip=1 --input="${srcdir}/../ci_compile.sh.patch"
+    patch --forward --strip=1 --input="${srcdir}/../magefiles_scripts.go.patch"
 }
 
 build() {
     cd "nordvpn-linux-${pkgver}"
     cp .env.sample .env
+    export pkgver=${pkgver}
+    export ENVIRONMENT="prod"
+    export VERSION=${pkgver}
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"

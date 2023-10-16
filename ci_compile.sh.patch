@@ -1,0 +1,14 @@
+diff --git a/ci/compile.sh b/ci/compile.sh
+index dd1bf9a..dba1c2a 100755
+--- a/ci/compile.sh
++++ b/ci/compile.sh
+@@ -8,7 +8,8 @@ source "${CI_PROJECT_DIR}"/ci/archs.sh
+ 
+ # Since race detector has huge performance price and it works only on amd64 and does not
+ # work with pie executables, its enabled only for development builds.
+-branch="${CI_COMMIT_REF_NAME:=$(git describe --contains --all HEAD)}"
++# branch="${CI_COMMIT_REF_NAME:=$(git describe --contains --all HEAD)}"
++branch="main"
+ # shellcheck disable=SC2153
+ [ "${branch}" != "main" ] && [ "${ENVIRONMENT}" = "dev" ] && [ "${ARCH}" = "amd64" ] && BUILDMODE="-race" || BUILDMODE="-buildmode=pie"
+ 

@@ -7,9 +7,7 @@ pkgbase = nordvpn
 	arch = x86_64
 	arch = arm64
 	license = GPL3
-	makedepends = git
 	makedepends = go
-	makedepends = rust
 	makedepends = mage
 	makedepends = docker
 	depends = iptables
@@ -19,5 +17,7 @@ pkgbase = nordvpn
 	conflicts = nordvpn-bin
 	conflicts = nordvpn-cli-bin
 	conflicts = nordvpn-git
+	source = https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/3.16.6.tar.gz
+	sha256sums = f68d839fca739d5bf7dfd905e558949e461d28fa815ccd88440889c15c3d3e6c
 
 pkgname = nordvpn

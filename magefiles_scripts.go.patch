@@ -1,0 +1,21 @@
+diff --git a/magefiles/scripts.go b/magefiles/scripts.go
+index eac26db..c3bf4af 100644
+--- a/magefiles/scripts.go
++++ b/magefiles/scripts.go
+@@ -32,12 +32,14 @@ func getEnv() (map[string]string, error) {
+ 
+ // TODO: replace with information coming from the Go toolchain
+ func getGitInfo() (*gitInfo, error) {
+-	hash, err := sh.Output("git", "rev-parse", "--short", "HEAD")
++	// hash, err := sh.Output("git", "rev-parse", "--short", "HEAD")
++        hash, err := sh.Output("echo", "")
+ 	if err != nil {
+ 		return nil, err
+ 	}
+ 
+-	version, err := sh.Output("git", "describe", "--tags", "--abbrev=0")
++	// version, err := sh.Output("git", "describe", "--tags", "--abbrev=0")
++        version, err := sh.Output("echo", os.Getenv("pkgver"))
+ 	if err != nil {
+ 		return nil, err
+ 	}

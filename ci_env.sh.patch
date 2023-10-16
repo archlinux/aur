@@ -1,0 +1,22 @@
+diff --git a/ci/env.sh b/ci/env.sh
+index 278e815..b051148 100755
+--- a/ci/env.sh
++++ b/ci/env.sh
+@@ -16,7 +16,8 @@ export NAME
+ COVERDIR="covdatafiles"
+ export COVERDIR
+ 
+-HASH=$(git rev-parse --short HEAD)
++# HASH=$(git rev-parse --short HEAD)
++HASH=""
+ export HASH
+ 
+ LIBNORD_VERSION="0.4.6"
+@@ -52,6 +53,6 @@ else
+   export REVISION
+ 
+   # '+' character is chosen because '_' is not allowed in .deb packages and '-' is not allowed in .rpm packages
+-  VERSION="$(git tag -l --sort=-v:refname | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$" | head -1)+${REVISION}"
++  # VERSION="$(git tag -l --sort=-v:refname | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$" | head -1)+${REVISION}"
+   export VERSION
+ fi
