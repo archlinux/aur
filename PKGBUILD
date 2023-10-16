@@ -1,4 +1,4 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot io>
+# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 __pkgname=firedragon
 _pkgname=$__pkgname-unsigned-extensions
