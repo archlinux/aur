@@ -1,9 +1,10 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Maintainer: Mike Bedwell <kennels_centavo.0n at icloud dot com
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 # Contributor: orumin <dev at orum.in>
 
 _basename=libraqm
 pkgname=lib32-libraqm
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A library that encapsulates the logic for complex text layout (32-bit)'
 arch=(x86_64)
@@ -12,7 +13,7 @@ license=(MIT)
 depends=(lib32-freetype2 lib32-fribidi libraqm)
 makedepends=(meson)
 source=(https://github.com/HOST-Oman/libraqm/releases/download/v$pkgver/raqm-$pkgver.tar.xz)
-sha256sums=('9ed6fdf41da6391fc9bf7038662cbe412c330aa6eb22b19704af2258e448107c')
+sha256sums=('5eb7de71b3d1dca34103860f3e8c55ebc184a3dbdfdd573c21a258e46982f1e6')
 
 build() {
     export CC='gcc -m32'
