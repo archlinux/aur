@@ -1,0 +1,30 @@
+diff --git a/src/basic/mountpoint-util.c b/src/basic/mountpoint-util.c
+index bf67f7e01a..97e0615047 100644
+--- a/src/basic/mountpoint-util.c
++++ b/src/basic/mountpoint-util.c
+@@ -605,23 +605,9 @@ int mount_nofollow(
+                 const char *filesystemtype,
+                 unsigned long mountflags,
+                 const void *data) {
++        // Disabled due to ChromiumOS kernel already protecting against mount paths with symlinks.
+ 
+-        _cleanup_close_ int fd = -EBADF;
+-
+-        /* In almost all cases we want to manipulate the mount table without following symlinks, hence
+-         * mount_nofollow() is usually the way to go. The only exceptions are environments where /proc/ is
+-         * not available yet, since we need /proc/self/fd/ for this logic to work. i.e. during the early
+-         * initialization of namespacing/container stuff where /proc is not yet mounted (and maybe even the
+-         * fs to mount) we can only use traditional mount() directly.
+-         *
+-         * Note that this disables following only for the final component of the target, i.e symlinks within
+-         * the path of the target are honoured, as are symlinks in the source path everywhere. */
+-
+-        fd = open(target, O_PATH|O_CLOEXEC|O_NOFOLLOW);
+-        if (fd < 0)
+-                return -errno;
+-
+-        return mount_fd(source, fd, filesystemtype, mountflags, data);
++        return RET_NERRNO(mount(source, target, filesystemtype, mountflags, data));
+ }
+ 
+ const char *mount_propagation_flag_to_string(unsigned long flags) {
