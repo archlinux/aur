@@ -1,0 +1,13 @@
+pkgbase = python-zenlog
+	pkgdesc = Python logging tool for lazy people.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/ManufacturaInd/python-zenlog
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = python-zenlog-1.1.tar.gz::https://github.com/ManufacturaInd/python-zenlog/archive/refs/tags/v1.1.tar.gz
+	md5sums = 1f26f594e5ad5db579af19352b71a10c
+
+pkgname = python-zenlog
