@@ -2,7 +2,7 @@
 
 _pkgname=jack_mixer
 pkgname="$_pkgname-git"
-pkgver=17.r7.g161e2f0
+pkgver=17.r8.g2a65a70
 pkgrel=1
 pkgdesc='A multi-channel audio mixer desktop application for JACK (git version)'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://rdio.space/jackmixer/'
 license=(GPL2)
 groups=(pro-audio)
 depends=(gcc-libs hicolor-icon-theme python-cairo python-gobject python-appdirs)
-makedepends=(cython git glib2 jack meson ninja python-docutils)
+makedepends=(cython0 git glib2 jack meson ninja python-docutils)
 optdepends=('new-session-manager: NSM session management support')
 provides=($_pkgname)
 conflicts=($_pkgname)

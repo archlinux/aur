@@ -1,12 +1,12 @@
 pkgbase = jack_mixer-git
 	pkgdesc = A multi-channel audio mixer desktop application for JACK (git version)
-	pkgver = 17.r7.g161e2f0
+	pkgver = 17.r8.g2a65a70
 	pkgrel = 1
 	url = https://rdio.space/jackmixer/
 	arch = x86_64
 	groups = pro-audio
 	license = GPL2
-	makedepends = cython
+	makedepends = cython0
 	makedepends = git
 	makedepends = glib2
 	makedepends = jack
