@@ -3,7 +3,7 @@
 pkgname=poezio-git
 _pkgname=poezio
 pkgrel=1
-pkgver=20190104.7d6cd695
+pkgver=20230706.58360005
 pkgdesc="A full-featured command-line irc-like (muc-centered) jabber client (git)"
 arch=('i686' 'x86_64')
 url="http://poez.io"
@@ -12,13 +12,12 @@ provides=('poezio')
 license=('zlib')
 depends=('python' 'python-setuptools' 'python-slixmpp-git')
 makedepends=('git' 'python-sphinx')
-optdepends=('pure-python-otr-git: OTR plugin'
-            'gnupg: GPG plugin'
+optdepends=('gnupg: GPG plugin'
             'python-pyinotify: screen/tmux detach plugin'
             'figlet: ASCII art plugin'
             'python-aiohttp: file upload')
 
-source=("git+https://lab.louiz.org/poezio/poezio.git")
+source=("git+https://codeberg.org/poezio/poezio.git")
 md5sums=('SKIP')
 
 pkgver() {
