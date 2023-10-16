@@ -13,10 +13,8 @@ depends=("blas-openblas" "petsc" "xtensor" "xtensor-blas")
 makedepends=("boost" "gcc" "git" "pybind11" "python-build" "python-installer" "python-numpy" "python-scikit-build" "python-setuptools" "nanobind")
 checkdepends=("python-sympy")
 options=(!emptydirs)
-source=("git+${url}#branch=main"
-        "0001-add-cstdint-to-finite-element.h.patch")
-sha512sums=('SKIP'
-           '4e7e1223fed54159e6e9dcf20529b0872cf23d95ebe07ba02a088dda26212b51bbdc608b4d4ef5c347c2ebfe029c022049cd01d354294ed191434cd4a8dd20e3')
+source=("git+${url}#branch=main")
+sha512sums=('SKIP')
 
 provides=("${_base}"
           "fenics-${_base}")

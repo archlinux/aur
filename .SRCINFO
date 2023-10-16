@@ -28,8 +28,6 @@ pkgbase = fenics-basix-git
 	replaces = basix
 	options = !emptydirs
 	source = git+https://github.com/FEniCS/basix#branch=main
-	source = 0001-add-cstdint-to-finite-element.h.patch
 	sha512sums = SKIP
-	sha512sums = 4e7e1223fed54159e6e9dcf20529b0872cf23d95ebe07ba02a088dda26212b51bbdc608b4d4ef5c347c2ebfe029c022049cd01d354294ed191434cd4a8dd20e3
 
 pkgname = fenics-basix-git
