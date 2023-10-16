@@ -1,0 +1,16 @@
+pkgbase = lib32-libnsl
+	pkgdesc = Public client interface library for NIS(YP)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/thkukuk/libnsl
+	arch = x86_64
+	license = LGPL-2.1-only
+	depends = lib32-glibc
+	depends = lib32-libtirpc
+	depends = libnsl=2.0.1
+	provides = libnsl.so
+	source = https://github.com/thkukuk/libnsl/archive/v2.0.1/libnsl-v2.0.1.tar.gz
+	sha512sums = 1d9290c3123c0933f156808c388654698f7d6994c625cbbc492cc07d656b996c62847048b14b93b8eda632945096ace418a3418ee1f40ff2cc748a3278f987a4
+	b2sums = 6988399a5c0f0dab89a47a026e8717f4a3276b0af7c7c507e7bcf1093951a258b54e84e09a679ff4e426ecffbcbb682c31ca393bde6cd92708e07d4709c203aa
+
+pkgname = lib32-libnsl
