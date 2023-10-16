@@ -3,8 +3,8 @@
 
 pkgname='python-dbus-signature-pyparsing'
 _srcname='dbus-signature-pyparsing'
-pkgver=0.04
-pkgrel=4
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='A Parser for a D-Bus Signature'
 arch=('any')
 license=('Apache')
@@ -15,7 +15,7 @@ checkdepends=('python-nose' 'python-hypothesis' 'python-hs-dbus-signature')
 source=(
   "${_srcname}-${pkgver}.tar.gz::https://github.com/stratis-storage/${_srcname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('71e10c81a72d3510c17a4283668694c9731d81cfb30d357c357ee104363bf541')
+sha256sums=('dae2cfa1326e5fcdd13a102f259dcd02130d7e6cc667ade3aa82a61984cc3338')
 
 check() {
   cd "${_srcname}-${pkgver}"

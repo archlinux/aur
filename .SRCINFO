@@ -1,0 +1,17 @@
+pkgbase = python-dbus-signature-pyparsing
+	pkgdesc = A Parser for a D-Bus Signature
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/stratis-storage/dbus-signature-pyparsing/releases
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-hypothesis
+	checkdepends = python-hs-dbus-signature
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pyparsing
+	source = dbus-signature-pyparsing-0.4.1.tar.gz::https://github.com/stratis-storage/dbus-signature-pyparsing/archive/v0.4.1.tar.gz
+	sha256sums = dae2cfa1326e5fcdd13a102f259dcd02130d7e6cc667ade3aa82a61984cc3338
+
+pkgname = python-dbus-signature-pyparsing
