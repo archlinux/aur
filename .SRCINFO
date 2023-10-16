@@ -1,6 +1,6 @@
 pkgbase = requestly-appimage
 	pkgdesc = Debug your network request across all platforms and browsers using a single app
-	pkgver = 1.5.11
+	pkgver = 1.5.12
 	pkgrel = 1
 	url = https://requestly.io/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = requestly-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = zlib
-	provides = requestly=1.5.11
+	provides = requestly=1.5.12
 	conflicts = requestly
 	options = !strip
-	source = requestly-1.5.11.AppImage::https://github.com/requestly/requestly-desktop-app/releases/download/v1.5.11/Requestly-1.5.11.AppImage
-	sha256sums = adfaba2eafcd8a032ece54371e2bc8414aa9d5eb52233fa6f47ae51b473f8fec
+	source = requestly-1.5.12.AppImage::https://github.com/requestly/requestly-desktop-app/releases/download/v1.5.12/Requestly-1.5.12.AppImage
+	sha256sums = 1ccdfe8fd13aec9d5b0249670ed48de7face2bd5a7ecdee1faa94f291fc4f0db
 
 pkgname = requestly-appimage
