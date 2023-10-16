@@ -1,6 +1,6 @@
 pkgbase = girara-git
 	pkgdesc = User interface library focused on simplicity and minimalism
-	pkgver = 0.3.8.r1.g34d204e
+	pkgver = 0.4.0.r12.g968c080
 	pkgrel = 1
 	url = https://pwmt.org/projects/girara
 	arch = x86_64
