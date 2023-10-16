@@ -2,7 +2,7 @@
 # Contributor: skrewball <aur at joickle dot com>
 
 pkgname=gnome-shell-extension-freon
-pkgver=52
+pkgver=53
 pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 )
 conflicts=('gnome-shell-extensions-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/EGO-${pkgver}.tar.gz")
-sha512sums=('5b00bfa2fde43920c1782e55705539d5073ec640c5c6cd7795fd43732b8929d35cdd6339a4cae7d1a140445149e50fd455c01d349a19dff0bdfc8f90011e01be')
+sha512sums=('9c7b9835b5e0cf202606f196dda709a81e9c52b77f68b555a7e451d9ec3ca99e1c4f229a96125293fbefe49b707bfed2cec0983ecd843b58c340225c2410fa36')
 
 package() {
   # Locate the extension.
