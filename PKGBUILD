@@ -6,15 +6,15 @@ pkgver=1.8.4
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)"
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://lab.louiz.org/poezio/slixmpp"
+url="https://codeberg.org/poezio/slixmpp"
 license=('MIT')
 depends=('python' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp' 'python-typing_extensions')
 makedepends=('git' 'cython')
 optdepends=('python-emoji: For compliant XEP-0444 support')
 options=(!emptydirs)
 
-source=("https://lab.louiz.org/poezio/${_pkgbase}/-/archive/slix-${pkgver}/${_pkgbase}-slix-${pkgver}.tar.gz")
-sha512sums=('c0d462e7073fd86ec290466b054284b0a946030822f66b291197f04f47e5ffd3045cb37f5b33cbbbab4158dea7b82aad12f656fc6e5fec013a57802001ea76e8')
+source=("https://codeberg.org/poezio/${_pkgbase}/archive/slix-${pkgver}.tar.gz")
+sha512sums=('7d9c680e2ac2beeb898fff4f9c5289ccd6e1634ef86322664533d80f0907669a459990efc4f80f4f24468bd5276a35be61e4b45492c7dbd828b09a8739330db0')
 
 build() {
     cd $_pkgbase-slix-$pkgver
