@@ -3,7 +3,7 @@
 
 _pkgname=freetype2
 pkgname=${_pkgname}-v35
-pkgver=2.13.0
+pkgver=2.13.2
 pkgrel=1
 pkgdesc="Font rasterization library with v35 bytecode interpreter only"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ source=(
   0004-Enable-long-PCF-family-names.patch
   freetype2.sh
 )
-sha256sums=('5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c'
+sha256sums=('12991c4e55c506dd7f9b765933e62fd2be2e06d421505d7950a132e4f1bb484d'
  SKIP SKIP SKIP SKIP SKIP
 )
 
