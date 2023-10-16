@@ -20,7 +20,7 @@ prepare() {
 	cd ${_pkgname}-${_pkgver}
 
 	# source 1.5 not working in jdk 12 anymore
-	sed -i "s/JVERCFLAGS+=-source 1.5/JVERCFLAGS+=-source 1.7/g" Makefile
+	sed -i "s/JVERCFLAGS+=-source 1.5/JVERCFLAGS+=-source 1.8/g" Makefile
 }
 
 build() {
