@@ -1,4 +1,5 @@
-# Maintainer: csantosb <csantosb dot inventati dot org>
+# Maintainer: Markus Koch <markus@notsyncing.net>
+
 pkgname=python-cocotb-git
 pkgver=r3638.13a4c949
 pkgrel=1
