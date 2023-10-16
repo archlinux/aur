@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
-pkgver=1.4.3.r2.g1889a48
+pkgver=1.6.4.r20.g10eb1e5a
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gtk3' 'libnm' 'python-cairo' 'python-cryptography' 'python-gobject'
          'python-grpcio' 'python-netifaces' 'python-packaging' 'python-protobuf'
          'python-pynacl' 'python-setproctitle' 'python-setuptools' 'python-zeroconf'
          'python-xapp' 'xapps')
-makedepends=('git' 'meson' 'polkit')
+makedepends=('cython' 'git' 'meson' 'polkit')
 checkdepends=('appstream-glib')
 optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
@@ -34,7 +34,9 @@ prepare() {
 }
 
 build() {
-  arch-meson  "${pkgname%-git}" build -Dbundle-zeroconf=false
+  arch-meson  "${pkgname%-git}" build \
+    -Dbundle-zeroconf=false \
+    -Dbundle-grpc=false
   meson compile -C build
 }
 
