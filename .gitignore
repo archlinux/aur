@@ -1,1 +1,4 @@
 *
+!PKGCONFIG
+!.SRCINFO
+!.pre-commit-config.yaml
