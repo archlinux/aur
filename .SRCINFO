@@ -1,0 +1,24 @@
+pkgbase = stratisd
+	pkgdesc = Easy to use local storage management for Linux.
+	pkgver = 3.5.9
+	pkgrel = 1
+	url = https://stratis-storage.github.io/
+	arch = x86_64
+	license = MPL2
+	checkdepends = python-pyudev
+	makedepends = asciidoc
+	makedepends = cargo
+	makedepends = rust
+	makedepends = clang
+	makedepends = dracut
+	depends = dbus
+	depends = cryptsetup
+	depends = util-linux-libs
+	depends = clevis
+	depends = systemd
+	optdepends = stratis-cli: command line interface
+	optdepends = dracut: stratis as root filesystem support
+	source = stratisd-3.5.9.tar.gz::https://github.com/stratis-storage/stratisd/archive/stratisd-v3.5.9.tar.gz
+	b2sums = 49c0c55e22dabce15c110cf2a595d294c0f74cf6c127b27083ef94e569e623f5fec6a922c79c5b27fab9653570d13de5fd336f9d9efe827577ab57191296f399
+
+pkgname = stratisd

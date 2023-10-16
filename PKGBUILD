@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=3.5.8
+pkgver=3.5.9
 pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('stratis-cli: command line interface'
             'dracut: stratis as root filesystem support')
 checkdepends=('python-pyudev')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/stratisd-v${pkgver}.tar.gz")
-b2sums=('7b51d8c2467ed450737fb462f20cb71ae376a1398fb395b1d45177a6086c7f2b0a354e4349d5278527b7bf0a2520b9d395603af5e4c870933b82312a3ac144a2')
+b2sums=('49c0c55e22dabce15c110cf2a595d294c0f74cf6c127b27083ef94e569e623f5fec6a922c79c5b27fab9653570d13de5fd336f9d9efe827577ab57191296f399')
 
 prepare() {
   cd "${pkgname}-${pkgname}-v${pkgver}"
