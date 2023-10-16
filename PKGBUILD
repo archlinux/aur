@@ -1,7 +1,7 @@
 pkgname=binge
 _pkgname=Binge
-pkgver=1.0.3
-pkgrel=5
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Unnofficial Binge desktop application"
 arch=('x86_64')
 url="https://gitlab.com/binge-desktop/application"
