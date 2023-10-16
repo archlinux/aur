@@ -1,6 +1,6 @@
 pkgname=sqlconvert-tools
 pkgdesc="sql database convert tools, mssql to sqlite or sqlite to mssql or mssql-transfer data"
-pkgver=v0.0.4.r0.g9813239
+pkgver=v0.0.5.r0.g38c79eb
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/vcup/MonitorFileSystem
