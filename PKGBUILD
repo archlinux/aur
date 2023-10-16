@@ -15,7 +15,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'boost' 'fmt' 'range-v3' 'tl-expecte
              'gobject-introspection' 'mm-common')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
-provides=('rabbitgram-desktop' 'exteragram-desktop' 'exteragram-desktop-git')
+provides=('rabbitgram-desktop')
 conflicts=('rabbitgram-desktop' 'exteragram-desktop' 'exteragram-desktop-git')
 source=("tdesktop::git+https://github.com/rabbitGramDesktop/rabbitGramDesktop.git#branch=dev"
         "telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
