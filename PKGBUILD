@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tailchat-desktop
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat"
 arch=('any')
@@ -10,15 +10,15 @@ license=('Apache')
 conflicts=("${pkgname}")
 depends=('gdk-pixbuf2' 'nss' 'mesa' 'libxdamage' 'glib2' 'libdrm' 'nspr' 'at-spi2-core' 'glibc' 'cairo' 'expat' 'dbus' 'libxfixes' \
     'libxcomposite' 'libx11' 'pango' 'libcups' 'libxcb' 'alsa-lib' 'libxrandr' 'libxext' 'libxkbcommon' 'gcc-libs' 'gtk3')
-makedepends=('gendesk' 'asar' 'npm>=7' 'nodejs>=14' 'yarn')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c982db54d29fc3d692b39a89b87046f3a685dbf6569b8e39f4e587f9daf29b7b')
+makedepends=('gendesk' 'asar' 'npm>=8.19.4' 'nodejs>=16.20.2' 'yarn')
+source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip")
+sha256sums=('bc173d0af2fd12230e8c24750b4e9401390613c0e722e02e68465aaad64dfe30')
 prepare() {
     gendesk -q -f -n --categories "Network" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
 }
 build() {
     cd "${srcdir}/${pkgname%-desktop}-${pkgver}/client/desktop"
-    yarn install --force
+    yarn --force
     yarn build
     yarn package
 }
