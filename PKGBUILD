@@ -3,37 +3,64 @@
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Deon Spengler <deon@spengler.co.za>
-pkgname=ddcutil-git
-pkgver=2.0.0.r0.g67489e51
+
+_pkgname="ddcutil"
+pkgname="$_pkgname-git"
+pkgver=2.0.0.r3.g4e6f15d2
 pkgrel=1
-pkgdesc="Query and change Linux monitor settings using DDC/CI and USB."
-url="https://www.ddcutil.com"
+pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
+url='http://ddcutil.com/'
 arch=('x86_64')
 license=('GPL2')
-depends=('glib2' 'i2c-tools' 'libusb' 'libdrm' 'libxrandr')
-makedepends=('git' 'systemd')
-provides=("${pkgname%-git}=${pkgver//.r*/}" 'libddcutil.so=5')
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/rockowitz/ddcutil.git#branch=master')
-sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+depends=(
+  'glib2'
+  'i2c-tools'
+  'kmod'
+  'libdrm'
+  'libusb'
+  'libxrandr'
+)
+makedepends=(
+  'systemd'
+)
+
+provides=(
+  'libddcutil.so=5'
+)
+
+if [ "$_pkgname" != "$pkgname" ] ; then
+  url="https://github.com/rockowitz/ddcutil"
+  makedepends+=('git')
+  provides+=("$_pkgname=${pkgver/.r*}")
+  conflicts+=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source=(
+    "$_pkgname"::"git+$url"
+  )
+  sha256sums=(
+    'SKIP'
+  )
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --match 'v[0-9].[0-9].[0-9]' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  }
+fi
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$_pkgsrc"
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$_pkgsrc"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
 }
