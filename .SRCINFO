@@ -1,15 +1,15 @@
 pkgbase = ruby-xdg
 	pkgdesc = Provides a Ruby implementation of the XDG Base Directory Specification
-	pkgver = 6.6.0
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://www.alchemists.io/projects/xdg
 	arch = any
 	license = Apache
 	makedepends = ruby-rdoc
 	depends = ruby>=3.1
-	noextract = xdg-6.6.0.gem
+	noextract = xdg-7.1.2.gem
 	options = !emptydirs
-	source = http://rubygems.org/downloads/xdg-6.6.0.gem
-	sha256sums = 4a9df5564d91b52f5226ad715826c9cf68ae08576e6d97fda5e96363f28507fa
+	source = http://rubygems.org/downloads/xdg-7.1.2.gem
+	sha256sums = acd74e7e9a1bad7d455844e7ad1da6da8a31947d4875bb2c911a3ef6eb0e4d00
 
 pkgname = ruby-xdg
