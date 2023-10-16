@@ -1,12 +1,14 @@
 pkgname=antiduplx-git
 _pkgver=1.0.1
-pkgver=1.0.1.r30.32cd0c6
+pkgver=1.0.1.r31.d597451
 pkgrel=1
 pkgdesc="Command line tool to find and remove similar pictures"
 arch=('x86_64')
 url="https://github.com/ermig1979/AntiDuplX"
 license=(MIT)
 depends=(
+  gcc-libs
+  glibc
   libjpeg-turbo
 )
 makedepends=(
@@ -51,6 +53,7 @@ package() {
   cd "$pkgname"
 
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:

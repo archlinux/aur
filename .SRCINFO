@@ -1,6 +1,6 @@
 pkgbase = antiduplx-git
 	pkgdesc = Command line tool to find and remove similar pictures
-	pkgver = 1.0.1.r30.32cd0c6
+	pkgver = 1.0.1.r31.d597451
 	pkgrel = 1
 	url = https://github.com/ermig1979/AntiDuplX
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = antiduplx-git
 	makedepends = git
 	makedepends = nasm
 	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
 	depends = libjpeg-turbo
 	source = antiduplx-git::git+https://github.com/ermig1979/AntiDuplX.git
 	source = git+https://github.com/ermig1979/Cpl.git
