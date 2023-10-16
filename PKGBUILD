@@ -94,7 +94,16 @@ pkgver() {
 build() {
   cd Hyprland
 
-  arch-meson build --buildtype=release -Db_pch=false -Ddefault_library=shared
+  meson setup build \
+    --prefix     /usr \
+    --libexecdir lib \
+    --sbindir    bin \
+    --buildtype  release \
+    --wrap-mode  nodownload \
+    -D           b_lto=true \
+    -D           b_pie=true \
+    -D           xwayland=enabled
+
   ln -sf wlroots build/subprojects/wlroots/include/wlr
   meson compile -C build
 }
