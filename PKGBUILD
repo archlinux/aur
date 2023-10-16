@@ -41,6 +41,8 @@ makedepends=(
 #   'flatbuffers'
   'onednn'
 #   're2'
+  'nsync'
+  'openmpi'
   'python-coloredlogs'
   'python-flatbuffers'
   'python-numpy'
@@ -50,8 +52,8 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-build'
+
   'chrpath'
-  'nsync'
 )
 # not de-vendored libraries
 # onnx: needs shared libonnx (https://github.com/onnx/onnx/issues/3030)
