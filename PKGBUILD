@@ -2,7 +2,7 @@
 
 _pkgname=kibot
 pkgname=kibot-git
-pkgver=1047.3a3e88e
+pkgver=2986.1af4204d
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Helps you to generate the fabrication and documentation files for your KiCad projects."
@@ -10,7 +10,7 @@ url="https://github.com/INTI-CMNB/kibot"
 license=('Apache2.0')
 depends=( 'python' 'kibom' 'pcbdraw' 'kiauto' 'python-yaml')
 makedepends=('git' 'python-setuptools')
-source=("${_pkgname}::git+https://github.com/INTI-CMNB/kibot")
+source=("${_pkgname}::git+https://github.com/INTI-CMNB/kibot.git")
 md5sums=('SKIP')
 provides=('kibot')
 conflicts=('kibot')
