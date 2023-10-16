@@ -1,0 +1,25 @@
+pkgbase = php-geoip
+	pkgdesc = GeoIP module for PHP
+	pkgver = 1.1.1
+	pkgrel = 10
+	url = https://pecl.php.net/package/geoip
+	arch = x86_64
+	license = PHP
+	makedepends = php
+	makedepends = php-legacy
+	depends = geoip
+	source = https://pecl.php.net/get/geoip-1.1.1.tgz
+	source = php8.patch
+	sha256sums = b2d05c03019d46135c249b5a7fa0dbd43ca5ee98aea8ed807bc7aa90ac8c0f06
+	sha256sums = da576049b0c69b3c22c0defa7313a22c0244fbf3a10555e6549f7957f7a429c6
+
+pkgname = php-geoip
+	depends = geoip
+	depends = php
+	backup = etc/php/conf.d/geoip.ini
+
+pkgname = php-legacy-geoip
+	pkgdesc = GeoIP module for PHP Legacy
+	depends = geoip
+	depends = php-legacy
+	backup = etc/php-legacy/conf.d/geoip.ini
