@@ -3,7 +3,7 @@
 
 pkgname=zathura-pdf-poppler-git
 pkgrel=1
-pkgver=0.3.1.r1.g0e0f7e4
+pkgver=0.3.1.r15.g18ca668
 pkgdesc="PDF support for zathura (poppler backend)"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-pdf-poppler"
