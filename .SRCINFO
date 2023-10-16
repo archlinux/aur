@@ -1,6 +1,6 @@
 pkgbase = wireshark-git
 	pkgdesc = A free network protocol analyzer for Unix/Linux. GIT version
-	pkgver = 4.1.0rc0+1387+g20a8a8eb0f
+	pkgver = 4.3.0rc0+220+g19fd8b7e81
 	pkgrel = 1
 	url = https://www.wireshark.org/
 	install = wireshark-git.install
@@ -26,6 +26,7 @@ pkgbase = wireshark-git
 	depends = gnutls
 	depends = krb5
 	depends = libnghttp2
+	depends = libnghttp3
 	depends = minizip
 	depends = sbc
 	depends = snappy

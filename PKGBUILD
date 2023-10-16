@@ -2,7 +2,7 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=4.1.0rc0+1387+g20a8a8eb0f
+pkgver=4.3.0rc0+220+g19fd8b7e81
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ depends=(
         'krb5'
         #'libsmi'
         'libnghttp2'            # for HTTP/2 dissector
+        'libnghttp3'            # for HTTP/3 dissector
         'minizip'               # for profile zip files in Qt
         'sbc'                   # Bluetooth audio codec in RTP player
         'snappy' 'lz4'          # for cql dissector
@@ -39,6 +40,7 @@ depends=(
         #'bcg729'               # for G.729 codec support in RTP player
         'opus'                  # for Opus codec support in RTP player
         #'libilbc'              # for iLBC codec support in RTP player
+        #'opencore-amr'         # for AMRNB codec support in RTP player
 
         # extcap (sshdump, etc.)
         'libssh'
@@ -74,6 +76,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_SMI=OFF \
+    -DENABLE_AMRNB=OFF \
     -DENABLE_BCG729=OFF \
     -DENABLE_ILBC=OFF \
     ..
