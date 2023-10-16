@@ -1,21 +1,22 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=rabbitgram-desktop-git
-pkgver=4.9.9.c6df181
+pkgver=4.10.3.r0.g597c15bbf
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/rabbitGramDesktop/rabbitGramDesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans' 'glibmm-2.68'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-         'openssl-1.1' 'protobuf')
+         'openssl' 'protobuf')
 makedepends=('cmake' 'git' 'ninja' 'python' 'boost' 'fmt' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
              'gobject-introspection' 'mm-common')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
-provides=("exteragram-desktop-git")
+provides=('rabbitgram-desktop' 'exteragram-desktop' 'exteragram-desktop-git')
+conflicts=('rabbitgram-desktop' 'exteragram-desktop' 'exteragram-desktop-git')
 source=("tdesktop::git+https://github.com/rabbitGramDesktop/rabbitGramDesktop.git#branch=dev"
         "telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
         "telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git"
@@ -53,53 +54,10 @@ source=("tdesktop::git+https://github.com/rabbitGramDesktop/rabbitGramDesktop.gi
         "telegram-desktop-cld3::git+https://github.com/google/cld3.git"
         "cppgir::git+https://gitlab.com/mnauw/cppgir.git"
         "cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git"
-        "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
         "fix-arch-linux-desktop-portal.patch"
         "workaround-for-dbusactivatable.patch"
         "qt_scale_factor-fix.patch_"
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
 prepare() {
     #
     # Applying custom patches
@@ -170,19 +128,13 @@ prepare() {
 }
 
 build() {
-    # Telegram is using unstable glibmm, so we need to compile it
-    meson setup -D maintainer-mode=true --default-library static --prefix "$srcdir/glibmm" glibmm-2.77.0 glibmm-build
-    meson compile -C glibmm-build
-    meson install -C glibmm-build
-
     cd "$srcdir/tdesktop"
 
-    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig:$srcdir/glibmm/lib/pkgconfig'
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     cmake \
         -B build \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_PREFIX_PATH="$srcdir/glibmm" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=2040 \
         -DTDESKTOP_API_HASH=b18441a1ff607e10a989891a5462e627 \
@@ -196,3 +148,49 @@ package() {
     cd "$srcdir/tdesktop"
     DESTDIR=$pkgdir ninja -C build install
 }
+
+pkgver() {
+    cd "$srcdir/tdesktop"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'ec383da9ec6a0dbca76257cc0dfd810563ae37d0ae8af1356202b47fedb1467d7f218083ecb68a031945dc8a3e6784354c2e633a7f357190b4c57fd31275f68f'
+            '7003e5c41b0bd15b064d0e1ebad849f87a4237de64a830419794489fefc133a031802225b0718e3881c7fbc3ab00e08cfb38990612fb691f7ef65f0df1a6dd1a'
+            '7ce670334cf724761ca88071bf3dc475f765de48aa145e6d15d11cce8471e76f57e8889c3b06d7e9d4f376da5b4f224c1a2b774cf46e95239da427d34ba7497d')
