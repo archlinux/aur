@@ -3,7 +3,7 @@
 _base=basix
 pkgname=fenics-"${_base}"-git
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations (from git release)."
-pkgver=0.7.0.dev0_r945.1117a8d
+pkgver=0.8.0.dev0_r952.eebbc52
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
