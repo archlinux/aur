@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=rabbitgram-desktop-git
 pkgver=4.10.3.r0.g597c15bbf
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rabbitGramDesktop/rabbitGramDesktop"
@@ -191,6 +191,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ec383da9ec6a0dbca76257cc0dfd810563ae37d0ae8af1356202b47fedb1467d7f218083ecb68a031945dc8a3e6784354c2e633a7f357190b4c57fd31275f68f'
-            '7003e5c41b0bd15b064d0e1ebad849f87a4237de64a830419794489fefc133a031802225b0718e3881c7fbc3ab00e08cfb38990612fb691f7ef65f0df1a6dd1a'
-            '7ce670334cf724761ca88071bf3dc475f765de48aa145e6d15d11cce8471e76f57e8889c3b06d7e9d4f376da5b4f224c1a2b774cf46e95239da427d34ba7497d')
+            'a69525873609afda7c7a08c7045595cd558880c7b5e5b5ab27b12b3cb0db1c3b424b80f165b96101d7225b11a671578c815e66d1abb4f0637d0deff9911406e2'
+            'fe8568a4e1c225102d78c7935bd6324be5369cd0efbbcb497f1e95371bd524cefe3019b9c28f316f9a9bc3dcc8be5e45c80714d24dd02efcd704f91589e82961'
+            '8c2b0e1d4e5e91c4453e99cdbf70a38eda9833a109a1c31ce61795492d1935790fc1569764006e0478f0be0c192d1773986f4a47f722794f90b51626b73ebb58')
