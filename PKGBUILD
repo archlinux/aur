@@ -9,8 +9,8 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=118.0.1
-pkgrel=3
+pkgver=118.0.2
+pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -44,12 +44,12 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "$__pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=118.0.1-1"
+  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=118.0.2-2"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "0027-bgo-915306-rust-1.73-compatibility-patch1.patch"
   "0027-bgo-915306-rust-1.73-compatibility-patch2.patch"
   "unity-menubar.patch")
-sha256sums=('a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95'
+sha256sums=('89626520f2f0f782f37c074b94690e0f08dcf416be2b992f4aad68df5d727b21'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
