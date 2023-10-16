@@ -1,7 +1,7 @@
 pkgbase = bloaty
 	pkgdesc = a size profiler for binaries
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/bloaty
 	arch = x86_64
 	license = Apache
@@ -10,9 +10,11 @@ pkgbase = bloaty
 	depends = re2
 	depends = protobuf
 	depends = capstone
+	depends = abseil-cpp
 	options = !emptydirs
 	source = https://github.com/google/bloaty/releases/download/v1.1/bloaty-1.1.tar.bz2
+	source = https://src.fedoraproject.org/rpms/bloaty/raw/rawhide/f/bloaty-1.1-absl.patch
 	sha256sums = a308d8369d5812aba45982e55e7c3db2ea4780b7496a5455792fb3dcba9abd6f
+	sha256sums = 96cc0528f6464b03d0e68060ff2d24c36624c7d3991cee142df8d3d27cefeb51
 
 pkgname = bloaty
-
