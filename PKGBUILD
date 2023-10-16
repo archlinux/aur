@@ -3,7 +3,7 @@
 
 pkgname=zathura-pdf-mupdf-git
 pkgrel=1
-pkgver=0.4.0.r1.g2c5c24b
+pkgver=0.4.1.r6.g1175e6e
 pkgdesc="PDF support for zathura (mupdf backend)"
 arch=('i686' 'x86_64')
 url="https://pwmt.org/projects/zathura-pdf-mupdf"
@@ -15,7 +15,7 @@ provides=('zathura-pdf-mupdf')
 source=("$pkgname::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop"
         "0001-Remove-mupdf-linking-detection.patch")
 sha256sums=('SKIP'
-            'f09e9ea91193fc225b82e4779ad8b0a5440f5938b69d19286d9c467aefa7ace3')
+            '2254646722ed253b84e187791b9949fa3502c853929bfa71e611cc7db85fea49')
 
 pkgver() {
   cd "$pkgname"

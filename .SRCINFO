@@ -1,6 +1,6 @@
 pkgbase = zathura-pdf-mupdf-git
 	pkgdesc = PDF support for zathura (mupdf backend)
-	pkgver = 0.4.0.r1.g2c5c24b
+	pkgver = 0.4.1.r6.g1175e6e
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura-pdf-mupdf
 	arch = i686
@@ -20,6 +20,6 @@ pkgbase = zathura-pdf-mupdf-git
 	source = zathura-pdf-mupdf-git::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop
 	source = 0001-Remove-mupdf-linking-detection.patch
 	sha256sums = SKIP
-	sha256sums = f09e9ea91193fc225b82e4779ad8b0a5440f5938b69d19286d9c467aefa7ace3
+	sha256sums = 2254646722ed253b84e187791b9949fa3502c853929bfa71e611cc7db85fea49
 
 pkgname = zathura-pdf-mupdf-git

@@ -1,6 +1,6 @@
-From 97259584339d5bdff677c7f6a076b996bc64cbb1 Mon Sep 17 00:00:00 2001
+From 88004acb11ef180379bbeafc5f45959991448dbb Mon Sep 17 00:00:00 2001
 From: a821 <a821@nospam.mail.de>
-Date: Sat, 14 Jan 2023 17:52:03 +0100
+Date: Mon, 16 Oct 2023 10:51:57 +0200
 Subject: [PATCH] Remove mupdf linking detection
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -8,11 +8,11 @@ Content-Transfer-Encoding: 8bit
 
 Patch adapted from official PKGBUILD by Johannes Löthberg.
 ---
- meson.build | 40 ++++++++++++++--------------------------
- 1 file changed, 14 insertions(+), 26 deletions(-)
+ meson.build | 38 ++++++++++++--------------------------
+ 1 file changed, 12 insertions(+), 26 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index c7b5a8b..9fecc62 100644
+index 8ac0565..7778122 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -19,8 +19,6 @@ zathura = dependency('zathura', version: '>=0.5.2')
@@ -24,7 +24,7 @@ index c7b5a8b..9fecc62 100644
  
  build_dependencies = [
    zathura,
-@@ -29,32 +27,22 @@ build_dependencies = [
+@@ -29,32 +27,20 @@ build_dependencies = [
    cairo,
  ]
  
@@ -36,7 +36,6 @@ index c7b5a8b..9fecc62 100644
 -  # build from Debian's libmupdf-dev
 -  build_dependencies += [mupdf, mupdfthird]
 +mupdf = cc.find_library('mupdf')
-+mupdfthird = cc.find_library('mupdf-third')
  
 -  libjpeg = dependency('libjpeg')
 -  libjbig2dec = cc.find_library('jbig2dec')
@@ -62,7 +61,6 @@ index c7b5a8b..9fecc62 100644
 -endif
 +build_dependencies += [
 +  mupdf,
-+  mupdfthird,
 +  libjpeg,
 +  libjbig2dec,
 +  libopenjp2,
@@ -72,5 +70,5 @@ index c7b5a8b..9fecc62 100644
  if get_option('plugindir') == ''
    plugindir = zathura.get_variable(pkgconfig: 'plugindir')
 -- 
-2.39.0
+2.42.0
 
