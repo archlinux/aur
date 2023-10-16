@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-rounded-window-corners-git
 	pkgdesc = A GNOME Shell extension that adds rounded corners for all windows
 	pkgver = 11.r19.g8ec8275
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yilozt/rounded-window-corners
 	arch = any
 	license = GPL3
@@ -15,6 +15,6 @@ pkgbase = gnome-shell-extension-rounded-window-corners-git
 	source = git+https://github.com/yilozt/rounded-window-corners.git
 	source = https://github.com/yilozt/rounded-window-corners/pull/137.patch
 	sha256sums = SKIP
-	sha256sums = d2e88e6136651610b961e9b0f98e49ffb6e2bf78aad5b239988752b4094cf98f
+	sha256sums = 4818fc21d3fc273b486a3eec60d21ef55b3ed8011d5d66210652335bf4b8cdf3
 
 pkgname = gnome-shell-extension-rounded-window-corners-git
