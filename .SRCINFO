@@ -1,7 +1,7 @@
 pkgbase = python-jetforce
 	pkgdesc = An experimental Gemini server written in Python
-	pkgver = 0.9.1
-	pkgrel = 8
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/michael-lazar/jetforce
 	arch = any
 	license = custom:Floodgap
@@ -14,9 +14,8 @@ pkgbase = python-jetforce
 	depends = python-pyopenssl
 	provides = jetforce
 	conflicts = jetforce
-	source = jetforce-0.9.1.tar.gz::https://github.com/michael-lazar/jetforce/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 5fde3f231212810de31adf77718b26aa19788b5ec115becddd38356082e4946b
-	sha512sums = f0d8e49c71f7730c83c6f29c07cb0e4c5488325dbca81c46acb1fc6ecb8ec946332c8d76f07b86ee1a58560a568ef7500d581e2ec186f9877013e88528dd7dc3
-	b2sums = e74b200a00f2d3651a8d38c0ea5435437cf9646f19ae4e24192208d82e9e6ae3b781cf6571c048c519cfd9cc6a32c9b509b6519bd22c2d62e8968881269b153e
+	source = jetforce-0.10.0.tar.gz::https://github.com/michael-lazar/jetforce/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 9b0d5a1810810af38aca0511dea8c9096715d2349db357cabbbbc31d327bba4c
+	b2sums = 68d3b0fc678ffafd74ce39c279753750a15b2bc8f33646f5537e2fa2fa0bfc65a62d1adb5e0ec3155d57f341cd9235317296a91b4c59d132671cff79ee8bcdf2
 
 pkgname = python-jetforce
