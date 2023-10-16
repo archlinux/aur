@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20L
 sha256sums=('b6ccf1d31554de595c57f1887080e6ee42f377b8c9f1553a9c58d747df2b1a45')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    1find "${srcdir}" -type d -exec chmod 755 {} \;
+    find "${srcdir}" -type d -exec chmod 755 {} \;
     find "${srcdir}" -type f -name "*.*" -perm 777 -exec chmod 644 {} \;
     find "${srcdir}" -type f -perm 777 -exec chmod 755 {} \;
     sed "s|\"/usr/lib/${_pkgname}/AppRun\"|/opt/${pkgname%-bin}/AppRun|g" -i "${srcdir}/usr/lib/${_pkgname}/${pkgname%-bin}"
