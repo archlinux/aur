@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encrypt0r-bin
-pkgver=3.11.48
+pkgver=3.11.49
 pkgrel=1
 pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v${pkgver}/src/electron/assets/icons/png/512x512.png"
     "${pkgname%-bin}.sh")
-sha256sums=('5de7d8002099524a9799e276359f0067d08655eb253e82f24d174bac3fd43a5c'
+sha256sums=('2dcdc0f02406ad4735d0fcfe82390da8f93fd01b3fd780ecb2737a91f9c514d1'
             'b669772af42f119f8d89c6a81d69e25bf5debce6534e3259c83dacc230fb8095'
             '375660c0e1c8fe2b4ed4fdf1f7e20c023e87ceb213595da01c2221f98c263caa')
 build() {
