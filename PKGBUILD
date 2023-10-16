@@ -10,22 +10,20 @@ url="https://poez.io"
 license=('zlib')
 depends=('python' 'python-slixmpp')
 makedepends=('python-setuptools' 'python-sphinx')
-source=("https://lab.louiz.org/poezio/poezio/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("https://codeberg.org/poezio/poezio/archive/v${pkgver}.tar.gz")
 optdepends=('poezio-omemo: OMEMO plugin'
             'python-potr-git: OTR plugin'
             'python-pyinotify: Autoaway with screen plugin (also works with tmux)'
             'figlet: ASCII art plugin')
 
-sha256sums=('484d286190a66e79856533a51c428a2dada769b4d67e5ad471b0541dbdfb04c0')
+sha256sums=('8aefdb226c887c81f0f5758972211b173418184ecfcca7796ccfe84c363530a4')
 
 build() {
-    cd $pkgname-v$pkgver
+    cd "$pkgname"
     python setup.py build
-    python setup.py build_man
-    make doc
 }
 
 package() {
-    cd $pkgname-v$pkgver
+    cd "$pkgname"
     python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
