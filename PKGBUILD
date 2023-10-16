@@ -1,7 +1,7 @@
 # Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
 _pkgname=tradew1nd-standalone
 pkgname=$_pkgname-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Standalone desktop app of TradeW1nd the Discord music bot."
 arch=('x86_64')
