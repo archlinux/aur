@@ -4,7 +4,7 @@ pkgbase=mkdocs-jupyter
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
 _pyname=("${pkgbase//-/_}")
-pkgver=0.24.5
+pkgver=0.24.6
 pkgrel=1
 pkgdesc="Use Jupyter in mkdocs websites"
 url="https://mkdocs-jupyter.danielfrg.com"
@@ -19,7 +19,7 @@ checkdepends=('python-pytest-cov'
               'jupyter-nbconvert')  # 'jupyter-nbclient' required by nbconvert
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('fa7804879a627702497e2afaea40a3db1cbdd2a3aba0e4417782dd24ca899bb3')
+sha256sums=('89fcbe8a9523864d5416de1a60711640b6bc2972279d2adf46ed2776c2d9ff7c')
 
 build() {
     cd "${_pyname}-${pkgver}"
@@ -36,7 +36,7 @@ check() {
 }
 
 package_mkdocs-jupyter() {
-    depends=('python>=3.7'
+    depends=('python>=3.9'
              'python-ipykernel>6.0.0'
              'python-jupytext>1.13.8'
              'python-pygments>2.12.0'
