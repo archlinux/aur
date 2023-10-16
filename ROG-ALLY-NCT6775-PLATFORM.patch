@@ -1,0 +1,12 @@
+diff --git a/drivers/hwmon/nct6775-platform.c b/drivers/hwmon/nct6775-platform.c
+index 81bf03d..96d875b 100644
+--- a/drivers/hwmon/nct6775-platform.c
++++ b/drivers/hwmon/nct6775-platform.c
+@@ -1359,6 +1359,7 @@ static const char * const asus_msi_boards[] = {
+ 	"ProArt X670E-CREATOR WIFI",
+ 	"ProArt Z690-CREATOR WIFI",
+ 	"ProArt Z790-CREATOR WIFI",
++	"RC71L",
+ 	"ROG CROSSHAIR X670E EXTREME",
+ 	"ROG CROSSHAIR X670E GENE",
+ 	"ROG CROSSHAIR X670E HERO",

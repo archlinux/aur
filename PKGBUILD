@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.5.3
+pkgver=6.5.7
 pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -23,13 +23,16 @@ replaces=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 options=('!strip')
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
-        'config'
-        # Upstream Patches
+        config
         # ARCH Patches
-        '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
+        0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
+        0102-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
+        0103-ASoC-Intel-soc-acpi-fix-Dell-SKU-0B34.patch
+        0104-btrfs-wait-on-uncached-block-groups-on-every-allocat.patch
+        0105-net_wwan_t7xx_add-AP-CLDMA.patch
         # MANJARO Patches
-        '0201-asus-ally-asus-hid-6.5.patch'
-        '0202-mt7921e_Perform_FLR_to_recovery_the_device.patch'
+        0201-asus-ally-asus-hid-6.5.patch
+        0202-mt7921e_Perform_FLR_to_recovery_the_device.patch
         # GPU reset through sysfs
         0001-GPU-reset.patch
         # No overrides ROG ally
@@ -49,12 +52,23 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         0011-ALSA-hda-cs35l41-Ensure-amp-is-only-unmuted-during-p.patch
         # Realtek patch
         0998-patch_realtek.patch
+        # HID patches
+        0001-HID.patch
+        # Additional ALLY patches
+        ROG-ALLY-LED-fix.patch
+        ROG-ALLY-NCT6775-PLATFORM.patch
+        ROG_ALLY_OLDER_BIOS_AUDIO.patch
+        0001-ROG-ALLY-bmi323-device.patch
         # ACS override patch
         '0999-acs.gitpatch')
 
-sha256sums=('4cac13f7b17bd8dcf9032ad68f9123ab5313d698c9f59416043165150763eb4f'
-            'fdfa0d96f3c11d4d52da67d4b0b1ddacdb8347daae88546eba72187d43d558b0'
+sha256sums=('0d09ea448005c9cfe5383e4c72a872b39188b928f8c44e146b03b1b7851fbb8c'
+            '68c8f0aecfabb6f6eac76daed2985e9255ab62f98669d341d02aa66070ce17ce'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
+            'e1d17690dd21e8d5482b63ca66bfe6b478d39e8e8b59eedd53adb0a55ebc308d'
+            '6a8e31d9e0b9dfb13c1fb96cea1dc17929920038c50db7d731e1af63fd0b26b9'
+            '997e873b5fa0fb94ebc7ab88474edc15f7e94340643a1305fd2eab2917f39df6'
+            '6a5d3cff6d9887b9f2e6fe8121cadf7b22cafcfabe3bd0d3e80d9174ede7204d'
             '6541760a7b0513ce52c7b2d67810135b1bd172849f52765e74a5ec0c7584dd56'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             '11ff8e0119e1bd33a572e18a10dfb94f521b4e38ee5948d3c0508faf07835a78'
@@ -72,6 +86,11 @@ sha256sums=('4cac13f7b17bd8dcf9032ad68f9123ab5313d698c9f59416043165150763eb4f'
             'b9298bde48a9f6c5d028150d627c05c71880e2693933ef2fe070f090e80876a5'
             '4d53a6853b63c0f01b60b408bee61fa729656f925e50fa55ae3cba309668242a'
             '3aa9f1ca47bb078f3c9a52fe61897cf4fe989068cd7e66bfa6644fd605fa40d2'
+            'ed7f4ba3b47c92b5102c9eef81f41e57216e9357d4a638199035a93f080eeb1a'
+            '68a9b80e0b8d75880fbf3d8486bfe522cb19b4042554786b23bead9320165fa5'
+            'cfcd5c177423df8b7b98b0500fe7ab0757f895ed945c33e205963f0069c7a3be'
+            '2d8246d2ff6312cd8ff832c50f4176201e43fe9d55e9b758bec9f0cad75bd0ba'
+            '5574a68b1c7733769835bb856a8c32e54398dfde59f264708672b87b73b3c6ea'
             '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36')
 
 prepare() {
