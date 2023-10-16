@@ -1,10 +1,10 @@
 pkgbase = desktop-schedule-bin
 	pkgdesc = A concise yet elegant desktop course schedule.简洁而不失优雅的桌面课程表
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TimFang4162/desktop-schedule
 	arch = x86_64
-	license = custom
+	license = GPL3
 	makedepends = asar
 	makedepends = gendesk
 	depends = bash
