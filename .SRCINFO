@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-trompeloeil
 	pkgdesc = Thread-safe header-only mocking framework for C++11/14
-	pkgver = 44
+	pkgver = 45
 	pkgrel = 1
 	url = https://github.com/rollbear/trompeloeil
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-trompeloeil
 	makedepends = ninja
 	options = !buildflags
 	options = !strip
-	source = trompeloeil-44.tar.gz::https://github.com/rollbear/trompeloeil/archive/v44.tar.gz
-	sha256sums = 004877db6ba22f24c7867e112e081eeb68858122f55ebe7c7dd9d8d9e3b46c88
-	b2sums = 07a65182c69890a089b6d612db3d9c79ecff427c9ff70342e57807ee2d4631be885435bc90af7717c8a63f8b038699ca2606e055e9a01c180b15048413f0f348
+	source = trompeloeil-45.tar.gz::https://github.com/rollbear/trompeloeil/archive/v45.tar.gz
+	sha256sums = 124b0aa45d84415193719376b6557fc1f1180cbfebf4dc4f7ca247cb404d6bd8
+	b2sums = fee17091aef4199f1ac425af0e967007e1bd03d4ccb67fb78c6a061ed8d3bb4d825f4c379dc51e56078605a915bb3389ecc4e56097f2f4b509acfca5982e1da7
 
 pkgname = mingw-w64-trompeloeil
