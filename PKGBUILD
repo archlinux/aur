@@ -2,7 +2,7 @@
 pkgname=deepin-wine-adrive
 _pkgname=com.adrive.deepin
 _officalname=aDrive
-pkgver=4.9.4.1046
+pkgver=4.9.12
 _deepinver=2.2.6deepin8
 pkgrel=1
 pkgdesc="Aliyun aDrive on Deepin Wine 6"
@@ -21,9 +21,9 @@ source=(
     "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_alibaba_group/suit_bu1_alibaba_group202102022125_53871.html"
     )
 sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            '70cf551fd20a8817ee58820f92f32258c0b0f9848142d0da585ee043a45c8e06'
+            '1d94f845dd110e47ea6417d0ca9cec0b5663871ff7d6185ed7e7449281263057'
             '592a72685f9f3b69015259015d9eaa9701dbca5ef8289e178f89ee4c7311c1f6'
-            '87d919e38d34c441631cd8ffdc75615811f1e8a75b358d90c2478fd207266f8b'
+            '4b8bbf5ea948146c96f722641c56c73d5e49543f4586822693c7e054beb15137'
             'b6aa1fd4abf1ded8b208321fbaa73c083cf1376535b385217e3c96f62cbf9a91')
 prepare() {
     bsdtar -xf data.tar.xz -C "${srcdir}"
@@ -39,7 +39,8 @@ prepare() {
     msg "Repackaging app archive ..."
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/opt/apps/${pkgname}/info"
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    sed "s|${_pkgname}|${pkgname}|g;s|internet|Network|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
+    sed "s|${_pkgname}|${pkgname}|g;s|internet|Network|g" -e "s|\"/opt/apps/${pkgname}/files/run.sh\"|${pkgname}|g" \
+        -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
@@ -49,6 +50,6 @@ package() {
         install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm755 "${srcdir}/run.sh" -t "${pkgdir}/opt/apps/${pkgname}/files"
+    install -Dm755 "${srcdir}/run.sh" -t "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
