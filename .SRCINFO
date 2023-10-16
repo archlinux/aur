@@ -1,7 +1,7 @@
 pkgbase = czkawka
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc.
-	pkgver = 6.0.0
-	pkgrel = 0.2
+	pkgver = 6.1.0
+	pkgrel = 0.1
 	url = https://github.com/qarmin/czkawka
 	arch = aarch64
 	arch = armv7h
@@ -11,11 +11,15 @@ pkgbase = czkawka
 	checkdepends = xorg-server-xvfb
 	makedepends = cargo
 	makedepends = git
-	makedepends = gtk4
-	makedepends = libheif
 	makedepends = rust
-	source = git+https://github.com/qarmin/czkawka.git#commit=7cb355a35902e79a1413296bd60bb8eabfd395da?signed
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	depends = bzip2
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libheif
+	depends = pango
+	source = git+https://github.com/qarmin/czkawka.git#commit=44400e08af3c8f030493b8ec6fa965c7d42e560e
 	sha512sums = SKIP
 
 pkgname = czkawka-cli
@@ -25,5 +29,3 @@ pkgname = czkawka-cli
 
 pkgname = czkawka-gui
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc. (Desktop App)
-	depends = gtk4
-	depends = libheif

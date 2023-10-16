@@ -1,12 +1,12 @@
-# Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgbase=czkawka
 pkgname=(
   czkawka-cli
   czkawka-gui
 )
-pkgver=6.0.0
-pkgrel=0.2
+pkgver=6.1.0
+pkgrel=0.1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
@@ -16,18 +16,23 @@ arch=(
   x86_64  #Arch Linux
 )
 license=('MIT')
+depends=(
+  bzip2
+  cairo
+  gdk-pixbuf2
+  gtk4
+  hicolor-icon-theme
+  libheif
+  pango
+)
 makedepends=(
   cargo
   git
-  gtk4
-  libheif
   rust
 )
 checkdepends=(xorg-server-xvfb)
-_commit=7cb355a35902e79a1413296bd60bb8eabfd395da # tags/6.0.0^0
-# curl -sS https://github.com/web-flow.gpg | gpg --import -
-validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing) <noreply@github.com>
-source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}?signed")
+_commit=44400e08af3c8f030493b8ec6fa965c7d42e560e # tags/6.1.0^0
+source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -68,10 +73,6 @@ package_czkawka-cli() {
 }
 
 package_czkawka-gui() {
-  depends=(
-    gtk4
-    libheif
-  )
   pkgdesc+=" (Desktop App)"
 
   install -Dm644 "${srcdir}/czkawka/LICENSE" \
