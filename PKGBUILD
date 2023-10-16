@@ -17,8 +17,7 @@ build() {
   cd "$srcdir/hmat-oss-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DHMAT_GIT_VERSION=OFF \
-      ..
+    ${_arch}-cmake -DHMAT_GIT_VERSION=OFF -DBUILD_SHARED_LIBS=OFF ..
     make
     popd
   done
@@ -28,7 +27,7 @@ package() {
   for _arch in ${_architectures}; do  
     cd "$srcdir/hmat-oss-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
