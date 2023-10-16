@@ -1,0 +1,17 @@
+pkgbase = dbus-client-gen
+	pkgdesc = A library for generating some simple classes and functions useful for a Python D-Bus client
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://stratis-storage.github.io/
+	arch = any
+	license = MPL2
+	checkdepends = python-nose
+	checkdepends = python-hypothesis
+	checkdepends = python-hs-dbus-signature
+	makedepends = python-pylint
+	makedepends = python-setuptools
+	depends = python-dbus
+	source = dbus-client-gen-0.5.1.tar.gz::https://github.com/stratis-storage/dbus-client-gen/archive/v0.5.1.tar.gz
+	sha256sums = 2fd53bf85955cf9bc76f8bbbdb9968fc891401bea247b31d702a35f5a3bd8bba
+
+pkgname = dbus-client-gen
