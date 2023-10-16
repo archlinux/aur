@@ -15,12 +15,13 @@ options=("!emptydirs")
 
 build()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    make
+    cd ${pkgname}-${pkgver}
+    cmake -S . -B build -DCMAKE_INSTALL_LIBEXECDIR='lib'
+    cmake --build build
 }
 
 package()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    make DESTDIR="$pkgdir/" install
+    cd ${pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" cmake --install build
 }
