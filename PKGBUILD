@@ -3,13 +3,16 @@
 pkgname=hd-idle-go
 _pkgname=hd-idle
 pkgver=1.20
-pkgrel=3
+pkgrel=4
 pkgdesc='Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle'
-arch=('any')
+arch=('x86_64'
+      'armv7h'
+      'aarch64')
 url='https://github.com/adelolmo/hd-idle'
 license=('GPL3')
 install=hd-idle-go.install
-backup=(etc/default/hd-idle etc/logrotate.d/hd-idle)
+backup=('etc/default/hd-idle'
+        'etc/logrotate.d/hd-idle')
 provides=('hd-idle')
 conflicts=('hd-idle')
 optdepends=('logrotate')
