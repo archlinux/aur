@@ -3,11 +3,11 @@
 
 pkgname=poppler-qt-lcd
 pkgver=23.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Poppler Qt bindings, with patches to allow subpixel rendering via Cairo"
 license=('GPL')
 arch=(i686 x86_64)
-provides=("poppler-qt5=${pkgver}")
+provides=("poppler-qt5=${pkgver}" "libpoppler-qt5.so")
 conflicts=('poppler-qt5')
 depends=('qt5-base' 'cairo' "poppler>=${pkgver}")
 makedepends=('cmake' 'pkgconfig' 'boost')
