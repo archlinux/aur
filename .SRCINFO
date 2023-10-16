@@ -7,8 +7,8 @@ pkgbase = ipscan-bin
 	arch = x86_64
 	license = GPL2
 	depends = java-runtime>=11
+	provides = ipscan
 	conflicts = ipscan
-	conflicts = ipscan-git
 	noextract = ipscan.png
 	noextract = ipscan
 	noextract = ipscan.desktop
