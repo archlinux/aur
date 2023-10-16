@@ -1,0 +1,40 @@
+diff --git a/src/card/pcsc/PcscUtils.cpp b/src/card/pcsc/PcscUtils.cpp
+--- a/src/card/pcsc/PcscUtils.cpp
++++ b/src/card/pcsc/PcscUtils.cpp
+@@ -18,3 +18,22 @@ QString PcscUtils::toString(PCSC_RETURNC
+ 
+ 	return QString::fromLatin1(name);
+ }
++
++
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
++QDataStream& governikus::operator<<(QDataStream& pStream, const PcscUtils::PcscReturnCode& pCode)
++{
++	return pStream << static_cast<qint64>(pCode);
++}
++
++
++QDataStream& governikus::operator>>(QDataStream& pStream, PcscUtils::PcscReturnCode& pCode)
++{
++	qint64 tmp;
++	pStream >> tmp;
++	pCode = static_cast<PcscUtils::PcscReturnCode>(tmp);
++	return pStream;
++}
++
++
++#endif
+diff --git a/src/card/pcsc/PcscUtils.h b/src/card/pcsc/PcscUtils.h
+--- a/src/card/pcsc/PcscUtils.h
++++ b/src/card/pcsc/PcscUtils.h
+@@ -141,6 +141,10 @@ class PcscUtils
+ 		static QString toString(PCSC_RETURNCODE pCode);
+ };
+ 
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
++QDataStream& operator<<(QDataStream& pStream, const PcscUtils::PcscReturnCode& pCode);
++QDataStream& operator>>(QDataStream& pStream, PcscUtils::PcscReturnCode& pCode);
++#endif
+ 
+ /**
+  * Make sure we do not use these macros directly in our code.
