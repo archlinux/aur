@@ -1,20 +1,20 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Michel Zou <xantares09@hotmail.com>
 pkgname=arpackpp
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Arpack++ with patches (C++ interface to ARPACK)"
-arch=('x86_64')
+arch=(x86_64)
 url="http://reuter.mit.edu/software/arpackpatch"
 license=('custom:BSD-3-clause')
 depends=(arpack)
 optdepends=(superlu suitesparse)
-source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/m-reuter/${pkgname}/tar.gz/refs/tags/${pkgver}")
-sha256sums=('288fb4cd2dd08e02ed29db579bc1278023a06415dd2f63b1fdc323c7993fcb1a')
-b2sums=('b20f49082150f130746fe41e324ad3be06617cb858161d0cca8ce2c04c52b8a2311f0da875b8d654e3070835ae5c4df3fc819e930009517355ef2d07b55c4bc7')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/m-reuter/${pkgname}/archive/${pkgver}.tar.gz)
+sha512sums=('aad43cc6bea1e8a4321b0bdfd582038ab8072955cfa001af4d4de9b73efdde054681963fcf639c1a170b6a884ab5ff2a8e19b7d7cb067d53e6f0ad27c51dc19a')
+b2sums=('8f806988d2f98fdbcd29b8bbb6d9c6b75fac592b3e9d1ad5d5d7f3618e74224f78d019f81bd37034ea8e36730f48a58b041d46c036206860af2437a4e059207e')
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   # install headers
   install -d ${pkgdir}/usr/include/arpack++
@@ -28,5 +28,5 @@ package() {
   install -d ${pkgdir}/usr/share/arpack++/examples
   cp -r examples/* ${pkgdir}/usr/share/arpack++/examples
 
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/arpack++/LICENSE"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
