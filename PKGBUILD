@@ -2,9 +2,9 @@
 # Co-maintainer: George <hello@wavetro.net>
 
 pkgname="plasticity-bin"
-pkgver="1.3.0"
+pkgver="1.3.2"
 pkgrel="1"
-pkgdesc="Plasticity is a 3d modelling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow."
+pkgdesc="Plasticity is a 3D modeling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow."
 arch=("x86_64")
 license=("nonfree")
 url='https://github.com/nkallen/plasticity'
@@ -15,7 +15,7 @@ optdepends=('discord: For communication with the devs'
             'apparmor: Extra protection'
             'pulseaudio: For sound')
 source=("https://github.com/nkallen/plasticity/releases/download/v${pkgver}/plasticity_${pkgver}_amd64.deb")
-sha512sums=('4b8736747b4ec6cb4830871cfafa48fa44db0b032ec6b19d158468ffa6a3c687a49fa80b287c073386ab211abd6da5f13d7c9630ab2eb48cec36c56223b47330')
+sha512sums=('eefff7541f2c652662b48ff5de9b2632b75427e680b35ba1d91f75ece767c07877d6651703243567c1f2046029ac0de3952b950417a7ec80bac3e8bfc0c02554')
 
 package() {
     tar -xvf data.tar.zst -C "$pkgdir"
