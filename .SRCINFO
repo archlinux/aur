@@ -1,7 +1,7 @@
 pkgbase = poppler-qt-lcd
 	pkgdesc = Poppler Qt bindings, with patches to allow subpixel rendering via Cairo
 	pkgver = 23.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/giddie/poppler-cairo-backend
 	arch = i686
 	arch = x86_64

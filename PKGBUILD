@@ -3,7 +3,7 @@
 
 pkgname=poppler-qt-lcd
 pkgver=23.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Poppler Qt bindings, with patches to allow subpixel rendering via Cairo"
 license=('GPL')
 arch=(i686 x86_64)
@@ -30,8 +30,10 @@ build() {
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DENABLE_CPP=OFF -DENABLE_UTILS=OFF \
+        -DENABLE_CPP=OFF \
+        -DENABLE_UTILS=OFF \
         -DWITH_GLIB=OFF \
+        -DENABLE_QT6=OFF \
         ..
   make poppler-qt5
 }
