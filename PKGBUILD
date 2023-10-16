@@ -10,16 +10,16 @@
 
 pkgname=davinci-resolve
 major_version=18.6
-minor_version=0
+minor_version=2
 pkgver=${major_version}.${minor_version}
-pkgrel=3
+pkgrel=1
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
     _product="DaVinci Resolve"
-    _referid='cebf954f05a74eaeae6b6b14bcca7971'
+    _referid='05f2ae9b4ff34914b23542498ed70de7'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux"
-    sha256sums=('18f391cc522a336553a32c0c8c3eb0f47e0f7478687a08aae1acbf49bfa34560')
+    sha256sums=('2426a790a7e3c34a84694e6de3c09fdee03b86fb6ef859c235de6b4637363c1d')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
     _archive_name=DaVinci_Resolve_${pkgver}_Linux
     _archive_run_name=DaVinci_Resolve_${major_version}_Linux
@@ -27,9 +27,9 @@ if [ "$pkgname" == "davinci-resolve" ]; then
 elif [ "$pkgname" == "davinci-resolve-studio" ]; then
     # Variables for STUDIO edition
     _product="DaVinci Resolve Studio"
-    _referid='2cdeb3d6ccfb4e65add749acb36e659b'
+    _referid='f25cb64ded254e8682b287ed1135c557'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
-    sha256sums=('85d10ad79ecd033c782bcb6ad27e0cb5ac190e9ef4dbd517282bc4dbe045a080')
+    sha256sums=('87dd79401ab23f9b1027c4bc04a1954ceb80886d402ae6be5bb2805c37439f6d')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
     _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
     _archive_run_name=DaVinci_Resolve_Studio_${major_version}_Linux
@@ -42,8 +42,8 @@ _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         Safari/537.36"
 _releaseinfo=$(curl -s "$_siteurl")
 
-_downloadId=$(printf "%s" $_releaseinfo | jq -r ".linux.downloadId")
-_pkgver=$(printf "%s" $_releaseinfo | jq -r '[ .linux.major, .linux.minor, .linux.releaseNum ] | join(".")')
+_downloadId=$(printf "%s" $_releaseinfo | sed -n 's/.*"downloadId":"\([^"]*\).*/\1/p')
+_pkgver=$(printf "%s" $_releaseinfo | awk -F'[,:]' '{for(i=1;i<=NF;i++){if($i~/"major"/){print $(i+1)} if($i~/"minor"/){print $(i+1)} if($i~/"releaseNum"/){print $(i+1)}}}' | sed 'N;s/\n/./;N;s/\n/./')
 
 if [[ $pkgver != $_pkgver ]]; then
     echo "Version mismatch"
@@ -101,7 +101,7 @@ license=('Commercial')
 depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webengine' 'qt5-websockets'
 'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec' 'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs' 'python-numpy' 
 'tbb' 'apr-util' 'luajit' 'libc++')
-makedepends=('libarchive' 'xdg-user-dirs' 'patchelf' 'jq')
+makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 options=('!strip')
 
 _archive=${_archive_name}.zip
