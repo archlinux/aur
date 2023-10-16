@@ -1,6 +1,6 @@
 pkgbase = f5fpc
 	pkgdesc = Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0
-	pkgver = 7244.2023.0827.1
+	pkgver = 7245.2023.1006.1
 	pkgrel = 1
 	url = https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-client-configuration-11-4-0/4.html
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = f5fpc
 	source = LICENSE
 	sha512sums = f2ca5fd5052b307c147ac315eb0cda45a6eaf071de30eef6841c74dac239c2d3bc5a0e1513e4bbd5b3057384676b346428609cb366c3d1086acda982acde7a61
 	b2sums = c864e69799ffc4c13bf8af7d76bcc8beed195d9a41acb01d459aaa0c3cd5bae75290ef7be1fa6a0bfd6472e1c3f8df3a7f5d59767861ded0dc4a373a3ead447c
-	source_x86_64 = linux_f5cli-7244.2023.0827.1-1.x86_64.deb::https://www3.uwsp.edu/public/download/linux_f5cli.x86_64.deb
-	sha512sums_x86_64 = 41a44f283022a38f7bbcf0c94f50a8a5a93892f47947e38d7513421693f8bd1c48bbcef0258d27a1d379bed0a7375f950f434383b4d34537517c0b2dcf096a05
-	b2sums_x86_64 = 11e87a1022cca1e10c447f2fb243135adf7d63354d0a6d107036f3d2a7ea139c5c640537300ad1a9589acf187dcd3ce483fbd474941f5d34c29762ba95f1803d
-	source_armv7h = linux_f5cli-7244.2023.0827.1-1.armv7h.deb::https://www3.uwsp.edu/public/download/linux_f5cli.armhf.deb
-	sha512sums_armv7h = 3faf8ecd73b6d5e681f02e6505f901d72831214c1f3f4934ce566fd15e77d1ba4069af2dc566ee06954771a6dfef5addd8a29ad015f4f66dfea59e463d2088e2
-	b2sums_armv7h = ad0f8a35fd7cabfa4895ae29fe167d7ea8b59d3719f98776c1acabb3130a6ed125deee84ad60d53197de9bde370f15d8a3f6022308b003e43d59ccf6608d0840
+	source_x86_64 = linux_f5cli-7245.2023.1006.1-1.x86_64.deb::https://vpn.f5.com/public/download/linux_f5cli.x86_64.deb
+	sha512sums_x86_64 = 7680e16335d2df712883ede4c5437701558ba2bce24e8cd16efc9bde8204ba2343634cf248af9a87c983bbbccceab0151c4d3092eb108a12cf5d72796f652942
+	b2sums_x86_64 = 3e3063a61cbf92c2f3779241cc75ea412b4de528a996d5fddcdfb31f5fe89a07042e27d1e122f27167abfc4969b6a8115ecdec2cfa0edd429385ebe29569fb24
+	source_armv7h = linux_f5cli-7245.2023.1006.1-1.armv7h.deb::https://vpn.f5.com/public/download/linux_f5cli.armhf.deb
+	sha512sums_armv7h = b588e6d33254b6011d75e41a6a05a29f64f2cadc2a283d058f2c1fa8506c51fa62b1bc2859da289924347db886060559b3b86fcfe8b6d0732759828da0571348
+	b2sums_armv7h = e82390c6c60588549d870d089173de716a212a91167919e8a3fb65e0a60120e3448fb3eb443514947c3a64282c1055a5b16ea39678239007aaf0e516a48a1dd4
 
 pkgname = f5fpc
