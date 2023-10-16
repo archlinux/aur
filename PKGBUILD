@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=radiant.data
-_pkgver=1.6.1
+_pkgver=1.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -59,8 +59,8 @@ optdepends=(
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('942e7394acfde04303da0d6f2ff6ba72')
-sha256sums=('e2b43d28a88c8346cea7b01a5d4f290e8bfb7d7c3f7239b0f4a6c17effc07201')
+md5sums=('0d588a51961f5ddccf0295201e7b9371')
+sha256sums=('1708ebca50962720de64cfb0f648427449d023acd26fa2f4ac336d6386cf4708')
 
 build() {
   mkdir -p build
