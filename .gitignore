@@ -1,5 +1,4 @@
-dxconvert-*.pkg.tar.xz
-dxconvert-*.pkg.tar.zst
-DXconvert-*.zip
 pkg/
 src/
+*.tar.*
+*.zip
