@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=0.22.0.r2.g239caa1
+pkgver=0.25.0.r0.ga9459bc2
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -70,9 +70,9 @@ build() {
 
     electronDist="/usr/lib/${_electron}"
     electronVer="$(cat ${electronDist}/version)"
-    sed -i -e "s~\"dist\":.*~\"dist\": \"electron-builder --linux --x64 --dir --config electron-builder-config.js -c.electronDist=${electronDist} -c.electronVersion=${electronVer}\",~g" packages/bruno-electron/package.json
+    sed -i -e "s~\"dist:linux\":.*~\"dist:linux\": \"electron-builder --linux --x64 --dir --config electron-builder-config.js -c.electronDist=${electronDist} -c.electronVersion=${electronVer}\",~g" packages/bruno-electron/package.json
 
-    npm run build:electron
+    npm run build:electron:linux
 }
 
 package() {
