@@ -1,18 +1,19 @@
-#contributor: Francesco 'Kiko' Corsentino <kikocorsentino at gmail>
-#contributor: ott <matthias.christian at tiscali.de>
-#contributor: Ranguvar <ranguvar at archlinux.us>
-#Maintainer: Daniel YC Lin <dlin.tw at gmail>
+#Maintainer: TwoFinger
+#Contributor: Francesco 'Kiko' Corsentino <kikocorsentino at gmail>
+#Contributor: ott <matthias.christian at tiscali.de>
+#Contributor: Ranguvar <ranguvar at archlinux.us>
+#Contributor: Daniel YC Lin <dlin.tw at gmail>
 
 pkgname=bvi
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="A display-oriented editor for binary files operate like 'vi' editor"
 url="https://bvi.sourceforge.net"
 arch=(i686 x86_64)
 depends=(ncurses)
 license=(GPL)
 source=("http://downloads.sourceforge.net/sourceforge/bvi/$pkgname-$pkgver.src.tar.gz")
-md5sums=(4d83d46e2ee76609a7b7b52e075a5900)
+md5sums=(d96d4320a148945d3e564f2e5c6af981)
 
 build ()
 {
