@@ -1,0 +1,12 @@
+[Unit]
+Description=Wireguard web interface
+Documentation=https://github.com/ngoduykhanh/wireguard-ui
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+WorkingDirectory=/opt/wireguard-ui
+ExecStart=/opt/wireguard-ui/wireguard-ui
+
+[Install]
+WantedBy=multi-user.target
