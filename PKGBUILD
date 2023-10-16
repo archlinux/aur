@@ -1,7 +1,7 @@
 # Maintainer: Avi Zimmerman <avi.zimmerman@gmail.com>
 
 pkgname="webmesh-bin"
-pkgver="0.14.2"
+pkgver="0.14.3"
 pkgrel="1"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
@@ -13,7 +13,7 @@ optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-git" "webmesh")
 
 source=("https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt")
-sha256sums=("d17a725cea166871ae2c672660bfb7220f905bdabc1c4d3dd6e51f5cfba3e66d")
+sha256sums=("3a3732f245073697661e9d663dc1554cdb5b12d47ea148a0c8edcf4fa46f4450")
 
 prepare() {
     echo "==> Verifying cosign signature..."
