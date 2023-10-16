@@ -1,7 +1,7 @@
 _pkgname=waycratelock
 pkgname=waycratelock-git
 pkgver=r41.bf28449
-pkgrel=1
+pkgrel=2
 pkgdesc="waycratelock, lock for ext-session-lock"
 url="https://github.com/waycrate/waycratelock"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 build() {
   cd "${_pkgname}"
   cmake -GNinja \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DCMAKE_INSTALL_PREFIX=/usr .
   ninja
 }
