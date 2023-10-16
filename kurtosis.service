@@ -2,12 +2,13 @@
 Description=Starts kurtosis service
 
 [Service]
-Type=simple
+Type=forking
 Restart=always
 ExecStart=/usr/bin/kurtosis engine start
 ExecReload=/usr/bin/kurtosis engine restart
-KillMode=process
-TimeoutSec=180
+ExecStop=/usr/bin/kurtosis engine stop
+FailureAction=restart
+RemainAfterExit=yes
 
 [Install]
 WantedBy=default.target
