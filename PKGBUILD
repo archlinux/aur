@@ -102,6 +102,7 @@ build() {
     --wrap-mode  nodownload \
     -D           b_lto=true \
     -D           b_pie=true \
+    -D           default_library=shared \
     -D           xwayland=enabled
 
   ln -sf wlroots build/subprojects/wlroots/include/wlr
@@ -116,8 +117,8 @@ package() {
   rm -rf "$pkgdir/usr/include/hyprland/wlroots/wlr"
   ln -sf . "$pkgdir/usr/include/hyprland/wlroots/wlr"
   # resolve conflicts with system wlr
-  rm "$pkgdir/usr/lib/libwlroots.so"
-  rm "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
+  rm -f "$pkgdir/usr/lib/libwlroots.so"
+  rm -f "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
   # resolve conflicts with xdg-desktop-portal-hyprland from repo
   rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
   # FIXME: meson.build shall install version.h
