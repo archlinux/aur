@@ -12,6 +12,7 @@ sha256sums=('f91f9b37c738c99761b3fd9eb2d50b2c1e3a8e4466f0f842fdc2445128cb5bda')
 
 build() {
   cd openturns-$pkgver
+  sed -i "/use_postordering/d" lib/src/Base/Optim/Ceres.cxx
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
