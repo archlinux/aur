@@ -16,6 +16,7 @@ pkgbase = qcm-git
 	depends = qt6-tools
 	depends = qt6-multimedia
 	depends = qt6-declarative
+	depends = qt6-5compat
 	depends = gcc-libs
 	depends = glibc
 	depends = dbus

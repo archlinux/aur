@@ -1,4 +1,4 @@
-# Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
+# Maintainer: Kimiblock Moe <kimiblock at icloud dot com>
 pkgname=qcm-git
 pkgver=r61.fcb0f3e
 pkgrel=2
@@ -14,6 +14,7 @@ depends=(
     'qt6-tools'
     'qt6-multimedia'
     'qt6-declarative'
+    "qt6-5compat"
     'gcc-libs'
     'glibc'
     'dbus'
