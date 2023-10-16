@@ -1,9 +1,9 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=8.0-20230929b
+_srctag=8.0-20231011b
 _commit=
-pkgver=8.0.20230929.2 #${_srctag//-/.}
+pkgver=8.0.20231011.2 #${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
 pkgrel=1
@@ -261,12 +261,12 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            '6055a5bd62c1fee661a888de24a578e3aa8ecf572719fb8d1bf65c8d76a76691'
-            'bb2104fced35714dcdee8ca81c2612b602f04d018bed05789a77b9af284787d8'
-            'ef04c0f2e8e05196426bff5c646b76a9e361e66d47ae01308a22411d861d6ad2'
-            'af91463247f9d125ca871e6862edfcff49b13a30d2e062cf244e82e38c2e3bc7'
-            '69bf69bdf483675e484d673e1332fa6e94de1dca5ce5b3e5eb59f5d665b9c501'
-            '04bc88110e7bf275fde46fbfc8f5d794245be4e9dfe7ee6bdd8f2cbca82c4bcc')
+            'bcc951d1e547eec2a776a618d3b8481f0f36da30351b87f129774b9491cbabdb'
+            '02e11e4e19254512297f1ead7db0b9856c0f2018fd8f8c162db4938b70c342ce'
+            '41e733cfcd01e8bcd242604c1ed688245691ca656508d512b16c45dca8c58873'
+            '987acb26feaa8c281988ce58f347b8d4bc478736fa3d6c9045698a16294b6525'
+            'deff00345d3d019d27cf43e07f4e92f49042ce9675840ecb9f507a283d8b0938'
+            '4929238a0b847817dcd2b547365b0241a993bcc9d0865bf30bfa33db352f9eaf')
 # Optional patches
 sha256sums+=(
 )
