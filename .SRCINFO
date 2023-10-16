@@ -1,0 +1,15 @@
+pkgbase = wayfire-plugins-shadows-git
+	pkgdesc = Wayfire plugin that adds shadows around server-side decorated windows
+	pkgver = r76.de32395
+	pkgrel = 1
+	url = https://github.com/timgott/wayfire-shadows
+	arch = x86_64
+	license = MIT
+	makedepends = glm
+	makedepends = git
+	makedepends = meson
+	depends = wayfire
+	source = wayfire-plugins-shadows-git::git+https://github.com/timgott/wayfire-shadows
+	b2sums = SKIP
+
+pkgname = wayfire-plugins-shadows-git
