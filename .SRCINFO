@@ -1,0 +1,25 @@
+pkgbase = python-pydal-git
+	pkgdesc = A pure Python Database Abstraction Layer
+	pkgver = v20230521.1.r0.g05557217
+	pkgrel = 1
+	url = https://github.com/web2pypython-pydal-git
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	optdepends = sqlite
+	optdepends = mariadb
+	optdepends = postgresql
+	optdepends = mssql-server
+	optdepends = oracle-xe
+	optdepends = mongodb
+	provides = python-pydal
+	conflicts = python-pydal
+	source = python-pydal-git::git+https://github.com/web2py/pydal.git
+	sha512sums = SKIP
+
+pkgname = python-pydal-git
