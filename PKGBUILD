@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=lib32-libheif
-pkgver=1.16.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=('x86_64')
@@ -38,13 +38,14 @@ optdepends=(
 )
 provides=('libheif.so')
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-sha256sums=('7f97e4205c0bd9f9b8560536c8bd2e841d1c9a6d610401eb3eb87ed9cdfe78ea')
+sha256sums=('c86661e9ef9c43ad8de9d2b38b7b508df5322580b24d22fc25a977e7fdb26f3c')
 
 build() {
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cmake -B build -S "${_pkgname}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
