@@ -1,18 +1,16 @@
 pkgbase = foto
 	pkgdesc = Simple image viewer written in C
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/mekb-turtle/foto
 	arch = any
 	license = MPL-2.0
 	makedepends = git
 	makedepends = pandoc
-	depends = cairo
-	depends = devil
-	depends = libx11
-	depends = libxext
+	depends = sdl2
+	depends = sdl2_image
 	provides = foto
-	source = foto::git+https://github.com/mekb-turtle/foto.git#tag=v1.4.0
+	source = foto::git+https://github.com/mekb-turtle/foto.git#tag=v2.0.0
 	sha256sums = SKIP
 
 pkgname = foto
