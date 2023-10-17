@@ -36,8 +36,6 @@ pkgbase = motrix-git
 	provides = motrix=1.8.19.r30.g7012040
 	conflicts = motrix
 	source = motrix.git::git+https://github.com/agalwood/Motrix.git
-	source = motrix.sh
 	sha256sums = SKIP
-	sha256sums = 796025eedc90563291e822f292d46633b0f79cf2787fd6ffa48932a059c4203f
 
 pkgname = motrix-git

@@ -13,10 +13,8 @@ depends=('libxcb' 'gcc-libs' 'dbus' 'libxdamage' 'alsa-lib' 'mesa' 'gtk3' 'libxk
 makedepends=('gendesk' 'git' 'yarn' 'npm>=9.8.1' 'nodejs>=18.18.0')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname//-/.}::git+https://github.com/agalwood/Motrix.git"
-    "${pkgname%-git}.sh")
-sha256sums=('SKIP'
-            '796025eedc90563291e822f292d46633b0f79cf2787fd6ffa48932a059c4203f')
+source=("${pkgname//-/.}::git+https://github.com/agalwood/Motrix.git")
+sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
