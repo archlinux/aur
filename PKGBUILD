@@ -3,10 +3,10 @@
 pkgname=jupyter-nbgrader-git
 _realm=jupyter
 _name_wogit=${pkgname%-git}
-_name=${_name_wogit#$_realm-}
-provides=($_name_wogit)
-conflicts=($_name_wogit)
-pkgver=v0.8.1.r14.gd71461ed
+_name=${_name_wogit#"$_realm"-}
+provides=("$_name_wogit")
+conflicts=("$_name_wogit")
+pkgver=v0.9.1.r1.g2ef44515
 pkgrel=1
 pkgdesc="A system for assigning and grading notebooks"
 arch=(any)
@@ -21,9 +21,7 @@ depends=(
 	python-jsonschema
 	python-jupyter_client
 	jupyter-server
-	python-jupyterlab_server
-	python-markupsafe
-	jupyter-nbclassic  # As of 2022-11-10 <0.4
+	python-jupyterlab-server
 	jupyter-nbclient
 	jupyter-nbconvert
 	jupyter-notebook
@@ -31,27 +29,46 @@ depends=(
 	python-rapidfuzz
 	python-requests
 	python-sqlalchemy
-	python-traitlets  # As of 2022-11-10 <5.2.0
+	python-pyaml
+
+	# Additional optional deps from jsonschema probably due to https://github.com/jupyter/jupyter_events/blob/9b99f6718a3bb2686aab51e17f5c7ee276baf316/pyproject.toml#L31C4-L33C112
+	python-fqdn
+	python-rfc3986-validator
+	python-rfc3339-validator
+	python-webcolors
+	python-uri-template
+	python-jsonpointer
+	python-isoduration
+
+	# Others
+	python-types-python-dateutil
+	python-terminado
+	python-debugpy
+	jupyterlab
+	jupyter-lsp
+	npm # used by jlpm
+
 )
 makedepends=(
-	jupyterlab-hatch-jupyter-builder
+	python-hatch-jupyter-builder
 	python-build
 	python-installer
 	python-wheel
 	git
 )
-source=(git+https://github.com/$_realm/$_name)
+source=(git+https://github.com/"$_realm/$_name")
 md5sums=(SKIP)
 pkgver() {
-	cd $_name
+	cd "$_name" || exit
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
-	cd $_name
+	cd "$_name" || exit
 	python -m build --wheel --no-isolation
 }
 package() {
-	cd $_name
+	cd "$_name" || exit
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	mv "$pkgdir"/usr/etc "$pkgdir"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
