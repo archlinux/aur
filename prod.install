@@ -1,0 +1,7 @@
+post_install() {
+	printf "Create user: ipfs\n"
+	sudo useradd -m ipfs
+	sudo usermod --shell /bin/bash ipfs
+	printf "Update Services\n"
+	sudo systemctl daemon-reload
+}

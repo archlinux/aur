@@ -2,4 +2,6 @@
 !.SRCINFO
 !PKGBUILD
 !versions.txt
+!prod.install
+!ipfs.service
 !.gitignore

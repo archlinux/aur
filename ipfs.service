@@ -1,0 +1,11 @@
+[Unit]
+Description=IPFS daemon
+After=network.target
+
+[Service]
+User=ipfs
+Environment="IPFS_PATH=/opt/ipfs-repo"
+ExecStart=/usr/bin/ipfs daemon
+
+[Install]
+WantedBy=multi-user.target
