@@ -1,4 +1,4 @@
-pkg
-src
-*.log
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
