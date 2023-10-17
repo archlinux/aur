@@ -9,7 +9,6 @@ pkgbase = libodiosacd
 	license = GPL3
 	makedepends = cmake
 	depends = glibc
-	options = !emptydirs
 	source = libodiosacd-23.8.1.tar.gz::https://github.com/tari01/libodiosacd/archive/23.8.1.tar.gz
 	md5sums = 3a790af5f2a465f00345e5b473b912f8
 

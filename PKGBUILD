@@ -12,12 +12,11 @@ makedepends=("cmake")
 depends=("glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("3a790af5f2a465f00345e5b473b912f8")
-options=("!emptydirs")
 
 build()
 {
     cd ${pkgname}-${pkgver}
-    cmake -S . -B build -DCMAKE_INSTALL_LIBEXECDIR='lib'
+    cmake -S . -B build
     cmake --build build
 }
 
