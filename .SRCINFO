@@ -1,0 +1,15 @@
+pkgbase = wit-bindgen
+	pkgdesc = A language binding generator for WebAssembly interface types
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/bytecodealliance/wit-bindgen
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/bytecodealliance/wit-bindgen/archive/refs/tags/wit-bindgen-cli-0.12.0.tar.gz
+	sha256sums = 44206c2b610afff5f5688b404ae80a9146c16752cc77313a49c3fc733edfca51
+
+pkgname = wit-bindgen
