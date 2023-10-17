@@ -1,14 +1,14 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)
-	pkgver = 7.0.10
-	pkgrel = 2
+	pkgver = 7.0.12
+	pkgrel = 1
 	url = https://www.virtualbox.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = python
-	noextract = VirtualBoxSDK-7.0.10-158379.zip
-	source = http://download.virtualbox.org/virtualbox/7.0.10/VirtualBox-7.0.10-158379-Linux_amd64.run
-	source = https://download.virtualbox.org/virtualbox/7.0.10/VirtualBoxSDK-7.0.10-158379.zip
+	noextract = VirtualBoxSDK-7.0.12-159484.zip
+	source = http://download.virtualbox.org/virtualbox/7.0.12/VirtualBox-7.0.12-159484-Linux_amd64.run
+	source = https://download.virtualbox.org/virtualbox/7.0.12/VirtualBoxSDK-7.0.12-159484.zip
 	source = VBoxAuth-r98942.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=98942
 	source = VBoxAuthPAM-r98942.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=98942
 	source = VBoxAuthSimple-r98942.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=98942
@@ -19,8 +19,8 @@ pkgbase = virtualbox-bin
 	source = virtualbox.sysusers
 	source = LICENSE.sdk
 	source = 013-Makefile.patch
-	sha256sums = df7208289adc4f855264a4387a7e7615435068cd8b0474260aa4271bbfff6c7c
-	sha256sums = 5d28e6182869a2b3e887eecc9b3856f4b2bf6280cb8a7d69606a15c568254b2a
+	sha256sums = 3e93d7e841e0a15384632f814f0fb3c959dbc0a10e228ce653aa158a043170ec
+	sha256sums = a5594cd609cb5a51dd41af6cbb643e52c5d7d628d45e218506f4497bb23b1d6e
 	sha256sums = 13a6c51c5c6429e93b99a6bef5d56ebccf7437fb9bab20ad279cbb02c1ac80e1
 	sha256sums = 82b26130150c26d46c9951da71bc3a53e0aa1684b1350c13397f4eb625bfb2ed
 	sha256sums = c0de86185f46cb6f8933c848c9bd1e1824b594089aa0094b44d7a0d25d9f5546
@@ -47,7 +47,7 @@ pkgname = virtualbox-bin
 	optdepends = virtualbox-bin-guest-iso: for guest additions CD image
 	optdepends = virtualbox-bin-sdk: for the software developer kit
 	optdepends = virtualbox-ext-oracle: for Oracle extensions pack
-	provides = virtualbox=7.0.10
+	provides = virtualbox=7.0.12
 	provides = virtualbox-host-dkms
 	provides = VIRTUALBOX-HOST-MODULES
 	conflicts = virtualbox
