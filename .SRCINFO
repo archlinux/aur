@@ -1,0 +1,17 @@
+pkgbase = mod_maxminddb
+	pkgdesc = This module allows you to query MaxMind DB files from Apache 2.2+ using the libmaxminddb library.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/maxmind/mod_maxminddb
+	arch = x86_64
+	license = APACHE
+	depends = apache
+	depends = libmaxminddb
+	provides = mod_maxminddb=1.2.0
+	options = !buildflags
+	options = !emptydirs
+	options = staticlibs
+	source = https://github.com/maxmind/mod_maxminddb/releases/download/1.2.0/mod_maxminddb-1.2.0.tar.gz
+	sha256sums = b6e114bcc2e89afaed63570c209b2868b613239d0fa91bd6e56af76b05a89f13
+
+pkgname = mod_maxminddb
