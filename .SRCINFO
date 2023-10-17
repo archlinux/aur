@@ -1,6 +1,6 @@
 pkgbase = snowflake-pt-proxy
 	pkgdesc = Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC (proxy part)
-	pkgver = 2.6.1
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://snowflake.torproject.org
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = snowflake-pt-proxy
 	license = BSD
 	makedepends = go
 	depends = glibc
-	source = snowflake-pt-proxy-2.6.1.tar.gz::https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/archive/v2.6.1/snowflake-v2.6.1.tar.gz
+	source = snowflake-pt-proxy-2.7.0.tar.gz::https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/archive/v2.7.0/snowflake-v2.7.0.tar.gz
 	source = snowflake-proxy.service
-	sha256sums = e232e389ceec36fab60171b544112317798784ae8c81eb33ac9525649f8513c9
+	sha256sums = 69d0408905a29919940e9a3994b480dd3414f0dc177aac24e9afe9ff56495029
 	sha256sums = 81ed80bea97fb9874734d4ec7ccb9a850e6aa5b186a354990066344446bd1412
-	b2sums = 0be50096dfe5554e1dc0606faf20801ce8ac8929fba6f608398895b79348ed052c67ae399c4009a18a7b923429de327dd98cc63c506adebaa7a24838600332e2
+	b2sums = 43ad178143af9f9f5b9c167c7a1b59adbcf77370fb59690b20d5e05731330ccf69acdd221810ff99f72754418826ad2ec07dfdfec40d9607fd0ae52b92d1a3b2
 	b2sums = 2ba698a76a06b8ebee3cd8c44562783aa3939f66528d1573ac93a59dcc6a8de61f160b5dbc0e8b83c2473bedf037d69fbee9b33befa24027693e556fd5d3d575
 
 pkgname = snowflake-pt-proxy
