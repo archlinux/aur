@@ -1,16 +1,19 @@
 pkgbase = python-jupyter-server-proxy
-	pkgdesc = Jupyter server extension to supervise and proxy web services
+	pkgdesc = Jupyter notebook server extension to proxy web services
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyterhub/jupyter-server-proxy
 	arch = any
 	license = BSD
-	makedepends = unzip
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-hatch-nodejs-version
+	makedepends = jupyterlab
 	depends = python
 	depends = python-aiohttp
 	depends = python-simpervisor
-	source = https://files.pythonhosted.org/packages/py3/j/jupyter-server_proxy/jupyter_server_proxy-4.1.0-py3-none-any.whl
-	sha256sums = 3a417d6996e47a90ba5ec5dd2603887cfd2efbc4abf850a1a0fbe77e3b4d04e9
+	source = https://files.pythonhosted.org/packages/source/j/jupyter-server-proxy/jupyter_server_proxy-4.1.0.tar.gz
+	sha256sums = 2cfac3b4232fe7144e8e60296b4f861708b4f13b29260a2cf28976bf8e617f70
 
 pkgname = python-jupyter-server-proxy

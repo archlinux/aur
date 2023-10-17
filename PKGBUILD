@@ -1,23 +1,26 @@
 # Maintainer: Anthony Wang <a_at-exozy_dot-me>
 
-pkgbase='python-jupyter-server-proxy'
-pkgname=('python-jupyter-server-proxy')
-_name='jupyter-server_proxy'
+_name='jupyter-server-proxy'
+pkgname="python-$_name"
 pkgver='4.1.0'
-pkgrel=1
-pkgdesc="Jupyter server extension to supervise and proxy web services"
+pkgrel=2
+pkgdesc="Jupyter notebook server extension to proxy web services"
 url="https://github.com/jupyterhub/jupyter-server-proxy"
-depends=('python' 'python-aiohttp' 'python-simpervisor')
-makedepends=('unzip' 'python-setuptools')
+depends=(python python-aiohttp python-simpervisor)
+makedepends=(python-build python-installer python-hatch-jupyter-builder python-hatch-nodejs-version jupyterlab)
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('3a417d6996e47a90ba5ec5dd2603887cfd2efbc4abf850a1a0fbe77e3b4d04e9')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('2cfac3b4232fe7144e8e60296b4f861708b4f13b29260a2cf28976bf8e617f70')
+
+build() {
+    cd "${_name//-/_}-$pkgver"
+    # Arch Linux's jupyerlab packaging is really bad and doesn't package the same dependencies as the PyPI version, so let's just --skip-dependency-check and hope for the best
+    python -m build --wheel --no-isolation --skip-dependency-check
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	install -d "$site"
-	unzip "${_name//-/_}-$pkgver-py3-none-any.whl" -d "$site"
-	mv "$site/${_name/-/_}-$pkgver.data/data/share"* "$pkgdir/usr/share"
-	mv "$site/${_name/-/_}-$pkgver.data/data/etc"* "$pkgdir/etc/"
+    cd "${_name//-/_}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    mv "$pkgdir/usr/etc" "$pkgdir" # Move /usr/etc stuff to /etc where it actually belongs
 }
