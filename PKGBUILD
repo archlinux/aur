@@ -1,16 +1,24 @@
 pkgname=aocl-utils
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AOCL-Utils provides a uniform interface to all the AOCL libraries to access the CPU features for AMD CPUs."
 arch=('x86_64')
 url="https://github.com/amd/aocl-utils"
-license=('custom')
-depends=('glibc')
-source=("local://aocl-utils-linux-gcc-4.1.0.tar.gz")
-sha256sums=('549ee64074b4193e1ec5db928defe157709f09689aba4a7a4037c84ba1c4f7f1')
+license=('BSD')
+depends=()
+makedepends=('cmake')
+source=("${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('a2f271f5eef07da366dae421af3c89286ebb6239047a31a46451758d4a06bc85')
+
+build() {
+    cd ${srcdir}/${pkgname}-${pkgver}
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
+
+    cd build
+    make
+}
 
 package() {
-    cd $srcdir/amd-utils
-    mkdir $pkgdir/usr
-    mv include lib $pkgdir/usr
+    cd ${srcdir}/${pkgname}-${pkgver}/build
+    make DESTDIR=${pkgdir} install
 }
