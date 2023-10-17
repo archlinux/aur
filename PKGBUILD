@@ -19,7 +19,7 @@
 _appname='tor-browser'
 pkgname="${_appname}-bin"
 pkgver='13.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -69,7 +69,7 @@ source=("${_appname}.desktop.in"
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
 sha256sums=('5dd2b61bd4edf4d1499a81127f97a1de7ec272a885df97331b61969a5a07f05f'
-            '1143d23e347605b498b3793992e84e95563efd94aa4da17837b37104a6d4a090'
+            '1313484fc0572d82067f5671327540fcab6747fd2d187f216e1fc8edf3581509'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
 sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
