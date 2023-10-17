@@ -3,7 +3,7 @@
 pkgname=snort-nfqueue
 _pkgname=snort3
 _openappid=33380
-pkgver=3.1.69.0
+pkgver=3.1.72.0
 pkgrel=1
 pkgdesc='A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.'
 arch=('i686' 'x86_64')
@@ -25,16 +25,16 @@ backup=('etc/snort/snort.lua'
 install=snort.install
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/${pkgver}.tar.gz"
         "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
-        'cstdint.patch'
+        'string.patch'
         'tcmjem.patch'
         'local.lua'
         'snort.logrotate'
         'snort.sysusers'
         'snort.tmpfiles'
         'snort.service')
-sha256sums=('97083cd33a6ba33bdaa133bf19138a3f6a24ce93b2a9e285dcbd89858534cb72'
+sha256sums=('011bb367683ac5eccdef0ce2060d879562c31ca731230d803b8168094e20a69f'
             '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
-            'b3d86ffa12207afa0f2d3a2349cf4746711e71b8a43bdc593b1527eda972f8ea'
+            'fbc178f33ddaa2add21a794f3deac2b1a3d3abe59310ae4601562c6059575547'
             '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
             '55ae10b6d24abadb03dd4f010fdf71e077370227db6835e48881836a8ea082a8'
             'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
@@ -44,7 +44,7 @@ sha256sums=('97083cd33a6ba33bdaa133bf19138a3f6a24ce93b2a9e285dcbd89858534cb72'
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    patch -p0 < "${srcdir}"/cstdint.patch
+    patch -p0 < "${srcdir}"/string.patch
     patch -p0 < "${srcdir}"/tcmjem.patch
     # Workaround https://github.com/intel/hyperscan/issues/388
     sed -i '/HAVE_HS_COMPILE_LIT/d' config.cmake.h.in cmake/sanity_checks.cmake

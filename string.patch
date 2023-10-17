@@ -1,0 +1,10 @@
+--- src/managers/module_manager.h	2023-10-17 06:29:31.817813432 +0530
++++ src/managers/module_manager.h	2023-10-17 06:29:52.671737795 +0530
+@@ -27,6 +27,7 @@
+ #include <list>
+ #include <mutex>
+ #include <set>
++#include <string>
+ 
+ #include "framework/counts.h"
+ #include "main/analyzer_command.h"
