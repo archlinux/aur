@@ -1,7 +1,7 @@
 # Maintainer : silverhikari <kerrickethan@gmail.com>
 # Contributor: Zeta Gabriels <zetagabriels@gmail.com>
 pkgname=userspace-tablet-driver-daemon-git
-pkgver=r178.5369d9b
+pkgver=r188.6523fe9
 pkgrel=1
 epoch=1
 pkgdesc="A userspace daemon for XP-Pen and Huion tablets."
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cmake -B build -S "${pkgname%-git}" \
-	-DCMAKE_INSTALL_PREFIX='/usr'
+	-DCMAKE_INSTALL_PREFIX='/'
 	cmake --build build
 }
 

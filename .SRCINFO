@@ -1,6 +1,6 @@
 pkgbase = userspace-tablet-driver-daemon-git
 	pkgdesc = A userspace daemon for XP-Pen and Huion tablets.
-	pkgver = r178.5369d9b
+	pkgver = r188.6523fe9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/kurikaesu/userspace-tablet-driver-daemon.git
