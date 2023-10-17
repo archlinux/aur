@@ -4,7 +4,7 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=36907.75682ff
+pkgver=37123.0fe6218
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -74,6 +74,9 @@ build() {
 
   cmake --build . -j $(($(nproc) - 1))
 
+  cd ../tools/phonon/
+  cmake -S . -B build
+  cmake --build build
 }
 
 package() {
@@ -88,10 +91,11 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/examples/lammps"
   cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
+  cp -r "../python/examples" "${pkgdir}/usr/share/examples/lammps/python/more"
   find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
 
   install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
   install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
   install -Dm644 "../tools/kate/lammps.xml" "${pkgdir}/usr/share/katepart5/syntax/lammps.xml"
-
+  install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
 }
