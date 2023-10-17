@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=avm
-pkgver=3.1.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='AOM Video Model - the reference software for next codec from Alliance for Open Media'
 arch=('x86_64')
@@ -25,6 +25,7 @@ prepare() {
 
 build() {
     cmake -B build -S avm \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
@@ -40,14 +41,14 @@ build() {
         -DHAVE_SSE:STRING='1' \
         -DHAVE_SSE2:STRING='1' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    LIBAOM_TEST_DATA_PATH="${PWD}/testdata" make -C build runtests
+    LIBAOM_TEST_DATA_PATH="$(pwd)/testdata" make -C build runtests
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 avm/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
