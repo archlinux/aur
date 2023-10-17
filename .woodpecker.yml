@@ -22,6 +22,7 @@ steps:
 
     commands:
       - rm -rf src pkg *.gz *.patch.zst oom
+      - chown -R root:root "$(pwd)"
 
   publish:
     image: codeberg.org/gameplayer-8/gitio
