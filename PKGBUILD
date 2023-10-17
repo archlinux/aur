@@ -2,7 +2,7 @@
 # Contributor: ybenel <root@ybenel.cf>
 pkgname=realneptune
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Neptune a superfast mechanical keyboard sound app"
 arch=('x86_64')
 url="https://github.com/M1ndo/Neptune"

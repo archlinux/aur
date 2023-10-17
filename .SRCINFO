@@ -1,10 +1,10 @@
 pkgbase = realneptune
 	pkgdesc = Neptune a superfast mechanical keyboard sound app
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/M1ndo/Neptune
 	arch = x86_64
-	license = AGPLv3
+	license = AGPL3
 	depends = make
 	source = https://github.com/M1ndo/Neptune/releases/download/v1.0.1/Neptune.tar.xz
 	sha256sums = 44b045c049786265838d096d524c0b3e616f4d4f2f954e41d5277276660e3a63
