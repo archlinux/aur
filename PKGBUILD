@@ -1,11 +1,11 @@
 pkgname=librewolf-extension-gnome-shell-integration
 pkgver=11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME shell integration addon for Librewolf'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/'
 license=('GPLV3')
-depends=('librewolf' 'chrome-gnome-shell')
+depends=('librewolf' 'gnome-browser-connector')
 groups=('librewolf-addons')
 source=("extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3974897/gnome_shell_integration-${pkgver}.xpi")
 sha512sums=('26495b3eb72795995fb6f157668d97819d3578da59839f6d3cdf24e3b70bf60730763ef5e38d26cfd8c4a95db8ac31c7325524dc469432b46244017fdd450002')
