@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=15.10.3
+pkgver=15.11.0
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')

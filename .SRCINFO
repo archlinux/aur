@@ -1,0 +1,17 @@
+pkgbase = stylelint
+	pkgdesc = Mighty, modern CSS linter
+	pkgver = 15.11.0
+	pkgrel = 1
+	url = https://stylelint.io
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = rsync
+	depends = nodejs
+	optdepends = stylelint-config-standard: for the standard shareable config
+	options = !emptydirs
+	source = git+https://github.com/stylelint/stylelint.git#tag=15.11.0
+	b2sums = SKIP
+
+pkgname = stylelint
