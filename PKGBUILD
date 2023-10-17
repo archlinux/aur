@@ -16,7 +16,7 @@ pkgname=(
   java-openjfx-src
 )
 pkgver=21.u31
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -72,6 +72,9 @@ prepare() {
 build() {
   cd jfx${pkgver//.*}u-${pkgver//.u/-}
   # cd jfx${pkgver%%.*}u-${pkgver//.u/-}
+
+  # Build with openjdk-17
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
 
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
