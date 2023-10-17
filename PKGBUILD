@@ -2,10 +2,10 @@
 
 pkgname=extundelete
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://${pkgname}.sourceforge.net/"
-license=('GPLv2')
+license=('GPL2')
 pkgdesc="extundelete is a utility that can recover deleted files from an ext3 or ext4 partition."
 depends=('glibc' 'e2fsprogs')
 provides=()
