@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 21 Oracle Build.
-	pkgver = 21.u35
+	pkgdesc = Java OpenJDK 21.0.1 Oracle Build.
+	pkgver = 21.0.1.u12
 	pkgrel = 1
 	url = https://jdk.java.net/21
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=21
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	source = https://download.java.net/java/GA/jdk21/fd2272bbf8e04c3dbaee13770090416c/35/GPL/openjdk-21_linux-x64_bin.tar.gz
-	sha256sums = a30c454a9bef8f46d5f1bf3122830014a8fbe7ac03b5f8729bc3add4b92a1d0a
+	source = https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
+	sha256sums = 7e80146b2c3f719bf7f56992eb268ad466f8854d5d6ae11805784608e458343f
 
 pkgname = java-openjdk-bin
