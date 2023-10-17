@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
-pkgver=1.2.3
-pkgrel=3
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="Bootstrap and package your project with Angular 15 and Electron 21 (Typescript + SASS + Hot Reload) for creating Desktop applications."
 arch=('x86_64')
 url="https://github.com/malacration/sap-front"
@@ -11,18 +11,20 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-12.0.0.tar.gz"
-    "LICENSE.md::https://raw.githubusercontent.com/malacration/sap-front/main/LICENSE.md"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/malacration/sap-front/main/src/assets/icons/favicon.512x512.png"
+    "LICENSE.md::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/LICENSE.md"
+    "${pkgname%-bin}.png::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/src/assets/icons/favicon.512x512.png"
     "${pkgname%-bin}.sh")
-sha256sums=('7c49c17274773a65b726857f49f410b0b170c89ca3d0077dff83cda5c8573c69'
+sha256sums=('761b6ede31a2f107376857528f72ec7b16f674ffd719e46a71694dd680c9aa6f'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
-            '6af508d7feea83801a1c8d14041f60f8368f701260973b9f5f859968299e87e5')
+            'c71e32374e069ce3ec885498bf61c11a16655db0818cc912e31a87dc579a3673')
+build() {
+    gendesk -f -n -q --categories "Development;Utility" --name "Angular Electron" --exec "${pkgname%-bin}"
+}
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-12.0.0/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-12.0.0/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
     install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    gendesk -f -n --icon "${pkgname%-bin}" --categories "Development;Utility" --name "Angular Electron" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
