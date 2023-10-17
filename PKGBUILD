@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator
-pkgver=r43
+pkgver=r45
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
@@ -18,15 +18,15 @@ source=(
 )
 
 md5sums=(
-    '4b4f8f2aa02d074b4c7f1686dca65ea5'
-    'c0b5ba5190ef5ee4dd8e58433f261e35'
-    '5cd0550d2af1b4267c9b9f30eed9691e'
+    '4e77ff14a94d067a4d94980e74e6decd'
+    '26c41ecd2e2676eaa7237334c8cb4bd7'
+    '0e76560b039fb58a85b4448ff6b64eb6'
 )
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch -uN < ../fix-git-rev.patch
-    patch -uN src/main.c ../modify-base-path.patch
+    patch -uN -p1 < ../fix-git-rev.patch
+    patch -uN -p1 < ../modify-base-path.patch
     sed -i -e 's/^\(LDFLAGS=.*\)/\1 '"${LDFLAGS}/" Makefile
     gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "$pkgname" --exec "x16emu" --categories "Game;Emulator"
 }
@@ -34,7 +34,9 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
     # https://aur.archlinux.org/packages/x16-emulator#comment-827725
-    CC="clang ${CFLAGS} -Wno-macro-redefined" make
+    export CC="clang ${CFLAGS} -Wno-macro-redefined"
+    export CXX="clang++ ${CXXFLAGS}"
+    make
     pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="X16 Emulator" README.md --output README.html
 }
 
