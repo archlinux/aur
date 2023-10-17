@@ -11,7 +11,7 @@ pkgname=('systemd-chromiumos'
 _tag='42f5ba1e56ddb81c244e0d85f13109acdb14cbee' # git rev-parse v${_tag_name}
 _tag_name=254.5
 pkgver="${_tag_name/-/}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -156,7 +156,7 @@ build() {
     -Dsbat-distro-summary='Arch Linux'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
-    -Dsbat-distro-url="https://archlinux.org/packages/core/x86_64/${pkgname}/"
+    -Dsbat-distro-url="https://aur.archlinux.org/packages/${pkgname}/"
   )
 
   # this uses malloc_usable_size, which is incompatible with fortification level 3
