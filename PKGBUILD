@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkdocs-material-extensions"
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Markdown extension resources for MkDocs Material"
 url="https://github.com/facelessuser/mkdocs-material-extensions"
@@ -13,7 +13,7 @@ replaces=("python-mkdocs-material-extensions-git" "mkdocs-material-extensions-gi
 depends=("mkdocs" "pymdown-extensions")
 makedepends=("python-build" "python-installer" "python-wheel" "python-hatchling")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9948b8e2d5cfd6b1be91f5878462c0b5b7386d974e3d572e7078f4b6f86e916c')
+sha256sums=('8d0de017c6c3df08fbe0d2fdc2a70f0fd9a3fc9cd397cf3206a897bf7cbd31cf')
 
 build(){
  cd "$pkgname-$pkgver"
