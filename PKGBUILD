@@ -1,7 +1,7 @@
 # -*- mode: Shell-script; eval: (setq indent-tabs-mode 't); eval: (setq tab-width 4) -*-
 # Maintainer: LuckyTurtleDev [aur at lukas1818 dot de]
 
-_pkgtag=0.1.6 #auto updated by CI
+_pkgtag=0.1.7 #auto updated by CI
 _crate="crab-hole"
 pkgname="crab-hole"
 pkgver="$_pkgtag"
@@ -15,7 +15,7 @@ makedepends=('cargo')
 
 source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/crab-hole/$pkgver/download"
          crab-hole.service)
-sha512sums=('9de3afeae4fbe70b1b9c34a51e50466a9ddf7b628564728cf622e9bc925f92984dfbcb5efb154efdb959e077650665fc6469698006def6beff2f3a087f5f2045'
+sha512sums=('91a1257c6eb4017a394e511c71bc920aa46e6ddadb9b684972cb6a3ec4ce7219ed19a88a0be0f8f889e719a7ae76b58ddf93843069065be27d32711087f6e4f0'
             '0cb8a1137c3adab1553db7bae431b69fdd653f2025a106b04122100279bac6c7b27f038af436203fa7726ec0e744a46795c7f0baf32a53e03f363eb2e604c327')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
