@@ -14,7 +14,7 @@
 pkgname=discord-electron
 _pkgname=discord
 _electron=24
-pkgver=0.0.31
+pkgver=0.0.32
 pkgrel=1
 pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
@@ -34,10 +34,10 @@ optdepends=(
 )
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	'discord-launcher.sh')
-sha512sums=('596f0e2271e61798594d97a85728eea2bfa851db7f1e8b7fa65e1631dfeb347fa8d6087556854c0e775b88678a03b8ece97d0c1293b156e7ea908f6570645248'
+sha512sums=('e3ca9075e4a66c7c4358bdccb748f8f849de24cf3036b85d2c42dd15f8e56125fc42e86e73920751126b0e4fa73596a1d7af1f21ac9903911d6c843637c46813'
             'b0961f546a4016e24d516c6d1125c1af0e8ca84ab960f6abe10ec98c2c18543da2168ffb2676189ed110e9abbdb889abfb2c610954019250041a0a89b0b03bab')
 
-_krisp_b2sum='d164c2ee27826c97fc18bd1bce1351b4199daf0bdc4be635666ab146a56a09106af241f34fa1f5c123bc86d9c27503bded9a015835d6040b17c238a9aab699a5'
+_krisp_b2sum='90c3fbf6aab16638995fe21c49d4b8f93dbec9a9147cc7b1424c591c630aae84c362ee2b1a81507311b31e442e6b2706e6f48e1df8edd7248f5659108bbb3711'
 
 prepare() {
 	# prepare launcher script
