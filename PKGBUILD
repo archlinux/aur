@@ -1,6 +1,6 @@
 # Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=term-pdf
-pkgver=0.0.3.8
+pkgver=0.0.3.9
 pkgrel=1
 pkgdesc="TermPDF Viewer is an open-source PDF file viewer designed to run in the terminal."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/TermPDFViewer"
 license=('MIT')
 depends=('python-pip' 'python-pymupdf')
 source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('ff15c7a79a4b13eb067e28408e18c7333b609b7d76f2bb3039072df9125688ab')
+sha256sums=('05d652e374019b617842c77d435f58c92da58529e033d3d29b254820c3fa03fb')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
@@ -20,7 +20,5 @@ build() {
 }
 package() {
   install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp "${pkgdir}/usr/bin/term-pdf"
-  install -d -m700 "${pkgdir}/$HOME/.termpdf"
-  install -Dm700 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/$HOME/.termpdf/termpdf.py"
-  runuser -u $USER chmod 700 "${pkgdir}/$HOME/.termpdf"
+  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/usr/local/bin/termpdf.py"
 }
