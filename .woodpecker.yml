@@ -16,3 +16,22 @@ steps:
       - chown -R yay:yay /home/yay
       - chown -R yay:yay "$(pwd)"
       - sudo -u yay makepkg -si --noconfirm
+
+  cleanup:
+    image: alpine
+
+    commands:
+      - rm -rf src pkg *.gz *.patch.zst oom
+      - mv *.pkg.tar.zst linux-stoneyridge.pkg.tar.zst
+
+  publish:
+    image: codeberg.org/gameplayer-8/gitio
+
+    commands:
+      - export SYSTEM_BRANCH="$(basename "$CI_COMMIT_REF")-pages"
+      - if [ "$(basename "$CI_COMMIT_REF")" = "main" ]; then export SYSTEM_BRANCH="pages"; fi
+      - gitio branch GIT_BRANCH:"$SYSTEM_BRANCH"
+
+    secrets:
+      - SYSTEM_TOKEN_PASSWD
+      - OCI_TOKEN
