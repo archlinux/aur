@@ -1,3 +1,9 @@
+# Maintainer:
+# Contributor: Alexey Andreyev <aa13q@ya.ru>
+# Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Contributor: Ivan Semkin <ivan at semkin dot ru>
+# Contributor: Martin Weinelt <hexa at darmstadt dot ccc dot de>
+
 _pkgname="quaternion"
 pkgname="$_pkgname"
 pkgver=0.0.95.1
@@ -5,7 +11,7 @@ pkgrel=2
 pkgdesc='Qt-based IM client for the Matrix protocol'
 #url="https://matrix.org/docs/projects/client/quaternion.html"
 url="https://github.com/quotient-im/Quaternion"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 license=(GPL3)
 
 depends=(
@@ -20,7 +26,7 @@ makedepends=(
   git
 )
 optdepends=(
-  'qt5-graphicaleffects'
+  'qt5-graphicaleffects: Display the conversation history at startup'
   'qtkeychain: Store access tokens in a keyring'
 )
 
