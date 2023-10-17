@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
@@ -25,11 +25,13 @@ depends=(
   tailscale
 )
 makedepends=(cmake extra-cmake-modules)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1fabc9ea3723946d2c91457dd6d03ac328858e7e09fdb4199de4d57b33f2ca4b')
+
+# git tag is used by the cmake script to determine app version
+source=(git+$url.git#tag=v$pkgver)
+sha256sums=('SKIP')
 
 build() {
-  cmake -B build -S KTailctl-$pkgver \
+  cmake -B build -S KTailctl \
     -DDBUILD_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
