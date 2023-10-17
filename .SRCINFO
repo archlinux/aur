@@ -1,0 +1,14 @@
+pkgbase = x-resize
+	pkgdesc = A manual implementation of auto resizing for non-GNOME environments (like XFCE) running under Spice/Libvirt
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gist.github.com/IngoMeyer441/84cf1e40fa756a9c3e6c8d9e38ee9b6f
+	arch = any
+	license = MIT
+	depends = qemu-guest-agent
+	depends = spice-vdagent
+	depends = xorg-xrandr
+	source = https://gist.githubusercontent.com/IngoMeyer441/84cf1e40fa756a9c3e6c8d9e38ee9b6f/raw/580c836aab54e84360dd3f9fc94808b23cc74ac3/x-resize
+	sha256sums = ee4815fda73aace38735407098b1dec8b719c5ac56404bf179eefec2bf52f37b
+
+pkgname = x-resize
