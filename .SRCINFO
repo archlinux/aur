@@ -1,19 +1,19 @@
 pkgbase = trelby
-	pkgdesc = A multiplatform, feature-rich screenwriting program
-	pkgver = 2.2
-	pkgrel = 3
-	url = http://www.trelby.org
+	pkgdesc = The free, multiplatform, feature-rich screenwriting program!
+	pkgver = 2.4.9
+	pkgrel = 1
+	url = https://github.com/limburgher/trelby
 	arch = any
-	license = GPL
-	depends = wxpython2.8
-	depends = python2-lxml
+	license = GPL2
+	depends = python
+	depends = python-setuptools
+	depends = python-lxml
+	depends = python-wxpython
+	depends = python-reportlab
 	conflicts = trelby-git
-	source = https://github.com/trelby/trelby/releases/download/import/trelby-2.2.tar.gz
-	source = trelby.sh
+	source = trelby-2.4.9.tar.gz::https://github.com/limburgher/trelby/archive/refs/tags/2.4.9.tar.gz
 	source = trelby.xml
-	sha256sums = a46661507444a7ba80a3202fd637220198853db7b6b6cb3a0ce441c7eb6f72e6
-	sha256sums = 86d5dd225bd1e734c922f08398a10a64a7e93bb88d8f91d8186bd6a8766c1c7d
-	sha256sums = 0266d6a55bf19ea1e2aa339c72c547da83a5d95af583b3c1f00d39f84a44b8db
+	sha256sums = 05b1a97f97779dd8dc383314e74c17e39c2331f47e970323c7176718d4df874e
+	sha256sums = eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42
 
 pkgname = trelby
-

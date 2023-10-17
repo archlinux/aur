@@ -1,0 +1,6 @@
+src/
+pkg/
+
+*.pkg.*
+*.zip
+*.pyc
