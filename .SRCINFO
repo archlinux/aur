@@ -1,14 +1,18 @@
 pkgbase = noto-fonts-emoji-apple
-	pkgdesc = Google Noto emoji fonts replaced with apple branded emoji, modified form a magisk module
+	pkgdesc = Noto Fonts with emojis replaced with Apple's, derived form Magisk_iOS_Emoji
 	pkgver = 16.4beta
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.com/timescam/noto-fonts-emoji-apple
 	arch = any
+	license = custom:SIL
 	makedepends = git
 	provides = emoji-font
+	provides = noto-fonts-emoji
 	conflicts = noto-fonts-emoji
-	source = noto-fonts-emoji::git+https://gitlab.com/timescam/noto-fonts-emoji-apple.git
-	md5sums = SKIP
+	source = noto-fonts-emoji-apple::git+https://gitlab.com/timescam/noto-fonts-emoji-apple.git#commit=02d3fb40bca2c579e0110b98aeea812ca14e7851
+	source = LICENSE::https://raw.githubusercontent.com/google/fonts/89e363dd92c5fe6d8e4d150951f19a4e4aa65587/ofl/notocoloremoji/OFL.txt
+	b2sums = SKIP
+	b2sums = 5a1f5f5095a12e0039a4166cb4b58e88f1928b4b84924275a29e848cfdd663c6278c5e29f5ef533d11640d59494f10a2c2e307b17b5d95038a1b2dae987e07da
 
 pkgname = noto-fonts-emoji-apple
