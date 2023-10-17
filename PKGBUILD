@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zui-bin
 _pkgname=Zui
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A powerful desktop application for exploring and working with data. The official front-end to the Zed lake."
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('python' 'alsa-lib' 'gcc-libs' 'libxdamage' 'expat' 'zlib' 'cairo' 'hic
     'libdrm' 'bash' 'dbus' 'nspr' 'libxfixes')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE.txt::https://raw.githubusercontent.com/brimdata/zui/v${pkgver}/apps/zui/LICENSE.txt")
-sha256sums=('cc324b981038697d339d592693509b0f7f0b3fe5f09a1cd96de4a5bf91df9b43'
+sha256sums=('f6c0d50e721fcd3bf90e9435596ccc73b594a7a72fb944914414c2226a622ced'
             'e3d24db419fcb44a1dab91f351b8203e74e8501ea11c4be82ad3cc05070cad9f')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
