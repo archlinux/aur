@@ -7,7 +7,7 @@ pkgbase=gprbuild
 pkgdesc="Builder for multi-language systems."
 pkgname=(libgpr gprbuild gprtools gprname gprslave)
 pkgver=24.0w
-pkgrel=5
+pkgrel=6
 epoch=1
 
 arch=(i686 x86_64)
@@ -19,11 +19,13 @@ makedepends=(gprbuild python-sphinx)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
         https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprconfig-kb-$pkgver-20230324-16644-src.tar.gz
-        0001-Makefile-build-relocatable-instead-of-static-binary.patch)
+        0001-Makefile-build-relocatable-instead-of-static-binary.patch
+        gpr.gpr-patch)
 
 sha256sums=(efeb12ab26ca687a000ca781f3bce0e4ec2d4efd62b996116f2f505e50239b4f
             7de5388f05168fb32577556989f0bc0f4f4d615cbd6a79ad544127a090aba5f4
-            6ebbea41d4b8b516d0646438338fb228ea907600a2ad2c594bab41a7e1c3680c)
+            6ebbea41d4b8b516d0646438338fb228ea907600a2ad2c594bab41a7e1c3680c
+            b4a31b4f23c1a040eebad26aff6c771d04afe0b9d7da19c97ef9fde9bceed3db)
 
 _gprbuild_src=gprbuild-$pkgver-20230430-16222-src
 _gprconfig_kb_src=gprconfig-kb-$pkgver-20230428-16586-src
@@ -33,6 +35,7 @@ prepare()
 {
     cd $srcdir/$_gprbuild_src
     patch -Np1 -i $srcdir/0001-Makefile-build-relocatable-instead-of-static-binary.patch
+    patch -Np0 -i $srcdir/gpr.gpr-patch     # Rename 'libgpr.so' to 'libgpr-gnat.so' to prevent name clash with the 'grpc' package.
 
     ln -sfT $srcdir/gprconfig_kb-$pkgver/db/ share/gprconfig
 
@@ -92,10 +95,6 @@ package_libgpr()
 {
     pkgdesc="Ada library to handle Gnat project files."
     depends=(xmlada)
-
-    # Both provide /usr/lib/libgpr.so
-    #
-    conflicts=(grpc)
 
     cd $srcdir/$_gprbuild_src
 

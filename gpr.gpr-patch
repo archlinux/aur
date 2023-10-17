@@ -1,0 +1,11 @@
+--- gpr/gpr.gpr	2023-04-27 11:26:41.635112300 +1000
++++ gpr/gpr.gpr-new	2023-10-18 09:33:01.782042032 +1100
+@@ -37,7 +37,7 @@
+ 
+    for Source_Dirs use ("src");
+ 
+-   for Library_Name use "gpr";
++   for Library_Name use "gpr-gnat";
+    for Object_Dir use "libobj/" & Bld & "/" & Gnat_Lib_Type;
+    for Library_Dir use "lib/" & Bld & "/" & Gnat_Lib_Type;
+ 
