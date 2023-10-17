@@ -1,7 +1,7 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: raihan2000 <raihan1999ahamed@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
-# Contributor: raihan2000 <raihan1999ahamed@gmail.com>
 
 pkgname=mutter-mobile
 pkgdesc="A window manager for GNOME"
