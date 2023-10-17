@@ -1,0 +1,41 @@
+diff --git a/resources/qml/Governikus/Global/+desktop/NavigationButton.qml b/resources/qml/Governikus/Global/+desktop/NavigationButton.qml
+--- a/resources/qml/Governikus/Global/+desktop/NavigationButton.qml
++++ b/resources/qml/Governikus/Global/+desktop/NavigationButton.qml
+@@ -64,7 +64,6 @@ Button {
+ 				}
+ 				sourceSize.height: Style.dimens.large_icon_size
+ 				tintColor: Style.color.button_text
+-				transformOrigin: Item.Center
+ 			}
+ 			GText {
+ 				anchors.centerIn: parent
+diff --git a/resources/qml/Governikus/Global/TintableIcon.qml b/resources/qml/Governikus/Global/TintableIcon.qml
+--- a/resources/qml/Governikus/Global/TintableIcon.qml
++++ b/resources/qml/Governikus/Global/TintableIcon.qml
+@@ -17,7 +17,6 @@ Item {
+ 	property alias sourceSize: image.sourceSize
+ 	property color tintColor: Style.color.primary_text
+ 	property bool tintEnabled: true
+-	property alias transformOrigin: image.transformOrigin
+ 
+ 	implicitHeight: image.implicitHeight
+ 	implicitWidth: image.implicitWidth
+diff --git a/resources/qml/Governikus/Workflow/+mobile/NfcProgressIndicator.qml b/resources/qml/Governikus/Workflow/+mobile/NfcProgressIndicator.qml
+--- a/resources/qml/Governikus/Workflow/+mobile/NfcProgressIndicator.qml
++++ b/resources/qml/Governikus/Workflow/+mobile/NfcProgressIndicator.qml
+@@ -154,7 +154,6 @@ Item {
+ 		opacity: 0
+ 		source: "qrc:///images/ausweis.svg"
+ 		sourceSize.height: phone.height * 0.5
+-		transformOrigin: Item.Center
+ 		visible: !phone.tintEnabled
+ 	}
+ 	TintableIcon {
+@@ -175,7 +174,6 @@ Item {
+ 			rotation: card.rotation
+ 			source: "qrc:///images/ausweis_outline.svg"
+ 			sourceSize.height: card.sourceSize.height
+-			transformOrigin: Item.Center
+ 			visible: !phone.tintEnabled
+ 			x: card.x - phone.x
+ 			y: card.y - phone.y
