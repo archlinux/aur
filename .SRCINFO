@@ -4,12 +4,11 @@ pkgbase = vde-netemu-git
 	pkgrel = 1
 	url = https://github.com/virtualsquare/vde-netemu
 	arch = x86_64
-	license = unknown
+	license = GPL2
 	makedepends = git
-	makedepends = make
 	depends = vde2
-	provides = vde-netemu-git
-	conflicts = vde-netemu-git
+	provides = vde-netemu
+	conflicts = vde-netemu
 	source = vde-netemu::git+https://github.com/virtualsquare/vde-netemu.git
 	md5sums = SKIP
 

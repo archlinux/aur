@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="An alternative implementation of vde's wirefilter based on a different organization of components"
 arch=('x86_64')
 url="https://github.com/virtualsquare/vde-netemu"
-license=('unknown')
+license=('GPL2')
 depends=('vde2')
-makedepends=('git' 'make')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+makedepends=('git')
+provides=("vde-netemu")
+conflicts=("vde-netemu")
 source=('vde-netemu::git+https://github.com/virtualsquare/vde-netemu.git')
 md5sums=('SKIP')
 
