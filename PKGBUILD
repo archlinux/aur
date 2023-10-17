@@ -1,4 +1,4 @@
-# Maintainer: Martin Stibor <martin.von.reichenberg@protonmail.commartin.von.reichenberg@protonmail.commartin.von.reichenberg@protonmail.com>
+# Maintainer: Martin Stibor <martin.von.reichenberg@proton.me>
 # Meta package for ALL-IN-ONE out-of-the-box gaming on Arch Linux.
 
 pkgname=arch-gaming-meta
