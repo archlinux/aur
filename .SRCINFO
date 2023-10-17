@@ -1,8 +1,8 @@
 pkgbase = python-guiqwt
 	pkgdesc = Efficient 2D plotting Python library based on PythonQwt
-	pkgver = 4.4.1
-	pkgrel = 2
-	url = https://github.com/PierreRaybaut/guiqwt
+	pkgver = 4.4.3
+	pkgrel = 1
+	url = https://github.com/PlotPyStack/guiqwt
 	arch = x86_64
 	license = custom:CeCILL
 	makedepends = python-setuptools
@@ -17,7 +17,7 @@ pkgbase = python-guiqwt
 	depends = python-pillow
 	optdepends = python-pydicom: DICOM I/O support
 	optdepends = python-tifffile: for tiff file support
-	source = guiqwt-4.4.1.tar.gz::https://github.com/PierreRaybaut/guiqwt/archive/refs/tags/v4.4.1.tar.gz
-	sha256sums = 4427857b7aae80e3c157d4613158edc68b620428a066585adcdb5e0f05c5234f
+	source = guiqwt-4.4.3.tar.gz::https://github.com/PlotPyStack/guiqwt/archive/refs/tags/v4.4.3.tar.gz
+	sha256sums = ac9423a24e2b07be531067a7fa8543470bdc9a1d6bd2446467db29e5b505b78d
 
 pkgname = python-guiqwt

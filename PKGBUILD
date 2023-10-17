@@ -2,12 +2,11 @@
 
 _name=guiqwt
 pkgname=python-$_name
-pkgver=4.4.1
-_pkgver=v$pkgver
-pkgrel=2
-pkgdesc="Efficient 2D plotting Python library based on PythonQwt "
+pkgver=4.4.3
+pkgrel=1
+pkgdesc="Efficient 2D plotting Python library based on PythonQwt"
 arch=('x86_64')
-url='https://github.com/PierreRaybaut/guiqwt'
+url="https://github.com/PlotPyStack/${_name}"
 license=('custom:CeCILL')
 depends=(python-pyqt5 python-qtpy python-pythonqwt 'python-guidata>=3.0.1' python-numpy python-scipy python-pillow)
 optdepends=(
@@ -15,16 +14,16 @@ optdepends=(
   'python-tifffile: for tiff file support'
 )
 makedepends=(python-setuptools python-sphinx cython)
-source=("$_name-$pkgver.tar.gz::https://github.com/PierreRaybaut/$_name/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('4427857b7aae80e3c157d4613158edc68b620428a066585adcdb5e0f05c5234f')
+source=("$_name-$pkgver.tar.gz::https://github.com/PlotPyStack/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ac9423a24e2b07be531067a7fa8543470bdc9a1d6bd2446467db29e5b505b78d')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "${_name}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 Licence_CeCILL_V2-en.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cd "${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  install -Dm644 Licence_CeCILL_V2-en.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
