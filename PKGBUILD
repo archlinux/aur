@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-iced-git')
-pkgver=r10.ea59827
+pkgver=r11.b5dfcf6
 pkgrel=1
 pkgdesc="GUI For Jellyfin-RPC"
 arch=('any')

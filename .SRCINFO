@@ -1,6 +1,6 @@
 pkgbase = jellyfin-rpc-iced-git
 	pkgdesc = GUI For Jellyfin-RPC
-	pkgver = r10.ea59827
+	pkgver = r11.b5dfcf6
 	pkgrel = 1
 	url = https://github.com/Radiicall/jellyfin-rpc-iced
 	arch = any
