@@ -18,7 +18,7 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-bin"
-pkgver='12.5.6'
+pkgver='13.0'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -38,18 +38,17 @@ conflicts=("${_appname}")
 install="${_appname}.install"
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
-_tag_i686='linux32'
-_tag_x86_64='linux64'
+_tag_i686='linux-i686'
+_tag_x86_64='linux-x86_64'
 _urlbase="https://dist.torproject.org/torbrowser/${pkgver}"
 _archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_tag_x86_64}" || echo -n "${_tag_i686}")
-_pkgsuffx='ALL'
 
-# Syntax: _dist_checksum 'linux32'/'linux64'
+# Syntax: _dist_checksum 'linux-i686'/'linux-x86_64'
 _dist_checksum() {
 
 	(curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" || \
 		curl --silent --fail "${_urlbase}/sha256sums-unsigned-build.txt") | \
-		grep "${1}-${pkgver}_${_pkgsuffx}.tar.xz\$" | cut -d ' ' -f1
+		awk "/${_appname}-${1}-${pkgver}.tar.xz$/"'{print $1}'
 
 }
 
@@ -58,8 +57,8 @@ _sed_escape() {
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
 
-source_i686=("${_urlbase}/${_appname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
-source_x86_64=("${_urlbase}/${_appname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
+source_i686=("${_urlbase}/${_appname}-${_tag_i686}-${pkgver}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/${_appname}-${_tag_x86_64}-${pkgver}.tar.xz"{,.asc})
 source=("${_appname}.desktop.in"
 	    "${_appname}.in"
 	    "${_appname}.png"
@@ -78,8 +77,8 @@ sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
 sha256sums_x86_64=("$(_dist_checksum "${_tag_x86_64}")"
                    'SKIP')
 
-noextract=("${_appname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"
-           "${_appname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz")
+noextract=("${_appname}-${_tag_i686}-${pkgver}.tar.xz"
+           "${_appname}-${_tag_x86_64}-${pkgver}.tar.xz")
 
 package() {
 
@@ -89,7 +88,6 @@ package() {
 		s/@PACKAGE_NAME@/$(_sed_escape "${_appname}")/g
 		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
 		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
-		s/@PACKAGE_SUFFIX@/$(_sed_escape "${_pkgsuffx}")/g
 		s/@PACKAGE_ARCH@/$(_sed_escape "${_archstr}")/g
 	"
 
@@ -108,8 +106,8 @@ package() {
 	sed "${_sed_subst}" "${_appname}.desktop.in" > \
 		"${pkgdir}/usr/share/applications/${_appname}.desktop"
 
-	install -Dm444 "${_appname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz" \
-		"${pkgdir}/opt/${_appname}/${_appname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz"
+	install -Dm444 "${_appname}-${_archstr}-${pkgver}.tar.xz" \
+		"${pkgdir}/opt/${_appname}/${_appname}-${_archstr}-${pkgver}.tar.xz"
 
 }
 
