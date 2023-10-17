@@ -9,4 +9,10 @@ steps:
     commands:
       - pacman -Syu --noconfirm base-devel git sudo nano rust
       - echo 'MAKEFLAGS="-j$(nproc --all)"' >> /etc/makepkg.conf
-      - makepkg -si --noconfirm
+      - echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
+      - useradd yay
+      - usermod -aG wheel yay
+      - mkdir /home/yay
+      - chown -R yay:yay /home/yay
+      - chown -R yay:yay "$(pwd)"
+      - sudo -u yay makepkg -si --noconfirm
