@@ -1,6 +1,6 @@
 pkgbase = visp
 	pkgdesc = A modular library for visual tracking and visual servoing
-	pkgver = 3.4.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://visp.inria.fr
 	arch = i686
@@ -30,8 +30,7 @@ pkgbase = visp
 	optdepends = opencv: provides image converters, a renderer, a feature point tracker and point matching classes
 	optdepends = zbar: used to read QR codes
 	optdepends = libdmtx: used to read Data Matrix bar codes
-	source = https://github.com/lagadic/visp/archive/v3.4.0.tar.gz
-	md5sums = 41c1a92473ecacfa646306f2b6cae240
+	source = https://github.com/lagadic/visp/archive/v3.6.0.tar.gz
+	md5sums = 6d63aaf742bd2745b29e74a7882c441f
 
 pkgname = visp
-

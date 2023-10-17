@@ -1,7 +1,7 @@
 # Maintainer: Nxxx <nx dot tardis at gmail dot com>
 # Maintainer: Thibaud Hulin <thibaud.hulin.cl.atgmail.com>
 pkgname=visp
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A modular library for visual tracking and visual servoing"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ optdepends=(
         'zbar: used to read QR codes'
 	'libdmtx: used to read Data Matrix bar codes')
 source=("https://github.com/lagadic/visp/archive/v$pkgver.tar.gz")
-md5sums=('41c1a92473ecacfa646306f2b6cae240')
+md5sums=('6d63aaf742bd2745b29e74a7882c441f')
 
 build() {
 	cd "${srcdir}/${pkgname}-$pkgver"
@@ -48,7 +48,7 @@ build() {
 		-DBUILD_TESTS=OFF \
 		-DBUILD_DEMOS=OFF \
 		-DNO_BUILD_ROOT=OFF .
-	make -j4
+	make -j$(nproc)
 	cat << 'EOF' > ./COPYING
 
 ViSP software is available under two different licenses:
