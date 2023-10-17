@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gopeed-bin
 _pkgname=Gopeed
-pkgver=1.3.13
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
@@ -13,10 +13,12 @@ conflicts=("${pkgname%-bin}")
 depends=('at-spi2-core' 'gtk3' 'glibc' 'cairo' 'gdk-pixbuf2' 'harfbuzz' 'pango' 'gcc-libs' 'libepoxy' \
     'glib2' 'libayatana-appindicator' 'libdbusmenu-glib' 'libayatana-indicator' 'ayatana-ido')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb")
-sha256sums=('e60cbc6bb4027291a52d6a9bf2b77e0373d74a53797f409769c58ec1fe2511f7')
+sha256sums=('1dfb043188804e1d684c141cb25134638273bfdd5e8005c90eac1fa8e961e941')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s|Utility|Network;Utility;|g;s|/usr/local/lib/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|/usr/share/icons/${pkgname%-bin}.png|${pkgname%-bin}|g" \
+    sed -e "s|Utility|Network;Utility;|g" \
+        -e "s|/usr/local/lib/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" \
+        -e "s|/usr/share/icons/${pkgname%-bin}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
