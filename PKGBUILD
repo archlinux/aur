@@ -2,7 +2,7 @@
 pkgname=python-liboqs
 _name=liboqs-python
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python 3 bindings for liboqs"
 arch=('any')
 url="https://github.com/open-quantum-safe/liboqs-python"
