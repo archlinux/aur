@@ -1,0 +1,23 @@
+pkgbase = drawio-desktop-git
+	pkgdesc = A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor.
+	pkgver = 22.0.2.r6.ge4e410d
+	pkgrel = 1
+	url = https://www.diagrams.net/
+	arch = aarch64
+	arch = x86_64
+	license = Apache
+	makedepends = gendesk
+	makedepends = git
+	makedepends = yarn
+	makedepends = npm>=8.19.4
+	makedepends = nodejs>=16.20.2
+	depends = bash
+	depends = electron25
+	provides = drawio-desktop=22.0.2.r6.ge4e410d
+	conflicts = drawio-desktop
+	source = drawio-desktop.git::git+https://github.com/jgraph/drawio-desktop.git
+	source = drawio-desktop.sh
+	sha256sums = SKIP
+	sha256sums = bf4c5e15fc4c98a07c32998d8b481aadce09d2d896caf2cdf16fce7d8f5dd7ae
+
+pkgname = drawio-desktop-git
