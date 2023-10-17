@@ -1,0 +1,14 @@
+pkgbase = python-setuptools-changelog-shortener
+	pkgdesc = Setuptools plugin to allow shortening the number of changelog entries to use for the long_description metadata in Python packages.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fschulze/setuptools-changelog-shortener
+	arch = x86_64
+	license = MIT
+	makedepends = python-wheel
+	depends = python-setuptools
+	depends = python-tomli
+	source = setuptools-changelog-shortener-0.2.0::https://github.com/fschulze/setuptools-changelog-shortener/archive/refs/tags/0.2.0.tar.gz
+	md5sums = 3cd96aa53b8d5d6744615353d6e65f9c
+
+pkgname = python-setuptools-changelog-shortener
