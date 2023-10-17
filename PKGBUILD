@@ -25,5 +25,5 @@ package() {
     install -Dm755 ddns-cloudflare.ps1 $pkgdir/usr/bin/ddns-cloudflare-powershell
     install -Dm644 systemd/ddns-cloudflare-powershell.service $pkgdir/usr/lib/systemd/system/ddns-cloudflare-powershell.service
     install -d $pkgdir/etc/ddns-cloudflare-powershell
-    install -Dm644 settings.example.jsonc $pkgdir/etc/ddns-cloudflare-powershell/settings.jsonc
+    install -Dm600 settings.example.jsonc $pkgdir/etc/ddns-cloudflare-powershell/settings.jsonc
 }
