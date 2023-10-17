@@ -1,13 +1,13 @@
 pkgbase = glsl_analyzer
 	pkgdesc = Language server for GLSL (autocomplete, goto-definition, formatter, and more)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/nolanderc/glsl_analyzer
 	arch = x86_64
 	license = GPL3
 	makedepends = zig
 	depends = glibc
-	source = glsl_analyzer-1.2.2.tar.gz::https://github.com/nolanderc/glsl_analyzer/archive/v1.2.2.tar.gz
-	sha256sums = e9757b5dd96f7b8f94d884889586014a7278f4f74d180daf3d0f5073ca5e8f66
+	source = glsl_analyzer-1.2.3.tar.gz::https://github.com/nolanderc/glsl_analyzer/archive/v1.2.3.tar.gz
+	sha256sums = 5f9fe7128f9c6fd1f212c8265b8bfbc2bb2b486ce1fdec590a12ede2a206843e
 
 pkgname = glsl_analyzer
