@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/requirements-language-server/blob/main/.github/workflows/main.yml
 _pkgname=requirements-language-server
 pkgname="python-$_pkgname"
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="pip's requirements.txt language server"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('b8a6f920bd10acea52d5850a65dd1ab8d9cf1e300255d5eb39814419160ca56f')
+sha256sums=('0085428b483efdae746bf0dfc8689dd7b1d9afcd37174dec0d05c40feb3991ac')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
