@@ -15,8 +15,8 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=21.u31
-pkgrel=2
+pkgver=21.0.1.u6
+pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -48,20 +48,20 @@ makedepends=(
   zip
 )
 source=(
-  https://github.com/openjdk/jfx${pkgver//.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz
-  # ${pkgname}-${pkgver}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz
+  ${pkgname}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz
   gradle.properties
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
 )
-b2sums=('125079b6250fac52850ad11b12fb5436c45d14969298ea3123c57f332200db130e8928ca25579620b62715937bfe061e9dbf07c55acf2499aa1d550b9522d51a'
+b2sums=('70d231f1277393798a4478c34bb6d876459c1316b101d67ec9d2ee62e4131049367217d5a4ee8387d759e35154830f503f7e228ad2d2ea4c479eac4a261257e3'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         '609ffbc0938922f00ccebab6d1e9ab0d54b84f088f75c10c0eb4211ff1b33438481d76092eae8811a5e9f53dfc3ff422f7aa4e98abd8fc27fb73f1c3d4661c41'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e')
 
+_jfxdir=jfx${pkgver%%.*}u-${pkgver//.u/-}
+
 prepare() {
-  cd jfx${pkgver//.*}u-${pkgver//.u/-}
-  # cd jfx${pkgver%%.*}u-${pkgver//.u/-}
+  cd $_jfxdir
 
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
@@ -70,8 +70,7 @@ prepare() {
 }
 
 build() {
-  cd jfx${pkgver//.*}u-${pkgver//.u/-}
-  # cd jfx${pkgver%%.*}u-${pkgver//.u/-}
+  cd $_jfxdir
 
   # Build with openjdk-17
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
@@ -97,8 +96,7 @@ package_java-openjfx() {
   )
   provides=(java-openjfx=${pkgver%%.*})
 
-  cd jfx${pkgver//.*}u-${pkgver//.u/-}
-  # cd jfx${pkgver%%.*}u-${pkgver//.u/-}
+  cd $_jfxdir
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
   cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/
@@ -107,8 +105,7 @@ package_java-openjfx() {
 }
 
 package_java-openjfx-doc() {
-  cd jfx${pkgver//.*}u-${pkgver//.u/-}
-  # cd jfx${pkgver%%.*}u-${pkgver//.u/-}
+  cd $_jfxdir
 
   install -dm 755 "${pkgdir}"/usr/share/{doc,licenses}
   cp -dr --no-preserve=ownership build/javadoc "${pkgdir}"/usr/share/doc/java-openjfx
@@ -116,8 +113,7 @@ package_java-openjfx-doc() {
 }
 
 package_java-openjfx-src() {
-  cd jfx${pkgver//.*}u-${pkgver//.u/-}
-  # cd jfx${pkgver%%.*}u-${pkgver//.u/-}
+  cd $_jfxdir
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
   install -m 644 build/sdk/src.zip "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/javafx-src.zip
