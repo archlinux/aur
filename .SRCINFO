@@ -1,8 +1,8 @@
-pkgbase = power-profiles-daemon-git
-	pkgdesc = Makes power profiles handling available over D-Bus
-	pkgver = 0.8.1
+pkgbase = power-profiles-daemon-tlp-git
+	pkgdesc = Makes power profiles handling available over D-Bus, with TLP driver
+	pkgver = 0.13
 	pkgrel = 1
-	url = https://gitlab.freedesktop.org/hadess/power-profiles-daemon
+	url = https://github.com/rongronggg9/power-profiles-daemon
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-dbusmock
@@ -12,9 +12,11 @@ pkgbase = power-profiles-daemon-git
 	makedepends = meson
 	depends = systemd
 	depends = upower
+	optdepends = tlp: TLP power profiles driver
 	provides = power-profiles-daemon
 	conflicts = power-profiles-daemon
-	source = git+https://gitlab.freedesktop.org/hadess/power-profiles-daemon.git
+	conflicts = power-profiles-daemon-git
+	source = git+https://github.com/rongronggg9/power-profiles-daemon.git
 	b2sums = SKIP
 
-pkgname = power-profiles-daemon-git
+pkgname = power-profiles-daemon-tlp-git
