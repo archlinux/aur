@@ -1,4 +1,5 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 pkgname=motrix-git
 _pkgname=Motrix
 pkgver=1.8.19.r30.g7012040
