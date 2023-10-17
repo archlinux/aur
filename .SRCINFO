@@ -1,0 +1,17 @@
+pkgbase = python-nerdfonts
+	pkgdesc = NerdFonts for Python
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/ajeetdsouza/nerdfonts-python
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = subversion
+	depends = python
+	source = python-nerdfonts::git+https://gitlab.com/ajeetdsouza/nerdfonts-python.git
+	sha256sums = SKIP
+
+pkgname = python-nerdfonts
