@@ -5,14 +5,6 @@ _rel=1
 _arch=arch${_rel}
 _artix=artix${_rel}
 
-provides=(
-	'linux'
-)
-
-conflicts=(
-	'linux'
-)
-
 pkgbase=artix-linux-stoneyridge
 pkgver=${_ver}.${_artix}
 pkgrel=1
