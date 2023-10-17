@@ -1,7 +1,7 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: raihan2000 <raihan1999ahamed@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com>
-# Contributor: raihan2000 <raihan1999ahamed@gmail.com>
 
 pkgname=gnome-shell-mobile
 pkgdesc="Next generation desktop shell"
