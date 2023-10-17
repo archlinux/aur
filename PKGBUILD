@@ -9,7 +9,7 @@
 
 pkgname=bluej
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('any')
 url="https://www.${pkgname}.org"
@@ -31,7 +31,8 @@ sha256sums=('a462a2bfda0f86dff6e14ad77bfc0896ea36762bc9caf26acf3163b402b7b584'
 
 prepare() {
   cd "${srcdir}"
-  tar --use-compress-program=unzstd -xvf data.tar.zst
+  echo "Extracting archive ..."
+  tar --use-compress-program=unzstd -xf data.tar.xz
 }
 package() {
 cd "${srcdir}"
