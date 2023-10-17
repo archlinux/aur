@@ -1,0 +1,15 @@
+pkgbase = perl-bankaccount-validator-uk
+	pkgdesc = Rules for validating UK bank account (via MetaCPAN distribution)
+	pkgver = 0.65
+	pkgrel = 1
+	url = https://metacpan.org/release/BankAccount-Validator-UK
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/M/MA/MANWAR/BankAccount-Validator-UK-0.65.tar.gz
+	sha256sums = c5bdb4500d86deb20c3a9377815de580fd4dbd27233312cc17adf8de80cf720a
+
+pkgname = perl-bankaccount-validator-uk
