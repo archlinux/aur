@@ -8,6 +8,7 @@ url="https://github.com/virtualsquare/virtualbricks"
 license=('GPL2')
 depends=('python-gobject' 'python-pillow' 'python-pygraphviz' 'python-twisted' 'python-zope-interface' 'vde2' 'qemu-full')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=("vde-netemu-git: channel emulator support")
 provides=("virtualbricks=$pkgver")
 conflicts=("virtualbricks")
 source=('virtualbricks::git+https://github.com/virtualsquare/virtualbricks.git#branch=develop'

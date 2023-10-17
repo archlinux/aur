@@ -17,6 +17,7 @@ pkgbase = virtualbricks-develop-git
 	depends = python-zope-interface
 	depends = vde2
 	depends = qemu-full
+	optdepends = vde-netemu-git: channel emulator support
 	provides = virtualbricks=r2165.f21d01c
 	conflicts = virtualbricks
 	source = virtualbricks::git+https://github.com/virtualsquare/virtualbricks.git#branch=develop
