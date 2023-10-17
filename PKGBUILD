@@ -9,8 +9,8 @@ url="https://github.com/virtualsquare/vde-netemu"
 license=('GPL2')
 depends=('vde2')
 makedepends=('git')
-provides=("vde-netemu")
-conflicts=("vde-netemu")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('vde-netemu::git+https://github.com/virtualsquare/vde-netemu.git')
 md5sums=('SKIP')
 
