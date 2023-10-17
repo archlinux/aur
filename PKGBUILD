@@ -22,7 +22,7 @@ if [ "$pkgname" == "davinci-resolve" ]; then
     sha256sums=('2426a790a7e3c34a84694e6de3c09fdee03b86fb6ef859c235de6b4637363c1d')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
     _archive_name=DaVinci_Resolve_${pkgver}_Linux
-    _archive_run_name=DaVinci_Resolve_${major_version}_Linux
+    _archive_run_name=DaVinci_Resolve_${major_version}.${minor_version}_Linux
     conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 elif [ "$pkgname" == "davinci-resolve-studio" ]; then
     # Variables for STUDIO edition
@@ -32,7 +32,7 @@ elif [ "$pkgname" == "davinci-resolve-studio" ]; then
     sha256sums=('87dd79401ab23f9b1027c4bc04a1954ceb80886d402ae6be5bb2805c37439f6d')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
     _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-    _archive_run_name=DaVinci_Resolve_Studio_${major_version}_Linux
+    _archive_run_name=DaVinci_Resolve_Studio_${major_version}.${minor_version}_Linux
     conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
