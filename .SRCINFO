@@ -1,21 +1,23 @@
 pkgbase = quaternion
-	pkgdesc = Qt5-based IM client for the Matrix protocol
+	pkgdesc = Qt-based IM client for the Matrix protocol
 	pkgver = 0.0.95.1
-	pkgrel = 1
-	url = https://matrix.org/docs/projects/client/quaternion.html
+	pkgrel = 2
+	url = https://github.com/quotient-im/Quaternion
+	arch = i686
 	arch = x86_64
-	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	depends = qt5-tools
+	makedepends = git
+	depends = hicolor-icon-theme
 	depends = qt5-multimedia
-	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
-	depends = libquotient>=0.6
-	optdepends = qtkeychain
-	provides = quaternion
-	conflicts = quaternion-git
-	source = https://github.com/quotient-im/Quaternion/archive/refs/tags/0.0.95.1.tar.gz
-	sha512sums = 465e49b90fef88b252f26b5791c2d491bfa451dd3b876b1fce8732bf96276437343fd368d1d48d20a2b5ec993a3e0a36709232f60fadd176548a7b942b22b678
+	depends = qt5-tools
+	depends = qtkeychain-qt5
+	optdepends = qt5-graphicaleffects
+	optdepends = qtkeychain: Store access tokens in a keyring
+	source = quaternion::git+https://github.com/quotient-im/Quaternion#tag=0.0.95.1
+	source = libquotient::git+https://github.com/quotient-im/libQuotient
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = quaternion

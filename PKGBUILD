@@ -1,42 +1,115 @@
-# Maintainer: Alexey Andreyev <aa13q@ya.ru>
-# Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
-# Contributor: Ivan Semkin <ivan at semkin dot ru>
-# Contributor: Martin Weinelt <hexa at darmstadt dot ccc dot de>
- 
-_appname=Quaternion
-pkgname=quaternion
+_pkgname="quaternion"
+pkgname="$_pkgname"
 pkgver=0.0.95.1
-_suffix=""
-pkgrel=1
-pkgdesc='Qt5-based IM client for the Matrix protocol'
-url='https://matrix.org/docs/projects/client/quaternion.html'
-arch=('x86_64' 'aarch64')
-license=('GPL3')
-depends=('qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libquotient>=0.6')
-optdepends=('qtkeychain')
-makedepends=('cmake')
-provides=('quaternion')
-conflicts=('quaternion-git')
-source=("https://github.com/quotient-im/Quaternion/archive/refs/tags/${pkgver}${_suffix}.tar.gz")
-sha512sums=('465e49b90fef88b252f26b5791c2d491bfa451dd3b876b1fce8732bf96276437343fd368d1d48d20a2b5ec993a3e0a36709232f60fadd176548a7b942b22b678')
+pkgrel=2
+pkgdesc='Qt-based IM client for the Matrix protocol'
+#url="https://matrix.org/docs/projects/client/quaternion.html"
+url="https://github.com/quotient-im/Quaternion"
+arch=('i686' 'x86_64')
+license=(GPL3)
+
+depends=(
+  hicolor-icon-theme
+  qt5-multimedia
+  qt5-quickcontrols2
+  qt5-tools
+  qtkeychain-qt5
+)
+makedepends=(
+  cmake
+  git
+)
+optdepends=(
+  'qt5-graphicaleffects'
+  'qtkeychain: Store access tokens in a keyring'
+)
+
+
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # normal package
+  _pkgsrc="$_pkgname"
+  source=(
+    "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion#tag=$pkgver"
+    "libquotient"::'git+https://github.com/quotient-im/libQuotient'
+  )
+  sha256sums=(
+    'SKIP'
+    'SKIP'
+  )
+
+  prepare() {
+    ( # submodules - quoternion
+      cd "$_pkgsrc"
+      git submodule init "lib"
+      git submodule set-url "lib" "${srcdir}/libquotient"
+      git -c protocol.file.allow=always submodule update "lib"
+    )
+  }
+else
+  # git package
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source=(
+    "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion"
+    "libquotient"::'git+https://github.com/quotient-im/libQuotient'
+
+    # submodules - libquotient
+    'gtad'::'git+https://github.com/quotient-im/gtad.git'
+    'doxygen-awesome-css'::'git+https://github.com/jothepro/doxygen-awesome-css.git'
+  )
+  sha256sums=(
+    'SKIP'
+    'SKIP'
+
+    'SKIP'
+    'SKIP'
+  )
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --exclude '[a-z]*' --exclude '*[a-z][a-z]*' \
+      | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  }
+
+  prepare() {
+    ( # submodules - quoternion
+      cd "$_pkgsrc"
+      git submodule init "lib"
+      git submodule set-url "lib" "${srcdir}/libquotient"
+      git -c protocol.file.allow=always submodule update "lib"
+    )
+
+    ( # submodules - libquotient
+      cd "$_pkgsrc/lib"
+      local _submodules=(
+        'gtad/gtad'
+        'doxygen-awesome-css'
+      )
+      for submodule in "${_submodules[@]}" ; do
+        git submodule init "${submodule}"
+        git submodule set-url "${submodule}" "${srcdir}/${submodule##*/}"
+        git -c protocol.file.allow=always submodule update "${submodule}"
+      done
+    )
+  }
+fi
 
 build() {
-  cd "${_appname}-${pkgver}${_suffix}"
-  cmake -H. -Bbuild \
-    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-    -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SHARED_LIBS=ON \
-    -DUSE_INTREE_LIBQMC=OFF
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_INSTALL_PREFIX="/usr"
+    -DCMAKE_BUILD_TYPE=Release
+    -DUSE_INTREE_LIBQMC=ON
+    -DBUILD_WITH_QT6=OFF
+  )
 
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  cd "${_appname}-${pkgver}${_suffix}"
-  cmake --build build -- DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
-# vim:set ts=2 sw=2 et:
