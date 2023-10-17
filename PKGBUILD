@@ -12,7 +12,7 @@ pkgname=davinci-resolve-studio
 major_version=18.6
 minor_version=2
 pkgver=${major_version}.${minor_version}
-pkgrel=1
+pkgrel=2
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
