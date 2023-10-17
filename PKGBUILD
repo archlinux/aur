@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qdapRegex
-_pkgver=0.7.5
+_pkgver=0.7.8
 pkgname=r-${_pkgname,,}
-pkgver=0.7.5
+pkgver=0.7.8
 pkgrel=1
 pkgdesc='Regular Expression Removal, Extraction, and Replacement Tools'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b931c66a9daf7aa492fca4fe994eea256b50e7a1bcdd399c120eecc99a7b1c1')
+sha256sums=('9f473f2f0c917005d6f1ba581bd0347a2b27c966442a15da40569b38c067c1dd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
