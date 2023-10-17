@@ -1,6 +1,6 @@
 pkgbase = micropython
 	pkgdesc = Python3 for microcontrollers, with stdlib. (UNIX version)
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = http://micropython.org/
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = micropython
 	depends = libffi
 	depends = mbedtls
 	options = !emptydirs
-	source = https://micropython.org/resources/source/micropython-1.20.0.tar.xz
-	source = mlib-1.20.0.tgz::https://github.com/micropython/micropython-lib/archive/v1.20.0.tar.gz
-	md5sums = 5e2b9cc096899229071df13fd60c2c00
-	md5sums = 46c70ff75634957954d0b2d199e47f22
+	source = https://micropython.org/resources/source/micropython-1.21.0.tar.xz
+	source = mlib-1.21.0.tgz::https://github.com/micropython/micropython-lib/archive/v1.21.0.tar.gz
+	md5sums = 7f3ec4862c47f83883868c8b7fdbff40
+	md5sums = 2b5a111d61611786fade0059fcfef203
 
 pkgname = micropython
 
