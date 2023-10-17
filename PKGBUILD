@@ -2,9 +2,9 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.4.0.0.r18023
+pkgver=3.5.0.0.r18043
 pkgrel=1
-pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
+pkgdesc="Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi"
 arch=('x86_64')
 url="https://audacityteam.org"
 license=('GPL2' 'CCPL')
