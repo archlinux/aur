@@ -2,7 +2,7 @@
 
 pkgname=funkwhale-venv
 _pkgname=funkwhale
-pkgver=1.3.0
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
@@ -41,8 +41,8 @@ source=("${_pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale_manage"
 )
-sha256sums=('57323ce6641183bd33fcf3aa243b0b7aba667509da8c5c3446b73def40109650'
-            '8e17543cd688572f7e48c9c416ef33c065c7c6ac01b5ae85939632030a530bf0'
+sha256sums=('1c2906d968089a796752f9444dd777146d5f71c4af3d2f083740759c2ef656fa'
+            'd0339c4e428a53e444a0c4c9416d7586bacd0fcf1e4d0dbeb48b90473c5ad2bc'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             '9e72558dee732c6783c597f5cb61e89ad346d4d3810d94f83afba2db580fb089'
             '5c821649d81d2d3a9aa52d872953696d5ae336906329a1c1b68871ce9c82fa59'
