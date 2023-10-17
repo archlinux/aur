@@ -2,7 +2,7 @@
 
 pkgname='sidef'
 _pkgname='Sidef'
-pkgver='23.08'
+pkgver='23.10'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 )
 optdepends=('perl-math-prime-util: for better performance in several functions')
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('9e9c340d7a634a351098220c3ed336bd53cdc5e473a33340a0677e25a44ece3b16459fccb5b2c4be8f0e7f242d181de1afc34c735a3e12362be045b2d800463e')
+b2sums=('475e44eab36af8249681c7f2b0ebf7320827938b090d9ccf9f8628bd1f30539b60def50a50d9add1f5addf8498e508cbbce2db419bf535465a7591673bc22b15')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
