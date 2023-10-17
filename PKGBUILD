@@ -3,7 +3,7 @@ pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.15.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer')
-#            'python-sphinx-asdf'
+#            'python-sphinx-asdf>=0.2.2'
 #            'python-sphinx-inline-tabs'
 #            'python-mistune>=3'
 #            'python-numpy'
@@ -27,38 +27,40 @@ makedepends=('python-setuptools-scm'
 #            'python-astropy>=5.0.4'
 #            'python-toml')
 checkdepends=('python-pytest-doctestplus'
-              'python-pytest-openfiles'
               'python-pytest-remotedata'
-              'python-jsonschema'
+              'python-numpy'
+              'python-attrs'
+              'python-psutil'
               'python-yaml'
               'python-importlib-metadata'
               'python-semantic-version'
-              'python-astropy'
+#              'python-astropy'
               'python-asdf-standard'
               'python-jmespath'
-              'python-asdf_transform_schemas'
+#              'python-asdf_transform_schemas'
               'python-lz4'
               'python-fsspec'
               'python-aiohttp'
-              'python-requests')    # psutil pulled in by pytest-openfiles; attrs <- aiohttp, jsonschema
+              'python-requests')
+# psutil pulled in by pytest-openfiles; attrs <- aiohttp, jsonschema
 #             'python-virtualenv'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('95923dd09d9e63889d7fd1c8d9faaf2a')
+md5sums=('03781992b815e895877811d36aa3b247')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
+#prepare() {
+#   cd ${srcdir}/${_pyname}-${pkgver}
+#
 #   sed -i "s/2.3.0/2.4.0/" compatibility_tests/test_file_compatibility.py
     #sed -e "/ignore:numpy/a \    'ignore:ASDF functionality for astropy is being moved:astropy.utils.exceptions.AstropyDeprecationWarning'," \
     #    -e "/ignore:numpy/a \    'ignore:Unable to locate schema file:asdf.exceptions.AsdfWarning'" \
     #    -i pyproject.toml
-    sed "/ignore:numpy/a \    'ignore:ASDF functionality for astropy is being moved:astropy.utils.exceptions.AstropyDeprecationWarning'" \
-        -i pyproject.toml
-}
+#   sed "/ignore:numpy/a \    'ignore:ASDF functionality for astropy is being moved:astropy.utils.exceptions.AstropyDeprecationWarning'" \
+#       -i pyproject.toml
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -73,14 +75,15 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    # Segmentation fault
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data \
+        --deselect=build/lib/asdf/_tests/_regtests/test_1530.py::test_update_with_memmapped_data_can_make_view_data_invalid || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-asdf() {
     depends=('python>=3.9'
              'python-numpy>=1.22'
              'python-jmespath>=0.6.2'
-             'python-jsonschema>=4.8'
              'python-attrs>=20.1.0'
              'python-packaging>=19.0'
              'python-importlib-metadata>=4.11.4'

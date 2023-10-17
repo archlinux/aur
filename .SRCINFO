@@ -1,21 +1,20 @@
 pkgbase = python-asdf
 	pkgdesc = A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files
-	pkgver = 2.15.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://asdf.readthedocs.io
 	arch = any
 	license = BSD
 	checkdepends = python-pytest-doctestplus
-	checkdepends = python-pytest-openfiles
 	checkdepends = python-pytest-remotedata
-	checkdepends = python-jsonschema
+	checkdepends = python-numpy
+	checkdepends = python-attrs
+	checkdepends = python-psutil
 	checkdepends = python-yaml
 	checkdepends = python-importlib-metadata
 	checkdepends = python-semantic-version
-	checkdepends = python-astropy
 	checkdepends = python-asdf-standard
 	checkdepends = python-jmespath
-	checkdepends = python-asdf_transform_schemas
 	checkdepends = python-lz4
 	checkdepends = python-fsspec
 	checkdepends = python-aiohttp
@@ -24,14 +23,13 @@ pkgbase = python-asdf
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-2.15.2.tar.gz
-	md5sums = 95923dd09d9e63889d7fd1c8d9faaf2a
+	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-3.0.0.tar.gz
+	md5sums = 03781992b815e895877811d36aa3b247
 
 pkgname = python-asdf
 	depends = python>=3.9
 	depends = python-numpy>=1.22
 	depends = python-jmespath>=0.6.2
-	depends = python-jsonschema>=4.8
 	depends = python-attrs>=20.1.0
 	depends = python-packaging>=19.0
 	depends = python-importlib-metadata>=4.11.4
