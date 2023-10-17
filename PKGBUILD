@@ -6,10 +6,10 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.31
-pkgrel=2
+pkgver=0.0.32
+pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
-arch=('x86_64')
+arch=('any')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url='https://discord.com'
@@ -23,8 +23,8 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'discord-launcher.sh'
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses')
-sha512sums=('596f0e2271e61798594d97a85728eea2bfa851db7f1e8b7fa65e1631dfeb347fa8d6087556854c0e775b88678a03b8ece97d0c1293b156e7ea908f6570645248'
-            'dff276383dca7670d6c06fc9ba5cd34f15ee5011271b4e77704b838eeb09c842019f8ebf2cfc6f8214be20c6ea414b743d0591bbef8067a863c3eeb880a16701'
+sha512sums=('e3ca9075e4a66c7c4358bdccb748f8f849de24cf3036b85d2c42dd15f8e56125fc42e86e73920751126b0e4fa73596a1d7af1f21ac9903911d6c843637c46813'
+            'd398351b209cd89432d8e9cebe9122f152484236d8ca4dd91e5679d3853fe2f082625d35a9ac3f450f1f08250736bf3a23db9926311e8271730d884b57d12dbc'
             SKIP
             SKIP)
 
@@ -35,7 +35,7 @@ prepare() {
   # HACKS FOR SYSTEM ELECTRON
   asar e Discord/resources/app.asar Discord/resources/app
   rm Discord/resources/app.asar
-  sed -i "s|process.resourcesPath|'/usr/lib/${_pkgname}/resources'|" Discord/resources/app/app_bootstrap/buildInfo.js
+  sed -i "s|process.resourcesPath|'/usr/share/${_pkgname}/resources'|" Discord/resources/app/app_bootstrap/buildInfo.js
   sed -i "s|exeDir,|'/usr/share/pixmaps',|" Discord/resources/app/app_bootstrap/autoStart/linux.js
   asar p Discord/resources/app Discord/resources/app.asar
   rm -rf Discord/resources/app
@@ -43,16 +43,15 @@ prepare() {
 
 package() {
   # Install the app
-  install -d "${pkgdir}/usr/lib/${_pkgname}/resources"
+  install -d "${pkgdir}/usr/share/${_pkgname}/resources"
 
   # Copy Relevanat data
-  cp -r Discord/resources/*  "${pkgdir}/usr/lib/${_pkgname}/resources/"
+  cp -r Discord/resources/*  "${pkgdir}/usr/share/${_pkgname}/resources/"
 
-  install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 "${srcdir}/discord-launcher.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
-  cp Discord/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
-  cp Discord/discord.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+  install -Dm 644 Discord/discord.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm 644 Discord/discord.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Licenses
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
