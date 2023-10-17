@@ -1,7 +1,7 @@
 # Maintainer: Martin Larralde <martin.larralde@ens-paris-saclay.fr>
 
 pkgname=imagej-plugin-morpholibj
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Collection of mathematical morphology methods and plugins for ImageJ"
 url="https://imagej.net/MorphoLibJ"
@@ -20,8 +20,8 @@ install=
 changelog=
 source=("https://github.com/ijpb/MorphoLibJ/releases/download/v${pkgver}/MorphoLibJ_-${pkgver}.jar")
 noextract=()
-sha256sums=('a14ae3195dca39ab0a1de03884419dc273cd972e71ab46774b61832d070660e4')
-
+sha256sums=('d38bc91c5a935a8f22c9e7782f74d5fcff3d7f09f4ef3cf4e2e2e5d4a23a78ed')
+	
 package() {
     install -m755 -d ${pkgdir}/usr/share/imagej/plugins/jars
     install -m644  ${srcdir}/MorphoLibJ_-${pkgver}.jar ${pkgdir}/usr/share/imagej/plugins/jars/
