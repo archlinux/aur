@@ -84,7 +84,7 @@ prepare() {
   # Pick pull requests from github using `pick_mr <pull request number>`.
 
   pushd subprojects/wlroots
-  patch -p1 < ../packagefiles/wlroots-meson-build.patch
+  patch -Np1 < ../packagefiles/wlroots-meson-build.patch
   popd
 }
 
