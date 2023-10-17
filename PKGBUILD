@@ -1,6 +1,6 @@
 pkgname=sunshine
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted GameStream host for Moonlight."
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev
@@ -62,6 +62,10 @@ build() {
     pushd "$pkgname"
     npm install
     popd
+
+    export BRANCH="master"
+    export BUILD_VERSION="${pkgver}"
+    export COMMIT="$(git rev-parse HEAD)"
 
     export CFLAGS="${CFLAGS/-Werror=format-security/}"
     export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
