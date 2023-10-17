@@ -3,7 +3,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-common
-pkgver=3.7.2
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Utilities jointly used by devpi-server and devpi-client"
 arch=('any')
@@ -11,17 +11,14 @@ url="https://github.com/devpi/devpi"
 license=('MIT')
 groups=('devpi')
 depends=('python-lazy' 'python-py' 'python-requests')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-changelog-shortener')
 checkdepends=('python-pytest')
 changelog=CHANGELOG
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-$pkgver.tar.gz"
-        "2aba62c961653aa82181b201995ecbdcb63ce639.patch")
-sha256sums=('9078989279ad79e9c181c7badc4a738460445187101eb0cbade675934d5e4644'
-            'f722975b8b9b025238d2fb84b6fd89c7a61d785b54ebc9e4f7a973a5ad12b2d5')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-$pkgver.tar.gz")
+sha256sums=('2d277701faf05d4a6f6cbdb7e040f93c0a00286dbe87d5c0a2eeaeba2055919c')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -p2 < "${srcdir}/2aba62c961653aa82181b201995ecbdcb63ce639.patch"
 }
 
 build() {
