@@ -6,7 +6,7 @@
 # - target framework not v4.8
 
 pkgname=eddie-ui-git
-pkgver=2.23.1
+pkgver=2.23.2
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI - beta'
 arch=('i686' 'x86_64')
@@ -47,14 +47,14 @@ build() {
   fi
 
   # Compile C sources
-  chmod +x src/eddie.linux.postbuild.sh
+  chmod +x src/linux_postbuild.sh
   chmod +x src/Lib.Platform.Linux.Native/build.sh
   chmod +x src/UI.GTK.Linux.Tray/build.sh
   
   if [ "ui" = "cli" ]; then
-    src/eddie.linux.postbuild.sh "src/App.CLI.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
+    src/linux_postbuild.sh "src/App.CLI.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
   elif [ "ui" = "ui" ]; then
-    src/eddie.linux.postbuild.sh "src/App.Forms.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
+    src/linux_postbuild.sh "src/App.Forms.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
   fi
 }
 
