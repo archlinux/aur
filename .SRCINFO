@@ -1,6 +1,6 @@
 pkgbase = systemd-chromiumos
 	pkgver = 254.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	checkdepends = python-pefile
