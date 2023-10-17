@@ -3,7 +3,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-client
-pkgver=6.0.5
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="Workflow commands for Python developers"
 arch=('any')
@@ -20,10 +20,10 @@ depends=(
   'python-platformdirs'
   'python-pluggy'
   'python-py')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-setuptools-changelog-shortener')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('2b375c012c8910e40365b2d169f0446c701c202ee2c6a0d014bcb884cfea0196')
+sha256sums=('8bcb292d9bcf56ed43992ffbc4ab14559c6c6a05f8019ccaeeba9c5d3466d383')
 
 build() {
   cd "$pkgname-$pkgver"
