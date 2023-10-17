@@ -5,9 +5,9 @@
 
 
 _pkgname=bookdown
-_pkgver=0.35
+_pkgver=0.36
 pkgname=r-${_pkgname,,}
-pkgver=0.35
+pkgver=0.36
 pkgrel=1
 pkgdesc='Authoring Books and Technical Documents with R Markdown'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d7be9d158655fbf5229b96fc618195e451b61162208192894246671f9bdffbb')
+sha256sums=('9e489684ec9e78f89439f5da60273fee061b2607f9f53bc512df32f274919730')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
