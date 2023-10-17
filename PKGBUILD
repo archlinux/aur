@@ -1,14 +1,37 @@
 pkgname=sunshine
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="A self-hosted GameStream host for Moonlight."
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev
 license=('GPL3')
 install=sunshine.install
 
-depends=('avahi' 'boost-libs' 'curl' 'libappindicator-gtk3' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
-makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm')
+depends=('avahi'
+         'boost-libs'
+         'curl'
+         'libayatana-appindicator'
+         'libevdev'
+         'libmfx'
+         'libnotify'
+         'libpulse'
+         'libva'
+         'libvdpau'
+         'libx11'
+         'libxcb'
+         'libxfixes'
+         'libxrandr'
+         'libxtst'
+         'numactl'
+         'openssl'
+         'opus'
+         'udev')
+makedepends=('boost'
+             'cmake'
+             'git'
+             'make'
+             'nodejs'
+             'npm')
 optdepends=('cuda: NvFBC capture support'
             'libcap'
             'libdrm')
