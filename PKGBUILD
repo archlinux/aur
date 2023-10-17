@@ -1,7 +1,7 @@
 # Maintainer:       zzjzxq33 <wojiushixxx at 126 dot com>
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
-pkgver=20230820
+pkgver=20231016
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
@@ -10,22 +10,22 @@ license=('Unlicense')
 depends=('electron')
 conflicts=("${pkgname}-git")
 source=(
-    'icon.png'::'https://github.com/bbg-contributors/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png'
+    'icon.png'::'https://github.com/bbg-contributors/bbg-resources/raw/753cf6fef826616425d32d51fa64541869fcf12c/icon.png'
     "app-${pkgver}.asar"::"${url}/releases/download/${pkgver}/app.asar"
 )
-sha256sums=('d5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228'
-            '3f0da8d0d77ae1c18a53731826499688bd8bd2ea1f25d8dc629535f5e93692de')
+sha256sums=('f25a9595d339f61193a7e79c08c5f56014fa487a6ddee271d0785bb1cae2155f'
+            '82ef0ae4afcfd56a29cce3af0f181bd7d1530c755dc5991bfc54a9a42992bbbf')
 
 package() {
     cd "$srcdir"
     install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/lib/${pkgname}/app.asar"
     install -Dm644 "icon.png"           "${pkgdir}/usr/share/icons/${pkgname}.png"
-    install -Dm755 "/dev/stdin"         "${pkgdir}/usr/bin/${pkgname}" << EOF
+    install -Dm755 "/dev/stdin"         "${pkgdir}/usr/bin/${pkgname}" << "EOF"
 #!/bin/sh
 
-exec electron /usr/lib/bbg/app.asar "\$@"
+exec electron /usr/lib/bbg/app.asar "$@"
 EOF
-    install -Dm644 "/dev/stdin"         "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
+    install -Dm644 "/dev/stdin"         "${pkgdir}/usr/share/applications/${pkgname}.desktop" << "EOF"
 [Desktop Entry]
 Name=bbg
 Comment=blog generator

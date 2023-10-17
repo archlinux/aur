@@ -1,0 +1,5 @@
+src/
+pkg/
+icon.png
+*.asar
+*.tar.zst
