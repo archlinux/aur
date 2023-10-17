@@ -1,6 +1,6 @@
 pkgname=power-profiles-daemon-tlp-git
-_pkgname=power-profiles-daemon-tlp
-pkgver=0.13
+_pkgname=power-profiles-daemon
+pkgver=0.13+3+gbe34793
 pkgrel=1
 pkgdesc="Makes power profiles handling available over D-Bus, with TLP driver"
 url="https://github.com/rongronggg9/power-profiles-daemon"
