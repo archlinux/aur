@@ -4,8 +4,8 @@
 pkgname=genimage
 pkgver=16
 pkgrel=1
-pkgdesc="tool to generate multiple filesystem and flash images from a tree"
-arch=($CARCH)
+pkgdesc="Tool to generate multiple filesystem and flash images from a tree"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url=https://github.com/pengutronix/$pkgname
 license=(GPL2)
 depends=(confuse)
