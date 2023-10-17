@@ -1,0 +1,18 @@
+pkgbase = vjson-schema
+	pkgdesc = Validate JSON file(s) against a JSON schema.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/etylermoss/vjson-schema
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = nlohmann-json
+	depends = json-schema-validator
+	depends = glibc
+	depends = gcc-libs
+	provides = vjson-schema
+	source = https://github.com/etylermoss/vjson-schema/archive/1.1.0.tar.gz
+	sha256sums = 6ff79f059f04b4c98dc571f240596e7b8aac5fce7aedb348a83b2fe30f0fa372
+
+pkgname = vjson-schema
