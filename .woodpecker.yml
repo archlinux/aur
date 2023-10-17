@@ -9,7 +9,7 @@ steps:
     commands:
       - pacman -Syu --noconfirm base-devel git sudo nano rust
       - echo 'MAKEFLAGS="-j$(nproc --all)"' >> /etc/makepkg.conf
-      - echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
+      - cat sudoers >> /etc/sudoers
       - useradd yay
       - usermod -aG wheel yay
       - mkdir /home/yay
