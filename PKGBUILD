@@ -20,5 +20,6 @@ build() {
 }
 package() {
   install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp "${pkgdir}/usr/bin/term-pdf"
-  install -Dm700 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/$HOME/.config/termpdf.py"
+  install -d "${pkgdir}/$HOME/.termpdf"
+  install -Dm700 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/$HOME/.termpdf/termpdf.py"
 }
