@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Utilities to execute code blocks in Markdown files"
 arch=('any')
@@ -15,11 +15,10 @@ makedepends=('python-pdm-backend'
              'python-installer')
 #            'mkdocs'
 checkdepends=('python-pytest'
-              'python-markdown'
-              'python-markupsafe'
-              'mkdocs-material-pymdownx-extras')
+              'mkdocs-material'
+              'python-markupsafe')   # 'pymdown-extensions' required by mkdocs-material
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('38c5d3467009a6a902add6f69909b4cb')
+md5sums=('b8a255a1471197f8a4206283baa84ddc')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -34,7 +33,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-markdown-exec() {
