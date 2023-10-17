@@ -1,24 +1,25 @@
-pkgbase='python-simpervisor'
-pkgname=('python-simpervisor')
-_module='simpervisor'
-pkgver='0.4'
+# Maintainer: Anthony Wang <a_at-exozy_dot-me>
+
+_name='simpervisor'
+pkgname="python-$_name"
+pkgver='1.0.0'
 pkgrel=1
 pkgdesc="Simple async process supervisor"
 url="https://github.com/yuvipanda/simpervisor"
-depends=('python')
-makedepends=('python-setuptools')
+depends=(python)
+makedepends=(python-build python-installer python-hatch-jupyter-builder)
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('cec79e13cdbd6edb04a5c98c1ff8d4bd9713e706c069226909a1ef0e89d393c5')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('7eb87ca86d5e276976f5bb0290975a05d452c6a7b7f58062daea7d8369c823c1')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    cd "${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd "${_name}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
