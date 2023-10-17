@@ -5,11 +5,15 @@ pkgbase = postcat-appimage
 	url = https://www.postcat.com/
 	arch = x86_64
 	license = Apache
-	depends = zlib
-	depends = glibc
+	makedepends = asar
+	depends = bash
+	depends = electron22
 	depends = hicolor-icon-theme
-	options = !strip
+	provides = postcat=0.5.1
+	conflicts = postcat
 	source = postcat-0.5.1.AppImage::https://github.com/Postcatlab/postcat/releases/download/v0.5.1/Postcat-0.5.1.AppImage
+	source = postcat.sh
 	sha256sums = 9a1a3928d64df829b151d9aac4a69a4a8a0db6427f478c8af1cead260383e1ae
+	sha256sums = 8e023fcba18f4bc4da169ac0a7c3163005c55d16b260f39f45df6fc087bd7a41
 
 pkgname = postcat-appimage
