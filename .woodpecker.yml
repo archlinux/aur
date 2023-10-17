@@ -28,6 +28,7 @@ steps:
     image: codeberg.org/gameplayer-8/gitio
 
     commands:
+      - git config --global --add safe.directory "$(pwd)"
       - export SYSTEM_BRANCH="$(basename "$CI_COMMIT_REF")-pages"
       - if [ "$(basename "$CI_COMMIT_REF")" = "main" ]; then export SYSTEM_BRANCH="pages"; fi
       - gitio branch GIT_BRANCH:"$SYSTEM_BRANCH"
