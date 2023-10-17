@@ -3,7 +3,7 @@
 # Maintainer: Claudio Netto <nettinhorama@gmail.com>
 
 pkgname='tsuru-bin'
-pkgver=1.17.4
+pkgver=1.17.5
 pkgrel=1
 pkgdesc='tsuru-client is a tsuru command line tool for application developers.'
 url='https://tsuru.io'
@@ -12,14 +12,14 @@ license=('BSD-3-Clause')
 provides=('tsuru')
 conflicts=('tsuru')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/1.17.4/tsuru_1.17.4_linux_arm64.tar.gz")
-sha256sums_aarch64=('1a2ef25fc66fb4ea27d7167f7009a56f489c4e5558864dbb33c2b1a09b4c48e8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/1.17.5/tsuru_1.17.5_linux_arm64.tar.gz")
+sha256sums_aarch64=('162580409eef7e77e9eef4e4c1370fe06b3878cdc60cdc94b09316a8171de318')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/1.17.4/tsuru_1.17.4_linux_386.tar.gz")
-sha256sums_i686=('03493078d2df71b4cddbe7c4948b9c60220fede7807344a46275da2d1e7ea8fa')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/1.17.5/tsuru_1.17.5_linux_386.tar.gz")
+sha256sums_i686=('ee3d709240c6c75e77f773c3707352acfc522d6fe8b0218493343bae692249ea')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/1.17.4/tsuru_1.17.4_linux_amd64.tar.gz")
-sha256sums_x86_64=('b058ba62d30a5164242a98d68ed551d359c79c0f42ec271e05e3d598ad12faa8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/1.17.5/tsuru_1.17.5_linux_amd64.tar.gz")
+sha256sums_x86_64=('d876bae32099e0caf67e70d2e7591c1b4a5b6189d79de1b8b50c0214a8b0816a')
 
 package() {
   install -Dm755 "./tsuru" "${pkgdir}/usr/bin/tsuru"
