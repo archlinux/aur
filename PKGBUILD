@@ -20,7 +20,7 @@ source=(https://github.com/aclap-dev/vdhcoapp/releases/download/v${pkgver}/vdhco
         vdhcoapp-remove.hook
         vdhcoapp-user-install.hook
         vdhcoapp-user-remove.hook)
-sha256sums=('89444b3672573a64cb748774164474226bbc25c342f1324720d5cf8f2b4e5fdc'
+sha256sums=('bd288efbd562aa450b3b142b9ad1221b83a4ea510eb840ef3f5a3c499bbb6471'
             'a2b56e6ae3f7f8933e20762baa90e69f63f0802b2e6d213b51e0bc68843e5d27'
             '3287859986d67e15e269965676bf9c75d1e853ea0ec97695811072fb8f10a7a8'
             'a74a57aac6b2e76ded9524599d3047486f9f2d8f820c5114ad41209c8117ab35'
