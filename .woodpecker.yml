@@ -1,0 +1,12 @@
+# .woodpecker.yml
+when:
+  branch: [master]
+
+steps:
+  main:
+    image: docker.io/artixlinux/base
+
+    commands:
+      - pacman -Syu --noconfirm base-devel git sudo nano rust
+      - echo 'MAKEFLAGS="-j$(nproc --all)"' >> /etc/makepkg.conf
+      - makepkg -si --noconfirm
