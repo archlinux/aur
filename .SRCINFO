@@ -1,0 +1,13 @@
+pkgbase = sudo-is-doas
+	pkgdesc = Replaces sudo and softlinks doas to sudo
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dnorhoj/doas-is-sudo
+	arch = x86_64
+	license = GPL3
+	depends = opendoas
+	provides = sudo
+	conflicts = sudo
+	replaces = sudo
+
+pkgname = sudo-is-doas
