@@ -17,7 +17,7 @@ conflicts=('wallpaper-binge')
 
 source_x86_64=("https://gitlab.com/api/v4/projects/51218294/packages/generic/linux_amd64/${pkgver}/${_pkgname}_linux_amd64.tgz")
 source_aarch64=("https://gitlab.com/api/v4/projects/51218294/packages/generic/linux_arm64/${pkgver}/${_pkgname}_linux_arm64.tgz")
-source_armv7h=("https://gitlab.com/api/v4/projects/51218294/packages/generic/linux_arm64/${pkgver}/${_pkgname}_linux_arm.tgz")
+source_armv7h=("https://gitlab.com/api/v4/projects/51218294/packages/generic/linux_arm/${pkgver}/${_pkgname}_linux_arm.tgz")
 
 sha256sums_x86_64=('6dd965cdba9a998c3302ba043f48c56de3d8faba9889b2b7bc63208c5c6010fb')
 
