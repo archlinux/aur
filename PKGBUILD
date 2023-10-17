@@ -1,6 +1,6 @@
 pkgbase="rt-env"
 pkgname="rt-env-git"
-pkgver=1.1.2.225.3531
+pkgver=1.1.2.225.3532
 pkgrel=1
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
