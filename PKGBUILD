@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-gnome-ui-tune-git
 _uuid=gnome-ui-tune@itstime.tech
-pkgver=1.7.4.r0.g84b2ac4
+pkgver=1.8.0.r0.gbf247dc
 pkgrel=1
 pkgdesc="Tunes GNOME Overview UI to make it more usable."
 arch=('any')
 url="https://github.com/axxapy/gnome-ui-tune"
 license=('GPL3')
-depends=('gnome-shell<=1:44.6')
+depends=('gnome-shell')
 makedepends=('git' 'jq')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
