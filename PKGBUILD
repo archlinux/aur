@@ -26,21 +26,11 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd libbluray
 
-  local git_file_allow=$(git config --global protocol.file.allow)
-
-  git config --global protocol.file.allow always
   for submodule in contrib/libudfread; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
-    git submodule update ${submodule}
+    git -c protocol.file.allow=always submodule update ${submodule}
   done
-
-  if [ -z "${git_file_allow}" ]
-  then
-    git config --global --unset protocol.file.allow
-  else
-    git config --global protocol.file.allow "${git_file_allow}"
-  fi
 
   autoreconf -fiv
 }
