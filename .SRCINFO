@@ -24,6 +24,7 @@ pkgbase = forkgram
 	makedepends = mm-common
 	makedepends = perl-xml-parser
 	makedepends = libsigc++-3.0
+	makedepends = libxcomposite
 	depends = hunspell
 	depends = ffmpeg
 	depends = hicolor-icon-theme
