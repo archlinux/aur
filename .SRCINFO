@@ -1,6 +1,6 @@
 pkgbase = hamster-shell-extension-git
 	pkgdesc = Shell extension for project hamster - the GNOME time tracker
-	pkgver = 20230810.g359283a
+	pkgver = 20230925.g52578d3
 	pkgrel = 1
 	url = https://github.com/projecthamster/shell-extension
 	arch = any
