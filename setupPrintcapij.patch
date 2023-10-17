@@ -1,0 +1,11 @@
+--- setupPrintcapij-new	2018-05-19 21:35:22.444619686 +0200
++++ setupPrintcapij	2018-05-19 21:36:21.113707459 +0200
+@@ -20,7 +20,7 @@
+ 
+ BRPRINTER_MODEL=$1
+ BRPRINTER_NAME=`echo $BRPRINTER_MODEL | tr '[a-z]' '[A-Z]'`
+-PRINTCAP_NAME=/etc/printcap.local
++PRINTCAP_NAME=/etc/printcap
+ SPOOLER_NAME=/var/spool/lpd/$BRPRINTER_MODEL
+ 
+ DEVICE_IF=/dev/usb/lp0
