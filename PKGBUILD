@@ -4,12 +4,12 @@ pkgname=bizhawk-monort
 _providesName=bizhawk
 pkgver=2.9.1
 _archiveName="BizHawk-$pkgver-linux-x64.tar.gz"
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-system emulator on .NET. Features rerecording and tools for TASing. (Mono runtime)"
 arch=("x86_64")
 url="https://gitlab.com/TASVideos/BizHawk#readme"
 license=("MIT" "custom")
-depends=("glibc" "lsb-release" "mono>=6.12" "openal")
+depends=("glibc" "lsb-release" "lua" "mono>=6.12" "openal")
 optdepends=(
 	"antimicro: to use unsupported controllers (by mapping to the keyboard)"
 )
