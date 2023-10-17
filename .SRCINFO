@@ -1,6 +1,6 @@
 pkgbase = hyprland-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.
-	pkgver = 0.30.0.r90.962a0de0
+	pkgver = 0.31.0.r7.a0b675ec
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = hyprland-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = pkgconf
 	makedepends = vulkan-headers
 	makedepends = xorgproto
 	depends = cairo
@@ -32,7 +33,6 @@ pkgbase = hyprland-git
 	depends = opengl-driver
 	depends = pango
 	depends = pixman
-	depends = pixman
 	depends = polkit
 	depends = seatd
 	depends = systemd-libs
@@ -49,7 +49,7 @@ pkgbase = hyprland-git
 	depends = xorg-xinput
 	depends = xorg-xwayland
 	depends = libdisplay-info.so
-	provides = hyprland=0.30.0
+	provides = hyprland=0.31.0
 	conflicts = hyprland
 	source = git+https://github.com/hyprwm/Hyprland.git
 	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git

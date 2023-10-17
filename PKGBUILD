@@ -3,7 +3,7 @@
 # Contributor: ThatOneCalculator <kainoa at t1c dot dev>
 
 pkgname=hyprland-git
-pkgver=0.30.0.r90.962a0de0
+pkgver=0.31.0.r7.a0b675ec
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -90,6 +90,7 @@ prepare() {
   fi
   # Pick pull requests from github using `pick_mr <pull request number>`.
 
+  git -C subprojects/wlroots reset --hard
   patch -d subprojects/wlroots -Np1 < subprojects/packagefiles/wlroots-meson-build.patch
 }
 
