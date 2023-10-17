@@ -3,7 +3,7 @@
 _pkgname=godot-mono
 pkgname=godot-mono-enhanced
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
@@ -12,7 +12,7 @@ depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd li
    libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
    mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
 makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip python)
-provides=('godot-mono' 'godot' 'godot-mono-bin')
+provides=('godot-mono' 'godot-mono-bin')
 conflicts=('godot-mono' 'godot-mono-bin')
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/godot-${pkgver}-stable.tar.xz")
 sha512sums=('d9e3c948aeece3586632ed2a8c94ca2107a6b5b4bb1ae8dc264e350fbfcb4cc1f4cd4cf7fdcd61a5b0351511c12e34d83275a79d5e0361e2eee67c8447b5f831')
