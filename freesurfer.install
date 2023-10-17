@@ -1,0 +1,14 @@
+post_install () {
+    if [ ! -f '/opt/freesurfer/license.txt' ] ; then
+        echo ""
+        echo "Looks like you do not have a registered license file."
+        echo "You can register for one at the link below:"
+        echo "    https://surfer.nmr.mgh.harvard.edu/registration.html"
+        echo "Once received, copy it over as /opt/freesurfer/license.txt"
+        echo ""
+    fi
+}
+
+post_upgrade () {
+    post_install
+}
