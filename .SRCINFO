@@ -1,7 +1,7 @@
 pkgbase = mongodb-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 7.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
@@ -31,6 +31,6 @@ pkgbase = mongodb-bin
 	source_aarch64 = mongodb-org-server_7.0.2_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-arm64/mongodb-org-server_7.0.2_arm64.deb
 	source_aarch64 = mongodb-org-mongos_7.0.2_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-arm64/mongodb-org-mongos_7.0.2_arm64.deb
 	sha256sums_aarch64 = 7a15345f04445de36eec04df2cb7d634d69aee5b89fa7d4bdb5fa71fe7f88509
-	sha256sums_aarch64 = 189c6f8bf59065347ae6262b8fd57a95a0bce89f3f1751fa4627b5e776342ed1
+	sha256sums_aarch64 = 8591512ae612d0ad44d977afcadb703e92a08c1e453de90120599ea5d0271298
 
 pkgname = mongodb-bin
