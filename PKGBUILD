@@ -1,13 +1,13 @@
 # Contributor: Mark Gallagher <mark@fts.scot>
 pkgname=perl-bankaccount-validator-uk
 pkgver=0.65
-pkgrel=1
+pkgrel=2
 pkgdesc='Rules for validating UK bank account (via MetaCPAN distribution)'
 _dist=BankAccount-Validator-UK
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=('perl')
+depends=('perl' 'perl-file-sharedir' 'perl-moo' 'perl-namespace-autoclean')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/M/MA/MANWAR/$_dist-$pkgver.tar.gz")
 sha256sums=(c5bdb4500d86deb20c3a9377815de580fd4dbd27233312cc17adf8de80cf720a)
