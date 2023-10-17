@@ -1,13 +1,11 @@
 pkgbase = cpu-x-opencl
 	pkgdesc = Gathers information on CPU, motherboard, GPU and more (with OpenCL support)
-	pkgver = 4.5.3
-	pkgrel = 2.6
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	checkdepends = mawk
-	checkdepends = nawk
 	makedepends = cmake
 	makedepends = nasm
 	makedepends = ninja
@@ -16,6 +14,7 @@ pkgbase = cpu-x-opencl
 	depends = dconf
 	depends = glfw
 	depends = gtk3
+	depends = gtkmm3
 	depends = hicolor-icon-theme
 	depends = libcpuid>=0.6.0
 	depends = libgl
@@ -27,9 +26,9 @@ pkgbase = cpu-x-opencl
 	optdepends = opencl-driver: packaged OpenCL driver
 	optdepends = opengl-driver: packaged OpenGL driver
 	optdepends = vulkan-driver: packaged Vulkan driver
-	provides = cpu-x=4.5.3
+	provides = cpu-x=5.0.0
 	conflicts = cpu-x
-	source = cpu-x-4.5.3.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v4.5.3.tar.gz
-	sha512sums = 3f3e4f1d31e4e84bdeb68e448a1dabd2e22965caed1668300945a1d9150f77422b685a7a0bad997371ba08a3b0ac7fe3eab3aa1d0b485942347a72eb81d21b4f
+	source = cpu-x-5.0.0.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v5.0.0.tar.gz
+	sha512sums = c4fd7247c83987ab1c84586317a95327809510ed1289cd32cc16cd4d46c8d6af58f8496342e9172ad06cb8189d3e4c82a4826e9c8054fa2dc8cdd166ac29436d
 
 pkgname = cpu-x-opencl
