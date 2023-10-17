@@ -1,0 +1,16 @@
+pkgbase = vde-netemu-git
+	pkgdesc = An alternative implementation of vde's wirefilter based on a different organization of components
+	pkgver = r3.df3d677
+	pkgrel = 1
+	url = https://github.com/virtualsquare/vde-netemu
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = make
+	depends = vde2
+	provides = vde-netemu-git
+	conflicts = vde-netemu-git
+	source = vde-netemu::git+https://github.com/virtualsquare/vde-netemu.git
+	md5sums = SKIP
+
+pkgname = vde-netemu-git
