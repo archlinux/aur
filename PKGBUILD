@@ -2,7 +2,7 @@
 _pkgname=bitsandbytes
 pkgbase='python-bitsandbytes'
 pkgname=('python-bitsandbytes-cuda121')
-pkgver=0.39.1
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="Lightweight wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and quantization functions."
 #certifi
@@ -25,7 +25,7 @@ checkdepends=('python-pytest')
 
 source=("$pkgbase-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
         
-sha256sums=('c5cf516341c48bd439ee1c675abed8b2f04cc5b269022440d08dce59ba5e5a0c')
+sha256sums=('5c7439f16b81e9379d648b2840c7efb7017a724f8cae2c9eab535addeb697192')
 
 
 build() {
@@ -34,8 +34,8 @@ build() {
   # Dirty hack to workaround the `The installed version of bitsandbytes was compiled without GPU support` aka `str2optimizer8bit_blockwise name` error
   # https://github.com/TimDettmers/bitsandbytes/issues/112
   # https://github.com/oobabooga/text-generation-webui/issues/400#issuecomment-1474876859
-  mv  bitsandbytes/libbitsandbytes_cuda121.so bitsandbytes/libbitsandbytes_cpu.so
-  rm  bitsandbytes/libbitsandbytes_cuda* # Remove other cuda version libs  
+  #mv  bitsandbytes/libbitsandbytes_cuda121.so bitsandbytes/libbitsandbytes_cpu.so
+  #rm  bitsandbytes/libbitsandbytes_cuda* # Remove other cuda version libs  
 }
 
 check() {
