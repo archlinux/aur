@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom
-pkgver=r43
+pkgver=r45
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://commanderx16.com/"
 license=('custom')
 groups=('commander-x16')
 depends=()
-makedepends=('cc65' 'pandoc' 'python')
+makedepends=('cc65' 'lzsa' 'pandoc' 'python')
 optdepends=('x16-emulator: emulator for the ROMs')
 install=x16-rom.install
 
@@ -19,7 +19,7 @@ source=(
 )
 
 md5sums=(
-    'a69ffa10519cbf060879cf327346b488'
+    '5640b38474d0b19ae8c8132977bfccfe'
     '3accdbadaf70264c743b1f655f5dc146'
 )
 
