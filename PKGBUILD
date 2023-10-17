@@ -2,9 +2,9 @@
 
 pkgname=fname
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc=' Generate random, human-friendly names.'
-arch=('any')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/Splode/fname'
 license=('MIT')
 depends=('glibc')
