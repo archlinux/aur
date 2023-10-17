@@ -1,70 +1,51 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
-
 pkgname=motrix-git
-_pkgname=motrix
-pkgver=1.5.15.r63.gd020359
-pkgrel=3
-pkgdesc='A full-featured download manager'
+_pkgname=Motrix
+pkgver=1.8.19.r30.g7012040
+pkgrel=1
+pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc."
 arch=('any')
-url='https://motrix.app/'
+url="https://motrix.app/"
+_githuburl="https://github.com/agalwood/Motrix"
 license=('MIT')
-depends=(
-  'aria2'
-  'electron'
-  'nodejs'
-)
-makedepends=(
-  'gendesk'
-  'git'
-  'npm'
-  'python2'
-)
-provides=(motrix=${pkgver})
-conflicts=(motrix)
-source=("${_pkgname}::git+https://github.com/agalwood/Motrix.git")
-sha256sums=('SKIP')
-
+depends=('libxcb' 'gcc-libs' 'dbus' 'libxdamage' 'alsa-lib' 'mesa' 'gtk3' 'libxkbcommon' 'libxext' 'libxcomposite' \
+    'nspr' 'pango' 'nss' 'libdrm' 'at-spi2-core' 'cairo' 'libcups' 'libxrandr' 'glib2' 'libx11' 'libxfixes' 'expat' 'glibc')
+makedepends=('gendesk' 'git' 'yarn' 'npm>=9.8.1' 'nodejs>=18.18.0')
+provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname//-/.}::git+https://github.com/agalwood/Motrix.git"
+    "${pkgname%-git}.sh")
+sha256sums=('SKIP'
+            '796025eedc90563291e822f292d46633b0f79cf2787fd6ffa48932a059c4203f')
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname//-/.}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-prepare() {
-  sed -i 's/"postinstall"/"ignore"/' "${srcdir}/${_pkgname}/package.json"
-  sed -i 's/--colors/--color/g' "${srcdir}/${_pkgname}/package.json"
-  sed -i 's/ENGINE_MAX_CONNECTION_PER_SERVER = 64/ENGINE_MAX_CONNECTION_PER_SERVER = 16/' "${srcdir}/${_pkgname}/src/shared/constants.js"
-  rm -vf "${srcdir}/${_pkgname}/package-lock.json"
-  echo "Creating desktop file..."
-  gendesk -f -n --pkgname ${_pkgname} \
-  --pkgdesc "${pkgdesc}" \
-  --categories "Network;FileTransfer;" \
-  --icon "${_pkgname}" \
-  --exec "${_pkgname}"
-}
-
 build() {
-  cd "${srcdir}/${_pkgname}"
-  npm_config_cache="${srcdir}/npm_cache" npm install
-  npm run pack
-  npm prune --production
+    gendesk -q -f -n --categories "Network" --name "${pkgname}" --exec "${pkgname}"
+    cd "${srcdir}/${pkgname//-/.}"
+    sed '157,178d' -i electron-builder.json
+    yarn
+    yarn lint:fix
+    yarn build
+    yarn pack
 }
-
 package() {
-  install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${_pkgname}" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
-  install -Dm644 "${srcdir}/${_pkgname}/extra/linux/engine/aria2.conf" "${pkgdir}/usr/lib/${_pkgname}/engine/aria2.conf"
-  install -Dm644 "${srcdir}/${_pkgname}/package.json" "${pkgdir}/usr/lib/${_pkgname}/app/package.json"
-  ln -s /usr/bin/aria2c "${pkgdir}/usr/lib/${_pkgname}/engine/aria2c"
-  cp -r "${srcdir}/${_pkgname}/dist" "${pkgdir}/usr/lib/${_pkgname}/app"
-  cp -r "${srcdir}/${_pkgname}/node_modules" "${pkgdir}/usr/lib/${_pkgname}/app/node_modules"
-  install -Dm644 "${srcdir}/${_pkgname}/static/512x512.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  # launch script
-  cat << EOF > "${pkgdir}/usr/bin/${_pkgname}"
-#!/bin/bash
-export ELECTRON_IS_DEV=0
-exec /usr/bin/electron /usr/lib/${_pkgname}/app
-EOF
-  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
+    case "${CARCH}" in
+        x86_64)
+            _architecture="linux-unpacked"
+        ;;
+        aarch64)
+            _architecture="linux-arm64-unpacked"
+        ;;
+        armv7h)
+            _architecture="linux-armv7l-unpacked"
+        ;;
+    esac
+    cp -r "${srcdir}/${pkgname//-/.}/release/${_architecture}/"* "${pkgdir}/opt/${pkgname%-git}"
+    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/build/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-# vim:set ts=2 sw=2 et:
