@@ -22,7 +22,6 @@ steps:
 
     commands:
       - rm -rf src pkg *.gz *.patch.zst oom
-      - mv *.pkg.tar.zst linux-stoneyridge.pkg.tar.zst
 
   publish:
     image: codeberg.org/gameplayer-8/gitio
