@@ -83,9 +83,12 @@ pkgbase = arch-gaming-meta
 	depends = lib32-vulkan-icd-loader
 	optdepends = bottles
 	optdepends = cups
+	optdepends = glfw-wayland
 	optdepends = goverlay-bin
 	optdepends = protontricks
 	optdepends = samba
 	optdepends = sane
+	conflicts = cachyos-gaming-meta
+	conflicts = manjaro-gaming-meta
 
 pkgname = arch-gaming-meta

@@ -1,4 +1,4 @@
-# Maintainer: Martin Stibor <martin.von.reichenberg@protonmail.com>
+# Maintainer: Martin Stibor <martin.von.reichenberg@protonmail.commartin.von.reichenberg@protonmail.commartin.von.reichenberg@protonmail.com>
 # Meta package for ALL-IN-ONE out-of-the-box gaming on Arch Linux.
 
 pkgname=arch-gaming-meta
@@ -18,4 +18,5 @@ depends=('alsa-lib' 'alsa-plugins' 'dosbox' 'fontconfig' 'gamemode' 'gamescope' 
          'lib32-libgpg-error' 'lib32-libjpeg-turbo' 'lib32-libldap' 'lib32-libpng' 'lib32-libpulse' 'lib32-libva'
          'lib32-libva-mesa-driver' 'lib32-libxcomposite' 'lib32-libxinerama' 'lib32-libxslt' 'lib32-mangohud' 'lib32-mpg123'
          'lib32-ncurses' 'lib32-ocl-icd' 'lib32-openal' 'lib32-sqlite' 'lib32-v4l-utils' 'lib32-vkd3d' 'lib32-vulkan-icd-loader')
-optdepends=('bottles' 'cups' 'goverlay-bin' 'protontricks' 'samba' 'sane')
+optdepends=('bottles' 'cups' 'glfw-wayland' 'goverlay-bin' 'protontricks' 'samba' 'sane')
+conflicts=('cachyos-gaming-meta' 'manjaro-gaming-meta')
