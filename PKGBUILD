@@ -33,7 +33,7 @@ package() {
   ln -s "/opt/tModLoader/tmodloader-server.sh" "$pkgdir/usr/bin/tmodloader-server"
   ln -s "/opt/tModLoader/tmodloader-familyshare.sh" "$pkgdir/usr/bin/tmodloader-familyshare"
 
-  install -Dm600 "tml-$tmlver.zip" "$pkgdir/opt/tModLoader/tml.zip"
-  install -Dm755 -t "$pkgdir/opt/tModLoader" "$startdir"/*.sh
-  echo "$tmlver" > "$pkgdir/opt/tModLoader/ver.txt"
+  install -Dm444 "tml-$tmlver.zip" "$pkgdir/opt/tModLoader/tml.zip"
+  install -Dm555 -t "$pkgdir/opt/tModLoader" "$startdir"/*.sh
+  echo "$tmlver" | install -Dm444 "/dev/stdin" "$pkgdir/opt/tModLoader/ver.txt"
 }
