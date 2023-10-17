@@ -1,6 +1,6 @@
 pkgbase = ddns-cloudflare-powershell-git
 	pkgdesc = A simple Powershell script for DDNS with Cloudflare API
-	pkgver = r11.32ca524
+	pkgver = r13.2757b76
 	pkgrel = 1
 	url = https://github.com/database64128/ddns-cloudflare-powershell
 	arch = x86_64
