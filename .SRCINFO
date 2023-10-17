@@ -9,7 +9,7 @@ pkgbase = tradew1nd-standalone-bin
 	source = https://github.com/North-West-Wind/tradew1nd-standalone/releases/download/v1.3.0/tradew1nd-standalone-linux-x64-1.3.0.zip
 	source = https://raw.githubusercontent.com/North-West-Wind/tradew1nd-standalone/v1.3.0/public/images/tradew1nd-win.png
 	source = tradew1nd.desktop
-	md5sums = 62a2086df47afba48eaccc46919887a0
+	md5sums = 6de2b02de315a65072a6034af29fa02b
 	md5sums = 79678799c823191d022e248ff4bc6728
 	md5sums = 697735c50deae486df428afe78fc3661
 
