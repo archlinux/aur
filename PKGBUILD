@@ -3,10 +3,10 @@
 # -*- mode: sh -*-
 
 pkgname=bc-gh
-pkgver=6.7.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/gavinhoward/bc"
 license=('BSD')
 provides=('bc')
@@ -18,12 +18,12 @@ source=(
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
 )
 sha512sums=(
-  'a4b8c0b0ba8a214e2fdd271f5090d2977c8ee3053dc52d28cbd031a4a935f0e5d9c7be8df8e1cf106ac68c18faf136917a241f5e89597e271bf127df3d6d3f9f'
-  'b11ec2d7dd85d01604a4e27922f72c0845f33694b0c3beb9b326686d85df52f5ee13c66cf24d72665965976ce004d75e13f923771eb8441432eb2d50233ff4d7'
+  'feeb94b015cb9e77dd7e08fc28f27d520fec87e47bd72bb5b6d013340819783c5511f4fdce11a59b0807e316287e60bbd92436e119e94887e644f64c326d8900'
+  '679ae47e6105075a5cd9b80d8587ad364662c2d4a0bc36d4e2594e21dd9b866cd816df8bf73507c4b8890306171e3919deb272ce3e69755aadadcbc4b0e083d8'
 )
 sha256sums=(
-  'd6a06c35c3c4230b1086e3a0f864e8c7b05211629f2bcb6dd46571ee47ef24ae'
-  '73f64118a4317e171d070e5f692611fd9af2f8ccf737a6c326bfaaea674b0917'
+  '7fb9bbd7f84db96d1f7202b408fd944678531776eecd10ce25cfa7458de30d56'
+  '44c29d36f9c755e2c40f8c0c2ac3ae47c0e8078083251b78651456a1f2fcb230'
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
