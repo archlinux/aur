@@ -1,7 +1,7 @@
 # Maintianer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=amrfinderplus
-pkgver=3.11.20
+pkgver=3.11.26
 pkgrel=1
 pkgdesc="Identify Antimicrobial resistance genes in assembled bacterial nucleotide and protein sequence. https://doi.org/10.1038/s41598-021-91456-0"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ depends=(
         )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ncbi/amr/archive/refs/tags/amrfinder_v${pkgver}.tar.gz"
 		"destdir.patch")
-sha256sums=('698462c4fa688a91130b72e44756d21faf406e186a02da914982044332419ef6'
+sha256sums=('49d98d0f66e121d3ed5a3d9a817089ee69399b0bd06af52f79d796bfe8b2d8b2'
             '2adee0fa212d4b45054fdd9be5c31298bef7caa079c46d7c26340cb64375c1e4')
 
 prepare() {
@@ -36,7 +36,6 @@ build() {
 
 package() {
     cd amr-amrfinder_v${pkgver}
-    # install -d ${pkgdir}/usr/bin
     make DESTDIR=${pkgdir} install
     install -Dm644 LICENSE  -t "$pkgdir"/usr/share/licenses/"${pkgname}"
     install -d ${pkgdir}/usr/share/amrfinderplus/data
