@@ -2,9 +2,9 @@
 # Modified from poi's PKGBUILD
 # Contributor: Jianfeng Zhang <swordfeng123@gmail.com>
 _pkgname=poi
-_electron=electron24
+_electron=electron27
 pkgname=${_pkgname}_arch_electron
-pkgver=10.10.0.beta.0.0.gfecccf20
+pkgver=10.10.0.beta.1.9.g5bc17ee2
 pkgrel=1
 pkgdesc="Scalable KanColle browser and tool, using the system provided electron"
 arch=('any')
@@ -38,8 +38,6 @@ build() {
     git clean -xdf
     npm install
     gulp build
-    npm uninstall electron
-    npm prune --production
 }
 
 package() {
