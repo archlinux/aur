@@ -1,7 +1,7 @@
 pkgname=candy-git
-pkgver=2.1.r4.gefebc16
+pkgver=2.3.r0.gf1e3cff
 pkgrel=1
-pkgdesc="A easy-to-deploy, firewall-penetrating, and peer-to-peer virtual private network"
+pkgdesc="A easy-to-deploy and peer-to-peer virtual private network"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
