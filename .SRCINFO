@@ -15,7 +15,7 @@ pkgbase = wallpaper-binge-bin
 	sha256sums_x86_64 = 6dd965cdba9a998c3302ba043f48c56de3d8faba9889b2b7bc63208c5c6010fb
 	source_aarch64 = https://gitlab.com/api/v4/projects/51218294/packages/generic/linux_arm64/1.0.2/wallpaper-binge_linux_arm64.tgz
 	sha256sums_aarch64 = c22d8565fbaf0ac74cb4d2d67839d08c3830353e25d1999b70eaf6929e594e3e
-	source_armv7h = https://gitlab.com/api/v4/projects/51218294/packages/generic/linux_arm64/1.0.2/wallpaper-binge_linux_arm.tgz
+	source_armv7h = https://gitlab.com/api/v4/projects/51218294/packages/generic/linux_arm/1.0.2/wallpaper-binge_linux_arm.tgz
 	sha256sums_armv7h = a9753e1a7ef01e670d2fc40b3ab71bbd42a491c36b0fe7d8da3fea385173b739
 
 pkgname = wallpaper-binge-bin
