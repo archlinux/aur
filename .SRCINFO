@@ -1,6 +1,6 @@
 pkgbase = pacbro
 	pkgdesc = Package Browser for Arch, terminal multi-panel edition
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/cherio/pacbro
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pacbro
 	depends = fzf
 	provides = pacbro
 	conflicts = pacbro
-	source = pacbro-1.0.4.tar.gz::https://github.com/cherio/pacbro/archive/refs/tags/1.0.4.tar.gz
-	sha256sums = c33a5c7571f717ae99ea6e987768d561e1af1b1977e50db8ff2e4475eb0a6e12
+	source = pacbro-1.0.5.tar.gz::https://github.com/cherio/pacbro/archive/refs/tags/1.0.5.tar.gz
+	sha256sums = 04da24b523d82b7849009fffce587a9d50ff9632f550c0674303d76d74daae88
 
 pkgname = pacbro
