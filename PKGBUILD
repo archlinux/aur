@@ -2,7 +2,7 @@
 
 pkgname=libinput-gestures-git
 _pkgname=libinput-gestures
-pkgver=r218.f701a8f
+pkgver=2.76.r0.gbbe7e79
 pkgrel=1
 pkgdesc="Actions gestures on your touchpad using libinput"
 arch=('any')
@@ -21,10 +21,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/^libinput-gestures-//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
