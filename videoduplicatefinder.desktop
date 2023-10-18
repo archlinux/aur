@@ -1,7 +1,7 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=Video Duplicate Finder
-Comment=Video Duplicate Finder
+Comment=Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity
 GenericName=Video Duplicate Finder
 Exec=/usr/bin/videoduplicatefinder
 Type=Application
