@@ -1,7 +1,7 @@
 pkgbase = waybar-cava
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)
 	pkgver = 0.9.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
 	license = MIT
@@ -33,6 +33,7 @@ pkgbase = waybar-cava
 	depends = libxkbcommon
 	depends = wireplumber
 	depends = playerctl
+	depends = libcava
 	optdepends = otf-font-awesome: Icons in the default configuration
 	provides = waybar
 	conflicts = waybar

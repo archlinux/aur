@@ -2,7 +2,7 @@
 
 pkgname=waybar-cava
 pkgver=0.9.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -32,6 +32,7 @@ depends=(
     'libxkbcommon'
     'wireplumber'
     'playerctl'
+    'libcava'
 )
 makedepends=(
     'cmake'
@@ -56,11 +57,14 @@ sha256sums=('61e8d934c178b9da8212162398d2be44c5606c92b9a3503526993bb204206c6b'
 build() {
     cd "Waybar-${pkgver}"
 
+    # enable flag `experimental` to activate module wlr/workspaces
     meson setup \
           --prefix=/usr \
           --buildtype=plain \
           --auto-features=enabled \
+          --wrap-mode=nodownload \
           -Dexperimental=true \
+          -Dcava=enabled \
           -Dtests=disabled \
           build
 
