@@ -1,7 +1,7 @@
 # Maintainer: Elias Blume <mail at elias-blu.me>
 pkgname=moonlight-qt-bin
-pkgver=4.3.1
-pkgrel=3
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
 url="https://moonlight-stream.org"
@@ -14,7 +14,7 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/moonlight-stream/m
 _bin_name="${pkgname%-qt-bin}"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha256sums=('b10c7e4bd692701a837d42e87aca7cf3c138344d44091d8e551e7b201a69a439'
+sha256sums=('0271896d329c1ff0ac47e4acd3c456e9045fedefc1752f4d10411a379b141a7a'
             '7dc324b4621067c01c1ea91570dec230fb43735f48f5f9eac91b0e487070a79d')
 options=(!strip)
 prepare() {
