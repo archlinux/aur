@@ -1,0 +1,14 @@
+pkgbase = stb-git
+	pkgdesc = Single-file public domain (or MIT licensed) libraries for C/C++
+	pkgver = r2152.beebb24
+	pkgrel = 1
+	url = https://github.com/nothings/stb
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = stb=r2152.beebb24
+	conflicts = stb
+	source = stb::git+https://github.com/nothings/stb.git
+	b2sums = SKIP
+
+pkgname = stb-git
