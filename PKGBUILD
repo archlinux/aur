@@ -1,12 +1,13 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=cue-git
-pkgver=1.1.0.r1.gc23e730
+pkgver=1.1.0.r4.g43c964c
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://github.com/ravachol/cue"
 license=('GPL')
 depends=('ffmpeg' 'fftw' 'git' 'chafa' 'freeimage')
+conflicts=('cue')
 sha256sums=('SKIP')
 
 source=("git+${url}")
