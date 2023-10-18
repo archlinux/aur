@@ -5,7 +5,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.0.34.459
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
@@ -25,7 +25,7 @@ depends=(
 makedepends=(chrpath)
 #checkdepends=()
 #optdepends=()
-source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20231016100418/albion-online-setup"
+source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20231018102812/albion-online-setup"
   "albion-online-launcher.desktop" "albion-online" "Albion-Online.patch")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
