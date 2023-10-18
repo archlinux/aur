@@ -4,7 +4,7 @@
 
 pkgname="vulkan-man-pages"
 pkgver=1.3.268
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
 url="https://github.com/KhronosGroup/Vulkan-Docs"
@@ -32,6 +32,13 @@ prepare() {
 	mv ${url##*/}-$pkgver $pkgname-$pkgver
 
 	patch --strip=1 < ../manpage.patch
+
+	cd "$srcdir/$pkgname-$pkgver"
+
+	local _ESC="?\\\\u001b"
+	local _NL="\"\\\\n\""
+
+	sed -i "s/'<code>' + \(.*\) + '<\/code>'/ $_ESC + '\\\\#' + $_NL + $_ESC + \".IR \" + \1 + $_NL/" config/spec-macros/extension.rb
 }
 
 build() {
@@ -47,6 +54,11 @@ package() {
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
 	mv -v gen/out/man/html/* "$pkgdir/usr/share/man/man3"
+
+	find "$pkgdir/usr/share/man/man3" -name "*.3.gz" -exec gzip -d {} \+
+	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec sed -i 's/\(.\)\\#/\1\n\\#/' {} \+
+	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec gzip {} \+
+	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec rm {} \+
 
 	install -m644 config/copyright-ccby.adoc "$pkgdir/usr/share/licenses/$pkgname/copyright-ccby.adoc"
 	install -m644 config/copyright-spec.adoc "$pkgdir/usr/share/licenses/$pkgname/copyright-spec.adoc"
