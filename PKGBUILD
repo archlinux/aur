@@ -8,8 +8,6 @@ url="https://gitlab.com/youtube-desktop/application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-conflicts=("youtube-bin")
-replace=("youtube-bin")
 source=("https://gitlab.com/youtube-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
