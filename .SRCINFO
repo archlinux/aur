@@ -1,13 +1,13 @@
 pkgbase = vgrep
-	pkgdesc = Reimpementation of the ancient cgvg perl scripts
-	pkgver = 2.6.1
-	pkgrel = 2
+	pkgdesc = pager for grep, git-grep, ripgrep and similar, allows for opening the indexed file locations in a user-specified editor
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://github.com/vrothberg/vgrep
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = go
-	source = vgrep-2.6.1.tar.gz::https://github.com/vrothberg/vgrep/archive/v2.6.1.tar.gz
-	sha256sums = 61ffc1dc7445bd890a25a8bb733f7b33dc4de45388ae51c87db484def1c6f391
+	source = vgrep-2.7.0.tar.gz::https://github.com/vrothberg/vgrep/archive/v2.7.0.tar.gz
+	sha256sums = 0fb2ca6df8cdbb57bc50589e626e456f8a62b2d8d545b93425070844fcff26ea
 
 pkgname = vgrep

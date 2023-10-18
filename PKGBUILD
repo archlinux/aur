@@ -4,15 +4,15 @@
 # Contributor: Jonas Malaco <jonas@protocubo.io>
 
 pkgname=vgrep
-pkgver=2.6.1
-pkgrel=2
-pkgdesc="Reimpementation of the ancient cgvg perl scripts"
+pkgver=2.7.0
+pkgrel=1
+pkgdesc="pager for grep, git-grep, ripgrep and similar, allows for opening the indexed file locations in a user-specified editor"
 arch=('x86_64' 'i686')
 license=('GPL3')
 makedepends=('go')
 url="https://github.com/vrothberg/vgrep"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vrothberg/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('61ffc1dc7445bd890a25a8bb733f7b33dc4de45388ae51c87db484def1c6f391')
+sha256sums=('0fb2ca6df8cdbb57bc50589e626e456f8a62b2d8d545b93425070844fcff26ea')
 
 build() {
   cd "${pkgname}-${pkgver}"
