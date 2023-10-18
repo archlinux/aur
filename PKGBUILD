@@ -1,8 +1,8 @@
-# Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
+# Maintainer: Mark "maemolol" Korobkin <markkorobkin85@gmail.com>
 
 pkgname=plaincontrolcenter
 _pkgname=plainControlCenter
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="plainDE control center"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(qt5-base noto-fonts-emoji polkit ttf-opensans make plainpanel plainabout)
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plainDE/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a0718f674ff76d21716c5f6064980202b4469603fc25793eff902e0f99ed60fe')
+sha256sums=('6db878964333f03925b58d88c34111ae56218fe9819fedbfef34ff4b3f1a789a')
 conflicts=('plaincontrolcenter-git')
 
 build() {
