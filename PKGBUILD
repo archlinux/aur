@@ -1,9 +1,10 @@
-# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
+# Maintainer: Dmitri Sosnik <dimavs@gmail.com>
+# Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 # Contributor: Mastacheata <benedikt "at" xenzilla "dot" de>
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=2022.10.2
+pkgver=2023.05.4
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -11,14 +12,14 @@ url="http://www.jetbrains.com/teamcity/"
 license=('custom:JetBrains TeamCity')
 depends=('java-runtime-headless')
 install="$pkgname.install"
-source=('https://download.jetbrains.com/teamcity/TeamCity-2022.10.2.tar.gz'
+source=('https://download.jetbrains.com/teamcity/TeamCity-2023.05.4.tar.gz'
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity-sysusers.conf'
         'teamcity-tmpfiles.conf'
         'teamcity.conf')
-sha256sums=('609098da4a2b41522a23ce81589858390d7dd250211ab28f567e8d6f1adcb3ba'
-            'b66ca4d1963138be8f88c4bf7cf358b1bf096711a618f2f501ce9805fafdbb20'
+sha256sums=('1523fb7c678d217a9a28debe7fbf0bbfbe2ccd641254cbcd0f05595ee12feb80'
+            'abe89ea6be4cb54750568f27c2173cd1b46b49b4aac0cc727d3604b1178cd8fb'
             '59e68ab2524e66f7c074ac4215a0449ed9242160946ef3364d378e015525e749'
             'b74128251ac1943ff48956bb2849731423b712d078ec76f1a8959532f0161c91'
             'f6d9b522a2730f9e6b6e044cb6f76fa31767788a4f7f21ab4e751dc1f88f6143'

@@ -5,12 +5,13 @@ After=network.target
 [Service]
 EnvironmentFile=/etc/conf.d/teamcity
 ExecStart=/opt/teamcity/buildAgent/bin/agent.sh start
-ExecStop=/opt/teamcity/buildAgent/bin/agent.sh stop
-Type=forking
+ExecStop=-/opt/teamcity/buildAgent/bin/agent.sh stop
+Type=oneshot
 Restart=no
 TimeoutSec=30
 RemainAfterExit=yes
 User=teamcity
+SuccessExitStatus=0 143
 
 [Install]
 WantedBy=multi-user.target
