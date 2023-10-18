@@ -1,5 +1,3 @@
-# set for current session
-
 # get variables
 arch=$(uname -m)
 python_version=$(python -V 2>&1 | cut -d' ' -f2 | cut -d'.' -f1-2)
@@ -16,6 +14,3 @@ eval $export_path
 eval $export_pythonpath
 eval $export_ld_library_path
 eval $export_openmc_cross_sections
-
-# set for future sessions
-cp openmc.sh /etc/profile.d

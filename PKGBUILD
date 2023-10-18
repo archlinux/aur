@@ -1,13 +1,14 @@
 # Maintainer: Gavin Ridley <gavin dot keith dot ridley at gmail dot com>
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=openmc-git
-pkgver=v0.13.2.r497.g6218becb1
+pkgver=v0.13.3.r314.g7fe80e149
 pkgrel=1
 pkgdesc="The OpenMC project aims to provide a fully-featured Monte Carlo particle 
 		 transport code based on modern methods."
 arch=('x86_64')
 url="https://github.com/openmc-dev/openmc"
 license=('MIT')
+install="post.install"
 
 source=("${pkgname}::git+${url}.git" "set_paths.sh")
 pkgver() {
@@ -66,13 +67,6 @@ build() {
 package() {
 	cd $srcdir/${pkgname}/build 
 	make DESTDIR="$pkgdir/" install
-	pip install --break-system-packages ../
 	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
 	cp $srcdir/set_paths.sh $pkgdir/opt/openmc
-
-	# installed to opt, inform user how to set paths
-	_path_msg="$'\n'INFO: OpenMC and its dependencies were installed to the 
-			   non-standard location /opt. Run bash 
-			   ~/opt/openmc/set_paths.sh before attempting to
-			   use openmc$'\n'"
 }
