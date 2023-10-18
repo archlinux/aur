@@ -1,6 +1,6 @@
 pkgbase = ignite-cli-bin
 	pkgdesc = The all-in-one platform to build, launch, and maintain any crypto application on a sovereign and secured blockchain
-	pkgver = 0.27.1
+	pkgver = 0.27.2
 	pkgrel = 1
 	url = https://ignite.com/cli
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ignite-cli-bin
 	provides = starport
 	conflicts = ignite-cli
 	conflicts = starport
-	source_x86_64 = https://github.com/ignite/cli/releases/download/v0.27.1/ignite_0.27.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 040a898521d1bd7d6521d2d85151ae8c8821c19492a8c0d0cb21c5cddcf56df0
-	source_aarch64 = https://github.com/ignite/cli/releases/download/v0.27.1/ignite_0.27.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = fe4ba3b55569ada02d64c254fe959bf69406e81cfaff5b13ab5633eb0c607245
+	source_x86_64 = https://github.com/ignite/cli/releases/download/v0.27.2/ignite_0.27.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7b7fc0f369d0096fdb86d19f86954cdb10cce190627ca542dc7aed09f94708e8
+	source_aarch64 = https://github.com/ignite/cli/releases/download/v0.27.2/ignite_0.27.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = a75c0bb2e0b458a94130aebf90b8fc9ec91177e340af1099430cef1dbd2c74cb
 
 pkgname = ignite-cli-bin
