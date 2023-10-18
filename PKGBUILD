@@ -4,13 +4,13 @@ _emscripten_version="1.40.1"
 
 pkgname="gr-framework-js-git"
 pkgver="0.72.10.r31.g3d77993e"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("any")
 url="https://gr-framework.org"
 license=("MIT")
 depends=()
-makedepends=("git")
+makedepends=("git" "python")
 provides=("${pkgname%-*}=${pkgver}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*-*}::git+https://github.com/sciapp/gr.git#branch=develop" \
