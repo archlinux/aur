@@ -8,7 +8,7 @@ license=('MIT')
 url="https://github.com/python-lsp/python-lsp-ruff"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7b11f9675026b788b32cf73452e6e3ea6e7c2924b7cf1129f42e01dc9dac556d')
-depends=(python-lsp-server python-ruff python-lsprotocol python-tomli)
+depends=(python-lsp-server 'python-ruff<0.1.0' python-lsprotocol python-tomli)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 
