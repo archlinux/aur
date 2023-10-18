@@ -1,19 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blinker-bin
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Inspired by the 20 20 20 rule, this is a little reminder to look 20 feet away from your screen every 20 minutes. Keep your eyes healthy, reduce eye strain, prevent headaches and increase productivity."
 arch=("x86_64")
 url="https://github.com/mrkpatchaa/blinker"
 license=("custom:CC0-1.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron25')
+depends=('bash' 'electron27')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('774c7970ba69cc27c84929e81bc207c1eea7e2b3a53f788335f843cede8acf95'
-            '0282a87b7d75d9218467b6ee67f4b83616d9559eeb6922aa40c8f7747f44f750')
+sha256sums=('a5d4587f962041b2bd7fa375213e83fcfa6a143a1b7030c2dc2b365654fbdff9'
+            'fc5e389c6ca420e1234de2ef63fc980cdb50e5e2710350081b1ebebcce4028eb')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
     asar pack "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${srcdir}/app.asar"
