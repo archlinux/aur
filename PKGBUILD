@@ -6,16 +6,16 @@
 
 pkgname=wine-staging-wow64
 _name=wine
-pkgver=8.16
-pkgrel=2
+pkgver=8.18
+pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
 source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
-        "https://github.com/wine-staging/wine-staging/archive/v$pkgver/wine-staging-v${pkgver}.tar.gz"
+        git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$pkgver
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('0ba83beacd842e53173c07c30fa4ee57424af0d00b9f168b8bd310c40ea06e26dfc09f4a1991b788a8c4bd2b6eeb439e60b0deff6249424a00fa2940c95662b6'
-            '3748c9e41aa4c50e10f2dc7301d059bfeb614adc859bacad3b1d7ff00fa72a8ee65fd527c6ce2c065523002df353b82f17ff601b4cbbc4f7b84b1197ece3d9e2'
+sha512sums=('0f8e6b5c6709930bc7f774d92cd025976f6442c3785a224b5988a37152f3a875150b228f12442e9b9c0d9e7884568aca26159df86d48f2550a630625fef3c8b9'
+            'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 pkgdesc="A compatibility layer for running Windows programs"
@@ -77,7 +77,7 @@ prepare() {
 
   # apply wine-staging patchset
   cd $_name-$pkgver
-  ../wine-staging-$pkgver/staging/patchinstall.py --all
+  ../wine-staging/staging/patchinstall.py --all
 }
 
 build() {
