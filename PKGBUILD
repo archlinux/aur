@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-iced-git')
 pkgver=r15.a4d7a87
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI For Jellyfin-RPC"
 arch=('any')
 url="https://github.com/Radiicall/jellyfin-rpc-iced"
@@ -20,6 +20,7 @@ pkgver() {
 
 prepare() {
 	cd jellyfin-rpc-iced
+	wget https://raw.githubusercontent.com/Radiicall/jellyfin-rpc/main/example.json
 	git submodule update --init --recursive
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu" 
@@ -44,7 +45,7 @@ package() {
 	cd jellyfin-rpc-iced
 	install -Dm0755 "target/release/jellyfin-rpc-iced" -t "$pkgdir/usr/bin/"
 	install -Dm0644 ./README.md "$pkgdir/usr/share/doc/jellyfin-rpc-iced"
-	install -Dm0644 "jellyfin-rpc/example.json" -t "$pkgdir/usr/lib/jellyfin-rpc/"
+	install -Dm0644 "example.json" -t "$pkgdir/usr/lib/jellyfin-rpc/"
 
 
 	echo

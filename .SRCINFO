@@ -1,7 +1,7 @@
 pkgbase = jellyfin-rpc-iced-git
 	pkgdesc = GUI For Jellyfin-RPC
 	pkgver = r15.a4d7a87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Radiicall/jellyfin-rpc-iced
 	arch = any
 	license = GPL3
