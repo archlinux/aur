@@ -11,10 +11,10 @@ pkgbase = plainde-meta
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = plainpanel=0.6.2
-	depends = plainabout=0.6.2
-	depends = plaincontrolcenter=0.6.2
-	depends = plainbase=0.6.2
+	depends = plainpanel=0.6.3
+	depends = plainabout=0.6.3
+	depends = plaincontrolcenter=0.6.3
+	depends = plainbase=0.6.3
 	depends = plainartwork
 	conflicts = plainde-meta-git
 
