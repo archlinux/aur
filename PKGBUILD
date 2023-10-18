@@ -2,7 +2,7 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('any')
@@ -26,7 +26,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits"
         'use_local_doc_fits_offline.patch')
 #https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
-md5sums=('1245b4159174d5b96f78f42547f82773'
+md5sums=('dc5ad9a791537d660ea2727d979af4e2'
          '6de4c8ee5659e87a302e3de595074ba5'
          '3586c5d0810108a182ba9146908dc180'
          '49c57591fdc60365a3e31a0f10e4e57d')
@@ -37,7 +37,7 @@ prepare() {
     cp ${srcdir}/*.fits docs
     patch -Np1 -i "${srcdir}/use_local_doc_fits_offline.patch"
 #   sed -i "/astropy.utils.exceptions/a \	ignore:Subclassing validator classes is not intended:DeprecationWarning" setup.cfg
-#   sed -i "/astropy.utils.exceptions/a \	ignore:pkg_resources is deprecated as an API:DeprecationWarning" setup.cfg
+    sed -i "/astropy.utils.exceptions/a \	ignore:pkg_resources is deprecated as an API:DeprecationWarning" setup.cfg
 }
 
 build() {
@@ -53,33 +53,33 @@ check() {
 
     # skip some tests that need lots of online data or cost lots of time
     pytest --ignore=docs/_build \
-        --ignore=build/lib/specutils/io/asdf/tags/tests/test_spectra.py \
-        --ignore=build/lib/specutils/io/default_loaders/tests/test_apogee.py \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_ctypye_not_compliant[remote_data_path0] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_cos[remote_data_path0] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_cos[remote_data_path1] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_stis[remote_data_path0] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_stis[remote_data_path1] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_stis[remote_data_path2] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_apstar_loader \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_manga_cube \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_manga_cube \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_manga_rss \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_spplate \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_spspec \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_compressed[gzip] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_compressed[bzip2] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_compressed[xz] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_with_rwss[remote_data_path0] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_without_rwss[remote_data_path0] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_with_rwss_guess[remote_data_path0] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_without_rwss_guess[remote_data_path0] \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_apvisit_loader \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_iraf_multispec_chebyshev \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_iraf_multispec_legendre \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_muscles_loader \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_subaru_pfs_loader \
-        --deselect=build/lib/specutils/tests/test_spectral_axis.py::test_create_spectral_axis || warning "Tests failed" # -vv --color=yes
+        --ignore=specutils/io/asdf/tags/tests/test_spectra.py \
+        --ignore=specutils/io/default_loaders/tests/test_apogee.py \
+        --deselect=specutils/tests/test_loaders.py::test_ctypye_not_compliant[remote_data_path0] \
+        --deselect=specutils/tests/test_loaders.py::test_hst_cos[remote_data_path0] \
+        --deselect=specutils/tests/test_loaders.py::test_hst_cos[remote_data_path1] \
+        --deselect=specutils/tests/test_loaders.py::test_hst_stis[remote_data_path0] \
+        --deselect=specutils/tests/test_loaders.py::test_hst_stis[remote_data_path1] \
+        --deselect=specutils/tests/test_loaders.py::test_hst_stis[remote_data_path2] \
+        --deselect=specutils/tests/test_loaders.py::test_apstar_loader \
+        --deselect=specutils/tests/test_loaders.py::test_manga_cube \
+        --deselect=specutils/tests/test_loaders.py::test_manga_cube \
+        --deselect=specutils/tests/test_loaders.py::test_manga_rss \
+        --deselect=specutils/tests/test_loaders.py::test_sdss_spplate \
+        --deselect=specutils/tests/test_loaders.py::test_sdss_spspec \
+        --deselect=specutils/tests/test_loaders.py::test_sdss_compressed[gzip] \
+        --deselect=specutils/tests/test_loaders.py::test_sdss_compressed[bzip2] \
+        --deselect=specutils/tests/test_loaders.py::test_sdss_compressed[xz] \
+        --deselect=specutils/tests/test_loaders.py::TestAAOmega2dF::test_with_rwss[remote_data_path0] \
+        --deselect=specutils/tests/test_loaders.py::TestAAOmega2dF::test_without_rwss[remote_data_path0] \
+        --deselect=specutils/tests/test_loaders.py::TestAAOmega2dF::test_with_rwss_guess[remote_data_path0] \
+        --deselect=specutils/tests/test_loaders.py::TestAAOmega2dF::test_without_rwss_guess[remote_data_path0] \
+        --deselect=specutils/tests/test_loaders.py::test_apvisit_loader \
+        --deselect=specutils/tests/test_loaders.py::test_iraf_multispec_chebyshev \
+        --deselect=specutils/tests/test_loaders.py::test_iraf_multispec_legendre \
+        --deselect=specutils/tests/test_loaders.py::test_muscles_loader \
+        --deselect=specutils/tests/test_loaders.py::test_subaru_pfs_loader \
+        --deselect=specutils/tests/test_spectral_axis.py::test_create_spectral_axis || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-specutils() {
