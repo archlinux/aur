@@ -9,7 +9,7 @@ pkgdesc="Take potentially dangerous PDFs, office documents, or images and conver
 url="https://github.com/freedomofpress/dangerzone"
 arch=('x86_64')
 license=('MIT')
-depends=('python-appdirs' 'python-markdown' 'python-click' 'python-pyxdg' 'python-requests' 'pyside2' 'python-termcolor' 'python-pip' 'podman')
+depends=('python-appdirs' 'python-markdown' 'python-click' 'python-colorama' 'python-pyxdg' 'python-requests' 'pyside2' 'python-termcolor' 'python-pip' 'podman')
 makedepends=('python-setuptools')
 
 source=("${pkgname}-${pkgver}.deb::https://packages.freedom.press/apt-tools-prod/pool/main/d/dangerzone/dangerzone_${pkgver}-1_all.deb")
@@ -29,7 +29,7 @@ package() {
 
   cp -r "${srcdir}/usr" "${pkgdir}/"
   mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone" "${pkgdir}/usr/lib/python3.11/site-packages/"
-  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone-0.4.2.egg-info" "${pkgdir}/usr/lib/python3.11/site-packages/"
+  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone-${pkgver}.egg-info" "${pkgdir}/usr/lib/python3.11/site-packages/"
 
   # Remove unused directory
   rm -r "${pkgdir}/usr/lib/python3"
