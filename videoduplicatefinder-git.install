@@ -1,4 +1,18 @@
 post_install() {
-    echo "The program will attempt to save settings to a file at \"/opt/videoduplicatefinder\" which is read only."
-    echo "Use \"Save to file\" to save setting to a different location and manually load it afterward."
+    echo
+    echo "==> videoduplicatefinder will be extracted to ~/.local/share/videoduplicatefinder on the first run."
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo "==> The copy of videoduplicatefinder in your home directory will be upgraded on the next run."
+    echo
+}
+
+post_remove() {
+    echo
+    echo "==> You will have to manually remove the videoduplicatefinder directory in your home directory:"
+    echo "==> rm -rf ~/.local/share/videoduplicatefinder"
+    echo
 }
