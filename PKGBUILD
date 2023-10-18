@@ -1,4 +1,5 @@
 # Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Co-maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=qdirstat-git
 _pkgname=qdirstat
