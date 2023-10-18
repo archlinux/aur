@@ -10,7 +10,6 @@ depends=("python>=3.5" "libinput" "hicolor-icon-theme")
 optdepends=("wmctrl: required for _internal command, as per default configuration"
             "xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps")
 conflicts=("$pkgname-git")
-replaces=("$pkgname-git")
 backup=("etc/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh
