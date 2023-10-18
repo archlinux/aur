@@ -31,8 +31,6 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc::git+$url.git#tag=v.$pkgver")
   sha256sums=('SKIP')
-
-  replaces=('libinput_gestures_qt')
 else
   # git package
   provides+=("$_pkgname")

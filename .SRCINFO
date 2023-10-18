@@ -15,7 +15,6 @@ pkgbase = libinput-gestures-qt
 	depends = qt5-tools
 	provides = libinput_gestures_qt
 	conflicts = libinput_gestures_qt
-	replaces = libinput_gestures_qt
 	source = libinput-gestures-qt::git+https://github.com/OneAdder/libinput_gestures_qt.git#tag=v.0.4
 	sha256sums = SKIP
 
