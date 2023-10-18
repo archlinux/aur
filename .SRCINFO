@@ -6,7 +6,7 @@ pkgbase = feeddeck-bin
 	arch = x86_64
 	license = MIT
 	source = feeddeck-linux-x86_641.1.0.tar.gz::https://github.com/feeddeck/feeddeck/releases/download/v1.1.0/feeddeck-linux-x86_64.tar.gz
-	source = LICENSE1.1.0::https://github.com/feeddeck/feeddeck/raw/main/LICENSE
+	source = LICENSE1.1.0::https://github.com/feeddeck/feeddeck/raw/v1.1.0/LICENSE
 	sha256sums = 5d1a19c7aec1eeed332711a86b104bd8c223dfec04076c73678d2ff5607b8283
 	sha256sums = 4ed6aa9a25dde43633ded896cdf6a3c03d5ac9e7d46e7ec469d9e905f052a3fe
 

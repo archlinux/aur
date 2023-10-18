@@ -8,7 +8,7 @@ url="https://github.com/feeddeck/feeddeck"
 arch=('x86_64')
 license=('MIT')
 source=("feeddeck-linux-x86_64$pkgver.tar.gz::https://github.com/feeddeck/feeddeck/releases/download/v$pkgver/feeddeck-linux-x86_64.tar.gz"
-        "LICENSE$pkgver::https://github.com/feeddeck/feeddeck/raw/main/LICENSE")
+        "LICENSE$pkgver::https://github.com/feeddeck/feeddeck/raw/v$pkgver/LICENSE")
 sha256sums=('5d1a19c7aec1eeed332711a86b104bd8c223dfec04076c73678d2ff5607b8283'
             '4ed6aa9a25dde43633ded896cdf6a3c03d5ac9e7d46e7ec469d9e905f052a3fe')
 
