@@ -1,12 +1,12 @@
 pkgbase = charles-bin
 	pkgdesc = Web debugging proxy application (Standalone version using bundled Java)
 	pkgver = 4.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.charlesproxy.com
 	arch = x86_64
 	license = custom
 	makedepends = tar
-	makedepends = xz
+	makedepends = zstd
 	depends = hicolor-icon-theme
 	provides = charles
 	conflicts = charles

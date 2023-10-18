@@ -1,12 +1,12 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=charles-bin
 pkgver=4.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Web debugging proxy application (Standalone version using bundled Java)"
 arch=('x86_64')
 url="https://www.charlesproxy.com"
 license=('custom')
-makedepends=('tar' 'xz')
+makedepends=('tar' 'zstd')
 conflicts=('charles')
 provides=('charles')
 depends=('hicolor-icon-theme')
@@ -16,5 +16,5 @@ sha256sums=('ce7c761ace2144b950ddb935ffff088e2126ab723be404ca9eaf1c46824a1233')
 package() {
     cd "${pkgdir}"
     # this extracts all into the pkgdir
-    tar xf "${srcdir}/data.tar.xz"
+    tar xf "${srcdir}/data.tar.zst"
 }
