@@ -49,7 +49,7 @@ build() {
     cd ".."
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --features tray
+    cargo build --frozen --release
 }
 
 package() {
