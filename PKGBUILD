@@ -1,9 +1,10 @@
 # Maintainer: otreblan <otreblain@gmail.com>
+# Contributor: Bohdan Mart <mart.bogdan at gmail>
 # Modified PKGBUILD from vulkan-html-docs
 
 pkgname="vulkan-man-pages"
 pkgver=1.3.261
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
 url="https://github.com/KhronosGroup/Vulkan-Docs"
@@ -36,7 +37,7 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	./makeAllExts html manhtmlpages styleguide registry
+	./makeAllExts -j html manhtmlpages styleguide registry
 }
 
 package() {

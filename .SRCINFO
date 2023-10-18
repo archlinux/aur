@@ -1,7 +1,7 @@
 pkgbase = vulkan-man-pages
 	pkgdesc = Vulkan man pages as manpages
 	pkgver = 1.3.261
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KhronosGroup/Vulkan-Docs
 	arch = any
 	license = custom
