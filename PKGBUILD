@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=x-minecraft-launcher-bin
-_appname=xmcl
-_appname2="X Minecraft Launcher"
-pkgver=0.36.2
+_appname="X Minecraft Launcher"
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
 arch=('aarch64' 'x86_64')
@@ -10,32 +9,26 @@ url="https://xmcl.app/"
 _githuburl="https://github.com/Voxelum/x-minecraft-launcher"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}" "${_appname}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron21')
-makedepends=('asar' 'gendesk')
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb")
-source=("LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/v${pkgver}/LICENSE"
+makedepends=('gendesk')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.asar::${_githuburl}/releases/download/v${pkgver}/app-${pkgver}-linux-arm64.asar")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.asar::${_githuburl}/releases/download/v${pkgver}/app-${pkgver}-linux.asar")
+source=("${pkgname%-bin}.png::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/v${pkgver}/xmcl-electron-app/icons/dark%40256x256.png"
+    "LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('274fb5c556a3f3fdc5b37ef6f6bbd8e35055b11a816f3ae69efec869f85638f5'
+sha256sums=('4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb'
+            '274fb5c556a3f3fdc5b37ef6f6bbd8e35055b11a816f3ae69efec869f85638f5'
             '02832427680007bec0ad2ea6df5a264e538e88deb9d2c5315e9ed1f374b9101b')
-sha256sums_aarch64=('21bb8b6ee2e12132da5fb077152408de398f6c9f14d94a680e6abfd14db1ba5f')
-sha256sums_x86_64=('2512500eee42ecf775a102c971caf0eda84ae36ce5694b8645658dee8c8334dd')
+sha256sums_aarch64=('e260973826765a36196b85924b425b96e6e390bcb7155cfd67ede6d31684b5b0')
+sha256sums_x86_64=('b593d831acd2ff765dff90a2023997e258a2ae1d8611be58046aa145b064a17c')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
-    asar e "${srcdir}/opt/${_appname2}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/opt/${_appname2}/resources/app.asar.unpacked" "${srcdir}"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    sed "s|\"/opt/${_appname2}/${_appname}\" %U|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    gendesk -q -f -n --categories "Game" --name "${_appname}" --exec "${pkgname}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
-    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.asar" "${pkgdir}/opt/${pkgname%-bin}/resources/app.asar"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
