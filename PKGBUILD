@@ -1,7 +1,7 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=21.0a3
-gittag=21.0a3-Omega
+pkgver=21.0b1
+gittag=21.0b1-Omega
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
