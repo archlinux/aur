@@ -4,27 +4,27 @@
 
 _name='gdbgui'
 pkgname=python-gdbgui
-pkgver=0.15.1.0
-pkgrel=3
+pkgver=0.15.2.0
+pkgrel=1
 pkgdesc="Browser-based frontend to gdb. Debug C, C++, Go, or Rust."
 arch=('any')
 url='https://www.gdbgui.com'
 license=('GPL')
-depends=('python'
+depends=('python>=3.6'
          'python-brotli'
          'python-gevent'
          'python-gevent-websocket'
          'python-flask'
-         'python-flask-compress'
-         'python-flask-socketio'
-         'python-pygdbmi>=0.10.0.0'
-         'python-pygments')
+         'python-flask-compress>1.10'
+         'python-flask-socketio>5.3'
+         'python-pygdbmi>=0.10.0.2'
+         'python-pygments>=2.2.0')
 makedepends=('python-setuptools' 'yarn')
 checkdepends=('python-nox' 'python-pytest' 'python-pytest-cov')
 provides=("$_name=$pkgver")
 conflicts=("$_name")
-source=("https://github.com/cs01/gdbgui/archive/v$pkgver.tar.gz")
-b2sums=('9076e31eb0b0e19c81e5ec0346baf7c253f2fabdc904936d9b7e4aa7eef6d40989e911b991af5fe64aca07c13aa84a9c93b5216b5b1227c444a528979ae25ba8')
+source=("https://github.com/cs01/gdbgui/archive/$pkgver.tar.gz")
+b2sums=('ffdce1923aead7d5cf202aa6954bbedcfa55cb27351b7635dd9636a8b398e4d9d8baa1c59789ba47e80ae581fa6510cae2017d0639cc7f9137d8ce5e0324172b')
 
 prepare() {
     cd $_name-$pkgver
@@ -33,7 +33,6 @@ prepare() {
 
 build() {
     cd $_name-$pkgver
-    export NODE_OPTIONS=--openssl-legacy-provider # otherwise it fails to build
     yarn build
     python setup.py build
 }

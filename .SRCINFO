@@ -1,7 +1,7 @@
 pkgbase = python-gdbgui
 	pkgdesc = Browser-based frontend to gdb. Debug C, C++, Go, or Rust.
-	pkgver = 0.15.1.0
-	pkgrel = 3
+	pkgver = 0.15.2.0
+	pkgrel = 1
 	url = https://www.gdbgui.com
 	arch = any
 	license = GPL
@@ -10,18 +10,18 @@ pkgbase = python-gdbgui
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	makedepends = yarn
-	depends = python
+	depends = python>=3.6
 	depends = python-brotli
 	depends = python-gevent
 	depends = python-gevent-websocket
 	depends = python-flask
-	depends = python-flask-compress
-	depends = python-flask-socketio
-	depends = python-pygdbmi>=0.10.0.0
-	depends = python-pygments
-	provides = gdbgui=0.15.1.0
+	depends = python-flask-compress>1.10
+	depends = python-flask-socketio>5.3
+	depends = python-pygdbmi>=0.10.0.2
+	depends = python-pygments>=2.2.0
+	provides = gdbgui=0.15.2.0
 	conflicts = gdbgui
-	source = https://github.com/cs01/gdbgui/archive/v0.15.1.0.tar.gz
-	b2sums = 9076e31eb0b0e19c81e5ec0346baf7c253f2fabdc904936d9b7e4aa7eef6d40989e911b991af5fe64aca07c13aa84a9c93b5216b5b1227c444a528979ae25ba8
+	source = https://github.com/cs01/gdbgui/archive/0.15.2.0.tar.gz
+	b2sums = ffdce1923aead7d5cf202aa6954bbedcfa55cb27351b7635dd9636a8b398e4d9d8baa1c59789ba47e80ae581fa6510cae2017d0639cc7f9137d8ce5e0324172b
 
 pkgname = python-gdbgui
