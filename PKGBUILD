@@ -3,7 +3,7 @@ pkgbase=python-radio_beam
 _pname=${pkgbase#python-}
 _pyname=${_pname/_/-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Operations for radio astronomy beams with astropy"
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-scipy'
               'python-six') # astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4bb21e8a517e8df05108eca61f7da43f')
+md5sums=('b4cb389fee3d87a974b86b8197c4825a')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -34,14 +34,13 @@ build() {
     msg "Building Docs"
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
         build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
    cd ${srcdir}/${_pyname}-${pkgver}
 
-   pytest "build/lib" || warning "Tests failed" # -vv --color=yes
+   pytest --ignore=docs/_build || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-radio_beam() {
