@@ -50,6 +50,7 @@ makedepends=(
   cmake
   gdb
   git
+  jq
   meson
   ninja
   pkgconf
