@@ -1,27 +1,27 @@
-#Maintainer: Julius Schumacher <juliusschumacher at gmail dot com>
+#Maintainer: Carl Malmgren <cral@codegrotto.com>
 pkgname=eterm8
-pkgver=0.971
+pkgver=1.04
 pkgrel=1
 pkgdesc="IDE for assembly language programming"
 arch=('x86_64')
-url="http://www.cse.chalmers.se/edu/resources/software/index.html"
+url="http://www.gbgmv.se/studies.html#machprog"
 license=('Copyright 1989-2018, GMV')
 
-#depends=()
+depends=('gtk3' 'ncurses' 'libsm' 'libxxf86vm' 'gcc' 'zlib')
 makedepends=('libarchive')
 
-source=(http://www.cse.chalmers.se/edu/resources/software/linux/$pkgname\_$pkgver\_amd64.deb)
-md5sums=('8c221226979285dd40d456e87c43ee3e')
-sha256sums=('63362419ffde2cce716925a373c66dc113f4e46da9fa64b821742d23bd8a42f4')
+source=(http://www.gbgmv.se/dl/linux/$pkgname\_$pkgver\_amd64.deb)
+md5sums=('87b8a91b1a11e59aa657fd832b74c22d')
+sha256sums=('f6da370469050e9b4986ace2f2573e9236697d218f90d7e799a7bfe307272094')
 
 prepare() {
-	msg2 "Unpacking .deb"
+	echo "Unpacking .deb"
 	cd $srcdir
 	bsdtar -xf data.tar.xz
 }
 
 package() {
-	msg2 "Moving stuff in place"
+	echo "Moving stuff in place"
 	install -Dm755 "$srcdir/usr/share/eterm8/arm-none-eabi-as" \
 					"$pkgdir/usr/share/eterm8/arm-none-eabi-as"
 
@@ -67,7 +67,7 @@ package() {
 	install -Dm644 "$srcdir/usr/share/doc/eterm8/copyright" \
 					"$pkgdir/usr/share/doc/eterm8/copyright"
 
-	msg2 "Creating symlinks"
+	echo "Creating symlinks"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/usr/share/eterm8/eterm8" "$pkgdir/usr/bin/eterm8"
 	ln -s "/usr/share/eterm8/simserver" "$pkgdir/usr/bin/simserver"
