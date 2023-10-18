@@ -2,18 +2,18 @@
 
 pkgname=dbeaver-arm
 pkgdesc="Free universal SQL Client for developers and database administrators. Community Edition. Linux ARM version."
-pkgver=23.2.1
+pkgver=23.2.2
 pkgrel=0
 arch=('aarch64')
 url="https://dbeaver.io/"
 license=('Apache')
-depends=('jre-openjdk-headless' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
+depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://dbeaver.io/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.aarch64-nojdk.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('9a107295d8728fa791f28e9ba708d357ec837200b1d3698e0e8873f9dc0b5f87'
+sha256sums=('SKIP'
             'a346f25f8bbedec5af99d2d5ea913770363cd1cca97a95431db91993b572f427'
             'c3e7edcb5427de0c8d3d62a7ba98946090bbb69ce969f2b5d2f5e3a0d7064199'
             '6189acf8d2a76ed924064b515bc2db591455fcaa84efb8914214905785f48180'
