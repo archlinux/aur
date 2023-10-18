@@ -17,8 +17,6 @@ pkgbase = pacpush
 	depends = python-requests
 	depends = python-ruamel-yaml
 	depends = pyalpm
-	conflicts = pacsync
-	replaces = pacsync
 	source = pacpush-2.26.tar.gz::https://github.com/bulletmark/pacpush/archive/2.26.tar.gz
 	sha1sums = 7a10ddc00b8d9f5c614963f9176f6ad2b568600f
 

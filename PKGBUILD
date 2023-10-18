@@ -11,8 +11,6 @@ depends=("python>=3.10" "rsync" "sudo" "openssh" "python-requests"
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-replaces=("pacsync")
-conflicts=("pacsync")
 sha1sums=('7a10ddc00b8d9f5c614963f9176f6ad2b568600f')
 
 build() {
