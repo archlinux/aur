@@ -1,14 +1,15 @@
 # Maintainer: Georgiy Tugai <georgiy.tugai@gmail.com>
 # Maintainer: ssfdust <ssfdust@gmail.com>
 pkgname=lieer-git
-pkgver=v1.3.r32.9293661
+pkgver=v1.5.20230910.85f5151
 pkgrel=1
 pkgdesc="Fast fetch and two-way tag synchronization between notmuch and GMail"
 arch=(any)
 url="https://github.com/gauteh/lieer"
 license=('GPL3')
 groups=()
-depends=('python' 'python-tqdm' 'python-google-api-python-client' 'python-oauth2client' 'notmuch>=0.25')
+depends=('python' 'python-tqdm' 'python-google-api-python-client'
+         'python-oauth2client' 'python-google-auth-oauthlib' 'notmuch>=0.25')
 makedepends=('git' 'python-setuptools')
 optdepends=()
 provides=("${pkgname%-git}" "gmai${pkgname%-git}" "gmai${pkgname}")
@@ -23,9 +24,15 @@ md5sums=('SKIP')
 noextract=()
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    (
+        set -o pipefail
+        cd "$srcdir/$pkgname"
 
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+        printf "v%s.%s.%s" \
+            "$(grep -oP 'version="\K[^"]+' setup.py)" \
+            "$(TZ=UTC git log -1 --pretty='%cd' --date=format-local:%Y%m%d)" \
+            "$(git rev-parse --short HEAD)"
+    )
 }
 
 package() {
