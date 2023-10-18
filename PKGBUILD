@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=x-minecraft-launcher-bin
 _appname="X Minecraft Launcher"
-pkgver=0.37.0
+pkgver=0.37.1
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
 arch=('aarch64' 'x86_64')
@@ -20,8 +20,8 @@ source=("${pkgname%-bin}.png::https://raw.githubusercontent.com/Voxelum/x-minecr
 sha256sums=('4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb'
             '274fb5c556a3f3fdc5b37ef6f6bbd8e35055b11a816f3ae69efec869f85638f5'
             '02832427680007bec0ad2ea6df5a264e538e88deb9d2c5315e9ed1f374b9101b')
-sha256sums_aarch64=('e260973826765a36196b85924b425b96e6e390bcb7155cfd67ede6d31684b5b0')
-sha256sums_x86_64=('b593d831acd2ff765dff90a2023997e258a2ae1d8611be58046aa145b064a17c')
+sha256sums_aarch64=('43b423b0ce2d16100c81eeb82a7f7ce27dabc996c6aad583c6224173edaea42c')
+sha256sums_x86_64=('6c38f5b932f43fad03a08019cb96cf0548fd8645cccdac6f357c915ff8c9f837')
 build() {
     gendesk -q -f -n --categories "Game" --name "${_appname}" --exec "${pkgname}"
 }
