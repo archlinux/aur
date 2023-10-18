@@ -9,17 +9,17 @@
 #
 
 _services=(
-  apigateway cloudformation dynamodb ec2 ecr iam lambda rds s3 schemas secretsmanager signer sqs stepfunctions sts xray
+  apigateway cloudformation dynamodb ec2 ecr iam kinesis lambda rds s3 schemas secretsmanager signer sqs stepfunctions sts xray
 )
 for _svc in "${_services[@]}"; do
   _svc_packages+=("python-mypy-boto3-$_svc")
 done
 _boto3_version=1.28.37    ## NOTE: This should match the version of the python-boto3 package to avoid API mis-match
-_mypy_boto3_builder_version=7.18.2
+_mypy_boto3_builder_version=7.19.0
 
 pkgname=python-boto3-stubs
 pkgver=${_boto3_version}
-pkgrel=1
+pkgrel=2
 pkgdesc='Type annotations and code completion for (some) boto3 components (Essentials+Requested)'
 arch=('any')
 url="https://pypi.org/project/boto3-stubs"
