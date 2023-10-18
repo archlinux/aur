@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/ctypesgen/ctypesgen"
 license=('BSD')
 depends=('python>=3.7.0')
-makedepends=('python-setuptools>=44.0.0' 'python-installer' 'python-wheel' 'python-setuptools-scm>=3.4.3')
+makedepends=('python-setuptools>=44.0.0' 'python-installer' 'python-wheel' 'python-setuptools-scm>=3.4.3' 'python-build')
 checkdepends=('python-pytest')
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
