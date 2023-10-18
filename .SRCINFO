@@ -1,13 +1,13 @@
 pkgbase = nedots
-	pkgdesc = A tool to manage configuration files/(ne)dots.
-	pkgver = 0.1.7
-	pkgrel = 3
-	url = https://git.sr.ht/~nedia/nedots.rs
-	arch = x86_64
+	pkgdesc = A dotfile management tool.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aidenlangley/nedots.go
+	arch = any
 	license = MIT
-	makedepends = cargo
+	makedepends = go
 	provides = nedots
-	source = nedots.rs-0.1.7.tar.gz::https://git.sr.ht/~nedia/nedots.rs/archive/0.1.7.tar.gz
-	sha256sums = 3b14aaf3ae8abbfcfb4c6336ad92c8f5164cda9bf94312446881a70d3f4e6862
+	source = nedots.go-v0.1.0.tar.gz::https://github.com/aidenlangley/nedots.go/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0ab5ed49e28cebc18b68255ba2565e348f5df826d726b16ae937474c84b889a4
 
 pkgname = nedots
