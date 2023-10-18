@@ -7,7 +7,17 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=3.79.17}
+: ${_pkgver:=3.80.17}
+
+# basic info
+_pkgname='beeper'
+pkgname="$_pkgname-latest-bin"
+pkgver=3.80.17
+pkgrel=1
+pkgdesc="all your chats in one app"
+arch=('x86_64')
+url="https://beeper.com/"
+license=('custom')
 
 # update version
 case "${_autoupdate::1}" in
@@ -38,15 +48,6 @@ case "${_autoupdate::1}" in
     _dl_url="https://download.todesktop.com/2003241lzgn20jd/$_filename"
     ;;
 esac
-
-_pkgname='beeper'
-pkgname="$_pkgname-latest-bin"
-pkgver=3.79.17
-pkgrel=1
-pkgdesc="all your chats in one app"
-arch=('x86_64')
-url="https://beeper.com/"
-license=('custom')
 
 depends=(
   'hicolor-icon-theme'
