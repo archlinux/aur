@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1545.r0.gf7dbd26
+pkgver=1591.r0.g378d884
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -17,6 +17,8 @@ then
     options=("lto" "strip")
     _cmake_build_type=Release
     _yuzu_lto=ON
+    CFLAGS+=" -fno-fat-lto-objects"
+    CXXFLAGS+=" -fno-fat-lto-objects"
 else
     options=("!lto" "!strip" "debug")
     _cmake_build_type=Debug
@@ -69,6 +71,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/bylaws/libadrenotools.git'
         'git+https://github.com/lat9nq/tzdb_to_nx.git'
         'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
+        'git+https://github.com/yuzu-emu/breakpad.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         'git+https://github.com/google/googletest'
@@ -105,6 +108,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -116,7 +120,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator}; 
+    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad}; 
     do
         git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
@@ -159,14 +163,15 @@ build() {
       -DCMAKE_CXX_COMPILER=g++ \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+      -DYUZU_ENABLE_LTO=$_yuzu_lto \
       -DCMAKE_BUILD_TYPE=$_cmake_build_type \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
       -DYUZU_USE_QT_MULTIMEDIA=ON \
-      -DYUZU_ENABLE_LTO=$_yuzu_lto \
       -DYUZU_USE_EXTERNAL_SDL2=OFF \
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
       -DYUZU_USE_BUNDLED_QT=OFF \
       -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+      -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
       -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON \
       -DYUZU_TESTS=OFF \
       -DENABLE_QT6=OFF \
