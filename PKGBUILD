@@ -1,9 +1,9 @@
 # Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
 
 _name=taurus
-pkgname=python-$_name
-pkgver=5.1.6
-pkgrel=2
+pkgname="python-${_name}"
+pkgver=5.1.7
+pkgrel=1
 pkgdesc="A framework for scientific/industrial CLIs and GUIs"
 arch=('any')
 url='http://taurus-scada.org/'
@@ -17,21 +17,21 @@ optdepends=('python-pytango: for integration with TANGO control system'
             'python-pymca5: for extra pymca5 widgets'
             'python-guiqwt: for extra guiqwt widgets'
             'spyder: for a qt based editor within taurus')
-source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz" "int.patch")
-sha256sums=('d1897903c6523a04f08b63fa4873303d6df8e8fb08e91a2838fa4ee29c1e0d62'
+source=("$_name-$pkgver.tar.gz::https://gitlab.com/taurus-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz" "int.patch")
+sha256sums=('75599b0d70834ebf743a21fd5694961f7e3c8cf01844d335da0ca0a7793c9f50'
             '72c9f2374827d12a482f099237a45d315515ceb90ec6c8dd2aad7f54f8031261')
 
 prepare(){
-  cd "$_name-$pkgver"
+  cd "${_name}-${pkgver}"
   patch -N -p1 --input="${srcdir}/int.patch"
 }
 
 build() {
-  cd "$_name-$pkgver"
+  cd "${_name}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
