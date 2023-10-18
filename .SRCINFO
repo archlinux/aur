@@ -1,13 +1,13 @@
 pkgbase = nedots
-	pkgdesc = A dotfile management tool.
-	pkgver = 0.1.0
+	pkgdesc = A dotfile management tool
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/aidenlangley/nedots.go
 	arch = any
 	license = MIT
 	makedepends = go
 	provides = nedots
-	source = nedots.go-v0.1.0.tar.gz::https://github.com/aidenlangley/nedots.go/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 0ab5ed49e28cebc18b68255ba2565e348f5df826d726b16ae937474c84b889a4
+	source = nedots.go-v0.1.1.tar.gz::https://github.com/aidenlangley/nedots.go/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 06e503ec731a337d352e9ccc97f39cda0de84038a2689f6bf91e405440dd8b67
 
 pkgname = nedots
