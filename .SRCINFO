@@ -12,7 +12,11 @@ pkgbase = jellyfin-rpc-bin
 	conflicts = jellyfin-rpc
 	source = https://github.com/Radiicall/jellyfin-rpc/releases/download/0.15.3/jellyfin-rpc-x86_64-linux
 	source = git+https://github.com/Radiicall/jellyfin-rpc
+	source = https://github.com/Radiicall/jellyfin-rpc/blob/0.15.3/example.json
+	source = https://github.com/Radiicall/jellyfin-rpc/blob/0.15.3/scripts/jellyfin-rpc.service
 	md5sums = dc558893e19a7871efd9cb767484be15
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = jellyfin-rpc-bin

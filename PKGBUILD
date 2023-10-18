@@ -11,20 +11,22 @@ makedepends=('git')
 provides=('jellyfin-rpc')
 conflicts=('jellyfin-rpc')
 source=("https://github.com/Radiicall/jellyfin-rpc/releases/download/$pkgver/jellyfin-rpc-x86_64-linux"
-		"git+https://github.com/Radiicall/jellyfin-rpc")
-md5sums=('dc558893e19a7871efd9cb767484be15' 'SKIP')
+	"git+https://github.com/Radiicall/jellyfin-rpc"
+	"https://github.com/Radiicall/jellyfin-rpc/blob/$pkgver/example.json"
+	"https://github.com/Radiicall/jellyfin-rpc/blob/$pkgver/scripts/jellyfin-rpc.service")
+md5sums=('dc558893e19a7871efd9cb767484be15' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
 	cd $srcdir
-	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" jellyfin-rpc/scripts/jellyfin-rpc.service
+	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" jellyfin-rpc.service
 }
 
 
 package() {
 	cd $srcdir
 	install -Dm0755 ./jellyfin-rpc-x86_64-linux "$pkgdir/usr/lib/jellyfin-rpc/jellyfin-rpc"
-	install -Dm0644 ./jellyfin-rpc/example.json  "$pkgdir/usr/lib/jellyfin-rpc/example.json"
-	install -Dm0644 ./jellyfin-rpc/scripts/jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
+	install -Dm0644 ./example.json  "$pkgdir/usr/lib/jellyfin-rpc/example.json"
+	install -Dm0644 ./jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
 
 	echo
 	echo
