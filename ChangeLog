@@ -749,3 +749,6 @@ Fixes:
 - We improved event merging logic to ensure correct titles and colors are displayed
 - The problem that prevented the removal of all notifications from Google Calendar events has been fixed
 
+=== Morgen 3.1.1
+Minor fixes.
+
