@@ -21,7 +21,7 @@ steps:
     image: alpine
 
     commands:
-      - rm -rf src pkg *.gz *.patch.zst oom
+      - rm -rf src pkg *.gz *.patch.zst oom .gitignore
       - chown -R root:root "$(pwd)"
 
   publish:
