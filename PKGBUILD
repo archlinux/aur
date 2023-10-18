@@ -13,7 +13,7 @@ provides=('nedots')
 
 build() {
   cd "$pkgname"-"$pkgver" || return
-  go -C src build -buildvcs=false -o ../nedots .
+  go -C src build -o ../nedots .
   ./nedots completion bash >nedots-completions.bash
   ./nedots completion zsh  >nedots-completions.zsh
   ./nedots completion fish >nedots-completions.fish
