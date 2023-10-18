@@ -1,10 +1,11 @@
 pkgbase = trelby-git
 	pkgdesc = The free, multiplatform, feature-rich screenwriting program!
 	pkgver = 2.4.9.r0.gd02783b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/limburgher/trelby
 	arch = any
 	license = GPL2
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python

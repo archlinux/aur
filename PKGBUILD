@@ -5,7 +5,7 @@
 pkgname=trelby-git
 _pkgname=trelby
 pkgver=2.4.9.r0.gd02783b
-pkgrel=2
+pkgrel=3
 pkgdesc="The free, multiplatform, feature-rich screenwriting program!"
 url="https://github.com/limburgher/trelby"
 arch=('any')
@@ -16,19 +16,24 @@ depends=(
     'python-lxml'
     'python-wxpython'
     'python-reportlab'
-    # 'python-pytest'
 )
 makedepends=(
     'git'
     'python-setuptools'
     # 'libxslt'
 )
+checkdepends=('python-pytest')
 source=('git+https://github.com/limburgher/trelby.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+  pytest
 }
 
 package()
