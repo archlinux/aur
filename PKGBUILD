@@ -7,7 +7,7 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
-pkgver=20.4.0
+pkgver=21.0.0
 pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -39,7 +39,6 @@ _confs=(acl.conf
         aeap.conf
         agents.conf
         alarmreceiver.conf
-        alsa.conf
         amd.conf
         app_skel.conf
         ari.conf
@@ -96,13 +95,11 @@ _confs=(acl.conf
         logger.conf
         manager.conf
         meetme.conf
-        mgcp.conf
         minivm.conf
         modules.conf
         motif.conf
         musiconhold.conf
         ooh323.conf
-        osp.conf
         phoneprov.conf
         pjproject.conf
         pjsip.conf
@@ -113,6 +110,7 @@ _confs=(acl.conf
         queues.conf
         res_config_mysql.conf
         res_config_sqlite3.conf
+        res_config_odbc.conf
         res_corosync.conf
         res_curl.conf
         res_fax.conf
@@ -121,15 +119,11 @@ _confs=(acl.conf
         res_odbc.conf
         res_parking.conf
         res_pgsql.conf
-        res_pktccops.conf
         res_snmp.conf
         res_stun_monitor.conf
         resolver_unbound.conf
         rtp.conf
         say.conf
-        sip.conf
-        sip_notify.conf
-        skinny.conf
         sla.conf
         smdi.conf
         sorcery.conf
@@ -151,7 +145,7 @@ source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archiv
         "$pkgname.logrotated"
         "$pkgname.tmpfiles"
         "fix-upnp.patch")
-sha256sums=('92b17a130607e6e793fcf943598d79305d91bc0b6a17d8eb84da3f2385dd1f02'
+sha256sums=('3b812b7ec64cffce8e067e88cfa442d6a0b1b08f6ac73202f21fbdf616e36de8'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b'
