@@ -1,0 +1,40 @@
+pkgbase = platformio-core
+	pkgdesc = An open source ecosystem for IoT development
+	pkgver = 6.1.11
+	pkgrel = 1
+	url = https://platformio.org
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-bottle
+	depends = python-click
+	depends = python-colorama
+	depends = python-pyserial
+	depends = python-requests
+	depends = python-semantic-version
+	depends = python-tabulate
+	depends = python-pyelftools
+	depends = python-marshmallow
+	depends = python-zeroconf
+	depends = python-aiofiles
+	depends = python-ajsonrpc
+	depends = python-starlette
+	depends = python-wsproto
+	depends = uvicorn
+	optdepends = platformio-core-udev: Udev rules for PlatformIO supported boards/devices
+	optdepends = python-click-completion: for shell completions
+	optdepends = python-shellingham: for shell completions
+	source = platformio-core::git+https://github.com/platformio/platformio-core#commit=c2b309761818186488aa72e75085d569f00c1658
+	b2sums = SKIP
+
+pkgname = platformio-core
+
+pkgname = platformio-core-udev
+	pkgdesc = Udev rules for PlatformIO supported boards/devices
+	depends = udev
+	optdepends = 
