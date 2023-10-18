@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=r1.34.26.786a9dda
+pkgver=1.34.30.r113a7cfa
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP'
             'a7642e40fc6e1d01926c8f628821735ca7c6bb30d723e379c98dd44b2abe3b33')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    printf "r%s.%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')" "$(git rev-parse --short HEAD)"
 }
 build() {
     gendesk -q -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
