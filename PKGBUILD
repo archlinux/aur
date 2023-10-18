@@ -1,14 +1,14 @@
 # Maintainer: Ng Oon-Ee <n g o o n e e dot t a l k @ gmail dot com>
 # Based on obs-backgroundremoval PKGBUILD by PedroHLC <root@pedrohlc.com>
 pkgname=obs-backgroundremoval-git
-pkgver=1.1.2.r8.6158103
+pkgver=1.1.7.r1.2cf587a
 pkgrel=1
 pkgdesc="Background removal plugin for OBS studio"
 arch=(x86_64)
 url='https://github.com/royshil/obs-backgroundremoval'
 license=('GPL2')
 depends=('obs-studio' 'opencv' 'curl')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'ninja')
 conflicts=("obs-backgroundremoval")
 source=('git+https://github.com/royshil/obs-backgroundremoval.git')
 sha256sums=('SKIP')
