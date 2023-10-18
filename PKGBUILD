@@ -3,7 +3,7 @@
 pkgbase=python-spectral-cube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Library for reading and analyzing astrophysical spectral data cubes"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-astropy'
              'python-dask'
              'python-radio_beam'
-             'python-casa-formats-io')
+             'python-casa-formats-io')  # astropy <- radio_beam
 #checkdepends=('python-pytest-astropy-header'
 #              'python-joblib'
 #              'python-reproject'
@@ -27,9 +27,10 @@ makedepends=('python-setuptools-scm'
 #              'python-pvextractor'
 #              'python-regions'
 #              'python-yt'
-#              'python-glue-core') # dask radio_beam 'python-casa-formats-io' already in makedepends
+#              'python-glue-qt')
+# dask radio_beam 'python-casa-formats-io' already in makedepends; matplotlib <- aplpy, glue(also scipy), pvextractor...
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e1972840e919fc49850d4d4a54611d70')
+md5sums=('e8afe3ec03aefb22cc03e5ff091851e0')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -45,13 +46,13 @@ build() {
     PYTHONPATH="../build/lib" make -C docs html
 }
 
-#check() {  # Takes over 20 min, lots of fails
+#check() {  # Circular deps
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
-#    pytest \
-#        --deselect=spectral_cube/tests/test_io.py::test_3d_beams_roundtrip[True] \
-#        --deselect=spectral_cube/tests/test_io.py::test_4d_beams_roundtrip[True] \
-#        --deselect=spectral_cube/tests/test_spectral_cube.py::test_read_write_rountrip[True] || warning "Tests failed" -vv --color=yes
+#    pytest -vv -l -ra --color=yes -o console_output_style=count \
+##        --deselect=spectral_cube/tests/test_io.py::test_3d_beams_roundtrip[True] \
+##        --deselect=spectral_cube/tests/test_io.py::test_4d_beams_roundtrip[True] \
+##        --deselect=spectral_cube/tests/test_spectral_cube.py::test_read_write_rountrip[True] || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #}
 
 package_python-spectral-cube() {
