@@ -3,18 +3,19 @@
 _modname=codec_opus
 _modver=1.3.0
 pkgname=asterisk-${_modname}
-_astver=20.0
+_astver=21.0
 pkgver=${_astver}_${_modver}
-pkgrel=5
+pkgrel=1
 pkgdesc="Opus Software Codec for Asterisk"
 url=https://digium.com
 license=(EULA)
 arch=(x86_64)
-depends=('asterisk>=20.0.0' 'asterisk<21.0.0')
 source=(https://downloads.digium.com/pub/telephony/codec_opus/asterisk-${_astver}/x86-64/${_modname}-${pkgver}-${arch}.tar.gz)
-sha256sums=('173aebec757eeddd33df27414afad3e24f701f766e44fdcaeeee93927ac00da6')
+sha256sums=('4a745f417fca28bb3c8f08280172cea7ed79e61c858638a002aceef5c963ed24')
 
 package() {
+	depends+=('asterisk>=21.0.0' 'asterisk<22.0.0')
+
 	cd ${_modname}-${pkgver}-${arch}
 
 	install -Dt "${pkgdir}"/usr/lib/asterisk/modules -m0755 codec_opus.so

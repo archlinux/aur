@@ -1,13 +1,13 @@
 pkgbase = asterisk-codec_opus
 	pkgdesc = Opus Software Codec for Asterisk
-	pkgver = 20.0_1.3.0
-	pkgrel = 5
+	pkgver = 21.0_1.3.0
+	pkgrel = 1
 	url = https://digium.com
 	arch = x86_64
 	license = EULA
-	depends = asterisk>=20.0.0
-	depends = asterisk<21.0.0
-	source = https://downloads.digium.com/pub/telephony/codec_opus/asterisk-20.0/x86-64/codec_opus-20.0_1.3.0-x86_64.tar.gz
-	sha256sums = 173aebec757eeddd33df27414afad3e24f701f766e44fdcaeeee93927ac00da6
+	source = https://downloads.digium.com/pub/telephony/codec_opus/asterisk-21.0/x86-64/codec_opus-21.0_1.3.0-x86_64.tar.gz
+	sha256sums = 4a745f417fca28bb3c8f08280172cea7ed79e61c858638a002aceef5c963ed24
 
 pkgname = asterisk-codec_opus
+	depends = asterisk>=21.0.0
+	depends = asterisk<22.0.0
