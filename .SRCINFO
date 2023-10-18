@@ -1,7 +1,7 @@
 pkgbase = auth-thu-bin
 	pkgdesc = A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z4yx/GoAuthing
 	arch = x86_64
 	license = GPL3

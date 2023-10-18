@@ -2,7 +2,7 @@
 
 pkgname=auth-thu-bin
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 provides=('auth-thu')
 conflicts=('auth-thu')
 pkgdesc='A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool'
@@ -25,5 +25,5 @@ sha256sums=('c039a9dffa4aedec38b3544f2fb1f85cd2dde096f68977689147ce2f668c07f0'
 package() {
     install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/auth-thu"
     sed -i "s|/usr/local/bin/auth-thu|/usr/bin/auth-thu|g" goauthing*.service
-    install -Dm644 goauthing*.service -t "$pkgdir/usr/lib/systemd/user"
+    install -Dm644 goauthing*.service -t "$pkgdir/usr/lib/systemd/system"
 }
