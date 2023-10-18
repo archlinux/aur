@@ -5,6 +5,10 @@ post_install() {
 		echo "  $ module load aocl-aocc"
 		echo "to set up the environment for AMD Optimizing CPU Libraries."
 	fi
+	echo "You can enable AMD Optimizing CPU Libraries globally"
+	echo 'by creating `/etc/ld.so.conf.d/aocl-aocc.conf` containing:'
+	echo " 	/opt/aocl/aocc/lib/"
+	echo 'then running `ldconfig`'
 }
 
 post_upgrade() {
