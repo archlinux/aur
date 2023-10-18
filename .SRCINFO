@@ -1,6 +1,6 @@
 pkgbase = python-taurus-pyqtgraph
 	pkgdesc = Taurus extension providing pyqtgraph-based widgets
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://taurus-scada.org/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-taurus-pyqtgraph
 	depends = python-taurus
 	depends = python-pyqt5-datavisualization
 	optdepends = python-pyhdbpp: Plotting data from the HDB++ archiver
-	source = taurus_pyqtgraph-0.6.2.tar.gz::https://gitlab.com/taurus-org/taurus_pyqtgraph/-/archive/0.6.2/taurus_pyqtgraph-0.6.2.tar.gz
-	sha256sums = 3f190f416c0be09556c4e3a33c83f95f5c3da1827877e137fdeafb82ea0a2bf5
+	source = taurus_pyqtgraph-0.7.0.tar.gz::https://gitlab.com/taurus-org/taurus_pyqtgraph/-/archive/0.7.0/taurus_pyqtgraph-0.7.0.tar.gz
+	sha256sums = 7a630975836e9979a295fc20b0eb87029cc6af7a2d9413cbd2a37ed88e9cd399
 
 pkgname = python-taurus-pyqtgraph
