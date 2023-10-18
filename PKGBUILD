@@ -4,7 +4,7 @@
 _pkgname=libint
 pkgname=libint2
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance library for computing Gaussian integrals in quantum mechanics'
 url='https://github.com/evaleev/libint'
 license=('GPL')
@@ -76,7 +76,7 @@ build() {
 check() {
     libint_build_dir="${srcdir}/build_libint"
     cd "$libint_build_dir/${_pkgname}-${pkgver}"
-    cmake --build . check
+    cmake --build . --target check
 }
 
 package() {
