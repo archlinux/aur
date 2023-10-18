@@ -1,6 +1,6 @@
 pkgbase = plainpanel
 	pkgdesc = plainDE panel
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://plainde.github.io
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = plainpanel
 	depends = plainartwork
 	depends = plainabout
 	conflicts = plainpanel-git
-	source = plainpanel-0.6.2.tar.gz::https://github.com/plainDE/plainPanel/archive/refs/tags/0.6.2.tar.gz
-	sha256sums = a1c9d5e1322ba66d5b1713c02085a78b206ec3d82a05b9629e6c75315de487b5
+	source = plainpanel-0.6.3.tar.gz::https://github.com/plainDE/plainPanel/archive/refs/tags/0.6.3.tar.gz
+	sha256sums = ed2d5e7864908611bb78a1da2668c58470a57700b22162801356a5eabaeacfde
 
 pkgname = plainpanel
