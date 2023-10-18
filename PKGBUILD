@@ -35,7 +35,7 @@ _srcname=linux-${_ver}
 _srctag=v${_ver}-${_arch}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${_ver%%.*}.x/${_srcname}.tar.xz
-  $url/releases/download/$_srctag/linux-$_srctag.patch.zst
+#  $url/releases/download/$_srctag/linux-$_srctag.patch.zst
   emmc.patch
   config
 )
@@ -47,11 +47,11 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
+#            'SKIP'
             'SKIP')
 b2sums=('SKIP'
         'SKIP'
-        'SKIP'
+#        'SKIP'
         'SKIP')
 
 export KBUILD_BUILD_HOST=artixlinux
