@@ -5,7 +5,7 @@
 pkgname=trelby-git
 _pkgname=trelby
 pkgver=2.4.9.r0.gd02783b
-pkgrel=3
+pkgrel=4
 pkgdesc="The free, multiplatform, feature-rich screenwriting program!"
 url="https://github.com/limburgher/trelby"
 arch=('any')
@@ -17,18 +17,29 @@ depends=(
     'python-wxpython'
     'python-reportlab'
 )
-makedepends=(
-    'git'
-    'python-setuptools'
-    # 'libxslt'
-)
+makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
-source=('git+https://github.com/limburgher/trelby.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/limburgher/trelby.git'
+        "${_pkgname}.xml"
+)
+sha256sums=('SKIP'
+            'eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  gzip -c names.txt > names.txt.gz
+  gzip -c dict_en.dat > dict_en.dat.gz
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  python setup.py sdist
+
 }
 
 check() {
@@ -36,16 +47,12 @@ check() {
   pytest
 }
 
-package()
-{
-  cd ${srcdir}/${_pkgname}
-  # Force package data inclusion
-  gzip -c names.txt > names.txt.gz
-  gzip -c dict_en.dat > dict_en.dat.gz
-  python setup.py sdist
+package() {
+  cd "${srcdir}/${_pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 
-  python setup.py install --root="${pkgdir}"
   install -Dm644 "trelby.desktop" "${pkgdir}/usr/share/applications/trelby.desktop"
   install -Dm644 "resources/icon256.png" "${pkgdir}/usr/share/trelby/resources/icon256.png"
+  install -Dm644 "${srcdir}/${_pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
   install -Dm755 "${pkgdir}/opt/trelby/bin/trelby" "${pkgdir}/usr/bin/trelby"
 }
