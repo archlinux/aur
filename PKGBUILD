@@ -42,7 +42,6 @@ build () {
 
 package() {
     cd "$srcdir/$pkgname"
-    # python setup.py install --root="$pkgdir/" --optimize=1
     python -m installer --destdir="$pkgdir/" dists/*.whl
 }
 
