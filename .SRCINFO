@@ -1,0 +1,16 @@
+pkgbase = fcitx5-tmux-git
+	pkgdesc = Tmux plugin to make tmux as a fcitx 5 client
+	pkgver = r5.35daf5d
+	pkgrel = 1
+	url = https://github.com/wengxt/fcitx5-tmux
+	arch = any
+	license = GPLv2
+	makedepends = git
+	makedepends = cmake
+	depends = dbus
+	depends = fcitx5
+	depends = tmux
+	source = fcitx-tmux5-git::git+https://github.com/wengxt/fcitx5-tmux.git
+	md5sums = SKIP
+
+pkgname = fcitx5-tmux-git
