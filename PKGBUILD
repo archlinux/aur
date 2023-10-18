@@ -7,6 +7,8 @@ pkgdesc='Follow your RSS and Social Media Feeds'
 url="https://github.com/feeddeck/feeddeck"
 arch=('x86_64')
 license=('MIT')
+conflicts=('feeddeck')
+provides=('feeddeck')
 source=("feeddeck-linux-x86_64$pkgver.tar.gz::https://github.com/feeddeck/feeddeck/releases/download/v$pkgver/feeddeck-linux-x86_64.tar.gz"
         "LICENSE$pkgver::https://github.com/feeddeck/feeddeck/raw/v$pkgver/LICENSE")
 sha256sums=('5d1a19c7aec1eeed332711a86b104bd8c223dfec04076c73678d2ff5607b8283'
