@@ -1,7 +1,7 @@
 # Maintainer: Dana Sorensen <dana.r.sorensen@gmail.com>
 
 pkgname=iio-oscilloscope-git
-pkgver=v0.10.r28.9b9a441
+pkgver=v0.16.r35.584eccca3f72
 pkgrel=1
 pkgdesc="A GTK+ based oscilloscope application for interfacing with various IIO devices"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,10 +19,10 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-master//g;s/-/./g'
 }
 
-prepare() {
+# prepare() {
     # change config.h prefix to "/usr"
-    sed -i 's/\/usr\/local\//\/usr/' "$srcdir/${pkgname%-git}/config.h"
-}
+    # sed -i 's/\/usr\/local\//\/usr/' "$srcdir/${pkgname%-git}/config.h"
+# }
 
 build() {
     cd "$srcdir/${pkgname%-git}"
