@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
-pkgver=1.3.3
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Bootstrap and package your project with Angular 15 and Electron 21 (Typescript + SASS + Hot Reload) for creating Desktop applications."
 arch=('x86_64')
@@ -14,12 +14,12 @@ source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/$
     "LICENSE.md::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/src/assets/icons/favicon.512x512.png"
     "${pkgname%-bin}.sh")
-sha256sums=('761b6ede31a2f107376857528f72ec7b16f674ffd719e46a71694dd680c9aa6f'
+sha256sums=('eca69c5516908c4ad4e1cee8a873cfb870ffd997447b187ee31b53505a535f88'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
             'c71e32374e069ce3ec885498bf61c11a16655db0818cc912e31a87dc579a3673')
 build() {
-    gendesk -f -n -q --categories "Development;Utility" --name "Angular Electron" --exec "${pkgname%-bin}"
+    gendesk -f -n -q --categories "Development" --name "Angular Electron" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
