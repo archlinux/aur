@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r471.c028037
+pkgver=r478.c011448
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
 	cd "$_pkgname"
 
 	MEM_GB_PER_JOB=1
-	read -r _ FREEMEM _ <<< "$(grep --fixed-strings 'MemFree' /proc/meminfo)"
+	read -r _ FREEMEM _ <<< "$(grep --fixed-strings 'MemAvailable' /proc/meminfo)"
 	JOBS=$(echo "scale=0 ; $FREEMEM / (1024 * 1024) / $MEM_GB_PER_JOB" | bc)
 
 	if [ $JOBS == 0 ]
