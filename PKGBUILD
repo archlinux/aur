@@ -5,7 +5,7 @@
 pkgname=trelby-git
 _pkgname=trelby
 pkgver=2.4.9.r0.gd02783b
-pkgrel=1
+pkgrel=2
 pkgdesc="The free, multiplatform, feature-rich screenwriting program!"
 url="https://github.com/limburgher/trelby"
 arch=('any')
@@ -13,7 +13,6 @@ license=('GPL2')
 provides=("${_pkgname}")
 depends=(
     'python'
-    'python-setuptools'
     'python-lxml'
     'python-wxpython'
     'python-reportlab'
@@ -21,6 +20,7 @@ depends=(
 )
 makedepends=(
     'git'
+    'python-setuptools'
     # 'libxslt'
 )
 source=('git+https://github.com/limburgher/trelby.git')
