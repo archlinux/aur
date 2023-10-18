@@ -2,7 +2,7 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.40.3-beta.4'
+_pkgver='1.40.4-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -21,7 +21,7 @@ source=(
 	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
 )
-sha512sums=('3d46f7626950e289a4a87a5556d42b3380b3ece626a2068e1375572de1bdf4d8131a58984b7f0bb0941cf67c9ec0f8eac7079e967a335400ea3f200b6f30df82'
+sha512sums=('1bc45da3aba25a32fe7ea8eb42658fb5099008cfd66ba2a9cfb3f153a5ecaf6805e59f1e15d4e1ea4578c69817ff4cc2259c8954cd1d5b17a7da42b79a90908e'
             '5a08541d194838b15b9bd7e58ea6998a8ffc3cb5ce2fe702d41d14dfd0a1becddfcee04f018a5fd9f0992d18b86c56d062f9b11ebda21e3b51815280198dc8da'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
             'e350765c6694133b7dec1e1e8b4a5fa610c2d18ee8ea15ecc3aa6e63fb9bb1c5f64f4d2a67cc2a38738f5c1c843cc3120edf42627b1079f1cb73a1919398b8db')
