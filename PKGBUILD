@@ -1,12 +1,12 @@
 # Maintainer: Vardan Tarayan <tarayanvardan@gmail.com>
 pkgname='solarbg-git'
-pkgrel=3
-pkgver="v1.1.0.r0.ga220299"
+pkgrel=4
+pkgver="v1.2.0.r0.gb4bd1bf"
 pkgdesc="Sun altitude based wallpapers "
 arch=('x86_64')
 url="https://github.com/VardanHeroic/solarbg"
 license=('GPL')
-depends=('nodejs')
+depends=('nodejs>=16.0.0')
 makedepends=('git' 'npm')
 optdepends=(
 	'feh: x11 tiling wm support',
