@@ -1,6 +1,6 @@
 # Maintainer: Lukas Werling <lukas@lwrl.de>
 pkgname=txr
-pkgver=272
+pkgver=291
 pkgrel=1
 pkgdesc="A data munging language."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ source=(
 	"http://www.kylheku.com/cgit/txr/snapshot/txr-${pkgver}.tar.bz2"
 	"ftdetect.vim"
 )
-sha256sums=('86e9bdc590c4882ae365e3425f920bbb23440c5395023990bc0f534fee92b0f5'
+sha256sums=('06d9373da9c96ba872a0cfa17d0abe12120c68bd9e77285fc71f7a2a9cbe69a0'
             'b884b3d595bcc45514d4a200ad11017d54506bcb9952497c5feaa2cf87871113')
 
 build() {
