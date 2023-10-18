@@ -1,7 +1,7 @@
 _name=arkenfox
 _repo=user.js
 pkgname=${_name}-${_repo}
-pkgver=117.0
+pkgver=118.0
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
@@ -18,9 +18,9 @@ source=(
 )
 
 sha256sums=(
-    '38c14451911901f2733f2456edbd39e468652fe1ef7e9e43aa22ac7aeb9ce328'
+    '40147a0bd3c1f7f0c6b9827d9e72fc86d05ca4a29ae572d9666d46377ca34b35'
     'aec6852c49f697a9f00229a028df73fdc98a3841f066d56280b5f7992d796e78'
-    'a5d3a8a43c6e78585220cbf0731d5da525c0b7d9d397f78d68364331eb33e219'
+    '56202bde446ec07735377a8e3e465460b19dc5640290ec8c88d8dea9fe807c8e'
 )
 
 prepare() {
