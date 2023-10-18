@@ -8,8 +8,6 @@ pkgbase = nm-tray
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = networkmanager-qt
-	provides = nm-tray
-	conflicts = nm-tray
 	source = nm-tray-0.5.0.tar.gz::https://github.com/palinek/nm-tray/archive/0.5.0.tar.gz
 	sha256sums = 3db9fdfcf274392f040ee2e7370be41aaae5d700277979f661718e6d893c5ff5
 
