@@ -3,8 +3,8 @@
 
 pkgname=qdirstat-git
 _pkgname=qdirstat
-pkgver=20220105.96ba7b6
-pkgrel=3
+pkgver=20230809.8174478
+pkgrel=1
 pkgdesc="GUI disk usage utility (successor to kdirstat)"
 arch=('i686' 'x86_64')
 url="https://github.com/shundhammer/qdirstat"

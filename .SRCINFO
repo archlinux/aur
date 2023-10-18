@@ -1,7 +1,7 @@
 pkgbase = qdirstat-git
 	pkgdesc = GUI disk usage utility (successor to kdirstat)
-	pkgver = 20220105.96ba7b6
-	pkgrel = 3
+	pkgver = 20230809.8174478
+	pkgrel = 1
 	url = https://github.com/shundhammer/qdirstat
 	arch = i686
 	arch = x86_64
