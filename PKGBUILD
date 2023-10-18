@@ -2,7 +2,7 @@
 
 pkgname='nedots'
 pkgdesc='A dotfile management tool'
-url=https://github.com/aidenlangley/nedots.go
+url='https://github.com/aidenlangley/nedots.go'
 arch=('any')
 license=('MIT')
 pkgver=0.1.1
