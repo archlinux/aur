@@ -3,7 +3,7 @@
 # check $srcdir/$_name-$pkgver/global.json for the dotnet (SDK and runtime) version required
 _name=Ryujinx
 pkgname=ryujinx
-pkgver=1.1.1020
+pkgver=1.1.1053
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -15,12 +15,13 @@ provides=($_name)
 conflicts=(ryujinx-git)
 options=(!strip)
 install=ryujinx.install
+_sdkver=7.0.401
 source=("$url/archive/$pkgver.tar.gz"
 		"ryujinx.install"
-		"https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.306/dotnet-sdk-7.0.306-linux-x64.tar.gz")
-b2sums=('5313db9d52d8093d1872f654a9e2ef90027199372782d8a005ed4428227c745334e0e851a452ebd0c9e75242e651c0186881220ba3c4f769c95648649bf0a5b6'
+		"https://dotnetcli.azureedge.net/dotnet/Sdk/$_sdkver/dotnet-sdk-$_sdkver-linux-x64.tar.gz")
+b2sums=('ab397eef6703c21afcc6521a5855708d5016cab056515aec1a03be9830d6346e54ac1ae69c2ae1c3a32259926406fc45218c99060e6a74886cad3f21afb7cba8'
         '5e7013a31c2163a8baa71bfc36ef2da3d7580b31966abb13b54271f23f3eda9e591d56c7d448a6c18933e1f21560bbd4d3db62f38f2aae37220ffb4318edfe49'
-        '540564f7d97f3341fb2ea7e90a2dc0ae4b66eb95dea0acd37a1fb53e9b5b151d7e42c0effd61902ed5c0812ad48364d0419c18c0ac3659c7bd3331f2a3a5cce2')
+        '69f1b10ffb3decdb81b99c08ecd3aeb8bed8415de1251e49d9cfe7cfe1d266e3a0807677bafd7e0be318c8ca5a70420fc911a9112e57b512114e7447e2eeccf1')
 
 build() {
 	cd $_name-$pkgver
