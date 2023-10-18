@@ -4,7 +4,7 @@
 
 pkgname=devpi-client
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Workflow commands for Python developers"
 arch=('any')
 url="https://doc.devpi.net/"
@@ -15,13 +15,11 @@ depends=(
   'devpi-common'
   'python-build'
   'python-iniconfig'
-  'python-pep517'
   'python-pkginfo'
   'python-platformdirs'
   'python-pluggy'
   'python-py')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-setuptools-changelog-shortener')
-changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('8bcb292d9bcf56ed43992ffbc4ab14559c6c6a05f8019ccaeeba9c5d3466d383')
 
