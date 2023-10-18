@@ -5,29 +5,23 @@ pkgbase = perl-web-scraper
 	url = https://metacpan.org/release/Web-Scraper
 	arch = any
 	license = PerlArtistic
-	makedepends = perl-test-simple>=0
-	makedepends = perl-extutils-makemaker>=6.59
-	makedepends = perl-test-requires>=0
-	makedepends = perl-test-base>=0
-	makedepends = perl-module-build-tiny>=0.039
-	depends = perl>=5.8.1
-	depends = perl-html-treebuilder-xpath>=0.08
-	depends = perl-html-tree>=3.23
-	depends = perl-yaml>=0
-	depends = perl-libwww>=5.827
-	depends = perl-scalar-list-utils>=0
-	depends = perl-html-selector-xpath>=0.03
-	depends = perl-uri>=0
+	license = GPL
+	checkdepends = perl-test-base>=0
+	checkdepends = perl-test-requires>=0
+	makedepends = perl-module-build-tiny
 	depends = perl-html-parser>=0
+	depends = perl-html-selector-xpath>=0.03
 	depends = perl-html-tagset>=0
-	depends = perl-xml-xpathengine>=0.08
+	depends = perl-html-tree>=0
+	depends = perl-html-treebuilder-xpath>=0.08
 	depends = perl-universal-require>=0
-	provides = perl-web-scraper-libxml=0.38
-	provides = perl-web-scraper-filter=0.38
+	depends = perl-uri>=0
+	depends = perl-xml-xpathengine>=0.08
+	depends = perl-yaml>=0
+	depends = perl-libwww>=0
+	depends = perl>=5.8.1
 	options = !emptydirs
-	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Web-Scraper-0.38.tar.gz
-	sha256sums = f95b6e5f8d7feebe116d05bf59a2b7cf1a51ed9d30bca80123430ec4567543bf
+	sha512sums = bce42ad903c473290d68a3b9a3a978f47d8d6388b63f6a7e91feb72d9213eb9a79948c70ad99b846eaa0c5fd43e390261e7779df64c768e32326de0a09e00b20
 
 pkgname = perl-web-scraper
-
