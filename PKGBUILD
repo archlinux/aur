@@ -2,9 +2,9 @@
 #
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=405102a76ff36b0d096f4e850eaddd50f7b6c7d3
+_commit=b7cc6bbc9a4b38672c84a09d7ba4db49fa9dd9de
 pkgname=penguins-eggs
-pkgver=9.6.4
+pkgver=9.6.6
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
