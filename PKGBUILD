@@ -12,7 +12,7 @@ source=('git+https://github.com/chainguard-dev/yam')
 md5sums=('SKIP')
 provides=($_shortpkgname)
 conflicts=($_shortpkgname)
-pkgver=r59.ba45c39
+pkgver=r61.7441587
 
 pkgver() {
     cd yam
