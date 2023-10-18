@@ -2,12 +2,12 @@
 
 pkgname='nedots'
 pkgdesc='A dotfile management tool'
-url='https://github.com/aidenlangley/nedots.go'
+url='https://git.sr.ht/~nedia/nedots.go'
 arch=('any')
 license=('MIT')
 pkgver=0.1.1
 pkgrel=1
-source=('nedots.go-v0.1.1.tar.gz::https://github.com/aidenlangley/nedots.go/archive/refs/tags/v0.1.1.tar.gz')
+source=('nedots.go-v0.1.1.tar.gz::https://git.sr.ht/~nedia/nedots.go/archive/v0.1.1.tar.gz')
 makedepends=('go')
 provides=('nedots')
 
