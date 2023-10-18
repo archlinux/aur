@@ -1,3 +1,12 @@
+2023-10-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.11.4-1:
+    [!] Fixed Steam breaking change introduced on 18.10.2023 which caused all ASFs to crash during establishing web session (@JustArchi #3029).
+    Added information about PublicIP that is connected to Steam CM servers in /Api/Bot ASF API endpoints (@JustArchi #3019).
+    Added EnableRiskyCardsDiscovery bot config property. You should not enable it unless your account is constantly unable to load badge pages (@JustArchi #3017 #3018).
+    Fixed possible infinite logging loop with Expired/Expired result (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-09-27 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.10.3-1:
     Relaxed security settings of our systemd service, which may be required for running ASF in some environments. Users are advised to systemctl daemon-reload && systemctl restart 'ArchiSteamFarm@*' after update, see issue for more details (@JustArchi #3014).
