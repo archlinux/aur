@@ -1,14 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=clvk
 pkgname=clvk-git
-pkgver=r601.d024913
+pkgver=r612.1b3b025
 pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
 license=('Apache')
 depends=("vulkan-icd-loader" "ocl-icd" "ncurses" "gcc-libs" "zstd" "zlib")
-makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" "spirv-tools" "spirv-llvm-translator")
+makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" "spirv-tools" "spirv-llvm-translator" "mold")
 provides=("clvk")
 conflicts=("clvk")
 options=("!lto")
@@ -47,6 +47,9 @@ prepare() {
 build() {
 	cd "$srcdir"
 	cmake -B build -S "$_pkgname" \
+	-DCMAKE_C_FLAGS="$CFLAGS -fuse-ld=mold" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -fuse-ld=mold" \
+	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
 	-DCLVK_BUILD_SPIRV_TOOLS=O \
 	-DSKIP_SPIRV_TOOLS_INSTALL=1 \
 	-DCLSPV_BUILD_TESTS=0 \
@@ -59,7 +62,7 @@ build() {
 package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/clvk64.icd" "$pkgdir/etc/OpenCL/vendors/clvk64.icd"
+	mkdir -p "$pkgdir/etc/OpenCL/vendors" && touch "$pkgdir/etc/OpenCL/vendors/clvk64.icd"
 
 	cat > "$pkgdir/etc/OpenCL/vendors/clvk64.icd" <<- EOF
 	/opt/clvk/libOpenCL.so
