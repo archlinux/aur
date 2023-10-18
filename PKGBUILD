@@ -1,57 +1,34 @@
-# Maintainer: Ben Booth <benwbooth@gmail.com>
+# Maintainer: a821
+# Contributor: Ben Booth <benwbooth@gmail.com>
+
 pkgname=bamtools-git
-pkgver=20110606
+pkgver=2.5.2.r4.g2bd8699
 pkgrel=1
-pkgdesc="API and toolkit for reading, writing, and manipulating BAM (genome alignment) files."
-arch=('i686' 'x86_64')
+pkgdesc="C++ API & command-line toolkit for working with BAM data"
+arch=('x86_64')
 url="https://github.com/pezmaster31/bamtools"
 license=('MIT')
-groups=()
-depends=()
-makedepends=('git' 'cmake')
+depends=('gcc-libs' 'jsoncpp' 'zlib')
+makedepends=('cmake' 'git')
 provides=('bamtools')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+conflicts=('bamtools')
+source=("git+${url}")
+sha256sums=('SKIP')
 
-_gitroot="https://github.com/pezmaster31/bamtools.git"
-_gitname="bamtools"
+pkgver() {
+    git -C bamtools describe --tags | sed -e 's/^v//;s/-/.r/;s/-/./g'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  mkdir build
-  pushd build
-  cmake ..
-  make
-  popd
+    cmake -B build -S bamtools \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON
+    cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  mkdir "$pkgdir/usr"
-  cp -r bin lib "$pkgdir/usr"
-
-  mkdir -p "$pkgdir/usr/include/bamtools"
-  cp -r include/* "$pkgdir/usr/include/bamtools"
+    make -C build DESTDIR="$pkgdir" install
+    install -Dm644 bamtools/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 } 
+
+# vim: set ts=4 sw=4 et:
