@@ -1,0 +1,15 @@
+pkgbase = cursus
+	pkgdesc = Writes your commands history into an sqlite db
+	pkgver = 2.0.24
+	pkgrel = 1
+	url = https://gitlab.com/n0r1sk/cursus
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	provides = cursus
+	conflicts = cursus-bin
+	options = !lto
+	source = https://gitlab.com/n0r1sk/cursus/-/archive/v2.0.24/cursus-v2.0.24.tar.bz2
+	sha256sums = f7cf3c4ad4ccf04979993822a7dd6f0d733b6d74599a611acc2832c265cad82e
+
+pkgname = cursus
