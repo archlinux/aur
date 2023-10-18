@@ -1,12 +1,13 @@
 pkgbase = redqu
 	pkgdesc = A media centric reddit client
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://github.com/port19x/redqu
 	arch = any
 	license = Unlicense
-	depends = babashka-bin
-	source = redqu-1.2.tar.gz::https://github.com/port19x/redqu/archive/refs/tags/v1.2.tar.gz
-	sha256sums = 4fa60a33e850988fecc73215aa7919b27d24b2fb5d3e084735d129eb62c7db5e
+	depends = python-requests
+	depends = mpv
+	source = redqu-2.0.tar.gz::https://github.com/port19x/redqu/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 76ac25db6c3abd1e37f50594bc89a1f7cf48ee422c9ee811d21a1ddcda48b72b
 
 pkgname = redqu
