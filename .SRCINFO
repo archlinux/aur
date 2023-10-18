@@ -18,7 +18,7 @@ pkgbase = polyorb
 	depends = openssl
 	source = https://github.com/AdaCore/PolyORB/archive/refs/heads/master.zip
 	source = patch-Makefile.in
-	sha256sums = aac21a3ccdff7e048c78ee683432bfb2c24af6f37ccf6de490fb2d7cd5fa98a2
+	sha256sums = d7f9bf7f96e64e147a1f150e50bf1e42fb30aaf6a8d9a2e35de72c8a9a45ad79
 	sha256sums = c0703efe44949b5adb1be9fcb44110a132fbca81dda690a6623bc326df94328a
 
 pkgname = polyorb
