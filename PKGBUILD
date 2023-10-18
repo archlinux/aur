@@ -1,24 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opencomic
 _pkgname=OpenComic
-pkgver=1.0.0_beta.3
+pkgver=1.0.0_beta.4
 pkgrel=1
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron"
 arch=('any')
 url="https://github.com/ollm/OpenComic"
 license=('GPL3')
 conflicts=("${pkgname}")
-depends=('bash' 'electron27' 'hicolor-icon-theme' 'pango' 'libpng' 'glib2' 'gcc-libs' 'freetype2' 'cairo' 'glibc' \
-    'giflib' 'libjpeg-turbo' 'librsvg' 'python' 'lib32-gcc-libs' 'lib32-glibc')
-makedepends=('asar' 'gendesk' 'npm' 'nodejs')
+depends=('bash' 'electron25' 'hicolor-icon-theme')
+makedepends=('asar' 'gendesk' 'npm>=8.9.0' 'nodejs' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('49ba7820362d702e551847d7a2bbea7fc5fdb71c4d6aa3dd17c8a63a65045be9'
-            'b1303ef6ac5e079c64e0d2b9186b8339fa949c61e7cb83630cbe42b0f203acd8')
-prepare() {
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
-}
+sha256sums=('c04d7ab0de3059b59e1943c02127774046ecf535c6e7aff6741bf7d00344b69c'
+            '96ad66376367ab59cb392adaaf54a3600858090db61d019863482fdd19c8e8c4')
 build() {
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
     npm install --force
     npm run build-appimage
