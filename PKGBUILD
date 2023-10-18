@@ -12,8 +12,6 @@ makedepends=(python-setuptools python-build python-installer python-wheel)
 _pkgtag="$_pkgname-$pkgver"
 _pkgtar="$_pkgtag.tar.gz"
 source=("$_pkgtar::$url/archive/v$pkgver.tar.gz")
-replaces=($_pkgname)
-conflicts=($_pkgname)
 noextract=("$_pkgtar")
 md5sums=('611733883348e08d8cf01383e1245d07')
 
