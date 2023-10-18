@@ -13,13 +13,24 @@ pkgname=(
     "${_pkgbase}-ux433fa-git"
     "${_pkgbase}-ux581l-git"
 )
-pkgver=r625.2ca724c
+pkgver=r630.3aa3a2b
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numberpad"
 arch=('any')
 url="https://github.com/asus-linux-drivers/asus-numberpad-driver"
 license=('GPL3')
-depends=('libevdev' 'python-libevdev' 'i2c-tools' 'python-numpy' 'python-evdev' 'xorg-xinput')
+depends=(
+    'ibus'
+    'libevdev'
+    'python-libevdev'
+    'i2c-tools'
+    'python-libevdev'
+    'python-inotify'
+    'python-xlib'
+    'python-numpy'
+    'python-evdev'
+    'xorg-xinput'
+)
 makedepends=('git')
 provides=("${_pkgbase}")
 replaces=('asus-touchpad-numpad-driver-git')
@@ -33,13 +44,19 @@ pkgver() {
 }
 
 _package() {
+    _config_dir="/usr/share/${_pkgbase}"
+    _log_dir="/var/log/asus-numberpad-driver"
     cd "${srcdir}/${_pkgbase}"
-    install -Dm755 asus_touchpad.py "${pkgdir}/usr/share/${_pkgbase}/asus_touchpad.py"
-    install -Dm644 "asus_touchpad.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad.service"
-    install -Dm644 "asus_touchpad.X11.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad.X11.service"
-    sed -i "s/\$LAYOUT/${model}/" "${pkgdir}/usr/lib/systemd/system/asus_touchpad.service"
-    sed -i "s/\$LAYOUT/${model}/" "${pkgdir}/usr/lib/systemd/system/asus_touchpad.X11.service"
-    install -Dm 644 -t "${pkgdir}/usr/share/${_pkgbase}/numpad_layouts" numpad_layouts/*.py
+    install -Dm755 numberpad.py "${pkgdir}/${_config_dir}/numberpad.py"
+    install -Dm644 "asus_numberpad_driver.service" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
+    install -Dm644 "asus_numberpad_driver.x11.service" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
+    sed -i "s#\$LAYOUT_NAME#${model}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
+    sed -i "s#\$LAYOUT_NAME#${model}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
+    sed -i "s#\$CONFIG_FILE_DIR_PATH#${_config_dir}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
+    sed -i "s#\$CONFIG_FILE_DIR_PATH#${_config_dir}#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
+    sed -i "s#\$ERROR_LOG_FILE_PATH#${_log_dir}/error.log#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.service"
+    sed -i "s#\$ERROR_LOG_FILE_PATH#${_log_dir}/error.log#" "${pkgdir}/usr/lib/systemd/system/asus_numberpad_driver.x11.service"
+    install -Dm 644 -t "${pkgdir}/${_config_dir}/layouts" layouts/*.py
     install -Dm 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE.md"
 }
 
