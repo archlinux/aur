@@ -4,7 +4,7 @@
 
 pkgname="vulkan-man-pages"
 pkgver=1.3.268
-pkgrel=2
+pkgrel=3
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
 url="https://github.com/KhronosGroup/Vulkan-Docs"
@@ -39,6 +39,7 @@ prepare() {
 	local _NL="\"\\\\n\""
 
 	sed -i "s/'<code>' + \(.*\) + '<\/code>'/ $_ESC + '\\\\#' + $_NL + $_ESC + \".IR \" + \1 + $_NL/" config/spec-macros/extension.rb
+	sed -i "s/'<strong .*>' + \(.*\) + '<\/strong>'/ $_ESC + '\\\\#' + $_NL + $_ESC + \".B \" + \1 + $_NL/" config/spec-macros/extension.rb
 }
 
 build() {
