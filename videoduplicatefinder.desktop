@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Video Duplicate Finder
+Comment=Video Duplicate Finder
+GenericName=Video Duplicate Finder
+Exec=/usr/bin/videoduplicatefinder
+Type=Application
+StartupNotify=false
+Categories=AudioVideo;Audio;Video;Utility;

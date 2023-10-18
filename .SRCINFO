@@ -1,0 +1,21 @@
+pkgbase = videoduplicatefinder-git
+	pkgdesc = Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity
+	pkgver = 3.0.x.r279.g313d89a
+	pkgrel = 1
+	url = https://github.com/0x90d/videoduplicatefinder
+	install = videoduplicatefinder-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	depends = ffmpeg
+	provides = videoduplicatefinder
+	conflicts = videoduplicatefinder
+	conflicts = videoduplicatefinder-bin
+	source = git+https://github.com/0x90d/videoduplicatefinder.git
+	source = videoduplicatefinder.desktop
+	sha256sums = SKIP
+	sha256sums = 948bb4abedeb7dd71fe41236a4e81a7f6ff3f817f2a9115dbf6843a7e685bd2a
+
+pkgname = videoduplicatefinder-git
