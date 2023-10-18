@@ -1,6 +1,6 @@
 pkgbase = charles-bin
 	pkgdesc = Web debugging proxy application (Standalone version using bundled Java)
-	pkgver = 4.6.4
+	pkgver = 4.6.5
 	pkgrel = 1
 	url = https://www.charlesproxy.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = charles-bin
 	depends = hicolor-icon-theme
 	provides = charles
 	conflicts = charles
-	source = https://www.charlesproxy.com/packages/apt/pool/main/c/charles-proxy/charles-proxy_4.6.4_amd64.deb
-	sha256sums = 1d1058958c5cd16af3aa7feaa20a61ed6fb811196fc5aa56868f66878a4f9c5f
+	source = https://www.charlesproxy.com/packages/apt/pool/main/c/charles-proxy/charles-proxy_4.6.5_amd64.deb
+	sha256sums = ce7c761ace2144b950ddb935ffff088e2126ab723be404ca9eaf1c46824a1233
 
 pkgname = charles-bin

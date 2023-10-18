@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=charles-bin
-pkgver=4.6.4
+pkgver=4.6.5
 pkgrel=1
 pkgdesc="Web debugging proxy application (Standalone version using bundled Java)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('charles')
 provides=('charles')
 depends=('hicolor-icon-theme')
 source=(https://www.charlesproxy.com/packages/apt/pool/main/c/charles-proxy/charles-proxy_${pkgver}_amd64.deb)
-sha256sums=('1d1058958c5cd16af3aa7feaa20a61ed6fb811196fc5aa56868f66878a4f9c5f')
+sha256sums=('ce7c761ace2144b950ddb935ffff088e2126ab723be404ca9eaf1c46824a1233')
 
 package() {
     cd "${pkgdir}"
