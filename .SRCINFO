@@ -10,7 +10,7 @@ pkgbase = fcitx5-tmux-git
 	depends = dbus
 	depends = fcitx5
 	depends = tmux
-	source = fcitx-tmux5-git::git+https://github.com/wengxt/fcitx5-tmux.git
+	source = fcitx5-tmux-git::git+https://github.com/wengxt/fcitx5-tmux.git
 	md5sums = SKIP
 
 pkgname = fcitx5-tmux-git
