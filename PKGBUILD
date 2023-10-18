@@ -13,7 +13,7 @@ depends=('zlib' 'glibc' 'bash' 'gcc-libs' 'libxml2' 'libxtst' 'freetype2' 'libjp
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb")
-sha256sums=('b6ccf1d31554de595c57f1887080e6ee42f377b8c9f1553a9c58d747df2b1a45')
+sha256sums=('68dbb6866a0dfdbbcd3fcb67092a2227ab98db6fd4aecca14d6e4475aeeaf1b3')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     find "${srcdir}" -type d -exec chmod 755 {} \;
