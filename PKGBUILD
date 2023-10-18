@@ -4,13 +4,13 @@ _emscripten_version="1.40.1"
 
 pkgname="gr-framework-js"
 pkgver="0.72.10"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("any")
 url="https://gr-framework.org"
 license=("MIT")
 depends=()
-makedepends=("git")
+makedepends=("git" "python")
 source=("https://github.com/sciapp/gr/archive/v${pkgver}.tar.gz" \
         "https://github.com/emscripten-core/emsdk/archive/refs/tags/${_emscripten_version}.tar.gz")
 sha256sums=("32c829660d4634f4097fb0a2729719071e201115900a193f608413850314f3ba" \
