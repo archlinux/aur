@@ -1,0 +1,15 @@
+pkgbase = kanha-git
+	pkgdesc = A web-app pentesting suite written in rust
+	pkgver = .v0.1.2.r2.g07e7b66
+	pkgrel = 1
+	url = https://github.com/pwnwriter/kanha
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = kanha
+	conflicts = kanha
+	source = git+https://github.com/pwnwriter/kanha
+	sha512sums = SKIP
+
+pkgname = kanha-git
