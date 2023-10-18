@@ -1,6 +1,6 @@
 # .woodpecker.yml
 when:
-  branch: [master]
+  branch: [master, dev]
 
 steps:
   main:
