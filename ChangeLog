@@ -734,3 +734,18 @@ Fixes:
 - We fixed the category and attendee dropdowns to avoid overflows on small windows.
 - The copy-pasting of meetings with attendees has been fixed.
 - The end-time picker of the event panel has been fixed. Previously it was showing the wrong event duration for events created in a different time zone.
+
+=== Morgen 3.1.0
+New Features:
+- Team Availability: Create a team, invite your colleagues to join, then pin those you meet with most to your desktop sidebar. You can then click on your colleagues' avatars to see their schedules overlaid with your own for easier meeting scheduling. Like other Morgen scheduling features, the availability shown is based on each person's 'busy calendars' and only shows others when you are free/busy (and not the details of your events). Set up your team in the newly launched Morgen Platform.
+
+Improvement :
+- You can now copy video conferencing links from an event with a right click -> Copy video link
+- The Menu bar now only displays events in the calendars that are toggled on, so you can easily decide what is important to see and what isn't
+ 
+Fixes:
+- We fixed a problem that occurred when creating and updating task lists when filters were enabled
+- We fixed a problem causing the Task Archive not to update when a task was deleted
+- We improved event merging logic to ensure correct titles and colors are displayed
+- The problem that prevented the removal of all notifications from Google Calendar events has been fixed
+
