@@ -12,7 +12,7 @@ makedepends=('unzip')
 source=("${url}/releases/download/v${pkgver}/tradew1nd-standalone-linux-x64-${pkgver}.zip" "https://raw.githubusercontent.com/${repo}/v${pkgver}/public/images/tradew1nd-win.png" "tradew1nd.desktop")
 md5sums=('6de2b02de315a65072a6034af29fa02b'
          '79678799c823191d022e248ff4bc6728'
-         '697735c50deae486df428afe78fc3661')
+         '8b4e1d18388868e02d068e32f11cf385')
 
 prepare() {
   cd $srcdir
