@@ -8,7 +8,6 @@ url="https://gitlab.com/disneyplusdesktop/application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-conflicts=("disneyplus-git" "disneyplus-bin")
 source=("https://gitlab.com/disneyplusdesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
