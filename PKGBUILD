@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=flutter-engine
-pkgver=3.13.6
+pkgver=3.13.8
 pkgrel=1
 pkgdesc='Engine for flutter applications.'
 url='https://github.com/flutter/engine'
