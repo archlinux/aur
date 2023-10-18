@@ -4,7 +4,7 @@
 
 pkgname="vulkan-man-pages"
 pkgver=1.3.268
-pkgrel=4
+pkgrel=5
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
 url="https://github.com/KhronosGroup/Vulkan-Docs"
@@ -59,6 +59,7 @@ package() {
 
 	find "$pkgdir/usr/share/man/man3" -name "*.3.gz" -exec gzip -d {} \+
 	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec sed -i 's/\(.\)\\#/\1\n\\#/' {} \+
+	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec sed -i 's/"C SPECIFICATION"/SYNOPSIS/' {} \+
 	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec gzip {} \+
 	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec rm {} \+
 
