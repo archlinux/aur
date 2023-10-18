@@ -1,5 +1,9 @@
 # mpf-check-bin .Changelog
 
+## 2023-10-17, mpf-check-bin 2.7.2-1
+
+* Bump to 2.7.2
+
 ## 2023-10-11, mpf-check-bin 2.7.1.1-2
 
 * Fix .Changelog.
