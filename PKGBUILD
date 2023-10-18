@@ -2,7 +2,7 @@
 
 _name=pyquil
 pkgname=python-$_name
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='A Python library for quantum programming using Quil.'
 arch=(any)
@@ -35,7 +35,7 @@ optdepends=(
 )
 makedepends=(python-build python-installer python-poetry python-wheel)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('3980f9293788f685d2cb4354a8f465d2a7b4e735853901b45ece36948b9a00f6d0c9d179285184cfd665e41015f55305cee5fd31e42726fbe4ab66587941c06c')
+b2sums=('eb362e3cb7f89fdd5755b88a715be2d042f8d7691be66d66c560d3f2d8e3457d2cc82c282582f730e2b1b432b04bb8f01eba9d921be51f7e01c552f5426cafa2')
 
 build() {
     cd $_name-$pkgver
