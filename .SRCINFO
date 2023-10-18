@@ -1,0 +1,19 @@
+pkgbase = sxmo-dmenu
+	pkgdesc = Dmenu for sxmo - works via using volume/power keys for seletion along with some other patches
+	pkgver = 5.0.14
+	pkgrel = 1
+	url = https://git.sr.ht/~mil/sxmo-dmenu
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libfontconfig.so
+	depends = libxft
+	depends = bash
+	depends = libxinerama
+	depends = libx11
+	provides = dmenu
+	conflicts = dmenu
+	source = sxmo-dmenu-5.0.14::https://git.sr.ht/~mil/sxmo-dmenu/archive/5.0.14.tar.gz
+	sha256sums = bbd6877b73db93b95f8bf15c33d5137a9a675ea335bf916d9318b84686284cea
+
+pkgname = sxmo-dmenu
