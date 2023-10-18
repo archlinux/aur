@@ -2,7 +2,7 @@
 
 pkgname=waybar-cava
 pkgver=0.9.22
-pkgrel=2
+pkgrel=3
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -61,9 +61,26 @@ build() {
     meson setup \
           --prefix=/usr \
           --buildtype=plain \
-          --auto-features=enabled \
+          --auto-features=disabled \
           --wrap-mode=nodownload \
           -Dexperimental=true \
+          -Ddbusmenu-gtk=enabled \
+          -Dlibinput=enabled \
+          -Dlibnl=enabled \
+          -Dupower_glib=enabled \
+          -Dmpris=enabled \
+          -Dpulseaudio=enabled \
+          -Dlibevdev=enabled \
+          -Dlibudev=enabled \
+          -Dmpd=enabled \
+          -Djack=enabled \
+          -Dgtk-layer-shell=enabled \
+          -Drfkill=enabled \
+          -Dsndio=enabled \
+          -Dsystemd=enabled \
+          -Dlogind=enabled \
+          -Dman-pages=enabled \
+          -Dwireplumber=enabled \
           -Dcava=enabled \
           -Dtests=disabled \
           build
