@@ -81,7 +81,7 @@ prepare() {
   cp ../config .config
 
   ### Stoneyridge patch ###
-  sed -i 's|CONFIG_DRM_AMDGPU=m|CONFIG_DRM_AMDGPU=y|g' .config
+  #sed -i 's|CONFIG_DRM_AMDGPU=m|CONFIG_DRM_AMDGPU=y|g' .config
   #########################
 
   make olddefconfig
