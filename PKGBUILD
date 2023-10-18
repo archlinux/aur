@@ -14,7 +14,7 @@ pkgname=(
     'tcl-simpleitk'
 )
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
@@ -46,7 +46,6 @@ makedepends=(
 optdepends=()
 source=("git+https://github.com/SimpleITK/SimpleITK#tag=v${pkgver}")
 sha256sums=('SKIP')
-_lua_version=$(lua -v | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -64,13 +63,13 @@ prepare() {
     fi
 
 
+    local _java_home
     _java_home=$(find '/usr/lib/jvm/' -name "$(archlinux-java get)")
 
     JAVA_HOME=$_java_home \
         cmake \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_CXX_FLAGS:STRING="-std=c++17" \
-            -DLUA_VERSION_STRING:STRING="$_lua_version" \
             -DBUILD_SHARED_LIBS:BOOL=ON \
             -DBUILD_TESTING:BOOL=OFF \
             -DBUILD_EXAMPLES:BOOL=OFF \
@@ -170,6 +169,9 @@ package_java-simpleitk() {
 
 package_ruby-simpleitk() {
     depends=('simpleitk' 'ruby')
+
+    local _lua_version
+    _lua_version=$(lua -v | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
 
     install -Dm755 \
         "${srcdir}/${_pkgname}/build/Wrapping/Ruby/lib/simpleitk.so" \
