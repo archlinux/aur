@@ -1,6 +1,6 @@
 pkgbase = aws-sam-cli
 	pkgdesc = CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM
-	pkgver = 1.98.0
+	pkgver = 1.99.0
 	pkgrel = 1
 	url = https://github.com/aws/aws-sam-cli
 	arch = any
@@ -38,8 +38,10 @@ pkgbase = aws-sam-cli
 	depends = python-mypy-boto3-stepfunctions
 	depends = python-mypy-boto3-sts
 	depends = python-mypy-boto3-xray
+	depends = python-mypy-boto3-kinesis
+	depends = python-mypy-boto3-sqs
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/a/aws-sam-cli/aws-sam-cli-1.98.0.tar.gz
-	sha256sums = 4fb4f2c24ceb7fb86d5db25c714ccbc5f40fa7a2a4f664202396653ce3a6397e
+	source = https://files.pythonhosted.org/packages/source/a/aws-sam-cli/aws-sam-cli-1.99.0.tar.gz
+	sha256sums = a3adebd8368145a1c19fd2d6ed6ed54de1d5d7629a9982a5c35031e6762b4e91
 
 pkgname = aws-sam-cli
