@@ -1,4 +1,4 @@
 post_install() {
     echo "The program will attempt to save settings to a file at \"/opt/videoduplicatefinder\" which is read only."
-    echo "Use \"Save to file\" to save settings a different location and manually load it afterward."
+    echo "Use \"Save to file\" to save setting to a different location and manually load it afterward."
 }
