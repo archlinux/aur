@@ -69,4 +69,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
 	cp $srcdir/set_paths.sh $pkgdir/opt/openmc
+	cp $srcdir/openmc.sh $pkgdir/opt/openmc
 }

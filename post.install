@@ -1,7 +1,7 @@
 post_install() {
 # installed to opt, inform user how to set paths
-_path_msg="$'\n'INFO: OpenMC and its dependencies were installed to the non-standard location /opt. Run sudo bash \
-	           /opt/openmc/set_paths.sh before attempting to use openmc$'\n'."
+_path_msg="\nINFO: OpenMC and its dependencies were installed to the non-standard location /opt. Run sudo bash \
+	           /opt/openmc/set_paths.sh before attempting to use openmc\n."
 
 echo -e $_path_msg
 }
