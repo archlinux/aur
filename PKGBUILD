@@ -1,7 +1,7 @@
 # Maintainer: jhossbach <julian dot hossbach at gmx dot de>
 pkgname=python-lsp-ruff
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="python-lsp-server plugin for extensive and fast linting using ruff"
 arch=(any)
 license=('MIT')

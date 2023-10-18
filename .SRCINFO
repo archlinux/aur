@@ -1,7 +1,7 @@
 pkgbase = python-lsp-ruff
 	pkgdesc = python-lsp-server plugin for extensive and fast linting using ruff
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-lsp/python-lsp-ruff
 	arch = any
 	license = MIT
