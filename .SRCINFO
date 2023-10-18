@@ -6,7 +6,7 @@ pkgbase = dbeaver-arm
 	install = dbeaver-arm.install
 	arch = aarch64
 	license = Apache
-	depends = jre-openjdk-headless
+	depends = java-runtime>=17
 	depends = gtk3
 	depends = gtk-update-icon-cache
 	depends = libsecret
