@@ -41,11 +41,12 @@ pkgname='mirthconnect'
 #pkgver='4.1.1.b303'
 #pkgver='4.2.0.b2825'
 #pkgver='4.3.0.b2886'
-pkgver='4.4.0.b2948'
-# JSCH Updates https://github.com/mwiede/jsch/releases
+#pkgver='4.4.0.b2948'
+pkgver='4.4.1.b310'
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen'
 arch=('x86_64')
+# JSCH Updates https://github.com/mwiede/jsch/releases
 url='https://www.nextgen.com/products-and-services/integration-engine'
 _giturl='https://github.com/nextgenhealthcare/connect'
 license=('MPL')
@@ -69,13 +70,13 @@ source=(
   '0000b-mirth-disable-SSLv2Hello.patch'
   "${_source[@]}"
 )
-md5sums=('5cdf304f90d495d75737a524f99f3ad8'
+md5sums=('860985eecdbda3aa32ca28c67eb1ee34'
          '426de9435b21e90df7ae044510938270'
          'f1b18ae896b93be65a2e9b276f12c16f'
          '4d2d8d277e8f7227b8c5642fbbcdadfd'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
          '15600619ce3917f4443ddf610d553da2')
-sha256sums=('17ceead28e02a4327ceffcdd9c2bafdba43fc7d3c78d5be537d1e792874de210'
+sha256sums=('e5ebb7ca5a618f8882e91f7a04b0d99db1157fb27bec79a65f510eb6ac2f8c2a'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '254c858572a4949c09726859d3f790d7bee535b8dbea184e4f6679d3b7c3b269'
             '92c6a4e56149b9afb24491af692b2cb1150b9b5803c596e01c6ebe0894543588'
