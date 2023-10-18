@@ -1,8 +1,8 @@
 pkgbase = microchip-mplabxc32-bin
 	pkgdesc = Microchip's MPLAB XC32 C compiler toolchain for all of their 32bit microcontrollers
-	pkgver = 4.21
+	pkgver = 4.35
 	pkgrel = 1
-	url = https://www.microchip.com/development-tools/downloads-archive
+	url = https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers
 	install = microchip-mplabxc32-bin.install
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = microchip-mplabxc32-bin
 	options = emptydirs
 	options = !zipman
 	options = staticlibs
-	source = https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc32-v4.21-full-install-linux-x64-installer.run
-	sha256sums = 2c69429ecc0c2adb76c94691770543f91d4a0c4609c1338ccf41c69b6d10bd11
+	source = https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc32-v4.35-full-install-linux-x64-installer.tar
+	sha256sums = 56004fd681edd6513f8cbc5e88e2d453b9ba1a68dd063262649e9a8b540d2709
 
 pkgname = microchip-mplabxc32-bin
