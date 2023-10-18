@@ -1,0 +1,15 @@
+pkgbase = ark-pixel-font
+	pkgdesc = Open source Pan-CJK pixel font / 开源的泛中日韩像素字体 (All size and styles)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/TakWolf/ark-pixel-font
+	arch = any
+	license = OFL
+	depends = ark-pixel-font-10px-monospaced
+	depends = ark-pixel-font-10px-proportional
+	depends = ark-pixel-font-12px-monospaced
+	depends = ark-pixel-font-12px-proportional
+	depends = ark-pixel-font-16px-monospaced
+	depends = ark-pixel-font-16px-proportional
+
+pkgname = ark-pixel-font
