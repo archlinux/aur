@@ -61,7 +61,6 @@ package() {
 	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec sed -i 's/\(.\)\\#/\1\n\\#/' {} \+
 	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec sed -i 's/"C SPECIFICATION"/SYNOPSIS/' {} \+
 	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec gzip {} \+
-	find "$pkgdir/usr/share/man/man3" -name "*.3" -exec rm {} \+
 
 	install -m644 config/copyright-ccby.adoc "$pkgdir/usr/share/licenses/$pkgname/copyright-ccby.adoc"
 	install -m644 config/copyright-spec.adoc "$pkgdir/usr/share/licenses/$pkgname/copyright-spec.adoc"
