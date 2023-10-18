@@ -12,7 +12,7 @@ depends=('vim')
 optdepends=('npm: for installing coc extensions'
             'yarn: for installing coc extensions'
             'watchman: for workspace_didChangeWatchedFiles feature')
-makedepends=('yarn' 'nodejs-lts-gallium')
+makedepends=('yarn' 'nodejs-lts-hydrogen')
 provides=('vim-coc')
 conflicts=('vim-coc')
 source=("https://github.com/neoclide/coc.nvim/archive/${_hash}.zip")
