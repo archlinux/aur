@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3382.15f170f0
+pkgver=r3434.1e7e67be4
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -253,10 +253,6 @@ package() {
 
 	cp -r "build/${BUILDPRESET}/bin/Release/"* "$pkgdir/opt/vita3k/"
 	ln -s "/opt/vita3k/Vita3K" "$pkgdir/usr/bin/vita3k"
-
-	# These folders needs 777 permissions because vita3k creates files in them
-	chmod 777 "$pkgdir/opt/vita3k/"
-	chmod 777 "$pkgdir/opt/vita3k/data"
 
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	install -Dm644 "data/image/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
