@@ -24,7 +24,7 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
 pkgver=2.06
-pkgrel=5
+pkgrel=6
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -34,7 +34,6 @@ install="${pkgname%-*}.install"
 options=('!makeflags')
 
 conflicts=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub-legacy' 'grub-git')
-replaces=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 provides=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 
 makedepends=('autogen' 'bdf-unifont' 'git' 'help2man'

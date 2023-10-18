@@ -1,7 +1,7 @@
 pkgbase = grub-silent
 	pkgdesc = GNU GRand Unified Bootloader (2) [without welcome and kernel messages]
 	pkgver = 2.06
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
 	arch = x86_64
@@ -36,11 +36,6 @@ pkgbase = grub-silent
 	conflicts = grub-efi-x86_64
 	conflicts = grub-legacy
 	conflicts = grub-git
-	replaces = grub
-	replaces = grub-common
-	replaces = grub-bios
-	replaces = grub-emu
-	replaces = grub-efi-x86_64
 	options = !makeflags
 	backup = etc/default/grub
 	source = https://ftp.gnu.org/gnu/grub/grub-2.06.tar.xz
@@ -65,4 +60,3 @@ pkgbase = grub-silent
 	sha256sums = 4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2
 
 pkgname = grub-silent
-
