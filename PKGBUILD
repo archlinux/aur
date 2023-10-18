@@ -22,10 +22,10 @@ build() {
 
 package() {
   cd nedots.go-0.1.1 || return
-  install -Dm 755 nedots -t ""/usr/bin
-  install -Dm 644 nedots-completions.bash ""/usr/share/bash-completion/completions/nedots
-  install -Dm 644 nedots-completions.zsh  ""/usr/share/zsh/site-functions/_nedots
-  install -Dm 644 nedots-completions.fish ""/usr/share/fish/vendor_completions.d/nedots.fish
+  install -Dm 755 nedots -t \"\"/usr/bin
+  install -Dm 644 nedots-completions.bash \"\"/usr/share/bash-completion/completions/nedots
+  install -Dm 644 nedots-completions.zsh  \"\"/usr/share/zsh/site-functions/_nedots
+  install -Dm 644 nedots-completions.fish \"\"/usr/share/fish/vendor_completions.d/nedots.fish
 }
 
 sha256sums=('06e503ec731a337d352e9ccc97f39cda0de84038a2689f6bf91e405440dd8b67')
