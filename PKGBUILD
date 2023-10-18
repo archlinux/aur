@@ -5,9 +5,9 @@ pkgdesc='A dotfile management tool'
 url='https://git.sr.ht/~nedia/nedots.go'
 arch=('any')
 license=('MIT')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-source=('nedots.go-v0.1.1.tar.gz::https://git.sr.ht/~nedia/nedots.go/archive/v0.1.1.tar.gz')
+source=('nedots.go-v0.1.2.tar.gz::https://git.sr.ht/~nedia/nedots.go/archive/v0.1.2.tar.gz')
 makedepends=('go')
 provides=('nedots')
 
@@ -27,4 +27,4 @@ package() {
   install -Dm 644 nedots-completions.fish "$pkgdir"/usr/share/fish/vendor_completions.d/nedots.fish
 }
 
-sha256sums=('06e503ec731a337d352e9ccc97f39cda0de84038a2689f6bf91e405440dd8b67')
+sha256sums=('0b4ae29a3a7eb6c30256cf5bc38c29cb1ad0dbd4d76d852e67846b71a9d81af5')
