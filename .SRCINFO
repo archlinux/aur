@@ -1,7 +1,7 @@
 pkgbase = python-trogon
 	pkgdesc = Automatically generate a Textual TUI for your Click CLI
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/trogon
 	arch = any
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = python-trogon
 	makedepends = python-wheel
 	makedepends = python-validate-pyproject
 	makedepends = python-setuptools
+	makedepends = python-poetry-core
 	depends = python
 	depends = python-click
 	depends = python-textual

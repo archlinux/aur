@@ -3,7 +3,7 @@
 pkgname=python-trogon
 _name=${pkgname#python-}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Automatically generate a Textual TUI for your Click CLI"
 arch=('any')
@@ -21,7 +21,8 @@ makedepends=(python-build
     python-installer
     python-wheel
     python-validate-pyproject
-    python-setuptools)
+    python-setuptools
+    python-poetry-core)
 checkdepends=(python-pytest
     python-pytest-mypy)
 options=('!strip')
