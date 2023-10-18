@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('dotnet-runtime' 'ffmpeg')
 makedepends=('git' 'dotnet-sdk')
 source=("git+${url}.git" 'videoduplicatefinder.desktop')
-sha256sums=('SKIP' '948bb4abedeb7dd71fe41236a4e81a7f6ff3f817f2a9115dbf6843a7e685bd2a')
+sha256sums=('SKIP' 'c0e14e0349207eee2c40b9e0d576128cf7d773ef4a487500c8b558095ef5f675')
 install="${pkgname}.install"
 
 pkgver() {
