@@ -1,6 +1,6 @@
 pkgbase = artix-linux-stoneyridge
 	pkgdesc = Linux kernel for Stoneyridge Chromebooks
-	pkgver = 6.5.7.artix1
+	pkgver = 6.5.7.artix2
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
@@ -19,9 +19,12 @@ pkgbase = artix-linux-stoneyridge
 	makedepends = imagemagick
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
+	provides = artix-linux-stoneyridge=linux
+	provides = artix-linux-stoneyridge=linux.headers
+	provides = artix-linux-stoneyridge=linux.docs
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.7.tar.xz
-	source = https://github.com/archlinux/linux/releases/download/v6.5.7-arch1/linux-v6.5.7-arch1.patch.zst
+	source = https://github.com/archlinux/linux/releases/download/v6.5.7-arch2/linux-v6.5.7-arch2.patch.zst
 	source = emmc.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886

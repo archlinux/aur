@@ -1,7 +1,7 @@
 # Maintainer: Chimmie Firefly <gameplayer2019pl@tutamail.com>
 
 _ver=6.5.7
-_rel=1
+_rel=2
 _arch=arch${_rel}
 _artix=artix${_rel}
 
@@ -55,7 +55,7 @@ b2sums=('SKIP'
         'SKIP')
 
 export KBUILD_BUILD_HOST=artixlinux
-export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_USER=stoneyridge
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
@@ -63,7 +63,7 @@ prepare() {
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "linux-stoneyridge" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -127,7 +127,7 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "linux-stoneyridge" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
@@ -243,6 +243,13 @@ pkgname=(
   "$pkgbase-headers"
   "$pkgbase-docs"
 )
+
+provides=(
+  "${pkgbase}=linux"
+  "${pkgbase-headers}=linux.headers"
+  "${pkgbase-docs}=linux.docs"
+)
+
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
