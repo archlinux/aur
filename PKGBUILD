@@ -3,7 +3,7 @@
 
 pkgname=websockify
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebSockets support for any application/server"
 license=('LGPL3')
 arch=('any')
@@ -22,10 +22,12 @@ build() {
   cd "$pkgname-$pkgver"
 
   python setup.py build
+  make
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 rebind.so "$pkgdir"/usr/lib/websockify/rebind.so
 }
