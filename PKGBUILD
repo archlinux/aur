@@ -22,6 +22,7 @@ license=('MIT')
 makedepends=(
   'git'
   'cmake'
+  'ninja'
   'gcc-libs'
   'glibc'
   'cxxopts'
@@ -194,6 +195,7 @@ build() {
       -Donnxruntime_CUDA_HOME=/opt/cuda
       -Donnxruntime_CUDNN_HOME=/usr
       -Donnxruntime_USE_NCCL=ON
+      -Donnxruntime_NVCC_THREADS=1
     )
   fi
 
@@ -206,7 +208,8 @@ build() {
 
   cmake -S onnxruntime/cmake -B build \
   "${_cmake_args[@]}" \
-  "$@"
+  "$@" \
+  -G Ninja
 
   LC_ALL=C cmake --build build #-v
 

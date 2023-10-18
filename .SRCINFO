@@ -7,6 +7,7 @@ pkgbase = python-onnxruntime
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = gcc-libs
 	makedepends = glibc
 	makedepends = cxxopts
