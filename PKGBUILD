@@ -131,8 +131,6 @@ package() {
   rm -rf "$pkgdir/usr/lib/pkgconfig"
   # FIXME: remove after xdg-desktop-portal-hyprland disowns hyprland-portals.conf
   rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
-  # FIXME: meson.build shall install version.h
-  install -Dm0644 -t "$pkgdir/usr/include/hyprland/src" src/version.h
 
   # license
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
