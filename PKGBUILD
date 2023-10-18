@@ -14,7 +14,7 @@ install=$pkgname.install
 # Set to true to debug yuzu
 # To get a back trace, do $ gdb -ex "handle SIGSEGV nostop"/usr/bin/yuzu
 # I recommned saying use to debuginfod so you can get better backtraces
-_debug=true 
+_debug=false 
 if [ "$_debug" = false ]
 then
     options=("lto" "strip")
