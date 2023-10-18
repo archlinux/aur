@@ -10,7 +10,7 @@ license=('GPL3')
 groups=()
 depends=('python' 'python-tqdm' 'python-google-api-python-client'
          'python-oauth2client' 'python-google-auth-oauthlib' 'notmuch>=0.25')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-pip' 'python-installer' 'python-wheel')
 optdepends=()
 provides=("${pkgname%-git}" "gmai${pkgname%-git}" "gmai${pkgname}")
 conflicts=("${pkgname%-git}" "gmai${pkgname%-git}" "gmai${pkgname}")
@@ -35,9 +35,15 @@ pkgver() {
     )
 }
 
+build () {
+    cd "$srcdir/$pkgname"
+    pip wheel --no-deps -w "dists" .
+}
+
 package() {
     cd "$srcdir/$pkgname"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    # python setup.py install --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir/" dists/*.whl
 }
 
 # vim:set ts=4 sw=4 et:
