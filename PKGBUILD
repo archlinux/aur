@@ -5,7 +5,7 @@
 _package=net.downloadhelper.coapp
 pkgname=vdhcoapp-bin
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Video DownloadHelper browser add-on, precompiled binary version"
 provides=("vdhcoapp=${pkgver}")
 conflicts=('vdhcoapp')
