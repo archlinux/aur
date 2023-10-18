@@ -4,19 +4,19 @@
 
 pkgname=trelby
 pkgver=2.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The free, multiplatform, feature-rich screenwriting program!"
 arch=('any')
 url="https://github.com/limburgher/trelby"
 license=('GPL2')
 depends=(
        'python'
-       'python-setuptools'
        'python-lxml'
        'python-wxpython'
        'python-reportlab'
        # 'python-pytest'
-  )
+)
+makedepends=('python-setuptools')
 conflicts=(trelby-git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/limburgher/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         ${pkgname}.xml)
