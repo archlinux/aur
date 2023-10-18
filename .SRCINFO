@@ -1,6 +1,6 @@
 pkgbase = astrodmx-capture
 	pkgdesc = AstroDMx Capture Astronomical Imaging
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://www.astrodmx-capture.org.uk/
 	install = astrodmx-capture.install
@@ -33,7 +33,7 @@ pkgbase = astrodmx-capture
 	depends = cairo
 	depends = libwebcam-git
 	options = !strip
-	source = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/x86-64/astrodmx-capture_2.3.1_x86-64-manual.tar.gz
-	sha256sums = e6700786ba85ed86352d1c460a0249f801ec93fd5fa2d02999613af51fc9d2c4
+	source = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/x86-64/astrodmx-capture_2.3.2_x86-64-manual.tar.gz
+	sha256sums = 13ca09178d7e61e8ab124fa654249e7faec70c0918c7cc75a80a5ce76ea62c7a
 
 pkgname = astrodmx-capture
