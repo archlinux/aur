@@ -1,5 +1,8 @@
+# Maintainer:
 # Contributor: Jan Fader <jan.fader@web.de>
-pkgname=mp3rename
+
+_pkgname="mp3rename"
+pkgname="$_pkgname"
 pkgver=0.6
 pkgrel=13
 pkgdesc="Rename mp3 files based on id3tags"
@@ -10,12 +13,16 @@ url="https://salsa.debian.org/debian/mp3rename"
 
 depends=('glibc')
 
-provides=("$pkgname")
-conflicts=("$pkgname")
+if [ x"$pkgname" != x"$_pkgname" ] ; then
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+fi
 
+_pkgsrc="$_pkgname-$pkgver.orig"
+_dl_url="http://ftp.debian.org/debian/pool/main/m/mp3rename"
 source=(
-  "http://ftp.debian.org/debian/pool/main/m/mp3rename/${pkgname}_${pkgver}.orig.tar.gz"
-  "http://ftp.debian.org/debian/pool/main/m/mp3rename/${pkgname}_${pkgver}-${pkgrel}.debian.tar.xz"
+  "$_dl_url/${_pkgname}_$pkgver.orig.tar.gz"
+  "$_dl_url/${_pkgname}_$pkgver-${pkgrel%%.*}.debian.tar.xz"
   "mp3rename-jf-long-options.patch"
 )
 
@@ -26,10 +33,11 @@ sha256sums=(
 )
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver}.orig"
+  cd "$_pkgsrc"
 
   # apply debian patches
-  xargs -a "$srcdir/debian/patches/series" -d "\n" -i -P 1 -- patch -p 1 -i "$srcdir/debian/patches/{}"
+  xargs -a "$srcdir/debian/patches/series" -d "\n" -i -P 1 \
+    -- patch -p 1 -i "$srcdir/debian/patches/{}"
 
   # apply long-options patch
   patch -p 1 -i "$srcdir/mp3rename-jf-long-options.patch"
@@ -38,15 +46,15 @@ build() {
   make || return 1
 
   # compress man page
-  gzip "$srcdir/debian/${pkgname}.1"
+  gzip "$srcdir/debian/$_pkgname.1"
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver}.orig"
+  cd "$_pkgsrc"
 
   # install binary
   PREFIX="$pkgdir" make install
 
   # install man page
-  install -D -m644 "$srcdir/debian/${pkgname}.1.gz" -t "${pkgdir}/usr/share/man/man1"
+  install -D -m644 "$srcdir/debian/$_pkgname.1.gz" -t "$pkgdir/usr/share/man/man1"
 }
