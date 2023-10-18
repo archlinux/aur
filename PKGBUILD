@@ -1,7 +1,7 @@
 
 # Maintainer: noTmeDev <notmedev28@gmail.com>
 pkgname='termtree'
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A file tree view"
 arch=('x86_64')
