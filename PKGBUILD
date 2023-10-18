@@ -1,4 +1,5 @@
 #Maintainer: Carl Malmgren <cral@codegrotto.com>
+#Contributor: Julius Schumacher <juliusschumacher at gmail dot com>
 pkgname=eterm8
 pkgver=1.04
 pkgrel=1
