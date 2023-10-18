@@ -1,0 +1,24 @@
+pkgbase = francis
+	pkgdesc = Track your time
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://invent.kde.org/utilities/francis
+	arch = x86_64
+	arch = aarch64
+	license = BSD2
+	license = BSD3
+	license = CPPL:0
+	license = GPL3-or-later
+	license = LGPL2-or-later
+	license = LGPL2.1-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = ki18n5
+	depends = kirigami-addons5
+	depends = qt5-networkauth
+	depends = qt5-quickcontrols
+	depends = qt5-svg
+	source = git+https://invent.kde.org/utilities/francis.git#tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = francis
