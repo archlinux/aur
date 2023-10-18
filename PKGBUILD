@@ -2,8 +2,8 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1591.r0.g378d884
-pkgrel=2
+pkgver=1592.r0.g8d4ec46
+pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
 url='https://github.com/yuzu-emu/yuzu-mainline'
@@ -11,18 +11,23 @@ license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git' 'yuzu')
 install=$pkgname.install
-_debug=false # set to true to debug yuzu. Whenever debugging with gdb, remember to enter `handle SIGSEGV nostop` before `run`, as yuzu uses SIGSEGV for memory access!!!!!!!!`
+# Set to true to debug yuzu
+# To get a back trace, do $ gdb -ex "handle SIGSEGV nostop"/usr/bin/yuzu
+# I recommned saying use to debuginfod so you can get better backtraces
+_debug=true 
 if [ "$_debug" = false ]
 then
     options=("lto" "strip")
     _cmake_build_type=Release
     _yuzu_lto=ON
+    _fast_ld=OFF
     CFLAGS+=" -fno-fat-lto-objects"
     CXXFLAGS+=" -fno-fat-lto-objects"
 else
-    options=("!lto" "!strip" "debug")
+    options=("!lto" "!strip" "debug" "!buildflags")
     _cmake_build_type=Debug
     _yuzu_lto=OFF
+    _fast_ld=ON
 fi
 
 
@@ -50,7 +55,8 @@ makedepends=('boost'
              'robin-map'
              'vulkan-headers'
              'rapidjson'
-             'spirv-headers')
+             'spirv-headers'
+             'mold')
 optdepends=("qt5-wayland: Wayland support")
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/lsalzman/enet.git'
@@ -172,6 +178,7 @@ build() {
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
       -DYUZU_USE_BUNDLED_QT=OFF \
       -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+      -DYUZU_USE_FASTER_LD=$_fast_ld \
       -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
       -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON \
       -DYUZU_TESTS=OFF \
