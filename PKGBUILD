@@ -1,8 +1,9 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: adrusi <adrian at adrusi dot com>
 
-pkgname=terra-bin
-pkgver=1.1.0
+_pkgname="terra"
+pkgname="$_pkgname-bin"
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Low-level system programming language designed to interoperate seamlessly with Lua'
 arch=('x86_64')
@@ -11,19 +12,24 @@ license=('MIT')
 
 options=(!strip !debug)
 
-provides=(terra)
-conflicts=(terra)
+if [ x"$pkgname" != x"$_pkgname" ] ; then
+  provides=(terra)
+  conflicts=(terra)
+fi
 
-_commit='be89521'
+_commit='094c5ad'
+
+_pkgsrc="terra-Linux-$CARCH-$_commit"
+_pkgext="tar.xz"
 source=(
-  "$url/releases/download/release-$pkgver/terra-Linux-$CARCH-$_commit.tar.xz"
+  "$_pkgname-$pkgver-$_commit.$_pkgext"::"$url/releases/download/release-$pkgver/terra-Linux-$CARCH-$_commit.$_pkgext"
 )
 sha256sums=(
-  'ee2b13715704da41b0d475b44e1e0432f4395edff44b535353652bda8f6610b1'
+  '6c75e69f50b50153987a655b51ebfc352155946d077b7808f5465b23a24a501d'
 )
 
 package() {
-  cd "$srcdir/terra-Linux-$CARCH-$_commit"
+  cd "$_pkgsrc"
 
   mkdir -p "$pkgdir"/usr/{lib,include/terra}
   install -Dm644 include/terra/* "$pkgdir/usr/include/terra"
