@@ -120,14 +120,16 @@ build() {
 package() {
   cd Hyprland
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build \
+    --destdir "$pkgdir" \
+    --skip-subprojects hyprland-protocols
 
   rm -rf "$pkgdir/usr/include/hyprland/wlroots/wlr"
   ln -sf . "$pkgdir/usr/include/hyprland/wlroots/wlr"
   # resolve conflicts with system wlr
   rm -f "$pkgdir/usr/lib/libwlroots.so"
-  rm -f "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
-  # resolve conflicts with xdg-desktop-portal-hyprland from repo
+  rm -rf "$pkgdir/usr/lib/pkgconfig"
+  # FIXME: remove after xdg-desktop-portal-hyprland disowns hyprland-portals.conf
   rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
   # FIXME: meson.build shall install version.h
   install -Dm0644 -t "$pkgdir/usr/include/hyprland/src" src/version.h
