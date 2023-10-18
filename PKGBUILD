@@ -4,7 +4,7 @@
 
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
-pkgver=6.06
+pkgver=6.08
 pkgrel=1
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
@@ -18,8 +18,7 @@ source=(http://www.jwz.org/xscreensaver/${_srcname}-${pkgver}.tar.gz
 	LICENSE
 	migrate-xscreensaver-config.sh
 	xscreensaver-config.xsl)
-#sha1sums=('86eec2287f7b4555e2317df93f0d6cf23c02f52c'
-sha1sums=('fa7e1da709972c640a913d42039ba8609ed6218e'
+sha1sums=('a7e75a2ae1110354ffaa639f4c38ec0506cabf2b'
           '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
           '19195ef59f0dbc61c6ed599a968213a8f0a7a5d4'
           'e561e36c7bae61c3f5da65e4fb19a22e698f4584')
