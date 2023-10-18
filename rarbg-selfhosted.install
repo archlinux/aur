@@ -1,0 +1,8 @@
+post_install() {
+  echo
+	echo "You need to obtain a copy of the RARBG SQLite database"
+	echo "and move it to /usr/share/rarbg-selfhosted/rarbg_db.sqlite"
+	echo
+	echo "Please refer to the readme from https://github.com/mgdigital/rarbg-selfhosted"
+	echo
+}

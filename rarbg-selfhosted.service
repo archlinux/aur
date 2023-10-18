@@ -1,0 +1,14 @@
+[Unit]
+Description=rarbg-selfhosted Daemon
+After=network.target
+
+[Service]
+Type=simple
+Environment="PATH_TRACKERS=/usr/share/rarbg-selfhosted/trackers.txt"
+Environment="PATH_SQLITE_DB=/usr/share/rarbg-selfhosted/rarbg_db.sqlite"
+ExecStart=rarbg-selfhosted
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

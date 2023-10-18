@@ -1,0 +1,16 @@
+pkgbase = rarbg-selfhosted
+	pkgdesc = A self-hosted Torznab API for the RARBG backup, compatible with Prowlarr, Radarr, Sonarr etc.
+	pkgver = 0.0.5
+	pkgrel = 3
+	url = https://github.com/mgdigital/rarbg-selfhosted
+	install = rarbg-selfhosted.install
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	options = !lto
+	source = rarbg-selfhosted-0.0.5.tar.gz::https://github.com/mgdigital/rarbg-selfhosted/archive/refs/tags/v0.0.5.tar.gz
+	source = rarbg-selfhosted.service
+	sha256sums = 6aa61545d50dd301104bd52fefe458bff7dece0339dec6d2e1b15419b823e318
+	sha256sums = b93a74382119cb82cd06973954e31fa6fe6ae33c07ae9d941d14941654309ce5
+
+pkgname = rarbg-selfhosted
