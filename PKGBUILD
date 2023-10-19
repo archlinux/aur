@@ -10,8 +10,8 @@ license=('GPL3')
 makedepends=('rust' 'cargo')
 depends=('dbus' 'pacman>6')
 replaces=('kernel-updated')
-source=("https://github.com/rnestler/reboot-arch-btw/archive/v${pkgver}.tar.gz")
-sha256sums=('13ccd393a418cc310197cca32848725bfe8f3bf552a7fffd48d192fd7106e95f')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha256sums=('552e6eab56946ace212de447eb82ef9c3c4e4c19e65b6f210aa6cc67411105a6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
