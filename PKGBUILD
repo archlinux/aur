@@ -4,14 +4,14 @@ _pkgname=com.aliyun.mail.deepin
 _officalname=Alimail
 pkgver=1.7.1.0
 _deepinver=1.6.7.0deepin2
-pkgrel=3
+pkgrel=4
 pkgdesc="Aliyun Mail client on Deepin Wine 6"
 arch=("x86_64")
 url="https://mail.aliyun.com/"
 license=('custom')
-depends=('deepin-wine6-stable' 'xdg-utils' 'gtk2' 'fontconfig' 'lib32-libxext' 'glib2' 'at-spi2-core' 'glibc' 'pango' \
+depends=('deepin-wine6-stable' 'deepin-wine-helper' 'xdg-utils' 'gtk2' 'fontconfig' 'lib32-libxext' 'glib2' 'at-spi2-core' 'glibc' 'pango' \
     'lib32-libx11' 'libx11' 'sh' 'cairo' 'gdk-pixbuf2' 'freetype2' 'hicolor-icon-theme' 'lib32-glibc')
-optdepends=()
+makedepends=('p7zip')
 conflicts=()
 install="${pkgname}.install"
 source=(
@@ -27,8 +27,8 @@ sha256sums=('7e020363732d448a29a394afa3f6a5f2c54e600987af599e3a4b6c0edec3a61e'
             '3ced7b78919cf5c29fd79e8a1170dd3923592aac6edfe162b8de579618826bb1'
             'e4c0149f310cea904db1681c319d618cbde2679dcac213f276d49eb93de2cec6'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '464bec7f458d8cf89c0f030807c2ce0739f442269478026acf516551b240a0bf')
-prepare() {
+            'f03025f50f682f7e515cb205fbc58084bfaaca6cd5e2bd91a7fdd4c33ee937e0')
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
@@ -42,7 +42,9 @@ prepare() {
     msg "Repackaging app archive ..."
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/opt/apps/${pkgname}/info"
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    sed "s|${_pkgname}|${pkgname}|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
+    sed -e "s|Icon=${_pkgname}|Icon=${pkgname}|g" \
+        -e "s|\"/opt/apps/com.aliyun.mail.deepin/files/run.sh\"|${pkgname}|g" \
+        -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
@@ -52,6 +54,6 @@ package() {
         install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm755 "run.sh" "${pkgdir}/opt/apps/${pkgname}/files/"
+    install -Dm755 "run.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
