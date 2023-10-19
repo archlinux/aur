@@ -1,4 +1,4 @@
-pkgbase = asterisk
+pkgbase = asterisk-lts-20
 	pkgdesc = A complete PBX solution - Long Term Support release 20
 	pkgver = 20.5.0
 	pkgrel = 1
@@ -29,6 +29,9 @@ pkgbase = asterisk
 	optdepends = openr2
 	optdepends = postgresql
 	optdepends = unixodbc
+	provides = asterisk
+	conflicts = asterisk
+	replaces = asterisk
 	backup = etc/asterisk/acl.conf
 	backup = etc/asterisk/adsi.conf
 	backup = etc/asterisk/aeap.conf
@@ -151,4 +154,4 @@ pkgbase = asterisk
 	sha256sums = 1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b
 	sha256sums = 55798baa02698de3d81c4b6e11097b3dee73b20e9dfa1e08091a7037830ad6d8
 
-pkgname = asterisk
+pkgname = asterisk-lts-20
