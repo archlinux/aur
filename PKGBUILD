@@ -1,18 +1,18 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=debmirror
-pkgver=2.37
+pkgver=2.38
 pkgrel=1
 pkgdesc='Debian partial mirror script, with ftp and package pool support'
 url="https://salsa.debian.org/debian/${pkgname}"
 arch=('any')
 license=('GPL2')
 # see https://packages.debian.org/fr/sid/debmirror
-depends=('bzip2' 'perl-lockfile-simple' 'perl-libwww' 'rsync')
+depends=('bzip2' 'perl-lockfile-simple' 'perl-libwww' 'rsync' 'xz')
 optdepends=('diffutils' 'ed' 'gnupg' 'patch')
 makedepends=('pod2man')
 source=("https://salsa.debian.org/debian/${pkgname}/-/archive/debian/1%25${pkgver}/${pkgname}-debian-1%25${pkgver}.tar.bz2")
-sha512sums=('cdca294e0f689e6dc3020bcba35870a35924263e541c8cbf9076efe277e02d2fc0b15e02938e2736939e9dadf326f960f165ecc303c51a2718296621ecc85287')
+sha512sums=('8884a209be0b6210e78c3353cb4b6f8a679284fa9f706fa00f9de443e82caef0c054520220737f71a2982d9bb00396883ebae8009a0c04d8c6d735fc91bd67b3')
 
 build() {
     cd "${srcdir}/${pkgname}-debian-1%${pkgver}"
