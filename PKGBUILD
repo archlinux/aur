@@ -8,10 +8,10 @@ pkgname=(
   libportal-inputcapture-qt5
   libportal-inputcapture-docs
 )
-pkgver=0.6+r58+g3e6c1bf
+pkgver=0.7.1+r8+g1add346
 pkgrel=1
 pkgdesc="GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap"
-url="https://github.com/whot/libportal"
+url="https://github.com/flatpak/libportal"
 arch=(x86_64)
 license=(LGPL3)
 makedepends=(
@@ -32,8 +32,8 @@ checkdepends=(
   python-pytest
   xorg-server-xvfb
 )
-_commit=3e6c1bf9b34e73729ddeda9d58f050ab1bcc633c
-source=("git+https://github.com/whot/libportal#commit=$_commit")
+_commit=1add346fc9ebea5ca144e244bcb3b6b9ee90fddf  # tags/0.7.1^0
+source=("git+https://github.com/flatpak/libportal#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
@@ -43,7 +43,7 @@ pkgver() {
 
 prepare() {
   cd libportal
-  git cherry-pick -n 3e6c1bf9b34e73729ddeda9d58f050ab1bcc633c
+#  git cherry-pick -n 1add346fc9ebea5ca144e244bcb3b6b9ee90fddf
 }
 
 build() {
@@ -51,10 +51,10 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  xvfb-run -s '-nolisten local' \
-#    meson test -C build --print-errorlogs
-#}
+check() {
+  xvfb-run -s '-nolisten local' \
+    meson test -C build --print-errorlogs
+}
 
 _pick() {
   local p="$1" f d; shift
