@@ -16,7 +16,6 @@ optdepends=("org.freedesktop.secrets: keyring/password support"
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-stable-bin"
            "$_pkgname-beta-bin" "skype")
 provides=("$_pkgname" "skype")
-replaces=("$_pkgname-bin")
 install="$pkgname-install"
 # We embed the pkgrel in the download file name because skype devs
 # sometimes use the same version number for an update and any previously
