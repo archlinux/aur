@@ -1,4 +1,4 @@
-# Maintainer: Ersei <samb at disroot dot org>
+# Maintainer: Ersei <contact at ersei dot net>
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
@@ -83,7 +83,7 @@ md5sums=(
 )
 
 pkgver() {
-  git -C mcpelauncher-manifest describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C mcpelauncher-manifest describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
