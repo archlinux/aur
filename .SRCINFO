@@ -1,0 +1,19 @@
+pkgbase = onnx-git
+	pkgdesc = C++ library for the open standard for machine learning interoperability
+	pkgver = 1.14.1.0.g1014f41f1
+	pkgrel = 1
+	url = https://onnx.ai
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	depends = glibc
+	depends = protobuf
+	conflicts = onnx
+	conflicts = onnx-py
+	conflicts = python-onnx
+	source = onnx-git-1.14.1.0.g1014f41f1::git+https://github.com/onnx/onnx.git
+	b2sums = SKIP
+
+pkgname = onnx-git
