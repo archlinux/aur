@@ -17,6 +17,7 @@ pkgbase = deepin-wine-mailmaster
 	depends = sh
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
+	conflicts = mailmaster
 	source = com.163.dashi.mailmaster.spark-4.18.1.1006.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/com.163.dashi.mailmaster.spark/com.163.dashi.mailmaster.spark_4.18.1.1006-1_all.deb
 	source = mailmaster-4.19.5.1006.exe::https://res.126.net/dl/client/pcmail/dashi/mail.exe
 	source = LICENSE.html::https://mail.163.com/html/agreement/doc.html

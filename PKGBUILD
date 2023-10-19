@@ -12,7 +12,7 @@ license=('custom:freeware')
 depends=('deepin-wine6-stable' 'spark-dwine-helper' 'xdg-utils' 'hicolor-icon-theme' 'glibc' 'libx11' 'gcc-libs' 'sh')
 makedepends=('p7zip')
 optdepends=('wqy-microhei' 'wqy-zenhei')
-conflicts=()
+conflicts=("${_officalname}")
 install="${pkgname}.install"
 source=("${_sparkname}-${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkname}/${_sparkname}_${_sparkver}-1_all.deb"
     "${_officalname}-${pkgver}.exe::https://res.126.net/dl/client/pcmail/dashi/mail.exe"
