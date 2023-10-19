@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2023.10.09.00
+pkgver=2023.10.16.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -43,16 +43,14 @@ source=(
   "watchman.json"
   "watchman.service"
   "watchman.socket"
-  "0001-Fix-build-with-fmt-10.patch"
 )
 sha256sums=(
-  'f7e92f4007c151480f91b57c6b687b376a91a8c4dd3a7184588166b45445861c'
+  '7039c7747fc84d99b362e5c9b3ec31d5f4e832d42a971bf68825ee31b1f75a96'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
   '5b4b032b68d87d648e268c5c08b4d56993d5c1a661e3925b39f54bdef2dfbc42'
   '853457ad70492fec9d7d020b9e067e2aec2ca419c0a5cddd5d93c5fab354c87a'
-  '90e5fd45b1e7380edddbcc9cdfc0eed2fae3696ac9da7c67fdc351b14a5d85f2'
 )
 
 _archive="$pkgname-$pkgver"
@@ -61,7 +59,6 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --ignore-whitespace --fuzz=3 --input="$srcdir/watchman-destdir.patch"
-  patch --forward --strip=1 --ignore-whitespace --input="$srcdir/0001-Fix-build-with-fmt-10.patch"
 }
 
 build() {
