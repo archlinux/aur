@@ -1,0 +1,12 @@
+pkgbase = sidedoor
+	pkgdesc = An SSH connection daemon which maintains a reverse tunnel
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/daradib/sidedoor
+	arch = any
+	license = GPL3
+	depends = openssh
+	source = https://github.com/daradib/sidedoor/releases/download/debian%2F0.2.1-1/sidedoor_0.2.1-1_all.deb
+	sha256sums = 51857705134e4cc83d6cfb786b15097d084273554b62fe21f5168d48848825b7
+
+pkgname = sidedoor
