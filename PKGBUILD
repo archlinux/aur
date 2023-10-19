@@ -5,13 +5,13 @@
 # file from NVIDIA's website (registration required). Place the downloaded
 # file in the PKGBUILD directory and run makepkg.
 # Download website:
-# https://developer.nvidia.com/nvidia-video-codec-sdk/
+# https://developer.nvidia.com/nvidia-video-codec-sdk/download
 
 pkgbase=nvidia-sdk
 pkgname=('nvidia-sdk' 'nvidia-sdk-doc')
 pkgver=12.1.14
-pkgrel=1
-pkgdesc='NVIDIA Video Codec SDK (NVDEC and NVENC APIs)'
+pkgrel=2
+pkgdesc='NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs)'
 arch=('any')
 url='https://developer.nvidia.com/nvidia-video-codec-sdk/'
 license=('custom')
@@ -24,9 +24,8 @@ prepare() {
 }
 
 package_nvidia-sdk() {
-    install -d -m755 "${pkgdir}/usr/include"
-    cp -dr --no-preserve='ownership' "Video_Codec_SDK_${pkgver}/Interface" "${pkgdir}/usr/include/${pkgbase}"
     install -D -m644 "Video_Codec_SDK_${pkgver}/LicenseAgreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -dr --no-preserve='ownership' "Video_Codec_SDK_${pkgver}/Interface" "${pkgdir}/usr/include"
 }
 
 package_nvidia-sdk-doc() {
