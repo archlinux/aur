@@ -41,15 +41,17 @@ source=("https://downloads.sourceforge.net/project/jtdx-improved/${_pkgname}_${p
 md5sums=('539cfd3092b5a04977ed204166355f86')
 sha1sums=('5a9b2b22243e0f511fb6472d913ee277714e7447')
 
-options=(!lto)
-
 build() {
 	unzip -o ${_pkgname}_${pkgver}_improved_source.zip
 	mkdir -p $srcdir/build
 	cd $srcdir/build
   		
 	cmake \
+		-Wno-dev \
     	-D CMAKE_INSTALL_PREFIX=/usr \
+		-D CMAKE_BUILD_TYPE=Release \
+		-D WSJT_SKIP_MANPAGES=ON \
+		-D WSJT_GENERATE_DOCS=OFF \
     	../jtdx
   	make
 }
