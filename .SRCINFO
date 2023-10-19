@@ -1,7 +1,7 @@
 pkgbase = repman-git
 	pkgdesc = Manage (remote) custom repositories
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/mipimipi/repman
 	arch = aarch64
 	arch = x86_64

@@ -4,7 +4,7 @@ _pkgorg=gitlab.com/mipimipi
 pkgname=repman-git
 _pkgname=repman
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Manage (remote) custom repositories"
 arch=(
   aarch64
@@ -15,12 +15,14 @@ license=(GPL3)
 source=("git+https://$_pkgorg/$_pkgname.git")
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 md5sums=(SKIP)
+provides=(repman)
+conflicts=(repman)
+backup=("etc/repman.conf")
 depends=(
   binutils
   "pacman>=6.0.0"
 )
 depends_x86_64=(devtools)
-depends_armv7h=(devtools-alarm)
 depends_aarch64=(devtools-alarm)
 optdepends=(
   "gnupg: in case packages and/or repository DB's should be signed"
@@ -34,9 +36,6 @@ makedepends=(
   make
   asciidoctor
 )
-provides=(repman)
-conflicts=(repman)
-backup=("etc/repman.conf")
 
 pkgver() {
   cd "$srcdir/$_pkgname" || return
