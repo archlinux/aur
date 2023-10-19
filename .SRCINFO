@@ -26,10 +26,10 @@ pkgbase = python-fmpy
 	depends = python-pytz
 	depends = sundials
 	optdepends = python-matplotlib: for plot results
-	optdepends = python-kaleido:
-	optdepends = jupyter-notebook:
-	optdepends = python-plotly:
-	optdepends = python-dash-bootstrap-components:
+	optdepends = python-kaleido: for SVG export
+	optdepends = jupyter-notebook: for simulate the FMU in jupyter
+	optdepends = python-plotly: for plot results
+	optdepends = python-dash-bootstrap-components: for webapp support
 	optdepends = python-pyqtgraph: for graphical user interface
 	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=ddd51e05b5b66d74c9b2d7b3a293e438195a9d19
 	source = git+https://github.com/ludocode/mpack.git

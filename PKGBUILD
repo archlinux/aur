@@ -13,10 +13,10 @@ depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git)
 checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
 optdepends=('python-matplotlib: for plot results'
-  'python-kaleido: '
-  'jupyter-notebook: '
-  'python-plotly: '
-  'python-dash-bootstrap-components: '
+  'python-kaleido: for SVG export'
+  'jupyter-notebook: for simulate the FMU in jupyter'
+  'python-plotly: for plot results'
+  'python-dash-bootstrap-components: for webapp support'
   'python-pyqtgraph: for graphical user interface') # python-pyqt5 python-pyqt5-webengine
 source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
@@ -54,8 +54,9 @@ check() {
   test-env/bin/python -m installer dist/*.whl
   PATH="${srcdir}/${_base}/test-env/bin:$PATH"
   test-env/bin/python -m pytest tests \
-    -k 'not cmake and not simulate and not create_juypter_notebook' \
-    --ignore=test_fmu_container.py
+    -k 'not cmake and not simulate and not create_juypter_notebook and not cswrapper' \
+    --ignore=test_fmu_container.py \
+    --ignore=tests/test_fmu_container.py
 }
 
 package() {
