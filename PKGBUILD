@@ -2,23 +2,25 @@
 
 pkgname=wsjtx-improved
 _pkgname=wsjtx
-pkgver=2.6.2
+pkgver=2.7.1
+_pkgver="-devel"
+_build=231018
 pkgrel=1
-pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - Improved version by DG2YCB - Superbuild version, hamlib not required"
+pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
 license=('GPL3')
 
 depends=(
-	'boost-libs'
 	'fftw'
-	'gcc-libs'
+    'hamlib>=4.5'
 	'libusb'
+	'portaudio'
 	'qt5-base'
 	'qt5-multimedia'
 	'qt5-serialport'
 	'qt5-tools'
-	'readline'
+    'readline'
 )
 
 makedepends=(
@@ -35,27 +37,33 @@ install=wsjtx-improved.install
 
 provides=('wsjtx')
 conflicts=('wsjtx')
-source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/"$_pkgname-$pkgver"_improved_PLUS.tgz")
-md5sums=('16b1adc60a2aad1703168bd763535bd0')
-sha1sums=('63270fb769edb9ffe7aea4f01f98f9f9f18ec576')
+source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}${_pkgver}_improved_PLUS_${_build}.tgz")
+md5sums=('0056d476a115836ec497e43ceceb0c3a')
+sha1sums=('5babdbcfc8f3f627449359b363c06d339c284880')
 
 options=(!lto)
 
+prepare() {
+    tar xzf ${_pkgname}-${pkgver}${_pkgver}_improved_PLUS_${_build}.tgz
+    mkdir -p $srcdir/$_pkgname-$pkgver/wsjtx-prefix/build
+    cd $srcdir/$_pkgname-$pkgver/wsjtx-prefix
+    tar xzf $srcdir/$_pkgname-$pkgver/src/wsjtx.tgz
+}
+
 build() {
-	mkdir -p $srcdir/build
-	cd $srcdir/build
+    cd "$srcdir/$_pkgname-$pkgver/wsjtx-prefix/build"
 	cmake \
 		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
-		$srcdir/$_pkgname-$pkgver
-	make || return 1
+        ../wsjtx
+    make || return 1
 }
 
 package() {
-	cd "$srcdir/build"
-	make DESTDIR=${pkgdir} install
-    install -Dm644 "$srcdir"/build/wsjtx-prefix/src/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
+    cd "$srcdir/$_pkgname-$pkgver/wsjtx-prefix/build"
+	make DESTDIR=$pkgdir install
+    install -Dm644 "$srcdir/$_pkgname-$pkgver"/wsjtx-prefix/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
 	rm -rf "$pkgdir/home"
 }
 
