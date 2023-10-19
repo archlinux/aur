@@ -1,0 +1,25 @@
+pkgbase = python-pypdfium2
+	pkgdesc = An ABI-level Python 3 binding to PDFium
+	pkgver = 4.21.0
+	pkgrel = 1
+	url = https://github.com/pypdfium2-team/pypdfium2
+	changelog = python-pypdfium2.changelog.md
+	arch = any
+	license = Apache
+	license = BSD
+	makedepends = python-setuptools>=33.0.0
+	makedepends = git
+	makedepends = python-wheel>0.38.1
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = python-toml
+	makedepends = python-setuptools-scm>=3.4.3
+	depends = python>=3.7.0
+	optdepends = python-pillow: support PIL image objects for raster graphics
+	optdepends = python-numpy: support numpy arrays for raster graphics
+	source = https://files.pythonhosted.org/packages/source/p/pypdfium2/pypdfium2-4.21.0.tar.gz
+	source = ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen#commit=dbdcbfb102b2c78dfd4899a6812634460aaa8d4f
+	sha256sums = 514dcd4552bea1886d93ae34bc5f611a7af358104af2774c1d7822778f539335
+	sha256sums = SKIP
+
+pkgname = python-pypdfium2
