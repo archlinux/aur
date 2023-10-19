@@ -1,5 +1,5 @@
 pkgbase = notion-app-electron
-	pkgdesc = The all-in-one workspace for your notes and tasks
+	pkgdesc = The all-in-one workspace for your notes and tasks, use system electron11
 	pkgver = 2.0.18
 	pkgrel = 1
 	url = https://github.com/notion-enhancer/notion-repackaged
@@ -7,7 +7,8 @@ pkgbase = notion-app-electron
 	arch = aarch64
 	license = MIT
 	depends = bash
-	depends = electron
+	depends = electron11
+	depends = hicolor-icon-theme
 	provides = notion-app
 	conflicts = notion-app
 	source_x86_64 = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.18-1/notion-app-2.0.18-1.pacman

@@ -11,6 +11,7 @@ license=('MIT')
 
 depends=(bash
 	electron11
+	hicolor-icon-theme
 )
 provides=('notion-app')
 conflicts=('notion-app')
