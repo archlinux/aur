@@ -1,21 +1,39 @@
-# Maintainer: MisconceivedSec (@misconceivedsec)
-pkgname=salawat
-pkgver=1.3.0
+# Maintainer: Dawit Abate <dawitabate2@gmail.com>
+pkgname=fcast-receiver-bin
+pkgver=23.0.0
 pkgrel=1
-pkgdesc="A prayer times (Adhan) app for Windows and GNU/Linux written in JavaFX"
+pkgdesc="Binary releases of Fcast"
 arch=('x86_64')
-conflicts=("salawat-appimage" "salawat")
-provides=("salawat")
-url="https://github.com/DBChoco/Salawat"
+conflicts=("fcast-receiver-bin" "fcast-receiver-git" "fcast-receiver")
+provides=("fcast-receiver")
+url="https://gitlab.futo.org/videostreaming/fcast"
 license=('MIT')
-depends=('zstd' 'gtk3' 'alsa-lib' 'nss')
-source=("Salawat-$pkgver-linux.tar.gz::https://github.com/DBChoco/Salawat/releases/download/v$pkgver/Salawat-$pkgver-linux.tar.gz")
-md5sums=('c623351938306b5c437aa1d680004dab')
+depends=('nss' 'alsa-lib' 'libxext' 'dbus' 'expat' 'libxcb' 'libxrandr' 'nspr' 'at-spi2-core' 'pango' 'glibc' 'libxkbcommon' 'libx11' 'libxcomposite' 'mesa' 'cairo' 'glib2' 'libdrm' 'gcc-libs' 'libxdamage' 'libcups' 'libxfixes' 'gtk3')
+source=("${pkgname}-${pkgver}.zip::https://releases.grayjay.app/fcastreceiver/fcast-receiver-linux-x64.zip"
+        'fcast-receiver.desktop')
+md5sums=('0b0aef8b4f50c0f1d2a104e699471452'
+         '787f5a72d47c0b654f08204bf6c495e2')
 
-package()
-{
-    mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/share/applications"
-    cp -r "${srcdir}/Salawat" "${pkgdir}/opt/"
-    sed -i "s/Salawat.png/icon.png/" "${srcdir}/Salawat/Salawat.desktop"
-    install -Dm755 "${srcdir}/Salawat/Salawat.desktop" "${pkgdir}/usr/share/applications/salawat.desktop"
+pkgver() {
+    cat "${srcdir}/${pkgname}/version"
+}
+
+noextract=(
+    "${pkgname}-${pkgver}.zip"
+)
+
+prepare() {
+    mkdir -p "${srcdir}/${pkgname}"
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.zip" -C "${srcdir}/${pkgname}"
+}
+
+package() {
+    cd "${srcdir}/${pkgname}" 
+    install -d "${pkgdir}/opt/${pkgname}/" "${pkgdir}/usr/bin"
+    cp -r * "${pkgdir}/opt/${pkgname}/"
+    chmod +x "${pkgdir}/opt/${pkgname}/fcast-receiver"
+    ln -s "/opt/${pkgname}/fcast-receiver" "${pkgdir}/usr/bin/fcast-receiver"
+    install -Dm644 "resources/app/dist/app.png" "${pkgdir}/usr/share/pixmaps/fcast-receiver.png"
+    install -Dm644 "${srcdir}/fcast-receiver.desktop" "${pkgdir}/usr/share/applications/fcast-receiver.desktop"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

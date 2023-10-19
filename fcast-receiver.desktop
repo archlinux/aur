@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Fcast Receiver
+GenericName=Fcast Receiver
+Icon=fcast-receiver
+Comment=An open source protocol that enables wireless streaming of audio and video content between devices, supporting various stream types such as DASH, HLS, and mp4.
+Exec=fcast-receiver %u
+Terminal=false
+Type=Application
+Categories=Network;Application;AudioVideo;Audio;Video
