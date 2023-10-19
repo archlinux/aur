@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='Small Gotify daemon to send messages as desktop notifications '
 arch=('aarch64' 'x86_64')
 url="https://github.com/desbma/${pkgname}"
-license=('GPL')
+license=('GPL3')
 depends=('gcc-libs'
          'openssl')
 makedepends=('rust')
