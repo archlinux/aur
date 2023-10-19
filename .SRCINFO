@@ -16,6 +16,7 @@ pkgbase = openmc-git
 	depends = python-pandas
 	depends = python-matplotlib
 	depends = python-uncertainties
+	depends = python-h5py-openmpi
 	depends = embree
 	depends = libxrender
 	depends = libxcursor

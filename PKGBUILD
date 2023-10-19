@@ -23,6 +23,7 @@ depends=(
 	python-pandas
 	python-matplotlib
 	python-uncertainties
+	python-h5py-openmpi
 	embree
 	libxrender 
 	libxcursor 
@@ -64,15 +65,13 @@ build() {
 	python \
       -m build \
       --wheel \
-      --no-isolation
+      --no-isolation ../
 }
 
 package() {
 	cd $srcdir/${pkgname}/build 
 	make DESTDIR="$pkgdir/" install
-
-	#install python layer 
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	python -m installer --destdir="$pkgdir" ../dist/*.whl
 
 	# make repository available in install location
 	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
