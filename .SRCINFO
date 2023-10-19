@@ -1,0 +1,23 @@
+pkgbase = ttfviewer-git
+	pkgdesc = A small tool for developers to view and preview various ttf font/icon image formats.
+	pkgver = 0.2.6.r0.g8a80d52
+	pkgrel = 1
+	url = https://github.com/QQxiaoming/TTFviewer
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = xdg-utils
+	depends = freetype2
+	depends = qt6-base
+	depends = qt6-svg
+	provides = ttfviewer
+	conflicts = ttfviewer
+	conflicts = ttfviewer-git
+	source = ttfviewer::git+https://github.com/QQxiaoming/TTFviewer.git
+	sha256sums = SKIP
+
+pkgname = ttfviewer-git
