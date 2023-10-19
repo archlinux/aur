@@ -2,8 +2,8 @@
 
 pkgname=python-mirakuru
 _name=${pkgname#python-}
-pkgver=2.5.1
-pkgrel=2
+pkgver=2.5.2
+pkgrel=1
 pkgdesc="Start your subprocess and wait for a clear indication that it's running"
 arch=(any)
 url="https://github.com/ClearcodeHQ/mirakuru"
@@ -24,7 +24,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0bde894d9c39d1a534019c27865af3c2d9d115d10db961640b894d9f3b67b6eb')
+sha256sums=('41f01aae0fae2535292d9c6ac3f9f3980f5f96924c41d4d5f9687918788ff6c5')
 
 _archive="$_name-$pkgver"
 
