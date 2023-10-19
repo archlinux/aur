@@ -10,7 +10,7 @@ url="https://github.com/openmc-dev/openmc"
 license=('MIT')
 install="post.install"
 
-source=("${pkgname}::git+${url}.git" "set_paths.sh")
+source=("${pkgname}::git+${url}.git" "set_paths.sh" "openmc.sh")
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -45,9 +45,6 @@ makedepends=(
 )
 
 provides=("${pkgname%-pkgver}")
-conflicts=(
-	openmc-git
-	)
 
 build() {
     cd $srcdir/${pkgname}
