@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia-hidpi-git"
-pkgver=0.31.0.r7.a0b675ec
+pkgver=0.31.0.r8.d70cc88d
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64" "riscv64")
@@ -129,6 +129,8 @@ package() {
 
 	# resolve conflicts with xdg-desktop-portal-hyprland from repo
 	rm -rf "${pkgdir}/usr/share/xdg-desktop-portal/"
+	rm -rf "${pkgdir}/usr/share/hyprland-protocols/"
+	rm -rf "${pkgdir}/usr/share/pkgconfig/hyprland-protocols.pc"
 
 	# FIXME: meson.build shall install version.h
 	install -Dm644 src/version.h -t "${pkgdir}/usr/include/hyprland/src/"
