@@ -13,9 +13,12 @@ license=('unknown')
 conflicts=("$pkgname-bin")
 makedepends=('gendesk' 'unzip')
 depends=('rsync')
-source=("$_url/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip")
-sha256sums=('18b11eed341fd57feb7fbc58a7b8eb93429bacc7d25a993878af8a0b6e98df10')  # 'makepkg -g' to generate it.
-
+source=(
+    $_url/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip
+    icon.png
+)
+sha256sums=('18b11eed341fd57feb7fbc58a7b8eb93429bacc7d25a993878af8a0b6e98df10'
+            '2aa6acabbda0250eeb313bc92fd8e77f7060f1805de53fd4bfe8b1a17f26e7f0') # "updpkgsums" to generate, require pacman-contrib.
 
 # Función 'prepare': Prepara el entorno antes de compilar el paquete.
 prepare(){
@@ -61,7 +64,7 @@ export LD_LIBRARY_PATH
     install -Dvm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
     # Instalar el icono de spflashtool5.
-    install -Dvm644 "../icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dvm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
 ## Test.
@@ -76,3 +79,4 @@ export LD_LIBRARY_PATH
 # https://spflashtools.com/category/linux
 # https://androidmtk.com/flash-stock-rom-using-smart-phone-flash-tool
 # https://androidmtk.com/category/tutorials
+
