@@ -2,25 +2,28 @@
 
 _pkgname=mrvn-radiant
 pkgname=$_pkgname-bin
-pkgver=0.0
-pkgrel=2
+pkgver=2023.09.25.d51258c
+pkgrel=1
 pkgdesc="MRVN-Radiant is a fork of netradiant-custom modified for Titanfall and Apex Legends mapping (binary release)"
 arch=('x86_64')
 url="https://github.com/MRVN-Radiant/MRVN-Radiant"
-license=('BSD' 'GPL' 'LGPL')
+license=('BSD' 'LGPL' 'GPL')
+depends=('qt5-base' 'hicolor-icon-theme' 'libpng')
 provides=($_pkgname)
 conflicts=($_pkgname)
-noextract=("$_pkgname-$pkgver-$pkgrel.zip")
-_actions=5231536939
-_number=2023-06-10_5f02305
-source=("$_pkgname-$pkgver-$pkgrel.zip::https://nightly.link/MRVN-Radiant/MRVN-Radiant/actions/runs/$_actions/MRVN-Radiant_${_number}_Linux_x86_64.zip")
-sha256sums=('1949f665f5af7cf5fd74973f5d2bb12f4d931b31eb9111d39bbcd73330407f68')
+noextract=("MRVN-Radiant_2023-09-25_d51258c_Linux_x86_64.zip")
+_actions=6294543226
+_number=2023-09-25_d51258c
+source=("https://nightly.link/MRVN-Radiant/MRVN-Radiant/actions/runs/$_actions/MRVN-Radiant_${_number}_Linux_x86_64.zip"
+        "https://github.com/MRVN-Radiant/MRVN-Radiant/raw/main/LICENSE")
+sha256sums=('a44a7c0b9c1a6e280b4dd07b5717b960978acc5a61d3e1459a6cc5bbc4a5559d'
+            'f8734393be36c49306d16855268f98c8ef17e09e6b384a3190805f7ff450c871')
 
 prepare() {
   # Create a shortcut
   echo "Categories=Utilities;" > desktop
   sed -i '1 i\Comment=Fork of netradiant-custom modified for Titanfall and Apex Legends mapping' desktop
-  sed -i '1 i\Icon=/opt/MRVN-Radiant/bitmaps/splash.png' desktop
+  sed -i '1 i\Icon=mrvn-radiant' desktop
   sed -i '1 i\Type=Application' desktop
   sed -i '1 i\Terminal=false' desktop
   sed -i '1 i\Exec=mrvn-radiant %U' desktop
@@ -28,7 +31,7 @@ prepare() {
   sed -i '1 i\[Desktop Entry]' desktop
   mv desktop $_pkgname.desktop
   # Unzip
-  unzip -od $_pkgname-$pkgver-$pkgrel $_pkgname-$pkgver-$pkgrel.zip
+  unzip -od $_pkgname-$pkgver-$pkgrel MRVN-Radiant_${_number}_Linux_x86_64.zip
   # Make the binary executable
   chmod +x $_pkgname-$pkgver-$pkgrel/radiant
 }
@@ -39,5 +42,10 @@ package() {
   # Install
   mv $_pkgname-$pkgver-$pkgrel/* "$pkgdir/opt/MRVN-Radiant"
   ln -s /opt/MRVN-Radiant/radiant "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  cd "$pkgdir/opt/MRVN-Radiant/bitmaps"
+  install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/mrvn-radiant.png"
+  install -Dm644 logo.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/mrvn-radiant.png"
+  install -Dm644 splash.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mrvn-radiant.png"
 }
