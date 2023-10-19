@@ -3,7 +3,7 @@
 _pkgname="balong-fbtools"
 pkgname="${_pkgname}-git"
 pkgver=r36.20171009.22a228c
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for working with flash modems on the balong platform. Contains 'fbrflash'."
 arch=('i686' 'x86_64')
 url="https://github.com/forth32/${_pkgname}"
@@ -23,7 +23,7 @@ conflicts=(
 
 source=(
   "${_pkgname}::git+https://github.com/forth32/${_pkgname}.git"
-  'helpmessages_english.md'::"http://ix.io/3Znm"
+  "${_pkgname}-${pkgver}_-_helpmessages_english.md::http://ix.io/3Znm"
 )
 sha256sums=(
   'SKIP'
@@ -48,6 +48,12 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  _CFLAGSADDITION=" -Wno-error=deprecated-declarations"
+  CFLAGS+="${_CFLAGSADDITION}"
+  CXXFLAGS+="${_CFLAGSADDITION}"
+  export CFLAGS
+  export CXXFLAGS
+
   make
 }
 
@@ -56,5 +62,5 @@ package() {
   install -D -v -m755 fbrflash "${pkgdir}/usr/bin/fbrflash"
 
   install -D -v -m644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -D -v -m644 "${srcdir}/helpmessages_english.md" "${pkgdir}/usr/share/doc/${_pkgname}/helpmessages_english.md"
+  install -D -v -m644 "${srcdir}/${_pkgname}-${pkgver}_-_helpmessages_english.md" "${pkgdir}/usr/share/doc/${_pkgname}/helpmessages_english.md"
 }
