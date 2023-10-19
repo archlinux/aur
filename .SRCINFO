@@ -12,7 +12,7 @@ pkgbase = cockpit-file-sharing
 	depends = samba
 	depends = nfs-utils
 	provides = cockpit-file-sharing
-	source = https://github.com/45Drives/cockpit-file-sharing/releases/download/3.3.4/cockpit-file-sharing-3.3.4-1.el8.noarch.rpm
+	source = https://github.com/45Drives/cockpit-file-sharing/releases/download/v3.3.4/cockpit-file-sharing-3.3.4-1.el8.noarch.rpm
 	sha512sums = 1ecd1a8e2c3e65a853e6b9320257a4ca4b8a4c2932a55fd3fa434bd18b2508aab4be306209b9568639198a5113375c23dd7580217524fa93e88b628d628d897a
 
 pkgname = cockpit-file-sharing
