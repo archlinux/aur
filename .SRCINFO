@@ -5,6 +5,6 @@ pkgbase = nya
 	url = http://github.com/JessSystemV/nya
 	arch = any
 	source = https://github.com/JessSystemV/nya/archive/refs/heads/main.zip
-	sha256sums = de62338c4d9b563b285453b3b091f535704cf815f3d62ffe19a574209187f54e
+	sha256sums = 48e7ec144ef5549321de6badc27058064e112aad2d4b4ae29ef22583f51f6384
 
 pkgname = nya
