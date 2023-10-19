@@ -29,7 +29,6 @@ makedepends=(
 	'asciidoctor'
 	'boost'
 	'gcc-fortran'
-	'git'
 	'texinfo'
 )
 
@@ -45,13 +44,13 @@ options=(!lto)
 
 prepare() {
     tar xzf ${_pkgname}-${pkgver}${_pkgver}_improved_PLUS_${_build}.tgz
-    mkdir -p $srcdir/$_pkgname-$pkgver/wsjtx-prefix/build
-    cd $srcdir/$_pkgname-$pkgver/wsjtx-prefix
-    tar xzf $srcdir/$_pkgname-$pkgver/src/wsjtx.tgz
+    mkdir -p "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
+    cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix
+    tar xzf "$srcdir"/$_pkgname-$pkgver/src/wsjtx.tgz
 }
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver/wsjtx-prefix/build"
+    cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
 	cmake \
 		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -61,9 +60,9 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver/wsjtx-prefix/build"
+    cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
 	make DESTDIR=$pkgdir install
-    install -Dm644 "$srcdir/$_pkgname-$pkgver"/wsjtx-prefix/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
+    install -Dm644 "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
 	rm -rf "$pkgdir/home"
 }
 
