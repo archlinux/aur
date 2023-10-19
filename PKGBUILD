@@ -1,6 +1,6 @@
 # Maintainer: James Bowling <kf5u AT pm DOT me>
 
-pkgname=wsjtx-improved
+pkgname=wsjtx-improved-widescreen
 _pkgname=wsjtx
 pkgver=2.7.1
 _pkgver="-devel"
