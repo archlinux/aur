@@ -1,8 +1,8 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=ov
-pkgver=0.32.0
-pkgrel=2
+pkgver=0.32.1
+pkgrel=1
 pkgdesc="Feature-rich terminal-based text viewer"
 arch=('x86_64')
 url="https://github.com/noborus/ov"
