@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-system-monitor-next-git
 	pkgdesc = Display system information in GNOME Shell status bar (next fork)
-	pkgver = r1173.fc9dc00
-	pkgrel = 2
+	pkgver = r1217.9fd2fda
+	pkgrel = 1
 	url = https://github.com/mgalgs/gnome-shell-system-monitor-applet
 	arch = any
 	license = GPL3
