@@ -1,7 +1,7 @@
 pkgbase = electron12-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - version 12 - binary version
 	pkgver = 12.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org/
 	arch = x86_64
 	arch = i686
@@ -23,22 +23,23 @@ pkgbase = electron12-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron12
+	provides = electron12=12.2.3
+	provides = electron=12.2.3
 	conflicts = electron12
-	source_x86_64 = electron12-bin-chromedriver-12.2.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-x64.zip
-	source_x86_64 = electron12-bin-12.2.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-x64.zip
+	source_x86_64 = electron12-bin-chromedriver-12.2.3-2-x86_64.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-x64.zip
+	source_x86_64 = electron12-bin-12.2.3-2-x86_64.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-x64.zip
 	sha256sums_x86_64 = b4c8cb14bc922dac4f14f86c1ae2b187e230557a43cb5d13b389e5ea27966cfe
 	sha256sums_x86_64 = deae6d0941762147716b8298476080d961df2a32d0f6f57b244cbe3a2553cd24
-	source_i686 = electron12-bin-chromedriver-12.2.3-1-i686.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-ia32.zip
-	source_i686 = electron12-bin-12.2.3-1-i686.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-ia32.zip
+	source_i686 = electron12-bin-chromedriver-12.2.3-2-i686.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-ia32.zip
+	source_i686 = electron12-bin-12.2.3-2-i686.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-ia32.zip
 	sha256sums_i686 = 4d700ec1cfe51618b50b673d53162ad8615d0680379493a70d76d5917ad29c02
 	sha256sums_i686 = 11b4f159cd3b89d916cc05b5231c2cde53f0c6fb5be8e881824fde00daa5e8c2
-	source_armv7h = electron12-bin-chromedriver-12.2.3-1-armv7h.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-armv7l.zip
-	source_armv7h = electron12-bin-12.2.3-1-armv7h.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-armv7l.zip
+	source_armv7h = electron12-bin-chromedriver-12.2.3-2-armv7h.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-armv7l.zip
+	source_armv7h = electron12-bin-12.2.3-2-armv7h.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-armv7l.zip
 	sha256sums_armv7h = 4c480a997bf123bd72806fff2d60114138736a9457854350e54fc6f50db0a22d
 	sha256sums_armv7h = 4de83c34987ac7b3b2d0c8c84f27f9a34d9ea2764ae1e54fb609a95064e7e71a
-	source_aarch64 = electron12-bin-chromedriver-12.2.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-arm64.zip
-	source_aarch64 = electron12-bin-12.2.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-arm64.zip
+	source_aarch64 = electron12-bin-chromedriver-12.2.3-2-aarch64.zip::https://github.com/electron/electron/releases/download/v12.2.3/chromedriver-v12.2.3-linux-arm64.zip
+	source_aarch64 = electron12-bin-12.2.3-2-aarch64.zip::https://github.com/electron/electron/releases/download/v12.2.3/electron-v12.2.3-linux-arm64.zip
 	sha256sums_aarch64 = 2eaa96bd857e47d65e88c95f10723741a15fc18f685853997f07efdead96b359
 	sha256sums_aarch64 = d29d234c09ba810d89ed1fba9e405b6975916ea208d001348379f89b50d1835c
 

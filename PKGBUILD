@@ -7,12 +7,12 @@ _pkgname="${_projectname}${_major}"
 _pkgver="${_major}.2.3"
 pkgver="${_pkgver/-/.}"
 pkgname="${_pkgname}-bin"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build cross platform desktop apps with web technologies - version ${_major} - binary version"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url=https://electronjs.org/
 license=('MIT')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip'
          'nss' 're2' 'snappy')
