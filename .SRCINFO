@@ -1,0 +1,17 @@
+pkgbase = paradise-pi-bin
+	pkgdesc = A facility control panel for sACN & OSC, in Electron.
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://paradise-pi.github.io/ParadisePi/
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = electron24
+	provides = paradise-pi=2.5.1
+	conflicts = paradise-pi
+	source = paradise-pi-2.5.1.deb::https://github.com/Paradise-Pi/ParadisePi/releases/download/v2.5.1/paradise-pi_2.5.1_amd64.deb
+	source = paradise-pi.sh
+	sha256sums = c8e3630084b1ec329c63b3468d4feefd7c9ff9e55c05cf12079a6128f4d453df
+	sha256sums = 6c5bd9dc55fce23d0fb150abfcdc05ad25c915d367266a12a77dae6bc272e4c5
+
+pkgname = paradise-pi-bin
