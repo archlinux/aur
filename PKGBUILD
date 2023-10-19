@@ -69,6 +69,7 @@ package() {
 	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
 
 	# make non-standard paths persist
+	mkdir -p $pkgdir/etc/profile.d
 	cp $srcdir/openmc.sh $pkgdir/etc/profile.d
 	chmod 755 /etc/profile.d/openmc.sh
 }
