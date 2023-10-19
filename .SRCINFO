@@ -1,0 +1,20 @@
+pkgbase = python-pygithub-git
+	pkgdesc = Use the full Github API v3
+	pkgver = v2.1.1.r3.gdc37d5c1
+	pkgrel = 1
+	url = https://github.com/PyGithub/PyGithub
+	arch = any
+	license = LGPL
+	checkdepends = python-pytest
+	checkdepends = python-cryptography
+	checkdepends = python-httpretty
+	checkdepends = python-parameterized
+	makedepends = python-setuptools-scm
+	depends = python-deprecated
+	depends = python-pyjwt
+	depends = python-requests
+	depends = python-pynacl
+	source = python-pygithub::git+https://github.com/PyGithub/PyGithub.git
+	sha512sums = SKIP
+
+pkgname = python-pygithub-git
