@@ -2,7 +2,7 @@
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 _base=hvplot
 pkgname=python-${_base}
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A high-level plotting API for pandas, dask, xarray, and networkx built on HoloViews"
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(python-pytest python-parameterized python-xarray python-matplotlib
   python-scipy python-plotly python-datashader python-dask python-geopandas) # python-netcdf4 python-streamz python-geoviews
 optdepends=('python-xarray: for datetime handled as xarray data')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('e45db8d74b056f752311fcd221a2701f59d3386368146d3003634facb16c9fdc57b6966e3a99adf25fc3682be4474ef446aac02446530bb92d8b2e447e605196')
+sha512sums=('d5f602d75d2a4ac2b1790408955f6caf4329ee0442aedf288a2a3a5703ef797c30910e0fe3d60d087e21b42436a64ebb518fb0d2a6019efcdc6f4e2a4b0bdf54')
 
 build() {
   cd ${_base}-${pkgver}
@@ -26,9 +26,7 @@ check() {
   # https://stackoverflow.com/a/58440525/9302545
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest ${_base}/tests \
-    --ignore=${_base}/tests/testoperations.py \
-    --ignore=${_base}/tests/plotting/testscattermatrix.py
+  test-env/bin/python -m pytest ${_base}/tests
 }
 
 package() {
