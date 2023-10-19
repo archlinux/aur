@@ -37,27 +37,21 @@ md5sums=('9f7bfb9be63be3b16af6e726b8cee33b')
 sha1sums=('bef3aaf3d8dc8a47ff51db7073ddd6cfe19df428')
 
 prepare() {
-    bsdtar -xf ${_pkgname}_${pkgver}_improved_with_JTDX_GUI_source.zip
+    sed -i 's|$ENV{HOME}|$ENV{DESTDIR}/opt/${CMAKE_PROJECT_NAME}|' $_pkgname/CMakeLists.txt
 }
 
 build() {
-	mkdir -p "$srcdir/build"
-	cd "$srcdir/build"
-  		
-	cmake \
-		-Wno-dev \
-		-D CMAKE_INSTALL_PREFIX=/usr \
+    cd "$srcdir"
+    cmake -B build -S "$_pkgname" \
+        -Wno-dev \
+        -D CMAKE_INSTALL_PREFIX=/usr \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D WSJT_SKIP_MANPAGES=ON \
-		-D WSJT_GENERATE_DOCS=OFF \
-    	../jtdx
-  	make
+		-D WSJT_GENERATE_DOCS=OFF
+  	cmake --build build
 }
 
 package() {
-	cd "$srcdir/build"
-	make DESTDIR=${pkgdir} install
-	install -Dm644 -v "$srcdir"/jtdx/sounds/{CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,PxOB,Px}.wav -t "$pkgdir"/opt/jtdx/sounds 
-	rm -rf "$pkgdir/home"
+	DESTDIR=${pkgdir} cmake --install build
 }
 
