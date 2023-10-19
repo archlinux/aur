@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Stoiakin <VStoiakin at lavabit dot com>
 
 pkgname=rutoken
-pkgver=2.8.1
+pkgver=2.11.0.0
 pkgrel=1
 pkgdesc="Support for cryptographic tokens from Aktiv-Soft JSC"
 url="https://www.rutoken.ru/support/download/"
@@ -10,10 +10,10 @@ license=("custom")
 depends=("glibc" "gcc-libs" "pcsclite" "ccid")
 options=('!strip')
 source=("https://download.rutoken.ru/Rutoken/Utilites/rtAdmin/2.4/Linux/rtadmin.zip"
-        "https://download.rutoken.ru/Rutoken/PKCS11Lib/2.8.1.0/Linux/x64/librtpkcs11ecp-2.8.1.0-1.x86_64.rpm"
+        "https://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp-${pkgver}-1.x86_64.rpm"
         "sd-rutoken")
 sha256sums=('e1f9673a79212daba215b2421e6003e2ddb36edb247922e0941122e36901832b'
-            '38a463ec35d9958fd91befdd544d2695daf8678cbe49107c9c08b8bf5daeb444'
+            '6b7a9cf5f84ebc339232f5a8e3be076cb12fd996491fb6bca4f099461198394c'
             'SKIP')
 
 package() {
