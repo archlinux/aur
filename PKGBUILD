@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=polar-bin
 _pkgname=Polar
-pkgver=2.0.0
-pkgrel=4
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="One-click Bitcoin Lightning networks for local app development & testing"
 arch=("x86_64")
 url="https://lightningpolar.com/"
@@ -15,9 +15,9 @@ depends=('libxdamage' 'glib2' 'alsa-lib' 'libxfixes' 'libxrandr' 'expat' 'gdk-pi
     'libxcb' 'gcc-libs' 'docker')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-V${pkgver}.deb"
     "LICENSE::https://raw.githubusercontent.com/jamaljsr/polar/v${pkgver}/LICENSE")
-sha256sums=('d35a9a194d9cc77d945a8b6de7e89cf7f12f5e51a2c6b76b8b9d0d38ef477828'
+sha256sums=('b70d69d93768114354b73c0f54843c9fb7ca433a91a53567cce9442caffdadeb'
             '971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
