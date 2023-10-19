@@ -10,12 +10,12 @@ url="https://github.com/openmc-dev/openmc"
 license=('MIT')
 install="post.install"
 
-source=("${pkgname}::git+${url}.git" "set_paths.sh" "openmc.sh")
+source=("${pkgname}::git+${url}.git" "openmc.sh")
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 
 depends=(
 	python-lxml
@@ -64,7 +64,11 @@ build() {
 package() {
 	cd $srcdir/${pkgname}/build 
 	make DESTDIR="$pkgdir/" install
+
+	# make repository available in install location
 	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
-	cp $srcdir/set_paths.sh $pkgdir/opt/openmc
-	cp $srcdir/openmc.sh $pkgdir/opt/openmc
+
+	# make non-standard paths persist
+	cp $srcdir/openmc.sh $pkgdir/etc/profile.d
+	chmod 755 /etc/profile.d/openmc.sh
 }
