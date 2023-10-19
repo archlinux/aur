@@ -5,11 +5,11 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-_commit=cdda286c0f1b
+_commit=3038bd4d7816
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
 pkgver=1.25.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -178,7 +178,7 @@ package_nginx-quic-src() {
   arch=('any')
   provides=('nginx-src' 'nginx-mainline-src')
   conflicts=($_pkgbase-src)
-  depends=()
+  depends=("sh" "bash" "perl")
   backup=()
   install -d "$pkgdir/usr/src"
   test -d "$pkgdir/usr/src/nginx" && rm -r "$pkgdir/usr/src/nginx"
@@ -188,6 +188,10 @@ package_nginx-quic-src() {
   # Link the 'configure' script to its location in release tarballs,
   # as this is where modules expect it
   ln -s /usr/src/nginx/auto/configure "$pkgdir/usr/src/nginx"
+  cd $pkgname
+  install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
