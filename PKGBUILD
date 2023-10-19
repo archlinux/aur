@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-epoch=1
+epoch=2
 pkgver=2023.3.1
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
@@ -26,6 +26,7 @@ prepare() {
 	export GOPATH="$srcdir"/gopath
 
 	cd "$srcdir/$pkgname-$pkgver"
+	go get github.com/gofiber/fiber/v2@v2.50.0
 	go mod download
 	go mod verify
 }
