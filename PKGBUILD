@@ -1,9 +1,9 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-epoch=2
+epoch=1
 pkgver=2023.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
