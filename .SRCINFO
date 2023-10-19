@@ -1,0 +1,12 @@
+pkgbase = stalwart-cli
+	pkgdesc = Stalwart CLI
+	pkgver = 0.3.10
+	pkgrel = 1
+	url = https://stalw.art/
+	arch = x86_64
+	arch = aarch64
+	license = AGPL
+	source = https://github.com/stalwartlabs/mail-server/releases/download/v0.3.10/stalwart-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 6076b07965621723becf807295424bc259df16b64e414b0c98878e3c3dec77a7
+
+pkgname = stalwart-cli
