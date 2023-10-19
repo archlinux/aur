@@ -1,0 +1,14 @@
+pkgbase = cpctools
+	pkgdesc = Amstrad CPC tools for cross development
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/cpcsdk/cpctools
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libdsk
+	provides = cpctools
+	source = https://github.com/cpcsdk/cpctools/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 0de00c95e671b349a25e4b875f4981ab38c1fd6c7184095872637cd53f82a7a7
+
+pkgname = cpctools
