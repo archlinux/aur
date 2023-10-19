@@ -5,7 +5,7 @@ _projectname=electron
 _major=26
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver="4.0"
+_subver="4.1"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -13,12 +13,17 @@ pkgdesc="Build cross platform desktop apps with web technologies - binary versio
 arch=('x86_64' 'aarch64')
 url=https://electronjs.org/
 license=('MIT' 'custom')
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
-optdepends=('kde-cli-tools: file deletion support (kioclient5)'
-            'pipewire: WebRTC desktop sharing under Wayland'
+depends=(c-ares
+         gtk3
+         libevent
+         libffi
+         nss)
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'kde-cli-tools: file deletion support (kioclient5)'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
-            'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
+            'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
+)
 provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
 conflicts=("${_pkgname}")
 _releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
@@ -30,10 +35,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('61ebe5b48f9a9e5562612b87b00c5f0a9f76067b2b0a396232f16601ac6932ad'
-                   '1e70be3c66157b82ba7a2d6469deef49856d6b27f45ce3a2b8d8ff97530cb2f0')
-sha256sums_aarch64=('fc84cd8feb532c111f18b265deccd806bb356b84da8c70b4646e1cf481c306ce'
-                    '5d611c5411bbc61e56d0fb445b47889a62d6cead36ea53cb29a78c8856707071')
+sha256sums_x86_64=('3501a1682aa8e17d67b55050117810fbb6e7305296ff750f87488557638b1720'
+                   'ae76c1f34dfafc066d4b132a701d514a214de44dd027ad8a83f058631f40479b')
+sha256sums_aarch64=('b07d4f738928e9c5d03464d9a6ff22c26df615c6657b4d58cc0a70b7e03831ce'
+                    'c2ad62a497afb2a24194b7502435e4c0fb29e86daf7ddfbd45752a62230de9f5')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
