@@ -1,0 +1,34 @@
+pkgbase = wsjtx-improved
+	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB (Widescreen Layout Version)
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/wsjt-x-improved/
+	install = wsjtx-improved.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = asciidoc
+	makedepends = asciidoctor
+	makedepends = boost
+	makedepends = gcc-fortran
+	makedepends = git
+	makedepends = texinfo
+	depends = fftw
+	depends = hamlib>=4.5
+	depends = libusb
+	depends = portaudio
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-serialport
+	depends = qt5-tools
+	depends = readline
+	provides = wsjtx
+	conflicts = wsjtx
+	options = !lto
+	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v2.7.1/Source%20code/wsjtx-2.7.1-devel_improved_widescreen_PLUS_231018.tgz
+	md5sums = c1090cae74d3a3af0b927d0e71569e26
+	sha1sums = e3ddd64f58c1537534d39e5cd213fcbbec257b71
+
+pkgname = wsjtx-improved
