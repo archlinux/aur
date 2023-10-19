@@ -5,7 +5,7 @@ _pkgname=wsjtx
 pkgver=2.6.2
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - Improved version by DG2YCB - Superbuild version, hamlib not required"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
 license=('GPL3')
 
