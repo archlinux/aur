@@ -23,7 +23,8 @@ pkgbase = electron11-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron11
+	provides = electron11=11.5.0
+	provides = electron=11.5.0
 	conflicts = electron11
 	source_x86_64 = electron11-bin-chromedriver-11.5.0-1-x86_64.zip::https://github.com/electron/electron/releases/download/v11.5.0/chromedriver-v11.5.0-linux-x64.zip
 	source_x86_64 = electron11-bin-11.5.0-1-x86_64.zip::https://github.com/electron/electron/releases/download/v11.5.0/electron-v11.5.0-linux-x64.zip
