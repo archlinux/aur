@@ -41,6 +41,5 @@ package() {
     install -Dm644 "scripts/$pkgname.service" -t "$pkgdir/usr/lib/systemd/user/"
 
     install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
-    install -Dm644 "FAQ.md" -t "$pkgdir/usr/share/doc/$pkgname/"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
