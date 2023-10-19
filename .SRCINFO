@@ -7,8 +7,6 @@ pkgbase = python-timesched
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python>=3.4
-	conflicts = timesched
-	replaces = timesched
 	source = python-timesched-1.7.tar.gz::https://github.com/bulletmark/timesched/archive/1.7.tar.gz
 	sha1sums = 07262e40c9a27217cfa1fccd61e3394799488606
 

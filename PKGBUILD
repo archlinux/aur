@@ -10,8 +10,6 @@ arch=("any")
 depends=("python>=3.4")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-replaces=($_pkgname)
-conflicts=($_pkgname)
 sha1sums=('07262e40c9a27217cfa1fccd61e3394799488606')
 
 package() {
