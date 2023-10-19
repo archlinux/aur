@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
@@ -33,6 +33,7 @@ Type=Application" > $pkgname.desktop
   export NODE_OPTIONS=--dns-result-order=ipv4first
 
   # Install npm dependencies
+  export CARGO_HOME="$srcdir/CARGO_HOME"
   npm install
   cd src-vue
   npm install
@@ -40,6 +41,7 @@ Type=Application" > $pkgname.desktop
 
 build() {
   cd FlightCore
+  export CARGO_HOME="$srcdir/CARGO_HOME"
   npm run tauri build
 }
 
