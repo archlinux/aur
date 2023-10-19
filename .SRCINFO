@@ -1,6 +1,6 @@
 pkgbase = python-stitching
 	pkgdesc = A Python package for fast and robust Image Stitching
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/OpenStitching/stitching
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-stitching
 	depends = python-largestinteriorrectangle
 	depends = python-numpy
 	provides = stitch
-	source = python-stitching-0.5.1.tar.gz::https://files.pythonhosted.org/packages/source/s/stitching/stitching-0.5.1.tar.gz
-	sha256sums = 6f378a4cb9d5f7fc2388339e4a4969fbad8aaa879766512d0f5b82b3f6c84914
+	source = python-stitching-0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/s/stitching/stitching-0.5.3.tar.gz
+	sha256sums = 6ea39b1c6886c7e581e6fefafcd2a9b7828bd8c45667ee7d0afbac4b5566a7a9
 
 pkgname = python-stitching
