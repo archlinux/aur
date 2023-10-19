@@ -17,7 +17,7 @@ build() {
   cd "$srcdir/hmat-oss-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DHMAT_GIT_VERSION=OFF -DBUILD_SHARED_LIBS=OFF ..
+    ${_arch}-cmake -DHMAT_GIT_VERSION=OFF ..
     make
     popd
   done
