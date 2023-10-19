@@ -1,23 +1,19 @@
-# Maintainer: Brodi <me@brodi.space>
-
+# Maintainer: Bradley O'Connell <bradleyocon@gmail.com>
 _plugin=file-sharing
-pkgname=cockpit-${_plugin}
-pkgver=3.2.9
+pkgname="cockpit-${_plugin}"
+pkgver="3.3.4"
 pkgrel=1
 pkgdesc="A Cockpit plugin to easily manage samba and NFS file sharing."
-arch=("any")
+arch=('any')
 url="https://github.com/45Drives/cockpit-file-sharing"
-license=("GPL3")
+license=('GPL3')
 depends=("cockpit" "python" "samba" "nfs-utils")
 makedepends=("cockpit" "make")
 provides=("${pkgname}")
-conflicts=("${pkgname}-bin" "${pkgname}-git")
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2c084d03dc4d352979e1f50c87416a371c2963f10c5d40656fd78a2cd128ab54850273303110419d265f1b9d6872b9157a329325e5473ef95e127be9287b8b1d')
+source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-${pkgrel}.el8.noarch.rpm")
+sha512sums=("1ecd1a8e2c3e65a853e6b9320257a4ca4b8a4c2932a55fd3fa434bd18b2508aab4be306209b9568639198a5113375c23dd7580217524fa93e88b628d628d897a")
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-
-	install -d ${pkgdir}/usr/share/cockpit/${_plugin}/
-	cp -rpf ./${_plugin}/* ${pkgdir}/usr/share/cockpit/${_plugin}/
+    find $srcdir/ -mindepth 1 -maxdepth 1 -type d | xargs cp -r -t "$pkgdir"
 }
+
