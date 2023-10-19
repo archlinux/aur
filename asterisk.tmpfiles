@@ -1,0 +1,11 @@
+Z /etc/asterisk - asterisk asterisk
+d /etc/asterisk 0750 - - -
+z /etc/asterisk/*.adsi 0640 - -
+z /etc/asterisk/*.ael 0640 - -
+z /etc/asterisk/*.conf 0640 - -
+z /etc/asterisk/*.lua 0640 - -
+z /etc/asterisk/*.timers 0640 - -
+d /run/asterisk 0750 asterisk asterisk -
+d /var/lib/asterisk 0750 asterisk asterisk -
+d /var/log/asterisk 0750 asterisk asterisk -
+d /var/spool/asterisk 0750 asterisk asterisk -
