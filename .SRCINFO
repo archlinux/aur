@@ -1,7 +1,7 @@
 pkgbase = python-mirakuru
 	pkgdesc = Start your subprocess and wait for a clear indication that it's running
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ClearcodeHQ/mirakuru
 	arch = any
 	license = LGPL3
@@ -12,6 +12,7 @@ pkgbase = python-mirakuru
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
 	depends = python-psutil
 	source = python-mirakuru-2.5.2.tar.gz::https://github.com/ClearcodeHQ/mirakuru/archive/refs/tags/v2.5.2.tar.gz
 	sha256sums = 41f01aae0fae2535292d9c6ac3f9f3980f5f96924c41d4d5f9687918788ff6c5
