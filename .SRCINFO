@@ -1,12 +1,12 @@
 pkgbase = bowtie2
 	pkgdesc = Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence.
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://bowtie-bio.sourceforge.net/bowtie2
 	arch = x86_64
 	license = GPL3
 	depends = zstd
-	source = bowtie2-2.5.1.tar.gz::https://github.com/BenLangmead/bowtie2/archive/v2.5.1.tar.gz
-	sha256sums = 3fe00f4f89b5dd85fd9317e2168ec93f30dbb75d7950a08516c767d21eca7c27
+	source = bowtie2-2.5.2.tar.gz::https://github.com/BenLangmead/bowtie2/archive/v2.5.2.tar.gz
+	sha256sums = 2f86dbfbf3dcb8521d559f830594fe28ac6e4c40d81313a8c2bfb17c82a501e0
 
 pkgname = bowtie2
