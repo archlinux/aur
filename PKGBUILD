@@ -6,7 +6,7 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-pkgver=25.9.1
+pkgver=25.9.2
 _chromiumver=114.0.5735.289
 # shellcheck disable=SC2034
 pkgrel=1
