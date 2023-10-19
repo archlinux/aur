@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqttx-git
 _pkgname=MQTTX
-pkgver=r1352.6d9a1db
+pkgver=1.9.6.r13.g668cec8
 pkgrel=1
 pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ"
-arch=('any')
+arch=('aarch64' 'x86_64')
 url="https://mqttx.app/"
 _githuburl="https://github.com/emqx/MQTTX"
 license=('Apache')
@@ -13,25 +13,27 @@ depends=('bash' 'electron13')
 source=("${pkgname//-/.}::git+${_githuburl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'f81607b1e13ca358f24f7fa430d8a939462a78baf7d7daa3f3801733ee6ab57c')
+            '7841f9fbf8cc9d9e21285b148fab6a92d6dc58c42856d15dbf3b2b3d3fcf80ef')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')"
 }
 build() {
+    gendesk -f -n -q --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname//-/.}"
-    yarn install
-    sed '106,108d' -i vue.config.js
+    sed -e "/target: 'deb'/d" -e "/target: 'rpm'/d" -e "/target: 'snap'/d" -i vue.config.js
+    yarn
     yarn run electron:build-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     if [ "${CARCH}" = x86_64 ];then
-        install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname%-git}/${pkgname%-git}.asar"
+        install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-git}/resources"
+        install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-unpacked/swiftshader/"* -t "${pkgdir}/opt/${pkgname%-git}/swiftshader"
     elif [ "${CARCH}" = aarch64 ];then
-        install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-arm64-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname%-git}/${pkgname%-git}.asar"
+        install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-arm64-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-git}/resources"
+        install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-arm64-unpacked/swiftshader/"* -t "${pkgdir}/opt/${pkgname%-git}/swiftshader"
     fi
-    install -Dm644 "${srcdir}/${pkgname//-/.}/public/icons/app.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    gendesk -f -n --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/public/icons/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
