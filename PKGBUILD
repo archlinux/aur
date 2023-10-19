@@ -1,8 +1,8 @@
 # Maintainer: Simn Hayessen <simon@lnqs.io>
 
 pkgname=gnome-shell-extension-system-monitor-next-git
-pkgver=r1173.fc9dc00
-pkgrel=2
+pkgver=r1217.9fd2fda
+pkgrel=1
 pkgdesc="Display system information in GNOME Shell status bar (next fork)"
 arch=('any')
 url="https://github.com/mgalgs/gnome-shell-system-monitor-applet"
@@ -19,7 +19,7 @@ _reponame=gnome-shell-system-monitor-applet
 package() {
   cd "$srcdir/$_reponame"
   install -d "$pkgdir/usr/share/gnome-shell/extensions"
-  cp -r "system-monitor@paradoxxx.zero.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions/system-monitor-next@paradoxxx.zero.gmail.com"
+  cp -r "system-monitor-next@paradoxxx.zero.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions/system-monitor-next@paradoxxx.zero.gmail.com"
 }
 
 pkgver() {
