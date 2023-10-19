@@ -2,7 +2,7 @@
 
 pkgname=wasm-server-runner
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="cargo run for the browser."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/jakobhellermann/wasm-server-runner"
