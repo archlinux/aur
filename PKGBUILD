@@ -46,8 +46,6 @@ depends=(
 	python-debugpy
 	jupyterlab
 	jupyter-lsp
-	npm # used by jlpm
-
 )
 makedepends=(
 	python-hatch-jupyter-builder
@@ -55,6 +53,7 @@ makedepends=(
 	python-installer
 	python-wheel
 	git
+	npm # used by jlpm
 )
 source=(git+https://github.com/"$_realm/$_name")
 md5sums=(SKIP)
