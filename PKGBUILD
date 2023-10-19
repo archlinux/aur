@@ -1,12 +1,12 @@
 # Maintainer: aquova <austinbricker at protonmail dot com>
 pkgname="gearsystem"
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sega Master System / Game Gear / SG-1000 Emulator"
 url="https://github.com/drhelius/Gearsystem"
 arch=("x86_64")
 license=("GPL3")
-depends=('glew-2.1' 'sdl2')
+depends=('glew' 'sdl2')
 source=("${url}/archive/refs/tags/gearsystem-${pkgver}.tar.gz")
 sha256sums=("c71c8415d18afee104aece2b04de0b6736dd2783b0c87b9a6a2bee9530d2d798")
 
