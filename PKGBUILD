@@ -25,7 +25,6 @@ makedepends=(
 	'cmake'
 	'boost'
 	'gcc-fortran'
-	'git'
 )
 
 install=jtdx-improved.install
@@ -37,27 +36,21 @@ md5sums=('539cfd3092b5a04977ed204166355f86')
 sha1sums=('5a9b2b22243e0f511fb6472d913ee277714e7447')
 
 prepare() {
-    bsdtar -xf ${_pkgname}_${pkgver}_improved_source.zip
+    sed -i 's|$ENV{HOME}|$ENV{DESTDIR}/opt/jtdx|' $_pkgname/CMakeLists.txt
 }
 
 build() {
-	mkdir -p "$srcdir/build"
-	cd "$srcdir/build"
-  		
-	cmake \
+    cd "$srcdir"
+	cmake -B build -S "$_pkgname" \
 		-Wno-dev \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D WSJT_SKIP_MANPAGES=ON \
-		-D WSJT_GENERATE_DOCS=OFF \
-    	../jtdx
-  	make
+		-D WSJT_GENERATE_DOCS=OFF
+  	cmake --build build
 }
 
 package() {
-	cd "$srcdir/build"
-	make DESTDIR=${pkgdir} install
-	install -Dm644 -v "$srcdir"/jtdx/sounds/{CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,PxOB,Px}.wav -t "$pkgdir"/opt/jtdx/sounds 
-	rm -rf "$pkgdir/home"
+    DESTDIR=${pkgdir} cmake --install build
 }
 
