@@ -9,7 +9,7 @@ url="https://github.com/desbma/${pkgname}"
 license=('GPL3')
 depends=('gcc-libs'
          'openssl')
-makedepends=('rust')
+makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('39da17f929bb17c9f4399926e3653cc661fbaee2bdb3b9b4b7f28be2fd8d88a35cf3a06973eb2e8820b01ea8abc2a9a964393ca037a77ec84a51fe6cbab38655')
 
