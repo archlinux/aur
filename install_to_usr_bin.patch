@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 82084ba..9961fa0 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -25,7 +25,7 @@
+ 
+ EXTRA_PROGRAMS = 	packit
+ 
+-sbin_PROGRAMS = 	@BINS@
++bin_PROGRAMS = 	@BINS@
+ 
+ common_SOURCES =        init.c \
+                         define_defaults.c \

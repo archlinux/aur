@@ -1,16 +1,22 @@
 pkgbase = packit
 	pkgdesc = network packet generator and capture tool
-	pkgver = 1.8
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/resurrecting-open-source-projects/packit
-	changelog = Changelog
-	arch = any
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL2
-	makedepends = git
-	depends = libnet>=1.1.2
-	depends = libpcap>=0.8
-	source = git+https://github.com/resurrecting-open-source-projects/packit
-	md5sums = SKIP
+	makedepends = autoconf
+	makedepends = automake
+	depends = glibc
+	depends = libnet
+	depends = libpcap
+	source = packit-1.8.1.tar.gz::https://github.com/resurrecting-open-source-projects/packit/archive/refs/tags/1.8.1.tar.gz
+	sha256sums = 6e2237f33aaf37e43188e6b0a8092a6ff7b8736df3b34ce0e9e830294fc48281
 
 pkgname = packit
-
