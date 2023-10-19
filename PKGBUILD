@@ -5,7 +5,7 @@ _pkgname=jtdx
 pkgver=2.2.159
 pkgrel=1
 pkgdesc="For amateur radio communication using very weak signals. Forked from WSJT-X. JTDX Improved by DG2YCB"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/jtdx-improved/"
 license=('GPL3')
 
@@ -48,7 +48,7 @@ build() {
   		
 	cmake \
 		-Wno-dev \
-    	-D CMAKE_INSTALL_PREFIX=/usr \
+		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D WSJT_SKIP_MANPAGES=ON \
 		-D WSJT_GENERATE_DOCS=OFF \
