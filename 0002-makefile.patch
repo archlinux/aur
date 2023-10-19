@@ -1,0 +1,40 @@
+diff --git a/Makefile.in b/Makefile.in
+index 147b0c8..7fe3a69 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -33,7 +33,7 @@ out_units		:= $(out_services) $(out_timers) $(out_targets) $(builddir)/units/cro
+                            $(builddir)/units/cron-update.path $(builddir)/units/cron-update.service \
+                            $(builddir)/units/cron-failure@.service
+ out_manuals		:= $(patsubst $(CURDIR)/man/%.in,$(builddir)/man/%,$(wildcard $(CURDIR)/man/*))
+-out_programs		:= $(patsubst $(srcdir)/bin/%.rs,$(builddir)/bin/%,$(wildcard $(srcdir)/bin/*.rs))
++out_programs		:= $(patsubst $(srcdir)/bin/%.rs,$(builddir)/release/%,$(wildcard $(srcdir)/bin/*.rs))
+ outputs			:= $(out_units) $(out_manuals) $(out_programs)
+ 
+ define \n
+@@ -65,19 +65,19 @@ test: all
+ 	cargo test
+ 
+ build: all
+-	test -f $(builddir)/bin/systemd-crontab-generator || \
++	test -f $(builddir)/release/systemd-crontab-generator || \
+ 	    PREFIX="$(prefix)" RUN_PARTS="$(runparts)" STATE_DIR="$(statedir)" \
+ 	    BIN_DIR="$(bindir)" CONF_DIR="$(confdir)" MAN_DIR="$(mandir)" DOC_DIR="$(docdir)" \
+ 	    DATA_DIR="$(datadir)" LIB_DIR="$(libdir)" UNIT_DIR="$(unitdir)" \
+-	    cargo install --path $(CURDIR) --root $(builddir) \
++	    cargo build --release --target-dir=$(builddir) \
+ 	    --features "$(foreach schedule,$(schedules),sched-$(schedule)) $(persistent) $(randomized_delay)"
+ 
+ install: build
+-	install -m2755 -g `getent group cron || echo root` $(strip) -D $(builddir)/bin/crontab $(DESTDIR)$(bindir)/crontab
+-	install -m755 $(strip) -D $(builddir)/bin/systemd-crontab-generator $(DESTDIR)$(libdir)/systemd/system-generators/systemd-crontab-generator
+-	install -m755 $(strip) -D $(builddir)/bin/remove-stale-stamps $(DESTDIR)$(libdir)/$(packagedir)/remove-stale-stamps
+-	install -m755 $(strip) -D $(builddir)/bin/mail-on-failure $(DESTDIR)$(libdir)/$(packagedir)/mail-on-failure
+-	install -m755 $(strip) -D $(builddir)/bin/boot-delay $(DESTDIR)$(libdir)/$(packagedir)/boot-delay
++	install -m2755 -g `getent group cron || echo root` $(strip) -D $(builddir)/release/crontab $(DESTDIR)$(bindir)/crontab
++	install -m755 $(strip) -D $(builddir)/release/systemd-crontab-generator $(DESTDIR)$(libdir)/systemd/system-generators/systemd-crontab-generator
++	install -m755 $(strip) -D $(builddir)/release/remove-stale-stamps $(DESTDIR)$(libdir)/$(packagedir)/remove-stale-stamps
++	install -m755 $(strip) -D $(builddir)/release/mail-on-failure $(DESTDIR)$(libdir)/$(packagedir)/mail-on-failure
++	install -m755 $(strip) -D $(builddir)/release/boot-delay $(DESTDIR)$(libdir)/$(packagedir)/boot-delay
+ 
+ 	install -m644 -D $(builddir)/man/systemd.cron.7 $(DESTDIR)$(mandir)/man7/systemd.cron.7
+ 	install -m644 -D $(builddir)/man/crontab.1 $(DESTDIR)$(mandir)/man1/crontab.1
