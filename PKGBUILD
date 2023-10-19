@@ -4,29 +4,29 @@
 # Contributor: Kars Wang <jaklsy g-mail>
 # Contributor: Artem Klevtsov <a.a.klevtsov@gmail.com>
 pkgname=lantern-bin
-pkgver=7.4.0
-pkgrel=2
+pkgver=7.6.1
+pkgrel=1
 pkgdesc='Free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel, binary)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://getlantern.org'
 _githuburl="https://github.com/getlantern/lantern"
 license=('Apache')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-headless")
 provides=("${pkgname%-bin}")
-depends=('libappindicator-gtk3' 'bash' 'gtk3' 'glib2' 'glibc' 'gcc-libs')
+depends=('bash' 'gtk3' 'glib2' 'glibc' 'gcc-libs' 'libayatana-appindicator')
 options=('!emptydirs' '!strip' '!docs')
-source=("${pkgname%-bin}.service")
-source_i686=("${pkgname}-${pkgver}-i686.deb::https://github.com/getlantern/lantern-binaries/raw/main/${pkgname%-bin}-installer-32-bit.deb")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/getlantern/lantern-binaries/raw/main/${pkgname%-bin}-installer-64-bit.deb")
-sha256sums=('fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
-sha256sums_i686=('0488927484396a7912a4b0d64b8209f3e01b87e47c3665a8c55508014650e4b8')
-sha256sums_x86_64=('7996c1707b9b8550203fb1037960312fbab266b6e439684f3f1d6aaee27e5e4d')
+source=("${pkgname}-${pkgver}.deb::https://github.com/getlantern/lantern-binaries/raw/main/${pkgname%-bin}-installer-64-bit.deb"
+    "${pkgname%-bin}.service")
+sha256sums=('4867c2f4d9d29691b005a5324074f9531781b32abe79050834ed5446a85ff123'
+            'fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
 package() {
     install -Dm755 "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}-binary" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm755 "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}.sh" -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}.yaml" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm755 "${srcdir}/usr/lib/${pkgname%-bin}/.packaged-${pkgname%-bin}.yaml" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
