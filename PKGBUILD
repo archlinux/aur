@@ -1,4 +1,6 @@
 # Maintainer: Bradley O'Connell <bradleyocon@gmail.com>
+# Contributor: Brodi <me@brodi.space>
+
 _plugin=file-sharing
 pkgname="cockpit-${_plugin}"
 pkgver="3.3.4"
