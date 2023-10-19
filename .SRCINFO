@@ -10,8 +10,6 @@ pkgbase = wasm-server-runner
 	arch = aarch64
 	license = MIT
 	depends = cargo
-	conflicts = wasm-server-runner-git
-	conflicts = wasm-server-runner-bin
 	source = wasm-server-runner-0.4.0.tar.gz::https://static.crates.io/crates/wasm-server-runner/wasm-server-runner-0.4.0.crate
 	b2sums = 39d7fa608d9fff9502c6a4b38f7897b60fdfb577a20a58c208ef9bed08ebdf99adfdedf009cb075a280b4621716f3cf10bd208dd758ae9322f67b0c9d75f6d96
 
