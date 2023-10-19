@@ -8,6 +8,7 @@ url="https://onnx.ai"
 license=('MIT')
 depends=('glibc' 'protobuf')
 makedepends=('cmake' 'git' 'python')
+provides=('onnx')
 conflicts=('onnx' 'onnx-py' 'python-onnx')
 source=("${pkgname}-${pkgver}::git+https://github.com/onnx/onnx.git")
 b2sums=("SKIP")

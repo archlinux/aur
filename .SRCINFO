@@ -10,6 +10,7 @@ pkgbase = onnx-git
 	makedepends = python
 	depends = glibc
 	depends = protobuf
+	provides = onnx
 	conflicts = onnx
 	conflicts = onnx-py
 	conflicts = python-onnx
