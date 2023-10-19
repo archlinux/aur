@@ -18,17 +18,17 @@ source=("git+https://github.com/shundhammer/qdirstat.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
-	cd "$srcdir/${_pkgname}"
-	qmake-qt5
-	make
+    cd "$srcdir/${_pkgname}"
+    qmake-qt5
+    make
 }
 
 package () {
     cd "$srcdir/${_pkgname}"
-	make INSTALL_ROOT="${pkgdir}" install
+    make INSTALL_ROOT="${pkgdir}" install
 }
