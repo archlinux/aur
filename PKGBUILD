@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codex-bin
 _pkgname=Codex
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A free note-taking software for programmers and Computer Science students"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 depends=('hicolor-icon-theme' 'mesa' 'pango' 'expat' 'libxfixes' 'nss' 'gtk3' 'libxext' 'libxrandr' 'libxkbcommon' 'libx11' 'dbus' \
     'cairo' 'alsa-lib' 'libxcomposite' 'nspr' 'at-spi2-core' 'libcups' 'glibc' 'libdrm' 'gcc-libs' 'glib2' 'libxdamage' 'libxcb')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
-sha256sums=('59fe7fd2335c8b2f9f8e1209858ee40ffba17ffa003a1f54eaa7f26ce4306c31')
+sha256sums=('bde66ecdcb95491b1c44202bb0e6944b5e20b54ea525a1132f42502099692992')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
