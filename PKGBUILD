@@ -3,11 +3,13 @@
 _name=python-pygithub
 pkgname="$_name-git"
 pkgver=v2.1.1.r3.gdc37d5c1
-pkgrel=1
+pkgrel=2
 pkgdesc="Use the full Github API v3"
 arch=('any')
 license=('LGPL')
 url="https://github.com/PyGithub/PyGithub"
+provides=('python-pygithub')
+conflicts=('python-pygithub')
 depends=('python-deprecated' 'python-pyjwt' 'python-requests' 'python-pynacl')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest' 'python-cryptography' 'python-httpretty' 'python-parameterized')
