@@ -2,7 +2,7 @@
 
 pkgname=libssc-git
 pkgdesc="Library to expose Qualcomm Sensor Core sensors"
-pkgver=0.1.3+r6+g586b412
+pkgver=0.1.3.r6.g586b412
 pkgrel=1
 _arches=specific
 arch=(any)
@@ -20,13 +20,12 @@ makedepends=(
     meson
     git
 )
-_commit=586b412dfa4f6819d847d2cadf02073111f4caee
-source=("git+https://codeberg.org/DylanVanAssche/libssc.git#commit=$_commit")
+source=("git+https://codeberg.org/DylanVanAssche/libssc.git")
 sha256sums=(SKIP)
 
 pkgver() {
     cd libssc
-    git describe --tags | sed 's/-rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
+    git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
