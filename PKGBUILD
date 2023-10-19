@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Dynamically generate system information for MOTD SSH banner'
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
-license=('GPL')
+license=('GPL3')
 makedepends=('rust')
 optdepends=('hddtemp: to probe hard drive temperatures'
             'systemd: to display failed units')
