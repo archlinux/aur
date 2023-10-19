@@ -29,6 +29,6 @@ build () {
 }
 
 package () {
-        cd "$srcdir/${_pkgname}"
+    cd "$srcdir/${_pkgname}"
 	make INSTALL_ROOT="${pkgdir}" install
 }
