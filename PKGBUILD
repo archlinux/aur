@@ -4,7 +4,7 @@
 # Feel free to send a PR to https://github.com/parca-dev/parca-archlinux
 
 pkgname=parca
-pkgver=0.13.0
+pkgver=0.19.0
 pkgrel=1
 
 pkgdesc='Continuous profiling for analysis of CPU, memory usage over time, and down to the line number.'
@@ -21,7 +21,7 @@ source=("parca-v$pkgver.tar.gz::https://github.com/parca-dev/parca/archive/refs/
         parca.sysusers
         parca.conf)
 
-sha256sums=('65d44e3f329944af5610a01713ec8f5c300b63b5b2b2adf94d082c151545fc68'
+sha256sums=('a43912dbfe0032e1967ef48f303bab6b9a06e7f1588cb8a443a8a53d5aca1ab7'
             '7ed83cee9ef9b186fdb26e48f19d1f0d37960afe6d983341e253db6a23bf7fe6'
             '4e3462335427c83919a58c6060f194e4c45b76234b24f330a06b1ecf16789de0'
             'd917730e72fc1db483fc7a64e4ade9c4cebb91df9199b3981a3a107232602e23')
@@ -29,7 +29,6 @@ sha256sums=('65d44e3f329944af5610a01713ec8f5c300b63b5b2b2adf94d082c151545fc68'
 build() {
   cd $srcdir/parca-$pkgver/ui
   yarn --prefer-offline
-  yarn bootstrap
   yarn build
 
   cd $srcdir/parca-$pkgver
