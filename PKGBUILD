@@ -1,4 +1,4 @@
-# Maintainer: Sambhav <samb at disroot dot org>
+# Maintainer: Ersei <contact at ersei dot net>
 # Contributer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui-git
 pkgver=v0.3.2.r6.g485df2e
@@ -36,7 +36,7 @@ md5sums=(
 
 pkgver() {
   cd "mcpelauncher-ui-manifest"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
   cd mcpelauncher-ui-manifest
