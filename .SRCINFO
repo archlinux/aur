@@ -1,6 +1,6 @@
 pkgbase = python-labxpipe
 	pkgdesc = Genomics pipelines
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://sr.ht/~vejnar/LabxPipe
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-labxpipe
 	depends = python-labxdb-tools
 	depends = python-pyfnutils
 	depends = python-xlsxwriter
-	source = python-labxpipe-0.7.0.tar.gz::https://git.sr.ht/~vejnar/LabxPipe/archive/v0.7.0.tar.gz
-	sha256sums = 0027a512ee80feffa47d8f1928402c0f1a4c6ae4d11d414f207cb81a495ecc77
+	source = python-labxpipe-0.7.1.tar.gz::https://git.sr.ht/~vejnar/LabxPipe/archive/v0.7.1.tar.gz
+	sha256sums = 8cc76a0e08ed40314c04b0604dc060ffb376c2e66095acb77ca0d8dcbadfa4fa
 
 pkgname = python-labxpipe
