@@ -1,0 +1,10 @@
+pkgbase = dragonrise-udev
+	pkgdesc = udev rules for DragonRise Adaptors
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = 70-dragonrise.rules
+	sha256sums = c268220b0b4898b2a2bdfc17d9b3bb5de06b21ee78b4a77cec49cf3eaa014fcf
+
+pkgname = dragonrise-udev
