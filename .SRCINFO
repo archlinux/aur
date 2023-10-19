@@ -30,9 +30,7 @@ pkgbase = openmc-git
 	depends = hdf5
 	provides = openmc-git
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
-	source = set_paths.sh
 	source = openmc.sh
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
