@@ -1,12 +1,12 @@
 # Maintainer: aquova <austinbricker at protonmail dot com>
 pkgname="gearboy"
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Game Boy / Gameboy Color emulator"
 url="https://github.com/drhelius/Gearboy"
 arch=("x86_64")
 license=("GPL3")
-depends=('glew-2.1' 'sdl2')
+depends=('glew' 'sdl2')
 source=("${url}/archive/refs/tags/gearboy-${pkgver}.tar.gz")
 sha256sums=("d407a0ab090f4db33a244606af2136c71737c58e61d684fdbcb4881aa1133b9c")
 
