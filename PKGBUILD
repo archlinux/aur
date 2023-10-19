@@ -13,8 +13,7 @@ depends=("gtk3" "libxss" "alsa-lib" "libxtst" "libsecret" "nss"
          "glibc>=2.28-4")
 optdepends=("org.freedesktop.secrets: keyring/password support"
             "libappindicator-gtk3: systray icon support")
-conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-preview-bin"
-           "$_pkgname-beta-bin" "skype")
+conflicts=("$_pkgname"  "$_pkgname-preview-bin" "skype")
 provides=("$_pkgname" "skype")
 install="$pkgname-install"
 # We embed the pkgrel in the download file name because skype devs
