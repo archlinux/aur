@@ -3,13 +3,12 @@
 pkgname=flashbrowser
 _appname=FlashBrowser
 pkgver=0.81
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser capable of viewing/displaying pages with embedded flash content"
 url="https://flash.pm/"
 arch=('any')
 license=('unknown')
-depends=('npm')
-makedepends=('imagemagick')
+makedepends=('npm' 'wine' 'wine-mono' 'imagemagick')
 provides=('flashbrowser')
 conflicts=('flashbrowser')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/radubirsan/FlashBrowser/archive/refs/tags/v${pkgver}.tar.gz"
@@ -18,44 +17,30 @@ sha256sums=('062e59a50e30a7cdd618328d9582b58d805dfe50990a9f93df2dddc8c6e4b4ae'
             'c4cf51979c204268bc70533a319e3fdfb913dec0aa8edaea0a7f7a7cb8ca3b78')
 
 prepare() {
-# Create executable /usr/bin file
-cat > FlashBrowser.sh <<EOF
-#!/bin/sh
-cd /usr/lib/node_modules/FlashBrowser
-npm run start &
-EOF
+	cd "$srcdir"/$_appname-$pkgver
+	npm i --legacy-peer-deps --cache "$srcdir"/npm-cache
 }
 
 build() {
 	cd "$srcdir"/$_appname-$pkgver
-	npm i --legacy-peer-deps --cache "$srcdir"/npm-cache
-
-	#Cleanup npm folder
-	cd ..
-	find "$srcdir"/$_appname-$pkgver -type f -name ".*" -delete
-	find "$srcdir"/$_appname-$pkgver -type d \( -name "_*" -o -name ".git*" \) -prune -exec rm -rf {} \;
-	[ $CARCH = "x86_64" ] && find "$srcdir"/$_appname-$pkgver -type d \( -name "arm" -o -name "arm64" \) -prune -exec rm -rf {} \;
-	[ $CARCH = "aarch64" ] && find "$srcdir"/$_appname-$pkgver -type d \( -name "ia32" -o -name "x64" \) -prune -exec rm -rf {} \;
-	[ $CARCH = "armv7h" ] && find "$srcdir"/$_appname-$pkgver -type d \( -name "ia32" -o -name "x64" \) -prune -exec rm -rf {} \;
-
-	# Create npm tgz package
-	bsdtar -a -cf $_appname-$pkgver.tgz $_appname-$pkgver
+	# build3: 'electron-packager . FlashBrowser --all --overwrite --icon=icon.ico'
+	npm run build3 --target dir
 }
 
 package() {
-	# Install npm package
-	npm i -g --prefix "$pkgdir"/usr "$srcdir"/$_appname-$pkgver.tgz
+	mkdir -p "$pkgdir"/opt/$pkgname "$pkgdir"/usr/bin
 
-	# Non-deterministic race in npm gives 777 permissions to random directories.
-	# See https://github.com/npm/npm/issues/9359 for details.
-	chmod -R u=rwX,go=rX "$pkgdir"
-
-	# npm installs package.json owned by build user
-	# https://bugs.archlinux.org/task/63396
-	chown -R root:root "$pkgdir"
+	# Install 'any' supported 'arch'
+	[ $CARCH = "i686" ] 	&& cp -av "$srcdir"/$_appname-$pkgver/$_appname-linux-ia32/* "$pkgdir"/opt/$pkgname
+	[ $CARCH = "x86_64" ] 	&& cp -av "$srcdir"/$_appname-$pkgver/$_appname-linux-x64/* "$pkgdir"/opt/$pkgname
+	[ $CARCH = "armv7h" ] 	&& cp -av "$srcdir"/$_appname-$pkgver/$_appname-linux-armv7l/* "$pkgdir"/opt/$pkgname
+	[ $CARCH = "aarch64" ] 	&& cp -av "$srcdir"/$_appname-$pkgver/$_appname-linux-arm64/* "$pkgdir"/opt/$pkgname
 
 	# Install /usr/bin executable
-	install -Dm755 "$srcdir"/$_appname.sh "$pkgdir"/usr/bin/$_appname
+	ln -s /opt/$pkgname/$_appname "${pkgdir}"/usr/bin/$_appname
+
+	# Install desktop entry file
+	install -Dm644 "$srcdir"/$_appname.desktop "$pkgdir"/usr/share/applications/$_appname.desktop
 
 	# Install icons
 	for d in 16 24 32 48 256; do
@@ -72,7 +57,4 @@ package() {
 	convert "$srcdir"/$_appname-$pkgver/icon.ico[${layer}] -define icon:auto-resize=${i} \
 		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png
 	done
-
-	# Install desktop entry file
-	install -Dm644 ../$_appname.desktop "$pkgdir"/usr/share/applications/$_appname.desktop
 }
