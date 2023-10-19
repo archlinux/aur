@@ -4,8 +4,8 @@
 # Github Contributors: https://github.com/SampsonCrowley/arch_packages/contributors.md
 
 pkgname=heroku-cli
-pkgver=8.4.2
-pkgrel=2
+pkgver=8.5.0
+pkgrel=1
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
