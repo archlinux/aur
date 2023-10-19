@@ -1,0 +1,7 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,4 +29,0 @@
+-execute_process(COMMAND "git" "describe" "--tags" "--abbrev=0"
+-                OUTPUT_VARIABLE CMAKE_PROJECT_VERSION)
+-string(REPLACE "\n" "" CMAKE_PROJECT_VERSION "${CMAKE_PROJECT_VERSION}")
+-string(REPLACE "v" "" CMAKE_PROJECT_VERSION "${CMAKE_PROJECT_VERSION}")
