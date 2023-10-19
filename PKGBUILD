@@ -1,12 +1,12 @@
 # Maintainer: aquova <austinbricker at protonmail dot com>
 pkgname="gearcoleco"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ColecoVision emulator"
 url="https://github.com/drhelius/Gearcoleco"
 arch=("x86_64")
 license=("GPL3")
-depends=('glew-2.1' 'sdl2')
+depends=('glew' 'sdl2')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=("87d1b99173573f2fc1139e068bd332b677862699800531eb747e2c3184e05e2f")
 
