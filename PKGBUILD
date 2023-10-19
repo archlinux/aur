@@ -3,7 +3,8 @@
 
 pkgname=qdirstat-git
 _pkgname=qdirstat
-pkgver=20230809.8174478
+epoch=1
+pkgver=1.8.1.r42.g8174478
 pkgrel=1
 pkgdesc="GUI disk usage utility (successor to kdirstat)"
 arch=('i686' 'x86_64')
@@ -18,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
