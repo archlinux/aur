@@ -1,7 +1,7 @@
 pkgbase = capacity-tester
 	pkgdesc = A simple tool that attempts to determine if a drive is a fake or not.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/c0xc/CapacityTester
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,6 @@ pkgbase = capacity-tester
 	makedepends = make
 	depends = hicolor-icon-theme
 	depends = qt5-base
-	conflicts = capacity-tester-git
-	conflicts = capacity-tester-bin
 	source = capacity-tester-0.3.tar.gz::https://github.com/c0xc/CapacityTester/archive/v0.3.tar.gz
 	source = capacity-tester.desktop
 	sha512sums = c9ec20709f0a4d635b954549065d7a9f8bbb76069b0aab684a8e8fc6e1218302dcc0c7513d8f1281c3daba7dd415679a269d1d7b668577648a816b16d1a60122
