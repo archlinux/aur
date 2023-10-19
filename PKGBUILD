@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.5.0rc.5.r1.gdf905040
+pkgver=1.6.0beta.2.r0.g87391c3e
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -28,7 +28,7 @@ pkgver() {
     git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-\([^-]*\)-\([^-]*\)$/.\1.\2/;s/-//'
 }
 
-_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api
+_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_reality_server,with_clash_api,with_ech
 build(){
     cd "$_pkgname"
 
