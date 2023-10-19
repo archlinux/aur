@@ -1,0 +1,17 @@
+pkgbase = python-alt-pytest-asyncio
+	pkgdesc = Alternative pytest plugin to pytest-asyncio
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/delfick/alt-pytest-asyncio
+	arch = any
+	license = MIT
+	checkdepends = python-noseofyeti
+	checkdepends = python-nest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-pytest
+	source = https://github.com/delfick/alt-pytest-asyncio/archive/release-0.7.2/python-alt-pytest-asyncio-0.7.2.tar.gz
+	sha512sums = 177ddf9e4083436fa50494921488e4e6207dfbd38525da8e474a95e83afaa49c01f0769239e6b686752f2c8208e61d883adf5698b2265aa8389001f55a881b24
+
+pkgname = python-alt-pytest-asyncio
