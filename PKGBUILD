@@ -55,20 +55,7 @@ build() {
 package() {
 	cd "$srcdir/build"
 	make DESTDIR=${pkgdir} install
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/ContinentOnBand.wav" "$pkgdir/opt/wsjtx/sounds/ContinentOnBand.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/Continent.wav" "$pkgdir/opt/wsjtx/sounds/Continent.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/CQ.wav" "$pkgdir/opt/wsjtx/sounds/CQ.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/CQZoneOnBand.wav" "$pkgdir/opt/wsjtx/sounds/CQZoneOnBand.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/CQZone.wav" "$pkgdir/opt/wsjtx/sounds/CQZone.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/DXcall.wav" "$pkgdir/opt/wsjtx/sounds/DXcall.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/DXCCOnBand.wav" "$pkgdir/opt/wsjtx/sounds/DXCCOnBand.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/DXCC.wav" "$pkgdir/opt/wsjtx/sounds/DXCC.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/GridOnBand.wav" "$pkgdir/opt/wsjtx/sounds/GridOnBand.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/Grid.wav" "$pkgdir/opt/wsjtx/sounds/Grid.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/ITUZoneOnBand.wav" "$pkgdir/opt/wsjtx/sounds/ITUZoneOnBand.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/ITUZone.wav" "$pkgdir/opt/wsjtx/sounds/ITUZone.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/MyCall.wav" "$pkgdir/opt/wsjtx/sounds/MyCall.wav"
-	install -Dm744 "$srcdir/build/wsjtx-prefix/src/wsjtx/sounds/_Zone.wav" "$pkgdir/opt/wsjtx/sounds/_Zone.wav"
-	rm -rf $pkgdir/home
+    install -Dm644 "$srcdir"/build/wsjtx-prefix/src/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav "$pkgdir"/opt/wsjtx/sounds
+	rm -rf "$pkgdir/home"
 }
 
