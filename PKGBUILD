@@ -1,29 +1,45 @@
-# Maintainer: Jonathan Eyolfson <jon@eyl.io>
+# Maintainer: Junxuan Liao <mikeljx at 126 dot com>
 pkgname=dynamorio
-pkgver=9.0.1
+pkgdesc="A dynamic instrumentation tool platform"
+pkgver=10.0.0
 pkgrel=1
-pkgdesc="A dynamic binary instrumentation framework"
-url="http://dynamorio.org"
-arch=('x86_64' 'i686')
-license=('BSD')
-depends=()
-optdepends=()
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-source=("https://github.com/DynamoRIO/dynamorio/releases/download/release_${pkgver}/DynamoRIO-Linux-${pkgver}.tar.gz")
-sha256sums=('90452768bda1ee9f123f86a916ecb0a442c59bade36d999de73f759c4f79e6e7')
+arch=('x86_64')
+url="https://github.com/DynamoRIO/dynamorio"
+license=('BSD' 'custom:libelftc' 'LGPL2.1')
+groups=()
+depends=('gcc-libs' 'zlib' 'libunwind' 'snappy' 'lz4' 'perl' 'qt5-base' 'python')
+makedepends=('git' 'cmake' 'doxygen')
+options=(!strip)
+source=(
+    "${pkgname}::git+${url}.git#tag=release_${pkgver}"
+    "git+https://github.com/intel/libipt.git"
+    "git+https://github.com/madler/zlib.git"
+    )
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+    git submodule init
+    git config submodule.third_party/libipt.url "$srcdir/libipt"
+    git config submodule.third_party/zlib.url "$srcdir/zlib"
+    git -c protocol.file.allow=always submodule update
+}
+
+build() {
+    cmake -B build-debug -S "${srcdir}/${pkgname}" \
+        -DDEBUG=ON \
+        -DCMAKE_INSTALL_PREFIX="/opt/${pkgname}"
+        
+    cmake --build build-debug
+
+    cmake -B build-release -S "${srcdir}/${pkgname}" \
+        -DCMAKE_INSTALL_PREFIX="/opt/${pkgname}"
+        
+    cmake --build build-release
+}
 
 package() {
-  cd "${srcdir}/DynamoRIO-Linux-${pkgver}"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  mv License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  install -d "${pkgdir}/opt/dynamorio"
-  cp -a * ${pkgdir}/opt/dynamorio
-
-  find ${pkgdir}/opt/dynamorio/ -type f -executable -exec chmod 755 {} \;
-  find ${pkgdir}/opt/dynamorio/ -type f -not -executable -exec chmod 644 {} \;
-  find ${pkgdir}/opt/dynamorio/ -type d -exec chmod 755 {} \;
+    DESTDIR="$pkgdir" cmake --install build-debug
+    DESTDIR="$pkgdir" cmake --install build-release
+    install -Dm644 ${srcdir}/${pkgname}/License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

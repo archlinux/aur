@@ -1,12 +1,29 @@
 pkgbase = dynamorio
-	pkgdesc = A dynamic binary instrumentation framework
-	pkgver = 9.0.1
+	pkgdesc = A dynamic instrumentation tool platform
+	pkgver = 10.0.0
 	pkgrel = 1
-	url = http://dynamorio.org
+	url = https://github.com/DynamoRIO/dynamorio
 	arch = x86_64
-	arch = i686
 	license = BSD
-	source = https://github.com/DynamoRIO/dynamorio/releases/download/release_9.0.1/DynamoRIO-Linux-9.0.1.tar.gz
-	sha256sums = 90452768bda1ee9f123f86a916ecb0a442c59bade36d999de73f759c4f79e6e7
+	license = custom:libelftc
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gcc-libs
+	depends = zlib
+	depends = libunwind
+	depends = snappy
+	depends = lz4
+	depends = perl
+	depends = qt5-base
+	depends = python
+	options = !strip
+	source = dynamorio::git+https://github.com/DynamoRIO/dynamorio.git#tag=release_10.0.0
+	source = git+https://github.com/intel/libipt.git
+	source = git+https://github.com/madler/zlib.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dynamorio
