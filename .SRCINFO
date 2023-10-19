@@ -9,6 +9,7 @@ pkgbase = jupyter-nbgrader
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = npm
 	depends = python
 	depends = python-alembic
 	depends = python-ipywidgets
@@ -37,7 +38,6 @@ pkgbase = jupyter-nbgrader
 	depends = python-debugpy
 	depends = jupyterlab
 	depends = jupyter-lsp
-	depends = npm
 	source = https://files.pythonhosted.org/packages/source/n/nbgrader/nbgrader-0.9.1.tar.gz
 	sha256sums = 88e3718fb4e6f75dd0b90afea3c5ad0abf14fd23ead4ce7a5c2be5eb6fa327d2
 

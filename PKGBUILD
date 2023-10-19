@@ -43,14 +43,13 @@ depends=(
 	python-debugpy
 	jupyterlab
 	jupyter-lsp
-	npm # used by jlpm
-
 )
 makedepends=(
 	python-hatch-jupyter-builder
 	python-build
 	python-installer
 	python-wheel
+	npm # used by jlpm
 )
 source=(
 	https://files.pythonhosted.org/packages/source/"${_name::1}/$_name/$_name-$pkgver".tar.gz
