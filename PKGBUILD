@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-macs3
-pkgver=3.0.0b2
+pkgver=3.0.0b3
 pkgrel=1
 pkgdesc="MACS -- Model-based Analysis of ChIP-Seq"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("BSD")
 depends=('python'
          'python-hmmlearn'
          'python-numpy')
-makedepends=('cython'
+makedepends=('cython0' # MACS3 isn't yet compatible with Cython3
              'python-cykhash'
              'python-build'
              'python-installer'
@@ -18,8 +18,8 @@ makedepends=('cython'
              'python-wheel')
 source=("https://pypi.python.org/packages/source/m/macs3/MACS3-${pkgver}.tar.gz"
         "no_pip.patch")
-sha256sums=('9b13fed49b93623ddde4b2d5106fc92a796111fa92148cafe7d8bd9a2e8aa43f'
-            '8ec28d5e711dc2330d55f5dd43c1c8cad1112ca3891827b8faebefc0dfb3e39a')
+sha256sums=('caa794d4cfcd7368447eae15878505315dac44c21546e8fecebb3561e9cee362'
+            'a07b4d9fa3f0e11a97c7ffae59cc6265335d6029858609ef08e8b1de88ab71ed')
 
 prepare() {
     cd "$srcdir/MACS3-$pkgver"
