@@ -1,6 +1,6 @@
 pkgbase = asus-numberpad-driver-git
 	pkgdesc = Linux newest feature-rich configurable driver for Asus numberpad
-	pkgver = r630.3aa3a2b
+	pkgver = r632.6e8abbe
 	pkgrel = 1
 	url = https://github.com/asus-linux-drivers/asus-numberpad-driver
 	install = asus-numberpad-driver-git.install
@@ -24,18 +24,36 @@ pkgbase = asus-numberpad-driver-git
 
 pkgname = asus-numberpad-driver-b7402-git
 
+pkgname = asus-numberpad-driver-b7402-unicode-git
+
 pkgname = asus-numberpad-driver-e210ma-git
+
+pkgname = asus-numberpad-driver-e210ma-unicode-git
 
 pkgname = asus-numberpad-driver-g513-git
 
+pkgname = asus-numberpad-driver-g513-unicode-git
+
 pkgname = asus-numberpad-driver-g533-git
+
+pkgname = asus-numberpad-driver-g533-unicode-git
 
 pkgname = asus-numberpad-driver-gx551-git
 
+pkgname = asus-numberpad-driver-gx551-unicode-git
+
 pkgname = asus-numberpad-driver-gx701-git
+
+pkgname = asus-numberpad-driver-gx701-unicode-git
 
 pkgname = asus-numberpad-driver-up5401ea-git
 
+pkgname = asus-numberpad-driver-up5401ea-unicode-git
+
 pkgname = asus-numberpad-driver-ux433fa-git
 
+pkgname = asus-numberpad-driver-ux433fa-unicode-git
+
 pkgname = asus-numberpad-driver-ux581l-git
+
+pkgname = asus-numberpad-driver-ux581l-unicode-git

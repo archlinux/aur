@@ -4,16 +4,25 @@ _pkgbase=asus-numberpad-driver
 pkgbase="${_pkgbase}-git"
 pkgname=(
     "${_pkgbase}-b7402-git"
+    "${_pkgbase}-b7402-unicode-git"
     "${_pkgbase}-e210ma-git"
+    "${_pkgbase}-e210ma-unicode-git"
     "${_pkgbase}-g513-git"
+    "${_pkgbase}-g513-unicode-git"
     "${_pkgbase}-g533-git"
+    "${_pkgbase}-g533-unicode-git"
     "${_pkgbase}-gx551-git"
+    "${_pkgbase}-gx551-unicode-git"
     "${_pkgbase}-gx701-git"
+    "${_pkgbase}-gx701-unicode-git"
     "${_pkgbase}-up5401ea-git"
+    "${_pkgbase}-up5401ea-unicode-git"
     "${_pkgbase}-ux433fa-git"
+    "${_pkgbase}-ux433fa-unicode-git"
     "${_pkgbase}-ux581l-git"
+    "${_pkgbase}-ux581l-unicode-git"
 )
-pkgver=r630.3aa3a2b
+pkgver=r632.6e8abbe
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numberpad"
 arch=('any')
