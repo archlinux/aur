@@ -55,7 +55,7 @@ build() {
 package() {
 	cd "$srcdir/build"
 	make DESTDIR=${pkgdir} install
-    install -Dm644 "$srcdir"/build/wsjtx-prefix/src/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav "$pkgdir"/opt/wsjtx/sounds
+    install -Dm644 "$srcdir"/build/wsjtx-prefix/src/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
 	rm -rf "$pkgdir/home"
 }
 
