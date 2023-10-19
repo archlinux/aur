@@ -5,7 +5,7 @@ pkgdesc="Generate a very nya sentence"
 arch=('any')
 url="http://github.com/JessSystemV/nya"
 source=("https://github.com/JessSystemV/nya/archive/refs/heads/main.zip")
-sha256sums=('3a6e8aa2c5e8e8064009f94a990b6fb3cb8d2b085c84aadaa0c2cd81a6193cf4')
+sha256sums=('de62338c4d9b563b285453b3b091f535704cf815f3d62ffe19a574209187f54e')
 
 build()	{
 	cd nya-main
