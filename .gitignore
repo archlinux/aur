@@ -1,5 +1,4 @@
 *
-!.SRCINFO
 !PKGBUILD
-!makefile.patch
+!.SRCINFO
 !.gitignore
