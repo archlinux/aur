@@ -1,4 +1,4 @@
-pkgbase = wsjtx-improved
+pkgbase = wsjtx-improved-widescreen
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB (Widescreen Layout Version)
 	pkgver = 2.7.1
 	pkgrel = 1
@@ -31,4 +31,4 @@ pkgbase = wsjtx-improved
 	md5sums = c1090cae74d3a3af0b927d0e71569e26
 	sha1sums = e3ddd64f58c1537534d39e5cd213fcbbec257b71
 
-pkgname = wsjtx-improved
+pkgname = wsjtx-improved-widescreen
