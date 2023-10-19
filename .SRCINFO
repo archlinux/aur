@@ -34,5 +34,6 @@ pkgbase = openmc-git
 	source = openmc.sh
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = openmc-git
