@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 pkgname=python-anytree
 _name=${pkgname#python-}
-pkgver=2.10.0
+pkgver=2.11.1
 pkgrel=1
 pkgdesc="Simple, lightweight and extensible Tree data structure."
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-six')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("$_name-$pkgver.tar.gz::https://github.com/c0fec0de/anytree/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a1c3bfad59b338416a3c9a4dd5e32f5e8b5abfd13464633a2937e571cad91be2')
+sha256sums=('c718503882f2438e8484ee37d7698efc868f6fc8edf7bdc86061a82fcb4a8d44')
 
 build() {
   cd "$_name-$pkgver"
