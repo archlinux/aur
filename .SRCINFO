@@ -1,6 +1,6 @@
 pkgbase = python-selenium
 	pkgdesc = Python language bindings for Selenium WebDriver
-	pkgver = 4.12.0
+	pkgver = 4.14.0
 	pkgrel = 1
 	url = https://www.selenium.dev
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-selenium
 	depends = python-trio
 	depends = python-trio-websocket
 	options = !makeflags
-	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.12.0.tar.gz
-	sha256sums = b69cd3e99682d2030db53ed8274e746a30a4689609ca92b4d49098fb4c612f71
+	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.14.0.tar.gz
+	sha256sums = d995a7120362c540a176180642da05165d5c5fc97409effd3a51ec0f0bfe3153
 
 pkgname = python-selenium
