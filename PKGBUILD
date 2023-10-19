@@ -29,7 +29,6 @@ makedepends=(
 	'asciidoctor'
 	'boost'
 	'gcc-fortran'
-	'git'
 	'texinfo'
 )
 

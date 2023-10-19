@@ -13,7 +13,6 @@ pkgbase = wsjtx-improved-widescreen
 	makedepends = asciidoctor
 	makedepends = boost
 	makedepends = gcc-fortran
-	makedepends = git
 	makedepends = texinfo
 	depends = fftw
 	depends = hamlib>=4.5
