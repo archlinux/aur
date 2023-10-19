@@ -9,6 +9,6 @@ pkgbase = check-broken-packages-pacman-hook-git
 	makedepends = rust
 	conflicts = pacman-hooks-desbma-git
 	source = git+https://github.com/desbma/pacman-hooks
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = check-broken-packages-pacman-hook-git
