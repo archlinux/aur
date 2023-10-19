@@ -3,7 +3,7 @@
 # Contributor: tobtoht <dev[at]featherwallet[dot]org>
 
 pkgname='monero-feather-git'
-pkgver=2.5.1.5a24c7a
+pkgver=2.5.2.bd40ec7
 pkgrel=1
 pkgdesc='A free Monero desktop wallet'
 license=('BSD')
