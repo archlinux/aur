@@ -1,0 +1,23 @@
+pkgbase = yuvviewer-git
+	pkgdesc = A small tool for developers to view and preview various original image formats.
+	pkgver = 0.5.3.r15.g4d26058
+	pkgrel = 1
+	url = https://github.com/QQxiaoming/TTFviewer
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = qt5-tools
+	depends = opencv
+	depends = qt6-base
+	depends = qt6-svg
+	depends = xdg-utils
+	depends = glibc
+	depends = gcc-libs
+	provides = yuvviewer
+	conflicts = yuvviewer
+	conflicts = yuvviewer-git
+	source = yuvviewer::git+https://github.com/QQxiaoming/YUVviewer.git
+	sha256sums = SKIP
+
+pkgname = yuvviewer-git
