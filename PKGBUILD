@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=7.1.1.r10.g74d667854
+pkgver=7.1.1.r97.g5ddc41877
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -13,8 +13,12 @@ depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
+        "git+https://github.com/HarbourMasters/OTRExporter.git"
+        "git+https://github.com/HarbourMasters/ZAPDTR.git"
         "soh.desktop")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
@@ -38,9 +42,11 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_reponame}"
 
-  # Init libultraship submodule
+  # Init all submodules
   git submodule init
   git config submodule.libultraship.url "$srcdir/libultraship"
+  git config submodule.OTRExporter.url "$srcdir/OTRExporter"
+  git config submodule.ZAPDTR.url "$srcdir/ZAPDTR"
   git -c protocol.file.allow=always submodule update
 
   if [ "$__generate_headers" = 1 ]; then
