@@ -2,7 +2,7 @@
 
 pkgname="clipsim-git"
 pkgver=r371.ae5d06a
-pkgrel=1
+pkgrel=2
 pkgdesc="clipsim is a simple and fast X clipboard manager written in C."
 arch=(x86_64)
 url='https://github.com/lucas-mior/clipsim'
