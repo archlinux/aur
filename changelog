@@ -1,3 +1,10 @@
+2023-10-19 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.12.3-1:
+    [!] Fixed another Steam breaking change introduced at 19.10.2023 which permanently broke establishing web sessions, thanks Valve (@JustArchi #3043 #3044).
+    Added DefaultBot global config property, which allows to pick default bot for IPC and interactive console (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-10-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.11.4-1:
     [!] Fixed Steam breaking change introduced on 18.10.2023 which caused all ASFs to crash during establishing web session (@JustArchi #3029).
