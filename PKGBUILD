@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=rpi-imager-bin
-pkgver=1.7.5
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Raspberry Pi Imaging Utility"
 arch=('x86_64')
@@ -11,9 +11,9 @@ optdepends=('udisks2: non-root user support')
 provides=('rpi-imager')
 conflicts=('rpi-imager')
 source=("https://github.com/raspberrypi/rpi-imager/releases/download/v$pkgver/rpi-imager_${pkgver}_amd64.deb")
-sha256sums=('6d29ecb9a91a5459a50c5f7b28ece84b6e2e3677bce4221b6df609237868d824')
+sha256sums=('32d3119717a5f748924c0cc11e4e15543377418bc8e01bc21ba40469a6e6c955')
 
 package() {
-  bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
+  bsdtar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
   rm "$pkgdir/usr/share/doc/rpi-imager/copyright"
 }
