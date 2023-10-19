@@ -1,7 +1,7 @@
 pkgbase = ccase
 	pkgdesc = A command line utility for converting between string cases
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rutrum/ccase
 	arch = x86_64
 	arch = i686
@@ -10,8 +10,6 @@ pkgbase = ccase
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	conflicts = ccase-git
-	conflicts = ccase-bin
 	source = ccase-0.4.1.tar.gz::https://static.crates.io/crates/ccase/ccase-0.4.1.crate
 	sha512sums = 7c739949caddeb836194b62a3a0c67470ef087b7b7670466261500ff57a01e5e53ed2a347dbd75fae4e1813f3ea1755a59e46c4038055ca691fec7b4356b31f6
 

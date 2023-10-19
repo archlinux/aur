@@ -2,12 +2,11 @@
 
 pkgname=ccase
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for converting between string cases"
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://github.com/rutrum/ccase"
 license=("MIT")
-conflicts=("ccase-git" "ccase-bin")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
