@@ -1,0 +1,18 @@
+pkgbase = notion-app-electron
+	pkgdesc = The all-in-one workspace for your notes and tasks
+	pkgver = 2.0.18
+	pkgrel = 1
+	url = https://github.com/notion-enhancer/notion-repackaged
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = bash
+	depends = electron
+	provides = notion-app
+	conflicts = notion-app
+	source_x86_64 = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.18-1/notion-app-2.0.18-1.pacman
+	sha256sums_x86_64 = f9266604ae38fb75ee49489ab9eb8c261c72b809f5023d2e1939e2bf0fff7c75
+	source_aarch64 = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.18-1/notion-app-2.0.18-1-aarch64.pacman
+	sha256sums_aarch64 = c63d54090a5a6f49cb7f809ec0bc516b46beb7b2b5d81caf8862d5967692fd03
+
+pkgname = notion-app-electron
