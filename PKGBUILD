@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust')
+makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('dde6704a06e10b07179524ce8fe180d564c94de191ce15aad4380a771b279d3b1de07037b5f633cff7150e6ee6463492171c296f991946066549e9a84d934b92')
 
