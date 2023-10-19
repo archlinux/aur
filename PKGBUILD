@@ -12,7 +12,7 @@ depends=('xmonad')
 makedepends=('git')
 conflicts=('pacman-hooks-desbma-git')
 source=("git+https://github.com/desbma/${_gitname}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"

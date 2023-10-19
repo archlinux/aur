@@ -9,6 +9,6 @@ pkgbase = xmonad-recompile-pacman-hook-git
 	depends = xmonad
 	conflicts = pacman-hooks-desbma-git
 	source = git+https://github.com/desbma/pacman-hooks
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = xmonad-recompile-pacman-hook-git
