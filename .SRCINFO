@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-adaptive-binarize-git
+	pkgdesc = Plugin for Vapoursynth: adaptive-binarize (GIT version)
+	pkgver = r1.3.g655014b
+	pkgrel = 1
+	url = https://github.com/dnjulek/VapourSynth-AdaptiveBinarize.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = pkgconf
+	depends = vapoursynth
+	provides = vapoursynth-plugin-adaptive-binarize
+	conflicts = vapoursynth-plugin-adaptive-binarize
+	source = adaptive-binarize::git+https://github.com/dnjulek/VapourSynth-AdaptiveBinarize.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-adaptive-binarize-git
