@@ -2,7 +2,7 @@
 # Contributor: Iraklis Karagkiozoglou <iraklisk at outlook dot com>
 
 pkgname=irony-mode
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A C/C++ minor mode for Emacs powered by libclang"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('emacs' 'llvm' 'clang')
 makedepends=('cmake')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Sarcasm/irony-mode/archive/v${pkgver}.tar.gz")
-sha256sums=('718165a00d0ac9e42635607e8fd94219bc93634ae565bc96c231a24955f85b46')
+sha256sums=('efcaad5e92024bb25103d143b1e154f75e32a0f1cab3b7ee621242d439c2eecb')
 
 build() {
   mkdir -p ${srcdir}/build && cd ${srcdir}/build
