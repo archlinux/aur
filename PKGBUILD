@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=picgo-git
 _pkgname=PicGo
-pkgver=r512.dca6667
+pkgver=2.4.0.beta.5.r6d4e1c2
 pkgrel=1
 pkgdesc="A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder"
 arch=('any')
@@ -10,26 +10,27 @@ _githuburl="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
 makedepends=('npm' 'git' 'nodejs>=16.0.0' 'gendesk' 'graphicsmagick' 'xz' 'libicns' 'yarn')
 depends=('bash' 'electron16')
-source=("git+${_githuburl}.git"
+source=("${pkgname//-/.}::git+${_githuburl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '1bcd48bbd3e1d1eb6958f5c0d8662d84ce3bb2b5b49022fc5c8888c258c84c84')
+            'e69031dd3f7af01ad71e765270e6a29f83657a021f8517a88f969044600ceafe')
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname//-/.}"
+    printf "%s.r%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')" "$(git rev-parse --short HEAD)"
 }
 build() {
-    cd "${srcdir}/${_pkgname}"
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
+    sed "s|build --publish always|build --linux AppImage --publish never|g" -i package.json
     yarn
     yarn global add xvfb-maybe spawn-sync
-    sed "s|build --publish always|build --linux AppImage --publish never|g" -i package.json
     yarn release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${_pkgname}/dist_electron/linux-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname%-git}/${pkgname%-git}.asar"
-    install -Dm644 "${srcdir}/${_pkgname}/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    gendesk -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-git}/resources"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-unpacked/swiftshader/"* -t "${pkgdir}/opt/${pkgname%-git}/swiftshader"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
