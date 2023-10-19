@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.178.0
+pkgver=3.178.4
 pkgrel=1
 _nodeversion=16
 _electronversion=25
@@ -15,7 +15,7 @@ makedepends=('git' 'libxcrypt-compat' 'nvm' 'python' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('542e414eabede496ccda998f206772548477b68cee8a5e910f35e05670e7df90'
+sha256sums=('4fbf8f7844e8aa2ff174f59dcee791ee285a7d7ca54c43cd8c5e95c7dceee711'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '340c01f232b7d4bbf3778e66666c78567bf61ef71a3db4a0d8d00d83565be1a3')
 
@@ -38,16 +38,10 @@ prepare() {
 
 build() {
   cd "app--$pkgname-$pkgver"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export YARN_CACHE_FOLDER=.yarn/cache
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-
-  if [[ $CARCH == 'aarch64' ]]; then
-    export npm_config_target_arch=arm64
-    export npm_config_arch=arm64
-    export npm_config_host_arch=arm64
-  fi
 
   _ensure_local_nvm
   yarn install --immutable
@@ -55,16 +49,9 @@ build() {
 
   cd packages/desktop
   yarn run webpack --config desktop.webpack.prod.js --env deb
-
-  if [ "$CARCH" == "aarch64" ]; then
-    yarn run electron-builder --linux --arm64 -c.linux.target=deb \
-      ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
-      --publish=never --c.extraMetadata.version=${pkgver}
-  else
-    yarn run electron-builder --linux --x64 -c.linux.target=deb \
-      ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
-      --publish=never --c.extraMetadata.version=${pkgver}
-  fi
+  yarn run electron-builder --linux -c.linux.target=deb \
+    ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
+    --publish=never --c.extraMetadata.version=${pkgver}
 }
 
 package() {
