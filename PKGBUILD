@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music-git
-pkgver=2.0.4.r1.ge9398ad
+pkgver=2.1.2.r1.gfa4c69d
 pkgrel=1
 _electronversion=25
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
@@ -8,8 +8,7 @@ arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
 depends=("electron${_electronversion}" 'libsecret')
-makedepends=('git' 'nodejs>=16.0.0' 'npm')
-optdepends=('libnotify: desktop notifications')
+makedepends=('git' 'nodejs>=16.0.0' 'pnpm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
@@ -29,12 +28,13 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  export npm_config_cache="$srcdir/npm_cache"
-  npm install
-  npm run clean
-  npm run build
-  HOME="$srcdir/.electron-gyp" ./node_modules/.bin/electron-builder --linux dir \
-    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --frozen-lockfile
+  pnpm build
+  HOME="$srcdir/.electron-gyp" ./node_modules/.bin/yarpm-pnpm run clean && \
+    ./node_modules/.bin/yarpm-pnpm run build && \
+    ./node_modules/.bin/electron-builder --linux dir \
+    ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
 }
 
 package() {
