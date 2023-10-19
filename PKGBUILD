@@ -7,7 +7,8 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
-pkgname=asterisk
+pkgname=asterisk-lts-20
+_pkg=${pkgname//-lts-20/}
 pkgver=20.5.0
 pkgrel=1
 pkgdesc='A complete PBX solution - Long Term Support release 20'
@@ -146,12 +147,15 @@ _confs=(acl.conf
         users.conf
         voicemail.conf
         xmpp.conf)
-backup=("${_confs[@]/#/etc/$pkgname/}")
-_archive="$pkgname-$pkgver"
-source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"
-        "$pkgname.sysusers"
-        "$pkgname.logrotated"
-        "$pkgname.tmpfiles"
+provides=(${_pkg})
+conflicts=(${_pkg})
+replaces=(${_pkg})
+backup=("${_confs[@]/#/etc/${_pkg}/}")
+_archive="$_pkg-$pkgver"
+source=("https://downloads.asterisk.org/pub/telephony/$_pkg/releases/$_archive.tar.gz"
+        "$_pkg.sysusers"
+        "$_pkg.logrotated"
+        "$_pkg.tmpfiles"
         "fix-upnp.patch")
 sha256sums=('05dc5f235da44b69102bedca067bf35a612813502d1e18cd88a22d9e4c25c5e7'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
@@ -180,7 +184,7 @@ build() {
 		--localstatedir=/var \
 		--sbindir=/usr/bin
 
-	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR="/run/$pkgname" NOISY_BUILD=1
+	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR="/run/${_pkg}" NOISY_BUILD=1
 }
 
 package(){
@@ -194,7 +198,7 @@ package(){
 	# that our current meta data matches whatever just got packaged, else flunk
 	# with a helpful output of where the lists differ. We have to compare twice
 	# because cmp has a useful exit code, comm has a useful output, neither both
-	local _backs=($(cd "$pkgdir/etc/$pkgname" && echo *))
+	local _backs=($(cd "$pkgdir/etc/${_pkg}" && echo *))
 	cmp -s \
 		<(IFS=$'\n'; echo "${_confs[*]}" | sort) \
 		<(IFS=$'\n'; echo "${_backs[*]}" | sort) ||
@@ -203,18 +207,18 @@ package(){
 			<(IFS=$'\n'; echo "${_backs[*]}" | sort) &&
 		exit 1)
 
-	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/$pkgname/asterisk.conf"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/$pkgname/"*
+	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/${_pkg}/asterisk.conf"
+	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkg}/examples" "$pkgdir/etc/${_pkg}/"*
 
 	mv "$pkgdir/var/run" "$pkgdir"
 
 	pushd contrib/systemd
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$pkname"*.{service,socket}
+	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "${_pkg}"*.{service,socket}
 
 	pushd "$srcdir"
-	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-	install -Dm644 "$pkgname.logrotated" "$pkgdir/etc/logrotate.d/$pkgname"
-	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -Dm644 "${_pkg}.sysusers" "$pkgdir/usr/lib/sysusers.d/${_pkg}.conf"
+	install -Dm644 "${_pkg}.logrotated" "$pkgdir/etc/logrotate.d/${_pkg}"
+	install -Dm644 "${_pkg}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${_pkg}.conf"
 
-	chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"$pkgname"
+	chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"${_pkg}"
 }
