@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/just-buildsystem/justbuild"
 license=('Apache')
 depends=('glibc' 'gcc-libs' 'fmt' 'openssl' 'zlib' 're2' 'c-ares' 'grpc' 'abseil-cpp' 'curl' 'python' 'protobuf' 'libarchive' 'libgit2')
-makedepends=('clang' 'binutils' 'wget' 'cli11' 'microsoft-gsl' 'nlohmann-json' 'pandoc')
+makedepends=('gcc' 'wget' 'cli11' 'microsoft-gsl' 'nlohmann-json' 'pandoc')
 conflicts=('just' 'just-git' 'just-js')
 source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
         "gsl.pc")
@@ -23,7 +23,7 @@ build() {
     mkdir -p "${srcdir}/build"
 
     # Bootstrap just
-    env JUST_BUILD_CONF='{"COMPILER_FAMILY": "clang", "CC": "/usr/bin/clang", "CXX": "/usr/bin/clang++", "AR": "/usr/bin/ar", "FINAL_LDFLAGS": ["-Wl,-z,relro,-z,now"]}'\
+    env JUST_BUILD_CONF='{"COMPILER_FAMILY": "gnu", "CC": "/usr/bin/gcc", "CXX": "/usr/bin/g++", "AR": "/usr/bin/gcc-ar", "FINAL_LDFLAGS": ["-Wl,-z,relro,-z,now"]}'\
             PKG_CONFIG_PATH="${srcdir}"\
             PACKAGE=YES\
             LOCALBASE=/usr\
