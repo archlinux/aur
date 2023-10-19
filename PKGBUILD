@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=platypush-git
-pkgver=0.50.3.r388.ed2a56de
+pkgver=0.50.3.r389.0eae6fd4
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
