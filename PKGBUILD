@@ -1,7 +1,7 @@
 # Maintainer: Doclic <doclic@tutanota.com>
 
 pkgname=vtex2-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="A VTF conversion and creation tool"
