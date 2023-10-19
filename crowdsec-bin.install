@@ -9,8 +9,12 @@ post_install() {
     cscli collections install crowdsecurity/linux crowdsecurity/whitelist-good-actors
     cscli machines add --force "$(</etc/machine-id)" --auto
     cscli capi register
-    systemctl daemon-reload
-    systemctl enable --now crowdsec
+    if systemctl is-active -q crowdsec; then
+        systemctl reload crowdsec
+    else
+        systemctl daemon-reload
+        systemctl enable --now crowdsec
+    fi
 }
 
 pre_upgrade() {
