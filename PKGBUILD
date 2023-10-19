@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash' 'electron26')
 makedepends=('yarn' 'nodejs>=16' 'npm' 'gendesk' 'libxtst' 'libxtst' 'libicns' 'graphicsmagick' 'xz' 'asar')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh")
-sha256sums=('2e4e05cd3a0daa8d22f776c6bd766f6c3c9128d7e46fb0e944c4b72cd1b1992b'
+sha256sums=('b6a6853f2ce47cff24150ab451c66bcc88d81f977fe4e84bb604ce059441942a'
             '087d0ff408d5f0f270b36c65e5e1e5d27b277017b2091df08b0502cdebacb633')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
