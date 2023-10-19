@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Debian partial mirror script, with ftp and package pool support'
 url="https://salsa.debian.org/debian/${pkgname}"
 arch=('any')
-license=('GPL')
+license=('GPL2')
 # see https://packages.debian.org/fr/sid/debmirror
 depends=('bzip2' 'perl-lockfile-simple' 'perl-libwww' 'rsync')
 optdepends=('diffutils' 'ed' 'gnupg' 'patch')
