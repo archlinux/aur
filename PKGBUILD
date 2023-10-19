@@ -8,6 +8,7 @@ arch=('x86_64')
 _gitname='pacman-hooks'
 url="https://github.com/desbma/${_gitname}"
 license=('GPL3')
+depends=('gcc-libs')
 makedepends=('cargo' 'git')
 conflicts=('pacman-hooks-desbma-git')
 source=("git+https://github.com/desbma/${_gitname}")

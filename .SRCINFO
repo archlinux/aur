@@ -7,6 +7,7 @@ pkgbase = check-broken-packages-pacman-hook-git
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
+	depends = gcc-libs
 	conflicts = pacman-hooks-desbma-git
 	source = git+https://github.com/desbma/pacman-hooks
 	sha512sums = SKIP
