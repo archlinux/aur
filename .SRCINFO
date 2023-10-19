@@ -1,6 +1,6 @@
 pkgbase = orchis-theme-git
 	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
-	pkgver = 2023.05.27.r31.g1976650a
+	pkgver = 2023.10.20.r0.gc30d107b
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Orchis-theme
 	install = orchis-theme.install
