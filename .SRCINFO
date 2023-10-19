@@ -1,6 +1,6 @@
 pkgbase = elevate-git
-	pkgdesc = A sport app to Elevate your training experience and goals! Track your fitness and progressions over time. Analyse deeper your activities. And more...
-	pkgver = r4063.ba534053
+	pkgdesc = A sport app to 'Elevate' your training experience and goals! Track your fitness and progressions over time. Analyse deeper your activities. And more...
+	pkgver = 7.0.0.beta.5.r7.gba534053
 	pkgrel = 1
 	url = https://thomaschampagne.github.io/elevate-docs/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = elevate-git
 	depends = bash
 	depends = electron17
 	depends = hicolor-icon-theme
-	source = git+https://github.com/thomaschampagne/elevate.git
+	source = elevate.git::git+https://github.com/thomaschampagne/elevate.git
 	source = elevate.sh
 	sha256sums = SKIP
-	sha256sums = 6abbee57f24ea2af0a67dab357ba0b4961cafcd319040411ea3195c7e7706b74
+	sha256sums = 56d7c956d9b4e37347d3218d2634a1a2580942a546ddb957c47c6294991ea963
 
 pkgname = elevate-git
