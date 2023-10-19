@@ -2,5 +2,6 @@ post_install() {
 	echo ""
 	echo "##### NOTE #####"
 	echo "-> If you want to use audible alerts, copy /opt/wsjtx/sounds to \$HOME/sounds after the package installation."
+	echo ""
 }
 
