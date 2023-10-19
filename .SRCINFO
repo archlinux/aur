@@ -1,7 +1,7 @@
 pkgbase = balongflash-git
 	pkgdesc = Flashing utility for Huawei E3372 and other modems baesd on Balong v7
 	pkgver = 3.0+290.r112.20211111.bf43faa
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/forth32/balongflash
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = balongflash-git
 	provides = balongflash=3.0+290.r112.20211111.bf43faa
 	conflicts = balongflash
 	source = balongflash::git+https://github.com/forth32/balongflash.git
-	source = helpmessages_english.txt::http://ix.io/1RtB
+	source = balongflash-3.0+290.r112.20211111.bf43faa_-_helpmessages_english.txt::http://ix.io/1RtB
 	sha256sums = SKIP
 	sha256sums = d24d9ad7a03a7482ca675d624e39d6b5b8f1423f7137708cc9707f734d22971e
 
