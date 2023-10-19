@@ -1,6 +1,6 @@
 pkgbase = onlyoffice-bin
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors
-	pkgver = 7.4.1
+	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://www.onlyoffice.com/
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = onlyoffice-bin
 	optdepends = ttf-ms-fonts: for Microsoft fonts
 	provides = onlyoffice
 	conflicts = onlyoffice
-	noextract = onlyoffice-desktopeditors-x86_64-7.4.1.deb
+	noextract = onlyoffice-desktopeditors-x86_64-7.5.0.deb
 	options = !strip
 	options = !emptydirs
-	source = onlyoffice-desktopeditors-x86_64-7.4.1.deb::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v7.4.1/onlyoffice-desktopeditors_amd64.deb
-	sha256sums = bda045dc62722c195d59d12bb8e795a51bf018dc1a465ec828f82e0cb4687bc3
+	source = onlyoffice-desktopeditors-x86_64-7.5.0.deb::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v7.5.0/onlyoffice-desktopeditors_amd64.deb
+	sha256sums = 5023bf6f82d04970cefe1791e1b49f31d2da1124957dd539eca9b7485b1852a6
 
 pkgname = onlyoffice-bin
