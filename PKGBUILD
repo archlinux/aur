@@ -2,7 +2,7 @@
 
 _pkgname=pocket-sync
 pkgname=$_pkgname-bin
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc='A GUI to do stuff with the Analogue Pocket'
 url='https://github.com/neil-morrison44/pocket-sync'
@@ -14,7 +14,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 source=("https://github.com/neil-morrison44/pocket-sync/releases/download/v${pkgver}/pocket-sync_${pkgver}_amd64.AppImage")
-sha512sums=('c50f38ef910e503bb5cad60a74afcd09279aeb500cb127f356cb0195526acfb774477e85de2e0e56d36ddcc4be170d87167d15a077a8be6e606ab47265657dfc')
+sha512sums=('1a4b4f82e9ba9ca4353686e8d7f168f67b70c096b43ab74c6883f711aa5a6c018fbe99a36351f81bae6e3ffc7f8404ce491724fef5fdc890718a94a753aad667')
 
 prepare() {
   [[ -d squashfs-root ]] && rm -rf squashfs-root
