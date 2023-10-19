@@ -34,6 +34,9 @@ md5sums=('SKIP')
 upstream_firmwares=(
 	"cypress/cyfmac43455-sdio.bin"
 	"cypress/cyfmac43455-sdio.clm_blob"
+	"r8a779x_usb3_v1.dlmem"
+	"r8a779x_usb3_v2.dlmem"
+	"r8a779x_usb3_v3.dlmem"
 )
 
 pkgver() {
