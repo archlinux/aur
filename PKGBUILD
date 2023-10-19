@@ -27,6 +27,11 @@ depends=(
 	python-requests
 	python-sqlalchemy
 	python-pyaml
+	jupyterlab
+	python-types-python-dateutil
+	python-terminado
+	python-debugpy
+	jupyter-lsp
 
 	# Additional optional deps from jsonschema probably due to https://github.com/jupyter/jupyter_events/blob/9b99f6718a3bb2686aab51e17f5c7ee276baf316/pyproject.toml#L31C4-L33C112
 	python-fqdn
