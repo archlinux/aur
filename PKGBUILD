@@ -58,14 +58,11 @@ sha256sums=(SKIP)
 pkgver() {
     cd mobile-mutter
 
-    if ! git show-ref --tags | grep -q "refs/tags/45.rc"; then
-        git config --global user.email "build@manjaro.org"
-        git config --global user.name "Manjaro Build Server"
+    _hash=$(git describe --always --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    _target=$(git log --grep="Bump version to 45.rc" --pretty=format:"%h")
+    _count=$(git rev-list "$_target"..HEAD --count)
 
-        git tag -a 45.rc 493e799398991e832f3cec38f376e2ec26fc7bda -m "Bump version to 45.rc"
-    fi
-
-    git describe --long --abbrev=7 --tags "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    echo "45.rc.r$_count.g$_hash"
 }
 
 prepare() {
