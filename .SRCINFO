@@ -23,7 +23,8 @@ pkgbase = electron9-bin
 	optdepends = libappindicator-gtk3: StatusNotifierItem support
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron9
+	provides = electron9=9.4.4
+	provides = electron=9.4.4
 	conflicts = electron9
 	source_x86_64 = electron9-bin-chromedriver-9.4.4-1-x86_64.zip::https://github.com/electron/electron/releases/download/v9.4.4/chromedriver-v9.4.4-linux-x64.zip
 	source_x86_64 = electron9-bin-9.4.4-1-x86_64.zip::https://github.com/electron/electron/releases/download/v9.4.4/electron-v9.4.4-linux-x64.zip
@@ -43,4 +44,3 @@ pkgbase = electron9-bin
 	sha256sums_aarch64 = f1145e9a1feb5f2955e5f5565962423ac3c52ffe45ccc3b96c6ca485fa35bf27
 
 pkgname = electron9-bin
-
