@@ -2,7 +2,7 @@
 
 pkgname=tbls-bin
 _name=${pkgname%-bin}
-pkgver=1.70.1
+pkgver=1.70.2
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database"
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=("$_name")
 conflicts=("$_name")
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/tbls_v${pkgver}_linux_amd64.tar.gz")
-sha256sums=('42d961baed243435fa9aa5ab5b066de2769d3777831901c4dc7c400519f36137')
+sha256sums=('aa1075b9d3dc70a0ab6d07fcc0911440df44d874ba8c2345708d578627eca0a7')
 noextract=("$pkgname-$pkgver.tar.gz")
 
 _archive="$pkgname-$pkgver"
@@ -31,8 +31,8 @@ prepare() {
 package() {
   cd "$_archive"
 
-  install -Dm755 tbls "${pkgdir}/usr/bin/tbls"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 tbls "$pkgdir/usr/bin/tbls"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 tbls.bash "$pkgdir/usr/share/bash-completion/completions/tbls"
   install -Dm644 tbls.fish "$pkgdir/usr/share/fish/vendor_completions.d/tbls.fish"
   install -Dm644 tbls.zsh "$pkgdir/usr/share/zsh/site-functions/_tbls"
