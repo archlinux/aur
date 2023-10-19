@@ -1,6 +1,6 @@
 pkgbase = opstakultura
 	pkgdesc = A simple knowledge quiz on general culture
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/dida-code/opstakultura
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = opstakultura
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
+	depends = python-gobject
 	depends = libadwaita
-	source = git+https://github.com/dida-code/opstakultura.git#tag=v1.1.2
+	source = git+https://github.com/dida-code/opstakultura.git#tag=v1.1.3
 	sha256sums = SKIP
 
 pkgname = opstakultura
