@@ -34,7 +34,11 @@ depends=(
 	python-types-python-dateutil
 	python-terminado
 	python-debugpy
+	jupyterlab
 	jupyter-lsp
+	python-types-python-dateutil
+	python-terminado
+	python-debugpy
 
 	# Additional optional deps from jsonschema probably due to https://github.com/jupyter/jupyter_events/blob/9b99f6718a3bb2686aab51e17f5c7ee276baf316/pyproject.toml#L31C4-L33C112
 	python-fqdn
@@ -44,13 +48,6 @@ depends=(
 	python-uri-template
 	python-jsonpointer
 	python-isoduration
-
-	# Others
-	python-types-python-dateutil
-	python-terminado
-	python-debugpy
-	jupyterlab
-	jupyter-lsp
 )
 makedepends=(
 	python-hatch-jupyter-builder
