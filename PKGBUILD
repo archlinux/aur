@@ -1,12 +1,12 @@
 pkgbase=tal-drum
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://tal-software.com/products/tal-drum"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
-source=('https://tal-software.com/downloads/plugins/TAL-Drum_64_linux.zip')
+source=("TAL-DRUM-${pkgver}_64_Linux.zip"::'https://tal-software.com/downloads/plugins/TAL-Drum_64_linux.zip')
 b2sums=('662964e72150665d03a0667db63e9616af2d32290d80cc2436a352cd7f755538b920f7b3ee86ce29724b15d1c72cfb4f27ea96126795bae2dbc184ef4938863d')
 
 package_tal-drum-vst() {
