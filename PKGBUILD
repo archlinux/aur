@@ -21,6 +21,6 @@ pkgver() {
 package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/include/stb stb_*.{c,h}
+	install -Dm644 -t "$pkgdir"/usr/include/$_pkgname stb_*.{c,h}
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
