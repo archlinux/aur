@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.10.2] - 2023-07-29
+
+### Added
+
+- Add `PDF.path`: A `Path` object for PDFs loaded by passing a path (unless `repair=True`), and `None` otherwise. ([30a52cb](https://github.com/jsvine/pdfplumber/commit/30a52cb) + [#948](https://github.com/jsvine/pdfplumber/issues/948))
+
+- Accept `Iterable` objects for geometry utils (h/t @dhdaines). ([53bee23](https://github.com/jsvine/pdfplumber/commit/53bee23) + [#945](https://github.com/jsvine/pdfplumber/pulls/945))
+
+### Changed
+
+- Use pypdfium2's *public* (not private) `.render(...)` method (h/t @mara004). ([28f4ebe](https://github.com/jsvine/pdfplumber/commit/28f4ebe) + [#899](https://github.com/jsvine/pdfplumber/discussions/899#discussioncomment-6520928))
+
+### Fixed
+
+- Fix `.to_image()` for `ZipExtFile`s (h/t @Urbener). ([30a52cb](https://github.com/jsvine/pdfplumber/commit/30a52cb) + [#948](https://github.com/jsvine/pdfplumber/issues/948))
+
+## [0.10.1] - 2023-07-19
+
+### Added
+
+- Add `antialias` boolean parameter to `Page.to_image(...)` and associated methods (h/t @cmdlineluser). ([7e28931](https://github.com/jsvine/pdfplumber/commit/7e28931))
+
+## [0.10.0] - 2023-07-16
+
+### Changed
+
+- Normalize color representation to `tuple[float|int, ...]` ([#917](https://github.com/jsvine/pdfplumber/issues/917)). ([57d51bb](https://github.com/jsvine/pdfplumber/commit/57d51bb))
+- Replace Wand with pypdfium2 for page.to_image(...). ([b049373](https://github.com/jsvine/pdfplumber/commit/b049373))
+
+### Added
+
+- Add `pdfplumber.repair(...)` and `.open(repair=True)` ([#824](https://github.com/jsvine/pdfplumber/issues/824)). ([db6ae97](https://github.com/jsvine/pdfplumber/commit/db6ae97))
+- Add Page.find_table(...) ([#873](https://github.com/jsvine/pdfplumber/issues/873)). ([3772af6](https://github.com/jsvine/pdfplumber/commit/3772af6))
+- Add `quantize=True`, `colors=256`, `bits=8` arguments/defaults to `PageImage.save(...)`. ([b049373](https://github.com/jsvine/pdfplumber/commit/b049373))
+- Extract and handle patterns + (some) color spaces. ([97ca4b0](https://github.com/jsvine/pdfplumber/commit/97ca4b0))
+
+### Removed
+
+- Remove support for Python 3.7 ([EOL'ed June 2023](https://endoflife.date/python)). ([c9d24d5](https://github.com/jsvine/pdfplumber/commit/c9d24d5))
+- Remove vestigial 'font' and 'name' properties from PDF objects. ([6d62054](https://github.com/jsvine/pdfplumber/commit/6d62054))
+
+### Fixed
+
+- Fix bug for re-crops that use relative=True ([#914](https://github.com/jsvine/pdfplumber/issues/914)). ([0de6da9](https://github.com/jsvine/pdfplumber/commit/0de6da9))
+- Handle `use_text_flow` more consistently ([#912](https://github.com/jsvine/pdfplumber/issues/912)). ([b1db5b8](https://github.com/jsvine/pdfplumber/commit/b1db5b8))
+
 ## [0.9.0] - 2023-04-13
 
 ### Changed
