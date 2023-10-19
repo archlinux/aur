@@ -9,14 +9,9 @@ pkgbase = jtdx-improved
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	makedepends = asciidoc
-	makedepends = asciidoctor
 	makedepends = boost
-	makedepends = boost-libs
 	makedepends = gcc-fortran
-	makedepends = gcc-libs
 	makedepends = git
-	makedepends = texinfo
 	depends = fftw
 	depends = hamlib>=4.5
 	depends = libusb

@@ -23,14 +23,9 @@ depends=(
 
 makedepends=(
 	'cmake'
-	'asciidoc'
-	'asciidoctor'
 	'boost'
-	'boost-libs'
 	'gcc-fortran'
-	'gcc-libs'
 	'git'
-	'texinfo'
 )
 
 install=jtdx-improved.install
@@ -41,10 +36,13 @@ source=("https://downloads.sourceforge.net/project/jtdx-improved/${_pkgname}_${p
 md5sums=('539cfd3092b5a04977ed204166355f86')
 sha1sums=('5a9b2b22243e0f511fb6472d913ee277714e7447')
 
+prepare() {
+    bsdtar -xf ${_pkgname}_${pkgver}_improved_source.zip
+}
+
 build() {
-	unzip -o ${_pkgname}_${pkgver}_improved_source.zip
-	mkdir -p $srcdir/build
-	cd $srcdir/build
+	mkdir -p "$srcdir/build"
+	cd "$srcdir/build"
   		
 	cmake \
 		-Wno-dev \
@@ -59,19 +57,7 @@ build() {
 package() {
 	cd "$srcdir/build"
 	make DESTDIR=${pkgdir} install
-	install -Dm744 "$srcdir/jtdx/sounds/CQ.wav" "$pkgdir/opt/jtdx/sounds/CQ.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/CQZoneOnBand.wav" "$pkgdir/opt/jtdx/sounds/CQZoneOnBand.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/CQZone.wav" "$pkgdir/opt/jtdx/sounds/CQZone.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/DXcall.wav" "$pkgdir/opt/jtdx/sounds/DXcall.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/DXCCOnBand.wav" "$pkgdir/opt/jtdx/sounds/DXCCOnBand.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/DXCC.wav" "$pkgdir/opt/jtdx/sounds/DXCC.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/GridOnBand.wav" "$pkgdir/opt/jtdx/sounds/GridOnBand.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/Grid.wav" "$pkgdir/opt/jtdx/sounds/Grid.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/ITUZoneOnBand.wav" "$pkgdir/opt/jtdx/sounds/ITUZoneOnBand.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/ITUZone.wav" "$pkgdir/opt/jtdx/sounds/ITUZone.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/MyCall.wav" "$pkgdir/opt/jtdx/sounds/MyCall.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/PxOB.wav" "$pkgdir/opt/jtdx/sounds/PxOB.wav"
-	install -Dm744 "$srcdir/jtdx/sounds/Px.wav" "$pkgdir/opt/jtdx/sounds/Px.wav"
-	rm -rf $pkgdir/home
+	install -Dm644 -v "$srcdir"/jtdx/sounds/{CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,PxOB,Px}.wav -t "$pkgdir"/opt/jtdx/sounds 
+	rm -rf "$pkgdir/home"
 }
 
