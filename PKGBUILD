@@ -1,4 +1,4 @@
-# Maintainer: Lennart Braun <lenerd@posteo.de>
+# Maintainer: cnf3rd <sub.in.tokyo@gmail.com>
 pkgname=onnx-git
 pkgver=1.14.1.0.g1014f41f1
 pkgrel=1
