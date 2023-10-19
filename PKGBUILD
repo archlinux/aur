@@ -36,7 +36,7 @@ md5sums=('539cfd3092b5a04977ed204166355f86')
 sha1sums=('5a9b2b22243e0f511fb6472d913ee277714e7447')
 
 prepare() {
-    sed -i 's|$ENV{HOME}|$ENV{DESTDIR}/opt/jtdx|' $_pkgname/CMakeLists.txt
+    sed -i 's|$ENV{HOME}|$ENV{DESTDIR}/opt/${CMAKE_PROJECT_NAME}|' $_pkgname/CMakeLists.txt
 }
 
 build() {
