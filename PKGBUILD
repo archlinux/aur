@@ -11,43 +11,38 @@ PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
 pkgver=2023.1.1.23
-pkgrel=1
+pkgrel=2
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
 makedepends=('zip')
 depends=(
-	'fontconfig'
-	'freetype2'
-	'libxrender'
-	'libxtst'
-	'which'
+  'fontconfig'
+  'freetype2'
+  'libxml2'
+  'libxrender'
+  'libxtst'
+  'which'
 )
 optdepends=(
-	'lib32-gcc-libs: for aapt and mksdcard'
-	'lib32-zlib: for aapt'
-	'alsa-lib: emulator support'
-	'dbus: emulator support'
-	'expat: emulator support'
-	'git: for flutter'
-	'glib2: GTK+ look and feel'
-	'gtk2: GTK+ look and feel'
-	'gvfs: GTK+ look and feel'
-	'libX11: emulator support'
-	'libgl: emulator support'
-	'libxcb: emulator support'
-	'libxcomposite: emulator support'
-	'libxcursor: emulator support'
-	'libxdamage: emulator support'
-	'libxfixes: emulator support'
-	'nspr: emulator support'
-	'nss: emulator support'
-	'systemd: emulator support'
-	'xorg-setxkbmap: emulator support'
-	'ncurses5-compat-libs: native gdb support'
-	'e2fsprogs'
-	'usbutils'
+  'android-emulator'
+  'android-platform'
+  'android-sdk'
+  'android-sdk-build-tools: aapt, aapt2, aidl, apksigner, bcc_compat, d8, dexdump, dx, lld, llvm-rs-cc, mainDexClases, split-select, zipalign'
+  'android-sdk-cmdline-tools-latest: apkanalyzer, avdmanager, lint, retrace, screenshot2, sdkmanager'
+  'android-sdk-platform-tools: adb, dmtracedump, e2fsdroid, etc1tool, fastboot, hprof-conv, make_f2fs, make_f2fs_casefold, mke2fs, sload_f2fs, sqlite3, systrace'
+  'android-support-repository'
+  'android-tools: adb, fastboot, e2fsdroid,mke2fs.android, mkbootimg, ext2simg.'
+  'e2fsprogs'
+  'git: for flutter'
+  'glib2: GTK+ look and feel'
+  'gtk2: GTK+ look and feel'
+  'gvfs: GTK+ look and feel'
+  'lib32-gcc-libs: for aapt and mksdcard'
+  'lib32-zlib: for aapt'
+  'ncurses5-compat-libs: native gdb support'
+  'usbutils'
 )
 options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
@@ -58,7 +53,7 @@ sha256sums=('7513d182fad85e36468e9eeaead43ab7a1708cec9f07471e3ed50ae332ce2b7d'
             '6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1')
 
 if [ "${CARCH}" = "i686" ]; then
-    depends+=('java-environment')
+  depends+=('java-environment')
 fi
 
 build() {
@@ -67,7 +62,7 @@ build() {
   # Change the product name to produce a unique WM_CLASS attribute
   mkdir -p idea
   bsdtar -Oxf lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
-      | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
+    | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
   zip -r lib/resources.jar idea
   rm -r idea
 }
