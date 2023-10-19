@@ -1,6 +1,6 @@
 pkgname=gnome-shell-extension-bing-wallpaper
 pkgver=45
-pkgrel=1
+pkgrel=2
 pkgdesc="Changes your wallpaper daily to the bing.com background image"
 arch=(any)
 url="https://github.com/neffo/bing-wallpaper-gnome-extension"
@@ -14,6 +14,12 @@ jq
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neffo/bing-wallpaper-gnome-extension/archive/v${pkgver}.tar.gz")
 sha256sums=('642c086c46be4dacc6ce4c7b390d44296a2ec4159ee2356d4a38423bd8f537b1')
+
+prepare() {
+  cd bing-wallpaper-gnome-extension-${pkgver}
+  # add gnome 45 support https://github.com/neffo/bing-wallpaper-gnome-extension/issues/213
+  curl -s https://patch-diff.githubusercontent.com/raw/neffo/bing-wallpaper-gnome-extension/pull/215.patch | patch -p1
+}
 
 build() {
   cd bing-wallpaper-gnome-extension-${pkgver}
