@@ -1,6 +1,6 @@
 pkgbase = prison5
 	pkgdesc = A barcode API to produce QRCode barcodes and DataMatrix barcodes
-	pkgver = 5.110.0
+	pkgver = 5.111.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -16,13 +16,12 @@ pkgbase = prison5
 	depends = qrencode
 	depends = zxing-cpp
 	optdepends = qt5-declarative: QML bindings
-	provides = prison=5.110.0
 	conflicts = prison<5.111
 	replaces = prison<5.111
-	source = https://download.kde.org/stable/frameworks/5.110/prison-5.110.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.110/prison-5.110.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.111/prison-5.111.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.111/prison-5.111.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 677170740a5cd8c80917b301f3e874fef7e8ca1aad1507d558f6e087c21f2a05
+	sha256sums = ec25f821d2e641960d477c88bdb99b5147ae5f808620abfc6c28f946ffb6deff
 	sha256sums = SKIP
 
 pkgname = prison5
