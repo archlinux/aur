@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-vaapi
-pkgver=118.0.5993.70
+pkgver=118.0.5993.88
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -34,7 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         free-the-X11-pixmap-in-the-NativePixmapEGLX11Bind.patch
         REVERT-disable-autoupgrading-debug-info.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('49ee00a734de3dae7c421eb3c974e8d451b4de6f5b4e34b603fd6435eab6993d'
+sha256sums=('f2c0748f815cc4b5c5007788836cee3f07c505b6e74e2e1cd8ab4808e0ac8e59'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '0d1eb054965711a2d4ed6b4cb7f06cbda5b374a48e1b99c8c38ebf6375a781a9'
             'ab1eb107ec1c915065dc59cf4832da27e17d60eb29038e2aec633daeb946cc6a'
