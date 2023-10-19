@@ -59,11 +59,20 @@ build() {
 		_ccores=$1
   	fi
 	make -j ${_ccores}
+
+	# build python layer
+	python \
+      -m build \
+      --wheel \
+      --no-isolation
 }
 
 package() {
 	cd $srcdir/${pkgname}/build 
 	make DESTDIR="$pkgdir/" install
+
+	#install python layer 
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	# make repository available in install location
 	cp -r $srcdir/${pkgname} $pkgdir/opt/openmc
