@@ -1,0 +1,30 @@
+pkgbase = jtdx-improved-jtdxgui
+	pkgdesc = For amateur radio communication using very weak signals. Forked from WSJT-X. JTDX Improved by DG2YCB (With JTDX GUI)
+	pkgver = 2.2.159
+	pkgrel = 1
+	url = https://sourceforge.net/projects/jtdx-improved/
+	install = jtdx-improved.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = fftw
+	depends = hamlib>=4.5
+	depends = libusb
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-serialport
+	depends = qt5-tools
+	depends = qt5-websockets
+	depends = readline
+	provides = jtdx
+	conflicts = jtdx
+	source = https://downloads.sourceforge.net/project/jtdx-improved/jtdx_2.2.159/Source%20code/jtdx_2.2.159_improved_with_JTDX_GUI_source.zip
+	md5sums = 9f7bfb9be63be3b16af6e726b8cee33b
+	sha1sums = bef3aaf3d8dc8a47ff51db7073ddd6cfe19df428
+
+pkgname = jtdx-improved-jtdxgui
