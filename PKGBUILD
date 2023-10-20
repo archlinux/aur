@@ -9,8 +9,8 @@ arch=(x86_64)
 url='https://apps.kde.org/okular/'
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-graphics)
-depends=(djvulibre libspectre libkexiv2 poppler-qt5 kpty kactivities threadweaver kparts discount phonon-qt5)
-makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib)
+depends=(djvulibre libspectre libkexiv2 poppler-qt5 kpty5 kactivities5 threadweaver5 kparts5 discount phonon-qt5)
+makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools5 khtml chmlib)
 optdepends=('ebook-tools: mobi and epub support'
             'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
