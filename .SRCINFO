@@ -5,6 +5,7 @@ pkgbase = bypass_utility
 	url = https://github.com/MTK-bypass
 	arch = x86_64
 	license = MIT
+	makedepends = rsync
 	depends = python-pyusb
 	depends = python-json5
 	depends = python-pyserial

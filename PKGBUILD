@@ -7,6 +7,7 @@ pkgdesc='Small utility to disable bootrom protection (SLA and DAA) to smartphone
 url='https://github.com/MTK-bypass'
 arch=(x86_64)
 license=(MIT)
+makedepends=('rsync')
 depends=('python-pyusb' 'python-json5' 'python-pyserial' 'linux_kamakiri')
 pkgname_provides=exploits_collection
 pkgver_provides=1.6
