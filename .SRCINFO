@@ -1,0 +1,15 @@
+pkgbase = legacybasic
+	pkgdesc = Modern implementation of the original Dartmouth BASIC compilers in the D programming language
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/nigelperks/LegacyBasic
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	source = https://github.com/nigelperks/LegacyBasic/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 17e58318259d2c6ab901710a44a83c8520620e98347ab44bb74fcdced01c0db8
+
+pkgname = legacybasic
