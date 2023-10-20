@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=goovpn-bin
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform gui (use wails) openvpn client."
 arch=('x86_64')
 url="https://github.com/Vai3soh/goovpn"
@@ -11,9 +11,10 @@ conflicts=("${pkgname%-bin}")
 depends=('glib2' 'gtk3' 'bash' 'gcc-libs' 'glibc' 'gdk-pixbuf2' 'openssl' 'webkit2gtk')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('899fe424d78e34ba4fb7fff6e095d2968cba5f0d8f4d9d507bf0cf05f7b2bc8b')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
-    sed "s|/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png|${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
