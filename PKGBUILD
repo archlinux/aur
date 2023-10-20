@@ -1,8 +1,8 @@
 # Maintainer: Ralf Mueller <stark.dreamdetective@gmail.com>
 # Contributor: Ralf Mueller <stark.dreamdetective@gmail.com>
 pkgname=cdo
-pkgver=2.2.1
-fileID=28653
+pkgver=2.3.0
+fileID=29019
 pkgrel=0
 pkgdesc="Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG."
 url="https://code.zmaw.de/projects/cdo"
@@ -16,7 +16,7 @@ arch=(i686 x86_64)
 backup=()
 install=
 source=(https://code.zmaw.de/attachments/download/${fileID}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('136801db175daeffb39065f8becbb1831944949bfc1872ead6bc5bfd5aa839e5')
+sha256sums=('10c878227baf718a6917837527d4426c2d0022cfac4457c65155b9c57f091f6b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
