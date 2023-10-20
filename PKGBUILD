@@ -12,7 +12,7 @@ license=('GPL')
 depends=('glibc')
 
 provides=("$_pkgname")
-conflicts=(${provides[@]})
+conflicts=("$_pkgname")
 
 source=(
   "https://sourceforge.net/projects/mp3guessenc/files/$_pkgname-${pkgver%.*}/$_pkgname-$pkgver$_beta.tar.gz")
