@@ -1,4 +1,5 @@
 # Maintainer: SvartaHjarta <qi0cez9jf@mozmail.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=plastex-git
 pkgver=3.0.r12.g298a55b6
 pkgrel=1
