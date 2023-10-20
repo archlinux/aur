@@ -1,92 +1,92 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=krb5-git
-pkgver=1.18.2
+pkgver=1.21.2.r19.g6c5471176
 pkgrel=1
-pkgdesc='The Kerberos network authentication system'
-url='https://web.mit.edu/kerberos/'
-arch=('x86_64')
+pkgdesc="The Kerberos network authentication system"
+arch=('i686' 'x86_64')
+url="https://web.mit.edu/kerberos/"
 license=('custom')
-depends=('e2fsprogs' 'libldap' 'keyutils')
-makedepends=('perl')
-provides=(krb5)
-conflicts=(krb5)
+depends=('glibc' 'e2fsprogs' 'keyutils' 'libcom_err.so' 'libkeyutils.so' 'libldap' 'libss.so'
+         'libverto-module-base' 'libverto.so' 'openssl')
+makedepends=('git' 'perl')
+provides=("krb5=$pkgver" 'libgssapi_krb5.so' 'libgssrpc.so' 'libk5crypto.so' 'libkadm5clnt_mit.so'
+          'libkadm5srv_mit.so' 'libkdb5.so' 'libkdb_ldap.so' 'libkrad.so' 'libkrb5.so' 'libkrb5support.so')
+conflicts=('krb5')
 backup=('etc/krb5.conf' 'var/lib/krb5kdc/kdc.conf')
 options=('!emptydirs')
-source=("git+https://github.com/krb5/krb5"
-        krb5-config_LDFLAGS.patch
-        krb5-kadmind.service
-        krb5-kdc.service
-        krb5-kpropd.service
-        krb5-kpropd@.service
-        krb5-kpropd.socket)
-sha512sums=('SKIP'
-            'SKIP'
+source=("git+https://github.com/krb5/krb5.git"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/krb5/-/raw/main/krb5-kadmind.service"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/krb5/-/raw/main/krb5-kdc.service"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/krb5/-/raw/main/krb5-kpropd.service"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/krb5/-/raw/main/krb5-kpropd.socket"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/krb5/-/raw/main/krb5-kpropd@.service")
+sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-#validpgpkeys=('2C732B1C0DBEF678AB3AF606A32F17FD0055C305'  # Tom Yu <tlyu@mit.edu>
-#              'C4493CB739F4A89F9852CBC20CBA08575F8372DF') # Greg Hudson <ghudson@mit.edu>
 
-pkgver() {
-    cd krb5
-    git describe --tags --always  | sed 's/-/+/g'
-}
 
 prepare() {
-  cd krb5
+  cd "krb5"
 
-  # cf https://bugs.gentoo.org/show_bug.cgi?id=448778
-  patch -p1 < "${srcdir}"/krb5-config_LDFLAGS.patch
+  sed -i "/KRB5ROOT=/s/\/local//" "src/util/ac_check_krb5.m4"
+}
 
-  # FS#25384
-  sed -i "/KRB5ROOT=/s/\/local//" src/util/ac_check_krb5.m4
+pkgver() {
+  cd "krb5"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^krb5-[0-9\.]+-final' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^krb5-//;s/-final//'
 }
 
 build() {
-   cd krb5/src
-   export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all"
-   export CPPFLAGS+=" -I/usr/include/et"
+  cd "krb5/src"
 
-   autoreconf -fi
+  autoreconf -fi
+  ./configure \
+    --prefix="/usr" \
+    --localstatedir="/var/lib" \
+    --sbindir="/usr/bin" \
+    --sysconfdir="/etc" \
+    --enable-dns-for-realm \
+    --with-ldap \
+    --with-system-et \
+    --with-system-ss \
+    --with-system-verto
+  make
+}
 
-   ./configure --prefix=/usr \
-               --sbindir=/usr/bin \
-               --sysconfdir=/etc \
-               --localstatedir=/var/lib \
-               --enable-shared \
-               --with-system-et \
-               --with-system-ss \
-               --disable-rpath \
-               --without-tcl \
-               --enable-dns-for-realm \
-               --with-ldap \
-               --without-system-verto
-   make
+check() {
+  cd "krb5/src"
+
+  #make check
 }
 
 package() {
-   cd krb5/src
-   make DESTDIR="${pkgdir}" EXAMPLEDIR=/usr/share/doc/krb5/examples install
+  cd "krb5"
 
-   # Fix FS#29889
-   install -m 644 plugins/kdb/ldap/libkdb_ldap/kerberos.{ldif,schema} \
-     "${pkgdir}/usr/share/doc/krb5/examples"
+  make \
+    -C "src" \
+    DESTDIR="$pkgdir" \
+    EXAMPLEDIR="/usr/share/doc/krb5/examples" \
+    install
+  install -Dm644 "NOTICE" -t "$pkgdir/usr/share/licenses/krb5"
 
-   install -Dpm 644 config-files/krb5.conf -t "${pkgdir}/etc"
-   install -Dpm 644 config-files/kdc.conf -t "${pkgdir}/var/lib/krb5kdc"
+  # Fix FS#29889
+  install -Dm644 "src/plugins/kdb/ldap/libkdb_ldap"/kerberos.{ldif,schema} -t "$pkgdir/usr/share/doc/$pkgname/examples"
 
-   install -Dm 644 util/ac_check_krb5.m4 -t "${pkgdir}/usr/share/aclocal"
+  install -Dm644 "src/config-files/krb5.conf" -t "$pkgdir/etc"
+  install -Dm644 "src/config-files/kdc.conf" -t "$pkgdir/var/lib/krb5kdc"
 
-   install -Dm 644 "${srcdir}"/krb5/NOTICE \
-     "${pkgdir}/usr/share/licenses/krb5/LICENSE"
+  install -Dm644 "src/util/ac_check_krb5.m4" -t "$pkgdir/usr/share/aclocal"
 
-   # systemd stuff
-   install -Dm 644 "${srcdir}"/krb5-{kadmind.service,kdc.service,kpropd.service,kpropd@.service,kpropd.socket} \
-      -t "${pkgdir}/usr/lib/systemd/system"
+  # systemd stuff
+  install -Dm644 "$srcdir"/krb5-{kadmind.service,kdc.service,kpropd.service,kpropd.socket,kpropd@.service} -t "$pkgdir/usr/lib/systemd/system"
 }
-
-# vim: ts=2 sw=2 et:
