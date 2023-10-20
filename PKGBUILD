@@ -1,27 +1,27 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sunxi-blobs-git
-pkgver=3e6b186
+pkgver=r146.fa44656
 pkgrel=1
 pkgdesc="The goal of this project is to understand the various blobs provided by Allwinner for their sunxi series of ARM SoCs."
 arch=('any')
 url="https://github.com/smaeul/sunxi-blobs"
 license=('Custom')
-provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname%-git})
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=('bash')
 makedepends=('git')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
-source=("${pkgname%-git}::git+https://hub.fastgit.org/smaeul/sunxi-blobs.git")
+source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
 #     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    git describe --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
