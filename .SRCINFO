@@ -1,0 +1,17 @@
+pkgbase = calcium
+	pkgdesc = C library for exact computation with real and complex numbers
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://fredrikj.net/calcium/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = python
+	depends = glibc
+	depends = gmp
+	depends = flint
+	depends = arb
+	depends = antic
+	source = calcium-0.4.1.tar.gz::https://github.com/fredrik-johansson/calcium/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = 5fbc997e8c9e76c88cd85c12a86f0f14c4ebe602e9f7f11e11f0ca1f89c5d81c
+
+pkgname = calcium
