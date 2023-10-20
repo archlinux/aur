@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python-dbus: for snapper plugin'
 backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f48b19694df17573e6743671d8dec4baa3a46822352370ed77af06d9af7b632c')
+sha256sums=('092ba298d0c364670939a8680bdf365f344d6270b14cf38cd93a395fdf20ae71')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -33,8 +33,8 @@ build() {
 	cmake -B build \
 	      -DCMAKE_INSTALL_PREFIX=/usr
 
-	make -C build
-	make -C build doc-man
+	cmake --build build
+	cmake --build build --target doc-man
 }
 
 # Tests seem to need a minimal RPM database on the system
@@ -47,7 +47,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	make -C build DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 
 	install -Dp -m644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
