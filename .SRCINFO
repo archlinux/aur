@@ -1,6 +1,6 @@
 pkgbase = python-pyqt5-webkit
 	pkgdesc = A set of Python bindings for the Qt5 toolkit with Qt5WebKit support
-	pkgver = 5.15.9
+	pkgver = 5.15.10
 	pkgrel = 1
 	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = python-pyqt5-webkit
 	conflicts = pyqt5-common
 	conflicts = python-pyqt5
 	options = debug
-	source = https://pypi.python.org/packages/source/P/PyQt5/PyQt5-5.15.9.tar.gz
-	sha256sums = dc41e8401a90dc3e2b692b411bd5492ab559ae27a27424eed4bd3915564ec4c0
+	source = https://pypi.python.org/packages/source/P/PyQt5/PyQt5-5.15.10.tar.gz
+	sha256sums = d46b7804b1b10a4ff91753f8113e5b5580d2b4462f3226288e2d84497334898a
 
 pkgname = python-pyqt5-webkit
