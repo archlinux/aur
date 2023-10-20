@@ -1,0 +1,26 @@
+pkgbase = kattis-problemtools-git
+	pkgdesc = Tools to manage problem packages using the Kattis problem package format
+	pkgver = 1.20231016.r2.g92dcbf3
+	pkgrel = 1
+	url = https://github.com/Kattis/problemtools
+	arch = i686
+	arch = arm
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = make
+	makedepends = boost
+	makedepends = python-yaml
+	makedepends = python-setuptools
+	depends = python
+	depends = gmp
+	depends = plastex
+	provides = problem2html
+	provides = problem2pdf
+	provides = verifyproblem
+	replaces = kattis-problemtools
+	source = git+https://github.com/Kattis/problemtools
+	sha256sums = SKIP
+
+pkgname = kattis-problemtools-git
