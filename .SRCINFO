@@ -1,0 +1,16 @@
+pkgbase = dbasic
+	pkgdesc = Modern implementation of the original Dartmouth BASIC compilers in the D programming language
+	pkgver = 0.92.0
+	pkgrel = 1
+	url = https://github.com/cpp-tutor/dbasic
+	arch = x86_64
+	license = MIT
+	makedepends = ldc
+	depends = gcc-libs
+	depends = glibc
+	depends = liblphobos
+	optdepends = clang: for compiling binary
+	source = https://github.com/cpp-tutor/dbasic/archive/refs/tags/v0.92.0.tar.gz
+	sha256sums = 02c2e4c7df8b4d7ef12c6c605cf8bc7d2c45e49483938b9a76f6fbb7a54f1ac2
+
+pkgname = dbasic
