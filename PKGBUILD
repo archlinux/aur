@@ -2,7 +2,7 @@
 
 _pkgname=wootility-lekker-beta
 pkgname=${_pkgname}-appimage
-pkgver=4.6.3
+pkgver=4.6.5
 pkgrel=1
 pkgdesc="Utility for configuring Wooting keyboards (binary AppImage version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "70-wooting.rules"
 )
 sha512sums=(
-    "ab02726cbd0c4dad996e09e3b110c935a7b0c089c819d7ce629497442671fa696ec58bb090918a20eadd6f2a04a8eea92c3a805b4c4887d3bde8f39c1c32f2fe"
+    "4ae18e3c37c905a378983d78d136b4f09588385aa2a48661a9a6af823053b39d6d0339e9f6b0b03959242a54179051d47e3d7a42937dcd9f7ad6dbe42ad7767b"
     "552d3211d99a83b4e59fee5cb1ad70c41846ca7e8306a4065a3c410baeb5befc417c0833add136820f0694150aeba29e9380c5e7bc9ab6a257b686e66baeea29"
 )
 
