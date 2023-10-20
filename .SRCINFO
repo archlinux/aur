@@ -1,7 +1,7 @@
 pkgbase = subtitlecomposer
 	pkgdesc = Video subtitle editor
 	pkgver = 0.7.1
-	pkgrel = 6
+	pkgrel = 8
 	url = https://invent.kde.org/multimedia/
 	arch = i686
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = subtitlecomposer
 	makedepends = jack
 	makedepends = blas
 	makedepends = xorg-server-xvfb
-	depends = kcoreaddons
-	depends = ktextwidgets
-	depends = kio
-	depends = sonnet
-	depends = kcodecs
+	depends = kcoreaddons5
+	depends = ktextwidgets5
+	depends = kio5
+	depends = sonnet5
+	depends = kcodecs5
 	depends = kross
-	depends = kxmlgui
-	depends = ki18n
+	depends = kxmlgui5
+	depends = ki18n5
 	depends = ffmpeg
 	depends = openal
 	optdepends = ruby: scripting
@@ -35,4 +35,3 @@ pkgbase = subtitlecomposer
 	sha256sums = c570f7164d9b93c1a437d71f948f3c26a20725c78a32548e00013d9f1528e7c6
 
 pkgname = subtitlecomposer
-
