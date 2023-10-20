@@ -38,7 +38,9 @@ prepare() {
 package() {
 	install -d $pkgdir/opt/$pkgname/
 	cp -av app $pkgdir/opt/$pkgname/
-	echo -e "#!/bin/sh\nelectron11 /opt/$pkgname/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
+	printf "#!/bin/sh
+exec electron11 /opt/$pkgname/app \"\$@\"
+" | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
 	install -Dm644 $pkgname.desktop -t "$pkgdir"/usr/share/applications/
 	find . -type f -name "icon_about_win.png" -exec install -Dm644 {} "$pkgdir"/usr/share/pixmaps/$pkgname.png \;
 }
