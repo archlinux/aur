@@ -2,7 +2,7 @@
 pkgname=minedigger-bin
 _pkgname=MineDigger
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple match-3 game prototype for Linux, Windows and Android"
 arch=('x86_64')
 url="https://play.google.com/store/apps/details?id=com.neodesys.minedigger"
@@ -15,8 +15,8 @@ source=("${pkgname%-bin}-${pkgver}.tgz::${_githuburl}/releases/download/v${pkgve
     "${pkgname%-bin}.png")
 sha256sums=('8d88a7a1d9d4547789f9f828632aca4273e09ca72799c4c7238af3e850d3b1ae'
             'e544a0f449e2e13fd4d5367d1ae4bcf9dd85c93cf9057189477bc282c4b5fff0')
-prepare() {
-    gendesk -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin}"
+build() {
+    gendesk -f -n -q --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}_release" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"

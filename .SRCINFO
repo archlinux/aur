@@ -1,7 +1,7 @@
 pkgbase = minedigger-bin
 	pkgdesc = Simple match-3 game prototype for Linux, Windows and Android
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://play.google.com/store/apps/details?id=com.neodesys.minedigger
 	arch = x86_64
 	license = GPL3
