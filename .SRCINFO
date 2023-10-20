@@ -1,6 +1,6 @@
 pkgbase = dl-distro-git
 	pkgdesc = Download and verify ISOs with GnuPG and shasums (git version)
-	pkgver = 47.0d04224
+	pkgver = 144.3163f4e
 	pkgrel = 1
 	url = https://codeberg.org/bashuser30/dl-distro
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = dl-distro-git
 	depends = gnupg
 	depends = jq
 	depends = wget
+	optdepends = minisign: void signature verification
 	provides = dl-distro
 	conflicts = dl-distro
 	source = git+https://codeberg.org/bashuser30/dl-distro
