@@ -4,14 +4,14 @@
 _pkgname="nm-tray"
 pkgname="$_pkgname"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple Qt-based frontend for NetworkManager with icon in system tray'
 arch=('x86_64')
 url='https://github.com/palinek/nm-tray'
 license=('GPL')
 
 depends=(
-  'networkmanager-qt'
+  'networkmanager-qt5'
 )
 makedepends=(
   'cmake'
