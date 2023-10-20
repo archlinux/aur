@@ -1,0 +1,14 @@
+pkgbase = ruby-ruinput
+	pkgdesc = a ruby binding for uinput.h
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kui/ruinput
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = ruinput-0.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruinput-0.1.1.gem
+	sha1sums = c8734835f9ae148c93926b1b1dacc6a7f18c9c07
+
+pkgname = ruby-ruinput
