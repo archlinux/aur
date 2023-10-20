@@ -1,19 +1,19 @@
 pkgbase = opc-bin
 	pkgdesc = A CLI for OpenShift Pipeline
-	pkgver = 1.11.2
+	pkgver = 1.10.6
 	pkgrel = 1
 	url = https://docs.openshift.com/container-platform/latest/cicd/pipelines/understanding-openshift-pipelines.html
 	license = Apache 2.0
 	conflicts = opc
 	provides = openshift-pipelines-client
 	arch = aarch64
-	source_aarch64 = https://github.com/openshift-pipelines/opc/releases/download/v1.11.2/opc_1.11.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 12659157012f2c9a7b364ae12ffebdb1ea6fcc01b8d58b3b0e14dc5b9d813f57
+	source_aarch64 = https://github.com/openshift-pipelines/opc/releases/download/v1.10.6/opc_1.10.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = cf87750e50c0e9a474ebab5ff7a60553539e2edb797ff5152b585bc5a2b6fcdf
 	arch = i686
-	source_i686 = https://github.com/openshift-pipelines/opc/releases/download/v1.11.2/opc_1.11.2_linux_i386.tar.gz
-	sha256sums_i686 = e862a21fbea37e643da4f6b8d68192e5e448eb5f7a8ed2e5c4e598aab0294c4e
+	source_i686 = https://github.com/openshift-pipelines/opc/releases/download/v1.10.6/opc_1.10.6_linux_i386.tar.gz
+	sha256sums_i686 = 49cbee2c84b2d9b57bdd791cd9992d06bf64ca65c2f97d48a94bf3afe7758d85
 	arch = x86_64
-	source_x86_64 = https://github.com/openshift-pipelines/opc/releases/download/v1.11.2/opc_1.11.2_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 606e892841292f27dc0c9b28c9a63c4fd913493b6ed4eba5312bd5c1c3d6a2cd
+	source_x86_64 = https://github.com/openshift-pipelines/opc/releases/download/v1.10.6/opc_1.10.6_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a9458fa74f381813bad89c3b05261cdf8318114451001b0eb42bf0d9358d487a
 	
 pkgname = opc-bin
