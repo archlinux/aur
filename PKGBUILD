@@ -5,7 +5,7 @@ _with_plasma=false
 
 pkgname=optimus-manager-qt
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
 url=https://github.com/Shatur/optimus-manager-qt
@@ -17,7 +17,7 @@ sha256sums=(0786bdd6ac81943a8fa4432f8406028488eaaf81c33d9e754907bf40a492f901)
 
 if [[ $_with_plasma == true ]]
 then
-  depends+=(knotifications kiconthemes)
+  depends+=(knotifications5 kiconthemes5)
 fi
 
 build() {
