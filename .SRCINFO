@@ -16,7 +16,7 @@ pkgbase = yandex-messenger
 	depends = libappindicator-gtk3
 	depends = libsecret
 	noextract = yandex-messenger_2.155.0_amd64.deb
-	source = yandex-messenger_2.155.0_amd64.deb::https://downloader.disk.yandex.ru/disk/50851109cfa68e022fa0edbe02d35e4b22a7f0d48a7ff3c6b46bbfbd69c11a7b/65332291/fKqInKw3d7bLFOeFnMGnhNWxCpe349obSYmly8cW7zZJ_fniSbaCrlwjQTbvB92IUPUnXitKQ2ltyzIVVtHF0RfdGUpZH039231ae3iQvySr8npumZHI4midPdWhecNq?uid=0&filename=Yandex_Messenger_2.155.0_amd64.deb&disposition=attachment&hash=7bGpeID6q904ZsjE4/ehCmxnCtN1OkUIf5Iszu%2B0hU8Gu1h8chTxFpPyI2je%2BlPrlsg4VIaLrfRKbQetv4dueQ%3D%3D%3A&limit=0&content_type=application%2Fvnd.debian.binary-package&owner_uid=1130000063429726&fsize=73548980&hid=d833151ad80ffb273b072a7a34c673d9&media_type=compressed&tknv=v2
+	source = yandex-messenger_2.155.0_amd64.deb::https://downloader.disk.yandex.ru/disk/30ef1d4ccb20ec2bb3a49bde7b817212d787280dd352823ed43c6862b7225711/65333eb2/fKqInKw3d7bLFOeFnMGnhNWxCpe349obSYmly8cW7zZJ_fniSbaCrlwjQTbvB92IUPUnXitKQ2ltyzIVVtHF0RfdGUpZH039231ae3iQvySr8npumZHI4midPdWhecNq?uid=0&filename=Yandex_Messenger_2.155.0_amd64.deb&disposition=attachment&hash=7bGpeID6q904ZsjE4/ehCmxnCtN1OkUIf5Iszu%2B0hU8Gu1h8chTxFpPyI2je%2BlPrlsg4VIaLrfRKbQetv4dueQ%3D%3D%3A&limit=0&content_type=application%2Fvnd.debian.binary-package&owner_uid=1130000063429726&fsize=73548980&hid=d833151ad80ffb273b072a7a34c673d9&media_type=compressed&tknv=v2
 	b2sums = b22f77140bf2ee7e7c70a6ab9e96d45a3b8f568386ddcadb7e57c4e5bd6f57e9cf77276cf737b016aade1148e60af51aaad4ebf153551f725242caa0713528c1
 
 pkgname = yandex-messenger
