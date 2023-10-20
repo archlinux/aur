@@ -1,6 +1,6 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura-git
-pkgver=0.0.3849.gfc9853001
+pkgver=r3950.16df0ba55
 pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends."
 arch=(i686 x86_64)
@@ -9,8 +9,10 @@ license=('GPL')
 depends=(libgl mesa glew cairo sdl2 sdl2_image sdl2_ttf sdl2_mixer libpng boost-libs)
 optdepends=('frogatto-git: the default game module'
             'box2d: box2d physics')
-makedepends=(git boost)
-source=('git+https://github.com/anura-engine/anura.git#branch=buildsystem-upgrade'
+makedepends=('git' 'boost' 'glm')
+provides=("anura=$pkgver")
+conflicts=('anura')
+source=('git+https://github.com/anura-engine/anura.git'
         'git+https://github.com/sweetkristas/imgui.git'
         anura.sh)
 md5sums=('SKIP'
@@ -23,19 +25,12 @@ prepare() {
   cd $_gitname
   git submodule init
   git config submodule.imgui.url "$srcdir/imgui"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
   cd $_gitname
-  if _tag=$(git describe 2>/dev/null)
-  then
-    # Use the tag of the last commit
-    echo $_tag | sed 's|-|.|g'
-  else
-    # The project currently has no tags yet
-    echo 0.0.$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
-  fi
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -58,5 +53,3 @@ package() {
   cp -r music $_installdir
   cp -r modules $_installdir
 }
-
-# vim:set ts=2 sw=2 et:
