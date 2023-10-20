@@ -1,14 +1,14 @@
 pkgbase = vim-themis
 	pkgdesc = Vim script testing framework
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/thinca/vim-themis
 	arch = any
 	groups = vim-plugins
 	license = zlib
 	checkdepends = vim
 	depends = vim-plugin-runtime
-	source = vim-themis-1.6.0.tar.gz::https://github.com/thinca/vim-themis/archive/v1.6.0.tar.gz
-	sha256sums = eb92ddb6e59f4e840d89944bf0de19c398f2de1071ebd48c9b99e4d1e871e832
+	source = vim-themis-1.7.0.tar.gz::https://github.com/thinca/vim-themis/archive/v1.7.0.tar.gz
+	sha256sums = b45cfdf5b3f2a728d14f1409dbe1095a6cb46af8a7e8472ebf20899f0c12eb19
 
 pkgname = vim-themis
