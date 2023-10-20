@@ -1,7 +1,7 @@
 # Contributor: Kyle Keen < keenerd at gmail >
 
 pkgname=ttf-game-fonts
-pkgver=220429
+pkgver=20220429
 pkgrel=1
 pkgdesc='Some +200 fonts from classic video games.'
 arch=('any')
