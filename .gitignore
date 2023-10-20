@@ -1,0 +1,6 @@
+*.pkg.tar.*
+*.tar.*
+*.sig
+src
+pkg
+archpkg
