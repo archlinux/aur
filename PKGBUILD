@@ -4,12 +4,12 @@
 _srcname=fancontrol-gui-0.8
 pkgname=fancontrol-kcm
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE control module for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
-depends=('fancontrol-gui' 'kcmutils')
+depends=('fancontrol-gui' 'kcmutils5')
 makedepends=('git' 'extra-cmake-modules')
 source=('https://github.com/Maldela/fancontrol-gui/archive/v0.8.tar.gz')
 md5sums=('c2d37fcde2d189bf8601a32320f23c32')
