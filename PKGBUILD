@@ -1,9 +1,9 @@
 pkgname=hyprshot-gui-git
 pkgver=r16.30a9bc3
-pkgrel=1
+pkgrel=2
 pkgdesc="Zenity GUI for Hyprshot"
 arch=('any')
-url="https://github.com/ThatOneCalculator/hyprshot-guicd "
+url="https://github.com/ThatOneCalculator/hyprshot-gui"
 license=('GPL')
 groups=()
 depends=('hyprshot' 'zenity' 'jq')
