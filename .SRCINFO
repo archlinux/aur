@@ -1,17 +1,19 @@
 pkgbase = plastex-git
 	pkgdesc = Python-based LaTeX document processing framework
-	pkgver = 2.1.r251.g48fb06af
+	pkgver = 3.0.r12.g298a55b6
 	pkgrel = 1
-	epoch = 2
 	url = https://github.com/plastex-git/plastex-git/
 	arch = any
 	license = custom
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = texlive-core
 	provides = plastex
 	conflicts = plastex
 	source = git+https://github.com/plastex/plastex.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = plastex-git
