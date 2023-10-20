@@ -1,12 +1,12 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=ipfs-desktop-electron-bin
 pkgver=0.30.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux."
 arch=(x86_64 aarch64)
 url="https://ipfs.tech/"
 license=('MIT')
-depends=(electron bash glibc hicolor-icon-theme kubo)
+depends=(electron bash hicolor-icon-theme kubo)
 source=("https://github.com/ipfs-shipyard/ipfs-desktop/releases/download/v${pkgver}/ipfs-desktop-${pkgver}-linux-amd64.deb"
 	https://raw.githubusercontent.com/ipfs/ipfs-desktop/main/LICENSE
 )
