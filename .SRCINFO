@@ -1,7 +1,7 @@
 pkgbase = curl-git
 	pkgdesc = A command line tool and library for transferring data with URLs
 	pkgver = 8.4.0.r38.gd31a8424e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curl.se/
 	arch = i686
 	arch = x86_64

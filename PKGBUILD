@@ -10,7 +10,7 @@
 pkgbase=curl-git
 pkgname=('curl-git' 'libcurl-compat-git' 'libcurl-gnutls-git')
 pkgver=8.4.0.r38.gd31a8424e8
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool and library for transferring data with URLs"
 arch=('i686' 'x86_64')
 url="https://curl.se/"
@@ -83,9 +83,9 @@ build() {
 }
 
 check() {
-  cd "_build-curl"
+  cd "curl"
 
-  #make check
+  #make -C "_build-curl" check
 }
 
 package_curl-git() {
@@ -112,8 +112,8 @@ package_libcurl-compat-git() {
 
   mv "$pkgdir/usr/lib/libcurl.a" "$pkgdir/usr/lib/libcurl-compat.a"
 
-  _version_full=$(find $pkgdir/usr/lib -type f | grep .so | tail -c 6)
-  _version_major=$(echo $_version_full | head -c 1)
+  _version_full=$(find "$pkgdir/usr/lib" -type f | grep .so | tail -c 6)
+  _version_major=$(echo "$_version_full" | head -c 1)
   rm "$pkgdir/usr/lib/libcurl.so"
   rm "$pkgdir/usr/lib/libcurl.so.$_version_major"
   mv "$pkgdir/usr/lib/libcurl.so.$_version_full" "$pkgdir/usr/lib/libcurl-compat.so.$_version_full"
@@ -135,8 +135,8 @@ package_libcurl-gnutls-git() {
 
   mv "$pkgdir/usr/lib/libcurl.a" "$pkgdir/usr/lib/libcurl-gnutls.a"
 
-  _version_full=$(find $pkgdir/usr/lib -type f | grep .so | tail -c 6)
-  _version_major=$(echo $_version_full | head -c 1)
+  _version_full=$(find "$pkgdir/usr/lib" -type f | grep .so | tail -c 6)
+  _version_major=$(echo "$_version_full" | head -c 1)
   rm "$pkgdir/usr/lib/libcurl.so"
   rm "$pkgdir/usr/lib/libcurl.so.$_version_major"
   mv "$pkgdir/usr/lib/libcurl.so.$_version_full" "$pkgdir/usr/lib/libcurl-gnutls.so.$_version_full"
