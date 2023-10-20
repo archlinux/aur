@@ -1,0 +1,47 @@
+pkgbase = jc303
+	pkgdesc = TB-303 clone
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://midilab.co/jc303/
+	arch = x86_64
+	license = GPL3
+	license = MIT
+	makedepends = glibc
+	makedepends = gcc-libs
+	makedepends = freetype2
+	makedepends = git
+	makedepends = cmake
+	makedepends = libx11
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = libxcursor
+	makedepends = alsa-lib
+	makedepends = gtk3
+	options = !lto
+	source = jc303::git+https://github.com/midilab/jc303#commit=cd26c0a5865b3e2f3e914a444103da11ab1df53e
+	source = github.com-juce-framework-JUCE::git+https://github.com/juce-framework/JUCE#commit=69795dc8e589a9eb5df251b6dd994859bf7b3fab
+	source = disable-vst2.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = e2a6eae17f0cbfe93b1e7fb9a29ac9ce2df6b79f05147a44c66da65739795199bd9170de04e6801b1afe5f928171ee569d8cf8d544013a9ae0fe5a023a409c05
+
+pkgname = jc303-common
+	pkgdesc = Common files for JC303
+
+pkgname = jc303-lv2
+	pkgdesc = TB-303 clone - LV2 plugin
+	groups = lv2-plugins
+	depends = glibc
+	depends = gcc-libs
+	depends = freetype2
+	depends = jc303-common=0.9.1
+	depends = lv2-host
+
+pkgname = jc303-vst3
+	pkgdesc = TB-303 clone - VST3 plugin
+	groups = vst3-plugins
+	depends = glibc
+	depends = gcc-libs
+	depends = freetype2
+	depends = jc303-common=0.9.1
+	depends = vst3-host
