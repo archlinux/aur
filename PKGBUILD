@@ -1,7 +1,8 @@
-# Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
+# Maintainer: Birk Birkner <aur at bbirkner.de>
+# Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.1.2.r83.g79b04e50
+pkgver=3.3.0.r90.g1910c87c
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -9,7 +10,12 @@ url="http://www.frescobaldi.org/"
 license=('GPL')
 makedepends=(
   'git'
+  'python-build'
   'python-setuptools'
+  'python-installer'
+  'python-wheel'
+  'python-tox'
+  'desktop-file-utils'
 )
 depends=(
   'hyphen'
@@ -20,27 +26,15 @@ depends=(
   'python-pyqt5>=5.9'
   'python-pyqt5-webengine>=5.9'
   'python-pyqt5-sip>=5.9'
-  'qpageview'
+  'python-qpageview'
   'qt5-base>=5.9'
   'qt5-svg>=5.9'
-  'qt5-webkit>=5.9'
   'hicolor-icon-theme'
-  'tango-icon-theme'
 )
 optdepends=(
   'lilypond: Music engraving (recommended)'
-# python-portmidi is currently a python2 package
-#  'python-portmidi: MIDI playback (default engine)'
   'python-pygame: MIDI playback (alternate engine)'
-  'portmidi: MIDI playback (fallback engine)'
-  'hyphen-de: German hyphenation rules'
-  'hyphen-en: English hyphenation rules'
-  'hyphen-es: Spanish hyphenation rules'
-  'hyphen-fr: French hyphenation rules'
-  'hyphen-hu: Hungarian hyphenation rules'
-  'hyphen-it: Italian hyphenation rules'
-  'hyphen-nl: Dutch hyphenation rules'
-  'hyphen-ro: Romanian hyphenation rules'
+  'hyphen-lang: hyphenation patterns for desired languages'
   'python-pycups: Printing to a local CUPS server'
 )
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
@@ -50,13 +44,14 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #printf "%s.r%s.%s" "$(awk '/^version / {gsub(/"/,""); print $3}' frescobaldi_app/appinfo.py)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  # Provided by tango-icon-theme
-  rm -rf "frescobaldi_app/icons/Tango"
+  tox -e mo-generate
+  tox -e linux-generate
   # Provided by hyphen-*
   rm -f frescobaldi_app/hyphdicts/hyph_*.dic
   rm -f frescobaldi_app/hyphdicts/README*
@@ -64,13 +59,14 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make -C i18n
-  make -C linux
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 frescobaldi_app/icons/org.frescobaldi.Frescobaldi.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg
+  desktop-file-install --dir $pkgdir/usr/share/applications/ --set-icon /usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg  linux/org.frescobaldi.Frescobaldi.desktop
 }
 
 # vim:set ts=2 sw=2 et:
