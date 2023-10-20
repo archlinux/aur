@@ -19,7 +19,7 @@ sha256sums=(SKIP)
 
 if [ $_with_plasma == true ]
 then
-  depends+=(knotifications kiconthemes)
+  depends+=(knotifications5 kiconthemes5)
 fi
 
 pkgver() {
