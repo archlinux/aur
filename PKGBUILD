@@ -1,21 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=snsdeck-bin
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SNS Viewer like TweetDeck"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/meganii/snsdeck"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron26')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/meganii/snsdeck/main/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/meganii/snsdeck/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('8f77c42da4d97e5bb19c20a52184c6ab71c1e03434808ac8fbd80776af1c9392'
             '2e219a81b7fc05809c9301bd7c759388e69a1e70540517abf1b41f3cfd19e717'
-            'ff4900d33943117c871fed30ff62d669ffbe4d009e15e406ba1608a3ec7b1f4f')
-prepare() {
+            '70dd74465183fb0f84466db93b8678362caf0aced37b3ba2c6abfd385ee145de')
+build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
