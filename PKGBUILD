@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=nvc-git
-pkgver=r5664.8db81668
+pkgver=r5806.15a77fe1
 pkgrel=1
 pkgdesc="VHDL compiler and simulator"
 arch=('i686' 'x86_64' 'aarch64')
