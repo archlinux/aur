@@ -1,3 +1,6 @@
-*.log
-*.tar*
-*/
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/nvchecker.toml
