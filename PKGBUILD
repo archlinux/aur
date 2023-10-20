@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=awakened-poe-trade-bin
 _pkgname=Awakened-PoE-Trade
-pkgver=3.22.10003
-pkgrel=2
+pkgver=3.22.10004
+pkgrel=1
 pkgdesc="Path of Exile trading app for price checking"
 arch=('x86_64')
 url="https://snosme.github.io/awakened-poe-trade/download"
@@ -10,14 +10,14 @@ _githuburl="https://github.com/SnosMe/awakened-poe-trade"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron24' 'hicolor-icon-theme' 'libxcb')
+depends=('bash' 'electron26' 'hicolor-icon-theme' 'libxcb')
 makedepends=('squashfuse')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('6fe7033a6534b3432a3f966009a7260289fc52a0de8c6e0770eaa2f947f67443'
+sha256sums=('e8f01e1639d0c3316bad4e7f76431c800b63c800d6e179c074c63c76ea75eab8'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
-            'b0cc6b1a9962596eeaf53d306d390a01914cc5d2042620b0298d5fb7bb1c6a4b')
+            '93acf85c1a3ca673f6ef3da5575ae2ac2f49676e3471601e96fe926b6b1d9c71')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron24
+_ELECTRON=/usr/bin/electron26
 APPDIR="/opt/awakened-poe-trade"
 export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"
 _ASAR="${APPDIR}/resources/app.asar"
