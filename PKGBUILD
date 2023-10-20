@@ -1,7 +1,7 @@
 # Maintainer: Nicola Pagliuca <nicola.pagliuca at pm dot me>
 _basename='hyprfreeze'
 pkgname="$_basename-git"
-pkgver=0.1.0.r0.g4d3f9d5
+pkgver=0.2.0.r0.ga1a0fa2
 pkgrel=1
 pkgdesc="Utility to suspend a game process (and other programs) in Hyprland"
 arch=('any')
