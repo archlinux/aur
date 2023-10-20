@@ -1,10 +1,10 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
-# Contributor: ThatOneCalculator <kainoa@t1c.dev>
-# Based on https://aur.archlinux.org/packages/misskey
+# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
+# Co-Matainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Original author of https://aur.archlinux.org/packages/misskey (which this is based off): <fabiscafe@mailbox.org>
 
 pkgname=firefish-beta
 _pkgname=firefish
-pkgver=14.0.0rc3
+pkgver=1.0.4beta31
 pkgrel=5
 pkgdesc='A fun, new way to experience social media'
 url='https://joinfirefish.org'
@@ -15,7 +15,7 @@ makedepends=('git' 'python' 'rust')
 install='firefish.install'
 optdepends=('ffmpeg: Media encode functionality'
             'nginx: Reverse-proxy')
-source=("git+https://git.joinfirefish.org/firefish/firefish#tag=v14.0.0-rc3"
+source=("git+https://git.joinfirefish.org/firefish/firefish#tag=v1.0.4-beta31"
         "${_pkgname}.install"
         "${_pkgname}.service"
         "${_pkgname}.sh"

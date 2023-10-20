@@ -1,6 +1,6 @@
 pkgbase = firefish-beta
 	pkgdesc = A fun, new way to experience social media
-	pkgver = 14.0.0rc3
+	pkgver = 1.0.4beta31
 	pkgrel = 5
 	url = https://joinfirefish.org
 	install = firefish.install
@@ -18,7 +18,7 @@ pkgbase = firefish-beta
 	depends = zip
 	optdepends = ffmpeg: Media encode functionality
 	optdepends = nginx: Reverse-proxy
-	source = git+https://git.joinfirefish.org/firefish/firefish#tag=v14.0.0-rc3
+	source = git+https://git.joinfirefish.org/firefish/firefish#tag=v1.0.4-beta31
 	source = firefish.install
 	source = firefish.service
 	source = firefish.sh
