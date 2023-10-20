@@ -3,7 +3,7 @@
 _pkgname=mrvn-radiant
 pkgname=$_pkgname-bin
 pkgver=2023.09.25.d51258c
-pkgrel=1
+pkgrel=2
 pkgdesc="MRVN-Radiant is a fork of netradiant-custom modified for Titanfall and Apex Legends mapping (binary release)"
 arch=('x86_64')
 url="https://github.com/MRVN-Radiant/MRVN-Radiant"
@@ -31,16 +31,16 @@ prepare() {
   sed -i '1 i\[Desktop Entry]' desktop
   mv desktop $_pkgname.desktop
   # Unzip
-  unzip -od $_pkgname-$pkgver-$pkgrel MRVN-Radiant_${_number}_Linux_x86_64.zip
+  unzip -od $_pkgname-$pkgver MRVN-Radiant_${_number}_Linux_x86_64.zip
   # Make the binary executable
-  chmod +x $_pkgname-$pkgver-$pkgrel/radiant
+  chmod +x $_pkgname-$pkgver/radiant
 }
 
 package() {
   # Create folders
   mkdir -p "$pkgdir/opt/MRVN-Radiant" "$pkgdir/usr/bin"
   # Install
-  mv $_pkgname-$pkgver-$pkgrel/* "$pkgdir/opt/MRVN-Radiant"
+  mv $_pkgname-$pkgver/* "$pkgdir/opt/MRVN-Radiant"
   ln -s /opt/MRVN-Radiant/radiant "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"

@@ -1,7 +1,7 @@
 pkgbase = mrvn-radiant-bin
 	pkgdesc = MRVN-Radiant is a fork of netradiant-custom modified for Titanfall and Apex Legends mapping (binary release)
 	pkgver = 2023.09.25.d51258c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MRVN-Radiant/MRVN-Radiant
 	arch = x86_64
 	license = BSD
