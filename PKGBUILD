@@ -6,12 +6,12 @@
 pkgname=kdeplasma-applets-gmailfeed
 _pkgname=gmailfeed
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Plasma 5 plasmoid showing your Gmail feed."
 arch=('i686' 'x86_64')
 url="https://github.com/anthon38/gmailfeed"
 license=('GPL3')
-depends=('plasma-framework' 'hicolor-icon-theme' 'knotifications' 'qt5-xmlpatterns' 'kaccounts-integration')
+depends=('plasma-framework5' 'hicolor-icon-theme' 'knotifications5' 'qt5-xmlpatterns' 'kaccounts-integration')
 makedepends=('extra-cmake-modules' 'intltool')
 install=${pkgname}.install
 source=('https://github.com/anthon38/gmailfeed/archive/v1.2.tar.gz')
