@@ -2,14 +2,14 @@
 # Contributor: Thorsten Wißmann <edu@thorsten-wissmann.de>
 pkgname=kattis-problemtools-git
 pkgver=1.20231016.r2.g92dcbf3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manage problem packages using the Kattis problem package format"
 arch=('i686' 'arm' 'x86_64')
 url="https://github.com/Kattis/problemtools"
 license=('MIT')
 groups=()
-depends=('python' 'gmp' 'plastex')
-makedepends=('git' 'make' 'boost' 'python-yaml' 'python-setuptools')
+depends=('python' 'python-yaml' 'python-unidecode' 'gmp' 'plastex' 'ghostscript' 'texlive-fontsrecommended' 'texlive-langcyrillic' 'texlive-latexextra' 'texlive-plaingeneric' 'tidy')
+makedepends=('git' 'make' 'boost' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=('problem2html'  'problem2pdf'  'verifyproblem')
 conflicts=()
