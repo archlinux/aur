@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aricode
-_pkgver=1.0.2
+_pkgver=1.0.3
 pkgname=r-${_pkgname,,}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Efficient Computations of Standard Clustering Comparison Measures'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f4e51f7063cfd4924a8925c902a3eb7517c743234a14560691cb84428b6b2f0')
+sha256sums=('10a739353feb4f552496d3a51d436088c92edbd241f80f7c33ee5f278de1d90a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
