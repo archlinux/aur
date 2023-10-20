@@ -9,7 +9,7 @@ pkgbase = sddm-swish-zh
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = sddm
-	depends = plasma-framework
+	depends = plasma-framework5
 	source = sddm-swish-zh.tar.gz::https://github.com/Meow-2/Swish/archive/refs/tags/1.0.tar.gz
 	md5sums = c42620c36097b1c28345eae982184e00
 
