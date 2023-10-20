@@ -1,0 +1,12 @@
+pkgbase = shm-modbus-signal-gen
+	pkgdesc = System time based signal generator for stdin-to-modbus-shm
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/NikolasK-source/shm-modbus-signal-gen
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/NikolasK-source/shm-modbus-signal-gen.git#tag=v1.0.2
+	sha256sums = SKIP
+
+pkgname = shm-modbus-signal-gen
