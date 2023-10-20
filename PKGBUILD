@@ -5,7 +5,7 @@
 # Contributor: Rui ZHAO <renyuneyun@gmail.com>
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 pkgname=linux-enable-ir-emitter
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 arch=('x86_64')
@@ -14,24 +14,28 @@ license=('MIT')
 depends=(
     'fmt'
     'gtk3'
-    'python'
     'opencv'
+    'python'
 )
 makedepends=(
     'meson'
     'qt6-base'
+    'zlib'
 )
 conflicts=(
     'chicony-ir-toggle'
     'linux-enable-ir-emitter-git'
 )
 install=linux-enable-ir-emitter.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/EmixamPP/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('552fd97a26264a86fb1a5d30adf57df27f95a28b9014451f6f4977b16366dc54d2fe21d7554739ca57e5af6154902882546e572e8914b1802330b7a0eeb0fc94')
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/EmixamPP/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+)
+b2sums=('1b9df5cea49088d76fa5679a2a080d2e5dbee8db14d02688f204d65b3346570380ff08ddc0730d32821532ded36f7d6b0b64e69d7cfdf6596c7c8f18ae757ce2')
 
 prepare() {
-    # https://github.com/EmixamPP/linux-enable-ir-emitter/pull/145
-    sed -i -e 's/default_library=static/default_library=shared/g' "${srcdir}/${pkgname}-${pkgver}/meson.build"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    # Fix issue linking static zlib
+    sed -i -e 's/dependency('\''zlib'\'', static: true)/dependency('\''zlib'\'', static: false)/g' meson.build
 }
 
 build() {
