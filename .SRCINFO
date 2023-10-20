@@ -1,16 +1,18 @@
 pkgbase = autotools-language-server
 	pkgdesc = autotools language server
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/autotools-language-server
 	arch = any
 	license = GPL3
 	makedepends = python-installer
-	depends = python-pygls
+	depends = python-colorama
+	depends = python-jinja
 	depends = python-platformdirs
+	depends = python-pygls
 	depends = python-tree-sitter
 	optdepends = autotools
-	source = https://files.pythonhosted.org/packages/cp310/a/autotools_language_server/autotools_language_server-0.0.9-cp310-cp310-manylinux_2_37_x86_64.whl
-	sha256sums = 1817db9857e10ddf5ecc43b6d5774194ea643ebee7338233fd01bbd8152c6621
+	source = https://files.pythonhosted.org/packages/cp311/a/autotools_language_server/autotools_language_server-0.0.10-cp311-cp311-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
+	sha256sums = ffbd06e04cfdda24c8948f087126ccdc721d89a3805b1860fe8b80e6276399eb
 
 pkgname = autotools-language-server
