@@ -1,6 +1,6 @@
 pkgbase = dnsdist-git
 	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
-	pkgver = 1.9.0alpha1
+	pkgver = 1.9.0alpha3.r9.g01cf968b0
 	pkgrel = 1
 	url = https://dnsdist.org/
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = dnsdist-git
 	depends = luajit
 	depends = net-snmp
 	depends = openssl
+	depends = quiche
 	depends = re2
 	depends = tinycdb
 	provides = dnsdist
