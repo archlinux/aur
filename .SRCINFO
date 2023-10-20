@@ -1,0 +1,24 @@
+pkgbase = ttf-go-noto-universal-temporal
+	pkgdesc = Noto fonts go universal! Merged Noto fonts according to time of usage.
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/satbyy/go-noto-universal
+	arch = any
+	source = https://github.com/satbyy/go-noto-universal/releases/download/v7.0/GoNotoCurrent-Regular.ttf
+	source = https://github.com/satbyy/go-noto-universal/releases/download/v7.0/GoNotoCurrent-Bold.ttf
+	source = https://github.com/satbyy/go-noto-universal/releases/download/v7.0/GoNotoCurrentSerif.ttf
+	source = https://github.com/satbyy/go-noto-universal/releases/download/v7.0/GoNotoAncient.ttf
+	source = https://github.com/satbyy/go-noto-universal/releases/download/v7.0/GoNotoAncientSerif.ttf
+	source = 10-go-noto-current.conf
+	source = 46-go-noto-universal-temporal.conf
+	source = 66-go-noto-universal-temporal.conf
+	sha256sums = 882afbab965608c2d2bc627fd8016b962aa5a6be2d358f9de24a7b5967c5632e
+	sha256sums = 5ebee1a38f7ef50d6c38263af5522f7518d30abf30d355a8c7c4eb314751ebc2
+	sha256sums = d656d56938493cafc10500bcc988b9ebfe4866f66a25a8a6f9653837a7b02e41
+	sha256sums = 07e24101c936b67581c5c44a7582adbd616ab4f9da88a5cec855d2eaf68e7578
+	sha256sums = 38b86d5bd172e81aad7f84a2a6ccba5e341879409ed5c7a958f8713e5da4848b
+	sha256sums = f036034706585469ca67c28f1470b94037a21a953fafa9c5ef850d19ac2d0406
+	sha256sums = 3a3a2bdeb5f3f02310978810e3907c7f7aaf2194e9b8c68e40dd7c9fae3540af
+	sha256sums = 4363f20915f020d30f404dc8ec920a3ffc159ad419c94c8a760d0f5fd0827c81
+
+pkgname = ttf-go-noto-universal-temporal
