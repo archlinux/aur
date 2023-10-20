@@ -3,7 +3,7 @@
 # Contributor: Alexander F Rødseth <xyproto at archlinux dot org>
 
 pkgname=ski
-pkgver=6.13
+pkgver=6.14
 pkgrel=1
 pkgdesc='A hotdogging game, evade the deadly Yeti on your jet-powered skis.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 url='http://www.catb.org/esr/ski/'
 license=('BSD')
 source=("http://www.catb.org/esr/ski/$pkgname-$pkgver.tar.gz")
-sha256sums=('34e95547ecfe7b3791df0a81fef9af422ececf49b1aa1e93bbb1ba067ccdc955')
+sha256sums=('7f81ab281aa6d3ff65a4558a29ad905b1774d28b2c2192b68d8723caf8764933')
 
 package() {
     cd "$pkgname-$pkgver"
