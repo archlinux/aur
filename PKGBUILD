@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=12.0.85
+pkgver=12.0.171
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -22,12 +22,14 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8.pc"
         "v8_libbase.pc"
         "v8_libplatform.pc"
-        "d8")
+        "d8"
+        "include_ifdef.diff")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
-            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
+            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
+            'f6056910ce7a6379060a35ba2d6e5a67c7bdf15dc0c25f6864b08dadb98f4167')
 
 OUTFLD=x64.release
 
@@ -58,6 +60,9 @@ prepare() {
   msg2 "Using system libraries for ICU"
   $srcdir/v8/build/linux/unbundle/replace_gn_files.py --system-libraries icu
 
+  # fix build
+  git apply ${srcdir}/include_ifdef.diff
+
   # provide pkgconfig files
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
@@ -82,6 +87,7 @@ prepare() {
             v8_enable_i18n_support=true
             v8_enable_object_print=true
             v8_enable_sandbox=true
+            v8_enable_static_roots=false
             v8_enable_verify_heap=true
             v8_use_external_startup_data=false'
 

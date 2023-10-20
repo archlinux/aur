@@ -1,0 +1,17 @@
+diff --git a/include/v8-typed-array.h b/include/v8-typed-array.h
+index bd8245062ff..4e78915b896 100644
+--- a/include/v8-typed-array.h
++++ b/include/v8-typed-array.h
+@@ -23,10 +23,10 @@ class V8_EXPORT TypedArray : public ArrayBufferView {
+    * The largest supported typed array byte size. Each subclass defines a
+    * type-specific kMaxLength for the maximum length that can be passed to New.
+    */
+-#if V8_ENABLE_SANDBOX
++#ifdef V8_ENABLE_SANDBOX
+   static constexpr size_t kMaxByteLength =
+       internal::kMaxSafeBufferSizeForSandbox;
+-#elif V8_HOST_ARCH_32_BIT
++#elif defined(V8_HOST_ARCH_32_BIT)
+   static constexpr size_t kMaxByteLength = std::numeric_limits<int>::max();
+ #else
+   // The maximum safe integer (2^53 - 1).
