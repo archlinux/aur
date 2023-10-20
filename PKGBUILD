@@ -3,7 +3,7 @@
 
 pkgname=rompr
 pkgver=2.08
-pkgrel=1
+pkgrel=2
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
 url='https://github.com/fatg3erman/RompR/'
@@ -17,9 +17,7 @@ conflicts=('rompr<2.00')
 optdepends=('apache: webserver to serve app'
             'nginx: webserver to serve app'
             'mysql: alternate database platform to sqlite'
-	    'python3: for websocket server'
-	    'python3-asyncio: for websocket server'
-	    'python3-websockets: for websocket server')
+	    'python: for websocket server')
 source=("https://github.com/fatg3erman/RompR/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
 sha256sums=('11e7a4cd68f455ba5f534be7a789d1b034fae7840ccd334010b4d565298b3bca')
 install="${pkgname}.install"
