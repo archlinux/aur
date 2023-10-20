@@ -4,7 +4,7 @@
 _gemname=fusuma
 pkgname=ruby-$_gemname
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fusuma is multitouch gesture recognizer."
 arch=(any)
 url="https://github.com/iberianpig/fusuma"
@@ -13,9 +13,10 @@ depends=(ruby)
 optdepends=('xdotool: Used to send shortcuts on Xorg'
             'ruby-fusuma-plugin-sendkey: Fusuma plugin that sending virtual keyboard events'
             'ruby-fusuma-plugin-keypress: Keypress combination plugin for Fusuma'
-            'ruby-fusuma-plugin-tap: Window Manager plugin for Fusuma'
             'ruby-fusuma-plugin-wmctrl: Tap and Hold gestures plugin for Fusuma'
-            'ruby-fusuma-plugin-appmatcher: Fusuma plugin configure app-specific gestures')
+            'ruby-fusuma-plugin-appmatcher: Fusuma plugin configure app-specific gestures'
+            'ruby-fusuma-plugin-thumbsense: Remapper from key to click only while tapping the touchpad'
+            'ruby-fusuma-plugin-remap: Fusuma plugin for remapping keyboard events into virtual input devices')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
