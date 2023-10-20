@@ -1,7 +1,7 @@
 pkgbase = puffin-internet-terminal-demo-bin
 	pkgdesc = The wicked fast web browser from CloudMosa Inc.
 	pkgver = 8.2.4.705
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.puffin.com/
 	arch = x86_64
 	arch = i686

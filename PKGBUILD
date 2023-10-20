@@ -1,7 +1,7 @@
 # Maintainer: Zhymabek Roman
 pkgname=puffin-internet-terminal-demo-bin
 pkgver=8.2.4.705
-pkgrel=1
+pkgrel=2
 pkgdesc="The wicked fast web browser from CloudMosa Inc."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://www.puffin.com/"
