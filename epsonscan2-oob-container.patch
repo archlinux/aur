@@ -1,0 +1,20 @@
+commit 7e42ca6214a7f3b177b250a8e93b1230f1190f42
+Author: Hubert Figuière <hub@figuiere.net>
+Date:   Fri Oct 28 11:38:24 2022 -0400
+
+    Fix out of bound access on empty container
+
+diff --git a/src/Controller/Src/Finder/Finder.cpp b/src/Controller/Src/Finder/Finder.cpp
+index 8e24f2f..13039cf 100644
+--- a/src/Controller/Src/Finder/Finder.cpp
++++ b/src/Controller/Src/Finder/Finder.cpp
+@@ -38,6 +38,9 @@ namespace epsonscan {
+ 		}
+ 		SDIDeviceInfo* Finder::GetDevicesPointer()
+ 		{
++			if (devices_.size() == 0) {
++				return nullptr;
++			}
+ 			return &devices_[0];
+ 		}
+ 	
