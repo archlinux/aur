@@ -29,8 +29,8 @@ package() {
 
 	find $pkgdir/opt -not -path "*/resources/*" -type f -print -delete
 
-	printf "#!/bin/sh
-electron11 /opt/Notion/resources/app.asar
-" | install -Dm755 /dev/stdin $pkgdir/usr/bin/notion-app
+	printf '#!/bin/sh
+exec electron11 /opt/Notion/resources/app.asar "$@"
+' | install -Dm755 /dev/stdin $pkgdir/usr/bin/notion-app
 	find $pkgdir -name "*.desktop" -type f -print -exec sed -i 's/^Exec=.*/Exec=notion-app/' {} \;
 }
