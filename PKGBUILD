@@ -2,13 +2,13 @@
 
 pkgname=discord-screenaudio
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom discord client with the ability to stream desktop audio"
 arch=("x86_64")
 url="https://github.com/maltejur/discord-screenaudio"
 license=("GPL-3.0")
-depends=(qt5-base qt5-webengine knotifications kxmlgui kglobalaccel pipewire xdg-desktop-portal-impl)
-makedepends=(qt5-base qt5-webengine knotifications kxmlgui kglobalaccel pipewire cmake)
+depends=(qt5-base qt5-webengine knotifications5 kxmlgui5 kglobalaccel5 pipewire xdg-desktop-portal-impl)
+makedepends=(qt5-base qt5-webengine knotifications5 kxmlgui5 kglobalaccel5 pipewire cmake)
 optdepends=("nodejs: Rich presence support through arRPC")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/maltejur/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
