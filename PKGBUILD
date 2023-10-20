@@ -2,7 +2,7 @@
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.16.0.r23.g425b43b3
+pkgver=0.16.0.r65.g1b105db9
 pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
@@ -24,6 +24,7 @@ sha512sums=('SKIP'
             'd529a5d48624848650268db4f0d1f2247507f7c8ee3541b52c235dd72861cfaede59d0752ae67776ca42b0fb3d5951db7b760a9fe7d47149c994d9cefb4af67f'
             'cf88b91a88825dcfda35f45461513b8a2e03b07890189fd1cf7b60aa4085c9e88d8338596b69a3d9c3e513e668093ab7cb246febbb7f6ac7796d37e1189db565')
 
+
 pkgver(){
   cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -43,6 +44,12 @@ build(){
     cp -r "dist" "$srcdir/$_pkgname/server/"
 
     # build backend
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    
     cd "$srcdir/$_pkgname"
     CGO_ENABLED=0 go build -o memos ./main.go
 }
