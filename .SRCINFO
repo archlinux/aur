@@ -1,6 +1,6 @@
 pkgbase = sio2jail
 	pkgdesc = A tool for supervising execution of programs submitted in Polish national algorithmic competitions
-	pkgver = v1.4.3
+	pkgver = v1.4.4
 	pkgrel = 1
 	url = https://github.com/sio2project/sio2jail
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sio2jail
 	makedepends = scdoc
 	depends = libseccomp
 	provides = sio2jail
-	source = sio2jail_v1.4.3::git+https://github.com/sio2project/sio2jail.git#tag=v1.4.3
+	source = sio2jail_v1.4.4::git+https://github.com/sio2project/sio2jail.git#tag=v1.4.4
 	md5sums = SKIP
 
 pkgname = sio2jail
