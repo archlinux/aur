@@ -5,7 +5,7 @@ pkgdesc="Systemd control module for KDE"
 arch=(x86_64)
 url='https://github.com/rthomsen/kcmsystemd'
 license=(GPL)
-depends=(kio)
+depends=(kio5)
 makedepends=(extra-cmake-modules)
 source=("http://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz"
         qt5_use_modules.patch)
