@@ -8,6 +8,7 @@ pkgbase = libadalang-tools
 	arch = x86_64
 	license = GPL3
 	makedepends = gprbuild
+	makedepends = gpr
 	makedepends = which
 	depends = libadalang
 	depends = templates_parser

@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 license=(GPL3)
 
 depends=(libadalang templates_parser libvss)
-makedepends=(gprbuild which)
+makedepends=(gprbuild gpr which)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-166A6-src.tar.gz)
 sha256sums=(13837105dcb3e474ff96bcb530590e7404b87948c98ea33e05fa5a505eff76a5)
