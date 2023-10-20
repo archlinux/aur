@@ -1,6 +1,6 @@
 pkgbase = kf5-servicemenus-jetbrains-dolphin-plugin-git
 	pkgdesc = Open directories and associated projects in the JetBrains IDEs
-	pkgver = r44.26d721e
+	pkgver = r46.28fd06f
 	pkgrel = 1
 	url = https://github.com/alex1701c/JetBrainsDolphinPlugin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kf5-servicemenus-jetbrains-dolphin-plugin-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	depends = kio
+	depends = kio5
 	source = git+https://github.com/alex1701c/JetBrainsDolphinPlugin#branch=master
 	source = git+https://github.com/alex1701c/jetbrains-api#branch=master
 	sha256sums = SKIP

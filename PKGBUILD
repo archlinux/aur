@@ -1,7 +1,7 @@
 # Maintainer: Andrew Shark <ashark linuxcomp ru>
 
 pkgname=kf5-servicemenus-jetbrains-dolphin-plugin-git
-pkgver=r44.26d721e
+pkgver=r46.28fd06f
 pkgrel=1
 pkgdesc="Open directories and associated projects in the JetBrains IDEs"
 license=('GPL')
@@ -10,7 +10,7 @@ _url='https://github.com/alex1701c'
 _submodule_name="jetbrains-api"
 url="$_url/$_project_name"
 arch=('x86_64')
-depends=('kio')
+depends=('kio5')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 _branch=master
 source=("git+$url#branch=$_branch"
