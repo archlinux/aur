@@ -1,7 +1,7 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 _basename=xmake
 pkgname=${_basename}-git
-pkgver=2.6.5.r79
+pkgver=2.8.3.r121
 pkgrel=1
 pkgdesc='A make-like build utility based on Lua'
 arch=('i686' 'x86_64')
@@ -39,13 +39,15 @@ prepare()
   git config submodule.core/src/sv/sv.url "$srcdir/xmake-core-sv"
   git config submodule.core/src/lz4/lz4.url "$srcdir/xmake-core-lz4"
   git config submodule.core/src/tbox/tbox.url "$srcdir/tbox"
+  export GIT_ALLOW_PROTOCOL=file
   git submodule update
 }
 
 build()
 {
   cd "${srcdir}/${_basename}"
-  make build CC=gcc LD=gcc
+  ./configure
+  make
 }
 
 package()
