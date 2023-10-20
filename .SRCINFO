@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal-hyprland-git
 	pkgdesc = xdg-desktop-portal backend for hyprland
-	pkgver = r261.e1f145d
-	pkgrel = 4
+	pkgver = r321.d8daa2a
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/hyprwm/xdg-desktop-portal-hyprland
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xdg-desktop-portal-hyprland-git
 	makedepends = wayland
 	makedepends = scdoc
 	makedepends = cmake
-	depends = xdg-desktop-portal
+	makedepends = sdbus-cpp
 	depends = pipewire
 	depends = libinih
 	depends = qt6-base
@@ -34,3 +34,4 @@ pkgbase = xdg-desktop-portal-hyprland-git
 	sha256sums = SKIP
 
 pkgname = xdg-desktop-portal-hyprland-git
+	depends = xdg-desktop-portal
