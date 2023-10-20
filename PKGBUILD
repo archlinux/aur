@@ -2,7 +2,7 @@
 # Contributor : Ben Ellis benx45h@gmail.com
 
 pkgname=renode-bin
-pkgver=1.13.3
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A virtual development framework for multinode embedded networks"
 url="https://www.renode.io"
@@ -19,10 +19,10 @@ depends=('mono'
          'python-pip'
          'zeromq')
 
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
+source=("$pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
 
 # checksum from package at time of pkgbuild
-sha256sums=('e29929963a903f249921bff52b54d7798c758bfdc0f6b9748a21edd9cd199a1b')
+sha256sums=('9036e8aee81363757ba318d55fd4c2a9b3c3dc2f6f58fda446d2b4f22af4e431')
 
 package() {
     cp -a opt $pkgdir
