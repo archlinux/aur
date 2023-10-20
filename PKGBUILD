@@ -7,7 +7,7 @@ _pkgver=2.48.4
 _debianver="-1+b1"
 pkgname="${_pkgname}-${_pkgver}-compat-bin"
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='File-synchronization tool. Specific version ${_pkgver}, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged.'
 url='http://www.cis.upenn.edu/~bcpierce/unison/'
 arch=(
@@ -32,8 +32,8 @@ conflicts=(
 )
 source=(
   "http://ftp.de.debian.org/debian/pool/main/u/${_pkgname}/${_pkgname}_${_pkgver}${_debianver}_amd64.deb"
-  "https://www.cis.upenn.edu/~bcpierce/unison/download/releases/${_pkgname}-${_pkgver}/unison-${_pkgver}-manual.pdf"
-  "https://www.cis.upenn.edu/~bcpierce/unison/download/releases/${_pkgname}-${_pkgver}/unison-${_pkgver}-manual.html"
+  "http://mirrors.infowest.com/freebsd-ftp/ports/distfiles/${_pkgname}-${_pkgver}/unison-${_pkgver}-manual.pdf"
+  "http://mirrors.infowest.com/freebsd-ftp/ports/distfiles/${_pkgname}-${_pkgver}/unison-${_pkgver}-manual.html"
 )
 sha256sums=(
   '3486bca59be0d6c72c83e5be0ef9b11c5f0e5c82e9a88db3ce6f675760b6a8fe'
