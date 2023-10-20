@@ -1,6 +1,6 @@
 pkgbase = dns-lexicon
 	pkgdesc = Manipulate DNS records on various DNS providers in a standardized/agnostic way
-	pkgver = 3.14.1
+	pkgver = 3.16.1
 	pkgrel = 1
 	url = https://github.com/AnalogJ/lexicon
 	arch = any
@@ -22,12 +22,13 @@ pkgbase = dns-lexicon
 	depends = python-requests
 	depends = python-tldextract
 	depends = python-importlib-metadata
+	depends = python-pyotp
 	optdepends = python-boto3: for Route53 support
 	optdepends = python-localzone: for localzone support
 	optdepends = python-softlayer: for SoftLayer support
 	optdepends = python-zeep: for Gransy support
 	optdepends = python-dnspython: for DDNS/DuckDNS support
-	source = https://github.com/AnalogJ/lexicon/archive/v3.14.1/dns-lexicon-3.14.1.tar.gz
-	sha512sums = 13e4c5b046cad28e487b246b7c16a3ee71b2dbca4c40e513b234cee62e483e7702ce293c11ef96b245409229a7cd3a39c1771ebfc7b2430cd5b017d33e32a924
+	source = https://github.com/AnalogJ/lexicon/archive/v3.16.1/dns-lexicon-3.16.1.tar.gz
+	sha512sums = 7cf2392ec94871076f13e443a6f8c1e9486ceed44c7a23f28e29a98ad0ee8b5f3ae534d3627b4f04fc77894059a2f8a49b12bae3f6faa52a4cbd175bd6cd6e99
 
 pkgname = dns-lexicon
