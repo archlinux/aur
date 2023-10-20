@@ -2,7 +2,7 @@
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -11,7 +11,8 @@ depends=('gcc')
 makedepends=('imagemagick')
 optdepends=('glu: mesa OpenGL lib'
             'nvidia-utils: nvidia proprietary OpenGL lib'
-            'opencl-mesa: mesa OpenCL runtime for GPU acceleration'
+            'opencl-clover-mesa: mesa clover OpenCL runtime for GPU acceleration'
+            'opencl-rusticl-mesa: mesa rusticl OpenCL runtime for GPU acceleration'
             'opencl-amd: AMDGPU PRO OpenCL runtime for GPU acceleration'
             'cuda: nvidia CUDA runtime for GPU acceleration'
             'intel-compute-runtime: Intel Neo OpenCL runtime for GPU acceleration')
