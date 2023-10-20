@@ -2,7 +2,7 @@
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=lib32-egl-wayland
-pkgver=1.1.12
+pkgver=1.1.13
 pkgrel=1
 pkgdesc='EGLStream-based Wayland external platform (32-bits)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
   'lib32-libglvnd'
 )
 provides=('libnvidia-egl-wayland.so')
-_commit=e3b2240f97a640f288c19ced8a32e22d88ca84f5  # tags/1.1.12
+_commit=69ae9cf07bbec3b00a682918bf0dc845e989677  # tags/1.1.13
 options=('!emptydirs')
 source=("git+${url}#commit=${_commit}")
 sha256sums=('SKIP')
