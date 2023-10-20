@@ -9,7 +9,7 @@ pkgbase=clion-eap
 pkgname=(clion-eap clion-eap-jre clion-eap-cmake clion-eap-gdb clion-eap-lldb)
 _pkgname=clion
 _dlname=CLion
-pkgver=233.9802.5
+pkgver=233.10527.7
 _dlver=$pkgver
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -22,8 +22,8 @@ source=("jetbrains-${pkgbase}.desktop")
 source_x86_64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz")
 source_aarch64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}-aarch64.tar.gz")
 sha256sums=('e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0')
-sha256sums_x86_64=('e41f14a2235b0dfc5d5157f4453d0f298ce5aaef2c8671964aaec42a7093d615')
-sha256sums_aarch64=('f75eff441ec87b0c598df9795a5582ba1ed6c2edb3b8469507581eadb9af7c6c')
+sha256sums_x86_64=('4d18c18f4f8de9a080342239e0cbbcb0a8f9c785def46260616f30c76d68679a')
+sha256sums_aarch64=('644e31bd8c521e3a87a3abeae1ede438be3e8c8d7e1bc943ef886c8a35ec19eb')
 noextract=("${_dlname}-${_dlver}.tar.gz"
            "${_dlname}-${_dlver}-aarch64.tar.gz")
 
