@@ -25,8 +25,8 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 _reponame=syncthingtray
 pkgname=syncthingtray-git
 _name=${pkgname%-git}
-pkgver=1298.14c4aa6
-pkgrel=2
+pkgver=1714.7846301
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
@@ -37,12 +37,12 @@ depends=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 [[ $_js_provider == script ]] && depends+=('qt5-script')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
-[[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
+[[ $_enable_kio_plugin ]] && optdepends+=('kio5: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
 makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'boost')
 checkdepends=('cppunit' 'syncthing' 'iproute2' 'appstream')
-[[ $_enable_kio_plugin ]] && makedepends+=('kio')
-[[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
+[[ $_enable_kio_plugin ]] && makedepends+=('kio5')
+[[ $_enable_plasmoid ]] && makedepends+=('plasma-framework5' 'extra-cmake-modules')
 #provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
