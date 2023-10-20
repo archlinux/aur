@@ -2,17 +2,17 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r44595
+pkgver=r44602
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL')
-depends=(glew gtk3 portaudio pciutils ffmpeg4.4)
-makedepends=(dos2unix libpcap libxaw xa texlive-basic texlive-bin texlive-plaingeneric xorg-bdftopcf xorg-mkfontdir python svn)  
+depends=(glew gtk3 portaudio libpulse pciutils ffmpeg4.4 curl)
+makedepends=(dos2unix libpcap libxaw xa texlive-basic texlive-bin texlive-plaingeneric xorg-bdftopcf xorg-mkfontdir svn)  
 provides=('vice')
 replaces=('vice')
-conflicts=('vice' 'vice-sdl2' 'vice-svn-gtk3' 'vice-svn-sdl2')
+conflicts=('vice' 'vice-sdl2' 'vice-sdl2-svn')
 source=("${pkgname}::svn://svn.code.sf.net/p/vice-emu/code/trunk"
 vice-org-vsid.desktop
 vice-org-x64dtv.desktop
