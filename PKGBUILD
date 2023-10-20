@@ -1,6 +1,6 @@
 #Maintainer: Musikolo<musikolo {at} hotmail [dot] com>
 pkgname=pact-cli-bin
-pkgver=2.0.9
+pkgver=2.0.10
 pkgdesc="A standalone client for the Pact Broker and Pactflow."
 pkgrel=1
 arch=(aarch64 x86_64)
@@ -13,10 +13,10 @@ source_aarch64=("https://github.com/pact-foundation/pact-ruby-standalone/release
         "https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v${pkgver}/pact-${pkgver}-linux-arm64.tar.gz.checksum")
 source_x86_64=("https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v${pkgver}/pact-${pkgver}-linux-x86_64.tar.gz"
         "https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v${pkgver}/pact-${pkgver}-linux-x86_64.tar.gz.checksum")
-sha1sums_aarch64=('efde6a09e6985983a4f0ba7399dd9a28248198c3'
-                  'df12d34cc7300d7a5d1a77b8dd1c76dc1c4176da')
-sha1sums_x86_64=('6eda14c797dc118b29047371e6f400c7e586c08e'
-                 'c71d8dcf9614da45d3e5f0f2dcbe40aebf83120d')
+sha1sums_aarch64=('fd3454c613c4082c4aacdfa29d4dfc3641d7314f'
+                  '5b092da019e70b584f6b0d7db72d9aab0e9afbf7')
+sha1sums_x86_64=('48b0ad765f5476a14435c01617f812c4c7fe3d12'
+                 '7e1558765c749a79a890c88965d0b0563748da31')
 
 prepare_aarch64() {
    msg2 "Verifying integrity..."
