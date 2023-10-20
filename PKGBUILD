@@ -4,7 +4,7 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
@@ -43,6 +43,9 @@ package_backintime-cli() {
 
   cd "$_pkgname-$pkgver/common"
   make DESTDIR="$pkgdir" install
+  python -m compileall -d /usr "$pkgdir"/usr
+  python -O -m compileall -d /usr "$pkgdir"/usr
+
 }
 
 package_backintime() {
@@ -56,6 +59,8 @@ package_backintime() {
 
   cd "$_pkgname-$pkgver/qt"
   make DESTDIR="$pkgdir" install
+  python -m compileall -d /usr "$pkgdir"/usr
+  python -O -m compileall -d /usr "$pkgdir"/usr
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
