@@ -9,7 +9,7 @@
 pkgname=tenacity
 pkgver=1.3.2
 _nyquist_commit=3678ee6bfff9e0edc721a1b8865ab625e40f9ce4
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -21,7 +21,7 @@ makedepends=(cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg nasm chrpath python)
 optdepends=('ffmpeg: additional import/export capabilities')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/tenacityteam/$pkgname/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver-libnyquist-$_nyquist_commit::https://codeberg.org/tenacityteam/libnyquist/archive/$_nyquist_commit.tar.gz")
+        "$pkgname-$pkgver-libnyquist-$_nyquist_commit.tar.gz::https://codeberg.org/tenacityteam/libnyquist/archive/$_nyquist_commit.tar.gz")
 b2sums=('ac84043ac48bd6113747ba4b26ecde08c2830ca9f62c0348cf35e9990ce98da587fed2de3ea756f7e01f6fee02540a297546f2ac28a119d5913e4c393982f623'
         '8c1e0fef8c243ec6c649f8481f764394c147d93abae2828812e53f949035cb79e8f8c7966adef9d70c0991108637b81811b42eb189c7a5cf5f4ec8c4f0dd695f')
 
