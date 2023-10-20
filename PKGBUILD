@@ -2,7 +2,7 @@
 
 _pkgname=nm-tray
 pkgname=$_pkgname-git
-pkgver=r37.abbe586
+pkgver=0.5.0.r8.gfa1e7a8
 pkgrel=1
 pkgdesc='Pure Qt NetworkManager front-end residing in panels'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
