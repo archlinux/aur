@@ -3,8 +3,8 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=rpmlint
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=(any)
 url="https://github.com/rpm-software-management/$pkgname"
@@ -15,6 +15,7 @@ depends=(
   gzip
   python
   python-magic
+  python-packaging
   python-pybeam
   python-pyxdg
   python-tomli
@@ -40,7 +41,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('805d0962d9b3980e85d265db3cfb2625818866faa0b8a534552a8d4035cabc6a')
+sha256sums=('a9276782bd9ebca2337ae61a498d4d444e0dce003447409b2339b4cce67b6762')
 
 _archive="$pkgname-$pkgver"
 
