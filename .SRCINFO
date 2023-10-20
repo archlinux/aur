@@ -10,6 +10,7 @@ pkgbase = ipfs-desktop-electron-bin
 	depends = bash
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = kubo
 	source = https://github.com/ipfs-shipyard/ipfs-desktop/releases/download/v0.30.2/ipfs-desktop-0.30.2-linux-amd64.deb
 	source = https://raw.githubusercontent.com/ipfs/ipfs-desktop/main/LICENSE
 	sha256sums = 55c985b9a458e2b1b99659a22dde22b42552f62b05142dbb0aa8d3fe6930d86a
