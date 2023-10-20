@@ -1,26 +1,23 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath
-pkgver=2023.4.3
-pkgrel=3
+pkgver=2024.1.1b1
+pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
-depends=('fmt' 'eigen')
+depends=('fmt' 'eigen' 'protobuf')
 makedepends=('cmake')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
-source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2023.4.3'
-        'Don_t-treat-warnings-as-errors.patch'
-        'Add-missing-include.patch')
+source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2024.1.1-beta-1'
+        'Don_t-treat-warnings-as-errors.patch')
 md5sums=('SKIP'
-         '06355c12d930efa26edbbe11f633831a'
-         'e2b9acf67122eca03efd62866a54ba59')
+         '06355c12d930efa26edbbe11f633831a')
 
 prepare() {
   cd allwpilib
   patch -p1 < "$srcdir"/Don_t-treat-warnings-as-errors.patch
-  patch -p1 < "$srcdir"/Add-missing-include.patch
 }
 
 build() {
@@ -41,8 +38,7 @@ build() {
 }
 
 check() {
-  # wpiutil test failure: JsonComparisonValuesTest.Less
-  ctest --test-dir build -E wpiutil --output-on-failure
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
