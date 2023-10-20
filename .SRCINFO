@@ -1,0 +1,13 @@
+pkgbase = r-flowworkspacedata
+	pkgdesc = A data package containing two flowJo, one diva xml workspace and the associated fcs files as well as three GatingSets for testing the flowWorkspace, openCyto and CytoML packages.
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowWorkspaceData
+	arch = any
+	license = GPL2
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/flowWorkspaceData_3.12.0.tar.gz
+	md5sums = 8d91993dd5a5c5b561a8063ec91046d3
+	sha256sums = 9b23fa66ccbd1385a6b9180f272d61a48ca4dd647b80c5d1ef02ca73e42a9e7c
+
+pkgname = r-flowworkspacedata
