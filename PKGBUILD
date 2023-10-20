@@ -4,7 +4,7 @@
 pkgname=lightning-terminal
 _pkgname=litd
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity on the Lightning Network (LND). ⚡"
 arch=('x86_64')
 url="https://github.com/lightninglabs/lightning-terminal"
@@ -29,12 +29,8 @@ sha512sums=('d88d4ee1e2bb9d3cb7bbf79152a2ba4b2315ee5d468927ef3ae7c21a79fa9709ac4
             'ae42bf29123202adc815dc261e1e82a16aed32faf0a8c75f17ba9c983db219cad1e972d9836d6da7f6599505c8aa5884f8f77c213e1c17ed5e0a8fcd9b6e3524')
 
 package() {
-  install -Dm 755 "$srcdir/$pkgname-linux-amd64-v${pkgver}-alpha/frcli" -t "$pkgdir/usr/bin";
   install -Dm 755 "$srcdir/$pkgname-linux-amd64-v${pkgver}-alpha/litcli" -t "$pkgdir/usr/bin";
   install -Dm 755 "$srcdir/$pkgname-linux-amd64-v${pkgver}-alpha/litd" -t "$pkgdir/usr/bin";
-  install -Dm 755 "$srcdir/$pkgname-linux-amd64-v${pkgver}-alpha/loop" -t "$pkgdir/usr/bin";
-  install -Dm 755 "$srcdir/$pkgname-linux-amd64-v${pkgver}-alpha/pool" -t "$pkgdir/usr/bin";
-  install -Dm 755 "$srcdir/$pkgname-linux-amd64-v${pkgver}-alpha/tapcli" -t "$pkgdir/usr/bin";
 
   install -m 755 -d "${pkgdir}/usr/lib/sysusers.d"
   install -m 750 -d "${pkgdir}/var/lib/${_pkgname}"
