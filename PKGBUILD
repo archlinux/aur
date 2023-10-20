@@ -1,7 +1,7 @@
 # Maintainer: Szymon Januszek <szymon_j at tutanota dot com>
 
 pkgname=sio2jail
-pkgver=v1.4.3
+pkgver=v1.4.4
 pkgrel=1
 
 pkgdesc="A tool for supervising execution of programs submitted in Polish national algorithmic competitions"
