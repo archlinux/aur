@@ -53,7 +53,8 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/${_gitname}"
+	cd "${srcdir}/${_gitname}/_build"
+	make check
 }
 
 package() {
