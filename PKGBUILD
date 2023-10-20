@@ -3,13 +3,13 @@
 
 _pkgname=lxqt-notificationd
 pkgname=$_pkgname-git
-pkgver=0.12.0.5.g549013c
+pkgver=1.3.0.15.g51541d5
 pkgrel=1
 pkgdesc="LXQt notification daemon and library."
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("LGPL2.1")
-depends=("qt5-base" "liblxqt-git" "kwindowsystem")
+depends=("qt5-base" "liblxqt-git" "kwindowsystem5")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname" "notification-daemon")
 conflicts=("$_pkgname")
