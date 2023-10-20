@@ -1,6 +1,6 @@
 pkgbase = gerbil-scheme-git
 	pkgdesc = Gerbil is an opinionated dialect of Scheme designed for Systems Programming, with a state of the art macro and module system on top of the Gambit runtime.
-	pkgver = v0.18_rc1_8_g32b454c9
+	pkgver = v0.18_6_g3d61672d
 	pkgrel = 1
 	url = https://cons.io
 	arch = x86_64
