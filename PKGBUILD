@@ -1,6 +1,6 @@
 # Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-distro
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Download and verify ISOs with GnuPG and shasums"
 arch=('any')
@@ -8,7 +8,8 @@ url="https://codeberg.org/bashuser30/$pkgname"
 source=("$url/archive/v$pkgver.tar.gz")
 license=('GPL3')
 depends=('bash' 'gnupg' 'jq' 'wget')
-sha256sums=('dc97db2b6961f5f0b4ea28ec367fd7be50b36a20262458f8eacab2c4b5276574')
+optdepends=('minisign: void signature verification')
+sha256sums=('3e4164ee3ffb69d8673bc971b6f97d82a056f0adc338abcc5bc261d88bcf9bde')
 
 package() {
     cd "$srcdir/$pkgname"
