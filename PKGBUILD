@@ -4,7 +4,7 @@
 
 _pkgname=lxqt-panel
 pkgname=$_pkgname-git
-pkgver=1.3.0.5.gf9493a2c
+pkgver=1.3.0.37.g73e2f88e
 pkgrel=1
 pkgdesc='The LXQt desktop panel'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/lxqt/lxqt-panel'
 license=('GPL2')
 depends=(
       "alsa-lib" "libpulse" "lm_sensors" "libstatgrab" "libsysstat-git" "libxtst"
-      "solid"
+      "solid5"
       "menu-cache" "libxcomposite" "lxqt-menu-data-git" "libdbusmenu-qt5"
       "lxqt-globalkeys-git"
 )
