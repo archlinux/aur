@@ -2,7 +2,7 @@
 
 pkgname=plasma5-runners-jetbrains-runner-git
 _pkgname=plasma5-runners-jetbrains-runner
-pkgver=r156.0cb73b8
+pkgver=r158.b6eb12d
 pkgrel=1
 pkgdesc="Launch your recent JetBrains projects from KRunner"
 license=('LGPL3')
@@ -11,7 +11,7 @@ _url='https://github.com/alex1701c'
 _submodule_name="jetbrains-api"
 url="$_url/$_project_name"
 arch=('x86_64')
-depends=('krunner' 'libnotify' 'kcmutils' 'kio')
+depends=('krunner5' 'libnotify' 'kcmutils5' 'kio5')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
