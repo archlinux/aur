@@ -2,15 +2,17 @@
 # Contributor: Epix <epixtm@protonmail.com>
 # Contributor: Manuel Hüsers <aur@huesers.de>
 
+_glslang_commit=c34bb3b6c55f6ab084124ad964be95a699700d34
+
 pkgname=plasma5-wallpapers-wallpaper-engine-git
 pkgver=0.5.4.r31.gf972b2a
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
 license=('GPL2')
 depends=(
-    "plasma-framework" "gst-libav" "python-websockets" "qt5-declarative" 
+    "plasma-framework5" "gst-libav" "python-websockets" "qt5-declarative"
     "qt5-websockets" "qt5-webchannel" "vulkan-driver"
 )
 makedepends=(
@@ -24,7 +26,7 @@ provides=("plasma5-wallpapers-wallpaper-engine")
 conflicts=("plasma5-wallpapers-wallpaper-engine")
 source=(
     "${pkgname}::git+${url}.git"
-    "git+https://github.com/KhronosGroup/glslang.git"
+    "git+https://github.com/KhronosGroup/glslang.git#commit=${_glslang_commit}"
     )
 sha256sums=('SKIP'
             'SKIP')
