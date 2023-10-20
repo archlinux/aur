@@ -1,12 +1,12 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath-git
-pkgver=2023.4.3.r136.g44acca7c00
+pkgver=2024.1.1.beta.1.r29.gabb2857e03
 pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
-depends=('fmt' 'eigen')
+depends=('fmt' 'eigen' 'protobuf')
 makedepends=('cmake')
 provides=('wpimath')
 conflicts=('wpimath')
@@ -48,8 +48,7 @@ build() {
 }
 
 check() {
-  # wpiutil test failure: JsonComparisonValuesTest.Less
-  ctest --test-dir build -E wpiutil --output-on-failure
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
