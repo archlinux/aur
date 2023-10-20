@@ -1,7 +1,7 @@
 pkgbase = flashbrowser-bin
 	pkgdesc = A browser dedicating to supporting adobe flash.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flash.pm/browser/
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = flashbrowser-bin
 	depends = bash
 	provides = flashbrowser
 	conflicts = flashbrowser-git
+	conflicts = flashbrowser
 	source = https://github.com/radubirsan/FlashBrowser/releases/download/v0.81/v0.81_FlashBrowser_x64.exe
 	source = git+https://github.com/Hadaward/flashplayer-plugin.git
 	source = flashbrowser-bin.desktop

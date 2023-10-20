@@ -4,7 +4,7 @@
 pkgname=flashbrowser-bin
 _dirname=FlashBrowser-linux-x64
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser dedicating to supporting adobe flash."
 arch=(x86_64 aarch64 i686)
 url="https://flash.pm/browser/"
@@ -12,7 +12,7 @@ license=(unknown)
 depends=(electron9 nodejs bash)
 makedepends=(imagemagick git innoextract)
 provides=(flashbrowser)
-conflicts=(flashbrowser-git)
+conflicts=(flashbrowser-git flashbrowser)
 source=(
 	#	"https://github.com/radubirsan/FlashBrowser/releases/download/v${pkgver}/FlashBrowser-linux-x64.zip"
 	"https://github.com/radubirsan/FlashBrowser/releases/download/v0.81/v0.81_FlashBrowser_x64.exe"
@@ -20,8 +20,8 @@ source=(
 	$pkgname.desktop
 )
 sha256sums=('ce573c0b8c54161b468056ab6c62214edea12b05c1c25e1bbb6e54ace8a703ec'
-	'SKIP'
-	'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
+            'SKIP'
+            'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
 
 prepare() {
 	innoextract *.exe
@@ -36,11 +36,14 @@ package() {
 	sed -i "/case 'x32':/,/break/{s|libpepflashplayer.so|libpepflashplayer-i386.so|}" $pkgdir/opt/$pkgname/app/index.js
 	sed -i "/case 'x64':/,/break/{s|libpepflashplayer.so|libpepflashplayer-x86_64.so|}" $pkgdir/opt/$pkgname/app/index.js
 
-	echo -e "#!/bin/bash\nelectron9 /opt/$pkgname/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
+	find $pkgdir -name "*.dll" -print -delete
+	printf "#!/bin/sh
+exec electron9 /opt/$pkgname/app
+" | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
 	install -Dm 644 $pkgname.desktop -t "$pkgdir/usr/share/applications/"
 	# code from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=flashbrowser-git
 	for d in 16 24 32 48 256; do
-		mkdir -p "$pkgdir/usr/share/icons/hicolor/${d}x${d}/apps"
+		install -d "$pkgdir/usr/share/icons/hicolor/${d}x${d}/apps"
 	done
 	for i in 16 24 32 48 256; do
 		if [ $i = '16' ]; then
