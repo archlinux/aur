@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Handle data directory to be compliant to XDG Base Directory specification.
 data_directory="${XDG_DATA_HOME:-$HOME/.local/share}/mediathekview"
@@ -8,6 +8,15 @@ if [ -d "$upstream_default" ] && [ ! -d "$data_directory" ]; then
   mv -v "$upstream_default" "$data_directory"
 fi
 
-PATH="/usr/lib/jvm/java-17-openjdk/bin:${PATH}"
+jvm_params=(
+ "-XX:+UseShenandoahGC"
+ "-XX:ShenandoahGCHeuristics=compact"
+ "-XX:+UseStringDeduplication" 
+ "-XX:MaxRAMPercentage=20.0"
+ "--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED"
+)
+
+
+PATH="/usr/lib/jvm/java-21-openjdk/bin:${PATH}"
 # requires preview features: https://github.com/mediathekview/MediathekView/issues/528
-java -jar /usr/share/java/mediathekview/MediathekView.jar "$@" "$data_directory"
+java -jar "${jvm_params[@]}" /usr/share/java/mediathekview/MediathekView.jar "$@" "$data_directory"

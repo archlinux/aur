@@ -1,15 +1,16 @@
 pkgbase = mediathekview-xdg
 	pkgdesc = Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)
-	pkgver = 13.9.1
-	pkgrel = 2
+	pkgver = 14.0.0
+	pkgrel = 1
 	url = https://github.com/mediathekview/mediathekview
 	arch = any
 	license = GPL3
 	makedepends = maven
 	makedepends = strip-nondeterminism
+	makedepends = java-environment-openjdk=21
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = java-runtime
+	depends = java-runtime-openjdk=21
 	optdepends = libnotify: to use desktop notifications
 	optdepends = mplayer: for recording streams
 	optdepends = vlc: for stream playback
@@ -19,17 +20,14 @@ pkgbase = mediathekview-xdg
 	conflicts = mediathekview
 	replaces = mediathek
 	replaces = mediathekview
-	source = mediathekview-13.9.1.tar.gz::https://github.com/mediathekview/mediathekview/archive/refs/tags/13.9.1.tar.gz
+	source = mediathekview-14.0.0.tar.gz::https://github.com/mediathekview/mediathekview/archive/refs/tags/14.0.0.tar.gz
 	source = de.mediathekview.MediathekView.desktop
 	source = mediathekview.sh
-	source = flatlaf.version.patch
-	sha512sums = f706a2fdf458b6dccec34b35df6b5fa831eba851ca694150f48f396b87a957315d3380648e59e2e9c76475010d6fdcda72cb8e7e42cceee2bc3b2524235bb7e6
+	sha512sums = e97844b4a06dbe42603d55854528b446638a4c0b830f824e7092c19ec2a7d308378f05887d2d0636ded48ec51354b8b2084448bf55778a7d5e31f1d145e030f2
 	sha512sums = 24a94a078180aca7c50ed7763ef4806c116c27f901f644ef570ee413ffc3ac795b5ebd24d696a9b2ec426e7c9b6eaf8a8b22addb5ac7c9fe9700f7c04305f64b
-	sha512sums = 1ddd71e3de29c7b61c44eeef011b9a8e540751c84a8ece2b73366a7e3698c6317c40d4700d8fc900da32b674d2b897b40f41f5d6c8cc35444feca0606417d520
-	sha512sums = d226773684ab40fd80a0088207c61e1c8475a6c121942f47d9734cacd7ab9c143af0ffe1b10529acd5dbbe25e1a7bc2b81b4b8316759fadf847a8f89240c93e3
-	b2sums = 4b9826d1fbeceded9248e4938ae49c964637143b4bdb635f1f1b91388312a9506732ace34e92677edeaf635fd6b937a92259a692136e8ddf822e8b05c57abe10
+	sha512sums = 313bf39ddefba91d0d9e90bf907c756cdeb1826e0fc1446f0cae2f08f10afaaf04be291f613c677ff30e30f763038fa0cbce8e3e39fdd6ca05613262b5e4b44f
+	b2sums = a24308a98714b05d8df34bf06d64e3854ed9b826276b0ea576c23cebdf2ffd47139c003a9d8fdd12a87cf47191b50b63c1e2e66a1e141c2bc07b8a22b5a312c9
 	b2sums = 6dbcdea2918009621fc132b4ff1056ef79f06e27c3299b69ccd7e3cb2b093e3a2a5f76acd6b1ab62689edd867ac1650f61bf829f2a1c575835d31e117d9b9ae5
-	b2sums = 84678937eaf3d9b850073e0960203ea36fb577ad0c645a5868e005f20affccd916bbec5a3d3734089f797960ab1340cdf9fc6acba7996c21a1496197269e53e6
-	b2sums = 906ee41b1f83c608458f885897f408bfb569b6c608f9f55be8c8aaa196b958c86cf5ae8d219d5216eb9db865b0abb17466ba0d6fcab659767f64ec78e48db2e6
+	b2sums = 464568ce2a8a6d670d0b9bc7f65325a216839b07aedfb526c8d636cf4c01b2a694ef33a4f16f7b678e77ba505c04b0be11637a88b97b5e4175a4996f9c0abfdc
 
 pkgname = mediathekview-xdg
