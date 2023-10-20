@@ -9,7 +9,7 @@
 
 pkgname=prismlauncher
 pkgver=7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
@@ -21,8 +21,15 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
             'java-runtime=8: for older minecraft versions')
-source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
-sha256sums=('5733b55c4532286813a6fb7de2f3a38e6f6db743a251919c8b646d32a84514b4')
+source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz"
+        "0001-fix-Fix-building-prismlauncher-7.2-on-Qt-6.6.0.patch")
+sha256sums=('5733b55c4532286813a6fb7de2f3a38e6f6db743a251919c8b646d32a84514b4'
+            '407162bb56d08c7f825632ce486bde8ab03dbceac0a0669ea751f475a1947306')
+
+prepare() {
+  cd "PrismLauncher-${pkgver}"
+  patch -Np1 -i "${srcdir}/0001-fix-Fix-building-prismlauncher-7.2-on-Qt-6.6.0.patch"
+}
 
 build() {
   cd "PrismLauncher-${pkgver}"
