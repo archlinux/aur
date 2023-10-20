@@ -2,12 +2,12 @@
 
 pkgname=stl-thumb-kde
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc="KDE/KIO plugin for stl-thumb, a fast lightweight thumbnail generator for STL files"
 url='https://github.com/unlimitedbacon/stl-thumb-kde'
 source=(git+https://github.com/unlimitedbacon/stl-thumb-kde.git)
-depends=('stl-thumb' 'kio')
+depends=('stl-thumb' 'kio5')
 makedepends=('extra-cmake-modules')
 arch=("x86_64")
 sha256sums=('SKIP')
