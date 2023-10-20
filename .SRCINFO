@@ -1,7 +1,7 @@
 pkgbase = ada_language_server-bin
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
 	pkgver = 24.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/ada_language_server
 	arch = x86_64
 	license = GPL3
