@@ -1,7 +1,7 @@
 # Maintainer:  Birk Birkner <aur at bbirkner.de>
 
 pkgname=qrca-git
-pkgver=0.1.r242.370414c
+pkgver=0.1.r282.fe7ffc8
 pkgrel=1
 pkgdesc="Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices."
 arch=('x86_64' 'aarch64')
@@ -12,16 +12,25 @@ depends=(
     'hicolor-icon-theme'
     'gcc-libs'
     'xdg-utils'
-    'prison'
-    'kcontacts'
-    'knotifications'
-    'kcoreaddons'
-    'ki18n'
-    'kio'
-    'kservice'
+    'prison5'
+    'kcontacts5'
+    'knotifications5'
+    'kcoreaddons5'
+    'ki18n5'
+    'kio5'
+    'kservice5'
     'qt5-base'
 )
-makedepends=(git cmake extra-cmake-modules qt5-svg qt5-quickcontrols2 qt5-multimedia kirigami2 purpose)
+makedepends=(
+    'git'
+    'cmake'
+    'extra-cmake-modules'
+    'qt5-svg'
+    'qt5-quickcontrols2'
+    'qt5-multimedia'
+    'kirigami2'
+    'purpose5'
+)
 provides=('qrca')
 conflicts=('qrca')
 source=($pkgname::"git+https://invent.kde.org/utilities/qrca.git")
