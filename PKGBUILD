@@ -5,8 +5,8 @@
 # Contributor: xaw <xawl.ch@gmail.com>
 
 pkgname=cwm
-pkgver=7.1
-pkgrel=3
+pkgver=7.4
+pkgrel=1
 pkgdesc="Fork of calmwm, a clean and lightweight window manager"
 arch=('aarch64' 'x86_64')
 url="https://github.com/leahneukirchen/cwm"
@@ -14,14 +14,10 @@ license=('BSD')
 depends=('libxft' 'libxrandr')
 changelog=cwm.changelog
 source=("https://leahneukirchen.org/releases/cwm-${pkgver}.tar.gz"{,.asc}
-	'fix-overlapping-menu-items.diff::https://github.com/leahneukirchen/cwm/commit/4a6128d5e461515b87da0dabf31dd1c7288b26db.diff'
-	'fix-semi-transparency.diff::https://github.com/leahneukirchen/cwm/commit/9eb763ab8781610b67df44b9914a018d32dfe1fe.diff'
 	'cwm.desktop')
-sha256sums=('4a58c5cb4312d8d0f03ba657d7656c12d8d7c1277aeb1c05272984501597bd90'
+sha256sums=('b4f275143c8c716d7df1cfbb230f888c72aa861708e144d1749858f1cc6fcac0'
             'SKIP'
-            'a2ec87bb407cbe5adeff60700af7fea264a83f92c7baebdefe85fc3246fb5d50'
-	    '28055e84b5de69b9a4913ca4ac7576ca05925baf7190c8e1f34afed7c86f92b6'
-            'SKIP')
+            '8dc947993fbf294d6f41ba2e0d4234b2321c536a75be1395f6a772cd4aa3f379')
 validpgpkeys=('E6F6848A1B95EE313CF5B7EE95FF633C90A8F025') # Leah Neukirchen <leah@vuxu.org>
 
 prepare() {
