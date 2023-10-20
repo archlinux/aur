@@ -1,7 +1,7 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy-bin'
-pkgver='1.15.1'
+pkgver='1.15.2'
 pkgrel=1
 pkgdesc='Explore your research photos'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   "https://github.com/tropy/tropy/releases/download/v${pkgver}/tropy-${pkgver}-x64.tar.bz2")
 
 sha256sums=('0fdf0fcaa4676bc3a2835a7ef6b4a9f6b809a37e48775f62d9f4fab52da43901'
-            'e70c36afe58f0deeec0625c427330a2f5b6fc2577e81f142becd4525f81b2785')
+            'c6beb3d455e443645f1e00e4ca3bf5303ec4431c408a7ef66b377bbf438b413f')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/tropy"
