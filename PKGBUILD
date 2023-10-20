@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 _pkgname=pinyin-completion
 pkgname=$_pkgname-git
-pkgver=57.5ec04f7
+pkgver=58.544c6da
 pkgrel=1
 pkgdesc="complete path name based upon the pinyin acronym of Chinese characters"
 arch=('any')
