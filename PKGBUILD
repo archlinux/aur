@@ -1,4 +1,4 @@
-# Maintainer: Raihan Ahamed <raihan1999ahamed@gmail.com>
+# Maintainer: raihan2000 <raihan1999ahamed@gmail.com>
 
 pkgname=libssc-git
 pkgdesc="Library to expose Qualcomm Sensor Core sensors"
@@ -8,7 +8,10 @@ _arches=specific
 arch=(any)
 license=(GPL-3.0-or-later)
 url=https://codeberg.org/DylanVanAssche/libssc
-provides=(liblibssc.so)
+provides=(
+    libssc
+    liblibssc.so
+)
 conflicts=(libssc)
 depends=(
     "libqmi>=1.33.4"
