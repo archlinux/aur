@@ -1,6 +1,6 @@
 pkgbase = lxqt-build-tools-git
 	pkgdesc = Tools to build LXQt and components maintained by the project.
-	pkgver = 0.3.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/lxqt/lxqt-build-tools
 	arch = any
