@@ -1,7 +1,7 @@
 pkgbase = habit-tracker-bin
 	pkgdesc = Cross platform habit tracker
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/accountability-tracker/habit_tracker
 	arch = x86_64
 	license = unknown
