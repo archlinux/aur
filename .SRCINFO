@@ -1,6 +1,6 @@
 pkgbase = qview-git
 	pkgdesc = Practical and minimal image viewer
-	pkgver = 6.1.r0.g9f6c225
+	pkgver = 6.1.r10.ge37c8ea
 	pkgrel = 1
 	url = https://interversehq.com/qview
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qview-git
 	depends = hicolor-icon-theme
 	depends = qt5-base
 	depends = qt5-tools
-	optdepends = kimageformats: additional image format support
+	optdepends = kimageformats5: additional image format support
 	optdepends = qt-avif-image-plugin-libavif-git: AVIF support
 	optdepends = qt-heif-image-plugin: HEIF support
 	optdepends = qt5-apng-plugin: APNG support
