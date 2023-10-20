@@ -1,10 +1,10 @@
-# Maintainer: ThatOneCalculator <kainoa@t1c.dev>
+# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 # Co-Matainer: Bjoern Franke <bjo+aur@schafweide.org>
-# Based on https://aur.archlinux.org/packages/misskey
+# Original author of https://aur.archlinux.org/packages/misskey (which this is based off): <fabiscafe@mailbox.org>
 
 pkgname=firefish
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='A fun, new way to experience social media'
 url='https://joinfirefish.org'
