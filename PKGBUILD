@@ -2,7 +2,7 @@
 pkgname=mapeo-desktop-bin
 _pkgname=Mapeo
 pkgver=5.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline map editing application for indigenous territory mapping in remote environments."
 arch=('x86_64')
 url="https://mapeo.app/"
@@ -15,9 +15,9 @@ depends=('gtk3' 'libxss' 'alsa-lib' 'python' 'nss' 'at-spi2-core' 'libxcomposite
     'nspr' 'glibc' 'libxext' 'libxcb' 'gdk-pixbuf2' 'libcups' 'libxrandr' 'mesa' 'dbus' 'libxcursor')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/Install_Mapeo_v${pkgver}_linux.deb")
 sha256sums=('7bd9620e618b323182974dcc3df1a4bf0b4902f2622ac5af3728ea3d9909cb52')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
