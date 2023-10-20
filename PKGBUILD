@@ -101,7 +101,7 @@ prepare() {
     'core/deps/oboe'
   )
 
-  if [ x"${pkgname: -4}" != x"-git" ] ; then
+  if [ x"${pkgname: -4}" == x"-git" ] ; then
     _submodules+=(
       'core/deps/Spout'
       'core/deps/Syphon'
