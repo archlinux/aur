@@ -11,6 +11,7 @@ pkgbase = libssc-git
 	depends = libqmi>=1.33.4
 	depends = glib2
 	depends = protobuf-c
+	provides = libssc
 	provides = liblibssc.so
 	conflicts = libssc
 	source = git+https://codeberg.org/DylanVanAssche/libssc.git
