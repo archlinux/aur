@@ -6,12 +6,13 @@ _pkgtagname=v0.15.0
 
 pkgname=octopi-notifier-qt5
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Notifier for Octopi using Qt5 libs'
 arch=('any')
 url="https://tintaescura.com/projects/octopi/"
 license=('GPL2')
-depends=('octopi' 'knotifications')
+#depends=('octopi' 'knotifications')
+depends=('octopi')
 makedepends=('qt5-tools')
 optdepends=('xfce4-notifyd: for notifications in XFCE')
 provides=('octopi-notifier')
