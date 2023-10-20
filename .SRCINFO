@@ -1,7 +1,7 @@
 pkgbase = redpanda-cpp-bin
 	pkgdesc = A light-weight C/C++ IDE based on Qt
 	pkgver = 2.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/redpanda-cpp
 	arch = x86_64
 	license = GPL3
@@ -15,8 +15,7 @@ pkgbase = redpanda-cpp-bin
 	optdepends = make
 	optdepends = qterminal
 	optdepends = raylib
-	optdepends = raylib-drawing
-	provides = redpanda-cpp
+	provides = redpanda-cpp=2.24
 	conflicts = redpanda-cpp
 	source = redpanda-cpp-2.24.deb::https://github.com/royqh1979/RedPanda-CPP/releases/download/2.24/redpanda-cpp_2.24-1_amd64.ubuntu20.04.deb
 	sha256sums = aec532a3983f22284a2c422cb6fc7e85e45d27b12ba13d8d58357b92b53de646
