@@ -9,12 +9,12 @@
 _name=subtitlecomposer
 pkgname=${_name}-git
 pkgver=0.7.1+git298.fe1477b5
-pkgrel=1
+pkgrel=2
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
 license=('GPL')
-depends=('kcoreaddons' 'ktextwidgets' 'kio' 'sonnet' 'kcodecs' 'kxmlgui' 'ki18n' 'ffmpeg' 'openal')
+depends=('kcoreaddons5' 'ktextwidgets5' 'kio5' 'sonnet5' 'kcodecs5' 'kxmlgui5' 'ki18n5' 'ffmpeg' 'openal')
 makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
 
 # Comment/uncomment the following dependency to disable/enable
