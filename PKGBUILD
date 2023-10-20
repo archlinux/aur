@@ -4,7 +4,7 @@
 
 pkgname=dasel
 pkgver=2.4.1
-pkgrel=3
+pkgrel=4
 #pkgdesc='Query and update data structures from the command line'
 pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -12,16 +12,16 @@ url='https://github.com/TomWright/dasel'
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 options=('lto')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 
   go mod tidy
@@ -44,9 +44,12 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 dasel     "$pkgdir/usr/bin/dasel"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0755 dasel        "$pkgdir/usr/bin/dasel"
+  install -Dm0644 LICENSE      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  for _doc in CHANGELOG CODE_OF_CONDUCT README; do
+    install -Dm0644 "$_doc.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
+  done
 }
 
 sha256sums=(
