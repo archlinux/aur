@@ -3,7 +3,7 @@
 
 _pkgname="ultimate-doom-builder"
 pkgname="$_pkgname-git"
-pkgver=3.0.0.4119.gca6769b7
+pkgver=3.0.0.4119.ca6769b7
 pkgrel=1
 pkgdesc='A level editor for Doom-engine games, with experimental Linux support.'
 arch=('x86_64')
@@ -52,7 +52,7 @@ pkgver()  {
 
   # Not following recommended version format because .NET versions are weird.
 
-  printf "%s.%s.g%s" \
+  printf "%s.%s.%s" \
     "$_version" \
     "$_revision" \
     "$_hash"
