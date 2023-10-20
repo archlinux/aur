@@ -1,0 +1,21 @@
+[Unit]
+Description=Hedgedoc real-time collaborative markdown editor (proxy)
+After=network.target
+Requires=hedgedoc2-backend.service
+After=hedgedoc2-backend.service
+Requires=hedgedoc2-frontend.service
+After=hedgedoc2-frontend.service
+
+[Service]
+Type=exec
+
+Restart=always
+RestartSec=2s
+
+User=hedgedoc2
+Group=hedgedoc2
+
+ExecStart=/usr/bin/caddy run --config /usr/share/webapps/hedgedoc2/Caddyfile --adapter caddyfile --envfile /etc/hedgedoc2/settings.env
+
+[Install]
+WantedBy=multi-user.target

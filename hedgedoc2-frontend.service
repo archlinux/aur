@@ -1,0 +1,22 @@
+[Unit]
+Description=Hedgedoc real-time collaborative markdown editor (frontend)
+After=network.target
+
+[Service]
+Type=exec
+
+Environment=NODE_ENV=production
+Environment=PORT=3001
+EnvironmentFile=/etc/hedgedoc2/settings.env
+
+Restart=always
+RestartSec=2s
+
+User=hedgedoc2
+Group=hedgedoc2
+
+WorkingDirectory=/usr/share/webapps/hedgedoc2/frontend/dist/frontend/
+ExecStart=/usr/bin/node server.js
+
+[Install]
+WantedBy=multi-user.target
