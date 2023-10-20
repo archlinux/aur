@@ -1,7 +1,7 @@
 pkgbase = cwm
 	pkgdesc = Fork of calmwm, a clean and lightweight window manager
 	pkgver = 7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leahneukirchen/cwm
 	changelog = cwm.changelog
 	arch = aarch64

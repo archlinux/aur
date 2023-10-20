@@ -6,7 +6,7 @@
 
 pkgname=cwm
 pkgver=7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of calmwm, a clean and lightweight window manager"
 arch=('aarch64' 'x86_64')
 url="https://github.com/leahneukirchen/cwm"
@@ -19,13 +19,6 @@ sha256sums=('b4f275143c8c716d7df1cfbb230f888c72aa861708e144d1749858f1cc6fcac0'
             'SKIP'
             '8dc947993fbf294d6f41ba2e0d4234b2321c536a75be1395f6a772cd4aa3f379')
 validpgpkeys=('E6F6848A1B95EE313CF5B7EE95FF633C90A8F025') # Leah Neukirchen <leah@vuxu.org>
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -u -p 1 -l <../fix-overlapping-menu-items.diff
-  # https://marc.info/?l=openbsd-misc&m=167896796615081&w=2
-  patch -u -p 1 -l <../fix-semi-transparency.diff
-}
 
 build() {
   cd $pkgname-$pkgver
