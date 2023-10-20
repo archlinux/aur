@@ -1,7 +1,7 @@
 pkgname=otf-noto-sans-cjk
 pkgver=2.004
 pkgrel=1
-pkgdesc='Noto CJK fonts (Sans, Variable OTC)'
+pkgdesc='Noto CJK fonts (Sans, Static OTC)'
 provides=(noto-fonts-cjk)
 arch=(any)
 url='https://www.google.com/get/noto/help/cjk'
