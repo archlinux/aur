@@ -23,7 +23,7 @@ pkgver() {
 build() {
   mkdir -p build
   cd build
-  cmake $srcdir/$_pkgname -DBIN_NM_VERSION=1.2.0 -DCMAKE_INSTALL_PREFIX=/usr
+  cmake $srcdir/$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DNM_TRAY_XDG_AUTOSTART_DIR=/etc/xdg/autostart
   make
 }
 
