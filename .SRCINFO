@@ -1,7 +1,7 @@
 pkgbase = fancontrol-plasmoid-git
 	pkgdesc = Plasmoid for the fancontrol script and systemd service
 	pkgver = 0.8.r23.g5bfa8fa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maldela/Fancontrol-GUI
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fancontrol-plasmoid-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = fancontrol-gui-git
-	depends = plasma-framework
+	depends = plasma-framework5
 	depends = gettext
 	provides = fancontrol-plasmoid
 	conflicts = fancontrol-plasmoid
