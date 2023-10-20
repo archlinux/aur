@@ -3,13 +3,13 @@
 
 pkgname=ksvnupdater
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility oriented to KDE translation teams. You can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
 arch=('x86_64' 'i686')
 url="http://www.eloihr.net/ksvnupdater"
 license=('GPL')
-depends=('kfilemetadata' 'kio' 'knotifications' 'kitemviews' 'kiconthemes' 'karchive' 'qt5-base' 'subversion')
-makedepends=('extra-cmake-modules' 'kdoctools')
+depends=('kfilemetadata5' 'kio5' 'knotifications5' 'kitemviews5' 'kiconthemes5' 'karchive5' 'qt5-base' 'subversion')
+makedepends=('extra-cmake-modules' 'kdoctools5')
 optdepends=('git: download Scripty and Pology binaries'
             'lokalize: file translations'
             'kdiff3: conflict merge'
