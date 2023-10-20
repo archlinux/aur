@@ -43,7 +43,6 @@ build() {
 	../configure \
 		--prefix=/usr \
 		--disable-dependency-tracking \
-		--enable-jit \
 		--enable-verilog \
 		--enable-vital \
 		--enable-lto \
