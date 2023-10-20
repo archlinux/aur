@@ -1,0 +1,68 @@
+diff --git a/cytolib/R/build.R b/cytolib/R/build.R
+index 779fb83..6e42d7a 100644
+--- a/cytolib/R/build.R
++++ b/cytolib/R/build.R
+@@ -20,10 +20,7 @@ CxxFlags <- function() {
+ #' @export
+ #' @importFrom RProtoBufLib LdFlags
+ cytolib_LdFlags <- function() {
+-      libDir <- "lib/"
+-      if (.Platform$OS.type == "windows")
+-         libDir <- paste(libDir, .Platform$r_arch, "/", sep="")
+-      cat(asBuildPath(system.file(paste(libDir, "libcytolib.a", sep = ""), package = "cytolib")))
++      cat("-lcytolib -lboost_filesystem -lboost_system")
+   }
+ 
+ 
+diff --git a/cytolib/src/Makevars.in b/cytolib/src/Makevars.in
+index 6d806e4..5888f8c 100644
+--- a/cytolib/src/Makevars.in
++++ b/cytolib/src/Makevars.in
+@@ -8,40 +8,25 @@ ifneq (,)
+ This makefile requires GNU Make.
+ endif
+ 
+-	
+-CXX_STD = CXX11
+-boost_sys_src=${wildcard boost/libs/system/src/*.cpp}
+-boost_sys_objs=${boost_sys_src:.cpp=.o}
+-boost_fs_src=${wildcard boost/libs/filesystem/src/*.cpp}
+-boost_fs_objs=${boost_fs_src:.cpp=.o}
++CXX_STD = CXX17
+ 
+ PKG_CPPFLAGS =-DROUT -I../inst/include -DBOOST_NO_AUTO_PTR -DBOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF -DBOOST_FILESYSTEM_SINGLE_THREADED #the last to flagsare needed to compile bundled boost file system library 1.78
+ 
+ cytolib_src=${wildcard *.cpp}
+ cytolib_objs=${cytolib_src:.cpp=.o}
+ 
+-BOOSTFSLIB = libboost_fs.a
+-USERDIR = ${R_PACKAGE_DIR}/lib${R_ARCH}
+-USERLIB = ${USERDIR}/libcytolib.a
++USERLIB = libcytolib.so.@CYTOLIB_VERSION@
+ 
+ OBJECTS=dummy.o
+ 
+-#needs to wrap in $(shell) to strip the quotes returned by rhdf5lib::pkgconfig
+-FSLIB = ${boost_fs_objs} ${boost_sys_objs}
++CLINK_CPPFLAGS := -I/usr/lib/R/library/RProtoBufLib/include
+ 
++RPROTOBUF_LIBS := $(shell Rscript -e "RProtoBufLib::LdFlags()")
+ 
++all: $(SHLIB) $(USERLIB)
+ 
+-all: $(SHLIB) 
+-
+-$(SHLIB): $(USERLIB)
+-
+-$(USERLIB): ${boost_fs_objs} ${cytolib_objs} 
+-	mkdir -p "${USERDIR}"
+-	$(AR) rs "${USERLIB}" ${cytolib_objs} ${boost_fs_objs} ${boost_sys_objs}
+-
+-$(boost_fs_objs): ${boost_sys_objs}
+-
++$(USERLIB): $(cytolib_objs)
++	$(CC) -shared $(LDFLAGS) -Wl,-soname=$(USERLIB) -o $@ $^ -lboost_filesystem -lboost_system -lhdf5_cpp -lhdf5 -llapack $(RPROTOBUF_LIBS) $(LIBR)
+ 
+ clean:
+ 	rm -f $(OBJECTS) ${cytolib_objs} ${boost_fs_objs} ${boost_sys_objs} $(SHLIB)
+- 
