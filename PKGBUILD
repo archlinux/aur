@@ -8,11 +8,11 @@ pkgdesc="Third party, more feature rich application switcher."
 arch=("i686" "x86_64")
 url="https://github.com/zjes/lxqt-appswitcher"
 license=('LGPL2.1')
-depends=("lxqt-globalkeys-git")
+depends=("lxqt-globalkeys")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/zjes/lxqt-appswitcher.git")
+source=("git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
