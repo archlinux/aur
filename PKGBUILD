@@ -3,7 +3,7 @@
 # Contributor: Boohbah <boohbah at gmail.com>
 
 pkgname=gtk3-git
-pkgver=3.24.21.r45.g63a0e76646
+pkgver=3.24.38.r84.g73d5663a8c
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('gnome-icon-theme: Default icon theme'
 conflicts=('gtk3' 'gtk-update-icon-cache')
 provides=("gtk3=$pkgver" gtk-update-icon-cache gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
 backup=('usr/share/gtk-3.0/settings.ini')
-source=('git+https://gitlab.gnome.org/GNOME/gtk.git#branch=gtk-3-24' 
+source=('git+https://gitlab.gnome.org/GNOME/gtk.git#branch=gtk-3-24'
         settings.ini
         gtk-query-immodules-3.0.hook
         gtk-update-icon-cache.hook

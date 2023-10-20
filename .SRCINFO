@@ -1,6 +1,6 @@
 pkgbase = gtk3-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.24.21.r45.g63a0e76646
+	pkgver = 3.24.38.r84.g73d5663a8c
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = gtk3-git
 	depends = wayland-protocols
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
-	provides = gtk3=3.24.21.r45.g63a0e76646
+	provides = gtk3=3.24.38.r84.g73d5663a8c
 	provides = gtk-update-icon-cache
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
@@ -49,4 +49,3 @@ pkgbase = gtk3-git
 	sha256sums = f1d3a0dbfd82f7339301abecdbe5f024337919b48bd0e09296bb0e79863b2541
 
 pkgname = gtk3-git
-
