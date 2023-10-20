@@ -1,8 +1,9 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-themis
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Vim script testing framework"
 arch=('any')
 url="https://github.com/thinca/vim-themis"
@@ -11,7 +12,7 @@ groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 checkdepends=('vim')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('eb92ddb6e59f4e840d89944bf0de19c398f2de1071ebd48c9b99e4d1e871e832')
+sha256sums=('b45cfdf5b3f2a728d14f1409dbe1095a6cb46af8a7e8472ebf20899f0c12eb19')
 
 check() {
 	cd "$pkgname-$pkgver"

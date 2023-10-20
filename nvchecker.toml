@@ -1,0 +1,4 @@
+[vim-themis]
+source = "github"
+github = "thinca/vim-themis"
+use_max_tag = true
