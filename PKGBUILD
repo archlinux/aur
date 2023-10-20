@@ -2,7 +2,7 @@
 _base=SeleniumBase
 pkgname=python-${_base,,}
 pkgdesc="A complete web automation framework for end-to-end testing"
-pkgver=4.20.3
+pkgver=4.20.4
 pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
