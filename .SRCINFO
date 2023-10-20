@@ -1,0 +1,37 @@
+pkgbase = certbot
+	pkgdesc = An ACME client
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = https://certbot.eff.org
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = ca-certificates
+	depends = python-acme=2.7.2
+	depends = python-configargparse
+	depends = python-configobj
+	depends = python-cryptography
+	depends = python-distro
+	depends = python-parsedatetime
+	depends = python-pyrfc3339
+	depends = python-pytz
+	depends = python-setuptools
+	optdepends = certbot-apache: Apache plugin for Let’s Encrypt client
+	optdepends = certbot-nginx: Nginx plugin for Let’s Encrypt client
+	replaces = letsencrypt
+	source = github.com-certbot-certbot::git+https://github.com/certbot/certbot#commit=a1b773cbdc1027214b2cb9dc46cfba66b0ae7af2
+	source = tmpfiles.conf
+	source = certbot-renew.service
+	source = certbot-renew.timer
+	b2sums = SKIP
+	b2sums = 7d2c26a9953d3b5a899053bdd7bd77051c67abe6480af2bfaaee06f20a399b0b4ccccc0af35cfe9e6d2b1fc833dbff928ba46771a9127720073dda29aef9a2e0
+	b2sums = 773be7c45aaf84b79b260053dd4555be1b913238f680cf2c816e20d585db21c11ff41c985915ab0804bb3bc78af2e1e09133ed3b04e276e6379f63e9522064c1
+	b2sums = a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81
+
+pkgname = certbot
