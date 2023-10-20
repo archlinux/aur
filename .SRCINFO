@@ -1,17 +1,17 @@
 pkgbase = moonfm-bin
 	pkgdesc = An easy to use podcast player for podcast lovers, discover the best of over 600,000+ podcasts.
-	pkgver = 5.0.2
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://moon.fm/
 	arch = x86_64
 	license = unknown
-	depends = electron25
+	depends = electron26
 	provides = moonfm
 	conflicts = moonfm
 	options = !strip
-	source = https://moon.fm/dist/MoonFM-5.0.2-x86_64.AppImage
+	source = https://moon.fm/dist/MoonFM-5.0.3-x86_64.AppImage
 	source = moonfm.sh
-	sha256sums = f0b7a09ca2b2a8f2d64d703dc600e1af0c7cd47fcea101f0da41e44226fc78eb
-	sha256sums = 639c35b7f4e966485999e6af98bc94765e16a4196e1f582541330c640520faab
+	sha256sums = 9ea1caf650fcca64513d271557a4348f5acf920acbde3a87a76e31f792e2528c
+	sha256sums = ec29233861a7658037655b6fe454bb3f1022328426f745c053906016b47a368a
 
 pkgname = moonfm-bin

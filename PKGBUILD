@@ -2,7 +2,7 @@
 
 pkgname=moonfm-bin
 _pkgname=${pkgname%-bin}
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="An easy to use podcast player for podcast lovers, discover the best of over 600,000+ podcasts."
 arch=('x86_64')
@@ -10,11 +10,11 @@ url='https://moon.fm/'
 license=('unknown')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('electron25')
+depends=('electron26')
 source=("https://moon.fm/dist/MoonFM-${pkgver}-${arch}.AppImage"
         "${_pkgname}.sh")
-sha256sums=('f0b7a09ca2b2a8f2d64d703dc600e1af0c7cd47fcea101f0da41e44226fc78eb'
-            '639c35b7f4e966485999e6af98bc94765e16a4196e1f582541330c640520faab')
+sha256sums=('9ea1caf650fcca64513d271557a4348f5acf920acbde3a87a76e31f792e2528c'
+            'ec29233861a7658037655b6fe454bb3f1022328426f745c053906016b47a368a')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 _filename=./MoonFM-${pkgver}-${arch}.AppImage
