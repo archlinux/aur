@@ -2,7 +2,7 @@
 _pkgname=filecxx
 pkgname=filecentipede-bin
 pkgver=2.82
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client."
 arch=("x86_64")
 url="http://www.filecxx.com/"
@@ -17,10 +17,10 @@ depends=('libjpeg-turbo' 'expat' 'libbsd' 'libxfixes' 'libxcb' 'libxau' 'xcb-uti
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}.0/${_pkgname}_${pkgver}_linux_x64.zip"
-    "LICENSE.md::https://raw.githubusercontent.com/filecxx/FileCentipede/main/README.md")
+    "LICENSE.md::https://raw.githubusercontent.com/filecxx/FileCentipede/v${pkgver}.0/README.md")
 sha256sums=('41932ebba913ed1de840ac32653d69fac67e44cf366b0fe7c58a4b50c1d9804d'
-            '8b18ee9eee2c4e880944f9d25bba8c9c4246c819baf54124d7fa15788fcc8264')
-prepare() {
+            '3d681f308f0c2eee560aa31e2687b5285ecd78c79eef5b3aa5f0e4bf0009e6db')
+build() {
     mkdir -p "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
     gendesk -f -n --icon "${pkgname%-bin}" --categories "Utility;System" --name "FileCentipede文件蜈蚣" --exec "${pkgname%-bin}"
