@@ -1,6 +1,6 @@
 pkgbase = recyclarr
 	pkgdesc = A command-line application that will automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://github.com/recyclarr/recyclarr
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = recyclarr
 	sha512sums = b26a7ebfe04bb6d15f94a423e844a546df7e3f767ecef0a39a74bc6affdb99a897075b2ef3e05c5514800d6e0f5f5afe02a9003852defc0091328171d9ebc3c1
 	sha512sums = 3eb0acff87af1553508c5da080a6767f204868dc33a6a5f2253d25164052ab8ba96f89c88ad4bb82227a0f3b7e172f692abfe84d3e9a800448b8f7e194304978
 	sha512sums = 87a9430a2dd4d14de36af0697342d7482585839b8ab66f8fa8da61f8965e145472554ba966a9d97692cf14332dd6fdb3a36d5daff14c1c868b7e6779c5d65c23
-	source_x86_64 = recyclarr.6.0.1.linux-x64.tar.gz::https://github.com/recyclarr/recyclarr/releases/download/v6.0.1/recyclarr-linux-x64.tar.xz
-	sha512sums_x86_64 = 44962b70f3d60a125cc8ac1bdce732b9aa3a081543af6a366af66cfc8269d59a7d3c09a30badd57b008d8be44568aa0e652e28997446f75c532943a91b7430b8
-	source_aarch64 = recyclarr.6.0.1.linux-arm64.tar.gz::https://github.com/recyclarr/recyclarr/releases/download/v6.0.1/recyclarr-linux-arm64.tar.xz
-	sha512sums_aarch64 = e1f1343b5f1a24ff3d6b86929b0ac548b6a3d18fd7e095f51bfd64359ff225cf5cd13eb2be99cadb4b759b0e9bdfebcf91d4c914a23d39e1f6031e2c35f475d5
-	source_armv7h = recyclarr.6.0.1.linux-arm.tar.gz::https://github.com/recyclarr/recyclarr/releases/download/v5.4.0/recyclarr-linux-arm.tar.xz
+	source_x86_64 = recyclarr.6.0.2.linux-x64.tar.gz::https://github.com/recyclarr/recyclarr/releases/download/v6.0.2/recyclarr-linux-x64.tar.xz
+	sha512sums_x86_64 = 55d6102b4097759e746560427b29bf36c84ec2f45c7ae6eaae15e3210af581e539ea57234fc5fe35fe112b132b86158359feca5db686b8ccabbbb1bebf941b75
+	source_aarch64 = recyclarr.6.0.2.linux-arm64.tar.gz::https://github.com/recyclarr/recyclarr/releases/download/v6.0.2/recyclarr-linux-arm64.tar.xz
+	sha512sums_aarch64 = 06e3f3bf8268ed184ddc868e54c5b457246c3034301544a5823fd9c52180f7514367419a254849f01e7c9fa029bf6a806bfe03b980b3716548c2f23f7929f2f9
+	source_armv7h = recyclarr.6.0.2.linux-arm.tar.gz::https://github.com/recyclarr/recyclarr/releases/download/v5.4.0/recyclarr-linux-arm.tar.xz
 	sha512sums_armv7h = 519231a286113d024fdf0d84abaf27af4f53a7a4e2cb36de122a0da2db0aaf1e499559e5524f5d827e118345dfd9ea175535a48d9b09ad62c7e5af1d8341c3db
 
 pkgname = recyclarr
