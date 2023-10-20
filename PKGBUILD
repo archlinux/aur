@@ -23,6 +23,7 @@ makedepends=(
   tar
   xz
   sed
+  linux-firmware
 
   # htmldocs
   graphviz
@@ -81,7 +82,18 @@ prepare() {
   cp ../config .config
 
   ### Stoneyridge patch ###
-  #sed -i 's|CONFIG_DRM_AMDGPU=m|CONFIG_DRM_AMDGPU=y|g' .config
+  firmware_dir=../stoney
+  rm -rf "$firmware_dir"
+  mkdir -p "$firmware_dir/amdgpu"
+  cp /lib/firmware/amdgpu/stoney* "$firmware_dir/amdgpu/"
+  xz_count=`ls -1 ${firmware_dir}/amdgpu/stoney*.xz 2>/dev/null | wc -l`
+  zst_count=`ls -1 ${firmware_dir}/amdgpu/stoney*.zst 2>/dev/null | wc -l`
+  if [ $xz_count != 0 ]; then
+    xz -d ${firmware_dir}/amdgpu/stoney*.xz &> /dev/null || true
+  fi
+  if [ $zst_count != 0 ]; then
+    zstd -d ${firmware_dir}/amdgpu/stoney*.zst &> /dev/null || true
+  fi
   #########################
 
   make olddefconfig
