@@ -1,10 +1,8 @@
 # Maintainer: Marco Pompili <aur@odd.red>
 
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
-
 pkgname=openframeworks
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64')
