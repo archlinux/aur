@@ -1,8 +1,8 @@
-# Maintainer: zt <nwowens32@gmail.com>
+# Maintainer: zt <zt@zt64.dev>
 pkgname=vencord-desktop-git
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
-pkgver=r142.d884b7d
-pkgrel=4
+pkgver=r195.841cdcf
+pkgrel=1
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
