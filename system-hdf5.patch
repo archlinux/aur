@@ -1,0 +1,21 @@
+diff --git a/CytoML/src/Makevars.in b/CytoML/src/Makevars.in
+index 9b169a2..d12c8be 100644
+--- a/CytoML/src/Makevars.in
++++ b/CytoML/src/Makevars.in
+@@ -6,13 +6,10 @@ ifneq (,)
+ This makefile requires GNU Make.
+ endif
+ 	
+-CXX_STD = CXX11
++CXX_STD = CXX17
+ 
+ PKG_CPPFLAGS =-DROUT -I../inst/include/ @PKG_CPPFLAGS@ -DBOOST_NO_AUTO_PTR 
+ 
+-RHDF5_LIBS= $(shell echo 'Rhdf5lib::pkgconfig("PKG_CXX_LIBS")'|\
+-    "${R_HOME}/bin/R" --vanilla --slave)
++CLINK_CPPFLAGS := -I/usr/lib/R/library/cpp11/include -I/usr/lib/R/library/RProtoBufLib/include -I/usr/lib/R/library/cytolib/include -I/usr/lib/R/library/flowWorkspace/include
+ 
+-PKG_LIBS = `${R_HOME}/bin/Rscript -e "cytolib:::cytolib_LdFlags()"` $(RHDF5_LIBS) $(LAPACK_LIBS) $(BLAS_LIBS) @PKG_LIBS@   
+-
+-  
++PKG_LIBS = `${R_HOME}/bin/Rscript -e "cytolib:::cytolib_LdFlags()"` $(LAPACK_LIBS) $(BLAS_LIBS) @PKG_LIBS@
