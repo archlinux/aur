@@ -2,14 +2,14 @@
 pkgname=x86-64-level
 # renovate: datasource=github-releases depName=HenrikBengtsson/x86-64-level
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Get the x86-64 Microarchitecture Level on the Current Machine'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/HenrikBengtsson/x86-64-level"
 source=(
-  ${url}/archive/refs/tags/${pkgver}.tar.gz
+  ${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz
 )
-md5sums=('5f0782178797968102d1a4269c252ce4')
+sha256sums=('3fcefeb1db094ce069dd6a4ddfd85ef92fc572dabbc3e430d32a1903e7d28f82')
 license=('CC-BY-SA-4.0')
 depends=(
   bash
@@ -17,9 +17,6 @@ depends=(
 checkdepends=(
   make
   shellcheck
-)
-makedepends=(
-  python-build
 )
 
 package() {
@@ -29,7 +26,6 @@ package() {
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"
   done
-
 }
 
 check() {
