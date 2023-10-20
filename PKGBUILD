@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CMplot
-_pkgver=4.4.1
+_pkgver=4.4.3
 pkgname=r-${_pkgname,,}
-pkgver=4.4.1
+pkgver=4.4.3
 pkgrel=1
 pkgdesc='Circle Manhattan Plot'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7543b1047bd3bb7d4bea2baa40315346903e6e0438da4b0154445f79d6d0cef8')
+sha256sums=('c6ccac4e6bd2f6f6bafed0f72095401b93987877cc3d89ee673f827679bd7256')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

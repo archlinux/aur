@@ -1,12 +1,12 @@
 pkgbase = r-cmplot
 	pkgdesc = Circle Manhattan Plot
-	pkgver = 4.4.1
+	pkgver = 4.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=CMplot
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/CMplot_4.4.1.tar.gz
-	sha256sums = 7543b1047bd3bb7d4bea2baa40315346903e6e0438da4b0154445f79d6d0cef8
+	source = https://cran.r-project.org/src/contrib/CMplot_4.4.3.tar.gz
+	sha256sums = c6ccac4e6bd2f6f6bafed0f72095401b93987877cc3d89ee673f827679bd7256
 
 pkgname = r-cmplot
