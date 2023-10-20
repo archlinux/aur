@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=('any')
 url="https://github.com/viarotel-org/escrcpy"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron26' 'scrcpy')
+depends=('bash' 'electron26' 'scrcpy' 'android-sdk-platform-tools')
 makedepends=('gendesk' 'npm>=9.8.1' 'nodejs>=18.18.0')
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh")
-sha256sums=('255c198fe8a5cdee5d66d9d65288cb8afa81325da6762898d40c1039a679a99b'
+sha256sums=('48a909070edf858ff2d3351cfe5ed2853f6191d3e50a72db1371867fb8c9985d'
             '56ec78aeb841bb4c6d5c40893aff43a8a034bc4371684bc6a58404e6c8f45368')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
