@@ -1,26 +1,27 @@
 pkgbase='novelwriter'
 pkgname=('novelwriter')
 _module='novelWriter'
-pkgver='2.0.7'
-pkgrel=2
+pkgver='2.1'
+pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels"
 url="https://novelwriter.io"
-depends=('python' 'python-pyenchant' 'python-lxml' 'python-pyqt5-webengine' 'qt5-svg')
+depends=('python' 'python-pyenchant' 'python-lxml' 'python-pyqt5' 'python-pyqt5-webengine' 'qt5-svg')
 makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('6da33639fed288f05ee583dab146f77a7a4bdc948a2be58c968b0c6aba0742eb')
+sha256sums=('2754fa36d82b89d76217f64753ac19ed492f41b08e8754c5a5207644343d7061')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    #python setup.py build
+    python -m build --wheel
 }
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    pip install --ignore-installed --no-deps --root="${pkgdir}" "dist/${_module}-${pkgver}-py3-none-any.whl"
 
     install -D setup/data/novelwriter.desktop -t "${pkgdir}"/usr/share/applications
     install -D setup/data/novelwriter.png -t "${pkgdir}"/usr/share/pixmaps
