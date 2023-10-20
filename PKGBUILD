@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-appswitcher
 pkgname=$_pkgname-git
-pkgver=r61.2a3e41e
+pkgver=1.0.r27.g131d895
 pkgrel=1
 pkgdesc="Third party, more feature rich application switcher."
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {

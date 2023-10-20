@@ -1,6 +1,6 @@
 pkgbase = lxqt-appswitcher-git
 	pkgdesc = Third party, more feature rich application switcher.
-	pkgver = r61.2a3e41e
+	pkgver = 1.0.r27.g131d895
 	pkgrel = 1
 	url = https://github.com/zjes/lxqt-appswitcher
 	arch = i686
