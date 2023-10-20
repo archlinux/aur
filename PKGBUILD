@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.0.5
+pkgver=4.0.7
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -10,22 +10,26 @@ _githuburl='https://github.com/rubickCenter/rubick'
 license=('MIT')
 conflicts=("${pkgname}")
 depends=('bash' 'electron26')
-makedepends=('yarn' 'nodejs>=16' 'npm' 'gendesk' 'libxtst' 'libxtst' 'libicns' 'graphicsmagick' 'xz' 'asar')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=('yarn' 'nvm' 'npm' 'gendesk' 'libxtst' 'libxtst' 'libicns' 'graphicsmagick' 'xz' 'asar')
+source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
 	"${pkgname}.sh")
-sha256sums=('b6a6853f2ce47cff24150ab451c66bcc88d81f977fe4e84bb604ce059441942a'
-            '087d0ff408d5f0f270b36c65e5e1e5d27b277017b2091df08b0502cdebacb633')
-prepare() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+sha256sums=('11f4026559d03d980a969480d21a3e28e3f11769935213505177b7d0e18f2f2d'
+            '18018cb5fb6b0bbfc438c4e66fa78491be0ca63cea30094670f039014e08005d')
+_ensure_local_nvm() {
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 build() {
+	gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+	_ensure_local_nvm
+	nvm install 16
+	nvm use 16
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	sed -e '5i\  "homepage": "https://github.com/rubickCenter/rubick",' \
 		-e '5i\  "repository": "https://github.com/rubickCenter/rubick",' \
 		-i package.json
-	sed "42,98d" -i vue.config.js
+	sed -e "42,98d" -e "s|deb|AppImage|g" -i vue.config.js
 	yarn
-	yarn add xvfb-maybe @vue/cli
+	yarn global add xvfb-maybe @vue/cli
 	cd "${srcdir}/${pkgname}-${pkgver}/feature"
 	yarn
 	yarn build
