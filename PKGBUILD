@@ -2,7 +2,7 @@
 # Contributor: jkoch < 	johannes [aTTTT] ortsraum {d00t} de>
 # Contributor: Daniel Dietrich <shaddow2k@@gmail..com>
 pkgname=kleiner-brauhelfer
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A Qt-based tool for hobby brewer to calculate and manage the beer brewing process."
 arch=("i686" "x86_64")
@@ -32,5 +32,5 @@ package() {
   install -m644 -D "$srcdir/kleiner-brauhelfer.desktop" "$pkgdir/usr/share/applications"
 }
 
-sha256sums=('b9c9794ea399b5dd85cd62cefde374657f98a804582e5beae94557204ef9be5d'
+sha256sums=('ea12e680144e21a088ebc1a952ff8fbe3fecd998a81436715f90acf8f8b3b53f'
             '186b19866751e3a2bf89e5e3f1e614eff01db2db8afa4c9e52c0d02e5c608cbd')
