@@ -1,14 +1,14 @@
 # Maintainer: zaps166 <spaz16 at wp dot pl>
 
 pkgname=qdre-viewer-git
-pkgver=0.0.0.r59.g332d59b
+pkgver=0.0.0.r61.gb6dd0b8
 pkgrel=1
 pkgdesc='Lightweight Qt image viewer'
 arch=('x86_64')
 url='https://gitlab.com/zaps166/qdre'
 license=('MIT')
 groups=('qdre')
-depends=('qt5-base' 'qt5-x11extras' 'glib2' 'libxcb' 'gnome-menus' 'exiv2' 'kwindowsystem')
+depends=('qt5-base' 'qt5-x11extras' 'glib2' 'libxcb' 'gnome-menus' 'exiv2' 'kwindowsystem5')
 makedepends=('cmake' 'git')
 conflicts=('qdre-git')
 source=("git+https://gitlab.com/zaps166/qdre.git#branch=master")
