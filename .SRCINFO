@@ -1,26 +1,26 @@
 pkgbase = plasmoidviewer-debug
 	pkgdesc = Debug build of plasmoidviewer allowing to debug QML code
-	pkgver = 5.15.0
+	pkgver = 5.27.8
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = x86_64
 	groups = plasma
 	license = LGPL
 	makedepends = extra-cmake-modules
-	makedepends = kitemmodels
-	makedepends = python2
-	makedepends = kdoctools
-	makedepends = ktexteditor
-	depends = plasma-framework
+	makedepends = perl
+	makedepends = kdoctools5
+	makedepends = ktexteditor5
+	depends = plasma-framework5
 	options = !strip
-	source = https://download.kde.org/stable/plasma/5.15.0/plasma-sdk-5.15.0.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.8/plasma-sdk-5.27.8.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.8/plasma-sdk-5.27.8.tar.xz.sig
 	source = 0001-Enable-QML-debugging.patch
-	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
+	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = a8a514775ded362b4b15190eb451bc0ef7b2564630f6937daf871a92311eb812
-	sha256sums = 1c612d2cb08e9435e265120a2f94b13a62833344abea7eb2dd7c03a93ba6ed56
+	sha256sums = 9f961d5ce3a5fe7e945eb397d103435954669baba521f04a81a40345f47490bb
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = plasmoidviewer-debug
-
