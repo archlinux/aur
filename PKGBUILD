@@ -11,13 +11,13 @@ url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-graphics)
-depends=(kactivities baloo libkdcraw kparts kitemmodels cfitsio phonon-qt5 kimageannotator wayland-protocols)
+depends=(kactivities5 baloo5 libkdcraw kparts5 kitemmodels5 cfitsio phonon-qt5 kimageannotator wayland-protocols)
 optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
-            'kimageformats: support for dds, xcf, exr, psd, and more image formats'
+            'kimageformats5: support for dds, xcf, exr, psd, and more image formats'
             'kamera: import pictures from gphoto2 cameras')
 conflicts=('gwenview')
 replaces=('gwenview')
-makedepends=(extra-cmake-modules kdoctools)
+makedepends=(extra-cmake-modules kdoctools5)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('b2cf1ff6f209e917330188db909cb5ba35812a23bff3830c6e66f1161a82cd08'
             'SKIP')
