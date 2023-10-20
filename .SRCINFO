@@ -1,0 +1,23 @@
+pkgbase = python-cocotb-test-git
+	pkgdesc = cocotb-test provides standard python unit testing capabilities for cocotb
+	pkgver = r280.ae949ce
+	pkgrel = 1
+	url = https://github.com/themperek/cocotb-test
+	arch = any
+	license = BSD2
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-cocotb
+	depends = pytest
+	optdepends = iverilog: for simulating verilog designs
+	optdepends = ghdl: for simulating VHDL designs
+	optdepends = gtkwave: for visualizing waveforms
+	optdepends = python-pytest-xdist: for parallel runs
+	provides = python-cocotb-test
+	conflicts = python-cocotb-test
+	options = !emptydirs
+	source = git+https://github.com/themperek/cocotb-test
+	md5sums = SKIP
+
+pkgname = python-cocotb-test-git
