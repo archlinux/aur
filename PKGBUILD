@@ -24,7 +24,10 @@ makedepends=(
   'gz-cmake=3'
   'vulkan-headers'
   )
-optdepends=('optix: Nvidia OptiX rendering engine plugin')
+optdepends=(
+  'optix: Nvidia OptiX rendering engine plugin'
+  'ogre-1.9: Ogre 1.x rendering enging plugin'
+  )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('9155927d2ed13237c0aab6b0dafbfdc87eac91213341f8559c9d84c0eebbbe25')
