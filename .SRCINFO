@@ -1,0 +1,23 @@
+pkgbase = bypass_utility
+	pkgdesc = Small utility to disable bootrom protection (SLA and DAA) to smartphones with supported mediatek processors.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/MTK-bypass
+	arch = x86_64
+	license = MIT
+	depends = python-pyusb
+	depends = python-json5
+	depends = python-pyserial
+	depends = linux_kamakiri
+	provides = exploits_collection=1.6
+	source = https://github.com/MTK-bypass/bypass_utility/archive/refs/tags/v.1.4.2.tar.gz
+	source = v.1.4.2.tar.gz.sig
+	source = https://github.com/MTK-bypass/exploits_collection/archive/refs/tags/v1.6.tar.gz
+	source = v1.6.tar.gz.sig
+	validpgpkeys = 4BA1F928CBA7CA219A14741B24FB14CFDD5D0319
+	sha256sums = 61606367f706a07277636488890b9a3622324223b50ca9f21e49b4cb5c409eb0
+	sha256sums = SKIP
+	sha256sums = 3195c8df2539a6ec3c25bd64aad732b2291070454f45f86df5a675796cbae731
+	sha256sums = SKIP
+
+pkgname = bypass_utility
