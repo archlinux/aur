@@ -6,13 +6,13 @@
 # (Maintainer) moostik <mooostik_at_gmail.com>
 pkgname=qelectrotech
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc='An electric diagram editor'
 arch=('i686' 'x86_64')
 url='https://qelectrotech.org/'
 license=('GPL2')
 depends=('qt5-svg' 'hicolor-icon-theme' 'desktop-file-utils'
-         'kwidgetsaddons' 'kcoreaddons')
+         'kwidgetsaddons5' 'kcoreaddons5')
 optdepends=('tk: for qet_tb_generator support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qelectrotech/qelectrotech-source-mirror/archive/refs/tags/$pkgver.tar.gz"
         "install-dir.patch")
