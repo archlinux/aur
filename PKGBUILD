@@ -2,8 +2,8 @@
 # Contributor: neeshy <neeshy@tfwno.gf>
 
 pkgname=ripme-bin
-pkgver=2.1.5
-_pkgver=2.1.4-38-836a7494
+pkgver=2.1.6
+_pkgver=${pkgver}-1-68189f27
 pkgrel=1
 pkgdesc="Downloads albums in bulk"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime>=20')
 provides=('ripme')
 conflicts=('ripme')
 source=("https://github.com/ripmeapp2/ripme/releases/download/${pkgver}/ripme-${_pkgver}.jar")
-sha256sums=('a82ad80fe406a01adf37b3de403245ad78e0669aa96b91d6befe29aaf88200d2')
+sha256sums=('adffec078cc6e1da42699f874176744622a00a1dace000f2ef0c7dad28957faa')
 
 package() {
   cd "${srcdir}"
