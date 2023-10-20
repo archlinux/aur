@@ -1,7 +1,22 @@
 post_install() {
-	printf "Create user: ipfs\n"
+	echo ""
+	echo "Create user ipfs..."
 	sudo useradd -m ipfs
 	sudo usermod --shell /bin/bash ipfs
-	printf "Update Services\n"
+	echo ""
+	echo "Initialize IPFS..."
+	sudo mkdir -p /opt/ipfs-repo
+	sudo chown ipfs:ipfs -R /opt/ipfs-repo
+	sudo su ipfs <<EOL
+export IPFS_PATH=/opt/ipfs-repo
+/usr/bin/ipfs init
+EOL
+	echo ""
+	echo "Update Services..."
 	sudo systemctl daemon-reload
+	echo ""
+	echo "You can now use ipfs service with:"
+	echo "sudo systemctl start ipfs"
+	echo "sudo systemctl enable ipfs #to start ipfs on system startup"
+	echo ""
 }

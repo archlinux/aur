@@ -1,7 +1,7 @@
 pkgbase = kubo-s3-git
 	pkgdesc = IPFS Kubo with S3 Datastore Implementation
 	pkgver = 0.23.0.r0.g3a1a041
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chixodo-xyz/kubo-s3
 	install = prod.install
 	arch = x86_64

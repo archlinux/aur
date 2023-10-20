@@ -3,7 +3,7 @@ _pkgname=kubo
 _pkgplgname=$_pkgname-s3
 pkgname=$_pkgplgname-git
 pkgver=0.23.0.r0.g3a1a041
-pkgrel=2
+pkgrel=3
 pkgdesc="IPFS Kubo with S3 Datastore Implementation"
 arch=('x86_64')
 url="https://github.com/chixodo-xyz/kubo-s3"
@@ -43,17 +43,17 @@ prepare() {
 	GoVersion=$(grep "${KuboVersion} " ../versions.txt | awk '{ print $2 }')
 
 	if [ -z "$GoVersion" ]; then
-		govers=$(which go)
+		ln -sf $(which go) $srcdir/go
 	else
 		printf "\033[34;1mInstalling go version: %s\n\033[0m" ${GoVersion}
 
 		GOPATH=$(go env GOPATH)
 		GOROOT=$(go env GOROOT)
 		go install golang.org/dl/${GoVersion}@latest
-		govers=$GOPATH/bin/$GoVersion
-		$govers download
-		GOVERSIONROOT=$($govers env GOROOT)
-		GOVERSIONPATH=$($govers env GOPATH)
+		ln -sf $GOPATH/bin/$GoVersion $srcdir/go
+		$srcdir/go download
+		GOVERSIONROOT=$($srcdir/go env GOROOT)
+		GOVERSIONPATH=$($srcdir/go env GOPATH)
 
 		cp $GOROOT/go.env $GOVERSIONROOT/go.env
 
@@ -65,10 +65,10 @@ prepare() {
 	export GO111MODULE=on
 
 	printf "\033[34;1mFetching go-ds-s3 plugin\n\033[0m"
-	$govers get github.com/ipfs/go-ds-s3/plugin@v0.9.0
+	$srcdir/go get github.com/ipfs/go-ds-s3/plugin@v0.9.0
 	echo -en "\ns3ds github.com/ipfs/go-ds-s3/plugin 0" >> plugin/loader/preload_list
 
-	sed -i "s\GOCC ?= go\GOCC ?= ${govers}\g" Rules.mk
+	sed -i "s\GOCC ?= go\GOCC ?= ${srcdir}/go\g" Rules.mk
 	sed -Ei "s/const CurrentVersionNumber = \"(.*)\"/const CurrentVersionNumber = \"\1-s3\"/g" version.go
 }
 
@@ -82,7 +82,7 @@ build() {
 	cd "$srcdir/$_pkgname"
 	printf "\033[34;1mBuild Kubo with S3 Plugin\n\033[0m"
 	make build
-	$govers mod tidy
+	$srcdir/go mod tidy
 	make build
 
 	if [ $? -ne 0 ]; then
