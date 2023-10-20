@@ -3,11 +3,6 @@ post_install() {
     echo "site at localhost:5000"
 }
 
-post_upgrade() {
-    chown -R kavita /opt/kavita
-    chown kavita /etc/Kavita/appsettings.json
-}
-
 post_remove() {
     userdel kavita
 }
