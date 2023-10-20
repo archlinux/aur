@@ -2,7 +2,7 @@
 
 pkgname=cmake-language-server
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
@@ -25,7 +25,7 @@ sha256sums=('799a1d69e14a8f9ce4a9f26470fd5cb8c61b6305c4f7d3dd97b9974744a32ebd')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	python -m build --wheel --no-isolation
+	PDM_BUILD_SCM_VERSION="$pkgver" python -m build --wheel --no-isolation
 }
 
 package() {
