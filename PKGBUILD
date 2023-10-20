@@ -23,7 +23,10 @@ makedepends=(
   'doxygen'
   'gz-cmake=3'
   )
-optdepends=('optix: Nvidia OptiX rendering engine plugin')
+optdepends=(
+  'optix: Nvidia OptiX rendering engine plugin'
+  'ogre-1.9: Ogre 1.x rendering enging plugin'
+  )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('b35d41ae611f96bb755aa4dd1f31b389f514220bdae9192d24ba2b17cbcd2def')

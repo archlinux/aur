@@ -16,6 +16,7 @@ pkgbase = gz-rendering7
 	depends = gz-utils=2
 	depends = gz-ogre-next
 	optdepends = optix: Nvidia OptiX rendering engine plugin
+	optdepends = ogre-1.9: Ogre 1.x rendering enging plugin
 	provides = gz-rendering=7
 	source = https://github.com/gazebosim/gz-rendering/archive/gz-rendering7_7.4.2.tar.gz
 	sha256sums = b35d41ae611f96bb755aa4dd1f31b389f514220bdae9192d24ba2b17cbcd2def
