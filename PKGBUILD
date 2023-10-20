@@ -1,15 +1,16 @@
 # Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-distro-git
 _pkgname=dl-distro
-pkgver=144.3163f4e
+pkgver=146.acab6b0
 pkgrel=1
 pkgdesc="Download and verify ISOs with GnuPG and shasums (git version)"
 arch=('any')
 url="https://codeberg.org/bashuser30/$_pkgname"
 source=("git+$url")
 license=('GPL3')
-depends=('bash' 'gnupg' 'jq' 'wget')
-optdepends=('minisign: void signature verification')
+depends=('bash' 'jq' 'wget')
+optdepends=('gnupg: use -n to disable verification'
+            'minisign: void signature verification')
 makedepends=('git')
 conflicts=('dl-distro')
 provides=('dl-distro')
