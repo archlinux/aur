@@ -3,24 +3,24 @@
 _pkgname="dolphin"
 _pkgname_tabopts="$_pkgname-tabopts"
 pkgname="$_pkgname_tabopts"
-pkgver=23.08.1
-pkgrel=2
+pkgver=23.08.2
+pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=(LGPL)
 depends=(
   'baloo-widgets'
-  'kactivities'
-  'kcmutils'
+  'kactivities5'
+  'kcmutils5'
   'kio-extras'
-  'knewstuff'
-  'kparts'
+  'knewstuff5'
+  'kparts5'
   'kuserfeedback'
 )
 makedepends=(
   'extra-cmake-modules'
-  'kdoctools'
+  'kdoctools5'
 )
 optdepends=(
   'ffmpegthumbs: video thumbnails'
@@ -51,10 +51,10 @@ if [ x"$_pkgname_tabopts" == x"$pkgname" ] ; then
     "https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
   )
   sha256sums+=(
-    '05ce21772ee91482f72151c1ef9ddcb62ccff5fc3cd297117215082ba1ec15e6'
+    '0bca082410c4a1ab0ac60f76b0fbefa31c749dabe8a57cb53a33806cf53f6b2f'
   )
 else
-  # x-git package
+  # git package
   _pkgsrc="$_pkgname"
 
   makedepends+=('git')
@@ -80,7 +80,8 @@ else
         | sed -E "s@$_regex@\1@"
     )
     _commit=$(
-      git log -G "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+      git log -G "$_line" -1 --pretty=oneline --no-color -- $_file \
+        | sed 's@\ .*$@@'
     )
     _revision=$(
       git rev-list --count $_commit..HEAD
