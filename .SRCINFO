@@ -1,0 +1,14 @@
+pkgbase = polybar-peekaboo
+	pkgdesc = highlight your wallpaper by hiding polybar when no windows are open
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tesnos/polybar-peekaboo
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = i3-wm
+	depends = polybar
+	source = polybar-peekaboo-0.1.1.tar.gz::https://github.com/tesnos/polybar-peekaboo/archive/refs/tags/0.1.1.tar.gz
+	sha512sums = 797c37159da0395b5ba6c8225d6027bc366857d3ac5ac8bf3d655f29fc48cf2e33f7ec9c77191a8326a35a0ef7df986a5c7144ed68e9358f4f9d95a51a47a9fb
+
+pkgname = polybar-peekaboo
