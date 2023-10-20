@@ -1,17 +1,16 @@
-# Maintainer: Nikos Toutoutzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutoutzoglou <nikos.toutou@protonmail.com>
 
 pkgname=python-iptvtools
 _name=iptvtools
 pkgver=0.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides iptv-filter script tool to maintain IPTV lists."
 arch=('any')
 url="https://github.com/huxuan/iptvtools"
 license=('MIT')
-depends=('ffmpeg' 'python')
+depends=('python' 'python-tqdm')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel' 'python-sphinx' 'python-sphinxcontrib-programoutput')
-provides=('python-iptvtools')
-conflicts=('python-iptvtools')
+optdepends=('ffmpeg')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('e27777bea615c653229b7f76f08ed964e7ba50a49b2b8d4c1e3b671a72bd9f0d')
 
