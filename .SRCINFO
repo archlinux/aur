@@ -1,6 +1,6 @@
 pkgbase = tropy
 	pkgdesc = Explore your research photos
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://tropy.org
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = tropy
 	conflicts = tropy-bin
 	conflicts = tropy-appimage
 	source = tropy.sh
-	source = https://github.com/tropy/tropy/archive/refs/tags/v1.15.1.tar.gz
+	source = https://github.com/tropy/tropy/archive/refs/tags/v1.15.2.tar.gz
 	sha256sums = 0fdf0fcaa4676bc3a2835a7ef6b4a9f6b809a37e48775f62d9f4fab52da43901
-	sha256sums = e4d1b7a36f5cc0c7cd1621b713d7aeb6a6988aa935d4e4d34a488789c85a9e62
+	sha256sums = 25fb399b7b0470ccb7a30b2b2e93eac91691997ab8d6099602ce7f8298ebdfeb
 
 pkgname = tropy
