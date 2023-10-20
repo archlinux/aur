@@ -2,31 +2,27 @@
 
 pkgname=kio-stash
 pkgver=1.0
-pkgrel=1
-pkgdesc="A kio slave and daemon to stash discontinuous file selections"
-arch=(i686 x86_64)
+pkgrel=2
+pkgdesc='A kio slave and daemon to stash discontinuous file selections'
+arch=(x86_64)
 url="https://www.kde.org/"
 license=(GPL2)
-depends=(kio)
+depends=(gcc-libs
+         glibc
+         kcoreaddons5
+         kdbusaddons5
+         kio5
+         qt5-base)
 makedepends=(extra-cmake-modules)
-source=("https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz")
+source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz)
 sha256sums=('d8ef422924e24317122524fb1d1e439d45ff9281a502a6258a782cfe0d8c8eaa')
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+  cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
