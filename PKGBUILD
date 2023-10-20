@@ -1,5 +1,5 @@
 # Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
-_job=1247680
+_job=1257047
 _name=xwaylandvideobridge
 pkgname=${_name}-bin
 pkgver=j${_job}
@@ -9,12 +9,12 @@ arch=(x86_64)
 url="https://invent.kde.org/system/${_name}"
 license=(GPL2)
 provides=('xwaylandvideobridge' 'pwbypass')
-depends=('qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons' 'kwindowsystem' 'kwidgetsaddons' 'knotifications' 'ki18n' 'gettext' 'xdg-desktop-portal' 'libxcb')
+depends=('qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons5' 'kwindowsystem5' 'kwidgetsaddons5' 'knotifications5' 'ki18n5' 'gettext' 'xdg-desktop-portal' 'libxcb')
 makedepends=('git' 'ostree')
 optdepends=('freetype2' 'fontconfig' 'pkgconf')
 source=("$_name-$pkgver.flatpak::${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
 		xwaylandvideobridge.sh)
-sha512sums=('87e293b3b051cc69d11281c8cfaa918dd3772d485971710c2e7fc68c0ac848348b4c82bc0095645fb2b5da1d789b1bc7a43e06d3f28b981fd769fe43e2069b45'
+sha512sums=('c36b01d1f67b53474e02e90784fbd7f6638439be0a0a451a302646d42aafc42f765dd66723ef3bdafa0c581a5c82272c7f1c38445f76b638e89798269dbca63e'
             '71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53')
 
 prepare(){
