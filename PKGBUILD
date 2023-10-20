@@ -1,7 +1,7 @@
 _pkgname=kdiff3
 pkgname=${_pkgname}-git
 pkgver=1.10.70.r2628.47bc0721
-pkgrel=1
+pkgrel=2
 pkgdesc='A KDE file comparator/merge tool'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://invent.kde.org/sdk/kdiff3'
