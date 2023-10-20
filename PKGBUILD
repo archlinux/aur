@@ -4,8 +4,9 @@
 
 pkgname=dasel
 pkgver=2.4.1
-pkgrel=1
-pkgdesc='Query and update data structures from the command line.'
+pkgrel=2
+#pkgdesc='Query and update data structures from the command line'
+pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool'
 arch=('x86_64')
 url='https://github.com/TomWright/dasel'
 license=('MIT')

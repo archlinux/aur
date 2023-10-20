@@ -1,7 +1,7 @@
 pkgbase = dasel
-	pkgdesc = Query and update data structures from the command line.
+	pkgdesc = Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TomWright/dasel
 	arch = x86_64
 	license = MIT
