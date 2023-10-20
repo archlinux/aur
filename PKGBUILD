@@ -2,14 +2,14 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=mozregression-gui
-pkgver=5.5.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='Regression range finder for Firefox'
 arch=('any')
 license=(MPL)
 url="https://github.com/mozilla/mozregression"
 conflicts=("mozregression-gui-bin")
-depends=('libxcb' 'libxkbcommon-x11' 'libglvnd' 'gtk3' 'python')
+depends=('libxcb' 'libxkbcommon-x11' 'libglvnd' 'gtk3' 'python' 'tk')
 makedepends=('python-pip' 'python-virtualenv' 'git')
 options=('!strip')
 source=("git+https://github.com/mozilla/mozregression.git#tag=$pkgver"
