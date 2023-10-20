@@ -7,7 +7,7 @@ pkgname=(
   libcheese
 )
 pkgver=44.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -78,7 +78,7 @@ _pick() {
 
 package_cheese() {
   depends+=("libcheese=$pkgver-$pkgrel")
-  groups=(gnome)
+  groups=(gnome-extra)
 
   meson install -C build --destdir "$pkgdir"
 
