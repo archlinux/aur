@@ -30,6 +30,9 @@ package() {
                     "${pkgdir}/usr/share/licenses/${pkgname%-git}"
 
     cp -r "${srcdir}/${pkgname%-git}/." "${pkgdir}/opt/${pkgname%-git}/"
+    rm -rf "${pkgdir}/opt/${pkgname%-git}"/.git
+    rm -rf "${pkgdir}/opt/${pkgname%-git}"/.gitignore
+
     ln -sf "/opt/${pkgname%-git}/scripts/bin2elf" "${pkgdir}/usr/bin/${pkgname%-blobs-git}-bin2elf"
     ln -sf "/opt/${pkgname%-git}/scripts/callgraph" "${pkgdir}/usr/bin/${pkgname%-blobs-git}-callgraph"
     ln -sf "/opt/${pkgname%-git}/scripts/compare" "${pkgdir}/usr/bin/${pkgname%-blobs-git}-compare"
