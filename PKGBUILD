@@ -19,8 +19,10 @@ prepare() {
 package() {
 	install -d $pkgdir/opt/$pkgname/
 	cp -av app $pkgdir/opt/$pkgname/
-	echo -e "#!/bin/sh\nelectron /opt/$pkgname/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/netpad-player
-	find $srcdir -name icon.png -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
+	printf "#!/bin/sh
+exec electron /opt/$pkgname/app \"\$@\"
+" | install -Dm755 /dev/stdin $pkgdir/usr/bin/netpad-player
+	find $srcdir -name icon.png -print -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
 	gendesk -f --name 网络画板离线播放器 --exec /usr/bin/netpad-player --pkgname $pkgname --icon $pkgname
 	install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
 }
