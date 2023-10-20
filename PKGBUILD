@@ -1,34 +1,25 @@
-# Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
+# Contributor: Yaohan Chen <yaohan.chen@gmail.com>
+
 pkgname=frogatto-git
-pkgver=1.2.4474.g4185880
-# The versioning scheme changed from date-based to git tag based on 2013-05-27
-epoch=1
-pkgrel=2
+pkgver=r1.8236da3
+pkgrel=1
 pkgdesc="An action-adventure game, starring a certain quixotic frog."
 arch=(any)
 url="http://www.frogatto.com/"
 license=('custom')
-depends=(anura-git)
+depends=(anura)
 makedepends=('git')
 source=(git+https://github.com/frogatto/frogatto.git
         frogatto-git.sh
         frogatto-git.desktop)
-md5sums=(SKIP
-         c3faef878e21beccf0e4f7b26b4eb1f6
-         935c3d8662a92b9bc775da36cf1ef059)
+sha256sums=('SKIP'
+            '40ede9bcffadf4c235d80835029466d851d976bf1aeccbaa065e41e55431ba29'
+            '873fd89f9fab64fdb3879f5bf8eae0a6e1b4046c891f3a4dac7702a21938a780')
 
 _gitname=frogatto
 
 pkgver() {
-  cd $_gitname
-  if _tag=$(git describe 2>/dev/null)
-  then
-    # Use the tag of the last commit
-    echo $_tag | sed 's|-|.|g'
-  else
-    # The project currently has no tags yet
-    echo 0.0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  fi
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -45,5 +36,3 @@ package() {
   rm -rf music/Unused sounds/unused images/os/mac
   cp -r data images locale music sounds $_installdir
 }
-
-# vim:set ts=2 sw=2 et:
