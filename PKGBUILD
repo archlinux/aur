@@ -11,7 +11,6 @@ url="https://flash.pm/browser/"
 license=(unknown)
 depends=(electron9 nodejs bash)
 makedepends=(imagemagick git innoextract)
-provides=(flashbrowser)
 conflicts=(flashbrowser-git flashbrowser)
 source=(
 	#	"https://github.com/radubirsan/FlashBrowser/releases/download/v${pkgver}/FlashBrowser-linux-x64.zip"

@@ -13,7 +13,6 @@ pkgbase = flashbrowser-bin
 	depends = electron9
 	depends = nodejs
 	depends = bash
-	provides = flashbrowser
 	conflicts = flashbrowser-git
 	conflicts = flashbrowser
 	source = https://github.com/radubirsan/FlashBrowser/releases/download/v0.81/v0.81_FlashBrowser_x64.exe
