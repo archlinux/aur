@@ -1,0 +1,20 @@
+pkgbase = otf-noto-sans-cjk-vf
+	pkgdesc = Noto CJK fonts
+	pkgver = 2.004
+	pkgrel = 1
+	url = https://www.google.com/get/noto/help/cjk
+	arch = any
+	license = custom:SIL
+	provides = noto-fonts-cjk
+	source = https://github.com/notofonts/noto-cjk/releases/download/Sans2.004/01_NotoSansCJK-OTF-VF.zip
+	source = 70-noto-sans-cjk.conf
+	source = 70-noto-sans-mono-cjk.conf
+	sha256sums = d5e33aebad9f8a0c0896a4a29199ef85ca966134db164426c74e83e6f13c43cd
+	sha256sums = 17281bc6225331e3619cd20fdb647220110bea54bdea4a81462da0a75702d56b
+	sha256sums = 58be25f0a71a2bf42f20d4c5fb9e516904b77ef1924e9a0f7275d1595889f278
+
+pkgname = otf-noto-sans-cjk-vf
+	pkgdesc = Noto CJK fonts (Sans, Variable OTC)
+
+pkgname = otf-noto-sans-mono-cjk-vf
+	pkgdesc = Noto CJK fonts (Sans Mono, Variable OTC)
