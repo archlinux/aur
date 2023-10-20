@@ -3,8 +3,8 @@
 
 pkgname=python-matrix-synapse-shared-secret-auth
 _name=${pkgname#python-}
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Shared Secret Authenticator password provider module for Matrix Synapse"
 url="https://github.com/devture/matrix-synapse-shared-secret-auth"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('AGPL')
 makedepends=('python-setuptools')
 depends=('python' 'matrix-synapse')
 source=("https://github.com/devture/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=("9fba080679c6fc928f603d44bd9f5ff0ab62155f74b5a7c13b648558b0114858")
+sha256sums=('5de33edd7f9d807a2857029a10e96a39bb25f6bcd7e1a18f438966eb5a9a49f4')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
