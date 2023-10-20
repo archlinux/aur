@@ -1,7 +1,7 @@
 # Maintainer: Iván Zaera Avellón <ivan dot zaera at protonmail dot com>
 pkgname=owntracks-recorder
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight program for storing and accessing location data published via MQTT (or HTTP) by the OwnTracks apps.'
 arch=('i686' 'pentium4' 'x86_64')
 url='https://github.com/owntracks/recorder'
@@ -10,6 +10,7 @@ depends=(
 	'curl'
 	'libconfig'
 	'libsodium'
+	'lmdb'
 	'lua'
 	'mosquitto'
 )
