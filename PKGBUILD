@@ -1,7 +1,7 @@
 # Maintainer: Ning Sun <n@sunng.info>
 
 pkgname=questdb
-pkgver=7.3.1
+pkgver=7.3.3
 pkgrel=1
 pkgdesc='Fast timeseries database'
 arch=('any')
@@ -14,11 +14,11 @@ source=(https://github.com/questdb/questdb/releases/download/${pkgver}/questdb-$
     'questdb.sysusers'
     'questdb-tmpfile.conf'
     'questdb.service')
-sha1sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP')
+sha1sums=('655bce63445258979e37695be68b25fdbd1669d0'
+          'cf89748006a65bd09ad8f57ca76b58f1ec3a053e'
+          '79459d2e7ab4a78364359cb40368bbc0778fd9cf'
+          'bcd990f6257a0501c82a03384a9d4c5703b03abb'
+          'ec5400e458e7511abb8e455710041352f15b87ab')
 
 package() {
     mkdir -p ${pkgdir}/{usr/bin,usr/share/java/questdb,etc/questdb,var/lib/questdb}
