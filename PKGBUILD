@@ -4,8 +4,7 @@ pkgname=legacybasic
 _pkgname=LegacyBasic
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="Modern implementation of the original Dartmouth BASIC compilers \
-	 in the D programming language"
+pkgdesc="BASIC interpreter for 1970s/80s BASIC games"
 arch=('x86_64')
 url="https://github.com/nigelperks/LegacyBasic"
 license=('MIT' 'custom')
