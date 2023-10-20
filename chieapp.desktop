@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=chieapp
-Exec=chieapp %U
-Terminal=false
-Type=Application
-Icon=chieapp
-StartupWMClass=chieapp
-Comment=Keep your links fresh!
-Categories=Utility;
