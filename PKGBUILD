@@ -13,13 +13,13 @@ makedepends=('sbcl' 'sdl2' 'ncurses')
 conflicts=('lem-editor')
 provides=('lem-editor')
 source=("lem::git+https://github.com/lem-project/lem"
-        "https://qlot.tech/installer"
+        "installer"
         "general.lisp"
         "build-ncurses.lisp"
         "build-sdl2.lisp"
         "lem.desktop")
 b2sums=('SKIP'
-        'd44ed1885e334a340372dcfafaf6409b2bc10ea9537445cf7590d0c2ca0fd708279ed15e903c7f4a64bc175d8bccdc703177d0e31faf8e6fce6b4489311c19fc'
+        'a235f8c3027b5656dba0666c87cb26a8980339aa3aaf62fe321392a200c3fd17776ca263d0e1ce975e3e3012f02064cf97a18b7e367acdf3dacb91c7f21cb5d1'
         'c228c6d9b3eb8379b40be04c7caef16698996642405dcbe769cbf3e8a09ff4464d4ed5638ff2cb12346a77cdf2e1f5eee42d7eb13aeb8f80d2f37c458ab82a6f'
         'c4302f39f5f916f5491f3816d95d60f93502eec4f2d3d8c75f69a464245ed252d89872d2997e907200bac15be39f064e6d69fe2213286dc60650f06fe28e1425'
         'a56e3dd69583c68f4c4e9b3e04c0ab80becd5e8ef98a2fbc7a7fe4aa27a4a6f4f98ff8dd814b1efbe144fdf59e7456fe707bf23095345bb60b198672418aff51'
