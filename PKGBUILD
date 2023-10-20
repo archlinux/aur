@@ -1,7 +1,7 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=dasel-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.3.6
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Query and update data structures from the command line."
 arch=('x86_64')
@@ -11,8 +11,8 @@ source=(
   "${pkgname}-v${pkgver}.gz::https://github.com/TomWright/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.gz"
   "${pkgname}-v${pkgver}_repo.tar.gz::https://github.com/TomWright/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('9da7d1dfc61c719216b288e738d76c2204c5636e5c1f5ba1c7158abcee80facf'
-            'aebed9ddaa1daf5de9080e2ed6eff1c90606a2ad2d9988d4b4fdbb243b1a71d7')
+sha256sums=('23b0c88c5718cf1ac6d70176f7bce3ea079c765e34276f25c8d743e317c15859'
+            'eb44263c792ff3b31e5a5086d01b471d07a4282af6716932f12f76bb8cd4eebd')
 
 package() {
   cd "$srcdir"
