@@ -10,7 +10,7 @@ _tinyfiledialogs_commit=2681e426ddaebc8e2764a7823b4b9d69564d1684
 _asio_commit=01b4e87c04abd4daec58e40463bcdc150085b269
 
 pkgname=vimix
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Live video editor"
@@ -32,15 +32,15 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive
         "stb-${_stb_commit}.tar.gz::https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz"
         "tinyfiledialogs::git+https://git.code.sf.net/p/tinyfiledialogs/code#commit=${_tinyfiledialogs_commit}"
 	"asio-${_asio_commit}.tar.gz::https://github.com/chriskohlhoff/asio/archive/${_asio_commit}.tar.gz")
-sha512sums=('3ccb5a9a6e9d00bd58649620d77b813a2013a669fd22d46634291ce964b76982cede233a668687491013178a2c7b45b4ab35eaf0458102f7fc21e3852978a270'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-	    'SKIP')
+b2sums=('5087be362c88d2898b24fd54516237a8d993b749aaa86686cbf9c182e92adf51ff25f26cab2a5feeb1da101b49a42ba1c7ac0d6cd9324b6c80d81f621c711732'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
   tar -xzf "dirent-${_dirent_commit}.tar.gz" --strip 1 \
