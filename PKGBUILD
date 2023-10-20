@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=tika-server-bin
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='Apache Tika server — detect and extract metadata and text from over a thousand file types'
 arch=(any)
@@ -14,7 +14,7 @@ source=(
   "https://dlcdn.apache.org/tika/$pkgver/tika-server-standard-$pkgver.jar"
   'tika-server.service'
 )
-sha256sums=('ec1a17c1a23d72cb585ff3864fc8758182df6e86e636446ded0220784bcf85eb'
+sha256sums=('4e38d309c9396892ae14b4337cdf13f90f83da81b3b8123d72fde08fea2120bd'
             '4bfed9962d831fa5de01c94f83ee4784c9dd371d72035125508a63debd161862')
 noextract=("tika-server-standard-$pkgver.jar")
 
