@@ -1,34 +1,65 @@
+# Maintainer: Philipp A. <flying-sheep@web.de>
+# Contributor: Torleif Skår <torleif.skaar AT gmail DOT com>
+
 _name=plotnine
 pkgname=python-$_name
-pkgver=0.10.1
+pkgver=0.12.3
 pkgrel=1
 pkgdesc='A grammar of graphics for python'
 arch=(any)
 url="https://github.com/has2k1/$_name"
-license=(GPL2)
+license=('MIT')
 depends=(
 	python
-	'python-mizani>=0.7.3'
-	'python-matplotlib>=3.1.1'
-	'python-numpy>=1.19.0'
-	'python-scipy>=1.5.0'
+	'python-matplotlib>=3.6.0'
+	'python-mizani<=0.11.0'
+	'python-numpy>=1.23.0'
+	'python-pandas>=1.5.0'
 	'python-patsy>=0.5.1'
-	'python-statsmodels>=0.12.1'
-	'python-pandas>=1.1.0'
-	'python-descartes>=1.1.0'
+	'python-scipy>=1.5.0'
+	'python-statsmodels>=0.14.0'
 )
+
 optdepends=(
+	'python-adjusttext: Library to avoid/minimize text overlaps in plots'
+	'python-geopandas: Geospatial data support'
 	'python-scikit-learn: gaussian process smoothing, kernel density implementation'
-	'python-scikit-misc: loess smooting'
+	'python-scikit-misc: loess smoothing'
+	'python-shapely: Manipulation and analysis of geometric objects in the Cartesian plane'
 )
-_pyarch=py3
-_wheel="$_name-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-noextract=("$_wheel")
-sha256sums=('bac216d71b04ea4e084a529c08716a981fe073c8fcdafa7643043935d7b7fa9d')
+
+makedepends=(
+	python-build
+	python-installer
+	python-wheel
+)
+
+checkdepends=(
+	python-pytest
+	python-pytest-cov
+	python-vcrpy
+	python-geopandas
+)
+
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('a38dcb3607fc003c1e59ae0c9d535dae7817650d1cbc2e56e56e5b3de88dfe99')
+
+build() {
+	cd "${_name}-${pkgver}"
+	python -m build --wheel --no-isolation
+}
+
+# Image tests are flaky, skip by default
+BUILDENV+=('!check')
+
+check() {
+	cd "${_name}-${pkgver}"
+	# skip because of ImportError: cannot import name 'log_format' from 'mizani.transforms'
+	PYTHONPATH=. pytest --ignore=tests/test_annotation_logticks.py
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
+	cd "${_name}-${pkgver}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 }
