@@ -2,7 +2,7 @@
 
 pkgname=ktailctl
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
 pkgdesc='GUI to monitor and manage Tailscale'
@@ -11,13 +11,13 @@ depends=(
   gcc-libs
   glibc
   hicolor-icon-theme
-  kconfig
-  kcoreaddons
+  kconfig5
+  kcoreaddons5
   kguiaddons5
-  ki18n
+  ki18n5
   kirigami-addons
   kirigami2
-  knotifications
+  knotifications5
   qt5-base
   qt5-declarative
   qt5-quickcontrols2
