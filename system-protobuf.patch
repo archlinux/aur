@@ -1,0 +1,216 @@
+diff --git a/RProtoBufLib/R/build.R b/RProtoBufLib/R/build.R
+index 6086972..3470cd7 100644
+--- a/RProtoBufLib/R/build.R
++++ b/RProtoBufLib/R/build.R
+@@ -35,75 +35,5 @@ pbCxxFlags <- function() {
+ 
+ # Return the linker flags requried for pb on this platform
+ pbLdFlags <- function() {
+-	lite = FALSE
+-   # on Windows and Solaris we need to explicitly link against pb.dll
+-   if ((Sys.info()['sysname'] %in% c("Windows", "SunOS")) && !isSparc()) {
+-	  suffix <- ifelse(lite, "-lite", "")
+-	  pb <- pbLibPath(suffix)
+-      gs <- gsLibPath()
+-#      res <- asBuildPath(pb)
+-      res <- paste(asBuildPath(gs), " -L", asBuildPath(dirname(pb)), " -lprotobuf ", sep = "")
+-   } else {
+-     res <- ""
+-   }
+-	# if(all)
+-	  # res <- paste(res, gslibs)
+-	res
+-}
+-
+-# Determine the platform-specific path to the pb library
+-pbLibPath <- function(suffix = "") {
+-   sysname <- Sys.info()['sysname']
+-   pbSupported <- list(
+-      "Darwin" = paste("libprotobuf", suffix, ".dylib", sep = ""), 
+-      "Linux" = paste("libprotobuf", suffix, ".so", sep = ""), 
+-      "Windows" = paste("libprotobuf", suffix, ".a", sep = ""),
+-      "SunOS" = paste("libprotobuf", suffix, ".so", sep = "")
+-   )
+-   # browser()
+-   if ((sysname %in% names(pbSupported)) && !isSparc()) {
+-      libDir <- "lib/"
+-      if (sysname == "Windows")
+-         libDir <- paste(libDir, .Platform$r_arch, "/", sep="")
+-      system.file(paste(libDir, pbSupported[[sysname]], sep = ""), 
+-                  package = "RProtoBufLib")
+-   } else {
+-      NULL
+-   }
+-}
+-
+-gsLibPath <- function(suffix = "") {
+-  sysname <- Sys.info()['sysname']
+-  pbSupported <- list(
+-    "Darwin" = paste("libGatingSet.pb", suffix, ".dylib", sep = ""), 
+-    "Linux" = paste("libGatingSet.pb", suffix, ".so", sep = ""), 
+-    "Windows" = paste("GatingSet.pb", suffix, ".o", sep = ""),
+-    "SunOS" = paste("libGatingSet.pb", suffix, ".so", sep = "")
+-  )
+-  # browser()
+-  if ((sysname %in% names(pbSupported)) && !isSparc()) {
+-    libDir <- "lib/"
+-    if (sysname == "Windows")
+-      libDir <- paste(libDir, .Platform$r_arch, "/", sep="")
+-    system.file(paste(libDir, pbSupported[[sysname]], sep = ""), 
+-                package = "RProtoBufLib")
+-  } else {
+-    NULL
+-  }
+-}
+-
+-isSparc <- function() {
+-   Sys.info()['sysname'] == "SunOS" && Sys.info()[["machine"]] != "i86pc"
+-}
+-
+-# Helper function to ape the behavior of the R build system
+-# when providing paths to libraries
+-asBuildPath <- function(path) {
+-   if (.Platform$OS.type == "windows") {
+-      path <- normalizePath(path)
+-      if (grepl(' ', path, fixed=TRUE))
+-         path <- utils::shortPathName(path)
+-      path <- gsub("\\\\", "/", path)
+-   }
+-   return(path)
++  "-lGatingSet.pb -lprotobuf"
+ }
+diff --git a/RProtoBufLib/R/hooks.R a/RProtoBufLib/R/hooks.R
+deleted file mode 100644
+index b5857a8..0000000
+--- a/RProtoBufLib/R/hooks.R
++++ /dev/null
+@@ -1,37 +0,0 @@
+-
+-dllInfo <- NULL
+-
+-.onLoad <- function(libname, pkgname) {
+-   
+-   # load pb and pbmalloc on supported platforms   
+-   pb <- pbLibPath()
+-   if (!is.null(pb)&&Sys.info()['sysname']!="Windows") {
+-      if (!file.exists(pb)) {
+-         warning(paste("libprotobuf library", pb, "not found."))
+-      } else {
+-         dllInfo <<- dyn.load(pb, local = FALSE, now = TRUE)
+-      }
+-   }
+-   
+-     gs <- gsLibPath()
+-   if (!is.null(gs)&&Sys.info()['sysname']!="Windows") {
+-     if (!file.exists(gs)) {
+-       warning(paste("libGatingSet.pb library", gs, "not found."))
+-     } else {
+-       dllInfo <<- c(dllInfo, dyn.load(gs, local = FALSE, now = TRUE))
+-     }
+-   }
+-      
+-}
+-
+-.onUnload <- function(libpath) {
+-   
+-   # unload the package library
+-   # library.dynam.unload("RProtoBufLib", libpath)
+-   
+-   # unload dll if we loaded it
+-   for(dll in dllInfo)
+-   if (!is.null(dll))
+-      dyn.unload(dll[["path"]])
+-   
+-}
+diff --git a/RProtoBufLib/configure.ac b/RProtoBufLib/configure.ac
+index b9b4a26..950c043 100644
+--- a/RProtoBufLib/configure.ac
++++ b/RProtoBufLib/configure.ac
+@@ -24,41 +24,5 @@ AC_LANG(C++)
+ AC_PROG_CC
+ AC_PROG_CXX
+ 
+-#untar the lib
+-BASEPBNAME="protobuf-3.8.0"
+-PBTGZNAME=${BASEPBNAME}.tar.gz
+-cd src
+-if test -d ./${BASEPBNAME}; then 
+-	echo 'found ' $BASEPBNAME ' header sources and tar archive;using what is there.'
+-else
+-	echo "untarring protobuf ...";
+-	gzip -dc ${PBTGZNAME} | tar -xf -
+-fi;
+-
+-#run this bootstrap script to update all the gnu auto build files (e.g.  automake symlinked fils (e.g. ./compile), alocal.m4,etc... )		
+-cd ${BASEPBNAME}
+-#./autogen.sh
+-#automake --add-missing #do this because the old Autoconf (e.g. 2.13) may not handle this in autoreconf
+-#mv m4/lt~obsolete.m4 m4/lt-obsolete.m4 # R CMD check gives warning about ~ character in filename 
+-cd ..
+-
+-echo "building protobuf...";
+-PBBUILD=$(pwd)/pb_build
+-if test -d ${PBBUILD}; then
+-	echo 'found ' $PBBUILD ' ;using what is there.'
+-else
+-	mkdir ${PBBUILD}
+-fi;
+-
+-cd ${BASEPBNAME};
+-./configure --enable-static=no --with-pic=yes --enable-shared=yes --prefix="${PBBUILD}" --libdir="${PBBUILD}/lib" CXX="${CXX}" CXXFLAGS="${CXXFLAGS}" CC="${CC}" CFLAGS="${CFLAGS}"
+-$MAKE install 
+-
+-cd ../../
+-
+-
+-
+-AC_SUBST(PBBUILD)
+ AC_CONFIG_FILES([src/Makevars])
+ AC_OUTPUT
+-
+diff --git a/RProtoBufLib/inst/include/generate_pb_code.sh b/RProtoBufLib/inst/include/generate_pb_code.sh
+index 2a8361f..f34860e 100644
+--- a/RProtoBufLib/inst/include/generate_pb_code.sh
++++ b/RProtoBufLib/inst/include/generate_pb_code.sh
+@@ -1,6 +1,4 @@
+-#generate pb code (using bundled pb library to ensure to consistency of boilerplate code generation)
+-export LD_LIBRARY_PATH=../../src/pb_build/lib/
+-../../src/pb_build/bin/protoc --cpp_out=cytolib/ GatingSet.proto
++protoc --cpp_out=cytolib/ GatingSet.proto
+ #move the source to src
+ mv cytolib/GatingSet.pb.cc ../../src/GatingSet_pb_lib/
+ #update the include path to header
+diff --git a/RProtoBufLib/src/Makevars.in b/RProtoBufLib/src/Makevars.in
+index fb5da6f..8b569ad 100644
+--- a/RProtoBufLib/src/Makevars.in
++++ b/RProtoBufLib/src/Makevars.in
+@@ -1,18 +1,18 @@
+-CXX_STD = CXX11
+-PKG_CPPFLAGS =-I../inst/include/ -I@PBBUILD@/include/
++CXX_STD = CXX17
++PKG_CPPFLAGS =-I../inst/include/
+ #expose headers in installed package include folder
+ USER_INCLUDE = ${R_PACKAGE_DIR}/include
+ USER_LIB_DIR = ${R_PACKAGE_DIR}/lib${R_ARCH}/
+ 
+ 
+ #expose compiled object of GatingSet pb API for cytolib to link to
+-GS_LIB=libGatingSet.pb${DYLIB_EXT}
++GS_LIB := libGatingSet.pb.so.$(SOVER)
+ GS_LIB_DIR = GatingSet_pb_lib
+ 
+-all: copying  
++all: $(GS_LIB) $(SHLIB)
+ 
+-$(GS_LIB):
+-	${SHLIB_CXXLD} ${SHLIB_CXXLDFLAGS} ${CXXPICFLAGS} ${PKG_CPPFLAGS} -o ${GS_LIB_DIR}/${GS_LIB} ${GS_LIB_DIR}/GatingSet.pb.cc
++$(GS_LIB): $(GS_LIB_DIR)/GatingSet.pb.o
++	$(SHLIB_CXXLD) $(SHLIB_CXXLDFLAGS) $(LDFLAGS) -Wl,-soname=$(GS_LIB) -o $@ $^ -lprotobuf
+ 	 	
+ 	
+ #copy hdf5 library headers to package include
+@@ -22,4 +22,3 @@ copying: $(GS_LIB)
+ 	mkdir -p "${USER_LIB_DIR}"
+ 	cp @PBBUILD@/lib/libprotobuf* ${USER_LIB_DIR}
+ 	cp ${GS_LIB_DIR}/$(GS_LIB) ${USER_LIB_DIR}/${GS_LIB}
+-
