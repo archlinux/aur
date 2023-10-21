@@ -1,7 +1,7 @@
 # Maintainer: Kishore G <kishore96 at gmail dot com>
 pkgname=plasma5-runners-appmenu-git
 pkgver=r6.59da5e0
-pkgrel=1
+pkgrel=2
 pkgdesc="A little krunner plugin (Plasma 5) to search through the menu items of the current application."
 arch=('any')
 url="https://github.com/ArturGaspar/krunner-appmenu"
