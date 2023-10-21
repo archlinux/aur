@@ -2,7 +2,7 @@
 
 pkgbase=falco-bin
 pkgname=(falco-bin falco-bin-dkms)
-pkgver=0.29.1
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="Cloud native runtime security. Binaries and Kernel modules. (Stable)"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 url="https://falco.org/"
 license=(Apache)
 source_x86_64=("https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('60a7189f7d1c583b45966ea50af98ef3c3126aab52437ed1f67ef3d351034b90')
+sha256sums_x86_64=('656da11fb07a82ded65811000469c59897b353d238ed4ee62adaef30a666fccb')
 
 # EXAMPLE URL: https://download.falco.org/packages/bin/x86_64/falco-0.29.1-x86_64.tar.gz
 # Falco 0.29.1 SHA256
@@ -21,7 +21,7 @@ sha256sums_x86_64=('60a7189f7d1c583b45966ea50af98ef3c3126aab52437ed1f67ef3d35103
 #validpgpkeys=('F5F9B56417B7F2CAC1DEC2E372BB115B4DDD8252')
 # package signature is missing
 
-_commit=17f5df52a7d9ed6bb12d3b1768460def8439936d
+_commit=6.0.1+driver
 
 package_falco-bin() {
   provides=(falco)
