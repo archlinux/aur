@@ -1,6 +1,6 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
-pkgver=5.27.4
+pkgver=5.27.8
 pkgrel=1
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -12,11 +12,11 @@ depends=(
   plasma-nm
   plasma-pa
   powerdevil
-  modemmanager-qt
+  modemmanager-qt5
   plasma-wayland-session
   qqc2-breeze-style
   qt5-feedback
-  kirigami-addons
+  kirigami-addons5
   maliit-keyboard
   kpipewire
 )
@@ -29,7 +29,7 @@ optdepends=(
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('d518075aa3f895617816b5f2415d4fc280c55ba35973ed92fe3fda6ea1a505a8')
+sha256sums=('169e9c36387c4390899b09731f436f93b1352fa12aac836169f4e62b078dfa77')
 
 prepare() {
   mkdir -p build
