@@ -1,0 +1,19 @@
+pkgbase = xrayr-git
+	pkgdesc = A Xray backend framework that can easily support many panels
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/XrayR-project/XrayR
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fakeroot
+	source = https://github.com/XrayR-project/XrayR-release/raw/master/XrayR.service
+	source = https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/XrayR.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/XrayR-project/XrayR/releases/latest/download/XrayR-linux-64.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/XrayR-project/XrayR/releases/latest/download/XrayR-linux-arm64-v8a.zip
+	sha256sums_aarch64 = SKIP
+
+pkgname = xrayr-git
