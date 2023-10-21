@@ -1,0 +1,28 @@
+pkgbase = vagrant
+	pkgdesc = Build and distribute virtualized development environments
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://vagrantup.com
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = curl
+	depends = libarchive
+	depends = libssh2
+	depends = libxml2
+	depends = libxslt
+	depends = rsync
+	depends = ruby
+	depends = xz
+	depends = perl
+	optdepends = dnsmasq: if using libvirt
+	conflicts = vagrant-substrate
+	replaces = vagrant-substrate
+	options = !emptydirs
+	source = vagrant-2.4.0.tar.gz::https://github.com/hashicorp/vagrant/archive/v2.4.0.tar.gz
+	source = git+https://github.com/hashicorp/vagrant-installers.git#commit=32c899e
+	sha256sums = b3b27cec956b864ad3ab333a819e3d5b5d769ecc159ea8af98c466aef2c069c5
+	sha256sums = SKIP
+
+pkgname = vagrant

@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.3.7
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -23,8 +23,8 @@ optdepends=('dnsmasq: if using libvirt')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/hashicorp/vagrant-installers.git#commit=d2bb84b")
-sha256sums=('fa8a96319aa7b9ff5f4a991b77cbf37f549549d84737624bcebefa8f2004bf45'
+        "git+https://github.com/hashicorp/vagrant-installers.git#commit=32c899e")
+sha256sums=('b3b27cec956b864ad3ab333a819e3d5b5d769ecc159ea8af98c466aef2c069c5'
             'SKIP')
 
 prepare() {
