@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=plasma-gamemode-git
 pkgver=r4.3adea2b
-pkgrel=1
+pkgrel=2
 pkgdesc="Gamemode UI for the Plasma Desktop"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -14,13 +14,13 @@ depends=(
   'freetype2'
   'pkgconf'
   'qt5-base>=5.15.0'
-  'kcoreaddons>=5.82'
-  'kdbusaddons>=5.82'
-  'ki18n>=5.82'
-  'kdeclarative>=5.82'
-  'kpackage>=5.82'
-  'kservice>=5.82'
-  'plasma-framework>=5.82')
+  'kcoreaddons5>=5.82'
+  'kdbusaddons5>=5.82'
+  'ki18n5>=5.82'
+  'kdeclarative5>=5.82'
+  'kpackage5>=5.82'
+  'kservice5>=5.82'
+  'plasma-framework5>=5.82')
 
 makedepends=('git' 'cmake>=3.16' 'extra-cmake-modules>=5.82')
 source=(git+${url}.git)

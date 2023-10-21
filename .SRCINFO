@@ -1,7 +1,7 @@
 pkgbase = plasma-gamemode-git
 	pkgdesc = Gamemode UI for the Plasma Desktop
 	pkgver = r4.3adea2b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/sitter/plasma-gamemode
 	arch = x86_64
 	license = MIT
@@ -18,13 +18,13 @@ pkgbase = plasma-gamemode-git
 	depends = freetype2
 	depends = pkgconf
 	depends = qt5-base>=5.15.0
-	depends = kcoreaddons>=5.82
-	depends = kdbusaddons>=5.82
-	depends = ki18n>=5.82
-	depends = kdeclarative>=5.82
-	depends = kpackage>=5.82
-	depends = kservice>=5.82
-	depends = plasma-framework>=5.82
+	depends = kcoreaddons5>=5.82
+	depends = kdbusaddons5>=5.82
+	depends = ki18n5>=5.82
+	depends = kdeclarative5>=5.82
+	depends = kpackage5>=5.82
+	depends = kservice5>=5.82
+	depends = plasma-framework5>=5.82
 	provides = plasma-gamemode
 	conflicts = plasma-gamemode
 	source = git+https://invent.kde.org/sitter/plasma-gamemode.git
