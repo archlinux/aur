@@ -3,7 +3,7 @@
 
 pkgname=blockbench-git
 pkgver=v4.6.4.r0.gf5e43877
-pkgrel=1
+pkgrel=3
 pkgdesc="A low-poly 3D model editor (git version)"
 arch=('x86_64' 'aarch64')
 url=https://github.com/JannisX11/blockbench
