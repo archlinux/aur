@@ -52,7 +52,6 @@ makedepends=(
   meson
   ninja
   pkgconf
-  vulkan-headers
   xorgproto
 )
 provides=("hyprland=${pkgver%%.r*}")
