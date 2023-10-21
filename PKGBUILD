@@ -1,23 +1,31 @@
 # Maintainer: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
 
-pkgname=oauth2l
-pkgver=1.3.0
+_pkgbase=oauth2l
+pkgname=${_pkgbase}-git
+pkgver=v1.3.0.r4.g55ad5ab
 pkgrel=1
-pkgdesc='Simple CLI for interacting with Google API authentication'
+pkgdesc='Simple CLI for interacting with Google API authentication - git version'
 arch=('x86_64')
-url="https://github.com/google/${pkgname}"
+url="https://github.com/google/${_pkgbase}"
 license=('Apache')
-makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('83044b616e65881d54b78bd8e6d9ec6890cd3087a91c8574a976aa2f5f1ed1ac4fa2d50fd9d438a8b608d53af2a56e232c304cc2c984ac3b582fffdfe2ca01df')
+makedepends=('go' 'git')
+source=("${_pkgbase}"::"git+${url}")
+b2sums=('SKIP')
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_pkgbase}"
 	mkdir --parents 'build'
 }
 
+pkgver() {
+  cd "${_pkgbase}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_pkgbase}"
 	export \
 		CGO_CPPFLAGS="${CPPFLAGS}" \
 		CGO_CFLAGS="${CFLAGS}" \
@@ -38,7 +46,7 @@ build() {
 }
 
 #check() {
-#	cd "${pkgname}-${pkgver}"
+#	cd "${_pkgbase}-${pkgver}"
 #	go test \
 #		-mod=readonly \
 #		-v \
@@ -46,5 +54,5 @@ build() {
 #}
 
 package() {
-	install -D --mode 755 "${pkgname}-${pkgver}/build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -D --mode 755 "${_pkgbase}/build/${_pkgbase}" "${pkgdir}/usr/bin/${_pkgbase}"
 }
