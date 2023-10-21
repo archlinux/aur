@@ -4,12 +4,12 @@
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
 pkgver=1.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('gtk3' 'jsoncpp' 'libsecret')
+depends=('gtk3' 'jsoncpp' 'libsecret' 'zenity' 'libolm')
 makedepends=('clang'
              'ninja'
              'cmake'
@@ -17,7 +17,6 @@ makedepends=('clang'
              'unzip'
              #'flutter'
              'webkit2gtk')
-optdepends=('libolm: E2E Encryption support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.zip")
