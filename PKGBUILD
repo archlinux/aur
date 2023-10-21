@@ -2,9 +2,8 @@
 
 pkgname='domoticz-bin'
 pkgver=2023.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Web based home automation"
-#need to add other architectures and manage to do the string change for armv7h and armhf
 arch=('armv7h' 'aarch64' 'x86_64')
 url='https://www.domoticz.com'
 conflicts=('domoticz' 'domoticz-git')
@@ -28,5 +27,11 @@ sha256sums=('SKIP')
 
 package() {
   mkdir -p "${pkgdir}/opt/domoticz"
-  cp -aRP ${srcdir}/* ${pkgdir}/opt/domoticz
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  mv "${srcdir}/domoticz.service" "${pkgdir}/usr/lib/systemd/system/"
+  mv "${srcdir}/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp -aRP "${srcdir}/*" "${pkgdir}/opt/domoticz"
+  rm "${pkgdir}/opt/domoticz/${pkgname}-${pkgver}.tar.gz"
+  chown -R http:http "${pkgdir}/opt/domoticz"
 }
