@@ -2,7 +2,7 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc='Library for producing CycloneDX SBOM (Software Bill of Materials) files'
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
 conflicts=('python-cyclonedx-lib-git')
 options=('!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('b6150c861514456d36761e959ab8b0fd66fced7e3dc33f932d9105f0e86297fcacc8e8057fb36f861a5f4006264705844c76997d42f2bc52eef5a7c0dbeb1bbf')
+sha512sums=('0be8b1d6d6d785abcefe2397c326a76728013ce64e8156ec7db6abcfa023d0b067fae716afc7e0f1fd1c2b4981b49c791b94abf6b700cedcb80cdf545c1ca6cf')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
@@ -44,8 +44,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  python -m venv --clear --system-site-packages \
-    .venv
+  python -m venv --clear --system-site-packages .venv
   # shellcheck disable=SC1091
   source .venv/bin/activate
   pip install --force-reinstall dist/*.whl
