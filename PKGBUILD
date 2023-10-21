@@ -8,14 +8,13 @@ url="https://github.com/music-assistant/music-assistant-desktop"
 conflicts=(squeezelite music-assistant-desktop-bin)
 provides=(squeezelite music-assistant-desktop)
 license=('Apache-2.0')
-makedepends=(cargo git rust webkit2gtk base-devel curl wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
+makedepends=(cargo git yarn rust webkit2gtk base-devel curl wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
 md5sums=('3adc67d3a14ce50d396998d7e0123386')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   git submodule update --init --recursive
-	sudo npm install -g yarn
   yarn
   cd frontend-source
   git clone --branch tauri-app https://github.com/music-assistant/frontend .
