@@ -1,6 +1,6 @@
 # Maintainer: Vladyslav Aviedov <vladaviedov at protonmail dot com>
 pkgname=focalboard-server-bin
-pkgver=7.11.2
+pkgver=7.11.3
 pkgrel=1
 epoch=
 pkgdesc="Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana."
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/mattermost/focalboard/releases/download/v${pkgver}/focalboard-server-linux-amd64.tar.gz"
         'focalboard.service')
 noextract=()
-sha256sums=('09418bf76f40ce9d9fc29282de68bc6a7048251ecc77eebd5096aa8d6dd8e00d'
+sha256sums=('3515ef5b90fe2d958b8869e0191915f0ca46ee4e6950e16c9647423981ebeecd'
             '607d16cb2544101d0e4291e7804c3137b90b620107a37431c0f3d71e93c4fcd5')
 validpgpkeys=()
 
