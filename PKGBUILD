@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3434.1e7e67be4
+pkgver=r3435.50141315
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -29,58 +29,62 @@ optdepends=(
 provides=('vita3k')
 conflicts=('vita3k')
 source=(
-	"$_pkgname"::"git+$url"
+	"$_pkgname"::"git+$url.git"
 	"vita3k.desktop"
 
 	# submodules for vita3k
-	'LibAtrac9'::'git+https://github.com/Vita3K/LibAtrac9'
-	'SPIRV-Cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross'
-	'Vulkan-Headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers'
-	'VulkanMemoryAllocator-Hpp'::'git+https://github.com/Macdu/VulkanMemoryAllocator-Hpp'
-	'better-enums'::'git+https://github.com/aantron/better-enums'
-	'boost'::'git+https://github.com/Vita3K/ext-boost'
-	'capstone'::'git+https://github.com/aquynh/capstone'
-	'crypto-algorithms'::'git+https://github.com/KorewaWatchful/crypto-algorithms'
-	'cubeb'::'git+https://github.com/mozilla/cubeb'
-	'dirent'::'git+https://github.com/tronkko/dirent'
-	'dlmalloc'::'git+https://github.com/Vita3K/dlmalloc'
-	'dynarmic'::'git+https://github.com/Vita3K/dynarmic'
-	'ffmpeg'::'git+https://github.com/Vita3K/ffmpeg-core'
-	'fmt'::'git+https://github.com/fmtlib/fmt'
-	'glslang'::'git+https://github.com/KhronosGroup/glslang'
-	'googletest'::'git+https://github.com/google/googletest'
-	'imgui'::'git+https://github.com/ocornut/imgui'
-	'imgui_club'::'git+https://github.com/ocornut/imgui_club'
-	'libfat16'::'git+https://github.com/Vita3K/libfat16'
-	'nativefiledialog-extended'::'git+https://github.com/btzy/nativefiledialog-extended'
-	'printf'::'git+https://github.com/Vita3K/printf'
-	'psvpfstools'::'git+https://github.com/Vita3K/psvpfstools'
-	'pugixml'::'git+https://github.com/zeux/pugixml'
-	'sdl'::'git+https://github.com/Vita3K/sdl'
-	'sdl2-cmake-scripts'::'git+https://github.com/tcbrindle/sdl2-cmake-scripts'
-	'spdlog'::'git+https://github.com/gabime/spdlog'
-	'stb'::'git+https://github.com/nothings/stb'
-	'tracy'::'git+https://github.com/wolfpld/tracy'
-	'unicorn'::'git+https://github.com/Vita3K/unicorn'
-	'vita-toolchain'::'git+https://github.com/vitasdk/vita-toolchain'
-	'xxHash'::'git+https://github.com/Cyan4973/xxHash'
-	'yaml-cpp'::'git+https://github.com/jbeder/yaml-cpp'
+	'SPIRV-Cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
+	'Vulkan-Headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
+	'VulkanMemoryAllocator-Hpp'::'git+https://github.com/Macdu/VulkanMemoryAllocator-Hpp.git'
+	'better-enums'::'git+https://github.com/aantron/better-enums.git'
+	'capstone'::'git+https://github.com/aquynh/capstone.git'
+	'crypto-algorithms'::'git+https://github.com/KorewaWatchful/crypto-algorithms.git'
+	'cubeb'::'git+https://github.com/mozilla/cubeb.git'
+	'dirent'::'git+https://github.com/tronkko/dirent.git'
+	'fmt'::'git+https://github.com/fmtlib/fmt.git'
+	'glslang'::'git+https://github.com/KhronosGroup/glslang.git'
+	'googletest'::'git+https://github.com/google/googletest.git'
+	'imgui'::'git+https://github.com/ocornut/imgui.git'
+	'imgui_club'::'git+https://github.com/ocornut/imgui_club.git'
+	'nativefiledialog-extended'::'git+https://github.com/btzy/nativefiledialog-extended.git'
+	'pugixml'::'git+https://github.com/zeux/pugixml.git'
+	'sdl2-cmake-scripts'::'git+https://github.com/tcbrindle/sdl2-cmake-scripts.git'
+	'spdlog'::'git+https://github.com/gabime/spdlog.git'
+	'stb'::'git+https://github.com/nothings/stb.git'
+	'tracy'::'git+https://github.com/wolfpld/tracy.git'
+	'vita-toolchain'::'git+https://github.com/vitasdk/vita-toolchain.git'
+	'vita3k-LibAtrac9'::'git+https://github.com/Vita3K/LibAtrac9.git'
+	'vita3k-boost'::'git+https://github.com/Vita3K/ext-boost.git'
+	'vita3k-dlmalloc'::'git+https://github.com/Vita3K/dlmalloc.git'
+	'vita3k-dynarmic'::'git+https://github.com/Vita3K/dynarmic.git'
+	'vita3k-ffmpeg'::'git+https://github.com/Vita3K/ffmpeg-core.git'
+	'vita3k-libfat16'::'git+https://github.com/Vita3K/libfat16.git'
+	'vita3k-printf'::'git+https://github.com/Vita3K/printf.git'
+	'vita3k-psvpfstools'::'git+https://github.com/Vita3K/psvpfstools.git'
+	'vita3k-sdl'::'git+https://github.com/Vita3K/sdl.git'
+	'vita3k-unicorn'::'git+https://github.com/Vita3K/unicorn.git'
+	'xxHash'::'git+https://github.com/Cyan4973/xxHash.git'
+	'yaml-cpp'::'git+https://github.com/jbeder/yaml-cpp.git'
 
 	# submodules for VulkanMemoryAllocator-Hpp
-	'VulkanMemoryAllocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator'
+	'VulkanMemoryAllocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
 
-	#submodules for cubeb
-	'sanitizers-cmake'::'git+https://github.com/arsenm/sanitizers-cmake'
+	# submodules for capstone
+	#'tree-sitter-cpp'::'git+https://github.com/tree-sitter/tree-sitter-cpp.git'
 
-	# submodules for psvpfstools
-	'psvpfsparser'::'git+https://github.com/Vita3K/psvpfsparser'
-	'libzrif'::'git+https://github.com/KorewaWatchful/libzrif'
-	'libb64'::'git+https://github.com/korewawatchful/libb64'
-	'zlib'::'git+https://github.com/korewawatchful/zlib'
-	'libtomcrypt'::'git+https://github.com/korewawatchful/libtomcrypt'
+	# submodules for cubeb
+	#'googletest'::'git+https://github.com/google/googletest.git'
+	'sanitizers-cmake'::'git+https://github.com/arsenm/sanitizers-cmake.git'
 
 	# submodules for vita-toolchain
-	'psp2rela'::'git+https://github.com/Princess-of-Sleeping/psp2rela'
+	'psp2rela'::'git+https://github.com/Princess-of-Sleeping/psp2rela.git'
+
+	# submodules for vita3k-psvpfstools
+	'libb64'::'git+https://github.com/korewawatchful/libb64.git'
+	'libtomcrypt'::'git+https://github.com/korewawatchful/libtomcrypt.git'
+	'libzrif'::'git+https://github.com/KorewaWatchful/libzrif.git'
+	'psvpfsparser'::'git+https://github.com/Vita3K/psvpfsparser.git'
+	'zlib'::'git+https://github.com/korewawatchful/zlib.git'
 )
 sha256sums=(
 	'SKIP'
@@ -120,8 +124,14 @@ sha256sums=(
 	'SKIP'
 
 	'SKIP'
+
+	#'SKIP'
+
+	#'SKIP'
 	'SKIP'
+
 	'SKIP'
+
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -137,94 +147,101 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 
-	# submodules for vita3k
-	_submodules=(
-		'LibAtrac9'
-		'SPIRV-Cross'
-		'Vulkan-Headers'
-		'VulkanMemoryAllocator-Hpp'
-		'better-enums'
-		'boost'
-		'capstone'
-		'crypto-algorithms'
-		'cubeb'
-		'dirent'
-		'dlmalloc'
-		'dynarmic'
-		'ffmpeg'
-		'fmt'
-		'glslang'
-		'googletest'
-		'imgui'
-		'imgui_club'
-		'libfat16'
-		'nativefiledialog-extended'
-		'printf'
-		'psvpfstools'
-		'pugixml'
-		'sdl'
-		'sdl2-cmake-scripts'
-		'spdlog'
-		'stb'
-		'tracy'
-		'unicorn'
-		'vita-toolchain'
-		'xxHash'
-		'yaml-cpp'
+	(
+		# submodules for vita3k
+		local -A _submodules=(
+			['SPIRV-Cross']='external/SPIRV-Cross'
+			['Vulkan-Headers']='external/Vulkan-Headers'
+			['VulkanMemoryAllocator-Hpp']='external/VulkanMemoryAllocator-Hpp'
+			['better-enums']='external/better-enums'
+			['capstone']='external/capstone'
+			['crypto-algorithms']='external/crypto-algorithms'
+			['cubeb']='external/cubeb'
+			['dirent']='external/dirent'
+			['fmt']='external/fmt'
+			['glslang']='external/glslang'
+			['googletest']='external/googletest'
+			['imgui']='external/imgui'
+			['imgui_club']='external/imgui_club'
+			['nativefiledialog-extended']='external/nativefiledialog-extended'
+			['pugixml']='external/pugixml'
+			['sdl2-cmake-scripts']='external/sdl2-cmake-scripts'
+			['spdlog']='external/spdlog'
+			['stb']='external/stb'
+			['tracy']='external/tracy'
+			['vita-toolchain']='external/vita-toolchain'
+			['vita3k-LibAtrac9']='external/LibAtrac9'
+			['vita3k-boost']='external/boost'
+			['vita3k-dlmalloc']='external/dlmalloc'
+			['vita3k-dynarmic']='external/dynarmic'
+			['vita3k-ffmpeg']='external/ffmpeg'
+			['vita3k-libfat16']='external/libfat16'
+			['vita3k-printf']='external/printf'
+			['vita3k-psvpfstools']='external/psvpfstools'
+			['vita3k-sdl']='external/sdl'
+			['vita3k-unicorn']='external/unicorn'
+			['xxHash']='external/xxHash'
+			['yaml-cpp']='external/yaml-cpp'
+		)
+		for key in ${!_submodules[@]} ; do
+			git submodule init "${_submodules[${key}]}"
+			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+		done
 	)
-
-	for submodule in ${_submodules[@]} ; do
-		git submodule init "external/$submodule"
-		git submodule set-url "external/$submodule" "$srcdir/$submodule"
-		git -c protocol.file.allow=always submodule update "external/$submodule"
-	done
-
-	# submodules for VulkanMemoryAllocator-Hpp
-	cd "$srcdir/$_pkgname/external/VulkanMemoryAllocator-Hpp"
-	_submodules=('VulkanMemoryAllocator')
-	for submodule in ${_submodules[@]} ; do
-		git submodule init "$submodule"
-		git submodule set-url "$submodule" "$srcdir/$submodule"
-		git -c protocol.file.allow=always submodule update "$submodule"
-	done
-
-	# submodules for cubeb
-	cd "$srcdir/$_pkgname/external/cubeb"
-	_submodules=(
-		'googletest'
-		'cmake/sanitizers-cmake'
+	(
+		# submodules for VulkanMemoryAllocator-Hpp
+		cd "external/VulkanMemoryAllocator-Hpp"
+		local -A _submodules=(
+			['VulkanMemoryAllocator']='VulkanMemoryAllocator'
+		)
+		for key in ${!_submodules[@]} ; do
+			git submodule init "${_submodules[${key}]}"
+			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+		done
 	)
-	for submodule in ${_submodules[@]} ; do
-		git submodule init "$submodule"
-		git submodule set-url "$submodule" "$srcdir/${submodule##*/}"
-		git -c protocol.file.allow=always submodule update "$submodule"
-	done
-
-	# submodules for psvpfstools
-	cd "$srcdir/$_pkgname/external/psvpfstools"
-	_submodules=(
-		'libb64'
-		'libtomcrypt'
-		'libzrif'
-		'psvpfsparser'
-		'zlib'
+	(
+		# submodules for cubeb
+		cd "external/cubeb"
+		local -A _submodules=(
+			['googletest']='googletest'
+			['sanitizers-cmake']='cmake/sanitizers-cmake'
+		)
+		for key in ${!_submodules[@]} ; do
+			git submodule init "${_submodules[${key}]}"
+			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+		done
 	)
-	for submodule in ${_submodules[@]} ; do
-		git submodule init "$submodule"
-		git submodule set-url "$submodule" "$srcdir/$submodule"
-		git -c protocol.file.allow=always submodule update "$submodule"
-	done
-
-	#submodules for vita-toolchain
-	cd "$srcdir/$_pkgname/external/vita-toolchain"
-	_submodules=('psp2rela')
-	for submodule in ${_submodules[@]} ; do
-		git submodule init "$submodule"
-		git submodule set-url "$submodule" "$srcdir/$submodule"
-		git -c protocol.file.allow=always submodule update "$submodule"
-	done
-
-	# git submodule update --init --recursive
+	(
+		# submodules for vita-toolchain
+		cd "external/vita-toolchain"
+		local -A _submodules=(
+			['psp2rela']='psp2rela'
+		)
+		for key in ${!_submodules[@]} ; do
+			git submodule init "${_submodules[${key}]}"
+			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+		done
+	)
+	(
+		# submodules for vita3k-psvpfstools
+		cd "external/psvpfstools"
+		local -A _submodules=(
+			['libb64']='libb64'
+			['libtomcrypt']='libtomcrypt'
+			['libzrif']='libzrif'
+			['psvpfsparser']='psvpfsparser'
+			['zlib']='zlib'
+		)
+		for key in ${!_submodules[@]} ; do
+			git submodule init "${_submodules[${key}]}"
+			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+		done
+	)
 }
 
 build() {

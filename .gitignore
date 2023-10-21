@@ -39,5 +39,16 @@ xxHash/
 yaml-cpp/
 zlib/
 
+vita3k-boost/
+vita3k-dlmalloc/
+vita3k-dynarmic/
+vita3k-ffmpeg/
+vita3k-LibAtrac9/
+vita3k-libfat16/
+vita3k-printf/
+vita3k-psvpfstools/
+vita3k-sdl/
+vita3k-unicorn/
+
 vita3k-git*
 vita3k/
