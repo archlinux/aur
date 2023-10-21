@@ -1,7 +1,7 @@
 pkgbase = patchelf-git
 	pkgdesc = A small utility to modify the dynamic linker and RPATH of ELF executables
 	pkgver = 0.18.0.r12.g917ea45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NixOS/patchelf
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = patchelf-git
 	depends = gcc-libs
 	provides = patchelf=0.18.0.r12.g917ea45
 	conflicts = patchelf
-	options = staticlibs
 	source = git+https://github.com/NixOS/patchelf.git
 	sha256sums = SKIP
 

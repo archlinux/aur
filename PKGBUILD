@@ -2,7 +2,7 @@
 
 pkgname=patchelf-git
 pkgver=0.18.0.r12.g917ea45
-pkgrel=1
+pkgrel=2
 pkgdesc="A small utility to modify the dynamic linker and RPATH of ELF executables"
 arch=('i686' 'x86_64')
 url="https://github.com/NixOS/patchelf"
@@ -11,7 +11,6 @@ depends=('gcc-libs')
 makedepends=('git')
 provides=("patchelf=$pkgver")
 conflicts=('patchelf')
-options=('staticlibs')
 source=("git+https://github.com/NixOS/patchelf.git")
 sha256sums=('SKIP')
 
