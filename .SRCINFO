@@ -1,18 +1,14 @@
 pkgbase = silo
 	pkgdesc = A Mesh and Field I/O Library and Scientific Database
-	pkgver = 4.11
-	pkgrel = 2
-	url = https://llnl.github.io/Silo
+	pkgver = 4.11.1
+	pkgrel = 1
+	url = http://software.llnl.gov/Silo
 	arch = x86_64
 	license = BSD
 	makedepends = gcc-fortran
 	depends = qt5-base
 	depends = hdf5-openmpi
-	source = https://github.com/LLNL/Silo/releases/download/v4.11/silo-4.11-bsd.tar.gz
-	source = hdf5.patch
-	source = hdf5-1.13.patch
-	sha256sums = 6d0a85a079d48fcdcc0084ecb5fc4cfdcc64852edee780c60cb244d16f4bc4ec
-	sha256sums = 8acf1a54c3ba21699a9f1cd67aabc806643630e80795bcf9524f7eb874116bb5
-	sha256sums = fc94f615155dcb8e27c73c1f19392415081d25082fd11a7666df1886556ce368
+	source = https://github.com/LLNL/Silo/releases/download/4.11.1/silo-4.11.1-bsd.tar.xz
+	sha256sums = 51ccfdf3c09dfc98c7858a0a6f08cc3b2a07ee3c4142ee6482ba7b24e314c2aa
 
 pkgname = silo

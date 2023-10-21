@@ -5,28 +5,17 @@
 # Contributor: Brenden Mervin <bmervin@utk.edu>
 
 pkgname=silo
-pkgver=4.11
-pkgrel=2
+_PkgName=Silo
+pkgver=4.11.1
+pkgrel=1
 pkgdesc="A Mesh and Field I/O Library and Scientific Database"
-url="https://llnl.github.io/Silo"
+url="http://software.llnl.gov/Silo"
 arch=(x86_64)
 depends=(qt5-base hdf5-openmpi)
 makedepends=(gcc-fortran)
 license=(BSD)
-source=(https://github.com/LLNL/Silo/releases/download/v$pkgver/$pkgname-$pkgver-bsd.tar.gz
-        hdf5.patch
-        hdf5-1.13.patch)
-sha256sums=('6d0a85a079d48fcdcc0084ecb5fc4cfdcc64852edee780c60cb244d16f4bc4ec'
-            '8acf1a54c3ba21699a9f1cd67aabc806643630e80795bcf9524f7eb874116bb5'
-            'fc94f615155dcb8e27c73c1f19392415081d25082fd11a7666df1886556ce368')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver-bsd"
-  patch -p0 < ../hdf5.patch
-  patch -p1 < ../hdf5-1.13.patch
-  sed -i 's@rocket_silo.lo@rocket_silo.lo ../src/libsiloh5.la@' \
-    tests/Makefile.in
-}
+source=(https://github.com/LLNL/$_PkgName/releases/download/$pkgver/$pkgname-$pkgver-bsd.tar.xz)
+sha256sums=('51ccfdf3c09dfc98c7858a0a6f08cc3b2a07ee3c4142ee6482ba7b24e314c2aa')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-bsd"
