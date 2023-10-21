@@ -6,7 +6,7 @@
 
 _pkgname=discover
 pkgname=discover-snap
-pkgver=5.27.6
+pkgver=5.27.8
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI'
 arch=(x86_64)
@@ -14,14 +14,14 @@ url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 conflicts=(discover)
 provides=(discover)
-depends=(knewstuff kcmutils kidletime qt5-graphicaleffects appstream-qt archlinux-appstream-data
-         kirigami2 discount kuserfeedback purpose qt5-webview snapd snapd-glib)
-makedepends=(extra-cmake-modules plasma-framework packagekit-qt5 flatpak fwupd)
+depends=(knewstuff5 kcmutils5 kidletime5 qt5-graphicaleffects appstream-qt archlinux-appstream-data
+         kirigami2 discount kuserfeedback purpose5 qt5-webview snapd snapd-glib)
+makedepends=(extra-cmake-modules plasma-framework5 packagekit-qt5 flatpak fwupd)
 optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories (not recommended, use at your own risk)'
             'flatpak: Flatpak packages support'
             'fwupd: firmware update support')
 source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('1661d734b2b04d9af015d9c9e8fbd46e066c542f39d3743cfbdaedbdce3591c5'
+sha256sums=('f1c5fcbbae52bdcba4745c154ef2a900fb7eafbe88d2d769837bb38ad9020fd3'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
