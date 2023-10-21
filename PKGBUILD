@@ -6,12 +6,13 @@
 pkgname=moon
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 pkgver=1.15.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 _gh_owner='moonrepo'
 _gh_repo='moon'
 url="https://github.com/${_gh_owner}/${_gh_repo}"
 arch=('x86_64' 'aarch64')
+depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 _sha='5c0128ad1250a5dbfca8d568c417cc7803ecabe7'
