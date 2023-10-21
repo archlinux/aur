@@ -4,7 +4,7 @@
 pkgname="eza-git"
 _pkgname=${pkgname%-git}
 pkgver=0.15.0.r3.g32567d0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern replacement for ls"
 arch=("x86_64")
 url="https://github.com/eza-community/eza"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 prepare() {
     cd "${pkgname}"
 
-    cargo fetch --frozen --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {

@@ -1,7 +1,7 @@
 pkgbase = eza-git
 	pkgdesc = A modern replacement for ls
 	pkgver = 0.15.0.r3.g32567d0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eza-community/eza
 	arch = x86_64
 	license = MIT
