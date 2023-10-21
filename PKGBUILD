@@ -1,4 +1,4 @@
-pkgname=transifex-client-go
+pkgname=transifex-client-bin
 pkgver=1.6.10
 pkgrel=1.0
 pkgdesc='transifex client go version'
