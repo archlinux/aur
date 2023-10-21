@@ -1,7 +1,7 @@
 pkgbase = electrum-nmc
 	pkgdesc = Namecoin port of Electrum client with name support
-	pkgver = 4.0.0b1
-	pkgrel = 2
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = https://github.com/namecoin/electrum-nmc
 	arch = any
 	license = Custom: multiple open source
@@ -39,7 +39,7 @@ pkgbase = electrum-nmc
 	optdepends = python-ckcc-protocol: Coldcard wallet support
 	provides = electrum-nmc
 	conflicts = electrum-nmc
-	source = https://www.namecoin.org/files/electrum-nmc/electrum-nmc-4.0.0b1/Electrum-NMC-4.0.0b1.tar.xz
-	sha256sums = e573b685b1849c0ba2280973923a40da936cdb241792f57024a1da7913f17ac4
+	source = https://github.com/namecoin/electrum-nmc/archive/refs/tags/nc4.0.1.tar.gz
+	sha256sums = b5cf0bcd0cccc7748af3447289b4bdd9e1f3265a6c0d66940a8e0084a786ea7d
 
 pkgname = electrum-nmc

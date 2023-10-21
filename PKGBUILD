@@ -7,8 +7,8 @@
 # Contributor:  The Bitcoin Developers
 
 pkgname=electrum-nmc
-pkgver=4.0.0b1
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc='Namecoin port of Electrum client with name support'
 
 arch=('any')
@@ -52,12 +52,12 @@ optdepends=('cython: Compilation support for all hardware wallet dependencies'
 provides=('electrum-nmc')
 conflicts=('electrum-nmc')
 
-source=("https://www.namecoin.org/files/electrum-nmc/electrum-nmc-${pkgver}/Electrum-NMC-${pkgver}.tar.xz")
+source=("https://github.com/namecoin/electrum-nmc/archive/refs/tags/nc${pkgver}.tar.gz")
 
-sha256sums=('e573b685b1849c0ba2280973923a40da936cdb241792f57024a1da7913f17ac4')
+sha256sums=('b5cf0bcd0cccc7748af3447289b4bdd9e1f3265a6c0d66940a8e0084a786ea7d')
 
 prepare() {
-    cd "$srcdir/Electrum-NMC-${pkgver}/"
+    cd "$srcdir/electrum-nmc-nc${pkgver}/"
     for i in dnsdialog dnssubdomaindialog; do
         pyuic5 electrum_nmc/electrum/gui/qt/forms/$i.ui --execute --output=electrum_nmc/electrum/gui/qt/forms/$i.py
         sed -i s/qvalidatedlineedit/.qvalidatedlineedit/ electrum_nmc/electrum/gui/qt/forms/$i.py
@@ -65,12 +65,12 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/Electrum-NMC-${pkgver}/"
+    cd "$srcdir/electrum-nmc-nc${pkgver}/"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/Electrum-NMC-${pkgver}/"
+    cd "$srcdir/electrum-nmc-nc${pkgver}/"
     python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
     mkdir -p "$pkgdir/usr/share/doc/$pkgname/"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
