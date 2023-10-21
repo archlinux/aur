@@ -6,13 +6,13 @@
 pkgname=proto
 pkgdesc='Pluggable multi-language version manager'
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 _gh_owner='moonrepo'
 _gh_repo='proto'
 url="https://github.com/${_gh_owner}/${_gh_repo}"
 arch=('x86_64')
-depends=('git')
+depends=('git' 'gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 _sha='531cee3320a79ed6f7ff790b79740be4ec1d0b15'
