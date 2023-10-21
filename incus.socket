@@ -5,7 +5,7 @@ Documentation=man:incusd(1)
 [Socket]
 ListenStream=/var/lib/incus/unix.socket
 SocketMode=0660
-SocketGroup=incus
+SocketGroup=incus-admin
 Service=incus.service
 
 [Install]

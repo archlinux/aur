@@ -1,7 +1,7 @@
 pkgbase = incus
 	pkgdesc = Daemon based on liblxc offering a REST API to manage containers
 	pkgver = 0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://linuxcontainers.org/incus
 	arch = x86_64
 	license = APACHE
@@ -42,8 +42,8 @@ pkgbase = incus
 	validpgpkeys = ED1CA1E7A6F80E22E5CB2DA84ACE106615754614
 	sha256sums = 771b6f438e369f729eaaa6dfd938f14dcc8de09dbc9da23c7c80c6d14f02653b
 	sha256sums = SKIP
-	sha256sums = b5a6aae662fd18d8f85b9106d204ae9fee61996bf2785d43578c5c955049957b
+	sha256sums = f0daecf62d1f3f990344416eba55e445fffa31d6679d13da9b2bfc57812abe10
 	sha256sums = b3e45f028d81ae1d84939f641349257db0b2b5dcaecf7b8b95661be22d83c21b
-	sha256sums = d7c334814dca020437668111f69885bce98cb4e6be8eb5e23df1688ebc4031f2
+	sha256sums = 9ea457bbffd9111563e3054505d42484deb76cfbd8a9db94b533d4edd6b8cf32
 
 pkgname = incus
