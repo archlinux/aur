@@ -3,7 +3,7 @@
 
 pkgname=blockbench
 pkgver=4.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
 url="https://blockbench.net/"
@@ -22,20 +22,20 @@ sha256sums=('SKIP'
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-
-  _electronDist=/usr/lib/${_electron}
-  _electronVersion=$(cat ${_electronDist}/version)
-  _electronVersionMajor=${_electronVersion%%.*}
-
   npm install
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
+  _electronDist=/usr/lib/${_electron}
+  _electronVersion=$(cat ${_electronDist}/version)
   npm run dist -- --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion=${_electronVersion}
 }
 
 package() {
+  _electronDist=/usr/lib/${_electron}
+  _electronVersion=$(cat ${_electronDist}/version)
+  _electronVersionMajor=${_electronVersion%%.*}
   install -d "${pkgdir}/usr/"{bin,share/{pixmaps,applications}}
   install -d "${pkgdir}/${_electronDist}${_electronVersionMajor}/resources"
   echo -e "#!/bin/bash\nexec ${_electron} ${_electronDist}${_electronVersionMajor}/resources/${pkgname}.asar \"\$@\"" > "${pkgdir}/usr/bin/${pkgname}"
