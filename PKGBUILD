@@ -7,7 +7,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=118.0.1
+pkgver=118.0.2
 pkgrel=1
 # DEPRECATED pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 pkgdesc="Librewolf fork build using custom branding & settings"
@@ -41,17 +41,19 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "$pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
-  "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
-  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95'
+  "librewolf-source::git+https://codeberg.org/librewolf/source.git"
+  "librewolf-settings::git+https://codeberg.org/librewolf/settings.git"
+  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git"
+  "https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/f021e2ed225da9cc3b667e7ef9a60163607b407f/0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch")
+sha256sums=('89626520f2f0f782f37c074b94690e0f08dcf416be2b992f4aad68df5d727b21'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '2406c4c2e18d535c0c7900fe7b176137ae130a75806a19516854894555b69e72')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -173,6 +175,10 @@ END
   # Upstream patches from gentoo
   # PGO improvements (DEPRECATED)
   # patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0022-fix-building-gcc-pgo-and-disable-watchdog-on-pgo-builds.patch
+
+  # Unbreak build with Rust 1.73.0
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1849874
+  patch -Np1 -i ../0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
