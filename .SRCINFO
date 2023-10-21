@@ -1,6 +1,6 @@
 pkgbase = python-lsbi
 	pkgdesc = Linear Simulation Based Inference
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/handley-lab/lsbi
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-lsbi
 	depends = python-pandas
 	provides = lsbi
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/l/lsbi/lsbi-0.3.1.tar.gz
-	sha256sums = 42e846f08d88c4cb07797e8d6e5dbf5ac5e39da07b08fbf1b9a41859a472bfab
+	source = https://files.pythonhosted.org/packages/source/l/lsbi/lsbi-0.4.0.tar.gz
+	sha256sums = 43dd4edad3d7b8591819cc318d7aafe6f15a548574cc70d3b50be0d055a01464
 
 pkgname = python-lsbi
