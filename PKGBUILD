@@ -1,4 +1,3 @@
-
 # Maintainer: Evert Vorster <evorster@gmail.com>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: IncredibleLaser
@@ -8,20 +7,20 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=23.08.0.r18473
+pkgver=23.08.2.r18567
 pkgrel=1
 pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL')
-depends=('purpose'
+depends=('purpose5'
 	'qt5-networkauth' 
 	'breeze-icons' 
-	'kfilemetadata' 
-	'knewstuff' 'knotifyconfig' 
+	'kfilemetadata5' 
+	'knewstuff5' 'knotifyconfig5' 
 	'mlt'
 	'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils')
+makedepends=('extra-cmake-modules' 'kdoctools5' 'git' 'v4l-utils')
 optdepends=('ffmpeg: for FFmpeg plugin'
 	    'python: for speech to text scripts'
             'cdrkit: for creation of DVD ISO images'
@@ -29,7 +28,7 @@ optdepends=('ffmpeg: for FFmpeg plugin'
             'dvgrab: for firewire capture'
             'libdv: for webcam capture (if FFmpeg is not installed)'
             'recordmydesktop: for screen capture'
-            'perl-image-exif-tool: for exif information'
+            'perl-image-exiftool: for exif information'
             'mediainfo: for exif information'
             'xine-ui: for DVD preview'
 	    'oxygen-icons: optional for xfce')
