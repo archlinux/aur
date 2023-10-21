@@ -1,22 +1,23 @@
-# Maintainer: Librewish <librewish@gmail.com>
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Contributer Librewish <librewish@gmail.com>
 # Contributer : Ramon Buldo <ramon@garuda.org>
 
 pkgbase=garuda-settings-manager-git
 _pkgbase=garuda-settings-manager
 pkgname=('garuda-settings-manager-git' 'garuda-settings-manager-kcm-git' 
          'garuda-settings-manager-notifier-git' 'garuda-settings-manager-knotifier-git')
-pkgver=1.0.0.r1.g15c4106
+pkgver=1.0.2.r5.gb0542a1
 pkgrel=1
 pkgdesc="Garuda Linux system settings (Manjaro settings manager ported to work with Arch standards and limited to only DKMS drivers)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/garuda-linux/applications/garuda-settings-manager"
 license=("GPL")
-depends=('icu' 'qt5-base>=5.12.3' 'hwinfo' 'kitemmodels' 'kauth' 
-         'kcoreaddons' 'ckbcomp' 'xdg-utils' 'mhwd-garuda-git')
+depends=('icu' 'qt5-base>=5.12.3' 'hwinfo' 'kitemmodels5' 'kauth5'
+         'kcoreaddons5' 'ckbcomp' 'xdg-utils' 'mhwd-garuda-git')
 optdepends=('garuda-settings-manager-notifier-git: qt-based'
             'garuda-settings-manager-knotifier-git: knotifications-based')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'qt5-tools' 'knotifications' 
-             'kconfigwidgets' 'kcmutils')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools5' 'qt5-tools' 'knotifications5'
+             'kconfigwidgets5' 'kcmutils5')
 conflicts=('kcm-msm')
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -57,7 +58,7 @@ package_garuda-settings-manager-git() {
 
 package_garuda-settings-manager-kcm-git() {
   pkgdesc="Garuda Linux system settings - Plasma 5 KCM"
-  depends=('garuda-settings-manager' 'kcmutils' 'kconfigwidgets')
+  depends=('garuda-settings-manager' 'kcmutils5' 'kconfigwidgets5')
   provides=('garuda-settings-manager-kcm')
   conflicts=('garuda-settings-manager-kcm')
 
@@ -89,7 +90,7 @@ package_garuda-settings-manager-notifier-git() {
 
 package_garuda-settings-manager-knotifier-git() {
   pkgdesc="Garuda Linux system settings - knotifier"
-  depends=('garuda-settings-manager' 'knotifications')
+  depends=('garuda-settings-manager' 'knotifications5')
   provides=('garuda-settings-manager-knotifier')
   conflicts=('garuda-settings-manager-knotifier')
 
