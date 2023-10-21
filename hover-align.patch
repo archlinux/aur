@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 0ec85fc24..ddb188218 100644
+index 0ec85fc24df1..933c69294b40 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
 @@ -1001,6 +1001,8 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
@@ -19,17 +19,17 @@ index 0ec85fc24..ddb188218 100644
        const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
        HI.Offset = Layout.getFieldOffset(FD->getFieldIndex());
        if (FD->isBitField())
-@@ -1488,6 +1491,8 @@ markup::Document HoverInfo::present() const {
+@@ -1487,6 +1490,8 @@ markup::Document HoverInfo::present() const {
+       P.appendText(
            llvm::formatv(" (+{0} padding)", formatSize(*Padding)).str());
      }
++    if (Align)
++      P.appendText(", alignment " + formatSize(*Align));
    }
-+  if (Align)
-+    Output.addParagraph().appendText("Align: " + formatSize(*Align));
  
    if (CalleeArgInfo) {
-     assert(CallPassType);
 diff --git a/clang-tools-extra/clangd/Hover.h b/clang-tools-extra/clangd/Hover.h
-index 6a6110091..fe689de44 100644
+index 6a6110091291..fe689de44732 100644
 --- a/clang-tools-extra/clangd/Hover.h
 +++ b/clang-tools-extra/clangd/Hover.h
 @@ -97,6 +97,8 @@ struct HoverInfo {
@@ -42,7 +42,7 @@ index 6a6110091..fe689de44 100644
    // from the callee definition about the argument this is passed as.
    std::optional<Param> CalleeArgInfo;
 diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
-index 8c88cd525..c5623759a 100644
+index 8c88cd525745..063a60db0440 100644
 --- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
 @@ -92,6 +92,7 @@ TEST(Hover, Structured) {
@@ -101,7 +101,7 @@ index 8c88cd525..c5623759a 100644
      EXPECT_EQ(H->AccessSpecifier, Expected.AccessSpecifier);
      EXPECT_EQ(H->CalleeArgInfo, Expected.CalleeArgInfo);
      EXPECT_EQ(H->CallPassType, Expected.CallPassType);
-@@ -3448,6 +3455,7 @@ template <typename T, typename C = bool> class Foo {})",
+@@ -3448,13 +3455,14 @@ template <typename T, typename C = bool> class Foo {})",
              HI.Size = 32;
              HI.Offset = 96;
              HI.Padding = 32;
@@ -109,15 +109,15 @@ index 8c88cd525..c5623759a 100644
            },
            R"(field foo
  
-@@ -3455,6 +3463,7 @@ Type: type (aka can_type)
+ Type: type (aka can_type)
  Value = value
  Offset: 12 bytes
- Size: 4 bytes (+4 bytes padding)
-+Align: 4 bytes
+-Size: 4 bytes (+4 bytes padding)
++Size: 4 bytes (+4 bytes padding), alignment 4 bytes
  
  // In test::Bar
  def)",
-@@ -3470,6 +3479,7 @@ def)",
+@@ -3470,13 +3478,14 @@ def)",
              HI.Size = 25;
              HI.Offset = 35;
              HI.Padding = 4;
@@ -125,11 +125,11 @@ index 8c88cd525..c5623759a 100644
            },
            R"(field foo
  
-@@ -3477,6 +3487,7 @@ Type: type (aka can_type)
+ Type: type (aka can_type)
  Value = value
  Offset: 4 bytes and 3 bits
- Size: 25 bits (+4 bits padding)
-+Align: 8 bytes
+-Size: 25 bits (+4 bits padding)
++Size: 25 bits (+4 bits padding), alignment 8 bytes
  
  // In test::Bar
  def)",
