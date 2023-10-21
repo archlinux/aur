@@ -7,8 +7,8 @@ pkgdesc="Neptune a superfast mechanical keyboard sound app"
 arch=('x86_64')
 url="https://github.com/M1ndo/Neptune"
 license=('AGPL3')
-depends=('make' 'libx11' 'libxtst'
-         'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'alsa-lib'
+makedepends=('make')
+depends=('libx11' 'libxtst' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'alsa-lib'
          'libayatana-appindicator' 'libayatana-indicator'
          'ayatana-ido' 'libdbusmenu-glib' 'gtk3'
          'pango' 'harfbuzz' 'at-spi2-core' 'cairo'
