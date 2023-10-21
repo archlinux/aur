@@ -12,6 +12,20 @@
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
+--- a/vmmon/include/pgtbl.h
++++ b/vmmon/include/pgtbl.h
+@@ -91,7 +91,11 @@
+          } else {
+             pte_t *pte;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,5,0)
++            pte = pte_offset_kernel(pmd, addr);
++#else
+             pte = pte_offset_map(pmd, addr);
++#endif
+             if (pte_present(*pte) == 0) {
+                pte_unmap(pte);
+                return INVALID_MPN;
 --- a/vmmon/include/vm_assert.h
 +++ b/vmmon/include/vm_assert.h
 @@ -40,7 +40,11 @@
@@ -55,15 +69,3 @@
     ret = get_kernel_nofault(dummy, (void *)r);
  #else
     {
-Patch taken from https://raw.githubusercontent.com/jeffersonchua/linux-6.5.0/main/patch-17.0.2-6.5.0
---- a/vmmon/include/pgtbl.h
-+++ b/vmmon/include/pgtbl.h
-@@ -91,7 +91,7 @@
-          } else {
-             pte_t *pte;
- 
--            pte = pte_offset_map(pmd, addr);
-+            pte = pte_offset_kernel(pmd, addr);
-             if (pte_present(*pte) == 0) {
-                pte_unmap(pte);
-                return INVALID_MPN;
