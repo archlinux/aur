@@ -1,0 +1,17 @@
+[Unit]
+Description=RocketChat server
+
+[Service]
+ExecStartPre=/bin/sh -c '/usr/share/webapps/rocketchat-server/node/bin/node --version > /usr/share/webapps/rocketchat-server/.node_version.txt'
+ExecStart=/usr/share/webapps/rocketchat-server/node/bin/node /usr/share/webapps/rocketchat-server/main.js
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=rocketchat
+User=rocketchat
+Group=rocketchat
+EnvironmentFile=/etc/rocketchat-server.conf
+
+[Install]
+WantedBy=multi-user.target
