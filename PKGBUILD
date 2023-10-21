@@ -3,7 +3,7 @@
 
 pkgname=blockbench-git
 pkgver=v4.6.4.r0.gf5e43877
-pkgrel=2
+pkgrel=1
 pkgdesc="A low-poly 3D model editor (git version)"
 arch=('x86_64' 'aarch64')
 url=https://github.com/JannisX11/blockbench
@@ -28,20 +28,20 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-
-  _electronDist=/usr/lib/${_electron}
-  _electronVersion=$(cat ${_electronDist}/version)
-  _electronVersionMajor=${_electronVersion%%.*}
-
   npm install
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  _electronDist=/usr/lib/${_electron}
+  _electronVersion=$(cat ${_electronDist}/version)
   npm run dist -- --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion=${_electronVersion}
 }
 
 package() {
+  _electronDist=/usr/lib/${_electron}
+  _electronVersion=$(cat ${_electronDist}/version)
+  _electronVersionMajor=${_electronVersion%%.*}
   install -d "${pkgdir}/usr/"{bin,share/{pixmaps,applications}}
   install -d "${pkgdir}/${_electronDist}${_electronVersionMajor}/resources"
   echo -e "#!/bin/bash\nexec ${_electron} ${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar \"\$@\"" > "${pkgdir}/usr/bin/${_pkgname}"
