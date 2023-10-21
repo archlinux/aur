@@ -1,7 +1,7 @@
 # Contributor: Whyme Lyu <callme5long@gmail.com>
 
 pkgname=dnsproxy
-pkgver=0.56.1
+pkgver=0.56.2
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
@@ -12,19 +12,14 @@ source=("dnsproxy.service"
         "https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
 makedepends=("go")
 sha256sums=('002deb38e7d69beb8848c57a7ba0d00437c542589baccc6dab074767ffa64b75'
-            '09aca2248e36c8e50e0a5e68034e34526aaccd6f849bd4de708f2ea4a5b3a52f')
+            'b20a77e88567fbcb80a07faa0f47aee7446b4d32ee7c17036fbdf07c03f05e3a')
 
 _conf=etc/dnsproxy/dnsproxy.yaml
 backup=($_conf)
 
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    go mod vendor
-}
-
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    go build --ldflags "-s -w -X main.VersionString=${pkgver}" -mod=vendor -v -trimpath -buildmode=pie
+    go build --ldflags "-s -w -X main.VersionString=${pkgver}" -mod=readonly -v -trimpath -buildmode=pie
 }
 
 package() {
