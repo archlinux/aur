@@ -1,0 +1,17 @@
+pkgbase = r-prismatic
+	pkgdesc = Color Manipulation Tools
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=prismatic
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-farver
+	optdepends = r-covr
+	optdepends = r-crayon
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/prismatic_1.1.1.tar.gz
+	md5sums = 9b1eb9811f9c3a938f854e5a41c5f60b
+	sha256sums = 494978ef03c7b2a1c26693eaaa164ad4286199dce167b7fffa42234b70057104
+
+pkgname = r-prismatic
