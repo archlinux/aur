@@ -14,21 +14,19 @@
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
 pkgver=444.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/cli/"
 license=("Apache")
 arch=('any')
 depends=('python')
 optdepends=(
-  "python2: for dev_appserver.py and endpointscfg support"
   "python-crcmod: [gsutil] verify the integrity of GCS object contents"
 )
 options=('!strip' 'staticlibs')
 source=(
   "$pkgname-$pkgver.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
   "google-cloud-cli.sh"
-  "0001-set-python2-for-dev-appserver-py.patch"
   "0003-add-compdef-to-zsh-completion.patch"
 )
 # Conflict the old package name to force migration
@@ -36,7 +34,6 @@ conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
 sha256sums=('201194b401861e3a2b95b08e905b289b5cda14c5df05e48b5a9e84eb523ea901'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
-            '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
 
 prepare() {
@@ -68,8 +65,6 @@ package() {
     --bash-completion false \
     > /dev/null
 
-  rm -rf "${pkgdir}/opt/${pkgname}/.install/.backup"
-  mkdir "${pkgdir}/opt/${pkgname}/.install/.backup"
   find $pkgdir -name '__pycache__' -type d -exec rm -rf {} +
 
   install -D -m 0755 "${srcdir}/${source[1]}" \
@@ -83,16 +78,4 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share"
   mv -f "${pkgdir}/opt/${pkgname}/help/man" "${pkgdir}/usr/share/"
-  chmod 0755 "${pkgdir}/usr/share/man"
-  chmod 0755 "${pkgdir}/usr/share/man/man1"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  for i in "${pkgdir}/opt/${pkgname}/bin"/*; do
-    ln -st "${pkgdir}/usr/bin/" "${i#${pkgdir}}"
-  done
-  rm -f "${pkgdir}"/usr/bin/{bq,dev_appserver.py*,java_dev_appserver.sh}
-
-  chmod -x "${pkgdir}"/usr/share/man/man1/*
-  find "${pkgdir}/opt/${pkgname}" -name "*.html" -o -name "*.json" -exec chmod -x {} \;
-  find "${pkgdir}/opt/${pkgname}" -name "*_test.py" -exec chmod +x {} \;
 }
