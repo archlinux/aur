@@ -52,12 +52,14 @@ if [ "${initial}x" = "x" ] ; then
            -e '1s/^/# Maintainer: Charles Leclerc <charles@la-mouette.net>\n/' \
            -e 's/^pkgbase=.*/pkgbase=linux-lts-bnx2x-2.5g/' \
            -e '/pkgdesc=/s/"$/ with 2.5G patch for bnx2x module"/' \
-           -e '/^makedepends=/{N;n;d}' \
+           -e '/\s*# htmldocs/,/^)/{/^)/!d;}' \
            -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' \
+           -e "/^b2sums=/{N;s/$/\n        '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'/}" \
            -e "/^sha256sums=/{N;s/$/\n            'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'/}" \
-           -e "s/^  make htmldocs all$/  make -j $(($(nproc)*2)) all/" \
+           -e  '/^  make htmldocs$/d' \
+           -e "s/^  make all$/  make -j $(($(nproc)*2)) all/" \
            -e '/^_package-docs() {/,/^}/d' \
-           -e '/^pkgname=/s/ "$pkgbase-docs"//' PKGBUILD
+           -e '/\s*"$pkgbase-docs"/d' PKGBUILD
 else
     cd ..
     echo "Building version $c_ver (initial)"
