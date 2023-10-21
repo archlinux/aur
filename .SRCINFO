@@ -1,6 +1,6 @@
 pkgbase = nrf-command-line-tools-bin
 	pkgdesc = The nRF Command Line Tools is used for development, programming and debugging of Nordic Semiconductor's nRF51, nRF52, nRF53 and nRF91 Series devices.
-	pkgver = 10.23.1
+	pkgver = 10.23.2
 	pkgrel = 0
 	url = https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download
 	arch = x86_64
@@ -14,17 +14,15 @@ pkgbase = nrf-command-line-tools-bin
 	optdepends = nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits
 	optdepends = pc-nrfconnect-programmer: Programmer app for nRF Connect for Desktop
 	options = !strip
-	source_x86_64 = nrf-command-line-tools-10.23.1_linux-amd64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-1/nrf-command-line-tools-10.23.1_linux-amd64.tar.gz
-	sha256sums_x86_64 = 3d59e891bd16734da9a2dc6ef9412d5b78820388b06a78177285ea5379696f94
-	source_aarch64 = nrf-command-line-tools-10.23.1_linux-arm64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-1/nrf-command-line-tools-10.23.1_linux-arm64.tar.gz
-	sha256sums_aarch64 = 3f5c7ee6cf9a1bb51827623c2a9ccc48f3eebabc4563ad8a426dae7e0750bff7
+	source_x86_64 = nrf-command-line-tools-10.23.2_linux-amd64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-2/nrf-command-line-tools-10.23.2_linux-amd64.tar.gz
+	sha256sums_x86_64 = ccbf6d5e5d87b0ef09657106b23838fa50c9273df44ad38c1fdeab53b9de0ec8
+	source_aarch64 = nrf-command-line-tools-10.23.2_linux-arm64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-2/nrf-command-line-tools-10.23.2_linux-arm64.tar.gz
+	sha256sums_aarch64 = 002cb7ad7b2f0593555dd564a4fd80aabb28a8a3e58b0ea6f54516ac5382073b
 
 pkgname = nrf-command-line-tools
 	depends = jlink-software-and-documentation
 	provides = nrfjprog
-	provides = nrf5x-command-line-tools
 	provides = mergehex
-	conflicts = nrf5x-command-line-tools
 	conflicts = nrfjprog
 	conflicts = mergehex
 
