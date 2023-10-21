@@ -1,6 +1,6 @@
 pkgbase = marine_greetd
 	pkgdesc = A simple cli login dm just for wayland
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1.0
 	url = https://github.com/Decodetalkers/marine_greetdm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = marine_greetd
 	makedepends = ninja
 	makedepends = meson
 	makedepends = rust
-	source = marine_greetd-v0.2.0.tar.gz::https://github.com/Decodetalkers/marine_greetdm/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 3a6a85e741ef3cd14f0f5d467c05462135c9b60711f76ebc44e1fdc023881d4b
+	source = marine_greetd-v0.3.0.tar.gz::https://github.com/Decodetalkers/marine_greetdm/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = c38e0a47d8a608d735d7cc55f48992a827a1bae4368e9585c16d9c6cdab7b3f1
 
 pkgname = marine_greetd
