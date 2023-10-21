@@ -20,10 +20,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  create mode 100644 gfx/graphite2/geckoextra/moz.build
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index daf1222bdb06aba229ed939212763c79b935366a..4eca67cc9e6baa43e7bcf7ac057c243dbc6ccee5 100644
+index 53cbde197a2956052d1e0b0da1917716837c20b1..cae9c78f51c3eea97a954c9e830e88544bbcbdee 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1242,6 +1242,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
+@@ -1247,6 +1247,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
  	'harfbuzz/hb.h',
      ]
  
@@ -134,10 +134,10 @@ index 8af85a4ed663292583310efea06ada8c60eb908d..239579c86e3a0c5ef46c14659117a86d
  if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
      CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 diff --git a/old-configure.in b/old-configure.in
-index 8ff0fccfc4293ca8e148ad261bed745613c5cf74..fe93c1d49071e7c3edb9ff850c1bc92c4c2def06 100644
+index 0dfcddd0f14eddf7df73913417eb2e617a598b43..95850f11b4d9516c9dd0b9b04e504ef60cdba0a5 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -1154,6 +1154,27 @@ fi
+@@ -1146,6 +1146,27 @@ fi
  AC_DEFINE_UNQUOTED(MOZ_MACBUNDLE_ID,$MOZ_MACBUNDLE_ID)
  AC_SUBST(MOZ_MACBUNDLE_ID)
  
@@ -166,10 +166,10 @@ index 8ff0fccfc4293ca8e148ad261bed745613c5cf74..fe93c1d49071e7c3edb9ff850c1bc92c
  dnl = Child Process Name for IPC
  dnl ========================================================
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index 1d964af4f1e237ef419b15c954a5a3b663c9ce92..c139842714a0036c807859ca03b8aed8f876a895 100644
+index fb81f6ceebcb4c6c14d0e2e2df48531b74d174bf..e43d77d815ace132469fe3c1ecca7256fce1e0f7 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -285,6 +285,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -286,6 +286,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -180,7 +180,7 @@ index 1d964af4f1e237ef419b15c954a5a3b663c9ce92..c139842714a0036c807859ca03b8aed8
      OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 115febb3d533eb69cecbe0931b00be4e910e20de..54425af01317562fb3204fe7bc01a494b8f2167d 100644
+index 510db578b5e1b15fde924db8d0878588fe2f7526..ded2b7099ec841b93d74fc14d7ef733acdbba0bb 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -675,6 +675,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):

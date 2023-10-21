@@ -2,14 +2,20 @@ From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Date: Tue, 8 Aug 2023 16:13:48 +0300
 Subject: [PATCH] Add KDE integration to Firefox (toolkit parts)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 Bug: https://bugzilla.suse.com/show_bug.cgi?id=170055
 
+EDIT: Björn Bidar: Removed handling for obsolete special files
+
 Co-authored-by: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Co-authored-by: Lubos Lunak <lunak@suse.com>
+Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
 ---
- modules/libpref/Preferences.cpp               |  13 +-
+ modules/libpref/Preferences.cpp               |   1 +
  modules/libpref/moz.build                     |   4 +
  python/mozbuild/mozpack/chrome/flags.py       |   1 +
  python/mozbuild/mozpack/chrome/manifest.py    |   1 +
@@ -33,7 +39,7 @@ Co-authored-by: Lubos Lunak <lunak@suse.com>
  xpcom/components/ManifestParser.cpp           |  10 +
  xpcom/components/moz.build                    |   1 +
  xpcom/io/nsLocalFileUnix.cpp                  |  20 +-
- 24 files changed, 921 insertions(+), 37 deletions(-)
+ 24 files changed, 910 insertions(+), 36 deletions(-)
  create mode 100644 toolkit/xre/nsKDEUtils.cpp
  create mode 100644 toolkit/xre/nsKDEUtils.h
  create mode 100644 uriloader/exthandler/unix/nsCommonRegistry.cpp
@@ -42,7 +48,7 @@ Co-authored-by: Lubos Lunak <lunak@suse.com>
  create mode 100644 uriloader/exthandler/unix/nsKDERegistry.h
 
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
-index 9e0853d1a5b7cf9dd05a15db3499dd18fcf73803..1ab9be4e7415ddd19f393b6856c13c462059b111 100644
+index 94a5aa0f3f169563d570e18fc1a525994293ad99..c1cf316d05b742502f7b07da1b7f25024b09f4e8 100644
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
 @@ -95,6 +95,7 @@
@@ -53,32 +59,6 @@ index 9e0853d1a5b7cf9dd05a15db3499dd18fcf73803..1ab9be4e7415ddd19f393b6856c13c46
  
  #ifdef DEBUG
  #  include <map>
-@@ -4906,6 +4907,16 @@ nsresult Preferences::InitInitialObjects(bool aIsStartup) {
- #endif
-   };
- 
-+  if (nsKDEUtils::kdeSession()) {  // TODO what if some setup actually requires
-+                                   // the helper?
-+    for (int i = 0; i < MOZ_ARRAY_LENGTH(specialFiles); ++i) {
-+      if (*specialFiles[i] == '\0') {
-+        specialFiles[i] = "kde.js";
-+        break;
-+      }
-+    }
-+  }
-+
-   rv = pref_LoadPrefsInDir(defaultPrefDir, specialFiles,
-                            ArrayLength(specialFiles));
-   if (NS_FAILED(rv)) {
-@@ -4980,7 +4991,7 @@ nsresult Preferences::InitInitialObjects(bool aIsStartup) {
-       }
- 
-       // Do we care if a file provided by this process fails to load?
--      pref_LoadPrefsInDir(path, nullptr, 0);
-+      pref_LoadPrefsInDir(path, specialFiles, ArrayLength(specialFiles));
-     }
-   }
- 
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 index e8f8b97170d32c1d3ac342dd93da7265bf707c8f..831001cee4b1eb33171d83d524ee9e453a800257 100644
 --- a/modules/libpref/moz.build

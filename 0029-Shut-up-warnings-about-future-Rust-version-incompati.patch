@@ -12,10 +12,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index fa9390e192f4ddd6e8b897faf0fc0dff69728242..a8c97ba3fe594898302b5df57962132138c7f850 100644
+index 1437c717633023482de42cc96a56fe98e431fb89..9382614c4b5c32575bb90cb81ee1624bb2febf62 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -211,3 +211,8 @@ uniffi_bindgen = "=0.24.3"
+@@ -226,3 +226,8 @@ uniffi_bindgen = "=0.24.3"
  uniffi_build = "=0.24.3"
  uniffi_macros = "=0.24.3"
  weedle2 = "=4.0.0"

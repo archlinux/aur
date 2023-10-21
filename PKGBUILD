@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=117.0.1
+pkgver=118.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -65,8 +65,6 @@ provides=("firefox=${pkgver}")
 conflicts=('firefox')
 _patchrev=22b224bf3e8c1431d2d9d961ca351cf3c50fdc15
 options=('!emptydirs' !lto)
-_patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
-_repo=https://hg.mozilla.org/mozilla-unified
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         mozconfig
         firefox.desktop
@@ -102,7 +100,8 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0029-Shut-up-warnings-about-future-Rust-version-incompati.patch
         0030-Partially-revert-Bug-1768632-Make-EnumSet-compile-fo.patch
         0031-Bug-1796523-Workaround-source-locations-for-function.patch
-)
+        0032-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
+       )
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -127,7 +126,7 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
-  cd mozilla-unified
+  cd firefox-$pkgver
 
   cp "$srcdir/mozconfig" .mozconfig
 
@@ -148,7 +147,7 @@ prepare() {
 
 build() {
   #export CXXFLAGS="${CFLAGS}"
-  cd mozilla-unified
+  cd firefox-$pkgver
   export MOZ_SOURCE_REPO="$_repo"
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_APP_REMOTINGNAME=$pkgname
@@ -208,7 +207,7 @@ package() {
     # gtk
     'libgtk-3.so'
   )
-  cd mozilla-unified
+  cd firefox-$pkgver
 
   [[ "$CARCH" == "i686" ]] && cp "$srcdir/kde.js" obj-i686-pc-linux-gnu/dist/bin/defaults/pref
   [[ "$CARCH" == "x86_64" ]] && cp "$srcdir/kde.js" obj-x86_64-pc-linux-gnu/dist/bin/defaults/pref

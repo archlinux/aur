@@ -344,7 +344,7 @@ index dac03fe019d89482e91a29242b3027da80f28c8b..e18a04b4c5c95d1449662cfd8f7a7f97
  
  ResourceListener::~ResourceListener() {}
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
-index c1d12e5d8dc4be47fd751d656c99174b1433de09..e7fdfc2b7fc14a30df1d8770365985f219e7d4b7 100644
+index cf8b3ad3dcab8a802a2fb0a6b89d493417df98ba..5fbfd91517e95dc00eb563e440cdfb539be4ae26 100644
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
 @@ -32,6 +32,7 @@ const char* DegradationPreferenceToString(
@@ -369,7 +369,7 @@ index 374b438adcbe961ed0b3787ca6d9a362c220e2d1..d2371b273712ef432b85e45ec478bf6d
  
  int I420BufferInterface::ChromaWidth() const {
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-index f21c1a340171e831c94c505e162a2d8ac5d67d54..3c773d54b13cc9a17e9b3a0c27d968d4ae7ad498 100644
+index c6122d3f6ac3056ebcc654e1c268923f6057a738..1c78e6c0071a4ae36913d47e67d05389270f5095 100644
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 @@ -118,6 +118,7 @@ const char* CodecTypeToPayloadString(VideoCodecType type) {
@@ -488,10 +488,10 @@ index 05624b1f9227a28622a4d97629e782c61617c8a4..4de2e3e67ae08e6788894986fe48d508
  
  metrics::Histogram* CreateVolumeHistogram(InputVolumeType input_volume_type) {
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-index 91501fb6e32cb00fa79ce170e95d7e49301717e6..d87d9586e103a8e5edf703a3e516f73e91e3516d 100644
+index a13e77461a15ad182ec5e6f8657823ed04f78291..398d4225131340ebf324e21e4ff46fa91c842747 100644
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-@@ -59,6 +59,8 @@ rtc::FunctionView<float(float)> GetActivationFunction(
+@@ -60,6 +60,8 @@ rtc::FunctionView<float(float)> GetActivationFunction(
      case ActivationFunction::kSigmoidApproximated:
        return ::rnnoise::SigmoidApproximated;
    }
@@ -562,7 +562,7 @@ index 90428464e3bca2e8b0268e977d03d27176aedf86..8f9f8ac3ee6b743cb1d025d0f3b4088b
  
  }  // namespace
 diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-index 8d9e956779e0d9826652c6c97485c8107cb4ad3b..d9089fd36ef322acc2b1e3f9dd6de9b2a34ade49 100644
+index ebe6779e31be9bbeab5154171ca02fc9d90e8c2a..b78c38f97622ee7d2b24c8ebf6c3ab0c7931d7c7 100644
 --- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 +++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 @@ -44,6 +44,7 @@ ScreenCastPortal::CaptureSourceType ScreenCastPortal::ToCaptureSourceType(
@@ -610,7 +610,7 @@ index f97fb167ed8b1e1f5b9e8aa3acf4cca5f067d35f..1b168f3fc6a22c55b4d7e958f9abfc4d
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-index 244f644bd1a1ee8f61e322270012b2cfbec5afda..c2187e469c1b078223a1fdf0266a3e82d9d9a64f 100644
+index 47b7b7910bd6a26748394c30cc0c932f6e1e0327..49326d2bee9c3d8df42e219b8e75c5ce34b63ed0 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 @@ -45,6 +45,7 @@ namespace {
@@ -620,7 +620,7 @@ index 244f644bd1a1ee8f61e322270012b2cfbec5afda..c2187e469c1b078223a1fdf0266a3e82
 +  return "";
  }
  
- constexpr char kIncludeCaptureClockOffset[] =
+ }  // namespace
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 index 94860da1b6b2ddf44fb45a9c173d080ed85d24f7..ab24c6ff2cae88a58d04e59c07b7b992566792eb 100644
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc

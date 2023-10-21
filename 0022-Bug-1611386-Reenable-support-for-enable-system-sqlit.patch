@@ -24,7 +24,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  9 files changed, 70 insertions(+), 14 deletions(-)
 
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index ce036fcdc55dc5b42709364775eeb779d64ee62c..ee420cf6363d598cd20b37bef6199dbe77f605c0 100644
+index 5296d2b4b195d6c5d3f61aa43ea8d1d2fdad053f..ca0a730183836121fe53ccddada31f8746361514 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
 @@ -147,9 +147,11 @@
@@ -37,8 +37,8 @@ index ce036fcdc55dc5b42709364775eeb779d64ee62c..ee420cf6363d598cd20b37bef6199dbe
  #endif
 +#endif
  @BINPATH@/@DLL_PREFIX@lgpllibs@DLL_SUFFIX@
+ @BINPATH@/@DLL_PREFIX@gkcodecs@DLL_SUFFIX@
  #ifdef MOZ_FFVPX
- @BINPATH@/@DLL_PREFIX@mozavutil@DLL_SUFFIX@
 diff --git a/config/external/sqlite/moz.build b/config/external/sqlite/moz.build
 index 6294924c564ae8c2ebc0033895be91069179fcd2..b978fd9caba375242de1be25072b251461010044 100644
 --- a/config/external/sqlite/moz.build
@@ -104,12 +104,12 @@ index b7198b1912fdc8d1182a445421aec3450474c23d..3ecc0bb997cf376e996bff2d9c184ecf
      // treat them as such.
      Release();  // Call is protected by us holding the mutex.
 diff --git a/storage/moz.build b/storage/moz.build
-index 9cefe26ec0c83fc6f9fbce3fee6604c86a10fc98..1c473a5c3adf605eb8ceeeed28923a4b5f38d4a1 100644
+index 3509923c39b74218dfa11261ef67e9e40f89eea5..d5ef35b92fd6706e3f9879054bcda51b66d57e4b 100644
 --- a/storage/moz.build
 +++ b/storage/moz.build
-@@ -101,6 +101,12 @@ if CONFIG["MOZ_THUNDERBIRD"] or CONFIG["MOZ_SUITE"]:
- # will need to change it here as well.
- DEFINES["SQLITE_MAX_LIKE_PATTERN_LENGTH"] = 50000
+@@ -105,6 +105,12 @@ DEFINES["SQLITE_MAX_LIKE_PATTERN_LENGTH"] = 50000
+ if not CONFIG["MOZ_AVOID_DISK_REMNANT_ON_CLOSE"]:
+     DEFINES["MOZ_SQLITE_PERSIST_AUXILIARY_FILES"] = 1
  
 +# See Sqlite moz.build for reasoning about TEMP_STORE.
 +# For system sqlite we cannot use the compile time option, so we use a pragma.
@@ -214,7 +214,7 @@ index fc576f30bc6a47db5c8bfbaa77bb117f1bd68011..903d6b29f62528b6ecd762ef69fb5f20
  sqlite3_complete16
  sqlite3_config
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 54425af01317562fb3204fe7bc01a494b8f2167d..dd9583868a0e15e5c3f4c56852531ff6fbe921eb 100644
+index ded2b7099ec841b93d74fc14d7ef733acdbba0bb..17726440ef2122a29e6966220287ccdbe5677b10 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -377,6 +377,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")

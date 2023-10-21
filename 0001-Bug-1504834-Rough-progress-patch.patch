@@ -11,7 +11,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1504834#c5
  3 files changed, 15 insertions(+), 13 deletions(-)
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
-index 2c2452a0cf57c9968070f53c5d87aaba21e9e87b..7aad12a2560c7429f150d7555507021f10bf942c 100644
+index b569438db44f5ba7869da4bc505f8950533cc8ec..1b6f70684886325d9b8b505b1f6f59a2dfb7023e 100644
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
 @@ -155,8 +155,7 @@ static IntRect CalculateSurfaceBounds(const IntSize& aSize, const Rect* aBounds,

@@ -84,10 +84,10 @@ index fca2398bfc97aad365d3b446fab06f2a7863948e..fe057e454e9fcfa04db17d44306357a7
                                                      event.target.parentNode.openedWithKey);"
  #endif
 diff --git a/browser/base/content/browser.js b/browser/base/content/browser.js
-index 81fd02efc6461c052101169415f4015003b77590..eec0cc5b0e402f113052635781c806c290df3acc 100644
+index 1b1e3ed5c972d6629adb2cfd7dcf051d2489398b..fe7c8dc6dc8ff0e854253b3eb45a814630c871ee 100644
 --- a/browser/base/content/browser.js
 +++ b/browser/base/content/browser.js
-@@ -6298,11 +6298,18 @@ function onViewToolbarsPopupShowing(aEvent, aInsertPoint) {
+@@ -6327,11 +6327,18 @@ function onViewToolbarsPopupShowing(aEvent, aInsertPoint) {
    MozXULElement.insertFTLIfNeeded("browser/toolbarContextMenu.ftl");
    let firstMenuItem = aInsertPoint || popup.firstElementChild;
    let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
@@ -175,7 +175,7 @@ index b2059e396efec51ec515540e69adfd18a74a906f..5f00ef562b374aa5d1d5792240395c4a
  XPCOM_MANIFESTS += [
      "components.conf",
 diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
-index 6a02e703ddf31424b1c566a2e4277ad8be7fddd9..dc8c9ea830cdbbaa01fd1007b642dde08f097bf8 100644
+index a190b6caff8c21fb6bedaf37b9c25c812cd7114a..8bf1016739f21adb983d4cbfdc6858a01ece8601 100644
 --- a/modules/libpref/init/all.js
 +++ b/modules/libpref/init/all.js
 @@ -167,6 +167,9 @@ pref("dom.text-recognition.enabled", true);
@@ -280,7 +280,7 @@ index 0000000000000000000000000000000000000000..0843d45185e51f6f59ded657cb57ac0d
 +
 +#endif  // mozilla_widget_NativeMenuSupport_h
 diff --git a/widget/gtk/components.conf b/widget/gtk/components.conf
-index a2759a3c45cc020f54799ce61151dd45c03210fd..17c040e3ef6c2ddf2d876b3b5954ca8d70a26839 100644
+index 851de59d0c66dff8a593f494c5ea8a8fe88535b2..c6fa8c129c773f6fc377912dce921ab5af2b4542 100644
 --- a/widget/gtk/components.conf
 +++ b/widget/gtk/components.conf
 @@ -115,6 +115,14 @@ Classes = [
@@ -5263,10 +5263,10 @@ index 0000000000000000000000000000000000000000..2e0d429eddfdfc84620834eced6b9733
 +
 +#endif /* __nsNativeMenuService_h__ */
 diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
-index 9cc6e8a1aebf69b4d720da7745d08b929f46b13e..7c5cade259877d4ea429f4385bb2278776ab1946 100644
+index be700ff20db1a4ca68c06e5882831a6d72fef0ca..e1a2d331eb555eaa0d98a2099cccccf6712512aa 100644
 --- a/widget/gtk/nsWindow.cpp
 +++ b/widget/gtk/nsWindow.cpp
-@@ -7481,6 +7481,10 @@ void nsWindow::HideWindowChrome(bool aShouldHide) {
+@@ -7486,6 +7486,10 @@ void nsWindow::HideWindowChrome(bool aShouldHide) {
    SetWindowDecoration(aShouldHide ? BorderStyle::None : mBorderStyle);
  }
  
@@ -5278,7 +5278,7 @@ index 9cc6e8a1aebf69b4d720da7745d08b929f46b13e..7c5cade259877d4ea429f4385bb22787
                                bool aAlwaysRollup) {
    LOG("nsWindow::CheckForRollup() aAlwaysRollup %d", aAlwaysRollup);
 diff --git a/widget/gtk/nsWindow.h b/widget/gtk/nsWindow.h
-index fa90621be4785a84950e7d80333acde7eb676a16..c815ca73b11bc59cfc56544f37e3b04fa0e08145 100644
+index a892a08cfa2e24e3dfd3809def7e8502b0632bb7..6aaa94f0503f88f8408bba82d07cfa137e14527a 100644
 --- a/widget/gtk/nsWindow.h
 +++ b/widget/gtk/nsWindow.h
 @@ -27,6 +27,8 @@
@@ -5299,7 +5299,7 @@ index fa90621be4785a84950e7d80333acde7eb676a16..c815ca73b11bc59cfc56544f37e3b04f
    /**
     * GetLastUserInputTime returns a timestamp for the most recent user input
     * event.  This is intended for pointer grab requests (including drags).
-@@ -927,6 +931,8 @@ class nsWindow final : public nsBaseWidget {
+@@ -926,6 +930,8 @@ class nsWindow final : public nsBaseWidget {
  
    static bool sTransparentMainWindow;
  
@@ -5404,7 +5404,7 @@ index 0000000000000000000000000000000000000000..488c8f49c0217890d2c5a12f57fdc194
 +    Atom("shellshowingmenubar", "shellshowingmenubar"),
 +]
 diff --git a/xpcom/ds/StaticAtoms.py b/xpcom/ds/StaticAtoms.py
-index 2fbb11fd7b34fa4011dc991a583b5fa5872589ed..e32fa2cb9a881e75459df5bdcd496bad528ccdf6 100644
+index eb3997411a692ff1edb86c967236e25f90bdc46d..1a9e22911eada7288c5af751d974468181dc85e0 100644
 --- a/xpcom/ds/StaticAtoms.py
 +++ b/xpcom/ds/StaticAtoms.py
 @@ -13,6 +13,7 @@ from Atom import (
@@ -5415,7 +5415,7 @@ index 2fbb11fd7b34fa4011dc991a583b5fa5872589ed..e32fa2cb9a881e75459df5bdcd496bad
  
  # Static atom definitions, used to generate nsGkAtomList.h.
  #
-@@ -2550,7 +2551,7 @@ STATIC_ATOMS = [
+@@ -2549,7 +2550,7 @@ STATIC_ATOMS = [
      InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
      InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
      # END ATOMS
@@ -5425,10 +5425,10 @@ index 2fbb11fd7b34fa4011dc991a583b5fa5872589ed..e32fa2cb9a881e75459df5bdcd496bad
  
  
 diff --git a/xpfe/appshell/AppWindow.cpp b/xpfe/appshell/AppWindow.cpp
-index 3ecd6d18d7241967cea20862c198d09336a74bf1..e90165545ce5a1f7d6ee11896bd1ab74cb3bdbd9 100644
+index ea2b7029426300ed33acbfd33302392a6c17a4d4..231b47372caf18e1a7fa3206cff103a43006f8ce 100644
 --- a/xpfe/appshell/AppWindow.cpp
 +++ b/xpfe/appshell/AppWindow.cpp
-@@ -78,7 +78,7 @@
+@@ -77,7 +77,7 @@
  
  #include "mozilla/dom/DocumentL10n.h"
  

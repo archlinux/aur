@@ -1,6 +1,6 @@
 pkgbase = firefox-kde-opensuse
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE
-	pkgver = 117.0.1
+	pkgver = 118.0.2
 	pkgrel = 1
 	url = https://github.com/openSUSE/firefox-maintenance
 	arch = i686
@@ -59,12 +59,12 @@ pkgbase = firefox-kde-opensuse
 	optdepends = pulseaudio: Audio support
 	optdepends = libnotify: Notification integration
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=117.0.1
+	provides = firefox=118.0.2
 	conflicts = firefox
 	options = !emptydirs
 	options = !lto
-	source = https://archive.mozilla.org/pub/firefox/releases/117.0.1/source/firefox-117.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/117.0.1/source/firefox-117.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/118.0.2/source/firefox-118.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/118.0.2/source/firefox-118.0.2.source.tar.xz.asc
 	source = mozconfig
 	source = firefox.desktop
 	source = vendor.js
@@ -99,6 +99,7 @@ pkgbase = firefox-kde-opensuse
 	source = 0029-Shut-up-warnings-about-future-Rust-version-incompati.patch
 	source = 0030-Partially-revert-Bug-1768632-Make-EnumSet-compile-fo.patch
 	source = 0031-Bug-1796523-Workaround-source-locations-for-function.patch
+	source = 0032-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = 7ea4203b5cf9e59f80043597e2c9020291754fcab784a337586b5f5e1370c416
 	sha256sums = SKIP
