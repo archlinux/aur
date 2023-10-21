@@ -1,7 +1,7 @@
 pkgname=ipmiview
 pkgver=2.21.1
 _pkghash=230720
-pkgrel=1
+pkgrel=2
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime")
@@ -28,7 +28,7 @@ source=(
 sha512sums=('103cc4c12f3ad6a503877db85abd89ad4e0dfdb48d99d30483ab3b97534e7f1729cc94b19ad0ff45c381986807a443d45338df24e7edc41839ed7e718804d46a'
             '82f6d4a9f6ff031f0c7e7ab78a550ea76b8e297df62aaa9837a37fe4f0b4a8b4dfa4aae59c0edc9ee2f0b7e249548ba4f5f50a44e0682a7f7b6f098163a17879'
             'd1fb8e68ca057e3b2bc1c6e51cda226443c729db5166363d637a536afc07aab285ba46f9da5f656837e2423685a0ae421789a4768acee5ac8185ecb04318fc81'
-            'b174f65db6870cffbdae1ca3800c7b7bf348a34b5c030173af4cb1a30c6c3476d28af7013d845dfd061f9800462d8326bf3306a1597d7e9440db78b1e80dbd12')
+            '6f46cf96ebd104ffd7108624a6b42ee4cc9f8ba6119a2fe702033f93bb8e5176e428c10f8d11a85e4fb3bbbbbc8245dd9bf605e05f1e530f420836a37aa2bfc1')
 
 prepare() {
   cd ${srcdir}

@@ -1,11 +1,16 @@
 --- package.orig/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/IPMIView20
 +++ package.new/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/IPMIView20
-@@ -872,7 +872,7 @@
+@@ -871,12 +871,7 @@
+ getJavaVersion()
  {
  	javaExe=$1
- 	javaVersion=` "${javaExe}" -version 2>&1 | $AWK '
+-	javaVersion=` "${javaExe}" -version 2>&1 | $AWK '
 -$3 ~ /"[0-9]\.[0-9]\.[0-9][^"]*"$/ {
-+$3 ~ /"[0-9][0-9]?\.[0-9]\.[0-9][^"]*"$/ {
- 	gsub ("[^0-9._]", "", $3)
- 	print $3
+-	gsub ("[^0-9._]", "", $3)
+-	print $3
+-}
+-	' `
++	javaVersion=` "${javaExe}" -version 2>&1 | $AWK -F '"' '/version/ {print $2}' `
+ 	unset javaExe
  }
+ #
