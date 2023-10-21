@@ -1,0 +1,19 @@
+pkgbase = jupyterlab-catppuccin
+	pkgdesc = A universal code formatter for JupyterLab.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/jupyterlab-catppuccin
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-rfc3986-validator
+	depends = python
+	depends = jupyterlab
+	source = jupyterlab-catppuccin-0.2.0.tar.gz::https://github.com/catppuccin/jupyterlab/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 323a67cda29b56489b27313f95bcfa663eb0a5aea8809678e8638acf81f6a6b2
+
+pkgname = jupyterlab-catppuccin
