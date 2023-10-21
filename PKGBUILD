@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/a-parhom/RoundedSBE"
 license=('GPL3')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'kglobalaccel5' 'kde-dev-utils' 'knotifications5' 'kinit' 'kwin' 'qt5-declarative')
-depends=('kcoreaddons5' 'libxcb' 'kwindowsystem5' 'kdecoration5' 'kiconthemes5' 'kwin')
+depends=('kcoreaddons5' 'libxcb' 'kwindowsystem5' 'kdecoration' 'kiconthemes5' 'kwin')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
