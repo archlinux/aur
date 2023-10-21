@@ -2,12 +2,12 @@
 
 pkgname=ttf-amiri
 pkgver=1.000
-pkgrel=2
+pkgrel=3
 pkgdesc="A Classical Arabic Naskh typeface pioneered by Amiria/Bulaq Press in Cairo"
 arch=('any')
 url="http://www.amirifont.org/"
 license=('OFL')
-source=(https://github.com/khaledhosny/amiri-font/releases/download/$pkgver/amiri-$pkgver.zip)
+source=(https://github.com/aliftype/amiri/releases/download/$pkgver/Amiri-$pkgver.zip)
 sha256sums=('926fe1bd7dfde8e55178281f645258bfced6420c951c6f2fd532fd21691bca30')
 
 package() {
