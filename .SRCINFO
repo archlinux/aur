@@ -1,6 +1,6 @@
 pkgbase = kicad-nightly
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 7.99.0_3268_g68a5753c80
+	pkgver = 7.99.0_3298_gaa2a0cdd16
 	pkgrel = 1
 	url = http://kicad.org/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = kicad-nightly
 	optdepends = kicad-library-nightly: for footprints and symbols
 	optdepends = kicad-library-3d-nightly: for 3d models of components
 	options = !strip
-	source = git+https://gitlab.com/kicad/code/kicad.git#commit=68a5753c80
+	source = git+https://gitlab.com/kicad/code/kicad.git#commit=aa2a0cdd16
 	source = kicad-nightly.env
 	source = no-metadata-translation.patch
 	sha256sums = SKIP
