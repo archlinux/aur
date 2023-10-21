@@ -1,6 +1,6 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=libunarr
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/selmf/unarr"
@@ -11,7 +11,7 @@ makedepends=('cmake' 'git' 'ninja')
 depends=('zlib' 'bzip2' 'xz')
 conflicts=('libunarr-git')
 
-md5sums=('dfe85c00b9a34bd6ad8384882a827020')
+md5sums=('e3848dba8c655230c105b574a533a825')
 
 build() {
   cd "${srcdir}/unarr-${pkgver}"
