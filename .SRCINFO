@@ -1,8 +1,8 @@
 pkgbase = jupyterlab-catppuccin
-	pkgdesc = A universal code formatter for JupyterLab.
+	pkgdesc = Catppuccin theme for jupyterlab.
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://pypi.org/project/jupyterlab-catppuccin
+	url = https://github.com/catppuccin/jupyterlab
 	arch = any
 	license = MIT
 	makedepends = python-build

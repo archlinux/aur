@@ -3,9 +3,9 @@
 pkgname=jupyterlab-catppuccin
 pkgver=0.2.0
 pkgrel=1
-pkgdesc='A universal code formatter for JupyterLab.'
+pkgdesc='Catppuccin theme for jupyterlab.'
 arch=(any)
-url=https://pypi.org/project/${pkgname}
+url="https://github.com/catppuccin/jupyterlab"
 license=(MIT)
 depends=(python jupyterlab)
 makedepends=(python-build python-installer python-hatchling python-hatch-jupyter-builder python-hatch-nodejs-version python-rfc3986-validator)
