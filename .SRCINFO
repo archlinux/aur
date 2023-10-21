@@ -1,0 +1,16 @@
+pkgbase = conda-bash-completion
+	pkgdesc = Bash completion for conda and mamba
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/tartansandal/conda-bash-completion
+	arch = any
+	license = GPL3
+	depends = bash
+	provides = conda-bash-completion
+	provides = mamba-bash-completion
+	source = conda-bash-completion-1.7.tar.gz::https://github.com/tartansandal/conda-bash-completion/archive/1.7.tar.gz
+	source = mamba-bash-completion-1.0.tar.gz::https://github.com/tartansandal/mamba-bash-completion/archive/1.0.tar.gz
+	sha256sums = fc2c3d0181c0e3303387a575cb06ebe81cdecbcf311bba6f476588afc86216c4
+	sha256sums = a811eb585d9b38290653f25660187dee688bb65f4c173306abe08125f95ad7d2
+
+pkgname = conda-bash-completion
