@@ -1,4 +1,5 @@
 v1.7 (2023/10/21):
+- Introduce compatibility for users that have installed kernels other than the default linux kernel
 - Removed install script which was merely used to notify users about a breaking change that was introduced 5 years ago in v1.4
   - removed ncurses dependency alongside with it
 

@@ -13,11 +13,11 @@ source=('LICENSE'
         '50_bootbackup.hook'
         'uu_bootbackup.hook'
         'pacman-boot-backup.conf')
-md5sums=('ac9ac34b11dd5a53d096a734ab677479'
-         'b9dcf01f081c8a2aa10b53e46b2add06'
-         'a38b6feb83944ea401e871b2c2fa704d'
-         '41d1095e8e4ee71e1ef6fa11a0c0180e'
-         '24b9fcd221dce61036831f9a6e2b49bb')
+sha256sums=('c70e605b0f57a2e4a20f76ff77935cb3bfce4adcf8b654aba4ef4e5103b431f2'
+            '2445f388b4bc94382d25e01175babc804821090706d9ac69b5fadfbf5c60d5a9'
+            'bfdb5d9f83f1cd9d9a427cb302883b4ddfa53e4e39e45c3006066baf5b84ce81'
+            'a4b17a1dddaa6516258431fa67ecf236a128d3c7d640598423e13b2404e14e31'
+            '1cefb346964c3aa4db829bffa788c39839f7a0959f294c91cdb43ae591c8472d')
 
 package() {
 	install -m 0755 -d $pkgdir/usr/share/licenses/$pkgname

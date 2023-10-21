@@ -6,10 +6,11 @@ Operation = Remove
 Target = systemd
 
 [Trigger]
-Type = File
+Type = Path
 Operation = Install
 Operation = Upgrade
-Target = boot/vmlinuz-linux
+Target = boot/vmlinuz-*
+Target = usr/lib/modules/*/vmlinuz
 Target = usr/lib/initcpio/*
 
 [Action]
