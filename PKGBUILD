@@ -2,7 +2,7 @@
 
 pkgname=ryujinx-bin
 pkgver=1.1.1057
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental Nintendo Switch Emulator written in C# (master build channel release)'
 arch=(x86_64)
 url='https://github.com/Ryujinx/release-channel-master'
@@ -31,6 +31,7 @@ package() {
 	
 	mkdir --parents "${pkgdir}/usr/bin"
 	ln --symbolic "/opt/ryujinx/Ryujinx" "${pkgdir}/usr/bin/Ryujinx"
+	ln --symbolic "/opt/ryujinx/Ryujinx.sh" "${pkgdir}/usr/bin/Ryujinx.sh"
 	
 	install -D "${srcdir}/Ryujinx.desktop" "${pkgdir}/usr/share/applications/Ryujinx.desktop"
 	install -D "${srcdir}/Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/Ryujinx.svg"
