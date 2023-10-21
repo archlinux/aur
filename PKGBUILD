@@ -2,7 +2,7 @@
 _pkgbase="epic-piano-instrument"
 pkgname=${_pkgbase}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/badcast/${_pkgbase}"
 pkgdesc="Epic Piano - The virtual instrument based on the RoninEngine framework that allows you to unleash your creative potential and craft music of epic proportions."
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=("git+${url}.git"
         "${_pkgbase}.desktop"
         "${_pkgbase}-icon.png")
 sha256sums=('SKIP'
-         '3cceec90fcaebcea5400d3ca588bac8a170e64cd35b51960d0f369a47f4b48a5'
+         '2adf312c50b41c2b46d3d887da45cc4bf3ce50e16d9520249780c85c287fde49'
          '8434f3dfe581ff89f222b6eb6c8bc3f847c4e20bc2153ea6778d550899c15be4')
 
 build(){
