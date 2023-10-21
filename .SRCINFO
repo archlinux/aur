@@ -1,0 +1,23 @@
+pkgbase = r-palr
+	pkgdesc = Colour Palettes for Data
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=palr
+	arch = any
+	license = GPL3
+	checkdepends = r-raster
+	checkdepends = r-stars
+	checkdepends = r-testthat
+	depends = r
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-raster
+	optdepends = r-rmarkdown
+	optdepends = r-stars
+	optdepends = r-testthat
+	optdepends = r-viridis
+	source = https://cran.r-project.org/src/contrib/palr_0.3.0.tar.gz
+	md5sums = b899763176205c856bc900ad6f3b6913
+	sha256sums = 079455452139c6558d740c3dbca35b17f27a19cdcb2b18b427ef330a37996275
+
+pkgname = r-palr
