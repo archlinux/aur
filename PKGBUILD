@@ -12,7 +12,7 @@ url="http://telepathy.freedesktop.org"
 groups=('telepathy')
 license=('LGPL2.1')
 depends=('telepathy-glib' 'libsoup' 'libnice' 'sqlite')
-makedepends=('libxslt' 'python2')
+makedepends=('libxslt' 'python' 'gnome-common')
 conflicts=($_pkgname)
 provides=($_pkgname)
 options=('!emptydirs')
@@ -36,7 +36,8 @@ build() {
   cd $_pkgname
   PYTHON=/usr/bin/python ./configure --prefix=/usr \
   	--libexecdir=/usr/lib/telepathy \
-        --disable-Werror   
+    --disable-Werror  --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
