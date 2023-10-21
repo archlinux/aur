@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=27
+pkgrel=28
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -121,8 +121,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '3882927de5579dec922a9ff070d86a71ab62b96db53406ccf1e9e4e17e803a0b'
-  '125e70e50c3a38b66b56e750351c6a311c8710c7a8e154e07a55022e37428899'
+  'd98e85217d625399187d900f1fbeb9fcd574f1edeeafaf77100938fdc14a1607'
+  '73527182ab476871fa816f7705b1926ca2d48290ae32c9a0f085aefee92be439'
 )
 options=(!strip emptydirs)
 
@@ -450,7 +450,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   done
 
   msg "Patching EFI firmwares to disable macOS server checking"
-  _efi_arch=(32 64)
+  _efi_arch=("32" "64")
   for arch in ${_efi_arch[@]}
   do
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx -O binary -j efi${arch} --set-section-flags efi${arch}=a efi${arch}.rom.Z
