@@ -1,15 +1,14 @@
 pkgbase = kf5-kio-ftps
 	pkgdesc = Implements the ftp encryption scheme called ftps, based on rfc 4217
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Akimkin/kf5-kio-ftps
 	arch = x86_64
 	license = GPL2
 	makedepends = extra-cmake-modules
 	makedepends = kdelibs4support
-	depends = kio
+	depends = kio5
 	source = kf5-kio-ftps-0.3.1.tar.gz::https://github.com/Akimkin/kf5-kio-ftps/archive/v0.3.1.tar.gz
 	sha256sums = da46c93a7e70ea98487ba911accf1e380e3da2abf64dd18ad37d45e12eda4ea5
 
 pkgname = kf5-kio-ftps
-
