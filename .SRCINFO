@@ -1,6 +1,6 @@
 pkgbase = bedroomstudio
 	pkgdesc = A set of LV2 plugins for bedroom music studios
-	pkgver = 0.0.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/psemiletov/bedroomstudio
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bedroomstudio
 	makedepends = cmake
 	depends = lv2
 	provides = bedroomstudio
-	source = https://github.com/psemiletov/bedroomstudio/archive/0.0.3.tar.gz
-	md5sums = 81b950fedfd8376a11aa4f2101d3eea7
+	source = https://github.com/psemiletov/bedroomstudio/archive/1.0.0.tar.gz
+	md5sums = fa68a3184645b2485104e8c06873183c
 
 pkgname = bedroomstudio

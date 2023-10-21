@@ -1,6 +1,6 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 pkgname=bedroomstudio
-pkgver=0.0.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A set of LV2 plugins for bedroom music studios'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('lv2')
 provides=("bedroomstudio")
 
 source=("https://github.com/psemiletov/bedroomstudio/archive/${pkgver}.tar.gz")
-md5sums=('81b950fedfd8376a11aa4f2101d3eea7')
+md5sums=('fa68a3184645b2485104e8c06873183c')
 
 
 build() {
