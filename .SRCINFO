@@ -1,7 +1,7 @@
 pkgbase = marine_greetd
 	pkgdesc = A simple cli login dm just for wayland
 	pkgver = 0.3.1
-	pkgrel = 1.0
+	pkgrel = 2.0
 	url = https://github.com/Decodetalkers/marine_greetdm
 	arch = x86_64
 	arch = aarch64
