@@ -2,13 +2,13 @@
 
 pkgname='tremotesf'
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote GUI for transmission-daemon'
 _github='https://github.com/equeim/tremotesf2'
 url="${_github}"
 arch=('x86_64')
 license=('GPL3')
-depends=('qt5-base' 'kwidgetsaddons' 'kwindowsystem' 'fmt' 'hicolor-icon-theme' 'libpsl')
+depends=('qt5-base' 'kwidgetsaddons5' 'kwindowsystem5' 'fmt' 'hicolor-icon-theme' 'libpsl')
 makedepends=('qt5-tools' 'cmake' 'ninja' 'gettext' 'cxxopts' 'pkgconf')
 source=("${_github}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.zst")
 
