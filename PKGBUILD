@@ -7,7 +7,7 @@ pkgdesc="High resolution graphics set for Simutrans Extended, with a British the
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
-depends=('simutrans-extended-git')
+depends=('simutrans-extended')
 source=(http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.britain-ex-nightly.tar.gz)
 sha256sums=('SKIP')
 
