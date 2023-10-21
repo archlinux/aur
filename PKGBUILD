@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop'
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="Music Assistant Companion app"
 arch=('x86_64')
