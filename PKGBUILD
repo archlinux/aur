@@ -2,7 +2,7 @@
 pkgname="applet-window-buttons-git"
 _pkgname="applet-window-buttons"
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="This is a Plasma 5 applet that shows window buttons in your panels"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=(
   'gcc' 'git' 'extra-cmake-modules'
 )
 depends=(
-  'plasma-framework'
+  'plasma-framework5'
   #'gettext'
   'kdecoration'
 )
