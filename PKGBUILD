@@ -27,13 +27,13 @@
 # locale. Either make sure LC_CTYPE is set to an UTF-8 locale, or do a
 # “partial” PGO build (or disable PGO altoghether).
 
-PGO=none
+PGO=auto
 
 _branch=add-extended-underlines
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=foot-ext-underline-git
 pkgver=1.13.1.r449.ge95b52ed
-pkgrel=1
+pkgrel=2
 conflicts=('foot' 'foot-git')
 replaces=('foot-themes')
 provides=('foot')
