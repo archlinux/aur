@@ -2,12 +2,12 @@
 
 pkgname=isoimagewriter
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to write a .iso file to a USB disk"
 arch=("x86_64" "i686")
 url="https://community.kde.org/ISOImageWriter"
 license=('GPL3')
-depends=('qgpgme' 'kiconthemes' 'kcrash' 'solid')
+depends=('qgpgme-qt5' 'kiconthemes5' 'kcrash5' 'solid5')
 makedepends=('cmake' 'extra-cmake-modules' 'python')
 source=("https://download.kde.org/stable/isoimagewriter/${pkgver}/isoimagewriter-${pkgver}.tar.xz"{,.sig})
 sha512sums=('d50e8146cfde12d940ccfc1ed8ad71a69d203054e470d52e274589aa38d6fbdb018a79db4b63725c7b37acfedfa36b211cc79437e3f12668b8499d9ece3ee562'
