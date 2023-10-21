@@ -4,5 +4,5 @@ Name[zh_CN]=星火商店投稿器
 Comment=星火应用商店社区投稿器 Origin By 乾一巽五
 Type=Application
 Exec=spark-store-submitter
-Icon=spark-store-submitter
+Icon=/usr/share/icons/hicolor/1024x1024/apps/spark-store-submitter.png
 Categories=Development
