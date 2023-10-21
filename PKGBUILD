@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GFA
-_pkgver=1.0.4
+_pkgver=1.0.5
 pkgname=r-${_pkgname,,}
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Group Factor Analysis'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e62f3656a7b8bcf9bacd4690ca76fa46d6cc95748bb760a8b0ffe58e32c10926')
+sha256sums=('4d75b1effb0e31821b07386a900cf68e304c9925c3f2226c45ad2cae4450b7d1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
