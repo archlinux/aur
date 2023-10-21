@@ -1,3 +1,7 @@
+v1.7 (2023/10/21):
+- Removed install script which was merely used to notify users about a breaking change that was introduced 5 years ago in v1.4
+  - removed ncurses dependency alongside with it
+
 v1.6 (2023/07/12):
 - ncurses is a runtime dependency because `tput` is used in the .install script
 - the config file is now listed in the `backup` PKGBUILD array to respect the user configuration on package upgrades
