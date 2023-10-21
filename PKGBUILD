@@ -7,13 +7,11 @@ url='https://github.com/ranisalt/hp-omen-linux-module'
 license=('GPLv2')
 arch=('x86_64')
 depends=('dkms')
-source=("$pkgname::git+$url.git#branch=rebase-6.2")
+source=("$pkgname::git+$url.git#branch=rebase-6.3")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  # source "$pkgname/dkms.conf"
-  # echo "$PACKAGE_VERSION"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
