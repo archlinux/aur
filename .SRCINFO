@@ -1,10 +1,12 @@
 pkgbase = domoticz-bin
 	pkgdesc = Web based home automation
 	pkgver = 2023.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.domoticz.com
 	install = domoticz.install
 	arch = armv7h
+	arch = aarch64
+	arch = x86_64
 	license = GPL3
 	depends = libusb-compat
 	depends = libcurl-gnutls
@@ -13,5 +15,6 @@ pkgbase = domoticz-bin
 	conflicts = domoticz-git
 	source = domoticz-bin-2023.2.tar.gz::https://github.com/domoticz/domoticz/releases/download/2023.2/domoticz_linux_2023.2_armhf.tgz
 	source = domoticz.service
+	sha256sums = SKIP
 
 pkgname = domoticz-bin
