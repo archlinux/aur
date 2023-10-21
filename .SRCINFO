@@ -1,6 +1,6 @@
 pkgbase = kdenlive-git
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)
-	pkgver = 23.11.70.r18856
+	pkgver = 23.11.70.r18857
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = kdenlive-git
 	optdepends = libdv: for webcam capture (if FFmpeg is not installed)
 	optdepends = recordmydesktop: for screen capture
 	optdepends = xine-ui: for DVD preview
-	optdepends = perl-image-exif-tool: for exif information
+	optdepends = perl-image-exiftool: for exif information
 	optdepends = mediainfo: for exif information
 	optdepends = oxygen-icons: optional for xfce
 	optdepends = breeze-icons: otional for default theme
