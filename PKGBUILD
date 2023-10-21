@@ -3,7 +3,7 @@
 
 pkgname=ripme
 pkgver=2.1.6
-pkgrel=2
+pkgrel=4
 pkgdesc="Downloads albums in bulk"
 arch=('any')
 url="https://github.com/ripmeapp2/ripme"
