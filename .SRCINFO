@@ -1,0 +1,21 @@
+pkgbase = r-escher
+	pkgdesc = Unified multi-dimensional visualizations with Gestalt principles
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/escheR
+	arch = any
+	license = MIT
+	depends = r-ggplot2
+	depends = r-rlang
+	depends = r-spatialexperiment
+	depends = r-spatiallibd
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-stexampledata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/escheR_1.0.0.tar.gz
+	md5sums = df1ed86f7963992371c853e9b05284b7
+	sha256sums = 7db6d150e9654adfdd46871a50d8c24fbe808cf16b36ee9f77e3677cbbcff45a
+
+pkgname = r-escher
