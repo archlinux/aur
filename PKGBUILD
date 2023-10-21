@@ -3,7 +3,7 @@
 pkgname=roundedsbe-git
 _pkgname=RoundedSBE
 pkgver=1.0.3.r30.g4f71ab0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of SierraBreezeEnhanced with integrated corner rounding effect CornersShader (reworked version of what used to be called LightlyShaders) and shared configuration."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/a-parhom/RoundedSBE"
