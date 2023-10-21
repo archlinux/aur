@@ -7,8 +7,9 @@ pkgdesc="Transportation simulation game - Extended Version - Nightly build from 
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
+provides=(simutrans-extended)
 depends=('gcc-libs' 'zstd' 'zlib' 'sdl2' 'hicolor-icon-theme' 'freetype2' 'miniupnpc' 'fluidsynth')
-makedepends=('pkgconf' 'git' 'cmake')
+makedepends=('pkgconf' 'git' 'cmake' 'patch')
 optdepends=('soundfont-fluid: Default MIDI soundfont for music'
 			'soundfont-realfont: recommended MIDI soundfont'
             'simutrans-extended-pak128.britain: High resolution graphics set for Simutrans Extended, with a British theme'
