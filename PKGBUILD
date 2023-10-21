@@ -2,7 +2,7 @@
 
 pkgname=python-sacrebleu
 _pkg="${pkgname#python-}"
-pkgver=2.3.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Reference BLEU implementation that auto-downloads test sets'
 arch=('any')
@@ -16,26 +16,25 @@ depends=(
 	'python-regex'
 	'python-tabulate')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-# checkdepends=('python-pytest')
+checkdepends=('python-pytest')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mjpost/$_pkg/archive/refs/tags/v$pkgver.zip"
         'setup.py.patch')
-sha256sums=('7969b294f15dae84d80fb2b76d30c83b245f49f4ecb1cac79acb553eb93cb537'
+sha256sums=('88686b7e9fed754c4e667fa380ed1127e0d82923a16d1f0d95af02f5bc0c12c5'
             'f1c476ca26f36cdf55cad6c4452c3a9d84ff7b962b17e28a7c2a622753f6ced7')
 
 prepare() {
-	patch -p1 -d "$_pkg-$pkgver" < setup.py.patch
+    patch -p1 -d "$_pkg-$pkgver" < setup.py.patch
 }
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
+	python -m build -nw "$_pkg-$pkgver"
 }
 
-# check() {
-# 	cd "$_pkg-$pkgver"
-# 	PYTHONPATH="$PWD" pytest -x
-# }
+check() {
+	cd "$_pkg-$pkgver"
+	PYTHONPATH="$PWD" pytest -x
+}
 
 package() {
 	cd "$_pkg-$pkgver"
