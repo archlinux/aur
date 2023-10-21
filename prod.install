@@ -11,6 +11,10 @@ post_install() {
 export IPFS_PATH=/opt/ipfs-repo
 /usr/bin/ipfs init
 EOL
+	post_upgrade $1 0
+}
+
+post_upgrade() {
 	echo ""
 	echo "Update Services..."
 	sudo systemctl daemon-reload
@@ -18,5 +22,16 @@ EOL
 	echo "You can now use ipfs service with:"
 	echo "sudo systemctl start ipfs"
 	echo "sudo systemctl enable ipfs #to start ipfs on system startup"
+	echo ""
+}
+
+post_remove() {
+	echo ""
+	echo "Update Services..."
+	sudo systemctl daemon-reload
+	echo ""
+	echo "Default repository and user won't be deleted! You can do it manually with:"
+	echo "sudo rm -rf /opt/ipfs-repo/"
+	echo "sudo userdel -rf ipfs"
 	echo ""
 }

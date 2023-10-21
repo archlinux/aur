@@ -1,7 +1,7 @@
 pkgbase = kubo-s3-git
 	pkgdesc = IPFS Kubo with S3 Datastore Implementation
 	pkgver = 0.23.0.r0.g3a1a041
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chixodo-xyz/kubo-s3
 	install = prod.install
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = kubo-s3-git
 	conflicts = kubo-s3
 	conflicts = kubo
 	conflicts = ipfs
-	source = git+https://github.com/ipfs/kubo#tag=v0.23.0
-	source = git+https://github.com/ipfs/go-ds-s3#tag=v0.9.0
+	source = git+https://github.com/ipfs/kubo
+	source = git+https://github.com/ipfs/go-ds-s3
 	source = versions.txt
 	source = ipfs.service
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = ba0b7a7ca53a069a58ec6f9dbab98f10120a5ffd2f8ce83fabf21ae8749e29151879d3245a8cf7e6380119c19a57114f7c4696dcaf93c3b712ad3c2eb1c78058
+	b2sums = 359cde527350603760a64d48546f38b92527b6874cba0b6ec2390985d9b446496e35c926ba31504a84c54bbb2669374dc448fd18999642d29b6d80cecf3e6841
 	b2sums = 3ef6073e708a35ab57107e8c4fb8b07172ffc314719b84565f82ca54c14fadd0ddfcae2b30c8b28c4d60dd9a13ccab463384c5c6140340396afdd0d3505dfc23
 
 pkgname = kubo-s3-git
