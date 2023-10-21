@@ -1,7 +1,7 @@
 pkgbase = android-sdk-platform-tools
 	pkgdesc = Platform-Tools for Google Android SDK (adb and fastboot)
 	pkgver = 34.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.android.com/sdk/index.html
 	install = android-sdk-platform-tools.install
 	arch = x86_64
@@ -14,8 +14,10 @@ pkgbase = android-sdk-platform-tools
 	source = https://dl.google.com/android/repository/platform-tools_r34.0.5-linux.zip
 	source = adb.service
 	source = license.html
+	source = package.xml
 	sha1sums = 96097475cf7b279fdd8f218f5d043ffe94104ec3
 	sha1sums = 49a40c129199844603afe71fce69c0908e062393
 	sha1sums = bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa
+	sha1sums = 27f9b39289da6cc53f3aa934e46ceebc1d995e0d
 
 pkgname = android-sdk-platform-tools
