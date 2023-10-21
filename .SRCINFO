@@ -1,6 +1,6 @@
 pkgbase = bedroomstudio-git
 	pkgdesc = A set of LV2 plugins for bedroom music studios
-	pkgver = db9b57ac66ddcbae392116233f32cc002858aefd
+	pkgver = 29e8389db4cdbd1ab2284d550e8c17607a085503
 	pkgrel = 1
 	url = https://github.com/psemiletov/bedroomstudio
 	arch = x86_64
