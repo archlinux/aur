@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
 pkgver=2.1.2
-pkgrel=1
-_electronversion=25
+pkgrel=2
+_electronversion=27
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('c090a7fd2cd5f871b0e99c337e0739002ffcf487c98900da23b696d4ff01943f'
-            '398b9f96ab02242efb994444110f1578a240e80fcf2f0347102cea4d1c46d570'
+            'c23d933da3985f8b4a2a02053180de5c47b62887821ecc398ea58636fae84fe6'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
 build() {
@@ -24,7 +24,7 @@ build() {
   export PNPM_HOME="$srcdir/pnpm-home"
   pnpm install --frozen-lockfile
   pnpm build
-  HOME="$srcdir/.electron-gyp" ./node_modules/.bin/yarpm-pnpm run clean && \
+  ./node_modules/.bin/yarpm-pnpm run clean && \
     ./node_modules/.bin/yarpm-pnpm run build && \
     ./node_modules/.bin/electron-builder --linux dir \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
