@@ -1,0 +1,21 @@
+pkgbase = r-edirquery
+	pkgdesc = Query the EDIR Database For Specific Gene
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/EDIRquery
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-genomicranges
+	depends = r-interactionset
+	depends = r-readr
+	depends = r-tibble
+	depends = r-tictoc
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EDIRquery_1.0.0.tar.gz
+	md5sums = 5ef6b7ba141cd7778c7d5bf31d138af2
+	sha256sums = 2bb82f36bb6b77b3c0d1cee3612b73128781c9933b522f19a059963044b5a0a8
+
+pkgname = r-edirquery
