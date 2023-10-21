@@ -3,12 +3,12 @@
 
 pkgname=kio_recoll
 pkgver=1.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KIO Slave for recoll a full text search tool based on Xapian backend"
 arch=('i686' 'x86_64')
 url="http://www.lesbonscomptes.com/recoll/"
 license=('GPL')
-depends=('xapian-core>=1.0.15-1' 'openssl' 'hicolor-icon-theme' 'kio' 'recoll')
+depends=('xapian-core>=1.0.15-1' 'openssl' 'hicolor-icon-theme' 'kio5' 'recoll')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("http://www.lesbonscomptes.com/recoll/recoll-${pkgver}.tar.gz")
 md5sums=('fe536ac1bd44277d832118295bb05034')
