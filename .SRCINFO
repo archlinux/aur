@@ -1,0 +1,24 @@
+pkgbase = r-delocal
+	pkgdesc = Identifies differentially expressed genes with respect to other local genes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DELocal
+	arch = any
+	license = MIT
+	depends = r-deseq2
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-limma
+	depends = r-matrixstats
+	depends = r-reshape2
+	depends = r-summarizedexperiment
+	optdepends = r-biomart
+	optdepends = r-knitr
+	optdepends = r-pcredux
+	optdepends = r-rmarkdown
+	optdepends = r-stringr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DELocal_1.0.0.tar.gz
+	md5sums = 6f595f5306f040c92e53f70db5fb4d81
+	sha256sums = 85e1ceb9812f18727fa12bbc17691e3bfe89dc6686900d14245a773a1cce1395
+
+pkgname = r-delocal
