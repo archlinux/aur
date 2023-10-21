@@ -8,7 +8,7 @@ url='https://github.com/MTK-bypass'
 arch=(x86_64)
 license=(MIT)
 makedepends=('rsync')
-depends=('python-pyusb' 'python-json5' 'python-pyserial' 'linux_kamakiri')
+depends=('python-pyusb' 'python-json5' 'python-pyserial' 'linux-kamakiri')
 pkgname_provides=exploits_collection
 pkgver_provides=1.6
 provides=("$pkgname_provides=$pkgver_provides")
@@ -51,7 +51,6 @@ cd -') \
     $pkgdir/usr/bin/$pkgname
 }
 
-
-## Test
-# rm -rf pkg/ src/ bypass_utility* v*.tar.gz
+## Test:
 # makepkg --printsrcinfo > .SRCINFO
+# git clean -dfx

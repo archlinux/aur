@@ -9,7 +9,7 @@ pkgbase = bypass_utility
 	depends = python-pyusb
 	depends = python-json5
 	depends = python-pyserial
-	depends = linux_kamakiri
+	depends = linux-kamakiri
 	provides = exploits_collection=1.6
 	source = https://github.com/MTK-bypass/bypass_utility/archive/refs/tags/v.1.4.2.tar.gz
 	source = v.1.4.2.tar.gz.sig
