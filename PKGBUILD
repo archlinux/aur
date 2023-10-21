@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-bin'
-pkgver=0.28.1
+pkgver=0.28.2
 pkgrel=1
 pkgdesc='multi-shell multi-command argument completer'
 url='https://github.com/rsteube/carapace-bin'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('carapace')
 conflicts=('carapace')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/carapace-bin/releases/download/v0.28.1/carapace-bin_linux_arm64.tar.gz")
-sha256sums_aarch64=('c88721ff040d3a79bc77d70ca96f8b064eb12877a9ca5a5063818b04eba3eb49')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/carapace-bin/releases/download/v0.28.2/carapace-bin_linux_arm64.tar.gz")
+sha256sums_aarch64=('b79d88c00252acb91388a7b641b1383b97adf1dc4060fc28e3a9ae28a17c273f')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/carapace-bin/releases/download/v0.28.1/carapace-bin_linux_386.tar.gz")
-sha256sums_i686=('395ab6fc16b6e86fc7f85468de759acc6b7296d171b05a9499ef3d677b251e22')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/carapace-bin/releases/download/v0.28.2/carapace-bin_linux_386.tar.gz")
+sha256sums_i686=('10ed58aa87d8bf8d83caea3a15b602e34cf69ff91900267902f35c64146e85cc')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/carapace-bin/releases/download/v0.28.1/carapace-bin_linux_amd64.tar.gz")
-sha256sums_x86_64=('17a7652e0aaeab8c456953c5dd25d0098dfb71a071cceaf3f7a78b046361cb94')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/carapace-bin/releases/download/v0.28.2/carapace-bin_linux_amd64.tar.gz")
+sha256sums_x86_64=('97967ef9873c8be217ebb6ccec065d2698cc73f1224f831ecd804f1651afbdeb')
 
 package() {
   install -Dm755 "./carapace" "${pkgdir}/usr/bin/carapace"
