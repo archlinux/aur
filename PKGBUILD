@@ -3,8 +3,8 @@
 pkgname=certificate-ripper-bin
 _pkgname="${pkgname%-bin}"
 _shortname=crip
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A CLI tool to extract server certificates"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hakky54/certificate-ripper"
@@ -14,8 +14,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${_shortname}-${pkgver}-amd64.tar.gz::${url}/releases/download/${pkgver}/${_shortname}-linux-amd64.tar.gz")
 source_aarch64=("${_shortname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${_shortname}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('a857e35e2f4adc8b424a14353e39fa7a1b3e19a4f1359b198944abf908296c8c')
-sha256sums_aarch64=('b72867b24d3d2c7fd9811c7d7486a1a43334412339f004eac52ebc2dc5b93509')
+sha256sums_x86_64=('9d2bb806be36939f99e7a544a242650410407826617a63843cf2f7787e080b84')
+sha256sums_aarch64=('070889cfb0ed802a962567765a9ff208980f327d0ed7140a583fca4c4f2242d8')
 
 package() {
 	install -Dm 755 "${_shortname}" "${pkgdir}/usr/bin/${_shortname}"
