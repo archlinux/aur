@@ -1,7 +1,7 @@
 pkgbase = qview
 	pkgdesc = qView is a Qt image viewer designed with minimalism and usability in mind.
 	pkgver = 6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://interversehq.com/qview/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qview
 	depends = qt5-x11extras>=5.9
 	depends = hicolor-icon-theme
 	optdepends = qt5-imageformats: Extra image format support
-	optdepends = kimageformats: Support for even more extra formats
+	optdepends = kimageformats5: Support for even more extra formats
 	optdepends = qt5-svg: SVG support
 	optdepends = qt5-apng-plugin: APNG support
 	source = https://github.com/jurplel/qView/releases/download/6.1/qView-6.1.tar.gz
