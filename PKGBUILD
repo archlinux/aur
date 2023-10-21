@@ -13,8 +13,8 @@
 
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
-pkgver=444.0.0
-pkgrel=2
+pkgver=451.0.1
+pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/cli/"
 license=("Apache")
@@ -32,7 +32,7 @@ source=(
 # Conflict the old package name to force migration
 conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
-sha256sums=('201194b401861e3a2b95b08e905b289b5cda14c5df05e48b5a9e84eb523ea901'
+sha256sums=('a5cba270a331944e201f78693386788e31becb48b648b0c4ab0abb543222675d'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
 
