@@ -1,7 +1,7 @@
 pkgbase = tuxclocker
 	pkgdesc = Qt overclocking tool for GNU/Linux
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/Lurkki14/tuxclocker
 	arch = x86_64
 	license = GPL3
@@ -12,11 +12,11 @@ pkgbase = tuxclocker
 	depends = boost-libs
 	depends = hicolor-icon-theme
 	depends = libdrm
-	depends = libxnvctrl
-	depends = nvidia-utils
 	depends = qt5-base
 	depends = qt5-charts
-	source = git+https://github.com/Lurkki14/tuxclocker.git#commit=0f66731013320377a7a683bd1489c2754faffb92
+	optdepends = libxnvctrl: XNVCtrl
+	optdepends = nvidia-utils: nvidia-ml
+	source = git+https://github.com/Lurkki14/tuxclocker.git#commit=7e623011d362ec30b8d817ac516861eef1bf7703
 	source = git+https://github.com/mpark/patterns.git
 	source = git+https://github.com/Dobiasd/FunctionalPlus.git
 	source = tuxclocker.desktop
