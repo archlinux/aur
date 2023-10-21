@@ -1,7 +1,7 @@
 pkgbase = domoticz-bin
 	pkgdesc = Web based home automation
 	pkgver = 2023.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.domoticz.com
 	install = domoticz.install
 	arch = armv7h
@@ -16,5 +16,6 @@ pkgbase = domoticz-bin
 	source = domoticz-bin-2023.2.tar.gz::https://github.com/domoticz/domoticz/releases/download/2023.2/domoticz_linux_2023.2_armhf.tgz
 	source = domoticz.service
 	sha256sums = SKIP
+	sha256sums = 908e2848731eef27928f87936f94ff3df280901559fcf5f4754b1a8139e4a38a
 
 pkgname = domoticz-bin
