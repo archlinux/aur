@@ -16,7 +16,7 @@ pkgname=vmware-workstation14
 pkgver=14.1.7
 _buildver=12989993
 _pkgver=${pkgver}_${_buildver}
-pkgrel=22
+pkgrel=23
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -125,8 +125,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  'cd4515560190a2455c6f19eb8d95ed48ba669ae1329c8f4ae67bc5a42ae26508'
-  '12c50ec5470513438a488472251bcf5850e108b67e9b98a46d52dac45e1ffd9b'
+  'b335a39d32b161dabf3ca7981008743204cf6ca0d01dbac35ff797b32eed0065'
+  'f34cfe89820bb3cad727e9b410caa1120f1c8706a32b6a46b19a4cbbe9f7c2c5'
 )
 options=(!strip emptydirs)
 
@@ -457,7 +457,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   done
 
   msg "Patching EFI firmwares to disable macOS server checking"
-  _efi_arch=(32 64)
+  _efi_arch=("32" "64")
   for arch in ${_efi_arch[@]}
   do
     uefipatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-patches.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
