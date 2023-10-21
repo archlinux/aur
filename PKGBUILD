@@ -15,10 +15,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.0.2
-_buildver=21581411
+pkgver=17.5.0
+_buildver=22583795
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -77,7 +77,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'f4e361faebcbe1818d1b16e93d7d6658ef0fe2828f529c334ec28a0493711cc7'
+  '7807f7bf10228c4c9950711694c34a7bc85f193366a2c3cc44996bb1601b38f8'
 
   '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -91,8 +91,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '1209eefaaa7fa9bfc87b12af06a8f250e209a34f84ee5a7747af53cdf43cf48b'
-  '2c03cd2aba3ac80e67f565c1a553c4a6ed1db980ff3c40aad1f6187d2332419b'
+  '1060b5d45caeda5119b220fab4e1ece398af34d75131139a5dc6f74ee06672c3'
+  'b86f61a37a9dd74257751eba2478c471b6e1ccac6476c5845d3371236833a4fb'
 )
 options=(!strip emptydirs)
 
@@ -104,12 +104,11 @@ fi
 
 
 _isoimages=(linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
-_isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=13.0.2
-_vmware_fusion_buildver=21581413
+_vmware_fusion_ver=13.5.0
+_vmware_fusion_buildver=22583790
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
@@ -126,7 +125,7 @@ source+=(
   "efi-patches.txt"
 )
 sha256sums+=(
-  'c86b40823b97334f20b4e6b475b488ec23faf06c986e291965b9e56f7b44c042'
+  '8c365b44fb8372eb2bd5146d28e163d50ec71b6b92ee6bb3a1965dee182748d1'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -180,10 +179,10 @@ package() {
   # Make directories and copy files.
 
   mkdir -p \
-    "$pkgdir/etc"/{cups,pam.d,modprobe.d,thnuclnt,vmware} \
+    "$pkgdir/etc"/{pam.d,modprobe.d,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
-    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
+    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",modules-load.d} \
     "$pkgdir/usr/share"/{doc/vmware-vix,licenses/"$pkgname"} \
     "$pkgdir/var/lib/vmware/Shared VMs"
 
@@ -235,27 +234,12 @@ package() {
     "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version"
 
   cp -r \
-    vmware-player-app/etc/cups/* \
-    "$pkgdir/etc/cups"
-  cp -r \
-    vmware-player-app/extras/.thnumod \
-    "$pkgdir/etc/thnuclnt"
-  cp -r \
-    vmware-player-app/extras/thnucups \
-    "$pkgdir/usr/lib/cups/filter"
-
-  cp -r \
     vmware-vix-core/include/* \
     "$pkgdir/usr/include/vmware-vix"
 
   for isoimage in ${_isoimages[@]}
   do
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
-  done
-
-  for isoimage in ${_isovirtualprinterimages[@]}
-  do
-    install -Dm 644 "vmware-virtual-printer/VirtualPrinter-$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/VirtualPrinter-$isoimage.iso"
   done
 
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/doc/vmware-workstation/EULA"
@@ -303,9 +287,7 @@ fi
     "$pkgdir/usr/lib/vmware/lib"/libvmware-gksu.so/gksu-run-helper \
     "$pkgdir/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin} \
     "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version"/{vmware-installer,vmis-launcher} \
-    "$pkgdir/usr/lib/cups/filter"/* \
-    "$pkgdir/usr/lib/vmware-vix/setup"/* \
-    "$pkgdir/etc/thnuclnt/.thnumod"
+    "$pkgdir/usr/lib/vmware-vix/setup"/*
 
   chmod +s \
     "$pkgdir/usr/bin"/vmware-authd \
