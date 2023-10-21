@@ -1,4 +1,4 @@
-From 31d126e465d38a247ff9aef5851c93cee2753a77 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH] ZEN: Add sysctl and CONFIG to disallow unprivileged
@@ -14,7 +14,7 @@ Our default behavior continues to match the vanilla kernel.
  5 files changed, 53 insertions(+)
 
 diff --git a/include/linux/user_namespace.h b/include/linux/user_namespace.h
-index 45f09bec02c485..87b20e2ee27445 100644
+index 45f09bec02c4..87b20e2ee274 100644
 --- a/include/linux/user_namespace.h
 +++ b/include/linux/user_namespace.h
 @@ -148,6 +148,8 @@ static inline void set_userns_rlimit_max(struct user_namespace *ns,
@@ -36,10 +36,10 @@ index 45f09bec02c485..87b20e2ee27445 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 0c214af99085da..d9ae969eae321c 100644
+index de255842f5d0..4e028c5c976b 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1251,6 +1251,22 @@ config USER_NS
+@@ -1248,6 +1248,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -63,7 +63,7 @@ index 0c214af99085da..d9ae969eae321c 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 844dfdc8c639c3..31d41db3f84d74 100644
+index 41950ff90aa3..af4961b85f91 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -98,6 +98,10 @@
@@ -77,7 +77,7 @@ index 844dfdc8c639c3..31d41db3f84d74 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -2011,6 +2015,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -2014,6 +2018,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index 844dfdc8c639c3..31d41db3f84d74 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -3171,6 +3179,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -3173,6 +3181,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,7 +102,7 @@ index 844dfdc8c639c3..31d41db3f84d74 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index c6d9dec11b749d..9a4514ad481b21 100644
+index c6d9dec11b74..9a4514ad481b 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -81,6 +81,9 @@
@@ -132,7 +132,7 @@ index c6d9dec11b749d..9a4514ad481b21 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 54211dbd516c57..16ca0c1516298d 100644
+index 54211dbd516c..16ca0c151629 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -22,6 +22,13 @@

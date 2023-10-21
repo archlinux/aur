@@ -2,35 +2,48 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-bnx2x-2.5g
-pkgver=6.1.54
+pkgver=6.1.59
 pkgrel=1
 pkgdesc='LTS Linux'
-url="https://www.kernel.org/"
+url='https://www.kernel.org'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
+  bc
+  cpio
+  gettext
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+
 )
 options=('!strip')
 _srcname=linux-$pkgver
+_srctag=v$pkgver
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"
-  config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-linux-doc-sphinx-7.2.patch
+  config  # the main kernel config file
 )
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('a3181e46d407cd6ab15f412402e8220684ff9659b0262b7a3de7384405ce4e27'
+sha256sums=('627f7724c675036639290fb5c39e3fdeb3d566b80b192c45f4a808ab54c8c0a0'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            '5f8aec65b81e90889de09b6bfdd5badd5ba1208e09e8e50b54694956638abd18'
-            '1bd8388fcb6ed4eec46450c65eb7a0889a8c541f164a39e3064633981a7a4a3d'
-            'd7fcf11728c18cb2e9ffadc2b9ca8d99c7ffbcbd6b55f578753b340e900fccd6')
+            '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
+            '94fc6548630aa2b265d77868431fbb4196bc3835009eb6c256fc570d32afd7ad')
+b2sums=('8b805f75f745e6fff9d7628fb1702475ad4c94010f764d733e1c1b4d860f6e593a79ccb8aa3a8c6c0de2ffdc2c192aaa661966549a7383ceb026a59e0d949e49'
+        'SKIP'
+        '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
+        '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
+        '7c4c175f44e3e151f6fba8649c17e1031e513a9112d4877cb1163e20b48fde2e50979a3c053ea3f8bb9e2177ba34493b23b66719a5e5267163ae7f68e83f7ffb')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -40,7 +53,6 @@ prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
@@ -48,6 +60,7 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -69,15 +82,26 @@ build() {
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules with 2.5G patch for bnx2x module"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(wireguard-lts)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    wireguard-lts
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -178,7 +202,10 @@ _package-headers() {
 }
 
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
