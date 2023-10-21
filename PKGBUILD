@@ -6,11 +6,9 @@ arch=('x86_64' 'arm64')
 url="https://github.com/NordSecurity/nordvpn-linux"
 license=('GPL3')
 makedepends=('git' 'go' 'rust' 'mage' 'docker')
-depends=('iptables' 'iproute2')
+depends=('iptables' 'iproute2' 'wireguard-tools')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn' 'nordvpn-bin' 'nordvpn-cli-bin')
-# source=("${pkgname}::git+https://github.com/NordSecurity/nordvpn-linux.git")
-# sha256sums=('SKIP')
 install=nordvpn-git.install
 
 pkgver() {
