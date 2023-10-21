@@ -32,8 +32,6 @@ depends=(
   polkit
   seatd
   systemd-libs
-  vulkan-icd-loader
-  vulkan-validation-layers
   wayland
   wayland-protocols
   xcb-proto
