@@ -8,8 +8,8 @@ pkgdesc="A fork of SierraBreezeEnhanced with integrated corner rounding effect C
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/a-parhom/RoundedSBE"
 license=('GPL3')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'kglobalaccel' 'kde-dev-utils' 'knotifications' 'kinit' 'kwin' 'qt5-declarative')
-depends=('kcoreaddons' 'libxcb' 'kwindowsystem' 'kdecoration' 'kiconthemes' 'kwin')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kglobalaccel5' 'kde-dev-utils' 'knotifications5' 'kinit' 'kwin' 'qt5-declarative')
+depends=('kcoreaddons5' 'libxcb' 'kwindowsystem5' 'kdecoration5' 'kiconthemes5' 'kwin')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
