@@ -10,7 +10,7 @@ license=("GPL2")
 source=("git+https://gitlab.com/bersace/isight-firmware-tools")
 sha256sums=("SKIP")
 depends=("libusb-compat")
-makedepends=("intltool" "gcc")
+makedepends=("intltool" "gcc" "git")
 
 build() {
 	cd "${srcdir}"/"$pkgname"

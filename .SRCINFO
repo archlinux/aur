@@ -7,6 +7,7 @@ pkgbase = isight-firmware-tools
 	license = GPL2
 	makedepends = intltool
 	makedepends = gcc
+	makedepends = git
 	depends = libusb-compat
 	source = git+https://gitlab.com/bersace/isight-firmware-tools
 	sha256sums = SKIP
