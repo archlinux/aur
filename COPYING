@@ -1,0 +1,17 @@
+The qBittorrent source code is licensed under the GNU General Public License, version 2 or (at your option) any later version (GPLv2+).
+However, the binary distribution is licensed under GNU General Public License, version 3 or (at your option) any later version (GPLv3+),
+because it contains GPLv3+ assets (eg images). In both cases, the following special exception is added:
+
+In addition, as a special exception, the copyright holders give permission to
+link this program with the OpenSSL project's "OpenSSL" library (or with
+modified versions of it that use the same license as the "OpenSSL" library),
+and distribute the linked executables. You must obey the GNU General Public
+License in all respects for all of the code used other than "OpenSSL".  If you
+modify file(s), you may extend this exception to your version of the file(s),
+but you are not obligated to do so. If you do not wish to do so, delete this
+exception statement from your version.
+
+See also the AUTHORS file
+
+See COPYING.GPLv2 file for the GPLv2
+See COPYING.GPLv3 file for the GPLv3
