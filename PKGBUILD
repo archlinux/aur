@@ -3,10 +3,11 @@
 # Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq-beta
 pkgver=1.9.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
 url='https://chamsyslighting.com/products/magicq'
+license=(custom)
 groups=()
 conflicts=(magicq)
 options=('!strip') # Binaries are already stripped.
@@ -15,12 +16,6 @@ _pkgver="${pkgver//[^[:alnum:]]/_}"
 source=("http://files.magicq.co.uk/v${_pkgver}/magicq_ubuntu_v${_pkgver}.deb")
 sha256sums=('cfe5ada2f81d0e96b86f2f5985f32c344819ce124856ccdf054c16216dab763e')
 
-# I've been unable to find any formal license for Magicq. The website only
-# states that it's available free of charge. There don't seem to be any
-# restrictions on use, except that some features are disabled unless Chamsys
-# hardware is detected.
-license=(unknown)
-
 package() {
     depends=(alsa-lib ffmpeg glu gst-plugins-base gst-plugins-good
     libarchive libcups libusb libx11 libxcb qt5-multimedia qt5-webkit zlib)
@@ -28,6 +23,9 @@ package() {
     cd "$pkgdir"
 
     bsdtar xf "$srcdir/data.tar.xz"
+
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s /opt/magicq/License_Conditions.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # We use the system libraries instead of the bundled binaries.
     rm -rf opt/magicq/lib*.so*
