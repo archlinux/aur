@@ -45,7 +45,6 @@ build() {
         -DOQS_STRICT_WARNINGS=ON \
         -Wno-dev
     ninja -C build
-    # Docs fail to build with doxygen from [extra]
     ninja -C build gen_docs
 }
 
