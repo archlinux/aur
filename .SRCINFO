@@ -1,0 +1,19 @@
+pkgbase = python-lsbi
+	pkgdesc = Linear Simulation Based Inference
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/handley-lab/lsbi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pandas
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/l/lsbi/lsbi-0.3.0.tar.gz
+	sha256sums = 1195f173db468bb91af1b92bd324e22f9138a984ff3ffd3a5fbb073486c5ec0c
+
+pkgname = python-lsbi
