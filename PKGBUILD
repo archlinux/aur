@@ -1,13 +1,13 @@
 # Maintainer: bozidarsk <aaaa@gmail.com>
 name='installaur'
 pkgname="$name-git"
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Aur helper/installer."
 arch=('x86_64')
 url="https://github.com/bozidarsk/$name"
 license=('unknown')
-depends=('mono' 'zsh')
+depends=('mono')
 makedepends=('git' 'mono')
 
 # to update version
