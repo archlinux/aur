@@ -1,7 +1,7 @@
 pkgbase = ktailctl
 	pkgdesc = GUI to monitor and manage Tailscale
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://github.com/f-koehler/KTailctl
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,9 @@ pkgbase = ktailctl
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = tailscale
-	source = git+https://github.com/f-koehler/KTailctl.git#tag=v0.10.0
+	source = git+https://github.com/f-koehler/KTailctl.git#tag=v0.11.0
+	source = 0001-force-system-kirigami-addons.patch
 	sha256sums = SKIP
+	sha256sums = b56dca56831ce5263d9177778fd2f2efb52d44c40ce78ef91c6975d7678374ac
 
 pkgname = ktailctl
