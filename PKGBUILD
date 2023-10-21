@@ -12,6 +12,7 @@ makedepends=()
 provides=('parpar')
 source=("https://github.com/animetosho/ParPar/releases/download/v${pkgver}/parpar-v${pkgver}-linux-static-amd64.xz")
 sha256sums=('6afc5a45b861edaa1d82ee1eaed872a7ba74c363fea9d6eb735de2982a5598cb')
+options=('!strip')
 
 package() {
 	install -Dm755 "${srcdir}/parpar-v${pkgver}-linux-static-amd64" "${pkgdir}/usr/bin/parpar"

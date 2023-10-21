@@ -6,6 +6,7 @@ pkgbase = parpar-bin
 	arch = x86_64
 	license = Public Domain
 	provides = parpar
+	options = !strip
 	source = https://github.com/animetosho/ParPar/releases/download/v0.4.2/parpar-v0.4.2-linux-static-amd64.xz
 	sha256sums = 6afc5a45b861edaa1d82ee1eaed872a7ba74c363fea9d6eb735de2982a5598cb
 
