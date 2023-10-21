@@ -2,11 +2,12 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec-bin
 pkgver=19.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
 url="https://github.com/jindrapetrik/jpexs-decompiler/releases"
 license=('GPL3')
+provides=('ffdec')
 depends=('java-runtime>=8')
 conflicts=('ffdec')
 source=("${pkgname%-bin}_${pkgver}.zip::https://github.com/jindrapetrik/jpexs-decompiler/releases/download/version${pkgver}/${pkgname%-bin}_${pkgver}.zip"
