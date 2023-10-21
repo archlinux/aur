@@ -1,24 +1,16 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-# NOTE:
-# In order to build the package, you need to manually download the TensorRT
-# file from NVIDIA's website (registration required). Place the downloaded
-# file in the PKGBUILD directory and run makepkg.
-# Download website:
-# https://developer.nvidia.com/tensorrt/
-
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=8.6.1.6
-_cudaver=12.0
-_cudnnver=8.8
+pkgver=9.1.0.4
+_cudaver=12.2
+_cudnnver=8.9.2.26
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_graphsurgeon_ver=0.4.6
-_uffver=0.6.9
-_onnx_graphsurgeon_ver=0.3.26
-_polygraphy_ver=0.45.0
-_tensorflow_quantization_ver=1.0.0
+_python_build=post12.dev4
+_onnx_graphsurgeon_ver=0.4.0
+_polygraphy_ver=0.49.0
+_tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
@@ -26,7 +18,7 @@ url='https://developer.nvidia.com/tensorrt/'
 license=('custom: NVIDIA TensorRT SLA' 'Apache')
 makedepends=('git' 'cmake' 'cuda' 'cudnn' 'python' 'python-build' 'python-installer' 'python-onnx'
              'python-setuptools' 'python-wheel')
-source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
+source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/${pkgver%.*}/tars/tensorrt-${pkgver}.linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
         "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
@@ -39,7 +31,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('0f8157a5fc5329943b338b893591373350afa90ca81239cdadd7580cd1eba254'
+sha256sums=('e70337ee283c027ae2a080960f5fbafe4120e02224f5fdf8c160fc57cdc99617'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,7 +41,7 @@ sha256sums=('0f8157a5fc5329943b338b893591373350afa90ca81239cdadd7580cd1eba254'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '78b3722003b6a62f64ef9b5d5434b69243da82d27f72940a0ea2b2b8238c91b4'
+            'bb17f9b11fe3d95fe0dfcf0ca2f5bd9fdb80e31e0ae1153c88162f2c54830f2b'
             '5f68360b4ac4758d207e30fec89c5e829d45bb4c27cae99e3fa6d2b170789370')
 
 prepare() {
@@ -77,9 +69,6 @@ prepare() {
     mkdir -p build/third_party.protobuf/src
     cp -af "protobuf-cpp-${_protobuf_ver}.tar.gz" build/third_party.protobuf/src
 
-    # fix python bindings build
-    git -C TensorRT cherry-pick --no-commit 25e2139d5ee47e2d34b2610d05d9e047b6840fa6
-    
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
 }
@@ -93,6 +82,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DTRT_LIB_DIR="${srcdir}/TensorRT-${pkgver}/lib" \
+        -DCUDNN_ROOT_DIR='/usr' \
         -DGPU_ARCHS='50 52 53 60 61 62 70 72 75 80 86 87 89 90' \
         -DPROTOBUF_VERSION="$_protobuf_ver" \
         -DCUDA_VERSION="$_cudaver" \
@@ -129,10 +119,10 @@ package_tensorrt() {
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
-    install -D -m644 "TensorRT-${pkgver}/lib/libnvinfer_builder_resource.so.${pkgver%.*}" -t "${pkgdir}/usr/lib"
-    install -D -m644 build/libnv{caffeparser,infer_plugin}_static.a -t "${pkgdir}/usr/lib"
+    install -D -m644 build/libnvinfer_plugin_static.a -t "${pkgdir}/usr/lib"
+    install -D -m644 "TensorRT-${pkgver}/lib"/libnvinfer_{builder_resource.so."${pkgver%.*}",vc_plugin_static.a} -t "${pkgdir}/usr/lib"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/include" "${pkgdir}/usr"
-    cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/libnv{infer{,_dispatch,_lean,_vc_plugin},parsers}{.so*,_static.a} "${pkgdir}/usr/lib"
+    cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/libnvinfer{,_dispatch,_lean}{.so*,_static.a} "${pkgdir}/usr/lib"
     ln -s "libnvinfer_builder_resource.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so.${pkgver%%.*}"
     ln -s "libnvinfer_builder_resource.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so"
     
@@ -147,22 +137,19 @@ package_python-tensorrt() {
     depends=('python' 'python-numpy' 'tensorrt')
     optdepends=('python-onnx: for onnx_graphsurgeon python module'
                 'python-onnxruntime: for onnx_graphsurgeon and polygraphy python modules'
-                'python-protobuf: for polygraphy. tensorflow-quantization and uff python modules'
-                'python-tensorflow-cuda: for graphsurgeon, polygraphy and uff python modules and convert-to-uff tool'
+                'python-protobuf: for polygraphy and tensorflow-quantization python modules'
+                'python-tensorflow-cuda: for polygraphy python module'
                 'python-tf2onnx: for tensorflow-quantization python module')
-    provides=("python-graphsurgeon=${_graphsurgeon_ver}"
-              "python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
+    provides=("python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
               "python-polygraphy=${_polygraphy_ver}"
-              "python-tensorflow-quantization=${_tensorflow_quantization_ver}"
-              "python-uff=${_uffver}")
+              "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
     local _pyver
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    python -m installer --destdir="$pkgdir" "TensorRT-${pkgver}/python/tensorrt-${pkgver%.*}-cp${_pyver/./}-none-linux_${CARCH}.whl"
-
+    python -m installer --destdir="$pkgdir" "TensorRT-${pkgver}/python/tensorrt-${pkgver%.*}.${_python_build}-cp${_pyver/./}-none-linux_${CARCH}.whl"
+    
     local _dir
-    for _dir in "TensorRT-${pkgver}"/{graphsurgeon,uff} \
-                 TensorRT/tools/{onnx-graphsurgeon,Polygraphy,tensorflow-quantization}/dist
+    for _dir in TensorRT/tools/{onnx-graphsurgeon,Polygraphy,tensorflow-quantization}/dist
     do
         cd "${srcdir}/${_dir}"
         python -m installer --destdir="$pkgdir" *.whl
@@ -173,7 +160,5 @@ package_python-tensorrt() {
     install -D -m644 "${srcdir}/TensorRT/NOTICE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 "${srcdir}/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-TENSORRT-SLA"
     install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
-    ln -s "${_sitepkgs}/tensorrt-${pkgver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python-tensorrt"
-    ln -s "${_sitepkgs}/graphsurgeon-${_graphsurgeon_ver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-graphsurgeon"
-    ln -s "${_sitepkgs}/uff-${_uffver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-uff"
+    ln -s "${_sitepkgs}/tensorrt-${pkgver%.*}.${_python_build}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python-tensorrt"
 }

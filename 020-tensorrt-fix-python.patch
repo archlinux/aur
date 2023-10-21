@@ -41,7 +41,7 @@
 +         -DCMAKE_SKIP_RPATH=YES \
 +         -G 'Unix Makefiles'
 +cmake --build .
-
+ 
  # Generate wheel
 -TRT_MAJOR=$(awk '/^\#define NV_TENSORRT_MAJOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
 -TRT_MINOR=$(awk '/^\#define NV_TENSORRT_MINOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
@@ -53,9 +53,9 @@
 +TRT_BUILD=$(awk '/^#define NV_TENSORRT_BUILD/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
  TRT_VERSION=${TRT_MAJOR}.${TRT_MINOR}.${TRT_PATCH}.${TRT_BUILD}
  TRT_MAJMINPATCH=${TRT_MAJOR}.${TRT_MINOR}.${TRT_PATCH}
-
+ 
 @@ -51,10 +53,10 @@ echo "Generating python ${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION} bindings
-
+ 
  expand_vars_cp () {
      test -f ${1} || (echo "ERROR: File: ${1} does not exist!" && exit 1); \
 -    sed -e "s|\#\#TENSORRT_VERSION\#\#|${TRT_VERSION}|g" \
@@ -68,12 +68,12 @@
 +        -e "s|##TENSORRT_MODULE##|${TENSORRT_MODULE}|g" \
          ${1} > ${2}
  }
-
-@@ -66,6 +68,6 @@ cp tensorrt/tensorrt.so bindings_wheel/tensorrt/tensorrt.so
-
+ 
+@@ -66,6 +68,6 @@ popd
+ cp tensorrt/tensorrt.so bindings_wheel/tensorrt/tensorrt.so
+ 
  pushd ${WHEEL_OUTPUT_DIR}/bindings_wheel
-
 -python3 setup.py -q bdist_wheel --python-tag=cp${PYTHON_MAJOR_VERSION}${PYTHON_MINOR_VERSION} --plat-name=linux_${TARGET}
 +python -m build --wheel --no-isolation
-
+ 
  popd
