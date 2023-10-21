@@ -1,4 +1,4 @@
-pkgname=XrayR
+pkgname=xrayr
 pkgver=latest
 pkgrel=1
 pkgdesc="A Xray backend framework that can easily support many panels"
