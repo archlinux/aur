@@ -1,0 +1,12 @@
+diff --unified --recursive --text skdet-1.0.orig/Makefile skdet-1.0/Makefile
+--- skdet-1.0.orig/Makefile	2023-10-21 17:50:15.305851560 +0200
++++ skdet-1.0/Makefile	2023-10-21 17:50:29.055858022 +0200
+@@ -14,7 +14,7 @@
+ 	$(CC) $(CFLAGS) -c $(SRC)/skdet.c -o skdet.o
+ 	$(CC) $(CFLAGS) -c $(SRC)/usage.c -o usage.o
+ 	$(CC) $(CFLAGS) -c $(SRC)/version.c -o version.o
+-	$(LD) $(CFLAGS) det-rootkit.o pid-info.o scanner.o skdet.o usage.o version.o -o $(BINARY)
++	$(LD) $(CFLAGS) $(LDFLAGS) det-rootkit.o pid-info.o scanner.o skdet.o usage.o version.o -o $(BINARY)
+ 	@rm -rf det-rootkit.o pid-info.o scanner.o skdet.o usage.o version.o
+ 	@$(STRIP) $(BINARY)
+     

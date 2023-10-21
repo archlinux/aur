@@ -1,15 +1,17 @@
 pkgbase = skdet
-	pkgdesc = Simple rootkit detector that can be used by rkhunter.
+	pkgdesc = Simple rootkit detector that can be used by rkhunter
 	pkgver = 1.0
-	pkgrel = 1
-	url = http://dvgevers.home.xs4all.nl/
-	arch = i686
+	pkgrel = 2
+	url = https://dvgevers.home.xs4all.nl
 	arch = x86_64
+	arch = i686
 	license = GPL
-	source = http://dvgevers.home.xs4all.nl/skdet/skdet-1.0.tar.bz2
-	source = http://dvgevers.home.xs4all.nl/skdet/skdet-fix-includes.diff
+	depends = glibc
+	source = https://dvgevers.home.xs4all.nl/skdet/skdet-1.0.tar.bz2
+	source = https://dvgevers.home.xs4all.nl/skdet/skdet-fix-includes.diff
+	source = ldflags.patch
 	sha256sums = a5842d3e56c8586c52879700453f740744c374a1f2c648eef337cae7e244e7b6
 	sha256sums = 1ee83c1122dfe74c8aec7800fe0026affda6ea37c7643491fd8df62f08ed2fbc
+	sha256sums = 51ae92ef28fcc7603d00769b412f74bf7873c0d196be03b14bbed0b8c11ec331
 
 pkgname = skdet
-
