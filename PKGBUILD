@@ -6,12 +6,12 @@
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server'})
 pkgver=2.1.20
-pkgrel=4
+pkgrel=5
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='https://drawpile.net/'
 license=('GPL3')
-makedepends=('cmake' 'extra-cmake-modules' 'karchive' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
+makedepends=('cmake' 'extra-cmake-modules' 'karchive5' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
 source=(
     "https://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
 sha256sums=(
@@ -40,12 +40,12 @@ package_drawpile() {
 
 package_drawpile-client() {
 	pkgdesc+=' (client)'
-	depends=('desktop-file-utils' 'karchive' 'qt5-multimedia' 'qt5-x11extras')
-	optdepends=('kdnssd: automatic service discovery (such as printers)'
+	depends=('desktop-file-utils' 'karchive5' 'qt5-multimedia' 'qt5-x11extras')
+	optdepends=('kdnssd5: automatic service discovery (such as printers)'
 		'giflib: GIF support'
 		'miniupnpc: UPnP support'
 		'qt5-color-widgets: alternative color wheel'
-		'qtkeychain: Password storage')
+		'qtkeychain-qt5: Password storage')
 	install="${pkgbase}.install"
 	cd "${pkgbase}-${pkgver}"
 
@@ -55,7 +55,7 @@ package_drawpile-client() {
 
 package_drawpile-server() {
 	pkgdesc+=' (server)'
-	depends=('karchive')
+	depends=('karchive5')
 	optdepends=('libmicrohttpd: web-admin feature'
 		'libsystemd: systemd and logging support')
 	cd "${pkgbase}-${pkgver}"
