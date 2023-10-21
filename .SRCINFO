@@ -1,0 +1,14 @@
+pkgbase = penpot-desktop-bin
+	pkgdesc = Penpot Desktop delivers a desktop-like experience for Penpot users with the additional of integrating tabs to conveniently traverse back and forth between projects.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://sudovanilla.com/code/Korbs/Penpot-Desktop/
+	arch = x86_64
+	license = MIT
+	depends = re2
+	conflicts = penpot-desktop
+	noextract = Penpot-Desktop-0.2.4.pacman
+	source = Penpot-Desktop-0.2.4.pacman::https://sudovanilla.com/distribute/applications/penpot-desktop/latest/Penpot-Desktop.pacman
+	md5sums = SKIP
+
+pkgname = penpot-desktop-bin
