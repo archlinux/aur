@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=23.70
+pkgver=23.72
 pkgrel=1
 epoch=2
 pkgdesc='Image editing and collection management program'
@@ -17,7 +17,7 @@ optdepends=('darktable: organize and develop raw images'
             'rawtherapee: for raw image processing'
 	        'vlc: for viewing video')
 source=("https://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('9eea1a0a81d5860d4f8444f78880b93aa082594dfd2e99a137865cad6174daf4')
+sha256sums=('838d0800294dad263001403a6823f78f7f5ab389acd6ac71ea4beb8e998ed843')
 
 build() {
   make -C $pkgname PREFIX=/usr
