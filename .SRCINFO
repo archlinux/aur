@@ -1,7 +1,7 @@
 pkgbase = kde-thumbnailer-apk-libarchive
 	pkgdesc = Preview image generator plugin for APK files (libarchive branch)
 	pkgver = 1.1+libarchive
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/z3ntu/kde-thumbnailer-apk
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kde-thumbnailer-apk-libarchive
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = libarchive
-	depends = kio
+	depends = kio5
 	depends = libarchive
 	provides = kde-thumbnailer-apk=1.1
 	conflicts = kde-thumbnailer-apk

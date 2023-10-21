@@ -3,12 +3,12 @@
 
 pkgname=kde-thumbnailer-apk-libarchive
 pkgver=1.1+libarchive
-pkgrel=2
+pkgrel=3
 pkgdesc="Preview image generator plugin for APK files (libarchive branch)"
 arch=('i686' 'x86_64')
 url="https://github.com/z3ntu/kde-thumbnailer-apk"
 license=('GPL')
-depends=('kio' 'libarchive')
+depends=('kio5' 'libarchive')
 conflicts=('kde-thumbnailer-apk')
 provides=('kde-thumbnailer-apk=1.1')
 makedepends=('cmake' 'extra-cmake-modules' 'libarchive')
