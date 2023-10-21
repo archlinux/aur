@@ -5,7 +5,7 @@
 
 _pkgname=ripme
 pkgname="${_pkgname}-git"
-pkgver=2.1.5.r1.g585097f3
+pkgver=2.1.6.r4.g3fcad4f8
 pkgrel=1
 pkgdesc="Downloads albums in bulk"
 arch=('any')
@@ -25,7 +25,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  gradle clean build -x test
+  CURRENT_JAVA_VERSION=$(archlinux-java get | grep -P "\d+" -o)
+  rver=$(git describe --always --tags --exclude="latest-main" | sed 's/-g/-/')
+  gradle clean build -PjavacRelease=${CURRENT_JAVA_VERSION} -PcustomVersion=${rver} -x test
   cat <<EOF >ripme.sh
 #!/bin/sh
 exec java -jar /usr/share/java/ripme.jar "\$@"

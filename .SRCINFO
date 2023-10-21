@@ -1,6 +1,6 @@
 pkgbase = ripme-git
 	pkgdesc = Downloads albums in bulk
-	pkgver = 2.1.5.r1.g585097f3
+	pkgver = 2.1.6.r4.g3fcad4f8
 	pkgrel = 1
 	url = https://github.com/ripmeapp2/ripme
 	arch = any
