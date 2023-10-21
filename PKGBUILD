@@ -4,9 +4,9 @@
 _pkgname=syngestures
 pkgname=$_pkgname-git
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol (latest commit)"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/mqudsi/syngesture"
 license=('MIT')
 makedepends=('cargo' 'git')
@@ -31,15 +31,16 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd $_pkgname
-
+  export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-
   cargo build --frozen --release --all-features
 }
 
