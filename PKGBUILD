@@ -5,7 +5,7 @@
 
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=jaguar
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=2
 pkgdesc="Tool to develop Toit programs for the ESP32"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/toitlang/jaguar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d57519423c6fb540dfefea21ad9e7e5858dec60aff85500f9dbbd25440d9473f')
+sha256sums=('8cd0d9e13e669c54f335317db6da6eb192cc7879a14ab132ed52ddcd1529a587')
 
 build() {
 	cd "$pkgname-$pkgver"
