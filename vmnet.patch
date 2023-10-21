@@ -37,6 +37,16 @@
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
 --- a/vmnet/bridge.c
 +++ b/vmnet/bridge.c
+@@ -26,6 +26,9 @@
+ #include <linux/slab.h>
+ #include <linux/poll.h>
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 10)
++#include <net/gso.h>
++#endif
+ #include <linux/netdevice.h>
+ #include <linux/etherdevice.h>
+ #include <linux/mm.h>
 @@ -65,7 +65,7 @@
  #endif
  
@@ -95,6 +105,50 @@
     }
  #  endif
  
+--- a/vmnet/driver.c
++++ b/vmnet/driver.c
+@@ -279,7 +279,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
+ /*
+  *----------------------------------------------------------------------
+  *
+- * init_module --
++ * LinuxDriverInit --
+  *
+  *      linux module entry point. Called by /sbin/insmod command.
+  *      Initializes module and Registers this driver for a
+@@ -296,7 +296,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
+  */
+ 
+ int
+-init_module(void)
++LinuxDriverInit(void)
+ {
+    int retval;
+ 
+@@ -358,7 +358,7 @@ init_module(void)
+ /*
+  *----------------------------------------------------------------------
+  *
+- * cleanup_module --
++ * LinuxDriverExit --
+  *
+  *      Called by /sbin/rmmod.  Unregisters this driver for a
+  *      vnet major #, and deinitializes the modules.  The 64-bit
+@@ -375,7 +375,7 @@ init_module(void)
+  */
+ 
+ void
+-cleanup_module(void)
++LinuxDriverExit(void)
+ {
+    unregister_chrdev(VNET_MAJOR_NUMBER, "vmnet");
+    VNetProtoUnregister();
+@@ -1705,3 +1705,5 @@ MODULE_LICENSE("GPL v2");
+  * by default (i.e., neither mkinitrd nor modprobe will accept it).
+  */
+ MODULE_INFO(supported, "external");
++module_init(LinuxDriverInit);
++module_exit(LinuxDriverExit);
 --- a/vmnet/netif.c
 +++ b/vmnet/netif.c
 @@ -219,7 +219,11 @@
@@ -474,82 +528,3 @@ Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~
     if (count < n) {
        n = count;
     }
-From 0ca979d4bd06144204d720bb82f0a1e29024f9fa Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Wed, 18 Jan 2023 00:19:52 +0100
-Subject: [PATCH] vmnet: use explicit module_init() and module_exit() (#187)
-
-While vmmon module already uses explicit module_init() and module_exit()
-for its init and cleanup function, vmnet relies on traditional magic names
-init_module() and cleanup_module(). Apparently this has an unfortunate side
-effect that the two functions are not identified as indirect call targets
-by objdump and they get "sealed" when the module is built against and
-loaded into an IBT enabled kernel.
-
-Starting with 6.3-rc1, objtool is going to warn about this issue,
-indicating that the legacy module initialization is deprecated and
-module_init() and module_exit() macros should be used instead so do that
-for vmnet as well.
----
- vmnet-only/driver.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/vmnet-only/driver.c b/vmnet-only/driver.c
-index 197a213..b22cbfb 100644
---- a/vmnet-only/driver.c
-+++ b/vmnet-only/driver.c
-@@ -279,7 +279,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
- /*
-  *----------------------------------------------------------------------
-  *
-- * init_module --
-+ * vmnet_init_module --
-  *
-  *      linux module entry point. Called by /sbin/insmod command.
-  *      Initializes module and Registers this driver for a
-@@ -296,7 +296,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
-  */
- 
- int
--init_module(void)
-+vmnet_init_module(void)
- {
-    int retval;
- 
-@@ -358,7 +358,7 @@ init_module(void)
- /*
-  *----------------------------------------------------------------------
-  *
-- * cleanup_module --
-+ * vmnet_cleanup_module --
-  *
-  *      Called by /sbin/rmmod.  Unregisters this driver for a
-  *      vnet major #, and deinitializes the modules.  The 64-bit
-@@ -375,7 +375,7 @@ init_module(void)
-  */
- 
- void
--cleanup_module(void)
-+vmnet_cleanup_module(void)
- {
-    unregister_chrdev(VNET_MAJOR_NUMBER, "vmnet");
-    VNetProtoUnregister();
-@@ -1705,3 +1705,5 @@ MODULE_LICENSE("GPL v2");
-  * by default (i.e., neither mkinitrd nor modprobe will accept it).
-  */
- MODULE_INFO(supported, "external");
-+module_init(vmnet_init_module);
-+module_exit(vmnet_cleanup_module);
-Patch inspired from https://github.com/mkubecek/vmware-host-modules/commit/b75cd616cca0a4c9ff22124c4c91d218e64e6205.patch
---- a/vmnet/bridge.c
-+++ b/vmnet/bridge.c
-@@ -43,6 +43,9 @@
- #include <linux/tcp.h>
- #include <net/tcp.h>
- #include <net/ipv6.h>
-+#if !defined(SKB_GSO_CB)
-+#include <net/gso.h>
-+#endif
- 
- #ifdef CONFIG_NET_RADIO
- #   include <linux/wireless.h>
