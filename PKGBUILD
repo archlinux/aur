@@ -1,7 +1,7 @@
 pkgname=7plus
 _pkgname=7Plus
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Unofficial 7Plus desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/7plus/application"
@@ -13,9 +13,9 @@ source=("https://gitlab.com/7plus/application/-/archive/$pkgver-$pkgrel/applicat
 sha256sums=('SKIP')
 
 package() {
-        for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $_pkgname.sh
+    chmod +x $pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
