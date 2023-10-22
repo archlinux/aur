@@ -1,6 +1,6 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio-git"
-pkgver=0.3.2.r4.g26ccc77
+pkgver=0.3.3.r0.ga67a040
 pkgver() {
   cd "pipewire-screenaudio"
   git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
