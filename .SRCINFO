@@ -1,6 +1,6 @@
 pkgbase = python-trezor
 	pkgdesc = Python 3 library for communicating with the TREZOR Bitcoin hardware wallet
-	pkgver = 0.13.7
+	pkgver = 0.13.8
 	pkgrel = 1
 	url = https://github.com/trezor/trezor-firmware/tree/master/python
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-trezor
 	provides = trezorctl
 	conflicts = trezorctl
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/t/trezor/trezor-0.13.7.tar.gz
-	sha256sums = 76875e5886017dc94f51bbb411f927f103bd9e3ecbf0754d5e44a353898149e0
+	source = https://files.pythonhosted.org/packages/source/t/trezor/trezor-0.13.8.tar.gz
+	sha256sums = 634d4eddf35603257c321618d8548c6a35b27384657b65e3b0bdbad635a57cff
 
 pkgname = python-trezor
