@@ -1,0 +1,14 @@
+pkgbase = python-opcua-asyncio
+	pkgdesc = An OPC-UA client and server library for Python, also known as asyncua
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/FreeOpcUa/opcua-asyncio
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = python-poetry
+	depends = python
+	source = https://github.com/FreeOpcUa/opcua-asyncio/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-opcua-asyncio
