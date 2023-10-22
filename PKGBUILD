@@ -1,7 +1,7 @@
 # Maintainer: asamk <asamk@gmx.de>
 
 pkgname=signal-cli
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('java-environment>=17' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "${pkgname}.sh")
-sha512sums=('a9b62bbf43db23a515c8d88750646a5b51554ecdae77a8f3369166ce746884d057d85114dfb81e8e16e8d9a744fd35bdbac95250012754d2ce0b5dac436610e7'
+sha512sums=('2ae2f45ed82af3f44910e29e9733149a4a4c9ee64e623bb0d91169b31a503d75e52dd045ad83e443a77263746917320b3223492a06041bbde0dfac59a7deed50'
             'SKIP'
             'f58d7851c53eae1874692f032a489cb6fb459763a4195afaf93ddd4c65939e1e4e2bbf50438e04800aded466266c3a2a37fcc0f5168f61b8e711fcf03e8e8d12')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
@@ -24,6 +24,7 @@ build() {
 	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon installDist -Plibsignal_client_path="/usr/share/java/libsignal-client/libsignal-client.jar"
 
 	cd man
+	sed -i 's/\[source\]/[source,bash/g' signal-cli-dbus.5.adoc
 	make
 }
 
