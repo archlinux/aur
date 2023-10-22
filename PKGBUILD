@@ -90,7 +90,7 @@ sha256sums=('e09c5c523f45b8acfd58403514f9ad69047daa94600787bd7aee33d78080f9a9')
 case "${_sse3::1}" in
   't'|'y'|'1')
     _dl_type="SSE3"
-    _dl_url="$url/releases/download/M${_pkgver:?}"
+    _dl_url="https://github.com/Alex313031/Thorium-SSE3/releases/download/M${_pkgver:?}"
     _dl_filename="${_pkgname}_${_pkgver:?}_$_dl_type.deb"
     noextract+=("$_dl_filename")
     source+=("$_dl_url/$_dl_filename")
@@ -101,7 +101,7 @@ esac
 case "${_sse4::1}" in
   't'|'y'|'1')
     _dl_type="amd64"
-    _dl_url="$url/releases/download/M${_pkgver:?}"
+    _dl_url="https://github.com/Alex313031/Thorium/releases/download/M${_pkgver:?}"
     _dl_filename="${_pkgname}_${_pkgver:?}_$_dl_type.deb"
     noextract+=("$_dl_filename")
     source+=("$_dl_url/$_dl_filename")
