@@ -51,7 +51,7 @@ optdepends=(
 )
 
 if [ x"$_pkgname" != x"$pkgname" ] ; then
-  provides=(GPL3"$_pkgname")
+  provides=("$_pkgname")
   conflicts=("$_pkgname" "thorium-browser-bin")
 fi
 
