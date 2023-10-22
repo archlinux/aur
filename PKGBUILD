@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.1.51
+_pkgver_main=6.1.59
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.1.y'
-_flippy_commit='be9cb42422b744e71916449b0e108bc43aa37db6'
+_flippy_commit='e71978b8105e40e6f9db9aecf1c89546874ad150'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -29,23 +29,15 @@ source=(
   "${_srcname}.tar.gz::${url}/archive/${_flippy_commit}.tar.gz"
   'config'
   'linux.preset'
-  '0001-drivers-auxdisplay-openvfd-improve-dev-write-logic.patch'
 )
 sha256sums=(
-  'c47596d27ff4f76ac90c23c53d4d3dc90f2b4e1527eef0509fae5d0c4dc705eb'
-  'ad959579842cd93c679b2bca08fcc18e812d1f77dcfe940df13a4b329fddb31a'
+  '1c2fd2977c2764adf2cdb6f323b24f9b7ead4c007351f5f3ef47d6dc2f965e57'
+  'fec686b999bc6924248da94b205755031df799030e09c48e26ce34f243aeb211'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
-  'd4a47c25f5822fe05a473a9ccd8b749429adb23519a72b9043fe42530f990321'
 )
 
 prepare() {
   cd "${_srcname}"
-
-  echo "Patching kernel..."
-  local file_patch
-  for file_patch in "${source[@]:3}"; do 
-    patch -p1 < "../${file_patch}"
-  done
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion

@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-flippy
-	pkgver = 6.1.51
+	pkgver = 6.1.59
 	pkgrel = 1
 	url = https://github.com/unifreq/linux-6.1.y
 	arch = aarch64
@@ -9,14 +9,12 @@ pkgbase = linux-aarch64-flippy
 	makedepends = dtc
 	makedepends = uboot-tools
 	options = !strip
-	source = linux-6.1.y-be9cb42422b744e71916449b0e108bc43aa37db6.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/be9cb42422b744e71916449b0e108bc43aa37db6.tar.gz
+	source = linux-6.1.y-e71978b8105e40e6f9db9aecf1c89546874ad150.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/e71978b8105e40e6f9db9aecf1c89546874ad150.tar.gz
 	source = config
 	source = linux.preset
-	source = 0001-drivers-auxdisplay-openvfd-improve-dev-write-logic.patch
-	sha256sums = c47596d27ff4f76ac90c23c53d4d3dc90f2b4e1527eef0509fae5d0c4dc705eb
-	sha256sums = ad959579842cd93c679b2bca08fcc18e812d1f77dcfe940df13a4b329fddb31a
+	sha256sums = 1c2fd2977c2764adf2cdb6f323b24f9b7ead4c007351f5f3ef47d6dc2f965e57
+	sha256sums = fec686b999bc6924248da94b205755031df799030e09c48e26ce34f243aeb211
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
-	sha256sums = d4a47c25f5822fe05a473a9ccd8b749429adb23519a72b9043fe42530f990321
 
 pkgname = linux-aarch64-flippy
 	pkgdesc = The Linux Kernel and module - flippy's AArch64-focused fork aiming to increase usability
@@ -38,12 +36,12 @@ pkgname = linux-aarch64-flippy-headers
 
 pkgname = linux-aarch64-flippy-dtb-allwinner
 	pkgdesc = DTB files for Allwinner SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.51
+	provides = linux-aarch64-flippy-dtb=6.1.59
 
 pkgname = linux-aarch64-flippy-dtb-amlogic
 	pkgdesc = DTB files for Amlogic SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.51
+	provides = linux-aarch64-flippy-dtb=6.1.59
 
 pkgname = linux-aarch64-flippy-dtb-rockchip
 	pkgdesc = DTB files for Rockchip SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.51
+	provides = linux-aarch64-flippy-dtb=6.1.59
