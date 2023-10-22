@@ -1,0 +1,14 @@
+pkgbase = nodejs-stegcloak
+	pkgdesc = Hide secrets with invisible characters in plain text securely using passwords
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/KuroLabs/stegcloak
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = stegcloak-1.1.1.tgz
+	source = stegcloak-1.1.1.tgz::https://registry.npmjs.org/stegcloak/-/stegcloak-1.1.1.tgz
+	sha1sums = 7d05a6a0322d6e262e6227845860a138e1c39ef3
+
+pkgname = nodejs-stegcloak
