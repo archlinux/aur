@@ -6,61 +6,143 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.2.beta6.r0.g2f1a76dc24a
+pkgver=10.2.beta8.r0.g07a2afd65f
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
 url='http://www.sagemath.org'
 license=(GPL)
-depends=(palp brial cliquer maxima-fas gfan sympow nauty python-rpy2 python-fpylll python-cypari2
-  python-matplotlib python-scipy python-sympy python-networkx python-pplpy python-sphinx python-ipywidgets python-memory-allocator
-  gap lcalc lrcalc arb eclib gd python-cvxopt singular linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
-  sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
-  iml giac libhomfly libbraiding symmetrica threejs-sage python-primecountpy)
-optdepends=('cython: to compile cython code'
-  'python-pkgconfig: to compile cython code'
-  'jmol: alternative 3D plot engine'
-  'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
-  'sagemath-doc: HTML documentation'
-  'python-igraph: igraph backend for graph theory'
-  'bliss: bliss backend for graph theory'
-  'python-cvxpy: interface for several convex optimization backends'
-  'sage-numerical-backends-gurobi: Gurobi mixed integer linear programming backend'
-  'python-pyscipopt: SCIP mixed integer linear programming backend'
-  'coin-or-csdp: for computing Lovász theta-function of graphs'
-  'buckygen: for generating fullerene graphs'
-  'plantri: for generating some classes of graphs'
-  'benzene: for generating fusenes and benzenoids'
-  'ffmpeg: to export animations to video'
-  'imagemagick: to show animations'
-  'coxeter: Coxeter groups implementation'
-  'rubiks: Rubiks cube algorithms'
-  'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
-  'python-pynormaliz: Normaliz backend for polyhedral computations'
-  'latte-integrale: integral point count in polyhedra'
-  'shared_meataxe: faster matrix arithmetic over finite fields'
-  'blas-openblas: faster linear algebra'
-  'sirocco: for computing the fundamental group of the complement of a plane curve'
-  'dot2tex: for displaying some diagrams'
-  'cryptominisat5: SAT solver'
-  'python-pycosat: picosat SAT solver'
-  'python-pip: to install optional packages with sage -pip'
-  'sage-notebook-exporter: convert flask notebooks to Jupyter'
-  'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases'
-  'python-phitigra: graph editor'
-  'topcom: to compute triangulations of point configurations'
-  'python-database-cubic-hecke: cubic Hecke algebras'
-  'msolve: polynomial system solving via msolve')
-makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
+depends=(brial
+         cblas
+         cliquer
+         ecl
+         eclib
+         fflas-ffpack
+         flint
+         gap
+         gcc-libs
+         gd
+         gfan
+         giac
+         givaro
+         glibc
+         glpk
+         gmp
+         gmp-ecm
+         gsl
+         iml
+         ipython
+         lcalc
+         libbraiding
+         libhomfly
+         libmpc
+         linbox
+         lrcalc
+         m4ri
+         m4rie
+         maxima-fas
+         mpfi
+         mpfr
+         nauty
+         ntl
+         palp
+         pari
+         pari-galdata
+         pari-seadata-small
+         planarity
+         python
+         python-cvxopt
+         python-cysignals
+         python-cypari2
+         python-docutils
+         python-fpylll
+         python-ipywidgets
+         python-matplotlib
+         python-memory-allocator
+         python-mpmath
+         python-networkx
+         python-numpy
+         python-pexpect
+         python-pillow
+         python-pplpy
+         python-primecountpy
+         python-pygments
+         python-pyparsing
+         python-requests
+         python-rpy2
+         python-scipy
+         python-sphinx
+         python-sympy
+         python-traitlets
+         rankwidth
+         sage-data-combinatorial_designs
+         sage-data-conway_polynomials
+         sage-data-elliptic_curves
+         sage-data-graphs
+         sage-data-polytopes_db
+         singular
+         symmetrica
+         tachyon
+         threejs-sage)
+optdepends=('benzene: for generating fusenes and benzenoids'
+            'blas-openblas: faster linear algebra'
+            'bliss: bliss backend for graph theory'
+            'buckygen: for generating fullerene graphs'
+            'coin-or-csdp: for computing Lovász theta-function of graphs'
+            'coxeter: Coxeter groups implementation'
+            'cryptominisat: SAT solver'
+            'cython: to compile cython code'
+            'dot2tex: for displaying some diagrams'
+            'ffmpeg: to export animations to video'
+            'imagemagick: to show animations'
+            'jmol: alternative 3D plot engine'
+            'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
+            'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
+            'latte-integrale: integral point count in polyhedra'
+            'msolve: polynomial system solving via msolve'
+            'plantri: for generating some classes of graphs'
+            'python-cvxpy: interface for several convex optimization backends'
+            'python-database-cubic-hecke: cubic Hecke algebras'
+            'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases'
+            'python-igraph: igraph backend for graph theory'
+            'python-phitigra: graph editor'
+            'python-pkgconfig: to compile cython code'
+            'python-pycosat: picosat SAT solver'
+            'python-pynormaliz: Normaliz backend for polyhedral computations'
+            'python-pyscipopt: SCIP mixed integer linear programming backend'
+            'rubiks: Rubiks cube algorithms'
+            'sage-notebook-exporter: convert flask notebooks to Jupyter'
+            'sagemath-doc: HTML documentation'
+            'shared_meataxe: faster matrix arithmetic over finite fields'
+            'sirocco: for computing the fundamental group of the complement of a plane curve'
+            'topcom: to compute triangulations of point configurations')
+makedepends=(bliss
+             boost
+             coxeter
+             cython
+             mcqd
+             python-jinja
+             python-pkgconfig
+             shared_meataxe
+             sirocco
+             tdlib)
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch
+        sagemath-flint-3.patch
         sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
-_pkgs=(standard mcqd tdlib coxeter3 sirocco meataxe bliss)
+            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
+            'c20c563d86007e0031d321e50df2c73d41c272e9e7270a935c2abf365f06aa6a')
+_pkgs=(standard
+       bliss
+       coxeter3
+       mcqd
+       meataxe
+       sirocco
+       tdlib)
 
 pkgver() {
   cd sage
@@ -74,6 +156,8 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # update to tdlib 0.9 (Fedora)
   patch -p1 -i ../sagemath-tdlib-0.9.patch
+# fix build with flint 3 https://github.com/sagemath/sage/pull/35848
+  patch -p1 -i ../sagemath-flint-3.patch
 
   ./bootstrap
 }
