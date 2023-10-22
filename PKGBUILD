@@ -1,3 +1,5 @@
+# Maintainer: D3vil0p3r <vozaanthony[at]gmail[dot]com>
+
 pkgname=kwin-scripts-force-decorations-gtk3
 pkgver=0.2
 pkgrel=1
