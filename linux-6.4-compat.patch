@@ -1,0 +1,14 @@
+--- original/frandom.c	2017-07-06 09:57:41.000000000 -0700
++++ modified/frandom.c	2023-10-22 16:38:32.867006422 -0700
+@@ -334,7 +334,11 @@ static int frandom_init_module(void)
+ 
+ 	erandom_seeded = 0;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0)
++	frandom_class = class_create("fastrng");
++#else
+ 	frandom_class = class_create(THIS_MODULE, "fastrng");
++#endif
+ 	if (IS_ERR(frandom_class)) {
+ 		result = PTR_ERR(frandom_class);
+ 		printk(KERN_WARNING "frandom: Failed to register class fastrng\n");
