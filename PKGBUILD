@@ -1,5 +1,5 @@
 pkgname=mpv-uosc
-pkgver=4.7.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Feature-rich minimalist proximity-based UI for MPV player."
 arch=("any")
@@ -20,7 +20,7 @@ package(){
     depends=("mpv")
     cd "${srcdir}/uosc"
     mkdir -p "${pkgdir}/usr/share/mpv/"{scripts,script-opts,fonts}
-    cp -a scripts/* "${pkgdir}/usr/share/mpv/scripts/"
+    cp -a scripts/uosc "${pkgdir}/usr/share/mpv/scripts/uosc"
     install -Dm644 script-opts/uosc.conf "${pkgdir}/usr/share/mpv/script-opts/uosc.conf"
     for font in uosc_icons.otf uosc_textures.ttf
     do
