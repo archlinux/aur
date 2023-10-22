@@ -1,3 +1,5 @@
+# Maintainer: D3vil0p3r <vozaanthony[at]gmail[dot]com>
+
 pkgname=kwin-scripts-truely-maximized
 pkgver=1.0.1
 pkgrel=1
