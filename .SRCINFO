@@ -1,6 +1,6 @@
 pkgbase = realneptune-git
 	pkgdesc = Neptune a superfast mechanical keyboard sound app (git)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/M1ndo/Neptune
 	arch = i686
@@ -35,7 +35,7 @@ pkgbase = realneptune-git
 	depends = libxi
 	depends = libxcursor
 	depends = libxinerama
-	source = https://github.com/M1ndo/Neptune/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 7593f7f3135c1ad0f576da40073557a2aa5a4ccdb6c5e5f3a1b939c896d5a0ec
+	source = https://github.com/M1ndo/Neptune/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 2b283dad3de80285b983daab4a5f81dfa0a6fd7621641f89c00a96a1f791944e
 
 pkgname = realneptune-git

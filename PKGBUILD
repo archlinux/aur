@@ -1,7 +1,7 @@
 # Maintainer: Alien X <alienx@AlienX>
 # Maintainer: Alien X <alienx@AlienX>
 pkgname=realneptune-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Neptune a superfast mechanical keyboard sound app (git)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ depends=('make' 'libx11' 'libxtst'
          'libxxf86vm' 'libxi' 'libxcursor' 'libxinerama')
 
 source=("https://github.com/M1ndo/Neptune/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7593f7f3135c1ad0f576da40073557a2aa5a4ccdb6c5e5f3a1b939c896d5a0ec')
+sha256sums=('2b283dad3de80285b983daab4a5f81dfa0a6fd7621641f89c00a96a1f791944e')
 
 build() {
   export GOPATH="$srcdir"/gopath
