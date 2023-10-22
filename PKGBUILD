@@ -2,22 +2,22 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.20.1.3764
+pkgver=1.20.2.3871
 #### Minecraft version to build. Just change this to build a different branch.
 #### Makepkg will automatically (unless --holdver is specified) select the most
 #### recent Spigot version for this Minecraft version.
-_pkgver=1.20.1
+_pkgver=1.20.2
 _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
-_buildtoolver=160
+_buildtoolver=162
 pkgrel=1
 pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
 url="https://www.spigotmc.org/"
 license=("GPL3")
-depends=(bash "java-runtime-headless-openjdk>=17" "java-runtime-headless-openjdk<21" fontconfig)
+depends=(bash "java-runtime-headless-openjdk>=17" "java-runtime-headless-openjdk<22" fontconfig)
 makedepends=(git)
 optdepends=("mcrcon: Notify users before shutdown and consistent backups")
 conflicts=(bukkit craftbukkit craftbukkit-stable)
@@ -34,7 +34,7 @@ source=("BuildTools-${_buildtoolver}.jar::https://hub.spigotmc.org/jenkins/job/B
         "readme.md"
         "sysusers.conf"
         "tmpfiles.conf")
-sha256sums=('90f047b9bb8b5ee0c00183c41bcc37fa1cb11051c634d7a52cf678e0f321fa58'
+sha256sums=('9ff0aa063e98a4045feb170cbfe417d153a2e82600dfae658c2cd8014cb4c171'
             '6694a8cccb1b8da8a3ae2d05dfea693364678fc0b097f5c589b7063f9a42c392'
             'cbaaa76357925bb9e2db8ff2da31901f03c16d5a14f7c4ec05eb2cfdeba63fd7'
             '16d2281874c953eb94141994d5a4c4c31b0b3f7d51652ebdad1f2367fdeaea8c'
