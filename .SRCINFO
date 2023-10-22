@@ -1,0 +1,17 @@
+pkgbase = gruvbox-plus-icon-theme-git
+	pkgdesc = Icon theme based on Gruvbox color scheme
+	pkgver = 4.0.r680.g812b197
+	pkgrel = 1
+	url = https://github.com/SylEleuth/gruvbox-plus-icon-pack
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = fd
+	depends = gtk-update-icon-cache
+	provides = gruvbox-plus-icon-theme
+	options = !strip
+	options = !emptydirs
+	source = gruvbox-plus-icon-theme-git::git+https://github.com/SylEleuth/gruvbox-plus-icon-pack
+	sha256sums = SKIP
+
+pkgname = gruvbox-plus-icon-theme-git
