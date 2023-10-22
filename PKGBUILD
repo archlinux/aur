@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL')
 depends=('minizip' 'zlib' 'openssl' 'xalan-c' 'xerces-c' 'xml-security-c')
-makedepends=('cmake' 'git' 'xsd' 'xxd')
+makedepends=('cmake' 'git' 'libxsd' 'xsd' 'xxd')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=$_rls_tag"
         "open-eid-cmake::git+https://github.com/open-eid/cmake.git")
 sha256sums=("SKIP" "SKIP")

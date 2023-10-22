@@ -8,6 +8,7 @@ pkgbase = libdigidocpp
 	license = LGPL
 	makedepends = cmake
 	makedepends = git
+	makedepends = libxsd
 	makedepends = xsd
 	makedepends = xxd
 	depends = minizip
