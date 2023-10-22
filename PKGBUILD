@@ -3,7 +3,7 @@
 pkgname=ariang-allinone-bin
 _pkgname=ariang-allinone
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern web frontend making aria2 easier to use. (Use precompiled all-in-one version)"
 arch=('any')
 url="https://github.com/mayswind/AriaNg"
