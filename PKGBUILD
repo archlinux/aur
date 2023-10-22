@@ -4,7 +4,7 @@
 # Note: I hope wael is a nice woman now :troll:
 
 pkgname=vinegar
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio"
 arch=("x86_64")
@@ -17,7 +17,7 @@ optdepends=("vulkan-driver: Vulkan support in GUI"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("25fadff5c46ce129818dad5ed32f1932088a6942bdf0c715be638667d7aaa9eb")
+sha256sums=("1b92ed9dbbd81ad160a4aa2a78907d186145eb9669c6c963ba705b94b4da796c")
 
 build() {
   cd "${pkgname}-v${pkgver}"
