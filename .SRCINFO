@@ -1,0 +1,18 @@
+pkgbase = r-hdci
+	pkgdesc = High Dimensional Confidence Interval Based on Lasso and Bootstrap
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=HDCI
+	arch = any
+	license = GPL2
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-glmnet
+	depends = r-iterators
+	depends = r-mvtnorm
+	depends = r-slam
+	source = https://cran.r-project.org/src/contrib/HDCI_1.0-2.tar.gz
+	md5sums = 806dea67dc386f8782b82ad5172fb234
+	sha256sums = 7fb6f89df772fe8feb9e3e00e567600318b9ec16059c4c20acfef93549d9ab73
+
+pkgname = r-hdci
