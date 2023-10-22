@@ -1,23 +1,26 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=material-companion
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='MaterialCompanion'
 arch=('x86_64')
 url='https://github.com/MaterialFoundry/MaterialCompanion'
 license=('Custom')
-depends=('electron' 'nodejs')
+depends=('electron' 'nodejs' 'python-pymcuprog')
 makedepends=('git' 'npm')
 provides=('material-companion')
 conflicts=('material-companion')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/MaterialFoundry/MaterialCompanion/archive/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/MaterialFoundry/MaterialCompanion/archive/${pkgver}.tar.gz"
 		material-companion.desktop
-		material-companion)
-sha256sums=('4b2a442defe420e1bea12c1b608a69f1113aaa08fb99176896c0e659b11ba36e'
+		material-companion
+		pipx-fix.patch)
+sha256sums=('b05b33f603e8632eaba47203457935dd728bd2d5223462e699dbe4add37d9538'
             'ffd52de96b51e26aef5044413c311d19f829514f5463342eebcf3fdcef03f41d'
-            '1ccb8679f88551b552c08a8cf11c24fa46d80d9fd6f890722861b59bce210387')
+            '1ccb8679f88551b552c08a8cf11c24fa46d80d9fd6f890722861b59bce210387'
+            '1d695effd893e102a13fa528884e1b6bbbe511f7eeac42e701e7ecf6d1a01f92')
 prepare() {
   cd "MaterialCompanion-$pkgver"
+  patch -p1 -i "$srcdir/pipx-fix.patch"
   npm update
   npm install
 }

@@ -1,0 +1,205 @@
+diff --git a/src/app/modules/materialPlane.js b/src/app/modules/materialPlane.js
+index 074a8cf..9f38b64 100644
+--- a/src/app/modules/materialPlane.js
++++ b/src/app/modules/materialPlane.js
+@@ -29,9 +29,6 @@ class MaterialPlane {
+     sensorReleases = [];
+     baseReleases = [];
+     penReleases = [];
+-    pymcuprogInstalled = false;
+-    pythonInstalled = false;
+-    pipInstalled = false;
+     pythonCmd = window.navigator.platform == 'Win32' ? 'py' : 'python3';
+ 
+     async init(sensorPort, dockPort) {
+@@ -192,52 +189,7 @@ class MaterialPlane {
+         document.getElementById("mpSensorIpAddress").style.color = 'white';
+     }
+ 
+-    async checkPythonInstall() {
+-        if (this.pythonInstalled) return true;
+-
+-        return new Promise((resolve) => {
+-            console.log("Checking for python install")
+-
+-            const checkInstall = spawn(this.pythonCmd, ['-V']);
+-            let rec = [];
+-            checkInstall.stdout.on('data', function (data) {
+-                const str = String.fromCharCode.apply(null, new Uint16Array(data));
+-               // console.log('Pipe data from python',{data:str}, str.length);
+-                rec.push(str);
+-            });
+-            checkInstall.on('close', (code) => {
+-                console.log(`Python closed with code: ${code}, data:`,{data:rec});
+-                if (code != 0) {
+-                    const popupContent = `
+-                        <h2>Python Required</h2>
+-                        To configure or update the base, pen or sensor you need to install <a class="hyperlink" href="https://www.python.org/" target="_blank">Python 3.10 or 3.11</a>.<br>
+-                        <br>
+-                        Please try again after installing Python.
+-                    `
+-                    popup.open(popupContent, false, false);
+-                    console.log("Python not installed")
+-                    resolve(false);
+-                }
+-                else {
+-                    console.log("Python installed");
+-                    resolve(true);
+-                }
+-                
+-            });
+-            checkInstall.on('error', (err) => {
+-               // console.log('err',err);
+-                const popupContent = `
+-                    <h2>Python Required</h2>
+-                    To configure or update the base, pen or sensor you need to install <a class="hyperlink" href="https://www.python.org/" target="_blank">Python</a>.<br>
+-                    <br>
+-                    Please try again after installing.
+-                `
+-                popup.open(popupContent, false, false);
+-                resolve(false);
+-            });
+-        });
+-    }
+-
++    
+     async runCommand(cmd, args) {
+         return new Promise((resolve) => {
+             let argsStr = `${cmd}`;
+@@ -263,93 +215,13 @@ class MaterialPlane {
+         });
+     }
+ 
+-    async installPymcuprog() {
+-        this.pythonInstalled = await this.checkPythonInstall();
+-        if (!this.pythonInstalled) {
+-
+-            return false;
+-        }
+-
+-        if (this.pymcuprogInstalled && this.pipInstalled) return true;
+-
+-        const pip = await this.runCommand(this.pythonCmd, ['-m', 'pip', '--version']);
+-        const pymcuprog = await this.runCommand(this.pythonCmd, ['-m', 'pymcuprog.pymcuprog', '-V']);
+-        this.pipInstalled = pip.success;
+-        this.pymcuprogInstalled = pymcuprog.success;
+-
+-        if (this.pymcuprogInstalled && this.pipInstalled) return true;
+-
+-        let parent = this;
+-
+-        return new Promise((resolve) => {
+-            const popupContent = `
+-                <h2>Dependencies Required</h2>
+-                To configure or update the base or pen you need to install ${!this.pipInstalled ? '<a class="hyperlink" href="https://pypi.org/project/pip/" target="_blank">pip</a>' : ''} ${!this.pipInstalled && !this.pymcuprogInstalled ? 'and' : ''} ${!this.pymcuprogInstalled ? '<a class="hyperlink" href="https://github.com/microchip-pic-avr-tools/pymcuprog" target="_blank">pymcuprog</a>' : ''}.<br>
+-                <br>
+-                Press 'Ok' to install or 'Cancel' to cancel.<br>
+-                
+-                <div class="popup-form-val">
+-                    <button class="popupButton" id="installPymcuprog">Ok</button>
+-                    <button class="popupButton" id="dontInstallPymcuprog">Cancel</button>
+-                </div>
+-            `
+-            popup.open(popupContent, false, true);
+-
+-            document.getElementById("dontInstallPymcuprog").addEventListener('click', ()=> {
+-                popup.close();
+-                resolve(false);
+-            });
+-
+-            document.getElementById("installPymcuprog").addEventListener('click', async()=> {
+-                const popupContent = `
+-                    <h2>Installing Dependencies</h2>
+-                    Please wait.
+-                `
+-
+-                popup.open(popupContent, false, true);
+-                popup.clearDetails();
+-
+-                let pipInstall = {success: true}
+-                let pymcuprogInstall = {success: true}
+-
+-                if (!parent.pipInstalled) {
+-                    popup.addDetails(`Installing pip.\n\n`);
+-                    pipInstall = await parent.runCommand(this.pythonCmd,['-m', 'ensurepip', '--default-pip'])
+-                    for (let m of pipInstall.data) popup.addDetails(`${m}\n`);
+-                }
+-                if (!parent.pymcuprogInstalled) {
+-                    popup.addDetails(`Installing pymcuprog.\n\n`);
+-                    pymcuprogInstall = await parent.runCommand(this.pythonCmd,['-m', 'pip', 'install', 'pymcuprog'])
+-                    for (let m of pymcuprogInstall.data) popup.addDetails(`${m}\n`);
+-                    if (!pymcuprogInstall.success) {
+-                        popup.error("Pymcuprog install failed, see 'Details' for more info.",true);
+-                    }
+-                }
+-                if (!pipInstall.success && !pymcuprogInstall.success) {
+-                    const hidapiErr = pymcuprogInstall.data.find(d => d.includes('Failed to build hidapi')) != undefined
+-                    popup.error(`Pip and pymcuprog install failed${hidapiErr ? ", you might have an incompatible version of Python, try uninstalling your current Python install and installing Python 3.10 or 3.11" : ""}.\nSee 'Details' for more info.`,true);
+-                }
+-                else if (!pipInstall.success) {
+-                    popup.error("Pip install failed, see 'Details' for more info.",true);
+-                }
+-                else if (!pymcuprogInstall.success) {
+-                    const hidapiErr = pymcuprogInstall.data.find(d => d.includes('Failed to build hidapi')) != undefined
+-                    popup.error(`Pymcuprog install failed${hidapiErr ? ", you might have an incompatible version of Python, try uninstalling your current Python install and installing Python 3.10 or 3.11" : ""}.\nSee 'Details' for more info.`,true);
+-                }
+-                else {
+-                    popup.content("Installation successful");
+-                }
+-            });
+-        });
+-    }
+-
++   
+     async readAttinyEeprom(port, device) {
+-        if (await this.installPymcuprog() == false) return;
+ 
+         console.log(`Read ${device} EEPROM on port: ${port.path}`);
+ 
+ 
+-        const ls = spawn(this.pythonCmd, ['-m', 'pymcuprog.pymcuprog', 'read', '-m', 'eeprom', '-t', 'uart', '-u', port.path, '-d', 'attiny1616']);
++        const ls = spawn('pymcuprog', ['read', '-m', 'eeprom', '-t', 'uart', '-u', port.path, '-d', 'attiny1616']);
+ 
+         let parent = this;
+         ls.stdout.on("data", data => {
+@@ -447,8 +319,6 @@ class MaterialPlane {
+     }
+ 
+     async updateAttiny(port, device, mode='flash') {
+-        if (await this.installPymcuprog() == false) return;
+-
+         console.log(`Update ${device} on port: ${port.path}`);
+         let firmwarePath = "";
+ 
+@@ -506,7 +376,7 @@ class MaterialPlane {
+                 return;
+             }
+ 
+-            ls = spawn(this.pythonCmd, ['-m', 'pymcuprog.pymcuprog', 'write', '-f', firmwarePath, '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug', '--verify', '--erase']);
++            ls = spawn('pymcuprog', ['write', '-f', firmwarePath, '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug', '--verify', '--erase']);
+         }
+         else if (mode == 'eeprom') {
+             if (device == 'base') {
+@@ -516,7 +386,7 @@ class MaterialPlane {
+                     popup.error(msg, true);
+                     return;
+                 }
+-                ls = spawn(this.pythonCmd, ['-m', 'pymcuprog.pymcuprog', 'write', '-m', 'eeprom', '-o', '0x04', '-l', document.getElementById('baseId').value>>8, document.getElementById('baseId').value&0xFF,document.getElementById('baseSens').value, '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug']);
++                ls = spawn('pymcuprog', ['write', '-m', 'eeprom', '-o', '0x04', '-l', document.getElementById('baseId').value>>8, document.getElementById('baseId').value&0xFF,document.getElementById('baseSens').value, '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug']);
+             }
+             else if (device == 'pen') {
+                 if (document.getElementById('penId').value == '' || document.getElementById('penTimeout').value == '') {
+@@ -525,11 +395,11 @@ class MaterialPlane {
+                     popup.error(msg, true);
+                     return;
+                 }
+-                ls = spawn(this.pythonCmd, ['-m', 'pymcuprog.pymcuprog', 'write', '-m', 'eeprom', '-o', '0x04', '-l', document.getElementById('penId').value>>8, document.getElementById('penId').value&0xFF,'0xff','0xff',document.getElementById('penTimeout').value, '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug']);
++                ls = spawn('pymcuprog', ['write', '-m', 'eeprom', '-o', '0x04', '-l', document.getElementById('penId').value>>8, document.getElementById('penId').value&0xFF,'0xff','0xff',document.getElementById('penTimeout').value, '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug']);
+             }
+         }
+         else if (mode == 'defaultEeprom') {
+-            ls = spawn(this.pythonCmd, ['-m', 'pymcuprog.pymcuprog', 'write', '-m', 'eeprom', '-o', '0x04', '-l', '0xff','0xff','0xff','0xff','0xff','0xff', '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug']);
++            ls = spawn('pymcuprog', ['write', '-m', 'eeprom', '-o', '0x04', '-l', '0xff','0xff','0xff','0xff','0xff','0xff', '-t', 'uart', '-u', port.path, '-d', 'attiny1616', '-v', 'debug']);
+         }
+         
+         
