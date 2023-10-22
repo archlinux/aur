@@ -12,6 +12,7 @@ pkgbase = hyprland-git
 	makedepends = jq
 	makedepends = meson
 	makedepends = ninja
+	makedepends = patch
 	makedepends = pkgconf
 	makedepends = xorgproto
 	depends = cairo
