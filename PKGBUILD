@@ -2,14 +2,14 @@
 
 _gitname='LogDoctor'
 pkgname='logdoctor'
-pkgver='2.05'
+pkgver='3.00'
 pkgrel='1'
 pkgdesc="Apache2/Nginx/IIS access logs analyzer to view dynamically generated statistics"
 arch=('x86_64')
 url='https://github.com/elB4RTO/LogDoctor'
 license=('AGPL3')
-depends=('qt5-base' 'qt5-charts' 'zlib')
-makedepends=('cmake' 'qt5-tools')
+depends=('qt6-base' 'qt6-charts' 'zlib')
+makedepends=('cmake' 'qt6-tools')
 optdepends=()
 provides=()
 conflicts=()
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/elB4RTO/LogDoctor/archive/refs/tags/v2.05.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/elB4RTO/LogDoctor/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('722c56d38608c09b5f508cd1bf17a2bd8504c32b47656be164c2291036d68783')
+sha256sums=('7de1103c558c99802b1dc346fcf2692c1b9d850d53913611472718d2db0920f9')
 validpgpkeys=('EF88B042FB649B22A9F19DBE1719E976DB2D4E71')
 
 
@@ -31,7 +31,7 @@ build() {
   mkdir build && cd build
 
   cmake --fresh ../logdoctor -DCMAKE_BUILD_TYPE=MinSizeRel
-  cmake --build ./ --target all
+  cmake --build ./ --target all -j$(nproc)
 
   mv "$_gitname" "$pkgname"
 }
