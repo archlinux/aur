@@ -1,7 +1,7 @@
 pkgbase = qmarineplatformtheme5
 	pkgdesc = Another qt5ct for qt5, use toml as config
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/Decodetalkers/qmarinetheme
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = qmarineplatformtheme5
 	depends = kiconthemes5
 	provides = qt5ct
 	conflicts = qt5ct
-	source = qmarineplatformtheme5-v0.1.2.tar.gz::https://github.com/Decodetalkers/qmarinetheme/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 16165f96ff9f591b37fae86474aa4b9e892361984439be2307e2a7ded29f933b
+	source = qmarineplatformtheme5-v0.1.3.tar.gz::https://github.com/Decodetalkers/qmarinetheme/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = c94b62df22dcadf9537ca9f8083ee3bca5333e251eb17a05ee9d1ae760672a22
 
 pkgname = qmarineplatformtheme5
