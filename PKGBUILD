@@ -4,7 +4,7 @@
 # Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('x86_64')
 url="https://gephi.org"

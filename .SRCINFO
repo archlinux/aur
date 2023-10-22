@@ -1,0 +1,19 @@
+pkgbase = gephi
+	pkgdesc = An interactive graph visualization and exploration platform
+	pkgver = 0.10.1
+	pkgrel = 2
+	url = https://gephi.org
+	arch = x86_64
+	license = CDDL
+	license = GPL3
+	makedepends = gendesk
+	depends = java-runtime=11
+	depends = java-environment=11
+	depends = libxxf86vm
+	depends = libnet
+	depends = freetype2
+	options = !strip
+	source = https://github.com/gephi/gephi/releases/download/v0.10.1/gephi-0.10.1-linux-x64.tar.gz
+	b2sums = 921d8b780043de03d8c9b538be3dce0c0f23623e1024ca5d37736f468533655985e480c48c944c55d90ab8309f22103dab44eefd82086ed0be8178aa9a2989c2
+
+pkgname = gephi
