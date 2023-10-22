@@ -1,6 +1,6 @@
 # Maintainer: Keith Scroggs <very-amused@pm.me>
 pkgname='my_timers'
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='my_timers is a multithreaded MariaDB/MySQL event runner, which can function as a complete replacement for event_scheduler.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('make>=4.3')
 optdepends=('mariadb: database server (recommended)'
             'mysql: database server')
 source=("https://github.com/very-amused/my_timers/releases/download/v$pkgver/x86_64-linux.tar.gz")
-sha256sums=('b983c6fa37065a3e25d9650ac8516282de08e1dacfae9576f161834066303cd8')
+sha256sums=('acd63e57b5e1eadfd647fdf80227d1afd6bd47156f242662e380225e1c27fb3f')
 
 package() {
   cd "release/x86_64-linux"
