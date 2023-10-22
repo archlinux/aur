@@ -2,7 +2,7 @@
 pkgname='my_timers'
 pkgver=0.2.0
 pkgrel=1
-pkgdesc='my_timers is a multithreaded MariaDB/MySQL event runner, which can function as a complete replacement for event_scheduler.'
+pkgdesc='Multithreaded MariaDB/MySQL event runner designed to serve as an improved event_scheduler.'
 arch=('x86_64')
 url='https://github.com/very-amused/my_timers'
 license=('MIT')
