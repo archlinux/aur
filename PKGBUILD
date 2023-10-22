@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-ubuntu-dock
 _pkgname=dash-to-dock-ubuntu-dock
-pkgver=84ubuntu1
+pkgver=87ubuntu2
 pkgrel=1
 pkgdesc="A dock for the Gnome Shell, default Ubuntu experience"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('gettext' 'intltool' 'sassc')
 provides=('gnome-shell-extension-dash-to-dock' 'gnome-shell-extension-dash-to-dock-git')
 conflicts=('gnome-shell-extension-dash-to-dock' 'gnome-shell-extension-dash-to-dock-git')
 source=("https://github.com/micheleg/dash-to-dock/archive/ubuntu-dock-$pkgver.tar.gz")
-sha256sums=('11ed5c1b828366a7903cffc1ca670d43b0de86bcf72f5592de3d3d182343f246')
+sha256sums=('65e5b3739d2eee1e12190a43ea05cd38fef22ce6ecec86550bf81f557e254b9b')
 
 build() {
   cd $_pkgname-$pkgver
