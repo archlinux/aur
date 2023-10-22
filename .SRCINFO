@@ -1,0 +1,17 @@
+pkgbase = tpie-git
+	pkgdesc = The Templated Portable I/O Environment
+	pkgver = r5115.82a6e880
+	pkgrel = 1
+	url = https://github.com/thomasmoelhave/tpie
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = snappy
+	makedepends = lz4
+	makedepends = zstd
+	makedepends = git
+	source = git+https://github.com/thomasmoelhave/tpie
+	sha256sums = SKIP
+
+pkgname = tpie-git
