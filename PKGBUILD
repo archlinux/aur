@@ -11,6 +11,12 @@ makedepends=('python-setuptools' 'python-pytest' 'git')
 url="https://github.com/plizonczyk/noiseprotocol"
 license=('MIT')
 options=('!emptydirs')
+optdepends=('python-pypandoc: Thin wrapper for pandoc - development'
+            'twine: Collection of utilities for interacting with PyPI - development'
+            'python-sphinx: Python documentation generator - development'
+            'python-sphinx-autobuild: Rebuild Sphinx documentation on changes, with live-reload in the browser - development'
+            'python-sphinx_rtd_theme: Read the Docs theme for Sphinx - development'
+           )
 source=(git+https://github.com/plizonczyk/noiseprotocol.git)
 sha256sums=('SKIP')
 
@@ -21,11 +27,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  sed -i "s%ImportError%ImportError,AttributeError%"  setup.py
   python setup.py build
 }
 
 check(){
   cd "$srcdir/$_pkgname"
+
   pytest
 }
 
