@@ -1,7 +1,7 @@
 pkgbase = otf-noto-sans-cjk-vf
 	pkgdesc = Noto CJK fonts
 	pkgver = 2.004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/get/noto/help/cjk
 	arch = any
 	license = custom:SIL
