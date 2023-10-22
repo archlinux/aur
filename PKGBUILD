@@ -5,13 +5,13 @@ pkgname=slrn-snapshot
 _pkgname=slrn
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL')
-makedepends=('uudeview')
-depends=('glibc' 'openssl' 'slang')
+makedepends=('uudeview>=20230502')
+depends=('glibc' 'openssl' 'sh' 'slang')
 provides=('slrn')
 conflicts=('slrn')
 backup=(etc/slrnrc)
@@ -32,7 +32,7 @@ b2sums=(
 # SLRN_NO_UU variable to true|yes|t|y|1, e.g.:
 #   env SLRN_NO_UU=true makepkg
 build() {
-  cd "$_pkgname-$_prever" || exit 1
+  cd "$_pkgname-$_prever"
 
   case "$SLRN_NO_UU" in
     [Tt][Rr][Uu][Ee] | [Yy][Ee][Ss] | [Tt] | [Yy] | 1 )
@@ -59,19 +59,30 @@ build() {
 	--with-uuinc=/usr/include/uudeview \
 	--enable-spoilers
 
-      make UUDEVIEW_LIB='/usr/lib/uudeview/*.o'
+      make UUDEVIEW_LIB='/usr/lib/libuu.a'
     ;;
   esac
 
 }
 
 package() {
-  cd "$_pkgname-$_prever" || exit 1
+  cd "$_pkgname-$_prever"
 
   make DESTDIR="$pkgdir" install
 
   install -Dm0644 COPYRIGHT   "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   install -Dm0644 doc/slrn.rc "$pkgdir/etc/slrnrc"
 }
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 22nd October
+#
+# Many people say this or that is useless or meaningless only
+# because someone told them so.
+#
+# But how useful or meaningful is that?
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
