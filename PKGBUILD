@@ -1,16 +1,17 @@
 # Maintainer: Thomas Hipp <thomashipp at gmail dot com>
 pkgname=libco
 pkgver=20
-pkgrel=2
+pkgrel=3
 pkgdesc="Cooperative multithreading library"
 arch=('x86_64')
 url="https://github.com/higan-emu/libco"
 license=('custom')
-_hash="a22bd9dba264e70ee7ea7dc2027af4b076890e43"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/higan-emu/${pkgname}/archive/${_hash}.tar.gz"
+_hash="9b76ff4c5c7680555d27c869ae90aa399d3cd0f2"
+_hashshort="${_hash:0:8}"
+source=("${pkgname}-${pkgver}-${_hashshort}.tar.gz::https://github.com/higan-emu/${pkgname}/archive/${_hash}.tar.gz"
         "Makefile"
         "libco.pc")
-sha256sums=('f3aa595380f1ea14da5f42de789ce5aa3d47c0920d1d5ca2785bfccfbe6332f2'
+sha256sums=('306c10b275f4f848852075310f2795ed35be47fe435310d423591446a33c64f8'
             'dcebf2d57105b348ae577bcd52213cdf47a13925cbb3d577322f423111796907'
             'dadf69b73b51dd360cb63f667e0f03d5e5e508bc8370ece8b35a29edb5db95a5')
 

@@ -1,16 +1,15 @@
 pkgbase = libco
 	pkgdesc = Cooperative multithreading library
 	pkgver = 20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/higan-emu/libco
 	arch = x86_64
 	license = custom
-	source = libco-20.tar.gz::https://github.com/higan-emu/libco/archive/a22bd9dba264e70ee7ea7dc2027af4b076890e43.tar.gz
+	source = libco-20-9b76ff4c.tar.gz::https://github.com/higan-emu/libco/archive/9b76ff4c5c7680555d27c869ae90aa399d3cd0f2.tar.gz
 	source = Makefile
 	source = libco.pc
-	sha256sums = f3aa595380f1ea14da5f42de789ce5aa3d47c0920d1d5ca2785bfccfbe6332f2
+	sha256sums = 306c10b275f4f848852075310f2795ed35be47fe435310d423591446a33c64f8
 	sha256sums = dcebf2d57105b348ae577bcd52213cdf47a13925cbb3d577322f423111796907
 	sha256sums = dadf69b73b51dd360cb63f667e0f03d5e5e508bc8370ece8b35a29edb5db95a5
 
 pkgname = libco
-
