@@ -3,7 +3,7 @@
 _name=google-cloud-vision
 
 pkgname=python-google-cloud-vision
-pkgver=3.4.4
+pkgver=3.4.5
 pkgrel=1
 pkgdesc='Google Cloud Vision API client library'
 arch=('any')
@@ -23,7 +23,7 @@ options=('!emptydirs')
 source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
-sha256sums=('405744ae50852034cc47b32a9b1bae50d3fb09cd1e2160014182891ef5766695')
+sha256sums=('0df8241ab277199b919ca3837a7de85059363fea0e3d660060870be7ceffc047')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
