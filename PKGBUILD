@@ -1,16 +1,16 @@
-# Maintainer: zer0-x < Matrix: "@zer0-x:kde.org" >
+# Maintainer: zefr0x < Matrix: "@zer0-x:kde.org" >
 # Contributor: Kevin Majewski
 
 pkgname=xdg-desktop-portal-gtk-git
 _pkgname=xdg-desktop-portal-gtk
-pkgver=1.14.1+13+gb6a8b0a
+pkgver=1.15.1+1+g25198ba
 pkgrel=1
 pkgdesc="A GTK backend for xdg-desktop-portal"
 url="https://github.com/flatpak/xdg-desktop-portal-gtk"
 arch=(x86_64)
 license=(LGPL)
-depends=('gtk3' 'xdg-desktop-portal')
-makedepends=('git' 'autoconf' 'automake')
+depends=('gtk3' 'xdg-desktop-portal' 'gsettings-desktop-schemas' 'fontconfig')
+makedepends=('git' 'meson' 'cmake')
 optdepends=("evince: Print preview")
 provides=($_pkgname 'xdg-desktop-portal-impl')
 conflicts=($_pkgname)
@@ -22,27 +22,21 @@ pkgver() {
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
-prepare() {
-  cd $_pkgname
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
   cd $_pkgname
-  ./configure --prefix=/usr --libexecdir=/usr/lib \
-    --enable-background \
-    --enable-settings \
-    --enable-appchooser \
-    --enable-lockdown
-  make
+
+  arch-meson build -Dsettings=enabled -Dappchooser=enabled -Dlockdown=enabled
+
+  meson compile -C build
 }
 
 check() {
   cd $_pkgname
-  make check
+
+  meson test -C build
 }
 
 package() {
   cd $_pkgname
-  DESTDIR="$pkgdir" make install
+  meson install -C build --destdir "${pkgdir}"
 }
