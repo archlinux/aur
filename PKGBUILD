@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fclones-bin
-pkgver=0.32.2
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Efficient Duplicate File Finder"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver}-linux-glibc-x86_64.tar.gz")
-sha512sums_x86_64=('948e06b79e1046cd55851db85abf139bf60edf03cd16ed07aa846094d81dfcdc4da26ec056fe1b36e3dcd67e5269d79b0af89c0353d08594a2fb405ecca36a99')
+sha512sums_x86_64=('9e08c90efabc8dfb057efde91978726fd5fd202c9acd3b2a41347915dfbe56d0c09efc69cba5de489b8f05377ba10ea8fd03bc07c4af361d55d9bddc8e997e13')
 
 package() {
   install -Dm 755 "usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
