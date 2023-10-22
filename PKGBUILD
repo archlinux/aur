@@ -1,8 +1,8 @@
 # Maintainer: ybenel <root@ybenel.cf>
 # Contributor: ybenel <root@ybenel.cf>
 pkgname=realneptune
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Neptune a superfast mechanical keyboard sound app"
 arch=('x86_64')
 url="https://github.com/M1ndo/Neptune"
@@ -16,7 +16,7 @@ depends=('libx11' 'libxtst' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'alsa-lib
          'libxxf86vm' 'libxi' 'libxcursor' 'libxinerama')
 
 source=("https://github.com/M1ndo/Neptune/releases/download/v$pkgver/Neptune.tar.xz")
-sha256sums=('44b045c049786265838d096d524c0b3e616f4d4f2f954e41d5277276660e3a63')
+sha256sums=('8ad50579e73a687e0f8ea777983b25dcc9227ed4e5d4023447c4a3da856a1316')
 
 build() {
   cd "$srcdir"
