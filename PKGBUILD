@@ -2,12 +2,12 @@
 
 _name=pytest-skip-markers
 pkgname=python-pytest-skip-markers
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A Pytest plugin which implements a few useful skip markers"
 arch=(any)
 url="https://github.com/saltstack/pytest-skip-markers"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-attrs
@@ -28,8 +28,8 @@ checkdepends=(
   python-pytest-subtests
 )
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('da52e203a5ac3a495544ee65312549d519a9abff20269d06c06369e33ca5dfa3')
-b2sums=('2abd097c529a6db51f36de6f5ac705da981e87196da4ccf99895b24277e9d4d717c80ebcf6b8d72959b7f76a10f23c2be11608c390845cca215472d2d4e99326')
+sha256sums=('9736e224c05ec252c20a1dd2f596a03404bcbb89f725be74214192575f48bd24')
+b2sums=('26575a1a7880714b3af4fd7b02b5c5d56b99e0ad0947012823e6c917afe7ca134e930f2bf75b3504fe3fd1516d39e82acd7dae799255b30c370ae085d0cff402')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
@@ -46,6 +46,7 @@ check() {
     --deselect tests/functional/test_skip_if_binaries_missing.py::test_not_skipped_multiple_binaries
     --deselect tests/unit/utils/markers/test_skip_if_binaries_missing.py::test_multiple_existing
     --deselect tests/unit/utils/markers/test_skip_if_binaries_missing.py::test_multiple_one_missing_check_all_false
+    --deselect tests/functional/test_skip_if_binaries_missing.py::test_single_non_existing_with_deprecated_message
   )
 
   cd $_name-$pkgver

@@ -1,0 +1,25 @@
+pkgbase = python-pytest-skip-markers
+	pkgdesc = A Pytest plugin which implements a few useful skip markers
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/saltstack/pytest-skip-markers
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pyfakefs
+	checkdepends = python-pytest-subtests
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-declarative-requirements
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	makedepends = python-wheel
+	depends = python
+	depends = python-attrs
+	depends = python-distro
+	depends = python-pytest
+	source = pytest-skip-markers-1.5.0.tar.gz::https://github.com/saltstack/pytest-skip-markers/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = 9736e224c05ec252c20a1dd2f596a03404bcbb89f725be74214192575f48bd24
+	b2sums = 26575a1a7880714b3af4fd7b02b5c5d56b99e0ad0947012823e6c917afe7ca134e930f2bf75b3504fe3fd1516d39e82acd7dae799255b30c370ae085d0cff402
+
+pkgname = python-pytest-skip-markers
