@@ -2,8 +2,8 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 
 pkgname=leqm-nrt
-_commit=4560105773c66ac9216b62313a24093bb0a027ae
-pkgver=0.0.2.r11.g4560105
+_commit=30dcaea1373ac62fba050e02ce5b0c1085797a23
+pkgver=0.0.2.r12.g30dcaea
 pkgrel=1
 pkgdesc="An open source implementation of Leq(M) measurement with patches from Carl"
 arch=('x86_64')

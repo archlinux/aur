@@ -1,13 +1,13 @@
 pkgbase = leqm-nrt
 	pkgdesc = An open source implementation of Leq(M) measurement with patches from Carl
-	pkgver = 0.0.2.r11.g4560105
+	pkgver = 0.0.2.r12.g30dcaea
 	pkgrel = 1
 	url = https://git.carlh.net/gitweb/?p=leqm-nrt.git;a=summary
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = python
-	source = leqm-nrt::git+git://git.carlh.net/git/leqm-nrt.git#commit=4560105773c66ac9216b62313a24093bb0a027ae
+	source = leqm-nrt::git+git://git.carlh.net/git/leqm-nrt.git#commit=30dcaea1373ac62fba050e02ce5b0c1085797a23
 	sha256sums = SKIP
 
 pkgname = leqm-nrt
