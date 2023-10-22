@@ -33,10 +33,19 @@ index c9b6582c4..2d0769b1e 100644
  
      enum class State
 diff --git a/libtransmission/peer-mgr.cc b/libtransmission/peer-mgr.cc
-index f17577647..aa8df86a9 100644
+index f17577647..75c78b80a 100644
 --- a/libtransmission/peer-mgr.cc
 +++ b/libtransmission/peer-mgr.cc
-@@ -968,6 +968,22 @@ void tr_peerMgrPieceCompleted(tr_torrent* tor, tr_piece_index_t p)
+@@ -828,7 +828,7 @@ void tr_peerMgrSetUtpFailed(tr_torrent* tor, tr_address const& addr, bool failed
+  * REQUESTS
+  *
+  * There are two data structures associated with managing block requests:
+- * 
++ *
+  * 1. tr_swarm::active_requests, an opaque class that tracks what requests
+  *    we currently have, i.e. which blocks and from which peers.
+  *    This is used for cancelling requests that have been waiting
+@@ -968,6 +968,24 @@ void tr_peerMgrPieceCompleted(tr_torrent* tor, tr_piece_index_t p)
      tor->set_needs_completeness_check();
  }
  
@@ -44,12 +53,14 @@ index f17577647..aa8df86a9 100644
 +{
 +    const char* peer_id = peer_id_arr.data();
 +    bool banned = peer_id_arr.empty();
-+    // Names like '-XL0012-','-DL3760-', '-FD51YC-', etc.
-+    banned |= !memcmp(peer_id+1, "SD", 2);
-+    banned |= !memcmp(peer_id+1, "XL", 2);
-+    banned |= !memcmp(peer_id+1, "QD", 2);
-+    banned |= !memcmp(peer_id+1, "XF", 2);
-+    banned |= !memcmp(peer_id+1, "BN", 2);
++    // Names like '-DL3760-', '-FD51YC-', '-XL0012-', ...
++    banned |= !memcmp(peer_id, "-BN", 3);
++    banned |= !memcmp(peer_id, "-DL", 3);
++    banned |= !memcmp(peer_id, "-FD", 3);
++    banned |= !memcmp(peer_id, "-QD", 3);
++    banned |= !memcmp(peer_id, "-SD", 3);
++    banned |= !memcmp(peer_id, "-XF", 3);
++    banned |= !memcmp(peer_id, "-XL", 3);
 +    banned |= !memcmp(peer_id, "Xunlei", 6);
 +    banned |= !memcmp(peer_id, "Thunder", 7);
 +    banned |= !memcmp(peer_id, "QQDownload", 10);
@@ -59,13 +70,24 @@ index f17577647..aa8df86a9 100644
  namespace
  {
  namespace handshake_helpers
-@@ -1069,6 +1085,10 @@ void create_bit_torrent_peer(tr_torrent* tor, std::shared_ptr<tr_peerIo> io, str
+@@ -1058,6 +1076,10 @@ void create_bit_torrent_peer(tr_torrent* tor, std::shared_ptr<tr_peerIo> io, str
+             atom->flags2 &= ~MyflagUnreachable;
+         }
+ 
++        if (!result.peer_id.has_value()) {
++            tr_logAddDebugSwarm(s, fmt::format("Warning: peer with no peer id (IP: {}) tried to reconnect", atom->display_name()));
++        }
++
+         /* In principle, this flag specifies whether the peer groks µTP,
+            not whether it's currently connected over µTP. */
+         if (result.io->is_utp())
+@@ -1069,6 +1091,10 @@ void create_bit_torrent_peer(tr_torrent* tor, std::shared_ptr<tr_peerIo> io, str
          {
              tr_logAddTraceSwarm(s, fmt::format("banned peer {} tried to reconnect", atom->display_name()));
          }
-+        else if (!result.peer_id.has_value() || tr_peerMgrClientIsBanned(result.peer_id.value()))
++        else if (result.peer_id.has_value() && tr_peerMgrClientIsBanned(result.peer_id.value()))
 +        {
-+            tr_logAddDebugSwarm(s, fmt::format("banned leetch-only peer {} tried to reconnect", atom->display_name()));
++            tr_logAddDebugSwarm(s, fmt::format("banned leetch-only peer (peer_id: {}, IP: {}) tried to connect", result.peer_id.value().data(), atom->display_name()));
 +        }
          else if (result.io->is_incoming() && s->peerCount() >= s->tor->peerLimit())
          {

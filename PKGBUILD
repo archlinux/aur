@@ -7,7 +7,7 @@
 pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt libtransmission-noxunlei)
 pkgver=4.0.4
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(GPL)
@@ -37,7 +37,7 @@ source=(https://github.com/transmission/transmission/releases/download/$pkgver/t
         transmission-noxunlei-cli.sysusers
         transmission-noxunlei-cli.tmpfiles)
 sha256sums=('15f7b4318fdfbffb19aa8d9a6b0fd89348e6ef1e86baa21a0806ffd1893bd5a6'
-            'f895bafecf6d0f19420a01cb0077a2466af08527670df95f4d70d7430e79d71e'
+            '6dbddb912b7203050ded71282d29298629c08189d0ddc7048968606eb7f23ad4'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
