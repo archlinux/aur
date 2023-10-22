@@ -1,6 +1,6 @@
 pkgbase = kde-cdemu-manager
 	pkgdesc = KDE CDEmu Manager is a simple frontend for CDEmu.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://www.linux-apps.com/p/998461
 	arch = i686
@@ -8,17 +8,20 @@ pkgbase = kde-cdemu-manager
 	license = GPL
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	depends = gcc-libs
+	depends = glibc
 	depends = qt5-base
-	depends = kconfigwidgets
-	depends = kdbusaddons
-	depends = ki18n
-	depends = knotifications
-	depends = kxmlgui
+	depends = kconfigwidgets5
+	depends = kcoreaddons5
+	depends = kdbusaddons5
+	depends = ki18n5
+	depends = knotifications5
+	depends = kwidgetsaddons5
+	depends = kxmlgui5
 	depends = cdemu-daemon>=2.0
 	provides = kde-cdemu-manager
 	conflicts = kde-cdemu-manager
-	source = https://sourceforge.net/projects/kde-cdemu-manager/files/kde_cdemu-0.8.0.tar.bz2/download
-	md5sums = a88bb002728db8be594b10fb403f5b08
+	source = https://sourceforge.net/projects/kde-cdemu-manager/files/kde_cdemu-0.8.1.tar.zst/download
+	sha256sums = 85de3380cbf16d03726582cf7fd9f87bbe516173b4ec7096c40f1aa776ee670b
 
 pkgname = kde-cdemu-manager
-
