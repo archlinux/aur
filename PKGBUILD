@@ -1,8 +1,8 @@
 _pkgdir=greetd
 pkgname="greetd-fakegreet"
 pkgver=0.9.0
-pkgrel=2
-pkgdesc='Generic greeter fakegreet for debu'
+pkgrel=3
+pkgdesc='Generic greeter fakegreet for debug'
 arch=("x86_64")
 url="https://git.sr.ht/~kennylevinsen/$_pkgdir"
 license=(GPL3)
