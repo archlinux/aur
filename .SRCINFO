@@ -1,0 +1,18 @@
+pkgbase = python-flask-session2
+	pkgdesc = Adds server-side session support to your Flask application
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/flask-session2/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-flask
+	depends = python-cachelib
+	depends = python-pytz
+	conflicts = python-flask-session
+	source = https://pypi.io/packages/source/f/flask-session2/Flask-Session2-1.3.1.tar.gz
+	source = patch.patch
+	sha256sums = 171e986d4e314795f448a527095e42df6abfba76c3e4ce5c8e4c61c857c59cb2
+	sha256sums = e68348f3d4612846af53348fc23281c65daa59183c297df986db937315977a8d
+
+pkgname = python-flask-session2
