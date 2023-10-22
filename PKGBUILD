@@ -2,19 +2,19 @@
 
 _pkgname=kwalletcli
 pkgname=$_pkgname-bin
-_pkgver=3.03-3
+_pkgver=3.03-4
 pkgver=${_pkgver//-/.r}
-pkgrel=2
+pkgrel=1
 pkgdesc='Command-Line Interface for the KDE Wallet'
 _arch=x86_64
 arch=($_arch)
 license=('custom:MirOS' 'LGPL3')
 url='https://www.mirbsd.org/kwalletcli.htm'
-depends=('kwallet' 'mksh')
+depends=('kwallet5' 'mksh')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("https://git.stefanwimmer128.io/api/v4/projects/166/packages/generic/$_pkgname/$_pkgver/$_pkgname-$_pkgver-$_arch.pkg.tar.zst")
-sha256sums=('31959535e2a9571aae554c3b702ef30c6408f4a9a1b34c3485c2685d5fe2b080')
+source=("https://git.stefanwimmer128.xyz/api/v4/projects/166/packages/generic/$_pkgname/$_pkgver/$_pkgname-$_pkgver-$_arch.pkg.tar.zst")
+sha256sums=('56429c2e0e28c4041c0bef8624295cd7e269fb0588a354facfc7737d98effff4')
 
 build() {
   rm "$_pkgname-$_pkgver-$_arch.pkg.tar.zst"
