@@ -5,6 +5,7 @@
 pkgname=netkit-telnet-ssl
 _debver=0.17.41+really0.17
 _debrel=4
+epoch=1
 pkgver=${_debver//+/.}
 pkgrel=1
 pkgdesc="Telnet client and server with TLS support (Debian Netkit version)"
