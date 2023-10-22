@@ -45,7 +45,6 @@ package_backintime-cli() {
   make DESTDIR="$pkgdir" install
   python -m compileall -d /usr "$pkgdir"/usr
   python -O -m compileall -d /usr "$pkgdir"/usr
-
 }
 
 package_backintime() {
