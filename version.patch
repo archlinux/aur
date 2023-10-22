@@ -1,0 +1,18 @@
+diff -ru a/build.xml b/build.xml
+--- a/build.xml	2023-10-21 21:10:40.828907880 +0100
++++ b/build.xml	2023-10-21 22:46:31.135436489 +0100
+@@ -51,10 +51,10 @@
+         
+     </target>
+     <target name="-loadversion-private" unless="new.version">
+-        <property name="version.major" value="0" />
+-        <property name="version.minor" value="0" />
+-        <property name="version.release" value="0" />
+-        <property name="version.major" value="0" />
++        <property name="version.major" value="MAJOR" />
++        <property name="version.minor" value="MINOR" />
++        <property name="version.release" value="PATCH" />
++        <property name="version.major" value="MAJOR" />
+         <property name="version.build" value="0" />
+         <!-- <property name="version.revision" value="" /> -->
+         <property name="version.debug" value="true" />
