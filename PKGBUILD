@@ -2,9 +2,9 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libasdcp-cth
-_commit=ae75eb417d3804a6d723e2cf09647b54b15df5db
-pkgver=0.1.6.r21.gae75eb4
-pkgrel=2
+_commit=8a4a2f25cac0c58aac1d4267facab20e5ec3b57f
+pkgver=0.1.6.r22.g8a4a2f2
+pkgrel=1
 pkgdesc="open source implementation of SMPTE and the MXF Interop Sound & Picture Track File format."
 arch=('i686' 'x86_64')
 url="https://carlh.net/asdcplib"
