@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=plastex-git
 pkgver=3.0.r12.g298a55b6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
 url="https://github.com/plastex/plastex/"
