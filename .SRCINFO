@@ -1,6 +1,6 @@
 pkgbase = kattis-cli-git
 	pkgdesc = Kattis online judge command line tool
-	pkgver = r68.f5899f8
+	pkgver = r94.624fe94
 	pkgrel = 1
 	url = https://github.com/Kattis/kattis-cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = kattis-cli-git
 	makedepends = git
 	depends = python
 	depends = python-requests
+	depends = python-lxml
 	source = git+https://github.com/Kattis/kattis-cli
 	md5sums = SKIP
 
 pkgname = kattis-cli-git
-
