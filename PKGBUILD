@@ -1,15 +1,17 @@
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+
 pkgname=python-ccxt
 _pkgname=${pkgname:7}
-pkgver=4.1.9
+pkgver=4.1.22
 pkgrel=1
-pkgdesc="A JavaScript / Python / PHP cryptocurrency trading library with support for 130+ exchanges"
+pkgdesc="A cryptocurrency trading library with support for 130+ exchanges"
 arch=(any)
 url="https://ccxt.trade"
 license=(MIT)
 depends=(python python-certifi python-requests python-cryptography python-aiohttp python-aiodns python-yarl)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('497f04bf9bddb6c26d846d6c79fc7826ee0b65edd6c9eaa3585b460a11a28a06')
+sha256sums=('e70e418fef26514214668744b4768bbb294efb904795d2c97fadc654dfbf0a0a')
 
 prepare() {
   cd "$srcdir"/ccxt-$pkgver
