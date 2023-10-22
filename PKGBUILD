@@ -1,13 +1,13 @@
-# Maintainer: Kasimir Wansing <kasimir at wansing dot org>
+# Maintainer: wansing <mail at wansing dot org>
 pkgname=croodle-git
-pkgver=r1191.fb5981e
-pkgrel=3
+pkgver=r1302.93901c9
+pkgrel=1
 pkgdesc="a web application to schedule a date or to do a poll on a general topics"
 arch=("any")
 url="https://github.com/jelhan/croodle"
 license=("MIT")
 depends=("php")
-makedepends=('composer' 'git' 'nodejs-lts-fermium' 'yarn')
+makedepends=('composer' 'git' 'nodejs-lts-hydrogen' 'npm')
 provides=("croodle")
 source=(
 	"git+https://github.com/jelhan/croodle.git"
@@ -35,9 +35,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/croodle"
-	yarn install
-	cd api/ && composer install --no-dev --no-interaction && cd ..
-	yarn build --prod
+	npm install
+	cd api/ && composer install --no-dev && cd ..
+	npm run build
 }
 
 package() {
