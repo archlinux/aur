@@ -2,14 +2,14 @@
 
 pkgname=zlib-ng-compat
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for 'next generation' systems (replaces zlib)"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/zlib-ng/zlib-ng"
 license=('custom:zlib')
 depends=('glibc')
 makedepends=('cmake')
-provides=("zlib")
+provides=('zlib' 'libz.so')
 conflicts=('zlib')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/zlib-ng/zlib-ng/archive/refs/tags/$pkgver.tar.gz")
