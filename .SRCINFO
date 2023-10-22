@@ -1,0 +1,13 @@
+pkgbase = r-deming
+	pkgdesc = Deming, Theil-Sen, Passing-Bablock and Total Least Squares Regression
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=deming
+	arch = any
+	license = LGPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/deming_1.4.tar.gz
+	md5sums = d63daf672291763deca4518eb39f7be2
+	sha256sums = 4190b5d9b6a76cbb33c24f3c1d291e416526fc610f3f10f5c3579a1957c6a3fb
+
+pkgname = r-deming
