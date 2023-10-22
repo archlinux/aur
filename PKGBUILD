@@ -45,7 +45,7 @@ case "${_autoupdate::1}" in
     )
 
     # update _pkgver
-    if [ x"$_pkgver" != x"$_pkgver_new" ] ; then
+    if [ x"${_pkgver:?}" != x"${_pkgver_new:?}" ] ; then
       _pkgver="$_pkgver_new"
       sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
     fi
@@ -72,8 +72,8 @@ fi
 options=('!emptydirs' '!strip')
 install="$_pkgname.install"
 
-_dl_url="$url/releases/download/M${_pkgver}"
-_dl_filename="${_pkgname}_${_pkgver}_$dl_type.deb"
+_dl_url="$url/releases/download/M${_pkgver:?}"
+_dl_filename="${_pkgname}_${_pkgver:?}_$dl_type.deb"
 source=(
   "$_dl_url/$_dl_filename"
   "$_pkgname.sh"
@@ -85,7 +85,7 @@ sha256sums=(
 
 pkgver() {
   printf '%s' \
-    "$_pkgver"
+    "${_pkgver:?}"
 }
 
 package() {
@@ -170,11 +170,11 @@ package() {
   # Icons
   for i in 16 24 32 48 64 128 256; do
     install -Dm644 "${pkgdir:?}/opt/${pkgname%-bin}/product_logo_${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-bin}.png"
+      "${pkgdir:?}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-bin}.png"
   done
 
   install -Dm644 "${pkgdir:?}/opt/${pkgname%-bin}/thorium_shell.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-shell$_type.png"
+    "${pkgdir:?}/usr/share/icons/hicolor/256x256/apps/thorium-shell$_type.png"
 
   echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
   rm -r -- \
