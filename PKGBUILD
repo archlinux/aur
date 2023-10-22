@@ -1,7 +1,7 @@
 # Maintainer: Zeta Gabriels <zetagabriels@gmail.com>
 _pkgname=userspace-tablet-driver-daemon
 pkgname=userspace-tablet-driver-daemon
-pkgver=r1.1502c8a
+pkgver=0.1.4
 pkgrel=1
 epoch=
 pkgdesc="A userspace daemon for XP-Pen and Huion tablets."
@@ -36,11 +36,6 @@ prepare() {
 		git fetch --depth 1 origin release
 		git reset --hard origin/release
 	fi
-}
-
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
