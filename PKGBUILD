@@ -2,12 +2,11 @@
 
 pkgname=libcava
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable.'
 arch=('x86_64')
 url='https://github.com/LukashonakV/cava'
 license=('MIT')
-provides=('libcava')
 depends=(
     'fftw'
     'ncurses'
