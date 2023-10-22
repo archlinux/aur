@@ -16,7 +16,7 @@ pkgbase = trojita-git
 	depends = mimetic
 	depends = qgpgme
 	depends = desktop-file-utils
-	depends = sonnet
+	depends = sonnet5
 	depends = ragel
 	provides = trojita
 	conflicts = trojita
@@ -24,4 +24,3 @@ pkgbase = trojita-git
 	md5sums = SKIP
 
 pkgname = trojita-git
-
