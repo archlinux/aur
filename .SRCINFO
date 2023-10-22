@@ -1,0 +1,18 @@
+pkgbase = python-mpi4jax
+	pkgdesc = Zero-copy MPI communication of JAX arrays, for turbo-charged HPC applications in Python.
+	pkgver = 0.3.15
+	pkgrel = 1
+	url = https://github.com/mpi4jax/mpi4jax
+	arch = any
+	license = Apache
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-jax
+	depends = python-mpi4py
+	source = python-mpi4jax-0.3.15.tar.gz::https://github.com/mpi4jax/mpi4jax/archive/refs/tags/v0.3.15.tar.gz
+	sha256sums = ec6e4a7db7684d42db1a5430a84f27f03f4ee3e5113825102a666ab3b1f5a377
+
+pkgname = python-mpi4jax
