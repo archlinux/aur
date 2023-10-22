@@ -1,5 +1,6 @@
-# Maintainer: Siavash Askari Nasr <ciavash@proton.me>
-# Previous Maintainer: Vladimir Svyatski <vsvyatski@yandex.ru>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Siavash Askari Nasr <ciavash@proton.me>
+# Contributor: Vladimir Svyatski <vsvyatski@yandex.ru>
 # Contributor: Dimitris Kiziridis <ragouel@outlook.com>
 # Contributor: EatMyVenom <eat.my.venomm@gmail.com>
 # Contributor: Uncle Hunto <unclehunto@yahoo.com>
@@ -8,11 +9,11 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=9.4.0
-pkgrel=2
+pkgver=9.5.0
+pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
-url='https://peazip.github.io'
+url='https://github.com/peazip/PeaZip'
 license=('LGPL3')
 depends=('qt5pas')
 options=('!emptydirs')
@@ -24,8 +25,8 @@ optdepends=('7-zip: File archiver with a high compression ratio'
 			'upx: Extendable, high-performance executable packer for several executable formats')
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
-source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
-sha256sums=('27b131ab40be1997a7f2c38635eb70814119a51420375237a4a0d681989747bf')
+source=("$url/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
+sha256sums=('82aea1a3cc213373ee5699b4c3d2035259f1c6161f0887b74b6ee6ba3263944e')
 
 prepare() {
 	rm -r usr/share/peazip/batch/{Windows,'macOS service menus',bat}
