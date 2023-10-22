@@ -10,7 +10,6 @@ pkgbase = findex-bin
 	depends = libkeybinder3
 	provides = findex
 	conflicts = findex
-	conflicts = findex-git
 	source = https://github.com/mdgaziur/findex/releases/download/v0.8.0/findex-0.8.0-x86_64.tar.gz
 	sha256sums = e1d036de9cd7cc0a47240b7816ebb1da3c31044865f1b2ed9c945ae03d0dbacc
 
