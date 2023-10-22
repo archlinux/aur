@@ -51,6 +51,7 @@ makedepends=(
   jq
   meson
   ninja
+  patch
   pkgconf
   xorgproto
 )
