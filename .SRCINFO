@@ -1,0 +1,18 @@
+pkgbase = adbren-git
+	pkgdesc = Rename and organize anime using this AniDB API client written in perl
+	pkgver = r58.12bee5b
+	pkgrel = 1
+	url = https://github.com/clip9/adbren
+	arch = x86_64
+	license = custom:none
+	makedepends = git
+	depends = perl
+	depends = perl-digest-md4
+	depends = perl-file-homedir
+	depends = perl-file-pid
+	provides = adbren
+	conflicts = adbren
+	source = adbren::git+https://github.com/clip9/adbren
+	md5sums = SKIP
+
+pkgname = adbren-git
