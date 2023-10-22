@@ -9,9 +9,8 @@ pkgbase = findex-git
 	makedepends = rustup
 	depends = gtk3
 	depends = libkeybinder3
-	provides = findex-git
-	conflicts = findex-git
-	conflicts = findex-bin
+	provides = findex
+	conflicts = findex
 	source = git+https://github.com/mdgaziur/findex
 	md5sums = SKIP
 
