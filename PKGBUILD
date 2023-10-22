@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r91.e67428f
+pkgver=r92.7b21018
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -78,8 +78,21 @@ _submodules=(
   xdg-desktop-portal-cosmic
 )
 
-  # Remove cosmic-icons from array for `cargo fetch`
-_repos=("${(@)${_submodules}:#cosmic-icons>}")
+_repos=(
+  cosmic-applets
+  cosmic-applibrary
+  cosmic-bg
+  cosmic-comp
+  cosmic-launcher
+  cosmic-notifications
+  cosmic-osd
+  cosmic-panel
+  cosmic-session
+  cosmic-settings
+  cosmic-settings-daemon
+  cosmic-workspaces-epoch
+  xdg-desktop-portal-cosmic
+)
 
 prepare() {
   cd "$srcdir/cosmic-epoch"
