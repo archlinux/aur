@@ -3,7 +3,7 @@
 
 _name=RaySession
 pkgname=${_name,,}
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 groups=(pro-audio)
 source=("https://github.com/Houston4444/RaySession/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz"
         'raysession-makefile-destdir.patch')
-sha256sums=('7f73fd09373f3355426273a17599e740b49e461b5401b0a28032ac21eecc875e'
+sha256sums=('a84377cc12bf82844b219694d3a5d79bc1f9ca3e108e3fcd1fe6e41e48e12dac'
             '943c821d4d5cae581004ca54030b720ac835a03cd7691492bcbcb6e146bb078a')
 
 prepare() {
