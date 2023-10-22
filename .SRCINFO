@@ -1,0 +1,12 @@
+pkgbase = plasma5-applets-corner-menu
+	pkgdesc = KppleMenu-inspired MacOS and GNOME Style options menu.
+	pkgver = 5.94d91bd
+	pkgrel = 1
+	url = https://www.opencode.net/arshbangar/corner-menu
+	arch = any
+	license = LGPL2
+	depends = plasma-workspace
+	source = plasma5-applets-corner-menu::git+https://www.opencode.net/arshbangar/corner-menu.git
+	sha512sums = SKIP
+
+pkgname = plasma5-applets-corner-menu
