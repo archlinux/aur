@@ -5,9 +5,9 @@ pkgver=3.0.r12.g298a55b6
 pkgrel=1
 pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
-url="https://github.com/$pkgname/$pkgname/"
+url="https://github.com/plastex/plastex/"
 license=('custom')
-depends=('python' 'texlive-core')
+depends=('python' 'python-jinja' 'python-unidecode' 'python-pillow' 'python-typing-extensions' 'texlive-core')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('plastex')
 conflicts=('plastex')
@@ -16,21 +16,21 @@ b2sums=('SKIP')
 _gitname="plastex"
 
 build() {
-  cd "$_gitname"
-  python -m build --wheel --no-isolation
+    cd "$_gitname"
+    python -m build --wheel --no-isolation
 }
 
 pkgver() {
- cd ${pkgname%-git}
- git describe --tags | sed 's|-|.r|' |tr - .
+    cd "$_gitname"
+    git describe --tags | sed 's|-|.r|' |tr - .
 }
 
 package() {
-  cd "$_gitname"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$_gitname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  for _i in licenses/*; do
-    install -Dm644 ${_i} "$pkgdir"/usr/share/licenses/"$pkgname"/"$_i"
-  done
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+    for _i in licenses/*; do
+      install -Dm644 ${_i} "$pkgdir"/usr/share/licenses/"$pkgname"/"$_i"
+    done
 }
