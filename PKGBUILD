@@ -9,14 +9,14 @@ _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
 _pkgver=8.1.0
 pkgver=${_pkgver//-/} # for beta versions
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced digital photo management application - without akonadi & mariadb'
 arch=(x86_64)
 license=(GPL)
 url='https://www.digikam.org/'
-depends=(lensfun opencv knotifyconfig libksane kfilemetadata marble-common threadweaver kcalendarcore
+depends=(lensfun opencv knotifyconfig5 libksane kfilemetadata5 marble-common threadweaver5 kcalendarcore5
          qt5-networkauth qt5-xmlpatterns imagemagick jasper glu perl-image-exiftool)
-makedepends=(extra-cmake-modules doxygen eigen boost kdoctools)
+makedepends=(extra-cmake-modules doxygen eigen boost kdoctools5)
 conflicts=('digikam' 'digikam-git')
 provides=('digikam')
 optdepends=('hugin: panorama tool'
