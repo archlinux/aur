@@ -1,6 +1,6 @@
 pkgbase = r-magick
 	pkgdesc = Advanced Graphics and Image-Processing in R
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=magick
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = r-magick
 	optdepends = r-spelling
 	optdepends = r-tesseract
 	optdepends = r-webp
-	source = https://cran.r-project.org/src/contrib/magick_2.8.0.tar.gz
-	md5sums = d0d5bbeef751b8bd29c89542d9d397d8
-	sha256sums = e83a540f69f76ccbdb89b10b731d13f102e5edc5d75a521933b4bd9df85581aa
+	source = https://cran.r-project.org/src/contrib/magick_2.8.1.tar.gz
+	md5sums = 1297730bf7e08b185ffc31bf7ea005c2
+	sha256sums = d8fcd10e1817d42796102e85df05bb45fc8ced4c721b06fac37e61b6792b458e
 
 pkgname = r-magick
