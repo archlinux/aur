@@ -4,32 +4,52 @@
 # Contributor: JPratama7 <josepratama080@gmail.com>
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
-# options - defaults
-if [ -z "$_pkgver" ] || [ ! -z "$_srcinfo" ] ; then
+# options
+if [ ! -z "$_srcinfo" ] ; then
+  _autoupdate=false
+  _sse3=true
+  _sse4=true
+fi
+
+if [ -z "$_pkgver" ] ; then
   : ${_autoupdate:=true}
 else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=117.0.5938.157}
 : ${_sse3:=false}
-
-# basic info
-_pkgname="thorium-browser"
-pkgdesc="Chromium fork focused on high performance and security"
-pkgver=117.0.5938.157
-pkgrel=2
 
 case "${_sse3::1}" in
   't'|'y'|'1')
-    pkgname="$_pkgname-sse3-bin"
-    url="https://github.com/Alex313031/Thorium-SSE3"
-    dl_type="SSE3"
+    : ${_sse4:=false}
     ;;
   *)
-    pkgname="$_pkgname-bin"
+    : ${_sse4:=true}
+    ;;
+esac
+
+: ${_pkgver:=117.0.5938.157}
+
+# basic info
+_pkgname="thorium-browser"
+pkgbase="$_pkgname-bin"
+pkgdesc="Chromium fork focused on high performance and security"
+pkgver=117.0.5938.157
+pkgrel=3
+arch=('x86_64')
+license=('GPL3')
+
+case "${_sse3::1}" in
+  't'|'y'|'1')
+    pkgname+=("$_pkgname-sse3-bin")
+    url="https://github.com/Alex313031/Thorium-SSE3"
+    ;;
+esac
+
+case "${_sse4::1}" in
+  't'|'y'|'1')
+    pkgname+=("$_pkgname-bin")
     url="https://github.com/Alex313031/Thorium"
-    dl_type="amd64"
     ;;
 esac
 
@@ -52,9 +72,6 @@ case "${_autoupdate::1}" in
     ;;
 esac
 
-arch=('x86_64')
-license=('GPL3')
-
 depends=()
 makedepends=()
 optdepends=(
@@ -64,44 +81,54 @@ optdepends=(
   'kwallet: for storing passwords in KWallet'
 )
 
-if [ x"$_pkgname" != x"$pkgname" ] ; then
-  provides=("${pkgname%-*}")
-  conflicts=("${pkgname%-*}")
-fi
-
 options=('!emptydirs' '!strip')
 install="$_pkgname.install"
 
-_dl_url="$url/releases/download/M${_pkgver:?}"
-_dl_filename="${_pkgname}_${_pkgver:?}_$dl_type.deb"
-source=(
-  "$_dl_url/$_dl_filename"
-  "$_pkgname.sh"
-)
-sha256sums=(
-  'SKIP'
-  'e09c5c523f45b8acfd58403514f9ad69047daa94600787bd7aee33d78080f9a9'
-)
+source=("$_pkgname.sh")
+sha256sums=('e09c5c523f45b8acfd58403514f9ad69047daa94600787bd7aee33d78080f9a9')
+
+case "${_sse3::1}" in
+  't'|'y'|'1')
+    _dl_type="SSE3"
+    _dl_url="$url/releases/download/M${_pkgver:?}"
+    _dl_filename="${_pkgname}_${_pkgver:?}_$_dl_type.deb"
+    noextract+=("$_dl_filename")
+    source+=("$_dl_url/$_dl_filename")
+    sha256sums+=('SKIP')
+    ;;
+esac
+
+case "${_sse4::1}" in
+  't'|'y'|'1')
+    _dl_type="amd64"
+    _dl_url="$url/releases/download/M${_pkgver:?}"
+    _dl_filename="${_pkgname}_${_pkgver:?}_$_dl_type.deb"
+    noextract+=("$_dl_filename")
+    source+=("$_dl_url/$_dl_filename")
+    sha256sums+=('SKIP')
+    ;;
+esac
 
 pkgver() {
   printf '%s' \
     "${_pkgver:?}"
 }
 
-package() {
-  depends+=(
-    'alsa-lib'
-    'gtk3'
-    'libcups'
-    'libxss'
-    'libxtst'
-    'nss'
-    'ttf-liberation'
-    'xdg-utils'
-  )
+_package() {
+  echo "  -> Extracting the archive..."
+  case "${_build_sse3::1}" in
+    't'|'y'|'1')
+      _dl_type="SSE3"
+      ;;
+    *)
+      _dl_type="amd64"
+      ;;
+  esac
 
-  echo "  -> Extracting the data.tar.xz..."
+  _dl_filename="${_pkgname}_${_pkgver:?}_$_dl_type.deb"
+  bsdtar -xf "$_dl_filename" data.tar.xz
   bsdtar -xf data.tar.xz -C "${pkgdir:?}/"
+  rm data.tar.xz
 
   echo "  -> Moving stuff in place..."
   mv "${pkgdir:?}/opt/chromium.org/thorium" "${pkgdir:?}/opt/${pkgname%-bin}"
@@ -114,13 +141,17 @@ package() {
   sed -E "s@/opt/chromium.org/thorium/@/opt/thorium-browser/@" \
     -i "${pkgdir:?}/usr/share/gnome-control-center/default-apps/thorium-browser.xml"
 
-  case "${_sse3::1}" in
+  # Launcher
+  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/${pkgname%-bin}"
+  chmod 4755 "${pkgdir:?}/opt/${pkgname%-bin}/chrome-sandbox"
+
+  case "${_build_sse3::1}" in
     't'|'y'|'1')
       local _type="-sse3"
 
       sed -E \
         -e "s@thorium-browser@${pkgname%-bin}@" \
-        -i "${srcdir:?}/$_pkgname.sh"
+        -i "${pkgdir:?}/usr/bin/${pkgname%-bin}"
 
       sed -E \
         -e "s@thorium-shell@thorium-shell$_type@" \
@@ -159,14 +190,6 @@ package() {
       ;;
   esac
 
-  # Launcher
-  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/${pkgname%-bin}"
-  chmod 4755 "${pkgdir:?}/opt/${pkgname%-bin}/chrome-sandbox"
-
-  sed -E \
-    -e "s@/opt/thorium-browser/@/opt/${pkgname%-bin}/@" \
-    -i "${pkgdir:?}/usr/bin/${pkgname%-bin}"
-
   # Icons
   for i in 16 24 32 48 64 128 256; do
     install -Dm644 "${pkgdir:?}/opt/${pkgname%-bin}/product_logo_${i}.png" \
@@ -184,4 +207,42 @@ package() {
     "${pkgdir:?}/opt/${pkgname%-bin}/cron/" \
     "${pkgdir:?}/opt/${pkgname%-bin}"/product_logo_*.{png,xpm} \
     "${pkgdir:?}/usr/share/menu/"
+}
+
+package_thorium-browser-bin() {
+  url="https://github.com/Alex313031/Thorium"
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  depends+=(
+    'alsa-lib'
+    'gtk3'
+    'libcups'
+    'libxss'
+    'libxtst'
+    'nss'
+    'ttf-liberation'
+    'xdg-utils'
+  )
+
+  _build_sse3=false _package
+}
+
+package_thorium-browser-sse3-bin() {
+  url="https://github.com/Alex313031/Thorium-SSE3"
+  provides=("$_pkgname-sse3")
+  conflicts=("$_pkgname-sse3")
+
+  depends+=(
+    'alsa-lib'
+    'gtk3'
+    'libcups'
+    'libxss'
+    'libxtst'
+    'nss'
+    'ttf-liberation'
+    'xdg-utils'
+  )
+
+  _build_sse3=true _package
 }
