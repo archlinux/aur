@@ -1,7 +1,7 @@
 pkgbase = mongodb-tools
 	pkgdesc = Import, export, and diagnostic tools for MongoDB
 	pkgver = 100.9.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mongodb/mongo-tools
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = mongodb-tools
 	depends = glibc
 	depends = krb5
 	source = mongodb-tools-100.9.0.tar.gz::https://github.com/mongodb/mongo-tools/archive/refs/tags/100.9.0.tar.gz
-	sha256sums = 246093cdb36716baeacc4eb20c26f574f6459c86746e81702337e2d64b52c860
+	sha256sums = c9d2e94e5f96e2e9cf36c0a9acb8a78063ea3f060e20cf9edd830b391350016a
 
 pkgname = mongodb-tools
