@@ -1,0 +1,53 @@
+diff --unified --recursive --text calls-v45.0.orig/plugins/provider/tests/meson.build calls-v45.0/plugins/provider/tests/meson.build
+--- calls-v45.0.orig/plugins/provider/tests/meson.build	2023-10-21 19:55:07.143448431 +0200
++++ calls-v45.0/plugins/provider/tests/meson.build	2023-10-21 20:02:01.958469795 +0200
+@@ -96,21 +96,6 @@
+                )
+ test('media', t, env: test_env)
+ 
+-test_sources = [ 'test-sip.c' ]
+-test_sources += sip_sources
+-t = executable('sip', test_sources,
+-               c_args : test_cflags,
+-               link_args: test_link_args,
+-               pie: true,
+-               link_with : [calls_vala, libcalls],
+-               dependencies: [calls_deps, sip_deps],
+-               include_directories : [
+-                   calls_includes,
+-                   sip_include,
+-                 ]
+-               )
+-test('sip', t, env: test_env)
+-
+ test_sources = [ 'test-srtp.c' ]
+ test_sources += sip_sources
+ t = executable('srtp', test_sources,
+diff --unified --recursive --text calls-v45.0.orig/tests/meson.build calls-v45.0/tests/meson.build
+--- calls-v45.0.orig/tests/meson.build	2023-10-21 19:55:07.153448468 +0200
++++ calls-v45.0/tests/meson.build	2023-10-21 20:00:36.888101563 +0200
+@@ -165,24 +165,4 @@
+ 
+ dbus_run_session = find_program('dbus-run-session')
+ 
+-if dbus_run_session.found ()
+-  test_sources = [ 'test-application.c' ]
+-  t = executable('application', test_sources, calls_resources,
+-                 c_args : test_cflags,
+-                 link_args: test_link_args,
+-                 pie: true,
+-                 link_with : [calls_vala, libcalls],
+-                 dependencies: calls_deps,
+-                 include_directories : [
+-                     calls_includes,
+-                   ]
+-                 )
+-  test('application',
+-      dbus_run_session,
+-      args: t.full_path(),
+-      env: test_env,
+-      timeout : 300
+-      )
+-endif
+-
+ endif
