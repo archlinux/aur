@@ -3,7 +3,7 @@
 _pkgname=guilded
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=1.0.9219633
+pkgver=1.0.9224397
 pkgrel=1
 pkgdesc="Chat for Gaming Communities using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -16,8 +16,8 @@ depends=("${_electron}" 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 
   'alsa-lib' 'libxkbfile')
 source=("${pkgname}-${pkgver}.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb"
   'guilded-launcher.sh')
-sha512sums=('abdd060de685cf370ba636f7f7a7418977c101549fa1b7deb0d04aebc57c7e7049ea4251eabed672a70b85fbfcd371f9bb6977fa82efeee90327cc93e72372c3'
-	  'a037f8589fa25ccc6a1de4bd98e633ca909106058988c6eeb40e83f23f0c6d2ab24c3c4e00b5c0ab7ebc20706f6d80bddfa2efbe01b22a4d7e60712d73c14557')
+sha512sums=('d2767551b32e8cf4162d1fe8133bba302bdfc1c1ee3170c290ab6ac54a171c842bac59ee84a97ff0c0cc8afc2616ef200f8c7d429825b11b6b34535b795aaa8f'
+	  '255f28575321801ba7ac35c72fc87bfb81551dd0c1c8f892fe7baca3d8ebf67adc3ebe57f48d4729f4b34f1879211a71beb68e66663ed8af9f6e5f6c173a897f')
 prepare() {
   tar Jxvf data.tar.xz
   sed -i "s|@PKGNAME@|${_pkgname}|;s|@ELECTRON@|${_electron}|" guilded-launcher.sh
@@ -28,10 +28,10 @@ package() {
   cp -r usr "$pkgdir"/usr
 
   # Install the app
-  install -d "$pkgdir"/usr/lib/$_pkgname
+  install -d "$pkgdir"/usr/share/$_pkgname
 
   # Copy Relevant data
-  cp -r opt/Guilded/resources/* "$pkgdir"/usr/lib/$_pkgname/
+  cp -r opt/Guilded/resources "$pkgdir"/usr/share/$_pkgname/
 
   install -d "$pkgdir"/usr/{bin,share/{icons,applications,doc}}
   install -Dm 755 "${srcdir}/guilded-launcher.sh" "${pkgdir}/usr/bin/${_pkgname}"
