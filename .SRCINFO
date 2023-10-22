@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-suitesparse
 	pkgdesc = A collection of sparse matrix libraries (mingw-w64)
-	pkgver = 7.2.0
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://people.engr.tamu.edu/davis/suitesparse.html
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-suitesparse
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v7.2.0.tar.gz
-	sha256sums = ce63c34f566d0aeae3c85fdc5b72d293f7e834d10ec0a0417b4c0823ce6c0474
+	source = https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v7.2.2.tar.gz
+	sha256sums = ec0ece3348ce410d938543dc94f63fc7816016610f2d0d5cfc633c8f86597e02
 
 pkgname = mingw-w64-suitesparse

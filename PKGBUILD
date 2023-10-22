@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=7.2.0
+pkgver=7.2.2
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -9,15 +9,13 @@ makedepends=('mingw-w64-cmake')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz")
-sha256sums=('ce63c34f566d0aeae3c85fdc5b72d293f7e834d10ec0a0417b4c0823ce6c0474')
+sha256sums=('ec0ece3348ce410d938543dc94f63fc7816016610f2d0d5cfc633c8f86597e02')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _subdirectories="SuiteSparse_config Mongoose AMD BTF CAMD CCOLAMD COLAMD CHOLMOD CXSparse LDL KLU UMFPACK RBio SuiteSparse_GPURuntime GPUQREngine SPQR SPEX GraphBLAS"
 
 prepare () {
   cd "$srcdir"/SuiteSparse-${pkgver}
-  # https://github.com/DrTimothyAldenDavis/SuiteSparse/issues/408
-  curl -L https://github.com/DrTimothyAldenDavis/SuiteSparse/commit/f3c9f8dd.patch | patch -p1
 }
 
 build() {
