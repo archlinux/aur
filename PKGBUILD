@@ -10,6 +10,7 @@ url="https://github.com/mayswind/AriaNg"
 license=('MIT')
 depends=('xdg-utils')
 makedepends=('unzip')
+conflicts=("${_pkgname}")
 
 source=("${_pkgname}.zip::https://github.com/mayswind/AriaNg/releases/download/${pkgver}/AriaNg-${pkgver}-AllInOne.zip"
         "${_pkgname}.desktop"
