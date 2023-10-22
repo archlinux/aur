@@ -2,7 +2,7 @@
 
 pkgname=ttf-amiri
 pkgver=1.000
-pkgrel=3
+pkgrel=4
 pkgdesc="A Classical Arabic Naskh typeface pioneered by Amiria/Bulaq Press in Cairo"
 arch=('any')
 url="http://www.amirifont.org/"
