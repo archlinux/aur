@@ -1,7 +1,7 @@
 # Maintainer: Vitrum <wqdxosty1yhj@bk.ru>
 
 pkgname=keyman
-pkgver=16.0.141
+pkgver=16.0.142
 pkgrel=1
 pkgdesc="IBus engine supporting over 1,000 keyboard layouts (former KMFL)"
 arch=('i686' 'x86_64')
@@ -18,9 +18,10 @@ optdepends=(
 replaces=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 conflicts=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.keyman.com/linux/stable/$pkgver/keyman-$pkgver.tar.gz")
-sha256sums=('b56c8ddf0f36640e809689144c7c944e59a7cfec1d065ff4324398468aa92943')
+sha256sums=('71edaabf64b39735af3d654b109314b1ca65b0edc23fd25060c76fd0a1a01388')
 
 build() {
+    echo -e "\n\n### build 'keyman' ######\n\n"
     cd "$srcdir/keyman/core"
     #core/build.sh configure -- --prefix=/usr
     arch-meson ./ build
@@ -39,7 +40,9 @@ build() {
         --datadir=/usr/share
     make
 
+    echo -e "\n\n### build 'keyman-config' ######\n\n"
     cd "$srcdir/keyman/linux/keyman-config"
+    ./version.sh
     python setup.py build
     make man
 }
