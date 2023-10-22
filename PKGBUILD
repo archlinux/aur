@@ -1,27 +1,28 @@
-# Maintainer: Yufan You <ouuansteve at gmail>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Yufan You <ouuansteve at gmail>
 
-pkgname=carbon-now-cli-bin
-_npmname=carbon-now-cli
-pkgver=1.4.0
+_base=carbon-now-cli
+pkgname=${_base}-bin
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='Beautiful images of your code — from right inside your terminal.'
-provides=('carbon-now-cli')
-conflicts=('carbon-now-cli')
-arch=('any')
-url='https://github.com/mixn/carbon-now-cli'
-license=('MIT')
-depends=('nodejs')
-makedepends=('npm' 'git')
-source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('d9463e2ce016d1460301c0d2eb0114146f594ec1b88277dda7fdd6d1364a31e8')
-noextract=("${pkgname}-${pkgver}.tgz")
+pkgdesc="Beautiful images of your code — from right inside your terminal"
+provides=(${_base})
+conflicts=(${_base})
+arch=(any)
+url="https://github.com/mixn/${_base}"
+license=(MIT)
+# depends=(nodejs)
+makedepends=(npm)
+source=(https://registry.npmjs.org/${_base}/-/${_base}-${pkgver}.tgz)
+sha512sums=('9da776c1a187aede0848a5375403dd7fe73279774f455b8d989490b4b0f829235c3f0477c2aa600a8ed8e0f05961d614f84d08452692e5ad507c8536e489eac7')
+noextract=("${_base}-${pkgver}.tgz")
 
 package() {
   cd "$srcdir"
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
-  install -Dm644 "$_npmdir/$_npmname/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_base-$pkgver.tgz"
+  install -Dm644 "$_npmdir/$_base/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   chown -R root:root "${pkgdir}"
 }
