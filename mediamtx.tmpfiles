@@ -1,1 +1,1 @@
-f /etc/mediamtx/mediamtx.yml 0600 mediamtx mediamtx -
+f /etc/mediamtx/mediamtx.yml 0644 mediamtx mediamtx -
