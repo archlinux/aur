@@ -1,0 +1,12 @@
+pkgbase = guile-hoot
+	pkgdesc = A Spritely project which provides a full-featured WebAssembly (WASM) toolkit in Scheme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://spritely.institute/hoot/
+	arch = any
+	license = Apache
+	depends = guile-git
+	source = https://spritely.institute/files/releases/guile-hoot/guile-hoot-0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = guile-hoot
