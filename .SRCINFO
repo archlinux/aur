@@ -1,14 +1,15 @@
 pkgbase = r-rsq
 	pkgdesc = R-Squared and Related Measures
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rsq
 	arch = any
 	license = GPL
-	depends = r
+	depends = r-deming
 	depends = r-deriv
 	depends = r-lme4
-	source = https://cran.r-project.org/src/contrib/rsq_2.5.tar.gz
-	sha256sums = 6e9c58ba22d8d53de5cf491da229a8532abcdecf98484b4359c741d8b346c2e4
+	source = https://cran.r-project.org/src/contrib/rsq_2.6.tar.gz
+	md5sums = f03014bff15521bcb09ba73f207a8fc5
+	sha256sums = f7e9da5b829f8226dbdb9b94c1afbb01403e9f02c56977570458876705cd6905
 
 pkgname = r-rsq
