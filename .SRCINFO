@@ -1,7 +1,7 @@
 pkgbase = trantor
 	pkgdesc = A non-blocking I/O tcp network lib based on c++14/17
-	pkgver = 1.5.11
-	pkgrel = 2
+	pkgver = 1.5.14
+	pkgrel = 1
 	url = https://github.com/an-tao/trantor
 	arch = x86_64
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = trantor
 	depends = c-ares
 	depends = openssl
 	depends = gcc-libs
-	source = trantor-1.5.11.tar.gz::https://github.com/an-tao/trantor/archive/v1.5.11.tar.gz
-	sha256sums = 3cff9653380f65acaa6ffa191620a2783e866a4552c3408a6919759ce4cfc1dc
+	source = trantor-1.5.14.tar.gz::https://github.com/an-tao/trantor/archive/v1.5.14.tar.gz
+	sha256sums = 80775d65fd49dfb0eb85d70cd9c0f0cff38a7f46c90db918862c46e03ae63810
 
 pkgname = trantor
