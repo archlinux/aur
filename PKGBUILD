@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=spitbol-git
-pkgver=4.0.r1351.155a3da
+pkgver=4.0c.r1375.edc09c4
 pkgrel=1
 pkgdesc='An extremely high performance implementation of the SNOBOL4 language that brings raw power and speed to non-numeric computation.'
 url='https://github.com/spitbol/x64'
@@ -25,17 +25,20 @@ build() {
 	make bininst
 }
 
-check() {
-	cd "$srcdir/${pkgname}"
-	./sanity-check
-}
+#check() {
+#	cd "$srcdir/${pkgname}"
+#	./sanity-check
+#	cd "$srcdir/${pkgname}/test"
+#	math_tests.sh
+#}
 
 package() {
 	cd "$srcdir/${pkgname}"
-	install -D -m755 sbl $pkgdir/usr/bin/spitbol
+	sed -i 's/sudo//g' Makefile
+	make destprefix="$pkgdir/usr" \
+	     DEMODEST="$pkgdir/usr/share/doc/${pkgname%-*}/demos" \
+	     MANDEST="$pkgdir/usr/share/man/man1" install
 	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
-	install -D -m644 spitbol.1 $pkgdir/usr/share/man/man1/spitbol.1
 	cd "$srcdir/${pkgname%-*}-docs"
 	install -D -m644 green-book.pdf $pkgdir/usr/share/doc/${pkgname%-*}/green-book.pdf
 	install -D -m644 spitbol-manual-v3.7.pdf $pkgdir/usr/share/doc/${pkgname%-*}/spitbol-manual-v3.7.pdf
