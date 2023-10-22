@@ -1,9 +1,13 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
+
+# NOTE: This is EOL, and entirely unsupported. It is needed to build old packages
+# that are no longer maintained
 
 pkgname=nodejs-lts-fermium
 pkgver=14.21.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Evented I/O for V8 javascript (LTS release: Fermium)"
 arch=(x86_64)
 url="https://nodejs.org/"
@@ -22,11 +26,12 @@ source=(${url}/dist/v${pkgver}/node-v${pkgver}.tar.xz
         libnghttp1.45.1_compat.patch)
 # https://nodejs.org/download/release/latest-fermium/SHASUMS256.txt.asc
 sha256sums=('458ec092e60ad700ddcf079cb63d435c15da4c7bb3d3f99b9a8e58a99e54075e'
-            'bb5f91aeb0f87e7bcbed531fe8922beec1b51bd2ceeec91e9d25ede800817459'
+            'bf7a1159078ff80037cb98414f2c9fb55a09475137b3cadcce5f0386c09e0cbf'
             'e139f12abf856fdda3cb130d4af31d06f5cc327939f4b046f09052a90ed271a5'
             'f38518f306f1a62e0cd04ec2607fb6733ff95ad4090acb07fa091dfd002985c6'
             '886d0edf868c39567124937f93a43fb3e92fa65b5244b8c608d6482ed217fa56'
             '81f8a060b40786c02de400620da4060483d910fe7a6b68d8328f3747caf54619')
+
 validpgpkeys=(C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8  # Myles Borins <mylesborins@google.com>
               77984A986EBC2AA786BC0F66B01FBB92821C587A  # Gibson Fahnestock <gibfahn@gmail.com>
               B9AE9905FFD7803F25714661B63B535A4C206CA9  # Evan Lucas <evanlucas@me.com>
