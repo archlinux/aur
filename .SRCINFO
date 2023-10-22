@@ -1,7 +1,7 @@
 pkgbase = greetd-fakegreet
-	pkgdesc = Generic greeter daemon
+	pkgdesc = Generic greeter fakegreet for debu
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~kennylevinsen/greetd
 	arch = x86_64
 	license = GPL3
