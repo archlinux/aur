@@ -3,12 +3,12 @@
 _pkgname=plasma-applet-places-widget
 pkgname=${_pkgname}-git
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasmoid Places Widget for Plasma desktop'
 arch=('any')
 url='https://github.com/HessiJames/plasma-applet-places-widget'
 license=('GPL2')
-depends=( 'plasma-framework' 'plasma-workspace' )
+depends=( 'plasma-framework5' 'plasma-workspace' )
 makedepends=( 'git' 'cmake' )
 source=("${_pkgname}::git+https://github.com/HessiJames/plasma-applet-places-widget.git")
 sha1sums=('SKIP')
