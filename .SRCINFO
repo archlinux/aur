@@ -1,6 +1,6 @@
 pkgbase = pcf-unifont-extra
 	pkgdesc = GNU Unifont Glyphs (PCF version, bold and italic)
-	pkgver = 15.1.01
+	pkgver = 15.1.03
 	pkgrel = 1
 	url = https://unifoundry.com/unifont/index.html
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = pcf-unifont-extra
 	license = custom:OFL
 	makedepends = mkbold-mkitalic
 	makedepends = xorg-bdftopcf
-	source = https://ftp.gnu.org/gnu/unifont/unifont-15.1.01/unifont-15.1.01.bdf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-15.1.01/unifont-15.1.01.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-15.1.03/unifont-15.1.03.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-15.1.03/unifont-15.1.03.bdf.gz.sig
 	source = https://unifoundry.com/LICENSE.txt
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = 9019b5ecced52a2ca46e81316c1cbaca1b47d8871d9ff5e413c0686e0e47a11d
+	sha256sums = f343c63509c701208385b57ef697f8e1054904e0b381ac66f515ff94f74830bb
 	sha256sums = SKIP
 	sha256sums = 1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87
 
