@@ -3,7 +3,7 @@
 pkgname=dxvk-mingw
 pkgver=2.3
 _asyncver=2.2-3
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -20,7 +20,7 @@ source=(
     "dxvk-async-$_asyncver.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-$_asyncver.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
-    "setup_dxvk.sh::https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh"
+    "setup_dxvk.sh"
     "setup_dxvk"
 )
 
@@ -112,7 +112,7 @@ package() {
 
     DESTDIR="$pkgdir" ninja -C "build/x32" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
-    install -Dm 755 -t "$pkgdir/usr/share/dxvk" "$srcdir"/setup_dxvk.sh
+    install -Dm 755 -t "$pkgdir/usr/share/dxvk" setup_dxvk.sh
     install -Dm 644 -t "$pkgdir/usr/share/dxvk" dxvk/dxvk.conf
     install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" dxvk/README.md
     install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" dxvk/LICENSE
