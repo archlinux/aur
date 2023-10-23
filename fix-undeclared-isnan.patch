@@ -1,0 +1,10 @@
+--- components/cronet/native/engine.cc	2023-10-23 22:05:39.245941623 +0200
++++ components/cronet/native/engine.cc	2023-10-23 22:05:55.586781891 +0200
+@@ -4,6 +4,7 @@
+
+ #include "components/cronet/native/engine.h"
+
++#include <math.h>
+ #include <unordered_set>
+ #include <utility>
+

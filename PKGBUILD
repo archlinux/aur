@@ -1,39 +1,27 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
-# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+#!/bin/bash
+#
+# Based on https://gitlab.archlinux.org/archlinux/packaging/packages/chromium.
+# Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
-pkgname=chromium
+pkgname=cronet
 pkgver=119.0.6045.105
 pkgrel=1
-_launcher_ver=8
-_manual_clone=1
-pkgdesc="A web browser built for speed, simplicity, and security"
+_manual_clone=0
+pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
-url="https://www.chromium.org/Home"
+url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
 license=('BSD')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'qt5-base' 'java-runtime-headless' 'git')
-optdepends=('pipewire: WebRTC desktop sharing under Wayland'
-            'kdialog: support for native dialogs in Plasma'
-            'qt5-base: enable Qt5 with --enable-features=AllowQt'
-            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
-            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma')
+depends=('nss' 'libffi')
+makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         REVERT-disable-autoupgrading-debug-info.patch
-        use-oauth2-client-switches-as-default.patch)
-sha256sums=('55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3'
-            '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+        fix-undeclared-isnan.patch)
+sha256sums=('73cb8c39e928f8c627d747d37a3b020f08913ef5508f893758d70bdbd545dbcf'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            SKIP)
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
@@ -43,42 +31,95 @@ fi
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  #[brotli]=brotli
-  [dav1d]=dav1d
-  [ffmpeg]=ffmpeg
-  [flac]=flac
-  [fontconfig]=fontconfig
-  [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
+  # [absl_algorithm]=
+  # [absl_base]=abseil-cpp
+  # [absl_cleanup]=
+  # [absl_container]=
+  # [absl_debugging]=
+  # [absl_flags]=
+  # [absl_functional]=
+  # [absl_hash]=
+  # [absl_log]=
+  # [absl_log_internal]=
+  # [absl_memory]=
+  # [absl_meta]=
+  # [absl_numeric]=
+  # [absl_random]=
+  # [absl_status]=
+  # [absl_strings]=
+  # [absl_synchronization]=
+  # [absl_time]=
+  # [absl_types]=
+  # [absl_utility]=
+  [brotli]=brotli
+  [double-conversion]=double-conversion
   [icu]=icu
-  [jsoncpp]=jsoncpp
-  #[libaom]=aom
-  #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
-  [libdrm]=
-  [libjpeg]=libjpeg
-  [libpng]=libpng
-  #[libvpx]=libvpx
-  [libwebp]=libwebp
-  [libxml]=libxml2
-  [libxslt]=libxslt
-  [opus]=opus
-  [re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
+  [libevent]=libevent
   [zlib]=minizip
 )
+declare -gA _system_make_libs=(
+  [jsoncpp]=jsoncpp
+)
 _unwanted_bundled_libs=(
-  $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
+  # third_party/abseil-cpp/absl/algorithm
+  # third_party/abseil-cpp/absl/base
+  # third_party/abseil-cpp/absl/cleanup
+  # third_party/abseil-cpp/absl/container
+  # third_party/abseil-cpp/absl/debugging
+  # third_party/abseil-cpp/absl/flags
+  # third_party/abseil-cpp/absl/functional
+  # third_party/abseil-cpp/absl/hash
+  # third_party/abseil-cpp/absl/log
+  # third_party/abseil-cpp/absl/log/internal
+  # third_party/abseil-cpp/absl/memory
+  # third_party/abseil-cpp/absl/meta
+  # third_party/abseil-cpp/absl/numeric
+  # third_party/abseil-cpp/absl/random
+  # third_party/abseil-cpp/absl/status
+  # third_party/abseil-cpp/absl/strings
+  # third_party/abseil-cpp/absl/synchronization
+  # third_party/abseil-cpp/absl/time
+  # third_party/abseil-cpp/absl/types
+  # third_party/abseil-cpp/absl/utility
+  third_party/brotli
+  third_party/crc32c
+  third_party/dav1d
+  base/third_party/double_conversion
+  third_party/ffmpeg
+  third_party/flac
+  third_party/fontconfig
+  build/config/freetype
+  third_party/harfbuzz-ng
+  third_party/icu
+  third_party/jsoncpp
+  third_party/libaom
+  third_party/libavif
+  third_party/libdrm
+  third_party/libevent
+  third_party/libjpeg_turbo
+  third_party/libpng
+  third_party/libvpx
+  third_party/libwebp
+  third_party/libxml
+  third_party/angle/src/third_party/libXNVCtrl
+  third_party/libxslt
+  third_party/libyuv
+  third_party/openh264
+  third_party/opus
+  third_party/re2
+  third_party/snappy
+  third_party/swiftshader/third_party/SPIRV-Headers
+  third_party/swiftshader/third_party/SPIRV-Tools
+  third_party/vulkan-deps/spirv-headers/src
+  third_party/vulkan-deps/spirv-tools/src
+  third_party/woff2
+  third_party/zlib
+
+  third_party/node
+  third_party/jdk
 )
 depends+=(${_system_libs[@]})
-
-# Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys.
-#
-# Starting with Chromium 89 (2021-03-02) the OAuth2 credentials have been left
-# out: https://archlinux.org/news/chromium-losing-sync-support-in-early-march/
-_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+makedepends+=("${_system_make_libs[@]}")
 
 prepare() {
   if (( _manual_clone )); then
@@ -90,57 +131,37 @@ prepare() {
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
 
-  # https://crbug.com/893950
-  sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
-    third_party/blink/renderer/core/xml/*.cc \
-    third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    third_party/libxml/chromium/*.cc \
-    third_party/maldoca/src/maldoca/ole/oss_utils.h
-
-  # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
-  # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
-  # runtime -- this allows signing into Chromium without baked-in values
-  patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
-
   # Upstream fixes
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-114-vk_mem_alloc-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-119-FragmentDataIterator-std.patch
   patch -Np1 -i ../chromium-patches-*/chromium-119-at-spi-variable-consumption.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
 
-  # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-  ln -s /usr/bin/java third_party/jdk/current/bin/
+  # Fixes the build crashing with the following error:
+  # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
+  patch -p0 -i ../fix-undeclared-isnan.patch
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
   local _lib
   for _lib in ${_unwanted_bundled_libs[@]}; do
-    find "third_party/$_lib" -type f \
-      \! -path "third_party/$_lib/chromium/*" \
-      \! -path "third_party/$_lib/google/*" \
-      \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
+    find "$_lib" -type f \
+      \! -path "$_lib/chromium/*" \
+      \! -path "$_lib/google/*" \
+      \! -path "third_party/brotli/include/brotli/shared_dictionary.h" \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
 
   ./build/linux/unbundle/replace_gn_files.py \
-    --system-libraries "${!_system_libs[@]}"
+    --system-libraries "${!_system_libs[@]}" "${!_system_make_libs[@]}"
 }
 
 build() {
-  make -C chromium-launcher-$_launcher_ver
-
-  cd chromium-$pkgver
+  cd chromium-$pkgver/components/cronet
 
   export CC=clang
   export CXX=clang++
@@ -157,24 +178,12 @@ build() {
     'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
-    'blink_enable_generated_code_formatting=false'
-    'ffmpeg_branding="Chrome"'
-    'proprietary_codecs=true'
-    'rtc_use_pipewire=true'
-    'link_pulseaudio=true'
     'use_custom_libcxx=false'
     'use_sysroot=false'
     'use_system_libffi=true'
-    'enable_hangout_services_extension=true'
-    'enable_widevine=true'
     'enable_nacl=false'
     'enable_rust=false'
-    "google_api_key=\"$_google_api_key\""
   )
-
-  if [[ -n ${_system_libs[icu]+set} ]]; then
-    _flags+=('icu_use_data_file=false')
-  fi
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
@@ -203,78 +212,19 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
-  gn gen out/Release --args="${_flags[*]}"
-  ninja -C out/Release chrome chrome_sandbox chromedriver.unstripped
+  gn gen ../../out/Release --args="${_flags[*]}"
+  ninja -C ../../out/Release cronet_package
 }
 
 package() {
-  cd chromium-launcher-$_launcher_ver
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
+  cd chromium-$pkgver/out/Release/cronet
 
-  cd ../chromium-$pkgver
+  install -D "libcronet.${pkgver}.so" "${pkgdir}/usr/lib/libcronet.${pkgver}.so"
+  ln -s "libcronet.${pkgver}.so" "${pkgdir}/usr/lib/libcronet.so"
 
-  install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
-  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  cp -r include "${pkgdir}/usr"
 
-  install -Dm644 chrome/installer/linux/common/desktop.template \
-    "$pkgdir/usr/share/applications/chromium.desktop"
-  install -Dm644 chrome/app/resources/manpage.1.in \
-    "$pkgdir/usr/share/man/man1/chromium.1"
-  sed -i \
-    -e 's/@@MENUNAME@@/Chromium/g' \
-    -e 's/@@PACKAGE@@/chromium/g' \
-    -e 's/@@USR_BIN_SYMLINK_NAME@@/chromium/g' \
-    "$pkgdir/usr/share/applications/chromium.desktop" \
-    "$pkgdir/usr/share/man/man1/chromium.1"
-
-  install -Dm644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml \
-    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
-  sed -ni \
-    -e 's/chromium-browser\.desktop/chromium.desktop/' \
-    -e '/<update_contact>/d' \
-    -e '/<p>/N;/<p>\n.*\(We invite\|Chromium supports Vorbis\)/,/<\/p>/d' \
-    -e '/^<?xml/,$p' \
-    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
-
-  local toplevel_files=(
-    chrome_100_percent.pak
-    chrome_200_percent.pak
-    chrome_crashpad_handler
-    libqt5_shim.so
-    resources.pak
-    v8_context_snapshot.bin
-
-    # ANGLE
-    libEGL.so
-    libGLESv2.so
-
-    # SwiftShader ICD
-    libvk_swiftshader.so
-    libvulkan.so.1
-    vk_swiftshader_icd.json
-  )
-
-  if [[ -z ${_system_libs[icu]+set} ]]; then
-    toplevel_files+=(icudtl.dat)
-  fi
-
-  cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
-  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
-
-  for size in 24 48 64 128 256; do
-    install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
-  done
-
-  for size in 16 32; do
-    install -Dm644 "chrome/app/theme/default_100_percent/chromium/product_logo_$size.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
-  done
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/cronet/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
