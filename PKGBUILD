@@ -18,16 +18,19 @@ makedepends=(
 provides=(
   'vitasdk-packages'
 )
-source=("git+https://github.com/vitasdk/vdpm")
-md5sums=('SKIP')
+source=("vdpm-notmp.patch" "git+https://github.com/vitasdk/vdpm")
+md5sums=('6d5c81f0720c71165f381b93da529bd3'
+         'SKIP')
 
 prepare() {
     cd "vdpm"
+    patch --forward --strip=1 --input="$srcdir/vdpm-notmp.patch"
 }
 
 package() {
   export VITASDK="$pkgdir/opt/vitasdk"
   mkdir -p "$VITASDK/arm-vita-eabi"
   cd "vdpm"
+  export CLEAN=1
   ./install-all.sh
 }

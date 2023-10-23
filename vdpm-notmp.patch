@@ -1,0 +1,27 @@
+diff --git a/vdpm b/vdpm
+index a9107f2..7dcdfcb 100755
+--- a/vdpm
++++ b/vdpm
+@@ -20,18 +20,17 @@ write_success() {
+ }
+ 
+ install_pkg() {
+-  if [ $(find "/tmp/vdpm_install_$1" -ctime -1 -print) ]; then
+-    echo "skip install $1. Package previously installed less than one day ago"
+-  else
++  #if [ $(find "/tmp/vdpm_install_$1" -ctime -1 -print) ]; then
++  #  echo "skip install $1. Package previously installed less than one day ago"
++  #else
+     echo "Installing $1..."
+     if [ -f $1 ]; then
+       tar -C $VITASDK/arm-vita-eabi -Jxvf $1
+     else
+       curl -L https://github.com/vitasdk/packages/releases/download/master/$1.tar.xz | tar -C $VITASDK/arm-vita-eabi -Jxvf -
+-      write_success $1
+     fi
+     echo "success"
+-  fi
++  #fi
+ }
+ 
+ clean_tmp_file() {
