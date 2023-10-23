@@ -8,6 +8,7 @@ pkgbase = bruno-git
 	makedepends = nvm
 	makedepends = asar
 	depends = electron21
+	depends = alsa-lib
 	provides = bruno
 	conflicts = bruno
 	source = bruno::git+https://github.com/usebruno/bruno#branch=main

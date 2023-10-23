@@ -13,6 +13,7 @@ conflicts=('bruno')
 _electron=electron21
 depends=(
     "${_electron}"
+    'alsa-lib'
 )
 makedepends=(
     'nvm'
