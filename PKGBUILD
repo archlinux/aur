@@ -5,29 +5,37 @@
 # Contributor: daniel <quite a hack org>
 
 pkgname=fim
-_pkgver='0.6-rc2'
-pkgver=${_pkgver/-}
+_pkgver='trunk'
+pkgver=0.7
 pkgrel=1
 pkgdesc='FIM (Fbi IMproved) is a highly customizable and scriptable image viewer.'
 arch=('i686' 'x86_64')
 url='https://www.nongnu.org/fbi-improved/'
 license=('GPL2')
-depends=('giflib' 'libjpeg-turbo' 'libexif' 'sdl' 'terminus-font')
-source=("http://download.savannah.gnu.org/releases/fbi-improved/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('32aeb24ba86aa9f46c92f38faa8f6fbe833c88e2410ac04fb2fd183c1a68fede')
+depends=('terminus-font')
+optdepends=('aalib: ASCII art support'
+            'djvulibre: djvu support'
+            'giflib: GIF support'
+            'imagemagick: use convert for unrecognized files'
+            'libexif: EXIF support'
+            'libjpeg-turbo: JPEG support'
+            'libpng: PNG support'
+            'libspectre: postscript support'
+            'libtiff: TIFF support'
+            'sdl: X support')
+source=("http://download.savannah.gnu.org/releases/fbi-improved/${pkgname}-${pkgver}-${_pkgver}.tar.gz")
+sha256sums=('fe9edb8de64ce3a0c9390f6c82d79b86436904f8f6449618ddd3178731e73668')
 
 build() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}-${_pkgver}"
 
-  ./configure LIBS=-lpthread --prefix=/usr --disable-debug --enable-hardcoded-font --disable-xcftopnm \
-    --disable-ps --disable-inkscape --disable-djvu --disable-xfig --disable-dia --disable-imlib2 \
-    --enable-sdl --disable-convert
+  ./configure LIBS=-lpthread --prefix=/usr --disable-debug --enable-hardcoded-font
 
   make
 }
 
 package() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}-${_pkgver}"
 
   make DESTDIR=${pkgdir} install
 }
