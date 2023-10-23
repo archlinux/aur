@@ -11,7 +11,7 @@ pkgbase = corectrl-git
 	makedepends = extra-cmake-modules
 	makedepends = gcc>=8
 	makedepends = qt5-tools
-	depends = botan2>=2.2.0
+	depends = botan>=2.2.0
 	depends = qt5-base>=5.15
 	depends = qt5-quickcontrols2
 	depends = qt5-charts
