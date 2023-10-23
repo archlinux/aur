@@ -1,6 +1,6 @@
 pkgbase = endless-sky-git
 	pkgdesc = A sandbox-style space exploration and combat game
-	pkgver = 0.9.12.r767.g1af961037
+	pkgver = 0.10.4.r16.gdba02efe3
 	pkgrel = 1
 	url = https://endless-sky.github.io/
 	arch = i686
@@ -21,8 +21,9 @@ pkgbase = endless-sky-git
 	optdepends = endless-sky-editor: map editor
 	provides = endless-sky
 	conflicts = endless-sky
-	source = endless-sky::git+https://github.com/endless-sky/endless-sky.git#branch=master
-	md5sums = SKIP
+	source = endless-sky::git+https://github.com/endless-sky/endless-sky.git
+	source = endless-sky.desktop
+	sha256sums = SKIP
+	sha256sums = 113c83c71efe30c90a96d3d94dd0f6df454645332f51bc9ffb9672017208a883
 
 pkgname = endless-sky-git
-
