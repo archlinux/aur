@@ -3,7 +3,7 @@
 
 pkgname='python-runtype'
 _pkgname=${pkgname#python-}
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
@@ -11,7 +11,6 @@ license=('MIT')
 url='https://github.com/erezsh/runtype'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
 depends=(
-  'mypy'
   'python'
   'python-typing_extensions'
 )
@@ -46,10 +45,20 @@ package() {
 }
 
 sha256sums=(
-  '1e729d4cfeccf9111506dba8b9cc0cfadf05144f2d408fb2510128eea81edbf0'
+  'ef3be572d3c704b23c18a2e30902299588383666e952f2bd5e084eaa5f40bb4f'
 )
 b2sums=(
-  '3f9ce07145c03716046f639455c4602bcf9e924e3ac15d6b91e09bc93aeafcbe23e1e871306286635090f44a0874e6d75b60fd818c28a10b653c9cfcf5c8a0cb'
+  '28797507e7785dbe54bf31bfd492bc4d39cc0484600ec661a5cc8a777aba773a93cded39b6b851c0fb440f1afd52f98761350eba3da3ab5df82c9d86f6e21dc0'
 )
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 23rd October
+#
+# There are no higher or lower states.
+#
+# There is only the state you are in.
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
