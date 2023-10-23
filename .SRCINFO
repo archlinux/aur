@@ -1,15 +1,15 @@
 pkgbase = bruno-bin
 	pkgdesc = Opensource API Client for Exploring and Testing APIs
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://www.usebruno.com/
 	arch = x86_64
 	license = MIT
 	provides = bruno
 	conflicts = bruno
-	source = https://github.com/usebruno/bruno/releases/download/v0.26.0/bruno_0.26.0_amd64_linux.deb
-	source = LICENSE-0.26.0::https://raw.githubusercontent.com/usebruno/bruno/v0.26.0/license.md
-	sha256sums = 0458f1a8d99c7d45445b57f9a5a84ad6f330545fb51a4f5f6d0f45d44874229e
+	source = https://github.com/usebruno/bruno/releases/download/v0.27.0/bruno_0.27.0_amd64_linux.deb
+	source = LICENSE-0.27.0::https://raw.githubusercontent.com/usebruno/bruno/v0.27.0/license.md
+	sha256sums = e7b09ba7ffb7acdabf6e1508b4fb8de9922349df08ce626c9fd14d9bcf648621
 	sha256sums = 8891070a847e5047bf77d38d88d7dfbab1beab41e37c802b9f5b23f2bbb9c7be
 
 pkgname = bruno-bin
