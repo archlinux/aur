@@ -1,0 +1,25 @@
+pkgbase = ifupdown-ng
+	pkgdesc = Flexible ifup/ifdown implementation
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/ifupdown-ng/ifupdown-ng
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = scdoc
+	depends = libbsd
+	optdepends = sh: use default executors
+	optdepends = dhcpcd: DHCP support
+	optdepends = dhclient: DHCP support
+	optdepends = wpa_supplicant: Wi-Fi support
+	optdepends = bridge-utils: ethernet bridge support
+	optdepends = ppp: Point-to-Point Protocol support
+	optdepends = ethtool: ethtool support
+	optdepends = wireguard-tools: WireGuard VPN support
+	optdepends = batctl: B.A.T.M.A.N. support
+	source = ifupdown-ng-0.12.1.tar.gz::https://github.com/ifupdown-ng/ifupdown-ng/archive/refs/tags/ifupdown-ng-0.12.1.tar.gz
+	sha256sums = d42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85
+
+pkgname = ifupdown-ng
