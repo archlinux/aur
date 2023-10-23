@@ -11,8 +11,8 @@ depends=(python-colorama python-jinja python-platformdirs python-pygls python-tr
 optdepends=(python-beautifulsoup4)
 makedepends=(python-installer)
 license=(GPL3)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
+_py="cp$(python -c'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")')"
+source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl")
 sha256sums=('a3569c2f1589710cb23ecdb9dfe382bb68be38008ce4fb46e37769015d58dbb6')
 
 package() {

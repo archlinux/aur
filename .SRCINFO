@@ -6,10 +6,13 @@ pkgbase = termux-language-server
 	arch = any
 	license = GPL3
 	makedepends = python-installer
-	depends = python-pygls
+	depends = python-colorama
+	depends = python-jinja
 	depends = python-platformdirs
+	depends = python-pygls
+	depends = python-tree-sitter
 	optdepends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/py3/t/termux_language_server/termux_language_server-0.0.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/cp310/t/termux_language_server/termux_language_server-0.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
 	sha256sums = a3569c2f1589710cb23ecdb9dfe382bb68be38008ce4fb46e37769015d58dbb6
 
 pkgname = termux-language-server
