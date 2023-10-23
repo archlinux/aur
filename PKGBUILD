@@ -2,14 +2,14 @@
 
 pkgname=spotx-linux
 pkgver='1.2.3.1115_1'
-pkgrel=4
+pkgrel=6
 pkgdesc='Spotify Ad blocker based on SpotX for Linux'
 arch=('any')
 url='https://github.com/Nuzair46/SpotX-Linux'
 license=('custom')
 source=('install-spotx.hook'
     'git+https://github.com/Nuzair46/SpotX-Linux.git')
-sha256sums=('83fe99f1d6217df66215fe69e75ac47a175492bbf97e48e15351e0d0ad58ee8a'
+sha256sums=('61f2bf9cfc6b16e00b557a372621f17521b64573d3eaa21aa5805ee822cb686a'
     'SKIP')
 
 pkgver() {
@@ -19,8 +19,9 @@ pkgver() {
 
 package() {
     cd "$srcdir"
-    install -Dm644 "install-spotx.hook" "$pkgdir/usr/share/libalpm/hooks/install-spotx.hook"
+    install -Dm755 "SpotX-Linux/readme.md" "$pkgdir/opt/SpotX-Linux/readme.md"
+    install -Dm755 "SpotX-Linux/install.sh" "$pkgdir/opt/SpotX-Linux/install.sh"
+    install -Dm755 "SpotX-Linux/uninstall.sh" "$pkgdir/opt/SpotX-Linux/uninstall.sh"
     install -Dm644 "SpotX-Linux/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    mkdir -p "$pkgdir/opt/SpotX-Linux"
-    mv "SpotX-Linux" "$pkgdir/opt"
+    install -Dm644 "install-spotx.hook" "$pkgdir/usr/share/libalpm/hooks/install-spotx.hook"
 }
