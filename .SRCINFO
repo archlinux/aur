@@ -1,6 +1,6 @@
 pkgbase = nheko-krunner-git
 	pkgdesc = A KRunner plugin to list joined rooms and possibly other things from nheko.
-	pkgver = 0.1.0.r0.gd5367d0
+	pkgver = 0.2.0.r3.g150f3a6
 	pkgrel = 1
 	url = https://github.com/LorenDB/nheko-krunner/
 	arch = i686
@@ -13,8 +13,9 @@ pkgbase = nheko-krunner-git
 	makedepends = fontconfig
 	makedepends = qt5-tools
 	depends = qt5-base
-	depends = krunner
-	provides = nheko-krunner=0.1.0.r0.gd5367d0
+	depends = krunner5
+	depends = ki18n5
+	provides = nheko-krunner=0.2.0.r3.g150f3a6
 	source = nheko-krunner-git::git+https://github.com/LorenDB/nheko-krunner.git#branch=master
 	md5sums = SKIP
 

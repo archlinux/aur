@@ -1,7 +1,7 @@
 # Maintainer: Stuart Mumford <stuart at cadair dot com>
 
 pkgname=nheko-krunner-git
-pkgver=0.1.0.r0.gd5367d0
+pkgver=0.2.0.r3.g150f3a6
 pkgrel=1
 pkgdesc="A KRunner plugin to list joined rooms and possibly other things from nheko."
 arch=("i686" "x86_64" "aarch64")
@@ -9,7 +9,7 @@ arch=("i686" "x86_64" "aarch64")
 url="https://github.com/LorenDB/nheko-krunner/"
 license=("GPL3")
 
-depends=("qt5-base" "krunner" "ki18n")
+depends=("qt5-base" "krunner5" "ki18n5")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 provides=("nheko-krunner=${pkgver}")
 
