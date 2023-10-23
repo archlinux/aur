@@ -1,7 +1,7 @@
 pkgbase = uarchiso
 	pkgdesc = Archiso for UaiSO
-	pkgver = 72
-	pkgrel = 5
+	pkgver = 73
+	pkgrel = 1
 	url = https://gitlab.com/uaiso/labs/uarchiso
 	install = uarchiso.install
 	arch = any
