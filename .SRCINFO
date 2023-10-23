@@ -1,0 +1,18 @@
+pkgbase = amd-real-ucode-git
+	pkgdesc = Actually provides the latest CPU microcode for AMD
+	pkgver = 20231021.ba8eaf5
+	pkgrel = 1
+	arch = any
+	license = custom
+	makedepends = linux-firmware
+	makedepends = git
+	provides = amd-ucode
+	conflicts = amd-ucode
+	source = CPUMicrocodes::git+https://github.com/platomav/CPUMicrocodes
+	source = real-ucode::git+https://github.com/divestedcg/real-ucode#commit=c93c9ed85eb3c0566a76d8c3accebd6ee82c1ca9
+	source = amd-ucodegen::git+https://github.com/AndyLavr/amd-ucodegen#commit=0d34b54e396ef300d0364817e763d2c7d1ffff02
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = amd-real-ucode-git
