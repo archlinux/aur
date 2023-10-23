@@ -1,7 +1,7 @@
 pkgbase = dolphin-tabopts
 	pkgdesc = KDE File Manager - with extended tab options
 	pkgver = 23.08.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/xiota/dolphin/-/merge_requests/1
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = dolphin-tabopts
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = kio-admin: for managing files as administrator
 	optdepends = konsole: terminal panel
-	optdepends = purpose: share context menu
+	optdepends = purpose5: share context menu
 	provides = dolphin
 	conflicts = dolphin
 	source = dolphin-tabopts-1.patch::https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch

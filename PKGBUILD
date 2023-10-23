@@ -4,7 +4,7 @@ _pkgname="dolphin"
 _pkgname_tabopts="$_pkgname-tabopts"
 pkgname="$_pkgname_tabopts"
 pkgver=23.08.2
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -28,7 +28,7 @@ optdepends=(
   'kdegraphics-thumbnailers: PDF and PS thumbnails'
   'kio-admin: for managing files as administrator'
   'konsole: terminal panel'
-  'purpose: share context menu'
+  'purpose5: share context menu'
 )
 
 provides=("$_pkgname")
