@@ -1,0 +1,17 @@
+pkgbase = python-prison
+	pkgdesc = Python rison encoder/decoder
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/betodealmeida/python-rison
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/50/65/4456caa4e9bbd1d4d4b5eecaea41bb2cd31efe0e7e423c7a9ad8e2be75ea/prison-0.2.1.tar.gz
+	sha256sums = e6cd724044afcb1a8a69340cad2f1e3151a5839fd3a8027fd1357571e797c599
+
+pkgname = python-prison
