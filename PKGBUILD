@@ -4,7 +4,7 @@
 
 pkgname=jellyseerr
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
 url='https://github.com/Fallenbagel/jellyseerr'

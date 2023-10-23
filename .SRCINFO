@@ -1,13 +1,12 @@
 pkgbase = jellyseerr
 	pkgdesc = Request management and media discovery tool for the Plex ecosystem
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fallenbagel/jellyseerr
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
 	depends = nodejs
-	optdepends = emby: Bring together your videos, music, photos, and live television
 	optdepends = jellyfin: The Free Software Media System
 	options = !strip
 	backup = etc/conf.d/jellyseerr
