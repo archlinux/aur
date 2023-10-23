@@ -1,0 +1,17 @@
+pkgbase = otf-typodermic-free
+	pkgdesc = Free Fonts from Typodermic
+	pkgver = 2023.01
+	pkgrel = 1
+	url = https://typodermicfonts.com/downloads/
+	arch = any
+	license = custom
+	noextract = typodermic-free-fonts-2023a.zip
+	noextract = typodermic-public-domain-2022-11.zip
+	source = https://typodermicfonts.com/wp-content/uploads/2023/01/typodermic-free-fonts-2023a.zip
+	source = https://typodermicfonts.com/wp-content/uploads/2022/11/typodermic-public-domain-2022-11.zip
+	sha256sums = edf18de41bc601a276e65472804ee558536dc030056034a32f591de46569f278
+	sha256sums = a774627da6d95b4ad0fda103dad126099b2f3d910281f6b4155e5a712627c8ba
+
+pkgname = otf-typodermic-free
+
+pkgname = otf-typodermic-pd
