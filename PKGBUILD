@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RNetCDF
-_pkgver=2.7-1
+_pkgver=2.8-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,17 +23,9 @@ checkdepends=(
 optdepends=(
   r-bit64
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "$_pkgname-fix-build.patch::https://github.com/mjwoods/RNetCDF/pull/128.patch")
-md5sums=('4ea0d88f5bb0b80ac2befd5903367977'
-         '6bb281a312b6b7220bf7ff83a01fdaa2')
-sha256sums=('80626172829077807c6f14506782ffd85a316f0c09539c3d64d4594edc756d0b'
-            '5b90ca93e960cf518c6af8dcb39a7375a6bf01a755560671f86ffe1277a824ad')
-
-prepare() {
-  # fix build
-  patch -Np1 -d "$_pkgname" < "$_pkgname-fix-build.patch"
-}
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('43e3fbb2fb1f0e90adf31c246fa0fccf')
+sha256sums=('660148cb7e272859145de4da64f57ec959110bd6863af67f44ebf36fc5a7513e')
 
 build() {
   mkdir -p build
