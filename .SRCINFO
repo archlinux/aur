@@ -1,7 +1,7 @@
 pkgbase = python-pylatex
-	pkgdesc = Python library for creating LaTeX files
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgdesc = Python library for creating LaTeX files and snippets
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://jeltef.github.io/PyLaTeX
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-pylatex
 	optdepends = python-numpy: for matrices support
 	optdepends = python-matplotlib: for plot support
 	optdepends = python-quantities: for quantities support
-	source = PyLaTeX-1.4.1.tar.gz::https://github.com/JelteF/PyLaTeX/archive/v1.4.1.tar.gz
-	sha512sums = 55a5734e4d239cef4bcaafa0ba64eea013ba3e86d137de5a5f8311d70c949d783e2e7aad24d39d16a6febbe4bddc34e47248068e1328fe3f95f39a7c7019a3a9
+	source = PyLaTeX-1.4.2.tar.gz::https://github.com/JelteF/PyLaTeX/archive/v1.4.2.tar.gz
+	sha512sums = dcbe58de0ab715d6fbb571a7ad3981c875eacd08d06244b8715fa240df6f8f072417ae076a5caee204e000bf7eb55097b9ba49eddb5ce666470e494c15aa88ed
 
 pkgname = python-pylatex
