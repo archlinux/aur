@@ -1,0 +1,17 @@
+pkgbase = koboldcpp-hipblas
+	pkgdesc = HIPBLAS build of koboldcpp
+	pkgver = 1.47.2
+	pkgrel = 1
+	url = https://github.com/LostRuins/koboldcpp
+	arch = x86_64
+	license = AGPL3
+	depends = python
+	depends = cblas
+	depends = openblas
+	depends = clblast
+	depends = hipblas
+	optdepends = customtkinter
+	source = koboldcpp-hipblas-1.47.2.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.47.2.tar.gz
+	md5sums = d47820628d23ea122eb8bd5649c441e8
+
+pkgname = koboldcpp-hipblas
