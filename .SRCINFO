@@ -1,0 +1,16 @@
+pkgbase = koboldcpp-clblast
+	pkgdesc = CLBlast build of koboldcpp
+	pkgver = 1.47.2
+	pkgrel = 1
+	url = https://github.com/LostRuins/koboldcpp
+	arch = x86_64
+	license = AGPL3
+	depends = openblas
+	depends = python
+	depends = cblas
+	depends = clblast
+	optdepends = customtkinter
+	source = koboldcpp-clblast-1.47.2.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.47.2.tar.gz
+	md5sums = d47820628d23ea122eb8bd5649c441e8
+
+pkgname = koboldcpp-clblast
