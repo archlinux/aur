@@ -22,7 +22,7 @@ source=('git+https://github.com/avrf0/avr-libc.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/avr-libc"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
   # Tags are not included in the main branch
