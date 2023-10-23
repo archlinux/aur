@@ -4,7 +4,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
@@ -63,8 +63,18 @@ package() {
 }
 
 sha512sums=(
-  '7cd40cc7e13ff8f27efffc4d550e03bd442c8762ca7830f1238526754bced10020652b322465d34d5466ec16b0470acf853f913915ded4297384745edf0a12d3'
+  '4678fb763d33e904a03c163f0092b05f0ecf9b95ea507188091259cd7bfd6d7d1508c2f90b34fd87e9946e47fd1bf40c2659661e183cb1fdeb3254f214658767'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 23rd October
+#
+# There are no higher or lower states.
+#
+# There is only the state you are in.
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
