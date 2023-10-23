@@ -1,0 +1,17 @@
+pkgbase = python-hiro
+	pkgdesc = Time manipulation utilities for testing
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://hiro.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-hiro-1.1.1.tar.gz::https://github.com/alisaifee/hiro/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = 683f416c5428c37a01f843baa042c8c3129ba2f91edcd35a6b826392cc51f278
+
+pkgname = python-hiro
