@@ -8,6 +8,7 @@ pkgbase = bruno
 	makedepends = nvm
 	makedepends = asar
 	depends = electron21
+	depends = alsa-lib
 	source = bruno-0.27.0.tar.gz::https://github.com/usebruno/bruno/archive/v0.27.0.tar.gz
 	source = com.usebruno.app.Bruno.desktop
 	sha256sums = c33ddc0689766834f10e7b9dd359dff32de9875820bb3fd022b5ca10ce9a074f
