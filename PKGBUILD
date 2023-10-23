@@ -1,7 +1,7 @@
 # Maintainer : Eric Lesiuta <elesiuta@gmail.com>
 
 pkgname=picosnitch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Monitor network traffic per executable using BPF'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("picosnitch-${pkgver}.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v${pkgver}/picosnitch.tar.gz")
-sha256sums=('74d8eaa2dc7f58483a4bbeb1f057e8f1def390083ecc277370cce4d5137036fc')
+sha256sums=('acdc2c8c13307762713706c9e79ba6e392ba76b03594586aa0a944f349b3e69a')
 
 build() {
     python setup.py build

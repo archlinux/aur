@@ -1,6 +1,6 @@
 pkgbase = picosnitch
 	pkgdesc = Monitor network traffic per executable using BPF
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://elesiuta.github.io/picosnitch/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = picosnitch
 	depends = python-plotly
 	depends = python-psutil
 	depends = python-requests
-	source = picosnitch-1.0.0.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v1.0.0/picosnitch.tar.gz
-	sha256sums = 74d8eaa2dc7f58483a4bbeb1f057e8f1def390083ecc277370cce4d5137036fc
+	source = picosnitch-1.0.1.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v1.0.1/picosnitch.tar.gz
+	sha256sums = acdc2c8c13307762713706c9e79ba6e392ba76b03594586aa0a944f349b3e69a
 
 pkgname = picosnitch
