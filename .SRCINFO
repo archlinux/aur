@@ -1,6 +1,6 @@
 pkgbase = biolibc
 	pkgdesc = High-performance, memory-efficient bioinformatics library
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/auerlab/biolibc
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = biolibc
 	license = BSD-2
 	makedepends = libxtend
 	depends = glibc
-	source = biolibc-0.2.5.tar.gz::https://github.com/auerlab/biolibc/archive/refs/tags/0.2.5.tar.gz
-	sha256sums = 5273dbf4e5135ac8f11e503c3ef516ec1c73906b1ec196a0a28606d88d3d394a
+	source = biolibc-0.2.6.tar.gz::https://github.com/auerlab/biolibc/archive/refs/tags/0.2.6.tar.gz
+	sha256sums = d3807734b6e615e7655d86591778784f8360fc30c37a0beff54212193d3c3dd0
 
 pkgname = biolibc

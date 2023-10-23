@@ -1,7 +1,7 @@
 # Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=biolibc
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="High-performance, memory-efficient bioinformatics library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD-2')
 depends=('glibc')
 makedepends=('libxtend')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/auerlab/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5273dbf4e5135ac8f11e503c3ef516ec1c73906b1ec196a0a28606d88d3d394a')
+sha256sums=('d3807734b6e615e7655d86591778784f8360fc30c37a0beff54212193d3c3dd0')
 
 build() {
   cd "$pkgname-$pkgver"
