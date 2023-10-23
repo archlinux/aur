@@ -1,7 +1,7 @@
 pkgbase = srain-git
 	pkgdesc = Modern IRC client written in GTK, git version
-	pkgver = 1.4.1
-	pkgrel = 3
+	pkgver = 1.5.1.9.gcb3704b
+	pkgrel = 1
 	url = https://srain.silverrainz.me
 	arch = i686
 	arch = pentium4
@@ -21,6 +21,7 @@ pkgbase = srain-git
 	depends = gtk3
 	depends = libconfig
 	depends = libsoup
+	depends = libayatana-appindicator
 	optdepends = glib-networking: TLS connection support
 	provides = srain
 	conflicts = srain
