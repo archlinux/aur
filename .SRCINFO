@@ -1,6 +1,6 @@
 pkgbase = emoj
 	pkgdesc = Find relevant emoji from text on the command-line
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/sindresorhus/emoj
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = emoj
 	makedepends = npm
 	depends = nodejs
 	depends = xsel
-	noextract = emoj-4.0.0.tgz
-	source = https://github.com/sindresorhus/emoj/archive/v4.0.0.tar.gz
-	sha256sums = dbb0aa2c031af0f177ab73c65956a3b6b995e1cfd244203807715d3d8dc2fe62
+	noextract = emoj-4.0.1.tgz
+	source = https://github.com/sindresorhus/emoj/archive/v4.0.1.tar.gz
+	sha256sums = e16a5097d22b722a9bd0743beb22af9c9716ec4d9ce5a25953cd25c2b57c10d0
 
 pkgname = emoj
