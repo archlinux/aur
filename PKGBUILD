@@ -9,7 +9,7 @@ pkgdesc="Qtum Desktop Binary release"
 arch=('x86_64')
 url="https://qtum.org"
 license=('GPL-3.0')
-depends=(xorg)
+depends=(glibc)
 source=("https://repo.qtum.info/apt/ubuntu/pool/main/q/qtum/qtum_0.24.1-2_amd64.deb")
 sha256sums=('b1d25cf76c81db146e6c81acbc9a5d9ee3b2dcd1fc1b9102bb5edae21221ee99')
 
