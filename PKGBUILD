@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=python-scrap_engine
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A 2D ascii game engine for the terminal"
 arch=('any')
