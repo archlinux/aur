@@ -1,11 +1,7 @@
-diff --git a/MEGAsync/src/MEGAShellExtDolphin/CMakeLists_kde5.txt b/MEGAsync/src/MEGAShellExtDolphin/CMakeLists_kde5.txt
+diff --git a/MEGAsync/src/MEGAShellExtDolphin/CMakeLists.txt b/MEGAsync/src/MEGAShellExtDolphin/CMakeLists.txt
 @@ -64,4 +64,4 @@ target_link_libraries(${MEGASYNCPLUGIN} KF5::CoreAddons KF5::KIOCore KF5::KIOWid
  
  #install(FILES ${CMAKE_CURRENT_BINARY_DIR}/megasync-plugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
  install(FILES megasync-plugin.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 -install(TARGETS ${MEGASYNCPLUGIN} DESTINATION ${CMAKE_INSTALL_LIBDIR}/qt5/plugins)
 +install(TARGETS ${MEGASYNCPLUGIN} DESTINATION ${PLUGIN_INSTALL_DIR})
- 
-diff --git a/MEGAsync/src/MEGAShellExtDolphin/megasync-plugin.moc b/src/MEGAShellExtDolphin/megasync-plugin.moc
-deleted file mode 100644
-index e69de29b..00000000
