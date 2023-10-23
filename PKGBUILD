@@ -1,12 +1,12 @@
 # Maintainer: Dominik Schreiber <dev@dominikschreiber.de>
 pkgname=plasma5-runners-symbols
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A little krunner plugin (Plasma 5) to retrieve unicode symbols, or any other string, based on a corresponding keyword"
 arch=('x86_64')
 url="https://github.com/domschrei/krunner-symbols"
 license=('GPL')
-depends=('krunner' 'qt5-base' 'ki18n')
+depends=('krunner5' 'qt5-base' 'ki18n5')
 makedepends=('cmake' 'extra-cmake-modules' 'kdelibs4support')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/domschrei/krunner-symbols/archive/${pkgver}.tar.gz")
