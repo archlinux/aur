@@ -1,0 +1,18 @@
+pkgbase = errands
+	pkgdesc = Todo application for those who prefer simplicity
+	pkgver = 45.0.4
+	pkgrel = 1
+	url = https://github.com/mrvladus/Errands
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = python-caldav
+	depends = python-gobject
+	depends = libadwaita
+	source = git+https://github.com/mrvladus/Errands.git#tag=45.0.4
+	sha256sums = SKIP
+
+pkgname = errands
