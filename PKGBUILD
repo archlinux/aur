@@ -1,6 +1,6 @@
 # Maintained by Faisal Moledina (faisal at moledina dot me)
 pkgname=onedriver
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=0
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('fuse2' 'webkit2gtk')
 makedepends=('pkgconf' 'go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('09bd2246df6c153f49006313796cf6ffdd4623d48b87366fbafc4fa503276c072cdc349dd5fcb258e55ca9550171b5cbaf7dccc1dc8f2ebf0dd07cfe56e3f08a')
+sha512sums=('ff0284c960f9ad9d9e71867fc65b5ca78e3724d984fdbaec1d7dd7232d83f8335335cb779d3d53bf6dca13474b9a2fb3dd8248620d50b0c65fe91914396a094e')
 
 build() {
   cd "$pkgname-$pkgver"
