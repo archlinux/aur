@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='combaud-git'
-pkgver=0.5.r0
+pkgver=0.6.r0
 pkgrel=1
 pkgdesc='Broadcasting audio output from applications to a virtual microphone'
 arch=('any')
