@@ -8,7 +8,7 @@ Type=exec
 User=mautrix-whatsapp
 Group=mautrix-whatsapp
 WorkingDirectory=/var/lib/mautrix-whatsapp
-ExecStart=/usr/bin/mautrix-whatsapp -c /etc/mautrix-whatsapp/mautrix-whatsapp.yaml
+ExecStart=/usr/bin/mautrix-whatsapp -n -c /etc/mautrix-whatsapp/mautrix-whatsapp.yaml
 Restart=on-failure
 RestartSec=30s
 
