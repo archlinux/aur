@@ -6,7 +6,7 @@
 
 # Build order: avr-binutils -> avr-gcc -> avr-libc
 
-pkgname=avr-libc-git
+pkgname=avr-libc-avrxmega3
 pkgver=r1962.b9deb4e8
 pkgrel=1
 pkgdesc='The C runtime library for the AVR family of microcontrollers'

@@ -1,4 +1,4 @@
-pkgbase = avr-libc-git
+pkgbase = avr-libc-avrxmega3
 	pkgdesc = The C runtime library for the AVR family of microcontrollers
 	pkgver = r1962.b9deb4e8
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = avr-libc-git
 	source = git+https://github.com/avrf0/avr-libc.git
 	md5sums = SKIP
 
-pkgname = avr-libc-git
+pkgname = avr-libc-avrxmega3
