@@ -1,3 +1,6 @@
+# Maintainer: Robert Rosca <32569096+RobertRosca@users.noreply.github.com>
+# Contributor: Ford Smith <fms34@case.edu>
+
 pkgname=dura-git
 pkgver=v0.2.0.r11.gb4a51b9
 pkgrel=1
