@@ -3,6 +3,7 @@ Type = Package
 Operation = Install
 Operation = Upgrade
 Target = spotify
+Target = spotx-linux
 
 [Action]
 Description = Istalling/updating SpotX...
