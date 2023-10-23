@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=pkgx
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Run Anything'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-  '87523a3bbcf12caaea6547a6815920f670a1af817374fa54b57c5ed095c319ae5dd594e2fb34a7366056e3d97c7b0382342380ea1e733494e304104933b0cfa3'
+  '5ed5c24c727d7eef628ac5182e3638bc98faebdf73752bed385def669d25c0d77a7fd21d372b287a0f425d992a93d8cf4cfed899a81221867578460181df71dc'
 )
 
 prepare() {
