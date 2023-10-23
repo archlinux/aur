@@ -1,8 +1,5 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
-
 pkgname=rivercarro
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A slightly modified version of rivertile layout generator for river.'
 arch=('x86_64')
@@ -12,11 +9,9 @@ depends=('wayland' 'wayland-protocols')
 makedepends=('zig' 'git')
 conflicts=('rivercarro-git')
 source=("https://git.sr.ht/~novakane/$pkgname/refs/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('63e0f06f297ec646b3ebb4754be4548239ad50dcc5d0fda0d29538f6c4465e79')
+b2sums=('3bb092582f28d78c37f2c16bda5b54b6a21500628a7f06facb7f4d8d93a10ea3a71df6bfa64c689396bccd293e467f6422173e5e13db322e0a7a4e823e0b62a6')
 
 package() {
 	cd "$srcdir/$pkgname-v$pkgver"
-	DESTDIR="$pkgdir" zig build -Drelease-safe --prefix '/usr'
-	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+	DESTDIR="$pkgdir" zig build -Doptimize=ReleaseSafe --prefix '/usr'
 }
