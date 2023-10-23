@@ -1,32 +1,33 @@
-# Maintainer: Nikarh <n@arhipov.net>
-pkgname=psvita-sdk
+# Maintainer: Nikolay Arhipov <n@arhipov.net>
+pkgname=vitasdk-packages-git
 pkgver=1
 pkgrel=1
-pkgdesc="PS vita homebrew sdk"
+pkgdesc="Packages pre-built with VITASDK homebrew toolchain for Sony Playstation Vita"
 arch=('i686' 'x86_64')
-url="https://vitasdk.org/"
-license=('GPL2')
+url="https://github.com/vitasdk/packages/"
+license=('MIT' 'GPL')
 options=(!strip)
 depends=(
+  'vitasdk'
   'pacman>5'
-  'git'
 )
 makedepends=(
   'wget'
+  'git'
 )
-source=("sudo-fix.patch" "git+https://github.com/vitasdk/vdpm")
-md5sums=('1213c1c23d734af92553ac8801443d36'
-         'SKIP')
+provides=(
+  'vitasdk-packages'
+)
+source=("git+https://github.com/vitasdk/vdpm")
+md5sums=('SKIP')
 
 prepare() {
     cd "vdpm"
-    patch --forward --strip=1 --input="${srcdir}/sudo-fix.patch"
 }
 
 package() {
-  export VITASDK=$pkgdir/opt/vitasdk
-
+  export VITASDK="$pkgdir/opt/vitasdk"
+  mkdir -p "$VITASDK/arm-vita-eabi"
   cd "vdpm"
-  ./bootstrap-vitasdk.sh
   ./install-all.sh
 }
