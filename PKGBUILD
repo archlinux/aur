@@ -14,7 +14,7 @@ makedepends=('yarn' 'nvm' 'npm' 'gendesk' 'libxtst' 'libxtst' 'libicns' 'graphic
 source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
 	"${pkgname}.sh")
 sha256sums=('3e1b244d8b9634878bba26643b1fe90f167bd629ad2e29b0aaea199d72cecfb4'
-            'c960ba7f2300099828b0a44e5d89ed83b401c8571c04cd296579cd2e6a09380a')
+            '35becc7e711518fb0f396742aaba1ec4480fc0ea452b088ab830ae2b5d79889e')
 _ensure_local_nvm() {
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
     export NVM_DIR="${srcdir}/.nvm"

@@ -21,6 +21,6 @@ pkgbase = rubick
 	source = rubick-4.0.9.zip::https://github.com/rubickCenter/rubick/archive/refs/tags/v4.0.9.zip
 	source = rubick.sh
 	sha256sums = 3e1b244d8b9634878bba26643b1fe90f167bd629ad2e29b0aaea199d72cecfb4
-	sha256sums = c960ba7f2300099828b0a44e5d89ed83b401c8571c04cd296579cd2e6a09380a
+	sha256sums = 35becc7e711518fb0f396742aaba1ec4480fc0ea452b088ab830ae2b5d79889e
 
 pkgname = rubick

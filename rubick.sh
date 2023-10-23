@@ -1,4 +1,3 @@
-
 #!/bin/bash
 _ELECTRON=/usr/bin/electron26
 APPDIR="/opt/rubick"
