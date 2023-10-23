@@ -1,7 +1,7 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
 	pkgver = 51.9
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = bottles
 	depends = p7zip
 	depends = patool
 	depends = python
-	depends = python-charset-normalizer
+	depends = python-chardet
 	depends = python-gobject
 	depends = python-markdown
 	depends = python-orjson

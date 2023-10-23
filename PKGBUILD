@@ -3,7 +3,7 @@
 
 pkgname=bottles
 pkgver=51.9
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
   'p7zip'
   'patool'
   'python'
-  'python-charset-normalizer'
+  'python-chardet'
   'python-gobject'
   'python-markdown'
   'python-orjson'
