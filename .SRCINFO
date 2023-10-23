@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-onetbb
 	pkgdesc = High level abstract threading library (mingw-w64)
-	pkgver = 2021.8.0
+	pkgver = 2021.10.0
 	pkgrel = 1
 	url = https://oneapi-src.github.io/oneTBB/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-onetbb
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/oneapi-src/oneTBB/archive/v2021.8.0.tar.gz
-	sha256sums = eee380323bb7ce864355ed9431f85c43955faaae9e9bce35c62b372d7ffd9f8b
+	source = https://github.com/oneapi-src/oneTBB/archive/v2021.10.0.tar.gz
+	sha256sums = 487023a955e5a3cc6d3a0d5f89179f9b6c0ae7222613a7185b0227ba0c83700b
 
 pkgname = mingw-w64-onetbb
