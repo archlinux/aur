@@ -2,7 +2,7 @@
 
 pkgname=2048.zig
 _pkgname=${pkgname%.zig}
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="2048 in zig"
 arch=('x86_64' 'aarch64' 'i686')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/archive/$pkgver/$pkgname.tar.gz")
-sha256sums=('a040fa5e5d805335519cf7f2ea636d0f4de08c0d2d0a5c8672b03859685b6076')
+sha256sums=('e3c1d0ca29b96dec24c21f1d8cc7ad6da9af7d34f7431861465d96d5d0eaeaf0')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
