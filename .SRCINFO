@@ -2,7 +2,7 @@ pkgbase = hdisplays
 	pkgdesc = GUI display configurator for wlroots compositors
 	pkgver = r72.515c2b0
 	pkgrel = 1
-	url = https://github.com/kRHYME7/Hypr-Display
+	url = https://github.com/kRHYME7/hypr-display
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -17,7 +17,7 @@ pkgbase = hdisplays
 	depends = gtk3
 	provides = hdisplays
 	conflicts = hdisplays
-	source = hdisplays::git+https://github.com/kRHYME7/Hypr-Display
+	source = hdisplays::git+https://github.com/kRHYME7/hypr-display
 	sha256sums = SKIP
 
 pkgname = hdisplays
