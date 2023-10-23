@@ -1,6 +1,6 @@
 pkgbase = dura-git
 	pkgdesc = Dura is a background process that watches your Git repositories and commits your uncommitted changes
-	pkgver = 0.1.0
+	pkgver = v0.2.0.r11.gb4a51b9
 	pkgrel = 1
 	url = https://github.com/tkellogg/dura
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dura-git
 	makedepends = git
 	makedepends = cargo
 	provides = dura
-	source = git+https://github.com/tkellogg/dura
+	source = dura-git::git+https://github.com/tkellogg/dura
 	sha512sums = SKIP
 
 pkgname = dura-git
