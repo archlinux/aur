@@ -1,7 +1,7 @@
 pkgbase = snappify-bin
 
 	pkgdesc = snappify Slides enable developers to create impressive presentations and smoothly animated videos.
-	pkgver = 8.19.17.8 
+	pkgver = 0.0.5 
 	pkgrel = 1
 	url = https://snappify.com/
 	arch = x86_64

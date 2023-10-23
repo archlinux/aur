@@ -18,8 +18,6 @@ source=(
 md5sums=('d123b423e81c0e5bf752a1e8b27dba9d')
 sha256sums=('771b76f4c40fd0402b8dba389493f95f2c7e17e596ebc7289a57ac27b2b2a419')
 
-options=(!strip)
-
 
 package() {
     bsdtar -xf "$srcdir/data.tar.zst" -C ${pkgdir}/
