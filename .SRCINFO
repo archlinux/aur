@@ -1,10 +1,15 @@
 pkgbase = bruno-bin
 	pkgdesc = Opensource API Client for Exploring and Testing APIs
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.usebruno.com/
 	arch = x86_64
 	license = MIT
+	depends = c-ares
+	depends = gtk3
+	depends = libevent
+	depends = nss
+	depends = wayland
 	provides = bruno
 	conflicts = bruno
 	source = https://github.com/usebruno/bruno/releases/download/v0.27.0/bruno_0.27.0_amd64_linux.deb

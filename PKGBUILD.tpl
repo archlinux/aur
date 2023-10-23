@@ -10,6 +10,13 @@ url="https://www.usebruno.com/"
 license=('MIT')
 provides=('bruno')
 conflicts=('bruno')
+depends=(
+    'c-ares'
+    'gtk3'
+    'libevent'
+    'nss'
+    'wayland'
+)
 
 # _latest function is used in a script that will auto update this PKGBUILD.
 _latest() {
