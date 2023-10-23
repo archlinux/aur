@@ -3,14 +3,14 @@
 
 pkgname=dualsensectl-git
 _pkgname=dualsensectl
-pkgver=v0.4.r1.g602ffe4
+pkgver=0.4.r1.g602ffe4
 pkgrel=1
 pkgdesc='Tool for controlling Sony PlayStation 5 DualSense controller on Linux'
 arch=('any')
 url='https://github.com/nowrep/dualsensectl'
 license=('GPL2')
 depends=('systemd' 'systemd-libs' 'dbus' 'hidapi' 'glibc')
-makedepends=('git' 'gcc' 'make')
+makedepends=('git' 'gcc' 'make' 'pkgconf')
 conflicts=('dualsensectl')
 source=("$_pkgname::git+https://github.com/nowrep/dualsensectl#branch=main")
 sha512sums=('SKIP')
@@ -19,7 +19,8 @@ options=('!strip')
 pkgver() {
   cd "$_pkgname"
   ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g' ||
+    											 
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
