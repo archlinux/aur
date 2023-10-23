@@ -1,3 +1,18 @@
+## GE-Proton8-21
+
+- fixed washed out colors on some games with FSR disabled and incorrect screen resolution applied (such as Deep Rock Galactic) -- thanks loathingKernel
+- fixed crash in DOOM Eternal on clean prefix due to incorrect screen resolution detection when FSR disabled -- thanks loathingKernel
+- Rebased and re-added more accurate screen resolution detection for FSR -- thanks loathingKernel
+- imported upstream patch needed for libreVR Revive https://bugs.winehq.org/show_bug.cgi?id=54687
+- updated wine bleeding edge
+- updated vkd3d-proton
+
+## GE-Proton8-20
+
+HOTFIX:
+
+- updated world of warships workaround patch with proper fix, no longer requires environment variable (thanks OOOOOF123)
+
 ## GE-Proton8-19
 
 HOTFIX:
