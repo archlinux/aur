@@ -1,0 +1,17 @@
+pkgbase = rcalc
+	pkgdesc = A lightweight RPN calculator
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/gelvinp/rcalc
+	arch = x86_64
+	license = MIT
+	makedepends = python>=3.11.0
+	makedepends = scons>=4.5.0
+	makedepends = pkg-config
+	makedepends = git
+	depends = glfw>=3.0.0,
+	depends = freetype2>=2.0.0
+	source = git+https://github.com/gelvinp/rcalc#tag=c76b62b9c8ad6e0431b173a13ca8655791fb51e0?signed
+	sha256sums = SKIP
+
+pkgname = rcalc
