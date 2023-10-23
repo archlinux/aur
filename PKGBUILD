@@ -37,7 +37,7 @@ pkgdesc="Chromium fork focused on high performance and security"
 pkgver=117.0.5938.157
 pkgrel=3
 arch=('x86_64')
-license=('GPL3')
+license=('BSD')
 
 case "${_sse3::1}" in
   't'|'y'|'1')
