@@ -1,0 +1,12 @@
+pkgbase = snappify-bin
+
+	pkgdesc = snappify Slides enable developers to create impressive presentations and smoothly animated videos.
+	pkgver = 8.19.17.8 
+	pkgrel = 1
+	url = https://snappify.com/
+	arch = x86_64
+	license = custom
+	source = https://release.snappi.fyi/deb/x64/snappify_0.0.5_amd64.deb
+    md5sums = d123b423e81c0e5bf752a1e8b27dba9d
+    sha256sums = 771b76f4c40fd0402b8dba389493f95f2c7e17e596ebc7289a57ac27b2b2a419
+pkgname = snappify-bin
