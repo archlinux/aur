@@ -1,3 +1,10 @@
+2023-10-20 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.12.5-1:
+    Fixed possible crash on empty access_token returned from Steam despite EResult.OK response, how did they even manage to do that (@JustArchi).
+    Fixed possible crash due to race condition in new web session refresh code (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-10-19 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.12.3-1:
     [!] Fixed another Steam breaking change introduced at 19.10.2023 which permanently broke establishing web sessions, thanks Valve (@JustArchi #3043 #3044).
