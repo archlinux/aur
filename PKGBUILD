@@ -4,7 +4,7 @@ pkgname=bruno-bin
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
 pkgver=0.27.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.usebruno.com/"
 license=('MIT')
@@ -16,6 +16,7 @@ depends=(
     'libevent'
     'nss'
     'wayland'
+    'alsa-lib'
 )
 
 # _latest function is used in a script that will auto update this PKGBUILD.

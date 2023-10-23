@@ -16,6 +16,7 @@ depends=(
     'libevent'
     'nss'
     'wayland'
+    'alsa-lib'
 )
 
 # _latest function is used in a script that will auto update this PKGBUILD.
