@@ -3,7 +3,7 @@
 # Contributor: Michal Kowalski <kowalski TOD michal TA gmail TOD com>
 
 pkgname=achilles
-pkgver=2.10
+pkgver=2.12
 pkgrel=1
 pkgdesc="An artificial life and evolution simulator that uses Hebbian neural networks and OpenGL/SDL to simulate life in a simplified environment. It is based on Larry Yaeger's PolyWorld idea"
 arch=('i686' 'x86_64')
@@ -21,16 +21,20 @@ install=
 changelog=
 # see url comment above...
 #source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-source=("http://ftp.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_2-10.debian.tar.xz"
+source=("http://ftp.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_2-12.debian.tar.xz"
         "http://ftp.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_2.orig.tar.gz")
-sha512sums=('88762d7f3180fc1b6c02ea117783072796829f687600d10907c20a63ef4cc0efe4fc3338f0c7d394d343d5d35c22ef8df0e35951408eed9baac6a45d47091500'
+sha512sums=('51727e0d4497cca664c56b55afaf18320973bb44ee974170d85985036ea940356c7e6dddf3a235b41ea4ce911bc6f6a1f532d12a04bb6c9ec22275831a563077'
             '3be21d55aea094fa32536348d29f5fe45f9681d1ee2627d146c8595303d70219a38946435b0f83446ff039d5133a5efc946749378c86c0cc93091c0ebaaa1185')
 noextract=()
+
+prepare() {
+  cd "$srcdir/$pkgname-2"
+  patch -p1 -i "../debian/patches/010_previous.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-2"
 
-  patch -p1 -i "../debian/patches/010_previous.patch"
   ./configure --prefix=/usr
   make CXXFLAGS="${CXXFLAGS} -I/usr/include/SDL"
 }
