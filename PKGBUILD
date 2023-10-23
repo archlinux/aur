@@ -8,10 +8,10 @@ arch=('any')
 url="https://github.com/xyzz/vita-parse-core"
 license=('MIT')
 groups=()
-depends=('python' 'python-pyelftools' 'psvita-sdk')
+depends=('python' 'python-pyelftools' 'vitasdk')
 makedepends=('git')
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=("vita-parse-core")
+conflicts=("vita-parse-core")
 source=('git+https://github.com/xyzz/vita-parse-core.git' '0001-Fixed-util.py.patch' 'main')
 sha256sums=('SKIP'
             'c65c44c28945f6cba41081f21d0239ed5c57f5e071c17771a294884e1a2ac0b0'
