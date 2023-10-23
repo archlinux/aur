@@ -1,0 +1,21 @@
+pkgbase = vitasdk-git
+	pkgdesc = VITASDK homebrew toolchain for Sony Playstation Vita
+	pkgver = 1
+	pkgrel = 1
+	url = https://vitasdk.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = GPL
+	makedepends = wget
+	makedepends = git
+	depends = pacman>5
+	provides = vitasdk
+	provides = psvita-sdk
+	options = !strip
+	source = sudo-fix.patch
+	source = git+https://github.com/vitasdk/vdpm
+	md5sums = 1213c1c23d734af92553ac8801443d36
+	md5sums = SKIP
+
+pkgname = vitasdk-git
