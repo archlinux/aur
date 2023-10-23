@@ -2,7 +2,7 @@
 pkgname=ruqola-better-git
 _pkgname=ruqola
 pkgver=2.0.0.r314.gdca60ea
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat client for the KDE desktop'
 arch=('x86_64')
 url='https://invent.kde.org/network/ruqola'
@@ -11,7 +11,7 @@ depends=(
   # qt5 group
  'qt5-websockets' 'qt5-networkauth' 'qt5-multimedia'
  # kf5 group
- 'kwidgetsaddons' 'ki18n5' 'kcrash5' 'kcoreaddons' 'syntax-highlighting' 'sonnet5' 'ktextwidgets5' 'knotifyconfig' 'kio5' 'kiconthemes5' 'kxmlgui5' 'kidletime5' 'prison5' 'kdoctools5'
+ 'kwidgetsaddons5' 'ki18n5' 'kcrash5' 'kcoreaddons5' 'syntax-highlighting5' 'sonnet5' 'ktextwidgets5' 'knotifyconfig5' 'kio5' 'kiconthemes5' 'kxmlgui5' 'kidletime5' 'prison5' 'kdoctools5'
  # others
  'qtkeychain-qt5' 'hicolor-icon-theme' 'kuserfeedback'
 )
