@@ -7,6 +7,7 @@ pkgbase = snmpb
 	license = GPL2
 	makedepends = bison
 	makedepends = flex
+	makedepends = qt5-tools
 	makedepends = git
 	depends = qwt
 	depends = qt5-base

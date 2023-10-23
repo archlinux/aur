@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://sourceforge.net/projects/snmpb/"
 license=('GPL2')
 depends=(qwt qt5-base qt5-svg)
-makedepends=(bison flex git)
+makedepends=(bison flex qt5-tools git)
 source=("$pkgname-code::git+https://git.code.sf.net/p/snmpb/code"
 	"https://www.ibr.cs.tu-bs.de/projects/libsmi/download/libsmi-0.5.0.tar.gz"
 	"https://github.com/libtom/libtomcrypt/releases/download/v1.18.2/crypt-1.18.2.tar.xz"
