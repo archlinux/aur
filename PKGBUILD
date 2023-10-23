@@ -2,7 +2,7 @@
 
 pkgname=chatterino2-technorino-git
 _pkgname=technorino
-pkgver=r4329.aa6d0631
+pkgver=r4431.13ea4ad1
 pkgrel=1
 pkgdesc='Another fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)'
 arch=('any')
@@ -16,8 +16,7 @@ provides=('chatterino')
 options=('lto')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage' 'chatterino2-7tv-git' 'chatterino2-dankerino-git')
 install=$pkgname.install
-source=("avif.patch"
-		"git+https://github.com/2547techno/technorino"
+source=("git+https://github.com/2547techno/technorino"
         "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
         "git+https://github.com/getsentry/crashpad"
@@ -28,8 +27,7 @@ source=("avif.patch"
         "git+https://github.com/zaphoyd/websocketpp"
         "git+https://github.com/Neargye/magic_enum"
         "git+https://github.com/mackron/miniaudio")
-md5sums=('6dfbc6528311c4a98842462d4eeff0b5'
-		'SKIP'
+md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -48,7 +46,6 @@ pkgver() {
 
 prepare () {
     cd "$srcdir/$_pkgname"
-	patch --forward --strip=1 --input="${srcdir}/avif.patch"
     sed -i 's\Icon=com.chatterino.chatterino\Icon=chatterino\g' resources/com.chatterino.chatterino.desktop
     sed -i 's\Version=1.0\Version=7.4.5\g' resources/com.chatterino.chatterino.desktop
     git submodule init
@@ -79,6 +76,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_SYSTEM_QTKEYCHAIN=ON \
         -DUSE_PRECOMPILED_HEADERS=OFF \
+		-DCHATTERINO_STATIC_AVIF=OFF \
         "${flags[@]}" \
         ..
     cmake --build .

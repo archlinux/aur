@@ -1,6 +1,6 @@
 pkgbase = chatterino2-technorino-git
 	pkgdesc = Another fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)
-	pkgver = r4329.aa6d0631
+	pkgver = r4431.13ea4ad1
 	pkgrel = 1
 	url = https://github.com/2547techno/technorino
 	install = chatterino2-technorino-git.install
@@ -25,7 +25,6 @@ pkgbase = chatterino2-technorino-git
 	conflicts = chatterino2-7tv-git
 	conflicts = chatterino2-dankerino-git
 	options = lto
-	source = avif.patch
 	source = git+https://github.com/2547techno/technorino
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
@@ -37,7 +36,6 @@ pkgbase = chatterino2-technorino-git
 	source = git+https://github.com/zaphoyd/websocketpp
 	source = git+https://github.com/Neargye/magic_enum
 	source = git+https://github.com/mackron/miniaudio
-	md5sums = 6dfbc6528311c4a98842462d4eeff0b5
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
