@@ -1,7 +1,7 @@
 pkgbase = wttrbar
 	pkgdesc = Weather indicator for Waybar
 	pkgver = 0.6.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/bjesus/wttrbar
 	arch = any
 	license = MIT

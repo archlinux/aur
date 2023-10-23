@@ -1,7 +1,7 @@
 # Maintainer: Yo'av Moshe <archlinux@yoavmoshe.com>
 pkgname=wttrbar
 pkgver=0.6.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Weather indicator for Waybar"
 url="https://github.com/bjesus/wttrbar"
 arch=("any")
