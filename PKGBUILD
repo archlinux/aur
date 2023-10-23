@@ -1,45 +1,49 @@
-# Maintainer: VienC
-# Forked from thorium-browser-bin
-# options - defaults
+# Maintainer:
+# Contributor: VienC
+
+# options
+if [ ! -z "$_srcinfo" ] ; then
+  _autoupdate=false
+  _sse3=true
+fi
+
 if [ -z "$_pkgver" ] ; then
   : ${_autoupdate:=true}
 else
   : ${_autoupdate:=false}
 fi
 
+: ${_sse3:=true}
 : ${_pkgver:=117.0.5938.157}
-
 
 # basic info
 _pkgname="thorium-browser"
 pkgname="$_pkgname-special-bin"
-pkgver=117.0.5938.157
-pkgrel=1
-pkgdesc="Special builds of Thorium for SSE3 and different processors. "
+pkgdesc="Chromium fork focused on high performance and security (SSE3 version)"
 url="https://github.com/Alex313031/Thorium-SSE3"
-
+pkgver=117.0.5938.157
+pkgrel=2
+arch=('x86_64')
+license=('BSD')
 
 # update version
 case "${_autoupdate::1}" in
   't'|'y'|'1')
-    _response=$(curl "https://api.github.com/repos/Alex313031/Thorium-SSE3/releases" -s)
-    _get() {
+    _response=$(curl "https://api.github.com/repos/${url#*.com/}/releases" -s)
+
+    _regex='^.*thorium-browser_([0-9\.]+)_.*\.deb.*$'
+    _pkgver_new=$(
       printf '%s' "$_response" \
-        | awk -F '"' '/"'"$1"'":/{print $4}' \
-        | head -1 | sed 's/^M//' | sed 's/-1$//'
-    }
-    _pkgver_new=$(_get tag_name)
+        | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
+    )
 
     # update _pkgver
-    if [ x"$_pkgver" != x"$_pkgver_new" ] ; then
+    if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
       _pkgver="$_pkgver_new"
-      sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+      sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
     fi
     ;;
 esac
-
-arch=('x86_64')
-license=('BSD 3-Clause')
 
 depends=()
 makedepends=()
@@ -50,32 +54,121 @@ optdepends=(
   'kwallet: for storing passwords in KWallet'
 )
 
-if [ x"$_pkgname" != x"$pkgname" ] ; then
-  provides=("$_pkgname")
-  conflicts=("$_pkgname" "thorium-browser-bin")
-fi
-
 options=('!emptydirs' '!strip')
 install="$_pkgname.install"
 
-_dl_url="$url/releases/download/M${_pkgver}"
-_dl_filename="${_pkgname}_${_pkgver}_SSE3.deb"
+source=("$_pkgname.sh")
+sha256sums=('e09c5c523f45b8acfd58403514f9ad69047daa94600787bd7aee33d78080f9a9')
 
-source=(
-  "$_dl_url/$_dl_filename"
-  "$_pkgname.sh"
-)
-sha256sums=(
-  '898e71433f8f655520be9336414e2c1475a11c5b4acea33fa4c49f7c8c1e2b49'
-  'SKIP'
-)
+_dl_type="SSE3"
+_dl_url="https://github.com/Alex313031/Thorium-SSE3/releases/download/M${_pkgver:?}"
+_dl_filename="${_pkgname}_${_pkgver:?}_$_dl_type.deb"
+noextract+=("$_dl_filename")
+source+=("$_dl_url/$_dl_filename")
+sha256sums+=('SKIP')
 
 pkgver() {
   printf '%s' \
-    "$_pkgver"
+    "${_pkgver:?}"
+}
+
+_package() {
+  echo "  -> Extracting the archive..."
+  case "${_build_sse3::1}" in
+    't'|'y'|'1')
+      _dl_type="SSE3"
+      _pkg_type="-sse3"
+      ;;
+  esac
+
+  _dl_filename="${_pkgname}_${_pkgver:?}_$_dl_type.deb"
+  bsdtar -xf "$_dl_filename" data.tar.xz
+  bsdtar -xf data.tar.xz -C "${pkgdir:?}/"
+  rm data.tar.xz
+
+  echo "  -> Moving stuff in place..."
+  mv "${pkgdir:?}/opt/chromium.org/thorium" "${pkgdir:?}/opt/$_pkgname$_pkg_type"
+  unlink "${pkgdir:?}/usr/bin/thorium-browser"
+  unlink "${pkgdir:?}/usr/bin/pak"
+
+  sed -E "s@/opt/chromium.org/thorium/@/opt/$_pkgname$_pkg_type/@" \
+    -i "${pkgdir:?}/usr/bin/thorium-shell"
+
+  sed -E "s@/opt/chromium.org/thorium/@/opt/thorium-browser/@" \
+    -i "${pkgdir:?}/usr/share/gnome-control-center/default-apps/thorium-browser.xml"
+
+  # Launcher
+  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/$_pkgname$_pkg_type"
+  chmod 4755 "${pkgdir:?}/opt/$_pkgname$_pkg_type/chrome-sandbox"
+
+  case "${_build_sse3::1}" in
+    't'|'y'|'1')
+      local _type="-sse3"
+
+      sed -E \
+        -e "s@thorium-browser@$_pkgname$_pkg_type@" \
+        -i "${pkgdir:?}/usr/bin/$_pkgname$_pkg_type"
+
+      sed -E \
+        -e "s@thorium-shell@thorium-shell$_type@" \
+        -i "${pkgdir:?}/usr/bin/thorium-shell"
+
+      mv "${pkgdir:?}/usr/bin/thorium-shell" "${pkgdir:?}/usr/bin/thorium-shell$_type"
+
+      sed -E \
+        -e "s@thorium-browser@$_pkgname$_pkg_type@" \
+        -i "${pkgdir:?}/usr/share/gnome-control-center/default-apps/thorium-browser.xml"
+
+      mv "${pkgdir:?}/usr/share/gnome-control-center/default-apps/thorium-browser.xml" "${pkgdir:?}/usr/share/gnome-control-center/default-apps/$_pkgname$_pkg_type.xml"
+
+      sed -E \
+        -e "s@thorium-browser@$_pkgname$_pkg_type@" \
+        -i "${pkgdir:?}/usr/share/appdata/thorium-browser.appdata.xml"
+
+      mv "${pkgdir:?}/usr/share/appdata/thorium-browser.appdata.xml" "${pkgdir:?}/usr/share/appdata/$_pkgname$_pkg_type.appdata.xml"
+
+      sed -E \
+        -e "s@$_pkgname@$_pkgname$_pkg_type@" \
+        -e "s@thorium-shell@thorium-shell$_type@" \
+        -i "${pkgdir:?}/usr/share/applications/thorium-browser.desktop"
+
+      mv "${pkgdir:?}/usr/share/applications/thorium-browser.desktop" "${pkgdir:?}/usr/share/applications/$_pkgname$_pkg_type.desktop"
+
+      sed -E \
+        -e "s@^Icon=.*\$@Icon=thorium-shell$_type@" \
+        -e "s@thorium-shell@thorium-shell$_type@" \
+        -e "s@thorium_shell@thorium_shell${_type//-/_}@" \
+        -i "${pkgdir:?}/usr/share/applications/thorium-shell.desktop"
+
+      mv "${pkgdir:?}/usr/share/applications/thorium-shell.desktop" "${pkgdir:?}/usr/share/applications/thorium-shell$_type.desktop"
+
+      mv "${pkgdir:?}/usr/share/man/man1/thorium-browser.1.gz" "${pkgdir:?}/usr/share/man/man1/$_pkgname$_pkg_type.1.gz"
+      ;;
+  esac
+
+  # Icons
+  for i in 16 24 32 48 64 128 256; do
+    install -Dm644 "${pkgdir:?}/opt/$_pkgname$_pkg_type/product_logo_${i}.png" \
+      "${pkgdir:?}/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname$_pkg_type.png"
+  done
+
+  install -Dm644 "${pkgdir:?}/opt/$_pkgname$_pkg_type/thorium_shell.png" \
+    "${pkgdir:?}/usr/share/icons/hicolor/256x256/apps/thorium-shell$_type.png"
+
+  echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
+  rm -r -- \
+  "${pkgdir:?}/opt/chromium.org" \
+    "${pkgdir:?}/etc/cron.daily/" \
+    "${pkgdir:?}/usr/share/doc/" \
+    "${pkgdir:?}/opt/$_pkgname$_pkg_type/cron/" \
+    "${pkgdir:?}/opt/$_pkgname$_pkg_type"/product_logo_*.{png,xpm} \
+    "${pkgdir:?}/usr/share/menu/"
 }
 
 package() {
+  provides=("$_pkgname-sse3")
+  conflicts=("$_pkgname-sse3")
+
   depends+=(
     'alsa-lib'
     'gtk3'
@@ -87,28 +180,5 @@ package() {
     'xdg-utils'
   )
 
-  echo "  -> Extracting the data.tar.xz..."
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-
-  echo "  -> Moving stuff in place..."
-  # Launcher
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
-
-  chmod 4755 "$pkgdir/opt/chromium.org/thorium/chrome-sandbox"
-
-  # Icons
-  for i in 16 24 32 48 64 128 256; do
-    install -Dm644 "$pkgdir/opt/chromium.org/thorium/product_logo_${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thorium-browser.png"
-  done
-
-  install -Dm644 "$pkgdir/opt/chromium.org/thorium/thorium_shell.png" \
-    -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
-
-  echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
-  rm -r -- \
-    "$pkgdir/etc/cron.daily/" \
-    "$pkgdir/opt/chromium.org/thorium/cron/" \
-    "$pkgdir/opt/chromium.org/thorium"/product_logo_*.{png,xpm} \
-    "$pkgdir/usr/share/menu/"
+  _build_sse3=true _package
 }

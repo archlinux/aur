@@ -1,14 +1,16 @@
-all_off="$(tput sgr0)"  # Reset all text attributes to default (no formatting)
-bold="${all_off}$(tput bold)"  # Set text to bold
-blue="${bold}$(tput setaf 4)"  # Set text color to blue
-yellow="${bold}$(tput setaf 3)"  # Set text color to yellow
 # Colored makepkg-like functions
 msg_blue() {
     printf "${blue}==>${bold} $1${all_off}\n"
 }
+
 note() {
     printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
 }
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     note "Custom flags should be put directly in: ~/.config/thorium-flags.conf"
