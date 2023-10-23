@@ -28,7 +28,7 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --locked --release
+  cargo build --frozen --release
 }
 
 check() {
