@@ -13,7 +13,9 @@ pkgbase = vitasdk-packages-git
 	depends = pacman>5
 	provides = vitasdk-packages
 	options = !strip
+	source = vdpm-notmp.patch
 	source = git+https://github.com/vitasdk/vdpm
+	md5sums = 6d5c81f0720c71165f381b93da529bd3
 	md5sums = SKIP
 
 pkgname = vitasdk-packages-git
