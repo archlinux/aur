@@ -5,13 +5,13 @@ pkgver=r10.2c3452f
 pkgrel=1
 pkgdesc="A quick portal implementation + GUI to test the upcoming dark style preference"
 arch=(x86_64)
-url="https://gitlab.gnome.org/exalm/color-scheme-simulator"
+url="https://gitlab.gnome.org/alicem/color-scheme-simulator"
 license=('GPL3')
 depends=('xdg-desktop-portal')
 makedepends=('meson' 'git' 'vala' 'libadwaita')
 optdepends=("libadwaita: for GUI")
 install=$pkgname.install
-source=("git+https://gitlab.gnome.org/exalm/color-scheme-simulator.git")
+source=("git+https://gitlab.gnome.org/alicem/color-scheme-simulator.git")
 md5sums=('SKIP')
 
 pkgver() {
