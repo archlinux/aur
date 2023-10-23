@@ -6,8 +6,8 @@ _Pkgname=Linuxqq
 _disname=qq
 
 pkgname="${_pkgname}"-appimage-latest
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
@@ -18,15 +18,15 @@ makedepends=('nodejs' 'npm')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq' 'linuxqq-nt-bwrap')
 
-source=("get_latest" "package.json" "package-lock.json")
-sha256sums=('212d7493d21e7f1cd208f2183fde3ab971f0196b2f8af7a1629ca880f2d97081'
-            '5e0cd25fab289fe73b89e034c803e7c1dc45b1880bd3bc1f4f6f31f084d16981'
-            '0b44039655560b55f13fb228758901b699ba63c6999f619d81fa3f3284f57f47')
+source=("get_latest" "package.json")
+sha256sums=('aca0128e6a5c9871b33c6773a7d6fa966a15c9b19323f7b2068bec5da0cad5c5'
+            'f68a25e106dc496fbbb9a46c44c5624b3fc6ef436642b19d1023ecf53588cd90')
 
 _appimage="${_Pkgname}-${arch}.AppImage"
 
 prepare() {
     npm install
+    export NODE_PATH=${srcdir}/node_modules
     local url=$(
         case $CARCH in
             "x86_64")

@@ -4,12 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const syncRequest = require('sync-request');
 const os = require('os');
-const { log } = require('console');
 require('seajs');
 
 const file = "linuxQQDownload"
 const url = `https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/${file}.js`
-const re = RegExp('https://dldir1.qq.com/qqfile/qq/QQNT/(\\w+)/linuxqq_(\\d+.\\d+.\\d+-\\d+)_x86_64.AppImage', 'g');
 const res = syncRequest('GET', url);
 
 const arch = process.argv.slice(2)[0];
