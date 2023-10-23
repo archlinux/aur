@@ -2,7 +2,7 @@
 
 _name=PythonQwt
 pkgname=python-${_name,,}
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="Qt plotting widgets (pure Python reimplementation of Qwt C++ library)"
 arch=('any')
@@ -11,15 +11,15 @@ license=('custom')
 depends=(python-pyqt5 qt5-svg 'python-qtpy' 'python-numpy')
 makedepends=(python-setuptools)
 source=("$_name-$pkgver.tar.gz::https://github.com/PlotPyStack/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fbfa9c2ccb5a1dbb6c76750478717342151480a70e0fb73feff86b701c118658')
+sha256sums=('f182ddb945a2949ef41ec135c68cdb7df266874b06dda7f8335f90b07cea3209')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
