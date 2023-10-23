@@ -12,7 +12,7 @@ license=('custom:Free for personal use')
 arch=('any')
 
 source=(
-  "$_pkgname.zip"::"http://dl.dafont.com/dl/?f=djb_zora_prints"
+  "$_pkgname-$pkgver.zip"::"http://dl.dafont.com/dl/?f=djb_zora_prints"
   "License-20210901.txt" # https://darcybaldwin.com/commercial-use/
 )
 sha256sums=(
