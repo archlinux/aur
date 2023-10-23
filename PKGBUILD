@@ -1,6 +1,6 @@
 # Maintainer: Antonio Voza <vozaanthony {at} gmail {dot} com>
 pkgname=cyberchef-electron
-pkgver=10.4.0
+pkgver=10.5.2
 pkgrel=1
 pkgdesc="The Cyber Swiss Army Knife (unofficial Electron wrapper)"
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/gchq/CyberChef/releases/download/v${pkgver}/CyberChe
         "prompt.js"
         "cyberchef.sh"
         "cyberchef.desktop")
-sha256sums=('8485713baeed5fced47e2543b3072032bc9e541d1962b9ee8356b615efa074a2'
+sha256sums=('a4d47a313d9e79d08775abfde18a08c32b50b4db8fa52261bfddbb785910d0ef'
             '0e936b556d83975e3ecf02e45433c46bf63fa303a31147fd8599f22fcb2d61e1'
             'e6582ba4f0f6141f62f6214420abcf524475f5a887e3aaee6169974f78462589'
             'a48ce4a789367ddb66ff49bcdb12f5f7c540581b4c78c93e3a3cb6440d60ade8'
