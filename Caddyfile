@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 #
 
+# FIXME(gromit): dont hardcode the URL here
 # {$HD_BASE_URL}
 http://localhost:8080
 
