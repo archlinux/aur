@@ -1,7 +1,7 @@
 # Maintainer: Maurício de Lima <mauriciodelima.mol@gmail.com>
 
 pkgname=archiso-grub-themes
-pkgver=72
+pkgver=73
 pkgrel=1
 pkgdesc="Theme Archiso for Grub"
 arch=('any')

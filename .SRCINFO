@@ -1,6 +1,6 @@
 pkgbase = archiso-grub-themes
 	pkgdesc = Theme Archiso for Grub
-	pkgver = 72
+	pkgver = 73
 	pkgrel = 1
 	url = https://gitlab.com/uaiso/labs/uarchiso/archiso-grub-themes
 	install = archiso-grub-themes.install
