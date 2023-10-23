@@ -2,7 +2,7 @@
 
 _gemname=fusuma-plugin-appmatcher
 pkgname=ruby-$_gemname
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Fusuma plugin configure app-specific gestures"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fusuma ruby-dbus ruby-rexml)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('6f69aa0df4a532d7496395bf127dc7fff932ac31')
+sha1sums=('aed7d6344bc2f278e8fd93d225814b6aecf3e4a3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
