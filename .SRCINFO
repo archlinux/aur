@@ -10,7 +10,7 @@ pkgbase = escrcpy
 	makedepends = npm>=9.8.1
 	makedepends = nodejs>=18.18.0
 	depends = bash
-	depends = electron26
+	depends = electron27
 	depends = scrcpy
 	depends = android-sdk-platform-tools
 	conflicts = escrcpy

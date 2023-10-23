@@ -7,7 +7,7 @@ arch=('aarch64' 'x86_64')
 url="https://github.com/viarotel-org/escrcpy"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron26' 'scrcpy' 'android-sdk-platform-tools')
+depends=('bash' 'electron27' 'scrcpy' 'android-sdk-platform-tools')
 makedepends=('gendesk' 'npm>=9.8.1' 'nodejs>=18.18.0')
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh")

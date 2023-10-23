@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron26
+_ELECTRON=/usr/bin/electron27
 APPDIR="/opt/escrcpy"
 export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
 export XDG_DATA_DIRS="./share/:/usr/share/gnome:/usr/local/share/:/usr/share/:${XDG_DATA_DIRS}"
