@@ -2,7 +2,7 @@
 _pkgname=krunner-vscodeprojects
 pkgname=$_pkgname
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open VSCode Project Manager projects from Krunner"
 arch=('any')
 url="https://github.com/alex1701c/$_pkgname.git"
@@ -10,8 +10,8 @@ source=("https://github.com/alex1701c/$_pkgname/archive/${pkgver}.tar.gz")
 md5sums=('2eef428782af5d45c1d5d85edc337211')
 groups=()
 depends=(
-  krunner
-  kservice
+  krunner5
+  kservice5
 )
 makedepends=(
   cmake
