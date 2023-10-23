@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=escrcpy
+pkgname=escrcpy-bin
 _pkgname=Escrcpy
 pkgver=1.8.15
 pkgrel=1
@@ -8,6 +8,7 @@ arch=('aarch64' 'x86_64')
 url="https://github.com/viarotel-org/escrcpy"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=('bash' 'electron27' 'scrcpy' 'android-sdk-platform-tools')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")

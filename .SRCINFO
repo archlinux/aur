@@ -1,4 +1,4 @@
-pkgbase = escrcpy
+pkgbase = escrcpy-bin
 	pkgdesc = 使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动
 	pkgver = 1.8.15
 	pkgrel = 1
@@ -10,6 +10,7 @@ pkgbase = escrcpy
 	depends = electron27
 	depends = scrcpy
 	depends = android-sdk-platform-tools
+	provides = escrcpy=1.8.15
 	conflicts = escrcpy
 	source = LICENSE::https://raw.githubusercontent.com/viarotel-org/escrcpy/v1.8.15/LICENSE
 	source = escrcpy.sh
@@ -20,4 +21,4 @@ pkgbase = escrcpy
 	source_x86_64 = escrcpy-1.8.15-x86_64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.8.15/Escrcpy-1.8.15-linux-amd64.deb
 	sha256sums_x86_64 = 5367df19ee903bcf9c3a7f028379695e0821d870b3389c1ea17006ce38591110
 
-pkgname = escrcpy
+pkgname = escrcpy-bin
