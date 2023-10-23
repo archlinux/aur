@@ -1,7 +1,7 @@
 # Maintainer: Tadeusz Magura-Witkowski <tadeuszmw gmail>
 
 pkgname=droidstar-git
-pkgver=r37.a24658b
+pkgver=r54.396faec
 pkgrel=1
 pkgdesc="This software connects to M17, Fusion (YSF/FCS, DN and VW modes are supported), DMR, P25, NXDN, D-STAR (REF/XRF/DCS) reflectors and AllStar nodes (as an IAX2 client) over UDP."
 arch=('i686' 'x86_64')
