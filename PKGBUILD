@@ -1,6 +1,6 @@
 # Maintainer: Mauricio de Lima <emauricio@uai21.com>
 pkgname=archiso-skel-plasma
-pkgver=72
+pkgver=73
 pkgrel=1
 pkgdesc="Skel Plasma for Archiso by UaiSO"
 arch=('any')
