@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 
 _pkgname="dolphin"
 _pkgname_tabopts="$_pkgname-tabopts"
 pkgname="$_pkgname_tabopts-git"
-pkgver=23.04.3.r20.g0c7665eb2
+pkgver=23.08.2.r14.g5c7887a76
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
@@ -11,16 +11,16 @@ url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=(LGPL)
 depends=(
   'baloo-widgets'
-  'kactivities'
-  'kcmutils'
+  'kactivities5'
+  'kcmutils5'
   'kio-extras'
-  'knewstuff'
-  'kparts'
+  'knewstuff5'
+  'kparts5'
   'kuserfeedback'
 )
 makedepends=(
   'extra-cmake-modules'
-  'kdoctools'
+  'kdoctools5'
 )
 optdepends=(
   'ffmpegthumbs: video thumbnails'
@@ -28,43 +28,38 @@ optdepends=(
   'kdegraphics-thumbnailers: PDF and PS thumbnails'
   'kio-admin: for managing files as administrator'
   'konsole: terminal panel'
-  'purpose: share context menu'
+  'purpose5: share context menu'
 )
 
 provides=("$_pkgname")
-conflicts=(${provides[@]})
-groups=(kde-applications kde-system)
+conflicts=("$_pkgname")
 
-source=(
-  # add tab options
-  # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
-  "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
-)
-sha256sums=(
-  '7e649204637ccd1d3c9e9e748e69f73ac97e1c308c63eda592353ca7df21cb0d'
-)
-
-if [ x"$_pkgname" == x"$pkgname" ] ; then
+if [ x"$_pkgname_tabopts" == x"$pkgname" ] ; then
   # normal package
   _pkgsrc="$_pkgname-$pkgver"
 
   source+=(
     "https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
+    # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
+    "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
   )
   sha256sums+=(
-    '28cab05a6390e067f3a9c5ca176ec412f52bf20f78dc82a12a460d252211da2f'
+    '0bca082410c4a1ab0ac60f76b0fbefa31c749dabe8a57cb53a33806cf53f6b2f'
+    'a50de534a6049ec4e232b6bddb8b39a105287bd0f6eac934e4eaac50df6f0004'
   )
 else
-  # x-git package
+  # git package
   _pkgsrc="$_pkgname"
 
   makedepends+=('git')
 
   source+=(
     "$_pkgname"::"git+https://invent.kde.org/system/dolphin.git"
+    "dolphin-tabopts-2.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/af0a2d168d2c669738a84e14b97ba12fb1428491.patch"
   )
   sha256sums+=(
     'SKIP'
+    'b18914112942d766ae10c5f1d657397870cae5f33218ec34f779a7ad85266df0'
   )
 
   pkgver() {
@@ -81,7 +76,8 @@ else
         | sed -E "s@$_regex@\1@"
     )
     _commit=$(
-      git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+      git log -G "$_line" -1 --pretty=oneline --no-color -- $_file \
+        | sed 's@\ .*$@@'
     )
     _revision=$(
       git rev-list --count $_commit..HEAD
