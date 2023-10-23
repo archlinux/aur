@@ -26,6 +26,8 @@ pkgver() {
 build() {
   cd $pkgname
 
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --locked --release
 }
 
