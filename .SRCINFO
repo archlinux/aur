@@ -1,0 +1,18 @@
+pkgbase = r-marinerdata
+	pkgdesc = ExperimentHub data for the mariner package
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/marinerData
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-experimenthub
+	optdepends = r-experimenthubdata
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/marinerData_1.0.0.tar.gz
+	md5sums = 88417144bbc4ae0164445918ce73376d
+	sha256sums = 0c0f0e94dc448ac86bbafe056b2f787fb766608f3a607f28e26dfa9012f85867
+
+pkgname = r-marinerdata
