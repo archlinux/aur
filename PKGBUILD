@@ -2,10 +2,10 @@
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_pkgtagname=0.32.0
+_pkgtagname=0.33.0
 
 pkgname=x48ng
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('lua')
 install="${pkgname}.install"
 source=("${_githubrepo}::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz"
         'ui_text.c_1.patch')
-sha256sums=('8480f85ce4ba784a4ed82d0f233ab6a5d447e33b17e104ffcdb1eca13d36ca48'
+sha256sums=('8ff5f120f3e35286c6b2687f6ce6fc750e49f360d94fc3addbffc301c7563d2b'
             '94550704486e179bf0e1495b5fb6fc55c9663fe61d6e44dd45cff8bfe840f301')
 
 build() {
