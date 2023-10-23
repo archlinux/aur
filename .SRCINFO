@@ -1,0 +1,21 @@
+pkgbase = trashy-git
+	pkgdesc = a cli system trash manager, alternative to rm and trash-cli
+	pkgver = 1.0.3.r46.c95b22c
+	pkgrel = 1
+	url = https://github.com/oberblastmeister/trashy
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	conflicts = trash-cli
+	source = git+https://github.com/oberblastmeister/trashy
+	sha256sums = SKIP
+	depends_x86_64 = gcc-libs
+
+pkgname = trashy-git
