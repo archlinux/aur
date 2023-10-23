@@ -1,6 +1,6 @@
 # Maintainer: Khing <alampayk@gmail.com>
 # Contributor: Soon
-pkgname=hypr-display
+pkgname=hdisplays
 _pkgname="hdisplays"
 pkgver=r72.515c2b0
 pkgrel=1
