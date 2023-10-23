@@ -1,0 +1,7 @@
+post_install() {
+    chown -Rc root:vikunja /etc/vikunja/config.yml
+}
+
+post_upgrade() {
+    chown -Rc root:vikunja /etc/vikunja/config.yml
+}
