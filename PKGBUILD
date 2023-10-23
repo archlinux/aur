@@ -7,12 +7,12 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=3.80.17}
+: ${_pkgver:=3.82.8}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.80.17
+pkgver=3.82.8
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
