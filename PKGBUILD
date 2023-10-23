@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=alephone-git
-pkgver=1.6.1.r5745.e1e51743
+pkgver=1.7b1.r5879.2da0b706
 pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)'
 arch=('i686' 'x86_64')
@@ -17,8 +17,10 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-marathon: M1A1 data converted for AlephOne'
             'alephone-marathon2: original data for Marathon 2: Durandal')
 makedepends=('git' 'boost' 'mesa' 'icoutils' 'autoconf-archive')
-source=("git+https://github.com/Aleph-One-Marathon/alephone")
-md5sums=('SKIP')
+source=("git+https://github.com/Aleph-One-Marathon/alephone"
+        "xdg_data_dir.patch")
+md5sums=('SKIP'
+         '296df23c9e47fc772e5e6e1b62c50827')
 
 pkgver() {
   cd alephone/Source_Files/Misc
@@ -28,6 +30,9 @@ pkgver() {
 
 prepare() {
   cd alephone
+
+  # Use XDG Base Directory specification for user data
+  patch -Np1 -i "${srcdir}/xdg_data_dir.patch"
 
   # convert the windows icons
   cd Resources/Windows

@@ -1,0 +1,21 @@
+diff --git a/Source_Files/CSeries/cspaths_sdl.cpp b/Source_Files/CSeries/cspaths_sdl.cpp
+index b562c908..50b04b54 100644
+--- a/Source_Files/CSeries/cspaths_sdl.cpp
++++ b/Source_Files/CSeries/cspaths_sdl.cpp
+@@ -176,9 +176,14 @@ static std::string _get_local_data_path()
+ 	static std::string local_dir = "";
+ 	if (local_dir.empty())
+ 	{
+-		const char *home = getenv("HOME");
++		const char *home = getenv("XDG_DATA_HOME");
+ 		if (home)
+-			local_dir = std::string(home) + "/.alephone";
++			local_dir = std::string(home) + "/alephone";
++		else {
++			home = getenv("HOME");
++			if (home)
++				local_dir = std::string(home) + "/.local/share/alephone";
++		}
+ 	}
+ 	return local_dir;
+ }
