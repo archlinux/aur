@@ -29,7 +29,7 @@ sha256sums=(
 
 _package() {
   local _archive="${1:?}"
-  
+
   mkdir -p "${pkgname:?}"
   bsdtar -x -C "${pkgname:?}" -f "$_archive"
 
@@ -43,6 +43,8 @@ package_otf-typodermic-free() {
 }
 
 package_otf-typodermic-pd() {
+  pkgdesc+=" - public domain"
+
   _package "$_file_pd"
 
   install -Dm644 "${pkgname:?}/License.txt" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"

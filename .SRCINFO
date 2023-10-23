@@ -15,3 +15,4 @@ pkgbase = otf-typodermic-free
 pkgname = otf-typodermic-free
 
 pkgname = otf-typodermic-pd
+	pkgdesc = Free Fonts from Typodermic - public domain
