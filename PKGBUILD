@@ -9,7 +9,7 @@ url='https://github.com/Nuzair46/SpotX-Linux'
 license=('custom')
 source=('install-spotx.hook'
     'git+https://github.com/Nuzair46/SpotX-Linux.git')
-sha256sums=('20c11244216fa09b71ad0d660b54a05e01a34053f1ee2f508ed0cb820716cbc3'
+sha256sums=('c21a8d0f772848e5d3c7ea6d7beeb8c3cfb805ccbe169a03c19af9027cb69c51'
     'SKIP')
 
 pkgver() {

@@ -6,5 +6,5 @@ Target = spotify
 
 [Action]
 Description = Istalling/updating SpotX...
-When = PostTransation
+When = PostTransaction
 Exec = /opt/SpotX-Linux/install.sh -p /opt/spotify
