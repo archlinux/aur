@@ -1,0 +1,20 @@
+pkgbase = r-colourvalues
+	pkgdesc = Assigns Colours to Values
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=colourvalues
+	arch = x86_64
+	license = GPL3
+	checkdepends = r-testthat
+	makedepends = r-bh
+	depends = r-rcpp
+	optdepends = r-covr
+	optdepends = r-microbenchmark
+	optdepends = r-scales
+	optdepends = r-testthat
+	optdepends = r-viridislite
+	source = https://cran.r-project.org/src/contrib/colourvalues_0.3.9.tar.gz
+	md5sums = 6fafd9e1e0234875b6744ef786f62160
+	sha256sums = 36261277a88f8f9e759f69277ea73ba4ea8ab715a1e9f4e57209c43ee4dc395f
+
+pkgname = r-colourvalues
