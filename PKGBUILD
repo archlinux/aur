@@ -3,7 +3,7 @@
 
 pkgname=seamonkey
 pkgver=2.53.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
 url="https://www.seamonkey-project.org"
@@ -89,25 +89,29 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 _archive="$pkgname-$pkgver"
 
+_rust_toolchain_version=1.72.0
+
 prepare() {
   cd "$_archive"
 
   cp "$srcdir/mozconfig" .mozconfig
 
-  rustup toolchain install 1.72.0
+  rustup toolchain install "$_rust_toolchain_version"
 
   echo -n "$_google_api_key" > google-api-key
   echo -n "$_mozilla_api_key" > mozilla-api-key
 
-  cat >> .mozconfig << EOF
-  ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
-  ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
-  ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
-EOF
+  {
+    echo "ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key"
+    echo "ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key"
+    echo "ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key"
+  } >> .mozconfig
 }
 
 build() {
   cd "$_archive"
+
+  export RUSTUP_TOOLCHAIN="$_rust_toolchain_version"
 
   # Don't use mold - fails.
   LDFLAGS=$(printf '%s' "$LDFLAGS" | sed 's/-fuse-ld=[^[:space:]]*//')

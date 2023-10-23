@@ -1,7 +1,7 @@
 pkgbase = seamonkey
 	pkgdesc = SeaMonkey internet suite
 	pkgver = 2.53.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.seamonkey-project.org
 	install = seamonkey.install
 	arch = x86_64
