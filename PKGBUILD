@@ -2,8 +2,8 @@
 # Contributor: Scott Tincman <sctincman at gmail dot com>
 
 pkgname=nwchem
-pkgver=7.2.0
-pkgrel=2
+pkgver=7.2.1
+pkgrel=1
 pkgdesc="Ab initio computational chemistry software package"
 arch=(x86_64 aarch64)
 url="https://nwchemgit.github.io"
@@ -14,13 +14,13 @@ install=nwchem.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/nwchemgit/nwchem/archive/v$pkgver-release.tar.gz
         config.sh
         nwchemrc)
-sha256sums=('321c57a1994fd12546cb0d5f86c3bd8bd305d4420a9d7d416f3d765c428cdae4'
-            'f4854dd5ff4be5c1103c6dd8c403a080f519220926edfb17154e658e34fea584'
+sha256sums=('e8daf7d0fd9ba3f38471c7cc0bf44c22f6b5d8fcd2c37764dc490660babd64c9'
+            '3d3ccde5c1058e8e22c06ba8c1753aa2024841a5ba9a7a0a97bdafb8afd18db2'
             'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-release/src"
-
+  
   # Fix CUDA
   sed -i 's/$(CUDA_FLAGS)/$(CUDA_FLAGS) --compiler-options -fPIC/g' \
     config/makefile.h
