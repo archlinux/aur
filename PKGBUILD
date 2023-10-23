@@ -1,10 +1,11 @@
 # Maintainer: Franck Stauffer <franck.stauffer@protonmail.ch>
 # Contributor: Whovian9369 <Whovian9369 at gmail dot com>
 # Contributor: mock <nobody at nowhere dot co dot uk>
+# Contributor: Lulzagna <nicklozon@gmail.com>
 
 pkgname=clrmamepro
-pkgver=4.047a
-pkgrel=2
+pkgver=4.047b
+pkgrel=1
 pkgdesc="A ROM manager for MAME."
 arch=('x86_64' 'i686')
 url="https://mamedev.emulab.it/clrmamepro/"
@@ -14,7 +15,7 @@ makedepends=('icoutils')
 source=("https://mamedev.emulab.it/clrmamepro/binaries/cmp${pkgver//./}_32.zip"
         "clrmamepro"
         "clrmamepro.desktop")
-b2sums=('2a866c83fb65439b066ec1b6d6e2a6e8a96664dd09a3598757be740b6275a34af22713663e7285e27543be429738ae17c7a7bdae3dd3418c2bbf74d2cd75122e'
+b2sums=('9c3245943827f6b383d90d80c180980fc6ab8fc74ac681ad7914e612839dd56ac482d79a0597e60b44b4a6edbd81386bf6f38565833a3145508303f7e5e2250a'
         '92136aa1e3e5e98d5f5918f047e53a89d09318946fb20c8731a3ce84ff08abd00d65b4e6a098f71792da597677532e9c51cebb7b427594ea5d80260a43d7e147'
         '001f96fd4d515e3501239781be80c71e32b8e5dc9c0f42b2d50794f23ba48206ab669a6348dcd22e6c37d0fddd52758844abbad40aa536c1ad59f99861567265')
 
