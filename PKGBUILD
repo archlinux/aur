@@ -6,8 +6,8 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom-opt
-_srctag=GE-Proton8-20
-_commit=0320983045ab37c003edb9656fd83d8aacdc7da6
+_srctag=GE-Proton8-21
+_commit=b10c813654c7d918c4297c70397b9391581dcc67
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -115,7 +115,7 @@ prepare() {
       git config user.email "makepkg@aur.not"
       git config user.name "makepkg aur"
       git tag wine-ge-8.0 --annotate -m "$pkgver"
-      dlls/winevulkan/make_vulkan
+      dlls/winevulkan/make_vulkan -x vk.xml
       tools/make_requests
       autoreconf -f
     popd
@@ -142,7 +142,7 @@ build() {
   # From Proton
   OPTIMIZE_FLAGS="-O2 -march=nocona -mtune=core-avx2 -mfpmath=sse -pipe"
   SANITY_FLAGS="-fwrapv -fno-strict-aliasing"
-  COMMON_FLAGS="$OPTIMIZE_FLAGS $SANITY_FLAGS -mno-avx2"
+  COMMON_FLAGS="$OPTIMIZE_FLAGS $SANITY_FLAGS -s -mno-avx2"
 
   msg2 "Building Wine-64..."
 
