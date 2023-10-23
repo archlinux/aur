@@ -34,12 +34,13 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-if [ x"$_pkgname_tabopts" == x"$pkgname" ] ; then
+if [ x"$pkgname" == x"$_pkgname_tabopts" ] ; then
   # normal package
-  _pkgsrc="$_pkgname-$pkgver"
+  _pkgsrc="$_pkgname-${pkgver%%.r*}"
+  _pkgext="tar.xz"
 
   source+=(
-    "https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
+    "$_pkgsrc.$_pkgext"::"https://download.kde.org/stable/release-service/${pkgver%%.r*}/src/$_pkgsrc.$_pkgext"
     # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
     "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
   )
@@ -47,6 +48,10 @@ if [ x"$_pkgname_tabopts" == x"$pkgname" ] ; then
     '0bca082410c4a1ab0ac60f76b0fbefa31c749dabe8a57cb53a33806cf53f6b2f'
     'a50de534a6049ec4e232b6bddb8b39a105287bd0f6eac934e4eaac50df6f0004'
   )
+
+  pkgver() {
+    printf '%s' "${pkgver%%.r*}"
+  }
 else
   # git package
   _pkgsrc="$_pkgname"
@@ -63,7 +68,7 @@ else
   )
 
   pkgver() {
-    cd "$srcdir/$_pkgsrc"
+    cd "$_pkgsrc"
 
     _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)"\s.*/>$'
     _file='src/org.kde.dolphin.appdata.xml'
@@ -94,9 +99,9 @@ else
 fi
 
 prepare() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
 
-  for patch in "$srcdir"/*.patch ; do
+  for patch in "${srcdir:?}"/*.patch ; do
     if [ -f "$patch" ] ; then
       printf 'Applying patch: %s\n' "${patch##*/}"
       patch -Np1 -F100 -i "$patch"
@@ -111,5 +116,5 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
