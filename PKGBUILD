@@ -10,17 +10,20 @@ provides=(dura)
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
-build() {
-  cd $pkgname
-  cargo build --locked --release
-}
-
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $pkgname
+
+  cargo build --locked --release
 }
 
 package() {
   cd $pkgname
+
   install -D target/release/dura -t "$pkgdir"/usr/bin
 }
