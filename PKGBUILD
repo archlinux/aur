@@ -5,7 +5,7 @@ pkgname=slrn-snapshot-canlock
 _pkgname=slrn
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with modern cancel-lock)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -84,7 +84,6 @@ build() {
 	--with-slrnpull \
 	--with-ssl \
 	--with-uu \
-	--with-uulib=/usr/lib/uudeview \
 	--with-uuinc=/usr/include/uudeview \
 	--enable-spoilers
 
@@ -114,12 +113,11 @@ b2sums=(
 
 # 🪷 Beyond the Known — 365 Days of Exploration
 #
-# 📆 22nd October
+# 📆 23rd October
 #
-# Many people say this or that is useless or meaningless only
-# because someone told them so.
+# There are no higher or lower states.
 #
-# But how useful or meaningful is that?
+# There is only the state you are in.
 #
 # 🔗 https://magnetic-ink.dk/users/btk
 
