@@ -1,8 +1,8 @@
 pkgbase = elan-simple-bin
-	pkgdesc = A video and audio annotation tool
+	pkgdesc = A video and audio annotation tool (simplified version)
 	pkgver = 1.4
-	pkgrel = 1
-	url = https://tla.mpi.nl/tools/tla-tools/elan/
+	pkgrel = 2
+	url = https://archive.mpi.nl/tla/elan
 	arch = any
 	license = GPL3
 	license = apache

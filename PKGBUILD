@@ -4,10 +4,10 @@ _pkgname=elan-simple
 _name_caps="Simple-ELAN"
 _name_low="simple-elan"
 pkgver="1.4"
-pkgrel=1
-pkgdesc="A video and audio annotation tool"
+pkgrel=2
+pkgdesc="A video and audio annotation tool (simplified version)"
 arch=(any)
-url="https://tla.mpi.nl/tools/tla-tools/elan/"
+url="https://archive.mpi.nl/tla/elan"
 provides=('elan-simple')
 conflicts=('elan-simple')
 
