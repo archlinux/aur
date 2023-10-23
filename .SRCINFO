@@ -1,5 +1,5 @@
 pkgbase = hdisplays
-	pkgdesc = GUI display configurator for wlroots compositors
+	pkgdesc = GUI display configurator for wlroots compositors **Maintained for Hyprland ***
 	pkgver = r72.515c2b0
 	pkgrel = 1
 	url = https://github.com/kRHYME7/hypr-display
