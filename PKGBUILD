@@ -41,5 +41,5 @@ check() {
 package() {
   cd "${pkgname}"
 
-  install -D target/release/dura -t "$pkgdir"/usr/bin
+  install -Dm755 "target/release/dura" "${pkgdir}/usr/bin/dura"
 }
