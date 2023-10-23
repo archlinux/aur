@@ -1,0 +1,67 @@
+diff --git a/mariner/tests/testthat/_snaps/InteractionArray.md b/mariner/tests/testthat/_snaps/InteractionArray.md
+index 492df25..e6645e7 100644
+--- a/mariner/tests/testthat/_snaps/InteractionArray.md
++++ b/mariner/tests/testthat/_snaps/InteractionArray.md
+@@ -3,7 +3,7 @@
+     Code
+       counts(iarr, TRUE)
+     Output
+-      <11 x 11 x 10 x 2> array of class DelayedArray and type "double":
++      <11 x 11 x 10 x 2> DelayedArray object of type "double":
+       ,,1,FS
+                14740000 14745000 14750000 ... 14785000 14790000
+       14435000        0        0        0   .        0        0
+@@ -39,7 +39,7 @@
+     Code
+       counts(iarr[1:3, 1:2])
+     Output
+-      <11 x 11 x 3 x 2> array of class DelayedArray and type "double":
++      <11 x 11 x 3 x 2> DelayedArray object of type "double":
+       ,,1,FS
+              [,1]  [,2]  [,3] ... [,10] [,11]
+        [1,]     0     0     0   .     0     0
+@@ -64,7 +64,7 @@
+     Code
+       counts(iarr[3:4, 1])
+     Output
+-      <11 x 11 x 2 x 1> array of class DelayedArray and type "double":
++      <11 x 11 x 2 x 1> DelayedArray object of type "double":
+       ,,1,FS
+              [,1]  [,2]  [,3] ... [,10] [,11]
+        [1,]     0     0     0   .     0     0
+@@ -87,7 +87,7 @@
+     Code
+       counts(iarr[1:7, 1:2])
+     Output
+-      <11 x 11 x 7 x 2> array of class DelayedArray and type "double":
++      <11 x 11 x 7 x 2> DelayedArray object of type "double":
+       ,,1,FS
+              [,1]  [,2]  [,3] ... [,10] [,11]
+        [1,]     0     0     0   .     0     0
+@@ -112,7 +112,7 @@
+     Code
+       counts(iarr[1:7, 1])
+     Output
+-      <11 x 11 x 7 x 1> array of class DelayedArray and type "double":
++      <11 x 11 x 7 x 1> DelayedArray object of type "double":
+       ,,1,FS
+              [,1]  [,2]  [,3] ... [,10] [,11]
+        [1,]     0     0     0   .     0     0
+@@ -137,7 +137,7 @@
+     Code
+       counts(iarr[1, 1:2])
+     Output
+-      <11 x 11 x 1 x 2> array of class DelayedArray and type "double":
++      <11 x 11 x 1 x 2> DelayedArray object of type "double":
+       ,,1,FS
+              [,1]  [,2]  [,3] ... [,10] [,11]
+        [1,]     0     0     0   .     0     0
+@@ -160,7 +160,7 @@
+     Code
+       counts(iarr[1, 1])
+     Output
+-      <11 x 11 x 1 x 1> array of class DelayedArray and type "double":
++      <11 x 11 x 1 x 1> DelayedArray object of type "double":
+       ,,1,FS
+              [,1]  [,2]  [,3] ... [,10] [,11]
+        [1,]     0     0     0   .     0     0
