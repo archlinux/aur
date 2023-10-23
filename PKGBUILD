@@ -28,24 +28,23 @@ sha256sums=(
 )
 
 _package() {
-  local _name="${pkgname#*-}"
   local _archive="${1:?}"
   
-  mkdir -p "${_name:?}"
-  bsdtar -x -C "${_name}" -f "$_archive"
+  mkdir -p "${pkgname:?}"
+  bsdtar -x -C "${pkgname:?}" -f "$_archive"
 
-  install -Dm644 "$_name"/*/*.otf -t "${pkgdir:?}/usr/share/fonts/$_name/"
+  install -Dm644 "${pkgname:?}"/*/*.otf -t "${pkgdir:?}/usr/share/fonts/${pkgname#*-}/"
 }
 
 package_otf-typodermic-free() {
   _package "$_file_free"
 
-  install -Dm644 "${pkgname#*-}/Typodermic Desktop EULA 2023.pdf" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
+  install -Dm644 "${pkgname:?}/Typodermic Desktop EULA 2023.pdf" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
 
 package_otf-typodermic-pd() {
   _package "$_file_pd"
 
-  install -Dm644 "${pkgname#*-}/License.txt" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${pkgname:?}/License.txt" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
 }
 
