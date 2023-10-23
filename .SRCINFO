@@ -1,8 +1,8 @@
-pkgbase = hdisplays
+pkgbase = hypr-display
 	pkgdesc = GUI display configurator for wlroots compositors **Maintained for Hyprland ***
 	pkgver = r72.515c2b0
 	pkgrel = 1
-	url = https://github.com/kRHYME7/hypr-display
+	url = https://github.com/kRHYME7/Hypr-Display
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -15,9 +15,9 @@ pkgbase = hdisplays
 	makedepends = wayland-protocols
 	makedepends = hyprland
 	depends = gtk3
-	provides = hdisplays
-	conflicts = hdisplays
-	source = hdisplays::git+https://github.com/kRHYME7/hypr-display
+	provides = hypr-display
+	conflicts = hypr-display
+	source = hypr-display::git+https://github.com/kRHYME7/Hypr-Display
 	sha256sums = SKIP
 
-pkgname = hdisplays
+pkgname = hypr-display

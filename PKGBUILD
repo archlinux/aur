@@ -1,11 +1,11 @@
 # Maintainer: Khing <alampayk@gmail.com>
 # Contributor: Soon
-pkgname=hdisplays
-_pkgname="hdisplays"
+pkgname=hypr-display
+_pkgname="hypr-display"
 pkgver=r72.515c2b0
 pkgrel=1
 pkgdesc='GUI display configurator for wlroots compositors **Maintained for Hyprland ***'
-url='https://github.com/kRHYME7/hypr-display'
+url='https://github.com/kRHYME7/Hypr-Display'
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
