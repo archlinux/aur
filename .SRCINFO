@@ -1,14 +1,14 @@
 pkgbase = crystal-dock-git
 	pkgdesc = A cool desktop panel for Linux desktop
-	pkgver = r107.g5e7f337
-	pkgrel = 2
+	pkgver = r111.g3b74a82
+	pkgrel = 1
 	url = https://github.com/dangvd/crystal-dock
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	makedepends = extra-cmake-modules
-	makedepends = kcmutils
+	makedepends = kcmutils5
 	depends = qt5-base
 	depends = kwin
 	provides = crystal-dock

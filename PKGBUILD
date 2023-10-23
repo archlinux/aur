@@ -2,8 +2,8 @@
 
 _pkgname=crystal-dock
 pkgname=${_pkgname}-git
-pkgver=r107.g5e7f337
-pkgrel=2
+pkgver=r111.g3b74a82
+pkgrel=1
 arch=(x86_64)
 pkgdesc='A cool desktop panel for Linux desktop'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 provides=(crystal-dock)
 conflicts=(crystal-dock)
 depends=(qt5-base kwin)
-makedepends=(cmake git extra-cmake-modules kcmutils)
+makedepends=(cmake git extra-cmake-modules kcmutils5)
 source=("${_pkgname}::git+https://github.com/dangvd/crystal-dock.git")
 sha256sums=('SKIP')
 
