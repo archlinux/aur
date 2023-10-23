@@ -19,7 +19,7 @@ pkgver() {
 
 package() {
     cd "$srcdir"
-    install -Dm755 "SpotX-Linux/readme.md" "$pkgdir/opt/SpotX-Linux/readme.md"
+    install -Dm644 "SpotX-Linux/readme.md" "$pkgdir/opt/SpotX-Linux/readme.md"
     install -Dm755 "SpotX-Linux/install.sh" "$pkgdir/opt/SpotX-Linux/install.sh"
     install -Dm755 "SpotX-Linux/uninstall.sh" "$pkgdir/opt/SpotX-Linux/uninstall.sh"
     install -Dm644 "SpotX-Linux/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
