@@ -10,6 +10,13 @@ provides=(dura)
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
+prepare() {
+  cd "${pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 pkgver() {
   cd "$pkgname"
 
@@ -20,6 +27,13 @@ build() {
   cd $pkgname
 
   cargo build --locked --release
+}
+
+check() {
+  cd "${pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 package() {
