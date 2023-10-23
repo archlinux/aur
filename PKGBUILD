@@ -24,7 +24,7 @@ package() {
   cd "$_pkgsubdir"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "$pkgdir/usr/lib/python3.10/site-packages/${_name}-0.7.12.dist-info/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 check(){
