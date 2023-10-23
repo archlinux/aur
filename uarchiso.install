@@ -1,16 +1,16 @@
 # Maintainer: Maurício de Lima <mauricio@uaiso.org>
 
-#pre_install() {
-	# do something here
-#}
+pre_install() {
+	rm -rf /home/$USER/uArchiso
+}
 
 #post_install() {
 	# do something here
 #}
 
-#pre_upgrade() {
-	# do something here
-#}
+pre_upgrade() {
+	pre_install
+}
 
 #post_upgrade() {
 	# do something here
