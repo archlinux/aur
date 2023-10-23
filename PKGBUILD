@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=0.25.0.r0.ga9459bc2
+pkgver=0.27.1.r2.g586e26fa
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
