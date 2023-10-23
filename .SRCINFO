@@ -8,7 +8,6 @@ pkgbase = 2048.zig
 	arch = i686
 	license = ISC
 	makedepends = zig
-	makedepends = git
 	provides = 2048
 	conflicts = 2048
 	source = https://github.com/ratakor/2048.zig/archive/0.2.2/2048.zig.tar.gz
