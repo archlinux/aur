@@ -2,13 +2,13 @@
 
 pkgname=crestic
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable restic wrapper"
 arch=('any')
 url="https://github.com/nils-werner/$pkgname"
 license=('MIT')
 depends=('python' 'restic')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=(
     "https://github.com/nils-werner/$pkgname/archive/v$pkgver.tar.gz"
     "crestic-backup@.service"

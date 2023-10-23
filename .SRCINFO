@@ -1,12 +1,13 @@
 pkgbase = crestic
 	pkgdesc = Configurable restic wrapper
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nils-werner/crestic
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = restic
 	source = https://github.com/nils-werner/crestic/archive/v1.0.0.tar.gz
