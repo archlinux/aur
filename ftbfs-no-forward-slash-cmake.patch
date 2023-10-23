@@ -1,0 +1,24 @@
+--- a/src/server/CMakeLists.txt
++++ b/src/server/CMakeLists.txt
+@@ -48,19 +48,14 @@ cxx_test(zset_family_test dfly_test_lib LABELS DFLY)
+ cxx_test(blocking_controller_test dragonfly_lib LABELS DFLY)
+ cxx_test(snapshot_test dragonfly_lib LABELS DFLY)
+ cxx_test(json_family_test dfly_test_lib LABELS DFLY)
+-cxx_test(journal/journal_test dfly_test_lib LABELS DFLY)
+ cxx_test(tiered_storage_test dfly_test_lib LABELS DFLY)
+ cxx_test(top_keys_test dfly_test_lib LABELS DFLY)
+ cxx_test(hll_family_test dfly_test_lib LABELS DFLY)
+-cxx_test(search/search_family_test dfly_test_lib LABELS DFLY)
+-cxx_test(cluster/cluster_config_test dfly_test_lib LABELS DFLY)
+-cxx_test(cluster/cluster_family_test dfly_test_lib LABELS DFLY)
+ 
+ 
+ 
+ add_custom_target(check_dfly WORKING_DIRECTORY .. COMMAND ctest -L DFLY)
+ add_dependencies(check_dfly dragonfly_test json_family_test list_family_test
+-                 generic_family_test memcache_parser_test rdb_test journal_test
++                 generic_family_test memcache_parser_test rdb_test
+                  redis_parser_test snapshot_test stream_family_test string_family_test
+-                 bitops_family_test set_family_test zset_family_test hll_family_test
+-                 cluster_config_test cluster_family_test)
++                 bitops_family_test set_family_test zset_family_test hll_family_test)

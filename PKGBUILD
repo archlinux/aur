@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dragonflydb
-pkgver=1.3.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A fast in-memory store that is fully compatible with Redis and Memcached'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
 )
 optdepends=('logrotate')
 options=('!buildflags')
-_commit='f80afca9c23e2f30373437520a162c591eaa2005'
+_commit='c6f8f3882a276f6016042016c94401242d9c5365'
 source=(
   "$pkgname::git+https://github.com/dragonflydb/dragonfly#commit=$_commit"
   'github.com-romage-helio::git+https://github.com/romange/helio'
@@ -53,11 +53,6 @@ prepare() {
   git submodule init
   git config submodule.helio.url "$srcdir/github.com-romage-helio"
   git -c protocol.file.allow=always submodule update
-
-  # FTBFS: https://github.com/dragonflydb/dragonfly/issues/1339
-  pushd helio
-  git checkout 72d02055f8f79e55f28679a11dd2c673399a8ca0
-  popd
 
   # use FHS directories
   patch -p1 -i "$srcdir/use-fhs-directories.patch"

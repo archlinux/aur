@@ -1,6 +1,6 @@
 pkgbase = dragonflydb
 	pkgdesc = A fast in-memory store that is fully compatible with Redis and Memcached
-	pkgver = 1.3.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://dragonflydb.io
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = dragonflydb
 	depends = zstd
 	optdepends = logrotate
 	options = !buildflags
-	source = dragonflydb::git+https://github.com/dragonflydb/dragonfly#commit=f80afca9c23e2f30373437520a162c591eaa2005
+	source = dragonflydb::git+https://github.com/dragonflydb/dragonfly#commit=c6f8f3882a276f6016042016c94401242d9c5365
 	source = github.com-romage-helio::git+https://github.com/romange/helio
 	source = sysusers.conf
 	source = tmpfiles.conf
