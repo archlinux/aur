@@ -3,7 +3,7 @@
 
 _pkgname="ttf-djb-zora-prints-fonts"
 pkgname="$_pkgname"
-pkgver=20141016
+pkgver=1.0
 pkgrel=1
 epoch=1
 pkgdesc="DJB Zora Prints TrueType Fonts"

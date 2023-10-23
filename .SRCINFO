@@ -1,6 +1,6 @@
 pkgbase = ttf-djb-zora-prints-fonts
 	pkgdesc = DJB Zora Prints TrueType Fonts
-	pkgver = 20141016
+	pkgver = 1.0
 	pkgrel = 1
 	epoch = 1
 	url = http://darcybaldwin.com/djb-zora-prints-font/
