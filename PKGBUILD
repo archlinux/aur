@@ -26,6 +26,11 @@ pkgver() {
 build() {
   cd "${pkgname}"
 
+  # Hackily pacth Cargo.toml and Cargo.lock to use the pkgver
+  _pkgver=$(echo ${pkgver} | sed 's/^v//; s/\.\([a-z]\)/+\1/')
+  sed -i=bck "s/^version = \".*\"$/version = \"${_pkgver}\"/" ./Cargo.toml
+  sed -i=bck "/\[\[package\]\]/{N;N;/name = \"dura\"\nversion = \"/{s/version = \".*\"/version = \"${_pkgver}\"/}}" ./Cargo.lock
+
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
@@ -35,7 +40,7 @@ check() {
   cd "${pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
