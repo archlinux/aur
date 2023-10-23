@@ -1,0 +1,5 @@
+/SpotX-Linux
+/pkg
+/src
+*.pkg.tar.zst
+
