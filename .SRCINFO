@@ -1,0 +1,20 @@
+pkgbase = nthash-bcgsc
+	pkgdesc = Fast hash function for DNA/RNA sequences. https://doi.org/10.1093/bioinformatics/btac564
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://bcgsc.github.io/ntHash/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = btllib
+	makedepends = argparse
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = zstd
+	source = nthash-bcgsc-2.3.0.tar.gz::https://github.com/bcgsc/ntHash/archive/refs/tags/v2.3.0.tar.gz
+	source = cmake.patch
+	sha256sums = 3115e140b50c9153c373e3a718d8e538e96724655caea7ed1bd2af1ef46f93da
+	sha256sums = dc38bef6af5497c79bec273539d511f49eba69e3dec72a299def3d5d9d530f7d
+
+pkgname = nthash-bcgsc

@@ -1,0 +1,34 @@
+--- ntHash-2.3.0.orig/CMakeLists.txt	2022-09-02 01:19:04.000000000 +0530
++++ ntHash-2.3.0.new/CMakeLists.txt	2023-10-23 15:25:37.360088916 +0530
+@@ -12,25 +12,20 @@
+ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+ 
+ include_directories(include)
+-include_directories(vendor/btllib/include)
+-include_directories(vendor/argparse/include)
++include_directories(/usr/include)
++include_directories(/usr/include)
+ 
+ file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/nthash/*.cpp)
+ 
+-add_custom_command(
+-        OUTPUT ${PROJECT_BINARY_DIR}/btllib/lib/libbtllib.a
+-        COMMAND ${PROJECT_SOURCE_DIR}/vendor/btllib/compile --prefix ${PROJECT_BINARY_DIR}/btllib
+-)
+-
+ add_library(nthash_lib STATIC ${SRC_FILES})
+ set_target_properties(nthash_lib PROPERTIES OUTPUT_NAME "nthash")
+ 
+-add_executable(nthash main.cpp ${PROJECT_BINARY_DIR}/btllib/lib/libbtllib.a)
+-target_link_libraries(nthash ${PROJECT_BINARY_DIR}/btllib/lib/libbtllib.a)
++add_executable(nthash main.cpp /usr/lib/libbtllib.a)
++target_link_libraries(nthash /usr/lib/libbtllib.a)
+ target_link_libraries(nthash ${PROJECT_BINARY_DIR}/libnthash.a)
+ 
+-add_executable(nthash_tests ${PROJECT_SOURCE_DIR}/tests/tests.cpp ${PROJECT_BINARY_DIR}/btllib/lib/libbtllib.a)
+-target_link_libraries(nthash_tests ${PROJECT_BINARY_DIR}/btllib/lib/libbtllib.a)
++add_executable(nthash_tests ${PROJECT_SOURCE_DIR}/tests/tests.cpp /usr/lib/libbtllib.a)
++target_link_libraries(nthash_tests /usr/lib/libbtllib.a)
+ target_link_libraries(nthash_tests ${PROJECT_BINARY_DIR}/libnthash.a)
+ enable_testing()
+ add_test(NAME nthash_tests COMMAND $<TARGET_FILE:nthash_tests>)
