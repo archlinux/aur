@@ -1,6 +1,6 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=lith-git
-pkgver=1.4.23.r0.g9181eed
+pkgver=1.7.0.r0.gca15b7f
 pkgrel=1
 pkgdesc='A multiplatform WeeChat relay client'
 arch=('x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
