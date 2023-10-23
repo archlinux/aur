@@ -2,7 +2,7 @@
 # Contributor: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell
 pkgver=1.2.0+294+g5b7afc6
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
 url="https://github.com/pop-os/shell"
@@ -47,8 +47,8 @@ package() {
   make DESTDIR="${pkgdir}/" install
 
   # install the schema file
-#  install -Dm644 schemas/org.gnome.shell.extensions.pop-shell.gschema.xml -t \
-#    "$pkgdir/usr/share/glib-2.0/schemas/"
+  install -Dm644 schemas/org.gnome.shell.extensions.pop-shell.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
 
   # install the gnome-control-center keybindings
   install -Dm644 keybindings/*.xml -t \
