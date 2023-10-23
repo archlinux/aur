@@ -41,7 +41,7 @@ build() {
   cd alephone
 
   autoreconf --install
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --without-smpeg
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr
   make
 }
 
