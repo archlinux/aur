@@ -28,15 +28,23 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir"
   CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}/=/"
   export CXXFLAGS
-  cmake -B build -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+
+  cmake -B build \
+  -S "$_pkgname" \
+  -DCMAKE_INSTALL_PREFIX='/usr' \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DCMAKE_INSTALL_LIBEXECDIR=lib \
+  -DBUILD_TESTING=OFF
+
   cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
-  DESTDIR="$pkgdir" cmake --build . --target install
+  cd "$srcdir/"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
