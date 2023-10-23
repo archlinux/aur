@@ -1,6 +1,6 @@
 pkgname=dura-git
 _pkgname=dura
-pkgver=v0.1.0.r26.g88ab59b
+pkgver=v0.2.0.r11.gb4a51b9
 pkgrel=1
 pkgdesc='Dura is a background process that watches your Git repositories and commits your uncommitted changes'
 arch=(x86_64)
@@ -26,4 +26,4 @@ package() {
   cd $_pkgname
   install -D target/release/dura -t "$pkgdir"/usr/bin
 }
- 
+
