@@ -3,7 +3,7 @@
 
 _realname=tmdbv3api
 pkgname=python-$_realname
-pkgver=1.7.7
+pkgver=1.9.0
 pkgrel=0
 pkgdesc="A lightweight Python library for The Movie Database (TMDb) API."
 url="https://pypi.org/project/tmdbv3api"
@@ -17,4 +17,4 @@ package(){
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('95c8987e9e0d3b0b0263e3f3c1cb6e594eecf2627564830123652b18f7b64469')
+sha256sums=('504c5da6b99c4516ff160a01576112d097f209c0534f943c15c4b56cbd92c33b')
