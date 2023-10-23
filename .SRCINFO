@@ -1,6 +1,6 @@
 pkgbase = combaud-git
 	pkgdesc = Broadcasting audio output from applications to a virtual microphone
-	pkgver = 0.8.r0
+	pkgver = 0.9.r0
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/combaud
 	arch = any

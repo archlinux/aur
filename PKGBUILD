@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='combaud-git'
-pkgver=0.8.r0
+pkgver=0.9.r0
 pkgrel=1
 pkgdesc='Broadcasting audio output from applications to a virtual microphone'
 arch=('any')
@@ -22,4 +22,5 @@ package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dm755 'combaud' "$pkgdir/usr/bin/combaud"
     install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/combaud/LICENSE"
+    install -Dm644 'loop-ignore.list' "$pkgdir/etc/combaud/loop-ignore.list"
 }
