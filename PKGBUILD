@@ -2,10 +2,10 @@
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_gitcommit=833baaa5ba77ec623b62fc92e0241ade796c3b57
+_gitcommit=ee4f9060b2ded621552387f6a959381cd1974fa0
 
 pkgname=x48ng-git
-pkgver=0.32.0.r1.833baaa
+pkgver=0.33.0.r1.ee4f906
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
