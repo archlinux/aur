@@ -2,7 +2,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgname="mkdocs-material-pymdownx-extras"
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="MkDocs Material additions used for pymdownx documentation"
 url="https://github.com/facelessuser/mkdocs_pymdownx_material_extras"
@@ -14,7 +14,7 @@ replaces=("python-mkdocs-material-pymdownx-extras-git")
 depends=("mkdocs-material>=8.3.3")
 makedepends=("python-hatchling" 'python-build' 'python-installer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8ecec4a05e0b156d3425d17742bab19e24b42cb61db2b0322d302986a28788cc')
+sha256sums=('611019a746d2a0f98f8ff87e1ef679d7ae6b507d59daf47fb4690c3260d7084f')
 
 build(){
     cd "mkdocs_pymdownx_material_extras-${pkgver}"

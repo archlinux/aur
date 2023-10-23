@@ -1,6 +1,6 @@
 pkgbase = mkdocs-material-pymdownx-extras
 	pkgdesc = MkDocs Material additions used for pymdownx documentation
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://github.com/facelessuser/mkdocs_pymdownx_material_extras
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mkdocs-material-pymdownx-extras
 	provides = mkdocs-pymdownx-material-extras
 	conflicts = python-mkdocs-material-pymdownx-extras-git
 	replaces = python-mkdocs-material-pymdownx-extras-git
-	source = mkdocs-material-pymdownx-extras-2.5.4.tar.gz::https://github.com/facelessuser/mkdocs_pymdownx_material_extras/archive/refs/tags/2.5.4.tar.gz
-	sha256sums = 8ecec4a05e0b156d3425d17742bab19e24b42cb61db2b0322d302986a28788cc
+	source = mkdocs-material-pymdownx-extras-2.5.5.tar.gz::https://github.com/facelessuser/mkdocs_pymdownx_material_extras/archive/refs/tags/2.5.5.tar.gz
+	sha256sums = 611019a746d2a0f98f8ff87e1ef679d7ae6b507d59daf47fb4690c3260d7084f
 
 pkgname = mkdocs-material-pymdownx-extras
