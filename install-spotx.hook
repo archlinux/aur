@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = spotify
+
+[Action]
+Descritpion = Istalling/updating SpotX...
+When = PostTransation
+Exec = /opt/SpotX-Linux/install.sh -p /opt/spotify
