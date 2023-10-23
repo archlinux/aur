@@ -2,12 +2,12 @@
 # Upstream contact: silx at esrf dot fr
 pkgname=python-fabio
 pkgver=2022.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="I/O library for images produced by 2D X-ray detectors."
 arch=('any')
 url="http://www.silx.org"
 license=('MIT' 'LGPL' 'Apache')
-depends=('python-numpy' 'python-pillow' 'python-lxml')
+depends=('python-numpy' 'python-pillow' 'python-lxml' 'python-h5py')
 optdepends=('python-pyqt5: for the fabio_viewer program')
 makedepends=('cython')
 source=("https://github.com/silx-kit/${pkgname#*-}/archive/v${pkgver}.tar.gz")
