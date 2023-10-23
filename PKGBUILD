@@ -43,7 +43,7 @@ build() {
     echo -e "\n\n### build 'keyman-config' ######\n\n"
     cd "$srcdir/keyman/linux/keyman-config"
     ./version.sh
-    python setup.py build
+    python -m build --wheel --no-isolation
     make man
 }
 
@@ -60,7 +60,7 @@ package() {
     make DESTDIR="$pkgdir/" install
 
     cd "$srcdir/keyman/linux/keyman-config"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # man
     install -Dm644 --target-directory="$pkgdir/usr/share/man/man1" ../../debian/man/*.1
