@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.36.0.453.g84fa7ea411
+pkgver=0.36.0.640.g9074436862
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -218,7 +218,6 @@ prepare() {
     '-Dgl=enabled'
     '-Dgl-x11=enabled'
     '-Djpeg=enabled'
-    '-Dlibplacebo=enabled'
     '-Dsdl2-video=enabled'
     '-Dshaderc=enabled'
     '-Dsixel=enabled'
