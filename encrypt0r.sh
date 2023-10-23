@@ -1,6 +1,9 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron18
-_ASAR=/opt/encrypt0r/resources/app.asar
+APPDIR="/opt/encrypt0r"
+export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/usr/lib":"${APPDIR}/swiftshader":"${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/resources/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
