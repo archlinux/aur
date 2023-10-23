@@ -1,6 +1,6 @@
 pkgname=systemd-kcm
 pkgver=1.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Systemd control module for KDE"
 arch=(x86_64)
 url='https://github.com/rthomsen/kcmsystemd'

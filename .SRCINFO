@@ -1,7 +1,7 @@
 pkgbase = systemd-kcm
 	pkgdesc = Systemd control module for KDE
 	pkgver = 1.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/rthomsen/kcmsystemd
 	arch = x86_64
 	license = GPL
