@@ -1,11 +1,7 @@
-# Maintainer: éclairevoyant
-# Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
-# Contributor: Eugene Dvoretsky <radioxoma at gmail dot com>
-
 _pkgname=gpxpy
 pkgname="python-$_pkgname"
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Python GPX (GPS eXchange format) parser"
 arch=(any)
 url="https://github.com/tkrajina/gpxpy"
@@ -14,7 +10,7 @@ depends=('python>=3.2' 'python-lxml>=3.1.2')
 makedepends=(python-setuptools python-{build,installer,wheel})
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4fd0afe9f8858d340a1481a7ef05de0be498ce19c1e1535407b58b7f1f02d456')
+sha256sums=('2122d2d156d87bb1c128f968a746f6e2703983c831c7f21778e83b026c9debe9')
 
 build () {
 	cd $_pkgname-$pkgver
