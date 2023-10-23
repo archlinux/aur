@@ -1,32 +1,42 @@
-# Maintainer: Sebastian Reuße <seb@wirrsal.net>
-pkgname=git-fixup-git
-_gitname=git-fixup
-pkgver=v1.0.2.r8.g94696df
+# Maintainer:
+# Contributor: Sebastian Reuße <seb@wirrsal.net>
+
+_pkgname="git-fixup"
+pkgname="$_pkgname-git"
+pkgver=1.5.0.r12.gf964653
 pkgrel=1
-pkgdesc="Provide a likely candidate for git commit --fixup."
+pkgdesc="Provide a likely candidate for git commit --fixup"
 arch=(any)
 url="https://github.com/keis/git-fixup"
-license=(custom)
-depends=(git)
-optdepends=("zsh: to use git fixup tab completion")
-makedepends=(git)
-provides=(git-fixup)
-conflicts=(git-fixup)
-source=(git+https://github.com/keis/git-fixup)
-md5sums=(SKIP)
+license=('ISC')
+
+depends=('git')
+optdepends=(
+  "zsh: to use git fixup tab completion"
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+https://github.com/keis/git-fixup"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-    cd "$_gitname"
-    git describe --long --tags \
-        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$_gitname"
+  cd "$_pkgsrc"
 
-  make PREFIX="$pkgdir"/usr install
-  make PREFIX="$pkgdir"/usr install-zsh
+  make PREFIX="${pkgdir:?}/usr" install
+  make PREFIX="${pkgdir:?}/usr" install-zsh
 
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/"$_gitname"/README.md
-  install -Dm644 COPYING.md "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING.md
+  install -Dm644 README.md -t "${pkgdir:?}/usr/share/doc/$pkgname/"
+  install -Dm644 COPYING.md "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
 }
