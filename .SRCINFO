@@ -1,11 +1,11 @@
 pkgbase = stardog
 	pkgdesc = Stardog Knowledge Graph
-	pkgver = 9.1.1
-	pkgrel = 3
+	pkgver = 9.2.0
+	pkgrel = 1
 	url = https://stardog.com
 	arch = x86_64
 	makedepends = unzip
-	provides = stardog=9.1.1
+	provides = stardog=9.2.0
 	conflicts = stardog
 	options = !strip
 	backup = etc/default/stardog

@@ -2,8 +2,8 @@
 
 pkgname='stardog'
 _pkgname="${pkgname}-latest"
-pkgver=9.1.1
-pkgrel=3
+pkgver=9.2.0
+pkgrel=1
 pkgdesc="Stardog Knowledge Graph"
 arch=('x86_64')
 url="https://stardog.com"
