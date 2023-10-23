@@ -18,13 +18,13 @@ prepare() {
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
 
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $pkgname
+  cd "${pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -39,7 +39,7 @@ check() {
 }
 
 package() {
-  cd $pkgname
+  cd "${pkgname}"
 
   install -D target/release/dura -t "$pkgdir"/usr/bin
 }
