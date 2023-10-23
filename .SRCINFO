@@ -15,8 +15,8 @@ pkgbase = hypr-display
 	makedepends = wayland-protocols
 	makedepends = hyprland
 	depends = gtk3
-	provides = hypr-display
-	conflicts = hypr-display
+	provides = hdisplays
+	conflicts = hdisplays
 	source = hypr-display::git+https://github.com/kRHYME7/Hypr-Display
 	sha256sums = SKIP
 

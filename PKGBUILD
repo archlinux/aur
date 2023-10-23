@@ -1,7 +1,7 @@
 # Maintainer: Khing <alampayk@gmail.com>
 # Contributor: Soon
 pkgname=hypr-display
-_pkgname="hypr-display"
+_pkgname="hdisplays"
 pkgver=r72.515c2b0
 pkgrel=1
 pkgdesc='GUI display configurator for wlroots compositors **Maintained for Hyprland ***'
