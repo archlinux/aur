@@ -1,7 +1,7 @@
 pkgbase = slrn-snapshot
 	pkgdesc = An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)
 	pkgver = 1.0.4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jedsoft.org/snapshots/
 	arch = aarch64
 	arch = arm
