@@ -9,11 +9,13 @@ pkgdesc='a cli system trash manager, alternative to rm and trash-cli'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/oberblastmeister/trashy"
 license=('MIT' 'Apache')
-conflicts=('trash-cli')
 depends_x86_64=('gcc-libs')
-makedepends=('cargo')
+makedepends=('git' 'cargo' 'binutils')
+provides=("${pkgname%-git}")
+conflicts=('trash-cli' "${pkgname%-git}")
 source=('git+https://github.com/oberblastmeister/trashy.git')
 sha256sums=('SKIP')
+
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
