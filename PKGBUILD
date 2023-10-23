@@ -65,9 +65,9 @@ case "${_autoupdate::1}" in
     )
 
     # update _pkgver
-    if [ x"${_pkgver:?}" != x"${_pkgver_new:?}" ] ; then
+    if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
       _pkgver="$_pkgver_new"
-      sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+      sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
     fi
     ;;
 esac
