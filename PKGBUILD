@@ -1,11 +1,17 @@
 # Maintainer: Taboon Egon <te451 -_AT_- netcourrier -_DOT_- com>
 # Contributor: relrel <relrelbachar at gmail dot com>
 
+# IMPORTANT: before installing or upgrading, run commands:
+#   nvm install 16
+#   nvm use 16
+# or building Scratch3 will fail!
+# More on AUR comments: https://aur.archlinux.org/packages/scratch3
+
 pkgname=scratch3
 conflicts=("scratch3-bin")
 
-pkgver=3.29.1
-pkgrel=3
+pkgver=3.30.5
+pkgrel=1
 _electronDist=electron13
 _electronVersion=13.6.9
 
@@ -17,17 +23,17 @@ depends=("c-ares" "ffmpeg" "gtk3" "libevent" "libxslt" "minizip" "nss" "re2" "sn
 optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 
 ## /!\    bin version of electron   ↓↓↓ (AUR package)  /!\
-makedepends=('npm' "${_electronDist}-bin" "nodejs-lts-fermium")
-source=("https://github.com/LLK/scratch-desktop/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=("nvm" "${_electronDist}-bin")
+source=("https://github.com/scratchfoundation/scratch-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.xml"
         "$pkgname-icons.tar.gz"
         "$pkgname-patches.tar.gz")
-sha256sums=('1daab6d39dc94deca057fbe90642b96ea0c143149ee04ee74dd9648b051e6a14'
+sha256sums=('7a626b38d75a04a01b1be45c8167854973de5f600daf627c8b367bf02025860b'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
             '326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
-            'c4e442841e8c248cecf782155460f4cb36c41eedc3d60b61a704af0cff3af437')
+            '4a10d77dc5146e02af47680a88589cee9e0cc102951737957711f3186e1ba3f6')
 
 appOutputDir="linux-unpacked"
 
