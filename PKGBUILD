@@ -7,22 +7,20 @@ arch=('x86_64')
 url="https://cassidoo.github.io/todometer/"
 _githuburl="https://github.com/cassidoo/todometer"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('libxcomposite' 'glibc' 'hicolor-icon-theme' 'at-spi2-core' 'libx11' 'util-linux-libs' 'libxrender' 'cairo' 'libxcb' 'expat' \
     'libxext' 'glib2' 'dbus' 'libcups' 'gtk3' 'nss' 'libxtst' 'libxrandr' 'alsa-lib' 'pango' 'libxfixes' 'nspr' 'libxi' 'libxdamage' \
     'libxcursor' 'libxss' 'gdk-pixbuf2' 'gcc-libs')
 makedepends=('gendesk')
-noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}.for.linux.zip"
     "LICENSE::https://raw.githubusercontent.com/cassidoo/todometer/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.svg::https://raw.githubusercontent.com/cassidoo/todometer/main/assets/logo.svg")
+    "${pkgname%-bin}.svg::https://raw.githubusercontent.com/cassidoo/todometer/v${pkgver}/assets/logo.svg")
 sha256sums=('87fa096049457bc9a63fb33c8040c15a668c81c8aab92be4efadc4a05dd50b20'
             '493e4a9d6f7124993ebc7ceaaa071da339b57ff8a76fa836f54b0977316c31d8'
             'a89aea8ce4dce004a824cba2d6d93f40a31fa876b4c0e8796cefa0bf6ff8a24c')
-prepare() {
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}"
-    gendesk -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
+build() {
+    gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
