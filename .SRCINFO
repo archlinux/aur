@@ -1,0 +1,18 @@
+pkgbase = marcel
+	pkgdesc = A modern shell
+	pkgver = 0.18.3
+	pkgrel = 1
+	url = https://github.com/geophile/marcel
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dill
+	depends = python-psutil
+	source = https://github.com/geophile/marcel/archive/refs/tags/v0.18.3.tar.gz
+	b2sums = 105cfbe34453a9ecd2eed576bb0b157ae9092a04a3ef0fda030d595ede547c2823026ce05e7df1a0d368391d1a5ded5696abe9cfb74927cbe87710b4cac4b632
+
+pkgname = marcel
