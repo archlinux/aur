@@ -6,7 +6,7 @@ version_name=3.5.1
 pkgver=07760
 # https://www.privateinternetaccess.com/pages/changelog
 
-pkgrel=3
+pkgrel=4
 pkgdesc="Private Internet Access client"
 arch=('x86_64' 'aarch64')
 url="https://privateinternetaccess.com/"
@@ -33,7 +33,7 @@ prepare() {
 }
 
 check() {
-	grep -a 'targetdir="pia-linux' "${srcdir}/${_pia_run}" | cut -d'-' -f3
+	grep -a 'targetdir="pia-linux' "${srcdir}/pia-linux-${version_name}-${pkgver}.run" | cut -d'-' -f3
 }
 
 package() {
