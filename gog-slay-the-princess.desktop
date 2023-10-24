@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Slay the Princess
+Comment=Choice-driven psychological horror visual novel
+Exec=slay-the-princess
+Icon=gog-slay-the-princess
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
