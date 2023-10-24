@@ -18,6 +18,9 @@ fi
 echo "Update pkgver in PKGBUILD"
 sed -i 's/pkgver=.*/pkgver='"$LAST_VERSION_NUMBER"'/' PKGBUILD
 
+echo "Update pkgrel in PKGBUILD"
+sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
+
 echo "Download file, compute sha256sum and update in PKGBUILD"
 updpkgsums
 
