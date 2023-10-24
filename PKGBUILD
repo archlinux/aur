@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monokle
 _pkgname=Monokle
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('x86_64')
@@ -13,12 +13,10 @@ conflicts=("${pkgname}")
 depends=('libxext' 'libxfixes' 'dbus' 'expat' 'glibc' 'mesa' 'gtk3' 'libcups' 'libxcomposite' 'hicolor-icon-theme' 'bash' 'libxkbcommon' \
     'cairo' 'nss' 'alsa-lib' 'libxdamage' 'at-spi2-core' 'nspr' 'pango' 'libx11' 'gcc-libs' 'libdrm' 'libxcb' 'glib2' 'libxrandr' 'python')
 makedepends=('npm' 'nodejs>=20' 'jq' 'gendesk')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('197042efd4f79eb57552ccb16c1d4d50b0d5dc3aa9d6ef3794f205ad4e3b8766')
-prepare() {
-    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
-}
+source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip")
+sha256sums=('bc140f10e634b65674954c8f4b40e491646192e86a3df88f1debf522e2132ca2')
 build() {
+    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     if [ -d .git ];then
         rmdir .git && mkdir .git
