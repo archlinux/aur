@@ -1,6 +1,6 @@
 pkgbase = bpir64-atf-git
 	pkgver = v2.8r12614.f84551673
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 2
 	url = https://github.com/mtk-openwrt/arm-trusted-firmware.git
 	arch = aarch64
