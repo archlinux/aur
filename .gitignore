@@ -1,0 +1,14 @@
+src
+pkg
+*.src.tar.gz
+*.tar.gz
+*.tar.bz2
+*.part
+*.pkg.tar*
+*.log
+LICENSE*
+*.rst
+*.dat
+*.j2k
+*.xmp
+*.tif

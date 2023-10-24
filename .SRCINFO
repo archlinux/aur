@@ -1,0 +1,16 @@
+pkgbase = mkautodoc
+	pkgdesc = Auto documentation for MkDocs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tomchristie/mkautodoc
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-markdown
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/m/mkautodoc/mkautodoc-0.2.0.tar.gz
+	sha256sums = b6e0c89804ba39d453ce5795eb040e5615756f90438ac04f47e97893a86a10cd
+
+pkgname = mkautodoc
+	depends = python>=3.6
+	depends = python-markdown
