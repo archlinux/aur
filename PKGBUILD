@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
 pkgver=3.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="An intuitive cross-platform hardware design application."
 arch=('x86_64')
 url="https://tomcl.github.io/issie"
@@ -14,10 +14,10 @@ makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip")
 sha256sums=('da0135a811e78132b06efdb4000313d36754441f1f9c7926f48777df069653a9')
-prepare() {
+build() {
     mkdir -p "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
-    gendesk -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin} --no-sandbox %U"
+    gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin} --no-sandbox %U"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
