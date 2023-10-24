@@ -1,11 +1,12 @@
 pkgbase = vgmtrans-appimage
 	pkgdesc = A tool to convert proprietary, sequenced videogame music to industry-standard formats
 	pkgver = 1.1_preview
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vgmtrans/vgmtrans
 	arch = x86_64
 	license = zlib
 	license = libpng
+	makedepends = squashfuse
 	depends = zlib
 	depends = glibc
 	provides = vgmtrans=1.1_preview
