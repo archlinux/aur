@@ -1,0 +1,19 @@
+pkgbase = slcl
+	pkgdesc = A simple and lightweight cloud
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitea.privatedns.org/xavi/slcl
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	depends = openssl
+	depends = cjson
+	depends = dynstr
+	depends = libweb
+	optdepends = jq: usergen script
+	source = slcl-0.1.0.tar.gz::https://gitea.privatedns.org/xavi/slcl/archive/v0.1.0-rc4.tar.gz
+	sha512sums = 8d21bb871cf707d5a0054f747111006f5e7bbf5a6def717bdd0458e836674593fed2df9987da1b6d8950ebb87ef5a9bdf149c1d19ae5d116ec4c24d86d15b0c5
+
+pkgname = slcl
