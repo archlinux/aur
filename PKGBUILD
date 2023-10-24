@@ -5,7 +5,7 @@ pkgname=serioussam
 pkginstdir=serioussam
 pkgver=1.10.6
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic native Linux version."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -18,7 +18,7 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
     "serioussam.xpm")
-sha256sums=('f352f9cda8bd953c02e06c46433030eada1c98b945e9803ce0bec2f38ee2d103'
+sha256sums=('8a21136103cf90b60775eb5985b4a5696d268002fbd2dfab8a4284d4cef04365'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4')
