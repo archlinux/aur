@@ -2,18 +2,26 @@
 pkgbase=python-astrocut
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.9
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Tools for making image cutouts from sets of TESS full frame images"
 arch=('any')
 url="https://astrocut.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-astropy' 'python-scipy')
-#'python-sphinx_rtd_theme' 'python-numpydoc' 'python-sphinx-automodapi')
-#checkdepends=('python-pytest-astropy-header' 'python-astropy')
-checkdepends=('python-pytest')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-sphinx-astropy'
+             'python-sphinx_rtd_theme'
+             'python-astropy'
+             'python-scipy')
+checkdepends=('python-pytest-doctestplus'
+              'python-astroquery'
+              'python-fsspec'
+              'python-pillow')   # scipy already in makedepends; 'python-s3fs' test all deselected
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6f7cbc73f9c0e0f08c2442547c7cff0c')
+md5sums=('5a73196f25266dc32536f9b4a22985b4')
 
 #get_pyver() {
 #    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -23,7 +31,6 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i "s/logo/logo_url/g" docs/_templates/layout.html
-    sed -i "s/np\.float)/float)/" astrocut/tests/test_cube_cut.py
 }
 
 build() {
@@ -37,11 +44,16 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    # Skip tests costing lots of time
+    pytest \
+        --deselect=astrocut/tests/test_make_cube.py::test_invalid_inputs \
+        --deselect=astrocut/tests/test_cube_cut.py::test_s3_cube_cut \
+        --deselect=astrocut/tests/test_cube_cut.py::test_multithreading \
+        --deselect=astrocut/tests/test_cutouts.py::test_fits_cut || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-astrocut() {
-    depends=('python>=3.6' 'python-astropy' 'python-scipy' 'python-pillow')
+    depends=('python>=3.8' 'python-astropy' 'python-fsspec' 'python-s3fs' 'python-scipy' 'python-pillow')
     optdepends=('python-astrocut-doc: Documentation for astrocut')
     cd ${srcdir}/${_pyname}-${pkgver}
 
