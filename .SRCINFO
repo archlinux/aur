@@ -1,6 +1,6 @@
 pkgbase = vdr-osd2web
 	pkgdesc = osd2web is a VDR skin interface for web browsers, to show and navigate through the VDR osd
-	pkgver = 0.2.58
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/horchi/vdr-plugin-osd2web
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = vdr-osd2web
 	depends = vdr-api=2.6.3
 	options = !emptydirs
 	backup = etc/vdr/conf.avail/50-osd2web.conf
-	source = vdr-osd2web-0.2.58.tar.gz::https://github.com/horchi/vdr-plugin-osd2web/archive/0.2.58.tar.gz
+	source = vdr-osd2web-0.3.2.tar.gz::https://github.com/horchi/vdr-plugin-osd2web/archive/0.3.2.tar.gz
 	source = 50-osd2web.conf
-	sha256sums = b206168fbac9eb946d800c7104c8abd04033c92c0e8014469ba16471b5b2164d
+	sha256sums = c540ff5c24618f76a0d92bd08bdeeb3a8d1bda4f57728c6ef2e4d3cbf373ded5
 	sha256sums = 330126667df54bcb853346bf2dde52beecafc4fda1a684b68d4cc81908ba551c
 
 pkgname = vdr-osd2web
