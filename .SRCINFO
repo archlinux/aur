@@ -1,10 +1,11 @@
 pkgbase = kvdo-dkms
 	pkgdesc = A pair of kernel modules which provide pools of deduplicated and/or compressed block storage
 	pkgver = 8.2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dm-vdo/kvdo
 	arch = x86_64
 	license = GPL2
+	depends = dkms
 	provides = kvdo
 	source = kvdo-8.2.3.3.tar.gz::https://github.com/dm-vdo/kvdo/archive/8.2.3.3.tar.gz
 	source = dkms.conf

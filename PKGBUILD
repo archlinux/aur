@@ -3,12 +3,13 @@
 #             jgottula
 _pkgname=kvdo
 pkgname=kvdo-dkms
-pkgrel=1
+pkgrel=2
 pkgver=8.2.3.3
 pkgdesc='A pair of kernel modules which provide pools of deduplicated and/or compressed block storage '
 arch=('x86_64')
 url="https://github.com/dm-vdo/kvdo"
 license=('GPL2')
+depends=('dkms')
 provides=('kvdo')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/dm-vdo/kvdo/archive/$pkgver.tar.gz"
         "dkms.conf"
