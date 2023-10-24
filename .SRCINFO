@@ -1,0 +1,11 @@
+pkgbase = mozlz4-bin
+	pkgdesc = Decompress / compress mozlz4 files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jusw85/mozlz4
+	arch = x86_64
+	license = MIT
+	source = https://github.com/jusw85/mozlz4/releases/download/v0.1.0/mozlz4-linux
+	sha256sums = a3322743644daade9a4ec103de582f1f6e9a17b25aae1f62f3181e2e51b9bd0a
+
+pkgname = mozlz4-bin
