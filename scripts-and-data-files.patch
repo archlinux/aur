@@ -1,0 +1,14 @@
+diff --git a/setup.py b/setup.py
+index 1ed20a4..9d3bc77 100755
+--- a/setup.py
++++ b/setup.py
+@@ -6,8 +6,7 @@ setup(
+     version='1.6.3',
+     packages=find_packages(),
+     long_description=open("README.md").read(),
+-    scripts=['mtk','stage2'],
+-    data_files = ['LICENSE','README.md'],
++    scripts=['mtk','stage2', 'mtk_gui'],
+     long_description_content_type="text/markdown",
+     url='https://github.com/bkerler/mtkclient',
+     project_urls={
