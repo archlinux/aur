@@ -1,6 +1,6 @@
 pkgbase = dl-distro
 	pkgdesc = Download and verify Linux ISOs with GnuPG and shasums
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://codeberg.org/bashuser30/dl-distro
 	arch = any
@@ -11,7 +11,8 @@ pkgbase = dl-distro
 	depends = wget
 	optdepends = gnupg
 	optdepends = minisign: Void Linux verification
-	source = https://codeberg.org/bashuser30/dl-distro/archive/v1.8.1.tar.gz
-	sha256sums = bad7318af2c2e99b4577acf4200847f8cd61ba13e5d497ed79b7ac5775fe78dc
+	optdepends = signify: OpenBSD verification
+	source = https://codeberg.org/bashuser30/dl-distro/archive/v1.9.0.tar.gz
+	sha256sums = 224f6d7fec3ef503a9d9557181a4d41c813b7ca4818ef5930e2a39602b2f96b2
 
 pkgname = dl-distro
