@@ -5,19 +5,19 @@ pkgname=vencord-desktop-bin
 _appname=vencorddesktop
 _pkgname=Vesktop
 _assetname=VencordDesktop
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed"
 arch=('x86_64')
 url="https://github.com/Vencord/Vesktop"
 license=('GPL3')
-depends=('bash' 'electron25' 'hicolor-icon-theme')
+depends=('bash' 'electron27' 'hicolor-icon-theme')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('9dafe672987d16499488b9294cc8e5d0435ba4937522f142f9e5d54d2a653fc8'
-            'e5584dfcc4e47d4001b77da837a9171e13b956a99cb0e98f1309c4a25dceeabb')
+sha256sums=('7dab64d24b664c0e280e6a4a5250a059885d9e4b8e88da310266eec9fdc7739a'
+            'a8d790301249bf3a11217dd297354b3b59223609616ff7906cdfbb1bd20c7339')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_appname} %U|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
