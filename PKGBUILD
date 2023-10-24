@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xpeviewer-bin
 pkgver=0.04
-pkgrel=3
+pkgrel=4
 pkgdesc="PE file viewer/editor for Windows, Linux and MacOS."
 arch=(x86_64)
 url="http://ntinfo.biz/"
@@ -14,7 +14,7 @@ source=("${pkgname%-bin}-${pkgver}::${_githuburl}/releases/download/${pkgver}/${
     "LICENSE::https://raw.githubusercontent.com/horsicq/XPEViewer/${pkgver}/LICENSE" )
 sha256sums=('9244a20b48c1ffa4be7d8d2714ff47f72a40bbecbd00ee6398754ed2e505f25c'
             'd0dfc6996d90bc96474a32b5656eec06bf988cdbcfd226f24fcb7a062208e4ee')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
 }
 package() {
