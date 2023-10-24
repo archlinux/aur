@@ -1,6 +1,6 @@
 pkgbase = r-spatstat.sparse
 	pkgdesc = Sparse Three-Dimensional Arrays and Linear Algebra Utilities
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.sparse
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-spatstat.sparse
 	depends = r-abind
 	depends = r-spatstat.utils
 	depends = r-tensor
-	source = https://cran.r-project.org/src/contrib/spatstat.sparse_3.0-2.tar.gz
-	sha256sums = 50bcb27ca6dd5101457922332a952711c2092daadffb360359c6ec16c27fd4be
+	source = https://cran.r-project.org/src/contrib/spatstat.sparse_3.0-3.tar.gz
+	sha256sums = 6bbc4e42ae71eece63e8c3e390068a84eeeb6cd4f6bdb555d8815aa2ed988d69
 
 pkgname = r-spatstat.sparse
