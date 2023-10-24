@@ -1,22 +1,22 @@
 pkgbase = certbox-bin
 	pkgdesc = A X.509 certificate toolbox on your desktop or in your browser. It allows you to easily generate entire certificate chains, issue certificates from existing roots, clone certificates, and more.
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://certbox.io/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = bash
-	depends = electron26
-	provides = certbox=1.7.1
+	depends = electron27
+	provides = certbox=1.7.2
 	conflicts = certbox
-	source = LICENSE::https://raw.githubusercontent.com/tls-inspector/certbox/1.7.1/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/tls-inspector/certbox/1.7.2/LICENSE
 	source = certbox.sh
 	sha256sums = 86a899de0d14686c5fc2a444067323ed7162e88718b9d0b045653383b6059719
-	sha256sums = fe975d5b63ec9006d5baa93605607e8a71db2a19d30d43517724f987efd52373
-	source_aarch64 = certbox-1.7.1-aarch64.deb::https://github.com/tls-inspector/certbox/releases/download/1.7.1/certbox_1.7.1_arm64.deb
-	sha256sums_aarch64 = af4a20bc9e0a6fd2d0add893a93486a36800219f94b35c68e2ebd2b1250cece5
-	source_x86_64 = certbox-1.7.1-x86_64.deb::https://github.com/tls-inspector/certbox/releases/download/1.7.1/certbox_1.7.1_x64.deb
-	sha256sums_x86_64 = 73d5bf6548364bc7a8a67b7fba39085a1fff3619ec321372b400c4d01ece9ae6
+	sha256sums = fe94ec27ec8ce81ddcf7ee270c4d6cafbcc393e49b5ba525921f3e58455729f8
+	source_aarch64 = certbox-1.7.2-aarch64.deb::https://github.com/tls-inspector/certbox/releases/download/1.7.2/certbox_1.7.2_arm64.deb
+	sha256sums_aarch64 = 9b5eec564743883ec9fb82de9b1137764e9591771db91065f3dbab4b022a0b25
+	source_x86_64 = certbox-1.7.2-x86_64.deb::https://github.com/tls-inspector/certbox/releases/download/1.7.2/certbox_1.7.2_x64.deb
+	sha256sums_x86_64 = 9f35c5f4e3d3b5808b6bd2360262c4a282daa56be11262b315ec0d990c40173e
 
 pkgname = certbox-bin
