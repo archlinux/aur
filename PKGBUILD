@@ -14,17 +14,17 @@ provides=('nedots')
 build() {
   cd nedots-v1.0.2 || return
   go build -o nedots .
-  ./nedots completion bash >nedots-completions.bash
-  ./nedots completion zsh  >nedots-completions.zsh
-  ./nedots completion fish >nedots-completions.fish
+  ./nedots completion bash >nedots.bash
+  ./nedots completion zsh  >nedots.zsh
+  ./nedots completion fish >nedots.fish
 }
 
 package() {
   cd nedots-v1.0.2 || return
   install -Dm 755 nedots -t "$pkgdir"/usr/bin
-  install -Dm 644 nedots-completions.bash "$pkgdir"/usr/share/bash-completion/completions/nedots
-  install -Dm 644 nedots-completions.zsh  "$pkgdir"/usr/share/zsh/site-functions/_nedots
-  install -Dm 644 nedots-completions.fish "$pkgdir"/usr/share/fish/vendor_completions.d/nedots.fish
+  install -Dm 644 nedots.bash "$pkgdir"/usr/share/bash-completion/completions/nedots
+  install -Dm 644 nedots.zsh  "$pkgdir"/usr/share/zsh/site-functions/_nedots
+  install -Dm 644 nedots.fish "$pkgdir"/usr/share/fish/vendor_completions.d/nedots.fish
 }
 
 sha256sums=('c3c51caac7a055dee4dfb447b4ebf450ba9ab015cc6bfb797910f3025ac88afa')
