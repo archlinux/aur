@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.data
-_pkgver=3.0-1
+_pkgver=3.0-3
 pkgname=r-${_pkgname,,}
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Datasets for 'spatstat' Family"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-spatstat.random
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8eeb4b1de356e9cef42f58b5e0fc7ced2a476a1306e09395ba97253b22dd5300')
+sha256sums=('7642c0e41e905a287f9f319a4169d82bf41349cbc406e9c6d107a89f8d11ad3b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

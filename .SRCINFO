@@ -1,6 +1,6 @@
 pkgbase = r-spatstat.data
 	pkgdesc = Datasets for 'spatstat' Family
-	pkgver = 3.0.1
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.data
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-spatstat.data
 	optdepends = r-spatstat.linnet
 	optdepends = r-spatstat.model
 	optdepends = r-spatstat.random
-	source = https://cran.r-project.org/src/contrib/spatstat.data_3.0-1.tar.gz
-	sha256sums = 8eeb4b1de356e9cef42f58b5e0fc7ced2a476a1306e09395ba97253b22dd5300
+	source = https://cran.r-project.org/src/contrib/spatstat.data_3.0-3.tar.gz
+	sha256sums = 7642c0e41e905a287f9f319a4169d82bf41349cbc406e9c6d107a89f8d11ad3b
 
 pkgname = r-spatstat.data
