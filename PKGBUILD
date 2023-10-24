@@ -7,17 +7,17 @@
 
 pkgname=jetbrains-fleet
 pkgver=1.25.206
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation IDE by JetBrains"
 arch=('x86_64' 'aarch64')
 url="https://www.jetbrains.com/fleet/"
 license=('custom:jetbrains')
 options=('!strip')
-source=("${pkgname}.desktop" 'jetbrains-eap-3.3.docx')
+source=("${pkgname}.desktop" 'LICENSE')
 source_x86_64=("${pkgname}-${pkgver}-${arch[0]}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${pkgver}.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_${arch[1]}/Fleet-${pkgver}-${arch[1]}.tar.gz")
 sha256sums=('af62a597c595edc5b4a8ea3f80ab0a18ea953bfc2d4feaf30e41c6e0dd23d426'
-            'c05432334b1df86156e2fb0021b27ab8615bb31be26d60f96bf804333bef5685')
+            'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
 sha256sums_x86_64=('65043d8732c1325c2265220b27c1ad42383a1cc5a60f1268b3322514de34768d')
 sha256sums_aarch64=('d4c161aa208ad11cbace9fa9bd010ba687a2d146a88fad97379d7d47ffaa8215')
 
@@ -29,7 +29,7 @@ package() {
   ln -s "/opt/${pkgname}/bin/Fleet" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm 644 "jetbrains-eap-3.3.docx" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   install -dm 755 "${pkgdir}/usr/share/pixmaps"
   ln -s "/opt/${pkgname}/lib/Fleet.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
