@@ -1,7 +1,7 @@
 pkgbase = libnftnl-fullcone
 	pkgdesc = Netfilter library providing interface to the nf_tables subsystem (with fullcone patch)
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netfilter.org/projects/libnftnl/
 	arch = x86_64
 	license = GPL2
@@ -14,6 +14,6 @@ pkgbase = libnftnl-fullcone
 	validpgpkeys = 37D964ACC04981C75500FB9BD55D978A8A1420E4
 	sha256sums = ceeaea2cd92147da19f13a35a7f1a4bc2767ff897e838e4b479cf54b59c777f4
 	sha256sums = SKIP
-	sha256sums = 321fd41802d77eabade6e4e7131ad8b32d7861d4f362f4ef0d54d414f6248b58
+	sha256sums = 8a5d134b9d5e41fcd47d4e8bcc6f669ae159befe54a5117460f636d6396c3501
 
 pkgname = libnftnl-fullcone

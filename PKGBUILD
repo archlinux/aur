@@ -3,7 +3,7 @@
 pkgname=libnftnl-fullcone
 _pkgname=libnftnl
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Netfilter library providing interface to the nf_tables subsystem (with fullcone patch)'
 arch=('x86_64')
 url='https://netfilter.org/projects/libnftnl/'
@@ -16,7 +16,7 @@ source=("https://netfilter.org/projects/libnftnl/files/libnftnl-$pkgver.tar.xz"{
 'https://github.com/wongsyrone/lede-1/raw/master/package/libs/libnftnl/patches/999-01-libnftnl-add-fullcone-expression-support.patch')
 sha256sums=('ceeaea2cd92147da19f13a35a7f1a4bc2767ff897e838e4b479cf54b59c777f4'
             'SKIP'
-            '321fd41802d77eabade6e4e7131ad8b32d7861d4f362f4ef0d54d414f6248b58')
+            '8a5d134b9d5e41fcd47d4e8bcc6f669ae159befe54a5117460f636d6396c3501')
 
 prepare() {
   cd $_pkgname-$pkgver
