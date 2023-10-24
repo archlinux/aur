@@ -2,7 +2,7 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui-git
 pkgver=r10.b2762da
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a simple graphical front end for wlr-randr"
 arch=(any)
 url="https://github.com/fdev31/wlr-layout-ui"
