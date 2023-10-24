@@ -1,15 +1,12 @@
 pkgbase = mtail-bin
 	pkgdesc = extract whitebox monitoring data from application logs for collection in a timeseries database
-	pkgver = v3.0.0_rc36
-	pkgrel = 2
+	pkgver = 3.0.0_rc52
+	pkgrel = 1
 	url = https://github.com/google/mtail
 	arch = x86_64
 	license = Apache
 	conflicts = mtail
-	source = https://github.com/google/mtail/releases/download/v3.0.0-rc36/mtail_v3.0.0-rc36_linux_amd64
-	source = https://raw.githubusercontent.com/google/mtail/master/LICENSE
-	sha256sums = a30af629885ee285a54cf9e9984853a313a55a699a8b23d06b583e6417337797
-	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source = https://github.com/google/mtail/releases/download/v3.0.0-rc52/mtail_3.0.0-rc52_linux_amd64.tar.gz
+	sha256sums = 96fb8b40579dd281c5c0487d2e1b06350099db82b4539c912370b26198027bc9
 
 pkgname = mtail-bin
-
