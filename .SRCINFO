@@ -1,7 +1,7 @@
 pkgbase = nftables-fullcone
 	pkgdesc = Netfilter tables userspace tools (with fullcone patch)
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://netfilter.org/projects/nftables/
 	install = nftables.install
@@ -29,6 +29,6 @@ pkgbase = nftables-fullcone
 	sha256sums = SKIP
 	sha256sums = 2aff88019097d21dbfa4713f5b54c184751c86376e458b683f8d90f3abd232a8
 	sha256sums = deffeef36fe658867dd9203ec13dec85047a6d224ea63334dcf60db97e1809ea
-	sha256sums = f9ac245a057187000f609761dab57b155dba3ff46ad278375a54cf2ec7b6eaa1
+	sha256sums = e02fe489a2f1c431911fa574c1009493464810a4ca00377a291bfc53d95be9f5
 
 pkgname = nftables-fullcone

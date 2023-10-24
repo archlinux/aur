@@ -4,7 +4,7 @@ pkgname=nftables-fullcone
 _pkgname=nftables
 epoch=1
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Netfilter tables userspace tools (with fullcone patch)'
 arch=('x86_64')
 url='https://netfilter.org/projects/nftables/'
@@ -25,7 +25,7 @@ sha256sums=('9373740de41a82dbc98818e0a46a073faeb8a8d0689fa4fa1a74399c32bf3d50'
             'SKIP'
             '2aff88019097d21dbfa4713f5b54c184751c86376e458b683f8d90f3abd232a8'
             'deffeef36fe658867dd9203ec13dec85047a6d224ea63334dcf60db97e1809ea'
-            'f9ac245a057187000f609761dab57b155dba3ff46ad278375a54cf2ec7b6eaa1')
+            'e02fe489a2f1c431911fa574c1009493464810a4ca00377a291bfc53d95be9f5')
 
 prepare() {
   cd $_pkgname-$pkgver
