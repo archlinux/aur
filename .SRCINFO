@@ -1,6 +1,6 @@
 pkgbase = trufflehog
 	pkgdesc = Tool for finding secrets like private keys and credentials.
-	pkgver = 3.60.1
+	pkgver = 3.60.2
 	pkgrel = 1
 	url = https://github.com/trufflesecurity/trufflehog
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = trufflehog
 	makedepends = go
 	depends = glibc
 	provides = trufflehog
-	source = trufflehog-3.60.1.tar.gz::https://github.com/trufflesecurity/trufflehog/archive/refs/tags/v3.60.1.tar.gz
-	sha512sums = 57479ef03ca645e47621ed3858b04b53da9977dcd3bd6e9c065f4dea3acacfbf43822dae00fdc60e58a5dcad0d5cb66579fa0f1f8660ada52a14ffdb940a9f8a
+	source = trufflehog-3.60.2.tar.gz::https://github.com/trufflesecurity/trufflehog/archive/refs/tags/v3.60.2.tar.gz
+	sha512sums = 80544ab5f291733ba5fe39945541d23c28dbf4d3254e3e61e4d6b80299a3f504193f114d52bc1ba22c914207b6cedcbe9f34737a2e73b5bdecc316204d1e028a
 
 pkgname = trufflehog
