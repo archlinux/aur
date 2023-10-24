@@ -12,15 +12,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/kmozillahelper
 md5sums=('382142073322f942f4d332fffb77ef25')
 
 build() {
-	mkdir -p "$srcdir/$pkgname-build"
-	cd "$srcdir/$pkgname-build"
-
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release "$srcdir/${pkgname}-${pkgver}"
-	make
+    cmake -B build -S "$pkgname-$pkgver" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-	cd "$srcdir/$pkgname-build"
-	make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
