@@ -13,7 +13,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://zelcore.io/download/zelcore-for-linux-debian/?tmstv=1686570772")
+source_x86_64=("https://zelcore.io/download/zelcore-for-linux-debian/?tmstv=1698137512")
 sha256sums_x86_64=('f4ee0eacf7ecf0feb8f55ae11820b06dfcc9949b941a387bca0b2f2d458b3fd3')
 
 
