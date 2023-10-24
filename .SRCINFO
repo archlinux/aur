@@ -1,12 +1,12 @@
 pkgbase = rustic-rs
 	pkgdesc = Fast, encrypted, deduplicated backups powered by Rust
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/rustic-rs/rustic
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
-	source = rustic-rs-0.5.4.tar.gz::https://static.crates.io/crates/rustic-rs/rustic-rs-0.5.4.crate
-	sha256sums = a19075ed60bb7f99e1dee11402ffb4a24a59b230884c06e9fd29d21c1ab6ad1e
+	source = rustic-rs-0.6.0.tar.gz::https://static.crates.io/crates/rustic-rs/rustic-rs-0.6.0.crate
+	sha256sums = ffd78edb12a24b1a0756abeafe2eeb42a9212a36f2bd9e485645fa0aa0c0e1a7
 
 pkgname = rustic-rs
