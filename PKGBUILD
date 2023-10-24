@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=supalive-bin
 _pkgname=Supalive
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="Aplicativo para alertas interativos em streaming, integrado com YouTube, Twitch e LivePix."
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron27' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('d44d9e64b7277fb3c36825f8a7e84e1d117acc1643d6191e0b2a71bd75ccd751'
+sha256sums=('3ad56198f8e37a8b738d41ca5177e6eef50c181da47b89fa534cc22314713ed1'
             '79528d4cabca40af274a9430f23685b80b78cd23664faca3ffb6ca79dbfa0923')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
