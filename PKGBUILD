@@ -8,7 +8,6 @@ pkgdesc="Japanese TrueType fonts from Vine Linux"
 arch=('any')
 url="http://vlgothic.dicey.org/"
 license=('custom')
-depends=('fontconfig' 'xorg-mkfontscale')
 source=(https://vlgothic.dicey.org/releases/VLGothic-${pkgver}.tar.xz)
 md5sums=('739a9f9995e398bc5cb9ce5697a8691c')
 b2sums=('d9a3064512996e9f9f5e035907bdffdec92bf8222353a116374fe924c9d31d44702de1f6b1e4f60e96a883cd796cb0c5a6b5b283c71c82c88a8f73c337443896')
