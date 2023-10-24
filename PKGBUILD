@@ -2,7 +2,7 @@
 pkgbase=python-casa-formats-io
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Code to handle I/O from/to data in CASA format Resources"
 arch=('i686' 'x86_64')
@@ -16,11 +16,10 @@ makedepends=('python-setuptools-scm'
              'python-numpydoc'
              'python-sphinx-automodapi'
              'python-dask'
-#            'python-toolz' # not needed
              'python-astropy')
-checkdepends=('python-pytest-openfiles')  # astropy and dask already in makedepends. glue-core for pdepend
+checkdepends=('python-pytest-openfiles')  # astropy and dask already in makedepends. glue-core for pdepend. doctestplus will die for no glue-core
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9ea305e432e6486f8d7a2327ca5b15ec')
+md5sums=('21396ea840b70cbb25debd6a77af23f9')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -29,7 +28,6 @@ get_pyver() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i "/oldest-supported-numpy/d" pyproject.toml
     sed -i "/casa_io_formats.image_to_dask/s/_io_formats/_formats_io/" docs/index.rst
 }
 
@@ -38,19 +36,17 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   mkdir _static
-    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-casa-formats-io() {
-    depends=('python>=3.8' 'python-astropy>=4.0' 'python-dask>=2.0' 'python-toolz')
+    depends=('python>=3.8' 'python-astropy>=4.0' 'python-dask>=2.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

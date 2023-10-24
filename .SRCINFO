@@ -1,6 +1,6 @@
 pkgbase = python-casa-formats-io
 	pkgdesc = Code to handle I/O from/to data in CASA format Resources
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://casa-formats-io.readthedocs.io
 	arch = i686
@@ -16,14 +16,13 @@ pkgbase = python-casa-formats-io
 	makedepends = python-sphinx-automodapi
 	makedepends = python-dask
 	makedepends = python-astropy
-	source = https://files.pythonhosted.org/packages/source/c/casa-formats-io/casa-formats-io-0.2.1.tar.gz
-	md5sums = 9ea305e432e6486f8d7a2327ca5b15ec
+	source = https://files.pythonhosted.org/packages/source/c/casa-formats-io/casa-formats-io-0.2.2.tar.gz
+	md5sums = 21396ea840b70cbb25debd6a77af23f9
 
 pkgname = python-casa-formats-io
 	depends = python>=3.8
 	depends = python-astropy>=4.0
 	depends = python-dask>=2.0
-	depends = python-toolz
 
 pkgname = python-casa-formats-io-doc
 	pkgdesc = Documentation for CASA Formats I/O
