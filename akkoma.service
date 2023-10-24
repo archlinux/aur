@@ -17,8 +17,8 @@ Environment="HOME=/opt/akkoma"
 ; Path to the folder containing the Pleroma installation.
 WorkingDirectory=/opt/akkoma
 ; Path to the Pleroma binary.
-ExecStart=/opt/akkoma/bin/akkoma start
-ExecStop=/opt/akkoma/bin/akkoma stop
+ExecStart=/opt/akkoma/bin/pleroma start
+ExecStop=/opt/akkoma/bin/pleroma stop
 
 ; Some security directives.
 ; Use private /tmp and /var/tmp folders inside a new file system namespace, which are discarded after the process stops.
