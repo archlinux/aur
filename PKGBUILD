@@ -2,7 +2,7 @@
 
 pkgname=zebrad
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zcash - Financial Privacy in Rust 🦓"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v${pkgver//_/-}.tar.gz")
@@ -12,14 +12,14 @@ makedepends=('rust' 'clang' 'pkgconf')
 sha256sums=(SKIP)
 
 build () {
-  cd "${srcdir}/zebra-${pkgver//_/-}" || exit 1
+  cd "zebra-$pkgver"
 
   # Build Zebra.
   cargo build --locked --release --features sentry --package zebrad --bin zebrad --target-dir target
 }
 
 package() {
-  cd "${srcdir}/zebra-${pkgver//_/-}" || exit 1
+  cd "zebra-$pkgver"
 
   # Install the binary.
   install -Dm 755 target/release/zebrad "${pkgdir}/usr/bin/${pkgname}"
