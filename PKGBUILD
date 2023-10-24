@@ -5,14 +5,14 @@ pkgdesc='A dotfile management tool'
 url='https://git.sr.ht/~nedia/nedots'
 arch=('any')
 license=('MIT')
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=3
-source=('nedots-v1.0.1.tar.gz::https://git.sr.ht/~nedia/nedots/archive/v1.0.1.tar.gz')
+source=('nedots-v1.0.2.tar.gz::https://git.sr.ht/~nedia/nedots/archive/v1.0.2.tar.gz')
 makedepends=('go')
 provides=('nedots')
 
 build() {
-  cd nedots-v1.0.1 || return
+  cd nedots-v1.0.2 || return
   go build -o nedots .
   ./nedots completion bash >nedots-completions.bash
   ./nedots completion zsh  >nedots-completions.zsh
@@ -20,11 +20,11 @@ build() {
 }
 
 package() {
-  cd nedots-v1.0.1 || return
+  cd nedots-v1.0.2 || return
   install -Dm 755 nedots -t "$pkgdir"/usr/bin
   install -Dm 644 nedots-completions.bash "$pkgdir"/usr/share/bash-completion/completions/nedots
   install -Dm 644 nedots-completions.zsh  "$pkgdir"/usr/share/zsh/site-functions/_nedots
   install -Dm 644 nedots-completions.fish "$pkgdir"/usr/share/fish/vendor_completions.d/nedots.fish
 }
 
-sha256sums=('424368451bed78660751d27f42da4bc1eafabc5af322dfb34abc113d8a05e3fe')
+sha256sums=('c3c51caac7a055dee4dfb447b4ebf450ba9ab015cc6bfb797910f3025ac88afa')
