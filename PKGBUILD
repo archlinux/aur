@@ -1,8 +1,8 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui-git
-pkgver=r10.b2762da
-pkgrel=3
+pkgver=r79.7aecc75
+pkgrel=1
 pkgdesc="Provides a simple graphical front end for wlr-randr"
 arch=(any)
 url="https://github.com/fdev31/wlr-layout-ui"
@@ -34,6 +34,6 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -Dm644 "${srcdir}/files/wlr-layout-ui.desktop"\
+    install -Dm644 "${srcdir}/wlr-layout-ui/files/wlr-layout-ui.desktop"\
             "${pkgdir}/usr/share/applications/wlr-layout-ui.desktop"
 }
