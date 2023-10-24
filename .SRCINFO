@@ -1,7 +1,7 @@
 pkgbase = akkoma
 	pkgdesc = Akkoma is a faster-paced fork of Pleroma
 	pkgver = 3.10.4
-	pkgrel = 4
+	pkgrel = 3
 	url = https://akkoma.dev/AkkomaGang/akkoma
 	install = akkoma.install
 	arch = any

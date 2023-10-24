@@ -6,7 +6,7 @@
 
 pkgname=akkoma
 pkgver=3.10.4
-pkgrel=4
+pkgrel=3
 pkgdesc='Akkoma is a faster-paced fork of Pleroma'
 url='https://akkoma.dev/AkkomaGang/akkoma'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
