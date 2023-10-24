@@ -1,7 +1,7 @@
 pkgbase = nedots
 	pkgdesc = A dotfile management tool
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~nedia/nedots.go
 	arch = any
 	license = MIT
