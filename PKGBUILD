@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=17.6.0.r91.g00c907873
+pkgver=17.7.0.r26.g473b156f7
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -82,6 +82,9 @@ pkgver() {
 }
 
 prepare() {
+  #cd "${srcdir}"
+  #git clone -b master --single-branch --depth 1 --recursive --shallow-submodules https://github.com/eranif/codelite.git ${_gitname};
+
   cd "${srcdir}/${_gitname}"
 
   git submodule update --init
@@ -107,27 +110,26 @@ build() {
   WX_CONFIG="wx-config"
 
   # generate
+  #  -DWITH_NATIVEBOOK=1 \
   cmake -G "Unix Makefiles" \
+    -S . \
+    -B "${BUILD_DIR}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCL_PREFIX=/usr \
     -DWITH_PCH=0  \
     -DWITH_WX_CONFIG="${WX_CONFIG}" \
-    -DWITH_NATIVEBOOK=1 \
     -DENABLE_LLDB=1 \
     -DWITH_MYSQL=0 \
-    -B "${BUILD_DIR}" \
-    -S .
+
 
   # build
-  #make -s -C "${BUILD_DIR}"
   cmake --build "${BUILD_DIR}"
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
 
-  #make -s -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
   DESTDIR="${pkgdir}" cmake --install "${BUILD_DIR}"
 
   install -m 644 -D "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/codelite/LICENSE"
