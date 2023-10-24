@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=querym-bin
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="A free, open-source, and cross-platform GUI tool designed to make database management accessible and efficient."
 arch=('x86_64')
