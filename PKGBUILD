@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
-pkgver=1.9.1_prod.14
+pkgver=1.9.2_prod.1
 pkgrel=1
 pkgdesc="Official FreeSO Launcher made with Electron"
 arch=('x86_64')
@@ -12,12 +12,10 @@ depends=('bash' 'electron22')
 makedepends=('gendesk' 'npm' 'nodejs>=16.20.2')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname%-bin}.sh")
-sha256sums=('f2b8f6833219a71a15192ccde63c42397aed2e8031ce17387a108e4b67e2ffe0'
+sha256sums=('2c750858c140cfdd6000e3a64efff873a52e860c4429cc202ad15f75fd1c5691'
             '0264bc572b31604345e61a71d6af0cfdee9b3bbfdf0d4b9a51022c9157db21a3')
-prepare() {
-    gendesk -f -n -q --categories "Game" --name "${pkgname}" --exec "${pkgname}"
-}
 build() {
+    gendesk -f -n -q --categories "Game" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver//_/-}/src"
     npm ci
     npx electron-builder --linux appimage
