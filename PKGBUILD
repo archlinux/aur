@@ -2,7 +2,7 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A (work-in-progress) cross-platform libre handwritten notes app"
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,8 @@ options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('803bd546b1b7f77c4f3e419cfaa3da2eba6657f69b0c389ea4e436cc083df82a')
-sha256sums_x86_64=('404d5092f5031b861fe7ce9acadaf9f4cb49a33792116599908eefa9dbf46f94')
+sha256sums_aarch64=('bbe93371ec624d6cc72154e9ee3e2ae52788e4f5e3ded6028f80c8d94a53c7a4')
+sha256sums_x86_64=('847c9ff5fc146d5e35d52b4079e3ed75023722cf09afc382f11cf4675b135d29')
 build() {
     mkdir -p "${srcdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz" -C "${srcdir}/opt/${pkgname%-bin}"
