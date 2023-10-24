@@ -1,38 +1,79 @@
-# Maintainer: librewish <librewish at gmail dot com>
+# Maintainer:
+# Contributor: Jan Neumann <neum dot ja at gmail dot com>
+# Contributor: librewish <librewish at gmail dot com>
 
-
-pkgname=ksmoothdock-git
-pkgver=r550.793b94e
+_pkgname="ksmoothdock"
+pkgname="$_pkgname-git"
+pkgver=6.3.r0.g30e51e8
 pkgrel=1
 pkgdesc='A cool desktop panel for KDE Plasma 5'
-arch=(any)
+arch=('x86_64')
 url='https://github.com/dangvd/ksmoothdock'
 license=('GPL3')
-depends=('kactivities' 'kxmlgui')
-makedepends=('cmake' 'extra-cmake-modules' 'python')
-source=("git+${url}")
-sha256sums=('SKIP')
-provides=("${pkgname}" "ksmoothdock")
-conflicts=("ksmoothdock")
 
-pkgver() {
-	cd "$srcdir/ksmoothdock"
+depends=(
+  'kactivities5'
+  'kxmlgui5'
+)
+makedepends=(
+  'cmake'
+  'extra-cmake-modules'
+  'python'
+)
 
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # normal package
+  _pkgsrc="$_pkgname-${pkgver%%.r*}"
+  _pkgext="tar.gz"
+  source=(
+   "$_pkgsrc.$_pkgext"::"$url/archive/v${pkgver%%.r*}.$_pkgext"
+  )
+  sha256sums=(
+   '96eb9ce72ee4c44496c760c6bc9aa5e26b5cd3826729c112e7c81d2661effc02'
+  )
+
+  pkgver() {
+    echo "${pkgver%%.r*}"
+  }
+else
+  # git package
+  makedepends+=('git')
+
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source=(
+   "$_pkgsrc"::"git+$url.git"
+  )
+  sha256sums=(
+   'SKIP'
+  )
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+fi
+
+prepare() {
+  cd "$_pkgsrc"
+  sed '/add_compile_options/d' -i "src/CMakeLists.txt"
 }
 
 build() {
-  cd ${srcdir}/ksmoothdock
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc/src"
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
 
-  cmake src \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-  
-  make
-    
-  }
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+}
 
 package() {
-  make -C ${srcdir}/ksmoothdock DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
