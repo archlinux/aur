@@ -3,7 +3,7 @@ pkgname=winggifeditor-bin
 _pkgname=WingGifEditor
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="基于 QT 编写的 GIF 编辑器，采用 C++ 进行开发"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingGifEditor"
@@ -13,9 +13,11 @@ conflicts=("${pkgname%-bin}")
 depends=('qt5-base' 'qt5-x11extras' 'libglvnd' 'glibc' 'gcc-libs' 'dtkcore' 'dtkgui' 'dtkwidget')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${_appname}_${pkgver}_amd64.deb")
 sha256sums=('c2e56a4478a7540afa7d52819d37e9d6b30d7afb577002dd3825b928d83125b2')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_pkgname}/${_pkgname}\"|${pkgname%-bin}|g;s|/opt/${_pkgname}/images/icon.png|${pkgname%-bin}|g;s|WingHexExplorer|${_pkgname}|g" \
+    sed -e "s|\"/opt/${_pkgname}/${_pkgname}\"|${pkgname%-bin}|g" \
+        -e "s|/opt/${_pkgname}/images/icon.png|${pkgname%-bin}|g" \
+        -e "s|WingHexExplorer|${_pkgname}|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
