@@ -3,7 +3,7 @@
 pkgname=envoyproxy-bin
 provides=(envoyproxy)
 conflicts=(envoyproxy)
-pkgver=1.15.2
+pkgver=1.15.3
 pkgrel=1
 pkgdesc="An open source edge and service proxy, designed for cloud-native applications"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache2')
 source=(
   "https://archive.tetratelabs.io/envoy/download/v$pkgver/envoy-v$pkgver-linux-amd64.tar.xz"
 )
-sha512sums=('05071a3ab17c57db90837b36e91916080f04c9ab24e5d07fd298fee73ad71b5f2f0ff663ca839f6d1ba47a729ee2a8c0028853af9e3c35666ad42ce20f33bc19')
+sha512sums=('b5c304813b985c7c14a4c33b6e71a628a8743fd8e62c6bd26751ab32396d254a2d2998395f6aa33f1488b1aef4dcc73f517e63d1195494fd5c422d66ed882630')
 
 package() {
   install -d "$pkgdir/usr/bin"
