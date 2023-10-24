@@ -8,20 +8,20 @@ pkgdesc="A lightweight audio wave editor"
 arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/odio-edit"
 license=("GPL3")
-depends=("gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly" "gtk3" "dconf" "gst-libav" "libodiosacd" "gsettings-desktop-schemas")
-makedepends=("gst-plugins-base-libs")
+depends=("gstreamer" "gst-plugins-base-libs" "pango" "gtk3" "dconf" "glib2" "glibc" "cairo" "hicolor-icon-theme" "gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly" "gst-libav" "libodiosacd")
+makedepends=("cmake" "cmake-extras" "gsettings-desktop-schemas")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("b3ea5d44f8c22b999c427c5fb4a2840c")
-options=("!emptydirs")
 
 build()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    make
+    cd ${pkgname}-${pkgver}
+    cmake -S . -B build
+    cmake --build build
 }
 
 package()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    make DESTDIR="$pkgdir/" install
+    cd ${pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" cmake --install build
 }
