@@ -1,7 +1,7 @@
 # Maintainer: Simon Marquardt <simon.marquardt@posteo.de>
 pkgname=leitz-icon
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="driver for Leitz Icon label printer"
 arch=('x86_64')
@@ -19,7 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://web.leitz-cloud.com/1/files/share/511/Public/Software/Linux/Drivers/LeitzIconDriversForLinux1.0.3.zip/449f3bc489b024")
+#source=("https://web.leitz-cloud.com/1/files/share/511/Public/Software/Linux/Drivers/LeitzIconDriversForLinux1.0.3.zip/449f3bc489b024")
+source=("https://archive.org/download/leitz-icon-drivers-for-linux-1.0.3/LeitzIconDriversForLinux1.0.3.zip")
 noextract=()
 md5sums=('5457e0fb8ca2d79998ddc9237d76bc42')
 validpgpkeys=()
