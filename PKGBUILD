@@ -4,7 +4,7 @@
 
 _pkgname=frida-tools
 pkgname=python-$_pkgname
-pkgver=12.2.1
+pkgver=12.3.0
 pkgrel=1
 pkgdesc="CLI tools for Frida. Python 3 version from PyPi."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('python' 'python-pygments>=2.15.1' 'python-colorama>=0.4.6' 'python-fri
 # Sourced from https://pypi.org/project/frida-tools/#files
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
-sha256sums=('8cddd0b331feb05723b1f395b89492be01e233209598d83df1ab8af2c14bb7cb'
+sha256sums=('8edc67d1ae3792ff5b2dc63508cde4d247f92b7d0d7bf153d74a21a6d58dc045'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
 conflicts=("python2-${_pkgname}")
 
