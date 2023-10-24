@@ -9,10 +9,10 @@ bothered to do so).
 If you run into any errors feel free to create an [issue](https://github.com/vihu/nordlayer-runit/issues/new).
 
 ### Building the package manually:
-```
+
 ```sh
 git clone https://github.com/vihu/nordlayer-runit
-cd nordlayer
+cd nordlayer-runit
 makepkg -si
 ```
 
