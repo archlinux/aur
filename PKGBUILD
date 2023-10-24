@@ -3,15 +3,33 @@
 
 _pkgname=nomad-firewall
 pkgname=nomad-firewall-git
-pkgver=0.1.r68.gfb8937e
+pkgver=0.1.r116.gdbe0809
 pkgrel=1
 pkgdesc="kcm module for firewall from nomad desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/nomad-desktop/nomad-firewall"
 license=('GPL3')
-depends=('kdeclarative' 'kcoreaddons' 'kcmutils' 'ki18n' 'plasma-framework' 'kdelibs4support'
-        'kauth' 'kconfig' 'kio' 'knewstuff' 'kconfigwidgets' 'net-tools' 'ufw')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools')
+depends=(
+  'kauth5'
+  'kcmutils5'
+  'kconfig5'
+  'kconfigwidgets5'
+  'kcoreaddons5'
+  'kdeclarative5'
+  'kdelibs4support'
+  'ki18n5'
+  'kio5'
+  'knewstuff5'
+  'net-tools'
+  'plasma-framework5'
+  'ufw'
+)
+makedepends=(
+  'extra-cmake-modules'
+  'git'
+  'kdesignerplugin'
+  'kdoctools5'
+)
 source=('git+https://github.com/nomad-desktop/nomad-firewall.git')
 md5sums=('SKIP')
 
