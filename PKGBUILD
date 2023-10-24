@@ -51,6 +51,12 @@ cd -') \
     $pkgdir/usr/bin/$pkgname
 }
 
+## References:
+# https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html 
+
 ## Test:
+# updpkgsums
 # makepkg --printsrcinfo > .SRCINFO
 # git clean -dfx
+
+# 👤 Autor: https://t.me/dakataca 💻 🐬 #
