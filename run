@@ -1,0 +1,5 @@
+#!/bin/sh
+exec /usr/bin/nordlayerd 2>&1 &
+sleep 2  # Give some time for the socket to be created
+chmod 660 /run/nordlayer/nordlayer.sock
+chown nordlayer:nordlayer /run/nordlayer/nordlayer.sock

@@ -1,0 +1,19 @@
+pkgbase = nordlayer-runit
+    pkgdesc = Proprietary VPN client for linux using runit
+    pkgver = 3.0.0
+    pkgrel = 0
+    url = https://nordlayer.com
+    install = nordlayer-runit.install
+    arch = i686
+    arch = x86_64
+    license = custom
+    depends = bash
+    depends = runit
+    conflicts = nordvpnteams-bin
+    replaces = nordvpnteams-bin
+    options = !strip
+    options = !emptydirs
+    source_x86_64 = https://downloads.nordlayer.com/linux/latest/debian/pool/main/nordlayer_3.0.0_amd64.deb
+    sha512sums_x86_64 = 5ca248b7e2c40f378f7cfa8b8210cc6916f7583772e1d862faff8812837a9c74
+
+pkgname = nordlayer-runit
