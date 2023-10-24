@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgbasename=gnome-shell-extension-bubblemail
 pkgname=${pkgbasename}-git
-pkgver=17.r1.ga56a1a3
+pkgver=20.1.r12.g3ee72be
 pkgrel=1
 pkgdesc="ew and unread mail indicator (Local, Imap, Pop3, Gmail, Yahoo mail...) for gnome shell - Git version"
 pkgfolder="bubblemail-gnome-shell"
