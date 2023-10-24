@@ -11,7 +11,7 @@ license=('GPL2' 'CCPL')
 groups=('pro-audio')
 depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python'
 'portaudio' 'jack')
-makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan' 'catch2')
+makedepends=('opusfile' 'xcb-util-keysyms' 'xcb-util' 'cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan' 'catch2')
 provides=(
     audacity
     ladspa-host
@@ -47,14 +47,7 @@ prepare() {
   cd build
 
   depsDir=$(readlink -f ./.offline)
-## To set a custom download directory for Conan2 still seems a bit of a mystery to me.
   export CONAN_USER_HOME="$depsDir/conan"
-#  conan config home
-#  conan config init
-#  conan config set storage.download_cache="$CONAN_USER_HOME/download_cache"
-#Let's not remove it every time, it's a pain building them.
-#  conan remove "*" --src --builds --force
-## libjpeg frm conan peeks at system libtiff. Temporarily using the system version below.
 
 
   cmake -G "Unix Makefiles" ../audacity \
@@ -73,7 +66,7 @@ prepare() {
         -Daudacity_use_wxwidgets=local 
 
 
-# Old build style....
+# Old build options....
 #        -Daudacity_use_portaudio=local \
 #        -Daudacity_use_ffmpeg=loaded 
 #	-Daudacity_use_vst3sdk=system
@@ -83,8 +76,6 @@ prepare() {
 build() {
 cd build
   make
-#Let's not remove the conan stuff every time, rebuilding's a pain.
-#  conan remove "*" --src --builds --force
 }
 
 package() {
