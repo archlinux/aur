@@ -1,71 +1,89 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 _pkgname="plasmatube"
 pkgname="$_pkgname-git"
-pkgver=23.04.2.r0.g8fcdc91
+pkgver=23.08.2.r95.g3ed3a44
 pkgrel=1
 pkgdesc="Kirigami YouTube video player based on libmpv and yt-dlp"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/multimedia/plasmatube"
 license=(GPL3)
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 
 depends=(
-  'kirigami-addons'
-  'qt5-svg'
-  'kcoreaddons'
-  'kconfig'
-  'ki18n'
+  'kconfig5'
+  'kcoreaddons5'
+  'ki18n5'
+  'kirigami-addons5'
   'mpv'
+  'qt5-svg'
   'yt-dlp'
 )
 makedepends=(
   'extra-cmake-modules'
-  'git'
 )
 
-provides=("$_pkgname")
-conflicts=(${provides[@]})
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # normal package
+  :
+else
+  # git package
+  makedepends+=('git')
 
-source=(
-  "$_pkgname"::"git+$url"
-)
-sha256sums=(
-  'SKIP'
-)
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-
-  _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
-
-  _version=$(
-    grep -E "$_regex" org.kde.plasmatube.appdata.xml \
-      | sed -E "s@$_regex@\1@" \
-      | head -1
+  _pkgsrc="$_pkgname"
+  source=(
+    "$_pkgsrc"::"git+$url.git"
   )
-  _commit=$(
-    git log -S "$_version" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
-  )
-  _revision=$(
-    git rev-list --count $_commit..HEAD
-  )
-  _hash=$(
-    git rev-parse --short HEAD
+  sha256sums=(
+    'SKIP'
   )
 
-  echo "$_version.r$_revision.g$_hash"
-}
+  pkgver() {
+    cd "$srcdir/$_pkgname"
+
+    _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
+    _file='org.kde.plasmatube.appdata.xml'
+
+    _line=$(
+      grep -E "$_regex" "$_file" | head -1
+    )
+    _version=$(
+      printf '%s' "$_line" | sed -E "s@$_regex@\1@"
+    )
+    _commit=$(
+      git log -G "$_line" -1 --pretty=oneline --no-color -- $_file \
+        | sed 's@\ .*$@@'
+    )
+    _revision=$(
+      git rev-list --count $_commit..HEAD
+    )
+    _hash=$(
+      git rev-parse --short HEAD
+    )
+
+    printf '%s.r%s.g%s' \
+      "$_version" \
+      "$_revision" \
+      "$_hash"
+  }
+fi
 
 build() {
-  cmake -B build -S "$_pkgname" \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release \
+  local _cmake_options=(
+    -B build
+    -S "$_pkgname"
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D CMAKE_BUILD_TYPE=Release
     -D BUILD_TESTING=OFF
+  )
 
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
