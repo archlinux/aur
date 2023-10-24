@@ -3,7 +3,7 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-sccp
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Osmocom library for SCCP"
 arch=('any')
@@ -15,7 +15,7 @@ provides=("libosmo-sigtran.so=${pkgver}")
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-stp.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('76fe65e24cd1143e1aaf048a9c3f31112be746cc7dc01dad9e42e2de078c854d')
+sha256sums=('a9f90232e36c3d91069fd6f999c6b809f803fdf3d047c525bd5e6f30d1f98d11')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
