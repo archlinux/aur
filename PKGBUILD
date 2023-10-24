@@ -1,6 +1,6 @@
 # Maintainer: Sankalp Gambhir <sankalp.gambhir42@gmail.com>
 pkgname=stainless-git
-pkgver=v0.9.8.1.r2.5ebe5197
+pkgver=v0.9.8.1.r5.1890d8ca
 pkgrel=1
 pkgdesc="Verification framework and tool for higher-order Scala programs"
 arch=(x86_64)
@@ -28,8 +28,8 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-*}"
 	sbt assembly
-	pwd
-	cp "./frontends/dotty/target/scala-3.0.2/stainless-dotty-assembly-$(git describe --long --abbrev=7 | sed 's/v//g').jar" stainless.jar
+	SCALA_VER="$(grep "val stainlessScalaVersion = " build.sbt | awk '{gsub(/"/, "", $4); print $4}')"
+	cp "./frontends/dotty/target/scala-$SCALA_VER/stainless-dotty-assembly-$(git describe --long --abbrev=7 | sed 's/v//g').jar" stainless.jar
 	touch stainless
 	chmod +x stainless
 	echo "#!/bin/sh" > stainless
