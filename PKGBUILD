@@ -3,7 +3,7 @@
 
 _pkgname="plasmatube"
 pkgname="$_pkgname-git"
-pkgver=23.08.2.r95.g3ed3a44
+pkgver=23.08.1.r17.gcb6b8de
 pkgrel=1
 pkgdesc="Kirigami YouTube video player based on libmpv and yt-dlp"
 url="https://invent.kde.org/multimedia/plasmatube"
@@ -33,9 +33,11 @@ else
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
+  _commit='cb6b8dea'
+
   _pkgsrc="$_pkgname"
   source=(
-    "$_pkgsrc"::"git+$url.git"
+    "$_pkgsrc"::"git+$url.git#commit=$_commit"
   )
   sha256sums=(
     'SKIP'
