@@ -1,6 +1,6 @@
 # Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-distro
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Download and verify Linux ISOs with GnuPG and shasums"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'coreutils' 'jq' 'wget')
 optdepends=('gnupg'
             'minisign: Void Linux verification'
             'signify: OpenBSD verification')
-sha256sums=('224f6d7fec3ef503a9d9557181a4d41c813b7ca4818ef5930e2a39602b2f96b2')
+sha256sums=('6916746b350050cc070989f757f92c7f0fd34041da7ade2876c573d6a7d0101b')
 
 package() {
     cd "$srcdir/$pkgname"
