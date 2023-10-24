@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=minify-bin
-pkgver=2.12.8
-pkgrel=3
+pkgver=2.19.10
+pkgrel=1
 pkgdesc="Go minifiers for web formats"
 arch=('x86_64' 'aarch64')
 url='https://github.com/tdewolff/minify'
@@ -13,8 +13,8 @@ conflicts=("${pkgname%-bin}")
 optdepends=('bash: For auto-completions')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ab4086acd75d0a80cb98d6c56cc851b8389b90cb666539e8f5db512be7a37c42')
-sha256sums_aarch64=('ee12e4158a68b6bd7c27d999b0761d6eb7816692c0074bc0dfab20644b3239d9')
+sha256sums_x86_64=('a1b1e6f96f0789ac3cc2fe7c0f42bc56951f2d728feedd34db34ccb07575b1b8')
+sha256sums_aarch64=('e50eed3cd7c0a5ae7ffcd5ef361dc83ac9dc0f0e7a2a68b9aa4ce1ead7aec4f8')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
