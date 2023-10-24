@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=supersonic-desktop-bin
+_appname=supersonic
+pkgname="${_appname}-desktop-bin"
 _pkgname=Supersonic
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers."
 arch=('x86_64')
@@ -10,17 +11,16 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('glibc' 'libglvnd' 'libx11' 'mpv')
+makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.xz")
-sha256sums=('f1426128e0cada54328db6c19d88a12f1f48ef797208c9cd142770851dff9592')
+sha256sums=('b7729190fe62fd9c4d6e889596cf4a556a206856f4be69e18d86e9dcd22b157a')
 build() {
-    sed "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" -i "${srcdir}/usr/local/share/applications/${_pkgname}.desktop"
-    echo -e "Comment=A lightweight cross-platform desktop client for Subsonic music servers." >> "${srcdir}/usr/local/share/applications/${_pkgname}.desktop"
+    gendesk -f -n -q --pkgname="${_appname}-desktop-bin" --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin,usr/lib}
-    install -Dm755 "${srcdir}/usr/local/bin/${pkgname%-desktop-bin}" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/local/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    install -Dm755 "${srcdir}/usr/local/bin/${_appname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/local/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    ln -s "/usr/lib/libmpv.so.2.0.0" "${pkgdir}/usr/lib/libmpv.so.1"
+    ln -s "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/libmpv.so.1"
 }
