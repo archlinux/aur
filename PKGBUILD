@@ -2,7 +2,7 @@
 pkgname=dl-distro-git
 _pkgname=dl-distro
 pkgver=159.f588bf3
-pkgrel=1
+pkgrel=2
 pkgdesc="Download and verify Linux ISOs with GnuPG and shasums"
 arch=('any')
 url="https://codeberg.org/bashuser30/$_pkgname"
@@ -10,7 +10,8 @@ source=("git+$url")
 license=('GPL3')
 depends=('bash' 'coreutils' 'jq' 'wget')
 optdepends=('gnupg'
-            'minisign: Void Linux verification')
+            'minisign: Void Linux verification'
+            'signify: OpenBSD verification')
 makedepends=('git')
 conflicts=('dl-distro')
 provides=('dl-distro')
