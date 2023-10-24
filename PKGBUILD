@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.114
+pkgver=2.0.115
 pkgrel=1
 pkgdesc="A desktop application that displays plain text, images, and any other HTML content on the screen."
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh")
-sha256sums=('47f9dd341ab120b6ef31e2ad78e13a3b70d488ce1a844ab9bcba4e3ff750e41e'
+sha256sums=('0dec0cc6746123c4a0b6e9c59b85eff1134d6620cb4e7d6dd5c4db0b63d4dbbc'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
             'bec366866c77a0d017dfe0722d4c16b561c4c472951f6e4b4c62aa7eaacd3a2a')
 build() {
