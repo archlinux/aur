@@ -1,7 +1,7 @@
 pkgbase = expresslrs-configurator
 	pkgdesc = Cross platform configuration & build tool for the ExpressLRS radio link
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ExpressLRS/ExpressLRS-Configurator
 	arch = x86_64
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = expresslrs-configurator
 	makedepends = libxcrypt-compat
 	makedepends = yarn>=1.21.3
 	depends = electron20
-	depends = platformio-udev-rules
+	depends = platformio-core-udev
 	depends = python>=3.0.0
 	source = expresslrs-configurator-1.6.0.tar.gz::https://github.com/ExpressLRS/ExpressLRS-Configurator/archive/v1.6.0.tar.gz
 	source = electron-launcher.sh
