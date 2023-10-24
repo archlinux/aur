@@ -1,0 +1,17 @@
+pkgbase = python-sqlalchemy-jsonfield
+	pkgdesc = Storing dicts at SQL independently from JSON type support
+	pkgver = 1.0.1.post0
+	pkgrel = 1
+	url = https://github.com/penguinolog/sqlalchemy_jsonfield
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-sqlalchemy
+	source = python-sqlalchemy-jsonfield-1.0.1.post0.tar.gz::https://github.com/penguinolog/sqlalchemy_jsonfield/archive/refs/tags/1.0.1.post0.tar.gz
+	sha256sums = f1187c3da2ecc37e69439f2e1b7cf9e4c56751c0a14ba9b3a949c831e5036896
+
+pkgname = python-sqlalchemy-jsonfield
