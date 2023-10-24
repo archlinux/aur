@@ -3,13 +3,12 @@ __pkgbasename=wxWidgets
 pkgbase=wxwidgets3.0
 pkgname=${pkgbase}
 pkgver=3.0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=('x86_64')
 url="https://wxwidgets.org/"
 license=('custom:wxWindows')
 depends=('gtk3' 'gst-plugins-base-libs' 'libsm' 'wxwidgets-common' 'libnotify' 'libmspack' 'sdl2')
-provides=("wxwidgets3.0-gtk3=$pkgver" "wxwidgets-gtk3=$pkgver")
 optdepends=('webkit2gtk: for webview support')
 source=("https://github.com/${__pkgbasename}/${__pkgbasename}/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
 sha256sums=('440f6e73cf5afb2cbf9af10cec8da6cdd3d3998d527598a53db87099524ac807')

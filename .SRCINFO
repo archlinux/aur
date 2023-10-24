@@ -1,7 +1,7 @@
 pkgbase = wxwidgets3.0
 	pkgdesc = GTK+3 implementation of wxWidgets API for GUI
 	pkgver = 3.0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wxwidgets.org/
 	arch = x86_64
 	license = custom:wxWindows
@@ -13,8 +13,6 @@ pkgbase = wxwidgets3.0
 	depends = libmspack
 	depends = sdl2
 	optdepends = webkit2gtk: for webview support
-	provides = wxwidgets3.0-gtk3=3.0.5.1
-	provides = wxwidgets-gtk3=3.0.5.1
 	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5.1/wxWidgets-3.0.5.1.tar.bz2
 	sha256sums = 440f6e73cf5afb2cbf9af10cec8da6cdd3d3998d527598a53db87099524ac807
 
