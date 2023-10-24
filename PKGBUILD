@@ -12,7 +12,7 @@ makedepends=('go')
 provides=('nedots')
 
 build() {
-  cd "$pkgname"-"$pkgver" || return
+  cd nedots.go-v1.0.0 || return
   go -C src build -o ../nedots .
   ./nedots completion bash >nedots-completions.bash
   ./nedots completion zsh  >nedots-completions.zsh
@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname"-"$pkgver" || return
+  cd nedots.go-v1.0.0 || return
   install -Dm 755 nedots -t "$pkgdir"/usr/bin
   install -Dm 644 nedots-completions.bash "$pkgdir"/usr/share/bash-completion/completions/nedots
   install -Dm 644 nedots-completions.zsh  "$pkgdir"/usr/share/zsh/site-functions/_nedots
