@@ -1,7 +1,7 @@
 pkgbase = simple-web-server
 	pkgdesc = Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron.
 	pkgver = 1.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://simplewebserver.org/
 	arch = any
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = simple-web-server
 	source = simple-web-server-1.2.9.tar.gz::https://github.com/terreng/simple-web-server/archive/refs/tags/v1.2.9.tar.gz
 	source = simple-web-server.sh
 	sha256sums = 512f44ef4415b6ff53d094137df3e0dd6c0437c2d584966ab719b5b5a6082eaf
-	sha256sums = d2ebb64421b18a164334e07e7deb612d2d6e2838114df016d65294cc2d53f1f2
+	sha256sums = 788d3d637ea520cf592acebec799938a8d6a2a865b135ddf625832e2ec4dfc26
 
 pkgname = simple-web-server
