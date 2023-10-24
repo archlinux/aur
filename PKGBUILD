@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=3.0.8.1010
+pkgver=3.0.9.1021
 pkgrel=1
 pkgdesc="Cross-Platform Universal Log Viewer."
 arch=('aarch64' 'x86_64')
@@ -18,8 +18,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_githuburl}/release
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip")
 source=("LICENSE::https://raw.githubusercontent.com/carina-studio/ULogViewer/${pkgver}/LICENSE")
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea')
-sha256sums_aarch64=('d8d95f4012bb8a99df494aecbc1b8dce90a588c045ad3bb04ce81ecc8f11df47')
-sha256sums_x86_64=('64d4bb498af437fea8a980255c7add17b70985e1d93cd947a5d82cf677e45b25')
+sha256sums_aarch64=('65454eaa954931a5ae7ea25e8ded4ff665a91c3af55b84f2562ad0248a391ef6')
+sha256sums_x86_64=('9613cc8b0c3e34b3e3e7e0c86900325e5ce2f4ec4532fe69a36a74c24cbd0c7e')
 build() {
     mkdir -p "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz" -C "${srcdir}/${pkgname%-bin}"
