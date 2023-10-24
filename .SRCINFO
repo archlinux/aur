@@ -7,21 +7,19 @@ pkgbase = qadwaitadecorations-git
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = git
-	makedepends = qt6-wayland
-	makedepends = qt5-wayland
-	makedepends = qt6-svg
-	makedepends = qt5-svg
 	source = git+https://github.com/FedoraQt/QAdwaitaDecorations.git
 	sha256sums = SKIP
 
 pkgname = qadwaitadecorations-qt5-git
-	pkgdesc = Qt decoration plugin implementing Adwaita-like client-side decorations
+	pkgdesc = Qt5 decoration plugin implementing Adwaita-like client-side decorations
 	depends = qt5-wayland
+	depends = qt5-svg
 	provides = qadwaitadecorations-qt5
 	conflicts = qadwaitadecorations-qt5
 
 pkgname = qadwaitadecorations-qt6-git
-	pkgdesc = Qt decoration plugin implementing Adwaita-like client-side decorations
+	pkgdesc = Qt6 decoration plugin implementing Adwaita-like client-side decorations
 	depends = qt6-wayland
+	depends = qt6-svg
 	provides = qadwaitadecorations-qt6
 	conflicts = qadwaitadecorations-qt6
