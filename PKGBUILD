@@ -113,6 +113,7 @@ build() {
   _buildimage mt7622 bpir64 emmc  stretch   DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
   _buildimage mt7986 bpir3  sdmmc nostretch DRAM_USE_DDR4=1
   _buildimage mt7986 bpir3  emmc  nostretch DRAM_USE_DDR4=1 BROM_HEADER_TYPE=sdmmc
+  _buildimage mt7986 bpir3m emmc  nostretch DRAM_USE_DDR4=1
 }
  
 package_bpir64-atf-git() {
