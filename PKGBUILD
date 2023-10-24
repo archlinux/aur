@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.9.5
+pkgver=4.10.5
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -23,8 +23,8 @@ license=('GPL3')
 # for my mental sanity.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0')
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'jemalloc' 'abseil-cpp' 'libdispatch'
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
              'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
@@ -41,8 +41,6 @@ _commit="tag=v$pkgver"
 # git clone --recurse-submodules --shallow-submodules --shallow-since=vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
-    "ensure_qt6_build.patch"
-    "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
     # Here are all the submodule repos.
     # Use the nearby Python script for generating the list
     "submodule_GSL::git+https://github.com/desktop-app/GSL.git"
@@ -54,7 +52,6 @@ source=(
     "submodule_cppgir::git+https://gitlab.com/mnauw/cppgir.git"
     "submodule_expected::git+https://github.com/TartanLlama/expected"
     "submodule_expected-lite::git+https://github.com/martinmoene/expected-lite.git"
-    "submodule_fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git"
     "submodule_fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
     "submodule_hime::git+https://github.com/hime-ime/hime.git"
     "submodule_hunspell::git+https://github.com/hunspell/hunspell"
@@ -72,6 +69,7 @@ source=(
     "submodule_lib_ui::git+https://github.com/desktop-app/lib_ui.git"
     "submodule_lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
     "submodule_lib_webview::git+https://github.com/desktop-app/lib_webview.git"
+    "submodule_libprisma::git+https://github.com/desktop-app/libprisma.git"
     "submodule_libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
     "submodule_lz4::git+https://github.com/lz4/lz4.git"
     "submodule_nimf::git+https://github.com/hamonikr/nimf.git"
@@ -80,15 +78,11 @@ source=(
     "submodule_rlottie::git+https://github.com/desktop-app/rlottie.git"
     "submodule_swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch"
     "submodule_tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
-    "submodule_tl-cmake::git+https://github.com/TartanLlama/tl-cmake.git"
     "submodule_wayland::git+https://github.com/gitlab-freedesktop-mirrors/wayland.git"
     "submodule_wayland-protocols::git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git"
     "submodule_xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
-            '44b4a265cece9a197441cab7483ffdb300c9b93e46983251eed1254b1ab7aa6488e48c3e2aa02dad7f305623314c8def56ca106bc893c777af37bbe8c43f2bc7'
-            '6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -136,13 +130,13 @@ prepare() {
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/cld3.url "$srcdir/submodule_cld3"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/dispatch.url "$srcdir/submodule_swift-corelibs-libdispatch"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/expected.url "$srcdir/submodule_expected"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/fcitx-qt5.url "$srcdir/submodule_fcitx-qt5"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/submodule_fcitx5-qt"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/hime.url "$srcdir/submodule_hime"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/hunspell.url "$srcdir/submodule_hunspell"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/jemalloc.url "$srcdir/submodule_jemalloc"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/kcoreaddons.url "$srcdir/submodule_kcoreaddons"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/kimageformats.url "$srcdir/submodule_kimageformats"
+    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/libprisma.url "$srcdir/submodule_libprisma"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/libtgvoip.url "$srcdir/submodule_libtgvoip"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/lz4.url "$srcdir/submodule_lz4"
     git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/nimf.url "$srcdir/submodule_nimf"
@@ -185,10 +179,6 @@ prepare() {
     git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
     git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
 
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/expected" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/expected" config src.cmake/tl-cmake.url "$srcdir/submodule_tl-cmake"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/expected" submodule update
-
     # Normal preparation here
     cd "$srcdir/tdesktop"
 
@@ -213,19 +203,11 @@ prepare() {
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
 
-    # Telegram currently needs unstable glibmm so we bundle it in as static libs.
-    # This isn't great but what can you do.
-    meson setup -D maintainer-mode=true --default-library static --prefix "$srcdir/glibmm" glibmm-2.77.0 glibmm-build
-    meson compile -C glibmm-build $MAKEFLAGS
-    meson install -C glibmm-build
-
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
-    export PKG_CONFIG_PATH="$srcdir"/glibmm/usr/local/lib/pkgconfig
     cmake -B build -S tdesktop -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_PREFIX_PATH="$srcdir/glibmm" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
