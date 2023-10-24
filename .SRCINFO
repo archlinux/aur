@@ -1,0 +1,18 @@
+pkgbase = barony
+	pkgdesc = Barony is the premier first-person roguelike with cooperative play
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/TurningWheel/Barony
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = sdl2_image
+	makedepends = sdl2_ttf
+	makedepends = physfs
+	makedepends = rapidjson
+	provides = barony
+	source = Barony-4.1.0.tar.gz::https://github.com/TurningWheel/Barony/archive/refs/tags/v4.1.0.tar.gz
+	sha256sums = 628c20a36593ca8007ef7590470a6fc23dca2897e186ee98d3d449b565ddf7af
+
+pkgname = barony
