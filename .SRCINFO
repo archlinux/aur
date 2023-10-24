@@ -1,6 +1,6 @@
 pkgbase = sse-file-pc
 	pkgdesc = Cross-platform java tool for file encryption
-	pkgver = 15.0.1
+	pkgver = 15.0.6
 	pkgrel = 1
 	url = https://paranoiaworks.mobi/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = sse-file-pc
 	source = https://paranoiaworks.mobi/download/files/SSEFilePC.zip
 	source = icon.png
 	source = sse.desktop
-	md5sums = eb16b541205698031bdf67630ba7b1f9
+	md5sums = 2c48dd62e18ee96eb94e7be059681cc9
 	md5sums = fea7ed69540dfd37adbb7080a8fee6ce
 	md5sums = 538207e344240dfe9d773c17593d3e1f
 
