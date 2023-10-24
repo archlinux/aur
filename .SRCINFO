@@ -1,11 +1,15 @@
 pkgbase = python-clickclick
 	pkgdesc = Click command line utilities
 	pkgver = 20.10.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://codeberg.org/hjacobs/python-clickclick
 	arch = any
 	license = Apache
+	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = flake8
 	depends = python-click
 	depends = python-yaml
