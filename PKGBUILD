@@ -5,7 +5,7 @@ pkgname=serioussam-vk
 pkginstdir=serioussam
 pkgver=1.10.6
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -18,7 +18,7 @@ source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$p
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
     "serioussam.xpm")
-sha256sums=('b246ead66d2894e08b837ab7bb7a4bbe417d19aff3540a8fc3b09519d9b1b12d'
+sha256sums=('2891c4890810ce156bb3e7e30e6b6de9ab21ff51380709de9f329ac3c48edde1'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4')
