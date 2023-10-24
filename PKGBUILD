@@ -1,5 +1,4 @@
 # Maintainer: Hao Long <aur@esd.cc>
-# Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=nuclei
@@ -25,13 +24,13 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}/v2"
   go build -v -o "${pkgname}" ."/cmd/${pkgname}"
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dvm755 "${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dvm755 "v2/${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
