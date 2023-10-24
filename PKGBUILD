@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.14.2
-pkgrel=2
+pkgver=3.14.3
+pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites."
 arch=('x86_64')
 url="https://ytdn.netlify.app/"
@@ -14,8 +14,8 @@ depends=('bash' 'electron22' 'hicolor-icon-theme')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.rpm::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_Linux.rpm"
     "${pkgname%-bin}.sh")
-sha256sums=('d62b904925998f3d5748c5781b335b9ae3834b44f9a680975b01cc0b7f014a88'
-            '402e3654ac6b89dfcbabeba6e5d3736f374860476efce810f1789b7caf8ec271')
+sha256sums=('115fb331c63340df032fc4f5e447cae1b0ea0d3736e7c1e01dc5deb07ec2473d'
+            'baba94765ffb73157c25f59d3202d8eaf485c2ef4ca7c0ea838f8ecb0ca1f62d')
 build() {
     asar pack "${srcdir}/opt/${_pkgname}/resources/app" "${srcdir}/app.asar"
     sed "s|/opt/${_pkgname}/${pkgname%-gui-bin} %U|${pkgname%-bin}|g;s|Icon=${pkgname%-gui-bin}|Icon=${pkgname%-bin}|g" \
