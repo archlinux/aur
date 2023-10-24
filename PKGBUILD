@@ -2,7 +2,7 @@
 # Co-Maintainer: Mikata Riko <sanbikappa@qq.com>
 
 pkgname='kikoplay-bin'
-pkgver=0.9.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
@@ -12,33 +12,33 @@ depends=('mpv' 'lua53' 'qhttpengine')
 conflicts=('kikoplay')
 optdepends=('aria2: for downloading')
 source=(
-    "https://github.com/KikoPlayProject/KikoPlay/releases/download/${pkgver}/KikoPlay-x86_64_${pkgver}.AppImage"
+    "https://github.com/KikoPlayProject/KikoPlay/releases/download/${pkgver}/KikoPlay_${pkgver}_Linux-${arch}.7z"
     # download script module manually due to the module was excluded from appimage package
     "git+https://github.com/KikoPlayProject/KikoPlayScript"
 )
 sha256sums=(
-    "8ca6b77b0f1a7e13f429b3a9b50b0e71361ce031d6850b0ff35499568780c1a9"
+    "89a0ffe43c351ac7bf9bf0cfd8d5f7294a24723b02a6c29e0f3786e96a662daa"
     SKIP
 )
 
 package() {
-    chmod 0755 *.AppImage
-    ./*.AppImage --appimage-extract
-    cd "${srcdir}/squashfs-root/usr/bin"
+
+    cd "${srcdir}/KikoPlay"
+
     install -Dm644 KikoPlay使用说明.pdf "$pkgdir/usr/share/doc/kikoplay/help.pdf"
     install -Dm755 KikoPlay "$pkgdir/usr/bin/KikoPlay"
-    install -Dm644 "${srcdir}/squashfs-root/kikoplay.png" "$pkgdir/usr/share/pixmaps/kikoplay.png"
+    install -Dm644 kikoplay.png "$pkgdir/usr/share/pixmaps/kikoplay.png"
     install -Dm644 kikoplay.desktop "${pkgdir}/usr/share/applications/kikoplay.desktop"
 
     mkdir -p "${pkgdir}/usr/share/kikoplay"
     # lua script module for danmu search
     cd "${srcdir}/KikoPlayScript"
     rm LICENSE *.md *.png
-    install -dm755 "${pkgdir}/usr/share/kikoplay/script"
-    cp -r * "${pkgdir}/usr/share/kikoplay/script"
+    install -dm755 "${pkgdir}/usr/share/kikoplay/extension/script"
+    cp -r * "${pkgdir}/usr/share/kikoplay/extension/script"
 
     # web server module for LANserver function
-    cd "${srcdir}/squashfs-root/usr/bin"
+    cd "${srcdir}/KikoPlay"
     install -dm755 "${pkgdir}/usr/share/kikoplay/web"
     cp -r web/* "${pkgdir}/usr/share/kikoplay/web"
 
