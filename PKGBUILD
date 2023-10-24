@@ -9,17 +9,18 @@
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
-license=(GPL)
+license=(GPL2)
 source=("${pkgbase%-full}::git+https://github.com/HandBrake/HandBrake.git#tag=${pkgver}"
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.24.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-1.0.0.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.2.tar.gz'
-        #'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/ffmpeg-4.4.1.tar.bz2'
         'https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.bz2'
+        'https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/ffmpeg-avcodec-x86-mathops-binutils-fix.patch'
+        'https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/ffmpeg-hwcontext_vulkan-remove-optional-encode-decode-extensions.patch'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libbluray-1.3.4.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdnav-6.1.1.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdread-6.1.3.tar.bz2'
@@ -30,7 +31,7 @@ source=("${pkgbase%-full}::git+https://github.com/HandBrake/HandBrake.git#tag=${
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v1.4.1.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/x265-snapshot-20221130-12747.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.4.tar.gz')
-_commondeps=(libxml2 libass libvorbis opus speex libtheora lame
+_commondeps=(libxml2 libass libvorbis opus speex libtheora lame libjpeg-turbo
              libx264.so jansson libvpx libva numactl)
 _guideps=(gst-plugins-base gtk3 librsvg libgudev)
 makedepends=(git intltool python nasm wget cmake meson
@@ -44,6 +45,8 @@ sha256sums=('SKIP'
             '4a4eb6cecbc8c26916ef58886d478243de8bcc46710b369c04d6891b0155ac0f'
             '7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90'
             '39a0bcc8d98549f16c570624678246a6ac736c066cebdb409f9502e915b22f2b'
+            'a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f'
+            '478d1a71e1352671f9893a330f1bb9104aeb7bf8e418c6941376c77a5f251147'
             '478ffd68a0f5dde8ef6ca989b7f035b5a0a22c599142e5cd3ff7b03bbebe5f2b'
             'c191a7475947d323ff7680cf92c0fb1be8237701885f37656c64d04e98d18d48'
             'ce35454997a208cbe50e91232f0e73fb1ac3471965813a13b8730a8f18a15369'
@@ -73,8 +76,11 @@ noextract=(
     )
 
 prepare() {
+  install ffmpeg-avcodec-x86-mathops-binutils-fix.patch handbrake/contrib/ffmpeg/A34-avcodec-x86-mathops-binutils-fix.patch
+  install ffmpeg-hwcontext_vulkan-remove-optional-encode-decode-extensions.patch handbrake/contrib/ffmpeg/A35-hwcontext_vulkan-remove-optional-encode-decode-extensions.patch
+
   cd "${pkgbase%-full}"
-  
+
   [ -d download ] || mkdir download
   for _tarball in ${noextract[@]}; do
     cp ../${_tarball} download/
