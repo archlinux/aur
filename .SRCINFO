@@ -1,12 +1,16 @@
 pkgbase = python-fritzconnection-git
 	pkgdesc = Python-Tool to communicate with the AVM Fritz!Box.
-	pkgver = 1.2.1.r17.g29ececd
+	pkgver = 1.9.1.r282.g1e200b1
 	pkgrel = 1
 	url = https://github.com/kbr/fritzconnection
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-requests
+	optdepends = python-segno: QR code support
 	source = git+https://github.com/kbr/fritzconnection.git
 	sha512sums = SKIP
 

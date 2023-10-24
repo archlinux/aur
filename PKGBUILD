@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=python-fritzconnection-git
-pkgver=1.2.1.r17.g29ececd
+pkgver=1.9.1.r282.g1e200b1
 pkgrel=1
 pkgdesc='Python-Tool to communicate with the AVM Fritz!Box.'
 license=('MIT')
@@ -13,7 +13,13 @@ depends=(
   'python-requests'
 )
 makedepends=(
+  'python-build'
+  'python-installer'
   'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'python-segno: QR code support'
 )
 source=("git+https://github.com/kbr/fritzconnection.git")
 sha512sums=('SKIP')
@@ -25,10 +31,10 @@ pkgver() {
 
 build() {
   cd fritzconnection
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd fritzconnection
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
