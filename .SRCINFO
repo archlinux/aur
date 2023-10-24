@@ -1,20 +1,19 @@
 pkgbase = kwin-scripts-krohnkite-git
 	pkgdesc = A dynamic tiling extension for KWin
-	pkgver = r464.2a47753
-	pkgrel = 2
-	url = https://github.com/esjeon/krohnkite.git
+	pkgver = 0.8.2.r2.gbc6fe23
+	pkgrel = 1
+	url = https://github.com/esjeon/krohnkite
 	arch = any
 	license = MIT
 	makedepends = make
-	makedepends = plasma-framework
+	makedepends = plasma-framework5
 	makedepends = typescript
 	makedepends = p7zip
 	makedepends = git
 	depends = kwin
-	provides = krohnkite
-	conflicts = krohnkite
+	provides = kwin-scripts-krohnkite
+	conflicts = kwin-scripts-krohnkite
 	source = krohnkite::git+https://github.com/esjeon/krohnkite.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kwin-scripts-krohnkite-git
-

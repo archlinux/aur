@@ -1,34 +1,57 @@
-# Maintainer: Jan Buchar <Teyras@gmail.com>
+# Maintainer:
+# Contributor: Jan Buchar <Teyras@gmail.com>
 
-pkgname=kwin-scripts-krohnkite-git
-_gitname=krohnkite
-pkgver=r464.2a47753
-pkgrel=2
+_gitname="krohnkite"
+_pkgname="kwin-scripts-$_gitname"
+pkgname="$_pkgname-git"
+pkgver=0.8.2.r2.gbc6fe23
+pkgrel=1
 pkgdesc="A dynamic tiling extension for KWin"
-arch=('any')
-url="https://github.com/esjeon/krohnkite.git"
+url="https://github.com/esjeon/krohnkite"
 license=('MIT')
-depends=('kwin')
-makedepends=('make' 'plasma-framework' 'typescript' 'p7zip' 'git')
-provides=("$_gitname")
-conflicts=("$_gitname")
-source=("$_gitname::git+$url")
-md5sums=('SKIP')
+arch=('any')
 
-pkgver() {
-  cd "${srcdir}/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+depends=('kwin')
+makedepends=(
+  'make'
+  'plasma-framework5'
+  'typescript'
+  'p7zip'
+)
+
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # normal package
+  :
+else
+  # git package
+  makedepends+=('git')
+
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_gitname"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+fi
 
 build() {
-  mkdir -p "${srcdir}/pkg"
-  cd "${srcdir}/${_gitname}"
-  HOME=${srcdir}/pkg XDG_DATA_HOME= make -e install
+  cd "$_pkgsrc"
+
+  mkdir -p "${srcdir:?}/pkg"
+  HOME="${srcdir:?}/pkg" XDG_DATA_HOME= make -e install
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  install -d "${pkgdir}/usr/share/kwin/scripts/${_gitname}"
-  cp -ra "${srcdir}/pkg/.local/share/kwin/scripts/${_gitname}/." "${pkgdir}/usr/share/kwin/scripts/${_gitname}/"
-  install -Dm644 "${srcdir}/pkg/.local/share/kwin/scripts/${_gitname}/metadata.desktop" "${pkgdir}/usr/share/kservices5/${_gitname}.desktop"
+  install -d "${pkgdir:?}/usr/share/kwin/scripts/$_gitname"
+
+  cp -ra "${srcdir:?}/pkg/.local/share/kwin/scripts/$_gitname/." "${pkgdir:?}/usr/share/kwin/scripts/$_gitname/"
+
+  install -Dm644 "${srcdir:?}/pkg/.local/share/kwin/scripts/$_gitname/metadata.desktop" "${pkgdir:?}/usr/share/kservices5/$_gitname.desktop"
+
+  install -Dm644 "${srcdir:?}/$_pkgsrc/LICENSE" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
