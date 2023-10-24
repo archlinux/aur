@@ -33,4 +33,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 "${srcdir}/files/wlr-layout-ui.desktop"\
+            "${pkgdir}/usr/share/applications/wlr-layout-ui.desktop"
 }
