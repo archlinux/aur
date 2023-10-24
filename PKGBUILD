@@ -25,7 +25,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin' 'rstudi
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('f96f4e9d3e69b00337321bf416bfc2de8127291ea65788b4cb55b45b7b82d69c')
+sha256sums_x86_64=('96930dacec34139a86f87c881e26f774729fb84747cdbd1d63d1e7ea59509f4f')
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/electron/jammy/amd64/rstudio-${pkgver_url}-amd64.deb")
 
 package() {
