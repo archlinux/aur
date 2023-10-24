@@ -9,8 +9,8 @@
 
 pkgbase=xet
 pkgname=(git-xet xetcmd xetmnt)
-pkgver=0.12.0
-_sha=1f2d3cece736664d155cf991fa952ebfc54d5eb2
+pkgver=0.12.1
+_sha=a2681c8b8dd6396a7128b7b3e4f176e5bf94860a
 pkgrel=1
 pkgdesc='CLI tools for working with XetHub'
 arch=(x86_64)
@@ -25,7 +25,7 @@ makedepends=(cargo
 _archive="xet-core-$_sha"
 options=(!lto)
 source=("https://github.com/xetdata/xet-core/archive/$_sha/$_archive.tar.gz")
-sha256sums=('b5c7d737e3eb82e600bdeec744528bbdf7e3d18176059d951bb3445a7026c55b')
+sha256sums=('75d7d191eab4686deeee4cca58880faf480cd862fb0f9b7bf9e81f8b6edf7316')
 
 prepare() {
 	cd "$_archive/rust"
