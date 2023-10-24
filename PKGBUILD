@@ -5,8 +5,8 @@
 _LANG='en'
 
 pkgname=ecodms-client
-pkgver=22.08
-pkgrel=2
+pkgver=23.01
+pkgrel=1
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
@@ -15,8 +15,8 @@ depends=('apr' 'bash' 'libappindicator-gtk2' 'libgcrypt' 'libpng' 'libjpeg-turbo
 options=('!strip')
 install=${pkgname}.install
 
-source_x86_64=("ecodmsclient-22.08-2_amd64.deb::http://www.ecodms.de/ecodms_220864/jammy/ecodmsclient-22.08-2_amd64.deb")
-sha256sums_x86_64=("a33177914879640ebaebdc644076308e3b7419add3400f0c78e186b301b7dd1f")
+source_x86_64=("ecodmsclient-23.01-1_amd64.deb::https://www.ecodms.de/ecodms_230164/jammy/ecodmsclient-23.01-1_amd64.deb")
+sha256sums_x86_64=("4d797bf11c4615041bb22b57e4a469cd15e125adce6eb5a241f8007f697bdf29")
 
 package() {
   cd "${srcdir}"
