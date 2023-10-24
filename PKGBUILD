@@ -2,7 +2,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=kail
-pkgver=0.15.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Kubernetes log viewer'
 url='https://github.com/boz/kail'
@@ -37,4 +37,4 @@ build() {
 package() {
     install -Dm 755 ${srcdir}/gopath/src/github.com/boz/kail/kail ${pkgdir}/usr/bin/kail
 }
-sha256sums=('8f8dd70c5e942474fcfe2e909ddd9198d8636702fe3e5dba8e68b883c1d93372')
+sha256sums=('280cf351ec38c76daad80a35c86e900bdf63dedadc78a610deb860b626907ef9')
