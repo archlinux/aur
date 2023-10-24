@@ -1,0 +1,4 @@
+# /etc/default/anacron
+# Set this to 'yes' to have anacron run while on battery
+# By default it is not run while on battery
+#ANACRON_RUN_ON_BATTERY_POWER=no
