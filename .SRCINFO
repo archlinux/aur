@@ -1,6 +1,6 @@
-pkgbase = spandsp-fs
+pkgbase = spandsp-git
 	pkgdesc = A DSP library for telephony (FreeSWITCH version)
-	pkgver = 3.0.0.r513.67d2455
+	pkgver = 3.0.0.r536.g5394b2c
 	pkgrel = 1
 	url = https://github.com/freeswitch/spandsp
 	arch = x86_64
@@ -12,4 +12,4 @@ pkgbase = spandsp-fs
 	source = git+https://github.com/freeswitch/spandsp
 	sha256sums = SKIP
 
-pkgname = spandsp-fs
+pkgname = spandsp-git
