@@ -1,6 +1,6 @@
 pkgbase = python-datasets
 	pkgdesc = The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools
-	pkgver = 2.14.5
+	pkgver = 2.14.6
 	pkgrel = 1
 	url = https://github.com/huggingface/datasets
 	arch = x86_64
@@ -12,22 +12,22 @@ pkgbase = python-datasets
 	makedepends = python-wheel
 	depends = python-aiohttp
 	depends = python-dill
-	depends = python-fsspec>=2021.11.1
+	depends = python-fsspec>=2023.9.0
 	depends = python-huggingface-hub
 	depends = python-multiprocess
-	depends = python-numpy>=1.17
+	depends = python-numpy
 	depends = python-packaging
 	depends = python-pandas
-	depends = python-pyarrow>=6.0.0
-	depends = python-yaml>=5.1
-	depends = python-requests>=2.19.0
-	depends = python-tqdm>=4.62.1
+	depends = python-pyarrow
+	depends = python-yaml
+	depends = python-requests
+	depends = python-tqdm
 	depends = python-xxhash
 	optdepends = python-librosa: Audio datasets
 	optdepends = python-pillow: Vision datasets
 	optdepends = python-tensorflow: TensorFlow support
 	optdepends = python-pytorch: PyTorch support
-	source = datasets-2.14.5.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/2.14.5.tar.gz
-	sha256sums = 5b9ee22d08cc201ae6c1ce152b08c1be4797f6b3b4bd351a17deb9aaf923e69e
+	source = datasets-2.14.6.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/2.14.6.tar.gz
+	sha256sums = 6139e3980275af918d86310b71f50411ca60cfb1b315b552a9ba57e9e776be32
 
 pkgname = python-datasets
