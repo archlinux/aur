@@ -2,7 +2,7 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-_pkgver=0.5.9-3
+_pkgver=0.5.9-4
 pkgver=${_pkgver/-/_}
 pkgrel=1
 epoch=2
@@ -23,9 +23,9 @@ install=
 source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html")
 source_x86_64=("${pkgname}-${epoch}-${_pkgver}-x86_64.tgz::${url}/releases/download/v${_pkgver}/${pkgname}-${epoch}-linux-x86_64-${_pkgver}.tgz")
 source_aarch64=("${pkgname}-${epoch}-${_pkgver}-aarch64.tgz::${url}/releases/download/v${_pkgver}/${pkgname}-${epoch}-linux-aarch64-${_pkgver}.tgz")
-sha256sums=('445a37f017c646fe8fcd3cdd24c159e7fed733ace7197b972070d76aca3b83b7')
-sha256sums_x86_64=('4e7c0f488466945f7eb43f3e5b1976e102b06067c96ad4a857f8796a3ded6d22')
-sha256sums_aarch64=('598720ed27c61135e63e19d9b41848767498436fe61948ffddfd475902566ba6')
+sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e')
+sha256sums_x86_64=('3e19706d7f0ab6f16a4cf04e828afd9122d13835d043f2006bc8b89ee5fe8ae6')
+sha256sums_aarch64=('218bb7d8811836c8684b8915486fed1e43385d29309843b2f7fff37a4b8a1da7')
 noextract=(
     ${pkgname}-${epoch}-x86_64-${_pkgver}.tgz
     ${pkgname}-${epoch}-aarch64-${_pkgver}.tgz)
