@@ -4,13 +4,13 @@ post_install() {
     uploads_dir="/var/lib/${username}/uploads"
     static_dir="/var/lib/${username}/static"
     config_dir="/etc/${username}"
-    tmp_psql="/tmp/setup_otp_db.psql"
+    tmp_psql="config/setup_db.psql"
 
     chown -R akkoma "$home_dir"
     chown -R akkoma "$config_dir"
 
     instance_gen_params="instance gen\
- --output \"${config_dir}/config.exs\"\
+ --output \"${config_dir}/generated_config.exs\"\
  --output-psql \"$tmp_psql\"\
  --uploads-dir \"$uploads_dir\"\
  --static-dir \"$static_dir\"\
@@ -22,19 +22,16 @@ post_install() {
     printf "A local installation of postgresql is strongly recommended unless you know what you are doing. Use:\n    $ sudo pacman -S postgresql\nto install postgresql locally.\n\n"
 	printf "If postgresql is installed locally, the user should run the following commands to initialize akkoma:\n"
 
-	printf ">>> sudo -Hu $username ${home_dir}/bin/akkoma_ctl ${instance_gen_params}\n"
+	printf ">>> sudo -Hu $username MIX_ENV=prod mix pleroma.instance gen ${instance_gen_params}\n"
 	printf ">>> sudo -Hu postgres psql -f \"${tmp_psql}\"\n"
-	printf ">>> sudo -Hu $username ${home_dir}/bin/akkoma_ctl migrate\n\n"
+	printf ">>> sudo -Hu $username MIX_ENV=prod mix ecto.migrate\n\n"
+	printf ">>> sudo -Hu $username  mv config/{generated_config.exs,prod.secret.exs}"
 
-    printf "If the user is using a remote postgresql instance, they should ensure \"${tmp_psql}\" be executed remotely after the first command:\n"
-    printf ">>> sudo -Hu $username -s /bin/bash ${home_dir}/bin/akkoma_ctl ${instance_gen_params}\n"
-    printf ">>> # Now execute \"$tmp_psql\" remotely.\n"
-	printf ">>> sudo -Hu $username -s /bin/bash ${home_dir}/bin/akkoma_ctl migrate\n\n"
 
     printf "After initializing akkoma, you may start it with:\n"
     printf ">>> sudo systemctl start akkoma\n\n"
 
-	printf "Check https://docs-develop.akkoma.social/backend/installation/otp_en/#post-installation for post-installation steps.\n"
+	printf "Check https://docs.akkoma.dev/stable/installation/arch_linux_en/ for post-installation steps.\n"
 }
 
 pre_upgrade() {
