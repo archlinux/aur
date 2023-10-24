@@ -1,38 +1,80 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: a821
+# Contributor:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Brice Carpentier <brice@daknet.org>
 
-pkgname=cairo-git
-pkgver=1.17.4
+pkgbase=cairo-git
+pkgname=(cairo-git cairo-docs-git)
+pkgver=1.18.0.r10.gf9de19ad7
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
 arch=(x86_64)
-license=(LGPL MPL)
-depends=(lzo zlib libpng fontconfig freetype2 libx11 libxext libxrender libxcb
-         glib2 pixman)
-makedepends=(valgrind git meson)
-provides=(cairo)
-conflicts=(cairo)
+license=(
+  LGPL
+  MPL
+)
+depends=(
+  fontconfig
+  freetype2
+  glib2
+  libpng
+  libx11
+  libxcb
+  libxext
+  libxrender
+  lzo
+  pixman
+  zlib
+)
+makedepends=(
+  git
+  gtk-doc
+  meson
+  valgrind
+)
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd cairo
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 build() {
-  arch-meson cairo build \
-    -D spectre=disabled \
-    -D tee=enabled \
-    -D quartz=disabled \
-    -D symbol-lookup=disabled \
+  local meson_options=(
+    -D dwrite=disabled
+    -D gtk_doc=true
+    -D spectre=disabled
+    -D symbol-lookup=disabled
     -D tests=disabled
+  )
+
+  arch-meson cairo build "${meson_options[@]}"
   meson compile -C build
 }
 
-package() {
-  DESTDIR="$pkgdir" meson install -C build
+package_cairo-git() {
+  provides=(
+    libcairo-gobject.so
+    libcairo-script-interpreter.so
+    libcairo.so
+  )
+  provides+=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  meson install -C build --destdir "$pkgdir"
+
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/gtk-doc
+}
+
+package_cairo-docs-git() {
+  pkgdesc+=" (documentation)"
+  depends=()
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  mv doc/* "$pkgdir"
 }
