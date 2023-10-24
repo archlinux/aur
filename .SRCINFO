@@ -1,13 +1,13 @@
 pkgbase = r-spatstat.utils
 	pkgdesc = Utility Functions for 'spatstat'
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.utils
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-spatstat.model
-	source = https://cran.r-project.org/src/contrib/spatstat.utils_3.0-3.tar.gz
-	sha256sums = 7a80c67490a9610e3154b4c18214a25866a37ad861e0f5b7800ae374c84adc48
+	source = https://cran.r-project.org/src/contrib/spatstat.utils_3.0-4.tar.gz
+	sha256sums = 5d418e39e0e20a14d44779fcde17caea9bf8075f1647baa59342e824b40f3cc4
 
 pkgname = r-spatstat.utils
