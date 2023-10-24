@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=corrosion-git
-pkgver=r183.94087ce
+pkgver=0.4.3.r10.gafe12e3
 pkgrel=1
 pkgdesc="Integrate Rust into existing CMake projects"
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -16,10 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
