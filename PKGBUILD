@@ -1,8 +1,9 @@
 # Maintainer : eggz
 pkgname=ffmpeg-nocuda
 pkgver=6.1
-gitver=n${pkgver}
-pkgrel=3
+#gitver=n6.1-dev
+gitver=c258623c0a635d98e7e21123215446ebd2201b1e
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -62,10 +63,8 @@ depends=(
     'xz'
     'zlib'
 )
-makedepends=('git' 'avisynthplus' 'ladspa' 'nasm' 'srt')
-optdepends=('avisynthplus: for reading AviSynth scripts as input'
-            'intel-media-sdk: for Intel Quick Sync Video'
-            'ladspa: for LADSPA filters')
+makedepends=('git' 'avisynthplus' 'ladspa' 'nasm' 'srt' 'ladspa' 'amf-headers' 'opencl-headers' 'vulkan-headers')
+optdepends=('intel-media-sdk: for Intel Quick Sync Video')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
@@ -78,12 +77,13 @@ source=(
 )
 sha256sums=(
 'SKIP'
-'SKIP'
-'SKIP'
+'bf6e0696ee7463c4afd1409ac421679eab204e152f0e6b7fcdafe414ceb4f4b8'
+'ffb6ec8ed4ced220bf4181fbdb50d0bdf6f112f667386dc14ae1ef898bdca834'
 )
 
 prepare() {
  cd ${srcdir}/ffmpeg
+ git checkout $gitver
  while read patch; do
   if [ "$patch" == "" ]; then
     continue
@@ -112,7 +112,6 @@ build() {
         --disable-stripping \
         --enable-amf \
         --enable-avisynth \
-        --enable-cuda-llvm \
         --enable-lto \
         --enable-fontconfig \
         --enable-gmp \
