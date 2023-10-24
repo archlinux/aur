@@ -44,11 +44,11 @@ build() {
       ;;
     *)
       echo "Unmapped architecture"
-      exit 1
+      false
       ;;
   esac
 
-  make build ARCH="$arch" largeboards=yes all=yes
+  make build ARCH="${arch:?}" largeboards=yes all=yes
 }
 
 package() {
