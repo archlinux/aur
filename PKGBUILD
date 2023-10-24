@@ -1,19 +1,22 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-full-git
-pkgver=1.0.17.r14.ge314545f
-pkgrel=1
+pkgver=1.0.21.r15.g5f02072b
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, all options and engines"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
 license=(GPL3)
 depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt6-base
-         sqlite udisks2 dbus alsa-lib fftw
-         libcdio vlc libgpod
-         libpulse libmtp libusbmuxd libplist libimobiledevice)
-makedepends=(git cmake boost qt6-tools gtest gmock)
-optdepends=('gst-libav: additional codecs (i.e. AAC)'
-            'gst-plugins-bad: additional codecs (i.e. AAC)'
+         sqlite udisks2 dbus alsa-lib libcdio fftw libebur128 kdsingleapplication
+         libpulse libimobiledevice libplist libusbmuxd libgpod libmtp vlc
+
+         # namcap implicit depends
+         glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
+         abseil-cpp taglib gst-plugins-base-libs gdk-pixbuf2)
+makedepends=(git cmake boost qt6-tools gtest)
+optdepends=('gst-libav: additional codecs'
+            'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
 provides=(strawberry)
 conflicts=(strawberry)
@@ -34,6 +37,7 @@ build() {
   cd strawberry/strawberry-build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DQT_NO_DEBUG_OUTPUT" \
     -DBUILD_WITH_QT6=ON
 
   make
