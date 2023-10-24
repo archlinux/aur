@@ -1,0 +1,23 @@
+From 4bc3b3a62b118f71ff768206b93a1611e7176b2b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Krystian=20Chachu=C5=82a?= <krystian@krystianch.com>
+Date: Wed, 6 Sep 2023 23:45:40 +0200
+Subject: [PATCH 1/2] Add installation of locale files
+
+---
+ meson.build | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 25ba65d..825046a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -9,3 +9,6 @@ deps = [
+ shared_library('time-source', 'time-source.c', dependencies : deps,
+ 	install : true, install_dir : get_option('libdir') / 'obs-plugins',
+ 	name_prefix : '')
++
++install_subdir('data/locale',
++	install_dir : get_option('datadir') / 'obs/obs-plugins/time-source')
+-- 
+2.42.0
+

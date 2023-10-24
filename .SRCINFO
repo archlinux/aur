@@ -1,0 +1,18 @@
+pkgbase = obs-plugin-time-source
+	pkgdesc = Shows date and time in OBS as a source
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~krystianch/obs-time-source
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = obs-studio
+	source = https://git.sr.ht/~krystianch/obs-time-source/archive/v0.1.tar.gz
+	source = 0001-Add-installation-of-locale-files.patch
+	source = 0002-add-pt-BR-translation.patch
+	b2sums = 8dc59e22c93e8aabd907b4bb2e94b8f09e8e6a4c56ed26698c767868a34394d5955cb0100248fd18ec402a7409d13a29e6d9de463f159f756faf1b95ba1536d6
+	b2sums = f11e5fc225290a1db79a4295c2ebce83b868f43f435f5f2d904f81171bfdb0839080bd0ef0942c29c7db69d621ec6f3fd6ef602b638b2f9f4796910b1edecce7
+	b2sums = f3c38c6be272b233743cea39e47a7aeeb7f63bc73ee4aca1dcd688ba0f6eef359b696a1462587fc7279e9333694111611c2efc7e23a22469c39f0c5f779776e6
+
+pkgname = obs-plugin-time-source

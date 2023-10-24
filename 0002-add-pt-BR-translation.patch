@@ -1,0 +1,27 @@
+From d1483f353f37d261176bd467110f8c434741111b Mon Sep 17 00:00:00 2001
+From: Joao Eriberto Mota Filho <eriberto@debian.org>
+Date: Tue, 19 Sep 2023 21:36:57 +0200
+Subject: [PATCH 2/2] add pt-BR translation
+
+---
+ data/locale/pt-BR.ini | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 data/locale/pt-BR.ini
+
+diff --git a/data/locale/pt-BR.ini b/data/locale/pt-BR.ini
+new file mode 100644
+index 0000000..bbd83f4
+--- /dev/null
++++ b/data/locale/pt-BR.ini
+@@ -0,0 +1,8 @@
++TimeSource="Data e Hora"
++TimeSource.Format="Formato"
++TimeSource.FormatDesc="Especificação de formato, de acordo com o strftime"
++TimeSource.Font="Fonte"
++TimeSource.BackgroundColor="Cor de Fundo"
++TimeSource.ForegroundColor="Cor de Frente"
++TimeSource.OutlineColor="Cor de Contorno"
++TimeSource.OutlineWidth="Largura do Contorno"
+-- 
+2.42.0
+
