@@ -2,7 +2,7 @@
 pkgname=lagrange-appimage
 _pkgname=Lagrange
 _appname="fi.skyjake.${_pkgname}"
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="A Beautiful Gemini Client"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,10 +17,10 @@ _install_path="/opt/appimages"
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-armhf.AppImage")
 source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-armhf.AppImage")
-sha256sums_x86_64=('774d3f7d57b278c532aa47281fb32984b1ffc248094742a7a16c4a32f917e5cf')
-sha256sums_aarch64=('12a03234251cb891456e14d3909a0a58fb18d48e649d2160a0a79c6e3d671cd6')
-sha256sums_armv7h=('12a03234251cb891456e14d3909a0a58fb18d48e649d2160a0a79c6e3d671cd6')
-prepare() {
+sha256sums_x86_64=('15ec747b5aa06fafd05e3bb6f246eb1e6a2b607f6217b66e20828a1127c18a26')
+sha256sums_aarch64=('30bb75f11eef8d4123365b697de870898b83dabe5b79db4f32441986e9068e98')
+sha256sums_armv7h=('30bb75f11eef8d4123365b697de870898b83dabe5b79db4f32441986e9068e98')
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed "s|%U|--no-sandbox %U|g;s|${_appname}|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
