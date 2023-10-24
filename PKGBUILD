@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.0.9
+pkgver=4.0.10
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash' 'electron26' 'python>=3')
 makedepends=('yarn' 'nvm' 'npm' 'gendesk' 'libxtst' 'libxtst' 'libicns' 'graphicsmagick' 'xz')
 source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
 	"${pkgname}.sh")
-sha256sums=('3e1b244d8b9634878bba26643b1fe90f167bd629ad2e29b0aaea199d72cecfb4'
+sha256sums=('ac80f434172b049386557efc4b957f26ebafc892775bf83e073c3211cb88c328'
             '35becc7e711518fb0f396742aaba1ec4480fc0ea452b088ab830ae2b5d79889e')
 _ensure_local_nvm() {
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
