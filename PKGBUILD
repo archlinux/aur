@@ -3,7 +3,7 @@
 pkgname=tvtower-bin
 _pkgname=TVTower
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C."
 arch=('x86_64')
 url="https://www.tvtower.org/"
@@ -16,13 +16,15 @@ makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_20230322.zip")
 sha256sums=('a72345b65968d95e425d823a277b47d3fca325b750ad01c4ed8ed8e831056898')
-prepare() {
+build() {
+	gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin}"
 	mkdir -p "${srcdir}/${pkgname%-bin}/logfiles"
-	chmod 755 "${srcdir}/${pkgname%-bin}/logfiles"
 	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
-	rm -rf "${srcdir}/${pkgname%-bin}/"*.bat \
-		   "${srcdir}/${pkgname%-bin}/"*.exe
-	gendesk -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin}"
+	rm -rf "${srcdir}/${pkgname%-bin}/"*.{bat,exe}
+	for _logtxt in app ai1 ai2 ai3 ai4;do
+		touch "${srcdir}/${pkgname%-bin}/logfiles/log.${_logtxt}.txt"
+	done
+	touch "${srcdir}/${pkgname%-bin}/log.profiler.txt"
 }
 package() {
 	install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
@@ -31,14 +33,6 @@ package() {
 	install -Dm644 "${srcdir}/${pkgname%-bin}/LICENCE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 "${srcdir}/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai1.txt"
-	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai2.txt"
-	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai3.txt"
-	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai4.txt"
-	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.app.txt"
-	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.app.error.txt"
-	touch "${pkgdir}/opt/${pkgname%-bin}/log.profiler.txt"
 	chmod 777 "${pkgdir}/opt/${pkgname%-bin}/savegames"
-	chmod 666 "${pkgdir}/opt/${pkgname%-bin}/log.profiler.txt" \
-		"${pkgdir}/opt/${pkgname%-bin}/logfiles/"*
+	find "${pkgdir}/opt/${pkgname%-bin}" -name "log.*.txt" -perm 644 -exec chmod 666 {} \;
 }
