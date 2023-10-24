@@ -1,4 +1,4 @@
-# Maintainer: cmuench
+# Maintainer: cmuench / torben
 
 # Default language is english
 # Languages to choose from: en, de
