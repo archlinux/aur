@@ -8,8 +8,8 @@
 _pkgbase=nginx
 pkgbase=nginx-mainline
 pkgname=(nginx-mainline nginx-mainline-src)
-pkgver=1.25.2
-pkgrel=3
+pkgver=1.25.3
+pkgrel=1
 arch=('x86_64')
 url='https://nginx.org'
 license=('custom')
@@ -28,27 +28,22 @@ backup=('etc/nginx/fastcgi.conf'
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         hg+https://hg.nginx.org/nginx-tests
         nginx.service
-        logrotate
-        # https://hg.nginx.org/nginx/rev/cdda286c0f1b CVE-2023-44487
-        HTTP2_per-iteration-stream-handling-limit.patch::https://hg.nginx.org/nginx/raw-rev/cdda286c0f1b
-)
+        logrotate)
 # https://nginx.org/en/pgp_keys.html
 validpgpkeys=(
   'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
   '13C82A63B603576156E30A4EA0EA981B66B0D967' # Konstantin Pavlov <thresh@nginx.com>
 )
-sha512sums=('47da46d823f336432aca6c4cd54c76660af60620518d5c518504033a9fd6b411fd6d41e4aac2c8200311a53f96159aa3da8920145e8ed85596c9c2c14e20cb27'
+sha512sums=('46fcbf6b540a2e47f192453b9686a701e3abe5a41a3275e36c9fca6c3f9ef0aa8d705cc5ad63257d662a5432109e4ce125d330cdeb547914bceac19e885dba1f'
             'SKIP'
             'SKIP'
             'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
-            '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9'
-            '18b69643648119dfab45101bb9404be667aeb9d550aa3bc9706e63e7da1c2806106e9a6bbfb2d10bd57ef56b9b5b0b524059353ec30a51469b44641cb7dbd8a6')
-b2sums=('546a74c633400e51f6afded396fc36013574dd9ddc6b5f321bd5379c3a27613954de93957268213bc9724943515cab3d23b3965a384c4f71dfb4c759bba49912'
+            '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9')
+b2sums=('f7a77b92b80197ce6cff477dac42169d638f69a4a408e979daa4f5e87ca0e4d18e366b8c2b0fc686cd69f5f926b5b097a8893f3c5295387bcc6f174a2f72e7f4'
         'SKIP'
         'SKIP'
         '5aa8dab4d6517fc09a96f2ced5c85a67a44878da4c5cde1031a089609d3d32505d0cb45e6842a1502cc6f09e03eef08ee0ce6826b73bcfdd8087b0b695f0801c'
-        'e1755f61b4eaece83c6c22e48f9e5e316851d1dc35f8d770f837c7d3c8bdc894af1b697c25f1788ac50cd597085c22fb9bf8096a55ecf7659d63185f68ba2d8a'
-        '76c9f913b2f75850454d42cc9ed2ec2d506c507dbb0e4b32b66e82041a3fc2b69fc024d8f2ee867a6f21d4919fd22e85878e2355abeb5775a5b04f8a62bafa0a')
+        'e1755f61b4eaece83c6c22e48f9e5e316851d1dc35f8d770f837c7d3c8bdc894af1b697c25f1788ac50cd597085c22fb9bf8096a55ecf7659d63185f68ba2d8a')
 
 _common_flags=(
   --with-compat
@@ -88,8 +83,6 @@ _mainline_flags=(
 
 prepare() {
   cp -r $_pkgbase-$pkgver{,-src}
-  cd $_pkgbase-$pkgver
-  patch -Np1 -i "$srcdir/HTTP2_per-iteration-stream-handling-limit.patch"
 }
 
 build() {
