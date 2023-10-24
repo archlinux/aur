@@ -1,15 +1,15 @@
 # Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=fasda
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc=" Fast And Simple Differential Analysis of transcriptomic data"
 arch=('i686' 'x86_64')
 url="https://github.com/auerlab/fasda"
 license=('BSD-2')
 depends=('biolibc' 'libxtend' 'glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/auerlab/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8e1b1536ff3c551c16b6ddca543378343e055a9b067ef5038e2b2f1fb2e874b9')
+sha256sums=('38ff2231259c67e814937f1032808b99fca24763d80dc7a6ad40cc65a518c085')
 
 prepare() {
   cd "$pkgname-$pkgver"
