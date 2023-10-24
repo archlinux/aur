@@ -1,6 +1,6 @@
 pkgbase = python-glue-core
 	pkgdesc = Core library for the glue multidimensional data visualization project
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = http://glueviz.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-glue-core
 	checkdepends = python-fast-histogram
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx-automodapi
-	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-book-theme
 	makedepends = python-numpydoc
 	makedepends = python-astropy
 	makedepends = python-echo
@@ -23,9 +23,10 @@ pkgbase = python-glue-core
 	makedepends = python-mpl-scatter-density
 	makedepends = python-pandas
 	makedepends = python-scipy
+	makedepends = python-shapely
 	makedepends = ipython
-	source = https://files.pythonhosted.org/packages/source/g/glue-core/glue-core-1.13.1.tar.gz
-	sha256sums = 0fd5d5a9370dc505eb9c47fa9495443c28c55681a425f9ad027c600e7d6579c0
+	source = https://files.pythonhosted.org/packages/source/g/glue-core/glue-core-1.14.0.tar.gz
+	sha256sums = 72b5ee83afcc859deaa4b270808a613d04b3ede426e4b5a35074645ee03393b2
 
 pkgname = python-glue-core
 	depends = python>=3.8
@@ -42,6 +43,7 @@ pkgname = python-glue-core
 	depends = python-xlrd>=1.2
 	depends = python-openpyxl>=3.0
 	depends = python-pvextractor>=0.2
+	depends = python-shapely>=2.0
 	depends = python-mpl-scatter-density>=0.7
 	optdepends = python-glue-qt: Qt GUI of glue
 	optdepends = python-astrodendro: for dendrograms

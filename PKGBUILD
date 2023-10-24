@@ -4,7 +4,7 @@
 pkgname=python-glue-core
 _pyname=glue-core
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Core library for the glue multidimensional data visualization project"
 arch=('any')
@@ -12,7 +12,7 @@ url="http://glueviz.org"
 license=('BSD')
 makedepends=('python-setuptools-scm'
              'python-sphinx-automodapi'
-             'python-sphinx_rtd_theme'
+             'python-sphinx-book-theme'
              'python-numpydoc'
              'python-astropy'
              'python-echo'
@@ -20,6 +20,7 @@ makedepends=('python-setuptools-scm'
              'python-mpl-scatter-density'
              'python-pandas'
              'python-scipy'
+             'python-shapely'
              'ipython')
 checkdepends=('python-pytest'
               'python-astrodendro'
@@ -28,9 +29,9 @@ checkdepends=('python-pytest'
               'python-pyavm'
               'python-scikit-image'
               'python-xlrd'
-              'python-fast-histogram')  # matplotlib pandas echo astropy ipython scipy already in makedepends, fast-histogram <- mpl-scatter-density
+              'python-fast-histogram')  # matplotlib pandas echo astropy ipython shapely scipy already in makedepends, fast-histogram <- mpl-scatter-density; h5py <- astrodendro
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('0fd5d5a9370dc505eb9c47fa9495443c28c55681a425f9ad027c600e7d6579c0')
+sha256sums=('72b5ee83afcc859deaa4b270808a613d04b3ede426e4b5a35074645ee03393b2')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -69,6 +70,7 @@ package_python-glue-core() {
              'python-xlrd>=1.2'
              'python-openpyxl>=3.0'
              'python-pvextractor>=0.2'
+             'python-shapely>=2.0'
              'python-mpl-scatter-density>=0.7')
     optdepends=('python-glue-qt: Qt GUI of glue'
                 'python-astrodendro: for dendrograms'
