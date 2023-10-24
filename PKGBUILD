@@ -6,7 +6,7 @@
 
 pkgname=akkoma
 pkgver=3.10.4
-pkgrel=3
+pkgrel=2
 pkgdesc='Akkoma is a faster-paced fork of Pleroma'
 url='https://akkoma.dev/AkkomaGang/akkoma'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
@@ -25,7 +25,7 @@ source=('akkoma.sysusers'
         "git+${url}.git#tag=v$pkgver")
 sha256sums=('0247ee5cc24049ebc37a00634aad8ed9a44d0f9a399a1373284375f5c861a089'
             'ae5bd0e7ee501c4535a52650574a69ca0ba9b60315ec3b7c8a1d98a8246cea6b'
-            '8ad59c555b92a3d0ae8d9e62f41ee653e5c4a3ab89efde8f51cfac890bbb335d'
+            '54f940b0b59c046f2b8892dcd7156ad9314f7ce2b1d9cce9dfab4cc1baa001f0'
             'SKIP')
 build() {
     cd "${pkgname}"
