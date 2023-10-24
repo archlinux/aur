@@ -5,10 +5,10 @@ _desktopfile="${_pkgname}"
 
 pkgname=lpub3d-appimage
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="LDraw™ editor for LEGO® style digital building instructions"
-arch=(x86_64)
-license=(GPL3)
+arch=('x86_64')
+license=('GPL3')
 url="https://trevorsandy.github.io/lpub3d"
 depends=('fuse2')
 conflicts=()
@@ -20,7 +20,7 @@ sha256sums=('a2cc008c08e5b26be4c321a08bac46cdde0582c6764108823652bd4690ba8081')
 prepare() {
     chmod +x ${_appimage}
     ./${_appimage} --appimage-extract ${_desktopfile}.desktop
-    ./${_appimage} --appimage-extract usr/share/icons/hicolor/512x512/apps/${_desktopfile}.png
+    ./${_appimage} --appimage-extract ${_desktopfile}.png
 }
 
 package() {
