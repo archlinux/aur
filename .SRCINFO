@@ -1,7 +1,7 @@
 pkgbase = ilorest
 	pkgdesc = HPE RESTful Interface Tool
-	pkgver = 4.5.0.0_93
-	pkgrel = 3
+	pkgver = 4.6.0.0_11
+	pkgrel = 1
 	url = https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_06c2f88e74324dd497715e01e1
 	changelog = ChangeLog
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ilorest
 	license = HPE
 	depends = bash
 	depends = libxcrypt-compat
-	source = https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v234503/RPMS/x86_64/ilorest-4.5.0.0-93.x86_64.rpm
-	sha256sums = 4c90f5720c4511e80eb84c4b251c52a6508a81c5fa464d2b9bb43f5c679ff503
+	source = https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v235062/RPMS/x86_64/ilorest-4.6.0.0-11.x86_64.rpm
+	sha256sums = a99ddc6b7f69ea38ac61f8a3bbde1d4b18225a98a0b41158bbb34060b8207b10
 
 pkgname = ilorest
