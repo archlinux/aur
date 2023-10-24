@@ -1,6 +1,8 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron26
-_ASAR="/opt/armcord/app.asar"
+_ELECTRON=/usr/bin/electron27
+APPDIR="/opt/armcord"
+export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
+_ASAR="${APPDIR}/resources/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
