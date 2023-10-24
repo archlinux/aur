@@ -1,13 +1,13 @@
 pkgname=livetikz
 _pkgname=LiveTikZ
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A live preview for TikZ drawings"
 arch=('x86_64' 'i686')
 url="https://github.com/misc0110/LiveTikZ"
 license=('GPL')
-depends=('poppler' 'poppler-qt5' 'kcoreaddons' 'kxmlgui' 'ki18n' 'ktexteditor'
-'kparts')
+depends=('poppler' 'poppler-qt5' 'kcoreaddons5' 'kxmlgui5' 'ki18n5' 'ktexteditor5'
+'kparts5')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("https://github.com/misc0110/LiveTikZ/archive/release-${pkgver}.tar.gz")
 md5sums=('45401b590772be51efac8075bfc7373d')
