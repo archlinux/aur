@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hoptodesk-bin
-pkgver=1.40.7
+pkgver=1.40.8
 #https://www.hoptodesk.com/changelog
-pkgrel=2
+pkgrel=1
 pkgdesc="A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices."
 arch=('x86_64')
 url="https://www.hoptodesk.com"
@@ -13,8 +13,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=('libxfixes' 'pango' 'gcc-libs' 'gtk3' 'gdk-pixbuf2' 'libx11' 'util-linux-libs' 'glib2' 'libxtst' \
     'cairo' 'libxkbcommon' 'gst-plugins-base-libs' 'gstreamer' 'libxcb' 'libpulse' 'dbus' 'xdotool' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/${pkgname%-bin}.deb")
-sha256sums=('394e93e365b755ed44f8ff6837bbc2e8d76c315132f74076cf1e988bcb2bdb0b')
-prepare() {
+sha256sums=('fd4698529856e5cc35d6599c02eb949a9b48bd12fa8ef142f969336099f35a56')
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/usr/share/icons/hicolor/128x128/${pkgname%-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
