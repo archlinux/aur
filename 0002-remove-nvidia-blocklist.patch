@@ -1,6 +1,6 @@
-diff --color --unified --recursive --text firefox-118.0.orig/widget/gtk/GfxInfo.cpp firefox-118.0.new/widget/gtk/GfxInfo.cpp
---- firefox-118.0.orig/widget/gtk/GfxInfo.cpp	2023-09-26 21:02:27.522139741 +0200
-+++ firefox-118.0.new/widget/gtk/GfxInfo.cpp	2023-09-26 21:04:39.745075990 +0200
+diff --color --unified --recursive --text firefox-119.0.orig/widget/gtk/GfxInfo.cpp firefox-119.0.new/widget/gtk/GfxInfo.cpp
+--- firefox-119.0.orig/widget/gtk/GfxInfo.cpp	2023-10-24 01:01:09.328828828 +0200
++++ firefox-119.0.new/widget/gtk/GfxInfo.cpp	2023-10-24 01:02:48.247341063 +0200
 @@ -974,37 +974,6 @@
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_WEBRENDER_MESA_VM", "");

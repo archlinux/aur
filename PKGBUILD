@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=118.0.2
+pkgver=119.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -71,29 +71,26 @@ source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   firefox.desktop
   identity-icons-brand.svg
-  0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch
-  0002-enable-vaapi.patch
-  0003-remove-nvidia-blocklist.patch
+  0001-enable-vaapi.patch
+  0002-remove-nvidia-blocklist.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('89626520f2f0f782f37c074b94690e0f08dcf416be2b992f4aad68df5d727b21'
+sha256sums=('f63e44194548f246e1396508800739a24c0517e65e920002a6f67ee099be39dd'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '2406c4c2e18d535c0c7900fe7b176137ae130a75806a19516854894555b69e72'
-            'e10b201f3e3968912ca93c83cedcb68a64b9f52682c7f29c283b1da90b805285'
-            'bb18d5ab7ea5322e2500d9d3f4038a62321c5007d8d21c21730f02129d794fdb')
-b2sums=('e7b166903dc13ddaf514dea7833de0f464611551b054e5c2e336d3e1995f9c0d3bf6cfbd3cb9306be672d6451b6343e56025c99d0fed4b1d23fd6ea8e519ac9c'
+            'f10282dcf8a75155f9b808bb4b96426d287ec4c3ffcfc9e65736cddf31040e41'
+            '0bfed7f125d55ef6accfd15fbeb6b47c8280528e3e2dc4e5459bd63202a210dd')
+b2sums=('4fc9852839a65b05c0861eea1d3c99aa9ef8eef02ba02dab15720d0da62b219f0fc2c4bdda1741dcf0eed316b88f032580c7cf433c4d09170b5c8e19e8ad4e1d'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'b2f4cb63aefd82a06af8b867bf77b6376589277828502783741f84b687d122ff6097b693ef469866dffea323668819b105dfbdaea9dbc1eda58024549729dc47'
-        '732ca15418226aa00d5308f1cd1bbd3aeb13295ce9c5bee12b65b5e1784a143a2078dd1831d6ab129366012e4cc1e02de657e203694feecbbdf3a77012dbe33c'
-        '0cff556f03caba678b5bdeb19b776a1b858da3114b7158155a74fc8adeb034174f0883e8b2c00ecb7699422c50e95ab86148065176d5cb0cdad3d4fcf0dc7452')
+        '252e3ff0da087a7dfcc09d39896bf82d863102ad8f43e3a12a7d9c98fc8a2f1c3787969c915592786ffdf177af8e10a9c5c230e75f84c8381feffc985d562239'
+        '4051034469ab85e1d7eceea467d18b1f3b26b8469b3f75a4c2d961439cf67d0244640729aa8e08c31f918c7b6b9b0b4a15c8992e757ff0faa5580bf5f5956dfb')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -111,17 +108,13 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
-  # Unbreak build with Rust 1.73.0
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1849874
-  patch -Np1 -i ../0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/firefox-enable-vaapi.patch
-  patch -Np1 -i ../0002-enable-vaapi.patch
+  patch -Np1 -i ../0001-enable-vaapi.patch
 
   # Disable NVIDIA blocklists, to make it function with libva-nvidia-driver-git AUR package
-  patch -Np1 -i ../0003-remove-nvidia-blocklist.patch
+  patch -Np1 -i ../0002-remove-nvidia-blocklist.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
