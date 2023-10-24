@@ -1,0 +1,27 @@
+pkgbase = dune3d-git
+	pkgdesc = 3D CAD application
+	pkgver = 5600a99
+	pkgrel = 1
+	url = https://github.com/dune3d/dune3d
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = cmake
+	makedepends = ninja
+	depends = gtkmm-4.0
+	depends = libepoxy
+	depends = eigen
+	depends = opencascade
+	depends = mimalloc
+	depends = glm
+	depends = range-v3
+	depends = python-gobject
+	depends = python-cairo
+	depends = cairo
+	provides = dune3d
+	conflicts = dune3d
+	source = git+https://github.com/dune3d/dune3d.git
+	sha256sums = SKIP
+
+pkgname = dune3d-git
