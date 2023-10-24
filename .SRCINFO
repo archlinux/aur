@@ -1,0 +1,23 @@
+pkgbase = tracy-x11
+	pkgdesc = Real-time, nanosecond resolution frame profiler
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/wolfpld/tracy
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = pkgconf
+	makedepends = git
+	depends = glfw-x11
+	depends = freetype2
+	depends = dbus
+	depends = hicolor-icon-theme
+	depends = intel-tbb
+	depends = capstone
+	optdepends = xdg-desktop-portal: file dialogs
+	provides = tracy
+	conflicts = tracy
+	source = git+https://github.com/wolfpld/tracy#tag=v0.10
+	sha256sums = SKIP
+
+pkgname = tracy-x11
