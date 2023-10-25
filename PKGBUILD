@@ -57,7 +57,7 @@ _package_common() {
 
 package_input-leap-inputcapture-headless() {
   pkgdesc+=" (client and server CLI binaries)"
-  depends=(${_core_deps[@]})
+  depends=(${_core_deps[@]} libportal-inputcapture libportal-inputcapture-gtk3 libportal-inputcapture-gtk4 libportal-inputcapture-qt5 libportal-inputcapture-docs)
   provides=("input-leap-headless=$pkgver" "barrier-headless=$pkgver")
   conflicts=(input-leap-headless barrier-headless)
 
@@ -87,7 +87,7 @@ package_input-leap-inputcapture() {
 
   # Now go and delete files that are already in
   # input-leap-headless-git:
-  for file in /usr/bin/input-leap{s,c} /usr/share/man; do
+  for file in /usr/bin/input-leap{s,c} /usr/share/man /usr/bin/input-leap-flatpak; do
     rm -rv "${pkgdir}/${file}"
   done
 }
