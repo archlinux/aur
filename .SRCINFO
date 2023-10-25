@@ -1,7 +1,7 @@
 pkgbase = kwaterfoxhelper
 	pkgdesc = Waterfox KDE Plasma Integration
 	pkgver = 5.0.7
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/hawkeye116477/kwaterfoxhelper
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=kwaterfoxhelper
 pkgver=5.0.7
-pkgrel=0
+pkgrel=2
 pkgdesc="Waterfox KDE Plasma Integration"
 url="https://github.com/hawkeye116477/kwaterfoxhelper"
 arch=("x86_64")
