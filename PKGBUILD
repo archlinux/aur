@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=topconfects
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Top Confident Effect Sizes'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce6ebaa5b0d0bfa3efde9336353cd44fda64aaf007973473dedb7d85f2fa67c4')
+sha256sums=('d3d5da5a4127bac933e6daad3670d676b604f05eced49879cc1aabdae04bd90d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-topconfects
 	pkgdesc = Top Confident Effect Sizes
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/topconfects
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-topconfects
 	optdepends = r-statmod
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/topconfects_1.16.0.tar.gz
-	sha256sums = ce6ebaa5b0d0bfa3efde9336353cd44fda64aaf007973473dedb7d85f2fa67c4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/topconfects_1.18.0.tar.gz
+	sha256sums = d3d5da5a4127bac933e6daad3670d676b604f05eced49879cc1aabdae04bd90d
 
 pkgname = r-topconfects
