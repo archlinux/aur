@@ -10,6 +10,7 @@ pkgbase = bypass_utility-bin
 	depends = python-json5
 	depends = python-pyserial
 	depends = linux-kamakiri-bin
+	depends = translate-shell
 	provides = exploits_collection=1.6
 	source = https://github.com/MTK-bypass/bypass_utility/archive/refs/tags/v.1.4.2.tar.gz
 	source = v.1.4.2.tar.gz.sig

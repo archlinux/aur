@@ -9,7 +9,7 @@ url='https://github.com/MTK-bypass'
 arch=(x86_64)
 license=(MIT)
 makedepends=('rsync')
-depends=('python-pyusb' 'python-json5' 'python-pyserial' 'linux-kamakiri-bin')
+depends=('python-pyusb' 'python-json5' 'python-pyserial' 'linux-kamakiri-bin' 'translate-shell')
 pkgname_provides=exploits_collection
 pkgver_provides=1.6
 provides=("$pkgname_provides=$pkgver_provides")
@@ -42,33 +42,50 @@ package() {
     # Script de ejecución bypass_utility.
     install -Dvm755 <(cat <<'EOF'
 #!/usr/bin/env bash
+
+translate_str() {
+   local -r lang=${LANG%_[A-Z][A-Z].UTF-8}
+   local str=""
+   if [[ $lang == en ]]; then
+       str=$1 
+   elif [[ $lang == es ]]; then
+       str=$2
+   else
+       str=`trans -b :$lang "$str"`
+   fi
+   echo "$str"
+}
+
 # Comprobar si el usuario es root.
 if [ "$EUID" -ne 0 ]; then
-    echo "Error: No puede realizar esta operación, a menos que sea superusuario."
+    translate_str "Error: You can't perform this operation unless you're superuser."\
+    "Error: No puede realizar esta operación, a menos que sea superusuario."
 else
-    declare -r current_kernel=`uname -r`
+    # kernel actual.
+    declare -r current_kernel=`uname -r` kernel=linux-kamakiri
 
-    # Expresión regular.
+    # Expresión regular o patrón.
     declare -r pattern="^[0-9]+\.[0-9]+\.[0-9]+-arch[0-9]+-[0-9]+-kamakiri$"
 
     # Comprueba si la versión del kernel coincide con el patrón.
     if [[ $current_kernel =~ $pattern ]]; then
-        echo "Kernel linux-kamakiri validado correctamente..."
+        translate_str "Kernel $kernel validated correctly..."\
+	"Kernel $kernel validado correctamente..."
         cd /opt/bypass_utility/
         ./main.py
         cd -
     else
-        declare -r kernel=linux-kamakiri \
-        installed_kernel=`awk -F\' '/menuentry / && /linux-kamakiri/ && !/\(fallback initramfs\)/ {print $2}' /boot/grub/grub.cfg`
+        declare -r installed_kernel_kamakiri=`pacman -Qs linux-kamakiri*`
 
         # Comprueba si está instalado el kernel linux-kamakiri.
-        if [[ $installed_kernel ]]; then
-            echo "Kernel compatible '"$kernel"' instalado, inicialíze el sistema usando dicho kernel en su gestor de arranque y vuelva a ejecutar la herramienta bypass_utility."
+        if [[ $installed_kernel_kamakiri ]]; then
+            translate_str "'"$kernel"' kernel installed, manually initialize it in your bootloader and re-run bypass_utility."\
+	    "Kernel '"$kernel"' instalado, inicialízelo manualmente en su bootloader y vuelva a ejecutar bypass_utility."
         else
-	    echo "Kernel actual '"$current_kernel"' incompatible, requiere la variante linux-kamakiri provista por calquiera de los paquetes linux-kamakiri-bin ó linux-kamakiri, instálelos usando:
->> paru -S linux-kamakiri-bin
->> yay -S linux-kamakiri-bin."
-        fi
+	    translate_str "Currently incompatible kernel '"$current_kernel"', you need to install the \"linux-kamakiri\" variant provided by \"linux-kamakiri-bin\" or \"linux-kamakiri\":" "Kernel actual '"$current_kernel"' incompatible, necesita instalar la variante \"linux-kamakiri\" provista por \"linux-kamakiri-bin\" ó \"linux-kamakiri\":"
+            echo ">> paru -S linux-kamakiri-bin
+>> yay -S linux-kamakiri-bin"
+	fi
     fi
 fi
 EOF
