@@ -5,9 +5,9 @@ pkgname=serioussam-hno
 pkginstdir=serioussamse
 hno=HeroNumberOne.tar.xz
 hno_eng=HNO-Data-messages-eng.tar.xz
-pkgver=1.0.1
+pkgver=1.0.2
 _srcname="SE1-TSE-HNO-$pkgver"
-pkgrel=4
+pkgrel=1
 pkgdesc="Serious Sam Classic HNO native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TSE-HNO"
@@ -28,7 +28,7 @@ source=("https://github.com/tx00100xt/SE1-TSE-HNO/archive/refs/tags/v$pkgver.tar
 	"https://archive.org/download/hero-number-one/HeroNumberOne.tar.xz"
 	"https://archive.org/download/hno-data-messages-eng/HNO-Data-messages-eng.tar.xz")
 noextract=("HeroNumberOne.tar.xz")
-sha256sums=('793925ac19e54b25fd56c8739730c1099c54de458d5fc74db18a079c7acb3963'
+sha256sums=('8a126fd03056bed9c4a9b0a87db12b38dc0b83f9dc55f56c912dcc2ddfa930a9'
 	'cb75f7f79e9f1f3ae1285ed036f3f3e9d3c1323cb448ed87f316e59390f748f9'
 	'316f68a61cdba7d1dc71b3847dcd1d789f93077275fd2d0911b832dda72b101c')
 
