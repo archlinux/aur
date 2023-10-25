@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s" "$(git show -s --format=%cs | tr -d -)" "$(git rev-parse --short HEAD)"
 
 }
 
