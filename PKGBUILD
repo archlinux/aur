@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-hardened
-_pkgver=6.5.5.hardened1
-_kernver=6.5.5
+_pkgver=6.5.8.hardened1
+_kernver=6.5.8
 _hardenedver=hardened1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.5.5-hardened1-1-hardened
+_KERNNAME=6.5.8-hardened1-1-hardened
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-hardened"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('6195dbc37097e697aca1b26d009454663853401c0c6e01049b6d152866ea4ac0'
-            'fc94a6188ef7f1afafd150daff0076f9c1ca6c540962c33064620bc3883ecd75'
-            '6a8213c3b7e9b914b59a2df61a8f25ddf4bf7ac34c340a76e53fbe10408778c9')
+sha256sums=('d4e5a5b1abf8c14453185f62bd682c08b61955e05558d189803230d7bf090381'
+            'e552eaf97b2be350b64e719253576f586a2b3d0c5f6dc016f1316c28d18353c7'
+            '62fb5312e40ba8646da3144c5f4d69ae78687a90115fbe9c31f73b754431f947')
 
 package_linux-hardened-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-hardened-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.5.5.hardened1-1-hardened-bin() {
+package_linux6.5.8.hardened1-1-hardened-bin() {
   pkgdesc="The Security-Hardened Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux6.5.5.hardened1-1-hardened-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.5.5.hardened1-1-hardened-headers-bin() {
+package_linux6.5.8.hardened1-1-hardened-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Security-Hardened Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux6.5.5.hardened1-1-hardened-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.5.5.hardened1-1-hardened-docs-bin() {
+package_linux6.5.8.hardened1-1-hardened-docs-bin() {
   pkgdesc="Documentation for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
