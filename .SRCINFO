@@ -1,6 +1,6 @@
 pkgbase = gtkcord4-git
 	pkgdesc = Discord client written in go and gtk4
-	pkgver = r271.dea45f4
+	pkgver = r280.9c86416
 	pkgrel = 1
 	url = https://github.com/diamondburned/gtkcord4
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = gtkcord4-git
 	provides = gtkcord4
 	conflicts = gtkcord4
 	source = git+https://github.com/diamondburned/gtkcord4
+	source = so.libdb.gtkcord4.service
 	sha256sums = SKIP
+	sha256sums = f57c464e1aaa9eab28f6303fdff43a5c1299b27278948769a3d24009213aa105
 
 pkgname = gtkcord4-git
