@@ -3,8 +3,8 @@
 _pkgname=vulkan-headers
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Headers
-pkgver=1.3.264
-pkgrel=3
+pkgver=1.3.269
+pkgrel=1
 pkgdesc='Vulkan header files (mingw-w64)'
 arch=(any)
 url='https://www.khronos.org/vulkan/'
@@ -13,7 +13,7 @@ makedepends=(mingw-w64-cmake)
 groups=('mingw-w64-vulkan-devel')
 options=(!buildflags staticlibs !strip)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bdce6a99f0e5869a341946ee0a92eef270ef9b4b106e82f238aa68aeb2cd4995')
+sha256sums=('1637f36a023bd148315f66efb7974861adf22cd1f6d690bdf00ee15ce91d5367')
 
 _srcdir="${_dirname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
