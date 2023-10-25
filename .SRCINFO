@@ -1,6 +1,6 @@
 pkgbase = r-geva
 	pkgdesc = Gene Expression Variation Analysis (GEVA)
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/geva
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-geva
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-topgo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/geva_1.8.0.tar.gz
-	sha256sums = fd32d3bf8f9c256698d66049bebdb83e9cb14149904b20a95d34ef787eb494f7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geva_1.10.0.tar.gz
+	sha256sums = 79e4b022912805ba0ad47840f3ac072dd6e7d288fd704eba0557f608fff5683e
 
 pkgname = r-geva
