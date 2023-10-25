@@ -4,7 +4,7 @@
 pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
-pkgver=0.25.0
+pkgver=0.27.2
 pkgrel=1
 conflicts=('bruno')
 provides=('bruno')
@@ -26,8 +26,8 @@ source=(
 )
 
 sha256sums=(
-    '20e40c2dd9650a6ec2bca705d661e8bb610933af9ed7ccb75a0b15182c72a9d0'
-    '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051'
+    '428ee7402d6edb0841173b444ce28427ffd5b218d9e86f3bbd4af08bd8224d8f' # bruno
+    '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051' # bruno.desktop
 )
 
 prepare() {
