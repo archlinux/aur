@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LBE
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='Estimation of the false discovery rate.'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-qvalue
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab672a2f47a7c94df6b923e731832e1542b8f90bc7cb246767fb8682732c90d1')
+sha256sums=('99990d21cff0a2b427afbade12547c637c5aeb63a494f956b6d6f0d97a7e723b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

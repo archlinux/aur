@@ -1,13 +1,13 @@
 pkgbase = r-lbe
 	pkgdesc = Estimation of the false discovery rate.
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LBE
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-qvalue
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LBE_1.68.0.tar.gz
-	sha256sums = ab672a2f47a7c94df6b923e731832e1542b8f90bc7cb246767fb8682732c90d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LBE_1.70.0.tar.gz
+	sha256sums = 99990d21cff0a2b427afbade12547c637c5aeb63a494f956b6d6f0d97a7e723b
 
 pkgname = r-lbe
