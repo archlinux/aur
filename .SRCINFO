@@ -1,14 +1,14 @@
 pkgbase = goldendict-ng-appimage
 	pkgdesc = Feature-rich dictionary lookup program supporting multiple dictionary formats.
 	pkgver = 23.09.29
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = x86_64
 	license = GPL3
 	conflicts = goldendict-ng
 	conflicts = goldendict-ng-git
 	options = !strip
-	source = 6.5.2-GoldenDict-ng-x86_64.AppImage::https://github.com/xiaoyifang/goldendict-ng/releases/download/v23.09.29-MoonCake.7f0f8778/6.5.2-GoldenDict-ng-x86_64.AppImage
+	source = 23.09.29-MoonCake.7f0f8778-6.5.2-GoldenDict-ng-x86_64.AppImage::https://github.com/xiaoyifang/goldendict-ng/releases/download/v23.09.29-MoonCake.7f0f8778/6.5.2-GoldenDict-ng-x86_64.AppImage
 	source = goldendict-ng.desktop
 	source = goldendict-ng.png
 	sha256sums = 43c024c1f30b5a1c7ee5325e0fabb5a1ebc3a8af16494d41d51920e68f9c0efa

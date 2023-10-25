@@ -3,7 +3,7 @@ pkgname=goldendict-ng-appimage
 _appimage=6.5.2-GoldenDict-ng-x86_64.AppImage
 pkgver=23.09.29
 _pkgver=23.09.29-MoonCake.7f0f8778
-pkgrel=0
+pkgrel=1
 pkgdesc="Feature-rich dictionary lookup program supporting multiple dictionary formats."
 arch=('x86_64')
 url="https://github.com/xiaoyifang/goldendict-ng"
@@ -14,7 +14,7 @@ conflicts=(
     'goldendict-ng-git'
 )
 
-source=("${_appimage}::https://github.com/xiaoyifang/goldendict-ng/releases/download/v${_pkgver}/${_appimage}"
+source=("${_pkgver}-${_appimage}::https://github.com/xiaoyifang/goldendict-ng/releases/download/v${_pkgver}/${_appimage}"
         "goldendict-ng.desktop"
         "goldendict-ng.png"
         )
@@ -26,13 +26,13 @@ sha256sums=(
     )
 
 prepare() {
-    chmod +x "${_appimage}"
+    chmod +x "${_pkgver}-${_appimage}"
 }
 
 package() {
 
     # Install
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/appimages/GoldenDict-ng.AppImage"
+    install -Dm755 "${srcdir}/${_pkgver}-${_appimage}" "${pkgdir}/opt/appimages/GoldenDict-ng.AppImage"
 
     # Install Desktop file
     install -Dm644 "${srcdir}/goldendict-ng.desktop" "${pkgdir}/usr/share/applications/goldendict-ng.desktop"
