@@ -1,6 +1,6 @@
 pkgbase = r-optimx
 	pkgdesc = Expanded Replacement and Extension of the 'optim' Function
-	pkgver = 2023.8.13
+	pkgver = 2023.10.21
 	pkgrel = 1
 	url = https://cran.r-project.org/package=optimx
 	arch = any
@@ -15,13 +15,14 @@ pkgbase = r-optimx
 	optdepends = r-lbfgsb3c
 	optdepends = r-marqlevalg
 	optdepends = r-minqa
+	optdepends = r-r.rsp
 	optdepends = r-rmarkdown
 	optdepends = r-setrng
 	optdepends = r-subplex
 	optdepends = r-testthat
 	optdepends = r-ucminf
-	source = https://cran.r-project.org/src/contrib/optimx_2023-8.13.tar.gz
-	md5sums = f936dff9a2dba66f63876b463957ea9f
-	sha256sums = 163956791eb3b09f6a9a1c8e2ccb7f44fe8e02124fc2a732701be9070a818803
+	source = https://cran.r-project.org/src/contrib/optimx_2023-10.21.tar.gz
+	md5sums = 6bf0366c13fec66c2c89c848ad3fd9b2
+	sha256sums = 0d732d5604c26af59cfb95b80ed4e226c9c10422e2d82a6cc06b92f9ba6a44b5
 
 pkgname = r-optimx
