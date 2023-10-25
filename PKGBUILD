@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRNApath
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='miRNApath: Pathway Enrichment for miRNA Expression Data'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7eb4286697f3f9ab4cbdb902be1a42363d006fbd487e9e3946e31c76c7158142')
+sha256sums=('a9f84c24b09665616583ea064b2f6d339b40379d856aa6583c66d2b430eab0e6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
