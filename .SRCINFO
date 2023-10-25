@@ -1,6 +1,6 @@
 pkgbase = r-sincell
 	pkgdesc = R package for the statistical assessment of cell state hierarchies from single-cell RNA-seq data
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sincell
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-sincell
 	optdepends = r-knitr
 	optdepends = r-monocle
 	optdepends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sincell_1.32.0.tar.gz
-	sha256sums = 721b09f9f46c3c2dd36b5ae59571c101ea43dc0ed14956e126331572103f0426
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sincell_1.34.0.tar.gz
+	sha256sums = 460c0fdd8f97dd266bac81b80af04f8605c14290cd939db90a7f242d3bd3a02a
 
 pkgname = r-sincell

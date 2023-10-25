@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sincell
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='R package for the statistical assessment of cell state hierarchies from single-cell RNA-seq data'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('721b09f9f46c3c2dd36b5ae59571c101ea43dc0ed14956e126331572103f0426')
+sha256sums=('460c0fdd8f97dd266bac81b80af04f8605c14290cd939db90a7f242d3bd3a02a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
