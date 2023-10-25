@@ -4,9 +4,9 @@
 pkgname=serioussam-st8vipe
 pkginstdir=serioussamse
 st8vipe=SamTSE-ST8VIPE.tar.xz
-pkgver=1.7.1
+pkgver=1.7.2
 _srcname="SE1-TSE-ST8VIPE-$pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="Serious Sam Classic ST8VIPE native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TSE-ST8VIPE"
@@ -26,7 +26,7 @@ makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-TSE-ST8VIPE/archive/refs/tags/v$pkgver.tar.gz"
 	"https://archive.org/download/sam-tse-st8vipe/SamTSE-ST8VIPE.tar.xz")
 noextract=("SamTSE-ST8VIPE.tar.xz")
-sha256sums=('95c5063205cf5041639fd434467b0c006e00c67e67ec6b725d87ee7114069c68'
+sha256sums=('8f637b462394b6b4549403546d057f50dbfff8446998f6fefed9ccca7411a39a'
 	"f427c69dda757dab6aab0301c15f51c04da1513bf5faffc73618c9dd0bbcba24")
 
 if [[ $CARCH = "i686" ]]; then
