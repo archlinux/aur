@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=2620.r0.gc745735
+pkgver=2664.r0.g2f40398
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ fi
 provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL2')
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'libbacktrace-git')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers')
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'libbacktrace-git' 'zstd' 'soundtouch' 'fmt' 'libinih')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers')
 source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -152,7 +152,15 @@ build() {
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
       -DUSE_DISCORD_PRESENCE=ON \
       -DUSE_SYSTEM_BOOST=OFF \
+      -DUSE_SYSTEM_FFMPEG_HEADERS=ON \
+      -DUSE_SYSTEM_FMT=ON \
       -DUSE_SYSTEM_SDL2=ON \
+      -DUSE_SYSTEM_JSON=ON \
+      -DUSE_SYSTEM_LIBUSB=ON \
+      -DUSE_SYSTEM_SOUNDTOUCH=ON \
+      -DUSE_SYSTEM_GLSLANG=ON \
+      -DUSE_SYSTEM_INIH=ON \
+      -DUSE_SYSTEM_ZSTD=ON \
       -DCMAKE_C_COMPILER=gcc \
       -DCMAKE_CXX_COMPILER=g++ \
       -DCMAKE_C_FLAGS="$CFLAGS" \
