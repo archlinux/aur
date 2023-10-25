@@ -36,13 +36,12 @@ b2sums=('e1af1ef124053e182d2a24e5c6fae306d03bf6de6709891aeb2e04c0fa2a8f08aafc9bb
             'SKIP'
             'c8996a1889c74684f4b6b4c02a764890633f3a6d3dd6dcd3796491cb50241c84c157ea195a99a778049e7422a44180eb766ea9f9d02302b46746f536b71bc473'
             'SKIP')
-
 validpgpkeys=(
     4BA1F928CBA7CA219A14741B24FB14CFDD5D0319  # dakataca
 )
 
+# Alistar ficheros en el directorio de instalación.
 package() {
-    #install -D $pkgdir/
     cp -r usr/ $pkgdir/
 }
 
