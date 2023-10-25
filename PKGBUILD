@@ -2,7 +2,7 @@
 pkgname=reqnotes-bin
 _pkgname=ReqNotes
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal Notes Application, Cross platform desktop application, developed with .NET 6 and Avalonia UI"
 arch=('x86_64')
 url="https://github.com/ReqBaa/ReqNotes"
@@ -13,9 +13,10 @@ depends=('fontconfig' 'glibc' 'zlib' 'gcc-libs')
 options=('!strip')
 source=("${pkgname%-bin}-${pkgver}.deb::${_downurl}/main/pool/main/r/${pkgname%-bin}/${pkgname%-bin}_${pkgver}-0ubuntu1_amd64.deb")
 sha256sums=('08c7edd178beb43194eca99bf06ce9a788949b70e917458e9832272ac0db209c')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s|/usr/share/reqbaa/${pkgname%-bin}/${_pkgname}|${pkgname%-bin}|g;s|Categories=Note|Categories=Utility|g" \
+    sed -e "s|/usr/share/reqbaa/${pkgname%-bin}/${_pkgname}|${pkgname%-bin}|g" \
+        -e "s|Categories=Note|Categories=Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
