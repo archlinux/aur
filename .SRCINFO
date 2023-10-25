@@ -1,7 +1,7 @@
 pkgbase = r-tripr
 	pkgdesc = T-cell Receptor/Immunoglobulin Profiler (TRIP)
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/tripr
 	arch = any
 	license = MIT
@@ -39,7 +39,7 @@ pkgbase = r-tripr
 	optdepends = r-testthat
 	optdepends = r-tidyverse
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tripr_1.6.0.tar.gz
-	sha256sums = 8daf9b11a1fba10f2f49df81fdd9697ff8a71c7a9641b32f638713739dfb4658
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tripr_1.8.0.tar.gz
+	sha256sums = f626700f1d8eef5d1d53fb33b59bc91d166fa45515ac5b384d479bce61edc721
 
 pkgname = r-tripr
