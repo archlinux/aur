@@ -8,7 +8,7 @@ url='https://github.com/MTK-bypass'
 arch=(x86_64)
 license=(MIT)
 makedepends=('rsync')
-depends=('python-pyusb' 'python-json5' 'python-pyserial' 'linux-kamakiri')
+depends=('python-pyusb' 'python-json5' 'python-pyserial' 'linux-kamakiri' 'translate-shell')
 pkgname_provides=exploits_collection
 pkgver_provides=1.6
 provides=("$pkgname_provides=$pkgver_provides")
@@ -38,17 +38,57 @@ package() {
     # Cree el directorio de destino y copia en él, el contenido de bypass_utility/.
     rsync -a "$dirbypass/" --mkpath "$pkgdir/opt/$pkgname/"
 
-    # Script de ejecución Bypass_utility.
-    install -Dvm755 <(echo -e '#!/usr/bin/env bash
+    # Script de ejecución bypass_utility.
+    install -Dvm755 <(cat <<'EOF'
+#!/usr/bin/env bash
+
+translate_str() {
+   local -r lang=${LANG%_[A-Z][A-Z].UTF-8}
+   local str=""
+   if [[ $lang == en ]]; then
+       str=$1
+   elif [[ $lang == es ]]; then
+       str=$2
+   else
+       str=`trans -b :$lang "$str"`
+   fi
+   echo "$str"
+}
+
 # Comprobar si el usuario es root.
 if [ "$EUID" -ne 0 ]; then
-\techo "Error: No puede realizar esta operación, a menos que sea superusuario."
-\texit 1
+    translate_str "Error: You can't perform this operation unless you're superuser."\
+    "Error: No puede realizar esta operación, a menos que sea superusuario."
+else
+    # kernel actual.
+    declare -r current_kernel=`uname -r` kernel=linux-kamakiri
+
+    # Expresión regular o patrón.
+    declare -r pattern="^[0-9]+\.[0-9]+\.[0-9]+-arch[0-9]+-[0-9]+-kamakiri$"
+
+    # Comprueba si la versión del kernel coincide con el patrón.
+    if [[ $current_kernel =~ $pattern ]]; then
+        translate_str "Kernel $kernel validated correctly..."\
+        "Kernel $kernel validado correctamente..."
+        cd /opt/bypass_utility/
+        ./main.py
+        cd -
+    else
+        declare -r installed_kernel_kamakiri=`pacman -Qs linux-kamakiri*`
+
+        # Comprueba si está instalado el kernel linux-kamakiri.
+        if [[ $installed_kernel_kamakiri ]]; then
+            translate_str "'"$kernel"' kernel installed, manually initialize it in your bootloader and re-run bypass_utility."\
+            "Kernel '"$kernel"' instalado, inicialízelo manualmente en su bootloader y vuelva a ejecutar bypass_utility."
+        else
+            translate_str "Currently incompatible kernel '"$current_kernel"', you need to install the \"linux-kamakiri\" variant provided by \"linux-kamakiri-bin\" or \"linux-kamakiri\":" "Kernel actual '"$current_kernel"' incompatible, necesita instalar la variante \"linux-kamakiri\" provista por \"linux-kamakiri-bin\" ó \"linux-kamakiri\":"
+            echo ">> paru -S linux-kamakiri-bin
+>> yay -S linux-kamakiri-bin"
+        fi
+    fi
 fi
-cd /opt/bypass_utility/
-./main.py
-cd -') \
-    $pkgdir/usr/bin/$pkgname
+EOF
+) $pkgdir/usr/bin/$_pkgname
 }
 
 ## References:
