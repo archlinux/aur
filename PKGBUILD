@@ -41,7 +41,7 @@ package_qadwaitadecorations-qt5-git() {
   pkgdesc='Qt5 decoration plugin implementing Adwaita-like client-side decorations'
   depends=(qt5-wayland qt5-svg)
   provides=(qadwaitadecorations-qt5)
-  conflicts=(qadwaitadecorations-qt5)
+  conflicts=(qadwaitadecorations-qt5 qgnomeplatform-qt5)
 
   DESTDIR="$pkgdir" cmake --install build-qt5
 }
@@ -50,7 +50,7 @@ package_qadwaitadecorations-qt6-git() {
   pkgdesc='Qt6 decoration plugin implementing Adwaita-like client-side decorations'
   depends=(qt6-wayland qt6-svg)
   provides=(qadwaitadecorations-qt6)
-  conflicts=(qadwaitadecorations-qt6)
+  conflicts=(qadwaitadecorations-qt6 qgnomeplatform-qt6)
 
   DESTDIR="$pkgdir" cmake --install build-qt6
 }

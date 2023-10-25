@@ -16,6 +16,7 @@ pkgname = qadwaitadecorations-qt5-git
 	depends = qt5-svg
 	provides = qadwaitadecorations-qt5
 	conflicts = qadwaitadecorations-qt5
+	conflicts = qgnomeplatform-qt5
 
 pkgname = qadwaitadecorations-qt6-git
 	pkgdesc = Qt6 decoration plugin implementing Adwaita-like client-side decorations
@@ -23,3 +24,4 @@ pkgname = qadwaitadecorations-qt6-git
 	depends = qt6-svg
 	provides = qadwaitadecorations-qt6
 	conflicts = qadwaitadecorations-qt6
+	conflicts = qgnomeplatform-qt6
