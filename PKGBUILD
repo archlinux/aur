@@ -1,5 +1,4 @@
-# Maintainer: Gr3q
-# Contributor: Gr3q
+# Maintainer: Gr3q <floyd0122@gmail.com>
 
 pkgname=hoppscotch-app-bin
 pkgver=23.8.2
