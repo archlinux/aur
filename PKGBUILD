@@ -14,7 +14,7 @@ conflicts=("${_gitname}" "apm")
 
 depends=("libsecret" "libx11" "libxkbfile")
 
-makedepends=("git" "node-gyp" "nodejs-lts-gallium" "npm" "python")
+makedepends=("git" "node-gyp" "nodejs" "npm" "python")
 
 source=("git+https://github.com/${_pkgname}/${_gitname}.git" "atom.desktop.in.patch" "test.js.patch")
 
