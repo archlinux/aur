@@ -1,6 +1,6 @@
 pkgbase = r-venndetail
 	pkgdesc = A package for visualization and extract details
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VennDetail
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-venndetail
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VennDetail_1.16.0.tar.gz
-	sha256sums = eb204cc88e124dbcc076817f1be46b8e68f746a9a831fa8ba1856f63ef07ca88
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VennDetail_1.18.0.tar.gz
+	sha256sums = b9eb5781c29e9d24a539dcf671b4f79aba8952538762612a911252711b888327
 
 pkgname = r-venndetail
