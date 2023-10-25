@@ -15,7 +15,7 @@ _VERBOSE_OUTPUT=0
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=119.0.6020.3
+pkgver=120.0.6073.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -26,7 +26,6 @@ depends=(
    'glibc' # 'ld-linux-x86-64.so' 'libc.so' 'libm.so'
    'flac' 'libFLAC.so'
    'alsa-lib' 'libasound.so'
-   'at-spi2-core' 'libatk-1.0.so' 'libatk-bridge-2.0.so' 'libatspi.so'
 #  'brotli' 'libbrotlidec.so'
    'libcups' # 'libcups.so'
    'dbus' 'libdbus-1.so'
@@ -90,25 +89,26 @@ makedepends=(
   'git'
   'gn'
   'hwdata'
+  'libspeechd'
   'java-runtime-headless'
 #  'abseil-cpp'
 #  'woff2'
 )
 optdepends=(
- 'pepper-flash: PPAPI Flash Player'
- 'chromium-widevine: Widevine plugin (eg: Netflix)'
- 'xdg-desktop-portal-gnome: GNOME portal support'
- 'xdg-desktop-portal-kde: KDE portal support'
- #
- 'org.freedesktop.secrets: password storage backend on GNOME/Xfce/KDE'
- #
- 'ttf-font: For some typography'
- 'pipewire: WebRTC desktop sharing under Wayland'
- )
+  'pepper-flash: PPAPI Flash Player'
+  'chromium-widevine: Widevine plugin (eg: Netflix)'
+  'xdg-desktop-portal-gnome: GNOME portal support'
+  'xdg-desktop-portal-kde: KDE portal support'
+  #
+  'org.freedesktop.secrets: password storage backend on GNOME/Xfce/KDE'
+  #
+  'ttf-font: For some typography'
+  'pipewire: WebRTC desktop sharing under Wayland'
+)
 source=(
 #  "https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
 #  "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
-  "chromium::git+https://github.com/chromium/chromium.git#tag=${pkgver}"
+  "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=${pkgver}"
   'git+https://github.com/foutrelis/chromium-launcher.git'
   'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
   'chromium-dev.svg'
@@ -136,7 +136,7 @@ sha256sums=(
   '779861e51506a29d4a46c9380c0793bb3297624e47536cb8e71240818e7dd093'
   '960556d2b337e091a2954f14ba00b2f67ec7d54c2ff54302f98dcb9830ccd97f'
   # Misc Patches
-#
+
   # Patch from crbug (chromium bugtracker) or Arch chromium package
   'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
   '01aea13760430d1c6dee97faeabc52ac0d94f888fb2215ae33468ebc0e11558d'
@@ -178,6 +178,7 @@ if [ "${_USE_GTK}" == "1" ]; then
     'cairo' 'libcairo.so'
     'libgio-2.0.so'
     'libxslt' 'libxslt.so'
+    'at-spi2-core' 'libatk-1.0.so' 'libatk-bridge-2.0.so' 'libatspi.so'
   )
   makedepends+=(
     'gtk3'
@@ -244,6 +245,7 @@ _keeplibs+=(
   'third_party/angle/src/third_party/ceval'
   'third_party/angle/src/third_party/libXNVCtrl'
   'third_party/angle/src/third_party/volk'
+  'third_party/anonymous_tokens'
   'third_party/apple_apsl'
   'third_party/axe-core'
   'third_party/blink'
@@ -387,7 +389,6 @@ _keeplibs+=(
   'third_party/omnibox_proto'
   'third_party/one_euro_filter'
   'third_party/openscreen'
-  'third_party/openscreen/src/third_party/mozilla'
   'third_party/ots'
   'third_party/pdfium'
   'third_party/pdfium/third_party/agg23'
@@ -561,14 +562,14 @@ _use_system+=(
 #  'absl_time'               # NaCL needs the bundled one
 #  'absl_types'              # NaCL needs the bundled one
 #  'absl_utility'            # NaCL needs the bundled one
-#  'brotli'                  # needs update
+#  'brotli'                  # Needs update
 #  'crc32c'
 #  'dav1d'                   # Fails due undeclared identifier
 #  'double-conversion'       # NaCL needs the bundled one
 #  'ffmpeg'                  # I'm not sure why, but all videos stop playback if use system ffmpeg.
   'flac'
   'fontconfig'
-#  'freetype'                # neeeds private headers
+#  'freetype'                # Neeeds private headers
   'harfbuzz-ng'
 #  'icu'                     # https://crbug.com/678661.
 #  'jsoncpp'                 # Fails due undefined symbols
@@ -720,6 +721,9 @@ EOF
 
   # Misc patches.
 
+  # little fix for detect atspi-2 2.50.0
+  git revert --no-edit fc09363
+
   # Disable swiftshader
   sed 's| target_cpu == "x64"))| target_cpu == "x64") \&\& enable_swiftshader_vulkan)|g' \
     -i BUILD.gn
@@ -738,6 +742,17 @@ EOF
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/*.cc \
       -i third_party/maldoca/src/maldoca/ole/oss_utils.h
+
+  # "unbundle" speech-dispatcher
+  _speechd_headers=(
+    'libspeechd_version.h'
+    'spd_audio_plugin.h'
+    'speechd_defines.h'
+    'speechd_types.h'
+  )
+  for _i in "${_speechd_headers[@]}"; do
+    cp "/usr/include/speech-dispatcher/${_i}" "third_party/speech-dispatcher/${_i}"
+  done
 
   # # Patch from Gentoo
   patch -p1 -i "${srcdir}/chromium-cross-compile.patch"
@@ -779,7 +794,7 @@ EOF
   # Use system opus.
   patch -p1 -i "${srcdir}/system-opus.diff"
 
-  # use system openh264
+  # Use system openh264
   if [ -d /usr/include/openh264 ]; then
     sed 's|wels/|openh264/wels/|g' \
       -i build/linux/unbundle/openh264.gn
@@ -802,9 +817,10 @@ EOF
   tools/rust/update_rust.py
 
   msg2 "Download prebuild node,js from Google"
-    # Setup nodejs dependency.
+  # Setup nodejs dependency.
   (
   cd third_party/node
+  sed -E -e '/mac/d' -e '/^update_win\n/d' -i update_node_binaries
   ./update_node_binaries
   ./update_npm_deps
   )
@@ -887,8 +903,8 @@ package() {
   ln -sf /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs.
-  for i in lib*.so; do
-    install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+  for _i in lib*.so; do
+    install -Dm755 "${_i}" "${pkgdir}/usr/lib/chromium-dev/${_i}"
   done
 
   local _blobs
@@ -900,8 +916,8 @@ package() {
     'MEIPreload/preloaded_data.pb'
   )
 
-  for i in "${_blobs[@]}"; do
-    install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+  for _i in "${_blobs[@]}"; do
+    install -Dm644 "${_i}" "${pkgdir}/usr/lib/chromium-dev/${_i}"
   done
 
   # Install NaCL.
@@ -911,8 +927,8 @@ package() {
     'nacl_helper_bootstrap'
     'nacl_irt_x86_64.nexe'
   )
-  for i in "${_nacl_libs[@]}"; do
-    install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+  for _i in "${_nacl_libs[@]}"; do
+    install -Dm755 "${_i}" "${pkgdir}/usr/lib/chromium-dev/${_i}"
   done
 
   # Install Resources.
@@ -925,8 +941,8 @@ package() {
     'headless_lib_strings.pak'
     'resources.pak'
   )
-  for i in "${_resources[@]}"; do
-    install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+  for _i in "${_resources[@]}"; do
+    install -Dm644 "${_i}" "${pkgdir}/usr/lib/chromium-dev/${_i}"
   done
 
   # Set info.
