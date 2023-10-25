@@ -17,19 +17,16 @@ _srcdir="${_giturl##*/}-${pkgver}"
 source=(
     "${_srcdir}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz"
     conserver.service
-    configure-fix.patch
 )
 
 sha256sums=(
     1c8b86f123d2d8e3ce568b782087b43dfac9cf6ffd5a9bdfcfdc6718d749a923
     SKIP
-    SKIP
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p0 <"${srcdir}/configure-fix.patch"
-  ./package/setup-configure
+  LANG=C autoreconf --install
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-libwrap --with-ipv6 --with-pam --with-openssl --with-freeipmi --with-port=782
 }
 
