@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ClusterJudge
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Judging Quality of Clustering Methods using Mutual Information'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-yeastexpdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('74467460d06f22529f8cb69d0ba8b20bd1efbad4b36e6a0564543fe63fe23376')
+sha256sums=('89f2290651034b91ba8f9d911f55090ae3c4dc28d27533753e1963d60212b9bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
