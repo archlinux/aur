@@ -8,8 +8,11 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/lem-project/lem"
 license=('MIT')
 options=("!strip")
-optdepends=('sdl2: Graphical client')
-makedepends=('sbcl' 'sdl2' 'ncurses')
+optdepends=('sdl2: Graphical client'
+            'sdl2_ttf: Graphical client'
+            'sdl2_image: Graphical client'
+            'libdecor: Wayland support')
+makedepends=('sbcl' 'sdl2' 'sdl2_ttf' 'sdl2_image' 'ncurses')
 conflicts=('lem-editor')
 provides=('lem-editor')
 source=("lem::git+https://github.com/lem-project/lem"
