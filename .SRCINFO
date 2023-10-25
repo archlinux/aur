@@ -1,6 +1,6 @@
 pkgbase = r-qckitfastq
 	pkgdesc = FASTQ Quality Control
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qckitfastq
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-qckitfastq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qckitfastq_1.16.0.tar.gz
-	sha256sums = b5b9e0b60e4f7700b6f19b32f247be26dec465f76a83536f192e0f7de1a873f9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qckitfastq_1.18.0.tar.gz
+	sha256sums = 211a464555f33c445beadd2d0a5b0b4db853f70fc89669f50890e96ad1634939
 
 pkgname = r-qckitfastq
