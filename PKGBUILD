@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SpeCond
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Condition specific detection from expression data'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d696070b2ccd57d39e9ad7fb30cbf3ed92fb1eefaacd3630fcda97bf869e9098')
+sha256sums=('18912073851a4e4f6d76982fbe06a3dac4a9332e50608f918d124fdb299678bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
