@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PLPE
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='Local Pooled Error Test for Differential Expression with Paired High-throughput Data'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-lpe
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3fcd73e673c81c3d24f7a9ff4433d28a1516166c6e0c3c2943f55a1defff97c7')
+sha256sums=('614f11be46858c8269ede6ccc5f5db513e78fb13d43ccbfef4008e43b932f079')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
