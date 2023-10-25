@@ -1,7 +1,7 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus
-pkgver=23.07.07.01
-_commit=886aad211443091930bf215a66d2361373e85632
+pkgver=23.10.20.01
+_commit=bd2eab02f7bee22e236ce2e5090839a748c66d79
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste'
 arch=('x86_64')
@@ -57,12 +57,10 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     ln -s /usr/lib/olympus/olympus "$pkgdir/usr/bin/olympus"
     install -Dm755 olympus.sh "$pkgdir/usr/lib/olympus/olympus"
+    install -Dm755 find-love.sh "$pkgdir/usr/lib/olympus/find-love"
 
     cd src; zip -r ../olympus.love *; cd ..
     install -Dm644 olympus.love "$pkgdir/usr/lib/olympus/olympus.love"
-
-    # Add symlink for launching Lönn
-    ln -s /usr/bin/love "$pkgdir/usr/lib/olympus/love"
 
     install -Dm755 luarocks/lib/lua/5.1/* -t "$pkgdir/usr/lib/olympus"
     install -Dm755 sharp/bin/Release/net452/* -t "$pkgdir/usr/lib/olympus/sharp"
