@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='kubedb-bin'
-pkgver=1.6.7
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Painlessly work with Kubernetes databases'
 url='https://github.com/clevyr/kubedb'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('kubedb')
 conflicts=('kubedb')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.6.7/kubedb_1.6.7_linux_arm64.tar.gz")
-sha256sums_aarch64=('f99bd40e945ead1fb425360ad5a2c662a8ba4bc84915665eb18a747e1fa9e212')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.7.0/kubedb_1.7.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('c31a2f22a706239d3901030b123c17471c9c528673dc140af31d6c68d861513f')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.6.7/kubedb_1.6.7_linux_armv7.tar.gz")
-sha256sums_armv7h=('0e2824c16c8522d147da1faa25919cbf3f43b81e95f9dc226bfe06b104d78877')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.7.0/kubedb_1.7.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('676375c13cab8bb68afec4cb99e5366d454305ad1af66501c1de15b23f686947')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.6.7/kubedb_1.6.7_linux_amd64.tar.gz")
-sha256sums_x86_64=('73950371c6f71de8146193d42790027cbda5d9cec5c57e130de6da8119de7351')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.7.0/kubedb_1.7.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('6bf88310d1bbe6613d08cd6d2fa1e9f70f92eca39f5e0ac4d02f0e47cccc42ae')
 
 package() {
   # bin
@@ -31,6 +31,7 @@ package() {
   install -Dm644 "./manpages/kubedb-exec.1.gz" "${pkgdir}/usr/share/man/man1/kubedb-exec.1.gz"
   install -Dm644 "./manpages/kubedb-port-forward.1.gz" "${pkgdir}/usr/share/man/man1/kubedb-port-forward.1.gz"
   install -Dm644 "./manpages/kubedb-restore.1.gz" "${pkgdir}/usr/share/man/man1/kubedb-restore.1.gz"
+  install -Dm644 "./manpages/kubedb-status.1.gz" "${pkgdir}/usr/share/man/man1/kubedb-status.1.gz"
   # completion
   install -Dm644 "./completions/kubedb.bash" "${pkgdir}/usr/share/bash-completion/completions/kubedb"
   install -Dm644 "./completions/kubedb.zsh" "${pkgdir}/usr/share/zsh/site-functions/_kubedb"
