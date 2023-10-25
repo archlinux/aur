@@ -7,7 +7,7 @@ _pkgname=input-leap-inputcapture
 pkgbase=$_pkgname
 pkgname=($_pkgname-headless $_pkgname)
 pkgver=2.4.0+677+gc5bb9dca
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
 url="https://github.com/input-leap/input-leap"
@@ -57,7 +57,8 @@ _package_common() {
 
 package_input-leap-inputcapture-headless() {
   pkgdesc+=" (client and server CLI binaries)"
-  depends=(${_core_deps[@]} libportal-inputcapture libportal-inputcapture-gtk3 libportal-inputcapture-gtk4 libportal-inputcapture-qt5 libportal-inputcapture-docs)
+  depends=(${_core_deps[@]}
+  libportal-inputcapture libportal-inputcapture-gtk3 libportal-inputcapture-gtk4 libportal-inputcapture-qt5 libportal-inputcapture-docs)
   provides=("input-leap-headless=$pkgver" "barrier-headless=$pkgver")
   conflicts=(input-leap-headless barrier-headless)
 
@@ -78,7 +79,8 @@ package_input-leap-inputcapture-headless() {
 
 package_input-leap-inputcapture() {
   pkgdesc+=" (GUI)"
-  depends=(input-leap-inputcapture-headless ${_gui_deps[@]})
+  depends=(input-leap-inputcapture-headless ${_gui_deps[@]}
+  libportal-inputcapture libportal-inputcapture-gtk3 libportal-inputcapture-gtk4 libportal-inputcapture-qt5 libportal-inputcapture-docs)
   provides=("input-leap=$pkgver" "barrier=$pkgver")
   conflicts=(input-leap barrier)
 

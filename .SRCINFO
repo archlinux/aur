@@ -1,7 +1,7 @@
 pkgbase = input-leap-inputcapture
 	pkgdesc = Open-source KVM software
 	pkgver = 2.4.0+677+gc5bb9dca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/input-leap/input-leap
 	arch = x86_64
 	license = custom:GPL2WithOpenSSLException
@@ -51,6 +51,11 @@ pkgname = input-leap-inputcapture-headless
 	depends = libxtst
 	depends = libxi
 	depends = openssl
+	depends = libportal-inputcapture
+	depends = libportal-inputcapture-gtk3
+	depends = libportal-inputcapture-gtk4
+	depends = libportal-inputcapture-qt5
+	depends = libportal-inputcapture-docs
 	provides = input-leap-headless=2.4.0+677+gc5bb9dca
 	provides = barrier-headless=2.4.0+677+gc5bb9dca
 	conflicts = input-leap-headless
@@ -66,6 +71,11 @@ pkgname = input-leap-inputcapture
 	depends = avahi
 	depends = qt5-base
 	depends = qt5-tools
+	depends = libportal-inputcapture
+	depends = libportal-inputcapture-gtk3
+	depends = libportal-inputcapture-gtk4
+	depends = libportal-inputcapture-qt5
+	depends = libportal-inputcapture-docs
 	provides = input-leap=2.4.0+677+gc5bb9dca
 	provides = barrier=2.4.0+677+gc5bb9dca
 	conflicts = input-leap
