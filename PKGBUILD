@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CMA
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Synthesis of microarray-based classification'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-st
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('132ab3b7f827b6b44252dea47d8ebb6452020627192f763201e8cb97f34a097b')
+sha256sums=('7b7dbde826c8dadc2d2be945080056306acb89afe766efe09c7fd0da7ac15511')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
