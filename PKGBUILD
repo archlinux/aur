@@ -3,8 +3,8 @@
 pkgname=thinkpad-l860-gl-fcc-unlock-bin
 
 # I do not know how lenovo intends on versioning this, hopefully it's sane
-pkgver=1.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 
 pkgdesc='FCC Unlocking tool for the L860-GL/L860R+ in X1 Carbon Gen 10/11 and X1 Yoga Gen 7/8'
 arch=('x86_64')
@@ -17,38 +17,41 @@ url='https://download.lenovo.com/pccbbs/mobiles'
 makedepends=()
 depends=('dmidecode')
 conflicts=()
-source=("${url}/n3xwp01w.zip"
-        "${url}/n3xwp01w.txt")
+source=("${url}/n3xwp02w.zip"
+        "${url}/n3xwp02w.txt")
 
-sha256sums=('37f474848472d40a7998aaeabe81716766caa97cfef699f663f1f2a086b7de49'
-            '21cd4f78e06aef814a783e7434d592af357551ca42d6b33d220129e2e892d152')
+sha256sums=('b07a34bf480e3552aa53413b11acbebeb2b807e4c5de7592498bebf5cc95290a'
+            'd50f827be0ffbf30f186c953d5026d509c70a42cf406ca25dc92651553c2e32a')
 
 install=$pkgname.install
 
 prepare() {
-    tar xf lenovo_wwan_fccunlock_package_release_1.0.tar.gz
+    tar xf lenovo_wwan_fccunlock_package_2.0.tar.gz
 }
 
 # modified from fcc_unlock_setup.sh
 package() {
-    _srcdir=lenovo_wwan_fccunlock_package_release_ver1
+    _srcdir=lenovo_wwan_fccunlock_package
 
     ### Copy fcc unlock script for MM
     install -Dm755 "$_srcdir/fcc-unlock.d/8086:7560" -t "$pkgdir/usr/lib/ModemManager/fcc-unlock.d/"
+    install -Dm755 "$_srcdir/fcc-unlock.d/14c3:4d75" -t "$pkgdir/usr/lib/ModemManager/fcc-unlock.d/"
 
     ### Copy FCC Unlock binary
     install -Dm755 "$_srcdir/DPR_Fcc_unlock_service" -t "$pkgdir/opt/fcc_lenovo/"
-    install -Dm755 "$_srcdir/configservice_lenovo" -t "$pkgdir/opt/fcc_lenovo/"
+    install -Dm755 "$_srcdir/configservice_lenovo"   -t "$pkgdir/opt/fcc_lenovo/"
 
     ### Copy libraries
-    install -Dm755 "$_srcdir/libmodemauth.so" -t "$pkgdir/usr/lib/"
+    install -Dm755 "$_srcdir/libmodemauth.so"        -t "$pkgdir/usr/lib/"
+    install -Dm755 "$_srcdir/libconfigserviceR+.so"  -t "$pkgdir/usr/lib/"
+    install -Dm755 "$_srcdir/libconfigservice350.so" -t "$pkgdir/usr/lib/"
 
     ## copy and enable service
     install -Dm644 "$_srcdir/lenovo-cfgservice.service" -t "$pkgdir/usr/lib/systemd/system/"
 
     # package license
-    install -Dm644 "$_srcdir/Lenovo EULA.pdf" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
-    install -Dm644 "$_srcdir/ThirdPartyNotice.txt" "$pkgdir/usr/share/licenses/$pkgname/ThirdPartyLicense.txt"
+    install -Dm644 "$_srcdir/Lenovo Licence Agreement.pdf" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
+    install -Dm644 "$_srcdir/ThirdPartyNotice.txt"         "$pkgdir/usr/share/licenses/$pkgname/ThirdPartyLicense.txt"
 
     ### This package will not enable lenovo-cfgservice by default as that's not the arch way.
     ### Please enable this service if you want it to work :)
