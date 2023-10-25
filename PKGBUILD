@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proteinProfiles
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Protein Profiling'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d42d265f4b03898f1f748987a0ba495e0f4fbb2a7fe0ebd367bacfb56d198d4')
+sha256sums=('81a9c27835eddd7c31155031dc19488487f3ca869ad07e069407ff4b6ada5694')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
