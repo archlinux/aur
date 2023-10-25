@@ -1,6 +1,6 @@
 pkgbase = folia-server-builder
 	pkgdesc = Easily create your own Folia server
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Rajala1404/folia-server-builder
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = folia-server-builder
 	depends = bash
 	depends = sh
 	depends = jdk17-openjdk
-	source = https://github.com/Rajala1404/folia-server-builder/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/Rajala1404/folia-server-builder/archive/refs/tags/v${pkgver}.tar.gz
 	md5sums = SKIP
 
 pkgname = folia-server-builder
