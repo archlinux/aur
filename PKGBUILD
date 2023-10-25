@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gpuMagic
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='An openCL compiler with the capacity to compile R functions and run the code on GPU'
 arch=('x86_64')
@@ -31,7 +31,7 @@ makdepends=(
   make
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bfa8269e690958fc5b7183b1de5d93cbdddc6cc7fb3e436b2942b8682a28378e')
+sha256sums=('14e7ba94590e9d08e99da73a3960c5c4b2dee3ebb4420f79a9e475562349ad74')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
