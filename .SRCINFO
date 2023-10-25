@@ -1,0 +1,23 @@
+pkgbase = serioussam-addons-meta
+	pkgdesc = Meta package for Serious Sam addons
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tx00100xt
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = serioussam-xplus
+	depends = serioussam-alpha
+	depends = serioussam-brightisland-mappack
+	depends = serioussam-dancesworld
+	depends = serioussam-hno
+	depends = serioussam-nextencounter-mappack
+	depends = serioussam-oddworld
+	depends = serioussam-pefe2q
+	depends = serioussam-pese2q
+	depends = serioussam-rakanishu-mappacks
+	depends = serioussam-st8vi
+	depends = serioussam-st8vipe
+	depends = serioussam-tower
+
+pkgname = serioussam-addons-meta
