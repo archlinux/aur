@@ -1,6 +1,6 @@
 pkgbase = r-qvalue
 	pkgdesc = Q-value estimation for false discovery rate control
-	pkgver = 2.32.0
+	pkgver = 2.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qvalue
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-qvalue
 	depends = r-ggplot2
 	depends = r-reshape2
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qvalue_2.32.0.tar.gz
-	sha256sums = 7182449e0aaada6fef6602dab6a01b432543e983ba276672cc990f77411aa294
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qvalue_2.34.0.tar.gz
+	sha256sums = d16fd855856b479bd8a0812bbfc2e2d918929c28fe83411a41ca059d2d9c6583
 
 pkgname = r-qvalue
