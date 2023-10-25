@@ -6,7 +6,7 @@ pkgname=(cinny-web)
 pkgbase=cinny
 pkgver=3.0.0
 _commit=b80f801d235f1253acfae8db87b00a687b246a06 # tag/v3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet another matrix client — '
 arch=(any)
 url=https://cinny.in
@@ -18,6 +18,7 @@ sha512sums=('SKIP')
 
 build() {
 	cd "$pkgbase-web"
+	export NODE_OPTIONS="--max_old_space_size=4096"
 	npm install --legacy-peer-deps
 	npm run build
 }
