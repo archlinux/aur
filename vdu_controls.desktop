@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Exec=vdu_controls
-Name=VDU Controls
-GenericName=DDC control panel for monitors
-Comment=Virtual Control Panel for externally connected VDU's
-Icon=vdu_controls
-Categories=Settings
