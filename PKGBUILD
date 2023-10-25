@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ISoLDE
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Integrative Statistics of alleLe Dependent Expression'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a5077a3c9c1e809ad1a9c92511395f96190451672a8d09a6198c5dab573eff3')
+sha256sums=('edbace394f931c0257a5c4e500be696a13183c30c1fa2383130808dd7ccb1dad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
