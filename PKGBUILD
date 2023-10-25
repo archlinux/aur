@@ -2,7 +2,7 @@
 pkgname=fclash-bin
 _appname="cn.kingtous.${pkgname%-bin}"
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A better open-source clash client written by Flutter.更好的Clash客户端,支持自动设置代理,兼容RULE-SET、TUN特性"
 arch=('aarch64' 'x86_64')
 url="https://kingtous.cn/2022/05/09/%E8%87%AA%E5%88%B6fclash%E7%AE%80%E4%BB%8B/"
@@ -13,11 +13,12 @@ conflicts=("${pkgname%-bin}")
 depends=('gdk-pixbuf2' 'glib2' 'libepoxy' 'libdbusmenu-glib' 'pango' 'gtk3' 'cairo' 'libayatana-appindicator' 'glibc' 'gcc-libs' 'at-spi2-core' 'harfbuzz')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-aarch64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-x86_64.deb")
-sha256sums_aarch64=('53f89bb2ccfbec2ed44d19ca91fa829382abc7c43bc47baf4d8d02c33e1beeac')
-sha256sums_x86_64=('7a7401ee34ad01125b5335d7385fbb2e3b68a1706ea916c3a8b2ffa9d4e65ac0')
-prepare() {
+sha256sums_aarch64=('1daaf336e4e89fa5919509118707097b3e1453c2372c29315b62014f2df04f3b')
+sha256sums_x86_64=('c000f7708196b7adb7c389fb3fccb939aad397d6080e7c3d78c6bfea2dec7e87')
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/apps/${_appname}/files/${pkgname%-bin}|${pkgname%-bin}|g;s|/opt/apps/${_appname}/entries/icons/${_appname}.png|${pkgname%-bin}|g" \
+    sed -e "s|/opt/apps/${_appname}/files/${pkgname%-bin}|${pkgname%-bin}|g" \
+        -e "s|/opt/apps/${_appname}/entries/icons/${_appname}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/opt/apps/${_appname}/entries/applications/${_appname}.desktop"
 }
 package() {
