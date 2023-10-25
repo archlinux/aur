@@ -5,7 +5,7 @@
 pkgname=tachidesk-preview-bin
 _pkgname=tachidesk-server
 _PkgName=Tachidesk-Server
-pkgver=0.7.0_r1383
+pkgver=0.7.0_r1393
 pkgrel=1
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
@@ -15,7 +15,7 @@ url="https://github.com/Suwayomi/Tachidesk-Server-preview"
 license=("MPL2")
 depends=("java-runtime=11" "libc++")
 optdepends=("electron: running in Electron")
-provides=("$pkgname" "$_pkgname")
+provides=("$pkgname" "$_pkgname" "tachidesk")
 conflicts=("tachidesk")
 _jar="$_PkgName-v$_pkgver-r$_revnum.jar"
 _assets="$_PkgName-v$_pkgver-r$_revnum-linux-assets"
