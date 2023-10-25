@@ -27,11 +27,10 @@ depend() {
 }
 
 EOF
-    
+
 }
 
 
 package() {
-  install -Dm755 ${srcdir}/ivpn "$pkgdir"/etc/init.d/ivpn
-  
+  install -Dm755 ${srcdir}/ivpn "$pkgdir"/etc/init.d/ivpn  
 }
