@@ -1,7 +1,7 @@
 pkgbase = proton-experimental
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, experimental branch
 	pkgver = 8.0.20231019
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton-experimental.install
@@ -184,11 +184,11 @@ pkgbase = proton-experimental
 	sha256sums = 08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
 	sha256sums = 83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464
-	sha256sums = bcc951d1e547eec2a776a618d3b8481f0f36da30351b87f129774b9491cbabdb
-	sha256sums = 02e11e4e19254512297f1ead7db0b9856c0f2018fd8f8c162db4938b70c342ce
-	sha256sums = 41e733cfcd01e8bcd242604c1ed688245691ca656508d512b16c45dca8c58873
-	sha256sums = 987acb26feaa8c281988ce58f347b8d4bc478736fa3d6c9045698a16294b6525
-	sha256sums = deff00345d3d019d27cf43e07f4e92f49042ce9675840ecb9f507a283d8b0938
-	sha256sums = 4929238a0b847817dcd2b547365b0241a993bcc9d0865bf30bfa33db352f9eaf
+	sha256sums = 86257fd06f24e23101c2739846f614a17494a65cfb041bfc8d787ebda2d2d0c2
+	sha256sums = 25b17dfd4e9ccd716c47fdbdfdd144b8567c64c35460ced004394142c7064121
+	sha256sums = 8e66cca6676c342fdf2cda808b5fc237b18e57e52155947f131cb6fcc12524ed
+	sha256sums = 991e3bb7f3cec9309b22c7b5f084dd89c00f8d8bdd485568639cbc12d2c9c126
+	sha256sums = ab44b42209e6a2683b720bc158fc749d584f725cff79346eafcad9f434322ad9
+	sha256sums = eb993b973793a74671302203274dd2eb4aa106deeb73a1c3df9ab275355592df
 
 pkgname = proton-experimental
