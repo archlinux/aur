@@ -1,6 +1,6 @@
 pkgbase = r-ibbig
 	pkgdesc = Iterative Binary Biclustering of Genesets
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iBBiG
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-ibbig
 	depends = r-biclust
 	depends = r-xtable
 	optdepends = r-methods
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iBBiG_1.44.0.tar.gz
-	sha256sums = 4150cc23e9a59ee8b421b88e01bd2ed00ded3afc9d4894eb33ca1aec6c374ffa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iBBiG_1.46.0.tar.gz
+	sha256sums = 5aaa1252ef2969ac5c9fb1f14be2049baf1938c165a432dee20b0f8abc1ba896
 
 pkgname = r-ibbig

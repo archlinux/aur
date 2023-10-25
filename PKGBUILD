@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iBBiG
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Iterative Binary Biclustering of Genesets'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-methods
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4150cc23e9a59ee8b421b88e01bd2ed00ded3afc9d4894eb33ca1aec6c374ffa')
+sha256sums=('5aaa1252ef2969ac5c9fb1f14be2049baf1938c165a432dee20b0f8abc1ba896')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
