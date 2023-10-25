@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iPath
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='iPath pipeline for detecting perturbed pathways at individual level'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('648c01bfb09f342dd0aff4eed365778ccce10c1facb495d2b46fcad36234a2eb')
+sha256sums=('53c8c92e77d5a26987fbc2d0eafb479d02f0fd563b6e72a4fb00ffc749a05326')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
