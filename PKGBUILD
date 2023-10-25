@@ -6,7 +6,7 @@
 # Contributor: kfgz <ffiasd at gmail dot com>
 
 pkgname=y-cruncher
-pkgver=0.8.2.9523
+pkgver=0.8.2.9524
 pkgrel=1
 pkgdesc="The first scalable multi-threaded Pi-benchmark for multi-core systems"
 arch=(x86_64)
@@ -15,7 +15,7 @@ license=(custom)
 options=('!strip')
 depends=(gcc-libs glibc numactl tbb)
 source=("$url/$pkgname%20v$pkgver-dynamic.tar.xz")
-b2sums=('928c553fb67ccb71e008ec6fe53993a2e9c502b66891b7e7e099c8c5076d2ee898ea98b705a115c648e0897237fb8e3b9a7135b184a77db1e95a1f052ea12571')
+b2sums=('19083023e8e84dcbde1d33bb677eee71ec7bb8ea6eb0d316a2ce5192ae9ffe2608296572f3b234214e2fb08c67417b7f0a026d9dded3ab9c2b3052a2b1bb31c4')
 
 prepare() {
 	cd "$pkgname v$pkgver-dynamic"
