@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNASeqPower
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Sample size for RNAseq studies"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8ed9fb060724ab44d75be435f10eceeb')
-sha256sums=('2ca22cb5395d881f9f03ceae28bda03590eda3f598eb1e3c84a64dfb9b6b2196')
+md5sums=('38da142eb3ee64f2e7684ead27e4520f')
+sha256sums=('24a9f4de36a5885161ea16b3316d7e7eacbbfdd395f4b3037fcf89f1eeeb1126')
 
 build() {
   mkdir -p build

@@ -1,13 +1,13 @@
 pkgbase = r-rnaseqpower
 	pkgdesc = Sample size for RNAseq studies
-	pkgver = 1.40.0
-	pkgrel = 2
+	pkgver = 1.42.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/RNASeqPower
 	arch = any
 	license = LGPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNASeqPower_1.40.0.tar.gz
-	md5sums = 8ed9fb060724ab44d75be435f10eceeb
-	sha256sums = 2ca22cb5395d881f9f03ceae28bda03590eda3f598eb1e3c84a64dfb9b6b2196
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNASeqPower_1.42.0.tar.gz
+	md5sums = 38da142eb3ee64f2e7684ead27e4520f
+	sha256sums = 24a9f4de36a5885161ea16b3316d7e7eacbbfdd395f4b3037fcf89f1eeeb1126
 
 pkgname = r-rnaseqpower
