@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HDTD
-_pkgver=1.34.1
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.1
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Statistical Inference about the Mean Matrix and the Covariance Matrices in High-Dimensional Transposable Data (HDTD)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a974e6cbbe31138a728bb3219b65b1215b039e49b91ab93a86f71d569ed8ca3f')
+sha256sums=('22fb9967fac923ef3dcd5d11b57398a80c4969cd4ff8d3ec8ec806b5951b4478')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
