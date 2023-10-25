@@ -2,9 +2,9 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpsymphony
-_pkgver=1.28.1
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Symphony integer linear programming solver in R"
 arch=(x86_64)
@@ -24,9 +24,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-symphony.patch")
-md5sums=('a04276f8329ae09e82e3e16bc3a7b78e'
+md5sums=('106ec54272f27574ea1eea2d5721d7e4'
          '5fe82566bce5f45a9d9d8682e51ebfaa')
-sha256sums=('4d46f81f6bc676167c5dbd498c8415d97434274b885f11de5d29745ce6696421'
+sha256sums=('ef2c03a596981da910697dab15672bce91a267a459e89c526bddef9f38e586a4'
             'e4ffaac1444e128a63ba43d0adbd3dd8b6acac0ca5e8b2d8fe43ab3ffcb92e5a')
 
 prepare() {
