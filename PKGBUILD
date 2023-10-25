@@ -2,9 +2,9 @@
 # Contributor: Sergey Moryakov <sergey@nqnet.org>
 
 pkgname=homed-web
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="HOMEd Web is web interface for all HOMEd services, part of HOMEd project"
+pkgdesc="HOMEd Web is web interface for all HOMEd services"
 arch=("armv7h" "i686" "x86_64")
 url="https://wiki.homed.dev/"
 license=("GPL3")
@@ -12,7 +12,7 @@ backup=("etc/homed/homed-web.conf")
 depends=("qt5-mqtt" "qt5-websockets")
 makedepends=("qt5-tools")
 source=(
-  "https://github.com/u236/homed-service-web/archive/refs/tags/${pkgver}.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/u236/homed-service-web/archive/refs/tags/${pkgver}.tar.gz"
   "git+https://github.com/u236/homed-service-common.git"
 )
 sha512sums=(
@@ -35,7 +35,8 @@ build() {
 
 package() {
   cd "${srcdir}/homed-service-web-${pkgver}"
-  make INSTALL_ROOT="${pkgdir}/" install
-  install -Dm644 "deploy/systemd/homed-web.service" "${pkgdir}/etc/systemd/system/homed-web.service"
-  install -Dm644 "deploy/data/etc/homed/homed-web.conf" "${pkgdir}/etc/homed/homed-web.conf"
+  mkdir -p ${pkgdir}/var/lib/${pkgname}
+  install -Dm644 "deploy/systemd/${pkgname}.service" "${pkgdir}/etc/systemd/system/${pkgname}.service"
+  install -Dm644 "deploy/data/etc/homed/${pkgname}.conf" "${pkgdir}/etc/homed/${pkgname}.conf"
+  sed -i "s%=/opt/%=/var/lib/%g" "${pkgdir}/etc/homed/${pkgname}.conf"
 }
