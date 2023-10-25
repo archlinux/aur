@@ -7,6 +7,7 @@ pkgbase = cro-chain-desktop-bin
 	license = Apache
 	depends = gtk3
 	depends = nss
+	depends = alsa-lib
 	provides = cro-chain-desktop
 	conflicts = cro-chain-desktop
 	options = !strip
