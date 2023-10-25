@@ -1,6 +1,6 @@
 pkgbase = commas
 	pkgdesc = A hackable, pluggable terminal, and also a command runner.
-	pkgver = 0.28.1_alpha.0
+	pkgver = 0.29.2
 	pkgrel = 1
 	url = https://github.com/CyanSalt/commas
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = commas
 	depends = at-spi2-core
 	depends = glib2
 	conflicts = commas
-	source = commas-0.28.1_alpha.0.zip::https://github.com/CyanSalt/commas/archive/refs/tags/v0.28.1-alpha.0.tar.gz
-	sha256sums = 50557b9f40cfa1e137c8641e4b946cc2a8ed21be0f7e50c958e0c3cf5e5bad0b
+	source = commas-0.29.2.zip::https://github.com/CyanSalt/commas/archive/refs/tags/v0.29.2.zip
+	sha256sums = c2614d9d15c30d687f624d7373e0d4cf99dc7bf61c925ad761c061e867ffeae7
 
 pkgname = commas
