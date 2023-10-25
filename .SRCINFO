@@ -1,6 +1,6 @@
 pkgbase = r-grenits
 	pkgdesc = Gene Regulatory Network Inference Using Time Series
-	pkgver = 1.52.1
+	pkgver = 1.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GRENITS
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-grenits
 	depends = r-rcpparmadillo
 	depends = r-reshape2
 	optdepends = r-network
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GRENITS_1.52.1.tar.gz
-	sha256sums = b5ffb54cdb3c99f9a3e4627a36b6d868382788c536aab5b5ef066560d7420ee0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GRENITS_1.54.0.tar.gz
+	sha256sums = 418dcd3591ddb7632526ff44a11cd594e0db172ccd0d61e0703376eead136bb8
 
 pkgname = r-grenits
