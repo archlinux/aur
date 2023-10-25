@@ -1,6 +1,6 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=makeimg
-pkgver=0.10.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Declarative way to build Linux system images'
 arch=(any)
@@ -26,7 +26,7 @@ provides=('makeimg')
 conflicts=('makeimg-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~bitfehler/makeimg/archive/v${pkgver}.tar.gz")
-sha512sums=('31931d1a4718e180d70590117471af8b757b1504794626a303ce341d253ecf8e38ae906b040156f6c13b84756109b2bf447a46aa0da25d21667b30e847102976')
+sha512sums=('47babe89625d4c2271d1c31e4cafc61652ff58e05eb3c22d819b45e219a1e71b67d67eb742f287a724575bb14b7935ade67e18547c8da5b2bd95ecdc01bcb805')
 
 build() {
   cd "${pkgname}-v${pkgver}"
@@ -40,6 +40,7 @@ package() {
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/makeimg"
   install -Dm644 doc/makeimg.1.gz -t "${pkgdir}/usr/share/man/man1/"
   install -Dm644 doc/IMGBUILD.5.gz -t "${pkgdir}/usr/share/man/man5/"
+  install -d examples "${pkgdir}/usr/share/doc/makeimg"
 }
 
 # vim: ts=2 sw=2 et
