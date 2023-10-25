@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metahdep
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Hierarchical Dependence in Meta-Analysis'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   r-affyplm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ff85290099bbe209c29c4cb7147da359bd3dd978f8c377cea108180327737219')
+sha256sums=('fba9b055ecbf7ccc142946adf47634d505ef1baae3a640f89f0db094da0fa941')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
