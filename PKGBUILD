@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gdsfmt
-_pkgver=1.36.1
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="R Interface to CoreArray Genomic Data Structure (GDS) Files"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,9 +32,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('7e54216f1539f908f188665986552ab5'
+md5sums=('8851c188356c12f7e99488ceb4daeca8'
          'bffd05eba8706aacc469c69a3b0eeada')
-sha256sums=('a753d15c43d4d8618f6751b6ec87f1d8439a9eb3a1e2d4c1f2fbdb6fbf581187'
+sha256sums=('f5d27de87206a250ee88408acfb7cd4058d90677c3d2c86696710e51388f0f0f'
             'a30cf43b5d8f07f19e88cc26fc2ccf6d88ab491e21ab3eb5b656d5258272af85')
 
 prepare() {
