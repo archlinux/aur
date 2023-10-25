@@ -1,14 +1,9 @@
 pkgbase = ttf-borders-divide-fonts
-	pkgdesc = Borders Divide, But Hearts Shall Conquer TrueType Fonts
-	pkgver = 1.000
+	pkgdesc = metapackage - migrate to ttf-borders-divide
+	pkgver = 0.0.1
 	pkgrel = 1
-	epoch = 1
-	url = http://www.dafont.com/borders-divide-but-hearts-shall-conquer.font
+	epoch = 2
 	arch = any
-	license = custom:Free for pesonal use
-	source = borders-divide-fonts-1.000.zip::http://dl.dafont.com/dl/?f=borders_divide_but_hearts_shall_conquer
-	source = License-20180523.txt
-	sha256sums = 749d261353c133e271d10190d3992ffd1e066589987b0f5ea68efca0e6404a59
-	sha256sums = 02f8f4d9926cf439593605a765415aee2de65ca1d819501e76ab1cc025994ce9
 
 pkgname = ttf-borders-divide-fonts
+	depends = ttf-borders-divide
