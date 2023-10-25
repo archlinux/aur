@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MeasurementError.cor
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='Measurement Error model estimate for correlation coefficient'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f5b68a25103686bcfdc7cf14ab3541269069d46eea858a882fc10c8337245ff')
+sha256sums=('2e7631fb9bbf651651d983066173f235aa668638ab882f1e983df16b0468ec42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
