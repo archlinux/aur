@@ -12,13 +12,6 @@ makedepends=('cmake' 'extra-cmake-modules' 'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hawkeye116477/kwaterfoxhelper/archive/${pkgver}.tar.gz")
 options=('!emptydirs' '!strip')
 
-prepare() {
-    if [[ -d build ]]; then
-        rm -Rf build
-    fi
-    mkdir -p build
-}
-
 build() {
     cmake -B build -S $pkgname-$pkgver \
         -DCMAKE_BUILD_TYPE=None \
