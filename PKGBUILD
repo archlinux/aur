@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=treeio
-_pkgver=1.24.3
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.3
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Base Classes and Functions for Phylogenetic Tree Input and Output'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2e6ee68cfe361ca12b80f7867e7788d1e8394311e32fdc6ec465ea8d5b05156a')
+sha256sums=('393ea7c7df0e5d40df43b63f78f4b889701ed0b359b7d6f9232793c37d6e7fcf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
