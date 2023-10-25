@@ -1,13 +1,13 @@
 pkgbase = r-diffgeneanalysis
 	pkgdesc = Performs differential gene expression Analysis
-	pkgver = 1.82.0
+	pkgver = 1.84.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/diffGeneAnalysis
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-minpack.lm
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffGeneAnalysis_1.82.0.tar.gz
-	sha256sums = 240d60f280dc9719b74c967a4ea1d132da4bcf5384a29920184dc20753875f71
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffGeneAnalysis_1.84.0.tar.gz
+	sha256sums = 6021d33ab50d0682484571238dc5c1672462deef44e6259102bcf68b54d14d9d
 
 pkgname = r-diffgeneanalysis
