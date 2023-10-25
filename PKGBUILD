@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mfa
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bayesian hierarchical mixture of factor analyzers for modelling genomic bifurcations"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a47205412204ffd49737d41b7b78574d')
-sha256sums=('043a7b884c4d454c12b0c9066f114faf1824eb531630a92053cb42ac684488e5')
+md5sums=('37fa2e82d83636458e9a20cc72069dcd')
+sha256sums=('4e98fbf604696392ae4fe31a4755415eb906a721c2e2ceab68c0e22f0cd51841')
 
 build() {
   mkdir -p build
