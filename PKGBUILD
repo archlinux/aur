@@ -3,21 +3,20 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libusb-compat
-_pkgname="${pkgname#lib32-}"
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="C library that provides generic access to USB devices (32-bit)"
 arch=('x86_64')
 depends=('libusb-compat'
-         'lib32-glibc')
-makedepends=('lib32-libusb')
+         'lib32-glibc'
+         'lib32-libusb')
 url="https://libusb.info/"
 license=('LGPL')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/libusb/${_pkgname}-0.1/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('01fb8f88cdce751c4afae0c0e10a202f32d30a03e87084bf61ccf5e55d2208bc99a34eff1205670be3006a1501c0cf0c90cdba4240705f5cf40f7752b23d8756')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/libusb/${pkgname#lib32-}-0.1/releases/download/v${pkgver}/${pkgname#lib32-}-${pkgver}.tar.gz")
+sha512sums=('0f935b89d06a8ffd6c87b03d649b1136a0f84110874d1b8d071a0af922b9b2f911143670fc9297309053f29ba02e1714fa4f4bdd8b71c26dbaf32146699fcf34')
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname#lib32-}-${pkgver}"
   autoreconf -vfi
 }
 
@@ -25,7 +24,7 @@ build() {
   export CC="gcc -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname#lib32-}-${pkgver}"
   ./configure \
       --prefix=/usr \
       --libdir=/usr/lib32 \
@@ -34,6 +33,6 @@ build() {
 }
 
 package() {
-  make -C "${_pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
+  make -C "${pkgname#lib32-}-${pkgver}" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include}
 }

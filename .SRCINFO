@@ -1,14 +1,14 @@
 pkgbase = lib32-libusb-compat
 	pkgdesc = C library that provides generic access to USB devices (32-bit)
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libusb.info/
 	arch = x86_64
 	license = LGPL
-	makedepends = lib32-libusb
 	depends = libusb-compat
 	depends = lib32-glibc
+	depends = lib32-libusb
 	source = lib32-libusb-compat-0.1.8.tar.gz::https://github.com/libusb/libusb-compat-0.1/releases/download/v0.1.8/libusb-compat-0.1.8.tar.gz
-	sha512sums = 01fb8f88cdce751c4afae0c0e10a202f32d30a03e87084bf61ccf5e55d2208bc99a34eff1205670be3006a1501c0cf0c90cdba4240705f5cf40f7752b23d8756
+	sha512sums = 0f935b89d06a8ffd6c87b03d649b1136a0f84110874d1b8d071a0af922b9b2f911143670fc9297309053f29ba02e1714fa4f4bdd8b71c26dbaf32146699fcf34
 
 pkgname = lib32-libusb-compat
