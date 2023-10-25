@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiRewire
-_pkgver=3.32.0
+_pkgver=3.34.0
 pkgname=r-${_pkgname,,}
-pkgver=3.32.0
+pkgver=3.34.0
 pkgrel=1
 pkgdesc='High-performing routines for the randomization of a bipartite graph (or a binary event matrix), undirected and directed signed graph preserving degree distribution (or marginal totals)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('48253601891b31b1d4b67ed21601e5e03fc7bd4cfdc15ffc48800c14b8ca819c')
+sha256sums=('4d7526c04f8ad982f2b122fa91fa069f3cc5800eb33e6bc35ff7a78546abb7c0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
