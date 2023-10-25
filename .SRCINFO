@@ -1,6 +1,6 @@
 pkgbase = r-pathifier
 	pkgdesc = Quantify deregulation of pathways in cancer
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pathifier
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-pathifier
 	depends = r
 	depends = r-princurve
 	depends = r-r.oo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pathifier_1.38.0.tar.gz
-	sha256sums = f7bcf7ba2e9b3af61bd3a32d5ae5e89ff85b007a69e22d1568043050d19c4d15
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pathifier_1.40.0.tar.gz
+	sha256sums = 76dd66e9e9690eb73002de1ee4042497c2ef5e94fae202e280d308505a60b078
 
 pkgname = r-pathifier
