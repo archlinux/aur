@@ -1,6 +1,6 @@
 pkgbase = go-dnscollector
 	pkgdesc = Ingestor, aggregator and analyzer for your DNS traffic
-	pkgver = 0.35.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/dmachard/go-dnscollector
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = go-dnscollector
 	makedepends = go
 	depends = glibc
 	backup = etc/go-dnscollector/config.yml
-	source = go-dnscollector-0.35.0.tar.gz::https://github.com/dmachard/go-dnscollector/archive/refs/tags/v0.35.0.tar.gz
+	source = go-dnscollector-0.37.0.tar.gz::https://github.com/dmachard/go-dnscollector/archive/refs/tags/v0.37.0.tar.gz
 	source = go-dnscollector.service
-	sha256sums = 337ad7453f3a53e135090ba4cb7f542fec6babb00965932dcac6965c7349e329
+	sha256sums = 89248fdcefd2c2f2d3331dd80657207a1aadced9553efe1b6dcd02d9409288d0
 	sha256sums = f3bfd87c877a69f61a5df1eaa82377a57cff84cb63f6e410408f25b7461f6e07
 
 pkgname = go-dnscollector
