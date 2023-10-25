@@ -1,13 +1,13 @@
 pkgbase = r-typeinfo
 	pkgdesc = Optional Type Specification Prototype
-	pkgver = 1.66.0
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TypeInfo
 	arch = any
 	license = BSD
 	depends = r
 	optdepends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TypeInfo_1.66.0.tar.gz
-	sha256sums = fbc0e65704c19e88273ecb91b4f1db1ddc15c87442fb1be67441a843f2320ecc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TypeInfo_1.68.0.tar.gz
+	sha256sums = fa05cc4a02beb5c76294af5b9d311513aef63b06d6300cbda940c579224c49e4
 
 pkgname = r-typeinfo
