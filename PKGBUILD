@@ -2,9 +2,9 @@
 # Contributor: Sergey Moryakov <sergey@nqnet.org>
 
 pkgname=homed-automation
-pkgver=1.1.0
-pkgrel=4
-pkgdesc="HOMEd Automation is simple service for home automations, part of HOMEd project"
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="HOMEd Automation is simple service for home automations"
 arch=("armv7h" "i686" "x86_64")
 url="https://wiki.homed.dev/"
 license=("GPL3")
@@ -12,7 +12,7 @@ backup=("etc/homed/homed-automation.conf")
 depends=("curl" "qt5-mqtt")
 makedepends=("qt5-tools")
 source=(
-  "https://github.com/u236/homed-service-automation/archive/refs/tags/${pkgver}.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/u236/homed-service-automation/archive/refs/tags/${pkgver}.tar.gz"
   "git+https://github.com/u236/homed-service-common.git"
 )
 sha512sums=(
@@ -36,7 +36,8 @@ build() {
 package() {
   cd "${srcdir}/homed-service-automation-${pkgver}"
   make INSTALL_ROOT="${pkgdir}/" install
-  mkdir -p ${pkgdir}/opt/homed-automation
-  install -Dm644 "deploy/systemd/homed-automation.service" "${pkgdir}/etc/systemd/system/homed-automation.service"
-  install -Dm644 "deploy/data/etc/homed/homed-automation.conf" "${pkgdir}/etc/homed/homed-automation.conf"
+  mkdir -p ${pkgdir}/var/lib/${pkgname}
+  install -Dm644 "deploy/systemd/${pkgname}.service" "${pkgdir}/etc/systemd/system/${pkgname}.service"
+  install -Dm644 "deploy/data/etc/homed/${pkgname}.conf" "${pkgdir}/etc/homed/${pkgname}.conf"
+  sed -i "s%=/opt/%=/var/lib/%g" "${pkgdir}/etc/homed/${pkgname}.conf"
 }
