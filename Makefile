@@ -4,10 +4,8 @@ package: .SRCINFO
 install:
 	makepkg -i
 
-srcinfo: .SRCINFO
-
-.SRCINFO: PKGBUILD
-	makepkg --printsrcinfo > .SRCINFO
+check:
+	namcap *.pkg.*
 
 update: .SRCINFO
 	git add PKGBUILD .SRCINFO
@@ -17,3 +15,7 @@ update: .SRCINFO
 
 clean:
 	rm -rf pkg src *.pkg.tar.*
+
+.SRCINFO: PKGBUILD
+	updpkgsums
+	makepkg --printsrcinfo > .SRCINFO
