@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=newreleases
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='NewReleases.io CLI'
 url='https://newreleases.io'
@@ -10,7 +10,7 @@ license=(BSD)
 makedepends=(go)
 depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/newreleasesio/cli-go/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe94c8064a6784a482a101793c2022822c90bea1a2f7608c8faa8227b726c39b')
+sha256sums=('0c16242bc5ad3b3ed8efa177c17abfafdb660dd95425ed859998a65da4f3637e')
 
 prepare() {
   cd "cli-go-$pkgver"

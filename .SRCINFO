@@ -1,6 +1,6 @@
 pkgbase = newreleases
 	pkgdesc = NewReleases.io CLI
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://newreleases.io
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = newreleases
 	license = BSD
 	makedepends = go
 	depends = glibc
-	source = newreleases-0.1.14.tar.gz::https://github.com/newreleasesio/cli-go/archive/refs/tags/v0.1.14.tar.gz
-	sha256sums = fe94c8064a6784a482a101793c2022822c90bea1a2f7608c8faa8227b726c39b
+	source = newreleases-0.1.15.tar.gz::https://github.com/newreleasesio/cli-go/archive/refs/tags/v0.1.15.tar.gz
+	sha256sums = 0c16242bc5ad3b3ed8efa177c17abfafdb660dd95425ed859998a65da4f3637e
 
 pkgname = newreleases
