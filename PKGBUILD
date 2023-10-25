@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ssrch
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='a simple search engine'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2627ec3b23f6e509b4548703082aab469f4edcdc2dfc54159e034eb919857284')
+sha256sums=('69d652102ffb68ee3641a3589b6844c7337f086cdeec4578d133590aa7ba4368')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
