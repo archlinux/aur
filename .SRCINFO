@@ -1,6 +1,6 @@
 pkgbase = r-granulator
 	pkgdesc = Rapid benchmarking of methods for *in silico* deconvolution of bulk RNA-seq data
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/granulator
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-granulator
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/granulator_1.8.0.tar.gz
-	sha256sums = da1db580d106f8d0274404e34508e59605c46c0eb7cee274f64acbfb60fb563b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/granulator_1.10.0.tar.gz
+	sha256sums = 01226099d1d2a13013135583a03f3b12ec2f5b5eeacd541e70c3ab8e75c9686b
 
 pkgname = r-granulator
