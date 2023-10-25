@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneClassifiers
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Application of gene classifiers'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('25acad2f61679b59cab70c39dd5d6a6e1b7befb2c57bdfc9e6b282c62e6169a3')
+sha256sums=('f5a45f5b24da69f0879075ae5aae2f469c2e220d13bb47fa2eb95f8516fb7f1f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
