@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ depends=('bash' 'electron27' 'scrcpy' 'android-sdk-platform-tools')
 makedepends=('gendesk' 'npm>=9.8.1' 'nodejs>=18.18.0')
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh")
-sha256sums=('cc98688bc43a8b436e4773c31d231e3cc9fd1faea921a1494e9287a69f41665d'
+sha256sums=('7c9a813752801c7a498ee216d84a95e2276aef94f88ec43413eab78c2aac5b2a'
             '95b1863c49ed526e664d14fcb4cfe30be5f4f581dc60903a7421a91354ff3a61')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
