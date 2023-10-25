@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=beadarraySNP
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Normalization and reporting of Illumina SNP bead arrays'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-snapcgh
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('35f1e1e2c5371c9961240fb67e4382d5c1ddb8847b2ca9df963ef22149d5d5df')
+sha256sums=('fafee5b78dc49205f8d252cb65aa91324897e1851d83389fe061ffeb0efc31ef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
