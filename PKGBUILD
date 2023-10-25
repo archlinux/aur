@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
 license=('GPL')
-depends=('libsub>=1.6.44' 'libcxml>=0.17.5' 'libdcp=1.8.85' 'ffmpeg>=4.0.2' 'glib2' 'glu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea')
+depends=('libsub>=1.6.44' 'libcxml>=0.17.5' 'libdcp>=1.8.85' 'ffmpeg>=4.0.2' 'glib2' 'glu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea')
 makedepends=('python' 'which' 'boost>=1.78.0' 'git')
 source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}"
         )

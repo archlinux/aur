@@ -12,7 +12,7 @@ pkgbase = dcpomatic
 	makedepends = git
 	depends = libsub>=1.6.44
 	depends = libcxml>=0.17.5
-	depends = libdcp=1.8.85
+	depends = libdcp>=1.8.85
 	depends = ffmpeg>=4.0.2
 	depends = glib2
 	depends = glu
