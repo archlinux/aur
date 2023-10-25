@@ -1,13 +1,13 @@
 pkgbase = cinny
 	pkgdesc = Yet another matrix client —
-	pkgver = 2.2.6
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://cinny.in
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = git
-	source = cinny-web::git+https://github.com/ajbura/cinny.git#commit=f6694031a1581af171ffe1658138dfcf344d6c6c
+	source = cinny-web::git+https://github.com/ajbura/cinny.git#commit=b80f801d235f1253acfae8db87b00a687b246a06
 	sha512sums = SKIP
 
 pkgname = cinny-web
