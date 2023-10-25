@@ -1,6 +1,6 @@
 pkgbase = elvish-git
 	pkgdesc = A friendly and expressive Unix shell
-	pkgver = v0.20.0.dev.r112.g1c0cffb
+	pkgver = 0.20.0.dev.r112.g1c0cffb
 	pkgrel = 1
 	url = https://elv.sh
 	install = elvish.install

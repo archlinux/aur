@@ -5,7 +5,7 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=v0.20.0.dev.r112.g1c0cffb
+pkgver=0.20.0.dev.r112.g1c0cffb
 pkgrel=1
 pkgdesc="A friendly and expressive Unix shell"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('elvish')
 pkgver() {
   cd "$_pkgname"
 
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
