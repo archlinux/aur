@@ -5,6 +5,7 @@ pkgbase = plasma5-applets-bigsur-inlinebattery
 	url = https://github.com/Fausto-Korpsvart/mcOS-BS-Inline-Battery
 	arch = any
 	license = CC-BY
+	makedepends = git
 	depends = plasma-workspace
 	source = plasma5-applets-bigsur-inlinebattery::git+https://github.com/Fausto-Korpsvart/mcOS-BS-Inline-Battery.git
 	sha512sums = SKIP

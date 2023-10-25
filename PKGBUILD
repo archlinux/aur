@@ -7,7 +7,8 @@ pkgdesc="Improved Mac-like Inline Battery Plasmoid for KDE."
 arch=(any)
 url="https://github.com/Fausto-Korpsvart/mcOS-BS-Inline-Battery"
 license=(CC-BY)
-depends=(plasma-workspace)
+depends=('plasma-workspace')
+makedepends=('git')
 source=("$pkgname::git+$url.git")
 sha512sums=('SKIP')
 
