@@ -1,30 +1,28 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=goofcord-bin
 _appname=GoofCord
-pkgver=0.7.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=('x86_64')
 url="https://github.com/Milkshiift/GoofCord"
-license=("OSL3")
+license=("custom::OSL3")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('bash' 'electron25' 'hicolor-icon-theme')
-makedepends=('asar' 'gendesk')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/v${pkgver}/LICENSE"
+depends=('bash' 'electron27')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    #"LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('922f4b92b3c26b84c203b8553fad1d0cff44a5b72426b0dda8ce6845e5fb2386'
-            '4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51'
-            'aabefa2507892f1affaafc65996c3f3334cdb49b3d276b613c2e79a42a55d113')
-prepare() {
-    asar extract "${srcdir}/${_appname}-${pkgver}-linux-x64/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    gendesk -f -n --categories "Network" --name "${_appname}" --exec "${pkgname%-bin}"
+sha256sums=('8fd5a5aa214d33bbc64d5bcd36f1d527a3f42af9ce970ab301f450222c9ac53e'
+            '32acad47beeebe310edbb2e99b5f05b2534aae59425cf61b779c6014016b2fec')
+build() {
+    bsdtar -xf "${srcdir}/data.tar.zst"
+    sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${_appname}-${pkgver}-linux-x64/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    install -Dm644 "${srcdir}/app.asar.unpacked/assets/gf_logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
