@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NuPoP
-_pkgver=2.8.1
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='An R package for nucleosome positioning prediction'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('517a4ccc889f087347f8774180617a9858f951bdbb9bdad8aaaabe00b34568db')
+sha256sums=('8eff03bb085be9274342ae1c72547de63f8bfbd1e072ee66db6a31eddba8b6ce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
