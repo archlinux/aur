@@ -1,6 +1,6 @@
 pkgbase = r-rawrr
 	pkgdesc = Direct Access to Orbitrap Data and Beyond
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rawrr
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-rawrr
 	optdepends = r-rmarkdown
 	optdepends = r-tartare
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rawrr_1.8.1.tar.gz
-	sha256sums = d47345a2b20cd6c2878076aa24b3dd77350ee3211c7e08f521a226779af418f7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rawrr_1.10.0.tar.gz
+	sha256sums = 8e60fdd11eb90034b5ed0d77f365ebad3df56c239cffd4fb9833ca7f38db1d15
 
 pkgname = r-rawrr
