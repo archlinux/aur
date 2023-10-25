@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcxnData
-_pkgver=2.22.0
+_pkgver=2.23.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=2.23.0
 pkgrel=1
 pkgdesc='Correlation coefficients and p values between pre-defined pathway/gene sets'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-pcxn
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f9232f4e2fd7b548fd2dd36334573a44a4bb9757f88314fbd12c9cfc101cb89a')
+sha256sums=('07a9b42ea4476cc75a56564db2978b47bd0b389fde7224739ff2972ef359383a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
