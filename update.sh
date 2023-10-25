@@ -11,6 +11,7 @@ RELEASES=$(curl -sL https://pypi.org/pypi/$PKGNAME/json | jq .releases)
 LAST=$(jq -r <<<$RELEASES '
 [ keys[]
     | select(contains("beta") == false)
+    | select(contains("rc") == false)
     | [split(".")[] | tonumber] ]
   | sort[-1]
   | join(".")
