@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch at gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=.1.4.33.r43.g5d06e6741
+pkgver=1.4.33.r43.g5d06e6741
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=('zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
 	'libsecret' 'webkit2gtk-4.1' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake' 'avahi'
     'libxkbfile' 'freerdp' 'gobject-introspection'
-    'spice' 'spice-gtk' 'spice-protocol' 'gnome-keyring' 'kwallet' 'gtk-vnc'
+    'spice' 'spice-gtk' 'spice-protocol' 'gnome-keyring' 'kwallet5' 'gtk-vnc'
     'libgnome-keyring' 'docbook-xsl' 'libpulse' 'libappindicator-gtk3')
 optdepends=('avahi' 'libxkbfile' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol' 'pyhoca-cli')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
