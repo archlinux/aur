@@ -8,7 +8,6 @@ arch=('any')
 url="https://github.com/fboender/ansible-cmdb"
 license=('GPL3')
 depends=('python' 'python-mako' 'python-pyyaml')
-# depends=('python' 'python-mako' 'python-pyyaml' 'python-ushlex' 'python-jsonxs')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('8de9a02e3f0740967537850f6263756dca1bf506cd95c1f2ef7f4ee6d9ff23b8')
