@@ -1,6 +1,6 @@
 pkgbase = notmuch-mailmover-git
 	pkgdesc = notmuch-mailmover is a tool to move notmuch tagged mails into Maildir folders
-	pkgver = v0.1.0.r12.gad4f9e6
+	pkgver = v0.1.0.r63.gf693028
 	pkgrel = 1
 	url = https://github.com/michaeladler/notmuch-mailmover
 	arch = i686
