@@ -14,6 +14,7 @@ pkgrel=3
 arch=('x86_64')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+depends=('gtk3')
 _appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
 source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}")
 sha512sums=('4eadc79c6676505105e775991cea0873c81d10b8b3055727a20e25650a4da79b3ef2b8fd42e351d08cc99b3e063c44af2075b5ff72e2039e638dc6967f3aa758')
