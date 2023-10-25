@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9774.43cedf59a
+pkgver=r9829.45ef11654
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ else
     _enable_lto=off
 fi
 license=('GPL2')
-depends=('ffmpeg' 'speexdsp' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio' 'libbacktrace-git')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang' 'vulkan-headers')
+depends=('ffmpeg' 'speexdsp' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio' 'libbacktrace-git' 'zstd' 'soundtouch' 'fmt' 'libinih')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -131,6 +131,7 @@ prepare() {
 
     cd "$srcdir/$_pkgbase/externals/libadrenotools/"
     git config --file=.gitmodules submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
+    git -c protocol.file.allow=always submodule update --init
 
 
 }
@@ -159,7 +160,15 @@ build() {
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
       -DUSE_DISCORD_PRESENCE=ON \
       -DUSE_SYSTEM_BOOST=OFF \
+      -DUSE_SYSTEM_FFMPEG_HEADERS=ON \
+      -DUSE_SYSTEM_FMT=ON \
       -DUSE_SYSTEM_SDL2=ON \
+      -DUSE_SYSTEM_JSON=ON \
+      -DUSE_SYSTEM_LIBUSB=ON \
+      -DUSE_SYSTEM_SOUNDTOUCH=ON \
+      -DUSE_SYSTEM_GLSLANG=ON \
+      -DUSE_SYSTEM_INIH=ON \
+      -DUSE_SYSTEM_ZSTD=ON \
       -DCMAKE_C_COMPILER=gcc \
       -DCMAKE_CXX_COMPILER=g++ \
       -DCMAKE_C_FLAGS="$CFLAGS" \
@@ -174,7 +183,7 @@ check() {
 }
 
 package_citra-git() {
-	depends+=('sdl2')
+	depends+=('sdl2' 'libinih')
 
         if [ $_debug = "false" ]; then
             install -Dm755 "$srcdir/build/bin/Release/citra" "$pkgdir/usr/bin/citra"
