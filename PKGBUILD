@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Heatplus
-_pkgver=3.8.0
+_pkgver=3.10.0
 pkgname=r-${_pkgname,,}
-pkgver=3.8.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Heatmaps with row and/or column covariates and colored clusters'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dd716d77425cb3d3724e1172b52e3346ac78cd8e63a3d3a02d57029378112e0c')
+sha256sums=('b89798ba15dd6c6c32f3ffe92336b99c070a45960b8011b9882e6fc11ae947ef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
