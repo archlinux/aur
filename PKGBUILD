@@ -2,7 +2,7 @@
 _appname=jan
 pkgname="${_appname}-electron-bin"
 _pkgname=Jan
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Run AI on your own PC"
 arch=("x86_64")
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 depends=('alsa-lib' 'at-spi2-core' 'libxext' 'libxdamage' 'mesa' 'gtk3' 'libcups' 'pango' 'libxkbcommon' 'glibc' 'nspr' \
     'libxcomposite' 'libx11' 'libxcb' 'libxfixes' 'gcc-libs' 'glib2' 'expat' 'cairo' 'dbus' 'nss' 'libxrandr' 'libdrm')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-linux-amd64-${pkgver}.deb")
-sha256sums=('0cc08c1e2c2ffcf5e0901ab37781e5adc3032276593321dd201e8b2d4703f2df')
+sha256sums=('db2fac112aafa19f47cbb38551e6e04f68f8ac6cff73dcf5f4853d56f05ec878')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_appname}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
