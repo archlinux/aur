@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Harman
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='The removal of batch effects from datasets using a PCA and constrained optimisation based technique'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-sva
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('94d186a3462005f242f1eba3f92a08d1c9531f7466cb329199fa493acf141c8d')
+sha256sums=('3750c9d1dff99a6e1bc89b0718f3f5116114e2598e06498744164f3c6b57d9cd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
