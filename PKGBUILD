@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
 pkgname=python-mmcif
 _module=mmcif
-pkgver=0.76
+pkgver=0.81
 pkgrel=1
 pkgdesc="mmCIF Core Access Library"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python python-future python-six python-requests python-msgpack)
 makedepends=()
 checkdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('357a3e67dae23a803c81011f3fde289bafd1ad99d03870042fe6ccaa2adb5de6')
+sha256sums=('dbe686cbeb500bf04a3e73e2858e1285ab19530e24d230a6d74654f24178c379')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
