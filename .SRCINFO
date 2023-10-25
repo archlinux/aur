@@ -1,7 +1,7 @@
 pkgbase = sqlite-jdbc
 	pkgdesc = JDBC driver for SQLite
 	pkgver = 3.43.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xerial/sqlite-jdbc
 	arch = x86_64
 	license = Apache

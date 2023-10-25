@@ -7,7 +7,7 @@
 
 pkgname=sqlite-jdbc
 pkgver=3.43.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='JDBC driver for SQLite'
 arch=('x86_64')
 url='https://github.com/xerial/sqlite-jdbc'
@@ -19,8 +19,11 @@ md5sums=('a0b9abcbce07478e7f9c2f557a6fefa0')
 sha256sums=('d84b48251fa6ea2466261b40eb105c59409964bffd07274b463a6f5504a6df29')
 
 prepare() {
+  # update SLF4J
+  cd ${pkgname}-${pkgver}
+  mvn versions:use-dep-version -Dincludes=org.slf4j:slf4j-api -DdepVersion=2.0.9 -DforceVersion=true
   # remove unused sqlite binaries
-  cd ${pkgname}-${pkgver}/src/main/resources/org/sqlite/native
+  cd src/main/resources/org/sqlite/native
   find . ! -path "./Linux/$CARCH/*" -type f -delete
   find . -type d -empty -delete
 }
