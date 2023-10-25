@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ProtGenerics
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Generic infrastructure for Bioconductor mass spectrometry packages'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('31802b6e55977dd39a8aac26ea0b2c516521b4aa2481ec872734ef8c0f59fa39')
+sha256sums=('35a042777fdebf518d0b6223739aac8e6b78f01acac3c4eaff36a96ecd515bbe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
