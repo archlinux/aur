@@ -1,7 +1,7 @@
 pkgbase = serioussam-oddworld
 	pkgdesc = Serious Sam Classic Odd World native Linux.
-	pkgver = 0.20
-	pkgrel = 4
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/tx00100xt/SE1-TFE-OddWorld
 	arch = i686
 	arch = x86_64
@@ -16,15 +16,13 @@ pkgbase = serioussam-oddworld
 	noextract = SamTFE-OddWorld.tar.xz.partaa
 	noextract = SamTFE-OddWorld.tar.xz.partab
 	noextract = SamTFE-OddWorld.tar.xz.partac
-	source = https://github.com/tx00100xt/SE1-TFE-OddWorld/archive/refs/tags/v0.20.tar.gz
+	source = https://github.com/tx00100xt/SE1-TFE-OddWorld/archive/refs/tags/v1.0.2.tar.gz
 	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-OddWorld/SamTFE-OddWorld.tar.xz.partaa
 	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-OddWorld/SamTFE-OddWorld.tar.xz.partab
 	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-OddWorld/SamTFE-OddWorld.tar.xz.partac
-	source = 0001-Fix-thunder-bug.patch
-	sha256sums = e1c1738ea7af90155deb9a04f68fa6e7785bac11bb1dcd00d869f5f915fd49b2
+	sha256sums = ebabcf07b2efe535ef74aab7f6698f58b435c576d3c6085a812f45fdda2cd577
 	sha256sums = cf8887fee144147755a53b095be970974cd3722c7af1b1eff4734f7c3c4d211b
 	sha256sums = f16e91cc9286888dd24d7e9c02ca6eb74ebb6b3cbe4732c8420652539b541ca9
 	sha256sums = 423e1f37554375b0a1fdce386f08a01410a7272b5f4a93b666ce40a4606846d1
-	sha256sums = 5df9ddd87fe8816f144eebbf7ced9e0bd1092a441bd668431c7b201c57816c1c
 
 pkgname = serioussam-oddworld

@@ -4,9 +4,9 @@
 pkgname=serioussam-oddworld
 pkginstdir=serioussam
 oddworld=SamTFE-OddWorld.tar.xz
-pkgver=0.20
+pkgver=1.0.2
 _srcname="SE1-TFE-OddWorld-$pkgver"
-pkgrel=4
+pkgrel=1
 pkgdesc="Serious Sam Classic Odd World native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TFE-OddWorld"
@@ -26,16 +26,14 @@ makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-TFE-OddWorld/archive/refs/tags/v$pkgver.tar.gz"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-OddWorld/SamTFE-OddWorld.tar.xz.partaa"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-OddWorld/SamTFE-OddWorld.tar.xz.partab"
-	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-OddWorld/SamTFE-OddWorld.tar.xz.partac"
-    "0001-Fix-thunder-bug.patch")
+	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-OddWorld/SamTFE-OddWorld.tar.xz.partac")
 noextract=("SamTFE-OddWorld.tar.xz.partaa"
 	"SamTFE-OddWorld.tar.xz.partab"
 	"SamTFE-OddWorld.tar.xz.partac")
-sha256sums=('e1c1738ea7af90155deb9a04f68fa6e7785bac11bb1dcd00d869f5f915fd49b2'
+sha256sums=('ebabcf07b2efe535ef74aab7f6698f58b435c576d3c6085a812f45fdda2cd577'
 	'cf8887fee144147755a53b095be970974cd3722c7af1b1eff4734f7c3c4d211b'
 	'f16e91cc9286888dd24d7e9c02ca6eb74ebb6b3cbe4732c8420652539b541ca9'
-	'423e1f37554375b0a1fdce386f08a01410a7272b5f4a93b666ce40a4606846d1'
-    '5df9ddd87fe8816f144eebbf7ced9e0bd1092a441bd668431c7b201c57816c1c')
+	'423e1f37554375b0a1fdce386f08a01410a7272b5f4a93b666ce40a4606846d1')
 
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
@@ -44,9 +42,6 @@ else
 fi
 
 prepare(){
-  # Prepare patch
-  cat 0001-Fix-thunder-bug.patch > "$srcdir/$_srcname/0001-Fix-thunder-bug.patch"
-
   # Prepare XPLUS archive
   cat "$oddworld".part* > "$oddworld"
 
@@ -64,10 +59,6 @@ prepare(){
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
 
   chmod 755 build-linux"$_bits"-tfe.sh
-
-  cd "$srcdir/$_srcname"
-  # apply patch
-  patch -p1 < 0001-Fix-thunder-bug.patch || return 1
 }
 
 build(){
