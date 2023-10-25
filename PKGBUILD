@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=logicFS
-_pkgver=2.20.0
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
-pkgver=2.20.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='Identification of SNP Interactions'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-siggenes
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d12b11b5392fac4260322da351c32f8686d6eec76e2ea865cc8d31f32274a9f')
+sha256sums=('783731537784c6cd55a5b192b35040d3a7978d3fb80228a9380dea0ab1001c8d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
