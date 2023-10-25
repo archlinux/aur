@@ -1,6 +1,6 @@
 pkgbase = r-mqmetrics
 	pkgdesc = Quality Control of Protemics Data
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MQmetrics
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-mqmetrics
 	depends = r-tidyr
 	optdepends = r-biocstyle
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MQmetrics_1.8.0.tar.gz
-	sha256sums = 259d70dd23165fe896a4af28d43df5215b7aad981e02633ec979cfaeb478609e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MQmetrics_1.10.0.tar.gz
+	sha256sums = 58c78c557937edd084a3868ea0c5036388fa3b59c78b31e2da08962964ab5396
 
 pkgname = r-mqmetrics
