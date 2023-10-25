@@ -1,7 +1,7 @@
 pkgbase = imagefanreloaded-avalonia-bin
 	pkgdesc = ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing.
 	pkgver = 1.2023.10.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mihnea-radulescu/imagefanreloaded
 	arch = aarch64
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = imagefanreloaded-avalonia-bin
 	depends = fontconfig
 	depends = glibc
 	depends = dotnet-runtime-6.0
-	depends = ttf-dejavu
-	depends = ttf-ms-fonts
 	provides = imagefanreloaded-avalonia=1.2023.10.09
 	conflicts = imagefanreloaded-avalonia
 	options = !strip
