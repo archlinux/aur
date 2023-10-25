@@ -3,12 +3,12 @@
 # Contributor: puleiya <ninettristan@gmail.com>
 pkgname=zedpro
 pkgver=2023.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Zed! Encrypted containers manager"
 arch=("i686" "x86_64")
 url="http://www.primx.eu"
 license=("Prim'X")
-depends=("libxslt" "qt5-base" "hicolor-icon-theme" "libldap25" "unzip" "zstd" "deb2targz")
+depends=("libxslt" "qt5-base" "hicolor-icon-theme" "libldap-2.5" "unzip" "zstd" "deb2targz")
 conflicts=("zedfree")
 options=("!strip" "!emptydirs")
 install=${pkgname}.install
