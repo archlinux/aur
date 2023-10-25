@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DNAcopy
-_pkgver=1.74.1
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.1
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='DNA copy number data analysis'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d0d7e7e31377aa696b93c157bd7df972409288ed13dde7fa9ac40b6f53c48ae')
+sha256sums=('dff9a0244fe0294c690bdfe803b0d85b9f8a96cca6e9ea315282a25d8e8dd243')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
