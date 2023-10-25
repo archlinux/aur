@@ -1,7 +1,7 @@
 #Maintainer: zayatura <zayatura@tutanota.com>
 pkgname=infra-arcana
-pkgver=22.0.0
-pkgrel=2
+pkgver=22.1.0
+pkgrel=1
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("ia_linux_x64_v$pkgver.zip::https://gitlab.com/martin-tornqvist/ia/-/job
     "${pkgname}.install"
     "${pkgname}.desktop"
     "${pkgname}.sh")
-sha256sums=('776a083044ad877f2c5fca5fcf73b92f286629df73dff6ae77720b3831c0148c'
+sha256sums=('fe866f0a142738020d30543fdcadc7258d0ee7a630e9403c09def7ac7f94ebf1'
          '5c5b0b435e5effead5a700bc870aaf227536f32e736348f23956048d7c3225fd'
          '3675cbaa28ce7e9e99271914f957cdbec942799aef0f88584cd99ddd642360d2'
          'c7738445681a33b5a1ca95528c0d3a6131bd867d6ce76f3b64677cee846a83c3'
