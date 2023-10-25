@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dupRadar
-_pkgver=1.30.3
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.3
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Assessment of duplication rates in RNA-Seq datasets'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e51970df637b5e67f47f7d4aa7a1a532a8d5302961e5daf1ed198da79b734816')
+sha256sums=('40fc1818e109f4649a1f4c97c6c377355b5f4b5a1c2126ef16ea6b7789f3f018')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
