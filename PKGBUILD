@@ -2,9 +2,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=CGEN
-_pkgver=3.36.1
+_pkgver=3.38.0
 pkgname=r-${_pkgname,,}
-pkgver=3.36.1
+pkgver=3.38.0
 pkgrel=1
 pkgdesc="An R package for analysis of case-control studies in genetic epidemiology"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix_globals.patch")
-sha256sums=('e92631fd26309478952a987a019577979a958a5eaf9a53510a241385b9e37dbc'
+sha256sums=('3609d6ff835c871cbcc497f1e846c6aede3e2d916fe7c6eb14701a313fef5e14'
             'a1e9baa3c89b9950209e4832c35856ccb6b660fedb9ddf9c72c2ed0bc552c752')
 
 #prepare() {
