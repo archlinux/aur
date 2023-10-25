@@ -1,11 +1,12 @@
 pkgbase = cro-chain-desktop-bin
 	pkgdesc = Crypto.com DeFi Desktop Wallet
 	pkgver = 1.4.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
 	license = Apache
 	depends = gtk3
+	depends = nss
 	provides = cro-chain-desktop
 	conflicts = cro-chain-desktop
 	source = Crypto.com-DeFi-Desktop-Wallet-1.4.5.AppImage::https://github.com/crypto-com/chain-desktop-wallet/releases/download/v1.4.5/Crypto.com-DeFi-Desktop-Wallet-1.4.5.AppImage
