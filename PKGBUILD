@@ -4,9 +4,9 @@
 pkgname=serioussam-dancesworld
 pkginstdir=serioussamse
 dancesworld=SamTSE-DancesWorld.tar.xz
-pkgver=2.0
+pkgver=2.0.2
 _srcname="SE1-TSE-DancesWorld-$pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="Serious Sam Classic Dances World native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TSE-DancesWorld"
@@ -25,7 +25,7 @@ fi
 makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-TSE-DancesWorld/archive/refs/tags/v$pkgver.tar.gz"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-DancesWorld/SamTSE-DancesWorld.tar.xz")
-sha256sums=('ab714ad403370c099fb1cff3485f956394d48bb0011c186882eb49d4cec69128'
+sha256sums=('e6a4cd922ee76cdd6a2f2e47c0bb9dae85bce31a02695ba1d7f1c095ae3d4d0c'
 	"0bf91dfc5b569cb33c9ec5029423c01de9c59690e214e299c9cb671bb92608b2")
 
 if [[ $CARCH = "i686" ]]; then
