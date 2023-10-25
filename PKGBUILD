@@ -21,7 +21,7 @@ prepare() {
 
 build() {
     cmake -B build -S $pkgname-$pkgver \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
     cmake --build build
