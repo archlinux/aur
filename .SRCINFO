@@ -1,10 +1,11 @@
 pkgbase = altitude-metrix-wallet-appimage
 	pkgdesc = The Metrix wallet https://metrixcoin.com.
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheLindaProjectInc/Altitude
 	arch = x86_64
 	license = GPL3
+	makedepends = squashfuse
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
