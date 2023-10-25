@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CARNIVAL
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='A CAusal Reasoning tool for Network Identification (from gene expression data) using Integer VALue programming'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2940c4547d7d8f0ed5752b855b2f5015a9f60b9e01b3050f4bbc2f0dbb693db7')
+sha256sums=('9b6c24aa0832e1eae7a2d6e112bcd89025b0c2f288c724ce459e0b5f58b40a7b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
