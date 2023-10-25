@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MultiMed
-_pkgver=2.22.0
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='Testing multiple biological mediators simultaneously'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9f18f1c1104aac5f75e866b3f5bb90d64b7a460bcb8f716431444b00ed73ad34')
+sha256sums=('9904ecf3cd672505b4789252deb363db51d8150c3c71ecc73b5f34aa3c86ae3b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
