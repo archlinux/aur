@@ -2,7 +2,7 @@
 
 pkgname=voicevox-appimage
 pkgver=0.14.8
-pkgrel=16
+pkgrel=17
 pkgdesc='Offical Frontend for the free VOICEVOX TTS Engine'
 arch=('x86_64')
 license=('LGPLv3' 'custom')
@@ -42,13 +42,14 @@ prepare() {
     chmod a+x voicevox.sh
     ./${_pkgname} --appimage-extract '*.desktop'
     ./${_pkgname} --appimage-extract 'usr/share/icons/**'
-    sed -i "s|Exec=.*|Exec=${_installdir}/${_pkgname}|" squashfs-root/voicevox.desktop
 
     # Unfortunately, since version 0.14.3, voicevox started to package a version of libstdc++ that is incompatible with the system libraries,
     # So we need to rip it out
     ./${_pkgname} --appimage-extract
     rm squashfs-root/libstdc++.so.6   
     unset SOURCE_DATE_EPOCH; appimagetool squashfs-root ${_pkgname}
+
+    sed -i "s|Exec=.*|Exec=${_installdir}/${_pkgname}|" squashfs-root/voicevox.desktop
 }
 
 package() {
