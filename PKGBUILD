@@ -2,9 +2,9 @@
 # Contributor: Sergey Moryakov <sergey@nqnet.org>
 
 pkgname=homed-zigbee
-pkgver=3.5.2
+pkgver=3.5.4
 pkgrel=1
-pkgdesc="HOMEd ZigBee is a ZigBee to MQTT gateway, part of HOMEd project"
+pkgdesc="HOMEd ZigBee is a ZigBee to MQTT gateway"
 arch=("armv7h" "i686" "x86_64")
 url="https://wiki.homed.dev/"
 license=("GPL3")
@@ -12,7 +12,7 @@ backup=("etc/homed/homed-zigbee.conf")
 depends=("qt5-mqtt" "qt5-serialport")
 makedepends=("qt5-tools")
 source=(
-  "https://github.com/u236/homed-service-zigbee/archive/refs/tags/${pkgver}.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/u236/homed-service-zigbee/archive/refs/tags/${pkgver}.tar.gz"
   "git+https://github.com/u236/homed-service-common.git"
 )
 sha512sums=(
@@ -36,7 +36,8 @@ build() {
 package() {
   cd "${srcdir}/homed-service-zigbee-${pkgver}"
   make INSTALL_ROOT="${pkgdir}/" install
-  mkdir -p ${pkgdir}/opt/homed-zigbee
-  install -Dm644 "deploy/systemd/homed-zigbee.service" "${pkgdir}/etc/systemd/system/homed-zigbee.service"
-  install -Dm644 "deploy/data/etc/homed/homed-zigbee.conf" "${pkgdir}/etc/homed/homed-zigbee.conf"
+  mkdir -p ${pkgdir}/var/lib/${pkgname}
+  install -Dm644 "deploy/systemd/${pkgname}.service" "${pkgdir}/etc/systemd/system/${pkgname}.service"
+  install -Dm644 "deploy/data/etc/homed/${pkgname}.conf" "${pkgdir}/etc/homed/${pkgname}.conf"
+  sed -i "s%=/opt/%=/var/lib/%g" "${pkgdir}/etc/homed/${pkgname}.conf"
 }
