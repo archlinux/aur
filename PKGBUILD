@@ -1,25 +1,25 @@
+# Maintainer:
 # Contributor: Army
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
+
 pkgname=9base-git
-pkgver=20160912.113
+pkgver=20190913.117
 pkgrel=1
-pkgdesc="A port of various original Plan 9 tools for Unix, based on plan9port."
+pkgdesc="Port of various original Plan9 tools to unix"
 arch=('i686' 'x86_64')
-url="http://tools.suckless.org/9base"
+url="https://tools.suckless.org/9base"
 license=('custom')
 depends=(sh)
 makedepends=('git')
-provides=('9base')
-source=("$pkgname::git+http://git.suckless.org/9base" 9 9base.sh)
+provides=('9base' 'plan9')
+conflicts=('9base')
+source=("$pkgname::git+https://git.suckless.org/9base" 9 plan9.sh)
 md5sums=('SKIP'
-         '5615d299503a7e6e69314a876f920b0e'
-         'fb17bab0503b05f830cf75cd456e4ed3')
-sha1sums=('SKIP'
-          '2b4983bdcb41bbf6ad6d0a206373e1fdcdfc3810'
-          'ce33613fb2b5e984d01ecc4fd4c4ac75c4563a5f')
+         'ae7108b9f26bed388e9055f35eef2986'
+         '0fa02cbcca0bc4584d7378f13ec1a1de')
 sha256sums=('SKIP'
-            'e64eb7dabc2ffc1118495b755ca528c2657101cf78617fd612b2d859755ef482'
-            '98bb1419c74703c9a269476eb01415627896fe2d2af2adb97e22b5e1ae15677c')
+            '1da13555dc798787a73bfdfe44ded76bc007b8a0ab5fd5f8fea88cd4ae870b1e'
+            'e81ac6d0ebe2dd0237d570145a6f5a43d409b92a6b334107a4b97a68e00258df')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -29,12 +29,14 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
 
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+
   case $CARCH in
     i686) sed -i 's#^OBJTYPE\s.*$#OBJTYPE = 386#' config.mk ;;
     x86_64) sed -i 's#^OBJTYPE\s.*$#OBJTYPE = x86_64#' config.mk ;;
   esac
 
-  sed -i 's#^PREFIX\s.*$#PREFIX = /opt/9base#' config.mk
+  sed -i 's#^PREFIX\s.*$#PREFIX = /opt/plan9#' config.mk
   sed -i 's#^CFLAGS\s*+=#CFLAGS += -DPLAN9PORT #' config.mk
 
   # Force dynamic linking.  Several of the programs in 9base won't work
@@ -50,8 +52,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" install
-  install -m755 ../9 "$pkgdir/opt/9base/bin/"
-  install -Dm755 ../9base.sh "$pkgdir/etc/profile.d/9base.sh"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/9base/LICENSE"
+  install -Dm755 ../9 "$pkgdir/opt/plan9/bin/"
+  install -Dm755 ../plan9.sh "$pkgdir/etc/profile.d/plan9.sh"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
