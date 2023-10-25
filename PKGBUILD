@@ -1,0 +1,26 @@
+# Maintainer: Gr3q
+# Contributor: Gr3q
+
+pkgname=hoppscotch-app-bin
+pkgver=23.8.2
+pkgrel=1
+pkgdesc=" This is a simple desktop version of hoppscotch (👽 Open source API development ecosystem) which build with Tauri. See also https://hoppscotch.io"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://github.com/liudonghua123/hoppscotch-app"
+license=('MIT')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'openssl' 'pango' 'webkit2gtk')
+options=('!strip' '!emptydirs')
+install=${pkgname}.install
+source_armv7h=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_armhf.deb")
+source_aarch64=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_arm64.deb")
+source_i686=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_i386.deb")
+source_x86_64=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_amd64.deb")
+sha512sums_armv7h=('2db1fed74c3356fad8ad157a2fe27c635c9334828c7191901e652dca79f62a2e7b6a1fcad41c7025dcb7a729a113529a19b8b6bd7bdeb51923512e20719af32f7')
+sha512sums_aarch64=('11866d8940111bc72676edd103408d2d43b89f674824620b09b7311c5dc6463b6d8cd757ce0db129153704a58627fdbaaba2282c6be9232be79688118c221362')
+sha512sums_i686=('28ceb03a613ea2e1cce214813e71a6a4f5d592d06920bc1c8fb4aab9c57fdc0ecc847b97cc6afcf64a7f373b1f4688aee24fad2b3334ec82f50cf3c04061f5dc')
+sha512sums_x86_64=('9f687d6bec2c063efecfa87dc2919b40f60f76b6f4a16ed2f768b004f6928f5d0ce25937faef2820eb93e5886ffb0fdc93a902d796286f093fb66bcc126434da')
+
+package(){
+	# Extract package data
+	tar -xz -f data.tar.gz -C "${pkgdir}"
+}
