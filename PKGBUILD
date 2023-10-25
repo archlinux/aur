@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=factDesign
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Factorial designed microarray experiment analysis'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da38e060f981b7e7157ec8ca5260b30b14914f3eb12f8e71fdcc26d7f81102d1')
+sha256sums=('b0f983bb390b720ac4df18dbd02db9d84cc7d2e2f00a47aa9c722964b7d3d25a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
