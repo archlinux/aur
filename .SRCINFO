@@ -1,7 +1,7 @@
 pkgbase = pixelviewer-bin
 	pkgdesc = A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it.
 	pkgver = 2.7.4.312
-	pkgrel = 2
+	pkgrel = 3
 	url = https://carina-studio.github.io/PixelViewer/
 	arch = aarch64
 	arch = x86_64
