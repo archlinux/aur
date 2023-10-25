@@ -38,18 +38,42 @@ package() {
     
     # Cree el directorio de destino y copia en él, el contenido de bypass_utility/.
     rsync -a "$dirbypass/" --mkpath "$pkgdir/opt/$_pkgname/"
-
-    # Script de ejecución Bypass_utility.
-    install -Dvm755 <(echo -e '#!/usr/bin/env bash
+    
+    # Script de ejecución bypass_utility.
+    install -Dvm755 <(cat <<'EOF'
+#!/usr/bin/env bash
 # Comprobar si el usuario es root.
 if [ "$EUID" -ne 0 ]; then
-\techo "Error: No puede realizar esta operación, a menos que sea superusuario."
-\texit 1
+    echo "Error: No puede realizar esta operación, a menos que sea superusuario."
+else
+    declare -r current_kernel=`uname -r`
+
+    # Expresión regular.
+    declare -r pattern="^[0-9]+\.[0-9]+\.[0-9]+-arch[0-9]+-[0-9]+-kamakiri$"
+
+    # Comprueba si la versión del kernel coincide con el patrón.
+    if [[ $current_kernel =~ $pattern ]]; then
+        echo "Kernel linux-kamakiri validado correctamente..."
+        cd /opt/bypass_utility/
+        ./main.py
+        cd -
+    else
+        declare -r kernel=linux-kamakiri \
+        installed_kernel=`awk -F\' '/menuentry / && /linux-kamakiri/ && !/\(fallback initramfs\)/ {print $2}' /boot/grub/grub.cfg`
+
+        # Comprueba si está instalado el kernel linux-kamakiri.
+        if [[ $installed_kernel ]]; then
+            echo "Kernel compatible '"$kernel"' instalado, inicialíze el sistema usando dicho kernel en su gestor de arranque y vuelva a ejecutar la herramienta bypass_utility."
+        else
+	    echo "Kernel actual '"$current_kernel"' incompatible, requiere la variante linux-kamakiri provista por calquiera de los paquetes linux-kamakiri-bin ó linux-kamakiri, instálelos usando:
+>> paru -S linux-kamakiri-bin
+>> yay -S linux-kamakiri-bin."
+        fi
+    fi
 fi
-cd /opt/bypass_utility/
-./main.py
-cd -') \
-    $pkgdir/usr/bin/$_pkgname
+EOF
+) $pkgdir/usr/bin/$_pkgname
+
 }
 
 ## References:
