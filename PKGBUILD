@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LungCancerACvsSCCGEO
-_pkgver=1.36.0
+_pkgver=1.37.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc='A lung cancer dataset that can be used with maPredictDSC package for developing outcome prediction models from Affymetrix CEL files.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c632733e2aed6ddf70e07726cb79ea9efcd281a9de291bb912740976804ac74b')
+sha256sums=('6e03417e052eeaf9d0e75662bd249ae702e0241d7b10a12cc27f981f1eeabd07')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
