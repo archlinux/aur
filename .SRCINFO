@@ -1,0 +1,20 @@
+pkgbase = python-cargo2rpm
+	pkgdesc = Translation layer between cargo and RPM
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://pagure.io/fedora-rust/cargo2rpm
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mypy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = rust
+	source = https://pagure.io/fedora-rust/cargo2rpm/archive/0.1.12/cargo2rpm-0.1.12.tar.gz
+	sha256sums = 1b07775dd8e180539d3242148e9b8e63c8efbfd6a9cac67a38402be9d6a240d3
+
+pkgname = python-cargo2rpm
