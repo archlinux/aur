@@ -1,8 +1,8 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ldraw-parts-library
-pkgver=20210309
+pkgver=20231025
 pkgrel=1
 pkgdesc="A collection of LDraw-format CAD files representing many of LEGO bricks produced"
 arch=(any)
@@ -12,6 +12,10 @@ options=(!strip)
 source=(ldraw-parts-${pkgver}.zip::http://www.ldraw.org/library/updates/complete.zip
         LDConfig-${pkgver}.ldr::http://www.ldraw.org/library/official/LDConfig.ldr
         "ldraw-parts-library.sh" "license")
+sha256sums=('a164a0bf1885213ff6c6ae90dd5805097d57ea858ccfae3129792b65f10f5aa9'
+            'd7b17215287600f0fee0b2dd3f5c37391ed06e6a1c9e3b3785882a493c9b750a'
+            '7cbd598861cc678e86ce07da220e97d0f9d27f2b8d0d03b794400b999fd6fc42'
+            '783990d0de8daf6b0e18b1c06578438f7d70e106a1a351686872d8d6eeeba7ac')
 
 pkgver() {
   echo $(date -uI|sed 's,-,,g')
@@ -35,12 +39,3 @@ package() {
 
   install -D -m755 ../ldraw-parts-library.sh "${pkgdir}/etc/profile.d/ldraw-parts-library.sh"
 }
-
-md5sums=('SKIP'
-         'SKIP'
-         '2acda6add7ed39994a710bd70aa96fc1'
-         '8fca376070b84bea4d4c42c736a378de')
-md5sums=('785edbdc6cbfd3d6a7caf075c6cf75bd'
-         '1d94657721a38f8d5affe09370580ca0'
-         '2acda6add7ed39994a710bd70aa96fc1'
-         '8fca376070b84bea4d4c42c736a378de')
