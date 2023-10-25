@@ -2,7 +2,7 @@
 pkgname=skpr
 provides=("skpr-rsh")
 pkgver=0.24.0
-pkgrel=13
+pkgrel=14
 pkgdesc="CLI tool for managing web applications on the platform."
 arch=('x86_64')
 url="https://github.com/skpr/cli"
