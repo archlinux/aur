@@ -31,8 +31,6 @@ _opt_features=(
   x11
   wayland
 
-  libplacebo # Vulkan and vo=gpu-next (latter sometimes needs libplacebo-git)
-
   #uchardet
   #rubberband
 
@@ -51,14 +49,14 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.36.0_46_g14504e0559
+pkgver=0.36.0_656_g06c26e37ed
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 url='https://mpv.io'
 _undetected_depends=('hicolor-icon-theme')
-depends=('ffmpeg' "${_undetected_depends[@]}")
+depends=('ffmpeg' 'libplacebo-git' "${_undetected_depends[@]}")
 optdepends=('yt-dlp: for video-sharing websites playback (preferred over youtube-dl)'
             'youtube-dl: for video-sharing websites playback')
 makedepends=('git'
@@ -108,7 +106,7 @@ for feature in "${_opt_features[@]}"; do
       makedepends+=('wayland-protocols')
       _opt_extra_flags+=('-Dwayland=enabled')
       ;;
-    sdl2|openal|libplacebo|uchardet|rubberband)
+    sdl2|openal|uchardet|rubberband)
       depends+=("$feature")
       _opt_extra_flags+=("-D${feature}=enabled")
       ;;
