@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libosmscout-git
 	pkgdesc = A C++ library for offline map rendering, routing and location lookup based on OpenStreetMap data (mingw-w64)
-	pkgver = r8217.74095f1
+	pkgver = r8254.d82b2ae
 	pkgrel = 1
 	url = https://github.com/Framstag/libosmscout
 	arch = x86_64

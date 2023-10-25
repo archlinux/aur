@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 
 pkgname=mingw-w64-libosmscout-git
-pkgver=r8217.74095f1
+pkgver=r8254.d82b2ae
 pkgrel=1
 arch=($CARCH)
 url='https://github.com/Framstag/libosmscout'
@@ -56,6 +56,7 @@ build() {
             -DOSMSCOUT_BUILD_IMPORT=OFF \
             -DOSMSCOUT_BUILD_TESTS=OFF \
             -DOSMSCOUT_BUILD_MAP_GDI=OFF \
+            -DOSMSCOUT_BUILD_DOC_API=OFF \
             -DQT_VERSION_PREFERRED=6
         cmake --build "$srcdir/build-$_arch"
     done
