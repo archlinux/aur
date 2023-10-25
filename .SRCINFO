@@ -1,0 +1,19 @@
+pkgbase = cacophony
+	pkgdesc = A minimalist and ergonomic MIDI sequencer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://subalterngames.com/cacophony
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = libspeechd
+	options = !lto
+	source = cacophony::git+https://github.com/subalterngames/cacophony
+	b2sums = SKIP
+
+pkgname = cacophony
