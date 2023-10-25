@@ -2,14 +2,14 @@
 
 #  shellcheck disable=SC2034
 pkgname=jetporch-git
-pkgver=r292.807c5e9
+pkgver=r315.61c94e3
 pkgrel=1
 pkgdesc='Jet is a general-purpose, community-driven IT automation platform for configuration, deployment, orchestration, patching, and arbitrary task execution workflows.'
 #arch=('i686' 'x86_64' 'armv6h')
 arch=('x86_64')
 url='https://www.jetporch.com/'
 license=('GPL')
-depends=('pkg-config')
+#depends=('')
 makedepends=('git' 'rust' 'cargo' 'openssl')
 #optdepends=('')
 provides=('jetporch')
