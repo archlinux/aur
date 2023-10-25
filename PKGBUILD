@@ -5,10 +5,10 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _appname="flashpeak-${pkgname}"
-pkgver=40.0.2.0
-pkgrel=7
+pkgver=41.0.1.0
+pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.80.0
+_libffmpegver=0.81.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -24,8 +24,8 @@ source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.de
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE.html::${url}/en/webhelp/index.htm"
     "${pkgname}.install")
-sha256sums=('97b58cbecc2ffe1b7cd20f33de7336be9aa10016edafe137b120ab6536daf263'
-            '8afa2102c5bc6e74ac8e812a78c72fbc6342443d06f42098cf496d8ea81529a9'
+sha256sums=('0c4fd5b7d116649e587d189d1cc8df0591467532aa1116c0b0b48f899d6bedc1'
+            '39481b7a3d68b7cccf5101d1b4950f43f3a2292983065556ec241b71657338ae'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43'
             '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
 build() {
