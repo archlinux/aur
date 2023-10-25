@@ -1,12 +1,12 @@
 pkgbase = r-preprocesscore
 	pkgdesc = A collection of pre-processing functions
-	pkgver = 1.62.1
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/preprocessCore
 	arch = x86_64
 	license = LGPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/preprocessCore_1.62.1.tar.gz
-	sha256sums = 8d3846482f720f8a3d7657b536ef4db2a99d53ca7e06cc3740900729c453677c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/preprocessCore_1.64.0.tar.gz
+	sha256sums = 3e74536992d1ef1c8f371d850a18d2b1b9397ddbbef30567e6d97469f91ede95
 
 pkgname = r-preprocesscore
