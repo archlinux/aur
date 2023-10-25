@@ -1,7 +1,7 @@
 pkgbase = r-chemminer
 	pkgdesc = Cheminformatics Toolkit for R
-	pkgver = 3.52.0
-	pkgrel = 2
+	pkgver = 3.54.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ChemmineR
 	arch = x86_64
 	license = Artistic2.0
@@ -38,8 +38,8 @@ pkgbase = r-chemminer
 	optdepends = r-rsqlite
 	optdepends = r-scatterplot3d
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChemmineR_3.52.0.tar.gz
-	md5sums = 54601905e8a4a48d85b3c7a80f935eb5
-	sha256sums = 3d24d7b81d8d5315c53b5c04002b39d0f2b5354b992b66d73cca4ff0077e9bd4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChemmineR_3.54.0.tar.gz
+	md5sums = 8dd1886811bdc4ac23c24fad60a9b238
+	sha256sums = 01297549b77098b794d22158253a30989b8111a6998d1872dc993af82aaf488c
 
 pkgname = r-chemminer

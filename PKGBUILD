@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChemmineR
-_pkgver=3.52.0
+_pkgver=3.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Cheminformatics Toolkit for R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -52,8 +52,8 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('54601905e8a4a48d85b3c7a80f935eb5')
-sha256sums=('3d24d7b81d8d5315c53b5c04002b39d0f2b5354b992b66d73cca4ff0077e9bd4')
+md5sums=('8dd1886811bdc4ac23c24fad60a9b238')
+sha256sums=('01297549b77098b794d22158253a30989b8111a6998d1872dc993af82aaf488c')
 
 build() {
   # generate R bindings
