@@ -5,6 +5,7 @@ pkgbase = plasma5-applets-corner-menu
 	url = https://www.opencode.net/arshbangar/corner-menu
 	arch = any
 	license = LGPL2
+	makedepends = git
 	depends = plasma-workspace
 	source = plasma5-applets-corner-menu::git+https://www.opencode.net/arshbangar/corner-menu.git
 	sha512sums = SKIP

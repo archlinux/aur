@@ -7,7 +7,8 @@ pkgdesc="KppleMenu-inspired MacOS and GNOME Style options menu."
 arch=(any)
 url="https://www.opencode.net/arshbangar/corner-menu"
 license=(LGPL2)
-depends=(plasma-workspace)
+depends=('plasma-workspace')
+makedepends=('git')
 source=("$pkgname::git+$url.git")
 sha512sums=('SKIP')
 
