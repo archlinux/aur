@@ -1,13 +1,13 @@
 pkgbase = r-egseadata
 	pkgdesc = Gene set collections for the EGSEA package
-	pkgver = 1.28.0
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EGSEAdata
 	arch = any
 	license = custom
 	depends = r
 	optdepends = r-egsea
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/EGSEAdata_1.28.0.tar.gz
-	sha256sums = 59778d4c02bc814585b66a7746f566433d965670bf1bcb3349be5949e7c7fbbc
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/EGSEAdata_1.29.0.tar.gz
+	sha256sums = 866767d9cc99bb83dfa51046528315c066a796073e6ec7bb590132ac720f1770
 
 pkgname = r-egseadata
