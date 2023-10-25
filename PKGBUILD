@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BridgeDbR
-_pkgver=2.10.2
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.2
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Code for using BridgeDb identifier mapping framework from within R'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed3446db3c982659cc3e13fe4c2b7eb1d7885c0528fab406c15afa495bd93287')
+sha256sums=('f7f3396a113b22761265b1252f337040048a273007dcc0de35dc19652d05c207')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
