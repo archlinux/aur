@@ -1,6 +1,6 @@
 pkgbase = r-hilbertvis
 	pkgdesc = Hilbert curve visualization
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HilbertVis
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-hilbertvis
 	depends = r
 	optdepends = r-ebimage
 	optdepends = r-iranges
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HilbertVis_1.58.0.tar.gz
-	sha256sums = 708d2dd6bdbf8f4006874a0117f31b489c8b3782f081a3a0b789c33ea775ff89
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HilbertVis_1.60.0.tar.gz
+	sha256sums = 96c7a4dfe42158e45bfb7a1e1a33e2577b23409249402cfa5ae742f2420060d5
 
 pkgname = r-hilbertvis
