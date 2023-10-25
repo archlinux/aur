@@ -1,15 +1,15 @@
 # Maintainer: Allan Niles allancoding.dev@gmail.com
 
 pkgname=ascii-battleship
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="An ASCII Battleship game built in Java that can be played in the terminal."
 url="https://github.com/allancoding/ascii-battleship"
 license=('Apache-2.0')
 depends=('java-runtime')
 arch=('any')
-source=("https://github.com/allancoding/ascii-battleship/releases/download/v1.0/Ascii_Battleship.jar")
-sha256sums=('b67ff81e0aba9ca6fbcb78041d4d901d5e54e04e83438a2b122d9126fd2e874f')
+source=("https://raw.githubusercontent.com/allancoding/ascii-battleship/main/Ascii_Battleship.jar")
+sha256sums=('1e142a933e11cfc0002c4cf326c35f5ba1414ea0e5e3cbbdb4cf6595bd432b48')
 package() {
     install -d "${pkgdir}/usr/share/java/${pkgname}"
     install -Dm644 "${srcdir}/Ascii_Battleship.jar" "${pkgdir}/usr/share/java/${pkgname}/Ascii_Battleship.jar"
