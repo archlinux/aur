@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <107091537+horror-proton@users.noreply.github.com>
 pkgname=maa-cli
 pkgver=0.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CLI for MAA by Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/MaaAssistantArknights/maa-cli"
@@ -24,7 +24,7 @@ build() {
 	export CARGO_TARGET_DIR=target
 
 	export MAA_EXTRA_SHARE_NAME=/usr/share/maa-assistant-arknights
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release --no-default-features
 }
 
 check() {
