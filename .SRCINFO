@@ -1,12 +1,12 @@
 pkgbase = r-mpfe
 	pkgdesc = Estimation of the amplicon methylation pattern distribution from bisulphite sequencing data
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MPFE
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MPFE_1.36.0.tar.gz
-	sha256sums = 3a3000bbd5328e8606015f3a056cbb3c6a54f98850ee230555a4ceece9994dc2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MPFE_1.38.0.tar.gz
+	sha256sums = b168279277c6594194eac92abae6f99bf451974fbf972e94675efb3e1e3dc823
 
 pkgname = r-mpfe
