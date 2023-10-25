@@ -4,9 +4,9 @@
 pkgname=serioussam-tower
 pkginstdir=serioussam
 tower=SamTFE-Tower.tar.xz
-pkgver=1.00
+pkgver=1.0.2
 _srcname="SE1-TFE-Tower-$pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="Serious Sam Classic Nightmare Tower native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TFE-Tower"
@@ -25,7 +25,7 @@ fi
 makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-TFE-Tower/archive/refs/tags/v$pkgver.tar.gz"
     "https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-Tower/SamTFE-Tower.tar.xz")
-sha256sums=('90e253befab31fc2e5930f62e06963dc328a93c0cb10cab16bd8bd06d7c28cc6'
+sha256sums=('be443f50e34798eb5a34df873631746bd7ec62ca7bd49adb4258f4173411dbbd'
 	"c665f8dd419c3147c4024f0ac2b7d678c1aed735189f6f8355409398e4eb76df")
 
 if [[ $CARCH = "i686" ]]; then
