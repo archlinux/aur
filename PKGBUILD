@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ecolitk
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='Meta-data and tools for E. coli'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f3a8f7eedb008427cd439322aae19550bee4c9076898cf011692387187ed323')
+sha256sums=('a3f0d59fd409127b6b8abc6a4654f9aa4f4bf5d52293eb14cbfb5393912ab8cd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
