@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.16.2
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -10,7 +10,6 @@ license=('LGPL')
 depends=(
 	'mingw-w64-crt'
 	'mingw-w64-libpng'
-	'mingw-w64-libjpeg-turbo'
 	'mingw-w64-aom'
 	'mingw-w64-x265'
 	'mingw-w64-libde265'
@@ -19,12 +18,13 @@ depends=(
 	'mingw-w64-zlib'
 	'mingw-w64-libwebp'
 	'mingw-w64-svt-av1' # Only for x86_64
+	'mingw-w64-openjpeg2'
 )
 makedepends=('mingw-w64-cmake')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('d207f2ff5c86e6af3621c237f186130b985b7a9ff657875944b58ac5d27ba71c')
+sha256sums=('4909f40505f2661fbb77203438add7910cbc3fb0e42e276c1b8e1c680e43497f')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
 )
@@ -41,7 +41,11 @@ _flags=(
 	-DWITH_SvtEnc_PLUGIN=OFF
 	-DWITH_EXAMPLES=OFF
 	-DWITH_REDUCED_VISIBILITY=ON
-	-DWITH_DEFLATE_HEADER_COMPRESSION=ON )
+	-DWITH_DEFLATE_HEADER_COMPRESSION=ON
+	-DWITH_OpenJPEG_DECODER=ON
+	-DWITH_OpenJPEG_DECODER_PLUGIN=OFF
+	-DWITH_OpenJPEG_ENCODER=ON
+	-DWITH_OpenJPEG_ENCODER_PLUGIN=OFF )
 
 prepare() {
 	cd "${_srcdir}"
