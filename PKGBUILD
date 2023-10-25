@@ -1,7 +1,7 @@
 # Maintainer: Your Name <johnjahi55@gmail.com>
 _pkgname=nchat
 pkgname=${_pkgname}-git
-pkgver=2.04.r0.g60760e1
+pkgver=3.67.r29.g7cbe848
 pkgrel=1
 pkgdesc="nchat is a console-based chat client for Linux and macOS with support for Telegram."
 arch=('any')
@@ -27,12 +27,13 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    bash ./make.sh build
+    # Perform a debug build
+    bash ./make.sh debug
 
 }
 package() {
     cd "${srcdir}/${_pkgname}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    cd build
+    cd dbgbuild
     make DESTDIR="${pkgdir}" install
 }
