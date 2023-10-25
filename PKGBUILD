@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gcatest
-_pkgver=2.0.7
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Genotype Conditional Association TEST"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e0cfb7c0ad56c72aaf703b153456d091')
-sha256sums=('f162ba2d4acfaececbe491d030e8538e74b7ac3caab88d4eb52f044c436a1dd8')
+md5sums=('ddfda402a2332e9c16ecfaa035b689a9')
+sha256sums=('7bbe749ec6948355ccfadc31ba00c8c42a037c18ed67d25ca95319249dc1cf42')
 
 build() {
   mkdir -p build
