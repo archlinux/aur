@@ -1,6 +1,6 @@
 pkgbase = r-phenstat
 	pkgdesc = Statistical analysis of phenotypic data
-	pkgver = 2.36.0
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PhenStat
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-phenstat
 	depends = r-smoothwin
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhenStat_2.36.0.tar.gz
-	sha256sums = cd5f248cd1860466f9a19f3cf8f259f60f951bb10032ce95fb97295186bdb4e0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhenStat_2.38.0.tar.gz
+	sha256sums = fcd4fc532d2adfc008024af5d82d4cb78777c1fc0e8d69b75bf0e4702b26f099
 
 pkgname = r-phenstat
