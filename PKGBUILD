@@ -4,12 +4,12 @@
 pkgname=serioussam-pefe2q
 pkginstdir=serioussam
 pefe2q=SamTFE-ParseError.tar.xz
-pkgver=1.0
+pkgver=1.0.2
 _srcname="SE1-ParseError-$pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="Serious Sam Classic Odd World native Linux."
 arch=('i686' 'x86_64')
-url="https://github.com/tx00100xt/SE1-TFE-OddWorld"
+url="https://github.com/tx00100xt/SE1-ParseError"
 license=('GPL2')
 
 if pacman -Qq serioussam >/dev/null 2>&1; then
@@ -34,7 +34,7 @@ noextract=("SamTFE-ParseError.tar.xz.partaa"
 	"SamTFE-ParseError.tar.xz.partac"
 	"SamTFE-ParseError.tar.xz.partad"
 	"SamTFE-ParseError.tar.xz.partae")
-sha256sums=('37107b628ef3a0e34ce71ca95919350c145d0a23b7adfe84b0a7c02ee1bc76a5'
+sha256sums=('5447721e9c74c17987d600d4e47e42d5e54b9a9343dac1a034960968e6216bff'
 	"2c526f04b95397df34c72710104ae953036790f3a18ea819efa89a1bafe11c0e"
 	"68669299cbb8260569f6058d8c293162c5b6d9e3281525d910ce4ed0d26061bf"
 	"f9631058d2a3db76440ed22e7acbe231288a4f2d5c56a69073c8f212c9602244"
