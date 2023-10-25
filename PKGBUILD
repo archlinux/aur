@@ -2,11 +2,12 @@
 
 pkgname=rust2rpm-helper
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper functionality for rust2rpm"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://pagure.io/fedora-rust/rust2rpm-helper"
 license=('MIT')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("https://pagure.io/fedora-rust/rust2rpm-helper/archive/$pkgver/rust2rpm-helper-$pkgver.tar.gz")
 sha256sums=('2be2fd2cfbf674b20fd6560fb8a7e7bcb4a4e739efadf617f7f7e2ad98567127')
