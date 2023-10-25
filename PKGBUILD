@@ -3,7 +3,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname='conserver'
-pkgver='8.2.6'
+pkgver='8.2.7'
 pkgrel='1'
 pkgdesc='Serial console remote sharing and logging daemon with support for IPMI.'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-    1c8b86f123d2d8e3ce568b782087b43dfac9cf6ffd5a9bdfcfdc6718d749a923
+    b88f1880f4090b42370e075ca9c8a6062fb553ee33f155b204714c43dc71cef3
     SKIP
 )
 
