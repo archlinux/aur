@@ -23,6 +23,11 @@ depends=(
 makedepends=("python-build" "python-installer")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
+# prepare() {
+# 	cd "$_pkgbasename-$pkgver/tests"
+# 	pytest -sv
+# }
+
 build() {
     cd "$_pkgbasename-$pkgver"
     python -m build --wheel --no-isolation
