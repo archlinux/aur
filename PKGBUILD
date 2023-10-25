@@ -23,4 +23,5 @@ sha512sums_x86_64=('9f687d6bec2c063efecfa87dc2919b40f60f76b6f4a16ed2f768b004f692
 package(){
 	# Extract package data
 	tar -xz -f data.tar.gz -C "${pkgdir}"
+	sed -i 's/Name=hoppscotch-app/Name=Hoppscotch/g' "${pkgdir}/usr/share/applications/hoppscotch-app.desktop"
 }
