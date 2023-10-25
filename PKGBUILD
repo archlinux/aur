@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PROcess
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Ciphergen SELDI-TOF Processing'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-icens
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1165d0bab18e370ef263cc44797a7fa78b70c2d9a8f05aae0838596243df72af')
+sha256sums=('f2ee603d4d072a2fab0fac819981a00f3dbcb2751813e264fd8f738bcb9f9043')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
