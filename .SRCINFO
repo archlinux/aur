@@ -1,12 +1,12 @@
 pkgbase = r-spikeli
 	pkgdesc = Affymetrix Spike-in Langmuir Isotherm Data Analysis Tool
-	pkgver = 2.60.0
+	pkgver = 2.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spikeLI
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spikeLI_2.60.0.tar.gz
-	sha256sums = 051d4f9a790aaa89171f374106c1aca23b9a42947c304aa664f281a5e2250256
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spikeLI_2.62.0.tar.gz
+	sha256sums = 7639c41797ac59aaa7d22500efcc1fae51fed6c10ed56f4f65692f11ab247530
 
 pkgname = r-spikeli
