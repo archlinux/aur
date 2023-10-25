@@ -3,27 +3,17 @@
 
 pkgname=seriousrunner
 pkginstdir=seriousrunner
-pkgver=1.1.1
+pkgver=1.1.2
 _srcname="Serious-Runner-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Serious Runner program that loads and runs content created by users."
 arch=('x86_64')
 url="https://github.com/tx00100xt/Serious-Runner"
 license=('GPL2')
 
 makedepends=('cmake' 'make' 'sed' 'qt5-base' 'libarchive' 'xz' 'bzip2')
-source=("https://github.com/tx00100xt/Serious-Runner/archive/refs/tags/v$pkgver.tar.gz"
-	"0001-Fix_system_search_DB.patch")
-sha256sums=("530b421aa4fe1fe6fdf0e2ee9ac0f2b00861b28a9f277098b10f20a38fd337e0"
-			"148a2ba597789d646678956bf11f3699adc11dfb03aa97f3f11ed429a74e5c25")
-
-prepare(){
-	# Prepare patch
-	cat 0001-Fix_system_search_DB.patch > "$srcdir/$_srcname/0001-Fix_system_search_DB.patch"
-	cd "$srcdir/$_srcname"
-	# apply patch
-	patch -p1 < 0001-Fix_system_search_DB.patch || return 1
-}
+source=("https://github.com/tx00100xt/Serious-Runner/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=("725decc771bed6199333959dec2fccc4766844d8c692ae7dbbf538183146cbfd")
 
 build() {
 	mkdir "$_srcname"/build && cd "$_srcname"/build
