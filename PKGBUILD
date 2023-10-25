@@ -1,6 +1,6 @@
 # Maintainer: Rajala1404 <rajalagamer3.0@gmail.com>
 pkgname="folia-server-builder"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Easily create your own Folia server"
 arch=("any")
