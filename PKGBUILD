@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cytolib
-_pkgver=2.12.1
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="C++ infrastructure for representing and interacting with the gated cytometry data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,9 +28,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "shared-cytolib.patch")
-md5sums=('0d7e3b666779431c8cd3dc79e507cef3'
+md5sums=('f06a976c84ae2adf3c08d07cd90af7f4'
          '0447368b51efaea7ab68b056b4c2b602')
-sha256sums=('1fcf5c4f45411321fd4fd8b8a0ace9955ab195c8f1a3fdcf037f8b345311db55'
+sha256sums=('f155729d40d24620c05df94b2f7a06f77cb9877cd8ce576621ee8d9b3fa45ae4'
             '3fd80ac3109153df3619d0b481aa5797b9393300b6f82babb721dea8a2c55b45')
 
 prepare() {
