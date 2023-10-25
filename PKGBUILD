@@ -4,12 +4,12 @@
 pkgname=serioussam-pese2q
 pkginstdir=serioussamse
 pese2q=SamTSE-ParseError.tar.xz
-pkgver=1.0
+pkgver=1.0.2
 _srcname="SE1-ParseError-$pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="Serious Sam Classic Odd World native Linux."
 arch=('i686' 'x86_64')
-url="https://github.com/tx00100xt/SE1-TFE-OddWorld"
+url="https://github.com/tx00100xt/SE1-ParseError"
 license=('GPL2')
 
 if pacman -Qq serioussam >/dev/null 2>&1; then
@@ -26,7 +26,7 @@ makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-ParseError/archive/refs/tags/v$pkgver.tar.gz"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-ParseError/SamTSE-ParseError.tar.xz")
 noextract=("SamTSE-ParseError.tar.xz")
-sha256sums=('37107b628ef3a0e34ce71ca95919350c145d0a23b7adfe84b0a7c02ee1bc76a5'
+sha256sums=('5447721e9c74c17987d600d4e47e42d5e54b9a9343dac1a034960968e6216bff'
 	"318a544b6239c776edcf26740f89635ce2dd54b573671609c99c768f4d8ce0f0")
 
 if [[ $CARCH = "i686" ]]; then

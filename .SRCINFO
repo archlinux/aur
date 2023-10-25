@@ -1,8 +1,8 @@
 pkgbase = serioussam-pese2q
 	pkgdesc = Serious Sam Classic Odd World native Linux.
-	pkgver = 1.0
-	pkgrel = 3
-	url = https://github.com/tx00100xt/SE1-TFE-OddWorld
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/tx00100xt/SE1-ParseError
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -14,9 +14,8 @@ pkgbase = serioussam-pese2q
 	depends = bash
 	depends = serioussam-vk
 	noextract = SamTSE-ParseError.tar.xz
-	source = https://github.com/tx00100xt/SE1-ParseError/archive/refs/tags/v1.0.tar.gz
+	source = https://github.com/tx00100xt/SE1-ParseError/archive/refs/tags/v1.0.2.tar.gz
 	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-ParseError/SamTSE-ParseError.tar.xz
-	sha256sums = 37107b628ef3a0e34ce71ca95919350c145d0a23b7adfe84b0a7c02ee1bc76a5
+	sha256sums = 5447721e9c74c17987d600d4e47e42d5e54b9a9343dac1a034960968e6216bff
 	sha256sums = 318a544b6239c776edcf26740f89635ce2dd54b573671609c99c768f4d8ce0f0
-
 pkgname = serioussam-pese2q
