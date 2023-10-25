@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dearseq
-_pkgver=1.12.1
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Differential Expression Analysis for RNA-seq data through a robust variance component test'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef98cd86986374d15bab59a237fd8ae9b46be6a492cf4a870a4f8984860b8d8a')
+sha256sums=('477849a98ee6498b7af515ad0ebf7e299ce1fb9ee2f71f4d85d7e97f0ae1bdd1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
