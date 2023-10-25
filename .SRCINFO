@@ -1,6 +1,6 @@
 pkgbase = jdtextedit
 	pkgdesc = An advanced text editor
-	pkgver = 11.0
+	pkgver = 11.1
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/jdTextEdit
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = jdtextedit
 	depends = python-jdtranslationhelper
 	depends = python-pyenchant
 	depends = python-lxml
-	source = jdtextedit-11.0.tar.gz::https://codeberg.org/JakobDev/jdTextEdit/archive/11.0.tar.gz
+	source = jdtextedit-11.1.tar.gz::https://codeberg.org/JakobDev/jdTextEdit/archive/11.1.tar.gz
 	source = distribution.json
-	sha256sums = 4ea5e756eb4fb289cc237ccdb01594b1f416eda903ecd1946efeb42f7d65b69a
+	sha256sums = 6b58f16dca6d0b2dbfac15b6ed971b6b83c3298520adf43b59dbfbcb658a80a7
 	sha256sums = c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13
 
 pkgname = jdtextedit
