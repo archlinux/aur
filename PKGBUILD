@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowPeaks
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='An R package for flow data clustering'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-flowcore
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7a5e3dc8d36bdf28bdd6a3617863d931456c04c4c752bbfa135c5e86ebc695b2')
+sha256sums=('84baaf3c7e8c2cd9790dfd086bf56ce07d448be6255285330dfc92b0b2fafafb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
