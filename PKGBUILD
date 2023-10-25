@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstatsLOBD
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Assay characterization: estimation of limit of blanc(LoB) and limit of detection(LOD)'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d1535a38256072627b66484a56749fcc36403989a23d0d6fbdd3c2f905fa5dfb')
+sha256sums=('d827e524edf1ae7a6e6d514eb49b69e8e13fe98b3623ca6760799b53c7dd77df')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
