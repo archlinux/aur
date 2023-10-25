@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-lsa
-pkgver=008.006.010.000
+pkgver=008.007.011.000
 pkgrel=1
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
@@ -33,7 +33,7 @@ sha256sums=(
   '4fbbbd1c72b1d7c9a29279fc135ae1e4a74c6942f47e0c579dc86800c2eaf62d'
   '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
   '1df03403bc1d780797f0eba59d85b1941a1c77f911d9e7d5d5ae4f288e52663a'
-  '766f1dab855afff3d6fce22256df29bf724f30badc5a3d969f8100a1b135c1fe'
+  '91600844c3aa5012dbda61c2f2c91b3dfe71e10b4a71bab5092964887b882e8a'
 )
 install=lsi-lsa.install
 backup=(
