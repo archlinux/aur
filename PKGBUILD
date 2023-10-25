@@ -6,7 +6,6 @@ _pkgname="ttf-$_fontname"
 pkgname="$_pkgname"
 pkgver=1.0
 pkgrel=1
-epoch=1
 pkgdesc="TrueType Font: DJB Zora Prints"
 url="http://darcybaldwin.com/djb-zora-prints-font/"
 license=('custom:Free for personal use')
