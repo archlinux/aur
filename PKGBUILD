@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '03cfb5453f4767f6e2b58dbfaa94e3f1460bba02183cc883293ff5d6d72eb3e1c9c2ebd68e333849fc3db26ddd77f955bd1e832f7f7a6656d87faca00c331cdc'
+  'cff9e2e67a9881a1f5602f6ada836810ae6b15697719f1dab5e06668bb442bdf29f53885b38be62e7000d33d59754c8bc4c6b3a10dd0653cd69dae5cbeb0977e'
 )
 md5sums=(
-  '58ba5531f208528e844053a8868a1c22'
+  '0a0fd08d54b031fc0ac4858bdfddfa72'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'

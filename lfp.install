@@ -1,7 +1,7 @@
 install(){
-  which yarn >/dev/null 2>&1 && yarn install /usr/share/lfp/ocr ||
-    which npm >/dev/null 2>&1 && npm install /usr/share/lfp/ocr ||
-    true
+  which npm >/dev/null 2>&1 && {
+    npm install -g /usr/share/lfp/ocr --unsafe-perm=true --allow-root ||
+    npm install /usr/share/lfp/ocr --user
 }
 
 post_install() {
