@@ -1,7 +1,7 @@
 pkgbase = r-levi
 	pkgdesc = Landscape Expression Visualization Interface
-	pkgver = 1.18.0
-	pkgrel = 3
+	pkgver = 1.20.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/levi
 	arch = x86_64
 	license = GPL
@@ -24,7 +24,7 @@ pkgbase = r-levi
 	depends = r-xml2
 	optdepends = r-biocstyle
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/levi_1.18.0.tar.gz
-	sha256sums = 5baf37b1ab1a2e535b53d4b920dd1fc37794586dfab1b4c54288380117e1c8b9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/levi_1.20.0.tar.gz
+	sha256sums = 9f794ab27d1477537ea262cf76c210da4a55849376ace0557a8a4f2d81acb05c
 
 pkgname = r-levi

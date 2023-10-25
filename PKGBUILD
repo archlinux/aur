@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=levi
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
-pkgrel=3
+pkgver=1.20.0
+pkgrel=1
 pkgdesc='Landscape Expression Visualization Interface'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5baf37b1ab1a2e535b53d4b920dd1fc37794586dfab1b4c54288380117e1c8b9')
+sha256sums=('9f794ab27d1477537ea262cf76c210da4a55849376ace0557a8a4f2d81acb05c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
