@@ -1,7 +1,7 @@
 pkgbase = libldap-2.5
 	pkgdesc = Lightweight Directory Access Protocol (LDAP) client libraries
 	pkgver = 2.5.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openldap.org/
 	arch = x86_64
 	license = custom
