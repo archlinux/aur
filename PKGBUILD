@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=BiocBaseUtils
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='General utility functions for developing Bioconductor packages'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('15c3d33fa6c817aee34533f63df63ababbafa5de3db02ded90ea6a1497ac6e90')
+sha256sums=('e588788262936ed9cc83ab198ec4a0e3b95f92af6cd443a66d1b6c9827fa32a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
