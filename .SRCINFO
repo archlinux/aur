@@ -1,6 +1,6 @@
 pkgbase = r-pengls
 	pkgdesc = Fit Penalised Generalised Least Squares models
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pengls
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-pengls
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pengls_1.6.0.tar.gz
-	sha256sums = c8286e2383428f5aa88ead7048fff442a53d72abe15b1ef8af599725ea024ac3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pengls_1.8.0.tar.gz
+	sha256sums = 7032facda977ed4ea831d1c1a0128a6c8bae0a4ff90c4d323698925ff08abdac
 
 pkgname = r-pengls
