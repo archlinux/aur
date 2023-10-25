@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DART
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Denoising Algorithm based on Relevance network Topology'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-breastcancervdx
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('961c090c0ee50a45c0496e6019e4be0727f39dbb3ffaabfbad311638e55e6a66')
+sha256sums=('ee212c94aa67da9c4b05062367d3fab5c54ab08e08898b687e0efab887c2601c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
