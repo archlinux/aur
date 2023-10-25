@@ -4,9 +4,9 @@
 pkgname=serioussam-alpha
 pkginstdir=serioussam
 ssa=SeriousSamAlphaRemake_v1.5.tar.xz
-pkgver=1.5
+pkgver=1.5.3
 _srcname="SeriousSamAlphaRemake-$pkgver"
-pkgrel=4
+pkgrel=1
 pkgdesc="Serious Sam Classic Alpha Reamake native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamAlphaRemake"
@@ -32,7 +32,7 @@ noextract=("SeriousSamAlphaRemake_v1.5.tar.xz.partaa"
 	"SeriousSamAlphaRemake_v1.5.tar.xz.partab"
 	"SeriousSamAlphaRemake_v1.5.tar.xz.partac"
 	"SeriousSamAlphaRemake_v1.5.tar.xz.partad")
-sha256sums=('df75c5b2810533d1227c7f9aa6533fa9c06f9917cfb12a536a49cb64bc06aaf7'
+sha256sums=('c8f23cba992bfea160a47d1542fe6814bc305e31083b2c28a9157d145b63eba9'
 	"d5eef988652bf0f157f58c4faf92911b1c71a948229a035e7a237f973b39db5b"
 	"c412a76659b87892d4bb879d53f774ba72b1e6905901a1e042a72821a6a412c1"
 	"331a0d2fd0cc6dce4a3eda3c2a898043ca4bc55fa8ab7fc2094f7f1f1df8853e"
