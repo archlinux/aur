@@ -12,7 +12,6 @@ pkgbase = jetporch-git
 	depends = pkg-config
 	provides = jetporch
 	conflicts = jetporch
-	replaces = jetporch
 	source = git+https://git.sr.ht/~mpdehaan/jetporch
 	b2sums = SKIP
 

@@ -14,7 +14,6 @@ makedepends=('git' 'rust' 'cargo' 'openssl')
 #optdepends=('')
 provides=('jetporch')
 conflicts=('jetporch')
-replaces=('jetporch')
 source=('git+https://git.sr.ht/~mpdehaan/jetporch')
 b2sums=('SKIP')
 _gitname=${pkgname%-git}
