@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gaggle
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='Broadcast data between R and Gaggle'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d8825145cdbd7a812405e93d8a30f491dec0a9c6f03efe058eb812c7230f919e')
+sha256sums=('cdfea5b68b86a4a6084277f039352ac294101c917391b693980e393b00954a9a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
