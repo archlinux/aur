@@ -1,8 +1,9 @@
-# Maintainer: meanlint <meanlint@outlook.com>
+# Maintainer: BryanLiang <liangrui.ch@gmail.com>
+# Contributor: meanlint <meanlint@outlook.com>
 
 pkgname=metacubexd-bin
 _pkgname=metacubexd
-pkgver=1.124.2
+pkgver=1.126.0
 pkgrel=1
 pkgdesc='Clash.Meta Dashboard, The Official One, XD'
 arch=('any')
@@ -19,6 +20,6 @@ sha256sums=('SKIP')
 
 package() {
   cd "$_pkgname"
-  find . -type f -not -path '*/\.git/*' -exec install -Dm 644 {} "${pkgdir}"/usr/share/"${_pkgname}"/{} \;
+  find . -type f -not -path '*/\.git/*' -exec install -Dm 644 {} "${pkgdir}/usr/share/${_pkgname}"/{} \;
 }
 
