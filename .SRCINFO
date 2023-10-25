@@ -1,13 +1,13 @@
 pkgbase = r-dks
 	pkgdesc = The double Kolmogorov-Smirnov package for evaluating multiple testing procedures.
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dks
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-cubature
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dks_1.46.0.tar.gz
-	sha256sums = 2f1635d52cb88a4cb94eb014f4aa7d7e3f6de44e9fbb058347fe88e9ce6378b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dks_1.48.0.tar.gz
+	sha256sums = 4d07b926a96f30329cb9fbd324425f678e651d725dadcff36782812fd7d95c77
 
 pkgname = r-dks
