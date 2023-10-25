@@ -3,25 +3,26 @@
 pkgname=motrix-git
 _pkgname=Motrix
 pkgver=1.8.19.r30.g7012040
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc."
 arch=('any')
 url="https://motrix.app/"
 _githuburl="https://github.com/agalwood/Motrix"
+_giteeurl="https://gitee.com/mirrors/motrix"
 license=('MIT')
 depends=('libxcb' 'gcc-libs' 'dbus' 'libxdamage' 'alsa-lib' 'mesa' 'gtk3' 'libxkbcommon' 'libxext' 'libxcomposite' \
     'nspr' 'pango' 'nss' 'libdrm' 'at-spi2-core' 'cairo' 'libcups' 'libxrandr' 'glib2' 'libx11' 'libxfixes' 'expat' 'glibc')
 makedepends=('gendesk' 'git' 'yarn' 'npm>=9.8.1' 'nodejs>=18.18.0')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname//-/.}::git+https://github.com/agalwood/Motrix.git")
+source=("${pkgname//-/.}::git+${_giteeurl}.git")
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
-    gendesk -q -f -n --categories "Network" --name "${pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname//-/.}"
     sed '157,178d' -i electron-builder.json
     yarn

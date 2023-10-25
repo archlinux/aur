@@ -1,7 +1,7 @@
 pkgbase = motrix-git
 	pkgdesc = A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc.
 	pkgver = 1.8.19.r30.g7012040
-	pkgrel = 1
+	pkgrel = 2
 	url = https://motrix.app/
 	arch = any
 	license = MIT
@@ -35,7 +35,7 @@ pkgbase = motrix-git
 	depends = glibc
 	provides = motrix=1.8.19.r30.g7012040
 	conflicts = motrix
-	source = motrix.git::git+https://github.com/agalwood/Motrix.git
+	source = motrix.git::git+https://gitee.com/mirrors/motrix.git
 	sha256sums = SKIP
 
 pkgname = motrix-git
