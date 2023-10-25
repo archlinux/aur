@@ -1,9 +1,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-apscheduler
-pkgver=3.10.0
-_commit=a2247473fb0f664ce02f6fb0c584a003df1e952b
-pkgrel=2
+pkgver=3.10.1
+_commit=be291699755e58ff398f90b5e71bff1e163df1db
+pkgrel=1
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 url="https://github.com/agronholm/apscheduler"
 license=('MIT')

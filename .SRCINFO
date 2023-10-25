@@ -1,0 +1,27 @@
+pkgbase = python-apscheduler
+	pkgdesc = In-process task scheduler with Cron-like capabilities
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://github.com/agronholm/apscheduler
+	arch = any
+	license = MIT
+	checkdepends = pifpaf
+	checkdepends = python-gevent
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-tornado
+	checkdepends = python-redis
+	checkdepends = python-sqlalchemy
+	checkdepends = python-tornado
+	checkdepends = python-twisted
+	checkdepends = redis
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python-setuptools
+	depends = python-six
+	depends = python-pytz
+	depends = python-tzlocal
+	source = git+https://github.com/agronholm/apscheduler.git#commit=be291699755e58ff398f90b5e71bff1e163df1db
+	sha512sums = SKIP
+
+pkgname = python-apscheduler
