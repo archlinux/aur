@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rtreemix
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='Rtreemix: Mutagenetic trees mixture models.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e319a079a8c32c44931a8994c03e7a686ead852c4f42e631f14c06978d91f411')
+sha256sums=('e57f94f6a2327d4579a5adc9937806c7fac244773d84ed3a7f4490aae25aca5d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
