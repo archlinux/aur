@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PathNet
-_pkgver=1.40.1
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.1
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='An R package for pathway analysis using topological information'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('68833e902ec4d1b156064e4cf53d4b0bb4ab12730c2f2e1da5422a6fd5160779')
+sha256sums=('fcba50e6df41aeaef25c5fbf4609e6d503114b322d6443838e1fb7149cc87ec7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
