@@ -1,18 +1,21 @@
 pkgbase = vencord-desktop-bin
 	pkgdesc = A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Vencord/Vesktop
+	arch = aarch64
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron27
 	depends = hicolor-icon-theme
-	provides = vencord-desktop=0.4.0
+	provides = vencord-desktop=0.4.1
 	conflicts = vencord-desktop
-	source = vencord-desktop-0.4.0.deb::https://github.com/Vencord/Vesktop/releases/download/v0.4.0/VencordDesktop_0.4.0_amd64.deb
 	source = vencord-desktop.sh
-	sha256sums = 7dab64d24b664c0e280e6a4a5250a059885d9e4b8e88da310266eec9fdc7739a
 	sha256sums = a8d790301249bf3a11217dd297354b3b59223609616ff7906cdfbb1bd20c7339
+	source_aarch64 = vencord-desktop-0.4.1-aarch64.deb::https://github.com/Vencord/Vesktop/releases/download/v0.4.1/VencordDesktop_0.4.1_arm64.deb
+	sha256sums_aarch64 = c65cfcc6ec0126ca39dcac0b4ca082c11a1c60e695a2f81c7295a83c8126ee57
+	source_x86_64 = vencord-desktop-0.4.1-x86_64.deb::https://github.com/Vencord/Vesktop/releases/download/v0.4.1/VencordDesktop_0.4.1_amd64.deb
+	sha256sums_x86_64 = bfae6df57e8ab7acdef9d0df9711d685a6efb25c8e5c50148952cc7ddf9c8011
 
 pkgname = vencord-desktop-bin
