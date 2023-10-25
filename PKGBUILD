@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HilbertVisGUI
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='HilbertVisGUI'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-lattice
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4ef44e8be389846eef8f9332dc66392d017eef2edd9c78399e8d76ed6f98db98')
+sha256sums=('8295dfdff3c658b56c39cbd732255e0770016457aec83acce13df51e37f13224')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
