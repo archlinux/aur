@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ARRmNormalization
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Adaptive Robust Regression normalization for Illumina methylation data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-arrmdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7fb62d6ad348300078b5a1fa1e565fa3e2e790e6bd9ba05492fdf020ce53600')
+sha256sums=('5572e2a5fccb6da841b8dd7516403da5c74891772bee6bc5040bbf27b8bba1b9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
