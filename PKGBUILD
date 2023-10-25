@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opal-appimage
 _pkgname=Opal
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Plays relaxing music in the background"
 arch=('x86_64')
 url="https://codedead.com/"
@@ -14,8 +14,8 @@ depends=('zlib' 'glibc')
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-${pkgver}.AppImage")
-sha256sums=('72015b4031e34cf47cbce202094f058506025836e1e25c1c2226e58642f77417')
-prepare() {
+sha256sums=('4f5fb19cf085c3f160f373100c89a4ff67dc1bff5b270db852df115b658328ef')
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|Exec=${_pkgname}|Exec=${pkgname%-appimage}|g;s|Icon=${_pkgname}|Icon=${pkgname%-appimage}|g" \
