@@ -1,21 +1,18 @@
 pkgbase = elvish-git
-	pkgdesc = An expressive programming language and versatile interactive shell.
-	pkgver = r5024.050863fb
+	pkgdesc = A friendly and expressive Unix shell
+	pkgver = v0.20.0.dev.r112.g1c0cffb
 	pkgrel = 1
-	url = https://github.com/elves/elvish
+	url = https://elv.sh
 	install = elvish.install
-	arch = i686
 	arch = x86_64
-	license = custom:2-clause BSD
+	license = BSD
 	makedepends = git
 	makedepends = go
-	makedepends = pandoc
 	depends = glibc
 	provides = elvish
 	conflicts = elvish
-	options = !strip
-	source = git+https://github.com/elves/elvish.git
-	md5sums = SKIP
+	options = !lto
+	source = elvish::git+https://github.com/elves/elvish.git
+	b2sums = SKIP
 
 pkgname = elvish-git
-

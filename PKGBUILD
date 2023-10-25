@@ -1,76 +1,76 @@
-# Maintainer: Haochen Tong <i at hexchain dot org>
+# Maintainer: hexchain <arch at hexchain dot org>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Qi Xiao <xiaqqaix at gmail dot com>
 
 pkgname=elvish-git
-pkgver=r5024.050863fb
+_pkgname=elvish
+pkgver=v0.20.0.dev.r112.g1c0cffb
 pkgrel=1
-pkgdesc='An expressive programming language and versatile interactive shell.'
-arch=('i686' 'x86_64')
-url="https://github.com/elves/elvish"
-license=('custom:2-clause BSD')
+pkgdesc="A friendly and expressive Unix shell"
+arch=('x86_64')
+url="https://elv.sh"
+license=('BSD')
+depends=('glibc')
+makedepends=('git' 'go')
+install="elvish.install"
+options=('!lto')
+source=("elvish::git+https://github.com/elves/elvish.git")
+b2sums=('SKIP')
 provides=('elvish')
 conflicts=('elvish')
-depends=('glibc')
-makedepends=('git' 'go' 'pandoc')
-source=("git+https://github.com/elves/elvish.git")
-md5sums=('SKIP')
-options=(!strip)
-install=elvish.install
-
-_repo=elvish
 
 pkgver() {
-    cd $_repo
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    export GOPATH=$srcdir/build
+  cd "$_pkgname"
 
-    mkdir -p build
-    cd elvish
-    go mod vendor
-    cd website
-    go mod vendor
+  # create directory for build output
+  mkdir build
+
+  # download dependencies
+  go mod download
 }
 
 build() {
-    export GOPATH=$srcdir/build
-    export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
-    # Disable cgo for reproducible build
-    export CGO_ENABLED=0
+  cd "$_pkgname"
 
-	cd $_repo
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
 
-	LDFLAGS="-X src.elv.sh/pkg/buildinfo.VersionSuffix=-dev.$(git rev-parse HEAD)\
-	         -X src.elv.sh/pkg/buildinfo.Reproducible=true"
-    go build -v -ldflags="$LDFLAGS" ./cmd/elvish
-
-    cd website
-    mkdir -p "$srcdir/doc"
-    go build -v ./cmd/elvdoc/
-    for file in builtin edit epm language math platform readline-binding re store str unix; do
-        ./elvdoc -filter < "ref/$file.md" | pandoc \
-            -s -f gfm -t man -V section:7 \
-            -V header:"Miscellaneous Information Manual" \
-            -V footer:"Elvish $pkgver" -M date:"$(date -u --date=@${SOURCE_DATE_EPOCH} "+%b %d, %Y")" \
-            -M title:"elvish-$file" \
-            -o "$srcdir/doc/elvish-$file.7"
-    done
+  go build -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -X github.com/elves/elvish/pkg/buildinfo.Reproducible=true \
+    -X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" \
+    -o build \
+    ./cmd/...
 }
 
 check() {
-    export GOPATH=$srcdir/build
-    export GOFLAGS="-trimpath -mod=vendor -modcacherw"
-    export CGO_ENABLED=0
-
-    cd $_repo
-    make test
+  cd "$_pkgname"
+  go test -v -race ./...
 }
 
 package() {
-    install -Dm755 "$srcdir/elvish/elvish" -t "$pkgdir/usr/bin/"
-    install -Dm644 "$srcdir/elvish/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  cd "$_pkgname"
 
-    install -dm755 "$pkgdir/usr/share/man/man7"
-    cp -rv --no-preserve=ownership "$srcdir/doc/"* "$pkgdir/usr/share/man/man7"
+  # binary
+  install -vDm755 -t "$pkgdir/usr/bin" build/elvish
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$_pkgname" ./*.md
+
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
+
