@@ -1,6 +1,6 @@
 pkgbase = r-spktools
 	pkgdesc = Methods for Spike-in Arrays
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spkTools
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-spktools
 	depends = r-gtools
 	depends = r-rcolorbrewer
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spkTools_1.56.0.tar.gz
-	sha256sums = f294c92c725929637cfb5d86483c394411c5dd519a6431f1ff769fea4ba83893
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spkTools_1.58.0.tar.gz
+	sha256sums = a49043efbb289e10024f38c92c67228767b72345eb81c9f690479eb5428c82b2
 
 pkgname = r-spktools
