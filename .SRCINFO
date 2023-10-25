@@ -1,7 +1,7 @@
 pkgbase = riseup-vpn
 	pkgdesc = Easy, fast, and secure VPN service from riseup.net
 	pkgver = 0.21.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://0xacab.org/leap/bitmask-vpn
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = riseup-vpn
 	makedepends = fakeroot
 	makedepends = git
 	makedepends = go
-	makedepends = golang-golang-x-text
 	makedepends = qt-installer-framework
 	makedepends = qt5-base
 	makedepends = qt5-svg
