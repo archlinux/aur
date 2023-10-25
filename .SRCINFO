@@ -1,12 +1,12 @@
 pkgbase = r-seq2pathway.data
 	pkgdesc = data set for R package seq2pathway
-	pkgver = 1.32.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/seq2pathway.data
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/seq2pathway.data_1.32.0.tar.gz
-	sha256sums = ec3b426143440c2e840f310ff2edae026fb10bc7c85e0e6bfd3b1ad1db743229
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/seq2pathway.data_1.33.0.tar.gz
+	sha256sums = 56e54dd2b4520361e8f8953079b882b9d62d28bfd734831ea5614fa551ce9f00
 
 pkgname = r-seq2pathway.data
