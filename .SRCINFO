@@ -1,12 +1,12 @@
 pkgbase = skpr
 	pkgdesc = CLI tool for managing web applications on the platform.
-	pkgver = 0.19.2
+	pkgver = 0.24.0
 	pkgrel = 13
 	url = https://github.com/skpr/cli
 	arch = x86_64
 	license = MIT
 	provides = skpr-rsh
-	source = skpr_v0.19.2::https://github.com/skpr/cli/releases/download/v0.19.2/skpr_0.19.2_linux_amd64.tar.gz
-	sha512sums = f3023d92dae052ef08cb247705af80498332f7414ba3858a32849065b96076cc3b6c4d3542acf9ac54c4fe36c2eae5f741503378b28aceeaa2a773826cab9416
+	source = skpr_v0.24.0::https://github.com/skpr/cli/releases/download/v0.24.0/skpr_0.24.0_linux_amd64.tar.gz
+	sha512sums = 1813ca38b9f38a5cc0792a4817e67a5f217c40bca6da95ea0085c3f7db2856139241b6a8f3ef1c44c712d2bb81ba327b94bd2b30db110ae9c3ebdfde1254ae53
 
 pkgname = skpr
