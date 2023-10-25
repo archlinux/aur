@@ -3,9 +3,9 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 pkgver=3.178.18
-pkgrel=1
+pkgrel=2
 _nodeversion=16
-_electronversion=25
+_electronversion=27
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.com"
