@@ -1,6 +1,6 @@
 pkgbase = gpgme
 	pkgdesc = A C wrapper library for GnuPG
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://www.gnupg.org/related_software/gpgme/
 	arch = x86_64
@@ -15,16 +15,12 @@ pkgbase = gpgme
 	makedepends = qt5-base
 	makedepends = qt6-base
 	makedepends = swig
-	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.22.0.tar.bz2
-	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.22.0.tar.bz2.sig
-	source = 0001-qt-tests-Fix-build-in-source-directory.patch
-	source = 0002-qt-tests-Fix-build-in-source-directory-part-2.patch
+	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.23.0.tar.bz2
+	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.23.0.tar.bz2.sig
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
 	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
-	sha256sums = 9551e37081ad3bde81018a0d24f245c3f8206990549598fb31a97a68380a7b71
+	sha256sums = 043e2efe18b4ad22b96d434dde763fbed32cf8d6c220dc69df0d0ffb9dc66fc6
 	sha256sums = SKIP
-	sha256sums = a0d3d02c46e7053cfc887271fea7d38f64439b9f67b14eaacec3e602de5dccd4
-	sha256sums = eaeae9b9818dd94c08954bb5c3535f43a80583f9c97d5e7f8ca62a104deeebe9
 
 pkgname = gpgme
 	depends = libgpg-error
