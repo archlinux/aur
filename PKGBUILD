@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=newreleases-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc='NewReleases.io CLI'
 url='https://newreleases.io'
