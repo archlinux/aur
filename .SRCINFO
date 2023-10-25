@@ -1,6 +1,6 @@
 pkgbase = lfp
 	pkgdesc = A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://gitlab.com/a4to/lfp
 	install = lfp.install
@@ -27,9 +27,9 @@ pkgbase = lfp
 	optdepends = nodejs: to make use of lfps built in node actions manager
 	optdepends = python3: to make use of lfps built in python actions manager
 	conflicts = lfp-git
-	source = https://software.concise.cc/x86_64/lfp-4.1.1-1-x86_64.pkg.tar.xz
+	source = https://software.concise.cc/x86_64/lfp-4.1.2-1-x86_64.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 3afac974ae6c28b9cbde9bfef3917257
-	sha512sums = bb4b8dda8c7e6fcd0f182b0ee817d6151d9d37053a4d032e3986c3d432e550081630e7e0dff81257a8dd2308b47a8ed0875f4ff895956040f04d697bcde38a97
+	md5sums = fe106a4e1bd56271136fc1e4e16eb676
+	sha512sums = 067090808b23d7108871c54f0169b23e5518bf0cd2f8cd3d4a1c190c446f21091c6a9050dafeb807fac5b181c58f2799710c9d73f2103145bf512e5bc11ef3dc
 
 pkgname = lfp
