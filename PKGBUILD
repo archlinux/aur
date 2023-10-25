@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=onlineFDR
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Online error control'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('255d17a3c86692bdd79e5ee0c2dd5e9c4b4b00b9f4dab9910b39adcebefcce36')
+sha256sums=('f5f14f3b7ec8b936778cdbfd505b01248be0b786d9ff8c3afd1c5605f93db80d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
