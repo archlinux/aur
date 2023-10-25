@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BayesKnockdown
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='BayesKnockdown: Posterior Probabilities for Edges from Knockdown Data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('271a5999656a9c1ebe34308758e430ea1fe467b5587cbd94e37e76d7f808ce21')
+sha256sums=('88869bc99b67d947642bcf38110e2ab13e65ea9965bdbb37585e34ea1e692fab')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
