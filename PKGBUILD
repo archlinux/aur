@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yeastCC
-_pkgver=1.40.0
+_pkgver=1.41.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.41.0
 pkgrel=1
 pkgdesc='Spellman et al. (1998) and Pramila/Breeden (2006) yeast cell cycle microarray data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7490a2f39410d2817c0f848a6f72058bb836e581390f670d6924ac316581254c')
+sha256sums=('ffcde401e830b52b036d257a46a62678da584a247e66745585f8170701111c33')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
