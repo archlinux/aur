@@ -1,6 +1,6 @@
 pkgbase = r-gem
 	pkgdesc = GEM: fast association study for the interplay of Gene, Environment and Methylation
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GEM
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-gem
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEM_1.26.0.tar.gz
-	sha256sums = 64ad3faa0ca012cad1dab8d2449e4efd6a2cfc13fbe165392a68fea5a56823b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEM_1.28.0.tar.gz
+	sha256sums = efbefb501dba47569251bb643ea4f8707c1e88f93e49500b80489934f095f0c3
 
 pkgname = r-gem
