@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocFileCache
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
-pkgrel=3
+pkgver=2.10.0
+pkgrel=1
 pkgdesc='Manage Files Across Sessions'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6fe9c495a70992ab6128bba9d5e474ffaa85e9a07fdcb4a7ab60d2ac40b161e2')
+sha256sums=('7df271b611ef58447ffb3dc6aba0e43206a3eac7176cc49451616e48c303dbc4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
