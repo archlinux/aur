@@ -2,7 +2,7 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname="Backend.AI Desktop"
-pkgver=23.09.0
+pkgver=23.09.1
 pkgrel=1
 pkgdesc="Backend.AI Web UI provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
 arch=("aarch64" "x86_64")
@@ -16,9 +16,9 @@ makedepends=('asar' 'gendesk')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('2a2aa770db0476e5ceb1a9f6a98622fe114734945e6c79f645a55b68d26bc6af')
-sha256sums_aarch64=('cfef2457a5265c81fd877e6d86905f0bdbfbfa063379a85115ae8514dcbc47f2')
-sha256sums_x86_64=('485ab3717a646d04421cf5ec42122d2d863a7f352f80039643a4b0289600c584')
+sha256sums=('eaaecd09868c37fd24aef8f3b50467c9b270af6ad1a386ecf5a885dfe04dba89')
+sha256sums_aarch64=('ed0c62af392c9b805028110978ba226fb3ac3a13f27944cc05f668bd43c0020b')
+sha256sums_x86_64=('c9343840845d501d7d57e356f6004e2b5a01e709382e0206f94394ead1f5b06b')
 build() {
     gendesk -q -f -n --pkgname="${_pkgname//./-}-bin" --categories "Development" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
     asar e "${srcdir}/${_appname}-linux-"*/resources/app.asar "${srcdir}/app.asar.unpacked"
