@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneticsPed
-_pkgver=1.62.1
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.1
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='Pedigree and genetic relationship functions'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a032b20562f110d393ec95e8d15f3bb0048584efe2b84110b0067c0fc17b4018')
+sha256sums=('c8d7140b0f35e1a563c56480f8d6bc497d02683604b4aa9dae0d23e8737b592f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
