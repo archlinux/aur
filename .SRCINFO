@@ -1,6 +1,6 @@
 pkgbase = insomnium-bin
 	pkgdesc = API Client and Design Platform for GraphQL and REST (Privacy focused Insomnia fork)
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ArchGPT/insomnium
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = insomnium-bin
 	provides = insomnium
 	conflicts = insomnium
 	conflicts = insomnium-git
-	source = insomnium-0.2.0.deb::https://github.com/ArchGPT/insomnium/releases/download/core@0.2.0/Insomnium.Core-0.2.0.deb
-	sha256sums = 971f1bb71a9b0f6e80b8fdb6d3b33cfdfaa2451b95473ae7ed3d9ab4e668e59f
+	source = insomnium-0.2.2.deb::https://github.com/ArchGPT/insomnium/releases/download/core@0.2.2/Insomnium.Core-0.2.2.deb
+	sha256sums = e5208cd7c476153e67a2a2f3746ed92d179ec471ffc5828b10b28c10db5722d4
 
 pkgname = insomnium-bin

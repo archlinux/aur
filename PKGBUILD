@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 
 pkgname="insomnium-bin"
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="API Client and Design Platform for GraphQL and REST (Privacy focused Insomnia fork)"
 arch=("x86_64")
@@ -15,7 +15,7 @@ optdepends=(
 provides=("insomnium")
 conflicts=("insomnium" "insomnium-git")
 source=("insomnium-${pkgver}.deb::$url/releases/download/core@${pkgver}/Insomnium.Core-${pkgver}.deb")
-sha256sums=('971f1bb71a9b0f6e80b8fdb6d3b33cfdfaa2451b95473ae7ed3d9ab4e668e59f')
+sha256sums=('e5208cd7c476153e67a2a2f3746ed92d179ec471ffc5828b10b28c10db5722d4')
 
 prepare() {
   bsdtar xf data.tar.xz
@@ -31,6 +31,7 @@ package() {
   mv "$pkgdir/usr/share/applications/insomnia.desktop" "$pkgdir/usr/share/applications/insomnium.desktop"
   mv "$pkgdir/usr/share/icons/hicolor/0x0/apps/insomnia.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/insomnium.png"
 
+  rm -rf "$pkgdir/usr/share/icons/hicolor/0x0"
   sed -i -e "s/Icon=insomnia/Icon=insomnium/g" "$pkgdir/usr/share/applications/insomnium.desktop"
 
   mkdir -p "$pkgdir/usr/bin"
