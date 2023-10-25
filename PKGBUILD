@@ -4,7 +4,7 @@
 
 _pkgname=digikam
 pkgname="$_pkgname-git"
-pkgver=8.1.0.r46.a12baf6dcb
+pkgver=8.1.0.r673.41241c0e82
 pkgrel=1
 epoch=1
 pkgdesc='An advanced digital photo management application'
@@ -17,10 +17,10 @@ depends=(
 	glu
 	imagemagick
 	jasper
-	kcalendarcore
-	kfilemetadata
-	kio
-	knotifyconfig
+	kcalendarcore5
+	kfilemetadata5
+	kio5
+	knotifyconfig5
 	lensfun
 	libass
 	libgphoto2
@@ -31,7 +31,7 @@ depends=(
 	qt5-networkauth
 	qt5-webengine
 	qt5-xmlpatterns
-	threadweaver
+	threadweaver5
 )
 makedepends=(
 	boost
@@ -39,7 +39,7 @@ makedepends=(
 	eigen
 	extra-cmake-modules
 	git
-	kdoctools
+	kdoctools5
 )
 optdepends=('darktable: RAW import'
             'hugin: panorama tool'
