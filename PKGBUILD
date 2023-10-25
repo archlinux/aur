@@ -1,6 +1,6 @@
 # Maintainer:
 
-pkgname=libldap25
+pkgname=libldap-2.5
 pkgver=2.5.16
 pkgrel=1
 pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries"
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('libtool' 'libsasl' 'e2fsprogs' 'util-linux' 'chrpath' 'unixodbc' 'libsodium')
 depends=('libsasl' 'e2fsprogs')
 options=('!makeflags' 'emptydirs')
-provides=(libldap=${pkgver})
+provides=(libldap-2.5)
 source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz)
 sha256sums=('546ba591822e8bb0e467d40c4d4a30f89d937c3a507fe83a578f582f6a211327')
 
