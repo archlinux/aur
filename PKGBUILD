@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=znapzupport
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Collection of CLI helpers for ZnapZend'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha512sums=(
-  '85983108db5436b7bed2826ef906034a0ff35df757ce65ed415e267bada63ca15d337e0cef3620e24b06b883992856a5530853527383e3014f0b2c34ac925289'
+  'a092458cefb548da288ef306b562df6c4f4ff2a0e3296800903c7f88b608f570a973e5d1b43116eafcc527ba82ba3958997d98636e8f74f5c42057b000eae088'
 )
 
 noextract=("${pkgname}-${pkgver}.tar.gz")
