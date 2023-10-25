@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rgraphviz
-_pkgver=2.44.0
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
-pkgver=2.44.0
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='Provides plotting capabilities for R graph objects'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1e0f177053c4ce82e22edde7724cd4e2e7b426982ff5f56f9123235cedc61b7')
+sha256sums=('5e87fa40363e7ccc294946436b25cbdc3fa7b080e081e0777464db684ef6860e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
