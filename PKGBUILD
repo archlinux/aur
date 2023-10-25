@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=AnVILWorkflow
-_pkgver=1.0.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('351e6afcc0568d82cb69f4fa6efb67ee')
-sha256sums=('8f382969d39a8d3a51c67a6aeb6950b8ed5c8dd420c2f475e7da69855860431f')
+md5sums=('af890e3cea3c42346ec887603ba12e40')
+sha256sums=('b170a2d4b3389a7f5726135596ace4382cf4886cb0c735c20603c4386fbddb97')
 
 build() {
   mkdir -p build
