@@ -24,4 +24,12 @@ EOF
   fi
 }
 
+post_install() {
+    echo "/etc/sslh.cfg editing is required!"
+    echo "Details: https://github.com/yrutschle/sslh/blob/master/doc/config.md"
+    echo "Don't forget execute 'systemctl daemon-reload' and 'systemctl restart sslh.socket' after editing."
+    echo "/usr/bin/sslh is symlinked on sslh-fork by default."
+    echo
+}
+
 # vim:set ts=2 sw=2 ft=sh et:
