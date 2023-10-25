@@ -1,0 +1,19 @@
+pkgbase = tmux-sixel-git
+	pkgdesc = A terminal multiplexer(build with sixel)
+	pkgver = 10136_3.3a.r303.gb7777807
+	pkgrel = 1
+	url = https://github.com/tmux/tmux/wiki
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	depends = ncurses
+	depends = libevent
+	optdepends = libutempter: Record user sessions to utmp and wtmp files [add to depends array and rebuild to enable]
+	provides = tmux
+	conflicts = tmux
+	source = git+https://github.com/tmux/tmux.git
+	md5sums = SKIP
+
+pkgname = tmux-sixel-git
