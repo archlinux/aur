@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rhdf5filters
-_pkgver=1.12.1
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='HDF5 Compression Filters'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('351145e3d7dd5d6b71d52455283ece2927bcae04a727376b869747808bea3ced')
+sha256sums=('acc1028ad216e4b2845ba1e53c1fcd79d1dbf96c2aed6dcfb15952ff9e95f7aa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
