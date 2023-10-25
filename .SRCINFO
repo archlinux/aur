@@ -1,6 +1,6 @@
 pkgbase = r-simlr
 	pkgdesc = Single-cell Interpretation via Multi-kernel LeaRning (SIMLR)
-	pkgver = 1.26.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SIMLR
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-simlr
 	optdepends = r-igraph
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIMLR_1.26.1.tar.gz
-	sha256sums = 48360dc42ea44bae261cf330cbb3b23277880a42d710d8f2d07b2a638c38f894
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIMLR_1.28.0.tar.gz
+	sha256sums = 5efb3a0248baf6b99728cdd2242b1ef437d4275dad8f43fa0e6e4854c1270ff2
 
 pkgname = r-simlr
