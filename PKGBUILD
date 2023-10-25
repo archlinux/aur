@@ -4,7 +4,7 @@
 
 _pkgname=cura
 pkgname=$_pkgname-bin
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
@@ -17,32 +17,30 @@ conflicts=($_pkgname)
 options=('!strip')
 
 source=(
-  "https://github.com/Ultimaker/Cura/releases/download/${pkgver}/UltiMaker-Cura-${pkgver}-linux-modern.AppImage"
-  'AppRun-UltiMaker-Cura.patch'
-  'AppRun-CuraEngine.patch'
+  "https://github.com/Ultimaker/Cura/releases/download/${pkgver}/UltiMaker-Cura-${pkgver}-linux-X64.AppImage"
+  'AppRun.env.patch'
+  'UltiMaker-Cura'
 )
 
 sha512sums=(
-  'e1a174f79b5b67359126b607aabbab57eba03cf265d443608cee884e2ed18d49ccd0ebfe4fa5178e0eeb7f831e732eaf9ebd39d2ff205f5d8104cb7d783ec43a'
-  'bf5fa289d8f4193e186a0d8d7e5dc5e902789674bf6c2a068655d639f1be1e7c9d9757c4709801f10c86501c6722a94a97051f662f6d1d85294d1cba16145f63'
-  '5a005722d6b97abe9b8fce1aa74877b5be75ec58f03afb3049d4a4df431caf4e8aba825716696f010557ac1682bfecc9e4133297c3280528af4be2e30b560860'
+  'e8f16496e862b8a4c20455fa24c250efdcf1f5b35f94859d187e02ca8d574b42287683d6919328a62c0d1d37ac2f078303b73714228b9f210245530a459e7700'
+  'f38418120edb77ae419f40998ad64f13dd3535e2b74580ce4e6a21dd04268834bb4a6932c49fa4adbf1b0ee8c127de10f331a7aa6ce889a861e8500288d747bc'
+  '7840e0825d36bcc524f7ed8d10c94d545a276fe9772643e607fc4ca95f4b49a15c8f058add15bb3dbf134281d3b807fae0f76156623070dac1643e652f84bcae'
 )
 
 prepare() {
   [[ -d squashfs-root ]] && rm -rf squashfs-root
-  chmod 755 UltiMaker-Cura-${pkgver}-linux-modern.AppImage
-  ./UltiMaker-Cura-${pkgver}-linux-modern.AppImage --appimage-extract
-  patch -Np1 -F5 -o UltiMaker-Cura squashfs-root/AppRun AppRun-UltiMaker-Cura.patch
-  patch -Np1 -F5 -o CuraEngine squashfs-root/AppRun AppRun-CuraEngine.patch
+  chmod 755 UltiMaker-Cura-${pkgver}-linux-X64.AppImage
+  ./UltiMaker-Cura-${pkgver}-linux-X64.AppImage --appimage-extract
   hardlink --content --maximize squashfs-root
+  cd squashfs-root
+  patch -p1 < ../AppRun.env.patch
 }
 
 package() {
   install -Dm755 UltiMaker-Cura "$pkgdir/usr/bin/UltiMaker-Cura"
   ln -s /usr/bin/UltiMaker-Cura "$pkgdir/usr/bin/cura"
-  install -Dm755 CuraEngine "$pkgdir/usr/bin/CuraEngine"
-  ln -s /usr/bin/CuraEngine "$pkgdir/usr/bin/cura-engine"
-  install -Dm644 squashfs-root/cura.desktop "$pkgdir/usr/share/applications/cura.desktop"
+  install -Dm644 squashfs-root/com.ultimaker.cura.desktop "$pkgdir/usr/share/applications/com.ultimaker.cura.desktop"
   install -Dm644 squashfs-root/cura-icon.png "$pkgdir/usr/share/pixmaps/cura-icon.png"
   install -dm755 "$pkgdir/opt"
   mv squashfs-root "$pkgdir/opt/ultimaker-cura"
