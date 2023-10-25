@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=words-picker-bin
 pkgver=53.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Hope to become a good word retrieval application.希望成为一款好的取词应用"
 arch=("x86_64")
 url="https://github.com/ziqiangxu/words-picker"
@@ -13,7 +13,7 @@ source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/$
     "LICENSE::https://raw.githubusercontent.com/ziqiangxu/words-picker/v${pkgver}/LICENSE")
 sha256sums=('be666577f86f12afde1ec40a4283ca6e0b5d724e813faa9769261f9b05870596'
             '15c866670d9927e3c1dfe818f42be61b5e479ce7d63edb75471bf4a464be17e0')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|.png||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
