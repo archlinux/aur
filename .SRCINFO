@@ -1,0 +1,15 @@
+pkgbase = python-hilbertcurve
+	pkgdesc = Converts between one-dimensional distance along a Hilbert curve and n-dimensional points
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/galtay/hilbertcurve
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/h/hilbertcurve/hilbertcurve-2.0.5.tar.gz
+	sha256sums = 6a7703d9a2f1fe748c86d86908bf183e7d139b973645e4b2526e10b34e75796d
+
+pkgname = python-hilbertcurve
