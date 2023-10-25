@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASAFE
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Ancestry Specific Allele Frequency Estimation'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('51b9830f08fd07a358182392f4a833a62b95e586052c7d87f1eb74518a20bc17')
+sha256sums=('6859900cccb93fc9f2b0e130213095c63b84db513a4d2d18a4e85e9b8a16f68e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
