@@ -26,8 +26,8 @@ pkgbase = wsjtx-improved
 	provides = wsjtx
 	conflicts = wsjtx
 	options = !lto
-	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v2.7.1/Source%20code/wsjtx-2.7.1-devel_improved_PLUS_231024.tgz
-	md5sums = 718e0471cf022fd93386acaf6fdaabb6
-	sha1sums = 48544601bc10ce7a2a7bfe487996b5be73e8718a
+	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v2.7.1/Source%20code/wsjtx-2.7.1-devel_improved_PLUS_231026.tgz
+	md5sums = ae680d2fbf143516cf6171df4a0cc51b
+	sha1sums = afe2248cc6093bcfd216cd0f5c450c8e59902389
 
 pkgname = wsjtx-improved
