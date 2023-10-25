@@ -2,7 +2,7 @@
 # Contributor: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell
 pkgver=1.2.0+294+g5b7afc6
-pkgrel=3
+pkgrel=4
 pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
 url="https://github.com/pop-os/shell"
@@ -35,6 +35,9 @@ pkgver() {
 prepare() {
   cd shell
 #  patch -Np1 -i ../0001-Remove-schema-handling-from-transpile.sh.patch
+
+  # Fix the title bar showing/hiding
+  git cherry-pick -n 3386f426b1750a166c767c583dcb69ed2997234f
 }
 
 build() {

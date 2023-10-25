@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-pop-shell
 	pkgdesc = GNOME Shell extension for advanced tiling window management
 	pkgver = 1.2.0+294+g5b7afc6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pop-os/shell
 	arch = any
 	license = GPL3
