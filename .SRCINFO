@@ -1,12 +1,12 @@
 pkgbase = r-genocn
 	pkgdesc = genotyping and copy number study tools
-	pkgver = 1.52.0
+	pkgver = 1.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/genoCN
 	arch = x86_64
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genoCN_1.52.0.tar.gz
-	sha256sums = 1eb6a82702968a8a4349be5b3c1a77cade1d7c1c98e82fd67e37c9bafa1a8b36
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genoCN_1.54.0.tar.gz
+	sha256sums = f3ddee592b99af2e2fb9b564e58930f117e5dbbe5a794dc6eee6ecdaf8519f88
 
 pkgname = r-genocn
