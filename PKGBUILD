@@ -5,9 +5,9 @@
 
 pkgname=minio-client
 pkgver=2023.10.24
-_timever=T05-18-28Z
+_timever=T21-42-22Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64')
 url='https://minio.io/downloads/#minio-client'
@@ -23,7 +23,10 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  GO_LDFLAGS="\
+      -linkmode=external \
+      -compressdwarf=false"
 
   cd mc
 
@@ -31,7 +34,7 @@ build() {
   sed -i "s/ReleaseTag.*/ReleaseTag = \"RELEASE.${_pkgver}\"/g" cmd/build-constants.go
   sed -i "s/CommitID.*/CommitID = \"$(git rev-parse HEAD)\"/g" cmd/build-constants.go
 
-  go build .
+  go build -ldflags "$GO_LDFLAGS" .
 }
 
 package() {
