@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=RPostgres
-_cranver=1.4.5
+_cranver=1.4.6
 pkgname=r-${_cranname,,}
 pkgdesc="Rcpp Interface to PostgreSQL"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -18,7 +18,7 @@ depends=(
     "r-hms>=1.1.0"
     "r-lubridate"
     "r-plogr>=0.0.2"
-    "r-rcpp>=1.0.7"
+    "r-cpp11"
     "r-withr"
     "r>=3.1.0"
 )
@@ -50,7 +50,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("e682c3f808d83c0cfc44dfe8a0cfc358666717135a5c09abadfed074f21008bd3531a188408515721127e0d029d84316110650832b72592bbcc3161e0d57f0e5")
+b2sums=("acd6f9b62940f4c2671e4bd7a7aefe0ad6e7ea388ae630c11f03ede942431f15c29f9faa1bd94761b0591a9e426b1302c2fe73b90ba93c2d51f7fb60fa8e1a8b")
 
 build() {
     mkdir -p "${srcdir}/build/"
