@@ -1,0 +1,19 @@
+pkgbase = hexabyte
+	pkgdesc = A modern, modular, and robust TUI hex editor
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/thetacom/hexabyte
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-hilbertcurve
+	depends = python-linkify-it-py
+	depends = python-munch
+	depends = python-textual
+	depends = python-toml
+	source = https://files.pythonhosted.org/packages/source/h/hexabyte/hexabyte-0.8.3.tar.gz
+	sha256sums = 3379e2638629efb1f785dd85e8d38ec2b9dd41fd51db57bfd698375091d722bb
+
+pkgname = hexabyte
