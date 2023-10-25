@@ -5,9 +5,9 @@ pkgname=serioussam-xplus
 pkginstdir=serioussam
 xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
-pkgver=1.10.5
+pkgver=1.10.6
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=4
+pkgrel=1
 pkgdesc="Serious Sam Classic native Linux XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -30,24 +30,20 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partac"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partaa"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partab"
-	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partac"
-    "0001-remove_SE1_10b_depend.patch"
-    "0003-Fix-load-some-incorrect-custom-maps.patch")
+	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partac")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
 	"SamTSE-XPLUS.tar.xz.partaa"
 	"SamTSE-XPLUS.tar.xz.partab"
 	"SamTSE-XPLUS.tar.xz.partac")
-sha256sums=('ecd850cabd144b29bcec97de4ad8a1ffc14144432744de9bf39fe1d00385daf6'
+sha256sums=('8a21136103cf90b60775eb5985b4a5696d268002fbd2dfab8a4284d4cef04365'
             '01b2e2d4dbdb65b2f1e174fbd6606d70806e97b6a45047ed6c58e7b801f6a879'
             'f8f35bcc54ed888b72b8660319ad089b7243b9e8d83aefabdb8f0111fcb0b728'
             '3da6b8588115cf31cb67e15f527dc8b6a83da16fe35ac8c7b78ed9522e0211a4'
             '28a90da56de5d6591a2e65154778030ba28b375d29556fd7e1db085d2c00b877'
             '93fe183a2f0a35989b3d1678dddb1c5976cda94747d4186c6f36af4ccf144443'
-            '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35'
-            '244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0'
-            '36b0c4da5133ef5dcdcfd21767c84f7b3e9711413549b565957a734e549ee300')
+            '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -55,10 +51,6 @@ else
 fi
 
 prepare(){
-  # Prepare patch
-  cat 0001-remove_SE1_10b_depend.patch > "$srcdir/$_srcname/0001-remove_SE1_10b_depend.patch"
-  cat 0003-Fix-load-some-incorrect-custom-maps.patch > "$srcdir/$_srcname/0003-Fix-load-some-incorrect-custom-maps.patch"
-
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
   cat "$xplus_tse".part* > "$xplus_tse"
@@ -83,11 +75,6 @@ prepare(){
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE/g' build-linux"$_bits".sh
   # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits".sh
-
-  cd "$srcdir/$_srcname"
-  # apply patch
-  patch -p1 < 0001-remove_SE1_10b_depend.patch || return 1
-  patch -p1 < 0003-Fix-load-some-incorrect-custom-maps.patch || return 1
 }
 
 build(){
