@@ -6,7 +6,7 @@ _name="GeoAlchemy2"
 pkgdesc="Using SQLAlchemy with Spatial Databases"
 url="https://geoalchemy-2.readthedocs.io/"
 
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 
 arch=("any")
@@ -36,7 +36,7 @@ checkdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("d5a039773201186a5c054619b1b4812d369fab79f1f499e7e7e0c46e8059ddbaaa8d3360206bb5d55fdb6e84028e915829e823fa13e7176639728f75fb8b888a")
+b2sums=("801f09d5bda8fa44897fb58d69b428fe7e7229cfec75b0a2e0e239df8f687f7fec3d5f735ba91f0639036741a87c4f0cecb54a9835d49035cfc70616576d7c41")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
