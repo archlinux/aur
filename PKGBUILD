@@ -2,7 +2,7 @@
 
 _pkgname='dune3d'
 pkgname="${_pkgname}-git"
-pkgver=5600a99
+pkgver=r8.74eea37
 pkgrel=1
 pkgdesc='3D CAD application'
 arch=('x86_64')
@@ -16,19 +16,19 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-  git describe --always --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	cd "${_pkgname}"
+  cd "${_pkgname}"
   meson setup build
   meson compile -C build
 }
 
 package() {
-	cd "${_pkgname}"
-	install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${_pkgname}"
+  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

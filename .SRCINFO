@@ -1,6 +1,6 @@
 pkgbase = dune3d-git
 	pkgdesc = 3D CAD application
-	pkgver = 5600a99
+	pkgver = r8.74eea37
 	pkgrel = 1
 	url = https://github.com/dune3d/dune3d
 	arch = x86_64
