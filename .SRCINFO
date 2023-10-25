@@ -1,6 +1,6 @@
 pkgbase = blobdrop-git
 	pkgdesc = Drag and drop files directly out of the terminal
-	pkgver = 2.0.r2.g05e8039
+	pkgver = 2.0.r50.g69acf26
 	pkgrel = 1
 	url = https://github.com/vimpostor/blobdrop
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = blobdrop-git
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
+	depends = xcb-util-wm
 	source = git+https://github.com/vimpostor/blobdrop.git
 	md5sums = SKIP
 
