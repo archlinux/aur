@@ -2,7 +2,7 @@
 
 pkgname="ukrmol-in"
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Inner region programs for UKRmol+"
 arch=('any')
 url='https://zenodo.org/records/5799110'
@@ -57,10 +57,13 @@ package() {
 
   install -d "${pkgdir}"/usr/bin/
   install -d "${pkgdir}/usr/lib/${pkgname}"
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -Dm 755 "${srcdir}/${pkgname}-${pkgver}"/bin/* "${pkgdir}"/usr/bin/
 
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}"/lib/*.a "${pkgdir}/usr/lib/${pkgname}"
+
+  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}"/doc/* "${pkgdir}/usr/share/doc/${pkgname}"
 
 }
 
