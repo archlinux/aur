@@ -1,0 +1,20 @@
+pkgbase = brisqi-bin
+	pkgdesc = Offline-first personal Kanban app.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://brisqi.com/
+	arch = x86_64
+	license = custom:commercial
+	depends = bash
+	depends = electron25
+	depends = hicolor-icon-theme
+	provides = brisqi=0.11.0
+	conflicts = brisqi
+	source = brisqi-0.11.0.deb::https://github.com/Brisqi/releases/releases/download/v0.11.0/Brisqi-setup-0.11.0-linux-amd64.deb
+	source = LICENSE.html::https://brisqi.com//terms
+	source = brisqi.sh
+	sha256sums = 82653aa79b6379da366b718fd7f73d422361085a7cf4b3b3e35618e0c0f1be0e
+	sha256sums = 692393b93bc2cab5e1a5ed1fabdf19de245a07efdfaeee6e837c8d426298406f
+	sha256sums = 5418559cbb16d1da42a6527d13c467b7b4ba7697699d28a9d50cb96411bb11eb
+
+pkgname = brisqi-bin
