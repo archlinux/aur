@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ADaCGH2
-_pkgver=2.40.0
+_pkgver=2.42.0
 pkgname=r-${_pkgname,,}
-pkgver=2.40.0
+pkgver=2.42.0
 pkgrel=1
 pkgdesc='Analysis of big data from aCGH experiments using parallel computing and ff objects'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmpi
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5bc331003b6f9c6662f21f4e33a6784e9f549b83c48e46dea073880d7b9eacd6')
+sha256sums=('a3f32231d71362721e4a955946339c682cbaa0de5f85f6b43c634f863fb1ef53')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
