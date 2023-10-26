@@ -2,8 +2,8 @@
 
 _name=guidata
 pkgname="python-${_name}"
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Python library generating graphical user interfaces for easy dataset editing and display"
 arch=('any')
 url="https://github.com/PlotPyStack/${_name}"
@@ -12,15 +12,15 @@ depends=(python-qtpy python-pyqt5-datavisualization python-pyqt5-webengine pytho
 makedepends=(python-build python-installer python-wheel python-pydantic)
 optdepends=('spyder: GUI-based test launcher, dict/array editor')
 source=("$_name-$pkgver.tar.gz::https://github.com/PlotPyStack/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('99aafa290274bccd3f2a0cd67ecf27cb7492fb336fa24ee22339f9a23141e301')
+sha256sums=('f93ae44d6b8b7f30bd6463483b65632dd13f347af57ff49a3cecb198d9edd96e')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "${_name}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cd "${_name}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
