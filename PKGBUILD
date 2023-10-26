@@ -5,7 +5,7 @@ _pkgname=lamW
 _pkgver=2.2.1
 pkgname=r-${_pkgname,,}
 pkgver=2.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Lambert-W Function'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
 )
 optdepends=(
   r-covr
+  r-methods
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
