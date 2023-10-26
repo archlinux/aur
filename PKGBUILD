@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneGeneInteR
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Tools for Testing Gene-Gene Interaction at the Gene Level'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
   r-snpstats
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d5010d5f6dfaeb188be6497f35a8d679cab66131b18d1e55c1c951508f55fbe6')
+sha256sums=('fe6fea77a026faa323539d5e485cd7d2e4b07247d2b6b1bc6d0dd8c5503cdfad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
