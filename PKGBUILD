@@ -4,7 +4,7 @@ _pkgname=assertive.datetimes
 _pkgver=0.0-3
 pkgname=r-${_pkgname,,}
 pkgver=0.0.3
-pkgrel=4
+pkgrel=8
 pkgdesc='Assertions to Check Properties of Dates and Times'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('014e2162f5a8d95138ed8330f7477e71c908a29341697c09a1b7198b7e012d94')
 
 build() {
