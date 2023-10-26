@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=ps7_libps4000a
-pkgver=2.1.113_2r3501
+pkgver=2.1.124_2r5349
 pkgrel=1
 pkgdesc="Library for PicoScope 4000a series in PicoScope 7"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps4000a/libps4000a_${pkgver//_/-}_amd64.deb")
-md5sums=('18847c0bfbb8366ff8313ffe05968a3f')
+md5sums=('3fd357d68625e95bef1da11769b173ff')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
