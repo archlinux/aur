@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowClean
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='flowClean'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-gridextra
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4067d140365829b92373fe14da9919417712eed224bc658b9b81f341b1985eb6')
+sha256sums=('0a0029fd76fd2f9dd2ba7bd5ccabeeebb53438a947143e6bae79d96c55a00325')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
