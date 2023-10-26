@@ -4,7 +4,7 @@ _pkgname=assertive.types
 _pkgver=0.0-3
 pkgname=r-${_pkgname,,}
 pkgver=0.0.3
-pkgrel=4
+pkgrel=8
 pkgdesc='Assertions to Check Types of Variables'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
   r-xml2
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ab6db2eb926e7bc885f2043fab679330aa336d07755375282d89bf9f9d0cb87f')
 
 build() {

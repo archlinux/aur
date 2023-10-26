@@ -1,7 +1,7 @@
 pkgbase = r-assertive.types
 	pkgdesc = Assertions to Check Types of Variables
 	pkgver = 0.0.3
-	pkgrel = 4
+	pkgrel = 8
 	url = https://cran.r-project.org/package=assertive.types
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-assertive.types
 	optdepends = r-dplyr
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/assertive.types_0.0-3.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/assertive.types/assertive.types_0.0-3.tar.gz
 	sha256sums = ab6db2eb926e7bc885f2043fab679330aa336d07755375282d89bf9f9d0cb87f
 
 pkgname = r-assertive.types
