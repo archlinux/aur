@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=coRdon
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Codon Usage Analysis and Prediction of Gene Expressivity'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c2349d0f84a91f681d3af0cbf297ca93e5feb9867cbd6e93d3ac1510c1ee3ae2')
+sha256sums=('0b3ccdf6e515ec452ef4284d96d5beb7c6f96cd6f3f23d3a3653b9e57a4f03a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
