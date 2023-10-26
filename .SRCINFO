@@ -1,6 +1,6 @@
 pkgbase = r-mlp
 	pkgdesc = Mean Log P Analysis
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MLP
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-mlp
 	optdepends = r-org.rn.eg.db
 	optdepends = r-reactome.db
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MLP_1.48.0.tar.gz
-	sha256sums = 7a23df62b1e454d8133cf37bf8704fa71a4797e8a25b60af734a1fcfbd79d3b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MLP_1.50.0.tar.gz
+	sha256sums = 9093f4a28a2c7d8dc13000dadf362d0207cb9127cf09175e6cb00582bac00642
 
 pkgname = r-mlp
