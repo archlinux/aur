@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethTargetedNGS
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Perform Methylation Analysis on Next Generation Sequencing Data'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   hmmer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23eb9dadbe74065e08d0cf7538b82879b3defd6ea7ce2df2ffe29aeed03fd417')
+sha256sums=('8cef3643e99f5f79706f68d542e73be6a964649f7b382c66e9b8f08be3fd4817')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
