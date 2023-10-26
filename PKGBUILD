@@ -4,7 +4,7 @@ _pkgname=assertive.properties
 _pkgver=0.0-5
 pkgname=r-${_pkgname,,}
 pkgver=0.0.5
-pkgrel=3
+pkgrel=7
 pkgdesc='Assertions to Check Properties of Variables'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('b68954f53082561f0242682611bf3373e0bf30d8ac2256d82474edc5f992f4dd')
 
 build() {
