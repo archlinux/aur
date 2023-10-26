@@ -1,6 +1,6 @@
 pkgbase = amdgpu_top-bin
 	pkgdesc = Tool that shows AMD GPU utilization (binary release)
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/Umio-Yasuno/amdgpu_top
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = amdgpu_top-bin
 	depends = libdrm
 	provides = amdgpu_top
 	conflicts = amdgpu_top
-	source = https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v0.2.1/amdgpu-top_0.2.1_amd64.deb
-	sha256sums = 1a005a28b8cf9b3bc3fcfb1ac1a2d17cb970f3e54accb7ff6bd3db048586015a
+	source = https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v0.2.3/amdgpu-top_0.2.3_amd64.deb
+	sha256sums = 251de439da83866b61305b8d5ad3f11031cff25a790273da0d1bdf2ab84b1bc7
 
 pkgname = amdgpu_top-bin

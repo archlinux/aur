@@ -2,7 +2,7 @@
 
 _pkgname=amdgpu_top
 pkgname=$_pkgname-bin
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization (binary release)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libdrm')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$url/releases/download/v$pkgver/amdgpu-top_${pkgver}_amd64.deb")
-sha256sums=('1a005a28b8cf9b3bc3fcfb1ac1a2d17cb970f3e54accb7ff6bd3db048586015a')
+sha256sums=('251de439da83866b61305b8d5ad3f11031cff25a790273da0d1bdf2ab84b1bc7')
 
 prepare() {
   tar Jxpf data.tar.xz
