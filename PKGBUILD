@@ -4,7 +4,7 @@ _pkgname=spatstat.explore
 _pkgver=3.2-5
 pkgname=r-${_pkgname,,}
 pkgver=3.2.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Exploratory Data Analysis for the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,6 @@ optdepends=(
   r-fftwtools
   r-gsl
   r-locfit
-  r-maptools
   r-sm
   r-spatial
   r-spatstat

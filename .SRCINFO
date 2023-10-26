@@ -1,7 +1,7 @@
 pkgbase = r-spatstat.explore
 	pkgdesc = Exploratory Data Analysis for the 'spatstat' Family
 	pkgver = 3.2.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=spatstat.explore
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,6 @@ pkgbase = r-spatstat.explore
 	optdepends = r-fftwtools
 	optdepends = r-gsl
 	optdepends = r-locfit
-	optdepends = r-maptools
 	optdepends = r-sm
 	optdepends = r-spatial
 	optdepends = r-spatstat
