@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=isobar
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Analysis and quantitation of isobarically tagged MSMS proteomics data'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0bd792675a1735096f0aab872c813266a683734325ceba5fc9ccbd6ee1bf9a63')
+sha256sums=('c70547e79b09b5fe6f7728e0082d5d8c0fd85fe4b292b7b03a1d593b7051638d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
