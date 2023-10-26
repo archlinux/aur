@@ -3,10 +3,10 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=AnnotationDbi
-_pkgver=1.62.2
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Manipulation of SQLite-based annotations in Bioconductor"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,8 +36,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e12679a9cb4533c5f24fc27458b8d8e6')
-sha256sums=('893743dafad619a9742e67944b8b8df5431b967fc3edf4e6b4eea63309aaf96e')
+md5sums=('8fc5d588e8ad00911d07990484a9cff6')
+sha256sums=('063eea9b4f53c1ef3c2df4ca0b61d9925f702f891fa1c3c54d26e11d4b1fdc5b')
 
 build() {
   mkdir -p build
