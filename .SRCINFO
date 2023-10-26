@@ -1,0 +1,18 @@
+pkgbase = python-aiot-tools-git
+	pkgdesc = AIoT tools for flashing boards using MediaTek AIoT SoCs.
+	pkgver = 1.3.0.bc65b89c
+	pkgrel = 1
+	url = https://gitlab.com/mediatek/aiot/bsp/aiot-tools
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-oyaml
+	depends = python-gpiod
+	depends = python-pyftdi
+	provides = python-aiot-tools
+	conflicts = python-aiot-tools
+	source = python-aiot-tools-git::git+https://gitlab.com/mediatek/aiot/bsp/aiot-tools.git
+	md5sums = SKIP
+
+pkgname = python-aiot-tools-git
