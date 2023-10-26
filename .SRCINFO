@@ -1,6 +1,6 @@
 pkgbase = r-rgenometracks
 	pkgdesc = Integerated visualization of epigenomic data
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rGenomeTracks
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-rgenometracks
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rGenomeTracks_1.6.0.tar.gz
-	sha256sums = c19aa4acdc09947ca2d8241d73afcb9d2455139258309a981a5bdb9740500044
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rGenomeTracks_1.8.0.tar.gz
+	sha256sums = 53465316e53344432ca14ea72e0ff49a034e557af6202361b171dd9362c6bb41
 
 pkgname = r-rgenometracks
