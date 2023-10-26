@@ -1,6 +1,6 @@
 pkgbase = r-sigfuge
 	pkgdesc = SigFuge
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SigFuge
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-sigfuge
 	optdepends = r-prebsdata
 	optdepends = r-rsamtools
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SigFuge_1.38.0.tar.gz
-	sha256sums = 4e341d6575da58f8f971e4b40a9f540981415a9ebea54ffd397caf313c11c1da
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SigFuge_1.40.0.tar.gz
+	sha256sums = b22a059afc5d48faf753e37bbeb6b0e116b370983b0150356a1d076f7e521504
 
 pkgname = r-sigfuge
