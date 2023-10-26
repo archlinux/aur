@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=muscle
-_pkgver=3.42.0
+_pkgver=3.44.0
 pkgname=r-${_pkgname,,}
-pkgver=3.42.0
+pkgver=3.44.0
 pkgrel=1
 pkgdesc='Multiple Sequence Alignment with MUSCLE'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-biostrings
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('60409ce4f7fdacff53df550ee26694a28de71ec86424bc1742e4a5fec1f08960')
+sha256sums=('bd98b350ad010b727c8c993b5056db2b0aca3349dbf2452e3d8e9acce502b272')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
