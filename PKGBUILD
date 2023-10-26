@@ -1,30 +1,26 @@
 # Maintainer: shizhiex <shizhiex@gmail.com>
 
 pkgname="orca-slicer"
-pkgver=1.6.3
-_tag='1.6.3'
-pkgrel=2
+pkgver=1.7.0
+_tag='1.7.0'
+pkgrel=1
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
-license=('AGPLv3')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'harmonyos-sans-git')
+license=('AGPL3')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'm4' 'pkgconf')
-provides=("OrcaSlicer")
-conflicts=("OrcaSlicer")
+provides=("orca-slicer")
+conflicts=("orca-slicer")
 source=(
   "https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v${_tag}.tar.gz"
   "https://raw.githubusercontent.com/SoftFever/OrcaSlicer/v${_tag}/deps/Boost/0001-Boost-fix.patch"
   'CMakeLists.txt.patch'
-  'OrcaSlicer.desktop.patch'
-  'fix_gcc13_build_failed.patch'
   'orca-slicer.sh'
   )
-sha256sums=('f63ef3aeef1d70a517354e512a7f463e2c721b5871ce30f7723ece9e070feb44'
+sha256sums=('1594be3d7d27840a90994933deabf6f5bf3c8c181bbb14b1c2e0d6ca8ee2939e'
             'bb2662d0a4c58c43726ec98ef4acf201fcf98719c9bbfd207e2d6cdf695a2093'
-            'f2b56d64bc5d80cf726ab0a4931ecf84cdaa938bb6da6134d36e6a05d3a0eee4'
-            '030d32a60c7bbecacaf1f3844ed6157c1eb1d67b7009a8132e91b0a07deb77c0'
-            '2d493a82a9a22b97e08170fc287f6a291b8e51f9cf499f5b245f00332e39b2fe'
+            '01171a77d533584026f113092a6586e28c9d87e10117c0f81cb4357d11a29fb1'
             '30d860958f3fd5fc657daa6addce45e91689d9833b931c9feb646da760d61de8'
             )
 
@@ -35,10 +31,6 @@ prepare() {
   patch -p0 < "$srcdir/CMakeLists.txt.patch"
   # add missing 0001-Boost-fix.patch
   cp 0001-Boost-fix.patch OrcaSlicer/deps/Boost
-  # icons conflict with BambuStudio
-  patch -p0 < "$srcdir/OrcaSlicer.desktop.patch"
-  # fix gcc13 building issues, from https://github.com/SoftFever/OrcaSlicer/pull/1220
-  patch --directory=OrcaSlicer -p1 < "$srcdir/fix_gcc13_build_failed.patch"
 }
 
 build() {
@@ -49,8 +41,8 @@ build() {
   done
   cd build
   if [ ! -f $srcdir/.deps_done ]; then
-    cmake ../ -DDESTDIR="$srcdir/dep_linux" -DCMAKE_BUILD_TYPE=Release -DDEP_WX_GTK3=1
-    { test "$(nproc)" -gt 1 && make -j"$(nproc)" ;} || make
+    cmake ../ -DDESTDIR="$srcdir/dep_linux" -DCMAKE_BUILD_TYPE=Release -DDEP_WX_GTK3=1 -DJPEG_VERSION=8
+    { test "$(nproc --ignore 4)" -gt 1 && make -j"$(nproc --ignore 4)" ;} || make
   fi
   touch $srcdir/.deps_done
 
@@ -60,8 +52,8 @@ build() {
     test -d $dir || mkdir $dir
   done
   cd build
-  cmake .. -DSLIC3R_FHS=1 -DSLIC3R_STATIC=ON -DSLIC3R_GTK=3 -DBBL_RELEASE_TO_PUBLIC=1 -DCMAKE_PREFIX_PATH="$srcdir/dep_linux/usr/local" -DCMAKE_INSTALL_PREFIX="$srcdir/install_dir" -DCMAKE_BUILD_TYPE=Release
-  { test "$(nproc)" -gt 1 && cmake --build . --target install --config Release -j"$(nproc)" ;} || cmake --build . --target install --config Release
+  cmake .. -DSLIC3R_FHS=1 -DSLIC3R_STATIC=ON -DSLIC3R_GTK=3 -DBBL_RELEASE_TO_PUBLIC=1 -DCMAKE_PREFIX_PATH="$srcdir/dep_linux/usr/local" -DCMAKE_INSTALL_PREFIX="$srcdir/install_dir"
+  { test "$(nproc --ignore 4)" -gt 1 && cmake --build . --target install --config Release -j"$(nproc --ignore 4)" ;} || cmake --build . --target install --config Release
 }
 
 package() {
