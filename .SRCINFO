@@ -1,17 +1,21 @@
-pkgbase = kdeplasma-themes-daemon-git
+pkgbase = plasma5-themes-daemon-git
 	pkgdesc = Cyberpunk style theme for KDE
-	pkgver = r4.3bd2e02
-	pkgrel = 6
+	pkgver = r25.a30023e
+	pkgrel = 1
 	url = https://github.com/MathisP75/daemon-dotfiles
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = kvantum-theme-daemon-git
 	depends = plasma-workspace
+	depends = kwin-effects-burn-my-windows-git
+	depends = bibata-cursor-theme
 	provides = kdeplasma-themes-daemon
+	provides = kdeplasma-themes-daemon-git
 	conflicts = kdeplasma-themes-daemon
+	conflicts = kdeplasma-themes-daemon-git
 	options = !strip
 	source = git+https://github.com/MathisP75/daemon-dotfiles.git
 	sha256sums = SKIP
 
-pkgname = kdeplasma-themes-daemon-git
+pkgname = plasma5-themes-daemon-git
