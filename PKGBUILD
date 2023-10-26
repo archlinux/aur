@@ -5,7 +5,7 @@ pkgver=0.4.2.r0.g03a902f
 pkgrel=1
 pkgdesc="Graphical user interface for ddcutil - control monitor settings"
 arch=('x86_64')
-url="https://www.ddcutil.com"
+url="https://github.com/rockowitz/ddcui"
 license=('GPL2')
 depends=('ddcutil>=2.0.0' 'qt5-base')
 makedepends=('git' 'cmake' 'qt5-tools')
