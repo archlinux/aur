@@ -42,6 +42,7 @@ package() {
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
     find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
     chmod +x "${pkgdir}/opt/${pkgname}/desktop"
+	chmod +x "${pkgdir}/opt/${pkgname}/chrome_crashpad_handler"
 
     # Link binary
     install -dm755 "${pkgdir}/usr/bin"
