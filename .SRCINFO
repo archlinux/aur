@@ -1,0 +1,23 @@
+pkgbase = sumatrapdf
+	pkgdesc = PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free.
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://www.sumatrapdfreader.org/free-pdf-reader
+	arch = x86_64
+	license = GPL3
+	license = BSD
+	makedepends = imagemagick
+	makedepends = gendesk
+	makedepends = icoutils
+	depends = wine
+	depends = bash
+	optdepends = ttf-ms-win11: or font data on a windows partiion
+	optdepends = ttf-ms-win11-auto: another choice
+	source = https://www.sumatrapdfreader.org/dl/rel/3.5.2/SumatraPDF-3.5.2-64.zip
+	source = https://raw.githubusercontent.com/sumatrapdfreader/sumatrapdf/3.5.2rel/COPYING.BSD
+	source = sumatrapdf.sh
+	sha256sums = 66ccb395c9184dce6822dfbb9970c877383b3ead6d9417b5106a844aac512989
+	sha256sums = ff33648659aa06892ed13a731588a57006fafee2f848d35f70bf273a13cf9d27
+	sha256sums = 9113c6a594fe9b2f2dc800345396c97c3516d42d40bbc1ace6b34d805c0a3d7b
+
+pkgname = sumatrapdf
