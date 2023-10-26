@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qusage
-_pkgver=2.34.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='qusage: Quantitative Set Analysis for Gene Expression'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1187bdad1ecb79690ed83c7a1a4dc62a88762ba688e288188607d7e7bfaf0bd4')
+sha256sums=('bc298a26d8edd29f9263f8dcbe0933e858bfa45d6ada5c5726520cec44921ae3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
