@@ -1,7 +1,7 @@
 pkgbase = brightness-git
 	pkgdesc = A small Rust program that uses ddcutil to control your monitor's brightness
 	pkgver = 20230924.r18.30d3269
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Devorlon/brightness
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = brightness-git
 	arch = aarch64
 	license = AGPL3
 	makedepends = cargo
-	makedepends = pandoc
+	makedepends = ruby-ronn-ng
 	depends = ddcutil
 	provides = brightness
 	conflicts = brightness
