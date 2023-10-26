@@ -1,6 +1,0 @@
-Name: libweb
-Description: A simple and lightweight web framework
-URL: https://gitea.privatedns.org/xavi/libweb
-Version: 0.1.0
-
-Libs: -lweb
