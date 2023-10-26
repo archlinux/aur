@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=macat
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='MicroArray Chromosome Analysis Tool'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-stjudem
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('48e6c1690c72074c86c5a9ef1300464bc7aa215a3e47ce7eea14f64e977d3ad4')
+sha256sums=('c87f4864a94ba24961c33b670a24d95ad046c1ff1ee61ae517b72b685780b4f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
