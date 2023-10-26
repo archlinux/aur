@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CoSIA
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3f8ef5bd89e113c1bf68ce002bd54140')
-sha256sums=('303452b7fa963d3a46e9344beb02dcf7ddb3650d3e45f547580e50496ac102c3')
+md5sums=('217ff53ed0aac2ca3c2d91ce5237c111')
+sha256sums=('11cdc5e047708b2c2a37cea00fcce76a61c73d158ef8241d81931b3210a2a791')
 
 build() {
   mkdir -p build
