@@ -3,7 +3,7 @@
 
 pkgname='usrbinhx'
 pkgver='2023.10.26'
-pkgrel=1
+pkgrel=2
 pkgdesc='Provide /usr/bin/hx for the helix editor'
 arch=('any')
 url='https://codeberg.org/kas/gists'
@@ -11,7 +11,7 @@ license=('AGPL3')
 conflicts=('hex' 'helixbinhx')
 depends=('helix' 'sh')
 source=('hx.sh')
-sha256sums=('184cdaf013c0b3ac2fe4b95842f8f2ff97ae2fbe38e36e363badc419f9eaffa0')
+sha256sums=('bc36799721ea4d0c3e1723f02b2b426c345bb180affebc72a529cd3a811f7f9c')
 
 package() {
   install -Dm0755 'hx.sh' "$pkgdir/usr/bin/hx"
