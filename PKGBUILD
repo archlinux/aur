@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BicARE
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Biclustering Analysis and Results Exploration'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-hgu95av2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2946f9725697dbb7566d740d04e627f36d94c439de7726cdd19f6d6be4d6ede0')
+sha256sums=('30fd6ff9fef0df03a78578b9ae3dcb59f7cf8b9c9cf13300ba6d561668e73682')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
