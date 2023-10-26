@@ -1,6 +1,6 @@
 pkgbase = r-bandits
 	pkgdesc = BANDITS: Bayesian ANalysis of DIfferenTial Splicing
-	pkgver = 1.16.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BANDITS
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-bandits
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tximport
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BANDITS_1.16.1.tar.gz
-	sha256sums = d1fef6b4d8b10770fb480adcab94b956e6da478e5f76c8f587ffc8a8818f8612
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BANDITS_1.18.0.tar.gz
+	sha256sums = 23dad111805b11cdf576b65fbf9fda6c0e44a5e480b0b30b2d5e39a68389bef5
 
 pkgname = r-bandits
