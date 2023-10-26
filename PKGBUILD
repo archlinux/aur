@@ -4,7 +4,7 @@ pkgbase=cloud-fs-bin
 pkgname=clouddrive
 _pkgver=0.5.10
 pkgver=${_pkgver/-/_}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -19,11 +19,13 @@ makedepends=(libarchive)
 optdepends=('docker: Pack, ship and run any application as a lightweight container')
 backup=()
 options=(!strip)
-install=
-source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html")
+install=${pkgname}.install
+source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
+    "${pkgname}.install")
 source_x86_64=("${pkgname}-${epoch}-${_pkgver}-x86_64.tgz::${url}/releases/download/v${_pkgver}/${pkgname}-${epoch}-linux-x86_64-${_pkgver}.tgz")
 source_aarch64=("${pkgname}-${epoch}-${_pkgver}-aarch64.tgz::${url}/releases/download/v${_pkgver}/${pkgname}-${epoch}-linux-aarch64-${_pkgver}.tgz")
-sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e')
+sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
+            'ee61e58c618535b420f5fcbc0d7b7d803bc6aec7f261bd595867152806f939aa')
 sha256sums_x86_64=('7fd9247c357163f820543a8cd7202b9f770d3fe6d904cb3c78218c11af076307')
 sha256sums_aarch64=('7306ce4127827b8e3fc8c85fdb7f9dcdd4ab710e59b8606248c142661ae781b6')
 noextract=(

@@ -1,0 +1,30 @@
+post_install() {
+cat << EOF
+----------------------------------------------
+1. Set up start and enable on boot using systemd:
+  Root privileges: systemctl enable --now clouddrive.service
+  User privileges: systemctl --user enable --now clouddrive.service
+2. Check the status using systemd:
+  Root privileges: systemctl status clouddrive.service
+  User privileges: systemctl --user status clouddrive.service
+3. Open in default browser:
+  Recommended: xdg-open http://localhost:19798
+  IPv4: xdg-open http://127.0.0.1:19798
+  IPv6: xdg-open http://[::]:19798
+Note: If the browser opens slowly or lags, please try using the browser's incognito mode.
+4. When mounting a local disk after logging in, set UID and GID:
+  Get the current user's UID: id -u
+  Get the current user's GID: id -g
+  Get the UID of another user: id -u username
+  Get the GID of another user: id -g username
+5. Mount point provided by the AUR package: /media/clouddrive
+6. Purchase recommendation code: 7jp9Aajq
+-----------------------------------------------
+EOF
+
+}
+
+post_upgrade() {
+  post_install
+}
+
