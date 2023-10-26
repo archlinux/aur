@@ -5,7 +5,7 @@ _pyname=("${pkgbase//-/_}")
 #pkgname=("${pkgbase}" "${pkgbase}-doc")
 #_pkgsuff=${pkgbase#mkdocstrings-}
 pkgname=("${pkgbase}")
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Crystal language doc generator for mkdocstrings"
 arch=('any')
@@ -21,12 +21,12 @@ makedepends=('python-hatchling'
 #            'python-markdown-callouts'
 checkdepends=('python-pytest-golden'
               'mkdocstrings'
-              'python-markdown-callouts')
+              'python-markdown-callouts')   # markupsafe required by jinja, mkdocstrings
 #              'python-cached-property'
               # mkdocstrings, markdown-callouts
 #source=("https://github.com/mkdocstrings/crystal/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fc5643c3dec74933a1e3ce23c0d9b10c')
+md5sums=('9af0b7588f05e220f82b0b37ff1942ad')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -43,12 +43,11 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${pkgbase/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_mkdocstrings-crystal() {
-    depends=('python>=3.7'
-#            'python-cached-property>=1.5.2'
+    depends=('python>=3.8'
              'python-jinja>=2.11.2'
              'python-markdown-callouts>=0.1.0'
              'python-markupsafe>=1.1.1'
