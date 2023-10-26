@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affyContam
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='structured corruption of affymetrix cel file data'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-hgu95av2cdf
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('77f811cca4bda3dbc011b38ecd1187c162442d92a2f9dafd1844d21c4a9b461d')
+sha256sums=('fb833dc1c34c1d66ff5121b2252d76196b7b5ff1dc35f4e201d451c61426b7cb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
