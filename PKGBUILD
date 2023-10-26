@@ -1,7 +1,7 @@
 pkgname=erigon
 pkgdesc='Ethereum implementation on the efficiency frontier.'
 pkgver=2.53.0
-pkgrel=1
+pkgrel=2
 epoch=1
 url='https://github.com/ledgerwatch/erigon'
 arch=('x86_64' 'aarch64')
