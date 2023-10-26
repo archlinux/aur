@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TPP
-_pkgver=3.28.0
+_pkgver=3.30.0
 pkgname=r-${_pkgname,,}
-pkgver=3.28.0
+pkgver=3.30.0
 pkgrel=1
 pkgdesc='Analyze thermal proteome profiling (TPP) experiments'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d18e7581e2864a1c7180c0adc2f631cfe37095edd922fe231f84e7761a047ae9')
+sha256sums=('66c208dc17ba494dd100c918aa32c9f854f9b9f213f2d3755db7e15c45db8e82')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
