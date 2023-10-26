@@ -4,7 +4,7 @@ _pkgname=clinfun
 _pkgver=1.1.5
 pkgname=r-${_pkgname,,}
 pkgver=1.1.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Clinical Trial Design and Data Analysis Functions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,6 +14,8 @@ depends=(
   r-mvtnorm
 )
 optdepends=(
+  r-knitr
+  r-rmarkdown
   r-survival
 )
 makedepends=(
