@@ -1,15 +1,18 @@
 pkgbase = r-ebseq
 	pkgdesc = An R package for gene and isoform differential expression analysis of RNA-seq data
-	pkgver = 1.40.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EBSeq
-	arch = any
+	arch = x86_64
 	license = Artistic2.0
-	depends = r
+	makedepends = r-bh
 	depends = r-blockmodeling
 	depends = r-gplots
+	depends = r-rcpp
+	depends = r-rcppeigen
 	depends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBSeq_1.40.0.tar.gz
-	sha256sums = a5d3a88743d61062c6d68a426b19c53a4afd2fa216abc884d42c187780994378
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBSeq_2.0.0.tar.gz
+	md5sums = e64aabb38197aba0ee5985a1558cce60
+	sha256sums = 9c5818ed988a1b3e416f3300ad56d4ae778485deb3b51eb6ee31bea91074a91f
 
 pkgname = r-ebseq
