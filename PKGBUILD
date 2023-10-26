@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=common
-_pkgver=1.0.9
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,9 +25,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$pkgname-CC0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
-md5sums=('c8d5c7e31455d4fd66142d976a805014'
+md5sums=('92231535ce9cf7327dd33aff8449d463'
          '65d3616852dbf7b1a6d4b53b00626032')
-sha256sums=('7b452ba7a577e0378ca3dc145b9236af29396f3c72a307ead7b54e349e8e3fe2'
+sha256sums=('183e5f937823ff6b8ef1b22679177c3e25ffbb256784879ece0cefdba78e9978'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
 build() {
