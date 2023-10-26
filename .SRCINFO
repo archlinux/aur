@@ -1,6 +1,6 @@
 pkgbase = r-clumsid
 	pkgdesc = Clustering of MS2 Spectra for Metabolite Identification
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CluMSID
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-clumsid
 	optdepends = r-stringr
 	optdepends = r-testthat
 	optdepends = r-xcms
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CluMSID_1.16.0.tar.gz
-	sha256sums = f48a56c937151f3b708cd4ebfc649d9e56db314d13ab86f0ea1a4e75580541dc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CluMSID_1.18.0.tar.gz
+	sha256sums = fee61fb688e5e4dad9a42d75a81d14e6b1ee0757107c13162aef71be191bc547
 
 pkgname = r-clumsid
