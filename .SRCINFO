@@ -1,5 +1,5 @@
 pkgbase = mounter_elite
-	pkgdesc = A minimal dependency bash, based ISO mounter and converter
+	pkgdesc = A minimal dependency bash based, ISO mounter and converter
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/siyia2/mounter_elite
