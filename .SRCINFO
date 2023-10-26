@@ -1,7 +1,7 @@
 pkgbase = r-scfa
 	pkgdesc = SCFA: Subtyping via Consensus Factor Analysis
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/SCFA
 	arch = any
 	license = LGPL
@@ -17,7 +17,7 @@ pkgbase = r-scfa
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCFA_1.10.0.tar.gz
-	sha256sums = 873f67954937846367128bcb489ce674e2f4e4c716131a05766c6ef0bb423fb1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCFA_1.12.0.tar.gz
+	sha256sums = e8501c609382cb4946ed7ac64c0ae1e7f5df40d58771aa6c663c75f6aeaf779d
 
 pkgname = r-scfa
