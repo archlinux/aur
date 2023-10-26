@@ -1,4 +1,4 @@
-pkgbase = mojo
+pkgbase = mojo-git
 	pkgdesc = Mojo Programming Language
 	pkgver = 0.3.1
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = mojo
 	source = https://raw.githubusercontent.com/Sharktheone/arch-mojo/main/install.py
 	sha256sums = 7fa19d2403f11307ebac106781a21eee08e4a6f9230370a69a03ffe96d8ec905
 
-pkgname = mojo
+pkgname = mojo-git
