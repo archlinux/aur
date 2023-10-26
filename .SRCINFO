@@ -1,4 +1,4 @@
-pkgbase = Elite-Image-Mounter
+pkgbase = mounter_elite
 	pkgdesc = A minimalist bash based, ISO mounter and converter
 	pkgver = 1.0.5
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = Elite-Image-Mounter
 	source = https://github.com/siyia2/mounter_elite/archive/v1.0.5.tar.gz
 	md5sums = 2389aebdf89458db850efb5764860726
 
-pkgname = Elite-Image-Mounter
+pkgname = mounter_elite
