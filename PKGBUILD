@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bgx
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Bayesian Gene eXpression'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-hgu95av2cdf
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5562e24a3be93c904fc8386b5dac4ab3917fceccb646a2b43ae137247d1ed3bc')
+sha256sums=('a25154f533ad59ab9542388f7203c6d46987fc93f4bbe713f605f7ca2988056d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
