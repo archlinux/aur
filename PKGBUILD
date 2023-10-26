@@ -7,12 +7,14 @@ _Pkgname=Vial
 pkgname="${_pkgname}"-appimage
 pkgname=vial-appimage
 pkgver=v0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA."
 arch=('x86_64')
 url="https://get.vial.today/"
 license=("GPL2")
 options=(!strip)
+provides=('vial=${pkgver}')
+conflicts=(vial)
 _appimage="${_Pkgname}-${pkgver}-x86_64.AppImage"
 source_x86_64=("${_appimage}::https://github.com/vial-kb/vial-gui/releases/download/${pkgver}/${_Pkgname}-${pkgver}-x86_64.AppImage"
                "92-viia.rules")
