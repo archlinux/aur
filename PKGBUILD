@@ -5,7 +5,7 @@
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.0.0.beta2.r8.g2252d5300
+pkgver=3.0.0beta4.r98.g32c65dbdf
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('i686' 'x86_64')
@@ -70,29 +70,30 @@ if [ x"$_pkgname" != x"$pkgname" ] ; then
     'webkit2gtk'
   )
   makedepends+=('git')
+
   provides+=("$_pkgname")
   conflicts+=("$_pkgname")
 
   url="https://github.com/FreeRDP/FreeRDP"
 
-  source=("$_pkgname"::"git+https://github.com/FreeRDP/FreeRDP.git")
+  source=("$_pkgname"::"git+$url.git")
   sha256sums=('SKIP')
 
   _pkgsrc="$_pkgname"
 
   pkgver() {
     cd "$srcdir/$_pkgsrc"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude='*android*' --exclude='*ios*' | sed -E 's/^v//;s@-(alpha|beta|rc)@\1@;s/([^-]*-g)/r\1/;s/-/./g'
   }
 fi
 
 build() {
-  local cmake_options=(
-    -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_INSTALL_LIBDIR=lib
+  local _cmake_options=(
+    -DCMAKE_INSTALL_PREFIX="/usr"
+    -DCMAKE_INSTALL_LIBDIR="/usr/lib"
     # -DCMAKE_BUILD_TYPE=None
     -DCMAKE_SKIP_INSTALL_RPATH=ON
-    -DPROXY_PLUGINDIR=/usr/lib/freerdp2/server/proxy/plugins
+    -DPROXY_PLUGINDIR="/usr/lib/freerdp2/server/proxy/plugins"
     -DWITH_DSP_FFMPEG=ON
     -DWITH_FFMPEG=ON
     -DWITH_PULSE=ON
@@ -115,7 +116,7 @@ build() {
     -DWITH_WAYLAND=ON
   )
 
-  cmake "${cmake_options[@]}"
+  cmake "${_cmake_options[@]}"
   cmake --build build --verbose
 }
 
