@@ -1,6 +1,6 @@
 pkgbase = ddev-bin
 	pkgdesc = DDEV: a local web development environment
-	pkgver = 1.22.3
+	pkgver = 1.22.4
 	pkgrel = 1
 	url = https://github.com/ddev/ddev
 	license = Apache 2
@@ -10,10 +10,10 @@ pkgbase = ddev-bin
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = https://github.com/ddev/ddev/releases/download/v1.22.3/ddev_linux-arm64.v1.22.3.tar.gz
-	sha256sums_aarch64 = 58063a755e913cdf0634b90278f9e976802e0b441b7c7bb6316728db2bb68a52
+	source_aarch64 = https://github.com/ddev/ddev/releases/download/v1.22.4/ddev_linux-arm64.v1.22.4.tar.gz
+	sha256sums_aarch64 = 151c3aef8b4043f44464248143bb4f160a9614deda04fe116089c6875fb3840b
 	arch = x86_64
-	source_x86_64 = https://github.com/ddev/ddev/releases/download/v1.22.3/ddev_linux-amd64.v1.22.3.tar.gz
-	sha256sums_x86_64 = 6429fe8340b7d5ef9ec04ebb5ebe9d359438c0da3539303a43d6f3fd734267d2
+	source_x86_64 = https://github.com/ddev/ddev/releases/download/v1.22.4/ddev_linux-amd64.v1.22.4.tar.gz
+	sha256sums_x86_64 = 8daebf3e647eac247441c4a40a313b227fce544b9810b1ff188a7208b0f474a6
 	
 pkgname = ddev-bin
