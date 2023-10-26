@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IntramiRExploreR
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Predicting Targets for Drosophila Intragenic miRNAs'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-topgo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d8b0264bf48da611c6bc0e17fe1466ab8e59e27c6ccbeff7bf765b48a721823f')
+sha256sums=('47def66d0b9d7fcc6ca4545503ee3873e5877d3c75e16d3e3eff77cd86fa66c2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
