@@ -4,7 +4,7 @@ _pkgname=assertive.code
 _pkgver=0.0-4
 pkgname=r-${_pkgname,,}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Assertions to Check Properties of Code'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('2f820474ed20e06f65b284962c87cd1e85220a11cc7fcde09716f0eee5821387')
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = r-assertive.code
 	pkgdesc = Assertions to Check Properties of Code
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=assertive.code
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = r-assertive.code
 	depends = r-assertive.properties
 	depends = r-assertive.types
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/assertive.code_0.0-4.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/assertive.code/assertive.code_0.0-4.tar.gz
 	sha256sums = 2f820474ed20e06f65b284962c87cd1e85220a11cc7fcde09716f0eee5821387
 
 pkgname = r-assertive.code
