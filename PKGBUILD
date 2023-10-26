@@ -3,10 +3,10 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=annotate
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Annotation for microarrays"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -40,8 +40,8 @@ optdepends=(
   r-tkwidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fb5187ca7fdd4e1be47a470d528397df')
-sha256sums=('7e27007dc61ebc140ad722b5c9bb886e39499120b8f6240652df0edfa4c90484')
+md5sums=('04d25cadc03401556364f8ca9c3b2a61')
+sha256sums=('4dab9615498f6c58d1e6ecc1ecd0052187e46bdf971b18d73149b6bddea2ad82')
 
 build() {
   mkdir -p build
