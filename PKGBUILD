@@ -4,7 +4,7 @@ _pkgname=parameters
 _pkgver=0.21.2
 pkgname=r-${_pkgname,,}
 pkgver=0.21.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Processing of Model Parameters'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -94,6 +94,7 @@ optdepends=(
   r-multcomp
   r-mumin
   r-nbclust
+  r-nestedlogit
   r-nfactors
   r-nlme
   r-nnet
