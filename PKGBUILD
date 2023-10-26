@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geNetClassifier
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Classify diseases and build associated gene networks using gene expression profiles'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6ca6f3fba3b8706829656d66ef7cbb55f5459d4abf5a1c1fdf8d5ca2582c7ae')
+sha256sums=('0d67da334b237d15900ef72117ce86461891e5dfdf540c7770b50374d454c1cc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
