@@ -1,6 +1,6 @@
 pkgbase = amitools-git
 	pkgdesc = Various tools for using AmigaOS programs on other platforms
-	pkgver = 0.7.0.r6.g5ee9b19
+	pkgver = 0.7.0.r8.g6c74b02
 	pkgrel = 1
 	url = https://github.com/cnvogelg/amitools
 	arch = i686
