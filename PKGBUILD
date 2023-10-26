@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gotosocial
-pkgver=0.11.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='ActivityPub social network server written in Golang'
 arch=('x86_64')
@@ -37,7 +37,7 @@ backup=(
   'etc/gotosocial/template/tag.tmpl'
   'etc/gotosocial/template/thread.tmpl'
 )
-_commit='c7a46e05dbca86b30123cb1c45c1457bbc7a9c4b'
+_commit='5fdc005061c773fda6e0da32abcc6f79ddee80ed'
 source=(
   "$pkgname::git+https://github.com/superseriousbusiness/gotosocial#commit=$_commit"
   'sysusers.conf'
@@ -98,8 +98,9 @@ build() {
     ./cmd/...
 
   # generate web assets
-  yarn install --cwd web/source
-  BUDO_BUILD=1 node web/source
+  yarn --cwd ./web/source install --frozen-lockfile
+  yarn --cwd ./web/source ts-patch install
+  yarn --cwd ./web/source build
 }
 
 package() {
