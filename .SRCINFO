@@ -1,0 +1,23 @@
+pkgbase = p7zip
+	pkgdesc = Command-line file archiver with high compression ratio
+	pkgver = 17.05
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/p7zip-project/p7zip
+	arch = x86_64
+	license = LGPL
+	license = custom:unRAR
+	depends = gcc-libs
+	depends = sh
+	source = https://github.com/p7zip-project/p7zip/archive/v17.05/p7zip-v17.05.tar.gz
+	source = oemcp-iconv.patch::https://github.com/p7zip-project/p7zip/commit/c104127e6a93.patch
+	source = oemcp-cygwin.patch::https://github.com/p7zip-project/p7zip/commit/0e0a1a8316b6.patch
+	source = oemcp-apple.patch::https://github.com/p7zip-project/p7zip/commit/334a01e3f8bc.patch
+	source = do-not-gzip-man-pages.patch
+	sha256sums = d2788f892571058c08d27095c22154579dfefb807ebe357d145ab2ddddefb1a6
+	sha256sums = 50f2068124c1c6adc2d9ccf455e9816eccd39d31920b953ab8fcb853232d452c
+	sha256sums = 789789216ca46e5ea9b6780e353f964a1f46e9a2bcaa6b16413adcf9a89eb374
+	sha256sums = dfe1a625f80078c3ec68038f0aae8ba3a82ea96d0aeb97cb3586dc7fb3ef9650
+	sha256sums = 2179e67764eb46cb414ce9b5c978a532a6499617a6a685deb323b6da122aba00
+
+pkgname = p7zip
