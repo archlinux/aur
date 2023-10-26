@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affyILM
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Linear Model of background subtraction and the Langmuir isotherm'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-hgfocusprobe
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd295673bea6b755811f47beed18bef7900b564892b5dd0cae0fe81ac45be009')
+sha256sums=('5b9fbf8552b47d24f4814c607837e5e9185d7506684350a1bc96ed77d0616fe9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
