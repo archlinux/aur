@@ -2,7 +2,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=pyupgrade
-pkgver=3.10.1
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="A tool to automatically upgrade syntax for newer versions of the language"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=("python" "python-tokenize-rt")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('57830da44038aac51c9f100103c7f56535670d497df953fea1c92680438a5f269e00e877fe4b1665f9d8502ad3626eec1550397afb420906838da13bfa8ada4e')
+b2sums=('8a565510066236251c78e8ce62bef749dfcc2b4e4c1ee5b8c977461e4a7d3b6f1e39c1303343af8529ec7a2032d2c7d15e122f98f620a7671cfa47105a137554')
 
 build() {
     cd $pkgname-$pkgver
