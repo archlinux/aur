@@ -4,7 +4,7 @@
 
 pkgname=aegisub-wangqr-git
 _pkgtag='v3.3.3'
-pkgver=3.3.3.r1.db3cdded8
+pkgver=3.3.3.r2.33ff9b408
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (wangqr fork)'
 arch=(x86_64)
@@ -25,26 +25,26 @@ depends=(
   libffms2.so
   libgl
   libpulse
-  wxwidgets-gtk3
   uchardet
+  wxwidgets-gtk3
   zlib
 )
 makedepends=(
-  autoconf-archive
   boost
   cmake
   git
-  intltool
-  lua
   mesa
+  ninja
 )
 provides=(aegisub)
 conflicts=(aegisub aegisub-git)
 source=(
   git+https://github.com/wangqr/Aegisub.git
+  boost-1.81.0.patch
 )
-sha256sums=(
-  SKIP
+b2sums=(
+  'SKIP'
+  '5b6874ebb89f6ed3ab7929796bd1f59e1748c418ae5397df265fe3007d9f971eec7388f5f6a2dcac020d71c9cffece931a1ae5eb78f8ff4ab61fdc4c5e65328a'
 )
 
 pkgver() {
@@ -53,43 +53,27 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -vp build/
   cd Aegisub
 
-  # Ensures Aegisub runs under Xwayland, since it doesn't support Wayland properly
-  sed 's/^Exec=/Exec=env GDK_BACKEND=x11 /' -i packages/desktop/aegisub.desktop.template.in
+  patch -Np1 -i ../boost-1.81.0.patch # Patch from Gentoo/[extra] aegisub package
 }
 
 build() {
-  cd build
-
-  cmake \
+  cmake -S Aegisub -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
-    -DWITH_STARTUPLOG=OFF \
-    -DWITH_{PORTAUDIO,OPENAL,OSS}=OFF \
-    ../Aegisub
+    -DWITH_OSS=OFF
+  cmake --build build
   # TODO: Build translations
 }
 
 package() {
-  cd "${srcdir}/build"
+  DESTDIR="${pkgdir}" cmake --install build
 
-  make DESTDIR="${pkgdir}" install
-
-  cd "${srcdir}/Aegisub"
-  install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  cd "${srcdir}/Aegisub/automation/"
-  for subdir in {autoload,demos,include,include/aegisub}
-  do
-    install -dm 755 "${pkgdir}/usr/share/aegisub/automation/${subdir}"
-    for resource in $(find ${subdir} -maxdepth 1 -type f)
-    do
-      install -m 644 "${resource}" "${pkgdir}/usr/share/aegisub/automation/${resource}"
-    done
-  done
+  install -dm 755 "${pkgdir}"/usr/share/aegisub/automation/include
+  cp -dr --no-preserve=ownership Aegisub/automation/{autoload,demos} "${pkgdir}"/usr/share/aegisub/automation/
+  cp -dr --no-preserve=ownership Aegisub/automation/include/{aegisub,*.lua} "${pkgdir}"/usr/share/aegisub/automation/include/
+  install -Dm 644 Aegisub/LICENCE -t "${pkgdir}"/usr/share/licenses/aegisub/
 }
 
 # vim: ts=2 sw=2 et:
