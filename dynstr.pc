@@ -1,6 +1,0 @@
-Name: dynstr
-Description: Minimal library that provides dynamic strings using plain C99
-URL: https://gitea.privatedns.org/xavi/dynstr
-Version: 0.1.0
-
-Libs: -ldynstr
