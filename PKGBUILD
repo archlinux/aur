@@ -1,19 +1,14 @@
 # Maintainer: Taboon Egon <te451 -_AT_- netcourrier -_DOT_- com>
 # Contributor: relrel <relrelbachar at gmail dot com>
 
-# IMPORTANT: before installing or upgrading, run commands:
-#   nvm install 16
-#   nvm use 16
-# or building Scratch3 will fail!
-# More on AUR comments: https://aur.archlinux.org/packages/scratch3
-
 pkgname=scratch3
 conflicts=("scratch3-bin")
 
 pkgver=3.30.5
-pkgrel=1
+pkgrel=2
 _electronDist=electron13
 _electronVersion=13.6.9
+_node_version=16
 
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
@@ -45,17 +40,18 @@ case "$CARCH" in
   *)       appOutputDir="linux-notSupported";;
 esac
 
-## Needs testing (for arm7h and i686)!
-## arm and arm6h: they don't seem to be supported by Electron.
-## Value for aarch64 given and tested by one user: ok on Raspberry Pi 4B.
-## Other values deduced from previous one with no warranty.
-## To find them out, start installation like usual.
-## If it succeeds, fine. If not, in the output of the build,
-## look for this kind of line, at the end of the (failed) build:
-##   • packaging  platform=linux arch=????? electron=15.x.y appOutDir=dist/linux-?????-unpacked
-## In any case, please report to the maintainer, thanks.
+_ensure_local_nvm() {
+    command -v nvm >/dev/null && nvm deactivate && nvm unload
+    unset npm_config_prefix
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 prepare() {
+   cd "${srcdir}/scratch-desktop-${pkgver}"
+   _ensure_local_nvm
+   nvm ls "$_node_version" &>/dev/null || nvm install "$_node_version" || false
+
    cd "$srcdir/"
 
 #  Adjust electron version targeted in (generic) patch files
@@ -83,6 +79,8 @@ prepare() {
 
 build(){
    cd "$srcdir/scratch-desktop-${pkgver}/"
+   _ensure_local_nvm
+   nvm use "$_node_version"
 
 #  Node modules installation & application compilation
    npm install
