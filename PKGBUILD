@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rebook
-_pkgver=1.10.1
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Re-using Content in Bioconductor Books'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9af2ff9204a3e9c9cf7c8776c1a2bd1696f77697deb7ec102a58c6a387638608')
+sha256sums=('64813afa59ca48e1e44ef1c78a53662120f1b7194e17822758b99138e9346d79')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
