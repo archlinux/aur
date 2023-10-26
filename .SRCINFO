@@ -1,6 +1,6 @@
 pkgbase = r-genesis
 	pkgdesc = GENetic EStimation and Inference in Structured samples (GENESIS): Statistical methods for analyzing genetic data from samples with population structure and/or relatedness
-	pkgver = 2.30.0
+	pkgver = 2.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GENESIS
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-genesis
 	optdepends = r-survey
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GENESIS_2.30.0.tar.gz
-	sha256sums = 2759e1a79b6e824194a43d9886d66649c8a91df5604075029b3cc8b1b1436d51
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GENESIS_2.32.0.tar.gz
+	sha256sums = 891680387ea63682d977b08d2d5706892efea4c26cee855104489f2354a09db1
 
 pkgname = r-genesis
