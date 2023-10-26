@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNVPanelizer
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Reliable CNV detection in targeted sequencing applications'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3e9e5a627e1ad0dadc98c91d13a62cc6c7851fd1c7f38f13c6ee54565a8ab029')
+sha256sums=('b6d97880f6c4c22cc6171206758dd1f5ebc3cdd0a360327d5cda3c73dfbc0896')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
