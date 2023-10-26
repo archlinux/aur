@@ -1,6 +1,6 @@
 pkgbase = r-ipac
 	pkgdesc = Identification of Protein Amino acid Clustering
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iPAC
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-ipac
 	depends = r-gdata
 	depends = r-multtest
 	depends = r-scatterplot3d
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iPAC_1.44.0.tar.gz
-	sha256sums = d60e94e71c2a336944d774ddf68572a5ace2e18baffe4dbee1fcc6eb4ab496b2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iPAC_1.46.0.tar.gz
+	sha256sums = c85865312b7451d61f317e5696ef8890d03415668d39106cf268dc6a9ea3c72e
 
 pkgname = r-ipac
