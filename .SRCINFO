@@ -1,6 +1,6 @@
 pkgbase = r-quartpac
 	pkgdesc = Identification of mutational clusters in protein quaternary structures.
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/QuartPAC
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-quartpac
 	optdepends = r-biocgenerics
 	optdepends = r-rgl
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/QuartPAC_1.32.0.tar.gz
-	sha256sums = a0037c47c2e15f0a3e382e5fc6942ce2b2102e166baf63852b58f304e59376ae
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QuartPAC_1.34.0.tar.gz
+	sha256sums = c4f882efe5099b332ddb35308bc729a4265f88b0aa53380102223f2bc1084e21
 
 pkgname = r-quartpac
