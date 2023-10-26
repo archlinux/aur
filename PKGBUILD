@@ -16,7 +16,7 @@ build() {
 
     export CGO_LDFLAGS="$LDFLAGS"
     export GIT_TAG="v${pkgver}"
-    make erigon devnet downloader integration rpcdaemon sentry txpool sentinel caplin-phase1
+    make erigon devnet downloader integration rpcdaemon sentry txpool sentinel caplin
 }
 
 package() {
