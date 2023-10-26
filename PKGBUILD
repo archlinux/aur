@@ -2,12 +2,12 @@
 _pkgname=recaf
 pkgname="${_pkgname}-bin"
 pkgver=2.21.13
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
-depends=("java-environment-openjdk=21" "java-openjfx=17" "ttf-font")
+depends=("java-environment-openjdk=21" "ttf-font")
 conflicts=("$_pkgname" "$_pkgname-git")
 replaces=("$_pkgname")
 provides=("$_pkgname")
