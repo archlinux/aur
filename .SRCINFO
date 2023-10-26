@@ -1,6 +1,6 @@
 pkgbase = r-starbiotrek
 	pkgdesc = StarBioTrek
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/StarBioTrek
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-starbiotrek
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/StarBioTrek_1.26.0.tar.gz
-	sha256sums = f0f2c48d7fb63df78e63ba92089c1a9538f418da93c64a82435b6ee5042a3d74
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/StarBioTrek_1.28.0.tar.gz
+	sha256sums = 4c239c5556e6c4f5404155ca80ace9db46fd59fb323fb7bc47e1d5c83eb0ef32
 
 pkgname = r-starbiotrek
