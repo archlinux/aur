@@ -1,0 +1,18 @@
+pkgbase = r-ggupset
+	pkgdesc = Combination Matrix Axis for 'ggplot2' to Create 'UpSet' Plots
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggupset
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-gtable
+	depends = r-rlang
+	depends = r-scales
+	depends = r-tibble
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ggupset_0.3.0.tar.gz
+	sha256sums = a4db7878e6752d9c9d39b3cd2b2a30f10058212b163025489fb02f089f0b2a1d
+
+pkgname = r-ggupset
