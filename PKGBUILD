@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBSeqHMM
-_pkgver=1.34.0
+_pkgver=1.35.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.35.0
 pkgrel=1
 pkgdesc='Bayesian analysis for identifying gene or isoform expression changes in ordered RNA-seq experiments'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-ebseq
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cbfdd77da8badf66a80bb7f115f1b599c6839f375b02ac9091f1e44e08bd2b07')
+sha256sums=('b669e8154b1fb5e7f873c87d53009302148461ae08b586e33158b1048d6af7ed')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
