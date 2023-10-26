@@ -1,6 +1,6 @@
 pkgbase = r-mistyr
 	pkgdesc = Multiview Intercellular SpaTial modeling framework
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mistyR
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-mistyr
 	optdepends = r-rsnns
 	optdepends = r-testthat
 	optdepends = r-xgboost
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mistyR_1.8.1.tar.gz
-	sha256sums = fd598b470e48f70a2a55c5210b46ec58d6b853de5408225e4efcb6111d8a2d4a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mistyR_1.10.0.tar.gz
+	sha256sums = f3f03c2aa1c54bc568625d93438edb26e8711686ff6fa8a8d6a1a5aa617b0f89
 
 pkgname = r-mistyr
