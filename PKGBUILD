@@ -4,7 +4,7 @@ _pkgname=ICS
 _pkgver=1.4-1
 pkgname=r-${_pkgname,,}
 pkgver=1.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for Exploring Multivariate Data via ICS/ICA'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,9 +16,11 @@ depends=(
 )
 optdepends=(
   r-icsnp
+  r-icsoutlier
   r-mass
   r-pixmap
   r-robustbase
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('49fc204ac9cad51a5e97f3321bf52556a27c4c9c036b4cf219ecccf390806a75')
