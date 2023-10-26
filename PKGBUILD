@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MGFM
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Marker Gene Finder in Microarray gene expression data'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-hgu133a.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('964aeca6498c0cba398babedbf8831135b3b47dc3aa0aa993fd32d8972e0b3a5')
+sha256sums=('59b0aa7e48246bd7ba63595fd99ef7ce2477f0be9b37004e071a10946ae14109')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
