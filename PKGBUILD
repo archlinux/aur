@@ -4,7 +4,7 @@ _pkgname=fGarch
 _pkgver=4031.90
 pkgname=r-${_pkgname,,}
 pkgver=4031.90
-pkgrel=1
+pkgrel=3
 pkgdesc='Rmetrics - Autoregressive Conditional Heteroskedastic Modelling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,6 +18,7 @@ depends=(
   r-timeseries
 )
 optdepends=(
+  r-goftest
   r-runit
   r-tcltk
 )
