@@ -1,6 +1,6 @@
 pkgbase = r-genomeintervals
 	pkgdesc = Operations on genomic intervals
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/genomeIntervals
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-genomeintervals
 	depends = r-intervals
 	depends = r-iranges
 	depends = r-s4vectors
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomeIntervals_1.56.0.tar.gz
-	sha256sums = 23d81c265943113c45d25864fd94ab6c1d687c600270bc1a52cb3b835776a5f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomeIntervals_1.58.0.tar.gz
+	sha256sums = 1915392190e53c5028c90a0d5b3d11637bef0c3f6ddf79581a7233bde6282d09
 
 pkgname = r-genomeintervals
