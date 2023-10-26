@@ -3,14 +3,14 @@
 
 pkgname=soundkonverter-dark-theme-git
 _name=soundkonverter
-pkgver=3.0.1.r30.g87a37e1
+pkgver=3.0.1.r31.g0329d90
 pkgrel=1
 pkgdesc="Front-end to various audio converters (Git - with custom colors for dark themes)"
 arch=(x86_64)
 url="https://www.linux-apps.com/content/show.php?content=29024"
 license=(GPL)
-depends=(hicolor-icon-theme cdparanoia kdelibs4support libkcddb kdbusaddons taglib phonon-qt5)
-makedepends=(extra-cmake-modules kdesignerplugin kdoctools kinit git)
+depends=(hicolor-icon-theme cdparanoia kdelibs4support libkcddb kdbusaddons5 taglib phonon-qt5)
+makedepends=(extra-cmake-modules kdesignerplugin kdoctools5 kinit git)
 optdepends=('faac: faac backend'
             'faad2: faad backend'
             'ffmpeg: ffmpeg backend'
