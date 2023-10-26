@@ -1,7 +1,7 @@
 # Maintainer:
 
 _pkgname="thorium-reader"
-pkgname="${_pkgname}"
+pkgname="$_pkgname"
 pkgver=2.3.0
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
@@ -46,7 +46,6 @@ else
   }
 fi
 
-conflicts+=("thorium")
 source+=("$_pkgname.sh")
 sha256sums+=('74bc28848d52be2dc78414b3fdb25b19e1064a40fa05103bb544b1d7c1b6546a')
 

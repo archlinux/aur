@@ -11,7 +11,6 @@ pkgbase = thorium-reader
 	makedepends = npm
 	depends = bash
 	depends = electron
-	conflicts = thorium
 	source = thorium-reader::git+https://github.com/edrlab/thorium-reader.git#tag=v2.3.0
 	source = thorium-reader.sh
 	sha256sums = SKIP
