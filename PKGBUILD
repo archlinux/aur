@@ -2,7 +2,7 @@
 pkgname=armcord
 _pkgname=ArmCord
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
 url="https://armcord.app/"
@@ -14,7 +14,7 @@ makedepends=('gendesk' 'pnpm>=7.13.4' 'nodejs>=18.0.0' 'npm')
 source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname%-bin}.sh")
 sha256sums=('5cb7f8cacece0c117b7fcb02de46a3059539775d875cd2ba28e6ac5d5aaed542'
-            '5e0336ade88b6f7ba3020db7ac8e63b6b1387ca0f11bac523e9924a007a684a5')
+            '147e205bb806cd3f02ee3be2622bf5abac92d5902b1190e38b475baf53b4d505')
 prepare() {
     gendesk -q -f -n --categories "Network;Utility" --name "${_pkgname}" --exec "${pkgname}"
 }
@@ -26,7 +26,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
