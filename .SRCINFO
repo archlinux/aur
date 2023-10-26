@@ -1,0 +1,21 @@
+pkgbase = python-jupyterlab-vim
+	pkgdesc = Code cell vim bindings for JupyterLab and Jupyter-Server
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://jupyterlab-contrib.github.io/jupyterlab-vim.html
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-hatch-jupyter-builder
+	depends = python
+	depends = jupyter-lsp
+	depends = jupyter-collaboration
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_vim/jupyterlab_vim-4.1.0.tar.gz
+	sha256sums = 11d850ee91b2864a7b6298aae465219a822f8ccc6e01f23fa03f1ee617afe330
+
+pkgname = python-jupyterlab-vim
+	depends = python
+	depends = jupyter-lsp
+	depends = jupyter-collaboration
