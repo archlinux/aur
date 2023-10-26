@@ -4,7 +4,7 @@ _pkgname=spatstat.geom
 _pkgver=3.2-7
 pkgname=r-${_pkgname,,}
 pkgver=3.2.7
-pkgrel=1
+pkgrel=3
 pkgdesc="Geometrical Functionality of the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
 )
 optdepends=(
   r-fftwtools
-  r-maptools
   r-spatial
   r-spatstat
   r-spatstat.explore
