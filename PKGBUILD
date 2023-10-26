@@ -4,7 +4,7 @@ _pkgname=effectsize
 _pkgver=0.8.6
 pkgname=r-${_pkgname,,}
 pkgver=0.8.6
-pkgrel=1
+pkgrel=3
 pkgdesc='Indices of Effect Size and Standardized Parameters'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -30,9 +30,9 @@ optdepends=(
   r-lavaan
   r-lme4
   r-lmertest
-  r-mass
   r-mgcv
   r-parsnip
+  r-pwr
   r-rmarkdown
   r-rms
   r-rstanarm

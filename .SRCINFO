@@ -1,7 +1,7 @@
 pkgbase = r-effectsize
 	pkgdesc = Indices of Effect Size and Standardized Parameters
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=effectsize
 	arch = any
 	license = GPL
@@ -23,9 +23,9 @@ pkgbase = r-effectsize
 	optdepends = r-lavaan
 	optdepends = r-lme4
 	optdepends = r-lmertest
-	optdepends = r-mass
 	optdepends = r-mgcv
 	optdepends = r-parsnip
+	optdepends = r-pwr
 	optdepends = r-rmarkdown
 	optdepends = r-rms
 	optdepends = r-rstanarm
