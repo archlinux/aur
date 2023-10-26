@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=localsend
-pkgver=1.11.1
-pkgrel=5
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://localsend.org/'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	"flutter::git+https://github.com/flutter/flutter.git"
 	"flutter-engine::git+https://github.com/flutter/engine.git")
-sha256sums=('e47fa53dcc1ff49c24fd06320ff240730f270fda1d0e944a7f5d69d103ae4ad4'
+sha256sums=('4e96bc41c9505e4f1a51b074811ab3dd9892d228b7e5bbf9026faaf42c67b6d6'
             'SKIP'
             'SKIP')
 
@@ -21,7 +21,7 @@ _srcdir="${pkgname}-${pkgver}"
 
 prepare() {
 	source '/opt/flutter-engine/pkgbuild-prepare.sh'
-	cd "${_srcdir}"
+	cd "${_srcdir}/app"
 	
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
 	flutter create $flutter_select_engine --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
 	source '/opt/flutter-engine/pkgbuild-build.sh'
-	cd "${_srcdir}"
+	cd "${_srcdir}/app"
 	
 	flutter pub $flutter_select_engine run build_runner build --release --delete-conflicting-outputs
 	flutter build linux --release $flutter_select_engine
@@ -43,7 +43,7 @@ package() {
 	install -dm755 "${pkgdir}/opt/${pkgname}/"
 
 	# Executable install
-	cd "${_srcdir}/build/linux/x64/release/bundle"
+	cd "${_srcdir}/app/build/linux/x64/release/bundle"
 	local execfile="$(find . -mindepth 1 -maxdepth 1 -type f -perm /111)"
 	install -Dm755 \
 		"${execfile}" \
@@ -61,7 +61,7 @@ package() {
 	
 	# Icon for .desktop
 	install -Dm644 \
-		"${srcdir}/${_srcdir}/build/flutter_assets/assets/img/logo-512.png" \
+		"${srcdir}/${_srcdir}/app/build/flutter_assets/assets/img/logo-512.png" \
 		"${pkgdir}/usr/share/icons/${pkgname}.png"
 
 	# .desktop file
