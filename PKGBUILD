@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SynExtend
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Tools for Working With Synteny Objects'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6c2857b8f69cb2903f6359900865a7c4844ce06fb11cadefb23fd40d986ddd1')
+sha256sums=('f64c5a7398822d196098bbe576c76aec05e8bdaf5db925f7d701485cc528d1ef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
