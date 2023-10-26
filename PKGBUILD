@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Dm.eg.db
-_pkgver=3.17.0
+_pkgver=3.18.0
 pkgname=r-${_pkgname,,}
-pkgver=3.17.0
+pkgver=3.18.0
 pkgrel=1
 pkgdesc='Genome wide annotation for Fly'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('10030e2e6829154a0cce1af6c93475df4df8204a926f657fc10270cbd8936651')
+sha256sums=('46693c745ac637135baa35a229abe7124d099c9b250902829684dac1ade719d8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
