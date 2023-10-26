@@ -1,6 +1,6 @@
 pkgbase = r-rcwlpipelines
 	pkgdesc = Bioinformatics pipelines based on Rcwl
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RcwlPipelines
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-rcwlpipelines
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RcwlPipelines_1.16.0.tar.gz
-	sha256sums = 0eefef5cd895345f1d230e7217538481c7922360e4e6406475bb2002e89c615f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RcwlPipelines_1.18.0.tar.gz
+	sha256sums = 2d3217e361c5a384c686d3e50eed30a460d421268347cb0d90aff312f076a6bb
 
 pkgname = r-rcwlpipelines
