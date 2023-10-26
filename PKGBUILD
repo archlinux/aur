@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/ijpb/MorphoLibJ/releases/download/v${pkgver}/MorphoLibJ_-${pkgver}.jar")
+source=("https://github.com/ijpb/MorphoLibJ/releases/download/MorphoLibJ_-${pkgver}/MorphoLibJ_-${pkgver}.jar")
 noextract=()
 sha256sums=('d38bc91c5a935a8f22c9e7782f74d5fcff3d7f09f4ef3cf4e2e2e5d4a23a78ed')
 	

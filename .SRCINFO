@@ -6,7 +6,7 @@ pkgbase = imagej-plugin-morpholibj
 	arch = any
 	license = LGPL3
 	depends = imagej
-	source = https://github.com/ijpb/MorphoLibJ/releases/download/v1.6.2/MorphoLibJ_-1.6.2.jar
+	source = https://github.com/ijpb/MorphoLibJ/releases/download/MorphoLibJ_-1.6.2/MorphoLibJ_-1.6.2.jar
 	sha256sums = d38bc91c5a935a8f22c9e7782f74d5fcff3d7f09f4ef3cf4e2e2e5d4a23a78ed
 
 pkgname = imagej-plugin-morpholibj
