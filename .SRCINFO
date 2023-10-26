@@ -7,6 +7,7 @@ pkgbase = mounter_elite
 	license = GPL3
 	depends = bash
 	optdepends = ccd2iso
+	optdepends = sudo
 	source = https://github.com/siyia2/mounter_elite/archive/v1.0.tar.gz
 	md5sums = 5b47c26fc97bc83f4de20c475e08466a
 
