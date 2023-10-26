@@ -4,7 +4,7 @@ _pkgname=ParallelLogger
 _pkgver=3.3.0
 pkgname=r-${_pkgname,,}
 pkgver=3.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Support for Parallel Computation, Logging, and Function Automation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,8 +18,8 @@ depends=(
 optdepends=(
   r-dt
   r-knitr
-  r-mailr
   r-rmarkdown
+  r-sendmailr
   r-shiny
   r-testthat
   r-tibble

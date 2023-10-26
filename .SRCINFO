@@ -1,7 +1,7 @@
 pkgbase = r-parallellogger
 	pkgdesc = Support for Parallel Computation, Logging, and Function Automation
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ParallelLogger
 	arch = any
 	license = Apache
@@ -11,8 +11,8 @@ pkgbase = r-parallellogger
 	depends = r-xml2
 	optdepends = r-dt
 	optdepends = r-knitr
-	optdepends = r-mailr
 	optdepends = r-rmarkdown
+	optdepends = r-sendmailr
 	optdepends = r-shiny
 	optdepends = r-testthat
 	optdepends = r-tibble
