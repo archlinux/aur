@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneRegionScan
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='GeneRegionScan'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-bsgenome
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a9f6960e353c009fd93a11c90a979ddc284789e62cfb9ea14271b9df6d1b8fc')
+sha256sums=('468eabcd0bb1925a9204b3a89a6184b40e6bad266464ea106a97eb80ae7d09ff')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
