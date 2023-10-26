@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmicCircos
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='High-quality circular visualization of omics data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-genomicranges
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('201a689fef83a4aeaeff592b8deacc391191af33768ac90b0500ce6719031c7f')
+sha256sums=('2c21551a046ed6d5dd7bedb36eed4c3c664dbcfe39dee54266afae3c9db75fdb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
