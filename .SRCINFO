@@ -1,7 +1,7 @@
 pkgbase = r-metafor
 	pkgdesc = Meta-Analysis Package for R
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=metafor
 	arch = any
 	license = GPL
@@ -38,6 +38,7 @@ pkgbase = r-metafor
 	optdepends = r-rcgmin
 	optdepends = r-rmarkdown
 	optdepends = r-rsolnp
+	optdepends = r-rstudioapi
 	optdepends = r-rvmmin
 	optdepends = r-sp
 	optdepends = r-subplex
