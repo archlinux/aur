@@ -1,17 +1,20 @@
 pkgbase = brightness-git
-	pkgdesc = Brightness Controller - allows you to control brightness of primary and secondary display
-	pkgver = 20140522
+	pkgdesc = A small Rust program that uses ddcutil to control your monitor's brightness
+	pkgver = 20230924.r18.30d3269
 	pkgrel = 1
-	url = http://github.com/lordamit/Brightness
-	arch = any
-	license = GPLv3
-	makedepends = git
-	depends = python2
-	depends = wxpython
-	depends = wxgtk
-	depends = python2-pyside
-	source = brightness.run
-	md5sums = 6a99d9ba7e08f57d3614c63654cadcb8
+	url = https://gitlab.com/Devorlon/brightness
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = AGPL3
+	makedepends = cargo
+	makedepends = pandoc
+	depends = ddcutil
+	provides = brightness
+	conflicts = brightness
+	source = git+https://gitlab.com/Devorlon/brightness
+	sha512sums = SKIP
 
 pkgname = brightness-git
-

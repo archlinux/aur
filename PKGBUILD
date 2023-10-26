@@ -1,49 +1,37 @@
-# Maintainer: strata <strata@dropswitch.net>
-pkgname=brightness-git
-pkgver=20140522
-pkgrel=1
-pkgdesc="Brightness Controller - allows you to control brightness of primary and secondary display"
-arch=('any')
-url="http://github.com/lordamit/Brightness"
-license=('GPLv3')
-depends=('python2' 'wxpython' 'wxgtk' 'python2-pyside')
-makedepends=('git')
-source=('brightness.run')
-md5sums=('6a99d9ba7e08f57d3614c63654cadcb8')
+# Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
-_gitroot='https://github.com/lordamit/Brightness'
-_gitname='Brightness'
+_pkgname=brightness
+pkgname=${_pkgname}-git
+pkgver=20230924.r18.30d3269
+pkgrel=1
+pkgdesc="A small Rust program that uses ddcutil to control your monitor's brightness"
+url='https://gitlab.com/Devorlon/brightness'
+license=('AGPL3')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+depends=('ddcutil')
+makedepends=('cargo' 'pandoc')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci main | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $_pkgname
+  pandoc README.md -s -t man -o "${_pkgname}.1"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-
-  sed -i 's;#!/usr/bin/python;#!/usr/bin/python2;' src/init.py
+  cd $_pkgname
+  cargo build --release --locked
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/lib/brightness
-  cp -r ${srcdir}/${_gitname}-build/src/* ${pkgdir}/usr/lib/brightness
-  install -m 755 ../brightness.run ${pkgdir}/usr/bin/brightness
+  cd $_pkgname
+  install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "${_pkgname}.1" "$pkgdir/usr/share/man/man1/${_pkgname}.1"
 }
-
-# vim:set ts=2 sw=2 et:
