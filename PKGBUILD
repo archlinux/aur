@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.0.r12.ga6dc929
-pkgrel=8
+pkgrel=9
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -386,6 +386,9 @@ if [[ $_nonfree_enabled == 'ON' ]]; then
   sha256sums+=("04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36")
   _args+=(--enable-nonfree)
 fi
+
+# Avoid failing because of texinfo 7.1
+_args+=(--disable-htmlpages)
 
 prepare() {
   cd ffmpeg
