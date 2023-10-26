@@ -4,7 +4,7 @@ _pkgname=spatstat.random
 _pkgver=3.2-1
 pkgname=r-${_pkgname,,}
 pkgver=3.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Random Generation Functionality for the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,8 +17,6 @@ depends=(
 )
 optdepends=(
   r-gsl
-  r-randomfields
-  r-randomfieldsutils
   r-spatial
   r-spatstat
   r-spatstat.explore
