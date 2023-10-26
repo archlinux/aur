@@ -2,7 +2,7 @@
 
 _pkgorg=gitlab.com/mipimipi
 pkgname=repman
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"
 arch=(
@@ -12,7 +12,7 @@ arch=(
 url="https://$_pkgorg/$pkgname"
 license=(GPL3)
 source=("https://${_pkgorg}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('876d7707ac0ee3fe1b97253c082494290d3bd22537d129acf97acf12676a2abc')
+sha256sums=('d1086c8f060742f520dc054b2fc73ceb65a43196cb746b6900ad779f944feb91')
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 conflicts=(repman-git)
 backup=("etc/repman.conf")
