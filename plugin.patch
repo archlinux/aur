@@ -1,0 +1,25 @@
+--- a/src/plugin_loader.cpp
++++ b/src/plugin_loader.cpp
+@@ -317,14 +317,14 @@
+   if (!base_plugin_path.EndsWith(wxFileName::GetPathSeparator()))
+     base_plugin_path += wxFileName::GetPathSeparator();
+ 
+-  if (!g_bportable){
+-    if (base_plugin_path.IsSameAs(plugin_file_path)){
+-      if (!IsSystemPlugin(file_name.ToStdString())){
+-        DEBUG_LOG << "Skipping plugin " <<  file_name << " in " << g_BasePlatform->GetPluginDir();
+-        return false;
+-      }
+-    }
+-  }
++  // if (!g_bportable){
++  //   if (base_plugin_path.IsSameAs(plugin_file_path)){
++  //     if (!IsSystemPlugin(file_name.ToStdString())){
++  //       DEBUG_LOG << "Skipping plugin " <<  file_name << " in " << g_BasePlatform->GetPluginDir();
++  //       return false;
++  //     }
++  //   }
++  // }
+ 
+   if (!IsSystemPlugin(file_name.ToStdString()) && safe_mode::get_mode()) {
+     DEBUG_LOG << "Skipping plugin " <<  file_name << " in safe mode";
