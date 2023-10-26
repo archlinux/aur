@@ -2,18 +2,22 @@ pkgbase = edb-debugger
 	pkgdesc = EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg.
 	pkgver = 1.4.0
 	pkgrel = 1
+	epoch = 1
 	url = http://www.codef00.com/projects#debugger
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = coreutils
 	depends = qt5-xmlpatterns>=5.9
 	depends = qt5-svg>=5.9
 	depends = capstone>=3.0
 	optdepends = graphviz>=2.38.0
 	source = https://github.com/eteran/edb-debugger/releases/download/1.4.0/edb-debugger-1.4.0.tgz
 	source = edb.desktop
+	source = cmake-fixes.patch
 	sha256sums = 0eb2c5d17493ab0e7e0a0748eefa5733ec90329631cc8db87f2943e90f91b726
 	sha256sums = f3e725642c6b87d5a7fd25331a9560d4f9803c22566875b722bc27e275f311a6
+	sha256sums = 134d7ff9012588f10270955634ae70f1044f8538a00db29eddbdc7b8cd77fb08
 
 pkgname = edb-debugger
