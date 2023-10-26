@@ -29,7 +29,7 @@
 ## basic info
 _pkgname="retroshare"
 pkgname="$_pkgname"
-pkgver=0.6.7RC2
+pkgver=0.6.7RC2.r47.gc52e84d70
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 #url="http://retroshare.cc/"
@@ -80,13 +80,15 @@ fi
 # package type
 if [ x"$pkgname" == x"$_pkgname" ] ; then
   # normal package
-  _pkgver="${pkgver%%.r*}"
+  _commit='c52e84d709df9d264d8aa2b9de41af5825496450'
+
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#tag=v${_pkgver/RC/-RC}")
+  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
   sha256sums=('SKIP')
 
   pkgver() {
-    echo ${_pkgver:?}
+    cd "$_pkgsrc"
+    git describe --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g ; s/\.RC/RC/'
   }
 else
   # git package
@@ -100,7 +102,7 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g ; s/\.RC/RC/'
   }
 fi
 
@@ -117,13 +119,14 @@ source+=(
   'libbitdht'::'git+https://github.com/RetroShare/BitDHT.git'
   'libretroshare'::'git+https://github.com/RetroShare/libretroshare.git'
   'openpgpsdk'::'git+https://github.com/RetroShare/OpenPGP-SDK.git'
+  'retroshare-webui'::'git+https://github.com/RetroShare/RSNewWebUI.git'
 
   # submodules for rapidjson
   'gtest'::'git+https://github.com/google/googletest.git'
 
   # submodules for restbed
-  'catch'::'git+https://github.com/corvusoft/catch-dependency.git'
   'asio'::'git+https://github.com/corvusoft/asio-dependency.git'
+  'catch'::'git+https://github.com/corvusoft/catch-dependency.git'
   'openssl'::'git+https://github.com/corvusoft/openssl-dependency.git'
 )
 
@@ -136,6 +139,7 @@ sha256sums+=(
   'SKIP'
   'SKIP'
 
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -163,6 +167,7 @@ prepare() {
       ['libbitdht']='libbitdht'
       ['libretroshare']='libretroshare'
       ['openpgpsdk']='openpgpsdk'
+      ['retroshare-webui']='retroshare-webui'
     )
      for key in ${!_submodules[@]} ; do
       git submodule init "${_submodules[${key}]}"
@@ -186,8 +191,8 @@ prepare() {
     # submodules for restbed
     cd "supportlibs/restbed"
     local -A _submodules=(
-      ['catch']='dependency/catch'
       ['asio']='dependency/asio'
+      ['catch']='dependency/catch'
       ['openssl']='dependency/openssl'
     )
      for key in ${!_submodules[@]} ; do
@@ -202,9 +207,12 @@ build() {
   cd "$_pkgsrc"
 
   # remove unwanted plugins
-  [[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
-  [[ "$_plugin_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
-
+  if [[ ! "${_plugin_voip::1}" =~ 't|y|!' ]] ; then
+    sed -i '/VOIP \\/d' plugins/plugins.pro
+  fi
+  if [[ ! "$_plugin_feedreader" =~ 't|y|1' ]] ; then
+    sed -i '/FeedReader/d' plugins/plugins.pro
+  fi
 
   local _qmake_options=(
     CONFIG-=debug
