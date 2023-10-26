@@ -4,7 +4,7 @@ _pkgname=fields
 _pkgver=15.2
 pkgname=r-${_pkgname,,}
 pkgver=15.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for Spatial Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
   r-maps
   r-spam
-  r-viridis
+  r-viridislite
 )
 makedepends=(
   gcc-fortran
