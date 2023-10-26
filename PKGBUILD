@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cn.mops
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='cn.mops - Mixture of Poissons for CNV detection in NGS data'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-dnacopy
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ffad35c854994da42d0117afb0267049f90faa031781e045b40b45564b1587c')
+sha256sums=('ce4e146ed262caffeca197c5541f146b6aef1bcf927d7eb9c1153a3a69dfff79')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
