@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	mv adbren.pl adbren
+	cp adbren.pl adbren
 }
 
 package() {
