@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneNetworkBuilder
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='GeneNetworkBuilder: a bioconductor package for building regulatory network using ChIP-chip/ChIP-seq data and Gene Expression Data'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-stringdb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f6975fb2f1f96a405957bfe21c4a6b5e5b0071e2d3cddd000f6e49466434db6c')
+sha256sums=('1b7ce3b355694fdfcf4186e05bc245cd0c52fc5e572e56c754f66a5c6ca5e73f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
