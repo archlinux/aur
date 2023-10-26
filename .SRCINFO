@@ -1,6 +1,6 @@
 pkgbase = r-gaga
 	pkgdesc = GaGa hierarchical model for high-throughput data analysis
-	pkgver = 2.46.0
+	pkgver = 2.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gaga
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-gaga
 	depends = r-coda
 	depends = r-ebarrays
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gaga_2.46.0.tar.gz
-	sha256sums = 6542ade294e03e642548c6f74aba29f26acb6b0ecc20329c0dfb9f1fb8e92acb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gaga_2.48.0.tar.gz
+	sha256sums = 2cf887e3a142f4d7e5c2fb697d69378af06f3b79a17d34d00fa1fc54dcfa10bb
 
 pkgname = r-gaga
