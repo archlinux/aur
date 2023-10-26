@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nempi
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Inferring unobserved perturbations from gene expression data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('741817f365d41e00f7f830666ba8d953750233da21ac0e9a06484349d903fcb4')
+sha256sums=('ce8f21989af615e9790e60d2da865af0a5d1484874130f0b7eacc218139f227c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
