@@ -1,6 +1,6 @@
 pkgbase = r-biochail
 	pkgdesc = basilisk and hail
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocHail
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = r-biochail
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocHail_1.0.1.tar.gz
-	md5sums = 438d85e8e37b643fba225d1b4315f8d4
-	sha256sums = 8fa73c0f281c26c65f4fcca3f0eb895dc03bab3a4b1e77ea0978e0494f84c7e2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocHail_1.2.0.tar.gz
+	md5sums = 4707c299d0bb3b41001065a753d89f33
+	sha256sums = d56801f227b645e29814530e326c1820e35d5c78aaf6e4afa181f6bc3ad0ba09
 
 pkgname = r-biochail
