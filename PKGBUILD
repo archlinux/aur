@@ -12,7 +12,7 @@ pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate 
 arch=('i686' 'x86_64' 'aarch64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://github.com/openSUSE/firefox-maintenance"
-depends=('libxt' 'mime-types'
+depends=('libxt' 'mime-types' 'dav1d' 'aom'
          'dbus-glib' 'hicolor-icon-theme'
          'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
 	 'sqlite' 'kmozillahelper' 'ffmpeg'
@@ -240,7 +240,7 @@ package() {
   # they are already specificied in makedepends
   depends+=(
     # system av1
-    'libdav1d.so' 'libaom.so'
+    #'libdav1d.so' 'libaom.so'
     # system harfbuzz
     'libharfbuzz.so'
     # system icu
