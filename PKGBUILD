@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=snapCGH
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.70.0
+pkgver=1.72.0
 pkgrel=1
 pkgdesc='Segmentation, normalisation and processing of aCGH data'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   r-tilingarray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('af9490c97af0d7bb703ae859fcac65766048eaa29d98a30c5368633af8c1e57b')
+sha256sums=('5267ce66ff12ed55ba28c56f826831bc2016674e7d1a053a6ce50ff6fbd5d24e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
