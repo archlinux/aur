@@ -26,17 +26,21 @@ makedepends=(
 
 if [ x"$_pkgname" == x"$pkgname" ] ; then
   # normal package
-  _pkgsrc="$_pkgname-$pkgver"
-  _module="amitools"
-
   url="https://pypi.org/project/amitools"
 
+  _pkgsrc="$_pkgname-${pkgver%%.r*}"
+  _pkgext="tar.gz"
+  _module="amitools"
   source+=(
-    "$_pkgname-$pkgver.tar.gz"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
+    "$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-${pkgver%%.r*}.tar.gz"
   )
   sha256sums+=(
     '0a5b6a1a15c317cf7542c467dc7c8e3240f06ace320a597d25793a34c1e8c492'
   )
+
+  pkgver() {
+    echo "${pkgver%%.r*}"
+  }
 else
   # x-git package
   _pkgsrc="$_pkgname"
@@ -44,23 +48,23 @@ else
   makedepends+=('git')
 
   provides+=("$_pkgname")
-  conflicts+=(${provides[@]})
+  conflicts+=("$_pkgname")
 
   source+=("$_pkgname"::"git+$url")
   sha256sums+=('SKIP')
 
   pkgver() {
-    cd "$srcdir/$_pkgsrc"
+    cd "$_pkgsrc"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g; s/^v//'
   }
 fi
 
 build() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   python -m build --no-isolation --wheel
 }
 
 package() {
-  cd "$srcdir/$_pkgsrc"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pkgsrc"
+  python -m installer --destdir="${pkgdir:?}" dist/*.whl
 } 
