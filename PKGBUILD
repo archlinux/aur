@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SeqVarTools
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Tools for variant data'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a4cd9939cdc7ab9f196cd5604cb83c0570d08d68d5a104c21740a6e5b3d4663')
+sha256sums=('2b30fe117d2ef1423d0e5177da06ea08004dcdf4459894e10b486aaf5a99c2a5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
