@@ -15,25 +15,24 @@ depends=(
 )
 makedepends=(
   'gendesk'
+  'git'
   'nodejs'
   'npm'
 )
 
 if [ x"$pkgname" == x"$_pkgname" ] ; then
   # normal package
-  _pkgsrc="$_pkgname-${pkgver%%.r*}"
-  _pkgext="tar.gz"
-
-  source+=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v${pkgver%%.r*}.$_pkgext")
-  sha256sums+=('93427dab55a67be2b2297ba29aceed1d21251ea5495b2f192620818ada941d04')
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+  sha256sums+=('SKIP')
 
   pkgver() {
-    echo "${pkgver%%.r*}"
+    cd "$_pkgsrc"
+    git describe --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
+
 else
   # git package
-  makedepends+=('git')
-
   provides+=("$_pkgname")
   conflicts+=("$_pkgname")
 
