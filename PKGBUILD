@@ -2,7 +2,7 @@
 
 pkgname="ukrmol-out"
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Outer region programs for UKRmol+"
 arch=('any')
@@ -47,10 +47,13 @@ package() {
 
   install -d "${pkgdir}"/usr/bin/
   install -d "${pkgdir}/usr/lib/${pkgname}"
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -Dm 755 "${srcdir}/${pkgname}-${pkgver}"/bin/* "${pkgdir}"/usr/bin/
 
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}"/lib/*.a "${pkgdir}/usr/lib/${pkgname}/."
+
+  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}"/doc/* "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 

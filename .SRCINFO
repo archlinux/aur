@@ -1,7 +1,7 @@
 pkgbase = ukrmol-out
 	pkgdesc = Outer region programs for UKRmol+
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zenodo.org/records/5799134
 	arch = any
 	license = custom
