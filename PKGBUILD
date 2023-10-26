@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=dbplyr
-_cranver=2.3.4
+_cranver=2.4.0
 pkgname=r-${_cranname,,}
 pkgdesc="A ‘dplyr’ Back End for Databases"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -15,23 +15,23 @@ pkgrel=1
 
 arch=("any")
 depends=(
-    "r>=3.1"
+    "r>=3.6"
     "r-blob>=1.2.0"
-    "r-cli>=3.4.1"
-    "r-dbi>=1.0.0"
-    "r-dplyr>=1.1.0"
-    "r-glue>=1.2.0"
+    "r-cli>=3.6.1"
+    "r-dbi>=1.1.3"
+    "r-dplyr>=1.1.2"
+    "r-glue>=1.6.2"
     "r-lifecycle>=1.0.3"
     "r-magrittr"
-    "r-pillar>=1.5.0"
+    "r-pillar>=1.9.0"
     "r-purrr>=1.0.1"
     "r-r6>=2.2.2"
-    "r-rlang>=1.0.6"
-    "r-tibble>=1.4.2"
+    "r-rlang>=1.1.1"
+    "r-tibble>=3.2.1"
     "r-tidyr>=1.3.0"
     "r-tidyselect>=1.2.0"
-    "r-vctrs>=0.5.0"
-    "r-withr"
+    "r-vctrs>=0.6.3"
+    "r-withr>=2.5.0"
 )
 optdepends=(
     "r-bit64"
@@ -40,29 +40,44 @@ optdepends=(
     "r-lahman"
     "r-nycflights13"
     "r-odbc"
-    "r-rmariadb>=1.0.2"
+    "r-rmariadb>=1.2.2"
     "r-rmarkdown"
-    "r-rpostgres>=1.1.3"
+    "r-rpostgres>=1.4.5"
     "r-rpostgresql"
-    "r-rsqlite>=2.2.15"
-)
-checkdepends=(
-    "${optdepends[@]}"
-    "r-testthat>=3.0.2"
+    "r-rsqlite>=2.3.1"
 )
 
+# The unittests for `r-dbplyr` have multiple circular
+# dependency chains.
+
+# As such, the tests can not be run on first build.
+# While R packages from CRAN, generally, are well-tested
+# before they are released, in some situations, you want to
+# have thorough testing on your own end.
+
+# To run the tests, first build this package without `check()`
+# (i.e., as-is) to bootstrap `r-dbplyr`. Then, on subsequent builds,
+# (assumining you have a local repository that is accessible from
+# the build chroot), uncomment the lines defining `checkdepends`, below,
+# as well as the `check()` function further down
+
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-testthat>=3.1.10"
+# )
+
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('03a200a9a6452ff3996fcb6c79980dbaec3c1f32ba3fc77b77804fcb2c774c7b2c723c045780406bf5cb388346fb7e9bd322a15b68017f2733cfb32db05ef933')
+b2sums=("c0a4c4f90544b32bed9f3582741f9870fe19c6f3b7c0c9468073dcb7c947f44e18b8c31ccb256627c79f84714707a0ad54bed91d64f4924b889b18c1d51f35e1")
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    R CMD check --no-manual "${_cranname}"
-}
+# check() {
+#     export R_LIBS="build/"
+#     R CMD check --no-manual "${_cranname}"
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"

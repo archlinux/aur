@@ -1,51 +1,39 @@
 pkgbase = r-dbplyr
 	pkgdesc = A ‘dplyr’ Back End for Databases
-	pkgver = 2.3.4
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dbplyr
 	arch = any
 	license = MIT
-	checkdepends = r-bit64
-	checkdepends = r-covr
-	checkdepends = r-knitr
-	checkdepends = r-lahman
-	checkdepends = r-nycflights13
-	checkdepends = r-odbc
-	checkdepends = r-rmariadb>=1.0.2
-	checkdepends = r-rmarkdown
-	checkdepends = r-rpostgres>=1.1.3
-	checkdepends = r-rpostgresql
-	checkdepends = r-rsqlite>=2.2.15
-	checkdepends = r-testthat>=3.0.2
-	depends = r>=3.1
+	depends = r>=3.6
 	depends = r-blob>=1.2.0
-	depends = r-cli>=3.4.1
-	depends = r-dbi>=1.0.0
-	depends = r-dplyr>=1.1.0
-	depends = r-glue>=1.2.0
+	depends = r-cli>=3.6.1
+	depends = r-dbi>=1.1.3
+	depends = r-dplyr>=1.1.2
+	depends = r-glue>=1.6.2
 	depends = r-lifecycle>=1.0.3
 	depends = r-magrittr
-	depends = r-pillar>=1.5.0
+	depends = r-pillar>=1.9.0
 	depends = r-purrr>=1.0.1
 	depends = r-r6>=2.2.2
-	depends = r-rlang>=1.0.6
-	depends = r-tibble>=1.4.2
+	depends = r-rlang>=1.1.1
+	depends = r-tibble>=3.2.1
 	depends = r-tidyr>=1.3.0
 	depends = r-tidyselect>=1.2.0
-	depends = r-vctrs>=0.5.0
-	depends = r-withr
+	depends = r-vctrs>=0.6.3
+	depends = r-withr>=2.5.0
 	optdepends = r-bit64
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-lahman
 	optdepends = r-nycflights13
 	optdepends = r-odbc
-	optdepends = r-rmariadb>=1.0.2
+	optdepends = r-rmariadb>=1.2.2
 	optdepends = r-rmarkdown
-	optdepends = r-rpostgres>=1.1.3
+	optdepends = r-rpostgres>=1.4.5
 	optdepends = r-rpostgresql
-	optdepends = r-rsqlite>=2.2.15
-	source = https://cran.r-project.org/src/contrib/dbplyr_2.3.4.tar.gz
-	b2sums = 03a200a9a6452ff3996fcb6c79980dbaec3c1f32ba3fc77b77804fcb2c774c7b2c723c045780406bf5cb388346fb7e9bd322a15b68017f2733cfb32db05ef933
+	optdepends = r-rsqlite>=2.3.1
+	source = https://cran.r-project.org/src/contrib/dbplyr_2.4.0.tar.gz
+	b2sums = c0a4c4f90544b32bed9f3582741f9870fe19c6f3b7c0c9468073dcb7c947f44e18b8c31ccb256627c79f84714707a0ad54bed91d64f4924b889b18c1d51f35e1
 
 pkgname = r-dbplyr
