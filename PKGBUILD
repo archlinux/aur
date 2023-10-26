@@ -4,7 +4,7 @@ _pkgname=bnlearn
 _pkgver=4.9
 pkgname=r-${_pkgname,,}
 pkgver=4.9
-pkgrel=1
+pkgrel=3
 pkgdesc='Bayesian Network Structure Learning, Parameter Learning and Inference'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,6 +16,7 @@ optdepends=(
   r-gmp
   r-grain
   r-graph
+  r-grbase
   r-igraph
   r-lattice
   r-parallel
