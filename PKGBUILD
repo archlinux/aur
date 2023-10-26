@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cghMCR
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Find chromosome regions showing common gains/losses'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de325b68999f28000beea891a5e583602339fdcfe68881a8704603c9535707cd')
+sha256sums=('f99cb0d0e4337d6a5656b955c73c877e80fb2d49583b546928e748d59fa64b47')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
