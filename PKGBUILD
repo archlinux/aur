@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cbpManager
-_pkgver=1.8.4
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.4
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Generate, manage, and edit data and metadata files suitable for the import in cBioPortal for Cancer Genomics'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b4cd09f239864121536e21bc8adea5e6c92b051a5b23933b695ff76677f180f')
+sha256sums=('eae8cba70f474680fc076773ed7bc142512824c9997a326e185ce3ecb17aa784')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
