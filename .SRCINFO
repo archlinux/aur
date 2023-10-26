@@ -1,6 +1,6 @@
 pkgbase = r-cosmosr
 	pkgdesc = COSMOS (Causal Oriented Search of Multi-Omic Space)
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cosmosR
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-cosmosr
 	optdepends = r-piano
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cosmosR_1.8.0.tar.gz
-	sha256sums = 95d7ef13d2eaf15c8e348d44452a738bef1dd7a4bb90fcf515a6f73fd5b8bca0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cosmosR_1.10.0.tar.gz
+	sha256sums = 4e95bfac42affdb5cb7ffb23ca0a91d3a0133c0e561653b977e0c116b5823878
 
 pkgname = r-cosmosr
