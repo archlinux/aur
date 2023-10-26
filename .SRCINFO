@@ -1,6 +1,6 @@
 pkgbase = r-ace
 	pkgdesc = Absolute Copy Number Estimation from Low-coverage Whole Genome Sequencing
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ACE
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-ace
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ACE_1.18.0.tar.gz
-	sha256sums = 15ca3d459eace01349b8d3213d1076bb661b9a765797c53d2950d7b563111b95
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ACE_1.20.0.tar.gz
+	sha256sums = 28453ea6e1ed7e8a5105f9caaa0602d4c145042f37fbba6391ee5bf3f5a48052
 
 pkgname = r-ace
