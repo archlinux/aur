@@ -1,2 +1,3 @@
-#!/usr/bin/bash
-/opt/pcsx2/pcsx2-qt "$@"
+#!/usr/bin/sh
+
+QT_QPA_PLATFORM=xcb /opt/pcsx2/pcsx2-qt "$@"

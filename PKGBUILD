@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.5081.r0.g34f92fe4e
+pkgver=1.7.5154.r0.gbfd1a4c34
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -127,7 +127,7 @@ build() {
     -DUSE_VULKAN=ON \
     -DENABLE_SETCAP=OFF \
     -DX11_API=ON \
-    -DWAYLAND_API=ON \
+    -DWAYLAND_API=OFF \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DDISABLE_ADVANCE_SIMD=ON \
     -DDISABLE_BUILD_DATE=ON
@@ -164,4 +164,4 @@ b2sums=('SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
-'3f353f4f8e9ad778dbb972522f08766bfd7d4bc9cad57cd2154f9c8a91e07b28124491f6026534145491ca1df75060dfcff2005c8aa42d25289e3292a91dc0dd')
+'956d3547f316de51de4712e6ad6cf5621efadd222ef6c1aa18508321949e63d6b3dc32cdc7eabbcb8172b4b77593485e3debe0b250ec3d0c6926170d80baf3ef')
