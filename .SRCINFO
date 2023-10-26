@@ -1,6 +1,6 @@
 pkgbase = electron25-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 25
-	pkgver = 25.9.2
+	pkgver = 25.9.3
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -17,16 +17,16 @@ pkgbase = electron25-bin
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron25=25.9.2
-	provides = electron=25.9.2
+	provides = electron25=25.9.3
+	provides = electron=25.9.3
 	conflicts = electron25
-	source_x86_64 = electron25-bin-chromedriver-25.9.2-x86_64.zip::https://github.com/electron/electron/releases/download/v25.9.2/chromedriver-v25.9.2-linux-x64.zip
-	source_x86_64 = electron25-bin-25.9.2-x86_64.zip::https://github.com/electron/electron/releases/download/v25.9.2/electron-v25.9.2-linux-x64.zip
-	sha256sums_x86_64 = 7d01d537383df4b1653647e14fb768d27879943596a87b57ae3f171aa2aaf5d1
-	sha256sums_x86_64 = aab65a562723e04eadbdee1251a749756b366dc1c5014bcc987c21c0a523fe2f
-	source_aarch64 = electron25-bin-chromedriver-25.9.2-aarch64.zip::https://github.com/electron/electron/releases/download/v25.9.2/chromedriver-v25.9.2-linux-arm64.zip
-	source_aarch64 = electron25-bin-25.9.2-aarch64.zip::https://github.com/electron/electron/releases/download/v25.9.2/electron-v25.9.2-linux-arm64.zip
-	sha256sums_aarch64 = f5f42513bb55c7c1098e669d12488844ca2e63cd0d3a375db2eab517975c130c
-	sha256sums_aarch64 = 0b2d48a29d79fcd21d72d05fdb7638dd2fd257cf0d4cf9bd32f182b2634de466
+	source_x86_64 = electron25-bin-chromedriver-25.9.3-x86_64.zip::https://github.com/electron/electron/releases/download/v25.9.3/chromedriver-v25.9.3-linux-x64.zip
+	source_x86_64 = electron25-bin-25.9.3-x86_64.zip::https://github.com/electron/electron/releases/download/v25.9.3/electron-v25.9.3-linux-x64.zip
+	sha256sums_x86_64 = 439976b34dc9f2dbe24912d073e702f00fd63ffd6fb0c40fec8c739955c1c8b5
+	sha256sums_x86_64 = ba94532620d60cff9a7d2a7fdd3d0b0e16b91acc91b60827c12bc3b39c7f650a
+	source_aarch64 = electron25-bin-chromedriver-25.9.3-aarch64.zip::https://github.com/electron/electron/releases/download/v25.9.3/chromedriver-v25.9.3-linux-arm64.zip
+	source_aarch64 = electron25-bin-25.9.3-aarch64.zip::https://github.com/electron/electron/releases/download/v25.9.3/electron-v25.9.3-linux-arm64.zip
+	sha256sums_aarch64 = 6f3fa810262f74aa0ec3739fd78e6895e1e6d448bb24c25adb8588b5b5b5d10c
+	sha256sums_aarch64 = bf1303ee3389574d4769bff7d9de2308d5ce4b92fa240e868b508d9f324b6643
 
 pkgname = electron25-bin
