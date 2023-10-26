@@ -1,6 +1,6 @@
 pkgbase = r-ncigraph
 	pkgdesc = Pathways from the NCI Pathways Database
-	pkgver = 1.48.1
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NCIgraph
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-ncigraph
 	depends = r-rbgl
 	depends = r-rcy3
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NCIgraph_1.48.1.tar.gz
-	md5sums = f793bc74c063fd9d9f709592f60abd6a
-	sha256sums = 3ca8a4192424fe91f78591027b1afdfd24852dc9dee9862940914f074a27ea60
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NCIgraph_1.50.0.tar.gz
+	md5sums = ed568ded26dce9e64d5f38606e65c13d
+	sha256sums = 661bebfac48019277075f230d08b25a64ae99f867903faef3e769ba1c0c8698a
 
 pkgname = r-ncigraph
