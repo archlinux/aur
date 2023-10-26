@@ -1,7 +1,7 @@
 pkgbase = r-epinem
 	pkgdesc = epiNEM
-	pkgver = 1.24.0
-	pkgrel = 3
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/epiNEM
 	arch = any
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = r-epinem
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-stringdb
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epiNEM_1.24.0.tar.gz
-	sha256sums = 22a6d7f19b73a4dd88aa65e8d72cf2b0f47c11b9c21886fa1b3bb89878ae23b0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epiNEM_1.26.0.tar.gz
+	sha256sums = 8ede681f5622f4990e8626ccb6896f556d08c557f0cfd604e93f66dee4b8630b
 
 pkgname = r-epinem
