@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=anota
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='ANalysis Of Translational Activity (ANOTA).'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-qvalue
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1df897a6ca662d4f4167554f4b646604658da24ffa6c1ee880353b8fc3158145')
+sha256sums=('6151694aa3a54cc96f41ddd2803caa96230f3dd30ae7c15d4274731ab93c39ac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
