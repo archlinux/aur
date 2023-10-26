@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChemmineOB
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="R interface to a subset of OpenBabel functionalities"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -34,8 +34,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5d721ca0fa36f8b42fecca0ab4f98910')
-sha256sums=('9115e25d3be94148fcc549b22af107c3fe0055569ac4e36ce161a203a8698450')
+md5sums=('5bd759ca398ffb70214a8076028bf0b2')
+sha256sums=('b147d9e00df464d13b1c6d876b0a49e158510ff725da599e51b936faf997ca55')
 
 build() {
   mkdir -p build
