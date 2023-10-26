@@ -1,0 +1,19 @@
+pkgbase = r-cardinalio
+	pkgdesc = Read and write mass spectrometry imaging files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CardinalIO
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-matter
+	depends = r-ontologyindex
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CardinalIO_1.0.0.tar.gz
+	sha256sums = c6569a101b121b1445c785f7cb17214a55d1630ac0a774e7e5e32ca199293d4f
+
+pkgname = r-cardinalio
