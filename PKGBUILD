@@ -1,7 +1,7 @@
 # Maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher
 pkgver="2.2.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=(any)
 url='https://github.com/open-goal/launcher'

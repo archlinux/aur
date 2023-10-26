@@ -1,7 +1,7 @@
 pkgbase = open-goal-launcher
 	pkgdesc = A launcher for the OpenGOAL Project to simplify usage and installation
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-goal/launcher
 	arch = any
 	license = ISC
