@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synapter
-_pkgver=2.24.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Label-free data analysis pipeline for optimal identification and quantitation"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,8 +33,8 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0a1b7bdc0e115bb14644630fdbb324ef')
-sha256sums=('dcb7f2ce5cb223d097d26e83637534cc433388b36e8d40a3bab6afef270f5445')
+md5sums=('a6c9ade32fbe35d5cb85adc0e9a5322c')
+sha256sums=('03cd1fb5c89df4c1bcb5f6937086fa07a76d04a89023854bf42344ab95379f31')
 
 build() {
   mkdir -p build
