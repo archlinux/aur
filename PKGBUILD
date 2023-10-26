@@ -1,7 +1,7 @@
 # Maintainer: belst <aur at bel dot st>
 _pkgbasename=minizip
 pkgname=lib32-minizip
-pkgver=1.2.13
+pkgver=1.3
 pkgrel=1
 pkgdesc="ZIP file extraction library (32-bit)"
 url="http://www.winimage.com/zLibDll/minizip.html"
@@ -9,9 +9,9 @@ license=('ZLIB' 'custom')
 arch=('x86_64')
 makedepends=('gcc-multilib' 'libtool-multilib')
 options=(!libtool)
-depends=('lib32-glibc' "$_pkgbasename" 'lib32-zlib')
+depends=('lib32-gcc-libs' 'lib32-glibc' "$_pkgbasename" 'lib32-zlib')
 source=("http://zlib.net/zlib-${pkgver}.tar.gz")
-sha256sums=('b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30')
+sha256sums=('ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e')
 
 build() {
   export CC="gcc -m32"
