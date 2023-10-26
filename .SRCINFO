@@ -1,6 +1,6 @@
 pkgbase = r-repviz
 	pkgdesc = Replicate oriented Visualization of a genomic region
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RepViz
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-repviz
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RepViz_1.16.0.tar.gz
-	sha256sums = 7d79445c11c946795cabaf370486be48a2c3ea9b21137d7fc77fa5612c757c32
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RepViz_1.18.0.tar.gz
+	sha256sums = 9c8b56f9003054b004db2d92ac10b90dd56365620cb0be94535beac73adcbae1
 
 pkgname = r-repviz
