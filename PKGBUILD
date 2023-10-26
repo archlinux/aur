@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nanotatoR
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Next generation structural variant annotation and classification'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cbf85356b28e2b7438dc2b3f25b72783515caef89f6590c1fd1bad5be7a576d4')
+sha256sums=('eb8200b0f4818ad032af934179ba779b1b9869d7a2e42b44bad5ccb3c823d0da')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
