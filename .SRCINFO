@@ -1,0 +1,11 @@
+pkgbase = mojo
+	pkgdesc = metapackage for mojo (installs mojo-git and modular)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://developer.modular.com/download
+	arch = x86_64
+	license = custom:modular
+	depends = modular
+	depends = mojo-git
+
+pkgname = mojo
