@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=graphite
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='GRAPH Interaction from pathway Topological Environment'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-topologygsa
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('050b911ee969c5d31293e82f750f3b3454aaecb7b8395d2264f89862e89b12ba')
+sha256sums=('5678e693530ed9e5727e45b938ff830db24efc1bbac59f8deefa0bd0250812c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
