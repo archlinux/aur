@@ -1,7 +1,7 @@
 pkgbase = r-esetvis
 	pkgdesc = Visualizations of expressionSet Bioconductor object
-	pkgver = 1.26.1
-	pkgrel = 3
+	pkgver = 1.28.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/esetVis
 	arch = any
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = r-esetvis
 	optdepends = r-rbokeh
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/esetVis_1.26.1.tar.gz
-	sha256sums = 455dbe4c03dfd19b8ad26252b4e17df048832c4cc7d8e8acf90a41d01394cbb9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/esetVis_1.28.0.tar.gz
+	sha256sums = 96592291821ba5c4b66f1c476dcf5b790084bfd6730dc637030c55094b05a94b
 
 pkgname = r-esetvis
