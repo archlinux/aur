@@ -1,6 +1,6 @@
 pkgbase = r-gmrp
 	pkgdesc = GWAS-based Mendelian Randomization and Path Analyses
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GMRP
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-gmrp
 	depends = r-plotrix
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GMRP_1.28.0.tar.gz
-	sha256sums = 526e4c9784515357637bef6bb68f966bf9186dd1abdbd5775e63f424b29d1734
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GMRP_1.30.0.tar.gz
+	sha256sums = a97f451eaf5e2f79c6655710e55cc057a3b209b103d18eaf4757b54d45f6a495
 
 pkgname = r-gmrp
