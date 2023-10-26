@@ -1,4 +1,5 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: dakataca <🐬danieldakataca@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-kamakiri
 pkgver=6.5.9.arch2
@@ -245,3 +246,18 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+
+## Source:
+# git clone https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git
+# cd linux/
+
+## Get default files:
+# makepkg --nobuild --nodeps
+# zstd -d linux-arch-kamakiri.patch.zst
+# zstd linux-arch-kamakiri.patch
+
+## Test:
+# makepkg --printsrcinfo > .SRCINFO
+# git clean -dfx
+
+# 👤 Autor: https://t.me/dakataca 💻 🐬 #
