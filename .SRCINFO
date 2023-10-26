@@ -1,6 +1,6 @@
 pkgbase = r-surfaltr
 	pkgdesc = Rapid Comparison of Surface Protein Isoform Membrane Topologies Through surfaltr
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/surfaltr
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-surfaltr
 	optdepends = r-kableextra
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/surfaltr_1.6.0.tar.gz
-	sha256sums = 33c685c105df25bd13700586fe7a48c93cab58e6c8aca729007633247ed42006
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/surfaltr_1.8.0.tar.gz
+	sha256sums = 9a2023bea6dfc7fed9b8338d5b3e5afbd4386516fd7a714c674b85e9d0469acc
 
 pkgname = r-surfaltr
