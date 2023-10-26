@@ -1,0 +1,13 @@
+pkgbase = mojo
+	pkgdesc = Mojo Programming Language
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://developer.modular.com/download
+	arch = x86_64
+	license = custom:modular
+	depends = modular
+	depends = python
+	source = https://raw.githubusercontent.com/Sharktheone/arch-mojo/main/install.py
+	sha256sums = 7fa19d2403f11307ebac106781a21eee08e4a6f9230370a69a03ffe96d8ec905
+
+pkgname = mojo
