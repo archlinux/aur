@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicDistributions
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='GenomicDistributions: fast analysis of genomic intervals with Bioconductor'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5adef80750bdd7306f58bbd72537bc8e85b8bfceeb4bcd83642d69e4713db8af')
+sha256sums=('3dbff59d525a89e8707bc0e11c9a129db570c64c104a43812dc17155aa55d270')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
