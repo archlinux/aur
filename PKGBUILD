@@ -5,7 +5,7 @@ pkgver=0.51.0.82.g041fd565
 pkgrel=1
 pkgdesc="KTechLab is an IDE for microcontrollers and electronics. It supports circuit simulation, program development for microcontrollers and simulating the programmed microcontroller together with its application circuit. (GIT version)"
 arch=('x86_64')
-url='https://apps.kde.org/es/ktechlab'
+url='https://apps.kde.org/ktechlab'
 license=('GPL')
 depends=(
   'gcc-libs' # libstdc++.so
