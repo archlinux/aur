@@ -1,6 +1,6 @@
 pkgbase = r-flowsom
 	pkgdesc = Using self-organizing maps for visualization and interpretation of cytometry data
-	pkgver = 2.8.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FlowSOM
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-flowsom
 	optdepends = r-pheatmap
 	optdepends = r-scattermore
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FlowSOM_2.8.0.tar.gz
-	sha256sums = 604fb85ce7e4a1325225ed19b785efb87deaea2fea72095d25414e1d8cb7c08f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FlowSOM_2.10.0.tar.gz
+	sha256sums = 74d4f46e6b3928affca83628d030f9b5cd8624993b7d9723be5dbb49d6f81d9c
 
 pkgname = r-flowsom
