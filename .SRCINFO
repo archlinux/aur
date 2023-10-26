@@ -1,0 +1,13 @@
+pkgbase = verifytapn-git
+	pkgdesc = VerifyTAPN is a stand-alone verification engine for timed-arc Petri nets, developed for the verification tool TAPAAL.
+	pkgver = a12a596
+	pkgrel = 1
+	url = https://www.tapaal.net/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	source = verifytapn-git::git+https://github.com/TAPAAL/verifytapn.git
+	sha512sums = SKIP
+
+pkgname = verifytapn-git
