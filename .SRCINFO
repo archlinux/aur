@@ -1,0 +1,23 @@
+pkgbase = python-fpie
+	pkgdesc = A fast poisson image editing algorithm implementation
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/Trinkle23897/Fast-Poisson-Image-Editing
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-numpy
+	optdepends = gcc
+	optdepends = cmake
+	optdepends = cuda
+	optdepends = python-numba
+	optdepends = python-mpi4py
+	optdepends = python-taichi
+	source = Fast-Poisson-Image-Editing-main.zip::https://github.com/Trinkle23897/Fast-Poisson-Image-Editing/archive/refs/heads/main.zip
+	sha256sums = 130fd9a7a3b59d3401e9d384e342d2a6c3d1b7f595ec16f1b71b1483c29742fd
+
+pkgname = python-fpie
