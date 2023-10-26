@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=clevRvis
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('43c9647c43af55cee12813e91c37f569')
-sha256sums=('a4019b1410a607cde7dc2a6b53d6319c669c574fb5cb17fb86e37b03ac5050e8')
+md5sums=('96fde7a442a2cdb69754ebf1e68ccc65')
+sha256sums=('b40c4fe95a6b56bd73ccdaa87e5075600158db4399a3374665b1e220183cf55c')
 
 build() {
   mkdir -p build
