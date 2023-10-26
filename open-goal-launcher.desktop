@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=OpenGOAL Launcher
+Exec=/usr/bin/open-goal-launcher
+Icon=open-goal-launcher
+Terminal=false
+Categories=Development;

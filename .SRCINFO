@@ -1,0 +1,29 @@
+pkgbase = open-goal-launcher
+	pkgdesc = A launcher for the OpenGOAL Project to simplify usage and installation
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/open-goal/launcher
+	arch = any
+	license = ISC
+	makedepends = curl
+	makedepends = wget
+	makedepends = file
+	makedepends = cargo
+	makedepends = nodejs>=18.18.0
+	makedepends = yarn
+	depends = gtk3
+	depends = webkit2gtk
+	depends = openssl
+	depends = appmenu-gtk-module
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = libvips
+	depends = base-devel
+	conflicts = open-goal-launcher-bin
+	options = !strip
+	source = https://github.com/open-goal/launcher/archive/refs/tags/v2.2.2.tar.gz
+	source = open-goal-launcher.desktop
+	md5sums = 57d3585ec88a36b9ddb86cd7bebccbf0
+	md5sums = SKIP
+
+pkgname = open-goal-launcher
