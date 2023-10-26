@@ -7,7 +7,7 @@
 _pkgname="quaternion"
 pkgname="$_pkgname"
 pkgver=0.0.95.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt-based IM client for the Matrix protocol'
 #url="https://matrix.org/docs/projects/client/quaternion.html"
 url="https://github.com/quotient-im/Quaternion"
@@ -27,7 +27,6 @@ makedepends=(
 )
 optdepends=(
   'qt5-graphicaleffects: Display the conversation history at startup'
-  'qtkeychain: Store access tokens in a keyring'
 )
 
 
@@ -35,21 +34,23 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
   # normal package
   _pkgsrc="$_pkgname"
   source=(
-    "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion#tag=$pkgver"
+    "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion#tag=${pkgver%%.r*}"
+
+    # submodules for quoternion
     "libquotient"::'git+https://github.com/quotient-im/libQuotient'
   )
   sha256sums=(
     'SKIP'
+
     'SKIP'
   )
 
   prepare() {
-    ( # submodules - quoternion
-      cd "$_pkgsrc"
-      git submodule init "lib"
-      git submodule set-url "lib" "${srcdir}/libquotient"
-      git -c protocol.file.allow=always submodule update "lib"
-    )
+    _prepare_submodules_quoternion
+  }
+
+  pkgver() {
+    echo "${pkgver%%.r*}"
   }
 else
   # git package
@@ -59,14 +60,17 @@ else
   _pkgsrc="$_pkgname"
   source=(
     "$_pkgsrc"::"git+https://github.com/quotient-im/Quaternion"
+
+    # submodules for quoternion
     "libquotient"::'git+https://github.com/quotient-im/libQuotient'
 
-    # submodules - libquotient
+    # submodules for libquotient
     'gtad'::'git+https://github.com/quotient-im/gtad.git'
     'doxygen-awesome-css'::'git+https://github.com/jothepro/doxygen-awesome-css.git'
   )
   sha256sums=(
     'SKIP'
+
     'SKIP'
 
     'SKIP'
@@ -80,27 +84,41 @@ else
   }
 
   prepare() {
-    ( # submodules - quoternion
-      cd "$_pkgsrc"
-      git submodule init "lib"
-      git submodule set-url "lib" "${srcdir}/libquotient"
-      git -c protocol.file.allow=always submodule update "lib"
-    )
-
-    ( # submodules - libquotient
-      cd "$_pkgsrc/lib"
-      local _submodules=(
-        'gtad/gtad'
-        'doxygen-awesome-css'
-      )
-      for submodule in "${_submodules[@]}" ; do
-        git submodule init "${submodule}"
-        git submodule set-url "${submodule}" "${srcdir}/${submodule##*/}"
-        git -c protocol.file.allow=always submodule update "${submodule}"
-      done
-    )
+    _prepare_submodules_quoternion
+    _prepare_submodules_libquotient
   }
 fi
+
+_prepare_submodules_quoternion() {
+  (
+    # submodules for quaternion
+    cd "$_pkgsrc"
+    local -A _submodules=(
+      ['libquotient']='lib'
+    )
+     for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  )
+}
+
+_prepare_submodules_libquotient() {
+  (
+    # submodules for libquotient
+    cd "$_pkgsrc/lib"
+    local -A _submodules=(
+      ['doxygen-awesome-css']='doxygen-awesome-css'
+      ['gtad']='gtad/gtad'
+    )
+     for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  )
+}
 
 build() {
   local _cmake_options=(
@@ -117,5 +135,5 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }

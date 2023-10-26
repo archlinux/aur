@@ -1,7 +1,7 @@
 pkgbase = quaternion
 	pkgdesc = Qt-based IM client for the Matrix protocol
 	pkgver = 0.0.95.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/quotient-im/Quaternion
 	arch = aarch64
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = quaternion
 	depends = qt5-tools
 	depends = qtkeychain-qt5
 	optdepends = qt5-graphicaleffects: Display the conversation history at startup
-	optdepends = qtkeychain: Store access tokens in a keyring
 	source = quaternion::git+https://github.com/quotient-im/Quaternion#tag=0.0.95.1
 	source = libquotient::git+https://github.com/quotient-im/libQuotient
 	sha256sums = SKIP
