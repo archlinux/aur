@@ -3,10 +3,10 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=flowCore
-_pkgver=2.12.2
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="flowCore: Basic structures for flow cytometry data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -42,9 +42,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('92bb3f604d43aef47d1b8d4ecbb5f28d'
+md5sums=('3b0696fd3fc45a87531ab3503be00277'
          '219c62c718ad269fd5e832397a354e83')
-sha256sums=('1064a2941dbca4a25ff129ca8d62c9341b545aa070d6221987b2edeac3d57dfc'
+sha256sums=('6d21a43022eb6de907fdc025116bccacbf2ee997c5cf7ad96d0f70fa6d605185'
             '73e075b8ce2f0e9f3dea2e8778c6174586b71fb3c2b64c6ded4e5fb50ccd350c')
 
 prepare() {
