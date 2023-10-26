@@ -6,7 +6,7 @@ _appname=vencorddesktop
 _pkgname=Vesktop
 _assetname=VencordDesktop
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed"
 arch=('aarch64' 'x86_64')
 url="https://github.com/Vencord/Vesktop"
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('a8d790301249bf3a11217dd297354b3b59223609616ff7906cdfbb1bd20c7339')
+sha256sums=('8a0edcc52c323f44d767fb0efda43bebd1ff759fde86189fcf03e13b292d7e5a')
 sha256sums_aarch64=('c65cfcc6ec0126ca39dcac0b4ca082c11a1c60e695a2f81c7295a83c8126ee57')
 sha256sums_x86_64=('bfae6df57e8ab7acdef9d0df9711d685a6efb25c8e5c50148952cc7ddf9c8011')
 build() {
@@ -27,7 +27,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
