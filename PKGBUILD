@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=paxtoolsr
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Access Pathways from Multiple Databases Through BioPAX and Pathway Commons'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a9f5b4a4a8d35078c9dbdb84f2969230e5df78e16547d7746a7b2d095102bf71')
+sha256sums=('f050c8aea3cd37c14a8b4d1292bdb7f007f442078a8ef0e5a4286d1387f5331f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
