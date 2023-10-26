@@ -1,6 +1,6 @@
 pkgbase = r-rbm
 	pkgdesc = RBM: a R package for microarray and RNA-Seq data analysis
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RBM
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-rbm
 	depends = r
 	depends = r-limma
 	depends = r-marray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RBM_1.32.0.tar.gz
-	sha256sums = bfa44f227005fac252d516a792c3b9571b149bc314f522474963c53da8af91a0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RBM_1.34.0.tar.gz
+	sha256sums = 8bc08e618f8a4c5f0d7e236219fde6dfe56e440230aeb9e5be64cfea1da37c7a
 
 pkgname = r-rbm
