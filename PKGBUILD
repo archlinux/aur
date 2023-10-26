@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNORfuzzy
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Addon to CellNOptR: Fuzzy Logic'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('74bb7852c50223892a473fe5aad2a49b620f0dc2d9d672078890996a2dfdd9de')
+sha256sums=('07c9b8143fbbe50faa755951c20eb8f7001f652cf95221c4701988880ec870d5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
