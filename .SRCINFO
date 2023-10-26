@@ -1,6 +1,6 @@
 pkgbase = r-doscheda
 	pkgdesc = A DownStream Chemo-Proteomics Analysis Pipeline
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Doscheda
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-doscheda
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Doscheda_1.22.0.tar.gz
-	sha256sums = 49b6e495eccdbd4fece2a96f6161cce28f715bb01cb05fcc943ada20ba4bb30f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Doscheda_1.24.0.tar.gz
+	sha256sums = 817e2b35423b020959fca253b2986b0ac0a9c4de9ad42fb882a764921781b8c1
 
 pkgname = r-doscheda
