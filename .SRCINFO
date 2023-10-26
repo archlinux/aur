@@ -1,7 +1,7 @@
 pkgbase = blobsaver-bin
 	pkgdesc = A cross-platform GUI app for saving SHSH blobs using tsschecker
-	pkgver = 3.5.2
-	pkgrel = 2
+	pkgver = 3.6.0
+	pkgrel = 1
 	url = https://github.com/airsquared/blobsaver
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = blobsaver-bin
 	optdepends = libimobiledevice: Get plugged in device information
 	optdepends = libirecovery: Utility to talk to iBoot/iBSS via USB
 	provides = blobsaver
-	source = https://github.com/airsquared/blobsaver/releases/download/v3.5.2/blobsaver-3.5.2.tgz
-	sha256sums = 5b35260aa0cc76177fb25fef65c65c53527b277883cfd3fd6460545e20c4f616
+	source = https://github.com/airsquared/blobsaver/releases/download/v3.6.0/blobsaver-3.6.0.tgz
+	sha256sums = 465b3abf105af5ac081d8e25af219e2684dce6ab3ff212cbe3acb164453040b6
 
 pkgname = blobsaver-bin

@@ -5,8 +5,8 @@
 
 pkgname=blobsaver-bin
 _pkgname=blobsaver
-pkgver=3.5.2
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('x86_64')
 url='https://github.com/airsquared/blobsaver'
@@ -19,7 +19,7 @@ optdepends=('libimobiledevice: Get plugged in device information'
     'libirecovery: Utility to talk to iBoot/iBSS via USB')
 makedepends=('gendesk')
 source=("$url/releases/download/v$pkgver/blobsaver-$pkgver.tgz")
-sha256sums=('5b35260aa0cc76177fb25fef65c65c53527b277883cfd3fd6460545e20c4f616')
+sha256sums=('465b3abf105af5ac081d8e25af219e2684dce6ab3ff212cbe3acb164453040b6')
 
 package() {
   gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" \
