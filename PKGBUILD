@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TMixClust
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Time Series Clustering of Gene Expression with Gaussian Mixed-Effects Models and Smoothing Splines'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d07cc2669201ecb26bb254b95614b28f0474a863a90c6ff1df4ebf408a7d18a7')
+sha256sums=('a266fe58bae43a5023fb7d6d2cec1ed8ebf8d83af03805fe43a4fbb3eba88d61')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
