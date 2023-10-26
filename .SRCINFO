@@ -9,6 +9,6 @@ pkgbase = elite-image-mounter
 	depends = ccd2iso
 	depends = sudo
 	source = https://github.com/siyia2/mounter_elite/archive/v1.0.5.tar.gz
-	md5sums = 2a4af04ca6aea818430e52e463bcb6ed
+	md5sums = 76a427026158b89b3bbe87c3777ef18c
 
 pkgname = elite-image-mounter
