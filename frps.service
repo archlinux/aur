@@ -1,6 +1,7 @@
 [Unit]
 Description=Frp Server Service
 After=network.target
+Wants=network.target
 
 [Service]
 Type=exec
@@ -10,7 +11,6 @@ DynamicUser=yes
 Restart=on-failure
 RestartSec=5s
 ExecStart=/usr/bin/frps -c ${CREDENTIALS_DIRECTORY}/config
-# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Credentials
 
 [Install]
 WantedBy=multi-user.target
