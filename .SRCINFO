@@ -1,6 +1,6 @@
 pkgbase = solidity
 	pkgdesc = Contract-Oriented Programming Language
-	pkgver = 0.8.21
+	pkgver = 0.8.22
 	pkgrel = 1
 	url = https://github.com/ethereum/solidity
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = solidity
 	makedepends = cmake
 	optdepends = z3: SMT checker
 	optdepends = cvc4: SMT checker
-	source = solidity_0.8.21.tar.gz::https://github.com/ethereum/solidity/releases/download/v0.8.21/solidity_0.8.21.tar.gz
-	sha512sums = c39ace715b9cfef83d89c94dc01c819cd87782ed23293c8f8a6970854b285715177d39889e85e4e0105774038abc317130de6e11591a4a95ed2d0402ea8bd718
+	source = solidity_0.8.22.tar.gz::https://github.com/ethereum/solidity/releases/download/v0.8.22/solidity_0.8.22.tar.gz
+	sha512sums = da972bf554ce7e32e25fa1ff954759506400e9ee6e96b8d5a6929f15826a3dfbaa9e3f5cd73f57d8248c5c1617822334efd9a195700b41ccc8d70b62d8d1251c
 
 pkgname = solidity
