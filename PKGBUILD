@@ -1,6 +1,6 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=mounter_elite
-pkgver=1.0.1
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='A minimal dependency bash based, ISO mounter and converter'
 arch=('x86_64')
@@ -20,4 +20,4 @@ package() {
 }
 
 
-md5sums=('7dff495039db0a36e5fc139143c18c6d')
+md5sums=('2389aebdf89458db850efb5764860726')
