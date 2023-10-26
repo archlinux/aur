@@ -1,0 +1,12 @@
+pkgbase = r-fancova
+	pkgdesc = Nonparametric Analysis of Covariance
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fANCOVA
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/fANCOVA_0.6-1.tar.gz
+	sha256sums = c3ea3640d9a87abbfeae713141d606ece93bc88b9952f41a37b3f1fbe802bc12
+
+pkgname = r-fancova
