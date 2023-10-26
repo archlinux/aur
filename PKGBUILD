@@ -5,18 +5,18 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
-pkgver=2.80.2
+pkgver=2.81.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
 makedepends=('cmake' 'zip')
-makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite')
-makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite')
+makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite' 'cjson')
+makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite' 'lib32-cjson')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
-        "https://www.etlegacy.com/download/file/410")
-sha256sums=('1b22c131d6c122b38a88306d8dc81ea0135a0f60f599d6f871a175b311b00409'
-            '1da67661fd620ae1a75dcec34d4598708a180f431d8c31b87995c998a0216062')
+        "https://www.etlegacy.com/download/file/554")
+sha256sums=('687dfea58fe385deaa91f7a9ee7c232e2a79bc059a531934051e569aca6f7fb3'
+            'ed8b4abb6e3cd13c1a3af2d7e4526ede260abee4afbdc6838210d742d98bdab5')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -24,14 +24,18 @@ build() {
     if [[ "$CARCH" == "i686" ]]; then
         cmakeopts+=(
             '-DCMAKE_LIBRARY_PATH=/usr/lib'
+	    '-DCMAKE_PREFIX_PATH=/usr/lib/cmake'
             '-DCROSS_COMPILE32=0'
         )
     else
         cmakeopts+=(
             '-DCMAKE_LIBRARY_PATH=/usr/lib32'
+	    '-DCMAKE_PREFIX_PATH=/usr/lib32/cmake'
             '-DCROSS_COMPILE32=1'
         )
     fi
+
+    echo "OPTS" ${cmakeopts[@]}
 
     cmake . ${cmakeopts[@]} \
         -DCMAKE_BUILD_TYPE=Release \
@@ -53,8 +57,8 @@ build() {
 package_etlegacy32() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit)"
     depends=('etlegacy32-mod')
-    depends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite')
-    depends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-lua' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite')
+    depends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite' 'cjson')
+    depends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-lua' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite' 'lib32-cjson')
     provides=('etlegacy')
     conflicts=('etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
@@ -87,7 +91,7 @@ package_etlegacy32() {
     mkdir -p $pkgdir/etc/xdg/$_pkgbase/etmain
     mkdir -p $pkgdir/usr/lib/systemd/system
     install -m 644 misc/etlegacy.conf $pkgdir/etc/xdg/$_pkgbase/
-    install -m 644 misc/etlegacy.service $pkgdir/usr/lib/systemd/system/
+    install -m 644 misc/etlegacy.service.in $pkgdir/usr/lib/systemd/system/etlegacy-x86.service
 
     # config
     mv $pkgdir/usr/lib/$_pkgbase/etmain/*.cfg $pkgdir/etc/xdg/$_pkgbase/etmain/
