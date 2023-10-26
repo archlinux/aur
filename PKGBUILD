@@ -1,7 +1,5 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Lightning <sgsdxzy@gmail.com>
-# Contributor: Andrew Phelps <andrewphelpsj@gmail.com>
+# Maintainer: Mads Mogensen <mads256h at gmail dot com>
+
 pkgname="verifytapn-git"
 pkgver='a12a596'
 pkgrel='1'
