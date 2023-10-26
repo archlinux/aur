@@ -1,7 +1,7 @@
 pkgbase = r-mnem
 	pkgdesc = Mixture Nested Effects Models
-	pkgver = 1.16.0
-	pkgrel = 3
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/mnem
 	arch = x86_64
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = r-mnem
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mnem_1.16.0.tar.gz
-	sha256sums = a959fd9868e0841aa35e88057fce03eaaf376782702293161f42693a10e7ef51
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mnem_1.18.0.tar.gz
+	sha256sums = 07b0131ea1d879205800cec6ef521a6e239ffbf881b0bf90e93eb1412550cddc
 
 pkgname = r-mnem
