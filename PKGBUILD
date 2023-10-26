@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dyebias
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='The GASSCO method for correcting for slide-dependent gene-specific dye bias'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-methods
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f321b1fb354f2242315d9b80f0d915c67b5f53fe52c439505a20c3f7a1989ad0')
+sha256sums=('9dbe01e76ecc0355097f1660f3def0b422af1e51b114bfe8d7ab58309012f072')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
