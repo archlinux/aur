@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstatsQC
-_pkgver=2.18.0
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Longitudinal system suitability monitoring and quality control for proteomic experiments'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c82eed5a2affac50ae9a7bde6caa07d3222f5f8e5b86fc8a9c940cc54bf1b0ac')
+sha256sums=('82d854fc7eb8f84e16b372cffe8fb50c05e0c540705f4b0b08553ab28917c151')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
