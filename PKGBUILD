@@ -1,8 +1,8 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 
 pkgname=usd-hdospray
-pkgver=0.11.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='OSPRay interactive rendering plugin for USD Hydra'
 arch=(x86_64)
 url='https://github.com/ospray/hdospray'
@@ -29,6 +29,8 @@ prepare() {
 }
 
 build() {
+    export CC=clang && export CXX=clang++
+
     _CMAKE_FLAGS+=(
         -DCMAKE_INSTALL_PREFIX=/
         -DHDOSPRAY_ENABLE_DENOISER=ON
