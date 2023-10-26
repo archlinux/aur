@@ -1,10 +1,9 @@
-# Maintainer: dakataca <🐬danieldakataca@gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-kamakiri
-pkgver=6.5.7.arch1
+pkgver=6.5.9.arch2
 pkgrel=1
-pkgdesc='Linux Kamakiri'
+pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
@@ -30,25 +29,31 @@ _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  linux-v6.5.7-arch1.patch.zst{,.sig}
-  config  # the main kernel config file
+  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  config  # the main kernel config file.
+  linux-arch-kamakiri.patch.zst{,.sig}  # The kamakiri patch.
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
   4BA1F928CBA7CA219A14741B24FB14CFDD5D0319  # dakataca
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('0d09ea448005c9cfe5383e4c72a872b39188b928f8c44e146b03b1b7851fbb8c'
+sha256sums=('c6662f64713f56bf30e009c32eac15536fad5fd1c02e8a3daf62a0dc2f058fd5'
             'SKIP'
-            '6f6899aeb73e3b0328446a52926733be817d251f85d9eab2b4ca523b8d88c568'
+            '98c8e04079699a9316c37ed299a363c80ff9625388c492116683b929f35dcab6'
             'SKIP'
-            '5aff0f8584e01165dc20cd107df338f57a13ce7f0da14e07f4c9097cd748469f')
-b2sums=('a9bed9907bf4b22c08df8a8beaaf923648e4f0f1a4b00c11012871094e7c06a127e54bc1935edb8afc92999456c01ebabd04bc542a0e2fa16de0852a5f4be681'
+            '5aff0f8584e01165dc20cd107df338f57a13ce7f0da14e07f4c9097cd748469f'
+            'd4833f5cf2250b06132252964423cdcb7bbc942c17a87d44c06157123ea05d5f'
+            'SKIP')
+b2sums=('fb5fcc0dc79e2f615a550283481492a8185414d65369cbe805909112735593e5fc8bdbd482a347dc4cb3dcac979bea21cd03c503932e9321856eeea685d31c65'
         'SKIP'
-        'aab389e53d6d23e28ab2690a21a338dfc34743b67baa1bdf6f7a6ff5b57dfb97c5745239aaf4ca3bd27b045e8d2fe35ac1ca993735af968f98d2b7c3923d8520'
+        '2b8309c03ae0dd7582b471e39b459fbcb653bd3971eda91576791b1dabe73aad89d4b468a59d0cf3e834f6085ad33ac5449b60a567960835f6f56dd739411262'
         'SKIP'
-        '1445dc90cf8bd3f2b9493e9e48eb76247bd37de412bdb247b132694e047ec260c25203836888ce6c1c864f46dab80b453b3f47d8b3a92f1f9dffc5589d7bc320')
+        '1445dc90cf8bd3f2b9493e9e48eb76247bd37de412bdb247b132694e047ec260c25203836888ce6c1c864f46dab80b453b3f47d8b3a92f1f9dffc5589d7bc320'
+        'a9cdd2ef6e80830d3d1dd6d9ddfd34f4edc5ea79f268b9018c11ae8a9e43696cb3b2ef6aaa72ca3937b100750077f163efbc9258f53a601c16b4f0b8ecbb94a0'
+        'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -60,16 +65,6 @@ prepare() {
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-
-  echo "Validating Kamakiri patch file..." 
-  local -r sha256sum_devio_orig='4d19ef4a4514204aa0ccfcef0218736439041032850ea59daf0c70db5a2cf083  drivers/usb/core/devio.c'
-  if [[ "$sha256sum_devio_orig" == `sha256sum drivers/usb/core/devio.c` ]]; then
-    echo "Validated Kamakiri patch file!"
-  else
-    #echo 'Error: Fichero devio.c ha sido modificado, edite el parche y genere su respectivas llaves, además genere el sha256sum del fichero del parche y establézca su valor en la variable local $sha256sum_devio_orig de éste PKGBUILD.'
-    echo 'Error: devio.c file has been modified, edit the patch and generate its respective keys, also generate the sha256sum of the patch file and set its value to the local variable $sha 256sum_devio_orig of this PKGBUILD'
-    exit -1
-  fi
 
   local src
   for src in "${source[@]}"; do
@@ -250,18 +245,3 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-
-## Source:
-# git clone https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git
-# cd linux/
-
-## Get default files:
-# makepkg --nobuild --nodeps
-# zstd -d linux-v6.5.7-arch1.patch.zst
-# zstd linux-v6.5.7-arch1.patch
-
-## Test:
-# makepkg --printsrcinfo > .SRCINFO
-# git clean -dfx
-
-# 👤 Autor: https://t.me/dakataca 💻 🐬 #
