@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Mm.eg.db
-_pkgver=3.17.0
+_pkgver=3.18.0
 pkgname=r-${_pkgname,,}
-pkgver=3.17.0
+pkgver=3.18.0
 pkgrel=1
 pkgdesc='Genome wide annotation for Mouse'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9c137f38023a6debae6cbd932423fa0acc61538bc265b99fb9489862843fd5ae')
+sha256sums=('41ab6c87f6a8c2a13718f7b1d1bdfde37dcaf61bc34915cc3a8e2348a96b6544')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
