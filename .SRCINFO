@@ -1,6 +1,6 @@
 pkgbase = r-gtrellis
 	pkgdesc = Genome Level Trellis Layout
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gtrellis
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-gtrellis
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tiff
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gtrellis_1.32.0.tar.gz
-	sha256sums = 99aa82bbc211661ff2ae0e85c380d723d187ac461a8855865dad23ccb4f667ce
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gtrellis_1.34.0.tar.gz
+	sha256sums = 8595ddfdfff233ab36c93ff7cdb8e0bd2ea925bc93ded2cca73f3a2e28b05c08
 
 pkgname = r-gtrellis
