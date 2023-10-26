@@ -15,6 +15,7 @@ source=(onnx-simplifier-master.zip::"$url/archive/refs/heads/master.zip")
 sha256sums=('8fa93121d62fb42956ea6e69cbb2bab1609a319ad9404e1004473c1ae3299ea0')
 
 build() {
+  depends+=()
   cd "${srcdir}/onnx-simplifier-master"
   python -m build --wheel --skip-dependency-check --no-isolation
 }
