@@ -1,6 +1,6 @@
 pkgbase = r-chromdraw
 	pkgdesc = chromDraw is a R package for drawing the schemes of karyotypes in the linear and circular fashion.
-	pkgver = 2.30.0
+	pkgver = 2.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/chromDraw
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-chromdraw
 	depends = r
 	depends = r-genomicranges
 	depends = r-rcpp
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/chromDraw_2.30.0.tar.gz
-	sha256sums = f16c41da908a3d593a165be16f1386eed77cb18ccfda0c3d393db74ebe5bea76
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/chromDraw_2.32.0.tar.gz
+	sha256sums = 6edc1f49efed7c3715e0fff60fd215dd4dce74edcc09b20a96e9d817c03bc998
 
 pkgname = r-chromdraw
