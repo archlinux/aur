@@ -1,6 +1,6 @@
 pkgbase = r-npgsea
 	pkgdesc = Permutation approximation methods for gene set enrichment analysis (non-permutation GSEA)
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/npGSEA
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-npgsea
 	optdepends = r-hgu95av2.db
 	optdepends = r-limma
 	optdepends = r-reportingtools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/npGSEA_1.36.0.tar.gz
-	sha256sums = c4f215068b440589e1d59391f3e3972486e76a53e936497dc1d8582a5001599b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/npGSEA_1.38.0.tar.gz
+	sha256sums = bcfdc31d99c7901b359ddc578764bbb987c6977aac1806d38dda95ef10a0a354
 
 pkgname = r-npgsea
