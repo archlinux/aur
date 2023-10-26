@@ -1,6 +1,6 @@
 pkgbase = r-clusterseq
 	pkgdesc = Clustering of high-throughput sequencing data by identifying co-expression patterns
-	pkgver = 1.22.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clusterSeq
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-clusterseq
 	depends = r-biocgenerics
 	depends = r-biocparallel
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterSeq_1.22.0.tar.gz
-	sha256sums = cd68621d5a79e07079ff50cf7d09fa88a5238a6a5d3472c872d674e5ef385715
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterSeq_1.26.0.tar.gz
+	sha256sums = 6ed3a2ae16abd36fc8dc17e6877ab39ded1193e7cebe83fb836f65101af3893a
 
 pkgname = r-clusterseq
