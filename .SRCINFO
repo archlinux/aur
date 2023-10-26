@@ -1,6 +1,6 @@
 pkgbase = python-drawtetrado
 	pkgdesc = Visualize quadruplexes and G4-helices in DNA and RNA structures
-	pkgver = 1.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/michal-zurkowski/drawtetrado
 	arch = any
@@ -11,8 +11,9 @@ pkgbase = python-drawtetrado
 	depends = python
 	depends = python-cairo
 	depends = python-svgwrite
+	depends = python-orjson
 	optdepends = python-eltetrado: the application producing inputs to python-drawtetrado
-	source = https://files.pythonhosted.org/packages/source/d/drawtetrado/drawtetrado-1.2.tar.gz
-	sha256sums = fcde0b0a9519b0f1f278e0a94a43899617f286144117d44d22a3479cfc20ed8d
+	source = https://files.pythonhosted.org/packages/source/d/drawtetrado/drawtetrado-1.5.0.tar.gz
+	sha256sums = 72b86f4908a01c8f98fdf26328d18aeb2cb62277066c9aa401dd86005f15323c
 
 pkgname = python-drawtetrado
