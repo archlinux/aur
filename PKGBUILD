@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=bbk-cli
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Measurement client for Bredbandskollen"
 arch=('x86_64')
 url='https://www.bredbandskollen.se/en/bredbandskollen-cli'
@@ -17,7 +17,7 @@ prepare () {
 	wget https://frontend.bredbandskollen.se/download/README.txt
 
 	cd "$srcdir/bbk"
-    patch -p0 -i ../../0001-needs-the-cstdint-header.patch
+    patch -p0 -i ../0001-needs-the-cstdint-header.patch
 
 }
 

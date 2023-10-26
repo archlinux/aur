@@ -1,7 +1,7 @@
 pkgbase = bbk-cli
 	pkgdesc = Measurement client for Bredbandskollen
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.bredbandskollen.se/en/bredbandskollen-cli
 	arch = x86_64
 	license = GPL2
