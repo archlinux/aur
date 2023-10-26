@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicTuples
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Representation and Manipulation of Genomic Tuples'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2360710f1a9190b47fb407ce2345598a129f871c62ebd9d6d50f35d0a423c679')
+sha256sums=('ddc042f31da423bdf352d06ae9dbe712b86cf6f26b73468725fb5cd5519c88af')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
