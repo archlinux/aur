@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msmsEDA
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Exploratory Data Analysis of LC-MS/MS data by spectral counts'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d159b6f4f9bc6b6ae7371ff87fdd1eb9e531a1263fb3875f588fad68daff0a81')
+sha256sums=('4cd47b24baf22fe8be7b42bc442be95eeb0d1f4b40352f70309614d3479eb277')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
