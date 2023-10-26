@@ -1,6 +1,6 @@
 pkgbase = r-mcbiclust
 	pkgdesc = Massive correlating biclusters for gene expression data and associated methods
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MCbiclust
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-mcbiclust
 	optdepends = r-pander
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MCbiclust_1.24.0.tar.gz
-	sha256sums = b1d8c2bd8bdd218a32a068f6f0ddeafa1fb9822e24ae0dc40067797fdbb0ad65
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MCbiclust_1.26.0.tar.gz
+	sha256sums = 2b378b6293f5cd9bcf95c2ef1a539325415990ba04d64f6b458282d5a7a770c9
 
 pkgname = r-mcbiclust
