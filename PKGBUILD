@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.118.13
+pkgver=3.118.22
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'nss')
 makedepends=('git' 'nvm' 'python')
 source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('e5d75b6b2561f7629ee17602ee73d4197645d8f47f140ad5a1d29ecddb577925'
+sha256sums=('cee1fe6cb5f0bc6df7ed9c440cc840ce56ea34e66787d561d8a9112d5d5958ef'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
 _ensure_local_nvm() {
@@ -44,8 +44,7 @@ build() {
 package() {
   cd "${pkgname%-*}-$pkgname-release-$pkgver"
   install -d "$pkgdir/opt/$pkgname/"
-  cp -av build/desktop/linux-unpacked/* \
-    "$pkgdir/opt/$pkgname/"
+  cp -av artifacts/desktop/linux-unpacked/* "$pkgdir/opt/$pkgname/"
   chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
   install -d "$pkgdir/usr/bin"
@@ -58,6 +57,5 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${icon_size}@2x/apps/$pkgname.png"
   done
 
-  install -Dm644 "$srcdir/$pkgname.desktop" -t \
-    "$pkgdir/usr/share/applications/"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
