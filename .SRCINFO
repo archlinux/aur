@@ -1,13 +1,14 @@
 pkgbase = r-plottools
 	pkgdesc = Add Continuous Legends to Plots
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=PlotTools
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
+	optdepends = r-sp
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-vdiffr

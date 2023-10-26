@@ -4,7 +4,7 @@ _pkgname=PlotTools
 _pkgver=0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Add Continuous Legends to Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
 optdepends=(
   r-knitr
   r-rmarkdown
+  r-sp
   r-spelling
   r-testthat
   r-vdiffr
