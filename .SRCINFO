@@ -1,6 +1,6 @@
 pkgbase = r-methylmix
 	pkgdesc = MethylMix: Identifying methylation driven cancer genes
-	pkgver = 2.30.0
+	pkgver = 2.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MethylMix
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-methylmix
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethylMix_2.30.0.tar.gz
-	sha256sums = 6a3c2f23df229ecdf9a8b9d2bf35d83319ee8e7d4a42579c250213e01ddc78e2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethylMix_2.32.0.tar.gz
+	sha256sums = d96199b5bbb72c5890ade75eb0128f83e29d1d53ec7a1e8957e121e54d321093
 
 pkgname = r-methylmix
