@@ -1,6 +1,6 @@
 pkgbase = r-exomecopy
 	pkgdesc = Copy number variant detection from exome sequencing read depth
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/exomeCopy
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-exomecopy
 	depends = r-iranges
 	depends = r-rsamtools
 	optdepends = r-biostrings
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/exomeCopy_1.46.0.tar.gz
-	sha256sums = 3eadfc50e40be37aa4d0b0b37ccb86ff6f47f819e80ec36fa92ee8d5eed49aba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/exomeCopy_1.48.0.tar.gz
+	sha256sums = 21dc40cbd1b53a34bfb5869c4b008092df33305811130fa41bd4225c409e78b4
 
 pkgname = r-exomecopy

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=exomeCopy
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Copy number variant detection from exome sequencing read depth'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-biostrings
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3eadfc50e40be37aa4d0b0b37ccb86ff6f47f819e80ec36fa92ee8d5eed49aba')
+sha256sums=('21dc40cbd1b53a34bfb5869c4b008092df33305811130fa41bd4225c409e78b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
