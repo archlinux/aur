@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ppcseq
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models'
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed1ba447354f457b34cb1fb8a27516e877a5948850baf78d43417e8232830e6b')
+sha256sums=('b60e366828d56b33735e5b37aad4a643b8b69e65c35202d6ac319c39f53ae605')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
