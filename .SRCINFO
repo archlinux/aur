@@ -1,15 +1,15 @@
 pkgbase = r-rfoc
 	pkgdesc = Graphics for Spherical Distributions and Earthquake Focal Mechanisms
 	pkgver = 3.4.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RFOC
 	arch = any
 	license = GPL
 	depends = r
+	depends = r-fields
 	depends = r-geomap
 	depends = r-rpmg
 	depends = r-rseis
-	depends = r-splancs
 	source = https://cran.r-project.org/src/contrib/RFOC_3.4-10.tar.gz
 	sha256sums = b1211db8960b482ebb516233c86b075d1a1f006a88191a72fa98babd5a8e2100
 
