@@ -6,7 +6,7 @@ pkgbase=lib32-libsoup3
 pkgname=(
   lib32-libsoup3
 )
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="HTTP client/server library for GNOME (32-bit)"
 url="https://wiki.gnome.org/Projects/libsoup"
@@ -32,7 +32,7 @@ checkdepends=(
   apache
   php-apache
 )
-_commit=007f59ff142e2781cd169a49925e54b9a5aa91da  # tags/3.4.3^0
+_commit=d6133a8e116953dac824b835d4f788e21a3e6565  # tags/3.4.4^0
 source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -48,7 +48,6 @@ prepare() {
 build() {
   local meson_options=(
     --cross-file lib32
-    --libdir /usr/lib32
     -D autobahn=disabled
     -D docs=disabled
     -D introspection=disabled
