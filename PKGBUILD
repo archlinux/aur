@@ -4,7 +4,7 @@ _pkgname=spatstat.model
 _pkgver=3.2-8
 pkgname=r-${_pkgname,,}
 pkgver=3.2.8
-pkgrel=1
+pkgrel=3
 pkgdesc="Parametric Statistical Modelling for the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,10 +26,7 @@ optdepends=(
   r-glmnet
   r-gsl
   r-locfit
-  r-maptools
   r-nleqslv
-  r-randomfields
-  r-randomfieldsutils
   r-sm
   r-spatial
   r-spatstat
