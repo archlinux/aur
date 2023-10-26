@@ -1,39 +1,26 @@
-# Maintainer: zoe <chp321 [at] gmail [dot] com>
-# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Contributor: damian01w <damian01w@gmail.com>
-# Contributor: giuseppe.benigno(at)gmail.com
-
-# kf5 version kde-servicemenus-encfs
-
+# Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Hyacinthe Cartiaux <hyacinthe (dot) cartiaux (at) free (dot) fr>
+# Contributor: damian01w <damian01w (at) gmail (dot) com>
 pkgname=kf5-servicemenus-encfs
 _pkgname=kde-service-menu-encfs
-pkgver=0.5.2
-pkgrel=5
-pkgdesc="One KDE servicemenu for encfs encrypted directories ; kf5 version"
-arch=('i686' 'x86_64')
-url="http://www.egregorion.net/"
+pkgver=0.8
+pkgrel=1
+pkgdesc="One KDE servicemenu for encFS encrypted directories."
+arch=(any)
+url="https://www.opendesktop.org/p/1231244/"
 license=('GPL3')
-depends=('plasma-workspace' 'dolphin' 'kdialog' 'encfs')
-conflicts=('kde-servicemenus-encfs')
-source=("http://www.egregorion.net/works/kde/servicemenus/encfs/${_pkgname}_${pkgver}.tar.gz")
-md5sums=('42b10bd668568ce8ffdd25351c0f2d7e')
+depends=("plasma-workspace" "encfs")
+source=("https://www.egregorion.net/works/kde/servicemenus/encfs/${_pkgname}-${pkgver}_all.tar.gz")
+b2sums=('6dba8d4ed9b1205d27d8adcb4a4f039600d433a127aa01850655ede8c714577c91d0a786eaf46096e74173604899a0070d195cb288a574e43be714f4ef684f07')
 
 package() {
-  prefix=$(qtpaths --install-prefix)
-
   mkdir -p ${pkgdir}/usr/bin/
-  install -D -m755 ${srcdir}/${_pkgname}_${pkgver}/bin/${_pkgname}.sh ${pkgdir}/usr/bin/
-  cd ${pkgdir}/usr/bin/
-  mv ${_pkgname}.sh encfs_kmenu.sh
-  # --caption is no longer permitted in kdialog parameters :
-  sed -i -r 's|(--caption[^}]*}")||g' ${pkgdir}/usr/bin/encfs_kmenu.sh
-  sed -i  's/--caption "${msg_config_title} [12]\/2" //' ${pkgdir}/usr/bin/encfs_kmenu.sh
+  install -m 755 ${srcdir}/${_pkgname}-${pkgver}_all/bin/* ${pkgdir}/usr/bin/
 
-  mkdir -p ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/
-  install -D -m644 ${srcdir}/${_pkgname}_${pkgver}/desktop/encfs.desktop ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/
-  # put right pkgname in encfs.desktop :
-  sed -i "s/${_pkgname}.sh/encfs_kmenu.sh/g" ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/encfs.desktop
+  mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  install -m 644 ${srcdir}/${_pkgname}-${pkgver}_all/ServiceMenus/*.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/
 
-  mkdir -p ${pkgdir}/${prefix}/share/doc/${pkgname}
-  install -D -m644 ${srcdir}/${_pkgname}_${pkgver}/doc/* ${pkgdir}/${prefix}/share/doc/${pkgname}
+  mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
+  install -m 644 ${srcdir}/${_pkgname}-${pkgver}_all/doc/* ${pkgdir}/usr/share/doc/${pkgname}
+
 }
