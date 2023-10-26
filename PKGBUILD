@@ -3,7 +3,7 @@
 pkgname="gbtolib"
 _name="GBTOLib"
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A high-performance library for evaluation of molecular integrals"
 arch=('any')
@@ -54,6 +54,12 @@ check() {
 package() {
 
   install -Dm644 "${srcdir}/${_name}-${pkgver}"/build/lib/libGBTO.a "${pkgdir}"/usr/lib/libGBTO.a
+
+  # -- docs
+  install -d "${pkgdir}"/usr/share/doc/"${pkgname}"
+  install -Dm644 "${srcdir}/${_name}-${pkgver}"/doc/Doxyfile "${pkgdir}"/usr/share/doc/"${pkgname}/."
+  install -Dm644 "${srcdir}/${_name}-${pkgver}"/doc/README "${pkgdir}"/usr/share/doc/"${pkgname}/."
+  install -Dm644 "${srcdir}/${_name}-${pkgver}"/doc/scatci_integrals.md "${pkgdir}"/usr/share/doc/"${pkgname}/."
 
   # -- other Fortran-based programs may need the module files from GBTOLib to be built
   install -d "${pkgdir}"/usr/mod/"${pkgname%-*}"

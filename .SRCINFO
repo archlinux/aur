@@ -1,7 +1,7 @@
 pkgbase = gbtolib
 	pkgdesc = A high-performance library for evaluation of molecular integrals
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zenodo.org/records/5798035
 	arch = any
 	license = GPL3
