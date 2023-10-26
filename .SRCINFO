@@ -1,14 +1,13 @@
 pkgbase = mounter_elite
-	pkgdesc = A minimal dependancy bash based, ISO mounter and converter
+	pkgdesc = A minimal dependency bash-based ISO mounter and converter
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/siyia2/Aur/blob/main/mounter_elite.tar.gz
-	arch = any
+	url = https://github.com/siyia2/Aur
+	arch = x86_64
 	license = GPL3
-	depends = sh
+	depends = bash
 	optdepends = ccd2iso
-	source = https://github.com/siyia2/Aur/blob/main/mounter_elite.tar.gz
-	md5sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/siyia2/Aur/archive/v1.0.tar.gz
+	md5sums = 178dd5f9abc75f7b9687b9eea49b4523
 
 pkgname = mounter_elite
