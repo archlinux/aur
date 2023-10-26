@@ -1,33 +1,53 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=thorium-reader-git
-pkgver=r2540.1f0decaa
-pkgrel=2
-pkgdesc="A cross platform desktop reading app, based on the Readium Desktop toolkit"
+_pkgname="thorium-reader"
+pkgname="${_pkgname}-git"
+pkgver=2.3.0.r18.g1f0decaa
+pkgrel=3
+pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('any')
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
-conflicts=("${pkgname%-git}" "${pkgname%-reader-git}")
-provides=("${pkgname%-git}" "${pkgname%-reader-git}")
-makedepends=('npm>=9.0.0' 'git' 'nodejs>=18.0.0' 'gendesk')
-depends=('bash' 'electron25')
-source=("${pkgname//-g/.g}::git+${url}.git"
-    "${pkgname%-git}.sh")
+conflicts=(
+    "${_pkgname}"
+    "thorium"
+)
+provides=(
+    "${_pkgname}"
+    "thorium"
+)
+depends=(
+    'bash'
+    'electron25'
+)
+makedepends=(
+    'gendesk'
+    'git'
+    'nodejs>=18.0.0'
+    'npm>=9.0.0'
+)
+_pkgsrc="${_pkgname}"
+source=(
+    "${_pkgsrc}"::"git+${url}.git"
+    "${_pkgname}.sh"
+)
 sha256sums=('SKIP'
             'b4b89c1666a3893cf0e3733301cc328f81b70915b9e8041fe872d6d21b9c0e83')
 pkgver() {
-    cd "${srcdir}/${pkgname//-g/.g}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgsrc}"
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+prepare() {
+    gendesk -q -f -n --categories "Utility" --pkgname="${_pkgname}" --name="Thorium Reader" --exec="${_pkgname}"
 }
 build() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
-    cd "${srcdir}/${pkgname//-g/.g}"
+    cd "${_pkgsrc}"
     npm ci
     npm run package:pack-only
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-g/.g}/release/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-g/.g}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-g/.g}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "${srcdir:?}/${_pkgname}.sh" "${pkgdir:?}/usr/bin/${_pkgname}" 
+    install -Dm644 "${srcdir:?}/${_pkgsrc}/release/linux-unpacked/resources/app.asar" -t "${pkgdir:?}/usr/lib/${_pkgname}/"
+    install -Dm644 "${srcdir:?}/${_pkgsrc}/resources/icon.png" "${pkgdir:?}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 "${srcdir:?}/${_pkgname}.desktop" -t "${pkgdir:?}/usr/share/applications/"
+    install -Dm644 "${srcdir:?}/${_pkgsrc}/LICENSE" -t "${pkgdir:?}/usr/share/licenses/${pkgname}"
 }
