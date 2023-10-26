@@ -1,11 +1,12 @@
 pkgbase = r-countrycode
 	pkgdesc = Convert Country Names and Country Codes
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=countrycode
 	arch = any
 	license = GPL
 	depends = r
+	optdepends = r-eurostat
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-utf8

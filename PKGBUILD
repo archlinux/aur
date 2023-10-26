@@ -4,7 +4,7 @@ _pkgname=countrycode
 _pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Convert Country Names and Country Codes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
 )
 optdepends=(
+  r-eurostat
   r-testthat
   r-tibble
   r-utf8
