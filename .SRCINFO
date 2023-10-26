@@ -1,0 +1,15 @@
+pkgbase = bloxberg-git
+	pkgdesc = An experimental TUI-based hex editor written in Rust
+	pkgver = r32.4d3e6e1
+	pkgrel = 1
+	url = https://github.com/voidc/bloxberg
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = bloxberg
+	conflicts = bloxberg
+	source = git+https://github.com/voidc/bloxberg.git
+	sha256sums = SKIP
+
+pkgname = bloxberg-git
