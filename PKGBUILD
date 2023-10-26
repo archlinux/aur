@@ -4,7 +4,7 @@ _pkgname=datawizard
 _pkgver=0.9.0
 pkgname=r-${_pkgname,,}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Easy Data Wrangling'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,6 +20,7 @@ optdepends=(
   r-data.table
   r-dplyr
   r-effectsize
+  r-emmeans
   r-gamm4
   r-ggplot2
   r-gt
@@ -39,6 +40,7 @@ optdepends=(
   r-rstanarm
   r-see
   r-testthat
+  r-tibble
   r-tidyr
   r-withr
 )
