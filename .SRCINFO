@@ -1,6 +1,6 @@
 pkgbase = r-flowmeans
 	pkgdesc = Non-parametric Flow Cytometry Data Gating
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowMeans
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-flowmeans
 	depends = r-feature
 	depends = r-flowcore
 	depends = r-rrcov
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowMeans_1.60.0.tar.gz
-	sha256sums = 1c2159c7ace2baaeba174ed8b7de28ce13e8b76fd11275a843a6ddc9e20d97a2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowMeans_1.62.0.tar.gz
+	sha256sums = 7b0962e21f4425573f70641de016e4395a45b51f42215c1aa2a3cde60a2bc31a
 
 pkgname = r-flowmeans
