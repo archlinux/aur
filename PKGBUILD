@@ -4,7 +4,7 @@ _pkgname=tximport
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=1.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Import and summarize transcript-level estimates for transcript- and gene-level analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
 )
 optdepends=(
+  r-arrow
   r-deseq2
   r-edger
   r-eds
