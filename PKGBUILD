@@ -5,7 +5,7 @@ pkgname=hedgedoc2
 _reponame=hedgedoc
 _pkgver=2.0.0-alpha.2
 pkgver=2.0.0_alpha.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Platform to write and share markdown (Version 2)"
 arch=(x86_64)
 url='https://github.com/hedgedoc/hedgedoc'
@@ -16,12 +16,10 @@ makedepends=('sqlite' 'python' 'git' 'yarn')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'sqlite: sqlite database support')
-# backup=("etc/webapps/${pkgname}"/config.json)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hedgedoc/hedgedoc/archive/v${_pkgver}.tar.gz"
         "sysusers.conf"
         "tmpfiles.conf"
         "settings.env"
-        "Caddyfile"
         "$pkgname.service"
         "$pkgname-backend.service"
         "$pkgname-frontend.service")
@@ -30,7 +28,6 @@ sha256sums=('626bdb721b7ec13b4103bfc8b043cca6bc5037c87cbf73b5aace2e44758a0c2a'
             '113dd8cf558ced474a4aefa03418429526d2789c40acf6102785874d1e50e585'
             '331757b7a93259176332cd40226ac9fbd240d517daca812ddf84312709a9e845'
             '00941ecd1117f9b82c6770fca3efde6da276876056bffdfe2c99a20b01da40db'
-            '7de2c0bf71f202321c03cd698c62c3fd32cefe83195bbdd4e2fa67a60a724c66'
             '3b70b1a1ff13b9ef028819aa56d3f176f9b3cf31820f5bcf988d0f2aaa145cca'
             'd718be6c560db0daf6e866081d9b1dcd34bec0802aadf3af16f87afa9626b163'
             '486ae9f3e0a2603474f21cb4fee8f076c5514cb55c6690d729cc1c59df021a2a')
@@ -73,6 +70,5 @@ package() {
   install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system/" "${srcdir}"/$pkgname{,-backend,-frontend}.service
 
   install -Dm0644 "${srcdir}/settings.env" "${pkgdir}/etc/${pkgname}/settings.env"
-  # FIXME(gromit): use upstream caddyfile
-  install -m0644 "${srcdir}/Caddyfile" -t "${pkgdir}/usr/share/webapps/${pkgname}/"
+  install -m0644 "dev-reverse-proxy/Caddyfile" -t "${pkgdir}/usr/share/webapps/${pkgname}/"
 }
