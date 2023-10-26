@@ -1,6 +1,6 @@
 pkgbase = r-randomwalkrestartmh
 	pkgdesc = Random walk with restart on multiplex and heterogeneous Networks
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RandomWalkRestartMH
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-randomwalkrestartmh
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RandomWalkRestartMH_1.20.0.tar.gz
-	sha256sums = 033a32671f6636e0899815f6b5df3b0976b5d43a010508c6661e9f630c03a572
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RandomWalkRestartMH_1.22.0.tar.gz
+	sha256sums = ccb300c5b0cd8af6921f2f96ddbaddd63579db48b9d0f5da553cd206ae107057
 
 pkgname = r-randomwalkrestartmh
