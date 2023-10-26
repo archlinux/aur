@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=psygenet2r
-_pkgver=1.32.2
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.2
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='psygenet2r - An R package for querying PsyGeNET and to perform comorbidity studies in psychiatric disorders'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c92ea1c38b3571e875e5b4b94367c8bed83656ee1f177639ce9456c6b4ff91c')
+sha256sums=('ce2508caecd8baf4d84f89f600f875918d1af12a683a6dac386c51aceca3b22a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
