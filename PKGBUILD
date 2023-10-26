@@ -1,30 +1,44 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
+# Huge thanks to github.com/nebulosa2007 for this version of the PKGBUILD.
+
 pkgname=yabsnap
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
-url="https://github.com/hirak99/yabsnap"
+url="https://github.com/hirak99/$pkgname"
 license=('Apache')
 # Dependencies -
 # btrfs-progs: Required for btrfs operations. May change if we extend into rsync
 #   rsync based options.
-# coreutils: For stat. Should be part of base.
-#   Opinion is split on whether to include coreutils, err on including it.
 # python3: Runtime. Typically present in a base install.
-depends=('btrfs-progs' 'coreutils' 'python3')
-makedepends=('rsync')
-provides=('yabsnap')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('aa2d54a8781e80c6cd8b3a364823d583')
+depends=('bash' 'btrfs-progs' 'python')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+md5sums=('fe62631a94b89bb0b873995284dbd860')
+install="$pkgname".install
 
 check() {
-  cd "$pkgname"-$pkgver
-  src/run_tests.sh
+  cd "$pkgname"-"$pkgver"/src
+  python -m unittest code/*_test.py
+
+  # One-time actions to do after downloading the package.
+  cd ../artifacts
+  gzip -c "$pkgname".manpage > "$pkgname".1.gz
 }
 
 package() {
-  cd "$pkgname"-$pkgver
-  scripts/install-to-dest.sh "$pkgdir"
+  cd "$pkgname"-"$pkgver"
+  for file in $(ls -A src/code/*.{py,conf} | grep -v "_test.py")
+  do
+    install -Dm 644 "$file" "$pkgdir"/usr/share/"$pkgname"/code/"${file##*/}"
+  done
+  cd artifacts
+  install -Dm 644 services/"$pkgname".{service,timer}      -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm 664 pacman/05-"$pkgname"-pacman-pre.hook     -t "$pkgdir"/usr/share/libalpm/hooks/
+  install -Dm 644 "$pkgname".1.gz                          -t "$pkgdir"/usr/share/man/man1/
+  cd ../src
+  install -Dm 755 "$pkgname".sh -t "$pkgdir"/usr/share/"$pkgname"/
+  install -d "$pkgdir"/usr/bin
+  ln -s /usr/share/"$pkgname"/"$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
 }
 
