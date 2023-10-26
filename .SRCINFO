@@ -1,16 +1,18 @@
 pkgbase = morphoj
-	pkgdesc = MorphoJ is an integrated program package for doing geometric morphometrics. https://doi.org/10.1111/j.1755-0998.2010.02924.x
+	pkgdesc = integrated program package for doing geometric morphometrics https://doi.org/10.1111/j.1755-0998.2010.02924.x
 	pkgver = 1.08.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://morphometrics.uk/MorphoJ_page.html
 	arch = x86_64
-	license = Apache License version 2
-	depends = java-runtime=11
-	source = https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-installer_Unix_Linux.jar
-	source = MorphoJ.desktop
-	source = MorphoJ
-	sha256sums = 73c2555706842eb0a8885c11acce09042feee292a53afe6c9ba74724c6fc5bc4
-	sha256sums = 8d8446303b264ec7da0d8453d80a4ed4310a36248dbe1b5c6a98b174746263c5
-	sha256sums = 06398e7d78d84b6a6a9412379613600fe014cbf2950a0f8aff50e9e90f361165
+	license = Apache
+	makedepends = tar
+	depends = java-runtime=17
+	depends = alsa-lib
+	depends = glibc
+	depends = zlib
+	depends = freetype2
+	depends = hicolor-icon-theme
+	source = https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-1.08.01_amd64.deb
+	sha256sums = bf262f01be579295eeb00f49438a93d82c6dd000bc4bb6899a2febba0a900735
 
 pkgname = morphoj
