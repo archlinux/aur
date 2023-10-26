@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron16
+_ELECTRON=/usr/bin/electron27
 APPDIR="/usr/lib/enotebook"
 export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
 _ASAR="${APPDIR}/app.asar"

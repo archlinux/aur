@@ -14,7 +14,7 @@ depends=('bash' 'electron27')
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}@${pkgver}-linux.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('6eeb0514b9690bdef6c4d5cc8ea991f76fe12fdff6d616c2945df704b7a26efa'
-            '466a48a3c20e4c4adb13bc310ff86ee504f17c29f9d78e6f6f37737096c87cc3')
+            'e62ad5836f1ffe73ffc94f6432421253f6e8e2894e0db07debcb84c7178d5db6')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
