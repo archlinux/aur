@@ -1,0 +1,12 @@
+pkgbase = hue-cli
+	pkgdesc = A description of your package.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jonasrdl/hue-cli
+	arch = x86_64
+	license = MIT
+	depends = go
+	source = hue-cli-0.0.1.tar.gz::https://github.com/jonasrdl/hue-cli/archive/v0.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = hue-cli
