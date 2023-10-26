@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metagenomeSeq
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
 pkgdesc='Statistical analysis for sparse high-throughput sequencing'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('931bfcb5df4bd71380202239055c4b3b20409d54d91edf31fa52031a46612309')
+sha256sums=('8b685245818596b23fa3ca508cb5c2c1e635d494eec79017f424bb95f9c429d4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
