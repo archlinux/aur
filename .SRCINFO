@@ -1,0 +1,23 @@
+pkgbase = superconductor
+	pkgdesc = A playout client for Windows/Linux/macOS that will let you control CasparCG Server, BMD ATEM, OBS Studio, vMix, OSC-compatible devices, HTTP (REST)-compatible devices, and more
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/SuperFlyTV/SuperConductor
+	arch = any
+	license = AGPL3
+	makedepends = rsync
+	makedepends = yarn
+	depends = nodejs>=18
+	depends = alsa-lib
+	depends = libvips
+	provides = superconductor
+	conflicts = superconductor
+	options = !emptydirs
+	source = superconductor-0.11.1.tar.gz::https://github.com/SuperFlyTV/SuperConductor/archive/refs/tags/v0.11.1.tar.gz
+	source = superconductor.desktop
+	source = tsr-bridge.desktop
+	sha256sums = de0e256d3fbc5a07a6dd4f23aea8f691ebbb057e893c9c58f493419b615dc8da
+	sha256sums = e11ebb8fab5d344b103cccb1b4547f66e742d55f59d8add32476f947beb23069
+	sha256sums = 7e3f99900f3feb6f4d9bae385adaa42a6aae46a8ac8ebcd2bd69b9dfac5e93ea
+
+pkgname = superconductor

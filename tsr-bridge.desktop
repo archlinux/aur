@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TSR-Bridge
+Exec=tsr-bridge
+Terminal=false
+Type=Application
+Icon=tsr-bridge
+StartupWMClass=TSR-Bridge
+Comment=A companion app to SuperConductor, to handle playout on another computer
+Categories=Utility;
