@@ -1,6 +1,6 @@
 pkgbase = r-cnorode
 	pkgdesc = ODE add-on to CellNOptR
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNORode
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-cnorode
 	optdepends = r-doparallel
 	optdepends = r-foreach
 	optdepends = r-meigor
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNORode_1.42.0.tar.gz
-	sha256sums = 2ceadb78ee72b48144c1ae85ef869d4498ea52f8dcc0e5e25c4437be0bc3d084
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNORode_1.44.0.tar.gz
+	sha256sums = 876e053a8d3510a7be608c206c1ca2be789784539072aa25e4d05bb17785bd36
 
 pkgname = r-cnorode
