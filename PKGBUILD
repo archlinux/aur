@@ -20,7 +20,6 @@ depends=(
 )
 makedepends=(
     'go'
-    'golang-golang-x-text'
     'qt5-base'
     'qt5-tools'
     'qt5-svg'
@@ -50,7 +49,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
 
-	make generate
+    make generate
 
     go build -buildmode=c-archive -o lib/libgoshim.a gui/backend.go
 
@@ -60,12 +59,12 @@ build() {
 check() {
 	cd "bitmask-vpn"
 
-	make test
+    make test
 }
 
 package() {
-	install -Dm644 riseup-vpn_launcher.desktop "${pkgdir}/usr/share/applications/riseup-vpn_launcher.desktop"
-	install -Dm644 riseup-vpn.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/riseup-vpn.png"
+    install -Dm644 riseup-vpn_launcher.desktop "${pkgdir}/usr/share/applications/riseup-vpn_launcher.desktop"
+    install -Dm644 riseup-vpn.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/riseup-vpn.png"
 
     cd "bitmask-vpn"
     install -Dm755 helpers/bitmask-root "${pkgdir}/usr/bin/bitmask-root"
