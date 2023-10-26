@@ -14,7 +14,6 @@ pkgbase = flycast
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libzip
-	provides = reicast
 	source = flycast::git+https://github.com/flyinghead/flycast.git#tag=V2.1
 	source = SDL::git+https://github.com/libsdl-org/SDL
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers

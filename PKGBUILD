@@ -23,8 +23,6 @@ makedepends=(
   'systemd'
 )
 
-provides=(reicast)
-
 if [ x"$pkgname" == x"$_pkgname" ] ; then
   # normal package
   _pkgsrc="$_pkgname"
@@ -36,8 +34,12 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
   )
 
   pkgver() {
-    cd "$_pkgsrc"
     echo "${pkgver%%.r*}"
+  }
+
+  prepare() {
+    _prepare_submodules_common
+    _prepare_common
   }
 else
   # git package
@@ -63,6 +65,12 @@ else
     cd "$_pkgsrc"
     git describe --long --tags | sed -E 's/^[Vv]//;s/([^-]*-g)/r\1/;s/-/./g'
   }
+
+  prepare() {
+    _prepare_submodules_common
+    _prepare_submodules_git
+    _prepare_common
+  }
 fi
 
 source+=(
@@ -87,38 +95,54 @@ sha256sums+=(
   'SKIP'
 )
 
-prepare() {
-  cd "$_pkgsrc"
-
-  local _submodules=(
-    'core/deps/SDL'
-    'core/deps/Vulkan-Headers'
-    'core/deps/VulkanMemoryAllocator'
-    'core/deps/breakpad'
-    'core/deps/glslang'
-    'core/deps/libchdr'
-    'core/deps/luabridge'
-    'core/deps/oboe'
-  )
-
-  if [ x"${pkgname: -4}" == x"-git" ] ; then
-    _submodules+=(
-      'core/deps/Spout'
-      'core/deps/Syphon'
+_prepare_submodules_common() {
+  (
+    # submodules for flycast
+    cd "$_pkgsrc"
+    local -A _submodules=(
+      ['breakpad']='core/deps/breakpad'
+      ['VulkanMemoryAllocator']='core/deps/VulkanMemoryAllocator'
+      ['glslang']='core/deps/glslang'
+      ['libchdr']='core/deps/libchdr'
+      ['Vulkan-Headers']='core/deps/Vulkan-Headers'
+      ['SDL']='core/deps/SDL'
+      ['oboe']='core/deps/oboe'
+      ['luabridge']='core/deps/luabridge'
     )
-  fi
+     for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  )
+}
 
-  for submodule in "${_submodules[@]}" ; do
-    git submodule init "${submodule}"
-    git submodule set-url "${submodule}" "${srcdir}/${submodule##*/}"
-    git -c protocol.file.allow=always submodule update "${submodule}"
-  done
+_prepare_submodules_git() {
+  (
+    # submodules for flycast
+    cd "$_pkgsrc"
+    local -A _submodules=(
+      ['Spout']='core/deps/Spout'
+      ['Syphon']='core/deps/Syphon'
+    )
+    for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  )
+}
 
-  # add missing includes
-  local _file='core/deps/breakpad/src/client/linux/handler/minidump_descriptor.h'
-  if ! grep cstdint "$_file" > /dev/null ; then
-    sed -Ei 's@^(#include "common/using_std_string.h")$@\1\n#include <cstdint>@' "$_file"
-  fi
+_prepare_common() {
+  (
+    cd "$_pkgsrc"
+
+    # add missing includes
+    local _file='core/deps/breakpad/src/client/linux/handler/minidump_descriptor.h'
+    if ! grep cstdint "$_file" > /dev/null ; then
+      sed -Ei 's@^(#include "common/using_std_string.h")$@\1\n#include <cstdint>@' "$_file"
+    fi
+  )
 }
 
 build() {
@@ -132,5 +156,5 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
