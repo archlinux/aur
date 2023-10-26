@@ -5,7 +5,7 @@ _pkgname=dotCall64
 _pkgver=1.1-0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Enhanced Foreign Function Interface Supporting Long Vectors'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,8 +15,8 @@ depends=(
 )
 optdepends=(
   r-microbenchmark
-  r-openmpcontroller
   r-rcolorbrewer
+  r-rhpcblasctl
   r-roxygen2
   r-spam
   r-testthat
