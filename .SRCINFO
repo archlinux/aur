@@ -1,6 +1,6 @@
 pkgbase = r-ssviz
 	pkgdesc = A small RNA-seq visualizer and analysis toolkit
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ssviz
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-ssviz
 	depends = r-reshape
 	depends = r-rsamtools
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ssviz_1.34.0.tar.gz
-	sha256sums = 754e212e700abb9ea0d2165f04d0d6b01f4c838f159b96e309234572e401784a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ssviz_1.36.0.tar.gz
+	sha256sums = 4bcd7117b5bd33b92945e2fbbc66ee62ce66c264745ff5216bc391e4aa79ad0b
 
 pkgname = r-ssviz
