@@ -14,7 +14,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=(SKIP)
+sha256sums=('f2c1d535ed3af0917cf4e437366659f658efda91c469a9d619075a14327705b7')
 
 package() {
 	cd "$_pkgname" || return 1
