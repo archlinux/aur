@@ -4,7 +4,7 @@ _pkgname=gamlss
 _pkgver=5.4-20
 pkgname=r-${_pkgname,,}
 pkgver=5.4.20
-pkgrel=1
+pkgrel=3
 pkgdesc='Generalised Additive Models for Location Scale and Shape'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,9 @@ depends=(
   r
   r-gamlss.data
   r-gamlss.dist
+)
+optdepends=(
+  r-distributions3
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a60c1e20e173f909a0df344016e64381e45a098b60f07f80fd2802bfba086873')
