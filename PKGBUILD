@@ -4,21 +4,21 @@ pkgver=1.0
 pkgrel=1
 pkgdesc='A minimal dependency bash-based ISO mounter and converter'
 arch=('x86_64')
-url="https://github.com/siyia2/Aur"
+url="https://github.com/siyia2/mounter_elite"
 license=('GPL3')
 depends=('bash')
 optdepends=('ccd2iso')
 
 # Source should be a valid URL to the source code or a downloadable archive
-source=("https://github.com/siyia2/Aur/archive/v${pkgver}.tar.gz")
+source=("https://github.com/siyia2/mounter_elite/archive/v${pkgver}.tar.gz")
 
 
 package() {
-  cd "Aur-1.0/"
+  cd "${srcdir}/${pkgname}-$pkgver"
   
   install -Dm755 mounter_elite "$pkgdir/usr/bin/mounter_elite"
   
 }
 
 
-md5sums=('178dd5f9abc75f7b9687b9eea49b4523')
+md5sums=('5b47c26fc97bc83f4de20c475e08466a')
