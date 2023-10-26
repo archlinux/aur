@@ -4,7 +4,7 @@ _pkgname=affy
 _pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=1.80.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Methods for Affymetrix Oligonucleotide Arrays'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
 )
 optdepends=(
   r-affydata
+  r-hgu95av2cdf
   r-tkwidgets
   r-widgettools
 )
