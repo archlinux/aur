@@ -1,0 +1,19 @@
+pkgbase = kubectx-bash
+	pkgdesc = Utility to manage and switch between kubectl contexts and Kubernetes namespaces
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/ahmetb/kubectx
+	arch = any
+	license = Apache
+	depends = bash
+	depends = kubectl
+	optdepends = fzf: interactively choose entries
+	provides = kubectx
+	provides = kubens
+	conflicts = kubectx
+	conflicts = kubens
+	source = https://github.com/ahmetb/kubectx/archive/v0.9.5/kubectx-0.9.5.tar.gz
+	sha512sums = a7eacc4676d70caba7081aa09f36f8513c3578368a6f0984fd88d3fe674df8cadb3c5ccf109e9ea231bcfd189af6416b94b8e2cb4a4073a9b12c37e88ed73008
+	b2sums = e23ed5ad53abd645577682f5c263db1d62d9b77b688181fe7f2911312f182e18d6a56d063302253d2853a39c5fc832467ea0dd1c18b6ad34d5c99e9535530b6c
+
+pkgname = kubectx-bash
