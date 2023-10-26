@@ -1,6 +1,6 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron27
-APPDIR="/opt/vencord-desktop"
+APPDIR="/usr/lib/vencord-desktop"
 export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
 export LD_LIBRARY_PATH="${APPDIR}/usr/lib":"${APPDIR}/swiftshader":"${LD_LIBRARY_PATH}"
 _ASAR="${APPDIR}/resources/app.asar"
