@@ -1,6 +1,6 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# Updated by https://github.com/Freed-Wu/termux-language-server/blob/main/.github/workflows/main.yml
+# Updated by https://github.com/termux/termux-language-server/blob/main/.github/workflows/main.yml
 pkgname=termux-language-server
 pkgver=0.0.2
 pkgrel=1
