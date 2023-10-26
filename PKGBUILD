@@ -1,4 +1,4 @@
-# Maintainer: ScreamsInJank <email pending, sorry :(>
+# Maintainer: ScreamsInJank <screamsinjank@proton.me>
 
 _name='aw-watcher-window-wayland'
 pkgname="$_name-git"
