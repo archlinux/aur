@@ -1,7 +1,7 @@
 pkgbase = python-thop
 	pkgdesc = Count the MACs / FLOPs of your PyTorch model.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lyken17/pytorch-OpCounter
 	arch = any
 	license = MIT
