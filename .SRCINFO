@@ -1,20 +1,18 @@
 pkgbase = ddcui-git
-	pkgdesc = ddcui is a beta version of a graphical user interface for ddcutil, implemented using Qt.
-	pkgver = v0.1.2.r0.g46dba4e
+	pkgdesc = Graphical user interface for ddcutil - control monitor settings
+	pkgver = 0.4.2.r0.g03a902f
 	pkgrel = 1
-	url = https://www.ddcutil.com/ddcui_main/
-	arch = i686
+	url = https://www.ddcutil.com
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	depends = ddcutil-git
+	makedepends = qt5-tools
+	depends = ddcutil>=2.0.0
 	depends = qt5-base
 	provides = ddcui
-	source = git+https://github.com/rockowitz/ddcui
-	source = ddcui.desktop
+	conflicts = ddcui
+	source = git+https://github.com/rockowitz/ddcui.git
 	sha256sums = SKIP
-	sha256sums = dfc636ed820339094226fe6b4e9f855206125390a2f2c7e356a54c21008a3033
 
 pkgname = ddcui-git
-

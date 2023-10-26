@@ -1,52 +1,32 @@
-# Maintainer: Miha Frangež <miha.frangez at gmail dot com>
-
-_pkgname=ddcui
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Miha Frangež <miha.frangez at gmail dot com>
 pkgname=ddcui-git
-pkgver=v0.1.2.r0.g46dba4e
+pkgver=0.4.2.r0.g03a902f
 pkgrel=1
-pkgdesc='ddcui is a beta version of a graphical user interface for ddcutil, implemented using Qt.'
-url='https://www.ddcutil.com/ddcui_main/'
+pkgdesc="Graphical user interface for ddcutil - control monitor settings"
+arch=('x86_64')
+url="https://www.ddcutil.com"
 license=('GPL2')
-source=(
-	'git+https://github.com/rockowitz/ddcui'
-	ddcui.desktop
-)
-sha256sums=(
-	'SKIP'
-	'dfc636ed820339094226fe6b4e9f855206125390a2f2c7e356a54c21008a3033'
-)
-arch=('i686' 'x86_64')
-provides=('ddcui')
-
-depends=(
-	'ddcutil-git'
-	'qt5-base'
-)
-
-makedepends=(
-	'git'
-	'cmake'
-	'qt5-tools'
-)
+depends=('ddcutil>=2.0.0' 'qt5-base')
+makedepends=('git' 'cmake' 'qt5-tools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/rockowitz/ddcui.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-
-	cmake \
-		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D CMAKE_BUILD_TYPE=release \
-		.
-
-	make
+  cmake -B build -S "${pkgname%-git}" \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_BUILD_TYPE='None' \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR="${pkgdir}" install
-	install -D -m664 ../ddcui.desktop $pkgdir/usr/share/applications/ddcui.desktop
+  DESTDIR="$pkgdir" cmake --install build
 }
