@@ -1,0 +1,32 @@
+pkgbase = electron28-bin
+	pkgdesc = Build cross platform desktop apps with web technologies - binary version 28
+	pkgver = 28.0.0.alpha.5
+	pkgrel = 1
+	url = https://electronjs.org/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = custom
+	depends = c-ares
+	depends = gtk3
+	depends = libevent
+	depends = libffi
+	depends = nss
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
+	provides = electron28=28.0.0.alpha.5
+	provides = electron=28.0.0.alpha.5
+	conflicts = electron28
+	source_x86_64 = electron28-bin-chromedriver-28.0.0.alpha.5-x86_64.zip::https://github.com/electron/electron/releases/download/v28.0.0-alpha.5/chromedriver-v28.0.0-alpha.5-linux-x64.zip
+	source_x86_64 = electron28-bin-28.0.0.alpha.5-x86_64.zip::https://github.com/electron/electron/releases/download/v28.0.0-alpha.5/electron-v28.0.0-alpha.5-linux-x64.zip
+	sha256sums_x86_64 = cf654c21663be80cd22ae5a471cd4dd3a95ae53ddb56da1430b3d478c6d68ca3
+	sha256sums_x86_64 = 957902a0acd85120007297a5b2494a741749cb374ed000939b0b73a720ca6db0
+	source_aarch64 = electron28-bin-chromedriver-28.0.0.alpha.5-aarch64.zip::https://github.com/electron/electron/releases/download/v28.0.0-alpha.5/chromedriver-v28.0.0-alpha.5-linux-arm64.zip
+	source_aarch64 = electron28-bin-28.0.0.alpha.5-aarch64.zip::https://github.com/electron/electron/releases/download/v28.0.0-alpha.5/electron-v28.0.0-alpha.5-linux-arm64.zip
+	sha256sums_aarch64 = ac8bdae0d7a63bfed27aac70e46f744704ad28713d42bc9cd1f5e5619f679e58
+	sha256sums_aarch64 = e67247013aac0039ee7a2e2e28ae8e71cb7fc050d2420afb1e138d23d00a0b2f
+
+pkgname = electron28-bin
