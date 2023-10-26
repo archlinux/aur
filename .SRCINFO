@@ -1,15 +1,15 @@
 pkgbase = nodejs-azurite
 	pkgdesc = A lightweight server clone of Azure Storage that simulates most of the commands supported by it with minimal dependencies
-	pkgver = 3.26.0
+	pkgver = 3.27.0
 	pkgrel = 2
 	url = https://github.com/azure/azurite
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = azurite-3.26.0.tgz
+	noextract = azurite-3.27.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/azurite/-/azurite-3.26.0.tgz
-	b2sums = c0441b156203ea38e5f81855053a95225de988ba9f22625d2306d272448d7dc8cceb66e668db17b7a59720bce0c3721791ce7ad75ae9e9b18439d2ef85d035bb
+	source = https://registry.npmjs.org/azurite/-/azurite-3.27.0.tgz
+	b2sums = 0ff7f24c4cb59fea4a8e75db1e59e57aa48a9dbea9260285ac7e4f790ca9bedb95dcd351fa052602f67cc6368cceba6cc9a83056bacb8045fee3ede528d07cbb
 
 pkgname = nodejs-azurite
