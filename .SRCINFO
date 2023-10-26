@@ -1,0 +1,20 @@
+pkgbase = another-redis-desktop-manager-bin
+	pkgdesc = A faster, better and more stable Redis desktop manager [GUI client]
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/qishibo/AnotherRedisDesktopManager
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = bash
+	depends = electron12
+	provides = another-redis-desktop-manager=1.6.1
+	conflicts = another-redis-desktop-manager
+	source = another-redis-desktop-manager-1.6.1.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.6.1/Another-Redis-Desktop-Manager.1.6.1.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v1.6.1/LICENSE
+	source = another-redis-desktop-manager.sh
+	sha256sums = bf63908cef742f46b7d4c6b5a91593a373f88accc4f00ddb7740c527ccbfc2a3
+	sha256sums = 49e1afe88ff863df075233daa348d313c1f77110de7d89794a6a9ae45b38c1b3
+	sha256sums = 06be6107e888b7801a147ae43f7b2ed80ed55492f72f7e940d831194400da6c3
+
+pkgname = another-redis-desktop-manager-bin
