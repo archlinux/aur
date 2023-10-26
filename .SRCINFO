@@ -1,14 +1,15 @@
 pkgbase = usrbinhx
 	pkgdesc = Provide /usr/bin/hx for the helix editor
-	pkgver = 2023.02.21
+	pkgver = 2023.10.26
 	pkgrel = 1
 	url = https://codeberg.org/kas/gists
 	arch = any
 	license = AGPL3
 	depends = helix
+	depends = sh
 	conflicts = hex
 	conflicts = helixbinhx
 	source = hx.sh
-	sha256sums = a4c0915dc04d642a176dca205c3b41e4947def6a9f1afd01b44c8c2ef9980a9c
+	sha256sums = 184cdaf013c0b3ac2fe4b95842f8f2ff97ae2fbe38e36e363badc419f9eaffa0
 
 pkgname = usrbinhx
