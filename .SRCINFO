@@ -9,5 +9,6 @@ pkgbase = mounter_elite
 	optdepends = ccd2iso
 	source = https://github.com/siyia2/Aur/blob/main/mounter_elite.tar.gz
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mounter_elite

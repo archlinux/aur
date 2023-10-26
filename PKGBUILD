@@ -18,3 +18,4 @@ package() {
 }
 
 md5sums=('SKIP')
+sha256sums=('SKIP')
