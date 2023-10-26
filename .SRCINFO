@@ -1,6 +1,6 @@
 pkgbase = r-bifet
 	pkgdesc = Bias-free Footprint Enrichment Test
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiFET
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-bifet
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiFET_1.20.0.tar.gz
-	sha256sums = 2489e407fd48b7ad6d9fd5744a78d3bab02c0b9169ef7221add06ec1aff89c16
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiFET_1.22.0.tar.gz
+	sha256sums = 993862728a1d0640d6baabc92167c817c66c7561df96bead2604a74131c5df14
 
 pkgname = r-bifet
