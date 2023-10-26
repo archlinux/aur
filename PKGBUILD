@@ -4,7 +4,7 @@ _pkgname=catdata
 _pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=1.2.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Categorical Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,6 @@ optdepends=(
   r-e1071
   r-ecdat
   r-flexmix
-  r-gamboost
   r-gee
   r-geepack
   r-glmmml

@@ -1,7 +1,7 @@
 pkgbase = r-catdata
 	pkgdesc = Categorical Data
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=catdata
 	arch = any
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = r-catdata
 	optdepends = r-e1071
 	optdepends = r-ecdat
 	optdepends = r-flexmix
-	optdepends = r-gamboost
 	optdepends = r-gee
 	optdepends = r-geepack
 	optdepends = r-glmmml
