@@ -9,6 +9,6 @@ pkgbase = mounter_elite
 	depends = ccd2iso
 	depends = sudo
 	source = https://github.com/siyia2/mounter_elite/archive/v1.1.tar.gz
-	md5sums = 5b47c26fc97bc83f4de20c475e08466a
+	md5sums = af89f58ca40a9de47ef746b9df35e4aa
 
 pkgname = mounter_elite
