@@ -1,6 +1,6 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=outline-manager-appimage
-pkgver=1.14.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Creates and manages Outline servers, powered by Shadowsocks."
 arch=('x86_64')
@@ -11,8 +11,8 @@ options=(!strip)
 provides=('outline-manager')
 conficts=('outline-manager')
 # See https://github.com/Jigsaw-Code/outline-releases/blob/master/manager/latest-linux.yml
-source=("Outline-Manager-v${pkgver}.AppImage::https://github.com/Jigsaw-Code/outline-server/releases/download/manager-v${pkgver}/Outline-Manager.AppImage")
-sha256sums=('65dfa3bd3cf9e63668165b2102be63ecf50e3108dc4ae31f90b73f4b8042299b')
+source=("Outline-Manager-v${pkgver}.AppImage::https://s3.amazonaws.com/outline-releases/manager_linux/v${pkgver}/Outline-Manager.AppImage")
+sha256sums=('c228a14dd32e6db186aa30e34c85d6f26415f52ae39b421fa3e11e39e48f202a')
 
 package() {
  install -Dm755 -t "$pkgdir/opt/outline-manager/" "$srcdir/Outline-Manager-v${pkgver}.AppImage"
