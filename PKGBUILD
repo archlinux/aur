@@ -4,7 +4,7 @@ _pkgname=assertive.data.us
 _pkgver=0.0-2
 pkgname=r-${_pkgname,,}
 pkgver=0.0.2
-pkgrel=4
+pkgrel=8
 pkgdesc='Assertions to Check Properties of Strings'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-devtools
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('180e64dfe6339d25dd27d7fe9e77619ef697ef6e5bb6a3cf4fb732a681bdfaad')
 
 build() {
