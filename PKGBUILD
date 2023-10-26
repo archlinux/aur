@@ -2,13 +2,18 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=latest.r0.g10cecbe
+pkgver=rolling.r0.g4352305
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
 url="https://github.com/pragtical/pragtical"
 license=('MIT')
-depends=('luajit' 'sdl2' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme')
+depends=(
+  # Editor Dependencies
+  'luajit' 'sdl2' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
+  # Plugin Manager Dependencies
+  'lua' 'zlib' 'mbedtls2' 'libgit2' 'libzip'
+)
 makedepends=('meson>=0.58')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -28,7 +33,7 @@ build() {
 
 package() {
   cd "$_pkgname"
-  DESTDIR="$pkgdir" meson install --skip-subprojects -C build
+  DESTDIR="$pkgdir" meson install -C build
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
   ln -s "/usr/share/doc/pragtical/licenses.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
