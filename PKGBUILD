@@ -4,7 +4,7 @@ _pkgname=insight
 _pkgver=0.19.6
 pkgname=r-${_pkgname,,}
 pkgver=0.19.6
-pkgrel=1
+pkgrel=3
 pkgdesc='Easy Access to Model Information for Various Model Objects'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,12 +27,16 @@ optdepends=(
   r-blme
   r-boot
   r-brms
+  r-broom
+  r-car
+  r-cardata
   r-censreg
   r-cgam
   r-clubsandwich
   r-coxme
   r-cplm
   r-crch
+  r-curl
   r-datawizard
   r-effectsize
   r-emmeans
@@ -43,6 +47,7 @@ optdepends=(
   r-fungible
   r-gam
   r-gamlss
+  r-gamlss.data
   r-gamm4
   r-gbm
   r-gee
@@ -51,8 +56,10 @@ optdepends=(
   r-glmmadaptive
   r-glmmtmb
   r-gmnl
+  r-grdevices
   r-gt
   r-httr
+  r-interp
   r-ivreg
   r-jm
   r-knitr
@@ -72,6 +79,7 @@ optdepends=(
   r-mcmcglmm
   r-mertools
   r-metabma
+  r-metadat
   r-metafor
   r-metaplus
   r-mgcv
@@ -79,7 +87,9 @@ optdepends=(
   r-mice
   r-mlogit
   r-mmrm
+  r-modelbased
   r-multgee
+  r-nestedlogit
   r-nlme
   r-nnet
   r-nonnest2
@@ -94,10 +104,12 @@ optdepends=(
   r-pscl
   r-psych
   r-quantreg
+  r-rcpp
   r-rmarkdown
   r-rms
   r-robustbase
   r-robustlmm
+  r-rpart
   r-rstanarm
   r-rstantools
   r-rstudioapi
