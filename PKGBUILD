@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pepStat
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Statistical analysis of peptide microarrays'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('92e10fa46fca6f965457d8678b4dfe8389e925e138cd68541151ada691a06560')
+sha256sums=('74447adfd8a1ce88b756445c97de9c17cb24b4ff1d8dcef48bf5836b25ffa165')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
