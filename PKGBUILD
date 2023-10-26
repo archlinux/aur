@@ -2,7 +2,7 @@
 
 pkgname=symfony-cli-bin
 pkgrel=7
-pkgver=5.6.0
+pkgver=5.6.2
 pkgdesc="The Symfony client helps developers create and manage Symfony applications."
 url="https://symfony.com/"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('symfony-cli')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/symfony-cli/symfony-cli/releases/download/v${pkgver}/symfony-cli_linux_amd64.tar.gz"
 )
-sha256sums=('1f61a9c194261e61e0a92b20995a8ea28649d23a3100ab0d67f3183f6f38235a')
+sha256sums=('3e61171469b410f374e5c1dadb52d7afac58d0d2c535a6d67079559c275ec614')
 
 package() {
     install -D -m 755 "${srcdir}/symfony" "${pkgdir}/usr/bin/symfony"
