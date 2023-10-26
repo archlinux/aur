@@ -1,0 +1,26 @@
+pkgbase = r-msexperiment
+	pkgdesc = Infrastructure for Mass Spectrometry Experiments
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MsExperiment
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-iranges
+	depends = r-protgenerics
+	depends = r-qfeatures
+	depends = r-s4vectors
+	depends = r-spectra
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-msdata
+	optdepends = r-mzr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-rpx
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsExperiment_1.4.0.tar.gz
+	sha256sums = cf79cbb2db2cd679285cdd5407a46bbf8f816804f736f375c5b20ff88189a01a
+
+pkgname = r-msexperiment
