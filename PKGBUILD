@@ -1,7 +1,7 @@
 # Maintainer: Kyuunex <kyuunex at protonmail dot ch>
 
 pkgname=xorg-xwayland-osu
-pkgver=23.2.1
+pkgver=23.2.2
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -17,7 +17,7 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'systemd' 'egl-wayland')
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig}
         xwayland-vsync.diff)
-sha512sums=('8ea3061a175c9163166c69569a81dbee2cad605d140dd25d9b61219db555e775811ebe9716c38b6fa6c591299b7c1dfcd5248e797e341ee4cea49b998be89657'
+sha512sums=('f5b319fdace7d7c078544730ecd26afeb63b1a0c779fb097455147945df85af32d9e91501ebdb70209d48e8a3ead3b23be31e9d5118358ac17e699abb4b6ac07'
             'SKIP'
             'ce461fde80aeddf1ed0b412e1b79486759e3981448ccbc1af45591aa1b80a094386f0ecb1aa5bfb68ab6f2169c0a1ab9e6517cb6bc04317290077ded2f8b78b6')
 provides=('xorg-server-xwayland'
@@ -28,7 +28,7 @@ replaces=('xorg-server-xwayland'
           'xorg-xwayland')
 #validpgpkeys=('B09FAF35BE914521980951145A81AF8E6ADBB200') # "Michel Daenzer <michel@daenzer.net>"
 validpgpkeys=('67DC86F2623FC5FD4BB5225D14706DBE1E4B4540') # "Olivier Fourdan <fourdan@xfce.org>"
-#validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
+validpgpkeys+=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 prepare() {
     cd "$srcdir"/xwayland-$pkgver
