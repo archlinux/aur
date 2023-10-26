@@ -1,6 +1,6 @@
 pkgbase = r-keggorthology
 	pkgdesc = graph support for KO, KEGG Orthology
-	pkgver = 2.52.0
+	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/keggorthology
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-keggorthology
 	depends = r-hgu95av2.db
 	optdepends = r-all
 	optdepends = r-rbgl
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/keggorthology_2.52.0.tar.gz
-	sha256sums = 3fd190358355a9e6ae5f7327cdce30af4d7f72a25b4dfea3af2149cb0e82fdbe
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/keggorthology_2.54.0.tar.gz
+	sha256sums = 49d419f2a8d206ef7443aeaf1508735e6df18a5d1c376985966e7d8828c16659
 
 pkgname = r-keggorthology
