@@ -15,6 +15,7 @@ pkgbase = python-tree-sitter-lsp
 	optdepends = python-beautifulsoup4
 	optdepends = python-pypandoc
 	optdepends = python-markdown-it-py
+	optdepends = python-pygments
 	source = https://files.pythonhosted.org/packages/py3/t/tree_sitter_lsp/tree_sitter_lsp-0.0.1-py3-none-any.whl
 	sha256sums = f2c1d535ed3af0917cf4e437366659f658efda91c469a9d619075a14327705b7
 
