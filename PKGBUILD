@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=goseq
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Gene Ontology analyser for RNA-seq and other length biased data'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7dcbdbff175dc0ef4d9a39a2f3e55cd6ef7094bd9528e543497db9a489b123e4')
+sha256sums=('1366adcdc7372b4a89861924836e9ddce834e868f6258e1d5aca23d8212c5c71')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
