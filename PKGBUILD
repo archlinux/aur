@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellScore
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Tool for Evaluation of Cell Identity from Transcription Profiles'
 arch=('any')
@@ -16,13 +16,15 @@ depends=(
   r-lsa
   r-rcolorbrewer
   r-squash
+  r-summarizedexperiment
 )
 optdepends=(
   r-hgu133plus2cellscore
   r-knitr
+  r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('19575619029881593bcf4a474c8e75abb8b78581ef7b17de86ce4277265bb485')
+sha256sums=('500fca2a0296c684f92bb1f5eededade31bcee140a6e9a28df7687b31f00506a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
