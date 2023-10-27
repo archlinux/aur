@@ -1,7 +1,7 @@
 pkgbase = burnoutsharp-bin
 	pkgdesc = Protection, packer, and archive scanning library
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mnadareski/BurnOutSharp
 	arch = x86_64
 	license = MIT
