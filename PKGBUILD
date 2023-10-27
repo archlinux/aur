@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FindIT2
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='find influential TF and Target based on multi-omics data'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-txdb.athaliana.biomart.plantsmart28
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d14d2df74de69a3ad7a45048ba5ac4314ef4ed7cd30962898d3bc2820bb56e40')
+sha256sums=('871fe52af12ab1accc1e24c676285a59828b198887d0f263f85af91039450cfe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
