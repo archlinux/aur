@@ -1,6 +1,6 @@
 pkgbase = r-rnaseqsamplesizedata
 	pkgdesc = RnaSeqSampleSizeData
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RnaSeqSampleSizeData
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-rnaseqsamplesizedata
 	depends = r-edger
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RnaSeqSampleSizeData_1.33.0.tar.gz
-	sha256sums = 1e4442503895b9416fabe8d8fc3f087baf2fc20cea77b6c9f5df7b164cd25229
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RnaSeqSampleSizeData_1.34.0.tar.gz
+	sha256sums = 4e6668968830e4954653ca47c74c74925a5b9d38af0f023d495d0162e13d585c
 
 pkgname = r-rnaseqsamplesizedata
