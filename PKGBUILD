@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
+# Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 # Contributor:  <tigersoldi at gmail dot com>
 
 pkgname=google-java-format
-pkgver=1.15.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Reformats Java source code to comply with Google Java Style'
 url='https://github.com/google/google-java-format'
@@ -16,9 +17,9 @@ source=(
   "$pkgname"
   "https://raw.githubusercontent.com/google/$pkgname/master/LICENSE"
 )
-b2sums=('cb84a97833afbe8f30b0e17977d70826f4b17cef29b148dcd2c3eccbd79e5bab01abfea14614ac47fbade99869471eed616020a4f27bbe431db5a86e6eb5641a'
-        'eef8cfda2543d4624737340c6b9734f614098fd6ee0d1dc1941c1db65adb30ca360169ba4de9508c9e3b948d75fe0faedd834e9df9a3314ce1b5574bc6c6014c'
-        'e2f774f14d1d661b483d40d6261bb8b56962c182da6846987c6dea37d099bcb381d2bea2b2de6ba6ead4eb2e3520676540a85600b1fbf4ba39157bd1c24c82a2')
+sha256sums=('bed3bad433f7df427700648f24b798db3c338d6dcb2cc5c08bc542b55610f910'
+            '9670257258a454870c6e389f9a83d964610df184614bf2b38c6997d9b062cf29'
+            '2c7e23c8000fe553b6f380b5e365dd72198439174f1b6821d5e3b190b54af0dc')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver-all-deps.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
