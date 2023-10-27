@@ -1,6 +1,6 @@
 pkgbase = r-mmdiff2
 	pkgdesc = Statistical Testing for ChIP-Seq data sets
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MMDiff2
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-mmdiff2
 	optdepends = r-knitr
 	optdepends = r-mmdiffbamsubset
 	optdepends = r-motifdb
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MMDiff2_1.28.0.tar.gz
-	sha256sums = 97f094290325d53204734c0a1e7ac682216e55a9abd0e2d5b36cae4fb1b01883
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MMDiff2_1.30.0.tar.gz
+	sha256sums = d073c7f2df78aea61a74dada203a7ee0c45ee566a464a69573a7d06904e25551
 
 pkgname = r-mmdiff2
