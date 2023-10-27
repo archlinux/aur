@@ -1,7 +1,7 @@
 pkgbase = r-rgl
 	pkgdesc = 3D Visualization Using OpenGL
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rgl
 	arch = x86_64
 	license = GPL
@@ -26,6 +26,7 @@ pkgbase = r-rgl
 	optdepends = r-downlit
 	optdepends = r-extrafont
 	optdepends = r-interp
+	optdepends = r-jpeg
 	optdepends = r-js
 	optdepends = r-lattice
 	optdepends = r-magick
@@ -36,6 +37,7 @@ pkgbase = r-rgl
 	optdepends = r-orientlib
 	optdepends = r-pkgdown
 	optdepends = r-plotrix
+	optdepends = r-png
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	optdepends = r-tcltk
