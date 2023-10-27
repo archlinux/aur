@@ -2,8 +2,8 @@
 
 _name=pytest-pylint
 pkgname=python-pytest-pylint
-pkgver=0.19.0
-pkgrel=3
+pkgver=0.20.0
+pkgrel=1
 pkgdesc='pytest plugin to check source code with pylint'
 arch=('any')
 license=('MIT')
@@ -11,7 +11,7 @@ url='https://github.com/carsongee/pytest-pylint'
 depends=('python-pytest' 'python-pylint' 'python-toml')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carsongee/pytest-pylint/archive/v$pkgver.tar.gz")
-sha512sums=('94503757bf774ffbba56687cda7689a95748fe437759e29868105bc5f639b03782308c8e86eae7236ab99188674de5596053da5c33ebd90c603e396504047996')
+sha512sums=('c6f30ba62cdc0fde5f4598d3c547c8bc3aed8122f22255fa65fdce4d64466bbbf3f077623cd306a684eea405e38e7c65d3009b8ddf0187c680fc74dda2a8bebb')
 
 prepare() {
   # pytest-runner is certainly not required to build a wheel...
