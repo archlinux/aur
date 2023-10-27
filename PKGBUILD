@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccdata
-_pkgver=1.27.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Data for Combination Connectivity Mapping (ccmap) Package'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('03fdf8580aefe7b25616f23be0c6f401e09b928145db66655dfb83e4aa2a269d')
+sha256sums=('128da39bb276ad0e2da648263afe7ca398a7a6dbf42336557d0e0f0b16e653ef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
