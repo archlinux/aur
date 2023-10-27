@@ -12,10 +12,10 @@ provides=('zabbixmon')
 conflicts=('zabbixmon')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/zabbixmon/releases/download/0.8.0/zabbixmon_0.8.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('dfc65f4246fbeef800d2433a2eb1c332a5687d387c6f38a295603d94a55ec395')
+sha256sums_aarch64=('08c13aecd2c67bf69c82f3edf7b1bd8fb42076e8be07d320f4496a30d40f754d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/zabbixmon/releases/download/0.8.0/zabbixmon_0.8.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('5ef9211fab35f666933acb87d92d4783589aa6dd898652168df9a67daf136a4a')
+sha256sums_x86_64=('e4fafb62e3a9752f31c3f748d9f3afac19bb33659676f8935434b7707edc4206')
 
 package() {
   install -Dm755 "./zabbixmon" "${pkgdir}/usr/bin/zabbixmon"
