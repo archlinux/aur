@@ -1,6 +1,6 @@
 pkgbase = r-ewcedata
 	pkgdesc = The ewceData package provides reference data required for ewce
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ewceData
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-ewcedata
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ewceData_1.9.0.tar.gz
-	sha256sums = 62736247fc91a6205cd16a9d45c0c1a762613274a3b5f4b13640064ff10a2c0d
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ewceData_1.10.0.tar.gz
+	sha256sums = 3b55a89ab4ba55741b187a5db944e5595f91d8791d073773a66bd37b412ef0cd
 
 pkgname = r-ewcedata
