@@ -2,14 +2,14 @@
 
 _pkgname='qbittorrent'
 pkgname=qbittorrent-qt5
-pkgver=4.5.5
-pkgrel=1
+pkgver=4.6.0
+pkgrel=2
 pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt5 toolkit and libtorrent-rasterbar'
 arch=(x86_64)
 url='https://www.qbittorrent.org'
 license=(custom GPL)
-depends=(gcc-libs glibc libtorrent-rasterbar openssl qt5-base zlib)
-makedepends=(boost cmake qt5-svg qt5-tools)
+depends=(gcc-libs glibc hicolor-icon-theme libtorrent-rasterbar openssl qt5-base qt5-svg zlib)
+makedepends=(boost cmake qt5-tools)
 optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent')
 provides=('qbittorrent')
