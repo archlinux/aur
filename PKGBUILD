@@ -4,7 +4,7 @@ _pkgname=GEOmetadb
 _pkgver=1.64.0
 pkgname=r-${_pkgname,,}
 pkgver=1.64.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A compilation of metadata from NCBI GEO'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
   r-rsqlite
 )
 optdepends=(
+  r-dbplyr
   r-dplyr
   r-knitr
   r-rmarkdown

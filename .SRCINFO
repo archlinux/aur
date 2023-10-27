@@ -1,13 +1,14 @@
 pkgbase = r-geometadb
 	pkgdesc = A compilation of metadata from NCBI GEO
 	pkgver = 1.64.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GEOmetadb
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-geoquery
 	depends = r-rsqlite
+	optdepends = r-dbplyr
 	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
