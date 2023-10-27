@@ -4,7 +4,7 @@ _pkgname=mlr3tuning
 _pkgver=0.19.0
 pkgname=r-${_pkgname,,}
 pkgver=0.19.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Tuning for 'mlr3'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,9 +24,11 @@ optdepends=(
   r-adagio
   r-gensa
   r-irace
+  r-knitr
   r-mlr3learners
   r-mlr3pipelines
   r-nloptr
+  r-rmarkdown
   r-rpart
   r-testthat
   r-xgboost
