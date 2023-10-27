@@ -1,6 +1,6 @@
 pkgbase = algorand-bin
 	pkgdesc = Implementation of the Algorand protocol and node software
-	pkgver = 3.17.0
+	pkgver = 3.19.0
 	pkgrel = 1
 	url = https://www.algorand.com
 	install = algorand-bin.install
@@ -11,7 +11,7 @@ pkgbase = algorand-bin
 	conflicts = algorand
 	backup = var/lib/algorand/genesis.json
 	backup = var/lib/algorand/system.json
-	source = https://github.com/algorand/go-algorand/releases/download/v3.17.0-stable/algorand-3.17.0-1.x86_64.rpm
-	sha384sums = 7dcceebfe396cc957159bdc8814f5c4bf60a6d666a6090ebdd4105f2dece0388d40ec6ec45f5655c8ed8e78447b96500
+	source = https://github.com/algorand/go-algorand/releases/download/v3.19.0-stable/algorand-3.19.0-1.x86_64.rpm
+	sha384sums = cd7199521310d60429ff0d1e21356363d3c29de88b801d7bb39f2bb3af0d80637bdd9164886e4c375d6887e529dad2df
 
 pkgname = algorand-bin

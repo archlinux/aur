@@ -2,7 +2,7 @@
 # Contributor: Misha <mishakmak@gmail.com>
 
 pkgname=algorand-bin
-pkgver=3.17.0
+pkgver=3.19.0
 pkgrel=1
 pkgdesc="Implementation of the Algorand protocol and node software"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("algorand")
 conflicts=("algorand")
 install=algorand-bin.install
 source=("https://github.com/algorand/go-algorand/releases/download/v${pkgver}-stable/algorand-${pkgver}-1.x86_64.rpm")
-sha384sums=('7dcceebfe396cc957159bdc8814f5c4bf60a6d666a6090ebdd4105f2dece0388d40ec6ec45f5655c8ed8e78447b96500')
+sha384sums=('cd7199521310d60429ff0d1e21356363d3c29de88b801d7bb39f2bb3af0d80637bdd9164886e4c375d6887e529dad2df')
 
 package(){
 	cd "${srcdir}"
