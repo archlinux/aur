@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellBarcode
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Cellular DNA Barcode Analysis toolkit"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b1eac1414aa90b4f31efa4acfbed68a')
-sha256sums=('ced1963d99c0e703e8f31affba515c97cf16e69ee4cb93eb1e6842fd961fd769')
+md5sums=('d219d9d5c998fda5f5c02f817361c56a')
+sha256sums=('97b7ac8b8a031d17f58cd4c96f4e67ade0741784a515b5f1b75252b5dd569ab5')
 
 build() {
   mkdir -p build
