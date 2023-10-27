@@ -11,7 +11,7 @@ depends=('gtk3' 'udisks2')
 makedepends=('setconf')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'makefile.patch')
-sha256sums=('cd9facd9269ecb9eae4f513e6c7f9766e928d40064ae6e83841bdf6083cd0eb5'
+sha256sums=('582a4121bec523c5f737d4c91a5a96357243c146330d7785ab54aa3730fba4ff'
             'a8622b5584d5458b608096f24ab2e52e40f1970baaf4e4cd1ffd69b64d149828')
 
 prepare() {
