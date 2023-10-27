@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RUVSeq
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Remove Unwanted Variation from RNA-Seq Data'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-zebrafishrnaseq
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('411ab0a2106be8d4c94a76fb6b82fc20986776570eb4fb9a75f3f86b1c56aa4f')
+sha256sums=('e2027b287cae301ccb26b742dd1830a42b0eb45a552323cea119d7adf97b7e11')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
