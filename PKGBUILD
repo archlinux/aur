@@ -15,6 +15,8 @@ conflicts=("$_pkgname")
 source=("git+https://github.com/$_pkgname/$_pkgname.git")
 sha256sums=("SKIP")
 
+export GIT_LFS_SKIP_SMUDGE=1
+
 pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --always | sed "s/-/./g"
