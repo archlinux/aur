@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=txcutr
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Transcriptome CUTteR'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-txdb.scerevisiae.ucsc.saccer3.sgdgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('785dba3966b1100f79bc6e63af9d1004319bc7df6a5038012cffe4a0d9f677f5')
+sha256sums=('f2f5e9e3911a69f3921cfa0c910a2476f48d09ee6d1f67d9ac26e896810f0777')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
