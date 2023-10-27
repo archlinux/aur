@@ -1,6 +1,6 @@
 pkgbase = r-systempipetools
 	pkgdesc = Tools for data visualization
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/systemPipeTools
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-systempipetools
 	optdepends = r-rmarkdown
 	optdepends = r-systempiper
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/systemPipeTools_1.8.0.tar.gz
-	sha256sums = ddba4220ab7aef3864306ea5368280825ddb323a8815d003b7bd3da1e18c6044
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/systemPipeTools_1.10.0.tar.gz
+	sha256sums = 2d731b23115037425d1ad1ddf87fd08d4d27c98573d92f54be67e98a6bd145bb
 
 pkgname = r-systempipetools
