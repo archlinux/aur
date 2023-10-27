@@ -1,10 +1,9 @@
-# https://aur.archlinux.org/packages/python-inputs
-groups=('modified')
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Major <majorx234@googlemail.com>
 pkgname=python-inputs
 _name=${pkgname#python-}
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform Python support for keyboards, mice and gamepads"
 arch=('any')
 url="https://github.com/zeth/inputs"
