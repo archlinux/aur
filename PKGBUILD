@@ -4,7 +4,7 @@ _pkgname=multipanelfigure
 _pkgver=2.1.2
 pkgname=r-${_pkgname,,}
 pkgver=2.1.2
-pkgrel=4
+pkgrel=8
 pkgdesc='Infrastructure to Assemble Multi-Panel Figures (from Grobs)'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-roxygen2
   r-venndiagram
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('eca98888d2f7c8887764443633bd557e9100f73694b2e5df68a63b304f5ba532')
 
 build() {

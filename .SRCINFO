@@ -1,7 +1,7 @@
 pkgbase = r-multipanelfigure
 	pkgdesc = Infrastructure to Assemble Multi-Panel Figures (from Grobs)
 	pkgver = 2.1.2
-	pkgrel = 4
+	pkgrel = 8
 	url = https://cran.r-project.org/package=multipanelfigure
 	arch = any
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = r-multipanelfigure
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-venndiagram
-	source = https://cran.r-project.org/src/contrib/multipanelfigure_2.1.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/multipanelfigure/multipanelfigure_2.1.2.tar.gz
 	sha256sums = eca98888d2f7c8887764443633bd557e9100f73694b2e5df68a63b304f5ba532
 
 pkgname = r-multipanelfigure
