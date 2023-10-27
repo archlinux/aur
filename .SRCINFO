@@ -1,7 +1,7 @@
 pkgbase = r-gseamining
 	pkgdesc = Make Biological Sense of Gene Set Enrichment Analysis Outputs
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GSEAmining
 	arch = any
 	license = GPL
@@ -20,6 +20,7 @@ pkgbase = r-gseamining
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
+	optdepends = r-tm
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSEAmining_1.12.0.tar.gz
 	sha256sums = 960763d63a322553dfabcd944cb59acb8eeaa911a319679b81246b5936fd5ad8
 
