@@ -1,7 +1,9 @@
-pkg/
-src/
-*.zst
-*.gz
-
-bench/
-frappe-bench/
+*
+!*.desktop
+!*.install
+!*.sh
+!*.sysusers
+!*.tmpfiles
+!.gitignore
+!.SRCINFO
+!PKGBUILD
