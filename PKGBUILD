@@ -2,7 +2,7 @@
 # Contributor: Tony Lambiris <tony@libpcap.net>
 # https://github.com/orhun/pkgbuilds
 
-pkgname=hx-git
+pkgname=hex-hx-git
 pkgver=0.4.2.r2.g21b2304
 pkgrel=1
 pkgdesc="Futuristic take on hexdump (git)"
@@ -36,7 +36,7 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+  install -Dm 755 "target/release/hx" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
