@@ -11,6 +11,9 @@ has already changed
  * Add `casclib` and `stormlib` dependencies
  * `Test` binary is now renamed during `package()` execution
 
+None of these changes should be user-impacting.  Check the release notes, as 
+there are some breaking changes in the release binary to be aware of.
+
 ## 2023-04-24, burnoutsharp-bin 2.7.0-1
 
 * Bump to 2.7.0
