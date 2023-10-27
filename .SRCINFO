@@ -1,6 +1,6 @@
 pkgbase = rcalc
 	pkgdesc = A lightweight RPN calculator
-	pkgver = v1.0.0
+	pkgver = v1.1.0
 	pkgrel = 1
 	url = https://github.com/gelvinp/rcalc
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rcalc
 	makedepends = git
 	depends = glfw>=3.0.0,
 	depends = freetype2>=2.0.0
-	source = git+https://github.com/gelvinp/rcalc#tag=c76b62b9c8ad6e0431b173a13ca8655791fb51e0?signed
+	source = git+https://github.com/gelvinp/rcalc#tag=1e65a5ba72485b504fd8cedc44503901aa83a74b?signed
 	sha256sums = SKIP
 
 pkgname = rcalc
