@@ -1,6 +1,6 @@
 pkgbase = r-bbcanalyzer
 	pkgdesc = BBCAnalyzer: an R/Bioconductor package for visualizing base counts
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BBCAnalyzer
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-bbcanalyzer
 	depends = r-summarizedexperiment
 	depends = r-variantannotation
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BBCAnalyzer_1.30.0.tar.gz
-	sha256sums = eef650ac5cf833123ac1f31b6c961046f9c8f4547cbd0e7ecd4e959e795a8731
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BBCAnalyzer_1.32.0.tar.gz
+	sha256sums = c1ffe8657f54dcfe64b1e45bd4ef7fd2b13f2ae20c9ee01119d2c3e2f4631281
 
 pkgname = r-bbcanalyzer
