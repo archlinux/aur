@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCool
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('85a6824de7561e4879ae698959606ae3')
-sha256sums=('d44d599c72556a83602fcdb85c1fca32a1d2b4e2b449bf14808697b5e2bd2283')
+md5sums=('04aa2ef16336d5c43fc0a02291ba7887')
+sha256sums=('d2d6aaa5b81a1cd04b808b2b5544b62a92f75dd6f6e5492b1c559ecb85be9546')
 
 build() {
   mkdir -p build
