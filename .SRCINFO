@@ -6,6 +6,7 @@ pkgbase = fcitx5-pinyin-sougou
 	arch = any
 	license = custom
 	makedepends = libime
+	makedepends = git
 	source = git+https://github.com/CHN-beta/sougou-dict.git#commit=c33638423355e557febfd7922b392a394c0ddefc
 	sha512sums = SKIP
 
