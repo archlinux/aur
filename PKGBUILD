@@ -5,7 +5,7 @@ _pkgname=DataVisualizations
 _pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=1.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Visualizations of High-Dimensional Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ depends=(
 optdepends=(
   r-abcanalysis
   r-choroplethr
-  r-databionicswarm
+  r-colorspace
   r-diptest
   r-dplyr
   r-ggextra
@@ -41,9 +41,12 @@ optdepends=(
   r-r6
   r-rgl
   r-rmarkdown
+  r-rocit
   r-rworldmap
+  r-scatterdensity
   r-signal
   r-vioplot
+  r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('192f2a8f9aee4dbf23f8471a07509b15b66c4d70240275d2ba4ab201ede31579')

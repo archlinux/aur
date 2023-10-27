@@ -1,7 +1,7 @@
 pkgbase = r-datavisualizations
 	pkgdesc = Visualizations of High-Dimensional Data
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=DataVisualizations
 	arch = x86_64
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = r-datavisualizations
 	depends = gcc
 	optdepends = r-abcanalysis
 	optdepends = r-choroplethr
-	optdepends = r-databionicswarm
+	optdepends = r-colorspace
 	optdepends = r-diptest
 	optdepends = r-dplyr
 	optdepends = r-ggextra
@@ -33,9 +33,12 @@ pkgbase = r-datavisualizations
 	optdepends = r-r6
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
+	optdepends = r-rocit
 	optdepends = r-rworldmap
+	optdepends = r-scatterdensity
 	optdepends = r-signal
 	optdepends = r-vioplot
+	optdepends = r-viridis
 	source = https://cran.r-project.org/src/contrib/DataVisualizations_1.3.2.tar.gz
 	sha256sums = 192f2a8f9aee4dbf23f8471a07509b15b66c4d70240275d2ba4ab201ede31579
 
