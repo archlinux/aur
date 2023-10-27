@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=consensusDE
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='RNA-seq analysis using multiple algorithms'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a5df390357ff6c86fc4baee9f66651ade1613d6117e77d8754dfbad2a0273cc')
+sha256sums=('e4652fb90e8c81e03f02c0b03fc90904c306a365cfa8af641f1265a87f8cc503')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
