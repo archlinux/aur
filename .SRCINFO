@@ -1,7 +1,7 @@
 pkgbase = wlroots-hidpi-xprop-git
 	pkgdesc = Modular Wayland compositor library (git version, with patches)
-	pkgver = 0.17.0.20230803.144028
-	pkgrel = 2
+	pkgver = 0.17.0.20231026.190508
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	install = wlroots-hidpi-xprop-git.install
 	arch = x86_64
@@ -39,8 +39,8 @@ pkgbase = wlroots-hidpi-xprop-git
 	source = 0002-Fix-configure_notify-event.patch
 	source = 0003-Fix-size-hints-under-Xwayland-scaling.patch
 	sha512sums = SKIP
-	sha512sums = e94c5aafa13d7b78a9e0245a78c6b937f64ac78472f22afc2ca712c330212d6f69579139b103b0fc1515e901725a91ed8132d5be58be300fd45ca57c8ca80761
-	sha512sums = c89c9aaa26457e64dff3530c9042afbbfd45a41dcffb01020c512eaaa359811bc16e929003ef56eb6b77f380ac0381b8382cc09da6e78ca0e6d0b2642b2a68bf
-	sha512sums = d54d1faf46a390492ae2bc44238185aead9231b41dbf76567dd0dc4b85579edd5bef29a5ee22062993d06bbf24954216ebfe9a3da4ee67cd5c8b5121925e3483
+	sha512sums = ca05b46c8222e6982c848944ff2afe7765a2e76bb90e29c9d5b5dde9b51a0038bce8b0d52d01c390c970319ef10614ab1454a66940bf3a5b6193fc7f189afe6b
+	sha512sums = 484c8a6848b1409a16403bf0c3e366bf5203716824c24e16efcdcdb71ff34c42b5da6e3da338fafea70ad80fcdd3d6e9f070fb809093d8b0b08ee0b2c95a4de4
+	sha512sums = 8e3e77f6df204b6e5aa770be61fc8a6525e295cc8acdb0084ce66463e78f11702cf066640b20d7ff9560bdcdf7fa626db2e90651dcd42670250f45ac0f636854
 
 pkgname = wlroots-hidpi-xprop-git
