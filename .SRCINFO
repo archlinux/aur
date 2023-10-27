@@ -1,4 +1,4 @@
-pkgbase = artix-linux-stoneyridge
+pkgbase = artixlinux-kernel-stoneyridge
 	pkgdesc = Linux kernel for Stoneyridge Chromebooks
 	pkgver = 6.4.16.artix4
 	pkgrel = 1
@@ -34,7 +34,7 @@ pkgbase = artix-linux-stoneyridge
 	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = artix-linux-stoneyridge
+pkgname = artixlinux-kernel-stoneyridge
 	pkgdesc = The Linux kernel for Stoneyridge Chromebooks kernel and modules
 	depends = coreutils
 	depends = initramfs
@@ -48,11 +48,11 @@ pkgname = artix-linux-stoneyridge
 	replaces = virtualbox-guest-modules-artix
 	replaces = wireguard-artix
 
-pkgname = artix-linux-stoneyridge-headers
+pkgname = artixlinux-kernel-stoneyridge-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel for Stoneyridge Chromebooks kernel
 	depends = pahole
 	provides = LINUX-HEADERS
 
-pkgname = artix-linux-stoneyridge-docs
+pkgname = artixlinux-kernel-stoneyridge-docs
 	pkgdesc = Documentation for the Linux kernel for Stoneyridge Chromebooks kernel
 	provides = LINUX-DOCS

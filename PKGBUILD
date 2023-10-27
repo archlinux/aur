@@ -5,7 +5,7 @@ _rel=4
 _arch=arch${_rel}
 _artix=artix${_rel}
 
-pkgbase=artix-linux-stoneyridge
+pkgbase=artixlinux-kernel-stoneyridge
 pkgver=${_ver}.${_artix}
 pkgrel=1
 pkgdesc='Linux kernel for Stoneyridge Chromebooks'
