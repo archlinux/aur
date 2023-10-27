@@ -1,6 +1,6 @@
 pkgbase = r-rmariadb
 	pkgdesc = Database Interface and MariaDB Driver
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RMariaDB
 	arch = i686
@@ -9,21 +9,21 @@ pkgbase = r-rmariadb
 	depends = libmariadb.so
 	depends = libssl.so
 	depends = mariadb-connector-c
+	depends = r>=2.8.0
 	depends = r-bit64
 	depends = r-blob
 	depends = r-dbi>=1.1.3
 	depends = r-hms>=0.5.0
 	depends = r-lubridate
 	depends = r-plogr
-	depends = r-rcpp
+	depends = r-cpp11
 	depends = r-rlang
-	depends = r>=2.8.0
 	optdepends = r-dbitest>=1.7.2.9001
 	optdepends = r-decor
 	optdepends = r-readr
 	optdepends = r-rprojroot
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/RMariaDB_1.3.0.tar.gz
-	b2sums = 5b34a10c1278869be23a94eb610b0e0bb3108fbe57f2a8dd5ef6d7508efef14a12ca94b3be142dff7d27eb55b4cad3ab0c4733c8be15b4355db65889e4b1c71f
+	source = https://cran.r-project.org/src/contrib/RMariaDB_1.3.1.tar.gz
+	b2sums = 32abe9160950e9a46ec17b2d0de29c0c7a689612dbaa275ea02e519291c0ada4e5d9c6c6ffbb7eb6f48a9c0facbcc67b80f285bf4dd35156882fdb206f1db731
 
 pkgname = r-rmariadb
