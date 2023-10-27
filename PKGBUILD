@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Pagnite <tymoteuszdolega at gmail dot com>
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -6,7 +7,7 @@
 
 _pkgname="ddcutil"
 pkgname="$_pkgname-git"
-pkgver=2.0.0.r3.g4e6f15d2
+pkgver=2.0.0.r42.g19baa12e
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='http://ddcutil.com/'
@@ -16,6 +17,7 @@ license=('GPL2')
 depends=(
   'glib2'
   'i2c-tools'
+  'jansson'
   'kmod'
   'libdrm'
   'libusb'
@@ -25,27 +27,19 @@ makedepends=(
   'systemd'
 )
 
-provides=(
-  'libddcutil.so=5'
-)
-
 if [ "$_pkgname" != "$pkgname" ] ; then
   url="https://github.com/rockowitz/ddcutil"
   makedepends+=('git')
-  provides+=("$_pkgname=${pkgver/.r*}")
+  provides+=("$_pkgname=${pkgver%%.r*}")
   conflicts+=("$_pkgname")
 
   _pkgsrc="$_pkgname"
-  source=(
-    "$_pkgname"::"git+$url"
-  )
-  sha256sums=(
-    'SKIP'
-  )
+  source=("$_pkgname"::"git+$url.git")
+  sha256sums=('SKIP')
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --match 'v[0-9].[0-9].[0-9]' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 fi
 
@@ -61,6 +55,8 @@ build() {
 }
 
 package() {
+  provides=('libddcutil.so')
+
   cd "$_pkgsrc"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir:?}" install
 }
