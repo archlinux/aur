@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=primirTSS
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Prediction of pri-miRNA Transcription Start Site'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4c3547dec096956fca25d1bc09b747c05117b3f03cd256cfdc8f594f403326be')
+sha256sums=('b8afe18484fa4f5913359ba1715c50dadb6f91d350336013db06c30b23e3fabf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
