@@ -8,7 +8,7 @@ _pkgname=lintr
 _pkgver=3.1.0
 pkgname=r-${_pkgname,,}
 pkgver=3.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A 'Linter' for R Code"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,26 +16,28 @@ license=('MIT')
 depends=(
   r
   r-backports
-  r-crayon
   r-cyclocomp
   r-digest
   r-glue
-  r-jsonlite
   r-knitr
   r-rex
   r-xml2
   r-xmlparsedata
 )
 optdepends=(
-  r-covr
+  r-bookdown
+  r-crayon
+  r-data.table
   r-httr
+  r-jsonlite
   r-mockery
   r-patrick
-  r-pkgdown
+  r-rlang
   r-rmarkdown
   r-rstudioapi
   r-testthat
   r-tibble
+  r-tufte
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
