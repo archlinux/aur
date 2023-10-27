@@ -1,6 +1,6 @@
 pkgbase = r-icheck
 	pkgdesc = QC Pipeline and Data Analysis Tools for High-Dimensional Illumina mRNA Expression Data
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iCheck
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-icheck
 	depends = r-randomforest
 	depends = r-rgl
 	depends = r-scatterplot3d
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iCheck_1.30.0.tar.gz
-	sha256sums = 670ee1ca0f74a46746477246accd3a911c668b27609c28963fa3b7d91835c121
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iCheck_1.32.0.tar.gz
+	sha256sums = d8f3313ea9acf0ff834f3cff568ccaf8f5c224055bbd913025543ecd142f8ef4
 
 pkgname = r-icheck
