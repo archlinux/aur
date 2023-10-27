@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EnrichmentBrowser
-_pkgver=2.30.2
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.2
+pkgver=2.32.0
 pkgrel=1
 pkgdesc='Seamless navigation through combined results of set-based and network-based enrichment analysis'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-statmod
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('956ee711e0f509662a63346eed5309778b2ce259d7b9c348a3ea48885e2f7b79')
+sha256sums=('04fb60496346ee2a404c655b807db9a06fd289f4090ddc16f4ba6b78133573d3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
