@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=isomiRs
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Analyze isomiRs and miRNAs from small RNA-seq'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b178dc33d335e92738e56c1691ed458a8391c994d4c7ef4a0e12b25a3dcfabfc')
+sha256sums=('88483aa9d9509faac83a0365993bcc9c38b4df4861bdb4ed1818d80cea51e2d4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
