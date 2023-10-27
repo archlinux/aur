@@ -8,7 +8,7 @@
 readonly _pkgname="ast-comments"
 
 pkgname="python-ast-comments"
-pkgver="1.1.1"
+pkgver="1.1.2"
 pkgrel="1"
 pkgdesc="Extension to the built-in ast module."
 arch=("any")
@@ -18,7 +18,7 @@ depends=("python")
 makedepends=("python-build" "python-installer" "python-poetry-core")
 checkdepends=("python-pytest")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("75726110627a21173de8d5d5f2b3bb070e0b944bed35fc20ed929f5d1aa26ed1a4ceffbe27b85f0d9dd2ddf8cdb1ee395d7c8dbd6255a35461009be9832a8f03")
+sha512sums=("a4841598bd4396572d5144760b7066fefc11cde53846d898e54a7731715737393adae928879366fba70e6e7797d98d170b8041356ef448bafe6d14dcb07cf0ff")
 
 build()
 {
