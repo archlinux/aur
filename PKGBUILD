@@ -5,7 +5,7 @@ _pkgname=netboost
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Network Analysis Supported by Boosting'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,6 @@ depends=(
 )
 optdepends=(
   r-knitr
-  r-markdown
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
