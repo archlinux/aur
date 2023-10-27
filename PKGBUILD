@@ -1,18 +1,18 @@
 # Maintainer: Patrik Sundberg <patrik.sundberg@gmail.com>
 
-# options - defaults
+## options
 if [ -z "$_pkgver" ] ; then
   : ${_autoupdate:=true}
 else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=3.82.8}
+: ${_pkgver:=3.83.13}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.82.8
+pkgver=3.83.13
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
@@ -36,15 +36,15 @@ case "${_autoupdate::1}" in
     )
 
     # update _pkgver
-    if [ x"$_pkgver" != x"$_pkgver_new" ] ; then
+    if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
       _pkgver="$_pkgver_new"
-      sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+      sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
     fi
     ;;
   *)
     # _pkgver set in env
 
-    _filename="beeper-$_pkgver.AppImage"
+    _filename="beeper-${_pkgver:?}.AppImage"
     _dl_url="https://download.todesktop.com/2003241lzgn20jd/$_filename"
     ;;
 esac
@@ -67,49 +67,49 @@ sha256sums=(
 )
 
 pkgver() {
-  printf '%s' "$_pkgver"
+  printf '%s' "${_pkgver:?}"
 }
 
 build() {
-  cd "$srcdir"
+  cd "${srcdir:?}"
 
   # extract appimage
   chmod +x "$_filename"
-  "$srcdir/$_filename" --appimage-extract
+  "${srcdir:?}/$_filename" --appimage-extract
 
-  # fix folder permissions
-  find "$srcdir/squashfs-root" -type d -exec chmod 755 {} \;
+  # fix permissions
+  chmod -R u+rwX,go+rX,go-w "${srcdir:?}/squashfs-root"
 
   # fix apprun script
   sed -Ei \
     's@^(if \[ -z \"\$APPDIR\" ] ; then)$@APPDIR="/opt/beeper"\n\1@' \
-    "$srcdir/squashfs-root/AppRun"
+    "${srcdir:?}/squashfs-root/AppRun"
 
   # fix desktop file
   sed -Ei \
     's@^Exec=AppRun (.*)$@Exec=beeper \1@' \
-    "$srcdir/squashfs-root/beeper.desktop"
+    "${srcdir:?}/squashfs-root/beeper.desktop"
 }
 
 package() {
   # apprun script
-  install -vDm0755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/beeper"
+  install -vDm0755 "${srcdir:?}/squashfs-root/AppRun" "${pkgdir:?}/usr/bin/beeper"
 
   # desktop file
-  install -vDm0644 "$srcdir/squashfs-root/beeper.desktop"                                  "$pkgdir/usr/share/applications/beeper.desktop"
+  install -vDm0644 "${srcdir:?}/squashfs-root/beeper.desktop"                                  "${pkgdir:?}/usr/share/applications/beeper.desktop"
 
   # icons
   for s in 16 32 48 64 128 256 512 1024 ; do
     install -vDm0644 \
-    "$srcdir/squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/beeper.png" \
-    -t "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps"
+    "${srcdir:?}/squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/beeper.png" \
+    -t "${pkgdir:?}/usr/share/icons/hicolor/${s}x${s}/apps"
   done
 
   # license files
-  install -vDm0644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -vDm0644 "$srcdir/squashfs-root/LICENSES.chromium.html" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -vDm0644 "${srcdir:?}/squashfs-root/LICENSE.electron.txt" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
+  install -vDm0644 "${srcdir:?}/squashfs-root/LICENSES.chromium.html" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
 
   # everything else
-  mkdir -p "$pkgdir/opt"
-  mv "$srcdir/squashfs-root" "$pkgdir/opt/beeper"
+  mkdir -p "${pkgdir:?}/opt"
+  mv "${srcdir:?}/squashfs-root" "${pkgdir:?}/opt/beeper"
 }
