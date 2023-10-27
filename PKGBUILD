@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=soGGi
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Visualise ChIP-seq, MNase-seq and motif occurrence as aggregate plots Summarised Over Grouped Genomic Intervals'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d8e1150e4e9d1e79347da3463477ff9dc1d807d563e5961f63eecd64c6c04e1')
+sha256sums=('a2148b158745b45c76cabdf37894264fa5423f8fe01b0ddc9f7a9746926fe165')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
