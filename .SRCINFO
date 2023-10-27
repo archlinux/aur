@@ -1,6 +1,6 @@
 pkgbase = r-rarevariantvis
 	pkgdesc = A suite for analysis of rare genomic variants in whole genome sequencing data
-	pkgver = 2.28.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RareVariantVis
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-rarevariantvis
 	depends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	depends = r-variantannotation
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RareVariantVis_2.28.0.tar.gz
-	sha256sums = ad8456afb8864332688e27811d66e6a4f5e0e1be88f3a6986a01cac35aadcbe0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RareVariantVis_2.30.0.tar.gz
+	sha256sums = 59d6a9c447ad649d107635413ba1df64dd7cfe578e605834183fd0461b61e257
 
 pkgname = r-rarevariantvis
