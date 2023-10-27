@@ -1,29 +1,33 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=avogadro2-appimage
 _pkgname=Avogadro2
-pkgver=1.97.0
-pkgrel=3
+pkgver=1.98.0
+pkgrel=1
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
 arch=("x86_64")
 url="https://two.avogadro.cc/"
 _githuburl="https://github.com/OpenChemistry/avogadroapp"
-license=('BSD')
+license=('custom:BSD3-Clause')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
+makedepends=('squashfuse')
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${CARCH}.AppImage")
-sha256sums=('cc522dbdaa6e5386cb7101d382c5730f0d1ff71f2e70eb10f7e55f4ca052c89d')
-prepare() {
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${CARCH}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/${pkgver}/LICENSE")
+sha256sums=('1a4192dc926a1150691c6beabba209a06adeed08376fcc7befba1f310a5ec33d'
+            '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4')
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox|g" \
-        -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    ln -sf "${_install_path}/${pkgname%-appimage}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/pixmaps/${pkgname%-appimage}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${pkgname%-appimage}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
