@@ -4,14 +4,13 @@
 # Contributor: NeoRaider <neoraider@universe-factory.net>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-
 _pkgname="libxcb"
 pkgname="$_pkgname-git"
 pkgver=1.16.r4.g02a7bbe
 pkgrel=1
 pkgdesc="X11 client-side library"
 arch=(i686 x86_64)
-url='http://xcb.freedesktop.org'
+url='https://xcb.freedesktop.org'
 license=('custom')
 
 depends=(
@@ -48,13 +47,13 @@ else
   )
 
   pkgver() {
-    cd "$srcdir/$_pkgsrc"
+    cd "$_pkgsrc"
     git describe --tags | sed 's/libxcb-//;s/-/.r/;s/-/./g'
   }
 fi
 
 build() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   local _config_options=(
     --prefix='/usr'
     --enable-xinput
@@ -71,13 +70,13 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   make -k check
 }
 
 package() {
-  cd "$srcdir/$_pkgsrc"
-  make DESTDIR="$pkgdir" install
+  cd "$_pkgsrc"
+  make DESTDIR="${pkgdir:?}" install
 
-  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "COPYING" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
