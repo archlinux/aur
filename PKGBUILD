@@ -1,10 +1,10 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=Rpdb
-_pkgver=2.3
+_pkgver=2.3.4
 pkgname=r-${_pkgname,,}
-pkgver=2.3
-pkgrel=4
+pkgver=2.3.4
+pkgrel=1
 pkgdesc='Read, Write, Visualize and Manipulate PDB Files'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,8 +13,8 @@ depends=(
   r
   r-rgl
 )
-source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('28beafa9cc6626bb1eef102dac45266533f96b2108391e5f62f79a48d771c57f')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('058d79f6f1978dea451b53dbcffaa3418f4360ac3c05df6732e6143d9a5fd25a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
