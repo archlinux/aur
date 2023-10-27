@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/Freed-Wu/autotools-language-server/blob/main/.github/workflows/main.yml
 pkgname=autotools-language-server
-pkgver=0.0.10
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="autotools language server"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('ffbd06e04cfdda24c8948f087126ccdc721d89a3805b1860fe8b80e6276399eb')
+sha256sums=('7711adf34b2e17c21ab2bb6dbba7fd5902ab45ca7da2f69715bcc171da8e073d')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
