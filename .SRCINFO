@@ -1,6 +1,6 @@
 pkgbase = r-tress
 	pkgdesc = Toolbox for mRNA epigenetics sequencing analysis
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TRESS
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-tress
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TRESS_1.6.0.tar.gz
-	sha256sums = 63c7e76d7dbdb1a979e4f844d7b2aef34b7c976447a1ced80811e0e9b26cdf49
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TRESS_1.8.0.tar.gz
+	sha256sums = 8732c8493520665430e6eb8fb2992645451343919d6897e10d35e19399729bee
 
 pkgname = r-tress
