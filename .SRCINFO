@@ -1,6 +1,6 @@
 pkgbase = r-apalyzer
 	pkgdesc = A toolkit for APA analysis using RNA-seq data
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/APAlyzer
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-apalyzer
 	optdepends = r-rmarkdown
 	optdepends = r-tbx20bamsubset
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/APAlyzer_1.14.0.tar.gz
-	sha256sums = 46b057adbfee8207133cdc445eb05eb710d31d227fcb2ad23fa392fe58ce36cc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/APAlyzer_1.16.0.tar.gz
+	sha256sums = ec57a22a705b48cd5f2dd2c5a47fb1161567b87b28d38429b8ddcc19c911f4cb
 
 pkgname = r-apalyzer
