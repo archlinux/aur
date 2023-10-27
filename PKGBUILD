@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msigdb
-_pkgver=1.9.2
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='An ExperimentHub Package for the Molecular Signatures Database (MSigDB)'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-visse
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b1def7599668a7ba82762e18c93743b4d7ecb0df1ec1b188c742bfdc740ba633')
+sha256sums=('3a2a26d1a63fc22fba2f99849957c201fd98ade32e0f6f27853f1560c3c0efbb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
