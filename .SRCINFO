@@ -1,6 +1,6 @@
 pkgbase = artix-linux-stoneyridge
 	pkgdesc = Linux kernel for Stoneyridge Chromebooks
-	pkgver = 6.5.7.artix2
+	pkgver = 6.4.16.artix4
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
@@ -15,16 +15,13 @@ pkgbase = artix-linux-stoneyridge
 	makedepends = tar
 	makedepends = xz
 	makedepends = sed
+	makedepends = linux-firmware
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
-	provides = artix-linux-stoneyridge=linux
-	provides = artix-linux-stoneyridge=linux.headers
-	provides = artix-linux-stoneyridge=linux.docs
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.7.tar.xz
-	source = https://github.com/archlinux/linux/releases/download/v6.5.7-arch2/linux-v6.5.7-arch2.patch.zst
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.4.16.tar.xz
 	source = emmc.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -33,8 +30,6 @@ pkgbase = artix-linux-stoneyridge
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -49,12 +44,15 @@ pkgname = artix-linux-stoneyridge
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = LINUX
 	replaces = virtualbox-guest-modules-artix
 	replaces = wireguard-artix
 
 pkgname = artix-linux-stoneyridge-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel for Stoneyridge Chromebooks kernel
 	depends = pahole
+	provides = LINUX-HEADERS
 
 pkgname = artix-linux-stoneyridge-docs
 	pkgdesc = Documentation for the Linux kernel for Stoneyridge Chromebooks kernel
+	provides = LINUX-DOCS
