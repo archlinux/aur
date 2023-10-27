@@ -6,6 +6,7 @@ pkgbase = redisearch
 	arch = any
 	license = custom:RSALv2
 	makedepends = conan
+	makedepends = git
 	depends = redis
 	source = redisearch::git+https://github.com/RediSearch/RediSearch.git#tag=5c1bad6c26db8ab9b2bc1d9106c8f42acaeaf996
 	source = git+https://github.com/google/googletest.git
