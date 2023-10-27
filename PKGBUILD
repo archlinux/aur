@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=supalive-bin
 _pkgname=Supalive
-pkgver=0.0.18
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="Aplicativo para alertas interativos em streaming, integrado com YouTube, Twitch e LivePix."
 arch=("x86_64")
@@ -13,16 +13,16 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron27' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('3ad56198f8e37a8b738d41ca5177e6eef50c181da47b89fa534cc22314713ed1'
-            '79528d4cabca40af274a9430f23685b80b78cd23664faca3ffb6ca79dbfa0923')
+sha256sums=('a4b2e7147932ac55218bcd570ce9aef7434906fe0efc7dfa476275c0ebff1738'
+            '44791f429ff760718ed851c2b0190cec1b5fce3166cbd420309ee0824b51eb61')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/icon.png" -t "${pkgdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/resources"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/icon.png" -t "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/resources"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
