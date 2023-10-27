@@ -1,6 +1,6 @@
 pkgbase = r-tomoda
 	pkgdesc = Tomo-seq data analysis
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tomoda
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-tomoda
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tomoda_1.10.0.tar.gz
-	sha256sums = 08bd9d8067992c2e44db27366ca9c47f65d168a0105a5fc5d82791fa0d7ff9b8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tomoda_1.12.0.tar.gz
+	sha256sums = dae83627d4ed12c516c9797b85d0c332f4bc7d090467de8c34ea6985355bb152
 
 pkgname = r-tomoda
