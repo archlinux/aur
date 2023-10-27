@@ -1,6 +1,6 @@
 pkgbase = radxa-firmware-git
 	pkgdesc = Supplemental firmwares for Radxa boards
-	pkgver = 0.2.12.r3.8cb60f7
+	pkgver = 0.2.12.r7.ac8442f
 	pkgrel = 1
 	url = https://github.com/radxa-pkg/radxa-firmware/
 	arch = any

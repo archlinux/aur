@@ -9,7 +9,7 @@
 # Maintainer: Jesse R Codling <codling@umich.edu>
 _pkgname=radxa-firmware
 pkgname=$_pkgname-git
-pkgver=0.2.12.r3.8cb60f7
+pkgver=0.2.12.r7.ac8442f
 pkgrel=1
 pkgdesc="Supplemental firmwares for Radxa boards"
 arch=(any)
@@ -37,6 +37,7 @@ upstream_firmwares=(
 	"r8a779x_usb3_v1.dlmem"
 	"r8a779x_usb3_v2.dlmem"
 	"r8a779x_usb3_v3.dlmem"
+	"rtw89/rtw8852b_fw.bin"
 )
 
 pkgver() {
