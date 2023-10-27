@@ -1,7 +1,7 @@
 pkgbase = r-cytoml
 	pkgdesc = A GatingML Interface for Cross Platform Cytometry Data Sharing
-	pkgver = 2.12.0
-	pkgrel = 2
+	pkgver = 2.14.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/CytoML
 	arch = x86_64
 	license = AGPL3
@@ -33,11 +33,11 @@ pkgbase = r-cytoml
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoML_2.12.0.tar.gz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoML_2.14.0.tar.gz
 	source = system-hdf5.patch
-	md5sums = 5118f217fc4d383753ddb7c749b5c949
+	md5sums = 4b0060416cdeef7876cb9aaeb81dbaf7
 	md5sums = c830342f553f0cfc7ac954ec93b429c2
-	sha256sums = 6e03532826526949599a15f615472c9c7f4577c51772a2ea2e4088694b7834a7
+	sha256sums = c93916697fcea60331518c8afdeef4b38c48f93e592abb1097821aadac7a0973
 	sha256sums = f97522aab6e311702e9606c370d4e2eed01169a83d7fc01bf6bb5ad90b115a05
 
 pkgname = r-cytoml

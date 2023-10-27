@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CytoML
-_pkgver=2.12.0
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A GatingML Interface for Cross Platform Cytometry Data Sharing"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -48,9 +48,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-hdf5.patch")
-md5sums=('5118f217fc4d383753ddb7c749b5c949'
+md5sums=('4b0060416cdeef7876cb9aaeb81dbaf7'
          'c830342f553f0cfc7ac954ec93b429c2')
-sha256sums=('6e03532826526949599a15f615472c9c7f4577c51772a2ea2e4088694b7834a7'
+sha256sums=('c93916697fcea60331518c8afdeef4b38c48f93e592abb1097821aadac7a0973'
             'f97522aab6e311702e9606c370d4e2eed01169a83d7fc01bf6bb5ad90b115a05')
 
 prepare() {
