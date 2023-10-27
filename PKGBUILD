@@ -4,7 +4,7 @@ _pkgname=shinyscreenshot
 _pkgver=0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Capture Screenshots of Entire Pages or Parts of Pages in 'Shiny'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,6 +12,7 @@ license=('MIT')
 depends=(
   r
   r-base64enc
+  r-htmltools
   r-jsonlite
   r-shiny
   r-uuid
