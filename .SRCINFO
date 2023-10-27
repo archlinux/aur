@@ -1,7 +1,7 @@
 pkgbase = r-genie3
 	pkgdesc = GEne Network Inference with Ensemble of trees
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GENIE3
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = r-genie3
 	depends = r-dplyr
 	depends = r-reshape2
 	optdepends = r-biobase
+	optdepends = r-biocstyle
 	optdepends = r-doparallel
 	optdepends = r-dorng
 	optdepends = r-foreach

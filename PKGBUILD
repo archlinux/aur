@@ -4,7 +4,7 @@ _pkgname=GENIE3
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='GEne Network Inference with Ensemble of trees'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,6 +16,7 @@ depends=(
 )
 optdepends=(
   r-biobase
+  r-biocstyle
   r-doparallel
   r-dorng
   r-foreach
