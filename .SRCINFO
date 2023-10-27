@@ -1,16 +1,18 @@
 pkgbase = burnoutsharp-bin
-	pkgdesc = C# protection, packer, and archive scanning library (.NET 4.8 version)
-	pkgver = 2.7.0
+	pkgdesc = Protection, packer, and archive scanning library
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/mnadareski/BurnOutSharp
 	arch = x86_64
 	license = MIT
-	depends = mono
+	depends = casclib
+	depends = stormlib
 	provides = burnoutsharp
-	source = https://github.com/mnadareski/BurnOutSharp/releases/download/2.7.0/BurnOutSharp.2.7.0_net48.zip
+	options = !strip
+	source = https://github.com/mnadareski/BurnOutSharp/releases/download/2.9.0/BinaryObjectScanner_2.9.0_net7.0_linux-x64_release.zip
 	source = https://raw.githubusercontent.com/mnadareski/BurnOutSharp/master/README.md
 	source = https://raw.githubusercontent.com/mnadareski/BurnOutSharp/master/LICENSE
-	sha256sums = 6083d7adf0123c3feeb9567e21e3513182a2d4abe23f0f01a7a422a805517dbc
+	sha256sums = 59041fc6c1d39fe4c890fb8a27aa137e345c8bdd4ea618718013224c1f92b9c9
 	sha256sums = SKIP
 	sha256sums = SKIP
 
