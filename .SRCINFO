@@ -1,7 +1,7 @@
 pkgbase = kf5-servicemenus-rootactions-git
 	pkgdesc = Allows admin users to perform several root only actions from dolphin via polkit agent
 	pkgver = r16.cdfe53f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.opencode.net/netrunner/rootactions-servicemenu
 	arch = any
 	groups = admin
@@ -14,6 +14,7 @@ pkgbase = kf5-servicemenus-rootactions-git
 	provides = kf5-servicemenus-rootactions
 	conflicts = kf5-servicemenus-rootactions
 	conflicts = kde-servicemenus-rootactions
+	conflicts = rootactions-servicemenu-git
 	replaces = rootactions-servicemenu-git
 	source = kf5-servicemenus-rootactions::git+https://www.opencode.net/netrunner/rootactions-servicemenu.git
 	sha256sums = SKIP
