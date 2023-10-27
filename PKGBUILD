@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IVAS
-_pkgver=2.20.0
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
-pkgver=2.20.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='Identification of genetic Variants affecting Alternative Splicing'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9e6b50b652bf74fe5b03471e68d140f54ff4a05911f8d8a1e4ea6e3de6dacbfe')
+sha256sums=('77506b6d8a16e0aa043079c1227d8d688077efb382285808cb9af8073c7e82eb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
