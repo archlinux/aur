@@ -14,7 +14,7 @@ depends=(python-tree-sitter-languages python-platformdirs python-tree-sitter-lsp
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
+source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
 sha256sums=('a3569c2f1589710cb23ecdb9dfe382bb68be38008ce4fb46e37769015d58dbb6')
 
 package() {
