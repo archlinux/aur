@@ -1,7 +1,7 @@
 pkgbase = r-experimenthub
 	pkgdesc = Client to access ExperimentHub resources
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ExperimentHub
 	arch = any
 	license = Artistic2.0
@@ -14,6 +14,7 @@ pkgbase = r-experimenthub
 	depends = r-s4vectors
 	optdepends = r-biocstyle
 	optdepends = r-experimenthubdata
+	optdepends = r-genomicalignments
 	optdepends = r-hubpub
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
