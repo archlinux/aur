@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PICS
-_pkgver=2.44.0
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
-pkgver=2.44.0
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='Probabilistic inference of ChIP-seq'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2f89accbaaacb4961c872928fd622b81788207f19339b23fa84bfe5be8d7e7da')
+sha256sums=('cbfe9cc744144aa0087d360eba98c4adb103307e162193c32d1f265a348aed66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
