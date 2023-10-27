@@ -1,13 +1,16 @@
 pkgbase = term-pdf
 	pkgdesc = TermPDF Viewer is an open-source PDF file viewer designed to run in the terminal.
-	pkgver = 0.0.3.9
+	pkgver = 0.0.4.0
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/TermPDFViewer
 	arch = x86_64
 	license = MIT
+	depends = gcc
+	depends = python
 	depends = python-pip
 	depends = python-pymupdf
-	source = https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.0.0.3.9.tar.gz
-	sha256sums = 05d652e374019b617842c77d435f58c92da58529e033d3d29b254820c3fa03fb
+	depends = python-termcolor
+	source = https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.0.0.4.0.tar.gz
+	sha256sums = ae02b2a2374eeee67caaa068cd2ed1b5fee61cd06071e4bfa157476302adc6d6
 
 pkgname = term-pdf
