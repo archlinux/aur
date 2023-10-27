@@ -1,7 +1,7 @@
 pkgbase = r-mice
 	pkgdesc = Multivariate Imputation by Chained Equations
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mice
 	arch = x86_64
 	license = GPL
