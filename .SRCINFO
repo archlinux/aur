@@ -1,6 +1,6 @@
 pkgbase = cloudflare-wrangler2
 	pkgdesc = Command-line tool for working with Cloudflare Workers
-	pkgver = 3.14.0
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/wrangler
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cloudflare-wrangler2
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = cloudflare-wrangler2-3.14.0.tar.gz
-	source = cloudflare-wrangler2-3.14.0.tar.gz::https://registry.npmjs.org/wrangler/-/wrangler-3.14.0.tgz
-	md5sums = 0e6864a9bd603fd2ac833159e78a391c
+	noextract = cloudflare-wrangler2-3.15.0.tar.gz
+	source = cloudflare-wrangler2-3.15.0.tar.gz::https://registry.npmjs.org/wrangler/-/wrangler-3.15.0.tgz
+	md5sums = 66a9d0c424294506669709d7462c3e60
 
 pkgname = cloudflare-wrangler2
