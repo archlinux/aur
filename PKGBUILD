@@ -4,7 +4,7 @@ _binname=threema
 _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
-pkgver=1.2.38
+pkgver=1.2.39
 pkgrel=1
 _threema_web_ver=2.5.2 # Keep in sync with version used by threema-desktop
 arch=('any')
@@ -18,7 +18,7 @@ source=(
   "threema.desktop"
 )
 sha256sums=(
-  '7cb858ade102be40de9888a796916e93a644e20de68ae56144cc9bab439422a4'
+  'e46d79ef44c9fbd142f43dff17166f2a79c15515abe4e34fdcef256e1dc17179'
   'dc4bf75444a37cffd087cf0919c148b2c6942dffc26064d2c402dde30a23acc2'
   'ccfdae3416e2a1f096cfaf67fd8f8dacb0d8348582fc666ecc8b5b0d08ef5bf2'
 )
