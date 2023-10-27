@@ -17,6 +17,7 @@ depends=(
     'qt5-quickcontrols2'
     'qt5-graphicaleffects'
     'hicolor-icon-theme'
+    'qt5-svg'
 )
 makedepends=(
     'go'
