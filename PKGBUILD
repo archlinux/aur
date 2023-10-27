@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=orthogene
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Interspecies gene mapping'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-treetools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cdeb520f5a66a87214f338f7b6af17754d7ecb0c56e770eff83025683fb96605')
+sha256sums=('2872b0c24173b02dca976253f58310fe26bd5f3ad4bae2e02be19914405b824f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
