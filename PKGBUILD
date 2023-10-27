@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HiCcompare
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='HiCcompare: Joint normalization and comparative analysis of multiple Hi-C datasets'
 arch=('any')
@@ -21,7 +21,6 @@ depends=(
   r-interactionset
   r-iranges
   r-pheatmap
-  r-qdnaseq
   r-rhdf5
   r-s4vectors
 )
@@ -32,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6bc8d67041c4704f20d243851be6736536b4b36797c130d491ac1138da77b164')
+sha256sums=('4dbca074754c4aea7f95e1a4483943d955fa7584b69d37865a90ffde7edb68ac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

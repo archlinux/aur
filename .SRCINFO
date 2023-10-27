@@ -1,6 +1,6 @@
 pkgbase = r-hiccompare
 	pkgdesc = HiCcompare: Joint normalization and comparative analysis of multiple Hi-C datasets
-	pkgver = 1.22.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HiCcompare
 	arch = any
@@ -16,14 +16,13 @@ pkgbase = r-hiccompare
 	depends = r-interactionset
 	depends = r-iranges
 	depends = r-pheatmap
-	depends = r-qdnaseq
 	depends = r-rhdf5
 	depends = r-s4vectors
 	optdepends = r-knitr
 	optdepends = r-multihiccompare
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCcompare_1.22.1.tar.gz
-	sha256sums = 6bc8d67041c4704f20d243851be6736536b4b36797c130d491ac1138da77b164
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCcompare_1.24.0.tar.gz
+	sha256sums = 4dbca074754c4aea7f95e1a4483943d955fa7584b69d37865a90ffde7edb68ac
 
 pkgname = r-hiccompare
