@@ -1,5 +1,5 @@
 pkgbase = python-aiot-bootrom-git
-	pkgdesc = AIoT tools for flashing boards using MediaTek AIoT SoCs.
+	pkgdesc = AIoT tool to bootstrap the flashing on MediaTek AIoT SoCs
 	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://gitlab.com/mediatek/aiot/bsp/aiot-bootrom
