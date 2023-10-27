@@ -4,7 +4,7 @@ _pkgname=plotly
 _pkgver=4.10.3
 pkgname=r-${_pkgname,,}
 pkgver=4.10.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Create Interactive Web Graphics via 'plotly.js'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -38,7 +38,6 @@ optdepends=(
   r-cairo
   r-curl
   r-dendextend
-  r-devtools
   r-forcats
   r-ggalluvial
   r-ggally
@@ -48,14 +47,12 @@ optdepends=(
   r-knitr
   r-listviewer
   r-maps
-  r-maptools
   r-mass
   r-palmerpenguins
   r-plotlygeoassets
   r-png
   r-processx
   r-reticulate
-  r-rgeos
   r-rmarkdown
   r-rsvg
   r-rversions
@@ -64,6 +61,7 @@ optdepends=(
   r-shinytest
   r-testthat
   r-webshot
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('8b7a6c26443088c8aae4624e01cf726a91fee875c2e60b6c439375d1adaa5d8f')
