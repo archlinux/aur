@@ -1,8 +1,8 @@
-# Maintainer: Laurent Brock <incognito0135 at protonmail dot com>
+PACKAGER="Laurent Brock <incognito0135@protonmail.com>"
 
 pkgname=osprey-dpd
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source polymer research engine-dissipative particle dynamics'
 url='https://github.com/Osprey-DPD/osprey-dpd'
 license=('BSD')
@@ -22,3 +22,4 @@ package() {
   install -Dm755 dpd "$pkgdir/usr/bin/osprey-dpd"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname}"/LICENSE
 }
+

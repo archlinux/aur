@@ -1,7 +1,7 @@
 pkgbase = osprey-dpd
 	pkgdesc = Open source polymer research engine-dissipative particle dynamics
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Osprey-DPD/osprey-dpd
 	arch = any
 	license = BSD
