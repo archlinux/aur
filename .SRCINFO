@@ -13,7 +13,8 @@ pkgbase = python-thefuzz
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-levenshtein
+	depends = python
+	depends = python-rapidfuzz
 	provides = python-fuzzywuzzy
 	conflicts = python-fuzzywuzzy
 	source = thefuzz::git+https://github.com/seatgeek/thefuzz.git#tag=0.21.0

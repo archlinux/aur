@@ -14,7 +14,8 @@ url="https://github.com/seatgeek/thefuzz"
 license=('GPL2')
 
 depends=(
-  'python-levenshtein'
+  'python'
+  'python-rapidfuzz'
 )
 makedepends=(
   'git'
