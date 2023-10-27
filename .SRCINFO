@@ -1,6 +1,6 @@
 pkgbase = r-cfdnapro
 	pkgdesc = cfDNAPro Helps Characterise and Visualise Whole Genome Sequencing Data from Liquid Biopsy
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cfDNAPro
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-cfdnapro
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cfDNAPro_1.6.0.tar.gz
-	sha256sums = 365b1fb038bcc1dbd4cacf990e6d11fcf9ec1615083d335da3dfb9fa58e36b17
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cfDNAPro_1.8.0.tar.gz
+	sha256sums = f2cf246b77c6607d11745534b671759a17cd58720dc5a2986dfac7b43f64187f
 
 pkgname = r-cfdnapro
