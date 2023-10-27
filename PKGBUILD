@@ -3,7 +3,7 @@
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 
 pkgname=swagger-codegen
-pkgver=3.0.49
+pkgver=3.0.50
 pkgrel=1
 pkgdesc="Swagger Code Generator"
 arch=("any")
