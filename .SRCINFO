@@ -1,7 +1,7 @@
 pkgbase = r-plyr
 	pkgdesc = Tools for Splitting, Applying and Combining Data
 	pkgver = 1.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=plyr
 	arch = x86_64
 	license = MIT
