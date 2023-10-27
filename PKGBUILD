@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epistack
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Heatmaps of Stack Profiles from Epigenetic Signals'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5bddc8ce095744915f6309ca8a3212d6a22feae8e429663f42ce5853ed3ecce6')
+sha256sums=('738b2cf0a8c23ad732af1703448778c4ff5bfe671facc9cd22dffd8a7b0bf254')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

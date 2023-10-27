@@ -1,7 +1,7 @@
 pkgbase = r-epistack
 	pkgdesc = Heatmaps of Stack Profiles from Epigenetic Signals
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/epistack
 	arch = any
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = r-epistack
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epistack_1.6.0.tar.gz
-	sha256sums = 5bddc8ce095744915f6309ca8a3212d6a22feae8e429663f42ce5853ed3ecce6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epistack_1.8.0.tar.gz
+	sha256sums = 738b2cf0a8c23ad732af1703448778c4ff5bfe671facc9cd22dffd8a7b0bf254
 
 pkgname = r-epistack
