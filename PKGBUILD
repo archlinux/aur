@@ -2,15 +2,17 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epialleleR
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Fast, Epiallele-Aware Methylation Reporter'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
+  gcc
+  make
   r
   r-bh
   r-biocgenerics
@@ -19,12 +21,9 @@ depends=(
   r-genomicranges
   r-rcpp
   r-rhtslib
-  r-stringi
   r-summarizedexperiment
   r-variantannotation
   r-zlibbioc
-  gcc
-  make
 )
 optdepends=(
   r-ggplot2
@@ -35,7 +34,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ff6654cfd496b4ff4f04714c3ea499b950977c3c8a94eecacced83e0cc6e5eca')
+sha256sums=('1d4f66fc2c30219fc98a2499e8526faa667deac923906ee1c868dedf5b95affd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
