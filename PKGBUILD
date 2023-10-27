@@ -13,7 +13,7 @@ _pkgname='OpenUSD'
 
 pkgbase=usd
 pkgver=23.11
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://openusd.org'
 _url='https://github.com/PixarAnimationStudios/'$_pkgname
@@ -105,7 +105,7 @@ prepare() {
 }
 
 build() {
-	export CC=clang && export CXX=clang++
+# 	export CC=clang && export CXX=clang++
 	extra_flags="${extra_flags-} -DTBB_SUPPRESS_DEPRECATED_MESSAGES=1 $(pkgconf --cflags Imath)"
 
 	_CMAKE_FLAGS+=(
