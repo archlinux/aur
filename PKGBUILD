@@ -4,7 +4,7 @@ _pkgname=geneplotter
 _pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=1.80.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Graphics related functions for Bioconductor'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,10 +18,12 @@ depends=(
   r-rcolorbrewer
 )
 optdepends=(
+  r-biocstyle
   r-fibroeset
   r-hgu133a.db
   r-hgu95av2.db
   r-hu6800.db
+  r-knitr
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
