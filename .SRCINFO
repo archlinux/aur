@@ -1,7 +1,7 @@
 pkgbase = r-rcpi
 	pkgdesc = Molecular Informatics Toolkit for Compound-Protein Interaction in Drug Discovery
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/Rcpi
 	arch = any
 	license = Artistic2.0
@@ -10,13 +10,12 @@ pkgbase = r-rcpi
 	depends = r-doparallel
 	depends = r-foreach
 	depends = r-gosemsim
-	depends = r-rcdk
 	depends = r-rcurl
 	depends = r-rjson
-	optdepends = r-biocgenerics
+	depends = r-rlang
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-runit
+	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rcpi_1.38.0.tar.gz
 	sha256sums = 5a085bf6ee3b958a53a807ae558c8004f29adde466437edd92bc7984b7e0cbf2
 

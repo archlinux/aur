@@ -4,7 +4,7 @@ _pkgname=Rcpi
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=1.38.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Molecular Informatics Toolkit for Compound-Protein Interaction in Drug Discovery'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,15 +15,14 @@ depends=(
   r-doparallel
   r-foreach
   r-gosemsim
-  r-rcdk
   r-rcurl
   r-rjson
+  r-rlang
 )
 optdepends=(
-  r-biocgenerics
   r-knitr
   r-rmarkdown
-  r-runit
+  r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('5a085bf6ee3b958a53a807ae558c8004f29adde466437edd92bc7984b7e0cbf2')
