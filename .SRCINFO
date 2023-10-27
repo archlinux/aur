@@ -1,6 +1,6 @@
 pkgbase = nomacs-git
 	pkgdesc = Free, open source image viewer, which supports multiple platforms.
-	pkgver = 3.2.0.1122.gee96415a
+	pkgver = 3.2.0.r1446.g9eedbb1c
 	pkgrel = 1
 	url = https://nomacs.org
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = nomacs-git
 	sha256sums = SKIP
 
 pkgname = nomacs-git
-

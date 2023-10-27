@@ -2,7 +2,7 @@
 
 _pkgname=nomacs
 pkgname=$_pkgname-git
-pkgver=3.2.0.1122.gee96415a
+pkgver=3.2.0.r1446.g9eedbb1c
 pkgrel=1
 pkgdesc='Free, open source image viewer, which supports multiple platforms.'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ export GIT_LFS_SKIP_SMUDGE=1
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed 's/-/.r/;s/-/./'
 }
 
 build() {
