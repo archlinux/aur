@@ -16,7 +16,7 @@ sha256sums=(66076ec073cfa16f913ccb6e76df06b2080974786040d63a9a8d297459ebcae7)
 
 package() {
   cd "${srcdir}/${_srcname}-${pkgver}"
-  python setup.py install --root="${pkgdir}"
+  python -m build --wheel
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
