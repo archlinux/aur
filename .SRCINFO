@@ -1,6 +1,6 @@
 pkgbase = r-champdata
 	pkgdesc = Data Packages for ChAMP package
-	pkgver = 2.33.0
+	pkgver = 2.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChAMPdata
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-champdata
 	depends = r
 	depends = r-biocgenerics
 	depends = r-genomicranges
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ChAMPdata_2.33.0.tar.gz
-	sha256sums = c040f4060068ac31c509e096befedd702674562045a8ef51fe978f070faadda8
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ChAMPdata_2.34.0.tar.gz
+	sha256sums = df392019cfdd99dd4949e89d855477ec603970519541d67273e814b8c4d3bb9c
 
 pkgname = r-champdata
