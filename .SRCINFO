@@ -1,13 +1,13 @@
 pkgbase = r-ritandata
 	pkgdesc = This package contains the annotation and network data sets
-	pkgver = 1.25.1
-	pkgrel = 3
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/RITANdata
 	arch = any
 	license = custom
 	depends = r
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RITANdata_1.25.1.tar.gz
-	sha256sums = 41806ab7e950f5c4dbb8b3aa7322bcdbeb6fcb6703d05799e77f4fc3db126f6e
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RITANdata_1.26.0.tar.gz
+	sha256sums = 42bfcad2eac4d5fbf54dd8e5dbbb5430613ca2cd962f8f36e87719281e716c4a
 
 pkgname = r-ritandata
