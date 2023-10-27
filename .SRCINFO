@@ -1,12 +1,12 @@
 pkgbase = r-illumina450probevariants.db
 	pkgdesc = Annotation Package combining variant data from 1000 Genomes Project for Illumina HumanMethylation450 Bead Chip probes
-	pkgver = 1.37.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Illumina450ProbeVariants.db
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/Illumina450ProbeVariants.db_1.37.0.tar.gz
-	sha256sums = 40fe2ee60c0b8939c16b4eb927cc2f76e3e67fb1b554df22d6b140cf680d3847
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/Illumina450ProbeVariants.db_1.38.0.tar.gz
+	sha256sums = 4b943ad15236b6d7190d3572aec4b26386756f423c441e8b2f5d88e66b6318c0
 
 pkgname = r-illumina450probevariants.db
