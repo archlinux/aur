@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethReg
-_pkgver=1.10.2
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Assessing the regulatory potential of DNA methylation regions or sites on gene transcription'
 arch=('any')
@@ -39,8 +39,10 @@ optdepends=(
   r-biomart
   r-bsgenome.hsapiens.ucsc.hg19
   r-bsgenome.hsapiens.ucsc.hg38
+  r-data.table
   r-doparallel
   r-dorothea
+  r-downloader
   r-downloader
   r-htmltools
   r-jaspar2022
@@ -48,6 +50,7 @@ optdepends=(
   r-knitr
   r-matrixstats
   r-motifmatchr
+  r-openxlsx
   r-parallel
   r-png
   r-r.utils
@@ -59,7 +62,7 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a577a08d550b52a35c3544191eb614c4de2f700c425222f7da16aaeab969bb20')
+sha256sums=('56d0158f27fca8c25a26aceeffb3de7ffcdb98aade3ffb8748eee44d5b1114c3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
