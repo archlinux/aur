@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proDA
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='Differential Abundance Analysis of Label-Free Mass Spectrometry Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9d38a7a1c1703e0d1e3a3ab1e29c286a36042c482aad786a2ce0c6317439040f')
+sha256sums=('7787a07fa4c1a70c4770ed7764b879e053076812d0469577b41e277c1505fa23')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
