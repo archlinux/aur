@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=motifStack
-_pkgver=1.44.1
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.1
-pkgrel=3
+pkgver=1.46.0
+pkgrel=1
 pkgdesc='Plot stacked logos for single or multiple DNA, RNA and amino acid sequence'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9f96fc64042fc1f162ad3b381b5dca383effa1665619993dc8980d186c6786bc')
+sha256sums=('51f45a9cc140a4b0f04d967b3024a72515f9c605a0ffa4552acd45ed27c71582')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
