@@ -1,6 +1,6 @@
 pkgbase = r-curatedtcgadata
 	pkgdesc = Curated Data From The Cancer Genome Atlas (TCGA) as MultiAssayExperiment Objects
-	pkgver = 1.22.2
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/curatedTCGAData
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-curatedtcgadata
 	optdepends = r-rmarkdown
 	optdepends = r-tcgautils
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/curatedTCGAData_1.22.2.tar.gz
-	sha256sums = 3d3d948e5a14ca10cb212eca5f62ba58eb61c0502f6fa3c50403df0d5807d66c
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/curatedTCGAData_1.24.0.tar.gz
+	sha256sums = 5f1df021b0b7332441bab2e8ca4f0ffb72e5513879aca3af6a59ffac0afbcd4d
 
 pkgname = r-curatedtcgadata
