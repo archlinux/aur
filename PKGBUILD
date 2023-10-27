@@ -14,7 +14,7 @@ makedepends=('maven')
 provides=('swagger-codegen-cli')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swagger-api/swagger-codegen/archive/v$pkgver.tar.gz"
        swagger-codegen)
-sha256sums=('cf6c6aeba45b7095ea4ab6072810b596dc6d3540540a4c904422d37b1c1dbafd'
+sha256sums=('7a80975088a6357716ee78a03ba146d316fa85eeae732d4484ad82230a83b9c6'
             'ac1dc1e6661c19572047e7253ddfb5c0861cdae78e2f14105b742fceda2733e3')
 
 build() {
