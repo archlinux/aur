@@ -5,35 +5,35 @@ _pkgname=RMassBank
 _pkgver=3.12.0
 pkgname=r-${_pkgname,,}
 pkgver=3.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Workflow to process tandem MS files and build MassBank records'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
+  openbabel
   r
   r-assertthat
   r-biobase
+  r-chemmineob
+  r-chemminer
+  r-data.table
   r-digest
   r-envipat
+  r-glue
   r-httr
   r-logger
   r-msnbase
   r-mzr
+  r-r.utils
   r-rcdk
   r-rcpp
-  r-rcurl
+  r-readjdx
   r-rjson
   r-s4vectors
+  r-webchem
   r-xml
   r-yaml
-  openbabel
-  r-readjdx
-  r-webchem
-  r-chemminer
-  r-chemmineob
-  r-r.utils
-  r-data.table
 )
 optdepends=(
   r-biocstyle
