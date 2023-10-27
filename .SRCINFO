@@ -1,6 +1,6 @@
 pkgbase = r-elmer
 	pkgdesc = Inferring Regulatory Element Landscapes and Transcription Factor Networks Using Cancer Methylomes
-	pkgver = 2.24.1
+	pkgver = 2.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ELMER
 	arch = any
@@ -55,7 +55,7 @@ pkgbase = r-elmer
 	optdepends = r-sesamedata
 	optdepends = r-testthat
 	optdepends = r-webshot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ELMER_2.24.1.tar.gz
-	sha256sums = c9dede2c0e67279242a16bc1cdce7dc822eb0fc5f6b8b6168d3997a6157d60b6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ELMER_2.26.0.tar.gz
+	sha256sums = 9033fe29dbc988e21b80c66a9febc2258e4b14d120b9a742496f09290984a277
 
 pkgname = r-elmer
