@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeSummarizedExperiment
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='TreeSummarizedExperiment: a S4 Class for Data with Tree Structures'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2a074a72798dc9fe0d630412f684fa9b354c29ec9e08a635bfadd0a304fa36bf')
+sha256sums=('cf7cd38f3199dc9324b6dbedd40ce2fae4c910abd0b11c41d7eaaa1d698f78fb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
