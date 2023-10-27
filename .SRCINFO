@@ -1,6 +1,6 @@
 pkgbase = r-crisprseek
 	pkgdesc = Design of target-specific guide RNAs in CRISPR-Cas9, genome-editing systems
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CRISPRseek
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-crisprseek
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CRISPRseek_1.40.0.tar.gz
-	sha256sums = 11b730a4a56363c22688a74072cf8ffeac08c64dd670e744f388dcf80633e93e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CRISPRseek_1.42.0.tar.gz
+	sha256sums = 7b8d8646f35dc00d7c8f18d84b8f030c4a9a116fd352590a6af7294135968c36
 
 pkgname = r-crisprseek
