@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DiscoRhythm
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Interactive Workflow for Discovering Rhythmicity in Biological Data'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7f942f6dbf134f8b7de404d76351524ec591294984e02dd78801058f3b36773b')
+sha256sums=('cfeb8e7ac7b143894c4151f68b4fbe7576ffeb10ab1ec72318150704365c626f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
