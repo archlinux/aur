@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oligo
-_pkgver=1.64.1
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.1
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Preprocessing tools for oligonucleotide arrays'
 arch=('x86_64')
@@ -47,7 +47,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('32aca1320676547d35124780278029bd045ef9069c7cafd4d8b4a30a0134423f')
+sha256sums=('e6d2b6395e2d73094095fcac6b6271fd48a3c291dc4e5e86e8d45b4f352e165f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
