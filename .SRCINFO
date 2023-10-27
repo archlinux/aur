@@ -1,7 +1,7 @@
 pkgbase = newcp-bin
 pkgdesc = New Club Penguin Electron app
-pkgver = 1.6.0
-pkgrel = 2
+pkgver = 1.6.1
+pkgrel = 0
 url = https://github.com/New-Club-Penguin/NewCP-App-Build/
 arch = x86_64
 license = MIT

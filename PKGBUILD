@@ -1,8 +1,8 @@
 # Maintainer: Alper Şal <alper@sal.web.tr>
 
 pkgname=newcp-bin
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=0
 pkgdesc='New Club Penguin Electron app'
 arch=('x86_64')
 url='https://github.com/New-Club-Penguin/NewCP-App-Build/'
