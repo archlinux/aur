@@ -1,0 +1,15 @@
+pkgbase = tracexec-bin
+	pkgdesc = A simple text-to-speech client for Azure TTS API
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/kxxt/aspeak
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = tracexec
+	conflicts = tracexec
+	source = tracexec-bin-0.0.1.tar.gz::https://github.com/kxxt/tracexec/releases/download/v0.0.1/tracexec-x86_64-unknown-linux-gnu.tar.gz
+	b2sums = e5784779689478d18b4c7a1a63927303a60911a12a02d16d08a6123cca2ee9d97457ff552313f573b942bcdf26dd9007b74b378ae7859787efec09d104408850
+
+pkgname = tracexec-bin
