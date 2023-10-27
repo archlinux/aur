@@ -1,7 +1,7 @@
 pkgbase = r-jfa
 	pkgdesc = Bayesian and Classical Audit Sampling
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=jfa
 	arch = x86_64
 	license = GPL
@@ -20,6 +20,7 @@ pkgbase = r-jfa
 	optdepends = r-benford.analysis
 	optdepends = r-benfordtests
 	optdepends = r-beyondbenford
+	optdepends = r-fairness
 	optdepends = r-kableextra
 	optdepends = r-knitr
 	optdepends = r-mus
