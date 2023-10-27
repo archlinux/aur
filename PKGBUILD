@@ -17,6 +17,5 @@ source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname/
 sha256sums=('f2c1d535ed3af0917cf4e437366659f658efda91c469a9d619075a14327705b7')
 
 package() {
-	cd "$_pkgname" || return 1
 	python -minstaller -d"$pkgdir" ./*.whl
 }
