@@ -5,7 +5,7 @@ _pkgname=languageserver
 _pkgver=0.3.16
 pkgname=r-${_pkgname,,}
 pkgver=0.3.16
-pkgrel=1
+pkgrel=3
 pkgdesc='Language Server Protocol'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,6 +28,7 @@ optdepends=(
   r-covr
   r-magrittr
   r-mockery
+  r-pacman
   r-processx
   r-purrr
   r-rmarkdown
