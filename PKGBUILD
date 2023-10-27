@@ -5,7 +5,7 @@ _pkgname=edgeR
 _pkgver=4.0.0
 pkgname=r-${_pkgname,,}
 pkgver=4.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Empirical Analysis of Digital Gene Expression Data in R'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,7 +20,9 @@ depends=(
 optdepends=(
   r-annotationdbi
   r-biobase
+  r-biocstyle
   r-jsonlite
+  r-knitr
   r-matrix
   r-org.hs.eg.db
   r-readr
