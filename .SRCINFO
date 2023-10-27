@@ -1,6 +1,6 @@
 pkgbase = r-variantfiltering
 	pkgdesc = Filtering of coding and non-coding genetic variants
-	pkgver = 1.36.1
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VariantFiltering
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = r-variantfiltering
 	optdepends = r-sift.hsapiens.dbsnp137
 	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantFiltering_1.36.1.tar.gz
-	sha256sums = d1a106b39c45ecb1f69a2de423acf2f9944f9893045db2da54df250db6861a6c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantFiltering_1.38.0.tar.gz
+	sha256sums = 597f0bef39c64106029475bfdfe9748fa794d6b1c1fb49c8c6a8e2df10ea9f05
 
 pkgname = r-variantfiltering
