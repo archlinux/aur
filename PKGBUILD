@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ivygapSE
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='A SummarizedExperiment for Ivy-GAP data'
 arch=('any')
@@ -22,18 +22,21 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-codetools
   r-digest
   r-dt
   r-grid
   r-knitr
   r-limma
+  r-magick
   r-png
   r-randomforest
   r-rmarkdown
+  r-statmod
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f3485b4958d4aedffe8cefd37e389a3599bca89c1141633e04b64c50a8800abd')
+sha256sums=('2dd30a51c4a0189a4e44d07cdb096fae9471fcf6cc563205434e21d9b6d23e7f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
