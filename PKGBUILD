@@ -15,7 +15,7 @@ source=(
 arch=('x86_64')
 depends=()
 
-sha256sums=(''
+sha256sums=('b6298f7c54f6e802a93a3889111b08a16dc1472ced213760de9b89846b5255c9'
             )
 
 
