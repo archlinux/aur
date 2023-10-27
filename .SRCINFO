@@ -1,6 +1,6 @@
 pkgbase = r-erma
 	pkgdesc = epigenomic road map adventures
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/erma
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-erma
 	optdepends = r-knitr
 	optdepends = r-png
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/erma_1.16.0.tar.gz
-	sha256sums = d28f036f010693d14a6cde3ad3426aba2a9c90b05819c498b888889e1e922f93
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/erma_1.18.0.tar.gz
+	sha256sums = 1f9ea877f8d8670cb116b5a4c67182885c7a9a04206b970868fd530ebf93576d
 
 pkgname = r-erma
