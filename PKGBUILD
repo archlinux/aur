@@ -2,7 +2,7 @@
 
 _name=inceptum
 pkgname=$_name-git
-pkgver=0.3.1.r71.gc7eabc3
+pkgver=0.3.1.r96.g4aa1f24
 pkgrel=1
 pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
@@ -15,6 +15,7 @@ source=(git+"${url}".git
         "$_name.sh"
         "$_name.service"
         "$_name.conf")
+backup=(etc/conf.d/$_name)
 sha256sums=('SKIP'
             '70a6ac8d2cb1c29699aa740b49fac05b2efca85f8de3c8f0b290ee5e077ec726'
             '6867e8476c9eb04cb303f40a4949db227c0c92e94b864d667a2d5a1f1c3d77da'
