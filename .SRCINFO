@@ -1,12 +1,12 @@
 pkgbase = swift-mesonlsp
 	pkgdesc = A language server for meson
-	pkgver = 3.0.17
+	pkgver = 3.0.18
 	pkgrel = 1
 	url = https://github.com/JCWasmx86/Swift-MesonLSP
 	arch = any
 	license = GPL3
 	makedepends = swift-language
-	source = swift-mesonlsp-3.0.17.tar.gz::https://github.com/JCWasmx86/Swift-MesonLSP/archive/refs/tags/v3.0.17.tar.gz
-	sha256sums = 2a16547386e81da0bfeccd0e1cd082c9dd62c292edc51e9465197c994c1d5a92
+	source = swift-mesonlsp-3.0.18.tar.gz::https://github.com/JCWasmx86/Swift-MesonLSP/archive/refs/tags/v3.0.18.tar.gz
+	sha256sums = c04106e1d32058b773c47885cf3a112dac51fc6545a6ab8a23d8bd8d8e1db724
 
 pkgname = swift-mesonlsp
