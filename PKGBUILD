@@ -8,13 +8,13 @@ pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt5 toolkit a
 arch=(x86_64)
 url='https://www.qbittorrent.org'
 license=(custom GPL)
-depends=(hicolor-icon-theme libtorrent-rasterbar qt5-base qt5-svg)
-makedepends=(boost cmake qt5-tools)
+depends=(gcc-libs glibc libtorrent-rasterbar openssl qt5-base zlib)
+makedepends=(boost cmake qt5-svg qt5-tools)
 optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent')
 provides=('qbittorrent')
 source=(https://downloads.sourceforge.net/sourceforge/qbittorrent/${_pkgname}-${pkgver}.tar.xz{,.asc})
-sha256sums=('8e84a5ba63c7203cfb2e5bb23e27d000120fb8e9dfb6e9f9a1064dce1b9294e9'
+sha256sums=('27a5954dccd3948dc69dd59d24ee8f4f7427bdc09359fb30cf05c786b370d3be'
             'SKIP')
 validpgpkeys=('D8F3DA77AAC6741053599C136E4A2D025B7CC9A2')
 
