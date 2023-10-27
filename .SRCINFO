@@ -1,8 +1,8 @@
 pkgbase = r-biocdockermanager
 	pkgdesc = Access Bioconductor docker images
 	pkgver = 1.11.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/BiocDockerManager
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.17/BiocDockerManager
 	arch = any
 	license = Artistic2.0
 	depends = r
@@ -16,7 +16,7 @@ pkgbase = r-biocdockermanager
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocDockerManager_1.11.0.tar.gz
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/BiocDockerManager_1.11.0.tar.gz
 	sha256sums = d3cbab0f6ccad2ac50163d56d938d4ddb2f24864c27d09a6bda38848821b6970
 
 pkgname = r-biocdockermanager

@@ -5,10 +5,10 @@ _pkgname=BiocDockerManager
 _pkgver=1.11.0
 pkgname=r-${_pkgname,,}
 pkgver=1.11.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Access Bioconductor docker images'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d3cbab0f6ccad2ac50163d56d938d4ddb2f24864c27d09a6bda38848821b6970')
 
 build() {
