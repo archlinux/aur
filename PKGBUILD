@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iCNV
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Integrated Copy Number Variation detection'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-wes.1kg.wugsc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dcb7e7e5f42de69cf8e65358028ff8f991fb9c6a2c23ad1b270ead463c7f7e1c')
+sha256sums=('098e5db84bc200cd6518f02f7bdd7521a6d8fad8fe58c9f7130f730f6cbda085')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
