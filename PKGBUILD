@@ -3,18 +3,22 @@
 _upname=FoundryTools-CLI
 pkgname=ftcli
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Foundry Tools command line font editor'
 arch=(any)
 url="https://github.com/ftCLI/$_upname"
 license=(MIT)
-_py_deps=(colorama
+_py_deps=(cffsubr
           click
           brotli
           fonttools
+          loguru
+          pathvalidate
+          rich
           skia-pathops
           zopfli)
-depends=(dehinter
+depends=(afdko
+         dehinter
          font-line
          python
          "${_py_deps[@]/#/python-}")
