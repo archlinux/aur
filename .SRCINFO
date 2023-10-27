@@ -1,6 +1,6 @@
 pkgbase = python-fmpy
 	pkgdesc = Simulate Functional Mockup Units (FMUs) in Python
-	pkgver = 0.3.18
+	pkgver = 0.3.19
 	pkgrel = 1
 	url = https://github.com/CATIA-Systems/FMPy
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = python-fmpy
 	optdepends = python-plotly: for plot results
 	optdepends = python-dash-bootstrap-components: for webapp support
 	optdepends = python-pyqtgraph: for graphical user interface
-	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=ddd51e05b5b66d74c9b2d7b3a293e438195a9d19
+	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=8945636e85f09e6267b2b4ee101b99c81982530a
 	source = git+https://github.com/ludocode/mpack.git
 	source = git+https://github.com/modelica/Reference-FMUs.git
 	sha512sums = SKIP
