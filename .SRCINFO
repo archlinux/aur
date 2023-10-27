@@ -5,7 +5,6 @@ pkgbase = haveno
 	url = https://github.com/haveno-dex/haveno
 	arch = any
 	license = AGPL3
-	makedepends = gradle
 	makedepends = java-environment>=11
 	depends = bash
 	depends = java-runtime>=11

@@ -13,7 +13,7 @@ arch=("any")
 url="https://github.com/haveno-dex/${pkgname}"
 license=("AGPL3")
 depends=("bash" "java-runtime>=11")
-makedepends=("gradle" "java-environment>=11")
+makedepends=("java-environment>=11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
 sha512sums=("e2b656a092d9beeb09ddb20d37e6152205734e4e51719626df9cccc253ec344f5ca18eec1edb9de572de1839d2bb5401e82c0967bfed3ab128cc721e2b5fe6c0"
@@ -22,7 +22,7 @@ sha512sums=("e2b656a092d9beeb09ddb20d37e6152205734e4e51719626df9cccc253ec344f5ca
 build()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    gradle -F lenient -x test build
+    ./gradlew -F lenient -x test build
 }
 
 package()
