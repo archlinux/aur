@@ -10,7 +10,7 @@ Hidden=false
 #OnlyShowIn
 #NotShowIn
 DBusActivatable=false
-TryExec=env JAVA_HOME=/usr/lib/jvm/java-11-openjdk/ haveno-desktop
+TryExec=haveno-desktop
 Exec=env JAVA_HOME=/usr/lib/jvm/java-11-openjdk/ haveno-desktop
 #Path
 Actions=

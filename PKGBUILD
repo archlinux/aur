@@ -17,7 +17,7 @@ makedepends=("java-environment>=11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
 sha512sums=("e2b656a092d9beeb09ddb20d37e6152205734e4e51719626df9cccc253ec344f5ca18eec1edb9de572de1839d2bb5401e82c0967bfed3ab128cc721e2b5fe6c0"
-    "115e74f254a069c97d2576076bc780941ca1371842b2ee8bd8390292df590396745432ce9b455b174f8bc7268943d29a8ea747c20945ef744e28fa85fc61d66d")
+    "ad15f8a5fa39c1db3b83fd3771ff0721dd4993d2278bd20713bef62100cf8eda0a86cc5ea781623ea0cf102bf0c7f15ebd0158509d37c54164e9e3e0430d4142")
 
 build()
 {
