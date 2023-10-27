@@ -4,7 +4,7 @@ _pkgname=butcher
 _pkgver=0.3.3
 pkgname=r-${_pkgname,,}
 pkgver=0.3.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Model Butcher'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -42,6 +42,7 @@ optdepends=(
   r-mda
   r-mgcv
   r-modeldata
+  r-nestedmodels
   r-nnet
   r-parsnip
   r-pkgload
@@ -59,6 +60,7 @@ optdepends=(
   r-survival
   r-testthat
   r-th.data
+  r-tidyr
   r-usethis
   r-xgboost
   r-xrf

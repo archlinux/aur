@@ -1,7 +1,7 @@
 pkgbase = r-butcher
 	pkgdesc = Model Butcher
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=butcher
 	arch = any
 	license = MIT
@@ -35,6 +35,7 @@ pkgbase = r-butcher
 	optdepends = r-mda
 	optdepends = r-mgcv
 	optdepends = r-modeldata
+	optdepends = r-nestedmodels
 	optdepends = r-nnet
 	optdepends = r-parsnip
 	optdepends = r-pkgload
@@ -52,6 +53,7 @@ pkgbase = r-butcher
 	optdepends = r-survival
 	optdepends = r-testthat
 	optdepends = r-th.data
+	optdepends = r-tidyr
 	optdepends = r-usethis
 	optdepends = r-xgboost
 	optdepends = r-xrf
