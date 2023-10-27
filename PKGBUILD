@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IgGeneUsage
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Differential gene usage in immune repertoires'
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   r-rstantools
   r-stanheaders
   r-summarizedexperiment
+  r-tidyr
 )
 optdepends=(
   r-biocstyle
@@ -32,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9c821b71644743063121ced78e6810e3b1a9f404a7ae86cac4d668895d9a717c')
+sha256sums=('4c665f2875ee6f74b2e660cd9929b65a537557aff0e806d00f33a21df81e1e23')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
