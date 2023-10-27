@@ -4,7 +4,7 @@ _pkgname=AnnotationHub
 _pkgver=3.10.0
 pkgname=r-${_pkgname,,}
 pkgver=3.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Client to access AnnotationHub resources'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,6 +30,8 @@ optdepends=(
   r-annotationhubdata
   r-biocstyle
   r-biostrings
+  r-compounddb
+  r-ensembldb
   r-experimenthub
   r-gdsfmt
   r-genomeinfodb
@@ -37,6 +39,7 @@ optdepends=(
   r-genomicranges
   r-hubpub
   r-iranges
+  r-keras
   r-knitr
   r-msnbase
   r-mzr
