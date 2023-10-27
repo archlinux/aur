@@ -1,6 +1,6 @@
 pkgbase = r-rgadem
 	pkgdesc = de novo motif discovery
-	pkgver = 2.48.0
+	pkgver = 2.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rGADEM
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-rgadem
 	depends = r-seqlogo
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
 	optdepends = r-rtracklayer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rGADEM_2.48.0.tar.gz
-	sha256sums = 2dcc8bcff3ce1fc7a4ef681a76ed833a8e6d194e9acb0cbe010f7e4131179122
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rGADEM_2.50.0.tar.gz
+	sha256sums = f67e77b038aa1d56c261744d3467569ac6f5b9e6564a56253cc66e5316d64c92
 
 pkgname = r-rgadem
