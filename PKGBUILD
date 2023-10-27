@@ -4,7 +4,7 @@ _pkgname=BioCor
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Functional similarities'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,6 +19,7 @@ optdepends=(
   r-biocstyle
   r-boot
   r-deseq2
+  r-ggplot2
   r-gosemsim
   r-hmisc
   r-knitr

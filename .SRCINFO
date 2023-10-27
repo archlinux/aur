@@ -1,7 +1,7 @@
 pkgbase = r-biocor
 	pkgdesc = Functional similarities
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/BioCor
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = r-biocor
 	optdepends = r-biocstyle
 	optdepends = r-boot
 	optdepends = r-deseq2
+	optdepends = r-ggplot2
 	optdepends = r-gosemsim
 	optdepends = r-hmisc
 	optdepends = r-knitr
