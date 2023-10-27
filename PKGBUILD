@@ -3,7 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="$_pkgname-bin"
-_electron='electron25'
+_electron='electron27'
+_electronpackage='electron27-bin'
 pkgverorg='6.6.0'
 pkgver='6.6.0'
 pkgrel='1'
@@ -11,7 +12,7 @@ pkgdesc='A messaging browser that allows you to combine your favorite messaging 
 arch=('x86_64' 'armv7l' 'aarch64')
 url="https://$_pkgname.org"
 license=('Apache')
-depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electron")
+depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electronpackage")
 makedepends=('asar')
 options=(!strip)
 provides=(
