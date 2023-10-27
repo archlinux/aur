@@ -2,7 +2,7 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx
-pkgver=2.17
+pkgver=2.17.3
 pkgrel=1
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=(x86_64)
@@ -18,8 +18,8 @@ makedepends=(
   libvolk
 )
 source=(https://github.com/gqrx-sdr/$pkgname/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha256sums=('ff2ef407605a5c0236d5654ef8696f8cd578c1096e39cc01df8300c583b01b11')
-b2sums=('98f2810fea3001a11650e7d655f0f0630d0fc4d538f0b2e44e8862a35f86066048e293aed7bbb98c92d4efe8e46e1484f32f498f7d5c09ed299c48bc61e43d84')
+sha256sums=('7bb7e6a490d7d4669a4d1596ad52f5af08e7167d78117b3d1fd711a368536855')
+b2sums=('9fe6ef0fee9dfffc877d88ca17f02d8a193827d62c6d091f18d50e224aa50d2cc7742348619d0b6b8734d18dce5f7a0651d8868bac00d7d62e07a594d592c57f')
 
 build() {
   local cmake_options=(
