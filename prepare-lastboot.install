@@ -1,0 +1,13 @@
+post_install() {
+   echo "For the lastboot EFI entry to boot the correct filesystem,"
+   echo "the kernel command line of the UKI must be amended. If your"
+   echo "root filesystem is zroot/root/default, you can run"
+   echo ""
+   echo "# /usr/lib/systemd/ukify build --cmdline \"root=zfs:zroot/root/lastboot-default\" \\"
+   echo "#   --output=/efi/EFI/Linux/lastboot-default.efi.extra.d/cmdline.addon.efi"
+   echo ""
+   echo "and sign the restulting file, if necessary. The service is"
+   echo "enabled by running"
+   echo ""
+   echo "# systemctl enable prepare-lastboot@default.timer"
+}
