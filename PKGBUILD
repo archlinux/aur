@@ -3,13 +3,13 @@
 
 pkgname=typora-plugin
 _pkgname=typora
-_typora_ver=1.7.5
-_plugin_ver=1.5.2
+_typora_ver=1.7.6
+_plugin_ver=1.6.2
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
 arch=('x86_64')
-license=('custom:"Copyright © 2015 Abner Lee All Rights Reserved."')
+license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
 url="https://typora.io/"
 depends=('gtk3' 'nss' 'alsa-lib')
 provides=("$_pkgname")
@@ -22,8 +22,8 @@ source=(
     "https://typora.io/linux/$_filename"
     "https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
 sha512sums=(
-    '35627c94a4f3d11952b3c35d8818832db7ebaf6d3fe534fbdf3f07b67f90ed11b8a128a80a1e898c128a4a568196ee6501eb2e3075a2668a35438903d35b17cb'
-    '4df17a7133703e7d46dde675fcdd710bc86d00be89499e3027a1cc3dc3a354b395ca87810accb64f47cba420dc0cd0e422ba198edc3ec870b79f720c640d20f8')
+    '9c23de69be1dfd35ab9553f7d2c6e18b2a7b18ef44930fe986ca87063a96d9b5bfe2e58447f2b5625ab66e19a78053631ef0bf673e5c7935e808b2d27b093f5a'
+    '3909ffc74d04bd6f47b0c4b9371893704c90ae9afb69bb6c1a4a16d91645504318a9858742ba57775126f525aa0b38b8fd682c7bc64d3447dfbe5e6dff7109f3')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
@@ -39,6 +39,9 @@ package() {
   _patch_plugin
 	# remove lintian overrides
 	rm -rf "$pkgdir/usr/share/lintian/"
+	# replace bin link with custom launch script
+	rm -rf "$pkgdir/usr/bin/$_pkgname"
+	install -m755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 	# move license to correct path
 	install -Dm644 "$pkgdir/usr/share/doc/$_pkgname/copyright" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	# delete previous copyright path
