@@ -5,7 +5,7 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
-pkgver=23.5.2
+pkgver=23.9.0
 pkgrel=1
 pkgdesc="Mini version of Anaconda Python distribution"
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=('custom')
 provides=('conda')
 source=(${pkgname}-${pkgver}.sh::https://repo.continuum.io/miniconda/Miniconda3-py311_${pkgver}-0-Linux-x86_64.sh)
 options=(!strip libtool staticlibs)
-sha512sums=('d8663c2b7e28f7f6d76e6a9892549b8f08d2a9e7e5f8eb89b78c16ca1b821bceed3772ebb013833948fabd8d24d045c3f05caee68cbc36f2c097dff1a8b25d65')
+sha512sums=('3fdbd7430679454674dec5c4f975b756ad796bf33e594755d0d6106acc53615ba0b2735b13565937c164bd9d75c12500f65ffeb9b1a9ea5304fad0dffb72c0d6')
 install="${pkgname}.install"
 
 package() {
