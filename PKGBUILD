@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=splatter
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Simple Simulation of Single-cell RNA Sequencing Data'
 arch=('any')
@@ -60,7 +60,7 @@ optdepends=(
   r-zinbwave
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('493e94ba39e6e33f5e60b16e59c5f69a2bf729d6bc6fd4e24a2bd23e2ca9bbba')
+sha256sums=('37de2995ae3b2738f3cb90c598e3a74c5e06dfc459b41f740b406bc8583e8cc0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-splatter
 	pkgdesc = Simple Simulation of Single-cell RNA Sequencing Data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/splatter
 	arch = any
@@ -51,7 +51,7 @@ pkgbase = r-splatter
 	optdepends = r-testthat
 	optdepends = r-variantannotation
 	optdepends = r-zinbwave
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/splatter_1.24.0.tar.gz
-	sha256sums = 493e94ba39e6e33f5e60b16e59c5f69a2bf729d6bc6fd4e24a2bd23e2ca9bbba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/splatter_1.26.0.tar.gz
+	sha256sums = 37de2995ae3b2738f3cb90c598e3a74c5e06dfc459b41f740b406bc8583e8cc0
 
 pkgname = r-splatter
