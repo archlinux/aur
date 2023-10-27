@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NBAMSeq
-_pkgver=1.16.0
+_pkgver=1.17.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Negative Binomial Additive Model for RNA-Seq Data'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d4d8c4f39c030373952933ad51721afc757d167ff506bb3a4d7e3d56a99b5d0')
+sha256sums=('dea7b26f77b6f95737a07c0f2298abf6fca0615c9efa6071521d074bd3477768')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
