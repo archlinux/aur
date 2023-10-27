@@ -1,6 +1,6 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 pkgname=hyprshade
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(git python-{build,hatchling,installer})
 provides=($pkgname)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
 		"https://raw.githubusercontent.com/loqusion/$pkgname/$pkgver/examples/config.toml")
-sha256sums=('dddc690ba3002d141a6e01746522ee21f6a01fa6bb881b8d73ec3026c2033459'
+sha256sums=('37e1f776222f980740775a2c959629253013a0fa5d54512fab06d8754e946583'
             '411517f06dc484fb8aad729d73d66cb5b91982ac0c5908184ec9343974392f0a')
 
 _get_wheel() {
