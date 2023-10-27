@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPanalyser
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='ChIPanalyser: Predicting Transcription Factor Binding Sites'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bb0bf1a546c84a98dd354d3a9db6bc9a82e72daffeb5df27e29dbd5af72a0de5')
+sha256sums=('1b11a1a7aef3df7693f4a00d44995e08fed16987d581301392d9df50985b56c9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

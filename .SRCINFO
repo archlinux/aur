@@ -1,6 +1,6 @@
 pkgbase = r-chipanalyser
 	pkgdesc = ChIPanalyser: Predicting Transcription Factor Binding Sites
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPanalyser
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-chipanalyser
 	optdepends = r-bsgenome.dmelanogaster.ucsc.dm6
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPanalyser_1.22.0.tar.gz
-	sha256sums = bb0bf1a546c84a98dd354d3a9db6bc9a82e72daffeb5df27e29dbd5af72a0de5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPanalyser_1.24.0.tar.gz
+	sha256sums = 1b11a1a7aef3df7693f4a00d44995e08fed16987d581301392d9df50985b56c9
 
 pkgname = r-chipanalyser
