@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seq2pathway.data
-_pkgver=1.33.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='data set for R package seq2pathway'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56e54dd2b4520361e8f8953079b882b9d62d28bfd734831ea5614fa551ce9f00')
+sha256sums=('0a38cb8d260a674171454b2863b6564b2b4c602ab5f3bb44547067f54a245f45')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
