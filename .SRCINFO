@@ -1,6 +1,6 @@
 pkgbase = r-ifaa
 	pkgdesc = Robust Inference for Absolute Abundance in Microbiome Analysis
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IFAA
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = r-ifaa
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IFAA_1.2.0.tar.gz
-	md5sums = 2fed85b602afd876a82a6f150f7edcc6
-	sha256sums = b35d7c37bb908bb3efaab5796eb45226c7bfca005260091fe324fb36153a7daf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IFAA_1.4.0.tar.gz
+	md5sums = 393ac86513ddc9adf474c654b5127394
+	sha256sums = 5d387bb1af086bd724a6765140e618d70d1d9ed82ad73a1a4d93dd4f42430724
 
 pkgname = r-ifaa
