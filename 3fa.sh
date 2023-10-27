@@ -1,6 +1,8 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron24
-_ASAR="/opt/3fa/3fa.asar"
+_ELECTRON=/usr/bin/electron26
+APPDIR="/usr/lib/3fa"
+export PATH="${APPDIR}:${PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
