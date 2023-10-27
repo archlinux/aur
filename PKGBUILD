@@ -2,11 +2,12 @@
 
 pkgname=linux-kamakiri-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.5.7.arch1
+pkgver=6.5.9.arch2
 _tag=${pkgver%.*}
 pkgrel=1
 pkgdesc='Linux Kamakiri precompiled'
 url='https://gitlab.com/dakataca/prebuilt-kernels'
+_url="$url/-/raw/main/Archlinux/$_pkgname"
 arch=(x86_64)
 license=(GPL2)
 depends=('coreutils' 'kmod' 'initramfs')
@@ -20,25 +21,16 @@ conflicts=(
     "$_pkgname-headers"
 )
 source=(
-    $url/-/raw/main/Archlinux/$_pkgname/$_pkgname-$pkgver-1-$arch.pkg.tar.zst{,.sig}
-    $url/-/raw/main/Archlinux/$_pkgname/$_pkgname-docs-$pkgver-1-$arch.pkg.tar.zst{,.sig}
-    $url/-/raw/main/Archlinux/$_pkgname/$_pkgname-headers-$pkgver-1-$arch.pkg.tar.zst{,.sig}
+    $_url/$_pkgname-$pkgver-1-$arch.pkg.tar.zst
+    $_url/$_pkgname-docs-$pkgver-1-$arch.pkg.tar.zst
+    $_url/$_pkgname-headers-$pkgver-1-$arch.pkg.tar.zst
 )
-sha256sums=('ff14e9f1d0410ebb563e6613172c003674d34794909453f81135868131e0f231'
-            'SKIP'
-            '7920f6a29ca48faae1ec2c93789a1a499e783a25d69924d627b825bcdf537901'
-            'SKIP'
-            '66ced49590bdfcece558a71ad585016c8e7644bd8a82b1a2769c4f4be2d9fc19'
-            'SKIP')
-b2sums=('e1af1ef124053e182d2a24e5c6fae306d03bf6de6709891aeb2e04c0fa2a8f08aafc9bba2375f971c68e92f93714b2bdf48d0e2763454fa68af6ed65b736736a'
-            'SKIP'
-            'ace50700fea495bec7d35785ea0181f80791ca6bddf20ebd6610990ea5ab69de4c34bab2b7f09cfa896d38cab8808005f7b258f2a7259964af6d35b3ead5d94a'
-            'SKIP'
-            'c8996a1889c74684f4b6b4c02a764890633f3a6d3dd6dcd3796491cb50241c84c157ea195a99a778049e7422a44180eb766ea9f9d02302b46746f536b71bc473'
-            'SKIP')
-validpgpkeys=(
-    4BA1F928CBA7CA219A14741B24FB14CFDD5D0319  # dakataca
-)
+sha256sums=('ba34bc8a4785a5153fea82227a0c02af54438152bbc788032796efcbccbd838a'
+            'f083b38155ded73e70297064e1ff8a1afd249e813a802bb1fd566a4c1f88fcba'
+            '91a8194fffa7568d035f0debb726b5663fd0921f98461e269bbb4700c94495a8')
+b2sums=('c113ae3fd4aa9dc4e47650c88c9a8005df54af4ae5307043253776f3685eef6b01f983466ba27da87bef671068a89fbff6957a8a96f44c37cd5e7af471046b83'
+        '9cac4606ac82b334a433d323bd6fa2010cdd8c78a66fd3354e28dd764ea5c82fa4ae168a659351168ceacc7922d44d54619e591eed60d91b7062037b48a03f1c'
+        '1cd5c665bdcfa1095bbe709d72e27f646846af037b9442f8d4c0f654273455cf8ad4bd148f66f00716031f381e0e4884afd6d0cf74f6a41db4767241167f1d42')
 
 # Alistar ficheros en el directorio de instalación.
 package() {
