@@ -1,7 +1,7 @@
 pkgbase = r-sqldataframe
 	pkgdesc = Representation of SQL database in DataFrame metaphor
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/SQLDataFrame
 	arch = any
 	license = GPL
@@ -16,6 +16,7 @@ pkgbase = r-sqldataframe
 	depends = r-tibble
 	optdepends = r-bigrquery
 	optdepends = r-delayedarray
+	optdepends = r-genomicranges
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-rmysql
