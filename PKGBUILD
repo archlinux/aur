@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TCGAutils
-_pkgver=1.20.4
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.4
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='TCGA utility functions for data management'
 arch=('any')
@@ -12,6 +12,7 @@ license=('Artistic2.0')
 depends=(
   r
   r-annotationdbi
+  r-biocbaseutils
   r-biocgenerics
   r-genomeinfodb
   r-genomicdatacommons
@@ -28,7 +29,6 @@ depends=(
 )
 optdepends=(
   r-annotationhub
-  r-biocfilecache
   r-biocstyle
   r-complexheatmap
   r-curatedtcgadata
@@ -52,7 +52,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38a4ae2fd6a450c2d5644f8114a202f4aa6738f3e6440dcfe3a84001b78cb30a')
+sha256sums=('edf8b8850d306a697990bec95ddf9bb9c9615b38a2d2c1cbe703e1b3718ce964')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
