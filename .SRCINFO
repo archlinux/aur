@@ -1,0 +1,15 @@
+pkgbase = fcitx5-skin-marisa-git
+	pkgdesc = Fcitx Marisa Skin
+	pkgver = r4.15d5403
+	pkgrel = 3
+	url = https://github.com/xiaohuirong/fcitx5-skin-marisa.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = fcitx5
+	provides = fcitx5-skin-marisa
+	conflicts = fcitx5-skin-marisa
+	source = fcitx5-skin-marisa::git+https://github.com/xiaohuirong/fcitx5-skin-marisa.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-skin-marisa-git
