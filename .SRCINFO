@@ -1,6 +1,6 @@
 pkgbase = r-metnet
 	pkgdesc = Inferring metabolic networks from untargeted high-resolution mass spectrometry data
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MetNet
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-metnet
 	optdepends = r-rmarkdown
 	optdepends = r-spectra
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetNet_1.18.0.tar.gz
-	sha256sums = c11a75255892e58ce4a8edd4eed756138192bcef932e68db6d6ffb0078a4718c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetNet_1.20.0.tar.gz
+	sha256sums = 84e09d3a9c1c8b6c96e4f175ea099eb9c6d525bbee67481d2d97b55f7a33089c
 
 pkgname = r-metnet
