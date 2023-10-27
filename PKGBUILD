@@ -1,36 +1,37 @@
-# Maintainer: Major <majorx234@googlemail.com>
+# https://aur.archlinux.org/packages/python-inputs
+groups=('modified')
+
 pkgname=python-inputs
-_pyname=${pkgname#python-}
+_name=${pkgname#python-}
 pkgver=0.5
 pkgrel=3
 pkgdesc="Cross-platform Python support for keyboards, mice and gamepads"
-arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/zeth/$_pyname"
-license=(BSD)
-makedepends=(python-build
-             python-installer
-             python-wheel
-             python-setuptools-scm)
-
-source=("https://github.com/zeth/inputs/archive/refs/tags/v${pkgver}.zip"
-        3203c9e25f1e14c4316d85d59c536b4e407f569f.patch)
-sha256sums=('04eebe43372a3fceb14bc93ef2ef120fbe6409d7a61c66f8c3e47f60aa7b1e23'
+arch=('any')
+url="https://github.com/zeth/inputs"
+license=('BSD')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("${_name}-$pkgver.tar.gz::https://github.com/zeth/inputs/archive/refs/tags/v$pkgver.tar.gz"
+        '3203c9e25f1e14c4316d85d59c536b4e407f569f.patch')
+sha256sums=('d8e8a4b54747e102c4ab27f9eff0e6d64207690d7dbc75d2f6c6364881066fee'
             '92c69faff3038a42eb0fc4dfefe2657dea1e5cf0cea05c14d02ba04decdcc139')
+
 prepare() {
-    cd "$srcdir/${_pyname}-$pkgver"
-    patch -p1 -i "$srcdir"/3203c9e25f1e14c4316d85d59c536b4e407f569f.patch
+  cd "${_name}-$pkgver"
+
+  # https://github.com/zeth/inputs/issues/72
+  # https://github.com/zeth/inputs/pull/90
+  patch -Np1 -i ../3203c9e25f1e14c4316d85d59c536b4e407f569f.patch
 }
 
 build() {
-    cd "$srcdir/${_pyname}-$pkgver"
-    python -m build --wheel --no-isolation
+  cd "${_name}-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/${_pyname}-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    # Install LICENSE file
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    # Install README file
-    install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
+  cd "${_name}-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
