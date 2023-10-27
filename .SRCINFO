@@ -1,13 +1,13 @@
 pkgbase = r-h5vcdata
 	pkgdesc = Example data for the h5vc package
-	pkgver = 2.21.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/h5vcData
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-h5vc
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/h5vcData_2.21.0.tar.gz
-	sha256sums = bbc689cd0d5e8551d2b3ee372b44deb7907ec09a59876db66040dc8b1c023631
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/h5vcData_2.22.0.tar.gz
+	sha256sums = ff015754b692f4057063e947d01e76a1bfa6c9715f71b4123f3c2a6f1eced45d
 
 pkgname = r-h5vcdata
