@@ -1,6 +1,6 @@
 pkgbase = r-chimeraviz
 	pkgdesc = Visualization tools for gene fusions
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/chimeraviz
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-chimeraviz
 	optdepends = r-lintr
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/chimeraviz_1.26.0.tar.gz
-	sha256sums = e738a8b1cc4d92fcf9930d5d7c1f9b25029b98677d6e22432362b3a8bdbad478
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/chimeraviz_1.28.0.tar.gz
+	sha256sums = df21e0145499d05aa135cf57561230b800f24a7210c1e91f6b7b6eda426b8323
 
 pkgname = r-chimeraviz

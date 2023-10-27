@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chimeraviz
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Visualization tools for gene fusions'
 arch=('any')
@@ -50,7 +50,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e738a8b1cc4d92fcf9930d5d7c1f9b25029b98677d6e22432362b3a8bdbad478')
+sha256sums=('df21e0145499d05aa135cf57561230b800f24a7210c1e91f6b7b6eda426b8323')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
