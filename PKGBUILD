@@ -1,9 +1,10 @@
 # Maintainer: Aaron Honeycutt <aaron at system76 dot com>
-pkgname=keyboard-configurator-git
+pkgbase=keyboard-configurator-git
+pkgname=system76-keyboard-configurator-git
 pkgver=1.3.10
 pkgrel=2
 pkgdesc="Configures keymap and backlight of System76 keyboards."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/keyboard-configurator"
 license=('GPL3')
 depends=('gtk3' 'hidapi' 'xz')
@@ -14,13 +15,13 @@ sha256sums=('SKIP')
 prepare() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+        make vendor
 }
 
 build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
-	make prefix=/usr
+	make VENDOR=1 prefix=/usr
 }
 
 package() {
