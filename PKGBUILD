@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOTHiC
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Binomial test for Hi-C data analysis'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('804d7f6e5d0b9ee325dc6c041d9be5a3353ffc8f54bf31edc8590b9d56669b8d')
+sha256sums=('c04df3530f83651a0e86ae28079967ce0cfb808cc10de5e5ee3985bb435fcbb1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
