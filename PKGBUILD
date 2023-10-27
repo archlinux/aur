@@ -4,7 +4,7 @@ _pkgname=assertive
 _pkgver=0.3-6
 pkgname=r-${_pkgname,,}
 pkgver=0.3.6
-pkgrel=4
+pkgrel=8
 pkgdesc='Readable Check Functions to Ensure Code Integrity'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-markdown
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('c403169e83c433b65e911f7fd640b378e2a4a4765a36063584b8458168a4ea0a')
 
 build() {
