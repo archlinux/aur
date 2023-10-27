@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggwordcloud
-_pkgver=0.6.0
+_pkgver=0.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-wordcloud2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8444d39059adaf9afed348bf472f5535')
-sha256sums=('df0b5a275c29a8e441a8bf60d8008a60ed443119db6b11cab1ba61e2c8a599de')
+md5sums=('7ba9894b559065f9141fac1dc964eceb')
+sha256sums=('b7bbbc02eff4f6519edc0e854b3bd4d9f9fc34e61ebc4e540869814ffdbe7db9')
 
 build() {
   mkdir -p build

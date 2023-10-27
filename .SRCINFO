@@ -1,6 +1,6 @@
 pkgbase = r-ggwordcloud
 	pkgdesc = A Word Cloud Geom for 'ggplot2'
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggwordcloud
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = r-ggwordcloud
 	optdepends = r-tidyr
 	optdepends = r-wordcloud
 	optdepends = r-wordcloud2
-	source = https://cran.r-project.org/src/contrib/ggwordcloud_0.6.0.tar.gz
-	md5sums = 8444d39059adaf9afed348bf472f5535
-	sha256sums = df0b5a275c29a8e441a8bf60d8008a60ed443119db6b11cab1ba61e2c8a599de
+	source = https://cran.r-project.org/src/contrib/ggwordcloud_0.6.1.tar.gz
+	md5sums = 7ba9894b559065f9141fac1dc964eceb
+	sha256sums = b7bbbc02eff4f6519edc0e854b3bd4d9f9fc34e61ebc4e540869814ffdbe7db9
 
 pkgname = r-ggwordcloud
