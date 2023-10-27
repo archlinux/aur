@@ -1,0 +1,12 @@
+To update:
+
+```shell
+# update version in PKGBUILD
+NEW_VERSION=1.2.7 make update_version
+
+# update .SRCINFO and test-build package
+make package
+
+# commit and push changes to AUR
+make push
+```
