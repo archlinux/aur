@@ -1,6 +1,6 @@
 pkgbase = r-bnbc
 	pkgdesc = Bandwise normalization and batch correction of Hi-C data
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bnbc
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-bnbc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bnbc_1.22.0.tar.gz
-	sha256sums = 89116a18b093531044efd6d8279be747da8efbd0a68ad8c3a1f63eda941b3d41
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bnbc_1.23.0.tar.gz
+	sha256sums = 6735fd14e4001db10018f3b81b8d0e27c820b429d9b824b53eec882354d1f4b9
 
 pkgname = r-bnbc
