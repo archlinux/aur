@@ -1,6 +1,6 @@
 pkgbase = r-rnaeditr
 	pkgdesc = Statistical analysis of RNA editing sites and hyper-editing regions
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rnaEditr
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-rnaeditr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rnaEditr_1.10.0.tar.gz
-	sha256sums = b8b2ca86bf742693d26f4daf8f3a3bcc3ecc5a25a6f7bd41cf4eb0bb5086a475
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rnaEditr_1.12.0.tar.gz
+	sha256sums = 7b414f9324f243ee5ffb63061f89dde16a355b6325d6d906d904f38986f44a11
 
 pkgname = r-rnaeditr
