@@ -1,6 +1,6 @@
 pkgbase = r-ularcirc
 	pkgdesc = Shiny app for canonical and back splicing analysis (i.e. circular and mRNA analysis)
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Ularcirc
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-ularcirc
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Ularcirc_1.18.0.tar.gz
-	sha256sums = 9faf26c5c558ed0f55fee819a9e57feba1a6869c9d01d1b6b6fc3006d169e5ee
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Ularcirc_1.20.0.tar.gz
+	sha256sums = 1126a68f1fb88d4d2cccbb056d6caa0344ae24fe93f0961b562d6cdd6b669bb8
 
 pkgname = r-ularcirc
