@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scruff
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Single Cell RNA-Seq UMI Filtering Facilitator (scruff)'
 arch=('any')
@@ -23,6 +23,7 @@ depends=(
   r-ggbio
   r-ggplot2
   r-ggthemes
+  r-parallelly
   r-plyr
   r-rsamtools
   r-rsubread
@@ -41,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c3cafba2b848975d9d3dc2c08b4484a2c77fb1e15e124cd28a8f949fc68b21e')
+sha256sums=('c610f6759a02b0cf21bb8ab5d016aaaa9081a02b058f7bfed13a8b7687bbc47e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
