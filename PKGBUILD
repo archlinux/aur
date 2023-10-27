@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=zFPKM
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='A suite of functions to facilitate zFPKM transformations'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('90108086560e202d99bf4218b7f18c7ebada040bb197f8aef24e758104f67fba')
+sha256sums=('84a079537a04b4f8c33986ee8f2d0e891eff461e886e05edf5819e1c0afbf6a2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
