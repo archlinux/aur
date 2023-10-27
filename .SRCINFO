@@ -1,6 +1,6 @@
 pkgbase = titlecase
 	pkgdesc = A tool for making text title case
-	pkgver = 1.1.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/wezm/titlecase
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = titlecase
 	makedepends = rust
 	makedepends = cargo
 	conflicts = titlecase-git
-	source = titlecase-1.1.0.tar.gz::https://github.com/wezm/titlecase/archive/v1.1.0.tar.gz
-	sha256sums = 967502c98a81fa1f49de798410cb1c0bc7a54a81e773492451da78608c3d77dc
+	source = titlecase-2.2.1.tar.gz::https://github.com/wezm/titlecase/archive/v2.2.1.tar.gz
+	sha256sums = 2f70634e9860200b87a3318ad12074c8ae4f14ac868cc6d1d6cbc068a7c4864d
 
 pkgname = titlecase
-
