@@ -37,7 +37,7 @@ package() {
 	# Disable AppimageLauncher integration prompt
 	# https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
 	# SuperConductor
-	sed -i -E "s|Exec=${_install_path1}|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/superconductor|" "squashfs-root/superconductor.desktop"
+	sed -i -E "s|Exec=${_install_path}|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/superconductor|" "squashfs-root/superconductor.desktop"
 	install -vDm644 squashfs-root/superconductor.desktop "$pkgdir"/usr/share/applications/superconductor.desktop
 	install -vDm755 ${_file} "$pkgdir"/${_install_path}
 	mkdir "$pkgdir"/usr/bin/ && chmod 755 "$pkgdir"/usr/bin/
