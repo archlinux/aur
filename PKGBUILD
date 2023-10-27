@@ -1,40 +1,64 @@
-# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
+# Maintainer:
+# Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
 # Contributor: Ameysh <trader9@gmail.com>
 # Contributor: xsmile <sascha_r gmx de>
-pkgname=ta-lib
-pkgver=0.4.0
-pkgrel=5
-pkgdesc='A library providing common functions for the technical analysis of financial market data'
-url='http://ta-lib.org'
+
+_pkgname="ta-lib"
+pkgname="$_pkgname"
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="A library providing common functions for the technical analysis of financial market data"
+#url="http://ta-lib.org"
+url="https://github.com/TA-Lib/ta-lib"
 license=('BSD')
 arch=('x86_64' 'i686')
-source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tar.gz"
-        "$pkgname-$pkgver-asneeded.patch"
-	"fix-werror-format-security.patch"
-        'LICENSE')
-md5sums=('308e53b9644213fc29262f36b9d3d9b9'
-         '5001b2792dcde7189c6a9bc79da09e53'
-	 '2aa3764f7cb2e75177280897d7f56fb8'
-         '38c1c6fdece39f5f1199d74ebf7f29bf')
+
+_pkgsrc="$_pkgname-${pkgver%%.r*}"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc.$_pkgext"::"https://github.com/TA-Lib/ta-lib/archive/refs/tags/v${pkgver%%.r**}.$_pkgext"
+
+  "0001-fix-werror-format-security.patch"
+  "0002-as-needed.patch"
+
+  'LICENSE'
+)
+sha256sums=(
+  '43e3761cf6bc4a5ab6c675268a09a72ea074643c6e06defe5e4b4e51eae1ea50'
+  '770c363ecae6fedcf07df1c5e92dff5ac8221c63a93778e1de549b33a65eaa20'
+  'c3106f22a2a620f16182f60e862a75aa8555782a8b02c371acabe4c3ef4542c8'
+  '10ddcfc0d685173fdee2d7e8791540bb1a8526a0f66f7795bdf7dad23457b10e'
+)
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$_pkgsrc"
 
-  # https://gitweb.gentoo.org/repo/gentoo.git/tree/sci-libs/ta-lib/files/ta-lib-0.4.0-asneeded.patch
-  patch -Np1 -i "$srcdir/$pkgname-$pkgver-asneeded.patch"
-  patch -Np1 -i "$srcdir/fix-werror-format-security.patch"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]] ; then
+      echo
+      echo "Applying patch $src..."
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$_pkgsrc"
 
+  #./configure --prefix=/usr
+  #make
+
+  autoreconf -i
   ./configure --prefix=/usr
-  make
+  make -j1
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_pkgsrc"
+  make DESTDIR="${pkgdir:?}" install
+  install -Dm644 "${srcdir:?}/LICENSE" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
