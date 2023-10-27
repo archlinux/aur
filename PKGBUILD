@@ -4,10 +4,10 @@ _pkgname=NanoStringQCPro
 _pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=1.32.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Quality metrics and data processing methods for NanoString mRNA gene expression data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -26,7 +26,7 @@ optdepends=(
   r-roxygen2
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('49f7a1b7ab510ef1620e0b273f240178c4c630eef604962a953e17d18c7e5a4c')
 
 build() {
