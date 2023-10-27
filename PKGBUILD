@@ -2,8 +2,8 @@
 _name=tracexec
 pkgname="$_name-bin"
 pkgver=0.0.1
-pkgrel=1
-pkgdesc="A simple text-to-speech client for Azure TTS API"
+pkgrel=2
+pkgdesc="A small utility to trace program execution"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kxxt/aspeak"
 license=('MIT')

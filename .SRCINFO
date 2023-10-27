@@ -1,7 +1,7 @@
 pkgbase = tracexec-bin
-	pkgdesc = A simple text-to-speech client for Azure TTS API
+	pkgdesc = A small utility to trace program execution
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kxxt/aspeak
 	arch = x86_64
 	arch = aarch64
