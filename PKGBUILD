@@ -2,20 +2,21 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=beachmat
-_pkgver=2.16.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Compiling Bioconductor to Handle Each Matrix Type'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
+  gcc
   r
   r-biocgenerics
   r-delayedarray
   r-rcpp
-  gcc
+  r-sparsearray
 )
 optdepends=(
   r-biocparallel
@@ -27,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f2195986f08d54bee1f897b3cdce2d1f64772035b0f0777a9305217a6df2493d')
+sha256sums=('e28d8c0d5193d661e03b07b712cd01629337b2b204af13fa2653e0a0b7d93dfa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
