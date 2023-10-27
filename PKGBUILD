@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowWorkspace
-_pkgver=4.12.2
+_pkgver=4.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Infrastructure for representing and interacting with gated and ungated cytometry data sets."
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -52,9 +52,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-hdf5.patch")
-md5sums=('ebb419044d24661c7b907e6fbf15ee60'
+md5sums=('e97cd561c6a61ae778261cb55f29af90'
          '6074f63c3e946d2bdb0688a866a6271d')
-sha256sums=('46f42e329a43c48f9f8091ee114e889f0fa6beefd63a43f6f14f7bab44f530bc'
+sha256sums=('9786e21e7a1b5935b04b6bde6c7fe6717fe49df03810e70d58a98f35865b9725'
             '5bd4f81d4c8e4596a6f16d3d8040228228f5235bb5fb3a1baf363aee44251cee')
 
 prepare() {
