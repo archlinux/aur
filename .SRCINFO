@@ -1,6 +1,6 @@
 pkgbase = r-oveseg
 	pkgdesc = OVESEG-test to detect tissue/cell-specific markers
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OVESEG
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-oveseg
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OVESEG_1.16.0.tar.gz
-	sha256sums = 5655729d778c2ab129aae5d12585f9bd3e901ab72f8ef2f71f112e4c735719e2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OVESEG_1.18.0.tar.gz
+	sha256sums = 406e7d01bf6e2e3aec87ba755e3abc8032b0d86b5eb518f598b9fc6d35e8ea82
 
 pkgname = r-oveseg
