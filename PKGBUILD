@@ -1,7 +1,7 @@
 # Maintainer: Aaron Honeycutt <aaron at system76 dot com>
 pkgname=keyboard-configurator-git
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.3.10
+pkgrel=2
 pkgdesc="Configures keymap and backlight of System76 keyboards."
 arch=('x86_64')
 url="https://github.com/pop-os/keyboard-configurator"
