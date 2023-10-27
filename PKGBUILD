@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ResidualMatrix
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Creating a DelayedMatrix of Regression Residuals"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d4291731f44ec7111ac14306ce53f18')
-sha256sums=('1be3c4247e23d2b157f64cc19052a15ea78100aef652ec55195d096841045ef9')
+md5sums=('76eaee4311380f83265d9b5ecacd7e49')
+sha256sums=('bbb066105053c04b4d2d5fdbda6b2d2eb708c8e80272354bc1dc3dbf7a38fe1a')
 
 build() {
   mkdir -p build
