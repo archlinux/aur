@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ptairMS
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Pre-processing PTR-TOF-MS Data'
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8521e1bcb73f6ab2ff7cc715bbf10bf8d5f7adb681951308ef2e4c2cba855eb2')
+sha256sums=('1fa231c1c9aa28ac336710e12eed0611a23b0a1ed09e98e38246b61d525f5662')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
