@@ -1,0 +1,11 @@
+pkgbase = ttf-andikanewbasic
+	pkgdesc = A limited-character-set version of Andika, based on version 5
+	pkgver = 5.500
+	pkgrel = 1
+	url = https://software.sil.org/andika/
+	arch = any
+	license = OFL
+	source = https://software.sil.org/downloads/r/andika/AndikaNewBasic-5.500.zip
+	b2sums = 49da073663a26c46e66d45b59390615cbf492156c9ce9ee804fe06e4b70a23d17c9ae2f9632a53dd2e96c7904c994bcfd2a9b39405d68acd16dac81a6dfdb856
+
+pkgname = ttf-andikanewbasic
