@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=restfulSEData
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e92deb8a55a329887e87c9d4520e4b9e')
-sha256sums=('feea275178c368f2b32726ecdc96d2ac053aaaaa0211d278d4dd73cdc2a34d34')
+md5sums=('c69fe04b8675edd0faa593fb5ffc72c8')
+sha256sums=('302d8f15602430563a75fa25e57a7b1b0b761f8e129792e43856efbd2a29b1f9')
 
 build() {
   mkdir -p build
