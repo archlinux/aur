@@ -1,7 +1,7 @@
 pkgbase = r-recount3
 	pkgdesc = Explore and download data from the recount3 project
-	pkgver = 1.10.2
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/recount3
 	arch = any
 	license = Artistic2.0
@@ -25,7 +25,7 @@ pkgbase = r-recount3
 	optdepends = r-refmanager
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/recount3_1.10.2.tar.gz
-	sha256sums = 2909423983848a659bc9819cd90afca9677b90b22240b0151a39fd35a06d2d42
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/recount3_1.12.0.tar.gz
+	sha256sums = 5446e733740000ff9917744d53a731f4bb12f4b802c2ede788f9f1930295c47e
 
 pkgname = r-recount3
