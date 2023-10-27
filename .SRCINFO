@@ -1,6 +1,6 @@
 pkgbase = r-traser
 	pkgdesc = GWAS trait-associated SNP enrichment analyses in genomic intervals
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/traseR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-traser
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/traseR_1.30.0.tar.gz
-	sha256sums = 897d8a790bd287049fe0d928b26a96c2ac7a24f6b1c208610741d5372756801e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/traseR_1.32.0.tar.gz
+	sha256sums = 38a4fa6f092e86671a646dcdc9c46cd077fafab3a9f37c86856aa3ff5800b117
 
 pkgname = r-traser
