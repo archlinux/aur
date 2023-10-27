@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TFBSTools
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Software Package for Transcription Factor Binding Site (TFBS) Analysis'
 arch=('x86_64')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e86d01de23bb22a8d5beb4945a2fe69e2b432669b826dfd1415885569949da8c')
+sha256sums=('98efdb17ec1979679951020697e89cea2794f64aac4bcd070bf3799b10cabaa2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
