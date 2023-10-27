@@ -4,10 +4,10 @@ _pkgname=MIMOSA
 _pkgver=1.37.0
 pkgname=r-${_pkgname,,}
 pkgver=1.37.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Mixture Models for Single-Cell Assays'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('MIT')
 depends=(
   r
@@ -33,7 +33,7 @@ optdepends=(
   r-knitr
   r-parallel
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('8c537413acfb05e644a3712ebef6fefb08a31f4aa7c83b3f27ab713d4306ff36')
 
 build() {

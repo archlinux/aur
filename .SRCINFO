@@ -1,8 +1,8 @@
 pkgbase = r-mimosa
 	pkgdesc = Mixture Models for Single-Cell Assays
 	pkgver = 1.37.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/MIMOSA
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.17/MIMOSA
 	arch = x86_64
 	license = MIT
 	depends = r
@@ -25,7 +25,7 @@ pkgbase = r-mimosa
 	depends = r-tidyr
 	optdepends = r-knitr
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MIMOSA_1.37.0.tar.gz
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/MIMOSA_1.37.0.tar.gz
 	sha256sums = 8c537413acfb05e644a3712ebef6fefb08a31f4aa7c83b3f27ab713d4306ff36
 
 pkgname = r-mimosa
