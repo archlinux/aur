@@ -56,6 +56,11 @@ build() {
 	yarn electron-builder
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	yarn test
+}
+
 package() {
 	# Electron resources
 	cd "$srcdir/$_sourcedirectory/release/"
