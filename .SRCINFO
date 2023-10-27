@@ -1,7 +1,7 @@
 pkgbase = r-hummingbird
 	pkgdesc = Bayesian Hidden Markov Model for the detection of differentially methylated regions
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/hummingbird
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = r-hummingbird
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hummingbird_1.10.0.tar.gz
-	sha256sums = 3ab13a1d9c444804a5f6f7c34730a3aa5e8899e777ca81674a1a7da883ffd81f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hummingbird_1.12.0.tar.gz
+	sha256sums = 108e6b1ac9a742a941e15d1894d2706f1312138fc40f7c2d6ed7d2ea5b6debc2
 
 pkgname = r-hummingbird
