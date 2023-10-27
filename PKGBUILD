@@ -6,28 +6,26 @@
 _pkgbase=libappindicator
 pkgbase=lib32-${_pkgbase}
 pkgname=("${pkgbase}-gtk"{2,3})
-pkgver=12.10.0
-pkgrel=13
+_bzrtag=12.10.0
+_bzrrev=298
+pkgver=${_bzrtag}.r${_bzrrev}
+pkgrel=1
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (32-bit)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL3')
-makedepends=('dbus-glib' 'lib32-libdbusmenu-gtk'{2,3} 'lib32-libindicator-gtk'{2,3} 'vala')
+makedepends=('breezy' 'dbus-glib' 'lib32-libdbusmenu-gtk'{2,3} 'lib32-libindicator-gtk'{2,3} 'vala')
 options=('!emptydirs')
-source=(http://launchpad.net/${_pkgbase}/${pkgver%.*}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz{,.asc}
-        no-python.patch)
-sha512sums=('317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1cfa31e650b45eaf839ab61641dee8fbebc8a07882a09b0dd766d88b8d5b9a'
-            'SKIP'
-            '0fd8ad2afa6ef25b9d006fb7c7fbbf1acd9b5af282a0373720f4ddc39d28bd5a9ae24b01f02c320593a543b316e5634d3a38dda6801aa9eff76a0b2fbc627fe0')
+source=($_pkgbase::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=$_bzrrev)
+sha512sums=('SKIP')
 validpgpkeys=('6FC05581A37D71FCECE165DB5BE41E162CD6358E')  # Charles Kerr <charles.kerr@canonical.com>
 
 prepare() {
-  (cd ${_pkgbase}-${pkgver}
-    patch -p1 < "${srcdir}/no-python.patch"
+  (cd ${_pkgbase}
     sed -i 's/-Werror//' src/Makefile.am
     autoreconf -fi
   )
-  cp -ra ${_pkgbase}-${pkgver}{,-gtk2}
+  cp -ra ${_pkgbase}{,-gtk2}
 }
 
 build() {
@@ -38,7 +36,7 @@ build() {
   export CSC='/usr/bin/mcs'
 
   msg2 'Building gtk3...'
-  (cd ${_pkgbase}-${pkgver}
+  (cd ${_pkgbase}
     ./configure --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
@@ -49,7 +47,7 @@ build() {
   )
 
   msg2 'Building gtk2...'
-  (cd ${_pkgbase}-${pkgver}-gtk2
+  (cd ${_pkgbase}-gtk2
     ./configure --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
@@ -64,7 +62,7 @@ package_lib32-libappindicator-gtk2() {
   pkgdesc+=" (GTK+ 2 library)"
   depends=('lib32-libdbusmenu-gtk2' 'lib32-libindicator-gtk2')
 
-  cd ${_pkgbase}-${pkgver}-gtk2
+  cd ${_pkgbase}-gtk2
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share}
 }
@@ -73,7 +71,7 @@ package_lib32-libappindicator-gtk3() {
   pkgdesc+=" (GTK+ 3 library)"
   depends=('lib32-libdbusmenu-gtk3' 'lib32-libindicator-gtk3')
 
-  cd ${_pkgbase}-${pkgver}
+  cd ${_pkgbase}
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share}
 }
