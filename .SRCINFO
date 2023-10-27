@@ -1,6 +1,6 @@
 pkgbase = r-h5vc
 	pkgdesc = Managing alignment tallies using a hdf5 backend
-	pkgver = 2.34.0
+	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/h5vc
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-h5vc
 	optdepends = r-locfit
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/h5vc_2.34.0.tar.gz
-	sha256sums = 1aea7408917b0ebdf3e190aa6b945e3025972a1e0fc94a2598475a532af53feb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/h5vc_2.36.0.tar.gz
+	sha256sums = dfa0e6f0e4fa3b36b857a11ab671ad55fbd4afa2a79b2f71f7b9291faa737b40
 
 pkgname = r-h5vc
