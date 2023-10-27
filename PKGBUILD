@@ -1,17 +1,17 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
-pkgname=superconductor
+pkgbase=superconductor
+pkgname=(
+	superconductor
+	tsr-bridge
+)
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 _appname="SuperConductor-$pkgver"
-pkgdesc="A playout client for Windows/Linux/macOS that will let you control CasparCG Server, BMD ATEM, OBS Studio, vMix, OSC-compatible devices, HTTP (REST)-compatible devices, and more"
-arch=(any)
+arch=('x86_64')
 url="https://github.com/SuperFlyTV/SuperConductor"
-license=(AGPL3)
-depends=('nodejs>=18' 'alsa-lib' 'libvips')
+license=('AGPL3')
 makedepends=('yarn')
-provides=('superconductor')
-conflicts=('superconductor')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'superconductor.desktop'
@@ -22,33 +22,68 @@ sha256sums=('de0e256d3fbc5a07a6dd4f23aea8f691ebbb057e893c9c58f493419b615dc8da'
 
 prepare() {
 	cd $_appname
-	# Add '--ignore-scripts' if prepare fails
+	# Installs all dependencies, including Lerna. Add '--ignore-scripts' if prepare fails
 	yarn --ignore-scripts
 }
 
 build() {
 	cd $_appname
+	# Compile Typescript, run Webpack, etc:
 	yarn build
+	# Make binaries for the SuperConductor UI and tsr-bridge. Must have run "yarn build" first.
+	# The SuperConductor UI binary will be located at apps/app/dist.
+	# The tsr-bridge binary will be located at apps/tsr-bridge/dist.
+	# This command should work on all platforms (Windows, macOS, and Linux).
 	yarn build:binary
 }
 
-package() {
+package_superconductor() {
+	pkgdesc='A playout client for Windows/Linux/macOS that will let you control CasparCG Server, BMD ATEM, OBS Studio, vMix, OSC-compatible devices, HTTP (REST)-compatible devices, and more'
+	depends=(
+	'nodejs>=18'
+	'alsa-lib'
+	'libvips'
+	)
+	optdepends=('tsr-bridge: External application which handles the actual playout and control of the connected devices')
+	provides=('superconductor')
+	conflicts=('superconductor')
+
 	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share
 	# Install SuperConductor
 	cp -av --no-preserve=ownership $_appname/apps/app/dist/linux-unpacked "$pkgdir"/usr/share/$pkgname
 	ln -sf /usr/share/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
+
+	# Install icons
+	for i in 16 24 32 48 64 96 128 256 512 1024; do
+		install -vDm 644 "$_appname/apps/app/build/icons/${i}x${i}.png" \
+			"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
+	done
+
+	# Install desktop files, license
+	install -vDm644 $pkgname.desktop -t "$pkgdir"/usr/share/applications
+	install -vDm644 $_appname/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_tsr-bridge() {
+	pkgdesc='The TSR-bridge is the application which handles the actual playout and control of the connected devices. By default, an instance of TSR-bridge runs internally in SuperConductor, so devices can be controlled directly from the application'
+	depends=(
+	'nodejs>=18'
+	'alsa-lib'
+	'libvips'
+	'superconductor'
+	)
+	provides=('tsr-bridge')
+	conflicts=('tsr-bridge')
+
+	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share
 	# Install TSR-Bridge
 	cp -av --no-preserve=ownership $_appname/apps/tsr-bridge/dist/linux-unpacked "$pkgdir"/usr/share/tsr-bridge
 	ln -sf /usr/share/tsr-bridge/tsr-bridge "$pkgdir"/usr/bin/tsr-bridge
+
 	# Install icons
-	for i in 16 24 32 48 64 96 128 256 512 1024; do
-		install -Dvm 644 "$_appname/apps/app/build/icons/${i}x${i}.png" \
-			"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
-	done
-	install -Dvm 644 "$_appname/apps/tsr-bridge/assets/tray.png" \
+	install -vDm 644 "$_appname/apps/tsr-bridge/assets/tray.png" \
 		"$pkgdir"/usr/share/icons/hicolor/48x48/apps/tsr-bridge.png
-	# Install desktop files, license
-	install -Dvm644 -t "$pkgdir"/usr/share/applications $pkgname.desktop
-	install -Dvm644 -t "$pkgdir"/usr/share/applications tsr-bridge.desktop
-	install -Dvm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_appname/LICENSE
+
+	# Install desktop files
+	install -vDm644 tsr-bridge.desktop -t "$pkgdir"/usr/share/applications
 }
