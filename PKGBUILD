@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BaalChIP
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='BaalChIP: Bayesian analysis of allele-specific transcription factor binding in cancer genomes'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df264deb231e69aa647f6fe319b6c9ac0de402ed897be218023ba662d9b9e82e')
+sha256sums=('3b3321a86b09a6b51ee084300b48daef0bcfb82787c4c38f6f98702ac2ad0834')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
