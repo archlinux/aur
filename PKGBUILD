@@ -33,7 +33,6 @@ prepare() {
 package() {
 	install -d $pkgdir/opt/Notion/
 	cp -av $srcdir/resources $pkgdir/opt/Notion/
-	find $pkgdir/opt -not -path "*/resources/*" -type f -print -delete
 
 	printf '#!/bin/sh
 exec electron /opt/Notion/resources/app.asar "$@"
