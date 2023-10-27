@@ -1,11 +1,13 @@
 pkgbase = usd
-	pkgver = 23.08
-	pkgrel = 8
+	pkgdesc = 3D VFX pipeline interchange file format
+	pkgver = 23.11
+	pkgrel = 1
 	url = https://openusd.org
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = help2man
+	makedepends = git
 	depends = glew
 	depends = gcc
 	depends = python
@@ -23,43 +25,43 @@ pkgbase = usd
 	depends = qt5-base
 	depends = onetbb
 	options = !strip
-	source = git+https://github.com/PixarAnimationStudios/OpenUSD.git#tag=v23.08
+	source = git+https://github.com/PixarAnimationStudios/OpenUSD.git#tag=v23.11
 	source = https://openusd.org/images/USDLogoUnsized.svg
-	source = org.openusd.usdview.desktop
 	source = usd-tbb.patch
 	source = usd-embree4.patch
 	source = usd-defaultfonts.patch
+	source = org.openusd.usdview.desktop
 	sha256sums = SKIP
 	sha256sums = 529dea685836be7de95800d9688db4e1df6a8a3f341130069abdd2b5b1572128
-	sha256sums = 6e598e28c36f3953ecdcd9fc0fccc5a591b654a8eccc08881f9ea33ffb32591a
-	sha256sums = a73c5c69478f27a6db9a7c5ad41b4a12825081c82f47f8e1e04c8e9d92c8e75a
-	sha256sums = bce5bd6e41d8192948021f5e2b6b3b7302dd49234d353227503d6d0711205a19
+	sha256sums = e4a1378a2ce34edbd65f016689cbca0dc37dc2b1c2ddfd837724078ed231063c
+	sha256sums = 8cbdeb862e587e4fc73af9b52046e22d85623021649eeb56e4c14aa31fab89be
 	sha256sums = 3408ad2877d547f60d2db6b28983837119b8800b62ae1cdc23b37dbe31e17f1c
+	sha256sums = 6e598e28c36f3953ecdcd9fc0fccc5a591b654a8eccc08881f9ea33ffb32591a
 
 pkgname = usd
 	pkgdesc = 3D VFX pipeline interchange file format
 
 pkgname = usd-embree
 	pkgdesc = Embree component for USD
-	depends = usd=23.08
+	depends = usd=23.11
 	depends = embree
 
 pkgname = usd-alembic
 	pkgdesc = Alembic component for USD
-	depends = usd=23.08
+	depends = usd=23.11
 	depends = alembic
 
 pkgname = usd-draco
 	pkgdesc = Draco component for USD
-	depends = usd=23.08
+	depends = usd=23.11
 	depends = draco
 
 pkgname = usd-openvdb
 	pkgdesc = OpenVDB component for USD
-	depends = usd=23.08
+	depends = usd=23.11
 	depends = openvdb
 
 pkgname = usd-openshadinglanguage
 	pkgdesc = OSL (OpenShadingLanguage) component for USD
-	depends = usd=23.08
+	depends = usd=23.11
 	depends = openimageio

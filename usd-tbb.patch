@@ -1,44 +1,7 @@
-From 9cff8982674136ffbb8a22b474abda65aea5d677 Mon Sep 17 00:00:00 2001
-From: Matt Kuruc <mkuruc@nvidia.com>
-Date: Thu, 2 Mar 2023 12:14:58 -0800
-Subject: [PATCH 01/17] Use non-deprecated TBB headers in `pxr/base/work`
-
----
- pxr/base/work/loops.h  | 2 +-
- pxr/base/work/reduce.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/pxr/base/work/loops.h b/pxr/base/work/loops.h
-index 263718c9af..76ae9e8d8e 100644
---- a/pxr/base/work/loops.h
-+++ b/pxr/base/work/loops.h
-@@ -32,7 +32,7 @@
- #include <tbb/blocked_range.h>
- #include <tbb/parallel_for.h>
- #include <tbb/parallel_for_each.h>
--#include <tbb/task.h>
-+#include <tbb/task_group.h>
- 
- PXR_NAMESPACE_OPEN_SCOPE
- 
-diff --git a/pxr/base/work/reduce.h b/pxr/base/work/reduce.h
-index cb5dd2a359..332ec20a21 100644
---- a/pxr/base/work/reduce.h
-+++ b/pxr/base/work/reduce.h
-@@ -31,7 +31,7 @@
- 
- #include <tbb/blocked_range.h>
- #include <tbb/parallel_reduce.h>
--#include <tbb/task.h>
-+#include <tbb/task_group.h>
- 
- PXR_NAMESPACE_OPEN_SCOPE
- 
-
-From 1beeb16f55b5b9f98034d6c327497e297fb644e5 Mon Sep 17 00:00:00 2001
+From 9443dc6121948c054ade923ab0ee4fddfa6214a1 Mon Sep 17 00:00:00 2001
 From: Alex Fuller <boberfly@gmail.com>
 Date: Wed, 17 May 2023 16:27:47 +0200
-Subject: [PATCH 02/17] oneTBB: tbb::atomic to std::atomic in pcp
+Subject: [PATCH 01/14] oneTBB: tbb::atomic to std::atomic in pcp
 
 ---
  pxr/usd/pcp/mapExpression.cpp | 4 ++--
@@ -47,7 +10,7 @@ Subject: [PATCH 02/17] oneTBB: tbb::atomic to std::atomic in pcp
  3 files changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/pxr/usd/pcp/mapExpression.cpp b/pxr/usd/pcp/mapExpression.cpp
-index 70e83df2ff..b6bffda12b 100644
+index d8f90d7eef..ad8b7df1ee 100644
 --- a/pxr/usd/pcp/mapExpression.cpp
 +++ b/pxr/usd/pcp/mapExpression.cpp
 @@ -238,7 +238,7 @@ PcpMapExpression::_Node::New( _Op op_,
@@ -102,97 +65,10 @@ index a7180637dd..220c3ef386 100644
  #include <tbb/cache_aligned_allocator.h>
  #include <tbb/concurrent_hash_map.h>
 
-From c912d7864aa8920016dcd4425fce105f7243ed5e Mon Sep 17 00:00:00 2001
+From 28d51e991f21f6e3cc13d274926ccb69b0c65a73 Mon Sep 17 00:00:00 2001
 From: Alex Fuller <boberfly@gmail.com>
 Date: Wed, 17 May 2023 16:27:47 +0200
-Subject: [PATCH 03/17] oneTBB: tbb::atomic to std::atomic in sdf
-
----
- pxr/usd/sdf/changeManager.cpp | 10 +++++-----
- pxr/usd/sdf/layer.cpp         |  2 +-
- pxr/usd/sdf/layer.h           |  2 +-
- pxr/usd/sdf/pch.h             |  1 -
- 4 files changed, 7 insertions(+), 8 deletions(-)
-
-diff --git a/pxr/usd/sdf/changeManager.cpp b/pxr/usd/sdf/changeManager.cpp
-index 9d55d29a3d..00b9095627 100644
---- a/pxr/usd/sdf/changeManager.cpp
-+++ b/pxr/usd/sdf/changeManager.cpp
-@@ -34,7 +34,7 @@
- #include "pxr/base/tf/instantiateSingleton.h"
- #include "pxr/base/tf/stackTrace.h"
- 
--#include <tbb/atomic.h>
-+#include <atomic>
- 
- using std::string;
- using std::vector;
-@@ -150,9 +150,9 @@ Sdf_ChangeManager::_ProcessRemoveIfInert(_Data *data)
-     TF_VERIFY(data->outermostBlock);
- }
- 
--static tbb::atomic<size_t> &
-+static std::atomic<size_t> &
- _InitChangeSerialNumber() {
--    static tbb::atomic<size_t> value;
-+    static std::atomic<size_t> value;
-     value = 1;
-     return value;
- }
-@@ -191,8 +191,8 @@ Sdf_ChangeManager::_SendNotices(_Data *data)
-     }
- 
-     // Obtain a serial number for this round of change processing.
--    static tbb::atomic<size_t> &changeSerialNumber = _InitChangeSerialNumber();
--    size_t serialNumber = changeSerialNumber.fetch_and_increment();
-+    static std::atomic<size_t> &changeSerialNumber = _InitChangeSerialNumber();
-+    size_t serialNumber = changeSerialNumber.fetch_add(1);
- 
-     // Send global notice.
-     SdfNotice::LayersDidChange(changes, serialNumber).Send();
-diff --git a/pxr/usd/sdf/layer.cpp b/pxr/usd/sdf/layer.cpp
-index cc82b8ded9..5b70a4e53f 100644
---- a/pxr/usd/sdf/layer.cpp
-+++ b/pxr/usd/sdf/layer.cpp
-@@ -214,7 +214,7 @@ SdfLayer::SdfLayer(
-     _MarkCurrentStateAsClean();
- }
- 
--SdfLayer::~SdfLayer()
-+SdfLayer::~SdfLayer() noexcept
- {
-     TF_PY_ALLOW_THREADS_IN_SCOPE();
- 
-diff --git a/pxr/usd/sdf/layer.h b/pxr/usd/sdf/layer.h
-index f5afeaa552..3aea74bf79 100644
---- a/pxr/usd/sdf/layer.h
-+++ b/pxr/usd/sdf/layer.h
-@@ -98,7 +98,7 @@ class SdfLayer
- public:
-     /// Destructor
-     SDF_API
--    virtual ~SdfLayer(); 
-+    virtual ~SdfLayer() noexcept; // noexcept needed for std::atomic member
- 
-     /// Noncopyable
-     SdfLayer(const SdfLayer&) = delete;
-diff --git a/pxr/usd/sdf/pch.h b/pxr/usd/sdf/pch.h
-index 0728ebe683..6af480e7e3 100644
---- a/pxr/usd/sdf/pch.h
-+++ b/pxr/usd/sdf/pch.h
-@@ -225,7 +225,6 @@
- #include <boost/variant.hpp>
- #include <boost/vmd/is_empty.hpp>
- #include <boost/vmd/is_tuple.hpp>
--#include <tbb/atomic.h>
- #include <tbb/blocked_range.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_hash_map.h>
-
-From 9bfec012962e9058e278c90b5462d407dcf7c590 Mon Sep 17 00:00:00 2001
-From: Alex Fuller <boberfly@gmail.com>
-Date: Wed, 17 May 2023 16:27:47 +0200
-Subject: [PATCH 04/17] oneTBB: tbb::atomic to std::atomic in usdGeom
+Subject: [PATCH 02/14] oneTBB: tbb::atomic to std::atomic in usdGeom
 
 ---
  pxr/usd/usdGeom/bboxCache.cpp | 21 +++++++++++++++++----
@@ -200,7 +76,7 @@ Subject: [PATCH 04/17] oneTBB: tbb::atomic to std::atomic in usdGeom
  2 files changed, 17 insertions(+), 5 deletions(-)
 
 diff --git a/pxr/usd/usdGeom/bboxCache.cpp b/pxr/usd/usdGeom/bboxCache.cpp
-index 447fe67908..21cf7aa2f5 100644
+index 454f97bcb8..68d2b30d71 100644
 --- a/pxr/usd/usdGeom/bboxCache.cpp
 +++ b/pxr/usd/usdGeom/bboxCache.cpp
 @@ -46,6 +46,7 @@
@@ -265,199 +141,97 @@ index 824c5b0f93..1a5fd65073 100644
  #include <tbb/cache_aligned_allocator.h>
  #include <tbb/concurrent_queue.h>
 
-From 01938648d13653bec26cb4d264417a40c483c567 Mon Sep 17 00:00:00 2001
+From 173bf3ababe2796fb67417ac0abc62495948d93b Mon Sep 17 00:00:00 2001
 From: Alex Fuller <boberfly@gmail.com>
 Date: Wed, 17 May 2023 16:27:47 +0200
-Subject: [PATCH 05/17] oneTBB: tbb::atomic to std::atomic in usdImagining
+Subject: [PATCH 03/14] oneTBB: tbb::atomic to std::atomic in sdf
 
 ---
- pxr/usdImaging/plugin/usdShaders/pch.h        |  1 -
- pxr/usdImaging/usdAppUtils/pch.h              |  1 -
- pxr/usdImaging/usdImaging/pch.h               |  1 -
- .../usdImaging/resolvedAttributeCache.h       | 24 +++++++++++++++----
- pxr/usdImaging/usdImagingGL/pch.h             |  1 -
- pxr/usdImaging/usdProcImaging/pch.h           |  1 -
- pxr/usdImaging/usdRiImaging/pch.h             |  1 -
- pxr/usdImaging/usdSkelImaging/pch.h           |  1 -
- pxr/usdImaging/usdVolImaging/pch.h            |  1 -
- pxr/usdImaging/usdviewq/pch.h                 |  1 -
- 10 files changed, 19 insertions(+), 14 deletions(-)
+ pxr/usd/sdf/changeManager.cpp | 10 +++++-----
+ pxr/usd/sdf/layer.cpp         |  2 +-
+ pxr/usd/sdf/layer.h           |  2 +-
+ pxr/usd/sdf/pch.h             |  1 -
+ 4 files changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/pxr/usdImaging/plugin/usdShaders/pch.h b/pxr/usdImaging/plugin/usdShaders/pch.h
-index 2037e25b8b..c5836624f4 100644
---- a/pxr/usdImaging/plugin/usdShaders/pch.h
-+++ b/pxr/usdImaging/plugin/usdShaders/pch.h
-@@ -160,7 +160,6 @@
- #include <boost/unordered_map.hpp>
- #include <boost/utility.hpp>
- #include <boost/utility/enable_if.hpp>
+diff --git a/pxr/usd/sdf/changeManager.cpp b/pxr/usd/sdf/changeManager.cpp
+index 9d55d29a3d..00b9095627 100644
+--- a/pxr/usd/sdf/changeManager.cpp
++++ b/pxr/usd/sdf/changeManager.cpp
+@@ -34,7 +34,7 @@
+ #include "pxr/base/tf/instantiateSingleton.h"
+ #include "pxr/base/tf/stackTrace.h"
+ 
 -#include <tbb/atomic.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
- #include <tbb/concurrent_unordered_set.h>
-diff --git a/pxr/usdImaging/usdAppUtils/pch.h b/pxr/usdImaging/usdAppUtils/pch.h
-index 70b9602d5e..f403f45009 100644
---- a/pxr/usdImaging/usdAppUtils/pch.h
-+++ b/pxr/usdImaging/usdAppUtils/pch.h
-@@ -173,7 +173,6 @@
- #include <boost/utility/enable_if.hpp>
- #include <boost/variant.hpp>
- #include <boost/weak_ptr.hpp>
--#include <tbb/atomic.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
- #include <tbb/concurrent_unordered_set.h>
-diff --git a/pxr/usdImaging/usdImaging/pch.h b/pxr/usdImaging/usdImaging/pch.h
-index 35ea5620ec..0419c53efa 100644
---- a/pxr/usdImaging/usdImaging/pch.h
-+++ b/pxr/usdImaging/usdImaging/pch.h
-@@ -173,7 +173,6 @@
- #include <boost/utility/enable_if.hpp>
- #include <boost/variant.hpp>
- #include <boost/weak_ptr.hpp>
--#include <tbb/atomic.h>
- #include <tbb/blocked_range.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
-diff --git a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
-index 8a91fde146..df8555f739 100644
---- a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
-+++ b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
-@@ -285,22 +285,36 @@ class UsdImaging_ResolvedAttributeCache
-     // non-time varying data, entries may exist in the cache with invalid
-     // values. The version is used to determine validity.
-     struct _Entry {
--        _Entry()
-+        _Entry() noexcept
-             : value(Strategy::MakeDefault())
-             , version(_GetInitialEntryVersion()) 
-         { }
++#include <atomic>
  
-         _Entry(const query_type & query_,
-                const value_type& value_,
--               unsigned version_)
-+               unsigned version_) noexcept
-             : query(query_)
-             , value(value_)
-             , version(version_)
-         { }
+ using std::string;
+ using std::vector;
+@@ -150,9 +150,9 @@ Sdf_ChangeManager::_ProcessRemoveIfInert(_Data *data)
+     TF_VERIFY(data->outermostBlock);
+ }
  
-+        _Entry(const _Entry &other) noexcept
-+            : query(other.query)
-+            , value(other.value)
-+        {
-+            version.store(other.version.load());
-+        }
-+
-+        _Entry(_Entry &&other) noexcept
-+            : query(std::move(other.query))
-+            , value(std::move(other.value))
-+        {
-+            version.store(other.version.load());
-+        }
-+
-         query_type query;
-         value_type value;
--        tbb::atomic<unsigned> version;
-+        std::atomic<unsigned> version;
-     };
+-static tbb::atomic<size_t> &
++static std::atomic<size_t> &
+ _InitChangeSerialNumber() {
+-    static tbb::atomic<size_t> value;
++    static std::atomic<size_t> value;
+     value = 1;
+     return value;
+ }
+@@ -191,8 +191,8 @@ Sdf_ChangeManager::_SendNotices(_Data *data)
+     }
  
-     // Returns the version number for a valid cache entry
-@@ -340,7 +354,7 @@ class UsdImaging_ResolvedAttributeCache
+     // Obtain a serial number for this round of change processing.
+-    static tbb::atomic<size_t> &changeSerialNumber = _InitChangeSerialNumber();
+-    size_t serialNumber = changeSerialNumber.fetch_and_increment();
++    static std::atomic<size_t> &changeSerialNumber = _InitChangeSerialNumber();
++    size_t serialNumber = changeSerialNumber.fetch_add(1);
  
-     // A serial number indicating the valid state of entries in the cache. When
-     // an entry has an equal or greater value, the entry is valid.
--    tbb::atomic<unsigned> _cacheVersion;
-+    std::atomic<unsigned> _cacheVersion;
+     // Send global notice.
+     SdfNotice::LayersDidChange(changes, serialNumber).Send();
+diff --git a/pxr/usd/sdf/layer.cpp b/pxr/usd/sdf/layer.cpp
+index 6ff2b4dceb..9ad0803e80 100644
+--- a/pxr/usd/sdf/layer.cpp
++++ b/pxr/usd/sdf/layer.cpp
+@@ -214,7 +214,7 @@ SdfLayer::SdfLayer(
+     _MarkCurrentStateAsClean();
+ }
  
-     // Value overrides for a set of descendents.
-     ValueOverridesMap _valueOverrides;
-@@ -359,7 +373,7 @@ UsdImaging_ResolvedAttributeCache<Strategy,ImplData>::_SetCacheEntryForPrim(
-     // Note: _cacheVersion is not allowed to change during cache access.
-     unsigned v = entry->version;
-     if (v < _cacheVersion 
--        && entry->version.compare_and_swap(_cacheVersion, v) == v)
-+        && entry->version.compare_exchange_strong(v, _cacheVersion.load()))
-     {
-         entry->value = value;
-         entry->version = _GetValidVersion();
-diff --git a/pxr/usdImaging/usdImagingGL/pch.h b/pxr/usdImaging/usdImagingGL/pch.h
-index b9dfa7e416..78b92909e3 100644
---- a/pxr/usdImaging/usdImagingGL/pch.h
-+++ b/pxr/usdImaging/usdImagingGL/pch.h
-@@ -186,7 +186,6 @@
- #include <boost/utility/enable_if.hpp>
- #include <boost/variant.hpp>
- #include <boost/weak_ptr.hpp>
--#include <tbb/atomic.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
- #include <tbb/concurrent_unordered_map.h>
-diff --git a/pxr/usdImaging/usdProcImaging/pch.h b/pxr/usdImaging/usdProcImaging/pch.h
-index 32358e284a..95900985f9 100644
---- a/pxr/usdImaging/usdProcImaging/pch.h
-+++ b/pxr/usdImaging/usdProcImaging/pch.h
-@@ -161,7 +161,6 @@
+-SdfLayer::~SdfLayer()
++SdfLayer::~SdfLayer() noexcept
+ {
+     TF_PY_ALLOW_THREADS_IN_SCOPE();
+ 
+diff --git a/pxr/usd/sdf/layer.h b/pxr/usd/sdf/layer.h
+index 514f27f38f..75f84cbd2c 100644
+--- a/pxr/usd/sdf/layer.h
++++ b/pxr/usd/sdf/layer.h
+@@ -98,7 +98,7 @@ class SdfLayer
+ public:
+     /// Destructor
+     SDF_API
+-    virtual ~SdfLayer(); 
++    virtual ~SdfLayer() noexcept; // noexcept needed for std::atomic member
+ 
+     /// Noncopyable
+     SdfLayer(const SdfLayer&) = delete;
+diff --git a/pxr/usd/sdf/pch.h b/pxr/usd/sdf/pch.h
+index 0728ebe683..6af480e7e3 100644
+--- a/pxr/usd/sdf/pch.h
++++ b/pxr/usd/sdf/pch.h
+@@ -225,7 +225,6 @@
  #include <boost/variant.hpp>
  #include <boost/vmd/is_empty.hpp>
  #include <boost/vmd/is_tuple.hpp>
 -#include <tbb/atomic.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_hash_map.h>
- #include <tbb/concurrent_queue.h>
-diff --git a/pxr/usdImaging/usdRiImaging/pch.h b/pxr/usdImaging/usdRiImaging/pch.h
-index 6ad2d403bb..09a7a06cc8 100644
---- a/pxr/usdImaging/usdRiImaging/pch.h
-+++ b/pxr/usdImaging/usdRiImaging/pch.h
-@@ -169,7 +169,6 @@
- #include <boost/utility/enable_if.hpp>
- #include <boost/variant.hpp>
- #include <boost/weak_ptr.hpp>
--#include <tbb/atomic.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
- #include <tbb/concurrent_unordered_map.h>
-diff --git a/pxr/usdImaging/usdSkelImaging/pch.h b/pxr/usdImaging/usdSkelImaging/pch.h
-index 69caaac23b..7086fc4124 100644
---- a/pxr/usdImaging/usdSkelImaging/pch.h
-+++ b/pxr/usdImaging/usdSkelImaging/pch.h
-@@ -169,7 +169,6 @@
- #include <boost/utility/enable_if.hpp>
- #include <boost/variant.hpp>
- #include <boost/weak_ptr.hpp>
--#include <tbb/atomic.h>
  #include <tbb/blocked_range.h>
  #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
-diff --git a/pxr/usdImaging/usdVolImaging/pch.h b/pxr/usdImaging/usdVolImaging/pch.h
-index 0fd54d571b..b286bc7592 100644
---- a/pxr/usdImaging/usdVolImaging/pch.h
-+++ b/pxr/usdImaging/usdVolImaging/pch.h
-@@ -167,7 +167,6 @@
- #include <boost/utility/enable_if.hpp>
- #include <boost/variant.hpp>
- #include <boost/weak_ptr.hpp>
--#include <tbb/atomic.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
- #include <tbb/concurrent_unordered_map.h>
-diff --git a/pxr/usdImaging/usdviewq/pch.h b/pxr/usdImaging/usdviewq/pch.h
-index 2b6f4d7826..d14b76bf75 100644
---- a/pxr/usdImaging/usdviewq/pch.h
-+++ b/pxr/usdImaging/usdviewq/pch.h
-@@ -164,7 +164,6 @@
- #include <boost/variant.hpp>
- #include <boost/vmd/is_empty.hpp>
- #include <boost/vmd/is_tuple.hpp>
--#include <tbb/atomic.h>
- #include <tbb/cache_aligned_allocator.h>
  #include <tbb/concurrent_hash_map.h>
- #include <tbb/concurrent_queue.h>
 
-From a896f4e54d3752131a9a557c36a81d9c564ee3a6 Mon Sep 17 00:00:00 2001
+From 0677c3cace63cf965930a314e6ac9c80e5b6482f Mon Sep 17 00:00:00 2001
 From: Alex Fuller <boberfly@gmail.com>
 Date: Wed, 17 May 2023 16:27:47 +0200
-Subject: [PATCH 06/17] oneTBB: remove tbb atomic includes in precompiled
+Subject: [PATCH 04/14] oneTBB: remove tbb atomic includes in precompiled
  headers
 
 ---
@@ -705,6 +479,18 @@ index 877bc45ee5..dd9f067dd3 100644
  #include <tbb/cache_aligned_allocator.h>
  #include <tbb/concurrent_queue.h>
  #include <tbb/spin_mutex.h>
+diff --git a/pxr/imaging/plugin/hdEmbree/pch.h b/pxr/imaging/plugin/hdEmbree/pch.h
+index 7710229804..733d83b218 100644
+--- a/pxr/imaging/plugin/hdEmbree/pch.h
++++ b/pxr/imaging/plugin/hdEmbree/pch.h
+@@ -154,7 +154,6 @@
+ #include <embree3/rtcore.h>
+ #include <embree3/rtcore_geometry.h>
+ #include <embree3/rtcore_ray.h>
+-#include <tbb/atomic.h>
+ #include <tbb/blocked_range.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
 diff --git a/pxr/imaging/plugin/hdStorm/pch.h b/pxr/imaging/plugin/hdStorm/pch.h
 index 33c5124a97..081338138a 100644
 --- a/pxr/imaging/plugin/hdStorm/pch.h
@@ -778,10 +564,10 @@ index aff99924d4..ce6d0d1149 100644
  #include <tbb/concurrent_queue.h>
  #include <tbb/concurrent_unordered_set.h>
 diff --git a/pxr/usd/usd/pch.h b/pxr/usd/usd/pch.h
-index bd515aa438..96a656e809 100644
+index d360999d4b..f708a4d9ed 100644
 --- a/pxr/usd/usd/pch.h
 +++ b/pxr/usd/usd/pch.h
-@@ -228,7 +228,6 @@
+@@ -227,7 +227,6 @@
  #include <boost/utility.hpp>
  #include <boost/utility/enable_if.hpp>
  #include <boost/utility/in_place_factory.hpp>
@@ -946,10 +732,10 @@ index 7802ec3e2d..8388208cd4 100644
  #include <tbb/concurrent_queue.h>
  #include <tbb/concurrent_unordered_set.h>
 
-From 9e7bb2bdb8c87b351fe99610cba8ee35f6ef37fe Mon Sep 17 00:00:00 2001
+From a7818dbb41a3de454b351879708b2430e77ae8e6 Mon Sep 17 00:00:00 2001
 From: Brecht Van Lommel <brecht@blender.org>
 Date: Thu, 18 May 2023 00:51:26 +0200
-Subject: [PATCH 07/17] oneTBB: change tbb::tbb_thread to std::thread
+Subject: [PATCH 05/14] oneTBB: change tbb::tbb_thread to std::thread
 
 ---
  pxr/base/tf/testenv/error.cpp | 4 ++--
@@ -978,16 +764,15 @@ index e8eed44a4d..606b2a9437 100644
      t.join();
      printf("Thread completed, posting error.\n");
 
-From 40fbc9a4e8c0e619b792a611850cd8060ad6a655 Mon Sep 17 00:00:00 2001
+From e3809bb66807e6833a16199e823b610bd4d80fdb Mon Sep 17 00:00:00 2001
 From: Brecht Van Lommel <brecht@blender.org>
 Date: Thu, 18 May 2023 00:51:24 +0200
-Subject: [PATCH 08/17] oneTBB: change tbb::mutex to std::mutex
+Subject: [PATCH 06/14] oneTBB: change tbb::mutex to std::mutex
 
 ---
- pxr/usd/usd/clipCache.cpp   | 22 ++++++++++------------
- pxr/usd/usd/clipCache.h     |  4 ++--
- pxr/usd/usd/instanceCache.h |  2 +-
- 3 files changed, 13 insertions(+), 15 deletions(-)
+ pxr/usd/usd/clipCache.cpp | 22 ++++++++++------------
+ pxr/usd/usd/clipCache.h   |  4 ++--
+ 2 files changed, 12 insertions(+), 14 deletions(-)
 
 diff --git a/pxr/usd/usd/clipCache.cpp b/pxr/usd/usd/clipCache.cpp
 index c582e1d8be..b8215378ed 100644
@@ -1058,31 +843,18 @@ index 2bff0833aa..fbe2ea72dc 100644
      };
  
      /// Populate the cache with clips for \p prim. Returns true if clips
-diff --git a/pxr/usd/usd/instanceCache.h b/pxr/usd/usd/instanceCache.h
-index 0a25a7e30c..4b7c948de2 100644
---- a/pxr/usd/usd/instanceCache.h
-+++ b/pxr/usd/usd/instanceCache.h
-@@ -30,7 +30,7 @@
- #include "pxr/usd/sdf/path.h"
- #include "pxr/base/tf/hashmap.h"
- 
--#include <tbb/mutex.h>
-+#include <tbb/spin_mutex.h>
- #include <map>
- #include <unordered_map>
- #include <vector>
 
-From 34a0aa49faf63142b5abc59548941a446902a0a4 Mon Sep 17 00:00:00 2001
+From 74e0473d6426788b67c545b99812787531a03327 Mon Sep 17 00:00:00 2001
 From: Brecht Van Lommel <brecht@blender.org>
 Date: Thu, 18 May 2023 00:51:27 +0200
-Subject: [PATCH 09/17] oneTBB: explicitly specify hasher
+Subject: [PATCH 07/14] oneTBB: explicitly specify hasher
 
 ---
  pxr/usd/usd/crateFile.h | 17 ++++++++++-------
  1 file changed, 10 insertions(+), 7 deletions(-)
 
 diff --git a/pxr/usd/usd/crateFile.h b/pxr/usd/usd/crateFile.h
-index 399367e6e0..344f357220 100644
+index 67b1aa385f..38f65c6886 100644
 --- a/pxr/usd/usd/crateFile.h
 +++ b/pxr/usd/usd/crateFile.h
 @@ -349,12 +349,15 @@ class CrateFile
@@ -1117,10 +889,10 @@ index 399367e6e0..344f357220 100644
  
      public:
 
-From 84233cc4ee9ef52964ffb3aa65b7fd67687b06d6 Mon Sep 17 00:00:00 2001
+From 0e7845215d72822e6d4e69e7d302e64061340bbf Mon Sep 17 00:00:00 2001
 From: Brecht Van Lommel <brecht@blender.org>
 Date: Thu, 18 May 2023 00:51:28 +0200
-Subject: [PATCH 10/17] oneTBB: replace TBB utility functions for placement new
+Subject: [PATCH 08/14] oneTBB: replace TBB utility functions for placement new
 
 ---
  pxr/base/trace/concurrentList.h | 4 ++--
@@ -1149,10 +921,238 @@ index 0337933a31..01886a1b93 100644
          // Add the node to the linked list in an atomic manner.
          do {
 
-From 69e35643a7e5b9d0f94a646b70ceccc2eeea97ac Mon Sep 17 00:00:00 2001
+From b2dc9d7e43fb24d0ebc075e1f09fb9958c19b106 Mon Sep 17 00:00:00 2001
+From: Alex Fuller <boberfly@gmail.com>
+Date: Wed, 17 May 2023 16:27:47 +0200
+Subject: [PATCH 09/14] oneTBB: tbb::atomic to std::atomic in usdImagining
+
+---
+ pxr/usdImaging/plugin/usdShaders/pch.h        |  1 -
+ pxr/usdImaging/usdAppUtils/pch.h              |  1 -
+ pxr/usdImaging/usdImaging/pch.h               |  1 -
+ .../usdImaging/resolvedAttributeCache.h       | 24 +++++++++++++++----
+ pxr/usdImaging/usdImagingGL/pch.h             |  1 -
+ pxr/usdImaging/usdProcImaging/pch.h           |  1 -
+ pxr/usdImaging/usdRiPxrImaging/pch.h          |  1 -
+ pxr/usdImaging/usdSkelImaging/pch.h           |  1 -
+ pxr/usdImaging/usdVolImaging/pch.h            |  1 -
+ pxr/usdImaging/usdviewq/pch.h                 |  1 -
+ 10 files changed, 19 insertions(+), 14 deletions(-)
+
+diff --git a/pxr/usdImaging/plugin/usdShaders/pch.h b/pxr/usdImaging/plugin/usdShaders/pch.h
+index 2037e25b8b..c5836624f4 100644
+--- a/pxr/usdImaging/plugin/usdShaders/pch.h
++++ b/pxr/usdImaging/plugin/usdShaders/pch.h
+@@ -160,7 +160,6 @@
+ #include <boost/unordered_map.hpp>
+ #include <boost/utility.hpp>
+ #include <boost/utility/enable_if.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
+ #include <tbb/concurrent_unordered_set.h>
+diff --git a/pxr/usdImaging/usdAppUtils/pch.h b/pxr/usdImaging/usdAppUtils/pch.h
+index 70b9602d5e..f403f45009 100644
+--- a/pxr/usdImaging/usdAppUtils/pch.h
++++ b/pxr/usdImaging/usdAppUtils/pch.h
+@@ -173,7 +173,6 @@
+ #include <boost/utility/enable_if.hpp>
+ #include <boost/variant.hpp>
+ #include <boost/weak_ptr.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
+ #include <tbb/concurrent_unordered_set.h>
+diff --git a/pxr/usdImaging/usdImaging/pch.h b/pxr/usdImaging/usdImaging/pch.h
+index 35ea5620ec..0419c53efa 100644
+--- a/pxr/usdImaging/usdImaging/pch.h
++++ b/pxr/usdImaging/usdImaging/pch.h
+@@ -173,7 +173,6 @@
+ #include <boost/utility/enable_if.hpp>
+ #include <boost/variant.hpp>
+ #include <boost/weak_ptr.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/blocked_range.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
+diff --git a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
+index 3e75f6c63d..f3b4c1c872 100644
+--- a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
++++ b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
+@@ -283,22 +283,36 @@ class UsdImaging_ResolvedAttributeCache
+     // non-time varying data, entries may exist in the cache with invalid
+     // values. The version is used to determine validity.
+     struct _Entry {
+-        _Entry()
++        _Entry() noexcept
+             : value(Strategy::MakeDefault())
+             , version(_GetInitialEntryVersion()) 
+         { }
+ 
+         _Entry(const query_type & query_,
+                const value_type& value_,
+-               unsigned version_)
++               unsigned version_) noexcept
+             : query(query_)
+             , value(value_)
+             , version(version_)
+         { }
+ 
++        _Entry(const _Entry &other) noexcept
++            : query(other.query)
++            , value(other.value)
++        {
++            version.store(other.version.load());
++        }
++
++        _Entry(_Entry &&other) noexcept
++            : query(std::move(other.query))
++            , value(std::move(other.value))
++        {
++            version.store(other.version.load());
++        }
++
+         query_type query;
+         value_type value;
+-        tbb::atomic<unsigned> version;
++        std::atomic<unsigned> version;
+     };
+ 
+     // Returns the version number for a valid cache entry
+@@ -338,7 +352,7 @@ class UsdImaging_ResolvedAttributeCache
+ 
+     // A serial number indicating the valid state of entries in the cache. When
+     // an entry has an equal or greater value, the entry is valid.
+-    tbb::atomic<unsigned> _cacheVersion;
++    std::atomic<unsigned> _cacheVersion;
+ 
+     // Value overrides for a set of descendents.
+     ValueOverridesMap _valueOverrides;
+@@ -357,7 +371,7 @@ UsdImaging_ResolvedAttributeCache<Strategy,ImplData>::_SetCacheEntryForPrim(
+     // Note: _cacheVersion is not allowed to change during cache access.
+     unsigned v = entry->version;
+     if (v < _cacheVersion 
+-        && entry->version.compare_and_swap(_cacheVersion, v) == v)
++        && entry->version.compare_exchange_strong(v, _cacheVersion.load()))
+     {
+         entry->value = value;
+         entry->version = _GetValidVersion();
+diff --git a/pxr/usdImaging/usdImagingGL/pch.h b/pxr/usdImaging/usdImagingGL/pch.h
+index b9dfa7e416..78b92909e3 100644
+--- a/pxr/usdImaging/usdImagingGL/pch.h
++++ b/pxr/usdImaging/usdImagingGL/pch.h
+@@ -186,7 +186,6 @@
+ #include <boost/utility/enable_if.hpp>
+ #include <boost/variant.hpp>
+ #include <boost/weak_ptr.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
+ #include <tbb/concurrent_unordered_map.h>
+diff --git a/pxr/usdImaging/usdProcImaging/pch.h b/pxr/usdImaging/usdProcImaging/pch.h
+index 32358e284a..95900985f9 100644
+--- a/pxr/usdImaging/usdProcImaging/pch.h
++++ b/pxr/usdImaging/usdProcImaging/pch.h
+@@ -161,7 +161,6 @@
+ #include <boost/variant.hpp>
+ #include <boost/vmd/is_empty.hpp>
+ #include <boost/vmd/is_tuple.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_hash_map.h>
+ #include <tbb/concurrent_queue.h>
+diff --git a/pxr/usdImaging/usdRiPxrImaging/pch.h b/pxr/usdImaging/usdRiPxrImaging/pch.h
+index 6ad2d403bb..09a7a06cc8 100644
+--- a/pxr/usdImaging/usdRiPxrImaging/pch.h
++++ b/pxr/usdImaging/usdRiPxrImaging/pch.h
+@@ -169,7 +169,6 @@
+ #include <boost/utility/enable_if.hpp>
+ #include <boost/variant.hpp>
+ #include <boost/weak_ptr.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
+ #include <tbb/concurrent_unordered_map.h>
+diff --git a/pxr/usdImaging/usdSkelImaging/pch.h b/pxr/usdImaging/usdSkelImaging/pch.h
+index 69caaac23b..7086fc4124 100644
+--- a/pxr/usdImaging/usdSkelImaging/pch.h
++++ b/pxr/usdImaging/usdSkelImaging/pch.h
+@@ -169,7 +169,6 @@
+ #include <boost/utility/enable_if.hpp>
+ #include <boost/variant.hpp>
+ #include <boost/weak_ptr.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/blocked_range.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
+diff --git a/pxr/usdImaging/usdVolImaging/pch.h b/pxr/usdImaging/usdVolImaging/pch.h
+index 0fd54d571b..b286bc7592 100644
+--- a/pxr/usdImaging/usdVolImaging/pch.h
++++ b/pxr/usdImaging/usdVolImaging/pch.h
+@@ -167,7 +167,6 @@
+ #include <boost/utility/enable_if.hpp>
+ #include <boost/variant.hpp>
+ #include <boost/weak_ptr.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
+ #include <tbb/concurrent_unordered_map.h>
+diff --git a/pxr/usdImaging/usdviewq/pch.h b/pxr/usdImaging/usdviewq/pch.h
+index 2b6f4d7826..d14b76bf75 100644
+--- a/pxr/usdImaging/usdviewq/pch.h
++++ b/pxr/usdImaging/usdviewq/pch.h
+@@ -164,7 +164,6 @@
+ #include <boost/variant.hpp>
+ #include <boost/vmd/is_empty.hpp>
+ #include <boost/vmd/is_tuple.hpp>
+-#include <tbb/atomic.h>
+ #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_hash_map.h>
+ #include <tbb/concurrent_queue.h>
+
+From 3e27a5ae5c52ae861c43b1eca8ac6777d1287296 Mon Sep 17 00:00:00 2001
+From: Brecht Van Lommel <brecht@blender.org>
+Date: Fri, 23 Jun 2023 18:00:18 +0200
+Subject: [PATCH 10/14] oneTBB: use non-const iterator for
+ tbb::concurrent_unordered_map
+
+Older TBB versions incorrectly allowed these to be const.
+---
+ pxr/imaging/hd/dependencyForwardingSceneIndex.cpp  | 2 +-
+ pxr/usdImaging/usdImaging/resolvedAttributeCache.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp b/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp
+index 0dcdcac98e..e22d89ba3a 100644
+--- a/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp
++++ b/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp
+@@ -211,7 +211,7 @@ HdDependencyForwardingSceneIndex::_PrimDirtied(
+ void 
+ HdDependencyForwardingSceneIndex::_ClearDependencies(const SdfPath &primPath)
+ {
+-    _AffectedPrimToDependsOnPathsEntryMap::const_iterator it =
++    _AffectedPrimToDependsOnPathsEntryMap::iterator it =
+         _affectedPrimToDependsOnPathsMap.find(primPath);
+     if (it == _affectedPrimToDependsOnPathsMap.end()) {
+         return;
+diff --git a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
+index f3b4c1c872..c645579cc9 100644
+--- a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
++++ b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
+@@ -391,7 +391,7 @@ typename UsdImaging_ResolvedAttributeCache<Strategy, ImplData>::_Entry*
+ UsdImaging_ResolvedAttributeCache<Strategy, ImplData>::_GetCacheEntryForPrim(
+     const UsdPrim &prim) const
+ {
+-    typename _CacheMap::const_iterator it = _cache.find(prim);
++    typename _CacheMap::iterator it = _cache.find(prim);
+     if (it != _cache.end()) {
+         return &it->second;
+     }
+
+From 7f0a56835134f21e8b76ce05c23e0ef545c2f5f6 Mon Sep 17 00:00:00 2001
 From: Brecht Van Lommel <brecht@blender.org>
 Date: Thu, 18 May 2023 00:51:30 +0200
-Subject: [PATCH 11/17] oneTBB: support thread limits
+Subject: [PATCH 11/14] oneTBB: support thread limits
 
 This now modifies global_control::max_allowed_parallelism instead of
 task_scheduler_init, which leads to changes in API behavior.
@@ -1424,10 +1424,10 @@ index bc629b8124..ad6bae8aea 100644
  
  bool
 
-From 748039fe751dbb499bbdc3659d4046aae8721899 Mon Sep 17 00:00:00 2001
+From f91dc6d3798a080335a869a8fe1077264e67e3e6 Mon Sep 17 00:00:00 2001
 From: Brecht Van Lommel <brecht@blender.org>
 Date: Thu, 18 May 2023 00:51:31 +0200
-Subject: [PATCH 12/17] oneTBB: support work dispatcher
+Subject: [PATCH 12/14] oneTBB: support work dispatcher
 
 To make concurrent wait thread safe this is accessing the internals of TBB,
 since the TBB wait implementation has a comment saying it is not thread safe.
@@ -1613,26 +1613,61 @@ index 2c499d6ab5..62eb7132d1 100644
      // The error transports we use to transmit errors in other threads back to
      // this thread.
 
-From 60deed4ffc0149ea125a9f9e6bbdc4bae61eeecc Mon Sep 17 00:00:00 2001
+From 6d8b2c00973101d947477bb2a9239d9567a2f5a4 Mon Sep 17 00:00:00 2001
+From: Brecht Van Lommel <brecht@blender.org>
+Date: Mon, 2 Oct 2023 13:51:45 +0200
+Subject: [PATCH 13/14] Fix missing include, that previously came in indirectly
+
+---
+ pxr/base/work/testenv/testWorkLoops.cpp  | 1 +
+ pxr/base/work/testenv/testWorkReduce.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/pxr/base/work/testenv/testWorkLoops.cpp b/pxr/base/work/testenv/testWorkLoops.cpp
+index e349218787..5fcdbf5f4a 100644
+--- a/pxr/base/work/testenv/testWorkLoops.cpp
++++ b/pxr/base/work/testenv/testWorkLoops.cpp
+@@ -35,6 +35,7 @@
+ #include <functional>
+ 
+ #include <cstdio>
++#include <cstring>
+ #include <numeric>
+ #include <iostream>
+ #include <vector>
+diff --git a/pxr/base/work/testenv/testWorkReduce.cpp b/pxr/base/work/testenv/testWorkReduce.cpp
+index 10f94e4806..d4a6ccc14d 100644
+--- a/pxr/base/work/testenv/testWorkReduce.cpp
++++ b/pxr/base/work/testenv/testWorkReduce.cpp
+@@ -35,6 +35,7 @@
+ #include <functional>
+ 
+ #include <cstdio>
++#include <cstring>
+ #include <iostream>
+ #include <vector>
+ 
+
+From d1b193e2bf2d05b16d5d15d32994392a2205f911 Mon Sep 17 00:00:00 2001
 From: Brecht Van Lommel <brecht@blender.org>
 Date: Thu, 18 May 2023 00:51:32 +0200
-Subject: [PATCH 13/17] Add --onetbb option to build_usd.py, to build with TBB
+Subject: [PATCH 14/14] Add --onetbb option to build_usd.py, to build with TBB
  2021
 
 And update FindTBB to support it. This also changes OpenVDB 7 to 10 when
 using oneTBB since earlier versions do not support it.
 ---
- build_scripts/build_usd.py  | 35 ++++++++++++++++++++++++++++-------
- cmake/modules/FindTBB.cmake |  7 ++++++-
- 2 files changed, 34 insertions(+), 8 deletions(-)
+ build_scripts/build_usd.py  | 47 +++++++++++++++++++++++++++----------
+ cmake/modules/FindTBB.cmake | 20 ++++++++++++----
+ 2 files changed, 50 insertions(+), 17 deletions(-)
 
 diff --git a/build_scripts/build_usd.py b/build_scripts/build_usd.py
-index ed6213eee0..104c90d3b9 100644
+index 14e2c7a507..c8418bba62 100644
 --- a/build_scripts/build_usd.py
 +++ b/build_scripts/build_usd.py
-@@ -934,13 +934,19 @@ def InstallBoost(context, force, buildArgs):
+@@ -939,13 +939,19 @@ def InstallBoost(context, force, buildArgs):
  else:
-     TBB_URL = "https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U6.zip"
+     TBB_URL = "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.zip"
  
 +TBB_2021_URL = "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.9.0.zip"
 +
@@ -1655,23 +1690,36 @@ index ed6213eee0..104c90d3b9 100644
  
  def InstallTBB_Windows(context, force, buildArgs):
      with CurrentWorkingDirectory(DownloadURL(TBB_URL, context, force, 
-@@ -1240,10 +1246,13 @@ def InstallBLOSC(context, force, buildArgs):
- ############################################################
+@@ -1196,17 +1202,20 @@ def InstallBLOSC(context, force, buildArgs):
  # OpenVDB
  
--OPENVDB_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v7.1.0.zip"
-+OPENVDB_7_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v7.1.0.zip"
+ OPENVDB_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v9.1.0.zip"
+-
+-# OpenVDB v9.1.0 requires TBB 2019.0 or above, but this script installs
+-# TBB 2018 on macOS Intel systems for reasons documented above. So we
+-# keep OpenVDB at the version specified for the VFX Reference Platform
+-# CY2021, which is the last version that supported 2018.
+-OPENVDB_INTEL_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v8.2.0.zip"
++OPENVDB_8_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v8.2.0.zip"
 +OPENVDB_10_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v10.0.1.zip"
  
  def InstallOpenVDB(context, force, buildArgs):
--    with CurrentWorkingDirectory(DownloadURL(OPENVDB_URL, context, force)):
-+    # oneTBB requires new OpenVDB
-+    openvdb_url = OPENVDB_10_URL if context.tbbVersion == "2021" else OPENVDB_7_URL
-+    with CurrentWorkingDirectory(DownloadURL(openvdb_url, context, force)):
+     openvdb_url = OPENVDB_URL
+-    if MacOS() and not apple_utils.IsTargetArm(context):
+-        openvdb_url = OPENVDB_INTEL_URL
++    # OpenVDB 10 is the first release to support oneTBB.
++    if context.tbbVersion == "2021":
++        openvdb_url = OPENVDB_10_URL
++    # OpenVDB v9.1.0 requires TBB 2019.0 or above, but this script installs
++    # TBB 2018 on macOS Intel systems for reasons documented above. So we
++    # keep OpenVDB at the version specified for the VFX Reference Platform
++    # CY2021, which is the last version that supported 2018.
++    elif MacOS() and not apple_utils.IsTargetArm(context):
++            openvdb_url = OPENVDB_8_URL
+ 
+     with CurrentWorkingDirectory(DownloadURL(openvdb_url, context, force)):
          extraArgs = [
-             '-DOPENVDB_BUILD_PYTHON_MODULE=OFF',
-             '-DOPENVDB_BUILD_BINARIES=OFF',
-@@ -2036,6 +2045,13 @@ def InstallUSD(context, force, buildArgs):
+@@ -1930,6 +1939,13 @@ def InstallUSD(context, force, buildArgs):
                        action="store_false",
                        help="Disable OpenVDB support in imaging (default)")
  subgroup = group.add_mutually_exclusive_group()
@@ -1685,7 +1733,7 @@ index ed6213eee0..104c90d3b9 100644
  subgroup.add_argument("--usdview", dest="build_usdview",
                        action="store_true", default=True,
                        help="Build usdview (default)")
-@@ -2207,6 +2223,9 @@ def __init__(self, args):
+@@ -2102,6 +2118,9 @@ def __init__(self, args):
          self.buildTutorials = args.build_tutorials
          self.buildTools = args.build_tools
  
@@ -1695,24 +1743,24 @@ index ed6213eee0..104c90d3b9 100644
          # - Imaging
          self.buildImaging = (args.build_imaging == IMAGING or
                               args.build_imaging == USD_IMAGING)
-@@ -2481,6 +2500,7 @@ def _JoinVersion(v):
+@@ -2366,6 +2385,7 @@ def _JoinVersion(v):
+     Python support              {buildPython}
        Python Debug:             {debugPython}
-       Python 3:                 {enablePython3}
        Python docs:              {buildPythonDocs}
 +    TBB version:                {tbbVersion}
      Documentation               {buildDocs}
      Tests                       {buildTests}
      Examples                    {buildExamples}
-@@ -2543,6 +2563,7 @@ def FormatBuildArguments(buildArgs):
+@@ -2427,6 +2447,7 @@ def FormatBuildArguments(buildArgs):
+     buildPython=("On" if context.buildPython else "Off"),
      debugPython=("On" if context.debugPython else "Off"),
-     enablePython3=("On" if Python3() else "Off"),
      buildPythonDocs=("On" if context.buildPythonDocs else "Off"),
 +    tbbVersion=context.tbbVersion,
      buildDocs=("On" if context.buildDocs else "Off"),
      buildTests=("On" if context.buildTests else "Off"),
      buildExamples=("On" if context.buildExamples else "Off"),
 diff --git a/cmake/modules/FindTBB.cmake b/cmake/modules/FindTBB.cmake
-index 9bf69a0229..49c09d290d 100644
+index 9bf69a0229..b00da7fb48 100644
 --- a/cmake/modules/FindTBB.cmake
 +++ b/cmake/modules/FindTBB.cmake
 @@ -197,7 +197,12 @@ if(NOT TBB_FOUND)
@@ -1721,214 +1769,37 @@ index 9bf69a0229..49c09d290d 100644
    if(TBB_INCLUDE_DIRS)
 -    file(READ "${TBB_INCLUDE_DIRS}/tbb/tbb_stddef.h" _tbb_version_file)
 +    # Use new oneTBB version header if it exists.
-+    if(EXISTS "${TBB_INCLUDE_DIRS}/tbb/version.h")
-+      file(READ "${TBB_INCLUDE_DIRS}/tbb/version.h" _tbb_version_file)
++    if(EXISTS "${TBB_INCLUDE_DIRS}/oneapi/tbb/version.h")
++      file(READ "${TBB_INCLUDE_DIRS}/oneapi/tbb/version.h" _tbb_version_file)
 +    else()
 +      file(READ "${TBB_INCLUDE_DIRS}/tbb/tbb_stddef.h" _tbb_version_file)
 +    endif()
      string(REGEX REPLACE ".*#define TBB_VERSION_MAJOR ([0-9]+).*" "\\1"
          TBB_VERSION_MAJOR "${_tbb_version_file}")
      string(REGEX REPLACE ".*#define TBB_VERSION_MINOR ([0-9]+).*" "\\1"
-
-From 65c0d86e9136588505162e0d06688574d932260e Mon Sep 17 00:00:00 2001
-From: Brecht Van Lommel <brecht@blender.org>
-Date: Fri, 23 Jun 2023 18:00:18 +0200
-Subject: [PATCH 14/17] oneTBB: use non-const iterator for
- tbb::concurrent_unordered_map
-
-Older TBB versions incorrectly allowed these to be const.
----
- pxr/imaging/hd/dependencyForwardingSceneIndex.cpp  | 2 +-
- pxr/usdImaging/usdImaging/resolvedAttributeCache.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp b/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp
-index 0dcdcac98e..e22d89ba3a 100644
---- a/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp
-+++ b/pxr/imaging/hd/dependencyForwardingSceneIndex.cpp
-@@ -211,7 +211,7 @@ HdDependencyForwardingSceneIndex::_PrimDirtied(
- void 
- HdDependencyForwardingSceneIndex::_ClearDependencies(const SdfPath &primPath)
- {
--    _AffectedPrimToDependsOnPathsEntryMap::const_iterator it =
-+    _AffectedPrimToDependsOnPathsEntryMap::iterator it =
-         _affectedPrimToDependsOnPathsMap.find(primPath);
-     if (it == _affectedPrimToDependsOnPathsMap.end()) {
-         return;
-diff --git a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
-index df8555f739..d452d41eb8 100644
---- a/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
-+++ b/pxr/usdImaging/usdImaging/resolvedAttributeCache.h
-@@ -393,7 +393,7 @@ typename UsdImaging_ResolvedAttributeCache<Strategy, ImplData>::_Entry*
- UsdImaging_ResolvedAttributeCache<Strategy, ImplData>::_GetCacheEntryForPrim(
-     const UsdPrim &prim) const
- {
--    typename _CacheMap::const_iterator it = _cache.find(prim);
-+    typename _CacheMap::iterator it = _cache.find(prim);
-     if (it != _cache.end()) {
-         return &it->second;
-     }
-
-From 0e9f931aea26c03622cbe7215529ba274f363a23 Mon Sep 17 00:00:00 2001
-From: Brecht Van Lommel <brecht@blender.org>
-Date: Fri, 23 Jun 2023 18:08:59 +0200
-Subject: [PATCH 15/17] Detect oneapi/tbb/version.h for clarity.
-
----
- cmake/modules/FindTBB.cmake | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/cmake/modules/FindTBB.cmake b/cmake/modules/FindTBB.cmake
-index 49c09d290d..73a9ceafb4 100644
---- a/cmake/modules/FindTBB.cmake
-+++ b/cmake/modules/FindTBB.cmake
-@@ -198,8 +198,8 @@ if(NOT TBB_FOUND)
+@@ -211,15 +216,22 @@ if(NOT TBB_FOUND)
+   # Find TBB components
+   ##################################
  
-   if(TBB_INCLUDE_DIRS)
-     # Use new oneTBB version header if it exists.
--    if(EXISTS "${TBB_INCLUDE_DIRS}/tbb/version.h")
--      file(READ "${TBB_INCLUDE_DIRS}/tbb/version.h" _tbb_version_file)
-+    if(EXISTS "${TBB_INCLUDE_DIRS}/oneapi/tbb/version.h")
-+      file(READ "${TBB_INCLUDE_DIRS}/oneapi/tbb/version.h" _tbb_version_file)
-     else()
-       file(READ "${TBB_INCLUDE_DIRS}/tbb/tbb_stddef.h" _tbb_version_file)
-     endif()
-
-From 27e36c47d55b383fbddaf498a737d3c1ea543c8d Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Adri=C3=A0=20Cabello?= <adro.cc79@proton.me>
-Date: Thu, 24 Aug 2023 17:50:14 +0200
-Subject: [PATCH 16/17] define cstring header
-
----
- pxr/base/work/testenv/testWorkLoops.cpp  | 1 +
- pxr/base/work/testenv/testWorkReduce.cpp | 1 +
- 2 files changed, 2 insertions(+)
-
-diff --git a/pxr/base/work/testenv/testWorkLoops.cpp b/pxr/base/work/testenv/testWorkLoops.cpp
-index e349218787..c9228981e8 100644
---- a/pxr/base/work/testenv/testWorkLoops.cpp
-+++ b/pxr/base/work/testenv/testWorkLoops.cpp
-@@ -38,6 +38,7 @@
- #include <numeric>
- #include <iostream>
- #include <vector>
-+#include <cstring>
- 
- using namespace std::placeholders;
- 
-diff --git a/pxr/base/work/testenv/testWorkReduce.cpp b/pxr/base/work/testenv/testWorkReduce.cpp
-index 10f94e4806..52609b496b 100644
---- a/pxr/base/work/testenv/testWorkReduce.cpp
-+++ b/pxr/base/work/testenv/testWorkReduce.cpp
-@@ -37,6 +37,7 @@
- #include <cstdio>
- #include <iostream>
- #include <vector>
-+#include <cstring>
- 
- using namespace std::placeholders;
- 
-
-From e2bd46bebcd728db8998ddfe43fa2074fe2b5d32 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Adri=C3=A0=20Cabello?= <adro.cc79@proton.me>
-Date: Thu, 24 Aug 2023 19:27:47 +0200
-Subject: [PATCH 17/17] define cstring header
-
----
- pxr/imaging/hdx/colorCorrectionTask.cpp | 23 ++++++++++++++++-------
- pxr/imaging/hdx/colorCorrectionTask.h   |  5 +++--
- 2 files changed, 19 insertions(+), 9 deletions(-)
-
-diff --git a/pxr/imaging/hdx/colorCorrectionTask.cpp b/pxr/imaging/hdx/colorCorrectionTask.cpp
-index e87ed7048a..fa928f4d55 100644
---- a/pxr/imaging/hdx/colorCorrectionTask.cpp
-+++ b/pxr/imaging/hdx/colorCorrectionTask.cpp
-@@ -35,6 +35,7 @@
- #include "pxr/imaging/hgi/graphicsCmdsDesc.h"
- #include "pxr/imaging/hgi/hgi.h"
- #include "pxr/imaging/hgi/tokens.h"
-+#include "pxr/base/work/dispatcher.h"
- 
- #include <iostream>
- 
-@@ -54,6 +55,13 @@ TF_DEFINE_PRIVATE_TOKENS(
- 
- static const int HDX_DEFAULT_LUT3D_SIZE_OCIO = 65;
- 
-+class HdxColorCorrectionTask::_Impl {
-+public:
-+    _Impl() {}
++  # oneTBB on Windows has interface version in the name.
++  if(WIN32 AND TBB_INTERFACE_VERSION GREATER_EQUAL 12000)
++    set(_tbb_library_name tbb12)
++  else()
++    set(_tbb_library_name tbb)
++  endif()
 +
-+    WorkDispatcher _workDispatcher;
-+};
-+
- HdxColorCorrectionTaskParams::HdxColorCorrectionTaskParams()
-   : colorCorrectionMode(HdxColorCorrectionTokens->disabled)
-   , lut3dSizeOCIO(HDX_DEFAULT_LUT3D_SIZE_OCIO)
-@@ -63,7 +71,8 @@ HdxColorCorrectionTaskParams::HdxColorCorrectionTaskParams()
- HdxColorCorrectionTask::HdxColorCorrectionTask(
-     HdSceneDelegate* delegate,
-     SdfPath const& id)
--  : HdxTask(id)
-+  : HdxTask(id),
-+    _impl(new _Impl)
- {
-     _params.lut3dSizeOCIO = HDX_DEFAULT_LUT3D_SIZE_OCIO;
- }
-@@ -73,8 +82,8 @@ HdxColorCorrectionTask::~HdxColorCorrectionTask()
-     // If we had queued up work in Sync(), we expect a subsequent
-     // invokation of Execute() will have waited on completion.
-     // However, as a precaution, cancel and wait on any tasks here.
--    _workDispatcher.Cancel();
--    _workDispatcher.Wait();
-+    _impl->_workDispatcher.Cancel();
-+    _impl->_workDispatcher.Wait();
+   if(TBB_VERSION VERSION_LESS 4.3)
+-    set(TBB_SEARCH_COMPOMPONENTS tbb_preview tbbmalloc tbb)
++    set(TBB_SEARCH_COMPOMPONENTS tbb_preview tbbmalloc ${_tbb_library_name})
+   else()
+-    set(TBB_SEARCH_COMPOMPONENTS tbb_preview tbbmalloc_proxy tbbmalloc tbb)
++    set(TBB_SEARCH_COMPOMPONENTS tbb_preview tbbmalloc_proxy tbbmalloc ${_tbb_library_name})
+   endif()
  
-     if (_aovSampler) {
-         _GetHgi()->DestroySampler(&_aovSampler);
-@@ -765,7 +774,7 @@ HdxColorCorrectionTask::_CreateShaderResources()
-         fsCode += "#define texture3D texture\n";
+   # Find each component
+   foreach(_comp ${TBB_SEARCH_COMPOMPONENTS})
+-    if(";${TBB_FIND_COMPONENTS};tbb;" MATCHES ";${_comp};")
++    if(";${TBB_FIND_COMPONENTS};" MATCHES ";${_comp};")
  
-         // Ensure the OICO resource prep task has completed.
--        _workDispatcher.Wait();
-+        _impl->_workDispatcher.Wait();
- 
-         // Discard prior GPU resources.
-         for (TextureSamplerInfo &textureLut : _textureLUTs) {
-@@ -1061,9 +1070,9 @@ HdxColorCorrectionTask::_Sync(HdSceneDelegate* delegate,
-             // It is possible for the prior prep task to have not
-             // yet completed, so cancel and wait on it before enqueuing
-             // a new task with updated parameters.
--            _workDispatcher.Cancel();
--            _workDispatcher.Wait();
--            _workDispatcher.Run(&_CreateOpenColorIOResources,
-+            _impl->_workDispatcher.Cancel();
-+            _impl->_workDispatcher.Wait();
-+            _impl->_workDispatcher.Run(&_CreateOpenColorIOResources,
-                                 _GetHgi(),
-                                 _params,
-                                 &_ocioResources);
-diff --git a/pxr/imaging/hdx/colorCorrectionTask.h b/pxr/imaging/hdx/colorCorrectionTask.h
-index ecd5f3ff06..b75996824f 100644
---- a/pxr/imaging/hdx/colorCorrectionTask.h
-+++ b/pxr/imaging/hdx/colorCorrectionTask.h
-@@ -36,8 +36,8 @@
- #include "pxr/imaging/hgi/resourceBindings.h"
- #include "pxr/imaging/hgi/shaderProgram.h"
- #include "pxr/imaging/hgi/texture.h"
--#include "pxr/base/work/dispatcher.h"
- 
-+#include <memory>
- #include <string>
- 
- PXR_NAMESPACE_OPEN_SCOPE
-@@ -218,7 +218,8 @@ class HdxColorCorrectionTask : public HdxTask
-     HgiGraphicsPipelineHandle _pipeline;
-     float _screenSize[2];
- 
--    WorkDispatcher _workDispatcher;
-+    class _Impl;
-+    std::unique_ptr<_Impl> _impl;
- };
- 
- // VtValue requirements
+       # Search for the libraries
+       find_library(TBB_${_comp}_LIBRARY_RELEASE ${_comp}

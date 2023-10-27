@@ -132,9 +132,9 @@ index 7710229804..e8e733bfc4 100644
 +#include <embree4/rtcore.h>
 +#include <embree4/rtcore_geometry.h>
 +#include <embree4/rtcore_ray.h>
- #include <tbb/atomic.h>
  #include <tbb/blocked_range.h>
  #include <tbb/cache_aligned_allocator.h>
+ #include <tbb/concurrent_queue.h>
 diff --git a/pxr/imaging/plugin/hdEmbree/renderDelegate.h b/pxr/imaging/plugin/hdEmbree/renderDelegate.h
 index 20a80487a9..6a6bc9dbf1 100644
 --- a/pxr/imaging/plugin/hdEmbree/renderDelegate.h
