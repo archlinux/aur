@@ -1,6 +1,6 @@
 pkgbase = r-vidger
 	pkgdesc = Create rapid visualizations of RNAseq data in R
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/vidger
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-vidger
 	depends = r-tidyr
 	optdepends = r-biocstyle
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/vidger_1.20.0.tar.gz
-	sha256sums = ca9afeb2504c6f7f584cd9f6815ba0e782d7dded6b0e566d4b68cc9ed2d1916b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vidger_1.22.0.tar.gz
+	sha256sums = 46cfc6b675433b06e41cfd4fa3160c7e2bb06401c4167788a253e2c7e431b4d1
 
 pkgname = r-vidger
