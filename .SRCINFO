@@ -1,6 +1,6 @@
 pkgbase = r-adamgui
 	pkgdesc = Activity and Diversity Analysis Module Graphical User Interface
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ADAMgui
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-adamgui
 	depends = r-varhandle
 	optdepends = r-biocstyle
 	optdepends = r-markdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ADAMgui_1.16.0.tar.gz
-	sha256sums = 72248e14f746538de26407298af9387dd3b919c743db717a391f2556ebd28049
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ADAMgui_1.18.0.tar.gz
+	sha256sums = 03d416aca628f3ddc27ad5197cdca8d4f980368ccb57d6dba95df73fe96da582
 
 pkgname = r-adamgui
