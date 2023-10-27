@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=9.0.1976
+pkgver=9.0.2070
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
@@ -23,8 +23,10 @@ optdepends=('python: Python language support'
 conflicts=('vim' 'gvim' 'vim-minimal')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-plugin-runtime')
 replaces=('vim' 'vim-minimal' 'gvim')
-source=(git+https://github.com/vim/vim.git?signed#tag=v${pkgver})
-sha512sums=('SKIP')
+source=(git+https://github.com/vim/vim.git?signed#tag=v${pkgver}
+        vimdoc.hook)
+sha512sums=('SKIP'
+            'a02ad0d66f300160911aeb81d8886c6c558436ac4ee3fcd161dd65c6b1e5d1f41b9005a7f5bb5ba68d57027fc1c8e43daabf055bd6207fb5a216a67f758df8d1')
 validpgpkeys=('4F19708816918E19AAE19DEEF3F92DA383FDDE09') # Christian Brabandt <cb@256bit.org>
 
 prepare() {
@@ -82,6 +84,9 @@ package() {
   # license
   install -Dm 644 runtime/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
+
+  # pacman hook for documentation helptags
+  install -Dm 644 "${srcdir}"/vimdoc.hook "${pkgdir}"/usr/share/libalpm/hooks/vimdoc.hook
 }
 
 # vim: ts=2 sw=2 et:
