@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SNAGEEdata
-_pkgver=1.37.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.37.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='SNAGEE data'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-snagee
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da9c21ebae2ee760d78cc92c35e234ffdc005a1f2205fabf440e8b6b666ebc14')
+sha256sums=('76ded9fe3edf46e0f928499e701a7a11581a97dcf39479e5f7794aaa3b718b9f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
