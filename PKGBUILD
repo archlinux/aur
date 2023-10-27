@@ -2,8 +2,9 @@
 
 pkgname=cura-modern-appimage
 pkgver=5.4.0
-pkgrel=1
-pkgdesc="State-of-the-art slicer app to prepare your 3D models for your 3D printer. (Modern AppImage)"
+pkgrel=2
+pkgdesc="**DEPRECATED** MIGRATE TO cura-bin INSTEAD! **DEPRECATED** \
+State-of-the-art slicer app to prepare your 3D models for your 3D printer. (Modern AppImage)"
 arch=('x86_64')
 url="https://github.com/Ultimaker/Cura"
 license=('LGPL3')
@@ -28,11 +29,11 @@ sha512sums=(
 )
 
 prepare() {
-    cd "${srcdir}"
-    chmod +x "./${_filename}"
-    ./${_filename} --appimage-extract cura-icon.png
-    ./${_filename} --appimage-extract cura.desktop
-    patch -Np0 < ./cura.desktop.patch
+  cd "${srcdir}"
+  chmod +x "./${_filename}"
+  ./${_filename} --appimage-extract cura-icon.png
+  ./${_filename} --appimage-extract cura.desktop
+  patch -Np0 < ./cura.desktop.patch
 }
 
 package() {
@@ -52,4 +53,16 @@ package() {
 
   # Copy license file
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+post_install() {
+  echo '******************** DEPRECATION WARNING *********************' >&2
+  echo '*                                                            *' >&2
+  echo '*  The package cura-modern-appimage is no longer supported.  *' >&2
+  echo '*                                                            *' >&2
+  echo '*       "modern" AppImage no longer exists upstream.         *' >&2
+  echo '*                                                            *' >&2
+  echo '*            => Please migrate to cura-bin <=                *' >&2
+  echo '*                                                            *' >&2
+  echo '******************** DEPRECATION WARNING *********************' >&2
 }
