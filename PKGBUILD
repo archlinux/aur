@@ -5,26 +5,26 @@ _pkgname=ppcseq
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
+  make
   r
   r-benchmarkme
   r-bh
   r-dplyr
   r-edger
   r-foreach
-  r-furrr
-  r-future
   r-ggplot2
   r-lifecycle
   r-magrittr
   r-purrr
   r-rcpp
   r-rcppeigen
+  r-rcppparallel
   r-rlang
   r-rstan
   r-rstantools
@@ -32,7 +32,6 @@ depends=(
   r-tibble
   r-tidybayes
   r-tidyr
-  make
 )
 optdepends=(
   r-biocstyle
