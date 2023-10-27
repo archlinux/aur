@@ -22,12 +22,8 @@ package() {
 
 	# install mpf-check distribution
 	install -Dm 755 ${srcdir}/${_prgname} ${pkgdir}/usr/bin/${_prgname}
-	#install -Dm 644 ${srcdir}/CascLib.dll \
-	#	${pkgdir}/usr/lib/${_prgname}/CascLib.dll
 	install -Dm 644 ${srcdir}/MPF.Check.dll.config \
 		${pkgdir}/usr/lib/${_prgname}/MPF.Check.dll.config
-	#install -Dm 644 ${srcdir}/StormLib.dll \
-	#	${pkgdir}/usr/lib/${_prgname}/StormLib.dll
 
 	# install documentation
 	install -Dm 644 ${srcdir}/README.md \
