@@ -4,7 +4,7 @@ _pkgname=shinyTree
 _pkgver=0.3.1
 pkgname=r-${_pkgname,,}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=3
 pkgdesc='jsTree Bindings for Shiny'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,6 +18,8 @@ depends=(
   r-stringr
 )
 optdepends=(
+  r-data.tree
+  r-shinytest
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")

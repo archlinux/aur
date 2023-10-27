@@ -1,7 +1,7 @@
 pkgbase = r-shinytree
 	pkgdesc = jsTree Bindings for Shiny
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=shinyTree
 	arch = any
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = r-shinytree
 	depends = r-promises
 	depends = r-shiny
 	depends = r-stringr
+	optdepends = r-data.tree
+	optdepends = r-shinytest
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/shinyTree_0.3.1.tar.gz
 	sha256sums = 46babd24da24de9211e1a4ddbaf48a3b60dbd8a1695dddbedf2ca5dd9e762e4f
