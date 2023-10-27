@@ -1,6 +1,6 @@
 pkgbase = r-bsgenomeforge
 	pkgdesc = Forge BSgenome data packages
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BSgenomeForge
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = r-bsgenomeforge
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BSgenomeForge_1.0.1.tar.gz
-	md5sums = 630aec996209048e39553239dd20e563
-	sha256sums = eb1afd85e3a0f97ae842e349e7ec972cd758bbf2a9a13cdde85b5a4a3232a232
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BSgenomeForge_1.2.0.tar.gz
+	md5sums = ed03f4628533403765aae28991855bca
+	sha256sums = fa0fc3076e4e7f769d3295aba9735a10f8cac62d2f504ee44a0a1a19cb2ebafc
 
 pkgname = r-bsgenomeforge
