@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dmrseq
-_pkgver=1.20.1
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Detection and inference of differentially methylated regions from Whole Genome Bisulfite Sequencing'
 arch=('any')
@@ -31,10 +31,12 @@ depends=(
 optdepends=(
   r-biocstyle
   r-knitr
+  r-org.hs.eg.db
   r-rmarkdown
+  r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('00098690029058396e7f35481333b26a8c38d752d98a7564bbb60be25f8eb9d3')
+sha256sums=('42252a80b9873661539188ed80a84931fe66e41455bcc1fdb17ee6880bdca37c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
