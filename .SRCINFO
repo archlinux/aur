@@ -16,7 +16,6 @@ pkgbase = trashy-git
 	makedepends = cargo
 	makedepends = binutils
 	provides = trashy
-	conflicts = trash-cli
 	conflicts = trashy
 	source = git+https://github.com/oberblastmeister/trashy.git
 	sha256sums = SKIP
