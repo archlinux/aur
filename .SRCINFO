@@ -1,15 +1,15 @@
 pkgbase = megabasterd-bin
 	pkgdesc = Yet another (unofficial) cross-platform MEGA downloader/uploader/streaming suite
-	pkgver = 8.8
+	pkgver = 8.10
 	pkgrel = 1
 	url = https://github.com/tonikelope/megabasterd
 	arch = any
 	license = GPL3
 	depends = java-runtime
-	source = https://github.com/tonikelope/megabasterd/releases/download/v8.8/MegaBasterd_8.8.jar
+	source = https://github.com/tonikelope/megabasterd/releases/download/v8.10/MegaBasterd_8.10.jar
 	source = megabasterd.sh
 	source = megabasterd.desktop
-	sha256sums = 455f96e77106b0c71eaa511931e47e9d7bad6ea891fb20388c980b214aca89a5
+	sha256sums = 21086cc2a884481d4610f7569f0fac9e18e391ccc93e21f0948a944336b7680c
 	sha256sums = 72c7a1db49c5e58a6e6400a445758f7779a594789705dfeac954171d457af103
 	sha256sums = a85b49dab7f58ab3c3b3e609a1c3c8e0fab2bedf5597a179aae82773681e7753
 
