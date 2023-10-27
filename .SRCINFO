@@ -1,6 +1,6 @@
 pkgbase = r-trnascanimport
 	pkgdesc = Importing a tRNAscan-SE result file as GRanges object
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tRNAscanImport
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-trnascanimport
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tRNAscanImport_1.20.0.tar.gz
-	sha256sums = 63bf5903d550719ec5326baafa17aa1c94aaca7a9d010f874822c321408a1ba1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tRNAscanImport_1.22.0.tar.gz
+	sha256sums = f6cf1809194c84d198e032182796abbd9c25847c9201b7193e89fc97eb30d7a3
 
 pkgname = r-trnascanimport
