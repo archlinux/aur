@@ -1,6 +1,6 @@
 pkgbase = r-rgsepd
 	pkgdesc = Gene Set Enrichment / Projection Displays
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rgsepd
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-rgsepd
 	optdepends = r-knitr
 	optdepends = r-tools
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rgsepd_1.32.0.tar.gz
-	sha256sums = 7dcad2090f46108e945a2597a4642218f8403ef1986fad5c32ad7ea21ca1652e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rgsepd_1.34.0.tar.gz
+	sha256sums = 92f48a2c30b434ac58cea1e20eb8c4d7451809d2e4f9f6e5d63089b5a03130bc
 
 pkgname = r-rgsepd
