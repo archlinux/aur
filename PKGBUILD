@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DrugVsDisease
-_pkgver=2.42.0
+_pkgver=2.44.0
 pkgname=r-${_pkgname,,}
-pkgver=2.42.0
+pkgver=2.44.0
 pkgrel=1
 pkgdesc='Comparison of disease and drug profiles using Gene set Enrichment Analysis'
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('277b98d21a16c76c47dff8385a8fd38d14bbb168e8af272a9327b1efb34c7a4c')
+sha256sums=('59a9037358682f38a49c0ec00978607deb6016d9b274bccf9c01efbe4a4e31bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
