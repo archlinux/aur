@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LineagePulse
-_pkgver=1.20.0
+_pkgver=1.21.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='Differential expression analysis and model fitting for single-cell RNA-seq data'
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2de0ac608a753e0cdae8af56d210090bc741f44672cf9782d12b279620a6ab54')
+sha256sums=('0fd7a5a7620e3da6fd2120a23981545c7bf8ddcb66b22f6f1b0e6b4ff589a127')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

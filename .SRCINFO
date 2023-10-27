@@ -1,6 +1,6 @@
 pkgbase = r-lineagepulse
 	pkgdesc = Differential expression analysis and model fitting for single-cell RNA-seq data
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LineagePulse
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-lineagepulse
 	depends = r-rcolorbrewer
 	depends = r-singlecellexperiment
 	depends = r-summarizedexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LineagePulse_1.20.0.tar.gz
-	sha256sums = 2de0ac608a753e0cdae8af56d210090bc741f44672cf9782d12b279620a6ab54
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LineagePulse_1.21.0.tar.gz
+	sha256sums = 0fd7a5a7620e3da6fd2120a23981545c7bf8ddcb66b22f6f1b0e6b4ff589a127
 
 pkgname = r-lineagepulse
