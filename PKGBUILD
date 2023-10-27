@@ -20,9 +20,11 @@ optdepends=(
 _filename="${_pkgname}_${_typora_ver}_amd64.deb"
 source=(
     "https://typora.io/linux/$_filename"
+    "$_pkgname.sh"
     "https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
 sha512sums=(
     '9c23de69be1dfd35ab9553f7d2c6e18b2a7b18ef44930fe986ca87063a96d9b5bfe2e58447f2b5625ab66e19a78053631ef0bf673e5c7935e808b2d27b093f5a'
+    'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
     '3909ffc74d04bd6f47b0c4b9371893704c90ae9afb69bb6c1a4a16d91645504318a9858742ba57775126f525aa0b38b8fd682c7bc64d3447dfbe5e6dff7109f3')
 
 _patch_plugin() {
