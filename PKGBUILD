@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CHETAH
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast and accurate scRNA-seq cell type identification"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -35,8 +35,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0312f98ec3d18db1839da7f6980cf4d6')
-sha256sums=('f5e07c35a8f28513578d56bb2b1145933a47d56d8cd6c8c9135e1e143f530aa7')
+md5sums=('a6b920a4a3f3f931acb3cd950c7a74c3')
+sha256sums=('46970b6775d218fdd2e1248f24ae8f24e9f18703c768461c123c4a7dc27ce678')
 
 build() {
   mkdir -p build
