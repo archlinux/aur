@@ -4,13 +4,13 @@
 pkgbase=patool
 pkgname='patool'
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="portable command line archive file manager"
 arch=('any')
 url="https://wummel.github.io/patool/"
 license=('GPL')
 depends=('python')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 optdepends=("tar: extracting TAR files"
     "unrar: extracting RAR files"
     "p7zip: extracting ZIP and 7z files"
