@@ -1,6 +1,6 @@
 pkgbase = r-chipxpress
 	pkgdesc = ChIPXpress: enhanced transcription factor target gene identification from ChIP-seq and ChIP-chip data using publicly available gene expression profiles
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPXpress
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-chipxpress
 	optdepends = r-mouse4302cdf
 	optdepends = r-mouse4302frmavecs
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPXpress_1.44.0.tar.gz
-	sha256sums = 6eca074fd93bfdbd16bc3e91a8b6af558336f6eb90f6fb698ab2ecf1b7ac1f23
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPXpress_1.46.0.tar.gz
+	sha256sums = 4560c4c1e2dfabd4264bba5a2b083feeefc32a9a7e1152efc9ec12f2b7615210
 
 pkgname = r-chipxpress
