@@ -1,14 +1,13 @@
 pkgbase = r-robma
 	pkgdesc = Robust Bayesian Meta-Analyses
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RoBMA
 	arch = x86_64
 	license = GPL
 	depends = jags
 	depends = r
 	depends = r-bayestools
-	depends = r-coda
 	depends = r-ggplot2
 	depends = r-mvtnorm
 	depends = r-rdpack
@@ -17,13 +16,17 @@ pkgbase = r-robma
 	depends = r-runjags
 	depends = r-scales
 	optdepends = r-covr
+	optdepends = r-fixest
 	optdepends = r-knitr
+	optdepends = r-lme4
 	optdepends = r-metabma
+	optdepends = r-metadat
+	optdepends = r-metafor
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
-	optdepends = r-rstan
 	optdepends = r-testthat
 	optdepends = r-vdiffr
+	optdepends = r-weightr
 	source = https://cran.r-project.org/src/contrib/RoBMA_3.1.0.tar.gz
 	sha256sums = 42e56cb2d5661d13cc50dacc3af8cae0827a2937ce46bbbfa544ea44aa840133
 
