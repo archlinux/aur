@@ -1,6 +1,6 @@
 pkgbase = r-epigenomix
 	pkgdesc = Epigenetic and gene transcription data normalization and integration with mixture models
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epigenomix
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-epigenomix
 	depends = r-rsamtools
 	depends = r-s4vectors
 	depends = r-summarizedexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epigenomix_1.40.0.tar.gz
-	sha256sums = 021d9bdc6188ccc23e44667a0eff56e00ec62ec995a88b918c23c1a7d760fdd5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epigenomix_1.42.0.tar.gz
+	sha256sums = 4b1d55e93fd0b64daa8d6dae2c1c4136c6948b4a7447dd7e4be6139e173e0523
 
 pkgname = r-epigenomix
