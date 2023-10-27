@@ -1,6 +1,6 @@
 pkgbase = olympus-bin
 	pkgdesc = A mod manager for Celeste
-	pkgver = 3559
+	pkgver = 3630
 	pkgrel = 1
 	url = https://github.com/EverestAPI/Olympus
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = olympus-bin
 	makedepends = python-requests
 	depends = love
 	depends = lua51-lsqlite3
-	noextract = olympus-bin-3559.zip
-	source = olympus-bin-3559.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/3559/artifacts?artifactName=linux.main&$format=zip
-	sha256sums = 7f55d8e7fa24b64cebcdf953cc38a66ce1cc4776ddd235e1d430d353ef973356
+	noextract = olympus-bin-3630.zip
+	source = olympus-bin-3630.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/3630/artifacts?artifactName=linux.main&$format=zip
+	sha256sums = b7745249113ae909e60a4bdda1fc6003904eaa19fe41fb6003b3065a854bbd49
 
 pkgname = olympus-bin
