@@ -1,0 +1,12 @@
+pkgbase = convolv2
+	pkgdesc = LV2 convolution plugin
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/x42/convoLV2
+	arch = x86_64
+	license = GPL2
+	depends = zita-convolver
+	source = https://github.com/x42/convoLV2/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = cdd020e284a2fc39777bfcddad67845e23d82eb25170f6e0670a49d5833d1cba
+
+pkgname = convolv2
