@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ALDEx2
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Analysis Of Differential Abundance Taking Sample Variation Into Account'
 arch=('any')
@@ -12,8 +12,10 @@ license=('custom')
 depends=(
   r
   r-biocparallel
+  r-directlabels
   r-genomicranges
   r-iranges
+  r-latticeextra
   r-multtest
   r-rfast
   r-s4vectors
@@ -22,12 +24,18 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-cowplot
+  r-ggpattern
+  r-ggplot2
   r-knitr
+  r-magick
+  r-purrr
   r-rmarkdown
   r-testthat
+  r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6851a6513775996dd204e907f3e33d68bef35476d4fe046299778fce3162b33d')
+sha256sums=('1f361260ceb52bcc6e30bcc5d51990627703faf5464023f8dc87e7db12a79071')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
