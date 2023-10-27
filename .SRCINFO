@@ -1,6 +1,6 @@
 pkgbase = r-consensusseeker
 	pkgdesc = Detection of consensus regions inside a group of experiences using genomic positions and genomic ranges
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/consensusSeekeR
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-consensusseeker
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensusSeekeR_1.28.0.tar.gz
-	sha256sums = 2fd4984aba1991627d1d48ae771d0c0b49b5beb81b704b0c918c463ff9f4605a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensusSeekeR_1.30.0.tar.gz
+	sha256sums = cea26f56c9937bea8bd40cb9cf619a8621c4f7aaeda37df9f49b4bb2782ebb35
 
 pkgname = r-consensusseeker

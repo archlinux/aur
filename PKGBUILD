@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=consensusSeekeR
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Detection of consensus regions inside a group of experiences using genomic positions and genomic ranges'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2fd4984aba1991627d1d48ae771d0c0b49b5beb81b704b0c918c463ff9f4605a')
+sha256sums=('cea26f56c9937bea8bd40cb9cf619a8621c4f7aaeda37df9f49b4bb2782ebb35')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
