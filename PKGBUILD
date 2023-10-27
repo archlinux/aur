@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DelayedDataFrame
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Delayed operation on DataFrame using standard DataFrame metaphor'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   r-s4vectors
 )
 optdepends=(
+  r-biocstyle
   r-gdsarray
   r-knitr
   r-rmarkdown
@@ -23,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('13d6a595c77e2d47b1507a2fa0de5738a07822f05e813f4091a6c9606544c600')
+sha256sums=('cb76488971d7e26d6df500669504ec70757fee265d0f258d42c0e33ea4b8e143')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
