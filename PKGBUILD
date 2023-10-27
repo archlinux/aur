@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MOFA2
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Multi-Omics Factor Analysis v2'
 arch=('x86_64')
@@ -53,7 +53,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3738f2d2bd84aaf09b96be91e3b45193af1ae5bae218d33847029842a9399f10')
+sha256sums=('8f44286aeb7c38818853c64d2cca68f0c8109d5e260a00d99e87c0a10ce77f98')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
