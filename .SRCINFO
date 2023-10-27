@@ -1,6 +1,6 @@
 pkgbase = r-uncoverapplib
 	pkgdesc = Interactive graphical application for clinical assessment of sequence coverage at the base-pair level
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/uncoverappLib
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-uncoverapplib
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/uncoverappLib_1.10.0.tar.gz
-	sha256sums = cd9e14b138dfb0ee451c0e81bf64a9bdca0b4369f08b1299e687aa2a325d7118
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/uncoverappLib_1.12.0.tar.gz
+	sha256sums = 4e71ab29e25e8173848de752e41c5b79043293fd16d3b4905e50239a10738209
 
 pkgname = r-uncoverapplib
