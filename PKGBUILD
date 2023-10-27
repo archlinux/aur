@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccfindR
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Cancer Clone Finder'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8fca4640dbaa52151dfd940dbbc80ee21374d9d351575a85e2e452819939a38e')
+sha256sums=('015895b6ab7ae0faf8c48040f957e4bb29051ae8223a95aa1e8f29d8b3be4fe3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
