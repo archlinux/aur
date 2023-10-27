@@ -1,11 +1,13 @@
 pkgbase = python3-saml
 	pkgdesc = SAML Python Toolkit (compatible with Python3)
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saml-toolkits/python3-saml
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-poetry-core
+	makedepends = python-installer
 	depends = python-lxml
 	depends = python-isodate
 	depends = python-xmlsec
