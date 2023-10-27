@@ -6,7 +6,7 @@ pkgdesc="TermPDF Viewer is an open-source PDF file viewer designed to run in the
 arch=('x86_64')
 url="https://github.com/felipealfonsog/TermPDFViewer"
 license=('MIT')
-depends=('gcc' 'python' 'python-pip' 'python-pymupdf' 'python-termcolor')
+depends=('gcc' 'python-pip' 'python-pymupdf' 'python-termcolor')
 source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
 sha256sums=('ae02b2a2374eeee67caaa068cd2ed1b5fee61cd06071e4bfa157476302adc6d6')
 

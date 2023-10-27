@@ -6,7 +6,6 @@ pkgbase = term-pdf
 	arch = x86_64
 	license = MIT
 	depends = gcc
-	depends = python
 	depends = python-pip
 	depends = python-pymupdf
 	depends = python-termcolor
