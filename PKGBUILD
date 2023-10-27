@@ -3,7 +3,7 @@
 _pkgname=nperf-gui
 pkgname=nperf-gui-appimage
 pkgver=1.12.3
-pkgrel=0
+pkgrel=2
 pkgdesc="Nperf wide-area network speed test application."
 arch=('x86_64')
 #url="https://www.nperf.com/"
