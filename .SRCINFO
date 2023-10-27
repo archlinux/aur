@@ -1,6 +1,6 @@
 pkgbase = r-singscore
 	pkgdesc = Rank-based single-sample gene set scoring method
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/singscore
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-singscore
 	optdepends = r-pkgdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/singscore_1.20.0.tar.gz
-	sha256sums = f89878cf3f95e2d4e895314d1faecca688ee0523649108819b9a3fb7e6f633e8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/singscore_1.22.0.tar.gz
+	sha256sums = 04c44af1fc2ceb7da701d4a8fc32d4825ee4ebb7764b1daf0825ccb8e0fa4e41
 
 pkgname = r-singscore
