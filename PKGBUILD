@@ -4,7 +4,7 @@ _pkgname=fastseg
 _pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=1.48.0
-pkgrel=1
+pkgrel=3
 pkgdesc='fastseg - a fast segmentation algorithm'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,9 @@ depends=(
   r-s4vectors
 )
 optdepends=(
+  r-biocstyle
   r-dnacopy
+  r-knitr
   r-oligo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
