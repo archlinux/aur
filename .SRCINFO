@@ -1,6 +1,6 @@
 pkgbase = r-sechm
 	pkgdesc = sechm: Complex Heatmaps from a SummarizedExperiment
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sechm
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-sechm
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sechm_1.8.0.tar.gz
-	sha256sums = f7dc122d71af24a3a55fd11b7e846ed0f857c362109a97a8df1c91dae11a4ef3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sechm_1.10.0.tar.gz
+	sha256sums = 73cddc4f2399d0021017647608873b82620419c289ef6a833f8deff737360ba7
 
 pkgname = r-sechm
