@@ -7,6 +7,7 @@ pkgbase = elite-image-mounter
 	license = GPL3
 	depends = bash
 	depends = ccd2iso
+	depends = sed
 	depends = sudo
 	source = https://github.com/siyia2/mounter_elite/archive/v1.2.1.tar.gz
 	md5sums = c8c1e951fcab035f8ad8a282f4e92878
