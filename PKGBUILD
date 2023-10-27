@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DegNorm
-_pkgver=1.10.1
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='DegNorm: degradation normalization for RNA-seq data'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f76b81aa03ff4b5882690f6eedbc8aa3f91f2147dbea2ae59e2704f01f374f06')
+sha256sums=('dfde2d06f0dfd30f748f20a400390aa7dfd07407b90cc68a082445f21d6b57b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
