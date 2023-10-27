@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ffpe
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Quality assessment and control for FFPE microarray expression data'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-genefilter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a473e4c233775b8c4795d53476dc26fcdccd309040e60fc203bce2bd1641cc73')
+sha256sums=('0e3670912a7844c23ac57f948f3ba0bb733eb6a6dcc127269e5d36daf711abda')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
