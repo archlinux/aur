@@ -1,6 +1,6 @@
 pkgbase = r-flowgate
 	pkgdesc = Interactive Cytometry Gating in R
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowGate
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = r-flowgate
 	optdepends = r-stringr
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowGate_1.0.0.tar.gz
-	md5sums = 06253e3ee0f40cfd6446ec6aba2a4562
-	sha256sums = 6c21be074b5ce012c94b4595ce4328444666ff2ff0d177568273a1bdf2bf7572
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowGate_1.2.0.tar.gz
+	md5sums = d5b19dee6139d26306d14563f445a64f
+	sha256sums = 3519876952d4b09dfd4231d7d0114b055cb15758a48ad4744c1d34adbd433c52
 
 pkgname = r-flowgate
