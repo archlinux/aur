@@ -4,8 +4,8 @@
 # Contributor: eagleeyetom <eagleeyetom at gmail dot com>
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
-_appname="flashpeak-${pkgname}"
-pkgver=41.0.1.0
+_pkgname="flashpeak-${pkgname}"
+pkgver=41.0.2.0
 pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
 _libffmpegver=0.81.0
@@ -24,13 +24,13 @@ source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.de
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE.html::${url}/en/webhelp/index.htm"
     "${pkgname}.install")
-sha256sums=('0c4fd5b7d116649e587d189d1cc8df0591467532aa1116c0b0b48f899d6bedc1'
+sha256sums=('f2affe23cb8d27a1fdb9a147f5cf5962a97cdfbfa6a2600a0ebb3ca25f27b55f'
             '39481b7a3d68b7cccf5101d1b4950f43f3a2292983065556ec241b71657338ae'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43'
             '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/usr/bin/${_appname}|${_appname}|g;s|Icon=${_appname}|Icon=${pkgname}|g" \
+    sed "s|/usr/bin/${_pkgname}|${_pkgname}|g;s|Icon=${_pkgname}|Icon=${pkgname}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname}.desktop"
     find "${srcdir}" -type d -exec chmod 755 {} \;
     chmod 0755 "${srcdir}/opt/${pkgname}/${pkgname}-sandbox"
@@ -38,7 +38,7 @@ build() {
 package() {
     install -Dm755 -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
     cp -r "${srcdir}/opt/${pkgname}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+    ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${pkgname}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
