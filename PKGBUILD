@@ -5,7 +5,7 @@ _pkgname=Rserve
 _pkgver=1.8-11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=6
 pkgdesc="Binary R server"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   r
 )
 optdepends=(
-  'java-runtime: REngine Java client'
+  "java-runtime: REngine Java client"
   r-rsclient
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
