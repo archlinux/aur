@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DropletUtils
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Utilities for Handling Single-Cell Droplet Data'
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3eb89b2e60feb31722b9a8257bf588d8706e2a67eb87b58b21575f18c972bc27')
+sha256sums=('c67152c06c1cd8388895265f30f945ad12f6d389ff4bcfb125f079a0c499dd2e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
