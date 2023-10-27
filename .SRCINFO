@@ -1,6 +1,6 @@
 pkgbase = r-recountmethylation
 	pkgdesc = Access and analyze DNA methylation database compilations
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/recountmethylation
 	arch = any
@@ -25,9 +25,10 @@ pkgbase = r-recountmethylation
 	optdepends = r-knitr
 	optdepends = r-limma
 	optdepends = r-minfidata
+	optdepends = r-minfidataepic
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/recountmethylation_1.10.0.tar.gz
-	sha256sums = 3cfa280f0437f0e93fc6c831b845b71fbb671c39bc4e3ef9b391ec9a5b073745
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/recountmethylation_1.12.0.tar.gz
+	sha256sums = 141d3a3dc74aa44398c214398c25b39fe74efb06e0844d370e9bef60531567ff
 
 pkgname = r-recountmethylation
