@@ -1,6 +1,6 @@
 pkgbase = r-glimma
 	pkgdesc = Interactive HTML graphics
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Glimma
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-glimma
 	optdepends = r-scran
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Glimma_2.10.0.tar.gz
-	sha256sums = 65bc55e5c50a335f30f4443317125164eae296f8822dcbff87cc84427fe4e104
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Glimma_2.12.0.tar.gz
+	sha256sums = 315ec5ea631efedceeb7181dce33e92531ffc4e2df27d20ebe032d296509705e
 
 pkgname = r-glimma
