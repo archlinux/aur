@@ -4,7 +4,7 @@ _pkgname=cbpManager
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Generate, manage, and edit data and metadata files suitable for the import in cBioPortal for Cancer Genomics'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,6 +22,7 @@ depends=(
   r-rapportools
   r-reticulate
   r-rintrojs
+  r-rlang
   r-shiny
   r-shinybs
   r-shinycssloaders
