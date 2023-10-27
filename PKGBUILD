@@ -16,7 +16,7 @@ pkgdesc='Qt decoration plugin implementing Adwaita-like client-side decorations'
 arch=(x86_64)
 url='https://github.com/FedoraQt/QAdwaitaDecorations'
 license=(LGPL2.1)
-makedepends=(cmake git)
+makedepends=(cmake git qt5-svg qt5-wayland qt6-svg qt6-wayland)
 source=(git+https://github.com/FedoraQt/$_pkgname.git)
 sha256sums=('SKIP')
 

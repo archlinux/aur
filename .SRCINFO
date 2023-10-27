@@ -7,6 +7,10 @@ pkgbase = qadwaitadecorations-git
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = git
+	makedepends = qt5-svg
+	makedepends = qt5-wayland
+	makedepends = qt6-svg
+	makedepends = qt6-wayland
 	source = git+https://github.com/FedoraQt/QAdwaitaDecorations.git
 	sha256sums = SKIP
 
