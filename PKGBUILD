@@ -5,7 +5,7 @@ _pkgname=arrow
 _pkgver=13.0.0.1
 pkgname=r-${_pkgname,,}
 pkgver=13.0.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Integration to 'Apache' 'Arrow'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -35,6 +35,7 @@ optdepends=(
   r-dplyr
   r-duckdb
   r-hms
+  r-jsonlite
   r-knitr
   r-lubridate
   r-pillar

@@ -1,7 +1,7 @@
 pkgbase = r-arrow
 	pkgdesc = Integration to 'Apache' 'Arrow'
 	pkgver = 13.0.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=arrow
 	arch = x86_64
 	license = Apache
@@ -27,6 +27,7 @@ pkgbase = r-arrow
 	optdepends = r-dplyr
 	optdepends = r-duckdb
 	optdepends = r-hms
+	optdepends = r-jsonlite
 	optdepends = r-knitr
 	optdepends = r-lubridate
 	optdepends = r-pillar
