@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPsim
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Simulation of ChIP-seq experiments'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b718115e0173f4a4454d860b510993eaabbfb65cb4370950b556b5782cd17694')
+sha256sums=('bdf9001da3b972f6f97b8b548c888f8225c21efc73ae2320f40b7798c9f0ae78')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
