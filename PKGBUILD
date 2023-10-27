@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=karyoploteR
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Plot customizable linear genomes displaying arbitrary data'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1d192cf0b0564d8b1b89710e0e1e6f387824434d45994b94e6a87e45a5a80cdb')
+sha256sums=('4118fadaba72b8493da7f38369b347ad416f98597d0302a131206950c4a5294b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
