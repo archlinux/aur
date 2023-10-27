@@ -4,7 +4,7 @@ _pkgname=treeio
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Base Classes and Functions for Phylogenetic Tree Input and Output'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('Artistic2.0')
 depends=(
   r
   r-ape
-  r-cli
   r-dplyr
   r-jsonlite
   r-magrittr
@@ -22,6 +21,7 @@ depends=(
 )
 optdepends=(
   r-biostrings
+  r-cli
   r-ggplot2
   r-ggtree
   r-igraph
