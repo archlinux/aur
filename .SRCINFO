@@ -1,6 +1,6 @@
 pkgbase = r-busseq
 	pkgdesc = Batch Effect Correction with Unknow Subtypes for scRNA-seq data
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BUSseq
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-busseq
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUSseq_1.6.1.tar.gz
-	sha256sums = 8b23e20324bc0ec47e8217e509aa3a2fd014b38974fee1e03b346fa299601636
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUSseq_1.8.0.tar.gz
+	sha256sums = c0ec05372a803f91a66bb1536b11cc194883e5420602380526b7b76b5715b1de
 
 pkgname = r-busseq
