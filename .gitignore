@@ -1,6 +1,9 @@
 *
+!*.desktop
 !*.install
 !*.sh
+!*.sysusers
+!*.tmpfiles
 !.gitignore
 !.SRCINFO
 !override_matomo.conf
