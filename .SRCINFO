@@ -1,6 +1,6 @@
 pkgbase = r-cepo
 	pkgdesc = Cepo for the identification of differentially stable genes
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Cepo
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-cepo
 	optdepends = r-scmerge
 	optdepends = r-testthat
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Cepo_1.6.0.tar.gz
-	sha256sums = ca075161110304e15acd1db3a66c826662fb872a05f2d3247c13a6fa89e494e6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Cepo_1.8.0.tar.gz
+	sha256sums = 8843bde49e9c5c1ee9881cd65c592605602564d21f5c5af219773d5d89ca3f68
 
 pkgname = r-cepo
