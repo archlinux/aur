@@ -1,0 +1,18 @@
+pkgbase = cargo-wasmer
+	pkgdesc = Cargo sub-command for publishing Rust crates to the WebAssembly Package Manager
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/wasmerio/cargo-wasmer
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = Apache
+	makedepends = cargo
+	source = cargo-wasmer-0.4.0.tar.gz::https://github.com/wasmerio/cargo-wasmer/archive/refs/tags/cargo-wasmer-v0.4.0.tar.gz
+	sha256sums = 97a8addd412368bcea2d83a7f5b74e9791afc7ac8fc0119218ade81aed38d126
+	b2sums = aa47120c75c067a5bf3279750f57459f56a9f7bfd7d3b41c8408834c9288f23c9ec7f987da470a224f2f7c79255a5ec90a9a9fef2d3d7341cdfce2aac04b51c1
+	depends_x86_64 = gcc-libs
+	depends_i686 = gcc-libs
+
+pkgname = cargo-wasmer
