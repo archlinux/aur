@@ -4,7 +4,7 @@ _pkgname=affyPLM
 _pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=1.78.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Methods for fitting probe-level models'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
 )
 optdepends=(
   r-affydata
+  r-hgu95av2cdf
   r-mass
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
