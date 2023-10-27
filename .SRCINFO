@@ -1,6 +1,6 @@
 pkgbase = r-fishpond
 	pkgdesc = Fishpond: differential transcript and gene expression with inferential replicates
-	pkgver = 2.6.2
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fishpond
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-fishpond
 	optdepends = r-testthat
 	optdepends = r-tximeta
 	optdepends = r-tximportdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fishpond_2.6.2.tar.gz
-	sha256sums = 05e8f80f72bec1e37ce4bf864bd627ab0eac856ad3f276fb00a388f98c245c7f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fishpond_2.8.0.tar.gz
+	sha256sums = 9fedcbf9f3720cb52932a0cd7608bd0de0892922fdcc4ee0a9f0fd082e237413
 
 pkgname = r-fishpond
