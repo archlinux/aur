@@ -6,7 +6,7 @@ _pkgname=shinyWidgets
 _pkgver=0.8.0
 pkgname=r-${_pkgname,,}
 pkgver=0.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Custom Inputs Widgets for Shiny'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,16 +22,12 @@ depends=(
   r-shiny
 )
 optdepends=(
-  r-argondash
-  r-argonr
-  r-bs4dash
   r-covr
   r-dt
   r-ggplot2
   r-scales
   r-shinydashboard
   r-shinydashboardplus
-  r-tablerdash
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
