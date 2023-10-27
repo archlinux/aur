@@ -1,7 +1,7 @@
 pkgbase = r-graphite
 	pkgdesc = GRAPH Interaction from pathway Topological Environment
 	pkgver = 1.48.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/graphite
 	arch = any
 	license = AGPL
@@ -16,7 +16,6 @@ pkgbase = r-graphite
 	optdepends = r-all
 	optdepends = r-biocstyle
 	optdepends = r-checkmate
-	optdepends = r-clipper
 	optdepends = r-codetools
 	optdepends = r-hgu133plus2.db
 	optdepends = r-hgu95av2.db
