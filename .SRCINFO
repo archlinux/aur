@@ -21,6 +21,7 @@ pkgbase = riseup-vpn-git
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	depends = hicolor-icon-theme
+	depends = qt5-svg
 	conflicts = riseup-vpn
 	source = git+https://0xacab.org/leap/bitmask-vpn.git
 	source = riseup-vpn_launcher.desktop
