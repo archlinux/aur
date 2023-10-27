@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FunChIP
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Clustering and Alignment of ChIP-Seq peaks based on their shapes'
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d7d879683399b3ead213c567193206056448e2d6809bce50111134a210e127d')
+sha256sums=('c19d48699810948b7bc177178811937f33abc1d1d828dafaab58be7dea521ce2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
