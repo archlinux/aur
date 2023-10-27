@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=wpm
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Well Plate Maker'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f3dd229ba540498c80e3e01c67ee6e974eaeed95b57b6d7fad7c69dd3174d17f')
+sha256sums=('caff47fda779527f55f8782a78eb9c74a2ae372029585474290dd6ed71df2c3d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
