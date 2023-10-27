@@ -1,6 +1,6 @@
 pkgbase = r-biosigner
 	pkgdesc = Signature discovery from omics data
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biosigner
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-biosigner
 	optdepends = r-omicade4
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biosigner_1.28.0.tar.gz
-	sha256sums = 687007c524beae65a8a680f859e10597821fb867d03afd2ac6667f64423954a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biosigner_1.30.0.tar.gz
+	sha256sums = c801767a58f46d6c2f96ad550e38f3e9220b232558543e9a69ff1a05379e7cc8
 
 pkgname = r-biosigner
