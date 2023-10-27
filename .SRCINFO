@@ -1,13 +1,13 @@
 pkgbase = r-logspline
 	pkgdesc = Routines for Logspline Density Estimation
-	pkgver = 2.1.20
+	pkgver = 2.1.21
 	pkgrel = 1
 	url = https://cran.r-project.org/package=logspline
 	arch = x86_64
 	license = Apache
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/logspline_2.1.20.tar.gz
-	sha256sums = 8bbd4b5126b597fb274be83b89ce0ff8bf0b3145649e0ea4130f27a8d37f59db
+	source = https://cran.r-project.org/src/contrib/logspline_2.1.21.tar.gz
+	sha256sums = 8e3a3cf11f3261f010092aa657d938a69b604818afc123151c7d3e24e0980b77
 
 pkgname = r-logspline
