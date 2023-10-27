@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTCGAToolbox
-_pkgver=2.30.0
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.0
-pkgrel=3
+pkgver=2.32.0
+pkgrel=1
 pkgdesc='A new tool for exporting TCGA Firehose data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -35,7 +35,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5f2017c1a2c6170f249e92fb36de3654506b748734f090c2e4604f6e5cbe50e')
+sha256sums=('4288cd8e6e78ac95a601c5959e48f834e3be1aaaa61d1552ae6e632863266a72')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
