@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocOncoTK
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=3
+pkgver=1.22.0
+pkgrel=1
 pkgdesc='Bioconductor components for general cancer genomics'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -59,7 +59,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce739a7028eb752c0930246d854605ba10ff45019f327f2b26c86e40892a2384')
+sha256sums=('0294aaebbe6b61397e9438c1b5714d9a0685681dc8d4a30b567ea9b4a37bd5f7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
