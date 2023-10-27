@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=concordexR
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a83636d355e3b226da6f6030c17d84d')
-sha256sums=('e3861fa72681a698376dc5555860a81fab3047fd64b7fc659ac5d3f5d850bcd8')
+md5sums=('5ffab81582264ccb300c9f937c698adf')
+sha256sums=('bc69c64f07d6813f337c65ce8edf8db066c3eaeb4c9a89b75cf9523a0926d71b')
 
 build() {
   mkdir -p build

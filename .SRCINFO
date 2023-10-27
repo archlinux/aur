@@ -1,6 +1,6 @@
 pkgbase = r-concordexr
 	pkgdesc = Calculate the concordex coefficient
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/concordexR
 	arch = any
@@ -26,8 +26,8 @@ pkgbase = r-concordexr
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/concordexR_1.0.0.tar.gz
-	md5sums = 8a83636d355e3b226da6f6030c17d84d
-	sha256sums = e3861fa72681a698376dc5555860a81fab3047fd64b7fc659ac5d3f5d850bcd8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/concordexR_1.2.0.tar.gz
+	md5sums = 5ffab81582264ccb300c9f937c698adf
+	sha256sums = bc69c64f07d6813f337c65ce8edf8db066c3eaeb4c9a89b75cf9523a0926d71b
 
 pkgname = r-concordexr
