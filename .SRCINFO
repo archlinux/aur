@@ -1,7 +1,7 @@
 pkgbase = r-sitadela
 	pkgdesc = An R package for the easy provision of simple but complete tab-delimited genomic annotation from a variety of sources and organisms
-	pkgver = 1.8.0
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/sitadela
 	arch = any
 	license = Artistic2.0
@@ -24,7 +24,7 @@ pkgbase = r-sitadela
 	optdepends = r-rmarkdown
 	optdepends = r-rmysql
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sitadela_1.8.0.tar.gz
-	sha256sums = 6f776e222140d02b7d5e19b3d9b2da600b7be5a209d0fdadc52901362e34d61b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sitadela_1.10.0.tar.gz
+	sha256sums = 4ec4a2554df9ad47efbba6278684e63db4eda244aeff84f0f3b6f0c8f008d765
 
 pkgname = r-sitadela
