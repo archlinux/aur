@@ -4,10 +4,10 @@ _pkgname=savR
 _pkgver=1.37.0
 pkgname=r-${_pkgname,,}
 pkgver=1.37.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Parse and analyze Illumina SAV files'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('AGPL')
 depends=(
   r
@@ -21,7 +21,7 @@ optdepends=(
   r-cairo
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('aaa9fb13c19f25bc5152dc9e8940089fd1e793af1166d9ad87fcd6a6e3e1918f')
 
 build() {
