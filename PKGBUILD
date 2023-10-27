@@ -5,7 +5,7 @@ _pkgname=unmarked
 _pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=1.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Models for Data from Unmarked Animals'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
   r
   r-lme4
   r-pbapply
-  r-plyr
   r-rcpp
   r-rcpparmadillo
   r-rcppeigen
@@ -26,6 +25,8 @@ optdepends=(
   r-pkgdown
   r-raster
   r-rmarkdown
+  r-shiny
+  r-terra
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")

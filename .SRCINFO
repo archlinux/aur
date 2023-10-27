@@ -1,7 +1,7 @@
 pkgbase = r-unmarked
 	pkgdesc = Models for Data from Unmarked Animals
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=unmarked
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = r-unmarked
 	depends = r
 	depends = r-lme4
 	depends = r-pbapply
-	depends = r-plyr
 	depends = r-rcpp
 	depends = r-rcpparmadillo
 	depends = r-rcppeigen
@@ -18,6 +17,8 @@ pkgbase = r-unmarked
 	optdepends = r-pkgdown
 	optdepends = r-raster
 	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	optdepends = r-terra
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/unmarked_1.3.2.tar.gz
 	sha256sums = a1d21619c8627419e09646cc12e09457c0ea8989caf2e674d032e59b310cf883
