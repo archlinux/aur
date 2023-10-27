@@ -1,6 +1,6 @@
 pkgbase = r-sesamedata
 	pkgdesc = Supporting Data for SeSAMe Package
-	pkgver = 1.19.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sesameData
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-sesamedata
 	optdepends = r-rmarkdown
 	optdepends = r-sesame
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/sesameData_1.19.0.tar.gz
-	sha256sums = 1356c9df15b47573b2eb03f5e3d6b879aa8ae2ee64f5d5729131228e27d71f7f
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/sesameData_1.20.0.tar.gz
+	sha256sums = 5cbed033562b8394ae6f5a7c22935ae46cec51f1765c349dea31716a1b64bd28
 
 pkgname = r-sesamedata
