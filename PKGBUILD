@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MatrixRider
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Obtain total affinity and occupancies for binding site matrices on a given sequence'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da357ca7a0c27898d16dff1bae56e4f63239f4b921c9f8c1a41b031644d1c888')
+sha256sums=('43461e624d1375b0fc7102955ef4d18b8a4568a5a23f02d79000ccfd47303f08')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
