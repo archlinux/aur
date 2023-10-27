@@ -1,6 +1,6 @@
 pkgbase = certspotter-git
 	pkgdesc = Certificate Transparency Log Monitor - git version
-	pkgver = 0.16.0.r0.g4ca81ab
+	pkgver = 0.17.0.r0.gf8040df
 	pkgrel = 1
 	url = https://github.com/SSLMate/certspotter
 	install = certspotter.install
@@ -11,7 +11,7 @@ pkgbase = certspotter-git
 	arch = aarch64
 	license = MPL2
 	makedepends = git
-	makedepends = go>=1.19
+	makedepends = go>=1.21
 	makedepends = lowdown
 	provides = certspotter
 	conflicts = certspotter
