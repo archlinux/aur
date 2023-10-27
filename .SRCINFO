@@ -1,7 +1,7 @@
 pkgbase = python3-saml
 	pkgdesc = SAML Python Toolkit (compatible with Python3)
-	pkgver = 1.15.0
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://github.com/saml-toolkits/python3-saml
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python3-saml
 	depends = python-lxml
 	depends = python-isodate
 	depends = python-xmlsec
-	source = python3-saml-1.15.0.tar.gz::https://github.com/saml-toolkits/python3-saml/archive/refs/tags/v1.15.0.tar.gz
-	sha256sums = 73cf5d4ba26bf9552ab7213068997304d843a040162100ff93dee4ef5e0ffe9b
+	source = python3-saml-1.16.0.tar.gz::https://github.com/saml-toolkits/python3-saml/archive/refs/tags/v1.16.0.tar.gz
+	sha256sums = 41c41d986b0ef66635aa53abe51dfe0e09b1fb07a8803cbbdc861c3f82b6d15a
 
 pkgname = python3-saml
