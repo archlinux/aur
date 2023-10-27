@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trackViewer
-_pkgver=1.36.2
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.2
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='A R/Bioconductor package with web interface for drawing elegant interactive tracks or lollipop plot to facilitate integrated analysis of multi-omics data'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('411905c7c8573df0ef88ee27e6bda6c4e8afc47c8f1db0df1e11790446bbeed9')
+sha256sums=('282f6e3fff30d134003fa8645308af4792f619a0b6a8dcdbff853ed3b19f4f95')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
