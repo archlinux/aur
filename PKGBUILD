@@ -4,7 +4,7 @@ _pkgname=tweeDEseq
 _pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=1.48.0
-pkgrel=1
+pkgrel=3
 pkgdesc='RNA-seq data analysis using the Poisson-Tweedie family of distributions'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,6 +14,7 @@ depends=(
   r-cqn
   r-edger
   r-limma
+  r-rcpp
 )
 optdepends=(
   r-tweedeseqcountdata
