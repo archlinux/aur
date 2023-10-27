@@ -1,7 +1,7 @@
 pkgbase = dell-command-configure
 	pkgdesc = Configure various BIOS features on Dell laptops
-	pkgver = 4.10.0.5
-	pkgrel = 2
+	pkgver = 4.11.0.6
+	pkgrel = 1
 	url = https://www.dell.com/support/kbdoc/000178000/dell-command-configure
 	arch = x86_64
 	license = unknown
@@ -18,7 +18,7 @@ pkgbase = dell-command-configure
 	provides = libsmbios_c.so=2
 	provides = libhapiintf.so
 	provides = srvadmin-hapi
-	source = dell-command-configure-4.10.0.5.tar.gz::https://dl.dell.com/FOLDER09518608M/1/command-configure_4.10.0-5.ubuntu22_amd64.tar.gz
-	sha256sums = 1e27b2f75b53af67ed8b3d720314ef071e860183c891a4371db187a8c4b320d4
+	source = dell-command-configure-4.11.0.6.tar.gz::https://dl.dell.com/FOLDER10469726M/1/command-configure_4.11.0-6.ubuntu22_amd64.tar.gz
+	sha256sums = 0706b8b1882e6301012842523f7c331e1ce3b8379a19037c7ca7a8a161d7d7c1
 
 pkgname = dell-command-configure
