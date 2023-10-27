@@ -10,6 +10,6 @@ pkgbase = elite-image-mounter
 	depends = sed
 	depends = sudo
 	source = https://github.com/siyia2/mounter_elite/archive/v1.2.1.tar.gz
-	md5sums = c8c1e951fcab035f8ad8a282f4e92878
+	md5sums = 95fe4238f981267cf039f5b5bee1a824
 
 pkgname = elite-image-mounter
