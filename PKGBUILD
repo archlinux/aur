@@ -1,4 +1,5 @@
 # Maintainer: Hao Long <aur@esd.cc>
+# Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname=nuclei
