@@ -1,6 +1,6 @@
 pkgbase = r-affixcan
 	pkgdesc = A Functional Approach To Impute Genetically Regulated Expression
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AffiXcan
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-affixcan
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AffiXcan_1.18.0.tar.gz
-	sha256sums = 2d314e956d17c46ed5f843b19a5355b69ed55e0af1b4bb73b9df64d5e26cc559
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AffiXcan_1.20.0.tar.gz
+	sha256sums = 5930e4d789838200d4ee3d046b61178fea080915cdb32aeeaeb5ea5dbe46a0b8
 
 pkgname = r-affixcan
