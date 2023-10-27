@@ -1,6 +1,6 @@
 pkgbase = r-yapsa
 	pkgdesc = Yet Another Package for Signature Analysis
-	pkgver = 1.26.8
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/YAPSA
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-yapsa
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/YAPSA_1.26.8.tar.gz
-	sha256sums = 97ac0b87c8c98e662b3280d4d15e1fa00de1362ddf953c352e5d8e68e712399b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/YAPSA_1.28.0.tar.gz
+	sha256sums = 942340b6fdfa49a17eb9aeb09cd5f64519ee7e849014c2f2dc3135c5bd82bd1d
 
 pkgname = r-yapsa
