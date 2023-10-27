@@ -1,7 +1,7 @@
 pkgbase = r-ordinal
 	pkgdesc = Regression Models for Ordinal Data
 	pkgver = 2022.11.16
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ordinal
 	arch = x86_64
 	license = GPL
