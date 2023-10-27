@@ -1,4 +1,4 @@
-pkgbase = kde-servicemenus-clamtkscan
+pkgbase = kf5-servicemenus-clamtkscan
 	pkgdesc = KDE service context to scan files and directories with ClamTK
 	pkgver = 1.0.2
 	pkgrel = 1
@@ -7,7 +7,8 @@ pkgbase = kde-servicemenus-clamtkscan
 	license = LGPL
 	depends = dolphin
 	depends = clamtk
+	replaces = kde-servicemenus-clamtkscan
 	source = ClamTKScan.desktop
 	sha256sums = 073bc526f96b0b7a81a2f5a2584d2b68a8b0bc4ca08214065013476e86f68afd
 
-pkgname = kde-servicemenus-clamtkscan
+pkgname = kf5-servicemenus-clamtkscan
