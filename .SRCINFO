@@ -1,6 +1,6 @@
 pkgbase = r-omicspca
 	pkgdesc = An R package for quantitative integration and analysis of multiple omics assays from heterogeneous samples
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OMICsPCA
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-omicspca
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OMICsPCA_1.18.0.tar.gz
-	sha256sums = 16c618787f218b4adfcb8bfd929aac7bfad1aee65d998d70fa17141322d07fe6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OMICsPCA_1.20.0.tar.gz
+	sha256sums = 3ac2e544374700f86f8e4e37bb73f9dcb25fc4177e245098cfbc5b0066d9b836
 
 pkgname = r-omicspca
