@@ -4,7 +4,7 @@ _pkgname=learnr
 _pkgver=0.11.5
 pkgname=r-${_pkgname,,}
 pkgver=0.11.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Interactive Tutorials for R'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,6 @@ license=('Apache')
 depends=(
   r
   r-checkmate
-  r-curl
   r-digest
   r-ellipsis
   r-evaluate
@@ -34,6 +33,7 @@ depends=(
 optdepends=(
   r-bslib
   r-callr
+  r-curl
   r-dbi
   r-httpuv
   r-later

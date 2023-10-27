@@ -1,13 +1,12 @@
 pkgbase = r-learnr
 	pkgdesc = Interactive Tutorials for R
 	pkgver = 0.11.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=learnr
 	arch = any
 	license = Apache
 	depends = r
 	depends = r-checkmate
-	depends = r-curl
 	depends = r-digest
 	depends = r-ellipsis
 	depends = r-evaluate
@@ -27,6 +26,7 @@ pkgbase = r-learnr
 	depends = r-withr
 	optdepends = r-bslib
 	optdepends = r-callr
+	optdepends = r-curl
 	optdepends = r-dbi
 	optdepends = r-httpuv
 	optdepends = r-later
