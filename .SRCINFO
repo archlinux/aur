@@ -1,7 +1,7 @@
 pkgbase = r-flextable
 	pkgdesc = Functions for Tabular Reporting
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=flextable
 	arch = any
 	license = GPL
@@ -32,6 +32,7 @@ pkgbase = r-flextable
 	optdepends = r-pdftools
 	optdepends = r-pkgdown
 	optdepends = r-scales
+	optdepends = r-svglite
 	optdepends = r-tables
 	optdepends = r-testthat
 	optdepends = r-webshot2

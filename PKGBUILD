@@ -4,7 +4,7 @@ _pkgname=flextable
 _pkgver=0.9.4
 pkgname=r-${_pkgname,,}
 pkgver=0.9.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Functions for Tabular Reporting'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -39,6 +39,7 @@ optdepends=(
   r-pdftools
   r-pkgdown
   r-scales
+  r-svglite
   r-tables
   r-testthat
   r-webshot2
