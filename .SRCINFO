@@ -1,7 +1,7 @@
 pkgbase = r-atena
 	pkgdesc = Analysis of Transposable Elements
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/atena
 	arch = any
 	license = Artistic2.0
@@ -26,7 +26,7 @@ pkgbase = r-atena
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-txdb.dmelanogaster.ucsc.dm6.ensgene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/atena_1.6.0.tar.gz
-	sha256sums = 32a6c4ab914f13fe86019411f6893d10e9b0e83e0d365fc382d83a99fbaca780
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/atena_1.8.0.tar.gz
+	sha256sums = cffe3ee62e8564012ec6cfa5e514a37eab1d2c10ce07eec4e80b16d3ccf1cfe1
 
 pkgname = r-atena
