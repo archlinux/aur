@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qsea
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
-pkgrel=3
+pkgver=1.28.0
+pkgrel=1
 pkgdesc='IP-seq data analysis and vizualization'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5668bae8f95eafccb6ba7c585fac44ba54d16afa51e5f87099d9321a7e99d36c')
+sha256sums=('271bdac73677d877dae94b0436fece33a96c0242d538cf57010c5bac1515e147')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
