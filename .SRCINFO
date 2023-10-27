@@ -1,6 +1,6 @@
 pkgbase = r-seqgate
 	pkgdesc = Filtering of Lowly Expressed Features
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SeqGate
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-seqgate
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqGate_1.10.0.tar.gz
-	sha256sums = 50b7974acca1a2aaa1f46152764606897d3110c733374220d08f7d93be6f67ec
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqGate_1.12.0.tar.gz
+	sha256sums = 63c32370dcd8f96edef04104858dffe3714f30b4bae38687962fe01834df7e5e
 
 pkgname = r-seqgate
