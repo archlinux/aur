@@ -17,7 +17,6 @@ arch=(x86_64)
 url='https://github.com/FedoraQt/QAdwaitaDecorations'
 license=(LGPL2.1)
 makedepends=(cmake git)
-depends=(qt5-svg qt5-wayland qt6-svg qt6-wayland)
 source=(git+https://github.com/FedoraQt/$_pkgname.git)
 sha256sums=('SKIP')
 
@@ -40,6 +39,7 @@ build() {
 
 package_qadwaitadecorations-qt5-git() {
   pkgdesc='Qt5 decoration plugin implementing Adwaita-like client-side decorations'
+  depends=(qt5-wayland qt5-svg)
   provides=(qadwaitadecorations-qt5)
   conflicts=(qadwaitadecorations-qt5 qgnomeplatform-qt5)
 
@@ -48,6 +48,7 @@ package_qadwaitadecorations-qt5-git() {
 
 package_qadwaitadecorations-qt6-git() {
   pkgdesc='Qt6 decoration plugin implementing Adwaita-like client-side decorations'
+  depends=(qt6-wayland qt6-svg)
   provides=(qadwaitadecorations-qt6)
   conflicts=(qadwaitadecorations-qt6 qgnomeplatform-qt6)
 
