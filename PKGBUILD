@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=EDIRquery
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ef6b7ba141cd7778c7d5bf31d138af2')
-sha256sums=('2bb82f36bb6b77b3c0d1cee3612b73128781c9933b522f19a059963044b5a0a8')
+md5sums=('ff19937af17cf0a7a874b986192d6b1c')
+sha256sums=('a7621845519e6496d83f3914aa6a3f388e7ccf9078ed8dfb4a2b152532ab5be1')
 
 build() {
   mkdir -p build

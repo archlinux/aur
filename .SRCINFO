@@ -1,6 +1,6 @@
 pkgbase = r-edirquery
 	pkgdesc = Query the EDIR Database For Specific Gene
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EDIRquery
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = r-edirquery
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EDIRquery_1.0.0.tar.gz
-	md5sums = 5ef6b7ba141cd7778c7d5bf31d138af2
-	sha256sums = 2bb82f36bb6b77b3c0d1cee3612b73128781c9933b522f19a059963044b5a0a8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EDIRquery_1.2.0.tar.gz
+	md5sums = ff19937af17cf0a7a874b986192d6b1c
+	sha256sums = a7621845519e6496d83f3914aa6a3f388e7ccf9078ed8dfb4a2b152532ab5be1
 
 pkgname = r-edirquery
