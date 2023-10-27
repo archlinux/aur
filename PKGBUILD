@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=1.9.1
-pkgrel=2
+pkgver=2.0.2_qa
+pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc."
 arch=("x86_64")
 url="https://github.com/Bible-Translation-Tools/Orature"
@@ -11,13 +11,13 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('libx11' 'alsa-lib' 'glibc' 'libxrender' 'libxext' 'libxtst' 'libxi' 'sh' 'java-runtime')
 makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}+6281.deb")
-sha256sums=('683c0adc6e2183be5ff835487a2e90786e0e3e4349003dbc217f4c08dd7617f6')
-prepare() {
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-${pkgver//_/-}+7130.deb")
+sha256sums=('a6d3d395d56518055927185dac22a314d7dcb5ee0bd326b1b12f36cc37a52ff6')
+build() {
+    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin}"
     bsdtar -xf "${srcdir}/data.tar.gz"
     find "${srcdir}/opt/${pkgname%-bin}/jre" -type f -exec chmod a-w {} \;
     find "${srcdir}/opt/${pkgname%-bin}/jre" -type d -exec chmod 755 {} \;
-    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
