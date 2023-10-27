@@ -1,6 +1,6 @@
 pkgbase = r-multibac
 	pkgdesc = Multiomic Batch effect Correction
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MultiBaC
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-multibac
 	optdepends = r-devtools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiBaC_1.10.0.tar.gz
-	sha256sums = b108f989260105ded8e790fa495357161f0742eaa5dbdb93480b06c4770d8ee3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiBaC_1.12.0.tar.gz
+	sha256sums = 92b07e52109c23b058761cd8bb806646fb837fc5182f714a1efaf53cd58a8ed7
 
 pkgname = r-multibac
