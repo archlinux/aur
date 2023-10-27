@@ -1,6 +1,6 @@
 pkgbase = r-srnadiff
 	pkgdesc = Finding differentially expressed unannotated genomic regions from RNA-seq data
-	pkgver = 1.18.2
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/srnadiff
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-srnadiff
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/srnadiff_1.18.2.tar.gz
-	sha256sums = e800b9d195eeda5ed0c98ff10eb2f2773f7a37e08ff98d602cd92f29e625d057
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/srnadiff_1.22.0.tar.gz
+	sha256sums = 011f966e79da8db860d12220249215163c8c805dca2961fa92e65e16c646f144
 
 pkgname = r-srnadiff

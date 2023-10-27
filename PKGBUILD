@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=srnadiff
-_pkgver=1.18.2
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.2
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Finding differentially expressed unannotated genomic regions from RNA-seq data'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e800b9d195eeda5ed0c98ff10eb2f2773f7a37e08ff98d602cd92f29e625d057')
+sha256sums=('011f966e79da8db860d12220249215163c8c805dca2961fa92e65e16c646f144')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
