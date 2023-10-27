@@ -1,12 +1,13 @@
 pkgbase = r-tidybayes
 	pkgdesc = Tidy Data and 'Geoms' for Bayesian Models
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tidybayes
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-arrayhelpers
+	depends = r-cli
 	depends = r-coda
 	depends = r-dplyr
 	depends = r-ggdist
