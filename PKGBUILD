@@ -6,6 +6,7 @@ pkgver="2.2.4"
 pkgrel=1
 pkgdesc="The all-in-one workspace for your notes and tasks, use system electron"
 arch=('x86_64')
+url="https://www.notion.so/"
 license=('MIT')
 
 depends=(bash
