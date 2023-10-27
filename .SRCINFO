@@ -1,6 +1,6 @@
 pkgbase = r-sparrow
 	pkgdesc = Take command of set enrichment analyses through a unified interface
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sparrow
 	arch = any
@@ -48,7 +48,7 @@ pkgbase = r-sparrow
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-webshot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparrow_1.6.0.tar.gz
-	sha256sums = cd56ab6813097408eb061724474107183966b721d8d8909df2477230bac6a8e9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparrow_1.8.0.tar.gz
+	sha256sums = 6a0dded80b7c8552091d6a81b46d3bd3288920db89a962c31e8d7e749e32166f
 
 pkgname = r-sparrow
