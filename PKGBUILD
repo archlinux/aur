@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cliProfiler
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='A package for the CLIP data visualization'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('779614d2b6000c27b2b2d0c68d047ddf1a5dbb36f3a151abd23c65fcd1883077')
+sha256sums=('d4a72146a377bf0b36dd9b9891eb15fe5d111134dbd8c36a640990dd58f1677f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
