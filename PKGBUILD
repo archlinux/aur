@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pipeFrame
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='Pipeline framework for bioinformatics in R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e480ce0bc7128a519613e4a9ddb1410a671bf3a9a528810219f8dd01708ea872')
+sha256sums=('c972d8613581a03de083d3e894c260b5047fb7579aa6417d023ee40fc1927def')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
