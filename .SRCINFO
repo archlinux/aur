@@ -1,6 +1,6 @@
 pkgbase = r-linkhd
 	pkgdesc = LinkHD: a versatile framework to explore and integrate heterogeneous data
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LinkHD
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-linkhd
 	optdepends = r-knitr
 	optdepends = r-mass
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LinkHD_1.14.0.tar.gz
-	sha256sums = 1ca8e2134cb90df923f69ce6d9f03951083c5051e6eea2d071276d1f8069ad19
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LinkHD_1.16.0.tar.gz
+	sha256sums = 8e1cbeb2208d40330ffb2a8492523929b04611ff3ac0d901ee9d89bbaadf81c5
 
 pkgname = r-linkhd
