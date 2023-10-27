@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Notion
+Comment=The all-in-one workspace for your notes and tasks
+Exec=notion-app
+Terminal=false
+StartupNotify=false
+Categories=Application;
