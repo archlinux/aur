@@ -1,12 +1,12 @@
 pkgname=candy
-pkgver=2.3
+pkgver=2.5
 pkgrel=1
 pkgdesc="A easy-to-deploy and peer-to-peer virtual private network"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 source=("https://github.com/lanthora/candy/archive/refs/tags/v$pkgver.tar.gz" )
-sha256sums=('6e8ffcb224cd99f00936d806e75016ba29629872cd24e00689667b677053dfa6')
+sha256sums=('5946056353e0bfc04630ae22be682dd1cf992e2e5f23c5d7d412c5bbae3514fc')
 makedepends=('cmake' 'make' 'pkgconf' 'gcc')
 depends=('spdlog' 'openssl' 'libconfig' 'uriparser')
 backup=('etc/candy.conf')
