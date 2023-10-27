@@ -1,6 +1,6 @@
 pkgbase = r-gdsarray
 	pkgdesc = Representing GDS files as array-like objects
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GDSArray
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-gdsarray
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GDSArray_1.20.0.tar.gz
-	sha256sums = 9c9094479c56ea6f7f46f99e3a4e82445447566b5ada1cb847203302a4e1555c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GDSArray_1.22.0.tar.gz
+	sha256sums = 0889c74972d7cefd667550857c2f6f2c0afbf91aa9648500e42bc12f46555d8c
 
 pkgname = r-gdsarray
