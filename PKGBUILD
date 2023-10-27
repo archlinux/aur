@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SigsPack
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Mutational Signature Estimation for Single Samples"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,8 +29,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cb7c27412e07f6a833b6a46af887b508')
-sha256sums=('e3d203ad2a0dbd76ddc39f3bac5fc945e491288a5b05b464c569947425d8580f')
+md5sums=('5fde29d53a470944ef9a4ba82bcca75d')
+sha256sums=('f5473843a7af8f8490c067c27c125822653b5b4994dc6c663ffd76c0027bb2e9')
 
 build() {
   mkdir -p build
