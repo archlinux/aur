@@ -1,0 +1,15 @@
+pkgbase = shortscan-git
+	pkgdesc = An IIS short filename enumeration tool
+	pkgver = 8.09a429b
+	pkgrel = 1
+	url = https://github.com/bitquark/shortscan
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = shortscan
+	conflicts = shortscan
+	source = shortscan-git::git+https://github.com/bitquark/shortscan.git
+	b2sums = SKIP
+
+pkgname = shortscan-git
