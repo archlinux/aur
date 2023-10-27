@@ -1,7 +1,7 @@
 # Maintainer: Chimmie Firefly <gameplayer2019pl@tutamail.com>
 
-_ver=6.5.7
-_rel=2
+_ver=6.4.16
+_rel=4
 _arch=arch${_rel}
 _artix=artix${_rel}
 
@@ -64,7 +64,7 @@ prepare() {
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "linux-stoneyridge" > localversion.20-pkgname
+  echo "-linux-stoneyridge" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -124,6 +124,7 @@ _package() {
     KSMBD-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
+    LINUX
   )
   replaces=(
     virtualbox-guest-modules-artix
@@ -152,6 +153,9 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
+  provides=(
+    LINUX-HEADERS
+  )
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -233,6 +237,9 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
+  provides=(
+    LINUX-DOCS
+  )
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -256,12 +263,6 @@ pkgname=(
   "$pkgbase-docs"
 )
 
-provides=(
-  "${pkgbase}=linux"
-  "${pkgbase-headers}=linux.headers"
-  "${pkgbase-docs}=linux.docs"
-)
-
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
@@ -270,3 +271,4 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+
