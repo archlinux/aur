@@ -1,6 +1,6 @@
 pkgbase = r-experimenthubdata
 	pkgdesc = Add resources to ExperimentHub
-	pkgver = 1.26.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ExperimentHubData
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-experimenthubdata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExperimentHubData_1.26.1.tar.gz
-	sha256sums = c76643270973ad9656aad32f6bfa9e18f5ed56044d056e79c71cfd0d0b34d764
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExperimentHubData_1.28.0.tar.gz
+	sha256sums = 56a65d22781a8040f62697f790fb311f124f60fa2b55dd08e3fbdef02f1f4f57
 
 pkgname = r-experimenthubdata
