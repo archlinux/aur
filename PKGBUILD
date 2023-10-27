@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ImmuneSpaceR
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='A Thin Wrapper around the ImmuneSpace Database'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a7f92892495e48bf9711b7a48460f518956d5302b7ea64d263f089e7d299450')
+sha256sums=('c7225c047d735e5f2169e6902c288961a54a297866916ef16681fb4e60a61152')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
