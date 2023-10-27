@@ -1,5 +1,10 @@
 # mpf-check-bin .Changelog
 
+## 2023-10-26, mpf-check-bin 2.7.3-2
+
+* Added dependency on `casclib` and `stormlib`
+* Release distribution `CascLib.dll` and `StormLib.dll` are now discarded.
+
 ## 2023-10-26, mpf-check-bin 2.7.3-1
 
 * Bump to 2.7.3
