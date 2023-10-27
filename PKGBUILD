@@ -4,13 +4,12 @@ _prgname=MPF.Check
 pkgname=mpf-check-bin
 url="https://github.com/SabreTools/MPF"
 arch=('x86_64')
-depends=('casclib' 'stormlib')
 license=('GPL3')
 options=('!strip')
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)"
 provides=('mpf-check')
 pkgver=2.7.3
-pkgrel=2
+pkgrel=3
 source=('https://github.com/SabreTools/MPF/releases/download/2.7.3/MPF.Check_2.7.3_net7.0_linux-x64_release.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
