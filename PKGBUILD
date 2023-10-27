@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=receptLoss
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Unsupervised Identification of Genes with Expression Loss in Subsets of Tumors'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a01240ad3224e0fc8dfe957bcceb8f1657aec7989d31096f35a7b002d67c80a9')
+sha256sums=('4cb2d7a3090bd0cd3fb867ef91c73bf867d39bca92cc55b63cb43b868abcaa65')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
