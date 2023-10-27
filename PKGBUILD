@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phantasus
-_pkgver=1.20.2
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.2
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Visual and interactive gene expression analysis'
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
   r-curl
   r-data.table
   r-deseq2
+  r-edger
   r-fgsea
   r-geoquery
   r-ggplot2
@@ -43,7 +44,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba3cfc6195569ccc06d1ed46c257a52259c4775cf5d04874dd70d1f4a93b6cb9')
+sha256sums=('8d4921c1a7e26d000eba0f8961c323f1ca07e09248ec93d5109a1cca74f2c96b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
