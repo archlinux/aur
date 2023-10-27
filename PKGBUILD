@@ -1,15 +1,15 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=unicodeit-gtk
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A GTK IME popup for entering symbols via (La)TeX"
 url='https://github.com/v--/unicodeit-gtk'
 arch=('any')
 license=('Unlicense')
 makedepends=(git python-build python-installer python-wheel)
-depends=(python python-gobject python-unicodeit python-setproctitle wtype)
+depends=(gtk4 python python-gobject python-unicodeit python-setproctitle wtype)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('93fc2821d696d3f0aa4cd75ac4ad91cc581944aa6c6aa724e6c8ba3b1264813e')
+sha256sums=('65fcc15c87c68ebd3c28ea2390ebca1fe471c008f52ae14ec9a9d5be0f6b9c10')
 
 fullsrcdir() {
     echo "${srcdir}/${pkgname}-${pkgver}"
