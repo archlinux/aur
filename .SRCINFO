@@ -1,12 +1,10 @@
 pkgbase = burnoutsharp-bin
 	pkgdesc = Protection, packer, and archive scanning library
 	pkgver = 2.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mnadareski/BurnOutSharp
 	arch = x86_64
 	license = MIT
-	depends = casclib
-	depends = stormlib
 	provides = burnoutsharp
 	options = !strip
 	source = https://github.com/mnadareski/BurnOutSharp/releases/download/2.9.0/BinaryObjectScanner_2.9.0_net7.0_linux-x64_release.zip
