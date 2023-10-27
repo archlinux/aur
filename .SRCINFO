@@ -1,0 +1,15 @@
+pkgbase = python-aiot-bootrom-git
+	pkgdesc = AIoT tools for flashing boards using MediaTek AIoT SoCs.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://gitlab.com/mediatek/aiot/bsp/aiot-bootrom
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-aiot-bootrom
+	conflicts = python-aiot-bootrom
+	source = python-aiot-bootrom-git::git+https://gitlab.com/mediatek/aiot/bsp/aiot-bootrom.git
+	md5sums = SKIP
+
+pkgname = python-aiot-bootrom-git
