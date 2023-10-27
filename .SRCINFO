@@ -1,7 +1,7 @@
 pkgbase = r-contibait
 	pkgdesc = Improves Early Build Genome Assemblies using Strand-Seq Data
-	pkgver = 1.28.0
-	pkgrel = 2
+	pkgver = 1.30.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/contiBAIT
 	arch = x86_64
 	license = BSD
@@ -28,8 +28,8 @@ pkgbase = r-contibait
 	depends = r-s4vectors
 	depends = r-tsp
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/contiBAIT_1.28.0.tar.gz
-	md5sums = bc21baae59dc116f62b237e1690ac8ec
-	sha256sums = 2c8e0e820233795cf0fb79798e6caf1d6b8bf7849114d20696a4541aff3993ba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/contiBAIT_1.30.0.tar.gz
+	md5sums = 8297fd66bbfcd997be0f23cf31fcd644
+	sha256sums = 13c01ca0868c4465b3cbc26de283031a70772fad7d8cf244a417bc5541775eab
 
 pkgname = r-contibait

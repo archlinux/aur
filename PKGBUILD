@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=contiBAIT
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Improves Early Build Genome Assemblies using Strand-Seq Data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,8 +38,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc21baae59dc116f62b237e1690ac8ec')
-sha256sums=('2c8e0e820233795cf0fb79798e6caf1d6b8bf7849114d20696a4541aff3993ba')
+md5sums=('8297fd66bbfcd997be0f23cf31fcd644')
+sha256sums=('13c01ca0868c4465b3cbc26de283031a70772fad7d8cf244a417bc5541775eab')
 
 build() {
   mkdir -p build
