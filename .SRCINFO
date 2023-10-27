@@ -1,6 +1,6 @@
 pkgbase = r-summarizedbenchmark
 	pkgdesc = Classes and methods for performing benchmark comparisons
-	pkgver = 2.18.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SummarizedBenchmark
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-summarizedbenchmark
 	optdepends = r-splatter
 	optdepends = r-testthat
 	optdepends = r-tximport
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedBenchmark_2.18.0.tar.gz
-	sha256sums = f1643d21278bfbbc52ed7c877cd4198b572acef24cb9214eb3f384947d1b96b6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedBenchmark_2.20.0.tar.gz
+	sha256sums = 0f04739892c4819d36787ee3f754ddb16a8360d72790c90c69cc99e3fca4ff99
 
 pkgname = r-summarizedbenchmark
