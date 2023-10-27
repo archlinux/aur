@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BUMHMM
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Computational pipeline for computing probability of modification from structure probing experiment data'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('881f3a1b217e2cc1c076472b55d0a44024d493396be1a2325291ce7fa87fcf66')
+sha256sums=('001125e671c42dc88a26f9a83245f8fd894d1124ca91565350d2703133f8e82a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
