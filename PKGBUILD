@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=XNAString
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Efficient Manipulation of Modified Oligonucleotide Sequences'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('05fa8e845827521622bcadbe681841c3d2397e34fc94ee48d8fb00e4834d0377')
+sha256sums=('c44309572ddb39a3ee070c747fcb7ce08acd226e133c8bc3e9f9eefb5673873c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
