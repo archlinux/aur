@@ -1,0 +1,15 @@
+pkgbase = tsr-bridge-appimage
+	pkgdesc = The TSR-bridge is the application which handles the actual playout and control of the connected devices. By default, an instance of TSR-bridge runs internally in SuperConductor, so devices can be controlled directly from the application
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/SuperFlyTV/SuperConductor
+	arch = x86_64
+	license = AGPL3
+	depends = fuse2
+	depends = superconductor
+	provides = tsr-bridge
+	conflicts = tsr-bridge
+	options = !strip
+	source = https://github.com/SuperFlyTV/SuperConductor/releases/download/v0.11.1/TSR-Bridge-0.11.1-Linux-Executable.AppImage
+
+pkgname = tsr-bridge-appimage
