@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=barcodetrackR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Functions for Analyzing Cellular Barcoding Data'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e88e850b3075e5bdbe8cbf8e860d672a0af88e477b770262faf9558131eeb494')
+sha256sums=('096ac951ed4c2259c9bdd60e9d7308955b88418dad6b5cfd116fb8a77033b7f0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

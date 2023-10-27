@@ -1,6 +1,6 @@
 pkgbase = r-barcodetrackr
 	pkgdesc = Functions for Analyzing Cellular Barcoding Data
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/barcodetrackR
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-barcodetrackr
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/barcodetrackR_1.8.0.tar.gz
-	sha256sums = e88e850b3075e5bdbe8cbf8e860d672a0af88e477b770262faf9558131eeb494
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/barcodetrackR_1.10.0.tar.gz
+	sha256sums = 096ac951ed4c2259c9bdd60e9d7308955b88418dad6b5cfd116fb8a77033b7f0
 
 pkgname = r-barcodetrackr
