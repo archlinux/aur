@@ -1,8 +1,8 @@
 pkgbase = r-tscr
 	pkgdesc = A time series clustering package combining slope and Frechet distances
 	pkgver = 1.11.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/tscR
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.17/tscR
 	arch = x86_64
 	license = GPL
 	depends = r
@@ -21,7 +21,7 @@ pkgbase = r-tscr
 	depends = r-s4vectors
 	depends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tscR_1.11.0.tar.gz
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/tscR_1.11.0.tar.gz
 	sha256sums = c7d7b01f4ea1fa11e6ae604d6e0d94dc8cb468033f301408a0c7d36696af57a6
 
 pkgname = r-tscr

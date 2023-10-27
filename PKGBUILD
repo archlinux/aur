@@ -4,10 +4,10 @@ _pkgname=tscR
 _pkgver=1.11.0
 pkgname=r-${_pkgname,,}
 pkgver=1.11.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A time series clustering package combining slope and Frechet distances'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -29,7 +29,7 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('c7d7b01f4ea1fa11e6ae604d6e0d94dc8cb468033f301408a0c7d36696af57a6')
 
 build() {
