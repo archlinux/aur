@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSReg
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Gene Set Regulation (GS-Reg)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-gsbenchmark
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab36a418ff44354da093f92370fe5aee2e08c85033d7fde76059fe94137b3423')
+sha256sums=('9ba8a3544618d4f74640e9674d641888c0a29edccf094e0c71744d4650989441')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
