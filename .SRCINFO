@@ -1,6 +1,6 @@
 pkgbase = r-methylclockdata
 	pkgdesc = Data for methylclock package
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methylclockData
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = r-methylclockdata
 	depends = r
 	depends = r-experimenthub
 	depends = r-experimenthubdata
+	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/methylclockData_1.8.1.tar.gz
-	sha256sums = 9518fc367b0dff23ff78305e859a4a5ef62955903ed0e2d668aa439840a55437
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/methylclockData_1.10.0.tar.gz
+	sha256sums = 7eb08a0ea554c3e73a8bced5ba60a0f03d22809abcadcde700cf01cd298b9060
 
 pkgname = r-methylclockdata
