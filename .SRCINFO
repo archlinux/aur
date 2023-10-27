@@ -1,11 +1,12 @@
 pkgbase = r-mess
 	pkgdesc = Miscellaneous Esoteric Statistical Scripts
 	pkgver = 0.5.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=MESS
 	arch = x86_64
 	license = GPL
 	depends = r
+	depends = r-clipr
 	depends = r-geem
 	depends = r-geepack
 	depends = r-ggformula
