@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rqc
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Quality Control Tool for High-Throughput Sequencing Data'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('944400277abefec9acade45df52beb77bc8907c3e4e306b1f96ec043595d8597')
+sha256sums=('2c1234550fe8d3bf5fb6dd6a656cc07bcb54d3cef5ce5fb7e0cca705f6733043')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
