@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-power-profile-switcher-git
 _uuid=power-profile-switcher@eliapasquali.github.io
-pkgver=5.1.r2.g4917510
-pkgrel=3
+pkgver=r251.903026d
+pkgrel=1
 pkgdesc="GNOME extension to automatically switch between power profiles based on power supply."
 arch=('any')
 url="https://github.com/eliapasquali/power-profile-switcher"
@@ -11,21 +11,16 @@ depends=('gnome-shell' 'power-profiles-daemon')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/eliapasquali/power-profile-switcher.git'
-        'https://github.com/eliapasquali/power-profile-switcher/pull/24.patch')
-sha256sums=('SKIP'
-            '34342031182d521d1b12ca28f4b19574e16a9bbccd24de729cc5807e6e763e53')
+source=('git+https://github.com/eliapasquali/power-profile-switcher.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd power-profile-switcher
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd power-profile-switcher
-
-  # Port to ESM for 45
-  patch -Np1 -i ../24.patch
 }
 
 build() {
