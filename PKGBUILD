@@ -39,8 +39,7 @@ prepare() {
     src="${src##*/}"
     src="${src%.zst}"
     if [[ $src == *.patch ]] ; then
-      echo
-      echo "Applying patch $src..."
+      printf '\nApplying patch: %s\n' "$src"
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
@@ -48,9 +47,6 @@ prepare() {
 
 build() {
   cd "$_pkgsrc"
-
-  #./configure --prefix=/usr
-  #make
 
   autoreconf -i
   ./configure --prefix=/usr
