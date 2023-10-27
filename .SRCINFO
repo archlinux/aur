@@ -1,6 +1,6 @@
 pkgbase = r-magpie
 	pkgdesc = MeRIP-Seq data Analysis for Genomic Power Investigation and Evaluation
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/magpie
 	arch = any
@@ -30,8 +30,8 @@ pkgbase = r-magpie
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-tbx20bamsubset
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/magpie_1.0.0.tar.gz
-	md5sums = 52ffa8a06a288f5a51ea9337aa99733e
-	sha256sums = 2d1319e0843375983359eeda1875809fe5747845a07f2ef97fdd77c95705c2db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/magpie_1.2.0.tar.gz
+	md5sums = 019cf9b038353b96851fe65fa55f3d08
+	sha256sums = 71b1fe8436fa3bd8037f002969f304b9588400cabcefafa3b851344ee914c662
 
 pkgname = r-magpie
