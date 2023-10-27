@@ -1,6 +1,6 @@
 pkgbase = python-thefuzz
 	pkgdesc = Fuzzy string matching in Python
-	pkgver = 0.20.1
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/seatgeek/thefuzz
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-thefuzz
 	depends = python-levenshtein
 	provides = python-fuzzywuzzy
 	conflicts = python-fuzzywuzzy
-	source = thefuzz::git+https://github.com/seatgeek/thefuzz#tag=0.20.1
+	source = thefuzz::git+https://github.com/seatgeek/thefuzz.git#tag=0.21.0
 	sha256sums = SKIP
 
 pkgname = python-thefuzz

@@ -1,10 +1,11 @@
 # Maintainer: xiota / aur.chaotic.cx
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 # Contributor: oldNo.7 <oldNo.7@archlinux.org>
 
-_gitname="thefuzz"
-_pkgname="python-$_gitname"
+_module="thefuzz"
+_pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.20.1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Fuzzy string matching in Python'
 arch=(any)
@@ -28,54 +29,52 @@ checkdepends=(
   'python-pytest'
 )
 
-provides=(
-  python-fuzzywuzzy
-)
-conflicts=(
-  python-fuzzywuzzy
-)
-
-if [ x"$_pkgname" == x"$pkgname" ] ; then
+if [ x"$pkgname" == x"$_pkgname" ] ; then
   # normal package
-  source=("$_gitname"::"git+$url#tag=$pkgver")
-  sha256sums=(SKIP)
-else
-  # git package
-  provides+=(
-    "$_pkgname"
-  )
-  conflicts+=(
-    "$_pkgname"
-  )
-
-  source=("$_gitname"::"git+$url")
-  sha256sums=(SKIP)
+  _pkgsrc="$_module"
+  source=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
+  sha256sums=('SKIP')
 
   pkgver() {
-    cd "$srcdir/$_gitname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    echo "${pkgver%%.r*}"
+  }
+else
+  # git package
+  provides+=("$_pkgname")
+  conflicts+=("$_pkgname")
+
+  _pkgsrc="$_module"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 fi
 
+provides+=('python-fuzzywuzzy')
+conflicts+=('python-fuzzywuzzy')
+
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$_pkgsrc"
   python -m build --no-isolation --wheel
 }
 
 check() {
-  cd "$srcdir/$_gitname"
+  cd "$_pkgsrc"
   pytest
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  _pyver=$(
+  local _pyver=$(
     python --version \
       | sed -E 's@^Python ([0-9]+\.[0-9]+)(\.[0-9]+)?$@\1@'
   )
 
   # provide fuzzywuzzy for backward compatibility
-  ln -vsf "$_gitname" "$pkgdir/usr/lib/python$_pyver/site-packages/fuzzywuzzy"
+  ln -vsf "$_pkgsrc" "$pkgdir/usr/lib/python$_pyver/site-packages/fuzzywuzzy"
 }
