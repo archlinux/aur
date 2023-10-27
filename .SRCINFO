@@ -1,6 +1,6 @@
 pkgbase = r-gwascat
 	pkgdesc = representing and modeling data in the EMBL-EBI GWAS catalog
-	pkgver = 2.32.0
+	pkgver = 2.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gwascat
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-gwascat
 	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gwascat_2.32.0.tar.gz
-	sha256sums = 6df272e83cb2f371ee0757f577a24bd6d002a05c16b62e7de1600ba6c05cc4c4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gwascat_2.34.0.tar.gz
+	sha256sums = fe291f03cee6f376939a320b9594e98b85e915a2986a9e74c121cf77c3461609
 
 pkgname = r-gwascat
