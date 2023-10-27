@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=casper
-_pkgver=2.34.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='Characterization of Alternative Splicing based on Paired-End Reads'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('174c36b95a80fd7b98b4cc8c900bbc4174f9094c4fd5fafe330d9422de36835c')
+sha256sums=('011813460d5eabc2e85b92a68a57d4bf0695f0102b8b4cbfd61f2e4c3a325033')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
