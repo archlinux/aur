@@ -1,12 +1,12 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=algobox
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Algorithmic learning for high school students"
 url="http://www.xm1math.net/algobox/index.html"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-depends=('qt5-base' 'qt5-webkit' 'qt5-webengine')
+depends=('qt6-base')
 optdepends=()
 makedepends=()
 source=("http://www.xm1math.net/algobox/${pkgname}-${pkgver}.tar.bz2"
@@ -16,7 +16,7 @@ sha256sums=('b5db2479360d5efa00c1856466e98481571d22064ed63272706ff0d5098f0e5e')
 
 build() {
 	  cd "${srcdir}/${pkgname}-${pkgver}"
-    qmake
+    qmake6
 	  make
 }
 
