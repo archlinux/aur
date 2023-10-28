@@ -7,15 +7,15 @@ arch=('i686' 'x86_64')
 url="https://vitasdk.org/"
 license=('MIT' 'GPL')
 options=(!strip)
-depends=(
-  'pacman>5'
-)
 makedepends=(
   'wget'
   'git'
 )
 provides=(
   'vitasdk'
+  'psvita-sdk'
+)
+replaces=(
   'psvita-sdk'
 )
 source=("sudo-fix.patch" "git+https://github.com/vitasdk/vdpm")
