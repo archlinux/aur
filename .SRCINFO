@@ -1,0 +1,20 @@
+pkgbase = writerside-eap
+	pkgdesc = Technical writing environment from JetBrains. Early Access Program.
+	pkgver = 232.10165
+	pkgrel = 1
+	url = https://www.jetbrains.com/writerside/
+	arch = x86_64
+	license = Commercial
+	options = !strip
+	source = https://download.jetbrains.com/writerside/writerside-232.10165.tar.gz
+	source = writerside-eap.desktop
+	sha256sums = d9d7dab78da28b725cf5df7e433003624947e585c914311c90845d49452c3586
+	sha256sums = 58d34eb19f91270394b7fa17443ebf0546e47ba96c41119142d1126726260a57
+
+pkgname = writerside-eap
+	optdepends = writerside-eap-jre: JetBrains custom Java Runtime (Recommended)
+	optdepends = java-runtime: JRE - Required if writerside-eap-jre is not installed
+
+pkgname = writerside-eap-jre
+	pkgdesc = JBR (JetBrains Runtime) for WebStorm EAP - a patched JRE
+	url = https://github.com/JetBrains/JetBrainsRuntime
