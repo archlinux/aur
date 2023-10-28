@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scHOT
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='single-cell higher order testing'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-scattermore
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('befe7e6bb8555b4f6dd15c058fa6a64451b2c9c09c0a17dbeaae10dc7ba66150')
+sha256sums=('74dffee28c0a3928c7b4202c6f07ad3fcefeeef11911f158a043b97b220a6064')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
