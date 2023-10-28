@@ -1,0 +1,4 @@
+generate-openpgpkey-hu-3
+pkg/
+src/
+*.pkg.tar.zst
