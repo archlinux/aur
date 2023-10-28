@@ -1,7 +1,7 @@
 pkgname=openbor-bin
 pkgrlname=openbor
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenBOR, a royalty free sprite-based side scrolling gaming engine."
 arch=('x86_64')
 url=""
