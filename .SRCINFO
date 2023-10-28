@@ -1,0 +1,26 @@
+pkgbase = okolors-git
+	pkgdesc = Generate a color palette from an image using k-means clustering in the Oklab color space
+	pkgver = 0.4.0.r168.46ea1e2
+	pkgrel = 1
+	url = https://github.com/Ivordir/Okolors
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = gcc
+	makedepends = meson
+	makedepends = ninja
+	makedepends = nasm
+	makedepends = cmake
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	provides = okolors
+	conflicts = okolors
+	options = !lto
+	source = okolors::git+https://github.com/Ivordir/Okolors.git
+	sha256sums = SKIP
+
+pkgname = okolors-git
