@@ -1,9 +1,9 @@
 # Maintainer: Phantasm <phantasm@centrum.cz>
 # Contributor: Tony Fettes <feihaoxiang2014@gmail.com>
 
-pkgname=matcha-kde-git
+pkgname=plasma5-themes-matcha-git
 _gitname=Matcha-kde
-pkgver=r9.283b5b1
+pkgver=r11.a3b247b
 pkgrel=1
 pkgdesc='A flat Design theme for KDE Plasma desktop'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('plasma-desktop: Plasma desktop themes'
             'qogir-icon-theme: Recommended icon themes'
 	    'kvantum: Kvantum application style')
 makedepends=('git')
-provides=('matcha-kde')
+provides=('matcha-kde' 'plasma5-themes-matcha-git')
 conflicts=('matcha-kde')
 source=("git+${url}.git")
 sha256sums=('SKIP')
