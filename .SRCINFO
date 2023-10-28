@@ -1,6 +1,6 @@
 pkgbase = python-botoy
 	pkgdesc = OPQ/IOTQQ/IOTBot的一个Python开发助手
-	pkgver = 9.2
+	pkgver = 9.4
 	pkgrel = 1
 	url = https://github.com/opq-osc/botoy
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-botoy
 	depends = python-colorama
 	depends = fastapi
 	depends = uvicorn
-	source = python-botoy-9.2.tar.gz::https://github.com/xiyaowong/botoy/archive/v9.2.tar.gz
-	sha256sums = c97d7d2ae77a812a9cfc446b51c76e12ae7a5fb30dddd58edbb78e5b4ee85402
+	source = python-botoy-9.4.tar.gz::https://github.com/xiyaowong/botoy/archive/v9.4.tar.gz
+	sha256sums = f7eda2e57bb7e06e21e7ee4a83bda819bfd7b4e2f842173fe438ea2930a538d8
 
 pkgname = python-botoy
