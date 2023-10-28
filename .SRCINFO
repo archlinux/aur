@@ -5,6 +5,7 @@ pkgbase = elite-image-mounter
 	url = https://github.com/siyia2/mounter_elite
 	arch = x86_64
 	license = GPL3
+	depends = bash
 	depends = coreutils
 	depends = ccd2iso
 	depends = sudo
