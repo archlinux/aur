@@ -1,6 +1,6 @@
 pkgbase = r-isee
 	pkgdesc = Interactive SummarizedExperiment Explorer
-	pkgver = 2.12.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iSEE
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-isee
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEE_2.12.0.tar.gz
-	sha256sums = 6a61771a49d4a0d7af18bfbf2123ff49f9dd0dfff6d784ca753c1552086dfcda
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEE_2.14.0.tar.gz
+	sha256sums = 44b2ecfea6f47e414b372c04e68be5384e873336c7caffb6b07a206905d71e4e
 
 pkgname = r-isee
