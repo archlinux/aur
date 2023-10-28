@@ -17,7 +17,11 @@ source=(
     "visurf::git+https://git.sr.ht/~sircmpwn/visurf"
     'libcss::git+git://git.netsurf-browser.org/libcss.git#commit=f420dd16136de1dc07f18824c6d0f5540d5df6d1'
 )
-md5sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+    '495adf6b6614ce36fca6c605f7c321f9cb4a3df838043158122678ce2b3325b7'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
 	cd "$srcdir/visurf"
