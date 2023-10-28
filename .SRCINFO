@@ -1,7 +1,7 @@
 pkgbase = plainpanel
 	pkgdesc = plainDE panel
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://plainde.github.io
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = plainpanel
 	depends = ttf-opensans
 	depends = make
 	depends = alsa-utils
-	depends = kwindowsystem
+	depends = kwindowsystem5
 	depends = python3
 	depends = picom
 	depends = upower
