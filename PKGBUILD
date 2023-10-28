@@ -2,8 +2,8 @@
 
 pkgname=gtkcord4
 _fqpn=so.libdb.${pkgname}
-pkgver=0.0.14
-pkgrel=2
+pkgver=0.0.15
+pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
 url='https://github.com/diamondburned/gtkcord4'
@@ -12,10 +12,8 @@ depends=('gtk4>=4.10.3' 'gobject-introspection' 'libadwaita>=1.3.2')
 provides=('gtkcord4')
 conflicts=('gtkcord4')
 makedepends=('git' 'go>=1.20.3')
-source=("git+https://github.com/diamondburned/gtkcord4#tag=v${pkgver}"
-        "${_fqpn}.service")
-sha256sums=('SKIP'
-            'f57c464e1aaa9eab28f6303fdff43a5c1299b27278948769a3d24009213aa105')
+source=("git+https://github.com/diamondburned/gtkcord4#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
     cd "${pkgname}"
@@ -43,6 +41,6 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}/${_fqpn}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_fqpn}.metainfo.xml"
     install -Dm644 "${srcdir}/${pkgname}/.github/logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gtkcord4.png"
     install -Dm644 "${srcdir}/${pkgname}/internal/icons/hicolor/scalable/apps/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gtkcord4.svg"
-    install -Dm644 "${srcdir}/${_fqpn}.service" "${pkgdir}/usr/share/dbus-1/services/${_fqpn}.service"
+    install -Dm644 "${srcdir}/${pkgname}/nix/${_fqpn}.service" "${pkgdir}/usr/share/dbus-1/services/${_fqpn}.service"
 }
 
