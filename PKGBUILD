@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=xcms
-_pkgver=3.22.0
+_pkgver=4.0.0
 pkgname=r-${_pkgname,,}
-pkgver=3.22.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='LC-MS and GC-MS Data Analysis'
 arch=('x86_64')
@@ -17,16 +17,19 @@ depends=(
   r-iranges
   r-massspecwavelet
   r-mscoreutils
+  r-msexperiment
   r-msfeatures
   r-msnbase
   r-multtest
   r-mzr
   r-plyr
+  r-progress
   r-protgenerics
   r-rann
   r-rcolorbrewer
   r-robustbase
   r-s4vectors
+  r-spectra
   r-summarizedexperiment
 )
 optdepends=(
@@ -34,24 +37,22 @@ optdepends=(
   r-catools
   r-faahko
   r-knitr
-  r-magrittr
   r-maldiquant
+  r-metabocoreutils
   r-msbackendmgf
   r-msdata
   r-ncdf4
   r-pander
   r-pheatmap
-  r-progress
   r-rgl
   r-rgraphviz
   r-rmarkdown
   r-signal
-  r-spectra
   r-testthat
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b48c0bc1a8d79d9eded50ab9365235ca5cdd9921cb3041eca8c1c102f154f84')
+sha256sums=('8837a8202977d6804ba2b9f8a6d2faa98ce7e934aaa65de822ab264438ef7b81')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
