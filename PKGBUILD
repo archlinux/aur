@@ -1,9 +1,10 @@
-# Maintainer: Knut Ahlers <knut at ahlers dot me>
+# Maintainer: Lizzy Green <lizzy at theender dot net>
+# Contributor: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=yggdrasil-git
 _pkgname="yggdrasil"
-pkgver=0.4.2.r2.g408d381
-_commit=408d381591e99c273bf8db520a185478cdd8024f
+pkgver=0.5.1.r1.g7f9d4f3
+_commit=7f9d4f3f6d06262e212a8dd101d51fda134332da
 pkgrel=1
 pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network (develop branch)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
