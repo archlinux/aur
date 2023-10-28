@@ -1,0 +1,14 @@
+pkgbase = nodejs-xdccjs
+	pkgdesc = download files from XDCC bots on IRC, complete implementation of the XDCC protocol
+	pkgver = 5.1.5
+	pkgrel = 1
+	url = https://github.com/JiPaix/xdccJS
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = xdccjs-5.1.5.tgz
+	source = https://registry.npmjs.org/xdccjs/-/xdccjs-5.1.5.tgz
+	sha1sums = 246798e14c0cba4f85a8c78ca395503638acd753
+
+pkgname = nodejs-xdccjs
