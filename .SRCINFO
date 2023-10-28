@@ -11,10 +11,12 @@ pkgbase = notion-app-electron
 	depends = glibc
 	provides = notion-app
 	conflicts = notion-app
+	source_x86_64 = notion-app.sh
 	source_x86_64 = notion-app-electron.desktop
 	source_x86_64 = Notion Setup 2.2.4.exe::https://www.notion.so/desktop/windows/download
 	source_x86_64 = https://github.com/WiseLibs/better-sqlite3/releases/download/v9.0.0/better-sqlite3-v9.0.0-electron-v116-linux-x64.tar.gz
-	sha256sums_x86_64 = 01a5c0af510f40b44417449b24027970ca3695b8930654ba894ed3d19c3f0428
+	sha256sums_x86_64 = 14bb91bb8c48cca21215a45a5f34762eef1dffbc8b5f968025c92552afc5f5ae
+	sha256sums_x86_64 = e31c1c1a97414b879658890563de10a2200841f1b06200dbfc00e054b625319c
 	sha256sums_x86_64 = ba18604307593e8bfa4f90d1bc6cee56f3434e41f8d5a3edfc998277bd5ee18d
 	sha256sums_x86_64 = 38848d85c41116b419b13818ab934d6ec5c5c563f9623f1cf8a958809ea92c7d
 
