@@ -2,7 +2,7 @@
 _name="spin"
 pkgname="python-${_name}"
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A developer tool for scientific Python libraries"
 arch=('any')
 url="https://github.com/scientific-python/spin"
@@ -13,6 +13,7 @@ depends=(
   "python-tomli"
 )
 makedepends=(
+  "python-setuptools"
   "python-build"
   "python-installer"
   "python-wheel"
@@ -35,7 +36,7 @@ build() {
 
 check() {
   cd "${_archive}"
-  pytest
+  python -m pytest
 }
 
 package() {

@@ -1,11 +1,12 @@
 pkgbase = python-spin
 	pkgdesc = A developer tool for scientific Python libraries
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scientific-python/spin
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
