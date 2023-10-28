@@ -3,7 +3,7 @@
 pkgname=haiti
 _gemname=haiti-hash
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Hash type identifier (CLI & lib)'
 arch=('any')
 url='https://noraj.github.io/haiti/'
@@ -26,5 +26,8 @@ package() {
 
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/man/$pkgname.1" \
+    "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
 
