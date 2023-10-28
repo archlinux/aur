@@ -27,7 +27,7 @@ package() {
   cd "$pkgname"
 
   install -Dm755 bin/rcalc.linux.release.$CARCH $pkgdir/usr/bin/rcalc
-  install -Dm311 LICENSE.md $pkgdir/usr/share/licenses/rcalc/LICENSE.md
-  install -Dm311 misc/rcalc.desktop $pkgdir/usr/share/applications/rcalc.desktop
-  install -Dm311 icon.svg $pkgdir/usr/share/pixmaps/rcalc.svg
+  install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/rcalc/LICENSE.md
+  install -Dm644 misc/rcalc.desktop $pkgdir/usr/share/applications/rcalc.desktop
+  install -Dm644 icon.svg $pkgdir/usr/share/pixmaps/rcalc.svg
 }
