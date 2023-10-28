@@ -1,5 +1,5 @@
 pkgbase = kiwivm-ga
-	pkgdesc = Required package for full functionality of the BandwaGonHost KiwiVM control panel.
+	pkgdesc = Required package for full functionality of the BandwagonHost KiwiVM control panel.
 	pkgver = 0.1.0
 	pkgrel = 2
 	url = https://bandwagonhost.com
