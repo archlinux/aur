@@ -1,6 +1,6 @@
 pkgbase = r-toxicogx
 	pkgdesc = Analysis of Large-Scale Toxico-Genomic Data
-	pkgver = 2.4.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ToxicoGx
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-toxicogx
 	optdepends = r-testthat
 	optdepends = r-tinytex
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ToxicoGx_2.4.0.tar.gz
-	sha256sums = 2896623139bb9890970160177d8bc6032a4cde23f2c19dc8d0d5dfae42294fcb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ToxicoGx_2.6.0.tar.gz
+	sha256sums = b88afaaa37cd354ed2901604c7e6105fd14324f1c0beda61d8a8d2a0a0708f33
 
 pkgname = r-toxicogx
