@@ -5,7 +5,7 @@
 
 pkgname=rolo-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tracks your contacts with vCards and displays them to you with
  a text-based menu."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('ncurses' 'libvc-git')
 makedepends=('autoconf')
 conflicts=(rolo)
 provides=(rolo)
-source=(git://github.com/yourealwaysbe/rolo.git)
+source=(git+https://github.com/yourealwaysbe/rolo.git)
 md5sums=('SKIP')
 
 build() {
