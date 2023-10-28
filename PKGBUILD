@@ -4,7 +4,7 @@
 
 pkgname=libvc-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="vCard library, part of rolo project."
 arch=('i686' 'x86_64')
 url="https://github.com/yourealwaysbe/libvc"
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('flex' 'git' 'autoconf')
 conflicts=(libvc)
 provides=(libvc)
-source=(git://github.com/yourealwaysbe/libvc.git)
+source=(git+https://github.com/yourealwaysbe/libvc.git)
 md5sums=('SKIP')
 
 build() {

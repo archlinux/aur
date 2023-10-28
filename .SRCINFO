@@ -12,8 +12,7 @@ pkgbase = libvc-git
 	depends = glibc
 	provides = libvc
 	conflicts = libvc
-	source = git://github.com/yourealwaysbe/libvc.git
+	source = git+https://github.com/yourealwaysbe/libvc.git
 	md5sums = SKIP
 
 pkgname = libvc-git
-
