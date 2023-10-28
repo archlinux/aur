@@ -4,7 +4,7 @@ _pkgname=Linnorm
 _pkgver=2.26.0
 pkgname=r-${_pkgname,,}
 pkgver=2.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Linear model and normality based normalization and transformation method (Linnorm)'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -34,6 +34,7 @@ optdepends=(
   r-gplots
   r-knitr
   r-markdown
+  r-matrixstats
   r-moments
   r-rcolorbrewer
   r-rmarkdown

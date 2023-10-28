@@ -1,7 +1,7 @@
 pkgbase = r-linnorm
 	pkgdesc = Linear model and normality based normalization and transformation method (Linnorm)
 	pkgver = 2.26.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/Linnorm
 	arch = x86_64
 	license = MIT
@@ -27,6 +27,7 @@ pkgbase = r-linnorm
 	optdepends = r-gplots
 	optdepends = r-knitr
 	optdepends = r-markdown
+	optdepends = r-matrixstats
 	optdepends = r-moments
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
