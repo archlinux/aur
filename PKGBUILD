@@ -1,6 +1,6 @@
 pkgname=push2talk-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0
+pkgver=1.0.1.r0.g443560a
 pkgrel=1
 pkgdesc="Push to talk application."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ validpgpkeys=('C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "${_pkgname}"
     git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
