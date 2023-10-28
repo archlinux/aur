@@ -1,6 +1,6 @@
 pkgbase = r-reconsi
 	pkgdesc = Resampling Collapsed Null Distributions for Simultaneous Inference
-	pkgver = 1.12.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/reconsi
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-reconsi
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/reconsi_1.12.0.tar.gz
-	sha256sums = e690bce81b9fbbafbf6dbec9e44e5bf86d95cb0ee439d0522b82f8dc197ba5a4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/reconsi_1.14.0.tar.gz
+	sha256sums = 49f9dd0484f66ad706aa32144f200d8207087cea9928e0f8462de245f35a3cea
 
 pkgname = r-reconsi
