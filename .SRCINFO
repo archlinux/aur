@@ -1,6 +1,6 @@
 pkgbase = r-cageminer
 	pkgdesc = Candidate Gene Miner
-	pkgver = 1.6.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cageminer
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = r-cageminer
 	depends = r-ggtext
 	depends = r-iranges
 	depends = r-reshape2
+	depends = r-rlang
 	optdepends = r-biocstyle
 	optdepends = r-covr
 	optdepends = r-knitr
@@ -21,7 +22,7 @@ pkgbase = r-cageminer
 	optdepends = r-sessioninfo
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cageminer_1.6.2.tar.gz
-	sha256sums = 05e68ddcab5f9dcb913c8edf6e4034d97173a393daf9b75acb394ba8d17eb5de
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cageminer_1.8.0.tar.gz
+	sha256sums = dc7f034cbc9e9b9f5080b74e94fb40ff0beab366d28eb70c92185dde391da1ad
 
 pkgname = r-cageminer
