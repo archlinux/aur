@@ -1,14 +1,13 @@
 pkgbase = opencpn-plugin-o_charts
 	pkgdesc = use charts from o-charts.org in opencpn
 	pkgver = 2.0.0.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opencpn.org/OpenCPN/plugins/ocharts.html
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	license = custom
 	makedepends = cmake
-	makedepends = lsb-release
 	depends = opencpn
 	depends = libusb-compat
 	source = opencpn-plugin-o_charts-2.0.0.66.tar.gz::https://github.com/bdbcat/o-charts_pi/archive/refs/tags/v2.0.0.66.tar.gz
