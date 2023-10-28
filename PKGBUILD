@@ -4,7 +4,7 @@ _pkgname=intergraph
 _pkgver=2.0-3
 pkgname=r-${_pkgname,,}
 pkgver=2.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Coercion Routines for Network Data Objects'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,8 +16,10 @@ depends=(
 )
 optdepends=(
   r-knitr
+  r-rmarkdown
   r-roxygen2
   r-testthat
+  r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('354640a8ac4a1186e6d229b6c25f0535be3e456c13b1e7224a1632d3a346a7e8')
