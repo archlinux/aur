@@ -16,9 +16,9 @@ prepare() {
 }
 build() {
   cd "$srcdir"/TermPDFViewer-v."${pkgver}"
-  gcc -o term-pdf-wrp "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp.c
+  gcc -o term-pdf-wrp-b "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp.c
 }
 package() {
-  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp "${pkgdir}/usr/local/bin/term-pdf"
+  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/term-pdf-wrp-b "${pkgdir}/usr/local/bin/term-pdf"
   install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py "${pkgdir}/usr/local/bin/termpdf.py"
 }
