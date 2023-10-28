@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-simpleweather-git
 	pkgdesc = A minimalistic desktop weather widget based on the default KDE one.
 	pkgver = r115.74e6e10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zren/plasma-applet-simpleweather
 	arch = any
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = plasma5-applets-simpleweather-git
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
 	depends = kdeplasma-addons
+	conflicts = kdeplasma-applets-simpleweather-git
 	replaces = kdeplasma-applets-simpleweather-git
 	source = plasma5-applets-simpleweather-git::git+https://github.com/Zren/plasma-applet-simpleweather.git
 	md5sums = SKIP

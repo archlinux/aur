@@ -1,14 +1,16 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=plasma5-applets-simpleweather-git
+_oldpkgname=kdeplasma-applets-simpleweather-git
 pkgver=r115.74e6e10
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic desktop weather widget based on the default KDE one."
 arch=('any')
 url="https://github.com/Zren/plasma-applet-simpleweather"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects' 'kdeplasma-addons')
 makedepends=('git' 'extra-cmake-modules')
-replaces=("kdeplasma-applets-simpleweather-git")
+conflicts=("$_oldpkgname")
+replaces=("$_oldpkgname")
 source=("${pkgname}::git+https://github.com/Zren/plasma-applet-simpleweather.git")
 md5sums=('SKIP')
 
