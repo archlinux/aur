@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.36.0.r131.g19384e07e4
+pkgver=0.36.0.r690.g891efca9d7
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -127,7 +127,6 @@ url='http://mpv.io'
 makedepends=(
              'amf-headers'
              'avisynthplus'
-             'ffnvcodec-headers'
              'clang'
              'fontconfig'
              'git'
@@ -142,7 +141,7 @@ makedepends=(
              'vulkan-headers'
              'wayland-protocols'
              )
-             
+
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users')
 provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
@@ -154,9 +153,11 @@ source=('mpv-build::git+https://github.com/mpv-player/mpv-build.git'
         'ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git'
         'libass::git+https://github.com/libass/libass.git'
         'libplacebo::git+https://code.videolan.org/videolan/libplacebo.git'
+        'ffnvcodec::git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git'
         'LICENSE'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -244,7 +245,17 @@ pkgver() {
   # git describe --tags --long | sed 's|^v\(.*\)|\1|;s|\([^-]*-g\)|r\1|;s|-|.|g'
 }
 
+_prepare_ffnvcodec() {
+  make PREFIX=/usr -C "${srcdir}/ffnvcodec"
+  make PREFIX=/usr DESTDIR="${srcdir}" -C "${srcdir}/ffnvcodec" install
+  sed -i "s|=/usr|=${srcdir}/usr|g" "${srcdir}/usr/lib/pkgconfig/ffnvcodec.pc"
+
+  export PKG_CONFIG_PATH=${srcdir}/usr/lib/pkgconfig
+}
+
 prepare() {
+  _prepare_ffnvcodec
+
   cd mpv-build
   ln -sf -t . "../mpv"
   ln -sf -t . "../ffmpeg"
@@ -432,7 +443,6 @@ prepare() {
     '-Dgl-dxinterop=disabled'
     '-Dgl-win32=disabled'
     '-Djpeg=enabled'
-    '-Dlibplacebo=enabled'
     '-Drpi=disabled'
     '-Dsdl2-video=enabled'
     '-Dshaderc=enabled'
