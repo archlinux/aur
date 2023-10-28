@@ -1,14 +1,14 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/krunner-translator"
 license=('GPL3')
 groups=()
-depends=('krunner' 'translate-shell')
-makedepends=('cmake' 'extra-cmake-modules' 'ki18n' 'qt5-base' 'qt5-tools')
+depends=('krunner5' 'translate-shell')
+makedepends=('cmake' 'extra-cmake-modules' 'ki18n5' 'qt5-base' 'qt5-tools')
 optdepends=()
 provides=()
 conflicts=('kdeplasma-addons-runners-translator')
