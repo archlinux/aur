@@ -14,6 +14,11 @@ source=("${_pkgname}::git+$url.git#branch=main")
 validpgpkeys=('C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E')
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "$pkgname"
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 check() {
     cd "${_pkgname}"
     make test
