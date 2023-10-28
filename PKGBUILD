@@ -1,4 +1,4 @@
-# Maintainer: Dorian Wouters <gravgun at openmailbox dot org>
+# Maintainer: Céleste Wouters <foss at elementw dot net>
 # Contributor: Pierre Carru <pierre.carru@gmail.com>
 pkgname=xfce4-multiload-nandhp-plugin-git
 pkgver=20130612
@@ -11,7 +11,7 @@ groups=('xfce4-goodies')
 depends=('pacman' 'xfce4-panel>=4.7.4' 'libxfce4ui' 'libgtop')
 makedepends=('git' 'intltool')
 
-source=('git://github.com/nandhp/multiload-nandhp.git')
+source=('git+https://github.com/nandhp/multiload-nandhp.git')
 md5sums=('SKIP')
 
 _gitname='multiload-nandhp'
