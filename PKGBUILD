@@ -4,22 +4,18 @@ _pkgname=gRbase
 _pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A Package for Graphical Modelling in R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-graph
   r-igraph
   r-magrittr
-  r-rbgl
   r-rcpp
   r-rcpparmadillo
   r-rcppeigen
-  r-rgraphviz
-  r-biocmanager
 )
 optdepends=(
   r-knitr

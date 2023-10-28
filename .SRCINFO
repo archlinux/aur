@@ -1,20 +1,16 @@
 pkgbase = r-grbase
 	pkgdesc = A Package for Graphical Modelling in R
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gRbase
 	arch = x86_64
 	license = GPL
 	depends = r
-	depends = r-graph
 	depends = r-igraph
 	depends = r-magrittr
-	depends = r-rbgl
 	depends = r-rcpp
 	depends = r-rcpparmadillo
 	depends = r-rcppeigen
-	depends = r-rgraphviz
-	depends = r-biocmanager
 	optdepends = r-knitr
 	optdepends = r-microbenchmark
 	optdepends = r-testthat
