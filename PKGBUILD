@@ -4,7 +4,7 @@ pkgver=4.10.5.2.r5.ga4b0f50a1
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app with Material Design'
 arch=('x86_64' 'aarch64')
-url="https://github.com/AyuGram/AyuGramDesktop"
+url="https://github.com/kukuruzka165/materialgram"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans' 'glibmm-2.68'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
