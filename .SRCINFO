@@ -1,11 +1,12 @@
 pkgbase = plasma5-applets-fokus
 	pkgdesc = A simple pomodoro KDE plasmoid
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/divinae/focus-plasmoid
 	arch = any
 	license = GPL
 	depends = plasma-workspace
+	conflicts = kdeplasma-applets-fokus
 	replaces = kdeplasma-applets-fokus
 	source = https://gitlab.com/divinae/focus-plasmoid/-/archive/v1.5.5/focus-plasmoid-v1.5.5.tar.gz
 	b2sums = ce5d57d6a8746cda00a7fe0b5474e5d2af4dbccfc053e731408d91e31497bc9f790e25e986e79c750c3d8957929fc39c8991735b31154668b05690b26936b879
