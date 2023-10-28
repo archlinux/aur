@@ -1,8 +1,9 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 # Contributor: OK100 <ok100 at openmailbox dot org>
+# Contributor: UltraDesu <arch@hexor.cy>
 
 pkgname=cmusfm-git
-pkgver=33.1441155
+pkgver=90.3a75712
 pkgrel=1
 pkgdesc="Last.fm scrobbler for cmus music player"
 url="https://github.com/Arkq/cmusfm"
@@ -13,7 +14,7 @@ makedepends=('git')
 conflicts=('cmusfm')
 provides=('cmusfm')
 install='cmusfm.install'
-source=("$pkgname"::'git://github.com/Arkq/cmusfm.git')
+source=("$pkgname"::'git+https://github.com/Arkq/cmusfm.git')
 md5sums=('SKIP')
 
 pkgver() {
