@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Spotify (Wayland)
+GenericName=Music Player
+Icon=spotify-client
+TryExec=spotify
+Exec=env LD_PRELOAD=/usr/lib/spotify-xstub.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland --uri=%U
+Terminal=false
+MimeType=x-scheme-handler/spotify;
+Categories=Audio;Music;Player;AudioVideo;
+StartupWMClass=spotify
