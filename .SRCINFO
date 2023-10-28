@@ -1,7 +1,7 @@
 pkgbase = elite-image-mounter
 	pkgdesc = A minimalist bash based, ISO mounter and converter.
 	pkgver = 1.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/siyia2/mounter_elite
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,6 @@ pkgbase = elite-image-mounter
 	depends = coreutils
 	depends = sudo
 	source = https://github.com/siyia2/mounter_elite/archive/v1.5.0.tar.gz
-	md5sums = 3c00b6262df85daa8a5a85dc3caa8d93
+	md5sums = 03452e515fa035a40c15fae39badf070
 
 pkgname = elite-image-mounter
