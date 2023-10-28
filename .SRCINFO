@@ -1,0 +1,16 @@
+pkgbase = ruso-bin
+	pkgdesc = A cross-platform CLI and GUI application to easily modify osu! beatmap parameters.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Cyanistic/ruso
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = webkit2gtk-4.1
+	optdepends = gosumemory: auto selection of osu! map
+	provides = ruso
+	conflicts = ruso
+	source = ruso-linux-0.1.0::https://github.com/Cyanistic/ruso/releases/download/v0.1.0/ruso-x86_64-unknown-linux-gnu
+	md5sums = SKIP
+
+pkgname = ruso-bin
