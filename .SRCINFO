@@ -1,6 +1,6 @@
 pkgbase = matchama-kde
 	pkgver = r265.8525e05
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/cscs/matchama-kde
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = matchama-kde
 	source = matchama-kde::git+https://gitlab.com/cscs/matchama-kde.git#commit=8525e052971c807d3f6797d7baf38f51c81d4b81
 	sha256sums = SKIP
 
-pkgname = matchama-kde
+pkgname = plasma5-themes-matchama
 	pkgdesc = Matcha theme for KDE Plasma 5
 	install = matchama-kde.install
 	depends = plasma-workspace
@@ -24,11 +24,13 @@ pkgname = matchama-kde
 	provides = matchama-kde
 	conflicts = matchama-kde
 	conflicts = matcha-kde
+	replaces = matchama-kde
 
-pkgname = matchama-kde-wallpapers
+pkgname = plasma5-themes-matchama-wallpapers
 	pkgdesc = Matcha KDE wallpapers
-	provides = matchama-kde-wallpapers
-	conflicts = matchama-kde-wallpapers
+	provides = plasma5-themes-matchama-wallpapers
+	conflicts = plasma5-themes-matchama-wallpapers
+	replaces = matchama-kde-wallpapers
 
 pkgname = kvantum-theme-matchama
 	pkgdesc = Matcha theme for Kvantum

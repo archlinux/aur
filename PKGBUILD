@@ -3,7 +3,7 @@
 # Contributor: Stefano Capitani <stefano@manjaro.org>
 
 _pkgbase=matchama-kde
-_pkgname=("${_pkgbase}"{,'-wallpapers'}
+_pkgname=("plasma5-themes-${_pkgbase%-kde}"{,'-wallpapers'}
           'kvantum-theme-matchama'
           'konsole-colorscheme-matchama'
           'yakuake-skin-matchama'
@@ -12,7 +12,7 @@ pkgname=("${_pkgname[@]/%/}")
 pkgbase=${_pkgbase}
 _commit=8525e052971c807d3f6797d7baf38f51c81d4b81
 pkgver=r265.8525e05
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://gitlab.com/cscs/${_pkgbase}"
 license=('GPL3')
@@ -33,7 +33,7 @@ _install() {
 	cp -r "$@" "${pkgdir}"/usr/share
 }
 
-package_matchama-kde() {
+package_plasma5-themes-matchama() {
 	pkgdesc="Matcha theme for KDE Plasma 5"
 	depends=('plasma-workspace')
 	optdepends=('papirus-icon-theme: for a more consistent and beautiful experience (recommended)'
@@ -46,15 +46,17 @@ package_matchama-kde() {
 	            'matcha-firefox-theme: matcha theme for Firefox')
 	provides=("${_pkgbase}")
 	conflicts=("${_pkgbase}" 'matcha-kde')
+	replaces=('matchama-kde')
 	install=${pkgbase}.install
 
 	_install plasma aurorae color-schemes
 }
 
-package_matchama-kde-wallpapers() {
+package_plasma5-themes-matchama-wallpapers() {
 	pkgdesc="Matcha KDE wallpapers"
-	provides=('matchama-kde-wallpapers' )
-	conflicts=('matchama-kde-wallpapers')
+	provides=('plasma5-themes-matchama-wallpapers' )
+	conflicts=('plasma5-themes-matchama-wallpapers')
+	replaces=('matchama-kde-wallpapers')
 
 	_install wallpapers
 }
