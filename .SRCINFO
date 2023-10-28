@@ -1,6 +1,6 @@
 pkgbase = python-xarray-datatree
 	pkgdesc = Hierarchical tree-like data structures for xarray
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://xarray-datatree.readthedocs.io
 	arch = any
@@ -24,14 +24,15 @@ pkgbase = python-xarray-datatree
 	makedepends = ipython
 	makedepends = python-xarray
 	makedepends = ttf-roboto
-	source = https://files.pythonhosted.org/packages/source/x/xarray-datatree/xarray-datatree-0.0.12.tar.gz
-	md5sums = 36e380a4fe1de4f6a92df025c80b7422
+	source = https://files.pythonhosted.org/packages/source/x/xarray-datatree/xarray-datatree-0.0.13.tar.gz
+	md5sums = 2a76392d0d015ce590624c3c4672267c
 
 pkgname = python-xarray-datatree
 	depends = python>=3.9
 	depends = python-xarray>=2022.6.0
+	depends = python-packaging
 	optdepends = python-netcdf4: allow file I/O
-	optdepends = python-h5netcdfxarray-datatree-doc: allow file I/O
+	optdepends = python-h5netcdf: allow file I/O
 	optdepends = python-zarr: allow file I/O
 	optdepends = python-xarray-datatree-doc: Documentation for xarray datatree
 

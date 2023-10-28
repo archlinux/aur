@@ -3,7 +3,7 @@
 pkgbase=python-xarray-datatree
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Hierarchical tree-like data structures for xarray"
 arch=('any')
@@ -29,7 +29,7 @@ checkdepends=('python-pytest'
               'python-h5netcdf'
               'python-zarr')   # xarray already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('36e380a4fe1de4f6a92df025c80b7422')
+md5sums=('2a76392d0d015ce590624c3c4672267c')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -50,11 +50,11 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # E   ModuleNotFoundError: No module named 'xarray.tests'
-    pytest --ignore=datatree/tests/test_datatree.py || warning "Tests failed" # -vv --color=yes
+    pytest --ignore=datatree/tests/test_datatree.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-xarray-datatree() {
-    depends=('python>=3.9' 'python-xarray>=2022.6.0')
+    depends=('python>=3.9' 'python-xarray>=2022.6.0' 'python-packaging')
     optdepends=('python-netcdf4: allow file I/O'
                 'python-h5netcdf: allow file I/O'
                 'python-zarr: allow file I/O'
