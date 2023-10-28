@@ -1,4 +1,3 @@
-# Maintainer: Matthew Hague <matthewhague@zoho.com>
 # Maintainer: Loui Chang <base64:bG91aXBjLmlzdEBnbWFpbC5jb20=>
 # Contributor: Matthias Hueser <mail at mhueser dot de>
 # Contributor: Daniel Griffiths <ghost1227 at archlinux dot us>
