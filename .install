@@ -1,0 +1,15 @@
+# Colored makepkg-like functions
+note() {
+    local _all_off="$(tput sgr0)"
+    local _bold="${_all_off}$(tput bold)"
+    local _blue="${_bold}$(tput setaf 4)"
+    local _yellow="${_bold}$(tput setaf 3)"
+    printf "${_blue}==>${_yellow} NOTE:${_bold} %s${_all_off}\n" "$1"
+}
+
+
+
+post_install() {
+    note "Custom flags should be put directly in: ~/.config/notion-flags.conf"
+    note "The launcher is called: 'notion-app'"
+}
