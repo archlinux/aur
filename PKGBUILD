@@ -26,13 +26,8 @@ build() {
 package() {
   cd "$pkgname"
 
-  mkdir -p $pkgdir/usr/bin
-  cp bin/rcalc.linux.release.$CARCH $pkgdir/usr/bin/rcalc
-  mkdir -p $pkgdir/usr/share/licenses/rcalc
-  cp LICENSE.md $pkgdir/usr/share/licenses/rcalc/LICENSE.md
-
-  mkdir -p $pkgdir/usr/share/applications
-  cp misc/rcalc.desktop $pkgdir/usr/share/applications/rcalc.desktop
-  mkdir -p $pkgdir/usr/share/pixmaps
-  cp icon.svg $pkgdir/usr/share/pixmaps/rcalc.svg
+  install -Dm755 bin/rcalc.linux.release.$CARCH $pkgdir/usr/bin/rcalc
+  install -Dm311 LICENSE.md $pkgdir/usr/share/licenses/rcalc/LICENSE.md
+  install -Dm311 misc/rcalc.desktop $pkgdir/usr/share/applications/rcalc.desktop
+  install -Dm311 icon.svg $pkgdir/usr/share/pixmaps/rcalc.svg
 }
