@@ -1,0 +1,16 @@
+pkgbase = qd-fix
+	pkgdesc = C++/Fortran-90 double-double and quad-double library (fixed by spherical_geometry)
+	pkgver = 2.3.23
+	pkgrel = 1
+	url = https://crd-legacy.lbl.gov/~dhbailey/mpdist
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-fortran
+	source = https://crd-legacy.lbl.gov/~dhbailey/mpdist/qd-2.3.23.tar.gz
+	source = fix-accuracy-in-angle-computation.patch
+	sha256sums = b3eaf41ce413ec08f348ee73e606bd3ff9203e411c377c3c0467f89acf69ee26
+	sha256sums = 5dc8a0b68f5d60e29606586770fb34e97f8530aeaf902320da3b15c94cd46641
+
+pkgname = qd-fix
+	provides = qd=2.3.23
+	conflicts = qd
