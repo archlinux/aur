@@ -1,0 +1,16 @@
+pkgbase = amtctrl-git
+	pkgdesc = INTEL AMT utility like wol
+	pkgver = r62.343d19d
+	pkgrel = 1
+	url = https://github.com/sdague/amt/branches
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python
+	depends = python-six
+	depends = python-appdirs
+	depends = python-requests
+	source = git+https://github.com/sdague/amt
+	md5sums = SKIP
+
+pkgname = amtctrl-git
