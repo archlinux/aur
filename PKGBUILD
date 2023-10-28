@@ -2,7 +2,7 @@
 # Contributor: Jonas Seibert <jonas+aur at seibert dot ninja>
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 pkgname=payara
-pkgver=6.2023.4
+pkgver=6.2023.10
 pkgrel=1
 pkgdesc="Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments."
 url="http://www.payara.fish/"
@@ -16,7 +16,7 @@ source=("https://search.maven.org/remotecontent?filepath=fish/${pkgname}/distrib
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
 
-sha256sums=('6b5dbbe449de3826b89126f4ca06a4eaf4a0e980ffc23dbbcd68445faf1efc72'
+sha256sums=('9aaebecc4e70eef87a59a23b53cc85caba53bbf9573bf237506edb1f365fc498'
             'ae84891616d6a4bd6a7059c707f81598340d4cb8369bb4fe9d922cf3f997cdfb'
             'a0d04db70b87b1105bc762d23e49b527ec94bd21ea78bf9c56d54343a8711dfb'
             'd04df28962fa7b033b0767846e424b7ea9537530afd7006a75505e318ec28b35')
