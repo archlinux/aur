@@ -21,10 +21,33 @@ makedepends=(
   'qt5-tools'
  )
 
-_pkgsrc="Heimer-$pkgver"
-_pkgext="tar.gz"
-source=("$pkgname-$pkgver.$_pkgext"::"$url/archive/$pkgver.tar.gz")
-sha256sums=('cbbc68c556845cb66a0bba0f1eab0bd6a0fb0d7f8bdd7e23984a45ab55b25ff5')
+
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # normal package
+  _pkgsrc="Heimer-${pkgver%%.r*}"
+  _pkgext="tar.gz"
+  source=("$pkgname-${pkgver%%.r*}.$_pkgext"::"$url/archive/${pkgver%%.r*}.tar.gz")
+  sha256sums=('cbbc68c556845cb66a0bba0f1eab0bd6a0fb0d7f8bdd7e23984a45ab55b25ff5')
+
+  pkgver() {
+    echo "${pkgver%%.r*}"
+  }
+else
+  # git package
+  makedepends+=('git')
+
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+fi
 
 build() {
   local _cmake_options=(
