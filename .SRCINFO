@@ -8,6 +8,7 @@ pkgbase = pseudo-git
 	arch = arm
 	arch = aarch64
 	license = LGPL
+	depends = sqlite
 	source = git+https://git.yoctoproject.org/pseudo
 	sha256sums = SKIP
 
