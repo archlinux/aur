@@ -1,7 +1,7 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=elite-image-mounter
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A minimalist bash based, ISO mounter and converter.'
 arch=('x86_64')
 url="https://github.com/siyia2/mounter_elite"
@@ -16,7 +16,7 @@ package() {
   
   cd "${srcdir}/mounter_elite-$pkgver"
   
-  install -Dm755 elite-image-mounter "$pkgdir/usr/bin/mounter_elite"
+  install -Dm755 mounter_elite "$pkgdir/usr/bin/mounter_elite"
   
 }
 
