@@ -5,7 +5,7 @@ _pkgname=bluster
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Clustering Algorithms for Bioconductor'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,9 @@ depends=(
 optdepends=(
   r-apcluster
   r-biocstyle
+  r-dirichletmultinomial
   r-dynamictreecut
+  r-fastcluster
   r-knitr
   r-kohonen
   r-mbkmeans
@@ -33,6 +35,7 @@ optdepends=(
   r-scrnaseq
   r-scuttle
   r-testthat
+  r-vegan
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
