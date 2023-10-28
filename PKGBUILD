@@ -17,7 +17,6 @@ depends=(
 	'desktop-file-utils'
 	'libnotify'
 )
-conflicts=('bubblejail-git')
 optdepends=(
 	'bash-completion: completions for bash shell'
 	'fish: completions for fish shell'

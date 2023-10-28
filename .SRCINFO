@@ -20,7 +20,6 @@ pkgbase = bubblejail
 	optdepends = bash-completion: completions for bash shell
 	optdepends = fish: completions for fish shell
 	optdepends = slirp4netns: Namespaced networking stack
-	conflicts = bubblejail-git
 	source = https://github.com/igo95862/bubblejail/releases/download/0.8.2/bubblejail-0.8.2.tar.gz
 	source = https://github.com/igo95862/bubblejail/releases/download/0.8.2/bubblejail-0.8.2.tar.gz.sig
 	validpgpkeys = 5A3D06576A6A67443DFBE856F1A55E62951B2143
