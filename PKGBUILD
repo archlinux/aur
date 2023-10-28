@@ -2,16 +2,16 @@
 # Contributor: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=0ad-zh-lang
-_pkgver=0.0.26
-pkgver=a26
+_pkgver=0.26.1
+pkgver=a26.1
 pkgrel=1
 pkgdesc="Chinese Fonts and Translations For 0ad"
 arch=(any)
 url="https://play0ad.com/"
 license=('GPL')
-depends=(0ad=${pkgver} 0ad-data=${pkgver})
+depends=(0ad 0ad-data)
 source=(${pkgname}-${_pkgver}.zip::"http://releases.wildfiregames.com/locales/zh-lang-${_pkgver}.pyromod")
-sha256sums=('1e47709831baaa5ff03df9ecd846a80eda643f78deb461cc797b9872f5787fdc')
+sha256sums=('95effdcf66f8ee0dd9fddc7e292fd92f9bbd7c1103899291bf88ae46e806a015')
 
 package() {
   install -d ${pkgdir}/usr/share/0ad/data/mods/zh-lang
