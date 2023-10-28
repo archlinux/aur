@@ -1,7 +1,7 @@
 # Maintainer: Jef Roosens
 
 pkgname='cinny-desktop'
-pkgver='3.0.0'
+pkgver='3.1.0'
 pkgrel='1'
 pkgdesc='Matrix client focusing primarily on a simple, elegant and secure interface.'
 arch=('x86_64')
@@ -25,8 +25,8 @@ makedepends=('rust' 'nodejs' 'npm')
 
 # This makes sure dirty builds still pull down the newest version
 source=("${pkgname}-${pkgver}.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip")
-sha256sums=('a6d5c1ea56df4fc7570006d820f9bed6d8a77753e56fb60025b26b95a89e7db4')
-sha512sums=('bf7e2fc2ddf14414d71f8ddf5e0ace0c51bb0f670f4357d6567febb3799ccf5d665567a960625cb72cf7c76f635ed5926eb3317b0c625a50611466acbe7a5731')
+sha256sums=('f7fd89d2301f3fb4bbcc3e373fb21e1a4bf8e269bc6143df77405754749218be')
+sha512sums=('fc34bc63af91c1554b70732b87513357a04ea5ee686df48f02699099025ad30c1d45cc68eb457abb5230499a70d4a799999b1a46eaf6e1c8d5068b95c235ef72')
 
 install="${pkgname}.install"
 
