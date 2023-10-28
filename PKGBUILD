@@ -502,7 +502,7 @@ prepare() {
       _ffmpeg_options+=('--enable-libmfx')
     fi
     if [ -f /usr/lib/libtensorflow.so ]; then
-      _ffmpeg_options+=('--enable-libtensorflow')
+      #_ffmpeg_options+=('--enable-libtensorflow')
       _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
     fi
     if [ -f /usr/lib/libvo-amrwbenc.so ]; then
