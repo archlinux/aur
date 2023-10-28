@@ -1,12 +1,12 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=okolors-git
-pkgver=0.4.0.r168.46ea1e2
+pkgver=0.5.0.r194.0cdf52a
 pkgrel=1
 pkgdesc='Generate a color palette from an image using k-means clustering in the Oklab color space'
 arch=('x86_64')
 url="https://github.com/Ivordir/Okolors"
-license=(Apache)
+license=('MIT' 'Apache')
 makedepends=(git rust coreutils sed gcc meson ninja nasm cmake make)
 options=(!lto)
 depends=(gcc-libs glibc)
