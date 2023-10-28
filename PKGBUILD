@@ -18,6 +18,11 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
+check() {
+	cd $srcdir/$upstream_name-$pkgver
+	make test
+}
+
 package() {
 	cd $srcdir/$upstream_name-$pkgver
 	python -m installer --compile-bytecode=1 --destdir="$pkgdir" dist/*.whl
