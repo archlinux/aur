@@ -1,17 +1,16 @@
 pkgbase = kiwivm-ga
-	pkgdesc = This package is required for full functionality of KiwiVM.
+	pkgdesc = Required package for full functionality of the BandwaGonHost KiwiVM control panel.
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://kiwivm.64clouds.com
+	pkgrel = 2
+	url = https://bandwagonhost.com
 	arch = any
-	license = custom
+	license = unknown
 	depends = util-linux
 	depends = bash
-	optdepends = kiwivm-ga-systemd: KiwiVM Guest Agent systemd unit file
-	optdepends = kiwivm-ga-sysvinit: KiwiVM Guest Agent sysvinit startup script
+	optdepends = kiwivm-ga-systemd: BandwagonHost KiwiVM Guest Agent systemd unit file
+	optdepends = kiwivm-ga-sysvinit: BandwagonHost KiwiVM Guest Agent sysvinit startup script
 	backup = usr/bin/qemu-kvm_ga
-	source = qemu-kvm_ga::https://gist.githubusercontent.com/unknowndev233/0852d2461b4ebbeebb58894830ff964e/raw/ba484fdd9a61589e3fbfb4bc124131e28acf755e/qemu-kvm_ga
+	source = https://gist.githubusercontent.com/unknowndevQwQ/0852d2461b4ebbeebb58894830ff964e/raw/ba484fdd9a61589e3fbfb4bc124131e28acf755e/qemu-kvm_ga
 	sha512sums = 21329a42155679a8cec4c562e12973425f7f7f8662aed54e96b4446a4fe6f2286695f2c9fe3fbf091642c36ba6568394c9b067747f78281fbf4415b5c94f36b2
 
 pkgname = kiwivm-ga
-
