@@ -15,7 +15,7 @@ makedepends=('gcc-fortran')
 source=("https://crd-legacy.lbl.gov/~dhbailey/mpdist/${_pkgname}-${pkgver}.tar.gz"
         'fix-accuracy-in-angle-computation.patch')
 sha256sums=('b3eaf41ce413ec08f348ee73e606bd3ff9203e411c377c3c0467f89acf69ee26'
-            '5dc8a0b68f5d60e29606586770fb34e97f8530aeaf902320da3b15c94cd46641')
+            '0e6a2644559c76934ed659d6b89d295c92087c55b1c2f6479457221304f1fa10')
 
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}
