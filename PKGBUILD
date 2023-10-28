@@ -6,7 +6,7 @@
 
 pkgname=cwm
 pkgver=7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of calmwm, a clean and lightweight window manager"
 arch=('aarch64' 'x86_64')
 url="https://github.com/leahneukirchen/cwm"
