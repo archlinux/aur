@@ -2,10 +2,10 @@
 # Maintainer: Ulysses Ribeiro <ulyssesrr@gmail.com>
 # Contributor: Ulysses Ribeiro <ulyssesrr@gmail.com>
 pkgname=steam-rom-manager-bin
-pkgver=2.3.40
+pkgver=2.4.17
 pkgrel=1
 pkgdesc="An app for managing ROMs in Steam"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/SteamGridDB/steam-rom-manager"
 license=('GPLv3')
 groups=('')
@@ -14,13 +14,10 @@ provides=("steam-rom-manager")
 conflicts=("steam-rom-manager" "steam-rom-manager-git")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_i686=("https://github.com/SteamGridDB/steam-rom-manager/releases/download/v${pkgver}/steam-rom-manager_${pkgver}_i386.deb")
 source_x86_64=("https://github.com/SteamGridDB/steam-rom-manager/releases/download/v${pkgver}/steam-rom-manager_${pkgver}_amd64.deb")
-sha512sums_i686=('cc53ec4022e846981e1cd97972ecf42efa7f6644a04315a7c0e6a062f2c1e363b04945ba71f36fc50472f61a028b5b0065b39c93dfd0ff49a2baaed6539830c1')
-sha512sums_x86_64=('381460a8cc26108d02a61ca68b762d92045c24aa474d45186d63b7d00f31eb28d938e51070302aebf96730f47d4d6324d143d23ee9bc2405a2fb9303145ee66a')
+sha512sums_x86_64=('44bb60d04f239d21296418b05f88f17a2b9570974a6c2445815757a54ba0cdc81ef1f675d2f817b56544b4f0cffdd62f65e13ead7d285f835352d4c584f155d3')
 
 package(){
-
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 
