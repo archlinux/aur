@@ -1,6 +1,6 @@
 pkgbase = biboumi-git
 	pkgdesc = XMPP gateway to IRC
-	pkgver = 8.5.r187.g0479bd0
+	pkgver = 9.0.r27.g2bd91dc
 	pkgrel = 1
 	url = https://biboumi.louiz.org/
 	install = biboumi.install
@@ -11,6 +11,7 @@ pkgbase = biboumi-git
 	license = ZLIB
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	depends = expat
@@ -22,7 +23,7 @@ pkgbase = biboumi-git
 	provides = biboumi
 	conflicts = biboumi
 	backup = etc/biboumi/biboumi.cfg
-	source = biboumi::git+https://lab.louiz.org/louiz/biboumi.git
+	source = biboumi::git+https://codeberg.org/poezio/biboumi
 	source = biboumi.install
 	source = sysuser.conf
 	md5sums = SKIP
@@ -30,4 +31,3 @@ pkgbase = biboumi-git
 	md5sums = 07c92af3248861ce94d361e98cfb7f5c
 
 pkgname = biboumi-git
-

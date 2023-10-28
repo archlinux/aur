@@ -2,17 +2,17 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=8.5.r187.g0479bd0
+pkgver=9.0.r27.g2bd91dc
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
 license=('ZLIB')
 depends=('expat' 'libidn' 'udns' 'botan' 'sqlite' 'postgresql-libs')
-makedepends=('git' 'cmake' 'python-sphinx' 'python-sphinx_rtd_theme')
+makedepends=('git' 'cmake' 'ninja' 'python-sphinx' 'python-sphinx_rtd_theme')
 backup=("etc/$_pkgname/$_pkgname.cfg")
 install="$_pkgname.install"
-source=("$_pkgname::git+https://lab.louiz.org/louiz/biboumi.git"
+source=("$_pkgname::git+https://codeberg.org/poezio/biboumi"
         'biboumi.install'
         'sysuser.conf')
 md5sums=('SKIP'
@@ -39,14 +39,15 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSERVICE_USER=biboumi \
     -DSERVICE_GROUP=jabber \
-    -Wno-dev
-  make
-  make doc
+    -Wno-dev \
+    -G Ninja
+  ninja
+  ninja doc
 }
 
 package() {
   cd $_pkgname/build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
 
   install -dm755 "$pkgdir"/usr/share/doc/$_pkgname/
   cp -r html "$pkgdir"/usr/share/doc/$_pkgname/
