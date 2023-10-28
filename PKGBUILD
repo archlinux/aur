@@ -1,0 +1,74 @@
+# Maintainer: Matthäus Wininger <matthaeus dot wininger at univie dot ac dot at>
+
+pkgname=ricoh-rpcs-cups-bin
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Bundled binary Ricoh (Aficio/IPSiO) SG/GX series (RPCS) CUPS raster printer drivers'
+arch=('x86_64')
+url='https://support.ricoh.com/bbv2/html/dr_ut_d/ipsio/index.htm'
+license=('custom')
+
+source=("${pkgname}-${pkgver}-${pkgrel}-1.deb::https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101026/4101026792/V451/5236377/ipsiosg_4.5.1-0_amd64.deb"
+        "${pkgname}-${pkgver}-${pkgrel}-2.deb::https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101033/4101033633/V1050/5245324/ipsiogxe5500_1.05.0-0_amd64.deb"
+        "${pkgname}-${pkgver}-${pkgrel}-3.deb::https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101033/4101033631/V1050/5216156/ipsiogxe3300_1.05.0-0_amd64.deb"
+        "${pkgname}-${pkgver}-${pkgrel}-4.deb::https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101046/4101046571/V500/5245358/ricohsg3300_5.0.0-0_amd64.deb"
+        "${pkgname}-${pkgver}-${pkgrel}-5.deb::https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101033/4101033215/V503/5245321/ricohsg3200_7200_5.0.3-0_amd64.deb"
+        "${pkgname}-${pkgver}-${pkgrel}-6.deb::https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101043/4101043639/V500/5245338/ricohsg5200_5.0.0-0_amd64.deb"
+        "${pkgname}-${pkgver}-${pkgrel}-7.deb::https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101033/4101033214/V502/5245341/ricohsg5100_5.0.2-0_amd64.deb"
+        'LICENSE')
+noextract=("${source[@]%%::*}")
+b2sums=('4c2fa63455a92424280702ae2c337e156d578b263ac45c4085edc973bfd98a103049c4c8a825d01054dfd6c05728b403cd33bba521552af1cd45626808c8d5f2'
+        '6c9313d91efddec56688462ec6131229b24edfddd70b307a0ca3dbd0dd1577450c38c53f2317f8597f5d75154b21cb7b2b8a466ab6442d7b0e0abe4f90440186'
+        '889192a2fed6f18f8f8d09012e2c624941cc5f216ead4c5fad6db56755d33470914687f28aa167a6ea481b53dd800d8b1c1e24e98f16f76373876810e746b7b2'
+        '1a31a2b71be017265bbec73ab59e380e29b4ba56ff63bafc7874cb5a96d0e48a7a963423b5bba60de5f2f898dde3d9038bdfd95a4bad96f7425a576bc13a9ec7'
+        '1b3d2f82ef538a5ecd8e8b73e70c26de705cea3b7812a9e591ff9f7702c4ae8213b9300302c98ea41889adb2317e421bc14807c4a02c583fc9bd561551fc74bc'
+        'c0025f5b36e6a43cbdfc4dd7eba7ffd039de9a84418e1e1c8b6916d8c72b49b49b55b7bb91ba0f6329ae04236ac20492ac796c78d5bb5857a924de1ec52b6494'
+        '61df55ad4862eea70968c7e633ac12c4b7dc989a002a2595a4c3924064c08b8c6e57c964f8ae6dc3cf333e4b8c274fea8adcc19ba92ea5c721ae5f7a128d0dec'
+        'ae06669526a683eac70d415429a13f1db2aad2839aab91070452c6873e2d22f377f32dafd510068714944668ee8a36c02e3af8d087d7053f5351172ecba0a138')
+sha512sums=('cc663e22568170cebde1dd67562fcd2a83dd24a989c41c089647f3ba14dcfc71d30ffaabf47529ad6c0af44ef720a42712a801cdf8cca91a38f8ec6e5ddcd1bc'
+            'bd6dbdbbba336de2b0ed9106bb39b23973657a6fb9e4d4e0d35b54bae10db1dd912cec86f9e76f507ad4a2e013921b44a49eb7a542e1cc06727970c88a1d7c53'
+            '6d8e71b1a8b7cd39f351860f328834eebb6103b798a8a4506da60bd4d3baeb83eda4a63b329b11cc6ea0bf541cf083619b32e29d5522a9f76d3ecf474555fbd0'
+            'dff14b687f5d15b9ed8af5c254f668af2e00b353392579134615dfd0a845a989e9825ec7df1616dacb758f03f46a108b510cd06d5d420cf2f7eb21bcfa03da34'
+            '25c01cd72b96cbb9f6743ad7230fe5dd6606b0e24f5132897a4a702ffd44e5507361555c04255ce8e7f709f786bff001ebaad6963dabb871290ed6b596c360aa'
+            'e9246d5840ca757388744330e8961fa97c906b1d2d56a7cda7d1432d8e4cbc000b94dcc568df4649a6bda18fcef4226f71abc7754166f1596b09d63826ef5ba0'
+            'f9cafec0140409ad7daa2c73e3255c7356abd2ceb0335819256c387fb8e597b06bdeb6bc211e4d0f5c9373bbaaa2346999ac43f84b65ebbd5fc6a83061a74d55'
+            '93c30a9ea04e8e40a18d83c85b5955af13d25984689c0ff427e85499856ffaeb86c23cad0b2f96b4dd7797828795779b21427a5ceff500dc401a49e114a6cf5e')
+
+prepare() {
+    # Merge all packages into one directory structure (${srcdir}/usr)
+    find "$srcdir" -iname '*.deb' \
+        -exec bsdtar -xf '{}' -C "$srcdir" \; \
+        -exec bsdtar -xf "${srcdir}/data.tar.xz" -C "$srcdir" \;
+
+    # Unify directory structure
+    mkdir -p "${srcdir}/usr/share/ricoh/rpcr/" && \
+        mv "${srcdir}/usr/local/Ricoh/rpcr"/* "${srcdir}/usr/share/ricoh/rpcr/"
+
+    # Patch PPD files' paths
+    gunzip "${srcdir}/usr/share/ppd/Ricoh"/*
+    find "${srcdir}/usr/share/ppd/Ricoh" -iname '*.ppd' \
+        -exec sed -i 's;/usr/local/Ricoh/rpcr/;/usr/share/ricoh/rpcr/;' '{}' \; \
+        -exec gzip '{}' \; \
+        -exec mv '{}.gz' "${srcdir}/usr/share/ppd/ricoh/" \;
+}
+
+package() {
+    depends=('glibc' 'libcups')
+
+    # Install license
+    install -Dm 644 "${srcdir}/usr/share/doc/ipsiosg/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Install raster filter programs (built with partial RELRO and no PIE!)
+    # Attention: also no fortification of glibc function calls in some binaries!
+    install -Dm 755 -t "${pkgdir}/usr/lib/cups/filter" \
+        "${srcdir}/usr/lib/cups/filter"/*
+
+    # Install PostScript Printer Description (PPD) files
+    install -Dm 644 -t "${pkgdir}/usr/share/ppd/ricoh" \
+        "${srcdir}/usr/share/ppd/ricoh"/*
+
+    # Install binary .dat support files
+    install -Dm 644 -t "${pkgdir}/usr/share/ricoh/rpcr" \
+        "${srcdir}/usr/share/ricoh/rpcr"/*
+}
