@@ -1,6 +1,6 @@
 pkgbase = r-rhisat2
 	pkgdesc = R Wrapper for HISAT2 Aligner
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rhisat2
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-rhisat2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	options = !makeflags
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhisat2_1.16.0.tar.gz
-	sha256sums = 1e07dc5ffab0e6c787ca95a79ac52d7e6071bd692c29dce8c8621f31b38537f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhisat2_1.18.0.tar.gz
+	sha256sums = 5830fa5e23b6d8e38614dd71ecabf364a40212663b79aec30231b6f531bfb4df
 
 pkgname = r-rhisat2
