@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=python-qtpy-git
-pkgver=2.4.0.r8.g1faf764
+pkgver=2.4.1.r1.gb3b222a
 pkgrel=1
 pkgdesc='Provides a uniform layer to support PyQt5 and PySide2 with a single codebase'
 arch=(any)
@@ -36,5 +36,5 @@ build() {
 package() {
   cd $pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/{pkgname%-git}"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
