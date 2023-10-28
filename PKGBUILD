@@ -8,9 +8,10 @@ arch=('i686' 'x86_64')
 url="https://keyman.com/linux/"
 license=('GPL')
 depends=('ibus' 'webkit2gtk' 'python-magic' 'python-requests-cache'
-         'python-numpy' 'python-pillow' 'python-qrcode' 'python-lxml' 
-         'python-sentry_sdk')
-makedepends=('meson' 'git' 'python-setuptools' 'perl-locale-gettext' 'help2man')
+    'python-numpy' 'python-pillow' 'python-qrcode' 'python-lxml' 
+    'python-sentry_sdk')
+makedepends=('meson' 'git' 'python-setuptools' 'perl-locale-gettext' 'help2man'
+    'python-build' 'python-installer' 'python-wheel')
 optdepends=(
     'keyman-onboard: on-screen keyboard'
     'hotdoc: C API documentation generation'
