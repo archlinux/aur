@@ -1,6 +1,6 @@
 pkgbase = r-tenxplore
 	pkgdesc = ontological exploration of scRNA-seq of 1.3 million mouse neurons from 10x genomics
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tenXplore
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = r-tenxplore
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tenXplore_1.22.0.tar.gz
-	md5sums = 96c18d808ccb0106111ce4bf1d00ec5c
-	sha256sums = a3abc9e04879cc200d71d8ac5aa0d1b0e5d4c5037cd110824ce4b4b77de96e1f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tenXplore_1.24.0.tar.gz
+	md5sums = 13e1778f8b644661a521bb832af6e7d6
+	sha256sums = 95b76b3e0c0e54d261395aa9f50c78a807273504811b0ccfa778f69a77ef68ea
 
 pkgname = r-tenxplore

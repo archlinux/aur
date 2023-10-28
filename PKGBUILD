@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tenXplore
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('96c18d808ccb0106111ce4bf1d00ec5c')
-sha256sums=('a3abc9e04879cc200d71d8ac5aa0d1b0e5d4c5037cd110824ce4b4b77de96e1f')
+md5sums=('13e1778f8b644661a521bb832af6e7d6')
+sha256sums=('95b76b3e0c0e54d261395aa9f50c78a807273504811b0ccfa778f69a77ef68ea')
 
 build() {
   mkdir -p build
