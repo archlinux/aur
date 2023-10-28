@@ -1,0 +1,41 @@
+From 13c2f3dbfe4d7cc645a1984a8da357d1898665ba Mon Sep 17 00:00:00 2001
+From: Kramer Ge <fangzhoug@chromium.org>
+Date: Wed, 19 Jul 2023 14:46:56 -0400
+Subject: Log the object and methods when marshalling or sending fails.
+
+The log that appears before a display_error will be captured as crash
+signature.
+
+Bug: 1451333
+Change-Id: I06a0a1294c5431d0f8261e522aaa469e2c427725
+---
+ src/wayland-client.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/wayland-client.c b/src/wayland-client.c
+index 6f88aba..2c0de48 100644
+--- a/src/wayland-client.c
++++ b/src/wayland-client.c
+@@ -848,7 +848,8 @@ wl_proxy_marshal_array_flags(struct wl_proxy *proxy, uint32_t opcode,
+ 
+ 	closure = wl_closure_marshal(&proxy->object, opcode, args, message);
+ 	if (closure == NULL) {
+-		wl_log("Error marshalling request: %s\n", strerror(errno));
++		wl_log("Error marshalling request for %s.%s: %s\n",
++					proxy->object.interface->name, message->name, strerror(errno));
+ 		display_fatal_error(proxy->display, errno);
+ 		goto err_unlock;
+ 	}
+@@ -857,7 +858,8 @@ wl_proxy_marshal_array_flags(struct wl_proxy *proxy, uint32_t opcode,
+ 		wl_closure_print(closure, &proxy->object, true, false, NULL);
+ 
+ 	if (wl_closure_send(closure, proxy->display->connection)) {
+-		wl_log("Error sending request: %s\n", strerror(errno));
++		wl_log("Error sending request for %s.%s: %s\n",
++					proxy->object.interface->name, message->name, strerror(errno));
+ 		display_fatal_error(proxy->display, errno);
+ 	}
+ 
+-- 
+2.42.0
+
