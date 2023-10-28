@@ -17,7 +17,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=4.0.r126067.gcaf0024463e
+pkgver=4.1.r129754.g01a2bd03695
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ url="https://blender.org/"
 depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
           'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
           'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng'
-          'python' 'python-zstandard')
+          'python' 'python-zstandard' 'ccache')
 depends+=('libdecor' 'libepoxy')
 optdepends=('cuda: CUDA support in Cycles'
             'optix>=7.4.0: OptiX support in Cycles'
@@ -43,7 +43,7 @@ makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
 makedepends+=('cython')
 provides=('blender')
-conflicts=('blender')
+conflicts=('blender' 'blender-4.1-bin')
 license=('GPL')
 source=("blender::git+https://github.com/blender/blender${_fragment}"
         'blender-addons::git+https://github.com/blender/blender-addons'
@@ -53,7 +53,6 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
         # Patches...
         '0001-Use-github.com-for-make-update-git.patch'
-        '0002-embree.patch' #add missing embree link.
         '0003-usd_python.patch' #add missing python headers when building against python enabled usd.
         '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
         )
@@ -64,7 +63,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c'
-            '1d88d87c97e953b21eb551016e8295954997f18cbb4998c230cd1f596a87b6f2'
             'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
             '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df')
 
@@ -94,18 +92,18 @@ build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
+  declare -a -g _CMAKE_FLAGS
   # determine whether we can install python modules
   if [[ -n "$_pyver" ]]; then
-    _CMAKE_FLAGS+=( -DWITH_PYTHON=$_pyver \
-                    -DWITH_PYTHON_MODULE=OFF \
+    export PYTHON_LIBRARY=/usr/lib/libpython${_pyver}.so
+    export PYTHON_VERSION=${_pyver}
+    _CMAKE_FLAGS+=( -DPYTHON_VERSION=$_pyver \
+                    -DPYTHON_LIBRARY=/usr/lib/libpython${_pyver}.so \
                     -DWITH_PYTHON_INSTALL=ON \
-                    -DWITH_PYTHON_SAFETY=ON )
+                    -DWITH_PYTHON_SAFETY=OFF )
   fi
 
-  export CC=`which clang`
-  export CXX=`which clang++`
   export CUDAHOSTCXX="$CC"
-  export LDFLAGS="-Wl,--copy-dt-needed-entries $LDFLAGS"
 
   _CMAKE_FLAGS+=( -DWITH_CLANG=ON \
                   -DWITH_CYCLES=ON )
@@ -138,6 +136,12 @@ build() {
     PATH="/usr/materialx:$PATH"  
   fi
 
+  _USD_PKG=$(pacman -Qq usd 2>/dev/null) || true
+  if [ "$_USD_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_USD=ON )
+    PATH="/usr/share/usd:$PATH"  
+  fi
+
   # check for optix
   _OPTIX_PKG=$(pacman -Qq optix 2>/dev/null) || true
   if [ "$_OPTIX_PKG" != "" ]; then
@@ -151,29 +155,51 @@ build() {
       _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
   fi
 
-  # check for universal scene descriptor
-  _USD_PKG=$(pacman -Qq usd>=21.02 2>/dev/null) || true
-  if [ "$_USD_PKG" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_USD=ON \
-                    -DUSD_ROOT=/usr )
+  if [ -d /opt/rocm/bin ]; then
+      _CMAKE_FLAGS+=( -DWITH_CYCLES_HIP_BINARIES=ON
+                      -DWITH_CYCLES_HYDRA_RENDER_DELEGATE:BOOL=FALSE
+                    )
   fi
 
   if [[ -f "$srcdir/blender/CMakeCache.txt" && -z "$KEEP_CMAKE_CACHE" ]]; then
     rm "$srcdir/blender/CMakeCache.txt"
   fi
-  (2>&1 CUDAHOSTCXX="$CUDAHOSTCXX" cmake -S "$srcdir/blender" -B build --fresh \
-        -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_LIBS_PRECOMPILED=OFF \
-        -DWITH_STATIC_LIBS=ON \
-        -DXR_OPENXR_SDK_ROOT_DIR=/usr \
-        -DPYTHON_VERSION="${_pyver}" \
-        ${_CMAKE_FLAGS[@]}) #> "$srcdir/../cmake_out"
-        #--trace-expand \
 
-  MAKE_CMD="make ${MAKEFLAGS:--j1}"
+  NUMPY_PY_INCLUDE=/usr/lib/python3.11/site-packages/numpy/core/include/
+  [[ -d "$NUMPY_PY_INCLUDE" ]] && (
+    _CMAKE_FLAGS+=( -DNUMPY_INCLUDE_DIR="$NUMPY_PY_INCLUDE" );
+    __CFLAGS="$CFLAGS -I$NUMPY_PY_INCLUDE"
+    __CXXFLAGS="$CXXFLAGS -I$NUMPY_PY_INCLUDE"
+    export CFLAGS="$__CFLAGS"
+    export CXXFLAGS="$__CXXFLAGS"
+  )
+
+  export CFLAGS="$CFLAGS -fno-lto"
+  export CXXFLAGS="$CXXFLAGS -fno-lto"
+  # Who even knows why this is needed
+  export CFLAGS="$CFLAGS -lSPIRV -lSPIRV-Tools -lSPIRV-Tools-opt -lSPIRV-Tools-link -lSPIRV-Tools-reduce -lSPIRV-Tools-shared -lglslang"
+  export CXXFLAGS="$CXXFLAGS -lSPIRV -lSPIRV-Tools -lSPIRV-Tools-opt -lSPIRV-Tools-link -lSPIRV-Tools-reduce -lSPIRV-Tools-shared -lglslang"
+  _CMAKE_FLAGS+=( -DCMAKE_C_FLAGS="$CFLAGS" );
+  _CMAKE_FLAGS+=( -DCMAKE_CXX_FLAGS="$CXXFLAGS" );
+
+  CMAKE_CMD=(CUDAHOSTCXX="$CUDAHOSTCXX" cmake -B "$srcdir/build" --fresh
+                -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake"
+                -GUnix\ Makefiles
+                -DCMAKE_INSTALL_PREFIX=/usr
+                -DCMAKE_INSTALL_PREFIX_WITH_CONFIG="${pkgdir}/usr"
+                -DCMAKE_SKIP_INSTALL_RPATH=ON
+                -DCMAKE_SKIP_BUILD_RPATH=ON
+                -DCMAKE_BUILD_TYPE=Release
+                -DWITH_INSTALL_PORTABLE=OFF
+                -DWITH_LIBS_PRECOMPILED=OFF
+                -DWITH_STATIC_LIBS=OFF
+                -DXR_OPENXR_SDK_ROOT_DIR=/usr
+                -DPYTHON_VERSION="${_pyver}"
+                "${_CMAKE_FLAGS[@]}"
+  ) #> "$srcdir/../cmake_out"
+                #--trace-expand \
+
+  MAKE_CMD="make ${MAKEFLAGS:--j1} blender"
 
   USING_MAKEPKG_CG="$(systemctl --user -t slice | grep -o makepkg-cg-`id -u`-'[[:digit:]]\+'.slice'[[:space:]]\+'loaded'[[:space:]]\+'active)" || true
   MAKEPKG_CG_WARNING=$(
@@ -185,25 +211,24 @@ EOF
   )
   [[ -z "$USING_MAKEPKG_CG" ]] && warning "$MAKEPKG_CG_WARNING"
   
-  cd build
-  $MAKE_CMD
+  cd blender
+  env "${CMAKE_CMD[@]}"
+  cd ../build
+  env CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" $MAKE_CMD
 }
 
 package() {
   _suffix=${pkgver%%.r*}
   cd "$srcdir/build"
+  sed -ie 's/\(file(INSTALL\)\(.*blender\.1"\))/#\1\2)/' source/creator/cmake_install.cmake
   BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/blender/${_suffix}" make DESTDIR="$pkgdir" install
+  #find . -name 'cmake_install.cmake' -exec sed -i -e 's|/usr/lib64/|'"$pkgdir"'/usr/lib/|g' {} \;
+  #cmake --install . --prefix "$pkgdir/usr"
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
     chmod 444 "$pkgdir"/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/*
   fi
-
-  # This prevents an error due to missing file in LD_LIBRARY_PATH when using Intel OpenCL kernels.
-  mkdir -p "$pkgdir"/usr/lib
-  [ -f "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" ] && \
-    ln -s "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" "$pkgdir/usr/lib/libcycles_kernel_oneapi_jit.so" && \
-      chmod 444 "$pkgdir"/usr/lib/libcycles_kernel_oneapi_jit.so || true
 }
 
 # vim: syntax=bash:et:ts=2:sw=2
