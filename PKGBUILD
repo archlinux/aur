@@ -2,7 +2,7 @@ _pkgbase=etlegacy
 pkgname=etlegacy32-bin
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit), binary release"
 pkgver=2.81.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 provides=('etlegacy')
@@ -16,7 +16,7 @@ backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
         'etc/xdg/etlegacy/etlegacy.conf')
 install=etlegacy.install
 depends=("enemy-territory-data")
-makedepends=("imagemagick")
+makedepends=("imagemagick" "librsvg")
 license=('GPL3')
 source=(
     "etl_start.sh"

@@ -1,13 +1,14 @@
 pkgbase = etlegacy32-bin
 	pkgdesc = Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit), binary release
 	pkgver = 2.81.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.etlegacy.com/
 	install = etlegacy.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = imagemagick
+	makedepends = librsvg
 	depends = enemy-territory-data
 	provides = etlegacy
 	conflicts = etlegacy
