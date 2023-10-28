@@ -11,6 +11,7 @@ pkgbase = ayatana-indicator-display
 	makedepends = cmake
 	makedepends = cmake-extras
 	makedepends = systemd
+	makedepends = properties-cpp
 	depends = xsct
 	depends = libayatana-common>=0.9.8
 	depends = geoclue
