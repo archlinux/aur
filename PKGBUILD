@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SBGNview
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='"SBGNview: Data Analysis, Integration and Visualization on SBGN Pathways"'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0fc6eb02dbb95d9549df64ddb03a807867f7b6b86532b8b44d0439d11baf2e4f')
+sha256sums=('7a7f385cf8ac8142d426f02c37adcd7de31ea2390bdd8bec334ffa83f6d74d05')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
