@@ -4,7 +4,7 @@
 pkgname=breeze-icons-git
 pkgver=5.240.0.r2054.bf0bb880
 pkgrel=1
-pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
+pkgdesc='Breeze icon themes for KDE Plasma. (GIT version)'
 arch=('any')
 url='https://quickgit.kde.org/?p=breeze-icons.git'
 license=('LGPL')
@@ -33,6 +33,7 @@ build() {
   cmake -S breeze-icons -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_CMAKEPACKAGEDIR=/usr/share/cmake \
     -DBUILD_TESTING=ON \
     -DBINARY_ICONS_RESOURCE=ON \
     -DBUILD_WITH_QT6=ON # this is not need at all
