@@ -4,7 +4,7 @@ pkgname=adbren-git
 pkgver=r58.12bee5b
 pkgrel=1
 pkgdesc='Rename and organize anime using this AniDB API client written in perl'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/clip9/${pkgname%-git}"
 license=('custom:none')
 depends=('perl' 'perl-digest-md4' 'perl-file-homedir' 'perl-file-pid')
@@ -19,11 +19,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	cp adbren.pl adbren
-}
-
 package() {
-	install -Dm755 "$srcdir/${pkgname%-git}/adbren" "$pkgdir/usr/bin/adbren"
+	install -Dm755 "$srcdir/${pkgname%-git}/adbren.pl" "$pkgdir/usr/bin/adbren"
 }
