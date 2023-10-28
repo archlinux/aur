@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=a9bde304e992160b9c78629a64bc63feddada7ee
+_mozc_commit=fdf255839144638b9759b5ad98b5151fd28bb3ca
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -29,8 +29,8 @@ _sudachidict_date=20230927
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5250.102
-pkgrel=7
+pkgver=2.29.5268.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
