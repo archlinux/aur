@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=IntOMICS
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eec7530ce0fd9941c0cfe06c864e7511')
-sha256sums=('370511a058607140956106269f754afc533bd869b6f9574833b5ba74f4defd80')
+md5sums=('61628ea37535123f71455b77b194b08c')
+sha256sums=('f0e70d50c624b6092c81456dd2da3e2b37a6666f59a644e2d7e9aa8f2e8a16e2')
 
 build() {
   mkdir -p build

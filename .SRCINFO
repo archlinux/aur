@@ -1,6 +1,6 @@
 pkgbase = r-intomics
 	pkgdesc = Integrative analysis of multi-omics data to infer regulatory networks
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IntOMICS
 	arch = any
@@ -26,8 +26,8 @@ pkgbase = r-intomics
 	optdepends = r-rmarkdown
 	optdepends = r-tcgautils
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IntOMICS_1.0.0.tar.gz
-	md5sums = eec7530ce0fd9941c0cfe06c864e7511
-	sha256sums = 370511a058607140956106269f754afc533bd869b6f9574833b5ba74f4defd80
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IntOMICS_1.2.0.tar.gz
+	md5sums = 61628ea37535123f71455b77b194b08c
+	sha256sums = f0e70d50c624b6092c81456dd2da3e2b37a6666f59a644e2d7e9aa8f2e8a16e2
 
 pkgname = r-intomics
