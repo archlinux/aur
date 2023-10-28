@@ -8,6 +8,7 @@ pkgbase = breeze-icons-git
 	license = LGPL
 	checkdepends = fdupes
 	makedepends = extra-cmake-modules-git
+	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-tools
 	makedepends = python

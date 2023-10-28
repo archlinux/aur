@@ -11,6 +11,7 @@ license=('LGPL')
 groups=('kf6')
 makedepends=(
   'extra-cmake-modules-git'
+  'cmake'
   'git'
   'qt6-tools'
   'python'
@@ -24,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver(){
   cd breeze-icons
-  _ver="$(cat CMakeLists.txt | grep -m1 '(ECM' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m1 'KF_VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -34,7 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=ON \
     -DBINARY_ICONS_RESOURCE=ON \
-    -BUILD_WITH_QT6=ON # this is not ned at all
+    -DBUILD_WITH_QT6=ON # this is not ned at all
 
   cmake --build build
 }
