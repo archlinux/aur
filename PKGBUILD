@@ -4,10 +4,10 @@ _pkgname=ChIC
 _pkgver=1.19.0
 pkgname=r-${_pkgname,,}
 pkgver=1.19.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Quality Control Pipeline for ChIP-Seq Data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -24,7 +24,7 @@ depends=(
   r-s4vectors
   r-spp
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('da97ff9ff64cc4e511574cac2fff1b36fcaa9cf76ea4af19b2530fdb7b84757d')
 
 build() {

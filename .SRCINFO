@@ -1,8 +1,8 @@
 pkgbase = r-chic
 	pkgdesc = Quality Control Pipeline for ChIP-Seq Data
 	pkgver = 1.19.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/ChIC
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.17/ChIC
 	arch = any
 	license = GPL
 	depends = r
@@ -18,7 +18,7 @@ pkgbase = r-chic
 	depends = r-rsamtools
 	depends = r-s4vectors
 	depends = r-spp
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIC_1.19.0.tar.gz
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/ChIC_1.19.0.tar.gz
 	sha256sums = da97ff9ff64cc4e511574cac2fff1b36fcaa9cf76ea4af19b2530fdb7b84757d
 
 pkgname = r-chic
