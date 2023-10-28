@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MetaboSignal
-_pkgver=1.30.3
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.3
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='MetaboSignal: a network-based approach to overlay and explore metabolic and signaling KEGG pathways'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f0a08ce1ff52839c09d9299dc1a06b418282b3b5291960a8e64cc4a0e5a4a3f6')
+sha256sums=('862772ea6ae3a4e6d0f5995cfcf3f3e6a78a72c3fc2c828bc6a462fb2f94a8a2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
