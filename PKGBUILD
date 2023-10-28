@@ -40,7 +40,7 @@ package_goland-eap() {
 
 package_goland-eap-jre() {
   pkgdesc='JBR (JetBrains Runtime) for Goland - a patched JRE'
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
   conflicts=('gogland-eap-jre')
   replaces=('gogland-eap-jre')
 
