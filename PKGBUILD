@@ -38,7 +38,7 @@ package_rustrover() {
 
 package_rustrover-jre() {
   pkgdesc='JBR (JetBrains Runtime) for RustRover - a patched JRE'
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
   cp -a "${srcdir}"/RustRover-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
