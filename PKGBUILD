@@ -2,7 +2,7 @@
 
 pkgname=haiti
 _gemname=haiti-hash
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Hash type identifier (CLI & lib)'
 arch=('any')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 #source=("https://github.com/noraj/$pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('e34f831fc1a0f675a6133861f5ab13fee56a1007248ff1281bff24ce194fa2115bc12be08edbba49e502d5587456d5dc41d676f487f31a16e1bb6554a49c6b8b')
+b2sums=('6390629ff0209e3950f7890c0f109e5aecf2e9ae8babcbbed7396c608e822d6a430ca65809cc80b2aa085b6465f48e96a338b940afea5bf823dea6c71fca9013')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
