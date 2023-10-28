@@ -1,6 +1,6 @@
 pkgbase = r-damirseq
 	pkgdesc = Data Mining for RNA-seq data: normalization, feature selection and classification
-	pkgver = 2.12.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DaMiRseq
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-damirseq
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DaMiRseq_2.12.0.tar.gz
-	sha256sums = f4a3eed590e43fd86d33aad6b4bef4681855787884fd52735a19e69d85811fe8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DaMiRseq_2.14.0.tar.gz
+	sha256sums = 68dc5988e17c84f2e1e6e1b56c2735c4e4e804768f6825d56f221d2777a63ad7
 
 pkgname = r-damirseq
