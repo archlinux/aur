@@ -1,7 +1,7 @@
 pkgbase = art-rawconverter-bin
-	pkgdesc = Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)
+	pkgdesc = Raw image Converter forked from RawTherapee with ease of use in mind
 	pkgver = 1.20.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/agriggio/art
 	arch = x86_64
 	license = GPL3
@@ -13,9 +13,7 @@ pkgbase = art-rawconverter-bin
 	options = !strip
 	options = !debug
 	source = art-rawconverter-1.20.2.tar.xz::https://bitbucket.org/agriggio/art/downloads/ART-1.20.2-linux64.tar.xz
-	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
 	sha256sums = d61184501f4bfe733c1ad870188eba8320585067c87358ea6ff730e6423a5bd4
-	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
 
 pkgname = art-rawconverter-bin
 	depends = desktop-file-utils

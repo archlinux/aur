@@ -3,11 +3,11 @@
 # set source - chaotic-aur or bitbucket
 : ${_pkg:=bitbucket}
 
-_pkgname=art-rawconverter
+_pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
 pkgver=1.20.2
-pkgrel=1
-pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
+pkgrel=2
+pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind"
 arch=('x86_64')
 url="https://bitbucket.org/agriggio/art"
 license=('GPL3')
@@ -57,11 +57,9 @@ case "$_pkg" in
     _dl_url="$url/downloads/ART-$pkgver-linux64.tar.xz"
     source=(
       "$_pkgname-$pkgver.tar.xz"::"$_dl_url"
-      "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip"
     )
     sha256sums+=(
       'd61184501f4bfe733c1ad870188eba8320585067c87358ea6ff730e6423a5bd4'
-      '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
     )
     ;;
 esac
@@ -74,14 +72,13 @@ prepare() {
       ;;
     *)
       # bitbucket
-      cp -rl "$srcdir/ART-$pkgver-linux64" "$srcdir/$_pkgname-$pkgver"
-      cp "$srcdir/blackfoxx-GTK3-20_.css" "$srcdir/$_pkgname-$pkgver/themes"
+      cp -rl "${srcdir:?}/ART-$pkgver-linux64" "${srcdir:?}/$_pkgname-$pkgver"
 
-      cat "$srcdir/$_pkgname-$pkgver/share/applications/ART.desktop" \
+      cat "${srcdir:?}/$_pkgname-$pkgver/share/applications/ART.desktop" \
         | sed 's/Name=ART/Name=ART Raw Converter/' \
         | sed 's/Exec=ART/Exec=art/' \
         | sed "s/Icon=ART/Icon=$_pkgname/" \
-        > "$srcdir/$_pkgname.desktop"
+        > "${srcdir:?}/$_pkgname.desktop"
       ;;
   esac
 }
@@ -107,27 +104,27 @@ package() {
   case "$_pkg" in
     '1'|'c'|'caur'|'chaotic-aur')
       # chaotic-aur
-      mv "$srcdir/usr" "$pkgdir"
+      mv "${srcdir:?}/usr" "${pkgdir:?}"
 
-      ln -s "ART" "$pkgdir/usr/bin/art"
-      ln -s "ART-cli" "$pkgdir/usr/bin/art-cli"
+      ln -s "ART" "${pkgdir:?}/usr/bin/art"
+      ln -s "ART-cli" "${pkgdir:?}/usr/bin/art-cli"
       ;;
     *)
       # bitbucket
       OPT_PATH="opt/$_pkgname"
 
       # Install the package files
-      install -d "$pkgdir"/{usr/bin,opt}
-      cp -r "$_pkgname-$pkgver" "$pkgdir/$OPT_PATH"
-      ln -s "/$OPT_PATH/ART" "$pkgdir/usr/bin/art"
-      ln -s "/$OPT_PATH/ART-cli" "$pkgdir/usr/bin/art-cli"
+      install -d "${pkgdir:?}"/{usr/bin,opt}
+      cp -r "$_pkgname-$pkgver" "${pkgdir:?}/$OPT_PATH"
+      ln -s "/$OPT_PATH/ART" "${pkgdir:?}/usr/bin/art"
+      ln -s "/$OPT_PATH/ART-cli" "${pkgdir:?}/usr/bin/art-cli"
 
       # Install .desktop files
-      install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
+      install -Dm644 "${srcdir:?}/$_pkgname.desktop" -t "${pkgdir:?}/usr/share/applications"
 
       # Install icons
-      SRC_LOC="$srcdir/$_pkgname-$pkgver/share/icons/hicolor"
-      DEST_LOC="$pkgdir/usr/share/icons/hicolor"
+      SRC_LOC="${srcdir:?}/$_pkgname-$pkgver/share/icons/hicolor"
+      DEST_LOC="${pkgdir:?}/usr/share/icons/hicolor"
       for i in 16 24 48 128 256
       do
         install -Dm644 "$SRC_LOC/${i}x${i}/apps/ART.png" "$DEST_LOC/${i}x${i}/apps/$_pkgname.png"
