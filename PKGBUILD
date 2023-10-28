@@ -53,7 +53,7 @@ package_webstorm-eap() {
 
 package_webstorm-eap-jre() {
   pkgdesc="JBR (JetBrains Runtime) for WebStorm EAP - a patched JRE"
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='http://www.jetbrains.com/webstorm'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
   cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
