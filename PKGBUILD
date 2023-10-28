@@ -44,9 +44,9 @@ package_webstorm-eap() {
   mkdir -p "${pkgdir}/usr/share/pixmaps"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m 644 "${startdir}/jetbrains-${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+  install -m 644 "jetbrains-${pkgname}.desktop" "${pkgdir}/usr/share/applications"
   install -m 644 "${pkgdir}/opt/${pkgname}/bin/webstorm.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-  install -m 644 "${startdir}/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt"
+  install -m 644 "${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt"
 
   ln -s "/opt/${pkgname}/bin/webstorm.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
