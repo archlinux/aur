@@ -1,5 +1,5 @@
 pkgbase = aw-watcher-window-wayland-git
-	pkgdesc = window and afk watcher for wayland
+	pkgdesc = Wayland window watcher for ActivityWatch
 	pkgver = r33.6108ad3
 	pkgrel = 1
 	url = https://github.com/ActivityWatch/aw-watcher-window-wayland
@@ -8,8 +8,9 @@ pkgbase = aw-watcher-window-wayland-git
 	makedepends = git
 	makedepends = rust
 	depends = activitywatch-bin
-	depends = aw-client
 	depends = gcc-libs
+	optdepends = sway
+	optdepends = phosh
 	provides = aw-watcher-window-wayland
 	conflicts = aw-watcher-window-wayland
 	source = aw-watcher-window-wayland::git+https://github.com/ActivityWatch/aw-watcher-window-wayland

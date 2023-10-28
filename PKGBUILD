@@ -1,23 +1,26 @@
 # Maintainer: ScreamsInJank <screamsinjank@proton.me>
+# Contributor: Y7n05h (Past Maintainer)
 
 _name='aw-watcher-window-wayland'
 pkgname="$_name-git"
 pkgver=r33.6108ad3
 pkgrel=1
-pkgdesc="window and afk watcher for wayland"
+pkgdesc="Wayland window watcher for ActivityWatch"
 arch=('x86_64')
 url="https://github.com/ActivityWatch/$_name"
 license=('MPL2')
 depends=(
     activitywatch-bin
-    aw-client
     gcc-libs
 )
 makedepends=(
     git
     rust
 )
-optdepends=()
+optdepends=(
+    sway
+    phosh
+)
 
 provides=(${_name})
 conflicts=(
