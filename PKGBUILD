@@ -2,37 +2,29 @@
 # Contributor: Paul Dino Jones "ZitZ" <Raptorman18@gmail.com>
 
 pkgname=openjazz
-pkgver=20190106
+pkgver=20231028
 pkgrel=1
 pkgdesc="A free, open-source version of the classic Jazz Jackrabbit™ games"
 arch=('i686' 'x86_64')
 url="http://alister.eu/jazz/oj/"
 license=('GPL')
-depends=('zlib' 'sdl' 'libmodplug')
-makedepends=('perl-podlators')
+makedepends=('git' 'cmake' 'ninja')
+depends=('sdl2')
 install=openjazz.install
-source=("https://github.com/AlisterT/openjazz/releases/download/$pkgver/openjazz-$pkgver.tar.xz"
-        "https://github.com/AlisterT/openjazz/raw/$pkgver/unix/OpenJazz.6.pod")
-sha256sums=('91341adcc4908db12aad6b82d2fb0125429a26585f65d7eb32d403656313eaab'
-            '60c382efd5ba101dfcc9a216ed1f19e3cec4183f338445e14fc1446e17898a70')
+source=("https://github.com/AlisterT/openjazz/releases/download/$pkgver/openjazz-$pkgver.tar.xz")
+sha256sums=('7240e14d07130c1be9e59b4f336cf9d557cebd97fdb6f1b960f0f4c4e33c256b')
 
 prepare() {
-  # look in home directory for data files
-  sed 's|"/."|"/.openjazz/"|' -i $pkgname-$pkgver/src/main.cpp
-
-  # generate manual page
-  pod2man -c "OpenJazz Manual" -n OpenJazz -r "OpenJazz $pkgver" OpenJazz.6.pod OpenJazz.6
+  rm -rf aurbuild
 }
 
 build() {
-  cd $pkgname-$pkgver
-  export CPPFLAGS="$CPPFLAGS -DDATAPATH=\\\"/usr/share/openjazz/\\\" -DHOMEDIR"
-  ./configure --prefix=/usr
-  make
+  cmake -S $pkgname-$pkgver -B aurbuild -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDATAPATH="/usr/share/openjazz/"
+  cmake --build aurbuild
 }
 
 package() {
-  make -C $pkgname-$pkgver DESTDIR="$pkgdir/" install
-  # install manual page
-  install -Dm644 OpenJazz.6 "$pkgdir"/usr/share/man/man6/OpenJazz.6
+  DESTDIR="$pkgdir/" cmake --install aurbuild
 }
