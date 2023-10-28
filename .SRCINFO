@@ -1,0 +1,20 @@
+pkgbase = libbismuth
+	pkgdesc = Libadwaita's responsive widgets, without all the baggage.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/tau-OS/libbismuth
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = fribidi
+	makedepends = gi-docgen
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk4
+	source = libbismuth-1.0.5.tar.gz::https://github.com/tau-OS/libbismuth/archive/refs/tags/1.0.5.tar.gz
+	sha256sums = e3f9fab6c9870739a10e4ceddec92f3a54ebdf8e45c5b0a50367694976e35187
+
+pkgname = libbismuth
