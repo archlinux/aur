@@ -1,7 +1,7 @@
 pkgbase = r-pwomics
 	pkgdesc = Pathway-based data integration of omics data
 	pkgver = 1.34.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/pwOmics
 	arch = any
 	license = GPL
@@ -21,6 +21,7 @@ pkgbase = r-pwomics
 	optdepends = r-ebdbnet
 	optdepends = r-longitudinal
 	optdepends = r-mfuzz
+	optdepends = r-runit
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/pwOmics_1.34.0.tar.gz
 	sha256sums = 34081a6552a1b860fd62bd84fcd7e37dff6f8c0469c25ea8adc01b4bc146096b
 
