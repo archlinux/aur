@@ -1,6 +1,6 @@
 pkgbase = r-radiogx
 	pkgdesc = Analysis of Large-Scale Radio-Genomic Data
-	pkgver = 2.4.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RadioGx
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-radiogx
 	optdepends = r-markdown
 	optdepends = r-pander
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RadioGx_2.4.0.tar.gz
-	sha256sums = 0298a1eea51558964f615c4c08dec4be2eefa3b59b13f8dcd995d028b975f8a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RadioGx_2.6.0.tar.gz
+	sha256sums = b35a445b4995b663d592326c03bc563665c550600e63d857eac70758d4de757a
 
 pkgname = r-radiogx
