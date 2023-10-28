@@ -7,13 +7,11 @@ pkgbase = aw-watcher-window-wayland-git
 	license = MPL2
 	makedepends = git
 	makedepends = rust
+	depends = activitywatch-bin
 	depends = aw-client
 	depends = gcc-libs
-	depends = activitywatch-bin
 	provides = aw-watcher-window-wayland
 	conflicts = aw-watcher-window-wayland
-	conflicts = aw-watcher-window
-	conflicts = aw-watcher-afk
 	source = aw-watcher-window-wayland::git+https://github.com/ActivityWatch/aw-watcher-window-wayland
 	sha256sums = SKIP
 

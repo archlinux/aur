@@ -22,8 +22,6 @@ optdepends=()
 provides=(${_name})
 conflicts=(
     ${_name}
-    aw-watcher-window
-    aw-watcher-afk
 )
 
 source=("${_name}::git+$url")
