@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=lib32-vulkan-tools
-pkgver=1.3.264
+pkgver=1.3.269
 pkgrel=1
 arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('lib32-libx11' 'lib32-wayland' 'lib32-vulkan-icd-loader')
 makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz")
-sha256sums=('711e1b00436e5ce59e255c91fa531c0cfd09967cddf4e23fcd76c05b9773c1dd')
+sha256sums=('029784dcc16154258499d97418142fb43d07a136bcefcaf0575bb7194068e381')
 
 prepare() {
   cd "${srcdir}/Vulkan-Tools-${pkgver}"
@@ -28,7 +28,6 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_LIBRARY_PATH=/usr/lib32 \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
     -DCMAKE_SKIP_RPATH=True \
@@ -38,7 +37,6 @@ build() {
     -DBUILD_CUBE=ON \
     -DBUILD_VULKANINFO=ON \
     -DBUILD_ICD=OFF \
-    -DGLSLANG_INSTALL_DIR=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
@@ -47,7 +45,6 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_LIBRARY_PATH=/usr/lib32 \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
     -DCMAKE_SKIP_RPATH=True \
@@ -58,7 +55,6 @@ build() {
     -DCUBE_WSI_SELECTION=WAYLAND \
     -DBUILD_VULKANINFO=OFF \
     -DBUILD_ICD=OFF \
-    -DGLSLANG_INSTALL_DIR=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
