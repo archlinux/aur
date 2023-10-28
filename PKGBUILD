@@ -4,7 +4,7 @@ _pkgname=bnem
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Training of logical models from indirect measurements of perturbation experiments'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,6 +33,7 @@ optdepends=(
   r-biocstyle
   r-knitr
   r-matrixgenerics
+  r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ba3014cf2a72af41a66cc61a1cb35c7b755bf3c69205d866b0258cd697c98572')
