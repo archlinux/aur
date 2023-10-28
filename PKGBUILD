@@ -4,7 +4,7 @@ _pkgname=gRain
 _pkgver=1.3.14
 pkgname=r-${_pkgname,,}
 pkgver=1.3.14
-pkgrel=1
+pkgrel=3
 pkgdesc='Graphical Independence Networks'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,14 +12,12 @@ license=('GPL')
 depends=(
   r
   r-broom
-  r-graph
   r-grbase
   r-igraph
   r-magrittr
   r-rcpp
   r-rcpparmadillo
   r-rcppeigen
-  r-rgraphviz
 )
 optdepends=(
   r-knitr
