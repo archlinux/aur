@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-shell-extension-utc-clock
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc='Extension for GNOME shell to add a UTC clock to the top bar'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('npm')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/ego-${pkgver}.tar.gz")
-sha256sums=('e56a1cd1bf07f9b32c6ea852c5ce91150e04f396204fd55118c84087f0cfb700')
+sha256sums=('32cb922789951287855cf65b5cac85e35cad91f04557d44f3a8504fd9184e410')
 
 build() {
     cd "${pkgname}-ego-${pkgver}" || exit 1
