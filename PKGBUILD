@@ -1,6 +1,6 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=materialgram-bin
-pkgver=4.10.5.2
+pkgver=4.10.5.3
 pkgrel=1
 pkgdesc="Unofficial desktop version of Telegram messaging app with Material Design - Static binaries"
 arch=(x86_64)
@@ -15,11 +15,11 @@ conflicts=('materialgram')
 
 # Archive source
 source=(
-	https://github.com/kukuruzka165/materialgram/releases/download/v${pkgver}/materialgram_v${pkgver}_archlinux.tar.gz
+	https://github.com/kukuruzka165/materialgram/releases/download/v${pkgver}/archlinux_materialgram_v${pkgver}.tar.gz
 )
 
 # Checksums
-sha256sums=('91eab92e33ab23fd054ba781eb3cdb06c69de79a0371a4d4f1a9f249c867cb73')
+sha256sums=('59d856b3cca4ec7c432c0463f25f7448a1608cdcd30d1599151852edc132dc6e')
 
 package() {
 
