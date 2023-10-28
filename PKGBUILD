@@ -44,7 +44,7 @@ package_phpstorm() {
 
 package_phpstorm-jre() {
   pkgdesc='JBR (JetBrains Runtime) for PhpStorm - a patched JRE'
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
   _buildver="$(ls | grep -Eo 'PhpStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#PhpStorm-##')"
 
   install -d -m 755 "${pkgdir}"/opt/${pkgbase}
