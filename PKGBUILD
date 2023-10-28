@@ -2,19 +2,20 @@
 
 pkgname=libhelium
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The application framework for tauOS apps."
 arch=('x86_64' 'aarch64')
 depends=('gtk4' 'glib2' 'libgee')
 makedepends=(
-  'gtk4'
-  'glib2'
-  'libgee'
-  'gobject-introspection'
   'dart-sass'
-  'vala'
+  'git'
+  'glib2'
+  'gobject-introspection'
+  'gtk4'
+  'libgee'
   'meson'
   'ninja'
+  'vala'
 )
 url="https://github.com/tau-OS/libhelium"
 license=('LGPL-3.0')
