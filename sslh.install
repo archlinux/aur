@@ -28,11 +28,12 @@ post_install() {
     echo "/etc/sslh.cfg editing is required!"
     echo "Details: https://github.com/yrutschle/sslh/blob/master/doc/config.md"
     echo "Don't forget execute 'systemctl daemon-reload' and 'systemctl restart sslh.socket' after editing."
-    echo "/usr/bin/sslh-fork is using by default."
+    echo "/usr/sbin/sslh-fork is using by default."
     echo "If you want using sslh-select or sslh-ev you should make systemd override file for you own, e.g."
-    echo "/etc/systemd/system/sslh.service.d/exec.conf"
+    echo "/etc/systemd/system/sslh.service.d/override.conf"
     echo "[Service]"
-    echo "ExecStart=/usr/bin/sslh-select --foreground --config=/etc/sslh.cfg"
+    echo "ExecStart="
+    echo "ExecStart=/usr/sbin/sslh-select --foreground --config /etc/sslh.cfg"
 }
 
 # vim:set ts=2 sw=2 ft=sh et:

@@ -3,7 +3,7 @@
 _pkgname=sslh
 pkgname=$_pkgname-git
 pkgver=2.0.1.r6.g92d2326
-pkgrel=2
+pkgrel=3
 pkgdesc="Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port"
 arch=('i686' 'x86_64')
 url='http://www.rutschle.net/tech/sslh.shtml'
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  sed -i 's|ExecStart=/usr/sbin/sslh --foreground $DAEMON_OPTS|ExecStart=/usr/sbin/sslh-fork --foreground --config /etc/sslh.cfg|;/EnvironmentFile/d;s|^\(CapabilityBoundingSet=CAP_NET_BIND_SERVICE\)|\1 CAP_NET_RAW|' scripts/systemd.sslh.service
+  sed -i 's|ExecStart=/usr/sbin/sslh --foreground $DAEMON_OPTS|ExecStart=/usr/sbin/sslh-fork --foreground --config /etc/sslh.cfg|;/EnvironmentFile/d;s|^\(CapabilityBoundingSet=CAP_NET_BIND_SERVICE\)|\1 CAP_NET_RAW|;s|^\(AmbientCapabilities=CAP_NET_BIND_SERVICE\)|\1 CAP_NET_RAW|' scripts/systemd.sslh.service
   sed '29 s|443|7443|;30 s|443|8443|;s|thelonious|0.0.0.0|;/user:/d;/pidfile:/d;s|^\(# example.cfg\)|\1 in /usr/share/doc/'${pkgname%-git}' folder|' < basic.cfg > sslh.cfg
 }
 
