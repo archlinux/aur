@@ -1,0 +1,23 @@
+pkgbase = c3c-llvm-16-git
+	pkgdesc = C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Git version for x86_64. LLVM 16
+	pkgver = r1666.e4c1328e
+	pkgrel = 1
+	url = https://github.com/c3lang/c3c.git
+	arch = x86_64
+	license = LGPL3
+	license = MIT
+	makedepends = binutils
+	makedepends = tar
+	makedepends = ninja
+	makedepends = git
+	makedepends = cmake
+	makedepends = libbsd
+	makedepends = curl
+	provides = c3c
+	conflicts = c3c
+	source = git+https://github.com/c3lang/c3c.git
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/libedit2_3.1-20221030-2_amd64.deb
+	md5sums = SKIP
+	md5sums = dc66a491cd5514c069d8151a37ae9e7e
+
+pkgname = c3c-llvm-16-git
