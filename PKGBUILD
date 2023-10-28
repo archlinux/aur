@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=signeR
-_pkgver=2.2.1
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
-pkgver=2.2.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Empirical Bayesian approach to mutational signature discovery'
 arch=('x86_64')
@@ -70,7 +70,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4d2d8ede87bfaf81a98020f9e7b00ec0ff27302ca263ec576979b3a70b8e5726')
+sha256sums=('6fbe442415ea2441ab33aecaa1a6eff239ef3b823bd622b3f6c422cbf3d620a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
