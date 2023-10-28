@@ -4,9 +4,9 @@ _pkgname=gsean
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Gene Set Enrichment Analysis with Networks'
-arch=('any')
+arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
@@ -15,7 +15,10 @@ depends=(
   r-ppinfer
 )
 optdepends=(
+  r-annotationdbi
   r-knitr
+  r-org.dm.eg.db
+  r-pasilla
   r-plotly
   r-rmarkdown
   r-summarizedexperiment
