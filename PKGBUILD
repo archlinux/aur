@@ -40,7 +40,7 @@ package_jetbrains-gateway() {
 
 package_jetbrains-gateway-jre() {
   pkgdesc='JBR (JetBrains Runtime) for JetBrains Gateway - a patched JRE'
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
   _buildver="$(ls | grep -Eo 'JetBrainsGateway-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#JetBrainsGateway-##')"
 
   install -d -m 755 "${pkgdir}"/opt/${pkgbase}
