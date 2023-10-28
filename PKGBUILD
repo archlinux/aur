@@ -35,7 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=ON \
     -DBINARY_ICONS_RESOURCE=ON \
-    -DBUILD_WITH_QT6=ON # this is not ned at all
+    -DBUILD_WITH_QT6=ON # this is not need at all
 
   cmake --build build
 }
