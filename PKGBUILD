@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=colloid-gtk-theme-git
-pkgver=2023.08.12.r12.gc220ed59
+pkgver=2023.10.28.r0.g46fa7423
 pkgrel=1
 pkgdesc="Modern and clean Gtk theme for linux"
 arch=('any')
@@ -28,17 +28,9 @@ package() {
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact --tweaks normal -d "$pkgdir/usr/share/themes"
 
-  # Nord version
-  ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks nord -d "$pkgdir/usr/share/themes"
-
-  # Dracula version
-  ./install.sh -t all --tweaks dracula -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks dracula -d "$pkgdir/usr/share/themes"
-
-  # Gruvbox version
-  ./install.sh -t all --tweaks gruvbox -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks gruvbox -d "$pkgdir/usr/share/themes"
+  # Nord, Dracula & Gruvbox versions
+  ./install.sh -t all --tweaks all -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks all -d "$pkgdir/usr/share/themes"
 
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"

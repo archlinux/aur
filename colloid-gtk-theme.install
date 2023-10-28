@@ -1,6 +1,6 @@
 post_install() {
   echo ""
-  echo "To force Libadwaita appliations to use the gtk-4.0 theme,"
+  echo "To force Libadwaita applications to use the gtk-4.0 theme,"
   echo "symlink the gtk-4.0 theme to config folder"
   echo "(replace Colloid-Dark with chosen theme variant):"
   echo ""
