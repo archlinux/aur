@@ -16,7 +16,7 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine-oslogin'
-pkgver=20220721.00
+pkgver=20231004.00
 pkgrel=1
 pkgdesc='OS Login Guest Environment for Google Compute Engine'
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=('curl' 'json-c' 'pam')
 checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$pkgver.tar.gz"
         'google-compute-engine-oslogin.install')
-sha256sums=('17a0cd15df917c6ae29daa299d04e2e95e8b891918d2976b31b6c13398f0bc37'
+sha256sums=('d44f85167fd9281129547f279e767e40f4104328998202a52d92b422f23b104a'
             '3e488f66f6ddc5882d731bd951391efe588c1fbb19afcf4de5283ec7fd481039')
 install='google-compute-engine-oslogin.install'
 
