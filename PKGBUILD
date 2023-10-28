@@ -2,7 +2,7 @@
 # Contributor: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=mytourbook_bin
-pkgver=23.3.0
+pkgver=23.10.0
 pkgrel=1
 pkgdesc="A tool to visualize and analyze tours recorded by a GPS device, ergometer, bike- or exercise computer."
 arch=('x86_64')
@@ -10,10 +10,10 @@ url="http://mytourbook.sourceforge.net"
 license=("GPL")
 depends=('java-runtime>=11' 'fontconfig' 'libxrender')
 install="mytourbook.install"
-source=("mytourbook.desktop" "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook-${pkgver}-linux.zip")
+source=("mytourbook.desktop" "https://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook-${pkgver}-linux.tar.gz")
 options=(!strip)
 sha256sums=('84607b0ae8313aaf4e466ff41a8c6d7d32d5fb4b1609463d99084b0c13d3036a'
-            '75cc27ccbc751129c7b1ef1677ba43a31062c684831960eb7ea2d52850ec8e78')
+            'a43ae50c5225247f444f6f38eb8d09bc585da470e0453d481e9f707eb4197864')
 
 package() {
   mkdir -p ${pkgdir}/usr/{bin,share/mytourbook}
