@@ -2,7 +2,7 @@
 
 _pkgbase=luau
 pkgname=luau
-pkgver=0.597
+pkgver=0.601
 pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
@@ -19,7 +19,7 @@ source=(
     'Luau.pc'
 )
 
-sha512sums=('65970730793e3d9dba05ec7cf2627d8c1878e67053d3ba457f053339d8e02ca21127fa8d91190a691b8ff75ae65f0f0bdc107024d260f3a66b57458765c4faaf'
+sha512sums=('ba7690384615cb7ea06eb9333f40a72d19bdf3ec2f17e8de157016caa35991e187acf47be894dd5a710cbf80ca13794789e5614dfb1627e6cfec42fac7f24e3e'
             'b17989fc739e2c101e0d515ded8815b4de3f54b2a67e1893cd1e9aa88cc541b3f667514cdf8a04db60aa9db050971cdbd8b386cd1458f567e784de983f63e88a')
 
 prepare() {
