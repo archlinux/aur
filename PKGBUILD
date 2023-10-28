@@ -4,7 +4,7 @@ _pkgname=psygenet2r
 _pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=1.34.0
-pkgrel=1
+pkgrel=3
 pkgdesc='psygenet2r - An R package for querying PsyGeNET and to perform comorbidity studies in psychiatric disorders'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,6 +24,7 @@ depends=(
   r-topgo
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-testthat
