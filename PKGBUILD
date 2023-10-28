@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.5.8.arch1
+pkgver=6.5.9.arch2
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/dragonn/linux-g14.git"
