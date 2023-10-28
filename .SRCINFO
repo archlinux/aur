@@ -12,6 +12,7 @@ pkgbase = gnome-clocks-git
 	makedepends = git
 	makedepends = meson
 	depends = gtk3
+	depends = gtk4
 	depends = libcanberra
 	depends = libgweather-4
 	depends = gnome-desktop
