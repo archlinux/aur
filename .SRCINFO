@@ -1,6 +1,6 @@
 pkgbase = r-syntenet
 	pkgdesc = Inference And Analysis Of Synteny Networks
-	pkgver = 1.2.4
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/syntenet
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = r-syntenet
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/syntenet_1.2.4.tar.gz
-	md5sums = 81bd02bbba83fcb7f62098b5fd2a1fc6
-	sha256sums = d5cb3ad5a92be38fa9a538dc856002464d4d353400d126f6840ed4e3bd74a02e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/syntenet_1.4.0.tar.gz
+	md5sums = ab56b637f74d79cfba3dd6aab80b7ac9
+	sha256sums = 023956e4272163608eea70636a88815e86ef214692fe3b3df37988e20d3b2f9c
 
 pkgname = r-syntenet

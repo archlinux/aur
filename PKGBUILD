@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=syntenet
-_pkgver=1.2.4
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('81bd02bbba83fcb7f62098b5fd2a1fc6')
-sha256sums=('d5cb3ad5a92be38fa9a538dc856002464d4d353400d126f6840ed4e3bd74a02e')
+md5sums=('ab56b637f74d79cfba3dd6aab80b7ac9')
+sha256sums=('023956e4272163608eea70636a88815e86ef214692fe3b3df37988e20d3b2f9c')
 
 prepare() {
   # skip tests that cause a coredump
