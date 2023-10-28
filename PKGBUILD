@@ -1,8 +1,8 @@
 # Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-distro-git
 _pkgname=dl-distro
-pkgver=159.f588bf3
-pkgrel=2
+pkgver=197.8de119f
+pkgrel=1
 pkgdesc="Download and verify Linux ISOs with GnuPG and shasums"
 arch=('any')
 url="https://codeberg.org/bashuser30/$_pkgname"
@@ -25,5 +25,4 @@ pkgver() {
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 distro_data.json "$pkgdir/usr/share/$_pkgname/distro_data.json"
 }
