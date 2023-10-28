@@ -38,7 +38,7 @@ package_datagrip() {
 
 package_datagrip-jre() {
   pkgdesc='JBR (JetBrains Runtime) for DataGrip - a patched JRE'
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
   cp -a "${srcdir}"/DataGrip-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
