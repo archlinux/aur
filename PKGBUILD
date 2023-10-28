@@ -20,7 +20,7 @@ prepare() {
 
 build() {
    cd "$pkgname-$pkgver"
-   cargo build --release --locked --target-dir=target
+   cargo build --release --target-dir=target
 }
 
 check() {
@@ -30,7 +30,6 @@ check() {
 package() {
    cd "$pkgname-$pkgver"
    cargo install \
-      --locked \
       --no-track \
       --path . \
       --root "${pkgdir}"/usr
