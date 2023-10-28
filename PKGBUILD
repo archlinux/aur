@@ -50,7 +50,7 @@ check() {
 }
 package() {
 	cd crumb/src
-	sudo mv crumb /usr/bin
+	mv crumb $pkgdir
 }
 
 
