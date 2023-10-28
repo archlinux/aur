@@ -3,7 +3,7 @@
 pkgbase=writerside-eap
 pkgname=(writerside-eap writerside-eap-jre)
 pkgver=232.10165
-pkgrel=1
+pkgrel=2
 pkgdesc="Technical writing environment from JetBrains. Early Access Program."
 arch=('x86_64')
 options=('!strip')
@@ -37,7 +37,7 @@ package_writerside-eap() {
 }
 
 package_writerside-eap-jre() {
-  pkgdesc="JBR (JetBrains Runtime) for WebStorm EAP - a patched JRE"
+  pkgdesc="JBR (JetBrains Runtime) for Writerside EAP"
   url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}

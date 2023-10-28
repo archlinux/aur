@@ -1,7 +1,7 @@
 pkgbase = writerside-eap
 	pkgdesc = Technical writing environment from JetBrains. Early Access Program.
 	pkgver = 232.10165
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/writerside/
 	arch = x86_64
 	license = Commercial
@@ -16,5 +16,5 @@ pkgname = writerside-eap
 	optdepends = java-runtime: JRE - Required if writerside-eap-jre is not installed
 
 pkgname = writerside-eap-jre
-	pkgdesc = JBR (JetBrains Runtime) for WebStorm EAP - a patched JRE
+	pkgdesc = JBR (JetBrains Runtime) for Writerside EAP
 	url = https://github.com/JetBrains/JetBrainsRuntime
