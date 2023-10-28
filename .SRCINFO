@@ -1,7 +1,7 @@
 pkgbase = biboumi-git
 	pkgdesc = XMPP gateway to IRC
 	pkgver = 9.0.r27.g2bd91dc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://biboumi.louiz.org/
 	install = biboumi.install
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = biboumi-git
 	depends = expat
 	depends = libidn
 	depends = udns
-	depends = botan
+	depends = botan2
 	depends = sqlite
 	depends = postgresql-libs
 	provides = biboumi
