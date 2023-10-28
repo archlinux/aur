@@ -51,7 +51,7 @@
 
 pkgname=flameshot-git
 _pkgname=flameshot
-pkgver=r1871.a447b3d6
+pkgver=r1938.fa29bcb4
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
@@ -62,7 +62,7 @@ makedepends=(qt5-tools git cmake)
 optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
             'xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work'
             'grim: To make Sway, Hyprland, and wlroots work'
-            'kguiaddons: For KDE Plasma'
+            'kguiaddons5: For KDE Plasma'
             'xdg-desktop-portal-kde: For KDE Plasma')
 provides=(flameshot-git)
 conflicts=(flameshot)
