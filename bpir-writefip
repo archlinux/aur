@@ -20,8 +20,10 @@ partlabelroot=$(lsblk -plno partlabel $rootdev | grep -G '\-root$' )
 [ -z "$partlabelroot" ] && exit
 target=$(echo $partlabelroot | cut -d'-' -f1)
 
-[[ "$target" == "bpir64" ]] && default_dtb="mt7622-bananapi-bpi-r64"
-[[ "$target" == "bpir3"  ]] && default_dtb="mt7986a-bananapi-bpi-r3"
+default_dtb="${target/m/-mini}"
+default_dtb="${default_dtb/bpir/-bananapi-bpi-r}"
+default_dtb=$(shopt -s nullglob; cd /boot/dtbs; echo "mt"*"${default_dtb}.dtb" | head -n 1)
+default_dtb="${default_dtb/.dtb/}"
 
 tmp="/tmp/bpir64-atf-git"
 mkdir -p $tmp
@@ -148,14 +150,14 @@ if [ -L ${fipdevicel} ]; then
   bl31="/boot/${target}-atf-${atfdevice}-bl31.bin"
   imageid=$(od --skip-bytes=$((4*14)) --read-bytes=4 --address-radix=n -x \
               $linux | sed 's/ //g')
-  socfw=""; ntfw=""; ntfwconfig=""; tosfwextra2=""
-  [ -f "$bl31" ]   && socfw="--soc-fw $bl31"
-  [ -f "$linux" ]  && ntfw="--nt-fw $linux"
+  fipfiles=""
+  [ -f "$bl31" ]   && fipfiles+=" --soc-fw $bl31"
+  [ -f "$linux" ]  && fipfiles+=" --nt-fw $linux"
   if [[ "$imageid" == "5241644d" ]]; then # We have a linux kernel image
-    [ -f "$atfdtb" ] && ntfwconfig="--nt-fw-config $atfdtb"
-    [ -f "$initrd" ] && tosfwextra2="--tos-fw-extra2 $initrd"
+    [ -f "$atfdtb" ] && fipfiles+=" --nt-fw-config $atfdtb"
+    [ -f "$initrd" ] && fipfiles+=" --tos-fw-extra2 $initrd"
   fi
-  fiptool --verbose create $tmp/fip.bin $socfw $ntfw $ntfwconfig $tosfwextra2
+  fiptool --verbose create $tmp/fip.bin $fipfiles
   fiptool info $tmp/fip.bin
   echo Writing FIP to: ${fipdevicel}
   dd bs=1M of=${fipdevicel} if=/dev/zero 2>/dev/null
