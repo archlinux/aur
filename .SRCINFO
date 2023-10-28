@@ -1,7 +1,7 @@
 pkgbase = ansible-cmdb
 	pkgdesc = Generate host overview from ansible fact gathering output.
 	pkgver = 1.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fboender/ansible-cmdb
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = ansible-cmdb
 	depends = python
 	depends = python-mako
 	depends = python-pyyaml
-	source = ansible-cmdb-1.31-1.tar.gz::https://github.com/fboender/ansible-cmdb/archive/1.31.tar.gz
-	sha256sums = 8de9a02e3f0740967537850f6263756dca1bf506cd95c1f2ef7f4ee6d9ff23b8
+	source = git+https://github.com/gardar/ansible-cmdb.git#branch=fix-build
+	sha256sums = SKIP
 
 pkgname = ansible-cmdb
