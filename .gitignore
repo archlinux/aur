@@ -1,6 +1,4 @@
 *
-
-!.SRCINFRO
-!.git
-!.gitignore
 !PKGBUILD
+!.SRCINFO
+!.gitignore
