@@ -6,7 +6,7 @@
 
 _pkgname=godot-mono
 pkgname=godot-mono-git
-pkgver=4.1.r2708.g51f81e1
+pkgver=4.1.r3141.gf497156
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=(x86_64 i686)
@@ -14,8 +14,8 @@ url="https://godotengine.org/"
 license=(MIT)
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
    libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
-   mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
-makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip python)
+   mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme bash)
+makedepends=(alsa-lib gcc pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip)
 provides=(godot-mono)
 conflicts=(godot-mono)
 source=("git+https://github.com/godotengine/godot.git")
@@ -41,7 +41,7 @@ build() {
     CFLAGS="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w -I/usr/include/mbedtls2" \
     CXXFLAGS="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w -I/usr/include/mbedtls2" \
     LINKFLAGS="$LDFLAGS -L/usr/lib/mbedtls2" \
-    arch=$CARCH \
+    arch="$CARCH" \
     builtin_embree=no \
     builtin_enet=yes \
     builtin_freetype=no \
@@ -79,8 +79,9 @@ build() {
 
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.linuxbsd.editor.x86_64.mono --generate-mono-glue modules/mono/glue
 
-    # Build normal binaries
-    modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd
+    # Build normal binaries and use proper NuGet packages #78257
+    tempfolder=$(mktemp -d) 
+    modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd --push-nupkgs-local="$tempfolder" && rm -rf "$tempfolder"
 }
 
 
