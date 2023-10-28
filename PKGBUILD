@@ -9,7 +9,6 @@ license=('MIT' 'GPL')
 options=(!strip)
 depends=(
   'vitasdk'
-  'pacman>5'
 )
 makedepends=(
   'wget'

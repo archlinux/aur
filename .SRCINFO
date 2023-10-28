@@ -10,7 +10,6 @@ pkgbase = vitasdk-packages-git
 	makedepends = wget
 	makedepends = git
 	depends = vitasdk
-	depends = pacman>5
 	provides = vitasdk-packages
 	options = !strip
 	source = vdpm-notmp.patch
