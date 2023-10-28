@@ -41,7 +41,7 @@ package_webstorm() {
 
 package_webstorm-jre() {
   pkgdesc='JBR (JetBrains Runtime) for WebStorm - a patched JRE'
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
   _buildver="$(ls | grep -Eo 'WebStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#WebStorm-##')"
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
