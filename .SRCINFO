@@ -1,13 +1,14 @@
 pkgbase = python-palettable
 	pkgdesc = Color palettes for Python
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/palettable
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-matplotlib
 	replaces = python-brewer2mpl
