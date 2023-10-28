@@ -19,4 +19,4 @@ pkgname = webstorm-eap
 
 pkgname = webstorm-eap-jre
 	pkgdesc = JBR (JetBrains Runtime) for WebStorm EAP - a patched JRE
-	url = http://www.jetbrains.com/webstorm
+	url = https://github.com/JetBrains/JetBrainsRuntime
