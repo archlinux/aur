@@ -1,13 +1,17 @@
 # Maintainer: Luke Short <ekultails at gmail dot com>
 
-pkgname=vapor-steamos-theme-kde
+pkgname=plasma5-themes-vapor-steamos
 pkgver=0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Vapor theme for KDE Plasma from SteamOS 3"
 license=("GPL2")
 arch=("any")
 source=("https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-rel/os/x86_64/steamdeck-kde-presets-${pkgver}-1-any.pkg.tar.zst")
 sha512sums=("780d8796a9f37d7a46fbc92f0e1aaddf05f764c9099cabc5a2c4c134ec1473c856f441e1547437cd2175e2d86e26f09f9922c9477c83ba287f7ded8adc228291")
+# This was the old package name using the incorrect naming convention.
+# https://wiki.archlinux.org/title/KDE_package_guidelines#KF5_package_naming
+conflicts=("vapor-steamos-theme-kde")
+replaces=("vapor-steamos-theme-kde")
 
 package() {
     echo "PKG DIR: $pkgdir"
