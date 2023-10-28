@@ -14,12 +14,12 @@ source=("git+https://github.com/gardar/ansible-cmdb.git#branch=fix-build")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1
   python setup.py install --root="$pkgdir/" --optimize=1
 }
