@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CyTOFpower
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Power analysis for CyTOF experiments'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d37177b99d3f8abb327583e9ea5c8e952f3af9f3190fc40436d308ef3308a0ac')
+sha256sums=('31b1b52ff5a0250363971df7a4829f287e41b1d1d42eea5b9849b9558f216157')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
