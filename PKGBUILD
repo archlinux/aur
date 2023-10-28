@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scClassify
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='scClassify: single-cell Hierarchical Classification'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bcea4afc159b7361c30df7cec553df1bdefa7258c7370ed1e51b146d7a00fb97')
+sha256sums=('6ed52ca8d4839c48a9812b752350865ba0c793382b44289e04a26037b22b84c6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
