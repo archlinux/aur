@@ -1,3 +1,8 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: William Immendorf  (https://curus.xyz)
+# Maintainer: Richard Garber <rg.1029384756@gmail.com>
+# Contributor: Karol 'Kenji Takahashi' Woźniak @ kenji.sx
+# Based on a cnijfilter-mg3200 package by morris555
 # [Printer Model Name] [Printer Model ID]
 # ------------------------------------------------------------------
 #  mp230     401
@@ -14,21 +19,21 @@ _id=404
 
 pkgname=cnijfilter-${_name}
 pkgver=3.80
-pkgrel=3
+pkgrel=4
 _pkgver=3.80-1
 pkgdesc="Canon IJ Printer Driver (for ${_name} series)"
-url="http://support-au.canon.com.au/contents/AU/EN/0100469302.html"
+url="https://sg.canon/en/support/0100469302"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('popt' 'gtk2' 'cups' 'ghostscript')
-source=(http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-${_pkgver}.tar.gz
+source=(https://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-${_pkgver}.tar.gz
         fix_cups.patch
         fix_png.patch
         fix_configures.patch)
-md5sums=('b6b92717930021d24bd750d4197bdf3b'
-         'c973834af2962d7ad239811b0b0d1db1'
-         '5f665042df2175da3629667aaf258782'
-         'd75d20fa9041fff6b5df02cdea9e8732')
+sha512sums=('95a16e3b4fc38ce0b7a12bd74466d97e726bc410b59bf6d1963fa52b16a8cc67f6a993a5ef945107201f860d8ac6734c462bc0bf6d2160d6c85c5f61aff040c1'
+            '74388421036f25406fe03b784dc63223edebb09287ee5a333e31ffce941359e72ddff8068675e49db82220e56d16ec1151265a217cb98ca7363f0c83422903b4'
+            'aecf5a4375dfe2d3b56c4dba37e985c3d6ecde05eba91361c028ec7b2c393377f20e76e843b989b0c282e1969089bd02f8ccdda43397be4a8d6ad7e973c8152f'
+            'dffa3149541585ac99e77c4b62e0e21980105854415fe502b3658d68a42bab248def1ad9729ca6c4868236bfdf91988e8fdbb2b71e0b784434255c21052c1244')
 
 if [ "$CARCH" == "x86_64" ]; then
   _libdir=libs_bin64
@@ -42,6 +47,10 @@ build() {
   patch -p1 -i ${srcdir}/fix_cups.patch || return 1
   patch -p1 -i ${srcdir}/fix_png.patch || return 1
   patch -p1 -i ${srcdir}/fix_configures.patch || return 1
+
+  ## Fix build with glibc2.32+
+  ## Remove a deprecated header inclusion
+  sed -i "36d" cngpijmon/cnijnpr/cnijnpr/cnijnpr.c
 
   ## Compile model specific stuff
   # ppd file
