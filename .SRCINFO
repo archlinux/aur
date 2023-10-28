@@ -1,12 +1,13 @@
 pkgbase = r-cosmosr
 	pkgdesc = COSMOS (Causal Oriented Search of Multi-Omic Space)
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/cosmosR
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-carnival
+	depends = r-decoupler
 	depends = r-dorothea
 	depends = r-dplyr
 	depends = r-gseabase
