@@ -3,7 +3,7 @@
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 # Contributor: Zdenek Obst <zdenek dot obst at gmail dot com>
 pkgname=wildfly
-pkgver=28.0.0
+pkgver=30.0.0
 pkgrel=1
 pkgdesc='Wildfly Application Server.'
 url='http://www.wildfly.org/'
@@ -41,11 +41,9 @@ install="${pkgname}.install"
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}.Final/${pkgname}-${pkgver}.Final.tar.gz"
 	"${pkgname}-sysusers.conf"
 	"${pkgname}-tmpfiles.conf")
-sha256sums=(
-	'2a5f05ae5ecbd7bfe81e45925265b0a3b7a20ac692353674ab636ee06b95edf5'
-	'd2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac'
-	'796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540'
-)
+sha256sums=('e10404c9d3e035a7d364b22b2e343fe8ae867b6bbcbf945bf2a969eff7d9ebea'
+            'd2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac'
+            '796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540')
 
 package() {
 	echo "   -> Removing unneeded .bat and .ps1 files..."
