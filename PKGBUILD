@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GladiaTOX
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='R Package for Processing High Content Screening data'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   r-rcolorbrewer
   r-rcurl
   r-rjsonio
-  r-rmysql
+  r-rmariadb
   r-rsqlite
   r-stringr
   r-tidyr
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c705f4ffa3e02dd746b7c345d8f0d6071911ca791dd22d955eb63e6b15ea82d')
+sha256sums=('564c1662530f9d677157ee093bf81768e01f18550a49e7448fa9c44b64100b06')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
