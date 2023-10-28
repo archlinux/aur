@@ -1,7 +1,8 @@
 pkgbase = algobox
 	pkgdesc = Algorithmic learning for high school students
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 1
+	epoch = 2
 	url = http://www.xm1math.net/algobox/index.html
 	arch = x86_64
 	arch = i686

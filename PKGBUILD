@@ -1,7 +1,8 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=algobox
 pkgver=1.1.1
-pkgrel=2
+pkgrel=1
+epoch=2
 pkgdesc="Algorithmic learning for high school students"
 url="http://www.xm1math.net/algobox/index.html"
 arch=('x86_64' 'i686')
