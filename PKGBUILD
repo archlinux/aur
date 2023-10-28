@@ -2,7 +2,7 @@
 pkgname=elite-image-mounter
 pkgver=1.5.0
 pkgrel=1
-pkgdesc='A minimalist bash based, ISO mounter and converter'
+pkgdesc='A minimalist bash based, ISO mounter and converter.'
 arch=('x86_64')
 url="https://github.com/siyia2/mounter_elite"
 license=('GPL3')
