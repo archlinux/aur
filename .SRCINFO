@@ -1,0 +1,17 @@
+pkgbase = mkdocs-glightbox
+	pkgdesc = A MkDocs plugin supports image lightbox (zoom effect) with GLightbox.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/Blueswen/mkdocs-glightbox
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = mkdocs
+	options = !strip
+	source = mkdocs-glightbox-0.3.4.tar.gz::https://github.com/Blueswen/mkdocs-glightbox/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = 27e11d6525046f319cec56967eca39456afa24c81e9d0b49cc74c21e6d63bbc3
+
+pkgname = mkdocs-glightbox
