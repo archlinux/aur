@@ -1,0 +1,11 @@
+pkgbase = plasma5-themes-macsonoma-git
+	pkgdesc = MacOS Sonoma theme for KDE Plasma.
+	pkgver = r15.9741327
+	pkgrel = 1
+	url = https://github.com/vinceliuice/MacSonoma-kde
+	arch = any
+	license = LGPL3
+	source = plasma5-themes-macsonoma-git::git+https://github.com/vinceliuice/MacSonoma-kde
+	sha512sums = SKIP
+
+pkgname = plasma5-themes-macsonoma-git
