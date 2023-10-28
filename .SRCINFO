@@ -1,7 +1,7 @@
 pkgbase = transifex-client
 	pkgdesc = The Transifex command-line tool to download and upload translations from Transifex
 	pkgver = 1.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/transifex/cli
 	install = transifex-client.install
 	arch = x86_64

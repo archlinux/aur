@@ -5,7 +5,7 @@
 
 pkgname=transifex-client
 pkgver=1.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex"
 arch=('x86_64')
 url="https://github.com/transifex/cli"
@@ -34,7 +34,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath \"-ldflags=-linkmode=external -X 'github.com/transifex/cli/internal/txlib.Version=${pkgver}'\" -mod=readonly -modcacherw"
 
   # Build
   go build -o build
