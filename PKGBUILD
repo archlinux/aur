@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=n2-git
-pkgver=0.1.0.r292.d64412a
+pkgver=0.1.0.r454.90041c1
 pkgrel=1
 pkgdesc='n2 ("into"), a ninja compatible build system'
 arch=('x86_64' 'aarch64')
@@ -30,16 +30,14 @@ pkgver() {
 
 build() {
   cd "${_git_folder}"
-  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
-# check() {
-#   cd "${_git_folder}"
-#   export RUSTUP_TOOLCHAIN=stable
-#   cargo test --frozen --all-features
-# }
+check() {
+  cd "${_git_folder}"
+  cargo test --frozen --all-features
+}
 
 package() {
   cd "${_git_folder}"
