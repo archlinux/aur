@@ -1,7 +1,7 @@
 pkgbase = r-lubridate
 	pkgdesc = Make Dealing with Dates a Little Easier
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=lubridate
 	arch = x86_64
 	license = GPL
