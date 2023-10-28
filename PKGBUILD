@@ -3,7 +3,7 @@
 
 _pkgname='bandwhich'
 pkgname="${_pkgname}-git"
-pkgver=0.21.0.r7.ge2023ed
+pkgver=0.21.1.r10.g2c49b0f
 pkgrel=1
 pkgdesc='Terminal bandwidth utilization tool'
 arch=('x86_64')
@@ -13,26 +13,25 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git"
-        "https://raw.githubusercontent.com/imsnif/bandwhich/8cc56ced73cc5055f69f8723122fb8b5a526b422/Cargo.lock")
-sha256sums=('SKIP'
-            'd64b3583b47826e0d72dfa6c4a2d473b5eb55ccb4f15573c73b9cd54e4ce0cc3')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  mv Cargo.lock "${_pkgname}"
+  cd "${_pkgname}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "${_pkgname}"
+  cd "${_pkgname}"
   cargo build --release --all-features --target-dir=target
 }
 
 package() {
-	cd "${_pkgname}"
+  cd "${_pkgname}"
   install -Dm755 -t "${pkgdir}/usr/bin" "target/release/${_pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
   install -Dm644 -t "${pkgdir}/usr/share/man/man1" "docs/${_pkgname}.1"
