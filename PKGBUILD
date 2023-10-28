@@ -41,7 +41,7 @@ package_dataspell() {
 
 package_dataspell-jre() {
   pkgdesc='JBR (JetBrains Runtime) for DataSpell - a patched JRE'
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -d -m 755 "${pkgdir}"/opt/${pkgbase}
   cp -a "${srcdir}"/dataspell-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
