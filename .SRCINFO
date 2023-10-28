@@ -1,0 +1,14 @@
+pkgbase = pseudo-git
+	pkgdesc = an analogue to sudo
+	pkgver = r420.f9f1278
+	pkgrel = 1
+	url = https://git.yoctoproject.org/pseudo
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = LGPL
+	source = git+https://git.yoctoproject.org/pseudo
+	sha256sums = SKIP
+
+pkgname = pseudo-git

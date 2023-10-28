@@ -2,13 +2,12 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=pseudo
 pkgname=$_pkgname-git
-pkgver=0.0.1
 pkgrel=1
-pkgdesc=""
-arch=(any)
-url=https://github.com/Freed-Wu/$_pkgname
-license=(GPL3)
-makedepends=(git)
+pkgver=r420.f9f1278
+pkgdesc="an analogue to sudo"
+arch=(i686 x86_64 arm aarch64)
+url=https://git.yoctoproject.org/$_pkgname
+license=(LGPL)
 source=("git+$url")
 sha256sums=(SKIP)
 
@@ -26,5 +25,5 @@ build() {
 package() {
 	cd "$_pkgname" || return 1
 
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" LIBDIR=/usr/lib install
 }
