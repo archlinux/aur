@@ -1,17 +1,19 @@
 pkgbase = muse-hub-bin
-	pkgdesc = Manage MuseScore Libraries.
+	pkgdesc = Manage Muse Group apps, mostly MuseScore soundpacks
 	pkgver = 1.0.1.451
-	pkgrel = 3
+	pkgrel = 4
+	url = https://www.musehub.com/
 	install = muse-hub-bin.install
 	arch = x86_64
+	license = custom:muse-hub
 	provides = muse-hub
 	options = !strip
 	options = emptydirs
-	source = muse-hub-1.0.1.451-3.deb::https://muse-cdn.com/Muse_Hub.deb
+	source = https://muse-cdn.com/Muse_Hub.deb
 	source = muse-hub.service
-	source = muse-hub.desktop
-	sha512sums = a536bec895bfae4c29c13ab6359c0f35b6e94dd1a59dc9f0a0525244ca65a61452f3d7d8bc02f18a32b1e5493b9fd98734daeba93cdeea0f66fd12039fb69bbc
-	sha512sums = f7394926b8f8034b45363dc36c5b6e61d9896ae6bdac336bdfdc525df6c161bd95b55bb73ddc483b83900eb748b47336f1d1e2ccc20a6722d8f5c20fa2a65abc
-	sha512sums = e880ed5b5c7c2f7fa78d9a3f4cb3e438b7dc1321c6e2470644d9f0ff96fe060dd34640ab0da1349d004c65179cd9b89790242a77b09adf03e5178be63d59817d
+	source = LICENSE
+	sha256sums = 0896fd96d72cb18102c2436794caffadd67382d5377b84468a514601847cc3e9
+	sha256sums = d9ebfcb44599bd9f5ca7d8473639f611df8a07fcf233813e6b0aa3f2bccbb961
+	sha256sums = fc4263da4a65cd25fa6730a61e8c9291c8da2ae9f6f8f8b1a25cea11286af670
 
 pkgname = muse-hub-bin

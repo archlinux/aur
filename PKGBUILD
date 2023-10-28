@@ -2,7 +2,7 @@
 # Maintainer: aliu (aaronliu0130 at gmail dot com)
 pkgname=muse-hub-bin
 pkgver=1.0.1.451
-pkgrel=1
+pkgrel=4
 pkgdesc='Manage Muse Group apps, mostly MuseScore soundpacks'
 arch=('x86_64')
 url='https://www.musehub.com/'
