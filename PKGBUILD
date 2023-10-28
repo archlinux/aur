@@ -1,7 +1,7 @@
 
 pkgname=mautrix-instagram
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Matrix-Instagramhybrid puppeting/relaybot bridge'
 arch=('any')
 license=('AGPL-3.0')

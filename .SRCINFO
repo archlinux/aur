@@ -1,7 +1,7 @@
 pkgbase = mautrix-instagram
 	pkgdesc = A Matrix-Instagramhybrid puppeting/relaybot bridge
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mautrix/instagram
 	install = mautrix-instagram.install
 	arch = any
