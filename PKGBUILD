@@ -1,31 +1,38 @@
 # Maintainer: Ben "crispyrice" Mitchell (bjosephmitchell@gmail.com)
+# Maintainer: aliu (aaronliu0130 at gmail dot com)
 pkgname=muse-hub-bin
 pkgver=1.0.1.451
-pkgrel=3
-pkgdesc="Manage MuseScore Libraries."
+pkgrel=1
+pkgdesc='Manage Muse Group apps, mostly MuseScore soundpacks'
 arch=('x86_64')
-url=""
-provides=("muse-hub")
-license=()
-groups=()
+url='https://www.musehub.com/'
+provides=('muse-hub')
 depends=()
+license=(custom:muse-hub)
 options=('!strip' 'emptydirs')
 install=${pkgname}.install
-source=("muse-hub-$pkgver-$pkgrel.deb::https://muse-cdn.com/Muse_Hub.deb" "muse-hub.service" "muse-hub.desktop")
-sha512sums=(
-	'a536bec895bfae4c29c13ab6359c0f35b6e94dd1a59dc9f0a0525244ca65a61452f3d7d8bc02f18a32b1e5493b9fd98734daeba93cdeea0f66fd12039fb69bbc'
-	'f7394926b8f8034b45363dc36c5b6e61d9896ae6bdac336bdfdc525df6c161bd95b55bb73ddc483b83900eb748b47336f1d1e2ccc20a6722d8f5c20fa2a65abc'
-	'e880ed5b5c7c2f7fa78d9a3f4cb3e438b7dc1321c6e2470644d9f0ff96fe060dd34640ab0da1349d004c65179cd9b89790242a77b09adf03e5178be63d59817d'
+source=('https://muse-cdn.com/Muse_Hub.deb' 'muse-hub.service' 'LICENSE')
+sha256sums=(
+  '0896fd96d72cb18102c2436794caffadd67382d5377b84468a514601847cc3e9'
+  'd9ebfcb44599bd9f5ca7d8473639f611df8a07fcf233813e6b0aa3f2bccbb961'
+  'fc4263da4a65cd25fa6730a61e8c9291c8da2ae9f6f8f8b1a25cea11286af670'
 )
 
 package(){
-	# Extract package data
-	tar -xJ -f data.tar.xz -C "${pkgdir}"
-	install -Dm644 muse-hub.service "${pkgdir}/usr/lib/systemd/system/muse-hub.service"
-	install -Dm644 muse-hub.desktop "${pkgdir}/usr/share/applications/muse-hub.desktop"
+  # Extract package data
+  tar -xJ -f data.tar.xz -C "$pkgdir"
 
-    # Make sure directory used by Muse Hub and MuseScore has been created
-    # so we can bind it into a temporary filesystem for the service
-    mkdir -p "${pkgdir}/srv/muse-hub"
-    mkdir -p "${pkgdir}/var/lib/MuseSampler"
+  # Service file has been patched courtesy of crispyrice for Arch
+  install -Dm644 muse-hub.service "$pkgdir/usr/lib/systemd/system/muse-hub.service"
+
+  # Official icon specified with a 'png' suffix
+  sed -i 's/muse-hub.png/muse-hub/g' "$pkgdir/usr/share/applications/muse-hub.desktop"
+
+  # Make sure directory used by Muse Hub and MuseScore has been created
+  # so we can bind it into a temporary filesystem for the service
+  mkdir -p "${pkgdir}/srv/muse-hub"
+  mkdir -p "${pkgdir}/var/lib/MuseSampler"
+
+  # The website's EULA contains clauses on download and use of products
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/muse-hub"
 }
