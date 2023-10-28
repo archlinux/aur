@@ -1,0 +1,57 @@
+From 5f6055e812a4b069e67d14ccc17c5f40ed38da1f Mon Sep 17 00:00:00 2001
+From: Ernesto Castellotti <mail@ernestocastellotti.it>
+Date: Sat, 28 Oct 2023 23:03:06 +0200
+Subject: [PATCH] Force disable auto update
+
+---
+ src/components/left/settings/SettingsExperimental.tsx | 8 --------
+ src/electron/window.ts                                | 9 ++++-----
+ 2 files changed, 4 insertions(+), 13 deletions(-)
+
+diff --git a/src/components/left/settings/SettingsExperimental.tsx b/src/components/left/settings/SettingsExperimental.tsx
+index c4ee07962..5edbfdea1 100644
+--- a/src/components/left/settings/SettingsExperimental.tsx
++++ b/src/components/left/settings/SettingsExperimental.tsx
+@@ -120,14 +120,6 @@ const SettingsExperimental: FC<OwnProps & StateProps> = ({
+           onCheck={() => setSettingOption({ shouldDebugExportedSenders: !shouldDebugExportedSenders })}
+         />
+ 
+-        {IS_ELECTRON && (
+-          <Checkbox
+-            label="Enable autoupdates"
+-            checked={Boolean(isAutoUpdateEnabled)}
+-            onCheck={handleIsAutoUpdateEnabledChange}
+-          />
+-        )}
+-
+         <ListItem
+           // eslint-disable-next-line react/jsx-no-bind
+           onClick={handleDownloadLog}
+diff --git a/src/electron/window.ts b/src/electron/window.ts
+index bbf264c8d..dd27dd784 100644
+--- a/src/electron/window.ts
++++ b/src/electron/window.ts
+@@ -139,16 +139,15 @@ export function createWindow(url?: string) {
+ }
+ 
+ function loadWindowUrl(window: BrowserWindow, url?: string, hash?: string): void {
++  if (getIsAutoUpdateEnabled()) {
++    store.set(AUTO_UPDATE_SETTING_KEY, false);
++  }
++
+   if (url) {
+     window.loadURL(url);
+   } else if (!app.isPackaged) {
+     window.loadURL(`http://localhost:1234${hash}`);
+     window.webContents.openDevTools();
+-  } else if (getIsAutoUpdateEnabled()) {
+-    window.loadURL(`${process.env.BASE_URL}${hash}`);
+-  } else if (getIsAutoUpdateEnabled() === undefined && IS_FIRST_RUN) {
+-    store.set(AUTO_UPDATE_SETTING_KEY, true);
+-    window.loadURL(`${process.env.BASE_URL}${hash}`);
+   } else {
+     window.loadURL(`file://${__dirname}/index.html${hash}`);
+   }
+-- 
+2.42.0
+
