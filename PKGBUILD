@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rTRMui
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='A shiny user interface for rTRM'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab335ac1ff72d13c5806f8bd33def64c6d2ddb7167f7f25c4111326187e49cab')
+sha256sums=('b5df627bc08009197727a4d5e176636a001a9536436bf8be68199a852b3fe2ce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
