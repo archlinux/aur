@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -49,7 +49,7 @@ build() {
 package() {
     cd "$srcdir"
 
-    DESTDIR="$pkgdir/" cmake --install build
+    DESTDIR="$pkgdir/" cmake --install build && rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib"
 
     touch "$pkgdir/usr/share/Grabber/settings.ini"
 }
