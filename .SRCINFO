@@ -1,6 +1,6 @@
 pkgbase = r-poma
 	pkgdesc = User-friendly Workflow for Metabolomics and Proteomics Data Analysis
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/POMA
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-poma
 	optdepends = r-plotly
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/POMA_1.10.0.tar.gz
-	sha256sums = f36ad2f9be423808b98fb2e445e2a12c972be90d083545a221fa3da076f8774b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/POMA_1.12.0.tar.gz
+	sha256sums = 83f550759c222e7aa4a640a6bdb0ce8e66445d5389d96f7487d8ac624b7db921
 
 pkgname = r-poma

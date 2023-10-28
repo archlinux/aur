@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=POMA
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='User-friendly Workflow for Metabolomics and Proteomics Data Analysis'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f36ad2f9be423808b98fb2e445e2a12c972be90d083545a221fa3da076f8774b')
+sha256sums=('83f550759c222e7aa4a640a6bdb0ce8e66445d5389d96f7487d8ac624b7db921')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
