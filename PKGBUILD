@@ -2,8 +2,8 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=spectrwm
-pkgver=3.4.1
-_ghver=3_4_1
+pkgver=3.5.0
+_ghver=3_5_0
 pkgrel=3
 pkgdesc="A minimalistic automatic tiling window manager that tries to stay out of the way."
 arch=('x86_64')
@@ -19,15 +19,15 @@ backup=(etc/spectrwm.conf)
 install=spectrwm.install
 
 #source=(http://opensource.conformal.com/snapshots/$pkgname/$pkgname-$pkgver.tgz \
-source=("https://github.com/conformal/spectrwm/archive/SPECTRWM_${_ghver}.tar.gz" \
+source=("https://github.com/conformal/spectrwm/archive/refs/tags/SPECTRWM_${_ghver}.tar.gz" \
 	LICENSE \
         baraction.sh \
         spectrwm-no-preload)
-md5sums=('4eba6fb1e888a3df4918c181b66bdbde'
+md5sums=('32d92248e304e3bdf2227601917e9644'
          'a67cfe51079481e5b0eab1ad371379e3'
          '950d663692e1da56e0ac864c6c3ed80e'
          '974d109ce0af39cc73936d5efd682480')
-sha256sums=('c030ef30bd11bbdfce3d4a1daf51f0c1358821ba95ebdc4cdb32d3944c8ce03c'
+sha256sums=('b4de8b2c592fc5aa4ca4dbd0e8a421f7fd168b7d5f54c7ad81997adc00dac20f'
             '1bf0c43ca1063b16f6ab784d251319081579a786f99bb86d9f6828b14abb2263'
             '2cc2ca7105ddb3575bbdf4184d974afab8b475aab0af113242188288d7ba4504'
             '22db9725551197ad1d19f9b5b2ee7c6d7a0f8bcedca982225b27071e0c4bbb26')
