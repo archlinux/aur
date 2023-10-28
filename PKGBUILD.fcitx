@@ -29,12 +29,12 @@ _sudachidict_date=20230927
 
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
-pkgver=2.29.5250.102
-pkgrel=7
+pkgver=2.29.5268.102
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
-makedepends=('qt6-base' 'fcitx' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'ruby' 'ruby-parallel')
+makedepends=('qt6-base' 'fcitx' 'fcitx-qt6' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
         "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
@@ -147,5 +147,6 @@ package_fcitx-mozc-with-jp-dict() {
   ../scripts/install_fcitx
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
 }
 
