@@ -1,12 +1,13 @@
 pkgbase = python-nxviz
 	pkgdesc = Visualization Package for NetworkX
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ericmjl/nxviz
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-matplotlib>=3.3.3

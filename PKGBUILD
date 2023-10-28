@@ -3,7 +3,7 @@
 _name=nxviz
 pkgname=python-$_name
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Visualization Package for NetworkX'
 arch=('any')
 url='https://github.com/ericmjl/nxviz'
@@ -18,17 +18,17 @@ depends=(
     'python-pandas>=1.2.0'
     'python-seaborn>=0.11.1'
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9499b8feadffe257fef580c8300c74e5dd902924901e8050f96b0ad15f18eb22')
 
 build() {
-    cd "$_name-$pkgver"
+    cd $_name-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
+    cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
