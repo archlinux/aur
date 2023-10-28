@@ -58,7 +58,7 @@ package_rubymine-eap() {
 
 package_rubymine-eap-jre() {
   pkgdesc="JBR (JetBrains Runtime) for RubyMine EAP - a patched JRE"
-  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
   cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"

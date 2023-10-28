@@ -24,4 +24,4 @@ pkgname = rubymine-eap
 
 pkgname = rubymine-eap-jre
 	pkgdesc = JBR (JetBrains Runtime) for RubyMine EAP - a patched JRE
-	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
+	url = https://github.com/JetBrains/JetBrainsRuntime
