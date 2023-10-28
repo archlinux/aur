@@ -1,16 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=l8w8jwt-git
-pkgver=2.1.7.r2.gd7f5b3b
+pkgver=2.2.1.r0.g824bb52
 pkgrel=1
 pkgdesc="Minimal, OpenSSL-less and super lightweight JWT library written in C."
 arch=('any')
 url="https://github.com/GlitchedPolygons/l8w8jwt"
 license=('Apache-2.0')
 provides=(${pkgname%-git}
-        ed25519
-        mbedtls
-        )
+        ed25519)
 conflicts=(${pkgname%-git})
 depends=()
 makedepends=(git

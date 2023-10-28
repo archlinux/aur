@@ -1,6 +1,6 @@
 pkgbase = l8w8jwt-git
 	pkgdesc = Minimal, OpenSSL-less and super lightweight JWT library written in C.
-	pkgver = 2.1.7.r2.gd7f5b3b
+	pkgver = 2.2.1.r0.g824bb52
 	pkgrel = 1
 	url = https://github.com/GlitchedPolygons/l8w8jwt
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = l8w8jwt-git
 	makedepends = ninja
 	provides = l8w8jwt
 	provides = ed25519
-	provides = mbedtls
 	conflicts = l8w8jwt
 	options = !strip
 	source = l8w8jwt-git::git+https://github.com/GlitchedPolygons/l8w8jwt.git
