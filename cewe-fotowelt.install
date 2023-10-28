@@ -1,16 +1,3 @@
 post_install() {
-
-	local eula=/usr/share/licenses/cewe-fotowelt/EULA.txt
-
-	if [ -n "$DISPLAY" ]
-	then
-		setsid xterm -title "$eula" -sb -rightbar -u8 -geometry 120x80 -e "cat $eula ; sleep 32000000" &> /dev/null \
-		&& return
-	fi
-
-	echo -e "${eula//?/=}\n$eula\n${eula//?/=}"
-	head -n 8 $eula
-
-	read -p "Show rest of $eula (y/N)"
-	[ "${REPLY#y}" != "$REPLY" ] && less -e $eula
+	echo "Ich werde ersetzt"
 }
