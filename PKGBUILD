@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=6.1.r112250.g6f7bf64dbc
+pkgver=6.1.r112534.ge5f774268a
 pkgrel=1
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
@@ -119,7 +119,7 @@ depends=(
     'xavs'
     'xavs2'
 )
-makedepends=('git' 'clang' 'amf-headers' 'ffnvcodec-headers-git' 'nasm' 'opencl-headers'
+makedepends=('git' 'clang' 'amf-headers' 'ffnvcodec-headers' 'nasm' 'opencl-headers'
              'vulkan-headers' 'decklink-sdk')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
@@ -176,6 +176,7 @@ build() {
         --enable-shared \
         --disable-static \
         --disable-stripping \
+        --disable-htmlpages \
         --enable-gray \
         \
         --enable-alsa \
