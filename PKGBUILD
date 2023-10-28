@@ -71,8 +71,8 @@ package_nanomq-sqlite-git() {
 
 package_nanomq-msquic-git() {
     pkgdesc+=" (msquic Broker)"
-    provides+=(${pkgname%-git}
-            msquic)
+    provides+=(${pkgname%-git})
+    conflicts=(msquic)
 
     cd "${srcdir}/${pkgbase%-git}/"
     cmake -DCMAKE_BUILD_TYPE=None \
@@ -92,8 +92,9 @@ package_nanomq-msquic-git() {
 package_nanomq-full-git() {
     pkgdesc+=" (full Broker)"
     provides+=(${pkgname%-git}
-                l8w8jwt
-                msquic)
+                l8w8jwt)
+    conflicts=(msquic
+               mbedtls)
 
     cd "${srcdir}/${pkgbase%-git}/"
     cmake -DCMAKE_BUILD_TYPE=None \

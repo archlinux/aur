@@ -42,7 +42,7 @@ pkgname = nanomq-msquic-git
 	provides = nanonng
 	provides = nng
 	provides = nanomq-msquic
-	provides = msquic
+	conflicts = msquic
 
 pkgname = nanomq-full-git
 	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge (full Broker)
@@ -51,4 +51,5 @@ pkgname = nanomq-full-git
 	provides = nng
 	provides = nanomq-full
 	provides = l8w8jwt
-	provides = msquic
+	conflicts = msquic
+	conflicts = mbedtls
