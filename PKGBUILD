@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/siyia2/mounter_elite"
 license=('GPL3')
 depends=('bash' 'ccd2iso' 'coreutils' 'sudo')
-md5sums=('d1fa3556c34a8043703a4b1cbbc50478')
+md5sums=('ace5d6cf2d1d115b50127565fcdf289d')
 
 source=("https://github.com/siyia2/mounter_elite/archive/v${pkgver}.tar.gz")
 
