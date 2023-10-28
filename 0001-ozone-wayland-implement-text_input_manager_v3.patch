@@ -10,10 +10,10 @@ Change-Id: Ib883c9087377c9f1a0dfacc45a27e3e67ccf042e
 ---
 
 diff --git a/AUTHORS b/AUTHORS
-index 6714ac1..b49ab12 100644
+index f275151..a43a528 100644
 --- a/AUTHORS
 +++ b/AUTHORS
-@@ -934,6 +934,7 @@ Mohit Bhalla <bhallam@amazon.com>
+@@ -942,6 +942,7 @@ Mohit Bhalla <bhallam@amazon.com>
  Moiseanu Rares-Marian <moiseanurares@gmail.com>
  Momoka Yamamoto <momoka.my6@gmail.com>
  Momoko Hattori <momohatt10@gmail.com>
@@ -38,7 +38,7 @@ index c84ec11..dffa0aa 100644
  
  wayland_protocol("touchpad_haptics_protocol") {
 diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
-index ae763d4..f8a7209 100644
+index 31314f3..c22888c 100644
 --- a/ui/ozone/platform/wayland/BUILD.gn
 +++ b/ui/ozone/platform/wayland/BUILD.gn
 @@ -221,6 +221,8 @@ source_set("wayland") {
@@ -126,7 +126,7 @@ index 6659bc5..f9739ea 100644
        linux_explicit_synchronization_;
    wl::Object<zxdg_decoration_manager_v1> xdg_decoration_manager_;
 diff --git a/ui/ozone/platform/wayland/host/wayland_input_method_context.cc b/ui/ozone/platform/wayland/host/wayland_input_method_context.cc
-index 0d9883e..82ac25f 100644
+index caa5074..c2e1798 100644
 --- a/ui/ozone/platform/wayland/host/wayland_input_method_context.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_input_method_context.cc
 @@ -35,6 +35,7 @@
@@ -158,7 +158,7 @@ index 0d9883e..82ac25f 100644
    }
  }
  
-@@ -655,6 +663,11 @@ void WaylandInputMethodContext::OnCursorPosition(int32_t index,
+@@ -657,6 +665,11 @@ void WaylandInputMethodContext::OnCursorPosition(int32_t index,
  
  void WaylandInputMethodContext::OnDeleteSurroundingText(int32_t index,
                                                          uint32_t length) {
