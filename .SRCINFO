@@ -1,6 +1,6 @@
 pkgbase = r-chic.data
 	pkgdesc = ChIC package data
-	pkgver = 1.21.1
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIC.data
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-chic.data
 	depends = r-caret
 	depends = r-genomeintervals
 	depends = r-randomforest
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ChIC.data_1.21.1.tar.gz
-	sha256sums = c066fff73a898d14c10f72233938d1f98a16510821f716b4d80070dd9c0571d1
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ChIC.data_1.22.0.tar.gz
+	sha256sums = 13ee2459e6e52137dbcc412b9d411e2c5def23d3d79091211fc2359f38be78aa
 
 pkgname = r-chic.data
