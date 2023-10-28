@@ -3,7 +3,7 @@
 pkgname=spotify-wayland
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A proprietary music streaming service (X11-less)"
+pkgdesc="A proprietary music streaming service (no X11 dependencies)"
 arch=('x86_64')
 url="https://community.spotify.com/t5/Desktop-Linux/Wayland-support/m-p/5320462/highlight/true#M20892"
 license=('custom')
