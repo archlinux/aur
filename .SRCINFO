@@ -1,0 +1,20 @@
+pkgbase = openjazz-git
+	pkgdesc = A free, open-source version of the classic Jazz Jackrabbit™ games (development version)
+	pkgver = 20190106.r119.gea87681
+	pkgrel = 1
+	url = http://alister.eu/jazz/oj/
+	install = openjazz.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = asciidoctor
+	depends = sdl2
+	provides = openjazz
+	conflicts = openjazz
+	source = openjazz::git+https://github.com/AlisterT/openjazz.git
+	sha256sums = SKIP
+
+pkgname = openjazz-git
