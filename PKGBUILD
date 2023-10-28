@@ -1,7 +1,7 @@
 
 pkgname=mautrix-instagram
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Matrix-Instagramhybrid puppeting/relaybot bridge'
 arch=('any')
 license=('AGPL-3.0')
@@ -21,7 +21,7 @@ license=('AGPLv3')
 arch=('any')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
 sha256sums=('6bccc72a02e93f0dfcf0d7ba73fdd1752d9249e674fdb6c904816c3a06bba510'
-            'a4cbdb090c36b0c86cf85675541dfb8e5cc33acbe85dd42162d97f580309f333'
+            '04905077fe628aa668d5d70729fbbd8e52654d0a2a0d1db0f173c25f68c0c56f'
             '7cf46059f0e5f571dd18349f90d8da1e0ffadd86951c0d75c2d837113b20489e'
             '0d6ceb4110d8e3a130e2960779cd57f9b79862a790c82ea64f989ca519ca90b0')
 backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/registration.yaml")
