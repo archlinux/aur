@@ -1,5 +1,5 @@
 # Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
-pkgname=plasma5-theme-whitesur-git
+pkgname=plasma5-themes-whitesur-git
 _themeName=WhiteSur
 _gitname="$_themeName-kde"
 pkgver=r114.2b4bcc7

@@ -1,7 +1,7 @@
-pkgbase = plasma5-theme-whitesur-git
+pkgbase = plasma5-themes-whitesur-git
 	pkgdesc = MacOS big sur like theme for KDE Plasma
-	pkgver = r113.9f66519
-	pkgrel = 2
+	pkgver = r114.2b4bcc7
+	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-kde
 	arch = any
 	license = GPL3
@@ -17,4 +17,4 @@ pkgbase = plasma5-theme-whitesur-git
 	source = git+https://github.com/vinceliuice/WhiteSur-kde.git
 	sha256sums = SKIP
 
-pkgname = plasma5-theme-whitesur-git
+pkgname = plasma5-themes-whitesur-git
