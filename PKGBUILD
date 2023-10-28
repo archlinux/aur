@@ -1,42 +1,38 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: orhun <orhunparmaksiz@gmail.com>
 # Contributor: Tony Lambiris <tony@libpcap.net>
-# https://github.com/orhun/pkgbuilds
 
 pkgname=hex-hx-git
 pkgver=0.4.2.r2.g21b2304
 pkgrel=1
-pkgdesc="Futuristic take on hexdump (git)"
-arch=('x86_64')
-url="https://github.com/sitkevij/hex"
-license=('MIT')
-makedepends=('rust' 'git')
-conflicts=('hex')
-provides=('hex')
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+pkgdesc='Futuristic take on hexdump'
+arch=(x86_64)
+url=https://github.com/sitkevij/hex
+license=(MIT)
+makedepends=(cargo git)
+provides=("${pkgname%-git}" hex)
+conflicts=("${pkgname%-git}" hex)
+#options=(!lto)
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  git -C $pkgname describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+prepare() {
+  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-
-  cargo build --release --locked
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
 }
 
 check() {
-  cd "${srcdir}/${pkgname}"
-
-  cargo test --release --locked
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-
-  install -Dm 755 "target/release/hx" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 target/release/hx -t "$pkgdir/usr/bin"
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
