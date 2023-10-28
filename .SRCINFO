@@ -1,17 +1,15 @@
 pkgbase = videoteco-fork-git
 	pkgdesc = A text editing program.
 	pkgver = r27.415ef16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhaberkorn/videoteco-fork
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = ncurses
-	conflicts = videoteco
-	source = videoteco-fork-git::git://github.com/rhaberkorn/videoteco-fork.git
+	conflicts = videoteco-fork
+	source = videoteco-fork-git::git+https://github.com/rhaberkorn/videoteco-fork.git
 	md5sums = SKIP
-	sha1sums = SKIP
 
 pkgname = videoteco-fork-git
-
