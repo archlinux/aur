@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=6.1.r112250.g6f7bf64dbc
+pkgver=6.1.r112534.ge5f774268a
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -77,7 +77,7 @@ makedepends=(
   amf-headers
   avisynthplus
   clang
-  ffnvcodec-headers-git
+  ffnvcodec-headers
   git
   ladspa
   mesa
@@ -120,6 +120,7 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
+        --disable-htmlpages \
         --enable-amf \
         --enable-avisynth \
         --enable-cuda-llvm \
