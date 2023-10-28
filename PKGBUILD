@@ -1,16 +1,18 @@
-# Maintainer: Tyler Veness <calcmogul at gmail dot com>
+# Maintainer: Carson Rueter <swurl at swurl dot x y z>
+# Contributor: Tyler Veness <calcmogul at gmail dot com>
 
-pkgname=wpimath
+pkgname=ntcore
 pkgver=2024.1.1b2
+_pkgver="v2024.1.1-beta-2"
 pkgrel=1
-pkgdesc="WPILib's mathematics and controls library"
+pkgdesc="WPILib's NetworkTables communication library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
 depends=('fmt' 'eigen' 'protobuf')
 makedepends=('cmake')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
-source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2024.1.1-beta-2'
+source=("git+https://github.com/wpilibsuite/allwpilib#tag=$_pkgver"
         'Don_t-treat-warnings-as-errors.patch')
 md5sums=('SKIP'
          '06355c12d930efa26edbbe11f633831a')
@@ -27,8 +29,8 @@ build() {
     -DUSE_SYSTEM_FMTLIB=ON \
     -DWITH_JAVA=OFF \
     -DWITH_CSCORE=OFF \
-    -DWITH_NTCORE=OFF \
-    -DWITH_WPIMATH=ON \
+    -DWITH_NTCORE=ON \
+    -DWITH_WPIMATH=OFF \
     -DWITH_WPILIB=OFF \
     -DWITH_TESTS=ON \
     -DWITH_GUI=OFF \

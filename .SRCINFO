@@ -1,5 +1,5 @@
-pkgbase = wpimath
-	pkgdesc = WPILib's mathematics and controls library
+pkgbase = ntcore
+	pkgdesc = WPILib's NetworkTables communication library
 	pkgver = 2024.1.1b2
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/allwpilib
@@ -17,4 +17,4 @@ pkgbase = wpimath
 	md5sums = SKIP
 	md5sums = 06355c12d930efa26edbbe11f633831a
 
-pkgname = wpimath
+pkgname = ntcore
