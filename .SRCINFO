@@ -1,0 +1,35 @@
+pkgbase = visurf-git
+	pkgdesc = Minimalistic frontend for Netsurf with vi-like keybindings (Wayland only)
+	pkgver = 3.10.r356.g8f7036e44
+	pkgrel = 1
+	url = https://sr.ht/~sircmpwn/visurf/
+	arch = x86_64
+	license = GPL2
+	license = MIT
+	makedepends = git
+	makedepends = gperf
+	makedepends = perl-html-parser
+	makedepends = flex
+	makedepends = bison
+	depends = curl
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = zlib
+	depends = openssl
+	depends = expat
+	depends = wayland
+	depends = wayland-protocols
+	depends = cairo
+	depends = pango
+	depends = libxkbcommon
+	provides = visurf
+	conflicts = visurf
+	conflicts = netsurf
+	source = http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.10.tar.gz
+	source = visurf::git+https://git.sr.ht/~sircmpwn/visurf
+	source = libcss::git+git://git.netsurf-browser.org/libcss.git#commit=f420dd16136de1dc07f18824c6d0f5540d5df6d1
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = visurf-git
