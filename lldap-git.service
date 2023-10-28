@@ -1,0 +1,19 @@
+[Unit]
+Description=Light LDAP Daemon
+Documentation=https://github.com/nitnelave/lldap
+
+[Service]
+Type=simple
+User=lldap
+Group=lldap
+ExecStart=/usr/bin/lldap run -c /etc/lldap.toml
+WorkingDirectory=/usr/share/lldap
+ReadWritePaths=/var/lib/lldap
+ReadOnlyPaths=/etc/lldap.toml
+ReadOnlyPaths=/usr/share/lldap
+NoNewPrivileges=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
