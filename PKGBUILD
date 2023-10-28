@@ -3,13 +3,14 @@
 _pkgbasename=connexion
 pkgname=python-connexion
 pkgver=3.0.0a7
-pkgrel=1
+pkgrel=2
 pkgdesc='Design-First framework for Python with support for Swagger/OpenAPI, automatic endpoint validation & OAuth2'
 arch=(any)
 url="https://github.com/spec-first/connexion"
 license=("Apache2")
 depends=(
 	"python"
+	"python-a2wsgi"
 	"python-asgiref"
 	"python-clickclick"
 	"python-flask"
@@ -17,16 +18,12 @@ depends=(
 	"python-inflection"
 	"python-jinja"
 	"python-python-multipart"
+	"python-requests"
 	"python-starlette"
 	"python-werkzeug"
 )
 makedepends=("python-build" "python-installer")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-
-# prepare() {
-# 	cd "$_pkgbasename-$pkgver/tests"
-# 	pytest -sv
-# }
 
 build() {
     cd "$_pkgbasename-$pkgver"
