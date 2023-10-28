@@ -1,36 +1,50 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor:	Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: davedatum <ask at davedatum dot com>
 
-pkgname=heimer
-pkgver=4.1.0
+_pkgname="heimer"
+pkgname="$_pkgname"
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Cross-platform mind map, diagram, and note-taking tool written in Qt"
-arch=("x86_64")
 url='https://github.com/juzzlin/heimer'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-svg')
-makedepends=('cmake' 'qt5-tools')
-changelog=CHANGELOG
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6c89a5b4e334d41f34615c3a82c8f6827a4ee47e5c1a68dec3a13fdf00fc3e6e')
+arch=("x86_64")
+
+depends=(
+  'hicolor-icon-theme'
+  'qt5-svg'
+ )
+makedepends=(
+  'cmake'
+  'qt5-tools'
+ )
+
+_pkgsrc="Heimer-$pkgver"
+_pkgext="tar.gz"
+source=("$pkgname-$pkgver.$_pkgext"::"$url/archive/$pkgver.tar.gz")
+sha256sums=('cbbc68c556845cb66a0bba0f1eab0bd6a0fb0d7f8bdd7e23984a45ab55b25ff5')
 
 build() {
-	cmake \
-		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-Wno-dev \
-		-S "Heimer-$pkgver" \
-		-B build
-	cmake --build build
+  local _cmake_options=(
+    -S "$_pkgsrc"
+    -B build
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 check() {
-	ctest --test-dir build --output-on-failure
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
-	cd "Heimer-$pkgver"
-	install -Dvm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+  DESTDIR="${pkgdir:?}" cmake --install build
+
+  install -Dvm644 "${srcdir:?}/$_pkgsrc/COPYING" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
