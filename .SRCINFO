@@ -1,7 +1,7 @@
 pkgbase = nginx-quic
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
-	pkgver = 1.25.2
-	pkgrel = 4
+	pkgver = 1.25.3
+	pkgrel = 1
 	url = https://nginx.org
 	install = nginx.install
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = nginx-quic
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = hg+https://hg.nginx.org/nginx-quic#revision=3038bd4d7816
+	source = hg+https://hg.nginx.org/nginx-quic#revision=7ec761f0365f
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.3.tar.gz
 	source = service
 	source = logrotate
@@ -40,7 +40,7 @@ pkgbase = nginx-quic
 pkgname = nginx-quic
 
 pkgname = nginx-quic-src
-	pkgdesc = Source code of nginx-quic 1.25.2, useful for building modules
+	pkgdesc = Source code of nginx-quic 1.25.3, useful for building modules
 	arch = any
 	depends = sh
 	depends = bash

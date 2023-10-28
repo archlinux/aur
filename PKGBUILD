@@ -5,11 +5,11 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-_commit=3038bd4d7816
+_commit=7ec761f0365f
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
-pkgver=1.25.2
-pkgrel=4
+pkgver=1.25.3
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
