@@ -1,7 +1,7 @@
 pkgbase = r-qfeatures
 	pkgdesc = Quantitative features for mass spectrometry data
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/QFeatures
 	arch = any
 	license = Artistic2.0
@@ -41,7 +41,7 @@ pkgbase = r-qfeatures
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/QFeatures_1.10.0.tar.gz
-	sha256sums = df1c8127b2937a496dc3e8159dd511f44c118653866a39bb5b9811674968d5f6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QFeatures_1.12.0.tar.gz
+	sha256sums = bd9e0a2ce5c3a17acf49d8b3620fc366739e12129b68b9e402c93cb3ae23e4bc
 
 pkgname = r-qfeatures
