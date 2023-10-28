@@ -6,12 +6,12 @@ pkgname=(
 	tsr-bridge
 )
 pkgver=0.11.1
-pkgrel=3
+pkgrel=4
 _appname="SuperConductor-$pkgver"
 arch=('x86_64')
 url="https://github.com/SuperFlyTV/SuperConductor"
 license=('AGPL3')
-makedepends=('yarn')
+makedepends=('yarn' 'nodejs>=16.16.0' 'nodejs<20')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'superconductor.desktop'
@@ -23,7 +23,7 @@ sha256sums=('de0e256d3fbc5a07a6dd4f23aea8f691ebbb057e893c9c58f493419b615dc8da'
 prepare() {
 	cd $_appname
 	# Installs all dependencies, including Lerna. Add '--ignore-scripts' if prepare fails
-	yarn --ignore-scripts
+	yarn install --offline --ignore-scripts 
 }
 
 build() {
@@ -39,11 +39,7 @@ build() {
 
 package_superconductor() {
 	pkgdesc='A playout client for Windows/Linux/macOS that will let you control CasparCG Server, BMD ATEM, OBS Studio, vMix, OSC-compatible devices, HTTP (REST)-compatible devices, and more'
-	depends=(
-	'nodejs>=18'
-	'alsa-lib'
-	'libvips'
-	)
+	depends=('alsa-lib' 'libvips')
 	optdepends=('tsr-bridge: External application which handles the actual playout and control of the connected devices')
 	provides=('superconductor')
 	conflicts=('superconductor')
@@ -66,12 +62,7 @@ package_superconductor() {
 
 package_tsr-bridge() {
 	pkgdesc='The TSR-bridge is the application which handles the actual playout and control of the connected devices. By default, an instance of TSR-bridge runs internally in SuperConductor, so devices can be controlled directly from the application'
-	depends=(
-	'nodejs>=18'
-	'alsa-lib'
-	'libvips'
-	'superconductor'
-	)
+	depends=('alsa-lib' 'libvips' 'superconductor')
 	provides=('tsr-bridge')
 	conflicts=('tsr-bridge')
 
