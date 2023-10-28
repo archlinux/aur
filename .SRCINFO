@@ -1,6 +1,6 @@
 pkgbase = r-spatialcpie
 	pkgdesc = Cluster analysis of Spatial Transcriptomics data
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SpatialCPie
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-spatialcpie
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpatialCPie_1.16.0.tar.gz
-	sha256sums = 3ae17cd7b4fad3ab03fe2925f6f287378d168a601a016958c0057779192491e2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpatialCPie_1.18.0.tar.gz
+	sha256sums = 0545ba0c1a905914cb8b9e262f86f368f29f09b14d6e4246b1819f105496d783
 
 pkgname = r-spatialcpie
