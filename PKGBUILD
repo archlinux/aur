@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GARS
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='GARS: Genetic Algorithm for the identification of Robust Subsets of variables in high-dimensional and challenging datasets'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3e9e2c6ea7c55da37873c714d776bd5d919fb345dcbe095d8d3f3a3ca47d28c3')
+sha256sums=('f48a320c4eb25c23e2ad9a7f7f1be7b5ba93b498b4393f82c45c526f2622d95c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
