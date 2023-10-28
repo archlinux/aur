@@ -7,7 +7,7 @@ _name=${_name_wogit#"$_realm"-}
 provides=("$_name_wogit")
 conflicts=("$_name_wogit")
 pkgver=v0.9.1.r1.g2ef44515
-pkgrel=1
+pkgrel=2
 pkgdesc="A system for assigning and grading notebooks"
 arch=(any)
 url=https://github.com/$_realm/$_name
@@ -34,11 +34,7 @@ depends=(
 	python-types-python-dateutil
 	python-terminado
 	python-debugpy
-	jupyterlab
 	jupyter-lsp
-	python-types-python-dateutil
-	python-terminado
-	python-debugpy
 
 	# Additional optional deps from jsonschema probably due to https://github.com/jupyter/jupyter_events/blob/9b99f6718a3bb2686aab51e17f5c7ee276baf316/pyproject.toml#L31C4-L33C112
 	python-fqdn
