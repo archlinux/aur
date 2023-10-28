@@ -1,6 +1,6 @@
 pkgbase = r-clipper
 	pkgdesc = Gene Set Analysis Exploiting Pathway Topology
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clipper
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = r-clipper
 	depends = r-igraph
 	depends = r-kegggraph
 	depends = r-qpgraph
-	depends = r-rbgl
 	depends = r-rcpp
 	optdepends = r-all
 	optdepends = r-biocgenerics
@@ -23,7 +22,7 @@ pkgbase = r-clipper
 	optdepends = r-mass
 	optdepends = r-rcy3
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clipper_1.40.0.tar.gz
-	sha256sums = 02431654c03ce6926bd22a7089651cd8b727f14fc95e7125c8512b7a3e2d4b28
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clipper_1.42.0.tar.gz
+	sha256sums = 14a3ee393b5cbb184e8387394a1616eedb68cadb052a22154d869ead81df1016
 
 pkgname = r-clipper
