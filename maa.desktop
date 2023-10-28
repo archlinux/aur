@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MaaAssistantArknights
+Icon=maa
+Exec=maa
+Categories=Game;StrategyGame;
+Comment=An Arknights assistant
