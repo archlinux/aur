@@ -1,6 +1,6 @@
 pkgbase = r-supersigs
 	pkgdesc = Supervised mutational signatures
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/supersigs
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-supersigs
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/supersigs_1.8.0.tar.gz
-	sha256sums = 3346788af50acba013b1972a86f0d82fbcd5e20251d0cbb3d9c3b18c4a01d245
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/supersigs_1.10.0.tar.gz
+	sha256sums = a100e02bc138bb2322b6645f95907cd171dd059bc9c0063c4ac0116df811a9d3
 
 pkgname = r-supersigs
