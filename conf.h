@@ -1,8 +1,6 @@
-#define MAXMAILS		(1 << 12)
-#define MAXSIZE			(1 << 21)
 #define FOLDER			"/home/me/.mailx/"
 #define SPOOL			(FOLDER "inbox")
-#define DPRINT(msg, len)
+#define LOG(msg)
 
 struct account {
 	char *server;		/* server address */
@@ -13,6 +11,8 @@ struct account {
 	char *cert;		/* path of server certificate pem file */
 	int del;		/* delete messages after retrieving */
 	int nopipe;		/* no outstanding commands */
+	int stls;		/* enable starttls */
+	int maxsize;		/* maximum message size to fetch */
 } accounts [] = {
 	{"server", "port", "username", "password"},
 };

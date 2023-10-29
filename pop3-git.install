@@ -1,4 +1,3 @@
 post_install() {
-  echo ">>> To use pop3, config.h should be changed to match your settings."
+	echo ">>> To use pop3, conf.h should be changed to match your settings."
 }
-
