@@ -1,5 +1,5 @@
 pkgbase = ytdl-shim
-	pkgdesc = Provide youtube-dl CLI and python imports with yt-dlp
+	pkgdesc = Provide both youtube-dl CLI and python imports using yt-dlp
 	pkgver = 2023.10.13
 	pkgrel = 1
 	arch = any
