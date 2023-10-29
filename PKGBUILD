@@ -2,7 +2,7 @@
 
 _gemname=google-apis-core
 pkgname=ruby-$_gemname
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='Common utility and base classes for legacy Google REST clients'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-addressable ruby-googleauth ruby-httpclient ruby-mini_mime ruby-re
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('917611234f38276524801058b8a56cdf496ff061b07295ef93cd5b8abd3b97fc')
+sha256sums=('ed2e4d4a2e0e241b6d5b545bfb2d7069ca8be1c6766c605a09134a9f99379eb2')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
