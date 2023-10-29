@@ -2,54 +2,82 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-pkgbase=dav1d-git
+pkgbase="dav1d-git"
 pkgname=(dav1d-git dav1d-doc-git)
-pkgver=1.0.0.r12.gffb5968
-pkgrel=2
-pkgdesc='AV1 cross-platform decoder focused on speed and correctness'
-url='https://code.videolan.org/videolan/dav1d'
-arch=('x86_64' 'armv7h' 'aarch64')
-license=('BSD')
-makedepends=('git' 'meson' 'ninja' 'nasm' 'doxygen' 'graphviz' 'xxhash' 'sdl2' 'vulkan-headers' 'libplacebo')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+_gitname=${pkgname%-git}
+pkgver=1.3.0.r3.g47107e3
+pkgrel=3
+
+pkgdesc="AV1 cross-platform decoder focused on speed and correctness"
+url="https://code.videolan.org/videolan/dav1d"
+license=(BSD)
+arch=(aarch64 armv7h x86_64)
+
+makedepends=(
+  doxygen
+  git
+  graphviz
+  libplacebo
+  meson
+  nasm
+  ninja
+  sdl2
+  vulkan-headers
+  xxhash
+)
+
+source=("git+$url.git"
+	"git+$url-test-data.git")
+b2sums=(SKIP
+	SKIP)
+
+prepare() {
+  cd "$_gitname"
+  ln -s "$srcdir/dav1d-test-data" tests/dav1d-test-data
+}
 
 pkgver() {
-    cd dav1d
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_gitname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd dav1d
-    arch-meson build \
-        -Denable_examples=true \
-        -Denable_docs=true \
-        -Denable_tests=false
-    ninja -C build all doc/html
+  meson setup --prefix=/usr --buildtype=plain \
+    -Denable_docs=true \
+    -Denable_examples=true \
+    "$_gitname" build
+  ninja -C build all doc/html
+}
+
+check() {
+  meson test -C build
 }
 
 package_dav1d-git() {
-    depends=('glibc')
-    optdepends=('dav1d-doc-git: HTML documentation'
-                'libplacebo: for the dav1dplay example'
-                'sdl2: for the dav1dplay example')
-    provides=("${pkgname%-git}=${pkgver}" 'libdav1d.so')
-    conflicts=("${pkgname%-git}")
+  depends=(glibc)
+  provides=(libdav1d.so dav1d)
+  conflicts=(dav1d)
+  optdepends=(
+    "dav1d-doc-git: HTML documentation"
+    "libplacebo: for the dav1dplay example"
+    "sdl2: for the dav1dplay example"
+  )
 
-    cd dav1d
-    DESTDIR="${pkgdir}" ninja -C build install
-    install -Dm 644 README.md CONTRIBUTING.md NEWS -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  meson install -C build --destdir "$pkgdir"
+
+  cd "$_gitname"
+  install -Dm 644 README.md CONTRIBUTING.md NEWS -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_dav1d-doc-git() {
-    pkgdesc+=" (documentation)"
-    arch=('any')
-    provides=("${pkgname%-git}")
-    conflicts=("${pkgname%-git}")
+  pkgdesc+=" (documentation)"
+  provides=(dav1d-doc)
+  conflicts=(dav1d-doc)
 
-    cd dav1d
-    install -d "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -r build/doc/html -t "${pkgdir}/usr/share/doc/${pkgbase}"
-    install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/usr/share/doc/${pkgbase}"
+  cp -r build/doc/html -t "${pkgdir}/usr/share/doc/$pkgbase"
+
+  cd "$_gitname"
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/$pkgname"
 }
