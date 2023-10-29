@@ -1,11 +1,11 @@
 # Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
-pkgver=v1.7.0.r74.gcafcd1b
+pkgver=v1.8.0.r37.ge006a34
 pkgrel=1
-pkgdesc='Library for choosing window system and OpenGL API at runtime (git version)'
+pkgdesc='a library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
 url='https://waffle.freedesktop.org'
 provides=('waffle')
@@ -19,25 +19,26 @@ optdepends=('libgl: for OpenGL or GLX support'
             'mesa: for gbm support'
             'libdrm: for gbm support'
             'wayland: for wayland support')
+
 makedepends=('git' 'meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'libdrm' 'wayland-protocols')
 
 source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
 sha256sums=('SKIP')
 
-_gitname='waffle'
-
 pkgver() {
-  cd $_gitname
+  cd "${pkgname%-git}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "$_gitname" build \
-    --buildtype release \
-    -D build-manpages=true \
-    -D build-htmldocs=true \
+  local meson_args=(
+    --buildtype release
+    -D build-manpages=true
+    -D build-htmldocs=true
     -D build-examples=false
+  )
 
+  arch-meson "${pkgname%-git}" build "${meson_args[@]}"
   meson compile -C build
 }
 
