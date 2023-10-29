@@ -2,7 +2,7 @@
 _uuid=ddterm@amezin.github.com
 _pkgname=ddterm
 pkgname=gnome-shell-extension-$_pkgname
-pkgver=46
+pkgver=48
 pkgrel=1
 pkgdesc="Another Drop Down Terminal Extension for GNOME Shell"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gnome-shell' 'gjs' 'gtk3' 'vte3')
 install=$_pkgname.install
 makedepends=('zip')
 source=($pkgname-v$pkgver.zip::https://github.com/ddterm/gnome-shell-extension-ddterm/releases/download/v$pkgver/ddterm@amezin.github.com.shell-extension.zip)
-sha256sums=('6985d5938a4a7d86b1323c7288dd580698bd3fa6cf7a81dd231eb3c0a70c6ce1')
+sha256sums=('f9d19e5cee226228853b264945967fa41b6d48ba0b6d376c2fe4775a6adfa55e')
 
 package() {
     local dest="${pkgdir}/usr/share/gnome-shell/extensions/$_uuid"

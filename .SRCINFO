@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-ddterm
 	pkgdesc = Another Drop Down Terminal Extension for GNOME Shell
-	pkgver = 46
+	pkgver = 48
 	pkgrel = 1
 	url = https://github.com/ddterm/gnome-shell-extension-ddterm
 	install = ddterm.install
@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-ddterm
 	depends = gjs
 	depends = gtk3
 	depends = vte3
-	source = gnome-shell-extension-ddterm-v46.zip::https://github.com/ddterm/gnome-shell-extension-ddterm/releases/download/v46/ddterm@amezin.github.com.shell-extension.zip
-	sha256sums = 6985d5938a4a7d86b1323c7288dd580698bd3fa6cf7a81dd231eb3c0a70c6ce1
+	source = gnome-shell-extension-ddterm-v48.zip::https://github.com/ddterm/gnome-shell-extension-ddterm/releases/download/v48/ddterm@amezin.github.com.shell-extension.zip
+	sha256sums = f9d19e5cee226228853b264945967fa41b6d48ba0b6d376c2fe4775a6adfa55e
 
 pkgname = gnome-shell-extension-ddterm
