@@ -1,7 +1,7 @@
 pkgbase = cura-modern-appimage
 	pkgdesc = **DEPRECATED** MIGRATE TO cura-bin INSTEAD! **DEPRECATED** State-of-the-art slicer app to prepare your 3D models for your 3D printer. (Modern AppImage)
 	pkgver = 5.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Ultimaker/Cura
 	arch = x86_64
 	license = LGPL3

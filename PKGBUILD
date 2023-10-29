@@ -2,7 +2,7 @@
 
 pkgname=cura-modern-appimage
 pkgver=5.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="**DEPRECATED** MIGRATE TO cura-bin INSTEAD! **DEPRECATED** \
 State-of-the-art slicer app to prepare your 3D models for your 3D printer. (Modern AppImage)"
 arch=('x86_64')
@@ -55,7 +55,7 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-post_install() {
+_warn() {
   echo '******************** DEPRECATION WARNING *********************' >&2
   echo '*                                                            *' >&2
   echo '*  The package cura-modern-appimage is no longer supported.  *' >&2
@@ -65,4 +65,12 @@ post_install() {
   echo '*            => Please migrate to cura-bin <=                *' >&2
   echo '*                                                            *' >&2
   echo '******************** DEPRECATION WARNING *********************' >&2
+}
+
+post_install() {
+  _warn
+}
+
+post_upgrade() {
+  _warn
 }
