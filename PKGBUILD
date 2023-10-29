@@ -5,8 +5,7 @@
 
 pkgname=edb-debugger
 pkgver=1.4.0
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
