@@ -1,7 +1,7 @@
 ## Initial Maintainer: Augusto F. Hack <hack.augusto@gmail.com>
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=python-carbon
-pkgver=1.1.8
+pkgver=1.1.10
 pkgrel=1
 pkgdesc='Backend data caching and persistence daemon for Graphite'
 arch=('any')
@@ -24,7 +24,7 @@ source=(
 	carbon.tmpfiles)
 	
 md5sums=(
-	b179b4c73917a337e78f0fa3a7c04418
+	ad9a30135df128df2ed872d42590a1e7
 	c6201ce8a290d919b7f486916fb2f9b9
 	33c2251f7dfbe484e1a627e0408fdf36
 	f7914dbb75fc3d65623a159333ea0528
