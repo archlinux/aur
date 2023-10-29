@@ -8,7 +8,7 @@ url="https://github.com/Russian-Doom/russian-doom"
 license=('GPL2')
 depends=('sdl2>=2.0.18' 'sdl2_mixer>=2.0.2' 'sdl2_net>=2.0.0' 'libsamplerate')
 makedepends=(cmake python3)
-optdepends=('doom1-wad: Doom shareware game data')
+optdepends=('doom1-wad: Doom shareware game data' 'heretic1-wad: Heretic shareware game data' 'hexen1-wad: Hexen demo game data')
 conflicts=('russian-doom-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Russian-Doom/russian-doom/archive/refs/tags/${pkgver}.tar.gz")
 b2sums=('fa252f3fc1103eb50b9f202809cc9a400c49d698b2daee61d37e8b8a0084ade7d048b522c06675197774bf772b53a0e040af8c1c0d6ba7d4a777e980444f674d')
