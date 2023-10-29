@@ -1,0 +1,36 @@
+pkgbase = apotris-git
+	pkgdesc = A block stacking puzzle game for the Gameboy Advance
+	pkgver = 3.4.6.r372.g537d68c
+	pkgrel = 1
+	url = https://apotris.com/
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = sfml
+	depends = gcc-libs
+	depends = glibc
+	depends = libmodplug
+	provides = apotris=3.4.6.r372.g537d68c
+	conflicts = apotris
+	source = apotris::git+https://gitea.com/akouzoukos/apotris.git#branch=ports
+	source = soloud::git+https://github.com/akouzoukos/soloud.git
+	source = Tilengine::git+https://github.com/akouzoukos/Tilengine.git
+	source = fix-flags.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = a7406927a1ace3e96dd7f618b57a49dc70e7290c86ccb27f2f74698813aaa51614069ad8a8ab78bf5e6f6af88625209acdcc5bbabc784052311c1afabd3f11c8
+
+pkgname = apotris-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libmodplug
+	depends = libsfml-audio.so
+	depends = libsfml-graphics.so
+	depends = libsfml-system.so
+	depends = libsfml-window.so

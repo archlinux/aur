@@ -1,0 +1,43 @@
+diff --git a/make/linux_make b/make/linux_make
+index 03f3837..a5e3e72 100755
+--- a/make/linux_make
++++ b/make/linux_make
+@@ -1,12 +1,10 @@
+ #!/usr/bin/env make
+ 
+-export CC = gcc
+-export AR = ar
+ 
+ export PLATFORM = linux
+ 
+ # Pre-compiler and Compiler flags
+-CXX_FLAGS := -Wall -O2 -Wno-array-bounds
++CXX_FLAGS := -Wall -O2 -Wno-array-bounds $(CXXFLAGS)
+ PRE_FLAGS := -MMD -MP -DPC -DTE $(NO_DIAGNOSE)
+ 
+ # Project directory structure
+@@ -25,7 +23,7 @@ BUILD := build/$(PLATFORM)
+ 
+ # Library search directories and flags
+ EXT_LIB := external/Tilengine/src/build/$(PLATFORM)
+-LDFLAGS := -lTilengine -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lmodplug
++LDFLAGS += -lTilengine -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lmodplug
+ LDPATHS := $(addprefix -L,$(BIN)/$(LIB) $(EXT_LIB))
+ 
+ # Include directories
+@@ -72,13 +70,13 @@ $(ICON) : $(ICON_FILE)
+ $(TARGET): $(OBJS)
+ 	@echo "Building..."
+ 	@mkdir -p $(dir $@)
+-	@$(CXX) $(OBJS) -o $@ $(LDPATHS) $(LDFLAGS) -Wl,-rpath lib
++	@$(CXX) $(OBJS) -o $@ $(LDPATHS) $(LDFLAGS)
+ 
+ # Compile all cpp files
+ $(BUILD)/%.o: $(SRC)/%.cpp
+ 	@mkdir -p $(dir $@)
+ 	@echo $(notdir $<)
+-	@$(CXX) $(CXX_FLAGS) $(PRE_FLAGS) $(INC_FLAGS) -c -o $@ $< $(LDPATHS) $(LDFLAGS)
++	@$(CXX) $(CXX_FLAGS) $(PRE_FLAGS) $(INC_FLAGS) -c -o $@ $<
+ 
+ $(BUILD)/%.bin.o $(BUILD)/%_bin.h : $(DATA)/%.bin
+ 	@mkdir -p $(dir $@)
