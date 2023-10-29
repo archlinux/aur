@@ -4,7 +4,7 @@
 pkgname=spectrwm
 pkgver=3.5.0
 _ghver=3_5_0
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimalistic automatic tiling window manager that tries to stay out of the way."
 arch=('x86_64')
 url="http://www.spectrwm.org"
