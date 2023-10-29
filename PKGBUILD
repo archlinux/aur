@@ -8,7 +8,7 @@ _localepurge=
 
 _pkgname=sigil
 pkgname="$_pkgname-git"
-pkgver=2.0.2.r6.gd223713e5
+pkgver=2.0.2.r11.gb9438a876
 pkgrel=1
 pkgdesc='multi-platform EPUB2/EPUB3 ebook editor'
 arch=('x86_64')
@@ -76,15 +76,15 @@ fi
 options=(!debug)
 
 source+=(
-  'default_nav_css.patch'
-  'skip_epub_version_check.patch'
-  'skip_version_mod_tags.patch'
+  '0001-modify-default-navigation-css.patch'
+  '0002-skip-epub-version-check.patch'
+  '0003-don-t-write-version-and-modified-tags.patch'
 )
 
 sha256sums+=(
-  '3478ff361a34fd7cd7811d5103cbace91ecc790463684aaab9e21687b5553a28'
-  'fc2bdc23d13b2e917f08608b516495b744f991642f73c1f6d943cf322a25fc11'
-  'c74be3af315c9ffe181df6b465d0037f152f6078b953e6eeaab7b2932ae4c729'
+  'c01f2028fd2a77fa48ddeefc70b780d185131f81c8c3b3f4f3bfd670cd1d574f'
+  'd06138d38a2d29ca020ec575bd2aa975df48cf61bbad975140fe5f304e23f6b0'
+  '4bddaaf8666e3d060ba51989c94d6c3a2c23a5b037dd69abe6c61af51b580720'
 )
 
 prepare() {

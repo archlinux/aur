@@ -1,6 +1,6 @@
 pkgbase = sigil-git
 	pkgdesc = multi-platform EPUB2/EPUB3 ebook editor
-	pkgver = 2.0.2.r6.gd223713e5
+	pkgver = 2.0.2.r11.gb9438a876
 	pkgrel = 1
 	url = https://github.com/Sigil-Ebook/Sigil
 	arch = x86_64
@@ -36,12 +36,12 @@ pkgbase = sigil-git
 	conflicts = sigil
 	options = !debug
 	source = sigil::git+https://github.com/Sigil-Ebook/Sigil.git
-	source = default_nav_css.patch
-	source = skip_epub_version_check.patch
-	source = skip_version_mod_tags.patch
+	source = 0001-modify-default-navigation-css.patch
+	source = 0002-skip-epub-version-check.patch
+	source = 0003-don-t-write-version-and-modified-tags.patch
 	sha256sums = SKIP
-	sha256sums = 3478ff361a34fd7cd7811d5103cbace91ecc790463684aaab9e21687b5553a28
-	sha256sums = fc2bdc23d13b2e917f08608b516495b744f991642f73c1f6d943cf322a25fc11
-	sha256sums = c74be3af315c9ffe181df6b465d0037f152f6078b953e6eeaab7b2932ae4c729
+	sha256sums = c01f2028fd2a77fa48ddeefc70b780d185131f81c8c3b3f4f3bfd670cd1d574f
+	sha256sums = d06138d38a2d29ca020ec575bd2aa975df48cf61bbad975140fe5f304e23f6b0
+	sha256sums = 4bddaaf8666e3d060ba51989c94d6c3a2c23a5b037dd69abe6c61af51b580720
 
 pkgname = sigil-git
