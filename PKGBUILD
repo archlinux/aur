@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgname=gnome-shell-extension-bubblemail
-pkgver=21
-pkgrel=1
+pkgver=21.1
+pkgrel=0
 pkgdesc="New and unread mail indicator (Local, Imap, Pop3, Gmail, Yahoo mail...) for gnome shell"
 pkgfolder="bubblemail-gnome-shell"
 arch=(any)
