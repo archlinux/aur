@@ -9,18 +9,18 @@ arch=(any)
 url="https://github.com/spec-first/connexion"
 license=("Apache2")
 depends=(
-	"python"
-	"python-a2wsgi"
-	"python-asgiref"
-	"python-clickclick"
-	"python-flask"
-	"python-httpx"
-	"python-inflection"
-	"python-jinja"
-	"python-python-multipart"
-	"python-requests"
-	"python-starlette"
-	"python-werkzeug"
+    "python"
+    "python-a2wsgi"
+    "python-asgiref"
+    "python-clickclick"
+    "python-flask"
+    "python-httpx"
+    "python-inflection"
+    "python-jinja"
+    "python-python-multipart"
+    "python-requests"
+    "python-starlette"
+    "python-werkzeug"
 )
 makedepends=("python-build" "python-installer")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
