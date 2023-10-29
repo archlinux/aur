@@ -1,26 +1,21 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=upscaler
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Upscale and enhance images"
-arch=('x86_64' 'aarch64')
+arch=(any)
 url="https://gitlab.gnome.org/World/Upscaler"
-license=('GPL3')
-depends=('libadwaita' 'python-cffi' 'python-gobject' 'python-vulkan' 'realesrgan-ncnn-vulkan')
-makedepends=('git' 'blueprint-compiler' 'meson')
-checkdepends=('appstream-glib')
-_source=Upscaler
-source=("git+$url.git#tag=$pkgver")
+license=(GPL3)
+depends=(libadwaita python-cffi python-gobject python-vulkan realesrgan-ncnn-vulkan python gtk4 pango gobject-introspection-runtime)
+makedepends=(git blueprint-compiler meson)
+checkdepends=(appstream-glib)
+source=("git+https://gitlab.gnome.org/World/Upscaler.git#tag=${pkgver}")
 b2sums=('SKIP')
 
-pkgver() {
-  cd $_source
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
-
 build() {
-  arch-meson $_source build
+  arch-meson Upscaler build
   meson compile -C build
 }
 
