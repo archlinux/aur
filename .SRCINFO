@@ -1,0 +1,21 @@
+pkgbase = plasma5-themes-dracula-git
+	pkgdesc = Dracula theme for KDE Plasma 5
+	pkgver = v4.0.0.r30.g3e56ce3
+	pkgrel = 1
+	url = https://github.com/dracula/gtk
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/dracula/gtk.git
+	sha256sums = SKIP
+
+pkgname = plasma5-themes-dracula-git
+	optdepends = dracula-gtk-theme-git: Matching GTK theme
+	optdepends = kvantum-theme-dracula-git: Dracula theme for Kvantum
+	provides = plasma5-themes-dracula
+
+pkgname = kvantum-theme-dracula-git
+	pkgdesc = Dracula theme for Kvantum
+	depends = kvantum
+	provides = kvantum-theme-dracula
