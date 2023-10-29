@@ -2,7 +2,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=giflib4
-pkgver=4.2.1
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="A library for reading and writing gif images (version 4)"
 url="http://sourceforge.net/projects/giflib/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
 source=(http://downloads.sourceforge.net/sourceforge/giflib/giflib-${pkgver}.tar.bz2)
-md5sums=('bbd3324af24156d5d7e66ab1cee8508d')
+md5sums=('be1f5749c24644257a88c9f42429343d')
 
 build() {
   cd giflib-${pkgver}
