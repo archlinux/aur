@@ -1,9 +1,10 @@
-# Maintainer: Mikhail Velichko <efklid@gmail.com>
+# Maintainer: Posi <posi1981@gmail.com>
+# Contributor: Mikhail Velichko <efklid@gmail.com>
 # Contributor: Michael Duncan Hammond <mhammond9@radford.edu>
 # Contributor: K900 <me@0upti.me>
 
 pkgname=cisco-anyconnect
-pkgver=4.10.06090
+pkgver=4.10.07061
 pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html'
@@ -23,12 +24,12 @@ options=('!strip')
 
 # you will have to obtain the installer yourself - it's not available publicly
 source=(
-"anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz::https://github.com/Labaman/cisco-anyconnect-bin/raw/main/anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
+"anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz::https://ftp.uni-weimar.de/anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
 "${pkgname}.sh" 
 "AnyConnectLocalPolicy.xml"
 )
 
-sha256sums=('db4b0266a42ddf83a758b8be96adcd09e4a789624e26143ae118542c44bb1b54'
+sha256sums=('822dd9037831e5ed68a47de03155840983ebee38f028c0bc866433320fe5b281'
             '200ab27674568ac32b939c02bba051f90cf59d6ca087746a1e54c5a7ac207dbc'
             'b7c65a236e671d3eb527a3377e22b66018c450d726f71fa6344530a75255dac7')
 
