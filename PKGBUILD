@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sampling
-_pkgver=2.9
+_pkgver=2.10
 pkgname=r-${_pkgname,,}
-pkgver=2.9
-pkgrel=3
+pkgver=2.10
+pkgrel=1
 pkgdesc="Survey Sampling"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-lpsolve
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7f5ba5978f6cdbbbdb6f51958197b28b6fc63e7eeee59e6845ea09fb37d1b187')
+sha256sums=('fdec976ec0abfb5c690049d76f89ebcb8ab3650e2eb28a5b54c3984d17372775')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
