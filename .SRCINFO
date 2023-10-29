@@ -1,0 +1,22 @@
+pkgbase = vim-lumen-git
+	pkgdesc = PLugin automatically switches vim background to match system light/dark mode
+	pkgver = v1.0.r18.a04ef1d
+	pkgrel = 1
+	url = https://github.com/vimpostor/vim-lumen
+	install = vim-lumen.install
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	makedepends = git
+	depends = vim-runtime
+	depends = glib2
+	optdepends = plasma-desktop: supported color switcher
+	optdepends = gnome-desktop: supported color switcher
+	optdepends = darkman: supported color switcher
+	optdepends = color-scheme-simulator: supported color switcher
+	provides = vim-lumen
+	conflicts = vim-lumen
+	source = git+https://github.com/vimpostor/vim-lumen
+	md5sums = SKIP
+
+pkgname = vim-lumen-git
