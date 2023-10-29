@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bamlss
-_pkgver=1.2-1
+_pkgver=1.2-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('31055560a36803ab5a7685b762cadd01')
-sha256sums=('3759fa873fe1ef0f16acc29758589e04859f321901681fdde0d6c7b5c72037c6')
+md5sums=('3730ed71f5d1c06b53112ad2909fa372')
+sha256sums=('ed43c51e56529e8f797c17b8c2e7d9a3b147f955e4324c3d5b218be635177b4d')
 
 build() {
   mkdir -p build
