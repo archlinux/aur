@@ -1,6 +1,6 @@
 pkgbase = push2talk-git
 	pkgdesc = Push to talk application.
-	pkgver = 1.0.1.r0.g443560a
+	pkgver = 1.0.2.r14.gb47f4d6
 	pkgrel = 1
 	url = https://github.com/cyrinux/push2talk
 	arch = x86_64
@@ -9,13 +9,15 @@ pkgbase = push2talk-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = pkg-config
+	makedepends = systemd-libs
 	depends = pulseaudio
-	depends = libxi
 	depends = libevdev
+	depends = libxkbcommon-x11
+	depends = libinput
 	provides = push2talk
 	conflicts = push2talk
 	conflicts = push2talk-bin
-	source = push2talk::git+https://github.com/cyrinux/push2talk.git#branch=main
+	source = push2talk::git+https://github.com/cyrinux/push2talk.git#branch=feat/use-input-lib
 	validpgpkeys = C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E
 	sha256sums = SKIP
 
