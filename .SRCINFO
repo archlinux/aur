@@ -1,6 +1,6 @@
 pkgbase = gtkcord4-bin
 	pkgdesc = Discord client written in go and gtk4 (binary version)
-	pkgver = 0.0.15
+	pkgver = 0.0.15.1
 	pkgrel = 1
 	url = https://github.com/diamondburned/gtkcord4
 	arch = x86_64
@@ -12,11 +12,9 @@ pkgbase = gtkcord4-bin
 	provides = gtkcord4
 	conflicts = gtkcord4
 	conflicts = gtkcord4-git
-	source = so.libdb.gtkcord4.service
-	sha256sums = f57c464e1aaa9eab28f6303fdff43a5c1299b27278948769a3d24009213aa105
-	source_x86_64 = https://github.com/diamondburned/gtkcord4/releases/download/v0.0.15/gtkcord4-linux-amd64-v0.0.15-.tar.zst
-	sha256sums_x86_64 = d1057c79b54cb6fe042ac6f36d12d72b2d44ec260d196de61c582ec90377defa
-	source_aarch64 = https://github.com/diamondburned/gtkcord4/releases/download/v0.0.15/gtkcord4-linux-arm64-v0.0.15-.tar.zst
-	sha256sums_aarch64 = 2811c2416361e3c3958b652a5b72f921ca9bd9cb42f9dcdecc7d30f1ad93ea36
+	source_x86_64 = https://github.com/diamondburned/gtkcord4/releases/download/v0.0.15-1/gtkcord4-linux-amd64-v0.0.15-1-.tar.zst
+	sha256sums_x86_64 = 5ccd29b39ba8ffd898b00e32d66c20221c1deb1c363f4dd1eb80052ffef8e243
+	source_aarch64 = https://github.com/diamondburned/gtkcord4/releases/download/v0.0.15-1/gtkcord4-linux-arm64-v0.0.15-1-.tar.zst
+	sha256sums_aarch64 = 12b000ac6ee8101372868ab60efe83bbeca73c1c993001a7b70da19b61a562e1
 
 pkgname = gtkcord4-bin
