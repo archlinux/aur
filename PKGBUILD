@@ -48,17 +48,21 @@ optdepends=(
   'wallutils: Timed wallpapers'
   'waybar: Highly customizable bar'
   'xorg-xwayland: X11 support'
+  'xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking'
+  'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
 )
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
         "50-systemd-user.conf"
+        "sway-portals.conf"
         "sys_nice_user_xkb_configs.patch"
         "0001-text_input-Implement-input-method-popups.patch"
         "0002-backport-sway-im-to-v1.8.patch")
 install=sway.install
 sha512sums=('1504312a199608532e22336c5031e8f4749f5102ab321d13d97a1f93d49c8ec435e9097af729d8f7dfa81e2e96cee7de91cf4c04b6a7b7151ea740a1e43eb086'
             'SKIP'
-            'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137'
+            'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
+            '091a205bca875b6a78150b5b14ffaca996b7c7c3d6f68910e5891e5409ca070d27b3307e8c4916c1562a998d5bcb94406e961bf376d86e64c8ddf5afe5b41f76'
             '156719e93d0213d1b54ce6e3a9b2dcc9246da5689dd2d3281546f9c042cbc69072f99b087e112fe777dcd786d2b9d1be1e1c9200feddffb5e2d16f8dfb27515d'
             'f3a0bf6b48ecb09b229ba286f57c1a43e83848c187816b6784df1a3640c083759e8236bc949c8097044d3af218813757b636226a097e495d993fd682f20ceb96'
             'f5441d4da5c9c43a5f70e56eb00fcec7a56c3f76dbe03cbaab55b7bd1ea82ff8fbae1e1ae3e8dfaf1860db8e76635fc578649e537b609eb914e068cb9c4929d1')
@@ -97,6 +101,7 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "sway-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
+  install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
 
   for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
     install -Dm755 "sway-$pkgver/contrib/$util" -t \
