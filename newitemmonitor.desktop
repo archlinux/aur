@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Newitemmonitor
+Comment=通用型上新监控器，上新时获得通知
+Exec=newitemmonitor
+Icon=newitemmonitor
+Terminal=false
+StartupNotify=false
+Categories=Application;

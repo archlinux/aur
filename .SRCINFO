@@ -8,11 +8,13 @@ pkgbase = newitemmonitor
 	license = private
 	makedepends = asar
 	makedepends = npm
-	makedepends = gendesk
 	depends = electron4
 	depends = bash
-	options = !strip
+	depends = glibc
+	depends = gcc-libs
 	source = http://resource.fatecore.com/nim/nim-v1.0.3-win.zip
+	source = newitemmonitor.desktop
 	sha256sums = 37aa6933e5583833448f9e9410f54d39b27b55de0e5ef4969b6047eb692c5128
+	sha256sums = 11045c5d88008a723ec411feb12abb267bb9c39687797a0697aed0db8f8905c3
 
 pkgname = newitemmonitor
