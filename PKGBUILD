@@ -4,7 +4,7 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=14.0.3
+pkgver=14.1.1
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -24,11 +24,6 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport
         "teleport@.service"
         "teleport.install")
 
-sha512sums=('0bd9367751287561dba304b63942e64bd9a029d65b87e132e651bb643601e7bc1ecf4cdfc24b34b6fda7c680d69e06475266ffe571607487789cc85bbcbd9945'
-            'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
-            '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
-            '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
-            'a0ea7d029567244c4d2c970752955f27d157a848b6567e5521822df4ec7bcd4919436b03a602278681b043476e8171ce1da5e0f2e44d06f2c163cd8e82daab41')
 
 prepare() {
     install -dm755 "${srcdir}/go/src/github.com"
@@ -96,3 +91,8 @@ package_teleport-client() {
     install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
     install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 }
+sha512sums=('3f476a66d6274c448b8ff01e8d9f44e9477d102058a2f984e788af6190835f3ac8163226cbc6869c71aa4bead76522d1556b34c388084b3fad81d286e25ef078'
+            'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
+            '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
+            '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
+            'a0ea7d029567244c4d2c970752955f27d157a848b6567e5521822df4ec7bcd4919436b03a602278681b043476e8171ce1da5e0f2e44d06f2c163cd8e82daab41')
