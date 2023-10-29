@@ -5,7 +5,7 @@
 
 _pkgname=upscayl
 pkgname=$_pkgname-bin
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
@@ -24,7 +24,7 @@ source=(
 )
 
 sha512sums=(
-  '86b0a69dfe8434a19f1819ada70d75e8d511ec42723d01a9eccf58b2c4864efe977dcca741e7463f24cb2e7778890e828c7dbeb189dd48b58b617a3e294c670a'
+  'e801283a268378770c3b0b338eb691e12f4daadd91ac71fe564f37d3a4712037c738b9d802335dda2f2791dd03130a95f0de71d6e1937592ca5861af8da34191'
   '7a1a702418325085d6afab949efe7724c4db42dc5a165ade02ff5b1d755fdcac5b8292cf3ee26b04e85a8f41343e1a5d36dba72afc5c6731a3bc3ea49b6c2193'
 )
 
