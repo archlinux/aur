@@ -2,7 +2,7 @@
 
 pkgname=dab-rs
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Announcement Bot for Discord, implemented in Rust"
 arch=(any)
 url="https://github.com/Sir-Photch/dab-rs"
@@ -35,7 +35,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --offline --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {

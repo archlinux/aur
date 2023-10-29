@@ -1,7 +1,7 @@
 pkgbase = dab-rs
 	pkgdesc = Announcement Bot for Discord, implemented in Rust
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Sir-Photch/dab-rs
 	install = dab-rs.install
 	arch = any
