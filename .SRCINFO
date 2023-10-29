@@ -1,0 +1,25 @@
+pkgbase = python-dallecli
+	pkgdesc = CLI/TUI for OpenAI’s DALL-E (2) image generation model
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/raiyanyahya/dallecli/
+	arch = any
+	license = Apache
+	checkdepends = python-coverage
+	checkdepends = python-pytest-runner
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-click
+	depends = python-openai
+	depends = python-rich
+	depends = python-idna
+	depends = python-pillow
+	provides = dallecli
+	source = https://github.com/raiyanyahya/dallecli/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = fa1bdd4cc028c15fd3a7cb2160f9a45881af8db79acab30a4c366e66b74b37b7
+
+pkgname = python-dallecli
