@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=Writerside EAP
-Icon=writerside-eap
-GenericName=IDE
-Comment=Technical writing environment from JetBrains. Early Access Program.
-Exec="/opt/writerside-eap/bin/writerside.sh" %f
-Terminal=false
+Exec="/opt/writerside-eap/bin/writerside.sh" %u
+Version=1.0
 Type=Application
-Categories=Development
+Categories=Development;IDE;
+Terminal=false
+Icon=/opt/writerside-eap/bin/writerside.svg
+Comment=Documentation authoring IDE
 StartupWMClass=jetbrains-writerside
+StartupNotify=true

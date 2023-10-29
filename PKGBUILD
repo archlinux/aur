@@ -3,8 +3,8 @@
 pkgbase=writerside-eap
 pkgname=(writerside-eap writerside-eap-jre)
 pkgver=232.10165
-pkgrel=2
-pkgdesc="Technical writing environment from JetBrains. Early Access Program."
+pkgrel=3
+pkgdesc="Documentation authoring IDE from JetBrains. Early Access Program."
 arch=('x86_64')
 options=('!strip')
 url='https://www.jetbrains.com/writerside/'
@@ -14,7 +14,7 @@ _pkgname="writerside"
 source=(https://download.jetbrains.com/${_pkgname}/${_pkgname}-${pkgver}.tar.gz
         writerside-eap.desktop)
 sha256sums=('d9d7dab78da28b725cf5df7e433003624947e585c914311c90845d49452c3586'
-            '58d34eb19f91270394b7fa17443ebf0546e47ba96c41119142d1126726260a57')
+            '4aa5408b4aa3fb083e6c54d267c9fb8aa010bafd5a11e84fb404d0ea99890bc2')
 
 package_writerside-eap() {
   optdepends=('writerside-eap-jre: JetBrains custom Java Runtime (Recommended)'
@@ -30,8 +30,11 @@ package_writerside-eap() {
   mkdir -p "${pkgdir}/usr/share/pixmaps"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
+  # From the installation guide documentation (https://www.jetbrains.com/help/pycharm/installation-guide.html#standalone):
+    # To create a desktop entry, do one of the following:
+      # On the Welcome screen, click Configure | Create Desktop Entry
+      # From the main menu, click Tools | Create Desktop Entry
   install -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-  install -m 644 "${pkgdir}/opt/${pkgname}/bin/${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 
   ln -s "/opt/${pkgname}/bin/${_pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }

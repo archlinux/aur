@@ -1,7 +1,7 @@
 pkgbase = writerside-eap
-	pkgdesc = Technical writing environment from JetBrains. Early Access Program.
+	pkgdesc = Documentation authoring IDE from JetBrains. Early Access Program.
 	pkgver = 232.10165
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jetbrains.com/writerside/
 	arch = x86_64
 	license = Commercial
@@ -9,7 +9,7 @@ pkgbase = writerside-eap
 	source = https://download.jetbrains.com/writerside/writerside-232.10165.tar.gz
 	source = writerside-eap.desktop
 	sha256sums = d9d7dab78da28b725cf5df7e433003624947e585c914311c90845d49452c3586
-	sha256sums = 58d34eb19f91270394b7fa17443ebf0546e47ba96c41119142d1126726260a57
+	sha256sums = 4aa5408b4aa3fb083e6c54d267c9fb8aa010bafd5a11e84fb404d0ea99890bc2
 
 pkgname = writerside-eap
 	optdepends = writerside-eap-jre: JetBrains custom Java Runtime (Recommended)
