@@ -52,6 +52,7 @@ prepare() {
 		third-party/fmt \
 		third-party/googletest \
 		third-party/libutp \
+		third-party/rapidjson \
 		third-party/small \
 		third-party/utfcpp \
 		third-party/wide-integer
