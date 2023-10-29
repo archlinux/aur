@@ -3,7 +3,7 @@
 
 pkgname=modular
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular installation tool"
 url="https://developer.modular.com/download"
 license=("custom:modular")
@@ -14,7 +14,7 @@ depends=(
 )
 arch=("x86_64")
 source=("https://dl.modular.com/public/installer/deb/debian/pool/any-version/main/m/mo/modular_$pkgver/modular-v$pkgver-amd64.deb")
-sha256sums=("1432602b6c30b3860f6d70e48807e6b2a712614ca40b14a5fee2f7702aa5fab4")
+sha256sums=("391638b454af1f16271e5736fdbc789a00c956b1d6a4e4583b8ddc7757800822")
 
 package() {
     bsdtar -xf data.tar -C "$pkgdir/"
