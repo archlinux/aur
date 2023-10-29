@@ -1,7 +1,7 @@
 pkgbase='python-unstructured'
 pkgname=('python-unstructured')
 _module='unstructured'
-pkgver='0.10.19'
+pkgver='0.10.27'
 pkgrel=1
 pkgdesc="A library that prepares raw documents for downstream ML tasks."
 url="https://github.com/Unstructured-IO/unstructured"
@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('Apache')
 arch=('any')
 source=("https://github.com/Unstructured-IO/unstructured/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ae86dc6f4304e52a8e7fe799885a702c61aea3bbe06b25684dce6fe9cc6c6415')
+sha256sums=('b7ae63ebde562a8b3cbe1fbd2b8369114ba27b9abd023179f2ed1aa6da16e80b')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
