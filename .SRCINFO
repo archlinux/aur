@@ -1,6 +1,6 @@
 pkgbase = xtensor
 	pkgdesc = C++ tensors with broadcasting and lazy computing
-	pkgver = 0.24.3
+	pkgver = 0.24.7
 	pkgrel = 1
 	url = https://github.com/xtensor-stack/xtensor
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xtensor
 	makedepends = gcc
 	makedepends = cmake
 	depends = xtl
-	source = xtensor-0.24.3.tar.gz::https://github.com/xtensor-stack/xtensor/archive/0.24.3.tar.gz
-	sha256sums = 3acde856b9fb8cf4e2a7b66726da541275d40ab9b002e618ad985ab97f08ca4f
+	source = xtensor-0.24.7.tar.gz::https://github.com/xtensor-stack/xtensor/archive/0.24.7.tar.gz
+	sha256sums = 0fbbd524dde2199b731b6af99b16063780de6cf1d0d6cb1f3f4d4ceb318f3106
 
 pkgname = xtensor
