@@ -22,8 +22,10 @@ sha256sums=('de0e256d3fbc5a07a6dd4f23aea8f691ebbb057e893c9c58f493419b615dc8da'
 
 prepare() {
 	cd $_appname
-	# Installs all dependencies, including Lerna. Add '--ignore-scripts' if prepare fails
-	yarn install --offline --ignore-scripts 
+	# Workaround for 'husky - .git can't be found'
+	mkdir -p .git
+	# Installs all dependencies, including Lerna.
+	yarn install
 }
 
 build() {
