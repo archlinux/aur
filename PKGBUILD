@@ -3,7 +3,7 @@
 
 pkgname=wonderlab-appimage
 _pkgname=wonderlab
-pkgver=1.2.8.1
+pkgver=1.2.8.2
 pkgrel=0.8
 pkgdesc="The next generation cross-platform Minecraft launcher"
 arch=('x86_64' 'aarch64')
