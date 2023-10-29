@@ -1,10 +1,7 @@
-# Maintainer: Serge K <arch@phnx47.net>
-
+# Maintainer:
+# Contributor: Serge K <arch@phnx47.net>
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
-
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
 
 pkgname=xawtv
 pkgver=3.107
