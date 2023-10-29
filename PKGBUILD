@@ -38,6 +38,5 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	chmod 755 pop3
 	install -D -m755 pop3 $pkgdir/usr/bin/pop3
 }
