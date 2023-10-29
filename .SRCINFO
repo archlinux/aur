@@ -1,6 +1,6 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design theme for GTK 3, GTK 2 and GNOME Shell
-	pkgver = 2023.04.03
+	pkgver = 2023.10.30
 	pkgrel = 1
 	url = https://vinceliuice.github.io/theme-matcha.html
 	install = matcha-gtk-theme.install
@@ -10,7 +10,7 @@ pkgbase = matcha-gtk-theme
 	optdepends = gtk-engines: GTK2 theme support
 	optdepends = qogir-icon-theme: Recommended icon theme
 	options = !strip
-	source = matcha-gtk-theme-2023-04-03.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2023-04-03.tar.gz
-	sha256sums = 0d56e41402d4b8b84568a77f31851dd26536467f7ac899aa8fad23862e5a1fd6
+	source = matcha-gtk-theme-2023-10-30.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2023-10-30.tar.gz
+	sha256sums = 9e7c1b7055bd996eaa01e8cd30e098dc1873f98690d2ace6ecad0e945307d470
 
 pkgname = matcha-gtk-theme

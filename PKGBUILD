@@ -1,9 +1,9 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jack Random <jack ät random.to>
 # Contributor: Michael J. Pento <mjpento@verizon.net>
 # Contributor: grimi <grimi at poczta dot fm>
 pkgname=matcha-gtk-theme
-_pkgver=2023-04-03
+_pkgver=2023-10-30
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A flat design theme for GTK 3, GTK 2 and GNOME Shell"
@@ -15,11 +15,11 @@ optdepends=('gtk-engine-murrine: GTK2 theme support'
             'qogir-icon-theme: Recommended icon theme')
 options=('!strip')
 install="$pkgname.install"
-source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/$_pkgver.tar.gz")
-sha256sums=('0d56e41402d4b8b84568a77f31851dd26536467f7ac899aa8fad23862e5a1fd6')
+source=("$pkgname-${_pkgver}.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/${_pkgver}.tar.gz")
+sha256sums=('9e7c1b7055bd996eaa01e8cd30e098dc1873f98690d2ace6ecad0e945307d470')
 
 package() {
-  cd "Matcha-gtk-theme-$_pkgver"
+  cd "Matcha-gtk-theme-${_pkgver}"
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -d "$pkgdir/usr/share/themes/"
 
