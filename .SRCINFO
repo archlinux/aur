@@ -1,7 +1,7 @@
 pkgbase = compiz-easy-patch
 	pkgdesc = OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE.
 	pkgver = 0.9.14.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/compiz
 	install = compiz-easy-patch.install
 	arch = i686

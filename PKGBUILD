@@ -10,7 +10,7 @@
 _name=compiz
 pkgname=compiz-easy-patch
 pkgver=0.9.14.2
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -128,6 +128,7 @@ build() {
   cd build
 
   cmake .. \
+    -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
