@@ -1,7 +1,7 @@
 _pkgname=greetd-waycratedm
 pkgname=greetd-waycratedm-git
 pkgver=r46.f29c3d7
-pkgrel=1
+pkgrel=2
 pkgdesc="qml desktop manager for greetd"
 url="https://github.com/Decodetalkers/greetd-qmlgreet"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git' 'ninja' 'cmake' 'wayland-protocols')
-depends=('qt6-wayland' 'qt6-base' 'pam' 'session-lock-qt')
+depends=('qt6-wayland' 'qt6-base' 'session-lock-qt' 'greetd')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
