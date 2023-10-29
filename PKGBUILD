@@ -10,6 +10,7 @@ makedepends=('git')
 depends=(   'qemu-desktop'
             'openssl'
             'base-devel'
+            'xorriso'
             )
 provides=("${pkgname}")
 options=(!strip !emptydirs)
