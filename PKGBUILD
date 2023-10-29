@@ -44,7 +44,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "$__pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=119.0-4"
+  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=119.0-5"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "unity-menubar.patch")
 sha256sums=('f63e44194548f246e1396508800739a24c0517e65e920002a6f67ee099be39dd'
