@@ -13,8 +13,7 @@ pkgbase = vim-latex-box-git
 	provides = vim-latex-box
 	conflicts = vim-latex-box
 	conflicts = vim-latexsuite
-	source = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
+	source = git+https://github.com/LaTeX-Box-Team/LaTeX-Box.git
 	sha256sums = SKIP
 
 pkgname = vim-latex-box-git
-

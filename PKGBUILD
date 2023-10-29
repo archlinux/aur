@@ -14,7 +14,7 @@ optdepends=('texlive-core: background compilation support using latexmk')
 conflicts=("vim-latex-box" "vim-latexsuite")
 provides=("vim-latex-box")
 makedepends=('git')
-source=("git://github.com/LaTeX-Box-Team/LaTeX-Box.git")
+source=("git+https://github.com/LaTeX-Box-Team/LaTeX-Box.git")
 install=vimdoc.install
 sha256sums=('SKIP')
 
