@@ -2,7 +2,7 @@
 
 _pkgname=cross-install
 pkgname=$_pkgname-bin
-_pkgver=1.1.0-1
+_pkgver=1.2.0-1
 pkgver=${_pkgver//-/.r}
 pkgrel=1
 pkgdesc="POSIX-complient cross-platform install command"
@@ -14,7 +14,7 @@ depends=('sh')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("https://git.stefanwimmer128.io/api/v4/projects/206/packages/generic/$_pkgname/$_pkgver/$_pkgname-$_pkgver-$_arch.pkg.tar.zst")
-sha256sums=('0230d3524c913d3be2af400c368fda81efd6a6550999925f08709599d2a90f14')
+sha256sums=('aaa582468330b4fb508b1e81038608dda286e0121d24b6da68b4043f038c567a')
 
 build() {
   rm "$_pkgname-$_pkgver-$_arch.pkg.tar.zst"
