@@ -1,6 +1,6 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=materialgram-git
-pkgver=4.10.5.3.r0.g22c6f9ca3
+pkgver=4.11.1.1.r0.g78f9f89eb
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app with Material Design'
 arch=('x86_64' 'aarch64')
