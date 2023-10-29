@@ -7,6 +7,7 @@ pkgbase = hyprland-plugins-git
 	arch = aarch64
 	license = BSD
 	makedepends = hyprland
+	makedepends = git
 	source = hyprland-plugins-git::git+https://github.com/hyprwm/hyprland-plugins.git
 	sha256sums = SKIP
 

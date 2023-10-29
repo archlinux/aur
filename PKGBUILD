@@ -8,7 +8,7 @@ pkgdesc="Official plugins for hyprland"
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/hyprland-plugins"
 license=('BSD')
-makedepends=(hyprland)
+makedepends=(hyprland git)
 source=($pkgbase::git+https://github.com/hyprwm/hyprland-plugins.git)
 sha256sums=('SKIP')
 
