@@ -1,6 +1,7 @@
 # Maintainer: kumen
 pkgname="stmcufinder"
-pkgver=5.0.0
+pkgver=6.0.0
+_pkg_file_name=en.st-mcu-finderlin-v6-0-0.zip
 pkgrel=1
 pkgdesc="STM32 and STM8 product finder for desktops"
 arch=("x86_64")
@@ -8,24 +9,30 @@ depends=('java-runtime')
 optdepends=()
 conflicts=()
 url="https://www.st.com/en/development-tools/st-mcu-finder.html"
-_pkg_file_name=en.ST-MCU-FinderLin_v5-0-0.zip
 license=('Commercial')
 options=(!strip)
 
-_DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-if [ ! -f ${PWD}/${_pkg_file_name} ]; then
-	if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
-		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
-	else
-		msg2 ""
-		msg2 "The package can be downloaded here: ${url}"
-		msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-		msg2 ""
-	fi
-fi
+# Extract actual direct download link */
+_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
+                        AppleWebKit/537.36 (KHTML, like Gecko) \
+                        Chrome/77.0.3865.75 \
+                        Safari/537.36"
+_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
+_useragent_escaped="${_curl_useragent// /\\ }"
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/st-mcu-finder-pc/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
 
-source=("local://${_pkg_file_name}")
-sha256sums=('cca7de0b0fcd363c9f07d4c4549c05a4f83bb27373a207702a0d2dbbfe5609a1')
+_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
+_curl_req="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
+_download_path="https://www.st.com""$(awk -F'"' '{print $4}' <<< "$_curl_req")"
+
+
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' --retry 3 --retry-delay 3 \
+              -H ${_useragent_escaped} \
+              -o %o --compressed %u")
+
+source=("${_pkg_file_name}"::"$_download_path")
+sha256sums=('0b7de8dcbaac1608b48d110d32635ebf7c715c769218352fc1653a5a57135637')
 
 prepare(){
 	cd "$srcdir"
@@ -57,7 +64,7 @@ package() {
         install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=ST MCU Finder
-Comment=ST MCU Finder 5.0.0
+Comment=ST MCU Finder 6.0.0
 GenericName=ST MCU Finder
 Exec=STMCUFinder %F
 Icon=stmcufinder.png
