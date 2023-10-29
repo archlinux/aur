@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: David Mougey <imapiekindaguy at gmail dot com>
 
@@ -8,7 +8,7 @@ _localepurge=
 
 _pkgname=sigil
 pkgname="$_pkgname-git"
-pkgver=1.9.30.r36.g13c212079
+pkgver=2.0.2.r6.gd223713e5
 pkgrel=1
 pkgdesc='multi-platform EPUB2/EPUB3 ebook editor'
 arch=('x86_64')
@@ -48,31 +48,57 @@ optdepends=(
   'tk: recommended for plugins'
 )
 
-provides=("$_pkgname")
-conflicts=(${provides[@]})
+
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # normal package
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    echo "${pkgver%%.r*}"
+  }
+else
+  # git package
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+fi
 
 options=(!debug)
 
-source=(
-  "$_pkgname"::"git+$url"
+source+=(
   'default_nav_css.patch'
   'skip_epub_version_check.patch'
   'skip_version_mod_tags.patch'
 )
 
-sha256sums=(
-  'SKIP'
+sha256sums+=(
   '3478ff361a34fd7cd7811d5103cbace91ecc790463684aaab9e21687b5553a28'
   'fc2bdc23d13b2e917f08608b516495b744f991642f73c1f6d943cf322a25fc11'
   'c74be3af315c9ffe181df6b465d0037f152f6078b953e6eeaab7b2932ae4c729'
 )
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
 
-  for patch in "$srcdir"/*.patch ; do
-    echo "Applying patch: $patch"
-    patch -Np1 -i "$patch"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]] ; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
   done
 
   if [[ "${_localepurge}" != "" ]]; then
@@ -82,11 +108,6 @@ prepare() {
       fi
     done
   fi
-}
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
