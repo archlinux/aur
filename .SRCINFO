@@ -1,6 +1,6 @@
 pkgbase = luawrapper-git
 	pkgdesc = luawrapper for C++
-	pkgver = r28.1bc122f
+	pkgver = r55.a6a5958
 	pkgrel = 1
 	url = http://github.com/ekpyron/luawrapper/
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = luawrapper-git
 	makedepends = git
 	makedepends = cmake
 	depends = luajit
-	source = git+git://github.com/ekpyron/luawrapper
+	source = git+https://github.com/ekpyron/luawrapper
 	md5sums = SKIP
 
 pkgname = luawrapper-git
-

@@ -1,6 +1,6 @@
 # Maintainer: Daniel Kirchner <daniel at ekpyron dot org>
 pkgname=luawrapper-git
-pkgver=r28.1bc122f
+pkgver=r55.a6a5958
 pkgrel=1
 pkgdesc="luawrapper for C++"
 license=('MIT')
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/ekpyron/luawrapper/"
 depends=('luajit')
 makedepends=('git' 'cmake')
-source=('git+git://github.com/ekpyron/luawrapper')
+source=('git+https://github.com/ekpyron/luawrapper')
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,7 +20,7 @@ build() {
     rm -rf "$srcdir"/build
     mkdir -p "$srcdir"/build
     cd "$srcdir"/build
-    cmake ../luawrapper/ -DLUA_INCLUDE_DIR=/usr/include/luajit-2.0 -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so -DCMAKE_INSTALL_PREFIX=/usr
+    cmake ../luawrapper/ -DLUA_INCLUDE_DIR=/usr/include/luajit-2.1 -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
