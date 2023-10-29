@@ -217,9 +217,6 @@ END
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
 
-  # Hide Firefox view
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
-
   # Allows hiding the password manager (from the lw pref pane) / via a pref
   patch -Np1 -i "${_librewolf_patches_dir}"/hide-passwordmgr.patch
 
