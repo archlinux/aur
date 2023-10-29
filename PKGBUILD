@@ -1,5 +1,5 @@
 pkgname=mujoco
-pkgver=2.3.6
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('libccd' 'libgl' 'glfw' 'tinyxml2' 'tinyobjloader' 'qhull')
 makedepends=('abseil-cpp' 'gtest' 'benchmark' 'cmake' 'git' 'eigen' 'lodepng')
 source=("https://github.com/deepmind/mujoco/archive/refs/tags/$pkgver.tar.gz"
     "${pkgname}.patch")
-sha256sums=('3ede20f8be574baa65ee6164f90c91b787adbe2b877cc4cc8bd1c6678f747354'
+sha256sums=('b0108b44a4913c6d49a2fea382e684d10d0c43f51ac7d317d3c73fe66f120c33'
             '3ceb20c5b0dc37cf9be4da68f728b11f3085fdcbd895eb2885910228c4d3805f')
 
 prepare() {
