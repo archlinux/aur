@@ -1,30 +1,31 @@
-#Maintainer: German Lashevich <german.lashevich@gmail.com>
-
+# Maintainer: German Lashevich <german.lashevich@gmail.com>
+#
+# Source: https://github.com/zebradil/aur
 pkgname=docoseco
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Automatize management of docker confgs and secrets"
+url="https://github.com/Zebradil/docoseco"
 arch=(any)
 license=(MIT)
-url="https://github.com/Zebradil/docoseco"
+groups=()
+backup=()
 depends=(python3 python-ruamel-yaml)
-makedepends=(python-setuptools python-dephell)
+makedepends=(python-build python-installer python-wheel)
+checkdepends=()
+optdepends=()
+conflicts=()
 provides=(docoseco)
-source=(
-  https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz
-)
-sha512sums=('30c7652873e296237bc0eda6226a581f7ad618f473790cb843de041afd324c37255ed88acd97783c5f1533dd4ca7c3974f0f3d87c42c2849426fe15ed5803199')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  dephell deps convert --from pyproject.toml --to setup.py
-  python3 setup.py build
+replaces=()
+source=(https://files.pythonhosted.org/packages/source/d/docoseco/docoseco-1.0.0.tar.gz)
+sha256sums=()
+build () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    python -m build --wheel --no-isolation
 }
-
-package() {
-  cd "$pkgname-$pkgver"
-  python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+package () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-
-# vim: set ts=2 sw=2 et:
