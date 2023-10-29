@@ -1,6 +1,6 @@
 pkgbase = linux-bpir64-git
 	pkgver = 6.3.9.bpi
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.kernel.org/
 	arch = aarch64
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = linux-bpir64-git
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = git
+	makedepends = aarch64-linux-gnu-gcc
 	options = !strip
 	source = defconfig
 	source = linux.preset
