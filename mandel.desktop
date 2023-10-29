@@ -1,0 +1,8 @@
+ [Desktop Entry]
+ Type=Application
+ Name=Mandel
+ Comment=Unofficial git copy of Wolf Jung's mandel
+ Exec=/usr/bin/mandel
+ Icon=/usr/share/pixmaps/qmnicon32.ico
+ Terminal=false
+ Categories=Graphics;

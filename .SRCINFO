@@ -1,0 +1,16 @@
+pkgbase = mandel
+	pkgdesc = Wolf Jung's mandel
+	pkgver = 5.19
+	pkgrel = 1
+	url = https://www.mndynamics.com/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-base
+	depends = qt5-base
+	source = https://www.mndynamics.com/mandel0519src.zip
+	sha256sums = SKIP
+
+pkgname = mandel
