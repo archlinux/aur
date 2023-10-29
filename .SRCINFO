@@ -8,6 +8,7 @@ pkgbase = lfortran
 	makedepends = llvm
 	makedepends = cmake
 	makedepends = cppzmq
+	makedepends = zstd-static
 	depends = clang
 	depends = zlib
 	depends = ncurses
