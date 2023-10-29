@@ -18,7 +18,7 @@
 +## Note: /var/lib/i2pd/certificates is a symlink to /usr/share/i2pd/certificates (use the latter)
  # certsdir = /var/lib/i2pd/certificates
  
- ## Where to write pidfile (default: i2pd.pid, not used in Windows)
+ ## Where to write pidfile (default: /run/i2pd.pid, not used in Windows)
 -# pidfile = /run/i2pd.pid
 +# pidfile = /run/i2pd/i2pd.pid
  
@@ -27,9 +27,9 @@
 @@ -32,7 +35,7 @@
  ##  * syslog - use syslog, see man 3 syslog
  # log = file
- ## Path to logfile (default - autodetect)
+ ## Path to logfile (default: autodetect)
 -# logfile = /var/log/i2pd/i2pd.log
 +logfile = /var/log/i2pd/i2pd.log
- ## Log messages above this level (debug, info, *warn, error, none)
+ ## Log messages above this level (debug, info, *warn, error, critical, none)
  ## If you set it to none, logging will be disabled
  # loglevel = warn

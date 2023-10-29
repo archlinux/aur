@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.46.1.r0.g200ad552
+pkgver=2.49.0.r17.gc8ae1504
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
         'i2pd.tmpfiles')
 sha256sums=('SKIP'
             '2ddf15f1c1cdf5d747a0af667145238023fd126ab00c65f2897cacae935015b1'
-            '45dae1e2f798d23df92c996c233fccb07349d62992d0f625be7fd913719875af'
+            'ed1bde650139731921bf3c8091b3332620404e7700fb9c486a4a806fe34e2d3b'
             'e98eaa783fcd8e1ab84980f68158e3bb9eb5ec101f26c748946a313152643f11'
             '2b84d85d4234eb3b640925d0dd244c8abe3b48bc69c8456629af923de17acf10'
             'cfcb6b07b67aff3e3af12767f4649d88b9320dc71907b6c01b465e5c138cdaa3'
