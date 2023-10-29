@@ -1,6 +1,6 @@
 #define PAGER			"pg"
 #define EDITOR			"vi"
-#define VISUAL			"vi"
+#define VISUAL			"vim"
 #define SENDMAIL		"sendmail"
 #define FOLDER			"/home/me/.mailx/"
 #define RECORD			"+inbox"
