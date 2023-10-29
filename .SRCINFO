@@ -1,6 +1,6 @@
 pkgbase = lgogdownloader
 	pkgdesc = Open source downloader for GOG.com games, uses the GOG.com API
-	pkgver = 3.11
+	pkgver = 3.12
 	pkgrel = 1
 	url = https://sites.google.com/site/gogdownloader/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = lgogdownloader
 	depends = tinyxml2
 	depends = rhash
 	depends = htmlcxx
-	source = https://github.com/Sude-/lgogdownloader/releases/download/v3.11/lgogdownloader-3.11.tar.gz
-	sha256sums = d8d015cce6e002876305517367dc006c332e4d492263173b58bfe5a94b057b09
+	source = https://github.com/Sude-/lgogdownloader/releases/download/v3.12/lgogdownloader-3.12.tar.gz
+	sha256sums = bf3a16c1b2ff09152f9ac52ea9b52dfc0afae799ed1b370913149cec87154529
 
 pkgname = lgogdownloader
