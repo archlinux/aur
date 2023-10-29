@@ -1,0 +1,22 @@
+pkgbase = russian-doom
+	pkgdesc = A limit-removing source port of Doom, Heretic and Hexen with enhancements and Russian translation
+	pkgver = 6.3
+	pkgrel = 1
+	url = https://github.com/Russian-Doom/russian-doom
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python3
+	depends = sdl2>=2.0.18
+	depends = sdl2_mixer>=2.0.2
+	depends = sdl2_net>=2.0.0
+	depends = libsamplerate
+	optdepends = doom1-wad: Doom shareware game data
+	conflicts = russian-doom-git
+	source = russian-doom-6.3.tar.gz::https://github.com/Russian-Doom/russian-doom/archive/refs/tags/6.3.tar.gz
+	b2sums = fa252f3fc1103eb50b9f202809cc9a400c49d698b2daee61d37e8b8a0084ade7d048b522c06675197774bf772b53a0e040af8c1c0d6ba7d4a777e980444f674d
+
+pkgname = russian-doom
