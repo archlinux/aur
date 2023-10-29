@@ -1,0 +1,31 @@
+diff --unified --recursive --text illuminanced-old/illuminanced.service illuminanced/illuminanced.service
+--- illuminanced-old/illuminanced.service	2023-10-29 23:04:54.749892619 +0200
++++ illuminanced/illuminanced.service	2023-10-29 23:36:14.420894436 +0200
+@@ -1,12 +1,11 @@
+ [Unit]
+ Description=Ambient light monitoring Service
+-Requires=syslog.socket
+ Documentation=https://github.com/mikhail-m1/illuminanced
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/local/sbin/illuminanced
+-PIDFile=/var/run/illuminanced.pid
++ExecStart=/usr/bin/illuminanced -c /etc/illuminanced.toml
++PIDFile=/run/illuminanced.pid
+ Restart=on-failure
+ 
+ [Install]
+diff --unified --recursive --text illuminanced-old/illuminanced.toml illuminanced/illuminanced.toml
+--- illuminanced-old/illuminanced.toml	2023-10-29 23:04:54.749892619 +0200
++++ illuminanced/illuminanced.toml	2023-10-29 23:31:04.351786167 +0200
+@@ -1,7 +1,7 @@
+ [daemonize]
+ # log_to = "syslog" or /file/path
+-log_to = "syslog"
+-pid_file = "/var/run/illuminanced.pid"
++log_to = "/var/log/illuminanced.log"
++pid_file = "/run/illuminanced.pid"
+ # log_level = "OFF", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"
+ log_level = "ERROR"
+ 

@@ -1,0 +1,21 @@
+pkgbase = illuminanced-git
+	pkgdesc = Ambient Light Sensor Daemon for Linux
+	pkgver = r19.c1ebdc7
+	pkgrel = 1
+	url = https://github.com/mikhail-m1/illuminanced
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = illuminanced
+	conflicts = illuminanced
+	backup = etc/illuminanced.toml
+	source = git+https://github.com/mikhail-m1/illuminanced
+	source = fix-service-and-configuration.patch
+	b2sums = SKIP
+	b2sums = 99c90c09003affb481ba3037091011197cccd7f40f80804faa67d30f955da0c5f32d3557cff49e7fb1438c2d6c621d81d5de43d1059c6637a18f7f220db68f4b
+
+pkgname = illuminanced-git
