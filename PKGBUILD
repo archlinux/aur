@@ -5,7 +5,7 @@
 
 pkgbase=comma-ide-community
 pkgname=(comma-ide-community comma-ide-community-jre)
-pkgrel=1
+pkgrel=2
 pkgver=2023.07.0
 pkgdesc='The Integrated Development Environment for Raku (formerly Perl 6).'
 arch=('any')
@@ -54,6 +54,7 @@ package_comma-ide-community() {
 
 package_comma-ide-community-jre() {
   pkgdesc='JBR (Jetbrains Runtime) for Comma IDE - a patched JRE'
+  url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -dm755 "${pkgdir}${_installdir}/$pkgbase"
   mv "$srcdir/jbr" "${pkgdir}${_installdir}/$pkgbase"

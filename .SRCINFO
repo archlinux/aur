@@ -1,7 +1,7 @@
 pkgbase = comma-ide-community
 	pkgdesc = The Integrated Development Environment for Raku (formerly Perl 6).
 	pkgver = 2023.07.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commaide.com/
 	arch = any
 	license = APACHE
@@ -19,3 +19,4 @@ pkgname = comma-ide-community
 
 pkgname = comma-ide-community-jre
 	pkgdesc = JBR (Jetbrains Runtime) for Comma IDE - a patched JRE
+	url = https://github.com/JetBrains/JetBrainsRuntime
