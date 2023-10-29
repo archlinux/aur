@@ -1,8 +1,8 @@
-# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: bb010g <bb010g@bb010g.com>
 pkgname=perl-cgi-compile
-pkgver=0.25
-pkgrel=2
+pkgver=0.26
+pkgrel=1
 pkgdesc='Compile .cgi scripts to a code reference like ModPerl::Registry'
 _dist=CGI-Compile
 arch=('any')
@@ -10,10 +10,10 @@ url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=('perl-file-pushd' 'perl-sub-name')
 makedepends=('perl-module-build-tiny')
-checkdepends=('perl-capture-tiny' 'perl-test-nowarnings' 'perl-cgi' 'perl-test-requires' 'perl-try-tiny' 'perl-switch' 'perl-cgi-emulate-psgi' 'perl-sub-identify')
+checkdepends=('perl-capture-tiny' 'perl-test-nowarnings' 'perl-cgi' 'perl-test-requires' 'perl-try-tiny' 'perl-cgi-emulate-psgi' 'perl-sub-identify')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/R/RK/RKITOVER/$_dist-$pkgver.tar.gz")
-md5sums=('f15c25f41cb592b992c0988ac6a08612')
+md5sums=('e1043ac7c3fdfc2789e969b1a33481d5')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
