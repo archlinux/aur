@@ -2,7 +2,7 @@
 
 pkgname=lldap
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Light LDAP implementation'
 arch=('x86_64')
 url='https://github.com/lldap/lldap'
@@ -49,7 +49,13 @@ build() {
   cd "$pkgname"
 
   # server
-  cargo build --frozen --release --all-features
+  cargo build \
+    --frozen \
+    --release \
+    --all-features \
+    -p lldap \
+    -p lldap_migration_tool \
+    -p lldap_set_password
 
   # frontend
   ./app/build.sh
