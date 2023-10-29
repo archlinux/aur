@@ -1,7 +1,7 @@
 # Mantenedor: Mauricio de Lima <emauricio@uaiso.org>
 pkgname=uarchiso
 pkgver=73
-pkgrel=2
+pkgrel=3
 pkgdesc="Archiso for UaiSO"
 arch=('any')
 url="https://gitlab.com/uaiso/labs/uarchiso"
