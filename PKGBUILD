@@ -18,28 +18,26 @@ sha256sums=('SKIP'
 install=$pkgname.install
 
 pkgver() {
-    cd $srcdir/Quake3e
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    }
+	cd $srcdir/Quake3e
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	}
 
 build() {
-    cd $srcdir/Quake3e
-    make
-    }
+	cd $srcdir/Quake3e
+	make
+	}
 
 package() {
-	# Fix stray filename on x86_64
-	if [ -e "$srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.x64" ]; then
-		mv $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.x64 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.x86_64
-		fi
+	# Harmonize filenames on x86_64
+	find $srcdir/Quake3e/build/release-linux-${CARCH} -type f -name "*.x64" -execdir sh -c 'mv -f "$0" "${0%.x64}.x86_64"' {} \;
 
-    install -D -m 755 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.${CARCH} $pkgdir/opt/quake3/quake3e.${CARCH}
-    install -D -m 755 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.${CARCH} $pkgdir/opt/quake3/quake3e.ded.${CARCH}
-    install -D -m 644 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e_opengl_${CARCH}.so $pkgdir/opt/quake3/quake3e_opengl_${CARCH}.so
-    install -D -m 644 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e_vulkan_${CARCH}.so $pkgdir/opt/quake3/quake3e_vulkan_${CARCH}.so
-    mkdir -p $pkgdir/usr/bin
-    ln -s /opt/quake3/quake3e.${CARCH} $pkgdir/usr/bin/quake3e
-    ln -s /opt/quake3/quake3e.ded.${CARCH} $pkgdir/usr/bin/quake3e.ded
-    install -D -m 644 quake3e.desktop $pkgdir/usr/share/applications/quake3e.desktop
-    install -D -m 644 quake3e.png $pkgdir/usr/share/pixmaps/quake3e.png
-    }
+	install -D -m 755 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.${CARCH} $pkgdir/opt/quake3/quake3e.${CARCH}
+	install -D -m 755 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e.ded.${CARCH} $pkgdir/opt/quake3/quake3e.ded.${CARCH}
+	install -D -m 644 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e_opengl_${CARCH}.so $pkgdir/opt/quake3/quake3e_opengl_${CARCH}.so
+	install -D -m 644 $srcdir/Quake3e/build/release-linux-${CARCH}/quake3e_vulkan_${CARCH}.so $pkgdir/opt/quake3/quake3e_vulkan_${CARCH}.so
+	mkdir -p $pkgdir/usr/bin
+	ln -s /opt/quake3/quake3e.${CARCH} $pkgdir/usr/bin/quake3e
+	ln -s /opt/quake3/quake3e.ded.${CARCH} $pkgdir/usr/bin/quake3e.ded
+	install -D -m 644 quake3e.desktop $pkgdir/usr/share/applications/quake3e.desktop
+	install -D -m 644 quake3e.png $pkgdir/usr/share/pixmaps/quake3e.png
+	}
