@@ -4,7 +4,7 @@ _gitname=atom
 _pkgname=${_gitname}-community
 
 pkgname=${_pkgname}-git
-pkgver=1.63.0_dev_0f7c5c14e
+pkgver=1.63.0_dev.r39017.g0f7c5c1
 pkgrel=1
 pkgdesc="A hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors."
 url="https://github.com/atom-community/atom"
@@ -33,7 +33,7 @@ prepare() {
 
 pkgver() {
  cd ${_gitname}
- printf "%s_%s" "$(npm pkg get version | sed 's/-/_/' | sed 's/"//g')" "$(git log -1 --pretty=format:'%h')"
+ printf "%s.r%s.g%s" "$(npm pkg get version | sed 's/-/_/' | sed 's/"//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
