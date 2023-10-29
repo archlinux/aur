@@ -35,11 +35,10 @@ prepare() {
 
 build() {
     cd ctrisr
-    gcc ./src/main.c
+    gcc ./src/main.c ./src/Shape.c ./src/render.c ./src/sound.c -L./lib/ -lcanvas -lm -lasound
 }
 
 package() {
     cd ctrisr
     install -Dm755 ./a.out "$pkgdir/usr/bin/ctrisr"
-    # export lctr=/user/bin/lctr
 }
