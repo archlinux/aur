@@ -1,4 +1,5 @@
-# Maintainer: elementh <hello@lucasmarino.me>
+# Contributor: Asuka Minato
+# Contributor: elementh <hello@lucasmarino.me>
 #                                            
 # WARNING WARNING WARNING WARNING WARNING    
 # IMPORTANT: MIGRATION
