@@ -2,18 +2,22 @@
 # Contributor: marcin mikołajczak <me@mkljczk.pl>
 
 pkgname=tokodon-git
-pkgver=22.11.r37.gf61f5a7
+pkgver=23.08.2.r10.g4b3185a1
 pkgrel=2
 pkgdesc="Native Mastodon client"
 arch=(x86_64)
 url="https://invent.kde.org/network/tokodon"
 license=(LGPL)
-depends=(kirigami2 kirigami-addons qtkeychain-qt5 kdbusaddons ki18n qt5-websockets knotifications kitemmodels qqc2-desktop-style)
-makedepends=(extra-cmake-modules qt5-tools git qt5-svg qt5-multimedia qt5-quickcontrols2 kcoreaddons
-             knotifyconfig)
+depends=(kio5 kirigami2 kirigami-addons qtkeychain-qt5 kdbusaddons5 ki18n5 qt5-websockets knotifications5
+         kitemmodels5 qqc2-desktop-style5 mpv
+
+         # namcap implicit depends
+         glibc gcc-libs kconfig5 qt5-base qt5-declarative qt5-quickcontrols2 kconfigwidgets5 kwindowsystem5 kcoreaddons5
+         hicolor-icon-theme)
+makedepends=(extra-cmake-modules git)
 conflicts=(tokodon)
 provides=(tokodon)
-source=('git+https://invent.kde.org/network/tokodon.git')
+source=("git+https://invent.kde.org/network/tokodon.git#branch=release/23.08")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,21 +25,14 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  [[ -d build ]] || mkdir build
-}
-
 build() {
-  cd build
-  cmake ../tokodon \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S tokodon -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
