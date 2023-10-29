@@ -1,14 +1,13 @@
-From 23d899891c3db7e09a72e16e2cfbadaee7285ebe Mon Sep 17 00:00:00 2001
-From: xiota
+From 30cbca3f832e75fe559c003069f4be63f72878c0 Mon Sep 17 00:00:00 2001
+From: xiota <xiota>
 Date: Sun, 29 Oct 2023 03:53:13 -0700
 Subject: [PATCH 3/3] don't write version and modified tags
 
 Don't write version and modification tags to the opf.
 Results in a somewhat cleaner opf.
 ---
- src/ResourceObjects/OPFResource.cpp      | 30 +++---------------------
- src/ResourceObjects/OPFResource.cpp.orig | 14 -----------
- 2 files changed, 3 insertions(+), 41 deletions(-)
+ src/ResourceObjects/OPFResource.cpp | 30 +++--------------------------
+ 1 file changed, 3 insertions(+), 27 deletions(-)
 
 diff --git a/src/ResourceObjects/OPFResource.cpp b/src/ResourceObjects/OPFResource.cpp
 index 7f7020b..5f79772 100644
@@ -76,31 +75,6 @@ index 7f7020b..5f79772 100644
 -    p.m_metadata.append(me);
 -    UpdateText(p);
      return datetime;
- }
- 
-diff --git a/src/ResourceObjects/OPFResource.cpp.orig b/src/ResourceObjects/OPFResource.cpp.orig
-index 4b7668d..7f7020b 100644
---- a/src/ResourceObjects/OPFResource.cpp.orig
-+++ b/src/ResourceObjects/OPFResource.cpp.orig
-@@ -1493,20 +1493,6 @@ void OPFResource::UpdateText(const OPFParser &p)
- QString OPFResource::ValidatePackageVersion(const QString& source)
- {
-     QString newsource = source;
--    QString orig_version = GetEpubVersion();
--    QRegularExpression pkgversion_search(PKG_VERSION, QRegularExpression::CaseInsensitiveOption);
--    QRegularExpressionMatch mo = pkgversion_search.match(newsource);
--    if (mo.hasMatch()) {
--        QString version = mo.captured(1);
--        if (version != orig_version) {
--            newsource.replace(mo.capturedStart(1), mo.capturedLength(1), orig_version);
--            if (!m_WarnedAboutVersion && !version.startsWith('1')) {
--                Utility::DisplayStdWarningDialog("Changing package version inside Sigil is not supported", 
--                                                 "Use an appropriate output plugin to make the initial conversion");
--                m_WarnedAboutVersion = true;
--            }
--        }
--    }
-     return newsource;
  }
  
 -- 
