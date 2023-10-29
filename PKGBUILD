@@ -2,7 +2,7 @@
 _name="scikit-misc"
 pkgname="python-${_name}"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Miscellaenous tools for scientific computing"
 arch=('x86_64')
 url="https://github.com/has2k1/${_name}"
@@ -10,15 +10,18 @@ license=('BSD')
 depends=(
   "python>=3.9"
   "python-numpy>=1.22.3"
-  "openblas"
+  "blas-openblas"
 )
 makedepends=(
+  "python-setuptools"
   "python-build"
   "python-installer"
   "python-wheel"
   "python-spin"
   "meson"
   "meson-python"
+  "cython"
+  "gcc-fortran" # Alternative compilers are also supported
 )
 optdepends=(
   "python-yaml: Better output during compilation"
@@ -53,8 +56,13 @@ build() {
 }
 
 check() {
+  # Stolen from python-numpy
+  local site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   cd "${_archive}"
-  pytest
+
+  python -m installer --destdir="${PWD}/tmp_install" dist/*.whl
+  cd "${PWD}/tmp_install"
+  PATH="${PWD}/usr/bin:${PATH}" PYTHONPATH="${PWD}/${site_packages}:${PYTHONPATH}" pytest
 }
 
 package() {
