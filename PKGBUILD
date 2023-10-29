@@ -36,7 +36,7 @@ build() {
 
 check() {
   cd "${_archive}"
-  python -m pytest
+  PYTHONPATH="." pytest
 }
 
 package() {
