@@ -1,13 +1,13 @@
 pkgbase = xrestop
 	pkgdesc = Uses the X-Resource extension to provide 'top' like statistics
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/xrestop
 	arch = x86_64
 	license = GPL
 	depends = libxres
 	depends = ncurses
-	source = https://xorg.freedesktop.org/archive/individual/app/xrestop-0.5.tar.bz2
-	md5sums = 5fb15fce4b643046df43e8179054773c
+	source = https://xorg.freedesktop.org/archive/individual/app/xrestop-0.6.tar.gz
+	md5sums = 1c11bc50190bdc6091bc72ed2991300f
 
 pkgname = xrestop
