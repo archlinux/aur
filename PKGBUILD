@@ -1,15 +1,15 @@
 # Maintainer: Sergei Shadoy <shadoysv@gmail.com>
 pkgname=work-break
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Work and rest time balancer for Windows / MacOS / Linux desktops"
+pkgdesc="Work and rest time balancer taking into account your current and today strain"
 arch=('x86_64')
 url="https://github.com/ShadoySV/work-break"
 license=('MIT')
 depends=('dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('b715b666c26bd0793fc3cb3d018c1a77e7345f203cd45e23fc005ded57604194')
+sha256sums=('d4a165ae7419fedc5fe3a555f7fe8883967776e05cfd016fb2cb0647862278a0')
 
 prepare() {
     cd "$pkgname-$pkgver"
