@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=4.10.3
+pkgver=4.11.1
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
@@ -24,12 +24,14 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "0001-kde-theme-injection-fix.patch"
         "0002-qt5-wayland-desktop-entry-fix.patch"
         "0003-qt5-lib-base-wayland-desktop-entry-fix.patch"
-        "0004-qt5-disable-webview-linux-compositor.patch")
-sha512sums=('1e7c0f32b4e17c1f1c39aa9a4f35ce2867324c4410a30fde2c2d6ca5d5fe59a84f58f93cb6b4f8c7ad04fa0adcaf5a276dd2aa7dee0ef34446e6bb95fafa49d6'
+        "0004-qt5-disable-webview-linux-compositor.patch"
+        "0005-qt5-lib-base-include-variant.patch")
+sha512sums=('0897846c652d62b7ce301ec4ac0b1df992685448a79e651efe66619a6203f5ac020cb606bc29212aa673994584b1560e4ca38e85f5095ecd818ae66f978aa73a'
             'e78f6c769c026214efaf988dc3a2aac632909f553c348fd357fe8dc353646866238c5e30bbb0f420a4352be6b4efa32e582f3e3d8390772889f8933f54db491c'
             '13eb112ea6adb4d73cbc2b8f91c751e4e64ab87b686867f1d0edaff43d92633d383f20171bb4f279fa7cbbb16a92e1c4d87657116791950122bd88df61097e48'
             '2a5d2bf1b18f00c886e59df189df532648d899c2bb9a6cca7a801269aa3f4528c41e4a6a1a7219880ed68815ea821b8de64ce0ad4de90baa07d5b4a9b92006a2'
-            '42cd4602adc58d968039d7046e957d3e16e5bd8f7d889d6438f8c684136367d104f40d0427d5c321d9f275584610d1d3ddec787f604bc949e317e6740c458bb9')
+            '42cd4602adc58d968039d7046e957d3e16e5bd8f7d889d6438f8c684136367d104f40d0427d5c321d9f275584610d1d3ddec787f604bc949e317e6740c458bb9'
+            '0857a8d2666d1e239a49c59214ce5e7e1f28401fff7207182eab297659cb62aaa222c1104512a49bb48770b693f0f3241388615814af7801d71e19e421182b0a')
 
 prepare() {
     cd tdesktop-$pkgver-full
@@ -37,6 +39,7 @@ prepare() {
     patch -Np1 -i "$srcdir"/0002-qt5-wayland-desktop-entry-fix.patch
     cd Telegram/lib_base
     patch -Np1 -i "$srcdir"/0003-qt5-lib-base-wayland-desktop-entry-fix.patch
+    patch -Np1 -i "$srcdir"/0005-qt5-lib-base-include-variant.patch
     cd ../../Telegram/lib_webview
     patch -RNp1 -i "$srcdir"/0004-qt5-disable-webview-linux-compositor.patch
 }
