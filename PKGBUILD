@@ -2,14 +2,14 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha
-pkgver=5.5.3
+pkgver=5.6
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
 url="http://nfs-ganesha.github.io/"
 license=(GPL3)
 depends=(glibc nfsidmap libcap krb5 util-linux-libs e2fsprogs xfsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs)
-makedepends=(cmake git lsb-release doxygen python-sphinx graphviz)
+makedepends=(cmake git lsb-release) # doxygen python-sphinx graphviz
 options=(!emptydirs)
 source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git#tag=V${pkgver}"
         "git+https://github.com/nfs-ganesha/ntirpc.git"
