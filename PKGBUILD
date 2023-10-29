@@ -9,7 +9,7 @@ pkgname=wine-ge-custom
 _srctag=GE-Proton8-21
 _commit=b10c813654c7d918c4297c70397b9391581dcc67
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -213,8 +213,8 @@ package() {
   i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib32/wine/i386-windows/*.{dll,exe}
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe}
 
-  find "$pkgdir"/usr/lib{,32}/wine -iname "*.a" -delete
-  find "$pkgdir"/usr/lib{,32}/wine -iname "*.def" -delete
+  #find "$pkgdir"/usr/lib{,32}/wine -iname "*.a" -delete
+  #find "$pkgdir"/usr/lib{,32}/wine -iname "*.def" -delete
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
