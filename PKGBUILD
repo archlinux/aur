@@ -12,12 +12,11 @@ pkgdesc='FIM (Fbi IMproved) is a highly customizable and scriptable image viewer
 arch=('i686' 'x86_64')
 url='https://www.nongnu.org/fbi-improved/'
 license=('GPL2')
-depends=('terminus-font')
+depends=('libexif' 'terminus-font')
 optdepends=('aalib: ASCII art support'
             'djvulibre: djvu support'
             'giflib: GIF support'
             'imagemagick: use convert for unrecognized files'
-            'libexif: EXIF support'
             'libjpeg-turbo: JPEG support'
             'libpng: PNG support'
             'libspectre: postscript support'
