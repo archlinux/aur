@@ -30,7 +30,7 @@ makedepends=('rust' 'git' 'clang' 'sh' 'make' 'diffutils')
 
 _pkgname=dmenu
 pkgname=$_pkgname-rs
-pkgver=5.5.1
+pkgver=5.5.3
 pkgrel=1
 pkgdesc="A 1:1 port of dmenu, rewritten in Rust"
 arch=('i686' 'x86_64')

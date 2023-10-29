@@ -1,6 +1,6 @@
 pkgbase = dmenu-rs
 	pkgdesc = A 1:1 port of dmenu, rewritten in Rust
-	pkgver = 5.5.1
+	pkgver = 5.5.3
 	pkgrel = 1
 	url = https://github.com/Shizcow/dmenu-rs
 	arch = i686
@@ -23,4 +23,3 @@ pkgbase = dmenu-rs
 	md5sums = SKIP
 
 pkgname = dmenu-rs
-
