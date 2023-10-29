@@ -1,7 +1,7 @@
 # Mantenedor: Mauricio de Lima <emauricio@uaiso.org>
 pkgname=uarchiso
 pkgver=73
-pkgrel=1
+pkgrel=2
 pkgdesc="Archiso for UaiSO"
 arch=('any')
 url="https://gitlab.com/uaiso/labs/uarchiso"
@@ -32,7 +32,5 @@ package() {
         # Set permissions to 0777
         chmod -R 755 "${pkgdir}/home/$USER/uArchiso"
 
-        # Change owner to the installing user
-        chown -R $USER:$USER "${pkgdir}/home/$USER/uArchiso"
     fi
 }
