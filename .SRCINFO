@@ -1,0 +1,21 @@
+pkgbase = python-vulkan-git
+	pkgdesc = The ultimate Python binding for Vulkan API
+	pkgver = 1.1.99.1.r8.gc858f33
+	pkgrel = 1
+	url = https://github.com/realitix/vulkan
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cffi
+	depends = vulkan-icd-loader
+	provides = python-vulkan
+	conflicts = python-vulkan
+	source = python-vulkan::git+https://github.com/realitix/vulkan.git
+	sha256sums = SKIP
+
+pkgname = python-vulkan-git
