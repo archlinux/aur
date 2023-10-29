@@ -2,9 +2,9 @@
 
 pkgname=ffmpeg-dektec
 pkgver=2023.09.0
-pkgrel=1
+pkgrel=2
 _ffmpegver=6.0
-_sdkver=2023.08.0
+_sdkver=2023.10.0
 pkgdesc="FFmpeg Integration for DekTec Devices"
 arch=('x86_64')
 url="https://www.dektec.com/products/SDK/ffmpeg/"
@@ -22,7 +22,7 @@ noextract=("FFmpeg_v${pkgver}.tar.gz")
 sha256sums=('57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082'
             'SKIP'
             '18d5f0fc4ded9ccc28978fcf345125d4a91a765eb503e7e61ddacd6ede9be003'
-            '144da46bb3c2be721682820ca33d4fc08d6545f31b3adbb906a90b5eb36e3fb3'
+            '8024de517096608628ce0657b0d0fab048145d988a9c5d520fc4328496492c85'
             '326ca3465aa61469bf8a9099a8d24c52234579a03ee3b86e093483c7be174422'
             'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'
             'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a'
@@ -60,6 +60,7 @@ build() {
 	PKG_CONFIG_PATH="${srcdir}/LinuxSDK/DTAPI/Lib/GCC7.5.0/pkgconfig" ./configure \
 	--prefix='/usr' \
 	--disable-shared \
+	--disable-htmlpages \
 	--enable-static \
 	--enable-small \
 	--enable-dektec \
@@ -68,7 +69,7 @@ build() {
 	# Fasttools
 	#make tools/qt-faststart
 	# Docs
-	make doc/ff{mpeg,play}.1
+	#make doc/ff{mpeg,play}.1
 	# Rename man files
 	cd doc
 	rename ffmpeg ffmpeg-dektec *.1
