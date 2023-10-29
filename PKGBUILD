@@ -1,4 +1,4 @@
-# Maintainer: Samuel Forestier <dev+archey@samuel.domains>
+# Maintainer: Samuel Forestier <samuel+archey@forestier.app>
 
 pkgname=archey4
 pkgver=4.14.2.0
