@@ -1,15 +1,21 @@
 pkgbase = python-sphinx-thebe
 	pkgdesc = Integrate interactive code blocks into your documentation with Thebe and Binder
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://sphinx-thebe.readthedocs.io
 	arch = any
 	license = MIT
-	checkdepends = python-nose
-	checkdepends = python-sphinx
-	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-thebe/sphinx-thebe-0.2.1.tar.gz
-	md5sums = 38b6df1fb77d7d67d48fdcb73004fa95
+	checkdepends = python-pytest-regressions
+	checkdepends = python-beautifulsoup4
+	makedepends = python-hatch-vcs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx_design
+	makedepends = python-sphinx-book-theme
+	makedepends = python-myst-nb
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_thebe/sphinx_thebe-0.3.0.tar.gz
+	md5sums = 6f5d8cd637d71999a3c231897281e865
 
 pkgname = python-sphinx-thebe
 	depends = python-sphinx>=4
@@ -18,3 +24,7 @@ pkgname = python-sphinx-thebe
 	optdepends = python-sphinx-book-theme>=0.4.0
 	optdepends = python-sphinx-copybutton
 	optdepends = python-sphinx_design
+	optdepends = python-sphinx-thebe-doc: Documentation for sphinx-thebe
+
+pkgname = python-sphinx-thebe-doc
+	pkgdesc = Documentation for Sphinx-Thebe extension
