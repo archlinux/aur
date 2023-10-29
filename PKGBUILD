@@ -2,7 +2,7 @@
 
 _pkgname=boiler-writter
 pkgname=${_pkgname}-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Console application to pull recent CS:GO matches'
 arch=('x86_64')
@@ -11,10 +11,13 @@ license=('GPL3')
 conflicts=('boiler-writter')
 provides=('boiler-writter')
 source=(
-    "$_pkgname.zip"::"https://github.com/akiver/$_pkgname/releases/download/v$pkgver/boiler-writter-linux-$pkgver.zip"
+    "${_pkgname}_${pkgver}.zip"::"https://github.com/akiver/$_pkgname/releases/download/v$pkgver/boiler-writter-linux-$pkgver.zip"
 )
 sha1sums=(
-    '4d6e656bed0402043f6c6291ff54e1b266a5a9e4'
+    '75925d221675c2a47927a6e9d25a420fb53e7d7b'
+)
+sha256sums=(
+    '578dccb831f9acce76d2024cd7a06ff9022234ff97b61985d08cd694342ab4c5'
 )
 
 package() {
