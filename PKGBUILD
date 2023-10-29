@@ -3,8 +3,8 @@
 
 pkgname=stm32cubemonitor
 _pkgname=STM32CubeMon
-_pkg_file_name=en.stm32cubemon-lin-v-1-6-0.zip
-pkgver=1.6.0
+_pkg_file_name=en.stm32cubemon-lin-v-1-7-0.zip
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time"
 arch=('x86_64')
@@ -34,7 +34,7 @@ DLAGENTS=("https::/usr/bin/curl \
               
    
 source=("${_pkg_file_name}"::"$_download_path")
-sha256sums=('0c1da67414bb84117c43950d082e3cca44634b3ccfe59327f96ab52d472b6663')
+sha256sums=('68f6fec8214fd21c6e2dbc872fc1f8d977f19d9c1bab1e4ff6b31e8855a3cc38')
 
 #    Extracted Files from ${_pkg_file_name}
 #    ├── driver
