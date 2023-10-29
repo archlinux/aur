@@ -1,23 +1,19 @@
 #!/bin/sh
-if [ -e /usr/lib/jvm/java-21-openjfx/lib ]; then
-        JAVAFXPATH=/usr/lib/jvm/java-21-openjfx/lib
+unset JFXPATH
+
+if [ -e /usr/lib/jvm/java-17-openjfx/lib/javafx.base.jar ]; then
+        JFXPATH=/usr/lib/jvm/java-17-openjfx/lib
 else
-        JAVAFXPATH=/usr/lib/jvm/java-21-openjdk/lib
+        JFXPATH=/usr/lib/jvm/java-17-openjdk/lib
 fi
 
 CP="/opt/bluej/boot.jar"
-#JAVAFXJARS="$JAVAFXPATH/javafx.base.jar"
-#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.controls.jar"
-#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.fxml.jar"
-#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.graphics.jar"
-#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.media.jar"
-#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.swing.jar"
-#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.web.jar"
-JAVAFXJARS=`ls -1 /opt/bluej/javafx* | paste -sd ":" -`
+JAVAFXJARS=`ls -1 $JFXPATH/javafx* | paste -sd ":" -`
+#JAVAFXJARS=`ls -1 /opt/bluej/javafx* | paste -sd ":" -`
 CP="$CP:$JAVAFXJARS"
 
-archlinux-java-run -a 21 -b 21 -- \
-        -Djdk.gtk.version=2 \
+archlinux-java-run -a 17 -b 17 -- \
+	-Djdk.gtk.version=2 \
         -Dawt.useSystemAAFontSettings=on -Xmx512M \
         -cp "$CP" bluej.Boot \
         "$@"
