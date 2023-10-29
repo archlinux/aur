@@ -2,7 +2,7 @@
 
 pkgname=go-chromecast-git
 _pkgname=go-chromecast
-pkgver=0.3.1.r0.g21976a4
+pkgver=0.3.1.r8.gc2af7da
 pkgrel=1
 pkgdesc='Implements a basic number of the google chromecast commands.'
 arch=('any')
