@@ -1,6 +1,6 @@
 pkgbase = push2talk-git
 	pkgdesc = Push to talk application.
-	pkgver = 1.0.2.r14.gb47f4d6
+	pkgver = 1.1.0.r0.gde66413
 	pkgrel = 1
 	url = https://github.com/cyrinux/push2talk
 	arch = x86_64

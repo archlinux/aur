@@ -1,6 +1,6 @@
 pkgname=push2talk-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.2.r14.gb47f4d6
+pkgver=1.1.0.r0.gde66413
 pkgrel=1
 pkgdesc="Push to talk application."
 arch=('x86_64' 'aarch64')
