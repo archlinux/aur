@@ -1,11 +1,11 @@
 pkgname=crane-gps-watch-git
 _pkgname=crane_gps_watch
-pkgver=20150824
+pkgver=20170125
 pkgrel=1
 pkgdesc="Linux client for Crane gps watch (from Aldi or Hofer). It reads from the watch and writes to '.tcx', Garmin Training Center file."
 arch=('any')
 url="https://github.com/mru00/crane_gps_watch"
-source=("git://github.com/mru00/crane_gps_watch.git")
+source=("git+https://github.com/mru00/crane_gps_watch.git")
 license=('GPL')
 depends=('libxml2')
 makedepends=('git')
