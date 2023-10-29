@@ -1,6 +1,6 @@
 pkgbase = ldid-git
 	pkgdesc = a tool used for ad-hoc codesigning iOS binaries
-	pkgver = v2.1.5.r63.g685ead2
+	pkgver = v2.1.5.r96.gd38b9ed
 	pkgrel = 1
 	url = https://github.com/ProcursusTeam/ldid
 	arch = any

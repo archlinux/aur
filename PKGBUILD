@@ -1,7 +1,7 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<'VW4xR2ZuQGdtYWlsLmNvbQo=')>
 
 pkgname=ldid-git
-pkgver=v2.1.5.r63.g685ead2
+pkgver=v2.1.5.r96.gd38b9ed
 pkgrel=1
 pkgdesc="a tool used for ad-hoc codesigning iOS binaries"
 arch=('any')
