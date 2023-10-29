@@ -1,0 +1,22 @@
+pkgbase = anytype-electron-bin
+	pkgdesc = Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users.
+	pkgver = 0.35.2
+	pkgrel = 1
+	url = https://anytype.io/
+	arch = x86_64
+	license = custom
+	depends = electron
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	depends = libsecret
+	depends = glib2
+	depends = hicolor-icon-theme
+	optdepends = org.freedesktop.secrets: for not having to sign in each time
+	provides = anytype
+	conflicts = anytype
+	conflicts = anytype-legacy
+	source = https://anytype-release.fra1.cdn.digitaloceanspaces.com/anytype_0.35.2_amd64.deb
+	sha256sums = 8cb6c12728322aa9217e10389294f61a276dc302440ad315644ad9e773f18e8a
+
+pkgname = anytype-electron-bin
