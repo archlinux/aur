@@ -1,13 +1,13 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 
 pkgname=plasma-pk-updates-git
-pkgver=r174.175927e
+pkgver=r288.25fee3c
 pkgrel=1
 pkgdesc="Plasma5 applet for software updates using PackageKit"
 arch=('any')
 url="https://invent.kde.org/system/plasma-pk-updates.git"
 license=('GPL')
-depends=('packagekit' 'plasma-workspace' 'kdoctools' 'kdesignerplugin' 'packagekit-qt5')
+depends=('packagekit' 'plasma-workspace' 'kdoctools5' 'kdesignerplugin' 'packagekit-qt5')
 makedepends=('git' 'extra-cmake-modules')
 source=('git+https://invent.kde.org/system/plasma-pk-updates.git')
 md5sums=('SKIP')
