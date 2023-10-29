@@ -1,7 +1,7 @@
 # Maintainer: Daniel Kirchner <daniel at ekpyron dot org>
 pkgname=ktxutils-git
 _pkgbase=ktxutils
-pkgver=r19.fc58a3c
+pkgver=r20.6f538eb
 pkgrel=1
 pkgdesc="Utilities for the KTX texture format"
 license=('MIT')
@@ -9,7 +9,7 @@ arch=('any')
 url="http://github.com/ekpyron/${_pkgbase}/"
 depends=('glfw' 'imagemagick' 'glew')
 makedepends=('cmake')
-source=("git+git://github.com/ekpyron/${_pkgbase}")
+source=("git+https://github.com/ekpyron/${_pkgbase}")
 md5sums=('SKIP')
 
 pkgver() {

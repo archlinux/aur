@@ -1,6 +1,6 @@
 pkgbase = ktxutils-git
 	pkgdesc = Utilities for the KTX texture format
-	pkgver = r19.fc58a3c
+	pkgver = r20.6f538eb
 	pkgrel = 1
 	url = http://github.com/ekpyron/ktxutils/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = ktxutils-git
 	depends = glfw
 	depends = imagemagick
 	depends = glew
-	source = git+git://github.com/ekpyron/ktxutils
+	source = git+https://github.com/ekpyron/ktxutils
 	md5sums = SKIP
 
 pkgname = ktxutils-git
-
