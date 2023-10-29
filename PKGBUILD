@@ -2,12 +2,12 @@
 # Contributor: Kazuo Teramoto < kaz.rag [at] gmail [dot] com >
 
 pkgname=stig-git
-pkgver=0.11.2a0.r14.a059b0b9
-pkgrel=3
+pkgver=v0.12.6a0.r1.gcb8fed5
+pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
-	 'python-pyxdg' 'python-blinker' 'python-natsort')
+	 'python-pyxdg' 'python-blinker' 'python-natsort' 'python-async-timeout')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-aiohttp-socks: proxy support'
 	    'python-pprofile: profiling'
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd stig
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
+	printf "%s" "$(git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
