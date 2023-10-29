@@ -10,7 +10,7 @@ depends=('pulseaudio' 'libevdev' 'libxkbcommon-x11' 'libinput')
 makedepends=('cargo' 'git' 'pkg-config' 'systemd-libs')
 conflicts=("push2talk" "push2talk-bin")
 provides=("push2talk")
-source=("${_pkgname}::git+$url.git#branch=feat/use-input-lib")
+source=("${_pkgname}::git+$url.git#branch=main")
 validpgpkeys=('C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E')
 sha256sums=('SKIP')
 

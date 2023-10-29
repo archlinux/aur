@@ -17,7 +17,7 @@ pkgbase = push2talk-git
 	provides = push2talk
 	conflicts = push2talk
 	conflicts = push2talk-bin
-	source = push2talk::git+https://github.com/cyrinux/push2talk.git#branch=feat/use-input-lib
+	source = push2talk::git+https://github.com/cyrinux/push2talk.git#branch=main
 	validpgpkeys = C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E
 	sha256sums = SKIP
 
