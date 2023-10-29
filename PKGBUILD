@@ -12,15 +12,11 @@ depends=(curl qt5-base libevent)
 optdepends=('transmission-cli: daemon and web support')
 makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools git cmake)
 source=(git+https://github.com/transmission/transmission.git
-        transmission-cli.sysusers
-        transmission-cli.tmpfiles
         transmission-qt-ssl.patch)
 conflicts=('transmission-qt' 'transmission-qt-git')
 provides=('transmission-qt')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            'd0f2b5668fec0991101b29245bcb47f82ca26b22abd81bf16a48f7825f65271a')
 
 prepare() {
   cd $srcdir/transmission
@@ -54,8 +50,6 @@ package() {
 
   cd ../..
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/transmission-qt/COPYING"
-  install -Dm644 qt/icons/transmission.png \
+  install -Dm644 icon.png \
     "$pkgdir/usr/share/pixmaps/transmission-qt.png"
-  install -Dm644 qt/transmission-qt.desktop \
-    "$pkgdir/usr/share/applications/transmission-qt.desktop"
 }

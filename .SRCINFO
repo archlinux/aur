@@ -22,13 +22,8 @@ pkgbase = transmission-qt-ssl-git
 	conflicts = transmission-qt
 	conflicts = transmission-qt-git
 	source = git+https://github.com/transmission/transmission.git
-	source = transmission-cli.sysusers
-	source = transmission-cli.tmpfiles
 	source = transmission-qt-ssl.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = d0f2b5668fec0991101b29245bcb47f82ca26b22abd81bf16a48f7825f65271a
 
 pkgname = transmission-qt-ssl-git
-
