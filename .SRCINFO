@@ -1,6 +1,6 @@
 pkgbase = f1multiviewer-bin
 	pkgdesc = Unofficial desktop client for F1TV
-	pkgver = 1.28.1
+	pkgver = 1.28.2
 	pkgrel = 1
 	url = https://multiviewer.app
 	install = f1multiviewer-bin.install
@@ -13,9 +13,9 @@ pkgbase = f1multiviewer-bin
 	depends = xdg-utils
 	provides = f1multiviewer
 	conflicts = f1multiviewer
-	source = https://releases.multiviewer.app/download/132935687/MultiViewer.for.F1-linux-x64-1.28.1.zip
+	source = https://releases.multiviewer.app/download/132940825/MultiViewer.for.F1-linux-x64-1.28.2.zip
 	source = f1multiviewer.desktop
-	sha256sums = e0754c5069bca1982167a9a843cd168c6c73a957408926a20f0d50b5c16e81b0
+	sha256sums = d1e74871b3b9b1d5d05e72abfbefd5a312165480db6044ff4d0dd8f3e6c9cbe8
 	sha256sums = 00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a
 
 pkgname = f1multiviewer-bin
