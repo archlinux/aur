@@ -1,33 +1,34 @@
-# Maintainer: zoe <aur at fully dot automated dot ee ignore everything else after the first ee>
+# Maintainer : Ben Song <bensongsyz@gmail.com>
+# Contributor: zoe <aur at fully dot automated dot ee ignore everything else after the first ee>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='ktechlab'
-pkgver=0.50.0
-pkgrel=2
+pkgver=0.51.0
+pkgrel=1
 pkgdesc='IDE for microcontrollers and electronic simulation'
 arch=('x86_64')
 url="https://invent.kde.org/sdk/ktechlab"
 license=('GPL2')
 depends=('hicolor-icon-theme'
-        'kconfig'
-        'kcoreaddons'
-        'kdoctools'
+        'kconfig5'
+        'kcoreaddons5'
+        'kdoctools5'
         'khtml'
-        'kiconthemes'
-        'ki18n'
-        'kio'
-        'kparts'
-        'ktexteditor'
-        'ktextwidgets'
-        'solid'
-        'kwidgetsaddons'
-        'kwindowsystem'
-        'kxmlgui'
+        'kiconthemes5'
+        'ki18n5'
+        'kio5'
+        'kparts5'
+        'ktexteditor5'
+        'ktextwidgets5'
+        'solid5'
+        'kwidgetsaddons5'
+        'kwindowsystem5'
+        'kxmlgui5'
         'qt5-base')
 makedepends=('extra-cmake-modules')
 optdepends=('gpsim: for simulating PIC microcontrollers')
 source=("https://download.kde.org/unstable/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('cf0fe078f8afad7f3237a4e052dd2cace185d390a02f15ebe60cccabcbe8fdfe')
+sha256sums=('046b9ce1f2c2a93e1da734a416674a5bb5da3203ac773d49ed693b8492f6d212')
 
 build() {
   export CFLAGS+=" ${CPPFLAGS}"
