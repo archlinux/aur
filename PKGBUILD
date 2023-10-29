@@ -1,21 +1,24 @@
-pkgname=python-icmplib
-pkgver=3.0.3
+pkgbase='python-icmplib'
+pkgname=('python-icmplib')
+_module='icmplib'
+pkgver='3.0.4'
 pkgrel=1
 pkgdesc="Easily forge ICMP packets and make your own ping and traceroute."
-depends=('python')
-makedepends=('python-setuptools')
-arch=('x86_64')
 url="https://github.com/ValentinBELYN/icmplib"
-license=('LGPL3')
-source=("https://github.com/ValentinBELYN/icmplib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b628d930ff454bd2094c1560c1884626251ef895fdba5ed7db8a841bbe8875cf')
+depends=('python')
+makedepends=('python-build' 'python-installer')
+license=('LGPL')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
+sha256sums=('57868f2cdb011418c0e1d5586b16d1fabd206569fe9652654c27b6b2d6a316de')
 
 build() {
-  cd "${srcdir}/icmplib-$pkgver"
-  python setup.py build
+    cd "${srcdir}/${_module}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/icmplib-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
