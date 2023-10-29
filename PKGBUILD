@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 _electronversion=27
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
@@ -23,10 +23,9 @@ build() {
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export PNPM_HOME="$srcdir/pnpm-home"
   pnpm install --frozen-lockfile
+  pnpm clean
   pnpm build
-  ./node_modules/.bin/yarpm-pnpm run clean && \
-    ./node_modules/.bin/yarpm-pnpm run build && \
-    ./node_modules/.bin/electron-builder --linux dir \
+  ./node_modules/.bin/electron-builder --linux dir \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
 }
 
