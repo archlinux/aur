@@ -2,7 +2,7 @@
 
 pkgname=litellm
 pkgver=0.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Call all LLM APIs using the OpenAI format'
 arch=(any)
 url='https://pypi.org/project/litellm/'
@@ -11,6 +11,7 @@ depends=(
 	'uvicorn'
 	'python'
 	'python-appdirs'
+	'python-backoff'
 	'python-click'
 	'python-dotenv'
 	'python-fastapi'
@@ -18,6 +19,7 @@ depends=(
 	'python-jinja'
 	'python-openai'
 	'python-tiktoken'
+	'python-tomli-w'
 	'python-tokenizers'
 )
 makedepends=(
