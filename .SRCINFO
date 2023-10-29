@@ -1,15 +1,14 @@
 pkgbase = arcticons-icon-theme-git
 	pkgdesc = A monotone line-based icon pack for android - freedesktop version (git version)
-	pkgver = 7.3.7.r0.g844f78947
+	pkgver = r31.a18d75e
 	pkgrel = 1
-	url = https://github.com/Donnnno/Arcticons
+	url = https://github.com/Donnnno/Arcticons-Linux
 	arch = any
 	license = GPL3
-	optdepends = inkscape: for generating the symbolic icons
 	provides = arcticons-icon-theme
 	conflicts = arcticons-icon-theme
 	options = !strip
-	source = git+https://github.com/Donnnno/Arcticons.git
+	source = git+https://github.com/Donnnno/Arcticons-Linux.git
 	sha512sums = SKIP
 
 pkgname = arcticons-icon-theme-git
