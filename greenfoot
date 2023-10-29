@@ -1,17 +1,18 @@
 #!/bin/sh
-if [ -e /usr/lib/jvm/java-11-openjfx/lib ]; then
-        JAVAFX_HOME=/usr/lib/jvm/java-17-openjfx/lib
+if [ -e /usr/lib/jvm/java-17-openjfx/lib/javafx.base.jar ]; then
+        JVMPATH=/usr/lib/jvm/java-17-openjfx/lib
 else
-        JAVAFX_HOME=/usr/lib/jvm/java-17-openjdk/lib
+        JVMPATH=/usr/lib/jvm/java-17-openjdk/lib
 fi
 
-JAVAFX_CP="$JAVAFX_HOME/javafx.base.jar:$JAVAFX_HOME/javafx.controls.jar:$JAVAFX_HOME/javafx.fxml.jar:$JAVAFX_HOME/javafx.graphics.jar:$JAVAFX_HOME/javafx.media.jar:$JAVAFX_HOME/javafx.swing.jar:$JAVAFX_HOME/javafx-swt.jar:$JAVAFX_HOME/javafx.web.jar"
+CP="/opt/greenfoot/boot.jar"
+JAVAFXJARS=`ls -1 $JVMPATH/javafx* | paste -sd ":" -`
+CP="$CP:$JVMPATH/tools.jar:$JAVAFXJARS"
 
 archlinux-java-run -a 17 -b 17 -- -Djavafx.embed.singleThread=true \
-        -Dawt.useSystemAAFontSettings=on \
-        -cp /opt/greenfoot/bluej.jar:/usr/lib/jvm/default/lib/tools.jar:$JAVAFX_CP bluej.Boot \
+        -Dawt.useSystemAAFontSettings=on -Xmx512M \
+        -cp "$CP" bluej.Boot \
         -greenfoot=true \
         -bluej.compiler.showunchecked=false \
         -greenfoot.url.javadoc=file:///usr/share/doc/greenfoot/API \
-        -javafxpath=$JAVAFX_CP \
         "$@"
