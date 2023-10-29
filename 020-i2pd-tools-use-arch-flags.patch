@@ -1,21 +1,22 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -7,15 +7,15 @@ LIBI2PD_PATH = $(I2PD_PATH)/libi2pd
+@@ -7,16 +7,16 @@ LIBI2PD_PATH = $(I2PD_PATH)/libi2pd
  LIBI2PD_CLIENT_PATH = $(I2PD_PATH)/libi2pd_client
  
  CXX ?= g++
--CXXFLAGS = -Wall -std=c++17
-+CXXFLAGS += -Wall -std=c++17
- INCFLAGS = -I/usr/include/i2pd
+-CXXFLAGS = -Wall -std=c++17 -O2
++CXXFLAGS += -Wall -std=c++17 -O2
+ INCFLAGS = -I$(LIBI2PD_PATH) -I$(LIBI2PD_CLIENT_PATH)
  DEFINES = -DOPENSSL_SUPPRESS_DEPRECATED
  
 -LDFLAGS = 
 +LDFLAGS += 
- LDLIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
+ LDLIBS = $(I2PD_PATH)/$(I2PD_LIB) -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz 
+ 
  
  ifeq ($(UNAME),Linux)
 -	CXXFLAGS += -g
-+	CXXFLAGS +=
++	CXXFLAGS += 
  else ifeq ($(UNAME),Darwin)
  	CXXFLAGS += -g
  else ifeq ($(UNAME),FreeBSD)

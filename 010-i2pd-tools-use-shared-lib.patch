@@ -1,29 +1,31 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -8,11 +8,11 @@ LIBI2PD_CLIENT_PATH = $(I2PD_PATH)/libi2
+@@ -8,11 +8,11 @@ LIBI2PD_CLIENT_PATH = $(I2PD_PATH)/libi2pd_client
  
  CXX ?= g++
- CXXFLAGS = -Wall -std=c++17
+ CXXFLAGS = -Wall -std=c++17 -O2
 -INCFLAGS = -I$(LIBI2PD_PATH) -I$(LIBI2PD_CLIENT_PATH)
 +INCFLAGS = -I/usr/include/i2pd
  DEFINES = -DOPENSSL_SUPPRESS_DEPRECATED
  
  LDFLAGS = 
--LDLIBS = $(I2PD_PATH)/$(I2PD_LIB) -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
-+LDLIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
+-LDLIBS = $(I2PD_PATH)/$(I2PD_LIB) -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz 
++LDLIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz 
+ 
  
  ifeq ($(UNAME),Linux)
- 	CXXFLAGS += -g
-@@ -43,45 +43,45 @@ else
- 	LDFLAGS += -s -static
+@@ -45,43 +45,43 @@ else
  endif
  
--all: $(I2PD_LIB) keygen keyinfo famtool routerinfo regaddr regaddr_3ld vain i2pbase64 offlinekeys b33address regaddralias x25519 verifyhost
-+all: keygen keyinfo famtool routerinfo regaddr regaddr_3ld vain i2pbase64 offlinekeys b33address regaddralias x25519 verifyhost
  
+-all: $(I2PD_LIB) vain keygen keyinfo famtool routerinfo regaddr regaddr_3ld i2pbase64 offlinekeys b33address regaddralias x25519 verifyhost 
+-vain:	vain.o $(I2PD_LIB)
++all: vain keygen keyinfo famtool routerinfo regaddr regaddr_3ld i2pbase64 offlinekeys b33address regaddralias x25519 verifyhost 
++vain:	vain.o
+ 	$(CXX) -o vain $(LDFLAGS) vain.o $(LDLIBS)
 -routerinfo: routerinfo.o $(I2PD_LIB)
 +routerinfo: routerinfo.o
- 	$(CXX) -o routerinfo $(LDFLAGS) routerinfo.o $(LDLIBS)
+ 	$(CXX) -o routerinfo $(LDFLAGS) routerinfo.o $(LDLIBS) -latomic
  
 -keygen: keygen.o $(I2PD_LIB)
 +keygen: keygen.o
@@ -35,7 +37,7 @@
  
 -famtool: famtool.o $(I2PD_LIB)
 +famtool: famtool.o
- 	$(CXX) -o famtool $(DEFINES) $(LDFLAGS) famtool.o $(LDLIBS)
+ 	$(CXX) -o famtool $(DEFINES) $(LDFLAGS) famtool.o $(LDLIBS) -latomic
  
 -regaddr: regaddr.o $(I2PD_LIB)
 +regaddr: regaddr.o
@@ -44,10 +46,6 @@
 -regaddr_3ld: regaddr_3ld.o $(I2PD_LIB)
 +regaddr_3ld: regaddr_3ld.o
  	$(CXX) -o regaddr_3ld $(DEFINES) $(LDFLAGS) regaddr_3ld.o $(LDLIBS)
- 
--vain: vanitygen.o $(I2PD_LIB)
-+vain: vanitygen.o
- 	$(CXX) -o vain $(DEFINES) $(LDFLAGS) vanitygen.o $(LDLIBS)
  
 -i2pbase64: i2pbase64.o $(I2PD_LIB)
 +i2pbase64: i2pbase64.o
@@ -85,7 +83,7 @@
  count:
 @@ -105,7 +105,7 @@ clean-obj:
  clean-bin:
- 	rm -f b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo vain x25519 verifyhost
+ 	rm -f b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo x25519 verifyhost vain
  
 -clean: clean-i2pd clean-obj clean-bin
 +clean: clean-obj clean-bin
