@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=runst-git
-pkgver=0.1.4.r0.gb7c82db
+pkgver=0.1.5.r31.g2087a22
 pkgrel=1
 pkgdesc="A dead simple notification daemon (git)"
 arch=('x86_64')

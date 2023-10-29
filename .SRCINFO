@@ -1,6 +1,6 @@
 pkgbase = runst-git
 	pkgdesc = A dead simple notification daemon (git)
-	pkgver = 0.1.4.r0.gb7c82db
+	pkgver = 0.1.5.r31.g2087a22
 	pkgrel = 1
 	url = https://github.com/orhun/runst
 	arch = x86_64
