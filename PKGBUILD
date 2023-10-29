@@ -6,7 +6,7 @@
 _pkgbase=sway
 pkgname=sway-hidecursor-leftbar
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -43,11 +43,14 @@ optdepends=(
   'swaylock: Screen locker'
   'waybar: Highly customizable bar'
   'xorg-xwayland: X11 support'
+  'xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking'
+  'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
 )
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
         "50-systemd-user.conf"
         "sys_nice_user_xkb_configs.patch"
+        "sway-portals.conf"
         "hidecursor.patch"
         "leftbar.patch")
 install=sway.install
@@ -55,6 +58,7 @@ sha512sums=('1504312a199608532e22336c5031e8f4749f5102ab321d13d97a1f93d49c8ec435e
             'SKIP'
             'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137'
             '156719e93d0213d1b54ce6e3a9b2dcc9246da5689dd2d3281546f9c042cbc69072f99b087e112fe777dcd786d2b9d1be1e1c9200feddffb5e2d16f8dfb27515d'
+            '091a205bca875b6a78150b5b14ffaca996b7c7c3d6f68910e5891e5409ca070d27b3307e8c4916c1562a998d5bcb94406e961bf376d86e64c8ddf5afe5b41f76'
             'f6068630b09d8dde28244cdaffb94038894b42d0f936ce1fe51aa85003e6a6724bee0d96ad842ff1649d3e4f37eeca68fcd9b415f137df98cb72a7fa18cbe790'
             '044a0d4b5c77c0b3de9a16a9cd4ee18ab3bfffccc4c874dc498765e02cb9c758e5febd8b3649d43a85f229c9ab78bf2ab0e4e925872f47c34702e19c20e60cd2')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
@@ -94,6 +98,7 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "$_pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
+  install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
 
   for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
     install -Dm755 "$_pkgbase-$pkgver/contrib/$util" -t \
