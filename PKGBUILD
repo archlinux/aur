@@ -3,11 +3,11 @@
 _pyname=dallecli
 pkgname=python-$_pyname
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI/TUI for OpenAI’s DALL-E (2) image generation model'
 arch=(any)
 url="https://github.com/raiyanyahya/dallecli/"
-license=(Apache)
+license=(MIT)
 _pydeps=(click openai rich idna pillow)
 depends=(python
          "${_pydeps[@]/#/python-}")
