@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Openwebmonitor3
+Comment=通用型网页内容监控工具
+Exec=openwebmonitor3
+Icon=openwebmonitor3
+Terminal=false
+StartupNotify=false
+Categories=Application;
