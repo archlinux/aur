@@ -2,8 +2,8 @@
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=firefox-extension-localcdn
-pkgver=2.6.57
-_commit=db18a578da82bde0d814736000326558ab7cc681
+pkgver=2.6.58
+_commit=0a4d916724e873d8b6109ab37e1d0eda68cf2437
 pkgrel=1
 pkgdesc='LocalCDN addon for Firefox'
 arch=('any')
