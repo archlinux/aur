@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur ät dbrgn döt ch>
 
 pkgname=minidump-stackwalk
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A CLI minidump analyzer"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('e6f294ee946b2870a9661cb3592d9a53ad36145c18eee60a301a6c9b1f07ed22')
+sha256sums=('3bf0694b81cd5a100d7a6d85afb5b6278e6b4c35cf115842eccb6052ec528f8b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit 1
