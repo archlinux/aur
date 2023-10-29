@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 
 pkgname=usdtweak
-pkgver=0.49.g7a83aef
+pkgver=0.56.gb45c3f3
 pkgrel=1
 pkgdesc='USD Standalone Editor'
 arch=(x86_64)
@@ -30,10 +30,14 @@ prepare() {
 	# Change config file to .config folder
 	sed -i 's/\/\./\/.config\//g' \
 			${srcdir}/$pkgname/src/resources/ResourcesLoader.cpp
+	
+	# Use c++17 standard
+	sed -i 's|set(CMAKE_CXX_STANDARD 14)|set(CMAKE_CXX_STANDARD 17)|g' \
+			${srcdir}/$pkgname/CMakeLists.txt
 }
-			
+
 build() {
-	export CC=clang && export CXX=clang++
+# 	export CC=clang && export CXX=clang++
 	
 	_CMAKE_FLAGS+=(
 		-DBUILD_SHARED_LIBS=OFF
