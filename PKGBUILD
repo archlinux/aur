@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -168,6 +168,7 @@ build() {
         --enable-shared \
         --disable-static \
         --disable-stripping \
+        --disable-htmlpages \
         --enable-gray \
         \
         --enable-alsa \
