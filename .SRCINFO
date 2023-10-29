@@ -1,0 +1,14 @@
+pkgbase = ytdl-shim
+	pkgdesc = Provide youtube-dl CLI and python imports with yt-dlp
+	pkgver = 2023.10.13
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	makedepends = python
+	provides = youtube-dl=2023.10.13
+	conflicts = youtube-dl
+	source = youtube-dl.py
+	sha256sums = 4b3d042525b05d84bb892a864a3ae832cc923bd630ea7e8b4d91ae9c4ec555db
+
+pkgname = ytdl-shim
+	depends = yt-dlp
