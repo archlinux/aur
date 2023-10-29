@@ -1,6 +1,6 @@
 PREFIX=/usr/share
 
-printer_model=""mfcj4335dw""
+printer_model=""mfcj4440dw""
 printer_name=`echo $printer_model | tr '[a-z]' '[A-Z]'`
 device_name=`echo $printer_name | eval sed -e 's/MFC/MFC-/' -e 's/DCP/DCP-/' -e 's/HL/HL-/' -e 's/FAX/FAX-/'`
 

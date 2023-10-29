@@ -1,19 +1,21 @@
+# Based on brother-mfc-j4340dw, which is:
 # Based on brother-mfc-j4335dw, which is:
 # Based on brother-mfc-j5845dw and brother-mfc-l2710dw
 #
 # Corrected according to the RPM postinstall script
 # and the driver install script (cupswrapper/cupswrapper${_model})
-_model=mfcj4340dw
-_device_name=MFC-J4340DW
-pkgname=brother-mfc-j4340dw
+_model=mfcj4440dw
+_device_name=MFC-J4440DW
+pkgname=brother-mfc-j4440dw
 pkgver=3.5.0
 pkgrel=1
 pkgdesc="LPR driver and CUPS wrapper for Brother ${_device_name} printer"
 arch=("i686" "x86_64")
-url="https://www.brother.co.uk/support/mfc-j4340dw/downloads"
+url="https://www.brother.co.uk/support/mfc-j4440dw/downloads"
 license=("EULA")
-source=("https://download.brother.com/welcome/dlf105295/${_model}pdrv-${pkgver}-${pkgrel}.i386.rpm")
-sha256sums=('8a399d8716bd6117730b69463834ffe702af4a7da504dc8432c30a8b9ba89784')
+source=("https://download.brother.com/welcome/dlf105300/${_model}pdrv-${pkgver}-${pkgrel}.i386.rpm")
+
+sha256sums=('ad1153e83654e37acd05341ef904f6bbd6637a0aff99f78700233f52d1aab2f2')
 depends=('perl' 'cups')
 depends_x86_64=('lib32-glibc')
 optdepends=('brscan5')
