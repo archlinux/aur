@@ -10,6 +10,6 @@ pkgbase = elite-image-mounter
 	depends = sudo
 	optdepends = ccd2iso: BIN/IMG conversion support
 	source = https://github.com/siyia2/mounter_elite/archive/v1.5.0.tar.gz
-	md5sums = b675c3c0efd4b9e92fd03de30f7a354b
+	md5sums = 53559ca6cb1cbeafb5247202b3be3753
 
 pkgname = elite-image-mounter
