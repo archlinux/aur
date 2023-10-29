@@ -2,9 +2,9 @@
 
 _pkgname=openssl
 pkgname=openssl-3.2
-_pkgver=3.2.0-alpha2
+_pkgver=3.2.0-beta1
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -15,7 +15,7 @@ optdepends=('ca-certificates' 'perl')
 provides=('libcrypto.so' 'libssl.so')
 source=("https://www.openssl.org/source/${_pkgname}-${_pkgver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('b2a7c8860236129ecf958e2f1feb2ac735a5d5fe63c36746fcdf49850e744176'
+sha256sums=('68dcd42812b136c14ce6f7676f55375d0d3854f67c560d35372957e26d99c5ec'
             'SKIP'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
