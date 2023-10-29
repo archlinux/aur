@@ -1,0 +1,13 @@
+pkgbase = stardict-bobotig-it
+	pkgdesc = Italian monolingual dictionary, based on Wiktionary, StarDict file format, BoboTiG's daily dumps
+	pkgver = 2023_10_20
+	pkgrel = 1
+	url = https://github.com/BoboTiG/ebook-reader-dict
+	arch = any
+	license = cc-by-sa-3.0
+	source = https://github.com/BoboTiG/ebook-reader-dict/releases/download/it/dict-it-it.zip
+	source = https://github.com/BoboTiG/ebook-reader-dict/releases/download/it/dict-it-it.zip.sha256
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = stardict-bobotig-it
