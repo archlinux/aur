@@ -1,41 +1,53 @@
-# Contributor: tectonic-deploy <sasha+tectonic@hackafe.net>
-# Contributor: Daniel M. Capella <polyzen@archlinux.org>
-# Contributor: Jan Tojnar <jtojnar@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: éclairevoyant
+# Contributor: tectonic-deploy <sasha+tectonic at hackafe dot net>
+# Contributor: Daniel M. Capella <polyzen at archlinux dot org>
+# Contributor: Jan Tojnar <jtojnar at gmail dot com>
+# Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
-pkgname=tectonic-git
-pkgver=20220910.3428aa5c
+_pkgname=tectonic
+pkgname="$_pkgname-git"
+pkgver=0.0.2.r1250.41168a9f
 pkgrel=1
-arch=('x86_64')
+epoch=1
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
+arch=(x86_64)
 url=https://tectonic-typesetting.github.io/
-license=('MIT')
-depends=('fontconfig' 'harfbuzz-icu' 'openssl')
-makedepends=('rust' 'gcc' 'pkg-config' 'git')
-conflicts=('tectonic')
-provides=('tectonic')
-source=("git+https://github.com/tectonic-typesetting/tectonic.git" "git+https://github.com/tectonic-typesetting/tectonic-staging.git")
-sha512sums=('SKIP'
-            'SKIP')
-options=('!lto' '!makeflags')
-
-pkgver() {
-  cd ${pkgname%-git}
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-parse --short HEAD)
-}
+license=(MIT)
+depends=(fontconfig harfbuzz-icu openssl)
+makedepends=(rust gcc pkg-config git)
+conflicts=(tectonic)
+provides=(tectonic)
+source=(
+	"git+https://github.com/tectonic-typesetting/tectonic.git"
+	"git+https://github.com/tectonic-typesetting/tectonic-staging.git"
+)
+b2sums=('SKIP'
+        'SKIP')
+options=(!lto !makeflags)
 
 prepare() {
-  cd ${pkgname%-git}
-  git submodule update --init
+	cd $_pkgname
+	git submodule init reference_sources
+	git submodule set-url reference_sources "$srcdir/tectonic-staging"
+	git submodule init reference_sources
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+pkgver() {
+	git -C $_pkgname describe --tags | sed 's/^cfg_support-v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-  cargo build --release --features external-harfbuzz
+	cd $_pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --features external-harfbuzz
 }
 
 package() {
-  cd ${pkgname%-git}
-  install -Dm755 ${CARGO_TARGET_DIR:-target}/release/tectonic "$pkgdir"/usr/bin/tectonic
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd $_pkgname
+	install -Dm755 target/release/tectonic -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
