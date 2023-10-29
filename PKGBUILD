@@ -2,9 +2,9 @@
 
 _pkgname=flycast
 pkgname="$_pkgname"
-pkgver=2.1
-_tag="V${pkgver%%.r*}"
-pkgrel=3
+pkgver=2.2
+_tag="v${pkgver%%.r*}"
+pkgrel=1
 pkgdesc='A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator'
 arch=('x86_64' 'i686')
 url="https://github.com/flyinghead/flycast"
@@ -49,15 +49,8 @@ else
   _pkgsrc="$_pkgname"
   source+=(
     "$_pkgsrc"::"git+$url.git"
-
-    # submodules
-    'Spout'::'git+https://github.com/vkedwardli/Spout2'
-    'Syphon'::'git+https://github.com/vkedwardli/Syphon-Framework'
   )
   sha256sums+=(
-    'SKIP'
-
-    'SKIP'
     'SKIP'
   )
 
@@ -83,8 +76,12 @@ source+=(
   "libchdr"::"git+https://github.com/flyinghead/libchdr"
   "luabridge"::"git+https://github.com/vinniefalco/LuaBridge"
   "oboe"::"git+https://github.com/google/oboe"
+  'Spout'::'git+https://github.com/vkedwardli/Spout2'
+  'Syphon'::'git+https://github.com/vkedwardli/Syphon-Framework'
 )
 sha256sums+=(
+  'SKIP'
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -100,14 +97,16 @@ _prepare_submodules_common() {
     # submodules for flycast
     cd "$_pkgsrc"
     local -A _submodules=(
-      ['breakpad']='core/deps/breakpad'
+      ['SDL']='core/deps/SDL'
+      ['Spout']='core/deps/Spout'
+      ['Syphon']='core/deps/Syphon'
+      ['Vulkan-Headers']='core/deps/Vulkan-Headers'
       ['VulkanMemoryAllocator']='core/deps/VulkanMemoryAllocator'
+      ['breakpad']='core/deps/breakpad'
       ['glslang']='core/deps/glslang'
       ['libchdr']='core/deps/libchdr'
-      ['Vulkan-Headers']='core/deps/Vulkan-Headers'
-      ['SDL']='core/deps/SDL'
-      ['oboe']='core/deps/oboe'
       ['luabridge']='core/deps/luabridge'
+      ['oboe']='core/deps/oboe'
     )
      for key in ${!_submodules[@]} ; do
       git submodule init "${_submodules[${key}]}"
@@ -118,31 +117,11 @@ _prepare_submodules_common() {
 }
 
 _prepare_submodules_git() {
-  (
-    # submodules for flycast
-    cd "$_pkgsrc"
-    local -A _submodules=(
-      ['Spout']='core/deps/Spout'
-      ['Syphon']='core/deps/Syphon'
-    )
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
-    done
-  )
+  : # submodules currently in sync
 }
 
 _prepare_common() {
-  (
-    cd "$_pkgsrc"
-
-    # add missing includes
-    local _file='core/deps/breakpad/src/client/linux/handler/minidump_descriptor.h'
-    if ! grep cstdint "$_file" > /dev/null ; then
-      sed -Ei 's@^(#include "common/using_std_string.h")$@\1\n#include <cstdint>@' "$_file"
-    fi
-  )
+  : # not currently needed
 }
 
 build() {
