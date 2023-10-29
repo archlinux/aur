@@ -1,11 +1,11 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-drivers-dkms
-pkgver=2023.08.0
+pkgver=2023.10.0
 pkgrel=1
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
-url="https://www.dektec.com/downloads/SDK/"
+url="https://www.dektec.com/downloads/SDK/#linux"
 license=('BSD')
 depends=('dkms')
 optdepends=(
@@ -19,22 +19,19 @@ source=(
 	'dkms.conf'
 	'Makefile'
 )
-sha256sums=('144da46bb3c2be721682820ca33d4fc08d6545f31b3adbb906a90b5eb36e3fb3'
+sha256sums=('8024de517096608628ce0657b0d0fab048145d988a9c5d520fc4328496492c85'
             '3ab98092aad33786c1766b8d0b29636c5bb1ccdb116cbfe32608c972b99d4d47'
             '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314')
 
 prepare() {
-    cd "$srcdir"
+	# Set version
+	sed -e "s|@PKGVER@|$pkgver|" -i dkms.conf -i Makefile
 
-    # Fix version syntax
-    sed -e "s|@PKGVER@|$pkgver|" -i dkms.conf -i Makefile
-
-    # Insert patches below this line
+	# Insert patches below this line
 }
 
 
 package() {
-	cd "$srcdir"
 	mkdir -p "$pkgdir"/usr/src/$pkgname-$pkgver
 	cp -RL "$srcdir"/LinuxSDK/* "$pkgdir"/usr/src/$pkgname-$pkgver
 	install -Dm644 dkms.conf "$pkgdir"/usr/src/$pkgname-$pkgver
