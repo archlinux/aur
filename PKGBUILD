@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=bitsnpicas
-pkgver=2.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Bitmap and Emoji Font Creation and Conversion Tools.'
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "bitsnpicas.desktop"
 )
 sha256sums=(
-  '0b3a5a1dcd7641a80bda8edd4f6f63d6a5f09c804e0ef8a69903273ad24dcdee'
+  'c09148a3637af9193708eba1e90670d1de4844d135f6fdbbdc547b317785e93b'
   '71eede1d61dde3ffb75013b2bbf48614eb6b50658d64167a30005b230438275d'
   '8219dae573acdc5939657d0d8dcaf818ae59b5bc8c5e1d6de17670b18fd0c3b9'
 )
