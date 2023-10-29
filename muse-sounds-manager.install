@@ -1,0 +1,12 @@
+pre_remove() {
+	# Kill the Muse Hub Client application
+    if pgrep -f Muse.Client.Linux; then killall Muse.Client.Linux; fi
+}
+
+post_remove() {
+	# Post Uninstall (Delete files)
+    if [ $1 = "remove" ]; then
+        rm -rf /tmp/muse-hub
+        rm -rf /tmp/muse-sounds-manager  
+    fi
+}
