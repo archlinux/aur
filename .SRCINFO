@@ -1,13 +1,13 @@
 pkgbase = audiowarden
 	pkgdesc = Skip spotify songs you don't like
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/nroi/audiowarden
 	arch = x86_64
 	license = MIT
 	source = audiowarden.service
 	sha256sums = a8789704183f5bb551807fff056935c047ddf6c0a72eeb0047ee0ceb4777f3cb
-	source_x86_64 = https://github.com/nroi/audiowarden/releases/download/0.1.0/audiowarden-x86.tar.gz
+	source_x86_64 = https://github.com/nroi/audiowarden/releases/download/0.1.1/audiowarden-x86.tar.gz
 	sha256sums_x86_64 = fae860c20ead431d43af1e46c2a83526acce09ec2e5c365675574ee1b8865506
 
 pkgname = audiowarden
