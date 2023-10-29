@@ -1,14 +1,16 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Maintainer: lectrode <electrodexsnet AT gmail>
+# Contributor: Matthew "Madness" Evan <matthew.v.evan@outlook.com>
+# Contributor: Robert Brzozowski <robson75@linux.pl>
+# Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Rob McCathie <archaur at rmcc dot com dot au
 # Contributor: /dev/rs0 <rs0@secretco.de.com>
 # Contributor: Iven Hsu <ivenvd AT gmail>
 # Contributor: Nathan Hulse <nat.hulse@gmail.com>
-# Contributor: lectrode <electrodexsnet AT gmail>
 
 _name=compiz
 pkgname=compiz-easy-patch
-pkgver=0.9.14.1
-pkgrel=6
+pkgver=0.9.14.2
+pkgrel=1
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('x86_64')
 url="https://launchpad.net/${_name}"
@@ -30,32 +32,28 @@ source=("https://launchpad.net/${_name}/${pkgver:0:6}/${pkgver}/+download/${_nam
         "screenshot-launch-fix.patch"
         "no-compile-gschemas.patch"
         "compiz-easy-defaults.patch"
-        "gcc10_common_fix.patch"
         "compiz-easy.gschema.override"
         "compiz-gtk-decorator-theme-selector"
         "compiz-gtk-decorator-theme-selector.desktop"
         "compiz-xfce-autostart-setup"
         "compiz-xfce-autostart-setup.desktop"
         "compiz-xfce-uninstall-helper"
-        "compiz-xfce-uninstall-helper.desktop"
-        "remove-unused-or-broken-buttons.patch")
+        "compiz-xfce-uninstall-helper.desktop")
 
-sha256sums=('2505602b6c93d6565e681473df4157634268533c6874c3cdc9493b73b301ac52'
+sha256sums=('cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
             '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
             '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
             '4d28bc2cefbfae77b9157f39876f5296b5edb7fb00de2a391a262688d2f7590c'
-            '2a0844e8d8f561f78efb546f231ce3ff2322e5c1b064cf3d30e2e3fe5631d070'
             'b549d6a61115ab0cbd6bf74be79cd449477aaadb6a9968743236e3ed3d93f668'
             '28d14e5ec0694b4a451540f35210eac5699e9daf1b00020bf59d8b0296d7d9bf'
             '0faaf9e9df28d2857108ccd0910d50ba631c34c2b1659b8860da8c2b552fc889'
             '3e46a0b50a16d9fd6fd4f9d28f6082fc76f39dff8a82a79af312126a6bcf7cc2'
             'd23b8633186bb3a2a841734ad0b917500f3536a67046f5d8fbb08818eab59160'
             '5c471a34a1d79a45e8c4a924f0f58d71199328e45c80472fe32ecaac76c987ee'
-            '02eec20f75eb1f9571a2cf92013fc3c78d13c155a8ede0467cc10b83cdeba43c'
-            '0f3281255963c03a5a7d03a825dcbfcef758ace78f9d0ed828d28277e2841f32')
+            '02eec20f75eb1f9571a2cf92013fc3c78d13c155a8ede0467cc10b83cdeba43c')
 
 install="${pkgname}.install"
 
@@ -81,12 +79,6 @@ prepare() {
   # Don't try to compile gschemas during make install
   echo "#######no-compile-gschemas.patch"
   patch -p1 -i "${srcdir}/no-compile-gschemas.patch"
-
-  # Fix linker error that gets raised with gcc 10 due to multiple definitions
-  patch -p1 -i "${srcdir}/gcc10_common_fix.patch"
-
-  # Remove buttons no longer supported in metacity
-  patch -p1 -i "${srcdir}/remove-unused-or-broken-buttons.patch"  
 
   # Manjaro defaults
   echo "#######compiz-easy-defaults.patch"
