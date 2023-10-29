@@ -1,13 +1,13 @@
 pkgname=python-gradio-client
 _module='gradio-client'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models'
 arch=(any)
 url='https://github.com/gradio-app/gradio'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
-sha512sums=('f7ac4a7bf19a2044f2c33fbce107f116b72befa218158f4d80cc06d11495ae9c568b7233c3882de5738bdd3024e8b6bd8309f785a8958943cf288def79a9b3fe')
+sha512sums=('db1ec5680a34e196039d98da0bdd752efde3d3cf931d6db063db99c5500b15b745aab2d4f5e107f3a9293ec2221d89d0b18daa6dc4d8ad20016eb77e157b606b')
 depends=(
     python-requests
     python-websockets
