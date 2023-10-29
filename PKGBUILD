@@ -11,7 +11,7 @@ depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
 makedepends=('python-setuptools')
 optdepends=('python-pprofile: profiling'
 	    'python-setproctitle: prettifies the process name'
-		'python-aiohttp-sock: proxy support')
+		'python-aiohttp-socks: proxy support')
 license=('GPL')
 arch=('any')
 

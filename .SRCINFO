@@ -16,7 +16,7 @@ pkgbase = stig
 	depends = python-async-timeout
 	optdepends = python-pprofile: profiling
 	optdepends = python-setproctitle: prettifies the process name
-	optdepends = python-aiohttp-sock: proxy support
+	optdepends = python-aiohttp-socks: proxy support
 	source = stig-0.12.6a0.tar.gz::https://github.com/rndusr/stig/archive/v0.12.6a0.tar.gz
 	sha256sums = f056c187d7ee1b046395c3a6c8226896f48a7758cf3aae820c7467cb617fcbff
 
