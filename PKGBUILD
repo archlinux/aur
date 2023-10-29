@@ -1,14 +1,14 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=elite-image-mounter
 pkgver=1.5.0
-pkgrel=9
+pkgrel=10
 pkgdesc='A minimalist bash based, ISO mounter and converter.'
 arch=('x86_64')
 url="https://github.com/siyia2/mounter_elite"
 license=('GPL3')
 depends=('bash' 'coreutils' 'sudo')
 optdepends=('ccd2iso: BIN/IMG conversion support')
-md5sums=('3a0566ac5569c3b289d4d827ca0cf394')
+md5sums=('5ce9f8d24f124af7df0ab59ac67aabae')
 
 source=("https://github.com/siyia2/mounter_elite/archive/v${pkgver}.tar.gz")
 

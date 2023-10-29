@@ -1,7 +1,7 @@
 pkgbase = elite-image-mounter
 	pkgdesc = A minimalist bash based, ISO mounter and converter.
 	pkgver = 1.5.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/siyia2/mounter_elite
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,6 @@ pkgbase = elite-image-mounter
 	depends = sudo
 	optdepends = ccd2iso: BIN/IMG conversion support
 	source = https://github.com/siyia2/mounter_elite/archive/v1.5.0.tar.gz
-	md5sums = 3a0566ac5569c3b289d4d827ca0cf394
+	md5sums = 5ce9f8d24f124af7df0ab59ac67aabae
 
 pkgname = elite-image-mounter
