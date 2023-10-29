@@ -1,0 +1,14 @@
+pkgbase = python-a2wsgi
+	pkgdesc = Converts WSGI apps to ASGI apps or the other way around
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/abersheeran/a2wsgi/
+	arch = any
+	license = Apache2
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/abersheeran/a2wsgi//archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 3de8a348cb08483dbb4fe42be0672f8540303efd9478230e265555f74f96f3a3
+
+pkgname = python-a2wsgi
