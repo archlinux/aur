@@ -1,8 +1,8 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=gotify-desktop
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc='Small Gotify daemon to send messages as desktop notifications '
 arch=('aarch64' 'x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -11,7 +11,7 @@ depends=('gcc-libs'
          'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('39da17f929bb17c9f4399926e3653cc661fbaee2bdb3b9b4b7f28be2fd8d88a35cf3a06973eb2e8820b01ea8abc2a9a964393ca037a77ec84a51fe6cbab38655')
+sha512sums=('7d63c083128ac2f723a2f1242d4216c4cccf04423ec12b34edb40f4151373511b41a94769a08b0473e281855309bcd011b5eadc6731af0fa321a913168f54ad2')
 
 build() {
     cd "${pkgname}-${pkgver}"
