@@ -1,0 +1,22 @@
+pkgbase = todds
+	pkgdesc = A CPU-based DDS encoder optimized for fast batch conversions with high encoding quality.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/joseasoler/todds
+	arch = x86_64
+	license = MPL2
+	checkdepends = catch2v3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = ispc
+	depends = glibc
+	depends = gcc-libs
+	depends = boost-libs
+	depends = onetbb
+	depends = opencv
+	depends = hyperscan
+	depends = fmt
+	source = todds-0.4.0.tar.gz::https://github.com/joseasoler/todds/archive/refs/tags/0.4.0.tar.gz
+	sha512sums = bdde16a1960cf42798bca7119883d9cfe153f6c60fc799d2485a010efda169df734de68973738d080ef7a885c9c8cd0cf973697db7346c05b9729f6561faec52
+
+pkgname = todds
