@@ -10,7 +10,8 @@ depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
 	 'python-pyxdg' 'python-blinker' 'python-natsort' 'python-async-timeout')
 makedepends=('python-setuptools')
 optdepends=('python-pprofile: profiling'
-	    'python-setproctitle: prettifies the process name')
+	    'python-setproctitle: prettifies the process name'
+		'python-aiohttp-sock: proxy support')
 license=('GPL')
 arch=('any')
 
