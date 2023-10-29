@@ -4,7 +4,7 @@
 # Contributor: nkoizu <nkoizu@gmail.com>
 
 pkgname=gauche
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
@@ -12,7 +12,8 @@ pkgdesc='R7RS Scheme implementation (includes gosh)'
 depends=(libatomic_ops libxcrypt slib)
 makedepends=(autoconf gauche git)
 license=(BSD)
-source=("$pkgname::git+https://github.com/shirok/Gauche#commit=950943ffcd6a2b88322855cb0f6d01e2ac6cfbdf") # tag: v0.9.12
+_info_page_date='29 Oct 2023 10:10' # For reproducible builds
+source=("$pkgname::git+https://github.com/shirok/Gauche#commit=9eaf47225474755a39f58bbda07dd6bfd0459e66") # tag: v0.9.13
 b2sums=('SKIP')
 
 build() {
@@ -28,8 +29,5 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install-pkg install-doc
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  # Fix info page dates
-  touch -d '4 Aug 2022 10:10' "$pkgdir"/usr/share/info/gauche-ref*info*.gz
+  touch -d "$_info_page_date" "$pkgdir"/usr/share/info/gauche-ref*info*.gz
 }
-
-# getver: practical-scheme.net/gauche/gmemo/index.cgi?ReleaseNotes
