@@ -1,7 +1,7 @@
 pkgbase = armagetronad-git
 	pkgdesc = A Tron Clone in 3D.
-	pkgver = r5415.f775378e
-	pkgrel = 7
+	pkgver = r5654.4bf6245a
+	pkgrel = 1
 	url = https://www.armagetronad.org
 	arch = x86_64
 	license = GPL
