@@ -1,9 +1,10 @@
 pkgbase = compiz-easy-patch
 	pkgdesc = OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE.
 	pkgver = 0.9.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/compiz
 	install = compiz-easy-patch.install
+	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -22,28 +23,29 @@ pkgbase = compiz-easy-patch
 	depends = protobuf
 	depends = metacity
 	depends = glu
+	depends = libxslt
 	depends = zenity
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
 	optdepends = xfce-theme-greybird: A grey and blue Xfce theme
-	provides = compiz=0.9.14.2
-	provides = compiz-core=0.9.14.2
-	provides = compiz-bcop=0.9.14.2
 	provides = ccsm=0.9.14.2
-	provides = compiz-plugins-main=0.9.14.2
+	provides = compiz-bcop=0.9.14.2
+	provides = compiz-core=0.9.14.2
 	provides = compiz-plugins-extra=0.9.14.2
+	provides = compiz-plugins-main=0.9.14.2
 	provides = compizconfig-python=0.9.14.2
 	provides = libcompizconfig=0.9.14.2
-	conflicts = compiz
-	conflicts = compiz-core
-	conflicts = compiz-gtk
-	conflicts = compiz-bcop
+	provides = compiz=0.9.14.2
 	conflicts = ccsm
-	conflicts = compiz-fusion-plugins-main
-	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz-bcop
+	conflicts = compiz-core
 	conflicts = compiz-fusion-plugins-experimental
+	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz-fusion-plugins-main
+	conflicts = compiz-gtk
 	conflicts = compizconfig-python
 	conflicts = libcompizconfig
 	conflicts = simple-ccsm
+	conflicts = compiz
 	conflicts = compiz-manjaro
 	replaces = compiz-manjaro
 	source = https://launchpad.net/compiz/0.9.14/0.9.14.2/+download/compiz-0.9.14.2.tar.xz
