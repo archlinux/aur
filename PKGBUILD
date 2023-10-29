@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_knotty pzl_marupeke pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_othello pzl_ripple pzl_scrabbler pzl_shakashaka pzl_shikaku pzl_skyscrapers pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordladder pzl_wordwheel pzl_wordy)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_knotty pzl_marupeke pzl_masyu pzl_minesweeper pzl_moonlight pzl_numberlink pzl_nurikabe pzl_othello pzl_ripple pzl_scrabbler pzl_shakashaka pzl_shikaku pzl_skyscrapers pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordladder pzl_wordwheel pzl_wordy)
 pkgbase="pzl_games"
-pkgver=30.0
-_pkgver=30_0
+pkgver=32.1
+_pkgver=32_1
 pkgrel=1
 pkgdesc="Collection of puzzle games."
 arch=('any')
@@ -30,6 +30,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_marupeke.desktop"
         "pzl_masyu.desktop"
         "pzl_minesweeper.desktop"
+        "pzl_moonlight.desktop"
         "pzl_numberlink.desktop"
         "pzl_nurikabe.desktop"
         "pzl_othello.desktop"
@@ -48,7 +49,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_wordwheel.desktop"
         "pzl_wordy.desktop")
 
-md5sums=('a74f87bdf41f4ba2cfd0ecf0042bf736'
+md5sums=('e63539c7387402f5d6b88d7e38539a15'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -69,6 +70,7 @@ md5sums=('a74f87bdf41f4ba2cfd0ecf0042bf736'
          'cf9a1d524f7e5563c37413f0227fe1a1'
          '0ff3ac0767cd8fc94388ef3b301c8adc'
          '3938559de7b10ca25f86ccb59676547e'
+         'b155d02b304f77172817068e9840fa0d'
          'ab1d907a83c8b7e359eff308ee89d9d9'
          '08f441dcf7ec24f4148d9a952738d7f4'
          'b56963fa4b72c8b93e799ed25055a3b4'
@@ -303,6 +305,17 @@ package_pzl_minesweeper() {
 	install -m644 pzl3_download/minesweeper.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/minesweeper_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_minesweeper.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_moonlight() {
+	pkgdesc="Puzzle game about a square grid of cells."
+	url="http://pzl.org.uk/moonlight.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/moonlight.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/moonlight_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/moonlight_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_moonlight.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_numberlink() {
