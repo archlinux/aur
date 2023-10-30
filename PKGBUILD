@@ -5,7 +5,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2023.10.07.a.r27.g254450981
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2023.10.28.a.r20.g7db7b21c8
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -35,7 +35,6 @@ source=(
     'apple-llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20220421'
     'swift-llvm-bindings::git+https://github.com/apple/swift-llvm-bindings#branch=stable/20220421'
     '0001-arch-aur-patches.patch'
-    '0002-stdint.patch'
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=5.0.1'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
@@ -96,7 +95,6 @@ md5sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
 )
 
 
@@ -109,7 +107,6 @@ options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
-    ( cd llvm-project && patch -p1 -i "$srcdir/0002-stdint.patch" )
 }
 
 pkgver() {
@@ -121,8 +118,8 @@ build() {
     cd "$srcdir"
     # Fix /usr/include error
     find "$srcdir/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-    find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-    find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/apple-llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "$srcdir/apple-llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
 
     # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
     # Which will break `compiler-rt`
