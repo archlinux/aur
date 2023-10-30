@@ -1,0 +1,16 @@
+pkgbase = gamescope-session-steam-plus-git
+	pkgdesc = Gamescope session for running OpenGamepadUI in overlay mode with Steam
+	pkgver = r1.6835776
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/gamescope-session-steam-plus
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gamescope
+	depends = gamescope-session-git
+	depends = gamescope-session-steam-git
+	provides = gamescope-session-steam
+	source = gamescope-session-steam-plus::git+https://github.com/ShadowBlip/gamescope-session-steam-plus.git
+	md5sums = SKIP
+
+pkgname = gamescope-session-steam-plus-git
