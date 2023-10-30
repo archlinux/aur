@@ -1,31 +1,16 @@
 pkgbase = python2-wxpython3
-	pkgdesc = wxWidgets 3 Legacy GTK 3 GUI toolkit for Python 2.
+	pkgdesc = Classic wxWidgets GUI toolkit for Python
 	pkgver = 3.0.2.0
-	pkgrel = 12
+	pkgrel = 13
 	url = https://www.wxpython.org
-	arch = i686
 	arch = x86_64
 	license = custom:wxWindows
+	makedepends = mesa
 	makedepends = glu
-	makedepends = python2-setuptools
-	makedepends = expat
-	makedepends = gstreamer0.10-base
-	makedepends = libjpeg
-	makedepends = libpng
-	makedepends = libtiff
-	makedepends = python2
-	makedepends = sdl
+	depends = wxwidgets-gtk3-3.0
 	depends = python2
-	depends = sdl
-	depends = gtk3
-	provides = python2-wxpython=3.0.2.0
-	provides = python2-wxpython-gtk3=3.0.2.0
 	provides = wxpython=3.0.2.0
-	provides = wxpython-gtk3=3.0.2.0
-	provides = wxpython3=3.0.2.0
-	provides = wxpython3-gtk3=3.0.2.0
 	conflicts = wxpython
-	conflicts = wxwidgets3.0
 	replaces = wxpython
 	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
 	source = fix-plot.patch
