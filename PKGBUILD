@@ -157,7 +157,7 @@ build() {
 #  python build_mozc.py build ${TARGETS} -c ${_bldtype}
 
   # ibus emacs_helper mozc_server fcitx5
-  bazel build --config oss_linux package unix/fcitx5:fcitx5-mozc.so
+  bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so
   bazel shutdown
 
   # Extract license part of mozc
@@ -227,7 +227,9 @@ package_ibus-mozc-with-jp-dict() {
 
   cd bazel-bin/unix || exit
   unzip -o icons.zip -d tmp
-  cd tmp && find . -type f | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
+  cd tmp || exit
+  install -Dm644 mozc.png "${pkgdir}/usr/share/ibus-mozc/product_icon.png"
+  find . -type f | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
 }
 
 package_emacs-mozc-with-jp-dict() {
