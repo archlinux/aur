@@ -2,11 +2,11 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v6.5.9
+gitver=v6.6
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=6.5.v.9
-pkgrel=3
+pkgver=6.6.v.0
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '4ab1c76ae3ff00a20f845631a040c9de9735232edf06e15bd5d14bd061ea5139'
+            'f903ac2171427c868227487d43f8dcadee718168cdc3c3b0b498488490064508'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
@@ -119,8 +119,8 @@ _package() {
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  # remove build and source links
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+  # remove build link
+  rm -f "${pkgdir}"/lib/modules/${_kernver}/build
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
   # make room for external modules
