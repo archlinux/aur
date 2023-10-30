@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.11.3.r21.gfd5eedf
+pkgver=0.11.4.r0.ga14c919
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -67,6 +67,7 @@ _python_deps=(isbnlib
               ruamel-yaml
               usfm2osis-cw-git)
 depends+=("${_lua_deps[@]/#/lua-}"
+          "${_lua_deps[@]/#/lua51-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
 depends+=(gcc-libs

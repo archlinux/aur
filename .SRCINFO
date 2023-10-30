@@ -1,6 +1,6 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.11.3.r21.gfd5eedf
+	pkgver = 0.11.4.r0.ga14c919
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = x86_64
@@ -60,6 +60,10 @@ pkgbase = casile-git
 	depends = lua-decasify
 	depends = lua-filesystem
 	depends = lua-yaml
+	depends = lua51-colors-git
+	depends = lua51-decasify
+	depends = lua51-filesystem
+	depends = lua51-yaml
 	depends = perl-yaml
 	depends = perl-yaml-merge-simple
 	depends = python-isbnlib
@@ -71,7 +75,7 @@ pkgbase = casile-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libgit2.so
-	provides = casile=0.11.3.r21.gfd5eedf
+	provides = casile=0.11.4.r0.ga14c919
 	conflicts = casile
 	source = casile-git::git+https://github.com/sile-typesetter/casile.git
 	sha256sums = SKIP
