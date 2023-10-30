@@ -1,6 +1,6 @@
 pkgbase = net-player
 	pkgdesc = A Subsonic based music player.基于Subsonic API的桌面端播放器
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/Zhoucheng133/net-player
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = net-player
 	depends = bash
 	depends = electron13
 	conflicts = net-player
-	source = net-player-1.2.2.zip::https://github.com/Zhoucheng133/net-player/archive/refs/tags/v1.2.2.zip
+	source = net-player-1.2.3.zip::https://github.com/Zhoucheng133/net-player/archive/refs/tags/v1.2.3.zip
 	source = net-player.sh
-	sha256sums = b3021084c835df9f2790194599b74a3705cd59b6c595ad2566d0a20d7f3564d7
-	sha256sums = e6dafc57db5aeae87f220d3070d53cd1491b465398d175d719c77df7b83d47f0
+	sha256sums = 061e3ea185336432fdda94a571a3a0762776d9e1487b82226faf1a48d291ed7b
+	sha256sums = cf30b550beac6dfd1582048dd68b57c8d9f5404561357b731dedfac3559dcf56
 
 pkgname = net-player
