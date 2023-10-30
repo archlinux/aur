@@ -1,5 +1,5 @@
 pkgbase = kemono-scraper-bin
-	pkgdesc = A simple downloader to download media from kemono.party
+	pkgdesc = A simple downloader to download media from kemono.party, binary release.
 	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://github.com/elvis972602/Kemono-scraper

@@ -3,7 +3,7 @@
 pkgname=kemono-scraper-bin
 pkgver=0.0.21
 pkgrel=1
-pkgdesc='A simple downloader to download media from kemono.party'
+pkgdesc='A simple downloader to download media from kemono.party, binary release.'
 arch=('x86_64')
 url='https://github.com/elvis972602/Kemono-scraper'
 license=('MIT')
