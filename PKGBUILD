@@ -2,7 +2,7 @@
 
 pkgname=musicplayerplus
 pkgver=v3.0.1r3
-pkgrel=1
+pkgrel=2
 pkgdesc="Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more"
 arch=('any')
 url="https://github.com/doctorfree/MusicPlayerPlus"
@@ -26,6 +26,7 @@ package() {
   cd "${srcdir}/${pkgname}"
   destdir=usr
   for dir in "${destdir}" "${destdir}/share" "${destdir}/share/man" \
+    "${destdir}/share/man/man1" "${destdir}/share/man/man5" \
     "${destdir}/share/applications" "${destdir}/share/doc" \
     "${destdir}/share/doc/${pkgname}" "${destdir}/share/${pkgname}" \
     "${destdir}/share/${pkgname}/mpcplus" \
@@ -81,8 +82,13 @@ package() {
   cp -a config/yt-dlp "${pkgdir}/${destdir}/share/${pkgname}/yt-dlp"
   cp -a music "${pkgdir}/${destdir}/share/${pkgname}/music"
 
-  cp -a man/man1 ${pkgdir}/${destdir}/share/man/man1
-  cp -a man/man5 ${pkgdir}/${destdir}/share/man/man5
+  for mp in mppplasma listyt alsa_conf mppsplash mpprocks mpd-configure scdl \
+            alsa-capabilities mpd-monitor fzmp mppcover mppinit mpplus mppdl \
+            bandcamp-dl mpcplus-tmux mppsplash-tmux mppjulia create_playlist
+  do
+    cp man/man1/${mp}* ${pkgdir}/${destdir}/share/man/man1
+  done
+  cp man/man5/mpprc* ${pkgdir}/${destdir}/share/man/man5
   cp -a share/menu "${pkgdir}/${destdir}/share/menu"
 
   [ -f .gitignore ] && {
