@@ -1,6 +1,6 @@
 pkgbase = r-scran
 	pkgdesc = Methods for Single-Cell RNA-Seq Data Analysis
-	pkgver = 1.28.2
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scran
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = r-scran
 	optdepends = r-scater
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scran_1.28.2.tar.gz
-	sha256sums = adcae27f5a2411c86b5781c9d3d8fef4ecfd675e4e004fd1957a6747822e45d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scran_1.30.0.tar.gz
+	sha256sums = 92fa30b781470ccf1a4d7b439d83b8d7cfca9d89a0cff2adac098d294d10036f
 
 pkgname = r-scran
