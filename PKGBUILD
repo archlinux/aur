@@ -1,7 +1,7 @@
 # Maintainer: Chimmie Firefly <gameplayer2019pl@tutamail.com>
 
 _ver=6.4.16
-_rel=4
+_rel=5
 _arch=arch${_rel}
 _artix=artix${_rel}
 
@@ -37,7 +37,6 @@ _srctag=v${_ver}-${_arch}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${_ver%%.*}.x/${_srcname}.tar.xz
 #  $url/releases/download/$_srctag/linux-$_srctag.patch.zst
-  emmc.patch
   config
 )
 validpgpkeys=(
@@ -47,11 +46,9 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('SKIP'
-            'SKIP'
 #            'SKIP'
             'SKIP')
 b2sums=('SKIP'
-        'SKIP'
 #        'SKIP'
         'SKIP')
 

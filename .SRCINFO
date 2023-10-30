@@ -1,6 +1,6 @@
 pkgbase = artixlinux-kernel-stoneyridge
 	pkgdesc = Linux kernel for Stoneyridge Chromebooks
-	pkgver = 6.4.16.artix4
+	pkgver = 6.4.16.artix5
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
@@ -22,15 +22,12 @@ pkgbase = artixlinux-kernel-stoneyridge
 	makedepends = texlive-latexextra
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.4.16.tar.xz
-	source = emmc.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 
