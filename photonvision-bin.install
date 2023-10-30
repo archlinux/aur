@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+post_install() {
+	echo "Warning: Photonvision will change the machine hostname to 'photonvision' on first run."
+	echo "This can be changed on the Settings page on the web ui at http://localhost:5800"
+	echo "To enable the photonvision service: systemctl enable --now photonvision"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo "Restart the service to change to $1: systemctl restart photonvision"
+}
