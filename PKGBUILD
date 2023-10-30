@@ -2,7 +2,7 @@
 
 pkgname=kemono-scraper-git
 pkgver=0.0.21.r0.gb2c42e7
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple downloader to download media from kemono.party, development version.'
 arch=('x86_64')
 url='https://github.com/elvis972602/Kemono-scraper'
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     export GOPATH="${srcdir}"
-    export GOFLAGS="-buildmode=pie"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
