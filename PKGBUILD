@@ -12,7 +12,7 @@ depends=(
     'electron23'
     'hicolor-icon-theme'
 )
-makedenpends=(
+makedepends=(
     'npm'
     'gendesk'
 )
