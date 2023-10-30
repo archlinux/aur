@@ -6,9 +6,10 @@
 
 pkgname=atlas-lapack
 _PKGNAME=ATLAS
-pkgver=3.11.0
+pkgver=3.10.3
 _lapackver=3.11.0
-pkgrel=1
+pkgrel=8
+epoch=1
 pkgdesc="Automatically Tuned Linear Algebra Software"
 url="http://math-atlas.sourceforge.net"
 depends=('gcc-libs')
@@ -22,7 +23,7 @@ source=("lapack-$_lapackver.tar.gz::https://github.com/Reference-LAPACK/lapack/a
         "gfortran-10.patch")
 noextract=("lapack-$_lapackver.tar.gz" "atlas$pkgver.tar.bz2")
 sha256sums=('4b9ba79bfd4921ca820e83979db76ab3363155709444a787979e81c22285ffa9'
-            '319ffe0d3b887cee670d1ba08ea37e150a15465a1e3d03b095f54e4b7a9c7619'
+            '2688eb733a6c5f78a18ef32144039adcd62fabce66f2eb51dd59dde806a6d2b7'
             '7627446a0d598b55bc8f2795f8ff2028f134928b9ca597b76bf8dd5622dbff69'
             '33dbb696ab88cf8df2b7fcebbbd60c01b0a26afdd5df4be2d8b344a7bfcdc12f')
 options=(!makeflags !buildflags)
