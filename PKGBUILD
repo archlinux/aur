@@ -2,22 +2,29 @@
 pkgname=gchat
 _pkgname=GChat
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial Google Chat app"
 arch=('x86_64')
 url="https://github.com/dcrousso/GChat"
 license=('MIT')
-depends=('electron23' 'hicolor-icon-theme' 'bash')
-mkdenpends=('npm' 'gendesk')
+depends=(
+    'bash'
+    'electron23'
+    'hicolor-icon-theme'
+)
+makedenpends=(
+    'npm'
+    'gendesk'
+)
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.sh")
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.sh"
+)
 sha256sums=('6ac16d881642d156d9e3c01367edba538cde61efef2c46d07be0e504a42199bf'
             '3065e9082cc84406701ceb93a1c9254fa723dc58fe39672655de1b842c6b605e')
-prepare() {
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname}"
-}
 build() {
+    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${_pkgname}-${pkgver}"
     npm install
     npm run build-linux
