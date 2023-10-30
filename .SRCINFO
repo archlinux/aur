@@ -1,6 +1,6 @@
 pkgbase = wine-staging-wow64
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 8.18
+	pkgver = 8.19
 	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
@@ -60,15 +60,15 @@ pkgbase = wine-staging-wow64
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=8.18
+	provides = wine=8.19
 	conflicts = wine
 	options = staticlibs
 	options = !lto
-	source = https://dl.winehq.org/wine/source/8.x/wine-8.18.tar.xz
-	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v8.18
+	source = git+https://gitlab.winehq.org/wine/wine.git#tag=wine-8.19
+	source = git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v8.19
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	sha512sums = 0f8e6b5c6709930bc7f774d92cd025976f6442c3785a224b5988a37152f3a875150b228f12442e9b9c0d9e7884568aca26159df86d48f2550a630625fef3c8b9
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
