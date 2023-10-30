@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellMixS
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Evaluate Cellspecific Mixing'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('66a52d3d5ee88746bb4c89fccf7c75aa048e4b78280faee56636ec729b2eb49c')
+sha256sums=('e416a21a70a23da7cca4d67f2e594037b26cee69ef5e51a2ce9f9a3421ec3536')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
