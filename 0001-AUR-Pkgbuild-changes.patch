@@ -1,10 +1,10 @@
-From 108bd702494d8b6a1cbb776c6b3801b2e0ee7c80 Mon Sep 17 00:00:00 2001
+From 86358fc89a591b7f070765e350583280b27ee538 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Tue, 7 Feb 2023 22:00:48 +0200
 Subject: [PATCH 1/6] AUR Pkgbuild changes
 
 ---
- Makefile.in                    | 87 +++++++++++++++++++++++++++-------
+ Makefile.in                    | 89 +++++++++++++++++++++++++++-------
  compatibilitytool.vdf.template |  2 +-
  configure.sh                   |  2 +
  make/rules-autoconf.mk         |  4 +-
@@ -17,10 +17,10 @@ Subject: [PATCH 1/6] AUR Pkgbuild changes
  make/rules-winemaker.mk        |  2 +-
  proton                         |  6 +--
  toolmanifest_runtime.vdf       |  3 --
- 13 files changed, 101 insertions(+), 42 deletions(-)
+ 13 files changed, 102 insertions(+), 43 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 256acc2b..b08d8b88 100644
+index 7fdf6e70..314da018 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -50,11 +50,12 @@ else
@@ -180,6 +180,15 @@ index 256acc2b..b08d8b88 100644
          -Ddoc='disabled' \
  	-Dtests=disabled \
  	-Dgobject-cast-checks=disabled \
+@@ -464,7 +507,7 @@ $(eval $(call rules-cmake,openxr,64))
+ ## Note 32-bit is not supported by SteamVR, so we don't build it.
+ ##
+ 
+-WINEOPENXR_LDFLAGS = -lopenxr_loader
++WINEOPENXR_LDFLAGS = -lopenxr_loader -lvulkan
+ WINEOPENXR_DEPENDS = wine openxr
+ 
+ $(eval $(call rules-source,wineopenxr,$(SRCDIR)/wineopenxr))
 @@ -542,6 +585,9 @@ OPENFST_CONFIGURE_ARGS = \
    --with-pic \
    --disable-bin \
@@ -497,7 +506,7 @@ index 5c3b59a3..ed6589e0 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index cfe865bc..5912d15d 100755
+index 1fc072b1..eef65ead 100755
 --- a/proton
 +++ b/proton
 @@ -423,7 +423,6 @@ class Proton:
