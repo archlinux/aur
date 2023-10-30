@@ -10,6 +10,7 @@ pkgbase = uarchiso
 	depends = qemu-desktop
 	depends = openssl
 	depends = base-devel
+	depends = xorriso
 	provides = uarchiso
 	options = !strip
 	options = !emptydirs
