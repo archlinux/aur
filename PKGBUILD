@@ -1,54 +1,58 @@
-# Maintainer: yesuu zhang <yesuu79@qq.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: yesuu zhang <yesuu79@qq.com>
 # Contributor: fkxxyz <fkxxyz@163.com>
-
 pkgname=youdao-dict
 pkgver=6.0.0
-pkgrel=4
-pkgdesc='YouDao Dictionary'
-arch=('i686' 'x86_64')
-url='https://cidian.youdao.com/'
+pkgrel=5
+pkgdesc="YouDao Dictionary"
+arch=('x86_64')
 license=('GPL3')
+conflicts=("${pkgname}")
+url="http://cidian.youdao.com/"
 depends=(
-	'hicolor-icon-theme'
-	
-	'python-pyqt5'
-	'python-requests'
-	'python-xlib'
-	'python-gobject'
-	'python-opengl'
-	'python-pillow'
-	'python-pyquery'
+	'sqlite'
+	'python-lxml'
 	'python-webob'
-	'python-xdg'
-	
-	'tesseract-data-eng'
-	'tesseract-data-chi_tra'
-	'tesseract-data-chi_sim'
+	'glib2'
+	'python-opengl'
+	'python-gobject'
+	'hicolor-icon-theme'
+	'python-xlib'
+	'python-pillow'
+    'python>=3'
+	'python-requests'
+	'gstreamer'
+	'python-pyquery'
+	'python-pyqt5-webkit'
+	'gobject-introspection-runtime'
+	'python-cssselect'
+    'glibc'
+	'gstreamer0.10'
+	'python-pyxdg'
 	'qt5-webkit'
-	'qt5-graphicaleffects'
 	'qt5-quickcontrols'
-	'qt5-multimedia'
+	'qt5-graphicaleffects'
 )
-source=("file://fix-windows-pos-type.patch")
-source_i686=("http://codown.youdao.com/cidian/linux/youdao-dict_${pkgver}_i386.tar.gz")
-source_x86_64=("http://codown.youdao.com/cidian/linux/youdao-dict-${pkgver}-amd64.tar.gz")
-sha256sums=('886f217146232511107c16a8cfed82bc8da74e730f9d563e593543b1f33514a5')
-sha256sums_i686=('d1ff404f1e465d6a196b566294ddfea1a1bfe4568226201b65d74236407152fc')
-sha256sums_x86_64=('556e2dadd0a737967b78ffd9ad5430660d190e4489854a309c85f81fdf7f084f')
-
+source=(
+	"${pkgname}-${pkgver}.deb::http://codown.youdao.com/cidian/linux/${pkgname}_${pkgver}-ubuntu-amd64.deb"
+)
+sha256sums=('e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2')
 build() {
-	cd "${srcdir}"
-	[ ${CARCH} == x86_64 ] && cd "youdao-dict-${pkgver}-amd64"
-
-	patch -p1 -i "${srcdir}/fix-windows-pos-type.patch"
+    bsdtar -xf "${srcdir}/data.tar.zst"
+    sed -i '290s|self.setX(x)|self.setX(int(x))|g;291s|self.setY(y)|self.setY(int(y))|g' "${srcdir}/usr/share/${pkgname}/app/plugins/youdao/window.py"
+    sed -i '644s|self.move(x, y)|self.move(int(x), int(y))|g' "${srcdir}/usr/share/${pkgname}/dae/window.py"
+    sed 's|getargspec|getfullargspec|g' -i "${srcdir}/usr/share/${pkgname}/app/plugins/${pkgname%-dict}/pyquery/pyquery.py"
+    sed 's|usr/share|opt|g' -i "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service"
 }
-
-package() {
-	cd "${srcdir}"
-	[ ${CARCH} == x86_64 ] && cd "youdao-dict-${pkgver}-amd64"
-
-	sed -i -e "/PREFIX=/cROOT=${pkgdir}\nPREFIX=\$ROOT/usr" -e 's/\/etc/$ROOT\/etc/g' -e 's/ln -sf $PREFIX/ln -sf \/usr/g' install.sh
-	sh install.sh
+package(){
+    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
+    cp -r "${srcdir}/usr/share/${pkgname}" "${pkgdir}/opt"
+    ln -sf "/opt/${pkgname}/main.py" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/etc/xdg/autostart/${pkgname}-autostart.desktop" -t "${pkgdir}/etc/xdg/autostart"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service" -t "${pkgdir}/usr/share/dbus-1/services"
+    for _icons in 16x16 24x24 48x48 64x64 96x96 scalable;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}".* \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
 }
-
-
