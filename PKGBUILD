@@ -3,7 +3,7 @@
 pkgname=('groonga' 'groonga-doc')
 pkgver=13.0.8
 pkgbase=groonga
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
 license=('LGPL2.1')
@@ -55,7 +55,7 @@ package_groonga() {
     make DESTDIR="$pkgdir" install
 
     # cleanup
-    rm -r "${pkgdir}/var/run"
+    rm -rf "${pkgdir}/var/run"
 
     # delete documents
     rm -r "${pkgdir}/usr/share/doc"

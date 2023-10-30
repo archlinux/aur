@@ -1,6 +1,6 @@
 pkgbase = groonga
 	pkgver = 13.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://groonga.org/
 	arch = i686
 	arch = x86_64
