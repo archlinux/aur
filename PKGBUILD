@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=muscat
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Multi-sample multi-group scRNA-seq data analysis tools'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b337ae92205840b17314a6485124eefb1d2e86fc471b3c79d5ef728fea019ec9')
+sha256sums=('c3a36c419561f7c63dcd42dbfdaaf2bde8f8f13b5869e1c75a5d3acb73ca5a6d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
