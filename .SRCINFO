@@ -1,0 +1,23 @@
+pkgbase = config-tools-for-imx
+	pkgdesc = Integrated suite of configuration tools for NXP's i.MX Application Processors. From BIN package distributed by NXP.
+	pkgver = 14
+	pkgrel = 1
+	url = https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/config-tools-for-i-mx-applications-processors:CONFIG-TOOLS-IMX
+	arch = x86_64
+	license = custom:"NXP"
+	depends = java-environment
+	depends = libxslt
+	depends = libxtst
+	depends = gcc-libs-multilib
+	depends = gtk2
+	depends = alsa-lib
+	depends = libnet
+	options = !strip
+	source = file://config-tools-for-imx-v14-1_amd64.deb.bin
+	source = LICENSE
+	source = config-tools-for-imx.install
+	sha256sums = 73949ef7706fdcda637af3738d8887d52e88619790484a0bb3af4c5ef4f89d7c
+	sha256sums = 41beb81990892ba157f85cd6c008f65191a763c97331ac6c8cceb18700883af5
+	sha256sums = a1f53f36f04d98667717092eedc6ccb6c5a5a3ea7ad6ded79a9ac6f004f6307c
+
+pkgname = config-tools-for-imx

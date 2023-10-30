@@ -1,0 +1,7 @@
+*ctags*
+src/
+pkg
+*.deb
+*.bin
+config-tools-for-imx/
+*tar.zst

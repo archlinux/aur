@@ -1,0 +1,6 @@
+pre_install() {
+        echo "Be advised that the package you are currently installing should be downloaded through"
+        echo "NXP's License Wall at https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/config-tools-for-i-mx-applications-processors:CONFIG-TOOLS-IMX"
+        echo "By installing this package you agree to the terms of this license."
+        echo "A copy of the License is available in /usr/share/licenses/config-tools-for-imx"
+}
