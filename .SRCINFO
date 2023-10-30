@@ -1,0 +1,17 @@
+pkgbase = bookget-git
+	pkgdesc = bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。
+	pkgver = 1.2.4.1.gafc28fa
+	pkgrel = 1
+	url = https://github.com/deweizhu/bookget
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = go
+	optdepends = dezoomify-rs: Zoomable image downloader for Google Arts & Culture, Zoomify, IIIF, and others
+	provides = bookget
+	conflicts = bookget
+	options = !strip
+	source = bookget::git+https://github.com/deweizhu/bookget.git
+	sha256sums = SKIP
+
+pkgname = bookget-git
