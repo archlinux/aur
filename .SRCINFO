@@ -1,0 +1,20 @@
+pkgbase = rendertune-bin
+	pkgdesc = a free electron app that uses ffmpeg to combine audio.+image file(s) into video files. Discord:
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://www.martinbarker.me/RenderTune
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = bash
+	depends = electron11
+	provides = rendertune=1.1.4
+	conflicts = rendertune
+	source = rendertune-1.1.4.AppImage::https://github.com/MartinBarker/RenderTune/releases/download/v1.1.4/RenderTune-1.1.4.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/MartinBarker/RenderTune/v1.1.4/LICENSE
+	source = rendertune.sh
+	sha256sums = ae8b05956400735952af42beea18b2cf71a0607071e079365237731f0d3b8425
+	sha256sums = 11a272e7544439f19cffcd33c12ea39777fa581122babf7fe5e9b94712660af8
+	sha256sums = 0338c91f8d72d9e5aa2d0c5cba1fae3148324a3cf026c9a23b6eaba9f5bf1524
+
+pkgname = rendertune-bin
