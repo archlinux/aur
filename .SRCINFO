@@ -1,6 +1,6 @@
 pkgbase = whisper-git
 	pkgdesc = General-purpose speech recognition model by OpenAI
-	pkgver = r115.248b6cb
+	pkgver = 2023.09.18.r1.gb38a1f2
 	pkgrel = 1
 	url = https://github.com/openai/whisper
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = whisper-git
 	optdepends = triton: CUDA accelerated filters
 	provides = whisper
 	conflicts = whisper
-	source = whisper::git+https://github.com/openai/whisper
+	source = whisper::git+https://github.com/openai/whisper.git
 	sha256sums = SKIP
 
 pkgname = whisper-git

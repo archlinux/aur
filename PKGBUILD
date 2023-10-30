@@ -2,12 +2,13 @@
 
 _pkgname="whisper"
 pkgname="$_pkgname-git"
-pkgver=r115.248b6cb
+pkgver=2023.09.18.r1.gb38a1f2
 pkgrel=1
 pkgdesc="General-purpose speech recognition model by OpenAI"
-arch=('any')
 url="https://github.com/openai/whisper"
 license=('MIT')
+arch=('any')
+
 depends=(
   'python-more-itertools'
   'python-numba'
@@ -30,18 +31,20 @@ optdepends=(
 )
 
 provides=("$_pkgname")
-conflicts=(${provides[@]})
+conflicts=("$_pkgname")
 
-source=("$_pkgname"::"git+$url")
+_pkgsrc="$_pkgname"
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v([0-9]{4})([0-9]{2})([0-9]{2})-/\1.\2.\3-r/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/whisper"
+  cd "$_pkgsrc"
   python -m build --no-isolation --wheel
 }
 
@@ -50,8 +53,8 @@ package() {
     'ffmpeg'
   )
 
-  cd "$srcdir/whisper"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pkgsrc"
+  python -m installer --destdir="${pkgdir:?}" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/${pkgname:?}"
 }
