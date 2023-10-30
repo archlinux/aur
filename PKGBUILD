@@ -3,8 +3,8 @@
 
 _pkgname=upscaler
 pkgname=$_pkgname-git
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Upscale and enhance images (latest commit)"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/Upscaler"
