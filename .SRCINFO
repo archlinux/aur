@@ -1,7 +1,7 @@
 pkgbase = apotris-git
-	pkgdesc = A block stacking puzzle game for the Gameboy Advance
+	pkgdesc = A block stacking puzzle game for the Gameboy Advance (Linux port)
 	pkgver = 3.4.6.r372.g537d68c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apotris.com/
 	arch = aarch64
 	arch = armv7h
@@ -21,10 +21,12 @@ pkgbase = apotris-git
 	source = soloud::git+https://github.com/akouzoukos/soloud.git
 	source = Tilengine::git+https://github.com/akouzoukos/Tilengine.git
 	source = fix-flags.patch
+	source = apotris.sh
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = a7406927a1ace3e96dd7f618b57a49dc70e7290c86ccb27f2f74698813aaa51614069ad8a8ab78bf5e6f6af88625209acdcc5bbabc784052311c1afabd3f11c8
+	b2sums = 6e704bfe9e2083f22a344024607521f01522d776310dd8597ed575a87214157b14984298da07bc5fb0c819eb7c16731afe9a77e2dad501ca2511be4a689cd3ba
 
 pkgname = apotris-git
 	depends = gcc-libs
