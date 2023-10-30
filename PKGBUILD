@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mdview-appimage
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Standalone Markdown viewer "
 arch=('x86_64')
@@ -13,9 +13,9 @@ options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/c3er/mdview/v${pkgver}/LICENSE")
-sha256sums=('946b72ff5a3d2c5bca43999464b9ebdbf790c47509ee80184547a709ab0fadfb'
+sha256sums=('df679931c0f183db7e50bbe87963746c5da42b1d7bf0b9ed7e9d5a49eb370487'
             '4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
