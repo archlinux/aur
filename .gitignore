@@ -5,3 +5,4 @@ pkg
 *.log
 *.pkg.tar
 .psci_modules
+*tar.zst
