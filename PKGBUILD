@@ -11,7 +11,7 @@ depends=()
 source=('audiowarden.service')
 source_x86_64+=("https://github.com/nroi/${pkgname}/releases/download/${pkgver}/${pkgname}-x86.tar.gz")
 sha256sums=('a8789704183f5bb551807fff056935c047ddf6c0a72eeb0047ee0ceb4777f3cb')
-sha256sums_x86_64+=('fae860c20ead431d43af1e46c2a83526acce09ec2e5c365675574ee1b8865506')
+sha256sums_x86_64+=('5399d119ced4a33d8af55acde44e2ca7238f45dd36ba27bfb5fd266be5754f6f')
 
 package() {
     install -Dm644 "${srcdir}/audiowarden.service" "${pkgdir}/usr/lib/systemd/user/audiowarden.service"
