@@ -1,13 +1,14 @@
 pkgbase = a2ln
 	pkgdesc = Android 2 Linux Notifications Server
 	pkgver = 1.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/patri9ck/a2ln-server
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pyzmq
 	depends = python-gobject
