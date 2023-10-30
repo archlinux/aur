@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://mochi.cards/releases/Mochi-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('73e07ebeb5ce1582f7de8b350379add4da501cb55056955c33cae5a5df10ad77 ')
+sha256sums_x86_64=('73e07ebeb5ce1582f7de8b350379add4da501cb55056955c33cae5a5df10ad77')
 
 prepare() {
     chmod +x "${_appimage}"
