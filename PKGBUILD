@@ -20,9 +20,9 @@ depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
 hypre=$(pacman -Qs hypre | head -n 1 | cut -f2 -d' ')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=${hypre}")
-source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
         test_optdepends.sh)
+source=("git+${url}.git#branch=main"
 sha512sums=('SKIP'
             '49cecb31911ab0e66cc37d22b8024d067e8611a9fdee057fa70158b01531019cca7df0d238b83ff2fa34e4e5b7b08792f8a1eedd9477eb133c8a8b38523d65af'
             'af9c16c59915c1ddb03390bb0b97e8b7404fed200cd86f69cdf06fcd13f670bc3c3c7ddae527b621210408a01db0c55db249af1fc1082e284aa707d32b21ebcb')
