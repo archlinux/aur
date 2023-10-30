@@ -1,5 +1,5 @@
 pkgbase = agendav
-	pkgdesc = Open source multilanguage CalDAV web client
+	pkgdesc = A CalDAV web client similar to Google Calendar.
 	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://agendav.org/

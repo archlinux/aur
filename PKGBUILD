@@ -5,7 +5,7 @@
 pkgname=agendav
 pkgver=2.6.0
 pkgrel=1
-pkgdesc="Open source multilanguage CalDAV web client"
+pkgdesc="A CalDAV web client similar to Google Calendar."
 arch=(any)
 url="http://agendav.org/"
 license=('GPL')
