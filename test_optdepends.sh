@@ -111,6 +111,10 @@ if [ -f "${HYPRE_SO}" ]; then
 	CONFOPTS="${CONFOPTS} --with-hypre-lib=${HYPRE_SO}"
     HYPRE_INC="$(find_inc "HYPRE.h" "hypre")"
 	CONFOPTS="${CONFOPTS} --with-hypre-include=${HYPRE_INC}"
+
+	# CONFOPTS="${CONFOPTS} --with-hypre=1 --download-hypre=1"
+
+    # CONFOPTS="${CONFOPTS} --with-hypre=0"
 fi
 
 # MED: Data Modelization and Exchanges (meshes)
