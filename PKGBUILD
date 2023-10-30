@@ -4,29 +4,32 @@
 
 pkgname='ktechlab'
 pkgver=0.51.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IDE for microcontrollers and electronic simulation'
 arch=('x86_64')
 url="https://invent.kde.org/sdk/ktechlab"
 license=('GPL2')
-depends=('hicolor-icon-theme'
-        'kconfig5'
-        'kcoreaddons5'
-        'kdoctools5'
-        'khtml'
-        'kiconthemes5'
-        'ki18n5'
-        'kio5'
-        'kparts5'
-        'ktexteditor5'
-        'ktextwidgets5'
-        'solid5'
-        'kwidgetsaddons5'
-        'kwindowsystem5'
-        'kxmlgui5'
-        'qt5-base')
+depends=(
+    'qt5-base'
+    'qt5-serialport'
+    'kcompletion5'
+    'kconfig5'
+    'kconfigwidgets5'
+    'kcoreaddons5'
+    'kdoctools5'
+    'kiconthemes5'
+    'ki18n5'
+    'kio5'
+    'kparts5'
+    'ktexteditor5'
+    'ktextwidgets5'
+    'kwidgetsaddons5'
+    'kwindowsystem5'
+    'kxmlgui5'
+    )
 makedepends=('extra-cmake-modules')
-optdepends=('gpsim: for simulating PIC microcontrollers')
+optdepends=('gpsim: for simulating PIC microcontrollers'
+    'glib2: Required for gpsim')
 source=("https://download.kde.org/unstable/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('046b9ce1f2c2a93e1da734a416674a5bb5da3203ac773d49ed693b8492f6d212')
 
