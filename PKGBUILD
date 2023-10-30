@@ -1,6 +1,6 @@
 # Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=entropy-assessment
-pkgver=1.1.6
+pkgver=1.1.7
 _pkgname=SP800-90B_EntropyAssessment-$pkgver
 pkgrel=1
 pkgdesc="C++ implementation of the NIST Special Publication 800-90B"
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/usnistgov/SP800-90B_EntropyAssessment/archive/refs/tags/v$pkgver.tar.gz"
     "LICENSE"
 )
-b2sums=('0e14b4391665b874ac7ac617e822ee9da2aaef79e6586f560f89ca7d57240218d558add60c1703cc5c395e6a82fd5e3ee159c6f94c57743234fcf8b01de75b42'
+b2sums=('0412e90b0d864abbda838cc641c9ab95e7daedd92b7f80bdbf291cf725646d8c9f4834bf86c9452330dbf2ee0d8f898928af6af7c744ba76d502cea8925eeb9a'
         'eb7559b09ecf5c19cea59d1c4deb5df4b4f6648291ed8e6c4a5eb57c0ee901c309b4d501f1b41ae088f4785c8b73e75ca92df62bd963e2ebc6a1b2f6e46e2054')
 
 build() {
