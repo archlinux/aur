@@ -1,6 +1,6 @@
 pkgbase = kemono-scraper-git
 	pkgdesc = A simple downloader to download media from kemono.party, development version.
-	pkgver = v0.0.21.r0.gb2c42e7
+	pkgver = 0.0.21.r0.gb2c42e7
 	pkgrel = 1
 	url = https://github.com/elvis972602/Kemono-scraper
 	arch = x86_64

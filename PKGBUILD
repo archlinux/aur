@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Vinícios de Souza <gnsfujiwara@disroot.org>
 
 pkgname=kemono-scraper-git
-pkgver=v0.0.21.r0.gb2c42e7
+pkgver=0.0.21.r0.gb2c42e7
 pkgrel=1
 pkgdesc='A simple downloader to download media from kemono.party, development version.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
