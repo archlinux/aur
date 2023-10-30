@@ -1,8 +1,8 @@
 # Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
 
 pkgname=mediadownloader-git
-pkgver=3.4.0.r11.g22649a4
-pkgrel=3
+pkgver=3.4.0.r38.g5cfa8d8
+pkgrel=1
 pkgdesc="This project is a Qt/C++ based GUI frontend to CLI multiple CLI based tools that deal with downloading online media."
 arch=('x86_64' 'aarch64')
 url="https://github.com/mhogomchungu/media-downloader"
