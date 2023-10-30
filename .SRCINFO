@@ -1,7 +1,7 @@
 pkgbase = python-vulkan
 	pkgdesc = The ultimate Python binding for Vulkan API
 	pkgver = 1.1.99.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realitix/vulkan
 	arch = any
 	license = MIT
@@ -14,4 +14,3 @@ pkgbase = python-vulkan
 	sha384sums = 43675c9ae7092a31b02478768da8bb89ec53bca74dafa692f9fac687e096e40dc8cef879f104e84d0b8a1e18b5853ff7
 
 pkgname = python-vulkan
-
