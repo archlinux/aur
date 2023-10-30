@@ -1,5 +1,5 @@
 pkgbase = replit-desktop-app
-	pkgdesc = A native Replit experience free of browser distractions
+	pkgdesc = The collaborative browser based IDE
 	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://replit.com/desktop
