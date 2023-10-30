@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
-pkgver=5.6.2
-pkgrel=2
+pkgver=5.6.3
+pkgrel=1
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/ciromattia/kcc"
@@ -15,9 +15,9 @@ makedepends=('python-setuptools')
 source=(kindlecomicconverter.desktop
         https://github.com/ciromattia/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
 md5sums=('f25b30fbc1bc1db491173215fe411789'
-         '7521672ecdf3b47903642613003a77d5')
+         '1f33c155e85235b12f173c4c17f9c39f')
 sha256sums=('3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f'
-            'ca33654383c246ab37ba9123346fea47773913d472a6c2c8db9f7fd89795f9b9')
+            '72eb10de4ac73c67cd18be5cbc250ae1d6c511c235ec51c929c7c104625a139d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
