@@ -18,6 +18,7 @@ provides=(
 conflicts=(
   "${pkgname%-git}"
   'whitesur-kvantum-theme'
+  'plasma5-themes-whitesur'
   'whitesur-kde-theme'
 )
 source=("git+${url}.git")
