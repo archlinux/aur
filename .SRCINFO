@@ -1,6 +1,6 @@
 pkgbase = encrypt0r-bin
 	pkgdesc = App to encrypt and decrypt your files with a passphrase, powered by electron
-	pkgver = 3.11.50
+	pkgver = 3.11.51
 	pkgrel = 1
 	url = https://www.kunalnagar.in/blog/encryptor-encrypt-decrypt-files-passphrase/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = encrypt0r-bin
 	makedepends = gendesk
 	depends = bash
 	depends = electron18
-	provides = encrypt0r=3.11.50
+	provides = encrypt0r=3.11.51
 	conflicts = encrypt0r
-	source = encrypt0r-3.11.50.zip::https://github.com/kunalnagar/encrypt0r/releases/download/v3.11.50/encrypt0r-linux-deb.zip
-	source = LICENSE.md::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v3.11.50/LICENSE.md
+	source = encrypt0r-3.11.51.zip::https://github.com/kunalnagar/encrypt0r/releases/download/v3.11.51/encrypt0r-linux-deb.zip
+	source = LICENSE.md::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v3.11.51/LICENSE.md
 	source = encrypt0r.sh
-	sha256sums = d2f9b86e71e5cc7b83a74bc15c7a2d385887a70b4c93b5e1b3ac67db69dfabfa
+	sha256sums = 736d78d361a60cf17004be6b2845f35c244e6e67679c6c3ed21964bf2954472d
 	sha256sums = dd8cfe4d2d540a3c670cf0aa6c95e9076e8949d7c50d04495feb0a6ce9d82cc3
-	sha256sums = 9d56e0adf25490437bd52167d172f543d3a35f33fb4436f242664a1ece0dbbfb
+	sha256sums = 3a81f6e672e0e47b8a1ad0acd6766f39663d9718bfea84b710a305ac514178db
 
 pkgname = encrypt0r-bin
