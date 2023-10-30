@@ -8,7 +8,7 @@ url="https://inko-lang.org"
 license=(MPL2)
 arch=(x86_64)
 depends=(llvm15 git base-devel)
-makedepends=('rust>=1.68' make)
+makedepends=(cargo make)
 provides=(inko)
 conflicts=(inko-git)
 options=(strip !docs !libtool !staticlibs)
