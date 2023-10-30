@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='shd'
-pkgver='0.1.5'
+pkgver='0.1.6'
 pkgrel='1'
 pkgdesc='Console tool to display drive list with commonly checked smart info'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -8,8 +8,8 @@ url="https://github.com/alttch/$pkgname"
 license=('MIT')
 depends=('smartmontools>=7.0')
 makedepends=('cargo')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('49842949ce1a6af753f513a7b92578f825185514a9407becb0611fe06676045abbc690b252c2eb6735ac1e6a97a802ed3fdb2b442f4040e5f6ee3855ed1f48a2')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('0e317c68983f7b49e440b22866a667a5e188b6ff09bcbb6cefc08a5f87591b14adf3c7818203299c19be6e966cc67705191d96539c1eb778340b34693eb27fe4')
 
 _sourcedirectory="$pkgname-$pkgver"
 
