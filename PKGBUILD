@@ -90,7 +90,7 @@ generic_flags="${generic_flags} -O2"
 
 export LANG=C
 export OMPI_MCA_opal_cuda_support=0
-export OMPI_MCA_mpi_oversubscribe=0
+# export OMPI_MCA_mpi_oversubscribe=0
 unset PETSC_DIR
 export PETSC_ARCH=${_config}
 
