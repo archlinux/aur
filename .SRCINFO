@@ -1,5 +1,5 @@
 pkgbase = dl-distro-git
-	pkgdesc = Download and verify Linux ISOs with GnuPG and shasums
+	pkgdesc = Bash script for downloading and verifying OS images.
 	pkgver = 197.8de119f
 	pkgrel = 1
 	url = https://codeberg.org/bashuser30/dl-distro
