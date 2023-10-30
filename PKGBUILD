@@ -1,7 +1,7 @@
 # PETSc from the latest git release
 # Maintainer: eDgar <edgar |at] openmail cc>
-# Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 # Contributor: Martin Diehl <aur@martin-diehl.net>
+# Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 
 _base=petsc
 pkgname=("${_base}"-git-release "${_base}"-doc-bin)
