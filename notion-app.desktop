@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Notion
-Comment=Connected workspace for wiki, docs & projects
-Exec=notion-app
-Icon=notion-app
-MimeType=x-scheme-handler/notion;
-Categories=Office

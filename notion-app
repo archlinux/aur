@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/notion-flags.conf ]]; then
 fi
 
 # Launch
-exec electron /usr/lib/notion-app/app.asar $NOTION_USER_FLAGS "$@"
+exec electron /usr/lib/notion-app/resources/app.asar $NOTION_USER_FLAGS "$@"
