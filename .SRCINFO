@@ -1,12 +1,13 @@
 pkgbase = python-silx
 	pkgdesc = A collection of Python packages for data analysis at synchrotron radiation facilities.
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.silx.org
 	arch = any
 	license = MIT
 	license = LGPL
 	makedepends = cython
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-pyqt5
 	depends = python-matplotlib
