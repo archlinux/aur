@@ -14,9 +14,9 @@ pkgbase = jdk17-graalvm-ee-bin
 	options = staticlibs
 	source = graalvm-ee-rebuild-libpolyglot.hook
 	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
-	source_x86_64 = graalvm-jdk-17.0.9+11.1_linux-x64_bin.tar.gz::https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-x64_bin.tar.gz
+	source_x86_64 = https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.9_linux-x64_bin.tar.gz
 	sha256sums_x86_64 = 1f4e6dcf1f7fc2e289f92c98fc13e1de4c59b0622a039ae4d55904692392c538
-	source_aarch64 = graalvm-jdk-17.0.9+11.1_linux-aarch64_bin.tar.gz::https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-aarch64_bin.tar.gz
+	source_aarch64 = https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.9_linux-aarch64_bin.tar.gz
 	sha256sums_aarch64 = ce4e4c68aee1c49550411daf061c56bbfbfb4dfd9f650380ef56e4daeff1f838
 
 pkgname = jdk17-graalvm-ee-bin
