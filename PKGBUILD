@@ -2,7 +2,7 @@
 
 pkgname=pot-translation
 reponame=pot-desktop
-pkgver=2.6.6
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'riscv64')
@@ -15,7 +15,7 @@ makedepends=('nodejs' 'pnpm' 'fnm' 'rust' 'dbus')
 
 source=("${reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('db98d83532f5e800fdbfd6b57e1dfa994d1ea1787d24c95b84b724e1e6d2eadb32c854ba83716fc1f8cb626a576f8f8ef2c7d6bb21158bfb79a1280615677435')
+sha512sums=('9d229fdca2f3e6c147d9c9d65765e5839695d89079e81a640fd42f30f74fbad567bc968bd79a843e06ff126012cb0ac32eb9f9025905485be31387e78624f622')
 
 build(){
     fnm install 20.5.0 && fnm use 20.5.0
