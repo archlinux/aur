@@ -16,8 +16,8 @@ optdepends=('librsvg: GUI support'
             'gtk-engine-murrine: optional theme engine')
 backup=(etc/conf.d/mldonkey)
 source=("https://github.com/ygrek/mldonkey/releases/download/release-${pkgver//./-}/mldonkey-${_pkgver}.tar.bz2"
-        "https://raw.githubusercontent.com/gentoo/gentoo/master/net-p2p/mldonkey/files/cpp17-byte-namespace.patch"
-        "https://github.com/ygrek/mldonkey/commit/a153f0f7a4826d86d51d4bacedc0330b70fcbc34.patch"
+        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-cpp17-byte-namespace.patch"
+        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-fix-build-with-4.12.patch"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-fix-build.patch"
         mldonkey.conf
         mldonkey.service
@@ -37,8 +37,8 @@ sha256sums=('b926e7aa3de4b4525af73c88f1724d576b4add56ef070f025941dd51cb24a794'
 
 prepare() {
   cd "mldonkey-${_pkgver}"
-  patch -Np1 -i ../cpp17-byte-namespace.patch
-  patch -Np1 -i ../a153f0f7a4826d86d51d4bacedc0330b70fcbc34.patch
+  patch -Np1 -i ../mldonkey-cpp17-byte-namespace.patch
+  patch -Np1 -i ../mldonkey-fix-build-with-4.12.patch
   patch -Np1 -i ../mldonkey-fix-build.patch
 }
 
