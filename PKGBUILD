@@ -6,7 +6,7 @@
 
 pkgname=google-java-format
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Reformats Java source code to comply with Google Java Style'
 url='https://github.com/google/google-java-format'
 arch=('any')
