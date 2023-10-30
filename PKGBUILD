@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-slay-the-princess
-pkgver=1.0a.68458
+pkgver=1.0f.68611
 pkgrel=1
 pkgdesc='Choice-driven psychological horror visual novel. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -36,7 +36,7 @@ source=(
 noextract=("${_setup_basename}.sh")
 
 sha512sums=(
-  '3750cd4da89dba3fabf55dea022487c0b835822f08da82ae490bd2103bea383d08492996531afda7ea17a399b004dac6ec7b75a366615a4c6bb8b83e5a972c22'
+  '9f6bd72615a50659e64d4e0e4ca33a4b95cda3dc85f3dea37e3faf5518a46711571acb515c5c6c0b682aa88217f7a079dbf7b1cf95a063eb650457b3d3a19693'
   '053dadf56f087d73b8eb29d77779ce0c40c974c8dd93d17d8835f7d447e54e7fb6d784d250b4a0087e936be49c31427da67245514f5cb36cbe93ad6586c3a1cb'
   '31aa2a5d6ea3038e18011452e6da9826d6ff0b8eb7b6ad4df3ead21027887800d12842614e2ec9c930de3045c0f0e7d8fb011a5e09316f5155c7df7df2a1c0ad'
 )
