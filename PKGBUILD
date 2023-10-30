@@ -5,7 +5,7 @@
 pkgname=dell-command-configure
 _pkgver=4.11.0-6
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Configure various BIOS features on Dell laptops'
 arch=('x86_64')
 url='https://www.dell.com/support/kbdoc/000178000/dell-command-configure'
@@ -25,7 +25,7 @@ prepare() {
 
   ar xf command-configure_*.deb
   mkdir -p command-configure
-  bsdtar -xvf data.tar.xz -C command-configure
+  bsdtar -xvf data.tar.zst -C command-configure
 }
 
 package() {
