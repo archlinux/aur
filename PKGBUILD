@@ -9,7 +9,7 @@
 # Contributor: Ian Chou <forendef2846 at gmail dot com>
 
 pkgname=pidgin-light
-pkgver=2.14.1
+pkgver=2.14.12
 pkgrel=1
 pkgdesc="A light pidgin version: msn, jabber, irc supported protocols without gstreamer, tcl, tk, xscreensaver support.No video/voice.  Includes finch "
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ install='pidgin-light.install'
 source=("http://downloads.sourceforge.net/project/pidgin/Pidgin/${pkgver}/pidgin-${pkgver}.tar.bz2"
         'anti-flood.patch')
 
-sha256sums=('f132e18d551117d9e46acce29ba4f40892a86746c366999166a3862b51060780'
+sha256sums=('2b05246be208605edbb93ae9edc079583d449e2a9710db6d348d17f59020a4b7'
             '0b792053434d686131d090e77fb1d6e0e1739c7feb0e8c277bda575adc24f16a')
 
 prepare() {
