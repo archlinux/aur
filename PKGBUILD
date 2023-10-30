@@ -2,7 +2,7 @@
 _basename="scenebuilder"
 pkgname="javafx-scenebuilder"
 _debpkg="SceneBuilder"
-pkgver="21.0.0"
+pkgver="21.0.1"
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc="Scene Builder is an open source tool that allows for drag and drop design of JavaFX user interfaces."
@@ -15,7 +15,7 @@ optdepends=()
 install=
 conflicts=('gluon-scenebuilder')
 source=(https://github.com/gluonhq/scenebuilder/releases/download/$_pkgver/$_debpkg"-"$_pkgver".deb")
-sha256sums=('0c848eeab6249bce0ae8082a02676f7a361ef185782ea872209c1807f0857549')
+sha256sums=('6148b0820cdebf582426285d6e6f690d8ec843ca9a13ff44615542c22f6282d5')
 build() {
   cd "$srcdir/"
   tar -xf data.tar.xz
