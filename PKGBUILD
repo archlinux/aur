@@ -7,26 +7,24 @@
 pkgname=libmesh-petsc
 pkgbase=libmesh
 pkgrel=1
-pkgver=cpp03_final.r6437.gf6aec9225
+pkgver=cpp03_final.r6839.g3e858a733
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
 license=('LGPL')
 provides=($pkgbase "metaphysicl" "timpi")
 conflicts=($pkgbase)
-depends=('eigen' 'hdf5' 'boost-libs' 'intel-tbb' 'vtk' 'glpk' 'netcdf' 'nlopt' "petsc" "hypre=2.18.2" "openmpi" "metis")
+depends=('eigen' 'hdf5' 'boost-libs' 'intel-tbb' 'vtk'
+         'glpk' 'netcdf' 'nlopt' "petsc" "hypre"
+         "openmpi" "metis")
 makedepends=('bison' 'coreutils')
 # From tar.bz2
 # source=("https://github.com/libMesh/libmesh/releases/download/v${pkgver}/libmesh-${pkgver}.tar.bz2")
 # sha256sums=('638cf30d05c249315760f16cbae4804964db8857a04d5e640f37617bef17ab0f')
 source=(
   "${pkgbase}::git+https://github.com/libMesh/libmesh"
-  "netcdf.m4.patch"
-  "0001-Avoid-calling-virtual-function-from-DenseMatrix-resi.patch"
 )
-sha256sums=('SKIP'
-            'b6b2d10d1f423b9a088e6b55d9368d8f1ac7291646da34864c5f58124f5e3880'
-            'da0ef283dcee18dbe2878d4b998a82d83dbf94323146cf257bc77304427533d4')
+sha256sums=('SKIP')
 
 #  From UPC: Building And Using Static And Shared "C"
 #  Libraries.html
@@ -99,6 +97,7 @@ export F77FLAGS="$generic_flags"
 export METHODS="opt dbg"
 
 export OMPI_MCA_opal_cuda_support=0
+# export OMPI_MCA_mpi_oversubscribe=0
 export CC=mpicc CXX=mpicxx FC=mpifort
 # Find the location of the header files of PETSc
 # # Get the PETSc directory
@@ -204,6 +203,8 @@ build() {
     --with-nlopt-lib=/usr/lib
     # VTK
     --enable-vtk-required
+    # --with-vtk-lib=/usr/lib
+    # --with-vtk-include=/usr/include/vtk/
 
     # infinite elements
     --enable-ifem
