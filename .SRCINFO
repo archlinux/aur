@@ -1,0 +1,12 @@
+pkgbase = owm
+	pkgdesc = An experimental River layout generator using mathematical optimization to invent layouts on-the-fly.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/justinlovinger/owm
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = owm::git+https://github.com/justinlovinger/owm.git
+	md5sums = SKIP
+
+pkgname = owm
