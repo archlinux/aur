@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+
+# Allow users to override command-line options
+if [[ -f $XDG_CONFIG_HOME/replit-flags.conf ]]; then
+    REPLIT_USER_FLAGS="$(grep -v '^#' $XDG_CONFIG_HOME/replit-flags.conf)"
+fi
+
+# Launch
+exec electron /usr/lib/replit/resources/app.asar $REPLIT_USER_FLAGS "$@"
