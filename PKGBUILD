@@ -48,6 +48,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         "0001-Zombie-Process-Prevention.patch"
+        "0002-mozc-version.patch"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -66,6 +67,7 @@ sha512sums=('SKIP'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d'
+            '08f20d455b5fe1c177ac08fee025e2ff84474b63a11a888e6892f01a5e50c6565f0875e5b0b851901263f5ebfa63aebc257eafd374c9198fad649a78d3474a81'
             '8e32c97b62257d953bbc1e7cd15821df8a7c13eb97f0b9cdf569d9f474a58f9870c159bdd8fece581d0e9c57c399436604b493eb78b35f0edeff9dcc90c5be69'
             'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
 
@@ -100,6 +102,11 @@ prepare() {
   # zombie process prevention for mozc_tool
   cd "$srcdir/mozc" || exit
   patch -p1 -i ${srcdir}/0001-Zombie-Process-Prevention.patch
+
+  # mozc date and version
+  patch -p1 -i ${srcdir}/0002-mozc-version.patch
+  _date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
+  sed -i -e "s/PKGVER/${pkgver}.${pkgrel}/" -e "s/DATE/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
 }
 
 build() {
@@ -218,6 +225,7 @@ package_ibus-mozc-with-jp-dict() {
   install_mozc-with-jp-dict-common
   export _bldtype
   cd "${srcdir}/mozc/src" || exit
+  sed -i -e "s|0\.0\.0\.0|${pkgver}|g" bazel-bin/unix/ibus/mozc.xml
   install -D -m 755 bazel-bin/unix/ibus/ibus_mozc         "$pkgdir/usr/lib/ibus-mozc/ibus-engine-mozc"
   install -D -m 644 bazel-bin/unix/ibus/mozc.xml          "$pkgdir/usr/share/ibus/component/mozc.xml"
   install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
