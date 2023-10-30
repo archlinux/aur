@@ -8,8 +8,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=119.0
-pkgrel=1
-# DEPRECATED pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding & settings"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -44,8 +43,6 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://codeberg.org/librewolf/source.git"
   "librewolf-settings::git+https://codeberg.org/librewolf/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-  # Temporarily disabling (as of 2023-10-29)
-  # "https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/f021e2ed225da9cc3b667e7ef9a60163607b407f/0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch")
 sha256sums=('f63e44194548f246e1396508800739a24c0517e65e920002a6f67ee099be39dd'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
@@ -173,15 +170,8 @@ END
   fi
 
   # Upstream patches from gentoo/CachyOS
-  # PGO improvements (DEPRECATED)
-  # patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0022-fix-building-gcc-pgo-and-disable-watchdog-on-pgo-builds.patch
-
   # Harfbuzz builder fixes (POSSIBLE FUTURE USE)
   # patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0003-bmo-847568-Support-system-harfbuzz.patch
-
-  # Unbreak build with Rust 1.73.0 (TEMPORARILY DISABLED AS OF 2023-10-29)
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1849874
-  # patch -Np1 -i ../0001-Bug-1849874-Update-from-packed_simd_2-to-packed_simd.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
@@ -234,8 +224,8 @@ END
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
 
-  # Hide Firefox view
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
+  # Hide Firefox view --> Broken as of 2023-10-30
+  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
 
   # Allows hiding the password manager (from the lw pref pane) / via a pref
   patch -Np1 -i "${_librewolf_patches_dir}"/hide-passwordmgr.patch
