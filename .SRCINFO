@@ -1,0 +1,11 @@
+pkgbase = jb-url-handler-git
+	pkgdesc = Handler for unofficial jb:// scheme for JetBrains IDEs
+	pkgver = r1.7b11d87
+	pkgrel = 1
+	url = https://github.com/Ashark/jb-url-handler
+	arch = any
+	depends = desktop-file-utils
+	source = git+https://github.com/Ashark/jb-url-handler
+	sha256sums = SKIP
+
+pkgname = jb-url-handler-git
