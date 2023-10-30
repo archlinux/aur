@@ -8,6 +8,7 @@ pkgbase = salome-medcoupling
 	makedepends = swig
 	makedepends = salome-configuration
 	makedepends = boost
+	makedepends = git
 	depends = med
 	depends = libxml2
 	depends = python-scipy
