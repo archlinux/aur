@@ -1,16 +1,22 @@
-# Maintainer: Colin Arnott <colin@urandom.co.uk>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=python-pprintpp
 pkgver=0.4.0
-pkgrel=2
-pkgdesc="Extension of Python package pycountry providing conversion functions."
+pkgrel=3
+pkgdesc="A drop-in replacement for pprint that's actually pretty"
 arch=('any')
 url="http://pypi.python.org/pypi/pprintpp"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/p/${pkgname#python-}/${pkgname#python-}-${pkgver}.tar.gz")
-sha512sums=('c59d759744499ec74bbbbcf440a45b4bb5a1ed0586cd76d444da764eb3e3c02ef5e883c00c0501f1138baa84b04f5e89ce3f8c9ed7a9cbe65c93d42deb573010')
+b2sums=('8c892e0b36cd72b90d4ea3c120f9040298e28cb17135356aee6869256e82b53281d596f816ca3ab3580589f53926d60a5cebd0174a8b83240d1abdb2f7a7bbb0')
+
+prepare() {
+  cd "${srcdir}/${pkgname#python-}-${pkgver}"
+
+  sed -i 's?\(\"README.rst\"\), \"U\"?\1?' setup.py
+}
 
 package() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
