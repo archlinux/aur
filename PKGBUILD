@@ -4,7 +4,7 @@
 # Contributor: Roberto Carvajal <roberto@archlinux.org>
 
 pkgname=multitail
-pkgver=7.1.1
+pkgver=7.1.2
 pkgrel=1
 pkgdesc="Lets you view one or multiple files like the original tail program"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake')
 backup=('etc/multitail.conf')
 #source=("https://www.vanheusden.com/multitail/${pkgname}-${pkgver}.tgz")
 source=(https://github.com/folkertvanheusden/multitail/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('fa9ed63c1501c5c06c8b9713e7b1fb37d4223e815f07878078d820c1370f6dc1')
+sha256sums=('c8552e10093f0690b8baef84945753c878e234d7b3d0e3ff27e509ed5515998c')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -33,6 +33,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   mv "$pkgdir"/{usr/,}etc
   mv "$pkgdir"/etc/multitail.conf{.new,}
+  mv "$pkgdir"/usr/share/doc/multitail{-VERSION=$pkgver,}
 }
 
 # vim: ts=2 sw=2 et ft=sh

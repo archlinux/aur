@@ -1,6 +1,6 @@
 pkgbase = multitail
 	pkgdesc = Lets you view one or multiple files like the original tail program
-	pkgver = 7.1.1
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://www.vanheusden.com/multitail
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = multitail
 	makedepends = cmake
 	depends = ncurses
 	backup = etc/multitail.conf
-	source = https://github.com/folkertvanheusden/multitail/archive/7.1.1/multitail-7.1.1.tar.gz
-	sha256sums = fa9ed63c1501c5c06c8b9713e7b1fb37d4223e815f07878078d820c1370f6dc1
+	source = https://github.com/folkertvanheusden/multitail/archive/7.1.2/multitail-7.1.2.tar.gz
+	sha256sums = c8552e10093f0690b8baef84945753c878e234d7b3d0e3ff27e509ed5515998c
 
 pkgname = multitail
