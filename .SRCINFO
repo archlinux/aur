@@ -1,6 +1,6 @@
 pkgbase = r-spatialheatmap
 	pkgdesc = spatialHeatmap
-	pkgver = 2.6.2
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spatialHeatmap
 	arch = any
@@ -85,8 +85,8 @@ pkgbase = r-spatialheatmap
 	optdepends = r-visnetwork
 	optdepends = r-wgcna
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialHeatmap_2.6.2.tar.gz
-	md5sums = 5810ecc68ddddd26e70932ebf93ee364
-	sha256sums = f9222725e9ad80f6d19f96e5d77d49459c580495e42750cca9d7e041118df781
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialHeatmap_2.8.0.tar.gz
+	md5sums = 2fe3c68f9bbfb419d0afd3d329e65747
+	sha256sums = 1e9edcd4ba6b1a5458a00e53d0f332faa4dd6e0aa76ac864a1170abcf9a1dbaf
 
 pkgname = r-spatialheatmap
