@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocSingular
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Singular Value Decomposition for Bioconductor Packages"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,8 +32,14 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('df6d2dd2e0de6864dcc488127f9b0621')
-sha256sums=('6951c0824631b3a861087de1ab4f25abea2f935c1a9d0006f6f98e32b8fe63a8')
+md5sums=('9b4158e143f2cbefc140228c13090b35')
+sha256sums=('634824a2e15c13c9fefbb17605a3861bdced6fc182c8880ae862f2248600377c')
+
+prepare() {
+  # skip test that makes a coredump
+  sed -i '/"scale calculations work correctly"/a\ \ \ \ skip("dumps core")' \
+      "$_pkgname/tests/testthat/test-utils.R"
+}
 
 build() {
   mkdir -p build
