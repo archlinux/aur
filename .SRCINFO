@@ -1,17 +1,19 @@
 pkgbase = goofcord-bin
 	pkgdesc = Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.
-	pkgver = 1.0.0
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://github.com/Milkshiift/GoofCord
 	arch = x86_64
 	license = custom::OSL3
 	depends = bash
-	depends = electron27
-	provides = goofcord=1.0.0
+	depends = electron26
+	provides = goofcord=0.7.5
 	conflicts = goofcord
-	source = goofcord-1.0.0.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.0.0/goofcord_1.0.0_amd64.deb
+	source = goofcord-0.7.5.AppImage::https://github.com/Milkshiift/GoofCord/releases/download/v0.7.5/GoofCord-0.7.5-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/v0.7.5/LICENSE
 	source = goofcord.sh
-	sha256sums = 8fd5a5aa214d33bbc64d5bcd36f1d527a3f42af9ce970ab301f450222c9ac53e
-	sha256sums = 32acad47beeebe310edbb2e99b5f05b2534aae59425cf61b779c6014016b2fec
+	sha256sums = 0b6dcf2577242582bbc0cc3f3251892866dfa4aea9f9be97de0dfa4e2c8cb8e0
+	sha256sums = 4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51
+	sha256sums = aea4a3b6cf7aac399225798877e2c711426f971eb411fb604f44b08568a40802
 
 pkgname = goofcord-bin
