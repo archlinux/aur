@@ -21,7 +21,7 @@ depends=(
 optdepends=('glib2: support for moving files to trash')
 conflicts=('xnviewmp')
 
-source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/XnViewMP-linux-x64.tgz"
+source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-${pkgver}-linux-x64.tgz"
         'xnview.sh'
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
