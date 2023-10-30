@@ -1,6 +1,6 @@
 pkgbase = r-tnbc.cms
 	pkgdesc = TNBC.CMS: Prediction of TNBC Consensus Molecular Subtypes
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TNBC.CMS
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-tnbc.cms
 	depends = r-rcolorbrewer
 	depends = r-summarizedexperiment
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TNBC.CMS_1.16.0.tar.gz
-	sha256sums = d418367c8014f84944fa764cb81905b72db9338be5827853ba23e3c5ae484e5d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TNBC.CMS_1.18.0.tar.gz
+	sha256sums = 20a9190da76166a11e72b4225fff0e7c8d77f44b788658975c2c96bc127edeeb
 
 pkgname = r-tnbc.cms
