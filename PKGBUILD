@@ -1,4 +1,5 @@
 # Maintainer: VitalyR <vr@vitalyr.com>
+# Maintainer: phanium <$(echo bnhoc2R1QHFxLmNvbQo= | base64 -d)>
 # Former Maintainer: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
@@ -28,9 +29,9 @@
 
 pkgname=vivado
 _srcname=Xilinx_Unified
-pkgver=2023.1
-_more_ver=0507_1903
-pkgrel=2
+pkgver=2023.2
+_more_ver=1013_2256
+pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -55,7 +56,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
     'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('f2011ceba52b109e3551c1d3189a8c9c'
+md5sums=('64d64e9b937b6fd5e98b41811c74aab2'
     '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
