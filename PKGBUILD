@@ -4,7 +4,7 @@
 
 pkgname=libfprint-tod-git
 _pkgdirname=libfprint
-pkgver=1.94.3+tod1
+pkgver=1.94.6+tod1
 pkgrel=1
 pkgdesc="Library for fingerprint readers - TOD version"
 arch=(x86_64)
