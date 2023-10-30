@@ -1,6 +1,6 @@
 pkgbase = streamdeck-ui-git
 	pkgdesc = A Linux compatible UI for the Elgato Stream Deck
-	pkgver = 3.1.0.r1.ga3f3cf8
+	pkgver = 3.2.0.r0.g2e67068
 	pkgrel = 1
 	url = https://github.com/streamdeck-linux-gui/streamdeck-linux-gui
 	arch = any
@@ -21,15 +21,15 @@ pkgbase = streamdeck-ui-git
 	optdepends = gnome-shell-extension-appindicator: tray icon support gnome-shell
 	provides = streamdeck-ui
 	conflicts = streamdeck-ui
-	source = streamdeck-ui::git+https://github.com/streamdeck-linux-gui/streamdeck-linux-gui
+	source = streamdeck-ui::git+https://github.com/streamdeck-linux-gui/streamdeck-linux-gui.git
 	source = 60-streamdeck.rules
-	source = elgato.png
 	source = streamdeck-ui.desktop
+	source = streamdeck.png
 	source = streamdeck.service
 	sha256sums = SKIP
 	sha256sums = f91b76a71ee5253bcc3dff2a096fb7c2cc8ec4f510c7a9adc4df1f0967ea3dd3
+	sha256sums = 745bbc947cfe4536e52721ef65db75c599903c0ab3450fbbf96c44e322e42c4c
 	sha256sums = 03726bef65cec1a2ff4bb0241e021d112bf8b5a9a90ca0e3ebeba34358b281fe
-	sha256sums = 03e288cca64bf0aa8f951b849bdace4ec27d20f4b3b1a24869e8f8fa20442c47
 	sha256sums = f3350b2db661c0eebd8bbe3305d81d0189aa24552c286a9302484a32845526e0
 
 pkgname = streamdeck-ui-git
