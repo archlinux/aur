@@ -1,5 +1,5 @@
 pkgname=salome-medcoupling
-pkgver=9.10.0
+pkgver=9.11.0
 pkgrel=1
 pkgdesc="Field data manipulation library"
 url="https://www.salome-platform.org"
@@ -7,8 +7,8 @@ license=('LGPL2+')
 depends=('med' 'libxml2' 'python-scipy' 'metis' 'scotch')
 makedepends=('swig' 'salome-configuration' 'boost')
 arch=('x86_64')
-source=("git+https://git.salome-platform.org/gitpub/tools/medcoupling.git#tag=V9_10_0")
-md5sums=(SKIP)
+source=("git+https://git.salome-platform.org/gitpub/tools/medcoupling.git#tag=V9_11_0")
+md5sums=('SKIP')
 
 prepare () {
   cd medcoupling
