@@ -1,6 +1,6 @@
 pkgbase = messages4desktop-bin
 	pkgdesc = Google Messages on your desktop.
-	pkgver = p20231022
+	pkgver = p20231029
 	pkgrel = 1
 	url = https://github.com/Randomblock1/messages4desktop
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = messages4desktop-bin
 	makedepends = asar
 	depends = bash
 	depends = electron
-	provides = messages4desktop=p20231022
+	provides = messages4desktop=p20231029
 	conflicts = messages4desktop
-	source = messages4desktop-p20231022.7z::https://github.com/Randomblock1/messages4desktop/releases/download/p20231022/linux.7z
+	source = messages4desktop-p20231029.7z::https://github.com/Randomblock1/messages4desktop/releases/download/p20231029/linux.7z
 	source = messages4desktop.sh
-	sha256sums = cc27a782f4e13c282090d299b229033f47c69c22a8ba7302687ad21d1880c7a5
-	sha256sums = 900b70640ab7e64dc8766606f732d6b3fe199ba0edba46556e6fda5d8d8c4bbf
+	sha256sums = c18dd2d06f9eb29579d7d30f0e84a604bb9bca56de4ae58591438eb33dd0119d
+	sha256sums = e6d7f0c8d644706f1e2cbfc8b77ac610eb0d15687118eec6dd9d50ba21725c55
 
 pkgname = messages4desktop-bin
