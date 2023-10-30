@@ -11,6 +11,7 @@ arch=('x86_64' 'armv7h')
 url="https://nicos-controls.org/"
 license=('GPL3')
 depends=('python' 'python-numpy' 'python-gevent')
+makedepends=('python-setuptools')
 conflicts=('python-nicos-quickyaml-git')
 provides=('python-nicos-quickyaml')
 source=("https://github.com/mlz-ictrl/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
