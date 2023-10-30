@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alspotron-bin
 _pkgname=Alspotron
-pkgver=0.16.3
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="Shows the egg lyrics of the track, playing on Spotify / YouTube Music"
 arch=('x86_64')
@@ -9,10 +9,32 @@ url="https://github.com/organization/alspotron"
 license=('Apache')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('libxrandr' 'at-spi2-core' 'libxkbcommon' 'pango' 'expat' 'java-runtime' 'dbus' 'alsa-lib' 'nss' 'glibc' 'nspr' \
-    'libxdamage' 'cairo' 'libxcomposite' 'libcups' 'libxcb' 'gtk3' 'libdrm' 'libxext' 'libxfixes' 'glib2' 'gcc-libs' 'libx11' 'mesa')
+depends=(
+    'libxrandr'
+    'at-spi2-core'
+    'libxkbcommon'
+    'pango'
+    'expat'
+    'java-runtime'
+    'dbus'
+    'alsa-lib'
+    'nss'
+    'nspr'
+    'libxdamage'
+    'cairo'
+    'libxcomposite'
+    'libcups'
+    'libxcb'
+    'gtk3'
+    'libdrm'
+    'libxext'
+    'libxfixes'
+    'glib2'
+    'libx11'
+    'mesa'
+)
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('e91cdc45a3101a24d1fa1d04e6b8888af21026566c1527507f27ee5baf20b9de')
+sha256sums=('8bba356b0d504f6e9bfb3935d262d3aa76c47fe4ce8dde56a7ce040143f9a157')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
