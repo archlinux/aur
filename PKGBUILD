@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -10,14 +10,38 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
-depends=('libxrandr' 'expat' 'libx11' 'dbus' 'nss' 'libxfixes' 'gcc-libs' 'alsa-lib' 'mesa' 'pango' 'bash' 'libxext' 'libxdamage' \
-    'glibc' 'gtk3' 'glib2' 'nspr' 'libxcomposite' 'libdrm' 'libcups' 'at-spi2-core' 'libxkbcommon' 'libxcb' 'cairo')
+depends=(
+    'libxrandr'
+    'expat'
+    'libx11'
+    'dbus'
+    'nss'
+    'libxfixes'
+    'gcc-libs'
+    'alsa-lib'
+    'mesa'
+    'pango'
+    'bash'
+    'libxext'
+    'libxdamage'
+    'glibc'
+    'gtk3'
+    'glib2'
+    'nspr'
+    'libxcomposite'
+    'libdrm'
+    'libcups'
+    'at-spi2-core'
+    'libxkbcommon'
+    'libxcb'
+    'cairo'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_armhf.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
-sha256sums_aarch64=('a7d475077211f3ed469936db2dc5b5f7fe742c24408f63a8b09528fbd29122d1')
-sha256sums_armv7h=('5b849f0f4d62f635fdf22f4022a42cf9dc01549fed3e072cee735dff383e0a23')
-sha256sums_x86_64=('243e5faa1d6dcf25d659cf75f25381154f985d198a2e6b8c992d41396ccbceb5')
+sha256sums_aarch64=('03ba0a0e73d4bfec773df93f3de71f12c4e8c4d95a88ec5802047aa045d04059')
+sha256sums_armv7h=('1c5a32e210352c2cbedec85da661e07fd92acb55c6852cbd19776e65252d61e7')
+sha256sums_x86_64=('245c14b1e6f33be44d7d0cbb1bf5cfc63d11844c78663857b874f4fe69bc3504')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s| %U| --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
