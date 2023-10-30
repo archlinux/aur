@@ -3,9 +3,9 @@
 
 pkgname=metacubexd-bin
 _pkgname=metacubexd
-pkgver=1.128.0
+pkgver=1.128.1
 pkgrel=1
-pkgdesc='Clash.Meta Dashboard, The Official One, XD'
+pkgdesc='Clash.Meta Dashboard, The Official One, XD (Precompiled version)'
 arch=('any')
 _repo="MetaCubeX/${_pkgname}"
 url="https://github.com/${_repo}"

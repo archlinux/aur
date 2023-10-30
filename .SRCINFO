@@ -1,6 +1,6 @@
 pkgbase = metacubexd-bin
-	pkgdesc = Clash.Meta Dashboard, The Official One, XD
-	pkgver = 1.128.0
+	pkgdesc = Clash.Meta Dashboard, The Official One, XD (Precompiled version)
+	pkgver = 1.128.1
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/metacubexd
 	arch = any
