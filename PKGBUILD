@@ -100,7 +100,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.5
-pkgver=${_major}.8
+pkgver=${_major}.9
 _branch=6.x
 xanmod=1
 _revision=
@@ -141,7 +141,7 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('7a574bbc20802ea76b52ca7faf07267f72045e861b18915c5272a98c27abf884' # kernel
             'SKIP'                                                             # kernel signature
-            '00f9425fcb79bdd737e140ee20a5461db1d6fbe66f6d9a1fbaefe03ed04cc65d' # xanmod patch
+            'f10d4a3c7231ad117305fd3850ad068ad26caa6082fce3e710c1fe897c600aeb' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
             '355a6898721857a1724dd644096b3faf4cb15b916fb99169e0ef8beb91d2241c' # 0001-bore.patch
             'baf8d2d1b0701326ee6ba0ffeabec2b5d716b6e136b836f60069cf6937527165' # 0002-constgran-vanilla-max.patch
