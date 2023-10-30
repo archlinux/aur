@@ -1,7 +1,7 @@
 # Maintainer: Frank Bearoff fbearoff at gmail dot com
 
 pkgname=marksman-bin
-pkgver=2023_07_25
+pkgver=2023_10_30
 pkgrel=1
 pkgdesc='Markdown LSP server providing completion, cross-references, diagnostics, and more'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=()
 source=("${pkgname}-${pkgver}::${url}/releases/download/${pkgver//_/-}/${pkgname%-bin}-linux-x64"
 	"https://raw.githubusercontent.com/artempyanykh/marksman/main/LICENSE")
-sha256sums=('b367c2bdb05fa45a51b60a4de41a973d54c6e5d0cbe1843a12a713c67c732deb'
-	'f48413df41ebe5a5f77f997f1f8a0cf5236f24c6878a16e0073da81642aabf04')
+sha256sums=('1789ee92b93ba145269bd847e3ee1da0cb6efa3d86c9c96b391a67cefe86071f'
+            'f48413df41ebe5a5f77f997f1f8a0cf5236f24c6878a16e0073da81642aabf04')
 options=('!strip')
 package() {
 	rm -f ${pkgdir}/usr/bin/marksman
