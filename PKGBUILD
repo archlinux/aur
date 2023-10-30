@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=118.0.5993.117
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
@@ -57,12 +57,12 @@ provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
 conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 # _uc_ver=$pkgver-1
-_uc_ver=118.0.5993.88-1
+_uc_ver=118.0.5993.117-1
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
         # ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            'df94ef2aed0fe9ac442a142a22b2b4aef858bfcfbe3da25795849299ac8558f6')
+            '41afb5933668b67059d48613c136c4535ed7a5a3387361cd118aff38593ae4e3')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch

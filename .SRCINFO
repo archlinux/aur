@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
 	pkgver = 118.0.5993.117
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -70,7 +70,7 @@ pkgbase = ungoogled-chromium-xdg
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
 	source = index.html
-	source = ungoogled-chromium-118.0.5993.88-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/118.0.5993.88-1.tar.gz
+	source = ungoogled-chromium-118.0.5993.117-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/118.0.5993.117-1.tar.gz
 	sha256sums = 7029d851e4a2e8d5a145a6f6ba76f18f5c3043f57b2c750b35d96e92f3453786
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 0d1eb054965711a2d4ed6b4cb7f06cbda5b374a48e1b99c8c38ebf6375a781a9
@@ -80,6 +80,6 @@ pkgbase = ungoogled-chromium-xdg
 	sha256sums = f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078
 	sha256sums = ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8
 	sha256sums = a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665
-	sha256sums = df94ef2aed0fe9ac442a142a22b2b4aef858bfcfbe3da25795849299ac8558f6
+	sha256sums = 41afb5933668b67059d48613c136c4535ed7a5a3387361cd118aff38593ae4e3
 
 pkgname = ungoogled-chromium-xdg
