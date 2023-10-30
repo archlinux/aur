@@ -1,6 +1,6 @@
 pkgbase = rvgl-bin
 	pkgdesc = Rewrite of Re-Volt, popular R/C car racing game from 1999.
-	pkgver = 23.0602a1
+	pkgver = 23.1030a1
 	pkgrel = 1
 	url = https://rvgl.org
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = rvgl-bin
 	optdepends = mpg123: for MPEG support
 	optdepends = fluidsynth: for SoundFont 2 support
 	source = rvgl_game_files::git+https://gitlab.com/re-volt/game_files.git#tag=22.0909
-	source = rvgl_assets::git+https://gitlab.com/re-volt/rvgl-assets.git#tag=23.0602a1
-	source = rvgl_platform::git+https://gitlab.com/re-volt/rvgl-platform.git#tag=23.0602a1
+	source = rvgl_assets::git+https://gitlab.com/re-volt/rvgl-assets.git#tag=23.1030a1
+	source = rvgl_platform::git+https://gitlab.com/re-volt/rvgl-platform.git#tag=23.1030a1
 	source = rvgl
 	source = RVGL.desktop
 	sha256sums = SKIP
