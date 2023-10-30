@@ -63,19 +63,22 @@ prepare() {
   echo >&2 "Truncating ${offset} bytes"
   dd bs="${offset}" skip=1 if="${_setup_basename}.sh" \
     | pv -f -s "@${_setup_basename}.sh" > "${zipfile}"
-  unzip "${zipfile}"
-  rm -v "${zipfile}"
 
-  # Remove unneeded 32-bit executable
-  # Fixes false alarm in rebuild-detector
-  rm -rfv data/noarch/support/yad/32
+  # Extract game files, skipping the Ren'Py archive for now.
+  # Going to unzip and concatenate the latter in a single pass later on.
+  unzip "${zipfile}" -x 'data/noarch/game/game/archive.rpa.split*'
 
   echo >&2 "Splicing together the Ren'Py archive"
-  pv -f data/noarch/game/game/archive.rpa.split0{0,1,2} \
-    > data/noarch/game/game/archive.rpa
-  rm -v data/noarch/game/game/archive.rpa.split0{0,1,2}
+  archive_size="$(unzip -l "${zipfile}" | awk 'END { print $1 }')"
+  for part in split0{0,1,2}; do
+    unzip -p "${zipfile}" "data/noarch/game/game/archive.rpa.${part}"
+  done \
+    | pv -f -s "${archive_size}" \
+    | dd iflag=fullblock of=data/noarch/game/game/archive.rpa bs=1M status=none
+  rm -v "${zipfile}"
 
   echo >&2 'Removing unneeded files meant for other OSes'
+  rm -rfv data/noarch/support/yad/32  # fixes false alarm in rebuild-detector
   rm -rfv data/noarch/game/lib/py3-windows-x86_64
   rm -fv data/noarch/game/._SlaythePrincess.app
   rm -rfv data/noarch/game/SlaythePrincess.app
