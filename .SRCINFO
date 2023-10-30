@@ -1,19 +1,16 @@
 pkgbase = redis-graph
 	pkgdesc = A graph database as a Redis module
-	pkgver = 2.10.11
+	pkgver = 2.12.10
 	pkgrel = 1
 	url = https://redis.io/docs/stack/graph/
-	arch = i686
 	arch = x86_64
-	arch = aarch64
-	arch = armv7h
 	license = custom:SSPL1
 	makedepends = git
 	makedepends = cmake
 	makedepends = peg
 	depends = redis
 	conflicts = redis-graph-git
-	source = git+https://github.com/RedisGraph/RedisGraph.git
+	source = git+https://github.com/RedisGraph/RedisGraph.git#commit=3c832112b6e0a1564930ebac838d96289a57cb9a
 	sha256sums = SKIP
 
 pkgname = redis-graph
