@@ -1,0 +1,19 @@
+pkgbase = midori-bin
+	pkgdesc = Browser fork of Floorp fork of Firefox by Astian
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://astian.org/midori-browser/
+	arch = x86_64
+	license = MPL2
+	depends = gtk3
+	depends = alsa-lib
+	depends = nspr
+	depends = dbus-glib
+	depends = nss
+	provides = midori
+	conflicts = midori
+	options = !strip
+	source_x86_64 = https://astian.org/wp-content/uploads/midori-browser/linux/midori_11.0.0_amd64.deb
+	sha256sums_x86_64 = 72fc6c0985d2f1e3a2d85325549da167481788c424e62e41a25dd6d01de72708
+
+pkgname = midori-bin
