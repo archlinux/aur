@@ -1,16 +1,16 @@
 pkgbase = cadzinho
 	pkgdesc = Minimalist computer aided design (CAD) software
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/zecruel/CadZinho
 	arch = x86_64
 	license = MIT
 	depends = sdl2
 	depends = glew
 	depends = libglvnd
-	source = https://github.com/zecruel/CadZinho/archive/refs/tags/0.4.0.tar.gz
+	source = https://github.com/zecruel/CadZinho/archive/refs/tags/0.4.1.tar.gz
 	source = http://www.lua.org/ftp/lua-5.4.6.tar.gz
-	sha256sums = 14605b7de85d00b5290be758ab420808547234d1b80fadc2a396538388d325ee
+	sha256sums = ef2c7fb242cce5addf59b7407c2ac1903854625b19d82ccbc3bf73124f0c315e
 	sha256sums = 7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88
 
 pkgname = cadzinho
