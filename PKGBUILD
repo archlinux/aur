@@ -3,7 +3,7 @@
 
 _pkgname=upscaler
 pkgname=$_pkgname-git
-pkgver=1.2.2
+pkgver=1.2.2.r26.gea5f43f
 pkgrel=1
 pkgdesc="Upscale and enhance images (latest commit)"
 arch=('x86_64')
