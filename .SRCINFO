@@ -1,0 +1,16 @@
+pkgbase = dynknock
+	pkgdesc = Port knocker using a periodically changing sequence
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/CoolandonRS/dynknock
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk>7.0.0
+	makedepends = subversion
+	depends = gcc-libs
+	depends = zlib
+	depends = glibc
+	source = svn+https://github.com/CoolandonRS/dynknock/tags/v1.1.0/Dynknock_Client
+	sha256sums = SKIP
+
+pkgname = dynknock
