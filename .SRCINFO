@@ -11,6 +11,7 @@ pkgbase = kvantum-theme-whitesur-git
 	provides = whitesur-kvantum-theme
 	conflicts = kvantum-theme-whitesur
 	conflicts = whitesur-kvantum-theme
+	conflicts = plasma5-themes-whitesur
 	conflicts = whitesur-kde-theme
 	source = git+https://github.com/vinceliuice/WhiteSur-kde.git
 	b2sums = SKIP
