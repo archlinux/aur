@@ -1,8 +1,8 @@
 # Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-distro
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
-pkgdesc="Download and verify Linux ISOs with GnuPG and shasums"
+pkgdesc="Bash script for downloading and verifying OS images."
 arch=('any')
 url="https://codeberg.org/bashuser30/$pkgname"
 source=("$url/archive/v$pkgver.tar.gz")
@@ -11,7 +11,7 @@ depends=('bash' 'coreutils' 'jq' 'wget')
 optdepends=('gnupg'
             'minisign: Void Linux verification'
             'signify: OpenBSD verification')
-sha256sums=('e8c9065268a63584898a27fcfe9086877c35dfc27273773bf8e1f554bc9dbd49')
+sha256sums=('fb633ed4a7bd9645c07a501b40cf803ab0de2a025478c580df7cf00dfacd8de6')
 
 package() {
     cd "$srcdir/$pkgname"
