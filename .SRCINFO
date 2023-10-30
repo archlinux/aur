@@ -1,0 +1,22 @@
+pkgbase = nxdumpclient-git
+	pkgdesc = A client program for dumping over USB with nxdumptool
+	pkgver = 1.0.0.r0.g2004844
+	pkgrel = 1
+	url = https://github.com/v1993/nxdumpclient
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = blueprint-compiler
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = libgusb
+	provides = nxdumpclient
+	conflicts = nxdumpclient
+	source = nxdumpclient::git+https://github.com/v1993/nxdumpclient.git
+	md5sums = SKIP
+
+pkgname = nxdumpclient-git
