@@ -2,7 +2,7 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=libcleri
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="C Left-Right Parser"
 url="https://github.com/transceptor-technology/libcleri"
@@ -10,7 +10,7 @@ license=('MIT')
 arch=('x86_64')
 depends=('pcre2')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/transceptor-technology/libcleri/archive/v${pkgver}.tar.gz" "makefile.targets.patch")
-sha256sums=('589fdd016b9b169e247fbbe2b3997c0df6946b9c9eebcc99057762543d711df7'
+sha256sums=('7180ed1f215c30fba601a150ef9eb7a54f6efd4cf8f130bb4c5ed86ac03bc9c5'
             'c26ad2d1aea5cac6d536a93a55baeeb087c76946ddf549afe4f5e1bbe60388c9')
 
 prepare() {
