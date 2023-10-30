@@ -1,14 +1,13 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=okolors-git
-pkgver=0.5.0.r194.0cdf52a
+pkgver=0.5.1.r199.ed2e86a
 pkgrel=1
 pkgdesc='Generate a color palette from an image using k-means clustering in the Oklab color space'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Ivordir/Okolors"
 license=('MIT' 'Apache')
-makedepends=(git rust coreutils sed gcc meson ninja nasm cmake make)
-options=(!lto)
+makedepends=(git rust cargo coreutils sed gcc)
 depends=(gcc-libs glibc)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -42,4 +41,7 @@ check() {
 package() {
   cd "${_git_folder}"
   install -Dm755 target/release/"${pkgname%-git}" -t "$pkgdir/usr/bin/"
+
+  install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
