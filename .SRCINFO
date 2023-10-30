@@ -1,0 +1,25 @@
+pkgbase = tinyget-git
+	pkgdesc = A cross-distro package management tool.
+	pkgver = r30.1e9c391
+	pkgrel = 1
+	url = https://gitee.com/tinylab/tinyget
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-requests
+	makedepends = python-click
+	makedepends = python-orjson
+	makedepends = python-rich
+	depends = python
+	depends = python-trogon
+	provides = tinyget
+	conflicts = tinyget
+	options = !strip
+	source = tinyget::git+https://gitee.com/tinylab/tinyget.git
+	sha256sums = SKIP
+
+pkgname = tinyget-git
