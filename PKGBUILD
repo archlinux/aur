@@ -20,7 +20,7 @@ makedepends=(
 source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/core@${pkgver//_/-}.zip"
     "${pkgname}.sh")
 sha256sums=('c22153b9b8038d26d9963a009cc0feb4c1dab2185825fc9ed8e6b7faae813b5b'
-            '8bba7de219b63d1c2463ec2eeaafcfde9cac1a37c54207f7fabd9e53a98b5bc1')
+            'dbfed08af3bf3c3b299320895a8a4d3cf4611c2a433056cc28a50fa74e785d00')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-core-${pkgver//_/-}"

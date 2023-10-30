@@ -14,6 +14,6 @@ pkgbase = insomnium
 	source = insomnium-0.2.3_a.zip::https://github.com/ArchGPT/insomnium/archive/refs/tags/core@0.2.3-a.zip
 	source = insomnium.sh
 	sha256sums = c22153b9b8038d26d9963a009cc0feb4c1dab2185825fc9ed8e6b7faae813b5b
-	sha256sums = 8bba7de219b63d1c2463ec2eeaafcfde9cac1a37c54207f7fabd9e53a98b5bc1
+	sha256sums = dbfed08af3bf3c3b299320895a8a4d3cf4611c2a433056cc28a50fa74e785d00
 
 pkgname = insomnium
