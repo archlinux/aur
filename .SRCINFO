@@ -1,15 +1,15 @@
 pkgbase = dynstr
 	pkgdesc = Minimal library that provides dynamic strings using plain C99
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitea.privatedns.org/xavi/dynstr
 	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = aarch64
-	license = GPL3
+	license = Apache
 	makedepends = cmake
-	source = dynstr-0.1.0.tar.gz::https://gitea.privatedns.org/xavi/dynstr/archive/v0.1.0-rc4.tar.gz
+	source = dynstr-0.1.0.tar.gz::https://gitea.privatedns.org/xavi/dynstr/archive/v0.1.0.tar.gz
 	sha512sums = 6fed0197ed1da1d37acc1622654dabb1242f6b961f601d26d7713b3b5f04b50e176dbc9d233a55dec5ce92ffb382e192d5882fb15624fa6555eb12d000556cfd
 
 pkgname = dynstr
