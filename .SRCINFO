@@ -1,6 +1,6 @@
 pkgbase = petsc-git-release
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.18.0.3.g28c2d9c59d1
+	pkgver = 3.19.5.1171.g37df9106526
 	pkgrel = 1
 	url = https://gitlab.com/petsc/petsc
 	install = petsc.install
@@ -15,7 +15,7 @@ pkgbase = petsc-git-release
 	makedepends = git
 	makedepends = cython
 	makedepends = chrpath
-	makedepends = hypre=2.25.0
+	makedepends = hypre=2.29.0-1
 	depends = openmpi
 	depends = lapack
 	depends = fftw
@@ -24,14 +24,16 @@ pkgbase = petsc-git-release
 	depends = python-mpi4py
 	depends = python-numpy
 	depends = eigen>=3
-	depends = openblas
+	depends = blas-openblas
 	options = staticlibs
-	source = git+https://gitlab.com/petsc/petsc.git#branch=release
-	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.18.0.tar.gz
+	source = git+https://gitlab.com/petsc/petsc.git#branch=main
+	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.19.5.tar.gz
 	source = test_optdepends.sh
+	source = 0001-sowing-minversion1_1_26.patch
 	sha512sums = SKIP
-	sha512sums = 49cecb31911ab0e66cc37d22b8024d067e8611a9fdee057fa70158b01531019cca7df0d238b83ff2fa34e4e5b7b08792f8a1eedd9477eb133c8a8b38523d65af
-	sha512sums = af9c16c59915c1ddb03390bb0b97e8b7404fed200cd86f69cdf06fcd13f670bc3c3c7ddae527b621210408a01db0c55db249af1fc1082e284aa707d32b21ebcb
+	sha512sums = b00026074349f3995312b407044def7a104f62e9ba68e1b571e7f09ddb8aa56aa64bea5e5f9e5546d4d6866c37278d8b40334af2697bd0f837ca3981229d700a
+	sha512sums = f0b6eba111689dd9f781a705f5341694d644de95db8f7fd08d60d8d6004cf5a2435db142219f767e01ee324ec429dcec01b377cc45e71dc5c24d4daa5afd983c
+	sha512sums = 3c156d1c465c10ba0a3c79b829f98ecc05e48b8f002a3a382f86ac834faaa34108d522f04757af38257f4a4e1292d8d8b79c9c039ecb9ea25444d902a384907f
 
 pkgname = petsc-git-release
 	optdepends = boost: Free peer-reviewed portable C++ source libraries
@@ -55,8 +57,8 @@ pkgname = petsc-git-release
 	optdepends = suitesparse: Sparse matrix library
 	optdepends = superlu: Subroutines for sparsse linear systems
 	optdepends = libyaml: configuration files
-	provides = petsc=3.18.0
-	provides = petsc4py=3.18.0
+	provides = petsc=3.19.5
+	provides = petsc4py=3.19.5
 	conflicts = petsc
 
 pkgname = petsc-doc-bin

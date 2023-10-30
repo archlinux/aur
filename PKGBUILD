@@ -5,7 +5,7 @@
 
 _base=petsc
 pkgname=("${_base}"-git-release "${_base}"-doc-bin)
-pkgver=3.18.0.3.g28c2d9c59d1
+pkgver=3.19.5.1171.g37df9106526
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
