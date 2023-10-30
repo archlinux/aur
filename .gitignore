@@ -1,5 +1,5 @@
 pkg/
 src/
-archosaur/
 
+*.tar.gz
 *.pkg.tar.zst
