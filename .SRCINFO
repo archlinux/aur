@@ -1,6 +1,6 @@
 pkgbase = perl-future-http
 	pkgdesc = Future::HTTP - provide the most appropriate HTTP client with a Future API
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://metacpan.org/release/Future-HTTP
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = perl-future-http
 	depends = perl-http-message
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/Future-HTTP-0.15.tar.gz
-	md5sums = 986fb0d732d8be2164d3c53d77ffc2a4
+	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/Future-HTTP-0.16.tar.gz
+	md5sums = d15ddd062bc455757fac508bf5b91d12
 
 pkgname = perl-future-http

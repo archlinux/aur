@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=perl-future-http
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc='Future::HTTP - provide the most appropriate HTTP client with a Future API'
 _dist=Future-HTTP
@@ -11,7 +11,7 @@ depends=('perl' 'perl-filter-signatures' 'perl-moo' 'perl-future' 'perl-http-mes
 makedepends=('perl-test-http-localserver')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/C/CO/CORION/${_dist}-${pkgver}.tar.gz")
-md5sums=('986fb0d732d8be2164d3c53d77ffc2a4')
+md5sums=('d15ddd062bc455757fac508bf5b91d12')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
