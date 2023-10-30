@@ -12,8 +12,8 @@ depends=('lib32-glibc')
 makedepends=('gcc-multilib')
 checkdepends=('dejagnu')
 options=('!libtool')
-source=(ftp://sourceware.org/pub/libffi/libffi-$pkgver.tar.gz)
-md5sums=('79390673f5d07a8fb342bc09b5055b6f')
+source=(https://sourceware.org/pub/libffi/libffi-$pkgver.tar.gz)
+sha256sums=('f01eb9027e9eb56aeaeef636649877756d475d714ef8b47f627f65bc5f3b492f')
 
 build() {
   cd "$srcdir/$_pkgbasename-$pkgver"
