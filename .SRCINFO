@@ -1,16 +1,15 @@
 pkgbase = gosumemory
 	pkgdesc = Cross-Platform memory reader for osu!
-	pkgver = 1.3.6
-	pkgrel = 6
+	pkgver = 1.3.8
+	pkgrel = 1
 	url = https://github.com/l3lackShark/gosumemory
 	arch = x86_64
 	license = GPL
-	depends = osu
-	depends = wine
-	depends = winetricks
-	source = gosumemory.exe::https://asunaproject.nl/downloads/gosumemory.exe
-	source = gosumemory
-	sha256sums = da46d9ed341bf8f2a167e5d771366dd2170d50f5ce564f9e92aad9d59869de8c
-	sha256sums = e41f62ce9ad83ee5f8d7729bfe64626429a64aa573ec67acdfeae486c63f24ca
+	depends = lib32-glibc
+	provides = gosumemory
+	conflicts = gosumemory
+	noextract = 1.3.8/gosumemory_linux_386.zip
+	source = https://github.com/l3lackShark/gosumemory/releases/download/1.3.8/gosumemory_linux_386.zip
+	sha256sums = 1e52c647b1547a7b79c4843ce52b3ef9b304c17ed16a15076170443a003152d3
 
 pkgname = gosumemory
