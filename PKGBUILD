@@ -25,7 +25,7 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
-  'python-setuptools-git-versioning-git'
+  'python-setuptools-git-versioning'
 )
 checkdepends=(
   'python-asynctest'
