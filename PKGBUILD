@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.silx.org"
 license=('GPLv3' 'BSD' 'MIT')
 depends=('python-numpy' 'python-scipy' 'python-matplotlib' 'python-fabio'
-         'python-h5py-openmpi' 'python-pyopencl' 'python-pyqt5' 'fftw'
+         'python-h5py' 'python-pyopencl' 'python-pyqt5' 'fftw'
          'opencl-driver')
 makedepends=('cython')
 source=("https://github.com/silx-kit/pyFAI/archive/v${pkgver}.tar.gz")
