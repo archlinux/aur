@@ -1,6 +1,6 @@
 pkgbase = mutagen-compose-git
 	pkgdesc = mutagen-compose from mutagen.io - Docker Compose with Mutagen integration
-	pkgver = r130.3dd58b3
+	pkgver = r162.9474213
 	pkgrel = 1
 	url = https://github.com/mutagen-io/mutagen-compose
 	arch = any

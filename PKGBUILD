@@ -1,6 +1,6 @@
 # Maintainer: Brian Gisseler <gissf1@gmail.com>
 pkgname=mutagen-compose-git
-pkgver=r130.3dd58b3
+pkgver=r162.9474213
 pkgrel=1
 pkgdesc="mutagen-compose from mutagen.io - Docker Compose with Mutagen integration"
 arch=('any')
