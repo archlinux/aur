@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-string-truncate'
-pkgver='1.100602'
-pkgrel='2'
+pkgver='1.100603'
+pkgrel='1'
 pkgdesc="a module for when strings are too long to be displayed in..."
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,8 +12,8 @@ depends=('perl-sub-exporter>=0.953' 'perl-sub-install>=0.03')
 makedepends=()
 url='https://metacpan.org/release/String-Truncate'
 source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/String-Truncate-$pkgver.tar.gz")
-md5sums=('77cfc678607a7d84008b117f3991bbfa')
-sha512sums=('67519f7c4e3b5b7021b71d70468e3b74b0a60b09cf32988bdf0058a10ee4bec80b189ee33f7c2bc67db804d92ceddaac11feb2f39c7f8b941b12f52eee47b90e')
+md5sums=('b7cb3fe0683e111f005cd168fc614bda')
+sha512sums=('6a6adeda78f5e649d09b1d9297c1d48566a373569edf34a1c1a5a55af221449d2243909563457836fb2d66b0811203cfb26268dd2fbdf0bb4cee3d37ffcdc0fe')
 _distdir="String-Truncate-$pkgver"
 
 build() {
