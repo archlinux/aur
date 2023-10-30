@@ -1,11 +1,12 @@
 pkgbase = otf-miama
-	pkgdesc = A calligraphic font.
-	pkgver = 1.0
-	pkgrel = 7
+	pkgdesc = A calligraphic font
+	pkgver = 0.031
+	pkgrel = 1
+	epoch = 1
 	url = http://www.dafont.com/fr/miama.font
 	arch = any
 	license = OFL
-	source = http://img.dafont.com/dl/?f=miama
+	source = otf-miama-0.031.zip::http://dl.dafont.com/dl/?f=miama
 	sha256sums = dfeb54cf95a7d28e6a861b6299edae32f41e50358896ada884d7b7f11d66125d
 
 pkgname = otf-miama
