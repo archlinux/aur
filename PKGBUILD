@@ -6,15 +6,15 @@
 
 pkgname=wine-staging-wow64
 _name=wine
-pkgver=8.18
+pkgver=8.19
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
-source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
+source=(git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$pkgver
         git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$pkgver
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('0f8e6b5c6709930bc7f774d92cd025976f6442c3785a224b5988a37152f3a875150b228f12442e9b9c0d9e7884568aca26159df86d48f2550a630625fef3c8b9'
+sha512sums=('SKIP'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
@@ -76,7 +76,7 @@ install=wine.install
 prepare() {
 
   # apply wine-staging patchset
-  cd $_name-$pkgver
+  cd $_name
   ../wine-staging/staging/patchinstall.py --all
 }
 
@@ -84,8 +84,8 @@ build() {
   # Doesn't compile without remove these flags as of 4.10
   export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
-  mkdir -p $srcdir/$_name-$pkgver/build
-  cd $srcdir/$_name-$pkgver/build
+  mkdir -p $srcdir/$_name/build
+  cd $srcdir/$_name/build
   ../configure \
     --disable-tests \
     --prefix=/usr \
@@ -95,7 +95,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_name-$pkgver/build
+  cd $srcdir/$_name/build
   
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib" \
