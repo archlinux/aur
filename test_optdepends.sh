@@ -93,7 +93,7 @@ fi
 
 # HDF5: large files
 if [[ "$(h5stat -V)" ]]; then
-	CONFOPTS="${CONFOPTS} --with-hdf5=1"
+	CONFOPTS="${CONFOPTS} --with-hdf5=1 --with-hdf5-fortran-bindings=1"
 fi
 
 # hwloc: abstraction of hierarchical architectures
