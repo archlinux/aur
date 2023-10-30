@@ -1,15 +1,15 @@
 pkgbase = libweb
 	pkgdesc = A simple and lightweight web framework
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitea.privatedns.org/xavi/libweb
 	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = aarch64
-	license = GPL3
+	license = AGPL2
 	makedepends = dynstr
-	source = libweb-0.1.0.tar.gz::https://gitea.privatedns.org/xavi/libweb/archive/v0.1.0-rc6.tar.gz
+	source = libweb-0.1.0.tar.gz::https://gitea.privatedns.org/xavi/libweb/archive/v0.1.0.tar.gz
 	sha512sums = 93d80463ae525407f6089cf9a45522070eb3c754e50ded16e2a3d5de1599107d7fa01b6f82f5fabdf5257faa82f0321b6ccd89da7b5725b925e1ef5492af6cde
 
 pkgname = libweb
