@@ -1,13 +1,19 @@
 pkgbase = csl-git
 	pkgdesc = Cube Server Lister
-	pkgver = r303.bc43df0
-	pkgrel = 2
+	pkgver = r458.3b9f221
+	pkgrel = 1
 	url = https://github.com/piernov/Cube-Server-Lister
 	arch = i686
 	arch = x86_64
+	license = GPL2
 	makedepends = git
-	depends = wxgtk30
-	source = csl-git::git+https://github.com/piernov/Cube-Server-Lister.git
-	sha1sums = SKIP
+	makedepends = intltool
+	depends = wxwidgets-gtk3-3.0
+	depends = wxwidgets-common-3.0
+	depends = glibc
+	depends = gcc-libs
+	depends = geoip
+	source = git+https://github.com/aurhat/cubelister.git
+	sha256sums = SKIP
 
 pkgname = csl-git
