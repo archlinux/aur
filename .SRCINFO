@@ -11,7 +11,7 @@ pkgbase = google-java-format
 	source = google-java-format
 	source = https://raw.githubusercontent.com/google/google-java-format/master/LICENSE
 	sha256sums = bed3bad433f7df427700648f24b798db3c338d6dcb2cc5c08bc542b55610f910
-	sha256sums = 9670257258a454870c6e389f9a83d964610df184614bf2b38c6997d9b062cf29
+	sha256sums = 5869a6ec4dd3c681b06e9a0fa1cdef30d0ee722d48115ff4a5e1efb01947e100
 	sha256sums = 2c7e23c8000fe553b6f380b5e365dd72198439174f1b6821d5e3b190b54af0dc
 
 pkgname = google-java-format
