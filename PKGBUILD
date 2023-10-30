@@ -3,7 +3,7 @@
 # Contributor: Jorge Cervantes <jorge.cervantes.e@gmail.com>
 
 pkgname=msodbcsql
-pkgver=18.3.1.1
+pkgver=18.3.2.1
 pkgrel=1
 pkgdesc="Microsoft® ODBC Driver 18 for SQL Server®"
 arch=('x86_64')
