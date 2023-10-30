@@ -120,13 +120,20 @@ if latest_release > curr_version:
     with opener.open(download_req) as res:
         download_url = json.loads(res.read())["url"]
     with opener.open(download_url) as res:
-        with open(f"FoundryVTT-{release_str}.zip", "wb") as f:
+        filename = f"FoundryVTT-{release_str}.zip"
+        with open(filename, "wb") as f:
             hasher = hashlib.sha256()
+            expected_bytes = int(res.headers['Content-Length'])
+            received_bytes = 0
             chunk = res.read(1024)
             while len(chunk) > 0:
                 f.write(chunk)
+                received_bytes += len(chunk)
+                percent_complete = received_bytes / expected_bytes
+                print(f"Downloading {filename}: {percent_complete:.1%}", end="\r")
                 hasher.update(chunk)
                 chunk = res.read(1024)
+            print()
 
     package_hash = hasher.hexdigest()
     new_pkgbuild = re.sub(
