@@ -1,23 +1,64 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
-pkgname=python-markdownify
-_name=markdownify
+# Maintainer:
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
+
+_module="markdownify"
+_pkgname="python-$_module"
+pkgname="$_pkgname"
 pkgver=0.11.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Convert HTML to Markdown"
-arch=('any')
 url="http://github.com/matthewwithanm/python-markdownify"
 license=('MIT')
-makedepends=('python-pip' 'python-setuptools')
-depends=('python-beautifulsoup4' 'python-six')
+arch=('any')
+
+depends=(
+  'python'
+  'python-beautifulsoup4'
+  'python-six'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+)
+
 options=(!emptydirs)
-source=(https://pypi.io/packages/source/m/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('9ab2bf56981081737e5ed95aa96ec16c2644fecca62763a4ea4ba1f6ebb61b671cecc857abd4a92a738a9762104b2d9beb92b320638d80dca3ad4ee7621d02e7')
 
+_pkgsrc="$_module-${pkgver%%.r*}"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc.$_pkgext"::"https://pypi.io/packages/source/${_module::1}/$_module/$_module-${pkgver%%.r*}.$_pkgext"
+)
+sha256sums=(
+  '009b240e0c9f4c8eaf1d085625dcd4011e12f0f8cec55dedf9ea6f7655e49bfe'
+)
 
-package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+prepare() {
+  cd "$_pkgsrc"
 
+  # don't package tests
+  sed -E \
+    -e 's@^(\s*packages=find_packages).*$@\1(exclude=["tests"]),@' \
+    -i setup.py
 }
 
-# vim:set ts=2 sw=2 et:
+build() {
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_pkgsrc"
+  python -m pytest
+}
+
+package() {
+  cd "$_pkgsrc"
+  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+
+  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/${pkgname:?}/"
+}
