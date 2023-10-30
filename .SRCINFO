@@ -14,9 +14,9 @@ pkgbase = jdk20-graalvm-ee-bin
 	options = staticlibs
 	source = graalvm-ee-rebuild-libpolyglot.hook
 	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
-	source_x86_64 = https://download.oracle.com/graalvm/20/latest/graalvm-jdk-20_linux-x64_bin.tar.gz
+	source_x86_64 = https://download.oracle.com/graalvm/20/archive/graalvm-jdk-20.0.2_linux-x64_bin.tar.gz
 	sha256sums_x86_64 = 242862bfd2fd2633950a8d85dd1fb4d0307c35cbc7445089aa593a931c8b17db
-	source_aarch64 = https://download.oracle.com/graalvm/20/latest/graalvm-jdk-20_linux-aarch64_bin.tar.gz
+	source_aarch64 = https://download.oracle.com/graalvm/20/archive/graalvm-jdk-20.0.2_linux-aarch64_bin.tar.gz
 	sha256sums_aarch64 = 890596363a864bdbe55c6a9678a87384e62660056b6951c385cceaae4807fbb8
 
 pkgname = jdk20-graalvm-ee-bin

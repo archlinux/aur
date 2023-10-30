@@ -21,8 +21,8 @@ source=('graalvm-ee-rebuild-libpolyglot.hook')
 sha256sums=('7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca')
 sha256sums_x86_64=('242862bfd2fd2633950a8d85dd1fb4d0307c35cbc7445089aa593a931c8b17db')
 sha256sums_aarch64=('890596363a864bdbe55c6a9678a87384e62660056b6951c385cceaae4807fbb8')
-source_x86_64=("https://download.oracle.com/graalvm/${_java}/latest/graalvm-jdk-${_java}_linux-x64_bin.tar.gz")
-source_aarch64=("https://download.oracle.com/graalvm/${_java}/latest/graalvm-jdk-${_java}_linux-aarch64_bin.tar.gz")
+source_x86_64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
+source_aarch64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 
 package() {
 	cd "graalvm-jdk-${pkgver}${_java_minor}"
