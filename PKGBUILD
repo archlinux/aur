@@ -29,7 +29,7 @@
 ## basic info
 _pkgname="retroshare"
 pkgname="$_pkgname"
-pkgver=0.6.7RC2.r47.gc52e84d70
+pkgver=0.6.7RC2.47
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 #url="http://retroshare.cc/"
@@ -88,7 +88,7 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g ; s/\.RC/RC/'
+    git describe --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/-/./g;s/\.RC/RC/;s/\.g.*$//'
   }
 else
   # git package
