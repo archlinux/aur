@@ -15,6 +15,6 @@ pkgbase = python-amulet-nbt
 	depends = python-mutf8
 	depends = python-numpy
 	source = python-amulet-nbt-2.1.1.tar.gz::https://github.com/Amulet-Team/Amulet-NBT/archive/2.1.1.tar.gz
-	sha256sums = 5194c1f2526d8217d733b80b47cb53b751ca56096536797442b8813bd0ae0051
+	sha256sums = 6164ddd80c9735b67cb19118dfeb9bac7c3457a95778d13e016347f7c8e18b0c
 
 pkgname = python-amulet-nbt
