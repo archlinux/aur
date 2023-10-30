@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DelayedTensor
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='R package for sparse and out-of-core arithmetic and decomposition of Tensor'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('970c1fc7e9f611ac51b67215311bca9b118db1c2c8c7eda66bb2c712221f13a3')
+sha256sums=('4e76aedc3d573b41e035a2cc6bc04137e1375ddcfe5bd0e647bf6cd0e37e5b3a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
