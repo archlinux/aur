@@ -1,0 +1,14 @@
+pkgbase = git-fmt-diff
+	pkgdesc = Git integration with any code formatter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jorengarenar/git-fmt-diff
+	arch = any
+	license = MIT
+	depends = git
+	depends = posix
+	optdepends = vim: automatic filetype detection
+	source = git-fmt-diff-0.1.0.tar.gz::https://github.com/Jorengarenar/git-fmt-diff/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0de3d88e9d5c5a4b19db0a4e5788eaa9e0b2e5b96e25d6f94439ad08bd9cdf52
+
+pkgname = git-fmt-diff
