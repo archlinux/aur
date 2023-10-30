@@ -4,7 +4,7 @@
 pkgname=deskew-git
 _name=deskew
 _user=galfar
-pkgrel=1
+pkgrel=2
 pkgver=v1.30.r40.ga29039e
 pkgdesc="deskew is a command-line program which deskews images containing text"
 arch=("any")
@@ -14,6 +14,7 @@ makedepends=('fpc')
 source=("${_name}::git+https://github.com/${_user}/${_name}"
 	"0001_fix_libtiff_soname.patch")
 provides=('deskew')
+conflicts=('deskew')
 b2sums=('SKIP'
         '00fb80949f1123e6a5cf2182eeeed8eb944455097b796937f43409df8b713ad932185f30dd632b3f54e0324fa75feccc109ad1d705b9d24ecf1754df471d5b2d')
 
