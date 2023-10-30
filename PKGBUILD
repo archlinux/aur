@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NewWave
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Negative binomial model for scRNA-seq'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a54549c5791ef7626ff3ffa65471c3248858854f5a7e897df7c684dd454bbe59')
+sha256sums=('04b9b7374e76d4c9cb5271e5fffe7bcdfc4aaecf3f99bc75e7b0252a67de73b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
