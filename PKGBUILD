@@ -1,23 +1,53 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Victor Fuentes <hyruleterminatriforce@gmail.com>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.13.r270.g1488dcb73
+pkgver=0.5.14.r27.g1f1d554df
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
-depends=('cabextract' 'curl' 'glib2' 'gnome-desktop' 'gtk3' 'mesa-utils' 'p7zip' 'psmisc'
-         'python-cairo' 'python-certifi' 'python-dbus' 'python-distro' 'python-gobject'
-         'python-lxml' 'python-moddb' 'python-pillow' 'python-requests' 'python-yaml' 'unzip'
-         'vulkan-tools' 'webkit2gtk-4.1' 'xdg-desktop-portal-impl' 'xdg-utils' 'xorg-xrandr')
+depends=(
+  'cabextract'
+  'curl'
+  'glib2'
+  'gnome-desktop'
+  'gtk3'
+  'hicolor-icon-theme'
+  'mesa-utils'
+  'p7zip'
+  'psmisc'
+  'python-cairo'
+  'python-certifi'
+  'python-dbus'
+  'python-distro'
+  'python-gobject'
+  'python-lxml'
+  'python-moddb'
+  'python-pillow'
+  'python-requests'
+  'python-yaml'
+  'unzip'
+  'webkit2gtk-4.1'
+  'xdg-desktop-portal-impl'
+  'xdg-utils'
+  'xorg-xrandr'
+)
 makedepends=('git' 'meson')
-checkdepends=('appstream-glib')
-#checkdepends+=('libcanberra' 'pciutils' 'python-nose2' 'xorg-server-xvfb' 'xterm')
+checkdepends=(
+  'appstream-glib'
+  'fluidsynth'
+  'pciutils'
+  'python-nose-cover3'
+  'vulkan-tools'
+  'wine'
+  'xorg-server-xvfb'
+  'xterm'
+)
 optdepends=(
   'gamemode: Allows games to request a temporary set of optimisations'
   'gamescope: Draw the game window isolated from your desktop'
@@ -26,7 +56,7 @@ optdepends=(
   'lib32-gamemode: Allows games to request a temporary set of optimisations'
   'lib32-glibc: for 32bit games support'
   "lib32-mangohud: Display the games' FPS + other information"
-  'lib32-vkd3d: Vulkan 3D support'
+  'lib32-vkd3d: DirectX 12 support'
   'lib32-vulkan-icd-loader: Vulkan support'
   'libstrangle: Set FPS limit'
   'linux-steam-integration: start Steam with LSI'
@@ -35,11 +65,11 @@ optdepends=(
   'python-pefile: Extract icons from Windows executables'
   'python-protobuf: BattleNet integration'
   'python-pypresence: Discord Rich Presence integration'
-  'vkd3d: Vulkan 3D support'
+  'vkd3d: DirectX 12 support'
   'vulkan-icd-loader: Vulkan support'
+  'vulkan-tools: Vulkan support'
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
   'winetricks: use system winetricks'
-  'xemu: support for Xbox games'
   'xorg-xgamma: Restore gamma on game exit')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -47,7 +77,7 @@ source=('git+https://github.com/lutris/lutris.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -59,11 +89,14 @@ build() {
 check() {
   meson test -C build --print-errorlogs
 
-  # Run test suite
-  # Isolate ~/.local/share/lutris, ~/.config/lutris and ~/.cache/lutris
-#  cd "$srcdir/${pkgname%-git}"
-#  export NO_AT_BRIDGE=1
-#  HOME=tmp xvfb-run --auto-servernum make test
+  cd "${pkgname%-git}"
+  xvfb-run nosetests \
+    --cover-erase \
+    --with-xunit \
+    --xunit-file=nosetests.xml \
+    --with-coverage \
+    --cover-package=lutris \
+    --cover-xml-file=coverage.xml
 }
 
 package() {
