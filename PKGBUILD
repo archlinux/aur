@@ -1,12 +1,12 @@
 # Maintainer: Ismael Gutiérrez González <frodo_gv@hotmail.com>
 pkgname=('rpfm-git')
-pkgver=3.99.118.3074.g040c623e
+pkgver=4.2.1.3603.g05d06a65
 pkgrel=1
 pkgdesc="A modding tool for modern (since Empire) Total War games. Development version."
 arch=('x86_64')
 url="https://github.com/Frodo45127/rpfm.git"
 license=('MIT')
-depends=('libgit2' 'xz' 'p7zip' 'qt5-base' 'qt5-imageformats' 'kcompletion' 'kiconthemes'  'ktexteditor' 'kxmlgui' 'kwidgetsaddons' 'breeze-icons')
+depends=('libgit2' 'xz' 'p7zip' 'qt5-base' 'qt5-imageformats' 'kcompletion5' 'kiconthemes5'  'ktexteditor5' 'kxmlgui5' 'kwidgetsaddons5' 'breeze-icons')
 makedepends=('git' 'rust' 'cmake')
 provides=('rpfm')
 conflicts=('rpfm-bin')
