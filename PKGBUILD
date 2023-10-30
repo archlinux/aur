@@ -26,7 +26,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
 
-	cd "${srcdir}/${pkgname%-git}/main"
+    cd "${srcdir}/${pkgname%-git}/main"
 
     go mod tidy
     go build -o kemono-scraper
