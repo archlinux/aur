@@ -1,0 +1,20 @@
+pkgbase = youtube-music-for-desktop-bin
+	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.
+	pkgver = 0.10.11
+	pkgrel = 1
+	url = https://youtube-music.app/
+	arch = x86_64
+	license = custom:CC0-1.0
+	makedepends = squashfuse
+	depends = bash
+	depends = electron20
+	provides = youtube-music-for-desktop=0.10.11
+	conflicts = youtube-music-for-desktop
+	source = youtube-music-for-desktop-0.10.11.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.10.11/YouTube-Music-for-Desktop-0.10.11.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.10.11/LICENSE
+	source = youtube-music-for-desktop.sh
+	sha256sums = f4fc00d90653779e763534d3a5007ba119f246f9c96a21636db2f31cf08c96dd
+	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
+	sha256sums = a712f8e074e822bd7785841254d87c203bd60a900ae63264a11b9b81e724669b
+
+pkgname = youtube-music-for-desktop-bin
