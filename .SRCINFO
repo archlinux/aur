@@ -1,7 +1,7 @@
 pkgbase = sumatrapdf
 	pkgdesc = PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free.
 	pkgver = 3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sumatrapdfreader.org/free-pdf-reader
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,6 @@ pkgbase = sumatrapdf
 	source = sumatrapdf.sh
 	sha256sums = 66ccb395c9184dce6822dfbb9970c877383b3ead6d9417b5106a844aac512989
 	sha256sums = ff33648659aa06892ed13a731588a57006fafee2f848d35f70bf273a13cf9d27
-	sha256sums = 9113c6a594fe9b2f2dc800345396c97c3516d42d40bbc1ace6b34d805c0a3d7b
+	sha256sums = 8cc7cff62ca0f4b149cff9ad5f383a38fa68627d1b80a5f5e631860ca95cd56c
 
 pkgname = sumatrapdf

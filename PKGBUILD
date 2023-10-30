@@ -2,7 +2,7 @@
 
 pkgname=sumatrapdf
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free."
 arch=('x86_64')
 url='https://www.sumatrapdfreader.org/free-pdf-reader'
@@ -16,7 +16,7 @@ source=('https://www.sumatrapdfreader.org/dl/rel/3.5.2/SumatraPDF-3.5.2-64.zip'
         'sumatrapdf.sh')
 sha256sums=('66ccb395c9184dce6822dfbb9970c877383b3ead6d9417b5106a844aac512989'
             'ff33648659aa06892ed13a731588a57006fafee2f848d35f70bf273a13cf9d27'
-            '9113c6a594fe9b2f2dc800345396c97c3516d42d40bbc1ace6b34d805c0a3d7b')
+            '8cc7cff62ca0f4b149cff9ad5f383a38fa68627d1b80a5f5e631860ca95cd56c')
 
 build() {
   wrestool -x -t 14 "SumatraPDF-${pkgver}-64.exe" > "${pkgname}.ico"
@@ -39,3 +39,13 @@ package() {
 
   echo "You may need MS fonts for non-latin characters."
 }
+
+# CHANGELOG
+#
+# 3.5.2-2
+# - use `-appdata` cmd option of SumatraPDF.exe to specify config directory
+#   - all old settings works fine
+# - remove symlink in config directory to sumatrapdf.sh
+#   - you can remove it
+# - change WINEPREFIX to config directory
+#   - you can delete ~/.sumatrapdf/
