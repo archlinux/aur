@@ -5,7 +5,7 @@
 
 pkgname=nessus
 pkgver=10.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
 depends=('gnupg')
