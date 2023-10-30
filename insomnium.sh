@@ -1,7 +1,7 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron25
-APPDIR="/opt/insomnium"
-export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
+APPDIR="/usr/lib/insomnium"
+export PATH="${APPDIR}:${APPDIR}/bin:${PATH}"
 export LD_LIBRARY_PATH="${APPDIR}/usr/lib":"${APPDIR}/swiftshader":"${LD_LIBRARY_PATH}"
 _ASAR="${APPDIR}/resources/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
