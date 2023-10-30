@@ -32,7 +32,6 @@ source=(
     "swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=${_swiftver}"
     "apple-llvm-project::git+https://github.com/apple/llvm-project#tag=${_swiftver}"
     "0001-arch-aur-patches.patch"
-    "0002-stdint.patch"
     # swift src to check afterwards
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
     "yams::git+https://github.com/jpsim/Yams#tag=5.0.1"
@@ -96,7 +95,6 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
 )
 
 
@@ -108,7 +106,6 @@ sha256sums=(
 options=(!strip)
 
 prepare () {
-    ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
     ( cd apple-llvm-project && patch -p1 -i "$srcdir/0002-stdint.patch" )
 }
 

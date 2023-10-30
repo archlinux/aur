@@ -35,7 +35,6 @@ pkgbase = swift-language
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.9-RELEASE
 	source = apple-llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.9-RELEASE
 	source = 0001-arch-aur-patches.patch
-	source = 0002-stdint.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.9-RELEASE
 	source = yams::git+https://github.com/jpsim/Yams#tag=5.0.1
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.9-RELEASE
@@ -73,7 +72,6 @@ pkgbase = swift-language
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 3941d6e2ff26ee0bf2d0ae37ed618d1cb36af85e256b0b84dd4e5d8549ec2982
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
