@@ -1,0 +1,16 @@
+pkgbase = libsidplay
+	pkgdesc = A library for playing SID music files.
+	pkgver = 1.36.59
+	pkgrel = 10
+	url = https://critical.ch/distfiles/
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = https://critical.ch/distfiles/libsidplay-1.36.59.tgz
+	source = libsidplay-1.36.59-gcc43.patch
+	source = g++-6_build.patch
+	sha256sums = 3da9b38d4eb5bf9e936b9604ba92da0594ef38047d50cf806a8e11c400008024
+	sha256sums = 68476bfee9a378b045c81eb0f6d9aee7341610fe6b22047d67ce859a7a3b5053
+	sha256sums = 6612b8c684bfd80d88431d3aa7f5a3fc911528f25f67ab530f78a7592cc11e23
+
+pkgname = libsidplay

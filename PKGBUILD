@@ -1,5 +1,9 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Kritoke <kritoke@gamebox.net>
+# Maintainer: Bohdan Mart <bogdan.mart at gmail>
+# Contributor: Jan de Groot <jgc at archlinux org>
+# Contributor: Kritoke <kritoke at gamebox net>
+
+# Current maintainer don't know anything about this lib and would be gald if it would be adopted by anybody.
+# I have published it on;y to be able to build mp3blaster  (which I also don't use, but own package for now)
 
 pkgname=libsidplay
 pkgver=1.36.59
