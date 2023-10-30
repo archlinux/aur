@@ -1,11 +1,16 @@
 pkgbase = opengamepadui-session-git
-	pkgdesc = OpenGamepadUI Gamescope session
-	pkgver = r15.ac79dc6
+	pkgdesc = Gamescope session for running OpenGamepadUI
+	pkgver = r20.4ab0eb1
 	pkgrel = 1
-	url = https://github.com/ShadowBlip/OpenGamepadUI-session
+	url = https://github.com/ShadowBlip/gamescope-session-opengamepadui
 	arch = any
+	license = GPL
 	makedepends = git
-	source = OpenGamepadUI-session::git+https://github.com/ShadowBlip/OpenGamepadUI-session.git
+	depends = gamescope
+	depends = gamescope-session-git
+	provides = opengamepadui-session
+	provides = gamescope-session-opengamepadui
+	source = gamescope-session-opengamepadui::git+https://github.com/ShadowBlip/gamescope-session-opengamepadui.git
 	md5sums = SKIP
 
 pkgname = opengamepadui-session-git

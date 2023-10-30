@@ -1,12 +1,15 @@
+_gitdir=gamescope-session-opengamepadui
 pkgname=opengamepadui-session-git
-_gitdir=OpenGamepadUI-session
-pkgver=r15.ac79dc6
+pkgver=r20.4ab0eb1
 pkgrel=1
-pkgdesc="OpenGamepadUI Gamescope session"
+pkgdesc="Gamescope session for running OpenGamepadUI"
 arch=('any')
-url="https://github.com/ShadowBlip/OpenGamepadUI-session"
+url="https://github.com/ShadowBlip/${_gitdir}"
+license=('GPL')
+depends=('gamescope' 'gamescope-session-git')
+provides=('opengamepadui-session' 'gamescope-session-opengamepadui')
 makedepends=('git')
-source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git")
+source=("${_gitdir}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
