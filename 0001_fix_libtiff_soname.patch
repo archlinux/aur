@@ -1,0 +1,13 @@
+diff --git a/Imaging/LibTiff/LibTiffDynLib.pas b/Imaging/LibTiff/LibTiffDynLib.pas
+index 45c12c9..f1cd930 100644
+--- a/Imaging/LibTiff/LibTiffDynLib.pas
++++ b/Imaging/LibTiff/LibTiffDynLib.pas
+@@ -49,7 +49,7 @@ const
+ {$ELSEIF Defined(DARWIN)} // macOS
+   SLibName = 'libtiff.5.dylib';
+ {$ELSE} // Linux, BSD
+-  SLibName = 'libtiff.so.5'; // yes, SONAME for libtiff v4.0 is actually libtiff5 (and libtiff.so.4 is libtiff v3.9)
++  SLibName = 'libtiff.so'; // yes, SONAME for libtiff v4.0 is actually libtiff5 (and libtiff.so.4 is libtiff v3.9)
+ {$IFEND}
+ 
+   TIFF_NOTYPE                           = 0;
