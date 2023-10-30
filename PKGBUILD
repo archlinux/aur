@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NanoMethViz
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Visualise methlation data from Oxford Nanopore sequencing'
 arch=('x86_64')
@@ -16,9 +16,12 @@ depends=(
   r-annotationdbi
   r-assertthat
   r-biocsingular
+  r-biostrings
   r-bsseq
+  r-cli
   r-cpp11
   r-data.table
+  r-dbscan
   r-dplyr
   r-e1071
   r-forcats
@@ -27,6 +30,7 @@ depends=(
   r-ggplot2
   r-ggrastr
   r-glue
+  r-iranges
   r-limma
   r-patchwork
   r-purrr
@@ -35,7 +39,6 @@ depends=(
   r-readr
   r-rlang
   r-rsamtools
-  r-rsqlite
   r-s4vectors
   r-scales
   r-scico
@@ -47,6 +50,7 @@ depends=(
   r-zlibbioc
 )
 optdepends=(
+  r-biocstyle
   r-covr
   r-dss
   r-homo.sapiens
@@ -60,9 +64,10 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
   r-txdb.hsapiens.ucsc.hg38.knowngene
   r-txdb.mmusculus.ucsc.mm10.knowngene
+  r-txdb.mmusculus.ucsc.mm39.refgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e3b4baab1b5851c34e7ef850ad45a188c6c9044182cb21154123e7403d71a5a6')
+sha256sums=('6c0c23cc68a6baee4335f87d79e7adda2d3851aa70efc021441dc7f16a73b3ad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
