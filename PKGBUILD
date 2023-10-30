@@ -22,7 +22,7 @@ license=('custom')
 depends=('qt5-multimedia')
 optdepends=('glib2: support for moving files to trash')
 
-source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/XnViewMP-linux-x64.tgz"
+source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-${pkgver}-linux-x64.tgz"
         'xnviewmp.desktop')
 sha256sums=('F5A1A620C785EA7E8BBADAC646D3CBE6202B183124769C1153A7B05F61CA9D75'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A')
