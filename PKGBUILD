@@ -1,21 +1,44 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('x86_64')
 url="https://github.com/1943time/bluestone"
 license=('AGPL3')
 conflicts=("${pkgname}")
-depends=('alsa-lib' 'dbus' 'libxcomposite' 'gcc-libs' 'cairo' 'glibc' 'nss' 'pango' 'libxcb' 'mesa' 'libdrm' 'libxkbcommon' \
-    'nspr' 'gtk3' 'expat' 'at-spi2-core' 'libxrandr' 'libxdamage' 'libcups' 'libx11' 'glib2' 'libxfixes' 'libxext')
-makedepends=('pnpm' 'gendesk' 'npm>=8' 'nodejs>=18.17.5')
+depends=(
+    'alsa-lib'
+    'libxcomposite'
+    'cairo'
+    'nss'
+    'pango'
+    'libxcb'
+    'mesa'
+    'libdrm'
+    'libxkbcommon'
+    'nspr'
+    'gtk3'
+    'expat'
+    'at-spi2-core'
+    'libxrandr'
+    'libxdamage'
+    'libcups'
+    'libx11'
+    'glib2'
+    'libxfixes'
+    'libxext'
+)
+makedepends=(
+    'pnpm'
+    'gendesk'
+    'npm>=8'
+    'nodejs>=18.17.5'
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('778828a939e61561ebafd7be9b5e80fc1232aca8cc926b19ee0e7d961f518ca4')
-prepare() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
-}
+sha256sums=('cbc002f7675cfe6dd823029b9abfc3e5c889cbc4524ea39b534c0a2ae8fe421e')
 build() {
+    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed "s|--arm64 ||g" -i package.json
     sed '/deb/d' -i electron-builder.yml
