@@ -1,6 +1,6 @@
 pkgbase = libfprint-tod-git
 	pkgdesc = Library for fingerprint readers - TOD version
-	pkgver = 1.94.3+tod1
+	pkgver = 1.94.6+tod1
 	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
