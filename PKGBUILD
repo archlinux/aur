@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.11.3.r14.g9b92dd1
+pkgver=0.11.3.r21.gfd5eedf
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -42,7 +42,7 @@ depends=(bc
          procps-ng
          python
          sassc
-         sile-git
+         sile
          sqlite
          tex-gyre-fonts
          texlive-basic
