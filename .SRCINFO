@@ -1,7 +1,7 @@
 pkgbase = muffon-bin
 	pkgdesc = Music streaming browser,retrieves audio, video and metadata from various Internet sources.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://muffon.netlify.app/
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = muffon-bin
 	depends = hicolor-icon-theme
 	provides = muffon=2.0.0
 	conflicts = muffon
-	source = muffon-2.0.0.deb::https://github.com/staniel359/muffon/releases/download/v2.0.0/muffon-2.0.0-linux-amd64.deb
+	source = muffon-2.0.0.pacman::https://github.com/staniel359/muffon/releases/download/v2.0.0/muffon-2.0.0-linux-x64.pacman
 	source = LICENSE::https://raw.githubusercontent.com/staniel359/muffon/v2.0.0/LICENSE
 	source = muffon.sh
-	sha256sums = 9bea738a8ac977ec761d97a8be9593e2f41f73a7fe499d77228d764a1d6a32ee
+	sha256sums = 1dd4e40209a9c999bfaa4cf4ef4ae8b9994915626154c9544468eca8112659dd
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 	sha256sums = 94c9502f6922a4fe4c58e0dc24679afcd7ae563cf8c42a7110462d3a708981cc
 

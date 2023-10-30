@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=muffon-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Music streaming browser,retrieves audio, video and metadata from various Internet sources."
 arch=('x86_64')
 url="https://muffon.netlify.app/"
@@ -10,14 +10,13 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron27' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
+source=("${pkgname%-bin}-${pkgver}.pacman::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.pacman"
     "LICENSE::https://raw.githubusercontent.com/staniel359/muffon/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('9bea738a8ac977ec761d97a8be9593e2f41f73a7fe499d77228d764a1d6a32ee'
+sha256sums=('1dd4e40209a9c999bfaa4cf4ef4ae8b9994915626154c9544468eca8112659dd'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '94c9502f6922a4fe4c58e0dc24679afcd7ae563cf8c42a7110462d3a708981cc')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g;s|Audio;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
