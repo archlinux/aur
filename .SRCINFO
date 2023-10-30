@@ -1,7 +1,7 @@
 pkgbase = python-sacremoses
 	pkgdesc = Python port of Moses tokenizer, truecaser and normalizer
-	pkgver = 0.0.53
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/alvations/sacremoses
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-sacremoses
 	depends = python-regex
 	depends = python-six
 	depends = python-tqdm
-	source = sacremoses-0.0.53.tar.gz::https://files.pythonhosted.org/packages/source/s/sacremoses/sacremoses-0.0.53.tar.gz
-	sha512sums = ba2be544dce53b208f925f1f5e9af1efa3fbbfbcc7989130c3abcc6b446c64385421325a5fdbf428100f47661493b126c79d5d153ceb0dd0defbc4ed3dccc8d7
+	source = sacremoses-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sacremoses/sacremoses-0.1.1.tar.gz
+	sha512sums = c000c8bed89c1417ee8004bd0750a6917f51a18e4b39f271ba467922f2bd2ce3460f6ad83c46f08de06997446fea3e380a5502801f0937b849939ad714d42a16
 
 pkgname = python-sacremoses
