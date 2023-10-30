@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytmdesktop
 pkgver=1.14.2
 pkgrel=4
@@ -13,7 +13,7 @@ makedepends=('git' 'nvm' 'python' 'yarn')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
             'nss-mdns: for companion server')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('78ef6a6e9d7b878a284a4f43227ff9cc52ba424c4d6ee699268d9c80f9a5c97f'
@@ -34,7 +34,7 @@ _ensure_local_nvm() {
 prepare() {
   cd "$pkgname-$pkgver"
   _ensure_local_nvm
-  nvm install "$_nodeversion"
+  nvm install "${_nodeversion}"
 }
 
 build() {
@@ -55,14 +55,12 @@ package() {
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-  for icon_size in 16 256 512; do
-    icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -d $pkgdir/$icons_dir
-    install -m644 src/assets/favicon.${icon_size}x${icon_size}.png \
-      $pkgdir/$icons_dir/$pkgname.png
+  for i in 16 256 512; do
+    install -Dm644 "src/assets/favicon.${i}x${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
 
-  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$srcdir/$pkgname.desktop" -t \
-    "$pkgdir/usr/share/applications"
+    "$pkgdir/usr/share/applications/"
 }
