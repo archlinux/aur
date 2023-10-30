@@ -39,5 +39,7 @@ package() {
     cd "${srcdir}/${pkgname%-git}"
 
     install -Dm755 build/${pkgname%-git} -t ${pkgdir}/usr/bin/
-    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/cookie.txt" -t "${pkgdir}/etc/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/config.ini" -t "${pkgdir}/etc/${pkgname%-git}/"
 }
