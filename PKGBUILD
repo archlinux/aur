@@ -2,7 +2,7 @@
 # Based on the existing AUR package firefox-gnome-theme-git
 
 pkgname=firefox-gnome-theme
-pkgver=118
+pkgver=119
 pkgrel=1
 pkgdesc='A GNOME theme for Firefox'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('firefox: primary compatible browser' 'librewolf: alternative compat
 conflicts=("$pkgname-git")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rafaelmardojai/$pkgname/archive/refs/tags/v${pkgver}.tar.gz" "INSTALL.md")
-md5sums=('715e9486decba5605a225145d3a23e57'
+md5sums=('c85afe1995b3c093adb5a7dafb1149f0'
          '25f18456221ffc91f472b1abff8aae84')
 
 package() {
