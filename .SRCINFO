@@ -1,6 +1,6 @@
 pkgbase = r-milor
 	pkgdesc = Differential neighbourhood abundance testing on a graph
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/miloR
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = r-milor
 	optdepends = r-scuttle
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miloR_1.8.1.tar.gz
-	sha256sums = b191d1dade79e6aef03014432bc62c024876ab25db759c55d63d4eacd2107a1c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miloR_1.10.0.tar.gz
+	sha256sums = 926df31d90058416b3449c553ee4b8a86e3b8efdf36f4ff2024bf20e7ae2dbc2
 
 pkgname = r-milor
