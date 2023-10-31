@@ -4,10 +4,13 @@ pkgbase = audiowarden
 	pkgrel = 1
 	url = https://github.com/nroi/audiowarden
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	source = audiowarden.service
+	source = https://github.com/nroi/audiowarden/archive/refs/tags/0.1.1.tar.gz
 	sha256sums = a8789704183f5bb551807fff056935c047ddf6c0a72eeb0047ee0ceb4777f3cb
-	source_x86_64 = https://github.com/nroi/audiowarden/releases/download/0.1.1/audiowarden-x86.tar.gz
-	sha256sums_x86_64 = 5399d119ced4a33d8af55acde44e2ca7238f45dd36ba27bfb5fd266be5754f6f
+	sha256sums = 92b9512f8d80c370c0431065c377533c94d761b9969eb916804685c814e642cd
 
 pkgname = audiowarden
