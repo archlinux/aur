@@ -1,11 +1,11 @@
 pkgbase = ungoogled-chromium-chromedriver-provides
 	pkgdesc = Dummy/ meta package that depends on 'ungoogled-chromium' and fulfills the 'chromedriver' dependency.
-	pkgver = 112.0.5615.165
+	pkgver = 118.0.5993.117
 	pkgrel = 1
 	arch = any
 	license = custom: public domain
 	depends = ungoogled-chromium
-	provides = chromedriver=112.0.5615.165
+	provides = chromedriver=118.0.5993.117
 	source = license-metapackage-pd.txt
 	sha256sums = af68dd29515606a94237214e4c33b0e3f4f2408ed92df3674a043bf2fa2c0078
 

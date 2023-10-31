@@ -2,7 +2,7 @@
 
 _pkgname="ungoogled-chromium-chromedriver-provides"
 pkgname="${_pkgname}"
-pkgver=112.0.5615.165
+pkgver=118.0.5993.117
 pkgrel=1
 pkgdesc="Dummy/ meta package that depends on 'ungoogled-chromium' and fulfills the 'chromedriver' dependency."
 arch=("any")
