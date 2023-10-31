@@ -3,7 +3,7 @@
 _pkgname=maa-assistant-arknights
 _pkgdirname=maa
 pkgname="${_pkgname}"-bin
-_pkgver=v4.26.0-beta.3
+_pkgver=v4.26.0
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="A one-click tool for the daily tasks of Arknights, supporting all clients."
@@ -12,54 +12,55 @@ url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL')
 provides=('maa')
 depends=(
-    'glibc'
-    'gcc-libs'
+  'glibc'
+  'gcc-libs'
 )
 makedepends=(
-    'sed'
+  'sed'
 )
 source=(
-    maa-bin.sh
-    maa.desktop
-    maa.png::https://github.com/MaaAssistantArknights/design/raw/b390f657766b6ce3a2ea1929fa8f18367cc30efe/logo/maa-logo_512x512.png
-    https://github.com/MaaAssistantArknights/MaaAssistantArknights/raw/27fc4a6bf68f62cb6e9e5d2cf1f9d671112a38dd/LICENSE
+  'maa-bin.sh'
+  'maa.desktop'
+  'maa.png::https://github.com/MaaAssistantArknights/design/raw/b390f657766b6ce3a2ea1929fa8f18367cc30efe/logo/maa-logo_512x512.png'
+  'https://github.com/MaaAssistantArknights/MaaAssistantArknights/raw/27fc4a6bf68f62cb6e9e5d2cf1f9d671112a38dd/LICENSE'
 )
 
-sha256sums=('92e21c4a6b3b254329ae43c600c74654752cd818a948492e15c5cdd9507818d0'
-            'a0e767edc532186de42d3f8235fd76c96d2991ee73ad495baa34638e8379dac5'
-            'f404ffe0af05122c8b3097fe89c30bbd9cd94d6228036dd902f26a79ed373592'
-            '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('5c8f85817dfe208a80eb25887b63ea44a8d8b1a42e83905978940f903b13e11b')
-sha256sums_aarch64=('a5274709fa4fdf8f49e255cd322a3afec3e98d5dfc7b0fa7c696d6d4bd56db7b')
+sha256sums=(
+  '92e21c4a6b3b254329ae43c600c74654752cd818a948492e15c5cdd9507818d0'
+  'a0e767edc532186de42d3f8235fd76c96d2991ee73ad495baa34638e8379dac5'
+  'f404ffe0af05122c8b3097fe89c30bbd9cd94d6228036dd902f26a79ed373592'
+  '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
+sha256sums_x86_64=('c2e4bb1a428c3b7c8faeb02d6999073c2167e06017d1e0844eeedd92af780a1f')
+sha256sums_aarch64=('38b7221de47f1965ab107079f274994bf8a4942f603293a5cdce1c71f1a0f9ea')
 
 source_x86_64=("${url}/releases/download/${_pkgver}/MAA-${_pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/${_pkgver}/MAA-${_pkgver}-linux-aarch64.tar.gz")
 _pkg="MAA-${_pkgver}-linux-x86_64"
 if [ "${CARCH}" = "aarch64" ]; then
-    _pkg="MAA-${_pkgver}-linux-aarch64"
+  _pkg="MAA-${_pkgver}-linux-aarch64"
 fi
 noextract=(
-    "MAA-${_pkgver}-linux-x86_64.tar.gz"
-    "MAA-${_pkgver}-linux-aarch64.tar.gz"
+  "MAA-${_pkgver}-linux-x86_64.tar.gz"
+  "MAA-${_pkgver}-linux-aarch64.tar.gz"
 )
 
 prepare() {
-    mkdir -p ${_pkg}
-    tar xf ${_pkg}.tar.gz -C ${_pkg}
+  mkdir -p ${_pkg}
+  tar xf ${_pkg}.tar.gz -C ${_pkg}
 }
 
 package() {
-	install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/opt/${_pkgdirname}"
-    install -d "${pkgdir}/usr/share/applications"
-    install -d "${pkgdir}/usr/share/icons"
-    install -d "${pkgdir}/usr/share/licenses/${_pkgdirname}"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/opt/${_pkgdirname}"
+  install -d "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/usr/share/icons"
+  install -d "${pkgdir}/usr/share/licenses/${_pkgdirname}"
 
-	install -m755 "${srcdir}/maa-bin.sh" "${pkgdir}/usr/bin/maa"
-    install -m644 "${srcdir}/maa.desktop" "${pkgdir}/usr/share/applications/maa.desktop"
-    install -m644 "${srcdir}/maa.png" "${pkgdir}/usr/share/icons/maa.png"
-    install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgdirname}/LICENSE"
+  install -m755 "${srcdir}/maa-bin.sh" "${pkgdir}/usr/bin/maa"
+  install -m644 "${srcdir}/maa.desktop" "${pkgdir}/usr/share/applications/maa.desktop"
+  install -m644 "${srcdir}/maa.png" "${pkgdir}/usr/share/icons/maa.png"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgdirname}/LICENSE"
 
-	cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${_pkgdirname}"
+  cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${_pkgdirname}"
 
 }
