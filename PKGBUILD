@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scRepertoire
-_pkgver=1.10.1
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A toolkit for single-cell immune receptor profiling'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-seurat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1116bbaff55ce9448ed7acabc6b3c6a4ce6b09e8f678c35897fd9c83f8f7d835')
+sha256sums=('818aec659cc0f055dfe1cb454667bc6223fc82e6851be4238b02d15f7643faf1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
