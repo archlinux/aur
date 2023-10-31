@@ -10,8 +10,8 @@
 _pkgname=libguestfs
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.51.7+1.r11930.20231006.f8cbd7140
-pkgrel=4
+pkgver=1.51.7+4.r11933.20231030.0e37e5fee
+pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
 arch=(
   "i686"

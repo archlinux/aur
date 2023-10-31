@@ -1,7 +1,7 @@
 pkgbase = libguestfs-git
 	pkgdesc = Access and modify virtual machine disk image
-	pkgver = 1.51.7+1.r11930.20231006.f8cbd7140
-	pkgrel = 4
+	pkgver = 1.51.7+4.r11933.20231030.0e37e5fee
+	pkgrel = 1
 	epoch = 0
 	url = https://libguestfs.org
 	install = appliance.install
@@ -90,19 +90,19 @@ pkgbase = libguestfs-git
 	optdepends = ruby: For ruby bindings.
 	optdepends = wget: For '/usr/bin/update-libguestfs-appliance'.
 	optdepends = yara>=4.0.0: Tool for categorizing files based on their content.
-	provides = libguestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = erlang-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = java-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = lua-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = ocaml-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = perl-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = php-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = python-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = ruby-guestfs=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = guestfs-bash-completion=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = guestfsd=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = guestfish=1.51.7+1.r11930.20231006.f8cbd7140
-	provides = virt-rescue=1.51.7+1.r11930.20231006.f8cbd7140
+	provides = libguestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = erlang-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = java-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = lua-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = ocaml-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = perl-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = php-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = python-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = ruby-guestfs=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = guestfs-bash-completion=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = guestfsd=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = guestfish=1.51.7+4.r11933.20231030.0e37e5fee
+	provides = virt-rescue=1.51.7+4.r11933.20231030.0e37e5fee
 	provides = libguestfs.so
 	provides = libguestfs-gobject-1.0.so
 	conflicts = libguestfs
