@@ -1,7 +1,7 @@
 pkgbase = python-libpcap-git
 	pkgdesc = Python binding for the libpcap C library.
-	pkgver = 0.4.1+2.r98.20230128.b38a8cc
-	pkgrel = 5
+	pkgver = 0.4.2+5.r104.20230914.579e683
+	pkgrel = 1
 	url = https://pypi.org/project/libpcap/
 	arch = aarch64
 	arch = armv6h
@@ -20,7 +20,7 @@ pkgbase = python-libpcap-git
 	depends = cython
 	depends = libpcap
 	depends = python>=3
-	provides = python-libpcap=0.4.1+2.r98.20230128.b38a8cc
+	provides = python-libpcap=0.4.2+5.r104.20230914.579e683
 	conflicts = python-libpcap
 	source = python-libpcap::git+https://github.com/caizhengxin/python-libpcap.git
 	sha256sums = SKIP
