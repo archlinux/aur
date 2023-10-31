@@ -2,6 +2,7 @@ pkgbase = conky-cairo
 	pkgdesc = Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)
 	pkgver = 1.19.6
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = i686
 	arch = x86_64

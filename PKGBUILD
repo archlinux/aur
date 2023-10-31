@@ -28,6 +28,7 @@ pkgdesc='Lightweight system monitor for X, Wayland, console, or file/HTTP output
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
 arch=('i686' 'x86_64')
+epoch=1
 
 replaces=('torsmo' 'conky')
 conflicts=('conky')
