@@ -3,8 +3,8 @@
 
 _pkgname='tinyalsa'
 pkgname="${_pkgname}-git"
-pkgver=2.0.0+45.r582.20220803.4fbaeef
-pkgrel=3
+pkgver=2.0.0+54.r591.20230918.f78ed25
+pkgrel=1
 pkgdesc='A small library to interface with ALSA in the Linux kernel.'
 arch=('x86_64')
 url="https://github.com/${_pkgname}/${_pkgname}"

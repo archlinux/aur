@@ -1,14 +1,14 @@
 pkgbase = tinyalsa-git
 	pkgdesc = A small library to interface with ALSA in the Linux kernel.
-	pkgver = 2.0.0+45.r582.20220803.4fbaeef
-	pkgrel = 3
+	pkgver = 2.0.0+54.r591.20230918.f78ed25
+	pkgrel = 1
 	url = https://github.com/tinyalsa/tinyalsa
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	makedepends = git
 	depends = glibc
-	provides = tinyalsa=2.0.0+45.r582.20220803.4fbaeef
+	provides = tinyalsa=2.0.0+54.r591.20230918.f78ed25
 	conflicts = tinyalsa
 	source = tinyalsa::git+https://github.com/tinyalsa/tinyalsa.git
 	sha256sums = SKIP
