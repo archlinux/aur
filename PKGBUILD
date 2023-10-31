@@ -3,7 +3,7 @@
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
 pkgname=modsecurity
-pkgver=3.0.7
+pkgver=3.0.10
 pkgrel=1
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx'
 arch=('i686' 'x86_64')
@@ -20,9 +20,9 @@ source=(
 	"https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"{,.asc}
 )
 validpgpkeys=(
-	'190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
+	'F126692E9BA86B3958E73ED2F2FC4E45883BCBA4' # Martin Vierula (GitHub key)
 )
-sha256sums=('b4231177dd80b4e076b228e57d498670113b69d445bab86db25f65346c24db22'
+sha256sums=('d5d459f7c2e57a69a405f3222d8e285de419a594b0ea8829058709962227ead0'
             'SKIP')
 
 prepare() {
