@@ -4,8 +4,8 @@ _pkgbase=python-prompt_toolkit
 _pkgname="${_pkgbase}-doc"
 pkgname="${_pkgname}-git"
 _pkgver="latest"
-pkgver=1.0.14_8+g4476b3c
-pkgrel=6
+pkgver=3.0.39_0+g490cf900
+pkgrel=1
 pkgdesc="Documentation for python package 'prompt_toolkit'."
 makedepends=(
   'git'
