@@ -1,0 +1,14 @@
+diff -u a/env/emacs/xrefactory2.el b/env/emacs/xrefactory2.el
+--- a/env/emacs/xrefactory2.el	2021-09-29 00:13:07.885340606 +0200
++++ b/env/emacs/xrefactory2.el	2021-09-29 00:17:47.706091377 +0200
+@@ -2310,5 +2310,5 @@
+ 			   (cons "" nil)))
+ 	(set-process-filter (car (eval proc)) filter)
+ 	(setq process-connection-type oldpct)
+-	(process-kill-without-query (car (eval proc)))
++	(set-process-query-on-exit-flag (car (eval proc)) nil)
+ ))
+
+ (defvar xref-interrupt-dialog-map (make-sparse-keymap "Xref interrupt dialog"))
+
+Diff finished.  Wed Sep 29 00:18:48 2021
