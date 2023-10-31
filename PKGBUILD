@@ -5,7 +5,7 @@
 
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced
-pkgver=4.5.5.10
+pkgver=4.6.0.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
 license=('GPL' 'custom')
 groups=()
-depends=('libtorrent-rasterbar' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
+depends=('gcc-libs' 'glibc' 'libtorrent-rasterbar' 'openssl' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme' 'zlib')
 makedepends=('cmake' 'boost>=1.65' 'qt6-tools')
 checkdepends=()
 optdepends=('python: needed for torrent search tab')
@@ -24,22 +24,12 @@ backup=()
 options=()
 install=
 changelog=
-source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz"
-	"COPYING::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING"
-	"COPYING.GPLv2::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING.GPLv2"
-	"COPYING.GPLv3::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING.GPLv3"
-)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz")
 noextract=()
-sha256sums=(
-	'164c3721500f945cc42d8a077361238db629afdf9b94fe75e6101365cace256f'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+sha256sums=('22ef335a4fa2f8d90c97cbf48efbf6d77fb86853c2faee7271400a5466427112')
 
 build() {
-	cd qBittorrent*$pkgver
+	cd qBittorrent-Enhanced-Edition-release-$pkgver
 
 	cmake -B build -S . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -48,10 +38,8 @@ build() {
 }
 
 package() {
-	cd qBittorrent*$pkgver
+	cd qBittorrent-Enhanced-Edition-release-$pkgver
 
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-	install -Dm644 COPYING.GPLv2 "$pkgdir"/usr/share/licenses/$pkgname/COPYING.GPLv2
-	install -Dm644 COPYING.GPLv3 "$pkgdir"/usr/share/licenses/$pkgname/COPYING.GPLv3
 }
