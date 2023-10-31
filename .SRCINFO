@@ -21,7 +21,7 @@ pkgbase = konqueror-git
 	optdepends = kdesu: shell command plugin
 	provides = konqueror
 	conflicts = konqueror
-	source = git@invent.kde.org:network/konqueror.git
+	source = git://invent.kde.org:network/konqueror.git
 	sha512sums = SKIP
 
 pkgname = konqueror-git

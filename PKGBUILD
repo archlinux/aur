@@ -13,7 +13,7 @@ optdepends=('tidy: tidy HTML plugin' 'kdesu: shell command plugin')
 conflicts=("konqueror")
 provides=("konqueror")
 groups=("kde-applications" "kdebase")
-source=("git@invent.kde.org:network/konqueror.git")
+source=("git://invent.kde.org:network/konqueror.git")
 sha512sums=('SKIP')
 
 
