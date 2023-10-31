@@ -4,7 +4,7 @@ _pkgname=eilin
 pkgname="${_pkgname}-hg"
 epoch=0
 pkgver=date20170101_r216.a713d4319273
-pkgrel=3
+pkgrel=4
 pkgdesc="Utility to control EIZO monitors under Linux."
 arch=(
   'i686'
@@ -14,6 +14,8 @@ url="http://sourceforge.net/p/eilin/home/Home/"
 license=('GPL3')
 depends=(
   'expat'
+  'gcc-libs'
+  'glibc'
   'libusb'
   # 'libusbpp' # eilin build script tries to download libusbpp sources on it's own.
 )
@@ -22,6 +24,7 @@ makedepends=(
   'git' # For clone of libusbpp which is done during the build process.
   'mercurial'
   'qt5-base'
+  'shadow'
 )
 
 optdepends=(
@@ -68,7 +71,7 @@ sha256sums=(
   'SKIP'
   '75e98659e14632c1f6dc96ef8b8b9214ae4a998e0caacc3fec9cd47b8ffc568a'
   '47167c82b3fdbbc942465d7f23d07ddf88df34411ad0c245ac61f94735a178f4'
-  '733d7ab700ff73e1bce4bf1b55d5fc13a63aa4516b538458df55c525de867bef'
+  '52f58d41e8e80033d13eb4433049be62073b2da3dfbf0a713f2e28b0f0bf1d6e'
   'SKIP'
   'SKIP'
   'SKIP'
