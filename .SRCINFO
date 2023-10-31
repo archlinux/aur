@@ -1,6 +1,6 @@
 pkgbase = dsd-git
 	pkgdesc = Decoder for P25 Phase 1, D-STAR, NXDN/IDAS, ProVoice, DMR/MOTOTRBO, X2-TDMA, dPMR (LouisErigHerve's fork).
-	pkgver = 1.6.0.r111.g5077daf
+	pkgver = 1.6.0.r129.gec7018d
 	pkgrel = 1
 	url = https://github.com/LouisErigHerve/dsd
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = dsd-git
 	conflicts = dsd-louiserigherve
 	conflicts = dsd
 	source = dsd-louiserigherve::git+https://github.com/LouisErigHerve/dsd
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = dsd-git

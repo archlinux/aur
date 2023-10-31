@@ -4,7 +4,7 @@
 
 pkgname=dsd-git
 _forkname=dsd-louiserigherve
-pkgver=1.6.0.r111.g5077daf
+pkgver=1.6.0.r129.gec7018d
 pkgrel=1
 pkgdesc="Decoder for P25 Phase 1, D-STAR, NXDN/IDAS, ProVoice, DMR/MOTOTRBO, X2-TDMA, dPMR (LouisErigHerve's fork)."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'git' 'help2man')
 provides=("${_forkname}" 'dsd')
 conflicts=("${_forkname}" 'dsd')
 source=("${_forkname}::git+${url}")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "${_forkname}"
