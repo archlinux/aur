@@ -1,7 +1,7 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-uosc-git
 _gitname=uosc
-pkgver=4.7.0.r46.gbc7b1a1
+pkgver=5.0.0.r21.gbf7f970
 pkgrel=1
 pkgdesc='Feature-rich minimalist proximity-based UI for MPV player'
 arch=(x86_64)
@@ -10,7 +10,9 @@ license=(
   GPL3
 )
 makedepends=(
+  curl
   git
+  unzip
 )
 depends=(
   mpv
@@ -34,8 +36,9 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  find script{s,-opts} fonts -type f -exec install -vDm644 {} "${pkgdir}/etc/mpv/{}" \;
+  cd "$srcdir/$_gitname/installers"
+  chmod u+x ./unix.sh
+  MPV_CONFIG_DIR="${pkgdir}/etc/mpv/" ./unix.sh
 }
 
 # vim: ts=2 sw=2 et:

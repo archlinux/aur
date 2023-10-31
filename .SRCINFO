@@ -1,11 +1,13 @@
 pkgbase = mpv-uosc-git
 	pkgdesc = Feature-rich minimalist proximity-based UI for MPV player
-	pkgver = 4.7.0.r46.gbc7b1a1
+	pkgver = 5.0.0.r21.gbf7f970
 	pkgrel = 1
 	url = https://github.com/tomasklaen/uosc
 	arch = x86_64
 	license = GPL3
+	makedepends = curl
 	makedepends = git
+	makedepends = unzip
 	depends = mpv
 	optdepends = mpv-thumbfast: for showing thumbnails on-the-fly on seek
 	provides = mpv-uosc
