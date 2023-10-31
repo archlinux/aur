@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/hluwa/Wallbreaker"
 license=('GPL3')
 depends=(
+    'python'
     'python-frida'
     'python-click'
 )

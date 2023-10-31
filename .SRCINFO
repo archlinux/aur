@@ -6,6 +6,7 @@ pkgbase = python-wallbreaker
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	depends = python
 	depends = python-frida
 	depends = python-click
 	source = python-wallbreaker-1.0.3.tar.gz::https://github.com/hluwa/Wallbreaker/archive/1.0.3.tar.gz
