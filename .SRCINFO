@@ -1,0 +1,22 @@
+pkgbase = cosmic-edit-git
+	pkgdesc = COSMIC Text Editor
+	pkgver = r46.26c669b
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-edit
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = gtk3
+	depends = libxkbcommon
+	depends = wayland
+	provides = cosmic-edit
+	conflicts = cosmic-edit
+	conflicts = cosmic-text-editor-git
+	replaces = cosmic-text-editor-git
+	options = !lto
+	source = git+https://github.com/pop-os/cosmic-edit.git
+	sha256sums = SKIP
+
+pkgname = cosmic-edit-git
