@@ -1,0 +1,19 @@
+pkgbase = geekbench-preview
+	pkgdesc = A cross-platform benchmark that measures processor and memory performance (Preview Version)
+	pkgver = 6.2.1
+	pkgrel = 1
+	url = https://www.geekbench.com/
+	arch = aarch64
+	arch = riscv64
+	license = custom
+	depends = zlib
+	depends = gcc-libs
+	provides = geekbench
+	conflicts = geekbench
+	options = !strip
+	source_aarch64 = https://cdn.geekbench.com/Geekbench-6.2.1-LinuxARMPreview.tar.gz
+	sha512sums_aarch64 = 387b1207cb06bbb305fcd7e1c6bb03ed0ec0bd707284f9b71fb570e12ffe6014dd3f9afa9019046301423a022c4803ec159c8bfbe9342e1171e11b18ff33a175
+	source_riscv64 = https://cdn.geekbench.com/Geekbench-6.2.1-LinuxRISCVPreview.tar.gz
+	sha512sums_riscv64 = 12452aa4032da006b3b8009491f6e210bb8e214c9945029c74bca9f43debf7eb3fc226bf181f764f7620c7368f25aba36dd7253f46a59dd8d7ee6f9f288036b3
+
+pkgname = geekbench-preview
