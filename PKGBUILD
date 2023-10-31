@@ -1,8 +1,8 @@
 # Maintainer: Shohei Maruyama<cheat.sc.linux@outlook.com>
 
-pkgname=(otto-kde-git kvantum-theme-otto-git)
+pkgname=(plasma5-themes-otto-git kvantum-theme-otto-git)
 pkgver=r14.fd67d36
-pkgrel=2
+pkgrel=3
 pkgdesc="Otto Theme for Kde Plasma"
 arch=('any')
 url="https://www.opencode.net/jomada/otto"
@@ -18,7 +18,9 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_otto-kde-git() {
+package_plasma5-themes-otto-git() {
+	conflicts=('otto-kde-git')
+	replaces=('otto-kde-git')
 	optdepends=(
 		'konsole: For the Konsole color scheme'
 		'kvantum-theme-otto-git: Otto theme for kvantum (recommended)'
