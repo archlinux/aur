@@ -1,6 +1,8 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron27
-_ASAR="/opt/affine-canary/resources/app.asar"
+APPDIR="/usr/lib/affine-canary"
+export PATH="${APPDIR}:${PATH}"
+_ASAR="${APPDIR}/app"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
