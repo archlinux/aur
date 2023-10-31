@@ -1,7 +1,6 @@
 # Maintainer: Kid <hi at xuann dot wang>
 
-_name=replit
-pkgname=$_name-desktop-app
+pkgname=replit-desktop-app
 pkgver=1.0.5
 pkgrel=1
 pkgdesc='The collaborative browser based IDE'
@@ -14,21 +13,21 @@ depends=(
 install=.install
 
 source=(
-	$_name.deb::https://desktop.replit.com/download/deb
-	$_name
+	replit.deb::https://desktop.replit.com/download/deb
+	replit
 )
 sha256sums=('fdb60274b7b81b465d5e3d2cd6ad028c8f53d0f837745bfd1aaf2b110d7da49f'
             '9392ee9aced0cda3a50e00bc1fe40f75830388143254cbcb42929802b835d277')
 
 package() {
 	local usr="$pkgdir/usr"
-	local lib="$usr/lib/$_name"
+	local lib="$usr/lib/replit"
 
-	tar --extract --file data.tar.zst --directory "$pkgdir"
+	tar xf data.tar.zst -C "$pkgdir"
 
 	find "$lib" -type f ! -name '*.asar' -exec rm {} \;
-	rmdir "$lib/locales"
-	rm --recursive "$usr/share/lintian"
+	rm -d "$lib/locales"
+	rm -r "$usr/share/lintian"
 
-	install -D $_name --target-directory "$usr/bin"
+	install -D replit -t "$usr/bin"
 }
