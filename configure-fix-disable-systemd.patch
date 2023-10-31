@@ -1,0 +1,8 @@
+diff -rU1 miraclecast.org/configure.ac miraclecast/configure.ac
+--- miraclecast.org/configure.ac	2023-10-31 20:40:09.995687577 +0100
++++ miraclecast/configure.ac	2023-10-31 20:40:24.385688566 +0100
+@@ -48,3 +48,3 @@
+ AC_ARG_ENABLE([disable-systemd],
+-              AS_HELP_STRING([--disable-systemd], [Disable systemd]), [], [use_libsystemd=yes], [Disable systemd using elogind])
++              AS_HELP_STRING([--enable-disable-systemd], [Disable systemd]), [], [use_libsystemd=yes], [Disable systemd using elogind])
+ AC_DEFINE_UNQUOTED([IP_BINARY], [$IP_BINARY], [Path for ip binary])

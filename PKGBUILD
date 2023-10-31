@@ -8,7 +8,7 @@ pkgname=(
   "${_pkgbase}-docs-git"
 )
 pkgver=1.0+140.r328.20230714.fdb8671
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd."
 arch=(
   'i686'
@@ -29,11 +29,13 @@ source=(
   "${_pkgbase}::git+${url}.git"
   "${_pkgbase}-wiki::git+${url}.wiki.git"
   'miraclecast-use-elogind.patch'
+  'configure-fix-disable-systemd.patch'
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   'ad4f15e126d2a461cbfff0dd24971e5bf020a0d22a562ac217b96662b0f18c6d'
+  '7b6fcd858120cf5643cccb3cbb4a2b2a9042cfc4870deb2f1b6fe62ccd3e00c8'
 )
 
 prepare() {
@@ -47,6 +49,9 @@ prepare() {
   #  grep -rE '#include[[:space:]]+<systemd/' * | awk -F: '{print $1}' | while read i; do sed -E -e 's|(#include[[:space:]]+<)(systemd/)|\1elogind/\2|g' -i "$i"; done
   ## (2) Use a patch:
   patch -N -p1 --follow-symlinks -i "${srcdir}/miraclecast-use-elogind.patch"
+
+  msg2 "Fixing 'configure.ac' to the correct behaviour to disable systemd ..."
+  patch -N -p1 --follow-symlinks -i "${srcdir}/configure-fix-disable-systemd.patch"
 
   msg2 "Running ./autogen.sh ..."
   NOCONFIGURE=1 ./autogen.sh
@@ -75,7 +80,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --disable-systemd
+    --enable-disable-systemd
 
   msg2 "Running make ..."
   make
