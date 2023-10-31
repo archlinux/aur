@@ -3,7 +3,7 @@ pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -29,7 +29,6 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest-doctestplus'
               'python-pytest-remotedata'
               'python-numpy'
-              'python-attrs'
               'python-psutil'
               'python-yaml'
               'python-importlib-metadata'
@@ -45,7 +44,7 @@ checkdepends=('python-pytest-doctestplus'
 # psutil pulled in by pytest-openfiles; attrs <- aiohttp, jsonschema
 #             'python-virtualenv'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('03781992b815e895877811d36aa3b247')
+md5sums=('244963973e642ba977f152e16bb8af15')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -76,8 +75,8 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # Segmentation fault
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data \
-        --deselect=build/lib/asdf/_tests/_regtests/test_1530.py::test_update_with_memmapped_data_can_make_view_data_invalid || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest \
+        --deselect=asdf/_tests/_regtests/test_1530.py::test_update_with_memmapped_data_can_make_view_data_invalid #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data
 }
 
 package_python-asdf() {
