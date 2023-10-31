@@ -12,9 +12,9 @@ groups=(
   'linux-phc'
   'phc-intel'
 )
-pkgver=0.3.2.rev44.r52.20230220.f0f42bd
+pkgver=0.3.2.rev47.r55.20231030.984446e
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=3
+pkgrel=1
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch, latest git checkout."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
