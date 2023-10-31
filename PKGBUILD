@@ -2,7 +2,7 @@
 
 _depends="python>=3.2"
 pkgname="python-argparse-shim"
-pkgver=3.11.3
+pkgver=3.11.5
 pkgrel=1
 pkgdesc="Explicitly provides the dependency 'python-argparse', which is part of 'python'. The package 'python-argparse' must not be installed, but some packages depend on it, so this is a workaround. See https://bugs.archlinux.org/task/78484."
 arch=(
