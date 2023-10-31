@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rfast
-_pkgver=2.0.8
+_pkgver=2.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,14 +14,18 @@ depends=(
   blas
   lapack
   r-rcpp
+  r-rcppparallel
   r-rcppziggurat
 )
 makedepends=(
   r-rcpparmadillo
 )
+optdepends=(
+  r-philentropy
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c566094df35be55dd733727cf69121b0')
-sha256sums=('1bb2c8f0580d0fe27e2b06d1dd069d09588f410e4a895147cca445f32092c4b0')
+md5sums=('6fd9f8416dedf846b7d5cddf83cfd906')
+sha256sums=('ffcf2a9df9c089f4719e483743a01ccba06e4f0b65580231fbe1142bf12c548a')
 
 build() {
   mkdir -p build
