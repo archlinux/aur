@@ -2,8 +2,8 @@
 
 pkgname=rnalysis
 _name=RNAlysis
-pkgver=3.9.2
-pkgrel=3
+pkgver=3.10.0
+pkgrel=1
 pkgdesc='Python-based software for analyzing RNA sequencing data. https://doi.org/10.1101/2022.11.25.517851'
 _pkgdesc='Python-based software with GUI for analyzing RNA sequencing data'
 arch=(any)
@@ -73,7 +73,7 @@ makedepends=(
 source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
         )
 
-sha256sums=('c095321ee6beb16d3164183d560acdf20b7a7b08c5dc7dfa9342500159448522')
+sha256sums=('b61076af27ebb365c1c774fe8decca79fb89dc5184b2b1a65ea5359444888379')
 
 prepare() {
     cd "$_name-$pkgver"
