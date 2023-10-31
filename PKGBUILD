@@ -3,7 +3,7 @@
 _pkgname='nmeasim-python'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.0.2.0.r25.20220809.66ecf14
+pkgver=1.1.1.0.r33.20230911.ba46ca8
 pkgrel=1
 pkgdesc='A Python 3 GNSS/NMEA receiver simulation, with GUI.'
 arch=(
