@@ -1,7 +1,7 @@
 # Maintkiner: LoaD Accumulator <lda@freetards.xyz>
 pkgname=cytoplasm-git
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Telodendria core library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://git.telodendria.io/Telodendria/Cytoplasm"
@@ -10,7 +10,6 @@ depends=('openssl')
 makedepends=('git')
 provides=('cytoplasm')
 source=($pkgname::git+https://git.telodendria.io/Telodendria/Cytoplasm.git)
-md5sums=()
 validpgpkeys=()
 md5sums=("SKIP")
 
