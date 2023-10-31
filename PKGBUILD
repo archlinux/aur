@@ -3,7 +3,7 @@
 pkgname="resource-hacker"
 pkgdesc="A resource editor for 32/64-bit Windows applications"
 
-pkgver=5.2.3
+pkgver=5.2.4
 pkgrel=1
 
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ makedepends=(unzip gendesk icoutils)
 provides=(resource-hacker)
 
 source=("http://www.angusj.com/resourcehacker/resource_hacker.zip" "resource-hacker" "LICENSE")
-md5sums=("18a7d7d4cecf23e3e31291170ba60ee3" "d22c27bfeda3b660598ab6c918728d55" "f686b88c5279285dfa50e4e5a54a538c")
+md5sums=("6ded220c6ef65c97c12b9bee09f08114" "d22c27bfeda3b660598ab6c918728d55" "f686b88c5279285dfa50e4e5a54a538c")
 
 prepare() {
 	# extract the icon out of the executable
