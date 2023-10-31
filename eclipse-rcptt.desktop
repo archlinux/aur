@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Eclipse RCPTT
+GenericName=UI Testing IDE
+Comment=Eclipse RCP Testing Tool
+Icon=eclipse-rcptt
+Exec=eclipse-rcptt
+Terminal=false
+Categories=Development;IDE;

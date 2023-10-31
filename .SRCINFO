@@ -1,0 +1,15 @@
+pkgbase = eclipse-rcptt
+	pkgdesc = Eclipse RCP Testing Tool IDE
+	pkgver = 2.5.4
+	pkgrel = 1
+	epoch = 1
+	url = https://eclipse.org/rcptt
+	arch = x86_64
+	license = EPL
+	depends = java-environment>=17
+	source = rcptt.ide-2.5.4-linux.gtk.x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/rcptt/release/2.5.4/ide/rcptt.ide-2.5.4-linux.gtk.x86_64.zip&r=1
+	source = eclipse-rcptt.desktop
+	sha512sums = 3c4120932afdef245b265ce0775fe11f075e1427d92c69e4fa71390199e1b59d5534a18cfc0fd1c38de23fa89c1627a6ece562d6c1ddb5dfcf7ad476488c6c28
+	sha512sums = 002a074ce1a41bc84bf688c21e3e8e94ba4662b167f459e5cc46397434565fab30520cc78e062407ac7eaba73d84604ff2d16aa27c3aa2d39cc9aea27d969d8c
+
+pkgname = eclipse-rcptt
