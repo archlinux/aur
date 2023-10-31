@@ -1,7 +1,7 @@
 pkgbase = flutter-engine
 	pkgdesc = Engine for flutter applications.
 	pkgver = 3.13.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flutter/engine
 	arch = x86_64
 	license = BSD
@@ -10,6 +10,11 @@ pkgbase = flutter-engine
 	makedepends = llvm
 	makedepends = python-httplib2
 	makedepends = python-six
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = unzip
 	depends = glibc
 	depends = cmake
 	depends = ninja
@@ -20,10 +25,8 @@ pkgbase = flutter-engine
 	depends = gtk3
 	source = flutter-engine::git+https://github.com/flutter/engine.git#tag=3.13.9
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	source = git+https://anongit.freedesktop.org/git/wayland/wayland.git#tag=1.20.0
 	source = flutter-engine-prepare.sh
 	source = flutter-engine-build.sh
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9d7f60edd2cda6b2f11153aec21356ede86216b11a694305a403da8814208f34
