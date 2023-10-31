@@ -110,6 +110,7 @@ fi
 # Create DTBO's #
 #################
 cp -vf "/boot/dtbs/${dtb}.dtb" "/boot/dtbs/${dtb}-fixed.dtb"
+rm -rf /boot/dtbos/*.dtbo
 for bp in /boot/dtbos/*.dts; do
   echo "Creating .dtbo from $(basename $bp)"
   dtc -@ -q -I dts -O dtb -o ${bp/".dts"/".dtbo"} $bp
