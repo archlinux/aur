@@ -1,6 +1,6 @@
 pkgbase = r-alabaster.vcf
 	pkgdesc = Save and Load Variant Data to/from File
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/alabaster.vcf
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = r-alabaster.vcf
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.vcf_1.0.0.tar.gz
-	md5sums = a512241aa940a4dd220d86da0b94aea4
-	sha256sums = 94b90cf7ecdf2a699e4e55a0a8a60da9ed5a85197ce7362eb0247df2f037255d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.vcf_1.2.0.tar.gz
+	md5sums = e0873ba68051843f6a35b01fef673423
+	sha256sums = 29326985006669d777daaf9e2134149754a9e99cb6f2f0d0afe32e118265fc77
 
 pkgname = r-alabaster.vcf
