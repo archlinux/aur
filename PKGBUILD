@@ -1,29 +1,23 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 pkgname=lightly-git
-_gitname=Lightly
-pkgver=r2172.121a61e5
-pkgrel=3
+_gitname=lightly
+pkgver=r2184.1a831f7f
+pkgrel=1
 pkgdesc="A modern style for qt applications"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Luwx/$_gitname"
+url="https://github.com/boehs/$_gitname"
 license=("GPL2")
 depends=("frameworkintegration5" "kdecoration" "breeze-icons" "kwayland5" "hicolor-icon-theme")
 makedepends=("git" "cmake" "extra-cmake-modules" "kcmutils5" "kdecoration" "qt5-declarative" "qt5-x11extras")
 provides=("lightly-qt")
 conflicts=("lightly-qt")
-source=("git+$url" "https://github.com/Luwx/Lightly/pull/177.patch")
-sha512sums=('SKIP'
-            '0705dc4b9c2fac0fb2a2c5caa26da9c7d90f1ebab716a9fc21543707ce4544e6a6984b9e850dba4b4bd3b3c124f60b495f2960091d4867c314998bb7040673f1')
+source=("git+$url") 
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 < "$srcdir/177.patch"
 }
 
 build() {
