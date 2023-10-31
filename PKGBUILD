@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -36,7 +36,6 @@ depends=(
   libgl
   libiec61883
   libjxl.so
-  libmfx
   libmodplug
   libopenmpt.so
   libpulse
@@ -54,7 +53,6 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
-  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -66,6 +64,7 @@ depends=(
   libxvidcore.so
   libzimg.so
   ocl-icd
+  onevpl
   opencore-amr
   openjpeg2
   openssl # https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
@@ -76,6 +75,7 @@ depends=(
   svt-av1
   v4l-utils
   vmaf
+  vulkan-icd-loader
   xz
   zlib
   libfdk-aac
@@ -95,6 +95,7 @@ makedepends=(
 optdepends=(
   'avisynthplus: AviSynthPlus support'
   'intel-media-sdk: Intel QuickSync support'
+  'onevpl-intel-gpu: Intel QuickSync support'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
@@ -124,7 +125,14 @@ validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <m
 
 prepare() {
   cd ffmpeg
+  # FS#79281: fix assembling with binutil as >= 2.41
+  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
+  # FS#77813: fix playing ogg files with mplayer
+  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+  # use non-deprecated nvenc GUID for conftest
+  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
+  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
 }
 
 pkgver() {
@@ -159,7 +167,6 @@ build() {
     --enable-libiec61883 \
     --enable-libjack \
     --enable-libjxl \
-    --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
@@ -180,6 +187,7 @@ build() {
     --enable-libvidstab \
     --enable-libvmaf \
     --enable-libvorbis \
+    --enable-libvpl \
     --enable-libvpx \
     --enable-libwebp \
     --enable-libx264 \
