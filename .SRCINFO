@@ -19,4 +19,3 @@ pkgbase = python-condconfigparser-git
 	sha256sums = SKIP
 
 pkgname = python-condconfigparser-git
-
