@@ -1,6 +1,6 @@
 pkgbase = zxtune-git
 	pkgdesc = Portable toolkit for ZX-Spectrum music playing
-	pkgver = r5021.r22.g7a40db5c8
+	pkgver = r5054.r0.g2d3461378
 	pkgrel = 1
 	url = http://zxtune.bitbucket.io
 	arch = i686

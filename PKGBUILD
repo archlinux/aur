@@ -2,7 +2,7 @@
 # Previous maintainer: Ian D. Scott <ian@perebruin.com>
 
 pkgname=zxtune-git
-pkgver=r5021.r22.g7a40db5c8
+pkgver=r5054.r0.g2d3461378
 pkgrel=1
 pkgdesc="Portable toolkit for ZX-Spectrum music playing"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ conflicts=('zxtune-bin')
 options=(!strip !docs !libtool !emptydirs !zipman makeflags)
 source=('git+https://bitbucket.org/zxtune/zxtune.git')
 md5sums=('SKIP')
-_qt4_options="qt.includes=/usr/include/qt4 tools.uic=uic-qt4 tools.moc=moc-qt4 tools.rcc=rcc-qt4"
+_qt5_options="qt.includes=/usr/include/qt tools.uic=uic-qt5 tools.moc=moc-qt5 tools.rcc=rcc-qt5"
 
 pkgver() {
   cd zxtune
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/zxtune"
-  make platform=linux system.zlib=1 release=1 ${_qt4_options} -C apps/bundle
+  make platform=linux system.zlib=1 release=1 ${_qt5_options} -C apps/bundle
 }
 
 package() {
