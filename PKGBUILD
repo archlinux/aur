@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mini-system-monitor
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Mini version of 'System Monitoring Center'"
 url="https://github.com/hakandundar34coding/mini-system-monitor"
