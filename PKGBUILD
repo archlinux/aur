@@ -1,8 +1,8 @@
 # Maintainer: effeffe <filippo dot falezza at outlook dot it>
 pkgname=lise-app
-pkgver=16.3.11
+pkgver=16.17.2
 arch=('x86_64')
-pkgrel=2
+pkgrel=1
 pkgdesc='Lise++ Rare Isotope Beam Production Package'
 url='https://lise.nscl.msu.edu/lise.html'
 OPTIONS=!strip
@@ -14,7 +14,7 @@ source=(
   "lise-app.sh"
 )
 sha256sums=(
-  'e1aee14af283f9ed874c89e87e8f4ff9e428c7781e31a46d590fe5fe72331b23'
+  '7fe5ef5e40fb2324a4b2e2f0f3e91c1e36bfa9f7bcf943d39f1f3ca27f74ddbe'
   '1e3312bc55da1266b9870b2bcd133d2fc6c68117ffabfc814abce38cfa3ddc64'
   '7aa0046fbc68fdc28d4b59c68baf56f028de338edf408559fca336e3394b950e'
   '9c39f463aa7da650e7017533a9c78e6f34d653b1d382cb5e05b037ea6b8a223e'
