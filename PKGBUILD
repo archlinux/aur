@@ -3,8 +3,8 @@
 _pkgname=marble-maps-extra
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=r31.20230919.e4ffa9c
-pkgrel=3
+pkgver=r32.20230919.abf1758
+pkgrel=1
 pkgdesc="Additional maps for marble. Includes: "
 url="https://gitlab.com/dreieckli/marble-maps-extra"
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = marble-maps-extra-git
 	pkgdesc = Additional maps for marble. Includes:
-	pkgver = r31.20230919.e4ffa9c
-	pkgrel = 3
+	pkgver = r32.20230919.abf1758
+	pkgrel = 1
 	epoch = 0
 	url = https://gitlab.com/dreieckli/marble-maps-extra
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = marble-maps-extra-git
 	optdepends = marble-maps-virtualearthos: Bing maps.
 	optdepends = marble-maps-virtualearth: Bing satellite.
 	optdepends = marble-restricted-maps: For additional maps with restricted licensing.
-	provides = marble-maps-extra=r31.20230919.e4ffa9c
+	provides = marble-maps-extra=r32.20230919.abf1758
 	provides = marble-maps-hillshading-karry
 	provides = marble-maps-hillshading
 	provides = marble-maps-openstreetmap-hillshading
