@@ -2,32 +2,34 @@
 
 _pkgname=nym-binaries
 pkgname="${_pkgname}-bin"
-pkgver=1.1.13
+pkgver=2023.1
+_pkgvername=milka
 pkgrel=1
 pkgdesc="The Nym Privacy Platform binaries"
 arch=('x86_64')
 url="https://github.com/nymtech/nym"
 license=('Apache 2.0')
 _sources=(
-    explorer-api            e399fbb51a51585e162de8e9516531226708e6a3ca86a62006ac5a468214aeed
-    nym-api                 4645450458a25382c92912b691451305b6da0e172b23bf69608656199341b59f
-    nym-cli                 b5112acb8a4e803a97e5baeb9ced51c0317816c21220ebb445ced982ed58209f
-    nym-client              8c2c7a96e6b2bd1e9e1ca0bfc370f981da2f230fbf131e90113487caf32b59ff
-    nym-gateway             734f9002a9dfb4e0b5e12289f94d3aab5035fc26febe047abc9bb4307bc76c4e
-    nym-mixnode             fc15e9168e02708040063a6da55b4ede6a67c50ee47921bb8854f70dd21d5b16
-    nym-network-requester   bf1fefab2998f0e802cd739924c5bb3ea8e7b3de47e0729702e408ae13cbe410
-    nym-network-statistics  e74ae5501b82229f53e8d86746cda2180906daa9bea352646fb745e9fade4a14
-    nym-socks5-client       b59e4d37bad5352b016b2f12f6e0848f7065c18057c06dab5c2d80b5162708c3
+    explorer-api            2e843c53d8998f16f42bb96f61ae4a441244d6e285140ee7d87cb2de1d1ae55c
+    nym-api                 975506eab74af270a30398435198e00b05f87489b4cade71839a6f33522484f4
+    nym-cli                 d88fef42b50e3004d13e49e194365d76fa9620e78c71d77a71d934e009af55ea
+    nym-client              2944cd192f74db93e26d3369a53574d1778b0dbc9abda0ee48882e40ff41f1ab
+    nym-gateway             6c8e92e03048200308e0724675059c2dfba91d8cb0560857a3a319448bb0bf05
+    nym-mixnode             05367420b7b842f1850011e6dbc5fc25e9e794df4695725406171272d7105572
+    nym-network-requester   473f6842f58f30f8146964e528d4d604ae35416ecefd94fe860a4ccda596ed50
+    nym-network-statistics  51afc9e169289e1a2a0e513e3c7ecbc907fb2cccd2854c821bbf73106d65b413
+    nym-socks5-client       a362d6bf1859bf55c38ffdf87e77ee8910f654ca90cb80e3fbef06d3f8ba1002
 )
 source_x86_64=()
 sha256sums_x86_64=()
 for ((i=0; i<${#_sources[*]}; i=i+2)); do
-    source_x86_64+=("https://github.com/nymtech/nym/releases/download/nym-binaries-v${pkgver}/${_sources[i]}")
+    source_x86_64+=("https://github.com/nymtech/nym/releases/download/nym-binaries-v${pkgver}-${_pkgvername}/${_sources[i]}")
     sha256sums_x86_64+=(${_sources[i+1]})
 done
 
 package() {
     for ((i=0; i<${#_sources[*]}; i=i+2)); do
+        strip "${_sources[i]}"
         install -Dm755 "${_sources[i]}" "${pkgdir}/usr/bin/${_sources[i]}"
     done
     chmod 755 "${pkgdir}/usr/bin"
