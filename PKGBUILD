@@ -2,7 +2,7 @@
 
 pkgname=clash-verge-bin
 _pkgname=clash-verge
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=0
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('clash-meta: Another Clash Kernel')
 
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/zzzgydi/clash-verge/releases/download/v${pkgver}/clash-verge_${pkgver}_amd64.deb")
 
-sha512sums=('38fdeb8698cf4645549a4f44d01f5b0ddf8295f083a5d14426d104b8c3665432f08bca3737232a7db74097eb9c626bff795ff5aac2d67345f178273753e02e9c')
+sha512sums=('31a1aa9dc03272576e3898a09a7e2fd7e93635fa6f7760337588efcbeb67b26d68870a5be5bb3d1f1b3c73fbd86d02109ef7b9fdb3aac037e26bd1ddc509d8ba')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
