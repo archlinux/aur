@@ -1,0 +1,33 @@
+pkgbase = tuxedo-rs
+	pkgdesc = Rust libraries for interacting with hardware from TUXEDO Computers
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/AaronErhardt/tuxedo-rs
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = tuxedo-io
+	depends = tuxedo-keyboard
+	provides = tailor_cli
+	provides = tailord
+	source = tuxedo-rs-0.2.3::git+https://github.com/AaronErhardt/tuxedo-rs#commit=74b863e
+	sha256sums = SKIP
+
+pkgname = tailor-cli
+	pkgdesc = CLI for controlling tailor-daemon (part of tuxedo-rs)
+	depends = glibc
+	depends = gcc-libs
+	depends = tailord
+
+pkgname = tailord
+	pkgdesc = Daemon handling fan, keyboard and general HW support for Tuxedo laptops (part of tuxedo-rs)
+	depends = glibc
+	depends = gcc-libs
+	depends = tuxedo-io
+	depends = tuxedo-keyboard
+	optdepends = tailor: CLI for controlling the daemon
+	optdepends = tailor-gui: GUI for controlling the daemon
+	conflicts = tuxedo-control-center
