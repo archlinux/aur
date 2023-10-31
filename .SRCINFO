@@ -1,0 +1,18 @@
+pkgbase = gpod-utils-git
+	pkgdesc = Command line tools using libgpod to access iPod data.
+	pkgver = v1.3.1.r11.g499e8da
+	pkgrel = 1
+	url = https://github.com/whatdoineed2do/gpod-utils
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = libgpod
+	depends = json-c
+	depends = glib2
+	depends = sqlite
+	depends = ffmpeg
+	provides = gpod-utils
+	source = git+https://github.com/whatdoineed2do/gpod-utils.git
+	sha256sums = SKIP
+
+pkgname = gpod-utils-git
