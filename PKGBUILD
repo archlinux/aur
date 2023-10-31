@@ -2,7 +2,7 @@
 # based on mkvtoolnix-{cli,gui}
 
 pkgname=mkvtoolnix-qt5
-pkgver=79.0
+pkgver=80.0
 pkgrel=1
 pkgdesc='Matroska tools (Qt5 version)'
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
 provides=("mkvtoolnix-cli=${pkgver}" "mkvtoolnix-gui=${pkgver}")
 conflicts=('mkvtoolnix-cli' 'mkvtoolnix-gui' 'mkvtoolnix-git')
 source=("https://mkvtoolnix.download/sources/mkvtoolnix-${pkgver}.tar.xz")
-sha256sums=('f039c27b0dfe4a4d1aa870ad32e20a28a5f254de6121cb12a42328130be3afbc')
+sha256sums=('bb08cdaf9afd472738b9655ae5704c3749da0a51a188baab12f5d7c3eb4d33f5')
 
 build() {
   cd mkvtoolnix-${pkgver}

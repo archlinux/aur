@@ -1,6 +1,6 @@
 pkgbase = mkvtoolnix-qt5
 	pkgdesc = Matroska tools (Qt5 version)
-	pkgver = 79.0
+	pkgver = 80.0
 	pkgrel = 1
 	url = https://mkvtoolnix.download/
 	arch = x86_64
@@ -26,12 +26,12 @@ pkgbase = mkvtoolnix-qt5
 	depends = zlib
 	optdepends = libebml: instead of the bundled lib
 	optdepends = libmatroska: instead of the bundled lib
-	provides = mkvtoolnix-cli=79.0
-	provides = mkvtoolnix-gui=79.0
+	provides = mkvtoolnix-cli=80.0
+	provides = mkvtoolnix-gui=80.0
 	conflicts = mkvtoolnix-cli
 	conflicts = mkvtoolnix-gui
 	conflicts = mkvtoolnix-git
-	source = https://mkvtoolnix.download/sources/mkvtoolnix-79.0.tar.xz
-	sha256sums = f039c27b0dfe4a4d1aa870ad32e20a28a5f254de6121cb12a42328130be3afbc
+	source = https://mkvtoolnix.download/sources/mkvtoolnix-80.0.tar.xz
+	sha256sums = bb08cdaf9afd472738b9655ae5704c3749da0a51a188baab12f5d7c3eb4d33f5
 
 pkgname = mkvtoolnix-qt5
