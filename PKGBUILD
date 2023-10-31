@@ -1,6 +1,6 @@
 # Maintainer: Patrick Gelvin <patrick@gelvin.dev>
 pkgname="rcalc"
-pkgver=v1.1.0
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="A lightweight RPN calculator"
 arch=("x86_64")
@@ -8,19 +8,42 @@ url="https://github.com/gelvinp/rcalc"
 license=('MIT')
 depends=('glfw>=3.0.0', 'freetype2>=2.0.0')
 makedepends=("python>=3.11.0" "scons>=4.5.0" "pkg-config" "git")
-_tag=1e65a5ba72485b504fd8cedc44503901aa83a74b # git rev-parse "tag-name"
-source=(git+https://github.com/gelvinp/rcalc#tag=$_tag?signed)
-sha256sums=('SKIP')
+_tag=e0c2e8ede0eb420d412c034d950b1ea17df3820b # git rev-parse "tag-name"
+source=(git+https://github.com/gelvinp/rcalc#tag=$_tag?signed
+        git+https://github.com/glfw/glfw
+        git+https://gitlab.freedesktop.org/freetype/freetype
+        git+https://github.com/ArthurSonzogni/FTXUI
+        git+https://github.com/dacap/clip)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$pkgname"
   git describe
 }
 
+prepare() {
+  cd "$pkgname"
+  git submodule init
+
+  git config submodule.modules/glfw/upstream.url "$srcdir/glfw"
+  git config submodule.modules/freetype/upstream.url "$srcdir/freetype"
+  git config submodule.modules/ftxui/upstream.url "$srcdir/FTXUI"
+  git config submodule.modules/clip/upstream.url "$srcdir/clip"
+
+  git -c protocol.file.allow=always submodule update
+}
+
 build() {
   cd "$pkgname"
 
-  BUILD_NAME="pkgbuild" VERSION_STATUS="stable" scons target=release
+  GPERF_CMD=""
+
+  if command -v gperf &> /dev/null
+  then
+    GPERF_CMD="gperf_path=$(which gperf)"
+  fi
+
+  BUILD_NAME="pkgbuild" VERSION_STATUS="stable" scons target=release default_renderer=terminal $GPERF_CMD
 }
 
 package() {
