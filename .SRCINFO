@@ -5,6 +5,7 @@ pkgbase = python-largestinteriorrectangle
 	url = https://github.com/OpenStitching/lir
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
