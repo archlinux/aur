@@ -1,6 +1,6 @@
 pkgbase = r-ddpcrclust
 	pkgdesc = Clustering algorithm for ddPCR data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ddPCRclust
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-ddpcrclust
 	depends = r-r.utils
 	depends = r-samspectral
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ddPCRclust_1.20.0.tar.gz
-	sha256sums = 20a181c7fca9f63cbc2d7ec0b43a31628bb91474fa9aabf59eb76ce124ea4b52
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ddPCRclust_1.22.0.tar.gz
+	sha256sums = 4c745a4fbe80d7827e24e9ccfbb911a61aa636fba5a46aadf6de862667f1cd31
 
 pkgname = r-ddpcrclust
