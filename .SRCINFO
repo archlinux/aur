@@ -1,8 +1,8 @@
 pkgbase = perl-pod-eventual
 	pkgdesc = Read a POD document as a series of trivial events
 	pkgver = 0.094003
-	pkgrel = 1
-	url = https://metacpan.org/release/perl-pod-eventual
+	pkgrel = 2
+	url = https://metacpan.org/release/Pod-Eventual
 	arch = any
 	license = PerlArtistic
 	license = GPL
