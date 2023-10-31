@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pipeComp
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='pipeComp pipeline benchmarking framework'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6be274d1fdebffc34aa72b596cd0fc85371ddfa5d0cd9c38b3aad5dfcea31577')
+sha256sums=('d9382d3d90aeeb39d6d655b19fcde34926b3f379a7c4741b97860e9409dfc271')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
