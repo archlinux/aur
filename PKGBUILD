@@ -2,8 +2,8 @@
 
 _pkgname=ossia-score
 pkgname=$_pkgname-bin
-pkgver=3.1.11
-pkgrel=3
+pkgver=3.1.12
+pkgrel=1
 pkgdesc="An interactive sequencer for the intermedia arts (binary release)"
 arch=('x86_64')
 url="https://github.com/ossia/score"
@@ -15,8 +15,8 @@ makedepends=('fuse2')
 provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage="ossia.score-$pkgver-linux-amd64.AppImage"
-source=("$url/releases/download/v3.1.11/$_appimage")
-sha256sums=('7af0e59b680761312df15d05fd456040309806621007f9eda0a76940d2cefee7')
+source=("$url/releases/download/v$pkgver/$_appimage")
+sha256sums=('0b26aa33349d31fb84e14fa67de453feb9c066f63f67e9296a720402105708f6')
 
 prepare() {
   chmod +x "$_appimage"

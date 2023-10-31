@@ -1,7 +1,7 @@
 pkgbase = ossia-score-bin
 	pkgdesc = An interactive sequencer for the intermedia arts (binary release)
-	pkgver = 3.1.11
-	pkgrel = 3
+	pkgver = 3.1.12
+	pkgrel = 1
 	url = https://github.com/ossia/score
 	arch = x86_64
 	license = GPL3
@@ -30,7 +30,7 @@ pkgbase = ossia-score-bin
 	optdepends = ysfx
 	provides = ossia-score
 	conflicts = ossia-score
-	source = https://github.com/ossia/score/releases/download/v3.1.11/ossia.score-3.1.11-linux-amd64.AppImage
-	sha256sums = 7af0e59b680761312df15d05fd456040309806621007f9eda0a76940d2cefee7
+	source = https://github.com/ossia/score/releases/download/v3.1.12/ossia.score-3.1.12-linux-amd64.AppImage
+	sha256sums = 0b26aa33349d31fb84e14fa67de453feb9c066f63f67e9296a720402105708f6
 
 pkgname = ossia-score-bin
