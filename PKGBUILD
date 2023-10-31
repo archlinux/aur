@@ -3,8 +3,8 @@
 
 _pkgname=kvmtool
 pkgname=kvmtool-git
-pkgver=3.18.0.r1950.20230712.106e2ea
-pkgrel=2
+pkgver=3.18.0.r1956.20230916.9cb1b46
+pkgrel=1
 pkgdesc="A lightweight (~5kloc) KVM-based virtual machine which can host Linux guests only"
 license=('GPL2')
 url="https://git.kernel.org/cgit/linux/kernel/git/will/kvmtool.git/"
