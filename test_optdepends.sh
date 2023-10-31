@@ -279,8 +279,8 @@ fi
 
 # YAML: configuration files
 # Check library (find libyaml.so)
-OPENCL_SO="$(find_so libyaml.so)"
-if [ -f "${OPENCL_SO}" ]; then
+YAML_SO="$(find_so libyaml.so)"
+if [ -f "${YAML_SO}" ]; then
 	CONFOPTS+=" --with-yaml=1"
 fi
 
