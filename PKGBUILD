@@ -13,7 +13,7 @@ license=('AGPL3')
 #  You must accept the licensing terms before downloading the source archive:
 #    http://wias-berlin.de/software/tetgen/download2.jsp
 #  Place the downloaded archive in $SRCDEST of your /etc/makepkg.conf
-source=("${pkgname}${pkgver}.tar.gz")
+source=("http://wias-berlin.de/software/tetgen/1.6/src/${pkgname}${pkgver}.tar.gz")
 sha256sums=('87b5e61ebd3a471fc4f2cdd7124c2b11dd6639f4feb1f941a5d2f5110d05ce39')
 options=('!staticlibs')
 makedepends=('cmake')
