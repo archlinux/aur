@@ -6,7 +6,7 @@ pkgdesc="Convert git log output to ChangeLog format."
 url="https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/gitlog-to-changelog"
 license=("GPL3")
 epoch=0
-pkgver=20210224T2342
+pkgver=20230624T2159
 pkgrel=1
 arch=(
   'any'
