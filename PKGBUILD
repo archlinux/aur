@@ -10,6 +10,7 @@ pkgdesc="Rust libraries for interacting with hardware from TUXEDO Computers"
 arch=("x86_64")
 url="https://github.com/AaronErhardt/tuxedo-rs"
 license=('GPL2')
+groups=('tuxedo-rs')
 provides=(
   'tailor_cli' # Name conflict with 'tailor'
   'tailord'
@@ -58,11 +59,14 @@ build() {
 package_tailor-cli() {
   local _srcname="tailor"
   pkgdesc="CLI for controlling tailor-daemon (part of tuxedo-rs)"
+  provides=(
+    'tailor_cli'
+  )
   depends=(
     'glibc'
     'gcc-libs'
     'tailord'
-	)
+  )
   cd "${_archive}"
 
   # Install it as tailor_cli following same convention as tailor_gui upstream
@@ -73,13 +77,16 @@ package_tailor-cli() {
 package_tailord() {
   pkgdesc="Daemon handling fan, keyboard and general HW support for Tuxedo laptops (part of tuxedo-rs)"
   depends+=()
+  provides=(
+    'tailord'
+  )
   conflicts=(
-	  'tuxedo-control-center'
-	)
+    'tuxedo-control-center'
+  )
   optdepends=(
-	  'tailor: CLI for controlling the daemon'
-	  'tailor-gui: GUI for controlling the daemon'
-	)
+    'tailor: CLI for controlling the daemon'
+    'tailor-gui: GUI for controlling the daemon'
+  )
   cd "${_archive}"
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
   install -Dm0644 -t "${pkgdir}/usr/share/dbus-1/system.d/" "${pkgname}/com.tux.Tailor.conf"
