@@ -1,6 +1,6 @@
 pkgbase = hummin
 	pkgdesc = Command line client for the imperial library of trantor
-	pkgver = _
+	pkgver = r17.8103366
 	pkgrel = 1
 	url = http://kx5thpx2olielkihfyo4jgjqfb7zx7wxr3sd4xzt26ochei4m6f7tayd.onion/
 	arch = x86_64
