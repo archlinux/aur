@@ -7,8 +7,8 @@ url="https://github.com/schlomo/${_pkgname}"
 arch=('any')
 license=('GPL3')
 epoch=1
-pkgver=50_20170328.3b88aff
-pkgrel=2
+pkgver=r50.20170328.3b88aff
+pkgrel=3
 depends=(
   'bash'
   'sed'
@@ -29,7 +29,7 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  "${_pkgname}::https+git://github.com/schlomo/${_pkgname}.git"
+  "${_pkgname}::git+https://github.com/schlomo/${_pkgname}.git"
 )
 sha256sums=(
   'SKIP'
