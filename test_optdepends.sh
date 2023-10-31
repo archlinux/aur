@@ -48,7 +48,7 @@ MPIFORT=$(type -p mpifort)
 [[ -f ${MPIFORT} ]] && CONFOPTS+=" --with-fc=$(which mpifort)"
 
 # ADIOS (adios2)
-if [ -f "${find_so /usr/lib/libadios2_core.so}" ]; then
+if [ -f "$(find_so adios2)" ]; then
     CONFOPTS+=" --with-adios=1"
 fi;
 
