@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/OpenStitching/stitching"
 license=('Apache')
 depends=('python' 'python-opencv>=4.0.1' 'python-largestinteriorrectangle' 'python-numpy')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 # checkdepends=('python-requests')
 optdepends=()
 provides=('stitch')
