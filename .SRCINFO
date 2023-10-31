@@ -1,6 +1,6 @@
 pkgbase = xasm-git
 	pkgdesc = 6502 cross-assembler with original syntax extensions. By default it generates binaries for Atari 8-bit computers.
-	pkgver = 3.2.1+3.r145.20230507.70c907b
+	pkgver = 3.2.1+4.r146.20230711.9732817
 	pkgrel = 1
 	url = http://github.com/pfusik/xasm
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = xasm-git
 	makedepends = patch
 	depends = gcc-libs
 	depends = glibc
-	provides = xasm=3.2.1+3.r145.20230507.70c907b
+	provides = xasm=3.2.1+4.r146.20230711.9732817
 	conflicts = xasm
 	source = xasm::git+https://github.com/pfusik/xasm.git
 	source = COPYING.txt
