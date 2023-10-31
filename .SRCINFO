@@ -5,12 +5,15 @@ pkgbase = ledger-live-bin
 	url = https://www.ledger.com/ledger-live
 	arch = x86_64
 	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
 	depends = ledger-udev
 	provides = ledger-live
 	conflicts = ledger-live
 	options = !strip
 	source = ledger-live-desktop-2.69.0-linux-x86_64.AppImage::https://download.live.ledger.com/ledger-live-desktop-2.69.0-linux-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%402.69.0/apps/ledger-live-desktop/LICENSE
+	source = LICENSE-2.69.0::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%402.69.0/apps/ledger-live-desktop/LICENSE
 	sha512sums = 914a783be7f542113362d7ae45d6d27973447e3f2d04771dd3dc8167f69abebb3a2753e8db7cef6584ff94cc2d65876b2e7c57904024e4415688025274240b40
 	sha512sums = 915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318
 
