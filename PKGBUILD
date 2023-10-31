@@ -1,12 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: pinks <aur at papepati dot page>
 
-# Tests assume Git checkout, not source archive...
-# https://github.com/biomejs/biome/issues/336
-BUILDENV+=(!check)
-
 pkgname=biome
-pkgver=1.2.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Formatter, linter, and more for Javascript, Typescript, JSON, and CSS'
 arch=(x86_64)
@@ -18,7 +14,7 @@ makedepends=(cargo)
 replaces=(rome)
 _archive="$pkgname-cli-v$pkgver"
 source=("https://github.com/biomejs/biome/archive/cli/v$pkgver/$_archive.tar.gz")
-sha256sums=('744847d50e716a5ada7eea2f9862fdad6c5321c5aa3ad15c3169e170b2fa09e7')
+sha256sums=('bed6b68b0f256efbbf072c26d451e33923e4ceadb02032fe51683f98177038c0')
 
 prepare() {
 	cd "$_archive/crates/${pkgname}_cli"
