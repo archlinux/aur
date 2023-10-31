@@ -1,1 +1,4 @@
-kotatogram-desktop-*.pkg.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
