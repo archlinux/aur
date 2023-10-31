@@ -47,6 +47,14 @@ MPICXX=$(type -p mpicxx)
 MPIFORT=$(type -p mpifort)
 [[ -f ${MPIFORT} ]] && CONFOPTS+=" --with-fc=$(which mpifort)"
 
+# ADIOS (adios2)
+if [ -f "${find_so /usr/lib/libadios2_core.so}" ]; then
+    CONFOPTS+=" --with-adios=1"
+fi;
+
+# Bison
+# Tested by default
+
 # BOOST: Free peer-reviewed portable C++ source libraries
 if [ -f "$(find_so libboost_mpi.so)" ]; then
     CONFOPTS+=" --with-boost=1"
