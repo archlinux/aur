@@ -1,7 +1,8 @@
 pkgbase = eilin-hg
 	pkgdesc = Utility to control EIZO monitors under Linux.
 	pkgver = date20170101_r216.a713d4319273
-	pkgrel = 4
+	pkgrel = 2
+	epoch = 0
 	url = http://sourceforge.net/p/eilin/home/Home/
 	install = eilin.install
 	arch = i686
@@ -36,7 +37,7 @@ pkgbase = eilin-hg
 	conflicts = libusbpp
 	conflicts = testhid
 	options = !emptydirs
-	source = eilin::hg+http://hg.code.sf.net/p/eilin/mercurial
+	source = eilin::hg+http://hg.code.sf.net/p/eilin/mercurial#branch=hidreport
 	source = libusbpp.pc.in
 	source = eilin.install
 	source = website_main.html::http://sourceforge.net/p/eilin/home/Home/
@@ -52,4 +53,3 @@ pkgbase = eilin-hg
 	sha256sums = SKIP
 
 pkgname = eilin-hg
-

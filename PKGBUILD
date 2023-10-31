@@ -2,10 +2,14 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 _pkgname=eilin
 pkgname="${_pkgname}-hg"
+epoch=0
 pkgver=date20170101_r216.a713d4319273
-pkgrel=4
+pkgrel=2
 pkgdesc="Utility to control EIZO monitors under Linux."
-arch=('i686' 'x86_64')
+arch=(
+  'i686'
+  'x86_64'
+)
 url="http://sourceforge.net/p/eilin/home/Home/"
 license=('GPL3')
 depends=(
@@ -17,7 +21,11 @@ makedepends=(
   'mercurial'
   'qt5-base'
 )
-optdepends=('qt5-base: For the GUI')
+
+optdepends=(
+  'qt5-base: For the GUI'
+)
+
 provides=(
   "${_pkgname}"
   "qeilin-hg"
@@ -31,6 +39,7 @@ provides=(
   "libusbpp"
   "testhid"
 )
+
 conflicts=(
   "${_pkgname}"
   "qeilin-hg"
@@ -44,10 +53,12 @@ conflicts=(
   "libusbpp"
   "testhid"
 )
-options=('!emptydirs') # Remove empty dirs, because some top spurious level directories of ${srcdir} would be left over in the package otherwise.
+
+options+=('!emptydirs') # Remove empty dirs, because some top spurious level directories of ${srcdir} would be left over in the package otherwise.
+
 install="${_pkgname}.install"
 source=(
-  "${_pkgname}::hg+http://hg.code.sf.net/p/eilin/mercurial"
+  "${_pkgname}::hg+http://hg.code.sf.net/p/eilin/mercurial#branch=hidreport"
   "libusbpp.pc.in"
   "${install}"
   "website_main.html::http://sourceforge.net/p/eilin/home/Home/"
