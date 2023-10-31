@@ -1,11 +1,12 @@
 pkgbase = notion-app-electron
 	pkgdesc = Your connected workspace for wiki, docs & projects
 	pkgver = 2.2.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.notion.so/desktop
 	install = .install
 	arch = x86_64
 	license = custom
+	makedepends = asar
 	makedepends = gendesk
 	depends = electron
 	source = https://desktop-release.notion-static.com/Notion%20Setup%202.2.4.exe
@@ -15,6 +16,6 @@ pkgbase = notion-app-electron
 	sha256sums = ba18604307593e8bfa4f90d1bc6cee56f3434e41f8d5a3edfc998277bd5ee18d
 	sha256sums = 38848d85c41116b419b13818ab934d6ec5c5c563f9623f1cf8a958809ea92c7d
 	sha256sums = 8c754365934a6b576104cdc41422cae01ff10f97d5513bb7a011aa73905d5c84
-	sha256sums = ac0076b5b9352e17bdd670ba88d8a624b335721ea976a0cef04c0da4ec64d672
+	sha256sums = d95b5cd37b59dcabe63520b0e2a27a2de3cb950fcc56b30ae3076e99ed6d4747
 
 pkgname = notion-app-electron
