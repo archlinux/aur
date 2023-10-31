@@ -3,7 +3,7 @@
 _pkgname=paperlike-go
 pkgname="${_pkgname}-git"
 pkgver=r11.20210421.ad107f1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to control a Dasung Paperlike HD* (2019) screen."
 arch=(
   x86_64
@@ -28,7 +28,7 @@ conflicts=(
   "paperlike-git"
 )
 source=(
-  "${_pkgname}::git+git://github.com/leoluk/paperlike-go.git"
+  "${_pkgname}::git+https://github.com/leoluk/paperlike-go.git"
 )
 sha256sums=(
   'SKIP'
