@@ -4,7 +4,7 @@ _pkgname=eilin
 pkgname="${_pkgname}-hg"
 epoch=0
 pkgver=date20170101_r216.a713d4319273
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to control EIZO monitors under Linux."
 arch=(
   'i686'
@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=(
   'cmake'
+  'git' # For clone of libusbpp which is done during the build process.
   'mercurial'
   'qt5-base'
 )

@@ -1,7 +1,7 @@
 pkgbase = eilin-hg
 	pkgdesc = Utility to control EIZO monitors under Linux.
 	pkgver = date20170101_r216.a713d4319273
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://sourceforge.net/p/eilin/home/Home/
 	install = eilin.install
@@ -9,6 +9,7 @@ pkgbase = eilin-hg
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	makedepends = mercurial
 	makedepends = qt5-base
 	depends = expat
