@@ -2,7 +2,7 @@
 
 _pkgname='firefox-decrypt'
 pkgname="${_pkgname}-git"
-pkgver=1.0.0+44.r296.20230707.2c61b27
+pkgver=1.1.0+5.r305.20231019.ae46381
 pkgrel=1
 pkgdesc="A tool to extract passwords from Mozilla (Firefox™, Waterfox™, Thunderbird®, SeaMonkey®) profiles."
 arch=('any')
