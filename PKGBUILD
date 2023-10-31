@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 
 url="https://github.com/ZerBea/${_bpn}"
 
-pkgver=4.2.0.r21.g3dbf4e6
-pkgrel=3
+pkgver=6.3.1.r76.g1becf0d
+pkgrel=1
 
 source=("git+$url")
 md5sums=('SKIP')
