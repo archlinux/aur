@@ -1,6 +1,6 @@
 pkgbase = debricked
 	pkgdesc = A CLI tool to interact with Debricked
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/debricked/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = debricked
 	makedepends = go
 	depends = git
 	depends = glibc
-	source = debricked-1.3.0.tar.gz::https://github.com/debricked/cli/archive/refs/tags/v1.3.0.tar.gz
-	b2sums = 8a6456cb5f0028cdb182dd5bb936e720aedfe2cfba0d6edf8ca3a1cbd9b72a5988fc13d263c52763503be14416cda41586881cdef722c4b65a6b62f7f722b494
+	source = debricked-1.3.1.tar.gz::https://github.com/debricked/cli/archive/refs/tags/v1.3.1.tar.gz
+	b2sums = ca21ea0bb29eea71bfe7602dc46caf171edf9aa7bcdeef702fa1526211b018619ce9111ffd6c8aedc375f14dc72fb64ca96a17aa5f3569d7b10b972eae4d25cb
 
 pkgname = debricked
