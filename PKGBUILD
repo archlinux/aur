@@ -9,7 +9,7 @@ _pkgname=discord
 _electron=24
 pkgver=0.0.32+813
 _pkgver=${pkgver%%+*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
@@ -18,7 +18,7 @@ url='https://discord.com'
 license=('custom')
 options=('!strip')
 install="$pkgname.install"
-depends=("electron${_electron}" 'libxss')
+depends=("electron${_electron}" 'libxss' 'unzip')
 makedepends=('git' 'asar' 'nodejs' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
