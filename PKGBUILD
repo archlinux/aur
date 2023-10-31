@@ -1,7 +1,7 @@
 # Maintainer: Vic RH <blitzkriegfc@gmail.com>
 
 pkgname=perimeter81-rpm
-pkgver=8.0.3.654
+pkgver=8.0.4.735
 pkgrel=1
 _folder='Perimeter81'
 _name='Perimeter81'
@@ -17,7 +17,7 @@ source=(
   'LICENSE'
 )
 md5sums=(
-  '6f72824f90a3f883ae0a74e663ca7075'
+  '027ce23779e2a9cda085d5392ca2b079'
   '089b611fb1ecbd3e39e2d2d391743205'
   '64c25ccc5446c93c6073a418f664d3d5'
 )
