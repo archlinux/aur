@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.5.8
-_archver=arch1
+_kernver=6.5.9
+_archver=arch2
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.5.8-arch1-1
+_KERNNAME=6.5.9-arch2-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('67eced627855d96bb65021b02c85c181d4e004455172e31c2b1c277e34493ad9'
-            'ceab3d508021a9cf3c2512ac9eb330d48259717ad8488aca0f1d47af8d36e283'
-            '05f44eb940285e8340bfa7e668401c752e84c75364cde766b620dae8c70b3e4d')
+sha256sums=('7258a1405670002b57340126049223c1b87740d5de4edb192612602a8a105d14'
+            '5c4d3fbfe070d9549ac4a047048450ad9d10e112785e08ff7bf232b1791c2014'
+            '1e7594e41b9c3cc25dc8d8f0035a535706b1b995ff255b43d000c3d88922265b')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.5.8.arch1-1-bin() {
+package_linux6.5.9.arch2-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.5.8.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.5.8.arch1-1-headers-bin() {
+package_linux6.5.9.arch2-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.5.8.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.5.8.arch1-1-docs-bin() {
+package_linux6.5.9.arch2-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
