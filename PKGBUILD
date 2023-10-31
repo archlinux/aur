@@ -1,7 +1,7 @@
 # Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname='qbittorrent-enhanced-qt5-git'
-pkgver=4.4.3.12.r0.g683ecc7a7
+pkgver=4.6.0.10.r1.gd431f857a
 pkgrel=1
 pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -37,8 +37,8 @@ conflicts=('qbittorrent'
            'qbittorrent-nox-git'
            'qbittorrent-qt5')
 _srcrepodir="${pkgname%-qt5-git*}"
-source=("${_srcrepodir}::git+${url}.git")
-sha256sums=('SKIP')
+source=("${_srcrepodir}::git+${url}.git#branch=v4_6_x")
+b2sums=('SKIP')
 
 pkgver() {
   cd "${_srcrepodir}"
