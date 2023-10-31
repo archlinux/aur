@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-messages-desktop-bin
 pkgver=5.4.1
 pkgrel=1
@@ -22,9 +22,9 @@ package() {
     "$pkgdir/usr/share/applications/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
 
-  for icon_size in 16 24 32 48 64 128 256 512 1024; do
-    icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -Dm644 ${srcdir}${icons_dir}/AndroidMessages.png -t \
-      ${pkgdir}${icons_dir}/
+  for i in 16 24 32 48 64 128 256 512 1024; do
+    icons_dir=/usr/share/icons/hicolor/${i}x${i}/apps
+    install -Dm644 "${icons_dir}/AndroidMessages.png" -t \
+      "${pkgdir}${icons_dir}/"
   done
 }
