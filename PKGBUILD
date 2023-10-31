@@ -69,7 +69,7 @@ _cc_size=${_cc_size-}
 _nr_cpus=${_nr_cpus-}
 
 ### Set performance governor as default
-_per_gov=${_per_gov-y}
+_per_gov=${_per_gov-}
 
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
 _HZ_ticks=${_HZ_ticks-500}
@@ -188,7 +188,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=55
+_minor=56
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -198,7 +198,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -216,7 +216,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
     )
 fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=535.113.01
+_nv_ver=545.29.02
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
@@ -227,7 +227,7 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=8ce2eba9e6a384feef93d77c397f37d17dc588ce")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=95785196f26e92d82cf4445654ba84e4a9671c57")
 fi
 
 ## Latency NICE Support
@@ -854,7 +854,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('a87e241ec15d53452c4efe219713a3769d88cc436b5b98cf6efb262c4aff15c0'
+sha256sums=('9edefdde32c2298389dcd19566402332b3c2016f5ada17e5820f500b908d478c'
             '45161c715cab5c70098383328d7ad09ffe5efb596084e1f2673457dcd1b148b5'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             '25add4447def58e36ef295dd8692c6e1d531fb22f3cd3ce94638a259a17dcc54'
