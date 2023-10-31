@@ -1,6 +1,6 @@
 pkgbase = python-undetected-chromedriver-git
 	pkgdesc = Optimized Selenium Chromedriver patch which does not trigger anti-bot services like Distill Network / Imperva / DataDome / Botprotect.io Automatically downloads the driver binary and patches it.
-	pkgver = 3.4.6.r250.20230210.bf7dcf8
+	pkgver = 3.5.3.r325.20230825.cea8071
 	pkgrel = 1
 	url = https://github.com/ultrafunkamsterdam/undetected-chromedriver
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-undetected-chromedriver-git
 	depends = python-selenium>4.0.0
 	depends = python-requests
 	depends = python-websockets
-	provides = python-undetected-chromedriver=3.4.6.r250.20230210.bf7dcf8
+	provides = python-undetected-chromedriver=3.5.3.r325.20230825.cea8071
 	conflicts = python-undetected-chromedriver
 	source = python-undetected-chromedriver::git+https://github.com/ultrafunkamsterdam/undetected-chromedriver.git
 	sha256sums = SKIP
