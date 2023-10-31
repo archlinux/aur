@@ -10,9 +10,8 @@ pkgbase = iptvnator-appimage
 	depends = fuse2
 	optdepends = mpv: a free, open source, and cross-platform media player
 	optdepends = vlc: Multi-platform MPEG, VCD/DVD, and DivX player
-	provides = iptvnator-appimage=0.15.0
-	conflicts = iptvnator-appimage
-	conflicts = iptvnator-bin
+	provides = iptvnator
+	conflicts = iptvnator
 	options = !strip
 	source_x86_64 = https://github.com/4gray/iptvnator/releases/download/v0.15.0/IPTVnator-0.15.0.AppImage
 	sha256sums_x86_64 = d12a16b36b7abd090939aaad96c689e778d3dfab58d3b9a167ece1588d806753

@@ -12,8 +12,8 @@ optdepends=(
 	'mpv: a free, open source, and cross-platform media player'
 	'vlc: Multi-platform MPEG, VCD/DVD, and DivX player'
 )
-provides=("iptvnator-appimage=${pkgver}")
-conflicts=('iptvnator-appimage' 'iptvnator-bin')
+provides=('iptvnator')
+conflicts=('iptvnator')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source_x86_64=("${url}releases/download/v${pkgver}/IPTVnator-${pkgver}.AppImage")
 source_aarch64=("${url}releases/download/v${pkgver}/IPTVnator-${pkgver}-arm64.AppImage")
