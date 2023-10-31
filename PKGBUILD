@@ -4,10 +4,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=119.0.6045.59
+pkgver=119.0.6045.105
 pkgrel=1
 _launcher_ver=8
-_manual_clone=0
+_manual_clone=1
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -29,7 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         REVERT-disable-autoupgrading-debug-info.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('039cba06c694aef9318f2a2c89c176ce3e9147a7bc2324f856077f8002b15d0e'
+sha256sums=('55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
