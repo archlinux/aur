@@ -1,5 +1,6 @@
-# Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
-# Contributor: Patrick McCarty <pnorcks at gmail dot com>
+# Maintainer Max Harmathy <harmathy@secure.mailbox.org>
+# Contributor C. Dominik Bódi <dominik dot bodi at gmx dot de>
+# Contributor Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=git-buildpackage
 pkgver=0.9.30
