@@ -9,7 +9,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=23.08.2
-pkgrel=1
+pkgrel=2
 arch=(
   'x86_64'
   'i686'
@@ -91,6 +91,9 @@ makedepends=(
   # 'python>=3.7' # Needed if `-DBUILD_python=ON`.
   # 'pyside2'     # Needed if `-DBUILD_python=ON`.
   # 'shiboken2'   # Needed if `-DBUILD_python=ON`.
+)
+checkdepends=(
+  'appstream'
 )
 conflicts=(
   'kate'
@@ -201,10 +204,11 @@ build() {
   cmake --build build
 }
 
-# check() {
-#   cd "${srcdir}"
-# 
-# }
+check() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  make test
+}
 
 package() {
   cd "${srcdir}"

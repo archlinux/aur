@@ -1,7 +1,7 @@
 pkgbase = kate-root
 	pkgdesc = Advanced Text Editor from the KDE project, patched to be able to run as root.
 	pkgver = 23.08.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kate/
 	arch = x86_64
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = kate-root
 	license = LGPL
 	license = custom: LGPL2.0
 	license = MIT
+	checkdepends = appstream
 	makedepends = appstream
 	makedepends = attica5
 	makedepends = cmake
