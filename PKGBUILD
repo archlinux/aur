@@ -25,6 +25,10 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p Xonotic/misc/tools/rsync-updater/
+  cp update-to-autobuild.sh Xonotic/misc/tools/rsync-updater/
+  cd Xonotic/misc/tools/rsync-updater/
+  touch Xonotic
   sh ./update-to-autobuild.sh -y
 }
 
