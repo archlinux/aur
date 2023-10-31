@@ -1,6 +1,6 @@
 # Maintainer: Scott Lawrence <bytbox@gmail.com>
 pkgname=netcat-sec-git
-pkgver=20111229
+pkgver=20231031
 pkgrel=1
 pkgdesc="A netcat clone with TLS support"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=()
 noextract=()
 md5sums=() #generate with 'makepkg -g'
 
-_gitroot=git://github.com/bytbox/netcat-sec.git
+_gitroot=https://github.com/bytbox/netcat-sec.git
 _gitname=netcat-sec
 #_gittag=go.weekly.2011-12-22
 
