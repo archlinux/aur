@@ -3,7 +3,7 @@
 
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
-pkgver=4.5.5.10
+pkgver=4.6.0.10
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)"
 arch=('x86_64')
@@ -17,15 +17,8 @@ optdepends=('python: needed for torrent search tab')
 _rel="release-${pkgver}"
 _snapshot="${_repo}-${_rel}"
 
-source=(
-    "${_snapshot}.tar.gz::${url}/archive/${_rel}.tar.gz"
-    "revert-ua.patch"
-)
-
-sha256sums=(
-    '164c3721500f945cc42d8a077361238db629afdf9b94fe75e6101365cace256f'
-    'f39dcbcd65216310e99d6006aa43e479b8cbf7028e173ac602d643651d19c7f1'
-)
+source=("${_snapshot}.tar.gz::${url}/archive/${_rel}.tar.gz")
+sha256sums=('22ef335a4fa2f8d90c97cbf48efbf6d77fb86853c2faee7271400a5466427112')
 
 USE_QT6="${USE_QT6:-ON}"
 
@@ -41,7 +34,8 @@ fi
 
 prepare() {
     cd "${_snapshot}"
-    patch -p0 -Z -i "${srcdir}/${source[1]}"
+    sed -e 's|"qBittorrent Enhanced/"|"qBittorrent/"|' -i 'src/base/bittorrent/sessionimpl.cpp'
+    sed -e 's|#define QBT_VERSION_BUILD .\+|#define QBT_VERSION_BUILD 0|' -i 'src/base/version.h.in'
 }
 
 build() {
