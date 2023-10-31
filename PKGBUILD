@@ -1,20 +1,21 @@
-# Maintainer : Andres Urquijo <alfagalileox@gmail.com>
+# Contributor : Andres Urquijo <alfagalileox@gmail.com>
+
 pkgname=mathgl
-pkgver=2.4.4
-pkgrel=2
+pkgver=8.0.1
+pkgrel=1
 pkgdesc="A library for making high-quality scientific graphics"
 arch=('i686' 'x86_64')
 url="http://${pkgname}.sourceforge.net"
 license=('GPL3')
-depends=('libpng' 'libharu' 'python2' 'hdf5' 'texlive-bin' 'texlive-core' 'python2-numpy' 
-        'freeglut' 'gsl' 'qt5-base' 'glu')
-makedepends=( 'cmake' 'swig')
-source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname%20$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('cbf9bcb4db6c78bda7902d36b9843d7b')
+depends=('python-numpy' 'texlive-bin' 'texlive-binextra' 'libharu' 'hdf5' 'gsl' 'glu' 'qt5-base' 'libpng' 'freeglut')
+makedepends=('cmake' 'swig')
+source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname%208.0/$pkgname-$pkgver.tar.gz")
+md5sums=('e86d414f180f7d3e3f1495aca7134409')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  [[ -d build ]] || mkdir build && cd build
+      	[[ -d build ]] && rm -rf build
+    	mkdir build && cd build
 
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -Denable-all-widgets=OFF \
