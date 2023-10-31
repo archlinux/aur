@@ -10,8 +10,7 @@ pkgbase = dantalian-git
 	depends = git
 	optdepends = fuse: additional features
 	conflicts = dantalian
-	source = git://github.com/darkfeline/dantalian.git
+	source = git+https://github.com/darkfeline/dantalian.git
 	md5sums = SKIP
 
 pkgname = dantalian-git
-

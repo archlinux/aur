@@ -14,7 +14,7 @@ depends=('python' 'git')
 conflicts=("${_pkgname}")
 optdepends=('fuse: additional features')
 makedepends=('python-sphinx')
-source=("git://github.com/darkfeline/${_pkgname}.git")
+source=("git+https://github.com/darkfeline/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver()
