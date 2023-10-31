@@ -10,7 +10,7 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=tengine
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
         service
         logrotate
        )
-sha256sums=('a47dce983dd34389e4c4d1afda03c74c2d3fe1d7a0a51fc86cc2046d2f4a0e5b'
+sha256sums=('64ed7155c0c904ce0fe7199c21b8eb6c2abfc267278fa8af832c0cb781e864dc'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
