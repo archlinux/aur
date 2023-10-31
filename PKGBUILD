@@ -2,8 +2,8 @@
 
 _pkgname=python-blobfile
 pkgname="${_pkgname}-git"
-pkgver=2.0.2.r616.20230420.de92f83
-pkgrel=3
+pkgver=2.1.0+1.r630.20231011.e81b345
+pkgrel=1
 pkgdesc="A library that provides a Python-like interface for reading local and remote files (only from blob storage), with an API similar to open() as well as some of the os.path and shutil functions."
 arch=(
   'any'
