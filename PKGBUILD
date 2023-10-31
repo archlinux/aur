@@ -15,14 +15,14 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-common-git"
         )
 
-pkgver=0.14.0.r7.gb2deed91
+pkgver=0.14.0.r8.g020c1634
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
-             'knotifyconfig' 'python' 'qca' 'qt5-base' 'qt5-script'
-             'qt5-tools' 'qt5-webengine' 'boost' 'rsync')
+             'knotifyconfig5' 'python' 'qca-qt5' 'qt5-base' 'qt5-script'
+             'qt5-tools' 'qt5-webengine' 'boost')
 source=(
   'git+https://github.com/quassel/quassel.git'
   'git+https://github.com/quassel/quassel-i18n.git'
@@ -146,8 +146,7 @@ package_quassel-common-git() {
 }
 
 package_quassel-client-git() {
-
-  depends=("${pkgbase}-common-git" 'knotifyconfig' 'qt5-base' 'qt5-webengine')
+  depends=("${pkgbase}-common-git" 'knotifyconfig5' 'qt5-base' 'qt5-webengine')
   pkgdesc='KDE-based distributed IRC client (client only)'
   provides=("${pkgbase}-client")
   conflicts=("${pkgbase}-client")
@@ -156,7 +155,6 @@ package_quassel-client-git() {
 }
 
 package_quassel-client-light-git() {
- 
   pkgdesc='Qt-based distributed IRC client (client only, w/o kde deps)'
   depends=("${pkgbase}-common-git" 'qt5-base')
   provides=("${pkgbase}-client")
@@ -166,18 +164,17 @@ package_quassel-client-light-git() {
 }
 
 package_quassel-client-light-webengine-git() {
-
   pkgdesc='Qt-based distributed IRC client (client only, w/o kde deps)'
   depends=("${pkgbase}-common-git" 'qt5-base' 'qt5-webengine')
   provides=("${pkgbase}-client")
   conflicts=("${pkgbase}-client")
-    _install
+
+  _install
 }
 
 package_quassel-core-git() {
-
   pkgdesc='KDE/Qt-based distributed IRC client (core only)'
-  depends=('icu' 'qca' 'qt5-script')
+  depends=('icu' 'qca-qt5' 'qt5-script')
   provides=("${pkgbase}-core")
   conflicts=("${pkgbase}-core")
 
@@ -185,9 +182,8 @@ package_quassel-core-git() {
 }
 
 package_quassel-git() {
-
   pkgdesc='KDE-based IRC client (monolithic version)'
-  depends=("${pkgbase}-common-git" 'knotifyconfig' 'qca' 'qt5-base'
+  depends=("${pkgbase}-common-git" 'knotifyconfig5' 'qca-qt5' 'qt5-base'
            'qt5-script' 'qt5-webengine')
   provides=("${pkgbase}-monolithic")
   conflicts=("${pkgbase}-monolithic")
@@ -196,7 +192,6 @@ package_quassel-git() {
 }
 
 package_quassel-light-git() {
-
   pkgdesc='Qt-based IRC client (monolithic version, w/o kde deps)'
   depends=("${pkgbase}-common-git" 'qt5-base')
   provides=("${pkgbase}-monolithic")
@@ -210,5 +205,6 @@ package_quassel-light-webengine-git() {
   depends=("${pkgbase}-common-git" 'qt5-base' 'qt5-webengine')
   provides=("${pkgbase}-monolithic")
   conflicts=("${pkgbase}-monolithic")
+
   _install
 }
