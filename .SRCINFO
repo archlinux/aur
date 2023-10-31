@@ -1,6 +1,6 @@
-pkgbase = petsc-git-release
+pkgbase = petsc-free+opts
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.19.5.1171.g37df9106526
+	pkgver = 3.20.1.96.g294d477ba62
 	pkgrel = 1
 	url = https://gitlab.com/petsc/petsc
 	install = petsc.install
@@ -32,10 +32,10 @@ pkgbase = petsc-git-release
 	source = 0001-sowing-minversion1_1_26.patch
 	sha512sums = SKIP
 	sha512sums = b00026074349f3995312b407044def7a104f62e9ba68e1b571e7f09ddb8aa56aa64bea5e5f9e5546d4d6866c37278d8b40334af2697bd0f837ca3981229d700a
-	sha512sums = f0b6eba111689dd9f781a705f5341694d644de95db8f7fd08d60d8d6004cf5a2435db142219f767e01ee324ec429dcec01b377cc45e71dc5c24d4daa5afd983c
+	sha512sums = 7d8730769d17baf214746a4e8a8b6235058509fb12e8f0e53da03d06e5339a3a4e36b023ce9a8326ec67f3560d1cb3b15219e13b8674ff06d8d953a571bc033b
 	sha512sums = 3c156d1c465c10ba0a3c79b829f98ecc05e48b8f002a3a382f86ac834faaa34108d522f04757af38257f4a4e1292d8d8b79c9c039ecb9ea25444d902a384907f
 
-pkgname = petsc-git-release
+pkgname = petsc-free+opts
 	optdepends = boost: Free peer-reviewed portable C++ source libraries
 	optdepends = cgns: Recording and recovering computer data
 	optdepends = eigen: Lightweight C++ template library for vector and matrix math
@@ -48,8 +48,9 @@ pkgname = petsc-git-release
 	optdepends = mumps: Sparse solver library
 	optdepends = netcdf-openmpi: Management of array-data
 	optdepends = openblas: Linear algebra libraries
-	optdepends = opencl-headers: for opencl (GPU computing)
 	optdepends = opencl: GPU computing
+	optdepends = opencl-headers: for opencl (GPU computing)
+	optdepends = opencl-clhpp: for opencl C++ compatibility (GPU computing)
 	optdepends = openmp: Parallel distributed tasks
 	optdepends = libpng
 	optdepends = scalapack: Parallel memory linear algebra
@@ -57,9 +58,12 @@ pkgname = petsc-git-release
 	optdepends = suitesparse: Sparse matrix library
 	optdepends = superlu: Subroutines for sparsse linear systems
 	optdepends = libyaml: configuration files
-	provides = petsc=3.19.5
-	provides = petsc4py=3.19.5
+	provides = petsc=3.20.1
+	provides = petsc4py=3.20.1
+	provides = petsc=3.20.1.96.g294d477ba62-1
+	provides = petsc4py=3.20.1.96.g294d477ba62-1
 	conflicts = petsc
+	conflicts = petsc-git
 
 pkgname = petsc-doc-bin
 	pkgdesc = Documentation for PETSc
