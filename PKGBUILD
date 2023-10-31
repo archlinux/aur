@@ -1,4 +1,6 @@
-# Maintainer: sergeyshevch <sergeyshevchdevelop@gmail.com>
+# Maintainer: Jonas Bögle <aur@iwr.sh>
+# Contributor: sergeyshevch <sergeyshevchdevelop@gmail.com>
+
 _pkgname=krunner-vscodeprojects
 pkgname=$_pkgname-git
 pkgver=r28.c5da093
