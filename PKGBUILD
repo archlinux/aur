@@ -6,8 +6,8 @@ _pkgname='libratbag'
 _pkgvariantsuffix='-nosystemd'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
-pkgver=0.17+284.r2463.20230717.a4eb09ea
-pkgrel=2
+pkgver=0.17+310.r2489.20231005.6db5cc37
+pkgrel=1
 pkgdesc='A DBus daemon to configure gaming mice. Compiled without systemd dependencies. Latest git version.'
 arch=(
   'i686'
