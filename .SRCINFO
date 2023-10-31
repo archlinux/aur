@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-inter
 	pkgdesc = Inter Font, patched with the Nerd Fonts Patcher
 	pkgver = 3.19_3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsms/inter/
 	arch = any
 	license = custom:OFL

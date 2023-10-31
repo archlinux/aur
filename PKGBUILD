@@ -3,7 +3,7 @@ pkgname=nerd-fonts-inter
 _interver=3.19
 _nfver=3.0.2
 pkgver="${_interver}_${_nfver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Inter Font, patched with the Nerd Fonts Patcher"
 arch=('any')
 url='https://github.com/rsms/inter/'
@@ -19,7 +19,7 @@ build() {
   mkdir -p "$srcdir/patched"
   printf "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This will take very long...\n"
   # patch fonts quiet with complete glyphs
-  parallel -j$(nproc) python "$srcdir/font-patcher" -q -c {} -out "$srcdir/patched" &> /dev/null ::: "$srcdir/Inter Desktop"/*.otf
+  parallel -j$(nproc) python "$srcdir/font-patcher" --variable-width-glyphs -q -c {} -out "$srcdir/patched" &> /dev/null ::: "$srcdir/Inter Desktop"/*.otf
 }
 
 package() {
