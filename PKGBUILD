@@ -6,9 +6,9 @@ pkgdesc="An xrandr-wrapper that automatically configures the attached monitors i
 url="https://github.com/schlomo/${_pkgname}"
 arch=('any')
 license=('GPL3')
-epoch=0
+epoch=1
 pkgver=50_20170328.3b88aff
-pkgrel=1
+pkgrel=2
 depends=(
   'bash'
   'sed'
@@ -29,7 +29,7 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/schlomo/${_pkgname}.git"
+  "${_pkgname}::https+git://github.com/schlomo/${_pkgname}.git"
 )
 sha256sums=(
   'SKIP'
@@ -48,7 +48,7 @@ pkgver() {
     error "Could not determine version."
     exit 1
   else
-    printf '%s' "${_ver}_${_date}.${_hash}"
+    printf '%s' "r${_ver}.${_date}.${_hash}"
   fi
 }
 
