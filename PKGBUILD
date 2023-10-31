@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CelliD
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Unbiased Extraction of Single Cell gene signatures using Multiple Correspondence Analysis'
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('033c701b246e32d1eb3f3fcb5bd87a4ea13db0df184915f72c71619a25de2f6e')
+sha256sums=('65fb90a26cf7a7b1bddb7d5f5a3d8d4e31dbb85598bcb7845638132022ba93f4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
