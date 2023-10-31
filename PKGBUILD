@@ -11,10 +11,10 @@ license=('GPL2')
 depends=(
     'python>=3.6'
     'python-pyusb'
+    'python-setuptools'
 )
 makedepends=(
     'git'
-    'python-setuptools'
 )
 optdepends=(
     'python-xlib: Experimental screen mode support (Xorg only)'

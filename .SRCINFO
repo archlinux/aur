@@ -6,9 +6,9 @@ pkgbase = python-ite8291r3-ctl-git
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-pyusb
+	depends = python-setuptools
 	optdepends = python-xlib: Experimental screen mode support (Xorg only)
 	optdepends = python-pillow: Experimental screen mode support (Xorg only)
 	provides = python-ite8291r3-ctl
