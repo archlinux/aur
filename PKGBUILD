@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.matrix
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,25 +11,26 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=(MIT)
 depends=(
   r-alabaster.base
+  r-biocgenerics
   r-delayedarray
   r-hdf5array
   r-rhdf5
+  r-s4vectors
+  r-sparsearray
 )
 checkdepends=(
   r-chihaya
   r-testthat
 )
 optdepends=(
-  r-biocgenerics
   r-biocstyle
   r-chihaya
   r-knitr
-  r-s4vectors
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4b93a993b0f4a9b3333da48a8f49ad36')
-sha256sums=('637424bdb91f4f286cc1ed64405c5ef43c8ae96f849b038477536054344e1550')
+md5sums=('099a01bbb4a95bdaf0f91ffd2b89653d')
+sha256sums=('a5efd5c13416ef9eca8bc57d0161052ff259c75f962d14c7279e18ed37f90f3e')
 
 build() {
   mkdir -p build
