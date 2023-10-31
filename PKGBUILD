@@ -6,11 +6,11 @@ _upstreamname=libnbd
 _pkgname="${_upstreamname}-ocaml"
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.18.0+2.r2050.20230928.42a8518
+pkgver=1.19.1+4.r2062.20231030.6ca32c0
 # _majorver="$(awk -F. '{print $1}' <<< "${pkgver}")"
 # _minorver="$(awk -F. '{print $2}' <<< "${pkgver}")"
 # _nextminorver="$(awk '{print $1+1}' <<< "${_minorver}")"
-pkgrel=2
+pkgrel=1
 pkgdesc="NBD client library in userspace. Compiled with OCaml bindings. Latest git checkout."
 arch=(
   'i686'
