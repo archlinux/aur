@@ -15,12 +15,12 @@ optdepends=('ffmpeg: support voice sending in any format')
 
 provides=('go-cqhttp')
 
-origin_pkgver="v${pkgver//_/-}"
+_origin_pkgver="v${pkgver//_/-}"
 
-source_i686=("${pkgname}-i686-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_386.tar.gz")
-source_x86_64=("${pkgname}-x86_64-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_amd64.tar.gz")
-source_armv7h=("${pkgname}-armv7h-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_armv7.tar.gz")
-source_aarch64=("${pkgname}-aarch64-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_arm64.tar.gz")
+source_i686=("${pkgname}-i686-${_origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${_origin_pkgver}/go-cqhttp_linux_386.tar.gz")
+source_x86_64=("${pkgname}-x86_64-${_origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${_origin_pkgver}/go-cqhttp_linux_amd64.tar.gz")
+source_armv7h=("${pkgname}-armv7h-${_origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${_origin_pkgver}/go-cqhttp_linux_armv7.tar.gz")
+source_aarch64=("${pkgname}-aarch64-${_origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${_origin_pkgver}/go-cqhttp_linux_arm64.tar.gz")
 
 sha256sums_i686=('492f12a6bb5c5d81241193a4bdc649ca2aafc1380c43f0482652f52c2cd4d835')
 sha256sums_x86_64=('64bf7b1d5e6456bfad43db8e5dd455d12679ed37ea0e91106b50cd7900050de2')
