@@ -21,4 +21,3 @@ pkgbase = monav-light-git
 	sha256sums = SKIP
 
 pkgname = monav-light-git
-
