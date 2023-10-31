@@ -1,72 +1,28 @@
-From 52f948fe211fedc54c13c0baf067cd6d8e4cb0c3 Mon Sep 17 00:00:00 2001
-From: Luca Beltrame <lbeltrame@kde.org>
-Date: Sun, 3 Apr 2022 09:26:48 +0200
-Subject: [PATCH] Defuse root block
-
-While the main point is correct as any application running in the same
-X session (not sandboxed) can use kate's capability to open a console,
-we allow (even encourage) running YaST on X11 as root.
-That way it's only an impact on usability.
----
- apps/kate/main.cpp   | 15 ++-------------
- apps/kwrite/main.cpp | 17 +++--------------
- 2 files changed, 5 insertions(+), 27 deletions(-)
-
-Index: kate/main.cpp
-===================================================================
---- a/apps/kate/main.cpp	2022-04-04 03:49:44.000000000 +0200
-+++ b/apps/kate/main.cpp	2022-04-04 05:55:46.476883480 +0200
-@@ -47,21 +47,10 @@
- int main(int argc, char **argv)
- {
+diff -rU1 kate-23.08.2.orig/apps/lib/kateapp.cpp kate-23.08.2/apps/lib/kateapp.cpp
+--- kate-23.08.2.orig/apps/lib/kateapp.cpp	2023-10-10 05:27:51.000000000 +0200
++++ kate-23.08.2/apps/lib/kateapp.cpp	2023-10-31 12:14:09.693601473 +0100
+@@ -101,3 +101,3 @@
  #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
 -    // Prohibit using sudo or kdesu (but allow using the root user directly)
 +    // Allow running Kate as root, but with a warning
      if (getuid() == 0) {
+@@ -105,17 +105,4 @@
+         bindtextdomain("kate", KDE_INSTALL_FULL_LOCALEDIR);
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
--            std::cout << "Running Kate with sudo can cause bugs and expose you to security vulnerabilities. "
--                         "Instead use Kate normally and you will be prompted for elevated privileges when "
--                         "saving documents if needed."
--                      << std::endl;
--            return EXIT_FAILURE;
+-            auto message = kli18n(
+-                "Running this editor with sudo can cause bugs and expose you to security vulnerabilities. "
+-                "Instead use this editor normally and you will be prompted for elevated privileges when "
+-                "saving documents if needed.");
+-            std::cout << dgettext("kate", message.untranslatedText()) << std::endl;
+-            exit(EXIT_FAILURE);
 -        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
--            std::cout << "Running Kate with kdesu can cause bugs and expose you to security vulnerabilities. "
--                         "Instead use Kate normally and you will be prompted for elevated privileges when "
--                         "saving documents if needed."
--                      << std::endl;
--            return EXIT_FAILURE;
+-            auto message = kli18n(
+-                "Running this editor with kdesu can cause bugs and expose you to security vulnerabilities. "
+-                "Instead use this editor normally and you will be prompted for elevated privileges when "
+-                "saving documents if needed.");
+-            std::cout << dgettext("kate", message.untranslatedText()) << std::endl;
+-            exit(EXIT_FAILURE);
 -        }
 +        std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
 +        std::cout << "SUDO_EDITOR=kate sudoedit <file>" << std::endl;
      }
- #endif
-     /**
-Index: kwrite/main.cpp
-===================================================================
---- a/apps/kwrite/main.cpp	2022-04-04 03:49:44.000000000 +0200
-+++ b/apps/kwrite/main.cpp	2022-04-04 05:57:17.276197192 +0200
-@@ -39,21 +39,10 @@
- extern "C" Q_DECL_EXPORT int main(int argc, char **argv)
- {
- #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
--    // Prohibit using sudo or kdesu (but allow using the root user directly)
-+    // Allow running KWrite as root, but with a warning
-     if (getuid() == 0) {
--        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
--            std::cout << "Running KWrite with sudo can cause bugs and expose you to security vulnerabilities. "
--                         "Instead use KWrite normally and you will be prompted for elevated privileges when "
--                         "saving documents if needed."
--                      << std::endl;
--            return EXIT_FAILURE;
--        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
--            std::cout << "Running KWrite with kdesu can cause bugs and expose you to security vulnerabilities. "
--                         "Instead use KWrite normally and you will be prompted for elevated privileges when "
--                         "saving documents if needed."
--                      << std::endl;
--            return EXIT_FAILURE;
--        }
-+       std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
-+       std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
-     }
- #endif
- 
