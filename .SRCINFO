@@ -1,6 +1,6 @@
 pkgbase = resources-git
 	pkgdesc = Monitor your system resources and processes
-	pkgver = 1.0.0.r0.ge8d27b1
+	pkgver = 1.2.0.r2.g7e03189
 	pkgrel = 1
 	url = https://github.com/nokyan/resources
 	arch = x86_64

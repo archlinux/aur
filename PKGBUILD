@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=resources-git
-pkgver=1.0.0.r0.ge8d27b1
+pkgver=1.2.0.r2.g7e03189
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare() {
 build() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
-  arch-meson "${pkgname%-git}" build
+  arch-meson "${pkgname%-git}" build -Dprofile=default
   meson compile -C build
 }
 
