@@ -1,22 +1,90 @@
-# Maintainer: mditto <michael.r.ditto@gmail.com>
+# Maintainer:
+# Contributor: mditto <michael.r.ditto@gmail.com>
 
-pkgname=paintstorm
-pkgver=2.30
-pkgrel=1
+_pkgname="paintstorm"
+pkgname="$_pkgname"
+pkgver=2.50
+pkgrel=0
 pkgdesc="Professional software for digital painting"
-arch=('x86_64')
 url="http://www.paintstormstudio.com"
 license=('Commercial')
-depends=('gtk2' 'freeglut' 'ftgl' 'libcurl-gnutls'  'glew1.13')
-source=("http://mdit.to/files/aur/$pkgname-$pkgver.tar.gz")
-sha256sums=('2114329a35d720611156e78769f24fe1267566b3bd24db0579cd6c1763c6bdb6')
+arch=('x86_64')
+
+makedepends=(
+  'html-xml-utils'
+  'pandoc'
+)
+
+_filename="Paintstorm_linux_v${pkgver}.run"
+_pkgext="tar.gz"
+source=(
+  "$_filename.$_pkgext"::"https://www.paintstormstudio.com/$_filename.$_pkgext"
+)
+sha256sums=(
+  'aaa581752027b3445578dfc9dc3e72048194f4908291eaf11c60b91947ac35c1'
+)
+
+_privacy_policy="privacy_policy"
+_privacy_policy_url="https://www.paintstormstudio.com/help/privacy-policy/"
+_terms_of_use="terms_of_use"
+_terms_of_use_url="https://www.paintstormstudio.com/help/license-agreement/"
+
+prepare() {
+  # extract files
+  sh "$_filename" --noexec
+
+  # delete junk .* files
+  find "${srcdir:?}/PaintstormInstall/paintstorm" -type f -name '.*' -delete
+  find "${srcdir:?}/PaintstormInstall/paintstorm" -type f -iname '~*' -delete
+
+  # privacy policy
+  curl --no-progress-meter \
+    -o "$_privacy_policy-1.html" \
+    "$_privacy_policy_url"
+
+  hxnormalize -x "$_privacy_policy-1.html" \
+    | hxselect article \
+    1> "$_privacy_policy-2.html" \
+    2> /dev/null
+
+  pandoc --quiet -t plain -o "$_privacy_policy.txt" "$_privacy_policy-2.html"
+
+  # terms of use 
+  curl --no-progress-meter \
+    -o "$_terms_of_use-1.html" \
+    "$_terms_of_use_url"
+
+  hxnormalize -x "$_terms_of_use-1.html" \
+    | hxselect article \
+    1> "$_terms_of_use-2.html" \
+    2> /dev/null
+
+  pandoc --quiet -t plain -o "$_terms_of_use.txt" "$_terms_of_use-2.html"
+}
 
 package() {
-    mkdir -p ${pkgdir}/usr/share/${pkgname}
-    mkdir -p ${pkgdir}/usr/share/applications
+  depends=(
+    'ftgl'
+    'gtk2'
+    'libcurl-gnutls'
 
-    tar -xf "$pkgname-$pkgver.tar.gz" -C "${pkgdir}/usr/share/"
+    # AUR
+    #'glew-1.13.0'
+    'glew1.13'
+  )
 
-    rm ${pkgdir}/usr/share/install.sh
-    mv ${pkgdir}/usr/share/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  # move files
+  install -dm755 "${pkgdir:?}/usr"/{bin,share}
+  mv PaintstormInstall/paintstorm "${pkgdir:?}/usr/share/"
+
+  install -Dm755 "PaintstormInstall/paintstorm.desktop" -t "${pkgdir:?}/usr/share/applications/"
+
+  ln -s "/usr/share/paintstorm/Paintstorm" "${pkgdir:?}/usr/bin/paintstorm"
+
+  # prevent crash
+  install -dm755 "${pkgdir:?}/usr/share/fonts"/{opentype,truetype}
+
+  # license/eula
+  install -Dm644 "$_privacy_policy.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$_terms_of_use.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
 }

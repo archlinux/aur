@@ -1,17 +1,17 @@
 pkgbase = paintstorm
 	pkgdesc = Professional software for digital painting
-	pkgver = 2.30
-	pkgrel = 1
+	pkgver = 2.50
+	pkgrel = 0
 	url = http://www.paintstormstudio.com
 	arch = x86_64
 	license = Commercial
-	depends = gtk2
-	depends = freeglut
-	depends = ftgl
-	depends = libcurl-gnutls
-	depends = glew1.13
-	source = http://mdit.to/files/aur/paintstorm-2.30.tar.gz
-	sha256sums = 2114329a35d720611156e78769f24fe1267566b3bd24db0579cd6c1763c6bdb6
+	makedepends = html-xml-utils
+	makedepends = pandoc
+	source = Paintstorm_linux_v2.50.run.tar.gz::https://www.paintstormstudio.com/Paintstorm_linux_v2.50.run.tar.gz
+	sha256sums = aaa581752027b3445578dfc9dc3e72048194f4908291eaf11c60b91947ac35c1
 
 pkgname = paintstorm
-
+	depends = ftgl
+	depends = gtk2
+	depends = libcurl-gnutls
+	depends = glew1.13
