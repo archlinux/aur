@@ -9,6 +9,7 @@ pkgbase = mfoc-hardnested-git
 	makedepends = git
 	depends = libnfc>=1.7.0
 	depends = xz
+	depends = glibc
 	provides = mfoc-hardnested
 	conflicts = mfoc-hardnested
 	options = !ccache
