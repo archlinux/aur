@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-enhanced-qt5
 	pkgdesc = A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), Built against Qt5
-	pkgver = 4.5.5.10
+	pkgver = 4.6.0.10
 	pkgrel = 1
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = x86_64
@@ -9,20 +9,18 @@ pkgbase = qbittorrent-enhanced-qt5
 	makedepends = cmake
 	makedepends = boost>=1.65
 	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
 	depends = libtorrent-rasterbar
+	depends = openssl
 	depends = qt5-base
 	depends = qt5-svg
 	depends = hicolor-icon-theme
+	depends = zlib
 	optdepends = python: needed for torrent search tab
 	provides = qbittorrent
 	conflicts = qbittorrent
-	source = qbittorrent-enhanced-qt5-4.5.5.10.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-4.5.5.10.tar.gz
-	source = COPYING::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING
-	source = COPYING.GPLv2::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING.GPLv2
-	source = COPYING.GPLv3::https://raw.githubusercontent.com/c0re100/qBittorrent-Enhanced-Edition/v4_5_x/COPYING.GPLv3
-	sha256sums = 164c3721500f945cc42d8a077361238db629afdf9b94fe75e6101365cace256f
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = qbittorrent-enhanced-qt5-4.6.0.10.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-4.6.0.10.tar.gz
+	sha256sums = 22ef335a4fa2f8d90c97cbf48efbf6d77fb86853c2faee7271400a5466427112
 
 pkgname = qbittorrent-enhanced-qt5
