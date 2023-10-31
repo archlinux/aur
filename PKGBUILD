@@ -61,8 +61,6 @@ _handle_lsmod() {
 build() {
   cd "${_srcname}"
 
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
   make -s kernelrelease > version
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
@@ -187,7 +185,7 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
