@@ -1,7 +1,7 @@
 # Maintainer: LoaD Accumulator <lda@freetards.xyz>
 pkgname=cytoplasm-git
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Telodendria core library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://git.telodendria.io/Telodendria/Cytoplasm"
@@ -23,7 +23,6 @@ build() {
         # By default, it uses the c99 compiler instead of cc?????
         export CC=cc
         ./configure --prefix=/usr --no-static
-        export LD_LIBRARY_PATH="$PWD/out/lib"
         make
 }
 
