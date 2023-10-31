@@ -3,7 +3,7 @@
 
 _pkgname="filelight"
 pkgname="$_pkgname-git"
-pkgver=23.04.3.r23.g796dbcb
+pkgver=23.08.1.r6.g61a9590
 pkgrel=1
 pkgdesc="View disk usage information"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ depends=(
   'hicolor-icon-theme'
   'kdeclarative'
   'kio'
+  'kirigami-addons'
   'kquickcharts'
   'qqc2-desktop-style'
 )
@@ -26,32 +27,34 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
+_pkgsrc="$_pkgname"
 source=(
-  "$_pkgname"::"git+$url"
+  "$_pkgsrc"::"git+$url.git"
 )
 sha256sums=(
   'SKIP'
 )
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
 
-  _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
-  _file='misc/org.kde.filelight.appdata.xml'
+  local _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
+  local _file='misc/org.kde.filelight.appdata.xml'
 
-  _line=$(
+  local _line=$(
     grep -E "$_regex" "$_file" | head -1
   )
-  _version=$(
-    echo "$_line" | sed -E "s@$_regex@\1@"
+  local _version=$(
+    printf '%s' "$_line" | sed -E "s@$_regex@\1@"
   )
-  _commit=$(
-    git log -G "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+  local _commit=$(
+    git log -G "$_line" -1 --pretty=oneline --no-color -- "$_file" \
+      | sed 's@\ .*$@@'
   )
-  _revision=$(
+  local _revision=$(
     git rev-list --count $_commit..HEAD
   )
-  _hash=$(
+  local _hash=$(
     git rev-parse --short HEAD
   )
 
@@ -62,12 +65,12 @@ pkgver() {
 }
 
 build() {
-  _cmake_options=(
+  local _cmake_options=(
     -B build
-    -S "$_pkgname"
-    -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_INSTALL_PREFIX=/usr
-    -DKDE_INSTALL_LIBDIR=lib
+    -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DKDE_INSTALL_LIBDIR='lib'
     -DBUILD_TESTING=OFF
   )
 
@@ -76,5 +79,5 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
