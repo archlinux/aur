@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-02-12.
+# PKGBUILD last time manually edited: At least on 2023-10-31.
 
 _pkgname=openflights-data
 pkgname="${_pkgname}-latest"
