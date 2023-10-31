@@ -2,7 +2,7 @@
 
 _pkgname=understand
 pkgname=$_pkgname-bin
-_pkgbuild=1152
+_pkgbuild=1157
 pkgver=6.4.$_pkgbuild
 pkgrel=1
 pkgdesc="Static analysis tool for maintaining, measuring & analyzing critical or large code bases."
@@ -15,7 +15,7 @@ options=('!strip')
 source=("https://s3.amazonaws.com/builds.scitools.com/all_builds/b${_pkgbuild}/${_pkgname^}/${_pkgname^}-$pkgver-Linux-64bit.tgz"
 "$_pkgname.desktop"
 "$_pkgname")
-sha256sums=('d5be58350ae237cafced03def4046707d44bfe4f9856708069f332f0c228b3a4'
+sha256sums=('ddb0b580e1de31c34fb86fc3b20a08195be9561724a9d76d6dbb6ae3b2d223d6'
             '8cb7852252e678b12a7d84b1ccb99bdae9e22f47793787be827cae98076957c9'
             '85ef433c24bbc0545552592cb342affa720a8f0fbe2dc6a5e488ee5cb054b0e6')
 
