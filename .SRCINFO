@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 23.08.0
+	pkgver = 23.08.2
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -8,29 +8,29 @@ pkgbase = dolphin-meld
 	groups = kde-system
 	license = LGPL
 	makedepends = extra-cmake-modules
-	makedepends = kdoctools
+	makedepends = kdoctools5
 	depends = baloo-widgets
-	depends = knewstuff
+	depends = knewstuff5
 	depends = kio-extras
-	depends = kcmutils
-	depends = kparts
-	depends = kactivities
+	depends = kcmutils5
+	depends = kparts5
+	depends = kactivities5
 	depends = kuserfeedback
 	optdepends = kde-cli-tools: for editing file type options
 	optdepends = ffmpegthumbs: video thumbnails
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
-	optdepends = purpose: share context menu
+	optdepends = purpose5: share context menu
 	optdepends = kio-admin: for managing files as administrator
-	provides = dolphin=23.08.0
-	conflicts = dolphin=23.08.0
-	source = https://download.kde.org/stable/release-service/23.08.0/src/dolphin-23.08.0.tar.xz
-	source = https://download.kde.org/stable/release-service/23.08.0/src/dolphin-23.08.0.tar.xz.sig
+	provides = dolphin=23.08.2
+	conflicts = dolphin=23.08.2
+	source = https://download.kde.org/stable/release-service/23.08.2/src/dolphin-23.08.2.tar.xz
+	source = https://download.kde.org/stable/release-service/23.08.2/src/dolphin-23.08.2.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 4ab0f3ee83c0c62f7346031780d46a57d4002f6585c2de3fadfa6708e4ff59de
+	sha256sums = 0bca082410c4a1ab0ac60f76b0fbefa31c749dabe8a57cb53a33806cf53f6b2f
 	sha256sums = SKIP
 	sha256sums = a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15
 
