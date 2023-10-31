@@ -3,13 +3,13 @@
 pkgname=lightly-git
 _gitname=Lightly
 pkgver=r2172.121a61e5
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern style for qt applications"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Luwx/$_gitname"
 license=("GPL2")
-depends=("frameworkintegration" "kdecoration" "breeze-icons" "kwayland" "hicolor-icon-theme")
-makedepends=("git" "cmake" "extra-cmake-modules" "kcmutils" "kdecoration" "qt5-declarative" "qt5-x11extras")
+depends=("frameworkintegration5" "kdecoration" "breeze-icons" "kwayland5" "hicolor-icon-theme")
+makedepends=("git" "cmake" "extra-cmake-modules" "kcmutils5" "kdecoration" "qt5-declarative" "qt5-x11extras")
 provides=("lightly-qt")
 conflicts=("lightly-qt")
 source=("git+$url" "https://github.com/Luwx/Lightly/pull/177.patch")
