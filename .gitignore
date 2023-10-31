@@ -1,0 +1,7 @@
+src/
+pkg/
+9pro/
+*.tar.xz
+*.tar.gz
+*.zst
+*.log

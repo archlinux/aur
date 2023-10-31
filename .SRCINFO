@@ -1,0 +1,13 @@
+pkgbase = 9pro-git
+	pkgdesc = Plan9-related tools for Unix-like operating systems
+	pkgver = r111.2c1651b
+	pkgrel = 1
+	url = https://git.sr.ht/~ft/9pro
+	arch = x86_64
+	license = public domain
+	provides = 9pro
+	conflicts = 9pro
+	source = 9pro::git+https://git.sr.ht/~ft/9pro
+	sha256sums = SKIP
+
+pkgname = 9pro-git
