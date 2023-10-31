@@ -18,4 +18,3 @@ pkgbase = bdelta-git
 	sha256sums = 4e44a523b1c960c0ae428b822d700ca9610fe75a45c26e06679204a9cf19ea9c
 
 pkgname = bdelta-git
-
