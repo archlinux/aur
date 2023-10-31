@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=system-monitoring-center
-pkgver=2.25.1
+pkgver=2.26.0
 pkgrel=1
 pkgdesc="Multi-featured system monitor."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('amdgpu_top: for video engine load on GPU tab and per-process GPU us
             'hwdata: for device vendor-model information of new devices'
             'xorg-xrandr: for more accurate screen resolution and refresh rate detection')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ade5fd4b6a9f6da2755628bc1f57e0483ea9db4ed9d30ed0c016298e3d474f30')
+sha256sums=('31d2426bfc731bf0181618449988b29b08ff27ce2ac1c577fa7231aa96301c47')
 
 prepare() {
   cd "$pkgname-$pkgver"

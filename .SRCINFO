@@ -1,6 +1,6 @@
 pkgbase = system-monitoring-center
 	pkgdesc = Multi-featured system monitor.
-	pkgver = 2.25.1
+	pkgver = 2.26.0
 	pkgrel = 1
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = system-monitoring-center
 	optdepends = amdgpu_top: for video engine load on GPU tab and per-process GPU usage, GPU memory columns on Processes tab
 	optdepends = hwdata: for device vendor-model information of new devices
 	optdepends = xorg-xrandr: for more accurate screen resolution and refresh rate detection
-	source = system-monitoring-center-2.25.1.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v2.25.1.tar.gz
-	sha256sums = ade5fd4b6a9f6da2755628bc1f57e0483ea9db4ed9d30ed0c016298e3d474f30
+	source = system-monitoring-center-2.26.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v2.26.0.tar.gz
+	sha256sums = 31d2426bfc731bf0181618449988b29b08ff27ce2ac1c577fa7231aa96301c47
 
 pkgname = system-monitoring-center
