@@ -1,6 +1,6 @@
 pkgbase = naturalearth-data-vector-all-latest
 	pkgdesc = A public domain map dataset, tightly integrated vector and raster data, to make a variety of maps with cartography or GIS software. This package provides the cultural and physical data in 1:10mio, 1:50mio and 1:110mio scale. WARNING: About 1 GiB big.
-	pkgver = 4.0.0
+	pkgver = 5.1.2
 	pkgrel = 1
 	epoch = 0
 	url = http://www.naturalearthdata.com/
@@ -9,17 +9,17 @@ pkgbase = naturalearth-data-vector-all-latest
 	groups = naturalearth-data
 	license = custom:public domain
 	optdepends = naturalearth-data-raster: For complimentary raster rendering of earth surface.
-	provides = naturalearth-data-vector-all=4.0.0
-	provides = naturalearth-data-vector-cultural-10m=4.0.0
-	provides = naturalearth-data-vector-cultural-50m=4.0.0
-	provides = naturalearth-data-vector-cultural-110m=4.0.0
-	provides = naturalearth-data-vector-physical-10m=4.0.0
-	provides = naturalearth-data-vector-physical-50m=4.0.0
-	provides = naturalearth-data-vector-physical-110m=4.0.0
-	provides = naturalearth-data-vector-cultural=4.0.0
-	provides = naturalearth-data-vector-physical=4.0.0
-	provides = naturalearth-data-vector=4.0.0
-	provides = naturalearth-data=4.0.0
+	provides = naturalearth-data-vector-all=5.1.2
+	provides = naturalearth-data-vector-cultural-10m=5.1.2
+	provides = naturalearth-data-vector-cultural-50m=5.1.2
+	provides = naturalearth-data-vector-cultural-110m=5.1.2
+	provides = naturalearth-data-vector-physical-10m=5.1.2
+	provides = naturalearth-data-vector-physical-50m=5.1.2
+	provides = naturalearth-data-vector-physical-110m=5.1.2
+	provides = naturalearth-data-vector-cultural=5.1.2
+	provides = naturalearth-data-vector-physical=5.1.2
+	provides = naturalearth-data-vector=5.1.2
+	provides = naturalearth-data=5.1.2
 	conflicts = naturalearth-data-vector-all
 	conflicts = naturalearth-data-vector-cultural-10m
 	conflicts = naturalearth-data-vector-cultural-50m
@@ -38,4 +38,3 @@ pkgbase = naturalearth-data-vector-all-latest
 	sha256sums = 718babc7ca208819649828125942f68807006c9307205c0f041de9d7a7e927a0
 
 pkgname = naturalearth-data-vector-all-latest
-

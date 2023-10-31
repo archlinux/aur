@@ -6,7 +6,7 @@ _pkgname=naturalearth-data-vector-all
 pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver=latest
-pkgver=4.0.0
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="A public domain map dataset, tightly integrated vector and raster data, to make a variety of maps with cartography or GIS software.
 This package provides the cultural and physical data in 1:10mio, 1:50mio and 1:110mio scale.
@@ -70,7 +70,7 @@ sha256sums=(
 )
 
 pkgver() {
-  cat "${srcdir}/VERSION"
+  cat "${srcdir}/VERSION" | tr -d '[[:space:]]\n'
 }
 
 package() {
