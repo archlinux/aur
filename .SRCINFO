@@ -1,18 +1,25 @@
 pkgbase = dsd-git
-	pkgdesc = Decoder for P25, ProVoice, X2-TDMA, DMR/MOTOTRBO, NXDN
-	pkgver = 1.6.0.r91.gf175834
+	pkgdesc = Decoder for P25 Phase 1, D-STAR, NXDN/IDAS, ProVoice, DMR/MOTOTRBO, X2-TDMA, dPMR (LouisErigHerve's fork).
+	pkgver = 1.6.0.r111.g5077daf
 	pkgrel = 1
-	url = https://github.com/szechyjs/dsd
-	arch = i686
+	url = https://github.com/LouisErigHerve/dsd
 	arch = x86_64
-	license = custom:copyright
+	license = GPL2
+	license = ISC
+	makedepends = cmake
+	makedepends = git
+	makedepends = help2man
+	depends = gcc-libs
+	depends = glibc
+	depends = itpp
+	depends = libsndfile
 	depends = mbelib
 	depends = portaudio
-	depends = itpp
+	provides = dsd-louiserigherve
 	provides = dsd
+	conflicts = dsd-louiserigherve
 	conflicts = dsd
-	source = dsd::git+https://github.com/szechyjs/dsd.git
-	md5sums = SKIP
+	source = dsd-louiserigherve::git+https://github.com/LouisErigHerve/dsd
+	sha256sums = SKIP
 
 pkgname = dsd-git
-
