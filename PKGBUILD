@@ -2,11 +2,11 @@
 
 pkgname=spiceopus
 pkgver=3v0r407
-pkgrel=0
+pkgrel=1
 pkgdesc="Spice Opus is a free general purpose circuit simulator specially suited for optimization loops"
 arch=('x86_64')
 url="http://www.spiceopus.si/"
-license=(GPL3)
+license=(http://www.spiceopus.si/license.html)
 depends=()
 conflicts=()
 source=(http://www.spiceopus.si/download/spice_opus"$pkgver"_linux_x86_64.tar.gz)
