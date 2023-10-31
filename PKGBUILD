@@ -2,7 +2,7 @@
 
 _pyname=google-cloud-bigquery
 pkgname=python-google-cloud-bigquery
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc='Google BigQuery API client library'
 arch=(any)
@@ -38,7 +38,7 @@ optdepends=(
 changelog=CHANGELOG.md
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 source=(${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-sha256sums=(1af93c5c28a18b13190bce479b793aaae56c0ecf7e1da73b4ba5798eca054a07)
+sha256sums=(794ccfc93ccb0e0ad689442f896f9c82de56da0fe18a195531bb37096c2657d6)
 
 build() {
   cd ${_pyname}-${pkgver}
