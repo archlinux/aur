@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gcap
-pkgver=2023.1.1
-pkgrel=2
+pkgver=2023.1.2
+pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains'
 arch=('any')
 url='https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital'
@@ -13,7 +13,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/gcap/GCA
         'gcap.desktop'
         'gcap.sh'
         'LICENSE')
-sha256sums=('d4eaa3e3d6c53be95d1694302a514b40592bf10fd4234bf1f0d7c68a3911e0a5'
+sha256sums=('87d2d07807175ec057813c028df278ea50935d0cd8f52e531d934b9c921c0bde'
             '24df966f1dbf8c348b487a1724891271a92b6e795b981fdf0c5b430325722af7'
             '905b2f02237fadb186e6b13e3412daa921d77b43b5975e7f25bee45f72136f8b'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
