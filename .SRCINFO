@@ -1,6 +1,6 @@
 pkgbase = r-alabaster
 	pkgdesc = Umbrella for the Alabaster Framework
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/alabaster
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = r-alabaster
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster_1.0.0.tar.gz
-	md5sums = 8755db5053974ae9995e52dc59ac6dd1
-	sha256sums = 06aac83a3f6d8ebd0d30bdf2ba94a83ddb7cd44875ce7b5a0831e9863e21b14a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster_1.2.0.tar.gz
+	md5sums = 359d26d34b8867dd418d0d277b0228c9
+	sha256sums = 6d08f588c49200b514395245055d4628fabdd044aceabff0b4dd6b2e0b858050
 
 pkgname = r-alabaster
