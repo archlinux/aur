@@ -61,6 +61,12 @@ if [ -f "$(find_so libboost_mpi.so)" ]; then
     CONFOPTS+=" --with-boost=1"
 fi;
 
+# CHOMBO
+
+# CHACO
+
+# CTETGEN
+
 # CGNS: Recording and recovering computer data
 CGNS_LIB="$(find_so libcgns.so)"
 if [ -f "${CGNS_LIB}" ] && [ -n "$(nm -D /usr/lib/libcgns.so | grep cgp_open | cut -d" " -f3)" ]; then
