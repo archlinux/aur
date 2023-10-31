@@ -3,8 +3,8 @@
 
 _pkgname=sdiff-gtk
 pkgname="${_pkgname}-git"
-pkgver=0.1.0+8.r18.20230317.4575251
-pkgrel=2
+pkgver=0.1.1+0.r20.20230905.689cba6
+pkgrel=1
 pkgdesc="GTK+ frontend for Stable Diffusion. Latest git checkout."
 arch=(
   'any'
