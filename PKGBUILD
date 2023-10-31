@@ -3,8 +3,8 @@
 _pkgname=fefeblog-consoleview
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=20221016.02.r5.20221016.aebf33b
-pkgrel=2
+pkgver=20221016.03.r9.20221016.35d2656
+pkgrel=1
 pkgdesc="Simble bash script to view 'Fefes Blog' (http://blog.fefe.de/) on the console."
 url="https://gitlab.com/dreieckli/fefeblog-consoleview"
 arch=('any')
