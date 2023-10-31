@@ -2,7 +2,7 @@
 
 _pkgname=libkazv
 pkgname="${_pkgname}-git"
-pkgver=0.2.1+89.r345.20230827.0528168
+pkgver=0.2.1+111.r367.20230921.e056da4
 pkgrel=1
 pkgdesc="A matrix client sdk built upon lager and the value-oriented design it enables."
 arch=(
