@@ -13,6 +13,10 @@ if [ "$1" == "up" ]; then
   iptables -t nat -A POSTROUTING -o $SERVER_PUB_NIC -j MASQUERADE
   ip6tables -I FORWARD -i $SERVER_WG_NIC -j ACCEPT
   ip6tables -t nat -A POSTROUTING -o $SERVER_PUB_NIC -j MASQUERADE
+  #Client isolation on
+  #iptables -I FORWARD -i $SERVER_WG_NIC -o $SERVER_WG_NIC -j REJECT --reject-with icmp-admin-prohibited
+  #ip6tables -I FORWARD -i $SERVER_WG_NIC -o $SERVER_WG_NIC -j REJECT --reject-with icmp6-adm-prohibited
+
 fi
 
 if [ "$1" == "down" ]; then
@@ -22,4 +26,7 @@ if [ "$1" == "down" ]; then
   iptables -t nat -D POSTROUTING -o $SERVER_PUB_NIC -j MASQUERADE
   ip6tables -D FORWARD -i $SERVER_WG_NIC -j ACCEPT
   ip6tables -t nat -D POSTROUTING -o $SERVER_PUB_NIC -j MASQUERADE
+  #Client isolation rules delete
+  #iptables -D FORWARD -i $SERVER_WG_NIC -o $SERVER_WG_NIC -j REJECT --reject-with icmp-admin-prohibited
+  #ip6tables -I FORWARD -i $SERVER_WG_NIC -o $SERVER_WG_NIC -j REJECT --reject-with icmp6-adm-prohibited
 fi
