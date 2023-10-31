@@ -1,6 +1,6 @@
 pkgbase = python-safetensors
 	pkgdesc = Simple, safe way to store and distribute tensors
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/huggingface/safetensors
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = python-safetensors
 	checkdepends = python-h5py
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-maturin
 	makedepends = python-wheel
 	makedepends = python-setuptools-rust
 	depends = python
@@ -31,7 +32,7 @@ pkgbase = python-safetensors
 	optdepends = python-paddlepaddle
 	optdepends = python-tensorflow
 	optdepends = python-pytorch
-	source = python-safetensors-0.3.3.tar.gz::https://github.com/huggingface/safetensors/archive/refs/tags/v0.3.3.tar.gz
-	sha512sums = a19b390b6c36e4cf086835b2ea91a7b107be0833c0fe654db1a13f3f4ad431afa03ba9cec9c04ad7294cc28fb9e2a6d8ff31f1009cbf5da743e7d62652683bff
+	source = python-safetensors-0.4.0.tar.gz::https://github.com/huggingface/safetensors/archive/refs/tags/v0.4.0.tar.gz
+	sha512sums = da38f184f2c0730a59b1d4ca490758b71cb5ed3e1e16741bbf4b7bfac35fa1a4f24e5acbc35f3b38f10e4c46d81554896fbd95accfd671ee066c9fcbd50551ab
 
 pkgname = python-safetensors
