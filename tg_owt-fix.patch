@@ -1,0 +1,49 @@
+diff --git a/src/common_video/h265/h265_pps_parser.h b/src/common_video/h265/h265_pps_parser.h
+index 28c95ea9..790b0b73 100644
+--- a/src/common_video/h265/h265_pps_parser.h
++++ b/src/common_video/h265/h265_pps_parser.h
+@@ -13,6 +13,8 @@
+
+ #include "absl/types/optional.h"
+
++#include <stdint.h>
++
+ namespace rtc {
+ class BitBuffer;
+ }
+diff --git a/src/modules/audio_processing/transient/file_utils.h b/src/modules/audio_processing/transient/file_utils.h
+index b7483377..56696708 100644
+--- a/src/modules/audio_processing/transient/file_utils.h
++++ b/src/modules/audio_processing/transient/file_utils.h
+@@ -14,6 +14,7 @@
+ #include <string.h>
+
+ #include "rtc_base/system/file_wrapper.h"
++#include <cstdint>
+
+ namespace webrtc {
+
+diff --git a/src/modules/include/module_common_types_public.h b/src/modules/include/module_common_types_public.h
+index 345e45ce..8338a514 100644
+--- a/src/modules/include/module_common_types_public.h
++++ b/src/modules/include/module_common_types_public.h
+@@ -11,6 +11,7 @@
+ #ifndef MODULES_INCLUDE_MODULE_COMMON_TYPES_PUBLIC_H_
+ #define MODULES_INCLUDE_MODULE_COMMON_TYPES_PUBLIC_H_
+
++#include <cstdint>
+ #include <limits>
+
+ #include "absl/types/optional.h"
+diff --git a/src/rtc_base/third_party/base64/base64.h b/src/rtc_base/third_party/base64/base64.h
+index ca249541..b5cf3f73 100644
+--- a/src/rtc_base/third_party/base64/base64.h
++++ b/src/rtc_base/third_party/base64/base64.h
+@@ -16,6 +16,7 @@
+ #include <vector>
+
+ #include "rtc_base/system/rtc_export.h"
++#include <cstdint>
+
+ namespace rtc {
+

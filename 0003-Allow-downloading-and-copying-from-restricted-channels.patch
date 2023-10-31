@@ -1,0 +1,52 @@
+diff --git a/Telegram/SourceFiles/history/history_inner_widget.cpp b/Telegram/SourceFiles/history/history_inner_widget.cpp
+index eedcd4cb6..efe87ce59 100644
+--- a/Telegram/SourceFiles/history/history_inner_widget.cpp
++++ b/Telegram/SourceFiles/history/history_inner_widget.cpp
+@@ -2314,6 +2314,7 @@ void HistoryInner::showContextMenu(QContextMenuEvent *e, bool showFromTouch) {
+ }
+ 
+ bool HistoryInner::hasCopyRestriction(HistoryItem *item) const {
++    return false;
+ 	return !_peer->allowsForwarding() || (item && item->forbidsForward());
+ }
+ 
+@@ -2330,6 +2331,7 @@ bool HistoryInner::showCopyRestriction(HistoryItem *item) {
+ }
+ 
+ bool HistoryInner::hasCopyRestrictionForSelected() const {
++    return false;
+ 	if (hasCopyRestriction()) {
+ 		return true;
+ 	}
+diff --git a/Telegram/SourceFiles/history/view/history_view_list_widget.cpp b/Telegram/SourceFiles/history/view/history_view_list_widget.cpp
+index 87b8611f7..b0cfc7670 100644
+--- a/Telegram/SourceFiles/history/view/history_view_list_widget.cpp
++++ b/Telegram/SourceFiles/history/view/history_view_list_widget.cpp
+@@ -1218,6 +1218,7 @@ bool ListWidget::isEmpty() const {
+ }
+ 
+ bool ListWidget::hasCopyRestriction(HistoryItem *item) const {
++    return false;
+ 	return _delegate->listCopyRestrictionType(item)
+ 		!= CopyRestrictionType::None;
+ }
+@@ -1236,6 +1237,7 @@ bool ListWidget::showCopyRestriction(HistoryItem *item) {
+ }
+ 
+ bool ListWidget::hasCopyRestrictionForSelected() const {
++    return false;
+ 	if (hasCopyRestriction()) {
+ 		return true;
+ 	}
+diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+index 6b77cfefe..75ceb075d 100644
+--- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
++++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+@@ -560,6 +560,7 @@ QSize OverlayWidget::flipSizeByRotation(QSize size) const {
+ }
+ 
+ bool OverlayWidget::hasCopyRestriction() const {
++    return false;
+ 	return (_history && !_history->peer->allowsForwarding())
+ 		|| (_message && _message->forbidsForward());
+ }
