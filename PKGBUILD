@@ -4,10 +4,10 @@
 
 pkgname=csl-git
 pkgver=r458.3b9f221
-pkgrel=1
+pkgrel=2
 pkgdesc='Cube Server Lister'
 arch=('i686' 'x86_64')
-url='https://github.com/piernov/Cube-Server-Lister'
+url="https://github.com/aurhat/cubelister"
 license=(GPL2)
 depends=(wxwidgets-gtk3-3.0 wxwidgets-common-3.0 glibc gcc-libs geoip)
 makedepends=(git intltool)

@@ -1,8 +1,8 @@
 pkgbase = csl-git
 	pkgdesc = Cube Server Lister
 	pkgver = r458.3b9f221
-	pkgrel = 1
-	url = https://github.com/piernov/Cube-Server-Lister
+	pkgrel = 2
+	url = https://github.com/aurhat/cubelister
 	arch = i686
 	arch = x86_64
 	license = GPL2
