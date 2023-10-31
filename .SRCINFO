@@ -1,7 +1,7 @@
 pkgbase = miraclecast-nosystemd-git
 	pkgdesc = Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd.
-	pkgver = 1.0+139.r327.20230216.850a1c6
-	pkgrel = 3
+	pkgver = 1.0+140.r328.20230714.fdb8671
+	pkgrel = 1
 	url = https://github.com/albfan/miraclecast
 	arch = i686
 	arch = x86_64
@@ -32,14 +32,14 @@ pkgname = miraclecast-nosystemd-git
 	depends = readline
 	depends = wpa_supplicant
 	optdepends = miraclecast-docs: Documentation.
-	provides = miraclecast=1.0+139.r327.20230216.850a1c6
-	provides = miraclecast-nosystemd=1.0+139.r327.20230216.850a1c6
-	provides = miraclecast-git=1.0+139.r327.20230216.850a1c6
+	provides = miraclecast=1.0+140.r328.20230714.fdb8671
+	provides = miraclecast-nosystemd=1.0+140.r328.20230714.fdb8671
+	provides = miraclecast-git=1.0+140.r328.20230714.fdb8671
 	conflicts = miraclecast
 	backup = etc/dbus-1/system.d/org.freedesktop.miracle.conf
 
 pkgname = miraclecast-docs-git
 	pkgdesc = Documentation for miraclecast.
 	optdepends = miraclecast: To use the software that is documented here.
-	provides = miraclecast-docs=1.0+139.r327.20230216.850a1c6
+	provides = miraclecast-docs=1.0+140.r328.20230714.fdb8671
 	conflicts = miraclecast-docs

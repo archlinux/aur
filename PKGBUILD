@@ -7,8 +7,8 @@ pkgname=(
   "${pkgbase}"
   "${_pkgbase}-docs-git"
 )
-pkgver=1.0+139.r327.20230216.850a1c6
-pkgrel=3
+pkgver=1.0+140.r328.20230714.fdb8671
+pkgrel=1
 pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd."
 arch=(
   'i686'
