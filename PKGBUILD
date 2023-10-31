@@ -2,7 +2,7 @@
 # Contributor: Anonymous
 
 pkgname=perl-pod-elemental
-pkgver=0.103005
+pkgver=0.103006
 pkgrel=1
 pkgdesc="A system for treating a Pod documents as trees of elements"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('perl' 'perl-class-load' 'perl-mixin-linewise' 'perl-moose'
 checkdepends=('perl-test-deep' 'perl-test-differences')
 url='https://metacpan.org/release/Pod-Elemental'
 source=("https://www.cpan.org/modules/by-module/Pod/Pod-Elemental-${pkgver}.tar.gz")
-sha512sums=('bd3c6c6d5aef5b0242daddbba7c00b9cabdee4e26111562bb3efcd6032044b581ee8e66877d8ea07baff6b076cd6cccd0f55be210fbb35344a324f93d79ca667')
+sha512sums=('fa8c562b8ffa28564a5f8983c2205ed7a81cc0b959217553e4021e6ad24add4557a7fb55d24891b326989938b764b9a46d321cc001a496bdfac6ca50c39c58ee')
 
 build() {
   cd "${srcdir}/Pod-Elemental-${pkgver}"

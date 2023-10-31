@@ -1,6 +1,6 @@
 pkgbase = perl-pod-elemental
 	pkgdesc = A system for treating a Pod documents as trees of elements
-	pkgver = 0.103005
+	pkgver = 0.103006
 	pkgrel = 1
 	url = https://metacpan.org/release/Pod-Elemental
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = perl-pod-elemental
 	depends = perl-sub-exporter
 	depends = perl-sub-exporter-formethods
 	depends = perl-namespace-autoclean
-	source = https://www.cpan.org/modules/by-module/Pod/Pod-Elemental-0.103005.tar.gz
-	sha512sums = bd3c6c6d5aef5b0242daddbba7c00b9cabdee4e26111562bb3efcd6032044b581ee8e66877d8ea07baff6b076cd6cccd0f55be210fbb35344a324f93d79ca667
+	source = https://www.cpan.org/modules/by-module/Pod/Pod-Elemental-0.103006.tar.gz
+	sha512sums = fa8c562b8ffa28564a5f8983c2205ed7a81cc0b959217553e4021e6ad24add4557a7fb55d24891b326989938b764b9a46d321cc001a496bdfac6ca50c39c58ee
 
 pkgname = perl-pod-elemental
