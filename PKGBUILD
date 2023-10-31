@@ -1,6 +1,6 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt-git
-pkgver=1.3.3.r10.gae3c43f
+pkgver=flatpakv5.r17.g1631268
 pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
@@ -48,16 +48,15 @@ prepare() {
 }
 
 build() {
-    cmake -B build -S "$pkgname" \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/' \
-        -Wno-dev \
+	cmake -B build -S "$pkgname" \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-Wno-dev \
 		-DCMAKE_MODULE_PATH="$srcdir" \
 		-DPDF4QT_INSTALL_DEPENDENCIES=0
-    cmake --build build
+	cmake --build build
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
-
