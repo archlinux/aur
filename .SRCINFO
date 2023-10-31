@@ -1,0 +1,17 @@
+pkgbase = tatlin
+	pkgdesc = 3D STL and G-code viewer
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/dkobozev/tatlin
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-wxpython
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-opengl
+	depends = python-six
+	source = tatlin-0.3.1.tar.gz::https://github.com/dkobozev/tatlin/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 147771949da81c499a9eb56ebc207042d5a9f607a70db921f2df2c962b8af6f1
+
+pkgname = tatlin
