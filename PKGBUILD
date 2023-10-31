@@ -17,7 +17,16 @@ pkgrel=1
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
-makedepends=('bison' 'clang>=15' 'llvm>=15' 'lld>=15' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils' 'rust' 'lzop' 'cpio')
+makedepends=(
+  'clang>=16'
+  'llvm>=16'
+  'lld>=16'
+  'bc' 'cpio' 'gettext' 'libelf'
+  'pahole' 'perl' 'python' 'tar'
+  'xz' 'graphviz' 'imagemagick' 'python-sphinx'
+  'texlive-latexextra' 'coreutils' 'git'
+  'inetutils' 'kmod' 'lzop' 'rust'
+)
 options=('!strip')
 source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v'"$pkgver-$pkgrel"
         # standard config files for mkinitcpio ramdisk
@@ -34,8 +43,6 @@ clang_major_ver() {
 # "Modern performance" – modifies the config to enable
 # performance tuned to your specific machine (native-intel or native-amd)
 USE_MPERFORMANCE=${USE_MPERFORMANCE:=false}
-# "Ancient" config – for older machines
-FOR_ANCIENT=${FOR_ANCIENT:=false}
 
 pkgver() {
   echo ${pkgver}
@@ -54,6 +61,10 @@ _handle_lsmod() {
 build() {
   cd "${_srcname}"
 
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "${pkgbase#linux}" > localversion.20-pkgname
+  make -s kernelrelease > version
+
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
@@ -65,34 +76,36 @@ build() {
 
   if $USE_MPERFORMANCE; then
     local cpu_vendor="$(lscpu | grep "Vendor ID" | head -n1 | cut -d ':' -f2 | awk '{ print $1 }')"
-    cpu_type="AMD"
+    cpu_type=""
     if [ "$cpu_vendor" == "GenuineIntel" ]; then
       cpu_type="INTEL"
     elif [ "$cpu_vendor" == "AuthenticAMD" ]; then
       cpu_type="AMD"
     fi
-    # Enable native compilation
-    sed -i -re "s/CONFIG_MSKYLAKE=y/# CONFIG_MSKYLAKE is not set/g" .config
-    sed -i -re 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-nitrous-mperformance"/g' .config
-    echo "CONFIG_MNATIVE_${cpu_type}=y" >> .config
+    if [ -n "$cpu_type" ]; then
+      # Enable native compilation
+      sed -i -re "s/CONFIG_MSKYLAKEX=y/# CONFIG_MSKYLAKEX is not set/g" .config
+      sed -i -re 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-nitrous-mperformance"/g' .config
+      echo "CONFIG_MNATIVE_${cpu_type}=y" >> .config
+    fi
   fi
 
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
-    makeflags="$makeflags -j$(nproc --all)"   
+    makeflags="$makeflags -j$(grep -E '^processor\W' < /proc/cpuinfo | wc -l)"
   fi
-  make LLVM=1 ${makeflags} bzImage modules
+  make LLVM=1 ${makeflags} all
 }
 
 _package() {
-  pkgdesc="Modified Linux kernel optimized for Skylake and newer, compiled using clang"
+  pkgdesc="Modified Linux kernel optimized for Skylake X and newer, compiled using clang"
   depends=('coreutils' 'kmod' 'initramfs')
   optdepends=(
-    'crda: to set the correct wireless channels of your country'
+    'wireless-regdb: to set the correct wireless channels of your country'
     "linux-nitrous-headers=${pkgver}-${pkgrel}: to build DKMS modules against this kernel"
     'linux-firmware: Additional firmware blobs'
   )
-  provides=(WIREGUARD-MODULE NTFS3-MODULE)
+  provides=(WIREGUARD-MODULE NTFS3-MODULE BINDER-MODULE binder_linux-dkms=${pkgver})
   __kernelname=linux-nitrous
   backup=("etc/mkinitcpio.d/linux-nitrous.preset")
   install=${pkgbase}.install
@@ -106,10 +119,7 @@ _package() {
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LLVM=1 INSTALL_MOD_PATH="${pkgdir}" modules_install
-
-  local modulesdir="$pkgdir/lib/modules/${_kernver}"
+  local modulesdir="$pkgdir/usr/lib/modules/${_kernver}"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -120,13 +130,9 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${__kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
+  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
+  ZSTD_CLEVEL=19 make LLVM=1 INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/does/not/exist modules_install
 
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/${__kernelname}.preset" "${pkgdir}/etc/mkinitcpio.d/${__kernelname}.preset"
@@ -137,42 +143,21 @@ _package() {
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${__kernelname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${__kernelname}.preset"
 
-  # remove build and source links
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-  # remove the firmware
-  rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
-
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
-
-  # move module tree /lib -> /usr/lib
-  mkdir -p "${pkgdir}/usr"
-  mv "${pkgdir}/lib" "${pkgdir}/usr/"
-
-  # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
-
-  # add System.map
-  install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
-
   rm -f "${pkgdir}/"*.pkg.tar*
+  rm -f "$modulesdir"/{source,build}
 }
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Linux kernel (tagged git version)"
-  depends=('dkms' 'lld>=15' 'clang>=15')
+  depends=('dkms' 'lld>=16' 'clang>=16')
+
+  cd "${_srcname}"
+  local builddir="$pkgdir/usr/lib/modules/${_kernver}/build"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
   mkdir -p "${pkgdir}/usr/lib/modules/build/"{include,arch/x86}
 
   export CFLAGS="$CFLAGS -Wno-strict-prototypes"
-
-  cd "${_srcname}"
 
   # Fix for DKMS because clang doesn't like this
   # and to disable LTO
@@ -200,91 +185,81 @@ _package-headers() {
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
-  # copy arch includes for external modules
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
-  cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
+  echo "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
-  # copy files necessary for later builds, like nvidia and vmware
-  cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  # required when STACK_VALIDATION is enabled
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # fix permissions on scripts dir
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" || :
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
+  echo "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-  cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  if [ "${CARCH}" = "i686" ]; then
-    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-  fi
+  # https://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
+  # https://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  # add dm headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-  cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  # add inotify.h
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
-  cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
+  echo "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  # add wireless headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-  cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-
-  # add xfs and shmem for aufs building
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-
-  # copy in Kconfig files
-  for i in $(find . -name "Kconfig*"); do
-    mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-    cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
+  echo "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
   done
 
-  # Fix file conflict with -doc package
-  rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
+  echo "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-  # Add objtool for CONFIG_STACK_VALIDATION
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
-  cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
+  echo "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  chown -R root:root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
+  echo "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  # strip scripts directory
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "${binary}")" in
-      *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-      *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-      *application/x-executable*) # Binaries
-        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+  echo "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -Sib "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
     esac
-  done
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,csky,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,nds32,nios2,openrisc,parisc,powerpc,ppc,riscv,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+
+  echo "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   rm -f "${pkgdir}/"*.pkg.tar*
-}
-
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (tagged git version)"
-
-  cd "${_srcname}"
-
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}" -type f -exec chmod 444 {} \;
-  find "${pkgdir}" -type d -exec chmod 755 {} \;
-
-  # remove files already in linux package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/Kconfig"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
