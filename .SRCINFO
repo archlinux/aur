@@ -1,28 +1,30 @@
 pkgbase = rustrover-eap
 	pkgdesc = JetBrains IDE for Rust Developers (EAP)
-	pkgver = 241.15989.180
+	pkgver = 2024.1
 	pkgrel = 1
-	url = https://www.jetbrains.com/rust/
+	url = https://www.jetbrains.com/rust/nextversion/
 	arch = x86_64
 	arch = aarch64
 	license = custom:jetbrains
 	options = !strip
 	source = jetbrains-rustrover-eap.desktop
 	source = LICENSE
-	sha256sums = 5f20e23e39d7fa8ef47945fad845c9918ec77c9d6b94f8f31b7286c1a656eb7f
+	sha256sums = cd4f42c4d3f9c0fb967a96da2c0c71884df55fe21409a97d12690e8a4c878a06
 	sha256sums = db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3
-	source_x86_64 = jetbrains-rustrover-eap-241.15989.180-x86_64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-241.15989.180.tar.gz
-	sha256sums_x86_64 = 73bec7f1406c953ac154ae7652701681a60fadfa673235b18bbfb9d545f8353f
-	source_aarch64 = jetbrains-rustrover-eap-241.15989.180-aarch64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-241.15989.180-aarch64.tar.gz
-	sha256sums_aarch64 = 8d4a9cc01465d2c54267b967a928cd814720f08b826a40d9be895cfcfa57c423
+	source_x86_64 = RustRover-2024.1-x86_64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-2024.1.tar.gz
+	sha256sums_x86_64 = 94b4107b4ff74f1efbf9255a277933578a7244ef7f4d362bef613ed14578d56c
+	source_aarch64 = RustRover-2024.1-aarch64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-2024.1-aarch64.tar.gz
+	sha256sums_aarch64 = 1c10994bc33d62f935b1fb5a9234ec572e091dd716b48a5ea54d514da5461788
 
 pkgname = rustrover-eap
-	depends = glib2
-	optdepends = rust-src: Rust toolchain
+	depends = libdbusmenu-glib
 	optdepends = rustrover-eap-jre: JetBrains custom Java Runtime (Recommended)
 	optdepends = java-runtime=17: JRE - Required if rustrover-eap-jre is not installed
+	optdepends = rust-src: Rust toolchain
+	backup = opt/rustrover-eap/bin/rustrover64.vmoptions
+	backup = opt/rustrover-eap/bin/idea.properties
 
 pkgname = rustrover-eap-jre
-	pkgdesc = JBR (JetBrains Runtime) for RustRover EAP - a patched JRE
+	pkgdesc = JBR (JetBrains Runtime) for RustRover (EAP) - a patched JRE
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	license = GPL2
