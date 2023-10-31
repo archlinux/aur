@@ -10,8 +10,8 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-wayland-git
-pkgver=4.0.0.r25809.g96767510e0
-pkgrel=2
+pkgver=4.0.0.r26365.g4905863389
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)"
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
@@ -106,11 +106,13 @@ source=('git+https://code.videolan.org/videolan/vlc.git'
         'vlc-live-media-2021.patch'
         '2419.patch'
         '2419a.patch'
+        '2419b.patch'
         'update-vlc-plugin-cache.hook')
 b2sums=('SKIP'
         '76103422a1eaad40d33bfb7897bf25c1b5748729270974bec13f642f2861c4458f0dc07b5fb68d9ba4fae6e44d4a6c8e4d67af7ec10e0c117f1b804dd06868e3'
         '977af105fb03aedd132091921c9ace0355c3211a2a3ba1ef51eb923330c09abb790950247c8c90c0fab9f048ad9d8bbd96dab06dc515879b72ff1d307f252208'
         'e92e9cefd4adc84fcb45b398fd62e6d9ff770b0719835772e8add7edc13dee717e34effba8395d3437bb43c995f2fd3a5cf69765198cce2881730938b6bd04bb'
+        'c5fb28c47811a0f4bd91563e95d5ce45248a9a566e65daeaf870ff7ddf12b5edf6d37cf604b04fbde78934df0bb9d733c8f900fbb97795835b3a7061de377bf9'
         'fe3849f45fb91d3697573a9c23b90b78ff0bef5f94c42bc6e7c14427637f45f2fc86786803fb9b36c657ac2c50f6bf3c860cd763248711308ceab2bfcf7be49a')
 
 pkgver() {
@@ -128,6 +130,7 @@ prepare() {
   patch -Np1 < "${srcdir}"/vlc-live-media-2021.patch
   patch -Np1 < "${srcdir}"/2419.patch
   patch -Np1 < "${srcdir}"/2419a.patch
+  patch -Np1 < "${srcdir}"/2419b.patch
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
   autoreconf -vf
