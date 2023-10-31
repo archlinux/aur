@@ -1,4 +1,12 @@
-# PETSc from the latest git release
+# This package tries to compile PETSc with a working branch
+# of the git sources (either main or release) and its
+# documentation. It prevents the use of non-free software
+# and finds most optional dependencies. The petsc package
+# from AUR is still recommended if you don't care about the
+# documentation, freedom or extra compatibility. If you find
+# any similarities to the petsc-git package it's because I was
+# the owner and maintainer of that package until I decided to
+# host this one.
 # Maintainer: eDgar <edgar |at] openmail cc>
 # Contributor: Martin Diehl <aur@martin-diehl.net>
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com> (creator)
