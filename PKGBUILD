@@ -7,8 +7,8 @@ url="https://github.com/schlomo/${_pkgname}"
 arch=('any')
 license=('GPL3')
 epoch=1
-pkgver=r50.20170328.3b88aff
-pkgrel=3
+pkgver=r54.20210616.f0af34a
+pkgrel=1
 depends=(
   'bash'
   'sed'
