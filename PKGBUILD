@@ -61,8 +61,6 @@ _handle_lsmod() {
 build() {
   cd "${_srcname}"
 
-  make -s kernelrelease > version
-
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
@@ -87,6 +85,8 @@ build() {
       echo "CONFIG_MNATIVE_${cpu_type}=y" >> .config
     fi
   fi
+
+  make -s kernelrelease > version
 
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
