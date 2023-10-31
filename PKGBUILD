@@ -4,8 +4,8 @@
 
 _pkgname="adms"
 pkgname="${_pkgname}-git"
-pkgver=2.3.7.r6.g2097728
-pkgrel=2
+pkgver=2.3.7.r25.gcadf421
+pkgrel=1
 pkgdesc="ADMS is a codegenerator for the VERILOG-A(MS) language"
 arch=(
   'x86_64'
