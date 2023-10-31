@@ -3,7 +3,7 @@
 
 pkgname=('ocis')
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A file sync & share platform designed to scale"
 arch=('x86_64')
 url="https://github.com/owncloud/ocis"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'go' 'pnpm')
 backup=('etc/ocis.env')
 
-source=("$pkgname-$pkgver::git+https://github.com/owncloud/ocis#tag=v$pkgver"
+source=("$pkgname::git+https://github.com/owncloud/ocis#tag=v$pkgver"
 	"go.mk.patch"
 	"ocis.env"
 	"ocis.service"
@@ -28,13 +28,13 @@ sha512sums=('SKIP'
 
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	patch .make/go.mk "${srcdir}"/go.mk.patch
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	install -vDm755 "ocis/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
