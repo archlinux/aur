@@ -203,29 +203,7 @@ if [ -f "${OPENCL_SO}" ] && [ -f "${OPENCL_INC}" ]; then
 fi
 
 # # OpenGL (mesa)
-# # echo /lib64/libOpenGL.so /lib64/libGLX.so /lib64/libGLU.so
-# # FindOpenGL found both a legacy GL library:
-# #
-# #     OPENGL_gl_LIBRARY: /lib64/libGL.so
-# #
-# # and GLVND libraries for OpenGL and GLX:
-# #
-# #     OPENGL_opengl_LIBRARY: /lib64/libOpenGL.so
-# #     OPENGL_glx_LIBRARY: /lib64/libGLX.so
-# OPENGLIB="$(find_so libOpenGL.so)"
-# if [ -f "${OPENGLIB}" ]; then
-# #    OPENGLIB+=",$(find_so libGL),"
-#     # OPENGLIB+=",$(find_so libGLX)"
-#     # OPENGLIB+=",$(find_so libGLX)"
-#     # # OPENGLIB+="$(pacman -Ql mesa | awk '/\.so$/{print $NF}' | tr ' \n' ',')"
-# 	# CONFOPTS="${CONFOPTS} --with-opengl=1"
-#     # CONFOPTS="${CONFOPTS} --with-opengl-lib=[${OPENGLIB}]"
-#     # CONFOPTS="${CONFOPTS} --with-opengl-include=[/usr/include/GL/glew.h]"
-# 	CONFOPTS="${CONFOPTS} --with-opengl=1"
-#     CONFOPTS="${CONFOPTS} --with-opengl-pkg-config="
-#     CONFOPTS="${CONFOPTS} $(dirname $(pkgconf --path opengl))"
-#     # CONFOPTS="${CONFOPTS} $(pacman -Ql mesa | awk '/\/include\/[^/]*\/$/{print $NF}' | tr ' \n' ',')]"
-# fi
+# deprecated (VULKAN)
 
 # OpenMP: 64 bits blas and lapack, multi-threaded
 if [ -f "$(find_so libomp.so)" ]; then
