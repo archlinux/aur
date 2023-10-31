@@ -1,6 +1,6 @@
 pkgname=hath-rust
 pkgdesc="Hentai@Home but rusty"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
