@@ -1,6 +1,6 @@
-# Maintainer: ransome <mail@robbfolio.de>
+# Maintainer: warmwaffles <warmwaffles@gmail.com>
 pkgname="sleek"
-pkgver=1.3.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Todo manager based on the todo.txt syntax for Linux, free and open-source (FOSS)"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("yarn" "nodejs" "unzip")
 depends=("electron" "nodejs")
 
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('2dc1e9df167bfc1f36c9d30da90c26725ecf8e45e697b5f8b13b525cca6befdb378d2a473452828cefdd8d9d4fcf3b369f8a910ebc7599dbe8231ed5e0ce5918'
+sha512sums=('cd9b110e7a3d29daa92804b2734add25db0bcea4d2d1a4425c7136c0350e20b979290c98cd58eab0370cf7d08acda4b52bf8a2188bb4661ac19041a62c011b3a'
             'c3ebfc99947ba484d8ba8a3cd9b4c4d5a984a95e7cb24faac1ac59506f7f144d4e9c92ea9fcfa585f4d9fee779366d4eb9db0795c910fb221bb266e3c9d5be24'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
@@ -27,12 +27,14 @@ build() {
 package() {
   cd "$srcdir/$pkgname-${pkgver}"
 
-  msg2 "Building sleek with packaged Electron"
-  yarn run pack
-  install -Dm644 "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
+  msg2 "Building sleek with electron-builder"
+  yarn run dir
+
+  msg2 "Moving files"
+  install -Dm644 "release/build/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
   install -d -Dm644 "${pkgdir}/usr/share"
   chmod 755 "${pkgdir}/usr/share"
-  cp -r "dist/linux-unpacked/${pkgname}" "${pkgdir}/usr/share"
+  cp -r "release/build/linux-unpacked/${pkgname}" "${pkgdir}/usr/share"
 
   msg2 "Installing LICENSE"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
