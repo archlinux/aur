@@ -9,10 +9,9 @@ pkgbase = jsvm-git
 	makedepends = git
 	depends = gcc-libs
 	provides = jsvm
-	source = git://github.com/floriandejonckheere/jsvm.git
-	source = git://github.com/floriandejonckheere/jsvm-patch.git
+	source = git+https://github.com/floriandejonckheere/jsvm.git
+	source = git+https://github.com/floriandejonckheere/jsvm-patch.git
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = jsvm-git
-

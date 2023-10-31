@@ -12,8 +12,8 @@ license=('custom')
 depends=('gcc-libs')
 makedepends=('git')
 provides=('jsvm')
-source=("git://github.com/floriandejonckheere/${_gitname}.git"
-	"git://github.com/floriandejonckheere/${_gitname}-patch.git")
+source=("git+https://github.com/floriandejonckheere/${_gitname}.git"
+	"git+https://github.com/floriandejonckheere/${_gitname}-patch.git")
 md5sums=('SKIP'
 	'SKIP')
 
