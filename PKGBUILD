@@ -2,8 +2,8 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1597.r0.gc8c3d8c
-pkgrel=2
+pkgver=1606.r0.ga0398cf
+pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
 url='https://github.com/yuzu-emu/yuzu-mainline'
@@ -57,7 +57,7 @@ makedepends=('boost'
              'rapidjson'
              'spirv-headers'
              'mold')
-optdepends=("qt5-wayland: Wayland support")
+#optdepends=("qt5-wayland: Wayland support")
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/benhoyt/inih.git'
@@ -196,4 +196,7 @@ build() {
 package() {
     cd "$srcdir"
     DESTDIR="$pkgdir" cmake --install build
+    
+    cd "$pkgdir/usr/share/applications"
+    sed -i '12s/Exec=yuzu/Exec=env QT_QPA_PLATFORM=xcb yuzu/' org.yuzu_emu.yuzu.desktop
 }

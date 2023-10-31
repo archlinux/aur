@@ -4,6 +4,10 @@ cat << EOF
 Remember to rebuild yuzu-mainline-git periodically to get the latest changes.
 If you are to keep your build files, building a newer version should 
 take significantly shorter time.
+
+Notice: Make sure yuzu is running under x11, as not all vsync features are
+available under wayland, and can lead to degraded performance on graphically
+limited systems.
 =============================================================================
 EOF
 }
@@ -14,6 +18,10 @@ cat << EOF
 Remember to rebuild yuzu-mainline-git periodically to get the latest changes.
 If you are to keep your build files, building a newer version should 
 take significantly shorter time.
+
+Notice: Make sure yuzu is running under x11, as not all vsync features are
+available under wayland, and can lead to degraded performance on graphically
+limited systems.
 =============================================================================
 EOF
 }
