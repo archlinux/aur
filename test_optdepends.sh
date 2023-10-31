@@ -3,6 +3,7 @@
 # Test if external packages for PETSC are installed
 
 # Fair attempt to find the directory of a header file
+# example find_inc "head.h" "pack"
 find_inc () {
     local INC;
     INC="$(find_so "$1")";
@@ -23,7 +24,7 @@ find_inc () {
         pacman -Qs "$2" 2>&1>/dev/null && \
             INC="$(pacman -Qlq "$2" | grep "/$1\$" || printf "")";
     fi;
-    dirname "${INC}"
+    [[ -f "${INC}" ]] && dirname "${INC}"
 }
 
 # Find a shared object (library; .so extension)
