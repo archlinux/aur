@@ -1,9 +1,9 @@
 pkgbase = openflights-data-latest
 	pkgdesc = Airport, train station, ferry terminal, airline and flight routes data as CSV files to be used e.g. in GIS-applications.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
-	url = http://openflights.org/data.html
+	url = http://openflights.org/data
 	arch = any
 	groups = openflights
 	license = custom:Open Database License (ODbL) 1.0
@@ -17,7 +17,7 @@ pkgbase = openflights-data-latest
 	source = https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat
 	source = https://raw.githubusercontent.com/jpatokal/openflights/master/data/countries.dat
 	source = https://raw.githubusercontent.com/jpatokal/openflights/master/data/locales.dat
-	source = info.html::http://openflights.org/data.html
+	source = info.html::http://openflights.org/data
 	source = License_ODbL_1.0.html::http://opendatacommons.org/licenses/odbl/1.0/
 	source = License_DbCL_1.0.html::http://opendatacommons.org/licenses/dbcl/1.0/
 	sha256sums = SKIP
@@ -32,4 +32,3 @@ pkgbase = openflights-data-latest
 	sha256sums = SKIP
 
 pkgname = openflights-data-latest
-

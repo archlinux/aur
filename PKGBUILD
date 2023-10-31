@@ -7,10 +7,10 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver=latest
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Airport, train station, ferry terminal, airline and flight routes data as CSV files to be used e.g. in GIS-applications."
 arch=(any)
-url="http://openflights.org/data.html"
+url="http://openflights.org/data"
 license=(
   'custom:Open Database License (ODbL) 1.0'
   'custom:Database Contents License (DbCL) 1.0'
@@ -45,7 +45,7 @@ source=(
   "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat"
   "https://raw.githubusercontent.com/jpatokal/openflights/master/data/countries.dat"
   "https://raw.githubusercontent.com/jpatokal/openflights/master/data/locales.dat"
-  "info.html::http://openflights.org/data.html"
+  "info.html::http://openflights.org/data"
   "License_ODbL_1.0.html::http://opendatacommons.org/licenses/odbl/1.0/"
   "License_DbCL_1.0.html::http://opendatacommons.org/licenses/dbcl/1.0/"
 )
