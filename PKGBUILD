@@ -2,7 +2,7 @@ _electron='electron25'
 
 pkgname=webcord
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
 _repo='WebCord'
@@ -17,12 +17,14 @@ source=(
     "${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
     "buildInfo.json"
     "webcord.desktop"
+    "webcord.sh"
 )
 
 sha256sums=(
     '27723a752ca4750eda16b7a1f93b785160f5f85460cc3a395a86f75c917db62a'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '5923151d1cc05d7e2ab0cb2103921f5f3985e08e48c74e7aa12003b32c0e2bae'
+    '2645eafeaae58769f958c7372c3522ec93034b678d4e7ca90ab872b8dbd18ee5'
 )
 
 prepare() {
@@ -61,6 +63,10 @@ package() {
     install -Dm644 "${source[2]}" \
         -t "${pkgdir}/usr/share/applications"
 
+    local exec="${pkgdir}${bin}/${pkgname}"
+    sed -e "s|@ELECTRON@|${_electron}|;s|@APP_DIR@|${lib}|" "${source[3]}" > "${exec}"
+    chmod +x "${exec}"
+
     cd "${_snapshot}"
 
     cp -r --parents "package.json" "app" "sources/"{"assets","translations"} "node_modules" \
@@ -71,10 +77,4 @@ package() {
 
     ln -sT "../sources/translations" "${pkgdir}${lib}/app/translations"
     ln -sT "${lib}/sources/assets/icons/app.png" "${pkgdir}${icons}/${pkgname}.png"
-
-    local exec="${pkgdir}${bin}/${pkgname}"
-    echo -n "#!/bin/sh
-exec '${_electron}' '${lib}' \"\$@\"
-" > "${exec}"
-    chmod +x "${exec}"
 }
