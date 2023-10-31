@@ -2,8 +2,8 @@
 
 _pkgname=perl-gis-distance
 pkgname="${_pkgname}-git"
-pkgver=0.19.3+r109.20210309.ge160e93
-pkgrel=4
+pkgver=0.20.0+r114.20230607.g7611336
+pkgrel=1
 pkgdesc='GIS::Distance -- Perl interface to calculate calculate geographic distances.'
 arch=(
   'any'
