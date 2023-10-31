@@ -3,10 +3,10 @@
 
 pkgname=python-libarchive
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Python adapter for universal, libarchive-based archive access."
 url="https://github.com/dsoprea/PyEasyArchive"
-depends=('python')
+depends=('libarchive' 'python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-nose2')
 license=('MIT')
