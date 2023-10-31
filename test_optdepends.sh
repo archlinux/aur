@@ -73,6 +73,9 @@ else
     CONFOPTS+=" --with-cgns=0"
 fi
 
+# CUDA: non-free
+CONFOPTS+=" --with-cuda=0"
+
 # eigen: Lightweight C++ template library for vector and
 # matrix math
 EIGEN_DIR="$(pkgconf --cflags-only-I eigen3)"
