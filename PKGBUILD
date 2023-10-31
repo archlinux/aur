@@ -198,7 +198,8 @@ build() {
     --enable-version3 \
     --enable-vulkan \
     --enable-libfdk_aac \
-    --enable-nonfree
+    --enable-nonfree \
+    --disable-htmlpages
 #   --enable-gnutls  https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
 
   make
