@@ -15,6 +15,7 @@ license=('GPL3')
 depends=(
   'expat'
   'libusb'
+  # 'libusbpp' # eilin build script tries to download libusbpp sources on it's own.
 )
 makedepends=(
   'cmake'
@@ -34,22 +35,17 @@ provides=(
   "qeilin-doc-hg"
   "${_pkgname}-doc"
   "qeilin-doc"
-  "libusbpp-hg"
-  "testhid-hg"
+  "libusbpp-git"
+  "testhid-git"
   "libusbpp"
   "testhid"
 )
 
 conflicts=(
   "${_pkgname}"
-  "qeilin-hg"
   "qeilin"
-  "${_pkgname}-doc-hg"
-  "qeilin-doc-hg"
   "${_pkgname}-doc"
   "qeilin-doc"
-  "libusbpp-hg"
-  "testhid-hg"
   "libusbpp"
   "testhid"
 )
@@ -59,6 +55,7 @@ options+=('!emptydirs') # Remove empty dirs, because some top spurious level dir
 install="${_pkgname}.install"
 source=(
   "${_pkgname}::hg+http://hg.code.sf.net/p/eilin/mercurial#branch=hidreport"
+  "libusbpp_download_fix.patch"
   "libusbpp.pc.in"
   "${install}"
   "website_main.html::http://sourceforge.net/p/eilin/home/Home/"
@@ -68,6 +65,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
+  '75e98659e14632c1f6dc96ef8b8b9214ae4a998e0caacc3fec9cd47b8ffc568a'
   '47167c82b3fdbbc942465d7f23d07ddf88df34411ad0c245ac61f94735a178f4'
   '733d7ab700ff73e1bce4bf1b55d5fc13a63aa4516b538458df55c525de867bef'
   'SKIP'
@@ -76,13 +74,25 @@ sha256sums=(
   'SKIP'
 )
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  for _patch in "${srcdir}/libusbpp_download_fix.patch"; do
+    msg2 "Applying patch $(basename "${_patch}" ...)"
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
+
+  msg2 "Creating mercurial commit log ..."
+  hg log -b . --style changelog > "ChangeLog-mercurial.txt"
+}
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # _ver='latest'
   _date="$(hg log -l 1 -b . -T '{date|shortdate}' | tr -d '-')"
-  _rev="$(hg identify -n)"
-  _hash="$(hg identify -i)"
+  _rev="$(hg identify -n | sed -E -e 's|\+$||')"
+  _hash="$(hg identify -i | sed -E -e 's|\+$||')"
 
   # if [ -z "${_ver}" ]; then
   #   printf "%s %s." "Error in 'pkgver()': Could not determine" "version" > /dev/stderr
@@ -102,13 +112,6 @@ pkgver() {
   fi
 
   printf "date%s_r%s.%s" "${_date}" "${_rev}" "${_hash}"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  msg2 "Creating mercurial commit log ..."
-  hg log -b . --style changelog > "ChangeLog-mercurial.txt"
 }
 
 build() {

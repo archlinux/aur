@@ -1,0 +1,8 @@
+diff -rU1 eilin.orig/CMakeLists.txt eilin/CMakeLists.txt
+--- eilin.orig/CMakeLists.txt	2023-10-31 17:32:39.461581109 +0100
++++ eilin/CMakeLists.txt	2023-10-31 17:44:41.874964087 +0100
+@@ -25,3 +25,3 @@
+ ExternalProject_Add(libusbpp_project
+-    HG_REPOSITORY "https://bitbucket.org/stativ/libusbpp"
++    GIT_REPOSITORY "https://bitbucket.org/stativ/libusbpp.git"
+     PREFIX "libusbpp"
