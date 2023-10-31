@@ -1,11 +1,11 @@
 # PETSc from the latest git release
 # Maintainer: eDgar <edgar |at] openmail cc>
 # Contributor: Martin Diehl <aur@martin-diehl.net>
-# Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
+# Contributor: Lucas H. Gabrielli <heitzmann@gmail.com> (creator)
 
 _base=petsc
-pkgname=("${_base}"-git-release "${_base}"-doc-bin)
-pkgver=3.19.5.1171.g37df9106526
+pkgname=("${_base}"-free+opts "${_base}"-doc-bin)
+pkgver=3.20.1.96.g294d477ba62
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -21,12 +21,13 @@ hypre=$(pacman -Qs hypre | head -n 1 | cut -f2 -d' ')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=${hypre}")
 source=("git+${url}.git#branch=main"
-        "https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-${_mainver}.tar.gz"
+        "https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.19.5.tar.gz"
+        # "https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-${_mainver}.tar.gz"
         test_optdepends.sh
         0001-sowing-minversion1_1_26.patch)
 sha512sums=('SKIP'
             'b00026074349f3995312b407044def7a104f62e9ba68e1b571e7f09ddb8aa56aa64bea5e5f9e5546d4d6866c37278d8b40334af2697bd0f837ca3981229d700a'
-            'f0b6eba111689dd9f781a705f5341694d644de95db8f7fd08d60d8d6004cf5a2435db142219f767e01ee324ec429dcec01b377cc45e71dc5c24d4daa5afd983c'
+            '7d8730769d17baf214746a4e8a8b6235058509fb12e8f0e53da03d06e5339a3a4e36b023ce9a8326ec67f3560d1cb3b15219e13b8674ff06d8d953a571bc033b'
             '3c156d1c465c10ba0a3c79b829f98ecc05e48b8f002a3a382f86ac834faaa34108d522f04757af38257f4a4e1292d8d8b79c9c039ecb9ea25444d902a384907f')
 install=petsc.install
 
@@ -76,7 +77,6 @@ _install_dir="/usr"
 # -fopenmp
 # | Info pages for gcc (controlling c dialect)
 # Enable handling of OpenMP directives
-#
 
 safe_flags="-Wp,-D-FORTIFY-SOURCE=2,-D_GLIBCXX_ASSERTIONS"
 safe_flags+=" -fcf-protection -fno-plt"
@@ -151,7 +151,7 @@ check() {
   PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
 }
 
-package_petsc-git-release() {
+package_petsc-free+opts() {
   optdepends=(
     "boost: Free peer-reviewed portable C++ source libraries"
     "cgns: Recording and recovering computer data"
@@ -174,8 +174,11 @@ package_petsc-git-release() {
     "suitesparse: Sparse matrix library"
     "superlu: Subroutines for sparsse linear systems"
     "libyaml: configuration files")
-  provides=(${_base}="${_mainver}" petsc4py="${_mainver}")
-  conflicts=(${_base})
+  provides=(${_base}="${_mainver}"
+            petsc4py="${_mainver}"
+            ${_base}="${pkgver}-${pkgrel}"
+            petsc4py="${pkgver}-${pkgrel}")
+  conflicts=(${_base} ${_base}-git)
 
   # # From OpenCV (hack destination of petsc4py)
   # _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
