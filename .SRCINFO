@@ -1,7 +1,7 @@
 pkgbase = fifth-git
 	pkgdesc = Browser that carries the best features from Opera.
-	pkgver = 0.5+ggfcad9c2
-	pkgrel = 2
+	pkgver = 0.5+gg91ecd1b
+	pkgrel = 1
 	url = http://fifth-browser.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -17,11 +17,10 @@ pkgbase = fifth-git
 	depends = harfbuzz-icu
 	depends = libjpeg-turbo
 	depends = cairo
-	provides = fifth=0.5+ggfcad9c2
+	provides = fifth=0.5+gg91ecd1b
 	conflicts = fifth
-	replaces = fifth<=0.5+ggfcad9c2
+	replaces = fifth<=0.5+gg91ecd1b
 	source = fifth::git+https://github.com/clbr/fifth.git
 	sha256sums = SKIP
 
 pkgname = fifth-git
-

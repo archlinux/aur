@@ -4,8 +4,8 @@
 _pkgname=fifth
 pkgname="${_pkgname}-git"
 _pkgver=latest
-pkgver=0.5+ggfcad9c2
-pkgrel=2
+pkgver=0.5+gg91ecd1b
+pkgrel=1
 pkgdesc="Browser that carries the best features from Opera."
 arch=('i686' 'x86_64')
 url="http://fifth-browser.sourceforge.net/"
