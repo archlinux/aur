@@ -11,7 +11,7 @@ pkgbase = gmat
 	makedepends = patchelf
 	makedepends = f2c
 	depends = xerces-c
-	depends = wxgtk30
+	depends = wxwidgets-gtk3-3.0>=3.0.5-4
 	depends = glu
 	conflicts = gmat-bin
 	options = !strip

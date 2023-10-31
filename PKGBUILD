@@ -8,7 +8,7 @@ url="https://sourceforge.net/projects/gmat/"
 license=('Apache')
 conflicts=('gmat-bin')
 makedepends=('cspice' 'cmake' 'swig' 'patchelf' 'f2c')
-depends=('xerces-c' 'wxgtk30' 'glu')
+depends=('xerces-c' 'wxwidgets-gtk3-3.0>=3.0.5-4' 'glu')
 source=("GMAT.in"
 	"010-fix-f2c-typedefs.patch"
 	"https://sourceforge.net/projects/gmat/files/GMAT/GMAT-${pkgver}/gmat-src_and_data-${pkgver}.zip")
@@ -22,8 +22,8 @@ prepare() {
 }
 
 build() {
-	env WX_CONFIG=/opt/wxgtk-3.0.5/bin/wx-config \
-	    WXRC_CMD=/opt/wxgtk-3.0.5/bin/wxrc \
+	env WX_CONFIG=/opt/wxgtk-3.0/bin/wx-config-gtk3 \
+	    WXRC_CMD=/opt/wxgtk-3.0/bin/wxrc-3.0 \
 	cmake -B build -S "GMAT-$pkgver" \
 		-D CSPICE_DIR:PATH=/usr \
 		-D F2C_DIR:PATH=/usr/include \
