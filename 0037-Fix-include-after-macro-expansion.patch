@@ -1,66 +1,61 @@
-From: litvin <litvindev@gmail.com>
-Date: Tue Oct 31 02:40:58 AM CET 2023
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Fri Nov  3 12:32:28 AM CET 2023
 Subject: Fix include <> after macro expansion
 
-*** a/src/yylex.c	2023-10-31 01:29:58.294785838 +0100
---- b/src/yylex.c	2023-10-31 01:26:40.821234607 +0100
+
+*** a/src/yylex.c	2023-11-03 00:28:16.546067621 +0100
+--- b/src/yylex.c	2023-11-02 23:33:53.413480826 +0100
 ***************
-*** 558,567 ****
-  static void processInclude(S_position *ipos, int nextFlag) {
+*** 559,564 ****
+--- 559,565 ----
   	FILE *nyyin;
   	char *fname;
-! 	char *ccc, *cc, *cc2;
-- 	char nn[MAX_FILE_NAME_SIZE];
+  	char *ccc, *cc2;
++ 	char fn[MAX_FILE_NAME_SIZE];
   	int lex,l,h,v,len;
   	S_position pos;
   	GetLexA(lex, cc2);
-  	ccc = cInput.cc;
-  	if (lex == STRING_LITERAL) {
---- 558,566 ----
-  static void processInclude(S_position *ipos, int nextFlag) {
-  	FILE *nyyin;
-  	char *fname;
-! 	char *ccc, *cc2;
-  	int lex,l,h,v,len;
-  	S_position pos;
-  	GetLexA(lex, cc2);
-  	ccc = cInput.cc;
-  	if (lex == STRING_LITERAL) {
 ***************
-*** 581,605 ****
-  			macStacki = 0;
-  			processInclude2(ipos, '\"', yytext, nextFlag);
-  		} else if (lex == '<') {
-! 			cc = nn;
-! 			sprintf(cc, "Include <> after macro expansion: ");
-! 			cc += strlen(cc);
-! 			ccc = cc;
-! 			lex = yylex();
-! 			while (lex != '>' && lex != '\n' && lex != 0) {
-! 				strcpy(cc, yytext);
-! 				cc += strlen(cc);
-! 				lex = yylex();
-! 			}
-! 			if (s_opt.xref2) {
-! 				ppcGenRecord(PPC_INFORMATION, nn, "\n");
-! 			} else {
-! 				fprintf(dumpOut,"'%s'\n", nn);
-! 			}
-! 			if (ccc != cc) {
-! 				processInclude2(ipos, '<', ccc, nextFlag);
-! 			}
-  		}
-  	}
-  	return;
-   endOfMacArg:	assert(0);
---- 580,589 ----
-  			macStacki = 0;
+*** 576,589 ****
+  		cInput.cc = cc2;		/* unget lexem */
+  		lex = yylex();
+  		if (lex == STRING_LITERAL) {
+! 			cInput = macStack[0];		// hack, cut everything pending
+! 			macStacki = 0;
   			processInclude2(ipos, '\"', yytext, nextFlag);
   		} else if (lex == '<') {
 ! 			// TODO!!!!
 ! 			warning(ERR_ST,"Include <> after macro expansion not yet implemented, sorry\n\tuse \"\" instead");
   		}
-+ 		//do lex = yylex(); while (lex != '\n');
+- 		//do lex = yylex(); while (lex != '\n');
+  	}
+  	return;
+   endOfMacArg:	assert(0);
+--- 577,603 ----
+  		cInput.cc = cc2;		/* unget lexem */
+  		lex = yylex();
+  		if (lex == STRING_LITERAL) {
+! 			if (macStacki != 0) {
+! 				cInput = macStack[0];		// hack, cut everything pending
+! 				macStacki = 0;
+! 			}
+  			processInclude2(ipos, '\"', yytext, nextFlag);
+  		} else if (lex == '<') {
+! 			ccc = fn;
+! 			lex = yylex();
+! 			while (lex != '>' && lex != '\n' && lex != 0) {
+! 				strcpy(ccc, yytext);
+! 				ccc += strlen(ccc);
+! 				lex = yylex();
+! 			}
+! 			if (ccc != fn) {
+! 				if (macStacki != 0) {
+! 					cInput = macStack[0];		// hack, cut everything pending
+! 					macStacki = 0;
+! 				}
+! 				processInclude2(ipos, '<', fn, nextFlag);
+! 			}
+  		}
   	}
   	return;
    endOfMacArg:	assert(0);
