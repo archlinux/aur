@@ -1,3 +1,12 @@
+## GE-Proton8-22
+
+- Alan Wake 2 HDR fixup added from upstream: [ValveSoftware/wine@1182ef7](https://github.com/ValveSoftware/wine/commit/1182ef740346c62b76992f425593fa72e23203a7)
+- FAudio WMA3 support added from upstream: [ValveSoftware/wine@8855b75](https://github.com/ValveSoftware/wine/commit/8855b754068988adab22c50aa8c3a84075c2cd4f)
+- protonfix: Add fix for NUKITASHI (thanks R1kaB3rN)
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+- wine updated to latest bleeding edge
+
 ## GE-Proton8-21
 
 - fixed washed out colors on some games with FSR disabled and incorrect screen resolution applied (such as Deep Rock Galactic) -- thanks loathingKernel
