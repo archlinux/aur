@@ -1,10 +1,11 @@
 pkgbase = android-messages-desktop-bin
 	pkgdesc = Android Messages as a cross-platform desktop app
 	pkgver = 5.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OrangeDrangon/android-messages-desktop
 	arch = x86_64
 	license = MIT
+	depends = alsa-lib
 	depends = gtk3
 	depends = nss
 	provides = android-messages-desktop
