@@ -7,11 +7,13 @@ arch=('any')
 url="https://github.com/hluwa/frida-dexdump"
 license=('GPL3')
 depends=(
+    'python'
     'python-click'
     'python-frida-tools'
     'python-wallbreaker'
+    'python-setuptools'
 )
-makedepends=('python-setuptools')
+makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('a7e643bee7f380e43b1dd460284d251d3581b7c18ca73219147e2ed0dc15f5c3')
 
