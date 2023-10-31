@@ -24,7 +24,7 @@ package() {
 
   for i in 16 24 32 48 64 128 256 512 1024; do
     icons_dir=/usr/share/icons/hicolor/${i}x${i}/apps
-    install -Dm644 "${icons_dir}/AndroidMessages.png" -t \
+    install -Dm644 "${srcdir}/${icons_dir}/AndroidMessages.png" -t \
       "${pkgdir}${icons_dir}/"
   done
 }
