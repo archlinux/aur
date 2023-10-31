@@ -36,9 +36,10 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/installers"
-  chmod u+x ./unix.sh
-  MPV_CONFIG_DIR="${pkgdir}/etc/mpv/" ./unix.sh
+  cd "$srcdir/$_gitname"
+  chmod u+x ./installers/unix.sh
+  MPV_CONFIG_DIR="${pkgdir}/etc/mpv/" ./installers/unix.sh
+  find -name 'LICENSE*' -exec install -Dm644 {} "$pkgdir/usr/share/licenses/$pkgname/{}" \;
 }
 
 # vim: ts=2 sw=2 et:
