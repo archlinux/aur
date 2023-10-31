@@ -4,8 +4,8 @@ _pyname="arc4"
 _projectname="${_pyname}"
 _pkgname="python-${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=0.4.0+7.r236.20230422.6f0706a
-pkgrel=4
+pkgver=0.4.0+9.r238.20230912.d9837d8
+pkgrel=1
 pkgdesc="A small and insanely fast ARCFOUR (RC4) cipher implementation for Python."
 arch=(
   'aarch64'
