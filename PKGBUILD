@@ -1,7 +1,7 @@
 pkgname=devilutionx-bin
 _pkgname=DevilutionX-bin
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -22,11 +22,24 @@ source_aarch64=("https://github.com/diasurgical/devilutionX/releases/download/$p
 
 package() {
 	install -dm755 "$pkgdir/usr/share/games/DevilutionX"
-    cd $srcdir
-    # discord_game_sdk.so only applies to x86_64
-    cp -r {devilutionx,devilutionx.mpq,discord_game_sdk.so,devilutionx.sh} $pkgdir/usr/share/games/DevilutionX 
-
-    # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/usr/share/games/DevilutionX/devilutionx.sh" "$pkgdir/usr/bin/devilutionx"
+    cd $srcdir
+
+if [[ $arch == x86_64* ]]; then
+   cp -r {devilutionx,devilutionx.mpq,discord_game_sdk.so,devilutionx.sh} $pkgdir/usr/share/games/DevilutionX
+  # Link to binary
+   ln -s "/usr/share/games/DevilutionX/devilutionx.sh" "$pkgdir/usr/bin/devilutionx"
+
+elif [[ $arch == i*86 ]]; then
+    cp -r {devilutionx,devilutionx.mpq} $pkgdir/usr/share/games/DevilutionX
+  # Link to binary
+   ln -s "/usr/share/games/DevilutionX/devilutionx" "$pkgdir/usr/bin/devilutionx"
+
+elif [[ $arch == aarch64 ]]; then
+   cp -r {devilutionx,devilutionx.mpq} $pkgdir/usr/share/games/DevilutionX
+  # Link to binary
+   ln -s "/usr/share/games/DevilutionX/devilutionx" "$pkgdir/usr/bin/devilutionx"
+else
+   echo "Unknown architecture"
+fi
 }
