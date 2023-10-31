@@ -5,6 +5,7 @@ pkgbase = devilutionx-bin
 	url = https://github.com/diasurgical/devilutionX
 	arch = x86_64
 	arch = i386
+	arch = i686
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
@@ -16,6 +17,7 @@ pkgbase = devilutionx-bin
 	sha256sums_x86_64 = SKIP
 	source_i386 = https://github.com/diasurgical/devilutionX/releases/download/1.5.1/devilutionx-linux-i386.tar.xz
 	sha256sums_i386 = SKIP
+	source_i686 = https://github.com/diasurgical/devilutionX/releases/download/1.5.1/devilutionx-linux-i386.tar.xz
 	source_aarch64 = https://github.com/diasurgical/devilutionX/releases/download/1.5.1/devilutionx-linux-aarch64.tar.xz
 	sha256sums_aarch64 = SKIP
 
