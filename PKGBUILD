@@ -2,7 +2,7 @@
 
 _name=bandcamp_api
 pkgname=python-bandcamp-api
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A simple way to get info from Bandcamp"
 arch=(any)
@@ -17,7 +17,7 @@ depends=(
   python-setuptools
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('bff880095701142ff7c78bfb43fd69f9a1c685fc37010e37794dec2b3e41b242')
+sha256sums=('eff597328edf083307013a7884407c6fb7cd2568ac52fd3a85b3fe3bcefc3e1b')
 
 build() {
   cd "$_name-$pkgver"

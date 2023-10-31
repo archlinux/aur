@@ -1,6 +1,6 @@
 pkgbase = python-bandcamp-api
 	pkgdesc = A simple way to get info from Bandcamp
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/RustyRin/bandcamp-api
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-bandcamp-api
 	depends = python-lxml
 	depends = python-requests
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/b/bandcamp_api/bandcamp_api-0.2.2.tar.gz
-	sha256sums = bff880095701142ff7c78bfb43fd69f9a1c685fc37010e37794dec2b3e41b242
+	source = https://files.pythonhosted.org/packages/source/b/bandcamp_api/bandcamp_api-0.2.3.tar.gz
+	sha256sums = eff597328edf083307013a7884407c6fb7cd2568ac52fd3a85b3fe3bcefc3e1b
 
 pkgname = python-bandcamp-api
