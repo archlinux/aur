@@ -1,25 +1,25 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-adaptive-any
-pkgver=20.3.10
+pkgver=20.3.13
 pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Nexus
 _gitname=inputstream.adaptive
-_kodiver=20.1
+_kodiver=20.2
 arch=('any')
-url="https://github.com/peak3d/${_gitname}"
+url="https://github.com/xbmc/${_gitname}"
 license=('GPL')
 groups=('kodi')
 makedepends=('cmake' 'git' 'patch')
 provides=('kodi-addon-inputstream-adaptive')
 conflicts=('kodi-addon-inputstream-adaptive' 'kodi-addon-inputstream-adaptive-19');
 depends=('kodi')
-source=("https://github.com/peak3d/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
+source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
 
-sha256sums=('869abf0949d3a89f026804c17a301fbfbba280fafaa464e58ed3728bd77dbcb3'
-            'cd4158b2bc2d9593ad2f5c1cd2494957ab726b13d8379bbfb09d7d36df7b7d7e')
+sha256sums=('43d8da96176aedaef8ba14ec90398c5b13d0bb01c388150c02b9952870b655e8'
+            '4e81abf81172812bc8891f69a7a80a2b846298cecaae7b5009725e28a3040c23')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
