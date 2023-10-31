@@ -5,8 +5,8 @@ _suffix=""
 pkgname=(
 		"${pkgbase}${_suffix}" "${pkgbase}-headers${_suffix}"
 )
-_rev=7d9c250328413056b39a234002560c20ca78a227
-pkgver=6.5.6
+_rev=96127240b52c67d8efa95caac9460cd6fdd298ea
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
@@ -17,7 +17,7 @@ options=('!strip')
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'0ee8b3186588c67a2dbc3df0e92dcc0b8693d6bca3f9cefe9fef464da7dc9783cf34898e926b1d6ab102199b6e851d8ba6e0b82f32ca6d9ea9e1f3280da5eaca')
+		'e0abac73ab455b40077d35c9ea294a757532a43caac5b8ceae8f87686838beb816ef4f9ab04c464eb2ad95aa1d3dbf98816b5c3bfe5d65a5e9f58a391f701034')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -76,8 +76,8 @@ _package() {
 	ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 \
 		DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-	# remove build and source links
-	rm "${modulesdir}"/{source,build}
+	# remove build link
+	rm "${modulesdir}"/build
 }
 
 _package-headers() {
