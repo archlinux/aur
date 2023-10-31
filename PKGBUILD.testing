@@ -33,7 +33,7 @@ sha512sums+=(
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
-pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll branch"
+pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll branch (installs under /opt)"
 url="https://github.com/GloriousEggroll/wine-ge-custom"
 arch=(x86_64 x86_64_v3)
 options=(!staticlibs !lto !debug)

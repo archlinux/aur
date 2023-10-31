@@ -1,5 +1,5 @@
 pkgbase = wine-ge-custom-opt
-	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
+	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch (installs under /opt)
 	pkgver = GE.Proton8.22
 	pkgrel = 1
 	epoch = 1
