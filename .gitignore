@@ -1,3 +1,4 @@
-kotatogram-desktop*
-pkg/
-src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
