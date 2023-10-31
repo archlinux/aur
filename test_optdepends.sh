@@ -303,6 +303,14 @@ if [ -f "$(find_so libzlib.so)" ] || [ -f "$(find_so libz.so)" ]; then
     CONFOPTS="${CONFOPTS}$(find_pc zlib)"
 fi
 
+# TetGen
+TETGEN_SO="$(find_so libtet.so)"
+if [ -f "${TETGEN_SO}" ]; then
+	CONFOPTS+=" --with-tetgen=1"
+    CONFOPTS+=" --with-tetgen-lib=${TETGEN_SO}"
+    CONFOPTS+=" --with-tetgen-include=$(find_inc tetgen.h tetgen)"
+fi
+
 # # trilinos support
 #
 # if [ "${TRILINOS_DIR}" ]; then
