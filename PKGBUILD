@@ -3,7 +3,7 @@
 
 pkgname=python-glean-parser
 _name=glean_parser
-pkgver=10.0.1
+pkgver=10.0.2
 pkgrel=1
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-build' 'python-installer' 'python-pytest-runner'
              'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ea80410958e59a47ad5421fa8b30ab8afd82aaf0103ff4c2ecb31a333ff97fa3')
+sha256sums=('a1c807bee9c3886018c0478a84e1f49156809f8801d4ad7d1a89f4eceb1b2b37')
 # Rename of package to be more conventional
 provides=("python-glean_parser")
 conflicts=("python-glean_parser")
