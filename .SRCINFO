@@ -1,13 +1,13 @@
 pkgbase = jottem-bin
 	pkgdesc = A lightweight CLI manager for your markdown notes.
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/dogue/jottem
 	arch = x86_64
 	license = MIT
 	provides = jottem
 	conflicts = jottem
-	source = https://github.com/dogue/jottem/releases/download/v0.1.6/jottem-0.1.6-x86_64.tar.gz
-	sha256sums = 28dc67fa07e60d76e0c158843be403791670b6dacf30e43c6793b6aaf27920e6
+	source = https://github.com/dogue/jottem/releases/download/v0.1.7/jottem-0.1.7-x86_64.tar.gz
+	sha256sums = 7beb532dc1176589c2cf7ff45a37b6a45932b8d303beeda63b57be338a509fc7
 
 pkgname = jottem-bin
