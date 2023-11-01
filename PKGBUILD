@@ -1,7 +1,7 @@
 # Maintainer: Valeri Ochinski <v19930312@gmail.com>
 
 pkgname=nxdumpclient-git
-pkgver=1.0.0.r0.g2004844
+pkgver=1.1.0.r0.g2c5bc25
 pkgrel=1
 pkgdesc="Client program for dumping over USB with nxdumptool"
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	meson subprojects download --sourcedir="$srcdir/${pkgname%-git}"
 }
 
 build() {

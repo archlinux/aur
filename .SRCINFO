@@ -1,6 +1,6 @@
 pkgbase = nxdumpclient-git
-	pkgdesc = A client program for dumping over USB with nxdumptool
-	pkgver = 1.0.0.r0.g2004844
+	pkgdesc = Client program for dumping over USB with nxdumptool
+	pkgver = 1.1.0.r0.g2c5bc25
 	pkgrel = 1
 	url = https://github.com/v1993/nxdumpclient
 	arch = x86_64
