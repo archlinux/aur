@@ -1,0 +1,14 @@
+pkgbase = git-heatgrid
+	pkgdesc = Visualize git commits as a calendar heatmap
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/denshakhov/git-heatgrid
+	arch = any
+	license = MIT
+	depends = bash>=5.0.0
+	depends = coreutils
+	depends = git
+	source = git-heatgrid-1.0.0.tar.gz::https://github.com/denshakhov/git-heatgrid/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 41f9ece4437f4307d083923c756160d363ba10138a81dcae4c03995fca65b8be
+
+pkgname = git-heatgrid
