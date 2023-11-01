@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.0.10
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -9,17 +9,31 @@ url="https://rubick.vip/"
 _githuburl='https://github.com/rubickCenter/rubick'
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron26' 'python>=3')
-makedepends=('yarn' 'nvm' 'npm' 'gendesk' 'libxtst' 'libxtst' 'libicns' 'graphicsmagick' 'xz')
+depends=(
+	'bash'
+	'electron26'
+	'python>=3'
+)
+makedepends=(
+	'yarn'
+	'nvm'
+	'npm'
+	'gendesk'
+	'libxtst'
+	'libxtst'
+	'libicns'
+	'graphicsmagick'
+	'xz'
+)
 source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
 	"${pkgname}.sh")
-sha256sums=('ac80f434172b049386557efc4b957f26ebafc892775bf83e073c3211cb88c328'
-            '35becc7e711518fb0f396742aaba1ec4480fc0ea452b088ab830ae2b5d79889e')
+sha256sums=('8eb874851fa004703d9a33243d9ac5a0de5d2169b24d9f877d3cc7cc414d9cfb'
+            'e00acbe229323dbc611a0839ce41ec0ea3b1ee75713a40226b9af45f8c2e3352')
 _ensure_local_nvm() {
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install 16
+	nvm use 16
 }
 build() {
 	_ensure_local_nvm
@@ -39,8 +53,8 @@ build() {
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
-	cp -r "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/public/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
