@@ -1,12 +1,12 @@
 # Maintainer: Aurélien Bertron <aurelienbertron at gmail dot com>
 pkgname=plasma5-runners-duckduckgo-bangs
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A little krunner plugin (Plasma 5) to execute DuckDuckGo bangs in default browser"
 arch=('any')
 url="https://framagit.org/Nautigsam/krunner-duckduckgo-bangs"
 license=('GPL')
-depends=('krunner' 'qt5-base' 'ki18n')
+depends=('krunner5' 'qt5-base' 'ki18n5')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("${pkgname}-${pkgver}.tar.gz::https://framagit.org/Nautigsam/krunner-duckduckgo-bangs/-/archive/v${pkgver}/krunner-duckduckgo-bangs-v${pkgver}.tar.gz")
 noextract=("${source[@]%%::*}")
