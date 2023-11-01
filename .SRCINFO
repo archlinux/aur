@@ -1,14 +1,14 @@
 pkgbase = chips-cctools
 	pkgdesc = Editor and Tool suite for Chip's Challenge, Chip's Challenge 2, and Tile World
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zrax/cctools
 	arch = any
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	depends = qt5-base
-	depends = syntax-highlighting
+	depends = syntax-highlighting5
 	optdepends = tile-world: Tile World playtesting
 	optdepends = steam: Steam CC playtesting
 	optdepends = wine: MSCC playtesting

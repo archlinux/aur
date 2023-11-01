@@ -3,12 +3,12 @@
 pkgname=chips-cctools
 _pkgname=cctools
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Editor and Tool suite for Chip's Challenge, Chip's Challenge 2, and Tile World"
 arch=('any')
 url='https://github.com/zrax/cctools'
 license=('GPL3')
-depends=('qt5-base' 'syntax-highlighting')
+depends=('qt5-base' 'syntax-highlighting5')
 optdepends=('tile-world: Tile World playtesting'
             'steam: Steam CC playtesting'
             'wine: MSCC playtesting')
