@@ -1,0 +1,27 @@
+diff --git a/build_files/cmake/platform/platform_unix.cmake b/build_files/cmake/platform/platform_unix.cmake
+index 787d0f87002..659938a45b2 100644
+--- a/build_files/cmake/platform/platform_unix.cmake
++++ b/build_files/cmake/platform/platform_unix.cmake
+@@ -329,6 +329,10 @@ if(WITH_OPENVDB)
+ endif()
+ add_bundled_libraries(openvdb/lib)
+ 
++if(WITH_USD)
++  list(APPEND __boost_packages python)
++endif()
++
+ if(WITH_NANOVDB)
+   find_package_wrapper(NanoVDB)
+   set_and_warn_library_found("NanoVDB" NANOVDB_FOUND WITH_NANOVDB)
+diff --git a/source/blender/io/usd/CMakeLists.txt b/source/blender/io/usd/CMakeLists.txt
+index ebd292782c0..02486e72461 100644
+--- a/source/blender/io/usd/CMakeLists.txt
++++ b/source/blender/io/usd/CMakeLists.txt
+@@ -55,6 +55,7 @@ set(INC
+ set(INC_SYS
+   ${USD_INCLUDE_DIRS}
+   ${BOOST_INCLUDE_DIR}
++  ${PYTHON_INCLUDE_DIRS}
+   ${TBB_INCLUDE_DIR}
+   ${PYTHON_INCLUDE_DIR}
+ )

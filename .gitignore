@@ -3,9 +3,6 @@
 !PKGBUILD
 !upbge.install
 !upbge.desktop
-!embree.patch
-!SelectCudaComputeArch.patch
-!usd_python.patch
-!python11.patch
+!*.patch
 !.SRCINFO
 !.gitignore

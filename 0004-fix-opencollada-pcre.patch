@@ -1,0 +1,31 @@
+From fee2839ca94373cc482e12d7d2916a7dbf0972ea Mon Sep 17 00:00:00 2001
+From: Fredrick Brennan <copypaste@kittens.ph>
+Date: Thu, 11 May 2023 06:31:19 -0400
+Subject: [PATCH] fix opencollada pcre
+
+---
+ build_files/cmake/platform/platform_unix.cmake | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/build_files/cmake/platform/platform_unix.cmake b/build_files/cmake/platform/platform_unix.cmake
+index ce6ce02622c..0bd92fa7b16 100644
+--- a/build_files/cmake/platform/platform_unix.cmake
++++ b/build_files/cmake/platform/platform_unix.cmake
+@@ -264,13 +264,7 @@ endif()
+ if(WITH_OPENCOLLADA)
+   find_package_wrapper(OpenCOLLADA)
+   if(OPENCOLLADA_FOUND)
+-    if(WITH_STATIC_LIBS)
+-      # PCRE is bundled with OpenCollada without headers, so can't use
+-      # find_package reliably to detect it.
+-      set(PCRE_LIBRARIES ${LIBDIR}/opencollada/lib/libpcre.a)
+-    else()
+-      find_package_wrapper(PCRE)
+-    endif()
++    find_package_wrapper(PCRE)
+     find_package_wrapper(XML2)
+   else()
+     set_and_warn_library_found("OpenCollada" OPENCOLLADA_FOUND WITH_OPENCOLLADA)
+-- 
+2.40.1
+

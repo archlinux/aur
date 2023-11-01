@@ -1,62 +1,69 @@
-#!/bin/hint/bash
+#!/bin/bash
 # Maintainer: Xavier Cho <mysticfallband@gmail.com>
-#shellcheck disable=SC2015
+# Adapted from blender-git AUR package.
+
+#Configuration:
+#Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+#Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+#Use: aurutils --margs=VAR1=0,VAR2=1
+#Use: VAR1=0 VAR2=1 pamac
+
+# Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
+_fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=134573.ec6556fa36e
+pkgver=135830.73346754b94
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
-arch=("i686" "x86_64")
+arch=('i686' 'x86_64')
 url="https://upbge.org/"
-depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu" "potrace" "openxr"
-         "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio" "libdecor" "openexr"
-         "openvdb" "opencollada" "opensubdiv" "openshadinglanguage" "libtiff" "libpng" "openimagedenoise")
-optdepends=("cuda: CUDA support in Cycles"
-         "optix>=7.1.0: OptiX support in Cycles"
-         "openpgl: Path guiding support in Cycles"
-         "materialx: MaterialX materials"
-         "level-zero-headers: Intel OpenCL FPGA kernels (all four needed)"
-         "intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)"
-         "intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)"
-         "intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)"
-         "gcc12: Compile CUDA support in Cycles"
-         "gcc12-libs: Compile CUDA support in Cycles"
-         "makepkg-cg: Control resources during compilation"
-         "usd: USD export Scene")
-makedepends=("git" "subversion" "cmake" "clang" "boost" "mesa" "llvm" wayland{,-protocols} 
-         "libxkbcommon")
-provides=("blender")
-conflicts=("blender")
-license=("GPL")
-install=upbge.install
-
-# NOTE: the source array has to be kept in sync with .gitmodules
-# the submodules has to be stored in path ending with git to match
-# the path in .gitmodules.
-# More info:
-#   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=(
-  "upbge::git+https://github.com/UPBGE/upbge.git"
-  "blender-addons.git::git+https://github.com/UPBGE/blender-addons.git"
-  "blender-addons-contrib.git::git+https://projects.blender.org/blender/blender-addons-contrib.git"
-  "blender-translations.git::git+https://projects.blender.org/blender/blender-translations.git"
-  "blender-dev-tools.git::git+https://projects.blender.org/blender/blender-dev-tools.git"
-  upbge.desktop
-  python11.patch
-  usd.patch
-  SelectCudaComputeArch.patch
-  embree.patch)
-sha256sums=(
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a"
-  "ae81c77dd41736bbcf65e31fa77477979b214004be3423e10eddef7af3f12dff"
-  "e7b30006871799b104dfc51ec98af2528e387623f8eb5e24912beae726d517c7"
-  "155c04f971d3f45618a89fa73d91e21ba493ae24029475e18192c49c3fcd8cb4"
-  "a35710a189324679322e74b65754993831fe0ac7db3f9a774a1b799afba6cd08")
+depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
+          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio' 'sdl2'
+          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng'
+          'python' 'python-zstandard' 'ccache')
+depends+=('libdecor' 'libepoxy')
+optdepends=('cuda: CUDA support in Cycles'
+            'optix>=7.4.0: OptiX support in Cycles'
+            'usd=21.05: USD export Scene'
+            'openpgl: Intel Path Guiding library in Cycles'
+            'openimagedenoise: Intel Open Image Denoise support in compositing'
+            'materialx: MaterialX materials'
+            'level-zero-headers: Intel OpenCL FPGA kernels (all four needed)'
+            'intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)'
+            'intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)'
+            'intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)'
+            'gcc12: Compile CUDA support in Cycles'
+            'makepkg-cg: Control resources during compilation')
+makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm' 'clang' 'subversion')
+makedepends+=('wayland-protocols')
+makedepends+=('cython')
+provides=('blender')
+conflicts=('blender' 'blender-4.1-bin')
+license=('GPL')
+source=("upbge::git+https://github.com/UPBGE/upbge${_fragment}"
+        "blender-addons::git+https://github.com/UPBGE/blender-addons"
+        'blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib'
+        'blender/translations::git+https://github.com/blender/blender-translations'
+        'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
+        'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
+        upbge.desktop
+        # Patches...
+        '0001-use-github.com-for-make-update-git.patch'
+        '0003-usd-python.patch' #add missing python headers when building against python enabled usd.
+        '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
+        '1001-python11.patch' #support Python 3.11
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a'
+            '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c'
+            'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
+            '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df'
+            'ae81c77dd41736bbcf65e31fa77477979b214004be3423e10eddef7af3f12dff')
 
 pkgver() {
 	cd "$srcdir/upbge"
@@ -64,34 +71,42 @@ pkgver() {
 }
 
 prepare() {
-  make -C "$srcdir/upbge" update
-
-  if grep -q nvidia <(lsmod); then
-    git -C "$srcdir/upbge" apply -v "${srcdir}"/SelectCudaComputeArch.patch
-  fi
-  ((DISABLE_USD)) || git -C "$srcdir/upbge" apply -v "${srcdir}"/usd.patch
-  git -C "$srcdir/upbge" apply -v "${srcdir}"/embree.patch
-  git -C "$srcdir/upbge" apply -v "${srcdir}"/python11.patch
+  cd "$srcdir"
+  mkdir -p upbge/scripts/addons
+  rm -rf upbge/scripts/addons{,/contrib}
+  mv blender-addons upbge/scripts/addons
+  mv blender-addons-contrib upbge/scripts/addons/contrib
+  cd "upbge"
+  # update the submodules
+  git -c protocol.file.allow=always submodule update --init --recursive --remote
+  git apply -v "${srcdir}"/*.patch
 }
 
 build() {
+  export PATH="/opt/lib:/opt/bin:$PATH"
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
-  msg "Python version detected: ${_pyver}"
+  msg "python version detected: ${_pyver}"
 
+  declare -a -g _CMAKE_FLAGS
   # determine whether we can install python modules
   if [[ -n "$_pyver" ]]; then
-    _CMAKE_FLAGS+=( -DWITH_PYTHON=$_pyver \
-                    -DWITH_PYTHON_MODULE=OFF \
+    export PYTHON_LIBRARY=/usr/lib/libpython${_pyver}.so
+    export PYTHON_VERSION=${_pyver}
+    _CMAKE_FLAGS+=( -DPYTHON_VERSION=$_pyver \
+                    -DPYTHON_LIBRARY=/usr/lib/libpython${_pyver}.so \
                     -DWITH_PYTHON_INSTALL=ON \
-                    -DWITH_PYTHON_SAFETY=ON )
+                    -DWITH_PYTHON_SAFETY=OFF )
   fi
 
-  export CC=`which gcc-12`
-  export CXX=`which g++-12`
   export CUDAHOSTCXX="$CC"
 
   _CMAKE_FLAGS+=( -DWITH_CLANG=ON \
                   -DWITH_CYCLES=ON )
+
+  # Use CUDA_ARCH to build for specific GPU architecture
+  # Supports: single arch (sm_52) and list of archs (sm_52;sm_60)
+  [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
+
 
   # check for oneapi
   export _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
@@ -107,6 +122,7 @@ build() {
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
     CUDAHOSTCXX=`which gcc-12`
+    PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/:$PATH"
     # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON \
                     -DWITH_COMPILER_ASAN=OFF \
@@ -120,44 +136,77 @@ build() {
     PATH="/usr/materialx:$PATH"  
   fi
 
+  _USD_PKG=$(pacman -Qq usd 2>/dev/null) || true
+  if [ "$_USD_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_USD=ON )
+    PATH="/usr/share/usd:$PATH"  
+  fi
+
   # check for optix
   _OPTIX_PKG=$(pacman -Qq optix 2>/dev/null) || true
   if [ "$_OPTIX_PKG" != "" ]; then
-      _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON
+      _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON \
                       -DOPTIX_ROOT_DIR=/opt/optix )
   fi
 
-  # check for universal scene descriptor
-  _USD_PKG=$(pacman -Qq usd>/dev/null) || true
-  if [ "$_USD_PKG" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_USD=ON
-                    -DUSD_ROOT_DIR=/usr/lib )
-  else
-    _CMAKE_FLAGS+=( -DWITH_HYDRA=OFF )
+  # check for open image denoise
+  _OIDN_PKG=$(pacman -Qq openimagedenoise 2>/dev/null) || true
+  if [ "$_OIDN_PKG" != "" ]; then
+      _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
   fi
 
-  (2>&1 CUDAHOSTCXX="$CUDAHOSTCXX" cmake -S "$srcdir/upbge" -B build --fresh \
-        -C "${srcdir}/upbge/build_files/cmake/config/blender_release.cmake" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DWITH_STATIC_LIBS=OFF \
-        -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_LIBS_PRECOMPILED=OFF \
-        -DWITH_GAMEENGINE=ON \
-        -DWITH_GHOST_SDL=ON \
-        -DWITH_PLAYER=ON \
-        -DWITH_PYTHON_INSTALL=OFF \
-        -DWITH_FFTW3=ON \
-        -DWITH_CODEC_FFMPEG=ON \
-        -DWITH_MOD_OCEANSIM=ON \
-        -DXR_OPENXR_SDK_ROOT_DIR=/usr \
-        -DPYTHON_VERSION="${_pyver}" \
-        ${_CMAKE_FLAGS[@]}) #> "$srcdir/../cmake_out"
-        #--trace-expand \
+  if [ -d /opt/rocm/bin ]; then
+      _CMAKE_FLAGS+=( -DWITH_CYCLES_HIP_BINARIES=ON
+                      -DWITH_CYCLES_HYDRA_RENDER_DELEGATE:BOOL=FALSE
+                    )
+  fi
 
-  cd build
+  if [[ -f "$srcdir/upbge/CMakeCache.txt" && -z "$KEEP_CMAKE_CACHE" ]]; then
+    rm "$srcdir/upbge/CMakeCache.txt"
+  fi
 
-  MAKE_CMD="make ${MAKEFLAGS:--j1}"
+  NUMPY_PY_INCLUDE=/usr/lib/python3.11/site-packages/numpy/core/include/
+  [[ -d "$NUMPY_PY_INCLUDE" ]] && (
+    _CMAKE_FLAGS+=( -DNUMPY_INCLUDE_DIR="$NUMPY_PY_INCLUDE" );
+    __CFLAGS="$CFLAGS -I$NUMPY_PY_INCLUDE"
+    __CXXFLAGS="$CXXFLAGS -I$NUMPY_PY_INCLUDE"
+    export CFLAGS="$__CFLAGS"
+    export CXXFLAGS="$__CXXFLAGS"
+  )
+
+  export CFLAGS="$CFLAGS -fno-lto"
+  export CXXFLAGS="$CXXFLAGS -fno-lto"
+  # Who even knows why this is needed
+  export CFLAGS="$CFLAGS -lSPIRV -lSPIRV-Tools -lSPIRV-Tools-opt -lSPIRV-Tools-link -lSPIRV-Tools-reduce -lSPIRV-Tools-shared -lglslang"
+  export CXXFLAGS="$CXXFLAGS -lSPIRV -lSPIRV-Tools -lSPIRV-Tools-opt -lSPIRV-Tools-link -lSPIRV-Tools-reduce -lSPIRV-Tools-shared -lglslang"
+  _CMAKE_FLAGS+=( -DCMAKE_C_FLAGS="$CFLAGS" );
+  _CMAKE_FLAGS+=( -DCMAKE_CXX_FLAGS="$CXXFLAGS" );
+
+  CMAKE_CMD=(CUDAHOSTCXX="$CUDAHOSTCXX" cmake -B "$srcdir/build" --fresh
+                -C "${srcdir}/upbge/build_files/cmake/config/blender_release.cmake"
+                -GUnix\ Makefiles
+                -DCMAKE_INSTALL_PREFIX=/usr
+                -DCMAKE_INSTALL_PREFIX_WITH_CONFIG="${pkgdir}/usr"
+                -DCMAKE_SKIP_INSTALL_RPATH=ON
+                -DCMAKE_SKIP_BUILD_RPATH=ON
+                -DCMAKE_BUILD_TYPE=Release
+                -DWITH_GAMEENGINE=ON
+                -DWITH_PLAYER=ON
+                -DWITH_SDL=ON
+                -DWITH_SDL_DYNLOAD=OFF
+                -DWITH_CODEC_FFMPEG=ON
+                -DWITH_MOD_OCEANSIM=ON
+                -DWITH_INSTALL_PORTABLE=OFF
+                -DWITH_LIBS_PRECOMPILED=OFF
+                -DWITH_STATIC_LIBS=OFF
+                -DXR_OPENXR_SDK_ROOT_DIR=/usr
+                -DSDL2_ROOT_DIR=/usr
+                -DPYTHON_VERSION="${_pyver}"
+                "${_CMAKE_FLAGS[@]}"
+  ) #> "$srcdir/../cmake_out"
+                #--trace-expand \
+
+  MAKE_CMD="make ${MAKEFLAGS:--j1} blender"
 
   USING_MAKEPKG_CG="$(systemctl --user -t slice | grep -o makepkg-cg-`id -u`-'[[:digit:]]\+'.slice'[[:space:]]\+'loaded'[[:space:]]\+'active)" || true
   MAKEPKG_CG_WARNING=$(
@@ -169,25 +218,29 @@ EOF
   )
   [[ -z "$USING_MAKEPKG_CG" ]] && warning "$MAKEPKG_CG_WARNING"
   
-  $MAKE_CMD
+  cd upbge
+  env "${CMAKE_CMD[@]}"
+  cd ../build
+  env CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" $MAKE_CMD
 }
 
 package() {
-  export DESTDIR="$pkgdir"
+  _suffix=${pkgver%%.r*}
+  cd "$srcdir/build"
+  sed -ie 's/\(file(INSTALL\)\(.*blender\.1"\))/#\1\2)/' source/creator/cmake_install.cmake
+  BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/upbge/${_suffix}" make DESTDIR="$pkgdir" install
+  #find . -name 'cmake_install.cmake' -exec sed -i -e 's|/usr/lib64/|'"$pkgdir"'/usr/lib/|g' {} \;
+  #cmake --install . --prefix "$pkgdir/usr"
 
-  make -C "$srcdir/build" install
-
-  #undo rpath clean in cmake_install ( faster than patching CMakeLists.txt)
-  cp "$srcdir/build/bin/blender" "$pkgdir/usr/bin/blender"
+  if [[ -e "$pkgdir/usr/share/upbge/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
+    # make sure the cuda kernels are not stripped
+    chmod 444 "$pkgdir"/usr/share/upbge/${_suffix}/scripts/addons/cycles/lib/*
+  fi
 
   install -D -m755 "$srcdir"/build/bin/blenderplayer "$pkgdir"/usr/bin/blenderplayer
   install -D -m644 "$srcdir"/upbge.desktop "$pkgdir"/usr/share/applications/upbge.desktop
   install -D -m644 "$srcdir"/upbge/release/freedesktop/icons/scalable/apps/upbge.svg \
     "$pkgdir"/usr/share/icons/hicolor/scalable/apps/upbge.svg
-
-  if [ -e "$pkgdir"/usr/share/upbge/*/scripts/addons/cycles/lib/ ] ; then
-    # make sure the cuda kernels are not stripped
-    chmod 444 "$pkgdir"/usr/share/upbge/*/scripts/addons/cycles/lib/*
-  fi
 }
-# vim:set sw=2 ts=2 et:
+
+# vim: syntax=bash:et:ts=2:sw=2
