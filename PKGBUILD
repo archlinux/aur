@@ -4,7 +4,7 @@ _pkgname=dptf
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=9.0.11402.build38022.r100.20230911.00b9ac15
-pkgrel=2
+pkgrel=3
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
 url='https://github.com/intel/dptf'
@@ -18,7 +18,7 @@ backup=(
 )
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-
+options+=('!lto')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
