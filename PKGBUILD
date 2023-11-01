@@ -3,28 +3,28 @@
 # Contributor: Daniel Plank <tyrolyean@semi-professional.net>
 
 pkgname=freerouting
-pkgver=1.8.0
+pkgver=1.9.0
+_jrever=17
+_jdkver=17
 pkgrel=1
 pkgdesc="Advanced PCB autorouter"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/freerouting/freerouting"
 license=('GPL3')
-depends=('jre17-openjdk>=17')
-makedepends=('jdk17-openjdk>=17' git)
+depends=("java-runtime=${_jrever}")
+makedepends=("java-environment-openjdk=${_jdkver}")
 optdepends=('kicad: for use with PCB editor')
-source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "freerouting.sh"
         "freerouting.desktop")
-sha512sums=('18110b33815d115966e5688a6b6869e07b75611773285ca1173b241cd7766b03a628365f5dc96fc24a7734f901b94faae176519e161b1b6efdd8852b9f274e14'
-            '0a43367f8a9168a94176041f665dbc278b40fcc7a6e6d5c978fcd49081245e030e7b9524056e6fa5acf593d744dd58c25d6d8303b7b2ea6128f6016d05aa28ef'
+sha512sums=('ed51eeaaa1315b3fb4311f4f0a74e64266492b2a8e6aff69179911e31b8c612825c7783228a0dddc8f06fc92962f426ccb7f6305d8ff7537a0009f82841a8ab0'
+            '3ff1a906c3f02e0e0077599cfad8082fa11c8b321e90b3e466b70969b44c4675ac6df6b898fda4d2b17d9f263787d319dab6c836a37b1ff4737f715730819ce3'
             '1eeacc544cd6081a9cef03424e505177972c65dc13d1379989889c0ed7419ed1b76013d48d160d0b74932aec1170ca1535b103f4266024b7f35e9656a11281f5')
 
 build() {
-  echo "$(tput setaf 196)$(tput bold)Don't forget to set active JDK to 17 version before running makepkg:"
-  echo "  sudo archlinux-java set java-17-openjdk$(tput sgr0)"
-
   cd "${pkgname}-${pkgver}"
 
+  export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
   ./gradlew assemble
 }
 
