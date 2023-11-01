@@ -1,7 +1,7 @@
 pkgbase = typst-lsp
 	pkgdesc = Language server for Typst
-	pkgver = 0.10.1
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://github.com/nvarner/typst-lsp
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = typst-lsp
 	depends = glibc
 	depends = libcurl.so
 	depends = libcrypto.so
-	source = https://github.com/nvarner/typst-lsp/archive/v0.10.1/typst-lsp-0.10.1.tar.gz
-	sha256sums = 11a96fb8c141ef59b697baa9b768aa46a6baa694de9ffa1180d7620041958783
+	source = https://github.com/nvarner/typst-lsp/archive/v0.11.0/typst-lsp-0.11.0.tar.gz
+	sha256sums = e1e1386caaa5118baa889f5069f9fb89d2fffddf4ce46f46e10aaea2dfaf217d
 
 pkgname = typst-lsp

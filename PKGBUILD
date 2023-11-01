@@ -2,8 +2,8 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='Language server for Typst'
 arch=(i686 x86_64)
 url="https://github.com/nvarner/$pkgname"
@@ -15,7 +15,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('11a96fb8c141ef59b697baa9b768aa46a6baa694de9ffa1180d7620041958783')
+sha256sums=('e1e1386caaa5118baa889f5069f9fb89d2fffddf4ce46f46e10aaea2dfaf217d')
 
 prepare() {
 	cd "$_archive"
