@@ -1,7 +1,7 @@
 pkgbase = iptvnator-electron-bin
 	pkgdesc = Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron.
-	pkgver = 0.14.0
-	pkgrel = 4
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = https://iptvnator.vercel.app/
 	arch = aarch64
 	arch = armv7h
@@ -10,17 +10,17 @@ pkgbase = iptvnator-electron-bin
 	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
-	provides = iptvnator=0.14.0
+	provides = iptvnator=0.15.0
 	conflicts = iptvnator
-	source = LICENSE.md::https://raw.githubusercontent.com/4gray/iptvnator/v0.14.0/LICENSE.md
+	source = LICENSE.md::https://raw.githubusercontent.com/4gray/iptvnator/v0.15.0/LICENSE.md
 	source = iptvnator-electron.sh
 	sha256sums = 475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74
-	sha256sums = ef8ffc7efe435dfaeafea84674e097706be3de9dd6f307a6432b99511b412f9f
-	source_aarch64 = iptvnator-0.14.0-aarch64.deb::https://github.com/4gray/iptvnator/releases/download/v0.14.0/iptvnator_0.14.0_arm64.deb
-	sha256sums_aarch64 = 81dce66634744815d6f72df8b2976969447a8f50b0ca1f2ab79594720939b58b
-	source_armv7h = iptvnator-0.14.0-armv7h.deb::https://github.com/4gray/iptvnator/releases/download/v0.14.0/iptvnator_0.14.0_armv7l.deb
-	sha256sums_armv7h = c02c3529f5f0a9ad499db9f21711ba7baadb655fd623ba7897e0dfb191c8491a
-	source_x86_64 = iptvnator-0.14.0-x86_64.deb::https://github.com/4gray/iptvnator/releases/download/v0.14.0/iptvnator_0.14.0_amd64.deb
-	sha256sums_x86_64 = c98051f020bb64231ed6356a784084a14ee800c28d2e1af856df50d4f0d46cec
+	sha256sums = 799d3100aa8d859af36f42a6afcf504a78a5cb93008865f6878dc4a5ef13156a
+	source_aarch64 = iptvnator-0.15.0-aarch64.deb::https://github.com/4gray/iptvnator/releases/download/v0.15.0/iptvnator_0.15.0_arm64.deb
+	sha256sums_aarch64 = 1b4f212b42d85ff6a32cba69b86dba3fc3d00163342e21063caefd2ae176ceae
+	source_armv7h = iptvnator-0.15.0-armv7h.deb::https://github.com/4gray/iptvnator/releases/download/v0.15.0/iptvnator_0.15.0_armv7l.deb
+	sha256sums_armv7h = bb00a55ade5d6c4060eaa8408b997e5d572782a00810ca522546128a7be17fdd
+	source_x86_64 = iptvnator-0.15.0-x86_64.deb::https://github.com/4gray/iptvnator/releases/download/v0.15.0/iptvnator_0.15.0_amd64.deb
+	sha256sums_x86_64 = d440a42bb29253f6f80041c837454e2c620d9d9827e15a317329f4877992a173
 
 pkgname = iptvnator-electron-bin
