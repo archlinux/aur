@@ -1,5 +1,10 @@
 # redumper-bin .Changelog
 
+## 2023-10-31, redumper-bin build_246-1
+
+* Bump to build_246 release.
+* Skipped a few builds because they flooded through in quick succession.
+
 ## 2023-10-26, redumper-bin build_239-1
 
 * Bump to build_239 release.
