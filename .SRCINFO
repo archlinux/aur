@@ -1,0 +1,19 @@
+pkgbase = chdig-git
+	pkgdesc = Dig into ClickHouse with TUI interface
+	pkgver = v0.3.0.r46.gfd9bdff
+	pkgrel = 1
+	url = https://github.com/azat/chdig
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = pyinstaller
+	depends = bash
+	provides = chdig
+	conflicts = chdig
+	source = chdig-git::git+https://github.com/azat/chdig
+	source = git+https://github.com/4rtzel/tfg
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = chdig-git
