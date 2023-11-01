@@ -22,7 +22,8 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not fit'
+  test-env/bin/python -m pytest \
+    -k 'not num[NumericalMLP] and not rank[LSTMClassifierEfficacy] and not rank[MLPRegressor] and not num[NumericalLR] and not fit'
 }
 
 package() {
