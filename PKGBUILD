@@ -2,8 +2,8 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.11
+pkgrel=1
 pkgdesc='Crossword player and editor for GNOME'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/jrb/crosswords'
@@ -19,7 +19,7 @@ depends=(
 makedepends=(meson)
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/crosswords-${_commit}.tar.gz")
-b2sums=('94b80da355d5950e216b785124bbc4fcb02b5f19324da92579f8533487a624ba7a65b67889bf68225e8bc4a621a8528ef94ade07b33ec6fdbc2360280fc8bb35')
+b2sums=('eec4efa6693144aca4656a0d9b0c780e720c86152a42b5dc8f627d88708b96e4a369ca757be8eb422d9bcfa5bae65930c080f651dca47efa2f7c28f8fd51e71e')
 
 build() {
 	arch-meson ${pkgname}-${_commit} build -Ddevelopment=false
