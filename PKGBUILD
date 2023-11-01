@@ -1,10 +1,11 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: knedl1k <knedl1k At tuta Dot io>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor:  GalSim developers team on GitHub
 _base=GalSim
 pkgname=python-${_base,,}
-pkgver=2.4.10
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Modular galaxy image simulation toolkit"
 arch=(x86_64)
@@ -14,7 +15,7 @@ depends=(python-astropy boost-libs eigen fftw python-coord python-future)
 makedepends=(python-build python-installer python-setuptools python-wheel pybind11 python-numpy)
 # checkdepends=(python-pytest) # python-timeout python-scipy python-yaml
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('a08b59f42685e47f18708f6db8f90789dcf2c4316c78a153a352878cbbc35da5e3959fb87e0b9416332e9d87f31a9d340403de4c5d95ecc86e09bec0957e5008')
+sha256sums=('31d233244926d43734477e8769656db83541bbfaa83a6303172f2d58886fe39f')
 
 build() {
   cd ${_base}-${pkgver}
@@ -35,3 +36,4 @@ package() {
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
