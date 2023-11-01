@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=genmake-templates-git
-pkgver=r2.0f13b05
-pkgrel=2
+pkgver=r5.8ae831b
+pkgrel=1
 pkgdesc="Makefile templates for genmake"
 arch=('any')
 url="https://gitee.com/duapple/makefile"
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	install -Dm644 *.conf -t "$pkgdir/usr/share/genmake/templates/"
+	install -Dm644 * -t "$pkgdir/usr/local/genmake/config/makefile"
 }
