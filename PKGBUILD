@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MicrobiomeProfiler
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='An R/shiny package for microbiome functional enrichment analysis'
 arch=('any')
@@ -26,11 +26,12 @@ depends=(
 )
 optdepends=(
   r-knitr
+  r-prettydoc
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9616c7a6442c79a1fa03c58c7e2d2eb9f690d81677a6935fdbd7a8efedc0e9c2')
+sha256sums=('4dd11f1551f9e1b5db19a28cda1e41c563efd8a34e0d81db43c63d99509f81f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

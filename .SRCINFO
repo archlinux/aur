@@ -1,6 +1,6 @@
 pkgbase = r-microbiomeprofiler
 	pkgdesc = An R/shiny package for microbiome functional enrichment analysis
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MicrobiomeProfiler
 	arch = any
@@ -19,9 +19,10 @@ pkgbase = r-microbiomeprofiler
 	depends = r-shinycustomloader
 	depends = r-shinywidgets
 	optdepends = r-knitr
+	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MicrobiomeProfiler_1.6.1.tar.gz
-	sha256sums = 9616c7a6442c79a1fa03c58c7e2d2eb9f690d81677a6935fdbd7a8efedc0e9c2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MicrobiomeProfiler_1.8.0.tar.gz
+	sha256sums = 4dd11f1551f9e1b5db19a28cda1e41c563efd8a34e0d81db43c63d99509f81f6
 
 pkgname = r-microbiomeprofiler
