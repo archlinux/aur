@@ -9,6 +9,7 @@ pkgbase = python-cryptolyzer
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python-oscrypto
 	depends = python-attrs
 	depends = python-certvalidator
 	depends = python-cryptoparser
