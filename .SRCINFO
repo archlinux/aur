@@ -1,6 +1,6 @@
 pkgbase = r-moonlightr
 	pkgdesc = Identify oncogenes and tumor suppressor genes from omics data
-	pkgver = 1.26.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MoonlightR
 	arch = any
@@ -24,12 +24,13 @@ pkgbase = r-moonlightr
 	depends = r-tcgabiolinks
 	optdepends = r-biocstyle
 	optdepends = r-devtools
+	optdepends = r-edger
 	optdepends = r-knitr
 	optdepends = r-png
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MoonlightR_1.26.1.tar.gz
-	sha256sums = 18b6a9a49855fbc9cbb017cc8291692bd5b5595193658cc1c7cb577c00b62cdd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MoonlightR_1.28.0.tar.gz
+	sha256sums = f973bf40393e5d45b3476feb520c958ecd71cd06bedd7341e1aecef3a2ecb5fe
 
 pkgname = r-moonlightr
