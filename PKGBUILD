@@ -5,14 +5,15 @@ _npmname=instant-markdown-d
 _npmver=0.3.0
 pkgname=vim-instant-markdown
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Instant Markdown previews from vim in a browser"
 arch=(any)
-license=(unknown)
+license=(Apache)
 url="https://github.com/instant-markdown/vim-instant-markdown"
 depends=('nodejs' 'npm' 'wget' 'xdg-utils' 'curl')
 makedepends=('jq')
-optdepends=('neovim: neovim support' 'vim: vim support')
+optdepends=('neovim: neovim support' 
+						'vim: vim support')
 source=("https://github.com/instant-markdown/$_npmname/archive/$pkgver.tar.gz"
         "https://github.com/instant-markdown/$pkgname/archive/v$_npmver.tar.gz")
 noextract=($_npmver.tar.gz)
