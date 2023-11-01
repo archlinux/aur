@@ -39,7 +39,7 @@ pkgbase = mutter-vrr
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=4f6c91847088d7d6476b88575b3a6601b819b443
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c71a119de06d8937930e4d1adf06ff0c2b259653
 	source = vrr.patch
 	sha256sums = SKIP
 	sha256sums = d1a4e72db1dfb17b792262fb7e03e3fd4a7eaa6296824e08192577c1e631b8cf
