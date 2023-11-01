@@ -2,7 +2,7 @@
 
 _pkgname=notepadnext
 pkgname=$_pkgname-bin
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A cross-platform, reimplementation of Notepad++ (binary release)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 options=(!strip)
 source=("$url/releases/download/v$pkgver/NotepadNext-v$pkgver-x86_64.AppImage")
-sha256sums=('80971d30de9a1d0c590d3f76f60cacbd44530c03c4fa132aafe933273bc45af4')
+sha256sums=('b26e2d5208bce3b70847f1b7c5f863cd7567bd476dd3df68ad433c700564a089')
 
 prepare() {
   # Extract the AppImage
