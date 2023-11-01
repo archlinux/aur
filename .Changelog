@@ -1,5 +1,9 @@
 # mpf-check-bin .Changelog
 
+## 2023-10-31, mpf-check-bin 2.7.4-1
+
+* Bump to 2.7.4
+
 ## 2023-10-26, mpf-check-bin 2.7.3-3
 
 * Remove dependency on `casclib` and `stormlib`; they're actaully unnecessary
@@ -7,7 +11,7 @@
 ## 2023-10-26, mpf-check-bin 2.7.3-2
 
 * Added dependency on `casclib` and `stormlib`
-* Release distribution `CascLib.dll` and `StormLib.dll` are now discarded.
+* Release distribution `CascLib.dll` and `StormLib.dll` are now discarded
 
 ## 2023-10-26, mpf-check-bin 2.7.3-1
 
@@ -48,7 +52,7 @@ expected to be deprecated in MPF 2.6.7.
 
 ## 2023-10-08, mpf-check-bin 2.6.6-1
 
-* Bump to v2.6.6 release.
+* Bump to v2.6.6 release
 
 # FAQ
 
