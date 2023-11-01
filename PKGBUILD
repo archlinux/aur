@@ -2,7 +2,7 @@
 
 _pkgname="olivia"
 pkgname="$_pkgname-git"
-pkgver=1.0beta.r336.g4048134
+pkgver=1.0.beta.r336.g4048134
 pkgrel=1
 pkgdesc="Elegant Cloud Music Player for Linux Desktop"
 url="https://github.com/keshavbhatt/olivia"
@@ -45,7 +45,7 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags | sed -E 's/^v//;s/-(beta)/\1/;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 fi
 
