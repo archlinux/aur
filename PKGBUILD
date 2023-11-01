@@ -2,12 +2,12 @@
 
 pkgname=digilent.waveforms
 pkgver=3.21.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Digilent WaveForms Application, Runtime and SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://digilent.com/reference/software/waveforms/waveforms-3/start"
 license=('custom')
-depends=('desktop-file-utils' 'digilent.adept.runtime' 'qt5-multimedia' 'qt5-script' 'shared-mime-info' 'xdg-utils')
+depends=('desktop-file-utils' 'digilent.adept.runtime' 'qt5-multimedia' 'qt5-script' 'qt5-serialport' 'shared-mime-info' 'xdg-utils')
 options=('!strip')
 install=${pkgname}.install
 source_aarch64=("https://digilent.s3.amazonaws.com/Software/Waveforms2015/${pkgver}/${pkgname}_${pkgver}_arm64.deb")

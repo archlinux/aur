@@ -1,7 +1,7 @@
 pkgbase = digilent.waveforms
 	pkgdesc = Digilent WaveForms Application, Runtime and SDK
 	pkgver = 3.21.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://digilent.com/reference/software/waveforms/waveforms-3/start
 	install = digilent.waveforms.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = digilent.waveforms
 	depends = digilent.adept.runtime
 	depends = qt5-multimedia
 	depends = qt5-script
+	depends = qt5-serialport
 	depends = shared-mime-info
 	depends = xdg-utils
 	options = !strip
