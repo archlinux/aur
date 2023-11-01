@@ -1,6 +1,6 @@
 pkgbase = r-esatac
 	pkgdesc = An Easy-to-use Systematic pipeline for ATACseq data analysis
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/esATAC
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = r-esatac
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-webshot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/esATAC_1.22.0.tar.gz
-	sha256sums = d54b49d859da6d90abc21feb78a11b0813837bbd5fcd526035b7e33f3e23cfc3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/esATAC_1.24.0.tar.gz
+	sha256sums = a1b070ea22314c92de649ea008428fabd74b8f2a0a9a938b4c39e13fe6eb42a4
 
 pkgname = r-esatac
