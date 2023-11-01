@@ -1,10 +1,11 @@
 pkgbase = ttf-noto-emoji-monochrome
 	pkgdesc = Google Noto Emoji Monochrome font
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.google.com/noto/specimen/Noto+Emoji
 	arch = any
 	license = OFL
+	provides = emoji-font
 	source = NotoEmoji-Bold-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-Bold.ttf
 	source = NotoEmoji-Light-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-Light.ttf
 	source = NotoEmoji-Medium-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-Medium.ttf

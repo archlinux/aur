@@ -2,11 +2,12 @@
 # Maintainer: Zach Jacobson <jacobsonzacharym@gmail.com>
 
 pkgname=ttf-noto-emoji-monochrome
-pkgrel=2
+pkgrel=3
 _commit='d5db91a19628f57c31332bb7e6f9ae3465678b4f'
 pkgver=1.0.0
 pkgdesc='Google Noto Emoji Monochrome font'
 arch=(any)
+provides=(emoji-font)
 url='https://fonts.google.com/noto/specimen/Noto+Emoji'
 license=('OFL')
 source=("NotoEmoji-Bold-${pkgver}.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/${_commit}/fonts/NotoEmoji-Bold.ttf"
