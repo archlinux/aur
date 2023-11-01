@@ -1,7 +1,7 @@
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Maintainer: Maxim Baz <archlinux at maximbaz dot com>
 
 pkgname=arch-secure-boot
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 license=('ISC')
 pkgdesc='UEFI Secure Boot for Arch Linux + btrfs snapshot recovery'
@@ -16,8 +16,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
     "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc"
 )
-sha256sums=('11b9f78ebe350d559a2c0574768578560c98587d5a098aad6bdd071c3fdca4d2'
-            'SKIP')
+b2sums=('7dcd857a951e73adf22ec6ffd0db9799d4adf87952d13c8f2786354afc0e8663569df054e5218198b105f8cf0e60f72902e560267e4213cd2a7b389dc51ad76b'
+        'SKIP')
 validpgpkeys=('56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601')
 
 package() {
