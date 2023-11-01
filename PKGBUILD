@@ -37,7 +37,7 @@ pkgver() {
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 build() {
-    gendesk -q -f -n --categories "Utility" --pkgname="${_pkgname}" --name="SiYuan" --exec="${_pkgname}"
+    gendesk -q -f -n --categories "Utility" --name="${pkgname%-git}" --exec="${pkgname%-git}"
     sed "2i Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
     sed -e '/- target: "tar.gz"/d' -i electron-builder-linux.yml
