@@ -1,6 +1,6 @@
 pkgbase = r-enrichtf
 	pkgdesc = Transcription Factors Enrichment Analysis
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/enrichTF
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-enrichtf
 	optdepends = r-knitr
 	optdepends = r-testthat
 	optdepends = r-webshot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/enrichTF_1.16.0.tar.gz
-	sha256sums = 039010bef0b02ad6c2d2d0e31697e95870d2753bbe7352067d1e1c2180df6796
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/enrichTF_1.18.0.tar.gz
+	sha256sums = c99724a45b4b0b8ba9758075c11d47c2bdfe71d945d4a7043767dd7a78a71552
 
 pkgname = r-enrichtf
