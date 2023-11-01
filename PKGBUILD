@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCExperiment
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9208ad11b1c8c4b78cfd51e1f02c0c6e')
-sha256sums=('39e8d6ec871c78eb179a47108e7a6d4a9f35f7c098cad45f8e5cf65f512717c9')
+md5sums=('98efc0440886cc84faef975a12f290a0')
+sha256sums=('b19a1abe213aa4721ca77e9a7752e90d5095fe5a2b12c1d6d0e935e2bc71f18a')
 
 build() {
   mkdir -p build
