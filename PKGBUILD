@@ -1,17 +1,18 @@
-# Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
+# Maintainer : Ivo(sh) Musil <ivoshm@gmail.com>
 # Contributor: archplayer
 # Contributor: RemiliaForever <remilia AT koumakan DOT cc>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: Jelle van der Waa <jellevdwaa@gmail.com>
+# Contributor: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
 
 GTK_VERSION=3
 JAVA_PATH='/usr/lib/jvm/java-8-openjdk/bin/java'
 
 pkgname=xmind8
 pkgver=8.update9
-pkgrel=1
-pkgdesc="Brainstorming and Mind Mapping Software"
+pkgrel=2
+pkgdesc="Brainstorming and Mind Mapping Software (legacy version based on Eclipse)"
 arch=('x86_64')
 url="https://www.xmind.net/xmind8-pro/"
 license=('EPL' 'LGPL')
