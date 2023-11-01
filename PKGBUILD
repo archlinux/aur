@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ncmeta
-_pkgver=0.3.5
+_pkgver=0.3.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('45ad7c48462ee5c3139741f232199aaf')
-sha256sums=('9376b17370aeadcfdc257c601ad9b4d834032d420ae93251620ae745806d87f0')
+md5sums=('e38fff220a5ed49a5304684562b56ac9')
+sha256sums=('82d580d2045967f19356dcd0e7869a738a5c2f7cb19bd4df0ab6b80a81e5655e')
 
 build() {
   mkdir -p build
