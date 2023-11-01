@@ -1,6 +1,6 @@
 _name=webcord
 pkgname=${_name}-bin
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API (binary release)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("$(_get_source x86_64)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source armv7hl)")
 
-sha256sums_x86_64=('2bfc1ab129279e5b896fc8298cd13110b4be3adcde572984a60bc722856b05fe')
-sha256sums_aarch64=('d9b0d99f47e4010e4cbaee4c735f8adf5c787c871977bcc93822d45d58e80c3c')
-sha256sums_armv7h=('d9c15b2c75c91614187d7b0a136f890a5c21b11cc5ecaa12b66bd64867a72d62')
+sha256sums_x86_64=('97d9f917ccb59faf9dba468b99971ab901334fa17b33c99c96b19582a15466bc')
+sha256sums_aarch64=('8703647429698e28d4ee34b00c95db8e27b5251a917bc11b27793da226e7aa6d')
+sha256sums_armv7h=('dd21d8d0afd1175088ca88beb844a82466ae304e74ac2897a259a789e30edd3d')
 
 noextract=(
     "${source_x86_64[0]##*/}"
