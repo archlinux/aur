@@ -1,7 +1,7 @@
 pkgbase = xmind8
 	pkgdesc = Brainstorming and Mind Mapping Software (legacy version based on Eclipse)
 	pkgver = 8.update9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmind.net/xmind8-pro/
 	install = xmind8.install
 	arch = x86_64
