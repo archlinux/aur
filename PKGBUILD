@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DOSE
-_pkgver=3.26.2
+_pkgver=3.28.0
 pkgname=r-${_pkgname,,}
-pkgver=3.26.2
+pkgver=3.28.0
 pkgrel=1
 pkgdesc='Disease Ontology Semantic and Enrichment analysis'
 arch=('any')
@@ -17,6 +17,8 @@ depends=(
   r-ggplot2
   r-gosemsim
   r-hdo.db
+  r-hpo.db
+  r-mpo.db
   r-qvalue
   r-reshape2
 )
@@ -30,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d586a82c5df930da38f723a6a8a4e883a05650aa9dbed51bf74451fb6df101e')
+sha256sums=('9e6b7edb00748f605aaa0175fb038dacaa64aadef208e72975a0093ef55739f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
