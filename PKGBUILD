@@ -1,10 +1,11 @@
+# Contributor: dreieck
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-test-compile'
 _distname='Test-Compile'
-pkgver=3.1.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Check whether Perl files compile correctly."
 arch=('any')
@@ -26,7 +27,8 @@ checkdepends=(
 )
 _pkgtarname="${_distname}-v${pkgver}"
 source=("https://cpan.metacpan.org/authors/id/E/EG/EGILES/${_pkgtarname}.tar.gz")
-b2sums=('d3c6300b43085ed2ba8471a132b24f832b61c9ad2b25fcd407004ce9d3aa0d24060bb89d1c8958c3f705cfed737629bfb6e24ff06730d0cf6fa37cb4a9f0fbf8')
+b2sums=('5a1b52447eb8e1f92903e3eae09f3b91fef4ba9bb7962edc854629a730dc8c0e622aaf78a13e6ec26a002749cfd9d112f4d2aa33acfb6a2775ce5b77a026ff04')
+options+=('emptydirs')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
