@@ -2,13 +2,13 @@
 # Contributor: marcin mikołajczak <me@mkljczk.pl>
 
 pkgname=tokodon-git
-pkgver=23.08.2.r10.g4b3185a1
+pkgver=23.08.2.r16.ge9f36469
 pkgrel=2
 pkgdesc="Native Mastodon client"
 arch=(x86_64)
 url="https://invent.kde.org/network/tokodon"
 license=(LGPL)
-depends=(kio5 kirigami2 kirigami-addons qtkeychain-qt5 kdbusaddons5 ki18n5 qt5-websockets knotifications5
+depends=(kio5 kirigami2 kirigami-addons5 qtkeychain-qt5 kdbusaddons5 ki18n5 qt5-websockets knotifications5
          kitemmodels5 qqc2-desktop-style5 mpv
 
          # namcap implicit depends

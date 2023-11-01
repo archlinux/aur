@@ -1,6 +1,6 @@
 pkgbase = tokodon-git
 	pkgdesc = Native Mastodon client
-	pkgver = 23.08.2.r10.g4b3185a1
+	pkgver = 23.08.2.r16.ge9f36469
 	pkgrel = 2
 	url = https://invent.kde.org/network/tokodon
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tokodon-git
 	makedepends = git
 	depends = kio5
 	depends = kirigami2
-	depends = kirigami-addons
+	depends = kirigami-addons5
 	depends = qtkeychain-qt5
 	depends = kdbusaddons5
 	depends = ki18n5
