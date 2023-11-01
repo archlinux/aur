@@ -1,21 +1,23 @@
 pre_upgrade() {
-	if (( $(vercmp "$2" "0.52.0-1") < 0 )); then
-		echo -e '\n\tBreaking changes in version 0.52.0+'
-		echo -e '\tBe sure to read the release notes before upgrading'
-		echo -e '\tSee https://github.com/fatedier/frp/releases/tag/v0.52.0\n'
-	fi
+    if (( $(vercmp "$2" "0.52.0-1") < 0 )); then
+        echo -e '\n\tBreaking changes in version 0.52.0+'
+        echo -e '\tBe sure to read the release notes before upgrading'
+        echo -e '\tSee https://github.com/fatedier/frp/releases/tag/v0.52.0\n'
+    fi
 
-	if (( $(vercmp "$2" "0.52.1-2") < 0 )); then
-		echo -e '\t** New configuration file changes: https://github.com/fatedier/frp#configuration-files **\n'
-	else
-		echo
-	fi
+    if (( $(vercmp "$2" "0.52.1-2") < 0 )); then
+        echo -e '\t** New configuration file changes: https://github.com/fatedier/frp#configuration-files **\n'
+    else
+        echo
+    fi
 
-	echo -e '\tTo switch to the toml configuration, edit the corresponding systemd service file'
-	echo -e '\twith "systemctl edit ..." and replace'
-	echo -e '\t${CREDENTIALS_DIRECTORY}/config with ${CREDENTIALS_DIRECTORY}/config_toml\n'
+    if (( $(vercmp "$2" "0.52.1-5") < 0 )); then
+        echo -e '\tTo switch to the toml configuration, edit the corresponding systemd service file'
+        echo -e '\twith "systemctl edit ..." and replace'
+        echo -e '\t${CREDENTIALS_DIRECTORY}/config with ${CREDENTIALS_DIRECTORY}/config_toml\n'
+    fi
 }
 
 post_upgrade() {
-	find /etc/frp \( -iname frpc.toml -o -iname frps.toml \) -perm /o+rw -printf 'Note: Permissions for "%p (%M)" are too open!\n'
+    find /etc/frp \( -iname frpc.toml -o -iname frps.toml \) -perm /o+rw -printf 'Note: Permissions for "%p (%M)" are too open!\n'
 }

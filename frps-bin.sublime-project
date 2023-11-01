@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+            "file_exclude_patterns": ["*.tar.gz", "*.pkg.tar.zst"]
+		}
+	],
+    "build_systems": [
+        {
+            "name": "update pkgsums",
+            "shell_cmd": "updpkgsums",
+            "working_dir": "$project_path"
+        },
+        {
+            "name": "make package",
+            "shell_cmd": "makepkg -f && makepkg --printsrcinfo > .SRCINFO"
+        }
+    ]
+}
