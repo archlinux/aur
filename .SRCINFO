@@ -1,13 +1,13 @@
 pkgbase = perl-regexp-wildcards
 	pkgdesc = Convert wildcard expressions to Perl regular expressions
 	pkgver = 1.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Regexp-Wildcards
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl
-	depends = perl-scalar-util
+	depends = perl-scalar-list-utils
 	depends = perl-text-balanced
 	options = !emptydirs
 	options = purge

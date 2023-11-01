@@ -2,14 +2,14 @@
 _dist=Regexp-Wildcards
 pkgname=perl-regexp-wildcards
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert wildcard expressions to Perl regular expressions"
 arch=(any)
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=(
 	perl
-	perl-scalar-util
+	perl-scalar-list-utils
 	perl-text-balanced
 )
 options=(!emptydirs purge)
