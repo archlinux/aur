@@ -1,0 +1,19 @@
+pkgbase = bottle-imp
+	pkgdesc = A helper for WSL's native systemd support.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/arkane-systems/bottle-imp
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = python-pip
+	depends = python>=3.7
+	depends = python-psutil
+	depends = systemd>=232.25
+	depends = inetutils
+	conflicts = systemd-genie
+	options = !strip
+	source = git+https://github.com/arkane-systems/bottle-imp.git
+	sha256sums = SKIP
+
+pkgname = bottle-imp
