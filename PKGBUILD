@@ -3,15 +3,15 @@
 pkgname=proton-vpn-gtk-app
 _gitpkgname=proton-vpn-gtk-app
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ProtonVPN GTK app"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
 license=("GPL3")
 groups=("ProtonVPN")
 depends=("python-proton-vpn-network-manager" "python-proton-vpn-logger" "python-proton-vpn-session" "python-proton-vpn-connection" "python-proton-vpn-api-core"
-		 "python-proton-core" "python-proton-vpn-killswitch-network-manager" "python-proton-vpn-network-manager-openvpn" "python-bcrypt" "python-pynacl"
-		 "python-pyopenssl" "python-distro" "python-gnupg" "python-jinja" "python-gobject" "python-psutil" "gtk3" "python-cairo" "webkit2gtk")
+		 "python-proton-core" "python-proton-vpn-killswitch" "python-proton-vpn-killswitch-network-manager" "python-proton-vpn-network-manager-openvpn" "python-bcrypt"
+		 "python-pynacl" "python-pyopenssl" "python-distro" "python-gnupg" "python-jinja" "python-gobject" "python-psutil" "gtk3" "python-cairo" "webkit2gtk")
 optdepends=("libappindicator-gtk3")
 makedepends=("python-setuptools")
 source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=${pkgver}")
