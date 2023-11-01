@@ -1,6 +1,6 @@
 pkgbase = wgsl-analyzer
 	pkgdesc = A language server for the WGSL shading language
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/wgsl-analyzer/wgsl-analyzer
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wgsl-analyzer
 	makedepends = cargo
 	provides = wgsl-analyzer
 	conflicts = wgsl-analyzer
-	source = wgsl_analyzer-0.7.0.tar.gz::https://github.com/wgsl-analyzer/wgsl-analyzer/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = d4adadde0f558f109a527f722bf4db164f5a4a74f49ccdf7062a4830937d4261
+	source = wgsl_analyzer-0.8.0.tar.gz::https://github.com/wgsl-analyzer/wgsl-analyzer/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = ad447677ded5999d11b5c1e340c6b389f5f76e768e06f9fba71699fa906cca3b
 
 pkgname = wgsl-analyzer
