@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=debrowser
-_pkgver=1.28.3
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.3
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Interactive Differential Expresion Analysis Browser'
 arch=('any')
@@ -53,7 +53,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3c46a020637f2ea84e700b5445e8fc211fbf4fe71f09f157b7bfc328ee352c78')
+sha256sums=('ad3bb1005b9574e5cd52a357f44f8e6a2fa5d73576acb64eebce611b67d5541d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
