@@ -11,7 +11,7 @@ _pkgname=libguestfs
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.51.7+4.r11933.20231030.0e37e5fee
-pkgrel=1
+pkgrel=2
 pkgdesc="Access and modify virtual machine disk image"
 arch=(
   "i686"
@@ -89,6 +89,7 @@ makedepends=(
   # 'phpize' # To build PHP bindings
   'po4a'
   'python>=3.6'
+  'rpcsvc-proto' # For rpcgen
   'ruby'
   'ruby-minitest'
   'ruby-rake'

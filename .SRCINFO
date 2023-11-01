@@ -1,7 +1,7 @@
 pkgbase = libguestfs-git
 	pkgdesc = Access and modify virtual machine disk image
 	pkgver = 1.51.7+4.r11933.20231030.0e37e5fee
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://libguestfs.org
 	install = appliance.install
@@ -34,6 +34,7 @@ pkgbase = libguestfs-git
 	makedepends = php
 	makedepends = po4a
 	makedepends = python>=3.6
+	makedepends = rpcsvc-proto
 	makedepends = ruby
 	makedepends = ruby-minitest
 	makedepends = ruby-rake
