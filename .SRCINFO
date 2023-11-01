@@ -6,6 +6,7 @@ pkgbase = soundfont-sunshine-perc
 	arch = any
 	groups = soundfonts
 	license = custom
+	makedepends = git
 	source = git+https://github.com/mxmilkiib/sunshine-drums-sf2
 	sha1sums = SKIP
 
