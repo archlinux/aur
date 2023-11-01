@@ -2,13 +2,13 @@
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 # Author: cropinghigh
 pkgname=sdrpp-tetra-demodulator-git
-pkgver=r3.cd4f183
+pkgver=r18.9e3a757
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="SDR++ module for demodulating TETRA"
 license=('GPL')
-depends=('sdrpp-git' 'sdrpp-headers-git')
-makedepends=('git' 'cmake' 'base-devel')
+depends=('sdrpp-git')
+makedepends=('git' 'cmake' 'sdrpp-headers-git' 'libosmocore')
 provides=('sdrpp-tetra-demodulator')
 conflicts=('sdrpp-tetra-demodulator')
 source=("git+https://github.com/cropinghigh/sdrpp-tetra-demodulator")
@@ -22,6 +22,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/sdrpp-tetra-demodulator"
+    cd src/decoder/etsi_codec-patches
+    ./download_and_patch.sh
+    cd ../../../
     mkdir build
     cd build
     cmake ..
