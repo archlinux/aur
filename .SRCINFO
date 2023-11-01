@@ -1,11 +1,11 @@
 pkgbase = r-hpo.db
 	pkgdesc = A set of annotation maps describing the entire Human Phenotype Ontology
 	pkgver = 0.99.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/HPO.db
 	arch = any
 	license = Artistic2.0
-	depends = r
+	checkdepends = r-testthat
 	depends = r-annotationdbi
 	depends = r-annotationhub
 	depends = r-biocfilecache
@@ -14,6 +14,7 @@ pkgbase = r-hpo.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/HPO.db_0.99.2.tar.gz
+	md5sums = 977cfb31ff344c58fd2dd0a2c6b765ab
 	sha256sums = 5a71c0bd81f238de1fdfc5c49ee2ed3dc27c69996f18a3103407faed94cd3faf
 
 pkgname = r-hpo.db

@@ -1,20 +1,23 @@
-# Maintainer: sukanka <su975853527@gmail.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=HPO.db
 _pkgver=0.99.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
-pkgdesc='A set of annotation maps describing the entire Human Phenotype Ontology'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A set of annotation maps describing the entire Human Phenotype Ontology"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-annotationdbi
   r-annotationhub
   r-biocfilecache
   r-dbi
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-knitr
@@ -22,14 +25,20 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('977cfb31ff344c58fd2dd0a2c6b765ab')
 sha256sums=('5a71c0bd81f238de1fdfc5c49ee2ed3dc27c69996f18a3103407faed94cd3faf')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
