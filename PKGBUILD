@@ -2,18 +2,18 @@
 
 pkgname=k9copy
 pkgver=3.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A small utility to copy DVD"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/k9copy-reloaded/"              
+url="https://sourceforge.net/projects/k9copy-reloaded/"              
 license=('GPL')
-depends=('kdesu' 'hicolor-icon-theme' 'kio' 'libmpeg2' 'xine-lib' 'dvd+rw-tools'
+depends=('kdesu5' 'hicolor-icon-theme' 'kio5' 'libmpeg2' 'xine-lib' 'dvd+rw-tools'
          'dvdauthor' 'libdvdnav' 'kdelibs4support' 'phonon-qt5' 'ffmpeg4.4')
 optdepends=('libdvdcss: for decoding encrypted DVDs')
-makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'appstream')
+makedepends=('cmake' 'extra-cmake-modules' 'kdoctools5' 'appstream')
 provides=('k9copy-reloaded')
 conflicts=('k9copy-frameworks' 'k9copy-kde4')
-source=("http://sourceforge.net/projects/k9copy-reloaded/files/$pkgname-$pkgver.tar.gz"
+source=("https://sourceforge.net/projects/k9copy-reloaded/files/$pkgname-$pkgver.tar.gz"
         'k9copy-ffmpeg3andgcc6.patch'
         'k9copy-FindAv.patch'
         'k9copy-mimetype.patch'
@@ -37,7 +37,7 @@ sha256sums=('4f1f8bc1ed22464a72382924aa23420c0bb94c2360af750a03454f187936e036'
 
 prepare() {
 	# Apply Fedora patches (https://github.com/rpmfusion/k9copy)
-    cd "$srcdir/$pkgname"
+    cd "${pkgname}"
 
 	msg "Applying patch k9copy-ffmpeg3andgcc6.patch"
 	patch -Np1 -i ../k9copy-ffmpeg3andgcc6.patch
@@ -68,7 +68,7 @@ prepare() {
 }
 
 build(){
-    cd "$srcdir/$pkgname"
+    cd "${pkgname}"
 
     # Fix desktop files
     sed -e 's|Name=k9copy|Name=K9copy|g' \
@@ -81,6 +81,6 @@ build(){
 }
 
 package(){
-    cd "$srcdir/$pkgname"
+    cd "${pkgname}"
     make DESTDIR="$pkgdir" install
 }
