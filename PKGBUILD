@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=CryptoDataHub
 pkgname=python-${_base,,}
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Repository of cryptography-related data"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-asn1crypto python-attrs python-dateutil python-six python-urllib
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-pyfakefs)
 source=(https://gitlab.com/coroner/${_base}/-/archive/v${pkgver}/${_base,,}-v${pkgver}.tar.gz)
-sha512sums=('cfd6fa59b63ccdc9d93e48b78ce1d3470f2902bfd8b29c7b2adb9f4904a67e28591ac3061c793ba707e77e432a97212a493e799cdec2a87924dd1eae3cf7b631')
+sha512sums=('c1cf897b12e95a7a26298a6f5a3a2cbd26d6551418572e765ac5b65776217ba6ac254e2180b2de0215d043684939182a0894b5b085b86ecc72240be86376069d')
 
 build() {
   cd ${_base,,}-v${pkgver}
