@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phemd
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Phenotypic EMD for comparison of single-cell samples"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -35,11 +35,12 @@ depends=(
   r-vgam
 )
 optdepends=(
+  r-biocstyle
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f2f4325b02cd7c6b4c96b69de58ec50a')
-sha256sums=('e280bcc6af6de22930bc8403dc9b9b3fd36af8834ec1dd653bcd07732d04b2bd')
+md5sums=('8cefd4ddfea1dd2deb007acb6cebfb7a')
+sha256sums=('03c5354299deefdf02142f4fc7d8464aac1489a62b719f1caf026b1b8db8929c')
 
 build() {
   mkdir -p build
