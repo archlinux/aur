@@ -4,15 +4,15 @@
 pkgname=lightly-boehs-git
 _gitname=Lightly
 pkgver=r2184.1a831f7f
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern style for Qt applications (updated fork)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/boehs/$_gitname"
 license=("GPL2")
-depends=("frameworkintegration" "kdecoration" "breeze-icons" "kwayland" "hicolor-icon-theme")
-makedepends=("git" "cmake" "extra-cmake-modules" "kcmutils" "kdecoration" "qt5-declarative" "qt5-x11extras")
+depends=("frameworkintegration5" "kdecoration" "breeze-icons" "kwayland5" "hicolor-icon-theme")
+makedepends=("git" "cmake" "extra-cmake-modules" "kcmutils5" "kdecoration" "qt5-declarative" "qt5-x11extras")
 provides=("lightly-qt")
-conflicts=("lightly-qt" "lightly-git")
+conflicts=("lightly-qt")
 source=("git+$url")
 sha512sums=('SKIP')
 
