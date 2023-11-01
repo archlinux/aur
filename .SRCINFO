@@ -1,6 +1,6 @@
 pkgbase = fotoxx
 	pkgdesc = Image editing and collection management program
-	pkgver = 23.72
+	pkgver = 23.74
 	pkgrel = 1
 	epoch = 2
 	url = https://www.kornelix.net/fotoxx/fotoxx.html
@@ -21,7 +21,7 @@ pkgbase = fotoxx
 	optdepends = liborigin: for .jp2 files
 	optdepends = rawtherapee: for raw image processing
 	optdepends = vlc: for viewing video
-	source = https://www.kornelix.net/downloads/downloads/fotoxx-23.72-source.tar.gz
+	source = https://www.kornelix.net/downloads/downloads/fotoxx-23.74-source.tar.gz
 	sha256sums = 838d0800294dad263001403a6823f78f7f5ab389acd6ac71ea4beb8e998ed843
 
 pkgname = fotoxx
