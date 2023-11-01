@@ -1,155 +1,377 @@
-# Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui@riseup.net>
+# Maintainer:
+# Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Contributor: 3Jl0y_PYCCKUi <3jl0y_pycckui@riseup.net>
 # Contributor: solopasha <daron439 at gmail dot com>
 # Contributor: Ilya Fedin <fedin-ilja2010@ya.ru>
 # Contributor: Auteiy <dmitry@auteiy.me>
 
-pkgname=kotatogram-desktop
-pkgver=1.4.8
-pkgrel=2
-pkgdesc='Kotatogram – experimental Telegram Desktop fork - Stable version'
-arch=('x86_64')
-url="https://kotatogram.github.io"
+_pkgname="kotatogram-desktop"
+pkgname="$_pkgname"
+pkgver=1.4.9
+pkgrel=1
+pkgdesc='Experimental fork of Telegram Desktop'
+url="https://github.com/kotatogram/kotatogram-desktop"
 license=('GPL3')
-provides=(kotatogram-desktop)
-depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
-         'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl-1.1' 'libx11' 'libvpx' 'libxcomposite'
-         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-             'extra-cmake-modules' 'webkit2gtk' 'unzip'
-             'yasm' 'libtg_owt')
-optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration')
-conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin' 'kotatogram-dev-git' 'kotatogram-desktop-git')
-source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkgver}"
-        "${pkgname}-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
-        "${pkgname}-GSL::git+https://github.com/Microsoft/GSL.git"
-        "${pkgname}-Catch::git+https://github.com/philsquared/Catch"
-        "${pkgname}-xxHash::git+https://github.com/Cyan4973/xxHash.git"
-        "${pkgname}-rlottie::git+https://github.com/desktop-app/rlottie.git"
-        "${pkgname}-lz4::git+https://github.com/lz4/lz4.git"
-        "${pkgname}-lib_crl::git+https://github.com/desktop-app/lib_crl.git"
-        "${pkgname}-lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
-        "${pkgname}-lib_base::git+https://github.com/desktop-app/lib_base.git"
-        "${pkgname}-codegen::git+https://github.com/desktop-app/codegen.git"
-        "${pkgname}-lib_ui::git+https://github.com/kotatogram/lib_ui.git"
-        "${pkgname}-lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
-        "${pkgname}-lib_tl::git+https://github.com/desktop-app/lib_tl.git"
-        "${pkgname}-lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck.git"
-        "${pkgname}-lib_storage::git+https://github.com/desktop-app/lib_storage.git"
-        "${pkgname}-cmake_helpers::git+https://github.com/kotatogram/cmake_helpers.git"
-        "${pkgname}-expected::git+https://github.com/TartanLlama/expected.git"
-        "${pkgname}-QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator.git"
-        "${pkgname}-lib_qr::git+https://github.com/desktop-app/lib_qr.git"
-        "${pkgname}-libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
-        "${pkgname}-hunspell::git+https://github.com/hunspell/hunspell.git"
-        "${pkgname}-range-v3::git+https://github.com/ericniebler/range-v3.git"
-        "${pkgname}-fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git"
-        "${pkgname}-nimf::git+https://github.com/hamonikr/nimf.git"
-        "${pkgname}-hime::git+https://github.com/hime-ime/hime.git"
-        "${pkgname}-fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
-        "${pkgname}-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
-        "${pkgname}-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
-        "${pkgname}-lib_webview::git+https://github.com/desktop-app/lib_webview.git"
-        "${pkgname}-lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git"
-        "${pkgname}-jemalloc::git+https://github.com/jemalloc/jemalloc.git"
+arch=('x86_64')
 
-        "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
-        "block-sponsored_messages.patch")
+depends=(
+  # 'qt6-5compat'
+  # 'qt6-imageformats'
+  # 'qt6-svg'
+  # 'qt6-wayland'
+  'abseil-cpp'
+  'ffmpeg4.4'
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'glibmm'
+  'hicolor-icon-theme'
+  'hunspell'
+  'jemalloc'
+  'kwayland5'
+  'libdispatch'
+  'libjpeg-turbo'
+  'libpipewire'
+  'libsigc++'
+  'libvpx'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxrandr'
+  'libxtst'
+  'lz4'
+  'minizip'
+  'openal'
+  'opus'
+  'qt5-imageformats'
+  'qt5-svg'
+  'qt5-wayland'
+  'rnnoise'
+  'ttf-opensans'
+  'wayland'
+  'xcb-util-keysyms'
+  'xxhash'
+  'zlib'
+)
+makedepends=(
+  'cmake'
+  'extra-cmake-modules'
+  'git'
+  'meson'
+  'microsoft-gsl'
+  'ninja'
+  'pipewire'
+  'plasma-wayland-protocols'
+  'python'
+  'range-v3'
+  'tl-expected'
+  'unzip'
+  'wayland-protocols'
+  'webkit2gtk'
+  'yasm'
+)
+optdepends=(
+  'webkit2gtk: embedded browser features'
+  'xdg-desktop-portal: desktop integration'
+)
 
-b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        '462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264'
-        '1e2705008ea8cef1a5c46793a6115ba0f35f77529d18ea04a03e5a0e89980916d78d49a9aa86863b1a0b440debb650262ceb3c9d68600ffe6e5c98fd65804526')
+provides=('kotatogram-desktop')
+conflicts=('kotatogram-desktop')
 
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git submodule init
+_tg_owt_commit=63a934db1ed212ebf8aaaa20f0010dd7b0d7b396
 
-    git config submodule.cmake.url "${srcdir}/${pkgname}-cmake_helpers"
+_pkgsrc="$_pkgname"
+source=(
+  # kotatogram-desktop and patches
+  "$_pkgsrc"::"git+$url.git#tag=k${pkgver%%.r*}"
 
-    git config submodule.Telegram/lib_crl.url "${srcdir}/${pkgname}-lib_crl"
-    git config submodule.Telegram/lib_rpl.url "${srcdir}/${pkgname}-lib_rpl"
-    git config submodule.Telegram/lib_base.url "${srcdir}/${pkgname}-lib_base"
-    git config submodule.Telegram/codegen.url "${srcdir}/${pkgname}-codegen"
-    git config submodule.Telegram/lib_ui.url "${srcdir}/${pkgname}-lib_ui"
-    git config submodule.Telegram/lib_lottie.url "${srcdir}/${pkgname}-lib_lottie"
-    git config submodule.Telegram/lib_tl.url "${srcdir}/${pkgname}-lib_tl"
-    git config submodule.Telegram/lib_spellcheck.url "${srcdir}/${pkgname}-lib_spellcheck"
-    git config submodule.Telegram/lib_storage.url "${srcdir}/${pkgname}-lib_storage"
-    git config submodule.Telegram/lib_qr.url "${srcdir}/${pkgname}-lib_qr"
-    git config submodule.Telegram/lib_webrtc.url "${srcdir}/${pkgname}-lib_webrtc"
-    git config submodule.Telegram/lib_webview.url "${srcdir}/${pkgname}-lib_webview"
-    git config submodule.Telegram/lib_waylandshells.url "${srcdir}/${pkgname}-lib_waylandshells"
+  "include.patch"
+  "kf594.patch"
+  "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/326.patch"
+  "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/333.patch"
+  "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/334.patch"
+  "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/335.patch"
+  "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/337.patch"
 
-    git config submodule.Telegram/ThirdParty/libtgvoip.url "${srcdir}/${pkgname}-libtgvoip"
-    git config submodule.Telegram/ThirdParty/GSL.url "${srcdir}/${pkgname}-GSL"
-    git config submodule.Telegram/ThirdParty/Catch.url "${srcdir}/${pkgname}-Catch"
-    git config submodule.Telegram/ThirdParty/xxHash.url "${srcdir}/${pkgname}-xxHash"
-    git config submodule.Telegram/ThirdParty/rlottie.url "${srcdir}/${pkgname}-rlottie"
-    git config submodule.Telegram/ThirdParty/lz4.url "${srcdir}/${pkgname}-lz4"
-    git config submodule.Telegram/ThirdParty/expected.url "${srcdir}/${pkgname}-expected"
-    git config submodule.Telegram/ThirdParty/QR.url "${srcdir}/${pkgname}-QR-Code-generator"
-    git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "${srcdir}/${pkgname}-libdbusmenu-qt"
-    git config submodule.Telegram/ThirdParty/hunspell.url "${srcdir}/${pkgname}-hunspell"
-    git config submodule.Telegram/ThirdParty/range-v3.url "${srcdir}/${pkgname}-range-v3"
-    git config submodule.Telegram/ThirdParty/fcitx-qt5.url "${srcdir}/${pkgname}-fcitx-qt5"
-    git config submodule.Telegram/ThirdParty/nimf.url "${srcdir}/${pkgname}-nimf"
-    git config submodule.Telegram/ThirdParty/hime.url "${srcdir}/${pkgname}-hime"
-    git config submodule.Telegram/ThirdParty/fcitx5-qt.url "${srcdir}/${pkgname}-fcitx5-qt"
-    git config submodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${pkgname}-tgcalls"
-    git config submodule.Telegram/ThirdParty/jemalloc.url "${srcdir}/${pkgname}-jemalloc"
+  # tg_owt and patches
+  "kotatogram-tg_owt"::"git+https://github.com/desktop-app/tg_owt.git#commit=${_tg_owt_commit}"
 
-    git -c protocol.file.allow=always submodule update
+  "https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/101.patch"
+  "tg_owt-fix.patch"
 
-    #patches
-    patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
-    patch -p1 < "${srcdir}/block-sponsored_messages.patch"
+  # other patches
+  "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+  "0002-Block-sponsored_messages.patch"
+  "0003-Allow-downloading-and-copying-from-restricted-channels.patch"
+
+  # submodules for kotatogram-desktop
+  'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'
+  'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
+  'desktop-app.codegen'::'git+https://github.com/desktop-app/codegen.git'
+  'desktop-app.lib_base'::'git+https://github.com/desktop-app/lib_base.git'
+  'desktop-app.lib_crl'::'git+https://github.com/desktop-app/lib_crl.git'
+  'desktop-app.lib_lottie'::'git+https://github.com/desktop-app/lib_lottie.git'
+  'desktop-app.lib_qr'::'git+https://github.com/desktop-app/lib_qr.git'
+  'desktop-app.lib_rpl'::'git+https://github.com/desktop-app/lib_rpl.git'
+  'desktop-app.lib_spellcheck'::'git+https://github.com/desktop-app/lib_spellcheck.git'
+  'desktop-app.lib_storage'::'git+https://github.com/desktop-app/lib_storage.git'
+  'desktop-app.lib_tl'::'git+https://github.com/desktop-app/lib_tl.git'
+  'desktop-app.lib_waylandshells'::'git+https://github.com/desktop-app/lib_waylandshells.git'
+  'desktop-app.lib_webrtc'::'git+https://github.com/desktop-app/lib_webrtc.git'
+  'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'
+  'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'
+  'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
+  'fcitx.fcitx-qt5'::'git+https://github.com/fcitx/fcitx-qt5.git'
+  'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
+  'gitlab-freedesktop-mirrors.wayland-protocols'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git'
+  'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'
+  'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'
+  'hunspell'::'git+https://github.com/hunspell/hunspell.git'
+  'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'
+  'kde.extra-cmake-modules'::'git+https://github.com/KDE/extra-cmake-modules.git'
+  'kde.kwayland'::'git+https://github.com/KDE/kwayland.git'
+  'kde.plasma-wayland-protocols'::'git+https://github.com/KDE/plasma-wayland-protocols.git'
+  'kotatogram.cmake_helpers'::'git+https://github.com/kotatogram/cmake_helpers.git'
+  'kotatogram.lib_ui'::'git+https://github.com/kotatogram/lib_ui.git'
+  'lz4'::'git+https://github.com/lz4/lz4.git'
+  'microsoft.gsl'::'git+https://github.com/Microsoft/GSL.git'
+  'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'
+  'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'
+  'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'
+  'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
+
+  # submodules for telegramdesktop.libtgvoip
+  'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
+
+  # submodules for ericniebler.range-v3
+  #'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
+
+  # submodules for kotatogram-tg_owt
+  'chromiumsrc.libyuv'::'git+https://gitlab.com/chromiumsrc/libyuv.git'
+  'pipewire'::'git+https://github.com/PipeWire/pipewire.git'
+)
+
+sha256sums=(
+  'SKIP'
+  '133cde2fb9e1b5f837396e487783adf5e1899e20d335f1654a71e6ef1121918c'
+  '25160a4a687b0032151f5c7a295996e4322b5c9ed1122dfa6c3985d57e866b2c'
+  '289b69c980fe4877ab94d3b68180e586ffabecd15c4205f008fe21498d12f7ee'
+  'd27016d67bd0baf5eb7c49ce1a0658e584d3892c344edde38843ca39a1d63a42'
+  '533576f87db701100b2fda4b4ccbbb9957234d86447960a7c6b1dd07c8830d19'
+  '26bd7d7e683dbf8d3fc7675afafac3fa3a140c21ca9087c8c98241a9041b981c'
+  'b794229b2b2cec355219fe6d33dba1efd782dc9ad53c50ab90f5f682db370bea'
+
+  'SKIP'
+  'f4d26c1048a7fd1ac3419042009c3b52c001458e44309a765d42d7df9f45f1ef'
+  '8d3a1c4b2e40eef7a4cc8e6f498c416af47a91b878ec3762b51476e89695cb13'
+
+  '639b0b659685ff11daee21efd0ca0e473ee1cfb533709ea8ecf357945e058f43'
+  '229c85f7fe86c11139b4d6b4fd44086d737e25ac94c89302aabe09eedb436f7e'
+  'bb2aa0ec20d9769a513a41033a7f00baf08afd7a40c710431576d0f8b3a27a0e'
+
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+
+  'SKIP'
+
+  #'SKIP'
+
+  'SKIP'
+  'SKIP'
+)
+
+_pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags | sed 's/^k//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_prepare_kotatogram() (
+  cd "${srcdir:?}/$_pkgsrc"
+  local -A _submodules=(
+    ['apple.swift-corelibs-libdispatch']='Telegram/ThirdParty/dispatch'
+    ['cyan4973.xxhash']='Telegram/ThirdParty/xxHash'
+    ['desktop-app.codegen']='Telegram/codegen'
+    ['desktop-app.lib_base']='Telegram/lib_base'
+    ['desktop-app.lib_crl']='Telegram/lib_crl'
+    ['desktop-app.lib_lottie']='Telegram/lib_lottie'
+    ['desktop-app.lib_qr']='Telegram/lib_qr'
+    ['desktop-app.lib_rpl']='Telegram/lib_rpl'
+    ['desktop-app.lib_spellcheck']='Telegram/lib_spellcheck'
+    ['desktop-app.lib_storage']='Telegram/lib_storage'
+    ['desktop-app.lib_tl']='Telegram/lib_tl'
+    ['desktop-app.lib_waylandshells']='Telegram/lib_waylandshells'
+    ['desktop-app.lib_webrtc']='Telegram/lib_webrtc'
+    ['desktop-app.lib_webview']='Telegram/lib_webview'
+    ['desktop-app.rlottie']='Telegram/ThirdParty/rlottie'
+    ['ericniebler.range-v3']='Telegram/ThirdParty/range-v3'
+    ['fcitx.fcitx-qt5']='Telegram/ThirdParty/fcitx-qt5'
+    ['fcitx.fcitx5-qt']='Telegram/ThirdParty/fcitx5-qt'
+    ['gitlab-freedesktop-mirrors.wayland-protocols']='Telegram/ThirdParty/wayland-protocols'
+    ['hamonikr.nimf']='Telegram/ThirdParty/nimf'
+    ['hime-ime.hime']='Telegram/ThirdParty/hime'
+    ['hunspell']='Telegram/ThirdParty/hunspell'
+    ['jemalloc']='Telegram/ThirdParty/jemalloc'
+    ['kde.extra-cmake-modules']='Telegram/ThirdParty/extra-cmake-modules'
+    ['kde.kwayland']='Telegram/ThirdParty/kwayland'
+    ['kde.plasma-wayland-protocols']='Telegram/ThirdParty/plasma-wayland-protocols'
+    ['kotatogram.cmake_helpers']='cmake'
+    ['kotatogram.lib_ui']='Telegram/lib_ui'
+    ['lz4']='Telegram/ThirdParty/lz4'
+    ['microsoft.gsl']='Telegram/ThirdParty/GSL'
+    ['nayuki.qr-code-generator']='Telegram/ThirdParty/QR'
+    ['tartanllama.expected']='Telegram/ThirdParty/expected'
+    ['telegramdesktop.libtgvoip']='Telegram/ThirdParty/libtgvoip'
+    ['telegrammessenger.tgcalls']='Telegram/ThirdParty/tgcalls'
+  )
+  for key in ${!_submodules[@]} ; do
+    git submodule init "${_submodules[${key}]}"
+    git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+    git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+  done
+
+  (
+    # submodules for telegramdesktop.libtgvoip
+    cd "Telegram/ThirdParty/libtgvoip"
+    local -A _submodules=(
+      ['desktop-app.cmake_helpers']='cmake'
+    )
+    for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  )
+  (
+    # submodules for ericniebler.range-v3
+    cd "Telegram/ThirdParty/range-v3"
+    local -A _submodules=(
+      ['ericniebler.range-v3']='doc/gh-pages'
+    )
+    for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  )
+
+  cd "${srcdir:?}/$_pkgsrc"
+  apply-patch "${srcdir:?}/kf594.patch"
+  apply-patch "${srcdir:?}/326.patch"
+  apply-patch "${srcdir:?}/333.patch"
+  apply-patch "${srcdir:?}/334.patch"
+  apply-patch "${srcdir:?}/335.patch"
+  apply-patch "${srcdir:?}/337.patch"
+
+  apply-patch "${srcdir:?}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+  apply-patch "${srcdir:?}/0002-Block-sponsored_messages.patch"
+  apply-patch "${srcdir:?}/0003-Allow-downloading-and-copying-from-restricted-channels.patch"
+)
+
+_prepare_tg_owt() (
+  cd "${srcdir:?}/kotatogram-tg_owt"
+  local -A _submodules=(
+    ['chromiumsrc.libyuv']='src/third_party/libyuv'
+    ['pipewire']='src/third_party/pipewire'
+  )
+  for key in ${!_submodules[@]} ; do
+    git submodule init "${_submodules[${key}]}"
+    git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+  done
+
+  git -c protocol.file.allow=always submodule update --recursive
+
+  apply-patch "${srcdir:?}/101.patch"
+  ## apply-patch "${srcdir:?}/include.patch"
+  apply-patch "${srcdir:?}/tg_owt-fix.patch"
+)
+
+prepare() {
+  apply-patch() {
+    printf '\nApplying patch %s\n' "$1"
+    patch -Np1 -F100 -i "$1"
+  }
+
+  _prepare_kotatogram
+  _prepare_tg_owt
+}
+
+_build_tg_owt() (
+  local _cmake_options=(
+    -B "build-tg_owt"
+    -S "kotatogram-tg_owt"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    -DBUILD_SHARED_LIBS=OFF
+    -DTG_OWT_PACKAGED_BUILD=ON
+
+    -DCMAKE_C_FLAGS="${CFLAGS} -ffat-lto-objects"
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -ffat-lto-objects -I/usr/include/libdrm"
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build "build-tg_owt"
+)
+
+_build_kotatogram() (
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX="/usr"
+    -DTDESKTOP_API_TEST=ON
+    -Dtg_owt_DIR="${srcdir:?}/build-tg_owt"
+    -DDESKTOP_APP_QT6=OFF
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+)
+
 build() {
-    cd "${srcdir}/${pkgname}"
-    cmake . \
-        -B build \
-        -G Ninja \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DDESKTOP_APP_QT6=off \
-        -DTDESKTOP_API_TEST=ON
-    cmake --build build
+  export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig' # force build with ffmpeg4.4
+
+  _build_tg_owt
+  _build_kotatogram
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }

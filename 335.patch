@@ -1,0 +1,97 @@
+From 3037bd0c42ec17d1c07ac22e3c039ef2400e1708 Mon Sep 17 00:00:00 2001
+From: blank X <blankie@nixnetmail.com>
+Date: Mon, 14 Mar 2022 11:26:43 +0700
+Subject: [PATCH] Fix scaling webm stickers
+
+---
+ .../SourceFiles/history/history_widget.cpp     | 18 ++++++++++++++++--
+ .../history/view/media/history_view_gif.cpp    |  2 +-
+ .../view/media/history_view_sticker.cpp        | 13 ++++++-------
+ 3 files changed, 23 insertions(+), 10 deletions(-)
+
+diff --git a/Telegram/SourceFiles/history/history_widget.cpp b/Telegram/SourceFiles/history/history_widget.cpp
+index c09939134c..6024229b1f 100644
+--- a/Telegram/SourceFiles/history/history_widget.cpp
++++ b/Telegram/SourceFiles/history/history_widget.cpp
+@@ -640,7 +640,14 @@ HistoryWidget::HistoryWidget(
+ 		"sticker_height"
+ 	) | rpl::start_with_next([=] {
+ 		crl::on_main(this, [=] {
+-			updateHistoryGeometry();
++			if (_history) {
++				_history->forceFullResize();
++				if (_migrated) {
++					_migrated->forceFullResize();
++				}
++				updateHistoryGeometry();
++				update();
++			}
+ 		});
+ 	}, lifetime());
+ 
+@@ -648,7 +655,14 @@ HistoryWidget::HistoryWidget(
+ 		"sticker_scale_both"
+ 	) | rpl::start_with_next([=] {
+ 		crl::on_main(this, [=] {
+-			updateHistoryGeometry();
++			if (_history) {
++				_history->forceFullResize();
++				if (_migrated) {
++					_migrated->forceFullResize();
++				}
++				updateHistoryGeometry();
++				update();
++			}
+ 		});
+ 	}, lifetime());
+ 
+diff --git a/Telegram/SourceFiles/history/view/media/history_view_gif.cpp b/Telegram/SourceFiles/history/view/media/history_view_gif.cpp
+index f16bc34107..b3c97907d5 100644
+--- a/Telegram/SourceFiles/history/view/media/history_view_gif.cpp
++++ b/Telegram/SourceFiles/history/view/media/history_view_gif.cpp
+@@ -139,7 +139,7 @@ QSize Gif::countThumbSize(int &inOutWidthMax) const {
+ 			+ st::msgPadding.right()
+ 		: 0;
+ 	const auto maxSize = _data->sticker()
+-		? Sticker::Size().width()
++		? Sticker::Size().height()
+ 		: _data->isVideoFile()
+ 		? st::maxMediaSize
+ 		: _data->isVideoMessage()
+diff --git a/Telegram/SourceFiles/history/view/media/history_view_sticker.cpp b/Telegram/SourceFiles/history/view/media/history_view_sticker.cpp
+index 80793ce6ef..1f5554faef 100644
+--- a/Telegram/SourceFiles/history/view/media/history_view_sticker.cpp
++++ b/Telegram/SourceFiles/history/view/media/history_view_sticker.cpp
+@@ -95,17 +95,13 @@ bool Sticker::isEmojiSticker() const {
+ }
+ 
+ void Sticker::initSize() {
+-	const auto currentStickerHeight = ::Kotato::JsonSettings::GetInt("sticker_height");
+-	const auto currentScaleBoth = ::Kotato::JsonSettings::GetBool("sticker_scale_both");
+-	const auto maxHeight = int(st::maxStickerSize / 256.0 * currentStickerHeight);
+-	const auto maxWidth = currentScaleBoth ? maxHeight : st::maxStickerSize;
+ 	if (isEmojiSticker() || _diceIndex >= 0) {
+ 		_size = Sticker::EmojiSize();
+ 		if (_diceIndex > 0) {
+ 			[[maybe_unused]] bool result = readyToDrawLottie();
+ 		}
+ 	} else {
+-		_size = DownscaledSize(_data->dimensions, { maxWidth, maxHeight });
++		_size = DownscaledSize(_data->dimensions, Sticker::Size());
+ 	}
+ }
+ 
+@@ -135,8 +131,11 @@ bool Sticker::readyToDrawLottie() {
+ }
+ 
+ QSize Sticker::Size() {
+-	const auto side = std::min(st::maxStickerSize, kMaxSizeFixed);
+-	return { side, side };
++	const auto currentStickerHeight = ::Kotato::JsonSettings::GetInt("sticker_height");
++	const auto currentScaleBoth = ::Kotato::JsonSettings::GetBool("sticker_scale_both");
++	const auto maxHeight = int(st::maxStickerSize / 256.0 * currentStickerHeight);
++	const auto maxWidth = currentScaleBoth ? maxHeight : st::maxStickerSize;
++	return { maxWidth, maxHeight };
+ }
+ 
+ QSize Sticker::EmojiSize() {

@@ -1,4 +1,4 @@
-kotatogram-desktop*
-pipewire
-pkg/
-src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
