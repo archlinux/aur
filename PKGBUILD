@@ -2,9 +2,9 @@
 # Contributor: Uroš Vampl <mobile.leecher at gmail dot com>
 
 pkgname=tigervnc-git
-pkgver=r4641.eff7fdd8
+pkgver=r4793.1e87050d
 pkgrel=1
-_xorgver=1.20.9
+_xorgver=21.1.6
 pkgdesc="Suite of VNC servers and clients. Based on the VNC 4 branch of TightVNC."
 arch=('x86_64')
 url="http://www.tigervnc.org"
@@ -24,12 +24,12 @@ backup=(etc/pam.d/tigervnc
   etc/tigervnc/vncserver-config-mandatory
   etc/tigervnc/vncserver.users)
 source=(git+https://github.com/TigerVNC/tigervnc.git
-  https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${_xorgver}.tar.bz2
+  https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${_xorgver}.tar.xz
   Xsession
   more-xsessions.patch
   remove-selinux.patch)
 sha256sums=('SKIP'
-            'e219f2e0dfe455467939149d7cd2ee53b79b512cc1d2094ae4f5c9ed9ccd3571'
+            '1eb86ed674d042b6c8b1f9135e59395cbbca35ed551b122f73a7d8bb3bb22484'
             'c9276f6ea277cf9654fb2cc3bc9dadbb2e596b5cf8ca867ee906c0080cf7f810'
             'cb57dece026b29d7019a3e1e42fd2fb201d37fc60a70c885d2a50acffb808c06'
             'fb8bb5bd3ec990720580a664326a70fd178ce94b97c2130462df9b1e3a3925c3')
@@ -46,7 +46,7 @@ prepare() {
 
   cd unix/xserver
   cp -r "$srcdir"/xorg-server-${_xorgver}/* .
-  patch -Np1 -i ../xserver120.patch
+  patch -Np1 -i ../xserver21.1.1.patch
 }
 
 build() {
