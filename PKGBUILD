@@ -23,29 +23,13 @@ source_aarch64=("https://github.com/diasurgical/devilutionX/releases/download/$p
 
 package() {
 	install -dm755 "$pkgdir/usr/share/games/DevilutionX"
-    install -dm755 "$pkgdir/usr/bin"
-    cd $srcdir
-
-if [[ "$pkgarch" == "x86_64" ]]; then
-   cp -r {devilutionx,devilutionx.mpq,discord_game_sdk.so,devilutionx.sh} $pkgdir/usr/share/games/DevilutionX
-  # Link to binary
-   ln -s "/usr/share/games/DevilutionX/devilutionx.sh" "$pkgdir/usr/bin/devilutionx"
-
-elif [[ "$pkgarch" == "i386" ]]; then
-    cp -r {devilutionx,devilutionx.mpq} $pkgdir/usr/share/games/DevilutionX
-  # Link to binary
-   ln -s "/usr/share/games/DevilutionX/devilutionx" "$pkgdir/usr/bin/devilutionx"   
-
-elif [[ "$pkgarch" == "i686" ]]; then
-    cp -r {devilutionx,devilutionx.mpq} $pkgdir/usr/share/games/DevilutionX
-  # Link to binary
-   ln -s "/usr/share/games/DevilutionX/devilutionx" "$pkgdir/usr/bin/devilutionx"
-
-elif [[ "$pkgarch" == "aarch64" ]]; then
-   cp -r {devilutionx,devilutionx.mpq} $pkgdir/usr/share/games/DevilutionX
-  # Link to binary
-   ln -s "/usr/share/games/DevilutionX/devilutionx" "$pkgdir/usr/bin/devilutionx"
-else
-   echo "Unknown architecture"
-fi
+   install -dm755 "$pkgdir/usr/bin"
+   install -dm755 "$pkgdir/usr/lib"
+   destdir="$pkgdir/usr/share/games/DevilutionX"
+   find $srcdir -type f \( -name "*.so" -o -name "*.sh" \) -exec cp {} $destdir \;
+   find $srcdir -type f -name "*.so" -exec cp {} $pkgdir/usr/lib \;
+   cd $srcdir
+   cp -r $srcdir/devilutionx $destdir
+   cp -r $srcdir/devilutionx.mpq $destdir
+   ln -sf "$destdir/devilutionx" "$pkgdir/usr/bin/devilutionx"
 }
