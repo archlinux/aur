@@ -4,7 +4,7 @@
 pkgname=lightly-boehs-git
 _gitname=Lightly
 pkgver=0.4.1.r69.g1a831f7f
-pkgrel=1
+pkgrel=3
 pkgdesc="A modern style for Qt applications (updated fork)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/boehs/$_gitname"

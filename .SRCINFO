@@ -1,7 +1,7 @@
 pkgbase = lightly-boehs-git
 	pkgdesc = A modern style for Qt applications (updated fork)
-	pkgver = r2184.1a831f7f
-	pkgrel = 1
+	pkgver = 0.4.1.r69.g1a831f7f
+	pkgrel = 3
 	url = https://github.com/boehs/Lightly
 	arch = x86_64
 	arch = aarch64
