@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=118.0.1
+pkgver=119.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -81,7 +81,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch")
-sha256sums=('a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95'
+sha256sums=('f63e44194548f246e1396508800739a24c0517e65e920002a6f67ee099be39dd'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -242,8 +242,8 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
 
     patch -Np1 -i ${_patches_dir}/librewolf-ui/handlers.patch
-    msg2 "Firefox View"
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/firefox-view.patch
+#    msg2 "Firefox View"
+#    patch -Np1 -i ${_patches_dir}/librewolf-ui/firefox-view.patch
     msg2 "change bus/dbus/remoting names to org.cachyos"
     patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
 
