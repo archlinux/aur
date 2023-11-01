@@ -1,0 +1,17 @@
+pkgbase = apkdiff-git
+	pkgdesc = Diff between two APK files.
+	pkgver = r22.c48e32d
+	pkgrel = 1
+	url = https://github.com/daniellockyer/apkdiff
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = python
+	depends = android-apktool
+	optdepends = meld: required for the -m flag
+	provides = apkdiff
+	conflicts = apkdiff
+	source = apkdiff::git+https://github.com/daniellockyer/apkdiff.git
+	sha256sums = SKIP
+
+pkgname = apkdiff-git
