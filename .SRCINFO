@@ -1,6 +1,6 @@
 pkgbase = bustools
 	pkgdesc = Program for manipulating BUS files for single cell RNA-Seq datasets. doi:10.1038/s41587-021-00870-2
-	pkgver = 0.43.0
+	pkgver = 0.43.1
 	pkgrel = 1
 	url = https://github.com/BUStools/bustools/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bustools
 	makedepends = cmake
 	depends = zlib
 	depends = gcc-libs
-	source = bustools-0.43.0::https://github.com/BUStools/bustools/archive/refs/tags/v0.43.0.tar.gz
-	sha256sums = a881fd273e4242a422a60e69b2d47210880fba855346a13efbc5480e7a2f9721
+	source = bustools-0.43.1::https://github.com/BUStools/bustools/archive/refs/tags/v0.43.1.tar.gz
+	sha256sums = ac94a33ca459de81c5756825a7a7f8daeae357fc6bf0ef88d4900e77b70f2b90
 
 pkgname = bustools
