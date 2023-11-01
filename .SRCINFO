@@ -1,17 +1,20 @@
 pkgbase = plasma5-applets-mpdnowplaying
 	pkgdesc = MPD plasmoid for Plasma 5.
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/mpdnowplaying
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
-	depends = plasma-framework
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = plasma-framework5
 	depends = libmpdclient
 	provides = plasma5-applets-mpdnowplaying
 	conflicts = plasma5-applets-mpdnowplaying
-	source = mpdnowplaying-0.5.tar.bz2::https://sourceforge.net/projects/mpdnowplaying/files/mpdnowplaying-0.5.tar.bz2/download
-	sha256sums = f5a8f549c1e5d0f353eae52c8c36da7d619e4c4ac861f202c1459e0009ea4608
+	source = mpdnowplaying-0.5.1.tar.zst::https://sourceforge.net/projects/mpdnowplaying/files/mpdnowplaying-0.5.1.tar.zst/download
+	sha256sums = 9ea01c9b7aa3e25f8e8ee55b532585767a4912ac02b079e19cd430f55d89b47f
 
 pkgname = plasma5-applets-mpdnowplaying
-
