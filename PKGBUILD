@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cellxgenedp
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-zellkonverter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('517b416a57c2b6ba0fd92cd0dd3a8935')
-sha256sums=('12a6971cfccc32561915e71d48aa5ca33ff773a16ca2db12f77ea271c29c7db0')
+md5sums=('dc1730a545f49b0b8c14991289f29a6b')
+sha256sums=('b2ed70fd60dac6fb562298744836764c2fea43b2880cdc2b6466bf0a38fd2d39')
 
 build() {
   mkdir -p build
