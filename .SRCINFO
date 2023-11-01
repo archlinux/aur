@@ -1,6 +1,6 @@
 pkgbase = cockatrice-client-git
 	pkgdesc = Open-source multiplatform supported program for playing tabletop card games over a network.
-	pkgver = 2.8.1.beta.10.r16.g5854a635
+	pkgver = 2.9.0.r29.gf5fe56c8
 	pkgrel = 1
 	url = https://cockatrice.github.io/
 	arch = i686
