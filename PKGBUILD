@@ -1,28 +1,29 @@
-# Maintainer: Alex Gentilucci <alexander.gentilucci@gmail.com>
+# Maintainer: knedl1k <knedl1k At tuta Dot io>
+# Contributor: Alex Gentilucci <alexander.gentilucci@gmail.com>
 
 _npmname=instant-markdown-d
-_npmver=0.1.0
+_npmver=0.3.0
 pkgname=vim-instant-markdown
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Instant Markdown previews from vim in a browser"
 arch=(any)
 license=(unknown)
-url="https://github.com/suan/vim-instant-markdown#readme"
-depends=('nodejs' 'npm' 'wget')
+url="https://github.com/instant-markdown/vim-instant-markdown"
+depends=('nodejs' 'npm' 'wget' 'xdg-utils' 'curl')
 makedepends=('jq')
 optdepends=('neovim: neovim support' 'vim: vim support')
-source=("https://github.com/suan/$_npmname/archive/$pkgver.tar.gz"
-        "https://github.com/suan/$pkgname/archive/v$_npmver.tar.gz")
+source=("https://github.com/instant-markdown/$_npmname/archive/$pkgver.tar.gz"
+        "https://github.com/instant-markdown/$pkgname/archive/v$_npmver.tar.gz")
 noextract=($_npmver.tar.gz)
-sha256sums=('806281d2499e1fe01d3827d75cc196c269fd65c6fe7313e99e0d0c3e70657c22'
-            '7a3678f002e6f9760312ff82101dfd10d930251aad9b3fee53c76c2ca16a31c9')
+sha256sums=('22ecc56d63b1810f84383f206fb3b8f165a7942cb1771b2bfb0223693c9d0212'
+            '02193901308c894639976afa01331608dd46697a0c14dcb360b25679052f336a')
 install=install.sh
 
 package() {
   mkdir -p "$pkgdir/usr/lib/node_modules/"
   mkdir -p "$pkgdir/usr/share/vim/vimfiles/autoload/"
-  mkdir -p "$pkgdir/usr/share/vim/vimfiles/after/ftplugin/markdown"
+  mkdir -p "$pkgdir/usr/share/vim/vimfiles/ftplugin/markdown"
 
 	cd "$srcdir"
 	npm install                    \
@@ -46,7 +47,6 @@ package() {
 	mv "$tmppackage" "$pkgjson"
  	chmod 644 "$pkgjson"
 
-	cp "$srcdir/$pkgname-$_npmver/after/ftplugin/markdown/instant-markdown.vim" "$pkgdir/usr/share/vim/vimfiles/after/ftplugin/markdown"
+	cp "$srcdir/$pkgname-$_npmver/ftplugin/markdown/instant-markdown.vim" "$pkgdir/usr/share/vim/vimfiles/ftplugin/markdown"
 }
 
-# vim: set ts=2 sw=2
