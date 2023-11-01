@@ -1,11 +1,11 @@
 {
-	"folders":
-	[
-		{
-			"path": ".",
+    "folders":
+    [
+        {
+            "path": ".",
             "file_exclude_patterns": ["*.tar.gz", "*.pkg.tar.zst"]
-		}
-	],
+        }
+    ],
     "build_systems": [
         {
             "name": "update pkgsums",
