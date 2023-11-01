@@ -1,20 +1,24 @@
 # Maintainer: robertfoster
 pkgname=python-osadl-matrix
-pkgver=2023.03.03.030339
+pkgver=2023.10.28.101022
 pkgrel=1
 pkgdesc="OSADL license compatibility matrix as a CSV"
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=(python-{build,installer,wheel} python-setuptools)
 url="https://github.com/priv-kweihmann/osadl-matrix"
 license=('Unlicense' 'CCPL:by-4.0')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-package() {
+build() {
   cd "${pkgname##python-}-${pkgver}"
-
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m build --wheel --no-isolation
 }
 
-sha256sums=('ff7af61c934cd126f9b635a7344b5b2d16a3e579c9c35618efaf5cfd2101219c')
+package() {
+  cd "${pkgname##python-}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+sha256sums=('22129bc25cfb2d7bd05331de3bc24f7fb4eb987ac57b2371f09c07892dfdd8b2')
