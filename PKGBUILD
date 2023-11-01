@@ -1,4 +1,5 @@
 # Maintainer: Mario Rubio <mario at mrrb dot eu>
+# Maintainer: Misaka13514 <misaka13514 at gmail dot com>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Daniel Plank <tyrolyean@semi-professional.net>
 
