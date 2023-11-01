@@ -34,7 +34,7 @@ makedepends=(
   'git'
   'cmake'
   'extra-cmake-modules'
-  'kdoctools'
+  'kdoctools5'
 )
 optdepends=(
   'unrar: automatic RAR-archive extraction'
