@@ -1,6 +1,6 @@
 pkgbase = mpv-mpris-git
 	pkgdesc = MPRIS plugin for mpv. (GIT version)
-	pkgver = 1.1.0.gf759c86
+	pkgver = 1.1.1.g16fee38
 	pkgrel = 1
 	url = https://github.com/hoyon/mpv-mpris
 	install = mpv-mpris-git.install
@@ -13,9 +13,16 @@ pkgbase = mpv-mpris-git
 	checkdepends = xorg-server-xvfb
 	makedepends = git
 	depends = mpv
+	depends = ffmpeg
+	depends = libavformat.so
+	depends = glibc
 	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
 	provides = mpv-mpris
 	conflicts = mpv-mpris
+	options = debug
 	source = git+https://github.com/hoyon/mpv-mpris.git
 	sha256sums = SKIP
 
