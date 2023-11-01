@@ -3,7 +3,7 @@
 _pkgname=folder-color
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=0.1.9+r22+f5ac3d5
+pkgver=0.3.2+r42+61382f2
 pkgrel=1
 pkgdesc="Folder color switcher extension for nautilus, caja, and nemo"
 arch=('any')
@@ -29,8 +29,9 @@ prepare() {
 	cd "${srcdir}"
 	for _fm in nemo caja nautilus ; do
 		cp -r "${_pkgname}" "${_pkgname}-${_fm}"
-		pushd "${_pkgname}-${_fm}"/install_scripts
-		./${_fm}.sh
+		pushd "${_pkgname}-${_fm}"/install-scripts
+		if [[ "${_fm}" == 'nautilus' ]] ; then _gtk='4' ; else _gtk='3' ; fi
+		./${_fm}.sh "GTK${_gtk}"
 		popd
 	done
 }

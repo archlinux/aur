@@ -1,6 +1,6 @@
 pkgbase = folder-color-git
 	pkgdesc = Folder color switcher extension for nautilus, caja, and nemo
-	pkgver = 0.1.9+r22+f5ac3d5
+	pkgver = 0.3.2+r42+61382f2
 	pkgrel = 1
 	epoch = 1
 	url = http://foldercolor.tuxfamily.org/
