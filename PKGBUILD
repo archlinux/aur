@@ -3,8 +3,8 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 pkgname=lightly-boehs-git
 _gitname=Lightly
-pkgver=r2184.1a831f7f
-pkgrel=2
+pkgver=0.4.1.r69.g1a831f7f
+pkgrel=1
 pkgdesc="A modern style for Qt applications (updated fork)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/boehs/$_gitname"
@@ -17,19 +17,16 @@ source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_gitname"
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF ..
-  make
+  cmake -B build -S "$_gitname" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
-  make DESTDIR="$pkgdir" install
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "$srcdir/$_gitname/COPYING"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "$_gitname/COPYING"
 }
