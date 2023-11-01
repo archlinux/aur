@@ -1,6 +1,6 @@
 pkgbase = electron27-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 27
-	pkgver = 27.0.2
+	pkgver = 27.0.3
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -17,16 +17,16 @@ pkgbase = electron27-bin
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron27=27.0.2
-	provides = electron=27.0.2
+	provides = electron27=27.0.3
+	provides = electron=27.0.3
 	conflicts = electron27
-	source_x86_64 = electron27-bin-chromedriver-27.0.2-x86_64.zip::https://github.com/electron/electron/releases/download/v27.0.2/chromedriver-v27.0.2-linux-x64.zip
-	source_x86_64 = electron27-bin-27.0.2-x86_64.zip::https://github.com/electron/electron/releases/download/v27.0.2/electron-v27.0.2-linux-x64.zip
-	sha256sums_x86_64 = dcf55cdb29214d77411f3d3f8c390a322aa95a5fc694b1b12f3fad0b95385d6d
-	sha256sums_x86_64 = a226a0a922162068a931d843b5120315c6e4c38446641026610a2882e67378b3
-	source_aarch64 = electron27-bin-chromedriver-27.0.2-aarch64.zip::https://github.com/electron/electron/releases/download/v27.0.2/chromedriver-v27.0.2-linux-arm64.zip
-	source_aarch64 = electron27-bin-27.0.2-aarch64.zip::https://github.com/electron/electron/releases/download/v27.0.2/electron-v27.0.2-linux-arm64.zip
-	sha256sums_aarch64 = 73e10b2aedef082661a740a5729983a08fdb66f713ca802e68077e735d5b119c
-	sha256sums_aarch64 = 300d801ae68fd3e01f032d0036303538293bea773d5541dcbc4b457be8a82806
+	source_x86_64 = electron27-bin-chromedriver-27.0.3-x86_64.zip::https://github.com/electron/electron/releases/download/v27.0.3/chromedriver-v27.0.3-linux-x64.zip
+	source_x86_64 = electron27-bin-27.0.3-x86_64.zip::https://github.com/electron/electron/releases/download/v27.0.3/electron-v27.0.3-linux-x64.zip
+	sha256sums_x86_64 = 5a1a4b16b8a179476b16d48f38f6bf867e390e11f3434b2fa51c55f07e0cb972
+	sha256sums_x86_64 = 10919cce3ffb05089e61268629e5160028d40910a7fb9abb93ce3513804297a9
+	source_aarch64 = electron27-bin-chromedriver-27.0.3-aarch64.zip::https://github.com/electron/electron/releases/download/v27.0.3/chromedriver-v27.0.3-linux-arm64.zip
+	source_aarch64 = electron27-bin-27.0.3-aarch64.zip::https://github.com/electron/electron/releases/download/v27.0.3/electron-v27.0.3-linux-arm64.zip
+	sha256sums_aarch64 = 56657262a394223095af48371d6e0823a164b9bf4babf73d0c4516495eac2678
+	sha256sums_aarch64 = f469f606211e5783c50bfa0d70aca9783bf3a74e42e76053e1655e8b0ba9e3e6
 
 pkgname = electron27-bin
