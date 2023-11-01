@@ -3,9 +3,9 @@
 # Contributor: listx <linusarver <at> gmail <dot> com>
 
 pkgname=sdlmame-cheats
-pkgver=0.245
+pkgver=0.259
 pkgrel=1
-_srcver=0245
+_srcver=0259
 pkgdesc='Official XML Cheat Collection for MAME'
 url='http://www.mamecheat.co.uk/'
 license=('unknown')
@@ -15,7 +15,7 @@ optdepends=("mame>=$pkgver: this package is best used with an up-to-date version
 makedepends=('unzip')
 source=("http://cheat.retrogames.com/download/cheat${_srcver}.zip")
 install=sdlmame-cheats.install
-sha1sums=('482cf860c927d9442d689b85990bf505d5bae0b1')
+sha1sums=('ae03acfd528519e836c4649a148938977ac86968')
 
 build() {
   unzip -of "cheat${_srcver}.zip"
