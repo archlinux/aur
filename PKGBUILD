@@ -297,6 +297,12 @@ prepare() {
         _die "ZFS and bcachefs support cannot be built at the same time. "
     fi
 
+    ### Prevent ZFS and LTO building at the same time
+    # More infos here: https://github.com/openzfs/zfs/issues/15384
+    if [[ "$_use_llvm_lto" != "none" && -n "$_build_zfs"  ]]; then
+        _die "ZFS and LTO support cannot be built at the same time. "
+    fi
+
     ### Selecting CachyOS config
     if [ -n "$_cachy_config" ]; then
         echo "Enabling CachyOS config..."
@@ -666,7 +672,7 @@ build() {
         make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
     fi
 
-    if [ -n "$_build_zfs" ]; then
+    if [[ "$_cpusched" != "rt" && -n "$_build_zfs"  ]]; then
         cd ${srcdir}/"zfs"
 
         local CONFIGURE_FLAGS=()
