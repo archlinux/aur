@@ -1,0 +1,6 @@
+samurai-select-*/
+samurai-select-*.pkg.tar.zst
+samurai-select-*.pkg.tar.xz
+samurai-select-*.log
+pkg/
+src/
