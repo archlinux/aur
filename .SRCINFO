@@ -1,6 +1,6 @@
 pkgbase = python-ast-comments
 	pkgdesc = Extension to the built-in ast module.
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/t3rn0/ast-comments
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-ast-comments
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python
-	source = python-ast-comments-v1.1.2.tar.gz::https://github.com/t3rn0/ast-comments/archive/refs/tags/1.1.2.tar.gz
-	sha512sums = a4841598bd4396572d5144760b7066fefc11cde53846d898e54a7731715737393adae928879366fba70e6e7797d98d170b8041356ef448bafe6d14dcb07cf0ff
+	source = python-ast-comments-v1.2.0.tar.gz::https://github.com/t3rn0/ast-comments/archive/refs/tags/1.2.0.tar.gz
+	sha512sums = 9b6b2d0e8b70524e7e47f663a174ae2fa9156f3730b0a8ddc023ceb95481ef4de1c876e295372a0de14cdb038055ebc9b75a9d69f058b36aa0debf581c8d5858
 
 pkgname = python-ast-comments
