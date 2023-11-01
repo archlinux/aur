@@ -1,5 +1,5 @@
 pkgbase = proton-vpn-gtk-app
-	pkgdesc = Proton VPN GTK app
+	pkgdesc = ProtonVPN GTK app
 	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/proton-vpn-gtk-app
