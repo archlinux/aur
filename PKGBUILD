@@ -2,7 +2,7 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
-pkgver=0.9.19
+pkgver=0.9.20
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 arch=("x86_64")
@@ -19,14 +19,12 @@ source=(
     "$_pkgname.sh"
 )
 sha256sums=(
-    'ae3da1053c45048d759722bdd787f2815c06b41a2c1627b1c429163abf3a9996'
+    'fb9002a317063fd8473c3d08b8ffd0546bc30fbef257747cfafe2bf17e88c3d4'
     '12eb07a20c29f9573bbb91e585602a150d5f851cdb15ae43e6319d075b7ecbba'
     '79749ee5011f229810343fb4a4eeb60de986d541617ead4242ccf0057b263a55'
 )
 
 package() {
-    cd "$srcdir/$_pkgsrc"
-
     # desktop file, make minitype works as expected.
     install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/logseq-desktop.desktop"
 
