@@ -1,7 +1,7 @@
 # Maintkiner: LoaD Accumulator <lda@freetards.xyz>
 pkgname=cytoplasm-git
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The Telodendria core library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://git.telodendria.io/Telodendria/Cytoplasm"
@@ -19,14 +19,7 @@ prepare() {
 
 pkgver() {
         cd "$pkgname"
-        # Cytoplasm doesn't have tags(at least right now), so the only 
-        # reasonable way is to trick the configure script into giving 
-        # us the version.
-        ./configure info                |
-                tr ' ' '\n'             | 
-                grep -x "\\--[a-z].*"   | 
-                awk '/^--lib-version=/' | 
-                cut -d'=' -f2
+        git describe --long
 }
 
 build() {
