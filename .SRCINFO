@@ -12,6 +12,7 @@ pkgbase = mootool-bin
 	depends = java-runtime
 	depends = libxext
 	depends = libxi
+	depends = freetype2
 	depends = alsa-lib
 	depends = libxtst
 	depends = sh

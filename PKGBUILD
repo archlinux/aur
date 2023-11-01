@@ -9,9 +9,23 @@ url="https://github.com/rememberber/MooTool"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('libxrender' 'libx11' 'glibc' 'zlib' 'java-runtime' 'libxext' 'libxi' 'alsa-lib' 'libxtst' 'sh')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
-    "LICENSE.txt::https://raw.githubusercontent.com/rememberber/MooTool/v${pkgver}/LICENSE.txt")
+depends=(
+    'libxrender'
+    'libx11'
+    'glibc'
+    'zlib'
+    'java-runtime'
+    'libxext'
+    'libxi'
+    'freetype2'
+    'alsa-lib'
+    'libxtst'
+    'sh'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
+    "LICENSE.txt::https://raw.githubusercontent.com/rememberber/MooTool/v${pkgver}/LICENSE.txt"
+)
 sha256sums=('d93816e63b6120de615fc1ac58db7108d25c03cebbe501f4e3c7d4d8d9a07006'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333')
 build() {
