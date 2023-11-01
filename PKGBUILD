@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Vekhir <vekhir at yahoo dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: bitwave
 
 pkgname=python-pycaption
 _pkg="${pkgname#python-}"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Python module to read/write popular video caption formats"
 arch=('any')
@@ -14,7 +15,7 @@ depends=('python-beautifulsoup4' 'python-lxml' 'python-cssutils')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-lazy-fixture')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('995fff11874fef02980f755ce3dcfa2d055078eba1ccd28564b7f6f1161d0019')
+sha512sums=('e62d3d8f5cfde16270773cb9c8e862a06c3a0f80310d457a86d6c1eaab24b2ce44066a5624446f03b7b3a0107bb373c0b921fb4603e85543de98246218b2b09e')
 
 prepare() {
 	cd "$_pkg-$pkgver"
