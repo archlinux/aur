@@ -20,7 +20,7 @@ optdepends=('darktable: organize and develop raw images'
             'rawtherapee: for raw image processing'
             'vlc: for viewing video')
 source=("https://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('838d0800294dad263001403a6823f78f7f5ab389acd6ac71ea4beb8e998ed843')
+sha256sums=('f0dc0879d448f743d7df38ef8d7ef865abe5feb730809267d83fb278f8e92476')
 
 build() {
   make -C $pkgname PREFIX=/usr
