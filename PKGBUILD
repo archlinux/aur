@@ -5,7 +5,7 @@
 _pkgname=nasm
 pkgname="${_pkgname}-segelf-git"
 pkgver=2.16.01+19.r4902.20231030.gc2bf042b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="80x86 assembler designed for portability and modularity. 'elf16' branch."
 arch=(
@@ -73,26 +73,29 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  # --enable-sanitizer makes tests fail and makes compiling other projects (fdpp-git) fail with `==10946==ERROR: LeakSanitizer: detected memory leaks`.
+
   ./configure \
     --prefix=/usr \
+    --docdir="/usr/share/doc/${_pkgname}/doc" \
     --disable-gdb \
     --enable-optimization \
     --disable-profiling \
     --enable-largefile \
     --enable-pdf-compression \
     --enable-section \
-    --enable-sanitizer \
+    --disable-sanitizer \
     --disable-werror \
     --disable-suggestions
 
   make everything
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgname}"
-# 
-#   make -j1 -C test golden test diff
-# }
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  make -j1 -C test golden test diff
+}
 
 package() {
   cd "${srcdir}/${_pkgname}"
