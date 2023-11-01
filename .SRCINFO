@@ -1,7 +1,7 @@
 pkgbase = arandr-indicator-git
 	pkgdesc = Quick and simple tray icon menu for changing the monitor layout.
 	pkgver = 2.0.0+12.r27.20230916.74fdcfb
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/denilsonsa/arandr-indicator
 	arch = any

@@ -5,7 +5,7 @@ _pkgname=arandr-indicator
 pkgname="${_pkgname}-git"
 epoch=2
 pkgver=2.0.0+12.r27.20230916.74fdcfb
-pkgrel=1
+pkgrel=2
 pkgdesc="Quick and simple tray icon menu for changing the monitor layout."
 arch=('any')
 url="https://github.com/denilsonsa/arandr-indicator" # Original project.
@@ -36,6 +36,8 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   msg2 "Extract copyright information, building license.txt ..."
   cat arandr-indicator.py | tr -d '\a' | tr '\n' '\a' | sed 's|^.*\(# BSD-2-Clause.*$\)|\1|g' | sed 's|\a[^#][^\a]*.*$|\a|g' | tr '\a' '\n' > "${srcdir}/license.txt"
+
+  git log > git.log
 }
 
 pkgver () {
@@ -56,6 +58,7 @@ pkgver () {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dvm755 "${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dvm644 git.log "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   install -Dvm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dvm644 TODO.md "${pkgdir}/usr/share/doc/${_pkgname}/TODO.md"
   install -Dvm644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
