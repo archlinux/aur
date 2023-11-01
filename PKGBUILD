@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pypdfium2
-pkgver=4.22.0
+pkgver=4.23.1
 pkgrel=1
 pkgdesc="An ABI-level Python 3 binding to PDFium"
 arch=(any)
@@ -17,7 +17,7 @@ _ctypesgencommit="dbdcbfb102b2c78dfd4899a6812634460aaa8d4f"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	# This is a pypdfium2-specific fork of the actual ctypesgen, hence we need to download it here.
 	"ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen#commit=$_ctypesgencommit")
-sha256sums=("c29d09b59ed65c5f27d81af9c985c89da7b10c0ac3775dfb2474a94a6d6dc850"
+sha256sums=("174e861b379fec77b6f3b331b2a387eac074f65143b435aac1c42321a401ff9c"
 	"SKIP") # No checksums for git sources.
 
 build() {

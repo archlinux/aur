@@ -6,6 +6,26 @@
 
 # Changelog
 
+## 4.23.1 (2023-10-31)
+
+- No PDFium update.
+- Fixed (Test)PyPI upload.
+
+
+## 4.23.0 (2023-10-31)
+
+*Note: (Test)PyPI upload failed for this release due to an oversight.*
+
+- Updated PDFium from `6070` to `6097`.
+- Fixed faulty version repr (avoid trailing `+` if desc is empty).
+- Merged conda packaging code, including CI and Readme integration.
+- Updated setup code, mainly to support conda.
+  * Independent bindings cache. Download headers from pdfium. Extract archive members explicitly.
+  * Cleaned up version integration of sourcebuild.
+  * Changed `system` platform to generate files according to given version, instead of expecting given files.
+  * Added `prepared!` prefix to platform spec, allowing to install with given files.
+  * Added `PDFIUM_BINDINGS=reference` to use pre-built bindings when installing from source.
+- Updated Readme.
 
 ## 4.22.0 (2023-10-19)
 
