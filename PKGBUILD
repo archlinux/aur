@@ -7,10 +7,10 @@ pkgdesc="A module to obtain and visualize k-vector coefficients and obtain band 
 arch=('any')
 url="https://github.com/giovannipizzi/seekpath"
 license=('MIT')
-depends=("python-numpy" "python-spglib")
+depends=("python-numpy" "spglib")
 optdepends=("python-scipy")
 makedepends=('python-setuptools' 'python')
-source=("https://github.com/giovannipizzi/seekpath/archive/refs/tags/v$pkgver.tar.gz")
+source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('34eb91c2b4138fceb579deee336cc4ff7ef4a50b46b3fbb466d96792a1b42466')
 
 
