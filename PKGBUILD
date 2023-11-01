@@ -12,7 +12,7 @@
 _pkgname=webcord
 pkgname="${_pkgname}-vencord-git"
 pkgver=4.5.0.r852.123e818
-pkgrel=3
+pkgrel=4
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -97,7 +97,7 @@ prepare() {
 
   cd "${srcdir:?}/${_pkgname}"
 
-  patch -p1 < '${srcdir:?}/vencord.patch'
+  patch -p1 < '${pkgdir:?}/vencord.patch'
 
   _echo_times "Generating / updating a changelog..."
   _changelog vty > "${_pkgbuilddir:?}/${_pkgname}-vencord.changelog"
