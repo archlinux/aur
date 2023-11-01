@@ -1,6 +1,6 @@
 pkgbase = ykdl
 	pkgdesc = a video downloader focus on China mainland video sites.
-	pkgver = 1.7.2
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/SeaHOH/ykdl
 	arch = any
@@ -8,9 +8,11 @@ pkgbase = ykdl
 	makedepends = python-setuptools
 	depends = python
 	depends = python-m3u8
+	depends = mpv
+	depends = ffmpeg
 	optdepends = python-colorama: Color output
 	optdepends = python-urllib3: Support http range
-	source = ykdl-1.7.2.src.tar.gz::https://github.com/SeaHOH/ykdl/archive/v1.7.2.tar.gz
-	sha256sums = 47d2f8cda2fbbc305ef64c0413c973d60d6276e085584a8f642072e0926f3366
+	source = ykdl-1.8.2.src.tar.gz::https://github.com/SeaHOH/ykdl/archive/v1.8.2.tar.gz
+	sha256sums = 8eb58f351e5474170df6bb33f3d3faf456ea8e03e7f1dfe5212631f31516b4e2
 
 pkgname = ykdl
