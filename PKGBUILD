@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.11.2
+pkgver=1.11.9
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=('aarch64' 'x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh"
 )
-sha256sums=('6a2f86e9d4735b4833576bc416cbfbaae5d141132e7a2f36e5ad844f9efe2029'
+sha256sums=('faab5b430598a9e92232e834621341285ce48a435d91a6b41416f4841c74d2b5'
             '941cb7196d03283a6e65a2271f0c8381a9ec8176f38ce9dc9916f3f89b29a720')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
