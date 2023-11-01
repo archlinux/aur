@@ -1,12 +1,12 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=voltdb
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An in-memory database with pre-compiled Java stored procedures (Community Edition)"
 arch=('i686' 'x86_64')
 url="http://voltdb.com/"
 license=('AGPL3')
-depends=('python2' 'jdk8-openjdk')
+depends=('python2' 'jdk8-openjdk' 'python-virtualenv')
 makedepends=('apache-ant' 'cmake')
 conflicts=('voltdb-enterprise')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
