@@ -2,14 +2,14 @@
 _pkgname=ktool
 pkgname=python-${_pkgname}-git
 pkgver=r9.0345aa9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python-based Kendryte K210 UART ISP Utility"
 arch=('any')
 url="https://github.com/loboris/ktool"
 license=('Apache')
 groups=()
-depends=('python')
-makedepends=('git' 'riscv64-elf-gcc' 'riscv64-elf-newlib' 'perl')
+depends=('python' 'python-pyserial')
+makedepends=('git' 'cmake' 'riscv64-elf-gcc' 'riscv64-elf-newlib' 'perl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
