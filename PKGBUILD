@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/krunner-translator"
@@ -39,5 +39,4 @@ build() {
 package() {
   cd krunner-translator-${pkgver}/build
   make DESTDIR="${pkgdir}" install
-  kquitapp5 krunner
 }

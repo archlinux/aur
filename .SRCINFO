@@ -1,7 +1,7 @@
 pkgbase = plasma-runners-translator
 	pkgdesc = Translates words and sentences into any language
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/naraesk/krunner-translator
 	arch = i686
 	arch = x86_64
