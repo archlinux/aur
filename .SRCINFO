@@ -1,25 +1,8 @@
 pkgbase = quassel-git-monolithic
-	pkgdesc = Next-generation distributed IRC client - monolithic
-	pkgver = 0.12.0.r22.g1731132
+	pkgdesc = metapackage - migrate to quassel-git
+	pkgver = 0.14.0
 	pkgrel = 1
-	url = http://quassel-irc.org
-	install = quassel-git-monolithic.install
-	arch = i686
-	arch = x86_64
-	license = GPL
-	makedepends = cmake
-	makedepends = extra-cmake-modules
-	makedepends = qt5-base
-	makedepends = qt5-tools
-	makedepends = qca-qt5
-	makedepends = qt5-script
-	makedepends = knotifyconfig
-	makedepends = git
-	conflicts = quassel-monolithic
-	conflicts = quassel-client
-	replaces = quassel
-	source = quassel::git://git.quassel-irc.org/quassel.git
-	md5sums = SKIP
+	arch = any
 
 pkgname = quassel-git-monolithic
-
+	depends = quassel-git
