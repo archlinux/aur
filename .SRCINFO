@@ -1,0 +1,17 @@
+pkgbase = libatasmart-git
+	pkgdesc = ATA S.M.A.R.T. reader and parser library
+	pkgver = 0.19.r2.g56afac4
+	pkgrel = 1
+	url = https://github.com/libatasmart/libatasmart
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	depends = systemd-libs
+	provides = libatasmart=0.19.r2.g56afac4
+	conflicts = libatasmart
+	source = git+https://github.com/libatasmart/libatasmart
+	sha256sums = SKIP
+
+pkgname = libatasmart-git
