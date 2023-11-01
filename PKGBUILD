@@ -44,9 +44,8 @@ depends=(
   'lz4'
   'minizip'
   'openal'
-  'openssl-1.1'
   'opus'
-  'pipewire'
+  'libpipewire'
   'qt5-imageformats'
   'qt5-svg'
   'qt5-wayland'
@@ -64,6 +63,7 @@ makedepends=(
   'meson'
   'microsoft-gsl'
   'ninja'
+  'pipewire'
   'plasma-wayland-protocols'
   'python'
   'range-v3'
@@ -147,7 +147,7 @@ source=(
   'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
 
   # submodules for ericniebler.range-v3
-  'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
+  #'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
 
   # submodules for kotatogram-tg_owt
   'chromiumsrc.libyuv'::'git+https://gitlab.com/chromiumsrc/libyuv.git'
@@ -209,7 +209,7 @@ sha256sums=(
 
   'SKIP'
 
-  'SKIP'
+  #'SKIP'
 
   'SKIP'
   'SKIP'
