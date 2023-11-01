@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/krunner-translator"
@@ -12,7 +12,7 @@ makedepends=('cmake' 'extra-cmake-modules' 'ki18n5' 'qt5-base' 'qt5-tools')
 optdepends=()
 provides=()
 conflicts=('kdeplasma-addons-runners-translator')
-replaces=(plasma5-runners-translator)
+replaces=()
 backup=()
 options=()
 install=''
@@ -32,11 +32,12 @@ build() {
   cmake ../ \
     -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
     -DKDE_INSTALL_QTPLUGINDIR=`qtpaths --plugin-dir` \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=None
   make -j$(nproc)
 }
 
 package() {
   cd krunner-translator-${pkgver}/build
   make DESTDIR="${pkgdir}" install
+  kquitapp5 krunner
 }
