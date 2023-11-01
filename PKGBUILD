@@ -17,14 +17,15 @@ options=(!strip !buildflags staticlibs)
 source=("$url/-/raw/main/releases/dxvk-gplasync-v$pkgver-$pkgrel.tar.gz"
         'https://raw.githubusercontent.com/doitsujin/dxvk/master/LICENSE'
         'dxvk-gplasync-env.conf'
-        'setup_dxvk.sh')
+        setup_dxvk{,_proton}.sh)
 sha256sums=('1e1f6db95f4a7f02d372012f4a723a161d732a39b3b3efcf8159e03cdff2dc1e'
             '03ca4af84f5cd28cef3ed3f1ef4d17996992d35ccdbe82b29cc020ca02c16f3d'
             '2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3'
-            '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7')
+            '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7'
+            '1bf20ca5901aaa43d10c794b28d22e3cf63a5c313c8e1e553da9d2780fd4ae85')
 
 package() {
-  cd "dxvk-gplasync-v$pkgver-$pkgrel"
+  cd "dxvk-gplasync-v$pkgver-$pkgrel" || exit 1
 
   install -dm755 "$pkgdir/usr/share"
   cp -dr --preserve=mode,timestamp . "$pkgdir/usr/share/dxvk"
@@ -33,8 +34,10 @@ package() {
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dxvk-gplasync/LICENSE"
 
   install -Dm 755 "$srcdir/setup_dxvk.sh" "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
+  install -Dm 755 "$srcdir/setup_dxvk_proton.sh" "$pkgdir/usr/share/dxvk/setup_dxvk_proton.sh"
   install -dm755 "$pkgdir/usr/bin"
   ln -s /usr/share/dxvk/setup_dxvk.sh "$pkgdir/usr/bin/setup_dxvk"
+  ln -s /usr/share/dxvk/setup_dxvk_proton.sh "$pkgdir/usr/bin/setup_dxvk_proton"
 
   install -dm755 "$pkgdir/etc/environment.d"
   install -Dm644 "$srcdir/dxvk-gplasync-env.conf" "$pkgdir/etc/environment.d/dxvk-gplasync-env.conf"
