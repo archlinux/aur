@@ -6,8 +6,8 @@
 
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
-pkgver=2.13
-pkgrel=2
+pkgver=2.14
+pkgrel=1
 pkgdesc='Open source SIP stack and media stack'
 arch=(x86_64 aarch64 armv7h i686)
 url='https://www.pjsip.org/'
@@ -34,7 +34,7 @@ _repourl="https://github.com/pjsip/$pkgbase"
 source=("$_archive.tar.gz::$_repourl/archive/$pkgver.tar.gz"
         0001-Don-t-build-Java-bindings.patch
         config_site.h)
-sha256sums=('4178bb9f586299111463fc16ea04e461adca4a73e646f8ddef61ea53dafa92d9'
+sha256sums=('d90c225247f6c0e896c8b79130f3fb6ab4f9585670bc5f19edf79de4e024f511'
             'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
             '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
