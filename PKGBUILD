@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("jottem")
 conflicts=("jottem")
 source=("https://github.com/dogue/jottem/releases/download/v$pkgver/jottem-$pkgver-x86_64.tar.gz")
-sha256sums=("aa46f1576f348f9d20132d75053097a6604237b6bb37cf32fcf7a21560c3dfd6")
+sha256sums=("28dc67fa07e60d76e0c158843be403791670b6dacf30e43c6793b6aaf27920e6")
 
 package() {
     install -Dm755 jottem -t "$pkgdir/usr/bin"
