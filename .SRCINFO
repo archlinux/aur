@@ -1,0 +1,12 @@
+pkgbase = firtool-bin
+	pkgdesc = Circuit IR Compilers and Tools
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = https://github.com/llvm/circt
+	arch = x86_64
+	license = Apache
+	provides = firtool
+	source_x86_64 = firtool-1.58.0-linux-x64.tar.gz::https://github.com/llvm/circt/releases/download/firtool-1.58.0/firrtl-bin-linux-x64.tar.gz
+	sha256sums_x86_64 = 0c555ad1a81ff40eb7b4bb4498bc99d8f88718dc434cf1b178233020a3fa4a9f
+
+pkgname = firtool-bin
