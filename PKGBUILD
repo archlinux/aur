@@ -2,9 +2,9 @@
 # Contributor: duapple <2832893880@qq.com>
 
 pkgname=genmake
-pkgver=0.4.0
-pkgrel=5
-_commit=c16e594
+pkgver=0.5.0
+pkgrel=1
+_commit=18ba7e8
 pkgdesc="Makefile template generator"
 arch=('x86_64')
 url="https://gitee.com/duapple/genmake"
@@ -12,10 +12,11 @@ license=('AGPL3')
 depends=('glibc' 'genmake-templates')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/repository/archive/$_commit?format=tar.gz")
-sha256sums=('53f998c73d9662bc364f8d22541e7720f5058524ac57ef66f3b466dace0fd563')
+sha256sums=('0b8342216f00fc8314c36e09a98ebe7a39a716e5f1fdf4f7cc7aca4fa153bbea')
 
 prepare() {
 	cd "$pkgname-$_commit"
+	rm genmake
 	mkdir -p build
 	go mod tidy
 }
@@ -38,7 +39,10 @@ check() {
 
 package() {
 	cd "$pkgname-$_commit"
-	install -D build/genmake -t "$pkgdir/usr/bin/"
-	install -Dm644 config/genmake_conf.json -t "$pkgdir/usr/share/$pkgname/config/"
-	install -d "$pkgdir/usr/share/$pkgname/template/"
+	ln -s /usr/local/$pkgname/$pkgname $pkgname
+	mkdir -p "$pkgdir/usr/bin/"
+	install -D build/$pkgname -t "$pkgdir/usr/local/$pkgname/"
+	install -Dm644 config/genmake_conf.json -t "$pkgdir/usr/local/$pkgname/config/"
+	install -d "$pkgdir/usr/local/$pkgname/config/makefile/"
+	mv $pkgname "$pkgdir/usr/bin/"
 }
