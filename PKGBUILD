@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio-sacd"
-pkgver="23.1.31"
+pkgver="23.11.1"
 pkgrel="1"
 pkgdesc="SACD decoder"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ license=("GPL3")
 makedepends=("cmake")
 depends=("libodiosacd" "glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("c2de03896f48fb8ea7abd109b8a66c0c")
+md5sums=("fdefec609f7c4abd8ed5dab27251277d")
 
 build()
 {
