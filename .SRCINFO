@@ -1,7 +1,7 @@
 pkgbase = r-biodb
 	pkgdesc = biodb, a library and a development framework for connecting to chemical and biological databases
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/biodb
 	arch = x86_64
 	license = AGPL3

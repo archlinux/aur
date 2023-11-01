@@ -5,7 +5,7 @@ _pkgname=biodb
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="biodb, a library and a development framework for connecting to chemical and biological databases"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -49,12 +49,6 @@ optdepends=(
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0716a73291fb80cc3d1f0909549cbaa8')
 sha256sums=('73a5965ebaa6831b752ccc46abe4e8a200028d8de9a8a40cd5b1710eb43080a3')
-
-prepare() {
-  # skip failing tests
-  sed -i '/run_tests <-/a\ \ \ \ skip("fails")' \
-      "$_pkgname/tests/testthat/test_025_persistent_cache.R"
-}
 
 build() {
   mkdir -p build
