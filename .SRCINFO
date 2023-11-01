@@ -1,6 +1,6 @@
 pkgbase = linecounter-git
 	pkgdesc = This is a program that can count all lines in your source code. Run lctr to count all lines. Run lctr -h for help!
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/spynetS/Linecounter.git
 	arch = x86_64
@@ -8,5 +8,6 @@ pkgbase = linecounter-git
 	makedepends = git
 	makedepends = python
 	makedepends = python-pip
+	depends = python-flagser
 
 pkgname = linecounter-git
