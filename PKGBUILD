@@ -6,7 +6,7 @@
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
 pkgver=45.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -58,7 +58,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'cefd26a4974160ccdf9a22f9e80ae59cb8c3aa42d76af00ea308d07c34a9dc25'
+  '09dbb820bea8624081c58bd830e42c52fa5cc0a878ac8c02325bf3f0159ae2f3'
 )
 
 pkgver() {

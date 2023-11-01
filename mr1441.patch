@@ -1,10 +1,10 @@
 Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
-Commit: 04094e9ff9b97019a1547f386cbf5d6fc258841e
-Rebase: Fri Sep 22 22:00:38 2023 +0800
+Commit: 1aee8301bd6b35a5b2609d4309dafd96e63da6e0
+Rebase: Thu Oct 19 15:37:33 2023 +0800
 
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
-index 30cc6fb12..d652a6e5f 100644
+index ab493e0b0..24f211a77 100644
 --- a/clutter/clutter/clutter-frame-clock.c
 +++ b/clutter/clutter/clutter-frame-clock.c
 @@ -35,6 +35,15 @@ enum
@@ -260,7 +260,7 @@ index 30cc6fb12..d652a6e5f 100644
  
    /*
     * However, the last presentation could have happened more than a frame ago.
-@@ -613,8 +693,12 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+@@ -607,8 +687,12 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
            frame_clock->pending_reschedule = TRUE;
            frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
            break;
@@ -275,7 +275,7 @@ index 30cc6fb12..d652a6e5f 100644
            break;
          }
  
-@@ -651,9 +735,15 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+@@ -645,9 +729,15 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        next_update_time_us = g_get_monotonic_time ();
@@ -293,7 +293,7 @@ index 30cc6fb12..d652a6e5f 100644
        frame_clock->pending_reschedule = TRUE;
        frame_clock->pending_reschedule_now = TRUE;
        return;
-@@ -663,7 +753,6 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+@@ -657,7 +747,6 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
  
    frame_clock->next_update_time_us = next_update_time_us;
    g_source_set_ready_time (frame_clock->source, next_update_time_us);
@@ -301,7 +301,7 @@ index 30cc6fb12..d652a6e5f 100644
    frame_clock->is_next_presentation_time_valid = FALSE;
  }
  
-@@ -671,6 +760,12 @@ void
+@@ -665,6 +754,12 @@ void
  clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
  {
    int64_t next_update_time_us = -1;
@@ -314,7 +314,7 @@ index 30cc6fb12..d652a6e5f 100644
  
    if (frame_clock->inhibit_count > 0)
      {
-@@ -682,6 +777,7 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -676,6 +771,7 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
        next_update_time_us = g_get_monotonic_time ();
@@ -322,7 +322,7 @@ index 30cc6fb12..d652a6e5f 100644
        break;
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
        calculate_next_update_time_us (frame_clock,
-@@ -690,11 +786,37 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -684,11 +780,37 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
                                       &frame_clock->min_render_time_allowed_us);
        frame_clock->is_next_presentation_time_valid =
          (frame_clock->next_presentation_time_us != 0);
@@ -362,7 +362,7 @@ index 30cc6fb12..d652a6e5f 100644
        frame_clock->pending_reschedule = TRUE;
        return;
      }
-@@ -703,7 +825,6 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -697,7 +819,6 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
  
    frame_clock->next_update_time_us = next_update_time_us;
    g_source_set_ready_time (frame_clock->source, next_update_time_us);
@@ -370,7 +370,7 @@ index 30cc6fb12..d652a6e5f 100644
  }
  
  static void
-@@ -734,7 +855,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -728,7 +849,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
                               frame_clock->refresh_interval_us;
  
    lateness_us = time_us - ideal_dispatch_time_us;
@@ -379,7 +379,7 @@ index 30cc6fb12..d652a6e5f 100644
      frame_clock->last_dispatch_lateness_us = 0;
    else
      frame_clock->last_dispatch_lateness_us = lateness_us;
-@@ -755,10 +876,25 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -749,10 +870,25 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
      }
  #endif
  
@@ -406,7 +406,7 @@ index 30cc6fb12..d652a6e5f 100644
  
    frame_count = frame_clock->frame_count++;
  
-@@ -787,25 +923,31 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -781,25 +917,31 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
    result = iface->frame (frame_clock, frame, frame_clock->listener.user_data);
    COGL_TRACE_END (ClutterFrameClockFrame);
  
@@ -450,7 +450,7 @@ index 30cc6fb12..d652a6e5f 100644
          }
        break;
      }
-@@ -838,10 +980,13 @@ frame_clock_source_dispatch (GSource     *source,
+@@ -832,10 +974,13 @@ frame_clock_source_dispatch (GSource     *source,
  }
  
  void
@@ -466,7 +466,7 @@ index 30cc6fb12..d652a6e5f 100644
  }
  
  GString *
-@@ -935,8 +1080,6 @@ clutter_frame_clock_dispose (GObject *object)
+@@ -929,8 +1074,6 @@ clutter_frame_clock_dispose (GObject *object)
  {
    ClutterFrameClock *frame_clock = CLUTTER_FRAME_CLOCK (object);
  
@@ -475,7 +475,7 @@ index 30cc6fb12..d652a6e5f 100644
    if (frame_clock->source)
      {
        g_signal_emit (frame_clock, signals[DESTROY], 0);
-@@ -957,6 +1100,15 @@ static void
+@@ -951,6 +1094,15 @@ static void
  clutter_frame_clock_class_init (ClutterFrameClockClass *klass)
  {
    GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -640,7 +640,7 @@ index c35cb36e3..2130e4042 100644
                                          stage_view,
                                          scanout,
 diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
-index 707da9dc1..932e5e6a0 100644
+index d89b12598..b17e8460d 100644
 --- a/src/backends/native/meta-kms-crtc.c
 +++ b/src/backends/native/meta-kms-crtc.c
 @@ -48,6 +48,8 @@ struct _MetaKmsCrtc
@@ -724,7 +724,7 @@ index b26b682dd..a30a6de6e 100644
 +
 +MetaSwapChain * meta_kms_crtc_get_swap_chain (MetaKmsCrtc *crtc);
 diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
-index d3fd77268..e7497607b 100644
+index 2ca70326f..80c01413c 100644
 --- a/src/backends/native/meta-kms-impl-device-atomic.c
 +++ b/src/backends/native/meta-kms-impl-device-atomic.c
 @@ -505,6 +505,7 @@ process_plane_assignment (MetaKmsImplDevice  *impl_device,
@@ -748,7 +748,7 @@ index d3fd77268..e7497607b 100644
    return TRUE;
  }
  
-@@ -1001,7 +1008,7 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
+@@ -1005,7 +1012,7 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
                          req,
                          blob_ids,
                          meta_kms_update_get_plane_assignments (update),
@@ -895,7 +895,7 @@ index 2d68ba11f..f4e23df07 100644
  
  static gboolean
 diff --git a/src/backends/native/meta-kms-impl-device.c b/src/backends/native/meta-kms-impl-device.c
-index da372383d..972873ac4 100644
+index bce64d309..85441f47b 100644
 --- a/src/backends/native/meta-kms-impl-device.c
 +++ b/src/backends/native/meta-kms-impl-device.c
 @@ -1483,9 +1483,11 @@ meta_kms_impl_device_handle_update (MetaKmsImplDevice *impl_device,
@@ -911,7 +911,7 @@ index da372383d..972873ac4 100644
    meta_kms_device_handle_flush (priv->device, latch_crtc);
  
    feedback = do_process (impl_device, latch_crtc, update, flags);
-@@ -1848,6 +1850,16 @@ meta_kms_impl_device_init_mode_setting (MetaKmsImplDevice  *impl_device,
+@@ -1862,6 +1864,16 @@ meta_kms_impl_device_init_mode_setting (MetaKmsImplDevice  *impl_device,
    return TRUE;
  }
  
@@ -928,7 +928,7 @@ index da372383d..972873ac4 100644
  void
  meta_kms_impl_device_prepare_shutdown (MetaKmsImplDevice *impl_device)
  {
-@@ -1855,6 +1867,8 @@ meta_kms_impl_device_prepare_shutdown (MetaKmsImplDevice *impl_device)
+@@ -1869,6 +1881,8 @@ meta_kms_impl_device_prepare_shutdown (MetaKmsImplDevice *impl_device)
      meta_kms_impl_device_get_instance_private (impl_device);
    MetaKmsImplDeviceClass *klass = META_KMS_IMPL_DEVICE_GET_CLASS (impl_device);
  
@@ -1699,10 +1699,10 @@ index 91eb7b533..11bb5ba56 100644
                                                              MetaDrmBuffer *fb);
  
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
-index 57cb20b7e..6acc09918 100644
+index e6c653e26..7e39889bc 100644
 --- a/src/backends/native/meta-renderer-native.c
 +++ b/src/backends/native/meta-renderer-native.c
-@@ -98,6 +98,7 @@ struct _MetaRendererNative
+@@ -99,6 +99,7 @@ struct _MetaRendererNative
  
    GList *detached_onscreens;
    GList *lingering_onscreens;
@@ -1710,7 +1710,7 @@ index 57cb20b7e..6acc09918 100644
    guint release_unused_gpus_idle_id;
  
    GList *power_save_page_flip_onscreens;
-@@ -676,6 +677,9 @@ configure_disabled_crtcs (MetaKmsDevice      *kms_device,
+@@ -683,6 +684,9 @@ configure_disabled_crtcs (MetaKmsDevice      *kms_device,
  
        kms_update = ensure_mode_set_update (renderer_native, kms_device);
        meta_kms_update_mode_set (kms_update, kms_crtc, NULL, NULL);
@@ -1720,7 +1720,7 @@ index 57cb20b7e..6acc09918 100644
      }
  }
  
-@@ -683,12 +687,18 @@ static gboolean
+@@ -690,12 +694,18 @@ static gboolean
  dummy_power_save_page_flip_cb (gpointer user_data)
  {
    MetaRendererNative *renderer_native = user_data;
@@ -1741,7 +1741,7 @@ index 57cb20b7e..6acc09918 100644
    renderer_native->power_save_page_flip_source_id = 0;
  
    return G_SOURCE_REMOVE;
-@@ -700,6 +710,9 @@ meta_renderer_native_queue_power_save_page_flip (MetaRendererNative *renderer_na
+@@ -707,6 +717,9 @@ meta_renderer_native_queue_power_save_page_flip (MetaRendererNative *renderer_na
  {
    const unsigned int timeout_ms = 100;
  
@@ -1751,7 +1751,7 @@ index 57cb20b7e..6acc09918 100644
    if (!renderer_native->power_save_page_flip_source_id)
      {
        renderer_native->power_save_page_flip_source_id =
-@@ -810,6 +823,22 @@ clear_detached_onscreens (MetaRendererNative *renderer_native)
+@@ -817,6 +830,22 @@ clear_detached_onscreens (MetaRendererNative *renderer_native)
                  g_object_unref);
  }
  
@@ -1774,7 +1774,7 @@ index 57cb20b7e..6acc09918 100644
  static void
  mode_sets_update_result_feedback (const MetaKmsFeedback *kms_feedback,
                                    gpointer               user_data)
-@@ -871,6 +900,7 @@ meta_renderer_native_post_mode_set_updates (MetaRendererNative *renderer_native)
+@@ -878,6 +907,7 @@ meta_renderer_native_post_mode_set_updates (MetaRendererNative *renderer_native)
    post_mode_set_updates (renderer_native);
  
    clear_detached_onscreens (renderer_native);
@@ -1782,7 +1782,7 @@ index 57cb20b7e..6acc09918 100644
  
    meta_kms_notify_modes_set (kms);
  
-@@ -1493,6 +1523,26 @@ detach_onscreens (MetaRenderer *renderer)
+@@ -1467,6 +1497,26 @@ detach_onscreens (MetaRenderer *renderer)
      }
  }
  
@@ -1809,7 +1809,7 @@ index 57cb20b7e..6acc09918 100644
  static void
  meta_renderer_native_rebuild_views (MetaRenderer *renderer)
  {
-@@ -1503,6 +1553,7 @@ meta_renderer_native_rebuild_views (MetaRenderer *renderer)
+@@ -1477,6 +1527,7 @@ meta_renderer_native_rebuild_views (MetaRenderer *renderer)
    MetaRendererClass *parent_renderer_class =
      META_RENDERER_CLASS (meta_renderer_native_parent_class);
  
@@ -1817,7 +1817,7 @@ index 57cb20b7e..6acc09918 100644
    meta_kms_discard_pending_page_flips (kms);
    g_hash_table_remove_all (renderer_native->mode_set_updates);
  
-@@ -2237,6 +2288,7 @@ meta_renderer_native_finalize (GObject *object)
+@@ -2239,6 +2290,7 @@ meta_renderer_native_finalize (GObject *object)
    g_clear_handle_id (&renderer_native->release_unused_gpus_idle_id,
                       g_source_remove);
    clear_detached_onscreens (renderer_native);
@@ -2047,20 +2047,8 @@ index ca2ef166c..0038988bd 100644
      'backends/native/meta-thread-impl.c',
      'backends/native/meta-thread-impl.h',
      'backends/native/meta-thread-private.h',
-diff --git a/src/tests/clutter/conform/event-delivery.c b/src/tests/clutter/conform/event-delivery.c
-index 383ad0bae..3b259139a 100644
---- a/src/tests/clutter/conform/event-delivery.c
-+++ b/src/tests/clutter/conform/event-delivery.c
-@@ -329,6 +329,7 @@ event_delivery_implicit_grab_cancelled (void)
-   n_child_1_leave_events = n_child_2_leave_events = n_stage_leave_events = 0;
-   n_action_sequences_cancelled = 0;
-   clutter_actor_destroy (child_1);
-+  wait_stage_updated (&was_updated);
-   g_assert_cmpint (n_child_1_enter_events, ==, 0);
-   g_assert_cmpint (n_child_1_leave_events, ==, 0);
-   g_assert_cmpint (n_action_sequences_cancelled, ==, 1);
 diff --git a/src/tests/native-kms-render.c b/src/tests/native-kms-render.c
-index 31e74a9a4..259d315dc 100644
+index 90ea9b581..aafa682bd 100644
 --- a/src/tests/native-kms-render.c
 +++ b/src/tests/native-kms-render.c
 @@ -39,6 +39,8 @@
