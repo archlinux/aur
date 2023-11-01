@@ -6,7 +6,7 @@ _pkgname='fdpp'
 _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.7+23.r1466.20231030.288660a
+pkgver=1.7+24.r1467.20231101.53a1b24
 pkgrel=2
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
@@ -24,9 +24,9 @@ depends=(
 )
 makedepends=(
   'bash'
+  'binutils'
   'clang'
   'git'
-  'lld'
   'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
 )
 provides=(
@@ -76,14 +76,14 @@ build() {
   set -u
   cd "${srcdir}/${_pkgname}"
   bash -e -u configure
-  make -j "$(nproc)"
+  make -j "$(nproc)" CROSS_LD=ld
   set +u
 }
 
 package() {
   set -u
   cd "${srcdir}/${_pkgname}"
-  make -j1 DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" CROSS_LD=ld install
 
   for _docfile in 'git.log' 'NEWS.md' 'README.md'; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
