@@ -1,0 +1,13 @@
+pkgbase = flite-unpatched
+	pkgdesc = A lightweight speech synthesis engine (built without Arch linux patches)
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://www.festvox.org/flite/
+	arch = x86_64
+	license = custom
+	makedepends = chrpath
+	depends = alsa-lib
+	source = https://github.com/festvox/flite/archive/v2.2/flite-2.2.tar.gz
+	sha256sums = ab1555fe5adc3f99f1d4a1a0eb1596d329fd6d74f1464a0097c81f53c0cf9e5c
+
+pkgname = flite-unpatched
