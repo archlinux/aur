@@ -1,18 +1,18 @@
 pkgbase = torpedo-bin
 	pkgdesc = Connect to databases in private VPCs securely the easy way - no VPN required
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/sst/torpedo
 	conflicts = torpedo
 	provides = torpedo
 	arch = aarch64
-	source_aarch64 = https://github.com/sst/torpedo/releases/download/v0.0.8/torpedo-Linux-arm64.tar.gz
-	sha256sums_aarch64 = 8fe85ac97c7ba34383937166ff2ebce73db1a4cf50d45db9a5169076ff51d12e
+	source_aarch64 = https://github.com/sst/torpedo/releases/download/v0.0.9/torpedo-Linux-arm64.tar.gz
+	sha256sums_aarch64 = c288bf62572583aec3d20e4defc2be50a70e4c3fcc5ae26086a6c6143f2393de
 	arch = i686
-	source_i686 = https://github.com/sst/torpedo/releases/download/v0.0.8/torpedo-Linux-i386.tar.gz
-	sha256sums_i686 = 35a23b7360424ccc38ec755133afff13c4cfffb9389f46329a3c279bfdfa32d1
+	source_i686 = https://github.com/sst/torpedo/releases/download/v0.0.9/torpedo-Linux-i386.tar.gz
+	sha256sums_i686 = aed11c798dfb1f89122e0d0e04c39492c1d74f0a1209d54bd0439e675f2b46e0
 	arch = x86_64
-	source_x86_64 = https://github.com/sst/torpedo/releases/download/v0.0.8/torpedo-Linux-x86_64.tar.gz
-	sha256sums_x86_64 = 57705c97ed27d130b9309231cd243a9135d7b84ff9b085fb78c1a9336f25b632
+	source_x86_64 = https://github.com/sst/torpedo/releases/download/v0.0.9/torpedo-Linux-x86_64.tar.gz
+	sha256sums_x86_64 = f60bb7930559c4e83dba4c944c1eb923b31892fbec181dcdd12cec66ec4ea8bc
 	
 pkgname = torpedo-bin
