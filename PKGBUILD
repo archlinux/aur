@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=RDT
 pkgname=python-${_base,,}
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Reversible Data Transforms"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-pandas python-scikit-learn python-psutil python-faker)
 makedepends=(python-build python-installer python-pytest-runner python-wheel)
 checkdepends=(python-pytest-subtests python-copulas)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5aece05959abbc8433f4081b9959246fbf70d21a5e1140b98f5837e87b6b3274f1f2c3513302abcfdfe4b7c99145e66957b2acb75b2ac5e07e40b8dab90a971c')
+sha512sums=('62dd945314bc997865ccab2c6c372f9062bc9ae8c8a2ca163f8bd54175e870fdc5c4dedc4bb34a2dda224b36ce9717d0f4939fdd1bed80c23b9ebbe366e20831')
 
 build() {
   cd ${_base}-${pkgver}
@@ -22,7 +22,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not performance and not quality'
+  test-env/bin/python -m pytest -k 'not performance'
 }
 
 package() {
