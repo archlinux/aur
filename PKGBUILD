@@ -1,7 +1,7 @@
 # Maintainer: phanium <$(echo bnhoc2R1QHFxLmNvbQo= | base64 -d)>
 pkgname=sealcrypto-git
 pkgver=v4.1.1.r0.g206648d
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
 url="https://github.com/Microsoft/SEAL"
@@ -10,6 +10,7 @@ makedepends=('git' 'cmake')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 conflicts=("sealcrypto")
+provides=("sealcrypto")
 
 pkgver() {
   cd ${srcdir}/${pkgname}
