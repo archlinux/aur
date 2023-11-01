@@ -33,7 +33,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GO_FLAGS="-buildmode=pie -trimpath -buildvcs=false -x -v"
+  export GO_FLAGS="-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw -x -v"
 
   go build
 }
@@ -41,4 +41,5 @@ build() {
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -rs "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/smel"
 }
