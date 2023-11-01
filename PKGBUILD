@@ -1,30 +1,29 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ttservice
-_pkgver=0.3.8
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.8
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='A Service for Tidy Transcriptomics Software Suite'
-arch=('any')
+pkgdesc="A Service for Tidy Transcriptomics Software Suite"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
   r-dplyr
-)
-optdepends=(
-  r-methods
+  r-plotly
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('24d5f9c5da9bd85cfdc9c5dbe900ea787a9a552d836e3e98096d0209b7c973be')
+md5sums=('89800fb63ee455786036bb5652070ea6')
+sha256sums=('d7a1070c9a27e249602ef398616f1f3dd2b7b5d0d27ce23f17a7af74f3360ee3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
