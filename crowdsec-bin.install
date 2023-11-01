@@ -24,12 +24,12 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+    cscli hub update
     config_backup="/tmp/crowdsec_upgrade_$1_$2"
     if [ -d "$config_backup" ]; then
         cscli config restore "$config_backup" --error &&
             rm -rf "$config_backup" || echo -e "\n**Config backup restore failed: ${config_backup}**\n"
     fi
-    cscli hub update
     cscli collections upgrade --error --all
     systemctl daemon-reload
     systemctl reload crowdsec
