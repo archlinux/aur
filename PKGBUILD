@@ -6,6 +6,7 @@ pkgrel=1
 arch=('any')
 url="http://mugglinworks.com/soundfonts/"
 license=('custom')
+makedep=(git)
 groups=('soundfonts')
 source=(git+https://github.com/mxmilkiib/sunshine-drums-sf2)
 sha1sums=('SKIP')
