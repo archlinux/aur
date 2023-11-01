@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TimiRGeN
-_pkgver=1.10.0
+_pkgver=1.11.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Time sensitive microRNA-mRNA integration, analysis and network generation tool'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b4bfb62d19dcfe6aee5e4cc421d8663924764827be82c66c6e211d80841275d')
+sha256sums=('22bf75a246dcb1dc85830bdeb9300b00647ae91fe5647d37a6d3d5405b1e9280')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
