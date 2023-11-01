@@ -135,7 +135,7 @@ index 274eaac819af..c0dc2b1d20c7 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index adb82d3f6d17..04a88ade596d 100644
+index adb82d3f6d17..0c8ac9ec4d2e 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -251,7 +251,7 @@ index adb82d3f6d17..04a88ade596d 100644
      // Look through protocols.
      for (auto *P : Category->protocols())
        AddObjCProperties(CCContext, P, AllowCategories, AllowNullaryMethods,
-@@ -5686,6 +5690,554 @@ Expr *unwrapParenList(Expr *Base) {
+@@ -5686,6 +5690,555 @@ Expr *unwrapParenList(Expr *Base) {
    return Base;
  }
  
@@ -573,8 +573,7 @@ index adb82d3f6d17..04a88ade596d 100644
 +                if (!InParens)
 +                  B.AddChunk(CodeCompletionString::CK_RightParen);
 +              });
-+  }
-+  if (Ctx.getLangOpts().CPlusPlus11 && !BaseIsStmt) {
++  } else if (Ctx.getLangOpts().CPlusPlus11 && !BaseIsStmt) {
 +    const char *TypeStr = TypeString(Base->getType().getNonReferenceType());
 +    AddResult("forward",
 +              Ctx.getRValueReferenceType(Base->getType().getNonReferenceType()),
@@ -695,6 +694,8 @@ index adb82d3f6d17..04a88ade596d 100644
 +        Base->getType()->getAs<EnumType>()->getDecl()->getDefinition();
 +    const char *Qualifier = nullptr;
 +    DeclContext *QualifierDC = ED->isScoped() ? ED : ED->getDeclContext();
++    auto short_names =
++        ED && ED->isScopedUsingClassTag() && Ctx.getLangOpts().CPlusPlus20;
 +    if (const auto *NNS = getRequiredQualification(
 +            Ctx, Results.getSema().CurContext, QualifierDC)) {
 +      std::string Str;
@@ -716,7 +717,7 @@ index adb82d3f6d17..04a88ade596d 100644
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +        B.AddChunk(CodeCompletionString::CK_LeftBrace);
 +        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
-+        if (Ctx.getLangOpts().CPlusPlus20 && Qualifier) {
++        if (short_names && Qualifier) {
 +          B.AddTextChunk("using");
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +          B.AddTextChunk("enum");
@@ -729,7 +730,7 @@ index adb82d3f6d17..04a88ade596d 100644
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +          B.AddTextChunk("case");
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+          if (!Ctx.getLangOpts().CPlusPlus20 && Qualifier)
++          if (!short_names && Qualifier)
 +            B.AddTextChunk(Qualifier);
 +          B.AddTextChunk(ECD->getIdentifier()->getNameStart());
 +          B.AddChunk(CodeCompletionString::CK_Colon);
@@ -742,8 +743,8 @@ index adb82d3f6d17..04a88ade596d 100644
 +      });
 +    }
 +  }
-+  if (auto Array = dyn_cast<ArrayType>(Base->getType())) {
-+    if (Array->getSizeModifier() != ArrayType::Star) {
++  if (const auto *Array = dyn_cast<ArrayType>(Base->getType())) {
++    if (Array->getSizeModifier() != ArraySizeModifier::Star) {
 +      auto AddBlock = [&](const char *Name) {
 +        AddResult(Name, Base->getType()->getPointeeType(),
 +                  [&](CodeCompletionBuilder &B) {
@@ -806,7 +807,7 @@ index adb82d3f6d17..04a88ade596d 100644
  } // namespace
  
  void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
-@@ -5693,10 +6245,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5693,10 +6246,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                                             SourceLocation OpLoc, bool IsArrow,
                                             bool IsBaseExprStatement,
                                             QualType PreferredType) {
@@ -820,7 +821,7 @@ index adb82d3f6d17..04a88ade596d 100644
  
    ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
    if (ConvertedBase.isInvalid())
-@@ -5727,6 +6280,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5727,6 +6281,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                          CodeCompleter->getCodeCompletionTUInfo(), CCContext,
                          &ResultBuilder::IsMember);
  
@@ -831,7 +832,7 @@ index adb82d3f6d17..04a88ade596d 100644
    auto DoCompletion = [&](Expr *Base, bool IsArrow,
                            std::optional<FixItHint> AccessOpFixIt) -> bool {
      if (!Base)
-@@ -6006,8 +6563,7 @@ void Sema::CodeCompleteCase(Scope *S) {
+@@ -6006,8 +6564,7 @@ void Sema::CodeCompleteCase(Scope *S) {
  
      Expr *CaseVal = Case->getLHS()->IgnoreParenCasts();
      if (auto *DRE = dyn_cast<DeclRefExpr>(CaseVal))
@@ -841,7 +842,7 @@ index adb82d3f6d17..04a88ade596d 100644
          // We look into the AST of the case statement to determine which
          // enumerator was named. Alternatively, we could compute the value of
          // the integral constant expression, then compare it against the
-@@ -8234,11 +8790,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
+@@ -8234,11 +8791,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
        return;
      RecExpr = Conv.get();
    }
@@ -857,7 +858,7 @@ index adb82d3f6d17..04a88ade596d 100644
  
    // If we're messaging an expression with type "id" or "Class", check
    // whether we know something special about the receiver that allows
-@@ -10087,8 +10642,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
+@@ -10087,8 +10643,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
    };
  
    // Helper: scans IncludeDir for nice files, and adds results for each.

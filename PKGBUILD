@@ -123,7 +123,7 @@ sha256sums=('SKIP'
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             '35153f4775647bd7172a460de595f8b1cab4db0ae85283cd1119864f5328ea48'  # lsp-codelens
             'd048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc'  # postfix-completion
-            'e11679d8f51d22954c0d2a95139d46a425de48360e676b84d58e5ec968e037aa'  # postfix-completion-trunk
+            '6bc5825c0ba9b6463dcf311346ae4ac9db122f66a4cd47b07f67845d125953b2'  # postfix-completion-trunk
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
