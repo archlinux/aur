@@ -6,7 +6,7 @@
 
 pkgname=wine-wow64-for-wechat
 _name=wine
-pkgver=8.18
+pkgver=8.19
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
@@ -15,7 +15,7 @@ source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
         wine-binfmt.conf
         0001-winex11.drv-Update-a-candidate-window-s-position-wit.patch
         0002-wine-wechat.patch)
-sha512sums=('0f8e6b5c6709930bc7f774d92cd025976f6442c3785a224b5988a37152f3a875150b228f12442e9b9c0d9e7884568aca26159df86d48f2550a630625fef3c8b9'
+sha512sums=('ad4178c5e9f336eb968f0c378e3819794507447728acd10d642c1d66e0745837e47a70579bc9c7d9bec4510ca47e230bf4ab05ddf39323669ed24a6fce9f8c02'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
             '8c319dacdbd484ae2e02d9b967cd31866c525dd51a905c8ed9fa11b36794232c93ea97a94dbcaa5cacb3f44ab5570ee4a6da04576ae4963da300bf8d2c123705'
