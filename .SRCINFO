@@ -1,0 +1,23 @@
+pkgbase = port-checker-bin
+	pkgdesc = Application to check if a TCP port works with a Golang HTTP server. Pre-compiled
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/qdm12/port-checker/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MIT
+	noextract = LICENSE
+	source = https://raw.githubusercontent.com/qdm12/port-checker/v0.3.0/LICENSE
+	sha256sums = 0ae758cc523d6b771cd9034bc9d1b1e150c3d2855a6a3be6bd8a9f48c67adb5d
+	source_x86_64 = https://github.com/qdm12/port-checker/releases/download/v0.3.0/port-checker_0.3.0_linux_amd64
+	sha256sums_x86_64 = 3e7e17d772d99d545e7f63a8d03a470171516bf0cfb4ce7af7629f2458fc0c64
+	source_aarch64 = https://github.com/qdm12/port-checker/releases/download/v0.3.0/port-checker_0.3.0_linux_arm64
+	sha256sums_aarch64 = 2bca10a1a10d61968c7ac53a854989e65039869cba827da27c5a0ed9f34750ab
+	source_armv7h = https://github.com/qdm12/port-checker/releases/download/v0.3.0/port-checker_0.3.0_linux_armv7
+	sha256sums_armv7h = 2f6ae99ed050d8764b613280b5295a1b312a12422c06777b99d15470f759da00
+	source_i686 = https://github.com/qdm12/port-checker/releases/download/v0.3.0/port-checker_0.3.0_linux_386
+	sha256sums_i686 = 43aefe52c4589185ff0b4bb2a1000b8f0b0d5edbc80a0face6c3d102f8f0eb2e
+
+pkgname = port-checker-bin
