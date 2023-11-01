@@ -1,6 +1,6 @@
 pkgbase = icalingua++-bin
 	pkgdesc = A branch of deleted Icalingua, with limited support
-	pkgver = 2.10.6
+	pkgver = 2.10.7
 	pkgrel = 1
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
@@ -9,16 +9,7 @@ pkgbase = icalingua++-bin
 	license = AGPL3
 	depends = bash
 	depends = electron22
-	depends = gtk3
-	depends = libnotify
-	depends = libnss_nis
-	depends = libxss
-	depends = libxtst
-	depends = xdg-utils
-	depends = at-spi2-core
-	depends = util-linux-libs
-	depends = libsecret
-	provides = icalingua++=2.10.6
+	provides = icalingua++=2.10.7
 	conflicts = icalingua++
 	conflicts = icalingua++-electron
 	source = icalingua++.png::https://raw.githubusercontent.com/Icalingua-plus-plus/Icalingua-plus-plus/develop/pkgres/512x512.png
@@ -26,12 +17,12 @@ pkgbase = icalingua++-bin
 	source = icalingua++.sh
 	sha256sums = 5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de
 	sha256sums = b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86
-	sha256sums = 4d151c3c5d48d7c63b29a1db87774819d39a3862cf23e2f7955a2a1104a6cb94
-	source_aarch64 = icalingua++-2.10.6-aarch64.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.6/app-arm64.asar
-	sha256sums_aarch64 = 5936cc5c5939f715f9d05f40e4b02ffc4d19ee6d3c22a99f404ebc490f2a0725
-	source_armv7h = icalingua++-2.10.6-armv7h.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.6/app-armv7l.asar
-	sha256sums_armv7h = a92b8a07efe5b33e81fab2395b30527dc23d070362b31ccbcd4d42cec84fe51b
-	source_x86_64 = icalingua++-2.10.6-x86_64.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.6/app-x86_64.asar
-	sha256sums_x86_64 = 53f6f9e0b0786be3816995a59665dd74b45edff785ef08cc52f631e0704b6820
+	sha256sums = 6c08d6bce8a280fddd642d0b177ad4ecc5a0a7d572a303c4532cf499c9666a01
+	source_aarch64 = icalingua++-2.10.7-aarch64.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.7/app-arm64.asar
+	sha256sums_aarch64 = e79dabad7bab49dfee918dc6f897c35b48bcbf6d29f5a5d313186bfe2efd19e2
+	source_armv7h = icalingua++-2.10.7-armv7h.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.7/app-armv7l.asar
+	sha256sums_armv7h = a749c2332729d1e8938a3464690ac847295c5807da4589712210c97c25eca076
+	source_x86_64 = icalingua++-2.10.7-x86_64.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.10.7/app-x86_64.asar
+	sha256sums_x86_64 = 96baaae9449084f6a1f4831d4fac040d3f2b50c98cb8437dad4105da655d1620
 
 pkgname = icalingua++-bin
