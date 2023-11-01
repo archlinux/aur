@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=profileplyr
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Visualization and annotation of read signal over genomic ranges with profileplyr'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('94ff7e20ab8753cc209e060a31d76d7128d7b83cad2407702d5f7c5d3dc70577')
+sha256sums=('db9efeae6afec2121e6cec9152aaccd047a0d31d3abed3711cddd5b00a25cfb2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
