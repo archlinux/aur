@@ -9,7 +9,8 @@ pkgbase = wgsl-analyzer-bin
 	depends = gcc-libs
 	provides = wgsl-analyzer
 	conflicts = wgsl-analyzer
-	source_x86_64 = https://github.com/wgsl-analyzer/wgsl-analyzer/releases/download/v0.8.0/wgsl_analyzer-linux-x64
-	sha256sums_x86_64 = 4a4e3cbc029a5003029a3bb47410b860fc4a229df93caf3b1affb812c58373e7
+	noextract = wgsl_analyzer-0.8.0
+	source = wgsl_analyzer-0.8.0::https://github.com/wgsl-analyzer/wgsl-analyzer/releases/download/v0.8.0/wgsl_analyzer-linux-x64
+	sha256sums = 4a4e3cbc029a5003029a3bb47410b860fc4a229df93caf3b1affb812c58373e7
 
 pkgname = wgsl-analyzer-bin
