@@ -2,14 +2,15 @@
 # Maintainer:  Kevin Stephen <kizunaaisesu [at] gmail [dot] com>
 
 pkgname=systemmodeler
-pkgver=13.2.0
+pkgver=13.3.0
 pkgrel=1
 pkgdesc="An easy-to-use, next-generation modeling and simulation environment for cyber-physical systems."
 arch=('i686' 'x86_64')
 url="https://www.wolfram.com/system-modeler/"
 license=('proprietary')
 source=("file://SystemModeler_${pkgver}_LINUX.sh")
-md5sums=('3b112c367304dfee696e5c8b3e30f1a1')
+md5sums=('9320dfdc55bf0e79aecb9fbf5a0b09cc')
+checkdepends=('md5sum')
 install='systemmodeler.install'
 options=('!strip')
 
