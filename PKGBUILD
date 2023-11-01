@@ -2,7 +2,7 @@
 pkgname=kde-cdemu-manager
 _pkgname=kde_cdemu
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu."
 arch=('i686' 'x86_64')
 url="https://www.linux-apps.com/p/998461"
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'qt5-base' 'kconfigwidgets5' 'kcoreaddons5' 'kdbusad
 provides=('kde-cdemu-manager')
 conflicts=('kde-cdemu-manager')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("https://sourceforge.net/projects/kde-cdemu-manager/files/${_pkgname}-${pkgver}.tar.zst/download")
+source=("${_pkgname}-${pkgver}.tar.zst::https://sourceforge.net/projects/${pkgname}/files/${_pkgname}-${pkgver}.tar.zst/download")
 sha256sums=('85de3380cbf16d03726582cf7fd9f87bbe516173b4ec7096c40f1aa776ee670b')
 
 prepare() {
@@ -28,5 +28,5 @@ build() {
 
 package() {
   cd build
-  make DESTDIR=$pkgdir install
+  make install DESTDIR="${pkgdir}"
 }
