@@ -1,29 +1,28 @@
+# Maintainer: knedl1k <knedl1k At tuta Dot io>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
+# Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=20.04
+pkgver=23.10.1
 pkgrel=1
 _uver=focal
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
 license=("gpl2" "gpl3" "custom:cc-by-sa-3.0")
-#depends=("xfce-theme-albatross" "xfce-theme-bluebird" "xfce-theme-greybird" "shimmer-wallpapers")
 makedepends=("zip")
 optdepends=("plymouth: For the plymouth theme to work"
-        "lightdm-gtk-greeter: For LightDM GTK Greeter theme to work"
-        "shimmer-wallpapers: Wallpapers not included in the main package, or git version"
-        "xfce-theme-albatross: Official theming, git or stable version"
-        "xfce-theme-bluebird: Official theming, git or stable version"
-        "xfce-theme-greybird: Official theming, git or stable version"
-	"elementary-xfce-icons: For matching icon theme, or the git version")
+        		"lightdm-gtk-greeter: For LightDM GTK Greeter theme to work"
+        		"shimmer-wallpapers: Wallpapers not included in the main package, or git version"
+       		 	"xfce-theme-bluebird: Official theming, git or stable version"
+        		"xfce-theme-greybird: Official theming, git or stable version"
+						"elementary-xfce-icons: For matching icon theme, or the git version")
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz"
-	"CC-BY-SA-3.0.txt")
+				"CC-BY-SA-3.0.txt")
+sha256sums=('1d334a0c73b405a542a88432045c15719c1cff68dec0246acd2602fae26fb1f2'
+						'129f20089a0c2fe1ac3607fc1761ef177effbf354aeed1fd9def9bcaf4d024ee')
 
 package() {
-  #cd "${srcdir}/trunk"
-  #cd "${srcdir}/${_uver}"
   cd "${srcdir}/${pkgname}"
 
   install -dm755 "${pkgdir}/usr/"
@@ -43,8 +42,4 @@ package() {
 
   install -D -m644 "${srcdir}/CC-BY-SA-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/CC-BY-SA-3.0.txt"
 }
-
-# I use MD5 because is what "makepkg -g" give by default, blame Allan
-md5sums=('1dd1b03a35b617dc113c9a51134c7a94'
-         'd55fbe17f8a79a738b1337f0b96aa064')
 

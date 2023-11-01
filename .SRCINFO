@@ -1,6 +1,6 @@
 pkgbase = xubuntu-artwork
 	pkgdesc = Xubuntu themes and artwork
-	pkgver = 20.04
+	pkgver = 23.10.1
 	pkgrel = 1
 	url = https://launchpad.net/xubuntu-artwork
 	arch = any
@@ -11,14 +11,12 @@ pkgbase = xubuntu-artwork
 	optdepends = plymouth: For the plymouth theme to work
 	optdepends = lightdm-gtk-greeter: For LightDM GTK Greeter theme to work
 	optdepends = shimmer-wallpapers: Wallpapers not included in the main package, or git version
-	optdepends = xfce-theme-albatross: Official theming, git or stable version
 	optdepends = xfce-theme-bluebird: Official theming, git or stable version
 	optdepends = xfce-theme-greybird: Official theming, git or stable version
 	optdepends = elementary-xfce-icons: For matching icon theme, or the git version
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_20.04.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_23.10.1.tar.xz
 	source = CC-BY-SA-3.0.txt
-	md5sums = 1dd1b03a35b617dc113c9a51134c7a94
-	md5sums = d55fbe17f8a79a738b1337f0b96aa064
+	sha256sums = 1d334a0c73b405a542a88432045c15719c1cff68dec0246acd2602fae26fb1f2
+	sha256sums = 129f20089a0c2fe1ac3607fc1761ef177effbf354aeed1fd9def9bcaf4d024ee
 
 pkgname = xubuntu-artwork
-
