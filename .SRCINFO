@@ -1,0 +1,26 @@
+pkgbase = kirigami-addons5
+	pkgdesc = Add-ons for the Kirigami framework
+	pkgver = 0.11.0
+	pkgrel = 5
+	url = https://invent.kde.org/libraries/kirigami-addons
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = ki18n5
+	depends = gcc-libs
+	depends = glibc
+	depends = kirigami2
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	conflicts = kirigami-addons<0.12
+	replaces = kirigami-addons<0.12
+	source = https://download.kde.org/stable/kirigami-addons/kirigami-addons-0.11.0.tar.xz
+	source = https://download.kde.org/stable/kirigami-addons/kirigami-addons-0.11.0.tar.xz.sig
+	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
+	validpgpkeys = 39FFA93CAE9C6AFC212AD00202325448204E452A
+	sha256sums = 05296c5afbe6804308bf9c0d2751f3b748b40d00fa784946d1dcdf3af4bffbad
+	sha256sums = SKIP
+
+pkgname = kirigami-addons5
