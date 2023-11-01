@@ -4,10 +4,10 @@
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2023.10.24
-_timever=T21-42-22Z
+pkgver=2023.10.30
+_timever=T18-43-32Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64')
 url='https://minio.io/downloads/#minio-client'
