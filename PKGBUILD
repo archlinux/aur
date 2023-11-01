@@ -11,8 +11,8 @@
 
 _pkgname=webcord
 pkgname="${_pkgname}-vencord-git"
-pkgver=4.3.0.r852.123e818
-pkgrel=3
+pkgver=4.5.0.r852.123e818
+pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -97,7 +97,8 @@ prepare() {
 
   cd "${srcdir:?}/${_pkgname}"
 
-  sed -i "354i \ \ session.defaultSession.loadExtension(\"/usr/share/webcord/vencord-ext\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
+  patch -p1 < './vencord.patch'
+  sed -i "352i \ \ session.defaultSession.loadExtension(\"/usr/share/webcord/vencord-ext\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
 
   _echo_times "Generating / updating a changelog..."
   _changelog vty > "${_pkgbuilddir:?}/${_pkgname}-vencord.changelog"
