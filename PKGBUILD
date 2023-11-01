@@ -1,5 +1,5 @@
 pkgname=python-flagser
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="A library that helps you create flags for your python program"
@@ -36,5 +36,5 @@ build() {
 package() {
 	echo "PKG"
 	cd flagser
-	python setup.py install --root="$pkgdir"
+	python setup.py install --root="$pkgdir" --optimize=1
 }
