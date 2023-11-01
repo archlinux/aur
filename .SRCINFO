@@ -1,7 +1,7 @@
 pkgbase = python-seekpath
 	pkgdesc = A module to obtain and visualize k-vector coefficients and obtain band paths in the Brillouin zone of crystal structures
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/giovannipizzi/seekpath
 	arch = any
 	license = MIT

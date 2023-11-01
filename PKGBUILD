@@ -2,7 +2,7 @@
 
 pkgname=('python-seekpath')
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A module to obtain and visualize k-vector coefficients and obtain band paths in the Brillouin zone of crystal structures"
 arch=('any')
 url="https://github.com/giovannipizzi/seekpath"
