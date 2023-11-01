@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio"
-pkgver="23.10.1"
+pkgver="23.11.1"
 pkgrel=1
 pkgdesc="Audio compression tool for FLAC and Nero AAC"
 arch=("any")
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 depends=("gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly" "gst-libav" "python-requests-html" "python-psutil" "python-mutagen" "odio-edit" "neroaacenc-bin" "libodiosacd" "lsdvd" "gsettings-desktop-schemas")
 makedepends=("python-setuptools" "python-polib")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("93e9fd2a123a0c135b819a2e2d0601a9")
+md5sums=("440430064cdf5092a5473f5e70d1f6ff")
 options=("!emptydirs")
 
 build()
