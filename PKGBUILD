@@ -45,8 +45,10 @@ build() {
 
 check() {
   cd "safetensors-${pkgver}/bindings/python"
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version}" pytest tests/ \
+  local python_version=$(python -V | sed -e 's/Python \([0-9]\.[0-9]\+\)\..*/\1/')
+  mkdir "${PWD}/test_build"
+  python -m installer --destdir="${PWD}/test_build" dist/*.whl
+  PYTHONPATH="${PWD}/test_build/usr/lib/python${python_version}/site-packages" pytest tests/ \
     --ignore=tests/test_paddle_comparison.py # No working paddlepaddle package, disable it temporarily
 }
 
