@@ -4,7 +4,7 @@
 _pkgname=lovelive-music-player
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A LoveLiver Music Player"
 arch=('x86_64')
