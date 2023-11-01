@@ -1,16 +1,16 @@
 # Maintainer Evgeniy Dombek <edombek@yandex.ru>
 
 pkgname=kstars-git
-pkgver=cdd7568db
-pkgrel=1
+pkgver=d03990305
+pkgrel=2
 epoch=1
 pkgdesc='Desktop Planetarium'
 url='https://kde.org/applications/education/kstars/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(stellarsolver libraw kplotting knewstuff knotifyconfig qt5-datavis3d qt5-quickcontrols qt5-websockets qtkeychain
+depends=(stellarsolver libraw kplotting5 knewstuff5 knotifyconfig5 qt5-datavis3d qt5-quickcontrols qt5-websockets qtkeychain
          libindi breeze-icons hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools eigen)
+makedepends=(extra-cmake-modules kdoctools5 eigen)
 optdepends=('xplanet: XPlanet support')
 source=(git+https://github.com/KDE/kstars)
 md5sums=('SKIP')
