@@ -1,0 +1,12 @@
+pkgbase = python-flagser
+	pkgdesc = A library that helps you create flags for your python program
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/spynetS/flagser
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+
+pkgname = python-flagser
