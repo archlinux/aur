@@ -2,7 +2,7 @@
 # Previous Maintainer: 2bluesc <2bluesc gmail.com>
 # Maintainer: Vadzim Dambrouski <pftbest gmail.com>
 pkgname=gcc-arm-none-eabi-bin
-pkgver=12.3.rel1
+pkgver=13.2.rel1
 pkgrel=1
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)"
 arch=('aarch64' 'x86_64')
@@ -21,12 +21,12 @@ conflicts=('gcc-arm-none-eabi'
       'arm-none-eabi-newlib'
     )
 url='https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads'
-source_x86_64=('https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/12.3.rel1/binrel/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi.tar.xz')
-source_aarch64=('https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/12.3.rel1/binrel/arm-gnu-toolchain-12.3.rel1-aarch64-arm-none-eabi.tar.xz')
+source_x86_64=('https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz')
+source_aarch64=('https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-aarch64-arm-none-eabi.tar.xz')
 license=('custom')
 options=(!strip staticlibs)
-sha256sums_x86_64=('12a2815644318ebcceaf84beabb665d0924b6e79e21048452c5331a56332b309')
-sha256sums_aarch64=('14c0487d5753f6071d24e568881f7c7e67f80dd83165dec5164b3731394af431')
+sha256sums_x86_64=('6cd1bbc1d9ae57312bcd169ae283153a9572bd6a8e4eeae2fedfbc33b115fdbb')
+sha256sums_aarch64=('8fd8b4a0a8d44ab2e195ccfbeef42223dfb3ede29d80f14dcf2183c34b8d199a')
 package() {
   cd $srcdir/arm-*/
 
