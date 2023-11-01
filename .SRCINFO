@@ -1,0 +1,33 @@
+pkgbase = nasm-segelf-git
+	pkgdesc = 80x86 assembler designed for portability and modularity. 'elf16' branch.
+	pkgver = 2.16.01+19.r4902.20231030.gc2bf042b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/stsp/nasm/tree/elf16
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = adobe-source-sans-pro-fonts
+	makedepends = asciidoc
+	makedepends = diffutils
+	makedepends = fontconfig
+	makedepends = ghostscript
+	makedepends = git
+	makedepends = perl
+	makedepends = perl-font-ttf
+	makedepends = perl-sort-versions
+	makedepends = ttf-liberation
+	makedepends = xmlto
+	depends = gcc-libs
+	depends = glibc
+	provides = nasm=2.16.01+19
+	provides = nasm-git=2.16.01+19.r4902.20231030.gc2bf042b
+	provides = nasm-segelf=2.16.01+19
+	provides = nasm-elf16=2.16.01+19
+	conflicts = nasm
+	conflicts = nasm-segelf
+	conflicts = nasm-elf16
+	source = nasm::git+https://github.com/stsp/nasm.git#branch=elf16
+	b2sums = SKIP
+
+pkgname = nasm-segelf-git
