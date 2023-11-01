@@ -7,7 +7,7 @@ _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.7+23.r1466.20231030.288660a
-pkgrel=1
+pkgrel=2
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
@@ -27,7 +27,7 @@ makedepends=(
   'clang'
   'git'
   'lld'
-  'nasm'
+  'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
 )
 provides=(
   "${_pkgname}=${pkgver}"
