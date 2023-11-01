@@ -1,6 +1,6 @@
 pkgbase = yeet
 	pkgdesc = A minimalistic pacman wrapper written in bash
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 3
 	url = https://github.com/gamemaker1/yeet
 	install = yeet.install
@@ -10,7 +10,7 @@ pkgbase = yeet
 	depends = package-query
 	depends = pacman
 	optdepends = ranger: for editing build files
-	source = yeet-0.5.0.tar.gz::https://github.com/gamemaker1/yeet/archive/v0.5.0.tar.gz
-	sha256sums = 20d8a04705563c7edf787a937cec18d99ac6aee1ffc26c53aa44070a5f1963a9
+	source = yeet-0.5.1.tar.gz::https://github.com/gamemaker1/yeet/archive/v0.5.1.tar.gz
+	sha256sums = d22e9048ea8b9fcdb58c8e0c19d7105fd089c71b84d0b472b8c988713b2e682e
 
 pkgname = yeet
