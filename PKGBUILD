@@ -2,8 +2,8 @@
 
 #pkgbase=mutter-vrr
 pkgname=mutter-vrr
-pkgver=45.0
-pkgrel=2
+pkgver=45.1
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)

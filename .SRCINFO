@@ -1,7 +1,7 @@
 pkgbase = mutter-vrr
 	pkgdesc = Window manager and compositor for GNOME (with VRR)
-	pkgver = 45.0
-	pkgrel = 2
+	pkgver = 45.1
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
