@@ -8,6 +8,7 @@ pkgbase = audiowarden
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = cargo
 	source = audiowarden.service
 	source = https://github.com/nroi/audiowarden/archive/refs/tags/0.1.1.tar.gz
 	sha256sums = a8789704183f5bb551807fff056935c047ddf6c0a72eeb0047ee0ceb4777f3cb
