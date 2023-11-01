@@ -1,6 +1,6 @@
 pkgbase = perl-data-password-zxcvbn
 	pkgdesc = Check password strength
-	pkgver = 1.0.4
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://metacpan.org/release/Data-Password-zxcvbn
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = perl-data-password-zxcvbn
 	depends = perl-moo
 	depends = perl-list-allutils
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/D/DA/DAKKAR/Data-Password-zxcvbn-1.0.4.tar.gz
-	sha1sums = 5a23f06d283359ca8fcbdfdb8b190ecc3643e034
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAKKAR/Data-Password-zxcvbn-1.1.2.tar.gz
+	sha256sums = 9b55a2b2264f7ecd43f5bda80d96f9374a4bf55a81aaca2acfe903e0a9b77b77
 
 pkgname = perl-data-password-zxcvbn
