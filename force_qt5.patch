@@ -1,6 +1,6 @@
 --- a/qt/aqt/qt/__init__.py
 +++ b/qt/aqt/qt/__init__.py
-@@ -9,16 +9,7 @@
+@@ -9,16 +9,7 @@ import sys
  import traceback
  from typing import Callable, TypeVar, Union
 
@@ -9,11 +9,12 @@
 -except:
 -    from .qt5 import *  # type: ignore
 -else:
--    if not os.getenv("DISABLE_QT5_COMPAT"):
+-    if os.getenv("ENABLE_QT5_COMPAT"):
 -        print("Running with temporary Qt5 compatibility shims.")
--        print("Run with DISABLE_QT5_COMPAT=1 to confirm compatibility with Qt6.")
 -        from . import qt5_compat  # needs to be imported first
 -    from .qt6 import *
+-
 +from .qt5 import *  # type: ignore
-
  from anki.utils import is_mac, is_win
+
+ # fix buggy ubuntu12.04 display of language selector
