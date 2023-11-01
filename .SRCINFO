@@ -1,6 +1,6 @@
 pkgbase = cambalache
 	pkgdesc = A new RAD tool for Gtk 4 and 3
-	pkgver = 0.12.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jpu/cambalache
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cambalache
 	depends = libadwaita
 	depends = libhandy
 	depends = gobject-introspection
-	source = https://gitlab.gnome.org/jpu/cambalache/-/archive/0.12.1/cambalache-0.12.1.tar.gz
+	source = https://gitlab.gnome.org/jpu/cambalache/-/archive/0.16.0/cambalache-0.16.0.tar.gz
 	sha512sums = 2483e2f989ccf5bf6d9dd667fd91941993e77fc4a5fc29f9ea64ac2a4db10b0862961c2e1931364e3278ca4edd26f5770e857cb166f4abc7cb14a8802fa29de0
 
 pkgname = cambalache
