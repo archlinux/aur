@@ -4,12 +4,12 @@ _pkgname=dptf
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=9.0.11402.build38022.r100.20230911.00b9ac15
-pkgrel=4
+pkgrel=5
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
 url='https://github.com/intel/dptf'
 license=('Apache')
-depends=('gcc-libs' 'glibc' 'libedit' 'readline')
+depends=('gcc-libs' 'glibc' 'libedit')
 makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
