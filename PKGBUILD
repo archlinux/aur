@@ -5,21 +5,25 @@ pkgname=vencord-desktop-bin
 _appname=vencorddesktop
 _pkgname=Vesktop
 _assetname=VencordDesktop
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed"
 arch=('aarch64' 'x86_64')
 url="https://github.com/Vencord/Vesktop"
 license=('GPL3')
-depends=('bash' 'electron27' 'hicolor-icon-theme')
+depends=(
+    'bash'
+    'electron27'
+    'hicolor-icon-theme'
+)
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('d06cb759a92951761bab217dd2b02f40286e379d3c33136f15c52228f355e067')
-sha256sums_aarch64=('214414b7b5436154c63802a8b1b268a3e166d9adeb902808de7d08f65bca197c')
-sha256sums_x86_64=('92c10b012b87c7f516257ecac72bc3c7cea4b0f6be860d8a0f7216796707b011')
+sha256sums_aarch64=('9465f79fb2eb58d21e233d50fbb11fc446ed1482b02043c0a6fd9eeb53454097')
+sha256sums_x86_64=('462e804f7f7e05c02b64c1362b48be1ed3a36a3c77ca49b82e78bc60bdb60edc')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_appname} %U|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
