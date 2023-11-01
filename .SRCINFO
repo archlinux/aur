@@ -1,6 +1,6 @@
 pkgbase = libvirt
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 9.8.0
+	pkgver = 9.9.0
 	pkgrel = 1
 	epoch = 1
 	url = https://libvirt.org/
@@ -91,14 +91,14 @@ pkgbase = libvirt
 	backup = etc/logrotate.d/libvirtd.lxc
 	backup = etc/logrotate.d/libvirtd.qemu
 	backup = etc/sasl2/libvirt.conf
-	source = https://libvirt.org/sources/libvirt-9.8.0.tar.xz
-	source = https://libvirt.org/sources/libvirt-9.8.0.tar.xz.asc
+	source = https://libvirt.org/sources/libvirt-9.9.0.tar.xz
+	source = https://libvirt.org/sources/libvirt-9.9.0.tar.xz.asc
 	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
-	sha256sums = 7aa90d133bb301e94663a45c36176f46f4a9fc1b34d77d2e22b7a2517106f506
+	sha256sums = cb83be795548161af6718a6db75ee40719a87bcd6f9207a3565db2fc0e53a52e
 	sha256sums = SKIP
 
 pkgname = libvirt
-	provides = libvirt=9.8.0
+	provides = libvirt=9.9.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
@@ -106,14 +106,14 @@ pkgname = libvirt
 
 pkgname = libvirt-storage-gluster
 	pkgdesc = Libvirt Gluster storage backend
-	depends = libvirt=9.8.0
+	depends = libvirt=9.9.0
 	depends = glusterfs
 	optdepends = 
 	backup = 
 
 pkgname = libvirt-storage-iscsi-direct
 	pkgdesc = Libvirt iSCSI-direct storage backend
-	depends = libvirt=9.8.0
+	depends = libvirt=9.9.0
 	depends = libiscsi
 	optdepends = 
 	backup = 
