@@ -1,7 +1,7 @@
-# Maintkiner: LoaD Accumulator <lda@freetards.xyz>
+# Maintainer: LoaD Accumulator <lda@freetards.xyz>
 pkgname=cytoplasm-git
 pkgver=0.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The Telodendria core library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://git.telodendria.io/Telodendria/Cytoplasm"
@@ -19,7 +19,7 @@ prepare() {
 
 pkgver() {
         cd "$pkgname"
-        git describe --long
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
