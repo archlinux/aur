@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCAS
-_pkgver=1.26.0
+_pkgver=1.28.2
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.2
 pkgrel=1
 pkgdesc='RNA Centric Annotation System'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('249ee1e30bd9a57a53a74ecfe4248a4c072179542b47814152ccff0be0826e1c')
+sha256sums=('db629b5c513b5f50a34327b67cb722167a88961e8738f100271bbd31996e34a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
