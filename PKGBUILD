@@ -5,14 +5,14 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=otf-unifont
-pkgver=15.1.02
+pkgver=15.1.04
 pkgrel=1
 pkgdesc="OpenType version of the GNU Unifont"
 url="https://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
 source=("https://unifoundry.com/pub/unifont/unifont-${pkgver}/unifont-${pkgver}.tar.gz"{,.sig})
-sha256sums=('7631dbfb21614ca25a0f15ef74b60a50abda1798376bc36cbb7ea53c25ff123a'
+sha256sums=('4a0a481c06338543399f5130cb50cbec6b73eeff6b3466f72891c38cbe1c5cf7'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
 
