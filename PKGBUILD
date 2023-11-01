@@ -4,10 +4,10 @@
 pkgname=marktext-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=(x86_64)
-url=https://marktext.app
+url=https://www.marktext.cc
 license=(MIT)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
