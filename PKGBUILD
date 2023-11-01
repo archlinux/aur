@@ -1,24 +1,37 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lotti-bin
-pkgver=0.9.395_2291
-pkgrel=3
+pkgver=0.9.396_2294
+pkgrel=1
 pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition."
 arch=('x86_64')
 url="https://github.com/matthiasn/lotti"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('pango' 'gdk-pixbuf2' 'jsoncpp' 'gtk3' 'gcc-libs' 'libkeybinder3' 'libsecret' 'libepoxy' 'cairo' 'glib2' 'at-spi2-core' 'harfbuzz' 'glibc')
+depends=(
+    'pango'
+    'gdk-pixbuf2'
+    'jsoncpp'
+    'gtk3'
+    'libkeybinder3'
+    'libsecret'
+    'libepoxy'
+    'cairo'
+    'at-spi2-core'
+    'harfbuzz'
+)
 makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${pkgver//_/+}/linux.x64.tar.gz"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/matthiasn/lotti/${pkgver//_/+}/assets/icon/app_icon_1024.png")
+source=(
+    "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${pkgver//_/+}/linux.x64.tar.gz"
+    "${pkgname%-bin}.png::https://raw.githubusercontent.com/matthiasn/lotti/${pkgver//_/+}/assets/icon/app_icon_1024.png"
+)
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('585ba9745dd626da5aa14fcb1db0ef7d71e6ed0dfb507969df01001db36eac0d'
+sha256sums=('a3c3fa5ae7c8a1130d1ed71c809e6c445af9eec850537552f50aaca3c8b3b210'
             '306adaeff6c8613e536db665d24cab8551b4a3774c5729492dd132dc690256c6')
-prepare() {
+build() {
+    gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
     mkdir -p "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.tar.gz" -C "${srcdir}/${pkgname%-bin}"
-    gendesk -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
