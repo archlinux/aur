@@ -1,0 +1,13 @@
+pkgbase = glsl_analyzer-bin
+	pkgdesc = A language server for the GLSL shading language
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/nolanderc/glsl_analyzer
+	arch = x86_64
+	license = GPL3
+	provides = glsl_analyzer
+	conflicts = glsl_analyzer
+	source = glsl_analyzer-1.4.2.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.2/x86_64-linux-musl.zip
+	sha256sums = a00f63612dad711b4d75c0f210e9596fdc114a302909ffbade956c5a3d10674c
+
+pkgname = glsl_analyzer-bin
