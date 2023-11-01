@@ -1,6 +1,6 @@
 pkgbase = zorin-desktop-themes
 	pkgdesc = The Zorin OS desktop theme provided in a variety of color combinations.
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/ZorinOS/zorin-desktop-themes
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zorin-desktop-themes
 	depends = gtk-engine-murrine
 	provides = zorin-desktop-themes
 	conflicts = zorin-desktop-themes-git
-	source = zorin-desktop-themes-4.0.2.tar.gz::https://github.com/ZorinOS/zorin-desktop-themes/archive/4.0.2.tar.gz
-	sha512sums = d5ad80d341965628cbacfd529804f6449c6813de775ec01c8541164df7aecf5a765516618ed4ccda32e64a227b436085a57349b9c712af872b2e792903cea01d
+	source = zorin-desktop-themes-4.0.3.tar.gz::https://github.com/ZorinOS/zorin-desktop-themes/archive/4.0.3.tar.gz
+	sha512sums = d999f9e3f29c24c75791ca6870aa5c8f0333b9cdbf287a2364dd5ab03d5670a4fbadfe6016efb91e1489e1bc25092be08b6bcf7f4cacc13ad44629341c1ca1ed
 
 pkgname = zorin-desktop-themes
