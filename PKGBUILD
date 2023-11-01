@@ -1,7 +1,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=stilts
-pkgver=3.4.8
-_pkgver=3.4-8
+pkgver=3.4.9
+_pkgver=3.4-9
 pkgrel=1
 pkgdesc="Starlink Tables Infrastructure Library Tool Set"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 noextract=('stilts.jar')
 source=("stilts-${pkgver}.jar::https://www.star.bristol.ac.uk/mbt/releases/stilts/v${_pkgver}/stilts.jar"
         "stilts" "stilts4.gif")
-md5sums=('c8ff372525e5cf35a0242bfcf5a97dc8'
+md5sums=('f3486133268439cf6ca1f59c793a340b'
          '4f7dd76969e791b934cfd8eb59822bf2'
          '574cb973184b3b7562f84c3e171244dd')
 
