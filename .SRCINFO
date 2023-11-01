@@ -73,7 +73,7 @@ pkgbase = firedragon-unsigned-extensions
 	source = https://archive.mozilla.org/pub/firefox/releases/120.0/source/firefox-120.0.source.tar.xz
 	source = https://archive.mozilla.org/pub/firefox/releases/120.0/source/firefox-120.0.source.tar.xz.asc
 	source = firedragon.desktop
-	source = git+https://gitlab.com/dr460nf1r3/common.git
+	source = common::git+https://gitlab.com/stefanwimmer128/firedragon-common.git#branch=pref-pane
 	source = git+https://gitlab.com/dr460nf1r3/settings.git
 	source = librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=120.0-1
 	source = librewolf-settings::git+https://codeberg.org/librewolf/settings.git
