@@ -1,7 +1,7 @@
 pkgname="openai-client-git"
 _pkgname="openai-client"
 pkgdesc="OpenAI client made using PySide6 Qt"
-pkgver=1.0.r65.2384bcf
+pkgver=1.0.r120.093c3f1
 pkgrel=1
 arch=("x86_64")
 
@@ -13,6 +13,7 @@ options=(!strip)
 
 # use pacman -Qs "package-name"
 depends=("git" "python" "python-pip")
+makedepends=("libxkbcommon" "libxkbcommon-x11")
 provides=("openai-client")
 
 source=("git+https://github.com/anirbandey1/openai-client.git")

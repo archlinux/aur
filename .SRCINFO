@@ -1,9 +1,11 @@
 pkgbase = openai-client-git
 	pkgdesc = OpenAI client made using PySide6 Qt
-	pkgver = 1.0.r65.2384bcf
+	pkgver = 1.0.r120.093c3f1
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
+	makedepends = libxkbcommon
+	makedepends = libxkbcommon-x11
 	depends = git
 	depends = python
 	depends = python-pip
