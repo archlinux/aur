@@ -98,7 +98,6 @@ prepare() {
   cd "${srcdir:?}/${_pkgname}"
 
   patch -p1 < './vencord.patch'
-  sed -i "352i \ \ session.defaultSession.loadExtension(\"/usr/share/webcord/vencord-ext\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
 
   _echo_times "Generating / updating a changelog..."
   _changelog vty > "${_pkgbuilddir:?}/${_pkgname}-vencord.changelog"
