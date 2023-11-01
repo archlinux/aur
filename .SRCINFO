@@ -1,10 +1,10 @@
 pkgbase = python-thefuzz-git
 	pkgdesc = Fuzzy string matching in Python
-	pkgver = 0.21.0.r0.g0b49e4a
+	pkgver = 0.22.1.r0.ga1a8cde
 	pkgrel = 1
 	url = https://github.com/seatgeek/thefuzz
 	arch = any
-	license = GPL2
+	license = MIT
 	checkdepends = python-hypothesis
 	checkdepends = python-pycodestyle
 	checkdepends = python-pytest
