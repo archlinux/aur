@@ -11,7 +11,7 @@ optdepends=('python-fonttools')
 url="https://github.com/mpcabd/python-arabic-reshaper"
 license=('MIT')
 arch=('any')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=('98b0e1932b79b2fd990d2674d8c75b96')
 
 build() {
