@@ -1,6 +1,7 @@
 #!/bin/sh
-FNMT_ARGS=
-[ -e /usr/lib/libpcsclite.so.1 ] && \
-  FNMT_ARGS="-Dsun.security.smartcardio.library=/usr/lib/libpcsclite.so.1"
-CLASSPATH="/usr/share/java/configuradorfnmt/configuradorfnmt.jar"
-java ${FNMT_ARGS} -jar "${CLASSPATH}" "$@"
+PATH="/usr/share/java/configuradorfnmt"
+JAR="configuradorfnmt.jar"
+BC="bc-fips.jar"
+BCPKIX="bcpkix-fips.jar"
+CLASSPATH="${PATH}/${JAR}:${PATH}/${BC}:${PATH}/${BCPIX}"
+/usr/bin/java -classpath "${CLASSPATH}" es.gob.fnmt.cert.certrequest.CertRequest "$@"

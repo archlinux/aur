@@ -1,19 +1,18 @@
 pkgbase = configuradorfnmt
 	pkgdesc = Tool for request keys and certificates of FNMT
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 4.0.2
+	pkgrel = 1
 	url = https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves
 	arch = x86_64
 	license = custom
 	depends = java-runtime
 	optdepends = icedtea-web: If the certificate renewal does not work, install this
-	optdepends = pcsclite: Use smartcard readers
-	noextract = configuradorfnmt-1.0.1-amd64.deb
-	source = configuradorfnmt-1.0.1-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_1.0.1-0_amd64.deb
+	noextract = configuradorfnmt-4.0.2-amd64.deb
+	source = configuradorfnmt-4.0.2-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_4.0.2_amd64.deb
 	source = configuradorfnmt.desktop
 	source = configuradorfnmt
-	sha256sums = 1c3af58017f2532bb9fdf661fce47c751f8cdb1ee88c6b72864ad75c6f74f338
+	sha256sums = a43cc10bdfdf6b63b2a67a814e6cee8d31f8f36e6bdcc1318b406c2e601f1e6a
 	sha256sums = f56a7ab3fdae4cf111c789ccd6f0850638d8a3ba9b5825dd776d2474a782df93
-	sha256sums = 72810bbdee86003d80e694302391548cae2dc32c1eb779373cdf500c4b5f4f18
+	sha256sums = ed290ae0575a051effe053fb199a27352322c2cb877191220b4f2c71d7623829
 
 pkgname = configuradorfnmt
