@@ -5,7 +5,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=linecounter-git
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 epoch=
 pkgdesc="This is a program that can count all lines in your source code. Run lctr to count all lines. Run lctr -h for help!"
@@ -35,7 +35,6 @@ prepare() {
 
 build() {
     cd lctr
-    pip --break-system-packages install flagser # dependence
 }
 
 package() {
