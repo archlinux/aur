@@ -8,6 +8,7 @@ url="https://wkhtmltopdf.org"
 license=("LGPL3")
 provides=("wkhtmltopdf" "wkhtmltoimage")
 conflicts=("wkhtmltox" "wkhtmltox-git" "wkhtmltopdf" "wkhtmltopdf-git")
+depends=("openssl-1.1")
 optdepends=("xorg-server: wkhtmltox needs X or Xvfb to operate")
 source=("$pkgname-$pkgver.pkg::https://github.com/wkhtmltopdf/packaging/releases/download/${pkgver}-${pkgrel}/wkhtmltox-${pkgver}-${pkgrel}.archlinux-x86_64.pkg.tar.xz")
 sha256sums=('e84c2ef2c3d16eabd85a3dbb98195062910dfa66febca4f8ea58eb7445317242')
