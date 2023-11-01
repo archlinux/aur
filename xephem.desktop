@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=xephem
+Comment=The Serious Interactive Astronomical Software Ephemeris
+Exec=/usr/bin/xephem
+Icon=/usr/share/pixmaps/xephem.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Sciences;Other;
