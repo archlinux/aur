@@ -1,0 +1,18 @@
+pkgbase = python-onnxruntime-bin
+	pkgdesc = Cross-platform, high performance scoring engine for ML models (Python Bindings)
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = https://github.com/OpenNMT/CTranslate2
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python>=3.7
+	depends = python-flatbuffers
+	depends = python-humanfriendly
+	depends = python-coloredlogs
+	provides = python-onnxruntime
+	conflicts = python-onnxruntime
+	source = https://files.pythonhosted.org/packages/py3/o/onnxruntime/onnxruntime-1.16.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 025c7a4d57bd2e63b8a0f84ad3df53e419e3df1cc72d63184f2aae807b17c13c
+
+pkgname = python-onnxruntime-bin
