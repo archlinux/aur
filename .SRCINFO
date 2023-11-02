@@ -1,7 +1,7 @@
 pkgbase = python-snakeoil
 	pkgdesc = Provides common functionality and useful optimizations
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkgcore/snakeoil
 	arch = any
 	license = BSD

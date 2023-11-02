@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Bailey Kasin <baileykasin@gmail.com>
+# Contributer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
@@ -8,7 +9,7 @@
 pkgname=python-snakeoil
 _pkg="${pkgname#python-}"
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides common functionality and useful optimizations"
 arch=('any')
 url='https://github.com/pkgcore/snakeoil'
