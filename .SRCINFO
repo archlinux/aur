@@ -4,6 +4,7 @@ pkgbase = helix-git
 	pkgrel = 1
 	url = https://helix-editor.com
 	arch = x86_64
+	makedepends = git
 	makedepends = cargo
 	provides = hx
 	conflicts = helix
