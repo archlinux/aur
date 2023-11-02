@@ -1,4 +1,5 @@
-# Maintainer: Beej Jorgensen <beej@beej.us>
+# Maintainer: Arseniy Movshev <dodoradio@outlook.com>
+# Contributor: Beej Jorgensen <beej@beej.us>
 pkgname=xtide-wvs
 pkgver=20130529
 pkgrel=2
@@ -7,7 +8,7 @@ arch=('any')
 url="http://www.flaterco.com/xtide/files.html#WVS"
 license=('custom')
 source=(
-  'ftp://ftp.flaterco.com/xtide/wvs.tar.bz2'
+  'https://flaterco.com/files/xtide/wvs.tar.bz2'
   'license.txt'
 )
 md5sums=('56325c8105c7137ced73396f2f2d8221'
