@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=S4Vectors
-_bcver=0.38.2
+_bcver=0.40.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -28,7 +28,7 @@ optdepends=(
     "r-summarizedexperiment"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("5adbe9f7a21e34964efb46b766357c36df4c030378fbfbbea880760eb591471c268e0eb5e94a4d5838e8514b2201212f02a32ff43cce872f401719487fda0cc1")
+b2sums=("3d1b280a477f8ab2063ce1d92b54537ceb9cc3e5238830130324891f60b13017237ae16742f3070ddfb9c8c51a64fc08f02d2aaa2277b60b0839a1761cd813b8")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
