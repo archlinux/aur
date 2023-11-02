@@ -4,14 +4,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdbusaddons-git
-pkgver=5.240.0_r498.gd15677a
+pkgver=5.240.0_r510.gf7e4e46
 pkgrel=1
 pkgdesc='Addons to QtDBus'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip plasma-wayland-protocols)
+makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip plasma-wayland-protocols-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt6: for the Python bindings')
