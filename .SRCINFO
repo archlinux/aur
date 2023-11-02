@@ -1,19 +1,19 @@
 pkgbase = librealsense2-dkms
 	pkgdesc = Intel® RealSense™ Cross Platform
-	pkgver = 2.54.1
+	pkgver = 2.54.2
 	pkgrel = 1
 	url = https://www.intelrealsense.com/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = make
 	makedepends = bc
-    depends = dkms
-    depends = librealsense2
+	depends = dkms
+	depends = librealsense2
 	source = arch.patch
-    source = build.bash
-    source = dkms.conf
+	source = build.bash
+	source = dkms.conf
 	sha256sums = 8d78188d6a508f39c67ab5006c7c6422b8c4e7e00023818feae2e8332335798c
-    sha256sums = 772bd5620684c04978a2007fe4c32960fed5165b262fba27700dc0b9d6c25ea6
-    sha256sums = 617949cc61c73bc933087fc06cf4428b163efe27d2d329f5aea3b4f8915f9a48
+	sha256sums = 772bd5620684c04978a2007fe4c32960fed5165b262fba27700dc0b9d6c25ea6
+	sha256sums = 617949cc61c73bc933087fc06cf4428b163efe27d2d329f5aea3b4f8915f9a48
 
 pkgname = librealsense2-dkms
