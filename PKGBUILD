@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=dada2
-_bcver=1.28.0
+_bcver=1.30.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,15 +13,15 @@ url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(LGPL2)
 depends=(
 	"r>=3.4.0"
-	"r-rcpp>=0.12.0"
+	"r-biocgenerics>=0.22.0"
 	"r-biostrings>=2.42.1"
 	"r-ggplot2>=2.1.0"
+	"r-iranges>=2.6.0"
+	"r-rcpp>=0.12.0"
+	"r-rcppparallel>=4.3.0"
 	"r-reshape2>=1.4.1"
 	"r-shortread>=1.32.0"
-	"r-rcppparallel>=4.3.0"
-	"r-iranges>=2.6.0"
 	"r-xvector>=0.16.0"
-	"r-biocgenerics>=0.22.0"
 )
 makedepends=(make)
 optdepends=(
@@ -30,7 +30,7 @@ optdepends=(
 	r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=("a1c16ef613167458db8c91c2abb67ee9e2fc09e295a3911bf0cfff6c4010beef")
+sha256sums=("c6653fe77c3d62dd91207bbbf6641ec143fb8a498967e240a97af26de7e27667")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
