@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=ShortRead
-_bcver=1.58.0
+_bcver=1.60.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -38,7 +38,7 @@ optdepends=(
     "r-yeastnagalakshmi"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('caa0d44f60775a54560675cb44283f55fc2a8dbf013b8d26cc69354e233e4b00b996b4471b2cb7dcc8dc6a98c2e22d8747b4221698078442e7980a3665ca05a4')
+b2sums=("7b20c86f1092be6cc5f0d4e1becfe257def06e3e958def1a235fd982238a62ed3ff605677a48fd50e3f73b90b3ffb676885d3a1efe5e0e7f9ea1acd56107d291")
 
 build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
