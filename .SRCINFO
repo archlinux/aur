@@ -7,7 +7,6 @@ pkgbase = gnome-shell-extension-app-icons-taskbar
 	license = GPL3
 	depends = dconf
 	depends = gnome-shell>=1:41
-	conflicts = 
 	source = https://gitlab.com/AndrewZaech/aztaskbar/-/archive/v15/aztaskbar-v15.tar.gz
 	sha256sums = c4038f3712e23b2ac0edac88cbd3fff3f92d2504a28dbe075a9395089acf3bdc
 
