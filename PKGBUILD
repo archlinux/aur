@@ -5,19 +5,21 @@
 
 _pkgname=pyalpm
 pkgname=$_pkgname-git
-pkgver=0.8.4.r100.gbca42ad
+pkgver=0.10.6.r9.g90941d0
 pkgrel=1
 pkgdesc="Libalpm bindings for Python 3 (Git version)"
 arch=('x86_64')
 url="https://git.archlinux.org/pyalpm.git/"
 license=('GPL3')
 depends=('python>=3.6' 'pacman>=5')
-makedepends=('git' 'python-setuptools')
-checkdepends=('python-pytest')
+makedepends=('git' 'python-setuptools' 'python-pkgconfig')
+checkdepends=('python-pytest' 'python-pytest-pacman')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=('git+https://git.archlinux.org/pyalpm.git')
-sha256sums=('SKIP')
+source=('git+https://gitlab.archlinux.org/archlinux/pyalpm.git'
+        'pyalpm-mr19.patch::https://gitlab.archlinux.org/archlinux/pyalpm/-/merge_requests/19.patch')
+sha256sums=('SKIP'
+            '78098e9ebdc2e90846cb836913edab0ca74abdf5c8e846468063300a017d5fb7')
 
 pkgver() {
   cd $_pkgname
@@ -28,8 +30,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  # https://github.com/archlinux/pyalpm/pull/31
-  sed -i 's#str(excinfo)#str(excinfo.value)#' test/*.py
+  patch -Np1 -i ../pyalpm-mr19.patch
 }
 
 build() {
