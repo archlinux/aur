@@ -2,7 +2,7 @@
 # Contributor: Porous3247 <pqtb3v7t at jasonyip1 dot anonaddy dot me>
 
 pkgname=gohugo-extended-bin
-pkgver=0.120.2
+pkgver=0.120.3
 pkgrel=1
 pkgdesc="Hugo - The world's fastest framework for building websites (Extended Edition)"
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ license=('Apache')
 depends=('glibc')
 conflicts=('hugo')
 provides=('hugo')
-source_x86_64=('https://github.com/gohugoio/hugo/releases/download/v0.120.2/hugo_extended_0.120.2_linux-amd64.tar.gz')
-source_aarch64=('https://github.com/gohugoio/hugo/releases/download/v0.120.2/hugo_extended_0.120.2_linux-arm64.tar.gz')
-sha256sums_x86_64=('979e767b2b6f776b803fed2e09b2c8e5aa7fe956d7fb76a010083d086ba5f531')
-sha256sums_aarch64=('0299a61b4fbe56c7aabeff9308ed204bc098ff0fd25fde739343fded24e29561')
+source_x86_64=('https://github.com/gohugoio/hugo/releases/download/v0.120.3/hugo_extended_0.120.3_linux-amd64.tar.gz')
+source_aarch64=('https://github.com/gohugoio/hugo/releases/download/v0.120.3/hugo_extended_0.120.3_linux-arm64.tar.gz')
+sha256sums_x86_64=('8ef622df978b2e4015f1ec1ca3580ffc805045fd48239fd9af8cacaac9b3712e')
+sha256sums_aarch64=('e9a40e8bd6f6eea17646b1e66675048fdb76138659e21b262f95e974e37eb8ea')
 
 build() {
   cd "${srcdir}"
