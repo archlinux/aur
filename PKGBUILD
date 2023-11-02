@@ -1,34 +1,58 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
-pkgname=lightly-git
-_gitname=lightly
-pkgver=r2184.1a831f7f
+
+_pkgname="lightly"
+pkgname="$_pkgname-git"
+pkgver=0.4.1.r69.g1a831f7f
 pkgrel=1
-pkgdesc="A modern style for qt applications"
+pkgdesc="Modern style for Qt applications"
+url="https://github.com/boehs/lightly"
 arch=('x86_64' 'aarch64')
-url="https://github.com/boehs/$_gitname"
 license=("GPL2")
-depends=("frameworkintegration5" "kdecoration" "breeze-icons" "kwayland5" "hicolor-icon-theme")
-makedepends=("git" "cmake" "extra-cmake-modules" "kcmutils5" "kdecoration" "qt5-declarative" "qt5-x11extras")
-provides=("lightly-qt")
-conflicts=("lightly-qt")
-source=("git+$url") 
-sha512sums=('SKIP')
+
+depends=(
+  'breeze-icons'
+  'frameworkintegration5'
+  'hicolor-icon-theme'
+  'kcmutils5'
+  'kdecoration'
+  'kwayland5'
+)
+makedepends=(
+  'cmake'
+  'extra-cmake-modules'
+  'git'
+  'kdecoration'
+  'qt5-declarative'
+  'qt5-x11extras'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgname"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF ..
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DBUILD_TESTING=OFF
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
-  make DESTDIR="$pkgdir" install
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "$srcdir/$_gitname/COPYING"
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
