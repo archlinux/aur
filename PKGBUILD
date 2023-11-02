@@ -1,6 +1,6 @@
 # Maintainer: Alexey Korop <akorop@ukr.net>
 # Contributor: Martin Wimpress <code@flexion.org>
-# Fixed by: ABOhiccups <https://twitter.com/ABOhiccups>
+# Fixed by: ABOhiccups <info@abohiccups.com>
 
 _pkgname=conky-manager2
 pkgname=${_pkgname}-git
