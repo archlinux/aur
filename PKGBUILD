@@ -3,8 +3,8 @@
 pkgname=proton-vpn-gtk-app
 _gitpkgname=proton-vpn-gtk-app
 pkgver=4.1.0
-pkgrel=5
-pkgdesc="ProtonVPN GTK app"
+pkgrel=6
+pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
 license=("GPL3")
