@@ -1,3 +1,13 @@
+4.6.3
+-----
+
+ - Fix `#122 <https://github.com/levitsky/pyteomics/issues/122>`_.
+ - Fix `#124 <https://github.com/levitsky/pyteomics/issues/124>`_
+   (in `#125 <https://github.com/levitsky/pyteomics/pull/125>`_ by Seth Just).
+ - Fix `#128 <https://github.com/levitsky/pyteomics/issues/128>`_
+   (in `#129 <https://github.com/levitsky/pyteomics/pull/129>`_ by Joshua Klein).
+
+
 4.6.2
 -----
 
