@@ -2,8 +2,8 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-perl-git
-pkgver=r4548.0e8a7d5b
-pkgrel=2
+pkgver=r5884.930a63d5
+pkgrel=1
 pkgdesc="Pinxi, development branch of inxi, a full featured CLI system information tool"
 arch=(any)
 url="https://smxi.org/docs/inxi.htm"
@@ -38,16 +38,16 @@ optdepends=(
         "xorg-xprop: inxi -S desktop data"
         "xorg-xrandr: inxi -G single screen resolution"
 )
-source=("git+https://github.com/smxi/inxi.git#branch=inxi-perl")
+source=("git+https://codeberg.org/smxi/pinxi")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname/-perl-git/}"
+  cd pinxi
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname/-perl-git/}"
+  cd pinxi
   install -D -m755 pinxi "$pkgdir/usr/bin/pinxi"
   install -D -m644 pinxi.1 "$pkgdir/usr/share/man/man1/pinxi.1.gz"
 }
