@@ -1,7 +1,7 @@
 pkgbase = glsl_analyzer-bin
 	pkgdesc = A language server for the GLSL shading language
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nolanderc/glsl_analyzer
 	arch = x86_64
 	arch = aarch64
