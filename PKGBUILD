@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=fdf255839144638b9759b5ad98b5151fd28bb3ca
+_mozc_commit=db55398c18eedc0b7961cec03b4962514564520d
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,7 +30,7 @@ _sudachidict_date=20230927
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5268.102
-pkgrel=3
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -59,15 +59,15 @@ for dict in "${_dict[@]}"; do
 done
 sha512sums=('SKIP'
             'SKIP'
-            '7ce5cb0e8fa4a170216a646ba6c90c767669511f58fe4afb1b2a045f5210a4dd22f2f88d93bd1cef2fbb7334bf7bbff912f0b0b1fbb4751defc152561de28e31'
-            '757f77995bc1d1ccc57f7f0a1f5cd07cf906fd0a1262851d963bd4574f37dcb18870eef261ebbdcc4becb551bafe99974542b1a5b854ec69bce05df3a68b1d14'
+            '3dc7c95a8f6be1f3899c146f0f544b4b44ca339c4676da4d9cb49d7b2f805189e8366c33fb63b8a3b7367db60ffe7ba9ff0d5303623657f54158a9bf39100a9b'
+            '3a4456c083edc3a4d445e0b8cd825b05972f9ead5b231803fbdedb21131d30652d317b7a4941764eeef11e7867c125685a4b8063674639902e15410824660fd0'
             '66ad5357b722ba4f54a3861c993cd047424ec210ba2931f38b90bc27758984ac29369baa511451b3e656196173fe0b049d3dfd1ade24a4dc389b86b9e0b9cd7e'
             '1edbceb3d08226d487d4baa199a5936f521c97363abdbc15592cfb50e7672f797fbb90ecf2b5ddbd0cbb54f482d073629fcf47afa298b9be6254649aad71cce9'
             '2d065fbfbfdf8294e053625a891043ca640aa39c8fc5959d7b6544c12a1ad321f19b8f5c8c6beb49b2d4e694a73f66ff32f7c6ec6989c9d73addcf461c49b6af'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d'
-            '08f20d455b5fe1c177ac08fee025e2ff84474b63a11a888e6892f01a5e50c6565f0875e5b0b851901263f5ebfa63aebc257eafd374c9198fad649a78d3474a81'
+            '2b190999698fe64d1e00b1cfa250f8615bfe7e839baf05cd42055c9aefb8d380ada7a57224ff454d96ac75e8bd1d5031ecd34befd70846339793aed0a69f1780'
             '8e32c97b62257d953bbc1e7cd15821df8a7c13eb97f0b9cdf569d9f474a58f9870c159bdd8fece581d0e9c57c399436604b493eb78b35f0edeff9dcc90c5be69'
             'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
 
@@ -111,9 +111,11 @@ prepare() {
 
 build() {
   cd "$srcdir/mozc/src" || exit
-  echo 'Generating zip code seed...'
-  PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/KEN_ALL.CSV" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
-  echo 'Done.'
+
+  # no need. zip code is included with bazel build.
+  #echo 'Generating zip code seed...'
+  #PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/KEN_ALL.CSV" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
+  #echo 'Done.'
   # UT Dictionary steps, rewrite of "sh make.sh"
   # UT辞書を結合
   msg '1. Append dictionaries'
@@ -164,7 +166,7 @@ build() {
 #  python build_mozc.py build ${TARGETS} -c ${_bldtype}
 
   # ibus emacs_helper mozc_server fcitx5
-  bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so
+  bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" --copt -fPIC
   bazel shutdown
 
   # Extract license part of mozc
