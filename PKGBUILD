@@ -2,12 +2,11 @@
 pkgname=('ttf-literata' 'ttf-literata-opticals' 'ttf-literata-webfonts' 'ttf-literata-webfonts-opticals')
 pkgbase=ttf-literata
 pkgver=3.103
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Truetype, open source (OFL) distribution."
 arch=('any')
 url="https://github.com/googlefonts/literata"
 license=('custom:OFL')
-conflicts=('otf-literata')
 replaces=('otf-literata')
 source=("literata-$pkgver.zip::https://github.com/googlefonts/literata/releases/download/$pkgver/$pkgver.zip"
         "https://raw.githubusercontent.com/googlefonts/literata/main/OFL.txt")
