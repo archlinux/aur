@@ -4,12 +4,12 @@
 pkgname=figtree-bin
 _pkgname=figtree
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
 license=('GPL2')  # as stated in http://code.google.com/p/figtree/
-depends=('java-environment')
+depends=('java-runtime')
 conflicts=('figtree')
 provides=('figtree')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/rambaut/$_pkgname/releases/download/v$pkgver/FigTree_v$pkgver.tgz"
