@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DELocal
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,6 +19,7 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-biocstyle
   r-biomart
   r-knitr
   r-pcredux
@@ -26,8 +27,8 @@ optdepends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6f595f5306f040c92e53f70db5fb4d81')
-sha256sums=('85e1ceb9812f18727fa12bbc17691e3bfe89dc6686900d14245a773a1cce1395')
+md5sums=('40f2eac89260ff4692fb02047990d048')
+sha256sums=('07efaf2566a44e8a92c54523ed816c8ffdca978d5dcc20da3c6bdd38167ef0c1')
 
 build() {
   mkdir -p build
