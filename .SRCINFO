@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-userfonts-bin
 	pkgdesc = Official Telegram Desktop client, with your fonts as set by fontconfig
-	pkgver = 4.10.3
+	pkgver = 4.11.2
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = telegram-desktop-userfonts-bin
 	depends = pipewire
 	depends = libxtst
 	depends = libxrandr
+	depends = libxcomposite
 	depends = jemalloc
 	depends = abseil-cpp
 	depends = libdispatch
@@ -32,7 +33,7 @@ pkgbase = telegram-desktop-userfonts-bin
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/andydecleyre/archbuilder_telegram-desktop-userfonts/releases/download/4.10.3-1/telegram-desktop-userfonts-4.10.3-1-x86_64.pkg.tar.zst
-	sha512sums = b01d9c61a70135a601c007beba93a7ab6f46f92792f4acc8df57c6e9c9f3e21b5cee3798ef97b8affac1ac7dc028a4150af11040a15c9b8aee8e5071f19b9e6b
+	source = https://github.com/andydecleyre/archbuilder_telegram-desktop-userfonts/releases/download/4.11.2-1/telegram-desktop-userfonts-4.11.2-1-x86_64.pkg.tar.zst
+	sha512sums = 2fa5ab42388a4ba034f39eb4fd5be681f3eff52adc9c029ae2858a4130e2432241fac6bd9ecff5638f8706c2b76f83f361f3ea6dedc8a40b53d62c03abdc25fb
 
 pkgname = telegram-desktop-userfonts-bin
