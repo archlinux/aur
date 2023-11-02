@@ -4,7 +4,7 @@
 _pkgname=tflite-runtime
 pkgname=python-$_pkgname
 pkgver=2.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='TensorFlow Lite Python bindings'
 arch=('any')
 url='https://www.tensorflow.org/lite/'
@@ -14,5 +14,6 @@ makedepends=("python" "python-pip")
 
 
 package() {
-  pip install --no-deps --root=$pkgdir --no-warn-script-location $_pkgname==$pkgver
+  pip install --isolated --upgrade --no-deps --ignore-installed --root=$pkgdir --no-warn-script-location $_pkgname==$pkgver
+  find $pkgdir | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 }
