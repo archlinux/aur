@@ -22,7 +22,6 @@ makedepends=(
    'git'
    'alsa-lib'
    'python'
-   'pandoc-cli'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -44,8 +43,6 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 #  cargo build --frozen --release --features "cover"
-  # generate docs
-  pandoc README.md -t man -s --columns=500 | grep -vE "\[IMAGE:|Click to show/hide" > ncspot.1
 }
 
 check() {
@@ -60,6 +57,5 @@ package() {
   install -Dm 644 "misc/ncspot.desktop" "${pkgdir}/usr/share/applications/ncspot.desktop"
   install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ncspot.svg"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm 644 "ncspot.1" "${pkgdir}/usr/share/man/man1/ncspot.1"
 }
 

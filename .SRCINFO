@@ -10,7 +10,6 @@ pkgbase = ncspot-git
 	makedepends = git
 	makedepends = alsa-lib
 	makedepends = python
-	makedepends = pandoc-cli
 	depends = openssl
 	depends = libpulse
 	optdepends = portaudio: PortAudio backend
