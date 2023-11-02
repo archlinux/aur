@@ -1,6 +1,6 @@
 pkgbase = encoder-benchmark-git
 	pkgdesc = A tool to benchmark your hardware's real-time video encoding capabilities.
-	pkgver = 0.6.1.alpha.r0.g82c4927
+	pkgver = 0.6.1.alpha.r3.g8a46f7d
 	pkgrel = 1
 	url = https://github.com/Proryanator/encoder-benchmark
 	arch = x86_64

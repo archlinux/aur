@@ -1,6 +1,7 @@
 # Maintainer: e-dong <eric2043@gmail.com>
+# Maintainer: Proryanator <proryanator@gmail.com>
 pkgname=encoder-benchmark-git
-pkgver=0.6.1.alpha.r0.g82c4927
+pkgver=0.6.1.alpha.r3.g8a46f7d
 pkgrel=1
 pkgdesc="A tool to benchmark your hardware's real-time video encoding capabilities."
 arch=("x86_64")
