@@ -7,7 +7,6 @@ arch=('any')
 url="https://gitlab.com/AndrewZaech/aztaskbar"
 license=('GPL3')
 depends=('dconf' 'gnome-shell>=1:41')
-conflicts=()
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
 sha256sums=('0ab28797bbb09602500dbcd41029ab443d9157ae60eb50555d283180ad38fa8a')
 
