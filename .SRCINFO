@@ -1,0 +1,23 @@
+pkgbase = toggle-git
+	pkgdesc = Like Tweaks, but with more libadwaita!
+	pkgver = r101.4eda274
+	pkgrel = 1
+	url = https://gitlab.com/OroWith2Os/toggle
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	makedepends = typescript
+	depends = libadwaita
+	depends = gjs
+	depends = gnome-shell
+	source = git+https://gitlab.com/OroWith2Os/toggle
+	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions
+	source = fix-build.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = e8f69a7f9e789251ef7e5060e1c681bbc1806371021f3bc1abf66fadb4dd48535c9e270cf9bf64beb9b6d67d469bc1c92526f9cec81baa2ac50e0862d53c2215
+
+pkgname = toggle-git

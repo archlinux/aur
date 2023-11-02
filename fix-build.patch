@@ -1,0 +1,22 @@
+diff --git a/src/meson.build b/src/meson.build
+index 172c191dbffe4f84f9a7c3acb19e6b67b873569d..6cb6090763f7ad6af6b4ec0c7f1226633279501f 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -28,7 +28,7 @@ sources = files(
+   'warning.ts',
+   'window.ts',
+ )
+-
++tsc_in = meson.project_source_root()
+ tsc_out = meson.project_build_root() / 'tsc-out'
+ 
+ typescript = custom_target(
+@@ -36,7 +36,7 @@ typescript = custom_target(
+   input: sources,
+   build_by_default: true,
+   build_always_stale: true,
+-  command: [ tsc, '--outDir', tsc_out ],
++  command: [ tsc, '-p', tsc_in, '--outDir', tsc_out ],
+   output: ['tsc-output'],
+ )
+ 
