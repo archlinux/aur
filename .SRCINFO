@@ -1,11 +1,10 @@
 pkgbase = r-peacoqc
 	pkgdesc = Peak-based selection of high quality cytometry data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PeacoQC
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL3
 	depends = r-circlize
 	depends = r-complexheatmap
 	depends = r-flowcore
@@ -16,7 +15,8 @@ pkgbase = r-peacoqc
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PeacoQC_1.10.0.tar.gz
-	sha256sums = 387c724e8f0d6e72d3b23acb4bd9753877bf261fbf48e14d34c2cd633fae0166
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PeacoQC_1.12.0.tar.gz
+	md5sums = fa296e0522b97273b692874b5ec23b97
+	sha256sums = 1c9b1792e532b816d4859bc4769b3e5fdaae3632ed837d7bb9c25f4f53b40884
 
 pkgname = r-peacoqc
