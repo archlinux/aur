@@ -1,0 +1,21 @@
+[Unit]
+Description=Dynknockd
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+AmbientCapabilities=CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=-/run/xtables.lock
+ExecStart=/usr/local/sbin/dynknockd -v
+
+[Install]
+WantedBy=multi-user.target
