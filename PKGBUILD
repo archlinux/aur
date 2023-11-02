@@ -5,8 +5,8 @@
 #
 #
 pkgname=crumb
-pkgver=1.0
-pkgrel=1.0
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Crumb is a high level, functional, interpreted, dynamically typed, general-purpose programming language, with a terse syntax, and a verbose standard library."
 arch=('x86_64')
 url="https://github.com/liam-ilan/crumb/tree/main/src"
