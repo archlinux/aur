@@ -1,6 +1,6 @@
 pkgbase = kguiaddons-git
 	pkgdesc = Addons to QtGui
-	pkgver = 5.240.0_r562.gc5ed05d
+	pkgver = 5.240.0_r569.g9857742
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kguiaddons-git
 	makedepends = doxygen
 	makedepends = qt6-tools
 	makedepends = sip
-	makedepends = plasma-wayland-protocols
+	makedepends = plasma-wayland-protocols-git
 	makedepends = qt6-wayland
 	depends = qt6-base
 	optdepends = python-pyqt6: for the Python bindings
