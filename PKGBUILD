@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encrypt0r-bin
-pkgver=3.11.52
+pkgver=3.11.53
 pkgrel=1
 pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron"
 arch=('x86_64')
@@ -9,12 +9,17 @@ _githuburl="https://github.com/kunalnagar/encrypt0r"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron18')
+depends=(
+    'bash'
+    'electron18'
+)
 makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-deb.zip"
+source=(
+    "${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-deb.zip"
     "LICENSE.md::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v${pkgver}/LICENSE.md"
-    "${pkgname%-bin}.sh")
-sha256sums=('164baa684771097db0307ce0fbce12f0df2c3215d399e61f8817931ad988f933'
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('e3b6bddd91888679d40450e59c6240d6a154b54405e2be3d44e38475dd4ad0dc'
             'dd8cfe4d2d540a3c670cf0aa6c95e9076e8949d7c50d04495feb0a6ce9d82cc3'
             '40793276e494d98e3dd18645cab5a2747035877fdde10b4c334d62a0e7e059b0')
 build() {
