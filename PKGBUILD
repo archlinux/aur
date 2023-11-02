@@ -3,19 +3,17 @@ pkgname=dynknock
 _slnname=dynknock
 _projname=Dynknock_Client
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Port knocker using a periodically changing sequence"
 arch=('x86_64')
 url='https://github.com/CoolandonRS/dynknock'
 license=("GPL3")
 depends=("gcc-libs" "zlib" "glibc")
 makedepends=("dotnet-sdk>7.0.0" "subversion")
-source=("svn+https://github.com/CoolandonRS/$_slnname/tags/v$pkgver/$_projname")
+source=("dynknock::svn+https://github.com/CoolandonRS/$_slnname/tags/v$pkgver/$_projname")
 sha256sums=('SKIP')
 
 build() {
-  rm -rf $pkgname
-  mv $_projname $pkgname
   cd $pkgname
   MSBUILDDISABLENODEREUSE=1 dotnet publish --configuration Release --self-contained true --runtime linux-x64 -p:PublishTrimmed=true --output ../$pkgname ./$_projname.csproj
 }
