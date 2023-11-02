@@ -3,7 +3,7 @@
 
 pkgname=termusic
 pkgver=0.7.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Music Player TUI written in Rust"
 arch=('x86_64')
 url="https://github.com/tramhao/termusic"
