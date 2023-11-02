@@ -1,7 +1,7 @@
 pkgbase = oqsprovider
 	pkgdesc = OpenSSL 3 provider containing post-quantum algorithms
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider
 	arch = x86_64
 	license = MIT
@@ -14,9 +14,7 @@ pkgbase = oqsprovider
 	depends = openssl
 	source = oqsprovider-0.5.2.tar.gz::https://github.com/open-quantum-safe/oqs-provider/archive/refs/tags/0.5.2.tar.gz
 	source = liboqs-0.9.0.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/0.9.0.tar.gz
-	source = enable-algs.patch
 	b2sums = 537b8dbdddc21c4516d1a27ea61b210714871c494afacc7c66b7becf6e8269bdbf5272e0c210683f13ef4e885a4d0de9be5e590a8528d3bbe585f8584b811759
 	b2sums = 5a8c3ccf570ded1dd66e420a22400f1c3320ba385e09a2edb41323e994597dcd812e1742986d34300c76bed54c2a0baf24587d2eaef00e7f03265f3dc632ddda
-	b2sums = 71286fda50b1830ee70e3cc23b647499f812348c3303c518147f2ec62c300bca346147e6bdf540748a5ca6400c6134607ffd47f6166b3b6661c53aabb8035af2
 
 pkgname = oqsprovider
