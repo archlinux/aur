@@ -1,17 +1,17 @@
 pkgbase = gnss-share
 	pkgdesc = An app for sharing GNSS location data, with support multiple clients and loading/saving AGPS data.
-	pkgver = 0.6
+	pkgver = 0.7.2
 	pkgrel = 1
-	url = https://gitlab.com/postmarketOS/gnss-share/
+	url = https://gitlab.com/postmarketOS/gnss-share
 	changelog = gnss-share.changelog
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = go
 	optdepends = geoclue: geoclue location source
-	source = https://gitlab.com/postmarketOS/gnss-share/-/archive/0.6/gnss-share-0.6.tar.gz
+	source = https://gitlab.com/postmarketOS/gnss-share/-/archive/0.7.2/gnss-share-0.7.2.tar.gz
 	source = geoclue.conf
-	sha512sums = f9ad3fc738e7dc527632776ebc11f29e367c55f1b1d782d7ddcef69dc13c5f580280a79e4777273e766b5fe8f6c22e302c6fe0558281aad7cd5b6bce3f33ede5
+	sha512sums = bfecc725ea09e1fb0bbfb917478447235aa7392f54cace9686d037478f1c164388054b4f2c742ec4948871cf68871956b1ef0f99a2ca621a9911efd5637c919a
 	sha512sums = f1d1c391d7104dd079ee6c7c08b99f6a84749b59eb66f3ceb1994d36198840e81f011b573af455eff1231ddbaf0c786c77785f799355d6d82005317633bca1ed
 
 pkgname = gnss-share

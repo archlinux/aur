@@ -1,3 +1,30 @@
+## 0.7.2
+
+* `Fixes`
+        - stm: perform a safe shutdown when closing device
+
+## 0.7.1
+
+* `Fixes`
+        - Set socket permissions to allow group write access
+
+## 0.7
+
+* `Features`
+        - Initial support for writing to the underlying device through
+          the gnss-share socket
+
+* `Fixes`
+        - Issue with not all NMEA messages coming through from STM modules (issue #14)
+        - Reduced memory and CPU usage
+        - Eliminated some race-y behavior
+        - gosec 1.15.0 compliance
+
+* `Other`
+        - Removed stmctl utility: no longer necessary with the ability
+          to proxy writes to the device from the socket
+        - New dependency on Go module: "github.com/google/uuid"
+
 ## 0.6
 
 * `Features`
