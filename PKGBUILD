@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 # Maintainer: Anupam Srivastava <anupam@dont.tech>
-pkgname=fluent-kde-theme-git
+pkgname=plasma5-themes-fluent-git
 _themeName=Fluent
 _gitname="$_themeName-kde"
 pkgver=r94.83d5cc2
@@ -9,10 +9,11 @@ pkgdesc="Fluent design theme for kde plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
-optdepends=('plasma-desktop: for included plasma theme' 'kvantum-qt5: for included kvantum theme' 'sddm: for included sddm theme' 'fluent-icon-theme-git: matching icon theme' 'fluent-cursor-theme-git: matching cursor theme' 'fluent-gtk-theme-git: matching gtk theme') 
+optdepends=('plasma-desktop: for included plasma theme' 'kvantum: for included kvantum theme' 'sddm: for included sddm theme' 'fluent-icon-theme-git: matching icon theme' 'fluent-cursor-theme-git: matching cursor theme' 'fluent-gtk-theme-git: matching gtk theme')
 makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+conflicts=('fluent-kde-theme-git')
 
 pkgver() {
    cd ${_gitname}
