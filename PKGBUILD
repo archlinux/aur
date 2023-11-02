@@ -1,12 +1,12 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
-pkgver=5.11.6
+pkgver=5.13.1+r104+gdc5079d5
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
-makedepends=(python-build python-installer python-wheel python-poetry)
-depends=('python>=3.7' python-boltons python-click 'python-click-extra>=3.4.0' python-packageurl python-tabulate python-tomli python-tomli-w python-typing_extensions python-xmltodict)
+makedepends=(python-build python-installer python-wheel python-poetry-core)
+depends=('python>=3.7' python-boltons python-click 'python-click-extra>=3.10.0' python-packageurl python-tabulate python-tomli python-tomli-w python-typing_extensions python-xmltodict)
 checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
 optdepends=('apt: support for apt packages'
             'rust: support for Rust packages'
@@ -30,24 +30,23 @@ optdepends=('apt: support for apt packages'
             'zypper: support for RPM packages')
 license=('GPL2')
 arch=('any')
-source=("https://github.com/kdeldycke/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('0bfa6094abfbb3e099bef8be23917051f295834967969901a25df73482ac3078f9b318a4f88831696b077066c2b5c8e55fa3f7cd8791dd4f19b6541d99496fc4')
+source=("git+https://github.com/kdeldycke/${pkgname}.git#commit=dc5079d5ee840d6be2287bd07eed9e49fdf5e5c6")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+}
+
 
 build() {
     # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
-    cd "$srcdir/$pkgname-$pkgver"
-    GIT_DIR="$srcdir/$pkgname-$pkgver" python -m build --wheel --no-isolation
-}
-
-check() {
-    # Pytest does currently not run successfully due to a bug in the tests. Will be uncommented when the bug is fixed.
-    # cd "$srcdir/$pkgname-$pkgver"
-    # pytest
-    true
+    cd "$srcdir/$pkgname"
+    GIT_DIR="$srcdir/$pkgname" python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" license
 }
