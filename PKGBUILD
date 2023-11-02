@@ -1,15 +1,15 @@
 #Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 #Contributor: Andrew Bueide <abueide@protonmail.com>
 pkgname="gdx-texture-packer-gui"
-pkgver=4.12.0
-pkgrel=2
+pkgver=4.13.0
+pkgrel=1
 pkgdesc="A command line and GUI for packing textures"
 arch=('any')
 url="https://github.com/crashinvaders/gdx-texture-packer-gui"
 license=('Apache')
 depends=('java-runtime' 'unzip')
 source=("https://github.com/crashinvaders/gdx-texture-packer-gui/archive/refs/tags/${pkgver}.zip")
-sha256sums=('a25889f7942361fb6b997691a0af0698ac0d251b9e50994044c95c584db126dc')
+sha256sums=('3c6d6ebaa12a28cce4d7aa5b500fe2cd900018bac7523e7d7c483dc090ab0981')
 
 build() {
 	printf "#!/bin/sh\nexec /usr/bin/java -jar '/usr/share/java/${pkgname}/${pkgname}.jar' \"\$@\"\n" >${pkgname}.sh
