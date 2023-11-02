@@ -10,6 +10,7 @@ pkgbase = courier-maildrop-minimal
 	depends = pcre2
 	optdepends = courier-authlib: for LDAP, MySQL or PostgreSQL based mail authentication
 	conflicts = courier-mta
+	conflicts = courier-maildrop
 	source = https://downloads.sourceforge.net/project/courier/maildrop/3.1.6/maildrop-3.1.6.tar.bz2
 	source = https://downloads.sourceforge.net/project/courier/maildrop/3.1.6/maildrop-3.1.6.tar.bz2.sig
 	validpgpkeys = 6EA6428B24FF7A696EF9A4838A60F828A23652E2
