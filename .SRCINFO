@@ -1,0 +1,22 @@
+pkgbase = ezytdl-bin
+	pkgdesc = An application that leverages yt-dlp and FFmpeg to provide a simple, easy-to-use interface for downloading videos from YouTube, Twitch, SoundCloud, and various other sites.
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/sylviiu/ezytdl
+	arch = x86_64
+	license = GPL3
+	makedepends = asar
+	depends = bash
+	depends = electron25
+	depends = ffmpeg
+	depends = libdbusmenu-glib3
+	depends = libxext
+	depends = gdk-pixbuf2
+	provides = ezytdl=2.4.2
+	conflicts = ezytdl
+	source = ezytdl-2.4.2.AppImage::https://github.com/sylviiu/ezytdl/releases/download/2.4.2/ezytdl-linux.AppImage
+	source = ezytdl.sh
+	sha256sums = 1b26c8c467aa8f3025b69aecab6739be495244b9551fd59ad99007a613a13efe
+	sha256sums = ca691bc3de122143291dd35596858221e5602768e3ed760a34ac600bfb2ec314
+
+pkgname = ezytdl-bin
