@@ -8,7 +8,6 @@ url='https://github.com/bensadeh/tailspin'
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
-depends=('gcc-libs')
 makedepends=('cargo')
 b2sums=('2c440ba07e4252dcf1a105b00c845c9ed241bba5f5116829d597340c67e5d266354f8d24aaf34b6260812a4779a606bf93fe97c469c7fc249461153ee7beefda')
 
