@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=grml-systemd-boot
-pkgver="2021.07"
+pkgver="2022.11"
 pkgrel=1
 pkgdesc="GRML as systemd-boot loader entry"
 url="https://wiki.archlinux.org/title/Systemd-boot#Grml_on_ESP"
@@ -15,7 +15,7 @@ source=(
 noextract=(grml64-small_$pkgver.iso)
 # add dummy entries for `make generate-checksums` to create SHA256 instead of MD5 check sums
 sha256sums=(
-  "f94529b6cbfb79ae54a4b6d5dfe8caf1a836facd85959996dd6712c20bb9c5c2"
+  "7f2a1dbab779fd3900f0d89eb4fdc041ac06142675693dc28b8d2fd9fe26a2ff"
   "SKIP"
 )
 
