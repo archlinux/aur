@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libsvm
 	pkgdesc = A library for Support Vector Machines classification (mingw-w64)
-	pkgver = 3.24
+	pkgver = 3.32
 	pkgrel = 1
 	url = http://www.csie.ntu.edu.tw/~cjlin/libsvm/
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-libsvm
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://www.csie.ntu.edu.tw/~cjlin/libsvm/libsvm-3.24.tar.gz
-	sha256sums = d5881a201a4e6227bf8e2f5de7d6eeaef481c6c2bb9540aeca547737844f8696
+	source = http://www.csie.ntu.edu.tw/~cjlin/libsvm/libsvm-3.32.tar.gz
+	sha256sums = 8644cc6518ca88bbc50d8c8ead1734f1ab9b6f17017045ef9ae38773aa653dad
 
 pkgname = mingw-w64-libsvm
-
