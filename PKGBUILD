@@ -2,15 +2,15 @@
 
 pkgname='chromium-extension-decentraleyes'
 pkgver=2.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Local emulation of Content Delivery Networks"
 license=('MPL2')
 arch=('any')
 url="https://git.synz.io/Synzvato/decentraleyes"
 depends=('chromium')
-source=("$pkgname-$pkgver.crx::https://git.synz.io/Synzvato/decentraleyes/uploads/51f5b917d42857d1baeae9d328c08995/Decentraleyes.v$pkgver-chromium.crx")
+source=("$pkgname-$pkgver.crx::https://git.synz.io/Synzvato/decentraleyes/uploads/2bf87b82847e5340e04b75505d29a5ba/Decentraleyes.v$pkgver-chromium.crx")
 noextract=("$pkgname-$pkgver.crx")
-sha256sums=('f5fdaaecc0a7f397e5a46aaeb4c6bf868c06254ea803515767cb8febc98deb64')
+sha256sums=('166c9338a9eb6e43db8e83c363965b9eff482f2a3d173cba3fc81b1368ec9080')
 
 build() {
     echo "{ \"external_crx\": \"/usr/share/$pkgname/$pkgname.crx\", \"external_version\": \"$pkgver\" }" > ldpochfccmkkmhdbclfhpagapcfdljkj.json
