@@ -1,0 +1,21 @@
+pkgbase = r-rnamodr.data
+	pkgdesc = Example data for the RNAmodR package
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RNAmodR.Data
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-experimenthub
+	depends = r-experimenthubdata
+	optdepends = r-biocstyle
+	optdepends = r-genomicranges
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-sessioninfo
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RNAmodR.Data_1.16.0.tar.gz
+	md5sums = cd4851e2f0c0a93c6d5a9163f542b07f
+	sha256sums = 0159cb46031193ee09916fd929562a5a2c23e201bf4017b7552b0495890c3d5d
+
+pkgname = r-rnamodr.data
