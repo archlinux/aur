@@ -2,7 +2,7 @@
 
 _pkgname=lutgen
 pkgname=$_pkgname-bin
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes."
 url="https://github.com/ozwaldorf/lutgen-rs"
@@ -11,7 +11,7 @@ arch=("x86_64")
 provides=("lutgen")
 conflicts=("lutgen")
 source=("https://github.com/ozwaldorf/lutgen-rs/releases/download/v$pkgver/lutgen-$pkgver-x86_64.tar.gz")
-sha256sums=("efb89b419288a6c6152fb71e8ebcf1f256e81eeb8de1ea6c260fb040f121894c")
+sha256sums=("8cbe2c334f8b575230ceb0413f1b51cde02d85e1539c9f9e433644795639653c")
 
 package() { 
     mkdir completions
