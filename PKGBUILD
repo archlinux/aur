@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Rsamtools
-_bcver=2.16.0
+_bcver=2.18.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -39,7 +39,7 @@ optdepends=(
     "r-txdb.hsapiens.ucsc.hg18.knowngene"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("0ba9dd1f362c265e8436bacc4644c57acdabb9ea21beb397f92d24f5a10a9afeec44eda7981f54a9cc29fff62187bf03e25f4dc29f893e6ef9112994d32629c1")
+b2sums=('9c880a2869e87a9a24ac5afcb2c191dd58308da3f08fe456e30ff93f84693dc5f86754a390ecbeaa87426a8a23f32bcc8ab3b7495ac0ed0c762be6232f004763')
 
 options=(!lto !buildflags staticlibs)
 
