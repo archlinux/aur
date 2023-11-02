@@ -3,7 +3,7 @@
 
 pkgname=kapp
 pkgdesc='A simple deployment tool focused on the concept of a Kubernetes application'
-pkgver=0.59.0
+pkgver=0.59.1
 pkgrel=1
 provides=('kapp')
 conflicts=('kapp')
@@ -12,7 +12,7 @@ license=('Apache')
 url="https://carvel.dev/kapp/"
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carvel-dev/kapp/archive/v$pkgver.tar.gz")
-sha256sums=('f95eea6e5093a9a027f413879f1dcdd375ea4a093bbb2b9a39fbabb8b0a54425')
+sha256sums=('43a235d11b08b7cde61cb5d9a85fd3b96247983ce935204b9e9f95e883cc2795')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -41,4 +41,3 @@ package() {
 
   install -Dm 755 ./kapp "$pkgdir/usr/bin/kapp"
 }
-
