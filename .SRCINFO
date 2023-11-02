@@ -1,19 +1,25 @@
 pkgbase = goofcord-bin
 	pkgdesc = Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.
-	pkgver = 0.7.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Milkshiift/GoofCord
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = custom::OSL3
 	depends = bash
-	depends = electron26
-	provides = goofcord=0.7.5
+	depends = electron27
+	provides = goofcord=1.0.0
 	conflicts = goofcord
-	source = goofcord-0.7.5.AppImage::https://github.com/Milkshiift/GoofCord/releases/download/v0.7.5/GoofCord-0.7.5-linux-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/v0.7.5/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/v1.0.0/LICENSE
 	source = goofcord.sh
-	sha256sums = 0b6dcf2577242582bbc0cc3f3251892866dfa4aea9f9be97de0dfa4e2c8cb8e0
 	sha256sums = 4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51
-	sha256sums = aea4a3b6cf7aac399225798877e2c711426f971eb411fb604f44b08568a40802
+	sha256sums = dbb6a83ce037d6d6208835349dfd29a53c9a44cb96acdc89543b1f1bd3877f3e
+	source_aarch64 = goofcord-1.0.0-aarch64.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.0.0/GoofCord-1.0.0-linux-arm64.deb
+	sha256sums_aarch64 = f0ef6096ef2f477b7fa18101a96db8ba43c55d2bf2009b097b650de59074f5a9
+	source_armv7h = goofcord-1.0.0-armv7h.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.0.0/GoofCord-1.0.0-linux-armv7l.deb
+	sha256sums_armv7h = 29cb62fd54cb61ceac9042ccfe4a17f6c6864ca8de17964f25587a4895bcdf65
+	source_x86_64 = goofcord-1.0.0-x86_64.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.0.0/GoofCord-1.0.0-linux-amd64.deb
+	sha256sums_x86_64 = 8a2b632d9cec7ac4099940f0d59aa75b8461e9a4784aa25c6af53c498efde160
 
 pkgname = goofcord-bin
