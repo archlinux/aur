@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dialogcraft-bin
 _pkgname=Dialogcraft
-pkgver=0.9.8
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('x86_64')
@@ -9,11 +9,32 @@ url="https://github.com/Hayden2018/dialogcraft"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('nss' 'pango' 'libxrandr' 'libxcb' 'at-spi2-core' 'mesa' 'glib2' 'alsa-lib' 'expat' 'glibc' 'libcups' 'gcc-libs' \
-    'cairo' 'libxfixes' 'libxdamage' 'libxkbcommon' 'libx11' 'nspr' 'gtk3' 'libdrm' 'libxcomposite' 'dbus' 'libxext')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Hayden2018/dialogcraft/v${pkgver}/LICENSE")
-sha256sums=('2ead1fa1df33c7a8ca9383e83c9b27d0b19cc4ccd7a000e73435b4eb148fd714'
+depends=(
+    'libxfixes'
+    'cairo'
+    'nspr'
+    'libdrm'
+    'mesa'
+    'libxrandr'
+    'libxext'
+    'libxcomposite'
+    'libcups'
+    'gtk3'
+    'pango'
+    'libxdamage'
+    'alsa-lib'
+    'expat'
+    'nss'
+    'at-spi2-core'
+    'libx11'
+    'libxkbcommon'
+    'libxcb'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/Hayden2018/dialogcraft/v${pkgver}/LICENSE"
+)
+sha256sums=('6ad096d357822b8517adc1581e38226cea67886338ee4c255c87c572ec999218'
             'c09d111b4c731bb0e1771677ef839c4db3f709238e7ed8bbd005d737b01286c8')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
