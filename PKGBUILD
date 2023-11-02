@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjobwidgets-git
-pkgver=5.240.0_r499.gdf6715a
+pkgver=5.240.0_r533.gc1ffc0a
 pkgrel=1
 pkgdesc='Widgets for tracking KJob instances'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kcoreaddons-git kwidgetsaddons-git)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip plasma-wayland-protocols)
+makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip plasma-wayland-protocols-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt6: for the Python bindings')
