@@ -2,14 +2,14 @@
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
 # Contributor: David McInnis <dave@dave3.xyz>
 pkgname=python-scipy-docs
-pkgver=1.9.3
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="Documentation for Python SciPy module"
 arch=('any')
 url='http://docs.scipy.org'
 license=('BSD')
 source=("${pkgname}-${pkgver}.zip::https://docs.scipy.org/doc/scipy-${pkgver}/scipy-html-${pkgver}.zip")
-sha256sums=('67fb23ddc83d3d733eb887ddb88f2e9dec53a3b60b76a21029507688ab99199f')
+sha256sums=('1ada7ab15a484a39dfe3b770249526fafe6ed897b770141c10d577125e060f30')
 
 prepare() {
 	rm ${pkgname}-${pkgver}.zip
