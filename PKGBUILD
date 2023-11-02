@@ -1,6 +1,6 @@
 _name=satellite
 pkgname=satellite-gtk
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Displays Global Navigation Satellite System (GNSS: GPS, Galileo, Glonass etc.) information obtained from NMEA sources and saves your tracks"
 arch=('any')
@@ -10,7 +10,7 @@ depends=(python-gobject gtk3 libhandy python-pydbus python-pynmea2 python-gpxpy)
 makedepends=(python-build python-installer python-wheel)
 optdepends=(modemmanager gnss-share)
 source=("https://codeberg.org/tpikonen/$_name/archive/$pkgver.tar.gz")
-sha512sums=('639ff8c116bc11f247006262890bb62b2234427edd4750cff5402d85eef9b66d6e10d48b78943ba167fdd98d5db49d9a1fe7f8588f6517fec56d8af4e6ce2206')
+sha512sums=('1bfceab587fc960834803849a9ddb1b2c9e4fd9ed60c81fe460179e1abd3367dca756d7e1586c2d6c0195bf95ae56e89f0f62f986718f899202eb4bc39e1ad80')
 
 
 build() {
