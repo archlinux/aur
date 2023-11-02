@@ -6,7 +6,7 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.7
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
@@ -15,13 +15,33 @@ _githuburl="https://github.com/streetwriters/notesnook"
 license=('GPL3')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
-depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'fuse2' 'alsa-lib' 'nspr' 'nss')
-makedepends=('nodejs>=18' 'npm>=9')
+depends=(
+    'libappindicator-gtk3'
+    'libnotify'
+    'libsodium'
+    'libxss'
+    'libxtst'
+    'fuse2'
+    'alsa-lib'
+    'nspr'
+    'nss'
+)
+makedepends=(
+    'nvm'
+    'npm'
+)
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha256sums=('774a4653b61387baab93c4939de463a039fccd0fe9583f73c5a355003f9891e0'
+sha256sums=('a00631aa631e576daa870406218eb2be4a3a0089c4c8ff1a237e9f5a020e5a17'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 16
+    nvm use 16
+}
 build() {
+    _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
     if [ -d .git ];then
         rmdir .git
@@ -31,8 +51,9 @@ build() {
     fi
     npm ci --ignore-scripts --prefer-offline --no-audit
     npm run bootstrap -- --scope=desktop
+    npx nx build:desktop @notesnook/web
     npx nx run release --project @notesnook/desktop
-    npx electron-builder --linux AppImage:x64 -p never
+    npx electron-builder --linux AppImage:x64 AppImage:arm64 -p never
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
