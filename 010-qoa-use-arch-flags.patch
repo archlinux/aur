@@ -1,0 +1,31 @@
+--- a/Makefile
++++ b/Makefile
+@@ -7,8 +7,8 @@ CC ?= gcc
+ # Remove -D QOACONV_HAS_DRMP3 and -D QOACONV_HAS_DRFLAC to compile qoaconv
+ # without MP3/FLAC support
+ TARGET_CONV ?= qoaconv
+-CFLAGS_CONV ?= -std=c99 -O3 -D QOACONV_HAS_DRMP3 -D QOACONV_HAS_DRFLAC
+-LFLAGS_CONV ?= -lm
++CFLAGS_CONV ?= -std=c99 -O3 -D QOACONV_HAS_DRMP3 -D QOACONV_HAS_DRFLAC $(CFLAGS)
++LFLAGS_CONV ?= -lm $(LDFLAGS)
+ 
+ 
+ # QOAPLAY
+@@ -16,7 +16,7 @@ LFLAGS_CONV ?= -lm
+ # - https://github.com/floooh/sokol/blob/master/sokol_audio.h
+ # FIXME: not yet tested on Windows/macOS
+ TARGET_PLAY ?= qoaplay
+-CFLAGS_PLAY ?= -std=gnu99 -O3
++CFLAGS_PLAY ?= -std=gnu99 -O3 $(CFLAGS)
+ 
+ ifeq ($(OS),Windows_NT)
+ 	LFLAGS_PLAY ?= # defined in #pragma() in sokol_audio.h
+@@ -25,7 +25,7 @@ else
+ 	ifeq ($(UNAME_S),Darwin)
+ 		LFLAGS_PLAY ?= -pthread -framework AudioToolbox
+ 	else
+-		LFLAGS_PLAY ?= -pthread -lasound
++		LFLAGS_PLAY ?= -pthread -lasound $(LDFLAGS)
+ 	endif
+ endif
+ 
