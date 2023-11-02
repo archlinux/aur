@@ -1,7 +1,7 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono
-pkgver=4.1.2
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
@@ -29,7 +29,7 @@ makedepends=(
     'xorg-server-xvfb'
 )
 provides=('godot' 'godot-mono')
-conflicts=('godot')
+conflicts=('godot-mono')
 source=(${pkgname}::git+https://github.com/godotengine/godot.git)
 md5sums=('SKIP')
 
