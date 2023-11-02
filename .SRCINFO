@@ -1,7 +1,7 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20230505
-	pkgrel = 2
+	pkgver = 20231101
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
 	depends = adobe-source-code-pro-fonts
@@ -93,7 +93,6 @@ pkgbase = all-repository-fonts
 	depends = ttf-ibm-plex
 	depends = ttf-inconsolata
 	depends = ttf-indic-otf
-	depends = ttf-ionicons
 	depends = ttf-jetbrains-mono
 	depends = ttf-joypixels
 	depends = ttf-junicode
