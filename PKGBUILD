@@ -3,7 +3,7 @@
 pkgbase=srsran-project-git
 pkgname=$pkgbase
 _pkgname=srsRAN_Project
-pkgver=23.5.0.r575.g56a771d
+pkgver=23.10.1.r0.g374200d
 pkgrel=1
 pkgdesc='The srsRAN Project is a complete 5G RAN solution, featuring an ORAN-native CU/DU developed by (SRS)'
 arch=('x86_64' 'aarch64')
@@ -54,6 +54,7 @@ build() {
     -B "build" \
     -S "${_pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_WERROR=False \
     -DCMAKE_BUILD_TYPE=Release
   make -C "build"
 }
