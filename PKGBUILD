@@ -7,10 +7,11 @@ _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.7+24.r1467.20231101.53a1b24
-pkgrel=2
+pkgrel=3
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
+  'aarch64'
 )
 url="https://github.com/${_gitname}/${_pkgname}"
 license=(
@@ -29,6 +30,12 @@ makedepends=(
   'git'
   'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
 )
+if [ "${CARCH}" == "x86_64" ]; then
+  export CROSS_LD='ld'
+else
+  makedepends+=("x86_64-elf-binutils")
+  export CROSS_LD='x86_64-elf-ld'
+fi
 provides=(
   "${_pkgname}=${pkgver}"
 )
@@ -76,14 +83,14 @@ build() {
   set -u
   cd "${srcdir}/${_pkgname}"
   bash -e -u configure
-  make -j "$(nproc)" CROSS_LD=ld
+  make -j "$(nproc)"
   set +u
 }
 
 package() {
   set -u
   cd "${srcdir}/${_pkgname}"
-  make -j1 DESTDIR="${pkgdir}" CROSS_LD=ld install
+  make -j1 DESTDIR="${pkgdir}" install
 
   for _docfile in 'git.log' 'NEWS.md' 'README.md'; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
