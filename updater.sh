@@ -9,7 +9,8 @@ else
 	echo "New pkgver, updating and commiting"
 	mv PKGBUILD{.new,}
 	export $(grep -m 1 pkgver PKGBUILD)
-	git add PKGBUILD
+	makepkg --printsrcinfo > .SRCINFO
+	git add PKGBUILD .SRCINFO
 	git commit -m "Updating PKGBUILD to ${pkgver}"
 	git push
 fi
