@@ -15,7 +15,7 @@ PrivateTmp=yes
 ProtectHome=read-only
 ProtectSystem=strict
 ReadWritePaths=-/run/xtables.lock
-ExecStart=/usr/local/sbin/dynknockd -v
+ExecStart=/usr/bin/dynknockd -v
 
 [Install]
 WantedBy=multi-user.target
