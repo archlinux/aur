@@ -11,7 +11,7 @@ pkgbase = perl-cpan-uploader
 	depends = perl-lwp-protocol-https
 	depends = perl-term-readkey
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/CPAN-Uploader-0.103018.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/CPAN-Uploader-0.103018.tar.gz
 	md5sums = 685e54e770aedaaca38c333212709e4c
 
 pkgname = perl-cpan-uploader

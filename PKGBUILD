@@ -14,7 +14,7 @@ depends=('perl-getopt-long-descriptive'
          'perl-lwp-protocol-https'
          'perl-term-readkey')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
 md5sums=('685e54e770aedaaca38c333212709e4c')
 
 build() {
