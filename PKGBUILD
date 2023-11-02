@@ -1,16 +1,16 @@
 # Maintainer: nachtjasmin <nachtjasmin at posteo dot de>
 pkgname=kluctl
 pkgdesc='The missing glue to put together large Kubernetes deployments.'
-pkgver=2.21.0
+pkgver=2.22.0
 pkgrel=1
-arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/kluctl/kluctl/'
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 
 source=("https://github.com/kluctl/kluctl/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('15ce313452cd2da94a08ec0522dbcae5e35fd368e5e802720ab5f26dfc646a8c')
+sha256sums=('6fed4634a22c5d92da49a518696c9792fadd7e3d63bbb2f0354dddc9d3b95c58')
 
 build() {
   local _commit _flags
