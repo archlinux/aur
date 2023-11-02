@@ -10,10 +10,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=119.0.6045.59
+pkgver=119.0.6045.105
 pkgrel=1
 _launcher_ver=8
-_manual_clone=0
+_manual_clone=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('039cba06c694aef9318f2a2c89c176ce3e9147a7bc2324f856077f8002b15d0e'
+sha256sums=('55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
@@ -60,7 +60,7 @@ source=(${source[@]}
         # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
         ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            '9317d3bd5d11ce82230564b841fb7cba8082c50e87699e9cda0d90ebbabfb2df')
+            'da734ba2bbb3c816c002cfea8dd6c231720b2bb8d5ac8dea9865fcc344a1775f')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
