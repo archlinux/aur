@@ -1,22 +1,43 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dialogcraft
 _pkgname=DialogCraft
-pkgver=0.9.8
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('any')
 url="https://github.com/Hayden2018/dialogcraft"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('libx11' 'libxcb' 'libxext' 'cairo' 'libdrm' 'expat' 'at-spi2-core' 'mesa' 'nss' 'gtk3' 'nspr' 'libcups' 'libxrandr' 'libxfixes' \
-    'libxkbcommon' 'gcc-libs' 'libxcomposite' 'glibc' 'hicolor-icon-theme' 'glib2' 'alsa-lib' 'pango' 'dbus' 'libxdamage')
-makedepends=('gendesk' 'npm' 'nodejs>=16')
+depends=(
+    'libxfixes'
+    'cairo'
+    'nspr'
+    'libdrm'
+    'mesa'
+    'libxrandr'
+    'libxext'
+    'libxcomposite'
+    'libcups'
+    'gtk3'
+    'pango'
+    'libxdamage'
+    'alsa-lib'
+    'expat'
+    'nss'
+    'at-spi2-core'
+    'libx11'
+    'libxkbcommon'
+    'libxcb'
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'nodejs>=16'
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3dc33ae27b8880859055a82f5b8149fd1e2e9b7a64ef13749b92acc2cf742bb9')
-prepare() {
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
-}
+sha256sums=('a6c08418a77c435b6f7a7235ab801955b95e6e41c5f0bb66691dccaea0d56194')
 build() {
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     npm ci
     sed -e '26,31d' -e '8,19d' -i forge.config.js
