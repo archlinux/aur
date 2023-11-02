@@ -1,6 +1,6 @@
 pkgbase = python-tflite-runtime
 	pkgdesc = TensorFlow Lite Python bindings
-	pkgver = 2.5.0.post1
+	pkgver = 2.14.0
 	pkgrel = 2
 	url = https://www.tensorflow.org/lite/
 	arch = any
