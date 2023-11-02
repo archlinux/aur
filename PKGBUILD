@@ -4,7 +4,7 @@
 _pkgname=tflite-runtime
 pkgname=python-$_pkgname
 pkgver=2.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc='TensorFlow Lite Python bindings'
 arch=('x86_64')
 _py=cp311
