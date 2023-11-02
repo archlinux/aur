@@ -6,8 +6,8 @@
 
 _pkgname=openmpi
 pkgname=openmpi-ucx
-pkgver=5.0.0rc12
-pkgrel=3
+pkgver=5.0.0
+pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
 arch=(x86_64)
 url='https://www.open-mpi.org'
@@ -22,7 +22,7 @@ depends=(
   openpmix
   openssh
   openucx-gpu
-  #prrte  # TODO: prrte-3.0.0-1 was built against old openpmix
+  prrte
   zlib
 )
 makedepends=(
@@ -45,14 +45,13 @@ provides=(
   libmpi_usempif08.so
   libopen-pal.so
   liboshmem.so
-  libprrte.so  # TODO: depend on prrte
 )
 conflicts=($_pkgname)
 source=(
   https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$_pkgname-$pkgver.tar.bz2
 )
-sha256sums=('b292c5f417b2304c2abc8d9f05520af40375d5c7537552ea77d64fc58771e184')
-b2sums=('1fbc70f1ac74556524593572471066c938163337cc235b4f6d9772e7c50327a59186ddebbf39456a5a18232d53a80f4b86ed5874ce57c5eb2e3196e735eb5b33')
+sha256sums=('9d845ca94bc1aeb445f83d98d238cd08f6ec7ad0f73b0f79ec1668dbfdacd613')
+b2sums=('d6277714945ee7e82649cc450253b9cad642ab5b5d00b5c1d77ab4c07329148e940038c34c46d92e01f2b1bb7768effb6e95ad34aa509b3287582683e09f669a')
 
 build() {
   local configure_options=(
@@ -76,8 +75,7 @@ build() {
     --with-hwloc=external
     --with-libevent=external
     --with-pmix=external
-    # TODO: prrte-3.0.0-1 was built against old openpmix
-    #--with-prrte=external
+    --with-prrte=external
     --with-valgrind
   )
   cd $_pkgname-$pkgver
