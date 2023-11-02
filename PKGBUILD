@@ -2,20 +2,19 @@
 
 _pkgname=ncspot
 pkgname="${_pkgname}-git"
-pkgver=0.11.0
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
 url="https://github.com/hrkfdn/ncspot"
 license=('BSD')
 depends=(
-   'ncurses'
    'openssl'
    'libpulse'
 )
 optdepends=(
    'portaudio: PortAudio backend'
-   'ueberzug: cover drawing in terminal'
+   'ueberzugpp: display album art in terminal (X11)'
 )
 makedepends=(
    'rust'
@@ -23,6 +22,7 @@ makedepends=(
    'git'
    'alsa-lib'
    'python'
+   'pandoc-cli'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -36,19 +36,22 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release --locked
-#  cargo build --release --features "cover" --locked
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+#  cargo build --frozen --release --features "cover"
+  # generate docs
+  pandoc README.md -t man -s --columns=500 | grep -vE "\[IMAGE:|Click to show/hide" > ncspot.1
 }
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cargo test --release --locked
-#  cargo test --release --features "cover" --locked
+  cargo test --frozen --release
+#  cargo test --frozen --release --features "cover"
 }
 
 package() {
@@ -57,5 +60,6 @@ package() {
   install -Dm 644 "misc/ncspot.desktop" "${pkgdir}/usr/share/applications/ncspot.desktop"
   install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ncspot.svg"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm 644 "ncspot.1" "${pkgdir}/usr/share/man/man1/ncspot.1"
 }
 
