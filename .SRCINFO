@@ -1,7 +1,7 @@
 pkgbase = ptree-bin
 	pkgdesc = Design power tree and estimate consumptions
-	pkgver = 2.1.3
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://smariel.github.io/PTree
 	arch = x86_64
 	license = GPL3
@@ -10,11 +10,11 @@ pkgbase = ptree-bin
 	depends = bash
 	depends = electron11
 	depends = hicolor-icon-theme
-	provides = ptree=2.1.3
+	provides = ptree=2.2.0
 	conflicts = ptree
-	source = ptree-2.1.3.zip::https://github.com/smariel/PTree/releases/download/v2.1.3/PTree-linux.zip
+	source = ptree-2.2.0.zip::https://github.com/smariel/PTree/releases/download/v2.2.0/PTree-linux.zip
 	source = ptree.sh
-	sha256sums = 2c529eb6dc17f967ae90b3680daee269be18a1d8708e18cd1a5ea91c59f161be
-	sha256sums = 82796005983326255500d909e9766008a45792297eabb1eb2448ddda709353f9
+	sha256sums = 4c15d219bd9e2c1a4aaa1da94931d19a133ddfd9d6178e5f21fdea97ab22f54c
+	sha256sums = 24fbd05573ab5f8cc13cc257a238d3c81bcb2a2c49aa8c32027ff40426515442
 
 pkgname = ptree-bin
