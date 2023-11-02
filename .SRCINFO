@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 22 Early-Access Build
-	pkgver = 22b20
+	pkgver = 22b21
 	pkgrel = 1
 	url = https://jdk.java.net/22
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=22
 	provides = java-runtime-headless=22
 	provides = java-runtime-headless-openjdk=22
-	source = https://download.java.net/java/early_access/jdk22/20/GPL/openjdk-22-ea+20_linux-x64_bin.tar.gz
-	sha256sums = 5f1627efa81951307900954bbf7b2e49d8c5303615cf116959c273e9707b0496
+	source = https://download.java.net/java/early_access/jdk22/21/GPL/openjdk-22-ea+21_linux-x64_bin.tar.gz
+	sha256sums = cefe6f9697801dd2a7abebdbd5b7bd36ad489794589e838562da46bde434ae5e
 
 pkgname = java-openjdk-ea-bin
