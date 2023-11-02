@@ -1,23 +1,24 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=caps-lv2
-pkgname="${_pkgname}-git"
-pkgver=0.9.24.r153.072e2fe
+pkgname=$_pkgname-git
+pkgver=0.9.26.r178.5d52a0c
 pkgrel=1
-pkgdesc="The LADSPA C* Audio Plugin Suite (LV2 port)"
-arch=('i686' 'x86_64')
-url="http://quitte.de/dsp/caps.html"
-license=('GPL3')
-depends=('lv2')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-groups=('lv2-plugins')
-makedepends=('python')
-source=("${_pkgname}::git+https://github.com/moddevices/caps-lv2.git")
+pkgdesc='The LADSPA C* Audio Plugin Suite (LV2 port)'
+arch=(i686 x86_64)
+url='http://quitte.de/dsp/caps.html'
+license=(GPL3)
+depends=(gcc-libs glibc)
+makedepends=(lv2 python)
+optdepends=('lv2-host: for loading the LV2 format plugins')
+groups=(lv2-plugins)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$_pkgname::git+https://github.com/moddevices/caps-lv2.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
 
   cat > version.c <<__EOF__
 #include "version.h"
@@ -31,22 +32,19 @@ __EOF__
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-
+  cd $_pkgname
   # Replace deprecated 'pow10f' function
   sed -i -e 's/pow10f/exp10f/g' dsp/v4f_IIR2.h
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-
+  cd $_pkgname
   python configure.py
   make PREFIX=/usr
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
+  cd $_pkgname
   unset LV2_PATH
   make PREFIX=/usr DESTDIR="$pkgdir" install
   #rm -rf "$pkgdir"/usr/lib/lv2/mod-caps-*.lv2/modgui*

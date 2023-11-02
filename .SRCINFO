@@ -1,18 +1,20 @@
 pkgbase = caps-lv2-git
 	pkgdesc = The LADSPA C* Audio Plugin Suite (LV2 port)
-	pkgver = 0.9.24.r153.072e2fe
+	pkgver = 0.9.26.r178.5d52a0c
 	pkgrel = 1
 	url = http://quitte.de/dsp/caps.html
 	arch = i686
 	arch = x86_64
 	groups = lv2-plugins
 	license = GPL3
+	makedepends = lv2
 	makedepends = python
-	depends = lv2
+	depends = gcc-libs
+	depends = glibc
+	optdepends = lv2-host: for loading the LV2 format plugins
 	provides = caps-lv2
 	conflicts = caps-lv2
 	source = caps-lv2::git+https://github.com/moddevices/caps-lv2.git
 	md5sums = SKIP
 
 pkgname = caps-lv2-git
-
