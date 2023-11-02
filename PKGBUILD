@@ -6,8 +6,8 @@
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
-pkgver=4.0.3.r160.g8169d524e
-pkgrel=3
+pkgver=4.0.3.r340.g7d1a32c47
+pkgrel=4
 arch=(x86_64 armv7h)
 url="https://www.transmissionbt.com/"
 license=(GPL)
@@ -53,6 +53,7 @@ prepare() {
 		third-party/googletest \
 		third-party/libutp \
 		third-party/rapidjson \
+		third-party/rpavlik-cmake-modules \
 		third-party/small \
 		third-party/utfcpp \
 		third-party/wide-integer
