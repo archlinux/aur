@@ -2,7 +2,7 @@ pkgdesc="Intel® RealSense™ Cross Platform"
 url="https://www.intelrealsense.com/"
 
 pkgname=librealsense2
-pkgver='2.54.1'
+pkgver='2.54.2'
 pkgrel=1
 arch=('x86_64')
 license=("Apache-2.0")
@@ -25,7 +25,7 @@ source=(
     "g++13.patch"
     "realsense-viewer.desktop"
 )
-sha256sums=('0aac1c8ebaf87a989507ba1dd374ab7cdecedb792a692b5c3aadb1b7e61b585e'
+sha256sums=('e3a767337ff40ae41000049a490ab84bd70b00cbfef65e8cdbadf17fd2e1e5a8'
             'c316ff9d5ecdcf22a363c5f8f0628ccd18d9243b31b6a8d7d4e023eaf29467de'
             '59281f91e7d471a7dde1cf7207eddd8624e05218cc4301ee52e4c453a0c8ab21')
 conflicts=('librealsense')
@@ -79,6 +79,8 @@ package() {
     cd ${srcdir}/${_dir}
     install -Dm644 "config/99-realsense-libusb.rules" "${pkgdir}/usr/lib/udev/rules.d/99-realsense-libusb.rules"
     install -Dm644 "config/99-realsense-d4xx-mipi-dfu.rules" "${pkgdir}/usr/lib/udev/rules.d/99-realsense-d4xx-mipi-dfu.rules"
+    install -Dm644 "config/99-realsense-libusb.rules" "${pkgdir}/etc/udev/rules.d/99-realsense-libusb.rules"
+    install -Dm644 "config/99-realsense-d4xx-mipi-dfu.rules" "${pkgdir}/etc/udev/rules.d/99-realsense-d4xx-mipi-dfu.rules"
 
     # Install assets
     cd ${srcdir}/${_dir}
@@ -86,4 +88,9 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cd ${srcdir}
     install -Dm644 realsense-viewer.desktop "${pkgdir}/usr/share/applications/realsense-viewer.desktop"
+}
+
+post_install() {
+    # Reload udev rules
+    udevadm control --reload-rules && udevadm trigger
 }
