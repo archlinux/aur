@@ -1,0 +1,19 @@
+pkgbase = python-optlang
+	pkgdesc = Python package implementing a modeling language for solving mathematical optimization problems.
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://optlang.readthedocs.io
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python-six>=1.9.0
+	depends = python-sympy>=1.0.0
+	depends = python-swiglpk>=1.4.3
+	optdepends = cplex: for CPLEX support (LP, MILP, QP, MIQP)
+	optdepends = gurobi: for Gurobi support (LP, MILP, QP, MIQP)
+	optdepends = python-osqp: for OSPQ support (LP, QP)
+	optdepends = scip: for SCIP support (LP)
+	source = https://files.pythonhosted.org/packages/source/o/optlang/optlang-1.8.1.tar.gz
+	sha256sums = 9eb586b69fd88d558a8a0a0eac33c3067c59b5de510fddc36c0aa874eb74bfec
+
+pkgname = python-optlang
