@@ -1,0 +1,14 @@
+pkgbase = sokol-git
+	pkgdesc = Multiple purpose header libraries for C and C++ (git version)
+	pkgver = r2649.bd7fa93
+	pkgrel = 1
+	url = https://github.com/floooh/sokol/
+	arch = any
+	license = custom: zlib
+	makedepends = git
+	provides = sokol
+	conflicts = sokol
+	source = git+https://github.com/floooh/sokol.git
+	sha256sums = SKIP
+
+pkgname = sokol-git
