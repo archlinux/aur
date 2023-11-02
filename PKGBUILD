@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CytoPipeline
-_pkgver=1.0.2
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('03008ccf1f86b39cc48a5f9fa82ae3a2')
-sha256sums=('145a7860d3d62ba50957fa3b05a1aa3f3b79ac0d2808369e2833e1833476e176')
+md5sums=('a4ed3b88553c7115d7dce368a0fda5a5')
+sha256sums=('80c2f67b5629c4f8049346f324308d20707e65f5db189a73d3a5e9c4e8a35692')
 
 build() {
   mkdir -p build

@@ -1,6 +1,6 @@
 pkgbase = r-cytopipeline
 	pkgdesc = Automation and visualization of flow cytometry data analysis pipelines
-	pkgver = 1.0.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CytoPipeline
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = r-cytopipeline
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoPipeline_1.0.2.tar.gz
-	md5sums = 03008ccf1f86b39cc48a5f9fa82ae3a2
-	sha256sums = 145a7860d3d62ba50957fa3b05a1aa3f3b79ac0d2808369e2833e1833476e176
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoPipeline_1.2.0.tar.gz
+	md5sums = a4ed3b88553c7115d7dce368a0fda5a5
+	sha256sums = 80c2f67b5629c4f8049346f324308d20707e65f5db189a73d3a5e9c4e8a35692
 
 pkgname = r-cytopipeline
