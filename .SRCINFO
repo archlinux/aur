@@ -1,7 +1,7 @@
 pkgbase = r-warp
 	pkgdesc = Group Dates
-	pkgver = 0.2.0
-	pkgrel = 4
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=warp
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = r-warp
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/warp_0.2.0.tar.gz
-	sha256sums = 0e0de344f3d711d58e6be2ab47ade1db3b703bf3ca85080b1124c0c25a630a68
+	source = https://cran.r-project.org/src/contrib/warp_0.2.1.tar.gz
+	sha256sums = 020ad590de099661aa62b4d5e51499a2ac91c41c61db2dbc71c3f4a3df2c46be
 
 pkgname = r-warp
