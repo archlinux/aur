@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=linux-assistant-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A daily linux helper with powerful integrated search, routines checks and administrative tasks. The Project is built with flutter and python."
 arch=('x86_64')
@@ -9,10 +9,28 @@ _githuburl="https://github.com/Jean28518/linux-assistant"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('gtk3' 'glib2' 'at-spi2-core' 'harfbuzz' 'python-gobject' 'glibc' 'hicolor-icon-theme' 'python' 'gdk-pixbuf2' \
-    'libkeybinder3' 'cairo' 'pango' 'libepoxy' 'gcc-libs' 'gobject-introspection-runtime' 'fontconfig')
+depends=(
+    'gtk3'
+    'at-spi2-core'
+    'harfbuzz'
+    'python-gobject'
+    'hicolor-icon-theme'
+    'python'
+    'gdk-pixbuf2'
+    'libkeybinder3'
+    'cairo'
+    'pango'
+    'libepoxy'
+    'gobject-introspection-runtime'
+    'fontconfig'
+    'libgpg-error'
+    'util-linux-libs'
+    'lz4'
+    'libgcrypt'
+    'xz'
+)
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}.deb")
-sha256sums=('f19c8a6b0ecf24f41a512a34eec77b44115347da05065b1d61b3e79f9bad535c')
+sha256sums=('16a70b5a677e4740a90600194c0941c7e6669b0b1779ad7d602553efb2dd36a9')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
 }
