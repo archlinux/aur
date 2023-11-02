@@ -1,7 +1,7 @@
 # Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
 pkgname=irony-mod-manager-bin
 pkgver=1.25.136
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod manager and launcher for Paradox Interactive games"
 arch=('x86_64')
 url="https://github.com/bcssov/IronyModManager"
@@ -39,5 +39,6 @@ package() {
     install -m644 -D "$srcdir/$pkgname.README.md" "$pkgdir/opt/$pkgname/README.md"
     install -m644 -D "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -m755 -D "$srcdir/$pkgname-$pkgver/IronyModManager" "$pkgdir/opt/$pkgname/IronyModManager"
+    install -m755 -D "$srcdir/$pkgname-$pkgver/IronyModManager.GameHandler" "$pkgdir/opt/$pkgname/IronyModManager.GameHandler"
     install -m755 -D "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }

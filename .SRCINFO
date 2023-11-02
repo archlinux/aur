@@ -1,7 +1,7 @@
 pkgbase = irony-mod-manager-bin
 	pkgdesc = A mod manager and launcher for Paradox Interactive games
 	pkgver = 1.25.136
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcssov/IronyModManager
 	arch = x86_64
 	license = MIT
