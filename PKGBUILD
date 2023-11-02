@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=SummarizedExperiment
-_bcver=1.30.2
+_bcver=1.32.0
 
 pkgname=r-${_bcname,,}
 pkgdesc="SummarizedExperiment container"
@@ -18,12 +18,12 @@ depends=(
     "r>=4.0.0"
     "r-biobase"
     "r-biocgenerics>=0.37.0"
-    "r-delayedarray>=0.26.3"
+    "r-delayedarray>=0.27.1"
     "r-genomeinfodb>=1.13.1"
     "r-genomicranges>=1.41.5"
     "r-iranges>=2.23.9"
     "r-matrixgenerics>=1.1.3"
-    "r-s4arrays>=1.0.1"
+    "r-s4arrays>=1.1.1"
     "r-s4vectors>=0.33.7"
 )
 optdepends=(
@@ -45,7 +45,7 @@ optdepends=(
 )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("f08b14854a6ad52c6e3e805b2e42d10c2f029af86f17affed97e664172c60b377efedfcf8f05d4172a05d7de6b2178e15f00344be10e5ecb0fad7677da212d11")
+b2sums=("47132eb8d9fb41493519528927aff8324e2e3a858747765396cdb4f4900ff4caeb67e51781cfdf1d6fc97e580b8b13289a869c1f115ddec69b7067fdbacebce0")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
