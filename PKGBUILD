@@ -1,4 +1,4 @@
-# Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
+# Maintainer: ABOhiccups <info@abohiccups.com>
 pkgname=project-plus-netplay
 pkgver='v2.4.2'
 _tagname='2.4.2'
