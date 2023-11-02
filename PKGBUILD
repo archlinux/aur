@@ -1,17 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files."
 arch=('x86_64')
 url="https://github.com/sprout2000/elephicon"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron27' 'hicolor-icon-theme')
-makedepends=('gendesk' 'npm>=9' 'nodejs>=18.18.7')
-source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
-    "${pkgname}.sh")
-sha256sums=('eca4d09d2c09f63762f52f2a7ea534c479bd01eb5dff7fbd13c9b40b5ac0ff1f'
+depends=(
+    'bash'
+    'electron27'
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'gendesk'
+    'npm>=9'
+    'nodejs>=18.18.7'
+)
+source=(
+    "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
+    "${pkgname}.sh"
+)
+sha256sums=('10e7403279b2832b2038502ebd5c9874887aaaa30e9660f7a81e78092ff3acbe'
             'f1778c05339e7117bf6d9e7668885896f23f2e98f9c47b8b15c2ad2d3084ae20')
 build() {
     gendesk -q -f -n --categories "Graphics;Utility" --name "${pkgname}" --exec "${pkgname}"
