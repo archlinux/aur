@@ -1,29 +1,32 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-rchitect
-_pkgname=${pkgname#python-}
-pkgver=0.3.40
+_name=${pkgname#python-}
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Minimal R API for Python"
 url="https://github.com/randy3k/$_pkgname"
 arch=('any')
 license=('MIT')
-depends=('r>3.4.0' 'python-cffi>=1.10.0')
-makedepends=('python-setuptools' 'python-pip' 'python-six>=1.9.0')
-checkdepends=('python-pytest')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9eb183854ef1880e45ccaa1b913f482e2d0102a42dccb53931c96e6c6dedb921')
+depends=('r>3.4.0' 'python-cffi>=1.10.0' 'python-six>=1.9.0')
+makedepends=(python-build python-installer python-wheel)
+checkdepends=(python-pytest)
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('8762b47d8636774582c906891e5b0ec66ca4d48327fb7abf7db7d85d2c137df5')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_name-$pkgver"
+#  python -m build --wheel --no-isolation
   python setup.py build
 }
 
-check_disabled() { # tests/test_reticulate.py unnamed error
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py test
+check_disabled() { # PytestConfigWarning: No files were found in testpaths
+  cd "$srcdir/$_name-$pkgver"
+  pytest
+  # PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_name-$pkgver"
+#  python -m installer --destdir="$pkgdir" dist/*.whl
   python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
 }
