@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BUSpaRse
-_pkgver=1.14.1
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="kallisto | bustools R utilities"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -52,8 +52,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d08b55495020361901d1373d4df4339c')
-sha256sums=('ee8174afe13d61a5755568cd3f5e354450ac109e321bb5040db8cc35dcfaad8a')
+md5sums=('7d2decd570fd518ad9a06c10a5ecffb3')
+sha256sums=('e8c249061153745821dc85e2a2c3b7971146a870cbc68f80ae451d56de02893b')
 
 build() {
   mkdir -p build
