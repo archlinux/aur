@@ -1,6 +1,6 @@
 pkgbase = librist-git
 	pkgdesc = A library that can be used to add the RIST protocol to applications (git version)
-	pkgver = 0.2.9.r0.g8fc343a
+	pkgver = 0.2.10.r0.g1e80550
 	pkgrel = 1
 	url = https://code.videolan.org/rist/librist/
 	arch = x86_64
