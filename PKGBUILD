@@ -1,7 +1,8 @@
-# Maintainer: e-dong <eric2043@gmail.com>
+# Maintainer: eric-dev <eric2043@gmail.com>
+# Maintainer: Proryanator <proryanator@gmail.com>
 pkgname=encoder-benchmark
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to benchmark your hardware's real-time video encoding capabilities."
 arch=("x86_64")
 url="https://github.com/Proryanator/encoder-benchmark"
