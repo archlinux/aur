@@ -1,7 +1,7 @@
 pkgbase = shm-modbus
 	pkgdesc = A collection of applications to simulate a shared memory based Modbus client
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NikolasK-source/SHM_Modbus
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = shm-modbus
 	depends = stdin-to-modbus-shm
 	depends = write-shm
 	depends = shm-modbus-signal-gen
+	depends = wago-modbus-coupler-shm
 	source = git+https://github.com/NikolasK-source/SHM_Modbus.git#tag=v1.0.3
 	source = https://gist.githubusercontent.com/NikolasK-source/25f30f740396723501a51a4bc075ced7/raw/bcd66db1a4f65fd3657fa12fffda2ee8b3de19c9/shm-modbus
 	sha256sums = SKIP
