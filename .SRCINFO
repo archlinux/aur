@@ -1,6 +1,6 @@
 pkgbase = fontbakery
 	pkgdesc = A command-line tool for checking the quality of font projects
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/googlefonts/fontbakery
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = fontbakery
 	depends = python-ufo2ft
 	depends = python-unicodedata2
 	depends = python-vharfbuzz
-	source = https://files.pythonhosted.org/packages/source/f/fontbakery/fontbakery-0.10.2.tar.gz
-	sha256sums = 1e4276b1915a5466e7eeaec4442e1d35a3930c1ac33b1eb6760e868076af776a
+	source = https://files.pythonhosted.org/packages/source/f/fontbakery/fontbakery-0.10.3.tar.gz
+	sha256sums = 7b3ab4ab970eb7b31d97d1816f1a48d5670b929e467568101fedcd6df8b6ed89
 
 pkgname = fontbakery
