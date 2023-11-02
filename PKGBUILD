@@ -1,15 +1,15 @@
 # Contributor: Médéric Boquien <mboquien@free.fr>
 # Contributor: Roelof Rietbroek <roelof@wobbly.earth>
 pkgname=sofa-shared
-pkgver=20180130
+pkgver=20231011
 pkgrel=1
 pkgdesc="Set of algorithms and procedures used in fundamental astronomy (shared C-library version)"
 url="http://www.iausofa.org"
 arch=('x86_64' 'i686')
 license=('SOFA license')
-source=("http://www.iausofa.org/2018_0130_C/sofa_c-${pkgver}.tar.gz" "makefile.patch")
-md5sums=('9d6903c7690e84a788b622fba6f10146'
-         'fe06c75a994a6dd11ef082361b4bb968')
+source=("http://www.iausofa.org/2023_1011_C/sofa_c-${pkgver}.tar.gz" "makefile.patch")
+sha256sums=('d9c10833cae8b4d9361a0ffda31ec361fd1262362025bec4d4e51a880150ace2'
+            '267ffd5eb65e8cbb2e5122f1705fd627c20570b5ac10a5e7049a4b9dfcc29128')
 
 prepare() {
     cd ${srcdir}

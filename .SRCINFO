@@ -1,15 +1,14 @@
 pkgbase = sofa-shared
 	pkgdesc = Set of algorithms and procedures used in fundamental astronomy (shared C-library version)
-	pkgver = 20180130
+	pkgver = 20231011
 	pkgrel = 1
 	url = http://www.iausofa.org
 	arch = x86_64
 	arch = i686
 	license = SOFA license
-	source = http://www.iausofa.org/2018_0130_C/sofa_c-20180130.tar.gz
+	source = http://www.iausofa.org/2023_1011_C/sofa_c-20231011.tar.gz
 	source = makefile.patch
-	md5sums = 9d6903c7690e84a788b622fba6f10146
-	md5sums = fe06c75a994a6dd11ef082361b4bb968
+	sha256sums = d9c10833cae8b4d9361a0ffda31ec361fd1262362025bec4d4e51a880150ace2
+	sha256sums = 267ffd5eb65e8cbb2e5122f1705fd627c20570b5ac10a5e7049a4b9dfcc29128
 
 pkgname = sofa-shared
-
