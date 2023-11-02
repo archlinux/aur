@@ -1,14 +1,13 @@
 pkgbase = upcmd
-	pkgdesc = Ultimate Plumber is a tool for writing Linux pipes with instant live preview
+	pkgdesc = Ultimate Provisioner: configuration management, build and automation tool
 	pkgver = 20220112
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/upcmd/up
 	arch = x86_64
-	license = Apache
+	license = MPL2
 	makedepends = go
 	depends = glibc
-	provides = upcmd
-	source = up-rolling-20220112.tar.gz::https://github.com/upcmd/up/archive/refs/tags/rolling-20220112.tar.gz
+	source = upcmd-20220112.tar.gz::https://github.com/upcmd/up/archive/refs/tags/rolling-20220112.tar.gz
 	sha256sums = 109d24eabb444ba738ac102b4af65e5900ef5635044c5c7fe15bba801503f70e
 
 pkgname = upcmd
