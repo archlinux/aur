@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BgeeCall
-_pkgver=1.17.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.17.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Automatic RNA-Seq present/absent gene expression calls generation'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('054f6e89e8158d30d07f2cda3a7bbe3ef3c66f3641ec493ae0b27989cef3fafc')
+sha256sums=('d3e3f426c28e2e03dff284bb974b6549a67fa26eff01ca2354d574ecfcbcfec6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

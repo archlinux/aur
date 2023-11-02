@@ -1,6 +1,6 @@
 pkgbase = r-bgeecall
 	pkgdesc = Automatic RNA-Seq present/absent gene expression calls generation
-	pkgver = 1.17.0
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BgeeCall
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-bgeecall
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BgeeCall_1.17.0.tar.gz
-	sha256sums = 054f6e89e8158d30d07f2cda3a7bbe3ef3c66f3641ec493ae0b27989cef3fafc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BgeeCall_1.18.1.tar.gz
+	sha256sums = d3e3f426c28e2e03dff284bb974b6549a67fa26eff01ca2354d574ecfcbcfec6
 
 pkgname = r-bgeecall
