@@ -3,7 +3,7 @@
 _pkgname=crossover-overlay
 _pkgname2=crossoverlay
 pkgname=$_pkgname-bin
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="🎯 A Crosshair Overlay for any screen (binary release, system Electron)"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ provides=($_pkgname)
 _desktop=$_pkgname2.desktop
 source_x86_64=("$url/releases/download/v$pkgver/CrossOver-$pkgver-x86_64.rpm")
 source_i686=("$url/releases/download/v$pkgver/CrossOver-$pkgver-i686.rpm ")
-sha256sums_x86_64=('cec1d338cd7f1dc48064244023cfe9cc3a1b48a0f48dd759f5febb35f60c5be3')
+sha256sums_x86_64=('d83a2d7ec5bcdf253ab22210159e2bd353ef7ba9e03efa6e4b841b5facb2b933')
 sha256sums_i686=('SKIP')
 
 prepare() {
