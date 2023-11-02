@@ -10,8 +10,8 @@ pkgbase = qdirstat-bin
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
+	provides = qdirstat
 	conflicts = qdirstat
-	conflicts = qdirstat-git
 	source = https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/qdirstat-bin/qdirstat-bin-1.8.1-1-x86_64.tar.gz
 	sha512sums = 189dd4c9690af4c67a3a0f89db6852188d9df28155cfb3c35d3545f8f8f2cad0cbcff35b0126aebabfedb95632376eabb7b68b7ac6139087d39cee11363f43e8
 
