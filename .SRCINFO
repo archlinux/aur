@@ -1,12 +1,13 @@
 pkgbase = luaradio
 	pkgdesc = A lightweight, embeddable software-defined radio framework built on LuaJIT
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://luaradio.io
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
+	makedepends = git
 	depends = luajit
 	depends = liquid-dsp
 	depends = libvolk
