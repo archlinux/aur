@@ -5,7 +5,7 @@
 
 _pkgbase=yaml-cpp
 pkgname=lib32-yaml-cpp
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec (32-bits)"
 url="https://github.com/jbeder/yaml-cpp"
@@ -13,18 +13,11 @@ arch=('x86_64')
 license=('MIT')
 depends=('lib32-gcc-libs' 'lib32-glibc')
 makedepends=('cmake' 'gcc-multilib' 'ninja')
-source=("https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-${pkgver}.tar.gz"
-        https://patch-diff.githubusercontent.com/raw/jbeder/yaml-cpp/pull/1037.patch)
-sha512sums=('2de0f0ec8f003cd3c498d571cda7a796bf220517bad2dc02cba70c522dddde398f33cf1ad20da251adaacb2a07b77844111f297e99d45a7c46ebc01706bbafb5'
-            'c20d5e9393496052c3326d78555345b83a2345831d4cbfec8cf50f9576f2731ddc456148815b23dba3765b61a1a69b0c05c9618f91751dad124dbe8f7ca19609')
-
-prepare() {
-  cd "${_pkgbase}-${_pkgbase}-${pkgver}"
-  patch -Np1 -i "${srcdir}"/1037.patch
-}
+source=("https://github.com/jbeder/yaml-cpp/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('aae9d618f906117d620d63173e95572c738db518f4ff1901a06de2117d8deeb8045f554102ca0ba4735ac0c4d060153a938ef78da3e0da3406d27b8298e5f38e')
 
 build() {
-  cd "${_pkgbase}-${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
 
   export CFLAGS="-m32 ${CFLAGS}"
   export CXXFLAGS="-m32 ${CXXFLAGS}"
@@ -33,6 +26,7 @@ build() {
 
   cmake -GNinja \
         -Bbuild \
+        -DYAML_CPP_BUILD_TESTS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib32 \
         -DBUILD_SHARED_LIBS=ON \
@@ -42,15 +36,14 @@ build() {
 }
 
 check() {
-  cd "${_pkgbase}-${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   ninja -C build test
   build/test/yaml-cpp-tests
 }
 
 package() {
-  cd "${_pkgbase}-${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   DESTDIR="$pkgdir" ninja -C build install
-  mv "${pkgdir}"/usr/share/cmake/yaml-cpp "${pkgdir}"/usr/lib32/cmake/yaml-cpp
   rm -rf "${pkgdir}"/usr/{include,share}
   rm -rf "${pkgdir}"/usr/{lib32,lib32/pkgconfig}/*{gtest,gmock}*
   rm -rf "${pkgdir}"/usr/lib32/cmake/GTest
