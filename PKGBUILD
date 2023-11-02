@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDbData
-_bcver=1.2.10
+_bcver=1.2.11
 pkgname=r-${_bcname,,}
 pkgdesc="Species and taxonomy ID look up tables used by GenomeInfoDb"
 url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.html"
@@ -17,7 +17,7 @@ depends=(
 )
 
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("6353865b5c09d72f27069fdfce340f9913dbb2b00801f577789efa45a745ee02064ed952bb838bb72034dbbee3cc5340f99e7eed0323880c1a2b7b3ea0a28ca2")
+b2sums=("d9235a5eb959bfbb8a22f68352b58f5d69def64d19606f88871ae398dbc7bebeda7e543c557c1eb48dc90c61a18eb3e503621943b119b2291b220d7e97a3f865")
 
 build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
