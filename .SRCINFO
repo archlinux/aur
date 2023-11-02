@@ -11,7 +11,6 @@ pkgbase = pot-translation
 	license = GPL3
 	makedepends = nodejs
 	makedepends = pnpm
-	makedepends = fnm
 	makedepends = rust
 	makedepends = dbus
 	depends = webkit2gtk
