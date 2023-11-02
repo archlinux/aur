@@ -9,7 +9,7 @@ pkgbase = ezytdl-bin
 	depends = bash
 	depends = electron25
 	depends = ffmpeg
-	depends = libdbusmenu-glib3
+	depends = libdbusmenu-glib
 	depends = libxext
 	depends = gdk-pixbuf2
 	provides = ezytdl=2.4.2

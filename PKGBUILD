@@ -12,7 +12,7 @@ depends=(
     'bash'
     'electron25'
     'ffmpeg'
-    'libdbusmenu-glib'3
+    'libdbusmenu-glib'
     'libxext'
     'gdk-pixbuf2'
 )
