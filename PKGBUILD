@@ -1,33 +1,32 @@
 # Maintainer: Martin Schulze <spam.martin.schulze at gmx dot de>
 
 pkgname=livekeys
-pkgver=1.6.1
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Computer vision coding environment that displays results in real time"
 arch=('x86_64')
 url="https://github.com/live-keys/${pkgname}"
 license=('LGPL3')
 depends=("opencv" "qt5-quickcontrols" "qt5-websockets")
-makedepends=("qt5-base" "python-bcolz")
+makedepends=("qt5-base" "python-pipx")
 source=("livekeys-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-	"https://github.com/livecv/live-pm/archive/master.zip"
-        "livekeys.patch")
-sha256sums=('dce9e6b78a068b57ca8dd2a565c21c378effa710634af6e74c5dc0bb94c57f84'
-            'bcbd550e744ee7a77dadbae265a66c8646108062cdd79836f1eb4a3b1d56d2cd'
-            'c9bd85f5cde78a312e44ea70ce3ca124bcd50e5eded978071038691169f617c3')
+	"https://github.com/livecv/live-pm/archive/master.zip")
+sha256sums=('6b4869697dfbd416cfac352f273fd8a0c18d00b8afa8904e5b44451b617d5f43'
+            'f8b9aeda707e80bc81d0c2aad0a37eb85bb886ba5a59d68daac98310a8ccf772')
 provides=('livekeys')
 
 export_LK_BUILDDIR() {
   export  LK_BUILDDIR="${srcdir}/livekeys-${pkgver}/build"
+  VENV_PATH=${LK_BUILDDIR}/.venv
 }
 
 prepare () {
   export_LK_BUILDDIR
   mkdir -p "${LK_BUILDDIR}"
   cp -r "${srcdir}/live-pm-master/"* "${LK_BUILDDIR}" 
-  pip3 install -r "${LK_BUILDDIR}/requirements.txt" --user
-  pushd livekeys-${pkgver}
-  patch -p0 < ../livekeys.patch
+  pushd "${LK_BUILDDIR}"
+  python -m venv "$VENV_PATH"
+  "$VENV_PATH/bin/pip" install -r requirements.txt
   popd
   # stitch together a faked qt build folder
   mkdir -p fake-qt
@@ -48,8 +47,8 @@ build() {
   cd "${LK_BUILDDIR}"
   export QTDIR="${srcdir}/fake-qt"
   export OPENCV_DIR=/usr/lib
-  python3 livepm/main.py build .. gcc_64
-  python3 livepm/main.py deploy .. gcc_64
+  "$VENV_PATH/bin/python3" livepm/main.py build .. gcc_64
+  "$VENV_PATH/bin/python3" livepm/main.py deploy .. gcc_64
 }
 
 package() {
