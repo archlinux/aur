@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomicAlignments
-_bcver=1.36.0
+_bcver=1.38.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -40,7 +40,7 @@ optdepends=(
     "r-txdb.hsapiens.ucsc.hg19.knowngene"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("a6ba648529b8ea336dc65f83ad104b80a5b06495681b531ce02db45532a172feb87705d2299f61c47b390375e3ab40455c22792f93bc9c7a45d4a526cbbf5722")
+b2sums=('7af1679d6a8289ae3b5224d2f8b6e780ea33c4762815ba19d08d95dec789df856db227f869ec6172230becd11bcc4db96dbb048c20c4bc81bd9fb34dae151f70')
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
