@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c0f74eb..119fd41 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,12 +61,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+ add_subdirectory(src)
+ add_subdirectory(tailwrap)
+ 
+-if(NOT KTAILCTL_FLATPAK_BUILD)
+-    set(JSON_BuildTests OFF CACHE INTERNAL "")
+-    add_subdirectory(deps/json)
+-    add_subdirectory(deps/kirigami-addons)
+-endif()
+-
+ execute_process(
+     COMMAND ${GIT_EXECUTABLE} describe --tags --dirty --match "v*"
+     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 502f1a0..07adbd6 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -4,9 +4,7 @@
+ include(CheckIPOSupported)
+ check_ipo_supported(RESULT ipo_supported OUTPUT ipo_output)
+ 
+-if(KTAILCTL_FLATPAK_BUILD)
+-    find_package(nlohmann_json REQUIRED)
+-endif()
++find_package(nlohmann_json REQUIRED)
+ 
+ add_executable(ktailctl
+     about.cpp

@@ -1,8 +1,8 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
 pkgdesc='GUI to monitor and manage Tailscale'
@@ -18,6 +18,7 @@ depends=(
   kirigami-addons5
   kirigami2
   knotifications5
+  nlohmann-json
   qt5-base
   qt5-declarative
   qt5-quickcontrols2
@@ -27,13 +28,13 @@ depends=(
 makedepends=(cmake extra-cmake-modules)
 
 # git tag is used by the cmake script to determine app version
-source=(git+$url.git#tag=v$pkgver 0001-force-system-kirigami-addons.patch)
+source=(git+$url.git#tag=v$pkgver 0001-use-system-packages.patch)
 sha256sums=('SKIP'
-            'b56dca56831ce5263d9177778fd2f2efb52d44c40ce78ef91c6975d7678374ac')
+            '4a81c8d6a4ffb52f592e942e45307facad6f0bb82da65998942a2578792b043c')
 
 prepare() {
   cd KTailctl
-  patch -p1 <"$srcdir"/0001-force-system-kirigami-addons.patch
+  patch -p1 <"$srcdir"/0001-use-system-packages.patch
 }
 
 build() {
