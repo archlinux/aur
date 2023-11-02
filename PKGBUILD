@@ -4,7 +4,7 @@
 
 
 _bcname=Rhtslib
-_bcver=2.2.0
+_bcver=2.4.0
 pkgname=r-${_bcname,,}
 pkgdesc="HTSlib high-throughput sequencing library as an R package"
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -25,7 +25,7 @@ optdepends=(
 makedepends=()
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("17c321829c72d7438c20917d8416364b6763de67b92b02f8f34b5b3b02c8266b08bbde492370636dcfe5476bc3b296a59ce42b45c242f81e00c21285aafc516a")
+b2sums=('3ac23e12f2f5a59db9b15f7f1789c5b94683b92028a11c35f0215c7797ca0058e252cd3869074a908944a2e853e311f771cbbccb3d6fad5947fbc81aa72881b5')
 
 options=("!lto" "staticlibs")
 
