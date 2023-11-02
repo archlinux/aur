@@ -1,4 +1,4 @@
-# Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
+# Maintainer: ABOhiccups <info@abohiccups.com>
 pkgname=official-gamecube-controller-adapter-rules
 pkgver=1.0
 pkgrel=1
