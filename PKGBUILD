@@ -1,7 +1,7 @@
 # Maintainer: Lauri Gustafsson <lauri at gustafla dot space>
 pkgname=glsl_analyzer-bin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server for the GLSL shading language'
 url='https://github.com/nolanderc/glsl_analyzer'
 source_x86_64=("glsl_analyzer-${pkgver}-x86_64.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v$pkgver/x86_64-linux-musl.zip")
