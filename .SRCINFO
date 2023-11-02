@@ -1,6 +1,6 @@
 pkgbase = r-ewce
 	pkgdesc = Expression Weighted Celltype Enrichment
-	pkgver = 1.10.0
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EWCE
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-ewce
 	optdepends = r-scales
 	optdepends = r-sctransform
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EWCE_1.10.0.tar.gz
-	sha256sums = cff08d7e4d36769387ed9a12c78e9df1864691aa734b43a2c0cec25db942d289
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EWCE_1.10.2.tar.gz
+	sha256sums = c75a4f86ac89a8861748ece3fa46c412d436518ad961cfa84cbc45545cc2d53e
 
 pkgname = r-ewce
