@@ -1,0 +1,20 @@
+[Unit]
+Description=Wyoming Server for OpenWakeWord
+Wants=network.target
+
+[Service]
+Restart=on-failure
+User=wyoming-openwakeword
+Group=wyoming-openwakeword
+DynamicUser=true
+
+EnvironmentFile=/etc/conf.d/wyoming-openwakeword
+ExecStart=python3 -m wyoming_openwakeword \
+    --preload-model $MODEL \
+    --uri $URI \
+    --threshold $THRESHOLD \
+    --trigger-level $TRIGGER_LEVEL
+
+[Install]
+WantedBy=multi-user.target
+
