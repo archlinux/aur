@@ -1,6 +1,6 @@
 pkgbase = python-pycma-git
 	pkgdesc = Python implementation of CMA-ES
-	pkgver = r796.6080396
+	pkgver = r805.c526723
 	pkgrel = 1
 	url = https://github.com/CMA-ES/pycma
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = python-pycma-git
 	makedepends = python-setuptools
 	depends = python-numpy
 	provides = python-pycma
+	conflicts = python-pycma
 	source = git+https://github.com/CMA-ES/pycma.git
 	sha256sums = SKIP
 

@@ -2,10 +2,11 @@
 
 _name='pycma'
 pkgname="python-${_name}-git"
-pkgver=r796.6080396
+pkgver=r805.c526723
 pkgrel=1
 pkgdesc="Python implementation of CMA-ES"
 provides=(python-${_name})
+conflicts=(python-${_name})
 url="https://github.com/CMA-ES/${_name}"
 depends=('python-numpy')
 makedepends=('python-setuptools')
