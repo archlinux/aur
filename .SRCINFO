@@ -1,7 +1,7 @@
 pkgbase = r-cogaps
 	pkgdesc = Coordinated Gene Activity in Pattern Sets
-	pkgver = 3.20.0
-	pkgrel = 2
+	pkgver = 3.22.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/CoGAPS
 	arch = x86_64
 	license = BSD
@@ -24,9 +24,13 @@ pkgbase = r-cogaps
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
+	optdepends = r-seuratobject
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoGAPS_3.20.0.tar.gz
-	md5sums = 20b92dc0866594b3800e9cf82a99ee1e
-	sha256sums = e8d8bbb80ad8de332c82e6490efe0dae20cdd3a88cb767cb8da5590d8d276cee
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoGAPS_3.22.0.tar.gz
+	source = fix-openmp.patch
+	md5sums = d4c9ec9b2be6c77fbb47c632b62c84b4
+	md5sums = 7bbd2f800d95d2a4a9c81526b637e772
+	sha256sums = 256548f4a70afa26e70fe1903532bd585a361fdc956da858a1f659ce15a7517f
+	sha256sums = 778bcf1ce83ddee6b253886debe3245a48fcb2f67d09384a2697283b7108756a
 
 pkgname = r-cogaps

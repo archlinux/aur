@@ -1,0 +1,13 @@
+diff --git a/CoGAPS/configure.ac b/CoGAPS/configure.ac
+index dab24f3..93846ea 100755
+--- a/CoGAPS/configure.ac
++++ b/CoGAPS/configure.ac
+@@ -40,7 +40,7 @@ AC_ARG_ENABLE(openmp, [AC_HELP_STRING([--enable-openmp],
+     [compile with openMP support if available])],
+     [use_openmp=$enableval], [use_openmp=yes])
+ 
+-AX_OPENMP
++AC_OPENMP
+ if test "x$use_openmp" != "xno" ; then
+     GAPS_CXX_FLAGS+=" $OPENMP_CXXFLAGS "
+     GAPS_LIBS+=" $OPENMP_CXXFLAGS "

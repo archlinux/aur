@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoGAPS
-_pkgver=3.20.0
+_pkgver=3.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Coordinated Gene Activity in Pattern Sets"
 arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,11 +36,23 @@ optdepends=(
   r-biocstyle
   r-knitr
   r-rmarkdown
+  r-seuratobject
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('20b92dc0866594b3800e9cf82a99ee1e')
-sha256sums=('e8d8bbb80ad8de332c82e6490efe0dae20cdd3a88cb767cb8da5590d8d276cee')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-openmp.patch")
+md5sums=('d4c9ec9b2be6c77fbb47c632b62c84b4'
+         '7bbd2f800d95d2a4a9c81526b637e772')
+sha256sums=('256548f4a70afa26e70fe1903532bd585a361fdc956da858a1f659ce15a7517f'
+            '778bcf1ce83ddee6b253886debe3245a48fcb2f67d09384a2697283b7108756a')
+
+prepare() {
+  # fix OpenMP
+  patch -Np1 -i fix-openmp.patch
+  cd "$_pkgname"
+  autoupdate
+  autoconf
+}
 
 build() {
   mkdir -p build
