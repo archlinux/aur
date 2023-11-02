@@ -1,22 +1,24 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=teracli
-_pkgname=tera-cli
-pkgver=0.2.4
+_pkgname=tera-cli # upstream repo conflicts with a different project on crates.io
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='A utility on top of the tera templating engine, takes json|yaml|toml|ENV as input'
 arch=(x86_64)
 url="https://github.com/chevdor/$_pkgname"
 license=(MIT)
-depends=(gcc-libs)
+depends=(gcc-libs
+         glibc)
 makedepends=(cargo)
-conflicts=($_pkgname) # different project
+conflicts=($_pkgname)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('30e701aff463c582f816bd3c25d7a57751f8e2cac5d91ad04d001e964f2df255')
+sha256sums=('60b9af7175109200155f36a4fa01d63e323e018d1bf7fcc28c92afd3274ab45b')
 
 prepare() {
 	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 

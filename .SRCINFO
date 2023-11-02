@@ -1,14 +1,15 @@
 pkgbase = teracli
 	pkgdesc = A utility on top of the tera templating engine, takes json|yaml|toml|ENV as input
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/chevdor/tera-cli
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
+	depends = glibc
 	conflicts = tera-cli
-	source = https://github.com/chevdor/tera-cli/archive/v0.2.4/tera-cli-0.2.4.tar.gz
-	sha256sums = 30e701aff463c582f816bd3c25d7a57751f8e2cac5d91ad04d001e964f2df255
+	source = https://github.com/chevdor/tera-cli/archive/v0.2.5/tera-cli-0.2.5.tar.gz
+	sha256sums = 60b9af7175109200155f36a4fa01d63e323e018d1bf7fcc28c92afd3274ab45b
 
 pkgname = teracli
