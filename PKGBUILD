@@ -1,38 +1,60 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor:
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=marker-git
-pkgver=2020.04.04.2.r82.g73b4c484
+pkgver=2023.05.02.r11.gae508ff7
 pkgrel=1
-pkgdesc='Markdown editor for linux made with Gtk+-3.0'
+pkgdesc="Markdown editor for linux made with Gtk+-3.0"
 arch=('x86_64')
 url='https://fabiocolacio.github.io/Marker/'
 license=('GPL3')
-depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk')
+depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk-4.1')
 makedepends=('git' 'itstool' 'meson')
+checkdepends=('appstream-glib')
 optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-options=(!buildflags)
-source=("${pkgname%-*}::git+https://github.com/fabiocolacio/Marker.git")
-sha256sums=('SKIP')
+source=('git+https://github.com/fabiocolacio/Marker.git'
+        'git+https://github.com/Mandarancio/scidown.git'
+        'git+https://github.com/Mandarancio/charter.git'
+        'git+https://github.com/codeplea/tinyexpr.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-    cd ${pkgname%-*}
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd Marker
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd ${pkgname%-*}
-    git submodule update --init --recursive
-    ln -sv ../../po/uk.po help/uk/uk.po
+  cd Marker
+  git submodule init
+  git config submodule.src/scidown.url "$srcdir/scidown"
+  git -c protocol.file.allow=always submodule update
+
+  cd src/scidown
+  git submodule init
+  git config submodule.src/charter.url "$srcdir/charter"
+  git -c protocol.file.allow=always submodule update
+
+  cd src/charter
+  git submodule init
+  git config submodule.src/tinyexpr.url "$srcdir/tinyexpr"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    arch-meson ${pkgname%-*} build
-    ninja -C build
+  arch-meson Marker build
+  meson compile -C build
+}
+
+check() {
+  cd Marker
+  appstream-util validate-relax --nonet data/*.appdata.xml
+  desktop-file-validate data/*.desktop
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
