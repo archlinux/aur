@@ -4,7 +4,7 @@
 
 _pkgname=gnome-clocks
 pkgname=${_pkgname}-waked
-pkgver=44.0
+pkgver=45.0
 pkgrel=1
 pkgdesc="Clocks applications for GNOME (version with waked support)"
 url="https://wiki.gnome.org/Apps/Clocks"
@@ -16,10 +16,10 @@ depends=(
   geoclue
   geocode-glib-2
   gnome-desktop-4
-  gsound
   gtk4
   libadwaita
   libgweather-4
+  xdg-desktop-portal
   waked
 )
 makedepends=(
@@ -30,7 +30,7 @@ makedepends=(
   yelp-tools
 )
 groups=(gnome)
-_commit=220460fde76ef779436dacb07bc3b0589995e608  # tags/44.0^0
+_commit=b1c6ff122488fea47833108f7f661481b9b9574a  # tags/45.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-clocks.git#commit=$_commit"
         '0001-invoke-waked-when-an-alarm-changes.patch'
         '0002-Add-argument-to-start-initial-instance-in-the-backgr.patch'
