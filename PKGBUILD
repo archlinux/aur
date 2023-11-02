@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=python-pandas-docs
-pkgver=1.5.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Documentation for Python Pandas module."
 arch=('any')
 url='http://pandas.pydata.org'
 license=('BSD')
 source=("${pkgname}-${pkgver}.zip::http://pandas.pydata.org/pandas-docs/version/${pkgver}/pandas.zip")
-sha256sums=('20237db4bb0c1651376be940ad401cec61eae82d87d8b53f52c6ae48726ea4b7')
+sha256sums=('b1015dcc4ccb1d7870e78f18349d507f239b772ed4b234ce29f08c3c070a4758')
 
 prepare() {
 	rm ${pkgname}-${pkgver}.zip
