@@ -1,0 +1,21 @@
+pkgbase = electron-music
+	pkgdesc = An netease music player,can download muisc.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/zhongfulin123/electron-music
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nodejs>=18.17.5
+	makedepends = pnpm
+	depends = bash
+	depends = electron25
+	depends = hicolor-icon-theme
+	conflicts = electron-music
+	source = electron-music-1.0.zip::https://github.com/zhongfulin123/electron-music/archive/refs/tags/v1.0.zip
+	source = electron-music.sh
+	sha256sums = 36e3d21f9ddf95dfe6fb8d3887dedd973b36ea26f131eb0346170428673a3ee0
+	sha256sums = 32a0143733423a5ece2e4a62dbdffc477c2c0b403c56682f6e698b4681e38f77
+
+pkgname = electron-music
