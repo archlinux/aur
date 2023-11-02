@@ -3,7 +3,7 @@
 _name=kirigami-addons
 pkgname=${_name}5
 pkgver=0.11.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
 arch=(x86_64)
@@ -16,8 +16,8 @@ depends=(gcc-libs
          qt5-quickcontrols2)
 makedepends=(extra-cmake-modules
              ki18n5)
-conflicts=('kirigami-addons<0.12')
-replaces=('kirigami-addons<0.12')
+conflicts=('kirigami-addons<0.11.75')
+replaces=('kirigami-addons<0.11.75')
 source=(https://download.kde.org/stable/$_name/$_name-$pkgver.tar.xz{,.sig})
 sha256sums=('05296c5afbe6804308bf9c0d2751f3b748b40d00fa784946d1dcdf3af4bffbad'
             'SKIP')
