@@ -7,19 +7,25 @@ pkgname=(qoi-headers-git
          qoibench-git
         )
 pkgbase=qoi-git
-pkgver=r276.660839c
+pkgver=r321.9c487be
 pkgrel=1
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
 url='https://qoiformat.org/'
 license=('MIT')
-source=("$source_dir::git+https://github.com/phoboslab/qoi.git")
+source=("$source_dir::git+https://github.com/phoboslab/qoi.git"
+        "010-qoi-use-arch-flags.patch")
 makedepends=('git'
              'gcc-libs'
              'stb'
              'libpng'
              )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '3c5aed75c5560fe782cdb47b713be7292291b37fa311f74a01ec88561f0e321f')
+
+prepare() {
+    patch -d $source_dir -Np1 -i "${srcdir}/010-qoi-use-arch-flags.patch"
+}
 
 pkgver() {
   cd $source_dir
@@ -28,7 +34,7 @@ pkgver() {
 
 build() {
   cd $source_dir
-  make CFLAGS="-I /usr/include/stb/"
+  make CFLAGS+="-I /usr/include/stb/"
 }
 
 package_qoi-headers-git() {
