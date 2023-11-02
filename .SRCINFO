@@ -1,10 +1,14 @@
 pkgbase = rigexpert-tool
 	pkgdesc = Dump, plot, and convert impedance sweeps from a RigExpert antenna analyzer
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vsergeev/rigexpert-tool
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pyserial
 	depends = python-matplotlib
 	depends = python-scipy
@@ -12,4 +16,3 @@ pkgbase = rigexpert-tool
 	md5sums = SKIP
 
 pkgname = rigexpert-tool
-
