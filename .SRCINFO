@@ -1,6 +1,6 @@
 pkgbase = r-benchdamic
 	pkgdesc = Benchmark of differential abundance methods on microbiome data
-	pkgver = 1.6.4
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/benchdamic
 	arch = any
@@ -25,6 +25,7 @@ pkgbase = r-benchdamic
 	depends = r-metagenomeseq
 	depends = r-mglm
 	depends = r-microbiomestat
+	depends = r-mixomics
 	depends = r-noiseq
 	depends = r-phyloseq
 	depends = r-plyr
@@ -42,8 +43,8 @@ pkgbase = r-benchdamic
 	optdepends = r-rmarkdown
 	optdepends = r-spsimseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/benchdamic_1.6.4.tar.gz
-	md5sums = 1502fe32c50b536ed2701bb6237ffabb
-	sha256sums = d162466d66ea84d892baf71be7d90c396a1d9e67ed49b65f7309c831ed45e3b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/benchdamic_1.8.0.tar.gz
+	md5sums = afd1bc2f2ec5961ce39d6e1723ab5624
+	sha256sums = 4a881555f0b77622c3c893ec46fc93062b5720d3e9a2cf28c7b9ded62f9509ff
 
 pkgname = r-benchdamic

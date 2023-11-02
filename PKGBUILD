@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=benchdamic
-_pkgver=1.6.4
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,6 +30,7 @@ depends=(
   r-metagenomeseq
   r-mglm
   r-microbiomestat
+  r-mixomics
   r-noiseq
   r-phyloseq
   r-plyr
@@ -54,8 +55,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1502fe32c50b536ed2701bb6237ffabb')
-sha256sums=('d162466d66ea84d892baf71be7d90c396a1d9e67ed49b65f7309c831ed45e3b7')
+md5sums=('afd1bc2f2ec5961ce39d6e1723ab5624')
+sha256sums=('4a881555f0b77622c3c893ec46fc93062b5720d3e9a2cf28c7b9ded62f9509ff')
 
 build() {
   mkdir -p build
