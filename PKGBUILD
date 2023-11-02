@@ -2,12 +2,12 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _bcname=MatrixGenerics
-_bcver=1.12.2
+_bcver=1.14.0
 pkgname=r-${_bcname,,}
 pkgdesc="S4 Generic Summary Statistic Functions that Operate on Matrix-Like Objects"
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 pkgver=${_bcver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("any")
 license=("Artistic2.0")
@@ -26,7 +26,7 @@ optdepends=(
 )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("d6c496f4bbb3dbb34bea9ac080c834336f90e0d22347754af53ab84443a8d6533e04381c5d23699cb6d74597656f8425b84199f228648d355eedcb84590d9492")
+b2sums=('de9621da52a3a4c6e4bace60b20dddb2182d7560a3db815108dca734f5b18812fe0861e30f7f328c4e44d51157ef1481048d50a2fb424dc1f4731771bb83c613')
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"

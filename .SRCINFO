@@ -1,7 +1,7 @@
 pkgbase = r-matrixgenerics
 	pkgdesc = S4 Generic Summary Statistic Functions that Operate on Matrix-Like Objects
-	pkgver = 1.12.2
-	pkgrel = 2
+	pkgver = 1.14.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/MatrixGenerics.html
 	arch = any
 	license = Artistic2.0
@@ -13,7 +13,7 @@ pkgbase = r-matrixgenerics
 	optdepends = r-sparsematrixstats
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat>=2.1.0
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MatrixGenerics_1.12.2.tar.gz
-	b2sums = d6c496f4bbb3dbb34bea9ac080c834336f90e0d22347754af53ab84443a8d6533e04381c5d23699cb6d74597656f8425b84199f228648d355eedcb84590d9492
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MatrixGenerics_1.14.0.tar.gz
+	b2sums = de9621da52a3a4c6e4bace60b20dddb2182d7560a3db815108dca734f5b18812fe0861e30f7f328c4e44d51157ef1481048d50a2fb424dc1f4731771bb83c613
 
 pkgname = r-matrixgenerics
