@@ -3,7 +3,7 @@
 _pkgname=rvasm
 pkgname=${_pkgname}-git
 pkgver=r19.625e76c
-pkgrel=1
+pkgrel=2
 pkgdesc="A risc-v assembler in rust"
 arch=('x86_64')
 # waiting for merging into upstream
@@ -14,6 +14,8 @@ license=('Apache')
 makedepends=('cargo' 'git')
 source=("${pkgname}::git+${url}#${_fragment}")
 sha256sums=(SKIP)
+conflicts=('rvasm')
+provides=('rvasm')
 
 pkgver() {
   cd "${pkgname}"
