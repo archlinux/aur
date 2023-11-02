@@ -1,6 +1,6 @@
 pkgbase = python-click-extra
 	pkgdesc = Extra colorization and configuration loading for Click.
-	pkgver = 3.8.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://kdeldycke.github.io/click-extra/
 	arch = any
@@ -17,14 +17,14 @@ pkgbase = python-click-extra
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	makedepends = python-sphinx-furo
-	makedepends = bump2version
 	depends = python
 	depends = python-boltons
 	depends = python-click
 	depends = python-click-log
 	depends = python-cli_helpers
-	depends = python-cloup
+	depends = python-cloup>=3.0.1
 	depends = python-commentjson
+	depends = python-graphviz
 	depends = python-mergedeep
 	depends = python-pygments
 	depends = python-pygments-ansi-color
@@ -35,7 +35,7 @@ pkgbase = python-click-extra
 	depends = python-tomli
 	depends = python-xmltodict<0.14
 	depends = python-wcmatch
-	source = https://github.com/kdeldycke/click-extra/archive/refs/tags/v3.8.0.tar.gz
-	sha512sums = deee0ef66664240926679d648f88742528cc879fe5fd47c7a525e1d474d805b12d3f8506d90fe84199835739039eadd255b9fd542ead74aa36e69aea6f2cbbd6
+	source = https://github.com/kdeldycke/click-extra/archive/refs/tags/v4.7.1.tar.gz
+	sha512sums = a5bbeec3004e5d1b27f6baa4acb978eecbf23087f4082b9ecaf96d10298a87940cd6f5f0a3bbb016f1a7f25af04fd86be9459af83e2a3dbb759753ad2c04f804
 
 pkgname = python-click-extra
