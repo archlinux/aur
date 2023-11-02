@@ -15,8 +15,6 @@ pkgbase = pixelorama
 	depends = libxinerama
 	depends = libxrandr
 	provides = pixelorama
-	conflicts = pixelorama-bin
-	conflicts = pixelorama-git
 	source = Pixelorama-0.11.3.tar.gz::https://github.com/Orama-Interactive/Pixelorama/archive/v0.11.3.tar.gz
 	b2sums = c5c9e584f89bd7cfe28540c30b8214dd9fd4a87fd946e225238ef93a154d43108ad63af8aa139aec862db83da3bfeccc052c048b7aedc1a9b3a89bb7d5d46576
 
