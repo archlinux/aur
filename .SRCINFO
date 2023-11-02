@@ -1,0 +1,19 @@
+pkgbase = refine-git
+	pkgdesc = Tweak various aspects of GNOME
+	pkgver = 0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/TheEvilSkeleton/Refine
+	arch = any
+	license = GPL3
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	provides = refine
+	conflicts = refine
+	source = git+https://gitlab.gnome.org/TheEvilSkeleton/refine.git
+	b2sums = SKIP
+
+pkgname = refine-git
