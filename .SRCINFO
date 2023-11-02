@@ -1,9 +1,9 @@
-pkgbase = kdeplasma-applets-gmailfeed
+pkgbase = plasma5-applets-gmailfeed
 	pkgdesc = A Plasma 5 plasmoid showing your Gmail feed.
 	pkgver = 1.2
 	pkgrel = 2
 	url = https://github.com/anthon38/gmailfeed
-	install = kdeplasma-applets-gmailfeed.install
+	install = plasma5-applets-gmailfeed.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -14,8 +14,8 @@ pkgbase = kdeplasma-applets-gmailfeed
 	depends = knotifications5
 	depends = qt5-xmlpatterns
 	depends = kaccounts-integration
+	replaces = kdeplasma-applets-gmailfeed
 	source = https://github.com/anthon38/gmailfeed/archive/v1.2.tar.gz
 	md5sums = 271f8f6b308a5130bdaa475b0cac4bee
 
-pkgname = kdeplasma-applets-gmailfeed
-
+pkgname = plasma5-applets-gmailfeed
