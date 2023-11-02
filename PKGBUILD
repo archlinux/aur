@@ -3,14 +3,14 @@
 _pkgname=QPrompt
 pkgname=${_pkgname,,}
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Teleprompter software for video creators"
 url="https://qprompt.app/"
 _url="https://github.com/Cuperino/QPrompt"
 license=('GPL3' 'LGPL3')
-depends=('hicolor-icon-theme' 'kcrash' 'ki18n')
-makedepends=('extra-cmake-modules' 'kiconthemes' 'kirigami2' 'ninja')
+depends=('hicolor-icon-theme' 'kcrash5' 'ki18n5')
+makedepends=('extra-cmake-modules' 'kiconthemes5' 'kirigami2' 'ninja')
 source=("$_pkgname-$pkgver.tar.gz::$_url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('ba2003b803209f38e59ac97f19b33e01fa61bf6fb9a4ed625ea16396063361c5d4edfaa1439ae812071275b053dedbfe0d152a70f2bb7ffcc8c7b9d65b10b936')
 
