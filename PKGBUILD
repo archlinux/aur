@@ -1,7 +1,7 @@
 _name=mizani
 pkgname=python-$_name
-pkgver=0.7.4
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='Scales for python'
 arch=(any)
 url="https://github.com/has2k1/$_name"
@@ -9,13 +9,12 @@ license=(BSD)
 depends=(
 	python
 	python-numpy
+	python-scipy
 	python-pandas
-	python-matplotlib
-	python-palettable
 )
-makedepends=(python-setuptools python-build python-installer python-wheel)
+makedepends=(python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b84b923cd3b8b4c0421a750672e5a85ed2aa05e632bd37af8419d5bbf65c397c')
+sha256sums=('4063e16cb7ce932e88d7bb9ac6552d3a0bf86eda2f92d3aee13777448cd580b7')
 
 build() {
 	cd "$_name-$pkgver"
