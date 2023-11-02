@@ -1,19 +1,20 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=teracli-git
-_pkgname=tera-cli # upstream repo a name conflict with a different project on crates.io
-__pkgname=teracli
-pkgver=0.2.4.r5.gdc9d4fd
+_pkgname=tera-cli # upstream repo conflicts with a different project on crates.io
+_crate=teracli
+pkgver=0.2.4.r9.g18d466b
 pkgrel=1
 pkgdesc='A utility on top of the tera templating engine, takes json|yaml|toml|ENV as input'
 arch=(x86_64)
 url="https://github.com/chevdor/$_pkgname"
 license=(MIT)
-depends=(gcc-libs)
+depends=(gcc-libs
+         glibc)
 makedepends=(cargo
              git)
-provides=("$__pkgname=$pkgver")
-conflicts=($_pkgname $__pkgname)
+provides=("$_crate=$pkgver")
+conflicts=($_pkgname $_crate)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
