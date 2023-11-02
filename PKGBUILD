@@ -1,12 +1,13 @@
 # Maintainer: Vanya A. Sergeev <v@sergeev.io>
 pkgname=ssterm
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple console-based serial port terminal"
 arch=('any')
 url="https://github.com/vsergeev/ssterm"
 license=('MIT')
 depends=('python')
+makedepends=('git')
 source=("git+https://github.com/vsergeev/ssterm.git#tag=v$pkgver")
 md5sums=('SKIP')
 
