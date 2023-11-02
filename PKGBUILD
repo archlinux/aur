@@ -2,14 +2,14 @@
 
 _pkgname=it-tools
 pkgname="${_pkgname}-web"
-pkgver=2023.8.21_6f93cba
+pkgver=2023.11.2_7d94e11
 pkgrel=1
 pkgdesc='Collection of handy online tools for developers, with great UX'
 arch=('any')
 url="https://github.com/CorentinTh/${_pkgname}"
 license=('GPL3')
 source=("${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.zip")
-b2sums=('911f66fba7a8a03c083a439c10a8edb50fd91043b8ab448714498bdc1bab64dd43f3a4f076189921590e5bdf6e3674f683805bf9f083158e772b28b093440d95')
+b2sums=('0f0b18e82a53f0eae1c3a383ec5e6395d18f55d0f45752ef68e2b9c4bde60563c0dcd96ed1bca19f3d83493a17bddd5afc46ccace2c82a58228079ff85449942')
 
 package() {
     local _dest_dir="/usr/share/webapps/${_pkgname}"
