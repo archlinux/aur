@@ -4,17 +4,16 @@
 _gitname=meteo
 _author=bitseater
 pkgname=("${_gitname}-git")
-pkgver=r308.0408358
+pkgver=r358.e1960a1
 pkgrel=1
-pkgdesc="Know the forecast of the next hours & days. App designed for Pantheon Shell"
+pkgdesc="A forecast application using OpenWeatherMap API. App designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'granite' 'clutter' 'clutter-gtk' 'geocode-glib' 'ido' 'json-glib'
-         'libappindicator-gtk3' 'libchamplain' 'libsoup' 'webkit2gtk')
-optdepends=('')
+depends=('glib2' 'gtk3' 'libappindicator-gtk3' 'libsoup' 'json-glib' 'webkit2gtk')
+optdepends=('ayatana-indicator-application')
 makedepends=('git' 'meson' 'ninja' 'vala')
-provides=("${_gitname}")
+provides=("${_gitname}" "${pkgname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
