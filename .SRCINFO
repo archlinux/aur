@@ -1,7 +1,7 @@
 pkgbase = clion
-	pkgdesc = C/C++ IDE. Free 30-day trial.
+	pkgdesc = Cross-platform IDE for C and C++ from JetBrains.
 	pkgver = 2023.2.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = clion
 	noextract = CLion-2023.2.2-aarch64.tar.gz
 	options = !strip
 	source = jetbrains-clion.desktop
-	sha256sums = 13c9e7c7f6ef57ee573d133bf30a599390a99087a1f578caea62020e0f742587
+	sha256sums = a7a3f9891f5d8e7e5650afe00819909413fa2ed911393dd0648fba91233974a2
 	source_x86_64 = https://download.jetbrains.com/cpp/CLion-2023.2.2.tar.gz
 	sha256sums_x86_64 = 941036313c618dcfc62cc36b605ce680a36add52a7e37ee9b1981e52e35e52a3
 	source_aarch64 = https://download.jetbrains.com/cpp/CLion-2023.2.2-aarch64.tar.gz
@@ -40,6 +40,7 @@ pkgname = clion
 
 pkgname = clion-jre
 	pkgdesc = JetBrains custom Java Runtime for CLion (Recommended)
+	url = https://github.com/JetBrains/JetBrainsRuntime
 
 pkgname = clion-cmake
 	pkgdesc = JetBrains packaged CMake tools for CLion

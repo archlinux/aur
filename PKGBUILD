@@ -10,9 +10,9 @@ pkgname=(clion clion-jre clion-cmake clion-gdb clion-lldb)
 _pkgname=clion
 _dlname=CLion
 pkgver=2023.2.2
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="C/C++ IDE. Free 30-day trial."
+pkgdesc="Cross-platform IDE for C and C++ from JetBrains."
 arch=('x86_64' 'aarch64')
 options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
@@ -21,7 +21,7 @@ makedepends=('rsync')
 source=("jetbrains-${pkgbase}.desktop")
 source_x86_64=("https://download.jetbrains.com/cpp/${_dlname}-${pkgver}.tar.gz")
 source_aarch64=("https://download.jetbrains.com/cpp/${_dlname}-${pkgver}-aarch64.tar.gz")
-sha256sums=('13c9e7c7f6ef57ee573d133bf30a599390a99087a1f578caea62020e0f742587')
+sha256sums=('a7a3f9891f5d8e7e5650afe00819909413fa2ed911393dd0648fba91233974a2')
 sha256sums_x86_64=('941036313c618dcfc62cc36b605ce680a36add52a7e37ee9b1981e52e35e52a3')
 sha256sums_aarch64=('9ceeda2fc4f99e160f7402e0cc0712e480eaa1c12b86feac028bb0d191806d41')
 noextract=("${_dlname}-${pkgver}.tar.gz"
@@ -88,6 +88,7 @@ package_clion() {
 
 package_clion-jre() {
     pkgdesc="JetBrains custom Java Runtime for CLion (Recommended)"
+    url="https://github.com/JetBrains/JetBrainsRuntime"
     install -d -m755 "${pkgdir}/opt/${pkgbase}"
     rsync -rtl "${srcdir}/opt/${pkgbase}/jbr" "${pkgdir}/opt/${pkgbase}"
 }

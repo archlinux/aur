@@ -7,4 +7,5 @@ Exec="/usr/bin/clion" %f
 Comment=A cross-platform IDE for C and C++
 Categories=Development;IDE;
 Terminal=false
+StartupNotify=true
 StartupWMClass=jetbrains-clion
