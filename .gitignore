@@ -1,0 +1,5 @@
+/*.zst
+/*.tar.gz
+/pkg
+/src
+/neovim-gtk
