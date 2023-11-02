@@ -4,7 +4,7 @@ _pkgname=crossover-overlay
 _pkgname2=crossoverlay
 pkgname=$_pkgname-bin
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="🎯 A Crosshair Overlay for any screen (binary release, system Electron)"
 arch=('x86_64' 'i686')
 url="https://github.com/lacymorrow/crossover"
@@ -37,7 +37,7 @@ package() {
   # Create a folder
   mkdir -p "$pkgdir/usr/lib/$_pkgname2"
   # Install
-  install -Dm644 usr/share/applications/$_desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 usr/share/icons/hicolor/0x0/apps/crossover.png "$pkgdir/usr/share/pixmaps/$_pkgname2.png"
   install -Dm755 $_pkgname2 -t "$pkgdir/usr/bin"
   mv opt/CrossOver/resources/* "$pkgdir/usr/lib/$_pkgname2"
