@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=XVector
-_bcver=0.40.0
+_bcver=0.42.0
 pkgname=r-${_bcname,,}
 pkgdesc="Foundation of external vector representation and manipulation in Bioconductor"
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -26,7 +26,7 @@ optdepends=(
 )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("902b3fcc354e8fce318968917f2df1b576db34b6be3dc82a70c0e1b889e86cf49b10770067c197a17bf8b26a13dbfb49f04885017c81d112afef1fe13819251e")
+b2sums=("e16210b019f53226cbfc68cda2883cf70765ee84f656b36aca4b17d6ef69b0c4fbcd8577ad10f7cca9c2d172376e48306c3d987e69798b8d8d42f7033a5648b3")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
