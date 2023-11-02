@@ -1,7 +1,7 @@
 pkgbase = dynknockd
 	pkgdesc = Port knocking server using a periodicaly changing sequence
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/CoolandonRS/dynknock
 	arch = x86_64
 	license = GPL3
@@ -10,9 +10,9 @@ pkgbase = dynknockd
 	depends = gcc-libs
 	depends = zlib
 	depends = glibc
-	source = svn+https://github.com/CoolandonRS/dynknock/tags/v1.1.0/Dynknock_Server,
+	source = dynknockd::svn+https://github.com/CoolandonRS/dynknock/tags/v1.1.0/Dynknock_Server
 	source = dynknockd.service
-	sha256sums = SKIP,
+	sha256sums = SKIP
 	sha256sums = 7a44ee4f1cf895967b711b74dfd05c8ccf12632590e81ba849bca3fe02c05394
 
 pkgname = dynknockd
