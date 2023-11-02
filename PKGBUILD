@@ -2,7 +2,7 @@
 
 pkgname='python-webdataset'
 _name=${pkgname#python-}
-pkgver='0.2.57'
+pkgver='0.2.73'
 pkgrel=1
 pkgdesc="Record sequential storage for deep learning."
 url="https://github.com/webdataset/webdataset"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c55ca0c62e783c357ebb1b6dcc2c9cc0c371f07d0b4842f650e7010f0a04f166')
+sha256sums=('dc73c81326eff7e8060903d637d10c8c5ca9955e72b2fc240dd0cceb8c2e9f47')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
