@@ -1,4 +1,4 @@
-# Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
+# Maintainer: ABOhiccups <info@abohiccups.com>
 pkgname=slippi-launcher
 _tagname='2.11.1'
 pkgver='v2.11.1.r0.g17bbc14b'
