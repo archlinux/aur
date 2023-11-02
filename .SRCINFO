@@ -1,6 +1,6 @@
 pkgbase = webmesh-bin
 	pkgdesc = A service mesh for the web
-	pkgver = 0.15.8
+	pkgver = 0.15.9
 	pkgrel = 1
 	url = https://webmeshproj.github.io
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = webmesh-bin
 	optdepends = wireguard-tools: for debugging
 	conflicts = webmesh-git
 	conflicts = webmesh
-	source = https://github.com/webmeshproj/webmesh/releases/download/v0.15.8/checksums.txt
-	sha256sums = f491793641bc6d534a53c73a6b0e1ba13977c67dc372d89b363e6d0679f1191c
+	source = https://github.com/webmeshproj/webmesh/releases/download/v0.15.9/checksums.txt
+	sha256sums = 14f6bdd9dc1651adb26e5e065ff0ec75855675d8cbcd8cb6940dd2d49736839b
 
 pkgname = webmesh-bin

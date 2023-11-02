@@ -1,4 +1,4 @@
-VERSION ?= 0.15.8
+VERSION ?= 0.15.9
 
 all: clean set-version checksums prepare
 
