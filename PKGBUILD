@@ -9,7 +9,7 @@ url="https://github.com/OpenNMT/CTranslate2"
 license=('MIT')
 provides=("ctranslate2")
 conflicts=('ctranslate2-git' 'python-ctranslate2-git')
-depends=('python>=3.7')
+depends=('python>=3.7' 'python-numpy' 'python-yaml')
 makedepends=('python-pip')
 
 package() {
