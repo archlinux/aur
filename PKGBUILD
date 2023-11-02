@@ -4,7 +4,7 @@
 _name=plotnine
 pkgname=python-$_name
 pkgver=0.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A grammar of graphics for python'
 arch=(any)
 url="https://github.com/has2k1/$_name"
@@ -32,6 +32,8 @@ makedepends=(
 	python-build
 	python-installer
 	python-wheel
+	python-setuptools
+	python-setuptools-scm
 )
 
 checkdepends=(
