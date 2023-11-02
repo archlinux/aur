@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HumanTranscriptomeCompendium
-_pkgver=1.16.3
+_pkgver=1.17.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,6 @@ arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
 license=(Artistic2.0)
 depends=(
-  r-biocmanager
   r-s4vectors
   r-shiny
   r-ssrch
@@ -19,6 +18,7 @@ depends=(
 )
 checkdepends=(
   r-biocfilecache
+  r-biocmanager
   r-rhdf5client
   r-testthat
 )
@@ -37,8 +37,8 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('91a351c2b23e0407ba8d67abfda46c2d')
-sha256sums=('289705a6fcc798fa93e9ae43a2418ac5dcd758ac228960f84086f4d848263c3a')
+md5sums=('00689fd704a35eea4e0ba38516603b49')
+sha256sums=('5ba92aca4d359d78bd5252836a979503080e45163549d0abee23c409c1ef7404')
 
 build() {
   mkdir -p build
