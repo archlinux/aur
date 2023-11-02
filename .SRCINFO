@@ -1,0 +1,18 @@
+pkgbase = snapmail-appimage
+	pkgdesc = An open-source P2P messaging app based on Holochain.It is the latest iteration of Snapmail from Glass Bead Software.
+	pkgver = 0.3.1_rc.6
+	pkgrel = 1
+	url = https://github.com/glassbeadsoftware/snapmail
+	arch = x86_64
+	license = custom:CAL-1.0
+	makedepends = squashfuse
+	depends = zlib
+	provides = snapmail=0.3.1_rc.6
+	conflicts = snapmail
+	options = !strip
+	source = snapmail-0.3.1_rc.6.AppImage::https://github.com/glassbeadsoftware/snapmail/releases/download/v0.3.1-rc.6/Snapmail-0.3.1.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/glassbeadsoftware/snapmail/v0.3.1-rc.6/LICENSE.md
+	sha256sums = e40525d3a19e352aaa261539ae9304a9eaf434ebcf4c427583062ecb12022fab
+	sha256sums = 12ce98b0343aa56cfff71264980dbbcb0f4696bff5500c3ea5f59aed05b9ef62
+
+pkgname = snapmail-appimage
