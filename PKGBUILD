@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.36.4
+_bcver=1.38.0
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
 pkgrel=1
@@ -21,18 +21,18 @@ depends=(
 	"r-genomeinfodbdata"
 )
 optdepends=(
-    "r-genomicranges"
-    "r-rsamtools"
-    "r-genomicalignments"
-    "r-genomicfeatures"
-    "r-txdb.dmelanogaster.ucsc.dm3.ensgene"
+    "r-biocstyle"
     "r-bsgenome"
-    "r-bsgenome.scerevisiae.ucsc.saccer2"
     "r-bsgenome.celegans.ucsc.ce2"
     "r-bsgenome.hsapiens.ncbi.grch38"
-    "r-runit"
-    "r-biocstyle"
+    "r-bsgenome.scerevisiae.ucsc.saccer2"
+    "r-genomicalignments"
+    "r-genomicfeatures"
+    "r-genomicranges"
     "r-knitr"
+    "r-rsamtools"
+    "r-runit"
+    "r-txdb.dmelanogaster.ucsc.dm3.ensgene"
 )
 
 # The unittests for `r-pkgcache` have circular
@@ -55,7 +55,7 @@ optdepends=(
 # )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("5db013dd07fe04a1249731ffd9bd7424d7ace589ccce408c6c467fca2282861385c69403475c14ecea1925e6cfd00d10702b961b2dccc070538f811f34ccbf79")
+b2sums=('72c2d0b817b270c5df2842daa5c582e3cbbd4eda516ebd03cbf6d62a20c94f5c621acd923784fd6b9fb2a4c8c081e5788d3f8f166a925346209e69752f13d627')
 
 build() {
     mkdir -p "${srcdir}/build/"

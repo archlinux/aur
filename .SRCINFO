@@ -1,6 +1,6 @@
 pkgbase = r-genomeinfodb
 	pkgdesc = Utilities for manipulating chromosome names, including modifying them to follow a particular naming style
-	pkgver = 1.36.4
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html
 	arch = any
@@ -11,19 +11,19 @@ pkgbase = r-genomeinfodb
 	depends = r-iranges>=2.13.12
 	depends = r-rcurl
 	depends = r-genomeinfodbdata
-	optdepends = r-genomicranges
-	optdepends = r-rsamtools
-	optdepends = r-genomicalignments
-	optdepends = r-genomicfeatures
-	optdepends = r-txdb.dmelanogaster.ucsc.dm3.ensgene
+	optdepends = r-biocstyle
 	optdepends = r-bsgenome
-	optdepends = r-bsgenome.scerevisiae.ucsc.saccer2
 	optdepends = r-bsgenome.celegans.ucsc.ce2
 	optdepends = r-bsgenome.hsapiens.ncbi.grch38
-	optdepends = r-runit
-	optdepends = r-biocstyle
+	optdepends = r-bsgenome.scerevisiae.ucsc.saccer2
+	optdepends = r-genomicalignments
+	optdepends = r-genomicfeatures
+	optdepends = r-genomicranges
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.36.4.tar.gz
-	b2sums = 5db013dd07fe04a1249731ffd9bd7424d7ace589ccce408c6c467fca2282861385c69403475c14ecea1925e6cfd00d10702b961b2dccc070538f811f34ccbf79
+	optdepends = r-rsamtools
+	optdepends = r-runit
+	optdepends = r-txdb.dmelanogaster.ucsc.dm3.ensgene
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.38.0.tar.gz
+	b2sums = 72c2d0b817b270c5df2842daa5c582e3cbbd4eda516ebd03cbf6d62a20c94f5c621acd923784fd6b9fb2a4c8c081e5788d3f8f166a925346209e69752f13d627
 
 pkgname = r-genomeinfodb
