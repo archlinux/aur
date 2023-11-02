@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Biostrings
-_bcver=2.68.1
+_bcver=2.70.1
 
 pkgname=r-${_bcname,,}
 pkgdesc="Efficient manipulation of biological strings"
@@ -26,20 +26,22 @@ depends=(
 optdepends=(
     "r-affy>=1.41.3"
     "r-affydata>=1.11.5"
+    "r-biocstyle"
+    "r-bsgenome>=1.13.14"
     "r-bsgenome.celegans.ucsc.ce2>=1.3.11"
     "r-bsgenome.dmelanogaster.ucsc.dm3>=1.3.11"
     "r-bsgenome.hsapiens.ucsc.hg18"
-    "r-bsgenome>=1.13.14"
     "r-drosophila2probe"
     "r-genomicfeatures>=1.3.14"
     "r-hgu133aprobe"
     "r-hgu95av2cdf"
     "r-hgu95av2probe"
+    "r-knitr"
     "r-runit"
 )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("82478d065bb98544bd4aadc35a18feeed9b6e016e89384dfedc9473d3e2fafbbb8618977efefa21c337902087ef967526edf1805b40ebc9c365cde83ede9c7eb")
+b2sums=('858bd8c07272385ba65252e6da988b3b8592f9f3aeebc437d65524c328d500605baf1fb3263459732a563f53e48512b86652e34ed6ad8e497b8d52eddd4a0f6b')
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
