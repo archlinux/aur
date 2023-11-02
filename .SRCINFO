@@ -10,7 +10,6 @@ pkgbase = pot-translation
 	arch = riscv64
 	license = GPL3
 	makedepends = fnm
-	makedepends = pnpm
 	makedepends = rust
 	makedepends = dbus
 	depends = webkit2gtk
