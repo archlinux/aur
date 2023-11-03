@@ -1,7 +1,7 @@
 pkgbase = needroleshere
 	pkgdesc = Yet another AWS IAM Roles Anywhere helper
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sorah/needroleshere
 	arch = x86_64
 	arch = aarch64

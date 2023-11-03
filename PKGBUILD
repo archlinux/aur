@@ -1,7 +1,7 @@
 # Maintainer: Sorah Fukumori <her@sorah.jp>
 pkgname=needroleshere
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another AWS IAM Roles Anywhere helper"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sorah/needroleshere"
