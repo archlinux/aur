@@ -2,7 +2,7 @@
 
 _rockname=luarocks-build-rust-mlua
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.1.2
+pkgver=0.2.0
 _rockrel=1
 pkgrel=1
 pkgdesc='A LuaRocks build backend for Lua modules written in Rust using mlua'
@@ -17,7 +17,7 @@ makedepends=(lua
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('589907b1ad6823922d87742ac235f83d67cd63662ab045fd004a6328feba795f')
+sha256sums=('0d0be64b4777222aea91b0e88bfe1d5a12bf40a6a2e7e1a1b86de58786f0412c')
 
 _package_helper() {
 	cd "$_archive"
