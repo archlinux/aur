@@ -1,10 +1,11 @@
-_godot=true # We need a newer godot version than aur/godot-headless
-_godot_template=true # Set to false to download them through Scripts project
-#Note: please let those variables be set to true, or their versions may not be sync.
+_godot=3.5.3 # We need a newer godot version than aur/godot-headless, set to empty to use aur version
+_godot_template=$_godot # Set to empty to download them through Scripts project
+# Note: please let those variables be set to same version.
+_revolutionary_games_common_commit=4650b092a91389b660b1fcf67337fd3b20ada4cd
 
 pkgname=thrive
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
 url="https://revolutionarygamesstudio.com/"
@@ -16,26 +17,27 @@ depends=(
 makedepends=("git" "git-lfs" "dotnet-sdk-7.0" "p7zip")
 source=(
     "git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
-    "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
+    "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git#commit=$_revolutionary_games_common_commit"
 )
 sha256sums=(
     'SKIP'
     'SKIP'
 )
 
-if $_godot
+if [ -n "$_godot" ]
 then
+    _godot_repo="https://github.com/godotengine/godot"
     makedepends+=("libxcursor" "libxinerama" "libxrandr" "libxi" "libglvnd")
     source+=(
-        "godot-3.5.2.zip::https://github.com/godotengine/godot/releases/download/3.5.2-stable/Godot_v3.5.2-stable_mono_linux_headless_64.zip"
+        "godot-$_godot.zip::$_godot_repo/releases/download/$_godot-stable/Godot_v$_godot-stable_mono_linux_headless_64.zip"
     )
-    sha256sums+=('57d7d729c5af7191f0284b2b97de38c81a7979e30e39a9aa0d145767676df4cf')
-    if $_godot_template
+    sha256sums+=('9602657c95a6fb0d8411ac6603aca4dd1bb1700373b06e6358c01c63eb2cca51')
+    if [ -n "$_godot_template" ]
     then
         source+=(
-            "3.5.2.stable.mono.zip::https://github.com/godotengine/godot/releases/download/3.5.2-stable/Godot_v3.5.2-stable_mono_export_templates.tpz"
+            "$_godot_template.stable.mono.zip::$_godot_repo/$_godot_template-stable/Godot_v$_godot_template-stable_mono_export_templates.tpz"
         )
-        sha256sums+=('88f6246b3cba7676a1c84485ac71849745001de7bec0c791c8096b6507674e53')
+        sha256sums+=('5984f7452187a00b3f606c7790d7470784663442a0ba9f73b0a9a2c84ef4d541')
     fi
 else
     makedepends+=("godot-headless>=3.5")
@@ -59,17 +61,17 @@ prepare(){
     done
     cd "$srcdir/Thrive"
     git lfs pull
-    sed -i 's/"3.5"/"3.5.2"/' Scripts/GodotVersion.cs
-    if $_godot
+    sed -i "s/\"3.5\"/\"$_godot\"/" Scripts/GodotVersion.cs
+    if [ -n "$_godot" ]
     then
-        rm -rf "$srcdir/godot-3.5.2"
-        mv "$srcdir/Godot_v3.5.2-stable_mono_linux_headless_64" "$srcdir/godot-3.5.2"
-        mv "$srcdir/godot-3.5.2/Godot_v3.5.2-stable_mono_linux_headless.64" "$srcdir/godot-3.5.2/godot"
-        export PATH="$srcdir/godot-3.5.2:$PATH"
-        if $_godot_template
+        rm -rf "$srcdir/godot-$_godot"
+        mv "$srcdir/Godot_v$_godot-stable_mono_linux_headless_64" "$srcdir/godot-$_godot"
+        mv "$srcdir/godot-$_godot/Godot_v$_godot-stable_mono_linux_headless.64" "$srcdir/godot-$_godot/godot"
+        export PATH="$srcdir/godot-$_godot:$PATH"
+        if [ -n "$_godot_template" ]
         then
             mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/godot/templates"
-            cp -r "$srcdir/templates" "${XDG_DATA_HOME:-$HOME/.local/share}/godot/templates/3.5.2.stable.mono"
+            cp -r "$srcdir/templates" "${XDG_DATA_HOME:-$HOME/.local/share}/godot/templates/$_godot_template.stable.mono"
         else
             dotnet run --project Scripts -- godot-templates
         fi
@@ -81,18 +83,18 @@ prepare(){
 
 build(){
     cd "$srcdir/Thrive"
-    if $_godot
+    if [ -n "$_godot" ]
     then
-        export PATH="$srcdir/godot-3.5.2:$PATH"
+        export PATH="$srcdir/godot-$_godot:$PATH"
     fi
     dotnet run --project Scripts -- package --compress=false Linux
 }
 
 check(){
     cd "$srcdir/Thrive"
-    if $_godot
+    if [ -n "$_godot" ]
     then
-        export PATH="$srcdir/godot-3.5.2:$PATH"
+        export PATH="$srcdir/godot-$_godot:$PATH"
     fi
     dotnet run --project Scripts -- test
 }
