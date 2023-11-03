@@ -1,0 +1,30 @@
+pkgbase = r-phytools
+	pkgdesc = Phylogenetic Tools for Comparative Biology (and Other Things)
+	pkgver = 1.9.16
+	pkgrel = 1
+	url = https://cran.r-project.org/package=phytools
+	arch = any
+	license = GPL
+	depends = r-ape
+	depends = r-clustergeneration
+	depends = r-coda
+	depends = r-combinat
+	depends = r-doparallel
+	depends = r-expm
+	depends = r-foreach
+	depends = r-maps
+	depends = r-mnormt
+	depends = r-numderiv
+	depends = r-optimparallel
+	depends = r-phangorn
+	depends = r-plotrix
+	depends = r-scatterplot3d
+	optdepends = r-animation
+	optdepends = r-geiger
+	optdepends = r-rcolorbrewer
+	optdepends = r-rgl
+	source = https://cran.r-project.org/src/contrib/phytools_1.9-16.tar.gz
+	md5sums = a3dec8a14abffa75a1c9ba35e75a16a0
+	sha256sums = 1b800b722a17679998efff40ab26adb127f61fcd57ea486ec1e129f34c79b29c
+
+pkgname = r-phytools
