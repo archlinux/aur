@@ -1,6 +1,6 @@
 # Maintainer: Nikolay Arhipov <n@arhipov.net>
 pkgname=vitasdk-git
-pkgver=1
+pkgver=2.517
 pkgrel=1
 pkgdesc="VITASDK homebrew toolchain for Sony Playstation Vita"
 arch=('i686' 'x86_64')
@@ -21,6 +21,10 @@ replaces=(
 source=("sudo-fix.patch" "git+https://github.com/vitasdk/vdpm")
 md5sums=('1213c1c23d734af92553ac8801443d36'
          'SKIP')
+
+pkgver() {
+    wget -qO- https://github.com/vitasdk/vita-headers/raw/master/.travis.d/last_built_toolchain.py | python3 - master linux | sed -n 's/.*\/download\/master-.*-v\(.*\)\/vitasdk.*/\1/p'
+}
 
 prepare() {
     cd "vdpm"

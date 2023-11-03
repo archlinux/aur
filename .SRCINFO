@@ -1,6 +1,6 @@
 pkgbase = vitasdk-git
 	pkgdesc = VITASDK homebrew toolchain for Sony Playstation Vita
-	pkgver = 1
+	pkgver = 2.517
 	pkgrel = 1
 	url = https://vitasdk.org/
 	arch = i686
