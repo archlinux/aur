@@ -1,7 +1,7 @@
 diff -Naur a/product.json b/product.json
 --- a/product.json	2023-09-06 14:00:16.000000000 +0200
-+++ b/product.json	2023-10-08 18:24:17.723549291 +0200
-@@ -1,6 +1,122 @@
++++ b/product.json	2023-11-01 22:27:19.202887134 +0100
+@@ -1,6 +1,123 @@
  {
 +	"quality": "stable",
 +	"auth": {
@@ -58,7 +58,7 @@ diff -Naur a/product.json b/product.json
 +		}
 +	},
 +	"extensionEnabledApiProposals": {
-+		"ms-vscode.vscode-selfhost-test-provider": ["testObserver", "testMessageContextValue"],
++		"ms-vscode.vscode-selfhost-test-provider": ["testObserver"],
 +		"VisualStudioExptTeam.vscodeintellicode-completions": ["inlineCompletionsAdditions"],
 +		"ms-vsliveshare.vsliveshare": ["contribMenuBarHome", "contribShareMenu", "contribStatusBarItems", "diffCommand", "documentFiltersExclusive", "fileSearchProvider", "findTextInFiles", "notebookCellExecutionState", "notebookLiveShare", "terminalDimensions", "terminalDataWriteEvent", "textSearchProvider"],
 +		"ms-vscode.js-debug": ["portsAttributes", "findTextInFiles", "workspaceTrust", "tunnels"],
@@ -75,10 +75,11 @@ diff -Naur a/product.json b/product.json
 +		"ms-vscode-remote.remote-containers": ["contribEditSessions", "resolvers", "tunnels", "workspaceTrust", "terminalDimensions", "contribRemoteHelp", "contribViewsRemote"],
 +		"ms-vscode.js-debug-nightly": ["portsAttributes", "findTextInFiles", "workspaceTrust", "tunnels"],
 +		"ms-vscode.lsif-browser": ["documentFiltersExclusive"],
++		"ms-vscode.vscode-speech": ["speech"],
 +		"GitHub.vscode-pull-request-github": ["contribCommentThreadAdditionalMenu", "tokenInformation", "contribShareMenu", "fileComments", "contribCommentPeekContext", "codiconDecoration", "diffCommand", "contribCommentEditorActionsMenu", "readonlyMessage", "treeViewMarkdownMessage", "shareProvider", "quickDiffProvider"],
 +		"GitHub.copilot": ["inlineCompletionsAdditions"],
 +		"GitHub.copilot-nightly": ["inlineCompletionsAdditions"],
-+		"GitHub.copilot-chat": ["handleIssueUri", "interactive", "interactiveUserActions", "terminalContextMenu", "terminalDataWriteEvent", "terminalSelection", "terminalQuickFixProvider", "chatSlashCommands", "chatVariables", "chatAgents", "readonlyMessage", "chatProvider", "mappedEditsProvider", "aiRelatedInformation"],
++		"GitHub.copilot-chat": ["handleIssueUri", "interactive", "interactiveUserActions", "terminalDataWriteEvent", "terminalExecuteCommandEvent", "terminalSelection", "terminalQuickFixProvider", "chatVariables", "chatAgents", "chatAgents2", "chatAgents2Additions", "defaultChatAgent", "readonlyMessage", "chatProvider", "mappedEditsProvider", "aiRelatedInformation", "codeActionAI", "findTextInFiles", "textSearchProvider"],
 +		"GitHub.remotehub": ["contribRemoteHelp", "contribMenuBarHome", "contribViewsRemote", "contribViewsWelcome", "documentFiltersExclusive", "extensionRuntime", "fileSearchProvider", "quickPickSortByLabel", "workspaceTrust", "scmSelectedProvider", "scmValidation", "textSearchProvider", "timeline"],
 +		"ms-python.gather": ["notebookCellExecutionState"],
 +		"ms-python.vscode-pylance": ["notebookCellExecutionState"],
@@ -125,7 +126,7 @@ diff -Naur a/product.json b/product.json
  	"applicationName": "code-oss",
  	"dataFolderName": ".vscode-oss",
  	"win32MutexName": "vscodeoss",
-@@ -32,7 +148,10 @@
+@@ -32,7 +149,10 @@
  	"reportIssueUrl": "https://github.com/microsoft/vscode/issues/new",
  	"nodejsRepository": "https://nodejs.org",
  	"urlProtocol": "code-oss",
@@ -166,23 +167,19 @@ diff -Naur a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/b
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs		.scrollbar { background: rgba(0,0,0,0); }
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs-dark	.scrollbar { background: rgba(0,0,0,0); }
 diff -Naur a/src/vs/platform/windows/electron-main/windowImpl.ts b/src/vs/platform/windows/electron-main/windowImpl.ts
---- a/src/vs/platform/windows/electron-main/windowImpl.ts	2022-09-01 00:05:32.000000000 +0200
-+++ b/src/vs/platform/windows/electron-main/windowImpl.ts	2022-09-04 04:50:44.757860341 +0200
-@@ -211,10 +211,11 @@
- 				height: this.windowState.height,
- 				x: this.windowState.x,
- 				y: this.windowState.y,
-+				transparent: true,
- 				backgroundColor: this.themeMainService.getBackgroundColor(),
- 				minWidth: WindowMinimumSize.WIDTH,
- 				minHeight: WindowMinimumSize.HEIGHT,
+--- a/src/vs/platform/windows/electron-main/windowImpl.ts	2023-11-01 02:39:20.000000000 +0100
++++ b/src/vs/platform/windows/electron-main/windowImpl.ts	2023-11-01 22:22:40.436150423 +0100
+@@ -237,7 +237,7 @@
+ 			const windowSettings = this.configurationService.getValue<IWindowSettings | undefined>('window');
+ 
+ 			const options = instantiationService.invokeFunction(defaultBrowserWindowOptions, this.windowState, {
 -				show: !isFullscreenOrMaximized, // reduce flicker by showing later
 +				show: false,
- 				title: this.productService.nameLong,
  				webPreferences: {
- 					preload: FileAccess.asFileUri('vs/base/parts/sandbox/electron-browser/preload.js', require).fsPath,
-@@ -391,9 +392,6 @@
- 					this.setFullScreen(true);
+ 					preload: FileAccess.asFileUri('vs/base/parts/sandbox/electron-sandbox/preload.js').fsPath,
+ 					additionalArguments: [`--vscode-window-config=${this.configObjectUrl.resource.toString()}`],
+@@ -380,9 +380,6 @@
+ 					this.logConditionally('WindowMode.Maximized');
  				}
  
 -				// to reduce flicker from the default window size
@@ -191,7 +188,7 @@ diff -Naur a/src/vs/platform/windows/electron-main/windowImpl.ts b/src/vs/platfo
  				mark('code/didMaximizeCodeWindow');
  			}
  
-@@ -478,6 +476,9 @@
+@@ -451,6 +448,9 @@
  
  		this.readyState = ReadyState.READY;
  
@@ -201,6 +198,17 @@ diff -Naur a/src/vs/platform/windows/electron-main/windowImpl.ts b/src/vs/platfo
  		// inform all waiting promises that we are ready now
  		while (this.whenReadyCallbacks.length) {
  			this.whenReadyCallbacks.pop()!(this);
+diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/windows/electron-main/windows.ts
+--- a/src/vs/platform/windows/electron-main/windows.ts	2023-11-01 02:39:20.000000000 +0100
++++ b/src/vs/platform/windows/electron-main/windows.ts	2023-11-01 22:22:42.749482542 +0100
+@@ -120,6 +120,7 @@
+ 	const windowSettings = configurationService.getValue<IWindowSettings | undefined>('window');
+ 
+ 	const options: BrowserWindowConstructorOptions & { experimentalDarkMode: boolean } = {
++		transparent: true,
+ 		backgroundColor: themeMainService.getBackgroundColor(),
+ 		minWidth: WindowMinimumSize.WIDTH,
+ 		minHeight: WindowMinimumSize.HEIGHT,
 diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
 --- a/src/vs/workbench/common/theme.ts	2022-09-01 00:05:32.000000000 +0200
 +++ b/src/vs/workbench/common/theme.ts	2022-09-03 22:50:19.628326135 +0200
