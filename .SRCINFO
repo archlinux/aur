@@ -1,0 +1,17 @@
+pkgbase = perfect-dark-git
+	pkgdesc = PC port of Perfect Dark
+	pkgver = r7154.479c0335f
+	pkgrel = 1
+	url = https://github.com/fgsfdsfgs/perfect_dark
+	arch = x86_64
+	license = MIT
+	depends = gcc
+	depends = glu
+	depends = lib32-sdl2
+	depends = lib32-zlib
+	source = git+https://github.com/fgsfdsfgs/perfect_dark.git
+	source = local://pd.ntsc-final.z64
+	md5sums = SKIP
+	md5sums = e03b088b6ac9e0080440efed07c1e40f
+
+pkgname = perfect-dark-git
