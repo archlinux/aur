@@ -7,7 +7,7 @@
 
 _pkgname="ddcutil"
 pkgname="$_pkgname-git"
-pkgver=2.0.0.r42.g19baa12e
+pkgver=2.0.0.r83.ge91a74ba
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='http://ddcutil.com/'
@@ -55,7 +55,7 @@ build() {
 }
 
 package() {
-  provides=('libddcutil.so')
+  provides+=('libddcutil.so')
 
   cd "$_pkgsrc"
   make DESTDIR="${pkgdir:?}" install
