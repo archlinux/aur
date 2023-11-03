@@ -10,7 +10,7 @@ pkgbase = libressl-3.8
 	optdepends = ca-certificates
 	provides = libressl=3.8.2
 	replaces = libressl
-	backup = etc/libressl/openssl.cnf
+	backup = etc/libressl-3.8/openssl.cnf
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz.asc
 	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
