@@ -1,17 +1,17 @@
 pkgbase = fastlane
 	pkgdesc = The easiest way to automate beta deployments and releases for your iOS and Android apps
-	pkgver = 2.215.1
+	pkgver = 2.216.0
 	pkgrel = 1
 	url = https://fastlane.tools
 	arch = any
 	license = MIT
 	makedepends = ruby-rake
 	depends = ruby
-	noextract = fastlane-2.215.1.gem
+	noextract = fastlane-2.216.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fastlane-2.215.1.gem
+	source = https://rubygems.org/downloads/fastlane-2.216.0.gem
 	source = fastlane
-	sha256sums = 13977a96e734912a1214a4c17014d16c36e6e5c68b466d944e76905426ce0574
+	sha256sums = cb797517e57ec318f05ac42dc6b313896a1d71fc538f41c86d4143ba2ca3b816
 	sha256sums = feb1a15a8120dd3de709d73287fd4a754dbbfb05fa839f4927b3b7d6ea9b5ee3
 
 pkgname = fastlane
