@@ -1,6 +1,6 @@
 # Maintainer: Máté Szabó <mszabo-oss at protonmail dot com>
 pkgname=todds
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A CPU-based DDS encoder optimized for fast batch conversions with high encoding quality."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs' 'boost-libs' 'onetbb' 'opencv' 'hyperscan' 'fmt')
 makedepends=('cmake' 'boost' 'ispc')
 checkdepends=('catch2v3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/joseasoler/todds/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('bdde16a1960cf42798bca7119883d9cfe153f6c60fc799d2485a010efda169df734de68973738d080ef7a885c9c8cd0cf973697db7346c05b9729f6561faec52')
+sha512sums=('483ae1b8b1c5bf62b53ffb933fb15048d328a55b7ac6b1562d809c6fb48629837b6eb2c738518bd9983b8769152c23ca7723dbcb48f2d38f524305b1e78948e7')
 
 build() {
 	cd "$pkgname-$pkgver"
