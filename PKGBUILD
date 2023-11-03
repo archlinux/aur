@@ -1,7 +1,7 @@
 pkgbase='python-bivalve'
 pkgname=('python-bivalve')
 _module='bivalve'
-pkgver='1.1'
+pkgver='1.2.0'
 pkgrel=1
 pkgdesc="A bi-directional shell-like socket protocol framework using asyncio",
 url="https://github.com/lainproliant/bivalve"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('6073a67612fca88e2f5109de9aeea1023768b760dd2ca7a9007b1ec1aff930bd')
+sha256sums=('f9f0ea1816638a4688b348d829b17b7987fb2fa514526f735f3d273444384011')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
