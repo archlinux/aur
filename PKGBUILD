@@ -1,4 +1,4 @@
-# Maintainer: Bojan Milevski <boyanmilevskix@gmail.com>
+# Maintainer: Bojan Milevski <bojan@bojanmilevski.com>
 pkgname='ttf-macedonian-ancient'
 pkgver=1.0.0
 pkgrel=1
