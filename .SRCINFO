@@ -1,39 +1,13 @@
 pkgbase = wps-office-mui
 	pkgdesc = WPS Office MUI packages
-	pkgver = 11.1.0.9604
+	pkgver = 11.1.0.11704
 	pkgrel = 1
 	url = http://wps-community.org/
 	arch = any
 	license = custom
 	depends = wps-office
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/de_DE.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/en_GB.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/es_ES.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/es_MX.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/fr_CA.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/fr_FR.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/ja_JP.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/pl_PL.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/pt_BR.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/pt_PT.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/ru_RU.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/th_TH.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/zh_HK.7z
-	source = https://github.com/timxx/wps-office-mui/raw/master/mui/zh_TW.7z
-	sha256sums = 6384eaa1cdcf13cd41c44e244358464b9da4debcc8cb473c381b236ab4d5c54b
-	sha256sums = 10a2b73c9744fdfb34cbbfe1680838faed3ab64bf8d1bcbbc1349cc4752cecfa
-	sha256sums = 4e051845d4e8df7f5d430b1fe092f81b32bf0a9311abdd9c70f05819e53a8a83
-	sha256sums = 74e262af77a3dbce8f65290d3e24ba3b025099a0b92798744b77f565024467e7
-	sha256sums = 47773f24b91db4749dcadf16d759e8f0a831b0617a8dddaa3154d3a6de940ec9
-	sha256sums = 60e7095caefec21845b9717660585be8f9b79af87a4820e6498d5927304a0a7c
-	sha256sums = 6847388e01144467fdcff26c088609f09d1abbef1eba5a6e26e6236eaa169639
-	sha256sums = 31c2ef331173752d76b85e56d3b3687214b2ff1f0d0aecad6f79393034326b60
-	sha256sums = c4226de9f966b617a43c25cfc9508d0d1eba6410fe3c6c64fab637e3ca8b2888
-	sha256sums = 2d11f8e6f5f6449278a3d17f69d391ab7b02b1c9dd1a4bc7f48291f784777037
-	sha256sums = 9cdef38a1cddc427eebb9a53cc0c8b2431e71c8d4efd139f2644c4190efcf0e2
-	sha256sums = b96992fa1a1ad3bd2e1d965dfe1c126d178734db129a156b1774b1b0a0cb0ce7
-	sha256sums = fa5eb38e5f24334913b5ea55e9c1392eb8a24fded1ef09a65351da95d327ec16
-	sha256sums = c8b580418cd04e57f26a02773e45f544972ff210c5fe11d0cf1f1ad3ab7b3b9f
+	source = https://github.com/wachin/wps-office-all-mui-win-language/releases/download/v11.1.0.11704/mui.7z
+	sha256sums = 36a875397d1159dcf5363d12ce553d8378b3164638d95f3becbb6ef7dcc51a2f
 
 pkgname = wps-office-mui-de-de
 
@@ -47,6 +21,8 @@ pkgname = wps-office-mui-fr-ca
 
 pkgname = wps-office-mui-fr-fr
 
+pkgname = wps-office-mui-id-id
+
 pkgname = wps-office-mui-ja-jp
 
 pkgname = wps-office-mui-pl-pl
@@ -55,11 +31,4 @@ pkgname = wps-office-mui-pt-br
 
 pkgname = wps-office-mui-pt-pt
 
-pkgname = wps-office-mui-ru-ru
-
 pkgname = wps-office-mui-th-th
-
-pkgname = wps-office-mui-zh-hk
-
-pkgname = wps-office-mui-zh-tw
-
