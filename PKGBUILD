@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=quantiseqr
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Quantification of the Tumor Immune contexture from RNA-seq data'
-arch=('any')
+pkgdesc="Quantification of the Tumor Immune contexture from RNA-seq data"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
   r-biobase
   r-ggplot2
   r-limsolve
@@ -18,6 +18,9 @@ depends=(
   r-rlang
   r-summarizedexperiment
   r-tidyr
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-annotationdbi
@@ -34,14 +37,20 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('54cd24049197d914523acc910d526be3e6c15bca0559040949f7b7e5eacd2ef6')
+md5sums=('34cd21d2e59e1f8f58001fdcc49eaf44')
+sha256sums=('9e50016461c1fda327e55aa2f9849bc0f0b25554c8935aaa997cd137b5d75e05')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
