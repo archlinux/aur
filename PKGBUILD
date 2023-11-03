@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proActiv
-_pkgver=1.11.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Estimate Promoter Activity from RNA-Seq data'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1b5e327c6e7a671320e986cd214155f34fa36baf1811dd923dd142b9432b067e')
+sha256sums=('12727aa216c2884a461a63222e9503bec5930536e0cddc836c3966f6604a9501')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
