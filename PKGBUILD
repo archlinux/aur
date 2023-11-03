@@ -3,7 +3,7 @@
 # Contributor: Thomas Hobson <thomas /at/ hexf.me>
 
 pkgname=chart-testing
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='CLI tool for linting and testing Helm charts'
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('kubectl' 'git' 'yamllint' 'helm' 'yamale')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4a926bc59c810d9852b517d2427078f2a512f162705e51c26e1053b1a0a94990')
+sha256sums=('cf22fabe2293805a4d091d55f9a62b8c1ae039518bc26e56b4aa68d8868ff5ff')
 backup=('etc/ct/lintconf.yaml')
 
 build() {
