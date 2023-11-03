@@ -2,7 +2,7 @@
 _pkgname=openai-hub
 pkgname=$_pkgname-git
 pkgver=r59.cbbfa02
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and efficient gateway for interacting with OpenAI's API"
 url="https://github.com/lightsing/openai-hub"
 license=('MIT')
@@ -24,11 +24,13 @@ pkgver() {
 build() {
     cd "$srcdir/$_pkgname"
     cargo build --release --bin openai-hubd --all-features
+    cargo build --release --bin openai-hub-jwt-token-gen
 }
 
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm755 "$srcdir/$_pkgname/target/release/openai-hubd" "$pkgdir/usr/bin/openai-hubd"
+    install -Dm755 "$srcdir/$_pkgname/target/release/openai-hub-jwt-token-gen" "$pkgdir/usr/bin/openai-hub-jwt-token-gen"
     install -Dm644 "$srcdir/openai-hubd.service" "$pkgdir/usr/lib/systemd/system/openai-hubd.service"
     install -Dm600 "$srcdir/$_pkgname/config.toml" "$pkgdir/etc/openai-hub/config.toml"
     install -Dm644 "$srcdir/$_pkgname/acl.toml" "$pkgdir/etc/openai-hub/acl.toml"

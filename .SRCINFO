@@ -1,7 +1,7 @@
 pkgbase = openai-hub-git
 	pkgdesc = A secure and efficient gateway for interacting with OpenAI's API
 	pkgver = r59.cbbfa02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lightsing/openai-hub
 	arch = x86_64
 	arch = i686
