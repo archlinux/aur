@@ -7,7 +7,7 @@ pkgbase = python-pythonfmu
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = cmake
-	depends = python-fmpy
+	depends = python
 	source = https://github.com/NTNU-IHB/PythonFMU/archive/refs/tags/v0.6.2.tar.gz
 	md5sums = 1193be306ea231dd0786d72037d0669b
 
