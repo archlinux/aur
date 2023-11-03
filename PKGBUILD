@@ -1,42 +1,69 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
-_name=pytest-pylint
 pkgname=python-pytest-pylint
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='pytest plugin to check source code with pylint'
 arch=('any')
-license=('MIT')
 url='https://github.com/carsongee/pytest-pylint'
-depends=('python-pytest' 'python-pylint' 'python-toml')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/carsongee/pytest-pylint/archive/v$pkgver.tar.gz")
-sha512sums=('c6f30ba62cdc0fde5f4598d3c547c8bc3aed8122f22255fa65fdce4d64466bbbf3f077623cd306a684eea405e38e7c65d3009b8ddf0187c680fc74dda2a8bebb')
+license=('MIT')
+depends=(
+  'python'
+  'python-pytest'
+  'python-pylint'
+  'python-toml'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+_commit='229b64fcef27c5ac436f3b3a3d0ca07df0bf8b52'
+source=("$pkgname::git+$url#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed -e 's/^v//'
+}
 
 prepare() {
+  cd "$pkgname"
+
   # pytest-runner is certainly not required to build a wheel...
-  sed -e '/pytest-runner/d' -i $_name-$pkgver/setup.py
+  sed -e '/pytest-runner/d' -i setup.py
 }
 
 build() {
-  cd $_name-$pkgver
+  cd "$pkgname"
+
   python -m build --wheel --no-isolation
 }
 
 check() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  cd "$pkgname"
 
-  cd $_name-$pkgver
   # install to temporary location, as importlib is used
   python -m installer --destdir=test_dir dist/*.whl
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="test_dir/$site_packages:$PYTHONPATH"
   pytest -vv --ignore test_dir/
 }
 
 package() {
-  cd $_name-$pkgver
+  cd "$pkgname"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+
+  # symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "$site_packages/pytest_pylint-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
