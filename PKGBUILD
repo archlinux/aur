@@ -4,7 +4,7 @@
 # Contributor: Kars Wang <jaklsy g-mail>
 # Contributor: Artem Klevtsov <a.a.klevtsov@gmail.com>
 pkgname=lantern-bin
-pkgver=7.6.1
+pkgver=7.6.2
 pkgrel=1
 pkgdesc='Free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel, binary)'
 arch=('x86_64')
@@ -13,11 +13,24 @@ _githuburl="https://github.com/getlantern/lantern"
 license=('Apache')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-headless")
 provides=("${pkgname%-bin}")
-depends=('bash' 'gtk3' 'glib2' 'glibc' 'gcc-libs' 'libayatana-appindicator')
-options=('!emptydirs' '!strip' '!docs')
-source=("${pkgname}-${pkgver}.deb::https://github.com/getlantern/lantern-binaries/raw/main/${pkgname%-bin}-installer-64-bit.deb"
-    "${pkgname%-bin}.service")
-sha256sums=('4867c2f4d9d29691b005a5324074f9531781b32abe79050834ed5446a85ff123'
+depends=(
+    'bash'
+    'gtk3'
+    'glib2'
+    'glibc'
+    'gcc-libs'
+    'libayatana-appindicator'
+)
+options=(
+    '!emptydirs'
+    '!strip'
+    '!docs'
+)
+source=(
+    "${pkgname}-${pkgver}.deb::https://github.com/getlantern/lantern-binaries/raw/main/${pkgname%-bin}-installer-64-bit.deb"
+    "${pkgname%-bin}.service"
+)
+sha256sums=('e2579538e157b23ea0da8ed1d2e256baaa96cfd13fba149271327285fa63d8db'
             'fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
