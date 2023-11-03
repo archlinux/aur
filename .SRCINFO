@@ -1,0 +1,24 @@
+pkgbase = bfile-cli
+	pkgdesc = The blek! File CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.blek.codes/blek/bfile_cli
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = GPL3
+	makedepends = go>=1.21.3
+	depends = pacman>5
+	depends = git
+	provides = bfile-cli
+	conflicts = bfile-cli
+	options = !lto
+	source = bfile-cli-1.0.0.tar.gz::https://git.blek.codes/blek/bfile_cli/archive/1.0.0.tar.gz
+	sha256sums = 470022e1a77a0fbd864c251cb3bbab45c568a3f7985643e3b39add5f4299b31a
+
+pkgname = bfile-cli
