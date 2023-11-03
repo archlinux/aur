@@ -1,16 +1,17 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=compcodeR
-_pkgver=1.36.2
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.2
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='RNAseq data simulation, differential expression analysis and performance comparison of differential expression methods'
-arch=('any')
+pkgdesc="RNAseq data simulation, differential expression analysis and performance comparison of differential expression methods"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
+  r-ape
   r-catools
   r-edger
   r-ggplot2
@@ -19,22 +20,28 @@ depends=(
   r-knitr
   r-limma
   r-markdown
+  r-matrixstats
   r-modeest
+  r-phylolm
+  r-rmarkdown
   r-rocr
+  r-shiny
+  r-shinydashboard
   r-sm
   r-stringr
   r-vioplot
-  tk
-  r-matrixstats
-  r-ape
-  r-phylolm
+)
+checkdepends=(
+  r-ggtree
+  r-phangorn
+  r-phytools
+  r-testthat
+  r-tidytree
 )
 optdepends=(
-  r-bayseq
   r-biocstyle
   r-covr
   r-deseq2
-  r-dss
   r-ebseq
   r-genefilter
   r-ggtree
@@ -42,8 +49,6 @@ optdepends=(
   r-noiseq
   r-phangorn
   r-phytools
-  r-rmarkdown
-  r-rpanel
   r-statmod
   r-sva
   r-tcc
@@ -51,14 +56,20 @@ optdepends=(
   r-tidytree
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('00d7e51bf54d059e2a4d7ad0537c5a6e256ee48da59374b68e8c111522937310')
+md5sums=('b1ec77496e614cf3399843b8c34e6ab2')
+sha256sums=('43ed456bf52146b00d9a4b83a84f86d15630b669048d0019bae230e3e9293e04')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
