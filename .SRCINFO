@@ -1,6 +1,6 @@
 pkgbase = nvidia-470xx-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver
-	pkgver = 470.199.02
+	pkgver = 470.223.02
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = nvidia-470xx-settings
 	makedepends = nvidia-470xx-utils
 	makedepends = libxext
 	options = staticlibs
-	source = nvidia-470xx-settings-470.199.02.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/470.199.02.tar.gz
+	source = nvidia-470xx-settings-470.223.02.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/470.223.02.tar.gz
 	source = libxnvctrl_so.patch
-	sha512sums = d0e43b8e0ef4298ce92be63d6a985e6ba3e1b9133c52f21254435d79ff20e78b195b16a75b34c7ba1ec659529c67e617a2fe40e2f573f6f2ab26ddba7bf203ad
+	sha512sums = 29d2fbbbf75fb56010b44a7ed183de53e2c41dbf0a3cde4d6e44bec3ac3957471495eab3498b5565930e97a3e07bb0348917b8664426254122377b8d1ea1f259
 	sha512sums = 91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa
 
 pkgname = nvidia-470xx-settings
