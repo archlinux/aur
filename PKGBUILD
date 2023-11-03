@@ -9,9 +9,14 @@ license=('MIT')
 depends=('libx11')
 makedepends=('git')
 url="https://github.com/phillbush/xnotify.git"
-source=('git://github.com/phillbush/xnotify')
+source=("master.tar.gz::https://github.com/phillbush/xnotify/archive/refs/heads/master.tar.gz")
 md5sums=('SKIP')
 _gitname="xnotify"
+
+prepare() {
+	cd $srcdir
+	mv $_gitname-master $_gitname
+}
 
 pkgver() {
 	cd $srcdir/$_gitname

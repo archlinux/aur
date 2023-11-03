@@ -7,8 +7,7 @@ pkgbase = xnotify-git
 	license = MIT
 	makedepends = git
 	depends = libx11
-	source = git://github.com/phillbush/xnotify
+	source = master.tar.gz::https://github.com/phillbush/xnotify/archive/refs/heads/master.tar.gz
 	md5sums = SKIP
 
 pkgname = xnotify-git
-
