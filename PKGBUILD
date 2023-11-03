@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=avogadro2-appimage
 _pkgname=Avogadro2
-pkgver=1.98.0
+pkgver=1.98.1
 pkgrel=1
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
 arch=("x86_64")
@@ -10,13 +10,18 @@ _githuburl="https://github.com/OpenChemistry/avogadroapp"
 license=('custom:BSD3-Clause')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc')
-makedepends=('squashfuse')
+depends=(
+    'zlib'
+    'glibc'
+)
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${CARCH}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/${pkgver}/LICENSE")
-sha256sums=('1a4192dc926a1150691c6beabba209a06adeed08376fcc7befba1f310a5ec33d'
+sha256sums=('d9bd66e71cb45e7296c1623db29af9329a89bb8ea58e7602b13af69f22f58166'
             '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"

@@ -1,6 +1,6 @@
 pkgbase = avogadro2-appimage
 	pkgdesc = An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.
-	pkgver = 1.98.0
+	pkgver = 1.98.1
 	pkgrel = 1
 	url = https://two.avogadro.cc/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = avogadro2-appimage
 	makedepends = squashfuse
 	depends = zlib
 	depends = glibc
-	provides = avogadro2=1.98.0
+	provides = avogadro2=1.98.1
 	conflicts = avogadro2
 	options = !strip
-	source = avogadro2-1.98.0.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/1.98.0/Avogadro2-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/1.98.0/LICENSE
-	sha256sums = 1a4192dc926a1150691c6beabba209a06adeed08376fcc7befba1f310a5ec33d
+	source = avogadro2-1.98.1.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/1.98.1/Avogadro2-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/1.98.1/LICENSE
+	sha256sums = d9bd66e71cb45e7296c1623db29af9329a89bb8ea58e7602b13af69f22f58166
 	sha256sums = 3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4
 
 pkgname = avogadro2-appimage
