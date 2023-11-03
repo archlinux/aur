@@ -1,7 +1,7 @@
 # Maintainer: William Penton <william@penton.us>
 
 pkgname=gitkraken-cli
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
@@ -16,7 +16,7 @@ install=''
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/gitkraken/gk-cli/releases/download/v${pkgver}/gk_${pkgver}_Linux_x86_64.zip"
 )
-sha256sums=('8517804b3bacc97427c70bdf504699e0064efdbb74688d82100b743bd301b141')
+sha256sums=('267e87f21b4c9297882c0801a84370653efaf8fe95396e4a7492542b92a259a7')
 
 package() {
     install -d "$pkgdir"/usr/local/bin
