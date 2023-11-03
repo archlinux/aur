@@ -5,7 +5,7 @@
 _cranname=RCurl
 pkgname=r-${_cranname,,}
 
-_cranver=1.98-1.12
+_cranver=1.98-1.13
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 
@@ -23,7 +23,7 @@ depends=(
 optdepends=(r-xml)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("5aeedcb97d79abe55579519a55bae9cd2f8241b36a2f3f52d9234fdcbd5b45b2835536a69fb5802c7254f960de1fada2b13292ea3cb2d9cfb53f86c260549eac")
+b2sums=("f1b9f79af4d0f85150e8843fdbd4e1aa5b3f53c3a759d9b76c4e7015a9c1e9b04bac8286ea7ce5550874e74c4022c0b431b487ad5465b6626dc34cc2432a743a")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
