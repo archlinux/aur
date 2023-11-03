@@ -1,6 +1,6 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 
-pkgname=libdnf
+pkgname=libnfd
 pkgver=116
 pkgrel=1
 pkgdesc="A tiny, neat C library that portably invokes native file open and save dialogs."
