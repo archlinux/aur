@@ -1,7 +1,7 @@
 pkgbase = setzer
 	pkgdesc = LaTeX editor written in Python with Gtk
-	pkgver = 60
-	pkgrel = 3
+	pkgver = 61
+	pkgrel = 1
 	url = https://github.com/cvfosammmm/setzer
 	arch = any
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = setzer
 	depends = webkit2gtk
 	depends = webkitgtk-6.0
 	depends = xdg-utils
-	source = setzer-60.tar.gz::https://github.com/cvfosammmm/setzer/archive/v60/60.tar.gz
-	sha256sums = ddf00415b82a1c3237a8ea00673977437cc00d2c49a2295c33792871fc63bfc1
+	source = setzer-61.tar.gz::https://github.com/cvfosammmm/setzer/archive/v61/61.tar.gz
+	sha256sums = d999f626bc9b9eec001e83912d5cd4cadcef993e89affc7ba007823f9817d462
 
 pkgname = setzer

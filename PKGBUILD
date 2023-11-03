@@ -3,8 +3,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=setzer
-pkgver=60
-pkgrel=3
+pkgver=61
+pkgrel=1
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
 url='https://github.com/cvfosammmm/setzer'
@@ -41,4 +41,4 @@ check() {
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
-sha256sums=('ddf00415b82a1c3237a8ea00673977437cc00d2c49a2295c33792871fc63bfc1')
+sha256sums=('d999f626bc9b9eec001e83912d5cd4cadcef993e89affc7ba007823f9817d462')
