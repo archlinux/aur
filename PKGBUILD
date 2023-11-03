@@ -1,6 +1,6 @@
 # Maintainer: Bojan Milevski <bojan@bojanmilevski.com>
 pkgname='ttf-macedonian-church'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Macedonian Church Font"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = ttf-macedonian-church
 	pkgdesc = Macedonian Church Font
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://www.ffonts.net/Macedonian-Church.font
 	arch = any
