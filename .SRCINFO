@@ -1,0 +1,23 @@
+pkgbase = vagrant-manager-bin
+	pkgdesc = An electron, status bar menu app that lets you manage all of your vagrant machines from one central location.
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/absalomedia/vagrant-manager
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = vagrant
+	depends = electron5
+	provides = vagrant-manager=2.3.2
+	conflicts = vagrant-manager
+	source = LICENSE.md::https://raw.githubusercontent.com/absalomedia/vagrant-manager/master/LICENSE.md
+	source = vagrant-manager.sh
+	sha256sums = aab8e4332f27b8c96aad7427a304e40a612f62af9bef709505452bd04d136c03
+	sha256sums = 47974317b821d5bc744bb76623ef2dd22a5a8c65fefe579597d9c9fe5fbde64e
+	source_i686 = vagrant-manager-2.3.2-i686.deb::https://github.com/absalomedia/vagrant-manager/releases/download/2.3.2/vagrant-manager-i386.deb
+	sha256sums_i686 = 0878a5fa6482888db12d3ead7fa83f695079808871be2fd5105dd06bc8faacd9
+	source_x86_64 = vagrant-manager-2.3.2-x86_64.deb::https://github.com/absalomedia/vagrant-manager/releases/download/2.3.2/vagrant-manager-amd64.deb
+	sha256sums_x86_64 = 251e8bc77dd84f9aaf38529afa948b6a576856715f8990059a3104f0d10ab90b
+
+pkgname = vagrant-manager-bin
