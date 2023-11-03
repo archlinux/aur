@@ -21,7 +21,7 @@ source=(https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz{,
 sha256sums=('6d4b8d5bbb25a1f8336639e56ec5088052d43a95256697a85c4ce91323c25954'
             'SKIP')
 provides=(libressl=${pkgver})
-conflicts=(libressl)
+#conflicts=(libressl)
 replaces=(libressl)
 validpgpkeys=(A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5) # Brent Cook <bcook@openbsd.org>
 
@@ -34,10 +34,10 @@ build() {
     cd ${_pkgname}-${pkgver}
     ./configure \
         --prefix=/usr \
-        --with-openssldir=/etc/libressl \
+        --with-openssldir=/etc/libressl-3.8 \
         --libdir=/usr/lib/libressl-3.8 \
         --includedir=/usr/include/libressl-3.8 \
-        --program-prefix "libressl-"
+        --program-prefix "libressl-3.8-"
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
 }
@@ -53,7 +53,7 @@ package() {
     install -Dm644 COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 
     mkdir -p "${pkgdir}/etc/ld.so.conf.d"
-    echo "/usr/lib/${_pkgname}" > "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
+    echo "/usr/lib/${pkgname}" > "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
 
     # Remove symlink man pages that point to OpenSSL ones since the prefix is not accounted for
     for manlink in $(find -L "${pkgdir}"/usr/share/man/man3/ -type l) ;
