@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-bluetooth-battery-indicator-git
-pkgver=r58.d0ded24
+_uuid=bluetooth-battery@michalw.github.com
+pkgver=r59.12beac8
 pkgrel=1
-pkgdesc="Gnome-Shell extension displaying battery percentage for bluetooth devices"
+pkgdesc="GNOME Shell extension displaying battery percentage for bluetooth devices"
 arch=('any')
 url="https://github.com/MichalW/gnome-bluetooth-battery-indicator"
 license=('GPL3')
-depends=('gnome-shell<=1:44.6' 'python-pybluez')
+depends=('gnome-shell' 'python-pybluez')
 makedepends=('git')
 optdepends=('bluez-utils: Get battery levels using bluetoothctl')
 provides=("${pkgname%-git}")
@@ -17,12 +18,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd gnome-bluetooth-battery-indicator
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd gnome-bluetooth-battery-indicator
   git submodule init
   git config submodule.Bluetooth_Headset_Battery_Level.url \
     "$srcdir/Bluetooth_Headset_Battery_Level"
@@ -30,26 +31,23 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd gnome-bluetooth-battery-indicator
   make translation
   make build
 }
 
 package() {
-  _uuid='bluetooth-battery@michalw.github.com'
-  _schema='org.gnome.shell.extensions.bluetooth_battery.gschema.xml'
+  cd gnome-bluetooth-battery-indicator
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar xvf "${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  cd "$srcdir/${pkgname%-git}"
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
-  bsdtar xvf "$_uuid.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/" --no-same-owner
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
   install -Dm644 schemas/org.gnome.shell.extensions.bluetooth_battery.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -r "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 
-  # Remove unnecessary files
-  find "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/Bluetooth_Headset_Battery_Level" \
-    -type f ! -name '*.py' -delete
-  rm "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/LICENSE"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
+  # Remove duplicate GPL3 license & README
+  rm "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"{LICENSE,README.md}
 }
