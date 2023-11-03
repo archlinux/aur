@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.zip::https://download.pytorch.org/libtorch/cu121/l
 sha512sums=('51d6558149a63eb05c2cc4363f1eb0222e81b14003d091e604235eceb4927f85e346ed61ab9d738ddad26b470d95c73efcdcc4335240f28cd418c7ac0789f9e4')
 
 package() {
-  rm "${pkgname}-${pkgver}"
+  rm "${pkgname}-${pkgver}.zip"
   install -d "${pkgdir}/usr/lib/"
   rm ${srcdir}/libtorch/lib/libcudnn*
   mv ${srcdir}/libtorch/lib/* ${pkgdir}/usr/lib/
