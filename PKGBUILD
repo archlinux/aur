@@ -2,7 +2,7 @@
 pkgname=chatd
 pkgver=1.0.0
 _ollamaver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your documents using local AI"
 arch=('x86_64')
 url="https://chatd.ai/"
@@ -27,6 +27,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('a0bad114958419c22ef5ab40ff5e8e96a8a408f31050decc7feeaa89bdff01bf'
+            '5c2948f1c368f02319c8ea417d27911f0c0b1f27b7f6f23e397816e2dfdb1dab'
             'fcaeb0dbb5ef834b40ae32c177deed39a8a79e280305c6195a84fa70b525b844')
 build() {
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
