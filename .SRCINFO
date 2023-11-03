@@ -1,14 +1,11 @@
-pkgbase = libnfd
-	pkgdesc = Native file dialog library
-	pkgver = 1.0.0
+pkgbase = libdnf
+	pkgdesc = A tiny, neat C library that portably invokes native file open and save dialogs.
+	pkgver = 116
 	pkgrel = 1
+	url = https://github.com/mlabbe/nativefiledialog
 	arch = any
-	makedepends = gcc
-	makedepends = make
-	makedepends = cmake
-	depends = gtk3
-	options = !strip
-	source = git+https://github.com/btzy/nativefiledialog-extended.git
-	sha256sums = SKIP
+	license = GPL
+	source = https://github.com/mlabbe/nativefiledialog/archive/refs/tags/release_116.tar.gz
+	sha256sums = 1bbaed79b9c499c8d2a54f40f89277e721c0894bf3048bb247d826b96db6bc08
 
-pkgname = libnfd
+pkgname = libdnf
