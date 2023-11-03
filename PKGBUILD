@@ -2,8 +2,8 @@
 # Contributor: tarball <bootctl at gmail dot com>
 
 pkgname=mullvad-browser
-pkgver=13.0
-_esrbuildver=115.3.1esr-13.0-1-build3
+pkgver=13.0.1
+_esrbuildver=115.4.0esr-13.0-1-build2
 # will not build with stable, see mozilla/mp4parse-rust#387; also see "uses" column of
 # https://firefox-source-docs.mozilla.org/writing-rust-code/update-policy.html
 _rustver=1.69.0
@@ -67,7 +67,7 @@ source=(
   https://cdn.mullvad.net/browser/$pkgver/src-firefox-mullvad-browser-$_esrbuildver.tar.xz{,.asc}
   $pkgname.desktop
 )
-sha256sums=('b2991a6f7a52afba0907651d6a0bceb1f4b343bc03863686ca758f8d7ce99d99'
+sha256sums=('0db79b1b0706ed38348ce54216ff1a92c22c0b1799649c16367335a8e7a70601'
             'SKIP'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
 
