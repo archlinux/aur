@@ -1,6 +1,6 @@
 pkgbase = r-qgraph
 	pkgdesc = Graph Plotting Methods, Psychometric Data Visualization and Graphical Model Estimation
-	pkgver = 1.9.5
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=qgraph
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-qgraph
 	depends = r-reshape2
 	optdepends = r-bdgraph
 	optdepends = r-huge
-	source = https://cran.r-project.org/src/contrib/qgraph_1.9.5.tar.gz
-	sha256sums = 4c5a2c7247b48d896ac56df99a07647c3f428732e1ac57b920eb0fd4e54a21d6
+	source = https://cran.r-project.org/src/contrib/qgraph_1.9.8.tar.gz
+	sha256sums = 14a81d64f37614a05445408babbb2da5bc53886def8b0c2e4101b06e8b4c01d4
 
 pkgname = r-qgraph
