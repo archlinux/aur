@@ -1,0 +1,18 @@
+pkgbase = spark-wallet-bin
+	pkgdesc = A minimalistic wallet GUI for c-lightning, accessible over the web or through mobile and desktop apps.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/shesek/spark-wallet
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron13
+	conflicts = spark-wallet
+	source = spark-wallet-0.3.1.deb::https://github.com/shesek/spark-wallet/releases/download/v0.3.1/spark-wallet-0.3.1-linux-amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/shesek/spark-wallet/v0.3.1/LICENSE
+	source = spark-wallet.sh
+	sha256sums = 074554cbccbf2af7d804272bdb1dee0e266ce8ef5157973996876ff49022fe32
+	sha256sums = d8a82e79466ba5d679ba7edf5acd05bf6767edeb56f51a76ce8e121c7c887bf2
+	sha256sums = 3412cda660ea2783505bbe089ab3ac70e50d279aa22130d1b88a3372e3b22843
+
+pkgname = spark-wallet-bin
