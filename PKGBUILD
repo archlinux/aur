@@ -16,7 +16,7 @@ url="https://www.libressl.org/"
 license=(ISC custom:OpenSSL)
 depends=(glibc)
 optdepends=(ca-certificates)
-backup=(etc/libressl/openssl.cnf)
+backup=(etc/libressl-3.8/openssl.cnf)
 source=(https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz{,.asc})
 sha256sums=('6d4b8d5bbb25a1f8336639e56ec5088052d43a95256697a85c4ce91323c25954'
             'SKIP')
