@@ -29,7 +29,7 @@ pkgbase = lfp
 	conflicts = lfp-git
 	source = https://software.concise.cc/x86_64/lfp-4.1.2-1-x86_64.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 207a27dfc6ee66f6bd086b2c4efd9706
-	sha512sums = 364913c39157513473e4bf4acd7c93715568c1afc591ec59c2cfcd707a6f13c316a59ab164fc0cfb17d0a5f4849afa61a04a4d7890abc80e4482fcbb5e47b308
+	md5sums = a552a2f2dd05a12787b08823b193c533
+	sha512sums = 9da562aaa90c2b81149bb0e594f3b47c2b380f4b7da144393e17640748c61b9e50ec5fc7948c14611a8df9f58a1ccfefdfe8b4f4c579bc28fa9e694444d63158
 
 pkgname = lfp
