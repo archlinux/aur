@@ -6,7 +6,7 @@ _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=3.1.9
 pkgver=3.1.9.r9.g5db2233
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
 license=(GPL)
@@ -17,7 +17,7 @@ optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter
             'pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
             'texlive-core: for pdf output')
 provides=("$_pkgname=$_pkgver")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname-cli" "haskell-$_pkgname") # binary and man page are in different arch packages
 source=("git+https://github.com/alerque/$_pkgname.git#branch=sile-$_pkgver")
 sha512sums=('SKIP')
 
