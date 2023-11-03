@@ -1,20 +1,51 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
-pkgver=2.3.0
+pkgver=2.4.0
 _nvmdver="${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
 arch=('x86_64')
 url="https://github.com/1111mp/nvm-desktop"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('nss' 'cairo' 'gcc-libs' 'libxcb' 'libxrandr' 'gtk3' 'dbus' 'expat' 'libdrm' 'mesa' 'libxcomposite' 'pango' 'at-spi2-core' 'libxext' \
-    'libxkbcommon' 'nspr' 'alsa-lib' 'hicolor-icon-theme' 'glibc' 'libcups' 'libxdamage' 'libxfixes' 'libx11' 'glib2')
-makedepends=('gendesk' 'npm>=7' 'nodejs>=14' 'yarn' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+depends=(
+    'nss'
+    'cairo'
+    'gcc-libs'
+    'libxcb'
+    'libxrandr'
+    'gtk3'
+    'dbus'
+    'expat'
+    'libdrm'
+    'mesa'
+    'libxcomposite'
+    'pango'
+    'at-spi2-core'
+    'libxext'
+    'libxkbcommon'
+    'nspr'
+    'alsa-lib'
+    'hicolor-icon-theme'
+    'glibc'
+    'libcups'
+    'libxdamage'
+    'libxfixes'
+    'libx11'
+    'glib2'
+)
+makedepends=(
+    'gendesk'
+    'npm>=7'
+    'nodejs>=14'
+    'yarn'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "nvmd-${_nvmdver}.zip::https://github.com/1111mp/nvmd-command/releases/download/v${_nvmdver}/Linux-x64.zip")
-sha256sums=('c57951ab6528e1509e42f165003acaddd8e28e1551b4d61dcaf5af5b3f0be80c'
-            '920d8c60f1f0bc8251640028bc4a3d78f0035e5c7918e82557c7a6ad7108d3d7')
+sha256sums=('12747cf5632b1d418524dec88c1041460b16c128d2c4a1474da05fda5025844f'
+            '75667b1ae4bdcc3989732f5a4f552dee4f861ffd9ae6fd76278b928a18959109')
 build() {
     gendesk -f -n -q --categories "Development;Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
