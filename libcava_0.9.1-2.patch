@@ -1,0 +1,12 @@
+diff --unified --recursive --text cava-0.9.1_orig/meson.build cava-0.9.1_new/meson.build
+--- cava-0.9.1_orig/meson.build	2023-11-03 10:15:26.754693316 +0100
++++ cava-0.9.1_new/meson.build	2023-11-03 10:16:13.108026279 +0100
+@@ -238,7 +238,7 @@
+ pkg = import('pkgconfig')
+ pkg.generate(libraries: cava_lib,
+              subdirs: ['cava', 'cava/input', 'cava/output'],
+-             version: '0.8.5',
++             version: '0.9.1',
+              name: 'libcava',
+              filebase: 'cava',
+              description: 'A cava library')
