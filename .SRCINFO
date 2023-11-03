@@ -1,5 +1,5 @@
 pkgbase = image-optimizer-git
-	pkgdesc = Simple lossless image optimizer (latest commit)
+	pkgdesc = Simple lossless compression (latest commit)
 	pkgver = 0.1.22.r2.g99ebc8a
 	pkgrel = 1
 	url = https://github.com/gijsgoudzwaard/image-optimizer
