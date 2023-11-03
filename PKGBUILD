@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc='The blek! File CLI'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://git.blek.codes/blek/bfile_cli'
+license=('GPL3')
 provides=('bfile-cli')
 conflicts=('bfile-cli')
 
