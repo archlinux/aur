@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=materialgram-git
 pkgver=4.11.3.1.r0.g8e7f13065
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial desktop version of Telegram messaging app with Material Design'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kukuruzka165/materialgram"
@@ -191,6 +191,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9c3c0e675bcd13dfc8c5bd033189e4cdb89c15f8426b6bac7a8403703d47e005c1c4a0ae5011361e51ac82419eea479880a757f9a4b871b7db5111bfb5697dd5'
-            'd39e111bdfc6308914b13e75a7a1d9940140e83dd9b47668895e36c1140bd2107750c5f378facdffa08ef295a95abbf4dc3fbf1b4bc7061cae319a0438b98058'
-            'aa5c0d76d4a4992808402a3dfc6cbc1c0514ff4786688c611a691454d6054010a0f7d377c82a6bf4d12b4c5470503eae68ea1b3600c825862223045bc5c2d266')
+            'bfffa405e5051b1bce791a6226228ecba96d7218f3ba3b954c1a0952ff21669f293f9d7ef3a1dbb2fb3d86c3c115c751b12f1731889d605e806af212bdab99e1'
+            '25c817d37e0d96aed72e01fd566a851c2895570f04423f3358bc5ef66421c518a82d74e9aeaa64095c122a12d8dc56a4f42ee72bdd3123d7b823df211d0c04c5'
+            '4015577ff22150c5191ca80d61cf82895096cf86e1a94bda283cadcebb2202ced8d2ffdf55a3e19e50f70f8bc13317e17927dc9ed7f0c8645e28d760115a935e')
