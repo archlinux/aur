@@ -10,7 +10,8 @@ license=('GPL3')
 depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk-4.1')
 makedepends=('git' 'itstool' 'meson')
 checkdepends=('appstream-glib')
-optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX')
+optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX'
+            'yelp: in-app help)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=('git+https://github.com/fabiocolacio/Marker.git'
