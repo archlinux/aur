@@ -1,6 +1,6 @@
 pkgbase = bot.dev
 	pkgdesc = Desktop app to manage Discord.js bots built with React, Electron and DaisyUI
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/juaneth/bot.dev
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = bot.dev
 	depends = bash
 	depends = electron23
 	conflicts = bot.dev
-	source = bot.dev-0.0.2.tar.gz::https://github.com/juaneth/bot.dev/archive/refs/tags/v0.0.2.tar.gz
+	source = bot.dev-0.1.0.tar.gz::https://github.com/juaneth/bot.dev/archive/refs/tags/v0.1.0.tar.gz
 	source = bot.dev.sh
-	sha256sums = 5a1dd5687b9bf11bef1ddff2d29b65c64da2dafc35c5fec77edf3303d6f90b56
-	sha256sums = abaaa4b6c61773d0fff4c40124604acff0ae7218ef17a1ffc4637ed39ae5373c
+	sha256sums = d9712a4e7f5f6817d45d2ba0f06e2f0aa43fba3853b1d5ecd4f16893d8c28c19
+	sha256sums = d34069e7fa0ea01f3931905ba9724946ad4b20835cf18349755a57906638a0f0
 
 pkgname = bot.dev
