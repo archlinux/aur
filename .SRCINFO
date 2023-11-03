@@ -1,5 +1,5 @@
 pkgbase = tor-unstable
-	pkgdesc = Anonymizing overlay network.
+	pkgdesc = Anonymizing overlay network (with alpha/beta/rc)
 	pkgver = 0.4.8.8
 	pkgrel = 1
 	url = http://www.torproject.org/

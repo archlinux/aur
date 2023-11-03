@@ -8,7 +8,7 @@
 pkgname=tor-unstable
 pkgver=0.4.8.8
 pkgrel=1
-pkgdesc='Anonymizing overlay network.'
+pkgdesc='Anonymizing overlay network (with alpha/beta/rc)'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.torproject.org/'
 license=('BSD-3-Clause' 'LGPL-3.0-only' 'MIT')
