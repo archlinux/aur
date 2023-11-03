@@ -27,7 +27,7 @@ pkgbase = wsjtx-improved-al
 	conflicts = wsjtx
 	options = !lto
 	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v2.7.1/Source%20code/wsjtx-2.7.1-devel_improved_AL_PLUS_231031.tgz
-	md5sums = 8071202efefab021cb4587a3fbdad1fd
-	sha1sums = 4529a8a14012e5e59030a317d9792cb485dae033
+	md5sums = 6047cdc38b6f3b57616896da0190376e
+	sha1sums = dfb3fe5ba2811907f471f964e46342cc0746a771
 
 pkgname = wsjtx-improved-al
