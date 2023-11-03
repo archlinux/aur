@@ -37,8 +37,8 @@ install=wsjtx-improved.install
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}${_pkgver}_improved_widescreen_PLUS_${_build}.tgz")
-md5sums=('c12a19b2fae9daa86c18d68e59fbe1ff')
-sha1sums=('b3ab917881ae655c3bd8b74f8e24ee1b9c13546b')
+md5sums=('a916f4acbe18798fa87055d5d1d8aed5')
+sha1sums=('55039752ceb190f39b34c22890d60bda91161b74')
 
 options=(!lto)
 
