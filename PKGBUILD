@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multiMiR
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Integration of multiple microRNA-target databases with their disease and drug associations'
-arch=('any')
+pkgdesc="Integration of multiple microRNA-target databases with their disease and drug associations"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('MIT')
+license=(MIT)
 depends=(
-  r
   r-annotationdbi
   r-biocgenerics
   r-dplyr
@@ -18,6 +18,9 @@ depends=(
   r-rcurl
   r-tibble
   r-xml
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocstyle
@@ -27,15 +30,23 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b7eca3f3b23dd9d6c86c90919037c44455a8ae126b690d41f427b2100e6e675')
+md5sums=('7102f312557b010d184bac5dea6e5009')
+sha256sums=('2574a7991c9552c84c8cd9c39ba4f5508d6e21870a0126da1ff855e96c82b157')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
