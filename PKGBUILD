@@ -7,12 +7,13 @@
 
 _pkgname="swift-language"
 pkgname="$_pkgname"
-_swiftver=swift-5.9-RELEASE
-pkgver=5.9
+_swiftver=swift-5.9.1-RELEASE
+pkgver=5.9.1
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('x86_64')
-url="https://swift.org/"
+#url="https://swift.org/"
+url="https://github.com/apple/swift"
 license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses')
 makedepends=('clang' 'cmake' 'git' 'lld' 'llvm' 'ninja' 'patch' 'python-six' 'rsync' 'swig')
@@ -146,21 +147,27 @@ prepare () {
     ln -sfP 'swift-tools-support-core' 'tools-support-core'
     ln -sfP 'swift-xcode-playground-support' 'xcode-playground-support'
 
-    ( cd swift && patch -Np1 -F100 -i "${srcdir:?}/0001-arch-aur-patches.patch" )
+    # ( cd swift && patch -Np1 -F100 -i "${srcdir:?}/0001-arch-aur-patches.patch" )
 }
 
 build() {
     # Fix /usr/include error
-    find "${srcdir:?}/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-    find "${srcdir:?}/apple-llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-    find "${srcdir:?}/apple-llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "${srcdir:?}/swift" -type f -print0 \
+        | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
+    find "${srcdir:?}/apple-llvm-project" -type f -print0 \
+        | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
 
     # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
     # Which will break `compiler-rt`
-    unset CPPFLAGS
-    export DISTCC_HOSTS='--randomize localhost red,cpp,lzo green,cpp,lzo blue,cpp,lzo'
+    CFLAGS=$(sed -E 's&\s\S*D_FORTIFY_SOURCE\S*\s& &; s&\s+& &g' <<< "$CFLAGS")
+    CXXFLAGS=$(sed -E 's&\s\S*D_FORTIFY_SOURCE\S*\s& &; s&\s+& &g' <<< "$CFLAGS")
+    # unset CPPFLAGS
+    # export DISTCC_HOSTS='--randomize localhost red,cpp,lzo green,cpp,lzo blue,cpp,lzo'
 
-    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="${srcdir:?}/destdir"
+    "${srcdir:?}/swift/utils/build-script" \
+        --release-debuginfo \
+        --skip-early-swift-driver \
+        --skip-early-swiftsyntax
 }
 
 package() {
