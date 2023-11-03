@@ -4,8 +4,8 @@
 # Note: The exit 1 conditions are for silencing shellcheck warnings
 
 pkgname=nouveau-fw-gsp
-pkgver=535.54.03
-pkgrel=3
+pkgver=535.113.01
+pkgrel=1
 pkgdesc="NVIDIA GSP (Turing+) firmware for the latest GSP kernel code"
 arch=('any')
 url="https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/README/gsp.html"
@@ -14,11 +14,10 @@ options=('!strip') # Disabled for now to prevent potential issues
 makedepends=('git' 'python3')
 _nvidia="NVIDIA-Linux-x86_64-${pkgver}"
 _gsp_output="_out/nvidia"
-source=("git+https://github.com/NVIDIA/open-gpu-kernel-modules.git?signed#tag=${pkgver}"
+source=("git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=${pkgver}"
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_nvidia}.run")
 sha256sums=('SKIP'
-            '454764f57ea1b9e19166a370f78be10e71f0626438fb197f726dc3caf05b4082')
-validpgpkeys=('FAC001E8B1F43387247B90526D466BB75E006CFC') # Andy Ritger <aritger@nvidia.com>
+            '28e304d8dfe81b7f5e9f60404bf38c62fca35578d97522e3c70a0e8f23167481')
 
 prepare() {
   # HACK (FIXME): Don't strip tbe version dots in firmware extract script
