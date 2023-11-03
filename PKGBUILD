@@ -2,8 +2,8 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=patator
-pkgver=0.9
-pkgrel=4
+pkgver=1.0
+pkgrel=1
 pkgdesc="A multi-purpose bruteforcer"
 arch=(any)
 url="https://github.com/lanjelot/patator"
@@ -27,7 +27,7 @@ optdepends=(
   'unzip: zip archives'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('dfec3106e3bbab15b83135e17728e8dbb325f2697875364d99abc2ebba15fd5a')
+sha256sums=('b3eb75170bec398c81219665a39feff1a756ee62f7104753e2a661a29c3324cf')
 
 package() {
   install -D -m 0755 "$srcdir/$pkgname-$pkgver/$pkgname.py" "$pkgdir/usr/bin/patator"
