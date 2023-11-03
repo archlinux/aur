@@ -1,15 +1,16 @@
 # Maintainer: Paulo Matos <paulo@matos-sorge.com>
 # Contributor: b4283 <unknown@unknowndomain.com>
+# Contributor: weilinfox <caiweilin at iscas.ac.cn>
 pkgname=riscv-isa-sim-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r496.785762c
+pkgver=r3050.5a114574
 pkgrel=1
 pkgdesc="Spike, a RISC-V ISA Simulator"
 arch=(x86_64 i686)
 url="https://github.com/riscv/riscv-isa-sim"
 license=('BSD')
 groups=()
-depends=(riscv-fesvr-git dtc)
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+depends=(dtc)
+makedepends=('boost' 'git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
