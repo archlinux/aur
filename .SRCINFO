@@ -1,0 +1,18 @@
+pkgbase = powerstation-git
+	pkgdesc = Open source performance daemon with DBus interface
+	pkgver = v0.1.1.r1.geaa1eb7
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/PowerStation
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = make
+	makedepends = cmake
+	makedepends = clang15
+	depends = dbus
+	provides = powerstation
+	conflicts = powerstation-bin
+	source = powerstation::git+https://github.com/ShadowBlip/powerstation.git
+	sha256sums = SKIP
+
+pkgname = powerstation-git
