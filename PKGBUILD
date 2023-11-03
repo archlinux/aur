@@ -1,3 +1,4 @@
+# Maintainer: Guillermo Duran <gds506 at gmail dot com>
 # Maintainer: Martin Morlot <martinmorlot at gmail dot com>
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Maintainer: Bruno Pagani <archange@archlinux.org>
@@ -11,8 +12,8 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
-pkgver=3.7.2
-pkgrel=4
+pkgver=3.7.3
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64)
 url="https://gdal.org/"
@@ -35,7 +36,7 @@ options=('!emptydirs')
 # ogdi
 changelog=$pkgbase.changelog
 source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
-md5sums=('d6ffb51d21a619d0f242957a6078ffb3')
+md5sums=('adbb5cf3eb44767e05a5ef673bbde33f')
 
 prepare() {
 # Fix build with podofo-0.9
