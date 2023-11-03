@@ -6,28 +6,59 @@
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
 pkgver=41.0.2.0
-pkgrel=1
+pkgrel=2
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.81.0
+_libffmpegver=0.82.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
 _downurl="https://www.slimjetbrowser.com"
 license=('custom:freeware')
-depends=('libxcb' 'at-spi2-core' 'libxdamage' 'libxcomposite' 'pango' 'gcc-libs' 'libxkbcommon' 'libxrandr' 'alsa-lib' 'sh' 'libxext'\
-        'libcups' 'glib2' 'dbus' 'nspr' 'nss' 'libdrm' 'hicolor-icon-theme' 'libxfixes' 'expat' 'glibc' 'libx11' 'mesa' 'cairo')
-optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
-conflicts=("${pkgname}" "${pkgname}-beta" "${pkgname}35")
+depends=(
+    'libxcb'
+    'at-spi2-core'
+    'libxdamage'
+    'libxcomposite'
+    'pango'
+    'libxkbcommon'
+    'libxrandr'
+    'alsa-lib'
+    'sh'
+    'libxext'
+    'libcups'
+    'dbus'
+    'nspr'
+    'nss'
+    'libdrm'
+    'hicolor-icon-theme'
+    'libxfixes'
+    'expat'
+    'libx11'
+    'mesa'
+    'cairo'
+)
+optdepends=(
+    'kdialog: needed for file dialogs in KDE'
+    'ttf-liberation: fix fonts for some PDFs'
+)
+conflicts=(
+    "${pkgname}"
+    "${pkgname}-beta"
+    "${pkgname}35"
+)
 install="${pkgname}.install"
-options=('!emptydirs' '!strip')
-source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.deb"
+options=(
+    '!emptydirs'
+    '!strip'
+)
+source=(
+    "${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE.html::${url}/en/webhelp/index.htm"
-    "${pkgname}.install")
+)
 sha256sums=('f2affe23cb8d27a1fdb9a147f5cf5962a97cdfbfa6a2600a0ebb3ca25f27b55f'
-            '39481b7a3d68b7cccf5101d1b4950f43f3a2292983065556ec241b71657338ae'
-            '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43'
-            '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
+            'f68fac7117b551d0466198a5efbe65ab6cef5969bea9403eeb57ec92237fc893'
+            '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/usr/bin/${_pkgname}|${_pkgname}|g;s|Icon=${_pkgname}|Icon=${pkgname}|g" \
