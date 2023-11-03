@@ -2,6 +2,7 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-ar
+epoch=1
 pkgver=23.11.1
 pkgrel=1
 pkgdesc="Google Noto TTF fonts for Arabic Scripts"
