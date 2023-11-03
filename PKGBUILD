@@ -1,5 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-rchitect
+_name=${pkgname#python-}
 pkgver=0.4.4
 pkgrel=1
 pkgdesc="Minimal R API for Python"
