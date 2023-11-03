@@ -1,19 +1,21 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
-_pkgname=jbr_jcef-17.0.8.1-linux-x64-b1059.3
+_version=17.0.8.1
+_patch=b1080.1
+_pkgname=jbr_jcef-${_version}-linux-x64-${_patch}
 pkgname=jbr17-imfix
-pkgver=17.0.8.1b1059.3
+pkgver=${_version}${_patch}
 pkgrel=1
 pkgdesc="jetbrains runtime environment with imfix patch"
 arch=(x86_64)
 url="https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64"
 license=('GPL')
-source=("https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases/download/jbr-release-17.0.8.1b1059.3/jbr_jcef-17.0.8.1-linux-x64-b1059.3.tar.gz")
-sha256sums=('36f54fb0de35e9a0386daf9e254b1a40b06dec4db8c32457894cace563aa866b')
+source=("https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases/download/jbr-release-${_version}${_patch}/$_pkgname.tar.gz")
+sha256sums=('4409917fd1df80d0dcc157ad4e1bef8e45807d761bcdb2b2fd5a106600df8b08')
 
 package() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
 
-  install -d "$pkgdir"/usr/lib/jvm/jbr17-imfix
+  install -d "${pkgdir}"/usr/lib/jvm/jbr17-imfix
 
-  cp -r ./* "$pkgdir"/usr/lib/jvm/jbr17-imfix
+  cp -r ./* "${pkgdir}"/usr/lib/jvm/jbr17-imfix
 }
