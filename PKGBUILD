@@ -3,7 +3,7 @@
 # Contributor: weilinfox <caiweilin at iscas.ac.cn>
 pkgname=riscv-isa-sim-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r3050.5a114574
-pkgrel=1
+pkgrel=2
 pkgdesc="Spike, a RISC-V ISA Simulator"
 arch=(x86_64 i686)
 url="https://github.com/riscv/riscv-isa-sim"
@@ -28,11 +28,13 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --libdir=/usr/lib/riscv-isa-sim
 	make
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
+	install -d 733 "$pkgdir/usr/lib/riscv-isa-sim"
+	mv $pkgdir/usr/lib/*.so $pkgdir/usr/lib/*.a $pkgdir/usr/lib/riscv-isa-sim/
 }

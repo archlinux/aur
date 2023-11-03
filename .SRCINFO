@@ -1,7 +1,7 @@
 pkgbase = riscv-isa-sim-git
 	pkgdesc = Spike, a RISC-V ISA Simulator
 	pkgver = r3050.5a114574
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/riscv/riscv-isa-sim
 	arch = x86_64
 	arch = i686
