@@ -59,10 +59,10 @@ _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
 # _uc_ver=118.0.5993.117-1
 source=(${source[@]}
-        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
-        ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
+        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
+        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            'da734ba2bbb3c816c002cfea8dd6c231720b2bb8d5ac8dea9865fcc344a1775f')
+            'e5d74a46cd79b79a3f2f8f8fadce8329ad50f4a4facd76365d28e0761173aa26')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch

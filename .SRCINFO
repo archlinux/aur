@@ -71,7 +71,7 @@ pkgbase = ungoogled-chromium-xdg
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
 	source = index.html
-	source = ungoogled-chromium-119.0.6045.105-1.zip::https://github.com/Ahrotahn/ungoogled-chromium/archive/refs/heads/update.zip
+	source = ungoogled-chromium-119.0.6045.105-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/119.0.6045.105-1.tar.gz
 	sha256sums = 55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087
@@ -80,6 +80,6 @@ pkgbase = ungoogled-chromium-xdg
 	sha256sums = f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078
 	sha256sums = ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8
 	sha256sums = a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665
-	sha256sums = da734ba2bbb3c816c002cfea8dd6c231720b2bb8d5ac8dea9865fcc344a1775f
+	sha256sums = e5d74a46cd79b79a3f2f8f8fadce8329ad50f4a4facd76365d28e0761173aa26
 
 pkgname = ungoogled-chromium-xdg
