@@ -25,7 +25,6 @@ build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_appname}-desktop %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}-desktop.desktop"
 }
-  
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
