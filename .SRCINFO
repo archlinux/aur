@@ -1,0 +1,19 @@
+pkgbase = sipwitch
+	pkgdesc = a federated SIP server, the GNU SIP Witch
+	pkgver = 1.9.15
+	pkgrel = 1
+	url = https://www.gnu.org/software/sipwitch/
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	depends = avahi
+	depends = pkgconfig
+	depends = ucommon>=7.0.0
+	depends = libexosip2-3xx
+	source = ftp://ftp.gnu.org/gnu/sipwitch/sipwitch-1.9.15.tar.gz
+	source = ftp://ftp.gnu.org/gnu/sipwitch/sipwitch-1.9.15.tar.gz.sig
+	b2sums = 6c01fffdacf1434bafe32073fcb3bacda5fbb5a185c9ee49b9ed04e260f975715afb0c88c6bb35e655700902ecc701090e662f793be2ef4f02c9eccdf2e0f42a
+	b2sums = SKIP
+
+pkgname = sipwitch
