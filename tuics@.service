@@ -1,6 +1,6 @@
 [Unit]
 Description=tuic server
-Documentation=https://github.com/EAimTY/tuic/
+Documentation=https://github.com/fokx/tuic/
 After=network.target network-online.target
 Requires=network-online.target
 
