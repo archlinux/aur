@@ -8,6 +8,7 @@ pkgbase = python-proton-keyring-linux
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-psutil
+	depends = gnome-keyring
 	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux.git#tag=0.0.1
 	sha256sums = SKIP
 

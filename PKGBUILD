@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/ProtonVPN/python-proton-keyring-linux"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-psutil")
+depends=("python-psutil" "gnome-keyring")
 makedepends=("python-setuptools")
 source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
