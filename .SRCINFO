@@ -1,0 +1,23 @@
+pkgbase = libexosip2-3xx
+	pkgdesc = A library that hides the complexity of using SIP for multimedia session establishement (version 3.x, last working with GNU Sipwitch)
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://savannah.nongnu.org/projects/exosip/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = libosip2-3xx
+	depends = openssl-1.0
+	source = https://download.savannah.gnu.org/releases/exosip/libeXosip2-3.3.0.tar.gz
+	validpgpkeys = 34C3985D068879312FE23C8BB5902A3AD90A5421
+	b2sums = 1a5ecaaf52ce7d4c390fa1a90551589e7d757036be08e7b8f99df3f82da139215a29eb8151761cdd464165372e917369535eccf347a176d46902b804a587df10
+
+pkgname = libexosip2-3xx
+	provides = libexosip2=3.3.0
+	conflicts = libexosip2
+
+pkgname = libexosip2-3xx-doc
+	pkgdesc = A library that hides the complexity of using SIP for multimedia session establishement (version 3.x, last working with GNU Sipwitch) (documentation)
+
+pkgname = libexosip2-3xx-tools
+	pkgdesc = A library that hides the complexity of using SIP for multimedia session establishement (version 3.x, last working with GNU Sipwitch) (tools)
