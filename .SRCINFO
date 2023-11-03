@@ -6,6 +6,7 @@ pkgbase = bfile-cli-bin
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
+	license = GPL3
 	provides = bfile-cli
 	conflicts = bfile-cli
 	source_x86_64 = https://git.blek.codes/blek/bfile_cli/releases/download/1.0.0/bfile_cli.linux.amd64
