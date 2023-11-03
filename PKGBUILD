@@ -3,7 +3,7 @@
 _pkgname=audius-client
 pkgname=$_pkgname-bin
 pkgver=1.5.49
-pkgrel=1
+pkgrel=2
 pkgdesc="The Decentralized Audius.co Client (binary release)"
 url="https://github.com/AudiusProject/audius-protocol/tree/main/packages/web"
 license=('Apache2')
@@ -12,7 +12,7 @@ depends=('electron')
 makedepends=('fuse2')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("https://download.audius.co/Audius-1.5.43.AppImage")
+source=("https://download.audius.co/Audius-$pkgver.AppImage")
 sha256sums=('1dfc2ff777005b50f06f4414cb1767e6e421558eaeb3e14e1b9092d3a695504c')
 
 prepare() {
