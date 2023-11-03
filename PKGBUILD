@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Marco Schröder <narco dot schroeder 96 at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=setzer
 pkgver=60
-pkgrel=2
+pkgrel=3
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
 url='https://github.com/cvfosammmm/setzer'
@@ -11,8 +12,9 @@ license=('GPL3')
 depends=(
 	'gspell'
 	'gtk3'
-	'gtksourceview4'
+	'gtksourceview5'
 	'libhandy'
+	'libportal'
 	'poppler-glib'
 	'python-cairo'
 	'python-bibtexparser'
