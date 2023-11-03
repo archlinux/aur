@@ -1,44 +1,39 @@
-# Maintainer: Nicolas FORMICHELLA <stigpro@outlook.fr>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Nicolas FORMICHELLA <stigpro@outlook.fr>
 
-_pkgname="image-optimizer"
-pkgname="${_pkgname}-git"
-_gitname=Image-Optimizer
-pkgver=0.1.20.r0.g0a9f6ee
-pkgrel=2
-pkgdesc="Simple losless image optimizer build for Elementary OS"
-arch=('i686' 'x86_64')
+_pkgname=image-optimizer
+pkgname=$_pkgname-git
+pkgver=0.1.22.r2.g99ebc8a
+pkgrel=1
+pkgdesc="Simple lossless image optimizer"
+arch=('x86_64' 'i686')
 url="https://github.com/gijsgoudzwaard/image-optimizer"
 license=('MIT')
-
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'imagemagick' 'optipng' 'jpegoptim')
-optdepends=('elementary-icon-theme')
-makedepends=('git' 'desktop-file-utils' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'cmake')
-options=('!libtool')
-conflicts=('image-optimizer' 'image-optimizer-bzr')
-provides=('image-optimizer')
-source=("git+https://github.com/GijsGoudzwaard/Image-Optimizer.git")
-md5sums=('SKIP')
-
+depends=('granite' 'optipng' 'jpegoptim')
+makedepends=('git' 'meson' 'vala')
+checkdepends=('appstream-glib')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}/"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
-    cd "${srcdir}/${_gitname}/"
-    meson build --prefix=${pkgdir}/usr
+  arch-meson $_pkgname build
+  meson compile -C build
 }
 
 check() {
-    cd "${srcdir}/${_gitname}/build"
-    ninja test
+  meson test -C build --print-errorlog ||:
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/build"
-    ninja install
-    rm "${pkgdir}/usr/share/applications/mimeinfo.cache"
-    rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  ln -s com.github.gijsgoudzwaard.$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  rm -dr "$pkgdir/usr/share/contractor"
 }
