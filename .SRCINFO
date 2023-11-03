@@ -1,0 +1,15 @@
+pkgbase = toc
+	pkgdesc = Generate a table of contents from the comments of a file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AlphaJack/toc
+	arch = any
+	license = GPL3
+	depends = awk
+	depends = bash
+	depends = perl
+	depends = sed
+	source = toc-1.0.0.tar.gz::https://github.com/AlphaJack/toc/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = ed77f1fdb44041a1323b43726fc66f87907a9e8fdb5f411203f0297260e9c5ca2de74a0bd4b5eb951dfca909321353af668910927169fbd532c5cd783fd3ddf7
+
+pkgname = toc
