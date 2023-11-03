@@ -1,5 +1,5 @@
 pkgbase = image-optimizer-bin
-	pkgdesc = Simple lossless image compression
+	pkgdesc = Simple lossless image compression (binary release)
 	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://github.com/gijsgoudzwaard/image-optimizer
