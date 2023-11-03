@@ -9,7 +9,7 @@ url="https://github.com/bloznelis/typioca"
 license=(MIT)
 groups=()
 depends=()
-makedepends=(go)
+makedepends=(make git go)
 provides=("$name")
 conflicts=("$name")
 source=("git+$url#tag=$pkgver")
