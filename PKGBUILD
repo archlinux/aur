@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=termscp
-pkgver=0.12.3-2
+pkgver=0.12.3.2
 pkgrel=1
 pkgdesc="A feature rich terminal UI file transfer and explorer"
 url="https://github.com/veeso/termscp"
