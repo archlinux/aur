@@ -4,13 +4,14 @@
 
 pkgname=nncp
 pkgver=8.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=('aarch64' 'x86_64')
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
+options=('lto')
 #source=("git://git.cypherpunks.ru/nncp.git#commit=$_commit")
 source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
         "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
