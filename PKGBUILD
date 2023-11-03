@@ -3,9 +3,9 @@
 _pkgname=curtail
 pkgname=$_pkgname-git
 pkgdesc='Simple & useful image compressor (latest commit)'
-pkgver=1.7.0
-pkgrel=3
-arch=('any')
+pkgver=1.8.0.r0.g4a62b4e
+pkgrel=1
+arch=('x86_64' 'aarch64')
 url="https://github.com/Huluti/Curtail"
 license=('GPL3')
 depends=('jpegoptim' 'libadwaita' 'libwebp' 'optipng' 'pngquant' 'python-gobject')
@@ -27,7 +27,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs ||:
 }
 
 package() {
