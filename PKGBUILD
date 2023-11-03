@@ -1,8 +1,8 @@
 _gitfolder=picom-allusive
 _gitname=picom-allusive
 pkgname=picom-allusive
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="The only Picom fork you will ever need. With Animations and More"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/picom-allusive"
