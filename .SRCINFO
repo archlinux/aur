@@ -1,7 +1,7 @@
 pkgbase = xrefactory
 	pkgdesc = Professional refactoring tool for C/Java and Emacs
 	pkgver = 1.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xrefactory.com
 	arch = x86_64
 	license = custom
@@ -38,6 +38,8 @@ pkgbase = xrefactory
 	source = 0033-Fix-Elisp-obsolete-functions.patch
 	source = 0034-Fix-Makefile.common.patch
 	source = 0035-Fix-clash-with-library-names.patch
+	source = 0036-Fix-Elisp-obsolete-functions-2.patch
+	source = 0037-Fix-include-after-macro-expansion.patch
 	md5sums = 63e10baa9a5dfce9165570e7c3897701
 	md5sums = 4791f8a42e53a141ded3bd36e39b3a6d
 	md5sums = a00b17df920380afd6689369845acbc8
@@ -69,6 +71,7 @@ pkgbase = xrefactory
 	md5sums = 8549dc467458994dda13c8fdeef7dee6
 	md5sums = 633789164b37a833579fb23b1b16c5f1
 	md5sums = ff4ac43651958f8e5f61f19858a87aa7
+	md5sums = c84a7d60425c8210c7767c3df99e6d52
+	md5sums = 602734cd3b425e3fbec646eab6804aed
 
 pkgname = xrefactory
-
