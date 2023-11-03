@@ -1,14 +1,13 @@
 diff --git a/build_config.rb b/build_config.rb
-index d5e7ea9..53f645a 100644
+index e55da07..c4f0af6 100644
 --- a/build_config.rb
 +++ b/build_config.rb
-@@ -1,5 +1,9 @@
+@@ -1,5 +1,8 @@
  def gem_config(conf)
    conf.gem File.expand_path(File.dirname(__FILE__))
 +
 +  conf.gem github: 'eagletmt/mitamae-pacman', checksum_hash: 'v0.2.0'
 +  conf.gem github: 'eagletmt/mitamae-secrets', checksum_hash: 'v0.1.1'
-+  conf.gem core: "mruby-enum-ext"
  end
  
  def debug_config(conf)
