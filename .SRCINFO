@@ -1,6 +1,6 @@
 pkgbase = pufferpanel-bin
 	pkgdesc = PufferPanel: A web-base game management system (binary version).
-	pkgver = 2.6.9
+	pkgver = 2.6.10
 	pkgrel = 1
 	url = https://github.com/PufferPanel/PufferPanel
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = pufferpanel-bin
 	optdepends = sqlite: Database support
 	provides = pufferpanel
 	conflicts = pufferpanel
-	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.6.9/systemd/servicefiles/pufferpanel.service
-	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.6.9/config.linux.json
+	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.6.10/systemd/servicefiles/pufferpanel.service
+	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.6.10/config.linux.json
 	b2sums = ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141
 	b2sums = 0281c464b61c7a869d0f2844d18b30728a97cd66504b3ced5cded26d4ed826f3dd340ce063d0a8f1877500782be19d586e04a8e79a9ca6ae465dbd67114d5e9f
-	source_x86_64 = https://github.com/PufferPanel/PufferPanel/releases/download/v2.6.9/pufferpanel_2.6.9_linux_amd64.zip
-	b2sums_x86_64 = 5c4715677dbe7d13b755a042f9db9f655701d278bfc9fd7c167d85cdc57c3fdc7cb884c35c6c1de7762d2a26af0ef8105d6080b90edf11f30a9abc4ce44d474e
-	source_aarch64 = https://github.com/PufferPanel/PufferPanel/releases/download/v2.6.9/pufferpanel_2.6.9_linux_arm64.zip
-	b2sums_aarch64 = 39b6706cb866205def913736771ec3329235bf8d57e7034be76f1884c3fe28aca260ff4ccefaf3e40193acd0508400ef82e71a3c332d9a1e6b2868f9ef08cb43
+	source_x86_64 = https://github.com/PufferPanel/PufferPanel/releases/download/v2.6.10/pufferpanel_2.6.10_linux_amd64.zip
+	b2sums_x86_64 = 57fa929e0613b9f83f1d26df4b475760219e508fc85d4b529c4434f87d466e2ed2929b06ba4fa3e4696e4ca208778c6626c3d7bc05ec40deaf56d8feb30b62d2
+	source_aarch64 = https://github.com/PufferPanel/PufferPanel/releases/download/v2.6.10/pufferpanel_2.6.10_linux_arm64.zip
+	b2sums_aarch64 = d99905f025fafd0cec78e0a2e732ffe84f51a72f56a2fd017cf5ddf16f3a24716a08d4a7cc461f5c825a06112289435ef58ffb3281048d33b785c53f37e36870
 
 pkgname = pufferpanel-bin
