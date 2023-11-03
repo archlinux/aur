@@ -10,6 +10,6 @@ pkgbase = liana-bin
         depends = freetype2>=2.8
         depends = systemd-libs
         source = https://github.com/wizardsardine/liana/releases/download/v3.0/liana_3.0-1_amd64.deb
-        sha256sums = 5fb5faa99eceffce28f1a3cf2b730b67f1b5c6bcec3717f86244e8b19b85bf71
+        sha256sums = 8cc0f0a85dfd78eb7eb9d13723282279910114d1fb440357fd79bef8e594cf0a
 
 pkgname = liana-bin
