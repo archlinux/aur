@@ -3,7 +3,7 @@
 pkgname=python-proton-keyring-linux
 _gitpkgname=python-proton-keyring-linux
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-keyring-linux component."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-keyring-linux"
