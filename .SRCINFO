@@ -1,0 +1,18 @@
+pkgbase = libosip2-3xx
+	pkgdesc = an implementation of SIP
+	pkgver = 3.3.0
+	pkgrel = 1
+	epoch = 1
+	url = http://www.gnu.org/software/osip/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = glibc
+	provides = libosip2
+	conflicts = libosip2
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/osip/libosip2-3.3.0.tar.gz
+	validpgpkeys = 34C3985D068879312FE23C8BB5902A3AD90A5421
+	b2sums = ae157f088d53617c5fc356a8e932e18c8ecbd864d2004823b3d615ab72eb88ec12d6af5d42ca10f7967be2c49878441b922a366c855c68929a1f90aedbc37092
+
+pkgname = libosip2-3xx
