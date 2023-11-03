@@ -1,0 +1,8 @@
+post_install() {
+  echo "Make sure to add /usr/lib/libgtkclipblock-gtk2.so to /etc/ld.so.preload"
+  echo "or use the LD_PRELOAD environment variable"
+}
+
+post_upgrade() {
+  post_install
+}
