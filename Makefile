@@ -1,4 +1,4 @@
-VERSION ?= 0.15.9
+VERSION ?= 0.15.10
 
 all: clean set-version prepare
 
