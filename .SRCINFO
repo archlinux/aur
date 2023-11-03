@@ -1,12 +1,12 @@
 pkgbase = ragetype
 	pkgdesc = Ragetype is a simple POSIX compliant program written in C for the gnu/linux operating system and similar Unix-linux systems.
-	pkgver = v1.0
+	pkgver = v1.1
 	pkgrel = 1
 	url = https://git.cheemsbread.xyz/CheemsBread/ragetype
 	arch = x86_64
 	license = GPLv2
 	makedepends = musl
-	source = https://git.cheemsbread.xyz/CheemsBread/ragetype/archive/v1.0-beta.tar.gz
-	sha256sums = eb7de1029678bd60f93ab0af81b9483da5a4c534d02f66852f955a8536772a11
+	source = https://git.cheemsbread.xyz/CheemsBread/ragetype/archive/v1.1.tar.gz
+	sha256sums = 78340026e342057a7ce202d21185348eb9ff540c87332a9b1df1c1763e15d857
 
 pkgname = ragetype
