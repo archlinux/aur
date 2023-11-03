@@ -1,6 +1,6 @@
 pkgbase = supergfxctl
 	pkgdesc = A utility for Linux graphics switching on Intel/AMD iGPU + nVidia dGPU laptops
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/supergfxctl
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = supergfxctl
 	provides = supergfxctl
 	conflicts = supergfxctl-git
 	conflicts = optimus-manager
-	source = https://gitlab.com/asus-linux/supergfxctl/-/archive/5.1.1/supergfxctl-5.1.1.tar.gz
-	sha512sums = 1c9e791450de5694b5ce28a90ffdd5b2f0412f1d29dfa651a88cab607cdac0b0f75595c70b6bff854d245754348c123fd2369ed61b191464f80be24ae519da1e
+	source = https://gitlab.com/asus-linux/supergfxctl/-/archive/5.1.2/supergfxctl-5.1.2.tar.gz
+	sha512sums = 3cc7246472dc14c4773f8644fc54bc00339e7628199d9ff54e45a76c70014b7a25f1fd50086fcfbf4d7b416c73736db67aac0e4b1b21d9ba46038bd5910773be
 
 pkgname = supergfxctl
