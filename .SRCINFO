@@ -1,7 +1,7 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
 	pkgver = 0.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
 	license = GPL3
@@ -29,7 +29,7 @@ pkgbase = thrive
 	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.6.3
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git#commit=4650b092a91389b660b1fcf67337fd3b20ada4cd
 	source = godot-3.5.3.zip::https://github.com/godotengine/godot/releases/download/3.5.3-stable/Godot_v3.5.3-stable_mono_linux_headless_64.zip
-	source = 3.5.3.stable.mono.zip::https://github.com/godotengine/godot/3.5.3-stable/Godot_v3.5.3-stable_mono_export_templates.tpz
+	source = 3.5.3.stable.mono.zip::https://github.com/godotengine/godot/releases/download/3.5.3-stable/Godot_v3.5.3-stable_mono_export_templates.tpz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9602657c95a6fb0d8411ac6603aca4dd1bb1700373b06e6358c01c63eb2cca51

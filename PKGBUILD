@@ -5,7 +5,7 @@ _revolutionary_games_common_commit=4650b092a91389b660b1fcf67337fd3b20ada4cd
 
 pkgname=thrive
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
 url="https://revolutionarygamesstudio.com/"
@@ -35,7 +35,7 @@ then
     if [ -n "$_godot_template" ]
     then
         source+=(
-            "$_godot_template.stable.mono.zip::$_godot_repo/$_godot_template-stable/Godot_v$_godot_template-stable_mono_export_templates.tpz"
+            "$_godot_template.stable.mono.zip::$_godot_repo/releases/download/$_godot_template-stable/Godot_v$_godot_template-stable_mono_export_templates.tpz"
         )
         sha256sums+=('5984f7452187a00b3f606c7790d7470784663442a0ba9f73b0a9a2c84ef4d541')
     fi
