@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-x-wr-timezone
-_name=x_wr_timezone
-pkgver=0.0.5
+_name=${pkgname#python-}
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Handling of non-standard X-WR-TIMEZONE icalendar property in Python and Command Line"
 arch=('any')
@@ -9,13 +9,9 @@ url="https://github.com/niccokunzmann/x-wr-timezone"
 license=('LGPL3')
 depends=('python-icalendar' 'python-pytz')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-#checkdepends=('python-pygments' 'python-pytest' 'python-restructuredtext-lint')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c05cb34b9b58a4607a788db086dcae5766728e4b94e0672870dc5593a6e13fe6')
-
-prepare() {
-  cd "$_name-$pkgver"
-}
+checkdepends=('python-pygments' 'python-pytest' 'python-restructuredtext-lint')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4482364cc25f7023cec4f58dfd333bd7a9e4fcb7eb614b9fb15660e78c62572a')
 
 build() {
   cd "$_name-$pkgver"
