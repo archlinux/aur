@@ -4,7 +4,7 @@
 pkgname=image-optimizer
 pkgver=0.1.22
 pkgrel=2
-pkgdesc="Simple lossless image optimizer"
+pkgdesc="Simple lossless compression"
 arch=('x86_64' 'i686')
 url="https://github.com/gijsgoudzwaard/image-optimizer"
 license=('MIT')
