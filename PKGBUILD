@@ -1,6 +1,6 @@
 # Maintainer: aps42 <arch@andre-sterba.de>
 pkgname=waybar-issues
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Get your open issues and merge/pull requests into waybar.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/andresterba/waybar-issues'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andresterba/waybar-issues/archive/v${pkgver}.tar.gz")
-sha256sums=('9ba6a8b8cf47dfad9ca8b98df847278be4b2517455713c34909efda1361a9390')
+sha256sums=('bfbbda44b51006b9b629e877bf4c66ae751b7d7b1c8be732463494e918012261')
 
 build(){
   cd "$srcdir/$pkgname-$pkgver"
