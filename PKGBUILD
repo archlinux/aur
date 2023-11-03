@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soundsync-bin
+_pkgname=Soundsync
 pkgver=0.4.16
-pkgrel=5
+pkgrel=6
 pkgdesc="Virtual cables between any audio source and any speaker in your home"
 arch=('x86_64')
 url="https://soundsync.app/"
@@ -9,14 +10,34 @@ _githuburl="https://github.com/geekuillaume/soundsync"
 license=('custom:BSL1.1')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('python' 'nss' 'libpulse' 'at-spi2-core' 'gtk3' 'libxfixes' 'libxext' 'libxrandr' 'glib2' 'nspr' \
-    'alsa-lib' 'sh' 'dbus' 'gcc-libs' 'mesa' 'libxkbcommon' 'expat' 'libx11' 'glibc' 'libcups' 'libxdamage' \
-    'cairo' 'libxcomposite' 'libxcb' 'hicolor-icon-theme' 'libdrm' 'libxshmfence' 'gdk-pixbuf2' 'pango')
-source=("${pkgname%-bin}-${pkgver}.pacman::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-x64-${pkgver}.pacman"
-        "https://raw.githubusercontent.com/geekuillaume/soundsync/v${pkgver}/LICENSE")
+depends=(
+    'bash'
+    'electron15'
+    'libpulse'
+    'python'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.pacman::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-x64-${pkgver}.pacman"
+    "LICENSE::https://raw.githubusercontent.com/geekuillaume/soundsync/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.service"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('12bd6190537d80a29fa89fa2fa37da310593d5e6c54a7fe9f16c5f1509d4b94c'
-            '0c659fd7972a1a233b161380cfb177149d6d75b3c4f97c8cf8bbd8eb91b026d0')
+            '0c659fd7972a1a233b161380cfb177149d6d75b3c4f97c8cf8bbd8eb91b026d0'
+            'b0b07f20aa91c04c6aa05590ebd4d4697b2939283bcb122810759a2ed961a005'
+            'b3245324709a5bd6bca234e1e658218fc27fa2d0a21a5d0cef8b39cb1a7c6a4a')
+build() {
+    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-    cp --parents -a {opt,usr} "${pkgdir}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/package_extra/systemd/default/files/etc/systemd/system/${pkgname%-bin}.service" \
+        -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/package_extra/systemd/default/files/etc/default/${pkgname%-bin}" \
+        -t "${pkgdir}/etc/default"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/resources/"{app,res,webui} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
