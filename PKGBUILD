@@ -3,14 +3,14 @@
 # -*- sh -*-
 
 pkgname=nncp
-pkgver=8.9.0
-pkgrel=2
+pkgver=8.10.0
+pkgrel=1
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
-arch=(x86_64 aarch64)
-license=(GPL3)
-depends=(glibc)
-makedepends=(go)
+arch=('aarch64' 'x86_64')
+license=('GPL3')
+depends=('glibc')
+makedepends=('go')
 #source=("git://git.cypherpunks.ru/nncp.git#commit=$_commit")
 source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
         "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
@@ -19,7 +19,7 @@ source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
         nncp-daemon.service
         nncp-uucp.socket
         nncp-uucp@.service)
-sha256sums=('259facbc3354edcc16e7c64e278aaccdb47ffa3ec2afea0b36283f46aa824b5d'
+sha256sums=('154e13ba15c0ea93f54525793b0699e496b2db7281e1555f08d785a528f3f7fc'
             'SKIP'
             '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
             'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71'
