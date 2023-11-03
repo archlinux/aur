@@ -1,7 +1,7 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
 
 pkgname=chaosvpn
-pkgver=2.21
+pkgver=2.22
 pkgrel=1
 pkgdesc="Configuration generator for ChaosVPN"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ryd/chaosvpn/archive/v$pkgv
         iproute2-chaosvpn.patch
         iproute2-warzone.patch
         chaosvpn.service)
-sha256sums=('63ad7a8f7b27835247a6d25fd928c44b9d631ec6a60096395b90cf22038b9324'
+sha256sums=('631394284d30b24a8b6e1be26b0ea1321b191fb30458b1f5ef01cb4c91c1ecf2'
             '4c975e57867aae2291f4dfe2c024f8b98907ec8f83345672ee0641700da433a8'
             'b7baf5d649c7acf09f3afbc91097caaa8fbe762b212fd47adc88d330e9dfa102'
             'bb00812aa6fd254f495aa4024f5a6cc7192987ca538c0880298d58e655f70cc4')
