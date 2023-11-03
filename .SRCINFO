@@ -1,7 +1,7 @@
 pkgbase = avogadroapp
 	pkgdesc = An advanced molecular editor
-	pkgver = 1.97.0
-	pkgrel = 3
+	pkgver = 1.98.1
+	pkgrel = 1
 	url = https://two.avogadro.cc
 	arch = x86_64
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = avogadroapp
 	depends = fmt
 	optdepends = openbabel: Open Babel plugin actions
 	provides = avogadro2
-	source = avogadroapp-1.97.0.tar.gz::https://github.com/OpenChemistry/avogadroapp/archive/1.97.0.tar.gz
-	sha256sums = c4e1a0d54e43c2ae8bbd6b872e46b2f983f45c5aaa981731c681d5325faaec63
+	source = avogadroapp-1.98.1.tar.gz::https://github.com/OpenChemistry/avogadroapp/archive/1.98.1.tar.gz
+	sha256sums = b72653251dbf4b969117680a854d9d09b35870f556e6fa32186e63db9cff167a
 
 pkgname = avogadroapp
