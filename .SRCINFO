@@ -1,6 +1,6 @@
 pkgbase = r-msstatsptm
 	pkgdesc = Statistical Characterization of Post-translational Modifications
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstatsPTM
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-msstatsptm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsPTM_2.4.0.tar.gz
-	sha256sums = 10c35990df2b0001dd3f19ea5554e51287859849b6df6323788eba5da8d897bd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsPTM_2.4.1.tar.gz
+	sha256sums = ad54fce2e87f617424489a0278389e2ee8063ae60d44504bd0f9b9f2fc8b62a9
 
 pkgname = r-msstatsptm
