@@ -1,6 +1,6 @@
 pkgbase = r-snphood
 	pkgdesc = SNPhood: Investigate, quantify and visualise the epigenomic neighbourhood of SNPs using NGS data
-	pkgver = 1.31.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SNPhood
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-snphood
 	optdepends = r-pryr
 	optdepends = r-rmarkdown
 	optdepends = r-snphooddata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SNPhood_1.31.0.tar.gz
-	sha256sums = 7efa72348a9f7233f1c6b7435ddd171494871b67aa6bf9363653106dbd122fe6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SNPhood_1.32.0.tar.gz
+	sha256sums = 2eee4411ed434618d8d072ced9f0aec347c158ababba6ff4d825c805441cc729
 
 pkgname = r-snphood
