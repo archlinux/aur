@@ -1,0 +1,12 @@
+diff --color -ura a/README.rst b/README.rst
+--- a/README.rst	2022-10-22 07:06:08.000000000 +0800
++++ b/README.rst	2023-10-28 18:54:38.065364597 +0800
+@@ -107,7 +107,7 @@
+ declares that the area of the polygon is the green region, and not the
+ white region.
+ 
+-.. image:: docs/spherical_geometry/inside.png
++.. image:: inside.png
+ 
+ The inside point of the the polygon can be obtained from the
+ ``~polygon.SphericalPolygon.inside`` property.
