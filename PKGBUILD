@@ -1,48 +1,84 @@
-#Maintainer: m4sk1n <m4sk1n@vivaldi.net>
-#Contributor: Christian Hesse <mail@eworm.de>
+# Maintainer: xiota / aur.chaotic.cx
+# Contributor: m4sk1n <m4sk1n@vivaldi.net>
+# Contributor: Christian Hesse <mail@eworm.de>
 
-pkgname=otter-browser-git
-pkgver=0.9.99.1.r1266.g97a464177
+_pkgname=otter-browser
+pkgname="$_pkgname-git"
+pkgver=1.0.03.r2358.gb2397dc
 pkgrel=1
-pkgdesc='Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - git checkout'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url='http://otter-browser.org/'
+pkgdesc='Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5'
+url='https://github.com/OtterBrowser/otter-browser'
 license=('GPL3')
-provides=('otter-browser')
-conflicts=('otter-browser')
-depends=( 'qt5-webkit' 'qt5-multimedia>=5.6' 'qt5-xmlpatterns>=5.6')
-makedepends=('cmake' 'git' 'qt5-declarative>=5.6')
-optdepends=('hunspell: for spell checking'
-            'qt5-webengine: for experimental backend using the Chromium browser project')
-source=('git://github.com/OtterBrowser/otter-browser.git')
-sha256sums=('SKIP')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 
-pkgver() {
-	cd otter-browser/
+depends=(
+  'qt5-multimedia'
+  'qt5-svg'
+  'qt5-webengine'
+)
+makedepends=(
+  'cmake'
+)
+optdepends=(
+  'hunspell: for spell checking'
+)
 
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-	fi
-}
+if [ x"$pkgname" == x"$_pkgname" ] ; then
+  # normal package
+  depends+=(
+    'qt5-xmlpatterns'
+  )
+
+  _pkgsrc="$_pkgname-${pkgver%%.r*}"
+  _pkgext="tar.gz"
+  source+=("$_pkgsrc.$_pkgext"::"$url/archive/v${pkgver%%.r*}/$_pkgsrc.$_pkgext")
+  sha256sums+=('2b07d22a5d921ec0b3d29a680eb913c3fe0713ca7d10e37873a3802d1a5154a3')
+
+  pkgver() {
+    echo "${pkgver%%.r*}"
+  }
+else
+  # git package
+  makedepends+=('git')
+
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+
+    _tag=$(git tag | tail -1)
+    if [[ $(vercmp "$_tag" "v1.0.03") -lt 0 ]] ; then
+      _tag="v1.0.03"
+    fi
+
+    _revision=$(git rev-list --count "$_tag"..HEAD)
+    _hash=$(git rev-parse --short=7 HEAD)
+
+    printf '%s.r%s.g%s' \
+      "${_tag#v}" \
+      "$_revision" \
+      "$_hash"
+  }
+fi
 
 build() {
-	mkdir -p otter-browser/build/
-	cd otter-browser/build/
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_INSTALL_PREFIX='/usr'
+  )
 
-	cmake -DCMAKE_INSTALL_PREFIX="/usr" ../
-	make
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	cd otter-browser/
+  depends+=('hicolor-icon-theme')
 
-	install -D -m0644 COPYING ${pkgdir}/usr/share/licenses/otter-browser/COPYING
-
-	cd build/
-
-	make DESTDIR=${pkgdir} install
-
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
-

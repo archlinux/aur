@@ -1,8 +1,8 @@
 pkgbase = otter-browser-git
-	pkgdesc = Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - git checkout
-	pkgver = 0.9.99.1.r1266.g97a464177
+	pkgdesc = Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5
+	pkgver = 1.0.03.r2358.gb2397dc
 	pkgrel = 1
-	url = http://otter-browser.org/
+	url = https://github.com/OtterBrowser/otter-browser
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -12,16 +12,17 @@ pkgbase = otter-browser-git
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	makedepends = qt5-declarative>=5.6
-	depends = qt5-webkit
-	depends = qt5-multimedia>=5.6
-	depends = qt5-xmlpatterns>=5.6
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-webengine
 	optdepends = hunspell: for spell checking
-	optdepends = qt5-webengine: for experimental backend using the Chromium browser project
 	provides = otter-browser
 	conflicts = otter-browser
-	source = git://github.com/OtterBrowser/otter-browser.git
+	source = otter-browser::git+https://github.com/OtterBrowser/otter-browser.git
 	sha256sums = SKIP
 
 pkgname = otter-browser-git
-
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-webengine
+	depends = hicolor-icon-theme
