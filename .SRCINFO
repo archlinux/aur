@@ -1,13 +1,16 @@
 pkgbase = tunasync-bin
 	pkgdesc = Mirror job management tool developed by TUNA
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuna/tunasync
+	arch = aarch64
 	arch = x86_64
 	license = GPL3
-	depends = glibc
+	provides = tunasync=0.8.0
 	conflicts = tunasync
-	source = tunasync-0.8.0.tar.gz::https://github.com/tuna/tunasync/releases/download/v0.8.0/tunasync-linux-amd64-bin.tar.gz
-	sha256sums = 6d7481f50438e704e78322e754d2e5cd3c34dfe4d1d3a3f12d332237759f79bd
+	source_aarch64 = tunasync-0.8.0-aarch64.tar.gz::https://github.com/tuna/tunasync/releases/download/v0.8.0/tunasync-linux-arm64-bin.tar.gz
+	sha256sums_aarch64 = 00e5ef369c0cb7f58e9ea6742f6a27b1058d3451a25b57c3ae4658b9a210ca91
+	source_x86_64 = tunasync-0.8.0-x86_64.tar.gz::https://github.com/tuna/tunasync/releases/download/v0.8.0/tunasync-linux-amd64-bin.tar.gz
+	sha256sums_x86_64 = 6d7481f50438e704e78322e754d2e5cd3c34dfe4d1d3a3f12d332237759f79bd
 
 pkgname = tunasync-bin
