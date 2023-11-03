@@ -1,0 +1,10 @@
+diff --git a/openssl.pc.in b/openssl.pc.in
+index b4acfa5..07719bb 100644
+--- a/openssl.pc.in
++++ b/openssl.pc.in
+@@ -8,4 +8,4 @@ includedir=@includedir@
+ Name: LibreSSL
+ Description: Secure Sockets Layer and cryptography libraries and tools
+ Version: @VERSION@
+-Requires: libssl libcrypto
++Requires: libssl libtls libcrypto

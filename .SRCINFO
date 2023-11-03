@@ -1,0 +1,21 @@
+pkgbase = libressl-3.8
+	pkgdesc = Free version of the TLS/crypto stack forked from OpenSSL
+	pkgver = 3.8.2
+	pkgrel = 1
+	url = https://www.libressl.org/
+	arch = x86_64
+	license = ISC
+	license = custom:OpenSSL
+	depends = glibc
+	optdepends = ca-certificates
+	provides = libressl=3.8.2
+	conflicts = libressl
+	replaces = libressl
+	backup = etc/libressl/openssl.cnf
+	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz
+	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz.asc
+	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
+	sha256sums = 6d4b8d5bbb25a1f8336639e56ec5088052d43a95256697a85c4ce91323c25954
+	sha256sums = SKIP
+
+pkgname = libressl-3.8
