@@ -1,29 +1,35 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _appname=Numara
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js"
 arch=('x86_64')
 url="https://numara.io/"
-_githuburl="https://github.com/bornova/numara-calculator"
+_ghyrl="https://github.com/bornova/numara-calculator"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron27' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb"
+depends=(
+    'bash'
+    'electron27'
+    'hicolor-icon-theme'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghyrl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/bornova/numara-calculator/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh")
-sha256sums=('260d86a14371bd4d64e64620b6ea32660e3fc96c2fd529b50a23fd7a2759ee5f'
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('0431fc63f44e787c845be7d9730f57c35e279073ee4fb139d60526eafeca0856'
             'b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
-            '357516f8cc83d14419babaa2bf13e35c8630725b602bbb25ee075fba9663d389')
+            '4178808864f62c8770f68a130622a2987c9ef1a0e99e5d076c91c3425e85395f')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     for icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
