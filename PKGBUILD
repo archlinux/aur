@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=yang-lsp-git
 pkgrel=1
-pkgver=rdb61712
+pkgver=0.7.3.r4.g2ce0935
 license=('Apache')
 arch=('any')
 provides=("${pkgname%-git}")
@@ -15,7 +15,9 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s" "$(git rev-parse --short HEAD)"
+    VERSION="$(git tag | tail -n1 | sed s/v//)"
+    COMMIT_COUNT="$(git rev-list --count v"$VERSION"..)"
+    echo "$VERSION.r$COMMIT_COUNT.g$(git rev-parse --short HEAD)"
 }
 
 build() {

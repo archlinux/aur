@@ -1,6 +1,6 @@
 pkgbase = yang-lsp-git
 	pkgdesc = A Language Server for YANG
-	pkgver = rdb61712
+	pkgver = 0.7.3.r4.g2ce0935
 	pkgrel = 1
 	url = https://github.com/theia-ide/yang-lsp
 	arch = any
