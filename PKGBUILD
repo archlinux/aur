@@ -3,14 +3,15 @@
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: simo <simo@archlinux.org>
+# Contributor: KokaKiwi <kokakiwi+aur at kokakiwi [dot] net>
 
 pkgname=tor-unstable
-pkgver=0.4.8.7
+pkgver=0.4.8.8
 pkgrel=1
 pkgdesc='Anonymizing overlay network.'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.torproject.org/'
-license=('GPL3')
+license=('BSD-3-Clause' 'LGPL-3.0-only' 'MIT')
 depends=(
   'bash'
   'libcap.so'
@@ -34,15 +35,15 @@ source=("https://dist.torproject.org/tor-${pkgver/_/-}.tar.gz"{,.sha256sum{,.asc
         'tor.service'
         'tor.sysusers'
         'tor.tmpfiles')
-sha256sums=('b20d2b9c74db28a00c07f090ee5b0241b2b684f3afdecccc6b8008931c557491'
-            'fb351aaa3cf3e3b405f0f88545e8f284ab68daeaefaafefeed259347d0ad33c4'
+sha256sums=('21bbe908cafeabff04636d26293540aa9366eb1cf389bc65dc2476c93e688004'
+            '18db12c5bc13b0e9e5cb6e2848286c6f0875b60533894ee043bd484000f0fcff'
             'SKIP'
             'e450b141cbe657a152d56a931ff1eb76c6b17dbe7354b3fa188d8a5043779f11'
             '6354475c4ee4de0c1204ccc6ae20dea8e812f83f3134ee2d665592a2cfe327e5'
             '04eec05b4e61efccc58c5da657363f0c1059d7f122cb15c32331a201af2d7f94'
             '07bedb17660a3673b31b0005b6505065c90b32f2c6b28b969241da675560f926')
-b2sums=('4d0cde752a729c64e380663e4438398fe768a8657e9aa3246bdf0ec9a4b4e01e277cb594ae0cb44cc66ea8c6080f2e58c6daf1bf01dc51b678d228e8e38fc971'
-        'd52ba96072b94775ce6d5cb3e31590af5d78cb63aa5c9097ebe526addd850aae54cdd21a49822e41444144b0cb0d7709492f7c42f53873706a4b09d844ad92ce'
+b2sums=('24dda7589d8c1318d008d69d1a2ecb65a0c80ee05cfca9f9a420784ff99b35645450c8330a23919f24068b7218e267a773292d5d7031f6a2c402fe2354a9a3f3'
+        '697788e84f977ceaef05aca7bbf1385e6d40b80f1ec2c3ae024bffc87f507c34be5f3f5f62271c10b1e9aa8ed5fe64daa108e93d2bfa3f67f69e0409e41ab1a0'
         'SKIP'
         '770da249c40981c3937383f17e6e4432667868505876fd673312e669f2c46a0810aab579b654a8eed4a6ea573a0844fbe79d8145f358eb47fd7bc5dd89a32554'
         '79d35290cd40e407d3102366d585d37e3b50b41e30b7046f8b1c6a7ee199137701b3c5c4e63f5967d6185b66d675b71157d1ef673648162921323732bb0546cf'
