@@ -2,18 +2,18 @@
 
 _pkgname=audius-client
 pkgname=$_pkgname-bin
-pkgver=1.5.43
+pkgver=1.5.49
 pkgrel=1
 pkgdesc="The Decentralized Audius.co Client (binary release)"
 url="https://github.com/AudiusProject/audius-protocol/tree/main/packages/web"
-license=('Apache-2.0')
+license=('Apache2')
 arch=('x86_64')
 depends=('electron')
 makedepends=('fuse2')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("https://download.audius.co/Audius-1.5.43.AppImage")
-sha256sums=('b9999ffab61b26d135c3428a5726c38903bbc8f481c48341dfb9ea459f58314e')
+sha256sums=('1dfc2ff777005b50f06f4414cb1767e6e421558eaeb3e14e1b9092d3a695504c')
 
 prepare() {
   # Create an exec file
@@ -36,11 +36,11 @@ package() {
   # Create a folder
   mkdir -p "$pkgdir/usr/lib/$_pkgname"
   # Install
+  install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
   cd squashfs-root
   mv resources/* "$pkgdir/usr/lib/$_pkgname"
   for i in 16 32 48 64 128 256 512 1024; do
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm755 ../$_pkgname -t "$pkgdir/usr/bin"
 }
