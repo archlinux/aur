@@ -1,0 +1,13 @@
+diff --git a/src/marker.h b/src/marker.h
+index 334bc32a..fda32735 100644
+--- a/src/marker.h
++++ b/src/marker.h
+@@ -23,7 +23,7 @@
+ #define __MARKER_H__
+ 
+ #include <gtk/gtk.h>
+-
++#include <glib/gi18n.h>
+ GtkApplication      *marker_get_app                              (void);
+ void                 marker_create_new_window                    (void);
+ void                 marker_create_new_window_from_file          (GFile              *file);

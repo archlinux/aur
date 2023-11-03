@@ -5,7 +5,7 @@ pkgver=2023.05.02.r11.gae508ff7
 pkgrel=1
 pkgdesc="Markdown editor for linux made with Gtk+-3.0"
 arch=('x86_64')
-url='https://fabiocolacio.github.io/Marker/'
+url="https://fabiocolacio.github.io/Marker"
 license=('GPL3')
 depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk-4.1')
 makedepends=('git' 'itstool' 'meson')
@@ -16,11 +16,13 @@ conflicts=("${pkgname%-*}")
 source=('git+https://github.com/fabiocolacio/Marker.git'
         'git+https://github.com/Mandarancio/scidown.git'
         'git+https://github.com/Mandarancio/charter.git'
-        'git+https://github.com/codeplea/tinyexpr.git')
+        'git+https://github.com/codeplea/tinyexpr.git'
+        'add_gi18n_h.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'a549a622d3d58936643f4932235711c03a38550d09266e1863a936e41618b661')
 
 pkgver() {
   cd Marker
@@ -32,6 +34,11 @@ prepare() {
   git submodule init
   git config submodule.src/scidown.url "$srcdir/scidown"
   git -c protocol.file.allow=always submodule update
+
+  # Update version
+  sed -i "s/2020.04.04/${pkgver%%.r*}/g" meson.build
+
+  patch -Np1 -i ../add_gi18n_h.patch
 
   cd src/scidown
   git submodule init
