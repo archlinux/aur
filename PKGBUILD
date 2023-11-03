@@ -25,6 +25,7 @@ package() {
   install -Dm755 "istat-sensors" "$pkgdir/usr/bin/istat-sensors"
 
   install -Dm644 "doc/istat.1"                 "$pkgdir/usr/share/man/man1/istat.1"
+  install -Dm644 "doc/istat-acpi.1"            "$pkgdir/usr/share/man/man1/istat-acpi.1"
   install -Dm644 "doc/istat-ipc.1"             "$pkgdir/usr/share/man/man1/istat-ipc.1"
   install -Dm644 "doc/istat-ipc-click.1"       "$pkgdir/usr/share/man/man1/istat-ipc-click.1"
   install -Dm644 "doc/istat-ipc-custom.1"      "$pkgdir/usr/share/man/man1/istat-ipc-custom.1"
@@ -36,6 +37,8 @@ package() {
   install -Dm644 "doc/istat-ipc-set-theme.1"   "$pkgdir/usr/share/man/man1/istat-ipc-set-theme.1"
   install -Dm644 "doc/istat-ipc-shutdown.1"    "$pkgdir/usr/share/man/man1/istat-ipc-shutdown.1"
   install -Dm644 "doc/istat-ipc-signal.1"      "$pkgdir/usr/share/man/man1/istat-ipc-signal.1"
+  install -Dm644 "doc/istat-sensors.1"         "$pkgdir/usr/share/man/man1/istat-sensors.1"
+  install -Dm644 "doc/istat-signals.1"         "$pkgdir/usr/share/man/man1/istat-signals.1"
 
   install -Dm644 "README.md"                   "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "sample_config.toml"          "$pkgdir/usr/share/doc/${pkgname}/sample_config.toml"
