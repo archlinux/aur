@@ -1,8 +1,8 @@
 # Maintainer: Joerg Weislogel <mutoroglin at posteo dot de>
 
 pkgname=libcava
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable.'
 arch=('x86_64')
 url='https://github.com/LukashonakV/cava'
@@ -28,7 +28,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/LukashonakV/cava/archive/$pkgver.tar.gz"
 )
-sha256sums=('9ce3df7d374dc83ed0704fe3caef5e00600ce061d85608aad4142d2c59aa4647'
+sha256sums=('4df540b7f4892f72e48772929a15bc9ad61e2bce7a084be2df01c72ca5c02333'
 )
 
 build() {
