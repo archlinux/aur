@@ -20,7 +20,6 @@ _languages=(
         'id-ID         "Indonesian (Indonesia)"'
         'ja-JP         "Japanese (Japan)"'
         'pl-PL         "Polish (Poland)"'
-        'pt-BR         "Portuguese (Brazil)"'
         'pt-PT         "Portuguese (Portugal)"'
         'th-TH         "Thai"'
         )
