@@ -1,6 +1,6 @@
 pkgbase = synology-note-station
 	pkgdesc = Synology Note Station Client connects you with Note Station on your Synology NAS. You can manage all the notes/to-do list offline, right from your local computer.
-	pkgver = 2.2.3_653
+	pkgver = 2.2.4_703
 	pkgrel = 1
 	url = https://www.synology.com/support/download/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = synology-note-station
 	depends = gtk3
 	depends = nss
 	options = emptydirs
-	source = https://global.download.synology.com/download/Utility/NoteStationClient/2.2.3-653/Ubuntu/x86_64/synology-note-station-client-2.2.3-653-linux-x64.deb
-	md5sums = abed9e1a0cb86bf8513789d69d8440c5
+	source = https://global.download.synology.com/download/Utility/NoteStationClient/2.2.4-703/Ubuntu/x86_64/synology-note-station-client-2.2.4-703-linux-x64.deb
+	md5sums = 7ef054c1a68725f968ebed0f1470f4a9
 
 pkgname = synology-note-station
