@@ -1,11 +1,11 @@
 pkgname=vk-layer-flimes-git
 pkgver=1.1.5.r0.g877ddfb
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan frame limiter"
 arch=('x86_64')
 url="https://github.com/zaps166/vk-layer-flimes"
 license=('MIT')
-makedepends=('git' 'cmake' 'vulkan-headers')
+makedepends=('git' 'cmake' 'vulkan-headers' 'lib32-gcc-libs')
 optdepends=('vk-layer-flimes-gui-git: GUI for external framerate control')
 source=("git+https://github.com/zaps166/vk-layer-flimes.git")
 sha256sums=('SKIP')

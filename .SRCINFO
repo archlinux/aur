@@ -1,13 +1,14 @@
 pkgbase = vk-layer-flimes-git
 	pkgdesc = Vulkan frame limiter
 	pkgver = 1.1.5.r0.g877ddfb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zaps166/vk-layer-flimes
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = vulkan-headers
+	makedepends = lib32-gcc-libs
 	optdepends = vk-layer-flimes-gui-git: GUI for external framerate control
 	source = git+https://github.com/zaps166/vk-layer-flimes.git
 	sha256sums = SKIP
