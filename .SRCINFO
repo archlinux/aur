@@ -8,7 +8,7 @@ pkgbase = latin-words
 	license = custom
 	makedepends = gcc-ada
 	depends = bash
-	source = latin-words-1.97FC.zip::http://archives.nd.edu/whitaker/old/wordsall.zip
+	source = latin-words-1.97FC.zip::http://web.archive.org/web/20230328161642/http://archives.nd.edu/whitaker/old/wordsall.zip
 	sha256sums = 592134d7602879e0937b6f977a6f63aa1d14b813edaf6de04a1d8596a9a2c18e
 
 pkgname = latin-words

@@ -13,7 +13,7 @@ url="http://archives.nd.edu/whitaker/words.htm"
 license=('custom')
 depends=('bash')
 makedepends=('gcc-ada')
-source=("$pkgname-$pkgver.zip::http://archives.nd.edu/whitaker/old/wordsall.zip")
+source=("$pkgname-$pkgver.zip::http://web.archive.org/web/20230328161642/http://archives.nd.edu/whitaker/old/wordsall.zip")
 sha256sums=('592134d7602879e0937b6f977a6f63aa1d14b813edaf6de04a1d8596a9a2c18e')
 
 # Alternative source:
