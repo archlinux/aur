@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec node /usr/lib/trilium-dumpdb/dump-db.js $@
+exec node /usr/lib/node_modules/trilium-dumpdb/dump-db.js $@
