@@ -9,6 +9,8 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+# binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
+
 pkgname=ungoogled-chromium-xdg
 pkgver=119.0.6045.105
 pkgrel=1
