@@ -1,6 +1,6 @@
 pkgbase = r-quasr
 	pkgdesc = Quantify and Annotate Short Reads in R
-	pkgver = 1.42.0
+	pkgver = 1.42.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/QuasR
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-quasr
 	optdepends = r-rhisat2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/QuasR_1.42.0.tar.gz
-	sha256sums = 0aa9e0e49030de9c27faab9ea5f0fecc02867238dab32c79aff8f6f1ccd80dd4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QuasR_1.42.1.tar.gz
+	sha256sums = d66ef1bbf95ae60bb5b7cf87dea6dae6adcc92229ef69984b1589073b7bc2519
 
 pkgname = r-quasr
