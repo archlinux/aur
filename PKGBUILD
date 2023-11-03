@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qPLEXanalyzer
-_pkgver=1.19.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Tools for qPLEX-RIME data analysis'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bef80119b82d994f2d5da4b73a546068af3a19bf67ee53981b5cb6090d898e27')
+sha256sums=('86e4e9d78e3ac8fc8a9d69e827b3b75b7837a4d83d52eb25c636ee45ad69c4c7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
