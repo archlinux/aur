@@ -9,7 +9,7 @@ url="https://github.com/niccokunzmann/x-wr-timezone"
 license=('LGPL3')
 depends=('python-icalendar' 'python-pytz')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pygments' 'python-pytest' 'python-restructuredtext-lint')
+checkdepends=('python-pygments' 'python-pytest' 'python-restructuredtext_lint')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('4482364cc25f7023cec4f58dfd333bd7a9e4fcb7eb614b9fb15660e78c62572a')
 
