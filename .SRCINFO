@@ -1,7 +1,7 @@
 pkgbase = resources
 	pkgdesc = Monitor your system resources and processes
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/nokyan/resources
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = resources
 	depends = dmidecode
 	depends = libadwaita
 	depends = polkit
-	source = git+https://github.com/nokyan/resources.git#tag=v1.2.0
+	source = git+https://github.com/nokyan/resources.git#tag=v1.2.1
 	sha256sums = SKIP
 
 pkgname = resources
