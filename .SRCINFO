@@ -1,7 +1,7 @@
 pkgbase = libressl-3.8
 	pkgdesc = Free version of the TLS/crypto stack forked from OpenSSL
 	pkgver = 3.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libressl.org/
 	arch = x86_64
 	license = ISC

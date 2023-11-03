@@ -9,7 +9,7 @@
 _pkgname=libressl
 pkgname=libressl-3.8
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free version of the TLS/crypto stack forked from OpenSSL"
 arch=(x86_64)
 url="https://www.libressl.org/"
@@ -35,8 +35,8 @@ build() {
     ./configure \
         --prefix=/usr \
         --with-openssldir=/etc/libressl \
-        --libdir=/usr/lib/libressl \
-        --includedir=/usr/include/libressl \
+        --libdir=/usr/lib/libressl-3.8 \
+        --includedir=/usr/include/libressl-3.8 \
         --program-prefix "libressl-"
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
