@@ -5,7 +5,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-cf
-pkgver=6.5.9.hardened1
+pkgver=6.5.10.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with Cloudflare Patches'
 url='https://github.com/anthraxx/linux-hardened'
@@ -30,7 +30,7 @@ _srctag=${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   https://github.com/anthraxx/linux-hardened/releases/download/${_srctag}/linux-hardened-${_srctag}.patch{,.sig}
-  https://github.com/cloudflare/linux/archive/refs/heads/master.zip
+  https://github.com/0xk1f0/linux-cf-patches/archive/refs/heads/master.zip
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -38,11 +38,11 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
-b2sums=('fb5fcc0dc79e2f615a550283481492a8185414d65369cbe805909112735593e5fc8bdbd482a347dc4cb3dcac979bea21cd03c503932e9321856eeea685d31c65'
+b2sums=('6a2b93c3419edba1c8c6eddb82d6daaee64129e86575afc647e22088fe65baed2d9db43f2e606522332b1ce58e15ef16bb004b1e09cb641d9d7be15b437f71e1'
         'SKIP'
-        'a0be65904e917be5ccc20bf529732054939f305703f9718c3bee6bb7e82ee277ed72ea82205d9e1ed2c3fd21c9c239d990bcba10ea141e6a06a81dafa5a7feec'
+        '35d907a2edd2493d2b19cabfa267793131540a893fcd6ec4dc90464f4f705cf5bc44b8f3694ce98571aa2a4c92e4b800d0203f7786d5cf5e4a8d44bb927b7592'
         'SKIP'
-        '7fea99533b3d9dc06cac7f0f5ff62d659981a2430a59c489f15f1ac4f4cfe3aad21a9af25a80e972331cab4d8f84d0cb28b35a41c7c812735e6bde78a333d35d'
+        '081ec108ab46a710ef715c4881f29b347e405369e5bff7e204c700c0a1428022aaeb609600b432100625c84807ab8e2e84c1141cf0fc5c4942549b2ade2e22b6'
         'eb5d106d6564c70170916c00bd5333a4fc624c426fc4ae3374fe9de55a93b3a0c28d7f9fd7a26d2280137f0e466565e7591062d86f6e4781f2ffd2c39bc431e4')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -66,8 +66,8 @@ prepare() {
   done
 
   # apply cloudflare patches
-  CFSRC=$(ls ../linux-master/patches/0001*.patch)
-  CFSRC="${CFSRC} $(ls ../linux-master/patches/0024*.patch)"
+  CFSRC=$(/bin/ls ../linux-cf-patches-master/patches/*.patch)
+  IFS=$'\n'
   for patch in $CFSRC; do
     echo "Applying Cloudflare patch $patch..."
     patch -Np1 < "$patch"
