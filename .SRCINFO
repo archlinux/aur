@@ -1,0 +1,21 @@
+pkgbase = openai-hub-git
+	pkgdesc = A secure and efficient gateway for interacting with OpenAI's API
+	pkgver = r59.cbbfa02
+	pkgrel = 1
+	url = https://github.com/lightsing/openai-hub
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = openai-hub
+	conflicts = openai-hub
+	backup = etc/openai-hub/config.toml
+	backup = etc/openai-hub/acl.toml
+	source = git+https://github.com/lightsing/openai-hub.git
+	source = openai-hubd.service
+	sha256sums = SKIP
+	sha256sums = 02db7835e31f4f5484c596c798f87c25160eeaf0df8a6e32d14b247e13d00f06
+
+pkgname = openai-hub-git

@@ -1,0 +1,24 @@
+[Unit]
+Description=OpenAI Hub HTTP service
+After=network.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+LogsDirectory=openai-hub
+StateDirectory=openai-hub
+LoadCredential=config.toml:/etc/openai-hub/config.toml
+
+ExecStart=/usr/bin/openai-hubd \
+    --config ${CREDENTIALS_DIRECTORY}/config.toml \
+    --acl /etc/openai-hub/acl.toml
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
