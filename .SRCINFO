@@ -1,0 +1,24 @@
+pkgbase = r-optimparallel
+	pkgdesc = Parallel Version of the L-BFGS-B Optimization Method
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=optimParallel
+	arch = any
+	license = GPL
+	checkdepends = r-numderiv
+	checkdepends = r-spam
+	checkdepends = r-testthat
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-lbfgsb3c
+	optdepends = r-microbenchmark
+	optdepends = r-numderiv
+	optdepends = r-r.rsp
+	optdepends = r-roxygen2
+	optdepends = r-spam
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/optimParallel_1.0-2.tar.gz
+	md5sums = f41a14e30017e5e034f7a1a58d4e8f4c
+	sha256sums = 0f9bc62c23d9005130f2892bf5eaecf308fa48a727bdd5e19b7dcd1d95f30a9d
+
+pkgname = r-optimparallel
