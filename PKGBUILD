@@ -2,7 +2,7 @@
 
 pkgname=python-isal
 _module=${pkgname#python-}
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Faster zlib and gzip compatible compression and decompression by providing python bindings for the ISA-L library'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
             )
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('c96f3f9a8aed66a9e28b68a3b04a0852e8a06a5493a2fab57b963d9c0ee97fac')
+sha256sums=('38f4e04b9f5a9577a7b16362a4d38b413e6978852d0c94c2cd7a3964e4794f28')
 
 build() {
     cd "$_module-$pkgver"
