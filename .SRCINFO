@@ -21,6 +21,7 @@ pkgbase = python-pyfai
 	depends = python-pyqt5
 	depends = fftw
 	depends = opencl-driver
+	optdepends = python-silx: for additional functionality, like pyFAI-calib2
 	source = https://github.com/silx-kit/pyFAI/archive/v2023.09.tar.gz
 	sha256sums = d6cdd92a165d2b2c098095a1ddf7424cd77aeb52a1c36e730c2bf792d8d65fec
 

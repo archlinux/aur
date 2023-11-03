@@ -10,6 +10,7 @@ license=('GPLv3' 'BSD' 'MIT')
 depends=('python-numpy' 'python-scipy' 'python-matplotlib' 'python-fabio'
          'python-h5py' 'python-pyopencl' 'python-pyqt5' 'fftw'
          'opencl-driver')
+optdepends=('python-silx: for additional functionality, like pyFAI-calib2')
 makedepends=('cython' 'meson-python' 'python-build' 'python-installer'
              'python-wheel')
 source=("https://github.com/silx-kit/pyFAI/archive/v${pkgver}.tar.gz")
