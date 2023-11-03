@@ -7,7 +7,7 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.19
+pkgver=3.0.20
 pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
@@ -97,7 +97,7 @@ options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         libplacebo-5.patch
         update-vlc-plugin-cache.hook)
-sha512sums=('8e4a7a35f8ab7db139c6ef1ace9947c2e21ed721af5576761c4b7b8498aaeded366273aad9853541d70ba2773422141a5e9a6196ae3c2a3a7c4dee2a2e6c3e76'
+sha512sums=('02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406'
             'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3')
 
