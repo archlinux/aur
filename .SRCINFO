@@ -1,7 +1,7 @@
 pkgbase = zoom-system-qt
 	pkgdesc = Video Conferencing and Web Conferencing Service - system Qt libraries
 	pkgver = 5.16.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoom.us
 	arch = x86_64
 	license = custom

@@ -7,7 +7,7 @@ _basename=zoom
 pkgname=$_basename-system-qt
 pkgver=5.16.6
 _subver=382
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -37,7 +37,6 @@ optdepends=('qt5-webengine: SSO login support'
             'picom: extra compositor needed by some window managers for screen sharing'
             'xcompmgr: extra compositor needed by some window managers for screen sharing'
             'pulseaudio-alsa: output sound via pulseaudio' )
-#options=(!strip)
 source=("${pkgname}-${pkgver}.${_subver}_orig_x86_64.pkg.tar.xz"::"https://cdn.zoom.us/prod/${pkgver}.${_subver}/zoom_x86_64.pkg.tar.xz")
 sha512sums=('c70acebcda8719c12a5c69607c5b6195e16b8c70ad9cb65d1878064134988fdbfd01288df7ce8d41153614f7c5678222ad98ee3deac08f23acbacfd694860d65')
 
@@ -53,6 +52,9 @@ package() {
     # Fix spurious RPATH in binaries
     patchelf --shrink-rpath zoom
     patchelf --shrink-rpath zopen
+
+    #ln -sfv cef/libcef.so libcef.so
+    #ln -sfv cef/libffmpeg.so libffmpeg.so
 
     rm -rf Qt/bin
 
@@ -72,7 +74,7 @@ package() {
     _replace cef/libvulkan.so.1 electron/libvulkan.so.1
     _replace libturbojpeg.so libturbojpeg.so
     _replace libswresample.so.4 libswresample.so.4
-    _replace libquazip.so libquazip1.so
+    _replace libquazip.so libquazip1-qt5.so
     _replace libOpenCL.so.1 libOpenCL.so
     _replace libmpg123.so libmpg123.so
     # libmkldnn.so intel-oneapi-mkl
