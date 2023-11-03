@@ -8,5 +8,5 @@ NEW_VERSION=1.2.7 make update_version
 make package
 
 # commit and push changes to AUR
-make push
+NEW_VERSION=1.2.7 make push
 ```

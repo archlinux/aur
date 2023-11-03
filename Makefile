@@ -13,5 +13,5 @@ update_version:
 
 push: .SRCINFO
 	git add PKGBUILD .SRCINFO
-	git commit
+	git commit -m "Update to $$NEW_VERSION"
 	git push
