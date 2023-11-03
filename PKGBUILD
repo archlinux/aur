@@ -14,7 +14,6 @@ source=("https://github.com/wachin/wps-office-all-mui-win-language/releases/down
 _languages=(
         'de-DE         "German (Germany)"'
         'en-GB         "English (United Kingdom)"'
-        'es-ES         "Spanish (Spain)"'
         'es-MX         "Spanish (Mexico)"'
         'fr-CA         "French (Canada)"'
         'fr-FR         "French"'
