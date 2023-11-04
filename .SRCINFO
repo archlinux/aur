@@ -1,0 +1,19 @@
+pkgbase = obs-plugin-texture-share-vk
+	pkgdesc = Remote texture sharing plugin for OBS
+	pkgver = v0.1.4.r3.g0207730
+	pkgrel = 1
+	url = https://github.com/DigitOtter/obs-plugin-texture-share-vk
+	arch = any
+	license = GPL
+	makedepends = qt6-base
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = obs-studio
+	depends = texture-share-vk
+	provides = obs-scene-tree-view
+	conflicts = obs-scene-tree-view
+	source = obs-plugin-texture-share-vk::git+https://github.com/DigitOtter/obs-plugin-texture-share-vk.git#branch=master
+	sha256sums = SKIP
+
+pkgname = obs-plugin-texture-share-vk
