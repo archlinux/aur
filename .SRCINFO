@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-xz
 	pkgdesc = Library and command line tools for XZ and LZMA compressed files (android)
-	pkgver = 5.4.3
+	pkgver = 5.4.5
 	pkgrel = 1
 	url = https://tukaani.org/xz
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = android-aarch64-xz
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://tukaani.org/xz/xz-5.4.3.tar.gz
-	md5sums = d48f46cd5792e331712c0ef300206df2
+	source = https://tukaani.org/xz/xz-5.4.5.tar.gz
+	md5sums = d2bb81e1a1a7808352c4ca28622f5c72
 
 pkgname = android-aarch64-xz
