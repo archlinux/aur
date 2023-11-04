@@ -8,8 +8,8 @@
 # https://github.com/michaellass/AUR
 
 _majorver=21
-_completever=21
-_updatever=35
+_completever=21.0.1
+_updatever=12
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
@@ -27,11 +27,9 @@ optdepends=('gtk2: for the Gtk+ 2 look and feel'
 provides=("java-runtime-headless=${_majorver}"
           "java-runtime-headless-openjdk=${_majorver}"
           "jre${_majorver}-openjdk-headless=${pkgver}"
-          "jre-openjdk-headless=${pkgver}"
           "java-runtime=${_majorver}"
           "java-runtime-openjdk=${_majorver}"
           "jre${_majorver}-openjdk=${pkgver}"
-          "jre-openjdk=${pkgver}"
           "java-environment=${_majorver}"
           "java-environment-openjdk=${_majorver}"
           "jdk${_majorver}-openjdk=${pkgver}"
@@ -61,7 +59,7 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('82f64c53acaa045370d6762ebd7441b74e6fda14b464d54d1ff8ca941ec069e6'
+sha256sums=('1a6fa8abda4c5caed915cfbeeb176e7fbd12eb6b222f26e290ee45808b529aa1'
             '23ced5efdb3381e6318af1acb343c714b2d9aacdb4666fee05dc58cd254b2d07'
             'ef7f6465272608a35615665f8e4b0837b43b4db7bf22f8eb7cecdd6170b5b2ee'
             '166b128e025404e7b4048c5b3c958e080a13a98f84b6faa9cfe11530f553e287')

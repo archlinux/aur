@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 21 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 21.u35
+	pkgver = 21.0.1.u12
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -17,18 +17,16 @@ pkgbase = jdk-temurin
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.u35
-	provides = jre-openjdk-headless=21.u35
+	provides = jre21-openjdk-headless=21.0.1.u12
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.u35
-	provides = jre-openjdk=21.u35
+	provides = jre21-openjdk=21.0.1.u12
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.u35
-	provides = jdk-openjdk=21.u35
-	provides = openjdk21-src=21.u35
-	provides = openjdk-src=21.u35
+	provides = jdk21-openjdk=21.0.1.u12
+	provides = jdk-openjdk=21.0.1.u12
+	provides = openjdk21-src=21.0.1.u12
+	provides = openjdk-src=21.0.1.u12
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -46,11 +44,11 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_x64_linux_hotspot_21_35.tar.gz
+	source = https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.1%2B12/OpenJDK21U-jdk_x64_linux_hotspot_21.0.1_12.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 82f64c53acaa045370d6762ebd7441b74e6fda14b464d54d1ff8ca941ec069e6
+	sha256sums = 1a6fa8abda4c5caed915cfbeeb176e7fbd12eb6b222f26e290ee45808b529aa1
 	sha256sums = 23ced5efdb3381e6318af1acb343c714b2d9aacdb4666fee05dc58cd254b2d07
 	sha256sums = ef7f6465272608a35615665f8e4b0837b43b4db7bf22f8eb7cecdd6170b5b2ee
 	sha256sums = 166b128e025404e7b4048c5b3c958e080a13a98f84b6faa9cfe11530f553e287
