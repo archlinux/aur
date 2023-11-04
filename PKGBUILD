@@ -4,7 +4,7 @@
 pkgname=acme-upstream
 _pkgname=acme
 pkgver=0.97
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-assembler for MOS 6502, 65C02 and 65816 CPUs - SourceForge upstream release"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/acme-crossass/"
@@ -20,14 +20,20 @@ conflicts=('acme' 'acme-git')
 
 build()
 {
-	cd "${srcdir}/${_pkgname}-${pkgver}/src"
-	make || return 1
+  cd "${srcdir}/${_pkgname}-${pkgver}/src"
+  make || return 1
 }
 
 package()
 {
-	cd "${srcdir}/${_pkgname}-${pkgver}/src"
-	install -D -m755 acme ${pkgdir}/usr/bin/acme
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -D -m755 src/acme ${pkgdir}/usr/bin/acme
+  #
+  install -D -d ${pkgdir}/usr/share/acme
+  cp -R ACME_Lib docs examples "${pkgdir}/usr/share/acme/"
+  #
+  install -D -d ${pkgdir}/usr/share/doc
+  ln -s ../acme/docs "${pkgdir}/usr/share/doc/acme"
 }
 
 #
