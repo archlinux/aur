@@ -2,3 +2,7 @@ archlinux-linux/
 src/
 pkg/
 /*.pkg.*
+/*.tar.xz
+/*.tar.sign
+/*.patch.zst
+/*.patch.zst.sig

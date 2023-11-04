@@ -1,18 +1,16 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgbase=linux-rust
-pkgver=6.5.1.arch1
+pkgver=6.5.9.arch2
 pkgrel=1
 pkgdesc='Rust Linux'
-_srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://github.com/archlinux/linux/commits/$_srctag"
+url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc
   cpio
   gettext
-  git
   llvm
   lld
   libelf
@@ -22,32 +20,41 @@ makedepends=(
   rustup
   tar
   xz
+
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  texlive-latexextra
 )
 options=('!strip')
-_srcname=archlinux-linux
+_srcname=linux-${pkgver%.*}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
-  rust-toolchain
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-  C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('SKIP'
-        '41d7e1ddb563bda36a1e8f8ab718ce5d66b0265c0c51d80b12dfd1e31a0fffa2582f949aebdcbb1d361b7f7a685b88091eda71731185dbb03a877afbaec6403a'
-        '0202549b583e211fa6bf2e8f049891d7cb7da5d42e1a934040cd2fd43420a71953e873f6df15904a85520b361767f6f48c71967889fb259466513ef35fbff5d5')
+# https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
+sha256sums=('c6662f64713f56bf30e009c32eac15536fad5fd1c02e8a3daf62a0dc2f058fd5'
+            'SKIP'
+            '98c8e04079699a9316c37ed299a363c80ff9625388c492116683b929f35dcab6'
+            'SKIP'
+            '3d5c668aabf64983342e0753b7549e0d0a678f8812a3a367692c1b0a79b5ba26')
+b2sums=('fb5fcc0dc79e2f615a550283481492a8185414d65369cbe805909112735593e5fc8bdbd482a347dc4cb3dcac979bea21cd03c503932e9321856eeea685d31c65'
+        'SKIP'
+        '2b8309c03ae0dd7582b471e39b459fbcb653bd3971eda91576791b1dabe73aad89d4b468a59d0cf3e834f6085ad33ac5449b60a567960835f6f56dd739411262'
+        'SKIP'
+        '7fc391d272211c7fcce3407cfa666f182a83dd5df1e6aaa0d5cf57e2f52d90f31d5f45756324f5a229ebffb8f37f90f66bf5cc2143139570af0b92eff6c89520')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-
-_make() {
-  test -s version
-  make LLVM=1 KERNELRELEASE="$(<version)" "$@"
-}
 
 prepare() {
   cd $_srcname
@@ -55,14 +62,12 @@ prepare() {
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make LLVM=1 defconfig
-  make LLVM=1 -s kernelrelease > version
-  make LLVM=1 mrproper
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -72,22 +77,21 @@ prepare() {
   rustup component add rust-src
 
   echo "Installing rust-bindgen"
-  # uninstall potentially installed previous versions of bindgen which
-  # contained the binaries which are now in bindgen-cli
-  cargo uninstall bindgen
   cargo install --locked --version 0.62.0 bindgen-cli
 
   echo "Setting config..."
   cp ../config .config
-  _make olddefconfig
+  make LLVM=1 olddefconfig
   diff -u ../config .config || :
 
+  make LLVM=1 -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  _make all
+  make LLVM=1 all
+  make LLVM=1 htmldocs
 }
 
 _package() {
@@ -117,13 +121,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make LLVM=1 -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make LLVM=1 INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -196,7 +200,6 @@ _package-headers() {
   install -Dt "$builddir/rust" -m644 rust/*.so
   install -Dt "$builddir" -m644 ../../rust-toolchain
 
-
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
@@ -220,9 +223,29 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
+_package-docs() {
+  pkgdesc="Documentation for the $pkgdesc kernel"
+
+  cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  echo "Installing documentation..."
+  local src dst
+  while read -rd '' src; do
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
+
+  echo "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+}
+
 pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
+  "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
