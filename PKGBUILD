@@ -1,23 +1,16 @@
 
 pkgname=passer-git
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="passer is a password generator based on passphrases"
 arch=(any)
 url="https://github.com/spynetS/passer"
 license=(GPL3)
-depends=(python3 xclip)
+depends=(python3 xclip python-pyperclip python-passlib python-flagser)
 source=("git+https://github.com/spynetS/passer.git")
 noextract=()
 md5sums=(SKIP)
 validpgpkeys=()
-
-prepare() {
-    #sowy uwu
-    pip install flagser
-    pip install pyperclip
-    pip install passlib
-}
 
 package() {
     cd passer
