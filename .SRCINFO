@@ -1,6 +1,6 @@
 pkgbase = whitesur-kde-theme-git
 	pkgdesc = MacOS big sur like theme for KDE Plasma
-	pkgver = r113.9f66519
+	pkgver = r114.2b4bcc7
 	pkgrel = 2
 	url = https://github.com/vinceliuice/WhiteSur-kde
 	arch = any
