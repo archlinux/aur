@@ -1,7 +1,7 @@
 # Maintainer: atemmel <temmeladam@gmail.com>
 pkgname=spider
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and simple terminal file manager"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/atemmel/${pkgname}"
