@@ -1,7 +1,7 @@
 pkgbase = mautrix-signal
 	pkgdesc = A Matrix-Signal puppeting bridge
-	pkgver = 0.4.2
-	pkgrel = 1
+	pkgver = 0.4.3
+	pkgrel = 2
 	url = https://github.com/mautrix/signal
 	install = mautrix-signal.install
 	arch = any
@@ -27,12 +27,12 @@ pkgbase = mautrix-signal
 	optdepends = python-unpaddedbase64: end-to-bridge encryption support
 	backup = etc/mautrix-signal/config.yaml
 	backup = etc/mautrix-signal/registration.yaml
-	source = https://github.com/mautrix/signal/archive/refs/tags/v0.4.2.tar.gz
+	source = https://github.com/mautrix/signal/archive/refs/tags/v0.4.3.tar.gz
 	source = mautrix-signal.service
 	source = mautrix-signal.sysusers
 	source = mautrix-signal.tmpfiles
-	sha256sums = bd6c537b2dae759b13ad2acdc49e76f6b9b14ce6c7f234aa6f8f7966293a1a87
-	sha256sums = 87a479c5216fa79dbe20ff776f67f5ab70ad0f9705da4b274cc662003545c4be
+	sha256sums = e75636e845d4b9d84070efec510b7358b93a4fb0d6ffe4300dbdb9260725ba53
+	sha256sums = 8990ebe7df080cd6eddd5af17b49dbf4c4b5e5216b8211b5afc9cf096f38cd5f
 	sha256sums = 3203dcff48579a2420eff4289a03ea1b3a9f47031c39f514e8c9a2d119625725
 	sha256sums = 5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5
 
