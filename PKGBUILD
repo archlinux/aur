@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=simpfand-git
-pkgver=v4.2.9.gaa475fc
+pkgver=v4.2.10.gdd100b5
 pkgrel=1
 pkgdesc="A simple fan control daemon for ThinkPads"
 arch=('i686' 'x86_64')
