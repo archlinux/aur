@@ -1,9 +1,10 @@
 pkgbase = samurai-select
 	pkgdesc = A screen selection tool for wayland compositors using the layer shell
 	pkgver = 23.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PucklaJ/samurai-select
 	arch = x86_64
+	arch = aarch64
 	license = ZLIB
 	makedepends = go
 	makedepends = gcc

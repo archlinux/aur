@@ -2,7 +2,7 @@
 
 pkgname=samurai-select
 pkgver=23.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A screen selection tool for wayland compositors using the layer shell"
 arch=("x86_64" "aarch64")
 url="https://github.com/PucklaJ/${pkgname}"
