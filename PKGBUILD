@@ -2,7 +2,7 @@
 pkgname=whitesur-kde-theme-git
 _themeName=WhiteSur
 _gitname="$_themeName-kde"
-pkgver=r113.9f66519
+pkgver=r114.2b4bcc7
 pkgrel=2
 pkgdesc="MacOS big sur like theme for KDE Plasma"
 arch=('any')
