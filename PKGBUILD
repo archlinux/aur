@@ -1,7 +1,8 @@
-# Maintainer: Egor Vorontsov <sdoregor@sdore.me>
+# Maintainer: Ben Woodward <ben@benwoodward.me.uk>
+# Contributer: Egor Vorontsov <sdoregor@sdore.me>
 
 pkgname=huawei-wmi
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Sets group write privileges and reinstates battery charge-thresholds."
 arch=(any)
@@ -12,7 +13,7 @@ install='huawei-wmi.install'
 source=("https://github.com/qu1x/huawei-wmi/archive/v${pkgver}.tar.gz"
         'huawei-wmi.users'
         'huawei-wmi.files')
-sha256sums=('03e3b28e2b5d5380f04f44847005e97f3b5f02cb54233f0ccc8f6f2deb418ed1'
+sha256sums=('566fcc3990225463dc5b13a18411669fa4849172e980a8f3da6631bd9b44ea7f'
             'd56eea27ee8dad292956d3a39e6d47f5acba676da56890c9b73081789782975e'
             '7179b5ca0ef6fae55a33dac664a5de853aab8c898cc6c2ff6d2f8a4cb6c0eb42')
 
