@@ -1,6 +1,6 @@
 pkgbase = openixcard
 	pkgdesc = Open Source Version of Allwinner PhoenixCard on Linux
-	pkgver = 1.1.0
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/YuzukiTsuru/OpenixCard
 	arch = x86_64
@@ -8,17 +8,19 @@ pkgbase = openixcard
 	makedepends = cmake
 	depends = glibc
 	depends = confuse
-	source = openixcard-1.1.0::git+https://github.com/YuzukiTsuru/OpenixCard.git#tag=1.1.0
+	source = openixcard-1.1.8::git+https://github.com/YuzukiTsuru/OpenixCard.git#tag=1.1.8
 	source = git+https://github.com/YuzukiTsuru/ColorCout.git
 	source = git+https://github.com/p-ranav/argparse.git
 	source = git+https://github.com/arun11299/cpp-subprocess.git
 	source = git+https://github.com/ArthurSonzogni/FTXUI.git
 	source = git+https://github.com/SemaiCZE/inicpp.git
+	source = 0001-Added-cstdint-to-fix-error-when-compiling-on-Linux.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 5ef6d78c5e98bf7ca87911ef7609b9192a9a88411741a971d565401b8fd85523
 
 pkgname = openixcard
