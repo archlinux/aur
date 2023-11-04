@@ -2,8 +2,8 @@
 # Contributor DuckSoft <realducksoft at gmail dot com>
 pkgname=pingtunnel-git
 _pkgname=${pkgname%-git}
-pkgver=2.7.r3.g7af41a7
-pkgrel=2
+pkgver=2.7.r18.g66d34ba
+pkgrel=1
 pkgdesc="A tool that advertises TCP/UDP/SOCKS5 traffic as ICMP traffic for forwarding."
 depends=(glibc)
 optdepends=('geoip-database: geolite country database')
@@ -13,7 +13,7 @@ makedepends=(go git)
 arch=(x86_64)
 license=(MIT)
 url="https://github.com/esrrhs/pingtunnel"
-source=("$_pkgname::git+$url.git#branch=master")
+source=("$_pkgname::git+$url.git#branch=delete")
 sha512sums=('SKIP')
 
 pkgver() {
