@@ -6,6 +6,7 @@ pkgbase = powerstation-bin
 	arch = x86_64
 	license = GPL
 	depends = dbus
+	depends = pciutils
 	provides = powerstation
 	conflicts = powerstation-git
 	source = powerstation-v0.1.2.tar.gz::https://github.com/ShadowBlip/PowerStation/releases/download/v0.1.2/powerstation.tar.gz
