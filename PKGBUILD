@@ -3,7 +3,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-zlib
-pkgver=1.2.13
+pkgver=1.3
 pkgrel=1
 pkgdesc="A compression/decompression Library (android)"
 arch=('any')
@@ -11,11 +11,11 @@ url="http://www.zlib.net/"
 license=('custom:zlib')
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
-makedepends=('android-environment' 'android-pkg-config')
+makedepends=('android-environment' 'android-pkg-config' 'android-sdk-build-tools')
 source=("http://zlib.net/zlib-${pkgver}.tar.gz"
         "0001-Disable-versioning.patch"
         "0002-Fix-CC-definition.patch")
-md5sums=('9b8aa094c4e5765dabf4da391f00d15c'
+md5sums=('60373b133d630f74f4a1f94c1185a53f'
          'c2d3fe1aba79ec3e75758b2f6478c980'
          '2420be2579d725c1cf1e0aac7ae0a4fe')
 
