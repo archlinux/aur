@@ -2,7 +2,7 @@
 
 pkgname=radeon-profile-git
 pkgver=20200824.r22.g295d189
-pkgrel=2
+pkgrel=3
 pkgdesc="App for display info about radeon card"
 url="http://github.com/emerge-e-world/radeon-profile"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'xf86-video-ati: radeon open source driver'
 	'xf86-video-amdgpu: amdgpu open source driver')
 provides=('radeon-profile')
-replaces=('radeon-profile')
+conflicts=('radeon-profile')
 source=("git+https://github.com/emerge-e-world/radeon-profile.git")
 sha256sums=('SKIP')
 
