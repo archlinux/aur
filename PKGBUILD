@@ -7,8 +7,8 @@ pkgdesc="Mona Sans, a variable font from GitHub"
 arch=('any')
 license=('OFL')
 url="https://github.com/github/mona-sans"
-source=("https://github.com/github/mona-sans/releases/download/v${pkgver}/Mona.Sans.${pkgver}.zip"
-        "https://github.com/github/mona-sans/raw/v${pkgver}/LICENSE")
+source=("https://github.com/github/mona-sans/releases/download/v${pkgver}/MonaSans.zip"
+        "https://github.com/github/mona-sans/raw/main/LICENSE")
 sha256sums=('SKIP' 'SKIP')
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
