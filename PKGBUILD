@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/lululxvi/${_base}"
 license=(LGPL2)
 depends=(python-scikit-optimize)
-makedepends=(python-build python-installer python-setuptools python-wheel) # setuptools_scm[toml] | python-tensorflow-probability
+makedepends=(python-build python-installer python-setuptools-scm python-wheel) # python-tensorflow-probability
 optdepends=('python-tensorflow: TensorFlow backend support'
   'python-pytorch: backend: PyTorch backend support'
   'python-jax: JAX backend support'
@@ -18,6 +18,7 @@ sha512sums=('a1035e718b0360b2f05992d02d788422e9e2a49fa8ffae7365bf8dbde13c7039b47
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
