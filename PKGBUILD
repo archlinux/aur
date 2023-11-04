@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASEB
-_pkgver=1.46.0
+_pkgver=1.46.1
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.46.1
 pkgrel=1
 pkgdesc='Predict Acetylated Lysine Sites'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aead13a1c3db029b5c857f583844dbbfcf9af6b46168612637cf85bb5abf2ac2')
+sha256sums=('54535eb80143d2e5d6f6290e6965240f8d4f6eabe20468047db3f2edefd19862')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
