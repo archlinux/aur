@@ -1,5 +1,5 @@
 pkgname="mdhtml"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Really simple CLI Markdown to HTML converter with styling support"
 url="https://codeberg.org/Tomkoid/mdhtml"
@@ -7,7 +7,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 makedepends=("go")
 license=("MIT")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/Tomkoid/mdhtml/archive/${pkgver}.tar.gz")
-sha512sums=("f4640fa7ac759a1bed3d64346791fe3bc365574e6b0df51c084dec6301d3e2fcf9cb8a064666eb4f8fa34d6f6612759c8e30873d749f9fbb6602f1623c9080f0")
+sha512sums=("e6b2fcf53f7c1eb133d35cb265b4356c5cfc47dbb4f58c2bcdeaa0b1cc64b31097aeaf9cca37c89d48f572650b9112fe17937b4f08dc543781c17cbb48e473d3")
 
 build() {
   export GOPATH="$srcdir"/gopath
