@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Furious
+GenericName=Furious
+Exec=furious %u
+Icon=furious
+Type=Application
+StartupNotify=true
+Categories=Network
+Keywords=Furious;Proxy;VPN;V2ray;Xray;Hysteria
