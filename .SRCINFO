@@ -1,0 +1,17 @@
+pkgbase = python-stgpytools-git
+	pkgdesc = Collection of stuff that's useful in general python programming. (GIT version)
+	pkgver = 1.0.1.0.g1b48d81
+	pkgrel = 1
+	url = https://github.com/Setsugennoao/stgpytools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/Setsugennoao/stgpytools.git
+	sha256sums = SKIP
+
+pkgname = python-stgpytools-git
