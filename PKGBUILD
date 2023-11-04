@@ -4,7 +4,7 @@ pkgname=samurai-select
 pkgver=23.11.0
 pkgrel=1
 pkgdesc="A screen selection tool for wayland compositors using the layer shell"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/PucklaJ/${pkgname}"
 license=("ZLIB")
 depends=("wayland" "cairo")
@@ -36,6 +36,7 @@ build() {
   export GO_FLAGS="-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw -x -v"
 
   go build
+  go clean -a -cache --modcache
 }
 
 package() {
