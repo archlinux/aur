@@ -12,12 +12,14 @@ provides=('poezio-omemo')
 license=('GPL')
 depends=(
   'python'
-  'python-setuptools'
   'poezio-git'
   'python-slixmpp-omemo-git'
   'python-omemo-backend-signal-git'
 )
-makedepends=('git')
+makedepends=(
+  'git'
+  'python-setuptools'
+)
 
 source=("${_pkgname}::git+https://lab.louiz.org/poezio/poezio-omemo.git")
 

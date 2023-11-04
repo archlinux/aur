@@ -7,8 +7,8 @@ pkgbase = poezio-omemo-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
 	depends = poezio-git
 	depends = python-slixmpp-omemo-git
 	depends = python-omemo-backend-signal-git
@@ -18,4 +18,3 @@ pkgbase = poezio-omemo-git
 	sha256sums = SKIP
 
 pkgname = poezio-omemo-git
-
