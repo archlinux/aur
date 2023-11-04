@@ -1,7 +1,7 @@
 pkgbase = local-ai
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first.
 	pkgver = 1.40.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mudler/LocalAI
 	arch = aarch64
 	arch = x86_64
@@ -15,6 +15,14 @@ pkgbase = local-ai
 	makedepends = re2
 	depends = glibc
 	source = https://github.com/mudler/LocalAI/archive/refs/tags/v1.40.0.tar.gz
+	source = local-ai.conf
+	source = local-ai.tmpfiles
+	source = local-ai.sysusers
+	source = local-ai.service
 	sha256sums = 1f55271a038caa00031f220e570eedc25ec1d232686b30c72465746058a05e79
+	sha256sums = a642a3eda0fe24fa2ebffc5ec997fdbcc2ee74b615045fe5f0e40c4efc7b8399
+	sha256sums = 90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312
+	sha256sums = 97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b
+	sha256sums = affefb565e63f19fbdad53032c090fc33c2aa8ce986ba9cf678ccf071c2d67bf
 
 pkgname = local-ai

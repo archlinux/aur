@@ -1,0 +1,15 @@
+[Unit]
+Description=LocalAI API For Running LLaMA/GPT Models
+After=local-fs.target
+
+[Service]
+User=local-ai
+Group=local-ai
+EnvironmentFile=/etc/conf.d/local-ai.conf
+SyslogIdentifier=local-ai
+Type=simple
+ExecStart=/usr/bin/local-ai
+SuccessExitStatus=1
+
+[Install]
+WantedBy=multi-user.target
