@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-rife-ncnn-vulkan-git
 	pkgdesc = Plugin for Vapoursynth: rife-ncnn-vulkan (GIT version)
-	pkgver = 9_mod_v4.0.g48b98a6
+	pkgver = 9.mod.v6.0.g4cbe35e
 	pkgrel = 1
 	url = https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan
 	arch = x86_64

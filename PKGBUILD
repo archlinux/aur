@@ -2,7 +2,7 @@
 
 _plug=rife-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=9_mod_v4.0.g48b98a6
+pkgver=9.mod.v6.0.g4cbe35e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - . | tr -d r)"
+  echo "$(git describe --long --tags | tr - . | tr _ .| tr -d r)"
 }
 
 prepare() {
