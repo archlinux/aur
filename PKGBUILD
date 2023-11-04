@@ -2,7 +2,7 @@
 
 _name=purpose
 pkgname=${_name}5
-pkgver=5.111.0
+pkgver=5.112.0
 pkgrel=1
 pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
 arch=(x86_64)
@@ -18,7 +18,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('311d1857dd1d548a7e11d13515e942484374bf3f23036aee65625ef33163efa9'
+sha256sums=('e322baf0050a12c5a112e75bf37f8be9708d3ec8e48f5929bdbe1bb116ac0cb3'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
