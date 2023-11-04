@@ -157,10 +157,10 @@ package() {
 
   # Documentation
 
-  install -dm755 "${pkgdir}/usr/share/docs"
-  cp -R "${_pkgname}/docs/" "${pkgdir}/usr/share/docs/${_pkgname}/"
-  chmod 0644 "${pkgdir}/usr/share/docs/${_pkgname}/"
-  _changelog md > "${pkgdir}/usr/share/docs/${_pkgname}/Changelog.md"
+  install -dm755 "${pkgdir}/usr/share/doc"
+  cp -R "${_pkgname}/docs/" "${pkgdir}/usr/share/doc/${_pkgname}/"
+  chmod 0644 "${pkgdir}/usr/share/doc/${_pkgname}/"
+  _changelog md > "${pkgdir}/usr/share/doc/${_pkgname}/Changelog.md"
 
   # Get supported electron version and add it to the dependencies.
   #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
