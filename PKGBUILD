@@ -1,4 +1,5 @@
-# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Maintainer: meowjiao321 <meowjiao321 at 163 dot com>
+# Contributor: Daniel Menelkir <dmenelkir at gmail dot com>
 pkgname=whitesur-kde-theme-git
 _themeName=WhiteSur
 _gitname="$_themeName-kde"
