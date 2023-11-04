@@ -1,7 +1,7 @@
 # Maintainer: zetaPRIME <qmanxt at gmail dot com>
 pkgname=qt5ct-refresh-git
 _realname=qt5ct-refresh
-pkgver=r3.94433c7
+pkgver=r6.d2190b9
 pkgrel=1
 pkgdesc="Simple utility to force-refresh qt5ct style settings"
 arch=('any')
@@ -9,6 +9,7 @@ url="https://gitlab.com/zetaPRIME/qt5ct-refresh/"
 license=('Unlicense')
 depends=('qt5-base')
 makedepends=('git' 'qt5-tools')
+provides=('qt5ct-refresh')
 conflicts=('qt5ct-refresh')
 source=($_realname::git+https://gitlab.com/zetaPRIME/qt5ct-refresh.git)
 md5sums=('SKIP')
