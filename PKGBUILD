@@ -5,7 +5,7 @@ _pkgname=probe-cli
 pkgname=ooniprobe-cli
 pkgver=3.19.0
 _pkgver=3.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation OONI Probe CLI'
 arch=('x86_64')
 url='https://ooni.org/'
@@ -24,7 +24,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-ldflags=-linkmode=external -buildmode=pie -trimpath -modcacherw'
-  go build ./cmd/ooniprobe
+  go1.20 build ./cmd/ooniprobe
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = ooniprobe-cli
 	pkgdesc = Next generation OONI Probe CLI
 	pkgver = 3.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ooni.org/
 	arch = x86_64
 	license = GPL3
