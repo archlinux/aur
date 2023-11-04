@@ -13,7 +13,7 @@ url="https://${pkgname}project.space"
 depends=('gtk2' 'libtheora' 'lua53' 'gtkglext' 'freeglut' 'libxmu' 'glu' 'libjpeg-turbo' 'mesa')
 options=('!makeflags')
 source=(https://github.com/CelestiaProject/Celestia/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('001b1276fd078ac8cb2d6523e02262c27a14c3b9c348559497add4c41ee357df4665375452b551fa120b30d8d30bfa38d9846f32075af78b135f2f59a7a23dc0')
+sha512sums=('58f5e55bcb193f89202663a2af8dbb920fa5bd4e893c0ec1884488b238d459d91ffc750b6b7a71653bdbe9e79e88d785020f9b189df8fad750bea39bf995a91c')
 
 build() {
   cd Celestia-${pkgver}
