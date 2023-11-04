@@ -1,14 +1,14 @@
 pkgbase = spider
 	pkgdesc = Fast and simple terminal file manager
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/atemmel/spider
 	arch = x86_64
 	arch = aarch64
 	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = zig-dev-bin
+	makedepends = zig
 	depends = curl
 	depends = ncurses
 	depends = tidy
