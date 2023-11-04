@@ -10,7 +10,7 @@
 _majorver=17
 _completever=17.0.9
 _updatever=9
-pkgrel=1
+pkgrel=2
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 [ $_majorver != $_completever ] && _versuffix=U
@@ -27,11 +27,9 @@ optdepends=('gtk2: for the Gtk+ 2 look and feel'
 provides=("java-runtime-headless=${_majorver}"
           "java-runtime-headless-openjdk=${_majorver}"
           "jre${_majorver}-openjdk-headless=${pkgver}"
-          "jre-openjdk-headless=${pkgver}"
           "java-runtime=${_majorver}"
           "java-runtime-openjdk=${_majorver}"
           "jre${_majorver}-openjdk=${pkgver}"
-          "jre-openjdk=${pkgver}"
           "java-environment=${_majorver}"
           "java-environment-openjdk=${_majorver}"
           "jdk${_majorver}-openjdk=${pkgver}"
