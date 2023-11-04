@@ -1,6 +1,6 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 20
+	pkgver = 21
 	pkgrel = 1
 	url = https://github.com/OpenVPN/openvpn3-linux
 	arch = x86_64
@@ -11,10 +11,14 @@ pkgbase = openvpn3
 	makedepends = python-docutils
 	makedepends = python-jinja
 	makedepends = bash
-	depends = glib2>=2.50
+	makedepends = meson
+	makedepends = pcre2
+	makedepends = xz
+	makedepends = libffi
+	makedepends = zlib
 	depends = jsoncpp>=0.10.5
 	depends = libcap-ng>=0.7.5
-	depends = lz4>=1.7.3
+	depends = lz4>=1.8.4
 	depends = util-linux-libs>=2.23.2
 	depends = protobuf>=2.4.0
 	depends = python-dbus
@@ -24,15 +28,17 @@ pkgbase = openvpn3
 	depends = libnl>=3.2.29
 	optdepends = openssl: OpenSSL version
 	optdepends = mbedtls: mbed TLS version
-	optdepends = polkit>=0.105: for systemd-resolved integration
+	optdepends = polkit>=0.112: for systemd-resolved integration
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v20
+	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v21
 	source = openvpn3.rule
 	source = openvpn3.install
 	source = sysusers-openvpn3.conf
+	source = https://download.gnome.org/sources/glib/2.74/glib-2.74.6.tar.xz
 	sha256sums = SKIP
 	sha256sums = ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01
 	sha256sums = a5879d9e637658f5127e849d17f4050bae1f82fa9b25f05bbbbb531867120e8b
 	sha256sums = 045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a
+	sha256sums = 069cf7e51cd261eb163aaf06c8d1754c6835f31252180aff5814e5afc7757fbc
 
 pkgname = openvpn3
