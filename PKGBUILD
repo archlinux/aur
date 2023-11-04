@@ -1,18 +1,22 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Pavel Vasin <rat4@blackcash.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Vitaliy Berdinskikh <ur6lad@archlinux.org.ua>
 
 pkgname=ivy
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Agile dependency manager'
 arch=('any')
 url='https://ant.apache.org/ivy/'
 license=('Apache')
-depends=('java-runtime>=8')
+depends=('java-runtime<=13')
 makedepends=('ant')
-source=("https://apache.uib.no/ant/ivy/$pkgver/apache-ivy-$pkgver-src.tar.gz"
+source=("https://dlcdn.apache.org/ant/ivy/$pkgver/apache-ivy-$pkgver-src.tar.gz"
+        "https://dlcdn.apache.org/ant/ivy/$pkgver/apache-ivy-$pkgver-src.tar.gz.asc"
         'ivy.sh')
-sha256sums=('41c9aa4263d6c0564e9d8bcc4ef4dedb0dd72fd2e5324c6b7f23267bba432076'
+validpgpkeys=('CE8075A251547BEE249BC151A2115AE15F6B8B72')
+sha256sums=('e06edd472268dbf200c19d16fa595e095837cbac4a7bf29c147c301a0a1b0713'
+            'SKIP'
             'fc719139726f670f0acf7b09016a4bb3c4ffdd7a0db88e11eb827467b475ad2d')
 
 build() {

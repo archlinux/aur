@@ -1,15 +1,18 @@
 pkgbase = ivy
 	pkgdesc = Agile dependency manager
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://ant.apache.org/ivy/
 	arch = any
 	license = Apache
 	makedepends = ant
 	depends = java-runtime>=8
-	source = https://apache.uib.no/ant/ivy/2.5.1/apache-ivy-2.5.1-src.tar.gz
+	source = https://dlcdn.apache.org/ant/ivy/2.5.2/apache-ivy-2.5.2-src.tar.gz
+	source = https://dlcdn.apache.org/ant/ivy/2.5.2/apache-ivy-2.5.2-src.tar.gz.asc
 	source = ivy.sh
-	sha256sums = 41c9aa4263d6c0564e9d8bcc4ef4dedb0dd72fd2e5324c6b7f23267bba432076
+	validpgpkeys = CE8075A251547BEE249BC151A2115AE15F6B8B72
+	sha256sums = e06edd472268dbf200c19d16fa595e095837cbac4a7bf29c147c301a0a1b0713
+	sha256sums = SKIP
 	sha256sums = fc719139726f670f0acf7b09016a4bb3c4ffdd7a0db88e11eb827467b475ad2d
 
 pkgname = ivy
