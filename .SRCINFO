@@ -1,0 +1,14 @@
+pkgbase = pulumi-language-java
+	pkgdesc = Modern Infrastructure as Code (YAML provider)
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://github.com/pulumi/pulumi-java
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = pulumi-java-0.9.8.tar.gz::https://github.com/pulumi/pulumi-java/archive/v0.9.8.tar.gz
+	b2sums = 0fb0f9beed326f94e712c756993b3b8faea2cdc08d754451a2287deccd4951707afa3484b7027093e6fc0ef7525b0e5f24501e4a28c628fd451d5eed20adafce
+
+pkgname = pulumi-language-java
