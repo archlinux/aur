@@ -7,9 +7,9 @@ pkgname=palemoon-gtk3
 _pkgname=palemoon
 _repo=Pale-Moon
 epoch=1
-pkgver=32.4.1
+pkgver=32.5.0
 # Commit can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
-_commit=791a7d2d50
+_commit=6a7ff6a825
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC'
               '3059E09144F56804F0FBF4E126B40624BDBFD9F3')
 sha1sums=('SKIP'
           'SKIP'
-          '352d9e47204323c24b96c6449b97fff844fe465d'
+          'bc6bfbbe499ff8b2c846208ac6627c52d021201a'
           '0202b18ac4afb56d3a3e5033a9872cdc3e13b422')
 
 prepare() {
