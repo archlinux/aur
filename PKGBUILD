@@ -4,8 +4,8 @@
 
 pkgname=bsdmainutils
 pkgver=12.1.7
-pkgrel=1
-pkgdesc="Some BSD-style programs including ncal and lorder."
+pkgrel=2
+pkgdesc="BSD transitional package containing ncal."
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/bsdmainutils"
 license=(GPL)
