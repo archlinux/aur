@@ -1,6 +1,6 @@
 pkgbase = cross-install-bin
 	pkgdesc = POSIX-complient cross-platform install command
-	pkgver = 1.2.0.r2
+	pkgver = 1.2.0.r3
 	pkgrel = 1
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/cross-install
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = cross-install-bin
 	depends = sh
 	provides = cross-install
 	conflicts = cross-install
-	source = https://codeberg.org/api/packages/stefanwimmer128/generic/cross-install/1.2.0-2/cross-install-1.2.0-2-any.pkg.tar.zst
-	sha256sums = 503b94e64be786dffb6390c6fc538e00a4e0a921add05b846c1d80f6b8d0cadd
+	source = https://codeberg.org/api/packages/stefanwimmer128/generic/cross-install/1.2.0-3/cross-install-1.2.0-3-any.pkg.tar.zst
+	sha256sums = daa01d8cffb1307442f28a50561ad36f6c346fe474a21c9b5aed16b062bbf474
 
 pkgname = cross-install-bin
