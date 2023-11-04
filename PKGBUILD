@@ -1,7 +1,7 @@
 # Maintainer: Sorah Fukumori <her@sorah.jp>
 pkgname=needroleshere
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Yet another AWS IAM Roles Anywhere helper"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sorah/needroleshere"
@@ -18,7 +18,7 @@ source=(
 
 build() {
   cd "needroleshere-$pkgver"
-  cargo build --release --locked --all-features
+  cargo build --release --locked --no-default-features --features rustls
 }
 
 package() {
@@ -30,4 +30,4 @@ package() {
   install -Dm0644 contrib/systemd/system/needroleshere-ecs-relative.socket "$pkgdir/usr/lib/systemd/system/needroleshere-ecs-relative.socket"
   install -Dm0644 contrib/systemd/default/needroleshere "$pkgdir/etc/default/needroleshere"
 }
-sha512sums=('e4c822de5a9037315831fdada6bc71c094928c777dd875e058c25e55a8e14b89ad019821cb5af6c8cc196f56cd805f369485224711427d5f815c4e379ea3f721')
+sha512sums=('8913575519b5b77450a2284190342d6d03f29cc777e0ef20880c390838e6a371873a83f758b2898f7189fbd629738b8f210aaa1735b4e2d9a7153db056783bea')

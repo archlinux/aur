@@ -1,14 +1,14 @@
 pkgbase = needroleshere
 	pkgdesc = Yet another AWS IAM Roles Anywhere helper
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/sorah/needroleshere
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	makedepends = cargo
 	backup = etc/default/needroleshere
-	source = https://github.com/sorah/needroleshere/archive/v0.3.0.tar.gz
-	sha512sums = e4c822de5a9037315831fdada6bc71c094928c777dd875e058c25e55a8e14b89ad019821cb5af6c8cc196f56cd805f369485224711427d5f815c4e379ea3f721
+	source = https://github.com/sorah/needroleshere/archive/v0.4.0.tar.gz
+	sha512sums = 8913575519b5b77450a2284190342d6d03f29cc777e0ef20880c390838e6a371873a83f758b2898f7189fbd629738b8f210aaa1735b4e2d9a7153db056783bea
 
 pkgname = needroleshere
