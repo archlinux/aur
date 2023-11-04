@@ -9,7 +9,7 @@
 
 _commit=3c43e66be611ff6ddce3836d12df298afa48087b
 pkgname=h2o-git
-pkgver=2.2.0.7467
+pkgver=2.2.0.7469
 pkgrel=3
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
