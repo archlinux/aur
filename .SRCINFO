@@ -1,12 +1,16 @@
-pkgbase = pkgbase
-	pkgdesc = osfetch-sh is a stupid system fetch program written in bash for linux. (git version)
-	pkgver = r17.ec5682d
+pkgbase = mergetb-cli-bin
+	pkgdesc = Command-line tool used to interact and manage a Merge testbed and experiments
+	pkgver = 1.1.11
 	pkgrel = 1
-	url = https://github.com/mzakyr12/osfetch-sh
-	arch = any
-	license = MIT
-	makedepends = git
-	source = git+https://github.com/mzakyr12/osfetch-sh.git
-	sha512sums = SKIP
+	url = https://gitlab.com/mergetb/portal/cli/
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	source_x86_64 = mrg_1.1.11_amd64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.11/downloads/mrg_1.1.11_linux_amd64.tar.gz
+	sha1sums_x86_64 = ea90078b257f4e9a7dde921f990d7373a8101b64
+	source_i686 = mrg_1.1.11_i386.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.11/downloads/mrg_1.1.11_linux_386.tar.gz
+	sha1sums_i686 = f5cc425ee7b812ed1402590de7c60f8311992a6c
+	source_aarch64 = mrg_1.1.11_arm64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.11/downloads/mrg_1.1.11_linux_arm64.tar.gz
+	sha1sums_aarch64 = d84c80d415d1b8d32b6eb2f76b643179e1f28a39
 
-pkgname = osfetch-sh-git
+pkgname = mergetb-cli-bin
