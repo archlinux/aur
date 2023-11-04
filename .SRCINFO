@@ -1,0 +1,35 @@
+pkgbase = r-harmony
+	pkgdesc = Fast, Sensitive, and Accurate Integration of Single Cell Data
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=harmony
+	arch = x86_64
+	license = GPL3
+	checkdepends = r-testthat
+	makedepends = r-rcpparmadillo
+	makedepends = r-rcppprogress
+	depends = blas
+	depends = lapack
+	depends = r-cowplot
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-rcpp
+	depends = r-rhpcblasctl
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-data.table
+	optdepends = r-ggrepel
+	optdepends = r-ggthemes
+	optdepends = r-knitr
+	optdepends = r-patchwork
+	optdepends = r-rmarkdown
+	optdepends = r-seurat
+	optdepends = r-singlecellexperiment
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	optdepends = r-tidyverse
+	source = https://cran.r-project.org/src/contrib/harmony_1.1.0.tar.gz
+	md5sums = fc39f5bc1c1a89ef071f8c85cbc60619
+	sha256sums = 7bcdd5cb7e99e791e0aa11aa3e5316cbdb884270a3528f8a5fe5b8410169c167
+
+pkgname = r-harmony
