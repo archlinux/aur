@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-clblast
 	pkgdesc = CLBlast build of koboldcpp
-	pkgver = 1.47.2
+	pkgver = 1.48
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = koboldcpp-clblast
 	depends = cblas
 	depends = clblast
 	optdepends = customtkinter
-	source = koboldcpp-clblast-1.47.2.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.47.2.tar.gz
-	md5sums = d47820628d23ea122eb8bd5649c441e8
+	source = koboldcpp-clblast-1.48.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.48.tar.gz
+	md5sums = c96619bb37fd299dd487656dc927c3f0
 
 pkgname = koboldcpp-clblast
