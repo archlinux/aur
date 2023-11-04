@@ -1,7 +1,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 
 pkgname=ddcui
-pkgver=0.3.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Graphical user interface for ddcutil - control monitor settings'
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ license=('GPL2')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/rockowitz/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('e91627860cdee73c36fed06e5faac9b062c2eca4ea52c25c50204b871158d965')
+sha256sums=('455a291fca82f56a7904745dac05dc4dd572f4f2687627837837e66c4f8f00b2')
 depends=(
-	'ddcutil'
+	'ddcutil>=2.0.0'
 	'hicolor-icon-theme'
 	'qt5-base'
 )

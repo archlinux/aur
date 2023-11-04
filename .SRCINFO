@@ -1,6 +1,6 @@
 pkgbase = ddcui
 	pkgdesc = Graphical user interface for ddcutil - control monitor settings
-	pkgver = 0.3.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://www.ddcutil.com/ddcui_main/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = ddcui
 	license = GPL2
 	makedepends = cmake
 	makedepends = qt5-tools
-	depends = ddcutil
+	depends = ddcutil>=2.0.0
 	depends = hicolor-icon-theme
 	depends = qt5-base
-	source = ddcui-0.3.0.tar.gz::https://github.com/rockowitz/ddcui/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = e91627860cdee73c36fed06e5faac9b062c2eca4ea52c25c50204b871158d965
+	source = ddcui-0.4.2.tar.gz::https://github.com/rockowitz/ddcui/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 455a291fca82f56a7904745dac05dc4dd572f4f2687627837837e66c4f8f00b2
 
 pkgname = ddcui
