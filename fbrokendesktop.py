@@ -58,6 +58,11 @@ def find_missing_desktop_files(desktop_dir: str, show_all: bool):
     for df in glob.iglob("*.desktop", root_dir=desktop_dir):
         file_path = path.join(desktop_dir, df)
         de = DesktopEntry(file_path)
+        file_name = shlex.quote(de.getFileName())
+        if de.getHidden():
+            yield file_name
+            continue
+
         if show_all or not de.getNoDisplay():
             if exc := cast(str | None, (de.getExec() or de.getTryExec())):
                 try:
@@ -65,9 +70,9 @@ def find_missing_desktop_files(desktop_dir: str, show_all: bool):
                     cmd = strip_command_parent(cmd)
                     if is_gapp_cmd(cmd):
                         if not is_valid_gapp_cmd(cmd[2]):
-                            yield shlex.quote(de.getFileName())
+                            yield file_name
                     elif not (cmd and shutil.which(cmd[0])):
-                        yield shlex.quote(de.getFileName())
+                        yield file_name
                 except ValueError as err:
                     print(f"Error parsing '{file_path}': {err}", file=sys.stderr)
 
