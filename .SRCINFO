@@ -1,0 +1,15 @@
+pkgbase = riverwm-utils
+	pkgdesc = Utilities for the River Wayland compositor
+	pkgver = 0.0.7.r8.gab7e631
+	pkgrel = 2
+	url = https://github.com/NickHastings/riverwm-utils
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = python-wheel
+	source = git+https://github.com/NickHastings/riverwm-utils.git
+	md5sums = SKIP
+
+pkgname = riverwm-utils
