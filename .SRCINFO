@@ -1,16 +1,13 @@
 pkgbase = hunspell-lt
 	pkgdesc = Lithuanian dictionary for Hunspell
-	pkgver = 1.3
-	pkgrel = 2
-	url = https://launchpad.net/ispell-lt
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/ispell-lt/ispell-lt
 	arch = any
-	license = GPL2
-	license = LGPL2.1
-	license = MPL
+	license = BSD
 	makedepends = unzip
 	optdepends = hunspell: Hunspell spell checking library and program
-	source = https://launchpad.net/ispell-lt/main/1.3/+download/myspell-lt-1.3.zip
-	md5sums = 11320c87b4fd39726053fe7f6647a62c
+	source = https://github.com/ispell-lt/ispell-lt/releases/download/rel-1.3.2/myspell-lt-1.3.2.zip
+	sha256sums = c1b4b5604143b480bf7890470db7f5e38c668053ee4d5b84383fa8c987921f82
 
 pkgname = hunspell-lt
-
