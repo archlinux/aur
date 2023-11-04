@@ -1,7 +1,7 @@
 pkgbase = zmeventnotification
 	pkgdesc = A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder
-	pkgver = 6.1.28
-	pkgrel = 2
+	pkgver = 6.1.29
+	pkgrel = 1
 	url = https://github.com/ZoneMinder/zmeventnotification
 	install = zmeventnotification.install
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = zmeventnotification
 	backup = etc/zoneminder/secrets.ini
 	backup = etc/zoneminder/objectconfig.ini
 	backup = etc/zoneminder/es_rules.json
-	source = zmeventnotification-git::git+https://github.com/ZoneMinder/zmeventnotification.git#tag=v6.1.28
+	source = zmeventnotification-git::git+https://github.com/ZoneMinder/zmeventnotification.git#tag=v6.1.29
 	source = https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
 	source = https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names
 	source = https://pjreddie.com/media/files/yolov3.weights
