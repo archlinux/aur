@@ -2,7 +2,7 @@
 # Contributor: Milan Toth <milgra at milgra dot com>
 
 pkgname=sov
-pkgver=0.92b
+pkgver=0.93
 pkgrel=1
 pkgdesc='Overview application for sway'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(freetype2 glew libegl libgl libpng libxkbcommon wayland)
 makedepends=(meson wayland-protocols)
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"{,.sha256sum})
-sha256sums=('946c711131fda1d795675c3097dc1b4cb60db771bb379b57e19727404b48460b'
+sha256sums=('ee6218915bcac2b7a6ea9314e4fa6fd6e9fd3f3d62513ddc9334b130b36262f2'
             'SKIP')
 
 prepare() {
