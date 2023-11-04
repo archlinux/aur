@@ -1,7 +1,7 @@
 # Maintainer: William Edwards <shadowapex@gmail.com>
 pkgname=powerstation-bin
 _pkgbase=powerstation
-pkgver=v0.1.1
+pkgver=v0.1.2
 pkgrel=1
 pkgdesc="Open source performance daemon with DBus interface"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('powerstation')
 conflicts=('powerstation-git')
 source=(powerstation-$pkgver.tar.gz::https://github.com/ShadowBlip/PowerStation/releases/download/$pkgver/powerstation.tar.gz)
 
-sha256sums=('c1d8fec7dbca1cbdf49a48ae698d0ebd7e4510486e98791df1b8a91d03dc359d')
+sha256sums=('bcc82632186a4860f3946112fc84a276c7e7c4d65837b3c3a85aa9c87ae36b99')
 
 prepare() {
 	cd "$srcdir/${_pkgbase}"
