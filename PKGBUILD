@@ -32,6 +32,7 @@ build() {
     cmake -B build -S "${pkgname}" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DRust_TOOLCHAIN="nightly" \
         -DINSTALL_VK_BOOTSTRAP=false \
         -Wno-dev
     cmake --build build
