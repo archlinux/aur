@@ -11,10 +11,6 @@ pkgbase = buongiorno-git
 	provides = buongiorno
 	conflicts = buongiorno-git
 	source = git+https://git.sr.ht/~andreafeletto/buongiorno
-	source = git+https://git.sr.ht/~leon_plickat/zig-spoon
-	source = git+https://github.com/Hejsil/zig-clap
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = buongiorno-git
