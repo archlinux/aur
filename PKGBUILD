@@ -1,6 +1,6 @@
 # Maintainer: naether.markus[at]gmail.com
 
-pkgname=python-gto
+pkgname=gto
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="Git Tag Ops. Turn your Git repository into Artifact Registry or Model Registry."

@@ -1,4 +1,4 @@
-pkgbase = python-gto
+pkgbase = gto
 	pkgdesc = Git Tag Ops. Turn your Git repository into Artifact Registry or Model Registry.
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = python-gto
 	source = gto-1.1.0::git+https://github.com/iterative/gto.git#tag=1.1.0
 	sha256sums = SKIP
 
-pkgname = python-gto
+pkgname = gto
