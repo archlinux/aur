@@ -3,7 +3,7 @@
 # Contributor: Christian Rebischke <chris dot rebischke[at]archlinux[dot]org>
 _base=PyPDNS
 pkgname=python-${_base,,}
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Python API for PDNS"
 arch=(any)
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(python-requests-cache python-dnspython)
 makedepends=(python-build python-installer python-poetry-core)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('113ac5d790f4ba56d2bc76e8ef59154956eaabdef019e82b7e7b8a9829936b171d1f8260d66e9ed8609bace8661861f8de51835ab28f4a5a3ec1a115ce19c430')
+sha512sums=('f46755a316023a291e7ba0c83fa7cd450ff889799d3a3acdec7450fa1bf8b1f11e79e32186ba71435bdefdd5a35aebebabcb95481f9635e25503bfe0f847eaa7')
 # validpgpkeys=('8647F5A7FFD350AE38B6E22F32E4E1C133B3792F') # Raphaël Vinot <raphael.vinot@circl.lu>
 
 build() {
