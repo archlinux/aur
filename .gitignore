@@ -4,3 +4,4 @@ freetube-nightly/
 setenv.txt
 *.zst
 *.xz
+src/
