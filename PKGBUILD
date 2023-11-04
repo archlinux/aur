@@ -2,7 +2,7 @@
 
 _name=kholidays
 pkgname=${_name}5
-pkgver=5.111.0
+pkgver=5.112.0
 pkgrel=1
 epoch=1
 pkgdesc='KDE library for regional holiday information'
@@ -16,7 +16,7 @@ conflicts=("$_name<1:5.111")
 replaces=("$_name<1:5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('570cb98429334fa37b876cf9c1f325bd604aa90b1c8d505a39d5cca7af191277'
+sha256sums=('a248e2970ab91d85f712203566b27563a5af1858d8c0cf9f3175f313b46eb2ac'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
