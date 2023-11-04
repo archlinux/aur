@@ -2,7 +2,7 @@
 
 pkgbase=hexowl
 pkgname='hexowl'
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="hexowl is a Lightweight and flexible programmer's calculator with user variables and functions support written in Go."
 arch=('i686' 'x86_64')
