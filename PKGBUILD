@@ -161,8 +161,8 @@ build() {
     CFLAGS="-mcpu=cortex-a53"
   fi
 
-  export CFLAGS+=" -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection"
-  export CXXFLAGS+="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+  CFLAGS+=" -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection"
+  CXXFLAGS+="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
 
   if [[ -n "$_clangbuild" ]]; then
     export CC=clang CXX=clang++
