@@ -2,7 +2,7 @@
 
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v1.1.1.r0.g7541334
+pkgver=v1.2.0.r0.g4345144
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
