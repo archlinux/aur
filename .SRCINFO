@@ -1,7 +1,7 @@
 pkgbase = texture-share-vk-git
 	pkgdesc = Library for GPU image sharing for Vulkan and OpenGL
-	pkgver = v0.0.1.r0.gc3ca737
-	pkgrel = 1
+	pkgver = v0.1.0.r3.gec93418
+	pkgrel = 2
 	url = https://github.com/DigitOtter/texture-share-vk.git
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = texture-share-vk-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
+	makedepends = cargo-nightly
 	depends = vulkan-icd-loader
 	depends = boost
 	depends = libglvnd
