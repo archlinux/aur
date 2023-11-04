@@ -14,6 +14,7 @@ pkgbase = local-ai
 	makedepends = openssl
 	makedepends = re2
 	depends = glibc
+	backup = etc/conf.d/local-ai.conf
 	source = https://github.com/mudler/LocalAI/archive/refs/tags/v1.40.0.tar.gz
 	source = local-ai.conf
 	source = local-ai.tmpfiles

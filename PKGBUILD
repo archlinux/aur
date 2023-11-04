@@ -7,6 +7,7 @@ pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and
 arch=('aarch64' 'x86_64')
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
+backup=("etc/conf.d/${pkgname}.conf")
 depends=('glibc')
 makedepends=('c-ares' 'git' 'go' 'grpc' 'make' 'openssl' 're2')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
