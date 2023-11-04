@@ -2,7 +2,7 @@
 
 _plug=vstools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.3.0.12.g025932e
+pkgver=3.0.1.2.g41a3d9c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL')
 depends=(
   'vapoursynth'
   'python-rich'
+  'python-stgpytools-git'
 )
 makedepends=(
   'git'
