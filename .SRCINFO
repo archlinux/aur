@@ -1,7 +1,7 @@
 pkgbase = naps2-bin
 	pkgdesc = NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible.
 	pkgver = 7.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.naps2.com
 	arch = x86_64
 	license = GPL2

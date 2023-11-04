@@ -1,8 +1,9 @@
 # Maintainer: Ramadan Ali (alicavus) <rot13: ezqa@ezqa.ny>
+# Contributor: phillipk
 
 pkgname=naps2-bin
 pkgver=7.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=(x86_64)
 url="https://www.naps2.com"
@@ -19,6 +20,9 @@ b2sums_x86_64=("1a72a838ae61f354d20ef193a82aecf726c4eec0ac93d8251a5b97389747b710
 package() {
   cd "${pkgdir}"
   bsdtar -x -v -f "${srcdir}/data.tar.xz"
-  # Fix directory permissions
+  # Fix owner
+  find . -exec chown -v root:root {} \;
+  # Fix directory and executable permissions
   find . -type d -exec chmod -v 0755 {} \;
+  find . -type f -iname *tesseract -exec chmod -v 0755 {} \;
 }
