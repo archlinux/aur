@@ -1,7 +1,7 @@
 # Maintainer: Po-An, Yang (Antonio Yang) <yanganto at gmail.com>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname='wasmedge'
-pkgver=0.13.4
+pkgver=0.13.5
 pkgrel=1
 pkgdesc='WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime for cloud native, edge, and decentralized applications. It powers serverless apps, embedded functions, microservices, smart contracts, and IoT devices.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://wasmedge.org'
 license=('Apache')
 depends=('cmake' 'boost' 'openssl' 'pkgconf' 'ninja' 'rapidjson')
 source=("https://github.com/WasmEdge/WasmEdge/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3771fb4b85cd1cb51896f7b691a0ecb784517b64caa13f624a1383818f678237')
+sha256sums=('588b8933a89f75c3ee5d4b92fe9d65294ae86fd48a95d2d4ac1a93ee3c5e1d75')
 
 package() {
   install -d "${pkgdir}/usr"
