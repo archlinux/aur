@@ -4,7 +4,7 @@
 
 _name=kfilemetadata
 pkgname=${_name}5
-pkgver=5.111.0
+pkgver=5.112.0
 pkgrel=1
 pkgdesc='A library for extracting file metadata'
 arch=(x86_64)
@@ -19,7 +19,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('8f46dc99401ddddf3518ce7bda4ec8d2c7630f5bedd948fc5718c5ef99d96dc7'
+sha256sums=('c4bfcfaefcc5f52122ab479b052f542e1da33c1809fce433a8e8559906197ffb'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
