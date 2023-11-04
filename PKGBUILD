@@ -30,6 +30,6 @@ package() {
 
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    sudo install -Dm644 "commander@.service" "/etc/systemd/system"
-    sudo systemctl daemon-reload
+    install -Dm644 "commander@.service" "/etc/systemd/system"
+    systemctl daemon-reload
 }
