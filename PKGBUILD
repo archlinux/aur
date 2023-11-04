@@ -2,48 +2,61 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=6.5.arch1
-_srcname=archlinux-linux
-_srcurl="https://github.com/archlinux/linux.git"
+_ver=6.6.arch1
+_srcname=linux-${_ver%.*}
+_srctag=v${_ver%.*}-${_ver##*.}
 # Bcachefs kernel source
-_bcachefstag=v6.5
+_bcachefstag=v6.6
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=6.5.arch1.r2724
+pkgver=6.6.arch1.r3408
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${_ver%.*}-${_ver##*.}
-url="https://github.com/archlinux/linux/commits/$_srctag"
+url="https://github.com/archlinux/linux"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc
   cpio
   gettext
-  git
   libelf
   pahole
   perl
   python
   tar
   xz
+  git
 )
 options=('!strip')
-source=(config  # the main kernel config file
+source=(
+  https://cdn.kernel.org/pub/linux/kernel/v${_ver%%.*}.x/${_srcname}.tar.{xz,sign}
+  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  config  # the main kernel config file
 )
-b2sums=('338636f07f103b69df6fa84a80df63c7dfd93ee51753a9272764657ac2106ad44eacd25ad6b099c9edd6e945e66366f3d75a6b11514315c737e3957449e5446a'
+validpgpkeys=(
+  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+)
+# https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
+sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
+            'SKIP'
+            'b64656c9e3e796b60b176e6213e2fbc92d92e3c63ea68b713bd14b6782e4ff9d'
+            'SKIP'
+            'd2060f5045a30832d70a7747c780f1358a9f4cfc1811c8ccaeaab9c027b59ee4'
+)
+b2sums=('5f02fd8696d42f7ec8c5fbadec8e7270bdcfcb1f9844a6c4db3e1fd461c93ce1ccda650ca72dceb4890ebcbbf768ba8fba0bce91efc49fbd2c307b04e95665f2'
+        'SKIP'
+        'a95f051f2c108fec05d560942f7d6d48fba9e45a223dbf4eb2a8c128d72873f027a4c27947afec9290656165bd70f0be93642ef4d5d4bb2f34ae702ab3b0a501'
+        'SKIP'
+        '926cb673701fdf939d70307506683b590a441ac82d8d768ad360798602fbc6157eb4dfdabe3950887e4383b92032d82bbdea00419582cfa47075a57f58ac4376'
 )
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
 
 prepare() {
   local bcachefspatch="${srcdir}/bcachefs.patch"
@@ -74,29 +87,18 @@ prepare() {
   fi
   git diff HEAD FETCH_HEAD > "$bcachefspatch"
 
-  echo "Extracting ${_srcname} tree..."
-  (
-    cd "${srcdir}/$_srcname" &&
-    make mrproper &&
-    git fetch --depth 1 "$_srcurl" "$_srctag" "+refs/tags/${_srctag}:refs/tags/${_srctag}" &&
-    git checkout -f FETCH_HEAD && git clean -fdxq
-  ) || (
-    cd "$srcdir" &&
-    rm -rf "$_srcname" &&
-    git clone --depth 1 --branch "$_srctag" "$_srcurl" "$_srcname"
-  )
   cd "${srcdir}/$_srcname"
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make defconfig
-  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -116,9 +118,10 @@ prepare() {
     "# CONFIG_BCACHEFS_DEBUG_TRANSACTIONS is not set" \
     "# CONFIG_BCACHEFS_DEBUG is not set" \
     "# CONFIG_BCACHEFS_TESTS is not set" >> .config
-  _make olddefconfig
+  make olddefconfig
   diff -u ../config .config || :
 
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
@@ -129,7 +132,7 @@ pkgver() {
 
 build() {
   cd $_srcname
-  _make all
+  make all
 }
 
 _package() {
@@ -159,17 +162,17 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
