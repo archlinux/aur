@@ -1,0 +1,97 @@
+diff '--color=auto' -ruN a/install.js b/install.js
+--- a/install.js	2023-11-04 15:05:16.506941002 +0100
++++ b/install.js	2023-11-04 15:12:07.843784464 +0100
+@@ -3,6 +3,10 @@
+ const fs = require('fs');
+ const path = require('path');
+ 
++let prefix = process.argv.filter(a => a.startsWith('--prefix-dir='))
++  .map(a => a.split('=')[1])[0] || '';
++console.log(' -> Prefix directory is', prefix);
++
+ let share = process.argv.filter(a => a.startsWith('--custom-dir='))
+   .map(a => a.split('=')[1])[0] || path.resolve(process.env.HOME, '.config');
+ if (share[0] === '~') {
+@@ -41,7 +45,7 @@
+   one();
+ }
+ 
+-const dir = path.join(share, 'com.add0n.node');
++const dir = path.join(prefix, share, 'com.add0n.node');
+ const name = 'com.add0n.node';
+ const ids = require('./config.js').ids;
+ 
+@@ -62,7 +66,7 @@
+       fs.writeFile(path.join(root, name + '.json'), `{
+     "name": "${name}",
+     "description": "Node Host for Native Messaging",
+-    "path": "${path.join(dir, 'run.sh')}",
++    "path": "${path.join(share, 'com.add0n.node', 'run.sh')}",
+     "type": "stdio",
+     ${origins}
+     }`, e => {
+@@ -106,55 +110,18 @@
+ }
+ async function chrome() {
+   if (ids.chrome.length) {
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.config/google-chrome/NativeMessagingHosts'
+-    ), 'chrome');
++    await manifest(path.join(prefix, '/etc/opt/chrome/native-messaging-hosts'), 'chrome');
+     console.log(' -> Chrome Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.config/chromium/NativeMessagingHosts'
+-    ), 'chrome');
++    await manifest(path.join(prefix, '/etc/chromium/native-messaging-hosts'), 'chrome');
+     console.log(' -> Chromium Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.config/vivaldi/NativeMessagingHosts'
+-    ), 'chrome');
+-    console.log(' -> Vivaldi Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.config/BraveSoftware/Brave-Browser/NativeMessagingHosts'
+-    ), 'chrome');
+-    console.log(' -> Brave Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.config/microsoftedge/NativeMessagingHosts'
+-    ), 'chrome');
++    await manifest(path.join(prefix, '/etc/opt/edge/native-messaging-hosts'), 'chrome');
+     console.log(' -> Microsoft Edge Browser is supported');
+   }
+ }
+ async function firefox() {
+   if (ids.firefox.length) {
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.mozilla/native-messaging-hosts'
+-    ), 'firefox');
++    await manifest(path.join(prefix, '/usr/lib/mozilla/native-messaging-hosts'), 'firefox');
+     console.log(' -> Firefox Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.waterfox/native-messaging-hosts'
+-    ), 'firefox');
+-    console.log(' -> Waterfox Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.tor-browser/app/Browser/TorBrowser/Data/Browser/.mozilla/native-messaging-hosts'
+-    ), 'firefox');
+-    console.log(' -> Tor Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.thunderbird/native-messaging-hosts'
+-    ), 'firefox');
+-    console.log(' -> Thunderbird Email Client is supported');
+   }
+ }
+ 
+@@ -171,4 +138,3 @@
+     process.exit(-1);
+   }
+ })();
+-
