@@ -66,7 +66,7 @@ def find_missing_desktop_files(desktop_dir: str, show_all: bool):
                     if is_gapp_cmd(cmd):
                         if not is_valid_gapp_cmd(cmd[2]):
                             yield shlex.quote(de.getFileName())
-                    elif not shutil.which(cmd[0]):
+                    elif not (cmd and shutil.which(cmd[0])):
                         yield shlex.quote(de.getFileName())
                 except ValueError as err:
                     print(f"Error parsing '{file_path}': {err}", file=sys.stderr)
