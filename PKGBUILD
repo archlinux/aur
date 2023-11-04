@@ -1,6 +1,6 @@
 # Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
 pkgname=find-broken-desktop
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Find desktop entries files with broken executables.
 Similar in functionality to fbrokendesktop, but written in python to avoid some
@@ -9,9 +9,9 @@ arch=("any")
 license=('MIT')
 depends=('python' 'python-pyxdg')
 source=("fbrokendesktop.py")
-sha256sums=('bafb74744da76aefae86525aac2c9a42aa488a5dfd291ca49ecb6c2861a45f1c')
+sha256sums=('27cb59808bf8245041962a3fc576bb33a3d911745901c583694d77fbf44720e5')
 
 package() {
-	chmod +x fbrokendesktop.py
-	install -D fbrokendesktop.py "$pkgdir/usr/bin/findbrokendesktop"
+    chmod +x fbrokendesktop.py
+    install -D fbrokendesktop.py "$pkgdir/usr/bin/findbrokendesktop"
 }
