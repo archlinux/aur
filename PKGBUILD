@@ -7,8 +7,8 @@
 # Contributer: nightuser <nightuser.android at gmail.com>
 
 pkgname=incus
-pkgver=0.1
-pkgrel=5
+pkgver=0.2
+pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/incus"
@@ -28,13 +28,13 @@ optdepends=(
     'apparmor: apparmor support'
 )
 options=('!debug')
-source=("https://github.com/lxc/incus/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("https://github.com/lxc/incus/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
         "incus.socket"
         "incus.service"
         "incus.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67'  # Stéphane Graber <stgraber@stgraber.org>
               'ED1CA1E7A6F80E22E5CB2DA84ACE106615754614') # Thomas Parrott <tomp@tomp.uk>
-sha256sums=('771b6f438e369f729eaaa6dfd938f14dcc8de09dbc9da23c7c80c6d14f02653b'
+sha256sums=('aa53b22ad3bdce380c448f687b9c79872770d96308e3e797ca3fe6b11bbb0baf'
             'SKIP'
             'f0daecf62d1f3f990344416eba55e445fffa31d6679d13da9b2bfc57812abe10'
             'b3e45f028d81ae1d84939f641349257db0b2b5dcaecf7b8b95661be22d83c21b'
