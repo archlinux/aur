@@ -1,8 +1,8 @@
 Terms and Conditions
-These Terms of Service ("Terms") govern your use of the pCloud website located at http://www.pcloud.com (the "Site") and the pCloud services, including the API (Application Program Interface) (collectively the "Services"). These Terms apply to all users of the Site and Services. By using the Site or Services, you agree to these Terms.
+These Terms of Service ("Terms") govern your use of the pCloud website located at http://www.pcloud.com (the "Site") and the pCloud services, including the API (Application Program Interface) and all other services available on or through the Site (collectively the "Services"). These Terms apply to all users of the Site and Services. By using the Site or Services, you agree to these Terms.
 
 Information About us
-The Site is operated by pCloud AG (hereinafter referred to as "pCloud", "we", "us" and "our"). We are a company registered in Switzerland. Our registered office is at: 74 Zugerstrasse Str, 6340 Baar, Switzerland.
+The Site is operated by pCloud International AG (hereinafter referred to as "pCloud", "we", "us" and "our"). We are a company registered in Switzerland. Our registered office is at: 74 Zugerstrasse Str, 6340 Baar, Switzerland.
 
 Changes to these Terms
 From time to time, we may change these Terms and Conditions (“The Terms”). If we change these Terms, we will inform you by posting the revised Terms on the Site. When visiting the Site, we encourage you to make sure you have read the most recent version of these Terms. Those changes will take effect on the Revision Date, shown in the revised Terms. By continuing to use our Site or Services, you agree to the revised Terms.
@@ -20,7 +20,7 @@ You must ensure that any registration details you provide are accurate. Please c
 
 If your application to register to use the Site and Services is accepted, you will be assigned the username (email) and password you submitted with your application (together referred to as your "Credentials"). You must keep your Credentials confidential and must not reveal them to anyone.
 
-You are responsible for all activities performed under your Credentials. You must notify us immediately if you know of, or suspect, that anyone has obtained access to your Credentials, or if you otherwise become aware of any unauthorized use of your Credentials or another security breach.
+You are responsible for all activities performed under your Credentials. You must notify us immediately if you know of, or suspect, that anyone has obtained access to your Credentials, or if you otherwise become aware of any unauthorized use of your Credentials or another security breach. If you are using our password management services, you must understand that we do not store or have access to your master password and that, if your master password is lost, stolen, forgotten, or otherwise unavailable to you, we cannot retrieve your master password and you may be unable to unlock or access your account.
 
 Unless we have previously been notified by you that the confidentiality of your Credentials has been compromised, we are entitled to treat any use of the Site under your Credentials as being by you.
 
@@ -65,15 +65,17 @@ In the case of such a restriction being imposed, users who have subscribed to Pr
 
 If the usage of the Service exceeds the storage quota of your account, pCloud will inform you. If you do not correct your overuse (by upgrading your service plan or deleting files), pCloud may, in its sole discretion and without further notice, move files to the Trash of your account on a random basis.
 
-Once you delete a file from your pCloud account, it will be moved to a section named "Trash" in your account. The file will be stored there for a limited time period that is based on your service plan. pCloud reserves the right to limit the size of the Trash on pCloud's sole discretion. The Trash has a size limit exactly equal to the storage quota, included in your current pCloud account. In case the Trash size limit is exceeded, pCloud reserves the right to permanently remove the oldest files from the Trash to fit the preassigned limits.
+Once you delete a file from your pCloud account, it will be moved to a section named "Trash" in your account. The file will be stored there for a limited time period that is based on your service plan. pCloud reserves the right to limit the size of the Trash on pCloud's sole discretion. The Trash has a size limit equal to the storage quota, included in your current pCloud account, up to 2 TB. In case the Trash size limit is exceeded, pCloud reserves the right to permanently remove the oldest files from the Trash to fit the preassigned limits.
+
+You acknowledge that the Services may be subject to export controls, trade sanctions laws, or other restrictions under the laws of your jurisdiction or other countries. You may not use, access, export, or disclose the Services in violation of any such laws and you represent and warrant that (a) you are not a citizen of, resident of, or located in any country or territory that is subject to any such laws (including, without limitation, Cuba, Iran, North Korea, or Syria) and that you will not access the Services from any such places; and (b) you are not identified, nor are you owned or controlled by any persons identified, as any applicable lists that would prohibit you from receiving or using the Services.
 
 User Content
-In these Terms, "User Content" shall be used to refer to all content and information that you store, upload, post or share using the Site or Services. These Terms don’t give us any rights to your "User Content" except for the limited rights that enable us to offer the Services. All User Content shall be owned by you or the person who made it available to you to store or upload via the Site or Services. In consideration of being provided with use of the Site and the Services made available pursuant to these Terms, you give pCloud permission to use your User Content as follows: you grant to pCloud and its affiliates a worldwide license to use, copy, perform or display your User Content in connection with providing you access to the Site and/or Services only. We may display advertisements in connection with your User Content or on pages where your User Content may be viewed by you or others. Where your User Content includes reviews, comments or feedback about the Site or Services, we may use those reviews, comments or feedback, to advertise and promote pCloud, the Site or the Services. Our license to your User Content is non-exclusive, meaning you may use the User Content for your own purposes or let others use your User Content for their purposes. Our license to use your User Content as set out above is fully-paid and royalty free, meaning we do not owe you anything else in connection with our use of your User Content. We may exercise the rights you grant us anywhere in the world. Finally, our license is perpetual, meaning that our license lasts for an indefinite period of time.
+In these Terms, "User Content" shall be used to refer to all content and information that you store, upload, post or share using the Site or Services. All User Content shall be owned by you or the person who made it available to you to store or upload via the Site or Services. These Terms don’t give us any rights to your User Content, except for the limited rights that enable us to offer the Services. In order for us to be able to provide our Services with respect to your User Content, we need your legal permission (a license). Our Services include hosting your User Content, making backups, and sharing your User Content at your direction. Our Services also include features such as commenting, sharing, searching, image thumbnails, document previews, optical character recognition (OCR), sorting and organization, and personalization. Therefore, you grant your legal permission for us to use, copy, perform or display your User Content for the purpose of providing our Services. We may display advertisements in connection with your User Content or on pages where your User Content may be viewed by you or others. Where your User Content includes reviews, comments or feedback about the Site or Services, we may use those reviews, comments or feedback, to advertise and promote pCloud, the Site or the Services. Our license to your User Content is non-exclusive, meaning you may use the User Content for your own purposes or let others use your User Content for their purposes. Our license to use your User Content as set out above is fully-paid and royalty free, meaning we do not owe you anything else in connection with our use of your User Content. We may exercise the rights you grant us anywhere in the world. Finally, our license is perpetual, meaning that our license lasts for an indefinite period of time. Your permission extends to our affiliates and service providers.
 
 You hereby undertake that:
 
-you own all rights to your User Content or, alternatively, you have the right to give pCloud the rights described above;
-you have paid and will pay in full any fees or other payments that may be related to the use of your User Content; and
+you own all rights to your User Content or, alternatively, you have the right to give pCloud the authorization described above;
+you have paid and will pay in full any fees or other payments that may be rnecessary for your User Content; and
 your User Content does not infringe the intellectual property rights, privacy rights, publicity rights, or other legal rights of any third party.
 Ownership
 Other than User Content, we own or license the content on the Site and Services, including software, text, visual and audio content (jointly referred to as "Content") and pCloud's name, trademarks, logos, and brand elements (referred to as "Marks"). The Content and Marks are protected under U.S., EU, and international laws.
@@ -101,12 +103,15 @@ a statement that you have a good faith belief that the material was removed or d
 your name, address, and telephone number, and a statement that you consent to the jurisdiction of federal District Court for the judicial district in which such an address is located, or, if your address is outside of the United States, the United States District Court for the Northern District of California, and that you will accept service of process from the person who provided notification of copyright infringement or an agent of such person (not required for European Union users).
 Please send all notices under the above infringement policies by e-mail or mail to the following individual, designated as pCloud's agent for receipt of notifications of claimed infringement:
 
-Copyright Agent at InCorporate Now Inc
-6750 N. Andrews Ave., Suite 200
-Fort Lauderdale, FL 33309
+Copyright Agent
+DMCA Now LLC
+512 Lucerne Ave.
+Lake Worth FL 33460
 United States
-Fax: (800) 371-0235
+Fax: +1 (800) 371-0235
+Email: notice@dmcanow.io
 Note: Please do not send notices or inquiries about anything other than alleged copyright or other intellectual property infringement to our agent for notice as detailed above.
+
 Repeat Infringers
 We can undertake measures, in our discretion, if you are determined to be a repeat infringer. Repeat infringers are users who have been the subject of more than one valid takedown request that has not been successfully rebutted. Those measures on our part may include limiting part of the functionalities of the pCloud service you are using.
 
@@ -135,7 +140,7 @@ Disclaimer and Waiver of Liability
 In the event that you have a dispute with any other user of the Site or Services or with any third party whose content or services you have accessed through the Sites or Services, you hereby release pCloud, its officers, employees, agents and successors in rights from claims, demands and damages (actual and consequential) of every kind or nature, known or unknown, suspected and unsuspected, disclosed and undisclosed, arising out of or in any way related to such disputes. If you are a resident of California, U.S.A., you waive California Civil Code Section 1542, which stipulates the following: A GENERAL RELEASE DOES NOT EXTEND TO CLAIMS WHICH THE CREDITOR DOES NOT KNOW OR SUSPECT TO EXIST IN HIS FAVOR AT THE TIME OF EXECUTING THE RELEASE, WHICH, IF KNOWN BY HIM MUST HAVE MATERIALLY AFFECTED HIS SETTLEMENT WITH THE DEBTOR.
 
 Payment
-Some of our Services are free, whereas others are subject to a fee. For a full description of the different Services that we offer, along with the different prices applicable, please see the Services and price description page on the Site.
+Some of our Services are free, whereas others are subject to a fee. For a full description of the different Services that we offer, along with the different prices applicable, please see the Pricing (https://www.pcloud.com/cloud-storage-pricing-plans.html) page on the Site.
 
 Subscription Plans
 pCloud users can pay for several paid plans for extra space and sharing options. By subscribing once, you authorize pCloud to charge your chosen payment method. pCloud offers renewal subscriptions and lifetime subscriptions.
@@ -147,7 +152,7 @@ Renewal
 All paid renewal subscriptions are renewed for the Services on the date such renewal subscriptions expire. If you have a renewal subscription, this will be extended automatically until you terminate it and every further payment will be due at the beginning of the new payment cycle.
 
 Lifetime Subscriptions
-pCloud users can pay for a lifetime plan. A lifetime plan is in effect for the duration of the account owner or 99 years, whichever is shorter.
+pCloud users can pay for a lifetime plan. A lifetime plan is in effect for the duration of the lifetime of the account owner or 99 years, whichever is shorter.
 
 Payments for and Cancellation of Subscriptions
 You can cancel your subscriptions for the pCloud Service at any time from your payment account. However, no refund will be provided for any unused days.
@@ -183,7 +188,7 @@ Free pCloud accounts that haven’t verified their email address within a reason
 
 Account inactivity
 
-Free pCloud accounts that have been inactive for 6 months, will be permanently deleted, along with the files inside.
+Free pCloud accounts that have been inactive for 12 months, will be permanently deleted, along with the files inside.
 
 Disclaimer and Limitations on Our Liability (For European Union Users)
 pCloud tries to keep the Site and the Services up, error-free, and safe, but pCloud does not guarantee that the Site and/or the Services will be safe or secure or that access to or use of the Site and/or the Services will be uninterrupted or free of errors or omissions or that defects will be corrected. pCloud does not warrant that the Site and/or the Services will operate error-free or that the Site and its servers are free of computer viruses or other harmful components. pCloud uses reasonable care and skill in providing the Site and the Services, but beyond that, the Site and the Services are provided without any warranties of any kind. pCloud disclaims all other warranties, whether express or implied, including any warranty, condition or other terms of satisfactory quality, merchantability, fitness for particular purpose and non-infringement. pCloud makes no warranties about the accuracy, reliability, completeness, or timeliness of the Site or the Services.
@@ -213,9 +218,9 @@ You agree to indemnify and defend pCloud and its Affiliates from and against any
 Other Provisions
 Under no circumstances will pCloud be held liable for any delay or failure in performance due in whole or in part to any acts of nature or other causes beyond its reasonable control.
 
-These Terms, and any claim or action, of whatever nature, against pCloud arising from or relating to these Terms, the Privacy Policy, the Site, or any Services, will be governed by and construed in accordance with the laws of the Republic of Bulgaria, without giving effect to any conflict of laws rules or provisions, except that the laws of the Republic of Bulgaria will not apply to European Union users of the Site or Services who are located outside of Bulgaria, in which case the law applicable to the territory where the user is resident shall apply.
+These Terms, and any claim or action, of whatever nature, against pCloud arising from or relating to these Terms, the Privacy Policy, the Site, or any Services, will be governed by and construed in accordance with the laws of Switzerland, without giving effect to any conflict of laws rules or provisions, except that the laws of Switzerland will not apply to European Union users of the Site or Services who are located outside of Switzerland, in which case the law applicable to the territory where the user is resident shall apply.
 
-Subject to the final sentence of this paragraph, you agree that any claim or action, of whatever nature, against pCloud arising from or relating to these Terms, the Privacy Policy, the Site, or any Services will be filed only in the appropriate court located in Sofia, Republic of Bulgaria. You consent and submit to the personal jurisdiction of such courts for the purposes of any such claim or action. If a European Union user of the Site or Services is located outside of Bulgaria, then, for the purposes of any claim or action relating to these Terms, the Privacy Policy, the Site, or any Services, the applicable jurisdiction will be the courts that are located in the territory of residence of such European User.
+Subject to the final sentence of this paragraph, you agree that any claim or action, of whatever nature, against pCloud arising from or relating to these Terms, the Privacy Policy, the Site, or any Services will be filed only in the appropriate court located in Canton Zürich, Switzerland. You consent and submit to the personal jurisdiction of such courts for the purposes of any such claim or action. If a European Union user of the Site or Services is located outside of Switzerland, then, for the purposes of any claim or action relating to these Terms, the Privacy Policy, the Site, or any Services, the applicable jurisdiction will be the courts that are located in the territory of residence of such European User.
 
 If any provision of these Terms is found to be unlawful, void, or unenforceable, then that provision will be deemed severable from these Terms and will not affect the validity or enforceability of any remaining provisions.
 
@@ -225,4 +230,4 @@ We may assign our rights and obligations under these Terms, including in connect
 
 These Terms, together with the Privacy Policy and any Additional Terms, as they may be revised from time to time, constitute our complete agreement with you, and supersede any other written materials, communications, discussions, representations, or understandings relating to the Site or the Services or your use of them.
 
-Revised: 1 April 2020
+Revised: 20 Jun 2023
