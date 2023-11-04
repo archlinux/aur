@@ -1,0 +1,8 @@
+pkgbase = rc
+	pkgdesc = A simple script for compiling C++ code
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+
+pkgname = rc
