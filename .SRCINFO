@@ -1,15 +1,13 @@
 pkgbase = gzip-zutils
 	pkgdesc = GNU compression utility—zutils compat
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gzip/
 	arch = x86_64
-	groups = base-devel
 	license = GPL3
 	depends = glibc
 	depends = bash
 	depends = less
-	provides = gzip
 	conflicts = gzip
 	source = https://ftpmirror.gnu.org/gzip/gzip-1.12.tar.xz
 	source = https://ftpmirror.gnu.org/gzip/gzip-1.12.tar.xz.sig
