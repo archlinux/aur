@@ -1,4 +1,4 @@
-pkgname=rc
+pkgname=rc-cpp
 pkgver=1.0
 pkgrel=1
 pkgdesc="A simple script for compiling C++ code"
