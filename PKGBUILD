@@ -1,7 +1,7 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=grok-tool-bin
 pkgver=0.2.11
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GROK is a tool like UNIX grep on steroids. Ofter regular expressions become huge and vague. To resolve this situation macros or grok could be applied. Grok is a peculiar regular expression's macros name."
 url="https://github.com/aegoroff/grok"
@@ -15,7 +15,7 @@ build() {
 
 package() {
 
-	install -Dm0755 "solv" "$pkgdir/usr/bin/grok"
+	install -Dm0755 "grok" "$pkgdir/usr/bin/grok"
 	install -Dm0644 "custom.patterns" "$pkgdir/usr/share/grok/patterns/custom.patterns"
 	install -Dm0644 "grok.patterns" "$pkgdir/usr/share/grok/patterns/grok.patterns"
 	install -Dm0644 "linuxsyslog.patterns" "$pkgdir/usr/share/grok/patterns/linuxsyslog.patterns"
