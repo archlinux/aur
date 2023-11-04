@@ -40,6 +40,8 @@ pkgver() {
 build() {
 	cd "$_sourcedirectory/"
 
+	git submodule update --init --recursive
+
 	CMAKE_FLAGS='-DLINUX_LOCAL_DEV=true'
 
 	# Move into the build directory, run CMake, and compile the project
