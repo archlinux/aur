@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gitin
 pkgver=0.3.0
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
 license=('BSD')
 depends=('glibc')
-makedepends=('cmake' 'go' 'git' 'pcre')
+makedepends=('cmake' 'go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b146072559c45e30451232eabdcb626ba3b153a139a7520b7be19f1d0cc87197')
 
