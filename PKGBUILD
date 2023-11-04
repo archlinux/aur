@@ -1,7 +1,7 @@
 # Maintainer: Dominik Kummer <devel@arkades.org>
 
 pkgname=kwalletcli-git
-pkgver=r104.9b1f130
+pkgver=00
 pkgrel=1
 pkgdesc="Command-Line Interface for the KDE Wallet"
 url="https://www.mirbsd.org/kwalletcli.htm"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('kwallet5' 'mksh')
 conflicts=('kwallet-cli')
 makedepends=('gcc' 'make')
-source=("${pkgname}::git://github.com/MirBSD/kwalletcli")
+source=("${pkgname}::git+https://github.com/MirBSD/kwalletcli.git")
 sha512sums=('SKIP')
 
 pkgver() {
