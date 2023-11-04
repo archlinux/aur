@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bootstrap-dht-git
-pkgver=r122.679c661
-pkgrel=3
+pkgver=r131.g679c661
+pkgrel=1
 pkgdesc="Bittorrent DHT bootstrap server"
 arch=('i686' 'x86_64')
 url="https://github.com/bittorrent/bootstrap-dht"
@@ -26,7 +26,9 @@ prepare() {
 pkgver() {
   cd "bootstrap-dht"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
