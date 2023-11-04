@@ -1,0 +1,19 @@
+pkgbase = go1.20
+	pkgdesc = Core compiler tools for the Go programming language
+	pkgver = 1.20.10
+	pkgrel = 1
+	url = https://golang.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	provides = go-pie
+	options = !strip
+	options = staticlibs
+	source = https://go.dev/dl/go1.20.10.src.tar.gz
+	source = https://go.dev/dl/go1.20.10.src.tar.gz.asc
+	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
+	sha256sums = 72d2f51805c47150066c103754c75fddb2c19d48c9219fa33d1e46696c841dbb
+	sha256sums = SKIP
+
+pkgname = go1.20
