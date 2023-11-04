@@ -1,18 +1,35 @@
 pkgbase = skia-git
 	pkgdesc = Chromiums high-performance rendering library (static)
-	pkgver = r24473.1818701
+	pkgver = r69268.77aeee3b81
 	pkgrel = 1
 	url = https://github.com/google/skia
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = ninja
-	makedepends = depot-tools-git
 	makedepends = python2
 	makedepends = gcc
 	makedepends = gn
+	makedepends = rsync
 	depends = mesa
 	depends = libgl
+	optdepends = depot-tools-git: for building with system-wide depot-tools, requires patching the PKGBUILD
 
 pkgname = skia-git
 
+pkgname = skia-examples-git
+	pkgdesc = Chromiums high-performance rendering library (examples)
+	depends = mesa
+	depends = libgl
+	depends = glu
+	depends = libx11
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = libxi
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxrender
+	depends = libxkbcommon-x11
