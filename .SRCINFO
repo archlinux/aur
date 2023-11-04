@@ -1,0 +1,20 @@
+pkgbase = sleuthkit-git
+	pkgdesc = A library and collection of command line digital forensics tools
+	pkgver = 4.12.1.r33.g07e100662
+	pkgrel = 1
+	url = https://www.sleuthkit.org/sleuthkit/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = gcc-libs
+	depends = libewf
+	depends = sqlite
+	optdepends = perl
+	provides = sleuthkit=4.12.1.r33.g07e100662
+	conflicts = sleuthkit
+	options = staticlibs
+	source = git+https://github.com/sleuthkit/sleuthkit.git
+	sha256sums = SKIP
+
+pkgname = sleuthkit-git
