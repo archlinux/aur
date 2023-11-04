@@ -5,14 +5,13 @@ pkgname=casacore
 pkgver=3.5.0
 pkgrel=3
 pkgdesc="Suite of C++ libraries for radio astronomy data processing"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/${pkgname}/${pkgname}"
 license=(GPL)
-depends=(boost-libs fftw gsl openblas lapack cfitsio wcslib python-numpy)
+depends=(boost-libs fftw gsl cfitsio wcslib python-numpy)
 makedepends=(cmake gcc-fortran gsl boost)
 optdepends=('sofa: only for testing casacore measures'
-  'hdf5: '
-  'ncurses: ')
+  'hdf5: for the HDF5 C++ bindings')
 provides=(
   'libcasa_casa.so=6-64'
   'libcasa_coordinates.so=6-64'
