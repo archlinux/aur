@@ -1,5 +1,5 @@
 pkgname=vpinball
-pkgver=10.7.3
+pkgver=r2.13b7e3f
 pkgrel=1
 pkgdesc="An open source pinball table editor and simulator"
 arch=('i686' 'x86_64')
@@ -14,6 +14,11 @@ source=("${pkgname}::git+https://github.com/vpinball/vpinball.git#branch=standal
 sha256sums=('SKIP'
             '790026203a8475c3b580e636e83ef08b1245df7f97d7760db600db59c4a23af2'
             'ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011')
+
+pkgver() {
+    cd "$srcdir/${_base}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cd ${srcdir}/vpinball/standalone/linux

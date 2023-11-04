@@ -1,6 +1,6 @@
 pkgbase = vpinball
 	pkgdesc = An open source pinball table editor and simulator
-	pkgver = 10.7.3
+	pkgver = r2.13b7e3f
 	pkgrel = 1
 	url = https://github.com/vpinball/vpinball
 	arch = i686
