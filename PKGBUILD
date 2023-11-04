@@ -8,12 +8,12 @@ arch=("x86_64")
 url="https://konqueror.org/"
 license=("LGPL")
 depends=("dolphin" "keditbookmarks" "qt5-webengine" "kdelibs4support" "khtml")
-makedepends=("extra-cmake-modules" "kdoctools5" "tidy" "kdesignerplugin" "kdesu5")
+makedepends=("extra-cmake-modules" "kdoctools" "tidy" "kdesignerplugin" "kdesu")
 optdepends=('tidy: tidy HTML plugin' 'kdesu: shell command plugin')
 conflicts=("konqueror")
 provides=("konqueror")
 groups=("kde-applications" "kdebase")
-source=("git://invent.kde.org:network/konqueror.git")
+source=("git+https://invent.kde.org/network/konqueror.git")
 sha512sums=('SKIP')
 
 
