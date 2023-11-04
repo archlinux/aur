@@ -1,51 +1,70 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOexplorer
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='GEOexplorer: an R/Bioconductor package for gene expression analysis and visualisation'
-arch=('any')
+pkgdesc="GEOexplorer: a webserver for gene expression analysis and visualisation"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
   r-biobase
+  r-car
   r-dt
+  r-edger
+  r-enrichr
   r-factoextra
   r-geoquery
   r-ggplot2
   r-heatmaply
   r-htmltools
+  r-httr
   r-impute
+  r-knitr
   r-limma
-  r-maptools
+  r-markdown
   r-pheatmap
   r-plotly
+  r-r.utils
+  r-readxl
   r-scales
   r-shiny
-  r-shinybs
   r-shinybusy
+  r-shinycssloaders
   r-shinyheatmaply
   r-stringr
+  r-sva
   r-umap
+  r-xfun
+  r-xml
+  r-xml2
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
-  r-knitr
   r-rmarkdown
   r-testthat
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a372671ce6db97ea6ae6ca3131484055aac9934115619df9ef8fa3fa02609b6')
+md5sums=('213a1b499ce1d0640b267c8fb41e3204')
+sha256sums=('fce2f86eb58a9ba5892e33f9d4c31d6b05a129c16096e2ba021d8ab6b0d412ca')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
