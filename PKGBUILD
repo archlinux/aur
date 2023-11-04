@@ -18,6 +18,8 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 
 build() {
   cd "${_pkgname}-${pkgver}"
+
+  export GO_TAGS="stablediffusion tts"
   make build
 }
 
