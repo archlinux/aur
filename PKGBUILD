@@ -1,6 +1,6 @@
 # Maintainer: Noa Himesaka <himesaka AT noa DOT codes>
 pkgname=roon-tui
-pkgver=0.0.7
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A Roon Remote for the terminal"
 url="https://github.com/TheAppgineer/roon-tui"
