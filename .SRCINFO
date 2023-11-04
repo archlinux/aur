@@ -11,7 +11,7 @@ pkgbase = kwalletcli-git
 	makedepends = make
 	depends = kwallet5
 	depends = mksh
-	conflicts = kwallet-cli
+	conflicts = kwalletcli
 	source = kwalletcli-git::git+https://github.com/MirBSD/kwalletcli.git
 	sha512sums = SKIP
 
