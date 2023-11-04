@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-another-window-session-manager-git
 	pkgdesc = A GNOME shell extension to close open windows gracefully and save them as a session.
-	pkgver = 41.r3.g46d80d6
+	pkgver = 41.r10.g938fcf4
 	pkgrel = 1
 	url = https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager
 	install = gnome-shell-extension-another-window-session-manager.install
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-another-window-session-manager-git
 	license = GPL3
 	makedepends = git
 	depends = glib2
-	depends = gnome-shell<=1:44.6
+	depends = gnome-shell
 	depends = libgtop
 	depends = procps-ng
 	optdepends = ydotool: to make Close by rules work

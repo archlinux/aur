@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
-pkgver=41.r3.g46d80d6
+pkgver=41.r10.g938fcf4
 pkgrel=1
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
 url="https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager"
 license=('GPL3')
-depends=('glib2' 'gnome-shell<=1:44.6' 'libgtop' 'procps-ng')
+depends=('glib2' 'gnome-shell' 'libgtop' 'procps-ng')
 makedepends=('git')
 optdepends=('ydotool: to make Close by rules work')
 provides=("${pkgname%-git}")
@@ -18,12 +18,12 @@ sha256sums=('SKIP'
             '9f3e96fd1d964f3e6564e0ef859f5e4f5b59059aa89b2654bb3fe2c9abed4f27')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   gnome-extensions pack \
     --extra-source=dbus-interfaces/ \
     --extra-source=icons/ \
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
