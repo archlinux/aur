@@ -13,11 +13,11 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.3.0_devel.178641.348eee9c974
-pkgrel=2
+pkgver=24.0.0_devel.179916.655cbf203d1
+pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
-                            wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git clang-opencl-headers-minimal-git
+                            wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
                             rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -86,7 +86,8 @@ build () {
        -D microsoft-clc=disabled \
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
        -D gallium-rusticl=true \
-       -D rust_std=2021
+       -D rust_std=2021 \
+       -D opencl-external-clang-headers=disabled
 
     meson configure --no-pager _build
     ninja $NINJAFLAGS -C _build
@@ -125,7 +126,7 @@ package_opencl-rusticl-mesa-minimal-git() {
     provides=(opencl-rusticl-mesa opencl-driver)
     depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools-git
                     mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git
-                    clang-opencl-headers-minimal-git expat libelf zstd lm_sensors zlib gcc-libs glibc
+                    expat libelf zstd lm_sensors zlib gcc-libs glibc
     )
     
     
