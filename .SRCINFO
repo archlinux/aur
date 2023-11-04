@@ -5,6 +5,7 @@ pkgbase = acarsdec-git
 	arch = x86_64
 	license = GPL
 	makedepends = airspy
+	makedepends = cmake
 	makedepends = git
 	makedepends = libusb
 	makedepends = rtl-sdr
@@ -22,4 +23,3 @@ pkgname = acarsdec-git-airspy
 pkgname = acarsdec-git-rtl-sdr
 	pkgdesc = Multi-channel ACARS decoder with rtl_sdr backend
 	depends = rtl-sdr
-
