@@ -7,10 +7,10 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=e468ce489790970cecd831926563bf9c8ade091c
+_commit=3c43e66be611ff6ddce3836d12df298afa48087b
 pkgname=h2o-git
 pkgver=2.2.0.7467
-pkgrel=1
+pkgrel=3
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -41,7 +41,7 @@ prepare() {
 
         git submodule update --init --recursive
 	# set CMake minimal version to 3.9 to set CMP0039 to new
-	sed -i 's/VERSION 2.8.11/VERSION 3.9/g' CMakeLists.txt
+	sed -i 's/VERSION 2.8.12/VERSION 3.9/g' CMakeLists.txt
 
 	sed -i 's|example|/usr/share/doc/h2o/example|' examples/h2o/h2o.conf
 
