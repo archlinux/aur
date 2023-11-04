@@ -6,13 +6,13 @@ _opts=(
 	-DCMAKE_INSTALL_LIBEXECDIR=lib
 )
 
-makedepends=('cmake' 'glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=7' 'git')
+makedepends=('cmake' 'glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=7' 'git' 'libx11')
 
 _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-jayatana-git
 _path=subprojects/jayatana
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AppMenu module for Java Applications. Contains Bugs!"
 provides=(jayatana)
 depends=('glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=11')
