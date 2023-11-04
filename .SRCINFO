@@ -1,0 +1,17 @@
+pkgbase = python-pyparsedvd-git
+	pkgdesc = Parse and extract binary data from dvd files. (GIT version)
+	pkgver = 0.0.3.0.ge2021f5
+	pkgrel = 1
+	url = https://github.com/Ichunjo/pytimeconv
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/Ichunjo/pyparsedvd.git
+	sha256sums = SKIP
+
+pkgname = python-pyparsedvd-git
