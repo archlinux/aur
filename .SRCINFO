@@ -1,0 +1,26 @@
+pkgbase = theforceengine-git
+	pkgdesc = Modern "Jedi Engine" replacement supporting Dark Forces, Outlaws and the mods
+	pkgver = 1.10.r1.5fa4dac
+	pkgrel = 1
+	url = https://theforceengine.github.io/
+	install = theforceengine.install
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = libgl
+	depends = sdl2
+	depends = devil
+	depends = glew
+	depends = rtaudio
+	depends = rtmidi
+	depends = hicolor-icon-theme
+	depends = sdl2_image
+	conflicts = theforceengine
+	source = TheForceEngine::git+https://github.com/luciusDXL/TheForceEngine.git
+	source = theforceengine.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = theforceengine-git
