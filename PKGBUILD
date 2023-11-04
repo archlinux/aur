@@ -1,4 +1,5 @@
-# Maintainer: MisconceivedSec (@misconceivedsec)
+# Maintainer: Filip Parag <filip@parag.rs>
+
 pkgname=mergetb-cli-bin
 pkgver=1.1.11
 pkgrel=1
