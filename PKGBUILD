@@ -17,8 +17,8 @@ depends=(
   'python-numpy'
   'python-psutil'
   'python-pymediainfo'
-#   pyparsebluray
-#   pyparsedvd
+  'python-pyparsebluray-git'
+  'python-pyparsedvd-git'
   'python-pytimeconv-git'
   'python-requests'
   'python-requests-toolbelt'
