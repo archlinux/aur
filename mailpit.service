@@ -1,0 +1,11 @@
+[Unit]
+Description=Mailpit - Web and API based SMTP testing
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/mailpit
+ExecReload=/bin/kill -USR2 $MAINPID
+User=nobody
+
+[Install]
+WantedBy=multi-user.target
