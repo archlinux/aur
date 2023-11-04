@@ -4,7 +4,7 @@
 
 _name=kdesu
 pkgname=${_name}5
-pkgver=5.111.0
+pkgver=5.112.0
 pkgrel=1
 pkgdesc='Integration with su for elevated privileges'
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('c62f8681ceda26600fa7aa8e444cfeeddaff13b24210d28a2248b9c90acba178'
+sha256sums=('6f20adaa15a666744be62d411e9da220b3648b52ee40a7bb8199f9ec0736c1fa'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
