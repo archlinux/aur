@@ -1,0 +1,18 @@
+pkgbase = hyfetch-extra-git
+	pkgdesc = Neofetch with LGBTQ pride flags. (extra flags)
+	pkgver = 1.4.10.r78.g6932a9fb
+	pkgrel = 1
+	url = https://github.com/NepNep21/hyfetch-extra
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-typing_extensions
+	provides = hyfetch
+	conflicts = hyfetch
+	conflicts = hyfetch-git
+	source = hyfetch-extra-git::git+https://github.com/NepNep21/hyfetch-extra
+	md5sums = SKIP
+
+pkgname = hyfetch-extra-git
