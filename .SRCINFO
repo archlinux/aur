@@ -1,0 +1,22 @@
+pkgbase = flatter-git
+	pkgdesc = flatter is a library for performing (f)ast (lat)tice (r)eduction of integer lattice bases
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/keeganryan/flatter
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = eigen
+	depends = gmp
+	depends = fplll
+	depends = gcc-libs
+	depends = mpfr
+	depends = glibc
+	depends = lapack
+	depends = openmp
+	optdepends = intel-oneapi-mkl
+	source = git+https://github.com/keeganryan/flatter.git
+	sha256sums = SKIP
+
+pkgname = flatter-git
