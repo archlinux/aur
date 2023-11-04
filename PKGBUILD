@@ -2,7 +2,7 @@
 
 _name=kcontacts
 pkgname=${_name}5
-pkgver=5.111.0
+pkgver=5.112.0
 pkgrel=1
 pkgdesc='Address book API for KDE'
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=("$_name<1:5.111")
 replaces=("$_name<1:5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('49a3970b35d6c89db85677ee5cb29a5bc5208241c9b65984474c5973c3fe7e68'
+sha256sums=('459f73176da94141fe13a78b0a89c69af9ed3f9288eeea1b0f58fb41a4ed4060'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
