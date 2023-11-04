@@ -6,13 +6,13 @@
 
 _base=ceed
 pkgname=(lib${_base} python-${_base})
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Code for Efficient Extensible Discretizations"
 arch=(x86_64)
 license=('custom:BSD-2-clause')
 url="https://github.com/${_base}/lib${_base}"
-makedepends=(gcc-fortran python-cffi git python-build python-installer python-setuptools python-wheel)
+makedepends=(gcc-fortran python-cffi python-build python-installer python-setuptools python-wheel git)
 source=("lib${_base}::git+${url}#tag=v${pkgver}?signed")
 sha512sums=('SKIP')
 validpgpkeys=('BA543CE09D732BE604D53F6FCA6D4A3B32D335A0') # Jed Brown <jed@jedbrown.org>
