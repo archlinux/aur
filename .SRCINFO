@@ -1,6 +1,6 @@
 pkgbase = python-deepl
-	pkgdesc = DeepL language translation API
-	pkgver = 1.15.0
+	pkgdesc = Python library for the DeepL API
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/deeplcom/deepl-python
 	install = deepl.install
@@ -10,9 +10,12 @@ pkgbase = python-deepl
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	makedepends = python-wheel
+	makedepends = git
 	depends = python-requests
+	depends = python-packaging
 	optdepends = python-keyring: for support storing API Key
-	source = https://github.com/deeplcom/deepl-python/archive/v1.15.0.tar.gz
+	source = git+https://github.com/deeplcom/deepl-python.git?signed#tag=v1.16.0
+	validpgpkeys = DBDC63E97C526204335805941FA7A782EC90634E
 	sha512sums = SKIP
 
 pkgname = python-deepl
