@@ -1,6 +1,6 @@
 pkgbase = vopono
 	pkgdesc = Run applications through VPN connections in network namespaces
-	pkgver = 0.10.6
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = vopono
 	optdepends = wireguard-tools: for Wireguard connections
 	optdepends = shadowsocks-libev: for Shadowsocks support (Mullvad)
 	optdepends = openfortivpn: for FortiClient VPN connections
+	optdepends = libnatpmp: for ProtonVPN port forwarding support
 	provides = vopono
 	conflicts = vopono
 	options = !lto
-	source = vopono-0.10.6.tar.gz::https://github.com/jamesmcm/vopono/archive/0.10.6.tar.gz
-	sha256sums = 1070b856d7e65ca9530060b952812fb60a13e358c45ecdc0cc1c76463e019818
+	source = vopono-0.10.7.tar.gz::https://github.com/jamesmcm/vopono/archive/0.10.7.tar.gz
+	sha256sums = f112b520c1f604e3552d72551015a3f6119c151953117bf1b7647f11225ffaa5
 
 pkgname = vopono
