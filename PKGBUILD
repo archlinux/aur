@@ -2,7 +2,7 @@
 # Contributor: Clar Fon <them@lightdark.xyz>
 
 pkgname="abuild"
-pkgver=3.11.21
+pkgver=3.12.0
 _ver=${pkgver%_git*}
 pkgrel=1
 pkgdesc="Script to build Alpine Packages"
@@ -19,7 +19,7 @@ optdepends=("perl: for cpan resolver"
             "ruby: for gem resolver"
             "ruby-augeas: for gem resolver")
 source=("https://gitlab.alpinelinux.org/alpine/abuild/-/archive/$pkgver/abuild-$pkgver.tar.gz")
-sha512sums=('798cfed101c8660feb872375353a99065642220d5b6e88779b87716f5b50a456f456d24b9c9def8ebe4e01a3e67a080c2686cf6f54a4410b364ed98f4fcbbec8')
+sha512sums=('00fac67aa96a83f33406dde60bd9526bfa5fdff690b84dbe867b6ed197f147b2afafcdfbda900c005e00a64a42bcb98ca425ffc8bf2158b9540cbb67d935577d')
 
 prepare() {
 	cd "$srcdir/$pkgname-$_ver"
