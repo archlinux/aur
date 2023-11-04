@@ -5,6 +5,7 @@ pkgbase = acarsdec
 	arch = x86_64
 	license = GPL
 	makedepends = airspy
+	makedepends = cmake
 	makedepends = libusb
 	makedepends = rtl-sdr
 	optdepends = acarsserv: Store messages in sqlite database
