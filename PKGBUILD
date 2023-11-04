@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=cartridges
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A GTK4 + Libadwaita game launcher"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=("steam: Valve's digital software delivery system"
             'heroic-games-launcher: Native GOG and Epic Games launcher for Linux'
             'bottles: Easily manage wine and proton prefix')
 source=(${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz)
-b2sums=('a760cc3651775139d6151530df20d94a292841f60918cd76e9f77b9d081bbbc71571173d60766b7e7880d7c6f74cadad2711c3d16e6b2bcf904e13b05a1494cd')
+b2sums=('ee7ff5efea06f61152e913b351dfefb9f3355e853966b8425d09912463a28165207908cae2f4bdd3af19a0020fe82eb0f1f0bdbaa7ee2d94de294daf81439818')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build  -D tiff_compression=jpeg
