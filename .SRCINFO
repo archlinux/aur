@@ -1,7 +1,7 @@
 pkgbase = jdk11-temurin
 	pkgdesc = Temurin 11 (OpenJDK 11 Java binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 11.0.21.u9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adoptium.net/
 	install = install_jdk11-temurin.sh
 	arch = x86_64
@@ -18,11 +18,9 @@ pkgbase = jdk11-temurin
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
 	provides = jre11-openjdk-headless=11.0.21.u9
-	provides = jre-openjdk-headless=11.0.21.u9
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
 	provides = jre11-openjdk=11.0.21.u9
-	provides = jre-openjdk=11.0.21.u9
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
 	provides = jdk11-openjdk=11.0.21.u9
