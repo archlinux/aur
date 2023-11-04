@@ -1,7 +1,7 @@
 pkgbase = mounter-elite-plus
 	pkgdesc = A minimalist and secure, ISO Mounter/Converter, written in C++.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/siyia2/mounter-elite-plus
 	arch = x86_64
 	license = GPL3

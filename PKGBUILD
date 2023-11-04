@@ -1,7 +1,7 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=mounter-elite-plus
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimalist and secure, ISO Mounter/Converter, written in C++.'
 arch=('x86_64')
 url="https://github.com/siyia2/mounter-elite-plus"
