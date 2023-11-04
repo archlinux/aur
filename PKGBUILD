@@ -11,7 +11,7 @@ depends=(
 	'ncurses'
 	'tidy'
 )
-makedepends=('git' 'zig-dev-bin')
+makedepends=('git' 'zig')
 source=("git+${url}")
 sha256sums=('SKIP')
 
