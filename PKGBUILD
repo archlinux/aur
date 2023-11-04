@@ -19,7 +19,7 @@ depends=(
   'python-pymediainfo'
 #   pyparsebluray
 #   pyparsedvd
-#   pytimeconv
+  'python-pytimeconv-git'
   'python-requests'
   'python-requests-toolbelt'
   'python-rich'

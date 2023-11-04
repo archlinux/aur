@@ -17,6 +17,7 @@ pkgbase = vapoursynth-plugin-vardautomation-git
 	depends = python-numpy
 	depends = python-psutil
 	depends = python-pymediainfo
+	depends = python-pytimeconv-git
 	depends = python-requests
 	depends = python-requests-toolbelt
 	depends = python-rich
