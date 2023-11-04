@@ -9,7 +9,6 @@ pkgdesc="The Tcl scripting language, 8.5 series"
 arch=('i686' 'x86_64')
 url="http://tcl.sourceforge.net/"
 license=('custom')
-provides=("tcl" "tcl=${pkgver}")
 source=(http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
 md5sums=('4f4e1c919f6a6dbb37e9a12d429769a6')
 options=('staticlibs')

@@ -6,11 +6,8 @@ pkgbase = tcl85
 	arch = i686
 	arch = x86_64
 	license = custom
-	provides = tcl
-	provides = tcl=8.5.19
 	options = staticlibs
 	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.5.19-src.tar.gz
 	md5sums = 4f4e1c919f6a6dbb37e9a12d429769a6
 
 pkgname = tcl85
-
