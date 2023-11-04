@@ -8,7 +8,7 @@
 
 _pack=general
 pkgname=octave-$_pack
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="General tools for Octave."
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('a30cd1a79743c62528dae46ebd4a83f848ae46a1c1dac3eaabc36662d42294cf')
+sha256sums=('6a6b25266de16976807a1766ea3609c5c19997e82051c9c97378ba609dd09323')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
