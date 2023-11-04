@@ -4,7 +4,7 @@ stages:
 
 build:
   stage: build
-  image: registry.stefanwimmer128.xyz/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  image: codeberg.org/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
     paru -Syu --noconfirm
   script:
