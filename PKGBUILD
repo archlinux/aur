@@ -3,7 +3,7 @@
 
 pkgname=heliocron-bin
 _pkgname=${pkgname%-*}
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Execute tasks relative to sunset, sunrise and other solar events.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache' 'MIT')
 provides=('heliocron')
 conflicts=('heliocron-git')
 source=("https://github.com/mfreeborn/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('320e7eedfbfadf4324491d78eec0ab439d69fb704ac0f825d3e925f74ec4818f')
+sha256sums=('fa83da3679d80ed16725c8395cfd2108ebe0839380e3f3f8e42e611dd09d5e31')
 
 package() {
 	cd "$srcdir"
