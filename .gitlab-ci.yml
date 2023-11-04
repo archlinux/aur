@@ -21,3 +21,4 @@ publish:
   script:
     - apk add curl
     - 'curl --user "$PACKAGES_USER":"$PACKAGES_PASSWORD" --upload-file "cross-install-$CI_COMMIT_TAG-any.pkg.tar.zst" "$PACKAGES_API/stefanwimmer128/generic/cross-install/$CI_COMMIT_TAG/cross-install-$CI_COMMIT_TAG-any.pkg.tar.zst"'
+    - sha256sum cross-install-$CI_COMMIT_TAG-any.pkg.tar.zst
