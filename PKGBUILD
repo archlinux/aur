@@ -1,22 +1,23 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rexposome
-_pkgver=1.22.0
+_pkgver=1.24.1
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Exposome exploration and outcome data analysis'
-arch=('any')
+pkgdesc="Exposome exploration and outcome data analysis"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('MIT')
+license=(MIT)
 depends=(
-  r
   r-biobase
   r-circlize
   r-corrplot
   r-factominer
   r-ggplot2
   r-ggrepel
+  r-ggridges
   r-glmnet
   r-gplots
   r-gridextra
@@ -36,21 +37,25 @@ depends=(
 optdepends=(
   r-biocstyle
   r-flexmix
+  r-formatr
   r-knitr
   r-mclust
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b1924746570ec50626d94aafab85afa2930bb2ef3fec18fc075c8fd3d1dec13')
+md5sums=('5dec247e3db216fed87e97cbfbf254cc')
+sha256sums=('44a21ed78978bf201f9152611730bde7fe5529f628afc83a00451fa024837a99')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
