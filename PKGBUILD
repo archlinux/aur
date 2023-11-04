@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=graphlayouts
-_pkgver=1.0.1
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Additional Layout Algorithms for Network Visualizations'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-uwot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d3b327de9cae8a45ed341b754d6a636717317dfd4057d5c60f726fc17b3ce774')
+sha256sums=('55c95490bc0625ea2fc187f58dc20ee4df325cc93b7987da5d0d5dc96692e0d5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
