@@ -1,7 +1,7 @@
 pkgbase = hiddify-bin
 	pkgdesc = A multi-platform client based on Sing-box that serves as a universal proxy tool-chain.
-	pkgver = v0.10.0
-	pkgrel = 1
+	pkgver = 0.10.0
+	pkgrel = 2
 	url = https://github.com/hiddify/hiddify-next
 	arch = x86_64
 	license = CCPL
