@@ -6,8 +6,8 @@ pkgbase=linux-firmware
 pkgname=(linux-firmware-whence linux-firmware amd-ucode
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}
 )
-_tag=20230804
-pkgver=20230804.7be2766d
+_tag=20231030
+pkgver=20231030.2b304bfe
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 pkgdesc+=' (without module compression)'
@@ -26,7 +26,6 @@ pkgname=("${pkgname[@]/%/-uncompressed}")
 pkgname=("${pkgname[@]:1}") # remove whence
 
 _backports=(
-  f2eb058afc57348cde66852272d6bf11da1eef8f  # fixes for "inception": https://www.amd.com/en/resources/product-security/bulletin/amd-sb-7005.html
 )
 
 prepare() {

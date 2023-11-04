@@ -1,6 +1,6 @@
 pkgbase = linux-firmware-uncompressed
 	pkgdesc = Firmware files for Linux (without module compression)
-	pkgver = 20230804.7be2766d
+	pkgver = 20231030.2b304bfe
 	pkgrel = 1
 	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = linux-firmware-uncompressed
 	license = custom
 	makedepends = git
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=20230804?signed
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=20231030?signed
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
 	sha256sums = SKIP
 
