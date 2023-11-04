@@ -1,6 +1,6 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://fritzing.org
 	install = fritzing.install
@@ -11,15 +11,21 @@ pkgbase = fritzing
 	makedepends = boost
 	makedepends = git
 	depends = libgit2
-	depends = qt5-serialport
-	depends = qt5-svg
-	depends = quazip-qt5
+	depends = qt6-serialport
+	depends = qt6-svg
+	depends = quazip-qt6
 	depends = ngspice
-	source = git+https://github.com/fritzing/fritzing-app.git#commit=fe6d2f9c8b58d981a0e119ca251da54dc5959c24
-	source = git+https://github.com/fritzing/fritzing-parts.git#commit=9597553a1adc09019b4a42fe7929196abff18133
-	source = 0001-Quick-Dirty-patch-to-allow-finding-quazip-qt5-on-Arc.patch
+	source = git+https://github.com/fritzing/fritzing-app.git#commit=8f5f1373835050ce014299c78d91c24beea9b633
+	source = git+https://github.com/fritzing/fritzing-parts.git#commit=1c7fb3ee5db8480956c157355fb4e5a7169ff865
+	source = svgpp-1.3.0.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.0.tar.gz
+	source = 0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
+	source = 0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
+	source = 0003-ParseResult-operator-bool-in-explicit.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6e4200a5d53f8241052c0f61c7a49e71ae4a36051fd29f3e750b1a39ec9c149d
+	sha256sums = cb14e9de41994e3451aaee61d8284848bfccc7f9a5bf1873a76f199ff0c20b74
+	sha256sums = 26c20d2dcebc99e70bf1db839d1b716ac552dad20592ff7f650069317fe38b5d
+	sha256sums = 1aff8495da53f223857e48f12a149ccd3c20472e9d12399d916b723eaf052bfa
+	sha256sums = 4319035727c74c59298aeb18e579201ee5a8c26edd413e6e1bc1b6d0a58aa5ed
 
 pkgname = fritzing
