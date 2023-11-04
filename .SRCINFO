@@ -11,8 +11,6 @@ pkgbase = obs-plugin-texture-share-vk
 	makedepends = gcc
 	depends = obs-studio
 	depends = texture-share-vk
-	provides = obs-scene-tree-view
-	conflicts = obs-scene-tree-view
 	source = obs-plugin-texture-share-vk::git+https://github.com/DigitOtter/obs-plugin-texture-share-vk.git#branch=master
 	sha256sums = SKIP
 
