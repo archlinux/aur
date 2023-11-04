@@ -5,7 +5,7 @@
 
 # Maintainer: Alfred Roos <alfred@stensatter.se>
 pkgname=taber-git
-pkgver=1
+pkgver=2
 pkgrel=1
 epoch=
 pkgdesc="This is a simple program that opens a new terminal from your current diriectory"
@@ -34,7 +34,6 @@ prepare() {
 }
 
 package() {
-    cd gittab
-    sudo cp tab.sh /usr/bin/tab
-    export tab=/usr/bin/tab
+	cd gittab
+	install -Dm755 ./tab.sh "$pkgdir/usr/bin/tab"
 }

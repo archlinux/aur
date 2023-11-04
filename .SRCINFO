@@ -1,6 +1,6 @@
 pkgbase = taber-git
 	pkgdesc = This is a simple program that opens a new terminal from your current diriectory
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/spynetS/taber
 	arch = x86_64
