@@ -1,9 +1,9 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 pkgname=wayfire-wlroots-017-git
-pkgver=0.7.5.r765.g3f4e8316
-pkgrel=2
-pkgdesc="3D wayland compositor, tracking wlroots 0.17"
+pkgver=0.8.0.r30.g45138e9b
+pkgrel=1
+pkgdesc="3D wayland compositor, tracking wlroots 0.17, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
 license=('MIT')
@@ -13,8 +13,9 @@ depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
          'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil'
          'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols')
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
-optdepends=('xorg-xeyes')
-provides=('wayfire' 'wayfire-git' 'wlroots=0.17' 'wf-config' 'wlroots-git' 'wf-config-git' 'libwlroots.so')
+optdepends=('xorg-xeyes'
+            'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')
+provides=('wayfire' 'wayfire-git' 'wlroots=0.17' 'wlroots-hidpi-xprop-git' 'wf-config' 'wlroots-git' 'wf-config-git' 'libwlroots.so')
 conflicts=("$pkgname" 'wlroots-git' 'wlroots' 'wf-config-git' 'wf-config')
 replaces=()
 options=()
@@ -24,7 +25,7 @@ source=('git+https://github.com/WayfireWM/wayfire#branch=track-wlroots'
         '0002-Fix-configure_notify-event.patch'
         '0003-Fix-size-hints-under-Xwayland-scaling.patch')
 sha256sums=('SKIP'
-            '2fd861a76fb7a6b0bba12e7d307ad655e40ec93a84c88dfc00571aac6e119e85'
+            'ec59d48108595c06537a5a1daae6f124cac5a783025e03417cb2c1b052b321d0'
             '1314d0ee63a4249698791d86cce5e6cdb4f005b81bbb1c6a747578d2a9223795'
             'c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61')
 

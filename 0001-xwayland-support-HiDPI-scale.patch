@@ -13,11 +13,11 @@ diff --git a/include/xwayland/xwm.h b/include/xwayland/xwm.h
 index 3d540522..33ff1478 100644
 --- a/include/xwayland/xwm.h
 +++ b/include/xwayland/xwm.h
-@@ -88,6 +88,7 @@ enum atom_name {
- 	DND_ACTION_PRIVATE,
+@@ -89,6 +89,7 @@ enum atom_name {
  	NET_CLIENT_LIST,
  	NET_CLIENT_LIST_STACKING,
-+        XWAYLAND_GLOBAL_OUTPUT_SCALE,
+	NET_WORKAREA,
++	XWAYLAND_GLOBAL_OUTPUT_SCALE,
  	ATOM_LAST // keep last
  };
  
@@ -25,7 +25,7 @@ index 3d540522..33ff1478 100644
  	struct wl_event_source *event_source;
  	struct wlr_seat *seat;
  	uint32_t ping_timeout;
-+        uint32_t scale;
++	uint32_t scale;
  
  	xcb_atom_t atoms[ATOM_LAST];
  	xcb_connection_t *xcb_conn;
@@ -48,10 +48,10 @@ index 0c30d8f6..59e9ce06 100644
  static const char *const atom_map[ATOM_LAST] = {
  	[WL_SURFACE_ID] = "WL_SURFACE_ID",
  	[WL_SURFACE_SERIAL] = "WL_SURFACE_SERIAL",
-@@ -90,6 +98,7 @@ static const char *const atom_map[ATOM_LAST] = {
- 	[DND_ACTION_PRIVATE] = "XdndActionPrivate",
+@@ -91,6 +99,7 @@ static const char *const atom_map[ATOM_LAST] = {
  	[NET_CLIENT_LIST] = "_NET_CLIENT_LIST",
  	[NET_CLIENT_LIST_STACKING] = "_NET_CLIENT_LIST_STACKING",
+ 	[NET_WORKAREA] = "_NET_WORKAREA",
 +	[XWAYLAND_GLOBAL_OUTPUT_SCALE] = "_XWAYLAND_GLOBAL_OUTPUT_SCALE",
  };
  
