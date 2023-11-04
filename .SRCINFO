@@ -1,7 +1,7 @@
 pkgbase = acme-git
-	pkgdesc = Cross-assembler for MOS 6502, 6510, 65C02 and 65816 CPUs
+	pkgdesc = Cross-assembler for MOS 6502, 6510, 4502, 65816, 65C02, 65CE02, R65C02, W65C02 and C64DTV2 CPUs
 	pkgver = r74.99fae48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meonwax/acme
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = acme-git
 	sha256sums = SKIP
 
 pkgname = acme-git
-
