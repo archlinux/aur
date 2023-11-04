@@ -1,12 +1,13 @@
 pkgbase = pix2tex
 	pkgdesc = Using a ViT to convert images of equations into LaTeX code
 	pkgver = 0.0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lukas-blecher/LaTeX-OCR
 	arch = any
 	license = MIT
 	makedepends = python-wheel
 	makedepends = findutils
+	depends = pyside6
 	depends = python
 	depends = python-albumentations
 	depends = python-einops

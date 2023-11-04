@@ -2,7 +2,7 @@
 
 pkgname="pix2tex"
 pkgver=0.0.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Using a ViT to convert images of equations into LaTeX code"
 url="https://github.com/lukas-blecher/LaTeX-OCR"
 license=("MIT")
@@ -10,7 +10,8 @@ arch=("any")
 provides=("pix2tex" "python-pix2tex" "latexocr")
 replaces=("python-pix2tex")
 conflicts=("python-pix2tex")
-depends=("python"
+depends=("pyside6" # gui
+         "python"
          "python-albumentations"
          "python-einops"
          #"python-fastapi" # api
@@ -26,7 +27,6 @@ depends=("python"
          "python-pynput" #gui
          "python-pyqt6" # gui
          "python-pyqt6-webengine" # gui
-         #"python-pyside6" # gui, but missing from AUR
          "python-pytorch"
          "python-requests"
          "python-screeninfo" # gui
