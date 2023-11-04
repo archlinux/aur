@@ -1,6 +1,6 @@
 # Maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher
-pkgver="2.2.2"
+pkgver="2.3.1"
 pkgrel=2
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('curl' 'wget' 'file' 'cargo' 'nodejs>=18.18.0' 'yarn')
 conflicts=('open-goal-launcher-bin')
 _tarball="v${pkgver}.tar.gz"
 source=("https://github.com/open-goal/launcher/archive/refs/tags/${_tarball}" "${pkgname}.desktop")
-md5sums=("57d3585ec88a36b9ddb86cd7bebccbf0" "SKIP")
+md5sums=("720b5cf9209320e56ae83c2cfd89ce83" "SKIP")
 options=(!strip)
 
 prepare() {
