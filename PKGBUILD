@@ -2,7 +2,7 @@
 
 _pyname=angr
 pkgname=python-${_pyname}
-pkgver=9.2.32
+pkgver=9.2.49
 pkgrel=1
 pkgdesc='A powerful and user-friendly binary analysis platform'
 url='https://github.com/angr/angr'
@@ -41,18 +41,21 @@ makedepends=(
   'python-wheel'
 )
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ba943432f586f2185ed41416eedd9691405dbe74b00fabe3868e09e27817b996bdad365183a4be4517cd53c227504bb495cd521d20d7a6e8e9df9a076cc82d91')
-b2sums=('398e23b8a0d9adbb95699aaaa7d8c97409c9d16e3e7033c43342c023e12576ce4830b573b19ac2c99e3b79c64a3bb3e16a26c17337fce992689263673bfa6647')
+sha512sums=('bbe2f1f4995b7236a923a65e00229db62893b802ecfb6083b6603e912dcd999735dfc88645e45a4c15221d0cd1b91857fe8207080941b1c33c7cd972f745d52d')
+b2sums=('0e931ae70a30019e8376c8ff2ffb0b47b6398c68bb8505d68875587d3454c74011e18528001f936ca651f30536892bf7fcba849554d0876d79e1d041c165b31d')
 
 prepare() {
   # we don't support version pinning
   sed -e 's/==/>=/' -i $_pyname-$pkgver/setup.cfg
   sed -e 's/==/>=/g' -i $_pyname-$pkgver/pyproject.toml
+  # we don't support post-release and developmental-release
+  sed -e 's/\.\(post\|dev\)[0-9]*//' -i $_pyname-$pkgver/setup.cfg
+  sed -e 's/\.\(post\|dev\)[0-9]*//' -i $_pyname-$pkgver/pyproject.toml
 }
 
 build() {
   cd ${_pyname}-${pkgver}
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
