@@ -1,0 +1,17 @@
+pkgbase = python-pytimeconv-git
+	pkgdesc = A Micro package for time conversion. (GIT version)
+	pkgver = 0.0.2.0.ga24ef5c
+	pkgrel = 1
+	url = https://github.com/Ichunjo/pytimeconv
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/Ichunjo/pytimeconv.git
+	sha256sums = SKIP
+
+pkgname = python-pytimeconv-git
