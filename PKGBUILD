@@ -3,12 +3,12 @@
 pkgname=iortcw
 _pkgname=return_to_castle_wolfenstein
 pkgver=1.51c
-pkgrel=3
-pkgdesc="Return to Castle Wolfenstein, an update of the GPL'd source code from ID software to play nicely with modern hardware."
+pkgrel=4
+pkgdesc="Return to Castle Wolfenstein, an update of the GPL'd source code from ID software to work with modern hardware."
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/iortcw/iortcw"
 license=('GPL')
-depends=('rtcw-data' 'openal' 'libbloom' 'mesa' 'curl' 'sdl2')
+depends=('rtcw-data' 'openal' 'sdl2')
 makedepends=('p7zip' 'unzip')
 provides=('iorctw')
 conflicts=('iorctw-git')

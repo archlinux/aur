@@ -1,7 +1,7 @@
 pkgbase = iortcw
-	pkgdesc = Return to Castle Wolfenstein, an update of the GPL'd source code from ID software to play nicely with modern hardware.
+	pkgdesc = Return to Castle Wolfenstein, an update of the GPL'd source code from ID software to work with modern hardware.
 	pkgver = 1.51c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/iortcw/iortcw
 	install = iortcw.install
 	arch = i686
@@ -14,9 +14,6 @@ pkgbase = iortcw
 	makedepends = unzip
 	depends = rtcw-data
 	depends = openal
-	depends = libbloom
-	depends = mesa
-	depends = curl
 	depends = sdl2
 	provides = iorctw
 	conflicts = iorctw-git
@@ -48,4 +45,3 @@ pkgbase = iortcw
 	sha256sums = b5b69c3b6a981dcbc31c99a16807eb4793828409814d681083fb8d5423bf4066
 
 pkgname = iortcw
-
