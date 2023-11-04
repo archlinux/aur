@@ -1,7 +1,7 @@
 # Maintainer: Energi <bloznelis05@gmail.com>
 
 pkgname=kbt
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Keyboard tester in terminal"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/bloznelis/kbt"
 license=(MIT)
 groups=()
 depends=()
-makedepends=(cargo)
+makedepends=(git make cargo)
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+$url")
