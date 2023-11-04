@@ -4,7 +4,7 @@
 
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
-pkgver=535.113.01
+pkgver=545.29.02
 pkgrel=1
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            'bf939843404bc163246b710ca336236f28af489f77ee1830a2d20d4ca926a434b6fbc2156d5777dc004692d5d1adbef77ce79071247f81da2db9adf42c32bfa7'
+            'b3d31d19f2912e4926446b609c07f181fae00b1dc4b025ddb52f8c28a1f14904d29ff6514fd04c734776bec82a351476009d60be9293968fbea7dc62ed580de8'
             'SKIP')
 
 create_links() {
@@ -113,9 +113,7 @@ package() {
   install -Dm755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${pkgver}"
   install -Dm755 "libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glvkspirv.so.${pkgver}"
   install -Dm755 "libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}"
-  install -Dm755 "libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.${pkgver}"
-  # Sigh libnvidia-vulkan-producer.so has no SONAME set so create_links doesn't catch it. NVIDIA please fix!
-  patchelf --set-soname "libnvidia-vulkan-producer.so.1" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.${pkgver}"
+  install -Dm755 "libnvidia-gpucomp.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-gpucomp.so.${pkgver}"
 
   # Patched NvFBC
   ./nvlax_fbc -i "libnvidia-fbc.so.${pkgver}" -o "libnvidia-fbc.so.${pkgver}"
@@ -125,7 +123,7 @@ package() {
   #./nvlax_encode -i "libnvidia-encode.so.${pkgver}" -o "libnvidia-encode.so.${pkgver}"
   # !!! Driver version 535.54.03 does not work with nvlax patcher, use workround for now !!!
   # https://github.com/keylase/nvidia-patch/blob/3358c5d92e61d42c1557432e82ccda445d3fa082/patch.sh#LL212C10-L212C10
-  sed -i 's/\xe8\xa5\x9f\xfe\xff\x85\xc0\x41\x89\xc4/\xe8\xa5\x9f\xfe\xff\x29\xc0\x41\x89\xc4/g' "libnvidia-encode.so.${pkgver}"
+  sed -i 's/\xe8\xc5\x8f\xfe\xff\x85\xc0\x41\x89\xc4/\xe8\xc5\x8f\xfe\xff\x29\xc0\x41\x89\xc4/g' "libnvidia-encode.so.${pkgver}"
   install -Dm755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
 
   # Vulkan ICD
