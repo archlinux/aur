@@ -7,9 +7,9 @@ buildarch=8
 pkgbase=linux-aarch64-rockpro64
 _srcname=linux-6.1
 _kernelname=${pkgbase#linux}
-_libreelec_patch_commit=5fc1868d8610dadb91c380a88997583d554d97d8
+_libreelec_patch_commit=38019106663a9cd85630310623ddb949f0a820c4
 pkgdesc="AArch64 with patches for PINE64's ROCKPro64"
-pkgver=6.1.0
+pkgver=6.1.61
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -17,7 +17,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
-#        "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
         '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
 #        '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
         'config'
@@ -34,17 +34,18 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-2001-v4l2-wip-iep-driver.patch"
 )
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
+            'e4e1e4a61ca55ebb17277ddf1661be21c27c5c5de870b19b46424c77cb28282c'
             '5ac741733d6b117d9f837c1d88043aa14dedfbfe40d6a17c9a5ba8e67dce6d57'
             '2996843f5c08b7e05182c77bb73fb8465682f049d1e6b42ad590931aec945cde'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d'
-            '9a49febdd90414c9bdb91f0d09d1f4087ba42d2f3f6131d7a160741211e9e35c'
-            'b3bcf5ab0a0f99b9e491c70813d1f4b21b07588e3b49cf90491bbb5a4daa6131'
-            'd72e7d45d3815d76f61830838665cd31dbb4e99932e440241676aa035192eb08'
-            'eec9e29fe1e7687bde11df9828af7dc4abfd02b9e548bc8247642bc68878fb0d'
-            '5b6703a7b4861b3182591845cd9706bf2e101767b3856bb10293bde92c4502e3'
-            '685767f8a376c9793c42c4783504f937d64b1554cd77e5e2f80884f47171af27'
+            '15dbc530ec53e3f97377bbc6c95016f630bf799a3ec1abaf52863163049410d7'
+            '1ff823238e2151e2ca9507c99229c5d6c864ac6285b6677caebdc98ad48ec96f'
+            '0c817a231675fee1a8bb74d11054def12f6e50fe977296ccf1dea82161a32eab'
+            'c5a11c5bb69d65283e324e0369235137af0f4522ff1a5599259a16026b0b45d9'
+            'fe054c65cecaa76741e5a1f17943044d3c2cd4bdc9f4993c5e2537f467475cb3'
+            'fae055d5b862ec08e40b5e551421bc011fbe5313804b9d9e60afcfd38a662f82'
             '5efd337c4416e1169b0b7956086a66a320d5bd1cd89be21025ff70d6f430b11f'
             '58925a7e8a9d59d48b72af8bb7017c115ed2fc9b763cdd472fba03001728181c')
 
@@ -57,7 +58,7 @@ prepare() {
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # add upstream patch
-# git apply -v --whitespace=nowarn ../patch-${pkgver}
+  git apply -v --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
   git apply -v ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
