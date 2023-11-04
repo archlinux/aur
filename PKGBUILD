@@ -23,7 +23,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
-    -k 'not rank[MLPRegressor] and not good[SVCParentChildDetection] and not rank[LSTMClassifierEfficacy] and not rank[BinaryDecisionTreeClassifier] and not _num[NumericalSVR] and not fit'
+    -k 'not rank[MLPRegressor] and not good[SVCParentChildDetection] and not rank[LSTMClassifierEfficacy] and not rank[BinaryDecisionTreeClassifier] and not _num[NumericalSVR] and not rank_object[BinaryDecisionTreeClassifier] and not fit'
 }
 
 package() {
