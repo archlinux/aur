@@ -4,6 +4,7 @@ pkgbase = resources
 	pkgrel = 1
 	url = https://github.com/nokyan/resources
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = cargo
