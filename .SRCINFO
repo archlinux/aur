@@ -1,6 +1,6 @@
 pkgbase = heroic-games-launcher
-	pkgdesc = Native GOG and Epic Games launcher for Linux
-	pkgver = 2.9.2
+	pkgdesc = Native GOG, Epic Games and Amazon games launcher for Linux
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://heroicgameslauncher.com/
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = heroic-games-launcher
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss
-	depends = python
 	options = !debug
-	source = git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v2.9.2
+	source = git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v2.10.0
 	sha256sums = SKIP
 
 pkgname = heroic-games-launcher
