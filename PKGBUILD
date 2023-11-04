@@ -4,7 +4,7 @@ _name=elstob
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
 pkgver=2.101
-pkgrel=1
+pkgrel=2
 pkgdesc='A variable font for medievalists'
 arch=('any')
 url="https://github.com/psb1558/${pkgbase^}"
@@ -14,7 +14,6 @@ sha256sums=('43a1e1e55778842131b8900a64f7d1312f72fac15732a2b852a40c54cb42f0f6')
 
 package_otf-elstob() {
     provides=("$pkgbase" "$pkgname-desktop")
-    conflicts=("$pkgbase-variable")
     replaces=("$pkgname-desktop")
     cd "${_name^}_font"
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" otf/*.otf
@@ -23,7 +22,6 @@ package_otf-elstob() {
 
 package_ttf-elstob() {
     provides=("$pkgbase" "$pkgname-desktop")
-    conflicts=("$pkgbase-variable")
     replaces=("$pkgname-desktop")
     cd "${_name^}_font"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" ttf/*.ttf
