@@ -1,0 +1,21 @@
+pkgbase = i3stat
+	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = https://github.com/acheronfail/i3stat
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = clang
+	makedepends = dbus
+	makedepends = dunst
+	makedepends = libfaketime
+	makedepends = libpulse
+	makedepends = i3-wm
+	makedepends = imagemagick
+	makedepends = scrot
+	makedepends = xorg-server-xvfb
+	depends = gcc-libs
+	source = i3stat-0.8.0.tar.gz::https://static.crates.io/crates/i3stat/i3stat-0.8.0.crate
+	sha512sums = 1cacdbc64a31ca134dd568c65a71025fe3c2baddffabef657271f8c6d9c4650fc88d2170f32897734c5e5725a662bc9a211f588d994abb4b2576207ca504345e
+
+pkgname = i3stat
