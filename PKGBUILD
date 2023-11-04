@@ -1,5 +1,4 @@
-# Maintainer : Santiago Torres-Arias <santiago@archlinux.org>
-# Contributor: smmalis37
+# Maintainer : Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=python-pytimeconv-git
 pkgver=0.0.2.0.ga24ef5c
