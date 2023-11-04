@@ -3,10 +3,10 @@
 pkgname=poezio-omemo-git
 _pkgname=poezio-omemo
 pkgrel=1
-pkgver=r5.05310c1
+pkgver=r25.29cb0cd
 pkgdesc="OMEMO plugin for the Poezio XMPP console client"
 arch=('i686' 'x86_64')
-url="https://lab.louiz.org/poezio/poezio-omemo"
+url="https://codeberg.org/poezio/poezio-omemo"
 conflicts=('poezio-omemo')
 provides=('poezio-omemo')
 license=('GPL')
@@ -21,7 +21,7 @@ makedepends=(
   'python-setuptools'
 )
 
-source=("${_pkgname}::git+https://lab.louiz.org/poezio/poezio-omemo.git")
+source=("${_pkgname}::git+https://codeberg.org/poezio/poezio-omemo.git")
 
 pkgver() {
   cd ${_pkgname}
