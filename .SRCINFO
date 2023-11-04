@@ -1,10 +1,11 @@
 pkgbase = simple-bcachefs-tools-git
 	pkgdesc = BCacheFS filesystem utilities
-	pkgver = r1053.6b1f79d
+	pkgver = r1132.13a9480
 	pkgrel = 1
 	url = https://evilpiepirate.org/git/bcachefs-tools
 	arch = x86_64
 	license = GPL2
+	makedepends = cargo
 	makedepends = git
 	depends = util-linux-libs
 	depends = libaio
@@ -12,12 +13,9 @@ pkgbase = simple-bcachefs-tools-git
 	depends = libsodium
 	depends = liburcu
 	depends = zstd
-	depends = rust
 	provides = bcachefs-tools
 	conflicts = bcachefs-tools
-	source = simple-bcachefs-tools-git::git+https://evilpiepirate.org/git/bcachefs-tools.git
-	source = disable-initramfs-output.patch
+	source = git+https://evilpiepirate.org/git/bcachefs-tools.git
 	b2sums = SKIP
-	b2sums = b53930322b26c246e94db275d5f490913f35d4f49446a7a468df6018dad65216c016ba51efbeec7cb24f8ec6001c59c707d50297979cffd131b7314a24ea2d9b
 
 pkgname = simple-bcachefs-tools-git
