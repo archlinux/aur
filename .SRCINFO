@@ -1,0 +1,17 @@
+pkgbase = mounter-elite-plus
+	pkgdesc = A minimalist multithreaded, ISO Mounter/Converter, written in C++.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/siyia2/mounter-elite-plus
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = coreutils
+	depends = readline
+	depends = sudo
+	optdepends = ccd2iso: BIN/IMG conversion support
+	optdepends = mdf2iso: MDS/MDF conversion support
+	source = https://github.com/siyia2/mounter-elite-plus/archive/v2.0.tar.gz
+	md5sums = da848c82408c44bf24a89813ee1af6b5
+
+pkgname = mounter-elite-plus
