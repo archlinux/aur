@@ -4,12 +4,12 @@ pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git')
 pkgver=0.9.20.dev149
-pkgrel=1
+pkgrel=2
 pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
-makedepends=('git' 'python')
+makedepends=('git' 'python' 'python-build' 'python-installer' 'python-wheel')
 source=('git+https://github.com/ivre/ivre.git')
 sha512sums=('SKIP')
 
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package_ivre-git() {
@@ -41,7 +41,7 @@ package_ivre-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
 
   rm -r "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
@@ -58,13 +58,14 @@ package_ivre-docs-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
 
   cp README.md "$pkgdir/usr/share/doc/ivre/"
   mv "$pkgdir/usr/share/ivre/web/static/doc" "$pkgdir/usr/share/doc/ivre/html"
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/ivre" \
-     "$pkgdir/etc/bash_completion.d"
+     "$pkgdir/usr/etc/bash_completion.d" \
+     "$pkgdir/usr/etc"
 }
 
 package_ivre-web-git() {
@@ -79,7 +80,7 @@ package_ivre-web-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
 
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
@@ -89,7 +90,8 @@ package_ivre-web-git() {
      "$pkgdir/usr/share/ivre/geoip" \
      "$pkgdir/usr/share/ivre/honeyd" \
      "$pkgdir/usr/share/ivre/patches" \
-     "$pkgdir/etc/bash_completion.d"
+     "$pkgdir/usr/etc/bash_completion.d" \
+     "$pkgdir/usr/etc"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
   install -Dm0644 "pkg/apache/ivre.conf" "$pkgdir/etc/httpd/conf/extra/ivre.conf"
@@ -115,13 +117,15 @@ package_python-ivre-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+
   echo -en "-aur-${pkgrel}" >> "${pkgdir}/usr/lib/"python*"/site-packages/ivre/VERSION"
   sed -ri 's#(VERSION = .*)(['\''"])$#\1-aur-'"${pkgrel}"'\2#' "${pkgdir}/usr/lib/"python*"/site-packages/ivre/__init__.py"
 
   rm -r "$pkgdir/usr/bin" \
      "$pkgdir/usr/share" \
-     "$pkgdir/etc/bash_completion.d"
+     "$pkgdir/usr/etc/bash_completion.d" \
+     "$pkgdir/usr/etc"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
