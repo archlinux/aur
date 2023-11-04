@@ -1,6 +1,6 @@
 pkgbase = perl-math-gmpq
 	pkgdesc = Math::GMPq - perl interface to the GMP library's rational (mpq) functions.
-	pkgver = 0.55
+	pkgver = 0.56
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-GMPq
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = perl-math-gmpq
 	depends = perl>=5.10.1
 	depends = gmp>=6.1.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPq-0.55.tar.gz
-	b2sums = 7ae7ef45fc4bc4ef3cc525963430f121ee74cc696b38c2091bda572c87520b82ed4d90db889423ea42770430cb82f6efba9c8a772862bca465e530793c9e0270
+	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPq-0.56.tar.gz
+	b2sums = b7c1217b3d5ddc9c78c12ac33502ad3c74cebf7c3e823ee0b1d2585cfea6875755a2fc7a92ea35bab30ae81f91246d86113b10b80139e4ed05eb3b640550dcbf
 
 pkgname = perl-math-gmpq
