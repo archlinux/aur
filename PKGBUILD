@@ -11,7 +11,7 @@ depends=()
 makedepends=('git')
 conflicts=('simpfand')
 provides=('simpfand')
-source=("git://github.com/hspak/simpfand")
+source=("git+https://github.com/hspak/simpfand")
 install=simpfand-git.install
 md5sums=('SKIP')
 
