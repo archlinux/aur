@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         REVERT-disable-autoupgrading-debug-info.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3'
+sha256sums=('73cb8c39e928f8c627d747d37a3b020f08913ef5508f893758d70bdbd545dbcf'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
