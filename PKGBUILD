@@ -2,7 +2,7 @@
 _base=trame
 pkgname=python-${_base}
 pkgdesc="Framework to build applications in plain Python"
-pkgver=3.2.8
+pkgver=3.3.0
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-server python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('6cfafd70b72de492a0a3f49698f56cc7b5eacf2f52d541e2b43b3803c38667b910bb6c89e408b1bf888e0b2a3d598ac5f0aa58b803b9281b1a57759ff3785078')
+sha512sums=('b15d6c57a261929b65cf2779c10127aee8d51f4129b0e14b96ad47df9521c6a1e4897c9c3cec0612bee427c3d47606d728400acf9319fb13f5bca0b3f17bf90b')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
