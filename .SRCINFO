@@ -1,7 +1,7 @@
 pkgbase = otf-geist-fonts
 	pkgdesc = A new font family for Vercel, created by Vercel in collaboration with Basement Studio
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = OFL
 	source = https://github.com/vercel/geist-font/releases/download/1.0.0/Geist.zip

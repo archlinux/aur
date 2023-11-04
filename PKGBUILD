@@ -3,7 +3,7 @@
 pkgname=(otf-geist otf-geist-mono)
 pkgbase=otf-geist-fonts
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A new font family for Vercel, created by Vercel in collaboration with Basement Studio'
 arch=(any)
 url=""
@@ -44,7 +44,7 @@ package_otf-geist() {
 
 	for f in ${_geist_files[@]}
 	do
-		install -Dm644 "$f" -t "$pkgdir/usr/share/fonts/Geist"
+		install -Dm644 "Geist/$f" -t "$pkgdir/usr/share/fonts/Geist"
 	done
 	install -Dm644 LICENSE.TXT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
