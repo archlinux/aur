@@ -1,7 +1,7 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
-	pkgver = 10.0.0
-	pkgrel = 4
+	pkgver = 11.0.0
+	pkgrel = 1
 	url = https://docs.mikeboers.com/pyav/
 	arch = x86_64
 	arch = i686
@@ -17,11 +17,11 @@ pkgbase = python-av
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = pkgconf
-	depends = ffmpeg4.4
+	depends = ffmpeg
 	depends = python
 	depends = python-numpy
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/a/av/av-10.0.0.tar.gz
-	b2sums = 0771fb37de072b63b8f276a2c3f76461af52910433793c7261f8216ab0af58ca46d8da871352d419c231a41fdb73b7e65f8d9eb71373f540cd3407148605ea74
+	source = av-11.0.0.tar.gz::https://github.com/PyAV-Org/PyAV/archive/refs/tags/v11.0.0.tar.gz
+	b2sums = 614c0338b207dbc88f9f7df9309a044df35707061af0986062f5ec7ad4dee4724eec1c37940623d1accc3ec1ded589a4a62087a3beaa6c2ef8be8524eeaab825
 
 pkgname = python-av
