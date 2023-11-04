@@ -2,7 +2,7 @@
 # Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 
 pkgname=boatswain-git
-pkgver=0.1.3.r34.g3631287
+pkgver=0.3.0.r102.g591a163
 pkgrel=1
 pkgdesc='Control Elgato Stream Deck devices'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(
   hidapi
   libadwaita
   libgusb
-  libpeas
+  libpeas-2
   libportal-gtk4
   libsecret
 )
