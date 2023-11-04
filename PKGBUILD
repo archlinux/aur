@@ -1,7 +1,7 @@
 # Maintainer: Erin Heimer <heimer16 at protonmail dot com>
 pkgname='mailpit-bin'
-pkgver=v1.9.10
-pkgrel=1
+pkgver=1.9.10
+pkgrel=2
 pkgdesc="Web and API based SMTP testing"
 arch=('x86_64')
 license=('MIT')
@@ -10,7 +10,7 @@ optdepends=('systemd')
 conflicts=('mailpit')
 
 source=(
-        "https://github.com/axllent/mailpit/releases/download/${pkgver}/mailpit-linux-amd64.tar.gz"
+        "https://github.com/axllent/mailpit/releases/download/v${pkgver}/mailpit-linux-amd64.tar.gz"
         "mailpit.service"
        )
 

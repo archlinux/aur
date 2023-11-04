@@ -1,6 +1,6 @@
 pkgbase = mailpit-bin
 	pkgdesc = Web and API based SMTP testing
-	pkgver = v1.9.10
+	pkgver = 1.9.10
 	pkgrel = 1
 	url = https://github.com/axllent/mailpit
 	arch = x86_64
