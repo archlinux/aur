@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-fsrcnn-ncnn-vulkan-git
 	pkgdesc = Plugin for Vapoursynth: fsrcnn-ncnn-vulkan (GIT version)
 	pkgver = r3.c9dad37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sg4Dylan/vapoursynth-fsrcnn-ncnn-vulkan
 	arch = x86_64
 	license = MIT
