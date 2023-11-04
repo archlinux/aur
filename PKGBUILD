@@ -2,7 +2,7 @@
 
 pkgname=(librewolf-extension-ubolite-bin firefox-extension-ubolite-bin)
 url="https://github.com/uBlockOrigin/uBOL-home"
-pkgver=2023.10.21.720
+pkgver=2023.11.4.95
 pkgrel=1
 makedepends=("jq" "curl")
 pkgdesc="uBO Lite (uBOL), a permission-less MV3 API-based content blocker."
