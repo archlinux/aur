@@ -1,8 +1,8 @@
-# Contributor: Anonymous
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-locale-xgettext'
-pkgver='0.7'
+pkgver='0.8'
 pkgrel='1'
 pkgdesc="Extract Strings To PO Files"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-locale-po>=0.27' 'perl-module-build>=0.28' 'perl-libintl-perl>=0' 'perl>=5.008')
 makedepends=()
 url='https://metacpan.org/release/Locale-XGettext'
-source=('http://search.cpan.org/CPAN/authors/id/G/GU/GUIDO/Locale-XGettext-0.7.tar.gz')
-md5sums=('1575b5a9a7333bdbc4c525173e2f340e')
-sha512sums=('d9121783e378f640d0826196cb7ed864581391f0f0ea3ab49ff528c5b6b84a089de40a15ca6cfab89d77b4478611d62b0e510802212e83a84c8eded0119c383b')
-_distdir="Locale-XGettext-0.7"
+source=('http://search.cpan.org/CPAN/authors/id/G/GU/GUIDO/Locale-XGettext-0.8.tar.gz')
+md5sums=('8d868096adda12aa9b2a76ab78f83351')
+sha512sums=('beb4e671f11400cf61da023b234e1d10fbb79ded86c722062da404fa29979b21258934608b93abd156a54120908385d3fe67cbc7da55a0fd605ab18794622a6f')
+_distdir="Locale-XGettext-0.8"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
