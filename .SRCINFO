@@ -5,7 +5,7 @@ pkgbase = jabref
 	url = https://www.jabref.org/
 	arch = any
 	license = MIT
-	makedepends = gradle
+	makedepends = gradle>=8
 	makedepends = java-environment=21
 	depends = archlinux-java-run>=10
 	depends = java-runtime=21
