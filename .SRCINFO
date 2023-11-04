@@ -1,0 +1,14 @@
+pkgbase = notipriv
+	pkgdesc = UnifiedPush message sender
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.berthor.eu/dalan/notipriv
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = https://binaries.dalan.fr/notipriv/notipriv-1.0.0-src.tar.zst
+	sha512sums = a372b8d785163412f50052d1c50f306aecc4b832a2f3e57af4ab703ec501b471cec6052fc207601989ef76e4ea1095f7e80253ed80a651638174977ff659c37c
+
+pkgname = notipriv
