@@ -33,6 +33,6 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-git}/main"
+    cd "${srcdir}/${pkgname%-git}/main"
     install -Dm755 kemono-scraper "${pkgdir}/usr/bin/kemono-scraper"
 }
