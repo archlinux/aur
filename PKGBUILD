@@ -2,7 +2,7 @@
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
-pkgver=2.30
+pkgver=2.32
 pkgrel=1
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('nvidia: Vulkan nvidia driver'
             'orchis-theme: Preferred GTK theme'
             'vulkan-radeon: Vulkan AMD drivers'
             'vulkan-intel: Vulkan Intel drivers')
-source=("https://github.com/arunsivaramanneo/$_pkgname/archive/V$pkgver.tar.gz")
+source=("https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -34,4 +34,4 @@ package() {
     DESTDIR="$pkgdir" ninja install
 }
 
-md5sums=('9f7a73cf5c327554cf97af2f56c530ac')
+md5sums=('c45ffede2cdebd1837ac3cf99e90942a')
