@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria"
 arch=(x86_64)
 url='https://github.com/LorenEteval/Furious'
-license=('GPL-3')
+license=('GPL3')
 makedepends=('cmake' 'python' 'python-pip' 'patchelf')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
