@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov <peter.semiletov@gmail.com>
 
 pkgname=tea-qt-git
-pkgver=62.0.1.r1.ge808652
+pkgver=f252fefb04e4e66e9909536bd512f2fe945dee8a
 pkgrel=1
 pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Build from stable git-commit with PDF and DJVU support."
 arch=('x86_64')
@@ -18,10 +18,10 @@ conflicts=('tea-qt')
 source=("git+https://github.com/psemiletov/tea-qt.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/tea-qt"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd "${srcdir}/tea-qt"
+#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
   mkdir -p "${srcdir}/tea-qt/b"
