@@ -1,7 +1,7 @@
 pkgbase = rvasm-git
 	pkgdesc = A risc-v assembler in rust
 	pkgver = r19.625e76c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/phanen/rvasm
 	arch = x86_64
 	license = Apache

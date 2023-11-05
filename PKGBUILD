@@ -3,7 +3,7 @@
 _pkgname=rvasm
 pkgname=${_pkgname}-git
 pkgver=r19.625e76c
-pkgrel=2
+pkgrel=3
 pkgdesc="A risc-v assembler in rust"
 arch=('x86_64')
 # waiting for merging into upstream
@@ -13,7 +13,7 @@ _fragment="branch=fix-removal-of-box-syntax"
 license=('Apache')
 makedepends=('cargo' 'git')
 source=("${pkgname}::git+${url}#${_fragment}")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 conflicts=('rvasm')
 provides=('rvasm')
 
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=nightly
-  cargo fetch --offline --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
