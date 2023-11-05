@@ -1,8 +1,8 @@
 # Maintainer: Orpheas van Rooij <orpheas.vanrooij at outlook dot com>
 
 pkgname=wifi-qr
-pkgver=0.2
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 pkgdesc="WiFi Share and Connect with QR"
 arch=('x86_64')
 url="https://www.github.com/kokoye2007/wifi-qr"
@@ -15,8 +15,8 @@ depends=(
     'networkmanager'
 )
 options=('!emptydirs' '!strip')
-source=("${pkgname}_${pkgver}-${pkgrel}_all.deb::https://github.com/kokoye2007/wifi-qr/releases/download/${pkgname}-${pkgver}-${pkgrel}/${pkgname}_${pkgver}-${pkgrel}_all.deb")
-sha256sums=('a7fa130bc4a54d3d5679589ff89b3746c837b5f454ebf2e4b22d2335ba5860ac')
+source=("${pkgname}_${pkgver}-${pkgrel}_all.deb::https://github.com/kokoye2007/wifi-qr/releases/download/${pkgver}/${pkgname}_${pkgver}-${pkgrel}_all.deb")
+sha256sums=('6c90d50d93be054533ed5caf6eeac587e7fa451a2ed91dfeccb3d4c1d381160c')
 
 package() {
     cd "${pkgdir}"
