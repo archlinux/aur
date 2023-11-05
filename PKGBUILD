@@ -24,6 +24,7 @@ build() {
 package() {
     cd "$srcdir/webmesh"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 contrib/systemd/webmeshd.service "$pkgdir/usr/lib/systemd/system/webmeshd.service"
     install -Dm755 dist/**/webmesh-node "$pkgdir/usr/bin/webmesh-node"
     install -Dm755 dist/**/wmctl "$pkgdir/usr/bin/wmctl"
 }
