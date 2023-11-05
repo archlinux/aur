@@ -1,12 +1,12 @@
 pkgbase = epubcheck
 	pkgdesc = A tool to validate epub files
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/w3c/epubcheck
 	arch = any
 	license = BSD
 	makedepends = maven
-	depends = java-environment
+	depends = java-runtime-headless
 	source = epubcheck-5.1.0.tar.gz::https://github.com/w3c/epubcheck/archive/v5.1.0.tar.gz
 	source = epubcheck
 	source = epubcheck.1

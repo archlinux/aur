@@ -4,12 +4,12 @@
 
 pkgname=epubcheck
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to validate epub files'
 arch=('any')
 url="https://github.com/w3c/$pkgname"
 license=('BSD')
-depends=('java-environment')
+depends=('java-runtime-headless')
 makedepends=('maven')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/w3c/epubcheck/archive/v$pkgver.tar.gz"
         'epubcheck'
