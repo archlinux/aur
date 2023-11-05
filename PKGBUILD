@@ -6,14 +6,14 @@
 
 _locale='fi'
 pkgname=palemoon-i18n-fi
-pkgver=29.4.0
+pkgver=32.5.0
 pkgrel=1
 pkgdesc="Finnish language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('ee9378db87c874c1a462bb484752e7dbda382f262ae29855ef095da7f11ebe2b')
+sha256sums=('6e2ae7799f7d6eb9614216c29e4de8036595ea49b3997e0f8cd8580fa68c0878')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
