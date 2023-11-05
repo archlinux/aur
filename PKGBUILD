@@ -1,7 +1,7 @@
 # Maintainer: BadBoy <luckmelove2@gmail.com>
 
 pkgname='oxygen-cursors'
-pkgver='v1.0.0'
+pkgver='1.0.0'
 pkgrel='1'
 pkgdesc='Beautiful Cursors themes'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
     'lxappearance'
     'gnome-tweaks'
 )
-source=("https://github.com/wo2ni/Oxygen-Cursors/releases/download/${pkgver}/${pkgname}.tar.bz2"
+source=("https://github.com/wo2ni/Oxygen-Cursors/releases/download/v${pkgver}/${pkgname}.tar.bz2"
 )
 
 sha256sums=('b87ee63366bfe45e462d0e090971d2977a7bf4e0ed3ffeba3c8fbeb910fb9c81')
