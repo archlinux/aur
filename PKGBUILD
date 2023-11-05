@@ -2,7 +2,7 @@
 pkgname=vencord-desktop-git
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=r220.b245354
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
