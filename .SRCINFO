@@ -1,5 +1,5 @@
 pkgbase = samsung-unified-driver
-	pkgdesc = Unified Linux Driver for Samsung printers and scanners.
+	pkgdesc = Samsung Unified Linux Driver for printers and scanners.
 	pkgver = 1.00.39
 	pkgrel = 6
 	url = http://www.samsung.com
@@ -13,13 +13,16 @@ pkgbase = samsung-unified-driver
 	sha512sums = 325d2e3e42bf74663ba0ac3aa0fc3ee70ef5a5197d03c069fac6bc0f8da0d9e12d50e4b59feacef3000eff5a85d3db7f66834809013b18b31532cfea252460ef
 
 pkgname = samsung-unified-driver-common
+	pkgdesc = Samsung Unified Linux Driver (common files)
 
 pkgname = samsung-unified-driver-printer
+	pkgdesc = Samsung Unified Linux Driver for printers.
 	depends = samsung-unified-driver-common
 	depends = cups
 	depends = ghostscript
 
 pkgname = samsung-unified-driver-scanner
+	pkgdesc = Samsung Unified Linux Driver for scanners.
 	depends = samsung-unified-driver-common
 	depends = libxml2
 	depends = libusb-compat

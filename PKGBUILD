@@ -10,7 +10,7 @@ pkgname=(
 pkgver=1.00.39
 pkgrel=6
 
-pkgdesc='Unified Linux Driver for Samsung printers and scanners.'
+pkgdesc='Samsung Unified Linux Driver for printers and scanners.'
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
 license=('custom:samsung')
@@ -35,6 +35,7 @@ package_samsung-unified-driver()
 
 package_samsung-unified-driver-common()
 {
+    pkgdesc='Samsung Unified Linux Driver (common files)'
     mkdir -p "$pkgdir"/usr/share/licenses/$pkgbase
     cp "$srcdir"/uld/noarch/license/eula.txt "$pkgdir"/usr/share/licenses/$pkgbase/LICENSE
     cp "$srcdir"/uld/noarch/license/eula-fr.txt "$pkgdir"/usr/share/licenses/$pkgbase
@@ -42,6 +43,7 @@ package_samsung-unified-driver-common()
 
 package_samsung-unified-driver-printer()
 {
+    pkgdesc='Samsung Unified Linux Driver for printers.'
     depends=('samsung-unified-driver-common' 'cups' 'ghostscript')
 
     mkdir -p "$pkgdir"/usr/lib
@@ -68,6 +70,7 @@ package_samsung-unified-driver-printer()
 
 package_samsung-unified-driver-scanner()
 {
+    pkgdesc='Samsung Unified Linux Driver for scanners.'
     depends=('samsung-unified-driver-common' 'libxml2' 'libusb-compat' 'sane')
 
     mkdir -p "$pkgdir"/usr/share
