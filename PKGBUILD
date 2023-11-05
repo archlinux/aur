@@ -1,7 +1,7 @@
 # Maintainer: Fantix King <fantix.king@gmail.com>
 # Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname=python-immutables
-pkgver=0.19
+pkgver=0.20
 pkgrel=1
 epoch=
 pkgdesc="A high-performance immutable mapping type for Python"
@@ -23,7 +23,7 @@ changelog=
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-md5sums=('08810bf330ba17d001166ece05bbb230')
+md5sums=('34b027e8f17f66770f14f35abb260efc')
 validpgpkeys=()
 
 prepare() {

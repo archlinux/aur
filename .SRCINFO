@@ -1,6 +1,6 @@
 pkgbase = python-immutables
 	pkgdesc = A high-performance immutable mapping type for Python
-	pkgver = 0.19
+	pkgver = 0.20
 	pkgrel = 1
 	url = https://github.com/MagicStack/immutables
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-immutables
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/immutables/immutables-0.19.tar.gz
-	md5sums = 08810bf330ba17d001166ece05bbb230
+	source = https://files.pythonhosted.org/packages/source/i/immutables/immutables-0.20.tar.gz
+	md5sums = 34b027e8f17f66770f14f35abb260efc
 
 pkgname = python-immutables
