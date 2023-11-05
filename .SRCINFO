@@ -1,13 +1,25 @@
 pkgbase = estedad-fonts
 	pkgdesc = A Sans Serif Arabic-Latin text typeface
-	pkgver = 7.2
+	pkgver = 7.3
 	pkgrel = 1
 	url = https://github.com/aminabedi68/Estedad
 	arch = any
+	groups = estedad-fonts
+	groups = persian-fonts
 	license = OFL
-	source = estedad-fonts-7.2.zip::https://github.com/aminabedi68/Estedad/releases/download/7.2/Estedad-v7.2.zip
-	source = LICENSE
-	sha256sums = 227d9c40489e0979f876c3a38214fc4ee3a9e6a4b980bf72e5756f95545f9466
-	sha256sums = 3a5078ad1010d2715e59b61ac86caf9df2990b7882d2c467ce7f4ae0ba1dfe3a
+	source = ttf-estedad-7.3.zip::https://github.com/aminabedi68/Estedad/releases/download/7.3/Estedad-v7.3.zip
+	source = estedad-fonts-LICENSE::https://github.com/aminabedi68/Estedad/raw/master/OFL.txt
+	sha256sums = a15726ac8b78b7d87f8b10fbc26581ef309f2c6a8a26f547d90b33d75c73cb87
+	sha256sums = b0672e6521cd32ca77db2127e23c134719efb0e5d0cf11c2dfc2b23d05b365ce
 
-pkgname = estedad-fonts
+pkgname = ttf-estedad
+	pkgdesc = A Sans Serif Arabic-Latin text typeface (TTF).
+
+pkgname = ttf-estedad-variable
+	pkgdesc = A Sans Serif Arabic-Latin text typeface (TTF Variable).
+
+pkgname = woff2-estedad
+	pkgdesc = A Sans Serif Arabic-Latin text typeface (WOFF2).
+
+pkgname = woff2-estedad-variable
+	pkgdesc = A Sans Serif Arabic-Latin text typeface (WOFF2 Variable).
