@@ -3,7 +3,7 @@
 
 pkgname=mapillary_tools-git
 _pkgname=mapillary_tools
-pkgver=r1456.8f71f29
+pkgver=r1619.b562167
 pkgrel=1
 pkgdesc="Library for processing and uploading geotagged images to Mapillary"
 url="https://github.com/mapillary/mapillary_tools"
@@ -19,6 +19,7 @@ depends=(
   'python-tqdm'
   'python-typing_extensions'
 )
+makedepends=(git python-setuptools)
 provides=(mapillary_tools)
 license=('BSD')
 arch=('any')
