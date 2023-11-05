@@ -2,7 +2,7 @@
 pkgname=vencord-desktop-git
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=r220.b245354
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -46,5 +46,5 @@ package() {
   install -Dm 644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -d "$pkgdir"/usr/bin
-  ln -s /opt/vencord/vencorddesktop "$pkgdir"/usr/bin/vencord
+  ln -s /opt/vencord/vencorddesktop "$pkgdir"/usr/bin/vencord-desktop
 }
