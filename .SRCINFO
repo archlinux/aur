@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-fr
 	pkgdesc = French language pack for Pale Moon browser
-	pkgver = 29.4.0
+	pkgver = 32.5.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-fr-29.4.0.xpi
-	source = palemoon-i18n-fr-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-fr@palemoon.org
-	sha256sums = 523c8079436f462f95d90ede0faa5672d724b06778b43308caec6b3ecb9bd838
+	noextract = palemoon-i18n-fr-32.5.0.xpi
+	source = palemoon-i18n-fr-32.5.0.xpi::https://addons.palemoon.org/?component=download&version=32.5.0&id=langpack-fr@palemoon.org
+	sha256sums = be15d6488989b0f0e31481db4117019b1ab19719932712cfc1a081e15bf2941e
 
 pkgname = palemoon-i18n-fr
