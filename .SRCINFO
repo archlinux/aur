@@ -1,6 +1,6 @@
 pkgbase = fish-fzf
 	pkgdesc = fzf key-bindings into fish
-	pkgver = 10.0
+	pkgver = 10.1
 	pkgrel = 1
 	url = https://github.com/PatrickF1/fzf.fish
 	changelog = fish-fzf.changelog
@@ -13,7 +13,7 @@ pkgbase = fish-fzf
 	optdepends = fd: required for search directory feature
 	optdepends = bat: required for search directory feature
 	optdepends = git
-	source = fish-fzf-10.0.tar.gz::https://github.com/PatrickF1/fzf.fish/archive/v10.0.tar.gz
-	sha256sums = 1d0ec6dee6c0c33bc9736d4bb5e0dda1958e6f1469dbb9514e6e767bd9a280ba
+	source = fish-fzf-10.1.tar.gz::https://github.com/PatrickF1/fzf.fish/archive/v10.1.tar.gz
+	sha256sums = 37c9a98c2dd3db79fe2ebd94ed4e3fe9ee12d0658626870a72772d95810f73e0
 
 pkgname = fish-fzf

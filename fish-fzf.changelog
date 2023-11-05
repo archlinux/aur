@@ -1,3 +1,19 @@
+2023-11-05	fish-fzf 10.1
+
+Breaking change
+
+  Search Directory's and Search Variable's custom fzf opts variables (used to
+  pass fzf options to specific commands) were renamed in v9.5. Now the old,
+  deprecated names have been completely removed (615ce65):
+
+  * Search Directory: if you use fzf_dir_opts, switch to fzf_directory_opts
+  * Search Variables: if you use fzf_shell_vars_opts, switch to fzf_variables_opts
+
+Search History
+
+  Slightly improve performance, add test and comments (82dd51e).
+
+
 2023-08-22	fish-fzf 10.0
 
 [git log][git status] Integrate preview with diff highlighters
