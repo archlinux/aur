@@ -4,13 +4,13 @@
 
 pkgname=streamdeck-ui
 gitname=streamdeck-linux-gui
-pkgver=3.2.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
 url="https://streamdeck-linux-gui.github.io/streamdeck-linux-gui/"
 license=('MIT')
-depends=('python-pillow' 'python-hidapi' 'pyside6' 'python-pynput' 'python-elgato-streamdeck' 'python-xlib' 'python-filetype' 'python-cairosvg' 'python-xcffib')
+depends=('python-pillow' 'python-hidapi' 'pyside6' 'python-pynput' 'python-elgato-streamdeck' 'python-xlib' 'python-filetype' 'python-cairosvg' 'python-xcffib' 'python-importlib-metadata')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
 provides=('streamdeck-ui')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/streamdeck-linux-gui/${gitname}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/streamdeck-linux-gui/${
 # elgato.png
 # streamdeck.service
 
-sha512sums=('5990b5df09a28312551d56c6201110dd276d76bbae09c61c0568cba94a7bf5edf72730572f1375b58dc61017c9ce569b74d5714589d17c60a12f1eb34764f8dd'
+sha512sums=('de48dd8a33483008020e82163c8a0c9c38888f3d8d7d42d2a88b9fddc7ef73efdd55bcee7f2a077e31d0492d933667ab3f61a6beabc068e9ab3111cbe5d262c9'
             '690aa38c549b09c7c49d99e47dea74fc47d778881ce1947d9da37f6d1d94f8745c4724c23a702167e6d714ea9b4fd13a4414eb6945b17728eef9b5319b9a6c0f'
             '310f5c511b8475ef10629d3e00d03c1e8d7281a60b8d7d4d8e59b748ec0d72ea45003df0144435c9e8d28260c7d83e5be629441f833cc5318c8b79d98221e674'
             '1145e8cdebdf950090d0833e40984cd402345d559c9faf8aab89f5ec4db5d5de685b68418faf39288f08e9a642fcf1cc53a719b1b11c8ebfac6dd8b42d4898d2'
