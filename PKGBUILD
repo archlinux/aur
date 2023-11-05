@@ -4,17 +4,17 @@
 # Contributor: Tobias Manske <aur at rad4day dot de>
 
 pkgname=xp-pen-tablet
-pkgver=3.4.6
-pkgrel=230714
+pkgver=3.4.9
+pkgrel=231023
 epoch=0
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
-license=('LGPL3')
+license=('custom')
 source=("XPPenLinux${pkgver}-${pkgrel}.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/1016/ext/gz.html")
 install=${pkgname}.install
 
-sha512sums=('85cd54b938d76e7f3399b1e30265bf94d47fcc0d7e8f44cc1a0f019afef710223a54afd994550f4db60fda6e91caad266419754b1c61632b237a330bbef5ea87')
+sha512sums=('3732abdb444ae6ee0ff585b8fadb750761f194936054c392a3cf0e93f59468acedff79e864f6e751aac2b398e0ba6d951b55048ffe11bcb68c5b690062adf441')
 
 
 package() {
