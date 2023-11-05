@@ -1,18 +1,17 @@
 pkgbase = pypipe-git
 	pkgdesc = Python command-line tool for pipeline processing
-	pkgver = r8.eb7b045
+	pkgver = r27.3da3c10
 	pkgrel = 1
 	url = https://github.com/bugen/pypipe
 	arch = any
 	license = Apache
+	checkdepends = python-pytest
 	makedepends = git
 	depends = python
 	provides = pypipe
 	conflicts = pypipe
 	options = !strip
 	source = pypipe::git+https://github.com/bugen/pypipe.git
-	source = test.csv
 	sha512sums = SKIP
-	sha512sums = 1ec418fd1a274fd2f02e393aa53126c662ff1285479d960d3c953749399898fda8028f4cfa600a9c1e4906f911f496fedd0df39ff42714d651f1fa5ea0caa6dc
 
 pkgname = pypipe-git

@@ -2,7 +2,7 @@
 
 pkgname=pypipe-git
 _gitpkgname=pypipe
-pkgver=r8.eb7b045
+pkgver=r27.3da3c10
 pkgrel=1
 pkgdesc='Python command-line tool for pipeline processing'
 arch=('any')
@@ -10,18 +10,17 @@ url='https://github.com/bugen/pypipe'
 license=('Apache')
 depends=('python')
 makedepends=('git')
+checkdepends=('python-pytest')
 provides=('pypipe')
 conflicts=('pypipe')
 options=('!strip')
 
 source=(
   "${_gitpkgname}::git+https://github.com/bugen/pypipe.git"
-  'test.csv'
 )
 
 sha512sums=(
   'SKIP'
-  '1ec418fd1a274fd2f02e393aa53126c662ff1285479d960d3c953749399898fda8028f4cfa600a9c1e4906f911f496fedd0df39ff42714d651f1fa5ea0caa6dc'
 )
 
 pkgver() {
@@ -32,10 +31,7 @@ pkgver() {
 
 check() {
   cd "${srcdir}/${_gitpkgname}"
-  color="$(
-    python pypipe.py < ../test.csv rec -C -f 'r[0] == "test"' 'r[1]'
-  )"
-  [ "${color}" == 'green' ]
+  python -m pytest -v tests/
 }
 
 package() {
