@@ -1,7 +1,7 @@
 pkgbase = r-vam
 	pkgdesc = Variance-Adjusted Mahalanobis
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=VAM
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = r-vam
 	optdepends = r-sctransform
 	optdepends = r-seurat
 	optdepends = r-seuratobject
-	source = https://cran.r-project.org/src/contrib/VAM_1.0.0.tar.gz
-	sha256sums = 19de5c66034c9ec9ac6d8c8ce216ae951145b66f4b6d482c518935fe49449812
+	source = https://cran.r-project.org/src/contrib/VAM_1.1.0.tar.gz
+	sha256sums = 703649a81d2691179bf1dc03c395d0740b721c4d16dd528d67441039ee9f84da
 
 pkgname = r-vam
