@@ -1,6 +1,6 @@
 # Maintainer: Andrii Zymohliad <azymohliad@pm.me>
 pkgname=watchmate-git
-pkgver=0.4.5.r0.3fb3fa8
+pkgver=0.5.0.r0.7ef2541
 pkgrel=1
 pkgdesc='InfiniTime smart watch companion app'
 arch=('any')
@@ -29,6 +29,7 @@ package() {
     install -Dm 755 target/release/watchmate -t "$pkgdir/usr/bin"
     install -Dm 644 assets/$_appid.desktop -t "$pkgdir/usr/share/applications"
     install -Dm 644 assets/$_appid.metainfo.xml -t "$pkgdir/usr/share/metainfo"
+    install -Dm 644 assets/$_appid.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas"
     install -Dm 644 assets/icons/$_appid.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
     install -Dm 644 assets/icons/$_appid-symbolic.svg -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
 }
