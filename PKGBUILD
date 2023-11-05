@@ -6,9 +6,9 @@ pkgname=(
   'megasync-daemon-git'
   'megasync-cli-git'
   'python-megasync-git'
-  'fuse-megasync-git'
+#   'fuse-megasync-git' # disabled in upstream https://github.com/meganz/sdk/commit/eb3be4b7ca62019d418ed9e77b1c59a6c6c5f40e
 )
-pkgver=4.19.0.73.g615a2eff3
+pkgver=4.29.1b.12.g99da28916
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. (GIT Version)"
 arch=('x86_64')
@@ -57,6 +57,7 @@ pkgver() {
 }
 
 _prepare() {
+  # use system ffmpeg
   sed -e 's|ffmpeg-mega/||g' \
       -e 's|/ffmpeg-mega||g' \
       -i configure.ac
@@ -67,6 +68,7 @@ prepare() {
    cd build
    _prepare
    ./autogen.sh
+
    # fix autogen am__pep3147_tweak fails
    sed -e "/^am__py_compile/aam__pep3147_tweak \= \\\\\n  sed \-e 's\|\\\.py\$\$\|\|' \-e 's\|\[\^\/\]\*\$\$\|__pycache__\/&\.\*\.pyc __pycache__\/&\.\*\.pyo\|'/" \
      -i Makefile.in
@@ -80,6 +82,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --without-freeimage \
+    --with-fuse \
     --enable-python \
     --with-python3
 
@@ -110,22 +113,23 @@ package_libmega-git() {
     )
   conflicts=('libmega')
   depends=(
-    'gcc-libs'
-    'glibc'
-    'crypto++'
-    'libsodium'
-    'libraw'
-    'libuv'
-    'libmediainfo'
-    'libzen'
-    'zlib'
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # ld-linux-x86-64.so libc.so libm.so
+    'crypto++' # libcryptopp.so
+    'libsodium' 'libsodium.so'
+    'libraw' # libraw.so
+    'libuv' # libuv.so
+    'libmediainfo' # libmediainfo.so
+    'libzen' # libzen.so
+    'curl' 'libcurl.so'
     'c-ares' 'libcares.so'
     'openssl' 'libssl.so' 'libcrypto.so'
     'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so'
     'sqlite' 'libsqlite3.so'
     'bzip2' 'libbz2.so'
-    'curl' 'libcurl.so'
+    'zlib' 'libz.so'
     'xz' 'liblzma.so'
+    'icu' 'libicuuc.so'
   )
 
   make -C build DESTDIR="${pkgdir}" install-data install-libLTLIBRARIES install-pkgconfigDATA
@@ -155,8 +159,9 @@ package_megasync-daemon-git() {
   provides=("megasync-daemon=${pkgver}")
   conflicts=('megasync-daemon')
   depends=(
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # ld-linux-x86-64.so libc.so
     "libmega-git=${pkgver}" 'libmega.so'
-    'readline' 'libreadline.so'
   )
   options=('!emptydirs')
   backup=('etc/conf.d/megasync.conf')
@@ -178,6 +183,10 @@ package_megasync-cli-git() {
   provides=("megasync-cli=${pkgver}")
   conflicts=('megasync-cli')
   depends=(
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # ld-linux-x86-64.so libc.so
+    'readline' 'libreadline.so'
+    'crypto++' # libcryptopp.so
     "libmega-git=${pkgver}" 'libmega.so'
   )
 

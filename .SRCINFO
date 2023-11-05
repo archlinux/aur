@@ -1,6 +1,6 @@
 pkgbase = libmega-git
 	pkgdesc = Sync your files to your Mega account. (GIT Version)
-	pkgver = 4.19.0.73.g615a2eff3
+	pkgver = 4.29.1b.12.g99da28916
 	pkgrel = 1
 	url = https://mega.co.nz/#sync
 	arch = x86_64
@@ -42,11 +42,13 @@ pkgname = libmega-git
 	depends = glibc
 	depends = crypto++
 	depends = libsodium
+	depends = libsodium.so
 	depends = libraw
 	depends = libuv
 	depends = libmediainfo
 	depends = libzen
-	depends = zlib
+	depends = curl
+	depends = libcurl.so
 	depends = c-ares
 	depends = libcares.so
 	depends = openssl
@@ -61,44 +63,43 @@ pkgname = libmega-git
 	depends = libsqlite3.so
 	depends = bzip2
 	depends = libbz2.so
-	depends = curl
-	depends = libcurl.so
+	depends = zlib
+	depends = libz.so
 	depends = xz
 	depends = liblzma.so
-	provides = libmega=4.19.0.73.g615a2eff3
+	depends = icu
+	depends = libicuuc.so
+	provides = libmega=4.29.1b.12.g99da28916
 	provides = libmega.so
 	conflicts = libmega
 
 pkgname = megasync-daemon-git
 	pkgdesc = MEGASync daemon client. (GIT Version)
-	depends = libmega-git=4.19.0.73.g615a2eff3
+	depends = gcc-libs
+	depends = glibc
+	depends = libmega-git=4.29.1b.12.g99da28916
 	depends = libmega.so
-	depends = readline
-	depends = libreadline.so
-	provides = megasync-daemon=4.19.0.73.g615a2eff3
+	provides = megasync-daemon=4.29.1b.12.g99da28916
 	conflicts = megasync-daemon
 	options = !emptydirs
 	backup = etc/conf.d/megasync.conf
 
 pkgname = megasync-cli-git
 	pkgdesc = MEGASync CLI client. (GIT Version)
-	depends = libmega-git=4.19.0.73.g615a2eff3
+	depends = gcc-libs
+	depends = glibc
+	depends = readline
+	depends = libreadline.so
+	depends = crypto++
+	depends = libmega-git=4.29.1b.12.g99da28916
 	depends = libmega.so
-	provides = megasync-cli=4.19.0.73.g615a2eff3
+	provides = megasync-cli=4.29.1b.12.g99da28916
 	conflicts = megasync-cli
 
 pkgname = python-megasync-git
 	pkgdesc = Python Bindings for MEGASync. (GIT Version)
-	depends = libmega-git=4.19.0.73.g615a2eff3
+	depends = libmega-git=4.29.1b.12.g99da28916
 	depends = libmega.so
 	depends = python
-	provides = python-megasync=4.19.0.73.g615a2eff3
+	provides = python-megasync=4.29.1b.12.g99da28916
 	conflicts = python-megasync
-
-pkgname = fuse-megasync-git
-	pkgdesc = MEGASync client based on FUSE (GIT Version)
-	depends = libmega-git=4.19.0.73.g615a2eff3
-	depends = libmega.so
-	depends = fuse2
-	provides = fuse-megasync=4.19.0.73.g615a2eff3
-	conflicts = fuse-megasync
