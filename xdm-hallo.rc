@@ -1,7 +1,7 @@
 #!/bin/sh
 
-WIDTH = 1024
-HEIGHT = 768
+WIDTH=1024
+HEIGHT=768
 if [[ -v DISPLAY ]]; then
 	if [[ -e $(type -P xdpyinfo) ]]; then
 		read WIDTH HEIGHT <<< $(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3, $4}')
