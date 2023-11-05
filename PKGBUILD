@@ -3,24 +3,51 @@
 # Contributor: Haskellfant <moritz.kiefer@purelyfunctional.org
 
 _pkgname=zam-plugins
-pkgname="${_pkgname}-git"
-pkgver=3.14.r0.ge7077fc
-pkgrel=2
-pkgdesc="Collection of LADSPA/LV2/VST/JACK audio plugins for high-quality processing (git version)"
-arch=('x86_64')
-url="https://github.com/zamaudio/zam-plugins"
-license=('GPL2')
-groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio' 'vst-plugins')
-depends=('gcc-libs' 'glibc' 'libglvnd' 'libx11')
-makedepends=('gendesk' 'git' 'ladspa' 'libsamplerate' 'jack' 'lv2' 'zita-convolver')
-optdepends=('jack: for standalone applications')
-provides=("${_pkgname}" "${_pkgname}=${pkgver/.r*/}")
-conflicts=("${_pkgname}" 'zamplugins')
-source=("${_pkgname}::git+https://github.com/zamaudio/${_pkgname}.git"
-        'git+https://github.com/DISTRHO/DPF.git'
+pkgname=$_pkgname-git
+pkgver=4.2.r0.g19307a5
+pkgrel=1
+pkgdesc='Collection of LADSPA/LV2/VST/JACK audio plugins for high-quality processing (git version)'
+arch=(x86_64)
+url='https://github.com/zamaudio/zam-plugins'
+license=(GPL2)
+groups=(clap-plugins ladspa-plugins lv2-plugins pro-audio vst-plugins vst3-plugins)
+depends=(gcc-libs glibc libglvnd libx11 libxcursor libxext libxrandr)
+makedepends=(alsa-lib dbus gendesk git ladspa libsamplerate jack lv2 zita-convolver)
+optdepends=(
+  'clap-host: to load the CLAP format plugins'
+  'jack: to run the standalone applications'
+  'ladspa-host: to load the LADSPA format plugins'
+  'lv2-host: to load the LV2 format plugins'
+  'vst-host: to load the VST2 format plugins'
+  'vst3-host: to load the VST3 format plugins'
+)
+provides=(
+  $_pkgname
+  $_pkgname-clap
+  $_pkgname-ladspa
+  $_pkgname-lv2
+  $_pkgname-standalone
+  $_pkgname-vst
+  $_pkgname-vst3
+)
+conflicts=(
+  $_pkgname
+  zamplugins
+  $_pkgname
+  $_pkgname-clap
+  $_pkgname-ladspa
+  $_pkgname-lv2
+  $_pkgname-standalone
+  $_pkgname-vst
+  $_pkgname-vst3
+)
+source=("$_pkgname::git+https://github.com/zamaudio/$_pkgname.git"
+        'dpf::git+https://github.com/DISTRHO/DPF.git'
+        'pugl::git+https://github.com/DISTRHO/pugl.git'
         'zam-plugins.directory'
         'zam-plugins.menu')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          '99e66b26922172cd212914230a557108'
          '5be3eb16b1d91ae653af25c8dcddd70f')
@@ -30,19 +57,22 @@ _names=('zamaximx2' 'zamulticomp' 'zammulticompx2' 'zamautosat' 'zamcomp'
         'zamgatex2' 'zamgrains' 'zamheadx2' 'zamphono' 'zamtube' 'zamverb')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
   git submodule init
-  git config submodule.dpf.url "${srcdir}/DPF"
-  git submodule update
+  git submodule set-url dpf "$srcdir"/dpf
+  git -c protocol.file.allow=always submodule update
 
-  # use system zita-convolver
-  sed -e 's|\"../../lib/zita-convolver-3.1.0/zita-convolver.h\"|<zita-convolver.h>|' \
-    -i plugins/Zam{Verb,HeadX2}/convolution.{cpp,hpp}
+  cd dpf
+  git submodule init
+  git submodule set-url dgl/src/pugl-upstream "$srcdir"/pugl
+  git -c protocol.file.allow=always submodule update
+
+  cd ..
 
   declare -A exec_names=(
     ["zamaximx2"]="ZaMaximX2"
@@ -103,8 +133,8 @@ prepare() {
   )
   for name in "${_names[@]}"; do
     gendesk -f -n \
-      --pkgname "com.zamaudio.${name}" \
-      --name "${name}" \
+      --pkgname "com.zamaudio.$name" \
+      --name "$name" \
       --exec "${exec_names[$name]}" \
       --pkgdesc "${comments[$name]}" \
       --genericname "${generic[$name]}"
@@ -112,22 +142,23 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
   export HAVE_ZITA_CONVOLVER=true
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  depends+=('libsamplerate.so' 'libzita-convolver.so')
-  make DESTDIR="$pkgdir/" PREFIX='/usr' install
+  depends+=(libasound.so libdbus-1.so libGL.so libsamplerate.so libzita-convolver.so)
+  cd $_pkgname
+  make DESTDIR="$pkgdir" PREFIX=/usr install
   # XDG desktop integration
-  install -vDm 644 *.desktop -t "${pkgdir}/usr/share/applications"
-  install -vDm 644 "${srcdir}/${_pkgname}.menu" \
-    -t "${pkgdir}/etc/xdg/menus/applications-merged/"
-  install -vDm 644 "${srcdir}/${_pkgname}.directory" \
-    -t "${pkgdir}/usr/share/desktop-directories/"
+  install -vDm 644 *.desktop \
+    -t "$pkgdir"/usr/share/applications
+  install -vDm 644 "$srcdir"/$_pkgname.menu \
+    -t "$pkgdir"/etc/xdg/menus/applications-merged/
+  install -vDm 644 "$srcdir"/$_pkgname.directory \
+    -t "$pkgdir"/usr/share/desktop-directories
   # docs
-  install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
-    -vDm644 {README.md,changelog}
+  install -vDm644 README.md changelog \
+    -t "$pkgdir"/usr/share/doc/$pkgname
 }
