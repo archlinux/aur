@@ -2,7 +2,7 @@
 
 _name=PyMCTranslate
 pkgname=python-${_name,,}
-pkgver=1.2.19
+pkgver=1.2.20
 pkgrel=1
 pkgdesc='A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-amulet-nbt' 'python-numpy')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
 # tests directory isn't in pypi sdist
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0af3a2f074206c0f59e9cee1170add13a937d524314bd36614dd1980ff65bf6e')
+sha256sums=('1cce0302da7774f53890b3fc69acc551aded499d8128b790fe56d3c825dd561d')
 
 prepare() {
   cd "$_name-$pkgver"
