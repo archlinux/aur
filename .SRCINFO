@@ -1,0 +1,17 @@
+pkgbase = league-dashboard-git
+	pkgdesc = A browser dashboard for League of Legends where you can track gold differences of your current game.
+	pkgver = r40.d7b53d9
+	pkgrel = 1
+	url = https://github.com/waaynee/LeagueDashboard
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = python-flask
+	depends = python-matplotlib
+	depends = python-requests
+	depends = python-waitress
+	provides = league-dashboard
+	source = git+https://github.com/waaynee/LeagueDashboard.git
+	md5sums = SKIP
+
+pkgname = league-dashboard-git
