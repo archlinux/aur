@@ -10,17 +10,17 @@ arch=('x86_64' 'armv6h')
 url="https://github.com/linux-can/can-utils"
 license=('GPL2')
 conflicts=("can-utils-git")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2790dfb57fe3ec22b6fd512838c6480c39f7c9ae193e59f1ae01221216505a7e')
+source=("git+https://github.com/linux-can/can-utils.git#commit=cfe41963f3425e9adb01a70cfaddedf5e5982720")
+sha256sums=('SKIP')
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd can-utils
     ./autogen.sh
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd can-utils
     make DESTDIR="$pkgdir/" install
 }

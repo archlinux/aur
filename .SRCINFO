@@ -7,7 +7,7 @@ pkgbase = can-utils
 	arch = armv6h
 	license = GPL2
 	conflicts = can-utils-git
-	source = can-utils-2023.03.tar.gz::https://github.com/linux-can/can-utils/archive/v2023.03.tar.gz
-	sha256sums = 2790dfb57fe3ec22b6fd512838c6480c39f7c9ae193e59f1ae01221216505a7e
+	source = git+https://github.com/linux-can/can-utils.git#commit=cfe41963f3425e9adb01a70cfaddedf5e5982720
+	sha256sums = SKIP
 
 pkgname = can-utils
