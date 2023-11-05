@@ -1,0 +1,14 @@
+pkgbase = mdns-reflector-git
+	pkgdesc = A lightweight and performant multicast DNS (mDNS) reflector with a modern design.
+	pkgver = v0.0.1.dev.1.r13.g4b4cd3b
+	pkgrel = 1
+	url = https://github.com/vfreex/mdns-reflector
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	backup = etc/mdns-reflector/mdns-reflector.conf
+	source = git+https://github.com/vfreex/mdns-reflector
+	sha256sums = SKIP
+
+pkgname = mdns-reflector-git
