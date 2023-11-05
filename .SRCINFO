@@ -1,5 +1,5 @@
 pkgbase = l-smash-git
-	pkgver = 2.18.0.6.g9ce0ae2
+	pkgver = 2.18.0.10.g2c0696c
 	pkgrel = 1
 	url = http://l-smash.github.io/l-smash
 	arch = x86_64
@@ -13,16 +13,18 @@ pkgbase = l-smash-git
 
 pkgname = l-smash-git
 	pkgdesc = MP4 muxer and other tools. (GIT Version)
+	depends = obuparse-git
 	depends = libobuparse.so
 	provides = l-smash
 	provides = liblsmash.so
-	provides = l-smash=2.18.0.6.g9ce0ae2
+	provides = l-smash=2.18.0.10.g2c0696c
 	conflicts = l-smash
 
 pkgname = lib32-l-smash-git
 	pkgdesc = MP4 muxer and other tools. (GIT Version) (32-bits)
+	depends = lib32-obuparse-git
 	depends = libobuparse.so
-	depends = l-smash=2.18.0.6.g9ce0ae2
+	depends = l-smash=2.18.0.10.g2c0696c
 	provides = lib32-l-smash
 	provides = liblsmash.so
 	conflicts = lib32-l-smash

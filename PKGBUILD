@@ -1,18 +1,20 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=l-smash-git
-pkgname=('l-smash-git'
-         'lib32-l-smash-git'
-         )
-pkgver=2.18.0.6.g9ce0ae2
+pkgname=(
+  'l-smash-git'
+  'lib32-l-smash-git'
+)
+pkgver=2.18.0.10.g2c0696c
 pkgrel=1
 arch=('x86_64')
 url='http://l-smash.github.io/l-smash'
 license=('custom:l-smash')
-makedepends=('obuparse-git'
-             'lib32-obuparse-git'
-             'git'
-             )
+makedepends=(
+  'obuparse-git'
+  'lib32-obuparse-git'
+  'git'
+)
 source=('git+https://github.com/vimeo/l-smash.git')
 sha256sums=('SKIP')
 options=('debug')
@@ -53,11 +55,14 @@ build() {
 
 package_l-smash-git() {
   pkgdesc='MP4 muxer and other tools. (GIT Version)'
-  depends=('libobuparse.so')
-  provides=('l-smash'
-            'liblsmash.so'
-            "l-smash=${pkgver}"
-            )
+  depends=(
+    'obuparse-git' 'libobuparse.so'
+  )
+  provides=(
+    'l-smash'
+    'liblsmash.so'
+    "l-smash=${pkgver}"
+  )
   conflicts=('l-smash')
 
   make -C build64 DESTDIR="${pkgdir}" install
@@ -67,12 +72,14 @@ package_l-smash-git() {
 
 package_lib32-l-smash-git() {
   pkgdesc='MP4 muxer and other tools. (GIT Version) (32-bits)'
-  depends=('libobuparse.so'
-           "l-smash=${pkgver}"
-           )
-  provides=('lib32-l-smash'
-            'liblsmash.so'
-            )
+  depends=(
+    'lib32-obuparse-git' 'libobuparse.so'
+    "l-smash=${pkgver}"
+  )
+  provides=(
+    'lib32-l-smash'
+    'liblsmash.so'
+  )
   conflicts=('lib32-l-smash')
 
   make -C build32 DESTDIR="${pkgdir}" install-lib
