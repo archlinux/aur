@@ -1,0 +1,25 @@
+pkgbase = magma-server-1.19
+	pkgdesc = Magma is the next generation of hybrid minecraft server softwares
+	pkgver = 44.1.23
+	pkgrel = 1
+	url = https://magmafoundation.org/
+	install = magma-server-1.19.install
+	arch = any
+	license = custom
+	makedepends = gettext
+	depends = java-runtime-headless>=16
+	depends = tmux
+	depends = sudo
+	depends = bash
+	depends = awk
+	depends = sed
+	optdepends = tar: needed in order to create world backups
+	optdepends = netcat: required in order to suspend an idle server
+	noextract = magma-server-1.19-44.1.23-3a0ff713.jar
+	backup = etc/conf.d/magma-1.19
+	source = magma-server-1.19-44.1.23-3a0ff713.jar::https://git.magmafoundation.org/api/v4/projects/103/packages/maven/org/magmafoundation/Magma/1.19.3-44.1.23-3a0ff713/Magma-1.19.3-44.1.23-3a0ff713-server.jar
+	source = minecraft-server-1.0.2.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.2.tar.gz
+	sha512sums = 6d0d4e0461243a6862ca19123f62b5058157f318d74a6971c5c6e9bff2837cb84d2fc4a6d8d513163e5742a4df74ef498ed48454ae837fb2eb8ecc571280af9d
+	sha512sums = 11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6
+
+pkgname = magma-server-1.19
