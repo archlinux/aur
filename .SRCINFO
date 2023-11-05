@@ -1,0 +1,16 @@
+pkgbase = shutu_client-bin
+	pkgdesc = A new generation of 'AI intelligence' mind map
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://shutu.cn/
+	arch = x86_64
+	license = unknown
+	depends = nss
+	depends = gtk3
+	depends = alsa-lib
+	provides = shutu_client
+	conflicts = shutu_client
+	source_x86_64 = https://static.shutu.cn/client/download/ShuTu-Linux-1.0.7.deb
+	sha256sums_x86_64 = 923bd86ab825a23aa31e0b8aaf04f56a3fd427c23f8f78a6fe31b9cf1eae30f3
+
+pkgname = shutu_client-bin
