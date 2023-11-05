@@ -1,7 +1,7 @@
 pkgbase = ffmpeg2.8
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 2.8.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = GPL3
@@ -62,10 +62,12 @@ pkgbase = ffmpeg2.8
 	options = !lto
 	source = https://ffmpeg.org/releases/ffmpeg-2.8.21.tar.xz
 	source = https://ffmpeg.org/releases/ffmpeg-2.8.21.tar.xz.asc
+	source = mathops_shift.patch::https://github.com/FFmpeg/FFmpeg/commit/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch
 	source = ffmpeg2.8.conf
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
 	sha256sums = e5d956c19bff2aa5bdd60744509c9d8eb01330713d52674a7f650d54b570c82d
 	sha256sums = SKIP
+	sha256sums = 8fad5f253bcda7a17523dbfcbfcfd60b3db23783dcdb65998005cddc7c7776c3
 	sha256sums = f0d34b08843e3cba6276e234f1fc4e520e3a7c45d2b4450393a1a5dd9da49247
 
 pkgname = ffmpeg2.8
