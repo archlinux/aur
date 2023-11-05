@@ -1,0 +1,11 @@
+diff --unified --recursive --text a/src/core/mimedatabase.h b/src/core/mimedatabase.h
+--- a/src/core/mimedatabase.h	2023-06-06 12:14:35.000000000 -0600
++++ b/src/core/mimedatabase.h	2023-11-05 08:45:40.093852441 -0700
+@@ -20,6 +20,7 @@
+ 
+ #include <QtCore/QString>
+ #include <QtCore/QStringList>
++#include <QtCore/QUrl>
+ #include <QtGui/QPixmap>
+ 
+ constexpr int default_icon_size = 32;

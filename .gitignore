@@ -6,4 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !downzemall.desktop
-!add-missing-include
+!add-missing-include.patch
