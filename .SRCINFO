@@ -1,0 +1,14 @@
+pkgbase = audiveris-doc
+	pkgdesc = Music score OMR engine docs
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://github.com/Audiveris/audiveris
+	arch = any
+	license = AGPL3
+	makedepends = java-environment>=17
+	makedepends = gradle
+	depends = audiveris
+	source = audiveris-doc-5.3.1.tar.gz::https://github.com/Audiveris/audiveris/archive/5.3.1.tar.gz
+	sha256sums = b81ef95ea87cfb73ff718ff3a33acddc4a275f94d1d25134bdc43b813d28d6d6
+
+pkgname = audiveris-doc
