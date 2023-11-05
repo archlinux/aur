@@ -1,8 +1,8 @@
 pkgbase = metronome-git
 	pkgdesc = Metronome IM XMPP Server Development
-	pkgver = 3.13.0
+	pkgver = 4.0.3.r0.gc05ffc4
 	pkgrel = 1
-	url = https://metronome.im/
+	url = https://github.com/maranda/metronome
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,8 @@ pkgbase = metronome-git
 	depends = openssl
 	depends = libevent
 	optdepends = lua52-zlib: compression support
+	provides = metronome=4.0.3
+	conflicts = metronome
 	backup = etc/metronome/metronome.cfg.lua
 	source = metronome::git+https://github.com/maranda/metronome.git
 	source = metronome.service
@@ -29,4 +31,3 @@ pkgbase = metronome-git
 	sha256sums = 378ca207ffc02824282de9c477f945c4cb9cabc41b73a39eeeb136e7e9178a36
 
 pkgname = metronome-git
-
