@@ -17,7 +17,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c libjxl xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
-             openssl pcre2 libpng podofo-0.9 poppler postgresql-libs qhull
+             openssl pcre2 libpng podofo poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libkml-git)
 # armadillo brunsli lerc libkml rasterlite2 sfcgal tiledb
 # ogdi
@@ -25,10 +25,9 @@ changelog=gdal.changelog
 source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz)
 b2sums=('743ce2d8027fb228630a2951af2de8ac7fb5fa0b32124d58fb545ac61fdf5240f17ae85cfdcab51ea5e1b4e2311b55af4c7bbdfe82c6ed5ea180a5c8b254ccfd')
 
-prepare() {
-  # Fix build with podofo-0.9
-  sed -e 's|podofo.h|podofo/podofo.h|' -i gdal-$pkgver/frmts/pdf/pdfsdk_headers.h
-}
+# prepare() {
+# 
+# }
 
 build() {
   cmake -B build -S gdal-$pkgver \
@@ -77,8 +76,6 @@ build() {
     -DGDAL_USE_XERCESC=ON \
     -DGDAL_USE_ZLIB=ON \
     -DGDAL_USE_ZSTD=ON \
-    -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
-    -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
     -DGDAL_USE_LIBKML=ON \
     -DGDAL_USE_FILEGDB=OFF \
     -DOGR_ENABLE_DRIVER_FILEGDB=OFF
@@ -100,7 +97,7 @@ package_gdal-libkml () {
               'netcdf: netCDF support'
               'openexr: EXR support'
               'openjpeg2: JP2 support'
-              'podofo-0.9: PDF support'
+              'podofo: PDF support'
               'poppler: PDF support'
               'postgresql-libs: PostgreSQL support'
               'libwebp: WebP support')
