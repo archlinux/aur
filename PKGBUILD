@@ -1,4 +1,4 @@
-# Maintainer: irmluity <irmluity@proton.me>
+# Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 _pkgname=wox
 pkgname=$_pkgname-git
@@ -11,6 +11,7 @@ license=('MIT')
 depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 'ayatana-ido' 'at-spi2-core' 'glib2' 'cairo' 'harfbuzz' 'gdk-pixbuf2' 'libayatana-appindicator' 'zlib' 'gtk3' 'libdbusmenu-glib')
 makedepends=('git' 'go' 'just' 'nodejs' 'pnpm' 'python' 'cargo' 'libsoup')
 provides=("wox")
+conflicts=('wox-bin' 'wox')
 options=(!strip)
 source=(
     "git+https://github.com/Wox-launcher/Wox.git"
@@ -39,5 +40,5 @@ build() {
 package() {
     install -Dm755 "${srcdir}/Wox/Release/wox-linux-amd64" "${pkgdir}/usr/bin/${_pkgname}"
     
-    install -D -m644 "${srcdir}/Wox/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/Wox/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
