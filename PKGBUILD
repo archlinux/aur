@@ -13,8 +13,19 @@ depends=(gcc-libs
          kcmutils
          kconfig
          kcoreaddons
+         kdbusaddons
+         kglobalaccel
          ki18n
-         plasma-framework
+         kio
+         knotifications
+         kservice
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libwacom
+         libxcb
+         libxi
+         plasma-framework # QML
          plasma5support
          qt6-base
          xf86-input-wacom)
