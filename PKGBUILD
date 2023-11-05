@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=i3-agenda
-pkgver=1.6.3
+pkgver=1.8
 pkgrel=1
 pkgdesc="Show your next google calendar event in polybar or i3-bar"
 arch=('any')
@@ -13,8 +13,9 @@ depends=("python-bidi"
 	"python-google-auth-httplib2"
 	"python-google-auth-oauthlib"
 	"python-aiohttp"
+	"python-typing_extensions"
 )
-makedepends=("python-setuptools")
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
@@ -26,16 +27,16 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('3cf1ce9b79d4b2f6845ba4a18668ced52b71c39b66f6145d2ca15dc59a9a538e')
+sha256sums=('5084d9c47def08b6dd2d1490984ae028ec96c06079daaab2890814ec5ddc2066')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 
-	python setup.py build
+	python -m build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
