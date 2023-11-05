@@ -1,6 +1,6 @@
 pkgbase = vvv-bin
 	pkgdesc = VVV (Virtual Volumes View) is an application that catalogs the content of removable volumes like CD and DVD disks for off-line searching
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://vvvapp.sourceforge.net/
 	arch = x86_64
@@ -10,15 +10,15 @@ pkgbase = vvv-bin
 	depends = glib2
 	depends = libsm
 	depends = hicolor-icon-theme
-	source = https://downloads.sourceforge.net/vvvapp/VVV-1.4.0-x86_64.tar.gz
+	source = https://downloads.sourceforge.net/vvvapp/VVV-1.5.0-x86_64.tar.gz
 	source = vvv.sh
 	source = vvv-16.png
 	source = vvv-32.png
 	source = vvv-48.png
 	source = vvv-256.png
 	source = vvv.desktop
-	sha256sums = 3b7e5e6f750e19ac2a687edef3f200494979a18bed37f8cfb537c602a1a5561c
-	sha256sums = 42b9389769e50a42ff66433a19fc9ab87b231bf5b5ca3ed2c73f0e4277106048
+	sha256sums = 18108c18343896aa84cd02b61b5502ce6acf59786ec25d56565d9bacb8326cf2
+	sha256sums = 0e76f77622492ca364155ff1a8c946b838fe450f6ba1d2295e644b5a974c1455
 	sha256sums = db9b262a273f7ab2f890500b81ee463614937a175d87329706225a10fb6c24b6
 	sha256sums = 401b08ddc2b605d6279785693f0b44c28b1e56132c35e9e6b6ff20446e9213f1
 	sha256sums = 869ac17bd44dcac179846974f8e56d700c90cb949d1189c990cdb37aee247d07
@@ -26,4 +26,3 @@ pkgbase = vvv-bin
 	sha256sums = 5596743f0c4340ebba91713777a7b056ef78eb155bef46513dbbf45de5f13fb2
 
 pkgname = vvv-bin
-

@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 pkgname=vvv-bin
 _pkgname=vvv
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="VVV (Virtual Volumes View) is an application that catalogs the content of removable volumes like CD and DVD disks for off-line searching"
 url="http://vvvapp.sourceforge.net/"
@@ -16,8 +16,8 @@ source=("https://downloads.sourceforge.net/vvvapp/VVV-${pkgver}-${CARCH}.tar.gz"
         "${_pkgname}-48.png"
         "${_pkgname}-256.png"
         "${_pkgname}.desktop")
-sha256sums=('3b7e5e6f750e19ac2a687edef3f200494979a18bed37f8cfb537c602a1a5561c'
-            '42b9389769e50a42ff66433a19fc9ab87b231bf5b5ca3ed2c73f0e4277106048'
+sha256sums=('18108c18343896aa84cd02b61b5502ce6acf59786ec25d56565d9bacb8326cf2'
+            '7e6ef66f99b2b0d52d144127e8e6ec76dc90436a1ca80e89b48eac4cb8105afd'
             'db9b262a273f7ab2f890500b81ee463614937a175d87329706225a10fb6c24b6'
             '401b08ddc2b605d6279785693f0b44c28b1e56132c35e9e6b6ff20446e9213f1'
             '869ac17bd44dcac179846974f8e56d700c90cb949d1189c990cdb37aee247d07'
@@ -31,8 +31,7 @@ prepare() {
   chrpath --delete "firebird/bin/gbak"
   chrpath --delete "firebird/bin/isql"
   chrpath --delete "firebird/intl/fbintl"
-  chrpath --delete "firebird/bin/fb_lock_mgr"
-  chrpath --delete "firebird/libfbembed.so.2.0.7"
+  chrpath --delete "firebird/libfbembed.so.2.1.7"
 }
 
 package() {
@@ -57,23 +56,28 @@ package() {
   cd ../firebird
   install -m 755 -d "${pkgdir}/usr/lib/${_pkgname}/firebird"
   install -m 644 -t "${pkgdir}/usr/lib/${_pkgname}/firebird" \
-                    firebird.msg security2.fdb
+                    firebird.msg \
+                    security2.fdb
   install -m 755 -t "${pkgdir}/usr/lib/${_pkgname}/firebird" \
-                    libfbembed.so.2.0.7 \
+                    libfbembed.so.2.1.7 \
+                    libib_util.so \
                     libicuuc.so.30.0 \
                     libicudata.so.30.0 \
                     libicui18n.so.30.0
   cd bin
   install -m 755 -d "${pkgdir}/usr/lib/${_pkgname}/firebird/bin"
   install -m 755 -t "${pkgdir}/usr/lib/${_pkgname}/firebird/bin" \
-                    fb_lock_mgr gbak isql
+                    fb_lock_mgr \
+                    gbak \
+                    isql
   cd ../intl
   install -m 755 -d "${pkgdir}/usr/lib/${_pkgname}/firebird/intl"
   install -m 755 -t "${pkgdir}/usr/lib/${_pkgname}/firebird/intl" fbintl
   install -m 644 -t "${pkgdir}/usr/lib/${_pkgname}/firebird/intl" fbintl.conf
   cd "${pkgdir}/usr/lib/${_pkgname}/firebird"
-  ln -s libfbembed.so.2.0.7 libfbembed.so.2
-  ln -s libfbembed.so.2 libfbembed.so
+  ln -s libfbembed.so.2.1.7 libfbembed.so.2.1
+  ln -s libfbembed.so.2.1.7 libfbembed.so.2
+  ln -s libfbembed.so.2.1.7 libfbembed.so
   ln -s libicudata.so.30.0 libicudata.so.30
   ln -s libicudata.so.30.0 libicudata.so
   ln -s libicui18n.so.30.0 libicui18n.so.30
