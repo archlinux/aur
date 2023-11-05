@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-id
 	pkgdesc = Indonesian language pack for Pale Moon browser
-	pkgver = 29.4.0
+	pkgver = 32.5.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-id-29.4.0.xpi
-	source = palemoon-i18n-id-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-id@palemoon.org
-	sha256sums = abd310456f053bb351ec38b5f469bc97dc20c9c0f34cb3a0404cf70ea99f62d3
+	noextract = palemoon-i18n-id-32.5.0.xpi
+	source = palemoon-i18n-id-32.5.0.xpi::https://addons.palemoon.org/?component=download&version=32.5.0&id=langpack-id@palemoon.org
+	sha256sums = 333c985d7629e3c7b133c3717e9ac6d585023bebc40f84725fb25e58b7be8bd2
 
 pkgname = palemoon-i18n-id
