@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=Gambas 3 git
+Exec=gambasgit gambas3
+GenericName=Gambas 3 IDE
+GenericName[fr]=EDI Gambas 3
+GenericName[ru]=Gambas 3 IDE(ИСР)
+Comment=Gambas3 Integrated Development Environment
+Comment[fr]=Environnement de développement intégré Gambas 3
+Comment[ru]=Gambas 3 IDE(ИСР) - альтернатива для Visual Basic
+Icon=gambas3-git
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true
+Actions=QT5;GTK3
+
+[Desktop Action QT5]
+Name=Run with QT 5
+Name[fr]=Exécuter avec QT 5
+Exec=env GB_GUI=gb.qt5 gambasgit gambas3
+
+[Desktop Action GTK3]
+Name=Run with GTK+ 3
+Name[fr]=Exécuter avec GTK+ 3
+Exec=env GB_GUI=gb.gtk3 gambasgit gambas3

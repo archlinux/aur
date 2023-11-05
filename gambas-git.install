@@ -1,0 +1,9 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo "** Warning: this package is only for testing purposes ***"
+  echo "gambasgit tool can be use to execute your stable gambas3 code"
+  echo "eg: gambasgit mycoolcode.gambas"
+}

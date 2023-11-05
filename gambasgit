@@ -1,0 +1,9 @@
+#!/bin/sh
+
+GBROOT=/usr/share/gambas-git
+
+export PATH=${GBROOT}/bin/:${PATH}
+export GB_PATH=${GBROOT}/bin/gbr3
+export MANPATH=/usr/share/gambas-git/share/man:${MANPATH}
+
+exec "$@"
