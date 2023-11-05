@@ -21,7 +21,7 @@ conflicts=("vencord")
 source=("$pkgname::git+$url.git" "vencord-desktop.desktop")
 
 sha256sums=('SKIP'
-            'cd4d39fb009bfee33709c26c010a8fe70a76ee3c00006e822da2fec692a165d5')
+            'eb606c9532a79519f6e72b5a1bec2776c47e13321e3fd986ab57edaa9cb7773a')
 
 pkgver() {
   cd "$pkgname"

@@ -15,6 +15,6 @@ pkgbase = vencord-desktop-git
 	source = vencord-desktop-git::git+https://github.com/Vencord/Vesktop.git
 	source = vencord-desktop.desktop
 	sha256sums = SKIP
-	sha256sums = cd4d39fb009bfee33709c26c010a8fe70a76ee3c00006e822da2fec692a165d5
+	sha256sums = eb606c9532a79519f6e72b5a1bec2776c47e13321e3fd986ab57edaa9cb7773a
 
 pkgname = vencord-desktop-git
