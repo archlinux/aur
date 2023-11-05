@@ -6,15 +6,14 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-poppler
 pkgver=23.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF rendering library based on xpdf 3.0 (mingw-w64)"
 arch=('any')
 url="https://poppler.freedesktop.org"
 license=('GPL')
 depends=('mingw-w64-openjpeg2'
          'mingw-w64-cairo')
-optdepends=('mingw-w64-glib2: libpoppler-glib'
-            'mingw-w64-qt5-base: libpoppler-qt5')
+optdepends=('mingw-w64-glib2: libpoppler-glib')
 makedepends=('mingw-w64-cmake'
              'mingw-w64-glib2'
              'mingw-w64-icu'
@@ -42,6 +41,8 @@ build() {
       -DENABLE_BOOST=OFF \
       -DENABLE_NSS3=OFF \
       -DENABLE_GPGME=OFF \
+      -DENABLE_QT5=OFF \
+      -DENABLE_QT6=OFF \
       -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
       ..
     make

@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-poppler
 	pkgdesc = PDF rendering library based on xpdf 3.0 (mingw-w64)
 	pkgver = 23.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://poppler.freedesktop.org
 	arch = any
 	license = GPL
@@ -13,7 +13,6 @@ pkgbase = mingw-w64-poppler
 	depends = mingw-w64-openjpeg2
 	depends = mingw-w64-cairo
 	optdepends = mingw-w64-glib2: libpoppler-glib
-	optdepends = mingw-w64-qt5-base: libpoppler-qt5
 	options = !strip
 	options = staticlibs
 	options = !buildflags
