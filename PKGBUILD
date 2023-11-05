@@ -1,0 +1,80 @@
+pkgname='kf5-transition-dummy'
+pkgver=5.999.0
+pkgrel=1
+pkgdesc="dummy package to track kf5-package renames"
+arch=('any')
+
+provides=(
+  #bluez-qt
+  #modemmanager-qt
+  #networkmanager-qt
+  attica=5.999
+  baloo=5.999
+  frameworkintegration=5.999
+  kactivities-stats=5.999
+  kactivities=5.999
+  karchive=5.999
+  kauth=5.999
+  kbookmarks=5.999
+  kcalendarcore=5.999
+  kcmutils=5.999
+  kcodecs=5.999
+  kcompletion=5.999
+  kconfig=5.999
+  kconfigwidgets=5.999
+  kcontacts=5.999
+  kcoreaddons=5.999
+  kcrash=5.999
+  kdav=5.999
+  kdbusaddons=5.999
+  kdeclarative=5.999
+  kded=5.999
+  kdesu=5.999
+  kdnssd=5.999
+  kdoctools=5.999
+  kfilemetadata=5.999
+  kglobalaccel=5.999
+  kguiaddons=5.999
+  kholidays=5.999
+  ki18n=5.999
+  kiconthemes=5.999
+  kidletime=5.999
+  kimageformats=5.999
+  kio=5.999
+  kirigami-addons=5.999
+  kitemmodels=5.999
+  kitemviews=5.999
+  kjobwidgets=5.999
+  knewstuff=5.999
+  knotifications=5.999
+  knotifyconfig=5.999
+  kpackage=5.999
+  kparts=5.999
+  kpeople=5.999
+  kplotting=5.999
+  kpty=5.999
+  kquickcharts=5.999
+  krunner=5.999
+  kservice=5.999
+  ktexteditor=5.999
+  ktextwidgets=5.999
+  kunitconversion=5.999
+  kwallet=5.999
+  kwayland=5.999
+  kwidgetsaddons=5.999
+  kwindowsystem=5.999
+  kxmlgui=5.999
+  plasma-framework=5.999
+  prison=5.999
+  purpose=5.999
+  qqc2-desktop-style=5.999
+  solid=5.999
+  sonnet=5.999
+  syndication=5.999
+  syntax-highlighting=5.999
+  threadweaver=5.999
+)
+
+package() {
+  :
+}
