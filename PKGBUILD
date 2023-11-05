@@ -4,10 +4,10 @@ _pkgname=copynumber
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=1.38.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Segmentation of single- and multi-track copy number data by penalized least squares regression.'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -16,7 +16,7 @@ depends=(
   r-iranges
   r-s4vectors
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('29c4dc24de32a14f394da46154eda63e479c429201b4cbca5a376145e922c6a8')
 
 build() {

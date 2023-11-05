@@ -1,8 +1,8 @@
 pkgbase = r-copynumber
 	pkgdesc = Segmentation of single- and multi-track copy number data by penalized least squares regression.
 	pkgver = 1.38.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/copynumber
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.16/copynumber
 	arch = any
 	license = Artistic2.0
 	depends = r
@@ -10,7 +10,7 @@ pkgbase = r-copynumber
 	depends = r-genomicranges
 	depends = r-iranges
 	depends = r-s4vectors
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/copynumber_1.38.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/copynumber_1.38.0.tar.gz
 	sha256sums = 29c4dc24de32a14f394da46154eda63e479c429201b4cbca5a376145e922c6a8
 
 pkgname = r-copynumber
