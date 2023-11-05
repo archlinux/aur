@@ -1,9 +1,11 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 #
 # Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=python-powerline-taskwarrior
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerline segment for showing information from Taskwarrior task manager"
 url="https://github.com/Zebradil/powerline-taskwarrior"
 arch=(any)
