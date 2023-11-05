@@ -1,14 +1,17 @@
 pkgbase = typst-git
-	pkgdesc = A new markup-based typesetting system that is powerful and easy to learn.
-	pkgver = r1621.4428646c
+	pkgdesc = A new markup-based typesetting system that is powerful and easy to learn (Latest GitHub version).
+	pkgver = 0.9.0.r8.g8fd54676
 	pkgrel = 1
 	url = https://github.com/typst/typst
-	arch = any
-	license = Apache-2.0
+	arch = x86_64
+	license = Apache
 	makedepends = git
 	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
 	provides = typst
-	source = typst::git+https://github.com/typst/typst
+	conflicts = typst
+	source = typst::git+https://github.com/typst/typst.git
 	md5sums = SKIP
 
 pkgname = typst-git
