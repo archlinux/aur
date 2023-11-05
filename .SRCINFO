@@ -9,11 +9,11 @@ pkgbase = python2-pyusb
 	makedepends = python2-setuptools-scm
 	depends = python2
 	depends = libusb
-	source = pyusb-1.1.0.tar.gz::https://pypi.org/packages/source/p/pyusb/pyusb-1.1.0.tar.gz
-	source = pyusb-1.1.0.tar.gz.asc::https://pypi.org/packages/source/p/pyusb/pyusb-1.1.0.tar.gz.asc
+	source = pyusb-1.1.0.tar.gz::https://github.com/pyusb/pyusb/releases/download/v1.1.0/pyusb-1.1.0.tar.gz
+	source = pyusb-1.1.0.tar.gz::https://github.com/pyusb/pyusb/releases/download/v1.1.0/pyusb-1.1.0.tar.gz.asc
 	validpgpkeys = B04841AE800C1BF01FE1BC3D084C5584542E1574
 	validpgpkeys = 23F335ED4E829797734B22F65841AF7406AF7AD0
 	sha512sums = 0769670e6ebd8b31f2494258eca5d6e470ad3cb17663cc14b8b3a8136ea24caa23f86d81c60c501b88a9bc94b0de6a45aac43c6c5f140e65fd03a589b4d18179
-	sha512sums = SKIP
+	sha512sums = 0769670e6ebd8b31f2494258eca5d6e470ad3cb17663cc14b8b3a8136ea24caa23f86d81c60c501b88a9bc94b0de6a45aac43c6c5f140e65fd03a589b4d18179
 
 pkgname = python2-pyusb

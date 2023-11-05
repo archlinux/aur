@@ -15,11 +15,10 @@ url="https://github.com/pyusb/pyusb"
 license=('custom')
 depends=('python2' 'libusb')
 makedepends=('python2-setuptools' 'python2-setuptools-scm')
-#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/walac/${_pkgname}/archive/${pkgver}.tar.gz")
-source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "${_pkgname}-${pkgver}.tar.gz.asc::https://pypi.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz.asc")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pyusb/pyusb/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        "${_pkgname}-${pkgver}.tar.gz::https://github.com/pyusb/pyusb/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
 sha512sums=('0769670e6ebd8b31f2494258eca5d6e470ad3cb17663cc14b8b3a8136ea24caa23f86d81c60c501b88a9bc94b0de6a45aac43c6c5f140e65fd03a589b4d18179'
-            'SKIP')
+            '0769670e6ebd8b31f2494258eca5d6e470ad3cb17663cc14b8b3a8136ea24caa23f86d81c60c501b88a9bc94b0de6a45aac43c6c5f140e65fd03a589b4d18179')
 validpgpkeys=('B04841AE800C1BF01FE1BC3D084C5584542E1574'  # Wander Lairson Costa <wcosta@mozilla.com>
               '23F335ED4E829797734B22F65841AF7406AF7AD0') # Jonas Tadeu Silva Malaco Filho <jonas@jonasmalaco.com>
 
