@@ -1,4 +1,18 @@
-From e81403c968ef3ba9809cbba1d9bdb4830f23e627 Mon Sep 17 00:00:00 2001
+diff --git a/src/sage/features/sagemath.py b/src/sage/features/sagemath.py
+index 7404e6d0a8e..6037d097391 100644
+--- a/src/sage/features/sagemath.py
++++ b/src/sage/features/sagemath.py
+@@ -761,7 +761,7 @@ class sage__rings__number_field(JoinFeature):
+     A :class:`~sage.features.Feature` describing the presence of :mod:`sage.rings.number_field`.
+ 
+     Number fields are implemented in Sage using a complicated mixture of various libraries,
+-    including :ref:`arb <spkg_arb>`, :ref:`FLINT <spkg_flint>`, :ref:`GAP <spkg_gap>`,
++    including :ref:`FLINT <spkg_flint>`, :ref:`GAP <spkg_gap>`,
+     :ref:`MPFI <spkg_mpfi>`, :ref:`NTL <spkg_ntl>`, and :ref:`PARI <spkg_pari>`.
+ 
+     EXAMPLES:
+
+From 51c9bb951320a49470ffcacbdee95df33f3d0647 Mon Sep 17 00:00:00 2001
 From: Marc Mezzarobba <marc@mezzarobba.net>
 Date: Mon, 9 Oct 2023 15:32:43 +0200
 Subject: [PATCH 2/7] make sagelib build with flint3
@@ -52,7 +66,7 @@ index 87b27ca05cb..895d6572d1e 100644
  NTL_LIBDIR = "@NTL_LIBDIR@"
  
 diff --git a/src/sage/env.py b/src/sage/env.py
-index f4899639a6d..f6459313fd4 100644
+index b1fe9a89cd1..9197fc3a703 100644
 --- a/src/sage/env.py
 +++ b/src/sage/env.py
 @@ -223,7 +223,6 @@ def var(key: str, *fallbacks: Optional[str], force: bool = False) -> Optional[st
@@ -337,7 +351,7 @@ index 5e64c82102f..0616c0a7408 100644
      void fmpq_zero(fmpq_t)
      bint fmpq_is_zero(fmpq_t)
 diff --git a/src/sage/libs/flint/fmpq_poly.pxd b/src/sage/libs/flint/fmpq_poly.pxd
-index 20a797c0197..516f9e84cfc 100644
+index 6050c487835..afa16e5bbdd 100644
 --- a/src/sage/libs/flint/fmpq_poly.pxd
 +++ b/src/sage/libs/flint/fmpq_poly.pxd
 @@ -30,6 +30,9 @@ cdef extern from "flint_wrap.h":
@@ -407,7 +421,7 @@ index 20a797c0197..516f9e84cfc 100644
      void fmpq_poly_compose(fmpq_poly_t, const fmpq_poly_t, const fmpq_poly_t)
 @@ -189,3 +180,11 @@ cdef extern from "flint_wrap.h":
  # since the fmpq_poly header seems to be lacking this inline function
- cdef inline sage_fmpq_poly_max_limbs(const fmpq_poly_t poly):
+ cdef inline sage_fmpq_poly_max_limbs(const fmpq_poly_t poly) noexcept:
      return _fmpz_vec_max_limbs(fmpq_poly_numref(poly), fmpq_poly_length(poly))
 +
 +# functions removed from flint but still needed in sage
@@ -711,7 +725,7 @@ index 846542dc0d8..63c13355bf6 100644
      int fmpz_poly_q_set_str(fmpz_poly_q_t rop, const char *s)
      char * fmpz_poly_q_get_str(const fmpz_poly_q_t op)
 diff --git a/src/sage/libs/linbox/linbox_flint_interface.pyx b/src/sage/libs/linbox/linbox_flint_interface.pyx
-index 415cd473947..83547f91cd2 100644
+index dabd375c2b8..3ca65afc514 100644
 --- a/src/sage/libs/linbox/linbox_flint_interface.pyx
 +++ b/src/sage/libs/linbox/linbox_flint_interface.pyx
 @@ -33,6 +33,7 @@ and C. Pernet. The functions available are:
@@ -738,7 +752,7 @@ index 415cd473947..83547f91cd2 100644
      _fmpz_poly_set_length(p, q.size())
  
 diff --git a/src/sage/matrix/matrix_complex_ball_dense.pyx b/src/sage/matrix/matrix_complex_ball_dense.pyx
-index 3f56772a663..b1ece8a0e7b 100644
+index 22366b5f1f2..7fdf3f2aa36 100644
 --- a/src/sage/matrix/matrix_complex_ball_dense.pyx
 +++ b/src/sage/matrix/matrix_complex_ball_dense.pyx
 @@ -1,4 +1,4 @@
@@ -748,7 +762,7 @@ index 3f56772a663..b1ece8a0e7b 100644
  Arbitrary precision complex ball matrices using Arb
  
 diff --git a/src/sage/matrix/matrix_integer_sparse.pyx b/src/sage/matrix/matrix_integer_sparse.pyx
-index f4320fcd914..b36ee300990 100644
+index 0712500e67d..daba89d5c43 100644
 --- a/src/sage/matrix/matrix_integer_sparse.pyx
 +++ b/src/sage/matrix/matrix_integer_sparse.pyx
 @@ -847,6 +847,7 @@ cdef class Matrix_integer_sparse(Matrix_sparse):
@@ -783,7 +797,7 @@ index f4320fcd914..b36ee300990 100644
  
          del M
 diff --git a/src/sage/rings/polynomial/polynomial_rational_flint.pyx b/src/sage/rings/polynomial/polynomial_rational_flint.pyx
-index b888b31d214..621d86f9bb8 100644
+index f651c9f3512..c68246d2142 100644
 --- a/src/sage/rings/polynomial/polynomial_rational_flint.pyx
 +++ b/src/sage/rings/polynomial/polynomial_rational_flint.pyx
 @@ -222,7 +222,7 @@ cdef class Polynomial_rational_flint(Polynomial):
@@ -1024,7 +1038,7 @@ index f40690f8d22..9ae0d2579a7 100644
      "brial",
      "brial_groebner",
 
-From 4d78f661be9f82ab0f09cf9d4803db0d1194ab0b Mon Sep 17 00:00:00 2001
+From 03713705146cbfcb391431eab3ca3b2f8322e1a4 Mon Sep 17 00:00:00 2001
 From: Marc Mezzarobba <marc@mezzarobba.net>
 Date: Tue, 4 Jul 2023 11:23:26 +0200
 Subject: [PATCH 3/7] test that #20003 is fixed
@@ -1035,7 +1049,7 @@ Subject: [PATCH 3/7] test that #20003 is fixed
  2 files changed, 15 insertions(+), 32 deletions(-)
 
 diff --git a/src/sage/rings/polynomial/polynomial_zmod_flint.pyx b/src/sage/rings/polynomial/polynomial_zmod_flint.pyx
-index 4c480673861..780549af062 100644
+index 6e7f7498329..3a66198d568 100644
 --- a/src/sage/rings/polynomial/polynomial_zmod_flint.pyx
 +++ b/src/sage/rings/polynomial/polynomial_zmod_flint.pyx
 @@ -658,6 +658,11 @@ cdef class Polynomial_zmod_flint(Polynomial_template):
@@ -1051,7 +1065,7 @@ index 4c480673861..780549af062 100644
          if not self.base_ring().is_field():
              raise NotImplementedError("square free factorization of polynomials over rings with composite characteristic is not implemented")
 diff --git a/src/sage/schemes/plane_conics/con_rational_function_field.py b/src/sage/schemes/plane_conics/con_rational_function_field.py
-index 1b3f0ac412a..485c9c71be3 100644
+index 05d24e78a85..581102b5c5b 100644
 --- a/src/sage/schemes/plane_conics/con_rational_function_field.py
 +++ b/src/sage/schemes/plane_conics/con_rational_function_field.py
 @@ -198,38 +198,6 @@ def has_rational_point(self, point=False, algorithm='default',
@@ -1064,7 +1078,7 @@ index 1b3f0ac412a..485c9c71be3 100644
 -            sage: K.<t> = PolynomialRing(GF(7))
 -            sage: C = Conic([5*t^2 + 4, t^2 + 3*t + 3, 6*t^2 + 3*t + 2,
 -            ....:            5*t^2 + 5, 4*t + 3, 4*t^2 + t + 5])
--            sage: C.has_rational_point()
+-            sage: C.has_rational_point()                                                # needs sage.libs.singular
 -            Traceback (most recent call last):
 -            ...
 -            TypeError: self (=Scheme morphism:
@@ -1094,7 +1108,7 @@ index 1b3f0ac412a..485c9c71be3 100644
  
              sage: K.<t> = FractionField(PolynomialRing(QQ, 't'))
 @@ -250,6 +218,16 @@ def has_rational_point(self, point=False, algorithm='default',
-             sage: C.has_rational_point(point = True) # long time (4 seconds)
+             sage: C.has_rational_point(point=True)  # long time (4 seconds)             # needs sage.libs.singular
              (True,
               ((-2/117*t^8 + 304/1053*t^7 + 40/117*t^6 - 1/27*t^5 - 110/351*t^4 - 2/195*t^3 + 11/351*t^2 + 1/117)/(t^4 + 2/39*t^3 + 4/117*t^2 + 2/39*t + 14/39) : -5/3*t^4 + 19*t^3 : 1))
 +
@@ -1110,16 +1124,6 @@ index 1b3f0ac412a..485c9c71be3 100644
          """
          from .constructor import Conic
  
-
-From 80e0418185de0893cb479b0971258686d4026614 Mon Sep 17 00:00:00 2001
-From: Marc Mezzarobba <marc@mezzarobba.net>
-Date: Fri, 13 Oct 2023 18:04:41 +0200
-Subject: [PATCH 5/7] some undocumented removals noticed by Vincent
-
----
- src/sage/libs/arb/acb.pxd | 4 ----
- src/sage/libs/arb/arb.pxd | 7 -------
- 2 files changed, 11 deletions(-)
 
 diff --git a/src/sage/libs/arb/acb.pxd b/src/sage/libs/arb/acb.pxd
 index 3f53b96d331..851488d803a 100644
@@ -1157,7 +1161,7 @@ index 33083fc125f..acd232ab816 100644
      void arb_bin_ui(arb_t z, const arb_t n, unsigned long k, long prec)
      void arb_bin_uiui(arb_t z, unsigned long n, unsigned long k, long prec)
 
-From 38c455634ce446c802268ef3a10cf33ae5682e57 Mon Sep 17 00:00:00 2001
+From 8df55377938a6576baf0aacab3046932615d652b Mon Sep 17 00:00:00 2001
 From: Marc Mezzarobba <marc@mezzarobba.net>
 Date: Sun, 15 Oct 2023 12:55:50 +0200
 Subject: [PATCH 6/7] update tests for flint3
@@ -1168,7 +1172,7 @@ Subject: [PATCH 6/7] update tests for flint3
  2 files changed, 6 insertions(+), 5 deletions(-)
 
 diff --git a/src/sage/rings/complex_arb.pyx b/src/sage/rings/complex_arb.pyx
-index a22ce3c5e53..15be37734af 100644
+index f36a89bb229..20a06f7eaa3 100644
 --- a/src/sage/rings/complex_arb.pyx
 +++ b/src/sage/rings/complex_arb.pyx
 @@ -1360,12 +1360,13 @@ cdef class ComplexBall(RingElement):
@@ -1197,7 +1201,7 @@ index a22ce3c5e53..15be37734af 100644
              [-0.123060451458124 +/- 3.06e-16] + [0.0406412631676552 +/- 7.57e-17]*I
  
 diff --git a/src/sage/rings/real_arb.pyx b/src/sage/rings/real_arb.pyx
-index 17859068273..14baa5bc5aa 100644
+index a9ce06d14ca..affe11e4376 100644
 --- a/src/sage/rings/real_arb.pyx
 +++ b/src/sage/rings/real_arb.pyx
 @@ -898,7 +898,7 @@ class RealBallField(UniqueRepresentation, sage.rings.abc.RealBallField):
@@ -1219,7 +1223,7 @@ index 17859068273..14baa5bc5aa 100644
              Traceback (most recent call last):
              ...
 
-From 0322c12c1f5205751721d7f7ab87ea040b9c9e90 Mon Sep 17 00:00:00 2001
+From ec33fc9e2076bb4a9f94c70dfdc24b90cd3de183 Mon Sep 17 00:00:00 2001
 From: Marc Mezzarobba <marc@mezzarobba.net>
 Date: Sun, 22 Oct 2023 09:53:06 +0200
 Subject: [PATCH 7/7] missing includes

@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.2.beta8.r0.g07a2afd65f
+pkgver=10.2.beta9.r0.geb8417b610
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -120,6 +120,7 @@ makedepends=(bliss
              boost
              coxeter
              cython
+             git
              mcqd
              python-jinja
              python-pkgconfig
@@ -134,8 +135,8 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            'c20c563d86007e0031d321e50df2c73d41c272e9e7270a935c2abf365f06aa6a')
+            '6bbdc779968d53fc515dc0646a2d19b76c180874db5590bf0af6aa3dac2f2490'
+            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 _pkgs=(standard
        bliss
        coxeter3
