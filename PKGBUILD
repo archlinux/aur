@@ -31,6 +31,7 @@ source=(
   'git+https://github.com/inspirit/PS3EYEDriver.git'
   'git+https://github.com/libusb/libusb.git'
   'add-libv4l2-module.patch'
+  'https://patch-diff.githubusercontent.com/raw/thp/psmoveapi/pull/488.diff'
 )
 sha256sums=(
   'SKIP'
@@ -38,6 +39,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   '271eaa3f1f5c50045873f1583ebc38eb6c9451440a7c98de5b75731058901480'
+  '80133615f0b17e6f85cb2529823267c1ddd62b3ca9ca4c7ff2f5ee775999c177'
 )
 options=('debug')
 
@@ -58,6 +60,9 @@ prepare() {
 
   # Add the missing cmake libv4l2 linkage
   patch -p1 -i "${srcdir}/add-libv4l2-module.patch"
+
+  # install missing header
+  patch -p1 -i "${srcdir}/488.diff"
 
   mkdir -p docs/_static
 }
