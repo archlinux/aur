@@ -1,7 +1,7 @@
 pkgbase = samsung-unified-driver
 	pkgdesc = Samsung Unified Linux Driver for printers and scanners.
 	pkgver = 1.00.39
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.samsung.com
 	arch = i686
 	arch = x86_64

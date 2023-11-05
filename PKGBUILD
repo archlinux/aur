@@ -8,7 +8,7 @@ pkgname=(
     'samsung-unified-driver'
 )
 pkgver=1.00.39
-pkgrel=6
+pkgrel=7
 
 pkgdesc='Samsung Unified Linux Driver for printers and scanners.'
 arch=('i686' 'x86_64')
