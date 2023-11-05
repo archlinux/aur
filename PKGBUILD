@@ -10,7 +10,7 @@ pkgdesc="fts (full text search) parser derived from the default parser in Postgr
 arch=(x86_64)
 url="https://github.com/yukha-dw/pg_cjk_parser"
 depends=(postgresql icu)
-makedepends=(clang15 git)
+makedepends=(clang15 llvm15 git)
 source=("git+https://github.com/yukha-dw/pg_cjk_parser.git")
 sha256sums=('SKIP')
 
