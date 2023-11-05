@@ -1,9 +1,9 @@
 # Based on snapgene-viewer package by Antony Lee <anntzer dot lee at gmail dot com>
 # Maintainer: Bitals <me at bitals dot xyz>
-# Co-Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
-# Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
+# Contributor: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
+# Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=snapgene
-pkgver=7.0.2
+pkgver=7.0.3
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=1
@@ -12,8 +12,8 @@ arch=('x86_64')
 url='http://www.snapgene.com/products/snapgene/'
 license=('custom')
 # A valid licence is required to use the full version of snapgene
-source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_"$pkgver"_linux.rpm")
-sha512sums=('517fb1812508d9457a0f75e746a3923e72ed314df5ba8ddf504220442ad9d08dd9a8b14c7d078306ba68f0b391f1f1ce08551e29394876fa3883267cce3b21fe')
+source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/"$pkgname"_"$pkgver"_linux.rpm")
+sha512sums=('a8d3bf97ef93a97b92e40cfa1b00e0ff4814536f6cda51147ceab009dc794b7fbf1b9f65667ced8d111774d8381e49620a659aea082de893422e6881bf6d19e7')
 
 package() {
     cd "$pkgdir"
