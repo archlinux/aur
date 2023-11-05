@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mumps
 	pkgdesc = Sparse solver library using Gaussian elimination (mingw-w64)
-	pkgver = 5.6.1
+	pkgver = 5.6.2
 	pkgrel = 1
 	url = http://mumps.enseeiht.fr
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-mumps
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://graal.ens-lyon.fr/MUMPS/MUMPS_5.6.1.tar.gz
-	sha256sums = 1920426d543e34d377604070fde93b8d102aa38ebdf53300cbce9e15f92e2896
+	source = http://graal.ens-lyon.fr/MUMPS/MUMPS_5.6.2.tar.gz
+	sha256sums = 13a2c1aff2bd1aa92fe84b7b35d88f43434019963ca09ef7e8c90821a8f1d59a
 
 pkgname = mingw-w64-mumps
