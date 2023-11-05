@@ -41,6 +41,8 @@ pkgname = psmoveapi-git
 	depends = v4l-utils
 	depends = opencv
 	provides = psmoveapi
+	provides = libpsmoveapi.so
+	provides = libpsmoveapi_tracker.so
 	conflicts = psmoveapi
 
 pkgname = python-psmoveapi-git

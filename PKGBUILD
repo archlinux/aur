@@ -69,14 +69,17 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DPSMOVEAPI_LIB_DEST=lib \
     -DPSMOVE_BUILD_EXAMPLES=ON \
-    -DPSMOVE_BUILD_TESTS=OFF \
     -DPSMOVE_BUILD_TRACKER=ON
 
   cmake --build build
 }
 
 package_psmoveapi-git() {
-  provides=('psmoveapi')
+  provides=(
+    'psmoveapi'
+    'libpsmoveapi.so'
+    'libpsmoveapi_tracker.so'
+  )
   conflicts=('psmoveapi')
   depends=(
     'gcc-libs' # libgcc_s.so libstdc++.so
