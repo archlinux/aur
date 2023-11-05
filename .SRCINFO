@@ -1,0 +1,19 @@
+pkgbase = python-ticktick-py
+	pkgdesc = Unofficial API library for interacting with TickTick.com
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/ticktick-py/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-pytz
+	source = https://pypi.org/packages/source/t/ticktick-py/ticktick-py-2.0.3.tar.gz
+	source = password-login.patch::https://github.com/btw04/ticktick-py/commit/2d8d874e2d97f6c43d4fe318665fbe4a7e18eb72.patch
+	sha256sums = f6e96870b91f16717a81e20ffef4a2f5b2a524d6a79e31ab64e895a90a372b51
+	sha256sums = SKIP
+
+pkgname = python-ticktick-py
