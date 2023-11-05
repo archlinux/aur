@@ -12,6 +12,7 @@ license=('GPL2')
 conflicts=("can-utils-git")
 source=("git+https://github.com/linux-can/can-utils.git#commit=cfe41963f3425e9adb01a70cfaddedf5e5982720")
 sha256sums=('SKIP')
+makedepends=('git')
 
 build() {
     cd can-utils
