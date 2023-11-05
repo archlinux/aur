@@ -1,7 +1,7 @@
 # Maintainer: diaowinner <diaowinner@gmail.com>
 # Maintainer: KreativeKorp <support@kreativekorp.com>
 pkgname=bitsnpicas-git
-pkgver=2.0.2.adef9ec
+pkgver=2.0.2.r316.029faf9
 pkgrel=1
 pkgdesc="Kreative BitsNPicas, with MapEdit and KeyEdit, in the latest snapshot version"
 arch=("any")
