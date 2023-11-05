@@ -1,8 +1,8 @@
 pkgbase = r-netboxr
 	pkgdesc = netboxr
 	pkgver = 1.9.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/netboxr
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.16/netboxr
 	arch = any
 	license = LGPL
 	depends = r
@@ -21,7 +21,7 @@ pkgbase = r-netboxr
 	optdepends = r-paxtoolsr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/netboxr_1.9.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/netboxr_1.9.0.tar.gz
 	sha256sums = f5e3138dcb82d4e70830383c1913bc234b796367d85ca2695742177280a936af
 
 pkgname = r-netboxr

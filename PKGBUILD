@@ -4,10 +4,10 @@ _pkgname=netboxr
 _pkgver=1.9.0
 pkgname=r-${_pkgname,,}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc='netboxr'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('LGPL')
 depends=(
   r
@@ -29,7 +29,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f5e3138dcb82d4e70830383c1913bc234b796367d85ca2695742177280a936af')
 
 build() {
