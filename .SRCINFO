@@ -1,8 +1,8 @@
 pkgbase = r-nbsplice
 	pkgdesc = Negative Binomial Models to detect Differential Splicing
 	pkgver = 1.15.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/NBSplice
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.16/NBSplice
 	arch = any
 	license = GPL
 	depends = r
@@ -18,7 +18,7 @@ pkgbase = r-nbsplice
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NBSplice_1.15.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/NBSplice_1.15.0.tar.gz
 	sha256sums = a836f9e8df2e59cff6d6e86d13db0f106d3bebe6ad52c7c8a05441fde2d1c77a
 
 pkgname = r-nbsplice

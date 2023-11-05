@@ -4,10 +4,10 @@ _pkgname=NBSplice
 _pkgver=1.15.0
 pkgname=r-${_pkgname,,}
 pkgver=1.15.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Negative Binomial Models to detect Differential Splicing'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a836f9e8df2e59cff6d6e86d13db0f106d3bebe6ad52c7c8a05441fde2d1c77a')
 
 build() {
