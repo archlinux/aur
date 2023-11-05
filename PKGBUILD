@@ -7,9 +7,9 @@ __PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
 pkgname=(
     "$__pkgname-gtk-theme-git"
     "$__pkgname-kde-theme-git"
-    "$__pkgname-kvantum-theme-git"
+    "kvantum-theme-$__pkgname-git"
 )
-pkgver=r169.891f91e
+pkgver=r236.22ab42f
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 arch=("any")
@@ -22,7 +22,7 @@ optdepends=(
     "gnome-themes-extra: GTK2 support"
 )
 source=("$__pkgname::git+$url.git#branch=${__pkgname#juno-}")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$__pkgname"
@@ -93,7 +93,7 @@ package_juno-ocean-kde-theme-git() {
     mv "sddm/${__PkgName#Juno-}" "sddm/themes/"
     mv "aurorae/${__PkgName#Juno-}" "aurorae/themes/"
 }
-package_juno-ocean-kvantum-theme-git() {
+package_kvantum-theme-juno-ocean-git() {
     provides=("${pkgname[2]%-git}")
     conflicts=("${pkgname[2]%-git}" "${pkgbase%-git}")
 

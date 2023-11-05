@@ -1,6 +1,6 @@
 pkgbase = juno-ocean-theme-git
 	pkgdesc = GTK themes inspired by epic vscode themes
-	pkgver = r169.891f91e
+	pkgver = r236.22ab42f
 	pkgrel = 1
 	url = https://github.com/EliverLara/Juno
 	arch = any
@@ -24,7 +24,7 @@ pkgname = juno-ocean-kde-theme-git
 	conflicts = 
 	conflicts = juno-ocean-theme
 
-pkgname = juno-ocean-kvantum-theme-git
+pkgname = kvantum-theme-juno-ocean-git
 	provides = 
 	conflicts = 
 	conflicts = juno-ocean-theme
