@@ -1,0 +1,10 @@
+pkgbase = mk870-keyboard-fix
+	pkgdesc = mk870 customized keyboard, key position repair.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = mk870-keyboard-fix.conf
+	sha256sums = 963f859855c58aee7e18df0f9bd570609d7b3246f9d9124ffd28b562a9ad11ae
+
+pkgname = mk870-keyboard-fix
