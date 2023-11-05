@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mosaicCore
-_pkgver=0.9.2.1
+_pkgver=0.9.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.9.2.1
-pkgrel=3
+pkgver=0.9.4.0
+pkgrel=1
 pkgdesc='Common Utilities for Other MOSAIC-Family Packages'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7ce16f20fde1d8a5b1836110e5980fb274504ddae6b9c5c2f4198dc7d09dafa')
+sha256sums=('e25605d787d274eedd3de8584283c20204bcb7b94f4a409461304ce7cd867d6c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
