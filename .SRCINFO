@@ -1,7 +1,7 @@
 pkgbase = tcp-brutal-dkms
 	pkgdesc = Hysteria's congestion control algorithm ported to kernel mode TCP - module sources
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apernet/tcp-brutal
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tcp-brutal-dkms
 	depends = dkms
 	source = tcp-brutal-1.0.0.tar.gz::https://github.com/apernet/tcp-brutal/archive/refs/tags/v1.0.0.tar.gz
 	source = dkms.conf
-	sha256sums = SKIP
+	sha256sums = 0a7079bf781828c5fe4ffb953a61bd38724a059291e62938647260e5bbd80faf
 	sha256sums = 946067020f48887d297396e0ea964580a20b7d01e17aab5841d1a47ebce8dbd0
 
 pkgname = tcp-brutal-dkms
