@@ -1,9 +1,9 @@
-# Maintainer: Plaunarome <plaunarome@protonmail.com>
+# Contributor: Plaunarome <plaunarome@protonmail.com>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=ecwolf
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced source port for Wolfenstein 3D engine games"
 arch=("x86_64")
 url="https://maniacsvault.net/ecwolf/"
@@ -13,12 +13,13 @@ makedepends=("cmake")
 install=ecwolf.install
 source=("https://maniacsvault.net/${pkgname}/files/${pkgname}/1.x/${pkgname}-${pkgver}-src.tar.xz"
 	"net.maniacsvault.${pkgname}.desktop")
-sha512sums=('8b82e969ed2ecae8467b97f811b446e729c4accfde04d27f8da864d982b9ae4cdc45927fe896dc5a4eb6c8b88d664324de8ce83ee092a31f819ef611ab8b269f'
-            '97c225f4a4aab1c14062ac3fc0a6598ac72608d5b2e84c143f8a7085013ea4716a4e6e9f2f8b65bd942ce53670ddeca4fee695bcb80863ded59a34bdfa7e76f6')
+sha256sums=('8ebd495d2806c9d0e736656970e736730a005d3b43c7f5729f52c812b22f9e2d'
+            '97bbc02334b250b5ca9a7076d6761e9ae54c1259a37521449b2ecedcaebfdcc3')
 
 build() {
 	cmake \
 		-S "${pkgname}-${pkgver}-src" \
+		-DCMAKE_INSTALL_PREFIX="/usr/"  \
 		-B build \
 		-DBUILD_PATCHUTIL=ON \
 		-DGPL=ON \
