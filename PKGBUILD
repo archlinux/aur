@@ -2,7 +2,7 @@
 
 pkgname=python-muranopkgcheck
 pkgver=0.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Murano package validator tool'
 arch=('any')
 url='https://docs.openstack.org/murano-pkg-check/'
@@ -25,6 +25,7 @@ build() {
 check() {
   cd murano-pkg-check
   #stestr run
+  sed -i 's/cases.extend(list(yaml.load_all(f)))/cases.extend(list(yaml.load_all(f, yaml.SafeLoader)))/g' muranopkgcheck/tests/functional/test_cases.py
   python setup.py test
 }
 
