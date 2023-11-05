@@ -1,5 +1,5 @@
 pkgbase = furious-git
-	pkgdesc = A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria.
+	pkgdesc = A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria
 	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://github.com/LorenEteval/Furious
@@ -12,6 +12,7 @@ pkgbase = furious-git
 	makedepends = patchelf
 	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
 	provides = furious
+	conflicts = furious
 	options = !strip
 	source = git+https://github.com/LorenEteval/Furious.git
 	source = https://go.dev/dl/go1.20.10.linux-amd64.tar.gz

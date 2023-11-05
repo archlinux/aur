@@ -1,19 +1,19 @@
-# Maintainer: irmluity <irmluity@proton.me>
+# Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 _pkgname=furious
 pkgname=$_pkgname-git
 pkgver=0.2.11
 pkgrel=1
-pkgdesc="A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria."
+pkgdesc="A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria"
 arch=(x86_64)
 url='https://github.com/LorenEteval/Furious'
 license=('GPL-3')
-depends=()
 makedepends=('git' 'cmake' 'python' 'python-pip' 'patchelf')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 provides=("furious")
+conflicts=('furious')
 options=(!strip)
 source=(
     "git+https://github.com/LorenEteval/Furious.git"
@@ -31,7 +31,7 @@ _install_path="/opt/$_pkgname"
 
 pkgver() {
     cd "$srcdir/Furious"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//')"
 }
 
 prepare() {
@@ -44,7 +44,7 @@ prepare() {
     pip install wheel
     pip install hysteria2==2.0.0.1
     pip install -r requirements.txt
-    python -m pip install nuitka
+    pip install nuitka
 }
 
 build() {
