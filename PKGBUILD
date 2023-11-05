@@ -1,14 +1,14 @@
-# Maintainer: irmluity <irmluity@proton.me>
+# Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 _pkgname=hiddify
 pkgname=${_pkgname}-bin
 pkgver=0.10.0
 pkgrel=2
-pkgdesc="A multi-platform client based on Sing-box that serves as a universal proxy tool-chain."
+pkgdesc="A multi-platform client based on Sing-box that serves as a universal proxy tool-chain"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CCPL')
-depends=('hicolor-icon-theme' 'zlib' 'glibc')
+depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
