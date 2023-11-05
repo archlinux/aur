@@ -1,6 +1,6 @@
 pkgbase = avisynthplus-git
 	pkgdesc = Avisynth+. (GIT Version)
-	pkgver = 3.7.3.0.gfc5b9bc4
+	pkgver = 3.7.3.8.geba18dca
 	pkgrel = 1
 	url = http://avs-plus.net
 	arch = x86_64
@@ -10,10 +10,12 @@ pkgbase = avisynthplus-git
 	makedepends = python-sphinx
 	makedepends = devil
 	options = debug
-	source = avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git
+	source = git+https://github.com/AviSynth/AviSynthPlus.git
 	sha256sums = SKIP
 
 pkgname = avisynthplus-git
+	depends = gcc-libs
+	depends = glibc
 	depends = devil
 	provides = avisynthplus
 	provides = libavisynth.so
