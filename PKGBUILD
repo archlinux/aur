@@ -30,7 +30,7 @@ optdepends=(
   'wine: More up-to-date, less buggy SLVoice support')
 # template end;
 pkgname=alchemy-next-viewer-git
-pkgver=7.0.0.54092.d380dfa721
+pkgver=7.0.1.54409.663533f0c9
 pkgrel=1
 replaces=('alchemy-viewer-git')
 provides=('alchemy-viewer')
