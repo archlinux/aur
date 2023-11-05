@@ -1,0 +1,17 @@
+pkgbase = python-libravatar-py
+	pkgdesc = A libravatar client for Python that's built on modern technology
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/baseplate-admin/libravatar-py
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-poetry-core
+	makedepends = python-installer
+	depends = python-httpx
+	depends = python-dnspython
+	source = git+https://github.com/baseplate-admin/libravatar-py.git#commit=b3f871c585773b002065b02dfd0c63c3356ff11d
+	sha256sums = SKIP
+
+pkgname = python-libravatar-py
