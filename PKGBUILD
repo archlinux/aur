@@ -1,4 +1,5 @@
-# Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
+# Maintainer: Phillip Schichtel <phillip@schich.tel>
+# Contributor: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
 
 pkgname=can-utils
 pkgver=2021.08.0
