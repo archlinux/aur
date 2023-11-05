@@ -1,6 +1,6 @@
 # Maintainer: blocklisted <blocklisted at protonmail dot com>
 pkgname=windscribe-v2-bin
-pkgver=2.6.14
+pkgver=2.7.14
 pkgrel=1
 pkgdesc="Windscribe GUI tool for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('windscribe-cli' 'windscribe')
 options=('!strip')
 install=windscribe-v2-bin.install
 source=("https://deploy.totallyacdn.com/desktop-apps/${pkgver}/windscribe_${pkgver}_x86_64.pkg.tar.zst")
-sha1sums=('e1c200528b03445406fdd9295ba524043f2cfcfa')
+sha1sums=('1a0cdb847773324d13fc9e0f5d1c0e63e6b356b3')
 
 package() {
 	mv ${srcdir}/etc ${pkgdir}
