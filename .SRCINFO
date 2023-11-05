@@ -1,0 +1,24 @@
+pkgbase = augratin
+	pkgdesc = Ham Radio - An aid for POTA hunters
+	pkgver = 23.6.4
+	pkgrel = 1
+	url = https://pypi.org/project/augratin/
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-psutil
+	depends = python-requests
+	depends = python-pyqt5-webengine
+	depends = python-folium
+	depends = hamlib
+	depends = hamradio-menus
+	provides = augratin
+	conflicts = augratin-git
+	source = https://files.pythonhosted.org/packages/source/a/augratin/augratin-23.6.4.tar.gz
+	md5sums = 6f096f11c11c62a60bc144524ec63d9c
+	sha256sums = 7f0094be3cef8988c6751a2f5b71db3825e1cb5f0d4c172fbba011c62f429112
+
+pkgname = augratin
