@@ -1,8 +1,8 @@
 pkgbase = r-geneaccord
 	pkgdesc = Detection of clonally exclusive gene or pathway pairs in a cohort of cancer patients
 	pkgver = 1.15.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/GeneAccord
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.16/GeneAccord
 	arch = any
 	license = custom
 	depends = r
@@ -23,7 +23,7 @@ pkgbase = r-geneaccord
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneAccord_1.15.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/GeneAccord_1.15.0.tar.gz
 	sha256sums = a155431556d6560bc661e71284cd762974d11c9ecff10f9c2fdb059a59c396b6
 
 pkgname = r-geneaccord

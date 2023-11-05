@@ -4,10 +4,10 @@ _pkgname=GeneAccord
 _pkgver=1.15.0
 pkgname=r-${_pkgname,,}
 pkgver=1.15.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Detection of clonally exclusive gene or pathway pairs in a cohort of cancer patients'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('custom')
 depends=(
   r
@@ -31,7 +31,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a155431556d6560bc661e71284cd762974d11c9ecff10f9c2fdb059a59c396b6')
 
 build() {
