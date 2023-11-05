@@ -1,6 +1,6 @@
 pkgbase = my_timers
 	pkgdesc = Multithreaded MariaDB/MySQL event runner designed to serve as an improved event_scheduler.
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/very-amused/my_timers
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = my_timers
 	depends = openssl>=3.0.7
 	optdepends = mariadb: database server (recommended)
 	optdepends = mysql: database server
-	source = https://github.com/very-amused/my_timers/releases/download/v0.2.0/x86_64-linux.tar.gz
-	sha256sums = acd63e57b5e1eadfd647fdf80227d1afd6bd47156f242662e380225e1c27fb3f
+	source = https://github.com/very-amused/my_timers/releases/download/v0.2.2/x86_64-linux.tar.gz
+	sha256sums = eb2efca31caa324262f4bb51ead12a8e3d9c7c84c2c45f2ac7efd272d4766bb6
 
 pkgname = my_timers
