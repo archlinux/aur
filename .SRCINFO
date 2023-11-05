@@ -7,6 +7,8 @@ pkgbase = can-utils
 	arch = armv6h
 	license = GPL2
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
 	conflicts = can-utils-git
 	source = git+https://github.com/linux-can/can-utils.git#commit=cfe41963f3425e9adb01a70cfaddedf5e5982720
 	sha256sums = SKIP

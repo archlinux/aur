@@ -12,16 +12,15 @@ license=('GPL2')
 conflicts=("can-utils-git")
 source=("git+https://github.com/linux-can/can-utils.git#commit=cfe41963f3425e9adb01a70cfaddedf5e5982720")
 sha256sums=('SKIP')
-makedepends=('git')
+makedepends=('git' 'cmake' 'ninja')
 
 build() {
     cd can-utils
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" .
+    ninja
 }
 
 package() {
     cd can-utils
-    make DESTDIR="$pkgdir/" install
+    ninja install
 }
