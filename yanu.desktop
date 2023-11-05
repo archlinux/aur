@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=yanu
+Comment=Yet Another NSP Updater for Skyline
+Exec=/usr/bin/yanu
+Type=Application
