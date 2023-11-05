@@ -1,14 +1,13 @@
 pkgbase = gemget
 	pkgdesc = Command line downloader for the Gemini protocol
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
-	url = https://github.com/makeworld-the-better-one/gemget
+	url = https://github.com/makew0rld/gemget
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = gemget-1.8.0.tar.gz::https://github.com/makeworld-the-better-one/gemget/archive/v1.8.0.tar.gz
-	sha256sums = 52578dfc33c0275d71658d6afc0e0d91b3734032a6ed5b760d2695001b178c5a
+	source = git+https://github.com/makew0rld/gemget.git#tag=v1.9.0
+	sha256sums = SKIP
 
 pkgname = gemget
-
