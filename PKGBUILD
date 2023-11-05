@@ -22,7 +22,7 @@ package() {
     cd "${pkgdir}"
 
     # extract Debian data file
-    tar xf "${srcdir}/data.tar.xz"
+    tar xf "${srcdir}/data.tar.zst"
 
     # unpack Debian changelog file 
     gzip -d "usr/share/doc/wifi-qr/changelog.Debian.gz"
