@@ -1,0 +1,4 @@
+/src
+/pkg
+/spacedrive
+*.pkg.tar.*

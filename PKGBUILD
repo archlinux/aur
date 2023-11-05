@@ -1,0 +1,45 @@
+# Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
+
+pkgname='spacedrive-git'
+pkgver=r2297.8ad468b
+pkgrel=1
+pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
+arch=('x86_64')
+url='https://turbo.build'
+license=('AGPL3')
+source=('spacedrive::git+https://github.com/spacedriveapp/spacedrive.git')
+depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
+makedepends=('cargo' 'pnpm' 'git')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname%-git}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "${pkgname%-git}"
+
+	export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+
+	pnpm install
+	pnpm prep
+}
+
+build() {
+	cd "${pkgname%-git}"
+
+	export CARGO_TARGET_DIR=target
+	export RUSTUP_TOOLCHAIN=stable
+
+	pnpm tauri build --bundles app
+}
+
+package() {
+	cd "${pkgname%-git}"
+
+	install -Dm0755 -t "${pkgdir}/usr/bin/" "apps/desktop/src-tauri/target/release/spacedrive"
+	install -Dm0755 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+}
