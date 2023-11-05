@@ -1,8 +1,9 @@
-# Maintainer: Brian Atkinson <brian@atkinson.mn>
+# Maintainer: Jonathan Wright <jon@than.io>
+# Prior Maintainer: Brian Atkinson <brian@atkinson.mn>
 # Prior Maintainer: David Birks <david@birks.dev>
 
 pkgname=opa
-pkgver=0.50.0
+pkgver=0.58.0
 pkgrel=1
 pkgdesc='Command-line utility and REPL for Open Policy Agent'
 arch=(x86_64)
@@ -10,7 +11,7 @@ url='https://github.com/open-policy-agent/opa'
 license=(Apache)
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/open-policy-agent/opa/archive/v$pkgver.tar.gz")
-sha256sums=('936d6c9f7cdf4d428bfae7be3f72c20b6b1f1a84355e5c9497920803eb196709')
+sha256sums=('24915403eff7a3bcaf55a94b28a2a77a8f194546071a128616e8afc42a970e78')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -29,10 +30,12 @@ build() {
   mkdir completion
   "./$pkgname" completion bash > "completion/$pkgname"
   "./$pkgname" completion zsh > "completion/_$pkgname"
+  "./$pkgname" completion fish > "completion/$pkgname.fish"
 }
 
 package() {
   install -Dm 755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -vDm 644 "$srcdir/$pkgname-$pkgver/completion/$pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
   install -vDm 644 "$srcdir/$pkgname-$pkgver/completion/_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
+  install -vDm 644 "$srcdir/$pkgname-$pkgver/completion/$pkgname.fish" -t "$pkgdir/usr/share/fish/completions/"
 }
