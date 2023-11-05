@@ -66,3 +66,4 @@ package() {
   install -Dm755 "$srcdir/$_name/res/icon-64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm755 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
+
