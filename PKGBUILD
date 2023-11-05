@@ -10,7 +10,7 @@ arch=('any')
 url="${_github_url}"
 license=(MIT)
 depends=()
-makedepends=('python-setuptools')
+makedepends=(git python-setuptools)
 checkdepends=('python-pytest')
 options=()
 #source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)

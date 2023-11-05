@@ -6,6 +6,7 @@ pkgbase = python-pynmea2
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-setuptools
 	source = pynmea2::git+https://github.com/Knio/pynmea2.git#commit=5d3d2013bff9c5bce2e14132d21fff865b1e58fd
 	sha256sums = SKIP
