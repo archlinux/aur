@@ -2,15 +2,15 @@
 
 _pkgname=pdfgui_tools
 pkgname=$_pkgname-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A user interface tool developed in Qt and Python that integrates with poppler for PDF document management (binary release)"
 arch=('any')
 url="https://github.com/TheWatcherMultiversal/pdfgui_tools"
 license=('GPL3')
-depends=('poppler' 'python-pyqt5' 'python-pypdf2')
+depends=('poppler' 'pyside6' 'python-pymupdf' 'python-pypdf2')
 source=("$url/releases/download/v$pkgver/${_pkgname}_stable-release_${pkgver}_all.tar.gz")
-sha256sums=('fcc8cf636786aac0326cd2e45ea55562f35fb29ea05c5a711fe9c94613b5b41b')
+sha256sums=('fee65b1f6baaf205b2efb65347f0cc7e54963f6ddd3b7fddd3e7e44225451c4a')
 
 package() {
   mv ${_pkgname}_stable-release_${pkgver}_all/usr "$pkgdir"
