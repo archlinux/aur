@@ -4,10 +4,10 @@ _pkgname=pkgDepTools
 _pkgver=1.63.0
 pkgname=r-${_pkgname,,}
 pkgver=1.63.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Package Dependency Tools'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -20,7 +20,7 @@ optdepends=(
   r-rcurl
   r-rgraphviz
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('4f51e32fa281b0e23f1ddd87ae89f46c5f0b9bd32446fc05f2771ca06ff80083')
 
 build() {
