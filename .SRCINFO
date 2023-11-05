@@ -1,20 +1,22 @@
 pkgbase = audiveris
 	pkgdesc = Music score OMR engine
 	pkgver = 5.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Audiveris/audiveris
-	arch = x86_64
+	arch = any
 	license = AGPL3
 	makedepends = java-environment>=17
 	makedepends = gradle
 	depends = java-runtime>=17
-	depends = archlinux-java-run>=7
-	depends = tesseract-data-eng
+	depends = tesseract
 	depends = freetype2
+	depends = hicolor-icon-theme
 	optdepends = tesseract-data: For languages other than english
 	source = audiveris-5.3.1.tar.gz::https://github.com/Audiveris/audiveris/archive/5.3.1.tar.gz
 	source = audiveris
+	source = audiveris.desktop
 	sha256sums = b81ef95ea87cfb73ff718ff3a33acddc4a275f94d1d25134bdc43b813d28d6d6
-	sha256sums = f8c61a27680a5255940d6837601dc461b517110e13aa9673c88f4c0300bfa255
+	sha256sums = 3f5f7b788f32f74f3ae97b4c0e43d66a7664a94e2fcf262ea2b049c03265403a
+	sha256sums = a3c48eeac63cfdf0b0e3fdf788d48d51d4bc32291fdeb159c2244178604a28aa
 
 pkgname = audiveris
