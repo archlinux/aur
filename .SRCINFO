@@ -1,11 +1,11 @@
 pkgbase = grok-tool-bin
 	pkgdesc = GROK is a tool like UNIX grep on steroids. Ofter regular expressions become huge and vague. To resolve this situation macros or grok could be applied. Grok is a peculiar regular expression's macros name.
-	pkgver = 0.2.11
-	pkgrel = 2
+	pkgver = 0.2.12
+	pkgrel = 1
 	url = https://github.com/aegoroff/grok
 	arch = x86_64
 	license = MIT
-	source = https://github.com/aegoroff/grok/releases/download/0.2.11/grok-0.2.11-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = db672faa8b3b17d7c83a122d7e60b64c45fbd6c37e575b10b12fd66e0f9a104a
+	source = https://github.com/aegoroff/grok/releases/download/0.2.12/grok-0.2.12-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 94d59ed422e011b6965b370fe322a84d95a2ba3fb57f079d1349769e1de23d72
 
 pkgname = grok-tool-bin
