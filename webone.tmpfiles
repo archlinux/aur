@@ -1,0 +1,5 @@
+d /var/log/webone 0750 webone adm - -
+
+# Key will be generated on first service startup, but service creates it as 0644.
+f /etc/webone.conf.d/ssl.crt 0644 webone webone - -
+f /etc/webone.conf.d/ssl.key 0640 webone webone - -

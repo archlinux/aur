@@ -1,0 +1,16 @@
+pkgbase = webone
+	pkgdesc = HTTP 1.x proxy that makes old web browsers usable again in the Web 2.0 world
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/atauenis/webone
+	arch = x86_64
+	depends = dotnet-runtime
+	depends = imagemagick
+	source = webone.sysusers
+	source = webone.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/atauenis/webone/releases/download/v0.16.1/webone.0.16.1.linux-amd64.rpm
+	sha256sums_x86_64 = 2228fcd067f30ec95737dd412e63d65ffae75e498c91c76834034226dfc3082f
+
+pkgname = webone
