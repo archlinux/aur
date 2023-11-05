@@ -5,14 +5,14 @@
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=3.1.9
-pkgver=3.1.9.r9.g5db2233
-pkgrel=2
+pkgver=3.1.9.r10.gcad7575
+pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
 license=(GPL)
 arch=(x86_64)
-depends=(lua53)
-makedepends=(git stack)
+makedepends=(git
+             stack)
 optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter'
             'pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
             'texlive-core: for pdf output')
@@ -27,12 +27,6 @@ pkgver() {
 		sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "$_pkgname"
-	# TODO: find a better solution
-	sed -i "s|let env' = dynlibEnv ++ |let env' = dynlibEnv ++ [(\"LD_LIBRARY_PATH\", \"$PWD/dist/build\")] ++ |" test/Tests/Command.hs
-}
-
 build() {
 	cd "$_pkgname"
 	stack setup
@@ -41,8 +35,6 @@ build() {
 		--ghc-options='-fdiagnostics-color=always' \
 		--flag 'pandoc:embed_data_files' \
 		--fast
-		# --flag 'hslua:system-lua' \
-		# --flag 'hslua:pkg-config' \
 }
 
 package() {
