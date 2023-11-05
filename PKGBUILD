@@ -38,7 +38,7 @@ package() {
     cd "$srcdir"
     install -Dm755 webmesh-node "$pkgdir/usr/bin/webmesh-node"
     install -Dm755 wmctl "$pkgdir/usr/bin/wmctl"
-    install -Dm755 webmeshd.service "$pkgdir/usr/lib/systemd/system/webmeshd.service"
+    install -Dm644 webmeshd.service "$pkgdir/usr/lib/systemd/system/webmeshd.service"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
