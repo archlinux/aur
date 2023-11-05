@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.2.beta9.r0.geb8417b610
+pkgver=10.2.rc0.r0.gebef87aa8d
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -82,6 +82,7 @@ depends=(brial
          sage-data-polytopes_db
          singular
          symmetrica
+         sympow
          tachyon
          threejs-sage)
 optdepends=('benzene: for generating fusenes and benzenoids'
