@@ -3,7 +3,7 @@
 
 pkgname=plasma5-themes-layan-git
 pkgver=r73.7ab7cd7
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat Design theme for KDE Plasma desktop"
 arch=(any)
 url="https://github.com/vinceliuice/Layan-kde"
@@ -13,6 +13,7 @@ optdepends=('kvantum: Better looking for application styles'
             'tela-icon-theme: Matching icon theme')
 provides=('layan-kde-git')
 replaces=('layan-kde-git')
+conflicts=('layan-kde-git')
 options=('!strip')
 source=("${pkgname%-git}::git+https://github.com/vinceliuice/Layan-kde.git")
 sha256sums=('SKIP')
