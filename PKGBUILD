@@ -15,7 +15,7 @@ pkgver=2.4.0
 #
 _commit=0b26dec9f03685117a3a78dc1c4ba1ac7d2d6980
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Deezer music source separation library and tool using pretrained models'
 url='https://github.com/deezer/spleeter'
 arch=('any')
@@ -35,7 +35,7 @@ checkdepends=('python-py' 'python-pytest' 'python-pytest-forked')
 makedepends=(
     'python-build'
     'python-installer'
-    'python-poetry'
+    'python-poetry-core'
     'python-wheel'
 )
 optdepends=('libsndfile: to perform evaluation')

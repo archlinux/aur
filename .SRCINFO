@@ -1,7 +1,7 @@
 pkgbase = spleeter
 	pkgdesc = Deezer music source separation library and tool using pretrained models
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deezer/spleeter
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = spleeter
 	checkdepends = python-pytest-forked
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry
+	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python-ffmpeg-python
 	depends = python-h2
