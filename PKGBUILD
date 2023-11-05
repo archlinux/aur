@@ -3,7 +3,7 @@ pkgver=0.16.1
 pkgrel=1
 pkgdesc='HTTP 1.x proxy that makes old web browsers usable again in the Web 2.0 world'
 url='https://github.com/atauenis/webone'
-depends=(dotnet-runtime imagemagick)
+depends=(dotnet-runtime-6.0 imagemagick)
 # Files are 100% identical between the .deb and the .rpm
 arch=(x86_64)
 source=(webone.sysusers
