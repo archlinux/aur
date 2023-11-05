@@ -2,7 +2,7 @@
 # Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=tagger
 _app_id=org.nickvision.tagger
-pkgver=2023.11.0
+pkgver=2023.11.1
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 optdepends=('yelp: in-app help')
 conflicts=('nickvision-tagger')
 replaces=('nickvision-tagger')
-_commit=b86ce1a15c0053a3dea339ab103d41d8fe239cc9  # tags/2023.11.0^0
+_commit=7e3c98e49bdf073cebbecc9cb7ccd394e424d362  # tags/2023.11.1^0
 source=("git+https://github.com/NickvisionApps/Tagger.git#commit=${_commit}"
         'git+https://github.com/NickvisionApps/CakeScripts.git')
 sha256sums=('SKIP'
