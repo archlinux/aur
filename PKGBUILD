@@ -80,10 +80,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.5.6.arch2.r1204766.7bf1ac0d46eb
+pkgver=6.6.arch1.r1220813.3e7fd3107b9b
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=6.5.6.arch2
+_srcver_tag=6.6.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -143,7 +143,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        '005c7e306101f99fc0211dbc7e63b13d37aec10d6e8aeb0120200894088e436cd9921675b7ae205df80d7505aceee3002c94ef9b2b1c6b4f571a24d1fd8678e5')
+        'ac6c6dfcbbac9bb718b406ddb39edcc60060f0ba09c7f62a0e6f2311b35bb04d680936bc4e81251ef829b0a632acf88aceaba5df44c080d8859af06927a39a20')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -267,8 +267,8 @@ _package() {
     ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-    # remove build and source links
-    rm "$modulesdir"/{source,build}
+    # remove build link
+    rm "$modulesdir"/build
 }
 
 _package-headers() {
