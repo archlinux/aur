@@ -4,7 +4,7 @@
 
 pkgname=nncp
 pkgver=8.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=('aarch64' 'x86_64')

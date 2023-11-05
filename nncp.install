@@ -6,7 +6,7 @@ post_install() {
 		systemd-sysusers nncp.conf
 
 		# Generate a default configuration (with a random private key)
-		install -m 0640 -o nncp -g nncp /dev/null etc/nncp/nncp.hjson
+		install -D -m 0640 -o nncp -g nncp /dev/null etc/nncp/nncp.hjson
 		usr/bin/nncp-cfgnew > etc/nncp/nncp.hjson
 	fi
 }

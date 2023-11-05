@@ -1,7 +1,7 @@
 pkgbase = nncp
 	pkgdesc = Node-to-Node Copy Protocol utilities for secure store-and-forward
 	pkgver = 8.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nncpgo.org/
 	install = nncp.install
 	arch = aarch64
