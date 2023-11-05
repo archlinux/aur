@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-network-git
 	pkgdesc = Network indicator for Wingpanel
-	pkgver = 2.2.4.r71.ga900f1a
+	pkgver = 7.0.2.r3.gce7c1a62
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-network
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = wingpanel-indicator-network-git
 	depends = glibc
 	depends = gtk3
 	depends = libgee
-	depends = libnm-glib
 	depends = networkmanager
 	depends = nm-connection-editor
 	depends = libgranite.so
