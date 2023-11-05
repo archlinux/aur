@@ -11,15 +11,18 @@
 # Optional settings:
 #_lto="true"      # Uncomment this line to enable CLANG-LTO
 
-_gitbranch="linux-rolling-stable"
+_gitroot="https://github.com/ericwoud/linux.git"
+_gitbranch="bpir-rolling-stable"
+#_gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux"
+#_gitbranch="linux-rolling-stable"
 #_gitbranch="linux-rolling-lts"
+#_gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next"
 #_gitbranch="main"
+#_gitroot="https://github.com/frank-w/BPI-Router-Linux.git"
+#_gitbranch="6.6-r3mini"
 
 pkgbase=linux-bpir64-git
 _srcname=linux
-_gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux"
-#_gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next"
-#_gitroot="https://github.com/frank-w/BPI-Router-Linux.git"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 pkgver=6.3.9.bpi
@@ -38,9 +41,8 @@ source=('defconfig'
         'mkinitcpio.hook'
         'mkinitcpio.build'
         'bpir-flash2emmc'
-        "src/configfs.c::https://github.com/Xilinx/linux-xlnx/raw/master/drivers/of/configfs.c"
 )
-md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 export CARCH=aarch64
 export LOCALVERSION=""
@@ -53,7 +55,7 @@ fi
 prepare() {
   if [[ -d "${srcdir}/${_srcname}/" ]]; then
     cd "${srcdir}/${_srcname}/"
-    git fetch --all
+    git fetch --all --depth=1
     echo "LOCAL  HEAD: $(git rev-parse HEAD)"
     echo "REMOTE HEAD: $(git rev-parse @{u})"
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
@@ -81,18 +83,16 @@ prepare() {
   )
 
   cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir_defconfig
+  if (( _ver > 6005 )); then
+    sed -i 's/CONFIG_MT7986_WMAC/CONFIG_MT798X_WMAC/g' ./arch/arm64/configs/bpir_defconfig
+  else
+    sed -i 's/CONFIG_MT798X_WMAC/CONFIG_MT7986_WMAC/g' ./arch/arm64/configs/bpir_defconfig
+  fi
   make ${MAKEFLAGS} $_llvm bpir_defconfig
   rm -vf ./arch/arm64/configs/bpir_defconfig
 
-  if [ ! -z "$(cat .config | grep CONFIG_OF_OVERLAY=y)" ]; then
-    cp -vf "${srcdir}/configfs.c" "./drivers/of/"
-    if [ -z "$(cat ./drivers/of/Makefile | grep configfs.o)" ]; then
-      echo -e "\nobj-y	+= configfs.o\n" >>./drivers/of/Makefile
-    fi
-    if (( _ver > 6005 )); then
-      sed -i '/of_overlay_fdt_apply/s/id);/id, NULL);/g' ./drivers/of/configfs.c
-    fi
-  fi
+  # Need to patch this in repo when kernel goes v6.6
+  #sed -i '/of_overlay_fdt_apply/s/id);/id, NULL);/g' ./drivers/of/configfs.c
 
   # get kernel version
   make ${MAKEFLAGS} $_llvm prepare

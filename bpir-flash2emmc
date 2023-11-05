@@ -66,6 +66,7 @@ if [[ "$compatible" == *"bananapi"*"mediatek,mt7622"* ]]; then # BPI-R64
   dd if="/tmp/mnt$1" of=/dev/${mmcblk} bs=1M conv=fsync,notrunc
   umount /tmp/mnt
 elif [[ "$compatible" == *"bananapi"*"mediatek,mt7986"* ]]; then # BPI-R3
+  [ ! -e "/sys/kernel/config/device-tree/overlays" ] && exit
   addr="11230000"
   mount -t configfs none /sys/kernel/config
   mmcblk=$(get_mmcblk)
