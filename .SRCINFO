@@ -22,7 +22,6 @@ pkgbase = pycharm-professional
 	optdepends = openssh: For deployment and remote connections
 	optdepends = python-setuptools: Packages manager for Python, for project interpreter
 	optdepends = python-coverage: For support code coverage measurement
-	optdepends = cython: For performance debugger
 	optdepends = docker-machine: For support docker inside Pycharm
 	optdepends = docker-compose: For support docker inside Pycharm
 	optdepends = vagrant: For support virtualized development environments
