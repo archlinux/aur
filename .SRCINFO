@@ -1,24 +1,25 @@
 pkgbase = audiveris-git
 	pkgdesc = Music score OMR engine - current
-	pkgver = 5.1.0.rc.r0.g0bf682689
-	pkgrel = 2
+	pkgver = 5.2.5.r290.g9e63f8c
+	pkgrel = 1
 	url = https://github.com/Audiveris/audiveris
-	arch = x86_64
+	arch = any
 	license = AGPL3
-	makedepends = java-environment>=7
-	makedepends = java-environment<=8
+	makedepends = java-environment>=17
 	makedepends = gradle
-	depends = java-runtime>=7
-	depends = java-runtime<=8
-	depends = tesseract-data-eng
+	makedepends = git
+	depends = java-runtime>=17
+	depends = tesseract
 	depends = freetype2
+	depends = hicolor-icon-theme
 	optdepends = tesseract-data: For languages other than english
-	provides = audiveris
+	optdepends = audiveris-doc: Documentation for Audiveris
 	conflicts = audiveris
-	source = audiveris-git::git+https://github.com/Audiveris/audiveris.git
+	source = audiveris-5.2.5.r290.g9e63f8c::git+https://github.com/Audiveris/audiveris.git
 	source = audiveris
+	source = audiveris.desktop
 	sha256sums = SKIP
 	sha256sums = 12223d402f4f6719051df7ab4776a82c7326c41f49403d4d1868c5b041678743
+	sha256sums = a3c48eeac63cfdf0b0e3fdf788d48d51d4bc32291fdeb159c2244178604a28aa
 
 pkgname = audiveris-git
-

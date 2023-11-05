@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Audiveris
+Comment=Music score OMR engine
+Icon=audiveris
+Exec=/usr/bin/audiveris
+Terminal=false
+Categories=AudioVideo;Audio;Music
