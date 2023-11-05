@@ -3,9 +3,9 @@
 _pkgname=magma-server
 _gamever=1.18.2
 pkgname=${_pkgname}-${_gamever%.*}
-pkgver=40.2.1
+pkgver=40.2.10
 pkgrel=1
-_rev=606f9b2c
+_rev=5fc5c9e8
 _mng_ver=1.0.2
 pkgdesc="Magma is the next generation of hybrid minecraft server softwares"
 arch=('any')
