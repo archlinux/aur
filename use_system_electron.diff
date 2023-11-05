@@ -1,0 +1,11 @@
+--- package.json	2023-10-27 23:17:00.329790716 +0100
++++ package.json	2023-10-27 23:17:14.039790456 +0100
+@@ -68,7 +68,8 @@
+             "package.json",
+             "LICENSE"
+         ],
+         "beforePack": "scripts/build/sandboxFix.js",
++        "electronDist": "/usr/lib/electron",
+         "linux": {
+             "icon": "build/icon.icns",
+             "category": "Network",

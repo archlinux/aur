@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vencord
+GenericName=Internet Messenger
+Comment=Vencord Desktop is a free/libre cross platform desktop app aiming to give you a snappier Discord experience with Vencord pre-installed
+Type=Application
+Exec=/usr/bin/vencord-desktop
+Icon=vencord
+Categories=Network;InstantMessaging;
+StartupWMClass=Vencord;
+Keywords=discord;vencord;

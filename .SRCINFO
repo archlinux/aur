@@ -1,0 +1,25 @@
+pkgbase = vencord-desktop
+	pkgdesc = A standalone Electron app that loads Discord & Vencord
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/Vencord/Vesktop
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = pnpm
+	makedepends = git
+	depends = electron
+	optdepends = libnotify: Notifications
+	optdepends = xdg-utils: Open links, files, etc
+	provides = vencord
+	conflicts = vencord
+	source = https://github.com/Vencord/Vesktop/archive/refs/tags/v0.4.3.tar.gz
+	source = vencord-desktop.desktop
+	source = vencord-desktop.sh
+	source = use_system_electron.diff
+	sha256sums = 50b527efe2cd4c329acc3d5209bd82fd7765504fb0241cad327b0d9bc5e2d084
+	sha256sums = SKIP
+	sha256sums = b1c9ce99ba545b0baaba0eb63e5bb7a2f88cf335f66d775f32fa139ce6b479ab
+	sha256sums = 6c0f1977fb304fb70a53625d99aa1dd6859597fb932e100c0021fd933cdd4616
+
+pkgname = vencord-desktop
