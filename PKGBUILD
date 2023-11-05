@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-zimg-git
-pkgver=3.0.5.150.g7143181
+pkgver=3.0.5.154.g108bfb7
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('x86_64')
@@ -22,8 +22,8 @@ provides=(
 )
 conflicts=('lib32-zimg')
 source=(
-  'git+https://github.com/sekrit-twc/zimg.git'
-  'git+https://github.com/sekrit-twc/graphengine.git'
+  'git+https://bitbucket.org/the-sekrit-twc/zimg.git'
+  'git+https://bitbucket.org/the-sekrit-twc/graphengine.git'
   'git+https://github.com/google/googletest.git'
 )
 sha256sums=(
