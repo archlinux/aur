@@ -18,4 +18,7 @@ package() {
 	mv ${srcdir}/etc ${pkgdir}
 	mv ${srcdir}/opt ${pkgdir}
 	mv ${srcdir}/usr ${pkgdir}
+
+	# Fix permissions on systemd unit
+	chmod -x ${pkgdir}/etc/systemd/system/windscribe-helper.service
 }
