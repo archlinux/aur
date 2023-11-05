@@ -1,7 +1,7 @@
 pkgbase = firefox-gnome-theme-45
 	pkgdesc = A GNOME theme for Firefox (GNOME 45 version)
-	pkgver = 82.r452.ga78c6e6
-	pkgrel = 2
+	pkgver = 119.r2.g3a02dce
+	pkgrel = 1
 	url = https://github.com/rafaelmardojai/firefox-gnome-theme
 	install = firefox-gnome-theme.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = firefox-gnome-theme-45
 	provides = firefox-gnome-theme
 	conflicts = firefox-gnome-theme
 	conflicts = firefox-gnome-theme-git
-	source = firefox-gnome-theme::git+https://github.com/garrett/firefox-gnome-theme.git#branch=gnome-45
+	source = firefox-gnome-theme::git+https://github.com/rafaelmardojai/firefox-gnome-theme.git#branch=gnome45
 	source = INSTALL.md
 	sha256sums = SKIP
 	sha256sums = f0fc2ccb43b813174e329fef74ab37a8cbfecd60168dbe05ccba999cfd8d222a
