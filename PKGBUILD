@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmnipathR
-_pkgver=3.9.7
+_pkgver=3.10.1
 pkgname=r-${_pkgname,,}
-pkgver=3.9.7
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='OmniPath web service client and more'
-arch=('any')
+pkgdesc="OmniPath web service client and more"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('MIT')
+license=(MIT)
 depends=(
-  r
   r-checkmate
   r-crayon
   r-curl
@@ -21,6 +21,7 @@ depends=(
   r-jsonlite
   r-later
   r-logger
+  r-lubridate
   r-magrittr
   r-progress
   r-purrr
@@ -30,6 +31,7 @@ depends=(
   r-rlang
   r-rmarkdown
   r-rvest
+  r-stringi
   r-stringr
   r-tibble
   r-tidyr
@@ -37,6 +39,9 @@ depends=(
   r-withr
   r-xml2
   r-yaml
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocstyle
@@ -51,20 +56,29 @@ optdepends=(
   r-parallelmap
   r-paramhelpers
   r-rgraphviz
+  r-sigmajs
   r-smoof
   r-suprahex
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aa566eded112113cb512f7db310a1b5c38d8be6a7c23bbfd0a075d306ad68334')
+md5sums=('c51296b40e8d580f14dc3ff6839495f6')
+sha256sums=('99c3976d8f1e48dc00f5208ee100e8f24e97138cbfef917bdcfaaf0327597ff1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
