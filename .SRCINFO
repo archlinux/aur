@@ -1,6 +1,6 @@
 pkgbase = graphenex
 	pkgdesc = Automated System Hardening Framework
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/grapheneX/grapheneX
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = graphenex
 	depends = python-pyinquirer
 	depends = python-psutil
 	depends = python-colorama
-	source = https://files.pythonhosted.org/packages/source/g/graphenex/graphenex-1.4.3.tar.gz
-	sha512sums = fdbf831da0f268e07bf498a4ef98865fe96e79c156b9e64e633542f19d8beef18c388a843e422202e1b8ce08dac07a450b5941703e63605639c21d331549ec28
+	source = https://files.pythonhosted.org/packages/source/g/graphenex/graphenex-1.5.0.tar.gz
+	sha512sums = 12c5fc76ecf9c0a48a409cd9a4c4dc602bf17c91f0b6a22e86574af79d631b5232838a7bf045603e01352e2825636a61272bb7a806ccc5b4a14a8bdb92d45925
 
 pkgname = graphenex
