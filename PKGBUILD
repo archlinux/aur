@@ -9,6 +9,19 @@ arch=('x86_64')
 url=https://github.com/berinaniesh/ucf
 license=('MIT')
 depends=('gcc-libs')
+optdepends=('black: python files'
+            'clang-format: java, c, c++, json files'
+            'cmake-format: cmake files'
+            'go: go-fmt for go files'
+            'ocamlformat: ocaml files'
+            'prettier: html, md, js files'
+            'rustfmt: rs files'
+            'shfmt: sh, ebuild files'
+            'stylish-haskell: hs files'
+            'stylua: lua files'
+            'taplo: toml files'
+            'xmllint: xml files'
+            'zig: zig fmt for zig files')
 makedepends=('cargo')
 provides=("${pkgname}")
 options=('!lto')
