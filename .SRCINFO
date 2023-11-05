@@ -1,6 +1,6 @@
 pkgbase = semaphore-git
 	pkgdesc = Modern UI for Ansible
-	pkgver = v2.8.92.r7.4eb6149
+	pkgver = v2.9.39.beta.r2.85d9936
 	pkgrel = 1
 	url = https://github.com/ansible-semaphore/semaphore
 	arch = any
@@ -14,6 +14,8 @@ pkgbase = semaphore-git
 	provides = semaphore
 	conflicts = semaphore
 	source = semaphore::git+https://github.com/ansible-semaphore/semaphore.git
+	source = packr-semaphore::https://cloud.rys.pw/s/fs9sPjLcMbHDNNz/download/packr
 	sha256sums = SKIP
+	sha256sums = f1e4e41de6c416aac8a8c3d780c5d9fd56ad8358bb245f5d6f0f4c24b1ffb214
 
 pkgname = semaphore-git
