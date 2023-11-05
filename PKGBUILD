@@ -1,17 +1,19 @@
-# Maintainer: yukichan
+# Maintainer: knedl1k <knedl1k At tuta Dot io>
+# Contributor: yukichan
 
 pkgname=yuki-iptv
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
 license=('GPL3')
 makedepends=('make')
-depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'ffmpeg')
+depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-unidecode' 
+         'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'python-wand' 'ffmpeg')
 optdepends=('yt-dlp: YouTube channel support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('20b45eac9fbd72b950ecca1b3e4cdf1be246a965bbdbd56ffed757da0819d2a11495791f026b214456c2aa453a86af61feea276bedaa2e38d4a2505939a66c7d')
+sha256sums=('56bd1b67af94f9c4b03e7d7489dd468363101aa6db61e4ef340e6fb00d38b8d7')
 
 prepare() {
         cd "${pkgname}-${pkgver}"
