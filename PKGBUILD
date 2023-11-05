@@ -2,7 +2,7 @@
 
 pkgname=bookstack
 _camelname=BookStack
-pkgver=23.10
+pkgver=23.10.1
 pkgrel=1
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
@@ -14,8 +14,14 @@ depends=(
 	'php-fpm'
 )
 makedepends=('composer')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz")
-sha256sums=('793be0bea3fd18b8be397bb5b7dd12bbe1e3f0a91c40de757efae2993118ed2b')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz"
+	'bookstack.conf'
+)
+sha256sums=(
+	'817663a26a62cd55e9c6d4f2d69ba1427bc2d3de98b69de9b3eba5f710c24cc8'
+	'd4a030aa94d16c969b3491890712e89d1f6bc522b518b043d622efa3da926bec'
+)
 options=('!strip')
 backup=("etc/webapps/$pkgname/config.env")
 
@@ -33,12 +39,11 @@ package() {
 	rm -rf "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
 	mkdir -p "$pkgdir/var/cache/$pkgname"
-	chown http:http "$pkgdir/var/cache/$pkgname"
 	ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
 	mkdir -p "$pkgdir/var/lib"
 	mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
-	chown -R http:http "$pkgdir/var/lib/$pkgname"
-	chmod 775 "$pkgdir/var/lib/$pkgname"
 	ln -s "/var/lib/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/storage"
+
+	install -Dm644 "${srcdir}/../bookstack.conf" "${pkgdir}/usr/lib/tmpfiles.d/bookstack.conf"
 }
