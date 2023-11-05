@@ -1,12 +1,12 @@
 pkgbase = rascii
 	pkgdesc = Advanced image to ASCII art tool & crate written in Rust crabrocket.
-	pkgver = 1
-	pkgrel = 0
-	url = https://github.com/KoBruhh/RASCII
+	pkgver = 0.3
+	pkgrel = 4
+	url = https://github.com/UTFeight/RASCII
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = git+https://github.com/KoBruhh/RASCII.git
+	source = git+https://github.com/UTFeight/RASCII.git
 	sha256sums = SKIP
 
 pkgname = rascii

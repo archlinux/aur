@@ -1,12 +1,12 @@
 # Maintainer: BadBoy <luckmelove2@gmail.com>
 
 pkgname=('rascii')
-pkgver=1
-pkgrel=0
+pkgver=0.3
+pkgrel=4
 pkgdesc='Advanced image to ASCII art tool & crate written in Rust crabrocket.'
 arch=('x86_64')
 license=('MIT')
-url='https://github.com/KoBruhh/RASCII'
+url='https://github.com/UTFeight/RASCII'
 makedepends=('rust')
 
 
