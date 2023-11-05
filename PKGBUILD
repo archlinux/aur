@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Kerrick Staley <kerrick@kerrickstaley.com>
 # Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
@@ -60,7 +60,6 @@ makedepends+=(
   python
 )
 optdepends=(
-  'chaotic-interfere: chaotic-aur interference tracker'
   'pulseaudio: PulseAudio backend'
 )
 

@@ -41,7 +41,6 @@ pkgbase = dolphin-emu-debugfast-git
 	depends = fmt
 	depends = libspng
 	depends = mbedtls2
-	optdepends = chaotic-interfere: chaotic-aur interference tracker
 	optdepends = pulseaudio: PulseAudio backend
 	provides = dolphin-emu
 	conflicts = dolphin-emu
