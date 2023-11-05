@@ -4,10 +4,10 @@ _pkgname=proBatch
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=1.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for Diagnostics and Corrections of Batch Effects in Proteomics'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -46,7 +46,7 @@ optdepends=(
   r-spelling
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('32705297e21273d3910f4c07d5b7aa64c49783d5c6ea02b356bab6b083812d1d')
 
 build() {
