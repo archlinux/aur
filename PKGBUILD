@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-blazarclient
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc='Client library for the Blazar API'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -13,7 +13,7 @@ depends=('python-pbr' 'python-cliff' 'python-prettytable' 'python-oslo-i18n'
 checkdepends=('python-oslotest' 'python-fixtures' 'python-stestr'
               'python-testtools')
 source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('2063a1426360a5685020c8dda1908956e715ce3f55b1b106ed1a4f4ea7d8a299741339f8f361f31f214c745932742debfd26ebe9d88b2c5d586bef5a551b9ae9')
+sha512sums=('0da4793055b0a66c1c57baa88ba8bbdd615ae4f3c4fabb2da39f4f4b0cb6074e693d6e481b449069da00c41353a5922c02e280057a45a4b9b24eeb58a4645563')
 
 export PBR_VERSION=$pkgver
 
