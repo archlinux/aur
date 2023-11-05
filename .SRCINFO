@@ -1,7 +1,7 @@
 pkgbase = gnome-clocks-waked
 	pkgdesc = Clocks applications for GNOME (version with waked support)
 	pkgver = 45.0
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://wiki.gnome.org/Apps/Clocks
 	arch = x86_64
 	arch = aarch64
@@ -23,11 +23,15 @@ pkgbase = gnome-clocks-waked
 	provides = gnome-clocks
 	conflicts = gnome-clocks
 	source = git+https://gitlab.gnome.org/GNOME/gnome-clocks.git#commit=b1c6ff122488fea47833108f7f661481b9b9574a
+	source = https://github.com/lectrode/gnome-clocks-waked/raw/main/alarm-clock-elapsed.oga
+	source = https://github.com/lectrode/gnome-clocks-waked/raw/main/complete.oga
 	source = 0001-invoke-waked-when-an-alarm-changes.patch
 	source = 0002-Add-argument-to-start-initial-instance-in-the-backgr.patch
 	source = 0003-add-lock-screen-actions.patch
 	source = gnome-clocks.desktop
 	b2sums = SKIP
+	b2sums = 29a248193023ab57bc011dd78eae7aa6b2c4cc4845e4bc92d4a2ba098958cc5d9f1a6454d0c081c4cfe0653b10a22ae52072f4fc0073fd607ab893a19ff4a1c1
+	b2sums = cd53b6d52a3ae4a147d5964015e07ca4d5c2e061aa70f3f2c5ba5af0ea664ff8be505926f366e4e8edbbc14a076f956b76cea57e68e45d2013d28c7de78354e6
 	b2sums = f63bd443f2a95b0acfc40989cdaf5b02a857fda14949731e5cdda341e8a26dcd2740bc885bf93087f25224820f1abfdc581919f16f4c47c5591e3348d6917a47
 	b2sums = 940e1bc2d1756bf8c9f7ad26c5b58a6aeb9eb2110f2ab483e6789c32336d54af2679271f5823b5ad8aabf4643cdbb97624440696606f606a64b69379eee31708
 	b2sums = fcb286f9e4ed9381aa0c6ae46c4f4b27126d1e1236e59dec4f8fd564a5fe9f9c7041764e2ce3dc38af7393a0235aa41753167ad99434ba2ddbaf4e47fe12f8d5
