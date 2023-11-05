@@ -1,7 +1,7 @@
 pkgbase = python-ticktick-py
 	pkgdesc = Unofficial API library for interacting with TickTick.com
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ticktick-py/
 	arch = any
 	license = MIT

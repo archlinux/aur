@@ -3,7 +3,7 @@
 pkgname=python-ticktick-py
 _reponame=ticktick-py
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial API library for interacting with TickTick.com"
 url="https://pypi.org/project/${_reponame}/"
 arch=(any)
@@ -21,7 +21,7 @@ sha256sums=(
 
 prepare() {
 	cd "$srcdir/${_reponame}-$pkgver"
-	git apply "$srcdir/password-login.patch"
+	patch -p1 < "$srcdir/password-login.patch"
 }
 
 build() {
