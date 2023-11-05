@@ -1,7 +1,7 @@
 # Maintainer: Peltoche <pierre.peltier@protonmail.com>
 pkgname=duckcloud
 pkgver=23.10.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A cloud for your family"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -46,7 +46,7 @@ package() {
     install -Dm644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licences/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin/"
 }
