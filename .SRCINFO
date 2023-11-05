@@ -1,0 +1,18 @@
+pkgbase = undiet
+	pkgdesc = Diet decompression library.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/bokic/undiet
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = glibc
+	source = undiet-0.1.tar.gz::https://github.com/bokic/undiet/archive/0.1.tar.gz
+	sha256sums = aa1cf79e6b052181bc11e9e26337bbdfd9eb9d1d5d31b56a682c8aba8dc2df4a
+
+pkgname = undiet
