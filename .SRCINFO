@@ -1,6 +1,6 @@
 pkgbase = moonlight-qt-bin
 	pkgdesc = moonlight-qt bin from appimage
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://moonlight-stream.org
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = moonlight-qt-bin
 	provides = moonlight-qt
 	conflicts = moonlight-qt
 	options = !strip
-	source = moonlight-qt-5.0.0.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v5.0.0/Moonlight-5.0.0-x86_64.AppImage
+	source = moonlight-qt-5.0.1.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v5.0.1/Moonlight-5.0.1-x86_64.AppImage
 	source = launcher.sh
-	sha256sums = 0271896d329c1ff0ac47e4acd3c456e9045fedefc1752f4d10411a379b141a7a
+	sha256sums = c2bfdc93537333e1a2c1ba3eae66fa1b1a9f537fc60b3df7cabc8dff1b7f18cd
 	sha256sums = 7dc324b4621067c01c1ea91570dec230fb43735f48f5f9eac91b0e487070a79d
 
 pkgname = moonlight-qt-bin
