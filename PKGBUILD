@@ -3,32 +3,34 @@
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=4.0.3.r194.g84f9d01e7
+pkgver=4.0.3.r354.g9cadcbdb8
 pkgrel=1
 epoch=2
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
 arch=('i686' 'x86_64')
 url="http://www.transmissionbt.com/"
 license=('MIT')
-depends=(
-	gtkmm-4.0
-	libb64
-	libdeflate
-	libnatpmp
-	miniupnpc
-)
 makedepends=(
 	cmake
 	curl
 	dht
 	glibmm-2.68
 	gtk4
+	gtkmm-4.0
 	intltool
+	libb64
+	libdeflate
 	libevent
+	libnatpmp
+	miniupnpc
 	ninja
 	npm
+	qt6-base
+	qt6-svg
+	qt6-tools
 	systemd
 )
+
 optdepends=('notification-daemon: Desktop notification support'
   	    'transmission-cli: daemon and web support')
 provides=(transmission-gtk)
