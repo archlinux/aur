@@ -7,7 +7,11 @@ pkgdesc='Beautiful Cursors themes'
 arch=('any')
 url='https://github.com/wo2ni/Oxygen-Cursors'
 license=('GPL3')
-depends=('lxappearance' 'libx11' 'libxcursor' 'libpng')
+depends=('libx11' 'libxcursor' 'libpng')
+optdepends=(        
+    'lxappearance'
+    'gnome-tweaks'
+)
 source=("https://github.com/wo2ni/Oxygen-Cursors/releases/download/${pkgver}/${pkgname}.tar.bz2"
 )
 
