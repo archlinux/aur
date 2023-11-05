@@ -1,16 +1,21 @@
 pkgbase = gesture-manager-git
-	pkgdesc = Graphical manager for setting libinput-gestures touchpad gestures.
-	pkgver = 0.1
+	pkgdesc = Graphical manager for setting libinput-gestures touchpad gestures
+	pkgver = r11.48821e2
 	pkgrel = 1
 	url = https://github.com/gabmus/gestureManager
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = git
-	depends = libinput-gestures
-	depends = xf86-input-libinput
-	depends = gtk3>=3.18,python
-	source = gesturemanager::git+git://github.com/gabmus/gestureManager
-	md5sums = SKIP
+	provides = gesture-manager
+	conflicts = gesture-manager
+	source = gesture-manager::git+https://github.com/gabmus/gestureManager.git
+	sha256sums = SKIP
 
 pkgname = gesture-manager-git
-
+	depends = gobject-introspection-runtime
+	depends = gtk3
+	depends = libinput-gestures
+	depends = perl
+	depends = python
+	depends = python-gobject
+	depends = xf86-input-libinput
