@@ -1,0 +1,31 @@
+pkgbase = hepmc
+	pkgdesc = A particle physics package for storing collision events from Monte Carlo generators
+	pkgver = 3.2.6
+	pkgrel = 6
+	url = https://hepmc.web.cern.ch/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gcc-fortran
+	makedepends = graphviz
+	makedepends = hepmc2
+	makedepends = pythia8
+	makedepends = python
+	makedepends = root
+	makedepends = protobuf
+	source = hepmc-3.2.6.tar.gz::https://hepmc.web.cern.ch/hepmc/releases/HepMC3-3.2.6.tar.gz
+	sha256sums = 248f3b5b36dd773844cbe73d51f60891458334b986b259754c59dbf4bbf1d525
+
+pkgname = hepmc
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	optdepends = hpmc-docs: for documentation
+	optdepends = pythia8: Pythia support
+	optdepends = python: Python interface
+	optdepends = root: ROOT I/O
+	optdepends = protobuf: Protocol Buffers I/O
+
+pkgname = hepmc-docs
+	pkgdesc = A particle physics package for storing collision events from Monte Carlo generators - documentation
