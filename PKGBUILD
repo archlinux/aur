@@ -27,7 +27,7 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.2.3.r130.g92916d98
+pkgver=1.2.4.r399.g03d28005
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -68,7 +68,7 @@ if [ "${_opt_FLUTTER}" -eq 0 ]; then
   source+=("https://raw.github.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so")
 else
   if [ "${_opt_SYS_FLUTTER}" -eq 0 ]; then
-    _FLUVER='3.10.6'
+    _FLUVER='3.13.9'
     source+=(
       "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUVER}-stable.tar.xz"
       #"flutter_rust_bridge-${_FRBVER}.tar.gz::https://pub.dev/packages/flutter_rust_bridge/versions/${_FRBVER}.tar.gz" # bad packaging
@@ -78,7 +78,7 @@ else
     makedepends+=('flutter')
   fi
   if :; then
-    _FRBVER='1.75.0'
+    _FRBVER='1.80.0'
     source+=(
       "flutter_rust_bridge-${_FRBVER}.tar.gz::https://github.com/fzyzcjy/flutter_rust_bridge/archive/refs/tags/v${_FRBVER}.tar.gz"
     )
@@ -90,16 +90,16 @@ md5sums=('SKIP'
          '82e5e527336b41281a582204db1f3457'
          '357dc26a802c34387512a42697846d16'
          '10cf85debdd07be719a35ca3bfb8ea64'
-         '97115fa5fc6d8d63bdf13dc57fc20861'
-         '9cb4a6717db959e082db75200e75d3e1')
+         '1a6bd6b3a87f09b5c87a8d3a3cca0097'
+         'a63659fb966758db9fe95e5aae89757a')
 sha256sums=('SKIP'
             '149e0cee002e59e0bb84543cf3cb099f108c08390392605e944daeb6594cbc29'
             '7ee7f467a1a747c5b5e02342904af9c24e84df4ca993541f1c4d0f113cab27aa'
             '965e51c91ad9851e2337aebcc0f517440c637c506f3a03948062e3d5ea129a83'
             'a78b05c0d8427a90eb5b4eb08af25309770c8379592bb0b8a863373128e6143f'
             'f1acc15d0fd0cb431f4bf6eac32d5e932e40ea1186fe78e074254d6d003957bb'
-            '7048e51a89c99a5b6cac6d8ae416121264effa76da34dba5c0e7cf85519c8e98'
-            '6efb71ac8086699da74dad6736c32ddb20db5dcabe167c49a8c3a650675eb84b')
+            'b6bc6f93423488c67110e0fe56523cd2260f3a4c379ed015cd1c7fab66362739'
+            'b3a05ffca1f57afa48bd006d732969146dafa164c71390070623ba569977f9d3')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
 noextract=("${_vcs[@]}")
@@ -222,6 +222,7 @@ new_toml_string = toml.load('Cargo.toml')
 print(new_toml_string.get('dependencies').get('flutter_rust_bridge').get('version'))
 "
     _flutter_rust_bridge="$(python -c "${_pyfrb}")"
+    _flutter_rust_bridge="${_flutter_rust_bridge#=}"
     if [ "$(vercmp "${_flutter_rust_bridge}" "${_FRBVER%.0}")" -gt 0 ]; then
       printf 'flutter_rust_bridge version has changed to %s\n' "${_flutter_rust_bridge}"
       set +u
