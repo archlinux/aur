@@ -1,7 +1,7 @@
 pkgbase = r-treetools
 	pkgdesc = Create, Modify and Analyse Phylogenetic Trees
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=TreeTools
 	arch = x86_64
 	license = GPL3
