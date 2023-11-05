@@ -22,7 +22,7 @@ pkgver=0.1.5
 pkgrel=2
 pkgdesc='Auto-enable Wayland (ozone) for apps that come with a vendored Electron'
 arch=('any')
-url='https://aur.archlinux.org/packages/electron-blur-me-not'
+url='https://aur.archlinux.org/pkgbase/electron-blur-me-not'
 license=('Apache')
 options=('!strip')
 
