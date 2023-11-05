@@ -1,13 +1,13 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=ssimulacra
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Structural SIMilarity Unveiling Local And Compression Related Artifacts"
 arch=('x86_64')
 url="https://github.com/cloudinary/ssimulacra"
 license=('Apache')
-depends=('opencv' 'boost-libs')
-makedepends=('boost')
+depends=('opencv')
+makedepends=('boost' 'git')
 source=('git+https://github.com/cloudinary/ssimulacra.git#commit=375726b13f9dec2a01950e6710e7e9f488c52ea3'
         'opencv4.patch')
 sha512sums=('SKIP'
