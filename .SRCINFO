@@ -1,13 +1,15 @@
 pkgbase = makepkg-cg
 	pkgdesc = A makepkg wrapper using Control Groups via systemd.resource-control
-	pkgver = 0.2.1.pre
+	pkgver = 0.2.2.pre
 	pkgrel = 1
 	url = https://github.com/ctrlcctrlv/makepkg-cg
 	arch = any
 	license = Apache
 	depends = systemd
 	depends = bash
-	source = https://github.com/ctrlcctrlv/makepkg-cg/archive/refs/tags/v0.2.1.pre.tar.gz
-	sha256sums = 581c073337a3d703ff99e60ed216b12a5d53d92e35cf128a614e2a6633bb0e9a
+	optdepends = docker: for makedockerpkg-cg
+	optdepends = makechrootpkg: for makechrootpkg-cg
+	source = https://github.com/ctrlcctrlv/makepkg-cg/archive/refs/tags/v0.2.2.pre.tar.gz
+	b2sums = 6ab4872547ed053ac4efdb968a7aced85ce620fb46be68127f0425c2bf77ca54f2256428572fb198fc5761137b7f40042ab0c0d439aad017a106a55b21007f26
 
 pkgname = makepkg-cg

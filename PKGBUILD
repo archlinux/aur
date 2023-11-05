@@ -1,35 +1,51 @@
+#!/bin/hint/bash
 # Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
 
 pkgname=makepkg-cg
 _ghuser=ctrlcctrlv
-#pkgver='0.2.0'
-pkgver='0.2.1.pre'
+pkgver='0.2.2.pre'
+#_pkgver="${pkgver%%.pre}"
+_pkgver="$pkgver"
 pkgrel=1
 pkgdesc="A makepkg wrapper using Control Groups via systemd.resource-control"
 arch=('any')
-url="https://github.com/ctrlcctrlv/makepkg-cg"
+url="https://github.com/${_ghuser}/${pkgname}"
 license=('Apache')
 depends=('systemd' 'bash')
-#source=("$pkgname-$pkgver.tar.gz")
-source=("https://github.com/$_ghuser/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-#sha256sums=(SKIP)
-sha256sums=('581c073337a3d703ff99e60ed216b12a5d53d92e35cf128a614e2a6633bb0e9a')
+optdepends=('docker: for makedockerpkg-cg'
+            'makechrootpkg: for makechrootpkg-cg')
+source=("https://github.com/${_ghuser}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('6ab4872547ed053ac4efdb968a7aced85ce620fb46be68127f0425c2bf77ca54f2256428572fb198fc5761137b7f40042ab0c0d439aad017a106a55b21007f26')
+
+build() {
+  cd "${srcdir}/${pkgname}-${_pkgver}"
+
+  make all
+}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_pkgver}"
 
-  #CFLAGS="" make
-  
+  local INSTALL='install -v'
+
   mkdir -p "${pkgdir}/usr/share/makepkg-cg"
-  install -Dm644 "inner.sh" "${pkgdir}/usr/share/makepkg-cg/inner.sh"
+  ${INSTALL} -Dm644 "inner.sh" "${pkgdir}/usr/share/makepkg-cg/inner.sh"
   # Install the makepkg-cg script
-  install -Dm755 makepkg-cg "${pkgdir}/usr/bin/makepkg-cg"
-  install -Dm755 makechrootpkg-cg "${pkgdir}/usr/bin/makechrootpkg-cg"
-  install -Dm755 makedockerpkg-cg "${pkgdir}/usr/bin/makedockerpkg-cg"
+  ${INSTALL} -Dm755 makepkg-cg "${pkgdir}/usr/bin/makepkg-cg"
+  command -v makechrootpkg >/dev/null 2>&1 && \
+    ${INSTALL} -Dm755 makechrootpkg-cg "${pkgdir}/usr/bin/makechrootpkg-cg" || \
+    warning "makechrootpkg not found, not installing makechrootpkg-cg"
+  command -v docker >/dev/null 2>&1 && \
+    ${INSTALL} -Dm755 makedockerpkg-cg "${pkgdir}/usr/bin/makedockerpkg-cg"
   
   # Install the eBPF program
-  # install -Dm755 makepkg-cg-prio/makepkg-cg-prio.bpf.o "${pkgdir}/usr/share/makepkg-cg/makepkg-cg-prio.bpf.o"
+  # ${INSTALL} -Dm755 makepkg-cg-prio/makepkg-cg-prio.bpf.o "${pkgdir}/usr/share/makepkg-cg/makepkg-cg-prio.bpf.o"
 
   # Install the makepkg-cg configuration file
-  install -Dm644 "doc/makepkg-cg.conf" "${pkgdir}/usr/share/makepkg-cg/makepkg-cg.conf"
+  ${INSTALL} -Dm644 "doc/makepkg-cg.conf" "${pkgdir}/usr/share/makepkg-cg/makepkg-cg.conf"
+
+  # Install readme
+  ${INSTALL} -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
+
+# vim:set ts=2 sw=2 et:
