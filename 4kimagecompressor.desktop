@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Name=4K Image Compressor
+GenericName=4K Image Compressor
+Comment=Reduce file size of JPEG, PNG, WEBP and more
+Exec=4kimagecompressor
+Terminal=false
+Type=Application
+Icon=4kimagecompressor
+Categories=Network;Qt;
+StartupWMClass=4kimagecompressor-bin
+StartupNotify=true
+

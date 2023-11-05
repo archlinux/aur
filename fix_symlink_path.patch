@@ -1,0 +1,12 @@
+diff -Naur 4kimagecompressor.orig/4kimagecompressor.sh 4kimagecompressor/4kimagecompressor.sh
+--- 4kimagecompressor.orig/4kimagecompressor.sh	2023-09-20 12:58:11.000000000 +0200
++++ 4kimagecompressor/4kimagecompressor.sh	2023-11-05 22:47:15.591263727 +0100
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ 
+-SCRIPT_DIR=$(dirname "$0")
+-SCRIPT_DIR=`cd "$SCRIPT_DIR"; pwd` #make path absolute
++SCRIPT_DIR=$(dirname $(readlink -f "$0"))
+ 
+ LD_LIBRARY_PATH=$SCRIPT_DIR
+ export LD_LIBRARY_PATH
