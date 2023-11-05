@@ -1,0 +1,15 @@
+pkgbase = pypipe
+	pkgdesc = Python command-line tool for pipeline processing
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bugen/pypipe
+	arch = any
+	license = Apache
+	depends = python
+	options = !strip
+	source = pypipe-0.2.0.tar.gz::https://github.com/bugen/pypipe/archive/v0.2.0.tar.gz
+	source = test.csv
+	sha512sums = f672b5fc12d6adde563289885a1005a3b7f93e43363c49cecb4fb7eba531594da831097ef68feac6afbc8608646dab359ec78e9ce872a2f05ad7a5b2dcfae58b
+	sha512sums = 1ec418fd1a274fd2f02e393aa53126c662ff1285479d960d3c953749399898fda8028f4cfa600a9c1e4906f911f496fedd0df39ff42714d651f1fa5ea0caa6dc
+
+pkgname = pypipe
