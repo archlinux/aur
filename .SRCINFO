@@ -1,0 +1,13 @@
+pkgbase = r-matrixeqtl
+	pkgdesc = Matrix eQTL: Ultra Fast eQTL Analysis via Large Matrix Operations
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=MatrixEQTL
+	arch = any
+	license = LGPL3
+	depends = r
+	source = https://cran.r-project.org/src/contrib/MatrixEQTL_2.3.tar.gz
+	md5sums = a0fef869db8c28dc36a72fe62afd1309
+	sha256sums = 881acaba080a836e71302f06b11cbc78c6a5fdbc89d6c8979b84c81657812683
+
+pkgname = r-matrixeqtl
