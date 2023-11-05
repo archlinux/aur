@@ -1,25 +1,24 @@
-# Maintainer: 3ED <krzysztofas /at/ protonmail /dot/ com>
-# Contributor: jtts
-
+# Maintainer: Allddd <allddd (at) proton (dot) me>
+_path='3710/1697301266'
 pkgname=libreoffice-extension-languagetool
-_pkgname=languagetool
-pkgver=6.0
+pkgver=6.3
+_filename="LanguageTool-${pkgver}.oxt"
 pkgrel=1
-_url_obfuscation_code="3710/1673297554"
-pkgdesc="An Open Source style and grammar checker (more than 30 languages)"
+pkgdesc='An Open Source style and grammar checker (more than 30 languages)'
 arch=('any')
-url="https://www.languagetool.org/"
+url='https://languagetool.org'
 license=('LGPL')
 groups=('libreoffice-extensions')
 depends=('libreoffice' 'java-runtime>=8')
-optdepends=('jre8-openjdk: java 8 or greater is required')
-source=("LanguageTool-${pkgver}.oxt::https://extensions.libreoffice.org/assets/downloads/${_url_obfuscation_code}/LanguageTool-${pkgver}.oxt")
-noextract=("LanguageTool-${pkgver}.oxt")
-sha512sums=('3c1635c23e4624346001cbaf586c1c4d087f725dca35f8ef1f446e7bf19c0718b98bdf862d582c3e90ecd5525d5ddc37ab2945019b426546edd6c8c70a0b54ec')
+source=("${_filename}::https://extensions.libreoffice.org/assets/downloads/${_path}/${_filename}")
+noextract=("${_filename}")
+sha256sums=('bf1d251d38b3efbcdc742ba4bbabb234151d9b59bb98bdcf4cd512115db604e7')
 
 package() {
-  _DESTDIR="${pkgdir}/usr/lib/libreoffice/share/extensions/${_pkgname}/"
-  install -dm755 "${_DESTDIR}"
-  bsdtar -xf LanguageTool-${pkgver}.oxt -C "${_DESTDIR}"
-  chmod -R a=r,a+X,u+w "${_DESTDIR}"
+    local _dest="${pkgdir}/usr/lib/libreoffice/share/extensions/languagetool/"
+    install -dm755 "${_dest}"
+    bsdtar -xf "${_filename}" -C "${_dest}"
+    find "${_dest}" \( -type d -exec chmod 755 {} \; \) -o \( -type f -exec chmod 644 {} \; \)
 }
+
+# vim: ts=4 sw=4 et:
