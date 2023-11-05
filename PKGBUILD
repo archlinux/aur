@@ -4,8 +4,8 @@
 # Contributor: Xwang <xwaang1976@gmail.com>
 _base=SU2
 pkgname=${_base,,}
-pkgver=7.5.1
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://${pkgname}code.github.io"
 license=(LGPL2.1)
