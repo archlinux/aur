@@ -1,7 +1,7 @@
 pkgbase = python-muranoclient
 	pkgdesc = Python client library for Murano
-	pkgver = 2.6.0
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://docs.openstack.org/python-muranoclient/
 	arch = any
 	license = Apache
@@ -31,7 +31,7 @@ pkgbase = python-muranoclient
 	depends = python-oslo-utils
 	depends = python-oslo-log
 	depends = python-oslo-i18n
-	source = https://opendev.org/openstack/python-muranoclient/archive/2.6.0.tar.gz
-	sha512sums = d1e73369eccb114aa4793f3c2109f604d7d8a4d17fa0cf79d6550cd3e10cb254eee720a95460acec6707e87c03526b8dabfafea806f463c8f93358153290516c
+	source = https://opendev.org/openstack/python-muranoclient/archive/2.7.0.tar.gz
+	sha512sums = e1904e8c4d87d9c17e0b5ea786f7d9794fa0cdaab2326e65eb214fc12d92028411d9a4a34c39b0d38357ccebecabaf1a1b5f858f11218b9a6cf793440db9d25b
 
 pkgname = python-muranoclient
