@@ -1,13 +1,13 @@
 pkgbase = can-utils
 	pkgdesc = Linux-CAN / SocketCAN user space applications
-	pkgver = 2021.08.0
+	pkgver = 2023.03
 	pkgrel = 1
 	url = https://github.com/linux-can/can-utils
 	arch = x86_64
 	arch = armv6h
-	license = GPLv2
+	license = GPL2
 	conflicts = can-utils-git
-	source = can-utils-2021.08.0.tar.gz::https://github.com/linux-can/can-utils/archive/v2021.08.0.tar.gz
-	sha256sums = c9b8f29515ad34af7f78450ec55c983abc5393e86b1f128a92ac0dfd141baaf7
+	source = can-utils-2023.03.tar.gz::https://github.com/linux-can/can-utils/archive/v2023.03.tar.gz
+	sha256sums = 2790dfb57fe3ec22b6fd512838c6480c39f7c9ae193e59f1ae01221216505a7e
 
 pkgname = can-utils
