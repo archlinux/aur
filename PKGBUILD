@@ -24,7 +24,7 @@ sha256sums=("SKIP"
 
 pkgver(){
 cd "${srcdir}/${pkgname}"
-printf "2.0.2.%s" "$(git rev-parse --short HEAD)"
+printf "2.0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
