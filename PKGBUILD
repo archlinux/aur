@@ -4,10 +4,10 @@ _pkgname=MIGSA
 _pkgver=1.21.0
 pkgname=r-${_pkgname,,}
 pkgver=1.21.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Massive and Integrative Gene Set Analysis'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -47,7 +47,7 @@ optdepends=(
   r-migsadata
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f5b65c10e0ae2d57e5de4fe84c800ffd5499203f1caa7fe0df6175143f4dfc2c')
 
 build() {
