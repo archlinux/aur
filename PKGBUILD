@@ -18,7 +18,7 @@ optdepends=(
 provides=("vencord")
 conflicts=("vencord")
 
-source=("$pkgname::git+$url.git" "vencorddesktop.desktop")
+source=("$pkgname::git+$url.git" "vencord-desktop.desktop")
 
 sha256sums=('SKIP'
             'cd4d39fb009bfee33709c26c010a8fe70a76ee3c00006e822da2fec692a165d5')
@@ -41,7 +41,7 @@ package() {
   install -d "$pkgdir"/opt/vencord
   cp -R "$pkgname/dist/linux-unpacked/." "$pkgdir/opt/vencord"
 
-  install -Dm 644 "vencorddesktop.desktop" "$pkgdir/usr/share/applications/vencorddesktop.desktop"
+  install -Dm 644 "vencord-desktop.desktop" "$pkgdir/usr/share/applications/vencord-desktop.desktop"
   install -Dm 644 "$pkgname/static/icon.png" "$pkgdir/usr/share/pixmaps/vencord.png"
   install -Dm 644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 

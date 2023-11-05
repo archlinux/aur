@@ -13,7 +13,7 @@ pkgbase = vencord-desktop-git
 	provides = vencord
 	conflicts = vencord
 	source = vencord-desktop-git::git+https://github.com/Vencord/Vesktop.git
-	source = vencorddesktop.desktop
+	source = vencord-desktop.desktop
 	sha256sums = SKIP
 	sha256sums = cd4d39fb009bfee33709c26c010a8fe70a76ee3c00006e822da2fec692a165d5
 
