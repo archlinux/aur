@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=downzemall
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
 url="https://setvisible.github.io/DownZemAll"
@@ -9,9 +9,11 @@ license=('LGPL3' 'CC BY-SA 3.0')
 depends=('libtorrent-rasterbar' 'qt6-base' 'yt-dlp')
 makedepends=('boost' 'cmake' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
-        "$pkgname.desktop")
+        "$pkgname.desktop"
+        'add-missing-include.patch')
 sha256sums=('a5f1eefdbc83f7f3e1e72b4c6102829e511331ef96c466bfa23cb5bba543bb2f'
-            '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
+            '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff'
+            '9167312e19c9239bebc5c328ec651828a2738de552fb7e7c5a54f22d15b50109')
 
 prepare() {
   cd "DownZemAll-$pkgver"
@@ -21,6 +23,9 @@ prepare() {
   # Look for system shared object, not source archive
   sed -i 's/libtorrent-rasterbar.a/libtorrent-rasterbar.so/g' \
     cmake/Modules/FindLibtorrentRasterbar.cmake
+
+  # https://github.com/setvisible/DownZemAll/issues/120
+  patch -Np1 -i ../add-missing-include.patch
 }
 
 build() {

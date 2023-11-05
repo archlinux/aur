@@ -1,7 +1,7 @@
 pkgbase = downzemall
 	pkgdesc = A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel.
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://setvisible.github.io/DownZemAll
 	arch = x86_64
 	license = LGPL3
@@ -14,7 +14,9 @@ pkgbase = downzemall
 	depends = yt-dlp
 	source = downzemall-3.0.6.tar.gz::https://github.com/setvisible/DownZemAll/archive/v3.0.6.tar.gz
 	source = downzemall.desktop
+	source = add-missing-include.patch
 	sha256sums = a5f1eefdbc83f7f3e1e72b4c6102829e511331ef96c466bfa23cb5bba543bb2f
 	sha256sums = 3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff
+	sha256sums = 9167312e19c9239bebc5c328ec651828a2738de552fb7e7c5a54f22d15b50109
 
 pkgname = downzemall
