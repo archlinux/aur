@@ -23,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest --codeblocks -k 'not README and not plot and not nolabel'
+  test-env/bin/python -m pytest --codeblocks --ignore=tests/test_plot.py -k 'not README'
 }
 
 package() {
