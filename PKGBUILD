@@ -1,8 +1,8 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=elan-bin
-_pkgname_caps=ELAN
 _pkgname=elan
-pkgver="6.5"
+_pkgname_caps=ELAN
+pkgver="6.6"
 pkgrel=1
 pkgdesc="A video and audio annotation tool"
 arch=(any)
@@ -11,18 +11,18 @@ provides=('elan')
 conflicts=('elan')
 license=('GPL3' 'apache')
 source=("https://www.mpi.nl/tools/${_pkgname}/${_pkgname_caps}_${pkgver//\./\-}_linux.tar.gz"
-		    "elan.desktop")
-sha256sums=('0135a9bd67a8d5fbc3c8eeb0eb3395502753cfd1757ee4c99ae00d22545b3748'
-            '3ae976fe400c61d002b28f7991f44493ea8a142a79a93afcc038a72a1171bb6f')
+        "elan_${pkgver}.desktop")
+sha256sums=('d0bcde6c7971c2ac051abebe4268fa6850247d45f15c8ad9df8650e6c86a2497'
+            '60405b3035a7bec6d83e1445ea7e9010da221a360c86e6cdf471c429d6831109')
 
 package() {
-	cd "${srcdir}/${_pkgname_caps}_${pkgver//\./\-}/"
+	cd "${srcdir}/${_pkgname_caps}_${pkgver}/"
 	install -d -m755 "${pkgdir}/opt/elan"
+	install -d -m755 "${pkgdir}/opt/elan/bin"
 	cp -r "lib" "${pkgdir}/opt/elan/"
-	cp -r "bin" "${pkgdir}/opt/elan/"
-	chmod +x "${pkgdir}/opt/elan/bin/ELAN"
+	install -D -m755 "bin/${_pkgname_caps}_$pkgver" "${pkgdir}/opt/elan/bin/"
 	install -d -m755 "${pkgdir}/usr/bin/"
-	ln -s "/opt/elan/bin/ELAN" "${pkgdir}/usr/bin/elan"
+	ln -s "/opt/elan/bin/${_pkgname_caps}_$pkgver" "${pkgdir}/usr/bin/elan"
 	install -d -m755 "${pkgdir}/usr/share/applications/"
-	install -D "${srcdir}/elan.desktop" "${pkgdir}/usr/share/applications/"
+	install -D "${srcdir}/elan_${pkgver}.desktop" "${pkgdir}/usr/share/applications/"
 }
