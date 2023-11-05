@@ -1,9 +1,9 @@
 # Maintainer: Bitals <me at bitals dot xyz>
-# Co-Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
-# Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
-# Co-Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Contributor: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
+# Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=7.0.2
+pkgver=7.0.3
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=1
@@ -13,7 +13,7 @@ url='http://www.snapgene.com/products/snapgene-viewer/'
 license=('custom')
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGeneViewer/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_viewer_"$pkgver"_linux.rpm")
-sha512sums=('13a00197c60239842ed649e4730faa3783beebb04f107ed6d7a03f5523edf98cb8c2037bb87cb700924a6a417d2264e603094a3b3b64771ad460fb1f3caa544d')
+sha512sums=('b82dd421890f918102d1136533d6db3ae71710274c2b5c0196910c6d33f22cfc6003db90d8526ed57adec122f0c84bafb1788ab31495d51871f1f40333137ca7')
 
 package() {
   cd "$pkgdir"

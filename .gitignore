@@ -1,1 +1,3 @@
 .vscode/tasks.json
+snapgene_viewer_*_linux.rpm
+snapgene-viewer-*.pkg.tar.zst
