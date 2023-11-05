@@ -1,19 +1,20 @@
 pkgbase = flashbrowser
 	pkgdesc = A browser capable of viewing/displaying pages with embedded flash content
-	pkgver = 0.81
-	pkgrel = 2
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://flash.pm/
-	arch = any
+	arch = x86_64
 	license = unknown
-	makedepends = npm
-	makedepends = wine
-	makedepends = wine-mono
+	makedepends = yarn
 	makedepends = imagemagick
 	provides = flashbrowser
 	conflicts = flashbrowser
+	noextract = flash_player_patched_ppapi_linux.x86_64.tar.gz
 	source = FlashBrowser-0.81.tar.gz::https://github.com/radubirsan/FlashBrowser/archive/refs/tags/v0.81.tar.gz
+	source = https://github.com/darktohka/clean-flash-builds/releases/download/v1.7/flash_player_patched_ppapi_linux.x86_64.tar.gz
 	source = FlashBrowser.desktop
 	sha256sums = 062e59a50e30a7cdd618328d9582b58d805dfe50990a9f93df2dddc8c6e4b4ae
+	sha256sums = fca4fd08f40639fc495c3f58a1877e7ea023ccb19f0a6466a396e418dee5a186
 	sha256sums = c4cf51979c204268bc70533a319e3fdfb913dec0aa8edaea0a7f7a7cb8ca3b78
 
 pkgname = flashbrowser
