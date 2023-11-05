@@ -55,11 +55,11 @@ pkgver() {
 # template start; name=prepare; version=1.0;
 prepare() {
   cd ${srcdir} || exit
-    echo "Creating virtual environment in $PWD"
+    msg2 "Creating virtual environment in $PWD"
     virtualenv ".venv" -p python3
     source "${srcdir}/.venv/bin/activate"
 
-    echo "Installing build toolchain..."
+    msg2 "Installing build toolchain..."
     pip3 install --upgrade certifi --quiet
     pip3 install --upgrade llbase --quiet
     pip3 install --no-cache --upgrade autobuild --quiet
@@ -98,31 +98,31 @@ build() {
         availableswapkb=$(cut -d ' ' -f 4 <<<"$swap_output")
       fi
       availablememorykbphysical=$(cut -d ' ' -f 7 <<<"$free_output")
-      echo "Total memory:         $totalmemorykbphysical (includes swap)"
-      echo "Available memory:     $availablememorykbphysical"
-      echo "Required memory:      $requiredmemorykb"
-      echo "Available physical memory on this system: $((availablememorykbphysical / 1024 / 1024)) GB"
-      echo "Estimated required memory to build with all cores: $((requiredmemorykb / 1024 / 1024)) GB"
+#      msg2 "Total memory:         $totalmemorykbphysical (includes swap)"
+#      msg2 "Available memory:     $availablememorykbphysical"
+#      msg2 "Required memory:      $requiredmemorykb"
+#      msg2 "Available physical memory on this system: $((availablememorykbphysical / 1024 / 1024)) GB"
+#      msg2 "Estimated required memory to build with all cores: $((requiredmemorykb / 1024 / 1024)) GB"
       if [[ ${requiredmemorykb} -gt ${availablememorykbphysical} ]]; then
-        echo "Warning: Not enough available physical memory to build with all cores"
+#        msg2 "Warning: Not enough available physical memory to build with all cores"
         if [[ ${usedmemorykbphysical} -lt ${availableswapkb} ]]; then
           # use all physical ram as swap will do its job
-          echo "There is enough free swap to store the currently used memory"
+#          msg2 "There is enough free swap to store the currently used memory"
           jobs=$(((totalmemorykbphysical / 1024 / 1024) / gigperlinkprocess))
         else
           # Not enough swap to hold ram contents, calculate manually
-          echo "Allocating build jobs according to available physical memory ("$((availablememorykbphysical / 1024 / 1024))"/"$((requiredmemorykb / 1024 / 1024))"GB)..."
+#          msg2 "Allocating build jobs according to available physical memory ("$((availablememorykbphysical / 1024 / 1024))"/"$((requiredmemorykb / 1024 / 1024))"GB)..."
           # FIXME: Goes one iteration beyond what it should
           while [[ $((jobs * mempercorekb)) -lt ${availablememorykbphysical} ]]; do
             jobs=$((jobs + 1))
-            echo -e "${jobs} jobs would consume $(((jobs * mempercorekb) / 1024 / 1024))GB"
+           msg2 "${jobs} jobs would consume $(((jobs * mempercorekb) / 1024 / 1024))GB"
           done
           # Back off one job count. Not sure why I have to do this but
           # the loop is doing one extra iteration.
           jobs=$((jobs - 1))
         fi
         build_jobs=${jobs}
-        echo "Computed job count: ${build_jobs}"
+#        msg2 "Adjusted job count: ${build_jobs}"
       fi
       fi
       fi
@@ -133,15 +133,15 @@ build() {
         -DUSE_LTO:BOOL=OFF
         -DVIEWER_CHANNEL="Alchemy Test"
       )
-      echo "BUILDENV: ${BUILDENV[*]}"
+      #msg2 "BUILDENV: ${BUILDENV[*]}"
       if [[ " ${BUILDENV[*]} " =~ ' ccache ' ]] && command -v ccache; then
-        echo "------ Will Use CCACHE ------"
         CMAKE_CXX_COMPILER_LAUNCHER="$(which ccache)"
         export CMAKE_CXX_COMPILER_LAUNCHER
+        msg2 "ccache was found and will be used"
       fi
       _logfile="${srcdir}/build.${CARCH}.$(date +%s).log"
       $prefix_cmd autobuild configure -A 64 -c ReleaseOS -- "${AL_CMAKE_CONFIG[@]}" | tee "$_logfile" 2>&1
-      echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
+      msg2 "Building with ${AUTOBUILD_CPU_COUNT} jobs"
       $prefix_cmd autobuild build -A64 -c ReleaseOS --no-configure | tee --append "${srcdir}/build.${CARCH}.$(date +%s).log" 2>&1
     }
 # template end;
