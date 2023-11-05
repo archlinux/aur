@@ -4,7 +4,7 @@
 
 pkgname=nncp
 pkgver=8.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=('aarch64' 'x86_64')
@@ -29,6 +29,7 @@ sha256sums=('154e13ba15c0ea93f54525793b0699e496b2db7281e1555f08d785a528f3f7fc'
             '319b302a4613b541d1feeb5ad19a290be79d5ac619a6800ed77580c7c8d34801')
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
 
+install=nncp.install
 backup=(etc/nncp/nncp.hjson)
 
 build() {
@@ -61,11 +62,6 @@ package() {
                     "$pkgdir"/usr/lib/sysusers.d/nncp.conf
   install -Dm0644 "$srcdir"/nncp.tmpfiles \
                     "$pkgdir"/usr/lib/tmpfiles.d/nncp.conf
-
-  # The configuration file holds private keys,
-  # so we do not want to set the world readable bit
-  "$srcdir/$pkgname-$pkgver/bin/nncp-cfgnew" >nncp.hjson && \
-    install -Dm0640 nncp.hjson "$pkgdir/etc/nncp/nncp.hjson"
 
   # TODO: nncp-caller
   # TODO: nncp-toss

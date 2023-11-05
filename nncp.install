@@ -1,0 +1,16 @@
+post_install() {
+	if [ ! -e etc/nncp/nncp.hjson ]; then
+		# Normally sysusers only runs after whole transaction, but we
+		# need it earlier... (Alternative: using tmpfiles.d to fix up
+		# nncp.hsjon ownership post-transaction)
+		systemd-sysusers nncp.conf
+
+		# Generate a default configuration (with a random private key)
+		install -m 0640 -o nncp -g nncp /dev/null etc/nncp/nncp.hjson
+		usr/bin/nncp-cfgnew > etc/nncp/nncp.hjson
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
