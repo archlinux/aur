@@ -7,7 +7,7 @@ _pkgname=input-leap-inputcapture
 pkgbase=$_pkgname
 pkgname=($_pkgname-headless $_pkgname)
 pkgver=2.4.0+677+gc5bb9dca
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
 url="https://github.com/input-leap/input-leap"
@@ -21,7 +21,7 @@ _gui_deps=(glibc gcc-libs libx11 openssl avahi qt5-base qt5-tools)
 makedepends=(${_core_deps[@]} ${_gui_deps[@]}
              # referenced in CMakeLists.txt but does not seem to be actually used
              curl libsm libice
-             git cmake gmock gtest libportal-inputcapture libportal-inputcapture-gtk3 libportal-inputcapture-gtk4 libportal-inputcapture-qt5 libportal-inputcapture-docs)
+             git cmake gmock gtest libportal-inputcapture libportal-inputcapture-gtk3 libportal-inputcapture-gtk4 libportal-inputcapture-qt5 libportal-inputcapture-docs libei)
 
 pkgver() {
   cd $_pkgname

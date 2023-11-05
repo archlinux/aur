@@ -1,7 +1,7 @@
 pkgbase = input-leap-inputcapture
 	pkgdesc = Open-source KVM software
 	pkgver = 2.4.0+677+gc5bb9dca
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/input-leap/input-leap
 	arch = x86_64
 	license = custom:GPL2WithOpenSSLException
@@ -34,6 +34,7 @@ pkgbase = input-leap-inputcapture
 	makedepends = libportal-inputcapture-gtk4
 	makedepends = libportal-inputcapture-qt5
 	makedepends = libportal-inputcapture-docs
+	makedepends = libei
 	source = input-leap-inputcapture::git+https://github.com/input-leap/input-leap.git
 	source = gulrak-filesystem::git+https://github.com/gulrak/filesystem.git
 	sha512sums = SKIP
