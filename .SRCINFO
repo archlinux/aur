@@ -1,0 +1,24 @@
+pkgbase = r-mbqtl
+	pkgdesc = mbQTL: A package for SNP-Taxa mGWAS analysis
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mbQTL
+	arch = any
+	license = MIT
+	depends = r-broom
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-matrixeqtl
+	depends = r-metagenomeseq
+	depends = r-pheatmap
+	depends = r-readxl
+	depends = r-stringr
+	depends = r-tidyr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mbQTL_1.2.0.tar.gz
+	md5sums = 5b8464d079a9297ed19fcdfade113190
+	sha256sums = 501e5ac9d5faa96cef0efa5469e679fd5fbb04e608a8940adab7b8d764ae4706
+
+pkgname = r-mbqtl
