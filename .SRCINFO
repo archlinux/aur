@@ -1,6 +1,6 @@
 pkgbase = kbt
 	pkgdesc = Keyboard tester in terminal
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/bloznelis/kbt
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kbt
 	makedepends = cargo
 	provides = kbt
 	conflicts = kbt
-	source = https://github.com/bloznelis/kbt/archive/refs/tags/2.0.5.tar.gz
+	source = https://github.com/bloznelis/kbt/archive/refs/tags/2.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = kbt
