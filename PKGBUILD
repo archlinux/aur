@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  make
+  make -j$(nproc)
 }
 
 package() {
