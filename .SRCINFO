@@ -1,0 +1,16 @@
+pkgbase = python-mesa-viz-tornado
+	pkgdesc = Tornado-based visualization framework for Mesa
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/projectmesa/mesa-viz-tornado
+	arch = any
+	license = Apache
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-tornado
+	noextract = Mesa_Viz_Tornado-0.1.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/M/Mesa-Viz-Tornado/Mesa_Viz_Tornado-0.1.2-py3-none-any.whl
+	sha256sums = 0e2ba02af91cad09c081b6803a94a08457a50f43279841817dd65e8961d3ba54
+
+pkgname = python-mesa-viz-tornado
