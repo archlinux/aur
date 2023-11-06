@@ -1,5 +1,5 @@
 pkgbase = palemoon-i18n-pt-br
-	pkgdesc = Portoguese (Brazil) language pack for Pale Moon browser
+	pkgdesc = Portuguese (Brazil) language pack for Pale Moon browser
 	pkgver = 32.5.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
