@@ -34,7 +34,6 @@ pkgbase = ferdium-nightly
 	conflicts = ferdium
 	conflicts = ferdium-bin
 	conflicts = ferdium-nightly-bin
-	conflicts = ferdium-nightly
 	conflicts = ferdium-beta-bin
 	conflicts = ferdium-beta
 	conflicts = ferdium-git
