@@ -1,6 +1,6 @@
 --- a/build.sh
 +++ b/build.sh
-@@ -76,7 +76,7 @@ cmake -G Ninja -DCMAKE_BUILD_TYPE="${RELEASE_TYPE}" ..
+@@ -77,7 +77,7 @@ cmake -G Ninja -DCMAKE_BUILD_TYPE="${RELEASE_TYPE}" ..
  cmake --build .
  cp simple64-video-parallel.* "${install_dir}"
  
@@ -9,7 +9,7 @@
    echo "Downloading Discord SDK"
    mkdir -p "${base_dir}/discord"
    cd "${base_dir}/discord"
-@@ -85,7 +85,7 @@ if [[ ! -d "${base_dir}/discord" ]]; then
+@@ -86,7 +86,7 @@ if [[ ! -d "${base_dir}/discord" ]]; then
    rm discord_game_sdk.zip
  fi
  
@@ -18,7 +18,7 @@
    mkdir -p "${base_dir}/vosk"
    cd "${base_dir}/vosk"
    if [[ ${UNAME} == *"MINGW64"* ]]; then
-@@ -155,12 +155,12 @@ if [[ ${UNAME} == *"MINGW64"* ]]; then
+@@ -157,12 +157,12 @@ if [[ ${UNAME} == *"MINGW64"* ]]; then
    cp -v "${base_dir}/discord/lib/x86_64/discord_game_sdk.dll" "${install_dir}"
    cp -v "${base_dir}/vosk/libvosk.dll" "${install_dir}/vosk.dll"
  else
