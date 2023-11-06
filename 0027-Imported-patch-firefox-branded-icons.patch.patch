@@ -23,10 +23,10 @@ index 4e737310b37bc0bdbe4367e51c0f245eefbdbb50..0faf21fb931a0ed72495197d2152fd74
              'default48.png',
              'default64.png',
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index ca0a730183836121fe53ccddada31f8746361514..0d666fd391e729ba050721a7a4073b57f0a5425b 100644
+index 02e4a98563b72c421bbd79ea232a12b1792ff4b3..96d13bf5e02698e357cd56ab136e0dc813bf3bef 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -225,10 +225,13 @@
+@@ -224,10 +224,13 @@
  @RESPATH@/chrome/toolkit.manifest
  #ifdef MOZ_GTK
  @RESPATH@/browser/chrome/icons/default/default16.png

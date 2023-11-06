@@ -17,8 +17,8 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  intl/unicharutil/util/moz.build | 3 +++
  netwerk/dns/moz.build           | 3 +++
  toolkit/library/moz.build       | 3 +++
- toolkit/moz.configure           | 9 +++++++++
- 10 files changed, 40 insertions(+), 1 deletion(-)
+ toolkit/moz.configure           | 8 ++++++++
+ 10 files changed, 39 insertions(+), 1 deletion(-)
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
 index f0404231eab0ba35391cad2f87ccfbf0afec4d67..53cbde197a2956052d1e0b0da1917716837c20b1 100644
@@ -103,10 +103,10 @@ index 1d92936263a091eac0dc90fdb0038982e711d5c3..afef373e62af4273aa2b21f3fd3103dc
      LOCAL_INCLUDES += [
          "/gfx/cairo/cairo/src",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index 71903756ea1949136cdc25e3b7cd83eeb68dc6ea..8af85a4ed663292583310efea06ada8c60eb908d 100644
+index 97f02d59f51a7e9b06a852963cf03a8463df09f0..3067b49c8d3d069e74acd2baa04eaaf2c95094f9 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -294,6 +294,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
+@@ -292,6 +292,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
  DEFINES["GRAPHITE2_STATIC"] = True
  
@@ -157,10 +157,10 @@ index 3faa0370cc1c0025f03f0011c73876c0da8a6e71..fb81f6ceebcb4c6c14d0e2e2df48531b
      OS_LIBS += CONFIG["MOZ_JPEG_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index badeb8dc4b629a9dba166bf270aa24e567288df5..510db578b5e1b15fde924db8d0878588fe2f7526 100644
+index b865c45a462f8d1a791115c7ab265dd23218e817..a811d7ba1f783681628e1c3f67d594573c4f9e39 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -675,6 +675,15 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+@@ -678,6 +678,14 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
  
  set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  
@@ -172,7 +172,6 @@ index badeb8dc4b629a9dba166bf270aa24e567288df5..510db578b5e1b15fde924db8d0878588
 +                                    when='--with-system-harfbuzz')
 +
 +set_config('MOZ_SYSTEM_HARFBUZZ', depends_if(system_harfbuzz)(lambda _: True))
-+
+ 
  # Apple platform decoder support
  # ==============================================================
- @depends(toolkit)

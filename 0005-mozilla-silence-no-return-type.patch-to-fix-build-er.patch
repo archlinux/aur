@@ -300,7 +300,7 @@ index ddd287ad0cc1e3910adeb125a989fe2b0d93ec9e..c7a62205ab89742e8994b8fc067064c0
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
 diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
-index e6bb509ffd75a409faa03ea471bb97b84d2f61de..6055a435309c969ff2431cc1d2ad90c2eef33a15 100644
+index 4da6f4a4b00a9280e9ef4e4415857f7f715cd07b..6e2c9fa7b2b92b5a5b3469b0aed9405f43937b58 100644
 --- a/intl/icu/source/i18n/number_rounding.cpp
 +++ b/intl/icu/source/i18n/number_rounding.cpp
 @@ -283,6 +283,7 @@ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac)
@@ -438,7 +438,7 @@ index 5a970fb2ef1af8069b7dd0c52a993ea7d7e6e896..0feec89ab185ab214e1f24b05efab02f
  
  VideoStreamAdapter::RestrictionsOrState
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
-index 18e6d9136bc399f9a22fe66162daba584e14c6c6..e0c9e9184147bfb25228efae4813f37686e0a561 100644
+index f0347bc74ea215a80f28e8aaf929b6781403c0ad..d1feb979c93c4add23fafa1186f58335de1db565 100644
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
 @@ -405,7 +405,7 @@ absl::optional<FrameDependencyStructure> RtpPayloadParams::GenericStructure(
@@ -451,7 +451,7 @@ index 18e6d9136bc399f9a22fe66162daba584e14c6c6..e0c9e9184147bfb25228efae4813f376
  
  void RtpPayloadParams::GenericToGeneric(int64_t shared_frame_id,
 diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
-index 241d44a2303a10c7a13557080665ee677835c4d0..0e4e28a70c76220121bedbc7e670045b63238a9b 100644
+index e8532a7a2669e717e79c49a1fd45020ca07dbced..c251629073b4c555c57d79d7fa7578a2a575bb92 100644
 --- a/third_party/libwebrtc/call/video_send_stream.cc
 +++ b/third_party/libwebrtc/call/video_send_stream.cc
 @@ -30,6 +30,7 @@ const char* StreamTypeToString(VideoSendStream::StreamStats::StreamType type) {
@@ -598,10 +598,10 @@ index f1e4eddb4b9d8855f6accf24ef980cbc11d0077d..b3fde3cda3c7c636b8f37f3778fb3b73
  
  }  // namespace webrtc
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-index f97fb167ed8b1e1f5b9e8aa3acf4cca5f067d35f..1b168f3fc6a22c55b4d7e958f9abfc4d3c4765c1 100644
+index 13cb30ee7f543435c4c6f58edc0ee1b402385596..dc4eae363eba9196d07c752c7bf851efe400430d 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -140,6 +140,7 @@ bool IsNonVolatile(RTPExtensionType type) {
+@@ -138,6 +138,7 @@ bool IsNonVolatile(RTPExtensionType type) {
  #endif
    }
    RTC_CHECK_NOTREACHED();
@@ -646,7 +646,7 @@ index 5aebd2c5268e8c58b07be4bc393f83ac5abd1c09..8d18446430ff4b7f6d0d669416e3493d
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-index 2470bc889383a572605021edbaec01ac5ed34ddb..37309e4822f16d3f4a38d4c6719b6773b30b8372 100644
+index 46db6867033faaa9be96738d2999a7010af75da7..4178664b9c47da2c9792858c60cc38f26ecdb7ab 100644
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 @@ -63,6 +63,7 @@ std::string ToString(VideoAdaptationReason reason) {

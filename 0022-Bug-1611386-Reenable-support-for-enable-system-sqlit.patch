@@ -24,10 +24,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  9 files changed, 70 insertions(+), 14 deletions(-)
 
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index 5296d2b4b195d6c5d3f61aa43ea8d1d2fdad053f..ca0a730183836121fe53ccddada31f8746361514 100644
+index 1e48dd12b43ed48085f22f6576f8c6696153775f..02e4a98563b72c421bbd79ea232a12b1792ff4b3 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -147,9 +147,11 @@
+@@ -146,9 +146,11 @@
  @RESPATH@/update-settings.ini
  #endif
  @RESPATH@/platform.ini
@@ -214,10 +214,10 @@ index fc576f30bc6a47db5c8bfbaa77bb117f1bd68011..903d6b29f62528b6ecd762ef69fb5f20
  sqlite3_complete16
  sqlite3_config
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index ded2b7099ec841b93d74fc14d7ef733acdbba0bb..17726440ef2122a29e6966220287ccdbe5677b10 100644
+index bbcbde85670803415bd804bc472f64fb592f490b..9fd9356c4016933f84f660c40116739f20ca15ee 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -377,6 +377,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
+@@ -380,6 +380,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
  
  set_config("MOZ_SNDIO", depends_if(sndio)(lambda _: True))
  

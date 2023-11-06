@@ -84,10 +84,10 @@ index fca2398bfc97aad365d3b446fab06f2a7863948e..fe057e454e9fcfa04db17d44306357a7
                                                      event.target.parentNode.openedWithKey);"
  #endif
 diff --git a/browser/base/content/browser.js b/browser/base/content/browser.js
-index 1b1e3ed5c972d6629adb2cfd7dcf051d2489398b..fe7c8dc6dc8ff0e854253b3eb45a814630c871ee 100644
+index 0bc3e362057b69754919b0e4a57eeb1846a7e6e5..23a7d39d852d9e57e960f9def3719c0b76e63e2f 100644
 --- a/browser/base/content/browser.js
 +++ b/browser/base/content/browser.js
-@@ -6327,11 +6327,18 @@ function onViewToolbarsPopupShowing(aEvent, aInsertPoint) {
+@@ -6326,11 +6326,18 @@ function onViewToolbarsPopupShowing(aEvent, aInsertPoint) {
    MozXULElement.insertFTLIfNeeded("browser/toolbarContextMenu.ftl");
    let firstMenuItem = aInsertPoint || popup.firstElementChild;
    let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
@@ -146,7 +146,7 @@ index d60173900ec1e32fe7b60fecab657fb7bb875f0e..ffdf4d53135576a5723c03f0f6be09ed
  
  nsINode* XULPopupElement::GetTriggerNode() const {
 diff --git a/dom/xul/moz.build b/dom/xul/moz.build
-index 6057c71aa56d9cc7ceac3e0a6fbe29ef4761e953..a24f53f657a8737b569c0dbb49b348b5325db8af 100644
+index 343f2cc3642b9590016e178a968e6a9b0ab7447b..2286790140161b95b00056e73939073b2badbfe0 100644
 --- a/dom/xul/moz.build
 +++ b/dom/xul/moz.build
 @@ -91,4 +91,9 @@ LOCAL_INCLUDES += [
@@ -175,10 +175,10 @@ index b2059e396efec51ec515540e69adfd18a74a906f..5f00ef562b374aa5d1d5792240395c4a
  XPCOM_MANIFESTS += [
      "components.conf",
 diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
-index a190b6caff8c21fb6bedaf37b9c25c812cd7114a..8bf1016739f21adb983d4cbfdc6858a01ece8601 100644
+index a38a760f9c5ce666ad8d51d46f7685c9ac45d7b3..33f501870f9309da3f38a61adb212caf008aeb15 100644
 --- a/modules/libpref/init/all.js
 +++ b/modules/libpref/init/all.js
-@@ -167,6 +167,9 @@ pref("dom.text-recognition.enabled", true);
+@@ -161,6 +161,9 @@ pref("dom.text-recognition.enabled", true);
  // Fastback caching - if this pref is negative, then we calculate the number
  // of content viewers to cache based on the amount of available memory.
  pref("browser.sessionhistory.max_total_viewers", -1);
@@ -5263,10 +5263,10 @@ index 0000000000000000000000000000000000000000..2e0d429eddfdfc84620834eced6b9733
 +
 +#endif /* __nsNativeMenuService_h__ */
 diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
-index be700ff20db1a4ca68c06e5882831a6d72fef0ca..e1a2d331eb555eaa0d98a2099cccccf6712512aa 100644
+index c73a4c64a58d93a827b9a793ed5cfd714a7852da..ceb048d79b69bb4e470d3f794c4f308eae5e868b 100644
 --- a/widget/gtk/nsWindow.cpp
 +++ b/widget/gtk/nsWindow.cpp
-@@ -7486,6 +7486,10 @@ void nsWindow::HideWindowChrome(bool aShouldHide) {
+@@ -7561,6 +7561,10 @@ void nsWindow::HideWindowChrome(bool aShouldHide) {
    SetWindowDecoration(aShouldHide ? BorderStyle::None : mBorderStyle);
  }
  
@@ -5278,7 +5278,7 @@ index be700ff20db1a4ca68c06e5882831a6d72fef0ca..e1a2d331eb555eaa0d98a2099cccccf6
                                bool aAlwaysRollup) {
    LOG("nsWindow::CheckForRollup() aAlwaysRollup %d", aAlwaysRollup);
 diff --git a/widget/gtk/nsWindow.h b/widget/gtk/nsWindow.h
-index a892a08cfa2e24e3dfd3809def7e8502b0632bb7..6aaa94f0503f88f8408bba82d07cfa137e14527a 100644
+index 240e7a1415caf1257ab8bdd2d0c8c930341750a6..f4956ab57cd75b4440911f22eb2da21fdc51339b 100644
 --- a/widget/gtk/nsWindow.h
 +++ b/widget/gtk/nsWindow.h
 @@ -27,6 +27,8 @@
@@ -5299,7 +5299,7 @@ index a892a08cfa2e24e3dfd3809def7e8502b0632bb7..6aaa94f0503f88f8408bba82d07cfa13
    /**
     * GetLastUserInputTime returns a timestamp for the most recent user input
     * event.  This is intended for pointer grab requests (including drags).
-@@ -926,6 +930,8 @@ class nsWindow final : public nsBaseWidget {
+@@ -933,6 +937,8 @@ class nsWindow final : public nsBaseWidget {
  
    static bool sTransparentMainWindow;
  
@@ -5404,7 +5404,7 @@ index 0000000000000000000000000000000000000000..488c8f49c0217890d2c5a12f57fdc194
 +    Atom("shellshowingmenubar", "shellshowingmenubar"),
 +]
 diff --git a/xpcom/ds/StaticAtoms.py b/xpcom/ds/StaticAtoms.py
-index eb3997411a692ff1edb86c967236e25f90bdc46d..1a9e22911eada7288c5af751d974468181dc85e0 100644
+index 2e4fd0133936bd57bcd1721894cf310527169658..d636a1e23507309742ee6b6b6daec8868932c723 100644
 --- a/xpcom/ds/StaticAtoms.py
 +++ b/xpcom/ds/StaticAtoms.py
 @@ -13,6 +13,7 @@ from Atom import (
@@ -5415,7 +5415,7 @@ index eb3997411a692ff1edb86c967236e25f90bdc46d..1a9e22911eada7288c5af751d9744681
  
  # Static atom definitions, used to generate nsGkAtomList.h.
  #
-@@ -2549,7 +2550,7 @@ STATIC_ATOMS = [
+@@ -2548,7 +2549,7 @@ STATIC_ATOMS = [
      InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
      InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
      # END ATOMS

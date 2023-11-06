@@ -63,7 +63,7 @@ index 609b9a9d06178b42b0ba8509500a1b72d8bd3b88..05df0fc6ce279ab6161a3f93450e7296
          console.error(ex);
          return;
 diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.build
-index eb88cb287dc3f04022b74b978666118bbd5fa6b2..95277533781a7224d108e3c45731a6d9a89ba1a0 100644
+index 67e7c19ffa434b4f6df1be0d9e127dd1bdf5d9f5..974aa7ed189a3ec2036177e0ba37d0c1d7abe616 100644
 --- a/browser/components/shell/moz.build
 +++ b/browser/components/shell/moz.build
 @@ -36,6 +36,8 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":

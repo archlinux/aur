@@ -12,10 +12,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 17726440ef2122a29e6966220287ccdbe5677b10..ddb2c59e17d386b3f834f7c190c287790d4760d4 100644
+index 9fd9356c4016933f84f660c40116739f20ca15ee..521202cdbfbd372900a98a4247bd008135952bf4 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -863,7 +863,7 @@ def eme_choices(target, wmf):
+@@ -867,7 +867,7 @@ def eme_choices(target, wmf):
      if (
          target.kernel in ("WINNT", "Linux")
          and target.os != "Android"

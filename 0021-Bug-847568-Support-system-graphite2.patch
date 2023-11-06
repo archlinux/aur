@@ -118,10 +118,10 @@ index 6cc19f84709bbe3be4ff830e3a6dd29189048c6f..14b08dbac3e3f5d3df421d5dd6840673
      "thebes",
      "ipc",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index 8af85a4ed663292583310efea06ada8c60eb908d..239579c86e3a0c5ef46c14659117a86d217eff11 100644
+index 3067b49c8d3d069e74acd2baa04eaaf2c95094f9..04c75cc7234d242fb56ca95da212e11ccf9c891e 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -292,7 +292,10 @@ if CONFIG["MOZ_WAYLAND"]:
+@@ -290,7 +290,10 @@ if CONFIG["MOZ_WAYLAND"]:
  
  LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
@@ -134,10 +134,10 @@ index 8af85a4ed663292583310efea06ada8c60eb908d..239579c86e3a0c5ef46c14659117a86d
  if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
      CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 diff --git a/old-configure.in b/old-configure.in
-index 0dfcddd0f14eddf7df73913417eb2e617a598b43..95850f11b4d9516c9dd0b9b04e504ef60cdba0a5 100644
+index 57a41cb1b28592b761c51d6fbdc6ec0ce4a54936..7d6b36c150eca93b035de97ade08a78e80dd4136 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -1146,6 +1146,27 @@ fi
+@@ -1141,6 +1141,27 @@ fi
  AC_DEFINE_UNQUOTED(MOZ_MACBUNDLE_ID,$MOZ_MACBUNDLE_ID)
  AC_SUBST(MOZ_MACBUNDLE_ID)
  
@@ -180,10 +180,10 @@ index fb81f6ceebcb4c6c14d0e2e2df48531b74d174bf..e43d77d815ace132469fe3c1ecca7256
      OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 510db578b5e1b15fde924db8d0878588fe2f7526..ded2b7099ec841b93d74fc14d7ef733acdbba0bb 100644
+index a811d7ba1f783681628e1c3f67d594573c4f9e39..bbcbde85670803415bd804bc472f64fb592f490b 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -675,6 +675,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+@@ -678,6 +678,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
  
  set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  

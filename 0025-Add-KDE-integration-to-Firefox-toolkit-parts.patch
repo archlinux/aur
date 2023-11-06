@@ -48,7 +48,7 @@ Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
  create mode 100644 uriloader/exthandler/unix/nsKDERegistry.h
 
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
-index 94a5aa0f3f169563d570e18fc1a525994293ad99..c1cf316d05b742502f7b07da1b7f25024b09f4e8 100644
+index 240dd198b529460eebca32da2dd14d3a91a99179..d956d013a1ce3480df823d1275e9a1eb6423016e 100644
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
 @@ -95,6 +95,7 @@
@@ -60,7 +60,7 @@ index 94a5aa0f3f169563d570e18fc1a525994293ad99..c1cf316d05b742502f7b07da1b7f2502
  #ifdef DEBUG
  #  include <map>
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
-index e8f8b97170d32c1d3ac342dd93da7265bf707c8f..831001cee4b1eb33171d83d524ee9e453a800257 100644
+index 63c4608a88d9b9a5e3163294b6d778a2354dc5f5..dbafcdda35c672e00159c9d461219bd23072c6cf 100644
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
 @@ -126,6 +126,10 @@ UNIFIED_SOURCES += [
@@ -998,7 +998,7 @@ index c6a765df9e5a4c95f77e9ee1b4ebbf9913a81e15..6e9028169ac594a24f90a4f58dc493c8
      "/widget/headless",
      "/widget/x11",
 diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
-index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19d574f532 100644
+index d15c44d3a0bde1ae0b3c73ba6f35ace25a1c9a8b..987f23b4ea29ecfa943ce0b1646db669cd40de19 100644
 --- a/widget/gtk/nsFilePicker.cpp
 +++ b/widget/gtk/nsFilePicker.cpp
 @@ -5,6 +5,7 @@
@@ -1009,7 +1009,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>
-@@ -28,6 +29,8 @@
+@@ -30,6 +31,8 @@
  #include "WidgetUtilsGtk.h"
  
  #include "nsFilePicker.h"
@@ -1018,7 +1018,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
  
  #undef LOG
  #ifdef MOZ_LOGGING
-@@ -242,7 +245,8 @@ NS_IMETHODIMP
+@@ -310,7 +313,8 @@ NS_IMETHODIMP
  nsFilePicker::AppendFilter(const nsAString& aTitle, const nsAString& aFilter) {
    if (aFilter.EqualsLiteral("..apps")) {
      // No platform specific thing we can do here, really....
@@ -1028,7 +1028,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
    }
  
    nsAutoCString filter, name;
-@@ -352,6 +356,31 @@ nsFilePicker::Open(nsIFilePickerShownCallback* aCallback) {
+@@ -420,6 +424,31 @@ nsFilePicker::Open(nsIFilePickerShownCallback* aCallback) {
    // Can't show two dialogs concurrently with the same filepicker
    if (mRunning) return NS_ERROR_NOT_AVAILABLE;
  
@@ -1060,7 +1060,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
    NS_ConvertUTF16toUTF8 title(mTitle);
  
    GtkWindow* parent_widget =
-@@ -633,6 +662,205 @@ void nsFilePicker::Done(void* file_chooser, gint response) {
+@@ -701,6 +730,205 @@ void nsFilePicker::Done(void* file_chooser, gint response) {
    NS_RELEASE_THIS();
  }
  
@@ -1267,10 +1267,10 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
  void* nsFilePicker::GtkFileChooserNew(const gchar* title, GtkWindow* parent,
                                        GtkFileChooserAction action,
 diff --git a/widget/gtk/nsFilePicker.h b/widget/gtk/nsFilePicker.h
-index 496df4937277d96485376176296ee836aa261ec7..a4c1862ec042f4465d53bc95f138afb87260ba07 100644
+index 7ec93a6694276b3622dbd2d5ba0ececa262b221c..c2571d314c59c3b6d8d70cd65534c9b5818ee86d 100644
 --- a/widget/gtk/nsFilePicker.h
 +++ b/widget/gtk/nsFilePicker.h
-@@ -74,6 +74,12 @@ class nsFilePicker : public nsBaseFilePicker {
+@@ -76,6 +76,12 @@ class nsFilePicker : public nsBaseFilePicker {
   private:
    static nsIFile* mPrevDisplayDirectory;
  
