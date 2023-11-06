@@ -1,7 +1,7 @@
 # Maintainer: aquova <austinbricker at protonmail dot com>
 
 pkgname=zelda3-git
-pkgver=r312.a23632a
+pkgver=r314.fbbb3f9
 pkgrel=1
 pkgdesc='A reverse engineered implementation of Zelda 3 - A Link to the Past'
 url='https://github.com/snesrev/zelda3'
@@ -10,6 +10,7 @@ license=("MIT")
 depends=('python' 'python-pillow' 'python-yaml' 'sdl2')
 source=(
     "git+${url}.git"
+    # Zelda ROM should be named 'zelda3.sfc' and placed into the same directory as this file.
     "local://zelda3.sfc"
 )
 sha256sums=(
@@ -22,13 +23,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd $srcdir/zelda3
-    cp ../zelda3.sfc tables || \
-    printf "\n\nNo ROM found! Copy your Zelda ROM to '$(realpath ..)' and rename it to 'zelda3.sfc'.\n"
-}
-
 build() {
+    cp zelda3.sfc $srcdir/zelda3
     cd $srcdir/zelda3
     make -j$(nproc)
 }
@@ -38,7 +34,7 @@ package() {
     mkdir -p $pkgdir/opt/$pkgname
     install -Dm755 zelda3 $pkgdir/opt/$pkgname
     install -Dm644 zelda3.ini $pkgdir/opt/$pkgname
-    install -Dm644 tables/zelda3_assets.dat $pkgdir/opt/$pkgname
+    install -Dm644 zelda3_assets.dat $pkgdir/opt/$pkgname
 
     echo "#!/usr/bin/env bash
     cd /opt/${pkgname}
