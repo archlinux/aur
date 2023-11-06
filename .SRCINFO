@@ -1,0 +1,12 @@
+pkgbase = crt
+	pkgdesc = CLI tool to check Certificate Transparency logs of a domain name
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cemulus/crt
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	source = https://github.com/cemulus/crt/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = c1ec11b291b2c46c4427afcacf7b76a61bbf7e8b14fa9f7f286a86ad56e793ce
+
+pkgname = crt
