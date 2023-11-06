@@ -3,7 +3,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=2.7.2
+pkgver=2.7.4
 pkgrel=1
 pkgdesc='ACME protocol implementation in Python'
 arch=('any')
@@ -30,7 +30,7 @@ checkdepends=('python-pytest')
 # git repository is used because certbot is a huge monorepo and it's easier to
 # share the entire repository across all certbot related packages than a few
 # hundred tarballs.
-_commit='a1b773cbdc1027214b2cb9dc46cfba66b0ae7af2'
+_commit='b62133e3e19367b82b5fde3d5f5ad97e6ced5447'
 _repo="github.com-certbot-certbot"
 source=("$_repo::git+https://github.com/certbot/certbot#commit=$_commit")
 b2sums=('SKIP')
