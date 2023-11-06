@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.63.2
+pkgver=3.63.3
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('4fb414eafe1ef703562c20de60989e629692410d02b5d396fcc5e5611a482bff'
+sha256sums=('7f3ff7f88977998b778b60548f0f5dcba688712d9b6f272d22f29312bd1310e4'
             'b9e30b4772f3d27eb7a3b2c0c0815e63cf5062b82b81d1de5575c842480d35f3')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
