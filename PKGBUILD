@@ -3,7 +3,7 @@
 vername=GC_MQ_D
 verdesc="Ocarina of Time Master Quest Debug"
 pkgname=soh-otr-${vername,,}
-pkgver=7.0.2.r82.gef6227d8b
+pkgver=7.1.1.r151.g8b78cb832
 pkgrel=1
 epoch=1   # For old versions of SoH, if available
 pkgdesc="OTR game data for SoH (${verdesc})"
@@ -17,6 +17,11 @@ source=("verify_baserom.py")
 sha256sums=('bd82ccb54e94505549af7dc07b56dc83b3e63e1c65d525b6fb98ed1b56b8aecf')
 
 SHIP_PREFIX=/opt/soh
+OTRFILE=oot-mq.otr
+
+_get_extractor_ver() {
+  pacman -Q soh-otr-exporter | sed -E 's/.* ((\.?[[:digit:]]*){3}).*$/\1/'
+}
 
 pkgver() {
   pacman -Q soh-otr-exporter | sed -E 's/.* (.*)-.*$/\1/'
@@ -39,17 +44,21 @@ prepare() {
 build() {
   cd "${srcdir}"
 
-  [ -e oot-mq.otr ] && rm oot-mq.otr
+  [ -e "$OTRFILE" ] && rm "$OTRFILE"
+  [ -e assets ] && rm -rf assets
 
-  "${SHIP_PREFIX}/assets/extractor/ZAPD.out" ed -eh \
-    -i "${SHIP_PREFIX}/assets/extractor/xmls/${vername}" -b baserom.z64 \
-    -fl "${SHIP_PREFIX}/assets/extractor/filelists" -o . -osf . -gsf 0 \
-    -rconf "${SHIP_PREFIX}/assets/extractor/Config_${vername}.xml" -se OTR --otrfile oot-mq.otr
+  cp -r "${SHIP_PREFIX}/assets" assets
+
+  "assets/extractor/ZAPD.out" ed -eh \
+    -i "assets/extractor/xmls/${vername}" -b baserom.z64 \
+    -fl "assets/extractor/filelists" -o . -osf . -gsf 0 \
+    -rconf "assets/extractor/Config_${vername}.xml" -se OTR --otrfile "$OTRFILE" --portVer "$(_get_extractor_ver)"
 }
 
 package() {
   cd "${srcdir}"
 
-  install -Dm644 oot-mq.otr -t "${pkgdir}/${SHIP_PREFIX}"
+  install -Dm644 "$OTRFILE" -t "${pkgdir}/${SHIP_PREFIX}"
 }
+
 
