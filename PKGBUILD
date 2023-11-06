@@ -9,6 +9,7 @@ pkgdesc="A progress spinner for ZSH scripts"
 arch=(any)
 url=https://github.com/molovo/$pkgname
 license=(GPL3)
+depends=(zsh)
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('1bcd00126047e0faaacb496e6f01903efb5e5d3a26c72aa6f78061f08c0bf939')
 
