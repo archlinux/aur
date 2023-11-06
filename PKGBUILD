@@ -3,9 +3,9 @@
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkbase=anki-official-binary-bundle
-pkgname=('anki-official-binary-bundle')
+pkgname=('anki-official-binary-bundle' 'anki-bin-transition-meta')
 pkgver=any
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="[Meta-PKG] Please manually migrate to anki-bin; delete this meta-pkg"
 arch=('any')
