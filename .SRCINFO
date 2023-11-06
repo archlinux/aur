@@ -1,6 +1,6 @@
 pkgbase = r-biocgenerics
 	pkgdesc = S4 generic functions used in Bioconductor
-	pkgver = 0.48.0
+	pkgver = 0.48.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/BiocGenerics.html
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-biocgenerics
 	optdepends = r-msnbase
 	optdepends = r-annotate
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_0.48.0.tar.gz
-	b2sums = 36194816c349b10aad7aa5f8acd558cc8365057b89a50868bdfd8068f55d02ca32eb6f103c723e605199a2050d013f79f909a74ec6104deef0457a7323edd329
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_0.48.1.tar.gz
+	b2sums = e69382abdf5e3699c49f0538b3345d2dd3a88c7d8485bc638603a96ed0be59cc403c8049fcae3cecac3793bacb8e7023da46bd48b8a5ccb509c7e84b59717837
 
 pkgname = r-biocgenerics
