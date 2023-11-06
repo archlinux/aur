@@ -1,0 +1,4 @@
+[zunit]
+source = "github"
+github = "zunit-zsh/zunit"
+use_latest_release = true

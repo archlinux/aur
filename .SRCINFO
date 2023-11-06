@@ -1,0 +1,13 @@
+pkgbase = zunit
+	pkgdesc = a powerful unit testing framework for zsh
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/zunit-zsh/zunit
+	arch = any
+	license = MIT
+	makedepends = zsh
+	depends = revolver
+	source = https://github.com/zunit-zsh/zunit/archive/v0.8.2.tar.gz
+	sha256sums = eb94dad722dc7e95395f6e4b6a3e2eea5f7fd487d807112582a73ed7c3b2e4a7
+
+pkgname = zunit
