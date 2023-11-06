@@ -13,7 +13,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=119.0.6045.105
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
@@ -28,8 +28,9 @@ makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
+            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma')
+            'kwallet5: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz

@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
 	pkgver = 119.0.6045.105
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -56,8 +56,9 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
+	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
-	optdepends = kwallet: support for storing passwords in KWallet on Plasma
+	optdepends = kwallet5: support for storing passwords in KWallet on Plasma
 	provides = chromium=119.0.6045.105
 	provides = chromedriver=119.0.6045.105
 	conflicts = chromium
