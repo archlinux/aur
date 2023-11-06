@@ -1,19 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname="thorium-reader"
 pkgname="${_pkgname}-git"
-pkgver=2.3.0.r18.g1f0decaa
-pkgrel=3
+pkgver=2.3.0.r22.gb2b41b6c
+pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('any')
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
 conflicts=(
     "${_pkgname}"
-    "thorium"
 )
 provides=(
     "${_pkgname}"
-    "thorium"
 )
 depends=(
     'bash'
