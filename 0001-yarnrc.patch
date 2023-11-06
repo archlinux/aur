@@ -1,0 +1,17 @@
+diff --git a/.yarnrc.yml b/.yarnrc.yml
+index c30458a04..3f3fa1d95 100644
+--- a/.yarnrc.yml
++++ b/.yarnrc.yml
+@@ -2,9 +2,9 @@ nodeLinker: pnp
+ pnpMode: loose
+ 
+ supportedArchitectures:
+-  os: ["current", "darwin", "linux"]
+-  cpu: ["current", "x64", "arm64"]
+-  libc: ["current", "glibc", "musl"]
++  os: ["current"]
++  cpu: ["current"]
++  libc: ["current"]
+ 
+ plugins:
+   - path: .yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs
