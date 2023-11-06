@@ -1,7 +1,7 @@
 pkgbase = nzyme-bin
 	pkgdesc = A free and open next-generation WiFi defense system.
 	pkgver = 1.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.nzyme.org/
 	arch = x86_64
 	license = custom:SSPL
