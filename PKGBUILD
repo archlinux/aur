@@ -4,7 +4,7 @@
 
 pkgbase=rio
 pkgname=('rio' 'rio-terminfo')
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('cargo' 'cmake' 'desktop-file-utils')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('3be164e7ba3588346128f4d8969c6f55e0963950bd377d2248558b4f19e259e1249ccc7cf17756fc501f5304c2303d338b066164507ec447c5e30ff05bf25f8d')
+sha512sums=('077fa0a422cd4bf800adb27553c70f38ebf4d6d776cb4a7cf48b662e361c16d459de6c2fd3c18609c7202adea2f09b9e4392edeab305f9389ec461db4c1b8e41')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
