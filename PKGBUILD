@@ -63,6 +63,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  # fix for CUDA >= 12.3.0
+  export HOST_COMPILER=/usr/bin/g++-12
+  export CUDAHOSTCXX=/usr/bin/g++-12
   mkdir -p build
   cd build
   cmake ../ -DCMAKE_BUILD_TYPE=Release -DWITH_DESKTOP=ON \
