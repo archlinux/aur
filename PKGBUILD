@@ -4,14 +4,14 @@ _plgname=go-ds-s3
 _pkgplgname=$_pkgname-s3
 pkgname=$_pkgplgname-git
 pkgver=0.23.0.r0.g3a1a041
-pkgrel=4
+pkgrel=5
 pkgdesc="IPFS Kubo with S3 Datastore Implementation"
 arch=('x86_64')
 url="https://github.com/chixodo-xyz/kubo-s3"
 license=('GPL3')
 groups=()
 depends=(glibc)
-makedepends=(go git)
+makedepends=(go git gawk sed which)
 provides=("$_pkgplgname" "ipfs")
 conflicts=("$_pkgplgname" 'kubo' 'ipfs')
 replaces=()
@@ -26,7 +26,7 @@ noextract=()
 b2sums=('SKIP'
 				'SKIP'
 				'359cde527350603760a64d48546f38b92527b6874cba0b6ec2390985d9b446496e35c926ba31504a84c54bbb2669374dc448fd18999642d29b6d80cecf3e6841'
-				'3ef6073e708a35ab57107e8c4fb8b07172ffc314719b84565f82ca54c14fadd0ddfcae2b30c8b28c4d60dd9a13ccab463384c5c6140340396afdd0d3505dfc23')
+				'e7df78fa46537d2f54a83c8e65ca2aeb30c4b88b4ab52a4da241e22504e80d724ed2eb2a46620616a0a486575a0aeb1d49d016dc4293e1276d61b7d3f7ee2d2e')
 
 prepare() {
 	cd "$srcdir/$_pkgname"

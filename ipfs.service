@@ -1,6 +1,7 @@
 [Unit]
 Description=IPFS daemon
-After=network.target
+After=network-online.target
+Requires=network-online.target
 
 [Service]
 User=ipfs
