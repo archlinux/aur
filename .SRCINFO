@@ -1,37 +1,19 @@
 pkgbase = m3u8-downloader-bin
 	pkgdesc = M3U8-Downloader, electron, multi-threading, resumable upload, encrypted video download cache.
-	pkgver = 2.2.7
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = https://github.com/12343954/M3U8-Downloader
 	arch = x86_64
 	license = custom
-	depends = libxcomposite
-	depends = mesa
-	depends = glibc
-	depends = at-spi2-core
-	depends = libxfixes
-	depends = libcups
-	depends = libx11
-	depends = libxcb
-	depends = nspr
-	depends = libxdamage
-	depends = gcc-libs
-	depends = glib2
-	depends = pango
-	depends = libdrm
-	depends = expat
-	depends = libxext
-	depends = libxkbcommon
-	depends = cairo
-	depends = alsa-lib
+	makedepends = asar
+	depends = bash
+	depends = electron24
 	depends = hicolor-icon-theme
-	depends = dbus
-	depends = nss
-	depends = libxrandr
-	depends = gtk3
-	provides = m3u8-downloader=2.2.7
+	provides = m3u8-downloader=2.2.8
 	conflicts = m3u8-downloader
-	source = m3u8-downloader-2.2.7.deb::https://github.com/12343954/M3U8-Downloader/releases/download/2.2.7/M3U8-Downloader-linux_amd64-2.2.7.deb
-	sha256sums = b468b90e61cec6bbfd73d70937974a349cf0b36582cd7787ba532a025475d017
+	source = m3u8-downloader-2.2.8.deb::https://github.com/12343954/M3U8-Downloader/releases/download/2.2.8/M3U8-Downloader-linux_amd64-2.2.8.deb
+	source = m3u8-downloader.sh
+	sha256sums = 834231de86efb0d346ab90ea6195ea783b63b7dc719139c19ba7e30764049bd3
+	sha256sums = 42bc34b12e17e46437824efd714da8bbc2f4ba9381c6ad3fe99941b920dcd782
 
 pkgname = m3u8-downloader-bin
