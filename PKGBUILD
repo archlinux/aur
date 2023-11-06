@@ -2,7 +2,7 @@
 # Maintainer: Nicolas Karolak <nicolas at karolak dot fr>
 
 pkgname='zabbixmon-bin'
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='CLI application to show currents alerts on Zabbix.'
 url='https://github.com/nikaro/zabbixmon'
@@ -11,11 +11,11 @@ license=('GPLv3')
 provides=('zabbixmon')
 conflicts=('zabbixmon')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/zabbixmon/releases/download/0.8.1/zabbixmon_0.8.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('2c30cfed6ddc890461709327b3594465c71829f89b83501d7ddeea990142159f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/zabbixmon/releases/download/0.8.2/zabbixmon_0.8.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('03c4532ee92e4d6cc3c6068d3f09daec4c24e9eb71d82b2604844b0cdc0c7e3b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/zabbixmon/releases/download/0.8.1/zabbixmon_0.8.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('07ecc59c3e3966c703e64b34332c9d0b0416f60b87eb40f4f61928535de3840b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/zabbixmon/releases/download/0.8.2/zabbixmon_0.8.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('0dc3cc029532eabd508da226b6446849e6e5c4e9f80dddd2e9f11abe25052d04')
 
 package() {
   install -Dm755 "./zabbixmon" "${pkgdir}/usr/bin/zabbixmon"
