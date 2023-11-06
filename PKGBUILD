@@ -3,7 +3,7 @@
 
 _name=django-taggit
 pkgname=python-${_name}
-pkgver=4.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Simple tagging application for Django"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=(python-django)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz)
-sha256sums=('3fffde3126519d2466642eb86102d2b68414db66280134a563da31d808c456b4')
+sha256sums=('31c904449a9873ebd9b476e353af944f012ef34331a013caec884add50895d39')
 
 
 build() {
