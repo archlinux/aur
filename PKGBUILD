@@ -2,7 +2,7 @@
 
 _pkgname='dsnote'
 pkgname="${_pkgname}-git"
-pkgver=r647.30e626c
+pkgver=r710.30e1fcc
 pkgrel=1
 pkgdesc="Note taking, reading and translating with offline Speech to Text, Text to Speech and Machine Translation"
 arch=('x86_64')
@@ -46,9 +46,9 @@ optdepends=(
   'python-accelerate: Support for Punctuation and Hebrew Diacritics restoration'
   'python-torchaudio: Support for Coqui TTS models'
   'python-transformers: Support for Punctuation and Hebrew Diacritics restoration'
-  'python-tts: Support for Coqui TTS models'
   'rocblas: Support for GPU acceleration on AMD graphic cards'
   'rocm-opencl-runtime: Support GPU acceleration on AMD graphic cards'
+  'tts: Support for Coqui TTS models'
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname})
