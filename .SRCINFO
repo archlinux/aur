@@ -10,7 +10,7 @@ pkgbase = prismlauncher-qt5-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = java-environment=17
+	makedepends = jdk17-openjdk
 	makedepends = scdoc
 	makedepends = ghc-filesystem
 	makedepends = gamemode

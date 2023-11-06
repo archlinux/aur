@@ -17,7 +17,7 @@ license=('GPL3')
 depends=('java-runtime=17' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5' 'cmark' 'tomlplusplus')
 provides=('prismlauncher' 'prismlauncher-qt5')
 conflicts=('prismlauncher' 'prismlauncher-qt5')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment=17' 'scdoc' 'ghc-filesystem' 'gamemode')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'jdk17-openjdk' 'scdoc' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
@@ -51,6 +51,8 @@ prepare() {
 }
 
 build() {
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
+
   cmake -DCMAKE_BUILD_TYPE= \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
