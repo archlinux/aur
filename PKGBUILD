@@ -1,10 +1,11 @@
+# Contributor: peshev <>
 # Contributor: FFY00 <filipe.lains@gmail.com>
 # Contributor: Cyberpunk <aur_linuxero@outlook.com>
 
 pkgname=sparta
 pkgver=2.0.0
 _commit=d95993d283d69eb76d30565cea6ad49976685b5f
-pkgrel=1
+pkgrel=2
 pkgdesc='Python GUI application which simplifies network infrastructure penetration testing.'
 arch=('any')
 url="https://github.com/SECFORCE/sparta"
@@ -25,7 +26,7 @@ package() {
   install -dm 755 "$pkgdir"/usr/bin/
   install -dm 755 "$pkgdir"/usr/share/$pkgname
 
-  find $pkgname -type f -exec install -m 644 "{}" "$pkgdir"/usr/share/$pkgname \;
+  find $pkgname -type f -not -path '*/.git*' -exec install -D -m 644 "{}" "$pkgdir"/usr/share/{} \;
 
   install -Dm 755 sparta_launcher "$pkgdir"/usr/bin/sparta
 }
