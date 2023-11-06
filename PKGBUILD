@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.115
+pkgver=2.0.117
 pkgrel=1
 pkgdesc="A desktop application that displays plain text, images, and any other HTML content on the screen."
 arch=("x86_64")
@@ -8,20 +8,25 @@ url="https://github.com/matzkoh/niconizer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron27')
-makedepends=('gendesk')
+depends=(
+    'bash'
+    'electron27'
+)
+makedepends=(
+    'gendesk'
+)
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh")
-sha256sums=('0dec0cc6746123c4a0b6e9c59b85eff1134d6620cb4e7d6dd5c4db0b63d4dbbc'
+sha256sums=('a2bb56be15ea618fe53126918705bf4dee107122fe39b430244c3a5e4e891bcb'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
-            'bec366866c77a0d017dfe0722d4c16b561c4c472951f6e4b4c62aa7eaacd3a2a')
+            'd5ca98ae98076ff3e778e6655841bafeea52679ec9b1cf8d17936db9de52edc5')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
 }
 package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
+   install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
    install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
