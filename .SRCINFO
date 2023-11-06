@@ -37,7 +37,6 @@ pkgbase = ferdium-git
 	conflicts = ferdium-nightly
 	conflicts = ferdium-beta-bin
 	conflicts = ferdium-beta
-	conflicts = ferdium-git
 	conflicts = ferdium-electron
 	options = !strip
 	source = ferdium-git::git+https://github.com/ferdium/ferdium-app#branch=develop

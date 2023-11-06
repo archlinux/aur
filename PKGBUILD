@@ -25,7 +25,6 @@ conflicts=(
     'ferdium-nightly'
     'ferdium-beta-bin'
     'ferdium-beta'
-    'ferdium-git'
     'ferdium-electron'
 )
 source=(
