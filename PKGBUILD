@@ -1,19 +1,26 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-
-# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+# Maintainer: Fedor Suchkov <f.suchkov@gmail.com>
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=4.2.0.r0.g6d6f2737
+pkgver=4.29.0.r0.gce24ac70
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
 url="https://github.com/JimmXinu/${_pkgname}"
 license=('Apache')
-_deps=('beautifulsoup4' 'brotli' 'chardet' 'cloudscraper' 'html5lib' 'html2text'
-       'requests-file')
+_deps=(
+    'beautifulsoup4'
+    'chardet'
+    'html5lib'
+    'html2text'
+    'cloudscraper'
+    'urllib3'
+    'requests'
+    'requests-file'
+    'brotli'
+)
 depends=("${_deps[@]/#/python-}")
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 optdepends=('calibre: use FanFicFare as a calibre plugin'
             'python-pillow: support for converting/resizing story images and covers')
 provides=("${pkgname%-git}")
@@ -38,7 +45,7 @@ prepare() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     for i in calibre-plugin/translations/*.po; do
         msgfmt -vv "$i" -o "${i%.po}.mo"
@@ -49,6 +56,6 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 FanFicFare.zip "${pkgdir}"/usr/share/calibre/system-plugins/FanFicFare.zip
 }
