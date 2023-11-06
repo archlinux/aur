@@ -70,6 +70,7 @@ package_ceph-libs-bin() {
 
     'python-prettytable'  'python-setuptools'  'python-yaml'
   )
+  provides=('ceph-libs')
   conflicts=('ceph-libs')
 
   cd "${srcdir}"
