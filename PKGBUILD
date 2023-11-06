@@ -1,6 +1,6 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=mounter-elite-plus
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='A blazing fast and secure, ISO Mounter/Converter for the terminal, written in C++.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/siyia2/mounter-elite-plus"
 license=('GPL3')
 depends=('bash' 'coreutils' 'readline' 'sudo')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDS/MDF conversion support')
-md5sums=('0a57a071a1b4449179fb4c267ab4509f')
+md5sums=('9cf04e60d9af71b6babed01a5897be59')
 
 source=("https://github.com/siyia2/mounter-elite-plus/archive/v${pkgver}.tar.gz")
 
