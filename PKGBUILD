@@ -3,7 +3,7 @@
 pkgname=swaysome
 pkgdesc="AwesomeWM-like workspaces for sway."
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://gitlab.com/hyask/swaysome"
 license=('MIT')
@@ -43,4 +43,5 @@ build() {
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname-$pkgver/target/release/$pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$pkgname-$pkgver/LICENSE"
 }
