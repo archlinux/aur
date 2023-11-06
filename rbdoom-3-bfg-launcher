@@ -3,11 +3,9 @@
 
 import configparser
 import os
-import shutil
-import subprocess
 import sys
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QProcess, QProcessEnvironment, QStandardPaths
 from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
 from xdg import BaseDirectory
 
@@ -17,6 +15,7 @@ doom_dir = "/usr/share/games/doom3bfg"
 base_name = f"{exe_name.lower()}-launcher"
 conf_dir = BaseDirectory.save_config_path(base_name)
 data_dir = BaseDirectory.save_data_path(base_name)
+mount_dir = os.path.join(data_dir, "data")
 
 
 def fix_config(parser, path):
@@ -36,9 +35,16 @@ def main() -> int:
     app.setApplicationName(base_name)
     app.setOrganizationName(base_name)
 
-    mergerfs = shutil.which("mergerfs")
+    if not os.path.exists(mount_dir):
+        os.mkdir(mount_dir)
+    elif not os.path.isdir(mount_dir):
+        QMessageBox.critical(None, f"{base_name}", f"Path <b>{mount_dir}</b> exists and it is not a directory.")
+        app.exit()
+        return 1
+
+    mergerfs = QStandardPaths.findExecutable("mergerfs")
     if not mergerfs:
-        QMessageBox.critical(None, f"{base_name}", "<b>mergerfs</b> is not installed.")
+        QMessageBox.critical(None, f"{base_name}", f"<b>{os.path.basename(mergerfs)}</b> is not installed.")
         app.exit()
         return 1
 
@@ -47,9 +53,11 @@ def main() -> int:
     if os.path.exists(conf_path):
         try:
             config.read(conf_path)
-        except configparser.MissingSectionHeaderError:
-            fix_config(config, conf_path)
-            config.read(conf_path)
+        except Exception as e:
+            sys.stderr.write(str(e))
+            config.add_section(base_name)
+            # fix_config(config, conf_path)
+            # config.read(conf_path)
     else:
         config.add_section(base_name)
 
@@ -62,7 +70,7 @@ def main() -> int:
             f"Without it, the default locations will be searched for game files.\n\n"
             f"Do you want to set it now?\n"
         )
-        if ans == QMessageBox.Yes:
+        if ans == QMessageBox.StandardButton.Yes:
             install_dir = QFileDialog().getExistingDirectory(None, base_name)
             config.set(base_name, "install_dir", install_dir)
 
@@ -70,19 +78,43 @@ def main() -> int:
         config.write(conf_file)
 
     base_path = []
-    if install_dir is not None:
-        subprocess.run(
-            [mergerfs, "-o", f"fsname={exe_name}", f"{doom_dir}:{install_dir}", data_dir]
-        )
-        base_path = ["+set", "fs_basepath", data_dir]
+    proc = QProcess(app)
+    proc.setProcessEnvironment(QProcessEnvironment.systemEnvironment())
 
-    subprocess.run(
-        [shutil.which(exe_name), "+set", "in_tty", "0", *base_path, *sys.argv]
-    )
+    if install_dir:
+        proc.setProgram(mergerfs)
+        proc.setArguments(["-o", f"fsname={exe_name}", f"{doom_dir}:{install_dir}", mount_dir])
+        proc.start()
+        proc.waitForFinished(-1)
+        if proc.exitStatus() == QProcess.ExitStatus.CrashExit or proc.exitCode() != 0:
+            stderr = proc.readAllStandardError().data().decode('utf-8', 'ignore')
+            sys.stderr.write(stderr)
+            QMessageBox.critical(
+                None, f"{base_name}",
+                f"<b>{os.path.basename(mergerfs)}</b> failed to execute correctly:\n"
+                f"{stderr}"
+            )
+            proc.deleteLater()
+            app.exit()
+            return 1
+        base_path = ["+set", "fs_basepath", mount_dir]
 
-    if os.path.ismount(data_dir):
-        subprocess.run(["umount", data_dir])
+    proc.setProgram(QStandardPaths.findExecutable(exe_name))
+    proc.setArguments(["+set", "in_tty", "0", *base_path, *sys.argv])
+    proc.start()
+    proc.waitForFinished(-1)
+    if proc.exitStatus() == QProcess.ExitStatus.CrashExit or proc.exitCode() != 0:
+        sys.stderr.write(proc.readAllStandardOutput().data().decode('utf-8', 'ignore'))
 
+    if os.path.ismount(mount_dir):
+        proc.setProgram(QStandardPaths.findExecutable("umount"))
+        proc.setArguments([mount_dir])
+        proc.start()
+        proc.waitForFinished(-1)
+        if proc.exitStatus() == QProcess.ExitStatus.CrashExit or proc.exitCode() != 0:
+            sys.stderr.write(proc.readAllStandardError().data().decode('utf-8', 'ignore'))
+
+    proc.deleteLater()
     app.exit()
     return 0
 
