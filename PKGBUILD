@@ -2,7 +2,7 @@
 pkgname=selenium-ide-appimage
 _appname="@seleniumhq${pkgname%-appimage}"
 pkgver=4.0.0_alpha.54
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source record and playback test automation for the web."
 arch=('x86_64')
 url="https://selenium.dev/selenium-ide/"
@@ -15,7 +15,7 @@ makedepends=('squashfuse')
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver//_/-}/Selenium.IDE-${pkgver//_/-}.AppImage")
-sha256sums=('da07316f5cb1a8807540ead509932c955af829a2b7cda0f3c4472c83ac7173f6')
+sha256sums=('db7f4963e74f50e1435831c603e4499ee8f40559e051e9c13c2e4932aa771a23')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
