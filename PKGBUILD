@@ -4,7 +4,7 @@
 
 pkgname=midivisualizer
 _pkgname=MIDIVisualizer
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 pkgdesc='A small MIDI visualizer tool, using OpenGL'
 arch=('x86_64')

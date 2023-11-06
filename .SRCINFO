@@ -1,6 +1,6 @@
 pkgbase = midivisualizer
 	pkgdesc = A small MIDI visualizer tool, using OpenGL
-	pkgver = 7.1
+	pkgver = 7.2
 	pkgrel = 1
 	url = https://github.com/kosua20/MIDIVisualizer
 	arch = x86_64
