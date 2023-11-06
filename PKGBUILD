@@ -1,4 +1,5 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=redshift-qt
 pkgver=0.6
