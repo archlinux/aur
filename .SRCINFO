@@ -1,6 +1,6 @@
 pkgbase = monolith-code-bin
 	pkgdesc = minimalistic but powerful code editor
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://haeri.github.io/monolith-code
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = monolith-code-bin
 	makedepends = gendesk
 	depends = bash
 	depends = electron26
-	provides = monolith-code=2.2.4
+	provides = monolith-code=2.2.5
 	conflicts = monolith-code
-	source = monolith-code-2.2.4.tar.gz::https://github.com/Haeri/monolith-code/releases/download/v2.2.4/monolith-code-2.2.4.tar.gz
-	source = monolith-code.png::https://raw.githubusercontent.com/Haeri/monolith-code/v2.2.4/res/img/icon.png
-	source = LICENSE::https://raw.githubusercontent.com/Haeri/monolith-code/v2.2.4/LICENSE
+	source = monolith-code-2.2.5.tar.gz::https://github.com/Haeri/monolith-code/releases/download/v2.2.5/monolith-code-2.2.5.tar.gz
+	source = monolith-code.png::https://raw.githubusercontent.com/Haeri/monolith-code/v2.2.5/res/img/icon.png
+	source = LICENSE::https://raw.githubusercontent.com/Haeri/monolith-code/v2.2.5/LICENSE
 	source = monolith-code.sh
 	sha256sums = 23ed9785ec6229e0ef96c9afca60b669543d36882d49c72a74682484074a99be
 	sha256sums = fc337a1441eedf5ba5cf89db2d688599356efef702c28eb72843e36bcd81cf27
