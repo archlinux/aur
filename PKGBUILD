@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=journald-broker
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A log-based event dispatcher daemon for systemd's journal"
 arch=('x86_64')
@@ -11,10 +11,13 @@ makedepends=(cargo)
 options=(!lto)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-backup=(etc/systemd/journald-broker.toml)
+backup=(
+  "etc/journald-broker.d/00-global-settings.conf"
+  "etc/journald-broker.d/00-template.conf"
+)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('159358efce09d9ca0a7673f3e2a662bcea6abdcca53d790b6af07c5d720558612ed938937a2cf6b2c774cd310f59fd737dffb0ad3b8b047afe24588c294c470d')
+b2sums=('359269447dcb3a5c10a45b3bad710b16388b8185b2ce41878bc60ec1b965a69405bcfefe390e52744635293effa0275382b7be4f84d0cb29a24f25aadee74143')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -30,12 +33,14 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 "target/release/journald-broker" "$pkgdir/usr/bin/journald-broker"
+  install -Dm755 "target/release/journald-broker" "${pkgdir}/usr/bin/journald-broker"
 
-  install -Dm644 "journald-broker.service" "$pkgdir/usr/lib/systemd/system/journald-broker.service"
+  install -Dm644 "journald-broker.service" "${pkgdir}/usr/lib/systemd/system/journald-broker.service"
 
-  install -Dm644 "journald-broker.toml" "$pkgdir/etc/systemd/journald-broker.toml"
+  install -dm755 "${pkgdir}/etc/journald-broker.d/"
+  install -Dm644 "00-global-settings.conf" "${pkgdir}/etc/journald-broker.d/00-global-settings.conf"
+  install -Dm644 "00-template.conf" "${pkgdir}/etc/journald-broker.d/00-template.conf"
 
-  install -Dm644 "README.adoc" "$pkgdir/usr/share/doc/${pkgname}/README.adoc"
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "README.adoc" "${pkgdir}/usr/share/doc/${pkgname}/README.adoc"
+  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
