@@ -8,7 +8,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/Nama/swayrst"
 license=(MIT)
-depends=("python-sh" "i3ipc-python-git")
+depends=("python-sh" "i3ipc-python")
 makedepends=(
     "git"
     "python-build"
