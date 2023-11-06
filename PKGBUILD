@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=7.1.1.r97.g5ddc41877
+pkgver=7.1.1.r151.g8b78cb832
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -126,10 +126,6 @@ package_soh-otr-exporter-git() {
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
-
-  # Change the external xml folder path so that it always points to this package's install path
-  find "${pkgdir}/${SHIP_PREFIX}/assets/extractor" -maxdepth 1 -name Config_\*.xml -exec \
-    sed -i "/ExternalXMLFolder/s,assets/extractor,${SHIP_PREFIX}/&," {} +
 
   install -dm755 "${pkgdir}/usr/share/licenses/soh-otr-exporter"
   install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh-otr-exporter/LICENSE"
