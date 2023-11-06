@@ -1,0 +1,14 @@
+pkgbase = lstypec
+	pkgdesc = Know your USB-C Ports
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Rajaram-Regupathy/libtypec
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = systemd-libs
+	source = libtypec::git+https://github.com/Rajaram-Regupathy/libtypec.git#tag=libtypec-0.4.0
+	sha256sums = SKIP
+
+pkgname = lstypec
