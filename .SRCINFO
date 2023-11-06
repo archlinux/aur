@@ -1,6 +1,6 @@
 pkgbase = sweethome3d-3dmodels-contributions
 	pkgdesc = Free 3D models advertised on SweetHome3D website
-	pkgver = 1.9
+	pkgver = 1.9.1
 	pkgrel = 2
 	url = http://www.sweethome3d.com/freeModels.jsp
 	install = sweethome3d-3dmodels-contributions.install
@@ -16,7 +16,7 @@ pkgbase = sweethome3d-3dmodels-contributions
 	optdepends = sweethome3d-3dmodels-trees: More 3D models
 	optdepends = sweethome3d-textures-contributions: More textures
 	optdepends = sweethome3d-textures-scopia: More textures
-	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-Contributions-1.9.zip
-	sha1sums = 907db36094115c24d5dcf54f25c6d667174052b0
+	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-Contributions-1.9.1.zip
+	sha1sums = a1b7741fc3e7333cb13fadac730d2d63d3c87fbc
 
 pkgname = sweethome3d-3dmodels-contributions
