@@ -20,4 +20,5 @@ pre_upgrade() {
 
 pre_remove() {
     xdg-mime uninstall /usr/share/anki/anki.xml 2>dev/null || echo "info: unneeded mime-types file already removed: /usr/share/anki/anki.xml"
+    xdg-mime uninstall /usr/share/mime/packages/anki.xml 2>dev/null || echo "info: unneeded mime-types file already removed: /usr/share/mime/packages/anki.xml"
 }
