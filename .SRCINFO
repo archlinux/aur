@@ -9,6 +9,7 @@ pkgbase = openhmd-git
 	makedepends = meson
 	makedepends = git
 	depends = hidapi
+	depends = glibc
 	optdepends = oculus-udev: Udev rule for Oculus Rift,
 	optdepends = vive-udev: Udev rule for HTC Vive
 	provides = openhmd
