@@ -1,51 +1,47 @@
-# Maintainer: Brenden Davidson <davidson.brenden15@gmail.com>
-pkgname=python-webpy
-pkgver=0.51
-pkgrel=3
+# Maintainer:
+# Contributor: Brenden Davidson <davidson.brenden15@gmail.com>
+
+_module="webpy"
+_pkgname="python-$_module"
+pkgname="$_pkgname"
+pkgver=0.70
+pkgrel=1
 pkgdesc="A web framework for Python"
 arch=("any")
-url="https://webpy.org/"
-license=('custom')
-
-_name=${pkgname#python-}
+#url="https://webpy.org/"
+url="https://github.com/webpy/webpy"
+license=('Public Domain')
 
 depends=(
-	"python-cheroot>=6.0.0"
+  'python'
+  'python-cheroot'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
 )
 
-# checkdepends=(
-# 	"python-pytest>=4.6.2"
-
-# 	# Omitted to disable DB tests
-# 	"python-dbutils"
-# 	"python-pymysql>=0.9.3"
-# 	"python-mysql-connector>=8.0.19"
-# 	"python-psycopg2>=2.8.4"
-# )
-
+#_tag="${pkgver%%.r*}"
+_tag="$_module-${pkgver%%.r*}"
+_pkgsrc="$_module-$_tag"
+_pkgext="tar.gz"
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/webpy/webpy/archive/$pkgver.tar.gz"
+  "$_module-${pkgver%%.r*}.$_pkgext"::"$url/archive/refs/tags/$_tag.$_pkgext"
 )
 sha256sums=(
-        "550ed5fb18c7626c578cc2119fd45a9a898b7815fc81a4ac85ae2ed383a0ec5f"
+  "eee36e423b5e85463145159d94735e3c3a4c1c8078555042d8139348350b0022"
 )
 
 build() {
-	cd "$_name-$pkgver"
-	/usr/bin/python setup.py build
+  cd "$_pkgsrc"
+  python -m build --no-isolation --wheel
 }
 
-# Tests have been purposefully disabled due to them requiring a test database.
-# check() {
-# 	cd "$_name-$pkgver"
-# 	py.test tests $*
-# }
-
 package() {
-	cd "$_name-$pkgver"
-	/usr/bin/python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_pkgsrc"
+  python -m installer --destdir="${pkgdir:?}" dist/*.whl
 
-	# Add license file to the package
-	mkdir -p ${pkgdir}/usr/share/licences/${pkgname}/
-	install ./LICENSE.txt ${pkgdir}/usr/share/licences/${pkgname}/license
+  install -Dm644 "LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname:?}/LICENSE"
 }

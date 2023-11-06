@@ -1,13 +1,17 @@
 pkgbase = python-webpy
 	pkgdesc = A web framework for Python
-	pkgver = 0.51
-	pkgrel = 3
-	url = https://webpy.org/
+	pkgver = 0.70
+	pkgrel = 1
+	url = https://github.com/webpy/webpy
 	arch = any
-	license = custom
-	depends = python-cheroot>=6.0.0
-	source = python-webpy-0.51.tar.gz::https://github.com/webpy/webpy/archive/0.51.tar.gz
-	sha256sums = 550ed5fb18c7626c578cc2119fd45a9a898b7815fc81a4ac85ae2ed383a0ec5f
+	license = Public Domain
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-cheroot
+	source = webpy-0.70.tar.gz::https://github.com/webpy/webpy/archive/refs/tags/webpy-0.70.tar.gz
+	sha256sums = eee36e423b5e85463145159d94735e3c3a4c1c8078555042d8139348350b0022
 
 pkgname = python-webpy
-
