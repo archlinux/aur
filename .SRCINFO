@@ -1,5 +1,5 @@
 pkgbase = python-solara
-	pkgdesc = Agent-based modeling (ABM) in Python 3+
+	pkgdesc = A pure Python, React-style web framework
 	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://solara.dev
