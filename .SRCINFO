@@ -1,20 +1,7 @@
 pkgbase = telepathy-kde-approver-git
-	pkgdesc = KDE Channel Approver for Telepathy
-	pkgver = v17.04.3.r23.gb839c17
+	pkgdesc = metapackage - broken; do not use
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = http://community.kde.org/Real-Time_Communication_and_Collaboration
-	arch = x86_64
-	license = GPL
-	makedepends = extra-cmake-modules
-	makedepends = git
-	makedepends = kdoctools
-	makedepends = python
-	depends = telepathy-qt
-	depends = knotifications
-	depends = kservice
-	conflicts = telepathy-kde-approver
-	source = git+https://invent.kde.org/network/ktp-approver.git
-	sha256sums = SKIP
+	arch = any
 
 pkgname = telepathy-kde-approver-git
-
