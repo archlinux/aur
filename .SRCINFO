@@ -1,7 +1,7 @@
 pkgbase = prismlauncher-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 6.0.r238.gdeed4957
-	pkgrel = 3
+	pkgrel = 4
 	url = https://prismlauncher.org
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = prismlauncher-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = java-environment=17
+	makedepends = jdk17-openjdk
 	makedepends = scdoc
 	makedepends = ghc-filesystem
 	makedepends = gamemode
