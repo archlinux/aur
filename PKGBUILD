@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tailchat-desktop
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh"
 )
-sha256sums=('c7f1d39ce1f6bbddafc99e790e3a9a4ad6c65e7f66e7c42e90c432faa6a12eae'
+sha256sums=('174c5b71b92de7362fdd27a9a8c592345451055104b7114bb985376b7a99dbe6'
             'dfec8c4393216de0affcb58c679055af1d97ae9e530564a37d7bfe922fcefa2c')
 build() {
     gendesk -q -f -n --categories "Network" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
