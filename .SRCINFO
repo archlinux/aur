@@ -1,0 +1,26 @@
+pkgbase = jdk21-graalvm-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 21 version
+	pkgver = 21.0.1
+	pkgrel = 0
+	url = https://www.graalvm.org/
+	install = jdk21-graalvm-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	optdepends = graaljs-jdk21-bin: JavaScript component (used to be bundled with this package before the 22.2.0 release)
+	optdepends = graal-llvm-jdk21-bin: LLVM component (used to be bundled with this package before the 22.2.0 release)
+	optdepends = graal-visualvm-jdk21-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)
+	provides = java-runtime=21
+	provides = java-environment=21
+	replaces = native-image-jdk21-bin
+	options = staticlibs
+	source = graalvm-rebuild-libpolyglot.hook
+	sha256sums = eae72b5a2a2826eed7e4be5710d33f82934622a390ab6a9f009ed7753359e02e
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.1/graalvm-community-jdk-21.0.1_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 5283ee48a61633f59a49ecdf0ef0ab4c5a8b006c16ce95209df740bd2aee73bf
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.1/graalvm-community-jdk-21.0.1_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = de0340929da0f3360d82d8c8ca6ea8a11499fd62ca7a182579115362575b616d
+
+pkgname = jdk21-graalvm-bin
