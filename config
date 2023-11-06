@@ -1,8 +1,8 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 6.5.3 Kernel Configuration
+# Linux/um 6.6.0 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="gcc (GCC) 13.2.1 20230730"
+CONFIG_CC_VERSION_TEXT="gcc (GCC) 13.2.1 20230801"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=130201
 CONFIG_CLANG_VERSION=0
@@ -169,7 +169,6 @@ CONFIG_KALLSYMS=y
 # CONFIG_KALLSYMS_ALL is not set
 CONFIG_KALLSYMS_BASE_RELATIVE=y
 CONFIG_CACHESTAT_SYSCALL=y
-# CONFIG_EMBEDDED is not set
 
 #
 # Kernel Performance Events And Counters
@@ -177,6 +176,12 @@ CONFIG_CACHESTAT_SYSCALL=y
 # end of Kernel Performance Events And Counters
 
 # CONFIG_PROFILING is not set
+
+#
+# Kexec and crash features
+#
+CONFIG_CRASH_CORE=y
+# end of Kexec and crash features
 # end of General setup
 
 #
@@ -286,7 +291,6 @@ CONFIG_PM=y
 #
 # General architecture-dependent options
 #
-CONFIG_CRASH_CORE=y
 CONFIG_HAVE_64BIT_ALIGNED_ACCESS=y
 CONFIG_TRACE_IRQFLAGS_SUPPORT=y
 CONFIG_ARCH_HAS_FORTIFY_SOURCE=y
@@ -349,7 +353,6 @@ CONFIG_BLOCK_LEGACY_AUTOLOAD=y
 # CONFIG_BLK_CGROUP_IOLATENCY is not set
 # CONFIG_BLK_CGROUP_IOCOST is not set
 # CONFIG_BLK_CGROUP_IOPRIO is not set
-# CONFIG_BLK_SED_OPAL is not set
 # CONFIG_BLK_INLINE_ENCRYPTION is not set
 
 #
@@ -403,6 +406,7 @@ CONFIG_SLAB_MERGE_DEFAULT=y
 # CONFIG_SLAB_FREELIST_RANDOM is not set
 # CONFIG_SLAB_FREELIST_HARDENED is not set
 # CONFIG_SLUB_STATS is not set
+# CONFIG_RANDOM_KMALLOC_CACHES is not set
 # end of SLAB allocator options
 
 # CONFIG_SHUFFLE_PAGE_ALLOCATOR is not set
@@ -423,6 +427,7 @@ CONFIG_VM_EVENT_COUNTERS=y
 #
 # GUP_TEST needs to have DEBUG_FS enabled
 #
+CONFIG_MEMFD_CREATE=y
 # CONFIG_ANON_VMA_NAME is not set
 # CONFIG_USERFAULTFD is not set
 # CONFIG_LRU_GEN is not set
@@ -606,6 +611,11 @@ CONFIG_GENERIC_CPU_DEVICES=y
 # CONFIG_MHI_BUS is not set
 # CONFIG_MHI_BUS_EP is not set
 # end of Bus devices
+
+#
+# Cache Drivers
+#
+# end of Cache Drivers
 
 # CONFIG_CONNECTOR is not set
 
@@ -919,11 +929,13 @@ CONFIG_PTP_1588_CLOCK_OPTIONAL=y
 #
 # Graphics support
 #
+# CONFIG_AUXDISPLAY is not set
 # end of Graphics support
 
 CONFIG_SOUND=m
 CONFIG_SOUND_OSS_CORE=y
 CONFIG_SOUND_OSS_CORE_PRECLAIM=y
+# CONFIG_SND is not set
 CONFIG_HID_SUPPORT=y
 CONFIG_HID=y
 # CONFIG_HID_BATTERY_STRENGTH is not set
@@ -951,6 +963,7 @@ CONFIG_HID_EZKEY=y
 # CONFIG_HID_GEMBIRD is not set
 # CONFIG_HID_GFRM is not set
 # CONFIG_HID_GLORIOUS is not set
+# CONFIG_HID_GOOGLE_STADIA_FF is not set
 # CONFIG_HID_VIVALDI is not set
 # CONFIG_HID_KEYTOUCH is not set
 # CONFIG_HID_KYE is not set
@@ -986,7 +999,6 @@ CONFIG_HID_MONTEREY=y
 # CONFIG_HID_SEMITEK is not set
 # CONFIG_HID_SPEEDLINK is not set
 # CONFIG_HID_STEAM is not set
-# CONFIG_HID_STEELSERIES is not set
 # CONFIG_HID_SUNPLUS is not set
 # CONFIG_HID_RMI is not set
 # CONFIG_HID_GREENASIA is not set
@@ -1019,7 +1031,6 @@ CONFIG_USB_OHCI_LITTLE_ENDIAN=y
 # CONFIG_DMABUF_HEAPS is not set
 # end of DMABUF options
 
-# CONFIG_AUXDISPLAY is not set
 # CONFIG_UIO is not set
 # CONFIG_VFIO is not set
 # CONFIG_VIRT_DRIVERS is not set
@@ -1173,6 +1184,7 @@ CONFIG_IOMMU_SUPPORT=y
 CONFIG_DCACHE_WORD_ACCESS=y
 CONFIG_VALIDATE_FS_PARSER=y
 CONFIG_FS_IOMAP=y
+CONFIG_BUFFER_HEAD=y
 CONFIG_LEGACY_DIRECT_IO=y
 # CONFIG_EXT2_FS is not set
 # CONFIG_EXT3_FS is not set
@@ -1252,7 +1264,7 @@ CONFIG_TMPFS=y
 # CONFIG_TMPFS_POSIX_ACL is not set
 # CONFIG_TMPFS_XATTR is not set
 # CONFIG_TMPFS_INODE64 is not set
-CONFIG_MEMFD_CREATE=y
+# CONFIG_TMPFS_QUOTA is not set
 # CONFIG_CONFIGFS_FS is not set
 # end of Pseudo filesystems
 
@@ -1372,6 +1384,13 @@ CONFIG_INIT_STACK_NONE=y
 CONFIG_CC_HAS_ZERO_CALL_USED_REGS=y
 # CONFIG_ZERO_CALL_USED_REGS is not set
 # end of Memory initialization
+
+#
+# Hardening of kernel data structures
+#
+# CONFIG_LIST_HARDENED is not set
+# CONFIG_BUG_ON_DATA_CORRUPTION is not set
+# end of Hardening of kernel data structures
 
 CONFIG_RANDSTRUCT_NONE=y
 # CONFIG_RANDSTRUCT_FULL is not set
@@ -1762,7 +1781,6 @@ CONFIG_HAVE_DEBUG_BUGVERBOSE=y
 # CONFIG_DEBUG_PLIST is not set
 # CONFIG_DEBUG_SG is not set
 # CONFIG_DEBUG_NOTIFIERS is not set
-# CONFIG_BUG_ON_DATA_CORRUPTION is not set
 # CONFIG_DEBUG_MAPLE_TREE is not set
 # end of Debug kernel data structures
 
