@@ -1,7 +1,7 @@
 pkgbase = puzzle-bobble-grub2-theme
 	pkgdesc = Puzzle Bobble Grub2 Theme
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme
 	install = puzzle-bobble-grub2-theme.install
 	arch = any

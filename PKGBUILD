@@ -2,7 +2,7 @@
 
 pkgname=puzzle-bobble-grub2-theme
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Puzzle Bobble Grub2 Theme"
 arch=('any')
 license=('GPLv3')
