@@ -1,13 +1,13 @@
 # Maintainer: VicSanRoPe <kde.sp90x@simplelogin.com>
 
 pkgname=ksanecore-git
-pkgver=r716.5c6654f
+pkgver=r736.3578c78
 pkgrel=1
 pkgdesc='Library that provides a Qt interface for the SANE library for scanner hardware (git version)'
 url='https://invent.kde.org/libraries/ksanecore'
 arch=(x86_64)
 license=(LGPL)
-depends=(ki18n sane)
+depends=(ki18n5 sane)
 makedepends=(git extra-cmake-modules)
 provides=('ksanecore')
 conflicts=('ksanecore')

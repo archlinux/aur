@@ -1,13 +1,13 @@
 pkgbase = ksanecore-git
 	pkgdesc = Library that provides a Qt interface for the SANE library for scanner hardware (git version)
-	pkgver = r716.5c6654f
+	pkgver = r736.3578c78
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/ksanecore
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules
-	depends = ki18n
+	depends = ki18n5
 	depends = sane
 	provides = ksanecore
 	conflicts = ksanecore
