@@ -1,0 +1,12 @@
+pkgbase = ayaled-updated
+	pkgdesc = A daemon to manage joystick LEDs on AYANEO devices, updated fork.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/luluco250/ayaled
+	arch = x86_64
+	license = custom:BSD-4-Clause
+	makedepends = cargo
+	source = ayaled-0.6.2.tar.gz::https://github.com/luluco250/ayaled/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = d3e320ffa0fde7c822dfc7798d1bfb0bdf1a16f915097649b5ebefd557068242
+
+pkgname = ayaled-updated
