@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.12.0
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=('aarch64' 'x86_64')
@@ -10,6 +10,7 @@ conflicts=("${pkgname}")
 depends=(
     'bash'
     'electron27'
+    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
@@ -20,14 +21,21 @@ source=(
     "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh"
 )
-sha256sums=('bfc7156531c47c2285fe499609853b5f1298028203988ea2acc506e0792fd605'
+sha256sums=('0731a7791d35af33e46965c763b9d21c2a276159acec9150a0841894cf02cf01'
             '941cb7196d03283a6e65a2271f0c8381a9ec8176f38ce9dc9916f3f89b29a720')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    sed '81,84d' -i electron-builder.json
+    if [ -d .git ];then
+        rmdir .git
+        mkdir .git
+    else
+        mkdir .git
+    fi
+    sed -e '81,84d' -e 's|"deb"|"AppImage"|g' -i electron-builder.json
     npm install
     npm run build:linux
+    cp dist-release/.icon-set/logo_1024.png dist-release/.icon-set/icon_1024x1024.png
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
@@ -38,12 +46,15 @@ package() {
     fi
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist-release/${_os_architecture}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist-release/${_os_architecture}/resources/extra/common/tray/icon.png" \
-        -t "${pkgdir}/usr/lib/${pkgname%-bin}/extra/common/tray"
+        -t "${pkgdir}/usr/lib/${pkgname}/extra/common/tray"
     cd "${srcdir}/${pkgname}-${pkgver}/dist-release/${_os_architecture}/resources/extra/linux"
     chmod 755 android-platform-tools/{adb,etc1tool,fastboot,hprof-conv,make_f2fs,make_f2fs_casefold,mke2fs,sqlite3} \
               gnirehtet/gnirehtet
-    cp -r "${srcdir}/${pkgname}-${pkgver}/dist-release/${_os_architecture}/resources/extra/linux" "${pkgdir}/usr/lib/${pkgname%-bin}/extra"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/dist-release/${_os_architecture}/resources/extra/linux" "${pkgdir}/usr/lib/${pkgname}/extra"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/assets/logo-298bebc1.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+      install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist-release/.icon-set/icon_${_icons}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
