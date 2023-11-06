@@ -3,7 +3,7 @@
 pkgname=python-scmrepo
 _pyname=${pkgname#python-}
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='SCM wrapper and fsspec filesystem for Git for use in DVC'
 arch=(any)
 license=(Apache)
