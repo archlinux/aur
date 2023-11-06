@@ -1,12 +1,15 @@
-pkgbase = audacity-qt-git
-	pkgdesc = Record and edit audio files - Built with package versions as recommended by Audacity team
-	pkgver = 3.4.0.0.r17467
+pkgbase = audacity-local-git
+	pkgdesc = Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi, and following the qt branch.
+	pkgver = 3.5.0.0.r18112
 	pkgrel = 1
 	url = https://audacityteam.org
 	arch = x86_64
 	groups = pro-audio
 	license = GPL2
 	license = CCPL
+	makedepends = opusfile
+	makedepends = xcb-util-keysyms
+	makedepends = xcb-util
 	makedepends = cmake
 	makedepends = autoconf
 	makedepends = automake
@@ -19,7 +22,6 @@ pkgbase = audacity-qt-git
 	depends = ffmpeg
 	depends = portmidi
 	depends = python
-	depends = vst3sdk
 	depends = portaudio
 	depends = jack
 	provides = audacity
@@ -29,7 +31,7 @@ pkgbase = audacity-qt-git
 	provides = vst-host
 	provides = vst3-host
 	conflicts = audacity
-	source = git+https://github.com/audacity/audacity.git#branch=qt
+	source = git+https://github.com/audacity/audacity.git
 	sha512sums = SKIP
 
-pkgname = audacity-qt-git
+pkgname = audacity-local-git
