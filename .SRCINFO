@@ -1,12 +1,15 @@
 pkgbase = python-edgedb
 	pkgdesc = EdgeDB Python driver
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edgedb/edgedb-python
 	arch = x86_64
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools>=42
+	makedepends = python-wheel
+	makedepends = cython0
 	depends = python>=3.7
 	source = https://github.com/edgedb/edgedb-python/archive/refs/tags/v1.6.0.zip
 	source = https://github.com/MagicStack/py-pgproto/archive/1720f8af63725d79454884cfa787202a50eb5430.zip

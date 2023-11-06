@@ -1,13 +1,13 @@
 # Maintainer: Fantix King <fantix.king@gmail.com>
 pkgname=python-edgedb
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EdgeDB Python driver"
 arch=('x86_64')
 url="https://github.com/edgedb/edgedb-python"
 license=('Apache')
 depends=('python>=3.7')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools>=42' 'python-wheel' 'cython0')
 _pgproto="1720f8af63725d79454884cfa787202a50eb5430"
 source=("https://github.com/edgedb/edgedb-python/archive/refs/tags/v${pkgver}.zip"
 	"https://github.com/MagicStack/py-pgproto/archive/${_pgproto}.zip")
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "edgedb-python-$pkgver"
-	python -m build --wheel
+	python -m build --wheel --no-isolation
 }
 
 check() {
