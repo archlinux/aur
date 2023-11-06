@@ -2,8 +2,8 @@
 
 pkgname=hd-idle-go
 _pkgname=hd-idle
-pkgver=1.20
-pkgrel=4
+pkgver=1.21
+pkgrel=1
 pkgdesc='Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle'
 arch=('x86_64'
       'armv7h'
@@ -46,4 +46,4 @@ package() {
   install -Dm644 "debian/hd-idle.service" "${pkgdir}/usr/lib/systemd/system/hd-idle.service"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-sha256sums=('b32cd4375cab6cfca06916973895e26669af59dff3c7573679d7c101a4a110c2')
+sha256sums=('eb88022f52c1122de2f5ef1a87306644f96aebb9fdbcdc2fff21a0575ee6ed92')
