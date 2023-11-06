@@ -185,7 +185,6 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCEPH_SYSTEMD_ENV_DIR=/etc/default \
     -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
-    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DENABLE_GIT_VERSION=ON \
     -DWITH_BABELTRACE=OFF \
     -DWITH_LTTNG=OFF \
@@ -231,8 +230,8 @@ build() {
     -DWITH_TESTS=ON \
     -Wno-dev
 
-  VERBOSE=1 make -C build legacy-option-headers
-  VERBOSE=1 make -C build all
+  make -C build legacy-option-headers
+  make -C build all
 }
 
 check() {
