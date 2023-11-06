@@ -1,5 +1,5 @@
 pkgbase = swaysome
-	pkgdesc = Like sway but more awesome.
+	pkgdesc = AwesomeWM-like workspaces for sway.
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://gitlab.com/hyask/swaysome

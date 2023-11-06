@@ -1,7 +1,7 @@
 # Maintainer: Vianney Bouchaud <aur dot vianney at bouchaud dot org>
 
 pkgname=swaysome
-pkgdesc="Like sway but more awesome."
+pkgdesc="AwesomeWM-like workspaces for sway."
 pkgver=2.0.0
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
