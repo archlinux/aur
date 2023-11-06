@@ -1,7 +1,7 @@
 pkgbase = anki-official-binary-bundle
 	pkgdesc = [Meta-PKG] migrate to anki-bin, delete this meta-pkg
 	pkgver = any
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://aur.archlinux.org/packages/anki-bin
 	arch = any

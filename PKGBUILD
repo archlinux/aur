@@ -4,7 +4,7 @@
 
 pkgname=anki-official-binary-bundle
 pkgver=any
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="[Meta-PKG] migrate to anki-bin, delete this meta-pkg"
 arch=('any')
