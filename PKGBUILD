@@ -1,13 +1,13 @@
 # Maintainer: VicSanRoPe <kde.sp90x@simplelogin.com>
 # Maintainer: Ben <crushedtortilla at gmail dot com>
 pkgname=skanpage-git
-pkgver=r497.f76dcc9
+pkgver=r501.6ad41b8
 pkgrel=1
 pkgdesc="KDE multi-page document scanning application (git version)"
 arch=(x86_64)
 url="https://invent.kde.org/utilities/skanpage"
 license=(GPL)
-depends=(ksanecore-git kirigami2 purpose tesseract kquickimageeditor)
+depends=(ksanecore-git kirigami2 purpose5 tesseract kquickimageeditor)
 makedepends=(git extra-cmake-modules)
 conflicts=('skanpage')
 provides=('skanpage')
