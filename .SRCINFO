@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-pt-pt
-	pkgdesc = Portoguese (Portugal) language pack for Pale Moon browser
-	pkgver = 29.4.0
+	pkgdesc = Portuguese (Portugal) language pack for Pale Moon browser
+	pkgver = 32.5.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-pt-pt-29.4.0.xpi
-	source = palemoon-i18n-pt-pt-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-pt-PT@palemoon.org
-	sha256sums = f23af1a88cab67320391976c73e967172f70e4f5f0dd54ad21c1d743e4a5d5af
+	noextract = palemoon-i18n-pt-pt-32.5.0.xpi
+	source = palemoon-i18n-pt-pt-32.5.0.xpi::https://addons.palemoon.org/?component=download&version=32.5.0&id=langpack-pt-PT@palemoon.org
+	sha256sums = 3b699e4f79d759ce0f90c9efda553c181ca497dedc66961c5ea9a1e300eea593
 
 pkgname = palemoon-i18n-pt-pt
