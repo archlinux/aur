@@ -1,8 +1,8 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 pkgname=ruqola-better-git
 _pkgname=ruqola
-pkgver=2.0.0.r314.gdca60ea
-pkgrel=2
+pkgver=2.0.0.r428.ga24aeb5
+pkgrel=1
 pkgdesc='Rocket.Chat client for the KDE desktop'
 arch=('x86_64')
 url='https://invent.kde.org/network/ruqola'
@@ -13,7 +13,7 @@ depends=(
  # kf5 group
  'kwidgetsaddons5' 'ki18n5' 'kcrash5' 'kcoreaddons5' 'syntax-highlighting5' 'sonnet5' 'ktextwidgets5' 'knotifyconfig5' 'kio5' 'kiconthemes5' 'kxmlgui5' 'kidletime5' 'prison5' 'kdoctools5'
  # others
- 'qtkeychain-qt5' 'hicolor-icon-theme' 'kuserfeedback'
+ 'qtkeychain-qt5' 'hicolor-icon-theme' 'kuserfeedback5' 'ktextaddons'
 )
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=(ruqola)
