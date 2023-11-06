@@ -56,13 +56,8 @@ source=(freedesktop-java.desktop.in
         ${_jdkname}24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
         ${_jdkname}32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
         ${_jdkname}48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=('7d79a8c26a125f55f52493df7dca2189c8521b3c'
-          '80a166acf99b351aa466452782a8faac3eca2d26'
-          '4b5684dc98370ecbff274195b42c3ce559226596'
-          '36096a57cebd346e08efc68326fe77960d43726f'
-          'b8233f9ff931ce97a265827fac18ed90f4e248c6'
-          'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
-          'eb36aa73a9be98164447774217865b91e79d503c')
+
+# Upstream provided
 sha1sums_aarch64=('1afe37954c8f01e9701b2bfa6ed25f28691a8337')
 sha1sums_armv7h=('9bd796e0933a0e934a108a4c3b840adf40ec7c1c')
 sha1sums_armv8h=(${sha1sums_armv7h[@]})
