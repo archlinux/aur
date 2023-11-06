@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo -u secoclient ./SecoClientPromoteService -d
+./SecoClientPromoteService -d
 
 while ! pgrep SecoClientPromo; do
     sleep 0.1

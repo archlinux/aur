@@ -16,9 +16,9 @@ source=(
   'SecoClientPromoteService.sh'
 )
 sha256sums=('35a4bf2cf32b3aea134892b827922c38179d0641f211ed3a5aaf0dcbd8e0d068'
-            'f38dadcbc954d17bb832a19db8b9ecbf946742d80ce7e396871023a4585f1462'
-            'd043a694c3c65f89868b983444adb4e84ebcc5eda66022c9ffa4c6f831213cf9'
-            '963e7de55499938734576f66a79d57ec42eb4e88cc88141dd0338b1a1d19c357')
+            'ff391fca9c33544f13861710706d770c1a0fa7608e370170a9729fe8c145370c'
+            'c33781b0dbab7b27858a5338f59ce3d70506d35dca92cac576206c7015c0a81f'
+            '54128f91f81818b0dbf49bcf127ffcb39c5489efd6a48249155a49774d0bc081')
 install=secoclient.install
 
 prepare() {
