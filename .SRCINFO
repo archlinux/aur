@@ -1,7 +1,7 @@
 pkgbase = redshift-qt-git
 	pkgdesc = redshift-gtk rewrite with C++/Qt (latest commit)
 	pkgver = 0.6.r0.g6724a9f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chemrat/redshift-qt
 	arch = x86_64
 	arch = i686
@@ -12,8 +12,6 @@ pkgbase = redshift-qt-git
 	provides = redshift-qt
 	conflicts = redshift-qt
 	source = git+https://github.com/Chemrat/redshift-qt.git
-	source = redshift-qt.desktop
 	md5sums = SKIP
-	md5sums = 9ef24b824bcfb46dbd951074af074772
 
 pkgname = redshift-qt-git
