@@ -1,7 +1,7 @@
 pkgbase = kpcli
 	pkgdesc = Command line browser of KeePassX database files (*.kdb)
 	pkgver = 3.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/kpcli/
 	arch = any
 	license = PerlArtistic
@@ -19,8 +19,8 @@ pkgbase = kpcli
 	optdepends = perl-clipboard
 	source = kpcli-3.8.1.pl::https://sourceforge.net/projects/kpcli/files/kpcli-3.8.1.pl/download
 	source = kpcli-3.8.1-README::https://sourceforge.net/projects/kpcli/files/README.txt/download
-  sha256sums = 6c84f8639245799bf9b2d5ce297c41b5d4ec0789f7f5fa9e8767556816ea472c
-  sha256sums = 9e0d52c5e212c069d23c537b35fda6f37e0d6f6011519e6ae12042196d5ebe66
+	sha256sums = 6c84f8639245799bf9b2d5ce297c41b5d4ec0789f7f5fa9e8767556816ea472c
+	sha256sums = aa3f607576efa3bb3f2742e80fae0d66509fe1bdfa9f969b265d2050be7984c3
 
 pkgname = kpcli
 
