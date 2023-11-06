@@ -28,7 +28,7 @@
 # wrap the `getpwuid()` function and modify the original return value for uid==0.
 
 pkgname=vivado
-_srcname=Xilinx_Unified
+_srcname=FPGAs_AdaptiveSoCs_Unified
 pkgver=2023.2
 _more_ver=1013_2256
 pkgrel=1
