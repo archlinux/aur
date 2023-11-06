@@ -3,8 +3,9 @@
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=anki-official-binary-bundle
-pkgver=2.1.66
-pkgrel=11
+pkgver=any
+pkgrel=12
+epoch=1
 pkgdesc="[Meta-PKG] Please migrate to anki-bin (or other anki pkg); delete this meta-pkg"
 arch=('any')
 url="https://aur.archlinux.org/packages/anki-bin"
@@ -13,10 +14,7 @@ license=('AGPL3')
 package() {
   provides=('anki')
   optdepends=(
-    'anki-bin: prebuilt binary'
-    'anki>2.1.66: source build (Qt6)'
-    'anki-qt5: source build (Qt5)'
-    'anki-git: source build from main development branch'
+    'anki-bin: maintained prebuilt binary package (install manually)'
   )
   install="${pkgname}.install"
 }
