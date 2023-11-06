@@ -1,7 +1,7 @@
 pkgbase = electronwmd-appimage
 	pkgdesc = Upload music to NetMD MiniDisc devices
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://web.minidisc.wiki/
 	arch = x86_64
 	license = GPL2

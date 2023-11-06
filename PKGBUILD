@@ -3,7 +3,7 @@
 pkgname=electronwmd-appimage
 pkgver=1.4.2
 _fullpkgver=0.3.1-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='Upload music to NetMD MiniDisc devices'
 arch=('x86_64')
 url='https://web.minidisc.wiki/'
@@ -31,9 +31,6 @@ prepare() {
 package() {
   install -Dm755 "${srcdir}/electronwmd-${pkgver}.AppImage" "${pkgdir}/opt/appimages/electronwmd.AppImage"
   install -Dm755 "${srcdir}/electronwmd.sh" "${pkgdir}/usr/bin/electronwmd"
-
-  install -dm755 "${pkgdir}/usr/share"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-
   install -Dm644 "${srcdir}/squashfs-root/electronwmd.desktop" "${pkgdir}/usr/share/applications/electronwmd.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/electronwmd.png" "${pkgdir}/usr/share/pixmaps/electronwmd.png"
 }
