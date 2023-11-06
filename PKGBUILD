@@ -4,7 +4,7 @@
 pkgname=verifast-bin
 _pkgname=verifast
 pkgver=19.12
-pkgrel=1
+pkgrel=2
 pkgdesc="research prototype of a tool for formal verification of C and Java programs"
 arch=("any")
 url="https://github.com/verifast/verifast"
@@ -16,10 +16,10 @@ md5sums=("235d075fa0790ad2e8401f71d9307d73" "a53d80725c9b46c7dc7dc507b6dee172")
 
 package() {
 	install -d "${pkgdir}/usr/bin"
-	install -d "${pkgdir}/usr/share/licences/${_pkgname}"
+	install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
 	install -d "${pkgdir}/opt"
 
-	install -m644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licences/${_pkgname}/LICENSE"
+	install -m644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
 	_destdir="/opt/${_pkgname}"
 	destdir="${pkgdir}${_destdir}"

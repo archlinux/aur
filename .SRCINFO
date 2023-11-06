@@ -1,7 +1,7 @@
 pkgbase = verifast-bin
 	pkgdesc = research prototype of a tool for formal verification of C and Java programs
 	pkgver = 19.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/verifast/verifast
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = verifast-bin
 	md5sums = a53d80725c9b46c7dc7dc507b6dee172
 
 pkgname = verifast-bin
-
