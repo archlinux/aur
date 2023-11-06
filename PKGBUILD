@@ -1,18 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
 _pkgname=netPlayer
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Subsonic based music player.基于Subsonic API的桌面端播放器"
-arch=('aarch64' 'x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/Zhoucheng133/net-player"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron13')
-makedepends=('yarn' 'gendesk' 'npm' 'nvm')
-source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
-    "${pkgname}.sh")
-sha256sums=('061e3ea185336432fdda94a571a3a0762776d9e1487b82226faf1a48d291ed7b'
+depends=(
+    'bash'
+    'electron13'
+)
+makedepends=(
+    'yarn'
+    'gendesk'
+    'npm'
+    'nvm'
+)
+source=(
+    "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
+    "${pkgname}.sh"
+)
+sha256sums=('2cace223a717bd267b5a02ad477260d737187e60db7e1c21161dcac2870f099f'
             'cf30b550beac6dfd1582048dd68b57c8d9f5404561357b731dedfac3559dcf56')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
