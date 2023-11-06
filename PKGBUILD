@@ -9,7 +9,7 @@
 _pkgname=libressl
 pkgname=libressl-3.8
 pkgver=3.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free version of the TLS/crypto stack forked from OpenSSL"
 arch=(x86_64)
 url="https://www.libressl.org/"
@@ -20,7 +20,7 @@ backup=(etc/libressl-3.8/openssl.cnf)
 source=(https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz{,.asc})
 sha256sums=('6d4b8d5bbb25a1f8336639e56ec5088052d43a95256697a85c4ce91323c25954'
             'SKIP')
-provides=(libressl=${pkgver})
+provides=(libressl-3.8=${pkgver})
 #conflicts=(libressl)
 replaces=(libressl)
 validpgpkeys=(A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5) # Brent Cook <bcook@openbsd.org>

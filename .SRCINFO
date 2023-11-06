@@ -1,14 +1,14 @@
 pkgbase = libressl-3.8
 	pkgdesc = Free version of the TLS/crypto stack forked from OpenSSL
 	pkgver = 3.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.libressl.org/
 	arch = x86_64
 	license = ISC
 	license = custom:OpenSSL
 	depends = glibc
 	optdepends = ca-certificates
-	provides = libressl=3.8.2
+	provides = libressl-3.8=3.8.2
 	replaces = libressl
 	backup = etc/libressl-3.8/openssl.cnf
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz
