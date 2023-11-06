@@ -37,6 +37,7 @@ prepare() {
 
 build() {
   cd "$srcdir/cosmic-settings"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
   # https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
