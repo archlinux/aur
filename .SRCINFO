@@ -9,6 +9,6 @@ pkgbase = oink
 	depends = glibc
 	backup = etc/oink_ddns/config.json
 	source = https://github.com/RLado/Oink/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = f227fdb94b6503ff4358eb1252ef96b10fc6f2773dc49ad4424151a65dc49dc1
+	sha256sums = a2f382d5c71912da75de291457685d5667f6cf016357e623d211218a3000899a
 
 pkgname = oink
