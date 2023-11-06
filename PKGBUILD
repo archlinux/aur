@@ -9,30 +9,35 @@
 pkgname=phonon-qt4-mplayer-git
 pkgver=20120714.7217499
 pkgrel=1
-pkgdesc="Mplayer backend for phonon, the multimedia API of KDE. (Qt4 only) GIT version)"
+pkgdesc='Phonon Mplayer backend for Qt4. (GIT version)'
 arch=('x86_64')
 url='https://projects.kde.org/projects/unmaintained/phonon-mplayer'
 license=('LGPL')
-depends=('mplayer'
-         'phonon-qt4'
-         )
-makedepends=('cmake'
-             'automoc4'
-             'git'
-             )
-provides=('phonon-qt4-backend'
-          'phonon-qt4-mplayer'
-           )
+depends=(
+  'mplayer'
+  'phonon-qt4'
+)
+makedepends=(
+  'cmake'
+  'automoc4'
+  'git'
+)
+provides=(
+  'phonon-qt4-backend'
+  'phonon-qt4-mplayer'
+)
 conflicts=('phonon-qt4-mplayer')
 replaces=('phonon-mplayer-git')
-source=('git+https://invent.kde.org/unmaintained/phonon-mplayer.git'
-        'fix_find_config.patch'
-        'CMakeLists.txt.patch'
-        )
-sha256sums=('SKIP'
-            'ee6a0a79b995b4bd5bf086624b89b4467411647e9ddeefcd6e1a81d70b318655'
-            'fd6379172562065acb670e497ade517015f71829abf65cfd8424fe428e405df3'
-            )
+source=(
+  'git+https://invent.kde.org/unmaintained/phonon-mplayer.git'
+  'fix_find_config.patch'
+  'CMakeLists.txt.patch'
+)
+sha256sums=(
+  'SKIP'
+  'ee6a0a79b995b4bd5bf086624b89b4467411647e9ddeefcd6e1a81d70b318655'
+  'fd6379172562065acb670e497ade517015f71829abf65cfd8424fe428e405df3'
+)
 
 pkgver() {
   cd phonon-mplayer
@@ -40,24 +45,21 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   patch -d phonon-mplayer -Np1 -i ../fix_find_config.patch
   patch -d phonon-mplayer -Np0 -i ../CMakeLists.txt.patch
 }
 
 build() {
-  cd build
   CXXFLAGS+=" -fPIC"
-  cmake ../phonon-mplayer \
+  cmake -S phonon-mplayer -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON
 
-  make
+  cmake --build build
 }
 
 
 package () {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }

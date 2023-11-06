@@ -1,5 +1,5 @@
 pkgbase = phonon-qt4-mplayer-git
-	pkgdesc = Mplayer backend for phonon, the multimedia API of KDE. (Qt4 only) GIT version)
+	pkgdesc = Phonon Mplayer backend for Qt4. (GIT version)
 	pkgver = 20120714.7217499
 	pkgrel = 1
 	url = https://projects.kde.org/projects/unmaintained/phonon-mplayer
