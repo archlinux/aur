@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/clawpack/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-matplotlib)
-makedepends=(python-build python-installer python-setuptools python-wheel gcc-fortran git)
+makedepends=(python-build python-installer meson-python python-wheel gcc-fortran git)
 optdepends=('petsc: for petclaw support'
   'python-scipy: for euler support')
 source=(${_base}-${pkgver}::git+${url}.git#tag=v${pkgver}
