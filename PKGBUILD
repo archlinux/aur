@@ -24,8 +24,6 @@ md5sums=('SKIP')
 # a description of each element in the source array.
 
 prepare() {
-    echo "$srcdir"
-    echo ${pkgname%-git}
     mkdir -p "$srcdir/${pkgname%-git}"
 	cd "$srcdir/${pkgname%-git}"
 }
@@ -37,8 +35,7 @@ build() {
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-	#make test
-    echo "Test Done!"
+	make test
 }
 
 package() {
