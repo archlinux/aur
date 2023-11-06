@@ -1,33 +1,49 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgname=perl-test-harness
-pkgver=3.42
-pkgrel=1
-pkgdesc='Run Perl standard test scripts with statistics'
-_dist=Test-Harness
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
+
+pkgname='perl-test-harness'
+pkgver='3.48'
+pkgrel='1'
+pkgdesc="Run Perl standard test scripts with statistics"
 arch=('any')
-url="https://metacpan.org/release/$_dist"
-license=('PerlArtistic')
-depends=('perl')
-options=('!emptydirs' purge)
-source=("https://cpan.metacpan.org/authors/id/L/LE/LEONT/$_dist-$pkgver.tar.gz")
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=0')
+makedepends=()
+url='https://metacpan.org/release/Test-Harness'
+source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Test-Harness-3.48.tar.gz')
+md5sums=('08ca8899219da86ba5d3f3fe44b535e7')
+sha512sums=('7d65b48157ec7bc63553144f68e6233c07d21a4d127cefd5f77b2193c47f4d96325b15a9eb029ed62a19340f65659fcef0796ff7c6b07e5b5b8d539ddeee485c')
+_distdir="Test-Harness-3.48"
 
 build() {
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  /usr/bin/perl Makefile.PL
-  make
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
 }
 
 check() {
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  make test
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
 }
 
 package() {
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  make install DESTDIR="$pkgdir"
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
-sha256sums=('0fd90d4efea82d6e262e6933759e85d27cbcfa4091b14bf4042ae20bab528e53')
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
