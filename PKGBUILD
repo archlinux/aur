@@ -2,7 +2,7 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.6.7.r0.ga19c65e
+pkgver=2.6.8.r0.g370bbcf
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
 arch=('x86_64')
@@ -12,8 +12,6 @@ license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(
-    'gcc-libs'
-    'glib2'
     'gdk-pixbuf2'
     'gtk3'
     'openssl'
@@ -45,10 +43,10 @@ build() {
     pnpm tauri build -b deb
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_2.6.5_amd64/data/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_2.6.8_amd64/data/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 32x32 128x128 256x256@2;do
-        install -Dm644 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_2.6.5_amd64/data/usr/share/icons/hicolor/256x256@2/apps/${_pkgname}.png" \
+        install -Dm644 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_2.6.8_amd64/data/usr/share/icons/hicolor/256x256@2/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-git}.png"
     done
 }
