@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone-bin
 _pkgname=Bluestone
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('aarch64' 'x86_64')
@@ -9,12 +9,32 @@ url="https://github.com/1943time/bluestone"
 license=('AGPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('alsa-lib' 'dbus' 'libxcomposite' 'gcc-libs' 'cairo' 'glibc' 'nss' 'pango' 'libxcb' 'mesa' 'libdrm' 'libxkbcommon' \
-    'nspr' 'gtk3' 'expat' 'at-spi2-core' 'libxrandr' 'libxdamage' 'libcups' 'libx11' 'glib2' 'libxfixes' 'libxext')
+depends=(
+    'alsa-lib'
+    'dbus'
+    'libxcomposite'
+    'cairo'
+    'nss'
+    'pango'
+    'libxcb'
+    'mesa'
+    'libdrm'
+    'libxkbcommon'
+    'nspr'
+    'gtk3'
+    'expat'
+    'at-spi2-core'
+    'libxrandr'
+    'libxdamage'
+    'libcups'
+    'libx11'
+    'libxfixes'
+    'libxext'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
-sha256sums_aarch64=('30bc740cb777b2601b9ba7bbded133a63208293ccf20a2bc11ef741ad3e3c891')
-sha256sums_x86_64=('48e26fabd9750b64584da0cde9b093e9d4fe0997ab74622a0aa1719b1e72694f')
+sha256sums_aarch64=('b6a3a87359849d43978f9d485dfc8e0837bc8ada2ac22f331ff40c4793037062')
+sha256sums_x86_64=('430b7a196ee1dac884bf3740184a0c7b44bcd1e45eea77d7082540ea2133a0ad')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Markdown|Utility|g" \
