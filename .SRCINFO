@@ -7,5 +7,6 @@ pkgbase = anki-official-binary-bundle
 	arch = any
 	license = AGPL3
 	depends = anki-bin
+	conflicts = anki-official-binary-bundle<=2.1.66-1
 
 pkgname = anki-official-binary-bundle

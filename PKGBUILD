@@ -11,3 +11,4 @@ arch=('any')
 url="https://aur.archlinux.org/packages/anki-bin"
 license=('AGPL3')
 depends=('anki-bin')
+conflicts=('anki-official-binary-bundle<=2.1.66-1')
