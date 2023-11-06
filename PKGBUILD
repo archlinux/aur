@@ -6,14 +6,14 @@
 
 _locale='th'
 pkgname=palemoon-i18n-th
-pkgver=29.4.0
+pkgver=32.5.0
 pkgrel=1
 pkgdesc="Thai language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('86f0a533042360778fac2f3146e44ad5c6ad496eb9f07dbb88c0d02c689f236b')
+sha256sums=('a081777e7c394a0d00907012b56ef8a28c40a6f94e2d201d413d0bc63d9a49fc')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
