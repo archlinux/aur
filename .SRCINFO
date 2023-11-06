@@ -54,6 +54,7 @@ pkgbase = kf5-transition-dummy
 	provides = ktexteditor=5.111
 	provides = ktextwidgets=5.111
 	provides = kunitconversion=5.111
+	provides = kuserfeedback
 	provides = kwallet=5.111
 	provides = kwayland=5.111
 	provides = kwidgetsaddons=5.111

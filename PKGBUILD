@@ -59,6 +59,7 @@ provides=(
   ktexteditor=5.111
   ktextwidgets=5.111
   kunitconversion=5.111
+  kuserfeedback
   kwallet=5.111
   kwayland=5.111
   kwidgetsaddons=5.111
