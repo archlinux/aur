@@ -1,26 +1,23 @@
 # Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 pkgname=hyprpicker
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=2
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck."
 arch=(x86_64)
 url="https://github.com/hyprwm/hyprpicker"
 license=('BSD')
-depends=('cairo' 'wayland')
+depends=('cairo' 'libxkbcommon' 'wayland')
 optdepends=('wl-clipboard: Allows --autocopy to automatically copy the output to the clipboard.')
 makedepends=('cmake'
-             'gdb'
-             'git'
              'libglvnd'
              'libjpeg-turbo'
-             'meson'
              'ninja'
              'pango'
              'wayland-protocols'
-             'xorgproto'
+             'wlroots'
              )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f6a5e57dc69e3b0499a34f4533583bd7d7770f5a1a9834f521b532f0d1ec26e0')
+sha256sums=('fa1b0c29682f5ede5a03d754770d152f38d869bc1faa300564680cef2de0758a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
