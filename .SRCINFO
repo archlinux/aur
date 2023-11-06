@@ -1,7 +1,7 @@
 pkgbase = liberica-jdk-17-full-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
 	pkgver = 17.0.9.u11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bell-sw.com/
 	install = liberica-jdk-17-full.install
 	arch = aarch64
