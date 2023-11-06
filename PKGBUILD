@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r10659.9268dce70
+pkgver=r.9268dce
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="hhttps://apps.ankiweb.net/"
@@ -61,13 +61,7 @@ optdepends=(
     'mpv: play sound. prefered over mplayer'
     'mplayer: play sound'
 )
-source=(
-    $pkgname::git+https://github.com/ankitects/anki.git
-
-    #ankitects-anki-core-i18n-master.tar.gz::https://github.com/ankitects/anki-core-i18n/tarball/master
-    #ankitects-anki-desktop-ftl-master.tar.gz::https://github.com/ankitects/anki-desktop-ftl/tarball/master
-    #ankitects-anki-desktop-i18n-master.tar.gz::https://github.com/ankitects/anki-desktop-i18n/tarball/master
-)
+source=('git+https://github.com/ankitects/anki.git')
 sha512sums=('SKIP')
 
 pkgver() {
