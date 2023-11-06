@@ -2,20 +2,22 @@
 # Contributor: Kuklin István <kuklinistvan@zoho.com>
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
-pkbase=anki-official-binary-bundle
-pkgname=('anki-official-binary-bundle' 'anki-bin-transition-meta')
+pkgname=anki-official-binary-bundle
 pkgver=any
-pkgrel=7
+pkgrel=8
 epoch=1
-pkgdesc="[Meta-PKG] Please manually migrate to anki-bin; delete this meta-pkg"
+pkgdesc="[Meta-PKG] Please migrate to anki-bin (or other anki pkg); delete this meta-pkg"
 arch=('any')
 url="https://aur.archlinux.org/packages/anki-bin"
 license=('AGPL3')
 
 package_anki-official-binary-bundle() {
-  depends=('anki-bin-transition-meta')
-}
-
-package_anki-bin-transition-meta() {
-  depends=('anki-bin')
+  provides=('anki')
+  optdepends=(
+    'anki-bin: prebuilt binary'
+    'anki: source build (Qt6)'
+    'anki-qt5: source build (Qt5)'
+    'anki-git: source build from main development branch'
+  )
+  install="${pkgname}.install"
 }

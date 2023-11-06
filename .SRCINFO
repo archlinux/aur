@@ -1,14 +1,16 @@
 pkgbase = anki-official-binary-bundle
-	pkgdesc = [Meta-PKG] Please manually migrate to anki-bin; delete this meta-pkg
+	pkgdesc = [Meta-PKG] Please migrate to anki-bin (or other anki pkg); delete this meta-pkg
 	pkgver = any
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = https://aur.archlinux.org/packages/anki-bin
 	arch = any
 	license = AGPL3
 
 pkgname = anki-official-binary-bundle
-	depends = anki-bin-transition-meta
-
-pkgname = anki-bin-transition-meta
-	depends = anki-bin
+	install = anki-official-binary-bundle.install
+	optdepends = anki-bin: prebuilt binary
+	optdepends = anki: source build (Qt6)
+	optdepends = anki-qt5: source build (Qt5)
+	optdepends = anki-git: source build from main development branch
+	provides = anki
