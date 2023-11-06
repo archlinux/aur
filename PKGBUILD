@@ -2,7 +2,7 @@
 
 pkgname=python-weasel
 _pkg="${pkgname#python-}"
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A small and easy workflow system"
 url="https://github.com/explosion/weasel/"
@@ -23,7 +23,7 @@ makedepends=(
 license=('MIT')
 arch=(any)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/$_pkg/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("8dc969764bd61899bd494b4d195bf781d9018efeacfadbe87df630f78e313f96")
+sha256sums=("22e1955f2de7ea1bb1dad901d069a41037d4d1dca81e8f13c1096117c3e3bdb2")
 
 build() {
     cd $_pkg-$pkgver
