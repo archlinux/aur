@@ -22,7 +22,7 @@ sha256sums=('6d4b8d5bbb25a1f8336639e56ec5088052d43a95256697a85c4ce91323c25954'
             'SKIP')
 provides=(libressl-3.8=${pkgver})
 #conflicts=(libressl)
-replaces=(libressl)
+#replaces=(libressl)
 validpgpkeys=(A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5) # Brent Cook <bcook@openbsd.org>
 
 prepare() {
