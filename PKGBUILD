@@ -5,7 +5,7 @@
 pkbase=anki-official-binary-bundle
 pkgname=('anki-official-binary-bundle' 'anki-bin-transition-meta')
 pkgver=any
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="[Meta-PKG] Please manually migrate to anki-bin; delete this meta-pkg"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://aur.archlinux.org/packages/anki-bin"
 license=('AGPL3')
 
 package_anki-official-binary-bundle() {
-  depends=('anki-meta')
+  depends=('anki-bin-transition-meta')
 }
 
 package_anki-bin-transition-meta() {
