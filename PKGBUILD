@@ -36,7 +36,7 @@ pkgver() {
 build() {
   cd $basename
   rm -rf build
-  meson build --prefix=/usr/ --libdir=lib
+  arch-meson build
   ninja -C build
 }
 
