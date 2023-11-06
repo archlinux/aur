@@ -1,0 +1,35 @@
+pkgbase = python-solara
+	pkgdesc = Agent-based modeling (ABM) in Python 3+
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://solara.dev
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-cachetools
+	depends = python-click>=7.1.0
+	depends = python-filelock
+	depends = python-ipykernel
+	depends = python-ipyvue>=1.9.0
+	depends = python-ipyvuetify>=1.8.10
+	depends = python-ipywidgets
+	depends = python-jinja
+	depends = python-jupyter-client>=7.0.0
+	depends = python-markdown
+	depends = python-markupsafe
+	depends = jupyter-nbformat
+	depends = pymdown-extensions
+	depends = python-reacton>=1.7.1
+	depends = python-requests
+	depends = python-rich-click
+	depends = python-starlette
+	depends = uvicorn
+	depends = python-watchdog
+	depends = python-websockets
+	noextract = solara-1.22.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/s/solara/solara-1.22.0-py2.py3-none-any.whl
+	sha256sums = 025fb1dd03c12ad0bf43f6c3ea83beda5cbe9ef4ebccc4a9c462833d55b0c893
+
+pkgname = python-solara
