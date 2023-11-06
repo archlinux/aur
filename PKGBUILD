@@ -2,8 +2,8 @@
 # Maintainer: Vladimir Buianov (larrabee) <kafatron@gmail.com>
 
 pkgname=openvpn-dco-dkms
-pkgver=0.2.20230818
-_dco_commit=dba96d203f960356b477291d6a58d30fc096fbe4
+pkgver=0.2.20231010
+_dco_commit=0613e71884c92acbb964f36813a810104e525c7f
 pkgrel=1
 pkgdesc='Optional Data Channel Offload kernel module for OpenVPN 2.5'
 arch=('any')
@@ -14,8 +14,8 @@ provides=('ovpn-dco' 'ovpn-dco-dkms')
 conflicts=('ovpn-dco' 'ovpn-dco-git' 'ovpn-dco-dkms-git')
 source=("ovpn-dco-${_dco_commit}.tar.gz::https://github.com/OpenVPN/ovpn-dco/archive/${_dco_commit}.tar.gz"
         dkms.conf.in)
-b2sums=('6848c40382880ea1256b82370eb0f7341a62d228aa1de76b6c50df6ba243f5f8a9d6de21201c4f3ee5fc1008732f4daed5d01eb361a9776220de124fbd394b80'
-        '59ead5244548662b6cc8ff4e592138accba0d09b2996248cee217ec47fdb9fae565ae43ce32cb23a88f4e152bf0205ce3467de2f2090c4a1104382b68585931d')
+sha256sums=('9bd06e6929ab7d9199380b2d60e35b3e5bee08d9fb17d883d3e9c0e29e6fbb1e'
+            'da5054fe94a17918ad0674b8359cb5888d4382cdac5f3caaa55e5aa213585b5c')
 
 package() {
 	cd "${srcdir}"
