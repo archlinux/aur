@@ -10,9 +10,17 @@ _githuburl="https://github.com/EtherealEngine/etherealengine-control-center"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('libxext' 'libx11' 'libdrm' 'pango' 'libdbusmenu-glib' 'glib2' 'cairo' 'at-spi2-core' 'libcups' 'libxfixes' 'mesa' 'nss' 'gtk3' 'glibc' 'libxdamage' \
-    'nspr' 'gdk-pixbuf2' 'gtk2' 'bash' 'hicolor-icon-theme' 'alsa-lib' 'dbus' 'libxcomposite' 'libxcb' 'dbus-glib' 'gcc-libs' 'expat' 'libxrandr' 'libxkbcommon')
-makedepends=('squashfuse')
+depends=(
+    'bash'
+    'electron'
+    'hicolor-icon-theme'
+    'gdk-pixbuf2'
+    'gtk2'
+    'libdbusmenu-glib'
+)
+makedepends=(
+    'squashfuse'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/v${pkgver}/LICENSE"
