@@ -19,7 +19,6 @@ provides=(
     'ferdium'
 )
 conflicts=(
-    'ferdium'
     'ferdium-bin'
     'ferdium-nightly-bin'
     'ferdium-nightly'
