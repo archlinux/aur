@@ -1,0 +1,16 @@
+pkgbase = hustmirror-cli
+	pkgdesc = A mirror tool for HUST students
+	pkgver = 0.2.0.rc
+	pkgrel = 1
+	url = https://gitee.com/dzm91_hust/hustmirror-cli.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = python3
+	provides = hustmirror-cli
+	conflicts = hustmirror-cli
+	source = git+https://gitee.com/dzm91_hust/hustmirror-cli.git
+	md5sums = SKIP
+
+pkgname = hustmirror-cli
