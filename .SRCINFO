@@ -1,0 +1,16 @@
+pkgbase = python-aiosmtplib
+	pkgdesc = asyncio smtplib implementation
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/cole/aiosmtplib
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python>=3.7
+	source = python-aiosmtplib-2.0.2.tar.gz::https://github.com/cole/aiosmtplib/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 1e37f7ec67d8c4def3e79cfbed78d27ca91c67def7062b6781c2827d8f63d775
+
+pkgname = python-aiosmtplib
