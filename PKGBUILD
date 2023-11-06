@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.34.39.r0.g821a8964
+pkgver=1.34.46.r1.g84c1fcd0
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 makedepends=(
     'npm'
     'git'
-    'nodejs>=16.0.0'
+    'nodejs>=18.0.0'
     'gendesk'
 )
 source=("${pkgname//-/.}::git+${_githuburl}.git"
@@ -35,13 +35,11 @@ build() {
     npm install
     npm run prepare-build
     npm run release
-    asar extract "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
-    asar pack "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/work/app/assets/images/${pkgname%-git}.svg" \
         -t "${pkgdir}/usr/share/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
