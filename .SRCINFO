@@ -1,7 +1,7 @@
 pkgbase = bleachbit-cli
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.
 	pkgver = 4.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bleachbit.org/
 	arch = any
 	license = GPL3
