@@ -10,7 +10,7 @@ depends=('grub')
 install="${pkgname}.install"
 url="https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme"
 source=("https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('42faf403a3bced45fcf5644003b1eefba322bab8e5e03b0b0d520a2d79217ddd')
+sha256sums=('42faf403a3bced45fcf5644003b1eefba322bab8e5e03b0b0d520a2d79217ddd')
 
 pkgver() { 
   cd "Puzzle-Bobble-Grub2-Theme" 
