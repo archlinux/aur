@@ -3,16 +3,16 @@
 
 _base=dj-database-url
 pkgname=python-${_base}
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('any')
 pkgdesc="Use Database URLs in your Django Application"
 url="https://github.com/jazzband/${_base}"
 license=('custom')
 depends=(python-django python-typing_extensions)
 makedepends=(python-setuptools)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d2600997023b1e58c1e6285268a400aed57fbdff972a36025f47bcc2e57d3179f266379d7042dc75c6048b35f7aef8547828c88a2fad1e80f087e6f5680668b0')
+sha512sums=('a3f46cd7521eb031e0776c29f70ca9edf91a7b8a1ab85f3cf4c59722a555ad3b3765c4c5e5a59d744d1f48505aae52b7fd73a733cc47cadee61ae48f68277231')
 
 build() {
   cd "${_base}-${pkgver}"
