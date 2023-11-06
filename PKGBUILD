@@ -1,6 +1,6 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=axu-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 epoch=
 pkgdesc="A cli tool to check your Arch Linux explicitly installed packages updates"
