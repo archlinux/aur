@@ -132,16 +132,6 @@ package_ceph-mgr-bin() {
     "ceph-bin>=18.2.0"
   )
   conflicts=('ceph-mgr')
-
-  printf ' |> %s\n' \
-    "===== [ceph-mgr-bin] =====" \
-    "This package is DEPRECATED and can be removed from your system." \
-    "It will be removed from AUR in a future release." \
-    "" \
-    "Its functionality has been moved to: ceph-bin" \
-    "" \
-    "Please uninstall it at your earliest convenience via:" \
-    "   pacman -Rs ceph-mgr-bin"
 }
 
 # vim:set ts=2 sw=2 et:
