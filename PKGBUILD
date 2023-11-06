@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=2670.r0.g1477c70
+pkgver=2676.r0.g273de5d
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -54,6 +54,8 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "git+https://github.com/yuzu-emu/sirit.git"
         "library-headers::git+https://github.com/citra-emu/ext-library-headers.git"
         "git+https://github.com/bylaws/libadrenotools.git"
+        "git+https://github.com/knik0/faad2"
+        "git+https://github.com/merryhime/oaknut.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -98,6 +100,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -108,7 +112,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sdl2,lodepng,libusb,inih,sirit,library-headers,libadrenotools};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sdl2,lodepng,libusb,inih,sirit,faad2,library-headers,libadrenotools,oaknut};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
