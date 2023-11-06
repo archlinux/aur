@@ -4,7 +4,7 @@ _pkgname=vpkedit
 pkgname=$_pkgname-bin
 pkgdesc="A tool to work with VPK files (binary release)"
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
@@ -37,7 +37,7 @@ package() {
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   ln -s /opt/VPKEdit/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-  rm $pkgver-$_pkgname.zip icon.png LICENSE CREDITS.md $_pkgname.desktop exec
+  rm $pkgver-$_pkgname.zip icon.png LICENSE CREDITS.md $_pkgname.desktop
   mv * "$pkgdir/opt/VPKEdit"
   chmod +x "$pkgdir/opt/VPKEdit/$_pkgname"
 }
