@@ -1,39 +1,37 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-pkgname=redshift-qt-git
 _pkgname=redshift-qt
-pkgver=0.2.r10.g20f92c3
+pkgname=$_pkgname-git
+pkgver=0.6.r0.g6724a9f
 pkgrel=1
-pkgdesc="redshift-gtk rewrite with C++/Qt"
+pkgdesc="redshift-gtk rewrite with C++/Qt (latest commit)"
 arch=('x86_64' 'i686')
 url="https://github.com/Chemrat/redshift-qt"
 license=('MIT')
-depends=('redshift' 'qt5-base')
+depends=('qt5-base' 'redshift')
 makedepends=('git')
-optdepends=()
-provides=('redshift-qt')
-conflicts=('redshift-qt')
-source=("git+https://github.com/Chemrat/redshift-qt.git"
-        "redshift-qt.desktop")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git"
+        "$_pkgname.desktop")
 md5sums=('SKIP'
          '9ef24b824bcfb46dbd951074af074772')
 
 pkgver() {
-  cd "$_pkgname"
+  cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_pkgname"
-  qmake redshift-qt.pro
+  cd $_pkgname
+  qmake $_pkgname.pro
   make
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 redshift-qt $pkgdir/usr/bin/redshift-qt
-  install -Dm644 $srcdir/redshift-qt.desktop $pkgdir/usr/share/applications/redshift-qt.desktop
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  cd $_pkgname
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
 }
-
-# vim:set ts=2 sw=2 et:
