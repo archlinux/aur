@@ -1,7 +1,7 @@
 pkgbase = satyr
 	pkgdesc = Automatic problem management with anonymous reports
-	pkgver = 0.30
-	pkgrel = 2
+	pkgver = 0.42
+	pkgrel = 1
 	url = https://github.com/abrt/satyr
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = satyr
 	depends = libelf
 	depends = python
 	depends = rpm-tools
-	source = satyr-0.30.tar.xz::https://github.com/abrt/satyr/archive/0.30.tar.gz
-	sha256sums = 86315b614fdd3445417df99c357f121dce82b22944ec8d61635e171c4dbb624d
+	source = satyr-0.42.tar.xz::https://github.com/abrt/satyr/archive/0.42.tar.gz
+	sha256sums = b3a550736835caa9beb94c39b0e8c18341915ca6a2c04c9a96e2fde6a331ec7d
 
 pkgname = satyr
-
