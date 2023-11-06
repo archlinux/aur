@@ -1,6 +1,6 @@
 pkgbase = python-vl-convert
 	pkgdesc = Convert Vega-Lite chart specifications to SVG, PNG, or Vega
-	pkgver = 0.11.1
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/vega/vl-convert
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = python-vl-convert
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = cmake
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/v/vl-convert-python/vl_convert_python-0.11.1.tar.gz
-	source = 0001_maturin_version.patch
-	sha256sums = 0c7e9b0331fa6d2128a5129e4afcf6bbf2b87e665216f3df242ed5d43c28bcef
-	sha256sums = a9ea819d9529b53edd09f26f1fd1043f0d47004746eded3cae22ea3f30504b95
+	source = https://files.pythonhosted.org/packages/source/v/vl-convert-python/vl_convert_python-1.0.1.tar.gz
+	sha256sums = 488565b6a0eb5e75558f82147217c5090672bee58745e79225b2f2902db9fffd
 
 pkgname = python-vl-convert
