@@ -1,0 +1,4 @@
+[revolver]
+source = "github"
+github = "molovo/revolver"
+use_latest_release = true
