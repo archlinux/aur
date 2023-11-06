@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apifox-bin
 _pkgname=Apifox
-pkgver=2.3.23
+pkgver=2.3.25
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=('aarch64' 'x86_64')
@@ -27,8 +27,8 @@ source=("LICENSE.html"
     "${pkgname%-bin}.sh")
 sha256sums=('3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19'
             'cbf4154e6a26f4099a8da2f3bba63578b0ed9046141ba8bea9c2b4d585dbdf62')
-sha256sums_aarch64=('ceac6e886202e68f2cc9d179e740bb5a8e3fbe5e702d2f2105a6d82966e5adc7')
-sha256sums_x86_64=('3fc3fdb008fbbdc4123f22a0372f387b425791dde0e8d9bfa662489a5f08c9fc')
+sha256sums_aarch64=('52701658898f9c9d34998fec0f9e9486e971737e2faa03acd3e93a8d0bdfee0f')
+sha256sums_x86_64=('9562bdd272e0b70ff868a80928f70f00e30adaaeedfa876a070e502594d7306d')
 build() {
     chmod a+x "${srcdir}/${_pkgname}.AppImage"
     "${srcdir}/${_pkgname}.AppImage" --appimage-extract > /dev/null
