@@ -2,8 +2,8 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.81
-pkgrel=2
+pkgver=20.04.82
+pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -27,7 +27,7 @@ optdepends=(
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
-_commit=ec593da4d8a94d6ca8b8b41ac0f753bf04b72ca6  # tags/20.04.81^0
+_commit=dfbce5baac1900ab82138a3b55947b3816d6f181  # tags/20.04.82^0
 source=(
   "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}"
   'cli.patch'
@@ -40,12 +40,12 @@ sha256sums=('SKIP'
 #validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
   patch --no-backup-if-mismatch -Np1 -i "$srcdir/cli.patch"
@@ -66,12 +66,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install daemons and executables
