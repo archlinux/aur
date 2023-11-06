@@ -7,8 +7,8 @@
 
 pkgname=impressive
 _pkgname=Impressive
-pkgver=0.13.1
-pkgrel=2
+pkgver=0.13.2
+pkgrel=1
 pkgdesc='A simple presentation program that displays slideshows of PDF, image or video files'
 arch=('any')
 url='http://impressive.sourceforge.net'
@@ -20,12 +20,7 @@ optdepends=('pdftk: for retrieving PDF metadata, can replace mupdf-tools'
             'mplayer: for sound and video playback'
             'ffmpeg: for more efficient generation of video preview images')
 source=(http://downloads.sourceforge.net/${pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('2489173bbf8ab12b449907d811030fa973d23a30e637c635f17527eaba142d34')
-
-build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  sed -i 's/Image.ANTIALIAS/Image.LANCZOS/g' impressive.py
-}
+sha256sums=('033123b25f42cb084f6fd0a959ddf53100d3202c67e666e5cc57a4e48ec1253c')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
