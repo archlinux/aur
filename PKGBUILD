@@ -3,7 +3,7 @@
 pkgname=dbeaver-arm
 pkgdesc="Free universal SQL Client for developers and database administrators. Community Edition. Linux ARM version."
 pkgver=23.2.3
-pkgrel=0
+pkgrel=1
 arch=('aarch64')
 url="https://dbeaver.io/"
 license=('Apache')
