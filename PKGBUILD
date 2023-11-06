@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('x86_64')
@@ -25,7 +25,6 @@ depends=(
     'libxdamage'
     'libcups'
     'libx11'
-    'glib2'
     'libxfixes'
     'libxext'
 )
@@ -36,13 +35,13 @@ makedepends=(
     'nodejs>=18.17.5'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cbc002f7675cfe6dd823029b9abfc3e5c889cbc4524ea39b534c0a2ae8fe421e')
+sha256sums=('0ecbdc520ec83c1f99c8122eecb8862d1f9b7729ee0225cd911f8b86e001e730')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed "s|--arm64 ||g" -i package.json
     sed '/deb/d' -i electron-builder.yml
-    pnpm install
+    pnpm install --no-frozen-lockfile
     pnpm run build
     pnpm run build:linux
 }
