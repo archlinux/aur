@@ -239,12 +239,8 @@ check() {
 
   export CTEST_PARALLEL_LEVEL=7
   export CTEST_OUTPUT_ON_FAILURE=1
-  VERBOSE=1 make -C build check || true
 
-  # sometimes processes are not properly terminated...
-  for process in ceph-mon ceph-mgr ceph-osd; do
-    pkill -9 "${process}" || true
-  done
+  VERBOSE=1 make -C build check || true
 }
 
 _package() {
