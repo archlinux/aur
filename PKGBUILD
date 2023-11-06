@@ -1,7 +1,7 @@
 # Maintainer: evorster <evorster@gmail.com>
 # Contributor: osch <oliver@luced.de>
 
-pkgname=audacity-local-git
+pkgname=audacity-qt-git
 pkgver=3.5.0.0.r18112
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi, and following the qt branch."
