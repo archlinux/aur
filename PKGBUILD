@@ -3,7 +3,7 @@
 _pkgname=kazv
 pkgname="${_pkgname}-git"
 pkgver=0.0.1.r442.20231013.e84e798
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt5 matrix client."
 arch=(
   'aarch64'
@@ -16,24 +16,24 @@ license=('AGPL3')
 url="https://lily-is.land/kazv/kazv"
 backup=()
 depends=(
-  'boost-libs>=1.81.0'
+  'boost-libs>=1.83.0'
   'fontconfig'
   'freetype2'
   'gcc-libs'
   'glibc'
-  'kconfig>=5.109.0'
-  'kio>=5.78'
+  'kconfig5>=5.111.0'
+  'kio5>=5.78'
   'kirigami2>=5.78'
   'libkazv'
   'nlohmann-json'
-  'qt5-base>=5.15.10'
-  'qt5-declarative'
+  'qt5-base>=5.15.11'
+  'qt5-declarative>=5.15.11'
   'qt5-multimedia'
   'qt5-svg'
   'qt5-quickcontrols2'
 )
 makedepends=(
-  'boost>=1.81.0'
+  'boost>=1.83.0'
   'cmake'
   'extra-cmake-modules>=5.78'
   'git'
