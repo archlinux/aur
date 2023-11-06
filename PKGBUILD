@@ -3,7 +3,7 @@
 
 pkgname=duplicacy
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'i686')
 url="https://duplicacy.com/"
@@ -13,6 +13,8 @@ makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gilbertchen/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('8c8e30fb24a60e1a2c0cc11e0f408114163d6d911c7824000913fec88f31e32e')
 
+export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  
 prepare() {
   cd "$pkgname-$pkgver/$pkgname"
 
@@ -28,7 +30,6 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go build -x
 }
 
