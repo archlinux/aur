@@ -1,7 +1,7 @@
 pkgbase = wingpanel-indicator-network-git
 	pkgdesc = Network indicator for Wingpanel
 	pkgver = 7.0.2.r3.gce7c1a62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elementary/wingpanel-indicator-network
 	arch = x86_64
 	groups = pantheon-unstable
@@ -21,7 +21,6 @@ pkgbase = wingpanel-indicator-network-git
 	depends = libwingpanel.so
 	provides = wingpanel-indicator-network
 	conflicts = wingpanel-indicator-network
-	replaces = wingpanel-indicator-nztwork-bzr
 	source = git+https://github.com/elementary/wingpanel-indicator-network.git
 	sha256sums = SKIP
 
