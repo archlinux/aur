@@ -1,6 +1,6 @@
 pkgbase = sweethome3d-3dmodels-lucapresidente
 	pkgdesc = Free 3D models advertised on SweetHome3D website
-	pkgver = 1.9
+	pkgver = 1.9.1
 	pkgrel = 2
 	url = http://www.sweethome3d.com/freeModels.jsp
 	install = sweethome3d-3dmodels-lucapresidente.install
@@ -16,7 +16,7 @@ pkgbase = sweethome3d-3dmodels-lucapresidente
 	optdepends = sweethome3d-3dmodels-trees: More 3D models
 	optdepends = sweethome3d-textures-contributions: More textures
 	optdepends = sweethome3d-textures-scopia: More textures
-	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-LucaPresidente-1.9.zip
-	sha1sums = 4ebcd68e3d777c5a6e49962d40f2eae00d8df573
+	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-LucaPresidente-1.9.1.zip
+	sha1sums = 076c419029a84733f0c9c7025e1e3e5ffff8b3a3
 
 pkgname = sweethome3d-3dmodels-lucapresidente
