@@ -4,25 +4,39 @@ _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.3.3_linux2
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.3.4
-pkgrel=2
+_zhpkgver=3.3.5
+pkgrel=3
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
-arch=('aarch64' 'armv7h' 'x86_64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://desktop.github.com"
 _githuburl="https://github.com/shiftkey/desktop"
 _githubzhurl="https://github.com/robotze/GithubDesktopZhTool"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${pkgname%-zh}")
-depends=('hicolor-icon-theme' 'libxfixes' 'libxkbcommon' 'libxrandr' 'glibc' 'pango' 'at-spi2-core' 'nspr' 'libxcomposite' \
-    'libcups' 'alsa-lib' 'dbus' 'libdrm' 'expat' 'gcc-libs' 'cairo' 'libxcb' 'libxext' 'glib2' 'libx11' 'libxdamage' 'nss' 'gtk3' 'mesa')
+depends=(
+    'hicolor-icon-theme'
+    'bash'
+    'electron24'
+    'git'
+    'libsecret'
+    'perl'
+    'curl'
+    'expat'
+)
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/release-${pkgver//_/-}/${_appname}-linux-arm64-${pkgver//_/-}.deb")
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/release-${pkgver//_/-}/${_appname}-linux-armhf-${pkgver//_/-}.deb")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/release-${pkgver//_/-}/${_appname}-linux-amd64-${pkgver//_/-}.deb")
-source=("${_pkgname}-${_zhpkgver}-zh.7z::${_githubzhurl}/releases/download/${_zhpkgver}/${_appname}.7z"
+source=(
+    "${_pkgname}-${_zhpkgver}-zh.7z::${_githubzhurl}/releases/download/${_zhpkgver}/${_appname}.7z"
     "LICENSE::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
-    "${pkgname%-bin}.sh")
-sha256sums=('85fcc8303889100ae8c202c9f0f539a77ba9429c35c77d30a6e73ed691b21524'
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('583b614389c03ae83b0099c76233183836fac8c136409bb957a17fd31ee1a6b6'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             '830ca18c25d35f6008a6cb911d9783936f9f61e61a6cd0de502237cb0548fe30')
 sha256sums_aarch64=('2635ba8006d7b25aad2589632014869c6540b9efeaa7b7cade3cc3d211c031e1')
