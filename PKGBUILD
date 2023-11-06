@@ -3,8 +3,8 @@
 _pkgname=vpkedit
 pkgname=$_pkgname-bin
 pkgdesc="A tool to work with VPK files (binary release)"
-pkgver=3.3.5
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
@@ -12,7 +12,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 source=("$pkgver-$_pkgname.zip::$url/releases/download/v$pkgver/VPKEdit-Linux-Standalone-gcc-Release.zip"
         "$url/raw/v$pkgver/src/gui/res/icon.png")
-sha256sums=('4bbac6e4b30ebed263b1ae5d0f774eaa451badc6bf64e5cfb30a4f8452c46f0d'
+sha256sums=('7ef549d09781c034bd7867888c27f0797e02071ad7095d7a7482e2d43f5c8237'
             'SKIP')
 
 prepare() {
@@ -35,7 +35,6 @@ package() {
   # Create folders
   mkdir -p "$pkgdir/opt/VPKEdit" "$pkgdir/usr/bin"
   # Install
-  install -Dm644 CREDITS.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
