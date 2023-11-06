@@ -8,7 +8,7 @@ arch=(x86_64)
 url='https://www.bitcomet.com'
 license=('custom')
 depends=('glibc' 'hicolor-icon-theme' 'zlib' 'lerc' 'fuse2' 'webkit2gtk')
-makedepends=('appimagetool-bin')
+makedepends=('appimagetool')
 options=(!strip)
 source=(
     "BitComet-${CARCH}.AppImage::https://download.bitcomet.com/linux/BitComet-${pkgver}-${CARCH}.AppImage"
