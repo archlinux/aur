@@ -1,6 +1,6 @@
 pkgbase = chaoskube
 	pkgdesc = Chaoskube periodically kills random pods in your Kubernetes cluster
-	pkgver = 0.24.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/linki/chaoskube
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = chaoskube
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = chaoskube-0.24.0.tar.gz::https://github.com/linki/chaoskube/archive/v0.24.0.tar.gz
+	source = chaoskube-0.29.0.tar.gz::https://github.com/linki/chaoskube/archive/v0.29.0.tar.gz
 	sha256sums = 07b2771aa2ef67b1c254e29c5d25f5c3d619e60eaebf6a45b3783257036e512e
 
 pkgname = chaoskube

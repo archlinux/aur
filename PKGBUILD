@@ -1,7 +1,7 @@
 # Maintainer: Gabriel M. Dutra <0xdutra@gmail.com>
 
 pkgname=chaoskube
-pkgver=0.24.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Chaoskube periodically kills random pods in your Kubernetes cluster"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
