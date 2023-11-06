@@ -2,7 +2,7 @@
 _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
-pkgver=2.0.0_beta.13
+pkgver=2.0.0_beta.14
 pkgrel=1
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app"
 arch=("x86_64")
@@ -16,9 +16,7 @@ depends=(
     'gtk3'
     'at-spi2-core'
     'libsecret'
-    'glib2'
     'libepoxy'
-    'gcc-libs'
     'pango'
     'hicolor-icon-theme'
     'harfbuzz'
@@ -30,7 +28,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux.deb"
     "LICENSE::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v${pkgver//_/-}/LICENSE"
 )
-sha256sums=('4e40b86c9765f0b1793026437ba2cf73a5fbb94632842d109051455c8f0ba08d'
+sha256sums=('9077d1a943cb16c4114b6af8459281ec97d8cc354c06b090609bd8dd361d401d'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
