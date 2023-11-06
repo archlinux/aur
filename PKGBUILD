@@ -1,35 +1,23 @@
-# Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
-_pkgname=ipyvuetify
-pkgname=python-$_pkgname
-pkgver=1.8.4
+# Maintainer:  Alexander Bocken <alexander@bocken.org>
+
+_name=ipyvuetify
+pkgname=python-${_name,,}
+pkgver=1.8.10
 pkgrel=1
 pkgdesc="Jupyter widgets based on vuetify UI components"
 arch=('any')
-url="https://pypi.org/project/ipyvuetify"
-license=('MIT')
-depends=(
-    'python-ipyvue'
-    'python-pandas'
-)
-makedepends=(
-    'npm'
-    'python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel'
-)
-optdepends=('jupyterlab-widgets: to use widgets on Jupyter Lab')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('91d3e61ed24c0b359b8b8009ba957d291af4b204699d6807252de37f9f1e32425be8869417b034620a11f59c31067d261996f9ab9b78f2eef36cbd29bd225f64')
+url="https://github.com/widgetti/ipyvuetify"
+license=(MIT)
+depends=('python>=3.8'
+          python-ipyvue)
+makedepends=('python-installer' 'python-wheel')
 
-build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
-}
+_whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
+sha256sums=('11bdfe9490b4533a91b141c40763bea4e73d71c764e8d1aa9969b5a348a886b5')
 
+noextract=("$_whl")
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    mv "${pkgdir}/usr/etc" "${pkgdir}/etc"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    python -m installer --destdir="$pkgdir" "$_whl"
 }

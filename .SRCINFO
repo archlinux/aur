@@ -1,19 +1,16 @@
 pkgbase = python-ipyvuetify
 	pkgdesc = Jupyter widgets based on vuetify UI components
-	pkgver = 1.8.4
+	pkgver = 1.8.10
 	pkgrel = 1
-	url = https://pypi.org/project/ipyvuetify
+	url = https://github.com/widgetti/ipyvuetify
 	arch = any
 	license = MIT
-	makedepends = npm
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python>=3.8
 	depends = python-ipyvue
-	depends = python-pandas
-	optdepends = jupyterlab-widgets: to use widgets on Jupyter Lab
-	source = python-ipyvuetify-1.8.4.tar.gz::https://files.pythonhosted.org/packages/source/i/ipyvuetify/ipyvuetify-1.8.4.tar.gz
-	b2sums = 91d3e61ed24c0b359b8b8009ba957d291af4b204699d6807252de37f9f1e32425be8869417b034620a11f59c31067d261996f9ab9b78f2eef36cbd29bd225f64
+	noextract = ipyvuetify-1.8.10-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/i/ipyvuetify/ipyvuetify-1.8.10-py2.py3-none-any.whl
+	sha256sums = 11bdfe9490b4533a91b141c40763bea4e73d71c764e8d1aa9969b5a348a886b5
 
 pkgname = python-ipyvuetify
