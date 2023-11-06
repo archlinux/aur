@@ -2,7 +2,7 @@
 
 _module=drf-spectacular
 pkgname=python-$_module
-pkgver=0.26.3
+pkgver=0.26.5
 pkgrel=1
 pkgdesc="Sane and flexible OpenAPI 3 schema generation for Django REST framework"
 arch=(any)
@@ -17,7 +17,7 @@ depends=(python-django
 makedepends=(python-setuptools)
 optdepends=("python-drf-spectacular-sidecar: offline and sidecar")
 source=(https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz)
-sha256sums=('b907a72a0244e5dcfeca625e9632cd8ebccdbe2cb528b7c1de1191708be6f31e')
+sha256sums=('aee55330a774ba8a9cbdb125714d1c9ee05a8aafd3ce3be8bfd26527649aeb44')
 
 
 build() {
