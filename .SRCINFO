@@ -1,6 +1,6 @@
 pkgbase = sweethome3d-3dmodels-reallusion
 	pkgdesc = Free 3D models advertised on SweetHome3D website
-	pkgver = 1.9
+	pkgver = 1.9.1
 	pkgrel = 2
 	url = http://www.sweethome3d.com/freeModels.jsp
 	install = sweethome3d-3dmodels-reallusion.install
@@ -16,7 +16,7 @@ pkgbase = sweethome3d-3dmodels-reallusion
 	optdepends = sweethome3d-3dmodels-trees: More 3D models
 	optdepends = sweethome3d-textures-contributions: More textures
 	optdepends = sweethome3d-textures-scopia: More textures
-	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-Reallusion-1.9.zip
-	sha1sums = ba4ea3f44fd66c1dbd797a954a6b8dfb3769b0ce
+	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-Reallusion-1.9.1.zip
+	sha1sums = 1c9a6ce78c6d27ba9dfa9e336a8b3951e0ed1a15
 
 pkgname = sweethome3d-3dmodels-reallusion

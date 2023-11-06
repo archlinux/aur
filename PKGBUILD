@@ -1,6 +1,6 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-3dmodels-reallusion
-pkgver=1.9
+pkgver=1.9.1
 pkgrel=2
 pkgdesc="Free 3D models advertised on SweetHome3D website"
 arch=('any')
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-textures-contributions: More textures"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Reallusion-1.9.zip")
-sha1sums=("ba4ea3f44fd66c1dbd797a954a6b8dfb3769b0ce")
+source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Reallusion-1.9.1.zip")
+sha1sums=("1c9a6ce78c6d27ba9dfa9e336a8b3951e0ed1a15")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/furniture/3dmodels-reallusion
