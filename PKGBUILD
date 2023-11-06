@@ -4,22 +4,81 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.41.91
+pkgver=2.42.1
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
-depends=(libxt libxslt enchant gst-plugins-base-libs libmanette libsecret libwebp
-         openjpeg2 harfbuzz-icu gtk4 libnotify hyphen woff2 libwpe wpebackend-fdo
-         bubblewrap xdg-dbus-proxy libavif libsoup3 libjxl)
-makedepends=(gperf gobject-introspection ruby gtk-doc cmake python geoclue ninja gi-docgen unifdef wayland-protocols)
+depends=(at-spi2-core
+  atk
+  bubblewrap
+  cairo
+  enchant
+  fontconfig
+  freetype2
+  glib2
+  gst-plugins-bad-libs
+  gst-plugins-base-libs
+  gstreamer
+  gtk3
+  harfbuzz
+  harfbuzz-icu
+  hyphen
+  icu
+  libavif
+  libdrm
+  libegl
+  libepoxy
+  libgcrypt
+  libgl
+  libgles
+  libjpeg
+  libjxl
+  libmanette
+  libpng
+  libseccomp
+  libsecret
+  libsoup
+  libsystemd
+  libtasn1
+  libwebp
+  libwpe
+  libx11
+  libxcomposite
+  libxml2
+  libxslt
+  libxt
+  mesa
+  openjpeg2
+  sqlite
+  wayland
+  woff2
+  wpebackend-fdo
+  xdg-dbus-proxy
+  zlib
+)
+makedepends=(
+  clang
+  cmake
+  gi-docgen
+  gobject-introspection
+  gperf
+  gst-plugins-bad
+  lld
+  ninja
+  python
+  ruby
+  systemd
+  unifdef
+  wayland-protocols
+)
 optdepends=('geoclue: Geolocation support'
             'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('f28f6b95b939c3fd20bad21b1aa9e2eacda3621625df5b480144517cca028f46'
+sha256sums=('6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
