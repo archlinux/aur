@@ -1,6 +1,6 @@
 pkgbase = python-gustaf
 	pkgdesc = Process and visualize numerical-analysis-geometries
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://tataratat.github.io/gustaf
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-gustaf
 	optdepends = python-meshio: for load and export numerous mesh formats
 	optdepends = python-napf: for fast k-d tree build
 	optdepends = python-funi: for find unique float array rows
-	source = git+https://github.com/tataratat/gustaf.git#commit=741bbcec2d2606c7042b36e310ad0ec37b0533b6
+	source = git+https://github.com/tataratat/gustaf.git#commit=5c248f3646097a66432f822e3832f865bed6d71d
 	sha512sums = SKIP
 
 pkgname = python-gustaf
