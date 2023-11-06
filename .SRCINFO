@@ -1,20 +1,11 @@
 pkgbase = anki-official-binary-bundle
-	pkgdesc = The official binary shipped with the tested versions of the dependent libraries.
-	pkgver = 2.1.66
+	pkgdesc = [Meta-PKG] migrate to anki-bin, delete this meta-pkg
+	pkgver = any
 	pkgrel = 1
-	url = https://github.com/ankitects/anki
-	install = anki-official-binary-bundle.install
-	arch = x86_64
-	license = AGPL
-	depends = libxkbcommon-x11
-	optdepends = mpv
-	provides = anki
-	conflicts = anki
-	conflicts = anki-bin
-	conflicts = anki-git
-	source = https://github.com/ankitects/anki/releases/download/2.1.66/anki-2.1.66-linux-qt6.tar.zst
-	source = install_sh.patch
-	sha256sums = 3f53c42b3d2f6e53f188bae2df842b3f4faa3ac96d26cbcf2f62559988f5c058
-	sha256sums = 991297cb02434d753f55980205a22971ed98655b0f62f0104ae4692155355d8c
+	epoch = 1
+	url = https://aur.archlinux.org/packages/anki-bin
+	arch = any
+	license = AGPL3
+	depends = anki-bin
 
 pkgname = anki-official-binary-bundle
