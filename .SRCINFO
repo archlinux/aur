@@ -1,15 +1,13 @@
 pkgbase = madagascar
 	pkgdesc = Multidimensional data analysis and reproducible computational experiments.
-	pkgver = r14562.4883d27e8
-	pkgrel = 2
-	epoch = 1
-	url = http://ahay.org/
+	pkgver = r15659.d72996857
+	pkgrel = 1
+	url = https://www.reproducibility.org/wiki/Main_Page
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = python2-scons
 	makedepends = libtirpc
-	makedepends = libtirpc-compat
+	makedepends = libtirpc
 	makedepends = scons
 	depends = libtirpc
 	depends = ffmpeg
@@ -22,11 +20,9 @@ pkgbase = madagascar
 	depends = glu
 	depends = freeglut
 	depends = suitesparse
-	depends = python2
 	noextract = madagascar.tar.gz
 	options = strip
 	source = madagascar::git+https://github.com/ahay/src
 	md5sums = SKIP
 
 pkgname = madagascar
-
