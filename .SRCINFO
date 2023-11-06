@@ -19,7 +19,7 @@ pkgname = juno-ocean-gtk-theme-git
 	conflicts = juno-ocean-gtk-theme
 	conflicts = juno-ocean-theme
 
-pkgname = juno-ocean-kde-theme-git
+pkgname = plasma5-themes-juno-ocean-git
 	provides = 
 	conflicts = 
 	conflicts = juno-ocean-theme

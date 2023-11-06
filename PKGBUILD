@@ -6,7 +6,7 @@ __Pkgname="${__pkgname^}"
 __PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
 pkgname=(
     "$__pkgname-gtk-theme-git"
-    "$__pkgname-kde-theme-git"
+    "plasma5-themes-$__pkgname-git"
     "kvantum-theme-$__pkgname-git"
 )
 pkgver=r236.22ab42f
@@ -80,7 +80,7 @@ package_juno-ocean-gtk-theme-git() {
     cd "$pkgdir/usr/share/themes/$__Pkgname"
     rm -r ".git"* "Art/" "kde/" "src/" *".json" "Gulpfile.js"
 }
-package_juno-ocean-kde-theme-git() {
+package_plasma5-themes-juno-ocean-git() {
     provides=("${pkgname[1]%-git}")
     conflicts=("${pkgname[1]%-git}" "${pkgbase%-git}")
 
