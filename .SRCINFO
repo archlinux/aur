@@ -1,6 +1,6 @@
 pkgbase = cosmic-settings-git
 	pkgdesc = settings for the COSMIC DE panel.
-	pkgver = r19.9fb6e2f
+	pkgver = r106.a549e8b
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-settings
 	arch = x86_64

@@ -2,7 +2,7 @@
 # Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=cosmic-settings-git
-pkgver=r19.9fb6e2f
+pkgver=r106.a549e8b
 pkgrel=1
 pkgdesc="settings for the COSMIC DE panel."
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/cosmic-settings"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 
