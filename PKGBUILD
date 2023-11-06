@@ -6,14 +6,14 @@
 
 _locale='ja'
 pkgname=palemoon-i18n-ja
-pkgver=29.4.0
+pkgver=32.5.0
 pkgrel=1
 pkgdesc="Japanese language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('0a2e02a42fdf860895068b106361dca3d9729625c33003e523964ce450178073')
+sha256sums=('244addffb985bd827ee66c3e2740de3467294e3b07127bbc343231563de131ae')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
