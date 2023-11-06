@@ -65,7 +65,7 @@ sha1sums=('7d79a8c26a125f55f52493df7dca2189c8521b3c'
           'eb36aa73a9be98164447774217865b91e79d503c')
 sha1sums_aarch64=('1afe37954c8f01e9701b2bfa6ed25f28691a8337')
 sha1sums_armv7h=('9bd796e0933a0e934a108a4c3b840adf40ec7c1c')
-sha1sums_armv8h=('9bd796e0933a0e934a108a4c3b840adf40ec7c1c')
+sha1sums_armv8h=(${sha1sums_armv7h[@]})
 sha1sums_x86_64=('6e40ca02c0c7cf0dfe33bef9ef386dd2570681ad')
 
 source_aarch64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-aarch64-full.tar.gz)
