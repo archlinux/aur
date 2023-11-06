@@ -1,32 +1,35 @@
-# Maintainer: Harrison Oates <harrison at harrisonoates dot com>
-# Upstream: Immersed Inc. <info at immersedvr dot com>
+# Maintainer: Joseph DiGiovanni <jdigiovanni78 at gmail dot com>
+# Upstream: Immersed Inc. <info at immersed dot com>
 pkgname=immersed
-pkgver=9.4.0
+pkgver=9.8
 pkgrel=1
-pkgdesc="Immersed Agent"
+pkgdesc="Immersed Desktop Agent"
 arch=("x86_64")
-url="https://immersedvr.com/"
+url="https://immersed.com/"
 license=('unknown')
-depends=("libpng" "curl" "libva")
-source=("https://static.immersed.com/dl/Immersed-x86_64.AppImage")
-noextract=("Immersed-x86_64.AppImage")
-md5sums=('4abcf0b4873dceeafe6e723dd0527ea9')
-
-pkgver() {
-    ar p Immersed_amd64.deb control.tar.gz | tar zx ./control -O | grep "Version" | sed 's/^Version: \([0-9.]*\)$/\1/g'
-}
+makedepends=("gendesk")
+depends=("fuse")
+optdepends=('V4L2LOOPBACK-MODULE: Virtual webcam support')
+options=(!strip)
+_appimage="Immersed-x86_64.AppImage"
+_icon="${pkgname}.png"
+source_x86_64=("${_appimage}::https://static.immersed.com/dl/Immersed-x86_64.AppImage" "${_icon}::https://immersed.com/assets/favicon/android-icon-192x192-202d04a8c19d3974616bc5dd9136796dbc04f4c10a4b32277d5eeb0d22e846b0.png")
+noextract=("${_appimage}")
+md5sums_x86_64=('86145b83b81bc33b13434a86a3739b6f'
+                SKIP)
 
 prepare() {
-    ar p Immersed_amd64.deb data.tar.xz | tar Jx
-
-    sed -i "s/Exec=.*/Exec=\/usr\/bin\/immersed %u/g" $srcdir/usr/share/applications/immersed-handler.desktop
+    gendesk -f -n --name="Immersed" --pkgname=${pkgname} --pkgdesc=${pkgdesc} --exec=${pkgname} --icon=${srcdir}/${_icon}
 }
 
 package() {
-    mkdir -p $pkgdir/usr/local
-    mkdir -p $pkgdir/usr/share/
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
 
-    cp -r $srcdir/usr/local/bin $pkgdir/usr/local/
-    cp -r $srcdir/usr/share/applications $pkgdir/usr/share/
-    mv $pkgdir/usr/local/bin/Immersed $pkgdir/usr/local/bin/immersed
+    # Symlink executable
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname}"
+    
+    # Install desktop entry
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/${_icon}" "${pkgdir}/usr/share/icons/${_icon}"
 }
