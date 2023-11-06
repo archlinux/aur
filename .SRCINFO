@@ -1,5 +1,5 @@
 pkgbase = phonon-qt5-mpv-git
-	pkgdesc = Phonon Backend using MPV Player. (GIT version)
+	pkgdesc = Phonon MPV backend for Qt5. (GIT version)
 	pkgver = 0.0.7.3.g50c6283
 	pkgrel = 1
 	url = https://github.com/OpenProgger/phonon-mpv

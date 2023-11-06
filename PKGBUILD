@@ -3,7 +3,7 @@
 pkgname=phonon-qt5-mpv-git
 pkgver=0.0.7.3.g50c6283
 pkgrel=1
-pkgdesc="Phonon Backend using MPV Player. (GIT version)"
+pkgdesc='Phonon MPV backend for Qt5. (GIT version)'
 arch=('x86_64')
 url='https://github.com/OpenProgger/phonon-mpv'
 license=('GPL')
