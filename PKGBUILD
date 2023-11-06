@@ -2,8 +2,8 @@
 # Contributor:  Nils Van Zuijlen <nils.van-zuijlen@mailo.com>, Manoel Brunnen <manoel.brunnen@gmail.com>
 
 pkgname=xctu
-pkgver=6.5.12
-pkgrel=2
+pkgver=6.5.13
+pkgrel=0
 pkgdesc="Next Generation Configuration Platform for XBee/RF Solutions."
 arch=('i686' 'x86_64')
 url="http://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu"
@@ -12,11 +12,11 @@ depends=('gtk2' 'java-runtime' 'libxtst' 'alsa-lib' 'gconf' 'nss' 'libglvnd' 'li
 options=('!strip')
 
 if [[ $CARCH == 'i686' ]]; then
-    _setup_file=40002880_AH.run
-    md5sums=('52ba0e5b745595f5b757064379b5e1a8')
+    _setup_file=40002880_AJ.run
+    md5sums=('e28c71e26accdcb4d36395e26ba19835')
 elif [[ $CARCH == 'x86_64' ]]; then
-    _setup_file=40002881_AH.run
-    md5sums=('e12fb423ad9e51e0846c497d18a1cc46')
+    _setup_file=40002881_AJ.run
+    md5sums=('229ab2d443eded6184ecaef50ff99913')
 fi
 source=("http://ftp1.digi.com/support/utilities/$_setup_file"
         'launcher.sh'
