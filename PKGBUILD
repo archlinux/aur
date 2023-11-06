@@ -2,7 +2,7 @@
 # Contributor: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=hyprland-nvidia-git
-pkgver=0.30.0.r95.8af3e7bee
+pkgver=0.31.0.r105.g29e0a711
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)"
 arch=(any)
@@ -98,7 +98,7 @@ build() {
 package() {
     # Install hyprland headers
     cd "$srcdir/$pkgname"
-    find src -name '*.hpp' -exec install -Dm644 {} "$pkgdir/usr/include/hyprland/{}" \;
+    find src -name '*.h*' -exec install -Dm644 {} "$pkgdir/usr/include/hyprland/{}" \;
 
     # Fix $srcdir reference
     sed -i -e "/ICONDIR/ s,$srcdir/tmpwlr,/usr," "$srcdir/$pkgname/subprojects/wlroots/build/include/config.h"
