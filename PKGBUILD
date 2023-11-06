@@ -6,14 +6,14 @@
 
 _locale='ar'
 pkgname=palemoon-i18n-ar
-pkgver=29.4.0
+pkgver=32.5.0
 pkgrel=1
 pkgdesc="Arabic language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('7dfdf7b63ed20af96dfa07208b1bd59735c00d3dfdfb82bd17f8ca2fa9853f18')
+sha256sums=('41c70272429bfd74fd6cf30ed2f71aa30f74e353d12d4255c5bc5351500f60c9')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
