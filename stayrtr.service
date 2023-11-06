@@ -1,22 +1,13 @@
 [Unit]
 Description=StayRTR
 After=network.target
-Wants=network-online.target
 
 [Service]
 Type=simple
-Restart=on-failure
-RestartSec=10s
-EnvironmentFile=/etc/conf.d/stayrtr
-WorkingDirectory=/usr/lib/stayrtr
+EnvironmentFile=/etc/default/stayrtr
+WorkingDirectory=/usr/share/stayrtr
 ExecStart=/usr/bin/stayrtr $STAYRTR_ARGS
 User=stayrtr
-PrivateDevices=yes
-PrivateTmp=yes
-ProtectSystem=full
-ProtectHome=yes
-CapabilityBoundingSet=cap_net_raw
-AmbientCapabilities=cap_net_raw
 
 [Install]
 WantedBy=multi-user.target
