@@ -1,7 +1,7 @@
-# Maintainer: Franco Masotti <franco dot masotti at tutanota dot com>
-# Contributor: Franco Masotti <franco dot masotti at tutanota dot com>
+# Maintainer: Franco Masotti (See /README.md in project source)
+# Contributor: Franco Masotti (See /README.md in project source)
 pkgname=python-fpyutils
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A collection of useful non-standard Python functions which aim to be simple to use"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-build'
              'python-setuptools')
 options=(!emptydirs)
 source=("https://blog.franco.net.eu.org/software/fpyutils-${pkgver}/fpyutils-${pkgver}.tar.gz.sig" "https://blog.franco.net.eu.org/software/fpyutils-${pkgver}/fpyutils-${pkgver}.tar.gz")
-sha512sums=('SKIP' '8aa0fcefada2bebe76f5d9033f54efaf9652cc8deb0a8e6015f27fdb0c83f49e12fec1790462d07f6cc56cb20a270df199091633e1992fae02bea136254de35d')
+sha512sums=('SKIP' 'ffcad84e0e83ad06b7382ba5241ea17f67816469ddee39b56cb58eacf3f6941b9ae9717cd9978f24245f620a66ef973cae04f28665f2238dd02ac8a9a112924e')
 
 check() {
     cd "${srcdir}"/fpyutils-"${pkgver}"
