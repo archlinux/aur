@@ -1,6 +1,6 @@
 pkgbase = sweethome3d-3dmodels-katorlegaz
 	pkgdesc = Free 3D models advertised on SweetHome3D website
-	pkgver = 1.9
+	pkgver = 1.9.1
 	pkgrel = 2
 	url = http://www.sweethome3d.com/freeModels.jsp
 	install = sweethome3d-3dmodels-katorlegaz.install
@@ -16,7 +16,7 @@ pkgbase = sweethome3d-3dmodels-katorlegaz
 	optdepends = sweethome3d-3dmodels-trees: More 3D models
 	optdepends = sweethome3d-textures-contributions: More textures
 	optdepends = sweethome3d-textures-scopia: More textures
-	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-KatorLegaz-1.9.zip
-	sha1sums = 3eae468ee0ef466faf94d1fec655b32ac170bf96
+	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-KatorLegaz-1.9.1.zip
+	sha1sums = fab26bd59a209a13235077ea2103e5d8491f76af
 
 pkgname = sweethome3d-3dmodels-katorlegaz
