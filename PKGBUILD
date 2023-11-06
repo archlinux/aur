@@ -8,7 +8,7 @@ url="https://gitlab.com/BoopyTheFox/hyprpaper-gen"
 license=('GPL3')
 depends=('bash' 'hyprpaper')
 makedepends=('git')
-optdepents=('hyprland: detect monitors with hyprctl')
+optdepends=('hyprland: detect monitors with hyprctl')
 source=('hyprpaper-gen::git+https://github.com/BoopyTheFox/hyprpaper-gen.git') 
 md5sums=('SKIP')
 

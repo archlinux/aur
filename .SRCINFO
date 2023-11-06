@@ -1,0 +1,15 @@
+pkgbase = hyprpaper-gen-git
+	pkgdesc = A simple script to automate hyprpaper config generation
+	pkgver = r3.e616709
+	pkgrel = 1
+	url = https://gitlab.com/BoopyTheFox/hyprpaper-gen
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = hyprpaper
+	optdepends = hyprland: detect monitors with hyprctl
+	source = hyprpaper-gen::git+https://github.com/BoopyTheFox/hyprpaper-gen.git
+	md5sums = SKIP
+
+pkgname = hyprpaper-gen-git
