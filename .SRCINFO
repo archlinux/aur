@@ -10,6 +10,7 @@ pkgbase = openhmd-git
 	makedepends = git
 	depends = hidapi
 	depends = glibc
+	optdepends = xr-hardware: Udev rules for accessing XR (VR and AR) hardware devices,
 	optdepends = oculus-udev: Udev rule for Oculus Rift,
 	optdepends = vive-udev: Udev rule for HTC Vive
 	provides = openhmd

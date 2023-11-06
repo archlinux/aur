@@ -14,6 +14,7 @@ provides=($basename)
 makedepends=(meson git)
 
 optdepends=(
+  'xr-hardware: Udev rules for accessing XR (VR and AR) hardware devices',
   'oculus-udev: Udev rule for Oculus Rift',
   'vive-udev: Udev rule for HTC Vive'
 )
