@@ -1,7 +1,8 @@
-# Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
-# Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Contributor: Miguel de Val-Borro <miguel dot deval at gmail dot com>
+# Contributor: Astro Benzene <universebenzene at sina dot com>
+
 pkgname=astrometry.net
-pkgver=0.93
+pkgver=0.94
 pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
@@ -10,7 +11,8 @@ license=("GPL")
 depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python-astropy' 'netpbm' 'cfitsio' 'gsl' 'swig')
 backup=(etc/astrometry.cfg)
 install=astrometry.net.install
-source=("http://astrometry.net/downloads/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/dstndstn/astrometry.net/releases/download/${pkgver}/astrometry.net-${pkgver}.tar.gz")
+sha256sums=('38c0d04171ecae42033ce5c9cd0757d8c5fc1418f2004d85e858f29aee383c5f')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -47,4 +49,3 @@ package() {
     rm ${pkgdir}/usr/bin/fitscopy
     rm ${pkgdir}/usr/bin/imcopy
 }
-md5sums=('a4d58d6602f02c5f84b5c8de810b8eee')
