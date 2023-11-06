@@ -7,13 +7,16 @@ pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer along with functio
 arch=(any)
 conflicts=('kawaii-player')
 license=('GPL3')
-depends=('python' 'qt5-webengine' 'python-pympv' 'python-pyqt5' 'python-pycurl' 'curl' 
-         'libnotify' 'python-dbus' 'libtorrent-rasterbar' 'python-pytaglib' 'python-mutagen' 
-         'python-beautifulsoup4' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 
+depends=('python' 'qt5-webengine' 'python-pympv-git' 'python-pyqt5' 'python-pycurl' 'curl'
+         'libnotify' 'python-dbus' 'libtorrent-rasterbar' 'python-pytaglib' 'python-mutagen'
+         'python-beautifulsoup4' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer'
          'sqlite3' 'youtube-dl' 'wget' 'python-opengl' 'python-pyqt5-webengine')
 optdepends=('vlc')
-#optdepends=('livestreamer' 'youtube-dl' 'wget')
-makedepends=('git')
+optdepends=('livestreamer'
+            'youtube-dl'
+            'wget'
+            'python-opengl-accelerate')
+makedepends=('git' 'python-setuptools')
 
 source=("git+https://github.com/kanishka-linux/kawaii-player.git")
 md5sums=('SKIP')
@@ -27,9 +30,10 @@ pkgver() {
 
 package() {
   cd $srcdir/kawaii-player
-  python setup.py install --root="$pkgdir" --optimize=1 --prefix=/usr 
-  install -D "${pkgdir}/usr/lib/python3.9/site-packages/kawaii_player/resources/kawaii-player.desktop" "${pkgdir}/usr/share/applications/kawaii-player.desktop"
+  python setup.py install --root="$pkgdir" --optimize=1 --prefix=/usr
+  PYTHON_VERSION=$(python -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')
+  install -D "${pkgdir}/usr/lib/python$PYTHON_VERSION/site-packages/kawaii_player/resources/kawaii-player.desktop" "${pkgdir}/usr/share/applications/kawaii-player.desktop"
 
  sed -i 's/Exec=/Exec=kawaii-player/g' "$pkgdir/usr/share/applications/kawaii-player.desktop"
- install -D $pkgdir/usr/lib/python3.9/site-packages/kawaii_player/resources/tray.png $pkgdir/usr/share/kawaii-player/resources/tray.png
+ install -D $pkgdir/usr/lib/python$PYTHON_VERSION/site-packages/kawaii_player/resources/tray.png $pkgdir/usr/share/kawaii-player/resources/tray.png
 }
