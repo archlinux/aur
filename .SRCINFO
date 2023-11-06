@@ -1,33 +1,8 @@
 pkgbase = dolphin-klook
-	pkgdesc = KDE File Manager with KLook support
+	pkgdesc = metapackage - migrate to dolphin
 	pkgver = 20.04.3
-	pkgrel = 1
-	url = https://kde.org/applications/system/dolphin/
-	arch = x86_64
-	groups = kde-applications
-	groups = kde-system
-	license = LGPL
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
-	depends = baloo-widgets
-	depends = knewstuff
-	depends = kio-extras
-	depends = kcmutils
-	depends = kparts
-	depends = kinit
-	optdepends = kde-cli-tools: for editing file type options
-	optdepends = ffmpegthumbs: video thumbnails
-	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
-	optdepends = konsole: terminal panel
-	optdepends = purpose: share context menu
-	source = https://download.kde.org/stable/release-service/20.04.3/src/dolphin-20.04.3.tar.xz
-	source = https://download.kde.org/stable/release-service/20.04.3/src/dolphin-20.04.3.tar.xz.sig
-	source = dolphin-klook.patch
-	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = 5e493e898e02005780b59474f506904742625b50e4669c113906d4f30daa863e
-	sha256sums = SKIP
-	sha256sums = feba65f17ca4f59c0bcdb1e24c4ff7f0a2ec79384199b6b8af502c5c7fbb8ab5
+	pkgrel = 2
+	arch = any
 
 pkgname = dolphin-klook
-
+	depends = dolphin
