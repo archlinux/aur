@@ -13,7 +13,7 @@ pkgbase = spacemesh-bin
 	provides = spacemesh=1.2.5
 	conflicts = spacemesh
 	source = spacemesh.sh
-	sha256sums = d6ea2f704c42416478a25968c40e914a8f026415c9c128071723a5199f2934b1
+	sha256sums = c73bbcc54adb1003fe11400766b85b050e56c58ebb56c82a85ed2b4aec33cfa7
 	source_aarch64 = spacemesh-1.2.5-aarch64.deb::https://storage.googleapis.com/smapp/v1.2.5/spacemesh_app_1.2.5_arm64.deb
 	sha256sums_aarch64 = 45b8f8ec465851e6b46493030575cf8138ab84790836eb09141dc9d19031ad06
 	source_x86_64 = spacemesh-1.2.5-x86_64.deb::https://storage.googleapis.com/smapp/v1.2.5/spacemesh_app_1.2.5_amd64.deb
