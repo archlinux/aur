@@ -1,15 +1,14 @@
 pkgbase = redshift-qt
 	pkgdesc = redshift-gtk rewrite with C++/Qt
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chemrat/redshift-qt
 	arch = x86_64
 	arch = i686
 	license = MIT
-	depends = redshift
 	depends = qt5-base
-	source = redshift-qt-0.6.tar.gz::https://github.com/Chemrat/redshift-qt/archive/v0.6.tar.gz
+	depends = redshift
+	source = https://github.com/Chemrat/redshift-qt/archive/v0.6.tar.gz
 	sha512sums = f240f5efa7d5e1aec4b4dee0e7b14b3097147d1a601afef27c33eaec06df9a8ed340f26b56b27e0c012717451b5b3f7e2d45ef59c85a6512f98b5e613fb397af
 
 pkgname = redshift-qt
-
