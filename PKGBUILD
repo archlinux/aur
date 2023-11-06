@@ -4,7 +4,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 epoch=4
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -25,6 +25,7 @@ depends=(
     python
     pybind11
     xorg-server-devel
+    gcc12
 )
 optdepends=(
     'openmp: Multiprocess support'
@@ -36,25 +37,27 @@ makedepends=(
     python-setuptools
 )
 source=(
-    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#tag=v${pkgver}-1fix6008"
-    "v0.17.0-1fix6008.patch"
+    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=7c0acac0a50293c52d2adb70967e729f98fa5018"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
     git submodule update --init --recursive
-    patch -p1 -i "${srcdir}/v0.17.0-1fix6008.patch"
+    # patch -p1 -i "${srcdir}/v0.17.0-1fix6008.patch"
     mkdir build
 }
 
 function build() {
     cd "${srcdir}/${pkgbase}/build"
     # find ../ -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
+    export CXXFLAGS=$CFLAGS
     cmake .. \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DBUILD_SHARED_LIBS=ON \
-          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_C_COMPILER=/usr/bin/gcc-12 \
+          -DCMAKE_CXX_COMPILER=/usr/bin/g++-12
     make -j$(nproc)
 }
 
