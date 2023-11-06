@@ -1,7 +1,7 @@
 pkgbase = ffmpeg2.8
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 2.8.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = GPL3
@@ -28,6 +28,7 @@ pkgbase = ffmpeg2.8
 	depends = libxcb
 	depends = libxext
 	depends = libxv
+	depends = sndio
 	depends = opencore-amr
 	depends = openjpeg
 	depends = opus
