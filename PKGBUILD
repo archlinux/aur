@@ -2,8 +2,8 @@
 
 _pkgname=xdelta3-cross-gui
 pkgname=$_pkgname-bin
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="A cross-platform GUI for creating xDelta3 patches (binary release)"
 arch=('x86_64')
 url="https://github.com/dan0v/xdelta3-cross-gui"
@@ -12,7 +12,7 @@ makedepends=('fuse2')
 conflicts=($_pkgname)
 provides=($_pkgname)
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/xdelta3-cross-gui_linux_AppImage_x86_64.tar.gz")
-sha256sums=('274c2161a99b4ce4440a33ab200aafbb2744e2735a2db3cb83560281a7a28c2b')
+sha256sums=('82ca9e1a6c233b6ed3278ac94f77e835b92aca60c5e1aaec30ddd4ef8ade5364')
 
 prepare() {
   # Extract the AppImage
