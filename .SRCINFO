@@ -1,0 +1,17 @@
+pkgbase = secoclient
+	pkgdesc = 华为（HUAWEI）VPN client
+	pkgver = 7.0.12.1
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = local://secoclient-linux-64-7.0.12.1.run
+	source = SecoClientPromoteService.service
+	source = secoclient.install
+	source = SecoClientPromoteService.sh
+	sha256sums = 35a4bf2cf32b3aea134892b827922c38179d0641f211ed3a5aaf0dcbd8e0d068
+	sha256sums = f38dadcbc954d17bb832a19db8b9ecbf946742d80ce7e396871023a4585f1462
+	sha256sums = d043a694c3c65f89868b983444adb4e84ebcc5eda66022c9ffa4c6f831213cf9
+	sha256sums = 963e7de55499938734576f66a79d57ec42eb4e88cc88141dd0338b1a1d19c357
+
+pkgname = secoclient

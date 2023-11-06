@@ -1,0 +1,13 @@
+[Unit]
+Description=SecoClientPromoteService daemon
+
+[Service]
+ExecStart=/usr/local/SecoClient/promote/SecoClientPromoteService.sh
+PIDFile=/var/run/SecoClientPromoteService.pid
+WorkingDirectory=/usr/local/SecoClient/promote
+Restart=always
+RestartSec=10
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

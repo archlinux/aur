@@ -1,0 +1,11 @@
+post_install() {
+  echo ">>>> Please start/enable SecoClientPromoteService.service before use SecoClient"
+  echo '>>>> Please add your user to secoclient group: usermod -a -G secoclient $USER'
+  useradd secoclient
+  chown -R secoclient:secoclient /usr/local/SecoClient
+}
+
+post_remove() {
+  rm -rf /usr/local/SecoClient
+  userdel secoclient
+}
