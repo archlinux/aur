@@ -1,6 +1,6 @@
 pkgbase = gns3-server
 	pkgdesc = GNS3 network simulator, Server package
-	pkgver = 2.2.43
+	pkgver = 2.2.44
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
@@ -27,11 +27,11 @@ pkgbase = gns3-server
 	optdepends = libvirt: needed for the NAT cloud
 	optdepends = vpcs: Simple PC emulation for basic network operations
 	optdepends = ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
-	source = gns3-server-2.2.43.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.2.43.tar.gz
+	source = gns3-server-2.2.44.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.2.44.tar.gz
 	source = gns3-server@.service
 	source = fix_requirements_for_Arch.diff
-	sha256sums = dd1a22837f1a982e4d897f3c01d88c40e719641c6316f3af0d7969217099cb7a
+	sha256sums = d83b3e1611f3d2ad607c45a29dbdcab947846d9b7abd7f3eec2886cf0c39f811
 	sha256sums = b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f
-	sha256sums = 21cbba9a3dd61196177dbb6d9a48167b46e971b4156706250e41c7f1b2b1c7c9
+	sha256sums = 8ae440652ae38a7a93b914737c5e902130089bdb59c072ca67a3cf261aa71258
 
 pkgname = gns3-server
