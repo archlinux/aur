@@ -6,8 +6,8 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.gf391178af
-pkgrel=2
+pkgver=4.0.0.r13795.gf391178
+pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
@@ -48,7 +48,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd mapnik || exit
-  printf "4.0.0.%s" "$(git describe --all --long | cut -d- -f3)"
+  printf "4.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
