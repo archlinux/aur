@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9829.45ef11654
+pkgver=r9848.9b2a5926a
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -55,8 +55,10 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         "git+https://github.com/yuzu-emu/sirit.git"
+        "git+https://github.com/knik0/faad2.git"
         "library-headers::git+https://github.com/citra-emu/ext-library-headers.git"
         "git+https://github.com/bylaws/libadrenotools.git"
+        "git+https://github.com/merryhime/oaknut.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -99,6 +101,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -108,7 +112,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgbase"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih,openal-soft,glslang,vma,vulkan-headers,sirit,library-headers,libadrenotools};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
