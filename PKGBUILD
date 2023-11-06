@@ -1,6 +1,6 @@
 # Maintainer: Fraser P. Newton <fpnewton90@gmail.com>
 pkgname=azure-storage-explorer
-pkgver=1.27.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="Storage Explorer allows you to view and interact with your Azure Storage resources."
 arch=('x86_64')
@@ -8,10 +8,10 @@ url="https://github.com/microsoft/AzureStorageExplorer"
 license=('CCPL' 'MIT')
 depends=('dotnet-runtime-6.0' 'nodejs' 'gtk3' 'nss' 'libsecret' 'alsa-lib')
 provides=('azure-storage-explorer')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v${pkgver}/Linux_StorageExplorer-x64.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v${pkgver}/StorageExplorer-linux-x64.tar.gz"
         "https://raw.githubusercontent.com/microsoft/AzureStorageExplorer/master/LICENSE"
 	"StorageExplorer.desktop")
-sha256sums=('c43c6880f7af486bb0413908a872b832be94c670a0c36a9943dfa17c4565e109'
+sha256sums=('e5782adc46955515a1f03da258a42ea3db7a30971e349937ffc619f13d3328f5'
             '9bbc1ea9fe5c96df01b311a2ac864d5b18fc87b9948bfd14770e4b44db755ee9'
             'ed90ef85054cd2860d6c0e123a0db52a81014a6433e02952a57926ab115b7717')
 
