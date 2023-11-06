@@ -1,14 +1,14 @@
 pkgbase = palemoon-i18n-sk
 	pkgdesc = Slovak language pack for Pale Moon browser
-	pkgver = 29.4.0
+	pkgver = 32.5.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-sk-29.4.0.xpi
-	source = palemoon-i18n-sk-29.4.0.xpi::https://addons.palemoon.org/?component=download&version=29.4.0&id=langpack-sk@palemoon.org
-	sha256sums = d839757e47ffb1363284c4dcd98115a9ff9b51ab0f1e902e37669c1c83367c42
+	noextract = palemoon-i18n-sk-32.5.0.xpi
+	source = palemoon-i18n-sk-32.5.0.xpi::https://addons.palemoon.org/?component=download&version=32.5.0&id=langpack-sk@palemoon.org
+	sha256sums = 749a15ab2d1d75db2dc24b7498ecdc7a0088ff693788dbcdb3f4fd730516c043
 
 pkgname = palemoon-i18n-sk
