@@ -1,4 +1,5 @@
-# Maintainer: Jonathon Fernyhough <jonathon"m2x+dev>
+# Maintainer: Bacteriostat <dev dot bacteriostat at aleeas dot com>
+# Contributor: Jonathon Fernyhough <jonathon"m2x+dev>
 # Contributor: Sam Guymer <sam at guymer dot me>
 
 # This PKGBUILD adapted from zulu-11-bin
@@ -6,10 +7,10 @@
 _jdkname=liberica-jdk-11
 pkgname="${_jdkname}-bin"
 _java_ver=11
-pkgver=11.0.15+10
+pkgver=11.0.21+10
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
-arch=(aarch64 armv7h armv8h i686 x86_64)
+arch=(aarch64 armv7h armv8h i686 x86_641e82b1755cc61a6af083e67c42101d78ab56d575)
 url='https://bell-sw.com/'
 license=('custom')
 depends=('java-environment-common=3' 'java-runtime-common>=3' 'ca-certificates-utils')
@@ -48,11 +49,11 @@ source_i686=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux
 source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('cf0818174d31164d7c37223168c2ac70f6f04334')
-sha1sums_armv7h=('704a6e68b954c8656dcb4d07cd7259a95a8b3cc2')
+sha1sums_aarch64=('ba142af311de6ab1f7ac795a0b3b171d543f8a87')
+sha1sums_armv7h=('58e10819f27168c6a557afaf73f9f14cfaa0f10b')
 sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_i686=('65e2274cf09a37a043068e40fe85a632e6a992b3')
-sha1sums_x86_64=('a83c85d110bb0d56e04512990d73499ef126b790')
+sha1sums_i686=('3533df1f7f71e70c2df0b0c656809baf71ba76dc')
+sha1sums_x86_64=('3533df1f7f71e70c2df0b0c656809baf71ba76dc')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
