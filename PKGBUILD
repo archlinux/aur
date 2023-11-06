@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ziipoo-bin
 _pkgname=Ziipoo
-pkgver=2601
+pkgver=2603
 pkgrel=1
 pkgdesc="Makes music more reliable!壹谱,让音乐更靠谱!"
 arch=('x86_64')
@@ -11,14 +11,38 @@ options=(!strip)
 providers=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
-depends=('qt5-base' 'glibc' 'libglvnd' 'fontconfig' 'glib2' 'pango' 'libx11' 'alsa-lib' 'gtk2' 'zlib' 'lib32-gcc-libs' 'sh' 'ffmpeg4.4' \
-    'libxi' 'gcc-libs' 'gtk3' 'libxxf86vm' 'libxtst' 'gdk-pixbuf2' 'cairo' 'at-spi2-core' 'libxext' 'java-runtime' 'freetype2' \
-    'libxrender' 'lib32-glibc')
-source=("${pkgname%-bin}-${pkgver}.deb::http://qdl.ziipoo.cn/soft/linux${_pkgname}${pkgver}v1.deb"
-    "LICENSE.html::${url}/buy/")
-sha256sums=('a65e50b53bae8b412f1403708eb5b940dcca4c128650006b0a8a51160faaf00f'
-            '1dffba4ef854522d7c9c703c60229addc3b3768cb9dd410a2f17b3f988ad4fcf')
-prepare() {
+depends=(
+    'qt5-base'
+    'libglvnd'
+    'fontconfig'
+    'pango'
+    'libx11'
+    'alsa-lib'
+    'gtk2'
+    'zlib'
+    'lib32-gcc-libs'
+    'sh'
+    'ffmpeg4.4'
+    'libxi'
+    'gtk3'
+    'libxxf86vm'
+    'libxtst'
+    'gdk-pixbuf2'
+    'cairo'
+    'at-spi2-core'
+    'libxext'
+    'java-runtime'
+    'freetype2'
+    'libxrender'
+    'lib32-glibc'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::http://qdl.ziipoo.cn/soft/linux${_pkgname}${pkgver}v1.deb"
+    "LICENSE.html::${url}/buy/"
+)
+sha256sums=('e11d8dd01a19d048fbf93d39fdb9831ff68149db92872ca27cf1b75150bc68bf'
+            '7c3d286e4eef4ff6a2f2ed19ebf12eda332e821274455a79638a7635e72a8858')
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|usr/share|opt/${pkgname%-bin}|g" -i "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh"
     sed "s|/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh|${pkgname%-bin}|g;s|/usr/share/${pkgname%-bin}/ic_launcher.png|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
