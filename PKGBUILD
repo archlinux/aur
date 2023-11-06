@@ -29,7 +29,7 @@ sha256sums_x86_64=('385a9ac6b624d6fc998a0af614dea890c8c175bd9221ebc4345e3db9b6c7
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    1sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
