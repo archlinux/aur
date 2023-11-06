@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinflatplus
-pkgver=0.7.5
+pkgver=0.7.9
 pkgrel=1
 _vdrapi=2.6.3
 pkgdesc="Simple and slim skin for VDR"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MegaV0lt/vdr-plugin-skinfla
 backup=('etc/epgd/eventsview-flatplus.sql'
         "etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/skinflatplus/configs/'{MV_default,default,fnu_default})
-sha256sums=('103f282cad961a37db06c68ebb51d8eabd9630c6a4c9773aeb8a587f1b1b9a47'
+sha256sums=('15d9e8bf72203fdc6dd0ef4e4f10b8f5601d99624befb5c25625ce67ddf09a62'
             '6f6f9699cbc73d73d34c4e17183d3f03b1553a2b8caa62ee881354f2ac12bd8d')
 
 build() {
