@@ -1,7 +1,7 @@
 pkgbase = vlc-wayland-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)
 	pkgver = 4.0.0.r26365.g4905863389
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -114,7 +114,7 @@ pkgbase = vlc-wayland-git
 	optdepends = libdvdcss: decoding encrypted DVDs
 	optdepends = libavc1394: devices using the 1394ta AV/C
 	optdepends = libdc1394: IEEE 1394 access plugin
-	optdepends = kwallet: kwallet keystore
+	optdepends = kwallet5: kwallet keystore
 	optdepends = libva-vdpau-driver: vdpau backend nvidia
 	optdepends = libva-intel-driver: video backend intel
 	optdepends = libbluray: Blu-Ray video input
