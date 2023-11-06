@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh"
 )
-sha256sums=('10e7403279b2832b2038502ebd5c9874887aaaa30e9660f7a81e78092ff3acbe'
+sha256sums=('a74c45298a6ae5b6c1ff687898d14cd1421d1f8ba1987026cd25383dd3537750'
             'f1778c05339e7117bf6d9e7668885896f23f2e98f9c47b8b15c2ad2d3084ae20')
 build() {
     gendesk -q -f -n --categories "Graphics;Utility" --name "${pkgname}" --exec "${pkgname}"

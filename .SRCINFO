@@ -1,6 +1,6 @@
 pkgbase = elephicon
 	pkgdesc = A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files.
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/sprout2000/elephicon
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = elephicon
 	depends = electron27
 	depends = hicolor-icon-theme
 	conflicts = elephicon
-	source = elephicon-2.7.2.zip::https://github.com/sprout2000/elephicon/archive/refs/tags/v2.7.2.zip
+	source = elephicon-2.7.3.zip::https://github.com/sprout2000/elephicon/archive/refs/tags/v2.7.3.zip
 	source = elephicon.sh
-	sha256sums = 10e7403279b2832b2038502ebd5c9874887aaaa30e9660f7a81e78092ff3acbe
+	sha256sums = a74c45298a6ae5b6c1ff687898d14cd1421d1f8ba1987026cd25383dd3537750
 	sha256sums = f1778c05339e7117bf6d9e7668885896f23f2e98f9c47b8b15c2ad2d3084ae20
 
 pkgname = elephicon
