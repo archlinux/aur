@@ -11,7 +11,7 @@ license=(Boost)
 depends=(hidapi)
 conflicts=($basename)
 provides=($basename)
-makedepends=("meson")
+makedepends=(meson git)
 
 optdepends=(
   'oculus-udev: Udev rule for Oculus Rift',

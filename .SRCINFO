@@ -7,6 +7,7 @@ pkgbase = openhmd-git
 	arch = i686
 	license = Boost
 	makedepends = meson
+	makedepends = git
 	depends = hidapi
 	optdepends = oculus-udev: Udev rule for Oculus Rift,
 	optdepends = vive-udev: Udev rule for HTC Vive
