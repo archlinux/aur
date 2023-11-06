@@ -9,7 +9,7 @@
 
 pkgname=prismlauncher-qt5
 pkgver=7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
@@ -17,7 +17,7 @@ license=('GPL3')
 depends=('java-runtime=17' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5' 'tomlplusplus' 'cmark')
 provides=('prismlauncher')
 conflicts=('prismlauncher')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment=17' 'scdoc' 'ghc-filesystem' 'gamemode')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'jdk17-openjdk' 'scdoc' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
@@ -28,6 +28,8 @@ sha256sums=('5733b55c4532286813a6fb7de2f3a38e6f6db743a251919c8b646d32a84514b4')
 
 build() {
   cd "PrismLauncher-${pkgver}"
+
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
 
   cmake -DCMAKE_BUILD_TYPE= \
     -DCMAKE_INSTALL_PREFIX="/usr" \
