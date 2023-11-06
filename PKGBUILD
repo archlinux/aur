@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hdf5
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libaec')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver:0:4}/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2")
-sha256sums=('ea3c5e257ef322af5e77fc1e52ead3ad6bf3bb4ac06480dd17ee3900d7a24cfb')
+sha256sums=('9425f224ed75d1280bb46d6f26923dd938f9040e7eaebf57e66ec7357c08f917')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
