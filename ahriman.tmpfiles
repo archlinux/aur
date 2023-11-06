@@ -1,2 +1,1 @@
 d /var/lib/ahriman 0755 ahriman ahriman
-d /var/log/ahriman 0755 ahriman ahriman

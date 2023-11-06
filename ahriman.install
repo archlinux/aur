@@ -1,10 +1,11 @@
 post_upgrade() {
     local breakpoints=(
         2.9.0-1
+        2.12.0-1
     )
 
     for v in "${breakpoints[@]}"; do
-        if [[ $(vercmp "$v" "$2") -eq 1 ]]; then
+        if [[ $(vercmp "$v" "$2") -ne "-1" ]]; then
             "_${v//[.-]/_}_changes"
         fi
     done
@@ -12,14 +13,30 @@ post_upgrade() {
 
 _2_9_0_1_changes() {
     cat << EOF
-It was found that you were upgrading from old-devtools package to the new one, which requires manual intervention:
+It was found that there was an upgrade from old devtools package to the new one, which requires manual intervention:
 
 * make sure that devtools are upgraded to the latest release;
-* merge service configuration if required;
-* run setup command (i.e. sudo ahriman service-setup) with the same arguments as you did before;
-* remove build chroot: sudo rm -r /var/lib/ahriman/chroot/ahriman-x86_64/;
-* update local databases: sudo -u ahriman ahriman update --no-aur --no-local --no-manual -yy;
+* merge upstream configuration into local configuration (e.g. by using pacdiff);
+* run setup command (i.e. ahriman service-setup) with the same arguments as did before;
+* remove build chroot, e.g.: ahriman service-clean --chroot;
+* update local databases: ahriman update --no-aur --no-local --no-manual -yy.
 
-For more information kindly refer to changelog https://github.com/arcan1s/ahriman/releases/tag/2.9.0
+For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migration.html.
+EOF
+}
+
+_2_12_0_1_changes() {
+    cat << EOF
+Whereas old local tree is still supported it is highly recommended to migrate to the new one:
+
+* stop and disable all services;
+* run service-tree-migrate as ahriman user;
+* edit local configuration to avoid pointing to the old paths;
+* run setup command (i.e. ahriman service-setup) with the same arguments as did before;
+* update remote services in order to support new paths (or setup redirects) if any;
+* enable web and timer services again by using x86_64-aur-clone suffix,
+  where x86_64 is the repository architecture and aur-clone is the repository name.
+
+For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migration.html.
 EOF
 }

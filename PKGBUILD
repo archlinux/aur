@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Alekseev
 
 pkgname='ahriman'
-pkgver=2.11.0
+pkgver=2.12.1
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
@@ -46,7 +46,7 @@ package() {
   python -m installer --destdir="$pkgdir" "dist/$pkgname-$pkgver-py3-none-any.whl"
 
   # thanks too PEP517, which we all wanted, you need to install data files manually nowadays
-  pushd package && find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/{}" \; && popd
+  pushd package && find . \( -type f -or -type l \) -exec install -Dm644 "{}" "$pkgdir/usr/{}" \; && popd
 
   # keep usr/share configs as reference and copy them to /etc
   install -Dm644 "$pkgdir/usr/share/$pkgname/settings/ahriman.ini" "$pkgdir/etc/ahriman.ini"
@@ -56,6 +56,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
-sha512sums=('0f168b66d3cda7205426fd72e745fbed1fd155541a7942298a522cd4ed81bbef50e21eea64baf42331b47033691a770fa07b475b1af8f0de514da2f69b95ce71'
+sha512sums=('19598844977fdc668c2fbd4052a0382eb4720d6484fb0c635bb8564b351884a1c440841ffb609d29dfc47457eb1dc43bde696f1358ce4e17a1aa24ad5030c95f'
             'b1dd772f8802be99ccba3add5f1e6f78e5e79d0967342668dd12e472651a6b91c342f11fba330caaca421cc3d6c7e2011e09a6bd131f8ba14bbc4a6206cce539'
-            '62b2eccc352d33853ef243c9cddd63663014aa97b87242f1b5bc5099a7dbd69ff3821f24ffc58e1b7f2387bd4e9e9712cc4c67f661b1724ad99cdf09b3717794')
+            'ac22af25fc08f5bf1b9acbb77bbb6b2bb7af12d78ff1ae99463c16f36f1dd5ebae3af1413e353634aed5275af0eefee41257eded7987e67ae6a9411999d5a2ba')
