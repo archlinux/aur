@@ -1,3 +1,10 @@
+2023-11-06	fish-fzf 10.2
+
+Important patch
+
+  I accidentally broke Search History preview in v10.1. This release fixes it.
+
+
 2023-11-05	fish-fzf 10.1
 
 Breaking change
