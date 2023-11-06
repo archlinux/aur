@@ -4,11 +4,11 @@
 
 pkgname=anki-official-binary-bundle
 pkgver=any
-pkgrel=2
+pkgrel=3
 epoch=1
-pkgdesc="[Meta-PKG] migrate to anki-bin, delete this meta-pkg"
+pkgdesc="[Meta-PKG] Please manually migrate to anki-bin; delete this meta-pkg"
 arch=('any')
 url="https://aur.archlinux.org/packages/anki-bin"
 license=('AGPL3')
-depends=('anki-bin')
-conflicts=('anki-official-binary-bundle<=2.1.66-1')
+provides=('anki')
+optdepends=('anki-bin: only this is maintained (user needs to install it)')
