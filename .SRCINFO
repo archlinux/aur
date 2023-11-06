@@ -1,11 +1,12 @@
 pkgbase = nvenc
 	pkgdesc = NVIDIA Video Codec based command line encoder
 	pkgver = 7.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rigaya/NVEnc
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = gcc12
 	depends = cuda>=10
 	depends = ffmpeg
 	depends = libass
