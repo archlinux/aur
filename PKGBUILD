@@ -1,18 +1,16 @@
 # Maintainer: Luca D'Amico <damico.luca91@live.it>
 
 pkgname=puzzle-bobble-grub2-theme
-pkgver=r6.1dc88c6
+pkgver=1.0
 pkgrel=1
 pkgdesc="Puzzle Bobble Grub2 Theme"
 arch=('any')
 license=('GPLv3')
-depends=()
-optdepends=()
+depends=('grub')
 install="${pkgname}.install"
 url="https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme"
-source=('git+https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme')
-makedepends=('git') 
-md5sums=('SKIP')
+source=("https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme/archive/refs/tags/$pkgver.tar.gz")
+md5sums=('42faf403a3bced45fcf5644003b1eefba322bab8e5e03b0b0d520a2d79217ddd')
 
 pkgver() { 
   cd "Puzzle-Bobble-Grub2-Theme" 

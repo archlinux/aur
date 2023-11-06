@@ -1,14 +1,13 @@
 pkgbase = puzzle-bobble-grub2-theme
 	pkgdesc = Puzzle Bobble Grub2 Theme
-	pkgver = r6.1dc88c6
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme
 	install = puzzle-bobble-grub2-theme.install
 	arch = any
 	license = GPLv3
-	makedepends = git
-	source = git+https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme
-	md5sums = SKIP
+	depends = grub
+	source = https://github.com/Luca1991/Puzzle-Bobble-Grub2-Theme/archive/refs/tags/1.0.tar.gz
+	md5sums = 42faf403a3bced45fcf5644003b1eefba322bab8e5e03b0b0d520a2d79217ddd
 
 pkgname = puzzle-bobble-grub2-theme
-
