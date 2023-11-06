@@ -2,13 +2,14 @@ pre_install() {
 	echo
 	echo "ATTENTION"
 	echo
-	echo "The 'anki-official-binary-bundle' is removed due to lack of maintenance and not adhering to AUR naming rules."
+	echo "'anki-official-binary-bundle' is removed due to lack of maintenance and not following AUR naming rules."
+	echo
 	echo "Please install anki-bin manually, or another Anki package of your choosing:"
 	echo
 	echo "- https://aur.archlinux.org/packages/anki-bin (prebuilt by upstream)"
-	echo "- https://aur.archlinux.org/packages/anki (source build)"
-	echo "- https://aur.archlinux.org/packages/anki-qt5 (source build)"
-	echo "- https://aur.archlinux.org/packages/anki-git (source build, using main development branch)"
+	echo "- https://aur.archlinux.org/packages/anki"
+	echo "- https://aur.archlinux.org/packages/anki-qt5"
+	echo "- https://aur.archlinux.org/packages/anki-git"
 	echo
 }
 
