@@ -2,7 +2,7 @@
 # Contributor: Hubert Maraszek <marach5 at gmail dot com>
 
 pkgname=mp3tag
-pkgver=3.22b
+pkgver=3.23
 pkgrel=1
 pkgdesc="The universal tag editor"
 arch=(i686 x86_64)
@@ -13,17 +13,23 @@ makedepends=(p7zip)
 source=(mp3tag
         LICENSE
         mp3tag.desktop
-        mp3tag.png
-        "https://download.mp3tag.de/${pkgname}v${pkgver/./}setup.exe")
+        mp3tag.png)
+source_i686=("https://download.mp3tag.de/${pkgname}v${pkgver/./}setup.exe")
+source_x86_64=("https://download.mp3tag.de/${pkgname}v${pkgver/./}-x64-setup.exe")
 sha256sums=('378eabc03c7a4c6aa56c5aa90141204a04b727f7dc60e66a7f36a87a7eeae7d8'
             '18967b634e69d8ccb08383d42a49ced3c0b11c632649a15c3a6a55e3a27f62e9'
             'bc0c7b8a7a9f9ee92dfe2f1880ef5d91920473713b5d60e4afa361d69a446798'
-            'a3e09f7cda34bc31b3b5b1d7cf2010c3b17847c141ef5a074472eb72f760f6bf'
-            'c9480c892433a286b593e682a2d93a4e592a9a2c7f9fada42c31e5a7d49719d3')
+            'a3e09f7cda34bc31b3b5b1d7cf2010c3b17847c141ef5a074472eb72f760f6bf')
+sha256sums_i686=('bbb4a782bb109ca2160dd8cd44e0802c05d81fdda8f1d656b4013a29d69f3e62')
+sha256sums_x86_64=('76f0426a4a59ebdacae44fb1b7301429c930ad0fe2424c23c1083e0d9c9e3490')
 options=('!strip')
 
 prepare() {
-  7z -y -o"$pkgname-$pkgver" x "${pkgname}v${pkgver/./}setup.exe"
+  if [[ $CARCH == i686 ]]; then
+    7z -y -o"$pkgname-$pkgver" x "${pkgname}v${pkgver/./}setup.exe"
+  else
+    7z -y -o"$pkgname-$pkgver" x "${pkgname}v${pkgver/./}-x64-setup.exe"
+  fi
 }
 
 package() {
