@@ -1,6 +1,6 @@
 pkgbase = impression
 	pkgdesc = A straight-forward modern application to create bootable drives.
-	pkgver = 2.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://apps.gnome.org/Impression
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = impression
 	makedepends = cargo
 	makedepends = meson
 	depends = libadwaita
-	source = https://gitlab.com/adhami3310/Impression/-/archive/v2.1/Impression-v2.1.tar.gz
-	sha256sums = 4b65f469af17d679ba5ab6457fe6ff421b5bdf1392cd23041f6221e1cfb1331a
+	source = https://gitlab.com/adhami3310/Impression/-/archive/v3.0/Impression-v3.0.tar.gz
+	sha256sums = 4d9b360e57da6bf216043c5516ff39525545f686f08787907b02438d6d0d752c
 
 pkgname = impression
