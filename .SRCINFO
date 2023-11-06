@@ -1,6 +1,6 @@
 pkgbase = ulogviewer-bin
 	pkgdesc = Cross-Platform Universal Log Viewer.
-	pkgver = 3.0.9.1021
+	pkgver = 3.0.10.1105
 	pkgrel = 1
 	url = https://carina-studio.github.io/ULogViewer/
 	arch = aarch64
@@ -9,18 +9,20 @@ pkgbase = ulogviewer-bin
 	makedepends = gendesk
 	depends = zlib
 	depends = fontconfig
-	depends = glibc
-	depends = gcc-libs
 	depends = dotnet-runtime
-	provides = ulogviewer=3.0.9.1021
+	optdepends = azure-cli
+	optdepends = android-sdk-platform-tools
+	optdepends = git
+	optdepends = libimobiledevice
+	provides = ulogviewer=3.0.10.1105
 	conflicts = ulogviewer
-	noextract = ulogviewer-3.0.9.1021-x86_64.tar.gz
+	noextract = ulogviewer-3.0.10.1105-x86_64.tar.gz
 	options = !strip
-	source = LICENSE::https://raw.githubusercontent.com/carina-studio/ULogViewer/3.0.9.1021/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/carina-studio/ULogViewer/3.0.10.1105/LICENSE
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
-	source_aarch64 = ulogviewer-3.0.9.1021-aarch64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.9.1021/ULogViewer-3.0.9.1021-linux-arm64.zip
-	sha256sums_aarch64 = 65454eaa954931a5ae7ea25e8ded4ff665a91c3af55b84f2562ad0248a391ef6
-	source_x86_64 = ulogviewer-3.0.9.1021-x86_64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.9.1021/ULogViewer-3.0.9.1021-linux-x64.zip
-	sha256sums_x86_64 = 9613cc8b0c3e34b3e3e7e0c86900325e5ce2f4ec4532fe69a36a74c24cbd0c7e
+	source_aarch64 = ulogviewer-3.0.10.1105-aarch64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.10.1105/ULogViewer-3.0.10.1105-linux-arm64.zip
+	sha256sums_aarch64 = 4e271cae1780de68315e05e12f4a194c2c03e390387ff84ed36f5f2b60033974
+	source_x86_64 = ulogviewer-3.0.10.1105-x86_64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.10.1105/ULogViewer-3.0.10.1105-linux-x64.zip
+	sha256sums_x86_64 = 6ed621df243421b7f99f3b747fd9c67086ffff07331f1281730317efc4f9c5a7
 
 pkgname = ulogviewer-bin
