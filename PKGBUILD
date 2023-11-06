@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=palr
-_pkgver=0.3.0
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b899763176205c856bc900ad6f3b6913')
-sha256sums=('079455452139c6558d740c3dbca35b17f27a19cdcb2b18b427ef330a37996275')
+md5sums=('a58440cad133ba506d936d997b82cdc0')
+sha256sums=('c65d3da61f73f17cfcb8aa65a3acfbd193f3b029addd5d5247a0a9ab2a395eb5')
 
 build() {
   mkdir -p build

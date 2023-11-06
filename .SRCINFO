@@ -1,6 +1,6 @@
 pkgbase = r-palr
 	pkgdesc = Colour Palettes for Data
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=palr
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = r-palr
 	optdepends = r-stars
 	optdepends = r-testthat
 	optdepends = r-viridis
-	source = https://cran.r-project.org/src/contrib/palr_0.3.0.tar.gz
-	md5sums = b899763176205c856bc900ad6f3b6913
-	sha256sums = 079455452139c6558d740c3dbca35b17f27a19cdcb2b18b427ef330a37996275
+	source = https://cran.r-project.org/src/contrib/palr_0.4.0.tar.gz
+	md5sums = a58440cad133ba506d936d997b82cdc0
+	sha256sums = c65d3da61f73f17cfcb8aa65a3acfbd193f3b029addd5d5247a0a9ab2a395eb5
 
 pkgname = r-palr
