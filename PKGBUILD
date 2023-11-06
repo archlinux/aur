@@ -6,8 +6,7 @@
 # Contributor: xsmile
 
 pkgbase=python-dlib
-pkgname=('python-dlib')
-##pkgname+=('python-dlib-cuda')
+pkgname=('python-dlib' 'python-dlib-cuda')
 _pkgname=dlib
 pkgver=19.24.2
 pkgrel=1
@@ -17,27 +16,26 @@ url="http://www.dlib.net/"
 license=('Boost')
 depends=('cblas' 'giflib' 'lapack' 'libjpeg-turbo' 'libpng' 'libx11')
 optdepends=('sqlite')
-##optdepends+=('cuda' 'cudnn' 'ccache-ext')
-makedepends=(${optdepends[@]} 'cmake' 'boost' 'python-setuptools')
+makedepends=('boost' 'ccache-ext' 'cmake' 'cuda' 'cudnn' 'python-setuptools' 'sqlite')
 #source=("$url/files/${_pkgname}-${pkgver}.tar.bz2")
 #source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 source=("https://github.com/davisking/dlib/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0f5c7e3de6316a513635052c5f0a16a84e1cef26a7d233bf00c21348462b6d6f')
 ##options=(!lto)
 
-##prepare() {
-##	cd "$srcdir/"
-##	cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
-##}
+prepare() {
+	cd "$srcdir/"
+	cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
+}
 
 build(){
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python setup.py build --no DLIB_USE_CUDA
 
-##	cuda_flags='--set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc --set CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache --set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc'
+	cuda_flags='--set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc --set CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache --set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc'
 
-##	cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
-##	python setup.py build $cuda_flags
+	cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+	python setup.py build $cuda_flags
 }
 
 
