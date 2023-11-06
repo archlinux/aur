@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.36.0.r690.g891efca9d7
+pkgver=0.36.0.r725.g6f8d98f812
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -526,6 +526,7 @@ prepare() {
     fi
 
     if [ -d /opt/cuda ]; then
+      export NVCC_PREPEND_FLAGS='-ccbin /opt/cuda/bin/g++'
       _ffmpeg_options+=('--enable-cuda-nvcc')
       _ffmpeg_options+=('--enable-cuda-llvm')
       _ffmpeg_options+=('--enable-libnpp')
