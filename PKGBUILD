@@ -2,7 +2,7 @@
 
 basename=openhmd
 pkgname=$basename-git
-pkgver=0.3.0.397.2c2dccc
+pkgver=0.3.0.511.e64708b
 pkgrel=1
 pkgdesc="Free and Open Source API and drivers for immersive technology."
 arch=(x86_64 i686)
@@ -22,7 +22,7 @@ source=($basename::"git+https://github.com/OpenHMD/OpenHMD.git")
 sha256sums=("SKIP")
 
 ver() {
-  PREFIX="	version : '"
+  PREFIX="	version: '"
   echo $(grep "$PREFIX" meson.build | sed -e "s/${PREFIX}//" | sed "s/',//")
 }
 
