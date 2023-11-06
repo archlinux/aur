@@ -15,4 +15,9 @@ pre_install() {
 
 pre_upgrade() {
 	pre_install
+	pre_remove
+}
+
+pre_remove() {
+    xdg-mime uninstall /usr/share/anki/anki.xml
 }
