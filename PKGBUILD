@@ -1,7 +1,7 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=furious
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria"
 arch=(x86_64)
@@ -21,7 +21,7 @@ source=(
     "furious.desktop"
 )
 sha256sums=(
-    "47470e233e23c6d12b75239145bb1a0d53f53bc183a1b147fa689f4e7bd0ff28"
+    "88875fa39f07586c69d04cfaa04f20b11fb5cff1860f6db6845b2690229bb994"
     "80d34f1fd74e382d86c2d6102e0e60d4318461a7c2f457ec1efc4042752d4248"
     "c39c972e4aba77c3f36ad2098b139c2cf66c896e1ed29c7c207726732aa4c748"
     "a8605d0ffa7417e0f7b705e7cd515873646e0b8bfa5c35d953499114c0c01e3d"
