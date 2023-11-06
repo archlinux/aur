@@ -1,6 +1,6 @@
 pkgbase = filelight-git
 	pkgdesc = View disk usage information
-	pkgver = 23.08.1.r6.g61a9590
+	pkgver = 23.08.3.r5.g4241f24
 	pkgrel = 1
 	url = https://invent.kde.org/utilities/filelight
 	arch = i686
@@ -8,18 +8,23 @@ pkgbase = filelight-git
 	license = GPL
 	license = LGPL
 	license = FDL
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules>=5.240.0
 	makedepends = git
-	makedepends = kdoctools
-	depends = hicolor-icon-theme
-	depends = kdeclarative
-	depends = kio
-	depends = kirigami-addons
-	depends = kquickcharts
-	depends = qqc2-desktop-style
+	makedepends = kdoctools>=5.240.0
+	depends = kdeclarative>=5.240.0
+	depends = kio>=5.240.0
+	depends = kirigami-addons>=0.11.75
+	depends = kquickcharts>=5.240.0
+	depends = qqc2-desktop-style>=5.240.0
 	provides = filelight
 	conflicts = filelight
 	source = filelight::git+https://invent.kde.org/utilities/filelight.git
 	sha256sums = SKIP
 
 pkgname = filelight-git
+	depends = kdeclarative>=5.240.0
+	depends = kio>=5.240.0
+	depends = kirigami-addons>=0.11.75
+	depends = kquickcharts>=5.240.0
+	depends = qqc2-desktop-style>=5.240.0
+	depends = hicolor-icon-theme
