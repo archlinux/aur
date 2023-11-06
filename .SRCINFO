@@ -1,0 +1,12 @@
+pkgbase = intel-soc-eds
+	pkgdesc = Intel SoC FPGA Embedded Design Suite (Standard Edition)
+	pkgver = 20.1.0.711
+	pkgrel = 1
+	url = https://www.intel.com/content/www/us/en/software/programmable/soc-eds/overview.html
+	arch = x86_64
+	arch = i686
+	license = custom
+	source = https://downloads.intel.com/akdlm/software/acdsinst/20.1std/711/ib_installers/SoCEDSSetup-20.1.0.711-linux.run
+	sha1sums = c9e1235c7f979a37d79eb57eee37596b030d209e
+
+pkgname = intel-soc-eds
