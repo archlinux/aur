@@ -1,0 +1,16 @@
+pkgbase = linuxdeployqt-git
+	pkgdesc = linux deployment tool
+	pkgver = 1.0.r0.g69d837c
+	pkgrel = 1
+	url = https://gitee.com/ufbycd/linuxdeployqt
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = linuxdeployqt
+	conflicts = linuxdeployqt
+	source = linuxdeployqt-git::git+https://gitee.com/ufbycd/linuxdeployqt.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = linuxdeployqt-git
