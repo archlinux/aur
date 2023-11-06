@@ -1,6 +1,6 @@
 pkgbase = waydroid
 	pkgdesc = A container-based approach to boot a full Android system on a regular Linux system
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://waydro.id/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = waydroid
 	depends = gtk3
 	depends = dbus-python
 	optdepends = python-pyclip: share clipboard with container
-	source = waydroid::git+https://github.com/waydroid/waydroid.git#commit=7ce2e28e8ea76c1e79b273d122921c1f394e842f
+	source = waydroid::git+https://github.com/waydroid/waydroid.git#commit=209c90d47330ddb357b5209309c80c4257f05fe3
 	sha256sums = SKIP
 
 pkgname = waydroid
