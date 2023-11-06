@@ -4,8 +4,8 @@
 
 pkgbase=wxwidgets-3.0
 pkgname=(wxwidgets-gtk2-3.0 wxwidgets-gtk3-3.0 wxwidgets-common-3.0)
-pkgver=3.0.5
-pkgrel=3
+pkgver=3.0.5.1
+pkgrel=2
 arch=(x86_64)
 url="https://wxwidgets.org"
 license=('custom:wxWindows')
@@ -13,7 +13,7 @@ makedepends=(gst-plugins-base glu webkit2gtk libnotify gtk2)
 options=(!emptydirs)
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2"
         wxwidgets-3.0.conf)
-sha256sums=('8aacd56b462f42fb6e33b4d8f5d40be5abc3d3b41348ea968aa515cc8285d813'
+sha256sums=('440f6e73cf5afb2cbf9af10cec8da6cdd3d3998d527598a53db87099524ac807'
             'fa0d36379d4d4d55c3eb50d7aeaec38654f65101c21bbfdde41ae68bc54e5953')
 
 prepare() {
@@ -22,17 +22,40 @@ prepare() {
 
 build() {
   cd "wxWidgets-${pkgver}"
-  ./configure --prefix=/opt/wxgtk-3.0 --libdir=/opt/wxgtk-3.0/lib --with-gtk=2 --with-opengl --enable-unicode \
-    --enable-graphics_ctx --enable-mediactrl --with-regex=builtin \
-    --with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
+  ./configure \
+    --prefix=/opt/wxgtk-3.0 \
+    --libdir=/opt/wxgtk-3.0/lib \
+    --with-gtk=2 \
+    --with-opengl \
+    --enable-unicode \
+    --enable-graphics_ctx \
+    --enable-mediactrl \
+    --with-regex=builtin \
+    --with-libpng=sys \
+    --with-libxpm=sys \
+    --with-libjpeg=sys \
+    --with-libtiff=sys \
+    --enable-compat28 \
     --disable-precomp-headers
   make
   make -C locale allmo
 
   cd ../"wxWidgets-${pkgver}-gtk3"
-  ./configure --prefix=/opt/wxgtk-3.0 --libdir=/opt/wxgtk-3.0/lib --with-gtk=3 --with-opengl --enable-unicode \
-    --enable-graphics_ctx --enable-mediactrl --enable-webview --with-regex=builtin \
-    --with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
+  ./configure \
+    --prefix=/opt/wxgtk-3.0 \
+    --libdir=/opt/wxgtk-3.0/lib \
+    --with-gtk=3 \
+    --with-opengl \
+    --enable-unicode \
+    --enable-graphics_ctx \
+    --enable-mediactrl \
+    --enable-webview \
+    --with-regex=builtin \
+    --with-libpng=sys \
+    --with-libxpm=sys \
+    --with-libjpeg=sys \
+    --with-libtiff=sys \
+    --enable-compat28 \
     --disable-precomp-headers
   make
 }
