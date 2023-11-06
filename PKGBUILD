@@ -4,7 +4,7 @@
 # Contributor: otaj <jasek.ota@gmail.com>
 
 pkgname=mcelog
-pkgver=191
+pkgver=196
 pkgrel=1
 pkgdesc="Print machine check event log from x86-64 kernel"
 url="https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git"
@@ -15,25 +15,24 @@ makedepends=('git')
 options=('docs')
 backup=('etc/mcelog/mcelog.conf')
 source=("$url/snapshot/$pkgname-$pkgver.tar.gz")
-sha256sums=('b3b2616acde7afba4752d4dc447a2c2ad5a75da65e7496e0da30f8f8d2015cfa')
+sha256sums=('5833f89b30db588311cf60a2001be61a78f8439fc60d655616cef02f3ab20a02')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's|sbin|bin|g' Makefile mcelog.cron mcelog.service
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	sed -i 's|sbin|bin|g' Makefile mcelog.cron mcelog.service
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p "$pkgdir"/usr/share/doc/mcelog
-  make install DESTDIR="$pkgdir"
-  install -Dm0755 mcelog.cron "${pkgdir}/usr/bin/mcelog.cron"
-  install -Dm0644 mcelog.logrotate "${pkgdir}/etc/logrotate.d/mcelog.logrotate"
-  install -Dm0644 README.md *.pdf "${pkgdir}/usr/share/doc/mcelog/"
-  install -Dm0644 mcelog.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p "$pkgdir"/usr/share/doc/mcelog
+	make install DESTDIR="$pkgdir"
+	install -Dm0755 mcelog.cron "${pkgdir}/usr/bin/mcelog.cron"
+	install -Dm0644 mcelog.logrotate "${pkgdir}/etc/logrotate.d/mcelog.logrotate"
+	install -Dm0644 README.md *.pdf "${pkgdir}/usr/share/doc/mcelog/"
+	install -Dm0644 mcelog.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
 }
-
