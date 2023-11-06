@@ -1,6 +1,6 @@
 pkgbase = soh-otr-gc_mq_pal_f
 	pkgdesc = OTR game data for SoH (Ocarina of Time Master Quest Europe PAL)
-	pkgver = 7.1.1.r68.g8fdee6661
+	pkgver = 7.1.1.r151.g8b78cb832
 	pkgrel = 1
 	epoch = 1
 	url = https://shipofharkinian.com/
