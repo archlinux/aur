@@ -3,7 +3,7 @@
 _gitname=permof
 _version=1.0
 pkgname=${_gitname}-git
-pkgver=${_version}.20be66a
+pkgver=${_version}.b5cff53
 pkgrel=1
 pkgdesc="Visualize Linux file permissions"
 arch=('any')
