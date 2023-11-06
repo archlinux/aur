@@ -1,0 +1,22 @@
+pkgbase = fuse-emulator-git
+	pkgdesc = ZX Spectrum emulator.
+	pkgver = 1.7.0.5114e2
+	pkgrel = 1
+	url = http://fuse-emulator.sourceforge.net/fuse.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	depends = libspectrum-git
+	depends = sdl
+	conflicts = fuse-emulator-sdl
+	conflicts = fuse-emulator
+	conflicts = fuse-emulator-sdl-git
+	source = fuse-emulator::git+https://git.code.sf.net/p/fuse-emulator/fuse
+	source = https://gitlab.com/menelkir/fuseroms/-/archive/0.2/fuseroms-0.2.tar.gz
+	source = fuse-emulator-git.desktop
+	sha512sums = SKIP
+	sha512sums = 16f0993e6237252893e4624733f6e609a02a7cd9a726976b6dbf3ef1f08b3bda36c5ebadb07ba5283326dce1f71be10ce1ef6601262aa11e1ddc94e958ab63ac
+	sha512sums = f1a3b0920092b5d55d5d021cfa16331d656114eaf0dabff065f8adc727d1642a2dce788c0fd2c7385ff843720da1a90e8b8a7d1858786d0bd882fc4462cba421
+
+pkgname = fuse-emulator-git
