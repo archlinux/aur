@@ -1,8 +1,12 @@
+# Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Stas Elensky <stas-at-flexsys-dot-com-dot-ua>
 
+_pkgname=libmodbus
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
 pkgname=mingw-w64-libmodbus
-pkgver=3.1.6
+pkgver=3.1.10
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (mingw-w64)"
 arch=('any')
@@ -11,14 +15,11 @@ license=('LGPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
-_pkgfqn="libmodbus-${pkgver}"
-source=("https://libmodbus.org/releases/libmodbus-${pkgver}.tar.gz")
-md5sums=('15c84c1f7fb49502b3efaaa668cfd25e')
-
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+source=("https://github.com/stephane/libmodbus/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('899be4e25ab7fe5799d43f9567510d6f063d2e8f56136dd726b6fd976f9b2253')
 
 prepare() {
-  cd "${srcdir}/${_pkgfqn}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   autoreconf -fiv
 }
 
@@ -27,7 +28,7 @@ build() {
   unset LDFLAGS
   export ac_cv_func_malloc_0_nonnull=yes
 
-  cd "$srcdir/$_pkgfqn"
+  cd "$srcdir/${_pkgname}-${pkgver}"
 
   # skip tests
   sed -i 's/ tests//' Makefile.am
@@ -43,7 +44,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir/$_pkgfqn/build-${_arch}"
+    cd "$srcdir/${_pkgname}-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
 
     find "$pkgdir" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
