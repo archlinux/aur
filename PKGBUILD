@@ -3,11 +3,13 @@
 _pkgname=xdelta3-cross-gui
 pkgname=$_pkgname-bin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI for creating xDelta3 patches (binary release)"
 arch=('x86_64')
 url="https://github.com/dan0v/xdelta3-cross-gui"
 license=('Apache2')
+depends=('fontconfig' 'hicolor-icon-theme')
+optdepends=('xdelta3')
 makedepends=('fuse2')
 conflicts=($_pkgname)
 provides=($_pkgname)
