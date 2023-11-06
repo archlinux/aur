@@ -6,14 +6,14 @@
 
 _locale='ko'
 pkgname=palemoon-i18n-ko
-pkgver=29.4.0
+pkgver=32.5.0
 pkgrel=1
 pkgdesc="Korean language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('52b73642f287cd1e465e1494de5a441272ec8f2eccaffbab5c6d96dd584c44a4')
+sha256sums=('ceb4771e813bc3c3d06e84c7ca6c57a35432bdb126765501a2f3ad0ce0cfe589')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
