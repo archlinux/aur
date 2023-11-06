@@ -1,6 +1,9 @@
+# Maintainer: popolon <popolon at popolon.org>
+# Contributor: Eric Mikulin 
+
 _name=osmapi
 pkgname=python-osmapi
-pkgver=1.2.2
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Python wrapper for the OSM API'
 arch=(any)
@@ -9,7 +12,7 @@ license=(GPL)
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f80749c3bf414138c82790da2179519b63d60ce7146d471ba6c651307f5b77f1')
+sha256sums=('f2a65d5ae9d4b582393f858e6d9b75f83183689a0678f85251d72bd6cb36c144')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
