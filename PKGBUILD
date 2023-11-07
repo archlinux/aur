@@ -13,7 +13,7 @@ depends=('deadbeef' 'jack')
 conflicts=($_pkgname deadbeef-jack-git)
 provides=($_pkgname)
 source=('http://sourceforge.net/projects/deadbeef/files/plugins/x86_64/jack-62d1e6a-x86_64.zip'
-        'https://github.com/DeaDBeeF-Player/jack/raw/master/COPYING')
+        'https://github.com/DeaDBeeF-Player/jack/raw/62d1e6ac0452b7baa92fcc75b59bcb960df06da8/COPYING')
 sha256sums=('68e3d94ec22f197d632a6475d6afa5c3b3ee186d901b082ff2a7a0b489ba9804'
             'e7892882e2e334c920626aede9aec9b397e55771eb1aea2a763cd02763e66412')
 
