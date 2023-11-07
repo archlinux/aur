@@ -3,7 +3,7 @@
 pkgname=python-proton-vpn-connection
 _gitpkgname=python-proton-vpn-connection
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-connection component defines the interface that VPN connection backends should implement."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-connection"
