@@ -83,7 +83,7 @@ prepare() {
   )
 
   cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir_defconfig
-  if (( _ver > 6005 )); then
+  if (( $_ver > 6005 )); then
     sed -i 's/CONFIG_MT7986_WMAC/CONFIG_MT798X_WMAC/g' ./arch/arm64/configs/bpir_defconfig
   else
     sed -i 's/CONFIG_MT798X_WMAC/CONFIG_MT7986_WMAC/g' ./arch/arm64/configs/bpir_defconfig
