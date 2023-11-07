@@ -1,4 +1,4 @@
-# Contributor: Bence Cs <bence98@sch.bme.hu>
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-template-plugin-gettext'
@@ -6,7 +6,7 @@ pkgver='1.0'
 pkgrel='1'
 pkgdesc="Gettext Support For the Template Toolkit Version 2"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('LGPL3')
 options=('!emptydirs')
 depends=('perl-locale-xgettext>=0.7' 'perl-module-build>=0.28' 'perl-template-toolkit>=0' 'perl-libintl-perl>=0')
 makedepends=()
