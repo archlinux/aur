@@ -1,6 +1,6 @@
 pkgbase = kiwiirc-git
 	pkgdesc = A hand-crafted web-based IRC client that you can enjoy
-	pkgver = 1.5.1.r427.gbeda4de6
+	pkgver = 1.7.1.r23.gbeda4de6
 	pkgrel = 1
 	url = https://kiwiirc.com/
 	install = kiwiirc.install
