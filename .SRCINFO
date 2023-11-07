@@ -1,13 +1,13 @@
 pkgbase = html-query
 	pkgdesc = jq, but for HTML
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/orf/hq
+	url = https://github.com/orf/html-query
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = html-query-1.0.1.tar.gz::https://github.com/orf/hq/archive/v1.0.1.tar.gz
-	sha512sums = e94a72d8f87274f4880cf9d539645a31e2a6d972d6b9ec02e27e28cdc41f0b9e670e3e2d0a11661fb7fe8e65e67065a30f61feb003972b2016f14780b86435ec
+	source = https://github.com/orf/html-query/archive/html-query-v1.2.0.tar.gz
+	sha512sums = 006fd4e0aafad83e997f70c46bb9630b2158ce0868652c6c2a983809ee661f7a3b476739a8fa8f8c9605ccde888ae8d51e467d86deebe7853859d8962ca67b85
 
 pkgname = html-query
