@@ -7,7 +7,7 @@ pkgbase=sensible-utils-git
 pkgname=(sensible-utils-git sensible-browser-git sensible-editor-git sensible-pager-git sensible-terminal-git sensible-utils-data-git)
 # This is the above minus the pkgbase name, for use in sensible-utils packaging function.
 _pkgname=(sensible-browser-git sensible-editor-git sensible-pager-git sensible-terminal-git sensible-utils-data-git)
-pkgver=0.0.20.r0.ce74ebf
+pkgver=0.0.21.r3.b555a8d
 _debianextra='' # Do not remove even if empty as sometimes Debian puts e.g. +1, their version of a pkgrel.
 pkgrel=1
 pkgdesc="Utilities for sensible alternative selection"
@@ -45,19 +45,9 @@ build() {
   make
 }
 
-# This trick is needed as the fork-bomb test only works if /bin/sh == /bin/dash,
-# which it isn't on Arch but is on Debian!
 check() {
   cd ${pkgbase}
-  TEMPDIR=`mktemp -d`
-  NEWPATH="$TEMPDIR:$PATH"
-  >&2 echo Made tempdir "$TEMPDIR".
-  ln -s /bin/dash "$TEMPDIR/sh"
-  sed -i -e 's@#!/bin/sh@#!/usr/bin/env sh@' ./sensible-editor
-  cat sensible-editor
-  env -i PATH="$NEWPATH" make check
-  sed -i -e 's@#!/usr/bin/env sh@#!/bin/sh@' ./sensible-editor
-  rm -rv "$TEMPDIR"
+  make check
 }
 
 _package_sensible() {
