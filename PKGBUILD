@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
 pkgver=6.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit"
 arch=("x86_64")
 url="https://cpeditor.org/"
@@ -10,8 +10,27 @@ license=("GPL3")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
-depends=('xcb-util-image' 'qt5-base' 'libxkbcommon-x11' 'xcb-util-wm' 'qt5-svg' 'xcb-util' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxext' \
-    'zlib' 'libgpg-error' 'freetype2' 'glibc' 'libx11' 'e2fsprogs' 'bash' 'fontconfig' 'libxkbcommon' 'libglvnd' 'gcc-libs' 'libxcb')
+depends=(
+    'xcb-util-image'
+    'qt5-base'
+    'libxkbcommon-x11'
+    'xcb-util-wm'
+    'qt5-svg'
+    'xcb-util'
+    'xcb-util-keysyms'
+    'xcb-util-renderutil'
+    'libxext'
+    'zlib'
+    'libgpg-error'
+    'freetype2'
+    'libx11'
+    'e2fsprogs'
+    'bash'
+    'fontconfig'
+    'libxkbcommon'
+    'libglvnd'
+    'libxcb'
+)
 optdepends=(
     'cf-tool: submit to Codeforces'
     'clang: C++ format and language server'
@@ -22,7 +41,7 @@ optdepends=(
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb")
 sha256sums=('47ce8cd065753557d04270dcd32d2bc8b737e3ce8a9a48e59017c0e0f4786a33')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|usr/share|opt|g" -i "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh"
 }
