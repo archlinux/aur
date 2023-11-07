@@ -1,21 +1,27 @@
-# Maintainer:  Clemmitt Sigler <cmsigler (dot) online (at) gmail (dot) com>
+# Maintainer:  lili1228 <lili (at) lili (dot) lgbt>
+# Contributor:  Clemmitt Sigler <cmsigler (dot) online (at) gmail (dot) com>
 
 pkgname=python-pulsectl-asyncio
 _srcname=pulsectl-asyncio
-pkgver=0.2.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Asyncio frontend for pulsectl, a Python bindings library for PulseAudio (libpulse)"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/mhthies/pulsectl-asyncio"
 license=('MIT')
-depends=('python>=3.6' 'python-pulsectl>=1:21.10.2')
+depends=('python>=3.6' 'python-pulsectl>=1:23.5.0')
 makedepends=('python-setuptools')
 source=("https://github.com/mhthies/pulsectl-asyncio/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d4a35e24d3a0e6ebc09f54de6129e61fee93e886bca30342555714003da35000')
+sha512sums=('b495295ee13d54e136cd70daaf3675239aa96faa284bd2ad0d21496821ee818f67ebbe83269a4201ea0bee99b5b2b78be3945909e1b2519078bc38c2529734bf')
+
+build() {
+  cd "${srcdir}/${_srcname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${srcdir}/${_srcname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
