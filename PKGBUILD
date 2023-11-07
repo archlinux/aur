@@ -1,4 +1,5 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer:  Hildigerr Vergaray <Maintainer@YmirSystems.com>
+# Contributer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=pipewalker
 pkgver=0.9.5
