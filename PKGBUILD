@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=axu-bin
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A cli tool to check your Arch Linux explicitly installed packages updates"
 arch=("x86_64")
@@ -14,7 +14,7 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=("axu")
-source=("$pkgname-v$pkgver-$pkgrel.tar.gz::https://github.com/tfkhdyt/axu/releases/download/v$pkgver-$pkgrel/axu-v$pkgver-$pkgrel.tar.gz")
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/tfkhdyt/axu/releases/download/v$pkgver/axu-v$pkgver.tar.gz")
 md5sums=("SKIP")
 
 build() {
