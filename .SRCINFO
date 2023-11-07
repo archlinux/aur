@@ -1,0 +1,20 @@
+pkgbase = r-rmzqc
+	pkgdesc = Creation, Reading and Validation of 'mzqc' Files
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rmzqc
+	arch = any
+	license = MIT
+	depends = r-jsonlite
+	depends = r-jsonvalidate
+	depends = r-knitr
+	depends = r-ontologyindex
+	depends = r-r6
+	depends = r-r6p
+	depends = r-rmarkdown
+	depends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rmzqc_0.5.3.tar.gz
+	md5sums = 59234a876928a14bad060c8dcb346284
+	sha256sums = afa6b742eebfaa04a4597b3679b29b7751eeddce612f5f40904b1f47fa06e470
+
+pkgname = r-rmzqc
