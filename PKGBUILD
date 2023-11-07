@@ -3,7 +3,7 @@
 
 pkgname=nwipe
 pkgver=0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods"
 arch=('i686' 'x86_64')
 url="http://www.andybev.com/index.php/Nwipe"
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('fbafa2f7b6dce31bde628399b177e99894cb8ec4c24a1c41cef2d42df7185504')
+sha256sums=('323e79a4861f96aed75369a5b9048791a8aca1e72c9d8e1c87531346cba6a7ab')
