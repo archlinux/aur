@@ -4,7 +4,7 @@
 
 pkgname=satty-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A screenshot annotation tool inspired by Swappy and Flameshot"
 url="https://github.com/gabm/satty"
 license=("MPL-2.0")
@@ -16,5 +16,7 @@ sha256sums=("5e4b959978c314d2f2adc74aee61bb1254091f9b139d7879adc8318b1c820ea3")
 
 package() {
     depends=('pango' 'glib2' 'cairo' 'libadwaita' 'gtk4' 'gdk-pixbuf2')
-    cp -r . "$pkgdir"
+    
+    mkdir -p "$pkgdir/usr/"
+    cp -r . "$pkgdir/usr/"
 }
