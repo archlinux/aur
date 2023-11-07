@@ -1,11 +1,11 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu
-pkgver=2310
+pkgver=2311
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
-arch=(aarch64 x86_64)
+arch=(aarch64)
 license=(MIT)
 makedepends=(git cmake ninja clang llvm python-setuptools)
 depends=(sdl2 libepoxy squashfs-tools squashfuse erofs-utils)
@@ -92,11 +92,6 @@ build() {
   elif command -V ld.lld &>/dev/null
   then
     FEX_OPTIONS+=(-D ENABLE_LLD=True)
-  fi
-
-  if [ $CARCH = x86_64 ]
-  then
-    FEX_OPTIONS+=(-D ENABLE_X86_HOST_DEBUG=True)
   fi
 
   CC=clang \
