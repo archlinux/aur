@@ -1,8 +1,4 @@
-vlc/
-pkg/
-src/
-logs/
-*.tar
-*.xz
-*.log
-*.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

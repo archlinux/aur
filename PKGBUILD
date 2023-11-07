@@ -1,4 +1,6 @@
-# Maintainer: Andrew Crerar <crerar@archlinux.org>
+# Maintainer:
+# Contributor: Oliver Braunschweig <olt78 at web dot de>
+# Contributor: Andrew Crerar <crerar@archlinux.org>
 # Contributor: Rob McCathie <korrode at gmail>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
@@ -8,11 +10,12 @@
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
-pkgname=vlc-git
-pkgver=4.0.0.r20473.g3a08825c8a
+_pkgname="vlc"
+pkgname="$_pkgname-git"
+pkgver=4.0.0.r26405.gd6ffd5bc35
 pkgrel=1
-pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
-url='https://www.videolan.org/vlc/'
+pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
+url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52'
@@ -33,13 +36,13 @@ makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
              'lirc' 'libgoom2' 'projectm' 'git' 'aom' 'srt'
              'vulkan-headers' 'dav1d' 'flex' 'bison' 'xosd' 'aribb25' 'pcsclite'
-             'libebur128')
+             'libebur128' 'autoconf' 'automake')
 optdepends=('avahi: service discovery using bonjour protocol'
             'gst-plugins-base-libs: for libgst plugins'
             'libdvdcss: decoding encrypted DVDs'
             'libavc1394: devices using the 1394ta AV/C'
             'libdc1394: IEEE 1394 access plugin'
-            'kwallet: kwallet keystore'
+            'kwallet5: kwallet keystore'
             'libva-vdpau-driver: vdpau backend nvidia'
             'libva-intel-driver: video backend intel'
             'libbluray: Blu-Ray video input'
@@ -98,10 +101,10 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'dav1d: dav1d AV1 decoder')
 
 _name=vlc
-conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
+conflicts=("${_name}")
 provides=("${_name}=${pkgver}")
-options=(debug !emptydirs)
-source=('git+https://github.com/videolan/vlc.git'
+options=(!emptydirs)
+source=('git+https://code.videolan.org/videolan/vlc.git'
         'vlc-live-media-2021.patch'
         'update-vlc-plugin-cache.hook')
 b2sums=('SKIP'
@@ -132,6 +135,7 @@ build() {
   export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++11"
+  export MPG123_CFLAGS+=" -DMPG123_NO_LARGENAME"
 
   # upstream doesn't support lua 5.4 yet: https://trac.videolan.org/vlc/ticket/25036
   export LUAC=/usr/bin/luac5.2
@@ -235,7 +239,8 @@ build() {
               --enable-aribcam \
               --enable-aom \
               --enable-srt \
-              --enable-dav1d
+              --enable-dav1d \
+              --disable-decklink
 
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
