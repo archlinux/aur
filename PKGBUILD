@@ -1,8 +1,8 @@
 # Maintainer: douglarek
 
 pkgname=yuki-iptv-bin
-pkgver=0.0.7
-pkgrel=2
+pkgver=0.0.8
+pkgrel=1
 pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
@@ -12,7 +12,7 @@ optdepends=('yt-dlp: YouTube channel support')
 provides=('yuki-iptv')
 conflicts=('yuki-iptv')
 source=("yuki-iptv_${pkgver}_all.deb::$url/releases/download/$pkgver/yuki-iptv_${pkgver}_all.deb")
-sha512sums=('e39f6a740da1c8bba7aa1631c75c1f71ddc1564fc46c26ab6fd3629be5cb89578e535f85d22d586806c91240886f556c0c048c3a46d0b0d65c23db5da58baad8')
+sha512sums=('5cd9686b78a3dabfd4149d50df7250b7f619457b09ae2389ae23bca01cb4c65ba41b1e7fd1af38b0c5d136375caa763bfcbe99a983ed0d940fbb12b638fa6a53')
 
 package() {
         bsdtar -xf data.tar.xz -C "${pkgdir}"
