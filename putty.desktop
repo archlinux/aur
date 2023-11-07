@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=PuTTY
+GenericName=SSH/Telnet/Serial Client
+Exec=putty %u
+Terminal=false
+Icon=putty
+Type=Application
+Categories=Application;Network;Remote
+Comment=A highly configurable ssh/telnet/serial console program
