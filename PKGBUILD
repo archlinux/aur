@@ -2,7 +2,7 @@
 
 pkgname=tpi
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to control a Turing-Pi board'
 url=https://turingpi.com/
 license=('Apache')
@@ -27,3 +27,4 @@ check() {
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/tpi-1.0.2/target/release/tpi"
 }
+md5sums=('13a58a52b95264f1d2f32daa911c3493')
