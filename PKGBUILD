@@ -2,7 +2,7 @@
 
 pkgname=msdfgen-git
 pkgdesc="Multi-channel signed distance field generator"
-pkgver=1.10.r14.gbd5f145
+pkgver=1.10.r15.g0eaeb51
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/Chlumsky/msdfgen
