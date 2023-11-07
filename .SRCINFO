@@ -1,7 +1,7 @@
 pkgbase = pipewalker
 	pkgdesc = Pieces of a computer network are to be turned, to make all computers connected to the same network
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pipewalker.sourceforge.net/
 	install = pipewalker.install
 	arch = i686
