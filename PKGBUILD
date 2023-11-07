@@ -1,47 +1,50 @@
-# Maintainer: gls <ghostlovescorebg at gmail dot com>
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dancer'
-pkgver='1.3400'
+pkgver='1.3521'
 pkgrel='1'
-pkgdesc="A minimal-effort oriented web application framework"
+pkgdesc="lightweight yet powerful web application framework"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-module-runtime' 'perl-http-body>=1.07' 'perl-http-server-simple-psgi>=0.11' 'perl-libwww' 'perl-mime-types' 'perl-try-tiny>=0.09' 'perl-uri>=1.59' 'perl-xml-libxml' 'perl-hash-merge-simple')
+depends=('perl-data-dump>=0' 'perl-devel-hide>=0' 'perl-http-body>=0' 'perl-http-cookiejar>=0.008' 'perl-http-date>=0' 'perl-http-message>=0' 'perl-http-server-simple-psgi>=0' 'perl-hash-merge-simple>=0' 'perl-json>=2.90' 'perl-mime-types>=0' 'perl-module-runtime>=0' 'perl-plack>=0' 'perl-try-tiny>=0' 'perl-uri>=0' 'perl>=5.006')
 makedepends=()
-optdepends=('perl-yaml: YAML configuration files'
-  	    'perl-template-toolkit: Template Toolkit rendering')
-url='http://search.cpan.org/dist/Dancer'
-source=("http://search.cpan.org/CPAN/authors/id/B/BI/BIGPRESH/Dancer-${pkgver}.tar.gz")
-md5sums=('63767e3afc4ee268d78da01345cf79c1')
-_dist='Dancer'
+checkdepends=('perl-test-longstring>=0' 'perl-test-nowarnings>=0')
+url='https://metacpan.org/release/Dancer'
+source=('http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/Dancer-1.3521.tar.gz')
+md5sums=('4df0f801ceaee7d4bebd9f2e3af85b39')
+sha512sums=('e6f8ddfd3ee5049821843ceda418bcc89cb976bb75ec21eff0879c612106484c035db536340efee2e00adde4f31d5de556d16ae5423924d4ca49129baac68707')
+_distdir="Dancer-1.3521"
 
 build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-	cd "${srcdir}/${_dist}-${pkgver}"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-	/usr/bin/perl Makefile.PL
-	make
-
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
 }
 
 check() {
-
-	cd "${srcdir}/${_dist}-${pkgver}"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1
-	make test
-
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
 }
 
 package() {
-
-	cd "${srcdir}/${_dist}-${pkgver}"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  cd "$srcdir/$_distdir"
+  make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-
 }
 
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
 # vim:set ts=2 sw=2 et:
