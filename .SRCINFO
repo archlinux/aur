@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-c++utilities
 	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)
 	pkgver = 5.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martchus/cpp-utilities
 	arch = any
 	license = GPL
