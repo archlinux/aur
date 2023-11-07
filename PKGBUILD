@@ -3,7 +3,7 @@
 # Maintainer: seth <getchoo at tuta dot io>
 
 pkgname=prismlauncher-qt5-bin
-pkgver=7.2
+pkgver=8.0
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
@@ -18,12 +18,12 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
             'java-runtime=8: support for Minecraft versions < 1.17'
 )
-source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-Linux-${pkgver}.tar.gz")
+source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-Linux-Qt5-${pkgver}.tar.gz")
 noextract=("PrismLauncher-Linux-${pkgver}.tar.gz")
-sha256sums=('6faffe40f978c65cf2f7806393e5563eaf299fd0e963b783f861e5b9087486b1')
+sha256sums=('04629c26695fbdece99f9fb342ea34e111dedeef9b91ea6c477eaf50024aa5d1')
 
 package() {
     install -d "${pkgdir}/usr"
-    tar -C "${pkgdir}/usr" -xvf PrismLauncher-Linux-${pkgver}.tar.gz
+    tar -C "${pkgdir}/usr" -xvf PrismLauncher-Linux-Qt5-${pkgver}.tar.gz
     chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
 }
