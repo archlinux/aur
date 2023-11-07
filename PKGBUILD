@@ -1,6 +1,6 @@
 # Maintainer: Lennart Braun <lenerd@posteo.de>
 pkgname=onnx
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="C++ library for the open standard for machine learning interoperability"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'protobuf')
 makedepends=('cmake' 'git' 'python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=("9aed36489f0bbe0a96f2a7d3f44b70d228a7ec1239f5ba2b16f4b2c9ffa8fb1ddddba06b1b5e6d279d12f8d55eaeece6654da0c60220bf813e99df74e33a33eb")
+b2sums=("4d35b82c128a69124b9bfcb3e56b3d584b7451ae739a91039e201dd485efa3e90e34e6cf135993317622f8f524160a38556231b2b0561e93d8cd0487abf35c1b")
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -20,6 +20,7 @@ prepare() {
     export LDFLAGS
     export MAKEFLAGS
     cmake \
+        -DCMAKE_CXX_STANDARD=17 \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DONNX_BUILD_TESTS=On \
