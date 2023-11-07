@@ -2,7 +2,7 @@
 # Contributor: Sergey Moryakov <sergey@nqnet.org>
 
 pkgname=homed-automation
-pkgver=1.2.0
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="HOMEd Automation is simple service for home automations"
 arch=("armv7h" "i686" "x86_64")
