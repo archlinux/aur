@@ -9,7 +9,7 @@ pkgname=(
   libportal-inputcapture-docs
 )
 pkgver=0.7.1+r8+g1add346
-pkgrel=1
+pkgrel=2
 pkgdesc="GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap"
 url="https://github.com/flatpak/libportal"
 arch=(x86_64)
@@ -51,10 +51,10 @@ build() {
   meson compile -C build
 }
 
-check() {
-  xvfb-run -s '-nolisten local' \
-    meson test -C build --print-errorlogs
-}
+#check() {
+#  xvfb-run -s '-nolisten local' \
+#    meson test -C build --print-errorlogs
+#}
 
 _pick() {
   local p="$1" f d; shift

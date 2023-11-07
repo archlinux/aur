@@ -1,7 +1,7 @@
 pkgbase = libportal-inputcapture
 	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap
 	pkgver = 0.7.1+r8+g1add346
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flatpak/libportal
 	arch = x86_64
 	license = LGPL3
