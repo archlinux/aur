@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojolicious-plugin-oauth2'
-pkgver='1.1'
+pkgver='2.02'
 pkgrel='1'
-pkgdesc="Auth against OAuth2 APIs"
+pkgdesc="Auth against OAuth2 APIs including OpenID Connect"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic2.0')
 options=('!emptydirs')
-depends=('perl-io-socket-ssl' 'perl-mojolicious>=1.64')
+depends=('perl-io-socket-ssl>=1.94' 'perl-mojolicious>=8.25')
 makedepends=()
-url='http://search.mcpan.org/dist/Mojolicious-Plugin-OAuth2'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MR/MRAMBERG/Mojolicious-Plugin-OAuth2-1.1.tar.gz')
-md5sums=('c90240559d8286c52fc154f494d94637')
-sha512sums=('db0d52a24fc3f7682332725667bfc422ce924fac25ac116d5117109a755228d93b8038cb754bd2bec9983871254947290fd02107093c7900658f4665fd1fd7bf')
-_distdir="Mojolicious-Plugin-OAuth2-1.1"
+url='https://metacpan.org/release/Mojolicious-Plugin-OAuth2'
+source=('http://search.cpan.org/CPAN/authors/id/J/JH/JHTHORSEN/Mojolicious-Plugin-OAuth2-2.02.tar.gz')
+md5sums=('c0fbee8169c8ce50081d977ad8d0936f')
+sha512sums=('a3d24170508b70bc369d7434a4bd6cf6141c12a1c805b78e640fa66bbc266c480d4ab96084e99fed223e7889fc55a11022809642c165c4e63095239cc83d1c26')
+_distdir="Mojolicious-Plugin-OAuth2-2.02"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
