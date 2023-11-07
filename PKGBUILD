@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -23,11 +23,12 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "$srcdir/${pkgname}"
-    git config --file=.gitmodules submodule.cmake/qt-android-cmake.url "$srcdir/qt-android-cmake"
-    git config --file=.gitmodules submodule.cmake/cotire.url "$srcdir/cotire"
-    git config --file=.gitmodules submodule.tests/src/vendor/catch.url "$srcdir/Catch2"
-    git config --file=.gitmodules submodule.lib/vendor/lexbor.url "$srcdir/lexbor"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.cmake/qt-android-cmake.url "$srcdir/qt-android-cmake"
+    git config submodule.cmake/cotire.url "$srcdir/cotire"
+    git config submodule.tests/src/vendor/catch.url "$srcdir/Catch2"
+    git config submodule.lib/vendor/lexbor.url "$srcdir/lexbor"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
