@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier-git
-pkgver=V2023.7.0.beta1.r18.gb526da8
+pkgver=2023.9.0.r12.g7a3a107
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
@@ -11,8 +11,8 @@ depends=(cava 'dotnet-runtime>=7' libadwaita iniparser fftw)
 makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url)
-b2sums=('SKIP')
+source=("git+$url" "git+${url%cavalier}cakescripts#commit=c7e3bbbb807bdade8c89e5a3ad057b00fac2102e")
+b2sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd ${pkgname%-git}
@@ -20,6 +20,8 @@ pkgver() {
 }
 
 prepare() {
+	rm -rf cavalier/CakeScripts
+	mv cakescripts cavalier/CakeScripts
 	cd ${pkgname%-git}
 	dotnet tool restore
 }

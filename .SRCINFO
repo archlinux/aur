@@ -1,6 +1,6 @@
 pkgbase = cavalier-git
 	pkgdesc = Audio visualizer based on CAVA
-	pkgver = V2023.7.0.beta1.r18.gb526da8
+	pkgver = 2023.9.0.r12.g7a3a107
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/cavalier
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = cavalier-git
 	provides = cavalier
 	conflicts = cavalier
 	source = git+https://github.com/NickvisionApps/cavalier
+	source = git+https://github.com/NickvisionApps/cakescripts#commit=c7e3bbbb807bdade8c89e5a3ad057b00fac2102e
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = cavalier-git
