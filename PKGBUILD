@@ -1,7 +1,7 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 
 pkgname=gnome-shell-extension-kimpanel-git
-pkgver=20230827
+pkgver=20230922
 pkgrel=1
 pkgdesc="KDE's kimpanel implementation for GNOME Shell, now support fcitx"
 arch=("i686" "x86_64")
