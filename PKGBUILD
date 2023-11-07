@@ -2,19 +2,19 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.118.22
+pkgver=3.118.25
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
-url="https://tutanota.com"
+url="https://tuta.com"
 license=('GPL3')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'nss')
 #makedepends=('node-gyp>=9.0.0' 'nodejs>=16.16.0' 'npm>=8.0.0')
 makedepends=('git' 'nvm' 'python')
 source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('cee1fe6cb5f0bc6df7ed9c440cc840ce56ea34e66787d561d8a9112d5d5958ef'
-            '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
+sha256sums=('b5c0281c1b1956f276c5fe3e991db7e4d7aeb1bb57d126c8482aeb28c6793589'
+            '669bff831e12ff91e62eef1b0dbad7e9458b255d90eee456b6d2a50f149d819b')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
