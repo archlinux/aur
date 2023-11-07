@@ -1,14 +1,14 @@
 pkgbase = kyma-bin
 	pkgdesc = Provides a set of commands you can use to install, manage, and test Kyma.
-	pkgver = 2.16.0
+	pkgver = 2.19.3
 	pkgrel = 1
 	url = https://github.com/kyma-project/cli
 	arch = x86_64
 	license = Apache
-	provides = kyma=2.16.0
+	provides = kyma=2.19.3
 	provides = kyma-cli
 	conflicts = kyma
-	source = kyma-bin-2.16.0.tar.gz::https://github.com/kyma-project/cli/releases/download/2.16.0/kyma_Linux_x86_64.tar.gz
-	sha256sums = 637daf788a6b589a762718a9e448ba7906d14b254e622e5de2c8a02dfc93750c
+	source = kyma-bin-2.19.3.tar.gz::https://github.com/kyma-project/cli/releases/download/2.19.3/kyma_Linux_x86_64.tar.gz
+	sha256sums = 125aa3e7f366d55377f1e652ce214053bda5b00adfe0e97b4de3d85a3386849d
 
 pkgname = kyma-bin
