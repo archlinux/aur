@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=23.11.70.r7074.4f649e0a5
+pkgver=23.11.70.r7083.da26a707b
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ depends=(
   'kcmutils5' # libKF5KCMUtils.so
   'kwidgetsaddons5' # libKF5WidgetsAddons.so
   'libkcddb' # libKF5Cddb.so
-  'solid' # libKF5Solid.so
+  'solid5' # libKF5Solid.so
   'taglib' # libtag.so
   'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
   'flac' 'libFLAC++.so'
