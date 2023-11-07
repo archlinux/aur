@@ -1,16 +1,16 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio
 _pkgname=FamiStudio
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
 arch=(x86_64)
 url="https://famistudio.org/"
 license=('MIT')
 groups=()
-depends=(dotnet-sdk openal libcanberra rtmidi libvorbis ffmpeg)
-makedepends=()
+depends=(dotnet-runtime openal libcanberra rtmidi libvorbis ffmpeg glfw-x11)
+makedepends=(dotnet-sdk)
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,10 +24,10 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/refs/tags/${pkgver}.tar
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('ce36fd62c2109e02a6d24114a5612d8b'
+md5sums=('3e16490aad328bb0c337429d17371bb9'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('b0cd187b3b83c771ce485b6430bdaf447478bd2ccb728d25638cddd1c0d1078a'
+sha256sums=('b0bc0de4d5cac18a623f77ceeb55c1c132aababba1f9bc5abbb762fd01d54fde'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
