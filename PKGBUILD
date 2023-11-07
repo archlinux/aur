@@ -3,7 +3,7 @@
 pkgname=proton-vpn-gtk-app
 _gitpkgname=proton-vpn-gtk-app
 pkgver=4.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -30,7 +30,6 @@ depends=("python-proton-core"
 		 "python-requests"
 		 "python-pynacl"
 		 "python-pyopenssl"
-		 "python-psutil"
 		 "webkit2gtk"
 		 "dbus-python"
 		 "gtk3")

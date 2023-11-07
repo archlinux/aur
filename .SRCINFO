@@ -1,7 +1,7 @@
 pkgbase = proton-vpn-gtk-app
 	pkgdesc = ProtonVPN GTK app, Maintained by Community
 	pkgver = 4.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ProtonVPN/proton-vpn-gtk-app
 	arch = any
 	groups = ProtonVPN
@@ -28,7 +28,6 @@ pkgbase = proton-vpn-gtk-app
 	depends = python-requests
 	depends = python-pynacl
 	depends = python-pyopenssl
-	depends = python-psutil
 	depends = webkit2gtk
 	depends = dbus-python
 	depends = gtk3
