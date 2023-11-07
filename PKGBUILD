@@ -3,20 +3,20 @@
 # Contributor: Alex Talker
 
 pkgname=okular-git
-pkgver=21.07.70_r9334.g195bbe363
+pkgver=23.11.70_r10319.gda7c7ee95
 pkgrel=1
 pkgdesc='Document Viewer'
 arch=($CARCH)
 url="https://kde.org/applications/graphics/okular/"
 license=(GPL LGPL FDL)
 groups=(kde-applications-git kde-graphics-git)
-depends=(djvulibre libspectre libkexiv2-git poppler-qt5 kpty-git kactivities-git threadweaver-git kjs-git kparts-git purpose-git discount phonon-qt5-git)
-makedepends=(git extra-cmake-modules-git ebook-tools kdegraphics-mobipocket-git kdoctools-git khtml-git chmlib)
+depends=(djvulibre libspectre libkexiv2 poppler-qt5 kpty5 kactivities5 threadweaver5 kjs kparts5 purpose5 discount phonon-qt5)
+makedepends=(git extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools5 khtml chmlib)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('ebook-tools: mobi and epub support'
-            'kdegraphics-mobipocket-git: mobi support' 'libzip: CHM support'
-            'khtml-git: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
+            'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
+            'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
             'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
