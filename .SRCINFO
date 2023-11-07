@@ -1,6 +1,6 @@
 pkgbase = r-celda
 	pkgdesc = CEllular Latent Dirichlet Allocation
-	pkgver = 1.17.0
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/celda
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = r-celda
 	optdepends = r-singlecelltk
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/celda_1.17.0.tar.gz
-	sha256sums = 58c4ab847d0ac8e061fa6f2abc5aed63ee380c2cf46850d0989165ac0af93853
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/celda_1.18.1.tar.gz
+	sha256sums = b73d43d5d1817ceabb91d14251e97fe2bfef05aff54b68b9741234eed2ed78f3
 
 pkgname = r-celda
