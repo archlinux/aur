@@ -1,6 +1,6 @@
 pkgbase = python-rpp
 	pkgdesc = Read and write Reaper RPP files with Python
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/Perlence/rpp
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-rpp
 	depends = python
 	depends = python-attrs
 	depends = python-ply
-	source = python-rpp::git+https://github.com/Perlence/rpp#commit=a53222364f51469572fd9b008d0d24fe23cca957
+	source = python-rpp::git+https://github.com/Perlence/rpp#commit=6ea00bb6db76724d3521748b3effa7260f1ebf8e
 	b2sums = SKIP
 
 pkgname = python-rpp
