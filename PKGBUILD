@@ -2,7 +2,7 @@
 
 pkgname=footage
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Polish your videos"
 url="https://gitlab.com/adhami3310/Footage"
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,8 @@ source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
+  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson Footage build
   meson compile -C build
 }

@@ -1,7 +1,7 @@
 pkgbase = footage
 	pkgdesc = Polish your videos
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/adhami3310/Footage
 	arch = x86_64
 	arch = aarch64
