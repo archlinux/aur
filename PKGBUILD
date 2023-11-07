@@ -2,7 +2,7 @@
 # Contributor: Sergey Moryakov <sergey@nqnet.org>
 
 pkgname=homed-web
-pkgver=1.2.0
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="HOMEd Web is web interface for all HOMEd services"
 arch=("armv7h" "i686" "x86_64")
