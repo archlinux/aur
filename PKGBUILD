@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1606.r0.ga0398cf
+pkgver=1613.r0.g4a1c108
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -127,35 +127,41 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
+    git submodule init
     for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad}; 
     do
-        git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
+        git config submodule.$submodule.url "$srcdir/${submodule}"
     done
 
-    git -c protocol.file.allow=always submodule update --init
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_pkgname"/externals/cubeb
 
-    git config --file=.gitmodules submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-    git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+    git config submodule.googletest.url "$srcdir/googletest"
+    git -c protocol.file.allow=always submodule update
     
     cd "$srcdir/$_pkgname"/externals/sirit
-    
-    git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
-    git -c protocol.file.allow=always submodule update --init
+
+    git submodule init
+    git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_pkgname/externals/libadrenotools"
-    git config --file=.gitmodules submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_pkgname/externals/nx_tzdb/tzdb_to_nx/"
-    git config --file=.gitmodules submodule.externals/tz/tz.url "$srcdir/tz"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.externals/tz/tz.url "$srcdir/tz"
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_pkgname/externals/dynarmic/externals/zydis"
-    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore-c"
-    git -c protcol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.dependencies/zycore.url "$srcdir/zycore-c"
+    git -c protcol.file.allow=always submodule update
 }
 
 build() {
