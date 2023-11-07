@@ -1,6 +1,6 @@
 pkgbase = clvk-git
 	pkgdesc = Experimental implementation of OpenCL 3.0 on Vulkan
-	pkgver = r612.1b3b025
+	pkgver = r617.a4e685c
 	pkgrel = 1
 	url = https://github.com/kpet/clvk
 	install = clvk-git.install

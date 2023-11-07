@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=clvk
 pkgname=clvk-git
-pkgver=r612.1b3b025
+pkgver=r617.a4e685c
 pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
@@ -34,11 +34,12 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_pkgname"
+	git submodule init
 	for module in {opencl-headers,spirv-headers,spirv-llvm-translator,spirv-tools};
 	do
-		git config --file=.gitmodules submodule.$module.url "$srcdir/$module"
+		git config submodule.$module.url "$srcdir/$module"
 	done
-	git -c protocol.file.allow=always submodule update --init
+	git -c protocol.file.allow=always submodule update
 
 	cd "$srcdir/$_pkgname/external/clspv/utils"
 	python fetch_sources.py
