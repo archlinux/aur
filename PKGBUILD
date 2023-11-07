@@ -2,7 +2,7 @@
 
 pkgname=iptvnator
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more"
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
@@ -35,6 +35,8 @@ sha256sums=('a4e44d63951dba8594907e6d94629901181d62176b3373f6c957b2e6e0d2631b')
 
 prepare() {
 	cd $pkgname-$pkgver
+	# Fix for '.git can't be found' error
+	mkdir -p .git
 	# Insert 'electron:build:pacman' build option
 	sed '40a\        \"electron:build:pacman\": \"npm run build:prod && electron-builder build -l pacman\",' -i package.json
 	# Install all dependencies
