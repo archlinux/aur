@@ -1,6 +1,6 @@
 pkgbase = perl-log-dispatch
 	pkgdesc = Dispatches messages to one or more outputs
-	pkgver = 2.70
+	pkgver = 2.71
 	pkgrel = 1
 	url = https://metacpan.org/release/Log-Dispatch
 	arch = any
@@ -8,20 +8,17 @@ pkgbase = perl-log-dispatch
 	license = GPL
 	checkdepends = perl-test-fatal
 	checkdepends = perl-test-needs
-	checkdepends = perl-specio
-	checkdepends = perl-namespace-autoclean
-	checkdepends = perl-eval-closure
-	checkdepends = perl-params-validationcompiler
+	depends = perl>=5.006
 	depends = perl-devel-globaldestruction
 	depends = perl-dist-checkconflicts>=0.02
 	depends = perl-ipc-run3
 	depends = perl-module-runtime
-	depends = perl-params-validate>=1.03
-	depends = perl>=5.006
+	depends = perl-namespace-autoclean
+	depends = perl-params-validationcompiler
+	depends = perl-specio>=0.32
+	depends = perl-try-tiny
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Log-Dispatch-2.70.tar.gz
-	md5sums = 3369ffd45dc098ef6c74622ceee7ad74
-	sha512sums = c4c8cfb9e74b3176d5f95e3f9fbc86303321caa3e608a7ec318786ecd80d2238fd06a3b74ded65d5d3fab5c3a1297f99c92c62b1136b27d3b5396fd3fca602f6
+	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Log-Dispatch-2.71.tar.gz
+	sha256sums = 9d60d9648c35ce2754731eb4deb7f05809ece1bd633b74d74795aed9ec732570
 
 pkgname = perl-log-dispatch
-
