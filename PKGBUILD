@@ -7,9 +7,9 @@
 
 pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
-pkgver=11.1.0.11704
+pkgver=11.1.0.11708
 #_pkgver=8372
-pkgrel=2
+pkgrel=1
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) - an office productivity suite"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkg
         'fix-wps-python-parse.patch')
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('e9c7bec0558cb820500c73875602928a84cb6ad3'
+sha1sums=('4519293070a131575051733b95c9b2440062d8d7'
           'f3713481edf04ffb08be8d24dce66554dd5a4f13')
 
 prepare() {
