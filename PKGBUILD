@@ -2,7 +2,7 @@
 
 _pkgname=deadbeef-plugin-jack
 pkgname=$_pkgname-bin
-pkgver=20200322+62d1e6a
+pkgver=2020_03_22.62d1e6a
 pkgrel=1
 pkgdesc='JACK output plugin for DeaDBeeF music player (binary release)'
 url="https://github.com/DeaDBeeF-Player/jack"
