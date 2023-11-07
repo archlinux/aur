@@ -1,7 +1,7 @@
 # Maintainer: Szymon Niedzwiedz <git at hardcoded dot info>
 
 pkgname=proxydev
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Creates evdev proxy device for QEMU"
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=('proxydev')
 url="https://hardcoded.info/project/proxydev"
 license=('GPL3')
 requires=('libevdev', 'systemd-libs')
-source=("git+https://gitlab.com/b1gbear/proxydev.git#tag=081a22a58f83bd49a40f8c18c777bc26aba3b80e")
+source=("git+https://gitlab.com/b1gbear/proxydev.git#tag=9e4a4a2b000e1f7d319d09874835718513afae9e")
 sha256sums=('SKIP')
 
 build() {
