@@ -1,4 +1,4 @@
-# Contributor: Anonymous
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-auth-googleauth'
@@ -6,7 +6,7 @@ pkgver='1.04'
 pkgrel='1'
 pkgdesc="Google Authenticator TBOT Abstraction"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic2.0')
 options=('!emptydirs')
 depends=('perl-class-accessor>=0' 'perl-convert-base32>=0' 'perl-digest-hmac>=0' 'perl-math-random-mt>=0' 'perl-uri>=0' 'perl>=5.008')
 makedepends=()
