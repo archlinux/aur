@@ -1,9 +1,5 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
-# Contributor: Kent Fredric <kentnl@cpan.org>
-# Contributor: Petrenko Alexey <alexey-p at uralweb dot ru>
-
 pkgname=perl-devel-nytprof
-pkgver=6.11
+pkgver=6.14
 pkgrel=1
 _author='J/JK/JKEENAN'
 _perlmod='Devel-NYTProf'
@@ -31,7 +27,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('bb1eb2065a785257e03eba2f01ab27af14ba3fa750c5fd0aa7a6b97a464ac5ee')
+sha256sums=('ac24dd7da5b2247696becefc15ca935484367743aad44cb2c8cfa17a29ad8e03')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
