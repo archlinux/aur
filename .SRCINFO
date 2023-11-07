@@ -1,12 +1,10 @@
 pkgbase = dhivehi_fonts
 	pkgdesc = Dhivehi fonts for arch ttf, otf
-	pkgver = 1.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/Alix35301/dhivehi_fonts/raw/master/archive/archive/Dhivehi_fonts.tar.xz
 	arch = any
 	license = (MIT)
 	source = Dhivehi_fonts.tar.xz::https://github.com/Alix35301/dhivehi_fonts/raw/master/Dhivehi_fonts.tar.xz
-	md5sums = 873fce3ced364e45978f9937a61fa5d2
-
-pkgname = dhivehi_fonts
+	pkgname = dhivehi_fonts
 
