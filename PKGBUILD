@@ -2,7 +2,7 @@
 # Contributor: Paul <paul@mram.io>
 pkgname=mcpelauncher-msa-ui-qt-git
 pkgver=0.9.0.r0.ge335369
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Account authentication user interface (Qt) for the mcpelauncher-msa-daemon"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/msa-manifest"
@@ -48,11 +48,12 @@ pkgver() {
 }
 prepare() {
   cd "$srcdir/msa-manifest"
+  git submodule init
   for submodule in {logger,base64,file-util,arg-parser,rapidxml,simple-ipc,daemon-utils,msa,msa-daemon,msa-daemon-client,msa-ui-gtk,msa-ui-qt};
   do
-  git config --file=.gitmodules submodule.$submodule.url "$srcdir/$submodule"
+  git config submodule.$submodule.url "$srcdir/$submodule"
   done
-  git -c protocol.file.allow=always submodule update --init
+  git -c protocol.file.allow=always submodule update
 }
 build() {
   cd "$srcdir"
