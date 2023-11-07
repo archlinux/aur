@@ -1,7 +1,7 @@
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 pkgname=lxterminal-git
 pkgver=0.4.0.r31.g9b4299c
-pkgrel=1
+pkgrel=2
 pkgdesc="VTE-based terminal emulator (part of LXDE)"
 arch=('i686' 'x86_64')
 url="http://lxde.org/"

@@ -1,7 +1,7 @@
 pkgbase = lxterminal-git
 	pkgdesc = VTE-based terminal emulator (part of LXDE)
 	pkgver = 0.4.0.r31.g9b4299c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lxde.org/
 	arch = i686
 	arch = x86_64
