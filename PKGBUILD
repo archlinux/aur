@@ -8,10 +8,11 @@ arch=('x86_64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('GPL')
 depends=('ccid' 'zenity')
+conflicts=('yubico-authenticator')
 options=(!strip)
 optdepends=('gnome-screenshot: QR scanning feature on GNOME'
             'spectacle: QR scanning feature on KDE')
-pkgrel=1
+pkgrel=2
 source=(
     "${url}/releases/download/${pkgver}/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
@@ -33,8 +34,16 @@ prepare() {
 }
 
 package() {
+    # Install the application files
     mkdir -p "$pkgdir/opt/yubico-authenticator"
     ls -1 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux | grep -v "linux_support\|desktop_integration.sh\|README.adoc" | xargs -I{} cp -r "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/{} "$pkgdir/opt/yubico-authenticator"
+
+    # Install the desktop file
     install -Dm644 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop "${pkgdir}"/usr/share/applications/com.yubico.authenticator.desktop
+    # Install the icon
     install -Dm644 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.png "${pkgdir}"/usr/share/pixmaps/com.yubico.yubioath.png
+
+    # Create the symlink directory
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s /opt/yubico-authenticator/authenticator "${pkgdir}/usr/bin/yubico-authenticator"
 }

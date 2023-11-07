@@ -1,7 +1,7 @@
 pkgbase = yubico-authenticator-bin
 	pkgdesc = Yubico Authenticator 6 is a cross-platform application for managing your YubiKey's second factor credentials.Yubico Authenticator 6 is a complete rewrite of the application using the Flutter framework.
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = yubico-authenticator-bin
 	depends = zenity
 	optdepends = gnome-screenshot: QR scanning feature on GNOME
 	optdepends = spectacle: QR scanning feature on KDE
+	conflicts = yubico-authenticator
 	options = !strip
 	source = https://github.com/Yubico/yubioath-flutter/releases/download/6.3.0/yubico-authenticator-6.3.0-linux.tar.gz
 	source = https://github.com/Yubico/yubioath-flutter/releases/download/6.3.0/yubico-authenticator-6.3.0-linux.tar.gz.sig
