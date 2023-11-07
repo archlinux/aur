@@ -3,14 +3,14 @@
 _pkggit=lima
 
 pkgname=lima-bin
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Linux virtual machines, typically on macOS, for running containerd."
 arch=('x86_64')
 url="https://github.com/lima-vm/lima"
 license=('MIT')
 source=("https://github.com/lima-vm/${_pkggit}/releases/download/v${pkgver}/${_pkggit}-${pkgver}-Linux-x86_64.tar.gz")
-sha256sums=('a9af3aec848ed7bc490baff2f1d785334cbbc6cd94f981705cc0aeab833288b0')
+sha256sums=('efd100c65173d0dff885e61778fa61737a609fc543d8260b491c8090c000bd3b')
 
 package() {
   cp -r "${srcdir}" "${pkgdir}"/usr
