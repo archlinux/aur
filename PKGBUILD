@@ -3,13 +3,12 @@
 pkgname=python-proton-core
 _gitpkgname=python-proton-core
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-core component contains core logic used by the other Proton components."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-core"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-psutil")
 makedepends=("python-setuptools")
 source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
