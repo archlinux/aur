@@ -1,8 +1,9 @@
 pkgbase = tailspin
 	pkgdesc = tailspin - A log file highlighter
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bensadeh/tailspin
+	install = tailspin.install
 	arch = i686
 	arch = pentium4
 	arch = x86_64

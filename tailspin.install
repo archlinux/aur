@@ -1,0 +1,6 @@
+post_upgrade() {
+  version=$(echo "$1" | cut -d '-' -f 1)
+  if [ "$version" = "2.0.0" ]; then
+    echo "📣 From version 2.0.0, tailspin binary has been renamed from 'spin' to 'tspin'."
+  fi
+}
