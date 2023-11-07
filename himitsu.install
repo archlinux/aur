@@ -1,0 +1,16 @@
+post_upgrade() {
+	newpkgver="$1"
+	oldpkgver="$2"
+	[ "$( vercmp "$oldpkgver" "0.4" )" -lt 0 ] && cat >&2 <<EOF
+* 
+* himitsu 4.0
+* 
+* The himitsu-init command has been renamed to himitsu-store.
+* This release requires the user to re-generate the himitsu master key:
+* 
+*     himitsu-store -r
+* 
+* See release notes: https://git.sr.ht/~sircmpwn/himitsu/refs/0.4
+* 
+EOF
+}
