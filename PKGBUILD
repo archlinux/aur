@@ -13,7 +13,7 @@
 pkgname=mingw-w64-qt6-base-static
 _qtver=6.6.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -42,20 +42,22 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0009-Find-fontconfig-via-pkg-config-for-correct-handling-.patch'
         '0010-Fix-dependency-of-xcb-image-on-xcb-util.patch'
         '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
-        '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch')
+        '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch'
+        '0013-Allow-overriding-preference-for-shared-libzstd-libra.patch')
 sha256sums=('039d53312acb5897a9054bd38c9ccbdab72500b71fdccdb3f4f0844b0dd39e0e'
-            '8835870bb7600c7f3a844baa3516f5680222944d32a29335c0c4ecb0bdb36156'
-            '25d31bfacc0a0b09ee647a6c1ca3a2f58843ac069e7f4eaea799912af185aba4'
-            '6671d730d153d7227b41e91d29e617fef1726d29b2858e710fb6cf0ded6b2827'
-            '251d6900c4ae8941580bace0a868f7a5c34acb424b85b490d1db16409b2846f4'
-            '332593f2152112b44b28dae18f9646a7925185ae3b7f4a4a3ab3d4fe6c9e0976'
-            '5123c48b9fb473e68abcef27bb6c973ce781c03b5d6833061bbeee9b8385fd6f'
-            'fbc79a9ae583abe8ac237068ece7aafd6ff079d8d55b5da7852c419baf33c222'
-            'f3e0958531d404f2a6c8940497a01e6444d96621e8a9f92018a513d831c77439'
-            'ed682bc0fabce30e883a5dd191b79ca6f097a03e86ad787a3d4d459529695737'
-            '89c3d3eec334c66e90ebf164f82977e7ca2303de378528ef7dc2fdbfc59efdee'
-            '15239108e2b6eef485114ad2323feb3ace0c44c19911a4133793ebc1c3772869'
-            '2b988b2695f1e82386a2d2bdd61ce6bd0d9ec958d6f93d1006a3e3d71373e997')
+            '76a2d1f30653f1de8738e8a84875e3b65df2742d1b9c2970d9125a110e42147c'
+            '05d8a7eb4c76f14e4671ec69698c544d2bb3d10c63f7bb6b0564cb4ad038635b'
+            '5c4ffce869c20f16f4a481b780718cec097bead67451649d96638de27a9647d4'
+            'c731472656cd4881e4371c37a9e16e89ee0afe53618fc48585f95c84d13cf080'
+            'b7681214860c627ccc7a6628e8d2b2d5fd14c72fbd48b453a74fbe8c4122973f'
+            'd1f41b62738376bbe981760d7b8eb6980bda2830a4208341e25eda40b0440121'
+            '622d16f443c9e4a1ded1cf1af264a923e64c880f4a2885d2a63d9be7fbbe95f2'
+            '5186fb24fd3a746f1ad06a423a9c11379f63e260dcee574391940240f6fa93bb'
+            'c72b8e8bcbb9bc4dc3b9008bff109a52e29694443d9a164906ed3c5ba78c20a7'
+            'e6842b36b691cfa4a595ba62ea2bc3bddf616a1aa0a308c4b7c95f7c29c2ceb2'
+            '26ab4278577b58a2f038378a5f7038053d36639ab3af1071c54745c254bcc888'
+            '641bce64d7a8ba16238e2ed4285c3bcf49edb82287e9528379f4b69a0159b9e6'
+            '8fc74155ae001841f01e372813dc1b42de791e38310590331089e73d9427a584')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
