@@ -6,7 +6,7 @@ pkgver='5.09'
 pkgrel='1'
 pkgdesc="OpenAPI / Swagger plugin for Mojolicious"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic2.0')
 options=('!emptydirs')
 depends=('perl-json-validator>=5.13' 'perl-mojolicious>=9.00' 'perl>=5.016')
 makedepends=()
