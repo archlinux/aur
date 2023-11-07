@@ -1,7 +1,7 @@
 pkgbase = winghexexplorer-bin
 	pkgdesc = 基于 QT 编写的十六进制编辑器，采用 C++ 进行开发，目的是让 Deepin 上具有强大而免费的十六进制编辑器。
 	pkgver = 1.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Wing-summer/WingHexExplorer
 	arch = x86_64
 	license = AGPL3
@@ -10,7 +10,6 @@ pkgbase = winghexexplorer-bin
 	depends = libglvnd
 	depends = glibc
 	depends = hicolor-icon-theme
-	depends = gcc-libs
 	depends = dtkgui
 	depends = dtkcore
 	depends = dtkwidget
