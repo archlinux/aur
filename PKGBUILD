@@ -1,13 +1,11 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
-
 pkgname=perl-data-guid
-pkgver=0.049
+pkgver=0.051
 pkgrel=1
 _author="R/RJ/RJBS"
 _perlmod="Data-GUID"
 pkgdesc="Data::GUID - globally unique identifiers"
 arch=('any')
-url="http://search.cpan.org/dist/Data-GUID/"
+url="https://metacpan.org/release/Data-GUID/"
 license=('GPL' 'PerlArtistic')
 depends=(
 perl-data-uuid
@@ -21,7 +19,7 @@ perl-sub-install
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('b8af437d49fd0425a23ebff3e5989dae64deeaf0e046aa5f413665cd3169a77b')
+sha256sums=('68ea77c73fca891382f206e12449094501b6fbf2e57f54902d5064227cfd8e2e')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
