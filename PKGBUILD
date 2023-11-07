@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-ppix-editortools'
-pkgver='0.19'
+pkgver='0.21'
 pkgrel='1'
 pkgdesc="Utility methods and base class for manipulating Perl via PPI"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-xsaccessor>=1.02' 'perl-ppi>=1.215' 'perl-try-tiny>=0.11' 'perl')
-makedepends=('perl-test-most')
-checkdepends=('perl-test-differences' 'perl-test-nowarnings>=0.084')
-url='http://search.mcpan.org/dist/PPIx-EditorTools'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SZ/SZABGAB/PPIx-EditorTools-0.19.tar.gz')
-md5sums=('8ceaa3b9c8b2a5d3b601f99be4afe0f2')
-sha512sums=('363ca55cc4c03ed2a672ea2429c09656a567450f2be47f3c8f42ae0ac3c14c9d7b99660f61f7cba61dbe94680ee1663d77c9415965e444449b2489e3a2c18faa')
-_distdir="PPIx-EditorTools-0.19"
+depends=('perl-class-xsaccessor>=1.02' 'perl-ppi>=1.203' 'perl-try-tiny>=0' 'perl>=5.008')
+makedepends=()
+checkdepends=('perl-test-differences>=0' 'perl-test-exception>=0' 'perl-test-most>=0')
+url='https://metacpan.org/release/PPIx-EditorTools'
+source=('http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/PPIx-EditorTools-0.21.tar.gz')
+md5sums=('b3f5de664e2926c796e0ad34cb0fa1be')
+sha512sums=('16fd1b4144742debd6dce3f49215d3b24b896688f5f2150492c9e1ae0cb37a14a18f444b39d8cdf42c1895fff8b3123ed181582264df061a3acbb47ae90e5085')
+_distdir="PPIx-EditorTools-0.21"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
