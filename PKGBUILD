@@ -1,7 +1,7 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray<k@ketal.icu>
 pkgname="liteloader-qqnt-bin"
 _pkgname="LiteLoaderQQNT"
-pkgver=0.5.3
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
@@ -19,7 +19,8 @@ md5sums=('SKIP'
 
 package() {
 	mkdir -p "${pkgdir}/opt/QQ/resources/app"
-	cp -a "${srcdir}/LiteLoader" "${pkgdir}/opt/QQ/resources/app/LiteLoader"
+        rm -f "${srcdir}/LiteLoaderQQNT.zip"
+	cp -a "${srcdir}" "${pkgdir}/opt/QQ/resources/app/LiteLoader"
 
 	# install hooks
 	install -Dm644 "${srcdir}/liteloader-qqnt-depatch.hook" "${pkgdir}/etc/pacman.d/hooks/liteloader-qqnt-depatch.hook"
