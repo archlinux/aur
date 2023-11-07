@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r.9268dce
+pkgver=r10662.af3a2d396
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="hhttps://apps.ankiweb.net/"
@@ -65,12 +65,12 @@ source=('git+https://github.com/ankitects/anki.git')
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd anki
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$pkgname"
+    cd anki
 
     # Put translations in place.
     #ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
@@ -79,7 +79,7 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname"
+    cd anki
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
@@ -88,7 +88,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd anki
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps out/wheels/*.whl
 
     install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
