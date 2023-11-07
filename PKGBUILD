@@ -1,14 +1,11 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-
 _author=B/BD/BDFOY
 _perlmod=Module-Release
 pkgname=perl-module-release
-pkgver=2.125
+pkgver=2.133
 pkgrel=1
 pkgdesc="Module::Releases - automate software releases"
 arch=('any')
-url="http://search.cpan.org/dist/Module-Release/"
+url="https://metacpan.org/release/Module-Release/"
 license=('GPL' 'PerlArtistic')
 depends=(
 perl-configreader-simple
@@ -41,7 +38,7 @@ options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz"
 #encoding.patch
 )
-sha256sums=('0295da0f2141c50726886111006946a00c3ef2b1ec4aec5531b2c78bc119cb15')
+sha256sums=('1c386000b0579db9a62f13e6cc0b800ebbaeee1ac556b534a909d41b8b258a5a')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
