@@ -1,14 +1,14 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=gmat
 pkgver=R2022a
-pkgrel=1
+pkgrel=2
 pkgdesc="General Mission Analysis Tool: An open-source space mission analysis tool"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gmat/"
 license=('Apache')
 conflicts=('gmat-bin')
 makedepends=('cspice' 'cmake' 'swig' 'patchelf' 'f2c')
-depends=('xerces-c' 'wxwidgets-gtk3-3.0>=3.0.5-4' 'glu')
+depends=('xerces-c' 'wxwidgets-gtk3-3.0>=3.0.5.1-2' 'glu')
 source=("GMAT.in"
 	"010-fix-f2c-typedefs.patch"
 	"https://sourceforge.net/projects/gmat/files/GMAT/GMAT-${pkgver}/gmat-src_and_data-${pkgver}.zip")
