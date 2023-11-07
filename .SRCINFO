@@ -14,6 +14,7 @@ pkgbase = lxterminal-git
 	makedepends = docbook-xsl
 	depends = vte3
 	provides = lxterminal
+	conflicts = lxterminal
 	source = git+https://github.com/lxde/lxterminal
 	sha512sums = SKIP
 
