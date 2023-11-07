@@ -6,7 +6,7 @@ pkgver='0.8'
 pkgrel='1'
 pkgdesc="Extract Strings To PO Files"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('LGPL3')
 options=('!emptydirs')
 depends=('perl-locale-po>=0.27' 'perl-module-build>=0.28' 'perl-libintl-perl>=0' 'perl>=5.008')
 makedepends=()
