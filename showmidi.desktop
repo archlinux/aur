@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ShowMIDI
+Comment=Multi-platform GUI application to effortlessly visualize MIDI activity
+Exec=/usr/bin/showmidi
+Icon=showmidi
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;Audio;Midi;Music;
