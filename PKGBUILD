@@ -1,36 +1,82 @@
+# Maintainer:
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-_name=spectacle
-pkgname=${_name}-git
-pkgver=22.04.0.r311.gca6de42
+_pkgname="spectacle"
+pkgname="$_pkgname-git"
+pkgver=23.08.1.r58.gdd8b0fc9
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
-arch=('x86_64')
-url='https://apps.kde.org/spectacle/'
-license=('GPL')
-groups=('kde-applications' 'kde-graphics')
-provides=("${_name}")
-conflicts=("${_name}")
-depends=('xcb-util-cursor' 'purpose' 'knewstuff' 'qt5-tools' 'kpipewire')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'plasma-wayland-protocols')
-source=("git+https://invent.kde.org/graphics/spectacle.git")
+url='https://invent.kde.org/graphics/spectacle'
+license=(GPL)
+arch=(x86_64)
+
+depends=(
+  'knewstuff5'
+  'kpipewire'
+  'purpose5'
+  'qt5-tools'
+  'xcb-util-cursor'
+)
+makedepends=(
+  'extra-cmake-modules'
+  'git'
+  'kdoctools5'
+  'plasma-wayland-protocols'
+)
+
+_pkgsrc="$_pkgname"
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_commit=dd8b0fc9 
+source=("git+https://invent.kde.org/graphics/spectacle.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${_name}"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+
+  local _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
+  local _file='desktop/org.kde.spectacle.appdata.xml'
+
+  local _line=$(
+    grep -E "$_regex" "$_file" | head -1
+  )
+  local _version=$(
+    printf '%s' "$_line" | sed -E "s@$_regex@\1@"
+  )
+  local _commit=$(
+    git log -G "$_line" -1 --pretty=oneline --no-color -- "$_file" \
+      | sed 's@\ .*$@@'
+  )
+  local _revision=$(
+    git rev-list --count $_commit..HEAD
+  )
+  local _hash=$(
+    git rev-parse --short HEAD
+  )
+
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 build() {
-    cmake -B "build" -S "${_name}" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_TESTING=OFF
+  local _cmake_options=(
+    -B "build"
+    -S "$_pkgsrc"
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
 
-    cmake --build "build"
+  cmake "${_cmake_options[@]}"
+  cmake --build "build"
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install "build"
+  DESTDIR="${pkgdir:?}" cmake --install "build"
 }
+
