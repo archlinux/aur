@@ -2,7 +2,7 @@
 
 pkgname=bitcomet
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free BitTorrent download client! Powerful, super-fast and easy-to-use"
 arch=(x86_64)
 url='https://www.bitcomet.com'
@@ -31,21 +31,13 @@ prepare() {
 
 package() {
     install -Dm755 "${srcdir}/usr/lib64/libtiff.so.6.0.0" "${srcdir}/squashfs-root/usr/lib/${CARCH}-linux-gnu/libtiff.so.6"
-    
     install -Dm755 "${srcdir}/usr/lib64/libtiffxx.so.6.0.0" "${srcdir}/squashfs-root/usr/lib/${CARCH}-linux-gnu/libtiffxx.so.6"
-    
     unset SOURCE_DATE_EPOCH
-    
     appimagetool "${srcdir}/squashfs-root" "${srcdir}/${pkgname}.AppImage"
-    
     install -Dm755 "${srcdir}/${pkgname}.AppImage" "${pkgdir}/${_install_path}/${pkgname}.AppImage"
-    
     install -Dm644 "${srcdir}/squashfs-root/com.bitcomet.linux.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
-    
     install -Dm644 "$srcdir/LICENSE.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 }

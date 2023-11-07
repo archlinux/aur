@@ -1,7 +1,7 @@
 pkgbase = bitcomet
 	pkgdesc = A free BitTorrent download client! Powerful, super-fast and easy-to-use
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bitcomet.com
 	arch = x86_64
 	license = custom
