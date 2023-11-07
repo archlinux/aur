@@ -1,9 +1,10 @@
-# Maintainer: kyndair
+#Maintainer : silverhikari <kerrickethan@gmail.com>
+#Contributor: kyndair
 # kf5 group or kde-development-environment-meta will include all required dependencies
 
 pkgname='kommit-git'
 _pkgname='kommit'
-pkgver=1.0.1.r17.gefb2be5
+pkgver=1.3.0.r12.g47325c6
 pkgrel=1
 pkgdesc='KDE git gui'
 arch=('i686' 'x86_64')
@@ -11,8 +12,8 @@ url='https://apps.kde.org/kommit/'
 license=('GPL3')
 provides=('kommit')
 conflicts=('kommit' 'gitklient-git')
-makedepends=('cmake' 'extra-cmake-modules' 'gettext' 'git' 'kdoctools' 'ktexteditor')
-depends=('fontconfig' 'freetype2' 'hicolor-icon-theme' 'kauth' 'kcodecs' 'kcompletion' 'kconfigwidgets' 'kconfig' 'kcoreaddons' 'kcrash' 'kdbusaddons' 'kio' 'kitemviews' 'ki18n' 'kjobwidgets' 'kparts' 'kservice' 'ktextwidgets' 'kwidgetsaddons' 'kxmlgui' 'qt5-base' 'solid' 'sonnet' 'syntax-highlighting')
+makedepends=('cmake' 'extra-cmake-modules' 'gettext' 'git' 'kdoctools5' 'ktexteditor5')
+depends=('fontconfig' 'freetype2' 'hicolor-icon-theme' 'kauth5' 'kcodecs5' 'kcompletion5' 'kconfigwidgets5' 'kconfig5' 'kcoreaddons5' 'kcrash5' 'kdbusaddons5' 'kio5' 'kitemviews5' 'ki18n5' 'kjobwidgets5' 'kparts5' 'kservice5' 'ktextwidgets5' 'kwidgetsaddons5' 'kxmlgui5' 'qt5-base' 'solid5' 'sonnet5' 'syntax-highlighting5')
 source=("git+https://invent.kde.org/sdk/kommit.git")
 sha256sums=('SKIP')
 
