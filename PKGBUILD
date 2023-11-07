@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus-git
 _pkgname=hydrus
-pkgver=525a.r0.g2691a92c
+pkgver=550.r0.g1f9b4ba8
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -19,7 +19,9 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-requests python-qtpy emoji-font python-mpv
          python-lxml python-urllib3 python-typing_extensions
          python-service-identity  # required by twisted for https hostname verification
-         pyside6)
+         qt6-multimedia  # https://aur.archlinux.org/packages/hydrus#comment-914337
+         qt6-svg  # https://aur.archlinux.org/packages/hydrus#comment-923550
+         python-pyqt6)
 makedepends=(git mkdocs mkdocs-material)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
@@ -41,7 +43,7 @@ source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git"
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            'b196485720ed874a22fe49a48ce92db423dda12824b2755071bbf47cfc891bc0'
+            'c332728ca119b1ed4e9a4f40de79087fa90f8754535718b506954d375541f9f0'
             'd2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
@@ -71,7 +73,7 @@ package() {
 
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r help hydrus static client.pyw server.py "${pkgdir}/opt/hydrus/"
+  cp -r help hydrus static hydrus_client.py hydrus_server.py "${pkgdir}/opt/hydrus/"
 
   # Remove unit tests
   rm -rf "${pkgdir}/opt/hydrus/hydrus/test" "${pkgdir}/opt/hydrus/static/testing"
