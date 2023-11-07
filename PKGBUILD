@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-messages-desktop-bin
-pkgver=5.4.1
-pkgrel=2
+pkgver=5.4.2
+pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/OrangeDrangon/android-messages-desktop"
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/v$pkgver/Android.Messages-v$pkgver-linux-x64.pacman"
         "$url/raw/v$pkgver/LICENSE")
-sha256sums=('73e823f930169eb9c1e64734f03c220a9410955b8253a4a1c3f72b753e3e0f3e'
+sha256sums=('c5b8b39039250c9846a14357b525f687cb893fd1abecd3ee1002cc8faa02ae2c'
             '3ad8e115711a8eca0050f768179efdca0f978b195a9c4f856a9d805628d3886c')
 
 package() {
@@ -23,8 +23,7 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
 
   for i in 16 24 32 48 64 128 256 512 1024; do
-    icons_dir=/usr/share/icons/hicolor/${i}x${i}/apps
-    install -Dm644 "${srcdir}/${icons_dir}/AndroidMessages.png" -t \
-      "${pkgdir}${icons_dir}/"
+    install -Dm644 "usr/share/icons/hicolor/${i}x${i}/apps/AndroidMessages.png" -t \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/"
   done
 }
