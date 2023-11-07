@@ -1,10 +1,10 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=pyhgtmap
-pkgver=v3.5.2
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="Fork of official phyghtmap - Generate OSM contour lines from NASA SRTM data"
-_outname="${pkgname}-${pkgver}"
+_outname="${pkgname}-v${pkgver}"
 arch=('x86_64')
 url="https://github.com/agrenott/pyhgtmap"
 license=('GPL2')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('gdal' 'python-gdal')
-source=("${_outname}::git+https://github.com/agrenott/pyhgtmap.git#tag=${pkgver}")
+source=("${_outname}::git+https://github.com/agrenott/pyhgtmap.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
