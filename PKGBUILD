@@ -1,6 +1,6 @@
 _pkgbase=netevent
 pkgname=netevent-git
-pkgver=c0cb868
+pkgver=2.2.2.r0.gbcadfcc
 pkgrel=1
 pkgdesc="Event device viewing/cloning utility"
 url="https://github.com/Blub/netevent"
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/netevent"
-  git describe --always
+  git describe --long --tags  | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
