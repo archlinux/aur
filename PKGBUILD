@@ -21,7 +21,8 @@ package() {
        cp -r $srcdir/XPPenLinux${pkgver}-${pkgrel}/App/* $pkgdir
        cp -r $pkgdir/lib/* $pkgdir/usr/lib
        rm -r $pkgdir/lib
-
+       #Licence  information
+       install -Dm0644 $pkgdir/usr/lib/pentablet/doc/EULA $pkgdir/usr/share/licenses/${pkgname}/LICENSE
        #No longer required, according to the new driver scripts
        #chmod 755 $pkgdir/usr/
        #chmod 755 $pkgdir/usr/lib/
