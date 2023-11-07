@@ -1,6 +1,6 @@
 pkgbase = opencascade-cadquery
 	pkgdesc = Opencascade for python-cadquery
-	pkgver = 7.6.1
+	pkgver = 7.7.1
 	pkgrel = 1
 	url = https://dev.opencascade.org/
 	arch = x86_64
@@ -33,11 +33,11 @@ pkgbase = opencascade-cadquery
 	depends = intel-tbb
 	depends = openmpi
 	depends = glew
-	source = opencascade-cadquery-7.6.1.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_6_1;sf=tgz
-	source = cmake.patch
-	source = opencascade-tbb-2021.patch
-	sha256sums = c111c635fa4cae05821640f5afbbf362efaee8dc51fcbee953866eec7482cd6a
-	sha256sums = b3a2583fd21576d454952894f92a2a9e710015051403a3759b4a2ccbfc78a048
-	sha256sums = b0c4601fd9b2905e4b3bc3ed8af1493960c80bfe10332a0c562c59786efd57a2
+	source = opencascade-cadquery-7.7.1.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_7_1;sf=tgz
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/opencascade/-/raw/74734cd01021d87a6ddd0a208c449a44685f5425/cmake-fix-variable.patch
+	source = fix_var_collision.patch::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=blobdiff_plain;f=src/IVtkDraw/IVtkDraw_Interactor.cxx;h=06626bb315f92243e0778830f2fc9a58d7d9942d;hb=54ed243582970aebb8f69954311d4d94b6fc2c7e;hpb=8748042259f22d72b3b076bc5433a54ca42734e4
+	sha256sums = f413d30a8a06d6164e94860a652cbc96ea58fe262df36ce4eaa92a9e3561fd12
+	sha256sums = 8d74dc87462164093a4cc3a427919dcc1f7f90a2a37fbae50357d9635f358812
+	sha256sums = 238a2b679e742ad41acc4cca44abee835013782224acfae130ffdd7f71c06f91
 
 pkgname = opencascade-cadquery

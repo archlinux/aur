@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-cadquery
-_pkgver="V7_6_1"
+_pkgver="V7_7_1"
 pkgver=$(echo ${_pkgver} | sed 's,^V,,g;s,_,.,g')
 pkgrel=1
 pkgdesc="Opencascade for python-cadquery"
@@ -45,28 +45,30 @@ ninja
 
 source=(
 "${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
-cmake.patch
-opencascade-tbb-2021.patch
+https://gitlab.archlinux.org/archlinux/packaging/packages/opencascade/-/raw/74734cd01021d87a6ddd0a208c449a44685f5425/cmake-fix-variable.patch
+fix_var_collision.patch::'https://git.dev.opencascade.org/gitweb/?p=occt.git;a=blobdiff_plain;f=src/IVtkDraw/IVtkDraw_Interactor.cxx;h=06626bb315f92243e0778830f2fc9a58d7d9942d;hb=54ed243582970aebb8f69954311d4d94b6fc2c7e;hpb=8748042259f22d72b3b076bc5433a54ca42734e4'
 )
-sha256sums=('c111c635fa4cae05821640f5afbbf362efaee8dc51fcbee953866eec7482cd6a'
-            'b3a2583fd21576d454952894f92a2a9e710015051403a3759b4a2ccbfc78a048'
-            'b0c4601fd9b2905e4b3bc3ed8af1493960c80bfe10332a0c562c59786efd57a2')
+sha256sums=('f413d30a8a06d6164e94860a652cbc96ea58fe262df36ce4eaa92a9e3561fd12'
+            '8d74dc87462164093a4cc3a427919dcc1f7f90a2a37fbae50357d9635f358812'
+            '238a2b679e742ad41acc4cca44abee835013782224acfae130ffdd7f71c06f91')
 
 prepare() {
   cd occt-${_pkgver}
 
-  patch -p1 -i ../cmake.patch
-  #curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
-
-  # fix for tbb changes
-  patch -p1 -i ../opencascade-tbb-2021.patch
-  #curl https://raw.githubusercontent.com/archlinux/svntogit-community/packages/opencascade/trunk/opencascade-tbb-2021.patch | patch -p1
+  patch -p1 -i ../cmake-fix-variable.patch
+  patch -p1 -i ../fix_var_collision.patch
 
   # fix for trying to write into the system during build
   sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
 
   # fix for None type build
   sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
+
+  # use newer tbb
+  sed 's,TBB 2021.5,TBB 2021.10,' -i adm/cmake/tbb.cmake
+
+  # fix tbb can't be found
+  sed 's,IMPORTED_LOCATION_RELEASE,IMPORTED_LOCATION_NONE,' -i adm/cmake/tbb.cmake
 }
 
 build() {
