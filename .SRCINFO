@@ -1,23 +1,7 @@
 pkgbase = apper-git
-	pkgdesc = An application and package manager using PackageKit
-	pkgver = r1253.44b7c88
+	pkgdesc = metapackage - broken; do not use
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://userbase.kde.org/Apper
-	arch = x86_64
-	license = LGPL
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
-	makedepends = plasma-workspace
-	makedepends = git
-	depends = packagekit-qt5
-	depends = kcmutils
-	depends = appstream-qt
-	depends = qt5-xmlpatterns
-	optdepends = plasma-workspace: Updates daemon
-	provides = apper
-	conflicts = apper
-	source = git+https://invent.kde.org/system/apper.git
-	md5sums = SKIP
+	arch = any
 
 pkgname = apper-git
-
