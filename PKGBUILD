@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=denaro-git
-pkgver=2023.5.0.r6.g4cc5678c
+pkgver=2023.9.2.r43.gec4b2d3b
 pkgrel=1
 pkgdesc='A personal finance manager'
 arch=(aarch64 armv7h x86_64 i686)
@@ -11,8 +11,8 @@ depends=('dotnet-runtime>=7' libadwaita)
 makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=(git+$url)
-b2sums=(SKIP)
+source=("git+$url" "git+${url%denaro}cakescripts#commit=d8dda8b25499cdedb6cb015db18e54d7ea720ac3")
+b2sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd ${pkgname%-git}
@@ -20,6 +20,8 @@ pkgver() {
 }
 
 prepare() {
+	rm -rf denaro/CakeScripts
+	mv cakescripts denaro/CakeScripts
 	cd ${pkgname%-git}
 	dotnet tool restore
 }
