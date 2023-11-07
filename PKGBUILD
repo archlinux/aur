@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9848.9b2a5926a
+pkgver=r9853.86566f1c1
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -112,30 +112,35 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgbase"
+    git submodule init
     for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut};
     do
-    git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
+    git config submodule.${submodule}.url "$srcdir/${submodule}"
     done
-    git -c protocol.file.allow=always submodule update --init
+    git -c protocol.file.allow=always submodule update
 
 
     cd "$srcdir/$_pkgbase/externals/cubeb"
-    git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
-    git config --file=.gitmodules submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.googletest.url "$srcdir/googletest"
+    git config submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
+    git -c protocol.file.allow=always submodule update
 
 
     cd "$srcdir/$_pkgbase/externals/sirit/"
-    git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_pkgbase/externals/dynarmic/externals/zydis"
-    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.dependencies/zycore.url "$srcdir/zycore"
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_pkgbase/externals/libadrenotools/"
-    git config --file=.gitmodules submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
+    git -c protocol.file.allow=always submodule update
 
 
 }
