@@ -1,6 +1,6 @@
 pkgbase = lua-periphery
 	pkgdesc = A Lua library for peripheral I/O (GPIO, LED, PWM, SPI, I2C, MMIO, Serial) in Linux.
-	pkgver = 2.3.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/vsergeev/lua-periphery
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lua-periphery
 	makedepends = lua52
 	makedepends = lua53
 	makedepends = git
-	source = git+https://github.com/vsergeev/lua-periphery.git#commit=b9a784fc6bb4b93a5a326731360a055931f02ae4
+	source = git+https://github.com/vsergeev/lua-periphery.git#commit=f2d98044b93fce643553d545827d739d5fe85c2a
 	md5sums = SKIP
 
 pkgname = lua-periphery
