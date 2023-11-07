@@ -2,17 +2,17 @@
 
 _pkgname=telegraph
 pkgname=$_pkgname-git
-pkgdesc='Write and decode morse (latest commit)'
-pkgver=0.1.7
-pkgrel=2
-arch=('any')
+pkgver=0.1.8
+pkgrel=1
+pkgdesc="Write and decode morse (latest commit)"
 url="https://github.com/fkinoshita/Telegraph"
+arch=('x86_64' 'aarch64')
 license=('GPL3')
-depends=('python' 'libadwaita')
+depends=('libadwaita')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -32,6 +32,4 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 Telegraph/README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 Telegraph/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
