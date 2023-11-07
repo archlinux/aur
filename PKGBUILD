@@ -17,5 +17,5 @@ build() {
 package() {
   cd "$pkgname"
   mkdir -p "${pkgdir}/usr/bin/"
-  install -Dm644 target/release/asahi-* "${pkgdir}/usr/bin/"
+  install -Dm111 target/release/asahi-* "${pkgdir}/usr/bin/"
 }
