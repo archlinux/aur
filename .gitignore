@@ -1,4 +1,5 @@
 */
+*.log
 *.pkg*
 *.tar*
 yarn.lock

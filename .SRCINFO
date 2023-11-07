@@ -1,15 +1,15 @@
-pkgbase = kiwiirc
+pkgbase = kiwiirc-git
 	pkgdesc = A hand-crafted web-based IRC client that you can enjoy
-	pkgver = 1.5.1.r345.g98db79b1
+	pkgver = 1.5.1.r427.gbeda4de6
 	pkgrel = 1
 	url = https://kiwiirc.com/
 	install = kiwiirc.install
 	arch = any
 	license = APACHE
 	makedepends = git
-	makedepends = nodejs-lts-fermium
+	makedepends = nodejs-lts-hydrogen
 	makedepends = yarn
 	source = git+https://github.com/kiwiirc/kiwiirc
 	md5sums = SKIP
 
-pkgname = kiwiirc
+pkgname = kiwiirc-git
