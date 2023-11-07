@@ -1,7 +1,7 @@
 pkgbase = nxdumpclient
 	pkgdesc = Client program for dumping over USB with nxdumptool
-	pkgver = 1.1.0
-	pkgrel = 1
+	pkgver = 1.1.1
+	pkgrel = 0
 	url = https://github.com/v1993/nxdumpclient
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = nxdumpclient
 	depends = gtk4
 	depends = libadwaita
 	depends = libgusb
-	source = https://github.com/v1993/nxdumpclient/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 06076e2ec1a0e5eeb6c2c662e4bdf3cfecd63779f12b21c3bd363ab6efba5453
+	source = https://github.com/v1993/nxdumpclient/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 062f9a443637bed6568e1eaee0a48968df15f13487ea6c50fb874dc8d5b8bdf4
 
 pkgname = nxdumpclient
