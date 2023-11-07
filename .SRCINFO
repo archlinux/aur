@@ -1,7 +1,7 @@
 pkgbase = pipewalker
 	pkgdesc = Pieces of a computer network are to be turned, to make all computers connected to the same network
 	pkgver = 0.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pipewalker.sourceforge.net/
 	install = pipewalker.install
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = pipewalker
 	depends = desktop-file-utils
 	depends = libpng
 	source = https://github.com/artemsen/pipewalker/archive/refs/tags/v0.9.5.tar.gz
+	source = xdg_settings.patch
 	sha256sums = f74f3224ddd7abcbbb72fe7ed4f1cd74cd4fe1ad64ab472d491afb3e18b73c42
+	sha256sums = 5d04552d97e24de56391ebb37af5bded48c5a27410b701a9f6a258c943f7692e
 
 pkgname = pipewalker
