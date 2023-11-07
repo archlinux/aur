@@ -2,14 +2,20 @@
 
 pkgname=iceshrimp-git
 pkgver=v2023.11.1.r9.g5f5a921b4
-pkgrel=1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
 license=(AGPL3)
 
-depends=(nodejs redis postgresql)
 makedepends=(git sed)
+depends=(nodejs redis postgresql)
+optdepends=(
+  "ffmpeg: for video transcoding"
+  "sonic: efficient full text search backend"
+  "meilisearch: feature-rich full text search backend"
+)
+
 
 conflicts=(iceshrimp)
 provides=(iceshrimp)
