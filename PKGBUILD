@@ -3,7 +3,7 @@
 pkgname=telegram-a
 realname=telegram-tt
 pkgver=10.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Telegram Web client version A system Electron version"
 arch=('any')
 url="https://web.telegram.org/a/get/"
@@ -28,7 +28,7 @@ sha256sums=('8d829a8938671047d9273f21786c0bff92939b3c1dcb17ee0ffd61ad6ebce5a6'
                 'ecd8513d233fa5da2925ef68a97cd03ddcea81c2a050576e64dcfa8f177aea0b'
                 '00f7cf0019c84fbd0da5014fdf3cc6eba35cbed2a3574951bbe57e9fd0ecbcd9'
                 '7492e3db6991a6917b206ee2324c783fcfd3e67b3d01cf5a17cfd613ef94aeb0'
-                '048d475f62f82658d5882b2cff78abfeb895db441c36cc6ae67f429be21cdcaf')
+                '395136274249408df4a29568014479d28542e94e552ae8d175e36589f0c10867')
 
 prepare() {
     cd "${srcdir}/${realname}-${pkgver}"

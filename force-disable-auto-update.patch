@@ -1,12 +1,13 @@
-From 5f6055e812a4b069e67d14ccc17c5f40ed38da1f Mon Sep 17 00:00:00 2001
+From aea85d8787b09304b1b290985066521825ef364d Mon Sep 17 00:00:00 2001
 From: Ernesto Castellotti <mail@ernestocastellotti.it>
-Date: Sat, 28 Oct 2023 23:03:06 +0200
-Subject: [PATCH] Force disable auto update
+Date: Tue, 7 Nov 2023 13:32:19 +0100
+Subject: [PATCH] [PATCH] Force disable auto update
 
 ---
- src/components/left/settings/SettingsExperimental.tsx | 8 --------
- src/electron/window.ts                                | 9 ++++-----
- 2 files changed, 4 insertions(+), 13 deletions(-)
+ .../left/settings/SettingsExperimental.tsx    |  8 -----
+ src/electron/window.ts                        |  9 +++---
+ src/global/actions/ui/misc.ts                 | 31 -------------------
+ 3 files changed, 4 insertions(+), 44 deletions(-)
 
 diff --git a/src/components/left/settings/SettingsExperimental.tsx b/src/components/left/settings/SettingsExperimental.tsx
 index c4ee07962..5edbfdea1 100644
@@ -28,7 +29,7 @@ index c4ee07962..5edbfdea1 100644
            // eslint-disable-next-line react/jsx-no-bind
            onClick={handleDownloadLog}
 diff --git a/src/electron/window.ts b/src/electron/window.ts
-index bbf264c8d..dd27dd784 100644
+index 2bec304c6..3fcc8e566 100644
 --- a/src/electron/window.ts
 +++ b/src/electron/window.ts
 @@ -139,16 +139,15 @@ export function createWindow(url?: string) {
@@ -52,6 +53,51 @@ index bbf264c8d..dd27dd784 100644
    } else {
      window.loadURL(`file://${__dirname}/index.html${hash}`);
    }
+diff --git a/src/global/actions/ui/misc.ts b/src/global/actions/ui/misc.ts
+index e288381c4..ccece779f 100644
+--- a/src/global/actions/ui/misc.ts
++++ b/src/global/actions/ui/misc.ts
+@@ -614,40 +614,9 @@ addActionHandler('closeMapModal', (global, actions, payload): ActionReturnType =
+ });
+ 
+ addActionHandler('checkAppVersion', (global): ActionReturnType => {
+-  fetch(`${APP_VERSION_URL}?${Date.now()}`)
+-    .then((response) => response.text())
+-    .then((version) => {
+-      version = version.trim();
+-
+-      if (getIsAppUpdateNeeded(version, APP_VERSION)) {
+-        global = getGlobal();
+-        global = {
+-          ...global,
+-          isAppUpdateAvailable: true,
+-        };
+-        setGlobal(global);
+-      }
+-    })
+-    .catch((err) => {
+-      if (DEBUG) {
+-        // eslint-disable-next-line no-console
+-        console.error('[checkAppVersion failed] ', err);
+-      }
+-    });
+ });
+ 
+ addActionHandler('setIsElectronUpdateAvailable', (global, action, payload): ActionReturnType => {
+-  global = getGlobal();
+-  global = {
+-    ...global,
+-    isElectronUpdateAvailable: Boolean(payload),
+-  };
+-  setGlobal(global);
+-});
+-
+-addActionHandler('afterHangUp', (global): ActionReturnType => {
+-  if (!selectTabState(global, getCurrentTabId()).multitabNextAction) return;
+-  reestablishMasterToSelf();
+ });
+ 
+ let notificationInterval: number | undefined;
 -- 
-2.42.0
+2.42.1
 
