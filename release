@@ -29,7 +29,7 @@ sed -r "s/sha256sums_x86_64=\([\"'][^\"']+[\"']\)$/sha256sums_x86_64=(\"$SUM\")/
 
 # regenerate .SRCINFO
 makepkg -f && makepkg --printsrcinfo > .SRCINFO
-rm -r src pkg *.tar*
+rm -r src pkg *.tar* *.deb
 
 git --no-pager diff PKGBUILD
 git status -s
