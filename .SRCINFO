@@ -4,7 +4,7 @@ pkgbase = dhivehi_fonts
 	pkgrel = 1
 	url = https://github.com/Alix35301/dhivehi_fonts/raw/master/archive/archive/Dhivehi_fonts.tar.xz
 	arch = any
-	license = (MIT)
+	license = (custom)
 	source = Dhivehi_fonts.tar.xz::https://github.com/Alix35301/dhivehi_fonts/raw/master/Dhivehi_fonts.tar.xz
 	pkgname = dhivehi_fonts
 
