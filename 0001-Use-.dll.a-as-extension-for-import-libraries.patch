@@ -1,4 +1,4 @@
-From ffc33301366f141f16519fc4999944c93d1e4a61 Mon Sep 17 00:00:00 2001
+From 00a71f606a758f281a982d4fa96eb6fcf85a1007 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 7 Mar 2021 18:22:06 +0100
 Subject: [PATCH 1/2] Use .dll.a as extension for import libraries
@@ -9,7 +9,7 @@ Subject: [PATCH 1/2] Use .dll.a as extension for import libraries
  2 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/src/Makefile.shlib b/src/Makefile.shlib
-index 29a7f6d38c..106139e929 100644
+index 35abce58d2..4f6731c291 100644
 --- a/src/Makefile.shlib
 +++ b/src/Makefile.shlib
 @@ -85,7 +85,7 @@ else
@@ -22,15 +22,15 @@ index 29a7f6d38c..106139e929 100644
  ifndef soname
  # additional flags for backend modules
 diff --git a/src/backend/Makefile b/src/backend/Makefile
-index 9706a95848..21d43c072b 100644
+index 3c42003175..36cc12865b 100644
 --- a/src/backend/Makefile
 +++ b/src/backend/Makefile
-@@ -72,11 +72,11 @@ endif
+@@ -74,11 +74,11 @@ endif
  ifeq ($(PORTNAME), cygwin)
  
  postgres: $(OBJS)
--	$(CC) $(CFLAGS) $(call expand_subsys,$^) $(LDFLAGS) $(LDFLAGS_EX) $(export_dynamic) -Wl,--stack,$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.a $(LIBS) -o $@
-+	$(CC) $(CFLAGS) $(call expand_subsys,$^) $(LDFLAGS) $(LDFLAGS_EX) $(export_dynamic) -Wl,--stack,$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.dll.a $(LIBS) -o $@
+-	$(CC) $(CFLAGS) $(call expand_subsys,$^) $(LDFLAGS) -Wl,--stack,$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.a $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(call expand_subsys,$^) $(LDFLAGS) -Wl,--stack,$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.dll.a $(LIBS) -o $@
  
 -# libpostgres.a is actually built in the preceding rule, but we need this to
 +# libpostgres.dll.a is actually built in the preceding rule, but we need this to
@@ -40,12 +40,12 @@ index 9706a95848..21d43c072b 100644
  	touch $@
  
  endif # cygwin
-@@ -85,11 +85,11 @@ ifeq ($(PORTNAME), win32)
+@@ -87,11 +87,11 @@ ifeq ($(PORTNAME), win32)
  LIBS += -lsecur32
  
  postgres: $(OBJS) $(WIN32RES)
--	$(CC) $(CFLAGS) $(call expand_subsys,$(OBJS)) $(WIN32RES) $(LDFLAGS) $(LDFLAGS_EX) -Wl,--stack=$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.a $(LIBS) -o $@$(X)
-+	$(CC) $(CFLAGS) $(call expand_subsys,$(OBJS)) $(WIN32RES) $(LDFLAGS) $(LDFLAGS_EX) -Wl,--stack=$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.dll.a $(LIBS) -o $@$(X)
+-	$(CC) $(CFLAGS) $(call expand_subsys,$(OBJS)) $(WIN32RES) $(LDFLAGS) -Wl,--stack=$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.a $(LIBS) -o $@$(X)
++	$(CC) $(CFLAGS) $(call expand_subsys,$(OBJS)) $(WIN32RES) $(LDFLAGS) -Wl,--stack=$(WIN32_STACK_RLIMIT) -Wl,--export-all-symbols -Wl,--out-implib=libpostgres.dll.a $(LIBS) -o $@$(X)
  
 -# libpostgres.a is actually built in the preceding rule, but we need this to
 +# libpostgres.dll.a is actually built in the preceding rule, but we need this to
@@ -55,7 +55,7 @@ index 9706a95848..21d43c072b 100644
  	touch $@
  
  endif # win32
-@@ -198,12 +198,12 @@ distprep:
+@@ -191,12 +191,12 @@ distprep:
  install: all installdirs install-bin
  ifeq ($(PORTNAME), cygwin)
  ifeq ($(MAKE_DLL), true)
@@ -70,7 +70,7 @@ index 9706a95848..21d43c072b 100644
  endif
  endif
  	$(MAKE) -C catalog install-data
-@@ -263,12 +263,12 @@ ifeq ($(MAKE_EXPORTS), true)
+@@ -250,12 +250,12 @@ ifeq ($(MAKE_EXPORTS), true)
  endif
  ifeq ($(PORTNAME), cygwin)
  ifeq ($(MAKE_DLL), true)
@@ -85,7 +85,7 @@ index 9706a95848..21d43c072b 100644
  endif
  endif
  	$(MAKE) -C catalog uninstall-data
-@@ -287,10 +287,10 @@ endif
+@@ -274,10 +274,10 @@ endif
  clean:
  	rm -f $(LOCALOBJS) postgres$(X) $(POSTGRES_IMP)
  ifeq ($(PORTNAME), cygwin)
@@ -99,5 +99,5 @@ index 9706a95848..21d43c072b 100644
  
  distclean: clean
 -- 
-2.30.1
+2.42.0
 

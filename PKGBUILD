@@ -2,14 +2,14 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-postgresql
-pkgver=15.0
+pkgver=16.0
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (mingw-w64)'
 arch=('any')
 url='https://www.postgresql.org'
 license=('custom:PostgreSQL')
 makedepends=('mingw-w64-configure' 'libxml2')
-depends=('mingw-w64-gettext' 'mingw-w64-openssl>=1.0.0' 'mingw-w64-libxml2' 'mingw-w64-readline')
+depends=('mingw-w64-gettext' 'mingw-w64-openssl>=1.0.0' 'mingw-w64-libxml2' 'mingw-w64-readline' 'mingw-w64-icu')
 options=(staticlibs !strip !buildflags)
 provides=('mingw-w64-postgresql-libs')
 conflicts=('mingw-w64-postgresql-libs')
@@ -17,9 +17,9 @@ replaces=('mingw-w64-postgresql-libs')
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
         '0001-Use-.dll.a-as-extension-for-import-libraries.patch'
         '0002-Use-pthread-library-from-MinGW.patch')
-sha256sums=('72ec74f4a7c16e684f43ea42e215497fcd4c55d028a68fb72e99e61ff40da4d6'
-            '6119ad2418ce9995acf13b0f095ffa521250bae18cd387083c04e92b6ff22814'
-            '55c636400087482f896530e80f07706fff6c5c5b5654955d71944f035940e6a5')
+sha256sums=('df9e823eb22330444e1d48e52cc65135a652a6fdb3ce325e3f08549339f51b99'
+            '44b1cceb0f5ef792acc00e9415dc2f7f777747199078ce4c8704d3420de52cf5'
+            '72e627524dd4994d85db43ea02d71b2c9983037306a85822f744e76b40f40f2f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
