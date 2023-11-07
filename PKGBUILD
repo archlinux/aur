@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-3d
-_qtver=6.0.0-alpha
+_qtver=6.6.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -12,15 +12,14 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)'
 depends=('mingw-w64-qt6-declarative')
-makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-assimp'
+makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader'
              'qt6-shadertools' 'qt6-declarative' 'ninja')
-optdepends=('mingw-w64-assimp: Import from assimp'
-            'mingw-w64-qt6-shadertools: RHI renderer')
+optdepends=('mingw-w64-qt6-shadertools: RHI renderer')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qt3d-everywhere-src-${_qtver}"
-source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('3362d01c7542af0e902908d2d339374feda1a037552ea625b900278982375c27')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('0da87a46217f4d72f6d0de9768605d5325ef3d093f73a5e0d73dd88e99c1fc2a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -28,10 +27,7 @@ build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
-      -DQT_HOST_PATH=/usr \
-      -DFEATURE_pkg_config=ON \
-      -DVulkan_LIBRARY="/usr/$_arch/lib/libvulkan.dll.a" \
-      -DVulkan_INCLUDE_DIR="/usr/$_arch/include"
+      -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
 }
@@ -53,8 +49,10 @@ package() {
     find "$pkgdir/usr/$_arch" -iname '*.exe' -exec $_arch-strip --strip-all {} \;
     find "$pkgdir/usr/$_arch" -iname '*.dll' -exec $_arch-strip --strip-unneeded {} \;
     find "$pkgdir/usr/$_arch" -iname '*.a'   -exec $_arch-strip -g {} \;
+    [[ -d "$pkgdir/usr/$_arch/share/doc" ]] && rm -r "$pkgdir/usr/$_arch/share/doc"
   done
 
   install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/mingw-w64-qt6-base "$pkgdir"/usr/share/licenses/mingw-w64-qt6-3d
+  ln -s /usr/share/licenses/mingw-w64-qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+
 }
