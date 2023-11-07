@@ -1,13 +1,13 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=telegraph
-pkgdesc='Write and decode morse'
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
-arch=('any')
+pkgdesc="Write and decode morse (latest commit)"
 url="https://github.com/fkinoshita/Telegraph"
+arch=('x86_64' 'aarch64')
 license=('GPL3')
-depends=('python' 'libadwaita')
+depends=('libadwaita')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 source=("git+$url.git#tag=v$pkgver")
@@ -19,11 +19,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlog
+  meson test -C build --print-errorlogs
 }
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 Telegraph/README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 Telegraph/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
