@@ -1,8 +1,8 @@
 # Maintainer: Fabio Germann <fabio.germann+aur@gmail.com>
 
 pkgname=sedutil-sleep-git
-pkgver=1.15.1.r3.gecfd482
-pkgrel=1
+pkgver=1.15.1.r4.936446f
+pkgrel=2
 pkgdesc="TCG OPAL 2.00 SED Management Program - including S3 sleep support"
 arch=('i686' 'x86_64')
 url="https://github.com/fabiogermann/sedutil"
