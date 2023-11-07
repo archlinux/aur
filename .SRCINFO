@@ -6,7 +6,7 @@ pkgbase = dhivehi_fonts
 	arch = any
 	license = unknown
 	source = Dhivehi_fonts.tar.xz::https://github.com/Alix35301/dhivehi_fonts/raw/master/Dhivehi_fonts.tar.xz
-	md5sums = 186A9705470D7F342594E03DA6B9C148
+	md5sums = 873fce3ced364e45978f9937a61fa5d2
 
 pkgname = dhivehi_fonts
 
