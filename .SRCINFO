@@ -1,6 +1,6 @@
 pkgbase = ncnn-git
 	pkgdesc = High-performance neural network inference framework optimized for the mobile platform
-	pkgver = 20230223.r0.gff80ac295
+	pkgver = 20231027.r9.g31e315981
 	pkgrel = 1
 	url = https://github.com/Tencent/ncnn
 	arch = i686

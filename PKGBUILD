@@ -4,7 +4,7 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20230223.r0.gff80ac295
+pkgver=20231027.r9.g31e315981
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -29,10 +29,10 @@ prepare() {
     cd "${srcdir}/ncnn"
 
     # init submodules
-    git config --file=.gitmodules submodule.glslang.url "$srcdir/glslang"
-    git config --file=.gitmodules submodule.python/pybind11.url "$srcdir/pybind11"
-
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git config submodule.glslang.url "$srcdir/glslang"
+    git config submodule.python/pybind11.url "$srcdir/pybind11"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
