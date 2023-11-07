@@ -1,7 +1,7 @@
 # Maintainer: Justin ! <just1602@riseup.net>
 
 pkgname='tailspin'
-pkgver=1.6.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='tailspin - A log file highlighter'
 url='https://github.com/bensadeh/tailspin'
@@ -9,7 +9,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
 makedepends=('cargo')
-b2sums=('fcbfaea99b4db61609ddaafcd7329700718de20d9ad7370092887d11ed5d208c07cc996f8308d4c39647b5dc1d1850dd1cf27081f3a5e36603052e08169d4363')
+b2sums=('9d2f4590a28891accab651576b71a717bf2fa7d6ab7116adc9391b04f6618d5c80e23d1b4d07d909f8fe43bb85bae4386af98c6ad76bb2f2fef49014d6c4f8a5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,11 +23,11 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 target/release/spin "${pkgdir}/usr/bin/spin"
-  install -Dm644 man/spin.1 "$pkgdir/usr/share/man/man1/spin.1"
-  install -Dm644 completions/spin.bash "$pkgdir/usr/share/bash-completion/completions/spin"
-  install -Dm644 completions/spin.zsh "$pkgdir/usr/share/zsh/site-functions/_spin"
-  install -Dm644 completions/spin.fish "$pkgdir/usr/share/fish/vendor_completions.d/spin.fish"
+  install -Dm755 target/release/tspin "${pkgdir}/usr/bin/tspin"
+  install -Dm644 man/tspin.1 "$pkgdir/usr/share/man/man1/tspin.1"
+  install -Dm644 completions/tspin.bash "$pkgdir/usr/share/bash-completion/completions/tspin"
+  install -Dm644 completions/tspin.zsh "$pkgdir/usr/share/zsh/site-functions/_tspin"
+  install -Dm644 completions/tspin.fish "$pkgdir/usr/share/fish/vendor_completions.d/tspin.fish"
   install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/$pkgname/LICENCE"
 }
