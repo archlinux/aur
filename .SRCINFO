@@ -1,6 +1,6 @@
 pkgbase = msim
 	pkgdesc = Light-weight computer simulator based on MIPS R4000 and RISC-V
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://d3s.mff.cuni.cz/software/msim/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = msim
 	license = GPL
 	makedepends = imake
 	depends = readline
-	source = https://github.com/d-iii-s/msim/archive/refs/tags/v2.2.0.tar.gz
-	md5sums = 4a9d4649a1eb1b4e640a1659b4e23577
+	source = https://github.com/d-iii-s/msim/archive/refs/tags/v2.2.1.tar.gz
+	md5sums = a806527cb017f5cec8b3d1eacf7353e1
 
 pkgname = msim
