@@ -12,6 +12,7 @@ pkgbase = bitcomet
 	depends = lerc
 	depends = fuse2
 	depends = webkit2gtk
+	depends = libjpeg6-turbo
 	options = !strip
 	source = BitComet-x86_64.AppImage::https://download.bitcomet.com/linux/BitComet-2.4.2-x86_64.AppImage
 	source = libtiff.rpm::https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libtiff-4.5.0-3.fc40.x86_64.rpm
