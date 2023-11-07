@@ -1,8 +1,6 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public@gmail.com>
-
 pkgname=vmtouch-systemd-git
 pkgver=r6.196c4c7
-pkgrel=1
+pkgrel=2
 pkgdesc='Systemd support for vmtouch.'
 arch=('any')
 url='https://github.com/dracorp/vmtouch-systemd'
@@ -15,7 +13,7 @@ backup=(
 etc/vmtouch.conf
 etc/default/vmtouch
 )
-source=('git://github.com/dracorp/vmtouch-systemd.git')
+source=("git+$url.git")
 sha256sums=('SKIP')
 _gitname='vmtouch-systemd'
 pkgver() {
