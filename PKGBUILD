@@ -2,7 +2,7 @@
 
 pkgname=wrapland-kwinft
 pkgver=5.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/wrapland"
