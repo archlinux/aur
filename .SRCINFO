@@ -1,15 +1,17 @@
 pkgbase = perl-net-netmask
-	pkgdesc = Parse, manipulate and lookup IP network blocks.
-	pkgver = 2.0001
+	pkgdesc = parse, manipulate and lookup IP network blocks
+	pkgver = 2.0002
 	pkgrel = 1
 	url = https://metacpan.org/release/Net-Netmask
 	arch = any
-	license = GPL
 	license = PerlArtistic
-	checkdepends = perl-test-useallmodules
-	checkdepends = perl-test2-suite
+	license = GPL
+	checkdepends = perl-test-useallmodules>=0.17
+	checkdepends = perl-test2-suite>=0
+	depends = perl>=5.6.1
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/J/JM/JMASLAK/Net-Netmask-2.0001.tar.gz
-	md5sums = 4185706d6eb978e59b1ab9e89d1865aa
+	source = http://search.cpan.org/CPAN/authors/id/J/JM/JMASLAK/Net-Netmask-2.0002.tar.gz
+	md5sums = a05fe8ca952c1db0acff02cbc6626148
+	sha512sums = 60cd9de1cac95516515428eb7d1c883b5260333768c363b47a87bb404b13bac713746e7512ff1f52bf3e5c8344f0d38889bba44a2c84b8ddf36e969d63ea8373
 
 pkgname = perl-net-netmask
