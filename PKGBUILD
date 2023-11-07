@@ -2,15 +2,15 @@
 
 pkgname=kdisplay-kwinft
 pkgver=5.27
-pkgrel=1
+pkgrel=2
 pkgdesc='App and daemon for display managing'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/kdisplay"
 license=(LGPL)
-depends=(disman kcmutils kirigami2 plasma-framework qt5-sensors)
+depends=(disman kcmutils5 kirigami2 plasma-framework qt6-sensors)
 provides=(kscreen)
 conflicts=(kscreen)
-makedepends=(extra-cmake-modules git kdoctools qt5-tools)
+makedepends=(extra-cmake-modules git kdoctools5 qt6-tools)
 source=("git+https://gitlab.com/kwinft/kdisplay.git")
 sha256sums=('SKIP')
 
