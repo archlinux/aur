@@ -1,22 +1,22 @@
 pkgbase = spectacle-git
 	pkgdesc = KDE screenshot capture utility
-	pkgver = 23.08.1.r58.gdd8b0fc9
+	pkgver = 23.08.3.r49.gfecb81ef
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/spectacle
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = kdoctools5
+	makedepends = kdoctools
 	makedepends = plasma-wayland-protocols
-	depends = knewstuff5
+	depends = knewstuff
 	depends = kpipewire
-	depends = purpose5
-	depends = qt5-tools
+	depends = purpose
+	depends = qt6-tools
 	depends = xcb-util-cursor
-	provides = spectacle=23.08.1
+	provides = spectacle=23.08.3
 	conflicts = spectacle
-	source = git+https://invent.kde.org/graphics/spectacle.git#commit=dd8b0fc9
+	source = git+https://invent.kde.org/graphics/spectacle.git
 	sha256sums = SKIP
 
 pkgname = spectacle-git

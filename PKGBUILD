@@ -5,7 +5,7 @@
 
 _pkgname="spectacle"
 pkgname="$_pkgname-git"
-pkgver=23.08.1.r58.gdd8b0fc9
+pkgver=23.08.3.r49.gfecb81ef
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
 url='https://invent.kde.org/graphics/spectacle'
@@ -13,16 +13,16 @@ license=(GPL)
 arch=(x86_64)
 
 depends=(
-  'knewstuff5'
+  'knewstuff'
   'kpipewire'
-  'purpose5'
-  'qt5-tools'
+  'purpose'
+  'qt6-tools'
   'xcb-util-cursor'
 )
 makedepends=(
   'extra-cmake-modules'
   'git'
-  'kdoctools5'
+  'kdoctools'
   'plasma-wayland-protocols'
 )
 
@@ -30,8 +30,7 @@ _pkgsrc="$_pkgname"
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
-_commit=dd8b0fc9 
-source=("git+https://invent.kde.org/graphics/spectacle.git#commit=$_commit")
+source=("git+https://invent.kde.org/graphics/spectacle.git")
 sha256sums=('SKIP')
 
 pkgver() {
