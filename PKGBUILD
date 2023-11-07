@@ -16,7 +16,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-intel-lts
 source=(
-  "$_srcname::git+https://github.com/intel/linux-intel-lts#tag=$_srctag"
+  "$_srcname::git+https://github.com/intel/linux-intel-lts#commit=$_srctag"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'

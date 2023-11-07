@@ -1,0 +1,44 @@
+pkgbase = linux-intel-lts-sriov
+	pkgdesc = Intel-LTS kernel with SR-IOV support and ashmem and binder drivers
+	pkgver = 6.1.38.fecdf03f88d08557ec939b280c69e32ca90690c1
+	pkgrel = 1
+	url = https://github.com/intel/linux-intel-lts/commits/fecdf03f88d08557ec939b280c69e32ca90690c1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = gettext
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = texlive-latexextra
+	makedepends = git
+	options = !strip
+	source = linux-intel-lts::git+https://github.com/intel/linux-intel-lts#commit=fecdf03f88d08557ec939b280c69e32ca90690c1
+	source = config
+	sha256sums = SKIP
+	sha256sums = f5f61feaa4e6104646b0c8437359ad108dec955ad693e3e48bf7c4f300a047cb
+
+pkgname = linux-intel-lts-sriov
+	pkgdesc = The Intel-LTS kernel with SR-IOV support and ashmem and binder drivers kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-intel-lts-sriov-headers
+	pkgdesc = Headers and scripts for building modules for the Intel-LTS kernel with SR-IOV support and ashmem and binder drivers kernel
+	depends = pahole
