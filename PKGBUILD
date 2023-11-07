@@ -1,36 +1,40 @@
 # Maintainer: Philip Abernethy<chais.z3r0@gmail.com>
 pkgname=sdl-jstest-git
-_gitname=sdl-jstest
-pkgver=82.aafbdb1
-pkgver() {
-	cd "${_gitname}"
-#	printf "%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+pkgver=0.2.2.r18.g5bc418e
+epoch=1
 pkgrel=1
 pkgdesc="Simple SDL joystick test application for the command line."
 url="https://github.com/Grumbel/sdl-jstest"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('sdl' 'ncurses' 'docbook2x')
-makedepends=('git')
+depends=('sdl' 'sdl2' 'ncurses' 'hicolor-icon-theme')
+makedepends=('git' 'cmake')
 provides=('sdl-jstest')
 install="${pkgname}.install"
+source=('git+https://github.com/Grumbel/sdl-jstest' 'git+https://github.com/grumbel/tinycmmc.git' 'git+https://github.com/gabomdq/SDL_GameControllerDB')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
 
-source=('sdl-jstest::git+https://github.com/Grumbel/sdl-jstest.git'
-	"${install}")
-sha512sums=('SKIP'
-            '6700f472466f24dcabc9be55f23f9e872f724f66024ac831daa11e61b6a6f6938111de035a4572c935cb01e7539d823ff26d48cc193935c00944bd2da23e3fcf')
+pkgver() {
+	cd "${pkgname%-git}"
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${pkgname%-git}"
+	git submodule init
+	git config submodule.external/tinycmmc.url "$srcdir/tinycmmc"
+	git config submodule.external/sdl_gamecontrollerdb.url "$srcdir/SDL_GameControllerDB"
+	git -c protocol.file.allow=always submodule update
+}
 
 build() {
-	cd "${srcdir}/${_gitname}"
-	git submodule update --init --remote --recursive
-	cmake ./
-	make ${provides[0]}
+	cmake -B build -S "${pkgname%-git}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-	install -Dm755 "${srcdir}/${_gitname}/${provides[0]}" "${pkgdir}/usr/bin/${provides[0]}"
-	install -dm755 "${pkgdir}/usr/share/man/man1"
-	gzip -c "${srcdir}/${_gitname}/${provides[0]}.1" > "${pkgdir}/usr/share/man/man1/${provides[0]}.1.gz"
+DESTDIR="$pkgdir" cmake --install build
 }
