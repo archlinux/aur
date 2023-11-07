@@ -1,6 +1,6 @@
 pkgbase = pijul
 	pkgdesc = A sound and fast distributed version control system
-	pkgver = 1.0.0.beta.6
+	pkgver = 1.0.0.beta.7
 	pkgrel = 1
 	url = https://pijul.org
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = pijul
 	depends = openssl
 	depends = xxhash
 	options = !lto
-	source = pijul-1.0.0.beta.6.tar.gz::https://static.crates.io/crates/pijul/pijul-1.0.0-beta.6.crate
-	sha512sums = d7df3604fefe82214a29143bcfcbc08aa9b42b55cfefc6a44afbe7aab8a0ec0f83f7e751707784bd519c008eb1bbfbfb134d7cf3ffad2214a8641cec52d96754
-	b2sums = e8168e25057e3bd6156dddefd6a0b43ceb6de70f47b2fadd42b6c322b517376284100ce47dd083072b7266dfd4d97d30c77d79757c0df297ed153738fbc9f72b
+	source = pijul-1.0.0.beta.7.tar.gz::https://static.crates.io/crates/pijul/pijul-1.0.0-beta.7.crate
+	sha512sums = 2055108d8a5ba3fee148e46eb3f7000995c6aac5055ae85a783093114f70a24ad7ddb38ba6d9e7c2d8998d6ff7956e42b711040f251863416ba842e590cc56d6
+	b2sums = 500afd8d0867d5135d90f3295efaba151f2913dacc4f30ba3973b5b1546167dcb5803e19f0335e0f7dfdcd1bffd405c70e928207ee35011ef738c55f4359b4fd
 
 pkgname = pijul
