@@ -6,11 +6,13 @@
 # they publish as binaries. This package is a best-effort at reproducing
 # something equivolent to their releases, but may not be the exact version of
 # sources their built from at release time.
+#
+# https://github.com/xetdata/xet-core/issues/132
 
 pkgbase=xet
 pkgname=(git-xet xetcmd xetmnt)
-pkgver=0.12.2
-_sha=de87bc6055ff4b8a7f982bb84724097274e743fa
+pkgver=0.12.4
+_sha=357b38801e9ebd1520e8d6dfc95783f14ad7fd20
 pkgrel=1
 pkgdesc='CLI tools for working with XetHub'
 arch=(x86_64)
@@ -25,7 +27,7 @@ makedepends=(cargo
 _archive="xet-core-$_sha"
 options=(!lto)
 source=("https://github.com/xetdata/xet-core/archive/$_sha/$_archive.tar.gz")
-sha256sums=('75c6198f2561bfa53fc295ac8a9cdc434b7fb3776b1cd2a6ead2ca8570fa4fe6')
+sha256sums=('91e382ad5a5c08ba2157812f3e52ab408e713e0ad4c29c2224d3f6577395001b')
 
 prepare() {
 	cd "$_archive/rust"
