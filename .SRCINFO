@@ -1,6 +1,6 @@
-pkgbase = marswm-git
+pkgbase = marswm
 	pkgdesc = A rusty successor to moonwm
-	pkgver = 0.4.0.r4.gd0ca669
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/jzbor/marswm
 	arch = x86_64
@@ -10,12 +10,13 @@ pkgbase = marswm-git
 	depends = libx11
 	depends = libxft
 	depends = libxinerama
-	depends = xmenu
+	optdepends = rofi: application menu,
+	optdepends = xmenu: context menus,
 	provides = marswm
 	provides = mars-relay
 	conflicts = marswm
 	conflicts = mars-relay
-	source = git+https://github.com/jzbor/marswm
+	source = -0.5.1.tar.gz::https://github.com/jzbor/marswm/archive/0.5.1.tar.gz
 	sha512sums = SKIP
 
-pkgname = marswm-git
+pkgname = marswm
