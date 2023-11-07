@@ -3,7 +3,7 @@
 # Based on the rbdoom3-bfg-git package by M0Rf30
 
 pkgname=rbdoom-3-bfg
-pkgver=1.5.1.r38.a51833e4
+pkgver=1.5.1.r45.b04705c5
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')

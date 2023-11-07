@@ -5,7 +5,7 @@
 pkgname=rbdoom-3-bfg
 _srctag=1.5.1
 pkgver=${_srctag//-/.}
-pkgrel=8
+pkgrel=9
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -42,6 +42,7 @@ source=(
 prepare() {
   cd RBDOOM-3-BFG
   git remote set-url origin https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
+  git cherry-pick -n feffa4a4dd9a2a5f3c608f720cde41bea37797d3
   git submodule update --init --filter=tree:0 --recursive
 }
 
