@@ -3,7 +3,7 @@
 
 pkgname=kamule
 pkgver=0.91
-pkgrel=2
+pkgrel=3
 pkgdesc="A KDE frontend for aMule"
 arch=('x86_64')
 url='https://www.linux-apps.com/content/show.php?content=150270'
