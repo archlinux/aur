@@ -1,4 +1,5 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: gardar <aur AT gardar DOT net>
 
 pkgname=ansible-cmdb
 pkgver=1.31
