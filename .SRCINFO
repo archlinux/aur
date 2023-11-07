@@ -1,16 +1,16 @@
 pkgbase = waydroid-settings-git
 	pkgdesc = GTK app written in Python to control Waydroid settings
-	pkgver = r112.7716d97
-	pkgrel = 1
+	pkgver = r115.d2e9aa9
+	pkgrel = 2
 	url = https://github.com/axel358/Waydroid-Settings
 	arch = any
 	makedepends = git
 	provides = waydroid-settings
 	conflicts = waydroid-settings
 	source = git+https://github.com/axel358/Waydroid-Settings.git#branch=main
-	source = quackdoc_scripts::git+https://github.com/Quackdoc/waydroid-scripts.git
-	source = git+https://github.com/electrikjesus/waydroid-10-11-switch-script.git
-	source = git+https://github.com/electrikjesus/wd-scripts.git
+	source = quackdoc_scripts::git+https://github.com/Quackdoc/waydroid-scripts.git#commit=d7ad1900690f39589d16c2f481096ce130faf0f1
+	source = git+https://github.com/electrikjesus/waydroid-10-11-switch-script.git#commit=f50121ae1e106c0b594ef3c392f6b58a562e1d26
+	source = git+https://github.com/electrikjesus/wd-scripts.git#commit=f8f4e3ca2c9501063d59168946cd2cdc23f6c60d
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
