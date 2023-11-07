@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-module-info'
-pkgver='0.34'
+pkgver='0.37'
 pkgrel='1'
 pkgdesc="Information about Perl modules"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl-b-utils>=0.27' 'perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/Module-Info'
-source=('http://search.cpan.org/CPAN/authors/id/M/MB/MBARBON/Module-Info-0.34.tar.gz')
-md5sums=('13a912e1ddbca467d4e15e3a7f0acd0c')
-sha512sums=('50f79e0698d9daae975e2de774c1bfbdde9c0a9dd3a7eaedfd8659ec7afd495711fe49510e4c7f64092abfeb58e670f2a586cc9a112777c8c5ad64f122dd3948')
-_distdir="Module-Info-0.34"
+url='https://metacpan.org/release/Module-Info'
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Info-0.37.tar.gz')
+md5sums=('72dd1a99bc124a97888cbbedc37993ca')
+sha512sums=('4a9fb295c6a0b7ac701543b292804ce880129b883da7d8f27b255a198e28dc105b11753330c2861241e65898f726a1127c7daf46af09361e3713bdcd5b89227e')
+_distdir="Module-Info-0.37"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
