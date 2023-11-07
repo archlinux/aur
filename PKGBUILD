@@ -2,7 +2,7 @@
 
 _pyname=glyphsets
 pkgname=python-${_pyname,,}
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='an API with data about glyph sets for many different scripts and languages'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('ccefc30bc65019c873a6726ff58493c508f5322f67f0a32b5723672f9334b510')
+sha256sums=('669e152c9f61ea5933eca38cecb58a023ed45f52b388ba1bcde4fd0e8b2fe545')
 
 prepare() {
 	cd "$_archive"
