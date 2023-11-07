@@ -6,12 +6,27 @@ _pkgname=CoolTerm
 pkgver=2.0.1
 pkgrel=4
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation)"
-arch=("aarch64" "armv7h" "i686" "x86_64")
+arch=(
+	"aarch64"
+	"armv7h"
+	"i686"
+	"x86_64"
+)
 url="https://freeware.the-meiers.org"
 license=("custom")
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+conflicts=("${pkgname%-bin}")
+depends=(
+	'gtk3'
+	'python'
+	'python-psutil'
+	'libunwind'
+	'at-spi2-core'
+	'gdk-pixbuf2'
+	'cairo'
+	'pango'
+	'libx11'
+)
 makedepends=('gendesk')
-depends=('gtk3' 'python' 'python-psutil' 'libunwind' 'glib2' 'gcc-libs' 'glibc' 'at-spi2-core' 'gdk-pixbuf2' 'cairo' 'pango' 'libx11')
 source=("LICENSE")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/${_pkgname}RaspberryPi64Bit.zip")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/${_pkgname}RaspberryPi.zip")
@@ -22,8 +37,9 @@ sha256sums_aarch64=('c10c0b9b8432c49a9e6ae77e68941036ea5e35a3dde6713b0fc3b74ba18
 sha256sums_armv7h=('258ab48d00698536585a2fcc1a0b3d5fb2ebb704776bf60d82d8c46ed4311c59')
 sha256sums_i686=('fb4072c5a37744bd685e19d1fd63f649ac9824512cb1e860f24128dfc2172ab4')
 sha256sums_x86_64=('5b5c2d620d20e19f8e9aeef463ee2dcc23f7c843b6da2e36da05f045d6d668ce')
-prepare() {
-	gendesk -f -n --icon "${pkgname%-bin}" --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+build() {
+	gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+	find "${srcdir}/${_pkgname}/Scripting/Python/Examples" -name "*.py" -exec chmod 755 {} \;
 }
 package() {
 	install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
