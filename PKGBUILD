@@ -1,8 +1,8 @@
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-util'
-pkgver='4.161950'
+pkgver='4.201720'
 pkgrel='1'
 pkgdesc="Easy, versatile, portable file handling"
 arch=('any')
@@ -10,12 +10,12 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-module-build>=0.28' 'perl>=5.8.1')
 makedepends=()
-checkdepends=('perl-test-nowarnings')
+checkdepends=('perl-test-nowarnings>=0')
 url='https://metacpan.org/release/File-Util'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMMY/File-Util-4.161950.tar.gz')
-md5sums=('5706487ecf0daae885f709914915e832')
-sha512sums=('1678d0075b2ebcb014a101cfec39e462ab4c4380db48016adb0d4d65a532dc215ecead10fe440df8a00cee9ec882a9e4df25d28228fc30f66918492ef64344de')
-_distdir="File-Util-4.161950"
+source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMMY/File-Util-4.201720.tar.gz')
+md5sums=('093fe77c4658f98375c7f6cc68694948')
+sha512sums=('7f422d8634b9b73a51117fdc7f95999fd07ac60beddce0cba4eed6a45173f79e727e8e10a4342949d3b0c2a89a985ce1abe66f827d7027c5727dc009fd29e1df')
+_distdir="File-Util-4.201720"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
