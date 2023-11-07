@@ -2,7 +2,7 @@
 # Contributor: Sergey Moryakov <sergey@nqnet.org>
 
 pkgname=homed-zigbee
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="HOMEd ZigBee is a ZigBee to MQTT gateway"
 arch=("armv7h" "i686" "x86_64")
