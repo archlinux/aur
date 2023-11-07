@@ -6,7 +6,7 @@ _commit=8062651a6a2b51701a4c6f058e3e1fb44a92062f
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -63,6 +63,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   rust                  lib32-rust-libs
   libgphoto2
   opencl-headers
+  wayland-protocols
 )
 
 optdepends=(
