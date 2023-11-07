@@ -2,7 +2,7 @@
 
 pkgname=rate-mirrors-bin
 pkgver=0.16.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool - pre-built with musl"
 url="https://github.com/westandskif/rate-mirrors"
 license=('custom')
@@ -12,7 +12,8 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/westand
 arch=('x86_64' 'aarch64')
 depends=()
 makedepends=()
-conflicts=('rate-mirrors')
+conflicts=("rate-mirrors")
+provides=("rate-mirrors")
 
 build() {
   tar xzf "${pkgname}-${pkgver}-${CARCH}.tar.gz"
