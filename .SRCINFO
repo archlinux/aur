@@ -1,0 +1,26 @@
+pkgbase = r-outsplice
+	pkgdesc = Comparison of Splicing Events between Tumor and Normal Samples
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/OutSplice
+	arch = any
+	license = GPL2
+	checkdepends = r-testthat
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-org.hs.eg.db
+	depends = r-repitools
+	depends = r-s4vectors
+	depends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	depends = r-txdb.hsapiens.ucsc.hg38.knowngene
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OutSplice_1.2.0.tar.gz
+	md5sums = 7a55735983a79681a2bbcd567c9f0c53
+	sha256sums = 04a0e39ab46157dc360a56ed4177595b7bd30eb3ace1a1e5adf5d41785804aeb
+
+pkgname = r-outsplice
