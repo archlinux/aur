@@ -1,11 +1,10 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-intel-lts-sriov
-pkgver=6.1.8.0b3cff71dc868b577c8b32c0f2e01d41ae124cf3
+pkgver=6.1.38.fecdf03f88d08557ec939b280c69e32ca90690c1
 pkgrel=1
 pkgdesc='Intel-LTS kernel with SR-IOV support and ashmem and binder drivers'
-_srctag=lts-v6.1.8-linux-230201T082419Z
-_srcref=b7197951619d22aa42d369c8b1bc41bc298f30f2 # git rev-parse $_srctag
+_srctag=fecdf03f88d08557ec939b280c69e32ca90690c1
 url="https://github.com/intel/linux-intel-lts/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -17,7 +16,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-intel-lts
 source=(
-  "$_srcname::git+https://github.com/intel/linux-intel-lts#tag=$_srcref"
+  "$_srcname::git+https://github.com/intel/linux-intel-lts#tag=$_srctag"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
