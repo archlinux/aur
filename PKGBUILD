@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clight-git
-pkgver=4.10.r2.gc85b4aa
+pkgver=4.10.r5.g0d6d075
 pkgrel=1
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display
          gamma temperature, dim your screen and set your dpms."
@@ -9,12 +9,11 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clight"
 license=('GPL3')
 depends=('clightd-git' 'gsl' 'hicolor-icon-theme' 'libconfig' 'popt')
-makedepends=('git' 'cmake' 'bash-completion')
-optdepends=('geoclue: to retrieve user location through geoclue.'
+makedepends=('cmake' 'git')
+optdepends=('clight-gui-git: Clight GUI written in Qt.'
+            'geoclue: to retrieve user location through geoclue.'
             'upower: to save energy by increasing timeouts between captures while on battery
-             and to autocalibrate keyboard backlight.'
-            'bash-completion: to add support for bash automatic completion.'
-            'clight-gui-git: Clight GUI written in Qt.')
+             and to autocalibrate keyboard backlight.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}/${pkgname%-git}.conf"
@@ -24,7 +23,7 @@ source=('git+https://github.com/FedeDP/Clight.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Clight"
+  cd Clight
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
