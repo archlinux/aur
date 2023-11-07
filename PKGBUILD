@@ -5,7 +5,7 @@ pkgver=21.0.1
 graal_=${pkgver}+12.1
 java_=${pkgver%%.*}
 pkgname="jdk${java_}-graalvm-bin"
-pkgrel=0
+pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
       'aarch64')
@@ -14,9 +14,6 @@ license=('custom')
 depends=('java-runtime-common'
          'java-environment-common')
 makedepends=()
-optdepends=("graaljs-jdk${java_}-bin: JavaScript component (used to be bundled with this package before the 22.2.0 release)"
-            "graal-llvm-jdk${java_}-bin: LLVM component (used to be bundled with this package before the 22.2.0 release)"
-            "graal-visualvm-jdk${java_}-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)")
 provides=("java-runtime=${java_}"
           "java-environment=${java_}")
 replaces=("native-image-jdk${java_}-bin")

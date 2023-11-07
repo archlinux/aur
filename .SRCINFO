@@ -1,7 +1,7 @@
 pkgbase = jdk21-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 21 version
 	pkgver = 21.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk21-graalvm-bin.install
 	arch = x86_64
@@ -9,9 +9,6 @@ pkgbase = jdk21-graalvm-bin
 	license = custom
 	depends = java-runtime-common
 	depends = java-environment-common
-	optdepends = graaljs-jdk21-bin: JavaScript component (used to be bundled with this package before the 22.2.0 release)
-	optdepends = graal-llvm-jdk21-bin: LLVM component (used to be bundled with this package before the 22.2.0 release)
-	optdepends = graal-visualvm-jdk21-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)
 	provides = java-runtime=21
 	provides = java-environment=21
 	replaces = native-image-jdk21-bin
