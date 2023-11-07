@@ -6,6 +6,8 @@ mkdir --parents "$HOME/.tiny-media-manager"
 mkdir --parents "$HOME/.tiny-media-manager/templates"
 cd "$HOME/.tiny-media-manager"
 ln --symbolic --force /usr/share/tinyMediaManager/templates/templates.jar ./templates/templates.jar
+ln --symbolic --force --no-dereference /usr/share/tinyMediaManager/native "$HOME/.tiny-media-manager/native"
+ln --symbolic --force /usr/share/tinyMediaManager/version "$HOME/.tiny-media-manager/version"
 
 source /usr/share/tinyMediaManager/tmm.JAVA_OPTS
 
