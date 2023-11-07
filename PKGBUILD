@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cacophony
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A minimalist and ergonomic MIDI sequencer'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'alsa-lib' 'libspeechd')
 makedepends=('git' 'rust' 'clang')
 options=('!lto')
-_commit='be4914d7bffee385351749815bb569a4b60fdc21'
+_commit='cdbb7bfad550618d973b109f408e4e38709e3496'
 source=("$pkgname::git+https://github.com/subalterngames/cacophony")
 b2sums=('SKIP')
 
