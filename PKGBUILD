@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Luca D'Amico <damico.luca91[at]live.it>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Brad Ackerman <brad[at]facefault.org>
 # Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
@@ -14,12 +15,6 @@ depends=('python-colorclass' 'python-easygui' 'python-pyparsing' 'python-msoffcr
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.zip::https://files.pythonhosted.org/packages/source/o/$_pkg/$_pkg-$pkgver.zip")
 sha256sums=('67a796da4c4b8e2feb9a6b2495bef8798a3323a75512de4e5669d9dc9d1fae31')
-
-# Some checks failing; will investigate. -BA 20190616
-# check() {
-#   cd "${srcdir}/${_pyname}-${pkgver}"
-#   python3 setup.py test
-# }
 
 prepare() {
   cd "$_pkg-$pkgver"
@@ -48,4 +43,9 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/thirdparty/prettytable/LICENSE"
 }
 
-# vim:set et sw=2 ts=2 tw=79:
+# Checks are currently broken upstream for version 0.60.1
+# but they are working in master branch: uncomment in the next release!
+# check() {
+#   cd "${srcdir}/${_pyname}-${pkgver}"
+#   python setup.py test
+# }
