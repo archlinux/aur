@@ -6,15 +6,15 @@
 pkgname=aacskeys
 pkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=7.4
+pkgrel=7.5
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://cyberside.net.ee/ripping/BD_DeviceKeys"
 license=('custom:Public Domain')
 depends=("openssl-1.0")
 makedepends=("java-environment" "premake")
-source=("https://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}.orig.tar.gz"
-	"https://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}-${_dmover}.diff.gz")
+source=("https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
+	"https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${pkgver}-${_dmover}.diff.gz")
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
           '481c737983332a4a38aab0b292ba0cd958bb629c')
 

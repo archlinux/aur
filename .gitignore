@@ -5,3 +5,4 @@ pkgdir
 *.tar
 *.gz
 *.xz
+*.zst
