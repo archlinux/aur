@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -16,9 +16,6 @@ prepare() {
   cd "$srcdir/OpenModelica"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive OMCompiler/3rdParty
-
-  # fix build with gcc 13
-  curl -L https://github.com/oneapi-src/oneTBB/pull/833.patch | patch -p1 -d OMCompiler/3rdParty/tbb
 
   # link with shared blas/lapack libs: https://github.com/OpenModelica/OpenModelica/issues/10304
   sed -i "s|-Wl,-Bstatic -lSimulationRuntimeFMI \$LDFLAGS \$LD_LAPACK -Wl,-Bdynamic|-Wl,-Bstatic -lSimulationRuntimeFMI -Wl,-Bdynamic \$LDFLAGS \$LD_LAPACK|g" OMCompiler/configure.ac
