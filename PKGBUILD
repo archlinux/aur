@@ -1,13 +1,11 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-
 pkgname=perl-pod-coverage-trustpod
-pkgver=0.100005
+pkgver=0.100006
 pkgrel=1
 _author='R/RJ/RJBS'
 _perlmod='Pod-Coverage-TrustPod'
 pkgdesc="Pod::Coverage::TrustPod - allow a module's pod to contain Pod::Coverage hints"
 arch=('any')
-url="http://search.cpan.org/dist/Pod-Coverage-TrustPod/"
+url="https://metacpan.org/release/Pod-Coverage-TrustPod/"
 license=('GPL' 'PerlArtistic')
 depends=(
 perl-pod-eventual
@@ -16,7 +14,7 @@ perl-pod-coverage
 provides=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('6c68835c24cdcafbb1567e680ab12bb17616382baf8bc44ce457e41a1d357321')
+sha256sums=('358adc2504f039eb69098aa99bdde6ae9dc935364a8e144f6405e8293b3a7ca3')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
