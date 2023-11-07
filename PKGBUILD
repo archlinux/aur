@@ -2,7 +2,7 @@
 
 _name=duckargs
 pkgname=python-duckargs
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Productivity tool for quickly creating python programs that parse command-line arguments"
 arch=(any)
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('python>=3.7')
 makedepends=(python-build python-installer python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('97dd2b1acdb66d508931eefbb344c149e1cf95d6685955fa454a1abf752304e1f01dbb18c6ade6b384961f3ee9d329ccaff353c3f375f022e188555ccafd9c01')
+b2sums=('93e06090b7a4b81556ae686f2623a472c1ae032682616f7064c45ffac7ce3320f50be7e61da770112d6a538dddc00bd69046301d9434b7af2eb2ff82aee51a62')
 
 build() {
     cd $_name-$pkgver
