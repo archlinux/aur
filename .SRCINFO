@@ -1,7 +1,7 @@
 pkgbase = corestuff
 	pkgdesc = An activity viewer from the C Suite
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corestuff
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = corestuff
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = libxcomposite
-	depends = kglobalaccel
+	depends = kglobalaccel5
 	depends = libcsys>=2.7.1
 	depends = libcprime>=2.7.1
 	replaces = corebox
