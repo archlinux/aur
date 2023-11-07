@@ -1,0 +1,24 @@
+pkgbase = r-msdatahub
+	pkgdesc = Mass Spectrometry Data on ExperimentHub
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MsDataHub
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-experimenthub
+	optdepends = r-biocstyle
+	optdepends = r-dt
+	optdepends = r-experimenthubdata
+	optdepends = r-knitr
+	optdepends = r-mzr
+	optdepends = r-psmatch
+	optdepends = r-qfeatures
+	optdepends = r-rmarkdown
+	optdepends = r-spectra
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsDataHub_1.2.0.tar.gz
+	md5sums = f355465b6b3994491364cbe994e4488d
+	sha256sums = 991de642121db86be31c55c72ad17ac24999afd66a1ec568636e8ff0d78cd30d
+
+pkgname = r-msdatahub
