@@ -1,6 +1,6 @@
 pkgbase = slack-electron
 	pkgdesc = Slack Desktop (Beta) for Linux, using the system Electron package
-	pkgver = 4.35.121
+	pkgver = 4.35.126
 	pkgrel = 1
 	url = https://slack.com/downloads/linux
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = slack-electron
 	optdepends = libappindicator-gtk3: for notification indicator in the status bar on GNOME
 	provides = slack-desktop
 	conflicts = slack-desktop
-	source = slack-electron-4.35.121.deb::https://downloads.slack-edge.com/releases/linux/4.35.121/prod/x64/slack-desktop-4.35.121-amd64.deb
+	source = slack-electron-4.35.126.deb::https://downloads.slack-edge.com/releases/linux/4.35.126/prod/x64/slack-desktop-4.35.126-amd64.deb
 	source = slack.sh
-	sha256sums = 8bc7cfd9f6373ed65cc9820c961d73ea6ce93605cd9559ca5e7bdf5764401e41
+	sha256sums = 95d1404a7b45f3282eeb9ed65f093f5e5a47cc1f92f71f128c03a38c32acbc2b
 	sha256sums = 4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd
 
 pkgname = slack-electron
