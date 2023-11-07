@@ -1,8 +1,8 @@
 pkgbase = cptutils
 	pkgdesc = A number of utilities for the manipulation of color gradients; mainly for translating between different formats
-	pkgver = 1.77
+	pkgver = 1.78
 	pkgrel = 1
-	url = http://soliton.vm.bytemark.co.uk/pub/jjg/en/code/cptutils.html
+	url = http://soliton.vm.bytemark.co.uk/pub/jjg/en/code/cptutils/
 	arch = x86_64
 	arch = aarch64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = cptutils
 	depends = libpng
 	depends = jansson
 	optdepends = python: for the gradient-convert tool
-	source = http://soliton.vm.bytemark.co.uk/pub/jjg/src/cptutils-1.77.tar.gz
-	sha256sums = cdef49a363178617df2983455a174d7dbb248d26572ff5f11f86419843c3ebff
+	source = http://soliton.vm.bytemark.co.uk/pub/jjg/src/cptutils-1.78.tar.gz
+	sha256sums = a8c0a4cb3ee5790ae09f8d1009100ab417e1ee4dae420baa96961078b11ae78b
 
 pkgname = cptutils
