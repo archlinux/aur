@@ -3,18 +3,18 @@
 
 _pkgname=application-inspector
 pkgname=$_pkgname-bin
-pkgver=1.9.10
-pkgrel=2
-pkgdesc="Microsoft ApplicationInspector is a source code analyzer built for surfacing features of interest and other characteristics to answer the question 'what's in it' using static analysis with a json based rules engine (official CLI binary version)"
-arch=('x86_64')
+pkgver=1.9.14
+pkgrel=1
+pkgdesc="A source code analyzer built for surfacing features of interest and other characteristics to answer the question 'What's in the code?' quickly using static analysis with a json based rules engine (binary release)"
 url="https://github.com/microsoft/ApplicationInspector"
+arch=('x86_64')
 license=('MIT')
-depends=(dotnet-runtime)
-conflicts=($_pkgname)
-provides=($_pkgname)
-options=(staticlibs)
-source=($url/releases/download/v$pkgver/ApplicationInspector_linux_$pkgver.zip)
-sha256sums=('a040b2d88033cd8a20b4a081a6bba446d7c4d8c5e8a3e54dbff12ae225c9d322')
+depends=('dotnet-runtime')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+options=('staticlibs')
+source=("$url/releases/download/v$pkgver/ApplicationInspector_linux_$pkgver.zip")
+sha256sums=('409662ea4b1f530910c24aef68896406a93f5d7667e72410d4b51ceaecdd40c7')
 install=$pkgname.install
 
 package() {
