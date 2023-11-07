@@ -1,0 +1,18 @@
+pkgbase = python-ygglatency
+	pkgdesc = Find the fastest Yggdrasil peers.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-ygglatency
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bs4
+	depends = python-requests
+	depends = python-icmplib
+	conflicts = python-ygglatency
+	conflicts = python-ygglatency-git
+	source = https://files.pythonhosted.org/packages/6e/c3/c61f5853a3bfc5d640e44a8f19d14dc51e13e03689cc75fb1731d08cd2f6/ygglatency-0.2.2.tar.gz
+	sha256sums = a4343ab5bf3a0c07adb06bb38068491c1df8ec52b6b8b204516071a16f9cdef5
+
+pkgname = python-ygglatency
