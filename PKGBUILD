@@ -6,8 +6,8 @@
 
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
-pkgver=2.9
-pkgrel=3
+pkgver=2.10
+pkgrel=1
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/tomb/"
@@ -17,8 +17,8 @@ source=("https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz"
         "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.asc")
 
 # The first hash comes from the .sha file
-sha256sums=('b3a23c6680815f7557a3c4bd73d2b2dbde870a62357fcbf9b33089afae75d68c'
-            '4f57af24b3b39ae1774ac0bca5af5dacf26465bbd55dc954001069fecce5f2a2'
+sha256sums=('e3da3215f0cd68ca67a835817657f87b5e309e6b5e3e6900acee7cfd5be23210'
+            'be423500876ab69b51abcfcc391adec28e80be131ab3aa1ee65989d1c26d5600'
             'SKIP')
 
 # The public key is found at https://keybase.io/jaromil
@@ -37,7 +37,7 @@ build() {
 #}
 
 package_tomb() {
-  depends=('cryptsetup' 'gnupg' 'sudo' 'zsh' 'e2fsprogs' 'inetutils')
+  depends=('cryptsetup' 'gnupg' 'sudo' 'zsh' 'e2fsprogs' 'inetutils' 'pinentry')
   optdepends=(
   'steghide: steganography'
   'dcfldd: show nice progress during massive I/O'
