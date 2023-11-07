@@ -1,13 +1,13 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-text-hunspell
-pkgver=2.14
+pkgver=2.16
 pkgrel=1
 _author=C/CO/COSIMO
 _perlmod=Text-Hunspell
 pkgdesc='Text::Hunspell - Perl interface to the GNU Hunspell library'
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/dist/Text-Hunspell/"
+url="https://metacpan.org/release/Text-Hunspell/"
 license=('GPL' 'PerlArtistic')
 depends=(
 hunspell
@@ -19,7 +19,7 @@ perl-alien-hunspell
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('22e1000b566b8a3d34fdb2f8afa8130e2fc28e81773c5b67dfd020ef41c53406')
+sha256sums=('b796cd0ab197083301d8f44f5e21ee3e014b7a0791c9e10f3a51204029fd3a3b')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
