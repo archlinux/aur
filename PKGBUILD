@@ -6,7 +6,7 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.6.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -18,15 +18,17 @@ makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'libchardet' 'python-six' 'python-sphinx' 'python-gitpython'
              'perl-pod-pom-view-restructured')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
-        "sphinx4.patch"
+        "https://src.fedoraproject.org/rpms/cyrus-imapd/raw/4176c0e5983b3d19752f2db3860c33bafa7c259b/f/patch-cyrus-remove-always-inline-for-buf-len"
+        "docs.patch"
         "imapd.conf.patch"
         "cyrus-imapd.service"
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('d2b21117e7d0dd93212a43ca42098dc8b59613cb45ed2287d381c8c363026ac29386dfd90f07fa2ce8a77f56dddd19f2cc5b80d9c60c400d65cbb1d52a8db93c'
+sha512sums=('95473c7fbe0ccfae2b4f4dddd0448b33079c50848334054d9ce0489e74c70bc99c53f12ec3e46c9d8055480b31cc412896fc26a60ae2844cb8d7f61f9867caed'
             'SKIP'
-            '61ea7c6079ffd32bc99b07911088e772cb0ddb0757b4673f9335b0f00e79934b77af67f6d3bbed68e9446ea4b50c7a07abcca363b2b767331136ccbe34852b6b'
+            '575db085359af83605e89972ab20e2e1f62e67418242f954f4ed5e60d29acf66dfea07f41537327688857eddb0b310b5ee6361155a7588299d5adbaea487307a'
+            '6634e985548f2a80e4db7dca11c9de5943848d8cfb301cf6d45a39d52b401dc15f5242a692bca38b4e05ebca157a6f3e4469ff011d489da83bc1fcc13b09bcca'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
             '28612e491371515b414ce6d34554f1c2286624f5b80872e6be7037a2cccba1ed5bd2c4bfed27ed978478debdfb5f3d56aaa30d767f50b125f2ad38e76a37702c'
@@ -35,7 +37,10 @@ sha512sums=('d2b21117e7d0dd93212a43ca42098dc8b59613cb45ed2287d381c8c363026ac2938
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  patch -Np1 < "${srcdir}/sphinx4.patch"
+  # https://bugzilla.redhat.com/show_bug.cgi?id=2223951
+  patch -Np1 < "${srcdir}/patch-cyrus-remove-always-inline-for-buf-len"
+  # https://github.com/cyrusimap/cyrus-imapd/issues/4491
+  patch -Np1 < "${srcdir}/docs.patch"
 }
 
 build() {
@@ -89,11 +94,18 @@ package_cyrus-imapd() {
               'rsync: for compacting Xapian databases')
   provides=('imap-server' 'pop3-server')
   backup=('etc/cyrus/cyrus.conf' 'etc/cyrus/imapd.conf')
-  install="${pkgname}.install"
+  #install="${pkgname}.install"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+
+  # Rename restore so it doesn't conflict with the identically named command
+  # from tar
+  mv "${pkgdir}/usr/bin/restore" \
+    "${pkgdir}/usr/bin/cyr_restore"
+  mv "${pkgdir}/usr/share/man/man8/restore.8" \
+    "${pkgdir}/usr/share/man/man8/cyr_restore.8"
 
   # Rename httpd.8 and master.8 so they don't conflict with the identically
   # named manpages from postfix and apache
