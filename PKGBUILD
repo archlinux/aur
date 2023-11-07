@@ -1,7 +1,7 @@
 # Maintainer: a821
 
 pkgname=txt2tags-git
-pkgver=3.8.r0.gf570b43
+pkgver=3.9.r0.gbc7f2c4
 pkgrel=1
 pkgdesc="A text formatting and conversion tool"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=('python')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("git+https://github.com/txt2tags/txt2tags.git#branch=v3")
 sha256sums=('SKIP')
 
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
     cd "${pkgname%-git}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${pkgname%-git}"
-    python setup.py install --root="$pkgdir"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim: set ts=4 sw=4 et:
