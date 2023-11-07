@@ -1,18 +1,18 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Ivan Fonseca <ivanfon@riseup.net>
 pkgname=fkill
 _npmname=fkill-cli
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Fabulously kill processes. Cross-platform."
 arch=('any')
 url="https://github.com/sindresorhus/fkill-cli"
 license=('MIT')
-depends=('nodejs>=16')
+depends=('nodejs>=18')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('7d330141c27d062070f0eb9fb0b9894917039d796282a4a9e113be0cd531f428')
+sha256sums=('47be11adbcb1524213aea291a829640c13f93381324fc00bbe059805166da40c')
 
 package() {
   npm install \
