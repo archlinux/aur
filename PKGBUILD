@@ -3,13 +3,13 @@
 pkgname=python-proton-vpn-killswitch
 _gitpkgname=python-proton-vpn-killswitch
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-killswitch component defines the VPN kill switch interface."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-killswitch"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-psutil")
+depends=("python-proton-core")
 makedepends=("python-setuptools")
 source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
