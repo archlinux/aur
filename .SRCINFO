@@ -1,0 +1,16 @@
+pkgbase = deadbeef-plugin-jack-git
+	pkgdesc = JACK output plugin for DeaDBeeF music player (latest commit)
+	pkgver = r10.62d1e6a
+	pkgrel = 1
+	url = https://github.com/DeaDBeeF-Player/jack
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = deadbeef
+	depends = jack
+	provides = deadbeef-plugin-jack
+	conflicts = deadbeef-plugin-jack
+	source = git+https://github.com/DeaDBeeF-Player/jack.git
+	sha256sums = SKIP
+
+pkgname = deadbeef-plugin-jack-git
