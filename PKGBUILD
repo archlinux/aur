@@ -2,7 +2,7 @@
 
 pkgname=footage
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Polish your videos"
 url="https://gitlab.com/adhami3310/Footage"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlog
+  meson test -C build --print-errorlogs
 }
 
 package() {
