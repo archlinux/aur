@@ -1,11 +1,11 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=footage
-pkgdesc="Trim, flip, rotate and crop individual clips. Footage is a useful tool for quickly editing short videos and screencasts. It's also capable of exporting any video into a format of your choice"
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-arch=('any')
+pkgdesc="Polish your videos"
 url="https://gitlab.com/adhami3310/Footage"
+arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('a52dec' 'fdkaac' 'gst-editing-services' 'gst-plugins-rs'
          'libadwaita' 'libmpeg2' 'svt-av1' 'vo-aacenc' 'x264' 'x265')
@@ -24,7 +24,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 Footage/README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 Footage/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
