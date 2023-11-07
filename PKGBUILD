@@ -4,7 +4,7 @@
 # Contributer: Alex Ogier <alex.ogier@gmail.com>
 pkgname=ruby-build
 pkgver=20231107
-pkgrel=1
+pkgrel=2
 _file="${pkgname}-v${pkgver}.tar.gz"
 pkgdesc="Compile and install Ruby"
 arch=('any')
