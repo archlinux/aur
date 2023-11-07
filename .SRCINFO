@@ -1,0 +1,13 @@
+pkgbase = python-jsonxs
+	pkgdesc = A Python library for working with JSON using XPath-like syntax
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/fboender/jsonxs
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/fboender/jsonxs/archive/refs/tags/v0.6.tar.gz
+	sha256sums = bf36f451d1bac2839d67d5fb386911c2844debbafdb120c64471dd5312eafcfe
+
+pkgname = python-jsonxs
