@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.1.r47.gce2ba21
-pkgrel=2
+pkgver=1.2.1.r51.gb1f6002
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
@@ -13,12 +13,12 @@ source=('git+https://github.com/pop-os/launcher.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/launcher"
+  cd launcher
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/launcher"
+  cd launcher
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
@@ -31,14 +31,14 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/launcher"
+  cd launcher
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just build-vendored
 }
 
 check() {
-  cd "$srcdir/launcher"
+  cd launcher
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just check
@@ -50,7 +50,7 @@ package_pop-launcher-git() {
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
-  cd "$srcdir/launcher"
+  cd launcher
   install -Dm755 "target/release/${pkgname%-git}-bin" "$pkgdir/usr/bin/${pkgname%-git}"
 
   just rootdir="$pkgdir" install-plugins install-scripts
@@ -65,7 +65,7 @@ package_pop-shell-plugin-system76-power-git() {
   conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
   replaces=('pop-launcher-system76-power-git')
 
-  cd "$srcdir/launcher"
+  cd launcher
   install -d "$pkgdir/usr/lib/${pkgbase%-git}/scripts"
   cp -r scripts/system76-power "$pkgdir/usr/lib/${pkgbase%-git}/scripts"
 }
