@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Keymapp
+Exec=keymapp
+Icon=keymapp
+Terminal=false
+Categories=Settings;HardwareSettings;
