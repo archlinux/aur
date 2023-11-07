@@ -7,10 +7,10 @@ pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/wrapland"
 license=(LGPL)
-depends=('kwayland')
+depends=('kwayland5')
 provides=("wrapland")
 conflicts=("wrapland")
-makedepends=(doxygen extra-cmake-modules git qt5-doc qt5-tools wayland-protocols)
+makedepends=(doxygen extra-cmake-modules git qt6-doc qt6-tools wayland-protocols)
 source=("git+https://gitlab.com/kwinft/wrapland.git")
 sha256sums=('SKIP')
 
