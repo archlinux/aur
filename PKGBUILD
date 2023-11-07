@@ -3,14 +3,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r92.7b21018
+pkgver=r99.4a6621a
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
 depends=('fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse'
-         'libseat.so' 'libxkbcommon' 'pop-launcher' 'systemd-libs' 'wayland')
+         'libseat.so' 'libxkbcommon' 'pop-launcher-git' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'mold')
 checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
@@ -57,7 +57,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/cosmic-epoch"
+  cd cosmic-epoch
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -95,7 +95,7 @@ _repos=(
 )
 
 prepare() {
-  cd "$srcdir/cosmic-epoch"
+  cd cosmic-epoch
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
@@ -125,7 +125,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/cosmic-epoch"
+  cd cosmic-epoch
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
@@ -138,7 +138,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/cosmic-epoch"
+  cd cosmic-epoch
   appstream-util validate-relax --nonet cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
   desktop-file-validate cosmic-sysext/usr/share/applications/*.desktop || :
 
@@ -152,7 +152,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/cosmic-epoch"
+  cd cosmic-epoch
   cp -r cosmic-sysext/* "$pkgdir/"
 
   # Keybinding config
