@@ -1,0 +1,15 @@
+pkgbase = inshellisense
+	pkgdesc = IDE style command line auto complete
+	pkgver = 0.0.1_rc.1
+	pkgrel = 1
+	url = https://github.com/microsoft/inshellisense
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = npm
+	depends = nodejs
+	noextract = inshellisense-0.0.1-rc.1.tgz
+	source = https://registry.npmjs.org/@microsoft/inshellisense/-/inshellisense-0.0.1-rc.1.tgz
+	sha256sums = 2a8e3e7aaf2b99cc1ba5fa849d2a2e048451b07e59aa22c47098f70d305d212b
+
+pkgname = inshellisense
