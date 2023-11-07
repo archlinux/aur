@@ -9,7 +9,6 @@ arch=(any)
 license=(MIT)
 _tarname=Dhivehi_fonts
 source=("$_tarname.tar.xz::https://github.com/Alix35301/dhivehi_fonts/raw/master/Dhivehi_fonts.tar.xz")
-md5sums=('873fce3ced364e45978f9937a61fa5d2')
 package() {
   cd $_tarname
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
@@ -18,4 +17,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('873fce3ced364e45978f9937a61fa5d2')
+sha256sums=('6ebc94b324a21c154f20ce544f1f03adc3680e10995225b7579ddb9bd539dbda')
