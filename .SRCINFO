@@ -1,0 +1,12 @@
+pkgbase = asahi-nvram
+	pkgdesc = Nvram reader/writer for arm macs.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/WhatAmISupposedToPutHere/asahi-nvram
+	arch = aarch64
+	makedepends = git
+	makedepends = rust
+	source = git+https://github.com/WhatAmISupposedToPutHere/asahi-nvram.git
+	sha256sums = SKIP
+
+pkgname = asahi-nvram
