@@ -18,6 +18,6 @@ sha256sums=('68e3d94ec22f197d632a6475d6afa5c3b3ee186d901b082ff2a7a0b489ba9804'
             'e7892882e2e334c920626aede9aec9b397e55771eb1aea2a763cd02763e66412')
 
 package() {
-  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm755 plugins/jack.so -t "$pkgdir/usr/lib/deadbeef"
 }
