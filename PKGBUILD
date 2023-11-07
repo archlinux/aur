@@ -2,8 +2,8 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-pyvisa-py
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A pure python backend for PyVISA"
 url="https://github.com/pyvisa/pyvisa-py"
 arch=('any')
@@ -34,5 +34,5 @@ check() {
 
 package() {
   cd pyvisa-py
-  python setup.py install --skip-build --prefix=/usr --root="$pkgdir/" --optimize=1
+  python setup.py install --skip-build --optimize=1 --prefix=/usr --root="$pkgdir" 
 }
