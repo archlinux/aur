@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rlabkey
-_pkgver=2.12.0
+_pkgver=3.0.0
 pkgname=r-${_pkgname,,}
-pkgver=2.12.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Data Exchange Between R and 'LabKey' Server"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('86eccdb3139a12ebd53a97b6baaef055a043b4ecc75bd5f0fe3d2f217040f567')
+sha256sums=('a7a21749d1518a3599250c78958470d359f0172cdb0665797792d1191d323311')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
