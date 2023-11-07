@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-22
-_commit=6c0f3d088c8f0e2bb544668f5b50303f571bb4e5
+_srctag=GE-Proton8-23
+_commit=8062651a6a2b51701a4c6f058e3e1fb44a92062f
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
@@ -264,12 +264,12 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4'
-            'b0c825b93c2baad0d00b4d12076e7eb289a050cf179c84618cb4bb370a282611'
-            '7456b9f6a8c4b5b9c377ec393b8ccb6789e6af013a9db0196dcccd91ff5eb7c5'
-            '2fd493d69616a9f0d354e21a012846ab776a2f815299287b5c0d0825bb17fd19'
-            'bf5f960dafe260d8eb3b9ab0669eb307a2e69377d4b97902ed52a64431d5fe21'
-            'a1378fee4b4fec94b5eb89501dfd1e960f7b6af15b4ac82b0d542fbfd5e45b45'
-            '688864158572a66c81996b27b553a1215b8136985cf534be6dcb99af9722418d')
+            '8d0c1a5bd69dd03904536abeedc107e909097e1935fd702fdc140c1304e73cce'
+            '34b8e222d8338a08f038e14b990fdf84a338229d675d1c675752bbefe8f83deb'
+            '250029419a18c5c967b4d80f09edb89a99fc4b5e1899b4f28b7961491bacfb21'
+            'a3527cbb787528ad6b3c70bed221fc04bdeee35167cb9534c83f1fb23b665717'
+            '874f612f1043e540d0f07070688b0efcb11753b4c0f089b428dae603bf0ffca5'
+            '9fe93331fcb706abfd1c0542ed92c893dab3b35bb471aeeeaf69ea4554737a5a')
 # Optional patches
 sha256sums+=(
 )

@@ -1,4 +1,4 @@
-From 6a4327529c5f5980c7cf21377da8fc60cbe2675d Mon Sep 17 00:00:00 2001
+From c6913a8edb9e94c39ecdc8380b7f6c87b941570c Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 28 Sep 2023 14:16:04 +0300
 Subject: [PATCH 6/6] AUR: Fix hwnd redefinition
@@ -48,5 +48,5 @@ index fac49d29..f45af786 100644
  
  WINE_DEFAULT_DEBUG_CHANNEL(vrclient);
 -- 
-2.42.0
+2.42.1
 
