@@ -1,7 +1,7 @@
 pkgbase = r-lintr
 	pkgdesc = A 'Linter' for R Code
-	pkgver = 3.1.0
-	pkgrel = 3
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=lintr
 	arch = any
 	license = MIT
@@ -28,7 +28,7 @@ pkgbase = r-lintr
 	optdepends = r-tibble
 	optdepends = r-tufte
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/lintr_3.1.0.tar.gz
-	sha256sums = f71e5953d30156380f4776be5fe55a4f7a414ab4a2c26be475c1ee007f9663cd
+	source = https://cran.r-project.org/src/contrib/lintr_3.1.1.tar.gz
+	sha256sums = bcf146f4e74e6bf132fcbee7c9a43cd9c8abb4787e76a4164fa20468c180871d
 
 pkgname = r-lintr
