@@ -2,7 +2,7 @@
 
 pkgname='sidef'
 _pkgname='Sidef'
-pkgver='23.10'
+pkgver='23.11'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -15,9 +15,12 @@ depends=(
     'perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.45' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.36' 'perl-math-mpc'
     'perl-math-prime-util-gmp>=0.52' 'perl-term-readline-gnu' 'perl-algorithm-combinatorics' 'perl-algorithm-loops'
 )
-optdepends=('perl-math-prime-util: for better performance in several functions')
+optdepends=(
+    'perl-math-prime-util: for better performance in several functions'
+    'perl-forks: for better threading support'
+)
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('475e44eab36af8249681c7f2b0ebf7320827938b090d9ccf9f8628bd1f30539b60def50a50d9add1f5addf8498e508cbbce2db419bf535465a7591673bc22b15')
+b2sums=('957f810cf64ef87d97253f36fb04256f9d7c506be0cb0fc535d13145de056eccac29116298e0381dc91e03b2b9484f8756e97954f7e9bf00a0ca31dc02ffef4e')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
