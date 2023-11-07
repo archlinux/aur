@@ -6,6 +6,7 @@ pkgbase = deadbeef-plugin-jack-bin
 	arch = x86_64
 	license = MIT
 	depends = deadbeef
+	depends = jack
 	provides = deadbeef-plugin-jack
 	conflicts = deadbeef-plugin-jack
 	source = http://sourceforge.net/projects/deadbeef/files/plugins/x86_64/jack-62d1e6a-x86_64.zip
