@@ -2,8 +2,8 @@
 
 pkgname='python-soundcloud-v2'
 _name=${pkgname#python-}
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Python wrapper for the v2 SoundCloud API"
 url="https://github.com/7x11x13/soundcloud.py"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 makedepends=('python-setuptools')
 conflicts=('python-soundcloud')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('70fa57dd5f77438806fd5b5ce56cc7330b4a41e00f989d0c097998e90f62de3080d1e03d36d9234d2aaf5537df544e2f07ecc03b69873080f9594126e53e91a4')
+sha512sums=('d02c3f5ea2545e75064fb269a78c609fe45fae4a441d63825996145cb870142a2d4a0bdf820fee2d86c621937943e6e72decb308572b256085d73d1df4919967')
 
 build() {
   cd "${_name}-${pkgver}"
