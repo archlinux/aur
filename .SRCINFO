@@ -12,7 +12,7 @@ pkgbase = dualscreen-mouse-utils
 	depends = libx11
 	optdepends = python-pyqt5: for mouse-wrapscreen-tray (system tray icon)
 	optdepends = python-psutil: for mouse-wrapscreen-tray (system tray icon)
-	source = http://dsp.mcbf.net/releases/dualscreen-mouse-utils-0.5.tar.gz
+	source = https://web.archive.org/web/20150511070756/http://de.mcbf.net/~squisher/downloads/releases/dualscreen-mouse-utils-0.5.tar.gz
 	source = 01-mss-fix-args.diff
 	source = 02-mws-inline.diff
 	source = 03-mws-fix-args.diff
@@ -34,4 +34,3 @@ pkgbase = dualscreen-mouse-utils
 	sha256sums = f343de71ebce7a842ec8ae191fc151e6c881791fe091abcbf46ef49f69819edf
 
 pkgname = dualscreen-mouse-utils
-

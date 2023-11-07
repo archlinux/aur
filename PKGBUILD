@@ -13,7 +13,9 @@ optdepends=(
    'python-psutil: for mouse-wrapscreen-tray (system tray icon)'
 )
 source=(
-   "http://dsp.mcbf.net/releases/$pkgname-$pkgver.tar.gz"
+   # Original URL is 404, using archive.org's copy for now:
+   # "http://dsp.mcbf.net/releases/$pkgname-$pkgver.tar.gz"
+   'https://web.archive.org/web/20150511070756/http://de.mcbf.net/~squisher/downloads/releases/dualscreen-mouse-utils-0.5.tar.gz'
    '01-mss-fix-args.diff'
    '02-mws-inline.diff'
    '03-mws-fix-args.diff'
@@ -67,5 +69,3 @@ package() {
    install -m 0644    README                     "$_doc/dualscreen-mouse-utils/"
 
 }
-
-#:indentSize=3:tabSize=3:noTabs=true:mode=shellscript:maxLineLen=87:
