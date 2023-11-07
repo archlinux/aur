@@ -1,5 +1,5 @@
 pkgbase = deadbeef-plugin-jack-bin
-	pkgdesc = JACK output plugin for DeaDBeeF music player
+	pkgdesc = JACK output plugin for DeaDBeeF music player (binary release)
 	pkgver = 20200322+62d1e6a
 	pkgrel = 1
 	url = http://deadbeef.sourceforge.net/plugins.html
