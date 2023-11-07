@@ -9,7 +9,6 @@ arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-connection"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-psutil")
 makedepends=("python-setuptools")
 source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')

@@ -7,7 +7,6 @@ pkgbase = python-proton-vpn-connection
 	groups = ProtonVPN
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python-psutil
 	source = git+https://github.com/ProtonVPN/python-proton-vpn-connection.git#tag=0.11.0
 	sha256sums = SKIP
 
