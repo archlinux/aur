@@ -9,6 +9,7 @@ pkgbase = deadbeef-plugin-jack-bin
 	depends = jack
 	provides = deadbeef-plugin-jack
 	conflicts = deadbeef-plugin-jack
+	conflicts = deadbeef-jack-git
 	source = http://sourceforge.net/projects/deadbeef/files/plugins/x86_64/jack-62d1e6a-x86_64.zip
 	source = https://github.com/DeaDBeeF-Player/jack/raw/master/COPYING
 	sha256sums = 68e3d94ec22f197d632a6475d6afa5c3b3ee186d901b082ff2a7a0b489ba9804

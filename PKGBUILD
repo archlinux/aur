@@ -9,7 +9,7 @@ url="http://deadbeef.sourceforge.net/plugins.html"
 arch=('x86_64')
 license=('MIT')
 depends=('deadbeef' 'jack')
-conflicts=($_pkgname)
+conflicts=($_pkgname deadbeef-jack-git)
 provides=($_pkgname)
 source=('http://sourceforge.net/projects/deadbeef/files/plugins/x86_64/jack-62d1e6a-x86_64.zip'
         'https://github.com/DeaDBeeF-Player/jack/raw/master/COPYING')
