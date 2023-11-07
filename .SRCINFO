@@ -1,11 +1,11 @@
 pkgbase = hx
 	pkgdesc = Hex editor for the terminal using plain C99 + POSIX libs
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/krpors/hx
 	arch = x86_64
 	license = MIT
-	source = https://github.com/krpors/hx/archive/refs/tags/v1.0.13.tar.gz
-	sha256sums = 539e17fc82b86696031fb0649c22f61b0da15d780c52d360959d96669940e8f5
+	source = https://github.com/krpors/hx/archive/refs/tags/v1.0.14.tar.gz
+	sha256sums = 7b7c494df149535f768b3aa449159928aec92b468a17f9eedebcea3dd21343d1
 
 pkgname = hx
