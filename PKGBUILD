@@ -1,7 +1,5 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
-
 pkgname=perl-configreader-simple
-pkgver=1.294
+pkgver=1.295
 _author=B/BD/BDFOY
 _perlmod=ConfigReader-Simple
 pkgrel=1
@@ -23,7 +21,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('0edd8c40b74cb0216f85c9ec0a8162467fa085bc136657110fdd96ec6a8ab628')
+sha256sums=('acb0d734b510722d26284b55c00d5dd214924bf2421351af41c37e171ef8eb90')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
