@@ -1,4 +1,4 @@
-# Contributor: Anonymous
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-random-mt'
@@ -6,7 +6,7 @@ pkgver='1.17'
 pkgrel='1'
 pkgdesc="The Mersenne Twister PRNG"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('BSD')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
