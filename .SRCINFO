@@ -1,11 +1,10 @@
 pkgbase = timetrace-bin
 	pkgdesc = Simple CLI for tracking your working time.
 	pkgver = 0.14.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dominikbraun/timetrace
 	arch = x86_64
 	license = Apache
-	depends = glibc
 	optdepends = bash-completion
 	provides = timetrace=0.14.3
 	conflicts = timetrace
