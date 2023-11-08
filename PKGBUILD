@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=rolling.r0.gcfc9663
+pkgver=rolling.r0.g4352305
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  arch-meson --wrap-mode default --buildtype debugoptimized build
+  arch-meson --wrap-mode default --buildtype debugoptimized -Duse_system_lua=true build
   meson compile -C build
 }
 
