@@ -9,7 +9,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=23.08.2
-pkgrel=2
+pkgrel=3
 arch=(
   'x86_64'
   'i686'
@@ -66,7 +66,7 @@ optdepends=(
   'git: git-blame plugin.'
   'kguiaddons5>=5.90.0: katefiletree and project addons.'
   'konsole: open a terminal in Kate.'
-  'kuserfeedback>=1.2.0'
+  'kuserfeedback5>=1.2.0'
   'kwallet5>=5.90.0'
   'markdownpart: Markdown preview.'
   'pkgconf: To use the pkg-config files.'
