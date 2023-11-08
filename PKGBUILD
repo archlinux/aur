@@ -1,8 +1,8 @@
 # Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top-git
 _pkgname=amdgpu_top
-pkgver=v0.1.10.r0.g9ac1c31
-pkgrel=3
+pkgver=0.3.0.r1.g8a76130
+pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Umio-Yasuno/amdgpu_top"
@@ -23,8 +23,8 @@ sha256sums=(SKIP)
 pkgver() {
   cd "$_pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --abbrev=7 2>/dev/null | sed 's/^[^0-9]\(.*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
