@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=('818e3b1fdf4fb1ed1fdbe47cc58a034074a652577a887b168edfb033f47b6aeb'
             '2d416fa05a32860094f618f477a982dd77676b236dc710f2a4df289b7e43ae0c'
-            '548d946f04d5755697a2ac0cdfd302f35149aa694a862325c6c35d1b9c3df031')
+            'e3490f0c03b99a2b52c2e63fe7a04fc050bb127648c4e3dd5bd506c44fa10c13')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
