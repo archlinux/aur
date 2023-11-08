@@ -1,8 +1,9 @@
-# Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
+# Maintainer: Trustin Lee <t@motd.kr>
+# Former Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=restream-chat
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Keep your streaming chats in one place by Restream.io'
 arch=('x86_64')
 url='https://restream.io/chat'
@@ -37,7 +38,7 @@ makedepends=(
 _srcname="squashfs-root"
 _pkgname="Restream+Chat-${pkgver}-beta.AppImage"
 source=(
-  "https://s3.eu-central-1.amazonaws.com/restream-chat-client/${_pkgname}"
+  "https://chat-client.restream.io/${_pkgname}"
 )
 sha512sums=(
   '0bab803e1904c38758816f28e4cf1146a6dd9b4344f972cf88aa537d5ca3b7d9e90e8349804b5c3d411d23c88e82c7b376eb926be163ebb0cbb8fa367b6bd594'
@@ -85,6 +86,6 @@ package() {
   cp restream-chat.png "$pkgdir"/usr/share/pixmaps/restream-chat.png
 
   echo -e "${_prefix}Setting up desktop shortcuts"
-  sed -e "s|Exec=AppRun|Exec=restream-chat|" -i restream-chat.desktop
+  sed -e "s|Exec=AppRun|Exec=restream-chat --no-sandbox|" -i restream-chat.desktop
   install -Dm 644 restream-chat.desktop -t "$pkgdir"/usr/share/applications
 }
