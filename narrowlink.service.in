@@ -1,6 +1,6 @@
 [Unit]
 Description = narrowlink __NAME__
-Documentation = https://narrowlink.com/docs
+Documentation = https://narrowlink.com/docs/intro
 After = network-online.target syslog.target
 Wants = network-online.target
 

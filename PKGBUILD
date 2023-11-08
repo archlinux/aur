@@ -7,7 +7,7 @@ pkgname=(
   "$pkgbase-agent"
   "$pkgbase-token-generator"
 )
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Securely connect devices and services, even in restricted networks'
 url='https://narrowlink.com'
@@ -19,8 +19,8 @@ source=(
   "$pkgbase-$pkgver.tar.gz::https://github.com/narrowlink/narrowlink/archive/refs/tags/$pkgver.tar.gz"
   "$pkgbase.service.in"
 )
-sha256sums=('5773394f2d7daeec665c80ad467afee929d1e57106ede165cc9d3a86ad58c90b'
-            '2f596a79cac41bde25dd610d1aa1580509412556a8a0cb36c0e7226ea11b67db')
+sha256sums=('2368221e31a78f5d7cd4ce1712d3a7cfffceffdda71a30a74c691781a7cc3f0b'
+            '5248b868c9a6f42fdf7c392525bbe238b54ff564fb0d59999d5af4b8d0aa84aa')
 
 prepare() {
   cd "$pkgbase-$pkgver"
