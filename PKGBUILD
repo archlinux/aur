@@ -20,6 +20,10 @@ sha256sums=('0a15d253d0d81c6f4619cd834f7a934e6ae69cfc74eeed9ba3c8372648253017'
             '1186b6e6eefeadd09912ed73b3729e85b59f043724bb2818a95a2ec024571840'
             'SKIP')
 
+prepare() {
+  sed -i "20iFIROptCodeGenPassIncGen" flang-$pkgver.src/lib/Frontend/CMakeLists.txt
+}
+
 build() {
   rm -rf clang cmake
   mv clang{-$pkgver.src,}
