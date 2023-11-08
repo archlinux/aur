@@ -1,7 +1,7 @@
 pkgbase = zhiximind-desktop-bin
 	pkgdesc = 知犀思维导图官方版
 	pkgver = 2.1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zhixi.com
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = zhiximind-desktop-bin
 	source = LICENSE.html::https://www.zhixi.com/user-agreement
 	source = zhiximind-desktop.sh
 	sha256sums = 972aed41c6a54acf99f0ccb60047f52ba9fe264fbee04a9a0c4746df7a33eb53
-	sha256sums = f01b6dfa93df1dd1648cc85a728a497be1c1a7c2ecfa601e2bce16bb20653410
-	sha256sums = 0c9ab1ee4add82205f5313762320db41ea05a7bd77ca34e8c53f3b52620f955b
+	sha256sums = 3e6d4f45483876e9b369f208e9d687bed28a8f433c996f49b23cd6ba463f47cc
+	sha256sums = de23d03808c3a57469eb201cbdcd3f0b4c7382a3cb39012bea1470eb27d6ce1e
 
 pkgname = zhiximind-desktop-bin
