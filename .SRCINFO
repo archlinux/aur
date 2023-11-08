@@ -1,11 +1,11 @@
 pkgbase = modoboa
 	pkgdesc = Mail hosting made simple
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://modoboa.org/
 	arch = any
 	license = MIT
-	makedepends = python>=3.7
+	makedepends = python>=3.8
 	makedepends = rrdtool
 	makedepends = python-lxml
 	makedepends = python-setuptools
@@ -38,7 +38,7 @@ pkgbase = modoboa
 	makedepends = python-chardet
 	makedepends = python-ovh
 	makedepends = python-oath
-	depends = python>=3.7
+	depends = python>=3.8
 	depends = python-django
 	depends = python-dj-database-url
 	depends = python-pip
@@ -61,7 +61,7 @@ pkgbase = modoboa
 	optdepends = python-factory-boy
 	provides = modoboa
 	conflicts = modoboa-git
-	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.2.1.tar.gz
-	sha512sums = ff9b7b028f8c6a3bfbfc7359bbb22b6ecf0eddef77e47eadc77b97c8617d6eae25dff6d094b4050c70c064230c296acc8b050b5e14901838d32d2a669d46c8c2
+	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.2.2.tar.gz
+	sha512sums = 42ebc48dbcb497239b8c6c7a1ff8c9d66a3fdc7ba01ac60ae86053bf78c2bad6f1f04c2ff1ab37f572d80a63e5bc160a78c56e780f8e378b547b4bf2ab800967
 
 pkgname = modoboa
