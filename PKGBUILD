@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('d7badb7fd7c3171893aadf3e26e7abae9da82e50498a27738f95de176ad169ca'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
-            '58b2518e67e99e392a41d5d9452618af4bc513394c9d91208c1b9ec2a2cbe3a8')
+            '095ab29c3501590090055f0ba4cd8449d96b77886a74981bc51dfb7865f0396b')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${_pkgname}"
 }
