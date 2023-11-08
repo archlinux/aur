@@ -3,7 +3,7 @@
 
 pkgname=cubelib
 _version=4.8
-_patch=.1
+_patch=.2
 pkgver=${_version}${_patch}
 pkgrel=1
 pkgdesc="Library for reading and writing a multi-dimensional performance space."
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('zlib')
 options=('staticlibs')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-md5sums=('f831c361fdc04e8c1d6496af78b6be11')
+md5sums=('1a785f5666824015fbc7c6e6626c12ff')
 replaces=('cube-perf')
 
 build() {
