@@ -1,7 +1,7 @@
 # Maintainer: Michael Cooper <mythmon at gmail dot com>
 pkgname=zsa-keymapp-bin
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A live visual reference for your ZSA keyboard"
 arch=(x86_64)
 url="https://zsa.io/flash"
@@ -13,7 +13,7 @@ source=("https://oryx.nyc3.cdn.digitaloceanspaces.com/keymapp/keymapp-latest.tar
         "keymapp.png")
 provides=()
 conflicts=()
-sha256sums=('523ec935356aab8210123f37f6fc5f863110aa6ac5e0344f0665704c741e0613'
+sha256sums=('49c1a15de0cfda34ca8061e44a5b78c543675a98ac1b4ae5ce46a3acfa7dafd5'
             'SKIP'
             'SKIP')
 

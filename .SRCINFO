@@ -1,7 +1,7 @@
 pkgbase = zsa-keymapp-bin
 	pkgdesc = A live visual reference for your ZSA keyboard
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zsa.io/flash
 	arch = x86_64
 	license = custom:not-provided
@@ -12,7 +12,7 @@ pkgbase = zsa-keymapp-bin
 	source = https://oryx.nyc3.cdn.digitaloceanspaces.com/keymapp/keymapp-latest.tar.gz
 	source = keymapp.desktop
 	source = keymapp.png
-	sha256sums = 523ec935356aab8210123f37f6fc5f863110aa6ac5e0344f0665704c741e0613
+	sha256sums = 49c1a15de0cfda34ca8061e44a5b78c543675a98ac1b4ae5ce46a3acfa7dafd5
 	sha256sums = SKIP
 	sha256sums = SKIP
 
