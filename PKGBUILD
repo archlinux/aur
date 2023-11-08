@@ -6,10 +6,10 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=119.0.6045.105
+pkgver=119.0.6045.123
 pkgrel=1
 _launcher_ver=8
-_manual_clone=1
+_manual_clone=0
 pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         REVERT-disable-autoupgrading-debug-info.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3'
+sha256sums=('6b61b87d0a201113b9c4e3d0ce48df52ecf869179c207e34b71add957fb7b48f'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
