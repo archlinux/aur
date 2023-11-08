@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bot.dev
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Desktop app to manage Discord.js bots built with React, Electron and DaisyUI"
 arch=('any')
@@ -10,6 +10,7 @@ conflicts=("${pkgname}")
 depends=(
     'bash'
     'electron23'
+    'python'
 )
 makedepends=(
     'gendesk'
@@ -21,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('369c78c100b26a3294a0ac8348fed1b0a5fa8b1bc391d4fe9fcd4d38579b0c11'
+sha256sums=('1da612ddcae428ba31bd6b6575368e786a8f2964bf0a127d5bf6cf3c83a299b2'
             'd34069e7fa0ea01f3931905ba9724946ad4b20835cf18349755a57906638a0f0')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
