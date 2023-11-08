@@ -2,20 +2,43 @@
 pkgname=streamdock-bin
 _pkgname=StreamDock
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming service viewer."
 arch=('x86_64')
 url="https://github.com/jtvberg/StreamDock"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'pango' 'expat' 'libxkbcommon' 'libxrandr' 'alsa-lib' 'libxdamage' 'libxext' 'libdrm' 'gcc-libs' \
-    'cairo' 'libx11' 'libxcomposite' 'glib2' 'glibc' 'libxfixes' 'nspr' 'libcups' 'gtk3' 'dbus' 'nss' 'libxcb' 'mesa' 'at-spi2-core')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/jtvberg/StreamDock/v${pkgver}/LICENSE")
+depends=(
+    'hicolor-icon-theme'
+    'pango'
+    'expat'
+    'libxkbcommon'
+    'libxrandr'
+    'alsa-lib'
+    'libxdamage'
+    'libxext'
+    'libdrm'
+    'cairo'
+    'libx11'
+    'libxcomposite'
+    'libxfixes'
+    'nspr'
+    'libcups'
+    'gtk3'
+    'dbus'
+    'nss'
+    'libxcb'
+    'mesa'
+    'at-spi2-core'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/jtvberg/StreamDock/v${pkgver}/LICENSE"
+)
 sha256sums=('03210301d88b67e28ac8788484da5918b86e62bf170348911af342a67223dae4'
             'b6e6ffdf656d1070c5cbaa10491eb4ae4977c8312c7da38d2ed5f118006ce776')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g;s|Video;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
