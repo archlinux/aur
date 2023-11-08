@@ -2,7 +2,7 @@ pkgbase = kamule
 	pkgdesc = A KDE frontend for aMule
 	pkgver = 0.91
 	pkgrel = 3
-	url = https://www.linux-apps.com/content/show.php?content=150270
+	url = https://www.linux-apps.com/p/1128293
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules

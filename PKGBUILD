@@ -6,7 +6,7 @@ pkgver=0.91
 pkgrel=3
 pkgdesc="A KDE frontend for aMule"
 arch=('x86_64')
-url='https://www.linux-apps.com/content/show.php?content=150270'
+url='https://www.linux-apps.com/p/1128293'
 license=('GPL')
 depends=(
   'gcc-libs' # libstdc++.so
