@@ -1,13 +1,13 @@
 pkgbase = proxydev
 	pkgdesc = Creates evdev proxy device for QEMU
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://hardcoded.info/project/proxydev
 	arch = x86_64
 	license = GPL3
 	provides = proxydev
 	conflicts = proxydev
-	source = git+https://gitlab.com/b1gbear/proxydev.git#tag=9e4a4a2b000e1f7d319d09874835718513afae9e
+	source = git+https://gitlab.com/b1gbear/proxydev.git#tag=6e2b2c22b149c09c94c6e9fa8947b1b77b7656f3
 	sha256sums = SKIP
 
 pkgname = proxydev
