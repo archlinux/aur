@@ -8,19 +8,20 @@ arch=('x86_64')
 url="https://github.com/jiriks74/vkdevicechooser"
 license=('MIT')
 depends=('vulkan-icd-loader')
-makedepends=('git' 'vulkan-headers' 'vulkan-validation-layers' 'vulkan-utility-libraries' 'meson' 'ninja')
+makedepends=('git' 'vulkan-headers' 'vulkan-utility-libraries' 'meson' 'ninja')
 conflicts=('vkdevicechooser')
 source=(git+https://github.com/jiriks74/vkdevicechooser.git)
 sha256sums=('SKIP')
 
 build() {
-  cd "${pkgname}"
+  cd "vkdevicechooser"
   meson --prefix=/usr build
   ninja -C build
 }
 
 package() {
-  cd "${pkgname}"
+  cd "vkdevicechooser"
   echo "pkgdir $pkgdir"
   DESTDIR="$pkgdir" ninja -C build install
 }
+

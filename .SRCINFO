@@ -7,7 +7,6 @@ pkgbase = vkdevicechooser-git
 	license = MIT
 	makedepends = git
 	makedepends = vulkan-headers
-	makedepends = vulkan-validation-layers
 	makedepends = vulkan-utility-libraries
 	makedepends = meson
 	makedepends = ninja
