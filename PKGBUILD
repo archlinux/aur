@@ -1,11 +1,12 @@
-# Maintainer: peeweep at 0x0 dot ee
+# Maintainer: Luiz Amaral <email at luiz dot eng dot br>
+# Contributor: peeweep at 0x0 dot ee
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Bartosz Feński <fenio@debian.org>
 
 pkgname=dh-make
-pkgver=2.202102
-pkgrel=2
+pkgver=2.202303
+pkgrel=1
 pkgdesc="Tool that converts source archives into Debian package source"
 arch=('any')
 url="https://salsa.debian.org/debian/dh-make"
