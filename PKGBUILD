@@ -1,18 +1,13 @@
 # Maintainer: Patrik Sundberg <patrik.sundberg@gmail.com>
 
 ## options
-if [ -z "$_pkgver" ] ; then
-  : ${_autoupdate:=true}
-else
-  : ${_autoupdate:=false}
-fi
-
-: ${_pkgver:=3.83.13}
+: ${_autoupdate:=true}
+: ${_pkgver:=3.84.18}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.83.13
+pkgver=3.84.18
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
@@ -40,12 +35,6 @@ case "${_autoupdate::1}" in
       _pkgver="$_pkgver_new"
       sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
     fi
-    ;;
-  *)
-    # _pkgver set in env
-
-    _filename="beeper-${_pkgver:?}.AppImage"
-    _dl_url="https://download.todesktop.com/2003241lzgn20jd/$_filename"
     ;;
 esac
 
