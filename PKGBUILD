@@ -24,7 +24,7 @@ package() {
     cp -r ./ "$pkgdir/usr/share/games/$_pkgname"
     cp -r "$pkgdir/usr/share/games/$_pkgname/$pkgname.png" "$pkgdir/usr/share/pixmaps"
     #lib symlink workaround as it looks for libsodium.so.23 which doesn't exist
-    sudo ln -s /usr/lib/libsodium.so.26.1.0 $pkgname/usr/lib/libsodium.so.23
+    ln -s "/usr/lib/libsodium.so" "$pkgdir/usr/lib/libsodium.so.23"
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
