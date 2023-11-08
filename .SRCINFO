@@ -1,6 +1,6 @@
 pkgbase = r-kappalab
 	pkgdesc = Non-Additive Measure and Integral Manipulation Functions
-	pkgver = 0.4.10
+	pkgver = 0.4.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=kappalab
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-kappalab
 	depends = r-lpsolve
 	depends = r-quadprog
 	depends = r-kernlab
-	source = https://cran.r-project.org/src/contrib/kappalab_0.4-10.tar.gz
-	sha256sums = e95d98ace59b0bc0b9f0f8beb52ed60264f62c25a637bdc10f6f57f9d474dd93
+	source = https://cran.r-project.org/src/contrib/kappalab_0.4-12.tar.gz
+	sha256sums = b30829a18cc7ee3ee466edbbd6f85e3e41d445887e34eaf6a3fa58f53911138c
 
 pkgname = r-kappalab
