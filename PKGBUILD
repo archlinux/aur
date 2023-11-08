@@ -2,11 +2,12 @@
 _pkgname=multiset
 pkgname=python-${_pkgname}
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multiset implementation for python"
 arch=('any')
 url="https://github.com/wheerd/multiset"
 license=('MIT')
+depends=('python')
 makedepends=(
     'python-build'
     'python-installer'
@@ -19,7 +20,7 @@ b2sums=('2ccad28744cebb6b6536fce59f50bddabf65c6ec285eae9740a1b3b386c35b0e5679699
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    sed -i -e 's/setuptools_scm\[toml\]>=3\.4,<6/setuptools_scm[toml]>=3\.4,<8/' pyproject.toml
+    sed -i -e 's/setuptools_scm\[toml\]>=3\.4,<6/setuptools_scm[toml]>=3\.4/' pyproject.toml
     sed -i -e 's/python_requires = >= 3.7.\*/python_requires = >= 3.7/' setup.cfg
 }
 
