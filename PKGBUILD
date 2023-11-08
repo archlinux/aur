@@ -2,7 +2,7 @@
 
 pkgname=buildcache
 pkgver=0.28.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/bits-n-bites/buildcache"
@@ -10,9 +10,9 @@ license=('zlib')
 depends=('gcc-libs' 'openssl')
 makedepends=('cmake')
 optdepends=('lua')
-source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/bits-n-bites/buildcache/-/archive/v$pkgver/buildcache-v$pkgver.tar.bz2"
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/bits-n-bites/buildcache/-/archive/v$pkgver/buildcache-v$pkgver.tar.gz"
         "fix_build.patch::https://gitlab.com/bits-n-bites/buildcache/-/merge_requests/303.patch")
-sha256sums=('ec9680311c0e6cf41fa0fc124b22334396cd5b6e300f55773136546a6c333b73'
+sha256sums=('c16aec9def78535b18f0c78c6959e62d6bac2c870e5f1df76a5ca33904acdc40'
             '7fa602959174e3c9a51394d335363741a6e1ad09aeef7d706aeece5293ebd6f1')
 
 
