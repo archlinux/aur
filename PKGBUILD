@@ -1,7 +1,7 @@
 # Maintainer: BoopyTheFox <boopy.the.fox@gmail.com>
 pkgname='hyprpaper-gen-git'
-pkgver=r3.e616709
-pkgrel=1
+pkgver=r5.55cdd93
+pkgrel=2
 pkgdesc="A simple script to automate hyprpaper config generation"
 arch=('any')
 url="https://gitlab.com/BoopyTheFox/hyprpaper-gen"
