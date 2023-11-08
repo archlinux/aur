@@ -3,7 +3,7 @@
 _base=deepl
 pkgname=python-${_base}
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for the DeepL API"
 arch=(any)
 url="https://github.com/${_base}com/${_base}-python"
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-poetry-core python-wheel git)
 optdepends=('python-keyring: for support storing API Key')
 install=${_base}.install
 source=("git+${url}.git?signed#tag=v${pkgver}")
-validpgpkeys=('DBDC63E97C526204335805941FA7A782EC90634E') # Daniel Jones (GitHub key - work laptop) <daniel.jones@deepl.com>
+validpgpkeys=('D84A62C6CA4D3E3D6656083438FCACAAFD2C06B8') # Jan Ebbing <Jan.Ebbing@deepl.com>
 sha512sums=('SKIP')
 
 build() {
