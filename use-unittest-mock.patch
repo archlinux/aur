@@ -1,0 +1,59 @@
+diff -aur railroad-0.5.0.old/requirements-dev.txt railroad-0.5.0/requirements-dev.txt
+--- railroad-0.5.0.old/requirements-dev.txt	2023-11-08 09:46:00.588903588 +0100
++++ railroad-0.5.0/requirements-dev.txt	2023-11-08 09:46:41.832874069 +0100
+@@ -11,7 +11,6 @@
+ pytest-cov
+ tox
+ coveralls
+-mock
+ 
+ # docs
+ Sphinx
+diff -aur railroad-0.5.0.old/test/test_actions.py railroad-0.5.0/test/test_actions.py
+--- railroad-0.5.0.old/test/test_actions.py	2023-11-08 09:46:00.588903588 +0100
++++ railroad-0.5.0/test/test_actions.py	2023-11-08 09:46:22.240831785 +0100
+@@ -2,7 +2,7 @@
+ 
+ from random import randint
+ 
+-from mock import Mock, call
++from unittest.mock import Mock, call
+ from toolz import cons
+ 
+ from railroad import actions, lift, result
+diff -aur railroad-0.5.0.old/test/test_guard.py railroad-0.5.0/test/test_guard.py
+--- railroad-0.5.0.old/test/test_guard.py	2023-11-08 09:46:00.588903588 +0100
++++ railroad-0.5.0/test/test_guard.py	2023-11-08 09:46:26.630544025 +0100
+@@ -2,7 +2,7 @@
+ 
+ import pytest
+ 
+-from mock import Mock, call
++from unittest.mock import Mock, call
+ 
+ from railroad import guard, GuardError
+ 
+diff -aur railroad-0.5.0.old/test/test_railroad.py railroad-0.5.0/test/test_railroad.py
+--- railroad-0.5.0.old/test/test_railroad.py	2023-11-08 09:46:00.588903588 +0100
++++ railroad-0.5.0/test/test_railroad.py	2023-11-08 09:46:29.687009802 +0100
+@@ -3,7 +3,7 @@
+ """
+ import pytest
+ 
+-from mock import Mock, call
++from unittest.mock import Mock, call
+ 
+ from railroad import (
+     prepare,
+diff -aur railroad-0.5.0.old/test/test_rescue.py railroad-0.5.0/test/test_rescue.py
+--- railroad-0.5.0.old/test/test_rescue.py	2023-11-08 09:46:00.588903588 +0100
++++ railroad-0.5.0/test/test_rescue.py	2023-11-08 09:46:32.103517342 +0100
+@@ -2,7 +2,7 @@
+ 
+ import pytest
+ 
+-from mock import Mock, call
++from unittest.mock import Mock, call
+ 
+ from railroad import rescue
+ 
