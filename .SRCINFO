@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-picture-of-the-day
 	pkgdesc = Use a picture of the day from various sources as GNOME desktop background
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/swsnr/gnome-shell-extension-picture-of-the-day
 	arch = any
 	license = MPL2
 	makedepends = npm
 	depends = gnome-shell
-	source = gnome-shell-extension-picture-of-the-day-0.1.tar.gz::https://github.com/swsnr/gnome-shell-extension-picture-of-the-day/archive/v0.1.tar.gz
-	sha256sums = 7dc324bfdbb3864fe6385db1d3160201f23277b36c8bdaab4e83e20b61b13518
+	source = gnome-shell-extension-picture-of-the-day-0.2.tar.gz::https://github.com/swsnr/gnome-shell-extension-picture-of-the-day/archive/v0.2.tar.gz
+	sha256sums = 233e43dda13ed12f5a99769056ce837092bbdb27849f0b78c8c56e338568046d
 
 pkgname = gnome-shell-extension-picture-of-the-day
