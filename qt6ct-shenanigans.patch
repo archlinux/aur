@@ -1,0 +1,173 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d6b608c..7d385d8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,7 +24,10 @@ set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
+ 
+ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DUSE_WIDGETS)
+ 
+-find_package(Qt6 REQUIRED COMPONENTS BuildInternals Core Widgets OPTIONAL_COMPONENTS LinguistTools)
++find_package(Qt6 REQUIRED COMPONENTS BuildInternals Core Widgets QuickControls2 OPTIONAL_COMPONENTS LinguistTools)
++find_package(KF6Config REQUIRED)
++find_package(KF6ConfigWidgets REQUIRED)
++find_package(KF6IconThemes REQUIRED)
+ 
+ get_target_property(QT_QTPATHS_EXECUTABLE Qt6::qtpaths IMPORTED_LOCATION)
+ 
+diff --git a/src/qt6ct-common/qt6ct.cpp b/src/qt6ct-common/qt6ct.cpp
+index d97d4c7..b2443cf 100644
+--- a/src/qt6ct-common/qt6ct.cpp
++++ b/src/qt6ct-common/qt6ct.cpp
+@@ -116,6 +116,7 @@ QStringList Qt6CT::sharedColorSchemePaths()
+     for(const QString &p : QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation))
+     {
+         paths << (p + QLatin1String("/qt6ct/colors"));
++        paths << (p + QLatin1String("/color-schemes"));
+     }
+     paths << QLatin1String(QT6CT_DATADIR"/qt6ct/colors");
+     paths.removeDuplicates();
+diff --git a/src/qt6ct-qtplugin/CMakeLists.txt b/src/qt6ct-qtplugin/CMakeLists.txt
+index c3d7498..32844ae 100644
+--- a/src/qt6ct-qtplugin/CMakeLists.txt
++++ b/src/qt6ct-qtplugin/CMakeLists.txt
+@@ -9,5 +9,5 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../)
+ 
+ add_library(qt6ct-qtplugin MODULE ${app_SRCS})
+ set_target_properties(qt6ct-qtplugin PROPERTIES OUTPUT_NAME qt6ct)
+-target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::Widgets Qt6::GuiPrivate qt6ct-common)
++target_link_libraries(qt6ct-qtplugin PRIVATE Qt6::Widgets Qt6::GuiPrivate Qt6::QuickControls2 KF6::ConfigCore KF6::ConfigWidgets KF6::IconThemes qt6ct-common)
+ install(TARGETS qt6ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
+diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
+index 1d13faf..4c21429 100644
+--- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
++++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
+@@ -44,6 +44,7 @@
+ #endif
+ #include <QFile>
+ #include <QFileSystemWatcher>
++#include <QQuickStyle>
+ #include <private/qiconloader_p.h>
+ 
+ #include "qt6ct.h"
+@@ -52,6 +53,11 @@
+ #include <QStringList>
+ #include <qpa/qplatformthemefactory_p.h>
+ 
++#include <ksharedconfig.h>
++#include <kcolorscheme.h>
++#include <kiconengine.h>
++#include <kiconloader.h>
++
+ Q_LOGGING_CATEGORY(lqt6ct, "qt6ct", QtWarningMsg)
+ 
+ //QT_QPA_PLATFORMTHEME=qt6ct
+@@ -67,12 +73,17 @@ Qt6CTPlatformTheme::Qt6CTPlatformTheme()
+         QMetaObject::invokeMethod(this, "createFSWatcher", Qt::QueuedConnection);
+ #endif
+         QGuiApplication::setFont(m_generalFont);
++        //if the user has explicitly set something else, don't interfere
++        if (QQuickStyle::name().isEmpty()) {
++            QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
++        }
+     }
+     qCDebug(lqt6ct) << "using qt6ct plugin";
+ #ifdef QT_WIDGETS_LIB
+     if(!QStyleFactory::keys().contains("qt6ct-style"))
+         qCCritical(lqt6ct) << "unable to find qt6ct proxy style";
+ #endif
++	QCoreApplication::instance()->installEventFilter(this);
+ }
+ 
+ Qt6CTPlatformTheme::~Qt6CTPlatformTheme()
+@@ -146,6 +157,11 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
+     return QIcon::fromTheme(type.iconName());
+ }
+ 
++QIconEngine *Qt6CTPlatformTheme::createIconEngine(const QString &iconName) const
++{
++    return new KIconEngine(iconName, KIconLoader::global());
++}
++
+ void Qt6CTPlatformTheme::applySettings()
+ {
+     if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
+@@ -258,7 +274,15 @@ void Qt6CTPlatformTheme::readSettings()
+     if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
+     {
+         schemePath = Qt6CT::resolvePath(schemePath); //replace environment variables
+-        m_palette = std::make_unique<QPalette>(Qt6CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
++        if(schemePath.endsWith(".colors"))
++        {
++            m_palette = std::make_unique<QPalette>(KColorScheme::createApplicationPalette(KSharedConfig::openConfig(schemePath)));
++            qApp->setProperty("KDE_COLOR_SCHEME_PATH", schemePath);
++        }
++        else
++        {
++            m_palette = std::make_unique<QPalette>(Qt6CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
++        }
+     }
+     m_iconTheme = settings.value("icon_theme").toString();
+     //load dialogs
+@@ -367,3 +391,30 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
+     content.replace(regExp, "\n");
+     return content;
+ }
++
++bool Qt6CTPlatformTheme::eventFilter(QObject *obj, QEvent *e)
++{
++    if(obj == qApp && e->type() == QEvent::DynamicPropertyChange)
++    {
++        QDynamicPropertyChangeEvent *ee = static_cast<QDynamicPropertyChangeEvent*>(e);
++        if(ee->propertyName() == "KDE_COLOR_SCHEME_PATH")
++        {
++            if(qApp->property("KDE_COLOR_SCHEME_PATH").isNull())
++            {
++                QSettings settings(Qt6CT::configFile(), QSettings::IniFormat);
++                settings.beginGroup("Appearance");
++                QString schemePath = settings.value("color_scheme_path").toString();
++                if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
++                {
++                    schemePath = Qt6CT::resolvePath(schemePath); //replace environment variables
++                    if(schemePath.endsWith(".colors"))
++                    {
++                        qApp->setProperty("KDE_COLOR_SCHEME_PATH", schemePath);
++                        applySettings();
++                    }
++                }
++            }
++        }
++    }
++    return QObject::eventFilter(obj, e);
++}
+diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.h b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
+index 6ad245b..1ebede2 100644
+--- a/src/qt6ct-qtplugin/qt6ctplatformtheme.h
++++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
+@@ -62,10 +62,13 @@ public:
+     //virtual QPixmap fileIconPixmap(const QFileInfo &fileInfo, const QSizeF &size,
+     //                               QPlatformTheme::IconOptions iconOptions = 0) const;
+ 
+-    //virtual QIconEngine *createIconEngine(const QString &iconName) const;
++    virtual QIconEngine *createIconEngine(const QString &iconName) const;
+     //virtual QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const;
+     //virtual QString standardButtonText(int button) const;
+ 
++protected:
++	bool eventFilter(QObject *obj, QEvent *e) override;
++
+ private slots:
+     void applySettings();
+ #ifdef QT_WIDGETS_LIB
+diff --git a/src/qt6ct/appearancepage.cpp b/src/qt6ct/appearancepage.cpp
+index fc154c2..062ba2d 100644
+--- a/src/qt6ct/appearancepage.cpp
++++ b/src/qt6ct/appearancepage.cpp
+@@ -381,7 +381,7 @@ void AppearancePage::findColorSchemes(const QString &path)
+ {
+     QDir dir(path);
+     dir.setFilter(QDir::Files);
+-    dir.setNameFilters(QStringList() << "*.conf");
++    dir.setNameFilters(QStringList() << "*.conf" << "*.colors");
+ 
+     for(const QFileInfo &info : dir.entryInfoList())
+     {
