@@ -3,7 +3,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r51789.8ac4a5315b
+pkgver=r56231.387decbb01
 pkgrel=1
 pkgdesc='Web browser built from scratch using the SerenityOS LibWeb engine'
 arch=(x86_64)
