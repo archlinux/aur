@@ -2,16 +2,16 @@
 # Contributor: huyz
 
 pkgname=libva-nvidia-driver-git
-pkgver=0.0.8.r63.g766d843
+pkgver=0.0.11.r1.gea6d862
 pkgrel=1
 pkgdesc='VA-API implementation that uses NVDEC as a backend (git version)'
 arch=('x86_64')
 url='https://github.com/elFarto/nvidia-vaapi-driver'
 license=('MIT')
 depends=('gst-plugins-bad-libs' 'nvidia-utils')
-makedepends=('ffnvcodec-headers' 'git' 'meson')
-provides=('libva-nvidia-driver' 'nvidia-vaapi-driver')
-conflicts=('libva-nvidia-driver' 'libva-vdpau-driver' 'nvidia-vaapi-driver')
+makedepends=('meson' 'ffnvcodec-headers' 'git')
+provides=('libva-nvidia-driver')
+conflicts=('libva-nvidia-driver' 'libva-vdpau-driver')
 source=("${pkgname}::git+https://github.com/elFarto/nvidia-vaapi-driver.git")
 sha256sums=('SKIP')
 
@@ -25,14 +25,12 @@ build() {
     cd ${pkgname}
 
     arch-meson . build
-
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
     cd ${pkgname}
 
-    DESTDIR="${pkgdir}" ninja -C build install
-
+    meson install -C build --destdir "${pkgdir}"
     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
