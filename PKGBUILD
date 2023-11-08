@@ -22,7 +22,7 @@ _pkgver=v120.0.6096.0-r1216665-linux64-deb-avx2
 
 pkgname=${_pkgname}-avx2-bin
 pkgver=120.0.6096.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler, LLD linker and Widevine (AVX2 build) (Unstable Channel)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -38,7 +38,7 @@ depends=('alsa-lib'
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet')
+            'kwallet5: for storing passwords in KWallet')
 conflicts=('chromium-unstable' 'chromium-unstable-avx2' 'chromium-unstable-bin')
 options=('!emptydirs' '!strip')
 install=${_pkgname}.install
