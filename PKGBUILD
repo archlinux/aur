@@ -2,16 +2,16 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=scorep
-pkgver=8.1
+pkgver=8.3
 pkgrel=1
 pkgdesc="Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications."
 arch=('i686' 'x86_64')
 url="http://www.vi-hps.org/projects/score-p/"
 license=('BSD')
-depends=('cubew>=4.8' 'cubelib>=4.8' 'openmpi' 'otf2>=3.0' 'opari2>=2.0.7')
+depends=('cubew>=4.8.2' 'cubelib>=4.8.2' 'openmpi' 'otf2>=3.0.3' 'opari2>=2.0.8')
 options=('staticlibs')
 source=(http://perftools.pages.jsc.fz-juelich.de/cicd/${pkgname}/tags/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('3a40b481fce610871ddf6bdfb88a6d06b9e5eb38c6080faac6d5e44990060a37')
+sha256sums=('76c914e6319221c059234597a3bc53da788ed679179ac99c147284dcefb1574a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
