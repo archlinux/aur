@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Eyolfson <jon@eyl.io>
 pkgname=dynamorio-bin
-pkgver=9.0.1
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="A dynamic binary instrumentation framework"
 url="http://dynamorio.org"
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/DynamoRIO/dynamorio/releases/download/release_${pkgver}/DynamoRIO-Linux-${pkgver}.tar.gz")
-sha256sums=('90452768bda1ee9f123f86a916ecb0a442c59bade36d999de73f759c4f79e6e7')
+sha256sums=('21eaa23570e12dfa5eab8443589481c1eaedfc73ce71647720d121d2e3ba74d6')
 
 package() {
   cd "${srcdir}/DynamoRIO-Linux-${pkgver}"
