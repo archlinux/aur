@@ -1,20 +1,37 @@
 # Colored makepkg-like functions
 msg_blue() {
-    printf "${blue}==>${bold} $1${all_off}\n"
+    printf "${BLUE}==>${BOLD} $1${ALL_OFF}\n"
 }
 
 note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+    printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
 }
 
-all_off="$(tput sgr0)"
-bold="${all_off}$(tput bold)"
-blue="${bold}$(tput setaf 4)"
-yellow="${bold}$(tput setaf 3)"
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="${BOLD}$(tput setaf 0)"
+RED="${BOLD}$(tput setaf 1)"
+GREEN="${BOLD}$(tput setaf 2)"
+YELLOW="${BOLD}$(tput setaf 3)"
+BLUE="${BOLD}$(tput setaf 4)"
+MAGENTA="${BOLD}$(tput setaf 5)"
+CYAN="${BOLD}$(tput setaf 6)"
+WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
-    note "Custom flags should be put directly in: ~/.config/thorium-flags.conf"
-    note "The launcher is called: 'thorium-browser-sse3'"
+    if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v[23].*supported.*$' ; then
+        note "Custom flags should be put directly in: ~/.config/thorium-flags.conf"
+        note "The launcher is called: thorium-browser-sse3"
+
+        if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
+            note
+            note "Your processor supports x86-64-v3."
+            note "You may want to install thorium-browser-bin."
+        fi
+    else
+        note "Your processor does not support x86-64-v2 or x86-64-v3."
+        note "thorium-browser will not work on your computer."
+    fi
 }
 
 post_upgrade() {

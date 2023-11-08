@@ -19,7 +19,7 @@ fi
 _pkgname="thorium-browser-sse3"
 pkgname="$_pkgname-bin"
 pkgver=117.0.5938.157
-pkgrel=3
+pkgrel=4
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium-SSE3"
 license=('BSD')
@@ -66,7 +66,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'efbc8bdee4114b51bf465819ffaccf2ef40935f145fd4c7f970219ba992af867'
+  '114378692b4e2d577bb4d3b1d083b80a504cb31622be08164f7e06e85c5bcd8a'
 )
 
 pkgver() {
