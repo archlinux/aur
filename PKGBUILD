@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 pkgname=protopedal
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility tool for sim racing pedals and force feedback steering wheels"
 arch=('x86_64')
 url="https://gitlab.com/openirseny/protopedal/"
@@ -20,12 +20,12 @@ prepare() {
 }
 
 build() {
+  export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe"
+  export CXXFLAGS="${CFLAGS}"
   cd "$srcdir/$pkgname"
-  make build protopedal
+  make all
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  mkdir -p "$pkgdir/usr/bin"
-  mv protopedal "$pkgdir/usr/bin/"
+  install -D -m755 "$srcdir/$pkgname/protopedal" "$pkgdir/usr/bin/protopedal"
 }
