@@ -1,7 +1,7 @@
 pkgbase = ocproxy-git
 	pkgdesc = A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP
 	pkgver = 1.60.r9.gc98f06d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cernekee/ocproxy
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = ocproxy-git
 	makedepends = git
 	depends = libevent
 	depends = glibc
+	provides = ocproxy
+	conflicts = ocproxy
 	source = git+https://github.com/cernekee/ocproxy.git
 	source = https://raw.githubusercontent.com/cernekee/ocproxy/6e2291b8fd120128873646156f8cb97b31a330fb/LICENSE
 	md5sums = SKIP

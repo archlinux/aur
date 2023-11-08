@@ -1,12 +1,15 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Zack Didcott
+
 pkgname=ocproxy-git
 _pkgname=ocproxy
 pkgver=1.60.r9.gc98f06d
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP"
 depends=('libevent' 'glibc')
 makedepends=('git')
+provides=("ocproxy")
+conflicts=("ocproxy")
 arch=('i686' 'x86_64')
 url="https://github.com/cernekee/ocproxy"
 license=('BSD')
