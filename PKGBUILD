@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.34.46.r1.g84c1fcd0
+pkgver=1.34.48.r0.g7c3cbc83
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -10,6 +10,9 @@ license=('MIT')
 depends=(
     'bash'
     'electron26'
+    'lib32-glibc'
+    'lib32-gcc-libs'
+    'python'
 )
 makedepends=(
     'npm'
