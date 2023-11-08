@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname=blast+
-pkgver=2.14.1
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ source=(
         "https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz"
 )
 sha256sums=(
-        '712c2dbdf0fb13cc1c2d4f4ef5dd1ce4b06c3b57e96dfea8f23e6e99f5b1650e'
+	'6918c370524c8d44e028bf491e8f245a895e07c66c77b261ce3b38d6058216e0'
 )
 
 prepare() {
