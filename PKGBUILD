@@ -1,6 +1,6 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
-pkgname=linux-firmware-orangepi
+pkgname=linux-firmware-orangepi-git
 pkgver=20230828.b2809d6
 pkgrel=1
 pkgdesc="Firmware files for Linux - Orange Pi specific firmware"
@@ -8,8 +8,8 @@ arch=('aarch64')
 makedepends=('git')
 url="https://github.com/orangepi-xunlong/firmware"
 license=('GPL2' 'GPL3' 'custom')
-conflicts=('linux-firmware')
-provides=("linux-firmware=${pkgver}")
+conflicts=('linux-firmware'{,-orangepi})
+provides=('linux-firmware'{,-orangepi}="${pkgver}")
 options=(!strip)
 source=(
   "git+${url}.git"
