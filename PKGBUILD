@@ -1,7 +1,7 @@
 # Maintainer: svalo <code@valo.space>
 pkgname="certbot-dns-gandi-git"
 pkgdesc="gandi DNS authenticator plugin for certbot - GIT version"
-pkgver=1.4.3.r0.gbfa77f2
+pkgver=1.5.0.r0.g9b58264
 pkgrel=1
 arch=("any")
 url="https://github.com/obynio/certbot-plugin-gandi.git"
@@ -17,7 +17,7 @@ source=(
   "gandi.ini"
 )
 sha256sums=('SKIP'
-            'dff9eaa13a927429a407a7e152690c5c10f51b6fa426f1ea29787728eeab8279')
+            '7bc69d2bff17cb991de134fd4de794b96db8ebb1747d2688a4223288bdce118d')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
