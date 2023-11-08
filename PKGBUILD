@@ -2,7 +2,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 
 pkgname=qpwgraph
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='PipeWire Graph Qt GUI Interface'
 arch=(x86_64)
@@ -22,8 +22,8 @@ makedepends=(
   pipewire
 )
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('754950bbea3953486c1a367479eee94cf616ee6d2940f61a7fbdd367846ea5f53d7bf5a3107005ce6a433470a8a098bee5953de23219b8f23310b283fc5cd37c')
-b2sums=('be872867cbce91b0c938945ee2c071b12204886fbed54c561a779c52d34c784b4393c93155070747c090ebe3ea0b983d29297b659118d926ed4ec59cb9c1e2e6')
+sha512sums=('cf93170863860718e9fd56c312e72d0dabe19411250b06184fc2c8a516a6ba946ba694e59fbf4b0c288780a7644ac372fcf7949056934793e3ef01a9ec245406')
+b2sums=('6f1617d8aaba4e2058dae8d9d66f9516444f3c93b74509df88da7e1c59db5e373d0dbfa9cf17a93e9ac9765255e7322d738b23a5faeb1f5f8fdfc4e8841dbe8d')
 
 build() {
   local cmake_options=(
