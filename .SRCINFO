@@ -1,7 +1,7 @@
 pkgbase = dynamorio-git
 	pkgdesc = A dynamic instrumentation tool platform
-	pkgver = 9.93.r6035.b3fb28f9e
-	pkgrel = 1
+	pkgver = 10.0.r6140.3fc09e86e
+	pkgrel = 2
 	url = https://github.com/DynamoRIO/dynamorio
 	arch = x86_64
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = dynamorio-git
 	license = LGPL2.1
 	makedepends = git
 	makedepends = cmake
-	makedepends = doxygen
+	makedepends = doxygen-git
 	depends = gcc-libs
 	depends = zlib
 	depends = libunwind
@@ -18,7 +18,7 @@ pkgbase = dynamorio-git
 	depends = perl
 	depends = qt5-base
 	depends = python
-	provides = dynamorio=9.93.r6035.b3fb28f9e
+	provides = dynamorio=10.0.r6140.3fc09e86e
 	options = !strip
 	source = dynamorio-git::git+https://github.com/DynamoRIO/dynamorio.git
 	source = git+https://github.com/intel/libipt.git
