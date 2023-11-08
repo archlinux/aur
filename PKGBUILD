@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc='Track your time'
 url="https://invent.kde.org/utilities/francis"
 arch=('x86_64' 'aarch64')
-license=('GPL3-or-later')
+license=('GPL3+')
 depends=('ki18n5' 'kirigami-addons5' 'qt5-networkauth' 'qt5-quickcontrols' 'qt5-svg')
 makedepends=('extra-cmake-modules' 'git')
 source=("git+$url.git#tag=v$pkgver")
