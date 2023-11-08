@@ -1,6 +1,6 @@
 # Maintainer: waayne
 pkgname=league-dashboard-git
-pkgver=r40.d7b53d9
+pkgver=r1.d9e1982-1
 pkgrel=1
 pkgdesc="A browser dashboard for League of Legends where you can track gold differences of your current game."
 arch=('x86_64')
