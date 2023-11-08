@@ -4,42 +4,43 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.9.3
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse3' 'alsa-lib' 'hicolor-icon-theme' 'libxtst' 'libnet' 'libxrender')
-makedepends=('java-environment>=20' 'java-environment<21' 'java-openjfx>=20' 'java-openjfx<21' 'maven')
+makedepends=('maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
-sha256sums=('2e81aaccd44f99243e8865a4333cc1612efe195bb78fd10ba7ca5725ac473021'
+source_x86_64=("jdk.tar.gz::https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.1%2B12/OpenJDK21U-jdk_x64_linux_hotspot_21.0.1_12.tar.gz"
+               "openjfx.zip::https://download2.gluonhq.com/openjfx/20.0.2/openjfx-20.0.2_linux-x64_bin-jmods.zip")
+source_aarch64=("jdk.tar.gz::https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.1%2B12/OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.1_12.tar.gz"
+                "openjfx.zip::https://download2.gluonhq.com/openjfx/20.0.2/openjfx-20.0.2_linux-aarch64_bin-jmods.zip")
+noextract=('jdk.tar.gz' 'openjfx.zip')
+sha256sums=('68e88f3fe4103de6ebafd1ef0d6ba16df539d78897476eb176c085fd5f5c3314'
             'SKIP')
+sha256sums_x86_64=('1a6fa8abda4c5caed915cfbeeb176e7fbd12eb6b222f26e290ee45808b529aa1'
+                   'f522ac2ae4bdd61f0219b7b8d2058ff72a22f36a44378453bcfdcd82f8f5e08c')
+sha256sums_aarch64=('e184dc29a6712c1f78754ab36fb48866583665fa345324f1a79e569c064f95e9'
+                    'c0d80ebbe0aab404ef9ad8b46c05bf533a1e40b39b2720eebd9238d81f6326ca')
 options=('!strip')
 
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')
 
-prepare() {
-  if ! archlinux-java status | grep default | grep -E "20" ; then
-      echo "You don't have a Java 20 JDK selected as your Java environment but the following installed on your system:"
-      echo "`archlinux-java status | sed '1,${/^Available Java environments/d}' | sed 's/^/     /'`"
-      echo "Select a Java 20 JDK using \"sudo archlinux-java set [name from the list above]\""
-      echo "If you switched to a JDK 20, please re-run the installation."
-      return 1
-  fi
-
-  jfxPomVersion="$(mvn help:evaluate "-Dexpression=javafx.version" -q -DforceStdout -f ${srcdir}/cryptomator-${pkgver}/pom.xml)"
-  if ! grep -E "javafx.version=${jfxPomVersion}" /usr/lib/jvm/default/lib/javafx.properties ; then
-      echo "Major part of JavaFX version in pom does not match the version in JDK"
-      return 1
-  fi
-}
-
 build() {
+  export JAVA_HOME="${srcdir}/jdk"
+  export JMODS_PATH="${srcdir}/jmods:${JAVA_HOME}/jmods"
+
+  tar xvfz jdk.tar.gz --transform 's!^[^/]*!jdk!'
+
+  mkdir jmods
+  unzip -j openjfx.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods
+
   cd "${srcdir}/cryptomator-${pkgver}"
-  mvn versions:set -DnewVersion="${pkgver}"
+
   mvn -B clean package -DskipTests -Plinux
 
   cp LICENSE.txt target
@@ -48,17 +49,17 @@ build() {
 
   cd target
 
-  jlink \
+  $JAVA_HOME/bin/jlink \
     --output runtime \
-    --module-path jmod \
-    --add-modules java.base,java.desktop,java.instrument,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,javafx.base,javafx.graphics,javafx.controls,javafx.fxml,jdk.unsupported,jdk.crypto.ec,jdk.security.auth,jdk.accessibility,jdk.management.jfr \
+    --module-path $JMODS_PATH \
+    --add-modules java.base,java.desktop,java.instrument,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,javafx.base,javafx.graphics,javafx.controls,javafx.fxml,jdk.unsupported,jdk.crypto.ec,jdk.security.auth,jdk.accessibility,jdk.management.jfr,jdk.net \
     --strip-native-commands \
     --no-header-files \
     --no-man-pages \
     --strip-debug \
     --compress=1
 
-  jpackage \
+  $JAVA_HOME/bin/jpackage \
     --type app-image \
     --runtime-image runtime \
     --input libs \
@@ -68,18 +69,20 @@ build() {
     --name cryptomator \
     --vendor "Skymatic GmbH" \
     --java-options "--enable-preview" \
-    --java-options "--enable-native-access=org.cryptomator.jfuse.linux.amd64,org.cryptomator.jfuse.linux.aarch64" \
+    --java-options '--enable-native-access=org.cryptomator.jfuse.linux.amd64,org.cryptomator.jfuse.linux.aarch64,org.purejava.appindicator' \
     --copyright "(C) 2016 - 2023 Skymatic GmbH" \
     --java-options "-Xss5m" \
     --java-options "-Xmx256m" \
     --java-options "-Dfile.encoding=\"utf-8\"" \
-    --java-options "-Dcryptomator.logDir=\"~/.local/share/Cryptomator/logs\"" \
-    --java-options "-Dcryptomator.pluginDir=\"~/.local/share/Cryptomator/plugins\"" \
-    --java-options "-Dcryptomator.settingsPath=\"~/.config/Cryptomator/settings.json:~/.Cryptomator/settings.json\"" \
-    --java-options "-Dcryptomator.p12Path=\"~/.config/Cryptomator/key.p12\"" \
-    --java-options "-Dcryptomator.ipcSocketPath=\"~/.config/Cryptomator/ipc.socket\"" \
-    --java-options "-Dcryptomator.mountPointsDir=\"~/.local/share/Cryptomator/mnt\"" \
-    --java-options "-Dcryptomator.showTrayIcon=false" \
+    --java-options "-Djava.net.useSystemProxies=true" \
+    --java-options "-Dcryptomator.logDir=\"@{userhome}/.local/share/Cryptomator/logs\"" \
+    --java-options "-Dcryptomator.pluginDir=\"@{userhome}/.local/share/Cryptomator/plugins\"" \
+    --java-options "-Dcryptomator.settingsPath=\"@{userhome}/.config/Cryptomator/settings.json:~/.Cryptomator/settings.json\"" \
+    --java-options "-Dcryptomator.p12Path=\"@{userhome}/.config/Cryptomator/key.p12\"" \
+    --java-options "-Dcryptomator.ipcSocketPath=\"@{userhome}/.config/Cryptomator/ipc.socket\"" \
+    --java-options "-Dcryptomator.mountPointsDir=\"@{userhome}/.local/share/Cryptomator/mnt\"" \
+    --java-options "-Dcryptomator.showTrayIcon=true" \
+    --java-options "-Dcryptomator.disableUpdateCheck=true" \
     --java-options "-Dcryptomator.buildNumber=\"aur-${pkgrel}\"" \
     --java-options "-Dcryptomator.appVersion=\"${pkgver}\"" \
     --app-version "${pkgver}" \
@@ -92,6 +95,10 @@ package() {
   install -Dm644 "${srcdir}/cryptomator-${pkgver}/dist/linux/common/org.cryptomator.Cryptomator256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/org.cryptomator.Cryptomator.png"
   install -Dm644 "${srcdir}/cryptomator-${pkgver}/dist/linux/common/org.cryptomator.Cryptomator512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/org.cryptomator.Cryptomator.png"
   install -Dm644 "${srcdir}/cryptomator-${pkgver}/dist/linux/common/org.cryptomator.Cryptomator.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator.svg"
+  install -Dm644 "${srcdir}/cryptomator-${pkgver}/dist/linux/common/org.cryptomator.Cryptomator.tray.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator.tray.svg"
+  install -Dm644 "${srcdir}/cryptomator-${pkgver}/dist/linux/common/org.cryptomator.Cryptomator.tray-unlocked.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator.tray-unlocked.svg"
+  install -Dm644 "${srcdir}/cryptomator-${pkgver}/dist/linux/common/org.cryptomator.Cryptomator.tray.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/org.cryptomator.Cryptomator.tray-symbolic.svg"
+  install -Dm644 "${srcdir}/cryptomator-${pkgver}/dist/linux/common/org.cryptomator.Cryptomator.tray-unlocked.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/org.cryptomator.Cryptomator.tray-unlocked-symbolic.svg"
 
   mkdir -p "${pkgdir}/opt/cryptomator/"
   cp -R "${srcdir}/cryptomator-${pkgver}/target/cryptomator" "${pkgdir}/opt/"
