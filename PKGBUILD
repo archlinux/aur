@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.8
+pkgver=1.0.10
 _zigver=0.12.0-dev.1297+a9e66ed73
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
@@ -16,13 +16,13 @@ sha256sums=('SKIP'
             '673c13d27e024d7403d15d800a57f7e97c4fec81c20421dcf23db18c7ecbcafb')
 
 prepare() {
-  cd "$pkgname"
-
   bun i -g @oven/zig
-  rm -rf ~/.bun/install/global/node_modules/@oven/zig-linux-x64/*
-  cp -r ../zig-linux-x86_64-0.12.0-dev.1297+a9e66ed73/* ~/.bun/install/global/node_modules/@oven/zig-linux-x64/
+  rm -rf ~/.bun/install/global/node_modules/@oven/zig-linux-x64
+  ln -sf  $srcdir/zig-linux-x86_64-$_zigver ~/.bun/install/global/node_modules/@oven/zig-linux-x64
   # bun update -g @oven/zig
-  # bun i
+
+  cd "$pkgname"
+  bun i
 
   make assert-deps
   git -c submodule.src/javascript/jsc/WebKit.update=checkout submodule update --init --recursive --depth=1 --progress
