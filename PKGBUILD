@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=cloudflared-bin
-pkgver=2023.8.2
+pkgver=2023.10.0
 pkgrel=1
 pkgdesc="Cloudflare Tunnel client (formerly Argo Tunnel)"
 arch=("x86_64" "i686" "aarch64" "armv6h" "armv7h")
@@ -27,23 +27,23 @@ b2sums=('dc6395f606b09f8a2fa6e8d28f8436a9b0d2ee7e43b4033542c55eb1bf26e9e6c01fd53
         '2916ff952590b1322c84a390da01639f4e2656faa6d72c3f270b21c89a56bd5fb54fd54c6204736d61a0433b46427701de5a641bf68958dd03f551fe18b8bc7f'
         '0c0f84587d054531153ee079a55f83070d66b02c05d0d65c56d6272a2e2f6575e3e05ed15f10bce86363b53301c713ca0baf973ec1a258ba739ab73397ab0f38'
         'd0a77662d4383c990c7d1c9687d3e9abe4ff2c501b9d6d006ee8daf4f0d13b6eafd633c17e3ddc2507b238918e3d123a72a2f6cb8b894d150705b3a8bb69a862')
-b2sums_x86_64=('1509c2f2a0bb9488208a30eb06b09b71b8844745898d126786925b97ff3f9d1a984d159302b13c7b0fc81795a4781fbc3dfc17396e40efa4634139094e4011ce')
-b2sums_i686=('81ecf6f84cea1ae526d6c08706ed1d9debab10babc8c89664dac413f034468a05adb38d1766e1df2a2f7f46783fedaf10865ec3e94e8839552b8fe8b466dbc43')
-b2sums_aarch64=('a2adccc2b2fdc8628b32d2b0668394c009a11b813a4828f37624600b9df0dc8b367ed470ea31d1be1c2271a34f3c5b270552de7de3ae2f34169a889f1dc90e1e')
-b2sums_armv6h=('f0c49809eccbf0bd75e28b6a03a66602cc739310d6641db1d0964c0d75f62b68766056eff6f9029a2b285fb363796874fd4f57b7bc0f10ff2aad1355d6eebe05')
-b2sums_armv7h=('f0c49809eccbf0bd75e28b6a03a66602cc739310d6641db1d0964c0d75f62b68766056eff6f9029a2b285fb363796874fd4f57b7bc0f10ff2aad1355d6eebe05')
+b2sums_x86_64=('84e0699a5a0b44ca93bb1e6a89b2a2b42a56136dff28da9dcc42a7bf819aae4981eb025d13df693fe5a7f24097c7c65940f9e7c16de3189df31d58f7b9faf397')
+b2sums_i686=('927cc101d8b7f1669d59f896d6161d5e3d0f9c9acae9e0ab5273ab33a3cead2d18b5897975af53ee489522af03bee68fb1b712fc0e29bacefb5184cc5f481bdf')
+b2sums_aarch64=('8e1a9458da45bb491f16d882792c34718d7c98f64c7a242cd7eeaf7ddfe4dc0bec5687747c454956af929a4cc9ba491d89f487aff3959a5b2ba61d0400e82c9e')
+b2sums_armv6h=('38373b535fe45b449c8a876696476aaddc42f2871bb334cfc45b247bbee29d6cdd95248e2cd80e36af81d964a11a02d6affb214e72dda0348a8b8d87a44ee883')
+b2sums_armv7h=('38373b535fe45b449c8a876696476aaddc42f2871bb334cfc45b247bbee29d6cdd95248e2cd80e36af81d964a11a02d6affb214e72dda0348a8b8d87a44ee883')
 
 package() {
-  # Install License
-  install -Dm644 ${pkgname}-LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+        # Install License
+        install -Dm644 ${pkgname}-LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
-  # Install Binary
-  install -Dm755 ${pkgname}-*-${pkgver} ${pkgdir}/usr/bin/cloudflared
+        # Install Binary
+        install -Dm755 ${pkgname}-*-${pkgver} ${pkgdir}/usr/bin/cloudflared
 
-  # Configuration File
-  install -Dm644 cloudflared.yml ${pkgdir}/etc/cloudflared/cloudflared.yml.example
-  install -Dm644 -t ${pkgdir}/usr/lib/systemd/system cloudflared{@,-dns,-tunnel@}.service
+        # Configuration File
+        install -Dm644 cloudflared.yml ${pkgdir}/etc/cloudflared/cloudflared.yml.example
+        install -Dm644 -t ${pkgdir}/usr/lib/systemd/system cloudflared{@,-dns,-tunnel@}.service
 
-  # Post install
-  install -Dm644 sysusers.d ${pkgdir}/usr/lib/sysusers.d/cloudflared.conf
+        # Post install
+        install -Dm644 sysusers.d ${pkgdir}/usr/lib/sysusers.d/cloudflared.conf
 }
