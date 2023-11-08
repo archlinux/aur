@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=cloudflare-dynamic-dns
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Updates AAAA records at Cloudflare according to the current IPv6 address"
 url="https://github.com/Zebradil/cloudflare-dynamic-dns"
 arch=(any)
@@ -45,7 +45,7 @@ package ()
 { 
     cd "$pkgname-$pkgver" || exit 1;
     BIN=$pkgname;
-    install -Dm755 ./$BIN -t "$pkgdir/usr/bin";
+    install -Dm755 build/$BIN -t "$pkgdir/usr/bin";
     install -Dm644 systemd/* -t "$pkgdir/usr/lib/systemd/system";
     install -m700 -d "$pkgdir/etc/$pkgname/config.d";
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
