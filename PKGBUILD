@@ -1,4 +1,4 @@
-# Maintainer : Daniel Chesters <daniel.chesters@gmail.com>
+# Maintainer : Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=i3wsr
 pkgver=2.1.1
