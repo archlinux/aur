@@ -4,8 +4,8 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=cloudflare-dynamic-dns
-pkgver=2.3.1
-pkgrel=4
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="Updates AAAA records at Cloudflare according to the current IPv6 address"
 url="https://github.com/Zebradil/cloudflare-dynamic-dns"
 arch=(any)
@@ -19,8 +19,8 @@ optdepends=()
 conflicts=()
 provides=()
 replaces=()
-source=(cloudflare-dynamic-dns-2.3.1::https://github.com/zebradil/cloudflare-dynamic-dns/archive/2.3.1.tar.gz)
-sha256sums=('08dff99a91805ad521bd652795eba03ac2e7ec128b9395b4f49eb41282d77221')
+source=(cloudflare-dynamic-dns-2.3.2::https://github.com/zebradil/cloudflare-dynamic-dns/archive/2.3.2.tar.gz)
+sha256sums=('2282185f9e9279425e1cedc3ea4fc271bfdf178f5f07154ea1f7123e1ce251a4')
 prepare () 
 { 
     cd "$pkgname-$pkgver" || exit 1;
