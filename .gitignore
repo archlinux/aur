@@ -1,4 +1,4 @@
 pkg/
 src/
-ot-cryptid-*.zip
-ot-cryptid-*.pkg.tar.*
+*.tar.*
+*.zip

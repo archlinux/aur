@@ -1,7 +1,7 @@
 pkgbase = ot-cryptid
 	pkgdesc = FM drum synthesizer with a Yamaha DX-7 emulation sound engine
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://punklabs.com/ot-cryptid
 	arch = aarch64
 	arch = x86_64

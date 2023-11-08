@@ -1,9 +1,10 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _name="OneTrick CRYPTID"
 pkgname=ot-cryptid
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='FM drum synthesizer with a Yamaha DX-7 emulation sound engine'
 arch=(aarch64 x86_64)
 url='https://punklabs.com/ot-cryptid'
