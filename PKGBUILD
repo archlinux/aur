@@ -3,7 +3,7 @@
 
 pkgname=seismic-unix
 pkgver=44.28
-pkgrel=1
+pkgrel=1.1
 pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
 arch=('i686' 'x86_64')
@@ -26,12 +26,16 @@ prepare() {
     rm -rf ../lib/
     # removing all *.o files (fixes issues)
     find . -type f -iname '*.o' -exec rm {} \;
-    sed -i 's_/usr/X11[^/]*/_/usr/_' Makefile.config
-    sed -i 's/BSD_SOURCE/DEFAULT_SOURCE/' Makefile.config
-    sed -i 's/-O/-O2/' Makefile.config
-    sed -i '/^OPTC/ s/$/-ltirpc -no-pie/' Makefile.config
-    sed -i '/^POSTLFLAGS/ s/$/ -no-pie/' Makefile.config
-    sed -i '/^FOPTS/ s/$/-std=legacy -no-pie/' Makefile.config
+    
+    cp configs/Makefile.config_Linux_ARCH Makefile.config
+    # The following is not needed for new Makefile.config
+    # sed -i 's_/usr/X11[^/]*/_/usr/_' Makefile.config
+    # sed -i 's/BSD_SOURCE/DEFAULT_SOURCE/' Makefile.config
+    # sed -i 's/-O/-O2/' Makefile.config
+    # sed -i '/^OPTC/ s/$/-ltirpc -no-pie/' Makefile.config
+    # sed -i '/^POSTLFLAGS/ s/$/ -no-pie/' Makefile.config
+    # sed -i '/^FOPTS/ s/$/-std=legacy -no-pie/' Makefile.config
+    
     sed -i 's_read RESP_RESP=y_' chkroot.sh
     echo -ne '#!/bin/sh\ntrue\n' | tee license.sh mailhome.sh
 }
@@ -52,7 +56,8 @@ build() {
     make -j1 xtinstall
     make -j1 xminstall
     make -j1 finstall
-    make -j1 mglinstall
+    # mgl can not be compiled now.
+    # make -j1 mglinstall
     make -j1 utils
 }
 

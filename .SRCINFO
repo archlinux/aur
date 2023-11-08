@@ -1,7 +1,7 @@
 pkgbase = seismic-unix
 	pkgdesc = A seismic processing and research environment developed at the Center for Wave Phenomena, Colorado School of Mines
 	pkgver = 44.28
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://wiki.seismic-unix.org/start
 	install = seismic-unix.install
 	arch = i686
