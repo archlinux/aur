@@ -1,7 +1,7 @@
 pkgbase = next_ls
 	pkgdesc = The language server for Elixir that just works.
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elixir-tools/next-ls
 	arch = x86_64
 	arch = arm64
