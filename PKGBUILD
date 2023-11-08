@@ -3,16 +3,16 @@
 # Contributor: Carlos Galindo <carlos.s.galindo (at) gmail.com>
 
 _npmname=meshcentral
-_npmver=1.1.6
+_npmver=1.1.15
 pkgname=meshcentral
-pkgver=1.1.6
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="The open source, multi-platform, self-hosted, feature packed web site for remote device management"
 arch=(any)
 url="https://meshcentral.com/info/"
 license=(Apache)
-makedepends=('npm')
-depends=('nodejs<=18.15.0')
+#makedepends=('npm')
+depends=('npm' 'nodejs<19')
 optdepends=('nodejs-acme-client: Auto trusted TLS certificate support'
 	'nodejs-modern-syslog: syslog support'
 	'nodejs-nodemailer: SMTP support'
@@ -23,7 +23,7 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
 	"$_npmname.sysusers"
 	"$_npmname.tmpfiles")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('0e7c83c20daff53d9eb21ea703b5de7cdcf8582bc9f3cc74ab9c57230ae3faf4'
+sha256sums=('89ac6ca4a4cad700e1c7bfc5d4a0443a632b3c8d90a12463c20ab04dc4984d87'
             'd88ad4d11395bd13a4aa64829bf03977ac3511134be2dbe875b95c7243e5bf92'
             'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
             'ba5d7e33bc3ce9ce33d20b23e8632af8f1e1507908bba3e91dae1a0cf460ddcc')
@@ -33,7 +33,28 @@ package() {
 	local _npmdir="$pkgdir/usr/lib/node_modules/"
 	mkdir -p "$_npmdir"
 	cd "$_npmdir"
-	npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver archiver@4.0.2 otplib@10.2.3
+	npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver \
+		archiver@5.3.2 \
+		body-parser@1.20.2 \
+		cbor@5.2.0 \
+		compression@1.7.4 \
+		cookie-session@2.0.0 \
+		express@4.18.2 \
+		express-handlebars@5.3.5 \
+		express-ws@4.0.0 \
+		ipcheck@0.1.0 \
+		minimist@1.2.8 \
+		multiparty@4.2.3 \
+		@yetzt/nedb \
+		node-forge@1.3.1 \
+		ua-parser-js@1.0.36 \
+		ws@8.14.2 \
+		yauzl@2.10.0 \
+		passport \
+		passport-saml \
+		nodemailer@6.9.6 \
+		otplib@10.2.3 \
+		keygrip
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
