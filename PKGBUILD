@@ -2,15 +2,15 @@
 # Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kasts-git
-pkgver=23.08.1_r1353.g9693c99c
+pkgver=23.08.3_r1376.g5cbf1405
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Kirigami-based podcast player"
 url="https://invent.kde.org/multimedia/kasts"
 license=('GPL2')
-depends=('qt5-multimedia' 'qt5-quickcontrols2' 'qtkeychain-qt5' 'kirigami2' 'ki18n'
-         'kconfig' 'kcoreaddons' 'syndication' 'taglib' 'threadweaver' 'vlc'
-         'kirigami-addons')
+depends=('qt5-multimedia' 'qt5-quickcontrols2' 'qtkeychain-qt5' 'kirigami2' 'ki18n5'
+         'kconfig5' 'kcoreaddons5' 'syndication5' 'taglib' 'threadweaver5' 'vlc'
+         'kirigami-addons5')
 makedepends=('extra-cmake-modules' 'git' 'qt5-svg' 'qt5-tools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
