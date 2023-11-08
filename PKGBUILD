@@ -24,5 +24,6 @@ sha256sums=('cec35230669f63668432d7122b1e3fdf00e7ea6e7b2132b8057f042f582ca1ba'
             '39171d332b91bbece73181e607623337734f85b3264aee15e51a2a2f1a8b0026')
 
 package() {
+  mkdir -p "$pkgdir/$_path"
   install -Dm644 * "$pkgdir/$_path"
 }
