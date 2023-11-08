@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=footage
-pkgver=1.3
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Polish your videos"
 url="https://gitlab.com/adhami3310/Footage"
 arch=('x86_64' 'aarch64')
