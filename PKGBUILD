@@ -5,16 +5,17 @@
 # https://github.com/phnx47/pkgbuilds
 
 pkgname=solidity
-pkgver=0.8.22
+pkgver=0.8.23
 pkgrel=1
 pkgdesc='Contract-Oriented Programming Language'
 arch=('x86_64')
 url='https://github.com/ethereum/solidity'
 license=('GPL3')
+depends=('gcc-libs')
 optdepends=('z3: SMT checker' 'cvc4: SMT checker')
 makedepends=('boost' 'cmake')
 source=("${pkgname}_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('da972bf554ce7e32e25fa1ff954759506400e9ee6e96b8d5a6929f15826a3dfbaa9e3f5cd73f57d8248c5c1617822334efd9a195700b41ccc8d70b62d8d1251c')
+sha512sums=('c2106ee80b90c51c7e44c8b63e0b61ebadcf74087eb343f8491e3d7093d528bf81c99d169dfba374526d8dfe4c193e60f8f45ce067647b7b34ef050556abf697')
 
 build() {
   cmake -B build -S "${pkgname}_${pkgver}" \
