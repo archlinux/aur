@@ -1,7 +1,7 @@
 pkgbase = chromium-unstable-bin
 	pkgdesc = The Chromium web browser for Linux built with the open source Clang compiler, LLD linker and Widevine (Unstable Channel)
 	pkgver = 120.0.6096.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium-unstable.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = chromium-unstable-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
-	optdepends = kwallet: for storing passwords in KWallet
+	optdepends = kwallet5: for storing passwords in KWallet
 	conflicts = chromium-unstable
 	conflicts = chromium-unstable-avx2
 	conflicts = chromium-unstable-avx2-bin
