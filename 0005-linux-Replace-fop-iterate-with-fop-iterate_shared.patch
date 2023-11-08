@@ -1,7 +1,7 @@
-From fea2bd506b40543d6d9ec862acafb6622fb97ff8 Mon Sep 17 00:00:00 2001
+From bb5b276d6036735cfacad9b27e8d0e50eb2ef819 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Tue, 29 Aug 2023 14:58:10 -0600
-Subject: [PATCH 5/6] linux: Replace fop iterate with fop iterate_shared
+Subject: [PATCH 5/9] linux: Replace fop iterate with fop iterate_shared
 
 The Linux 6.5 commit:
   'vfs: get rid of old '->iterate' directory operation' (3e32715496)
@@ -31,6 +31,12 @@ Tested-by: BuildBot <buildbot@rampaginggeek.com>
 (cherry picked from commit 7437f4d37719ea53711e06ac9675dad1abd6769e)
 
 Change-Id: Id00cfab2c0b51c2167fe19cd9cf7f136450ff174
+Reviewed-on: https://gerrit.openafs.org/15558
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+(cherry picked from commit 6de0a646036283266e1d4aeb583e426005ca5ad4)
 ---
  src/afs/LINUX/osi_vnodeops.c  | 19 +++++++++++++++----
  src/cf/linux-kernel-func.m4   | 10 ++++++++++
@@ -116,5 +122,5 @@ index 8082308e8..52e10acb8 100644
  AC_CHECK_LINUX_STRUCT([file_operations], [read_iter], [fs.h])
  AC_CHECK_LINUX_STRUCT([file_operations], [sendfile], [fs.h])
 -- 
-2.42.0
+2.42.1
 

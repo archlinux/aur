@@ -1,7 +1,7 @@
-From 48e0bd7d929fac0cd415c7e8f7886782dcd324ef Mon Sep 17 00:00:00 2001
+From 17e481aa89cdc480d700cf9741331e12e5944049 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Thu, 18 Jul 2019 22:56:48 -0500
-Subject: [PATCH 2/6] LINUX: Make sysctl definitions more concise
+Subject: [PATCH 2/9] LINUX: Make sysctl definitions more concise
 
 Our sysctl definitions are quite verbose, and adding new ones involves
 copying a bunch of lines. Make these a little easier to specify, by
@@ -314,5 +314,5 @@ index 8e7dd70e1..894c49412 100644
  	return -1;
  
 -- 
-2.42.0
+2.42.1
 

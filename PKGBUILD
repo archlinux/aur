@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -23,15 +23,21 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz
         0003-Linux-6.5-Use-register_sysctl.patch
         0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
         0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch
-        0006-dir-Introduce-struct-DirEntryMax.patch)
+        0006-dir-Introduce-struct-DirEntryMax.patch
+        0007-LINUX-Pass-an-array-of-structs-to-register_sysctl.patch
+        0008-Linux-6.6-convert-to-ctime-accessor-functions.patch
+        0009-Linux-6.6-Pass-request_mask-to-generic_fillattr.patch)
 sha256sums=('9fec11364623549e8db7374072f5c8f01b841f6bfe7e85673cbce35ff43ffb07'
             '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
-            'e27ff48ca676ac8d4dc95209bd3b84fe13bb14861aa4a0e0776f3dfe7559ffab'
-            '4e71ad2009125187632cdb48b2d5eccc9bcaa8ab0733751fed432cfe661ea86e'
-            'daaa1361d5db967bd8b72fff4038cfc933a7027e3c70d10ef6ff673a5d176cb6'
-            '40e50688a2d4d85eb9b971aaa8563e577db15550aa56c44eab8fe2a688d3f013'
-            'c0792690ed273ce464966b22e36ca431196a913ded6f0def4a46154076fd0eff'
-            'be7e1b0304ff61ed899286fdd18ebdbe71cbbe3eb20f6ac38c5799083b339a4a')
+            '9a726876e8a3f99db09cf16df994d01d31673df1953796c6fcd0bc95e3ecafa1'
+            '7ef226084bc37dd9298ff39c9bc903796ea07841efedc3906bcc4a744e96e57d'
+            'b1fa6425438478c79dd97dab6e32e3a8e6ed706f96c9f67c53ede367f9d1ee63'
+            '34312040d7139dd34341f567cf57e5c3ac4e1622b8a7289146f0a1204479b8a0'
+            '71ed1aee8d0b8a47ae3c1bceb82121666d8ac4b575475032e0342c45b2d380fc'
+            '9422f8950311a5b2aba2a7b9b429bfe0652b2f41aaa4519a39c7b92a35513c3f'
+            '8ab1ce60ef99c0a3538842f3b8e376c377ec4ca6867d1ccef7379edbb73e102d'
+            '0dd8946890016f3a87869eeb79e1eedf34892d1d00903cb044b70a2e43dd81d8'
+            'ae67a9390f7c9d22cc4fd06964ee5010d90fd5e4cc64ed5137aaf0b36ecfbd32')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
@@ -43,6 +49,11 @@ prepare() {
   patch -p1 < "${srcdir}"/0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
   patch -p1 < "${srcdir}"/0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch
   patch -p1 < "${srcdir}"/0006-dir-Introduce-struct-DirEntryMax.patch
+
+  # Patches for Linux 6.6
+  patch -p1 < "${srcdir}"/0007-LINUX-Pass-an-array-of-structs-to-register_sysctl.patch
+  patch -p1 < "${srcdir}"/0008-Linux-6.6-convert-to-ctime-accessor-functions.patch
+  patch -p1 < "${srcdir}"/0009-Linux-6.6-Pass-request_mask-to-generic_fillattr.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
