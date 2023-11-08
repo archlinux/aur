@@ -1,0 +1,53 @@
+From e7d264ac6671b78a89ca189c4677877c8eb73eee Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Wed, 8 Nov 2023 17:50:40 +0100
+Subject: [PATCH] Fix TypeError when calling executable scripts
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Running one of the generated executable scripts would result in an
+error message.
+
+For example:
+
+```
+$ ppp --version
+Traceback (most recent call last):
+  File "/usr/bin/ppp", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/lib/python3.11/site-packages/pypipe.py", line 836, in main
+    if len(argv) == 0 or argv[0] not in expected_1st_args:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+```
+
+That error seems to be caused by pip’s shim script calling the `main()`
+function without arguments.
+
+Fix this by setting the default value for the `argv` kwarg to
+`sys.argv[1:]` in the signature of the `main` function.
+---
+ pypipe.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pypipe.py b/pypipe.py
+index b1a90fc..f1e9d3a 100755
+--- a/pypipe.py
++++ b/pypipe.py
+@@ -598,7 +598,7 @@ def gen_loop_head():
+     exec_code(code, args)
+ 
+ 
+-def main(argv=None):
++def main(argv=sys.argv[1:]):
+     def key_value(s):
+         kv = s.split("=", 1)
+         return kv[0], kv[1]
+@@ -852,4 +852,4 @@ def field_type(s):
+ 
+ 
+ if __name__ == '__main__':
+-    main(sys.argv[1:])
++    main()
