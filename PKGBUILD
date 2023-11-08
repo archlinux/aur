@@ -2,28 +2,44 @@
 pkgname=tesler-bin
 _pkgname=TesLEr
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="TesLEr - The Tesla Sentinel Viewer"
 arch=('x86_64')
 url="https://github.com/j-catania/TeslaSentinelViewer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron22' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/TesLEr-${pkgver}.AppImage"
+depends=(
+    'bash'
+    'electron22'
+    'hicolor-icon-theme'
+    'libxext'
+    'gdk-pixbuf2'
+    'libx11'
+    'dbus-glib'
+    'libdbusmenu-glib'
+    'gtk2'
+)
+makedepends=(
+    'squashfuse'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/TesLEr-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/j-catania/TeslaSentinelViewer/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh")
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('5447e01520ad757fdbb4130e764a863c9d282c5dd48cf2fabbd33e171a2decfd'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            'f487f4e4cdf98a80bc0634c5f6852e7b50de2002d22178657640b3e0563d10c0')
-prepare() {
+            '890ba5ec0ef7d92b90fc71b27a4ebd8b26f83dd2e880b6803c67887dd1e2fd10')
+build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
