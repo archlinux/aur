@@ -2,20 +2,21 @@
 
 _pkgname=lxqt-menu-data
 pkgname=$_pkgname-git
-pkgver=r10.616b94a
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='LXQt menu files'
 arch=(any)
-#groups=(lxqt)
 url='https://github.com/lxqt/lxqt-menu-data'
 license=('GPL' 'LGPL')
 makedepends=(git cmake lxqt-build-tools-git qt5-tools)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=('git+https://github.com/lxqt/lxqt-menu-data.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd lxqt-menu-data
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always | sed 's:-:.:g'
 }
 
 build() {
