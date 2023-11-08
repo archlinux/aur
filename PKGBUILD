@@ -1,32 +1,30 @@
 pkgname=steamlink
 _name=steamlink
-pkgver=1.2.0.241
+pkgver=1.3.7.255
 pkgrel=1
 pkgdesc="Steam Link client"
 arch=('x86_64')
 url="https://store.steampowered.com/remoteplay#anywhere"
 license=('custom')
 depends=(
-	'cairo'
+	'fontconfig'
 	'freetype2'
-	'gtk3'
 	'harfbuzz'
-	'icu69'
+	'icu71'
 	'libdrm'
 	'libglvnd'
 	'libice'
-	'libjpeg6-turbo'
 	'libpng'
 	'libsm'
-	'libssl.so=1.1-64'
 	'libva'
 	'libvdpau'
 	'libx11'
-	'libxcomposite'
+	'libxcb'
+	'libxext'
 	'libxkbcommon'
 	'libxkbcommon-x11'
 	'opus'
-	'pango'
+	'wayland'
 	'xcb-util-image'
 	'xcb-util-keysyms'
 	'xcb-util-renderutil'
@@ -38,7 +36,7 @@ source=(
     "steamlink.sh"
 )
 # Ensuring we're serving the correct image
-_ostree_commit=e618ca0305663bcc2879f71bd4e392fab8027ae685c3e60b707b8167000ac27d
+_ostree_commit=f8a122885e6492b159d9a8084aa00ff242a93904109cb0390c19de58c081b868
 sha256sums=('8bdc20abc4e19c0796460beb5bfe0e7aa4138716999e19c6f2dbdd78cc41aeaa'
             '4d5bd2835b7ccf71e53e0f6f2c4bc9a3fe2477345cb51517f05b019dd63b8fe8')
 
