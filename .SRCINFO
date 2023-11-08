@@ -22,6 +22,7 @@ pkgname = thorium-browser-sse3-bin
 	depends = alsa-lib
 	depends = gtk3
 	depends = libcups
+	depends = libnotify
 	depends = libxss
 	depends = libxtst
 	depends = nss
