@@ -18,13 +18,16 @@ depends=('zlib' 'libdrm')
 optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
 provides=('opencl-driver')
 source=("${pkgname}-${pkgver}-linux64.zip::https://web.archive.org/web/20190526190814if_/https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip")
-sha256sums=('a3989a7a00f216b1a50bad37dc49629c3f7ce65104a2ca665e59d8c699bf7443') #sha256sums <file> to generate.
+#source=("$pkgname-$pkgver-linux64.zip")
+sha256sums=('a3989a7a00f216b1a50bad37dc49629c3f7ce65104a2ca665e59d8c699bf7443') #updpkgsums to generate.
 
-_package_internal=("intel-opencl-r${_pkgver}.x86_64.tar.xz"
-                   "intel-opencl-cpu-r${_pkgver}.x86_64.tar.xz")
+# Paquetes internos:
+_package_internal=("intel-opencl-r${_pkgver}.$arch.tar.xz"
+                   "intel-opencl-devel-r$_pkgver.$arch.tar.xz"
+                   "intel-opencl-cpu-r${_pkgver}.$arch.tar.xz")
 
+# Alistar ficheros en el directorio de instalación.
 package() {
-	
 	# Extraer paquetes internos con "tar".
 	for p in "${_package_internal[@]}"; do
 		tar -xf "$p" -C "$pkgdir"
@@ -46,3 +49,16 @@ package() {
 	# Quitar los permisos de escritura para los grupos y otros.
 	chmod go-w -R "$pkgdir"
 }
+
+## Source:
+# https://web.archive.org/web/20190526190814if_/https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip
+
+## References:
+# https://community.intel.com/t5/Intel-Distribution-of-OpenVINO/Can-t-find-opencl-driver/m-p/1149053#M12047
+
+## Test:
+# updpkgsums
+# makepkg --printsrcinfo > .SRCINFO
+# git clean -dfx
+
+# 👤 Autor: https://t.me/dakataca 💻 🐬 #
