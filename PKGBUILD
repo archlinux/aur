@@ -2,7 +2,7 @@
 pkgname=tiddlydesktop
 pkgver=0.0.18
 pkgrel=1
-pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis."
+pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis"
 url="https://github.com/Jermolene/TiddlyDesktop"
 license=('BSD')
 provides=('tiddlydesktop')
