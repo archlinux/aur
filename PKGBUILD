@@ -4,7 +4,7 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=1.10.r0.ge4bc908
+pkgver=2.0.beta2.r0.g8d082cb
 pkgrel=1
 epoch=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
@@ -21,7 +21,7 @@ makedepends=(
   'coreutils'
   'git'
   'python-build'
-  'python-flit-core'
+  'python-hatchling'
   'python-installer'
   'python-wheel'
 )
