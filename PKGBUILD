@@ -2,16 +2,16 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.2_18163
+_base_pkgver=3.2.2_18313
 # _update_pkgver=3.1.2_13107
-_base_pkgver_hash=d264d6e3
+_base_pkgver_hash=4505aa36
 # _update_pkgver_hash=c893f6be
 pkgname=linuxqq-nt-bwrap
 pkgver="${_base_pkgver}"
 # pkgver="${_update_pkgver}"
 pkgrel=1
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
-arch=('x86_64' 'aarch64' 'loong64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
+arch=('x86_64' 'aarch64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
 depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss'
@@ -33,11 +33,10 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linux
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_loong64.deb")  # 底包
 source=('start.sh' 'config.json' 'xdg-open.sh')
 sha256sums=('5a89e6e6bd598268a8cdafaa7314127c53fc203cb31a08c1fb7c38c1c3e4372a'
-            '96948cc0255a998d5df9b854edb5a50a4ac54afb0e48c8f8f290520916e5341f'
+            '03c421b3b65982749d17b88fa58707f5e0ec730b9457b8621dbe4af36bf0760f'
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
-sha256sums_x86_64=('39faae623d45ea092d7982b75063557a242d33a73955105057c1f13755dad130')
-sha256sums_aarch64=('6447594175eb4008fd65238b4aeee71c93a8b947c3ea9718112cbc10987b328b')
-sha256sums_loong64=('68c51dc7725414eaafc6abf39353f30d2e5e8696962cc824fdc6ed07a15cdba2')
+sha256sums_x86_64=('3d73768e7a78e72f0904a8e69c90d8856848a5c05ba7ad40a0cfcf1fd446a162')
+sha256sums_aarch64=('54e503d612ccda27dcdabee80685233f19e8df9f931decc1767d8ba4bc3e450d')
                    #  '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
                     #  '49a356b051b1fae89f132475128447f184f2385384773114ae9392f19200d7da')  # 热更新补丁
 
