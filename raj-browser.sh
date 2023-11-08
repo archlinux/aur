@@ -1,6 +1,8 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron22
-_ASAR="/opt/raj-browser/raj-browser.asar"
+APPDIR="/usr/lib/raj-browser"
+export PATH="${APPDIR}:${PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
