@@ -7,16 +7,15 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=20230324
+pkgver=5.11.r115.2afd1f622a
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('x86_64')
 url="https://www.jabref.org"
 license=('MIT')
-depends=('freetype2' 'libnet' 'libxrender' 'libxtst' 'alsa-lib'
-	'libjpeg-turbo' 'lcms2' 'giflib')
-makedepends=('git' 'java-environment=19') # tested with openjdk from the repos
+depends=('java-runtime=21')
+makedepends=('git' 'jdk21-openjdk') # tested with openjdk from the repos
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
@@ -29,7 +28,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  printf %s $(git log -1 --format="%cd" --date=short | tr -d '-') 
+  printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  # printf %s $(git log -1 --format="%cd" --date=short | tr -d '-') 
 }
 
 build() {
