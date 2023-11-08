@@ -3,7 +3,7 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=2.2.5
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Your connected workspace for wiki, docs & projects'
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
 	notion.svg::https://api.iconify.design/logos/notion-icon.svg
 	notion-app
 )
-sha256sums=('7d9a97c23984e2bfb4f8b80e078e58ccdde83335573c23b7429eeb383728ab72'
+sha256sums=('5e486d296bbba753061c9226415f632d53d20a9796e8a4dafe6a1ec79d38c362'
             '38848d85c41116b419b13818ab934d6ec5c5c563f9623f1cf8a958809ea92c7d'
             '8c754365934a6b576104cdc41422cae01ff10f97d5513bb7a011aa73905d5c84'
             'd95b5cd37b59dcabe63520b0e2a27a2de3cb950fcc56b30ae3076e99ed6d4747')
@@ -58,5 +58,6 @@ package() {
 	install -Dm644 "$srcdir/notion.desktop" -t "$share/applications"
 	install -Dm644 "$srcdir/notion.svg" -t "$share/icons/hicolor/scalable/apps"
 	find $pkgdir -name "*test*" -path "*/node_modules/*" -print -delete
+	rm $pkgdir/usr/lib/notion-app/node_modules/node-addon-api/tools/{eslint-format.js,conversion.js,clang-format.js}
 	find $pkgdir -type d -empty -delete
 }
