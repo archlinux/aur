@@ -1,0 +1,12 @@
+diff -aur a/asi-python/Makefile b/asi-python/Makefile
+--- a/asi-python/Makefile	2023-10-27 09:24:03.000000000 +0200
++++ b/asi-python/Makefile	2023-11-08 22:24:04.347497255 +0100
+@@ -31,7 +31,7 @@
+ setup: $(setup-files)
+ 
+ build install: setup
+-	python2 setup.py $(OPTS) $@ $(CMD_OPTS)
++	python setup.py $(OPTS) $@ $(CMD_OPTS)
+ 
+ clean distclean:
+ 	rm -rf $(filter-out $(precious-files),$(wildcard *))
