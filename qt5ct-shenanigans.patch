@@ -1,21 +1,21 @@
 Index: qt5ct/CMakeLists.txt
 ===================================================================
---- qt5ct/CMakeLists.txt	(revision 678)
+--- qt5ct/CMakeLists.txt	(revision 689)
 +++ qt5ct/CMakeLists.txt	(working copy)
-@@ -25,8 +25,11 @@
+@@ -27,8 +27,11 @@
  
  ADD_DEFINITIONS(-DQT_DISABLE_DEPRECATED_BEFORE=0x050C00 -DUSE_WIDGETS)
  
--find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools DBus ThemeSupport REQUIRED)
-+find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools DBus QuickControls2 ThemeSupport REQUIRED)
+-find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools REQUIRED)
++find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools QuickControls2 REQUIRED)
  find_package(Qt5Gui ${QT_MINIMUM_VERSION} CONFIG REQUIRED Private)
 +find_package(KF5Config REQUIRED)
 +find_package(KF5ConfigWidgets REQUIRED)
 +find_package(KF5IconThemes REQUIRED)
  
- get_target_property(QT_LRELEASE_EXECUTABLE Qt5::lrelease IMPORTED_LOCATION)
- 
-@@ -45,7 +48,9 @@
+ if(NOT DISABLE_DBUS)
+     find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS DBus ThemeSupport REQUIRED)
+@@ -54,7 +57,9 @@
      message(FATAL_ERROR "Could NOT find qtpaths executable")
  endif()
  
@@ -28,7 +28,7 @@ Index: qt5ct/CMakeLists.txt
  message(STATUS "Generating translations ...")
 Index: qt5ct/src/qt5ct/appearancepage.cpp
 ===================================================================
---- qt5ct/src/qt5ct/appearancepage.cpp	(revision 678)
+--- qt5ct/src/qt5ct/appearancepage.cpp	(revision 689)
 +++ qt5ct/src/qt5ct/appearancepage.cpp	(working copy)
 @@ -378,7 +378,7 @@
  {
@@ -41,9 +41,9 @@ Index: qt5ct/src/qt5ct/appearancepage.cpp
      {
 Index: qt5ct/src/qt5ct-common/qt5ct.cpp
 ===================================================================
---- qt5ct/src/qt5ct-common/qt5ct.cpp	(revision 678)
+--- qt5ct/src/qt5ct-common/qt5ct.cpp	(revision 689)
 +++ qt5ct/src/qt5ct-common/qt5ct.cpp	(working copy)
-@@ -112,6 +112,7 @@
+@@ -113,6 +113,7 @@
      for(const QString &p : QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation))
      {
          paths << (p + QLatin1String("/qt5ct/colors"));
@@ -53,18 +53,20 @@ Index: qt5ct/src/qt5ct-common/qt5ct.cpp
      paths.removeDuplicates();
 Index: qt5ct/src/qt5ct-qtplugin/CMakeLists.txt
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(revision 678)
+--- qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(revision 689)
 +++ qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(working copy)
-@@ -9,5 +9,5 @@
+@@ -9,7 +9,7 @@
  
  add_library(qt5ct-qtplugin MODULE ${app_SRCS})
  set_target_properties(qt5ct-qtplugin PROPERTIES OUTPUT_NAME qt5ct)
--target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::DBus Qt5::ThemeSupportPrivate qt5ct-common)
-+target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::DBus Qt5::QuickControls2 Qt5::ThemeSupportPrivate KF5::ConfigCore KF5::ConfigWidgets KF5::IconThemes qt5ct-common)
- install(TARGETS qt5ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
+-target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate qt5ct-common)
++target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::QuickControls2 KF5::ConfigCore KF5::ConfigWidgets KF5::IconThemes qt5ct-common)
+ if(NOT DISABLE_DBUS)
+     target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::DBus Qt5::ThemeSupportPrivate)
+ endif()
 Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(revision 678)
+--- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(revision 689)
 +++ qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(working copy)
 @@ -45,6 +45,7 @@
  #endif
@@ -121,7 +123,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
      if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
      {
          schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
--        m_palette = new QPalette(loadColorScheme(schemePath));
+-        m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
 +        if(schemePath.endsWith(".colors"))
 +        {
 +            m_palette = new QPalette(KColorScheme::createApplicationPalette(KSharedConfig::openConfig(schemePath)));
@@ -129,14 +131,14 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 +        }
 +        else
 +        {
-+            m_palette = new QPalette(loadColorScheme(schemePath));
++            m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
 +        }
      }
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
-@@ -464,3 +488,30 @@
- 
-     return customPalette;
+@@ -414,3 +438,30 @@
+     content.replace(regExp, "\n");
+     return content;
  }
 +
 +bool Qt5CTPlatformTheme::eventFilter(QObject *obj, QEvent *e)
@@ -167,7 +169,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 +}
 Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(revision 678)
+--- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(revision 689)
 +++ qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(working copy)
 @@ -87,10 +87,13 @@
      //virtual QPixmap fileIconPixmap(const QFileInfo &fileInfo, const QSizeF &size,
