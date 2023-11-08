@@ -2,7 +2,7 @@
 pkgname=python-ygglatency
 _pkgname="ygglatency"
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Find the fastest Yggdrasil peers."
 arch=("any")
 url="https://pypi.python.org/pypi/$_pkgname"
