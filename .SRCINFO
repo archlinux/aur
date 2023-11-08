@@ -1,6 +1,6 @@
 pkgbase = devbox-bin
 	pkgdesc = A cli tool to easily create isolated shells and containers with nix.
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://www.jetpack.io/devbox/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = devbox-bin
 	license = Apache
 	optdepends = docker
 	optdepends = nix
-	provides = devbox=0.7.1
+	provides = devbox=0.8.1
 	conflicts = devbox
-	source_aarch64 = devbox-0.7.1-aarch64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.7.1/devbox_0.7.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8fd6903c6d7859b1c0e27519dd394b64c48c89eacd2466aa75d6c35fdb87204d
-	source_armv7h = devbox-0.7.1-armv7h.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.7.1/devbox_0.7.1_linux_arm64.tar.gz
-	sha256sums_armv7h = 8fd6903c6d7859b1c0e27519dd394b64c48c89eacd2466aa75d6c35fdb87204d
-	source_i686 = devbox-0.7.1-i686.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.7.1/devbox_0.7.1_linux_386.tar.gz
-	sha256sums_i686 = 1022dc860bb4529aea4e2d7c83b6af7a0d7b6c793fb2ed3c723f45d5f7ecd0bd
-	source_x86_64 = devbox-0.7.1-x86_64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.7.1/devbox_0.7.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 212d9bc17483ac70881639780755285a765f285e04dc38d3764cd28e491c12d8
+	source_aarch64 = devbox-0.8.1-aarch64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.8.1/devbox_0.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = a5d0368af1079f228e6370279b9d6192deae94c9770936a250a0ae485e538920
+	source_armv7h = devbox-0.8.1-armv7h.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.8.1/devbox_0.8.1_linux_arm64.tar.gz
+	sha256sums_armv7h = a5d0368af1079f228e6370279b9d6192deae94c9770936a250a0ae485e538920
+	source_i686 = devbox-0.8.1-i686.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.8.1/devbox_0.8.1_linux_386.tar.gz
+	sha256sums_i686 = b211616bc3a2f5474f383fad507543b9f9ccfc49a96cd1d3798095799973123c
+	source_x86_64 = devbox-0.8.1-x86_64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.8.1/devbox_0.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = a4df26e9ab479e69f7d7bb1913f78c2949ee553a08f6f2d43d51b23b510ad3ba
 
 pkgname = devbox-bin
