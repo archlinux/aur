@@ -1,8 +1,8 @@
 # Maintainer: Martin Minka <martin dot minka at gmail dot com>
 
 pkgname=hl-log-viewer-bin
-pkgver='v0.20.0_beta.14.9'
-pkgrel=1
+pkgver='v0.20.0'
+pkgrel=2
 pkgdesc='Log viewer which translates JSON logs into pretty human-readable representation'
 url='https://github.com/pamburus/hl'
 conflicts=('hl-log-viewer')
@@ -13,8 +13,8 @@ license=('MIT')
 
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/pamburus/hl/releases/download/${pkgver//_/-}/hl-linux-x86_64-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/pamburus/hl/releases/download/${pkgver//_/-}/hl-linux-arm64-gnu.tar.gz")
-sha512sums_x86_64=('02ca25818d5a8b91adca56918e525783ec8752fcfd52518b69079f838b50b2eed12b294697ebfa19a7aae1d21a7f3f3a2632813d77c29f19b110c38ed01cf857')
-sha512sums_aarch64=('02ca25818d5a8b91adca56918e525783ec8752fcfd52518b69079f838b50b2eed12b294697ebfa19a7aae1d21a7f3f3a2632813d77c29f19b110c38ed01cf857')
+sha512sums_x86_64=('c59b585f079684e949d0bc72169769d0b8d2bb280917c732069c37574f0f3d8e373b95dfddb6396a511018e1e3175d50f93ea78cd1f1e923cba3838abe390eb2')
+sha512sums_aarch64=('b653b99a7e53192ffbbf5063a4c91200fe5fad791868d8465a4ce31af8c3f5756babc9b8ff81e9c0f29d6328d588a54756efca10b31fee029223de68f0049ca6')
 
 package() {
   install -Dm0755 "hl" "$pkgdir/usr/bin/hl"
