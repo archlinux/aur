@@ -1,0 +1,19 @@
+pre_install() {
+    rm -f /usr/bin/spwd
+}
+
+post_install() {
+    mv /tmp/spwd.bin /usr/bin/spwd
+}
+
+pre_upgrade() {
+    rm -f /usr/bin/spwd
+}
+
+post_upgrade() {
+    mv /tmp/spwd.bin /usr/bin/spwd
+}
+
+post_remove() {
+	rm -f /usr/bin/spwd
+}
