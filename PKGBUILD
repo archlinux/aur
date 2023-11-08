@@ -4,7 +4,7 @@
 
 pkgname=prismlauncher-qt5-bin
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
 url="https://prismlauncher.org"
@@ -25,5 +25,6 @@ sha256sums=('04629c26695fbdece99f9fb342ea34e111dedeef9b91ea6c477eaf50024aa5d1')
 package() {
     install -d "${pkgdir}/usr"
     tar -C "${pkgdir}/usr" -xvf PrismLauncher-Linux-Qt5-${pkgver}.tar.gz
+    rm "${pkgdir}"/usr/bin/prismlauncher_updater
     chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
 }
