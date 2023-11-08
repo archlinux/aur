@@ -2,7 +2,7 @@
 
 _name=Mesa-Viz-Tornado
 pkgname=python-${_name,,}
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Tornado-based visualization framework for Mesa"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_whl")
-sha256sums=('0e2ba02af91cad09c081b6803a94a08457a50f43279841817dd65e8961d3ba54')
+sha256sums=('bfde49f0af55c2149a5b369431be7c14a65bc210eb85a9f97b452cf3cfdf6075')
 
 noextract=("$_whl")
 package() {
