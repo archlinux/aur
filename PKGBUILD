@@ -8,17 +8,17 @@ depends=("jdk8-openjdk")
 
 # Use get-latest.sh to generate pkgver and _pkgstr
 
-pkgver=24.2.2
-_pkgstr=202309281602050954-7d5e877f
+pkgver=24.2.5
+_pkgstr=202311070743190643-0e5f9039
 
-pkgrel=2
+pkgrel=1
 arch=("any")
 
 _archive=dremio-community-$pkgver-$_pkgstr
 
 source=("$pkgname.hook" "https://download.dremio.com/community-server/$pkgver-$_pkgstr/$_archive.tar.gz")
 sha256sums=('11386376716ef81ae2194c52dc9ce8f2e55effa9fcb572cc3c1e498d54316859'
-            'edfd3bbbb69172c9a973dcb0d4d08a223ae2c8f49c8bd32634e5fa0f0c38544b')
+            '75fb5a9316f7d89f77644503f8a188e6600a56c155de7602ed0f0311764247d3')
 
 package() {
     mkdir -p $pkgdir/opt
