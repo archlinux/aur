@@ -1,7 +1,7 @@
 pkgbase = ruff-lsp
 	pkgdesc = Language Server Protocol implementation for Ruff
 	pkgver = 0.0.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astral-sh/ruff-lsp
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = ruff-lsp
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
+	makedepends = python-packaging
 	depends = python-pygls
 	depends = python-typing_extensions
 	depends = ruff
