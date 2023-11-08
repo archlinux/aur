@@ -1,19 +1,18 @@
 pkgbase = qmpanel
 	pkgdesc = A Minimal Qt-Based Desktop Panel
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/jlindgren90/qmpanel
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = cmake
+	makedepends = meson
 	depends = glib2
-	depends = kwindowsystem
+	depends = kwindowsystem5
 	depends = libxcb
 	depends = libxcomposite
 	depends = libxdamage
 	depends = libxrender
-	source = https://github.com/jlindgren90/qmpanel/archive/qmpanel-0.1.tar.gz
-	sha256sums = b19b824522f8f9dfe7e78d5a984641d80eee8ff9e6a389fd9d1b4a016ca50946
+	source = https://github.com/jlindgren90/qmpanel/archive/qmpanel-0.2.tar.gz
+	sha256sums = a2e0ee55225124d1444b592f3ccb411c010ef84c5da6b91d4a3463e8da02427a
 
 pkgname = qmpanel
-
