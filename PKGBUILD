@@ -2,13 +2,13 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=deepl
 pkgname=python-${_base}
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Python library for the DeepL API"
 arch=(any)
 url="https://github.com/${_base}com/${_base}-python"
 license=(MIT)
-depends=(python-requests python-packaging)
+depends=(python-requests)
 makedepends=(python-build python-installer python-poetry-core python-wheel git)
 optdepends=('python-keyring: for support storing API Key')
 install=${_base}.install

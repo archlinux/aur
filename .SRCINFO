@@ -1,6 +1,6 @@
 pkgbase = python-deepl
 	pkgdesc = Python library for the DeepL API
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/deeplcom/deepl-python
 	install = deepl.install
@@ -12,9 +12,8 @@ pkgbase = python-deepl
 	makedepends = python-wheel
 	makedepends = git
 	depends = python-requests
-	depends = python-packaging
 	optdepends = python-keyring: for support storing API Key
-	source = git+https://github.com/deeplcom/deepl-python.git?signed#tag=v1.16.0
+	source = git+https://github.com/deeplcom/deepl-python.git?signed#tag=v1.16.1
 	validpgpkeys = DBDC63E97C526204335805941FA7A782EC90634E
 	sha512sums = SKIP
 
