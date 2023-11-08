@@ -10,7 +10,8 @@ license=(MIT)
 depends=(cava 'dotnet-runtime>=7' libadwaita iniparser fftw)
 makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
 source=("git+$url" "git+${url%cavalier}cakescripts#commit=c7e3bbbb807bdade8c89e5a3ad057b00fac2102e")
-b2sums=('SKIP' 'SKIP')
+b2sums=('SKIP'
+        'SKIP')
 
 prepare() {
 	rm -rf cavalier/CakeScripts
