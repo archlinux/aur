@@ -1,12 +1,11 @@
 pkgbase = ladybird
 	pkgdesc = Web browser built from scratch using the SerenityOS LibWeb engine
-	pkgver = 20230628
+	pkgver = 20231108
 	pkgrel = 1
 	url = https://github.com/SerenityOS/serenity
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = gendesk
 	makedepends = git
 	makedepends = ninja
 	makedepends = qt6-tools
@@ -20,7 +19,7 @@ pkgbase = ladybird
 	depends = qt6-svg
 	depends = qt6-wayland
 	options = !lto
-	source = git+https://github.com/SerenityOS/serenity#commit=8ac4a5315b13d9aa9073ebda0df78c8de606540b
+	source = git+https://github.com/SerenityOS/serenity#commit=387decbb0112cdb14887a6c56e5a2a81cdc2545a
 	source = ladybird.desktop
 	b2sums = SKIP
 	b2sums = SKIP
