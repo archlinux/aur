@@ -16,6 +16,7 @@ pkgbase = git-cola-git
 	makedepends = python-sphinx
 	makedepends = python-wheel
 	makedepends = rsync
+	makedepends = git
 	depends = git
 	depends = hicolor-icon-theme
 	depends = python-numpy

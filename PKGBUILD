@@ -14,7 +14,7 @@ depends=('git' 'hicolor-icon-theme' 'python-numpy' 'python-polib' 'python-pyqt5'
          'python-qtpy')
 makedepends=('python-build' 'python-installer' 'python-jaraco.packaging'
              'python-rst.linker' 'python-setuptools-scm' 'python-sphinx'
-             'python-wheel' 'rsync')
+             'python-wheel' 'rsync' 'git')
 checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest')
 optdepends=('python-pygments: syntax highlighting'
             'python-pyinotify: file system change monitoring'
