@@ -1,16 +1,16 @@
 # Maintainer: ghesy <ehsan at disroot dot org>
 
 pkgname='git-workspace'
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Sync personal and work git repositories from multiple providers'
 url='https://github.com/orf/git-workspace'
 arch=('x86_64')
-license=('custom:none')
+license=('MIT')
 depends=('git')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b9dcc7ad2c88f63a12af4caafee05b433391a6607252330335d37676686b24f3')
+sha256sums=('fb66b03f4068950ba2fac73b445a964b2b941137f9b31f5db9f4fba1a73d3d4d')
 options=('!lto')
 
 _target_dir='target'
