@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 pkgname=protopedal
-pkgver=2.3
-pkgrel=2
+pkgver=2.3b
+pkgrel=1
 pkgdesc="Compatibility tool for sim racing pedals and force feedback steering wheels"
 arch=('x86_64')
 url="https://gitlab.com/openirseny/protopedal/"
@@ -16,7 +16,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
-  git checkout "release-$pkgver"
+  git checkout master
+  #git checkout "release-$pkgver"
 }
 
 build() {
