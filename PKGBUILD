@@ -1,7 +1,7 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=terraform-ls
-pkgver=0.32.2
+pkgver=0.32.3
 pkgrel=1
 pkgdesc='Terraform Language Server'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url='https://github.com/hashicorp/terraform-ls'
 license=('custom:MPL2')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b216cdd99f94ba202d541e679193c530c2d86c69ea91dfb381597f75d5341efb')
+sha256sums=('1eec8a564b3d857069fc8afabe213e79edb4facb3b37b9469d7269b04c2d9d82')
 
 build() {
     cd "$pkgname-$pkgver"
