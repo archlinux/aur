@@ -1,14 +1,13 @@
 pkgbase = processing-bin
 	pkgdesc = Programming environment for creating images, animations and interactions.
 	pkgver = 4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://processing.org/
 	arch = x86_64
 	license = custom
 	depends = libxtst
 	depends = sh
 	depends = lib32-libdrm
-	depends = glibc
 	depends = libx11
 	depends = libxcursor
 	depends = lib32-libx11
