@@ -1,20 +1,20 @@
+all_off="$(tput sgr0)"
+bold="$(tput bold)"
+blue="$(tput setaf 4)"
+yellow="$(tput setaf 3)"
+
 msg_blue() {
-    printf "${blue}==>${bold} $1${all_off}\n"
+    printf "${bold}${blue}==>${all_off}${bold} $1${all_off}\n"
 }
 
 note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+    printf "${bold}${blue}==>${all_off}${yellow} NOTE: ${bold}$1${all_off}\n"
 }
 
-all_off="$(tput sgr0)"
-bold="${all_off}$(tput bold)"
-blue="${bold}$(tput setaf 4)"
-yellow="${bold}$(tput setaf 3)"
-
 post_install() {
-    note "systemctl --user enable --now torrserver"
+    note "${blue}In order to enabled torrserver do ${yellow}systemctl --user enable --now torrserver"
 }
 
 post_upgrade() {
-    note "systemctl --user daemon-reload && systemctl --user restart torrserver"
+    note "${blue}In order to upgrade torrserver do ${yellow}systemctl --user daemon-reload && systemctl --user restart torrserver"
 }

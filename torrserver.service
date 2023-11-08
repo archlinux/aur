@@ -1,6 +1,12 @@
 [Unit]
 Description=TorrServer, torrent stream server
+
 [Service]
+Type=simple
+Environment="GODEBUG=madvdontneed=1"
+ExecStart=/usr/bin/torrserver -d $STATE_DIRECTORY -t $STATE_DIRECTORY
+Restart=on-failure
+
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
 NoNewPrivileges=yes
@@ -8,11 +14,6 @@ RestrictNamespaces=yes
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
 StateDirectory=torrserver
-
-Type=simple
-Environment="GODEBUG=madvdontneed=1"
-ExecStart=/usr/bin/torrserver -d $STATE_DIRECTORY -t $STATE_DIRECTORY
-Restart=on-failure
 LimitNOFILE = 4096
 
 [Install]

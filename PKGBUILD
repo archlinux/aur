@@ -1,21 +1,24 @@
-# Maintainer: solopasha <daron439 at gmail dot com>
+# Maintainer: Sergey Shatunov <me@aur.rocks>
+# Contributor: solopasha <daron439 at gmail dot com>
+
 pkgname=torrserver-git
-pkgver=123.1.r0.g5179d15
+_pkgname="${pkgname%-git}"
+pkgver=127.r1.g90c5679
 pkgrel=1
 pkgdesc="Torrent stream server"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
 license=("GPL3")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_pkgname=${pkgver%%.*}")
+conflicts=("$_pkgname")
 depends=("glibc" "gcc-libs")
-makedepends=("git" "go" "yarn")
+makedepends=("git" "go" "yarn" "npm")
 options=(!lto)
 source=("${pkgname}::git+${url}.git"
         "torrserver.service")
 install=torrserver.install
 sha512sums=('SKIP'
-            '73766959e977015a928fd9739344c51893fac5a119a80bbb499410fab8093c9d6e5f3b884d825fff48ff749b375f53e6a15c525cc0e0700e726b3945f49c287e')
+            'f60b5d39214d0ef26598effcbdcda63cfa751a39ebc0fe63f615779a5d8990b9727f3c606e8bbf7718a798ba92b54ae3fa01b73feb427d243ef358c2e328b08a')
 
 pkgver() {
     cd "$pkgname"
@@ -24,28 +27,23 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"/web
-    export YARN_CACHE_FOLDER="$srcdir"/yarn
-    yarn install --no-fund
-    sed '10 i const crypto = require("crypto");\nconst crypto_orig_createHash = crypto.createHash;\ncrypto.createHash = algorithm => crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);' \
-        -i node_modules/react-scripts/config/webpack.config.js
+    yarn install --no-fund --cache "${srcdir}/yarn" 
 }
 
 build() {
-    export GOPATH="$srcdir"/gopath
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -tags=nosqlite"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export CGO_ENABLED=1
-    cd "$srcdir/$pkgname/web" 
-    yarn run build --no-fund
-    cd "$srcdir/$pkgname"
-    go run gen_web.go
-    cd "$srcdir/$pkgname/server"
-    go build -o "${pkgname%-git}" ./cmd
+    export GOPATH="$srcdir"/gopath \
+           GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -tags=nosqlite"
+           CGO_CPPFLAGS="${CPPFLAGS}" \
+           CGO_CFLAGS="${CFLAGS}" \
+           CGO_CXXFLAGS="${CXXFLAGS}" \
+           CGO_LDFLAGS="${LDFLAGS}" \
+           CGO_ENABLED=1 \
+
+    env -C "$srcdir/$pkgname/web" NODE_OPTIONS=--openssl-legacy-provider yarn run build --no-fund --cache "${srcdir}/yarn" 
+    env -C "$srcdir/$pkgname" go run gen_web.go
+    env -C "$srcdir/$pkgname/server" go build -o "$_pkgname" ./cmd
 }
 package() {
-    install -Dm755 "${pkgname}/server/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${pkgname}/server/$_pkgname" -t "${pkgdir}/usr/bin"
     install -Dm644 "torrserver.service" -t "${pkgdir}/usr/lib/systemd/user"
 }
