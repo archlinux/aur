@@ -1,0 +1,20 @@
+pkgbase = sshx-git
+	pkgdesc = A secure web-based, collaborative terminal.
+	pkgver = r268.e01b75a
+	pkgrel = 1
+	url = https://github.com/ekzhang/sshx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = protobuf
+	depends = gcc-libs
+	depends = gcc-libs
+	depends = glibc
+	provides = sshx
+	conflicts = sshx
+	options = !lto
+	source = sshx::git+https://github.com/ekzhang/sshx
+	sha256sums = SKIP
+
+pkgname = sshx-git
