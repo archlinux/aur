@@ -2,7 +2,7 @@
 pkgname=net-player
 _pkgname=netPlayer
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Subsonic based music player.基于Subsonic API的桌面端播放器"
 arch=(
     'aarch64'
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
     "${pkgname}.sh"
 )
-sha256sums=('2cace223a717bd267b5a02ad477260d737187e60db7e1c21161dcac2870f099f'
+sha256sums=('7589dd8205a21a794fe06a703c6244ffa6606f98ffc5f34a6c966c71efdc11f6'
             'cf30b550beac6dfd1582048dd68b57c8d9f5404561357b731dedfac3559dcf56')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
