@@ -1,14 +1,14 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 pkgname=logstash
-pkgver=8.10.4
+pkgver=8.11.0
 pkgrel=1
 pkgdesc="Logstash - transport and process your logs, events, or other data"
 arch=('x86_64')
 url="https://www.elastic.co/logstash/"
 license=('Apache')
 # groups=()
-depends=('java-runtime-headless>=11' 'ruby' 'ruby-bundler' 'coreutils' 'awk')
-makedepends=('jdk11-openjdk' 'git')
+depends=('jre17-openjdk-headless' 'ruby' 'ruby-bundler' 'coreutils' 'awk')
+makedepends=('jdk17-openjdk' 'git')
 # optdepends=()
 # provides=()
 # conflicts=()
@@ -28,7 +28,7 @@ source=(https://github.com/elastic/logstash/archive/v${pkgver}/${pkgname}-${pkgv
         logstash-tmpfile.conf
         bundle.config)
 # noextract=()
-md5sums=('9eceab4971d9e0b4967281f7e20fade3'
+md5sums=('727f77f7d8e28950c49a4a316001abe4'
          '4c3efce8ba4da2605c1f2e839e3af55c'
          '54523d10c53cf5461a40a33d775c12c1'
          '7ef5efbe99cf9f4c29a221999ec41248'
