@@ -3,7 +3,7 @@
 
 pkgname=rapid-photo-downloader-git
 pkgver=0.9.34.r19.g851ee2d6
-pkgrel=1
+pkgrel=2
 pkgdesc="Photo and video downloader"
 arch=('any')
 url="http://www.damonlynch.net/rapid/"
@@ -19,7 +19,7 @@ depends=('desktop-file-utils' 'gstreamer' 'hicolor-icon-theme' 'libgexiv2' 'libn
 # https://bugs.archlinux.org/task/79981
 makedepends=('git' 'intltool' 'ifuse')
 optdepends=('ifuse: for iOS devices')
-provides=("${pkgname%-*}=${pkgver%.*}")
+provides=("${pkgname%-*}=${pkgver%.r*}")
 conflicts=("${pkgname%-*}")
 replaces=('rapid-photo-downloader-bzr')
 source=('git+https://github.com/damonlynch/rapid-photo-downloader.git')
