@@ -1,5 +1,5 @@
 pkgname=mingw-w64-lua
-pkgver=5.4.4
+pkgver=5.4.6
 pkgrel=1
 pkgdesc="A powerful light-weight programming language designed for extending applications. (mingw-w64)"
 arch=('any')
@@ -9,38 +9,36 @@ makedepends=('mingw-w64-gcc')
 license=('MIT')
 source=("$url/ftp/lua-$pkgver.tar.gz")
 options=(!strip !buildflags staticlibs)
-sha256sums=('164c7849653b80ae67bec4b7473b884bf5cc8d2dca05653475ec2ed27b9ebf61')
+sha256sums=('7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/lua-$pkgver
   # build import lib
-  sed -i 's|$(AR) $@ $(BASE_O)|$(CC) -shared -Wl,--out-implib,liblua54.dll.a -o $@ $(BASE_O) $(LIBS)|g' src/Makefile
+  sed -i 's|$(CC) -shared|$(CC) -shared -Wl,--out-implib,liblua54.dll.a|g' src/Makefile
 }
 
 build () {
   for _arch in ${_architectures}; do
     rm -rf "$srcdir"/build-${_arch}
     cp -r "$srcdir"/lua-$pkgver "$srcdir"/build-${_arch} && pushd "$srcdir"/build-${_arch}
-    make generic \
-      ALL=lua54.dll \
-      LUA_A="lua54.dll" \
-      LUA_T="lua.exe" \
+    make mingw \
       CC=${_arch}-gcc \
-      RANLIB="ls" \
-      MYCFLAGS="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
-      SYSCFLAGS="-DLUA_BUILD_AS_DLL" \
-      LIBS="-lssp"
+      AR="${_arch}-ar rcs" \
+      RANLIB="${_arch}-ranlib" \
+      STRIP="${_arch}-strip" \
+      MYCFLAGS="-O2 -pipe -fno-plt -fexceptions"
   done
 }
 
 package () {
   for _arch in ${_architectures}; do
     cd "$srcdir"/build-${_arch}
-    make install INSTALL_TOP="${pkgdir}"/usr/${_arch} TO_BIN="lua54.dll" TO_LIB="liblua54.dll.a"
+    make install INSTALL_TOP="${pkgdir}"/usr/${_arch} TO_BIN="lua.exe luac.exe lua54.dll" TO_LIB="liblua.a liblua54.dll.a"
     rm -r "${pkgdir}"/usr/${_arch}/{share,man,lib/lua}
+    ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    ${_arch}-strip --strip-debug "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
