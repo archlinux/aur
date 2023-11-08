@@ -1,17 +1,17 @@
 pkgbase = zxing-cpp-git
 	pkgdesc = A C++ library to decode QRCode
-	pkgver = 2.1.0.r14.g81b405ba
+	pkgver = 2.1.0.r80.gb15819d6
 	pkgrel = 1
-	url = https://github.com/nu-book/zxing-cpp
+	url = https://github.com/zxing-cpp/zxing-cpp
 	arch = x86_64
 	license = Apache
 	checkdepends = gtest
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
-	provides = zxing-cpp
+	provides = zxing-cpp=2.1.0
 	conflicts = zxing-cpp
-	source = zxing-cpp::git+https://github.com/nu-book/zxing-cpp
+	source = zxing-cpp::git+https://github.com/zxing-cpp/zxing-cpp.git
 	sha256sums = SKIP
 
 pkgname = zxing-cpp-git
