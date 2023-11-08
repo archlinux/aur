@@ -1,7 +1,7 @@
 pkgbase = ocproxy-bin
 	pkgdesc = A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP (binary release)
 	pkgver = 1.60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cernekee/ocproxy
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = ocproxy-bin
 	optdepends = openconnect: Open client for Cisco AnyConnect VPN
 	provides = ocproxy
 	conflicts = ocproxy
-	conflicts = ocproxy-git
 	options = !strip
 	options = !emptydirs
 	source_i686 = http://ftp.uk.debian.org/debian/pool/main/o/ocproxy/ocproxy_1.60-1+b2_i386.deb
