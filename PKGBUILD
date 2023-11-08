@@ -1,8 +1,8 @@
 _name=bin-cpuflags-x86
 pkgname=${_name}-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='A small CLI tool to detect CPU flags (instruction sets) of X86 binaries'
+pkgdesc='A small CLI tool to detect CPU flags (instruction sets) of X86 binaries (binary release)'
 arch=('x86_64')
 url="https://github.com/HanabishiRecca/${_name}"
 license=('MIT')
@@ -10,8 +10,8 @@ provides=("${_name}")
 conflicts=("${_name}")
 options=('!strip')
 
-source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-linux.tar.xz")
-sha256sums=('f68eae94cc851bacc321cf24b828a65622cddb1603e4216a40880fc30524ac3e')
+source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-linux-${CARCH}.tar.xz")
+sha256sums=('10d6553b4592c4e7da0ab522c08ce1ede6eb94f578c0bdd4faa1bb724525a7af')
 
 package() {
     install -Dm0755 -t "${pkgdir}/usr/bin" "${_name}"
