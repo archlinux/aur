@@ -2,26 +2,38 @@
 _pkgname=drawio-desktop
 pkgname="${_pkgname}-git"
 pkgver=22.0.3.r1.g58d11e9
-pkgrel=1
+pkgrel=2
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor."
 arch=('aarch64' 'x86_64')
 url="https://www.diagrams.net/"
 _githuburl="https://github.com/jgraph/drawio-desktop"
 license=('Apache')
-depends=('bash' 'electron25')
-makedepends=('gendesk' 'git' 'yarn' 'npm>=8.19.4' 'nodejs>=16.20.2')
+depends=(
+    'bash'
+    'electron25'
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'gendesk'
+    'git'
+    'yarn'
+    'npm>=8.19.4'
+    'nodejs>=16.20.2'
+)
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}.git::git+${_githuburl}.git"
-    "${_pkgname}.sh")
+source=(
+    "${_pkgname}.git::git+${_githuburl}.git"
+    "${_pkgname}.sh"
+)
 sha256sums=('SKIP'
-            'bf4c5e15fc4c98a07c32998d8b481aadce09d2d896caf2cdf16fce7d8f5dd7ae')
+            'd6f15f16128807f9bdc6e04e6872cdcf2121ccfebb2688739d7a6586985f926d')
 pkgver() {
     cd "${srcdir}/${_pkgname}.git"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
-    gendesk -q -f -n --categories "Graphics" --name "${_pkgname}" --exec "${_pkgname}"
+    gendesk -q -f -n --pkgname "${_pkgname}-git" --categories "Graphics" --name "${_pkgname}" --exec "${_pkgname}"
     cd "${srcdir}/${_pkgname}.git"
     sed "s|--publish always|--publish never|g" -i package.json
     sed '50,59d' -i electron-builder-linux-mac.json
@@ -40,7 +52,7 @@ package() {
         ;;
     esac
     install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm755 "${srcdir}/${_pkgname}.git/dist/${_architecture}/resources/app.asar" -t "${pkgdir}/opt/${_pkgname}/resources"
+    install -Dm755 "${srcdir}/${_pkgname}.git/dist/${_architecture}/resources/app.asar" -t "${pkgdir}/usr/lib/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 48x48 64x64 96x96 128x128 192x192 256x256 512x512 720x720 1024x1024;do
         install -Dm644 "${srcdir}/${_pkgname}.git/build/${_icons}.png" \
