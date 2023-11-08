@@ -1,12 +1,20 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.39.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/util-linux/util-linux
 	arch = x86_64
 	arch = aarch64
 	groups = selinux
-	license = GPL2
+	license = BSD-2-Clause
+	license = BSD-3-Clause
+	license = BSD-4-Clause-UC
+	license = GPL-2.0-only
+	license = GPL-2.0-or-later
+	license = GPL-3.0-or-later
+	license = ISC
+	license = LGPL-2.1-or-later
+	license = LicenseRef-PublicDomain
 	makedepends = git
 	makedepends = meson
 	makedepends = asciidoctor
@@ -19,8 +27,10 @@ pkgbase = util-linux-selinux
 	makedepends = libselinux
 	options = strip
 	source = git+https://github.com/util-linux/util-linux#tag=d32d74bf433a419f2a8976530fb03669bde722cd?signed
+	source = util-linux-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
 	source = pam-login
 	source = pam-common
+	source = pam-remote
 	source = pam-runuser
 	source = pam-su
 	source = util-linux.sysusers
@@ -29,8 +39,10 @@ pkgbase = util-linux-selinux
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
 	sha256sums = SKIP
-	sha256sums = 99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f
+	sha256sums = 6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a
+	sha256sums = ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275
 	sha256sums = 57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af
+	sha256sums = 8bfbee453618ba44d60ba7fb00eced6c62edebfc592f2e75dede08e769ed8931
 	sha256sums = 48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1
 	sha256sums = 3f54249ac2db44945d6d12ec728dcd0d69af0735787a8b078eacd2c67e38155b
 	sha256sums = 10b0505351263a099163c0d928132706e501dd0a008dac2835b052167b14abe3
@@ -39,6 +51,7 @@ pkgbase = util-linux-selinux
 	sha256sums = a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36
 
 pkgname = util-linux-selinux
+	depends = glibc
 	depends = pam-selinux
 	depends = shadow-selinux
 	depends = coreutils-selinux
@@ -52,12 +65,14 @@ pkgname = util-linux-selinux
 	depends = util-linux-libs-selinux
 	depends = libmagic.so
 	depends = libncursesw.so
+	depends = readline
+	depends = zlib
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
-	provides = util-linux=2.39.2-1
-	provides = selinux-util-linux=2.39.2-1
+	provides = util-linux=2.39.2-2
+	provides = selinux-util-linux=2.39.2-2
 	conflicts = rfkill
 	conflicts = hardlink
 	conflicts = util-linux
@@ -65,6 +80,7 @@ pkgname = util-linux-selinux
 	backup = etc/pam.d/chfn
 	backup = etc/pam.d/chsh
 	backup = etc/pam.d/login
+	backup = etc/pam.d/remote
 	backup = etc/pam.d/runuser
 	backup = etc/pam.d/runuser-l
 	backup = etc/pam.d/su
@@ -80,7 +96,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.39.2-1
+	provides = util-linux-libs=2.39.2-2
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux
