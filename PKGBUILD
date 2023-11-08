@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1613.r0.g4a1c108
+pkgver=1614.r0.gecdd386
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -33,7 +33,6 @@ fi
 
 
 depends=('fmt'
-         'cubeb'
          'mbedtls'
          'libinih'
          'qt5-multimedia'
