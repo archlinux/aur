@@ -1,0 +1,23 @@
+pkgbase = aero2solver
+	pkgdesc = Solve Aero2 captchas automatically using the magic of machine learning and computer vision
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dumbasPL/aero2solver
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = clang
+	provides = aero2solver
+	source = aero2solver-0.2.0.tar.gz::https://github.com/dumbasPL/aero2solver/archive/refs/tags/v0.2.0.tar.gz
+	source = aero2solver.service
+	source = aero2solver.sysusers
+	sha256sums = 0bac09f6ebe91c09afd1d047c8bdcd6296a4d0ef37ca8b1b2567d540ec597c4c
+	sha256sums = 04e89d56ab4cd3eaf1271c829b562606bfd57b63d0346b2773266cb5c0c1eca6
+	sha256sums = 4a39fe28d2dccb6defecbd38331269ca124b73553d420b101a0d8443db77b94b
+
+pkgname = aero2solver

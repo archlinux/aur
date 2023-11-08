@@ -1,0 +1,14 @@
+[Unit]
+Description=Aero2 solver
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aero2solver
+Restart=on-failure
+EnvironmentFile=-/etc/default/aero2solver
+User=aero2solver
+Group=aero2solver
+
+[Install]
+WantedBy=multi-user.target
