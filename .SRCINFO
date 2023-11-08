@@ -1,7 +1,7 @@
 pkgbase = python-powerline-taskwarrior
 	pkgdesc = Powerline segment for showing information from Taskwarrior task manager
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 8
 	url = https://github.com/Zebradil/powerline-taskwarrior
 	arch = any
 	license = MIT
@@ -11,5 +11,6 @@ pkgbase = python-powerline-taskwarrior
 	depends = python3
 	depends = powerline
 	source = https://files.pythonhosted.org/packages/source/p/powerline-taskwarrior/powerline-taskwarrior-2.0.0.tar.gz
+	sha256sums = 479ef617064383478753c63d0b1d994dd2c02ef8b056310b6eb8186284a38649
 
 pkgname = python-powerline-taskwarrior

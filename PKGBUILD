@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=python-powerline-taskwarrior
 pkgver=2.0.0
-pkgrel=3
+pkgrel=8
 pkgdesc="Powerline segment for showing information from Taskwarrior task manager"
 url="https://github.com/Zebradil/powerline-taskwarrior"
 arch=(any)
@@ -20,7 +20,7 @@ conflicts=()
 provides=()
 replaces=()
 source=(https://files.pythonhosted.org/packages/source/p/powerline-taskwarrior/powerline-taskwarrior-2.0.0.tar.gz)
-sha256sums=()
+sha256sums=('479ef617064383478753c63d0b1d994dd2c02ef8b056310b6eb8186284a38649')
 build () 
 { 
     cd "$_name-$pkgver" || exit 1;
