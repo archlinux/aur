@@ -1,6 +1,9 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron24
-_ASAR="/opt/slack-on-keys/slack-on-keys.asar"
+APPDIR="/usr/lib/slack-on-keys"
+export PATH="${APPDIR}:${PATH}"
+#export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
