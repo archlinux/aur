@@ -1,21 +1,9 @@
 pkgbase = reicast-git
-	pkgdesc = A multiplatform Sega Dreamcast emulator (development version)
-	pkgver = 20.04.r48.g0bd6ea371
+	pkgdesc = metapackage - migrate to flycast-git
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = http://reicast.com/
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	license = custom
-	makedepends = git
-	depends = libgl
-	depends = alsa-lib
-	depends = libpulse
-	optdepends = python: for joystick configuration utility
-	provides = reicast
-	conflicts = reicast
-	source = reicast::git+https://github.com/reicast/reicast-emulator.git
-	md5sums = SKIP
+	epoch = 1
+	arch = any
 
 pkgname = reicast-git
-
+	depends = flycast-git
