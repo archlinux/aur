@@ -1,0 +1,13 @@
+[Unit]
+Description=Disable Bluetooth before sleep, suspend, etc.
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=bluetoothctl power off
+ExecStop=bluetoothctl power on
+
+[Install]
+WantedBy=sleep.target
