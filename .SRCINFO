@@ -1,6 +1,6 @@
 pkgbase = python-oracledb
 	pkgdesc = Python extension module that allows access to Oracle databases
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://oracle.github.io/python-oracledb/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = python-oracledb
 	depends = python
 	depends = python-cryptography
 	optdepends = oracle-instantclient-basic
-	source = https://files.pythonhosted.org/packages/source/o/oracledb/oracledb-1.4.1.tar.gz
-	b2sums = 6c9ee869d339dbc3732400f60111fc05739859f21d7bb3aabf869e30a25efb59e89c0b6c51c7838dadae27c45e147d31738ccdc883c5a4516128be0b317c8437
+	source = https://files.pythonhosted.org/packages/source/o/oracledb/oracledb-1.4.2.tar.gz
+	b2sums = 2167eaa9f61075ef41baf57b411fd353dedd11e6e758f7e3c5df160e1f0190857a4060017c1c9e1a937d2ab4d96a184e49b140ebdd0446dce08dd763cdb4b882
 
 pkgname = python-oracledb
