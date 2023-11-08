@@ -81,6 +81,7 @@ package() {
     'alsa-lib'
     'gtk3'
     'libcups'
+    'libnotify' # notify-send
     'libxss'
     'libxtst'
     'nss'
