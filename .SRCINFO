@@ -1,16 +1,17 @@
 pkgbase = netpad-player
 	pkgdesc = 网络画板，用核心技术赋能智慧数学教育
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://www.netpad.net.cn/
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = asar
-	makedepends = gendesk
 	depends = bash
 	depends = electron
-	source = https://www.netpad.net.cn/download/NetpadPlayer-1.5.7.exe
-	sha256sums = 82adbb6a09815f5f882f73c56b0836030b0523614212bedbb68ddd35576b6f9c
+	source = netpad-player.desktop
+	source = https://www.netpad.net.cn/download/NetpadPlayer-1.5.8.exe
+	sha256sums = 6dbdb46f4ed3388b2ec5b7c90ca566c59a39bbef15e9cad5e1e9884df178d1be
+	sha256sums = e5292a7733a459640b47fe8533ab5aef0ff86e7b330860cc574abf34af8b692a
 
 pkgname = netpad-player
