@@ -1,15 +1,13 @@
 pkgbase = pacman-mirrorup
 	pkgdesc = A program to retrieve the best and latest Pacman mirror list based on user's geography
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/bpetlert/pacman-mirrorup
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	provides = pacman-mirrorup
-	conflicts = pacman-mirrorup
 	options = !lto
-	source = pacman-mirrorup-0.14.0.tar.gz::https://github.com/bpetlert/pacman-mirrorup/archive/0.14.0.tar.gz
-	b2sums = a40b502c712a5ae1bd5391b71f8437d2bb41a9a71cbadf7a7248c737a54cac57f5b7a14eab6e484063d0301cc5351d3ca55f5e2246e087869bca0cd5e5f42430
+	source = pacman-mirrorup-0.15.0.tar.gz::https://github.com/bpetlert/pacman-mirrorup/archive/0.15.0.tar.gz
+	b2sums = e589b68e1e56cf8a8753fa0a3d2d8bda0d2848e82e915a76f79f5fee0876b7637b2d362a94a1fe021283ed4cbde17e10dde54bdcf26e506ef37f9b374558f397
 
 pkgname = pacman-mirrorup
