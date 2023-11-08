@@ -1,3 +1,11 @@
+## GE-Proton8-23
+
+- added reverts for vrclient to allow VRChat to work again (pending proper fix from valve: [ValveSoftware#1199 (comment)](https://github.com/ValveSoftware/Proton/issues/1199#issuecomment-1800923686))
+- the gstreamer plugin build options have been re-worked. Rather than enabling everything under the sun, we've now manually enabled each option that was reported as enabled in previous builds, and disabled the rest. This was done to more align with what Valve is doing and to allow a clearer picture of what may be missing from Valve's proton rather than taking wild guesses. Doing this may allow Valve a better idea of additional codecs/filters that might be missing in case they need and/or can be enabled. (thanks loathingKernel for taking the time to do this)
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+- wine updated to latest bleeding edge
+
 ## GE-Proton8-22
 
 - Alan Wake 2 HDR fixup added from upstream: [ValveSoftware/wine@1182ef7](https://github.com/ValveSoftware/wine/commit/1182ef740346c62b76992f425593fa72e23203a7)
