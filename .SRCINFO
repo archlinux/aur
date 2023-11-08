@@ -1,17 +1,23 @@
 pkgbase = thief-bin
 	pkgdesc = 一款创新跨平台摸鱼神器,支持小说、股票、网页、视频、直播、PDF、游戏等摸鱼模式,为上班族打造的上班必备神器,使用此软件可以让上班倍感轻松,远离ICU
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://thief.im/
 	arch = x86_64
 	license = GPL3
+	makedepends = squashfuse
 	depends = bash
 	depends = electron8
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
 	provides = thief=4.0.0
 	conflicts = thief
 	source = thief-4.0.0.AppImage::https://github.com/cteamx/Thief/releases/download/4.0.0/thief-4.0.0-linux64.AppImage
 	source = thief.sh
 	sha256sums = 500583196bd45cc23e611abaf113f9733edc3da0361b641171385ba7aaeed4fc
-	sha256sums = f99e8b5a7ccb715f511c1a07eb037332688a77fcaaf731ca1c45796d554406a1
+	sha256sums = 6e770fd214a9a1398ef793e95168dd2339eb13ffc4b400a2b7e803b73eb2288f
 
 pkgname = thief-bin
