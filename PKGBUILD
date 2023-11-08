@@ -1,18 +1,19 @@
-# Maintainer: rHermes <teodor_spaeren@riseup.net>
-# Maintainer: bnavigator <code@bnavigator.de>
+# Maintainer: endorfina <emilia@carcosa.space>
+# Contributor: rHermes <teodor_spaeren@riseup.net>
+# Contributor: bnavigator <code@bnavigator.de>
 # Contributor: PlusMinus
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=5.7
-_releasedate=2023-04
-_pkgfullver=5.7.0-61.129
-pkgrel=1
-pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
+pkgver=5.8
+_releasedate=2023-08
+_pkgfullver=5.8.0-63.33
+pkgrel=0
+pkgdesc="Linux driver for DisplayLink devices"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.synaptics.com/products/displaylink-graphics"
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi'
+depends=('evdi<1.15'
          'libusb')
 makedepends=('grep' 'gawk' 'wget')
 changelog="displaylink-release-notes-${pkgver}.txt"
@@ -23,11 +24,11 @@ source=(displaylink-driver-${pkgver}.zip::https://www.synaptics.com/sites/defaul
         99-displaylink.rules
 	displaylink.service
         displaylink-sleep.sh)
-sha256sums=('807f1c203ac1e71c6f1f826493b9bb32e277f07cb2cf48537bf8cfdc68dd1515'
-            '24e6c5f72f38252bdd3eab1777c418e2490dc5f7606400baa4d956ec425e002f'
+sha256sums=('22c552ead448c80d9e8dd48a842bb511184d07a74180ac76bd89dd144ddda816'
+            '83167d307d030abc42f2bbe6ad6a23802433cf5d8fab50afb0d519036518f22b'
             '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
             'dc41ae8a2c287fc50fdda65bad8b0ffd76726f7773c25e1b0c5b7de95cecbdb6'
-            'c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a'
+            '530c488fa9b2833ff64611ff2b533f63212a85f8ebed446d5a4d51cf9a52c7ea'
             '342e83abfe2a38d5635ea928345e933d2ad127ebd3f7caca476663d4f583684b'
             '8be4ab7616e38f91746bdd3e7fafe9004322a8be8e6722389746df9868d576e0')
 
@@ -42,7 +43,7 @@ prepare() {
 }
 
 package() {
-  echo "Adding udev rule for DisplayLink DL-3xxx/5xxx devices"
+  echo "Adding udev rule for DisplayLink devices"
   install -D -m644 99-displaylink.rules "$pkgdir/etc/udev/rules.d/99-displaylink.rules"
   install -D -m755 udev.sh "$pkgdir/opt/displaylink/udev.sh"
 

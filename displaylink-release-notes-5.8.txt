@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v5.7.0
-Build: posix/61-1827-g47ede9c19c2 (129)
+Version: v5.8.0
+Build: posix/63-3581-g15996285140 (33)
 
-Date: 24th March 2023
+Date: 21st July 2023
 
-Extensible Virtual Display Interface version included: v1.13-6 (85a347a)
+Extensible Virtual Display Interface version included: v1.14.1 (83bb793)
 =============================================================================
 =============================================================================
 
@@ -16,23 +16,23 @@ Extensible Virtual Display Interface version included: v1.13-6 (85a347a)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v5.7.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v5.8.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
-The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
+The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and ethernet interfaces.
 
 
-A1. Important notes about DL-6xxx, DL5xxx, DL-3x00 and DL-41xx Firmware
+A1. Important notes about DisplayLink firmware
 =======================================================================
 
-This software release contains an embedded firmware image. DL-6xxx, DL-5xxx, DL-3xxx and DL-41xx devices will be automatically upgraded with this firmware upon connection if required.
+This software release contains an embedded firmware image. DL-7xxx, DL-6xxx, DL-5xxx, DL-3xxx and DL-41xx devices will be automatically upgraded with this firmware upon connection if required.
 
-The upgrade is silent, therefore screens connected to DL-6xxx, DL-5xxx, DL-3xxx or DL-41xx devices may require a few seconds to appear when devices are connected for the first time, or after devices have been used on other platforms and OSes.
+The upgrade is silent, therefore screens connected to DisplayLink devices may require a few seconds to appear when devices are connected for the first time, or after devices have been used on other platforms and OSes.
 
 B. Contents
 ===========
 
 A.  Introduction
-A1. Important notes about DL-6xxx, DL-5xxx, DL-3xxx and DL-41xx firmware
+A1. Important notes about DisplayLink firmware
 B.  Contents
 C.  Changes in this release
 D.  Supported O/S variants
@@ -44,6 +44,13 @@ I.  Future development
 
 C.  Bugs fixed in this release
 ==============================
+
+C.8  Changes in 5.8 release
+-----------------------------
+- Alpha support for DisplayLink DL-7400 products
+- Support for new DisplayLink DL-6150 products
+- Support for Ubuntu 23.04
+- Added preliminary support for kernel 6.5
 
 C.7  Changes in 5.7 release
 -----------------------------
@@ -116,7 +123,7 @@ This release has been prepared to be compatible with Ubuntu 23.04, 22.04, 21.10,
 Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
-Supported Linux Kernel version range is from 4.15 to 6.2.
+Supported Linux Kernel version range is from 4.15 to 6.5.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
@@ -146,6 +153,7 @@ This driver will support up to 2 displays connected to DisplayLink devices. More
 Resolutions up to 4K are supported on the appropriate DisplayLink hardware.
 
 Device families supported:
+- DL-7xxx
 - DL-6xxx
 - DL-5xxx
 - DL-41xx
@@ -159,14 +167,13 @@ H. Limitations & known issues
 A list of limitations and known issues can be found here:
 http://support.displaylink.com/knowledgebase/articles/641668
 
+- Gnome with Wayland or X11 desktop support up to four 4k display in a row. (PS-2955)
+Anything wider might cause mouse issues or video glitches.
+
 - Fail to rotate display on three-monitor desktop on Ubuntu 22.10 (PS-2230)
 https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/2113
 Please make selected monitor layout rightmost (or leftmost) first, apply the preferred orientation, then setup correct
 monitor order as a mitigation.
-
-- DisplayLink display is black on plug-in and user is logged-out when moving cursor on DisplayLink display on Ubuntu 22.10 (PS-2397)
-https://gitlab.gnome.org/GNOME/mutter/-/issues/2481
-Please update to Ubuntu 23.04.
 
 - When displayLink-driver debian package is installed first time with GUI application like Synaptic and Secure Boot is
 enabled then installation will fail.
