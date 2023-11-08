@@ -1,0 +1,13 @@
+pkgbase = next_ls
+	pkgdesc = The language server for Elixir that just works.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/elixir-tools/next-ls
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	makedepends = elixir
+	source = next_ls-0.15.0.tar.gz::https://github.com/elixir-tools/next-ls/archive/refs/tags/v0.15.0.tar.gz
+	b2sums = 724e316cbed6ec6505e12d40569ff26edf499031e249f699ff48fea6cac3098540830d955064f6e609c2471f35edec59ece175c543913e795e65f00c3ffdf55b
+
+pkgname = next_ls
