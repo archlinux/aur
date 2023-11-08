@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=5.5.1.r98.g9edc4245
+pkgver=6.3.1.r10.g256800be
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://streamlink.github.io/'
 license=('BSD')
 depends=("python-"{certifi,isodate,pycountry,pycryptodome,pysocks,requests,trio,trio-websocket,typing_extensions,websocket-client})
 checkdepends=("python-"{freezegun,pytest,pytest-asyncio,pytest-cov,pytest-trio,requests-mock})
-makedepends=("python-"{myst-parser,setuptools,sphinx,sphinx_design,shtab,versioningit} 'git')
+makedepends=("python-"{build,installer,myst-parser,setuptools,sphinx,sphinx_design,shtab,versioningit,wheel} 'git')
 optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -23,20 +23,20 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}"
-  python setup.py build
+  python -m build --wheel --no-isolation
   PYTHONPATH=$PWD/src/ make -C docs/ man
   PYTHONPATH=$PWD/build/lib/ bash script/build-shell-completions.sh
 }
 
 check() {
   cd "${pkgname%-*}"
-  pyver=$(python -c "import sys; print('{}.{}'.format(*sys.version_info[:2]))")
-  python setup.py install --root="$PWD/tmp_install" --skip-build
-  TZ=UTC PYTHONPATH="$PWD/tmp_install/usr/lib/python$pyver/site-packages" python -m pytest
+  python -m installer --destdir="$PWD/tmp" dist/*.whl
+  local pyver=$(python -c 'import sys;print(".".join(map(str,sys.version_info[:2])))')
+  TZ=UTC PYTHONPATH="$PWD/tmp/usr/lib/python${pyver}/site-packages:$PYTHONPATH" python -m pytest
 }
 
 package() {
   cd "${pkgname%-*}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
