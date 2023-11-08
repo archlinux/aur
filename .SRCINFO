@@ -1,22 +1,18 @@
 pkgbase = skanlite-git
-	pkgdesc = A Lite image scanning application. (GIT version)
-	pkgver = 1.1.0.r217.ff1f58b
+	pkgdesc = Image Scanning Application
+	pkgver = 23.08.3.r6.g9b3851b
 	pkgrel = 1
-	url = http://www.kde.org/applications/graphics/skanlite
-	arch = i686
+	url = https://invent.kde.org/graphics/skanlite
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
-	makedepends = kdoctools
 	makedepends = git
-	makedepends = cmake
-	makedepends = python
+	makedepends = kdoctools5
+	depends = kio5
 	depends = libksane
-	depends = kio
+	provides = skanlite
 	conflicts = skanlite
-	conflicts = skanlite-frameworks-git
-	source = git://anongit.kde.org/skanlite
-	sha1sums = SKIP
+	source = skanlite::git+https://invent.kde.org/graphics/skanlite.git
+	sha256sums = SKIP
 
 pkgname = skanlite-git
-
