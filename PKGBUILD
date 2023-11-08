@@ -13,7 +13,7 @@ depends=('libtirpc' 'libxaw' 'openmotif')
 optdepends=(
     'tcsh: some scripts'
     'gcc-fortran: Fortran support')
-makedepends=('git' 'gcc-fortran' 'libtirpc' 'openmotif' 'glu' 'libxmu' 'freeglut')
+makedepends=('git' 'gcc-fortran' 'libtirpc' 'libxaw' 'openmotif' 'glu' 'freeglut')
 #source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
 source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/s/LZpzc8jMzbWG9BZ/download?path=%2F&files=cwp_su_all_44R28.tgz")
 md5sums=("SKIP")
