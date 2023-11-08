@@ -1,7 +1,7 @@
 pkgbase = open-goal-launcher
 	pkgdesc = A launcher for the OpenGOAL Project to simplify usage and installation
-	pkgver = 2.3.1
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/open-goal/launcher
 	arch = any
 	license = ISC
@@ -21,9 +21,9 @@ pkgbase = open-goal-launcher
 	depends = base-devel
 	conflicts = open-goal-launcher-bin
 	options = !strip
-	source = https://github.com/open-goal/launcher/archive/refs/tags/v2.3.1.tar.gz
+	source = https://github.com/open-goal/launcher/archive/refs/tags/v2.4.0.tar.gz
 	source = open-goal-launcher.desktop
-	md5sums = 720b5cf9209320e56ae83c2cfd89ce83
+	md5sums = e2e253df63c870465c5d54b286df1027
 	md5sums = SKIP
 
 pkgname = open-goal-launcher
