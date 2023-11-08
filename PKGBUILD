@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark at manjaro dot org>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-bluetooth-quick-connect
 _uuid=bluetooth-quick-connect@bjarosze.gmail.com
