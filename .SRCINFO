@@ -1,0 +1,15 @@
+pkgbase = radeon-profile-daemon-openrc
+	pkgdesc = OpenRC init script for 'radeon-profile-daemon'.
+	pkgver = r2
+	pkgrel = 2
+	epoch = 1
+	url = https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-apps/radeon-profile-daemon/
+	arch = any
+	license = GPL2
+	depends = radeon-profile-daemon
+	optdepends = openrc: To make use of the init script.
+	conflicts = systemd-sysvcompat
+	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-apps/radeon-profile-daemon/files/radeon-profile-daemon.initd-r2
+	sha256sums = 1dfed15d0af194b5a4588cf2dadd514f490fdbde1316b619f562b87485f3d643
+
+pkgname = radeon-profile-daemon-openrc
