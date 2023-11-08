@@ -1,8 +1,8 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=mariadb-connector-c
-pkgver=3.3.4
-_dlnumber=2862651
+pkgver=3.3.7
+_dlnumber=3439457
 pkgrel=1
 pkgdesc="MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=("LGPL")
 depends=('openssl' 'zlib')
 makedepends=('cmake')
 source=("https://dlm.mariadb.com/${dl_number}/Connectors/c/connector-c-${pkgver}/mariadb-connector-c-${pkgver}-src.tar.gz")
-sha256sums=('486e5fdf976a8e7fadf583ae912128655e013ac575fa79b2d1af0fb8827a78ed')
+sha256sums=('975a9a862fed80f84e0206373f7ef05537aada5b65d99b71b36ab892b44240bf')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}-src"
