@@ -1,12 +1,12 @@
 pkgbase = francis
 	pkgdesc = Track your time
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/utilities/francis
 	arch = x86_64
 	arch = aarch64
 	license = GPL3-or-later
-	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = ki18n5
 	depends = kirigami-addons5
