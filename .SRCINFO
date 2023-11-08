@@ -1,0 +1,17 @@
+pkgbase = cue-music-command-git
+	pkgdesc = A command-line music player
+	pkgver = v1.4.r9.g3faed2a
+	pkgrel = 1
+	url = https://github.com/ravachol/cue
+	arch = x86_64
+	license = GPL2
+	depends = ffmpeg
+	depends = fftw
+	depends = git
+	depends = chafa
+	depends = freeimage
+	conflicts = cue
+	source = git+https://github.com/ravachol/cue
+	sha256sums = SKIP
+
+pkgname = cue-music-command-git
