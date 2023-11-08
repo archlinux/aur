@@ -8,7 +8,7 @@ url="https://github.com/Luwx/Lightly"
 arch=('x86_64' 'aarch64')
 license=('GPL')
 conflicts=('lightly-git')
-makedepends=(cmake extra-cmake-modules kdecoration qt5-declarative qt5-x11extras kcoreaddons kguiaddons kconfigwidgets kwindowsystem kiconthemes)
+makedepends=(cmake extra-cmake-modules kdecoration qt5-declarative qt5-x11extras kcoreaddons5 kguiaddons5 kconfigwidgets5 kwindowsystem5 kiconthemes5)
 source=(
     "${pkgname}-${pkgver}::https://github.com/Luwx/Lightly/archive/v${pkgver}.tar.gz"
 )

@@ -11,14 +11,13 @@ pkgbase = lightly-qt
 	makedepends = kdecoration
 	makedepends = qt5-declarative
 	makedepends = qt5-x11extras
-	makedepends = kcoreaddons
-	makedepends = kguiaddons
-	makedepends = kconfigwidgets
-	makedepends = kwindowsystem
-	makedepends = kiconthemes
+	makedepends = kcoreaddons5
+	makedepends = kguiaddons5
+	makedepends = kconfigwidgets5
+	makedepends = kwindowsystem5
+	makedepends = kiconthemes5
 	conflicts = lightly-git
 	source = lightly-qt-0.4.1::https://github.com/Luwx/Lightly/archive/v0.4.1.tar.gz
 	sha256sums = a50a9e5796886853222d9b442974e1d659905bbad85ee5c7f536aa7f6fbf3261
 
 pkgname = lightly-qt
-
