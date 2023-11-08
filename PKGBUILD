@@ -55,7 +55,10 @@ fi
 prepare() {
   if [[ -d "${srcdir}/${_srcname}/" ]]; then
     cd "${srcdir}/${_srcname}/"
-    git fetch --all --depth=1
+    git remote set-branches origin '*'
+    git fetch --all -v --depth=1
+    git reset --hard
+    git checkout ${_gitbranch}
     echo "LOCAL  HEAD: $(git rev-parse HEAD)"
     echo "REMOTE HEAD: $(git rev-parse @{u})"
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
