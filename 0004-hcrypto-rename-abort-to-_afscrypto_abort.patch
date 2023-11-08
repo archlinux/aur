@@ -1,7 +1,7 @@
-From 01d7316f6773591186f606de5e3b12de28bb0cd9 Mon Sep 17 00:00:00 2001
+From 25bebacfd7bf4461cb49bae9cae2a1e97b9cd1c5 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Sun, 9 Jul 2023 18:45:15 -0600
-Subject: [PATCH 4/6] hcrypto: rename abort to _afscrypto_abort
+Subject: [PATCH 4/9] hcrypto: rename abort to _afscrypto_abort
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -69,5 +69,5 @@ index 9623fa9e7..ea0f60b64 100644
  static_inline ssize_t read(int d, void *buf, size_t nbytes) {return -1;}
  static_inline int close(int d) {return -1;}
 -- 
-2.42.0
+2.42.1
 

@@ -1,7 +1,7 @@
-From aef0016df74fcd3da0f6cb6622d73cd9ceb77358 Mon Sep 17 00:00:00 2001
+From c96d401d9e044e412ea162d530273476de34211a Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 13 Jul 2023 10:54:22 -0600
-Subject: [PATCH 3/6] Linux 6.5: Use register_sysctl()
+Subject: [PATCH 3/9] Linux 6.5: Use register_sysctl()
 
 The linux 6.5 commit:
     "sysctl: Remove register_sysctl_table" (b8cbc0855a)
@@ -103,5 +103,5 @@ index ee22158db..811954915 100644
  dnl                above tests
  AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
 -- 
-2.42.0
+2.42.1
 

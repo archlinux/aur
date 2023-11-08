@@ -1,7 +1,7 @@
-From ffd16089036e05a9db4065eb4d5ae8a217811a78 Mon Sep 17 00:00:00 2001
+From 6578eb24b6f71d3f6e5b489658d47ad2f18ff2ac Mon Sep 17 00:00:00 2001
 From: Mark Vitale <mvitale@sinenomine.net>
 Date: Fri, 15 Sep 2023 15:01:56 -0400
-Subject: [PATCH 6/6] dir: Introduce struct DirEntryMax
+Subject: [PATCH 6/9] dir: Introduce struct DirEntryMax
 
 Since the introduction of AFS3, the directory package has allocated
 space for each directory entry by allocating a DirEntry struct followed
@@ -180,5 +180,5 @@ index f5c8eef42..a26dab0c0 100644
      char flag;
      char length;		/* currently unused */
 -- 
-2.42.0
+2.42.1
 
