@@ -16,7 +16,7 @@ source=(
     "vmangos-setupdb.sh"
 )
 sha256sums=('b90aaac3379eb242f6fd9e08225e3ee9e6eb4ec602590edabf450e9db90253f5'
-            'ccb43cf64c9e56a0ee2caff5868000abb37aa66288c3105bb7f9ab5f81f75365')
+            '027647f8b2907b82aadaeb288bb8c94587adf715766382a4bfd781f3ac93a300')
 
 package() {
     install -Dm644 ${srcdir}/*.hook -t ${pkgdir}/usr/share/libalpm/hooks

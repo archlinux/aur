@@ -9,6 +9,6 @@ pkgbase = vmangos-setupdb
 	source = 80-vmangos-setupdb.hook
 	source = vmangos-setupdb.sh
 	sha256sums = b90aaac3379eb242f6fd9e08225e3ee9e6eb4ec602590edabf450e9db90253f5
-	sha256sums = ccb43cf64c9e56a0ee2caff5868000abb37aa66288c3105bb7f9ab5f81f75365
+	sha256sums = 027647f8b2907b82aadaeb288bb8c94587adf715766382a4bfd781f3ac93a300
 
 pkgname = vmangos-setupdb

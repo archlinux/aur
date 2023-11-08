@@ -67,7 +67,7 @@ print_instructions () {
 
     To create a realm, in mariadb:
         > USE realmd;
-        > INSERT INTO realmlist (name) VALUES ("examplerealm");
+        > INSERT INTO realmlist (name,address) VALUES ("examplerealm","your address");
 
     To create an account with admin rights, in terminal (systemd services running):
         $ echo "account create *username* *password*" > /run/vmangos-mangosd.stdin
