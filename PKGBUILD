@@ -8,7 +8,6 @@ license=('GPL')
 makedepends=('go' 'git')
 source=("git+https://github.com/nxtrace/NTrace-core.git#tag=v$pkgver")
 sha256sums=('SKIP')
-install=nexttrace.install
 
 build() {
   cd "NTrace-core"
