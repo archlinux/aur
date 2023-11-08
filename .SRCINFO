@@ -1,7 +1,7 @@
 pkgbase = hiddify-bin
 	pkgdesc = A multi-platform client based on Sing-box that serves as a universal proxy tool-chain
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.10.7.dev
+	pkgrel = 1
 	url = https://github.com/hiddify/hiddify-next
 	arch = x86_64
 	license = CCPL
@@ -12,7 +12,7 @@ pkgbase = hiddify-bin
 	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
 	provides = hiddify
 	options = !strip
-	source = https://github.com/hiddify/hiddify-next/releases/download/v0.10.0/hiddify-linux-x64.zip
-	sha256sums = b874ce0468570cd3e161bb1516318cbe49917bfcde18cc117a93d411cc623578
+	source = https://github.com/hiddify/hiddify-next/releases/download/v0.10.7.dev/hiddify-linux-x64.zip
+	sha256sums = 6f37942d72d8c52ee98062f2dcd3458e82b094d3044ba3cca0bbbddc07adbe28
 
 pkgname = hiddify-bin

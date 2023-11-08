@@ -2,8 +2,8 @@
 
 _pkgname=hiddify
 pkgname=${_pkgname}-bin
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.7.dev
+pkgrel=1
 pkgdesc="A multi-platform client based on Sing-box that serves as a universal proxy tool-chain"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
@@ -18,7 +18,7 @@ source=(
     "https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
 )
 sha256sums=(
-    "b874ce0468570cd3e161bb1516318cbe49917bfcde18cc117a93d411cc623578"
+    "6f37942d72d8c52ee98062f2dcd3458e82b094d3044ba3cca0bbbddc07adbe28"
 )
 _install_path="/opt/$_pkgname"
 
