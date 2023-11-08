@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=119.0.6045.105
+pkgver=119.0.6045.123
 pkgrel=1
 _manual_clone=0
 pkgdesc="The networking stack of Chromium put into a library"
@@ -18,7 +18,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         REVERT-disable-autoupgrading-debug-info.patch
         fix-undeclared-isnan.patch)
-sha256sums=('73cb8c39e928f8c627d747d37a3b020f08913ef5508f893758d70bdbd545dbcf'
+sha256sums=('6b61b87d0a201113b9c4e3d0ce48df52ecf869179c207e34b71add957fb7b48f'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
             SKIP)
