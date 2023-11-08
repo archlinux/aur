@@ -2,7 +2,7 @@
 
 pkgname=xrdesktop
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for XR interaction with classical desktop compositors"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/xrdesktop"
@@ -11,8 +11,8 @@ depends=('glibc' 'g3k')
 checkdepends=('glew')
 makedepends=('meson' 'gtk-doc' 'python-gobject')
 optdepends=('python')
-source=("https://gitlab.freedesktop.org/xrdesktop/xrdesktop/-/archive/$pkgver/xrdesktop-$pkgver.tar.bz2")
-sha256sums=('0c661fbb454ff4c5559818b6ea9441c7288253ce29003e5f0f819ca2e916671c')
+source=("https://gitlab.freedesktop.org/xrdesktop/xrdesktop/-/archive/$pkgver/xrdesktop-$pkgver.tar.gz")
+sha256sums=('8d7a90c181b7a901686df7d8bee612b960eb4703b838df100f3080678c87c0c1')
 
 
 build() {
