@@ -1,7 +1,7 @@
 pkgbase = g3k
 	pkgdesc = A 3DUI widget toolkit
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/xrdesktop/g3k
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = g3k
 	depends = libcanberra
 	depends = pango
 	depends = shaderc
-	source = g3k-0.16.0-src.tar.bz2::https://gitlab.freedesktop.org/xrdesktop/g3k/-/archive/0.16.0/g3k-0.16.0.tar.bz2
-	sha256sums = a843205ca9194aed5fbab28d2ab3b7dbf58c4d03becf9cab69ca93f5b5a76dbf
+	source = g3k-0.16.0-src.tar.gz::https://gitlab.freedesktop.org/xrdesktop/g3k/-/archive/0.16.0/g3k-0.16.0.tar.gz
+	sha256sums = 6022143a66f507f5c3524605c040b39156ab98c03ed9f071e05fdbd87bd561ef
 
 pkgname = g3k

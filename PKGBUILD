@@ -2,15 +2,15 @@
 
 pkgname=g3k
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3DUI widget toolkit"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/g3k"
 license=('MIT')
 depends=('glibc' 'gxr' 'json-glib' 'libcanberra' 'pango' 'shaderc')
 makedepends=('meson')
-source=("$pkgname-$pkgver-src.tar.bz2::https://gitlab.freedesktop.org/xrdesktop/g3k/-/archive/$pkgver/g3k-$pkgver.tar.bz2")
-sha256sums=('a843205ca9194aed5fbab28d2ab3b7dbf58c4d03becf9cab69ca93f5b5a76dbf')
+source=("$pkgname-$pkgver-src.tar.gz::https://gitlab.freedesktop.org/xrdesktop/g3k/-/archive/$pkgver/g3k-$pkgver.tar.gz")
+sha256sums=('6022143a66f507f5c3524605c040b39156ab98c03ed9f071e05fdbd87bd561ef')
 
 
 build() {
