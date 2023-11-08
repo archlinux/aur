@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3435.50141315
+pkgver=r3472.ca39e6dff
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -15,12 +15,14 @@ makedepends=(
 	'clang'
 	'cmake'
 	'git'
+	'libcurl-gnutils'
 	'lld'
 	'ninja'
 	'python'
 )
 depends=(
 	'dbus'
+	'libcurl-gnutils'
 	'sdl2'
 )
 optdepends=(
