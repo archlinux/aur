@@ -1,8 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-lingua-en-inflect-phrase'
-pkgver='0.18'
+pkgver='0.20'
 pkgrel='1'
 pkgdesc="Inflect short English Phrases"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl-lingua-en-findnumber' 'perl-lingua-en-inflect' 'perl-lingua-en-inflect-number' 'perl-lingua-en-number-isordinal' 'perl-lingua-en-tagger')
 makedepends=('perl-test-nowarnings')
 url='http://search.cpan.org/dist/Lingua-EN-Inflect-Phrase'
-source=('http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/Lingua-EN-Inflect-Phrase-0.18.tar.gz')
-md5sums=('6e6ac3451913946ca93e0ebfd4881e52')
-sha512sums=('e56c19981001ab67e159d08c97f1fb44d65e00a165c8b281a3dbe1e837d54bc7506f3494a53f5499b82db667d5307873e8df10cad069857553151937fce804eb')
-_distdir="Lingua-EN-Inflect-Phrase-0.18"
+source=('http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/Lingua-EN-Inflect-Phrase-0.20.tar.gz')
+md5sums=('cbb7861033f3a7076854ad015949c86f')
+_distdir="Lingua-EN-Inflect-Phrase-0.20"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
