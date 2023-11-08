@@ -5,14 +5,14 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=2.0.0.0
+pkgver=2.3.0.10
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-depends=('java-runtime>=17' 'java-service-wrapper' 'gmp')
-makedepends=('java-environment>=17' 'apache-ant' 'git')
+depends=('jdk-openjdk' 'java-service-wrapper' 'gmp')
+makedepends=('apache-ant' 'git')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-bin')
 provides=('i2p')
