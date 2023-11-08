@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Chat2DB
+Exec=/opt/chat2db/chat2db.AppImage %U
+Comment=An intelligent and versatile general-purpose SQL client and reporting tool for databases which integrates ChatGPT capabilities
+Comment[zh_CN]=集成了AI和BI报表功能的新一代数据库管理系统
+Terminal=false
+Icon=chat2db
+Type=Application
+StartupNotify=true
+StartupWMClass=chat2db
+Categories=Network;Development;Utility;
