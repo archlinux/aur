@@ -1,7 +1,7 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=journald-broker
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A log-based event dispatcher daemon for systemd's journal"
 arch=('x86_64')
 url="https://github.com/bpetlert/journald-broker"
@@ -9,8 +9,6 @@ license=('GPL-3.0-or-later')
 depends=('systemd-libs')
 makedepends=(cargo)
 options=(!lto)
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 backup=(
   "etc/journald-broker.d/00-global-settings.conf"
   "etc/journald-broker.d/00-template.conf"
