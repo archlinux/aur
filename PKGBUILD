@@ -2,7 +2,7 @@
 
 pkgname=gxr
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="glib wrapper for the OpenVR and soon the OpenXR API"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/gxr"
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('glibc' 'glib2' 'gtk3' 'gulkan' 'openxr')
 makedepends=('meson' 'glslang' 'vulkan-headers')
 optdepends=('glfw')
-source=("https://gitlab.freedesktop.org/xrdesktop/gxr/-/archive/$pkgver/gxr-$pkgver.tar.bz2")
-sha256sums=('6b21ce02af8d5f723a03833c8e17857ee68c0a4e91e444f8f741c435599bbb33')
+source=("https://gitlab.freedesktop.org/xrdesktop/gxr/-/archive/$pkgver/gxr-$pkgver.tar.gz")
+sha256sums=('938047ccc6066f5bddb6ea4d4787908d5089ad718794ea1074e319ddf21fe0fd')
 
 
 build() {
