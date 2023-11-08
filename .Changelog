@@ -1,12 +1,16 @@
 # mpf-check-bin .Changelog
 
+## 2023-11-07, mpf-check-bin 2.7.5-1
+
+* Bump to 2.7.5
+
 ## 2023-10-31, mpf-check-bin 2.7.4-1
 
 * Bump to 2.7.4
 
 ## 2023-10-26, mpf-check-bin 2.7.3-3
 
-* Remove dependency on `casclib` and `stormlib`; they're actaully unnecessary
+* Remove dependency on `casclib` and `stormlib`; they're actually unnecessary
 
 ## 2023-10-26, mpf-check-bin 2.7.3-2
 
