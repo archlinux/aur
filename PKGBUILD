@@ -1,10 +1,10 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
-_pkgname=hiddify
+_pkgname=hiddify.next
 pkgname=${_pkgname}-bin
-pkgver=0.10.0
-pkgrel=2
-pkgdesc="A multi-platform client based on Sing-box that serves as a universal proxy tool-chain"
+pkgver=0.10.7.dev
+pkgrel=1
+pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CCPL')
@@ -12,13 +12,13 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-provides=("hiddify")
+provides=(${_pkgname})
 options=(!strip)
 source=(
     "https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
 )
 sha256sums=(
-    "b874ce0468570cd3e161bb1516318cbe49917bfcde18cc117a93d411cc623578"
+    "6f37942d72d8c52ee98062f2dcd3458e82b094d3044ba3cca0bbbddc07adbe28"
 )
 _install_path="/opt/$_pkgname"
 
@@ -26,16 +26,17 @@ prepare() {
     cd "${srcdir}"
     chmod a+x "hiddify-linux-x64.AppImage"
     ./hiddify-linux-x64.AppImage --appimage-extract > /dev/null
-    sed -i 's/Exec=/Exec=env /' "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -i 's/Exec=/Exec=env /' "${srcdir}/squashfs-root/hiddify.desktop"
+    sed -i 's/hiddify/hiddify.next/g'  "${srcdir}/squashfs-root/hiddify.desktop"
 }
 
 package() {
     install -Dm755 "${srcdir}/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
     
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
     
     for _icons in 128x128 256x256;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
     done
     
     install -dm755 "${pkgdir}/usr/bin"
