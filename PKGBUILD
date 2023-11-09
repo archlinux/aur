@@ -9,7 +9,7 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.3.1
 secp256k1ver=0.20.9
-pkgrel=2
+pkgrel=3
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -30,7 +30,7 @@ depends=(
   'python-dnspython'
   'python-ecdsa'
   'python-jsonrpclib-pelix'
-  'python-pathvalidate'
+  'python-pathvalidate>=3.0.0'
   'python-protobuf'
   'python-pyaes'
   'python-pyqt5'
