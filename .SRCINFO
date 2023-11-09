@@ -1,6 +1,6 @@
 pkgbase = libvips-git
 	pkgdesc = A fast image processing library with low memory needs
-	pkgver = 8.14.3.r104.gda5cb2206
+	pkgver = 8.15.0.rc2.r0.g19eba8914
 	pkgrel = 1
 	url = https://libvips.github.io/libvips/
 	arch = i686
@@ -26,6 +26,7 @@ pkgbase = libvips-git
 	depends = orc
 	depends = pango
 	depends = libcgif
+	depends = libmatio
 	optdepends = libheif: for heif module
 	optdepends = imagemagick: for magick module
 	optdepends = openslide: for openslide module
