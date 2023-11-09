@@ -2,8 +2,8 @@
 
 _pkgname=single-file
 pkgname=single-file-git
-pkgver=r28.f322798
-pkgrel=2
+pkgver=r225.763be4d
+pkgrel=3
 pkgdesc="Command line tool to download a web page into a single HTML file"
 arch=('any')
 url="https://github.com/gildas-lormeau/single-file-cli"
@@ -13,11 +13,6 @@ depends=('nodejs')
 provides=('single-file')
 source=("${_pkgname}::git+https://github.com/gildas-lormeau/single-file-cli.git")
 sha256sums=('SKIP')
-
-prepare() {
-    git submodule init
-    git submodule update
-}
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
