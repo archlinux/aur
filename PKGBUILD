@@ -2,15 +2,15 @@
 
 pkgname=sc-controller
 pkgver=0.4.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/Ryochan7/sc-controller'
 license=('GPL2')
-depends=('gtk3' 'python-gobject' 'python-cairo' 'python-pylibacl' 'python-evdev' 'xorg-xinput')
+depends=('gtk3' 'python-gobject' 'python-cairo' 'python-pylibacl' 'python-evdev' 'python-vdf' 'xorg-xinput')
 optdepends=('gtk-layer-shell: wayland OSD support')
 makedepends=('python-setuptools')
-conflicts=("${pkgname}-git")
+conflicts=("${pkgname}-git" 'scc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/sc-controller/archive/v${pkgver}.tar.gz")
 sha256sums=('6811411d01f6da90f1c7ffc61a8eaf8a99bebdf2aedaa4a3c95b5119dcb76f88')
 
