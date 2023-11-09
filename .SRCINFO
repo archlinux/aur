@@ -1,5 +1,5 @@
 pkgbase = libkomparediff2-git
-	pkgdesc = Library to compare files and strings. (GIT version)
+	pkgdesc = Library to compare files and strings
 	pkgver = 23.08.3.r15.g9897e39
 	pkgrel = 1
 	url = https://invent.kde.org/sdk/libkomparediff2
