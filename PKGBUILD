@@ -9,7 +9,7 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.3.1
 secp256k1ver=0.20.9
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -81,6 +81,7 @@ build() {
   pyrcc5 icons.qrc -o electroncash_gui/qt/icons_rc.py
   # Compile the protobuf description file:
   protoc --proto_path=electroncash/ --python_out=electroncash/ electroncash/paymentrequest.proto
+  protoc --proto_path=electroncash_plugins/fusion/protobuf/ --python_out=electroncash_plugins/fusion/ electroncash_plugins/fusion/protobuf/fusion.proto
   # Create translations (optional):
   python contrib/make_locale
   # Use libsecp
