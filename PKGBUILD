@@ -1,10 +1,9 @@
-# Maintainer: Richard Webb <aur at rfwebb.com>
 # Based on the template by Dave Parrish: https://daveparrish.net/posts/2019-11-07-HowTo-PKGBUILD-for-AppImage.html
 
 _pkgname=mochi
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.16.3
+pkgver=1.16.4
 pkgrel=1
 pkgdesc="Flash cards / spaced repetition using markdown"
 arch=('x86_64')
@@ -15,7 +14,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://mochi.cards/releases/Mochi-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('73e07ebeb5ce1582f7de8b350379add4da501cb55056955c33cae5a5df10ad77')
+sha256sums_x86_64=('a3e47757f39184ab0c7ab936e560b02ddfd59869399a6804ec3a6a203a39ee2a')
 
 prepare() {
     chmod +x "${_appimage}"
