@@ -3,7 +3,7 @@
 
 pkgname=f3-qt-git
 pkgver=2.1.0.r16.g10ab886
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GUI for F3 - Fight Flash Fraud."
 arch=(i686 x86_64)
 url="https://github.com/zwpwjwtz/f3-qt"
@@ -18,7 +18,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/f3-qt"
 
-  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   # cutting off 'v' prefix that presents in the git tag
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
