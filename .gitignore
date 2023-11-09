@@ -1,0 +1,6 @@
+
+# ignore everything
+/*
+# except
+!/PKGBUILD
+!/.SRCINFO

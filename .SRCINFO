@@ -1,0 +1,17 @@
+pkgbase = namefix
+	pkgdesc = Fix bad filenames
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/sukulent/namefix
+	arch = x86_64
+	license = GPL-3-or-later
+	makedepends = make
+	makedepends = binutils
+	makedepends = gcc
+	depends = icu
+	depends = gcc-libs
+	depends = glibc
+	source = namefix-1.0.1.tar.gz::https://codeload.github.com/sukulent/namefix/tar.gz/refs/tags/v1.0.1
+	sha256sums = bbcf0d5046e25e15696b49a62e59d453816e981a8fe3bf194061d87d2f56e945
+
+pkgname = namefix
