@@ -1,6 +1,6 @@
-commit c2f7c0257a1fdaba9ffd117b57d71d279243f0ce
+commit 2809ff9e147a3485e835ddbdcb5fe71f5cb26e8f
 Author: Narrat <autumn-wind@web.de>
-Date:   Wed Nov 9 23:35:36 2022 +0100
+Date:   Thu Nov 9 21:34:14 2023 +0100
 
     Add support for mimeo
 
@@ -117,7 +117,7 @@ index eb1b698..1dd6f07 100644
        ;;
    esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index 40f739e..5eaca43 100755
+index 40f739e..a79afa2 100755
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
 @@ -487,6 +487,44 @@ set_browser_xfce()
@@ -165,7 +165,7 @@ index 40f739e..5eaca43 100755
  # {{{ generic
  
  get_browser_generic()
-@@ -730,6 +768,24 @@ set_url_scheme_handler_xfce()
+@@ -730,6 +768,49 @@ set_url_scheme_handler_xfce()
  }
  
  # }}} xfce
@@ -173,24 +173,49 @@ index 40f739e..5eaca43 100755
 +
 +get_url_scheme_handler_mimeo()
 +{
-+    exit_unimplemented_default_handler "$1"
++    get_browser_mimeo
 +}
 +
 +check_url_scheme_handler_mimeo()
 +{
-+    exit_unimplemented_default_handler "$1"
++    local scheme="$1" desktop="$2"
++
++    if [ -z "$(desktop_file_to_binary "$desktop")" ]; then
++        echo no
++        exit_success
++    fi
++
++    local browser=$(get_url_scheme_handler_mimeo "$scheme")
++    if [ "$browser" != "$desktop" ]; then
++        echo no
++        exit_success
++    fi
++    echo yes
++    exit_success
 +}
 +
 +set_url_scheme_handler_mimeo()
 +{
-+    exit_unimplemented_default_handler "$1"
++    local scheme="$1" desktop="$2"
++
++    if [ -n "$BROWSER" ] && \
++           ([ "$scheme" = http ] || [ "$scheme" = https ]); then
++        exit_failure_operation_failed \
++            "\$BROWSER is set and can't be changed with xdg-settings"
++    fi
++
++    if [ -z "$(desktop_file_to_binary "$desktop")" ]; then
++        exit_failure_file_missing
++    fi
++
++    set_browser_mimeo "$desktop"
 +}
 +
 +# }}} mimeo
  # {{{ generic
  
  get_url_scheme_handler_generic()
-@@ -884,6 +940,10 @@ case "$DE" in
+@@ -884,6 +965,10 @@ case "$DE" in
      dispatch_specific xfce "$@"
      ;;
  
