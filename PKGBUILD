@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=querym-bin
 _pkgname=Querym
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="A free, open-source, and cross-platform GUI tool designed to make database management accessible and efficient."
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_amd64.deb"
     #"${pkgname%-bin}.sh"
 )
-sha256sums=('661af6049d8c06a326cda6df6d875e63e94562b9e7693f8ad6538d1eb98e472b')
+sha256sums=('a93fe1350abc3dd1dbf798dca2e6d0b7518016455ac021abf337acf8c351131c')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
