@@ -2,8 +2,8 @@
 
 _pkgname=ch9344
 pkgname=${_pkgname}-dkms
-pkgver=1.9
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 url="https://www.wch.cn/downloads/CH9344SER_LINUX_ZIP.html"
 pkgdesc="Kernel module for CH9344/CH348 USB UART controller"
 license=('unknown')
@@ -17,9 +17,9 @@ source=("CH9344SER_LINUX-$pkgver.ZIP::https://www.wch.cn/downloads/file/386.html
         'dkms.conf'
         'fix-incompatible-pointer-types.patch')
 noextract=("CH9344SER_LINUX-$pkgver.ZIP")
-sha256sums=('2eb9bfb6a4e61834dc89565ef7f7b05abba77299ee05c98103a0eb85f2fb50e2'
+sha256sums=('b388b2af20bd6e3f842bb9c5bdc49ef681b7fc4e9b589e7f265eed61437e39f7'
             'cac2091fcfc7276c1b6fa5f5e0fa811f5aa51b9529652b02766ec933904e308f'
-            'd12452dcb757788bb4e8ee954419915e960bd8654323ab3f504360bcecdb5356')
+            '06a125bc78786ec7e11712ba4520a83ab53d1af906cfdf3336b0f3fe07c85587')
 
 prepare() {
   cd "$srcdir"

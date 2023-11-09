@@ -1,7 +1,7 @@
 pkgbase = ch9344-dkms
 	pkgdesc = Kernel module for CH9344/CH348 USB UART controller
-	pkgver = 1.9
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://www.wch.cn/downloads/CH9344SER_LINUX_ZIP.html
 	arch = any
 	license = unknown
@@ -10,12 +10,12 @@ pkgbase = ch9344-dkms
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
 	conflicts = ch9344
-	noextract = CH9344SER_LINUX-1.9.ZIP
-	source = CH9344SER_LINUX-1.9.ZIP::https://www.wch.cn/downloads/file/386.html
+	noextract = CH9344SER_LINUX-2.0.ZIP
+	source = CH9344SER_LINUX-2.0.ZIP::https://www.wch.cn/downloads/file/386.html
 	source = dkms.conf
 	source = fix-incompatible-pointer-types.patch
-	sha256sums = 2eb9bfb6a4e61834dc89565ef7f7b05abba77299ee05c98103a0eb85f2fb50e2
+	sha256sums = b388b2af20bd6e3f842bb9c5bdc49ef681b7fc4e9b589e7f265eed61437e39f7
 	sha256sums = cac2091fcfc7276c1b6fa5f5e0fa811f5aa51b9529652b02766ec933904e308f
-	sha256sums = d12452dcb757788bb4e8ee954419915e960bd8654323ab3f504360bcecdb5356
+	sha256sums = 06a125bc78786ec7e11712ba4520a83ab53d1af906cfdf3336b0f3fe07c85587
 
 pkgname = ch9344-dkms
