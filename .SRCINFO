@@ -1,14 +1,12 @@
 pkgbase = refi-app-bin
 	pkgdesc = A tool to make interacting with Firestore less painful
 	pkgver = 0.0.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://refiapp.io/
 	arch = x86_64
 	license = MIT
 	depends = libdrm
-	depends = glibc
 	depends = gdk-pixbuf2
-	depends = gcc-libs
 	depends = gtk3
 	depends = mesa
 	depends = libdrm
@@ -30,11 +28,9 @@ pkgbase = refi-app-bin
 	depends = alsa-lib
 	depends = libxdamage
 	depends = libxfixes
-	depends = glib2
 	depends = libxcomposite
 	provides = refi-app=0.0.19
 	conflicts = refi-app
-	options = !strip
 	source = refi-app-0.0.19.deb::https://github.com/thanhlmm/refi-app/releases/download/v0.0.19/refi-app_0.0.19_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/thanhlmm/refi-app/v0.0.19/LICENSE
 	sha256sums = 01918b95b8109d2c02b0a2b517a5f59f8f795b02a02557cfd420f80fbd345dc4
