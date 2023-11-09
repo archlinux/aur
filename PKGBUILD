@@ -1,38 +1,45 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=pypipe
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Python command-line tool for pipeline processing'
 arch=('any')
 url='https://github.com/bugen/pypipe'
 license=('Apache')
 depends=('python')
+makedepends=(
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
+)
+checkdepends=('python-pytest')
 options=('!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/bugen/pypipe/archive/v${pkgver}.tar.gz"
-  'test.csv'
 )
 
 sha512sums=(
-  'f672b5fc12d6adde563289885a1005a3b7f93e43363c49cecb4fb7eba531594da831097ef68feac6afbc8608646dab359ec78e9ce872a2f05ad7a5b2dcfae58b'
-  '1ec418fd1a274fd2f02e393aa53126c662ff1285479d960d3c953749399898fda8028f4cfa600a9c1e4906f911f496fedd0df39ff42714d651f1fa5ea0caa6dc'
+  'f85836f7351f0264858059c1aa55d6dc7d645d320590257d3d2d816cbdeba1156138f00736432751ccce57d637341e1a8a95188d3bd3a2eeb957db93c99405e2'
 )
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  color="$(
-    python pypipe.py < ../test.csv rec -C -f 'r[0] == "test"' 'r[1]'
-  )"
-  [ "${color}" == 'green' ]
+  python -m pytest -v tests/
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   echo >&2 'Packaging script'
-  install -D -m 755 -T 'pypipe.py' "${pkgdir}/usr/bin/ppp"
+  python -I -m installer --destdir="${pkgdir}" dist/*.whl
 
   echo >&2 'Packaging examples'
   install -D -m 644 -t "${pkgdir}/usr/share/${pkgname}/examples" docs/*
