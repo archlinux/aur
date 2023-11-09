@@ -4,7 +4,7 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.80.2.776.g356f066bd
+pkgver=2.81.1.379.g7f88ffef6
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
@@ -85,7 +85,7 @@ package_etlegacy-git() {
     mkdir -p $pkgdir/etc/xdg/$_gitname/etmain
     mkdir -p $pkgdir/usr/lib/systemd/system
     install -m 644 misc/etlegacy.conf $pkgdir/etc/xdg/$_gitname/
-    install -m 644 misc/etlegacy-x86_64.service $pkgdir/usr/lib/systemd/system/
+    install -m 644 misc/etlegacy.x86_64.service $pkgdir/usr/lib/systemd/system/
 
     # config
     mv $pkgdir/usr/lib/$_gitname/etmain/*.cfg $pkgdir/etc/xdg/$_gitname/etmain/
