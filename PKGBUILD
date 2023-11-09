@@ -1,5 +1,5 @@
 # Maintainer: Neurognostic <neurognostic@astranetics.com>
-# Maintainer: BadBoy <luckmelove2@gmail.com>
+# Contributor: BadBoy <luckmelove2@gmail.com>
 
 pkgname=('rainfall')
 pkgver=1.0.1
