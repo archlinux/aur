@@ -2,18 +2,18 @@
 
 pkgname=texlive-aas_macros
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 depends=('texlive-core')
 pkgdesc="Journal abbreviation macros used by ADS"
-url="http://doc.adsabs.harvard.edu/abs_doc/aas_macros.sty"
+url="https://ui.adsabs.harvard.edu/help/actions/journal-macros"
 arch=('any')
 install=texlive-aas_macros.install
-source=(http://doc.adsabs.harvard.edu/abs_doc/aas_macros.sty)
-sha1sums=('247c552534aaa55605789b3243ea0ade0838bc2c')
+source=(https://adsabs.harvard.edu/abs_doc/aas_macros.sty)
+sha256sums=('5f67d3f37c666685a19c4e4f3722fdac9adb95b97c12b4470ad73e64805f54ce')
 
 package()
 {
-  mkdir -p $pkgdir/usr/share/texmf/tex/latex/aas_macros
-  cp $srcdir/aas_macros.sty $pkgdir/usr/share/texmf/tex/latex/aas_macros
+    mkdir -p $pkgdir/usr/share/texmf/tex/latex/aas_macros
+    cp $srcdir/aas_macros.sty $pkgdir/usr/share/texmf/tex/latex/aas_macros
 }
 

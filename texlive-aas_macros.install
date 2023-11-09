@@ -1,14 +1,16 @@
+update_db() {
+  echo "Upgrading package database..."
+  mktexlsr
+}
+
 post_install() {
-  post_remove
-  echo "The file was installed in:"
-  kpsewhich aas_macros.sty
+    update_db
 }
 
 post_upgrade() {
-  post_install
+    update_db
 }
 
 post_remove() {
-  echo "Upgrading package database..."
-  mktexlsr
+    update_db
 }
