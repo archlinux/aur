@@ -2,8 +2,8 @@
 
 pkgname=hcclient-bin
 pkgver=1.10.10
-pkgrel=1
-pkgdesc="Terminal client for connecting to hack.chat"
+pkgrel=2
+pkgdesc="A terminal client for hack.chat"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/hcclient"
 license=("Unlicense")
