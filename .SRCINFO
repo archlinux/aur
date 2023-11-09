@@ -1,12 +1,11 @@
 pkgbase = malcat-lite
 	pkgdesc = Malcat is a feature-rich hexadecimal editor / disassembler for Windows and Linux targeted to IT-security professionals.
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = 0.9.4
+	pkgrel = 1
 	url = https://malcat.fr
 	arch = x86_64
 	license = Custom
 	depends = gtk3
-	depends = python310
 	depends = python-pycryptodomex
 	depends = python-pyasn1
 	depends = python-pyasn1-modules
@@ -16,9 +15,9 @@ pkgbase = malcat-lite
 	depends = python-requests
 	depends = python-dissect.cstruct
 	depends = python-tabulate
-	source = https://malcat.fr/latest/malcat_ubuntu22_lite.zip
+	source = https://malcat.fr/latest/malcat_ubuntu23_lite.zip
 	source = malcat-lite.desktop
-	sha256sums = 7c4549c1aa9d9dc966887e11d640201fe8dc964f988d83ece3522846e27d8c99
+	sha256sums = 3651a790c58ba156ac368acbb4cad6d9d02e306ad3355f3b9de4a9d500f84e41
 	sha256sums = 823099b512653d9e1aa3d09be42f0ce737248cab29ea8dd3bb2a3c4916922a04
 
 pkgname = malcat-lite
