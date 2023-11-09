@@ -8,7 +8,7 @@
 readonly _pkgname="maison"
 
 pkgname="python-maison"
-pkgver="1.4.0"
+pkgver="1.4.1"
 pkgrel="1"
 pkgdesc="Read settings from config files."
 arch=("any")
@@ -17,7 +17,7 @@ license=("MIT")
 depends=("python" "python-click" "python-pydantic" "python-toml")
 makedepends=("python-build" "python-installer" "python-poetry")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("a2dbc26137973e7c15bb05af1aa6b8c1f48c2a4e970a1bdd6fb9b52d8205a313068ca89bc9570fa2aec2e1dd44e1b95f2f354bb4a8a46d1fec82f8522827f02e")
+sha512sums=("518c95d5e0dbb2dba6216b45eebff9859e18a15d4341746d96d58744102387b922aed8f7cb82e906306256ff0cc6ab8b24c32062e7e6a35a1918e03a160bd6e8")
 
 build()
 {
