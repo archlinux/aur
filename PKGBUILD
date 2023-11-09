@@ -36,11 +36,10 @@ prepare() {
 	asar e "$srcdir/resources/app.asar" "$srcdir/unpacked"
 	icotool -x -w 256 "$srcdir/unpacked/icon.ico" -o "$srcdir/notion.png"
 
-	# Space before `true` is required to avoid breaking minified code
-	sed -i 's/"win32"===process.platform/ true/g' "$srcdir/unpacked/.webpack/main/index.js"
-	sed -i 's/_.Store.getState().app.preferences?.isAutoUpdaterDisabled/true/g' "$srcdir/unpacked/.webpack/main/index.js"
-	sed -i 's/extra-resources/\/usr\/share\/icons\/hicolor\/256x256\/apps/g' "$srcdir/unpacked/.webpack/main/index.js"
-	sed -i 's/trayIcon.ico/notion.png/g' "$srcdir/unpacked/.webpack/main/index.js"
+	sed -i -e 's/"win32"===process.platform/(true)/g
+		    s/_.Store.getState().app.preferences?.isAutoUpdaterDisabled/(true)/g
+		    s!extra-resources!/usr/share/icons/hicolor/256x256/apps!g
+		    s/trayIcon.ico/notion.png/g' "$srcdir/unpacked/.webpack/main/index.js"
 
 	gendesk -f \
 		--pkgname notion \
