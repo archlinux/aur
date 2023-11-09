@@ -1,7 +1,7 @@
 pkgbase = intellij-idea-ultimate-edition
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
 	pkgver = 2023.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/idea/
 	arch = x86_64
 	arch = aarch64
@@ -27,3 +27,4 @@ pkgname = intellij-idea-ultimate-edition
 	backup = opt/intellij-idea-ultimate-edition/bin/idea.properties
 
 pkgname = intellij-idea-ultimate-edition-jre
+	url = https://github.com/JetBrains/JetBrainsRuntime

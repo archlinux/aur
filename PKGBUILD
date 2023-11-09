@@ -5,7 +5,7 @@
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
 pkgver=2023.2.5
-pkgrel=1
+pkgrel=2
 _buildver=232.10227.8
 jbr_ver=17.0.8.1
 jbr_build=aarch64-b1059
@@ -66,6 +66,7 @@ package_intellij-idea-ultimate-edition() {
 }
 
 package_intellij-idea-ultimate-edition-jre() {
+  url="https://github.com/JetBrains/JetBrainsRuntime"
   install -d -m 755 "$pkgdir"/opt/$pkgbase
   mv "$srcdir"/jbr "$pkgdir"/opt/$pkgbase
 }
