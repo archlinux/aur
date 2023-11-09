@@ -1,0 +1,22 @@
+# Maintainer: garlicbreadwolfs (garlicbreadwolfs AT riseup DOT net)
+
+pkgname=otf-advocate-ancient
+_origfilename=AdvocateAncient
+_installdirname=advocate-ancient
+pkgver=1.017
+pkgrel=1
+pkgdesc='Advocate Ancient Fonts'
+arch=('any')
+url='https://github.com/GuiWonder/SourceHanToClassic'
+license=('custom:OFL1.1')
+source=(${url}/releases/download/${pkgver}/${_origfilename}MonoOTCs.7z
+        ${url}/releases/download/${pkgver}/${_origfilename}SansOTCs.7z
+        ${url}/releases/download/${pkgver}/${_origfilename}SerifOTCs.7z)
+sha512sums=('e653b3e850c7596bface07022d2e546ea639e42a987909e1ea916e8c0c8d783d8c9478a4e0bb96f680851c533d733828be836ea786b7f75761b3bc55b2852d30'
+            '64b49226274c09425791c45752819357b406c8cbd20e3e65c53a690ab9912468b266ab8a49ef03287d647daa4de8ef9372ff9f137ea2152a18de0d079de41f7b'
+            'f5606625e0c608dc2177ed49a2c32424fb5c18a5faae5d387f6251e5d2035d3a88db7a29711d0beff794aa9d340d3ddb4e6ab82716ccd784fa5f7bfbd89dcfde')
+package() {
+    install -Dm644 *.ttc -t "$pkgdir"/usr/share/fonts/${_installdirname}/
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname}/
+}
+
