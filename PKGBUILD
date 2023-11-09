@@ -2,11 +2,11 @@
 
 pkgname=mopidy-ytmusic
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from Youtube Music"
 
 arch=('any')
-url="https://github.com/OzymandiasTheGreat/mopidy-ytmusic"
+url="https://github.com/jmcdo29/mopidy-ytmusic"
 license=('APACHE')
 depends=(
   'mopidy'
@@ -28,6 +28,9 @@ source=("$pkgname-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 
 package() {
   cd "mopidy-ytmusic-${pkgver}"
+
+  # change pytube dependency:
+  sed -i 's/pytube>=12.1.0,<13.0.0/pytube>=15/' setup.py
 
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
