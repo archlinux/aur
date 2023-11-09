@@ -3,6 +3,7 @@ pkgbase = modular
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://developer.modular.com/download
+	install = modular.install
 	arch = x86_64
 	license = custom:modular
 	depends = python

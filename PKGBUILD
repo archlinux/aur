@@ -16,6 +16,8 @@ arch=("x86_64")
 source=("https://dl.modular.com/public/installer/deb/debian/pool/any-version/main/m/mo/modular_$pkgver/modular-v$pkgver-amd64.deb")
 sha256sums=("f7cea3ba3345ca5e72f498dc971adb4f25db6412527b2e7e34056dc72890a6d8")
 
+install="modular.install"
+
 package() {
     bsdtar -xf data.tar -C "$pkgdir/"
 }
