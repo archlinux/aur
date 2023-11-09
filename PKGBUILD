@@ -2,15 +2,15 @@
 
 pkgname="xsnow"
 pkgver=3.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Let it snow on your desktop"
 url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
 license=("GPL3")
 arch=("x86_64" "i386" "armv7h" "aarch64")
 conflicts=("xsnow-bin" "xsnow-legacy" "xsnow-comp-patch-git")
 depends=("atk" "cairo" "gtk3" "gsl" "libx11" "libxpm" "libxml2")
-source=("https://nav.dl.sourceforge.net/project/xsnow/xsnow-$pkgver.tar.gz")
-sha256sums=('c1e086b9237ee2485a6faff09e7cba7a299fabf290238928d37b6d76fe38dda3')
+source=("https://www.ratrabbit.nl/downloads/$pkgname/$pkgname-$pkgver.tar.gz")
+b2sums=('7ee2100abcff7d5224315f0fe1ce906c0d1cc24f0e695e3d3914d5eb58f50ab39c0d8e2dc89185c887175a018c3732ef3c943c3184fb10b87106105612bb37bb')
 
 build(){
  cd $pkgname-$pkgver
