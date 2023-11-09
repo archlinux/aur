@@ -1,7 +1,7 @@
 pkgbase = filecentipede-bin
 	pkgdesc = Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client.
 	pkgver = 2.82
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.filecxx.com/
 	arch = x86_64
 	license = custom
@@ -46,6 +46,7 @@ pkgbase = filecentipede-bin
 	depends = freetype2
 	depends = xcb-util-keysyms
 	depends = fontconfig
+	optdepends = qt6-wayland
 	provides = filecxx
 	conflicts = filecxx
 	conflicts = filecentipede
