@@ -126,7 +126,7 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --setenv IBUS_USE_PORTAL 1 \
     --setenv QQNTIM_HOME "${QQ_APP_DIR}/QQNTim" \
     --setenv LITELOADERQQNT_PROFILE "${QQ_APP_DIR}/LiteLoaderQQNT" \
-    /opt/QQ/electron "${flags[@]}" "$@" /opt/QQ/resources/app
+    /opt/QQ/electron ${flags[@]} "$@" /opt/QQ/resources/app
 
 # 移除无用崩溃报告和日志
 # 如果需要向腾讯反馈 bug，请注释掉如下几行
