@@ -7,7 +7,7 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=6.38.0beta1
+pkgver=6.39.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -17,7 +17,7 @@ url="https://signal.org"
 depends=('gtk3' 'hicolor-icon-theme' 'libasound.so' 'libatk-bridge-2.0.so' 'libcairo.so' 'libdbus-1.so'
         'libexpat.so' 'libgio-2.0.so' 'libpango-1.0.so' 'libxkbcommon.so' 'libxss')
 # We need libxcrypt-compat for it to build: https://github.com/electron-userland/electron-builder-binaries/issues/47
-makedepends=('yarn' 'git' 'nodejs' 'npm' 'python' 'git-lfs' 'libxcrypt-compat')
+makedepends=('yarn' 'git' 'nodejs' 'npm' 'python' 'git-lfs' 'libxcrypt-compat' 'node-gyp')
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
 makedepends_aarch64=('fpm')
 source=(
@@ -25,7 +25,7 @@ source=(
   "${pkgname}.desktop"
   "signal-desktop-wrapper.sh"
   )
-sha512sums=('3aa9e5d3f926f6e25ccee5fdeb9b74605afde07b822921e4703db57f401cd4fb2db8117fcc27ea753639f261b1d8a3bdd91b04b8237d7bb5e31a351bd1c594a1'
+sha512sums=('216d5f003b0c105a07696698fefb80744f447c7dc6429f061e908d0bbe1d16970d4a07ee5bb53a4d263ade1f452624039fb3d1c51eee4aad328e591847c2710b'
             '7b25b98de8db36af1a9da49cd214d6ced45f123f098e5665b563e462b979e67d9d570fce8fbee89776a95dc5108696da64bfbe0bd1eaf748360dfcb333483dbb'
             '457c1bd044f4e17810a7f1b284ca38809a0c1f8fed4bdb52184a169e2996e683c4c96c1cc86a013feb7b8833557245397decdcec01dbc82bb2b12b0d80424e25')
 
