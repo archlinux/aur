@@ -1,16 +1,17 @@
-# Maintainer: Entith <entith@entith.net>
-# Contributor: Vorpal <vorpal@riseup.net>
+# Maintainer: jiriks74 <jiri@stefka.eu>
+# Old maintainer: Entith <entith@entith.net>
 pkgname=vkdevicechooser
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Vulkan layer to force a specific physical GPU device to be used"
 arch=('x86_64')
-url="https://github.com/aejsmith/vkdevicechooser"
+url="https://github.com/jiriks74/vkdevicechooser"
 license=('MIT')
 depends=('vulkan-icd-loader')
-makedepends=('git' 'vulkan-headers' 'vulkan-validation-layers' 'meson' 'ninja')
-source=(https://github.com/aejsmith/vkdevicechooser/archive/refs/tags/1.0.zip)
-md5sums=('5555405659067e6ba80fac37fcd556d4')
+makedepends=('git' 'vulkan-headers' 'vulkan-utility-libraries' 'meson' 'ninja')
+conflicts=('vkdevicechooser-git')
+source=(https://github.com/jiriks74/vkdevicechooser/archive/refs/tags/1.1.zip)
+md5sums=('b838ff799b1e729e11d1b950504672be')
 
 build() {
   cd "${pkgname}-${pkgver}"

@@ -1,17 +1,18 @@
 pkgbase = vkdevicechooser
 	pkgdesc = Vulkan layer to force a specific physical GPU device to be used
-	pkgver = 1.0
-	pkgrel = 2
-	url = https://github.com/aejsmith/vkdevicechooser
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/jiriks74/vkdevicechooser
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = vulkan-headers
-	makedepends = vulkan-validation-layers
+	makedepends = vulkan-utility-libraries
 	makedepends = meson
 	makedepends = ninja
 	depends = vulkan-icd-loader
-	source = https://github.com/aejsmith/vkdevicechooser/archive/refs/tags/1.0.zip
-	md5sums = 5555405659067e6ba80fac37fcd556d4
+	conflicts = vkdevicechooser-git
+	source = https://github.com/jiriks74/vkdevicechooser/archive/refs/tags/1.1.zip
+	md5sums = b838ff799b1e729e11d1b950504672be
 
 pkgname = vkdevicechooser
