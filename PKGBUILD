@@ -1,6 +1,6 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=goxlr-utility
-pkgver=0.12.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libusb' 'bzip2' 'libpulse' 'speech-dispatcher')
 makedepends=('cargo' 'jq' 'pkgconf' 'clang')
 install=goxlr-utility.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoXLR-on-Linux/goxlr-utility/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('79b49aaff786bccbd4cc115c0c6be35b0ec4c8a76adede8848a132a12d858fb2ddfec5768c51cb5d8a54990d41bd7f3251dbddbf6f973344d0ceb67644ac42e7')
+sha512sums=('9ec3f1d0715356cd4576f1ac26dc29c6adf5fc68535b3a009c1c491000747b2e80c12758d242f4f96e3a7ad89f221f5189887496ab23db206499cd08b76518d4')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -44,7 +44,6 @@ package() {
     install -Dm755 "target/release/goxlr-client" "$pkgdir/usr/bin/goxlr-client"
     install -Dm755 "target/release/goxlr-defaults" "$pkgdir/usr/bin/goxlr-defaults"
     install -Dm755 "target/release/goxlr-launcher" "$pkgdir/usr/bin/goxlr-launcher"
-    install -Dm755 "target/release/goxlr-firmware" "$pkgdir/usr/bin/goxlr-firmware"
 
     install -Dm644 "50-goxlr.rules" "$pkgdir/etc/udev/rules.d/50-goxlr.rules"
 
