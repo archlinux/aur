@@ -1,7 +1,7 @@
 pkgbase = clangd-opt
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
 	pkgver = 17.0.0.r19.g4b414e52ac10
-	pkgrel = 20
+	pkgrel = 21
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -19,6 +19,7 @@ pkgbase = clangd-opt
 	options = !strip
 	source = git+https://github.com/llvm/llvm-project.git#branch=main
 	source = hover-doxygen.patch
+	source = hover-doxygen-trunk.patch
 	source = doxygen-more-fields.patch
 	source = hover-resolve-forward-params.patch
 	source = lsp-codelens.patch
@@ -34,6 +35,7 @@ pkgbase = clangd-opt
 	source = hover-ptrfn-args.patch
 	sha256sums = SKIP
 	sha256sums = 3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2
+	sha256sums = 75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54
 	sha256sums = c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3
 	sha256sums = 9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7
 	sha256sums = 35153f4775647bd7172a460de595f8b1cab4db0ae85283cd1119864f5328ea48

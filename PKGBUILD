@@ -94,7 +94,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=20
+pkgrel=21
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -104,6 +104,7 @@ makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
 options=('!strip')
 source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-doxygen.patch'
+        'hover-doxygen-trunk.patch'
         'doxygen-more-fields.patch'
         'hover-resolve-forward-params.patch'
         'lsp-codelens.patch'
@@ -119,6 +120,7 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-ptrfn-args.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
+            '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
             'c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             '35153f4775647bd7172a460de595f8b1cab4db0ae85283cd1119864f5328ea48'  # lsp-codelens
@@ -145,7 +147,11 @@ prepare() {
 
     # Hover patches
     if [ "$CLANGD_DOXYGEN" != "n" ]; then
+        if [ "$CLANGD_BRANCH" = "main" ]; then
+            patch -p1 -i ${srcdir}/hover-doxygen-trunk.patch
+        else
         patch -p1 -i ${srcdir}/hover-doxygen.patch
+        fi
         patch -p1 -i ${srcdir}/doxygen-more-fields.patch
     fi
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
