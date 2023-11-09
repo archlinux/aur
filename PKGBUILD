@@ -72,7 +72,7 @@ if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
 fi
 
-# Set the hertz of the tickrate (1000, 500, 300, 250, 100)
+# Set the hertz of the tickrate (1000, 500, 300, 100)
 if [ -z ${_tickrate_HZ+x} ]; then
   _tickrate_HZ=500
 fi
@@ -100,7 +100,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.5
-pkgver=${_major}.10
+pkgver=${_major}.11
 _branch=6.x
 xanmod=1
 _revision=
@@ -141,7 +141,7 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('7a574bbc20802ea76b52ca7faf07267f72045e861b18915c5272a98c27abf884' # kernel
             'SKIP'                                                             # kernel signature
-            '46182db53df3b1f4e63c4ebecf21fc0a06335bacf45b2ba3b160e2c70bf520d8' # xanmod patch
+            '9422595c9be6f1496a00e10e2a493218786cb33868e7e6c1ebd9c3f49c7513aa' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
             '355a6898721857a1724dd644096b3faf4cb15b916fb99169e0ef8beb91d2241c' # 0001-bore.patch
             'baf8d2d1b0701326ee6ba0ffeabec2b5d716b6e136b836f60069cf6937527165' # 0002-constgran-vanilla-max.patch
@@ -192,16 +192,16 @@ prepare() {
   # Setting HZ tick rate
   echo "Setting Tickrate HZ..."
   if [ "$_tickrate_HZ" = "1000" ]; then
-    scripts/config --disable HZ_500
+    scripts/config --disable HZ_250
     scripts/config --enable HZ_1000
+  elif [ "$_tickrate_HZ" = "500" ]; then
+    scripts/config --disable HZ_250
+    scripts/config --enable HZ_500
   elif [ "$_tickrate_HZ" = "300" ]; then
-    scripts/config --disable HZ_500
+    scripts/config --disable HZ_250
     scripts/config --enable HZ_300
-  elif [ "$_tickrate_HZ" = "250" ]; then
-    scripts/config --disable HZ_500
-    scripts/config --enable HZ_250
   elif [ "$_tickrate_HZ" = "100" ]; then
-    scripts/config --disable HZ_500
+    scripts/config --disable HZ_250
     scripts/config --enable HZ_100
   fi
 
