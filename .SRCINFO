@@ -1,7 +1,7 @@
 pkgbase = thruk
 	pkgdesc = Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken
-	pkgver = 3.08.3
-	pkgrel = 2
+	pkgver = 3.10
+	pkgrel = 1
 	url = http://thruk.org
 	install = thruk.install
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = thruk
 	backup = etc/httpd/conf/extra/thruk.conf
 	backup = etc/thruk/thruk_local.conf
 	backup = etc/logrotate.d/thruk-base
-	source = http://download.thruk.org/pkg/v3.08.3/src/thruk-3.08.3.tar.gz
-	md5sums = 71fe1ccd1ac1e32e2375339b57bfe7c4
+	source = http://download.thruk.org/pkg/v3.10/src/thruk-3.10.tar.gz
+	md5sums = b40534681bc735b85ce1474045b370e3
 
 pkgname = thruk
