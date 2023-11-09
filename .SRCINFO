@@ -1,7 +1,7 @@
 pkgbase = nthash-bcgsc
 	pkgdesc = Fast hash function for DNA/RNA sequences. https://doi.org/10.1093/bioinformatics/btac564
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bcgsc.github.io/ntHash/
 	arch = x86_64
 	license = MIT

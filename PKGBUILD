@@ -2,7 +2,7 @@
 pkgname=nthash-bcgsc
 _pkgname=ntHash
 pkgver=2.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Fast hash function for DNA/RNA sequences. https://doi.org/10.1093/bioinformatics/btac564"
 arch=('x86_64')
 url="https://bcgsc.github.io/ntHash/"
@@ -23,7 +23,7 @@ build() {
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
-    cmake --build build
+    MAKEFLAGS=-j1 cmake --build build
 }
 
 check() {
