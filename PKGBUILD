@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lettura-bin
 _pkgname=lettura
-pkgver=0.1.9_3
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Another free and open-source feed reader"
 arch=('x86_64')
@@ -9,10 +9,21 @@ url="https://github.com/zhanglun/lettura"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('cairo' 'libsoup' 'webkit2gtk' 'hicolor-icon-theme' 'gcc-libs' 'glib2' 'gdk-pixbuf2' 'glibc' 'gtk3' 'pango' 'openssl-1.1')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/zhanglun/lettura/v${pkgver//_/-}/docs/LICENSE")
-sha256sums=('7da35fb44c4b13ec2e8f81c5c849b4408ed4477ba6bc4270fef103480479f1bd'
+depends=(
+    'cairo'
+    'libsoup'
+    'webkit2gtk'
+    'hicolor-icon-theme'
+    'gdk-pixbuf2'
+    'gtk3'
+    'pango'
+    'openssl-1.1'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/zhanglun/lettura/v${pkgver//_/-}/docs/LICENSE"
+)
+sha256sums=('7478c37abf62311b23fa7c62b0d1f007dc58f84e56c7070196732a1a08728b10'
             'cb0e47679b2552a19d61430fbc452636d7e227b799ed7093d5c13e01798d091b')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
