@@ -16,7 +16,7 @@ pkgname=vmware-workstation16
 pkgver=16.2.5
 _buildver=20904516
 _pkgver=${pkgver}_${_buildver}
-pkgrel=7
+pkgrel=8
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -93,7 +93,7 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '8df3bff5cd8f5fa16296a86a1e87f702bee8c5dd3f3fd408c11656417bda1e57'
+  '88ce0aec3ea30a0e4e4983c40564cb1169aaa1d615c0b240e05807eeb249cef9'
   '26fd4e4c73dbf71fd3ff5be0dab69b863b6c64caf78fc41cc63b459fd50367ee'
 )
 options=(!strip emptydirs)
