@@ -1,14 +1,14 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.10
+pkgver=1.0.11
 _zigver=0.12.0-dev.1297+a9e66ed73
-pkgrel=1
+pkgrel=2
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
 license=('GPL')
 makedepends=(
-	bun clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip zig
+	npm clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip zig
 )
 conflicts=(bun-bin)
 source=(git+$url.git#tag=bun-v$pkgver https://ziglang.org/builds/zig-linux-x86_64-$_zigver.tar.xz)
@@ -32,13 +32,37 @@ prepare() {
 }
 
 build() {
-  # mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
-  # ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
-  # ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
-  # ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
-  # make jsc-build jsc-copy-headers -j1
+  # Copied from https://github.com/oven-sh/WebKit/blob/main/Dockerfile#L57
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
+  export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
+  cmake \
+      -S $srcdir/bun/src/bun.js/WebKit/ \
+      -B $srcdir/bun/src/bun.js/WebKit/build \
+      -DPORT="JSCOnly" \
+      -DENABLE_STATIC_JSC=ON \
+      -DENABLE_BUN_SKIP_FAILING_ASSERTIONS=ON \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DUSE_THIN_ARCHIVES=OFF \
+      -DUSE_BUN_JSC_ADDITIONS=ON \
+      -DENABLE_FTL_JIT=ON \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+      -DALLOW_LINE_AND_COLUMN_NUMBER_IN_BUILTINS=ON \
+      -DENABLE_SINGLE_THREADED_VM_ENTRY_SCOPE=ON \
+      -G Ninja
 
-  cmake -B $pkgname/build -S $pkgname -DCMAKE_BUILD_TYPE=Release -GNinja -DUSE_STATIC_LIBATOMIC=OFF #-DCMAKE_C_COMPILER="$CC" -DCMAKE_CXX_COMPILER="$CXX"
+  cmake --build $srcdir/bun/src/bun.js/WebKit/build --target "jsc"
+  
+  cp -r $srcdir/bun/src/bun.js/WebKit/build/lib/*.a /output/lib
+  cp $srcdir/bun/src/bun.js/WebKit/build/*.h /output/include
+  find $srcdir/bun/src/bun.js/WebKit/build/JavaScriptCore/Headers/JavaScriptCore/ -name "*.h" -exec cp {} /output/include/JavaScriptCore/ \
+  find $srcdir/bun/src/bun.js/WebKit/build/JavaScriptCore/PrivateHeaders/JavaScriptCore/ -name "*.h" -exec cp {} /output/include/JavaScriptCore/ \
+  cp -r $srcdir/bun/src/bun.js/WebKit/build/WTF/Headers/wtf/ /output/include
+  cp -r $WEBKI$srcdir/bun/src/bun.js/WebKit/buildOUT_DIR/bmalloc/Headers/bmalloc/ /output/include
+  mkdir -p /output/Source/JavaScriptCore
+  cp -r /webkit/Source/JavaScriptCore/Scripts /output/Source/JavaScriptCore
+  cp /webkit/Source/JavaScriptCore/create_hash_table /output/Source/JavaScriptCore
+
+  cmake -B $pkgname/build -S $pkgname -DCMAKE_BUILD_TYPE=Release -GNinja -DUSE_STATIC_LIBATOMIC=OFF
   ninja -C $pkgname/build
 }
 
