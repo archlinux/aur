@@ -13,10 +13,11 @@
 
 pkgname=discord-electron
 _pkgname=discord
-_electron=24
 pkgver=0.0.34
-pkgrel=1
-pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
+pkgrel=2
+_electronver=24
+_electronname="electron${_electronver}"
+pkgdesc="Discord using system provided electron (v${_electronver}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -24,7 +25,7 @@ url='https://discord.com'
 license=('custom')
 options=('!strip')
 install="$pkgname.install"
-depends=("electron${_electron}" 'libxss')
+depends=("${_electronname}" 'libxss')
 makedepends=('asar' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
@@ -35,16 +36,20 @@ optdepends=(
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	'discord-launcher.sh')
 sha512sums=('28ab59e18ca3c800030c7c4b4f016efed033e741ad42f18b993e8493d51a78d430a4ff3c0a3457fdf8b43907a013f3145e67748e7a896d440af56074226c5c46'
-            'b0961f546a4016e24d516c6d1125c1af0e8ca84ab960f6abe10ec98c2c18543da2168ffb2676189ed110e9abbdb889abfb2c610954019250041a0a89b0b03bab')
+            '723250b70c7f5367701675c6581e9eac2143263910c4ffc35957a6ab858492c5febe89ea0d46fce19ac1416c23d9ca3953e48b9db5aa174b4a401fb6efa5daf5')
 
 _krisp_b2sum='e36c3308b34e96f4c33425bb1d7ac0d8130fa5450c9db2ee3fbdbfa10887ab15f3ec06f9fdbd446553f9224052af0705a0eebfc92b55776a33a9cfdf0c3c53e4'
 
 prepare() {
 	# prepare launcher script
-	sed -i "s|@PKGNAME@|${_pkgname}|g;s|@PKGVER@|${pkgver}|g;s|@ELECTRON@|${_electron}|g;s|@KRISPB2@|${_krisp_b2sum}|g" discord-launcher.sh
+	sed -i -e "s|@PKGNAME@|${_pkgname}|g" \
+		-e "s|@PKGVER@|${pkgver}|g" \
+		-e "s|@ELECTRON@|${_electronname}|g" \
+		-e "s|@KRISPB2@|${_krisp_b2sum}|g" \
+		discord-launcher.sh
 
 	# fix the .desktop file
-	sed -i "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" ${_pkgname^}/$_pkgname.desktop
+	sed -i -e "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" ${_pkgname^}/$_pkgname.desktop
 
 	# create the license files
 	curl https://discord.com/terms | html2text >"${srcdir}"/LICENSE.md
@@ -57,8 +62,12 @@ build() {
 	# use system electron
 	asar e resources/app.asar resources/app
 	rm resources/app.asar
-	sed -i "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" resources/app/app_bootstrap/buildInfo.js
-	sed -i "s|exeDir,|'/usr/share/pixmaps',|" resources/app/app_bootstrap/autoStart/linux.js
+	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" resources/app/app_bootstrap/buildInfo.js
+	sed -i -e "/^const appName/d" -e "/^const exePath/d" -e "/^const exeDir/d" -e "/^const iconPath/d" \
+		-e "s|^Exec=\${exePath}$|Exec=/usr/bin/${_pkgname}|" \
+		-e "s|^Name=\${appName}$|Name=${_pkgname^}|" \
+		-e "s|^Icon=\${iconPath}$|Icon=/usr/share/pixmaps/${_pkgname}.png|" \
+		resources/app/app_bootstrap/autoStart/linux.js
 	asar p resources/app resources/app.asar
 	rm -rf resources/app
 }
