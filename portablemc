@@ -1,11 +1,18 @@
 #!/bin/sh
 cd /usr/lib/portablemc
-main_dir="${XDG_DATA_HOME:-$HOME/.local/share}/portablemc/main/"
-work_dir="${XDG_DATA_HOME:-$HOME/.local/share}/portablemc/work/"
 
-if [ "$1" = "start" ]; then
-  jvm="$(which java)"
-  python -m portablemc --main-dir "$main_dir" --work-dir "$work_dir" "$@" --jvm "$jvm" 
-else
-  python -m portablemc --main-dir "$main_dir" --work-dir "$work_dir" "$@"
-fi
+[ -d "$HOME/.minecraft" ] && portablemc_dir="$HOME/.minecraft" || portablemc_dir="${XDG_DATA_HOME:-$HOME/.local/share}/portablemc/"
+
+# Uncomment to default to using system java
+#args=""
+#for i in "$@"; do
+#	if [ "$i" = "start" ]; then
+#		args="$args $i --jvm $(which java)"
+#	else
+#		args="$args $i"
+#	fi
+#done
+#
+#python -m portablemc --main-dir "$portablemc_dir" --work-dir "$portablemc_dir" $args
+
+python -m portablemc --main-dir "$portablemc_dir" --work-dir "$portablemc_dir" "$@"
