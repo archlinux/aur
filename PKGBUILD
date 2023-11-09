@@ -12,10 +12,10 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=119.0.6045.105
-pkgrel=2
+pkgver=119.0.6045.123
+pkgrel=1
 _launcher_ver=8
-_manual_clone=1
+_manual_clone=0
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -40,7 +40,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3'
+sha256sums=('6b61b87d0a201113b9c4e3d0ce48df52ecf869179c207e34b71add957fb7b48f'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
@@ -60,10 +60,10 @@ _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
 # _uc_ver=118.0.5993.117-1
 source=(${source[@]}
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
-        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
+        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
+        ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            'e5d74a46cd79b79a3f2f8f8fadce8329ad50f4a4facd76365d28e0761173aa26')
+            '930cebb08b8568ca19a1d4bbf90a754daac93630148ccc41b18b6f9e2724a8cf')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
