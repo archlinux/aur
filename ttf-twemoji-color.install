@@ -1,20 +1,14 @@
-config=46-ttf-twemoji-color.conf
-
 post_install() {
-  echo "To finish installation, update the default font in /etc/fonts/conf.avail/${config} to your system font,"
-  echo "and then copy or symlink the file into /etc/fonts/conf.d or ~/.config/fontconfig/conf.d"
+  echo "---"
+  echo " To finish installation, add this font configuration "
+  echo " sudo ln -sf /usr/share/fontconfig/conf.avail/46-ttf-twemoji-color.conf /etc/fonts/conf.d/46-ttf-twemoji-color.conf"
   echo
-  echo "SVG in OpenType (colour) fonts are currently only supported by Mozilla software. Other software will fallback to B&W glyphs."
-}
-
-post_upgrade() {
-  echo "NOTE: The fontconfig file has been renamed from 56-ttf-twemoji-color.conf to ${config}."
-  echo "You should ensure that you update any links or copies of this file in /etc/fonts/conf.d or ~/.config/fontconfig/conf.d"
-  echo
-  echo "You should now check the default system font is correct in /etc/fonts/conf.avail/${config}"
-  echo "and ensure a copy of or link to this file is present in /etc/fonts/conf.d, or ~/.config/fontconfig/conf.d."
+  echo " and install ttf-bitstream-vera"
+  echo " ttf-bitstream-vera is default font for bug-free font fallback with the provided fontconfig."
+  echo " See: https://github.com/eosrei/emojione-color-font#why-bitstream-vera"
+  echo "---"
 }
 
 post_remove() {
-  echo "To complete uninstallation, you should remove the manually installed ${config} from /etc/fonts/conf.d or ~/.config/fontconfig/conf.d"
+  echo " To complete uninstallation, you should remove /etc/fonts/conf.d/46-ttf-twemoji-color.conf"
 }

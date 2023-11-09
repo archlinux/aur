@@ -1,6 +1,6 @@
 pkgbase = ttf-twemoji-color
 	pkgdesc = A color and B&W emoji SVG-in-OpenType font by Twitter with support for ZWJ, skin tone modifiers and country flags.
-	pkgver = 13.1.0
+	pkgver = 14.0.2
 	pkgrel = 1
 	url = https://github.com/eosrei/twemoji-color-font
 	install = ttf-twemoji-color.install
@@ -13,7 +13,7 @@ pkgbase = ttf-twemoji-color
 	provides = emoji-font
 	conflicts = twemoji-color-font
 	replaces = twemoji-color-font
-	source = https://github.com/eosrei/twemoji-color-font/releases/download/v13.1.0/TwitterColorEmoji-SVGinOT-Linux-13.1.0.tar.gz
-	sha256sums = 57c0d651400af872c33dcab78b33ecd7be0f7d49da49e2c1c83a59c215085f94
+	source = https://github.com/eosrei/twemoji-color-font/releases/download/v14.0.2/TwitterColorEmoji-SVGinOT-Linux-14.0.2.tar.gz
+	b2sums = 43a4c3207cff2e8419c6fb7c0e5bcbe860a607757bc5a1d67c2cd49717eaf6fb259326a4a09b9bfb81b201b9f1ee97be2c3c39649a2d123a62333c7ff8c64241
 
 pkgname = ttf-twemoji-color

@@ -1,8 +1,5 @@
-*.zip
-*.xz
-pkg
+*.pkg.tar*
+*.src.tar*
+*.gz
 src
-LICENSE-CC-BY.txt
-README.md
-LICENSE.md
-LICENSE-MIT.txt
+pkg
