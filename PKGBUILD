@@ -2,7 +2,7 @@
 
 _pkgname='dsnote'
 pkgname="${_pkgname}-git"
-pkgver=r710.30e1fcc
+pkgver=r730.cecaeb0
 pkgrel=1
 pkgdesc="Note taking, reading and translating with offline Speech to Text, Text to Speech and Machine Translation"
 arch=('x86_64')
@@ -66,6 +66,7 @@ build() {
   # fix for CUDA >= 12.3.0
   export HOST_COMPILER=/usr/bin/g++-12
   export CUDAHOSTCXX=/usr/bin/g++-12
+  export CUDA_PATH=/opt/cuda
   mkdir -p build
   cd build
   cmake ../ -DCMAKE_BUILD_TYPE=Release -DWITH_DESKTOP=ON \

@@ -1,6 +1,6 @@
 pkgbase = dsnote-git
 	pkgdesc = Note taking, reading and translating with offline Speech to Text, Text to Speech and Machine Translation
-	pkgver = r710.30e1fcc
+	pkgver = r730.cecaeb0
 	pkgrel = 1
 	url = https://github.com/mkiol/dsnote
 	install = dsnote.install
