@@ -1,6 +1,6 @@
 pkgbase = python-myst-nb
 	pkgdesc = Parse and execute ipynb files in Sphinx
-	pkgver = 0.17.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://myst-nb.readthedocs.io
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = python-myst-nb
 	checkdepends = python-pytest-param-files
 	checkdepends = python-pytest-regressions
 	checkdepends = python-beautifulsoup4
-	checkdepends = python-importlib-metadata
 	checkdepends = python-ipywidgets
 	checkdepends = python-jupyter-cache
 	checkdepends = python-matplotlib
-	checkdepends = python-myst-parser<0.19
+	checkdepends = python-myst-parser
 	checkdepends = python-nbdime
 	checkdepends = python-pandas
 	checkdepends = python-sphinx
@@ -22,16 +21,16 @@ pkgbase = python-myst-nb
 	makedepends = python-flit-core
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://github.com/executablebooks/MyST-NB/archive/refs/tags/v0.17.2.tar.gz
-	md5sums = eabb0ca11ec2a7e161ebb001ec88439f
+	source = https://github.com/executablebooks/MyST-NB/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = 9be8bfdf91399fe6e155f25c3a5694ed
 
 pkgname = python-myst-nb
 	depends = python-importlib-metadata
 	depends = ipython
 	depends = python-jupyter-cache>=0.5
-	depends = python-myst-parser<0.19
+	depends = python-myst-parser>=1.0.0
 	depends = jupyter-nbclient
-	depends = python-sphinx
+	depends = python-sphinx>=5
 	depends = python-yaml
 	depends = python-typing_extensions
 	depends = python-ipykernel
