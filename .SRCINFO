@@ -1,6 +1,6 @@
 pkgbase = pypipe-git
 	pkgdesc = Python command-line tool for pipeline processing
-	pkgver = r37.a873590
+	pkgver = r42.b621c13
 	pkgrel = 1
 	url = https://github.com/bugen/pypipe
 	arch = any
@@ -16,8 +16,6 @@ pkgbase = pypipe-git
 	conflicts = pypipe
 	options = !strip
 	source = pypipe::git+https://github.com/bugen/pypipe.git
-	source = github-pr-18.patch
 	sha512sums = SKIP
-	sha512sums = ff291dbbacc7c15455a040e6c0fe1625eae634eca8ce71e07726a5643294790a8a8961ea2c80231b21ab2dc01b66fa8230f8f4c1f7f324f6de19670f73e24700
 
 pkgname = pypipe-git
