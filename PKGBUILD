@@ -3,7 +3,7 @@
 pkgname=python-signalstickers-client
 _pkgname=${pkgname#python-}
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python client for Signal stickers'
 arch=(any)
 url='https://pypi.org/project/signalstickers-client/'
@@ -11,9 +11,11 @@ license=(LGPL3)
 depends=(
 	'python'
 	'python-anyio'
-	'python-protobuf'
 	'python-cryptography'
 	'python-httpx'
+	'python-pip'
+	'python-protobuf'
+	'python-wheel'
 )
 makedepends=(
 	'python-build'
