@@ -8,7 +8,6 @@ pkgrel=2
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
 url='https://web.archive.org/web/20231030023332/https://github.com/Fndroid/clash_for_windows_pkg'
-logo_url='https://web.archive.org/web/20231102134436/https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png'
 install=clash-for-windows-bin.install
 
 options=(!strip)
@@ -21,7 +20,7 @@ optdepends=(
 )
 
 source=(
-    "clash.png::${logo_url}"
+    "clash.png"
     "clash-for-windows.desktop"
     "cfw"
 )
