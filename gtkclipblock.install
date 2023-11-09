@@ -1,6 +1,7 @@
 post_install() {
-  echo "Make sure to add /usr/lib/libgtkclipblock.so to /etc/ld.so.preload"
-  echo "or use the LD_PRELOAD environment variable"
+  echo "Make sure to:"
+  echo "  1. add /usr/lib/libgtkclipblock.so to /etc/ld.so.preload (or use LD_PRELOAD)"
+  echo "  2. add GTKCLIPBLOCK_HOOK=1 to /etc/environment or ~/.config/environment.d/gtkclipblock.conf"
 }
 
 post_upgrade() {
