@@ -1,6 +1,6 @@
 pkgname=mingw-w64-lua
 pkgver=5.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful light-weight programming language designed for extending applications. (mingw-w64)"
 arch=('any')
 url="http://www.lua.org/"
@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare () {
   cd "$srcdir"/lua-$pkgver
   # build import lib
-  sed -i 's|$(CC) -shared|$(CC) -shared -Wl,--out-implib,liblua54.dll.a|g' src/Makefile
+  sed -i 's|$(CC) -shared|$(CC) -shared -Wl,--out-implib,liblua.dll.a|g' src/Makefile
 }
 
 build () {
@@ -35,7 +35,7 @@ build () {
 package () {
   for _arch in ${_architectures}; do
     cd "$srcdir"/build-${_arch}
-    make install INSTALL_TOP="${pkgdir}"/usr/${_arch} TO_BIN="lua.exe luac.exe lua54.dll" TO_LIB="liblua.a liblua54.dll.a"
+    make install INSTALL_TOP="${pkgdir}"/usr/${_arch} TO_BIN="lua.exe luac.exe lua54.dll" TO_LIB="liblua.a liblua.dll.a"
     rm -r "${pkgdir}"/usr/${_arch}/{share,man,lib/lua}
     ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll

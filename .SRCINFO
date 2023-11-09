@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-lua
 	pkgdesc = A powerful light-weight programming language designed for extending applications. (mingw-w64)
 	pkgver = 5.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lua.org/
 	arch = any
 	license = MIT
