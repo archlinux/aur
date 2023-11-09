@@ -1,4 +1,5 @@
-# Original author: Josiah Schwab <jschwab at gmail dot com>
+# Maintainer: Lu Xu <oliver_lew at outlook dot com>
+# Contributor: Josiah Schwab <jschwab at gmail dot com>
 
 pkgname=texlive-aas_macros
 pkgver=1.0
