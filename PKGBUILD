@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leafview-bin
 _pkgname=LeafView
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron."
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/sprout2000/leafview/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5267940e5a6d4d16fdf7b69623be0355df8d5056b9532b08719cfd602bda5890'
+sha256sums=('52345ec503a47404fadbcbb97b4536ca4a7f536feec944464fa91efd5ca8b594'
             'f172a0a7953ce3cda2b0cb38f6a3d28e7dfa9824a8c62de981520af32b9c138f'
             '5735f93904fd117683d262d02b68075f1e779cf9130184f3cdfce5875e17e859')
 build() {
