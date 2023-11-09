@@ -2,7 +2,7 @@
 
 _pkgname=qbittorrent-api
 pkgname="python-$_pkgname"
-pkgver=2023.10.54
+pkgver=2023.11.55
 pkgrel=1
 pkgdesc="Python client for qBittorrent v4.1+ Web API"
 arch=('any')
