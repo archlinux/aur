@@ -1,6 +1,6 @@
 pkgbase = python-jupyter-cache
 	pkgdesc = A defined interface for working with a cache of jupyter notebooks
-	pkgver = 0.6.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://jupyter-cache.readthedocs.io
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-jupyter-cache
 	makedepends = python-flit-core
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://github.com/executablebooks/jupyter-cache/archive/refs/tags/v0.6.1.tar.gz
-	md5sums = 18376504e5882af3b74801f55fe77546
+	source = https://github.com/executablebooks/jupyter-cache/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = f09de465ec4aacaecab782d054263de6
 
 pkgname = python-jupyter-cache
 	depends = python-attrs
@@ -28,7 +28,7 @@ pkgname = python-jupyter-cache
 	depends = python-tabulate
 	depends = python-yaml
 	depends = jupyter-nbformat
-	depends = jupyter-nbclient
+	depends = jupyter-nbclient>=0.2
 	depends = python-sqlalchemy<3
 	optdepends = python-click-log: cli
 	optdepends = python-jupytext: rtd

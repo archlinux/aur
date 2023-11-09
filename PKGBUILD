@@ -1,9 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-jupyter-cache
+#_pname=${pkgbase#python-}
+#_pyname=${_pname//-/_}
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.6.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A defined interface for working with a cache of jupyter notebooks"
 arch=('any')
@@ -15,7 +17,7 @@ makedepends=('python-flit-core'
 #            'python-sphinx-copybutton'
 #            'python-sphinx-book-theme'
 #            'python-myst-nb'
-#            'python-myst-parser<0.19'
+##           'python-myst-parser<0.19'
 #            'python-jupytext'
 #            'python-nbdime')   # myst-nb: circular dep
 checkdepends=('python-pytest'
@@ -30,7 +32,7 @@ checkdepends=('python-pytest'
               'python-yaml')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/executablebooks/jupyter-cache/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('18376504e5882af3b74801f55fe77546')
+md5sums=('f09de465ec4aacaecab782d054263de6')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -45,12 +47,12 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #       --deselect=tests/test_cache.py::test_execution_jupytext
 }
 
 package_python-jupyter-cache() {
-    depends=('python-attrs' 'python-click' 'python-importlib-metadata' 'python-tabulate' 'python-yaml' 'jupyter-nbformat' 'jupyter-nbclient' 'python-sqlalchemy<3')
+    depends=('python-attrs' 'python-click' 'python-importlib-metadata' 'python-tabulate' 'python-yaml' 'jupyter-nbformat' 'jupyter-nbclient>=0.2' 'python-sqlalchemy<3')
     optdepends=('python-click-log: cli'
                 'python-jupytext: rtd'
                 'python-myst-nb: rtd'
