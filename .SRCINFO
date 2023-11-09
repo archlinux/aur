@@ -1,8 +1,8 @@
 pkgbase = clash-for-windows-bin
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron.
 	pkgver = 0.20.39
-	pkgrel = 1
-	url = https://github.com/Fndroid/clash_for_windows_pkg
+	pkgrel = 2
+	url = https://web.archive.org/web/20231030023332/https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
 	arch = x86_64
 	arch = aarch64
@@ -11,15 +11,15 @@ pkgbase = clash-for-windows-bin
 	optdepends = nftables: TUN mode required.
 	optdepends = iproute2: TUN mode required.
 	options = !strip
-	source = clash.png::https://cdn.jsdelivr.net/gh/Dreamacro/clash@master/docs/logo.png
+	source = clash.png::https://web.archive.org/web/20231102134436/https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png
 	source = clash-for-windows.desktop
 	source = cfw
 	sha256sums = 0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782
 	sha256sums = e6d131e956e48e55efca7267a896bc66f5cca82758852d8a1fafa5ce169659f5
 	sha256sums = d2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318
-	source_x86_64 = clash-for-windows-bin-0.20.39-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.39/Clash.for.Windows-0.20.39-x64-linux.tar.gz
+	source_x86_64 = clash-for-windows-bin-0.20.39-x86_64-linux.tar.gz::https://web.archive.org/web/20231020093608if_/https://objects.githubusercontent.com/github-production-release-asset-2e65be/153697551/c6e9c14e-0049-4e02-8ea5-12d8fabf9f9d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231020%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231020T093608Z&X-Amz-Expires=300&X-Amz-Signature=f07dabe509fbcb04ed7d0491a41bce68417ce24f04792124b300344c623114b4&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=153697551&response-content-disposition=attachment%3B%20filename%3DClash.for.Windows-0.20.39-x64-linux.tar.gz&response-content-type=application%2Foctet-stream
 	sha256sums_x86_64 = e07c5e358bce99511c103262ba0d6d0167c70242f2e68827b09f7a2918d43dc0
-	source_aarch64 = clash-for-windows-bin-0.20.39-aarch64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.39/Clash.for.Windows-0.20.39-arm64-linux.tar.gz
+	source_aarch64 = clash-for-windows-bin-0.20.39-aarch64-linux.tar.gz::https://web.archive.org/web/20231020093527if_/https://objects.githubusercontent.com/github-production-release-asset-2e65be/153697551/b1e7558e-9fa3-4ccc-b2f6-d0ff6cc5b34a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231020%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231020T093527Z&X-Amz-Expires=300&X-Amz-Signature=4942053a395a115dcea01b4ee9854fc57a01b0d5ebf8eab99b0933a29e155f12&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=153697551&response-content-disposition=attachment%3B%20filename%3DClash.for.Windows-0.20.39-arm64-linux.tar.gz&response-content-type=application%2Foctet-stream
 	sha256sums_aarch64 = e328abfe68c122c396f7296bb610934f9ca407af97b0f50d99ff62d43aaf63e0
 
 pkgname = clash-for-windows-bin
