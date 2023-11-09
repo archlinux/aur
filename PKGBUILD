@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg4.4-mpp
 pkgver=4.4.4
-pkgrel=14
+pkgrel=15
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
 url=https://github.com/hbiyik/ffmpeg/
@@ -38,7 +38,7 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
-  libdav1d.so
+  dav1d
   libdrm
   libvpx
   libfreetype.so
@@ -194,6 +194,7 @@ build() {
     --enable-rkmpp \
     --enable-vaapi \
     --enable-vdpau \
+    --disable-doc \
     $CONFIG
 
   make ${MAKEFLAGS}
