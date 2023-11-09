@@ -2,7 +2,7 @@
 
 pkgname=hackernews_tui
 _gitname=hackernews-TUI
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A Terminal UI to browse hacker news."
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo')
 optdepends=('mercury-parser: to view articles directly in the terminal')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aome510/hackernews-TUI/archive/v$pkgver.tar.gz")
-sha512sums=('b63489f429761afffb6e58be265b1019449b6d2a2be0ecd24bcb037674844795d6dbe7f12fe8771c08cd1f39df6075867ec2fa65a9e87557dc43122e7c7eab32')
+sha512sums=('0663fac2b9967d491510cd22e541b070138b1b7ba0b953591a6b0411e208c0549817616e0415f4f70befd3c185a755375de79e61cc9f65d52014ab4ee4aee95a')
 # disable LTO until ring can be built with it: https://github.com/briansmith/ring/issues/1444
 options=(!lto)
 
