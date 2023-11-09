@@ -3,8 +3,8 @@ _pkgname=kubo
 _plgname=go-ds-s3
 _pkgplgname=$_pkgname-s3
 pkgname=$_pkgplgname-git
-pkgver=0.23.0.r0.g3a1a041
-pkgrel=5
+pkgver=0.24.0.r0.ge70db65
+pkgrel=1
 pkgdesc="IPFS Kubo with S3 Datastore Implementation"
 arch=('x86_64')
 url="https://github.com/chixodo-xyz/kubo-s3"
@@ -25,7 +25,7 @@ source=('git+https://github.com/ipfs/kubo'
 noextract=()
 b2sums=('SKIP'
 				'SKIP'
-				'359cde527350603760a64d48546f38b92527b6874cba0b6ec2390985d9b446496e35c926ba31504a84c54bbb2669374dc448fd18999642d29b6d80cecf3e6841'
+				'6b0d5ea366c044d3ab88433a5d4e9613f605fb994c3772b8d2e38c4dc675b7e1fea46819f04f148733f4e67a981701e00bab679613211f6f4906fabad89916e2'
 				'e7df78fa46537d2f54a83c8e65ca2aeb30c4b88b4ab52a4da241e22504e80d724ed2eb2a46620616a0a486575a0aeb1d49d016dc4293e1276d61b7d3f7ee2d2e')
 
 prepare() {
