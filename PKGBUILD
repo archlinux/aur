@@ -1,24 +1,26 @@
 pkgbase=linux-bin
 pkgname=(linux{,-headers}-bin)
 pkgver=6.5.10_1
-pkgrel=1
-arch=(aarch64)
 _web=https://packages.debian.org
 url=$_web/source/sid/linux-signed-arm64
-[ $_curl. = . ] && _curl=`curl -s $url`
+[ "$_curl" = "" ] && _curl=`curl -s $url`
+_pkgver=`echo "$_curl"|grep Source\ Package:|sed 's/.*(//;s/).*//'|tr + _`
 _pkgver2=`echo "$_curl"|grep [0-9]-arm64\"|cut -d- -f3-4`
+pkgrel=1
+arch=(aarch64)
 license=(GPL2)
 options=(!strip)
 _a=https://ftp.debian.org/debian/pool/main/l/linux
 source=(
-	$_a-signed-arm64/linux-image-$_pkgver2-arm64_${pkgver/_/-}_arm64.deb
-	$_a/linux-{headers-$_pkgver2-{arm64_${pkgver/_/-}_arm64,common_${pkgver/_/-}_all},kbuild-${_pkgver2}_${pkgver/_/-}_arm64}.deb)
+	$_a-signed-arm64/linux-image-$_pkgver2-arm64_${_pkgver/_/-}_arm64.deb
+	$_a/linux-{headers-$_pkgver2-{arm64_${_pkgver/_/-}_arm64,common_${_pkgver/_/-}_all},kbuild-${_pkgver2}_${_pkgver/_/-}_arm64}.deb)
 noextract=(${source[@]##*/})
 sha256sums=($(for _i in $(echo ${source[@]##*/}|tr \  \\n|sed s/_.*//);do curl -s $_web/sid/arm64/$_i/download|grep SHA256|cut -d\> -f6|cut -d\< -f1;done))
 pkgver(){
-	echo "$_curl"|grep Source\ Package:|sed 's/.*(//;s/).*//'|tr + _
+	echo $_pkgver
 }
-sed s/%KVER%/$_pkgver2-arm64/ linux.install>linux2.install
+[ $_b. = . ] && _b=$PWD
+sed s/%KVER%/$_pkgver2-arm64/ $_b/linux.install>linux2.install
 package_linux-bin(){
 	pkgdesc="The Linux kernel and modules (signed)"
 	depends=(dracut)
