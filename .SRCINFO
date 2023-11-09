@@ -1,6 +1,6 @@
 pkgbase = gtkclipblock
 	pkgdesc = A hack to prevent GTK programs from interacting with the primary clipboard
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/notpeelz/gtkclipblock
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gtkclipblock
 	makedepends = gtk3
 	makedepends = gtk4
 	depends = glibc
-	source = gtkclipblock::git+https://github.com/notpeelz/gtkclipblock.git#commit=05a55db15fdd7a4ba2d6f03f9e189f3eb48924ca
+	source = gtkclipblock::git+https://github.com/notpeelz/gtkclipblock.git#commit=2a89acb4e93ae4a92c53b9058e4620278112f5d2
 	sha256sums = SKIP
 
 pkgname = gtkclipblock
