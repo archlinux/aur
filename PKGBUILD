@@ -1,28 +1,22 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib-cuda
-pkgver=0.4.19
+pkgver=0.4.20
 pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
 license=('Apache')
 groups=('jax')
-depends=('absl-py'
-         'cuda'
-         'cudnn'
-         'nccl'
-         'python-flatbuffers'
-         'python-ml-dtypes'
-         'python-numpy'
-         'python-scipy')
+depends=('cuda' 'cudnn' 'nccl' 'openssl' 'python-absl' 'python-flatbuffers'
+         'python-ml-dtypes' 'python-numpy' 'python-scipy')
 makedepends=('bazel' 'gcc12' 'pybind11' 'python-build' 'python-installer'
              'python-setuptools' 'python-wheel')
 conflicts=('python-jaxlib')
 provides=("python-jaxlib=$pkgver")
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
         'bazelrc.user')
-sha256sums=('51242b217a1f82474e42d24f09ed5dedff951eeb4579c6e49e706d1adfd6949d'
+sha256sums=('058410d2bc12f7562c7b01e0c8cd587cb68059c12f78bc945055e5ddc445f5fd'
             '07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e')
 
 prepare() {
@@ -31,7 +25,9 @@ prepare() {
 
     # Add specific bazel's options.
     cp bazelrc.user jax-jaxlib-v${pkgver}/.bazelrc.user
+}
 
+build() {
     # These environment variables influence the behavior of the configure call below.
     export PYTHON_BIN_PATH=/usr/bin/python
     export USE_DEFAULT_PYTHON_LIB_PATH=1
@@ -39,7 +35,7 @@ prepare() {
     # See https://github.com/openxla/xla/blob/main/configure.py
     # There is some vague reason why we should exclude pybind11. It exists in
     # two version in source tree: abseil one and bazel one.
-    export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,zlib"
+    export TF_SYSTEM_LIBS="curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,zlib"
     export TF_SET_ANDROID_WORKSPACE=0
     export TF_DOWNLOAD_CLANG=0
     export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
@@ -65,10 +61,7 @@ prepare() {
 
     # Override default version.
     export JAXLIB_RELEASE=$pkgver
-}
 
-
-build() {
     cd $srcdir/jax-jaxlib-v$pkgver
     bazel --output_user_root=$srcdir/bazel \
         run --action_env=JAXLIB_RELEASE --verbose_failures=true \
