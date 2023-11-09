@@ -1,6 +1,6 @@
 pkgbase = dialogcraft
 	pkgdesc = Desktop client for OpenAI GPT API.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/Hayden2018/dialogcraft
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = dialogcraft
 	depends = libxkbcommon
 	depends = libxcb
 	conflicts = dialogcraft
-	source = dialogcraft-1.0.5.tar.gz::https://github.com/Hayden2018/dialogcraft/archive/refs/tags/v1.0.5.tar.gz
-	sha256sums = a6c08418a77c435b6f7a7235ab801955b95e6e41c5f0bb66691dccaea0d56194
+	source = dialogcraft-1.0.6.tar.gz::https://github.com/Hayden2018/dialogcraft/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = e2c5652a5fc20951aa5ff9c6ad3d827421e52717f9c650e2ca5a8528bac5d6a5
 
 pkgname = dialogcraft
