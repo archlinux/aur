@@ -2,26 +2,41 @@
 pkgname=fdc3-sail-bin
 _pkgname=FDC3-Sail
 pkgver=22.12.6_1030
-pkgrel=3
+pkgrel=4
 pkgdesc="Open implementation of the FDC3 standard using Electron and an integrated App Directory."
 arch=('x86_64')
 url="https://github.com/finos/FDC3-Sail"
 license=('Apache')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('bash' 'electron24' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
-    "${pkgname%-bin}.sh")
+depends=(
+    'electron24'
+    'hicolor-icon-theme'
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
+)
+makedepends=(
+    'squashfuse'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('81243023ba6af8562e5244f6d48f2e4dd8f17ab77984dda7a55ad0863959ea97'
-            '8de54674265f1c1b58fad8c858b1b9d10aa91fdfcb7cd498f7548cf49d26559b')
-prepare() {
+            'f690d7b37c9817870fdeeb1898c6a2dcf9e081bec4e0bab9f40ea2b9636222ed')
+build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
