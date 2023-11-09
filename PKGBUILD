@@ -4,7 +4,7 @@
 
 pkgname='pomsky-bin'
 _pkgname=${pkgname%%-bin}
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc='A portable, modern regular expression language written in Rust (pre-compiled)'
 arch=('x86_64')
@@ -39,15 +39,15 @@ package() {
 }
 
 sha256sums=(
-  'c0b256ac904b995cf08819b97dee8779bd167186ed580e2395e30c5e4c5f54e0'
+  '96380dda2754c602c365252fcfad36d998e409d6fa2026dd917a55f6877cf867'
   SKIP SKIP SKIP SKIP
 )
 sha512sums=(
-  '205e39dd76e22caab5675952c13498291e84931b30066413964b44de6106c14fde22906621512f364a1283de7a345aed3bdce212d2c113b22c0a8d12b7f557c3'
+  '66cf73a06d884aaac51e2d7640275cab30d2d435a48ef95d4a5029cc76e5e8f031d943ed67370956f5388d695bd6bfb7138e945dd9a0e3a2e772d61c1468f76e'
   SKIP SKIP SKIP SKIP
 )
 b2sums=(
-  '5c73860e2708ba1e4cc27aa4d5260e1a4be099d212942d5a7b87208951ea6d1db6a7fb7970b8b19e2d86105d5499d6483cc80f1a405e741c8b43371bc46eb998'
+  '66cf73a06d884aaac51e2d7640275cab30d2d435a48ef95d4a5029cc76e5e8f031d943ed67370956f5388d695bd6bfb7138e945dd9a0e3a2e772d61c1468f76e'
   SKIP SKIP SKIP SKIP
 )
 
