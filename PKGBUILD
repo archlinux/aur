@@ -1,7 +1,7 @@
 # Maintainer: Camber Huang <camber@poi.science>
 pkgname=openixcard
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Version of Allwinner PhoenixCard on Linux"
 arch=("x86_64")
 url="https://github.com/YuzukiTsuru/OpenixCard"
@@ -24,7 +24,6 @@ source=("${pkgname}-${pkgver}::git+https://github.com/YuzukiTsuru/OpenixCard.git
         "git+https://github.com/arun11299/cpp-subprocess.git"
         "git+https://github.com/ArthurSonzogni/FTXUI.git"
         "git+https://github.com/SemaiCZE/inicpp.git"
-		"0001-Added-cstdint-to-fix-error-when-compiling-on-Linux.patch"
         )
 noextract=()
 sha256sums=('SKIP'
@@ -32,8 +31,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '5ef6d78c5e98bf7ca87911ef7609b9192a9a88411741a971d565401b8fd85523')
+            'SKIP')
 
 prepare() {
     pushd $pkgname-$pkgver
@@ -51,9 +49,9 @@ prepare() {
 			git fetch
 			git checkout 0f7bd53
 		popd
-        # Temporary workaround until ColorCout and OpenixCard/submodule are both updated.
-		pushd lib/ColorCout
-			git apply --verbose $srcdir/0001-Added-cstdint-to-fix-error-when-compiling-on-Linux.patch
+        pushd lib/ColorCout
+			git fetch
+			git checkout 3bed851
 		popd
 		
     popd
