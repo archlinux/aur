@@ -7,21 +7,21 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Maintain your Ledger devices"
-pkgver=2.69.0
+pkgver=2.71.0
 pkgrel=1
 arch=('x86_64')
 _gh_owner='LedgerHQ'
 _gh_repo='ledger-live'
 url="https://github.com/${_gh_owner}/${_gh_repo}"
 license=('MIT')
-depends=('ledger-udev' 'electron25')
+depends=('ledger-udev' 'electron27')
 makedepends=('node-gyp' 'fnm' 'pnpm')
-_sha='7b485c1389fdb422ee13d12a82db0a8380d7341a'
+_sha='0e5d619993df1edd243c25a039faa1bb7c397631'
 _short_sha="${_sha::7}"
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}"
         "${_pkgbin}.sh")
-sha512sums=('4c10295e1fc16e8671e24f0dc6b62c4e9d7c6e141de6181cc5f18ad9f0160411bb12225b18d1bfbf35de62b4b10a319b90d03761c644f16e4cf588570d4e6305'
-            '2efbcd1da3ae4c84d9e3e9b2848e7535c1d3c533eb755f70d07992159742d7141d7e35b2590c51b799948965954c211e953d1ddb7a00bb8713ea06b58a732ca0')
+sha512sums=('9031d1f3a1332e8fdd7bb14249efd0e8a127ba0adb91e3015d05d791621b1c0cd55e4a3c34c1cbd97b5288c166d737072d2a614de27ae83e4cdfbb55d1f22874'
+            '9ff546c1becdc64fdb90fde4813386e95da97354a261530a13df7cc4d860e3cac15e65b5abd3e135e1e791d7af643cb6b684eb8a593e4641fba60619dcc9c346')
 
 _fnm_use() {
   export FNM_DIR="${srcdir}/.fnm"
