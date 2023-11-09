@@ -3,7 +3,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=550
+pkgver=551.a
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -17,7 +17,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-service-identity  # required by twisted for https hostname verification
          qt6-multimedia  # https://aur.archlinux.org/packages/hydrus#comment-914337
          qt6-svg  # https://aur.archlinux.org/packages/hydrus#comment-923550
-         python-pyqt6)
+         pyside6)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
@@ -29,7 +29,7 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-dateutil: improved fuzzy date search'
             'python-psd-tools: handle PSD files and extract thumbnails'
             'python-pympler: debug menus to profile memory usage'
-            'python-pyqt6-charts: display bandwidth usage charts'
+            # 'python-pyqt6-charts: display bandwidth usage charts'
             'python-cryptography: to generate certificates for accessing client API and server via HTTPS'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS'
             'qt6-webengine: to display PDF thumbnails'
@@ -37,14 +37,14 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             # 'speedcopy: may speed up file transfers'
             'swftools: to display SWF thumbnails')
 conflicts=(hydrus-docs-dummy)
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=1f9b4ba8921d9694f1b5d2907dcf338cbd8c42cc"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=118680fb9590b08b84f7709e488651f94398ba38"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
             'c332728ca119b1ed4e9a4f40de79087fa90f8754535718b506954d375541f9f0'
-            'b1854ecac184385f0aa48fcefd426223fac3eeec0f1180ba58b6a58b03257d68'
+            '39d3404b75320be6a9e33dc256f4fc313c65fe11458e96bd5af6268c2f78eaf0'
             '5956d418d29fe19f54263acf47adce7c6d134d19ec65e2810d4517ce83529480'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
