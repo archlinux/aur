@@ -2,7 +2,7 @@
 
 pkgname=kiwitalk-bin
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An UNOFFICIAL cross-platform KakaoTalk client written in TypeScript & Rust"
 arch=('x86_64')
 url="https://github.com/KiwiTalk/KiwiTalk"
