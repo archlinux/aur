@@ -1,7 +1,7 @@
 # Maintainer: Jat <chat@jat.email>
 
 pkgname=archisteamfarm-bin
-pkgver=5.4.10.3
+pkgver=5.4.12.5
 pkgrel=1
 pkgdesc='C# application that allows you to farm steam cards using multiple steam accounts simultaneously.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "ArchiSteamFarm-bin.desktop"
 )
 
-sha512sums=('c57528b426413b49dfb1783125a3c750041d94b9c552592bed0cb43bf078170d61c6b10e4c0e0eebb03bea2dc16d884732141fc3bf045678c34825770f43ad2a'
+sha512sums=('a8fa7f3d2cb30c51d811f92afe8bfbf518738ad5fda94d8822267207ce8a78bd78ff9ff4ffc795b050add537de5ac554183b628dce4c5ed2027c6357b7b673c6'
             '32aaead4aacc02c9c60afef74e04cb3a30afc4d76f5e6836a05e672344c7db66cf099849cb2bc9a04454a026f99c9f60d3d7186f4a496d4626fe1a3d40d4ecf6')
 
 prepare() {
