@@ -13,7 +13,7 @@ _pkgname='OpenUSD'
 
 pkgbase=usd
 pkgver=23.11
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://openusd.org'
 _url='https://github.com/PixarAnimationStudios/'$_pkgname
@@ -36,6 +36,9 @@ depends=(glew
 		python-opengl
 		qt5-base
 		onetbb
+		materialx
+		ninja
+		dos2unix
 		)
 makedepends=(cmake
 			help2man
