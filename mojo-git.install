@@ -1,0 +1,20 @@
+
+
+pre_upgrade() {
+    echo "removing old mojo files..."
+    runuser -l $SUDO_USER -c "modular clean"
+    runuser -l $SUDO_USER -c "modular install mojo"
+
+    echo "new mojo version installed!"
+
+}
+
+pre_remove() {
+    # use normal user
+    su $SUDO_USER
+
+    runuser -l $SUDO_USER -c "modular clean"
+
+    echo "mojo removed!"
+
+}

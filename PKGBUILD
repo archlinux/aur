@@ -1,7 +1,7 @@
 #Maintainer: Sharktheone <sharktheone@proton.me>
 
 pkgname=mojo-git
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Mojo Programming Language"
 url="https://developer.modular.com/download"
@@ -12,7 +12,9 @@ depends=(
 )
 arch=("x86_64")
 source=("https://raw.githubusercontent.com/Sharktheone/arch-mojo/main/install.py")
-sha256sums=("fe694885dcfb90edd1d283dc44589411d9d71d76c6e83b511ac09f296178ac97")
+sha256sums=("972bfd08e0690977a738c76e489a89592735ea307662b1b2c705fe22897c7010")
+
+install=mojo-git.install
 
 package() {
     python3 install.py --mojo
