@@ -1,0 +1,12 @@
+pkgbase = jaeger-all-in-one-bin
+	pkgdesc = open source, distributed tracing platform
+	pkgver = 1.51.0
+	pkgrel = 1
+	url = https://github.com/jaegertracing/jaeger
+	arch = x86_64
+	license = APACHE
+	provides = jaeger-all-in-one
+	source = jaeger-1.51.0.tar.gz::https://github.com/jaegertracing/jaeger/releases/download/v1.51.0/jaeger-1.51.0-linux-amd64.tar.gz
+	sha512sums = 9a44d6e3273073588f6f70d2f0d448e9681af9c9995801ff8304a5ac78f160e772559b2c1559ff39a852a7e94dad3922cb1ff6bebf1dfa640dddbfc3f94abd2a
+
+pkgname = jaeger-all-in-one-bin
