@@ -1,7 +1,7 @@
 pkgbase = calendar-bin
 	pkgdesc = Task, calendar, Vision protection.
 	pkgver = 1.0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KangLin/Calendar
 	arch = x86_64
 	license = GPL3
@@ -9,8 +9,6 @@ pkgbase = calendar-bin
 	depends = openssl
 	depends = bash
 	depends = qt6-base
-	depends = glibc
-	depends = gcc-libs
 	depends = qt6-webengine
 	depends = qt6-multimedia
 	provides = calendar=1.0.12
