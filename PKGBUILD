@@ -5,14 +5,16 @@
 # Contributor: Artem Sereda <overmind88@gmail.com>
 
 pkgname=kde-thumbnailer-hpgl-git
-pkgver=v1.0.0.r3.gfc38f4d
+pkgver=1.0.1.r0.gfc38f4d
 pkgrel=1
 pkgdesc='KDE / Dolphin thumbnails for HPGL (HP graphics language) files (git)'
 arch=(i686 x86_64)
 url=https://github.com/CodingMarco/kde-thumbnailer-hpgl
 license=(GPL)
-depends=(hp2xx kio)
+depends=(hp2xx kio5)
 makedepends=(git cmake extra-cmake-modules)
+provides=("kde-thumbnailer-hpgl=${pkgver}")
+conflicts=(kde-thumbnailer-hpgl)
 source=(git+https://github.com/CodingMarco/kde-thumbnailer-hpgl.git)
 md5sums=('SKIP')
 
