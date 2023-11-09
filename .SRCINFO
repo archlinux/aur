@@ -1,13 +1,13 @@
 pkgbase = sobjectizer
 	pkgdesc = An implementation of Actor, Publish-Subscribe, and CSP models in one rather small C++ framework
-	pkgver = 5.8.1
+	pkgver = 5.8.1.1
 	pkgrel = 1
 	url = https://stiffstream.com/en/products/sobjectizer.html
 	arch = x86_64
 	license = custom:BSD
 	makedepends = cmake
 	depends = gcc-libs
-	source = sobjectizer-5.8.1.tar.gz::https://github.com/Stiffstream/sobjectizer/archive/v.5.8.1.tar.gz
-	b2sums = 316aa11b5c2397876ad8a0725d66a1f0d369f77c289a6e2526cd69921265c498ec6d914982c495eb5608aad0e82891937e7b82fe0557b6559aea007d7280ced2
+	source = sobjectizer-5.8.1.1.tar.gz::https://github.com/Stiffstream/sobjectizer/archive/v.5.8.1.1.tar.gz
+	b2sums = 653ddeef9dd996fb4049a3ace260e27b2901709e33b59d2c41c54324b08a35cdf9995e5a41584ddb5b6bfdb1285650060c9c0e0dd48751a241afb19b79c95599
 
 pkgname = sobjectizer
