@@ -1,6 +1,6 @@
 pkgbase = postgresql-lts-old-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
-	pkgver = 11.20
+	pkgver = 11.22
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = postgresql-lts-old-upgrade
 	makedepends = perl
 	makedepends = tcl>=8.6.0
 	makedepends = systemd
-	depends = postgresql-libs>=11
 	depends = libxml2
 	depends = openssl>=1.0.0
 	depends = pam
@@ -21,7 +20,7 @@ pkgbase = postgresql-lts-old-upgrade
 	optdepends = python: for PL/Python 3 support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
-	source = https://ftp.postgresql.org/pub/source/v11.20/postgresql-11.20.tar.bz2
-	sha256sums = 3d7c8882f64a7e98534a044257dfee7abad77a5b7da12508d85d722b98b5acce
+	source = https://ftp.postgresql.org/pub/source/v11.22/postgresql-11.22.tar.bz2
+	sha256sums = 2cb7c97d7a0d7278851bbc9c61f467b69c094c72b81740b751108e7892ebe1f0
 
 pkgname = postgresql-lts-old-upgrade
