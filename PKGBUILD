@@ -1,15 +1,15 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=4.3.0.r0.g36b08fe
+pkgver=4.4.2.r1.g92903ef
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/shuLhan/rescached-go"
-license=('custom:BSD')
+license=('GPL-3.0-or-later')
 
 depends=('bash')
 provides=('rescached')
-makedepends=('git' 'go>=1.16')
+makedepends=('git' 'go>=1.20')
 
 source=(
 	"$pkgname::git+https://github.com/shuLhan/rescached-go.git"
@@ -25,8 +25,6 @@ backup=(
 	'etc/rescached/block.d/.someonewhocares.org'
 	'etc/rescached/block.d/.winhelp2002.mvps.org'
 	'etc/rescached/rescached.cfg'
-	'etc/rescached/localhost.cert.pem'
-	'etc/rescached/localhost.key.pem'
 	'etc/rescached/localhost.pem'
 	'etc/rescached/localhost.pem.key'
 )
@@ -48,7 +46,7 @@ build() {
 	echo ">> make ..."
 	echo ">>"
 	unset GOROOT
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	make || return 1
 }
 
