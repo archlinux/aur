@@ -43,7 +43,6 @@ pkgname = nvidia-390xx-utils
 	conflicts = nvidia-libgl
 	conflicts = nvidia-utils
 	conflicts = nvidia-390xx-libgl
-	replaces = nvidia-390xx-libgl
 
 pkgname = opencl-nvidia-390xx
 	pkgdesc = OpenCL implemention for NVIDIA

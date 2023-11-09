@@ -129,7 +129,6 @@ package_nvidia-390xx-utils() {
                 'opencl-nvidia-390xx: OpenCL support')
     conflicts=('nvidia-libgl' 'nvidia-utils' 'nvidia-390xx-libgl')
     provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils' 'nvidia-390xx-libgl')
-    replaces=('nvidia-390xx-libgl')
     install="${pkgname}.install"
 
     cd "${_pkg}"
