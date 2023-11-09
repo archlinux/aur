@@ -53,7 +53,7 @@ optdepends=(
   'kdnssd5: for zeroconf plugin'
   'taglib: for mediaplayer plugin'
   'phonon-qt5: for multimedia plugin'
-  'qt5-webengine: for search and syndication plugin'
+  'qt5-webengine: for search and RSS plugin'
 )
 checkdepends=('appstream')
 provides=(
