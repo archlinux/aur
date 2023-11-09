@@ -1,7 +1,7 @@
 pkgbase = ohmymd-bin
 	pkgdesc = A markdown editor,support cloud sync
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ohmymd.app/
 	arch = x86_64
 	license = custom
@@ -25,13 +25,13 @@ pkgbase = ohmymd-bin
 	depends = gcc-libs
 	depends = nspr
 	depends = libxcb
-	depends = glibc
 	depends = libx11
-	depends = glib2
 	depends = libcups
 	depends = make
 	depends = bash
 	depends = zlib
+	depends = python
+	depends = python-setuptools
 	provides = ohmymd=0.6.1
 	conflicts = ohmymd
 	source = ohmymd-0.6.1.deb::https://oss.ohmymd.milchstrabe.com/patch/linux/deb/ohmymd_0.6.1_amd64.deb
