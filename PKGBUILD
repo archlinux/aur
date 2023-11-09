@@ -1,19 +1,21 @@
+# Maintainer: Neurognostic <neurognostic@astranetics.com>
 # Maintainer: BadBoy <luckmelove2@gmail.com>
 
 pkgname=('rainfall')
-pkgver=0.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A rainfall animation for CLI / unix terminals written in python.'
+url='https://github.com/alpin111/rainfall'
 arch=('any')
 license=('MIT')
 url='https://github.com/alpin111/rainfall'
-depends=('python>=3.10.4')
+depends=('python3')
 
-source=("git+${url}.git")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alpin111/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('SKIP')
+sha256sums=('c0600af91545a24a347c1c3924db6a9ee762c6d5365f84d8cd5443d55ad68133')
 
 package() {
-    install -dm755 "${pkgdir}/usr/local/bin"
-    install -Dm755 "${srcdir}/${pkgname}/source/rainfall.py" "${pkgdir}/usr/local/bin/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/source/rainfall.py" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/license" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
