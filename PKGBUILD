@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=6.0
-pkgrel=9
+pkgrel=10
 epoch=2
 _obs_deps_tag=2023-04-03
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
@@ -44,7 +44,7 @@ depends=(
   libavc1394
   libbluray.so
   libbs2b.so
-  libdav1d.so
+  dav1d
   libdrm
   libfreetype.so
   libgl
@@ -227,6 +227,7 @@ build() {
     --enable-version3 \
     --enable-librist \
     --disable-vulkan \
+    --disable-doc \
     --enable-rkmpp $CONFIG
   make ${MAKEFLAGS}
   make ${MAKEFLAGS} tools/qt-faststart
