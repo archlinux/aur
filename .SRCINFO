@@ -1,19 +1,18 @@
 pkgbase = xgboost
 	pkgdesc = An optimized distributed gradient boosting library
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dmlc/xgboost
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = cuda
-	makedepends = git
 	makedepends = nccl
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/dmlc/xgboost.git#tag=v2.0.1
-	source = git+https://github.com/dmlc/dmlc-core.git
-	source = git+https://github.com/rapidsai/gputreeshap.git
+	source = xgboost-2.0.1.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v2.0.1.tar.gz
+	source = https://github.com/dmlc/dmlc-core/archive/ea21135fbb141ae103fb5fc960289b5601b468f2.tar.gz
+	source = https://github.com/rapidsai/gputreeshap/archive/787259b412c18ab8d5f24bf2b8bd6a59ff8208f3.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
