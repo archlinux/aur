@@ -7,7 +7,7 @@ _mercury_dependency='mercury>=14.04'
 
 pkgname=bower-mail
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A curses terminal client for the Notmuch email system"
 arch=('any')
 url="https://github.com/wangp/bower"
@@ -34,7 +34,7 @@ prepare () {
     cd "$srcdir/bower-$pkgver"
 	patch -p1 -i "$srcdir/workaround-mercury-bug567.patch"
 
-	if $_static_build ; then
+	if ! $_static_build ; then
 		patch -i "$srcdir/arch.patch" src/Mercury.options
 	fi
 }
