@@ -2,12 +2,12 @@
 
 pkgname=ntloader-git
 pkgver=2.0.1.r11.gf83ef5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows NT6+ loader for grub2 and grub4dos."
 arch=('x86_64')
 url="https://github.com/grub4dos/ntloader.git"
 license=('GPLv2+')
-makedepends=('git' 'gcc' 'binutils' 'zlib' 'make')
+makedepends=('git' 'gcc' 'binutils' 'zlib' 'make' 'mingw-w64-gcc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url" install.sh)
@@ -28,6 +28,7 @@ build() {
 	cd "$pkgname"
     echo "Build NTloader"
     CFLAGS=-Wno-array-bounds make 
+    # We need mingw-w64-gcc depend for build
     echo "Build fsuuid.exe"
     make fsuuid.exe
     echo "Make Rootfs"
