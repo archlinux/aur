@@ -1,0 +1,28 @@
+pkgbase = steamdepotdownloadergui-bin
+	pkgdesc = Easily download older versions of games from Steam using DepotDownloader
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/mmvanheusden/SteamDepotDownloaderGUI
+	arch = aarch64
+	arch = x86_64
+	license = GPL3
+	makedepends = squashfuse
+	depends = bash
+	depends = electron25
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	provides = steamdepotdownloadergui=2.2.0
+	conflicts = steamdepotdownloadergui
+	source = steamdepotdownloadergui.sh
+	sha256sums = 856876cf4c6828e4722fd1f1a8390c67595fd28deec93edd1b039270c7287063
+	source_aarch64 = steamdepotdownloadergui-2.2.0-aarch64.AppImage::https://github.com/mmvanheusden/SteamDepotDownloaderGUI/releases/download/v2.2.0/SteamDepotDownloaderGUI-linux-2.2.0-arm64.AppImage
+	sha256sums_aarch64 = d7ffc05a6dec25d5d515dd1bdb2362639b4374388b6fe30ac8a4d3e9dbafa69a
+	source_x86_64 = steamdepotdownloadergui-2.2.0-x86_64.AppImage::https://github.com/mmvanheusden/SteamDepotDownloaderGUI/releases/download/v2.2.0/SteamDepotDownloaderGUI-linux-2.2.0-x64.AppImage
+	sha256sums_x86_64 = 53e4667a4f6373d4dd7cb86836ca030daf959f2d219422212d1bbfad38d89f57
+
+pkgname = steamdepotdownloadergui-bin
