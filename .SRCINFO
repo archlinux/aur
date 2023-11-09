@@ -1,7 +1,7 @@
 pkgbase = mediathekview-xdg
 	pkgdesc = Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)
 	pkgver = 14.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mediathekview/mediathekview
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = mediathekview-xdg
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = java-runtime-openjdk=21
+	depends = xdg-user-dirs
 	optdepends = libnotify: to use desktop notifications
 	optdepends = mplayer: for recording streams
 	optdepends = vlc: for stream playback

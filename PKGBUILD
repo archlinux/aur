@@ -5,12 +5,12 @@ _name=MediathekView
 _pkgname=mediathekview
 pkgname=${_pkgname}-xdg
 pkgver=14.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Access the Mediathek of many German TV stations (store data in XDG_DATA_HOME)"
 arch=(any)
 url="https://github.com/mediathekview/mediathekview"
 license=(GPL3)
-depends=(bash hicolor-icon-theme 'java-runtime-openjdk=21')
+depends=(bash hicolor-icon-theme 'java-runtime-openjdk=21' xdg-user-dirs)
 makedepends=(maven strip-nondeterminism 'java-environment-openjdk=21')
 conflicts=(mediathek mediathekview)
 provides=(mediathek mediathekview)
