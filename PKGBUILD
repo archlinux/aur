@@ -1,7 +1,7 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=nvim-treesitter-parsers-git
-pkgver=r1309.bf18ff20
-pkgrel=1
+pkgver=r1310.8996612b
+pkgrel=2
 pkgdesc="All of the registered tree sitter parsers used by Neovim"
 arch=(x86_64)
 url="https://github.com/nvim-treesitter/nvim-treesitter"
@@ -31,10 +31,14 @@ build() {
 
 package() {
 	cd "$srcdir/${_dirname}"
-	mkdir -p "$pkgdir/etc/xdg/nvim/parser/"
-	cp parser/*.so -t "$pkgdir/etc/xdg/nvim/parser/"
-	mkdir -p "$pkgdir/etc/xdg/nvim/parser-info/"
-	cp parser-info/*.revision -t "$pkgdir/etc/xdg/nvim/parser-info/"
-	mkdir -p "$pkgdir/etc/xdg/nvim/queries/"
-	cp -r queries/* -t "$pkgdir/etc/xdg/nvim/queries/"
+	parent_dir="$pkgdir/usr/lib/nvim"
+
+	mkdir -p "${parent_dir}/parser/"
+	cp parser/*.so -t "${parent_dir}/parser/"
+
+	mkdir -p "${parent_dir}/parser-info/"
+	cp parser-info/*.revision -t "${parent_dir}/parser-info/"
+
+	mkdir -p "${parent_dir}/queries/"
+	cp -r queries/* -t "${parent_dir}/queries/"
 }
