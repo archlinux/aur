@@ -1,21 +1,45 @@
-# Maintainer: MisconceivedSec (@misconceivedsec)
-pkgname=salawat
-pkgver=1.3.0
-pkgrel=1
-pkgdesc="A prayer times (Adhan) app for Windows and GNU/Linux written in JavaFX"
-arch=('x86_64')
-conflicts=("salawat-appimage" "salawat")
-provides=("salawat")
-url="https://github.com/DBChoco/Salawat"
-license=('MIT')
-depends=('zstd' 'gtk3' 'alsa-lib' 'nss')
-source=("Salawat-$pkgver-linux.tar.gz::https://github.com/DBChoco/Salawat/releases/download/v$pkgver/Salawat-$pkgver-linux.tar.gz")
-md5sums=('c623351938306b5c437aa1d680004dab')
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
 
-package()
-{
-    mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/share/applications"
-    cp -r "${srcdir}/Salawat" "${pkgdir}/opt/"
-    sed -i "s/Salawat.png/icon.png/" "${srcdir}/Salawat/Salawat.desktop"
-    install -Dm755 "${srcdir}/Salawat/Salawat.desktop" "${pkgdir}/usr/share/applications/salawat.desktop"
+# Maintainer: Daudi Wampamba <me@daudi.dev>
+pkgname=linux-enable-ir-emitter-bin
+pkgver=5.2.4
+pkgrel=1
+epoch=
+pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
+arch=('x86_64')
+url="https://github.com/EmixamPP/linux-enable-ir-emitter"
+license=('MIT')
+groups=()
+depends=('fmt'
+    'gtk3'
+    'opencv'
+    'python'
+    'qt6-base')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=(
+	'chicony-ir-toggle'
+	'linux-enable-ir-emitter'
+	'linux-enable-ir-emitter-git'
+)
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("linux-enable-ir-emitter-$pkgver.systemd.x86-64.tar.gz::https://github.com/EmixamPP/linux-enable-ir-emitter/releases/download/$pkgver/linux-enable-ir-emitter-$pkgver.systemd.x86-64.tar.gz")
+noextract=()
+md5sums=('c39697f9120b1ca5aa2d2df8b22cee98')
+validpgpkeys=()
+
+package() {
+	tar -C $pkgdir --no-same-owner -h -xzf linux-enable-ir-emitter-$pkgver.systemd.x86-64.tar.gz
+	# Fix issues with Lib64 being symlinked to lib
+	mv $pkgdir/usr/lib64/* $pkgdir/usr/lib
+	rmdir $pkgdir/usr/lib64
 }
