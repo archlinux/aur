@@ -1,8 +1,8 @@
 pkgbase = ncbi-toolkit
 	pkgdesc = Applications, scripts and C++ libraries for the analysis of biological data
-	pkgver = 25.2.0
-	pkgrel = 2
-	url = https://ncbi.github.io/cxx-toolkit/
+	pkgver = 27.0.0
+	pkgrel = 1
+	url = https://github.com/ncbi/ncbi-cxx-toolkit-public
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -25,9 +25,7 @@ pkgbase = ncbi-toolkit
 	optdepends = fcgi
 	provides = blast+-bin
 	conflicts = blast+-bin
-	source = https://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools++/2021/Sep_30_2021/ncbi_cxx--25_2_0.tar.gz
-	source = LICENSE
-	sha256sums = 9f824a92750e64e7b9be98d82b84414ab4f7e5d73392dadbb87c94ff5ccf9111
-	sha256sums = 78bbf3f310ff43f1b5f711e7221d51da1e6f055831bd6c6941e0650bf1261df2
+	source = ncbi-toolkit-27.0.0.tar.gz::https://github.com/ncbi/ncbi-cxx-toolkit-public/archive/refs/tags/release-27.0.0.tar.gz
+	sha256sums = c8fb3f99c6fce4f170b381f3a7789c76a2ff1c23c094c9852e2e3de1fdc57277
 
 pkgname = ncbi-toolkit
