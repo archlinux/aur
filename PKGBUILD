@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=db55398c18eedc0b7961cec03b4962514564520d
+_mozc_commit=835de48f0afbf16ee03f6576b091a5e019487df3
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,7 +30,7 @@ _sudachidict_date=20230927
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5268.102
-pkgrel=5
+pkgrel=8
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -96,7 +96,7 @@ prepare() {
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
 
-  # nm -f posix
+  # nm -f posix (llvm-nm -f posix)
   sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 
   # zombie process prevention for mozc_tool
@@ -188,7 +188,7 @@ install_mozc-with-jp-dict-common() {
   install -D -m 644 third_party/breakpad/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/breakpad/LICENSE"
   install -D -m 644 third_party/gtest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/gtest/LICENSE"
   install -D -m 644 third_party/gyp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/gyp/LICENSE"
-  install -D -m 644 third_party/ipa_font/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/ipa_font/LICENSE"
+  #install -D -m 644 third_party/ipa_font/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/ipa_font/LICENSE"
   install -D -m 644 third_party/japanese_usage_dictionary/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/japanese_usage_dictionary/LICENSE"
   install -D -m 644 third_party/protobuf/third_party/jsoncpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/jsoncpp/LICENSE"
   install -D -m 644 third_party/protobuf/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/prptobuf/LICENSE"
