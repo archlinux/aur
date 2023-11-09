@@ -1,7 +1,7 @@
 # Maintainer: Felipe Martin <me@fmartingr.com>
 
 pkgname="synology-drive"
-pkgver="3.4.0_15721"
+pkgver="3.4.0_15724"
 pkgrel="1"
 pkgdesc="Drive for PC, the desktop utility of the DSM add-on package, Drive, allows you to sync and share files owned by you or shared by others between a centralized Synology NAS and multiple client computers."
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=()
 md5sums=()
 
 
-source_x86_64=(https://global.synologydownload.com/download/Utility/SynologyDriveClient/3.4.0-15721/Ubuntu/Installer/synology-drive-client-15721.x86_64.deb)
-md5sums_x86_64=('93fbbbfef589ed88d108818e8c6ae0e8')
+source_x86_64=(https://global.synologydownload.com/download/Utility/SynologyDriveClient/3.4.0-15724/Ubuntu/Installer/synology-drive-client-15724.x86_64.deb)
+md5sums_x86_64=('0145fbc1bd83c9741b71abdec3d90d24')
 
 package() {
 	cd "${srcdir}"
