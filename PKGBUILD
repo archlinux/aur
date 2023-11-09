@@ -3,20 +3,44 @@ pkgname=revealed-bin
 _pkgname=Revealed
 _appname="@${pkgname%-bin}desktop"
 pkgver=2.0.0_alpha.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A platform and store for apps, games, and more!"
 arch=('x86_64')
 url="https://www.appsrevealed.com/"
-_githuburl="https://github.com/BunnyStrike/revealed"
+_ghurl="https://github.com/BunnyStrike/revealed"
 license=('GPL3')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('libcups' 'expat' 'libxcb' 'glib2' 'alsa-lib' 'gcc-libs' 'libxdamage' 'nss' 'gtk3' 'nspr' 'libxkbcommon' \
-    'libxext' 'at-spi2-core' 'libxrandr' 'libdrm' 'dbus' 'pango' 'mesa' 'glibc' 'hicolor-icon-theme' 'zlib' 'cairo' \
-    'libx11' 'libxfixes' 'libxcomposite')
-source=("${pkgname%-appimage}-${pkgver}.pacman::${_githuburl}/releases/download/v${pkgver//_/-}/${_pkgname}.pacman")
+options=("!strip")
+depends=(
+    'hicolor-icon-theme'
+    'libxext'
+    'libxkbcommon'
+    'libxfixes'
+    'alsa-lib'
+    'pango'
+    'libcups'
+    'nspr'
+    'libxrandr'
+    'libx11'
+    'gtk3'
+    'libdrm'
+    'at-spi2-core'
+    'cairo'
+    'java-runtime'
+    'mesa'
+    'libxcomposite'
+    'python'
+    'libxcb'
+    'nss'
+    'expat'
+    'libxdamage'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}.pacman"
+)
 sha256sums=('64053a54fae6f9f4d40cb156ebf3dc5cf8fca6d8aaa1fff0e941d572048457f8')
-prepare() {
+build() {
     sed "s|\"/opt/${_pkgname}/${_appname}\" %U|${pkgname%-bin} --no-sandbox %U|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
