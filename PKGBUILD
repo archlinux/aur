@@ -1,6 +1,6 @@
 # Maintainer: asaka <aisk1988@gmail.com>
 pkgname=lean-cli-git
-pkgver=r317.2799385
+pkgver=r821.e6d9791
 pkgrel=1
 pkgdesc="LeanCloud command line tool"
 arch=('i686' 'x86_64')
@@ -20,20 +20,19 @@ pkgver() {
 }
 
 build() {
-    export GOPATH="$srcdir/go"
-	cd "$srcdir"
-    mkdir -p $srcdir/go/src/github.com/leancloud
-    ln -s -f $srcdir/lean-cli/ $srcdir/go/src/github.com/leancloud/lean-cli
-	go build -o lean -ldflags="-X main.pkgType=aur-git -s -w" github.com/leancloud/lean-cli/lean
+	cd "$srcdir/${pkgname%-git}"
+	pwd
+	go build -ldflags="-X lean.pkgType=aur-git -s -w" -o lean-output ./lean/*.go
 }
 
 check() {
-	cd "$srcdir"
-    ./lean --version | grep -q 'lean version'
+	cd "$srcdir/${pkgname%-git}"
+	pwd
+	./lean-output --version | grep -q 'lean version'
 }
 
 package() {
-	cd "$srcdir"
-    install -Dm755 "lean" "$pkgdir/usr/bin/lean"
-    install -Dm644 "${pkgname%-git}/LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.txt"
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm755 "lean-output" "$pkgdir/usr/bin/lean"
+	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.txt"
 }
