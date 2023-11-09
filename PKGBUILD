@@ -1,32 +1,44 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-appimage
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
-arch=('aarch64' 'armv7h' 'x86_64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://znote.io"
-_githuburl="https://github.com/alagrede/znote-app"
+_ghurl="https://github.com/alagrede/znote-app"
 license=('custom')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
+depends=(
+    'zlib'
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
-source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
-source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
+source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
+source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
 source=("LICENSE.html::${url}/cgu.html")
 sha256sums=('e3bccfecd7907b680442058909b67f64b525a3b1bd18d3fc9dc5ccf68342b118')
-sha256sums_aarch64=('876bd2bdbf2c184cd3dc720305bf4ac6ad814f216a6cd87469844286ba495c96')
-sha256sums_armv7h=('876bd2bdbf2c184cd3dc720305bf4ac6ad814f216a6cd87469844286ba495c96')
-sha256sums_x86_64=('05f9fa32589becffc720b9d66339da47d2963c9fab00072cd536539a1c5c584a')
-prepare() {
+sha256sums_aarch64=('b5971e6ceda3d955849174ab5a0689bd80a5fec35ffc559b5aa51b415800c548')
+sha256sums_armv7h=('b5971e6ceda3d955849174ab5a0689bd80a5fec35ffc559b5aa51b415800c548')
+sha256sums_x86_64=('5f0c3a359b1929a5a8215b71c2719ad65fda6f71076363333cce89bfe45f37d5')
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    ln -sf "${_install_path}/${pkgname%-appimage}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
     for icons in 8x8 32x32 64x64 128x128 256x256;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/${pkgname%-appimage}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
