@@ -1,11 +1,12 @@
-# Maintainer: Sagnik Mandal <criticic>
+# Maintainer: Florian Stecker <oss@florianstecker.net>
+# Contributor: Sagnik Mandal <criticic>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: earnestly
 
 pkgname=llpp
 pkgver=41
-pkgrel=2
+pkgrel=3
 pkgdesc='opengl accelerated pdf viewer based on mupdf'
 arch=('x86_64')
 url=https://github.com/criticic/llpp
@@ -20,18 +21,8 @@ optdepends=('djvulibre: for llppac djvu conversion'
             'librsvg: for llppac svg conversion'
             'unoconv: for llppac office conversion')
 options=('!strip')
-source=("git+$cloneurl#tag=v$pkgver"
-        'system-makedeps-and-ocaml5.patch')
-b2sums=('SKIP'
-        '6b04045838ae58ca0c1866b694591fb75bcbdaebaa4bdbfd423daf7a9586ea17332a290bdf5c2babbccd0ee249af5e11c34496c22f92f58a9bdef629aaf46f7e')
-
-prepare() {
-  cd $pkgname
-  patch --forward --strip=1 --input=../system-makedeps-and-ocaml5.patch
-
-  # Restore desktop file
-  git revert --no-commit aad4b1e65e581ff7a096a3c3901b222a9c127a1c
-}
+source=("git+$cloneurl#branch=latest")
+b2sums=('SKIP')
 
 build() {
   cd $pkgname
