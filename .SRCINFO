@@ -1,7 +1,7 @@
 pkgbase = kiwitalk-bin
 	pkgdesc = An UNOFFICIAL cross-platform KakaoTalk client written in TypeScript & Rust
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/KiwiTalk/KiwiTalk
 	arch = x86_64
 	license = Apache
@@ -15,7 +15,7 @@ pkgbase = kiwitalk-bin
 	depends = libappindicator-gtk3
 	provides = kiwitalk
 	conflicts = kiwitalk
-	source = https://github.com/KiwiTalk/KiwiTalk/releases/download/v0.4.2/kiwi-talk_0.4.2_amd64.deb
-	sha256sums = 881c3ffa2a7cfdf46df4493415c22b1f6a437a16e1056d9d5b7084dfee297913
+	source = https://github.com/KiwiTalk/KiwiTalk/releases/download/v0.5.0/kiwi-talk_0.5.0_amd64.deb
+	sha256sums = bc948519808d98e585395d161216df38ae474fe43766734bed9a45da30dd98a3
 
 pkgname = kiwitalk-bin

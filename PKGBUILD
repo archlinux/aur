@@ -1,8 +1,8 @@
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 
 pkgname=kiwitalk-bin
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="An UNOFFICIAL cross-platform KakaoTalk client written in TypeScript & Rust"
 arch=('x86_64')
 url="https://github.com/KiwiTalk/KiwiTalk"
@@ -14,7 +14,7 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webk
 _prgname="kiwi-talk"
 _debfile="${_prgname}_${pkgver}_amd64.deb"
 source=("https://github.com/KiwiTalk/KiwiTalk/releases/download/v${pkgver}/${_debfile}")
-sha256sums=('881c3ffa2a7cfdf46df4493415c22b1f6a437a16e1056d9d5b7084dfee297913')
+sha256sums=('bc948519808d98e585395d161216df38ae474fe43766734bed9a45da30dd98a3')
 
 #sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
 prepare() {
