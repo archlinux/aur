@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
 
 pkgname=ecal
-pkgver=5.11.4
+pkgver=5.12.1
 pkgrel=4
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
@@ -10,14 +10,12 @@ license=('Apache')
 depends=('curl' 'protobuf' 'python' 'python-protobuf' 'qt5-base' 'qwt' 'hdf5' 'yaml-cpp')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'patchelf' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz" "ecal-gcc13.patch" "termcolor-gcc13.patch")
-sha256sums=('48cc5522d64b01bd110cbfb97ed8990169b8a9713a424f78e231c139244b649b'
-            '534801dd5ac16cfdf4a3a844ccb9a953c2852d013fd5c80c3d9bbe888583926c'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz" "termcolor-gcc13.patch")
+sha256sums=('493599b33ea9c3361ff0bd871d95ae6bc3151f4ee763bfb8295aa0d99d551281'
             'df919e327f89688914e620a508facee6288528af815df1d581606375ece1a5b9')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
-    patch --forward --strip=1 --input="ecal-gcc13.patch"
     patch --forward --strip=1 --input="termcolor-gcc13.patch"
 }
 
@@ -33,7 +31,8 @@ build() {
              -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
              -DECAL_THIRDPARTY_BUILD_CURL=OFF \
              -DECAL_THIRDPARTY_BUILD_HDF5=OFF \
-             -DCMAKE_INSTALL_SYSCONFDIR=/etc
+             -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+             -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON
     make
 }
 
