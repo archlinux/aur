@@ -15,14 +15,13 @@ makedepends=(
 	'clang'
 	'cmake'
 	'git'
-	'libcurl-gnutils'
 	'lld'
 	'ninja'
 	'python'
 )
 depends=(
 	'dbus'
-	'libcurl-gnutils'
+	'libcurl-gnutls'
 	'sdl2'
 )
 optdepends=(
