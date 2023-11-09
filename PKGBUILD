@@ -2,8 +2,8 @@
 
 pkgname=telegraph
 pkgver=0.1.8
-pkgrel=1
-pkgdesc="Write and decode morse (latest commit)"
+pkgrel=2
+pkgdesc="Write and decode morse"
 url="https://github.com/fkinoshita/Telegraph"
 arch=('x86_64' 'aarch64')
 license=('GPL3')

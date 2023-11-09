@@ -1,7 +1,7 @@
 pkgbase = telegraph
-	pkgdesc = Write and decode morse (latest commit)
+	pkgdesc = Write and decode morse
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fkinoshita/Telegraph
 	arch = x86_64
 	arch = aarch64
