@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
@@ -35,11 +35,13 @@ sha256sums=('SKIP'
 prepare() {
   cd KTailctl
   patch -p1 <"$srcdir"/0001-use-system-packages.patch
+
+  cd tailwrap
+  go mod vendor
 }
 
 build() {
   cmake -B build -S KTailctl \
-    -DDBUILD_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
