@@ -1,0 +1,9 @@
+[Unit]
+Description=Stream Deck API Service
+Wants=network-online.target
+After=network.target
+
+[Service]
+Type=simple
+StandardOutput=journal
+ExecStart=/usr/bin/streamdeckapi-server

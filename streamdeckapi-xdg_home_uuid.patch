@@ -1,0 +1,109 @@
+--- streamdeckapi/server.py	2023-08-06 17:30:08.000000000 +0200
++++ streamdeckapi/server.py	2023-11-09 16:51:09.244376216 +0100
+@@ -11,7 +11,8 @@
+ from datetime import datetime
+ from typing import List, Dict
+ import aiohttp
+-import human_readable_ids as hri
++#import human_readable_ids as hri
++import uuid
+ from jsonpickle import encode
+ from aiohttp import web
+ from StreamDeck.DeviceManager import DeviceManager
+@@ -20,6 +21,7 @@
+ import cairosvg
+ from PIL import Image
+ from zeroconf import ServiceInfo, Zeroconf
++import os
+ 
+ from streamdeckapi.const import (
+     DATETIME_FORMAT,
+@@ -85,7 +87,12 @@
+ #   Database
+ #
+ 
+-database_first = sqlite3.connect(DB_FILE)
++_home = os.path.expanduser('~')
++xdg_config_home = os.environ.get('XDG_CONFIG_HOME') or \
++        os.path.join(_home, '.config')
++print(f"Using database path", xdg_config_home)
++
++database_first = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+ table_cursor = database_first.cursor()
+ table_cursor.execute(
+     """
+@@ -114,7 +121,7 @@
+ 
+ def save_button(key: int, button: SDButton):
+     """Save button to database."""
+-    database = sqlite3.connect(DB_FILE)
++    database = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+     cursor = database.cursor()
+     svg_bytes = button.svg.encode()
+     base64_bytes = base64.b64encode(svg_bytes)
+@@ -139,7 +146,7 @@
+ 
+ def get_button(key: int) -> any:
+     """Get a button from the database."""
+-    database = sqlite3.connect(DB_FILE)
++    database = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+     cursor = database.cursor()
+     result = cursor.execute(
+         f"SELECT key,uuid,device,x,y,svg FROM buttons WHERE key={key}"
+@@ -166,7 +173,7 @@
+ 
+ def get_button_by_uuid(uuid: str) -> any:
+     """Get a button from the database."""
+-    database = sqlite3.connect(DB_FILE)
++    database = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+     cursor = database.cursor()
+     result = cursor.execute(
+         f'SELECT key,uuid,device,x,y,svg FROM buttons WHERE uuid="{uuid}"'
+@@ -193,7 +200,7 @@
+ 
+ def get_button_key(uuid: str) -> int:
+     """Get a button key from the database."""
+-    database = sqlite3.connect(DB_FILE)
++    database = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+     cursor = database.cursor()
+     result = cursor.execute(f'SELECT key FROM buttons WHERE uuid="{uuid}"')
+     matching_buttons = result.fetchall()
+@@ -209,7 +216,7 @@
+ def get_buttons() -> Dict[str, SDButton]:
+     """Load all buttons from the database."""
+     result: Dict[str, SDButton] = {}
+-    database = sqlite3.connect(DB_FILE)
++    database = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+     cursor = database.cursor()
+     for row in cursor.execute("SELECT key,uuid,device,x,y,svg FROM buttons"):
+         base64_bytes = row[5].encode()
+@@ -235,7 +242,7 @@
+     if state is True:
+         state_int = 1
+ 
+-    database = sqlite3.connect(DB_FILE)
++    database = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+     cursor = database.cursor()
+ 
+     # Check if exists
+@@ -260,7 +267,7 @@
+ def get_button_state(key: int) -> any:
+     """Load button_state from database."""
+     result = ()
+-    database = sqlite3.connect(DB_FILE)
++    database = sqlite3.connect(xdg_config_home + "/" + DB_FILE)
+     cursor = database.cursor()
+     result = cursor.execute(
+         f"SELECT key,state,state_update FROM button_states WHERE key={key}"
+@@ -546,9 +553,10 @@
+             button = get_button(key)
+             if not isinstance(button, SDButton):
+                 position = get_position(deck, key)
++                my_UUID = uuid.uuid4()
+                 new_button = SDButton(
+                     {
+-                        "uuid": hri.get_new_id().lower().replace(" ", "-"),
++                        "uuid": my_UUID,
+                         "device": serial,
+                         "position": {"x": position.y_pos, "y": position.x_pos},
+                         "svg": DEFAULT_ICON,
