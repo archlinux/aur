@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rfast
-_pkgver=2.0.9
+_pkgver=2.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-philentropy
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6fd9f8416dedf846b7d5cddf83cfd906')
-sha256sums=('ffcf2a9df9c089f4719e483743a01ccba06e4f0b65580231fbe1142bf12c548a')
+md5sums=('ba455888bd71d3cbce27d29be5f1948c')
+sha256sums=('f9e46cac99db756cd49c9cd83be8adc0d381e6c03102389bfdcb8258d02418ff')
 
 build() {
   mkdir -p build
