@@ -1,6 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 _ELECTRON=/usr/bin/electron9
-_ASAR="/opt/yaradio-yamusic/yaradio-yamusic.asar"
+APPDIR="/usr/lib/yaradio-yamusic"
+export PATH="${APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/swiftshader:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
