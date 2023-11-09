@@ -3,7 +3,7 @@ _pkgname="streamdeckapi"
 pkgname=("python-streamdeckapi")
 
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream Deck API Library for Home Assistant"
 arch=('x86_64')
 url="https://github.com/Patrick762/${_pkgname}"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha256sums=('5cfe6b3363adf3115d2adcc347887023f149bb802285b9c2b273ca4617a31d62'
-            'd872ed5a12975da362e06b6d4c1cd6ed40e133ecb035ba42cf0e25f8889e6a98'
+            'd651acb5b9530a24742478deab346bb31d5c8359257e7cabb75e37bb5f1e6b17'
             '45d5a05bacc0942edaf370cac20e3bac8ab5776b7c27056c563df86475e93113'
             '21bbef2de9197b14a6eae4ecfd8a5089829a2f31697290d3ae28218936bdccf9')
