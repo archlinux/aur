@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
-arch=('aarch64' 'x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/viarotel-org/escrcpy"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
@@ -23,8 +26,8 @@ source=(
 )
 sha256sums=('e03f21dc67e766661667d3268c1ce5fbce9c32fb4b6e70281722bfbc9e3b7a7e'
             '941cb7196d03283a6e65a2271f0c8381a9ec8176f38ce9dc9916f3f89b29a720')
-sha256sums_aarch64=('938b6e3fda3ad195d1ca9d9c3259266bbefecdac8999e4a20cb4af3cf6e75f97')
-sha256sums_x86_64=('6538cb657e2de562a1fc9bf6ee1f46f2b7ec5c734d30f05e0b07413c4d34fb37')
+sha256sums_aarch64=('86697c843c54373bd95eb060657370ae16f509eccb6bf97f1df73fbd5ddaee85')
+sha256sums_x86_64=('d265b809ec28472295d496e2d04b165c77ac897f1b73c993c3dfc09ab24ee6a8')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
