@@ -1,0 +1,20 @@
+pkgbase = symbolicator
+	pkgdesc = A sentry symbolication service for native stacktraces
+	pkgver = 23.10.1
+	pkgrel = 1
+	url = https://github.com/getsentry/symbolicator
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = cargo
+	makedepends = git
+	makedepends = cmake
+	depends = zlib
+	depends = gcc-libs
+	backup = etc/symbolicator/symbolicator.yml
+	source = git+https://github.com/getsentry/symbolicator/#tag=23.10.1
+	source = symbolicator.service
+	sha512sums = SKIP
+	sha512sums = 7b3c5a23e71bff108ab8ca850da960b6df800d157ebabd0c76f226abf1fd43b9b2b1eca9030666de1b0daa9f4fa5d5495b2e24c0a73ec4e0d176ba5b5a5a6ead
+
+pkgname = symbolicator

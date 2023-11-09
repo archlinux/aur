@@ -1,0 +1,11 @@
+[Unit]
+Description=Sentry symbolicator
+After=network.target
+
+[Service]
+User=sentry
+Restart=always
+ExecStart=/usr/bin/symbolicator run --config /etc/symbolicator/symbolicator.yml
+
+[Install]
+WantedBy=multi-user.target
