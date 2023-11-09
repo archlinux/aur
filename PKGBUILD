@@ -1,8 +1,8 @@
 # Maintainer: Yutsing Kuh <yutsing@outlook.com>
 
 pkgname=ttf-ms-win11-fod-zh_cn
-pkgver=10.0.22621.819
-pkgrel=2
+pkgver=10.0.22631.2506
+pkgrel=1
 arch=(any)
 url='https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list'
 license=(custom)
@@ -27,9 +27,9 @@ source=(${_ttf_ms_win11_fod_zh_cn[@]/#/file://}
 sha256sums=('3e2d44b01c9a248a61bedae4f15c8aae501328b1f7adfe6e111a5da5aa5c5104'
             '9dd76f7ab430edd091db24c3f18e71410325c1414141aad5fe67947873ffba06'
             'aa4560dd8fe5645745fed3ffa301c3ca4d6c03cbd738145b613303961ba733b8'
-            '237e6e4264d4f09314fb6777839e6ef2deb1f4de4bdc16b146d566ce046ba0fd'
-            '9432e9e21abb60db92ada50444f8e8905c4cfc7d7520302e01f7d87c8306a7e5'
-            '994414c3cedb579c6dea5cc6d9262977cb09e3990ebd1830431db4d0aae337d0'
+            'fd46a547002d330f48855408609eb47c22a8c269fe01e3d183e7ca98397bde77'
+            'be80e1246047a6489a2573c6426519c7cfe0d08c1669dd81c43bb67d39482a19'
+            'a950894abb1ceb1be0d9460b26e5a6167cafc3fc3330eab7f6b21db8b96cd080'
             'SKIP')
 
 _package() {
