@@ -1,17 +1,16 @@
-# system requirements: Cytoscape (>= 3.7.1), CyREST (>= 3.8.0)
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCy3
-_pkgver=2.22.0
+_pkgver=2.22.1
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Functions to Access and Control Cytoscape'
-arch=('any')
+pkgdesc="Functions to Access and Control Cytoscape"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('MIT')
+license=(MIT)
 depends=(
-  r
   r-base64enc
   r-base64url
   r-biocgenerics
@@ -25,27 +24,29 @@ depends=(
   r-rcolorbrewer
   r-rcurl
   r-rjsonio
-  r-uchardet
+  r-stringi
   r-uuid
   r-xml
 )
 optdepends=(
   r-biocstyle
-  r-grdevices
   r-igraph
   r-knitr
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ffeca7570460c066147e4645b4bfaf491b86446f3c2c813a26062a246c7318f2')
+md5sums=('d4f51eaf382ede111f69aefd2660e383')
+sha256sums=('f5a89f42adf224a83c4e77195ed43fe19a760fa2612b60d49081982b5cbe7262')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
