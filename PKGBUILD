@@ -3,7 +3,7 @@
 pkgname=clblast-git
 _gitname=CLBlast
 pkgver=1.6.1.5.gbcd294a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tuned OpenCL BLAS library (works with OpenCL 1.1)"
 arch=('i686' 'x86_64')
 url="https://github.com/CNugteren/CLBlast"
@@ -11,6 +11,7 @@ license=('Apache')
 depends=("opencl-headers" "ocl-icd")
 makedepends=('git' 'cmake')
 provides=("clblast")
+conflicts=("clblast")
 source=("git+https://github.com/CNugteren/${_gitname}.git")
 md5sums=('SKIP')
 
