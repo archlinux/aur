@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codex-bin
 _pkgname=Codex
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A free note-taking software for programmers and Computer Science students"
 arch=('x86_64')
@@ -10,10 +10,30 @@ _githuburl="https://github.com/jcv8000/Codex"
 license=('custom:CC-BY-NC-4.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'mesa' 'pango' 'expat' 'libxfixes' 'nss' 'gtk3' 'libxext' 'libxrandr' 'libxkbcommon' 'libx11' 'dbus' \
-    'cairo' 'alsa-lib' 'libxcomposite' 'nspr' 'at-spi2-core' 'libcups' 'glibc' 'libdrm' 'gcc-libs' 'glib2' 'libxdamage' 'libxcb')
+depends=(
+    'hicolor-icon-theme'
+    'mesa'
+    'pango'
+    'expat'
+    'libxfixes'
+    'nss'
+    'gtk3'
+    'libxext'
+    'libxrandr'
+    'libxkbcommon'
+    'libx11'
+    'cairo'
+    'alsa-lib'
+    'libxcomposite'
+    'nspr'
+    'at-spi2-core'
+    'libcups'
+    'libdrm'
+    'libxdamage'
+    'libxcb'
+)
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
-sha256sums=('bde66ecdcb95491b1c44202bb0e6944b5e20b54ea525a1132f42502099692992')
+sha256sums=('030c34bc19406c807b25a2e432b89063be3b89788a8002f768d7391ea4de7836')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
