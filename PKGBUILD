@@ -3,16 +3,16 @@
 pkgname=mesa-pvr-vf2
 pkgdesc="an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version"
 pkgver=22.1.7
-pkgrel=1
+pkgrel=2
 arch=('riscv64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' )
+              'wayland-protocols' 'meson' 'ninja' 'glslang' )
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'vulkan-icd-loader' 'zstd' 'expat')
+         'libunwind' 'wayland' 'zstd' 'expat' 'libglvnd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'vulkan-mesa-layer' 'vulkan-driver' 'mesa-libgl' 'opengl-driver')
-conflicts=('mesa' 'vulkan-mesa-layer' 'mesa-libgl')
+provides=('mesa' 'mesa-libgl' 'opengl-driver')
+conflicts=('mesa' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
 source=("https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz"
@@ -169,34 +169,30 @@ prepare() {
 }
 
 build () {
-
     meson setup "mesa-${pkgver}" _build \
-       -D b_ndebug=true \
-       -D b_lto=true \
-       -D platforms=wayland,x11\
-       -D gallium-drivers=pvr,swrast \
-       -D vulkan-drivers=pvr \
-       -D vulkan-layers=device-select,overlay \
-       -D dri3=enabled \
-       -D egl=enabled \
-       -D gallium-extra-hud=true \
-       -D gallium-opencl=disabled \
-       -D gbm=enabled \
-       -D gles1=disabled \
-       -D gles2=enabled \
-       -D glvnd=true \
-       -D glx=disabled \
-       -D libunwind=enabled \
-       -D llvm=disabled \
-       -D lmsensors=enabled \
-       -D osmesa=true \
-       -D shared-glapi=enabled \
-       -D microsoft-clc=disabled \
-       -D valgrind=disabled \
-       -D tools=[] \
-       -D zstd=enabled \
-       -D buildtype=plain \
-       --wrap-mode=nofallback \
+       -Dshared-glapi=enabled \
+       -Dglx-read-only-text=true \
+       -Dplatforms='wayland,x11' \
+       -Dgles1=disabled \
+       -Dgles2=enabled \
+       -Ddri3=disabled \
+       -Degl=enabled \
+       -Dgallium-drivers=swrast,pvr \
+       -Dllvm=disabled \
+       -Dgbm=enabled \
+       -Dlmsensors=disabled \
+       -Dgallium-opencl=disabled \
+       -Dopencl-spirv=false \
+       -Dopengl=true \
+       -Dosmesa=false \
+       -Dperfetto=false \
+       -Dlibunwind=disabled \
+       -Dgallium-va=disabled \
+       -Dgallium-vdpau=disabled \
+       -Dvulkan-drivers='' \
+       -Dgallium-xa=disabled \
+       -Dgallium-xvmc=disabled \
+       -Dglvnd=true \
        -D prefix=/usr \
        -D sysconfdir=/etc \
        
@@ -207,11 +203,6 @@ build () {
 
 package() {
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
-
-    # remove script file from /usr/bin
-    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
-    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-    rmdir "${pkgdir}/usr/bin"
 
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
