@@ -1,8 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-lingua-pt-stemmer'
-pkgver='0.01'
+pkgver='0.02'
 pkgrel='1'
 pkgdesc="Portuguese language stemming"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Lingua-PT-Stemmer'
-source=('http://search.cpan.org/CPAN/authors/id/X/XE/XERN/Lingua-PT-Stemmer-0.01.tar.gz')
-md5sums=('74523d7da59dabbf561fa5cf60f98d02')
-sha512sums=('601a6acc594fc73d153986b744807e56ce116e265c34403b0646681416ec482bb4bf9d2196eb3d463e4c3928c56c3f6fbd3ec971646b89008fa20965313a26ee')
-_distdir="Lingua-PT-Stemmer-0.01"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Lingua-PT-Stemmer-0.02.tar.gz')
+md5sums=('4ad757419b29bc326fde1529af5ed7b9')
+_distdir="Lingua-PT-Stemmer-0.02"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
