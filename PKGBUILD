@@ -2,22 +2,51 @@
 pkgname=manyi-transformer
 _pkgname=Manyi-transformer
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for gltf/glb models compression."
 arch=('any')
 url="https://github.com/MarshallChang/Manyi-transformer"
 license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('python' 'libvips' 'alsa-lib' 'libdrm' 'mesa' 'hicolor-icon-theme' 'libxfixes' 'libxrandr' 'glibc' 'libxcomposite' \
-    'at-spi2-core' 'libx11' 'libxcb' 'libxkbcommon' 'gcc-libs' 'libcups' 'dbus' 'libxdamage' 'nspr' 'pango' 'cairo' 'nss' \
-    'gtk3' 'glib2' 'libxext' 'expat')
-makedepends=('gendesk' 'npm>=7' 'nodejs>=14')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+depends=(
+    'libxdamage'
+    'at-spi2-core'
+    'dbus'
+    'libdrm'
+    'pango'
+    'libcups'
+    'alsa-lib'
+    'libxcomposite'
+    'libxext'
+    'libvips'
+    'hicolor-icon-theme'
+    'cairo'
+    'nspr'
+    'python'
+    'libxkbcommon'
+    'expat'
+    'libxcb'
+    'nss'
+    'libx11'
+    'libxfixes'
+    'libxrandr'
+    'gtk3'
+    'mesa'
+)
+makedepends=(
+    'gendesk'
+    'npm>=7'
+    'nodejs>=14'
+)
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
 sha256sums=('f53b8273fee63a233e9a9895b5480eba382e2cae2f85270d80cbae43b33b04bb')
 build() {
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    npm i
+    npm install --no-package-lock
     npm run package
 }
 package() {
@@ -28,7 +57,6 @@ package() {
         install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/app/${pkgname}.png"
     done
-    gendesk -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
