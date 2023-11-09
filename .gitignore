@@ -1,5 +1,4 @@
-okular/
-src/
-pkg/
-*.tar.xz
-
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
