@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=2.10.13.r0.g7892e0f4b
+_pkgver=2.10.14
+pkgver=2.10.14.r0.g25c656a88
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=('any')
@@ -27,11 +28,11 @@ makedepends=(
     'pnpm'
 )
 source=(
-    "${pkgname//-/.}"::"git+${_ghurl}.git"
+    "${pkgname//-/.}"::"git+${_ghurl}.git#tag=v${_pkgver}"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2cee6d40a204cdee06b816b93c8a68751525dc7622b5b7c3ae6082c903a4e881')
+            'cc2ebfbab7be3507a090131219cf76eb05a10b7131a1e9b24552b22fed20098f')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -40,18 +41,20 @@ build() {
     gendesk -q -f -n --categories "Utility" --name="${pkgname%-git}" --exec="${pkgname%-git}"
     sed "2i Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
-    sed -e '/- target: "tar.gz"/d' -i electron-builder-linux.yml
+    sed '/- target: "tar.gz"/d' -i electron-builder-linux.yml
     pnpm install --no-frozen-lockfile
     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     export CGO_ENABLED=1
+    #For Chinese Only
+    #export GOPROXY=https://goproxy.cn,direct
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname//-/.}/app"
     pnpm run dist-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/app/build/linux-unpacked/resources/pandoc.zip" -t "${pkgdir:?}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/app/build/linux-unpacked/resources/pandoc.zip" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -r "${srcdir}/${pkgname//-/.}/app/build/linux-unpacked/resources/"{app,appearance,guide,kernel,stage} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/app/appearance/boot/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
