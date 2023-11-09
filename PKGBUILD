@@ -1,6 +1,6 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=nvim-treesitter-parsers-git
-pkgver=r1067.10b0da9f
+pkgver=r1309.bf18ff20
 pkgrel=1
 pkgdesc="All of the registered tree sitter parsers used by Neovim"
 arch=(x86_64)
