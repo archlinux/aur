@@ -10,11 +10,11 @@ license=('GPL3')
 depends=('libadwaita')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-source=("$pkgname::git+$url.git#tag=v$pkgver")
+source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson Dosage build
   meson compile -C build
 }
 
