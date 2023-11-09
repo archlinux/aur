@@ -1,0 +1,18 @@
+pkgbase = git-clogs
+	pkgdesc = Generate a changelog from Git commits containing trailers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yorickpeterse/clogs
+	arch = x86_64
+	license = MPL2
+	makedepends = inko
+	depends = git
+	provides = clogs
+	options = strip
+	options = !docs
+	options = !libtool
+	options = !staticlibs
+	source = https://github.com/yorickpeterse/clogs/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5d4260b5cf45428098278c7b19c2dc4afe83d5cbf3478da4334bc75fa7637cc2
+
+pkgname = git-clogs
