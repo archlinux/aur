@@ -1,12 +1,12 @@
 pkgbase = elasticsearch
 	pkgdesc = Free and Open, Distributed, RESTful Search Engine
 	pkgver = 8.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/elasticsearch/
 	arch = aarch64
 	arch = x86_64
 	license = custom:Elastic-2.0
-	depends = jre-openjdk-headless
+	depends = java-runtime
 	depends = libxml2
 	provides = elasticsearch=8.11.0
 	conflicts = elasticsearch7
