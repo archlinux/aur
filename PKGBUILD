@@ -32,7 +32,7 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linux
                 #  "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_loong64.deb")  # 底包
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums=('5a89e6e6bd598268a8cdafaa7314127c53fc203cb31a08c1fb7c38c1c3e4372a'
+sha256sums=('4c465084ab4265636c1bd058950f47e16d6a3e2bd358742cff9227d7fa044632'
             '03c421b3b65982749d17b88fa58707f5e0ec730b9457b8621dbe4af36bf0760f'
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
 sha256sums_x86_64=('3d73768e7a78e72f0904a8e69c90d8856848a5c05ba7ad40a0cfcf1fd446a162')
