@@ -2,17 +2,18 @@
 
 pkgname=libdivsufsort
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight suffix-sorting library"
 arch=("i686" "x86_64")
 url="https://github.com/y-256/libdivsufsort"
 license=("MIT")
+depends=("glibc")
 makedepends=("cmake")
 source=("https://github.com/y-256/libdivsufsort/archive/${pkgver}.tar.gz")
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cmake -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr" \
+    cmake -S . -B . -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr" \
           -DBUILD_DIVSUFSORT64=1
     make
 }
