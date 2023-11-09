@@ -1,3 +1,5 @@
+ver 0.8.1:
+	fix release
 ver 0.8.0:
 	Change notify-send application title to `zsh
 ver 0.7.0:
