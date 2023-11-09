@@ -2,8 +2,8 @@
 
 pkgname=clblast-git
 _gitname=CLBlast
-pkgver=1.5.2.30.g4500a034
-pkgrel=2
+pkgver=1.6.1.5.gbcd294a9
+pkgrel=1
 pkgdesc="Tuned OpenCL BLAS library (works with OpenCL 1.1)"
 arch=('i686' 'x86_64')
 url="https://github.com/CNugteren/CLBlast"
@@ -28,8 +28,8 @@ prepare() {
 }
 
 build() {
-  cd ${_gitname}/_build
-  make
+  cd ${_gitname}
+  cmake --build ./_build
 }
 
 #package() {
@@ -38,8 +38,8 @@ build() {
 #}
 
 package() {
-  cd ${_gitname}/_build
-  make install
+  cd ${_gitname}
+  cmake --install _build
   #mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
   sed -i "/^prefix=/c\prefix=/usr" "${pkgdir}/usr/lib/pkgconfig/clblast.pc"
 #  mkdir "${pkgdir}/usr/include/${_gitname}/"
