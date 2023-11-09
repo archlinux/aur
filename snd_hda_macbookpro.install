@@ -1,0 +1,19 @@
+
+post_install() {
+    cat<<EOF
+
+Successfully installed the Cirrus 8409 HDA (audio) driver!
+  Reboot for the changes to take effect.
+
+EOF
+}
+
+post_upgrade() {
+    cat<<EOF
+
+Successfully rebuilt the Cirrus 8409 HDA (audio) driver!
+  Reboot for the changes to take effect.
+
+EOF
+}
+

@@ -1,0 +1,5 @@
+
+# The only files I'm considering adding right now are the PKGBUILD and .install 
+!PKGBUILD
+!*.install
+
