@@ -1,6 +1,6 @@
 pkgbase = octobrowser
 	pkgdesc = Fast anti-detect browser for multi-accounting with maximum protection against browser identification
-	pkgver = 1.11.4
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = https://octobrowser.net
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = octobrowser
 	provides = octobrowser
 	conflicts = octobrowser
 	options = !strip
-	source = https://octobrowser.net/releases/installer/OctoBrowser_1.11.4.linux.tar.gz
-	sha256sums = 0a4cdae9a8fbdeacee3972bca16a444d4cdef9245ffa982d2c58f9fc00e49f78
+	source = https://octobrowser.net/releases/installer/OctoBrowser_1.11.6.linux.tar.gz
+	sha256sums = 45d3baa384d8b5dbc944e4aa832aeb5af259902c9cc49e79ec72af5259f704b7
 
 pkgname = octobrowser
