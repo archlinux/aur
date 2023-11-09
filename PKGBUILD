@@ -6,11 +6,12 @@
 
 pkgname=discord-electron-openasar
 _pkgname=discord
-_electron=24
-pkgver=0.0.34+813
+pkgver=0.0.34+816
 _pkgver=${pkgver%%+*}
-pkgrel=1
-pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electron}) for increased security and performance"
+pkgrel=2
+_electronver=24
+_electronname="electron${_electronver}"
+pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electronver}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -18,7 +19,7 @@ url='https://discord.com'
 license=('custom')
 options=('!strip')
 install="$pkgname.install"
-depends=("electron${_electron}" 'libxss' 'unzip')
+depends=("${_electronname}" 'libxss' 'unzip')
 makedepends=('git' 'asar' 'nodejs' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
@@ -28,9 +29,9 @@ optdepends=(
 )
 source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
 	'discord-launcher.sh'
-	"git+https://github.com/goosemod/openasar.git#commit=eee9bab822e3dbd97a735d0050ddd41ba27917f2")
+	"git+https://github.com/goosemod/openasar.git#commit=403878f068006a826afc5af86ea4c6aaede1509a")
 sha512sums=('28ab59e18ca3c800030c7c4b4f016efed033e741ad42f18b993e8493d51a78d430a4ff3c0a3457fdf8b43907a013f3145e67748e7a896d440af56074226c5c46'
-            'b0961f546a4016e24d516c6d1125c1af0e8ca84ab960f6abe10ec98c2c18543da2168ffb2676189ed110e9abbdb889abfb2c610954019250041a0a89b0b03bab'
+            '723250b70c7f5367701675c6581e9eac2143263910c4ffc35957a6ab858492c5febe89ea0d46fce19ac1416c23d9ca3953e48b9db5aa174b4a401fb6efa5daf5'
             'SKIP')
 
 _krisp_b2sum='e36c3308b34e96f4c33425bb1d7ac0d8130fa5450c9db2ee3fbdbfa10887ab15f3ec06f9fdbd446553f9224052af0705a0eebfc92b55776a33a9cfdf0c3c53e4'
@@ -43,10 +44,14 @@ pkgver() {
 
 prepare() {
 	# prepare launcher script
-	sed -i "s|@PKGNAME@|${_pkgname}|g;s|@PKGVER@|${_pkgver}|g;s|@ELECTRON@|${_electron}|g;s|@KRISPB2@|${_krisp_b2sum}|g" discord-launcher.sh
+	sed -i -e "s|@PKGNAME@|${_pkgname}|g" \
+		-e "s|@PKGVER@|${_pkgver}|g" \
+		-e "s|@ELECTRON@|${_electronname}|g" \
+		-e "s|@KRISPB2@|${_krisp_b2sum}|g" \
+		discord-launcher.sh
 
 	# fix the .desktop file
-	sed -i "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" ${_pkgname^}/$_pkgname.desktop
+	sed -i -e "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" ${_pkgname^}/$_pkgname.desktop
 
 	# create the license files
 	curl https://discord.com/terms | html2text >"${srcdir}"/LICENSE.md
@@ -57,7 +62,9 @@ build() {
 	cd "${srcdir}"/openasar
 
 	# pack openasar
-	sed -i -e "s/nightly/nightly-$(git rev-parse HEAD | cut -c 1-7)/" src/index.js
+	sed -i -e "s|nightly|nightly-$(git rev-parse HEAD | cut -c 1-7)|" src/index.js
+	sed -i -e "s|^Exec=\${exec}$|Exec=/usr/bin/${_pkgname}|" \
+		-e "s|^Name=\${basename(exec)}$|Name=${_pkgname^}|" src/autoStart.js
 	node scripts/strip.js
 	asar p src app.asar
 }
