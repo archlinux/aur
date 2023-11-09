@@ -1,11 +1,12 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Bart Libert <bart plus aur at libert dot email>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=5.0.1
+pkgver=5.2.0
 pkgrel=1
-_commit=03328a1
-pkgdesc='zsh abbreviations, ported from fish and enhanced'
+_commit=6802d73
+pkgdesc=' The zsh manager for auto-expanding abbreviations, inspired by fish shell. '
 arch=('any')
 url='https://github.com/olets/zsh-abbr'
 license=('custom')
