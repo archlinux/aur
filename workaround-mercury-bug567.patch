@@ -1,0 +1,44 @@
+From 2ba8e63f0b36433ed618dd17554656b1dab28201 Mon Sep 17 00:00:00 2001
+From: Peter Wang <novalazy@gmail.com>
+Date: Tue, 7 Nov 2023 13:11:32 +1100
+Subject: [PATCH] Work around Mercury bug 567.
+
+---
+ src/compose.m | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/compose.m b/src/compose.m
+index c1767ed..03b49fa 100644
+--- a/src/compose.m
++++ b/src/compose.m
+@@ -2607,6 +2607,7 @@
+         ;
+             Prepare = prepare_edit(_)
+         ),
++        workaround_merge_switches(!Acc),
+         (
+             Prepare = prepare_send,
+             cons(header(field_name("Message-ID"),
+@@ -2617,6 +2618,7 @@
+             ; Prepare = prepare_postpone
+             )
+         ),
++        workaround_merge_switches(!Acc),
+         (
+             ( Prepare = prepare_send
+             ; Prepare = prepare_postpone
+@@ -2678,6 +2680,14 @@
+         cons(header(field_name(FieldName), unstructured(Value, Options)), !Acc)
+     ).
+ 
++    % Work around Mercury bug 567 -- regression due to commit 43dd12bd
++    % "Merge consecutive switches on the same variable."
++    %
++:- pred workaround_merge_switches(list(header)::in, list(header)::out) is det.
++:- pragma no_inline(workaround_merge_switches/2).
++
++workaround_merge_switches(!Acc).
++
+ %-----------------------------------------------------------------------------%
+ 
+ :- pred maybe_read_signature_file(prog_config::in, maybe(string)::out,
