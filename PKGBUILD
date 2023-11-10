@@ -17,8 +17,8 @@
 
 pkgname=blesh-git
 _pkgname=ble.sh
-pkgdesc="Custom bash line editor with enhanced features"
-pkgver=0.4.0_devel4.r1988.f7ec170b
+pkgdesc="Bash Line Editor (ble.sh) -- a replacement for Bash's line editor with enhanced features"
+pkgver=0.4.0_devel4.r2005.3f133936
 pkgrel=1
 license=(BSD)
 provides=(blesh)
