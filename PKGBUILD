@@ -1,6 +1,6 @@
 # Maintainer:  kxxt <rsworktech at outlook dot com>
 pkgname=tracexec
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A small utility for tracing execve{,at}"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-b2sums=('ff41a3695173e97c24c59c08deb75535d431601f5cb956227e7951a7fe608637dd2ce4a659dab68695d192d6107f0a8afd8574ed95337fc7ac5f92342472f7d8')
+b2sums=('ef2b940063c0aa234bf5c4046136a2cfc063dc926f8d55b595ddc640c4e5e3aad45f206cc9acfadae272ae0a7405c697467025bce1a97ba0a7bad39224dcf801')
 
 case "$CARCH" in
     riscv64) RUST_ARCH=riscv64gc ;;
