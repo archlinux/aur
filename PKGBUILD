@@ -2,7 +2,7 @@
 pkgname=atom-ng-bin
 _pkgname=Atom-ng
 pkgver=1.66.10
-pkgrel=5
+pkgrel=6
 pkgdesc="The hyper-hackable text editor. Community maintained fork with compiler optimizations."
 arch=('x86_64')
 url="https://thorium.rocks/atom-ng/"
@@ -57,6 +57,6 @@ package() {
     cp -r "${srcdir}/${_pkgname}_${pkgver}_amd64/"* "${pkgdir}/opt/${pkgname%-bin}"
     ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}_amd64/resources/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${pkgdir}/${_pkgname}_${pkgver}_amd64/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${_pkgname}_${pkgver}_amd64/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
