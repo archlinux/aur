@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=logr
-_pkgver=1.3.4
+_pkgver=1.3.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,9 +29,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$pkgname-CC0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
-md5sums=('6fba6b60eead4c8c31ead6ce7b13232c'
+md5sums=('6b216952470eee98af6641ad8a816f97'
          '65d3616852dbf7b1a6d4b53b00626032')
-sha256sums=('9a5222cb75501a3e3085d46db188b712e65af064d849b52a2793be3295f72b10'
+sha256sums=('9566dcb34d56ad742d3ac4832b5d8b93f4d374182ea877b1a022ab19ee15ea40'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
 build() {
