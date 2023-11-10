@@ -2,13 +2,13 @@
 
 pkgname=plasma5-applets-presentwindows
 pkgver=8
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma 5 widget for triggering the present windows desktop effect with a click"
 arch=(any)
 url="https://github.com/Zren/plasma-applet-presentwindows"
 license=(GPL2)
 depends=(plasma-workspace)
-makedepends=(kconfig git)
+makedepends=(kconfig5 git)
 #v8 was noted in commits but not released as a tarball or tagged
 _commit='3bf0ce226ed068e640d154d9a9d1a4d28ef6d5f7'
 source=("${pkgname}::git+https://github.com/Zren/plasma-applet-presentwindows#commit=${_commit}")
