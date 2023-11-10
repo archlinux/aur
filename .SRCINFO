@@ -12,7 +12,6 @@ pkgbase = puppet5
 	depends = ruby27-augeas
 	depends = ruby27-shadow
 	depends = ruby27-sync
-	provides = puppet
 	conflicts = puppet
 	backup = etc/puppetlabs/puppet/auth.conf
 	backup = etc/puppetlabs/puppet/puppet.conf

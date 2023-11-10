@@ -25,7 +25,6 @@ sha512sums=('5332b084a63bdf244672cc4751022c84a1cc50d3f394a13bdcbccf7fcf4ebea6795
             'SKIP')
 validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
 conflicts=('puppet')
-provides=('puppet')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
