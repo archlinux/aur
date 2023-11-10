@@ -1,0 +1,14 @@
+pkgbase = rtl88x2bu-openhd-dkms-git
+	pkgdesc = Realtek RTL88x2BU WiFi USB Driver for Linux (with OpenHD patches)
+	pkgver = 5.13.1.r210.6554258
+	pkgrel = 1
+	url = https://github.com/OpenHD/rtl88x2bu
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = bc
+	source = git+https://github.com/OpenHD/rtl88x2bu.git
+	sha256sums = SKIP
+
+pkgname = rtl88x2bu-openhd-dkms-git
