@@ -1,0 +1,26 @@
+pkgbase = r-screencounter
+	pkgdesc = Counting Reads in High-Throughput Sequencing Screens
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/screenCounter
+	arch = x86_64
+	license = MIT
+	checkdepends = r-biostrings
+	checkdepends = r-testthat
+	depends = r-biocparallel
+	depends = r-rcpp
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	depends = r-zlibbioc
+	depends = zlib
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-biostrings
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/screenCounter_1.2.0.tar.gz
+	md5sums = 35bb89fb63853645e76facfc72e77522
+	sha256sums = a9995014d30f1a8856794a65b2f34a0db6a662e29f11947058359cecce0c68fa
+
+pkgname = r-screencounter
