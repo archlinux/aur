@@ -1,4 +1,5 @@
-# Maintainer: Vladimir Svyatski <vsvyatski@yandex.ru>
+# Maintainer: Yvaniak <ewen at philippot dot biz>
+# Contributor: Vladimir Svyatski <vsvyatski@yandex.ru>
 # Previous Maintainer: Edoardo Brogiolo <edoardo@brogiolo.eu>
 # Previous Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 # Contributor: gspu <bssbk2455@gmail.com>
