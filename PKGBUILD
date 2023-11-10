@@ -3,7 +3,7 @@
 
 pkgname=seisunix-git
 pkgver=4426.c222c39
-pkgrel=1
+pkgrel=2
 pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
 arch=('i686' 'x86_64')
@@ -18,6 +18,11 @@ source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
 # source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/s/LZpzc8jMzbWG9BZ/download?path=%2F&files=cwp_su_all_44R28.tgz")
 md5sums=("SKIP")
 #install=seismic-unix.install
+
+pkgver() {
+    cd ${pkgname}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd ${srcdir}/SeisUnix/src/
