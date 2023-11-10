@@ -5,7 +5,7 @@ pkgdesc="dummy package to track kf5-package renames"
 arch=('any')
 
 provides=(
-  kirigami-addons=0.11.75
+  kirigami-addons=0.11.50
   kuserfeedback
 
   attica=$pkgver
@@ -21,12 +21,12 @@ provides=(
   kcmutils=$pkgver
   kcodecs=$pkgver
   kcompletion=$pkgver
-  kconfig=$pkgver
+  kconfig=1:$pkgver
   kconfigwidgets=$pkgver
   kcontacts=$pkgver
   kcoreaddons=$pkgver
   kcrash=$pkgver
-  kdav=$pkgver
+  kdav=1:$pkgver
   kdbusaddons=$pkgver
   kdeclarative=$pkgver
   kded=$pkgver
@@ -36,7 +36,7 @@ provides=(
   kfilemetadata=$pkgver
   kglobalaccel=$pkgver
   kguiaddons=$pkgver
-  kholidays=$pkgver
+  kholidays=1:$pkgver
   ki18n=$pkgver
   kiconthemes=$pkgver
   kidletime=$pkgver
@@ -78,5 +78,5 @@ provides=(
 )
 
 package() {
-  :
+  depends=(do-not-install)
 }

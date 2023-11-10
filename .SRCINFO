@@ -3,7 +3,7 @@ pkgbase = kf5-transition-dummy
 	pkgver = 5.150.0
 	pkgrel = 1
 	arch = any
-	provides = kirigami-addons=0.11.75
+	provides = kirigami-addons=0.11.50
 	provides = kuserfeedback
 	provides = attica=5.150.0
 	provides = baloo=5.150.0
@@ -18,12 +18,12 @@ pkgbase = kf5-transition-dummy
 	provides = kcmutils=5.150.0
 	provides = kcodecs=5.150.0
 	provides = kcompletion=5.150.0
-	provides = kconfig=5.150.0
+	provides = kconfig=1:5.150.0
 	provides = kconfigwidgets=5.150.0
 	provides = kcontacts=5.150.0
 	provides = kcoreaddons=5.150.0
 	provides = kcrash=5.150.0
-	provides = kdav=5.150.0
+	provides = kdav=1:5.150.0
 	provides = kdbusaddons=5.150.0
 	provides = kdeclarative=5.150.0
 	provides = kded=5.150.0
@@ -33,7 +33,7 @@ pkgbase = kf5-transition-dummy
 	provides = kfilemetadata=5.150.0
 	provides = kglobalaccel=5.150.0
 	provides = kguiaddons=5.150.0
-	provides = kholidays=5.150.0
+	provides = kholidays=1:5.150.0
 	provides = ki18n=5.150.0
 	provides = kiconthemes=5.150.0
 	provides = kidletime=5.150.0
@@ -74,3 +74,4 @@ pkgbase = kf5-transition-dummy
 	provides = threadweaver=5.150.0
 
 pkgname = kf5-transition-dummy
+	depends = do-not-install
