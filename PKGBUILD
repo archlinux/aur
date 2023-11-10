@@ -2,8 +2,8 @@
 
 pkgname='python-dm-haiku'
 _pkgname=${pkgname#python-}
-pkgver=0.0.10
-pkgrel=2
+pkgver=0.0.11
+pkgrel=1
 pkgdesc='A library for building neural networks in JAX'
 arch=('x86_64')
 url='https://github.com/deepmind/dm-haiku'
@@ -16,12 +16,18 @@ depends=('python-absl'
          'python-typing_extensions'
          'python-tabulate')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/deepmind/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7dea7f92abd48722c5da58956fdc3ee6aeadaf2b09c9a5f35b72460ef72afe39')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/deepmind/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+        'python-dm-haiku.diff')
+sha256sums=('dad60e2511d973cab651e8b7cb788b721b9738cda9b163d0128308b1e3cfaccf'
+            '8e201685fe23bb3ac20dac9e2d9ae542cbdec071a596fee80db2d522c12bb878')
+
+prepare() {
+    cd "$_pkgname-$pkgver"
+    patch -p1 -i ../patch.diff
+}
 
 build() {
-    cd "$_pkgname-$pkgver"
-    python -m build -w
+    python -m build -nw "$_pkgname-$pkgver"
 }
 
 package() {
@@ -30,9 +36,4 @@ package() {
         --compile-bytecode 1 \
         --destdir $pkgdir \
         dist/${_pkgname/-/_}-$pkgver-*.whl
-
-    # TODO(@daskol): Fix setup.py of optax.
-    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/build
-    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/docs
-    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/examples
 }
