@@ -1,13 +1,15 @@
 #!/bin/sh
+unset JFXPATH
+
 if [ -e /usr/lib/jvm/java-17-openjfx/lib/javafx.base.jar ]; then
-        JVMPATH=/usr/lib/jvm/java-17-openjfx/lib
+        JFXPATH=/usr/lib/jvm/java-17-openjfx/lib
 else
-        JVMPATH=/usr/lib/jvm/java-17-openjdk/lib
+        JFXPATH=/usr/lib/jvm/java-17-openjdk/lib
 fi
 
 CP="/opt/greenfoot/boot.jar"
-JAVAFXJARS=`ls -1 $JVMPATH/javafx* | paste -sd ":" -`
-CP="$CP:$JVMPATH/tools.jar:$JAVAFXJARS"
+JAVAFXJARS=`ls -1 $JFXPATH/javafx* | paste -sd ":" -`
+CP="$CP:$JAVAFXJARS"
 
 archlinux-java-run -a 17 -b 17 -- -Djavafx.embed.singleThread=true \
         -Dawt.useSystemAAFontSettings=on -Xmx512M \

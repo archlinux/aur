@@ -6,7 +6,7 @@
 # Contributor: even <kessiapinheiro @ gmail . com>
 
 pkgname=greenfoot
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Educational software designed to make learning programming easy and fun."
 arch=('any')
@@ -17,17 +17,19 @@ source=("https://www.${pkgname}.org/download/files/Greenfoot-linux-${pkgver//.}.
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-noextract=("Greenfoot-linux-${pkgver//.}.deb")
-
-sha256sums=('1c35e680b1d2d7c559555fa1080d11808aca45fb4e955eedf9fbc4d290071a39'
-            'd6cb8d1cae6320ab939ec534560a890b83ade393353a2fcd31299803724ba07c'
+#noextract=("Greenfoot-linux-${pkgver//.}.deb")
+sha256sums=('bad19201b3fbe0ed6dd621283740b089955cf07c5d0b1868ccf3ccc100ad9041'
+            '81caabbb2930d95414e5da3a8427b44dc5e338d192236c0c86be3ea344016189'
             'b980d0084fbafbb3ea335bb3840d858898c692822f1c671969a91982e86c1b4f'
             'f1ea33e8289dfe31b9a0c4d88482a5ca5f75d663ba82ca986519f290e44789e4')
 
 prepare(){
   cd "${srcdir}"
   echo "Extracting archive ..."
-  ar p "Greenfoot-linux-${pkgver//.}.deb" data.tar.xz | tar xJ --exclude=usr/share/${pkgname}/{javafx,jdk}
+  tar -xf data.tar.xz --exclude=usr/share/${pkgname}/{javafx,jdk}
+#  ar p "Greenfoot-linux-${pkgver//.}.deb" data.tar.xz | tar xJ --exclude=usr/share/${pkgname}/{javafx,jdk}
+  cd "usr/share/${pkgname}"
+#  find -type f -name "javafx-*" -delete
 }
 
 package() {
