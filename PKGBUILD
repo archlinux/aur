@@ -1,6 +1,6 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
-pkgname=mcsur-kde-git
+pkgname=plasma5-theme-mcsur-git
 pkgver=r11.fa3dd65
 pkgrel=1
 pkgdesc='A materia Design theme for KDE Plasma desktop.'
