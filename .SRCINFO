@@ -1,13 +1,11 @@
 pkgbase = xmachoviewer-bin
 	pkgdesc = Mach-O viewer for Windows, Linux and MacOS
 	pkgver = 0.04
-	pkgrel = 4
+	pkgrel = 5
 	url = https://horsicq.github.io/#xmachoviewer
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
-	depends = glibc
-	depends = gcc-libs
 	depends = qt5-base
 	provides = xmachoviewer=0.04
 	conflicts = xmachoviewer
