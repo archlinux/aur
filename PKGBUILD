@@ -1,7 +1,7 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=firejail-git
-pkgver=0.9.70.r8682.160ccd3d9
+pkgver=0.9.72.r721.g37e40e020
 pkgrel=1
 pkgdesc="Linux namespaces sandbox program (GIT version)"
 arch=(i686 x86_64)
@@ -22,8 +22,9 @@ backup=('etc/firejail/login.users'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s.r%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/^v//;s/-/./g'
+  git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+
 
 build() {
   cd "${srcdir}/${pkgname}"
