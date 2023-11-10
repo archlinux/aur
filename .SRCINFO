@@ -1,7 +1,7 @@
 pkgbase = discover-snap
 	pkgdesc = KDE and Plasma resources management GUI
 	pkgver = 5.27.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL
@@ -18,7 +18,7 @@ pkgbase = discover-snap
 	depends = archlinux-appstream-data
 	depends = kirigami2
 	depends = discount
-	depends = kuserfeedback
+	depends = kuserfeedback5
 	depends = purpose5
 	depends = qt5-webview
 	depends = snapd
