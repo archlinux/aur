@@ -1,14 +1,31 @@
 pkgbase = ruffle-bin
-	pkgdesc = A Flash Player emulator written in Rust
-	pkgver = nightly.2020.11.25
+	pkgdesc = Unnofficial Ruffle bin package that supplies binaries for Linux x64, i368 and Arm64
+	pkgver = 2023.11.08
 	pkgrel = 1
 	url = https://ruffle.rs/
 	arch = x86_64
+	arch = aarch64
+	arch = i386
 	license = Apache
 	license = MIT
+	makedepends = unzip
+	depends = gtk3
+	depends = libxcb
+	depends = zlib
+	depends = libxcb
+	depends = alsa-lib
 	conflicts = ruffle-git
-	source = https://github.com/ruffle-rs/ruffle/releases/download/nightly-2020-11-25/ruffle_nightly_2020_11_25_linux.tar.gz
-	sha512sums = 31d838d8f22b689c857287c01f40ad70cc1c93c1cabeb438e2f5cb0d00b8216ddb9ec882f6cd9b81fde118feafb9214b2d1aab1fdc38d548d5f4279d97de79fc
+	source_x86_64 = https://gitlab.com/ruffle-linux/binaries/ruffle-2023.11.08/-/raw/main/ruffle-2023.11.08-x64.tar.xz
+	source_x86_64 = https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-2023.11.08/ruffle-ruffle-2023.11.08.tar.bz2
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/ruffle-linux/binaries/ruffle-2023.11.08/-/raw/main/ruffle-2023.11.08-arm64.tar.xz
+	source_aarch64 = https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-2023.11.08/ruffle-ruffle-2023.11.08.tar.bz2
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+	source_i386 = https://gitlab.com/ruffle-linux/binaries/ruffle-2023.11.08/-/raw/main/ruffle-2023.11.08-i386.tar.xz
+	source_i386 = https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-2023.11.08/ruffle-ruffle-2023.11.08.tar.bz2
+	sha256sums_i386 = SKIP
+	sha256sums_i386 = SKIP
 
 pkgname = ruffle-bin
-
