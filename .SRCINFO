@@ -1,6 +1,6 @@
 pkgbase = tagger
 	pkgdesc = An easy-to-use music tag (metadata) editor
-	pkgver = 2023.11.1
+	pkgver = 2023.11.2
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/Tagger
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = tagger
 	optdepends = yelp: in-app help
 	conflicts = nickvision-tagger
 	replaces = nickvision-tagger
-	source = git+https://github.com/NickvisionApps/Tagger.git#commit=7e3c98e49bdf073cebbecc9cb7ccd394e424d362
+	source = git+https://github.com/NickvisionApps/Tagger.git#commit=01d4453b205da1cfd063cb49d6e8d555c3b252ec
 	source = git+https://github.com/NickvisionApps/CakeScripts.git
 	sha256sums = SKIP
 	sha256sums = SKIP
