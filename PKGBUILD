@@ -7,7 +7,7 @@
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-unstable" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-dev
-pkgver=121.0.6103.3
+pkgver=121.0.6115.2
 pkgrel=1
 pkgdesc="The popular web browser by Google (Dev Channel)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
 	'pipewire: WebRTC desktop sharing under Wayland'
 	'kdialog: for file dialogs in KDE'
 	'gnome-keyring: for storing passwords in GNOME keyring'
-	'kwallet: for storing passwords in KWallet'
+	'kwallet5: for storing passwords in KWallet'
 )
 provides=('google-chrome')
 options=('!emptydirs' '!strip')
@@ -36,7 +36,7 @@ _channel=unstable
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
-sha512sums=('269060735453c8207e9fcc368e31a235c8f6b55ceaae99e77cc16cb01bdb952f5463ff82aca1e76771b31f6457f1733dd1319a7af803928635fdd653b6ccb704'
+sha512sums=('4eeed4352b2458cd2054b0b7092c16487c96e9d08669f6e098d097c836b2610cc65b89802939666770affbb89d071f4b609bab11951fe86aa944dd943cd2830c'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '445eb36a588f49af018ded3d852b63e0523ffac20c25be721f3ef4663591256849432bebb3d9f352e4f53cbe1fb77fa67cf8911c9161f826490a21adbdcc81f4')
 
