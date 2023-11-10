@@ -24,8 +24,8 @@ url="https://github.com/catppuccin/kde"
 license=('MIT')
 arch=('any')
 depends=('plasma-desktop')
-makedepends=('git' 'kpackage')
-provides=('catppuccin-kde-theme')
+makedepends=('git' 'kpackage5')
+provides=('plasma5-theme-catppuccin')
 source=("$pkgname::git+https://github.com/catppuccin/kde.git"
         color.sh)
 sha256sums=('SKIP'
