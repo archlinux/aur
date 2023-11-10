@@ -45,7 +45,7 @@ makedepends=(
   'git'
   'extra-cmake-modules'
   'qt5-tools'
-  'kdoctools'
+  'kdoctools5'
   'python'
 )
 optdepends=('python: python scripting support')
