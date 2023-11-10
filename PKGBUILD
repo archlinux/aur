@@ -2,9 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-cadquery
-pkgver=7.7.2
-#_pkgver="V7_7_2"
-#pkgver=$(echo ${_pkgver} | sed 's,^V,,g;s,_,.,g')
+pkgver=7.7.1
 pkgrel=1
 pkgdesc="Opencascade for python-cadquery"
 arch=(x86_64)
@@ -49,14 +47,17 @@ _pkgver="V${pkgver//./_}"
 source=(
 "${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
 https://gitlab.archlinux.org/archlinux/packaging/packages/opencascade/-/raw/74734cd01021d87a6ddd0a208c449a44685f5425/cmake-fix-variable.patch
+fix_var_collision.patch::'https://git.dev.opencascade.org/gitweb/?p=occt.git;a=blobdiff_plain;f=src/IVtkDraw/IVtkDraw_Interactor.cxx;h=06626bb315f92243e0778830f2fc9a58d7d9942d;hb=54ed243582970aebb8f69954311d4d94b6fc2c7e;hpb=8748042259f22d72b3b076bc5433a54ca42734e4'
 )
 
-sha256sums=('2fb23c8d67a7b72061b4f7a6875861e17d412d524527b2a96151ead1d9cfa2c1'
-            '8d74dc87462164093a4cc3a427919dcc1f7f90a2a37fbae50357d9635f358812')
+sha256sums=('f413d30a8a06d6164e94860a652cbc96ea58fe262df36ce4eaa92a9e3561fd12'
+            '8d74dc87462164093a4cc3a427919dcc1f7f90a2a37fbae50357d9635f358812'
+            '238a2b679e742ad41acc4cca44abee835013782224acfae130ffdd7f71c06f91')
 
 prepare() {
   cd occt-${_pkgver}
 
+  patch -p1 -i ../fix_var_collision.patch
   patch -p1 -i ../cmake-fix-variable.patch
 
   # fix for trying to write into the system during build
