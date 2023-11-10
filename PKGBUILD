@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r247.1cc5480
+pkgver=r312.fd5929b
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=(
     'cmake'
 )
 optdepends=(
-    'kimageformats: XCF, EXR, PSD and other extra image format support'
+    'kimageformats5: XCF, EXR, PSD and other extra image format support'
     'qt5-imageformats: TIFF, WEBP, and other extra image formats'
 )
 source=(

@@ -1,6 +1,6 @@
 pkgbase = pineapple-pictures-git
 	pkgdesc = Yet another lightweight image viewer
-	pkgver = r247.1cc5480
+	pkgver = r312.fd5929b
 	pkgrel = 1
 	url = https://github.com/BLumia/pineapple-pictures/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pineapple-pictures-git
 	makedepends = cmake
 	depends = qt5-svg
 	depends = exiv2
-	optdepends = kimageformats: XCF, EXR, PSD and other extra image format support
+	optdepends = kimageformats5: XCF, EXR, PSD and other extra image format support
 	optdepends = qt5-imageformats: TIFF, WEBP, and other extra image formats
 	conflicts = pineapple-pictures
 	source = git+https://github.com/BLumia/pineapple-pictures.git
