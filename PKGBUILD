@@ -1,7 +1,7 @@
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 pkgname=wacomtablet
-pkgver=5.27.80.20231105
+pkgver=5.27.80
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='GUI for Wacom Linux drivers that supports different button/pen layout profiles'
@@ -34,18 +34,16 @@ makedepends=(extra-cmake-modules
 conflicts=(kcm-wacomtablet)
 replaces=(kcm-wacomtablet)
 groups=(plasma)
-#source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-makedepends+=(git)
-_commit=40df594dc21d2ff59202057435346e411bd446c5
-source=(git+https://invent.kde.org/plasma/$pkgname#commit=$_commit)
-sha256sums=('SKIP')
+source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('d8c4638ee07933372d61bb77c93919a96392833dac4202bad78f1cdf04e96b7c'
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 build() {
-  cmake -B build -S $pkgname \
+  cmake -B build  -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
