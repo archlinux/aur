@@ -6,7 +6,7 @@
 #               Peng Hao <penghao@linuxdeepin.com>
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 BOTTLENAME=Deepin-eCloud
-APPVER=6.5.8
+APPVER=6.6.0
 EXEC_PATH="c:/Program Files/ecloud/eCloud.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/spark_run_v4.sh"
 #START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
