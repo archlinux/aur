@@ -1,7 +1,7 @@
 pkgbase = qsv
-	pkgdesc = A command line program for CSV files. Fork of xsv.
-	pkgver = 0.117.0
-	pkgrel = 2
+	pkgdesc = CSV data-wrangling toolkit (fork of xsv)
+	pkgver = 0.118.0
+	pkgrel = 1
 	url = https://github.com/jqnatividad/qsv
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = qsv
 	makedepends = luau
 	depends = python
 	depends = python-xlsxwriter
-	source = qsv-0.117.0.tar.gz::https://github.com/jqnatividad/qsv/archive/refs/tags/0.117.0.tar.gz
-	sha256sums = 5f74e4380a1fea1b2fb8ae41c852f3fcde3021780e2352351ab20869913ac578
+	source = https://github.com/jqnatividad/qsv/archive/0.118.0/qsv-0.118.0.tar.gz
+	sha256sums = b312fef7fc9798e9077a56618c56fa25aec3714e197217bef49a1dc7a52bbb7f
 
 pkgname = qsv

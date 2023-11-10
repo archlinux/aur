@@ -1,42 +1,47 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 BUILDENV+=(!check)
 
 pkgname=qsv
-pkgver=0.117.0
-pkgrel=2
-pkgdesc='A command line program for CSV files. Fork of xsv.'
+pkgver=0.118.0
+pkgrel=1
+pkgdesc='CSV data-wrangling toolkit (fork of xsv)'
 arch=(any)
-url='https://github.com/jqnatividad/qsv'
+url="https://github.com/jqnatividad/$pkgname"
 license=(MIT Unlicense)
-depends=(python python-xlsxwriter)
-makedepends=(cargo clang luau)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5f74e4380a1fea1b2fb8ae41c852f3fcde3021780e2352351ab20869913ac578')
+depends=(python
+         python-xlsxwriter)
+makedepends=(cargo
+             clang
+             luau)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/$pkgver/$_archive.tar.gz")
+sha256sums=('b312fef7fc9798e9077a56618c56fa25aec3714e197217bef49a1dc7a52bbb7f')
 
-_features='feature_capable,apply,fetch,foreach,generate,luau,polars,python,to,geocode'
+# all_features minus self_update
+_features='feature_capable,apply,fetch,foreach,generate,geocode,luau,polars,python,to,to_parquet'
 
 prepare() {
-    cd $pkgname-$pkgver
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "$_archive"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd $pkgname-$pkgver
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    CFLAGS+=" -ffat-lto-objects"
-    cargo build --frozen --release --features "$_features"
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+	cargo build --frozen --release --features "$_features"
 }
 
 check() {
-    cd $pkgname-$pkgver
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --features "$_features"
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --features "$_features"
 }
 
 package() {
-    cd $pkgname-$pkgver
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	cd "$_archive"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
