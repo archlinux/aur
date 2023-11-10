@@ -1,13 +1,13 @@
 pkgbase = xrayr
-	pkgdesc = A Xray backend framework that can easily support many panels
-	pkgver = 0.9.1
+	pkgdesc = An Xray backend framework that can easily support many panels
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/XrayR-project/XrayR
 	arch = x86_64
 	license = MPL
 	makedepends = go
 	depends = glibc
-	source = xrayr-0.9.1.tar.gz::https://github.com/XrayR-project/XrayR/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 7dabaf3d32d18f69eff772e741fbee31058386de3f359f0851ba17531ff2d724
+	source = xrayr-0.9.2.tar.gz::https://github.com/XrayR-project/XrayR/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = d448362eb505a98248484cdba90a716bbaa6a4268147c61aac2c825306f88251
 
 pkgname = xrayr
