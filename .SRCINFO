@@ -6,7 +6,7 @@ pkgbase = anubias-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = squashfuse
-	depends = electron>=13
+	depends = electron13
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = libx11

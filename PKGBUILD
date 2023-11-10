@@ -11,7 +11,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'electron>=13'
+    'electron13'
     'hicolor-icon-theme'
     'java-runtime'
     'libx11'
