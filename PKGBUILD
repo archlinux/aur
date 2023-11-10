@@ -6,16 +6,16 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-pkgver=26.3.0
-_major_ver=${pkgver%%.*}
-pkgname="electron${_major_ver}"
-pkgrel=1
+pkgver=26.5.0
 _chromiumver=116.0.5845.228
 _gcc_patchset=116-patchset-2
+pkgrel=1
+_major_ver=${pkgver%%.*}
+pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
-arch=('x86_64')
+arch=(x86_64)
 url='https://electronjs.org'
-license=('MIT' 'custom')
+license=(MIT custom)
 depends=(c-ares
          gtk3
          libevent
@@ -43,8 +43,8 @@ makedepends=(clang
              qt5-base
              wget
              yarn)
-optdepends=('pipewire: WebRTC desktop sharing under Wayland'
-            'kde-cli-tools: file deletion support (kioclient5)'
+optdepends=('kde-cli-tools: file deletion support (kioclient5)'
+            'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
@@ -52,31 +52,31 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
         "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
-        https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
-        "electron-launcher.sh"
-        "electron.desktop"
+        "https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz"
         REVERT-disable-autoupgrading-debug-info.patch
         default_app-icon.patch
+        electron-launcher.sh
+        electron.desktop
         jinja-python-3.10.patch
-        use-system-libraries-in-node.patch
-        std-vector-non-const.patch)
+        std-vector-non-const.patch
+        use-system-libraries-in-node.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
-            'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
-            '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
+            'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
+            '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
-            'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
-            '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c')
+            '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
+            'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f')
 
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  #[brotli]=brotli
+  # [brotli]=brotli
   [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
@@ -139,7 +139,7 @@ EOF
       --with_tags
 
   echo "Running hooks..."
-  # python "${srcdir}/depot_tools/gclient.py" runhooks
+  # depot_tools/gclient.py runhooks
   src/build/landmines.py
   src/build/util/lastchange.py -o src/build/util/LASTCHANGE
   src/build/util/lastchange.py -m GPU_LISTS_VERSION \
