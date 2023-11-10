@@ -1,0 +1,26 @@
+From f15c889cf40d7c96a01af1e12f443b14c27872ba Mon Sep 17 00:00:00 2001
+From: Rihards Skuja <rihards@skuja.eu>
+Date: Fri, 3 Nov 2023 15:41:01 +0200
+Subject: [PATCH] fix compile on gcc 13
+
+Without the header compilation fails with a bunch of
+"'uint8_t' does not name a type" errors.
+---
+ src/HelperSources/StringHelper.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/HelperSources/StringHelper.hpp b/src/HelperSources/StringHelper.hpp
+index f00bf9c..1e8e774 100644
+--- a/src/HelperSources/StringHelper.hpp
++++ b/src/HelperSources/StringHelper.hpp
+@@ -9,6 +9,7 @@
+ #include <sstream>
+ #include <array>
+ #include <vector>
++#include <cstdint>
+ 
+ class StringHelper {
+  public:
+-- 
+2.42.1
+
