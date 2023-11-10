@@ -1,0 +1,19 @@
+pkgbase = qflipper-bin
+	pkgdesc = Desktop application for updating Flipper Zero firmware via PC - Binary release (extracted from official AppImage)
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://update.flipperzero.one/
+	arch = x86_64
+	license = GPL3
+	makedepends = fuse2
+	depends = libusb
+	depends = qt6-5compat
+	depends = qt6-quickcontrols2
+	depends = qt6-serialport
+	depends = qt6-svg
+	provides = qflipper
+	conflicts = qflipper
+	source = https://update.flipperzero.one/builds/qFlipper/1.3.2/qFlipper-x86_64-1.3.2.AppImage
+	sha256sums = a2197cf7ec588b700cb6ffd3b6feada2c0f5febcb2f0c5d7dce3b8cbbef4bc4d
+
+pkgname = qflipper-bin
