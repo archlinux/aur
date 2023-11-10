@@ -2,7 +2,7 @@
 
 pkgname=wireguard-ui
 pkgver=0.5.2
-pkgrel=4
+pkgrel=6
 pkgdesc="A web user interface to manage your WireGuard setup."
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/ngoduykhanh/${pkgname}"
@@ -16,17 +16,17 @@ source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         ${pkgname}.service
         99-wg.conf
         wgiptables.sh
-        wg-reload.path
-        wg-reload.service)
+        wgui.path
+        wgui.service)
 sha256sums=('50a9491b5d83331b306f8cf8b6a3856f27fa00c0040ddb84ea1f6a23436bca1c'
-            '91ee0f25e3544065e9df106bcd7eacb9ad9ee05a0944d5a91c595098b7372a34'
-            '26ca58278f0dd9ba45793aaa20d259bf927dbb3157d1515c01eb2f0796414a00'
-            '0991fc935ce8d7596585e8bbf1bd2d25e2a6b70c76b2b1fa192044776d6aad35'
-            'c60cbe2d47c616a2f9984c6c57ef60e810c7e57ca5054a318b3da8770bf03b76'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '99df93fd8e6916ddad872e9a1bee496de5173bc544dc2c09f5c2a688b8deac76'
             'cf5bdce2ce87b5054042a70d8630f40a0f991c64c42786824f660245b943d2be'
             '87983b041d8beb7303bb57dd7f724163a157390cdf3cd74900aff6904e9402e0'
             '4b63dee5d287bb16a8e1a588ba24ccaeb91a4e0d2993bfeb9a1fb423bf08432d'
-            '44d74ce9057193a34e2c6afc4996188bc9b26594cdb691f96076d1986b615e4f')
+            '6722f8665bcf91c724f754a756a61a9933999da93943fb8d788a9d6b82e1de40')
 conflicts=(${pkgname}-bin)
 install=${pkgname}.install
 
@@ -61,10 +61,10 @@ build() {
 }
 
 package() {
-  install -Dm644 ${pkgname}-${pkgver}/LICENSE       -t ${pkgdir}/usr/share/licenses/${pkgname}/
-  install -Dm755 ${pkgname}-${pkgver}/${pkgname}    -t ${pkgdir}/opt/${pkgname}/
-  install -Dm644 ${srcdir}/${pkgname}.service       -t ${pkgdir}/usr/lib/systemd/system/
-  install -Dm644 ${srcdir}/wg-reload.{path,service} -t ${pkgdir}/usr/lib/systemd/system/
-  install -Dm644 ${srcdir}/99-wg.conf               -t ${pkgdir}/etc/sysctl.d/
-  install -Dm755 ${srcdir}/wgiptables.sh               ${pkgdir}/opt/${pkgname}/wgiptables
+  install -Dm644 ${pkgname}-${pkgver}/LICENSE    -t ${pkgdir}/usr/share/licenses/${pkgname}/
+  install -Dm644 ${srcdir}/${pkgname}.service    -t ${pkgdir}/usr/lib/systemd/system/
+  install -Dm644 ${srcdir}/wgui.{path,service}   -t ${pkgdir}/usr/lib/systemd/system/
+  install -Dm644 ${srcdir}/99-wg.conf            -t ${pkgdir}/etc/sysctl.d/
+  install -Dm755 ${pkgname}-${pkgver}/${pkgname} -t ${pkgdir}/usr/bin/
+  install -Dm755 ${srcdir}/wgiptables.sh            ${pkgdir}/usr/bin/wgiptables
 }

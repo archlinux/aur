@@ -7,4 +7,4 @@ Type=oneshot
 ExecStart=/usr/bin/systemctl restart wg-quick@wg0.service
 
 [Install]
-RequiredBy=wg-reload.path
+RequiredBy=wgui.path
