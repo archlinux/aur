@@ -7,6 +7,7 @@ arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 license=("Apache")
 makedepends=("git" "haxe")
 optdepends=("vlc: To play videos in-game" "gamemode")
+url="https://github.com/Noobz4Life/FNF-QuackEngine"
 provides=("funkin")
 conflicts=("funkin")
 sha256sums=("SKIP"
