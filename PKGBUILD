@@ -3,9 +3,9 @@
 
 pkgname=blesh
 _pkgname=ble.sh
-pkgdesc="A replacement for bash's line editor with advanced features"
+pkgdesc="Bash Line Editor (ble.sh) -- a replacement for Bash's line editor with enhanced features"
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 license=(BSD)
 url='https://github.com/akinomyoga/ble.sh'
 depends=(bash)
