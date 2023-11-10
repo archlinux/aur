@@ -2,7 +2,7 @@
 
 pkgname=python-onnx
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Open Neural Network Exchange'
 arch=('x86_64')
@@ -19,8 +19,10 @@ makedepends=(
   cmake
   git
   pybind11
+  python-build
+  python-installer
   python-setuptools
-  python-pip
+  python-wheel
 )
 source=("${pkgname}::git+https://github.com/onnx/onnx.git#tag=v${pkgver}")
 sha512sums=('SKIP')
@@ -28,20 +30,18 @@ sha512sums=('SKIP')
 prepare() {
   cd "${pkgname}"
   git submodule update --init --recursive
-  # Partial backpart from https://github.com/onnx/onnx/pull/3674
-  sed -i 's#collections.Iterable#collections.abc.Iterable#g' onnx/helper.py
   # bump CMAKE_CXX_STANDARD to 17, see also https://github.com/onnx/onnx/pull/5119
-  sed -i 's#CMAKE_CXX_STANDARD 11#CMAKE_CXX_STANDARD 17#' CMakeLists.txt
+  sed -i 's#CMAKE_CXX_STANDARD 14#CMAKE_CXX_STANDARD 17#' CMakeLists.txt
 }
 
 build() {
   cd "${pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
