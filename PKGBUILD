@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pypdfium2
-pkgver=4.23.1
+pkgver=4.24.0
 pkgrel=1
 pkgdesc="An ABI-level Python 3 binding to PDFium"
 arch=(any)
@@ -13,11 +13,11 @@ optdepends=('python-pillow: support PIL image objects for raster graphics'
 	'python-numpy: support numpy arrays for raster graphics')
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
-_ctypesgencommit="dbdcbfb102b2c78dfd4899a6812634460aaa8d4f"
+_ctypesgencommit="54a44a426157e79a7c0b8308ec44872470ce9caf"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	# This is a pypdfium2-specific fork of the actual ctypesgen, hence we need to download it here.
 	"ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen#commit=$_ctypesgencommit")
-sha256sums=("174e861b379fec77b6f3b331b2a387eac074f65143b435aac1c42321a401ff9c"
+sha256sums=("62706c06bc5be39aa7a2531af802420429b6c4c47498eebd2521af7e988d0848"
 	"SKIP") # No checksums for git sources.
 
 build() {
@@ -30,7 +30,7 @@ build() {
 	# We need to include the previously-built ctypesgen here in the respective paths.
 	# NOTE: It's important to include our directories before other PATH entries,
 	#       in case the user has the "official" ctypesgen installed already.
-	PATH="$srcdir/ctypesgen-build/usr/bin:$PATH" PYTHONPATH="$srcdir/ctypesgen-build/usr/lib/python3.11/site-packages:$PYTHONPATH" python -m build --wheel --no-isolation
+	PATH="$srcdir/ctypesgen-build/usr/bin:$PATH" PYTHONPATH="$srcdir/ctypesgen-build/usr/lib/python3.$(python3 --version | sed 's/^Python 3\.\([0-9]*\)\..*$/\1/')/site-packages:$PYTHONPATH" python -m build --wheel --no-isolation
 }
 
 package() {
