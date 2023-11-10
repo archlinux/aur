@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=phytools
-_pkgver=1.9-16
+_pkgver=2.0-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,18 +22,18 @@ depends=(
   r-numderiv
   r-optimparallel
   r-phangorn
-  r-plotrix
   r-scatterplot3d
 )
 optdepends=(
   r-animation
   r-geiger
+  r-plotrix
   r-rcolorbrewer
   r-rgl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a3dec8a14abffa75a1c9ba35e75a16a0')
-sha256sums=('1b800b722a17679998efff40ab26adb127f61fcd57ea486ec1e129f34c79b29c')
+md5sums=('b92ab43e80c629468148e705c9364d6d')
+sha256sums=('a10f5ceba81d5f8dc8e1b80e4cd00c7878842ee312ecd266809f60f70b23e82e')
 
 build() {
   mkdir -p build

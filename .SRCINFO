@@ -1,6 +1,6 @@
 pkgbase = r-phytools
 	pkgdesc = Phylogenetic Tools for Comparative Biology (and Other Things)
-	pkgver = 1.9.16
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=phytools
 	arch = any
@@ -17,14 +17,14 @@ pkgbase = r-phytools
 	depends = r-numderiv
 	depends = r-optimparallel
 	depends = r-phangorn
-	depends = r-plotrix
 	depends = r-scatterplot3d
 	optdepends = r-animation
 	optdepends = r-geiger
+	optdepends = r-plotrix
 	optdepends = r-rcolorbrewer
 	optdepends = r-rgl
-	source = https://cran.r-project.org/src/contrib/phytools_1.9-16.tar.gz
-	md5sums = a3dec8a14abffa75a1c9ba35e75a16a0
-	sha256sums = 1b800b722a17679998efff40ab26adb127f61fcd57ea486ec1e129f34c79b29c
+	source = https://cran.r-project.org/src/contrib/phytools_2.0-3.tar.gz
+	md5sums = b92ab43e80c629468148e705c9364d6d
+	sha256sums = a10f5ceba81d5f8dc8e1b80e4cd00c7878842ee312ecd266809f60f70b23e82e
 
 pkgname = r-phytools
