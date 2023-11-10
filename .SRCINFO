@@ -1,14 +1,17 @@
 pkgbase = wifiqr
 	pkgdesc = A simple program to generate a QR code to connect to a WiFi network
 	pkgver = 1.2.2
-	pkgrel = 1
-	url = https://github.com/dusnm/wifiqr
+	pkgrel = 2
+	url = https://packages.t0.rs/wifiqr
 	arch = x86_64
 	arch = arm
 	arch = aarch64
-	license = GPLv3
+	license = GPL3
 	makedepends = go>=1.21
-	source = wifiqr-1.2.2.tar.gz::https://github.com/dusnm/wifiqr/archive/refs/tags/v1.2.2.tar.gz
+	source = wifiqr-1.2.2.tar.gz::https://packages.t0.rs/wifiqr/v1.2.2.tar.gz
+	source = wifiqr-1.2.2.tar.gz.sig::https://packages.t0.rs/wifiqr/v1.2.2.tar.gz.sig
+	validpgpkeys = BB713929B02F3CE81B84CD7554261991535AB4CB
 	sha256sums = 027394f083cb731cbd4ce3a92633e48a22e3392cf2cd5ee95d8f7860d8e0d752
+	sha256sums = c088919aff08961448ef9903e14284ecbb14a2febba26f0304b9afa5d1d3c287
 
 pkgname = wifiqr
