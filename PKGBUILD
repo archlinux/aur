@@ -3,7 +3,7 @@
 _pkgname=openboardview
 __pkgname=OpenBoardView
 pkgname=${_pkgname}-git
-pkgver=r646.befed74
+pkgver=9.95.0.r12.g8528b80
 pkgrel=1
 pkgdesc="Linux SDL/ImGui edition software for viewing .brd files"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
@@ -31,6 +31,7 @@ build() {
 }
 
 package() {
+  provides=($_pkgname=$pkgver)
   cd "${srcdir}/${pkgname}"
   mkdir -p "${pkgdir}"/usr/bin
   install -D -m755 utilities/bvconv.sh "${pkgdir}/usr/bin/bvconv"
