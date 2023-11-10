@@ -1,16 +1,17 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=wifiqr
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple program to generate a QR code to connect to a WiFi network"
 arch=('x86_64' 'arm' 'aarch64')
-url="https://packages.t0.rs/wifiqr"
+url="https://github.com/dusnm/wifiqr"
+_pkgurl="https://packages.t0.rs/wifiqr"
 license=('GPL3')
 depends=()
 makedepends=('go>=1.21')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/v${pkgver}.tar.gz"
-    "${pkgname}-${pkgver}.tar.gz.sig::${url}/v${pkgver}.tar.gz.sig"
+    "${pkgname}-${pkgver}.tar.gz::${_pkgurl}/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz.sig::${_pkgurl}/v${pkgver}.tar.gz.sig"
 )
 sha256sums=(
     "027394f083cb731cbd4ce3a92633e48a22e3392cf2cd5ee95d8f7860d8e0d752"
@@ -18,7 +19,7 @@ sha256sums=(
 )
 validpgpkeys=(
     # Get the key by running this command
-    # gpg --recv-keys --keyserver=hkps.openpgp.org BB713929B02F3CE81B84CD7554261991535AB4CB
+    # gpg --recv-keys --keyserver=hkps://keys.openpgp.org BB713929B02F3CE81B84CD7554261991535AB4CB
     "BB713929B02F3CE81B84CD7554261991535AB4CB"
 )
 

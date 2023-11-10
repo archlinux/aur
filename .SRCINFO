@@ -1,8 +1,8 @@
 pkgbase = wifiqr
 	pkgdesc = A simple program to generate a QR code to connect to a WiFi network
 	pkgver = 1.2.2
-	pkgrel = 2
-	url = https://packages.t0.rs/wifiqr
+	pkgrel = 3
+	url = https://github.com/dusnm/wifiqr
 	arch = x86_64
 	arch = arm
 	arch = aarch64
