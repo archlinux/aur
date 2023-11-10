@@ -4,7 +4,7 @@ _orgname=akash-network
 _pkgname=${_orgname%-*}
 _reponame=node
 pkgname=${_pkgname}-bin
-pkgver=0.26.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A secure, transparent, and peer-to-peer cloud computing network"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=(${_pkgname})
 source=("https://raw.githubusercontent.com/${_orgname}/${_reponame}/v${pkgver}/LICENSE")
 source_x86_64=("https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
 sha256sums=('f88a0de961dddc3410a201b6174c54190fdd912310df24ea8292c675981a39cd')
-sha256sums_x86_64=('8999d6b3ba19fb7546ae070c3032266d0049c6a920ab2838bab03a031ae26eb0')
+sha256sums_x86_64=('6390c2cdd170820e54dd64579ea28f6ce4d46c7150194b6d5233dc5d1d86be23')
 
 package() {
     install -Dt "${pkgdir}/usr/bin" "${srcdir}/${_pkgname}"
