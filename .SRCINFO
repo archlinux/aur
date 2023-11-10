@@ -1,7 +1,7 @@
 pkgbase = funkin-quack-git
 	pkgdesc = A modification for Friday Night Funkin': Psych Engine to provide better linux support and more features.
 	pkgver = 0.1.r61.g324d320
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	arch = pentium4
