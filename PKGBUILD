@@ -10,7 +10,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-tasmota-metrics
 epoch=
-pkgver=0.3.4
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Firmware size analysis for ESP-IDF'
 arch=(any)
@@ -25,9 +25,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/79/1b/da2afaee37343fba66f1bab63c57e0bf77cd1c985b0e050e0209df8c8a29/tasmota_metrics-0.3.4-py3-none-any.whl)
-md5sums+=(aa1b5f3ff4b3252cbf9992b25a909ea3)
-noextract+=(tasmota_metrics-0.3.4-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/9f/e4/40e7292f92c9093b228fbd66d662092314cd8244a37557f57aff412c904e/tasmota_metrics-0.4.3-py3-none-any.whl)
+md5sums+=(f6a62adababd59109f9f356f4716c427)
+noextract+=(tasmota_metrics-0.4.3-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(7c54c1a0b31a36f1ae00a2720082c83e)
 
