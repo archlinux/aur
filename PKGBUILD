@@ -1,7 +1,7 @@
 # Maintainer:  kxxt <rsworktech at outlook dot com>
 _name=tracexec
 pkgname="$_name-bin"
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A small utility for tracing execve{,at}"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -17,9 +17,9 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/kxxt/$_name
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/kxxt/$_name/releases/download/v$pkgver/$_name-x86_64-unknown-linux-gnu.tar.gz")
 source_riscv64=("$pkgname-$pkgver-riscv64.tar.gz::https://github.com/kxxt/$_name/releases/download/v$pkgver/$_name-riscv64gc-unknown-linux-gnu.tar.gz")
 noextract=()
-b2sums_x86_64=('a3f4031b643241dec3ecd8efed1993a14091f7d284396e9a2562a6da05175458245c9782661702bec90358fd6a25759eca14e7a0163bdeff0d821cc316cc5428')
-b2sums_aarch64=('5d3bc28114d5cc7a27e306035b41b8ae658b6c68a4c12a298d1b78f6a114a99202d821bc37b7b2cde6812915908575898b7b98323d165d21c3e7cc2142c448b3')
-b2sums_riscv64=('ab2fe0187098561b0cf057c7476ef71c493abff441aa682487506ea32630decebdeb2d89ec356fa00ef50acab648ed69e9f4d8e0c1363f6e037259f79b513597')
+b2sums_x86_64=('9e8b0cdacf1f0bc5d35b54a965150ef13dc4a521762eb4943c7dbbe747437c49d6b5e3f71f2069ab7262a1322e32cd8ab51167da4ac6f84b9f89768d7b5af703')
+b2sums_aarch64=('18671fd961f2cfaad4451bdf13bb979e4cc7684a5abe1d3cfd4e3c99c4dff3c85c98f5497ab696753fb15bb453632fdcb4c1e85add741923c7ca41ebbb1f1c30')
+b2sums_riscv64=('5dc16168793f87d4f83676a67b7f3a7c508b2ba0ecfbf95992a9e1caca6680514f01493da313ad68155b7878894d670f97e1771b0e63085144b26033fd95b824')
 
 
 package() {
