@@ -25,7 +25,7 @@ Type=Application" > $pkgname.desktop
 # Only build the executable
   cd FlightCore/src-tauri
   sed -i '/"bundle": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
-  # Disable the updater
+# Disable the updater
   sed -i '/"updater": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
   cd ..
 
