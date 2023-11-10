@@ -1,0 +1,18 @@
+pkgbase = perl-test-distribution
+	pkgdesc = perform tests on all modules of a distribution
+	pkgver = 2.00
+	pkgrel = 1
+	url = https://metacpan.org/dist/Test-Distribution
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl-file-find-rule
+	depends = perl-pod-coverage
+	depends = perl-test-pod
+	depends = perl-test-pod-coverage
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRSHAH/Test-Distribution-2.00.tar.gz
+	md5sums = 7b7f905605f60a786f2ece2d76230fd1
+
+pkgname = perl-test-distribution
