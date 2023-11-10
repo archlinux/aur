@@ -1,4 +1,4 @@
-pkgbase = monterey-kde-theme-git
+pkgbase = plasma5-theme-monterey-git
 	pkgdesc = Monterey theme for KDE plasma
 	pkgver = 2021.08.02.r9.g367cc61
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = monterey-kde-theme-git
 	optdepends = kvantum-qt5: for included kvantum theme
 	optdepends = sddm: for included sddm theme
 	optdepends = latte-dock: for included latte theme
-	source = monterey-kde-theme-git::git+https://github.com/vinceliuice/Monterey-kde.git
+	source = plasma5-theme-monterey-git::git+https://github.com/vinceliuice/Monterey-kde.git
 	sha256sums = SKIP
 
-pkgname = monterey-kde-theme-git
+pkgname = plasma5-theme-monterey-git

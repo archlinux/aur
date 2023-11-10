@@ -2,7 +2,7 @@
 
 _themename=Monterey
 _gitname="$_themename-kde"
-pkgname="${_themename,,}-kde-theme-git"
+pkgname="plasma5-theme-${_themename,,}-git"
 pkgver=2021.08.02.r9.g367cc61
 pkgrel=1
 pkgdesc='Monterey theme for KDE plasma'
