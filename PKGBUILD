@@ -34,6 +34,14 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
+  if [[ 0 -gt $(vercmp $(java -version |& sed -n "2s/.*build \([0-9.]*\).*/\1/; 2p") 21.0.1) ]]
+  then
+    echo "Error: you need JDK at least 21.0.1 to compile Jabref"
+    echo "JDK currently in use:"
+    java -version |& sed -n "2p"
+    exit 1
+  fi
+
   [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
   export GRADLE_USER_HOME="$srcdir"/gradle
   export DEFAULT_JVM_OPTS='"-Xmx1g" "-Xms64m"'
