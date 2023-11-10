@@ -16,7 +16,7 @@
 # 14. Lavender
 _accent=1
 
-pkgname=catppuccin-kde5-theme
+pkgname=plasma5-theme-catppuccin
 pkgver=0.2.4
 pkgrel=1
 pkgdesc="Soothing pastel theme for KDE"
