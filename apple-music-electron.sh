@@ -1,6 +1,9 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron15
-_ASAR="/opt/apple-music-electron/app.asar"
+APPDIR="/usr/lib/apple-music-electron"
+export PATH="${APPDIR}:${PATH}"
+#export LD_LIBRARY_PATH="${APPDIR}/swiftshader:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
