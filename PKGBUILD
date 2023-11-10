@@ -22,7 +22,7 @@ source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver//
         "${_pkgname}.desktop"
         "LICENSE")
 sha256sums=('36cf508e02857d6972c1fd0303f7948ab5104a4d7acf79876d956d4c84b439ee'
-            'c22682377691da1c9aaf87c69fd72f71224d602173cac7efc2ff306496e6a524'
+            '6f95b66035d7aa6744bb5200f7cb3f5450a82e84303a039fa256803e99631ad5'
             '047cca58d6cac6432476219a342ec43c2d2bb3f9c9784694dff4e30f929484be'
             '3e7b5ca32d3f29532a7101511006092a746a0433514a718f9f9c7d7342fb13b5'
             '21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468')
