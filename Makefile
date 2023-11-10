@@ -63,7 +63,8 @@ clean:
 	done
 
 build: clean
-	namcap -i PKGBUILD
+	namcap -i PKGBUILD && \
+	makepkg --printsrcinfo > .SRCINFO && \
 	makepkg
 
 test: build
