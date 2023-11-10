@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/sh
 
 # Launcher for Friday Night Funkin' files in /usr/share/funkin
 
