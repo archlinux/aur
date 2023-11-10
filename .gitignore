@@ -1,0 +1,10 @@
+# Ignore makepkg generated directories/files
+mesa/
+pkg/
+src/
+*.pkg.tar.zst
+
+# Ignore my various dumps
+garbage/
+old-builds/
+old-patches/
