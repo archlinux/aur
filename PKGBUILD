@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=doubletrouble
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,11 +10,14 @@ arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
 license=(GPL3)
 depends=(
+  r-annotationdbi
   r-biostrings
+  r-genomicfeatures
   r-genomicranges
   r-ggplot2
   r-mclust
   r-msa2dist
+  r-rlang
   r-syntenet
 )
 optdepends=(
@@ -27,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bcc083f6086186e6e1ba7d7865485cc1')
-sha256sums=('70c54571be41e023d57392c762ebfa4e3dd223e6f88f22f079e3f6c251f5445f')
+md5sums=('e494ee8650e6c8a13c7149c68683bea8')
+sha256sums=('907a504886fc6f1b6c1a33dec6326a9f118296f66db969d0fbec6a76888c0376')
 
 build() {
   mkdir -p build
