@@ -9,7 +9,9 @@ makedepends=("git" "haxe")
 optdepends=("vlc: To play videos in-game" "gamemode")
 provides=("funkin")
 conflicts=("funkin")
-sha256sums=("SKIP" "SKIP" "SKIP")
+sha256sums=("SKIP"
+        "8cb8c993a70609663b1dca92f8139ee06573828aee8cbc8b9a7d84aa4f7e74b0"
+        "c0ce512b409a5c01b696c5434c796dfc2a30bfb68b3aab352573b1072a16c9ce")
 source=("Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git#branch=experimental"
         "funkin.desktop" 
         "funkin.sh")
