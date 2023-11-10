@@ -1,0 +1,39 @@
+Index: gauche-c-wrapper-0.6.1/src/c-lex.c
+===================================================================
+--- gauche-c-wrapper-0.6.1.orig/src/c-lex.c
++++ gauche-c-wrapper-0.6.1/src/c-lex.c
+@@ -994,7 +994,7 @@ static ScmObj read_character_constant()
+     SCM_RETURN(Scm_MakeInteger(v));
+ }
+ 
+-ScmObj Scm_ReadStringLiteral()
++ScmObj Scm_ReadStringLiteralOld()
+ {
+     SCM_RETURN(read_string_literal());
+ }
+Index: gauche-c-wrapper-0.6.1/src/c-lex.h
+===================================================================
+--- gauche-c-wrapper-0.6.1.orig/src/c-lex.h
++++ gauche-c-wrapper-0.6.1/src/c-lex.h
+@@ -78,7 +78,7 @@ extern ScmObj Scm_IsForceIdentifierRef()
+ extern ScmObj Scm_IsForceIdentifierSet(ScmObj v);
+ extern ScmObj Scm_ReadIdentifier(ScmObj l);
+ extern ScmObj Scm_ReadOperator(ScmObj c);
+-extern ScmObj Scm_ReadStringLiteral();
++extern ScmObj Scm_ReadStringLiteralOld();
+ extern ScmObj Scm_ReadCharacterConstant();
+ extern ScmObj Scm_ReadOctalOrFlonum(ScmObj l);
+ extern ScmObj Scm_ReadDecimal(ScmObj l);
+Index: gauche-c-wrapper-0.6.1/src/c-lexlib.stub
+===================================================================
+--- gauche-c-wrapper-0.6.1.orig/src/c-lexlib.stub
++++ gauche-c-wrapper-0.6.1/src/c-lexlib.stub
+@@ -137,7 +137,7 @@
+   (call "Scm_ReadOperator"))
+ 
+ (define-cproc read-string-literal ()
+-  (call "Scm_ReadStringLiteral"))
++  (call "Scm_ReadStringLiteralOld"))
+ 
+ (define-cproc read-character-constant ()
+   (call "Scm_ReadCharacterConstant"))

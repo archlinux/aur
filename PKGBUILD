@@ -1,11 +1,11 @@
 # Maintainer: Fabian Brosda <fabi3141@gmx.de>
 #
-# The patches 1 to 10 are from the corresponding debian package
+# The patches 1 to 10 and 17 are from the corresponding debian package
 
 pkgname=gauche-c-wrapper
 _pkgname=${pkgname#gauche-}
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Gauche foreign function interface for C and Objective-C libraries.'
 url='http://www.koguro.net/prog/c-wrapper/'
 arch=('x86_64')
@@ -28,7 +28,8 @@ source=('http://www.koguro.net/prog/c-wrapper/c-wrapper-0.6.1.tgz'
 	'13_local_typedef.patch'
 	'14_extend_parser.patch'
 	'15_fix_scm_reg_exec.patch'
-	'16_gauche_0_9_11_compat.patch')
+	'16_gauche_0_9_11_compat.patch'
+    '17_gauche_0_9_13_compat.patch')
 sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           '99878b6fc5c306223e7119861b5af92362f90fd9'
           '11f45d119f2fc660ac32de724b01d47aaaf84675'
@@ -43,7 +44,8 @@ sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           '46f2ae372276c51b534db5592398ef69a9264ca0'
           'c888b1aebf37adf20cc7874c31b1c8a2ba0dcd45'
           '8239972e42afb42a1040f7274c55620901458ca8'
-          '113fc320f21d0648421b8e006bd63233dfa61619')
+          '113fc320f21d0648421b8e006bd63233dfa61619'
+          '31acaa89ee0ecffc67ae420a40f4e5e2c6eb483c')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
