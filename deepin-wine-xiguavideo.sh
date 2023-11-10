@@ -8,7 +8,7 @@
 #               Vufa <countstarlight@gmail.com>
      
 BOTTLENAME="Deepin-XiGuaVideo"
-APPVER="1.0.6"
+APPVER="1.0.7"
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files (x86)/xigua-video-electron/西瓜视频.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/xigua-video-electron/西瓜视频.exe"
