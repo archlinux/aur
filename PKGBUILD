@@ -9,13 +9,15 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=23.08.2
-pkgrel=5
+pkgrel=6
 arch=(
   'x86_64'
   'i686'
   'armv7h'
   'armv6h'
   'aarch64'
+  'pentium4'
+  'riscv64'
 )
 license=(
   'custom: CC0'
