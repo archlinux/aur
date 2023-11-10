@@ -1,20 +1,19 @@
 pkgbase = chrolog-bin
-	pkgdesc = A automated time tracking tool
-	pkgver = 1.5.0
-	pkgrel = 4
+	pkgdesc = An automated time tracking tool
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/Lukylix/Chrolog
 	arch = x86_64
 	license = custom
-	makedepends = asar
 	makedepends = gendesk
 	depends = bash
-	depends = electron23
+	depends = electron27
 	depends = hicolor-icon-theme
-	provides = chrolog=1.5.0
+	provides = chrolog=1.7.0
 	conflicts = chrolog
-	source = chrolog-1.5.0.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.5.0/chrolog-1.5.0-linux.zip
+	source = chrolog-1.7.0.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.7.0/chrolog-1.7.0-linux.zip
 	source = chrolog.sh
-	sha256sums = 4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6
-	sha256sums = 837842154eafcc8e2cacb4f4f13252833f3aefccc4dbf608ec80804a637c136b
+	sha256sums = ef0df920ed7519aa8dd5db3dfc0d54a2385236004b2b5a724f4523ac940a9664
+	sha256sums = c0a36510a6446814e81b7643d4166064420267906f620d7e608948da811ce731
 
 pkgname = chrolog-bin
