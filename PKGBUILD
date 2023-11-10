@@ -4,10 +4,10 @@
 
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
-pkgver=7.0.1.2198
+pkgver=7.0.1.2206
 pkgrel=1
 _project_id=78
-_releasename="Alchemy Project PBR"
+_releasename="Alchemy Beta"
 _releasename_underscored="${_releasename// /_}"
 _version_underscored="${pkgver//\./_}"
 _pkg_arch="x86_64"
@@ -36,7 +36,7 @@ optdepends=(
 provides=('alchemy-viewer')
 # The release url format changes often, please keep this comment for easy switching.
 source=('https://git.alchemyviewer.org/api/v4/projects/'"${_project_id}"'/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.xz")
-sha256sums=('c4eea999f65034f8a9b7f8af3e8ae2e6296bf04e7efca4ca6657d3d8361f6ba8')
+sha256sums=('92a4fcd450d4b6f7085689e006a6f00e0fdf0eb8e2522dd567b6afb160679d6d')
 package() {
 	mkdir -p "${pkgdir}"/opt
 	# Patch shortcut to avoid duplicated entries
