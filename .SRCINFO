@@ -22,7 +22,7 @@ pkgbase = madagascar-git
 	optdepends = cuda: for nvcc, but not compatible with cuda12
 	optdepends = plplot: scientific plot
 	options = strip
-	source = madagascar::git+https://github.com/ahay/src
+	source = madagascar-git::git+https://github.com/ahay/src
 	md5sums = SKIP
 
 pkgname = madagascar-git

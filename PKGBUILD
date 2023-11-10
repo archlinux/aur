@@ -11,7 +11,7 @@ depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd' 'swig' 'pytho
 	 'openmpi' 'glu' 'freeglut' 'suitesparse') 
 optdepends=('cuda: for nvcc, but not compatible with cuda12' 'plplot: scientific plot')
 options=('strip')
-source=(madagascar::git+https://github.com/ahay/src)
+source=($pkgname::git+https://github.com/ahay/src)
 md5sums=('SKIP')
 
 pkgver() {
