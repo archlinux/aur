@@ -1,7 +1,7 @@
 # Maintainer: Daniil T <contact.2imt@mail.ru>
 pkgname="polycat"
 pkgver="1.2.0"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Runcat module for Polybar"
 arch=("x86_64")
@@ -42,6 +42,10 @@ build() {
 
 package() {
     cd $pkgname
-    mkdir -p $pkgdir/usr/bin
-    cp $pkgname $pkgdir/usr/bin
+
+    install -DTm755 "$pkgname" "$pkgdir/usr/bin/polycat"
+
+    chmod 644 "res/$pkgname.ttf"
+    mkdir -p "$pkgdir/usr/share/fonts/TTF"
+    cp "res/$pkgname.ttf" "$pkgdir/usr/share/fonts/TTF/$pkgname.ttf"
 }

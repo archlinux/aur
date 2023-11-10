@@ -1,7 +1,7 @@
 pkgbase = polycat
 	pkgdesc = Runcat module for Polybar
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2IMT/polycat.git
 	arch = x86_64
 	license = MIT
