@@ -3,24 +3,19 @@
 _pkgname="dolphin"
 _pkgname_tabopts="$_pkgname-tabopts"
 pkgname="$_pkgname_tabopts"
-pkgver=23.08.2
-pkgrel=2
+pkgver=23.08.3
+pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
-arch=(i686 x86_64)
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=(LGPL)
+arch=(i686 x86_64)
+
 depends=(
   'baloo-widgets'
-  'kactivities5'
-  'kcmutils5'
   'kio-extras'
-  'knewstuff5'
-  'kparts5'
-  'kuserfeedback'
 )
 makedepends=(
   'extra-cmake-modules'
-  'kdoctools5'
 )
 optdepends=(
   'ffmpegthumbs: video thumbnails'
@@ -28,14 +23,27 @@ optdepends=(
   'kdegraphics-thumbnailers: PDF and PS thumbnails'
   'kio-admin: for managing files as administrator'
   'konsole: terminal panel'
-  'purpose5: share context menu'
 )
 
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 if [ x"$pkgname" == x"$_pkgname_tabopts" ] ; then
   # normal package
+  depends+=(
+    'kactivities5'
+    'kcmutils5'
+    'knewstuff5'
+    'kparts5'
+    'kuserfeedback5'
+  )
+  makedepends+=(
+    'kdoctools5'
+  )
+  optdepends+=(
+    'purpose5: share context menu'
+  )
+
   _pkgsrc="$_pkgname-${pkgver%%.r*}"
   _pkgext="tar.xz"
 
@@ -45,7 +53,7 @@ if [ x"$pkgname" == x"$_pkgname_tabopts" ] ; then
     "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
   )
   sha256sums+=(
-    '0bca082410c4a1ab0ac60f76b0fbefa31c749dabe8a57cb53a33806cf53f6b2f'
+    'd54e877d893ddf3d59752da723c881471bc06aee2e4143ff7e034fdffd7bba9e'
     'a50de534a6049ec4e232b6bddb8b39a105287bd0f6eac934e4eaac50df6f0004'
   )
 
@@ -54,17 +62,29 @@ if [ x"$pkgname" == x"$_pkgname_tabopts" ] ; then
   }
 else
   # git package
+  depends+=(
+    'kactivities'
+    'kcmutils'
+    'knewstuff'
+    'kparts'
+    'kuserfeedback'
+  )
+  makedepends+=(
+    'git'
+    'kdoctools'
+  )
+  optdepends+=(
+    'purpose: share context menu'
+  )
+
   _pkgsrc="$_pkgname"
-
-  makedepends+=('git')
-
   source+=(
     "$_pkgname"::"git+https://invent.kde.org/system/dolphin.git"
-    "dolphin-tabopts-2.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/af0a2d168d2c669738a84e14b97ba12fb1428491.patch"
+    "dolphin-tabopts-2.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/33c2ff50e2611eb04d8a3ad8f30b18aecda42544.patch"
   )
   sha256sums+=(
     'SKIP'
-    'b18914112942d766ae10c5f1d657397870cae5f33218ec34f779a7ad85266df0'
+    '43bb309c9815bb7abe6b4a4a4cc9084c4809709c6b037a24cf56bb232b42398f'
   )
 
   pkgver() {
@@ -73,9 +93,7 @@ else
     _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)"\s.*/>$'
     _file='src/org.kde.dolphin.appdata.xml'
 
-    _line=$(
-      grep -E "$_regex" "$_file" | head -1
-    )
+    _line=$(grep -E "$_regex" "$_file" | head -1)
     _version=$(
       printf '%s\n' "$_line" \
         | sed -E "s@$_regex@\1@"
@@ -84,12 +102,8 @@ else
       git log -G "$_line" -1 --pretty=oneline --no-color -- $_file \
         | sed 's@\ .*$@@'
     )
-    _revision=$(
-      git rev-list --count $_commit..HEAD
-    )
-    _hash=$(
-      git rev-parse --short HEAD
-    )
+    _revision=$(git rev-list --count $_commit..HEAD)
+    _hash=$(git rev-parse --short HEAD)
 
     printf '%s.r%s.g%s' \
       "$_version" \
@@ -101,10 +115,14 @@ fi
 prepare() {
   cd "$_pkgsrc"
 
-  for patch in "${srcdir:?}"/*.patch ; do
-    if [ -f "$patch" ] ; then
-      printf 'Applying patch: %s\n' "${patch##*/}"
-      patch -Np1 -F100 -i "$patch"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]] ; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
 }
