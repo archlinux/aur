@@ -1,7 +1,7 @@
 # Maintainer: Eugene Lebedev <satanych13+dev@gmail.com>
 
 pkgname=libretro-pcsx2-launcher-git
-pkgver=46.bc78bf9
+pkgver=r46.bc78bf9
 pkgrel=1
 pkgdesc="Launch Sony PlayStation 2 games through PCSX2, directly from RetroArch."
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd libretro-pcsx2
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
