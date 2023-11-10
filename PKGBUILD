@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=pypipe
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Python command-line tool for pipeline processing'
 arch=('any')
@@ -22,7 +22,7 @@ source=(
 )
 
 sha512sums=(
-  'f85836f7351f0264858059c1aa55d6dc7d645d320590257d3d2d816cbdeba1156138f00736432751ccce57d637341e1a8a95188d3bd3a2eeb957db93c99405e2'
+  '7bf7a2f60b1a65d7f055cb2cec23f77b7c9b4c11692d331f3dda710d3058f796d06f3ea42e1573fec99225ff6667b9d93c253aa21f71b4f9d6713c8c82e6353e'
 )
 
 build() {
