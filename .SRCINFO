@@ -1,0 +1,13 @@
+pkgbase = r-ensdb.mmusculus.v79
+	pkgdesc = Ensembl based annotation package
+	pkgver = 2.99.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/EnsDb.Mmusculus.v79
+	arch = any
+	license = Artistic2.0
+	depends = r-ensembldb
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/EnsDb.Mmusculus.v79_2.99.0.tar.gz
+	md5sums = 28bbab743b0d2d550dbfa0bcd3274fad
+	sha256sums = c7259a4d118b07115c87a906b080a81e1c8a66c203210872c2c6c552f6c1f5fe
+
+pkgname = r-ensdb.mmusculus.v79
