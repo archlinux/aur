@@ -1,0 +1,15 @@
+pkgbase = qcbor-git
+	pkgdesc = A powerful, commercial-quality CBOR encoder/decoder
+	pkgver = v1.2
+	pkgrel = 1
+	url = https://github.com/laurencelundblade/QCBOR
+	arch = x86_64
+	license = BSD-3-clause
+	makedepends = git
+	provides = qcbor
+	conflicts = qcbor
+	options = staticlibs
+	source = qcbor::git+https://github.com/laurencelundblade/QCBOR.git#tag=v1.2
+	md5sums = SKIP
+
+pkgname = qcbor-git
