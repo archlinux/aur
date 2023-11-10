@@ -1,7 +1,7 @@
 pkgbase = python-types-requests
 	pkgdesc = Typing stubs for requests
 	pkgver = 2.31.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/types-requests/
 	arch = any
 	license = Apache
