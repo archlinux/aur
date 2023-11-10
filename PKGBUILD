@@ -8,12 +8,11 @@ arch=(any)
 url="https://github.com/skorokithakis/shortuuid"
 license=('BSD')
 depends=('python')
-makedepends=('git' 'python-setuptools' 'python-installer' 'python-poetry')
+makedepends=(python-{build,installer,wheel}
+             python-poetry-core)
 options=(!emptydirs)
 provides=('python-shortuuid')
-replaces=('python-shortuuid')
 conflicts=('python-shortuuid')
-#optdepends=('')
 
 source=('git+https://github.com/skorokithakis/shortuuid.git')
 _gitname="shortuuid"
@@ -30,7 +29,13 @@ build() {
         poetry build
 }
 
+check() {
+    cd "$srcdir/$_gitname"
+    python -m unittest discover
+}
+
 package() {
-	cd "$srcdir/$_gitname"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$srcdir/$_gitname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
 }
