@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Friday Night Funkin'
+GenericName=Rhythm Game
+Comment=Gettin' freaky on a friday night, yeah!
+Type=Application
+Terminal=false
+Exec=funkin
+Icon=funkin
+Categories=Game

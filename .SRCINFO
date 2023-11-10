@@ -1,0 +1,25 @@
+pkgbase = funkin-quack-git
+	pkgdesc = A modification for Friday Night Funkin': Psych Engine to provide better linux support and more features.
+	pkgver = 0.1.r61.g324d320
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = haxe
+	optdepends = vlc: To play videos in-game
+	provides = funkin
+	conflicts = funkin
+	source = Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git#branch=experimental
+	source = funkin.desktop
+	source = funkin.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = funkin-quack-git
