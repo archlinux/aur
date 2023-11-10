@@ -57,14 +57,13 @@ pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
 url="https://github.com/flameshot-org/flameshot"
 license=('GPL')
-depends=(qt5-base hicolor-icon-theme qt5-svg)
+depends=(qt5-base hicolor-icon-theme qt5-svg kguiaddons5)
 makedepends=(qt5-tools git cmake)
 optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
             'xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work'
             'grim: To make Sway, Hyprland, and wlroots work'
-            'kguiaddons5: For KDE Plasma'
             'xdg-desktop-portal-kde: For KDE Plasma')
-provides=(flameshot-git)
+provides=(flameshot)
 conflicts=(flameshot)
 source=("git+https://github.com/flameshot-org/flameshot.git")
 md5sums=('SKIP')
@@ -78,18 +77,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-
-  # # get the details of the version numbers
-  # NORMAL_VERSION="$(grep -oP 'FLAMESHOT_VERSION\s\d+\.\d+\.\d+' CMakeLists.txt | cut -d ' ' -f2)"
-  # ROLLING_VERSION="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-  #
-  # # skip the special characters in the versions
-  # NORMAL_VERSION_PATTERN="$(echo ${NORMAL_VERSION} | sed 's/\./\\\./g')"
-  # ROLLING_VERSION_PATTERN="$(echo ${ROLLING_VERSION} | sed 's/\./\\\./g')"
-  #
-  # # Replace the version number in the cmake with the combination of versions above
-  # sed "s/${NORMAL_VERSION_PATTERN}/${NORMAL_VERSION_PATTERN}_${ROLLING_VERSION_PATTERN}/" CMakeLists.txt
-
 
   cmake -S ./ \
       -DCMAKE_INSTALL_PREFIX=/usr \

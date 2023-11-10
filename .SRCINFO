@@ -1,6 +1,6 @@
 pkgbase = flameshot-git
 	pkgdesc = Powerful yet simple to use screenshot software
-	pkgver = r1629.0fe55916
+	pkgver = r1938.fa29bcb4
 	pkgrel = 1
 	url = https://github.com/flameshot-org/flameshot
 	arch = i686
@@ -12,10 +12,14 @@ pkgbase = flameshot-git
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = qt5-svg
-	provides = flameshot-git
+	depends = kguiaddons5
+	optdepends = xdg-desktop-portal: To make Sway, Hyprland, and wlroots work
+	optdepends = xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work
+	optdepends = grim: To make Sway, Hyprland, and wlroots work
+	optdepends = xdg-desktop-portal-kde: For KDE Plasma
+	provides = flameshot
 	conflicts = flameshot
 	source = git+https://github.com/flameshot-org/flameshot.git
 	md5sums = SKIP
 
 pkgname = flameshot-git
-
