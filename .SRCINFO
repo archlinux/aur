@@ -1,7 +1,7 @@
 pkgbase = mesa-pvr-vf2
 	pkgdesc = an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version
 	pkgver = 22.1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mesa3d.org
 	arch = riscv64
 	license = custom

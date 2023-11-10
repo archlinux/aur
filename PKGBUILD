@@ -3,7 +3,7 @@
 pkgname=mesa-pvr-vf2
 pkgdesc="an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version"
 pkgver=22.1.7
-pkgrel=3
+pkgrel=4
 arch=('riscv64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -205,6 +205,6 @@ package() {
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
     # indirect rendering
-    ln -s ${pkgdir}/usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
+    ln -s "${pkgdir}/usr/lib/libGLX_mesa.so.0" "${pkgdir}/usr/lib/libGLX_indirect.so.0"
   
 }
