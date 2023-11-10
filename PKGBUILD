@@ -1,4 +1,4 @@
-# Maintainer: BenObiWan <benobiwan @t gmail dot com>
+# Maintainer: Yvaniak <ewen at philippot dot biz>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 pkgname=zsxd-git
 pkgver=792.c585a38
