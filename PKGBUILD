@@ -7,9 +7,9 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.11.r115.2afd1f622a
+pkgver=5.11.r122.f4a44ba1d8
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('x86_64')
 url="https://www.jabref.org"
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgname%-git}
+  # Due to a jlink bug you need at least JDK 21.0.1 to compile JabRef
   if [[ 0 -gt $(vercmp $(java -version |& sed -n "2s/.*build \([0-9.]*\).*/\1/; 2p") 21.0.1) ]]
   then
     echo "Error: you need JDK at least 21.0.1 to compile Jabref"
@@ -41,7 +41,7 @@ build() {
     java -version |& sed -n "2p"
     exit 1
   fi
-
+  cd ${pkgname%-git}
   [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
   export GRADLE_USER_HOME="$srcdir"/gradle
   export DEFAULT_JVM_OPTS='"-Xmx1g" "-Xms64m"'
@@ -59,7 +59,7 @@ package() {
 	  "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 
   cd ${pkgname%-git}
-  install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 src/main/resources/icons/jabref.svg \
 	  "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
 
