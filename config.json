@@ -1,8 +1,8 @@
 {
-  "baseVersion": "3.2.2_18313",
-  "currentVersion": "3.2.2_18313",
+  "baseVersion": "__BASE_VER__",
+  "currentVersion": "__CURRENT_VER__",
   "previousVersion": "",
-  "buildVersion": "18313",
+  "buildVersion": "__BUILD_VER__",
   "skippedVersions": [],
   "inUsePkg": "",
   "hasRan": false

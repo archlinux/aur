@@ -1,8 +1,10 @@
 #!/bin/bash
 
+current_ver="__CURRENT_VER__"
+QQ_HOTUPDATE_VERSION="__CURRENT_VER__"
 function command_exists() {
-	local command="$1"
-	command -v "${command}" >/dev/null 2>&1
+    local command="$1"
+    command -v "${command}" >/dev/null 2>&1
 }
 
 function show_error_dialog() {
@@ -44,7 +46,7 @@ flags_file="${XDG_CONFIG_HOME}/qq-electron-flags.conf"
 declare -a flags
 
 if [[ -f "${flags_file}" ]]; then
-    mapfile -t < "${flags_file}"
+    mapfile -t <"${flags_file}"
 fi
 
 for line in "${MAPFILE[@]}"; do
@@ -54,9 +56,6 @@ for line in "${MAPFILE[@]}"; do
 done
 
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
-QQ_HOTUPDATE_VERSION="3.2.0-16449"
-QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565" "3.0.0-571" "3.1.0-9332" "3.1.0-9572" "3.1.1-11223" "3.1.2-12912" "3.1.2-13107" "3.2.0-16449" "3.2.0-16605" "3.2.0-16736" "3.2.1-16950" "3.2.1-17153" "3.2.1-17260" "3.2.1-17412" "3.2.1-17654" "3.2.1-17749" "3.2.1-17816" "3.2.2-18163")
-
 
 if [ "${QQ_DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
     QQ_DOWNLOAD_DIR="${HOME}/Downloads"
@@ -64,31 +63,22 @@ if [ "${QQ_DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
     # 还是不自动建立为好
 fi
 
-if [ ! -d "${QQ_APP_DIR}" ]; then mkdir -p "${QQ_APP_DIR}"; fi
-if [ ! -d "${QQ_HOTUPDATE_DIR}" ]; then mkdir -p "${QQ_HOTUPDATE_DIR}"; fi
-if [ ! -L "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then
-    # 删除 QQ 自动下载的热更新包，因为其中可能包含 libvips 等有问题的库
-    rm -rf "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"
-fi
-if [ ! -d "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then
-    # 将本包内的 app 链接到热更新文件夹下
-    ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"
-fi
+install -d "${QQ_HOTUPDATE_DIR}"
+ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"
 rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
 
-# 处理 config.json
-if [ ! -f "${QQ_HOTUPDATE_DIR}/config.json" ]; then
+# 处理旧版本
+hot_upd_is_new=0
+for d in $(ls -d */); do
+    vercmp "${current_ver//_/-}" "${d%/}"
+    if [ $? -ne 0 ]; then
+        rm -rf "${d%/}"
+    else
+        hot_upd_is_new=1
+    fi
+done
+if [ $hot_upd_is_new = "0" ]; then
     cp "/opt/QQ/workarounds/config.json" "${QQ_HOTUPDATE_DIR}/config.json"
-else
-    for VERSION in ${QQ_PREVIOUS_VERSIONS[@]}; do
-        if [ -e "${QQ_HOTUPDATE_DIR}/${VERSION}" ]; then
-            rm -rf "${QQ_HOTUPDATE_DIR}/${VERSION}"
-        fi
-        if [ ! -z "$(grep -Rn "${VERSION}" "${QQ_HOTUPDATE_DIR}/config.json")" ]; then
-            cp "/opt/QQ/workarounds/config.json" "${QQ_HOTUPDATE_DIR}/config.json"
-            break
-        fi
-    done
 fi
 
 bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cgroup-try \
@@ -126,13 +116,12 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --setenv IBUS_USE_PORTAL 1 \
     --setenv QQNTIM_HOME "${QQ_APP_DIR}/QQNTim" \
     --setenv LITELOADERQQNT_PROFILE "${QQ_APP_DIR}/LiteLoaderQQNT" \
-    /opt/QQ/electron ${flags[@]} "$@" /opt/QQ/resources/app
+    /opt/QQ/electron "${flags[@]}" "$@" /opt/QQ/resources/app
 
 # 移除无用崩溃报告和日志
 # 如果需要向腾讯反馈 bug，请注释掉如下几行
-if [ -d "${QQ_APP_DIR}/crash_files" ]; then
-    rm -rf "${QQ_APP_DIR}/crash_files"
-fi
+rm -rf ${QQ_APP_DIR}/crash_files
+touch ${QQ_APP_DIR}/crash_files
 if [ -d "${QQ_APP_DIR}/log" ]; then
     rm -rf "${QQ_APP_DIR}/log"
 fi

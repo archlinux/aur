@@ -2,16 +2,15 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.2_18313
-# _update_pkgver=3.1.2_13107
-_base_pkgver_hash=4505aa36
+_base_pkgver=3.2.2-18394
+_update_pkgver=${_base_pkgver}
+_base_pkgver_hash=fd2e886e
 # _update_pkgver_hash=c893f6be
 pkgname=linuxqq-nt-bwrap
-pkgver="${_base_pkgver}"
-# pkgver="${_update_pkgver}"
-pkgrel=2
+pkgver="${_update_pkgver//-/_}"
+pkgrel=1
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
-arch=('x86_64' 'aarch64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
+arch=('x86_64' 'aarch64' 'loong64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
 depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss'
@@ -26,19 +25,26 @@ provides=('qq' 'linuxqq')
 conflicts=('linuxqq')
 options=('!emptydirs')
 install="${pkgname}.install"
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_amd64.deb")  # 底包
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver}_amd64.deb")  # 底包
                #  "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_arm64.deb")  # 底包
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver}_arm64.deb")  # 底包
                 #  "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
-source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_loong64.deb")  # 底包
+source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver}_loong64.deb")  # 底包
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums=('4c465084ab4265636c1bd058950f47e16d6a3e2bd358742cff9227d7fa044632'
-            '03c421b3b65982749d17b88fa58707f5e0ec730b9457b8621dbe4af36bf0760f'
+sha256sums=('fe70e21016e5062333ca996dd0b3090641068d93774a8f8f92b6955238142ad7'
+            'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
-sha256sums_x86_64=('3d73768e7a78e72f0904a8e69c90d8856848a5c05ba7ad40a0cfcf1fd446a162')
-sha256sums_aarch64=('54e503d612ccda27dcdabee80685233f19e8df9f931decc1767d8ba4bc3e450d')
+sha256sums_x86_64=('2f533c3b417354a2d734d60618c3dfd4d6e1fc31712c70656f36a9afbbb3e529')
+sha256sums_aarch64=('e84de1ed9e3ddfa60a65bf86d05a0c6fdd13dc4cc7f33d3b9a618c9cbe120c59')
+sha256sums_loong64=('98b55764719b54015316f858c975a83dabb5dc6548d44d84fe4518420274a957')
                    #  '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
                     #  '49a356b051b1fae89f132475128447f184f2385384773114ae9392f19200d7da')  # 热更新补丁
+prepare(){
+	local base_ver=${_base_pkgver}
+	local cur_ver=${_update_pkgver:-${base_ver}}
+	local build_ver=${cur_ver#*-}
+	sed -i "s|__BASE_VER__|${base_ver}|g;s|__CURRENT_VER__|${cur_ver}|g;s|__BUILD_VER__|${build_ver}|g" config.json start.sh
+}
 
 package() {
 	# 解压程序包
