@@ -1,18 +1,17 @@
 pkgbase = kaccounts-providers-git
-	pkgdesc = Small system to administer web accounts for the sites and services across the KDE desktop, including: Google, Facebook, Owncloud, IMAP, Jabber and others
-	pkgver = v19.12.1.r40.ga530020
+	pkgdesc = Online account providers for the KAccounts system
+	pkgver = 23.08.3.r30.gc1472cd
 	pkgrel = 1
-	url = https://projects.kde.org/projects/playground/base/kde-accounts/kaccounts-providers
+	url = https://invent.kde.org/network/kaccounts-providers
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = intltool
 	depends = kaccounts-integration
-	provides = kaccounts-providers
+	provides = kaccounts-providers=23.08.3
 	conflicts = kaccounts-providers
-	source = git+https://invent.kde.org/network/kaccounts-providers.git
+	source = kaccounts-providers::git+https://invent.kde.org/network/kaccounts-providers.git
 	sha256sums = SKIP
 
 pkgname = kaccounts-providers-git
-
