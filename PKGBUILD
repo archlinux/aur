@@ -1,11 +1,11 @@
 # Maintainer: BoopyTheFox <boopy.the.fox@gmail.com>
 pkgname='hyprpaper-gen-git'
-pkgver=r6.cd33e1a
+pkgver=r7.02a0a79
 pkgrel=1
 pkgdesc="A simple script to automate hyprpaper config generation"
 arch=('any')
 url="https://gitlab.com/BoopyTheFox/hyprpaper-gen"
-license=('GPL3')
+license=('BSD')
 depends=('bash' 'hyprpaper')
 makedepends=('git')
 optdepends=('hyprland: detect monitors with hyprctl')

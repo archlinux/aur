@@ -1,10 +1,10 @@
 pkgbase = hyprpaper-gen-git
 	pkgdesc = A simple script to automate hyprpaper config generation
-	pkgver = r6.cd33e1a
+	pkgver = r7.02a0a79
 	pkgrel = 1
 	url = https://gitlab.com/BoopyTheFox/hyprpaper-gen
 	arch = any
-	license = GPL3
+	license = BSD
 	makedepends = git
 	depends = bash
 	depends = hyprpaper
