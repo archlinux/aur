@@ -9,10 +9,10 @@ arch=('any')
 url="https://pypi.org/project/$_pkgname"
 license=('MIT')
 depends=('python' 'python-requests' 'python-urllib3' 'python-six' 'python-packaging')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rmartin16/qbittorrent-api/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('964467311c01392fe7a095899ea00d3f50a69d338db469091630f69e18458cdf')
-b2sums=('26a0955e2900e5d133ac782b99e0a3eb7e184fa6a17d8e3b02c1dcd2615581becd912fc9d7b81d932445c7449274d3a161e7d0587335a8a8a927ea7f4509d112')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('c4f7c2ec7f234280b079dec5b03f6aba4e19f92b2e1b186d0dfa2380ebbf1c70')
+b2sums=('2092adf476d2025b271459d4f18845a38f97c8e89fb6ed96dc3607da8a7ebdc5c540ceee92707763d58d847fd30f6cbc251b7447995dda41a0654bfc63935324')
 
 build() {
   cd "$_pkgname-$pkgver"
