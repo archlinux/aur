@@ -1,20 +1,19 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-lingua-stem'
-pkgver='0.84'
+pkgver='2.31'
 pkgrel='1'
 pkgdesc="Stemming of words in various languages"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-lingua-pt-stemmer' 'perl-lingua-stem-fr>=0.02' 'perl-lingua-stem-it' 'perl-lingua-stem-ru' 'perl-lingua-stem-snowball-da>=1.01' 'perl-snowball-norwegian' 'perl-snowball-swedish' 'perl-text-german')
-makedepends=()
+depends=('perl-lingua-pt-stemmer' 'perl-lingua-stem-fr' 'perl-lingua-stem-it' 'perl-lingua-stem-ru' 'perl-lingua-stem-snowball-da' 'perl-snowball-norwegian' 'perl-snowball-swedish' 'perl-text-german')
+checkdepends=('perl-test-distribution')
 url='http://search.cpan.org/dist/Lingua-Stem'
-source=('http://search.cpan.org/CPAN/authors/id/S/SN/SNOWHARE/Lingua-Stem-0.84.tar.gz')
-md5sums=('a236b5d85ac49f84aad447c1383ad2de')
-sha512sums=('9806ef6bf9df8f71fa2c7500f5575560f7be733c8e859a34cfedf8eadb7333d549d76989313dc14b6760f79c0ca0e0f61fe69819ee04cedc5d3b58414ce06388')
-_distdir="Lingua-Stem-0.84"
+source=('http://search.cpan.org/CPAN/authors/id/S/SN/SNOWHARE/Lingua-Stem-2.31.tar.gz')
+md5sums=('8603031c938cfd75266a18da132d33c4')
+_distdir="Lingua-Stem-2.31"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
