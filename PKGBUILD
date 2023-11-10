@@ -1,7 +1,7 @@
 # Maintainer: Tim Dubbins <timdubbins@gmail.com>
 pkgname=tap
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio player for the terminal with fuzzy-finder"
 arch=('x86_64')
 url="https://github.com/timdubbins/tap"
@@ -21,7 +21,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 package() {
