@@ -1,6 +1,6 @@
 pkgbase = fastc-git
 	pkgdesc = A fast texture compressor for various formats
-	pkgver = 679.0f8cef6
+	pkgver = r1.1a6cefd
 	pkgrel = 1
 	url = https://github.com/GammaUNC/FasTC
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = fastc-git
 	md5sums = SKIP
 
 pkgname = fastc-git
-

@@ -2,7 +2,7 @@
 
 _pkgname=FasTC
 pkgname="fastc-git"
-pkgver=679.0f8cef6
+pkgver=r1.1a6cefd
 pkgrel=1
 pkgdesc="A fast texture compressor for various formats"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {    
     cd fastc
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
