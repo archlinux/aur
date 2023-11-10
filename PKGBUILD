@@ -4,7 +4,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 _torus_commit="b7bf7965db8c3b2034d6a92f5a1c1fefe13e0e5d"
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools' 'gsl'
 #              'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz")
-md5sums=('cf81736d73aec2c94f0f6f729830918b'
+md5sums=('e5c8678b6734b498b9427c61ba63bdff'
          'f84f68196975d1efbac800b1a5703c45')
 
 get_pyver() {
@@ -49,7 +49,7 @@ build() {
 #    # takes a lot of time
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
-#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv --color=yes \
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count \
 #        --ignore=tests/test_amuse.py \
 #        --ignore=tests/test_snapshotpotential.py \
 #        --ignore=tests/test_sphericaldf.py \
