@@ -25,6 +25,7 @@ build() {
 
     haxelib install hmm
     haxelib install lime
+    haxelib git hxCodec https://github.com/polybiusproxy/hxCodec.git
     haxelib run hmm install
 
     echo n | haxelib run lime setup
