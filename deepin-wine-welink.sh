@@ -8,7 +8,7 @@
 #               Vufa <countstarlight@gmail.com>
  
 BOTTLENAME="Deepin-WeLink"
-APPVER="7.33.6"
+APPVER="7.34.7.494"
 WELINK_INSTALLER="WeLink"
 WELINK_VER="7.28.8.455"
 WELINK_INSTALLER_PATH="c:/Program Files/WeLink/${WELINK_INSTALLER}-${WELINK_VER}.exe"
