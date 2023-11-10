@@ -1,0 +1,34 @@
+diff --git a/src/core/codehighlighter.cpp b/src/core/codehighlighter.cpp
+index 0f28745..71faef8 100644
+--- a/src/core/codehighlighter.cpp
++++ b/src/core/codehighlighter.cpp
+@@ -5,9 +5,9 @@
+ */
+ 
+ #include "codehighlighter.h"
+-#include <format.h>
+-#include <state.h>
+-#include <definition.h>
++#include <KSyntaxHighlighting/format.h>
++#include <KSyntaxHighlighting/state.h>
++#include <KSyntaxHighlighting/definition.h>
+ #include <QDebug>
+ 
+ CodeHighlighter::CodeHighlighter(QString language)
+diff --git a/src/core/codehighlighter.h b/src/core/codehighlighter.h
+index 9b6d0f8..9c29224 100644
+--- a/src/core/codehighlighter.h
++++ b/src/core/codehighlighter.h
+@@ -9,9 +9,9 @@
+ 
+ #include <vector>
+ #include <QTextLayout>
+-#include <abstracthighlighter.h>
+-#include <repository.h>
+-#include <theme.h>
++#include <KSyntaxHighlighting/abstracthighlighter.h>
++#include <KSyntaxHighlighting/repository.h>
++#include <KSyntaxHighlighting/theme.h>
+ 
+ class CodeHighlighter : private KSyntaxHighlighting::AbstractHighlighter
+ {

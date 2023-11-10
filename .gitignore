@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !potatopresenter.desktop
+!ksyntaxhighlighting_build_fix.patch
