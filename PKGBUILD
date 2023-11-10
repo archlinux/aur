@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 _themename=Lavender
-pkgname=${_themename,,}-kde-theme-git
+pkgname=plasma5-theme-${_themename,,}-git
 pkgver=r5.8cd7222
 pkgrel=1
 pkgdesc='A KDE theme inspired by lavender'
