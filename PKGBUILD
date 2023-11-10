@@ -2,7 +2,7 @@
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=s6
-pkgver=2.11.3.2
+pkgver=2.12.0.0
 pkgrel=1
 pkgdesc='A small suite of programs for UNIX, designed to allow process supervision'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://skarnet.org/software/${pkgname}"
 license=('ISC')
 depends=('skalibs' 'execline')
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7c16138ad2f0ffbe0ed2ae8dd0cecada9f7c787edd33a69084d219110693df74')
+sha256sums=('9818c3a9e218192406270f41d342bedb7a19f19de005bab3c62b40093033ef6c')
 
 build() {
   cd "${pkgname}-${pkgver}"
