@@ -1,14 +1,14 @@
 pkgbase = r-pracma
 	pkgdesc = Practical Numerical Math Functions
-	pkgver = 2.4.2
-	pkgrel = 3
+	pkgver = 2.4.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pracma
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-nlcoptim
 	optdepends = r-quadprog
-	source = https://cran.r-project.org/src/contrib/pracma_2.4.2.tar.gz
-	sha256sums = 1d50337fdfd9a8d704a64f01dae5d52b9a2bd6d872fdaa4a6685b8d3bde89c16
+	source = https://cran.r-project.org/src/contrib/pracma_2.4.4.tar.gz
+	sha256sums = 1a4ef3af2197f999dbaa614bf5a70f09ec463d8c91feb5aa0d995de24ec6ba7f
 
 pkgname = r-pracma
