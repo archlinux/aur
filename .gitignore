@@ -1,0 +1,17 @@
+# Ignore makepkg generated directories/files
+mesa/
+pkg/
+proc-macro2/
+quote/
+src/
+syn/
+unicode-ident/
+*.pkg.tar.zst
+
+# Ignore my merge request/commit-making repository
+mesa-nvk/
+
+# Ignore my various dumps
+garbage/
+old-builds/
+old-patches/
