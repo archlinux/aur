@@ -1,0 +1,80 @@
+# Contributor: anon at sansorgan.es
+# Contributor: Yingchang Liu
+pkgname=madagascar-git
+pkgver=r15659.d72996857
+pkgrel=1
+pkgdesc="Multidimensional data analysis and reproducible computational experiments."
+url="https://www.reproducibility.org/wiki/Main_Page"
+license=('GPL2')
+arch=('i686' 'x86_64')
+depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd' 'swig' 'python'
+	 'openmpi' 'glu' 'freeglut' 'suitesparse') 
+optdepends=('cuda: for nvcc, but not compatible with cuda12' 'plplot: scientific plot')
+options=('strip')
+source=(madagascar::git+https://github.com/ahay/src)
+md5sums=('SKIP')
+
+pkgver() {
+    cd ${pkgname}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  mkdir -p ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname}
+  export RSFROOT=${pkgdir}/opt/${pkgname}
+
+  # fix paths for tirpc in framework/configure.py
+  sed -i '430,433c\
+    (plat['\''distro'\''\] == '\''centos'\'' and int(plat['\''version'\''\][0]) >= 8) or \\\
+    plat['\''distro'\''\] == '\''fedora'\'' or \\\
+    plat['\''distro'\''\] == '\''arch'\'' or \\\
+    (plat['\''distro'\''\] == '\''ubuntu'\'' and int(plat['\''version'\''\][:2]) >= 20): \ \
+        context.env['\''CPPPATH'\''\] = path_get(context,'\''CPPPATH'\'','\''/usr/include/tirpc'\'')' framework/configure.py
+  ./configure
+  make
+}
+
+package() {
+    export RSFROOT=${pkgdir}/opt/${pkgname}
+    mkdir -p ${RSFROOT}/bin/
+    export PATH=${RSFROOT}/bin:$PATH
+    cd ${srcdir}/${pkgname}
+    make install
+
+    cp -r ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}/src
+
+    # add a symlink to rsfcodes in /opt, so that it can be compiled by user
+    ln -s ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}/rsfcodes
+    chmod 755 ${pkgdir}/opt/${pkgname}/rsfcodes
+    
+    # fix paths in in files
+    arr[0]="/share/madagascar/etc/config.py"
+    arr[1]="/share/madagascar/etc/env.sh"
+    arr[2]="/share/madagascar/etc/env.csh"
+    _python_version=$(ls $RSFROOT/lib | grep python)
+    arr[3]="/lib/${_python_version}/site-packages/rsf/prog.py"
+    arr[4]="/src/config.py"
+    arr[5]="/src/env.sh"
+    arr[6]="/src/env.csh"
+
+    echo ${pkgdir}
+    echo ${srcdir}
+    for f in ${arr[@]} ; do
+      sed -i "s|${pkgdir}||g" "${RSFROOT}/$f"
+      sed -i "s|${srcdir}|/opt/${pkgname}/src|g" "${RSFROOT}/$f"
+    done
+
+    install install -dm755 "$pkgdir/usr/share/licenses/$pkgname" 
+    install -m644 COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
+    install -dm755 "$pkgdir/etc/profile.d"
+    cat > "$pkgdir/etc/profile.d/${pkgname}.sh" << EOF
+#!/bin/sh
+source /opt/${pkgname}/src/etc/env.sh
+EOF
+    cat > "$pkgdir/etc/profile.d/${pkgname}.csh" << EOF
+#!/bin/csh
+source /opt/${pkgname}/src/etc/env.csh
+EOF
+    chmod 755 "$pkgdir/etc/profile.d/${pkgname}"{.sh,.csh}
+}
