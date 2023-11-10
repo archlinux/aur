@@ -4,10 +4,11 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer
 pkgdesc="A Second Life client with focus on performance and code correctness."
-pkgver=7.0.0.2177
+pkgver=7.0.1.2206
 pkgrel=1
-epoch=1
+#epoch=1
 _release_version=2177
+_variant="beta"
 _commit_hash=f13e479f 
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -33,8 +34,9 @@ optdepends=(
   'wine: More up-to-date, less buggy SLVoice support')
 provides=('alchemy-viewer')
 replaces=('alchemy-viewer-git')
-source=("${pkgname}.tar.gz"::'https://git-cdn.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${_commit_hash}"'/alchemy-next-'"${_commit_hash}"'.tar.gz')
-sha256sums=('bc7b995a16fc53d4ae8f57a75cdb95bb9dc9d70d243092cb2db6da0ddbb16c54')
+# source=("${pkgname}.tar.gz"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${_commit_hash}"'/alchemy-next-'"${_commit_hash}"'.tar.gz')
+source=("alchemy-next-${pkgver}${_variant}.tar.bz2"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${pkgver}-${_variant}"'/alchemy-next-'"${pkgver}-${_variant}"'.tar.bz2')
+sha256sums=('4b50aed43347d276207ca5447ef6993d8ca080af16c6bc362089807f894aaee2')
 noextract=("${pkgname}.tar.gz")
 
 pkgver() {
