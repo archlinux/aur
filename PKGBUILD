@@ -1,12 +1,12 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r80166.df2bb739f5
+pkgver=r80795.e900280bac
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='https://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-libharu' 'mingw-w64-verdict')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf' 'mingw-w64-nlohmann-json' 'git')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'ninja' 'protobuf' 'git')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -32,13 +32,13 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git -c protocol.file.allow=always submodule update -f --init
+  curl -L https://gitlab.kitware.com/paraview/paraview/-/merge_requests/6576.patch | patch -p1 || :
 }
 
 build() {
   cd "${srcdir}/paraview"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
+    ${_arch}-cmake -G Ninja -B build-${_arch} \
       -DCMAKE_BUILD_TYPE=Release \
       -DPARAVIEW_USE_PYTHON=OFF \
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
@@ -47,22 +47,23 @@ build() {
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -DCMAKE_CXX_STANDARD=17 \
-      -DVTK_IGNORE_CMAKE_CXX11_CHECKS=ON \
-      ..
-    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
-    popd
+      -DVTK_IGNORE_CMAKE_CXX11_CHECKS=ON
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" ninja -C build-${_arch} ${MAKEFLAGS:--j1}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/paraview/build-${_arch}
-    make install/fast DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" ninja -C build-${_arch} install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
