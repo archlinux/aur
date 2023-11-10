@@ -1,12 +1,10 @@
 pkgbase = whatsapp-for-linux-bin
 	pkgdesc = An unofficial WhatsApp desktop application for Linux.
 	pkgver = 1.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eneshecan/whatsapp-for-linux
 	arch = x86_64
 	license = GPL3
-	depends = gcc-libs
-	depends = glib2
 	depends = libcanberra
 	depends = gtkmm3
 	depends = libayatana-appindicator
@@ -16,7 +14,6 @@ pkgbase = whatsapp-for-linux-bin
 	depends = gtk3
 	depends = webkit2gtk
 	depends = hicolor-icon-theme
-	depends = glibc
 	provides = whatsapp-for-linux=1.6.4
 	conflicts = whatsapp-for-linux
 	source = whatsapp-for-linux-1.6.4.deb::https://github.com/eneshecan/whatsapp-for-linux/releases/download/v1.6.4/whatsapp-for-linux_1.6.4_amd64.deb
