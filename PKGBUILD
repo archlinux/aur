@@ -114,7 +114,7 @@ replaces=(
   'kwrite-root'
 )
 source=(
-  "https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
+  "https://download.kde.org/stable/release-service/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig}
   "0001-Defuse-root-block.patch"
 )
 sha256sums=(
@@ -129,7 +129,7 @@ validpgpkeys=(
 )
 
 prepare() {
-  cd "${srcdir}/$_pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # root shall be allowed once again.
   for _patch in "${srcdir}/0001-Defuse-root-block.patch"; do
