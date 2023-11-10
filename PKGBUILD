@@ -103,10 +103,6 @@ _package() {
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
-  replaces=(
-    virtualbox-guest-modules-arch
-    wireguard-arch
-  )
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"

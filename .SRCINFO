@@ -38,8 +38,6 @@ pkgname = linux-mainline
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = virtualbox-guest-modules-arch
-	replaces = wireguard-arch
 
 pkgname = linux-mainline-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
