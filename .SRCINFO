@@ -12,7 +12,8 @@ pkgbase = funkin-quack-git
 	license = Apache
 	makedepends = git
 	makedepends = haxe
-	optdepends = vlc: To play videos in-game
+	optdepends = vlc: To play videos in-game,
+	optdepends = gamemode
 	provides = funkin
 	conflicts = funkin
 	source = Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git#branch=experimental
