@@ -1,7 +1,7 @@
 # Mantainer: Alesar1
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 epoch=1
 pkgdesc="Unofficial desktop version of Telegram messaging app - binary version"
@@ -27,7 +27,7 @@ sha256sums=('731dcfb4dcdfe5e4cfcf9f1adc256090576ee91bc7592c7807c2bd343b7705f9'
             '731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6'
             '3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090'
             'e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119'
-            '01a0560a758e747b1afd727548a01aac943597a7ed18bb7026bd328a1a7216df')
+            'ecf80867304202640bea567abac8dce0a44c48b9e3f861d1ac8945cd0063c50a')
 
 package() {
 
