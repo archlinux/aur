@@ -8,49 +8,59 @@
 
 pkgver=25.9.4
 _chromiumver=114.0.5735.289
-# shellcheck disable=SC2034
 pkgrel=1
 
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
-# shellcheck disable=SC2034
 pkgdesc='Build cross platform desktop apps with web technologies'
-# shellcheck disable=SC2034
-arch=('x86_64')
-# shellcheck disable=SC2034
+arch=(x86_64)
 url='https://electronjs.org/'
-# shellcheck disable=SC2034
-license=('MIT' 'custom')
-# shellcheck disable=SC2034
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
-# shellcheck disable=SC2034
-makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
-             'qt5-base' 'java-runtime-headless' 'libnotify' 'lld' 'llvm'
-             'ninja' 'npm' 'pciutils' 'pipewire' 'python' 'python-httplib2'
-             'python-requests' 'python-pyparsing' 'python-six' 'wget' 'yarn')
-# shellcheck disable=SC2034
+license=(MIT custom)
+depends=(c-ares
+         gtk3
+         libevent
+         nss
+         libffi)
+makedepends=(clang
+             git
+             gn
+             gperf
+             harfbuzz-icu
+             http-parser
+             java-runtime-headless
+             libnotify
+             lld
+             llvm
+             ninja
+             npm
+             pciutils
+             pipewire
+             python
+             python-httplib2
+             python-pyparsing
+             python-requests
+             python-six
+             qt5-base
+             wget
+             yarn)
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
-# shellcheck disable=SC2034
 options=('!lto') # Electron adds its own flags for ThinLTO
-# shellcheck disable=SC2034
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
         "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
-        "electron-launcher.sh"
-        "electron.desktop"
-        'default_app-icon.patch'
-        'jinja-python-3.10.patch'
-        'use-system-libraries-in-node.patch'
-        'std-vector-non-const.patch'
-        'add-some-typename-s-that-are-required-in-C-17.patch'
-        'REVERT-disable-autoupgrading-debug-info.patch'
-        'random-fixes-for-gcc13.patch'
-       )
-# shellcheck disable=SC2034
+        REVERT-disable-autoupgrading-debug-info.patch
+        add-some-typename-s-that-are-required-in-C-17.patch
+        default_app-icon.patch
+        electron-launcher.sh
+        electron.desktop
+        jinja-python-3.10.patch
+        random-fixes-for-gcc13.patch
+        std-vector-non-const.patch
+        use-system-libraries-in-node.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
