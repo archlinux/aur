@@ -1,0 +1,26 @@
+pkgbase = transmissionic-bin
+	pkgdesc = Remote for Transmission Daemon
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/6c65726f79/Transmissionic
+	arch = x86_64
+	license = MIT
+	makedepends = squashfuse
+	depends = electron23
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	provides = transmissionic=1.8.0
+	conflicts = transmissionic
+	source = transmissionic-1.8.0.AppImage::https://github.com/6c65726f79/Transmissionic/releases/download/v1.8.0/Transmissionic-linux-x86_64-v1.8.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/6c65726f79/Transmissionic/main/LICENSE
+	source = transmissionic.sh
+	sha256sums = cbda3a7a49bfdc54a84763bdda7c159b83607b660fa1e66d06d2cda1a9578532
+	sha256sums = 61a59d5ee8c459b5171700485c769d9efb67bf00cb2be4b6fe5561dcdef10191
+	sha256sums = 767a0e72611350457b6238751142429fe6839383b8761e10cfd1387ddbc47682
+
+pkgname = transmissionic-bin
