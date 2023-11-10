@@ -8,7 +8,7 @@ _base_pkgver_hash=fd2e886e
 # _update_pkgver_hash=c893f6be
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver//-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64' 'loong64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -31,7 +31,7 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linux
                 #  "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver}_loong64.deb")  # 底包
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums=('fe70e21016e5062333ca996dd0b3090641068d93774a8f8f92b6955238142ad7'
+sha256sums=('7fab94ac6d694b4e0518942fa8301d2b6f51f72dae62debd2dbaf624b74e8fc6'
             'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
 sha256sums_x86_64=('2f533c3b417354a2d734d60618c3dfd4d6e1fc31712c70656f36a9afbbb3e529')
