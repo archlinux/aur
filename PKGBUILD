@@ -1,7 +1,7 @@
 # Maintainer: Mole Shang <135e2@135e2.dev>
 pkgname=implay
 pkgver=1.4.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://github.com/tsl0922/ImPlay"
@@ -19,12 +19,12 @@ makedepends=(
 )
 optdepends=()
 source=(
-  'implay::git+https://github.com/tsl0922/ImPlay.git?commit=28a5fa84442cf5f21854526ef56ab86ba7156bda'
+  'implay::git+https://github.com/tsl0922/ImPlay.git#commit=9d6d1f58754032e3ea5a313ff8534b8439dc13f7'
   '0001-disable-unneeded-imgui-demo-window.patch'
 )
 sha256sums=(
   'SKIP'
-  'ee4836cdde04b7e9a1fe6e27b2d9fc0751aea66066836b61dc0968cae402ca60'
+  '7d8e03542e38cfbec2e3bf96e21e8d957c0b4c8edd92165a36d98b539742b49e'
 )
 
 prepare() {
