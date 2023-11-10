@@ -1,12 +1,11 @@
 pkgbase = air-controller-desktop-appimage
 	pkgdesc = A new handy and powerful Android phone assistant,powered by Flutter.
 	pkgver = 0.4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://ac.yhdm360.cn/
 	arch = x86_64
 	license = MIT
-	depends = zlib
-	depends = glibc
+	makedepends = squashfuse
 	provides = air-controller=0.4.0
 	options = !strip
 	source = air-controller-0.4.0.AppImage::https://github.com/air-controller/air-controller-desktop/releases/download/0.4.0/AirController_0.4.0.AppImage
