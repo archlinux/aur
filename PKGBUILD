@@ -3,7 +3,7 @@
 
 pkgname="space-cli-bin"
 _pkgname="space"
-pkgver="0.4.1"
+pkgver="0.4.2"
 pkgrel=1
 pkgdesc="Deta Space CLI"
 arch=('aarch64' 'x86_64')
@@ -13,9 +13,9 @@ depends=()
 provides=('space')
 source_x86_64=("$_pkgname-x86_64-linux.zip::https://github.com/deta/space-cli/releases/download/v${pkgver}/space-linux-x86_64.zip")
 source_aarch64=("$_pkgname-arm64-linux.zip::https://github.com/deta/space-cli/releases/download/v${pkgver}/space-linux-arm64.zip")
-sha256sums_aarch64=('bd05b4415863fd03b5a56b2da7bb81d889b671ffd8ec27b73ce9d21ca3fc5c99')
-sha256sums_x86_64=('d930ea7ecf34e7613e26325a32d3228a0fa2a588298ab5a586a2df73e1126acf')
+sha256sums_aarch64=('ff10ebb0111b84b2fc9a4ccb75e515bccac8ddff94cf6deeae6bb4bef64d8f12')
+sha256sums_x86_64=('e0b458a8a967bdfa14dbc81a82f35db420ce6adb5562311ac474165f94084624')
 
 package() {
-    install -Dm755 space -t "$pkgdir/usr/bin"
+	install -Dm755 space -t "$pkgdir/usr/bin"
 }
