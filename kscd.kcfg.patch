@@ -1,0 +1,13 @@
+diff --git a/kscd.kcfg b/kscd.kcfg
+index c6f8daf..8f2f124 100644
+--- a/kscd.kcfg
++++ b/kscd.kcfg
+@@ -28,7 +28,7 @@
+ 	    <whatsthis>Change the font of the text in the panel</whatsthis>
+         </entry>
+ 	<entry name="url" type="String">
+-		<default code="true">QStandardPaths::standardLocations(QStandardPaths::DataLocation).last() + QLatin1String("kscd/skin/default.svg")</default>
++		<default code="true">QStandardPaths::standardLocations(QStandardPaths::DataLocation).last() + QLatin1String("/skin/default.svg")</default>
+ 	  <label>The skin that will be use for the application</label>
+ 	  <whatsthis>Change the skin of the application</whatsthis>
+ 	</entry>

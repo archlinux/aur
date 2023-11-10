@@ -1,0 +1,22 @@
+diff --git a/kscd.cpp b/kscd.cpp
+index d8996f1..1827a5c 100644
+--- a/kscd.cpp
++++ b/kscd.cpp
+@@ -337,7 +337,7 @@ void KSCD::changeVolume(qreal value)
+ 
+ void KSCD::configureShortcuts()
+ {
+-	KShortcutsDialog::configure(m_actions, KShortcutsEditor::LetterShortcutsAllowed, this, true);
++	KShortcutsDialog::showDialog(m_actions, KShortcutsEditor::LetterShortcutsAllowed, this);
+ }
+ 
+ void KSCD::ejectShortcut()
+@@ -761,7 +761,7 @@ void KSCD::writeSettings()
+ 
+ void KSCD::configureKeys()
+ {
+-	KShortcutsDialog::configure(m_actions, KShortcutsEditor::LetterShortcutsAllowed, this, true);
++	KShortcutsDialog::showDialog(m_actions, KShortcutsEditor::LetterShortcutsAllowed, this);
+ }
+ 
+ /**

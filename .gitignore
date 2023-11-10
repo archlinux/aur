@@ -2,3 +2,6 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!kscd.cpp.patch
+!kscd.kcfg.patch
+!qurl.patch

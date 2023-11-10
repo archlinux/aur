@@ -1,0 +1,12 @@
+diff --git a/mbmanager.cpp b/mbmanager.cpp
+index 1f3d245..9f0b301 100644
+--- a/mbmanager.cpp
++++ b/mbmanager.cpp
+@@ -32,6 +32,7 @@
+  */
+ #include "mbmanager.h"
+ 
++#include <QUrl>
+ #include <QDebug>
+ #include <QDesktopServices>
+ 
