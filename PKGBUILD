@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=autonomics
-_pkgver=1.9.0
+_pkgver=1.10.2
 pkgname=r-${_pkgname,,}
-pkgver=1.9.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Generifying and intuifying cross-platform omics analysis'
 arch=('any')
@@ -68,7 +68,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('12e6b6e55ec01dac164b3ea1f763e92af3423f4c7240ec36272f952604e5154c')
+sha256sums=('a9a63c09f9f4de533f92c8b82fa3f2821f532fd0edb4e5ba467d6fb327d30fb2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
