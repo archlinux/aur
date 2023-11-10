@@ -3,21 +3,34 @@ _appname=bookmark
 pkgname="${_appname}s-manager-bin"
 _pkgname=Bookmark-Manager
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Edit bookmarks, check url."
 arch=("x86_64")
 url="https://github.com/Hunlongyu/bookmarks-manager"
 license=('MIT')
-depends=('bash' 'electron15')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+depends=(
+    'electron15'
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
+)
+makedepends=(
+    'squashfuse'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Hunlongyu/bookmarks-manager/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh")
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('05cc0f7a8c0664d47a5cb90af113729a27b63419b8dd9649caa81a46967a241f'
             'c796c92731a81fb917e300438a8e5565ac96507ca0f4052fb3d8e2459e7b0f3b'
-            '2a27d47a656a3419b921e4621c6bb4be8904a4d3e72b7a48223c6fbf59308a73')
-prepare() {
+            '9f1858df4bd9bebec9023dc07b19ea799a10ee425d1097dfa5c74de282fa49a5')
+build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
@@ -25,7 +38,9 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_appname}.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
