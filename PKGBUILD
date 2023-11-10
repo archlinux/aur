@@ -2,7 +2,7 @@
 
 _pkgname=mcachefs
 pkgname="mcachefs-git"
-pkgver=94.4307651
+pkgver=r1.bd4b31c
 pkgrel=1
 pkgdesc="Simple filesystem-based file cache based on FUSE"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {    
     cd mcachefs
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
