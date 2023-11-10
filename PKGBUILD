@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xchat-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="使用 React+Vite、MobX 和 Electron 构建的非官方WeChat微信客户端。"
 arch=("x86_64")
 url="https://github.com/xYx-c/xchat"
@@ -18,7 +18,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/xYx-c/xchat/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9ca0a3c761c4d8d753213c1c22732c1828247f91a31571859f5bb94254487bce'
+sha256sums=('9667f8e99a0e548b84795ccba05f65ed1d8d74fc2cd84cb20f4ca44df38ee9db'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
             '69681864471ddd45844163219ef7f8379ad21dd491917d8b17825414e453d46a')
 build() {
@@ -26,6 +26,8 @@ build() {
     sed -e "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" \
         -e "s|/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png|${pkgname%-bin}|g" \
         -e "s|Utility|Network|g" \
+        -e '/Comment/d' \
+        -e "5i Comment=${pkgdesc}" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
