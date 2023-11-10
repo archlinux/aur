@@ -1,9 +1,9 @@
 # Maintainer: Gr3q <floyd0122@gmail.com>
 
 pkgname=hoppscotch-app-bin
-pkgver=23.8.2
+pkgver=23.8.3
 pkgrel=1
-pkgdesc=" This is a simple desktop version of hoppscotch (👽 Open source API development ecosystem) which build with Tauri. See also https://hoppscotch.io"
+pkgdesc="This is a simple desktop version of hoppscotch (👽 Open source API development ecosystem) which build with Tauri. See also https://hoppscotch.io"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/liudonghua123/hoppscotch-app"
 license=('MIT')
@@ -14,10 +14,10 @@ source_armv7h=("https://github.com/liudonghua123/hoppscotch-app/releases/downloa
 source_aarch64=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_arm64.deb")
 source_i686=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_i386.deb")
 source_x86_64=("https://github.com/liudonghua123/hoppscotch-app/releases/download/${pkgver}/hoppscotch-app-linux-${pkgver}_amd64.deb")
-sha512sums_armv7h=('2db1fed74c3356fad8ad157a2fe27c635c9334828c7191901e652dca79f62a2e7b6a1fcad41c7025dcb7a729a113529a19b8b6bd7bdeb51923512e20719af32f7')
-sha512sums_aarch64=('11866d8940111bc72676edd103408d2d43b89f674824620b09b7311c5dc6463b6d8cd757ce0db129153704a58627fdbaaba2282c6be9232be79688118c221362')
-sha512sums_i686=('28ceb03a613ea2e1cce214813e71a6a4f5d592d06920bc1c8fb4aab9c57fdc0ecc847b97cc6afcf64a7f373b1f4688aee24fad2b3334ec82f50cf3c04061f5dc')
-sha512sums_x86_64=('9f687d6bec2c063efecfa87dc2919b40f60f76b6f4a16ed2f768b004f6928f5d0ce25937faef2820eb93e5886ffb0fdc93a902d796286f093fb66bcc126434da')
+sha512sums_armv7h=('53f2fa8d1f7dfb26d02f53f00d38d0b89907272457ab475083567b9863f0281684e0eb16c954d969bc173a5400d0f6b26c23763f0dd80a337f69c21a3b71a31a')
+sha512sums_aarch64=('a252d4ca11993ed5a8cf46c7ea55fa0790fb07207f85d7ab71abcbfe1d468728e88e2a4eebbb2515559912dc50012fa1d84ca850a2c57c00ef02618f3410037e')
+sha512sums_i686=('3cc612eb0939c83885181749ad8d4dab051068a084d628bbef970f98acb82138b94ac22008400a2174504d23d9a8b70b45797111833087a6bd47a483ef1a0743')
+sha512sums_x86_64=('7e2627f9e291e0abd498f844a12efcb9546a7ac51a9af3fa57c75b2829065149ac5c126a34ad39cc221a3df957b4d0795d70b74e1905927eb495f6b8cb1ba636')
 
 package(){
 	# Extract package data
