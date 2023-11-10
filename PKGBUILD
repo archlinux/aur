@@ -71,7 +71,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  # Get the version number.
+  # Get the version number. Suggested in https://gitlab.archlinux.org/pacman/pacman/blob/master/proto/PKGBUILD-vcs.proto#L49
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
