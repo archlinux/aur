@@ -1,5 +1,5 @@
 pkgname=mpv-uosc
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Feature-rich minimalist proximity-based UI for MPV player."
 arch=("x86_64")
