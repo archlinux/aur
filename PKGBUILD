@@ -10,7 +10,7 @@ pkgver() {
 }
 
 _pkgver=$(_pkgver)
-pkgver=20231022
+pkgver=20231110
 pkgname=jabref-latest
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest main (master) version from git"
@@ -28,12 +28,12 @@ depends=('glibc'
          'python3')
 optdepends=('gsettings-desktop-schemas: For web search support')
 source=(Jabref-${_pkgver}.tgz::https://builds.jabref.org/main/JabRef-5.12-portable_linux.tar.gz
-        https://raw.githubusercontent.com/JabRef/jabref/main/LICENSE.md
+        https://raw.githubusercontent.com/JabRef/jabref/main/LICENSE
         jabref.sh
         JabRef.desktop
         JabRef.svg)
-sha256sums=('SKIP'
-            'c43dce451383bfd66c06d957c22a7b9cc2366aa2c3b31f5b266afd6c0c16d204'
+sha256sums=('d4efbb877a581cdbb68b1d68a62cf19485d19e02340e1dba00bc4345af74c025'
+            '5420fc1b814ef6776f2dfe845676b9c41e36118413e2a2d30fe0694d7a67743e'
             '857807c9240181f5d7e783898e94e523beaba8b6b55617931141cbffba41c70d'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
             '84408ddc8c6e41e4367f3b6cd171909fb1cf7ac808495f3a8033b64a2ff4c40b')
@@ -52,6 +52,6 @@ package() {
   install -Dm755 jabref.sh ${pkgdir}/usr/bin/jabref
   install -Dm755 JabRef.svg ${pkgdir}/usr/share/pixmaps/JabRef.svg
   install -Dm644 JabRef.desktop ${pkgdir}/usr/share/applications/JabRef.desktop
-  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
