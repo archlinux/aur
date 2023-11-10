@@ -75,6 +75,11 @@
 # CLANGD_HOVERPTRFN:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Resolve the dependent type from its single instantiation (PR: 71279)
+# CLANGD_RESOLVEDEPTYPE:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_BRANCH:=main}
@@ -91,10 +96,11 @@
 : ${CLANGD_HOVERLAYOUTEVERYHERE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERPTRFN:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_RESOLVEDEPTYPE:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=21
+pkgrel=22
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -117,13 +123,14 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-virt-offset.patch'
         'hover-layout-everyhere.patch'
         'hover-no-defs.patch'
-        'hover-ptrfn-args.patch')
+        'hover-ptrfn-args.patch'
+        'resolve-depend-type.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
             'c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
-            '35153f4775647bd7172a460de595f8b1cab4db0ae85283cd1119864f5328ea48'  # lsp-codelens
+            '387a684eefb5605b166a33f9aa71745b3793444029b6ba965598004b343dbf44'  # lsp-codelens
             'd048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc'  # postfix-completion
             '6bc5825c0ba9b6463dcf311346ae4ac9db122f66a4cd47b07f67845d125953b2'  # postfix-completion-trunk
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
@@ -133,7 +140,8 @@ sha256sums=('SKIP'
             '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
             '154cbe13075c1baf34f8c34008e291ecbf1e6fd30bd144fd0f49ac6cc1fdda1a'  # hover-layout-everyhere
             '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
-            '24a8e0b207598798b91f030bcccf0a074f0ccd23885ea4e802a8bda1c05657e0') # hover-ptrfn-args
+            '24a8e0b207598798b91f030bcccf0a074f0ccd23885ea4e802a8bda1c05657e0'  # hover-ptrfn-args
+            '6e1f9c9a01ac50be93537227fffe20816ae0d51243ca8836c39d99dec8dad51e') # resolve-depend-type
 
 pkgver() {
     cd llvm-project
@@ -198,6 +206,11 @@ prepare() {
     # Inlay hints patches
     if [ "$CLANGD_INLAYHINTSPADS" != "n" ]; then
         patch -p1 -i ${srcdir}/inlay-hints-paddings.patch
+    fi
+
+    # Resolve patches
+    if [ "$CLANGD_RESOLVEDEPTYPE" != "n" ]; then
+        patch -p1 -i ${srcdir}/resolve-depend-type.patch
     fi
 }
 
