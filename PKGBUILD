@@ -1,46 +1,31 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Quan Guo <guotsuan@gmail.com>
 
 pkgname=python-astroml
-pkgver=1.0
+_name=astroML
+pkgver=1.0.2
 pkgrel=1
-pkgdesc='Machine learning, statistics, and data mining for astronomy and astrophysics'
-url='https://www.astroml.org'
+pkgdesc="Machine learning, statistics, and data mining for astronomy and astrophysics"
 arch=('any')
+url="https://github.com/astroML/astroML"
 license=('BSD')
-depends=(
-	'python>=3.5'
-	'python-astropy>=3.0'
-	'python-matplotlib>=3.0'
-	'python-numpy>=1.13'
-	'python-scipy>=0.18'
-	'python-scikit-learn>=0.18')
-optdepends=('astroml-examples')
-makedepends=('python-setuptools' 'git')
-checkdepends=('python-pytest-runner')
-source=("$pkgname-$pkgver::git+https://github.com/astroml/astroml#tag=v$pkgver?signed"
-        '001-setup.cfg.patch')
-sha256sums=('SKIP'
-            'dbca87eba820555aa95ff6e055d974f553fd3bef14eca0fdc8c28966743d33dd')
-validpgpkeys=('0DD00E57D2FBEBA214389EC58BC1E9224F65DAD4')
-
-prepare() {
-	patch -p1 -d "$pkgname-$pkgver" < 001-setup.cfg.patch
-}
+depends=('python-astropy'
+         'python-matplotlib'
+         'python-numpy'
+         'python-scikit-learn'
+         'python-scipy')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('8e10a86ec097a6d1afc3a1fb1a18036ee27c444aef4f286dea00d391e709b85a')
 
 build() {
-	cd "$pkgname-$pkgver"
-	python setup.py build
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	python setup.py pytest
+    cd "${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.rst -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst CITATION -t "$pkgdir/usr/share/doc/$pkgname/"
+    cd "${_name}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
