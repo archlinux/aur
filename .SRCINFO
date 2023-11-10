@@ -9,8 +9,6 @@ pkgbase = hysteria
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	depends = acl
-	depends = shadow
 	source = hysteria-git::git+https://github.com/apernet/hysteria.git#tag=app/v2.2.0
 	source = hysteria@.service
 	source = hysteria-server@.service

@@ -8,7 +8,7 @@ pkgdesc='A powerful, lightning fast and censorship resistant proxy'
 arch=('x86_64')
 url="https://hysteria.network/"
 license=('MIT')
-depends=('glibc' 'acl' 'shadow')
+depends=('glibc')
 makedepends=('go' 'git')
 install=$_pkgbase.install
 source=("$_pkgbase-git"::"git+https://github.com/apernet/hysteria.git#tag=app/v$pkgver"
