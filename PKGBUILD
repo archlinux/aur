@@ -7,8 +7,8 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.12.7.plus1
-pkgrel=2
+pkgver=3.13.0.plus1
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ChimeraOS/gamescope
@@ -43,17 +43,15 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=af3c0da0cd791ac0c09c59b8dd05d65bf83c3ca5
-_tag_stb=5736b15f7ea0ffb08dd38af21067c314d6a3aae9
+_tag=229f812c742517201dba4fddb2fddf1d3644d4f3
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
         "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
-        "git+https://github.com/nothings/stb.git#commit=${_tag_stb}"
-	"git+https://github.com/Joshua-Ashton/reshade.git"
-        0001-libdisplay-info-cta-be-more-lenient-about.patch
+        "git+https://github.com/nothings/stb.git"
+        "git+https://github.com/Joshua-Ashton/reshade.git"
         )
 
 b2sums=('SKIP'
@@ -62,9 +60,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-	'SKIP'
         'SKIP'
-        '3f1c2b4b3c35f6879e4dfe457103c27cc30abf265240b234efdf77487adb852a72c755a3099c7aed9a3e83f07ebbaee78343894ec74f0723e390c219f34568a3')
+        'SKIP'
+)
 
 prepare() {
   cd "$srcdir/$_pkgname"
@@ -80,15 +78,8 @@ prepare() {
 
   # make stb.wrap use our local clone
   sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
-  sed -i "s|master|$_tag_stb|" "subprojects/stb.wrap"
 
   meson subprojects download
-
-  cd subprojects/libdisplay-info
-  echo "Applying patch 0001-libdisplay-info-cta-be-more-lenient-about.patch
-..."
-  git apply ${srcdir}/0001-libdisplay-info-cta-be-more-lenient-about.patch
-
 }
 
 pkgver() {
