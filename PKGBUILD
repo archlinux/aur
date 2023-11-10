@@ -1,8 +1,10 @@
-# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Maintainer: Yvaniak <ewen at philippot dot biz>
+# Contributor: Achmad Fathoni <fathno dot id at gmail dot com>
+# Contributor: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=python-types-requests
 _name=${pkgname#python-}
-pkgver=2.31.0.8
+pkgver=2.31.0.10
 pkgrel=1
 pkgdesc="Typing stubs for requests"
 arch=('any')
