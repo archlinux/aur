@@ -1,35 +1,30 @@
 # Maintainer: Rihards Skuja <rhssk at posteo eu>
+
 _pkgname=kpeoplevcard
 pkgname=$_pkgname-git
-pkgver=r38.32d50a9
+pkgver=0.1.r124.gb84f309
 pkgrel=1
-pkgdesc="KPeople VCard Support"
+pkgdesc='Expose VCard contacts to KPeople'
 arch=(x86_64)
-url="https://phabricator.kde.org/source/$_pkgname/"
-license=("GPL")
-depends=(kpeople kcontacts)
+url='https://kde.org'
+license=(GPL)
+depends=(kpeople5 kcontacts5)
 makedepends=(git extra-cmake-modules)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("git+git://anongit.kde.org/$_pkgname")
-md5sums=("SKIP")
+source=("git+https://invent.kde.org/pim/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    mkdir -p build
+	cd $_pkgname
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd build
-    cmake ../$_pkgname
-    make
+	cmake -B build -S $_pkgname -Wno-dev
+	cmake --build build
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 }
