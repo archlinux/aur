@@ -1,0 +1,21 @@
+pkgbase = wifiqr-bin
+	pkgdesc = A simple program to generate a QR code to connect to a WiFi network (binary version)
+	pkgver = 1.2.2
+	pkgrel = 1.2
+	url = https://github.com/dusnm/wifiqr
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	provides = wifiqr
+	conflicts = wifiqr
+	validpgpkeys = BB713929B02F3CE81B84CD7554261991535AB4CB
+	source_x86_64 = wifiqr-bin-1.2.2.tar.gz::https://packages.t0.rs/wifiqr-bin/v1.2.2_x86_64.tar.gz
+	source_x86_64 = wifiqr-bin-1.2.2.tar.gz.sig::https://packages.t0.rs/wifiqr-bin/v1.2.2_x86_64.tar.gz.sig
+	sha256sums_x86_64 = c76633ac2b737db9277f02dce3497b89350786101dceea8acc43b7310dac69d1
+	sha256sums_x86_64 = 7d30f3aea8d1002ae3c7d805f2040105f37a82356fe35c22ef71713a91d805b9
+	source_aarch64 = wifiqr-bin-1.2.2.tar.gz::https://packages.t0.rs/wifiqr-bin/v1.2.2_aarch64.tar.gz
+	source_aarch64 = wifiqr-bin-1.2.2.tar.gz.sig::https://packages.t0.rs/wifiqr-bin/v1.2.2_aarch64.tar.gz.sig
+	sha256sums_aarch64 = d7e0d0c64299ec5b144a6242c6bdfc06ae8a65a053a19da0e48bd2a3ec37ee02
+	sha256sums_aarch64 = 97e3cfa3dd5b2542c0d7f7e177ab1579c200b64e198fc87cb9e6c9f1a1d7b874
+
+pkgname = wifiqr-bin
