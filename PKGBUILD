@@ -26,6 +26,7 @@ arch=('any')
 depends=('plasma-desktop')
 makedepends=('git' 'kpackage5')
 provides=('plasma5-theme-catppuccin')
+replaces=('catppuccin-kde-theme-git' 'catppuccin-kde5-theme-git')
 source=("$pkgname::git+https://github.com/catppuccin/kde.git"
         color.sh)
 sha256sums=('SKIP'
