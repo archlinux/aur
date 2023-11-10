@@ -1,7 +1,7 @@
 pkgbase = adbmanager-bin
 	pkgdesc = ADB manager for Android devices
 	pkgver = 3.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/AKotov-dev/adbmanager
 	arch = x86_64
 	license = GPL3
@@ -12,11 +12,9 @@ pkgbase = adbmanager-bin
 	depends = cairo
 	depends = at-spi2-core
 	depends = gdk-pixbuf2
-	depends = glibc
 	depends = libx11
 	depends = pango
 	depends = gtk2
-	depends = glib2
 	provides = adbmanager=3.1
 	conflicts = adbmanager
 	source = adbmanager-3.1.deb::https://github.com/AKotov-dev/adbmanager/releases/download/v3.1/adbmanager_3.1-0.mrx8_amd64.deb
