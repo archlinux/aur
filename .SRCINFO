@@ -6,7 +6,6 @@ pkgbase = ruby27-rake
 	arch = any
 	license = MIT
 	depends = ruby2.7
-	provides = rake
 	noextract = rake-13.0.3.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/rake-13.0.3.gem
