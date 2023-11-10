@@ -4,14 +4,13 @@
 pkgname=automake-1.14
 _realname=automake
 pkgver=1.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A GNU tool for automatically creating Makefiles"
 arch=('any')
 license=('GPL')
 url="http://www.gnu.org/software/automake"
 groups=('base-devel')
 depends=('perl' 'bash')
-install=automake.install
 source=(ftp://ftp.gnu.org/gnu/$_realname/$_realname-$pkgver.tar.gz)
 sha512sums=('782be9113bde2dd661585c2144849eb9b673fcd835e1918623fca04d3840a75e2fad7ec91ba9b1d125e5c75f1305c655d602976100b2723423717bd03b6e84ed')
 
@@ -35,4 +34,3 @@ package () {
 
   rm "$pkgdir/usr/share/man/man1/"{aclocal,automake}.1
 }
-

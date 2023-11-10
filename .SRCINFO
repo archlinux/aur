@@ -1,9 +1,8 @@
 pkgbase = automake-1.14
 	pkgdesc = A GNU tool for automatically creating Makefiles
 	pkgver = 1.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/automake
-	install = automake.install
 	arch = any
 	groups = base-devel
 	license = GPL
