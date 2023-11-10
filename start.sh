@@ -69,7 +69,7 @@ rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
 
 # 处理旧版本
 hot_upd_is_new=0
-for d in $(ls -d */); do
+for d in $(ls -d ${QQ_HOTUPDATE_DIR}/*/); do
     vercmp "${current_ver//_/-}" "${d%/}"
     if [ $? -ne 0 ]; then
         rm -rf "${d%/}"
