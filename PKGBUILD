@@ -9,7 +9,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=23.08.2
-pkgrel=3
+pkgrel=4
 arch=(
   'x86_64'
   'i686'
@@ -84,7 +84,7 @@ makedepends=(
   'freetype2'
   'gettext'
   'kdoctools5>=5.90.0'
-  'kuserfeedback>=1.2.0'
+  'kuserfeedback5>=1.2.0'
   'kwallet5>=5.90.0'
   'plasma-framework5'
   'pkgconf'
