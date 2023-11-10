@@ -1,9 +1,9 @@
 post_install() {
-	echo 'Enabling com.system76.FirmwareManager.Notify.timer service...'
-	/usr/bin/systemctl --user enable com.system76.FirmwareManager.Notify.timer
+  echo 'Enabling com.system76.FirmwareManager.Notify.timer service...'
+  /usr/bin/systemctl --user enable com.system76.FirmwareManager.Notify.timer
 }
 
 pre_remove() {
-	echo 'Disabling com.system76.FirmwareManager.Notify.timer service...'
-	/usr/bin/systemctl --user disable com.system76.FirmwareManager.Notify.timer
+  echo 'Disabling com.system76.FirmwareManager.Notify.timer service...'
+  /usr/bin/systemctl --user disable com.system76.FirmwareManager.Notify.timer
 }

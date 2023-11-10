@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('firmware-manager-git' 'libfirmware-manager-git')
 pkgbase=firmware-manager-git
-pkgver=0.1.5.r0.gc9367bb
+pkgver=0.1.5.r3.gf3ead34
 pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
