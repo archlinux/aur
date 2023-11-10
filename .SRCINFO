@@ -1,7 +1,7 @@
 pkgbase = wolai-bin
 	pkgdesc = wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。
-	pkgver = 1.2.7
-	pkgrel = 5
+	pkgver = 1.2.9
+	pkgrel = 1
 	url = https://www.wolai.com
 	arch = aarch64
 	arch = armv7h
@@ -23,23 +23,21 @@ pkgbase = wolai-bin
 	depends = libxcb
 	depends = libx11
 	depends = expat
-	depends = glibc
 	depends = libxrandr
 	depends = libxkbcommon
 	depends = mesa
-	depends = glib2
 	depends = at-spi2-core
-	depends = dbus
 	depends = alsa-lib
-	provides = wolai=1.2.7
+	depends = java-runtime
+	provides = wolai=1.2.9
 	conflicts = wolai
 	source = LICENSE.html
 	sha256sums = 04b7a1e4cecbadd2e1bc903b3ad518834f93b9b76542bf53fcb18f24faac099c
-	source_aarch64 = wolai-1.2.7-aarch64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.7_arm64.deb
-	sha256sums_aarch64 = 6ecf889f2d0dbd0630617d56ee233ae71214663d1f01c16b160fda02c21506d7
-	source_armv7h = wolai-1.2.7-armv7h.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.7_arm64.deb
-	sha256sums_armv7h = 6ecf889f2d0dbd0630617d56ee233ae71214663d1f01c16b160fda02c21506d7
-	source_x86_64 = wolai-1.2.7-x86_64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.7_amd64.deb
-	sha256sums_x86_64 = c6dadbc374f9d536a8cf039d748b0e5eb74a90e3b6630abb787d5c0442e78469
+	source_aarch64 = wolai-1.2.9-aarch64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.9_arm64.deb
+	sha256sums_aarch64 = c9b4f563908b7ad370d5def0e7ad4880925810f1af4c940d65d88168d91c2e63
+	source_armv7h = wolai-1.2.9-armv7h.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.9_arm64.deb
+	sha256sums_armv7h = c9b4f563908b7ad370d5def0e7ad4880925810f1af4c940d65d88168d91c2e63
+	source_x86_64 = wolai-1.2.9-x86_64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.9_amd64.deb
+	sha256sums_x86_64 = 7bcfd89d5667b0986d633f0c333c42fb9770317ce9fb4691390832f77869aef7
 
 pkgname = wolai-bin
