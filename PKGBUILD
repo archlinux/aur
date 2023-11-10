@@ -2,7 +2,7 @@
 
 pkgname=wrapland-kwinft
 pkgver=5.27
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/wrapland"
@@ -10,15 +10,9 @@ license=(LGPL)
 depends=('kwayland5')
 provides=("wrapland")
 conflicts=("wrapland")
-makedepends=(doxygen extra-cmake-modules git kdoctools5 wayland-protocols)
-optdepends=(qt6-tools)
-source=("git+https://gitlab.com/kwinft/wrapland.git")
+makedepends=(doxygen extra-cmake-modules git kdoctools5 wayland-protocols qt5-tools)
+source=("git+https://gitlab.com/kwinft/wrapland.git#branch=Plasma/$pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-  cd wrapland
-  git checkout Plasma/$pkgver
-}
 
 build() {
   mkdir -p build
