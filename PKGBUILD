@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-picture-of-the-day
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Use a picture of the day from various sources as GNOME desktop background'
 arch=('any')
 url="https://github.com/swsnr/${pkgname}"
@@ -21,5 +21,6 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}" || exit 1
     make PREFIX=/usr DESTDIR="${pkgdir}" install-package
+    rm -f "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
