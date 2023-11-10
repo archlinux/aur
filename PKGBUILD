@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=texreg
-_pkgver=1.38.6
+_pkgver=1.39.3
 pkgname=r-${_pkgname,,}
-pkgver=1.38.6
+pkgver=1.39.3
 pkgrel=1
 pkgdesc='Conversion of R Regression Output to LaTeX or HTML Tables'
 arch=('any')
@@ -80,7 +80,7 @@ optdepends=(
   r-zelig
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('68bd63b7c00bd2062e86d5687d56e32b3bca108472cc1d7766f2efe5214f12fd')
+sha256sums=('341a779f51d49c84944f32cea82eb2bbd19ef8fa9d209e9bdfc4c6f65cb76d4d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
