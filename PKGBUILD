@@ -10,7 +10,7 @@ url="https://github.com/LCAV/pyroomacoustics"
 license=('MIT')
 depends=('python-numpy' 'python-scipy' 'cython' 'pybind11')
 makedepends=('python-setuptools')
-optdepends=('libsamplerate: for resamplng signals'
+optdepends=('libsamplerate: for resampling signals'
     'python-matplotlib: to create graphs and plots'
     'python-sounddevice: to play sound samples')
 provides=('python-pyroomacoustics')
@@ -20,6 +20,7 @@ sha256sums=('90030aafb8a3f91f35d534d25812b41d38094f1802eb4cba541fd5ea77fcc18e')
 build() {
 	cd "$srcdir/$_pyname-$pkgver"
 	python setup.py build_ext --inplace --include-dirs="/usr/include/eigen3"
+	python setup.py build
 }
 
 package() {
@@ -30,4 +31,3 @@ package() {
 	install -m0644 -D "$srcdir/$_pyname-$pkgver"/LICENSE usr/share/licenses/$pkgname/LICENSE
 	chmod -R a+r usr
 }
-
