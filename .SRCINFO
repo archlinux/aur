@@ -1,7 +1,7 @@
 pkgbase = audius-client-bin
-	pkgdesc = The Decentralized Audius.co Client (binary release)
+	pkgdesc = The Decentralized Audius.co Client (binary release, system Electron)
 	pkgver = 1.5.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AudiusProject/audius-protocol/tree/main/packages/web
 	arch = x86_64
 	license = Apache2
