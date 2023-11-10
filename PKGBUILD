@@ -1,7 +1,7 @@
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kgamma
-pkgver=5.27.80.20231105
+pkgver=5.27.80
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Adjust your monitor gamma settings'
@@ -20,18 +20,16 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools)
 groups=(plasma)
-#source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-makedepends+=(git)
-_commit=10ed3088cf7854ac0dfbed1f05400cf2e83d1119
-source=(git+https://invent.kde.org/plasma/$pkgname#commit=$_commit)
-sha256sums=('SKIP')
+source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('613f3615505c6901a8c4feda08defeb8d399d38466bf789e95366d08fc3559ab'
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 build() {
-  cmake -B build -S $pkgname \
+  cmake -B build  -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
