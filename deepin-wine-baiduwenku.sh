@@ -7,7 +7,7 @@
      
 #               Vufa <countstarlight@gmail.com>
 BOTTLENAME="Deepin-BaiduWenku"
-APPVER=1.2.8
+APPVER=2.0.1
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files (x86)/wenku-pc/百度文库.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/wenku-pc/百度文库.exe"

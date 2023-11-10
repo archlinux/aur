@@ -3,27 +3,38 @@ pkgname=deepin-wine-baiduwenku
 _pkgname=com.baidu.wenku.spark
 _officalname=BaiduWenku
 _installname=wenku-pc
-pkgver=1.2.8
-sparkver=1.1.7spark1
-pkgrel=2
+pkgver=2.0.1
+sparkver=1.2.8spark2
+pkgrel=1
 pkgdesc="Baidu wenku Client on Deepin Wine6.一款由百度发布的供网友在线分享文档的平台"
 arch=('x86_64')
 url="https://wenku.baidu.com"
 license=('custom')
-depends=('deepin-wine6-stable' 'spark-dwine-helper' 'xdg-utils' 'sh' 'p7zip')
-optdepends=('wqy-microhei' 'wqy-zenhei')
-provides=("Baidu")
+depends=(
+    'deepin-wine6-stable'
+    'spark-dwine-helper'
+    'xdg-utils'
+    'sh'
+)
+makedepends=(
+    'p7zip'
+)
+optdepends=(
+    'wqy-microhei'
+    'wqy-zenhei'
+)
+provides=("baiduwenku")
 install="${pkgname}.install"
-source=("${pkgname}-${sparkver}_amd64.deb::https://d.store.deepinos.org.cn/store/office/${_pkgname}/${_pkgname}_${sparkver}_amd64.deb"
+source=(
+    "${pkgname}-${sparkver}.deb::https://d.store.deepinos.org.cn/store/office/${_pkgname}/${_pkgname}_${sparkver}_all.deb"
     "${pkgname}-${pkgver}.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%20Setup%20${pkgver}.exe"
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
-    "${pkgname}.install"
-    "run.sh")
-sha256sums=('d6f7fa0257c3cdfcc3f12df61d57b2d624f0f30b63cb5b15cbde9fc7de417f3e'
-            '801bff0de9a49679d0dadfe9d0811c79185d0102d4609a401e060d1caa9e83c4'
+    "${pkgname}.sh"
+)
+sha256sums=('06262e7ba445d996cc4cef8c555474ca8b6eef4ac676e2bb86b00df6103d45b4'
+            '799859521b320d41513f3950bb178507ebdd84fe058ad284637d5a209b777ee0'
             'e93a1b4112398eefd1d0688d126af3403226c4827a0e4f5f5ee40a97999cf222'
-            '3cc53852b7bf733f9e6c28466dec84899d752983fed19fb5825b480b05952a77'
-            'e228acf31512d1457b51a474950cf79514789bb861d8a59d350324103e7dd6c1')
+            '10263799f3e15c1dedc19007e2a7242306013fc9bdd55405b4094c6d06a10916')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
@@ -49,6 +60,6 @@ package() {
     md5sum "${pkgdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm755 "${srcdir}/run.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
