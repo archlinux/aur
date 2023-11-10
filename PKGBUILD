@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-canary-bin
 _pkgname=AFFiNE-canary
-pkgver=0.10.0_canary.14
+pkgver=0.10.0_canary.16
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.Beta Version."
 arch=('x86_64')
@@ -19,11 +19,11 @@ makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver//_/-}/${pkgname%-bin}-linux-x64.zip"
-    "LICENSE::https://raw.githubusercontent.com/toeverything/AFFiNE/${pkgver//_/-}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-x64.zip"
+    "LICENSE::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f55c165ab1c990e56a7c0b297f49e92410fc5dafbb7856cfe558a6734dd44ea4'
+sha256sums=('e75a405ba7fb014cf8c96911018abd7e145b07001e8db168dca82d259ca8d93c'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             'a817ebd2064b598eda6a260191859ad0d3919ba10074110f8dddbfb4cbd50c54')
 build() {
