@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=('firmware-manager' 'libfirmware-manager')
 pkgbase=firmware-manager
