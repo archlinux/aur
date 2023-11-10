@@ -3,7 +3,8 @@ _pkgname=DevilutionX-bin
 pkgver=1.5.1
 pkgrel=2
 _pkgrel_x86_64=1
-_pkgrel_armv7h=1
+_pkgrel_i386=1
+_pkgrel_i686=1
 _pkgrel_aarch64=1
 pkgdesc="Modern open source Engine to play Diablo. You will need to provide your own game files to play Diablo. Please go to https://github.com/diasurgical/devilutionX for documentation"
 arch=('x86_64' 'i386' 'i686' 'aarch64')
@@ -31,5 +32,7 @@ package() {
    cd $srcdir
    cp -r $srcdir/devilutionx $destdir
    cp -r $srcdir/devilutionx.mpq $destdir
-   ln -sf "$destdir/devilutionx" "$pkgdir/usr/bin/devilutionx"
+
+   # Link to binary
+   ln -sf "$srcdir/devilutionx" "$pkgdir/usr/bin/devilutionx"
 }
