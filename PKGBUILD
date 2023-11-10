@@ -3,7 +3,7 @@
 pkgname="ytdl-shim"
 pkgver=2023.10.13
 pkgrel=1
-pkgdesc='Provide both youtube-dl CLI and python imports using yt-dlp'
+pkgdesc='Provide both youtube-dl command and python imports using yt-dlp'
 arch=('any')
 license=('Unlicense')
 
