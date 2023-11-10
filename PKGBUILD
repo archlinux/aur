@@ -9,8 +9,8 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=119.0
-pkgrel=3
+pkgver=119.0.1
+pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -44,10 +44,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "$__pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=119.0-5"
+  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=119.0.1-1"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "unity-menubar.patch")
-sha256sums=('f63e44194548f246e1396508800739a24c0517e65e920002a6f67ee099be39dd'
+sha256sums=('48cc43cab060e97467e9a17617f511a177e7b91b7e77e408425351a2cbb07f70'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
