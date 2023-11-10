@@ -1,23 +1,20 @@
 # Maintainer: Evgeniy "arcanis" Alexeev <arcanis.arch at gmail dot com>
 
 pkgbase=netctl-gui
-pkgname=('libnetctlgui' 'netctlgui-helper' 'netctl-gui'
-         'plasma5-applet-netctl-gui')
+pkgname=(libnetctlgui netctlgui-helper netctl-gui plasma5-applet-netctl-gui)
 pkgver=1.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt4/Qt5 GUI for netctl. Also provides a widget for KDE"
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="https://arcanis.me/projects/netctl-gui"
 license=('GPL3')
-makedepends=('cmake' 'extra-cmake-modules' 'plasma-framework' 'qt5-tools')
+makedepends=('cmake' 'extra-cmake-modules' 'plasma-framework5' 'qt5-tools')
 source=("https://github.com/arcan1s/netctl-gui/releases/download/V.${pkgver}/${pkgbase}-${pkgver}-src.tar.xz")
-md5sums=('64c04c36eea017e7c0ddf687d60de128')
 
 prepare() {
   rm -rf "${srcdir}/build-"{plasmoid,qt5}
   mkdir "${srcdir}/build-"{plasmoid,qt5}
 }
-
 
 build() {
   cd "${srcdir}/build-plasmoid"
@@ -40,10 +37,9 @@ build() {
   make
 }
 
-
 package_plasma5-applet-netctl-gui() {
   pkgdesc="A KF5 plasmoid, which interacts with netctl. A part of netctl-gui"
-  depends=('netctl' 'plasma-framework')
+  depends=('netctl' 'plasma-framework5')
   optdepends=('netctlgui-helper: DBus helper daemon'
               'netctl-gui: graphical front-end'
               'sudo: sudo support')
@@ -52,7 +48,6 @@ package_plasma5-applet-netctl-gui() {
   cd "${srcdir}/build-plasmoid"
   make DESTDIR="${pkgdir}" install
 }
-
 
 package_libnetctlgui() {
   pkgdesc="Qt5 library which interacts with netctl. A part of netctl-gui"
@@ -67,7 +62,6 @@ package_libnetctlgui() {
   make DESTDIR="${pkgdir}" install
 }
 
-
 package_netctlgui-helper() {
   pkgdesc="Helper daemon for netctl-gui. A part of netctl-gui"
   depends=("libnetctlgui=${pkgver}")
@@ -81,11 +75,10 @@ package_netctlgui-helper() {
   make DESTDIR="${pkgdir}" install
 }
 
-
 package_netctl-gui() {
   pkgdesc="Qt5 graphical front-end for netctl. A part of netctl-gui"
   depends=("libnetctlgui=${pkgver}" 'xdg-utils')
-  optdepends=('plasma-netctl-gui: KF5 widget'
+  optdepends=('plasma5-applet-netctl-gui: KF5 widget'
               'netctlgui-helper: DBus helper daemon')
   provides=('netctl-gui-qt4')
   conflicts=('netctl-gui-qt4')
@@ -96,3 +89,5 @@ package_netctl-gui() {
   cd "${srcdir}/build-qt5/resources"
   make DESTDIR="${pkgdir}" install
 }
+
+sha256sums=('67bdacdd9d7277ed116db9b40960ff03faa3c6f3c0ddf853b5396cbba567a908')
