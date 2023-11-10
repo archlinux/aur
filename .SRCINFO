@@ -1,6 +1,6 @@
 pkgbase = python-galsim
 	pkgdesc = Modular galaxy image simulation toolkit
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/GalSim-developers/GalSim
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-galsim
 	depends = fftw
 	depends = python-coord
 	depends = python-future
-	source = GalSim-2.5.0.tar.gz::https://github.com/GalSim-developers/GalSim/archive/v2.5.0.tar.gz
-	sha256sums = 31d233244926d43734477e8769656db83541bbfaa83a6303172f2d58886fe39f
+	source = GalSim-2.5.1.tar.gz::https://github.com/GalSim-developers/GalSim/archive/v2.5.1.tar.gz
+	sha256sums = 30bceadfe3658c9137590a883e8abad182c18821bfe8ff36f59f8589d7fb25a4
 
 pkgname = python-galsim
