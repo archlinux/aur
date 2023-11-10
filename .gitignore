@@ -1,0 +1,7 @@
+/*.tar.xz
+/*.tar.gz
+/*.tar.zst
+/*.zip
+/pkg
+/src
+/yay
