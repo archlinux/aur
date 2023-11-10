@@ -1,6 +1,6 @@
 pkgbase = madagascar
 	pkgdesc = Multidimensional data analysis and reproducible computational experiments.
-	pkgver = 4.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://www.reproducibility.org/wiki/Main_Page
 	arch = i686
@@ -22,9 +22,9 @@ pkgbase = madagascar
 	depends = swig
 	optdepends = cuda: GPU acceleration, but not compatible with cuda 12
 	optdepends = plplot: scientific plot
-	noextract = madagascar.tar.gz
+	noextract = madagascar-4.0.1.tar.gz
 	options = strip
-	source = madagascar.tar.gz::https://sourceforge.net/projects/rsf/files/madagascar/madagascar-4.0/madagascar-4.0.1.tar.gz/download
-	md5sums = SKIP
+	source = madagascar-4.0.1.tar.gz::https://sourceforge.net/projects/rsf/files/madagascar/madagascar-4.0/madagascar-4.0.1.tar.gz/download
+	sha256sums = 91148aabfb27919934651a93d0a33aa90debbd875d615bd20fa92a22001bea4f
 
 pkgname = madagascar

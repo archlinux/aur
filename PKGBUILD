@@ -1,7 +1,7 @@
 # Contributor: anon at sansorgan.es
 
 pkgname=madagascar
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url="https://www.reproducibility.org/wiki/Main_Page"
@@ -12,14 +12,14 @@ depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd'
 optdepends=('cuda: GPU acceleration, but not compatible with cuda 12' 'plplot: scientific plot')
 makedepends=('scons')
 options=('strip')
-source=("$pkgname.tar.gz::https://sourceforge.net/projects/rsf/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.$pkgrel.tar.gz/download")
-md5sums=('SKIP')
-noextract=("$pkgname.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/rsf/files/$pkgname/$pkgname-4.0/$pkgname-$pkgver.tar.gz/download")
+sha256sums=('91148aabfb27919934651a93d0a33aa90debbd875d615bd20fa92a22001bea4f')
+noextract=("$pkgname-$pkgver.tar.gz")
 
 prepare() {
     cd "$srcdir"
     mkdir -p ${srcdir}/${pkgname}
-    bsdtar -xf $pkgname.tar.gz --strip-components=1 -C ${srcdir}/${pkgname}
+    bsdtar -xf $pkgname-$pkgver.tar.gz --strip-components=1 -C ${srcdir}/${pkgname}
 }
 
 build() {
