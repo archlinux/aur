@@ -4,16 +4,16 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 _pkgname=kgraphviewer
 pkgname=kgraphviewer-git
-pkgver=2.4.3a.r40.gc65339d
-pkgrel=1
+pkgver=2.4.3a.r237.g9c0f70c
+pkgrel=2
 pkgdesc='A Graphviz dot graph file viewer for KDE'
 arch=(x86_64)
 url='http://www.kde.org/applications/graphics/kgraphviewer/'
 license=(GPL FDL)
 conflicts=($_pkgname)
 provides=($_pkgname)
-depends=(qt5-base qt5-svg kcoreaddons kdoctools kparts kio kwidgetsaddons kiconthemes graphviz)
-makedepends=(cmake extra-cmake-modules boost docbook-xsl)
+depends=(qt5-base qt5-svg kcoreaddons5 kparts5 kwidgetsaddons5 graphviz hicolor-icon-theme gcc-libs kxmlgui5 kconfig5 ki18n5 kconfigwidgets5 glibc)
+makedepends=(git cmake extra-cmake-modules boost docbook-xsl kdoctools5)
 source=('git+https://invent.kde.org/graphics/kgraphviewer.git')
 md5sums=('SKIP')
 
