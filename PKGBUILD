@@ -1,6 +1,8 @@
+# Maintainer: NoNickKnown <nonickknown at gmail dot com>
+#  forked from cewe-fotobuch, originally created by contributors listed below:
+# Contributor: DonJaime
 # Contributor: Jozef Riha <jose1711 at gmail dot com>
-# Updated by Manuel Conzelmann, changed to non-branded software
-# Updated by NoNickKnown, added Pixum Fotowelt
+# Contributor: Manuel Conzelmann
 
 # to package a different version, change this line to _productVariant=<one of the words after '_prams_' below>
 # or download a setup file from a local CEWE site, put it in the same folder as this file, and run:
