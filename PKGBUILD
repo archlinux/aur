@@ -46,4 +46,6 @@ package() {
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
+# Fix permission
+  chmod 644 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked"
 }
