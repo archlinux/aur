@@ -1,0 +1,16 @@
+pkgbase = libasi-git
+	pkgdesc = libasi used by INDI ASI drivers, latest git version.
+	pkgver = v2.0.4.16.g0c0de320
+	pkgrel = 1
+	url = https://www.indilib.org/index.php?title=Main_Page
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	provides = libasi
+	conflicts = libasi
+	source = git+https://github.com/indilib/indi-3rdparty
+	sha512sums = SKIP
+
+pkgname = libasi-git
