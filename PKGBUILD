@@ -4,12 +4,12 @@
 pkgname=hmcl-stable-bin
 _ver=3.5.5
 pkgver=${_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
-depends=('java17-openjfx' 'jre-openjdk' 'gtk2')
+depends=('java-openjfx' 'jdk-openjdk' 'gtk2')
 provides=('hmcl')
 conflicts=('hmcl')
 source=("hmcl.desktop"
