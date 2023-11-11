@@ -5,7 +5,7 @@ pkgver=5.0.60.r778.17aacf9
 pkgrel=1
 pkgdesc="A very powerful batch file renamer for KDE. (GIT Version)"
 arch=('x86_64')
-url='https://kde.org/applications/en/utilities/org.kde.krename'
+url='https://apps.kde.org/krename'
 license=('GPL')
 depends=(
   'gcc-libs' # 'libgcc_s.so' 'libstdc++.so'
