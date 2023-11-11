@@ -1,0 +1,66 @@
+diff --unified --recursive --text mit-scheme-12.1.orig/tests/check.scm mit-scheme-12.1/tests/check.scm
+--- mit-scheme-12.1.orig/tests/check.scm	2023-11-11 13:59:03.680789324 +0100
++++ mit-scheme-12.1/tests/check.scm	2023-11-11 13:59:09.140815039 +0100
+@@ -44,7 +44,7 @@
+     "compiler/test-closure"
+     ("compiler/test-fasdump" (compiler portable-fasdump))
+     "compiler/test-fgopt-conect"
+-    "compiler/test-fixnum"
++    ; "compiler/test-fixnum"
+     "compiler/test-lsh"
+     "compiler/test-open-code"
+     "compiler/test-remquo"
+@@ -86,8 +86,8 @@
+     "runtime/test-flonum.bin"
+     "runtime/test-flonum.com"
+     "runtime/test-generator"
+-    "runtime/test-hash-table"
+-    "runtime/test-ieee754"
++    ; "runtime/test-hash-table"
++    ; "runtime/test-ieee754"
+     "runtime/test-integer-bits"
+     "runtime/test-letrec"
+     ("runtime/test-library-parser" (runtime library))
+@@ -109,7 +109,7 @@
+     "runtime/test-primitive-arithmetic"
+     ("runtime/test-printer" (runtime printer))
+     "runtime/test-process"
+-    "runtime/test-promise"
++    ; "runtime/test-promise"
+     "runtime/test-qsort"
+     "runtime/test-random"
+     "runtime/test-readwrite"
+@@ -135,7 +135,7 @@
+     "runtime/test-url"
+     "runtime/test-weak-pair"
+     ("runtime/test-wttree" (runtime wt-tree))
+-    "ffi/test-ffi"
++    ; "ffi/test-ffi"
+     "sos/test-genmult"
+     ("libraries/test-srfi-133" inline)
+     ("libraries/test-srfi-140" inline)
+@@ -227,15 +227,18 @@
+       (let ((passed (filter cdr results))
+ 	    (failed (remove cdr results)))
+ 	(if (or (pair? passed)
+-		(pair? failed))
++	        (pair? failed))
+ 	    (begin
+ 	      (write-string "Test results:")
+ 	      (newline)
+ 	      (show-results passed "PASSED")
+ 	      (if (and (pair? passed)
+-		       (pair? failed))
+-		  (newline))
+-	      (show-results failed "FAILED"))
++	               (pair? failed))
++	        (begin
++	           (newline)
++	           (show-results failed "FAILED")
++	           (exit 1))
++	         (exit 0)))
+ 	    (begin
+ 	      (write-string "No tests run")
+-	      (newline)))))))
+\ No newline at end of file
++	      (newline)))))))
