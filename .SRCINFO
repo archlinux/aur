@@ -1,0 +1,22 @@
+pkgbase = r-hdf5r
+	pkgdesc = Interface to the 'HDF5' Binary Data Format
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=hdf5r
+	arch = x86_64
+	license = Apache
+	checkdepends = r-testthat
+	depends = hdf5
+	depends = r-bit64
+	depends = r-r6
+	optdepends = r-formatr
+	optdepends = r-knitr
+	optdepends = r-nycflights13
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/hdf5r_1.3.8.tar.gz
+	md5sums = 43b6c0cb3b22cfa984f9424eaa9af143
+	sha256sums = b53281e2cf57447965849748e972de2f7fe8df0cee3538ef5813c33c7ed2302b
+
+pkgname = r-hdf5r
