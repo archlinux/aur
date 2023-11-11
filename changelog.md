@@ -1,4 +1,4 @@
-# Name: 1.3.3
+# Name: 1.3.3 
 ### URL: https://github.com/mymonero/mymonero-app-js/releases/tag/v1.3.3
 ### published at '2022-11-09T04:49:34Z' by devinpearson
 ---

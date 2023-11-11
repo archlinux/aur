@@ -2,19 +2,45 @@
 
 pkgname="mymonero"
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features."
 arch=('x86_64')
 # url="https://github.com/mymonero/mymonero-app-js"
 url="https://www.mymonero.com/"
-license=('custom:MyMonero')
+license=('BSD-3')
 
-depends=("libxss" "nss" "gtk3")
+depends=("alsa-lib"
+	"at-spi2-core"
+	"cairo"
+	"dbus"
+	"expat"
+	"gcc-libs"
+	"gdk-pixbuf2"
+	"glib2"
+	"glibc"
+	"gtk3"
+	"hicolor-icon-theme"
+	"libcups"
+	"libdrm"
+	"libx11"
+	"libxcb"
+	"libxcomposite"
+	"libxcursor"
+	"libxdamage"
+	"libxext"
+	"libxfixes"
+	"libxi"
+	"libxrandr"
+	"libxrender"
+	"libxss"
+	"libxtst"
+	"mesa"
+	"nspr"
+	"nss"
+	"pango")
 provides=("$pkgname")
-# options=(debug !strip emptydirs zipman)
 options=(strip emptydirs zipman)
-# install="$pkgname.install"
 changelog="changelog.md"
 
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/mymonero/mymonero-app-js/releases/download/v${pkgver}/MyMonero-${pkgver}.AppImage"
@@ -25,10 +51,10 @@ b2sums=('a2fe1e6c58c4996d9d56c901d8269393410edb86e74707bdb6508829ca6fd03145920e6
 
 prepare() {
 	# making .AppImage file executable
-	chmod -v +x "${pkgname}-${pkgver}.${CARCH}.AppImage"
+	chmod +x "${pkgname}-${pkgver}.${CARCH}.AppImage"
 
 	# extract .AppImage file
-	"./${pkgname}-${pkgver}.${CARCH}.AppImage" --appimage-extract
+	"./${pkgname}-${pkgver}.${CARCH}.AppImage" --appimage-extract >/dev/null
 }
 
 build() {
@@ -38,34 +64,34 @@ build() {
 
 package() {
 	# Copy app files
-	install -vdm 755 "${pkgdir}/opt/${pkgname}"
-	cp -va squashfs-root/* "${pkgdir}/opt/${pkgname}"
+	install -dm 755 "${pkgdir}/opt/${pkgname}"
+	cp -a squashfs-root/* "${pkgdir}/opt/${pkgname}"
 
 	# Fix permissions
 	for d in locales resources; do
-		chmod -v 755 "${pkgdir}/opt/${pkgname}/$d"
-		find "${pkgdir}/opt/${pkgname}/$d" -type d -exec chmod -v 755 {} +
+		chmod 755 "${pkgdir}/opt/${pkgname}/$d"
+		find "${pkgdir}/opt/${pkgname}/$d" -type d -exec chmod 755 {} +
 	done
 	chown root:root "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 	chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
 	# Link entry point
-	install -vdm 755 "${pkgdir}/usr/bin"
-	ln -vsf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -dm 755 "${pkgdir}/usr/bin"
+	ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# Copy icons files
-	install -vdm 755 "${pkgdir}/usr/share/icons"
-	find squashfs-root/usr/share/icons -type d -exec chmod -v 755 {} +
-	cp -va squashfs-root/usr/share/icons/* "${pkgdir}/usr/share/icons"
+	install -dm 755 "${pkgdir}/usr/share/icons"
+	find squashfs-root/usr/share/icons -type d -exec chmod 755 {} +
+	cp -a squashfs-root/usr/share/icons/* "${pkgdir}/usr/share/icons"
 
 	# Copy desktop file
-	install -vDm 644 "squashfs-root/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 "squashfs-root/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	# Install LICENSE file
-	install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# Remove unused files
-	rm -vrf "${pkgdir}/opt/${pkgname}"/{usr,swiftshader,AppRun,${pkgname}.{desktop,png}}
-	#rm -vrf "${pkgdir}/opt/${pkgname}"/{libGLESv2.so,libEGL.so,libvk_swiftshader.so,libvulkan.so}
-	#rm -vrf "${pkgdir}/opt/${pkgname}"/{locales,LICENSE*}
+	rm -rf "${pkgdir}/opt/${pkgname}"/{usr,swiftshader,AppRun,${pkgname}.{desktop,png}}
+	rm -rf "${pkgdir}/opt/${pkgname}"/{libGLESv2.so,libEGL.so,libvk_swiftshader.so,libvulkan.so}
+	rm -rf "${pkgdir}/opt/${pkgname}"/{locales,LICENSE*}
 }
