@@ -2,7 +2,7 @@
 
 basename=draco
 pkgname=$basename-git
-pkgver=1.3.5+38+g5db6df1
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Draco is a library for compressing and decompressing 3D geometric meshes and point clouds. It is intended to improve the storage and transmission of 3D graphics."
 arch=('x86_64')
@@ -35,6 +35,4 @@ build() {
 package() {
   cd "${srcdir}/${basename}/build"
   DESTDIR="${pkgdir}" make install
-  mv ${pkgdir}/usr/build/*.h ${pkgdir}/usr/include/draco/
-  rm ${pkgdir}/usr/build -R
 }
