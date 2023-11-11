@@ -1,6 +1,6 @@
 pkgname=libfirefly-git
-pkgver=git
-pkgrel=2
+pkgver=ec7ae69
+pkgrel=1
 pkgdesc='A standalone C++ Library for vectors calculations'
 arch=(x86_64)
 url='https://libfirefly.tbhaxor.com'
@@ -8,10 +8,11 @@ license=('GPL-3.0-or-later')
 makedepends=('cmake' 'make' 'git')
 source=('git+https://github.com/tbhaxor/firefly.git')
 sha256sums=('SKIP')
+conflicts=('libfirefly2')
 
 pkgver() {
   cd firefly || exit 1
-	git log -n 1 --pretty=format:"%h"
+  git log -n 1 --pretty=format:"%h"
 }
 
 prepare() {
@@ -19,10 +20,9 @@ prepare() {
 }
 
 build() {
-  cmake --build build -j "$(nproc)"
+  cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "$srcdir"/firefly/LICENSE "$pkgdir"/usr/share/licences/libfirefly/LICENCE
 }
