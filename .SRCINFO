@@ -7,6 +7,9 @@ pkgbase = paintstorm
 	license = Commercial
 	makedepends = html-xml-utils
 	makedepends = pandoc
+	options = !strip
+	options = !debug
+	options = emptydirs
 	source = Paintstorm_linux_v2.50.run.tar.gz::https://www.paintstormstudio.com/Paintstorm_linux_v2.50.run.tar.gz
 	sha256sums = aaa581752027b3445578dfc9dc3e72048194f4908291eaf11c60b91947ac35c1
 

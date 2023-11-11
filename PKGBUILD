@@ -15,6 +15,8 @@ makedepends=(
   'pandoc'
 )
 
+options=(!strip !debug emptydirs)
+
 _filename="Paintstorm_linux_v${pkgver}.run"
 _pkgext="tar.gz"
 source=(
