@@ -3,7 +3,7 @@
 _pkgbase=hysteria1
 pkgname=$_pkgbase
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A feature-packed network utility optimized for networks of poor quality (Legacy Version)'
 _gover=1.20.7
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=("$_pkgbase-git"::"git+https://github.com/apernet/hysteria.git#tag=v$pkgv
         "golang-go-${_gover}.src.tar.gz"::"https://go.dev/dl/go${_gover}.src.tar.gz"
         )
 sha256sums=('SKIP'
-            '91c77e6888daae39c3bdfa27ec70a6c0adc1f0ab087f2f3865dd2aadd48811d5'
-            'a4cd153ca00a14ce0e66f5384ebdc509c4dcd60e464ea3a7eb1c4c6516180596'
+            '4ebeed6fb5f0416470094557f2321a0a604f55953242bc6b2b184198cc9085dc'
+            '59d9d1b722028b66028565d269fd5028577fc0cab80f514232b5e8fb919c6ffe'
             '44f1cb2fedfc94dc396ceb215e62237dbc8c74c035c45a3430c1f3748d266dd9'
             '1e93d9f2b312eaf02ac00229106cd796e0cd54a9a468a0a8d3ae843399c1c310'
             '2c5ee9c9ec1e733b0dbbc2bdfed3f62306e51d8172bf38f4f4e542b27520f597')
