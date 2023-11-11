@@ -10,7 +10,7 @@ url="https://github.com/Textualize/${_base}"
 license=(MIT)
 depends=(python-rich python-importlib-metadata python-typing_extensions)
 makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest-asyncio python-pytest-aiohttp python-time-machine)
+checkdepends=(python-pytest-asyncio python-pytest-aiohttp python-time-machine python-tree-sitter-languages)
 optdepends=('python-tree-sitter: for syntax highlighting support'
   'python-tree-sitter-languages: for custom languages support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
