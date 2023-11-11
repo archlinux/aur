@@ -24,11 +24,7 @@ source_x86_64=("https://github.com/kabukky/${pkgname/-bin/}/releases/download/v$
 sha256sums_x86_64=('ba25e0658a9ae9b959c690a797318c8c8991f25544c868cfd3e332f1a57ae372')
 
 package() {
-  if [[ "${CARCH}" == "i686" ]]; then
-    cd ${srcdir}/${pkgname/-bin/}-linux-386
-  elif [[ "${CARCH}" == "x86_64" ]]; then
-    cd ${srcdir}/${pkgname/-bin/}-linux-amd64
-  fi
+  cd ${srcdir}
 
   # Binary, configuration, and service Unit file
   install -Dm755 journey ${pkgdir}/opt/journey/journey
