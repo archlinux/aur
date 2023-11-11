@@ -16,7 +16,7 @@ then
 fi
 
 # PGMAJORVERSION is major version
-PGMAJORVERSION=16
+PGMAJORVERSION=17
 
 # Check for the PGDATA structure
 if [ -f "$PGDATA/PG_VERSION" ] && [ -d "$PGDATA/base" ]
