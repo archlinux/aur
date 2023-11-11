@@ -2,8 +2,8 @@
 # Past-Maintainer: Yingchang Liu
 
 pkgname=seismic-unix-git
-pkgver=4426.c222c39
-pkgrel=2
+pkgver=r.c222c39a
+pkgrel=1
 pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=(
     'tcsh: some scripts'
     'gcc-fortran: Fortran support')
 makedepends=('git' 'gcc-fortran' 'libtirpc' 'openmotif' 'glu' 'libxaw' 'freeglut' 'python' 'lib32-glibc' )
-source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
+source=("$pkgname::git+https://github.com/JohnWStockwellJr/SeisUnix.git")
 # source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/s/LZpzc8jMzbWG9BZ/download?path=%2F&files=cwp_su_all_44R28.tgz")
 md5sums=("SKIP")
 #install=seismic-unix.install
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-    cd ${srcdir}/SeisUnix/src/
+    cd ${srcdir}/$pkgname/src/
     # start fresh
     rm -rf ../bin/
     rm -rf ../lib/
@@ -39,10 +39,10 @@ prepare() {
 }
 
 build() {
-    export CWPROOT="$srcdir/SeisUnix"
+    export CWPROOT="$srcdir/$pkgname"
 
 
-    #cd "$srcdir/src/SeisUnix/src"
+    #cd "$srcdir/src/$pkgname/src"
     cd ${CWPROOT}/src/
     make -j1 install
     make -j1 xtinstall
@@ -54,8 +54,8 @@ build() {
 }
 
 package() {
-    #export CWPROOT="$srcdir/src/SeisUnix/build"
-    export CWPROOT="$srcdir/SeisUnix"
+    #export CWPROOT="$srcdir/src/$pkgname/build"
+    export CWPROOT="$srcdir/$pkgname"
     cd "$CWPROOT"
     install -dm755 "$pkgdir/opt/$pkgname"
     cp -r {,"$pkgdir/opt/$pkgname/"}bin/
@@ -67,8 +67,8 @@ package() {
     chmod -R a+r "$pkgdir/opt/$pkgname"
     
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname" 
-    install -m644 "$srcdir/SeisUnix/src/LEGAL_STATEMENT" "$pkgdir/usr/share/licenses/$pkgname" 
-    install -m644 "$srcdir/SeisUnix/src/ACKNOWLEDGEMENTS" "$pkgdir/usr/share/licenses/$pkgname" 
+    install -m644 "$srcdir/$pkgname/src/LEGAL_STATEMENT" "$pkgdir/usr/share/licenses/$pkgname" 
+    install -m644 "$srcdir/$pkgname/src/ACKNOWLEDGEMENTS" "$pkgdir/usr/share/licenses/$pkgname" 
     install -dm755 "$pkgdir/etc/profile.d/"
     cat > "$pkgdir/etc/profile.d/$pkgname.sh" << EOF
 #!/bin/bash
