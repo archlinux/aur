@@ -1,15 +1,17 @@
 pkgbase = ttf-mononoki
 	pkgdesc = Monospace font for programmers, successor of monoOne
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://madmalik.github.io/mononoki/
+	changelog = changelog.md
 	arch = any
 	license = custom:OFL
-	depends = fontconfig
 	provides = ttf-mononoki
 	conflicts = ttf-mononoki-git
+	options = strip
 	options = emptydirs
-	source = https://github.com/madmalik/mononoki/archive/1.6.tar.gz
+	options = zipman
+	source = ttf-mononoki-1.6.tar.gz::https://github.com/madmalik/mononoki/archive/1.6.tar.gz
 	b2sums = 584bf6d1f319fd15b30fcc2dc1f3c58e76105b1ca3cd6a02982e80c2df645b9861878dbfa0eb52768c3dfd2900ff30b59a3fad7e77a2785dc08087668cf54931
 
 pkgname = ttf-mononoki
