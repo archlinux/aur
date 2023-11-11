@@ -11,7 +11,7 @@ from typing import Tuple
 
 def parse_versions() -> Tuple[str, str]:
     """Return the old and the new version of Telegram Desktop, in this order."""
-    with open("PKGBUILD") as PKGBUILD, open(".SRCINFO") as SRCINFO:
+    with open("PKGBUILD", encoding="utf-8") as PKGBUILD, open(".SRCINFO", encoding="utf-8") as SRCINFO:
         old_content = SRCINFO.readlines()
         new_content = PKGBUILD.readlines()
 
@@ -24,10 +24,13 @@ def parse_versions() -> Tuple[str, str]:
 
     return fetch_value(old_content), fetch_value(new_content)
 
+def make_temp_folder() -> str:
+    """Utility function for creating a temporary folder and returning its path."""
+    return tempfile.mkdtemp()
 
-def git_clone_repo(old_version: str, new_version: str) -> str:
-    """Fetch the Git repository with the proper parameters and provides the folder name."""
-    temp_git_folder = tempfile.mkdtemp()
+
+def git_clone_repo(old_version: str, new_version: str, git_folder: str):
+    """Fetch the Git repository with the proper parameters."""
 
     git_clone_command = [
         "git",
@@ -38,7 +41,7 @@ def git_clone_repo(old_version: str, new_version: str) -> str:
         f"--shallow-since=v{old_version}",
         f"--branch=v{new_version}",
         "https://github.com/telegramdesktop/tdesktop",
-        temp_git_folder,
+        git_folder,
     ]
 
     cpus = cpu_count()
@@ -48,7 +51,6 @@ def git_clone_repo(old_version: str, new_version: str) -> str:
     print(f"Runnng: {' '.join(git_clone_command)}")
 
     run_command(git_clone_command, check=True)
-    return temp_git_folder
 
 
 def fetch_submodule_data(git_repository: str, base_repo: str):
@@ -78,6 +80,7 @@ def fetch_submodule_data(git_repository: str, base_repo: str):
                 f'printf "$name{md_sep}" ; git remote get-url origin',
             ],
             capture_output=True,
+            check=True
         )
         git_submodules_metadata = git_remotes_command.stdout.decode().splitlines()
 
@@ -128,23 +131,29 @@ def fetch_submodule_data(git_repository: str, base_repo: str):
 
 def generate_metadata():
     """Main method, doing the hard work."""
-    old_version, new_version = parse_versions()
+    git_repo_path = make_temp_folder()
 
-    git_repo_path = git_clone_repo(old_version, new_version)
+    try:
+        old_version, new_version = parse_versions()
 
-    sources, commands = fetch_submodule_data(git_repo_path, "$srcdir/tdesktop")
+        git_clone_repo(old_version, new_version, git_repo_path)
 
-    indent = " " * 4
+        sources, commands = fetch_submodule_data(git_repo_path, "$srcdir/tdesktop")
 
-    print("# Sources:")
-    for k, v in sorted(sources.items()):
-        print(indent + f'"{k}::git+{v}"')
+        indent = " " * 4
 
-    print("# Commands in prepare:")
-    for l in commands:
-        print(indent + l if l.strip() else "")
+        print("# Sources:")
+        for k, v in sorted(sources.items()):
+            print(indent + f'"{k}::git+{v}"')
 
-    shutil.rmtree(git_repo_path)
+        print("# Commands in prepare:")
+        for l in commands:
+            print(indent + l if l.strip() else "")
+
+    except KeyboardInterrupt:
+        print("Keyboard interrupt received, stopping our work...")
+    finally:
+        shutil.rmtree(git_repo_path)
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.11.3
+pkgver=4.11.6
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -162,6 +162,14 @@ prepare() {
     git -C "$srcdir/tdesktop" config src.cmake.url "$srcdir/submodule_cmake_helpers"
     git -C "$srcdir/tdesktop" submodule update
 
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule init
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
+
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule init
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" config src.doc/gh-pages.url "$srcdir/submodule_range-v3"
+    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule update
+
     git -C "$srcdir/tdesktop/cmake" submodule init
     git -C "$srcdir/tdesktop/cmake" config src.external/Implib.so.url "$srcdir/submodule_Implib.so"
     git -C "$srcdir/tdesktop/cmake" config src.external/glib/cppgir.url "$srcdir/submodule_cppgir"
@@ -170,14 +178,6 @@ prepare() {
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule init
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" config src.expected-lite.url "$srcdir/submodule_expected-lite"
     git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule update
-
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" config src.doc/gh-pages.url "$srcdir/submodule_range-v3"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule update
-
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
 
     # Normal preparation here
     cd "$srcdir/tdesktop"
