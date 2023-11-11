@@ -22,7 +22,7 @@ sha256sums=('61606367f706a07277636488890b9a3622324223b50ca9f21e49b4cb5c409eb0'
             'SKIP'
             '3195c8df2539a6ec3c25bd64aad732b2291070454f45f86df5a675796cbae731'
             'SKIP')
-validpgpkeys=(4BA1F928CBA7CA219A14741B24FB14CFDD5D0319)  # dakataca
+#validpgpkeys=(4BA1F928CBA7CA219A14741B24FB14CFDD5D0319)  # dakataca
 
 # Preparar fuentes. 
 prepare() {
