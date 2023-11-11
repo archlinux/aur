@@ -23,6 +23,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   ln -s com.github.alexkdeveloper.$pkgname "$pkgdir/usr/bin/$pkgname"
 }
