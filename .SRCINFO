@@ -1,7 +1,7 @@
 pkgbase = xkb-switch-i3
 	pkgdesc = Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)
-	pkgver = 1.8.5+i3_4
-	pkgrel = 2
+	pkgver = 2.0.1+i3_5
+	pkgrel = 1
 	url = https://github.com/zebradil/xkb-switch-i3
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = xkb-switch-i3
 	depends = jsoncpp
 	provides = xkb-switch
 	conflicts = xkb-switch
-	source = xkb-switch-i3-1.8.5+i3_4.tar.gz::https://github.com/zebradil/xkb-switch-i3/archive/1.8.5+i3-4.tar.gz
-	source = i3ipcpp-7c2f465cbb1ad502d96820c022b2f649be413ccc.tar.gz::https://api.github.com/repos/drmgc/i3ipcpp/tarball/7c2f465cbb1ad502d96820c022b2f649be413ccc
-	sha1sums = 84546b91823a7ba2fd4d01ca33637c1a2b67eaaf
-	sha1sums = 54a3e7cd00e457d9bfb443fdd4046f2b19170815
+	source = xkb-switch-i3-2.0.1+i3_5.tar.gz::https://github.com/zebradil/xkb-switch-i3/archive/2.0.1+i3-5.tar.gz
+	source = i3ipcpp-1bf594d1f25e63122c6f92c2a61a848b45457e08.tar.gz::https://api.github.com/repos/drmgc/i3ipcpp/tarball/1bf594d1f25e63122c6f92c2a61a848b45457e08
+	sha256sums = 43e9e54ab9177db9f0b2050c1e1091eabaf8c023c39ef2d9450cc9675078a8b1
+	sha256sums = c2204fc1d0e7e0b7870e74dcfdea3a2d5edc53b8e55a23d046608021f3f3e9c0
 
 pkgname = xkb-switch-i3

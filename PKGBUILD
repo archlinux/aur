@@ -1,39 +1,33 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 # Contributor: Orestis Floros <orestisf1993@gmail.com>
 # Contributor: Doron Behar <doron.behar@gmail.com>
-
-_i3ipcpp_ver=7c2f465cbb1ad502d96820c022b2f649be413ccc
-
+#
+# Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=xkb-switch-i3
-pkgver=1.8.5+i3_4
-pkgrel=2
-pkgdesc='Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)'
-conflicts=('xkb-switch')
-provides=('xkb-switch')
-arch=('i686' 'x86_64')
-url='https://github.com/zebradil/xkb-switch-i3'
-license=('GPL3')
-depends=('libx11' 'libxkbfile' 'i3-wm' 'libsigc++' 'jsoncpp')
-makedepends=('git' 'cmake')
-source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/zebradil/${pkgname}/archive/${pkgver//_/-}.tar.gz"
-    "i3ipcpp-${_i3ipcpp_ver}.tar.gz::https://api.github.com/repos/drmgc/i3ipcpp/tarball/${_i3ipcpp_ver}"
-)
-# Old approach, reactivate when a new version of i3ipcpp is released
-# "i3ipcpp-${_i3ipcpp_ver}.tar.gz::https://github.com/drmgc/i3ipcpp/archive/v${_i3ipcpp_ver}.tar.gz"
-sha1sums=('84546b91823a7ba2fd4d01ca33637c1a2b67eaaf'
-          '54a3e7cd00e457d9bfb443fdd4046f2b19170815')
-
-build() {
-    cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}"
-    # Old approach, reactivate when a new version of i3ipcpp is released
-    # mv -T "${srcdir}/i3ipcpp-${_i3ipcpp_ver}" ./i3ipc++
-    mv -T "${srcdir}"/drmgc-i3ipcpp-* ./i3ipc++
-    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+pkgver=2.0.1+i3_5
+pkgrel=1
+pkgdesc="Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)"
+url="https://github.com/zebradil/xkb-switch-i3"
+arch=(i686 x86_64)
+license=(GPL3)
+depends=(libx11 libxkbfile i3-wm libsigc++ jsoncpp)
+makedepends=(git cmake)
+conflicts=(xkb-switch)
+provides=(xkb-switch)
+source=(xkb-switch-i3-2.0.1+i3_5.tar.gz::https://github.com/zebradil/xkb-switch-i3/archive/2.0.1+i3-5.tar.gz i3ipcpp-1bf594d1f25e63122c6f92c2a61a848b45457e08.tar.gz::https://api.github.com/repos/drmgc/i3ipcpp/tarball/1bf594d1f25e63122c6f92c2a61a848b45457e08)
+sha256sums=('43e9e54ab9177db9f0b2050c1e1091eabaf8c023c39ef2d9450cc9675078a8b1'
+            'c2204fc1d0e7e0b7870e74dcfdea3a2d5edc53b8e55a23d046608021f3f3e9c0')
+build () 
+{ 
+    cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}";
+    mv -T "${srcdir}"/drmgc-i3ipcpp-* ./i3ipc++;
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .;
     make
 }
-
-package() {
-    cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}"
+package () 
+{ 
+    cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}";
     make DESTDIR="$pkgdir/" install
 }
