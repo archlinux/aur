@@ -1,0 +1,21 @@
+pkgbase = sharpcraftlauncher
+	pkgdesc = A very light, fast, simple, rust-made Minecraft launcher
+	pkgver = 1.1.3
+	pkgrel = 1.0
+	url = https://github.com/Steve-xmh/scl
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	optdepends = jre-openjdk: for Minecraft needed
+	options = !strip
+	source_x86_64 = logo.png
+	source_x86_64 = sharpcraftlauncher.desktop
+	source_x86_64 = sharpcraftlauncher-x86_64.tar.gz::https://github.com/Steve-xmh/scl/releases/download/v1.1.3/SharpCraftLauncher-20231107-1.1.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = logo.png
+	source_aarch64 = sharpcraftlauncher.desktop
+	source_aarch64 = sharpcraftlauncher-x86_64.tar.gz::https://github.com/Steve-xmh/scl/releases/download/v1.1.3/SharpCraftLauncher-20231107-1.1.3-linux-x86_64.tar.gz
+
+pkgname = sharpcraftlauncher

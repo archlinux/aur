@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sharpcraftlauncher
+Type=Application
+Icon=/usr/share/icons/hicolor/512x512/app/sharpcraftlauncher.png
+Comment=A very light, fast, simple, rust-made Minecraft launcher
+Comment[zh_CN]=一个无比轻量，迅速，简洁的启动器
+Exec=/usr/bin/sharpcraftlauncher
+Terminal=false
+Keywords=game;minecraft;mc;launcher;sharpcraftlauncher;scl
+Categories=Game;ActionGame;AdventureGame;Simulation;
