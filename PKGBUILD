@@ -2,13 +2,13 @@
 
 pkgname=malcat-lite
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Malcat is a feature-rich hexadecimal editor / disassembler for Windows and Linux targeted to IT-security professionals."
 arch=('x86_64')
 url="https://malcat.fr"
 license=('Custom')
 depends=('gtk3' 'python-pycryptodomex' 'python-pyasn1' 'python-pyasn1-modules' 'python-ruamel-yaml'
-         'python-ruamel.yaml.clib' 'python-six' 'python-requests' 'python-dissect.cstruct' 'python-tabulate')
+         'python-ruamel.yaml.clib' 'python-six' 'python-acefile' 'python-requests' 'python-dissect.cstruct' 'python-tabulate')
 source=("https://malcat.fr/latest/malcat_ubuntu23_lite.zip"
         "malcat-lite.desktop")
 sha256sums=('3651a790c58ba156ac368acbb4cad6d9d02e306ad3355f3b9de4a9d500f84e41'
