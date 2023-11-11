@@ -1,14 +1,14 @@
 post_install() {
-  echo "---"
-  echo " To finish installation, add this font configuration "
-  echo " sudo ln -sf /usr/share/fontconfig/conf.avail/46-ttf-twemoji-color.conf /etc/fonts/conf.d/46-ttf-twemoji-color.conf"
-  echo
-  echo " and install ttf-bitstream-vera"
-  echo " ttf-bitstream-vera is default font for bug-free font fallback with the provided fontconfig."
-  echo " See: https://github.com/eosrei/emojione-color-font#why-bitstream-vera"
-  echo "---"
+	echo "---"
+	echo " To finish installation, add this font configuration "
+	echo " sudo ln -sf /usr/share/fontconfig/conf.avail/46-ttf-twemoji-color.conf /etc/fonts/conf.d/46-ttf-twemoji-color.conf"
+	echo
+	echo " and install ttf-bitstream-vera"
+	echo " ttf-bitstream-vera is default font for bug-free font fallback with the provided fontconfig."
+	echo " See: https://github.com/eosrei/emojione-color-font#why-bitstream-vera"
+	echo "---"
 }
 
 post_remove() {
-  echo " To complete uninstallation, you should remove /etc/fonts/conf.d/46-ttf-twemoji-color.conf"
+	echo " To complete uninstallation, you should remove /etc/fonts/conf.d/46-ttf-twemoji-color.conf"
 }
