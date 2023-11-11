@@ -236,7 +236,7 @@ build() {
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_hangout_services_extension=true'
-    'enable_widevine=true'
+    'enable_widevine=false'
     'enable_nacl=false'
     'enable_rust=false'
   )
