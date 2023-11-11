@@ -80,6 +80,11 @@
 # CLANGD_RESOLVEDEPTYPE:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Increase minimal limit for BlockEnd inlay-hints to 10 lines (default is 2)
+# CLANGD_INLAYHINTSBLOCKEND:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_BRANCH:=main}
@@ -97,10 +102,11 @@
 : ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERPTRFN:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEDEPTYPE:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_INLAYHINTSBLOCKEND:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=23
+pkgrel=24
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -125,7 +131,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-layout-everyhere.patch'
         'hover-no-defs.patch'
         'hover-ptrfn-args.patch'
-        'resolve-depend-type.patch')
+        'resolve-depend-type.patch'
+        'inlay-hints-blockend-linelimit10.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
@@ -143,7 +150,8 @@ sha256sums=('SKIP'
             '154cbe13075c1baf34f8c34008e291ecbf1e6fd30bd144fd0f49ac6cc1fdda1a'  # hover-layout-everyhere
             '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
             '24a8e0b207598798b91f030bcccf0a074f0ccd23885ea4e802a8bda1c05657e0'  # hover-ptrfn-args
-            '6e1f9c9a01ac50be93537227fffe20816ae0d51243ca8836c39d99dec8dad51e') # resolve-depend-type
+            '6e1f9c9a01ac50be93537227fffe20816ae0d51243ca8836c39d99dec8dad51e'  # resolve-depend-type
+            '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7') # inlay-hints-blockend-linelimit10
 
 pkgver() {
     cd llvm-project
@@ -209,6 +217,13 @@ prepare() {
     # Inlay hints patches
     if [ "$CLANGD_INLAYHINTSPADS" != "n" ]; then
         patch -p1 -i ${srcdir}/inlay-hints-paddings.patch
+    fi
+    if [ "$CLANGD_INLAYHINTSBLOCKEND" != "n" ]; then
+        if [ "$CLANGD_BRANCH" = "main" ]; then
+            patch -p1 -i ${srcdir}/inlay-hints-blockend-linelimit10.patch
+        else
+            echo "Skip inlay-hints-blockend-linelimit10.patch (CLANGD_INLAYHINTSBLOCKEND)"
+        fi
     fi
 
     # Resolve patches
