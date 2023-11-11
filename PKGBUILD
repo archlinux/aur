@@ -2,7 +2,7 @@
 # Past-Maintainer: Yingchang Liu
 
 pkgname=seismic-unix-git
-pkgver=4426.c222c39a
+pkgver=r294.c222c39a
 pkgrel=1
 pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
@@ -21,7 +21,7 @@ md5sums=("SKIP")
 
 pkgver() {
     cd ${pkgname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD --)" "$(git rev-parse --short HEAD --)"
 }
 
 prepare() {
