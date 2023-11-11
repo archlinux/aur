@@ -1,13 +1,13 @@
 pkgname=fswm
 pkgver=0
 pkgrel=0
-pkgdesc="fswm is a feature-complete and portable full screen window manager based on libxcb and 221 lines of C89."
+pkgdesc="Feature-complete and portable full screen window manager based on libxcb and 221 lines of C89."
 url="https://github.com/pbizopoulos/fswm"
 arch=('any')
 license=('MIT')
 depends=('xcb-util-keysyms')
 source=("${url}/tarball/main")
-sha256sums=('107cc9ee174392d1cb864a9a20f6c93dd91f12452f75608c355e24f95a785681')
+sha256sums=('d9af21508113038827352f1af9d4b22129aac28defe6f19520c7dbce6ea4662e')
 
 build() {
 	cd pbizopoulos-fswm-*/
