@@ -6,7 +6,6 @@ pkgbase = python-trame-vtk
 	arch = any
 	license = custom:BSD-3-clause
 	checkdepends = python-pytest-xprocess
-	checkdepends = python-pillow
 	checkdepends = python-pixelmatch
 	checkdepends = python-seleniumbase
 	checkdepends = python-pyvista
