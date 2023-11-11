@@ -1,13 +1,13 @@
 pkgbase = gimp-gap
 	pkgdesc = Gimp Animation Package, gimp's plugin for animation
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gimp.org/tutorials/Using_GAP/
 	arch = x86_64
 	arch = i686
-	license = GPLv3
+	license = GPL3
 	makedepends = intltool
-	makedepends = cmake
+	makedepends = git
 	depends = gimp>=2.6.0
 	depends = glib2
 	optdepends = xvidcore: compression codec
@@ -16,8 +16,11 @@ pkgbase = gimp-gap
 	optdepends = faad2: audio decoder
 	optdepends = lame: mpeg layer 3 codec
 	optdepends = libx264: H264 codec
-	source = git+https://github.com/GNOME/gimp-gap
+	optdepends = mplayer: frames extraction
+	options = !buildflags
+	source = git+https://gitlab.gnome.org/Archive/gimp-gap.git
+	source = effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/effadce6c756247ea8bae32dc13bb3e6f464f0eb
 	md5sums = SKIP
+	md5sums = 955ac456a53dbb221b7e2a87ab5a93f6
 
 pkgname = gimp-gap
-
