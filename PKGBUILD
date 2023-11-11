@@ -3,14 +3,17 @@
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
 pkgver=0.1.16.r1.gd32fb2f
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI Ebook Reader"
 arch=('any')
 url="https://github.com/wustho/baca"
 license=("GPL3")
 
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=(
+  "$_pkgname"
+  'baca' # baca-cli
+)
 
 depends=(
   'python-appdirs'
