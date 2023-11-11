@@ -2,13 +2,15 @@ pre_install() {
 	echo
 	echo "ATTENTION"
 	echo
-	echo "The 'enchant-hspell' package is removed due to being a superfluous duplicate of Arch repo's 'enchant'."
+	echo "The 'enchant-hspell' and 'enchant-pure' packages are to be removed"
+	echo "due to being superfluous duplicates of Arch repo's 'enchant'."
 	echo
-	echo "It is now a metapackage and is no longer needed on your system."
+	echo "'enchant-hspell' is now a metapackage and is no longer needed on your system."
 	echo
-	echo "Please uninstall it by running:"
+	echo "Please uninstall it and migrate to using 'enchant' by running the following:"
 	echo
 	echo "pacman -R enchant-hspell"
+	echo "pacman -Syu --asdeps enchant"
 	echo
 }
 

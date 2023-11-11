@@ -3,7 +3,7 @@
 pkgname=enchant-hspell
 
 pkgver=2.6.2
-pkgrel=2
+pkgrel=3
 
 pkgdesc="[Meta-PKG] Delete this; use enchant and hspell packages from Arch repository"
 url="https://archlinux.org/packages/?q=enchant"

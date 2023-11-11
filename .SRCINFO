@@ -1,7 +1,7 @@
 pkgbase = enchant-hspell
 	pkgdesc = [Meta-PKG] Delete this; use enchant and hspell packages from Arch repository
 	pkgver = 2.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://archlinux.org/packages/?q=enchant
 	arch = any
 	license = LGPL
