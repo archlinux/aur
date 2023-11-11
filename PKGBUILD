@@ -22,18 +22,6 @@ options=(!libtool)
 source=(git+https://gitlab.gnome.org/GNOME/babl)
 md5sums=('SKIP')
 
-prepare() {
-    mkdir "${srcdir}/build" -p
-
-    export CFLAGS CXXFLAGS LDFLAGS
-    meson "${srcdir}/${_pkgname}"\
-          "${srcdir}/build" \
-        --prefix=/usr \
-        -Dbuildtype=release \
-        -Db_lto=true \
-        -Dwith-docs=false
-}
-
 pkgver() {
   cd ${srcdir}/${_pkgname}
   printf "%s.r%s.%s" \
@@ -43,6 +31,12 @@ pkgver() {
 }
 
 build() {
+    meson "${srcdir}/${_pkgname}"\
+          "${srcdir}/build" \
+        --prefix=/usr \
+        -Dbuildtype=release \
+        -Db_lto=true \
+        -Dwith-docs=false
     export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
     ninja -C "${srcdir}/build"
 }
