@@ -11,6 +11,7 @@
 
 # Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
 _fragment="${FRAGMENT:-#branch=master}"
+: ${BITMAP_BACKEND:=imagemagick} # select imagemagick implementation {imagemagick,graphicsmagick}
 
 pkgname=inkscape-git
 pkgver=1.3.alpha.r352.g5cf271997e
@@ -25,7 +26,6 @@ depends=(
 	'dbus-glib'
 	'double-conversion'
 	'gc'
-	'graphicsmagick'
 	'gsl'
 	'gspell'
 	'gtkmm3'
@@ -34,7 +34,6 @@ depends=(
 	'lib2geom-git'
 	'libcdr'
 	'libjpeg-turbo'
-	'libmagick6'
 	'libsoup'
 	'libvisio'
 	'libxslt'
@@ -45,6 +44,11 @@ depends=(
 	'python-numpy'
 	'ttf-font'
 )
+case $BITMAP_BACKEND in
+	imagemagick) depends+=('libmagick6');;
+	graphicsmagick) depends+=('graphicsmagick');;
+esac
+
 
 optdepends=(
 	'fig2dev: xfig input'
@@ -83,6 +87,8 @@ pkgver() {
 }
 
 build() {
+case $BITMAP_BACKEND in imagemagick) export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig";; esac
+# export CXXFLAGS="${CXXFLAGS} -fpermissive"
   cmake -S "${_gitname}" -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RELEASE 
