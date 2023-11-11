@@ -1,8 +1,11 @@
 # Maintainer: pingplug <aur at pingplug dot me>
 
 _pkgname=mayo
+_tag="v0.7.0"
+_commit="c85fe27fbfa27ba9b163b01bb54036473fa31e4f"
+
 pkgname=mayo-git
-pkgver=0.7.0.r0.gf88a35d
+pkgver=0.7.0.r83.gd466625
 pkgrel=1
 pkgdesc="3D CAD viewer and converter based on Qt and OpenCascade (git version)"
 arch=('any')
@@ -10,13 +13,14 @@ url="https://github.com/fougue/mayo"
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'opencascade')
 makedepends=('unzip' 'patch')
-source=("git+https://github.com/fougue/mayo.git#branch=master"
+source=("git+https://github.com/fougue/mayo.git#branch=develop"
 	'mayo.desktop')
 sha256sums=('SKIP'
             '09872560c396807d00a7a98dddefdeb734ccdc64e0a752e028194a59622c220b')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
+  git tag -f ${_tag} ${_commit} > /dev/null
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
