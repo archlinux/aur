@@ -7,8 +7,8 @@
 _gitname="webkit2gtk"
 _pkgname="$_gitname-unstable"
 pkgname="$_pkgname"
-pkgver=2.42.1
-pkgrel=2
+pkgver=2.42.2
+pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org/"
 license=(custom)
@@ -93,7 +93,7 @@ source=(
   GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
 )
 sha256sums=(
-  '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
+  '5720aa3e8627f1b9f63252187d4df0f8233ae71d697b1796ebfbe5ca750bd118'
   'SKIP'
   'a921d6be1303e9f23474971f381886fd291ec5bb1a7ff1e85acede8cfb88bef2'
   '655f3b2c96355ac83c4fa1fc6048e3256bbfdbfb9727e1e18c5af12613536206'
