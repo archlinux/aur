@@ -1,6 +1,6 @@
 pkgbase = python-maison
 	pkgdesc = Read settings from config files.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/dbatten5/maison
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-maison
 	depends = python-click
 	depends = python-pydantic
 	depends = python-toml
-	source = python-maison-v1.4.1.tar.gz::https://github.com/dbatten5/maison/archive/refs/tags/v1.4.1.tar.gz
-	sha512sums = 518c95d5e0dbb2dba6216b45eebff9859e18a15d4341746d96d58744102387b922aed8f7cb82e906306256ff0cc6ab8b24c32062e7e6a35a1918e03a160bd6e8
+	source = python-maison-v1.4.2.tar.gz::https://github.com/dbatten5/maison/archive/refs/tags/v1.4.2.tar.gz
+	sha512sums = 1099f703210294aaeb234314339073a663363de0ae79e66ae0ed74194a92dfd65c83294a76982e52dda6640465f4f5884a2fc07c8e4d143bd99d5b3d5fc3b6d3
 
 pkgname = python-maison
