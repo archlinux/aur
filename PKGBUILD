@@ -3,7 +3,7 @@
 _pkgname=audius-client
 pkgname=$_pkgname-bin
 pkgver=1.5.50
-pkgrel=2
+pkgrel=3
 pkgdesc="The Decentralized Audius.co Client (binary release, system Electron)"
 url="https://github.com/AudiusProject/audius-protocol/tree/main/packages/web"
 license=('Apache2')
@@ -46,6 +46,6 @@ package() {
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-# Fix permission
-  chmod 644 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked"
+# Fix permissions
+  chmod -R 755 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked"
 }
