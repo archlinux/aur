@@ -7,8 +7,14 @@ arch=('any')
 pkgdesc="PSV file trimmer, restoration, and validation utility (Python). (GIT version)"
 url='https://github.com/kageurufu/psvtools'
 license=('MIT')
-depends=('python-setuptools')
-makedepends=('git')
+makedepends=(
+  'git'
+  'python-setuptools'
+  'python-installer'
+  'python-wheel'
+  'python-build'
+  'python-pytest-runner'
+)
 conflicts=('psvtools')
 provides=('psvtools')
 source=('git+https://github.com/kageurufu/psvtools.git')
@@ -19,9 +25,14 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
+build() {
+  cd psvtools
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd psvtools
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
