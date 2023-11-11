@@ -1,49 +1,48 @@
-# Maintainer: David Brown <d.brown at bigdavedev dot com>
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: David Brown <d.brown at bigdavedev dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgbase=postgresql-11
 pkgname=('postgresql-libs-11' 'postgresql-docs-11' 'postgresql-11')
-pkgver=11.14
-_majorver=${pkgver%.*}
+pkgver=11.22
 pkgrel=1
-pkgdesc='Sophisticated object-relational DBMS'
+pkgdesc='[EOL] Sophisticated object-relational DBMS, version 11'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
-             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
+makedepends=(
+  'clang'
+  'icu'
+  'krb5'
+  'libldap'
+  'libxml2'
+  'openssl'
+  'pam'
+  'python'
+  'systemd'
+  'tcl'
+  'zlib'
+)
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
-        postgresql-perl-rpath.patch
-        postgresql.pam
-        postgresql.logrotate
-        postgresql.service
         postgresql-check-db-dir
+        postgresql.service
         postgresql.sysusers
-        postgresql.tmpfiles)
-sha256sums=('965c7f4be96fb64f9581852c58c4f05c3812d4ad823c0f3e2bdfe777c162f999'
-            '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
-            '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
-            '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
-            '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
-            '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
-            '2bbd8c4e51b70223d274fef3a167af096f44af3d3c41ae505ad11c606674e7c5'
-            '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
-            '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
-sha512sums=('ab71461ee6fb4cdc5b4240f7ecd8af2497ce6780283fde2abf5951ffdb616bd0c8ed22b26fdfca402a346e663ff77c4d17f3284c9d700e6fd6795b2aec97c9be'
-            '031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7'
-            '38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615'
-            '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
-            '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
-            'ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0'
-            '73af1cd31638791f81aa2623d51188364107a57b55e4deba6691cd99e96ae5ea0dd94b25a0e95d9e21ac64f36f71919a05cd31233c754bde025215a5a02e055c'
-            '36f7a5d38370fdc4d4267fd5a8a8330f152a1077bf0f065b89d4a7b8112ccd42be2c46c863791b77de02013f28275a42219f4236e7cb837c3f8cfd5fcc7d3373'
-            '5fe81d716d56d515ee4ae1aac56652b7bf20346ea8413482fd9fdb79f0485d8c5ed099f4d2cc460cbe37686488f1354dec433905ce005da8fec772e783addc70')
+        postgresql.tmpfiles
+        postgresql.logrotate
+        postgresql.pam
+)
+b2sums=('1bac5e9a73b1ad1f8e082cfe29f374058b866d3e1234612c01bcc4324e5e25a407531e71436a1c0e10e7574da494499540d242ac66db66d5f85c1ff5954bac41'
+        '791fc4d09216276367904a06741a7a1f118346ad073146e38ea913f65c4c3cc2ef293af669494398352bba41789b43400389cda8ef699db146177b9a0f3cc1cb'
+        '579be41e838a4b09495b7872e4484c7ff9545f2bb842696958f70919accdc9a7c5fbd03484e42d7ba0d83b13b460f9a63ef5c6d9a5a91e4e465e31db13c19741'
+        'a4255df47b7ac1418d20aa73aa0f6e70c7952a10d706e5523043c48b2c3b6d8e39838049dfcc826913cd0f2c06502561d1abe8b19cce7071db66139ae93a37bf'
+        '5e9cba2f45604db83eb77c7bbb54bc499a38274be6cd97abb056c9bdf18e637a8ac354e18f41f614f7e1a2d6f13c2a0b562ab0aaebf9447cf5eb2d60e6501e12'
+        '8a8e5ec24ea338b2b51b8d2be5a336ac8d4cc6b25200ed0f0d564df9942997478df0c54da2fac7b27d677774a34398f69047eecd0f97bdc0df8fe50a1b5ed74d'
+        '2209b7550acad7955102ec6922754b4046b2a2ad2a7e1cfb2cc4053c0705abac7aa7d7968eab617f50894797d06345f51c9a669926bd2a77dcf688206a2027e0'
+        '3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81')
 
 prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
-  patch -p1 < ../postgresql-perl-rpath.patch
 }
 
 build() {
@@ -56,7 +55,7 @@ build() {
     --with-gssapi
     --with-libxml
     --with-openssl
-    --with-perl
+    --without-perl
     --with-python
     --with-tcl
     --with-pam
@@ -65,29 +64,13 @@ build() {
     --with-icu
     --with-systemd
     --with-ldap
-    --with-llvm
+    --without-llvm
     --enable-nls
     --enable-thread-safety
     --disable-rpath
   )
 
-  # only build plpython3 for now
-  ./configure ${options[@]} \
-    PYTHON=/usr/bin/python
-  make -C src/pl/plpython all
-  make -C contrib/hstore_plpython all
-  make -C contrib/ltree_plpython all
-
-  # save plpython3 build and Makefile.global
-  cp -a src/pl/plpython{,3}
-  cp -a contrib/hstore_plpython{,3}
-  cp -a contrib/ltree_plpython{,3}
-  cp -a src/Makefile.global{,.python3}
-  make distclean
-
-  # regular build with everything
-  ./configure ${options[@]} \
-    PYTHON=/usr/bin/python2
+  ./configure ${options[@]}
   make world
 }
 
@@ -106,9 +89,23 @@ check() {
 }
 
 package_postgresql-libs-11() {
-  pkgdesc="Libraries for use with PostgreSQL"
-  depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0' 'zlib' 'libldap')
-  provides=('postgresql-client' "postgresql-libs=$pkgver")
+  pkgdesc="[EOL] Libraries for use with PostgreSQL, version 11"
+  depends=(
+    'glibc'
+    'krb5'
+    'libldap'
+    'openssl'
+    'readline'
+    'zlib'
+  )
+  provides=(
+    "postgresql-client=$pkgver"
+    "postgresql-libs=$pkgver"
+    'libecpg.so'
+    'libecpg_compat.so'
+    'libpgtypes.so'
+    'libpq.so'
+  )
   conflicts=('postgresql-client' 'postgresql-libs')
 
   cd postgresql-${pkgver}
@@ -146,7 +143,7 @@ package_postgresql-libs-11() {
 }
 
 package_postgresql-docs-11() {
-  pkgdesc="HTML documentation for PostgreSQL"
+  pkgdesc="[EOL] HTML documentation for PostgreSQL, version 11"
   options=('docs')
   provides=("postgresql-docs=$pkgver")
   conflicts=('postgresql-docs')
@@ -164,14 +161,24 @@ package_postgresql-docs-11() {
 }
 
 package_postgresql-11() {
-  pkgdesc='Sophisticated object-relational DBMS'
+  pkgdesc='[EOL] Sophisticated object-relational DBMS, version 11'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs')
-  optdepends=('python2: for PL/Python 2 support'
-              'python: for PL/Python 3 support'
-              'perl: for PL/Perl support'
-              'tcl: for PL/Tcl support'
-              'postgresql-old-upgrade: upgrade from previous major version using pg_upgrade')
+  depends=(
+    "postgresql-libs>=${pkgver}"
+    'glibc'
+    'icu'
+    'krb5'
+    'libldap'
+    'libxml2'
+    'openssl'
+    'pam'
+    'sh'
+    'systemd-libs'
+    'util-linux-libs'
+    'zlib'
+  )
+  optdepends=('python: for PL/Python 3 support'
+              'tcl: for PL/Tcl support')
   provides=("postgresql=$pkgver")
   conflicts=('postgresql')
   options=('staticlibs')
@@ -183,14 +190,6 @@ package_postgresql-11() {
   make DESTDIR="${pkgdir}" install
   make -C contrib DESTDIR="${pkgdir}" install
   make -C doc/src/sgml DESTDIR="${pkgdir}" install-man
-
-  # install plpython3
-  mv src/Makefile.global src/Makefile.global.save
-  cp src/Makefile.global.python3 src/Makefile.global
-  touch -r src/Makefile.global.save src/Makefile.global
-  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
 
   # we don't want these, they are in the -libs package
   for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
@@ -221,4 +220,3 @@ package_postgresql-11() {
 }
 
 # vim: ts=2 sw=2 et:
-
