@@ -15,18 +15,13 @@ depends=(
   'qt5-base' # libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Widgets.so
   'kcoreaddons5' # libKF5CoreAddons.so
   'kwidgetsaddons5' # libKF5WidgetsAddons.so
-  'ki18n' # libKF5I18n.so
+  'ki18n5' # libKF5I18n.so
   'polkit-qt5' # libpolkit-qt5-core-1.so
 )
 makedepends=(
   'extra-cmake-modules'
   'git'
   'python'
-)
-conflicts=('kpmcore')
-provides=(
-  'kpmcore'
-  'libkpmcore.so'
 )
 optdepends=(
   'btrfs-progs: BTFRS support'
@@ -50,6 +45,11 @@ optdepends=(
   'nilfs-utils: nilfs support'
 #   'nilfs2-utils: nilfs2 support'
 #   'ocfs2-tools: ocfs2 support'
+)
+conflicts=('kpmcore')
+provides=(
+  'kpmcore'
+  'libkpmcore.so'
 )
 source=('git+https://invent.kde.org/system/kpmcore.git')
 sha256sums=('SKIP')
