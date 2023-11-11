@@ -1,0 +1,17 @@
+pkgbase = kew-git
+	pkgdesc = A command-line music player
+	pkgver = v1.5.2.r0.ge6f1637
+	pkgrel = 1
+	url = https://github.com/ravachol/cue
+	arch = x86_64
+	license = GPL
+	depends = ffmpeg
+	depends = fftw
+	depends = git
+	depends = chafa
+	depends = freeimage
+	conflicts = cue
+	source = git+https://github.com/ravachol/cue
+	sha256sums = SKIP
+
+pkgname = kew-git
