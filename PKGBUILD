@@ -76,8 +76,7 @@ build() {
 }
 
 check() {
-  cd build
-  ctest --output-on-failure
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
