@@ -1,7 +1,7 @@
 pkgbase = flashbrowser
 	pkgdesc = A browser capable of viewing/displaying pages with embedded flash content
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flash.pm/
 	arch = x86_64
 	license = unknown

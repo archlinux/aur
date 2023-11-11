@@ -4,7 +4,7 @@ pkgname=flashbrowser
 _appname=FlashBrowser
 pkgver=0.8.1
 _pkgver=0.81
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser capable of viewing/displaying pages with embedded flash content"
 url="https://flash.pm/"
 arch=('x86_64')
@@ -30,8 +30,11 @@ prepare() {
 	# Insert custom build command
 	sed '16a\    \"build5\": \"electron-packager . FlashBrowser --platform=linux --arch=x64\",' -i package.json
 	# Install all dependencies
-	yarn install
-	yarn add electron-builder@latest electron-packager@latest electron-updater@latest
+	yarn install --cache-folder ../yarn-cache
+	yarn add --cache-folder ../yarn-cache \
+		electron-builder@latest \
+		electron-packager@latest \
+		electron-updater@latest
 }
 
 build() {
@@ -41,7 +44,7 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir"/opt/$pkgname "$pkgdir"/usr/bin
+	install -d "$pkgdir"/opt/$pkgname "$pkgdir"/usr/bin
 	# Install app
 	cp -av --no-preserve=ownership "$srcdir"/$_appname-$_pkgver/$_appname-linux-x64/* "$pkgdir"/opt/$pkgname
 	# Install FlashPlugin
@@ -66,4 +69,10 @@ package() {
 	convert "$srcdir"/$_appname-$_pkgver/icon.ico[${layer}] -define icon:auto-resize=${i} \
 		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png
 	done
+	# Remove macOS FlashPlugin
+	rm -rf "$pkgdir"/opt/$pkgname/resources/app/flashver/PepperFlashPlayer.plugin
+	# Remove empty folders and dotfiles
+	find "$pkgdir"/opt/flashbrowser/resources/app -name '.git*' | xargs rm -rf
+	find "$pkgdir"/opt/flashbrowser/resources/app -name '.yarn*' | xargs rm
+	find "$pkgdir"/opt/flashbrowser/resources/app -empty -delete
 }
