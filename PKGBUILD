@@ -62,7 +62,7 @@ package() {
     echo ${srcdir}
     for f in ${arr[@]} ; do
       sed -i "s|${pkgdir}||g" "${RSFROOT}/$f"
-      sed -i "s|${srcdir}|/opt/${pkgname}/src|g" "${RSFROOT}/$f"
+      sed -i "s|${srcdir}/${pkgname}|/opt/${pkgname}/src|g" "${RSFROOT}/$f"
     done
 
     install install -dm755 "$pkgdir/usr/share/licenses/$pkgname" 
@@ -70,11 +70,11 @@ package() {
     install -dm755 "$pkgdir/etc/profile.d"
     cat > "$pkgdir/etc/profile.d/${pkgname}.sh" << EOF
 #!/bin/sh
-source /opt/${pkgname}/src/etc/env.sh
+source /opt/${pkgname}/share/madagascar/etc/env.sh
 EOF
     cat > "$pkgdir/etc/profile.d/${pkgname}.csh" << EOF
 #!/bin/csh
-source /opt/${pkgname}/src/etc/env.csh
+source /opt/${pkgname}/share/madagascar/etc/env.csh
 EOF
     chmod 755 "$pkgdir/etc/profile.d/${pkgname}"{.sh,.csh}
 }
