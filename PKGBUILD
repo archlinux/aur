@@ -4,10 +4,11 @@ pkgver=v1.5.2.r0.ge6f1637
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
-url="https://github.com/ravachol/cue"
-license=('GPL')
+url="https://github.com/ravachol/kew"
+license=('GPL2')
 depends=('ffmpeg' 'fftw' 'git' 'chafa' 'freeimage')
 conflicts=('cue')
+replaces=('cue-git')
 sha256sums=('SKIP')
 
 source=("git+${url}")
