@@ -3,7 +3,7 @@
 _base=sphinx-external-toc
 pkgname=python-${_base}
 pkgdesc="A sphinx extension that allows the site-map to be defined in a single YAML file"
-pkgver=0.3.1
+pkgver=1.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/executablebooks/${_base}"
@@ -12,7 +12,7 @@ depends=(python-click python-yaml python-sphinx)
 makedepends=(python-build python-flit-core python-installer)
 checkdepends=(python-pytest-regressions)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('055b399a983726e22e4d4483f9037039f73748b5586ab4e90f8bd458f01b2b05aedf1b223fd0ddd783dc52350813cf3232c8d88a32f94a210a7431d803675190')
+sha512sums=('4ec47beccb043ea87ef08e47f00df41c2536aca370cf97237b810fe7309ee2cd89a195584de6dead7acc12076fc2b5b64a7b1d9201e5cc21244c5f84009856a4')
 
 build() {
   cd ${_base}-${pkgver}
@@ -23,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest --ignore=tests/test_sphinx.py
+  test-env/bin/python -m pytest
 }
 
 package() {

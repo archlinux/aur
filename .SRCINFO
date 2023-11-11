@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-external-toc
 	pkgdesc = A sphinx extension that allows the site-map to be defined in a single YAML file
-	pkgver = 0.3.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/executablebooks/sphinx-external-toc
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-sphinx-external-toc
 	depends = python-click
 	depends = python-yaml
 	depends = python-sphinx
-	source = sphinx-external-toc-0.3.1.tar.gz::https://github.com/executablebooks/sphinx-external-toc/archive/v0.3.1.tar.gz
-	sha512sums = 055b399a983726e22e4d4483f9037039f73748b5586ab4e90f8bd458f01b2b05aedf1b223fd0ddd783dc52350813cf3232c8d88a32f94a210a7431d803675190
+	source = sphinx-external-toc-1.0.0.tar.gz::https://github.com/executablebooks/sphinx-external-toc/archive/v1.0.0.tar.gz
+	sha512sums = 4ec47beccb043ea87ef08e47f00df41c2536aca370cf97237b810fe7309ee2cd89a195584de6dead7acc12076fc2b5b64a7b1d9201e5cc21244c5f84009856a4
 
 pkgname = python-sphinx-external-toc
