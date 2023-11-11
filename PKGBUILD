@@ -3,19 +3,19 @@
 _npmname=clinic
 pkgname=nodejs-$_npmname
 pkgver=13.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="diagnoses your Node.js performance issues"
 arch=(any)
-# url="https://clinicjs.org/"
-url="https://github.com/clinicjs/node-clinic"
+url="https://clinicjs.org/"
+# url="https://github.com/clinicjs/node-clinic"
 license=("MIT")
 
-depends=("nodejs")
+depends=("nodejs" "sh")
 makedepends=("npm" "jq")
 provides=("$_npmname")
 conflicts=("$_npmname")
-options=(!strip emptydirs zipman)
+options=(strip emptydirs zipman)
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/clinicjs/node-clinic/main/LICENSE")
@@ -29,15 +29,14 @@ package() {
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
-		"${srcdir}/${_npmname}-${pkgver}.tgz" \
-		# --loglevel verbose
+		"${srcdir}/${_npmname}-${pkgver}.tgz"
 
 	# Fix ownership of ALL FILES
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 	chown -R root:root "${pkgdir}"
 
 	# Remove broken files
-	rm -rf $pkgdir/usr/lib/node_modules/clinic/node_modules/module-deps/test/invalid_pkg/
+	rm -rf "$pkgdir"/usr/lib/node_modules/clinic/node_modules/module-deps/test/invalid_pkg/
 
 	# Remove references to $pkgdir
 	find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'

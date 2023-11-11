@@ -1,6 +1,7 @@
 *
 !.gitignore
+!Makefile
 !PKGBUILD
 !.SRCINFO
+!changelog.md
 !test_server.js
-
