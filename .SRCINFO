@@ -1,0 +1,16 @@
+pkgbase = dict-jargon
+	pkgdesc = A compendium of hacker slang illuminating many aspects of hackish tradition
+	pkgver = 4.4.7
+	pkgrel = 1
+	url = http://www.catb.org/jargon/
+	install = dict-jargon.install
+	arch = any
+	license = Unlicense
+	makedepends = dictd
+	optdepends = dictd: dict client and server
+	provides = dictd-jargon
+	conflicts = dictd-jargon
+	source = http://www.catb.org/~esr/jargon/oldversions/jarg447.txt
+	sha512sums = 4fe8c3a4b505ac936b61c46e4f7b8d0988a1a004ad187f53f16e7542b615c7cf551cf48a486454845c56fe5c036c8adc29eecb4610df9989caa1a761c6240c46
+
+pkgname = dict-jargon
