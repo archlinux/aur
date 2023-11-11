@@ -63,6 +63,7 @@ prepare() {
   sed '/DSIGCXX_DISABLE_DEPRECATED/d' -i CMakeScripts/DefineDependsandFlags.cmake
 # fix lib2geom header location
   sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/{tool/path-manipulator,dialog/{symbols,extensions-gallery}}.cpp
+# sed -E '/^#include/s/(forward.h)/2geom\/\1/' -i src/ui/tool/path-manipulator.cpp
   sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/dialog/{object-attributes,extensions-gallery}.cpp
   sed -E '/^#include/s/"(transforms.h)/"2geom\/\1/' -i src/ui/widget/gradient-editor.cpp
 }
