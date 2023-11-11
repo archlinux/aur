@@ -9,14 +9,14 @@ pkgdesc="Tiny version of mamba, the fast conda package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_base}-org/${_base}"
 license=('custom:BSD-3-clause')
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.bz2::https://api.anaconda.org/download/conda-forge/${pkgname%-bin}/${pkgver}/linux-64/${pkgname%-bin}-${pkgver}-0.tar.bz2")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.bz2::https://api.anaconda.org/download/conda-forge/${pkgname%-bin}/${pkgver}/linux-aarch64/${pkgname%-bin}-${pkgver}-0.tar.bz2")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.bz2::https://api.anaconda.org/download/conda-forge/${pkgname%-bin}/${pkgver}/linux-64/${pkgname%-bin}-${pkgver}-1.tar.bz2")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.bz2::https://api.anaconda.org/download/conda-forge/${pkgname%-bin}/${pkgver}/linux-aarch64/${pkgname%-bin}-${pkgver}-1.tar.bz2")
 options=(strip)
 depends=(glibc)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha512sums_x86_64=('de401ebc0dc555d01efcc86e5c4fe80768686a0f321ae514e2367dc1ca2f3803fc42d65636823a1721afc686e0ab16cbce2b40954062b27df7b9be84251a94b3')
-sha512sums_aarch64=('6b99e7164dbb482a9fd4e293da17bc1a047451d2ce3ba43437c2bc64119b880e5ea0813f0688473dfcb71bed8753ae91e589880fb175ff9c70d8fbc005e08eac')
+sha512sums_x86_64=('7e50e3bcb464890dbcd4b42f892c69786b0fb4feb92c6312e3a2d90f69e6fe719a77affe05ccf8c6b00fc5a270a2406d0bf31a8b35ae0a8b7e2bbcd72d9486f6')
+sha512sums_aarch64=('df27fe5095934726dbe38e870634ed618e4d3a80d2e23e6ddeac06ffa5689472fb714a29fa0da1fa4c0c9b717ee768a955857b59d833adfa2448b3cf7c54caf8')
 
 check() {
   export PREFIX="${srcdir}"
