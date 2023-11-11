@@ -1,0 +1,27 @@
+pkgbase = r-shinymanager
+	pkgdesc = Authentication Management for 'Shiny' Applications
+	pkgver = 1.0.410
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shinymanager
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-billboarder
+	depends = r-dbi
+	depends = r-dt
+	depends = r-htmltools
+	depends = r-openssl
+	depends = r-r.utils
+	depends = r-r6
+	depends = r-rsqlite
+	depends = r-scrypt
+	depends = r-shiny
+	optdepends = r-keyring
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/shinymanager_1.0.410.tar.gz
+	md5sums = d5c4711312e295b09dcdd35cdac7ba88
+	sha256sums = b6cd31149aaffd81d181a0c2f19eee8963b32912b3df1149e56448fe9a38865a
+
+pkgname = r-shinymanager
