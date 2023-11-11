@@ -142,7 +142,7 @@ index 50d63f47515f..195b74c74286 100644
      } else if (CommandName == "warning") {
        BlockCommentToString(Output.Warnings.emplace_back(), Ctx)
            .visit(B->getParagraph());
-+    } else if (CommandName == "exception") {
++    } else if (CommandName == "exception" || CommandName == "throw") {
 +      BlockCommentToString(Output.Exceptions.emplace_back(), Ctx)
 +          .visit(B->getParagraph());
 +    } else if (CommandName == "todo") {
