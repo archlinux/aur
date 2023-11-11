@@ -9,7 +9,7 @@ pkgdesc="CLI player for yandex music"
 url="https://github.com/hikaary/ymcli"
 arch=("any")
 license=("MIT")
-depends=("python" "vlc" "python-aiohttp")
+depends=("python" "vlc" "python-aiohttp" "python-yandex-music-api" "python-npyscreen" "python-vlc")
 source=("git+https://github.com/hikaary/$_pkgname.git")
 md5sums=("SKIP")
 
