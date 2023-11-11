@@ -8,16 +8,16 @@ _base_pkgver_hash=fd2e886e
 # _update_pkgver_hash=c893f6be
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver//-/_}"
-pkgrel=3
+pkgrel=4
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
-arch=('x86_64' 'aarch64' 'loong64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
+arch=('x86_64' 'aarch64' 'loong64')
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
 depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss'
-'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git'
-'libvips' 'openslide' 'autoconf'
-'libunwind'
-)
+		'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git'
+		'libvips' 'openslide' 'autoconf'
+		'libunwind'
+		)
 makedepends=('p7zip')
 optdepends=('libappindicator-gtk3: 以显示托盘图标'
 			'gjs: 提供 GNOME Wayland 下的截图支持')
@@ -31,15 +31,14 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linux
                 #  "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver}_loong64.deb")  # 底包
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums=('7fab94ac6d694b4e0518942fa8301d2b6f51f72dae62debd2dbaf624b74e8fc6'
-            'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
-            '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
+sha256sums=('61f20e40a8fa02052f3d0bc8d5e84fa7a3fdd60ecc8df417d5084396af680411'  # start.sh
+            'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'  # config.json
+            '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
 sha256sums_x86_64=('2f533c3b417354a2d734d60618c3dfd4d6e1fc31712c70656f36a9afbbb3e529')
 sha256sums_aarch64=('e84de1ed9e3ddfa60a65bf86d05a0c6fdd13dc4cc7f33d3b9a618c9cbe120c59')
 sha256sums_loong64=('98b55764719b54015316f858c975a83dabb5dc6548d44d84fe4518420274a957')
-                   #  '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
-                    #  '49a356b051b1fae89f132475128447f184f2385384773114ae9392f19200d7da')  # 热更新补丁
-prepare(){
+
+prepare() {
 	local base_ver=${_base_pkgver}
 	local cur_ver=${_update_pkgver:-${base_ver}}
 	local build_ver=${cur_ver#*-}

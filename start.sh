@@ -1,7 +1,7 @@
 #!/bin/bash
 
-current_ver="__CURRENT_VER__"
 QQ_HOTUPDATE_VERSION="__CURRENT_VER__"
+
 function command_exists() {
     local command="$1"
     command -v "${command}" >/dev/null 2>&1
@@ -22,6 +22,7 @@ function show_error_dialog() {
     fi
 }
 
+# 进行必要文件的检查
 if [ ! -e "/etc/localtime" ]; then
     show_error_dialog "/etc/localtime 未找到。\n请先设置系统时区。"
     exit 1
@@ -57,27 +58,35 @@ done
 
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
 
+# 在「下载」目录不存在的时候，自动使用 ~/Downloads
+# 避免挂载整个 home
 if [ "${QQ_DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
     QQ_DOWNLOAD_DIR="${HOME}/Downloads"
-    # if [ ! -d "${QQ_DOWNLOAD_DIR}" ]; then mkdir -p "${QQ_DOWNLOAD_DIR}"; fi
-    # 还是不自动建立为好
 fi
 
+# 安装当前版本
+HOTUPDATE_VERSION_DIR="${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"
 install -d "${QQ_HOTUPDATE_DIR}"
-ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"
-rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
+if [ ! -d "${HOTUPDATE_VERSION_DIR}" ] && [ ! -L "${HOTUPDATE_VERSION_DIR}" ]; then
+    ln -sfd "/opt/QQ/resources/app" "${HOTUPDATE_VERSION_DIR}"
+fi
 
 # 处理旧版本
-hot_upd_is_new=0
-for d in $(ls -d ${QQ_HOTUPDATE_DIR}/*/); do
-    vercmp "${current_ver//_/-}" "${d%/}"
-    if [ $? -ne 0 ]; then
-        rm -rf "${d%/}"
+rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
+is_hotupdated_version=0  # 正在运行的版本是否经过热更新？
+
+find "${QQ_HOTUPDATE_DIR}/"*-* -maxdepth 1 -type "d,l" | while read path; do
+    this_version="$(basename "$path")"
+    if [ "$(vercmp "${this_version}" "${QQ_HOTUPDATE_VERSION//_/-}")" -lt "0" ]; then
+        # 这个版本小于当前版本，删除之
+        echo "rm $this_version"
+        rm -rf "$path"
     else
-        hot_upd_is_new=1
+        is_hotupdated_version=1
     fi
 done
-if [ $hot_upd_is_new = "0" ]; then
+
+if [ "$is_hotupdated_version" == "0" ]; then
     cp "/opt/QQ/workarounds/config.json" "${QQ_HOTUPDATE_DIR}/config.json"
 fi
 
