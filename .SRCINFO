@@ -11,6 +11,7 @@ pkgbase = psvtools-git
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-pytest-runner
+	depends = python
 	provides = psvtools
 	conflicts = psvtools
 	source = git+https://github.com/kageurufu/psvtools.git

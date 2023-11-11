@@ -7,6 +7,7 @@ arch=('any')
 pkgdesc="PSV file trimmer, restoration, and validation utility (Python). (GIT version)"
 url='https://github.com/kageurufu/psvtools'
 license=('MIT')
+depends=('python')
 makedepends=(
   'git'
   'python-setuptools'
