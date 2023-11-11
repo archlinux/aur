@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 pkgname=journey-git
-pkgver=0.1.9.r53.g4ea1480
-pkgrel=2
+pkgver=0.1.9.r63.g9ab2c58
+pkgrel=1
 pkgdesc='Ghost-compatible blogging platform written in golang'
 url='https://kabukky.github.io/journey/'
 
