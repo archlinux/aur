@@ -1,11 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=23.11.70.r1426.29fe2c5
+pkgver=24.01.75.r1436.b33cfd4
 pkgrel=1
-pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)"
+pkgdesc='Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)'
 arch=('x86_64')
-url='http://kde.org/applications/system/kdepartitionmanager'
+url='https://invent.kde.org/system/kpmcore.git'
 license=('GPL2')
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so

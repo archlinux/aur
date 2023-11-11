@@ -1,8 +1,8 @@
 pkgbase = kpmcore-git
 	pkgdesc = Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)
-	pkgver = 23.11.70.r1426.29fe2c5
+	pkgver = 24.01.75.r1436.b33cfd4
 	pkgrel = 1
-	url = http://kde.org/applications/system/kdepartitionmanager
+	url = https://invent.kde.org/system/kpmcore.git
 	arch = x86_64
 	license = GPL2
 	makedepends = extra-cmake-modules
