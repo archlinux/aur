@@ -2,7 +2,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=pkg2zip-git
-pkgver=v1.8.1.gfccad26
+pkgver=1.8.6.g9222c4e
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Decrypts PlayStation Vita pkg file and packages to zip archive. (GIT version)'
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd pkg2zip
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {
