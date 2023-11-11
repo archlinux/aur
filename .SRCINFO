@@ -1,8 +1,8 @@
 pkgbase = python-qiskit-nature
 	pkgdesc = Quantum Nature package for IBM qiskit framework
-	pkgver = 0.6.2
-	pkgrel = 2
-	url = https://github.com/Qiskit/qiskit-nature
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/qiskit-community/qiskit-nature
 	arch = x86_64
 	license = Apache
 	makedepends = python-build
@@ -13,11 +13,11 @@ pkgbase = python-qiskit-nature
 	depends = python-numpy
 	depends = python-psutil
 	depends = python-qiskit
+	depends = python-qiskit-algorithms
 	depends = python-rustworkx
-	depends = python-scikit-learn
 	depends = python-scipy
 	depends = python-typing_extensions
-	source = qiskit-nature-0.6.2.tar.gz::https://github.com/Qiskit/qiskit-nature/archive/refs/tags/0.6.2.tar.gz
-	b2sums = 50c214cfbc287b371e6310cda12a70c645531440c3e92e71c710cde0461a8fea15ca22f5bee6520d07fdc2adc5b787e826dab669791b877ad1248ea6acc37570
+	source = qiskit-nature-0.7.0.tar.gz::https://github.com/qiskit-community/qiskit-nature/archive/refs/tags/0.7.0.tar.gz
+	b2sums = 822ec316840b404ac7c868498928845cc0fc25c7c1b56d42d93e99bb61520d27aee6dfc2cb2192c02756b32e437cb6c5ca781d8c0f973dd84f3a8493e0cd8279
 
 pkgname = python-qiskit-nature
