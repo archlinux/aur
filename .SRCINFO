@@ -1,6 +1,6 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2022.02.r121.g757189269
+	pkgver = 2022.02.r219.g8744bca3a
 	pkgrel = 1
 	url = https://www.meshlab.net
 	arch = i686
@@ -26,6 +26,11 @@ pkgbase = meshlab-git
 	depends = qt5-script
 	depends = qt5-xmlpatterns
 	depends = xerces-c
+	depends = patchelf
+	depends = gmp
+	depends = mpfr
+	depends = mesa
+	depends = gcc12
 	optdepends = lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support
 	optdepends = levmar: for isoparametrization and mutualcorrs plugins
 	optdepends = muparser: for filer_func plugins
@@ -33,8 +38,6 @@ pkgbase = meshlab-git
 	provides = meshlab
 	conflicts = meshlab
 	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#branch=main
-	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = meshlab-git

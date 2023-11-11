@@ -19,7 +19,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2022.02.r121.g757189269
+pkgver=2022.02.r219.g8744bca3a
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -27,17 +27,18 @@ url="https://www.meshlab.net"
 conflicts=('meshlab')
 provides=('meshlab')
 license=('GPL2')
-depends=('bzip2' 'cgal' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c')
+depends=(
+    'bzip2' 'cgal' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c'
+    'patchelf' 'gmp' 'mpfr' 'mesa' 'gcc12'
+)
 makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir' 'openctm-tools')
 optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'levmar: for isoparametrization and mutualcorrs plugins'
             'muparser: for filer_func plugins'
             'mpir: for Constructive Solid Geometry operation filters')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
-source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}"
-        )
-sha256sums=('SKIP'
-            'SKIP')
+source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}")
+sha256sums=('SKIP')
 
 prepare() {
   prepare_submodule
@@ -50,8 +51,10 @@ pkgver() {
 build() {
   _cmake_flags+=( '-DALLOW_SYSTEM_QHULL=OFF'
                   '-DCMAKE_INSTALL_PREFIX=/usr'
+                  '-DCMAKE_C_COMPILER=/usr/bin/gcc-12'
+                  '-DCMAKE_CXX_COMPILER=/usr/bin/g++-12'
                 )
-  cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
+  cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab"
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when passing multiple flags.
   ninja ${MAKEFLAGS:--j1} -C "${srcdir}/build"
 }
@@ -64,11 +67,7 @@ package() {
 # Call prepare_submodule in prepare() function
 
 prepare_submodule() {
-  git -C "$srcdir/meshlab" config submodule.src/vcglib.url "$srcdir/vcglib"
   git -C "$srcdir/meshlab" -c protocol.file.allow=always submodule update --init
 }
-source+=(
-  "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
-)
 
 # vim:set ts=2 sw=2 et:
