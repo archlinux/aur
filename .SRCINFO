@@ -1,4 +1,4 @@
-pkgbase = plymouth-theme-550w
+pkgbase = plymouth-theme-550w-git
 	pkgdesc = A Plymouth theme for the 550W from movie The Wandering Earth.
 	pkgver = 0.1
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = plymouth-theme-550w
 	source = git+https://github.com/Davidyz/plymouth-theme-550w.git
 	md5sums = SKIP
 
-pkgname = plymouth-theme-550w
+pkgname = plymouth-theme-550w-git
