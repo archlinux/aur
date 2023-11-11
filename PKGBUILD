@@ -7,13 +7,13 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=1.7.5105}
+: ${_pkgver:=1.7.5201}
 
 
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.5105
+pkgver=1.7.5200
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -37,9 +37,9 @@ case "${_autoupdate::1}" in
     _pkgver_new=$(_get name)
 
     # update _pkgver
-    if [ x"$_pkgver" != x"$_pkgver_new" ] ; then
-      _pkgver="$_pkgver_new"
-      sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+    if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
+      _pkgver="${_pkgver_new:?}"
+      sed -Ei 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' "$startdir/PKGBUILD"
     fi
     ;;
   'c')
@@ -79,7 +79,7 @@ case "${_autoupdate::1}" in
 
     pkgver() {
       printf '%s.%s' \
-        "$_pkgver" \
+        "${_pkgver:?}" \
         "chaotic"
     }
 
@@ -102,7 +102,7 @@ case "${_autoupdate::1}" in
         xcb-util-cursor
       )
 
-      optdepend+=(
+      optdepends+=(
         'qt6-wayland: Wayland support'
         'libpulse: Pulseaudio support'
       )
@@ -121,7 +121,7 @@ case "${_autoupdate::1}" in
 
     pkgver() {
       printf '%s' \
-        "$_pkgver"
+        "${_pkgver:?}"
     }
 
     build() {
