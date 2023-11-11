@@ -2,7 +2,7 @@
 # Contributor: Kaan Kasım <kaankasim88@gmail.com>
 
 pkgname=doomretro-git
-pkgver=5.0.5.r2.g848f2a640
+pkgver=5.0.7.r105.gea3b30e5d
 pkgrel=1
 pkgdesc='The classic, refined DOOM source port (git version)'
 arch=('i686' 'x86_64')
