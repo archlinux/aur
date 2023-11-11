@@ -10,30 +10,38 @@
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
+: ${_wayland:=false}
+
 _pkgname="vlc"
-pkgname="$_pkgname-git"
-pkgver=4.0.0.r26405.gd6ffd5bc35
+_pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
+if [[ x"${_wayland::1}" == "xt" ]] ; then
+  pkgname="$_pkgname-wayland-git"
+  pkgdesc="$_pkgdesc (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)"
+else
+  pkgname="$_pkgname-git"
+  pkgdesc="$_pkgdesc"
+fi
+pkgver=4.0.0.r26538.gdf6394ea80
 pkgrel=1
-pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
-         'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
+         'libmpeg2' 'xcb-util-keysyms' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'wayland-protocols'
          'libidn' 'aribb24' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'libmicrodns>=0.1.2'
          'libplacebo' 'libixml.so')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
-             'librsvg' 'libgme' 'twolame' 'aalib' 'avahi' 'systemd-libs'
+             'librsvg' 'libgme' 'twolame' 'avahi' 'systemd-libs'
              'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
-             'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
+             'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
              'lirc' 'libgoom2' 'projectm' 'git' 'aom' 'srt'
              'vulkan-headers' 'dav1d' 'flex' 'bison' 'xosd' 'aribb25' 'pcsclite'
              'libebur128' 'autoconf' 'automake')
@@ -81,8 +89,6 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libass: Subtitle support'
             'libkate: Kate codec'
             'libtiger: Tiger rendering for Kate streams'
-            'sdl_image: SDL image support'
-            'aalib: ASCII art video output'
             'libcaca: colored ASCII art video output'
             'libpulse: PulseAudio audio output'
             'alsa-lib: ALSA audio output'
@@ -110,10 +116,30 @@ source=('git+https://code.videolan.org/videolan/vlc.git'
 b2sums=('SKIP'
         '76103422a1eaad40d33bfb7897bf25c1b5748729270974bec13f642f2861c4458f0dc07b5fb68d9ba4fae6e44d4a6c8e4d67af7ec10e0c117f1b804dd06868e3'
         'fe3849f45fb91d3697573a9c23b90b78ff0bef5f94c42bc6e7c14427637f45f2fc86786803fb9b36c657ac2c50f6bf3c860cd763248711308ceab2bfcf7be49a')
+if [[ x"${_wayland::1}" == "xt" ]] ; then
+  source+=(
+	'2419.patch'
+	'2419a.patch'
+	'2419b.patch'
+  )
+  b2sums+=(
+	'977af105fb03aedd132091921c9ace0355c3211a2a3ba1ef51eb923330c09abb790950247c8c90c0fab9f048ad9d8bbd96dab06dc515879b72ff1d307f252208'
+	'e92e9cefd4adc84fcb45b398fd62e6d9ff770b0719835772e8add7edc13dee717e34effba8395d3437bb43c995f2fd3a5cf69765198cce2881730938b6bd04bb'
+	'c5fb28c47811a0f4bd91563e95d5ce45248a9a566e65daeaf870ff7ddf12b5edf6d37cf604b04fbde78934df0bb9d733c8f900fbb97795835b3a7061de377bf9'
+  )
+fi
 
 pkgver() {
   cd "${srcdir}/${_name}"
   printf "%s.r%s.g%s" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short HEAD)"
+}
+
+_prepare_wayland() {
+  if [[ x"${_wayland::1}" == "xt" ]] ; then
+    patch -Np1 < "${srcdir}"/2419.patch
+    patch -Np1 < "${srcdir}"/2419a.patch
+    patch -Np1 < "${srcdir}"/2419b.patch
+  fi
 }
 
 prepare() {
@@ -124,6 +150,7 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}"/vlc-live-media-2021.patch
+  _prepare_wayland
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
   autoreconf -vf
@@ -160,7 +187,6 @@ build() {
               --enable-smbclient \
               --enable-sftp \
               --enable-nfs \
-              --enable-realrtsp \
               --enable-dvbpsi \
               --enable-gme \
               --enable-ogg \
@@ -198,14 +224,12 @@ build() {
               --enable-tiger \
               --enable-vdpau \
               --enable-wayland \
-              --enable-sdl-image \
               --enable-freetype \
               --enable-fribidi \
               --enable-harfbuzz \
               --enable-fontconfig \
               --enable-svg \
               --enable-svgdec \
-              --enable-aa \
               --enable-caca \
               --enable-pulse \
               --enable-alsa \
@@ -216,7 +240,6 @@ build() {
               --disable-chromecast \
               --enable-qt \
               --enable-skins2 \
-              --enable-libtar \
               --enable-ncurses \
               --enable-lirc \
               --enable-goom \
@@ -236,7 +259,6 @@ build() {
               --enable-libplacebo \
               --enable-vlc \
               --enable-aribsub \
-              --enable-aribcam \
               --enable-aom \
               --enable-srt \
               --enable-dav1d \
