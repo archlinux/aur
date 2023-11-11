@@ -2,7 +2,7 @@
 pkgname=tiny-rdm-bin
 _pkgname=tiny-rdm
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern redis desktop manager. A better redis GUI client."
 arch=("x86_64")
 url="https://redis.tinycraft.cc/"
