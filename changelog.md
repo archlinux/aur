@@ -1,11 +1,10 @@
-# Name: Fluent Reader v1.1.3
-### URL: https://github.com/yang991178/fluent-reader/releases/tag/v1.1.3
-### published at '2022-10-16T21:19:29Z' by github-actions[bot]
+# Name: Fluent Reader v1.1.4 
+### URL: https://github.com/yang991178/fluent-reader/releases/tag/v1.1.4
+### published at '2023-10-16T05:30:58Z' by github-actions[bot]
 ---
 ### Features
-* Sync with Miniflux through native API. #463 
-* Sync with Nextcloud News. #472 
-* Czech language support. #448 
+* Support copying the error message for OPML imports. #516 
 
 ### Fixed bugs
-* Removed some undraggable area in the navigation bar on MacOS. #441 
+* Updated dependencies to fix webp vulnerability. #598 #600
+* Updated RSS parser to improve RSS feed compatibility. #143 
