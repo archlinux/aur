@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 pkgname=kcc-beta
-_pkgver=5.6.2b1
-pkgver=5.6.2+beta+1
+_pkgver=5.7.0b1
+pkgver=5.7.0+beta+1
 pkgrel=1
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
@@ -18,9 +18,9 @@ conflicts=(kcc)
 source=(kindlecomicconverter.desktop
         https://github.com/darodi/kcc/archive/refs/tags/v${_pkgver}.tar.gz)
 md5sums=('f25b30fbc1bc1db491173215fe411789'
-         'a5e952a25c7e6d0c99b4d12c12eedef0')
+         'cdc33719778b4ad42ba5e764a21373d3')
 sha256sums=('3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f'
-            '32e6198dadfe48ebaa3cbeaac998f5fe05137c196ab06ff7db9db211e2d7431b')
+            '6c2879e26d8eb1ae463fac80e270ca823e4dfa7a6c8ffe3993c3c00eec797766')
 
 build() {
   cd "$srcdir/kcc-${_pkgver}"
