@@ -1,0 +1,12 @@
+pkgbase = fswm
+	pkgdesc = fswm is a feature-complete and portable full screen window manager based on libxcb and 221 lines of C89.
+	pkgver = 0
+	pkgrel = 0
+	url = https://github.com/pbizopoulos/fswm
+	arch = any
+	license = MIT
+	depends = xcb-util-keysyms
+	source = https://github.com/pbizopoulos/fswm/tarball/main
+	sha256sums = 107cc9ee174392d1cb864a9a20f6c93dd91f12452f75608c355e24f95a785681
+
+pkgname = fswm
