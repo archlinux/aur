@@ -3,7 +3,7 @@
 # Contributor: Vlad Petrov <ejiek@mail.ru>
 
 pkgname=nb
-pkgver=7.7.1
+pkgver=7.8.0
 pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -60,10 +60,20 @@ package() {
 }
 
 sha256sums=(
-  'ef5d1b06eac367c110223dd03858fe76f9eca5aeccf39e65621b153326ffe4eb'
+  '2cd7df83c6f24625b2ee671ed0f1e2caf9adc297231d851ce6da4cc6909247c6'
 )
 b2sums=(
-  'ad0ee46d0d3d5ed02c0e6fe8786296c4ccdcec54d4ee73349c7115fc00ea77db9ba1e773d64ac382e043d8daba791813bab95ecc2e6da5ba77dc1e1dbf74edfb'
+  'f2980c0809f57bf993eef18aaab73a6bdfeb34e12a66db3c56bd57454c4e7c4e217a768fd443e6362dcc7c003d374cb99eb0bb3374368fdf51962e69da411560'
 )
+
+# 🪷 Beyond the Known — 365 Days of Exploration
+#
+# 📆 11th November
+#
+# Oneness? Wholeness? Liberation?
+#
+# These words are not important.
+#
+# 🔗 https://magnetic-ink.dk/users/btk
 
 # eof
