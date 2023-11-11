@@ -1,9 +1,9 @@
 pkgbase = python-qiskit-algorithms
 	pkgdesc = A library of quantum algorithms for Qiskit
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qiskit-community/qiskit-algorithms
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer

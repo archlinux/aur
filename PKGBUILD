@@ -2,9 +2,9 @@
 _pkgname=qiskit-algorithms
 pkgname=python-${_pkgname}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library of quantum algorithms for Qiskit"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/qiskit-community/qiskit-algorithms"
 license=('Apache')
 depends=(
