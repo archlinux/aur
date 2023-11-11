@@ -7,6 +7,7 @@ pkgbase = ymcli-git
 	license = MIT
 	depends = python
 	depends = vlc
+	depends = python-aiohttp
 	provides = ymcli
 	conflicts = ymcli
 	source = git+https://github.com/hikaary/ymcli.git
