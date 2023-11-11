@@ -5,7 +5,6 @@ pkgver="${_mainver}.58.1"
 pkgrel=1
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
-repo="North-West-Wind/tradew1nd-standalone"
 url="https://github.com/crowbartools/Firebot"
 license=('GPL3')
 source=("${url}/releases/download/v${pkgver}/firebot-v${pkgver}-linux-x64.tar.gz" "firebot.sh")
