@@ -4,8 +4,8 @@
 
 pkgname=python-xhtml2pdf
 _name=${pkgname#python-}
-pkgver=0.2.11
-pkgrel=4
+pkgver=0.2.13
+pkgrel=1
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
 url="https://github.com/xhtml2pdf/xhtml2pdf"
@@ -22,6 +22,7 @@ depends=(
   python-pypdf
   python-reportlab
   python-svglib
+  python-typing_extensions
 )
 makedepends=(
   python-build
@@ -40,13 +41,11 @@ checkdepends=(
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
-  "latex-engine.patch"
-  "fix-sphinx-issues.patch"
+  "exclude-packages.patch"
 )
 sha256sums=(
-  '198a7c78d4233322802cf57a554a92db78f30c7fa485a25cdb93713812f1f9ad'
-  '19d631ba04ae7d42e6c95962df1bc99edf84c80920539bb8aa2fc7f2f6c53589'
-  'a76ae6df2bc2103038a416e16f8eb41d2a3fcf4e813a075a6c0a5d38b50895d0'
+  '549b73ec2d79da002bb81911fa3d8f6d8877ea7aa2af3a080a3d8882f90b5113'
+  '9553544f4151f5d4facfe02fdcd43fb9dba78dc5ec4afc9e8a17073ad3d78a5d'
 )
 
 _archive="$_name-$pkgver"
@@ -54,11 +53,7 @@ _archive="$_name-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="${srcdir}/latex-engine.patch"
-  patch --forward --strip=1 --input="${srcdir}/fix-sphinx-issues.patch"
-
-  sed -i '/with-coverage/d' setup.cfg
-  sed -i '/coverage-package/d' setup.cfg
+  patch --forward --strip=1 --input="${srcdir}/exclude-packages.patch"
 }
 
 build() {
@@ -66,6 +61,7 @@ build() {
 
   python -m build --wheel --no-isolation
 
+  export PYTHONPATH=$PWD/docs/source:$PWD
   (cd docs && make html)
   (cd docs && make man)
 }
