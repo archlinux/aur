@@ -1,13 +1,15 @@
 pkgbase = alacritty-themes
 	pkgdesc = A utility for choosing and applying Alacritty terminal themes.
 	pkgver = 5.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rajasegar/alacritty-themes
+	changelog = changelog.md
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	makedepends = icu
+	depends = sh
 	depends = nodejs
 	noextract = alacritty-themes-5.3.1.tgz
 	options = strip

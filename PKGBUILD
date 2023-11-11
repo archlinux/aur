@@ -5,18 +5,19 @@
 _npmname=alacritty-themes
 pkgname=$_npmname
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
 arch=(any)
 url="https://github.com/rajasegar/alacritty-themes"
 license=("MIT")
 
-depends=("nodejs")
+depends=("sh" "nodejs")
 makedepends=("npm" "jq" "icu")
 # provides=("$_npmname")
 # conflicts=("$_npmname")
 options=(strip emptydirs zipman)
+changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/rajasegar/alacritty-themes/master/LICENSE")
