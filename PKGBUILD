@@ -27,12 +27,13 @@ prepare() {
 package() {
   cd $srcdir
   install -dm755 "${pkgdir}/opt/"
-  cp -r --no-preserve=mode,ownership $pkgname "${pkgdir}/opt/${pkgname}"
+  cp -r --no-preserve=mode,ownership "${pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+  chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
 
   install -Dm644 icon.png "${pkgdir}/usr/share/icons/${pkgname}.png"
   install -Dm755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 ojd.sh "${pkgdir}/usr/bin/ojd"
-  
+
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
  
