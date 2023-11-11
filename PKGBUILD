@@ -11,7 +11,7 @@ pkgname=
 pkgrel=1
 
 ## Begin shared code ##
-pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
+pkgdesc='an offline client for creating photobooks and other photo products and ordering them from Pixum'
 # 7.3.1 segfaults without this:
 options=(!strip)
 
@@ -86,7 +86,7 @@ pkgver=${_prams[3]}
 source=($source 'updater.pl')
 md5sums=(SKIP SKIP)
 
-url="http://www.cewe.de/"
+url="https://www.pixum.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat' 'libtiff5')
 makedepends=('unzip' 'xdg-utils')
