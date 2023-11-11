@@ -10,6 +10,7 @@ pkgbase = startwine
 	depends = imagemagick
 	depends = vulkan-tools
 	depends = xdg-user-dirs
+	depends = python-xlib
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-opengl
