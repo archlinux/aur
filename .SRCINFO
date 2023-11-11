@@ -41,7 +41,6 @@ pkgbase = tvm
 	source = git+https://github.com/agauniyal/rang.git
 	source = vta-hw::git+https://github.com/apache/tvm-vta.git
 	source = enable_features.diff
-	source = cblas_compilation.diff
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

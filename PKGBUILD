@@ -60,8 +60,7 @@ source=("git+https://github.com/apache/tvm"
         "git+https://github.com/dmlc/dmlc-core.git"
         "git+https://github.com/agauniyal/rang.git"
         "vta-hw::git+https://github.com/apache/tvm-vta.git"
-        "enable_features.diff"
-        "cblas_compilation.diff")
+        "enable_features.diff")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -116,8 +115,6 @@ prepare() {
   patch --forward -i "${srcdir}/enable_features.diff" \
         -o "${_build}"/config.cmake \
         -d "${srcdir}/${_base}/cmake"
-  patch --forward -i "${srcdir}/cblas_compilation.diff" \
-        "${srcdir}/${_base}/CMakeLists.txt"
 
   cd "${_build}"
   python3.8 -m venv env
