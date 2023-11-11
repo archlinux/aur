@@ -1,30 +1,96 @@
-# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Maintainer:
+# Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname=tricks
-pkgver=0.9.0
-pkgrel=4
+_pkgname="tricks"
+pkgname="$_pkgname"
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="The social network for programmers!"
-arch=('x86_64')
-url="https://tricks.aseman.io/"
+#url="https://tricks.aseman.io/"
+url="https://github.com/Aseman-Land/Tricks"
 license=('GPL3')
-makedepends=('gcc' 'git' 'qt5-svg')
-depends=('qt-aseman' 'syntax-highlighting' 'qt5-base' 'qt5-graphicaleffects' 'qt5-quickcontrols2')
-conflicts=('tricks-bin')
+arch=('x86_64')
+
+depends=(
+  'qt-aseman'
+  'syntax-highlighting5'
+  'qt5-base'
+  'qt5-graphicaleffects'
+  'qt5-quickcontrols2'
+)
+makedepends=(
+  'gcc'
+  'git'
+  'qt5-svg'
+)
+
 options=('!emptydirs' '!strip')
-source=("git+https://github.com/Aseman-Land/Tricks.git#tag=v${pkgver}")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
+_source_tricks() {
+  source+=(
+    'larpon.qtfirebase'::'git+https://github.com/Larpon/QtFirebase.git'
+    'ftylitak.qzxing'::'git+https://github.com/ftylitak/qzxing.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_tricks() (
+    cd "${srcdir:?}/$_pkgsrc"
+    local -A _submodules=(
+      ['larpon.qtfirebase']='cpp/thirdparty/qtfirebase'
+      ['ftylitak.qzxing']='cpp/thirdparty/qzxing'
+    )
+    _submodule_update
+  )
+}
+
+_submodule_update() {
+  local key;
+  for key in ${!_submodules[@]} ; do
+    git submodule init "${_submodules[${key}]}"
+    git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+    git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+  done
+}
+
+_source_tricks
+
+prepare() {
+  _prepare_tricks
+}
+
 build() {
-	cd ${srcdir}/Tricks/
-	mkdir -p build && cd build
-	qmake -r .. APP_SECRET_ID="tapp_eb7536ef1cdc592f6b503addeaddd8e6c94cfb110f0e08a15b0bc97cef0beb1d" CONFIG+="qtquickcompiler"
-	make -j4
+  mkdir -p build && cd build
+
+  local _qmake_options=(
+    -r "${srcdir:?}/$_pkgsrc"
+    APP_SECRET_ID="tapp_eb7536ef1cdc592f6b503addeaddd8e6c94cfb110f0e08a15b0bc97cef0beb1d"
+    CONFIG+="qtquickcompiler"
+  )
+
+  qmake "${_qmake_options[@]}"  
+  make
 }
 
 package() {
-	mkdir -p "${pkgdir}"/usr/share/icons/hicolor/
-	install -D -m644 Tricks/configurations/default/linux/share/Tricks.desktop -t "${pkgdir}"/usr/share/applications/
-	install -D -m755 Tricks/build/tricks -T "${pkgdir}"/usr/bin/tricks
-	cp -r Tricks/configurations/default/linux/share/hicolor/* "${pkgdir}"/usr/share/icons/hicolor/
-	install -D -m644 Tricks/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+  # desktop file
+  install -Dm644 \
+    "${pkgsrc:?}/$_pkgsrc/configurations/default/linux/share/Tricks.desktop" \
+    -t "${pkgdir:?}/usr/share/applications/"
+
+  # icons
+  install -dm755 "${pkgdir:?}/usr/share/icons/hicolor/"
+  cp -r "${pkgsrc:?}/$_pkgsrc/configurations/default/linux/share/hicolor"/* "${pkgdir:?}/usr/share/icons/hicolor/"
+
+  # executable
+  install -Dm755 "${pkgsrc:?}/build/tricks" -t "${pkgdir:?}/usr/bin/"
+
+  # license
+  install -Dm644 "${pkgsrc:?}/$_pkgsrc/LICENSE" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }

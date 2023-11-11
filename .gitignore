@@ -1,4 +1,4 @@
-tricks-*
-Tricks*
-pkg/
-src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

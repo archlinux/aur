@@ -1,22 +1,25 @@
 pkgbase = tricks
 	pkgdesc = The social network for programmers!
-	pkgver = 0.9.0
-	pkgrel = 4
-	url = https://tricks.aseman.io/
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Aseman-Land/Tricks
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	makedepends = git
 	makedepends = qt5-svg
 	depends = qt-aseman
-	depends = syntax-highlighting
+	depends = syntax-highlighting5
 	depends = qt5-base
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols2
-	conflicts = tricks-bin
 	options = !emptydirs
 	options = !strip
-	source = git+https://github.com/Aseman-Land/Tricks.git#tag=v0.9.0
+	source = tricks::git+https://github.com/Aseman-Land/Tricks.git#tag=v1.0.0
+	source = larpon.qtfirebase::git+https://github.com/Larpon/QtFirebase.git
+	source = ftylitak.qzxing::git+https://github.com/ftylitak/qzxing.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = tricks
