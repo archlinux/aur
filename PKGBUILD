@@ -12,8 +12,8 @@ arch=('x86_64')
 url=https://github.com/criticic/llpp
 cloneurl=https://github.com/criticic/llpp
 license=('GPL3')
-depends=('freetype2' 'gumbo-parser' 'jbig2dec' 'libgl' 'libjpeg' 'openjpeg2')
-makedepends=('asciidoc' 'git' 'libmupdf' 'ocaml' 'ocaml-lablgl')
+depends=('freetype2' 'gumbo-parser' 'jbig2dec' 'libgl' 'libjpeg' 'openjpeg2' 'libmupdf')
+makedepends=('asciidoc' 'git' 'ocaml' 'ocaml-lablgl')
 optdepends=('djvulibre: for llppac djvu conversion'
             'ghostscript: for llppac ps, dvi, and djvu conversion'
             'imagemagick: for llppac image conversion'
