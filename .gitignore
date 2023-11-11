@@ -1,4 +1,6 @@
 *
 !.gitignore
-!.SRCINFO
+!Makefile
 !PKGBUILD
+!.SRCINFO
+!changelog.md
