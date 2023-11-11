@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+../sysit/scripts/gen-pkgbuild.sh
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/" && pwd )"
 
 podman build $SCRIPT_DIR -t sysit-bin-builder
