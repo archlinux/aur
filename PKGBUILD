@@ -1,5 +1,5 @@
 pkgname=ayugram-desktop
-pkgver=4.11.1
+pkgver=4.11.6
 pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
