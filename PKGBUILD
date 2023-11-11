@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14217.69e645c94
+pkgver=r14238.19a822164
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -44,6 +44,7 @@ depends=(
     openni2
     ensenso-sdk
     postgresql
+    gcc12
 )
 makedepends=(cmake git)
 source=(git+https://github.com/PointCloudLibrary/pcl)
@@ -60,7 +61,7 @@ pkgver() {
 prepare() {
 	mkdir  -p "$srcdir/build"
 	cd     "$srcdir/build"
-
+    export PATH="/opt/cuda/bin:$PATH"  # FIX for CUDA 12.3
 	cmake "${srcdir}/pcl" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
