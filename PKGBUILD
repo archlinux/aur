@@ -3,9 +3,9 @@
 pkgname=konversation-git
 pkgver=1.9.231170.r9356.388f98e6a
 pkgrel=1
-pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
+pkgdesc='A user friendly IRC client for KDE. (GIT Version)'
 arch=('x86_64')
-url='https://kde.org/applications/en/internet/org.kde.konversation'
+url='https://apps.kde.org/konversation'
 license=('GPL2' 'FDL')
 depends=(
   'gcc-libs' # libstdc++.so
