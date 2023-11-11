@@ -61,6 +61,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C "${srcdir}/build" install
+  cp $pkgdir/usr/lib/meshlab/libIDTF.so $pkgdir/usr/lib
 }
 
 # Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
