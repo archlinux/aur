@@ -1,6 +1,6 @@
 pkgbase = python-trame-markdown
 	pkgdesc = Markdown widget for trame
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-markdown
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = python-trame-markdown
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = nodejs-lts-hydrogen
+	makedepends = npm
 	depends = python-trame-client
-	source = trame-markdown-3.0.0.tar.gz::https://github.com/Kitware/trame-markdown/archive/v3.0.0.tar.gz
-	source = https://registry.npmjs.org/markdown-it-vue/-/markdown-it-vue-1.1.7.tgz
-	sha512sums = 92adc03a2fe53c1bdda818acd2ddc44e0c19800f1037cd0894e37717dd4db63ca27298ace301330f5e408bed78501548075ed58a5c580418f0cea08b0ee3ddec
-	sha512sums = 71511e9900b82cb55ef182ebebe7851aa013bc2f3bb8d862f69962c3964b9f42e48920775ec98d416ebd94c0c8e4471b01e85e172b0e9493681b479832e61060
+	source = trame-markdown-3.0.1.tar.gz::https://github.com/Kitware/trame-markdown/archive/v3.0.1.tar.gz
+	sha512sums = c0e7b6937b90b1d3bd437c0cda4738df3016037c741c08d31c4b979177be9ece77abf8aedbdd2bcdc12a569c643c75aa4fabcd9798f5c24955910216a2ceb5aa
 
 pkgname = python-trame-markdown

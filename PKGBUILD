@@ -1,28 +1,28 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=trame-markdown
-_npm_base=markdown-it-vue
 pkgname=python-${_base}
 pkgdesc="Markdown widget for trame"
-pkgver=3.0.0
-_npm_pkgver=1.1.7
+pkgver=3.0.1
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
 depends=(python-trame-client)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-hydrogen npm)
 checkdepends=(python-pytest)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
-  https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz)
-sha512sums=('92adc03a2fe53c1bdda818acd2ddc44e0c19800f1037cd0894e37717dd4db63ca27298ace301330f5e408bed78501548075ed58a5c580418f0cea08b0ee3ddec'
-            '71511e9900b82cb55ef182ebebe7851aa013bc2f3bb8d862f69962c3964b9f42e48920775ec98d416ebd94c0c8e4471b01e85e172b0e9493681b479832e61060')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c0e7b6937b90b1d3bd437c0cda4738df3016037c741c08d31c4b979177be9ece77abf8aedbdd2bcdc12a569c643c75aa4fabcd9798f5c24955910216a2ceb5aa')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
 build() {
-  cd ${_base}-${pkgver}
+  cd ${_base}-${pkgver}/vue-components
+  npm install
+  npm run build
+
+  cd ${srcdir}/${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
@@ -39,12 +39,6 @@ package() {
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  # Install Client
-  mv ${srcdir}/package/dist/fonts ${pkgdir}${site_packages}/${_base/-/_}/module
-  mv ${srcdir}/package/dist/img ${pkgdir}${site_packages}/${_base/-/_}/module
-  mv ${srcdir}/package/dist/${_npm_base}.css ${pkgdir}${site_packages}/${_base/-/_}/module
-  mv ${srcdir}/package/dist/${_npm_base}.umd.min.js ${pkgdir}${site_packages}/${_base/-/_}/module
-
   rm ${pkgdir}${site_packages}/trame/__init__.py
   rm ${pkgdir}${site_packages}/trame/modules/__init__.py
   rm ${pkgdir}${site_packages}/trame/widgets/__init__.py
