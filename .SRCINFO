@@ -1,0 +1,16 @@
+pkgbase = mcard-toolbox
+	pkgdesc = mCard Toolbox
+	pkgver = 1.3.4.0
+	pkgrel = 1
+	url = https://softemia.lt/downloads/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = pcsclite>=1.5
+	depends = qt5-base
+	source_x86_64 = https://softemia.lt/wp-content/uploads/2023/07/mcard-toolbox-amd64-1.3.4.0.deb
+	sha256sums_x86_64 = 607fceb3b5598f988d6a4b8a882b46df32452a704e213c9145467a39e280291f
+	source_aarch64 = https://softemia.lt/wp-content/uploads/2023/07/mcard-toolbox-arm64-1.3.4.0.deb
+	sha256sums_aarch64 = 9d87e68e62726034b76b8a53a8134eb0c3b084f8fca5626c8422611a9de112a0
+
+pkgname = mcard-toolbox
