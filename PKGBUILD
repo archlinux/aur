@@ -5,7 +5,7 @@ pkgver=24.01.75.r3097.599f5a16
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
-url='https://kde.org/applications/en/internet/org.kde.ktorrent'
+url='https://apps.kde.org/ktorrent'
 license=('GPL')
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
