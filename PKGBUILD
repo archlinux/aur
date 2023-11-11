@@ -1,10 +1,11 @@
 # Contributor: Jozef Riha <jose1711 at gmail dot com>
 # Updated by Manuel Conzelmann, changed to non-branded software
+# Updated by NoNickKnown, added Pixum Fotowelt
 
 # to package a different version, change this line to _productVariant=<one of the words after '_prams_' below>
 # or download a setup file from a local CEWE site, put it in the same folder as this file, and run:
 # _SETUP_FILE=<filename> makepkg
-_productVariant=Fotobuch
+_productVariant=Pixum
 # leave this unset to get a package name based on the application name
 pkgname=
 pkgrel=1
@@ -29,6 +30,7 @@ _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.5)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
 _prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.3.3 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
+_prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 7.3.3 'Pixum Fotowelt')
 _prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.3.3)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
@@ -39,6 +41,7 @@ _prams_Slovakia=(sk_SK 31916 'CEWE fotosvet' 7.1.3)
 _prams_Slovenia=(sl_SI 17409 'CEWE Fotosvet' 7.1.5)
 _prams_Spain=(es_ES 29227 'Taller CEWE' 7.1.3)
 _prams_UK=(en_GB 12611 'CEWE Creator' 7.1.3)
+
 
 pkgver() {
 	[ -z "$1" ] && set -- '$HPS_VER'
@@ -76,7 +79,7 @@ pkgname=${pkgname,,}
 pkgname=${pkgname// /-}
 [ -f CEWE.install -a "$BUILDPKG" != 0 ] && sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
 
-conflicts=(cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
+conflicts=(pixum-fotowelt cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
 conflicts=(${conflicts[@]/$pkgname/})
 
 pkgver=${_prams[3]}
