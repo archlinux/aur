@@ -1,6 +1,6 @@
 pkgbase = copyparty
 	pkgdesc = File server with accelerated resumable uploads, dedup, WebDAV, FTP, zeroconf, media indexer, thumbnails++
-	pkgver = 1.9.16
+	pkgver = 1.9.17
 	pkgrel = 1
 	url = https://github.com/9001/copyparty
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = copyparty
 	depends = lsof
 	depends = python-jinja
 	optdepends = ffmpeg: thumbnails for videos, images (slower) and audio, music tags
+	optdepends = cfssl: generate TLS certificates on startup (pointless when reverse-proxied)
 	optdepends = python-mutagen: music tags (alternative)
 	optdepends = python-pillow: thumbnails for images
 	optdepends = python-pyvips: thumbnails for images (higher quality, faster, uses more ram)
@@ -24,7 +25,7 @@ pkgbase = copyparty
 	optdepends = python-argon2_cffi: hashed passwords in config
 	optdepends = python-impacket-git: smb support (bad idea)
 	backup = etc/copyparty.d/init
-	source = https://github.com/9001/copyparty/releases/download/v1.9.16/copyparty-1.9.16.tar.gz
-	sha256sums = 94c9d9991ca53cfbae628d09d4139a93c54b32a1776e9aaaee99a1327d0449cb
+	source = https://github.com/9001/copyparty/releases/download/v1.9.17/copyparty-1.9.17.tar.gz
+	sha256sums = 73d66a9ff21caf45d8093829ba7de5b161fcd595ff91f8674795f426db86644c
 
 pkgname = copyparty
