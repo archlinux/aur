@@ -1,6 +1,6 @@
 pkgbase = postgresql11
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 11.9
+	pkgver = 11.22
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -8,8 +8,6 @@ pkgbase = postgresql11
 	makedepends = krb5
 	makedepends = libxml2
 	makedepends = python
-	makedepends = python2
-	makedepends = perl
 	makedepends = tcl>=8.6.0
 	makedepends = openssl>=1.0.0
 	makedepends = pam
@@ -18,7 +16,8 @@ pkgbase = postgresql11
 	makedepends = systemd
 	makedepends = libldap
 	makedepends = clang
-	source = https://ftp.postgresql.org/pub/source/v11.9/postgresql-11.9.tar.bz2
+	optdepends = perl
+	source = https://ftp.postgresql.org/pub/source/v11.22/postgresql-11.22.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql-command.patch
@@ -27,7 +26,7 @@ pkgbase = postgresql11
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
 	source = pgenv.sh
-	md5sums = 2d20502cbce1c7531bb69e56f5c5c65a
+	md5sums = 6e7d050f23e35ec20d76297a6d4ce30d
 	md5sums = 92249e35353927d9f79df66a4101b3fa
 	md5sums = 7d899fe96b0044e120e49bab4205610d
 	md5sums = 2c74b38d3ca580733daaf60d7c564792
@@ -58,7 +57,7 @@ pkgname = postgresql11-docs
 pkgname = postgresql11
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql11-libs>=11.9
+	depends = postgresql11-libs>=11.22
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
