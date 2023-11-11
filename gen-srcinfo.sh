@@ -7,3 +7,5 @@ cd $SCRIPT_DIR
 podman run --rm sysit-bin-builder > .SRCINFO
 podman image rm sysit-bin-builder
 podman image rm archlinux
+
+git commit -am "Update release." && git push
