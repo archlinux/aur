@@ -3,6 +3,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
+# Configuration:
+# Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+# Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+# Use: aurutils --margs=VAR1=0,VAR2=1
+# Use: VAR1=0 VAR2=1 pamac
+
+# Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
+_fragment="${FRAGMENT:-#branch=master}"
+
 pkgname=inkscape-git
 pkgver=1.3.alpha.r352.g5cf271997e
 pkgrel=1
@@ -46,7 +55,7 @@ optdepends=(
 )
 provides=('inkscape')
 conflicts=('inkscape')
-source=("inkscape.git::git+$url/inkscape.git"
+source=("inkscape.git::git+$url/inkscape.git${_fragment}"
 	"extensions.git::git+$url/extensions.git"
 	"lib2geom.git::git+$url/lib2geom.git")
 sha1sums=('SKIP'

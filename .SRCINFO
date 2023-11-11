@@ -41,7 +41,7 @@ pkgbase = inkscape-git
 	optdepends = texlive-core: latex formulas
 	provides = inkscape
 	conflicts = inkscape
-	source = inkscape.git::git+https://gitlab.com/inkscape/inkscape.git
+	source = inkscape.git::git+https://gitlab.com/inkscape/inkscape.git#branch=master
 	source = extensions.git::git+https://gitlab.com/inkscape/extensions.git
 	source = lib2geom.git::git+https://gitlab.com/inkscape/lib2geom.git
 	sha1sums = SKIP
