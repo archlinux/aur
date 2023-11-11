@@ -62,7 +62,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/paraview/build-${_arch}
+    cd "$srcdir"/paraview/
     DESTDIR="$pkgdir" ninja -C build-${_arch} install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
