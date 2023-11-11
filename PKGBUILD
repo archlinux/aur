@@ -5,7 +5,7 @@ pkgver=24.01.75.r631.343445e
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('x86_64')
-url='https://projects.kde.org/projects/extragear/network/libktorrent'
+url='https://invent.kde.org/network/libktorrent'
 license=('GPL')
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
