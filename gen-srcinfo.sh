@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-../sysit/scripts/gen-pkgbuild.sh
+../sysit/scripts/gen-pkgbuild.sh > PKGBUILD
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/" && pwd )"
 
