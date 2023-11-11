@@ -9,7 +9,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd'
 	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'python' 'swig')
-optdepends=('cuda: GPU acceleration, but not compatible with cuda 12' 'plplot: scientific plot')
+optdepends=('cuda: GPU acceleration, but not compatible with cuda 12' 'plplot: scientific plot ')
 makedepends=('scons')
 options=('strip')
 source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/rsf/files/$pkgname/$pkgname-4.0/$pkgname-$pkgver.tar.gz/download")
