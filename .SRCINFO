@@ -12,6 +12,7 @@ pkgbase = deemix-py
 	depends = python-click
 	depends = python-pycryptodomex
 	depends = python-mutagen
+	depends = python-setuptools
 	depends = python-requests
 	depends = python-deezer-py>=1.3.0
 	depends = python-spotipy>=2.11.0
@@ -19,5 +20,6 @@ pkgbase = deemix-py
 	conflicts = deemix-git
 	source = https://files.pythonhosted.org/packages/source/d/deemix/deemix-3.6.6.tar.gz
 	sha256sums = c446a1cc0d4f22b18f7e79ce72e5d02d5429495394164ebfd2ff5588b8160b09
+	b2sums = 812552c0fd09af02c5c60e00132dca0166faae9235721c536ffd05d30df99bb83f621da494c8c45e6b765cc0f9c43e478db86becbbe910bb58f32ba9d381119b
 
 pkgname = deemix-py
