@@ -1,0 +1,16 @@
+pkgbase = ymcli
+	pkgdesc = CLI player for yandex music
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/hikaary/ymcli
+	arch = any
+	license = MIT
+	depends = python
+	depends = vlc
+	depends = python-aiohttp
+	provides = ymcli
+	conflicts = ymcli
+	source = git+https://github.com/hikaary/ymcli.git
+	md5sums = SKIP
+
+pkgname = ymcli
