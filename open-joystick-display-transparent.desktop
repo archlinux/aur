@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Open Joystick Display Transparent
+Comment=A powerful and easy to use streamer-ready overlay for your joystick or gamepad. Completely free and open source.
+Exec=/usr/bin/ojd
+Terminal=false
+Type=Application
+Icon=open-joystick-display-transparent
+StartupWMClass=Open Joystick Display Transparent
+Categories=Multimedia;

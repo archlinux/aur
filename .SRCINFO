@@ -1,0 +1,19 @@
+pkgbase = open-joystick-display-transparent
+	pkgdesc = A powerful and easy to use streamer-ready display for your joystick or gamepad. Completely free and open source.
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://github.com/North-West-Wind/open-joystick-display-transparent
+	arch = x86_64
+	license = custom
+	source = https://github.com/North-West-Wind/open-joystick-display-transparent/releases/download/v2.9.0/open-joystick-display-transparent-2.9.0.tar.gz
+	source = https://raw.githubusercontent.com/North-West-Wind/open-joystick-display-transparent/v2.9.0/LICENSE.md
+	source = https://raw.githubusercontent.com/North-West-Wind/open-joystick-display-transparent/v2.9.0/app/icons/icon.png
+	source = open-joystick-display-transparent.desktop
+	source = ojd.sh
+	sha256sums = b14e17e7be7c605fcb285bfe2e0d781dd69f074b6cf1599083720abbed0f9657
+	sha256sums = 4e93135b5a8b520e8d2704516cce199a59823f0704cd8f7a25a660387da189cc
+	sha256sums = 035a8763987758dc6815641ad1cc0ac37c08eb7d047cbb41a14fe394042bff0d
+	sha256sums = c9edd5345046d1ec74dac0b36759cadec1906688aaef00b629554f0dbaf3cb00
+	sha256sums = f8519a915dec18cb9b2b2365387df21ac285767c9c5605b2ebb01517af00bf61
+
+pkgname = open-joystick-display-transparent
