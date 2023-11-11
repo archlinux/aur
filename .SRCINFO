@@ -7,7 +7,7 @@ pkgbase = nodejs-wenku8-downloader
 	license = MIT
 	depends = nodejs
 	depends = npm
-	depends = electron
+	depends = electron>=1:25
 	noextract = wenku8-4.0.0.tgz
 	source = https://registry.npmjs.org/wenku8/-/wenku8-4.0.0.tgz
 	sha1sums = b5734d16323c1f1305b14b045f7df67fcc80ab3c

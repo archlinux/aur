@@ -10,7 +10,7 @@ pkgdesc="轻小说文库下载器"
 arch=(any)
 url="https://github.com/Messiahhh/wenku8-downloader#readme"
 license=(MIT)
-depends=('nodejs' 'npm' 'electron')
+depends=('nodejs' 'npm' 'electron>=1:25')
 optdepends=()
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
