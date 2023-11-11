@@ -2,21 +2,21 @@
 pkgdesc="Library for collision detection between two convex shapes. Git version."
 url='http://libccd.danfis.cz/'
 pkgname=libccd-git
-pkgver=2.0.18.ge33c60a
+pkgver=2.0.52.g7931e76
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
 makedepends=('cmake')
 depends=()
 _dir=libccd
-source=("$_dir"::'git://github.com/danfis/libccd.git'#branch=master)
+source=("$_dir::git+https://github.com/danfis/libccd.git")
 md5sums=('SKIP')
 provides=('libccd')
 conflicts=('libccd')
 
 pkgver() {
   cd "${srcdir}/${_dir}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
 }
 
 build() {
