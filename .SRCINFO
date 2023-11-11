@@ -1,0 +1,14 @@
+pkgbase = python-acefile
+	pkgdesc = Read/test/extract ACE 1.0 and 2.0 archives in pure python
+	pkgver = 0.6.12
+	pkgrel = 1
+	url = https://www.roe.ch/acefile
+	arch = any
+	license = BSD 2-Clause
+	makedepends = python-setuptools
+	depends = python
+	provides = python-acefile
+	source = https://files.pythonhosted.org/packages/source/a/acefile/acefile-0.6.12.tar.gz
+	sha256sums = e02c1eac068d2db14c7fbda526d7648c8921ace8cc30b9e5228241cde82cdeaa
+
+pkgname = python-acefile
