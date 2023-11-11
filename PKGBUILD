@@ -5,15 +5,12 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
-: DISABLE_MESON="${DISABLE_MESON:=1}" # switch to autotools `makepkg DISABLE_MESON=1`
-((DISABLE_MESON)) && makedepends+=('vala') || makedepends+=('meson')
-
 pkgname=gimp-git
 _pkgname=${pkgname%-git}
 provides=(gimp)
 conflicts=(gimp)
 epoch=2
-pkgver=2.99.7.r462.d33c45fb47
+pkgver=2.99.17.r751.05b2f93876
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -45,7 +42,7 @@ makedepends+=('git' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
-             'gjs' 'python-gobject' 'luajit'
+             'gjs' 'python-gobject' 'luajit' 'meson'
              )
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
@@ -77,50 +74,20 @@ pkgver() {
 }
 
 build() {
-  if ((DISABLE_MESON)); then
-    cd $_pkgname
-    ./autogen.sh \
-          --prefix=/usr \
-          --sysconfdir=/etc \
-          --libexecdir=/usr/bin \
-          --enable-mp \
-          --enable-gimp-console \
-          --enable-gtk-doc \
-          --disable-check-update \
-          --disable-python \
-          --with-bug-report-url='https://github.com/bartoszek/AUR-gimp-git/issues' \
-          --with-openexr \
-          --without-aa
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    make
-  else
-#   export CFLAGS CXXFLAGS LDFLAGS
-    meson "${srcdir}/${_pkgname}"\
-          "${srcdir}/build"\
-          --prefix=/usr \
-          -Dbug-report-url='https://github.com/bartoszek/AUR-gimp-git/issues'
-    export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-  # shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
-    ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
-  fi
+  meson "${srcdir}/${_pkgname}"\
+        "${srcdir}/build"\
+        --prefix=/usr \
+        -Dbug-report-url='https://github.com/bartoszek/AUR-gimp-git/issues'
+  export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
+# shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
+  ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
 }
 
 check() {
-  if ((DISABLE_MESON)); then
-    cd $_pkgname
-    xvfb-run make check
-#   xvfb-run make distcheck
-  else
-    ninja -C "${srcdir}/build" test
-  fi
+  ninja -C "${srcdir}/build" test
 }
 
 package() {
-  if ((DISABLE_MESON)); then
-    cd $_pkgname
-    make DESTDIR="${pkgdir}" install
-  else
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
-  fi
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
   install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
 }

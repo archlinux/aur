@@ -1,6 +1,6 @@
 pkgbase = gimp-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.99.7.r462.d33c45fb47
+	pkgver = 2.99.17.r751.05b2f93876
 	pkgrel = 1
 	epoch = 2
 	url = https://www.gimp.org
@@ -9,7 +9,6 @@ pkgbase = gimp-git
 	license = GPL
 	license = LGPL
 	checkdepends = xorg-server-xvfb
-	makedepends = vala
 	makedepends = git
 	makedepends = intltool>=0.40.1
 	makedepends = alsa-lib>=1.0.0
@@ -29,6 +28,7 @@ pkgbase = gimp-git
 	makedepends = gjs
 	makedepends = python-gobject
 	makedepends = luajit
+	makedepends = meson
 	depends = lcms2>=2.8
 	depends = libwmf>=0.2.8
 	depends = icu
