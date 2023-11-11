@@ -6,9 +6,9 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=7.1.0.31101
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
-arch=("x86_64")
+arch=("x86_64" 'aarch64')
 url="https://www.dingtalk.com/"
 license=("custom")
 depends=("glu" 'gtk2' 'libxcrypt-compat')
@@ -21,25 +21,23 @@ provides=('com.alibabainc.dingtalk' 'dingtalk')
 conflicts=('com.alibabainc.dingtalk')
 replaces=('com.alibabainc.dingtalk')
 # https://tms.dingtalk.com/markets/dingtalk/service-terms-zh md5 will change per download
-source=("${_pkgname}_${pkgver}-${arch}.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_amd64.deb"
-        "service-terms-zh"
+source_x86_64=("${_pkgname}_${pkgver}-x86_64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_amd64.deb")
+source_aarch64=(${_pkgname}_${pkgver}-aarch64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_arm64.deb)
+source=("service-terms-zh"
         "${_pkgname2}.desktop"
         "dingtalk.sh"
         "${_pkgname2}.svg"
-        "https://archive.archlinux.org/packages/c/cairo/cairo-1.17.4-5-x86_64.pkg.tar.zst"
-        'xdg-open.sh'
-        )
+)
 
 
 # DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
-sha512sums=('c449103fc4f7c04853a0875dd5c2bbb20651e82e961d5c9e1af4fa9a5a3cd44bd889a78309a381c58020c18b79ab64e16187611677a5919d981d550f5905148b'
-            'b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
+sha512sums=('b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
-            '4dde27376ed3ed5fed5da2a94f45e2556c7bd0fe5086351a9fd204a08b52823d70d60024b91c1f1cc023f5a276442537c0789ffbefa9ef7aa2be2b6e10c99071'
-            '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775'
-            '94a108a3f3f88bc7ede370d5e3f84afaedd78d892f7352926091881c066cbe0da55bebb5fc83978ca83c6420ed0c94fbba1f3454c5ff8d33a38669a0a11a80ac'
-            '685f7eb38fd0e34aac3f1e1272f4c6f9404765decee82831b9fc4e743e0b0a022f8e49bd5623f524890a719af0b1333b96773fb386b74aeded4307e8b1a626ed')
+            '419a88ea7156ef2896d81d2c73d6da49e9af8fd7d95bdbeb082304ce0d3428dfca1dd7c7691d20bc3d61d7e78240fd7f7005841114d7460624e9a2047df8020d'
+            '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
+sha512sums_x86_64=('c449103fc4f7c04853a0875dd5c2bbb20651e82e961d5c9e1af4fa9a5a3cd44bd889a78309a381c58020c18b79ab64e16187611677a5919d981d550f5905148b')
+sha512sums_aarch64=('6b34a7b09d6aa530c82f86ec433982c593547e5313a464d09c38a84e12fd9b9ac2d794306a0312fa92df8c96efd38a2ee21770b7ae861732b5fce39c118296db')
 
 prepare(){
     cd ${srcdir}
@@ -68,13 +66,6 @@ package(){
 
     # fix chinese input in workbench
     rm -rf ${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so.*
-
-    # fix cairo
-    cd $srcdir/usr/lib
-    install -Dm755 libcairo.so.2 -t ${pkgdir}/usr/lib/dingtalk
-
-    # fix open url
-    install -Dm755 $srcdir/xdg-open.sh ${pkgdir}/opt/dingtalk/release/xdg-open
 
     rm -rf ${pkgdir}/opt/${_pkgname}/release/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac,web_content/NativeWebContent_*.zip},libstdc*}
 
