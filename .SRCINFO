@@ -1,7 +1,7 @@
 pkgbase = disman-kwinft
 	pkgdesc = Qt/C++ display management library
-	pkgver = 5.27
-	pkgrel = 3
+	pkgver = 0.527.0
+	pkgrel = 1
 	url = https://gitlab.com/kwinft/disman
 	arch = x86_64
 	arch = aarch64
@@ -9,13 +9,14 @@ pkgbase = disman-kwinft
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = kdoctools5
+	makedepends = qt5-tools
+	makedepends = appstream
 	depends = kcoreaddons5
 	depends = qt5-x11extras
 	depends = wrapland
-	optdepends = qt6-tools
 	provides = disman
 	conflicts = disman
-	source = git+https://gitlab.com/kwinft/disman.git
-	sha256sums = SKIP
+	source = https://gitlab.com/kwinft/disman/-/archive/disman@0.527.0/disman-disman@0.527.0.tar.gz
+	sha1sums = 02ab18a807a87124ecb8451db5359f3ec7bfbea6
 
 pkgname = disman-kwinft

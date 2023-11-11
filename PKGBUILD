@@ -1,8 +1,8 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=disman-kwinft
-pkgver=5.27
-pkgrel=3
+pkgver=0.527.0
+pkgrel=1
 pkgdesc='Qt/C++ display management library'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/disman"
@@ -10,26 +10,20 @@ license=(LGPL)
 depends=(kcoreaddons5 qt5-x11extras wrapland)
 provides=("disman")
 conflicts=("disman")
-makedepends=(extra-cmake-modules git kdoctools5)
-optdepends=(qt6-tools)
-source=("git+https://gitlab.com/kwinft/disman.git")
-sha256sums=('SKIP')
+makedepends=(extra-cmake-modules git kdoctools5 qt5-tools appstream)
+source=("https://gitlab.com/kwinft/disman/-/archive/disman@$pkgver/disman-disman@$pkgver.tar.gz")
+sha1sums=('02ab18a807a87124ecb8451db5359f3ec7bfbea6')
 
 prepare() {
-  cd disman
-  git checkout Plasma/$pkgver
+  mkdir -p $pkgname
+  cd $pkgname
+  tar -xvf ../disman-disman@$pkgver.tar.gz --strip-components 1
 }
   
 build() {
   mkdir -p build
   cd build
-  cmake ../disman \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DBUILD_TESTING=OFF
-  make
+  cmake ../$pkgname
 }
 
 package() {
