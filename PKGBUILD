@@ -1,6 +1,6 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=cue-git
-pkgver=v1.4.r9.g3faed2a
+pkgver=v1.5.2.r0.ge6f1637
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
@@ -24,8 +24,8 @@ build() {
 
 package() {
     cd "$srcdir/cue"
-    install -Dm755 cue "$pkgdir/usr/bin/cue"
+    install -Dm755 kew "$pkgdir/usr/bin/kew"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "$srcdir/cue/docs/cue-manpage.mdoc" "$pkgdir/usr/share/man/man1/cue.1"
+    install -Dm644 "$srcdir/cue/docs/kew-manpage.mdoc" "$pkgdir/usr/share/man/man1/kew.1"
 }
 
