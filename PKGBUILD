@@ -4,7 +4,7 @@ pkgbase=postgresql16
 pkgver=16.1
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=2
+pkgrel=3
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -183,9 +183,11 @@ package_postgresql16() {
 
   #install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/${pkgname}"
 
-  install -Dm 644 postgresql.service  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  sed -e "s/\$pkgver/$pkgver/" -e "s/\$pkgbase/$pkgbase/" postgresql.service >postgresql.service.tmp
+  install -Dm 644 postgresql.service.tmp  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm 644 postgresql.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm 644 postgresql.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  sed -e "s/\$pkgver/$pkgver/" postgresql.tmpfiles >postgresql.tmpfiles.tmp
+  install -Dm 644 postgresql.tmpfiles.tmp "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # clean up unneeded installed items
   rm -rf "${pkgdir}/opt/${pkgbase}/include/internal"
