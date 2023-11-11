@@ -1,5 +1,5 @@
 *
 !.gitignore
-!.SRCINFO
+!Makefile
 !PKGBUILD
-
+!.SRCINFO

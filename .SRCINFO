@@ -1,17 +1,19 @@
 pkgbase = faq-bin
 	pkgdesc = More flexible jq. Supports BSON, Bencode, JSON, TOML, XML, YAML
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jzelinskie/faq
 	arch = x86_64
 	license = APACHE
 	depends = jq
 	provides = faq
 	conflicts = faq
-	source = faq-0.0.7-readme::https://github.com/jzelinskie/faq/raw/0.0.7/README.md
-	b2sums = 08f8cc9acb54bd713b87f0df0444266f1a33473663dd32b088818cf54cc2f03e5b3fcaa65f22b58c699cecb6a28000992f148ca264b3d797eceaf8b72e91d24f
-	source_x86_64 = faq-0.0.7-x86_64::https://github.com/jzelinskie/faq/releases/download/0.0.7/faq-linux-amd64
-	b2sums_x86_64 = 9f949db01d8864599353f96ad000690db212ff568c754b2a706f97d830a56ed22f8b00a68547791160e952616425e7fc72b0e12e2533e84eb9d623a431849fb4
+	options = strip
+	options = emptydirs
+	options = zipman
+	source = https://raw.githubusercontent.com/jzelinskie/faq/main/README.md
+	source = faq::https://github.com/jzelinskie/faq/releases/download/0.0.7/faq-linux-amd64
+	b2sums = 23f5d3292034ec771c0864ea295e2e9b3eb66ea7eb3290a985da004171f9ba4fc9ba86454d97c96b6a24be31a22c3bbeb41758752c010130354218a8267ead78
+	b2sums = 9f949db01d8864599353f96ad000690db212ff568c754b2a706f97d830a56ed22f8b00a68547791160e952616425e7fc72b0e12e2533e84eb9d623a431849fb4
 
 pkgname = faq-bin
-
