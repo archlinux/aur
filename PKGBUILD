@@ -1,40 +1,11 @@
-# Maintainer: VirtualTam <virtualtam@flibidi.net>
-# Contributor: Alexandre Boily <alexandreboily@gmail.com>
-#
-# NOTE
-# The latest version, 2.0_20140824, can be installed with Composer:
-#
-# pacman -S php-composer
-# composer global require phplint/phplint
-pkgname=phplint11
-_pkgname=phplint
-pkgdesc="PHP 4 and 5 validator and documentator."
-pkgver=1.1_20130803
-pkgrel=3
-arch=('i686' 'x86_64')
-url='http://www.icosaedro.it/phplint/'
-license=('MIT')
-depends=('gc')
-source=("${url}${_pkgname}-pure-c-${pkgver}.tar.gz")
-md5sums=('6c7b80444adaa31a5005b1b816d0cfda')
+# Maintainer:
 
-build() {
-  ### Compile
-  cd "${srcdir}/${_pkgname}-pure-c-${pkgver}"
-  ./configure
-  ./compile || return 1
-}
+pkgname=phplint11
+pkgver=1.1_20130803
+pkgrel=4
+pkgdesc="metapackage - obsolete; do not use"
+arch=('any')
 
 package() {
-  cd "${srcdir}/${_pkgname}-pure-c-${pkgver}"
-
-  ### Create the paths and copy files
-  mkdir -p ${pkgdir}/usr/share/phplint/
-  mkdir -p ${pkgdir}/usr/share/licences/phplint/
-  mkdir -p ${pkgdir}/usr/bin/
-  cp ${srcdir}/${_pkgname}-pure-c-${pkgver}/src/phplint ${pkgdir}/usr/bin/
-  cp -R ${srcdir}/${_pkgname}-pure-c-${pkgver}/modules ${pkgdir}/usr/share/phplint/
-
-  ### Change the rights for module files
-  chmod a+r ${pkgdir}/usr/share/phplint/modules/*
+  :
 }
