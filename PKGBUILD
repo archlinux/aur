@@ -1,7 +1,7 @@
 # Maintainer: Joseph DiGiovanni <jdigiovanni78 at gmail dot com>
 # Upstream: Immersed Inc. <info at immersed dot com>
 pkgname=immersed
-pkgver=9.8
+pkgver=9.9
 pkgrel=1
 pkgdesc="Immersed Desktop Agent"
 arch=("x86_64")
@@ -15,8 +15,8 @@ _appimage="Immersed-x86_64.AppImage"
 _icon="${pkgname}.png"
 source_x86_64=("${_appimage}::https://static.immersed.com/dl/Immersed-x86_64.AppImage" "${_icon}::https://immersed.com/assets/favicon/android-icon-192x192-202d04a8c19d3974616bc5dd9136796dbc04f4c10a4b32277d5eeb0d22e846b0.png")
 noextract=("${_appimage}")
-md5sums_x86_64=('86145b83b81bc33b13434a86a3739b6f'
-                SKIP)
+sha256sums_x86_64=('3bcddffad1b236bb7122a99cfc3de08832098a4f98b504b2910c3bcfe0ac2ab6'
+                   SKIP)
 
 prepare() {
     gendesk -f -n --name="Immersed" --pkgname=${pkgname} --pkgdesc=${pkgdesc} --exec=${pkgname} --icon=${srcdir}/${_icon}
