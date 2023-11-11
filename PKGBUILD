@@ -1,6 +1,6 @@
 pkgname=ayugram-desktop
 pkgver=4.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -44,4 +44,8 @@ build() {
 }
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    # Some fixups
+    sed -i s/Icon=telegram/Icon=ayugram/ "$pkgdir/usr/share/applications/ayugram.desktop.desktop"
+    [[ -f "$pkgdir/usr/share/icons/hicolor/symbolic/apps/telegram-symbolic.svg" ]] && \
+        mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"{telegram,ayugram}-symbolic.svg
 }
