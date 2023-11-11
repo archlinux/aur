@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=rustotpony
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="RusTOTPony — CLI manager of one-time password generators like Google Authenticator"
 url="https://github.com/zebradil/rustotpony"
 arch=(i686 x86_64 armv6h armv7h)
@@ -14,7 +14,7 @@ makedepends=(cargo)
 conflicts=(rustotpony-bin)
 provides=(totp)
 source=(rustotpony-0.4.1::https://github.com/zebradil/rustotpony/archive/0.4.1.tar.gz)
-sha256sums=(SKIP)
+sha256sums=('b513d1404ee58bc10196b68a46ad2a5117a15bff45edc4e2565965a3dde87970')
 build () 
 { 
     cd "${pkgname}-${pkgver}";
