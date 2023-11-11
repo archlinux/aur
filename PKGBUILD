@@ -67,8 +67,8 @@ sha512sums=('SKIP'
 
 pkgver() {
 # shellcheck disable=SC2183,SC2046
-  printf "%s.%s.%s.r%s.%s" \
-    $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' ${_pkgname}/configure.ac) \
+  printf "%s.r%s.%s" \
+    $(grep -zoP "(?s)^project\(.*?version: '\K[0-9.]+(?=\'.*?\))" ${_pkgname}/meson.build|tr -d '\0') \
     "$(git -C $_pkgname rev-list "$(git -C $_pkgname describe --abbrev=0)"..HEAD --count)" \
     "$(git -C $_pkgname log --pretty=format:'%h' -n 1)"
 }
