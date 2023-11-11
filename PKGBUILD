@@ -3,7 +3,7 @@
 # Contributor: Bidossessi Sodonon
 
 pkgname="odoo"
-pkgver=16.0
+pkgver=17.0
 pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
@@ -20,9 +20,9 @@ depends=("postgresql"
         "python-dateutil" # 16
         "python-decorator"
         "python-docutils"
-        #"python-ebaysdk" # 16
-        #"python-feedparser" # 16
+        "python-ebaysdk" # 16
         "python-freezegun"
+        "python-geoip2" # 17
         "python-gevent"
         "python-greenlet"
         "python-html2text"
@@ -41,19 +41,17 @@ depends=("postgresql"
         "python-psutil"
         "python-psycopg2"
         "python-pydot"
-        #"python-pyparsing" # 16
+        "python-pyopenssl"
         "python-pypdf2"
         "python-pyserial"
-        "python-dateutil"
-        "python-pyopenssl"
         "python-pytz"
         "python-pyusb"
         "python-qrcode"
         "python-reportlab"
         "python-requests"
+        "python-rjsmin" # 17
         "python-stdnum"
         "python-urllib3" # 16
-        #"python-vatnumber" # 16
         "python-vobject"
         "python-werkzeug"
         "python-xlrd"
@@ -70,12 +68,12 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.latest.
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-sha256sums=('SKIP'
-            'c0fc3e95000eef53113efb1dfa57cae461b4bf646b945f6842e161df5cd9e4b2'
-            '0cfb2d663be2c23491be71ded73284a6a81460e44e5e1f3c37cfcdd73ee51c01'
-            '9eb10d79d38ade80cc6c9ee366d0e50ea42d76d860e564cbb8776e0f4ba776d9'
-            'b06fcf6f6fc0cd7e3dbc7699bbd31138b39a0a1d1f8d06984ff2605a5eeb3257'
-            'b6bae94d1a5e51c6cae42987124dd1528626a6f87331c1777c104394c34a95cb')
+b2sums=('246e4c02a6e41a4b7d95a897eaec080f45465eb38ee6e121b3c6db7586d65de866465d8ea03bc43bf5c2891417ab55f7051a3d0a960627aa72fbaea8def4401b'
+        '3254a9857e0bf77b692a610bb929d21decea4e4fb7e044f97b69d026bf4ae94cfac0a4a220c2f842e8d32d74f7785a3a5f848ca248fbde7b86b2b5cc7b593541'
+        '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
+        'a14636791b4f0ae76da8a69e95a6926287f5cfa215499be9a6880b6b63fa2081ecdd32ea0dc10fe4d7fe2d14968ac4ed08701c972bc2170e9f4dc36efa406c02'
+        '311757f40c9de2845482ebf22e36469cc1058396bba9edaa2265a2bd085e2bcdd22115b098af3aaa037f7dac3a81212ae8b249df0b268f6bf2d798ee01698aae'
+        '80e9a5954c3eece0be4c4f44e60d519a30e6264fd1d57a77eba46581faf71f66c4404247b71925dd0970a5b7bfb2bda99cc3c38bd663f443b258385d0f85be83')
 backup=("etc/odoo/odoo.conf")
 install="odoo.install"
 options=("!strip")
