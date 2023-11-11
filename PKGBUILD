@@ -130,7 +130,7 @@ sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
             'b92c99d4c905a38cc5475fb2395c7c3fd537a654979bebfb23f915a13cd9b97e'  # doxygen-render-bold-trunk
-            'a61336ca68f6a4f6932beb69beba45d8d5e4b83e4d4781998dbdca382a3464bd'  # doxygen-more-fields
+            '13a97d200a5fa465595a4df3a7d86381b089052fc0504a65891cc3360a99c073'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             '387a684eefb5605b166a33f9aa71745b3793444029b6ba965598004b343dbf44'  # lsp-codelens
             'd048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc'  # postfix-completion
