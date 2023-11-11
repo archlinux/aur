@@ -9,18 +9,32 @@
 
 _pkgname=gegl
 pkgname="${_pkgname}-git"
-pkgver=0.4.45.r10515.401c6d30b
+pkgver=0.4.47.r10635.3c4479f65
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
 url="https://www.gegl.org"
 license=('GPL3' 'LGPL3')
-depends=('babl>=0.1.78' 'libspiro' 'json-glib' 'sdl2') #'mrg'
-makedepends=('git' 'meson' 'intltool' 'python' 'ruby' 'luajit'
-             'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
-             'libtiff' 'libnsgif' 'exiv2' 'libgexiv2' 'lensfun'
-             'vala' 'python-gobject'
-             'suitesparse' 'gobject-introspection')
+depends=('babl>=0.1.78'
+         'libspiro>=0.5.0'
+         'json-glib>=1.0.0'
+         'sdl2>=2.0.5') #'mrg'
+makedepends=('git' 'meson' 'intltool' 'python' 'ruby'
+             'luajit>=2.0.4'
+             'libraw>=0.15.4'
+             'openexr>=1.6.1'
+             'ffmpeg'
+             'librsvg>=2.40.6'
+             'jasper>=1.900.1'
+             'libtiff>=4.0.0'
+             'libnsgif'
+             'exiv2'
+             'libgexiv2>=0.14.0'
+             'lensfun>=0.2.5'
+             'vala'
+             'python-gobject>=3.2.0'
+             'suitesparse'
+             'gobject-introspection')
 optdepends=('openexr: for using the openexr plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'librsvg: for using the svg plugin'
