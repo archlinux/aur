@@ -4,14 +4,15 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20230216.b458488e5
+pkgver=20231101.dc7489fd9
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://mupdf.com/'
 license=('AGPL3')
 makedepends=('git' 'libxi' 'glu')
-depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser' 'mujs')
+depends=('gumbo-parser' 'harfbuzz' 'jbig2dec' 'libarchive' 'libgl'
+         'libjpeg-turbo' 'libxrandr' 'mujs' 'openjpeg2')
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/thirdparty-extract.git'
         'git://git.ghostscript.com/thirdparty-freeglut.git'
@@ -46,12 +47,12 @@ build() {
 	sed 's/$(HAVE_X11)/no/g' -i Makefile # prevent building useless binaries
 	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 	sed 's/$(USE_SYSTEM_GLUT)/no/g' -i Makethird Makefile
-	make release
+	make archive=yes release
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	make install DESTDIR="${pkgdir}" prefix=/usr
+	make archive=yes install DESTDIR="${pkgdir}" prefix=/usr
 	mv "${pkgdir}"/usr/bin/mupdf{-gl,}
 	rm -fr "${pkgdir}"/usr/{include,lib}
 	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
