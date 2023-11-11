@@ -1,7 +1,7 @@
 # Maintainer: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-kyngs-git
 pkgrel=1
-pkgver=1.1.1
+pkgver=1.2.0
 pkgdesc="A fork of Miru which aims to improve the Linux experience (e.g. disabling the auto-updater) and to improve privacy"
 arch=("any")
 url="https://github.com/kyngs/miru"
