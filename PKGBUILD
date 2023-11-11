@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.5.9.arch2
+pkgver=6.6.1.arch1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -39,39 +39,26 @@ source=(
 
   0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
   
-  0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
-
   0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
-  0001-constgran-v2.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
-  0036-Block_a_rogue_device_on_ASUS_TUF_A16.patch
+#  0036-Block_a_rogue_device_on_ASUS_TUF_A16.patch
 
   0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
 
-  v2-0001-platform-x86-asus-wmi-add-support-for-showing-cha.patch
-  v2-0002-platform-x86-asus-wmi-add-support-for-showing-mid.patch
-  v2-0003-platform-x86-asus-wmi-support-middle-fan-custom-c.patch
-  v2-0004-platform-x86-asus-wmi-add-WMI-method-to-show-if-e.patch
   v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch
   v2-0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-sw.patch
-  v2-0007-platform-x86-asus-wmi-support-setting-mini-LED-mo.patch
-  v2-0008-platform-x86-asus-wmi-expose-dGPU-and-CPU-tunable.patch
 
   0038-mediatek-pci-reset.patch
   0040-workaround_hardware_decoding_amdgpu.patch
-
-  0001-platform-x86-asus-wmi-Fix-and-cleanup-custom-fan-cur.patch
 
   0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-if-.patch
   0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-switc.patch
 
   0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
   amd-tablet-sfh.patch
-  v2-0001-ALSA-hda-cs35l41-Support-systems-with-missing-_DS.patch
-  v2-0002-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-m.patch
   v6-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
@@ -83,40 +70,28 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('299cca897d90deaa176eebec42f0a80eeb7516afed330a45c14da9de086cf717'
+sha256sums=('da1ed7d47c97ed72c9354091628740aa3c40a3c9cd7382871f3cedbd60588234'
             'SKIP'
-            '1674849c22c0516926af78d7554fb954b6104ad0cb31d056234b221d075a244f'
+            '9fd606b2ac0b4ae5df8867b7651574a2e5c480366bac224406fc34ad5d79009b'
             'SKIP'
-            'd65728bbfc336f1af1184df4c17a51cc3454947c1825d829ae74a75b1408d838'
+            'bdfd2629b1fe907b9270fc540adaa51ff526cbd361b23aba38c4c5fce7f5397b'
             'bc8b5f303e3507c01d8543fb4352ed7dcdb9ed4eb2854788d39510f88d67f454'
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4'
-            'a691e7b22633fe0c458d140167d6d381b66149e05de3cb926b30a19fd43e78ce'
             '7b16fce20b03babc9e149030f43e283534835bbd8835ba0a794fd0205fea1708'
-            'd0749b5508305aaa9b070b2b75b3d87726ce588fd1ca683ac374c15dd06f9f96'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
-            '1740589bbf5eb2c292904e508270ed221e1382f78bcb7cf1c72f1dc12f767e69'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
-            '454dc9b16fd2559843d78a93905a39b1668eaaecb0bf0a9dccf432199f9b96be'
-            '5a82899580abaaab4cd818c96407b6be5b2d6b6d1004355eab12fedebdb968a0'
-            'a75528877f5db652b4e0b5e68f2ec39557bcad9786c6f6419327d3e08d1fe9be'
-            'cbf0738ba984d0fa9ad396ec1e5b2a6ed1e2411dc81b17423fdceef423a484b2'
             '9f98765b43f5f31b33ed05f3611508113b02518e680ee82b251de80dae2e141d'
             '5e58aa605c2ae00c0925e1fbb838a8041e7cf2eb78c0d6167e59dbe27b536565'
-            '137f16f59a63568b3546649346ef1bc2211c03da28178a94bf8cd104051f67b8'
-            '1983fbb75a4e8c76ffeca51b42dcb3cdcd4a6a5b4aafdb02b3dcbf3c5c9a94ad'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
-            'a0c90f98af4a3d59f8be2265de4134b1e91992915aa72e71b14440d070ea7167'
             '5d1180a60bf9cc1d11d77455580f1d7522e232b7ba235b43f09ede45d37e8a10'
             '2480528e81377b27a4558f989bf810537b820f9f7696b52538fa01c0b81bf899'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            'f2a38f2afef02a3ee244c2eee6d52de84db2e990ad2b86c22b5fea4d9c10fdee'
-            '8736d75b42da763454aed97644852984f4729fc8e09507cc4e50d9f084f444ea'
             '796a15292c84397a29ef25be8c1e5d804516d8ace514b66f07b74176f58919b7'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
@@ -292,8 +267,8 @@ _package() {
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
