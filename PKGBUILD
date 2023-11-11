@@ -1,16 +1,17 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql15
-pkgver=15.4
+pkgver=15.5
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
+makedepends=('krb5' 'libxml2' 'python' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang' 'libxslt')
+optdepends=('perl: perl support requires recompile with --with-perl')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
@@ -19,13 +20,13 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.sysusers
         postgresql.tmpfiles
         pgenv.sh)
-sha256sums=('baec5a4bdc4437336653b6cb5d9ed89be5bd5c0c58b94e0becee0a999e63c8f9'
+sha256sums=('8f53aa95d78eb8e82536ea46b68187793b42bba3b4f65aa342f540b23c9b10a6'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            '39692245a4948a8eec7281f4a86772818012742a8e35fbb12f67f28e7d91cb08'
+            'cfb3bee0f7fc98c8c81aa3a73398bc0446822af86479b5a8ee0c67faae46ec1c'
             '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
-            '7beb8640c93d90a74ee226d394646aa8006693a23c8fa6840efb6d136e53613b'
+            '3e13800ae807ee3c40b7e947770c58d5bf04d6427afd2bb8d2e7ecf839802b07'
             '1ea08f0f7819c9ef965ef7851a2262ae6f4837242d7fde2b6a8098b969d1133e')
 
 prepare() {
@@ -42,7 +43,7 @@ build() {
     --with-gssapi
     --with-libxml
     --with-openssl
-    --with-perl
+#    --with-perl
     --with-python
     --with-tcl
     --with-pam
@@ -179,9 +180,11 @@ package_postgresql15() {
 
   #install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/${pkgname}"
 
-  install -Dm 644 postgresql.service  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  sed -e "s/\$pkgver/$pkgver/" -e "s/\$pkgbase/$pkgbase/" postgresql.service >postgresql.service.tmp
+  install -Dm 644 postgresql.service.tmp  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm 644 postgresql.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm 644 postgresql.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  sed -e "s/\$pkgver/$pkgver/" postgresql.tmpfiles >postgresql.tmpfiles.tmp
+  install -Dm 644 postgresql.tmpfiles.tmp "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # clean up unneeded installed items
   rm -rf "${pkgdir}/opt/${pkgbase}/include/internal"
