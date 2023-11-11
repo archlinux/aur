@@ -1,7 +1,7 @@
 pkgbase = parse-torrent
 	pkgdesc = Parse a torrent identifier (magnet uri, .torrent file, info hash)
 	pkgver = 11.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/webtorrent/parse-torrent
 	arch = any
 	license = MIT

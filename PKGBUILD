@@ -3,7 +3,7 @@
 _npmname=parse-torrent
 pkgname=$_npmname
 pkgver=11.0.14
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Parse a torrent identifier (magnet uri, .torrent file, info hash)"
 arch=(any)
@@ -20,7 +20,7 @@ source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/webtorrent/parse-torrent/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
 b2sums=('331f8badf861fadc6b9729b9a8000f11ede542cffd3ce0b11f13d1191f92d64dfee677717fd3c9114f812d8322e8534f39d081195679d7d304128fd587fdb03e'
-        '3890a8cd095787f6ab383fe3ca0a0bf0999d80a7ea65627bb1a50f1c2690987f53e0619df5745ba47d6ef46d32e03573b5a52330a7c857220e4db96a33203019')
+	'3890a8cd095787f6ab383fe3ca0a0bf0999d80a7ea65627bb1a50f1c2690987f53e0619df5745ba47d6ef46d32e03573b5a52330a7c857220e4db96a33203019')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -28,8 +28,7 @@ package() {
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
-		"${srcdir}/${_npmname}-${pkgver}.tgz" \
-		# --loglevel verbose
+		"${srcdir}/${_npmname}-${pkgver}.tgz"
 
 	# Fix ownership of ALL FILES
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
