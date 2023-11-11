@@ -2,7 +2,7 @@
 # Past-Maintainer: Yingchang Liu
 
 pkgname=seismic-unix-git
-pkgver=r.c222c39a
+pkgver=4426.c222c39a
 pkgrel=1
 pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
