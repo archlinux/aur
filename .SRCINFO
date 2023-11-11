@@ -1,12 +1,14 @@
 pkgbase = ezshare
 	pkgdesc = Easily share files, folders and clipboard over LAN - Like Google Drive but without internet
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mifi/ezshare
-	arch = any
+	changelog = changelog.md
+	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = jq
+	depends = glibc
 	depends = nodejs
 	noextract = ezshare-1.9.0.tgz
 	options = strip

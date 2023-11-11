@@ -3,18 +3,19 @@
 _npmname=ezshare
 pkgname=$_npmname
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Easily share files, folders and clipboard over LAN - Like Google Drive but without internet"
-arch=(any)
+arch=("x86_64")
 url="https://github.com/mifi/ezshare"
 license=("MIT")
 
-depends=("nodejs")
+depends=("glibc" "nodejs")
 makedepends=("npm" "jq")
 # provides=("$_npmname")
 # conflicts=("$_npmname")
 options=(strip emptydirs zipman)
+changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
