@@ -2,7 +2,7 @@
 
 pkgname=quictls-openssl
 pkgver=3.1.4+quic1
-pkgrel=1
+pkgrel=2
 pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
 url="https://github.com/quictls/openssl"
@@ -68,5 +68,5 @@ package() {
 
 	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 
-	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licences/$pkgname/LICENSE.txt"
+	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
