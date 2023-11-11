@@ -3,7 +3,7 @@
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
 pkgver=0.1.16.r1.gd32fb2f
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI Ebook Reader"
 arch=('any')
 url="https://github.com/wustho/baca"
@@ -27,9 +27,11 @@ depends=(
 )
 makedepends=(
   'git'
+  'pandoc' # convert readme to epub
   'python-build'
+  'python-importlib-metadata' # prepare
   'python-installer'
-  'python-poetry'
+  'python-poetry-core'
   'python-wheel'
 )
 source=(
@@ -46,6 +48,7 @@ sha256sums=(
 prepare() {
   cd "$srcdir/$_pkgname"
 
+  # fix docs
   _images=(
     "baca_fit"
     "pretty_yes_no_cap"
@@ -53,6 +56,25 @@ prepare() {
   for i in ${_images[@]} ; do
     sed -Ei -e "s@\\!\\[$image\\]\\([^\\)]+\\)@![$image]($image.png)@" "README.md"
   done
+
+  # convert readme to epub
+  pandoc -t epub --metadata title="Baca eReader Readme" -o README.epub README.md
+
+  # textual > 0.16.0 mouse scrolling glitch
+  # https://github.com/wustho/baca/issues/10
+  local _textual_version=$(python -c 'from importlib.metadata import version; print(version("textual"))')
+  if [[ $(vercmp "$_textual_version" 0.16.0) -gt 0 ]] ; then
+    sed -E -e 's@^(\s*self)\.screen\.(scroll_(up|down))@\1.\2@g' \
+      -i "src/baca/components/contents.py"
+  fi
+
+  # AttributeError: module 'climage.climage' has no attribute '_color_types'
+  # https://github.com/wustho/baca/issues/13
+  local _climage_version=$(python -c 'from importlib.metadata import version; print(version("climage"))')
+  if [[ $(vercmp "$_climage_version" 0.2.0) -ge 0 ]] ; then
+    sed -E -e 's@climage\._color_types@climage.color_types@g' \
+      -i  "src/baca/components/contents.py"
+  fi
 }
 
 pkgver() {
@@ -62,18 +84,19 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-
   python -m build --no-isolation --wheel
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-
   python -m installer --destdir="$pkgdir" dist/*.whl
 
+  # documents
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "README.md"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "README.epub"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/baca_fit.png"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/pretty_yes_no_cap.png"
 
+  # license
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
 }
