@@ -2,7 +2,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname='doc2go-bin'
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Your Go documentation, to-go.'
 url='https://github.com/abhinav/doc2go'
@@ -11,20 +11,20 @@ license=('Apache')
 provides=('doc2go')
 conflicts=('doc2go')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.1/doc2go-linux-arm64.tar.gz")
-sha256sums_aarch64=('c7e6fc4c525698fd5032674cc2f5ffc46e5ef95e104954e5c704268261528d5c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.2/doc2go-linux-arm64.tar.gz")
+sha256sums_aarch64=('69eeaf8719791d521934a708397a057566d0d3201c68d47319507346bdec78b3')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.1/doc2go-linux-armv6.tar.gz")
-sha256sums_armv6h=('eb28ffd7b535681f7c759dd7eb65d540f3160a35826256d038f5930e2e0a4a9f')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.2/doc2go-linux-armv6.tar.gz")
+sha256sums_armv6h=('966806a53fff714991c4f39668eca4f943f08144af9e62b4838562f7ea168307')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.1/doc2go-linux-armv7.tar.gz")
-sha256sums_armv7h=('cf2786fa77360466bbbedf31096d22461346177591cbcb07dad0a182facd21d0')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.2/doc2go-linux-armv7.tar.gz")
+sha256sums_armv7h=('62dd12f4c7999ddb02e67017c1ee3d0e0b274819f2de4240796f146a5f274afc')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.1/doc2go-linux-386.tar.gz")
-sha256sums_i686=('a9e587e6611052e0f1cdb0b542eea21e426e7196a80469da502e5f21c4026c43')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.2/doc2go-linux-386.tar.gz")
+sha256sums_i686=('0651911676504741e4df71bba819aca6f0059e6e7969f50369cc0ba4e246281c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.1/doc2go-linux-amd64.tar.gz")
-sha256sums_x86_64=('26e36117dfc9a0de284abf96c8c8c0f4f3de15e546bb6903a631a8782c03d471')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.5.2/doc2go-linux-amd64.tar.gz")
+sha256sums_x86_64=('0c0793de665eb94a2afb0b790cfad465a366006f50bbf80d44e11f6c3689dc3a')
 
 package() {
   install -Dm755 "./doc2go" "${pkgdir}/usr/bin/doc2go"
