@@ -9,7 +9,7 @@ arch=('any')
 url="https://www.rpgmakerweb.com/run-time-package"
 license=('custom')
 makedepends=('innoextract')
-source=("https://dl.degica.com/rpgmakerweb/run-time-packages/RPGVXAce_RTP.zip")
+source=("http://dl.komodo.jp/rpgmakerweb/run-time-packages/RPGVXAce_RTP.zip")
 sha256sums=('7e93d0ead93a686218b7c671bf099ef42f09f536083bd0b2f0fa6423a39fc19b')
 
 prepare() {
