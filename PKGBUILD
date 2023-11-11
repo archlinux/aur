@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-asl
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="COIN-OR autotools harness to build AMPL Solver Library (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-wine')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/$pkgver.tar.gz"
         https://coin-or-tools.github.io/ThirdParty-ASL/solvers-64919f75f.tgz)
-sha256sums=('b617b6d46a2722189dedef7c8013f7e21ebe677fe34cc6b62fabb1639fd3a96d'
+sha256sums=('92575a7d5264311a53bfec65bec006475c4b5ef3e79d8d84db798d73e8d3567f'
             'e212926d1d797701adc901ef18eaab6b15edd13f9281dd8c9266e3cdaf8c2dd3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -22,8 +22,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare () {
   cd "ThirdParty-ASL-releases-$pkgver"
   ln -sf ../solvers .
-  # run configuration exe through wine
-  sed -i "s|./arithchk\$(EXEEXT)|\$(MINGW_TARGET)-wine ./arithchk\$(EXEEXT)|g" Makefile.in
 }
 
 build() {

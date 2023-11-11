@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-asl
 	pkgdesc = COIN-OR autotools harness to build AMPL Solver Library (mingw-w64)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/coin-or-tools/ThirdParty-ASL/
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = mingw-w64-coin-or-asl
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/2.0.0.tar.gz
+	source = https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/2.0.1.tar.gz
 	source = https://coin-or-tools.github.io/ThirdParty-ASL/solvers-64919f75f.tgz
-	sha256sums = b617b6d46a2722189dedef7c8013f7e21ebe677fe34cc6b62fabb1639fd3a96d
+	sha256sums = 92575a7d5264311a53bfec65bec006475c4b5ef3e79d8d84db798d73e8d3567f
 	sha256sums = e212926d1d797701adc901ef18eaab6b15edd13f9281dd8c9266e3cdaf8c2dd3
 
 pkgname = mingw-w64-coin-or-asl
