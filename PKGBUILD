@@ -3,14 +3,15 @@
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
 url="https://gitlab.com/coolercontrol/coolercontrol"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'polkit' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-apscheduler'
+depends=('hicolor-icon-theme' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-apscheduler'
          'python-matplotlib' 'python-numpy' 'python-setproctitle' 'python-jeepney' 'python-requests'
-         'python-fastapi' 'uvicorn' 'python-orjson' 'python-dataclass-wizard')
+         'python-fastapi' 'uvicorn' 'python-orjson' 'python-dataclass-wizard' 'gcc-libs' 'glibc'
+         'python-colorlog' 'python-dateutil' 'python-pillow' 'python-pydantic' 'python-urllib3')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry' 'cargo')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('nvidia-utils: NVIDIA GPU support')
