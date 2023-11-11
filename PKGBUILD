@@ -2,8 +2,8 @@
 _base=tvm
 # pkgname="${_base}"-git
 pkgname="${_base}"
-pkgver=0.13.dev0.5.ge8184e66c4
-pkgrel=2
+pkgver=0.15.dev0.57.g108377452e
+pkgrel=1
 # epoch=
 pkgdesc="Apache TVM, a deep learning compiler that enables access to high-performance machine learning anywhere for everyone"
 arch=('x86_64')
