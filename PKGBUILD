@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=raddiola
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Simple radio with a clear and concise interface'
 url="https://github.com/alexkdeveloper/raddiola"

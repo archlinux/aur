@@ -1,6 +1,6 @@
 pkgbase = raddiola
 	pkgdesc = Simple radio with a clear and concise interface
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/alexkdeveloper/raddiola
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = raddiola
 	depends = granite
 	depends = gstreamer
 	depends = libpulse
-	source = git+https://github.com/alexkdeveloper/raddiola.git#tag=1.1.6
+	source = git+https://github.com/alexkdeveloper/raddiola.git#tag=1.1.7
 	sha256sums = SKIP
 
 pkgname = raddiola
