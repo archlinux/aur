@@ -1,13 +1,13 @@
 pkgbase = libxdgdirs
 	pkgdesc = An implementation of XDG Base Directory Specification in C
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/Jorengarenar/libXDGdirs
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = glibc
-	source = libXDGdirs::https://github.com/Jorengarenar/libXDGdirs/archive/v1.1.0.tar.gz
-	sha256sums = 0f399f6a1ddb56484d1bad6bfb7c4d27b39ed7cfc284d8bf2b6b67032bb5210e
+	source = libXDGdirs::https://github.com/Jorengarenar/libXDGdirs/archive/v1.1.1.tar.gz
+	sha256sums = 6e0a18ed33f855f85658ba66ee47a29f796ab20175b736b1f1409cd5e801b8f1
 
 pkgname = libxdgdirs
