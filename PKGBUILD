@@ -12,11 +12,13 @@ arch=('i686' 'x86_64')
 url="https://github.com/phiresky/ripgrep-all"
 license=('AGPL3')
 makedepends=('cargo' 'git')
+checkdepends=('poppler')
 optdepends=('ffmpeg' 'pandoc' 'poppler' 'tesseract' 'imagemagick')
 depends=('ripgrep' 'xz')
 conflicts=('ripgrep-all' 'ripgrep-all-bin')
 source=("$_pkgname::git+https://github.com/phiresky/ripgrep-all")
 sha1sums=('SKIP')
+options=(!lto)
 
 pkgver() {
 	cd "$_pkgname"
