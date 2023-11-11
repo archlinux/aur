@@ -3,7 +3,7 @@ pkgname=vencord-desktop
 _pkgname=Vesktop
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -19,15 +19,19 @@ optdepends=(
 provides=("vencord")
 conflicts=("vencord")
 
-source=($url/archive/refs/tags/v$pkgver.tar.gz vencord-desktop.desktop vencord-desktop.sh use_system_electron.diff)
+source=($url/archive/refs/tags/v$pkgver.tar.gz vencord-desktop.desktop vencord-desktop.sh)
 
 sha256sums=(50b527efe2cd4c329acc3d5209bd82fd7765504fb0241cad327b0d9bc5e2d084
             'SKIP'
-            b1c9ce99ba545b0baaba0eb63e5bb7a2f88cf335f66d775f32fa139ce6b479ab
-            6c0f1977fb304fb70a53625d99aa1dd6859597fb932e100c0021fd933cdd4616)
+            b1c9ce99ba545b0baaba0eb63e5bb7a2f88cf335f66d775f32fa139ce6b479ab)
 
 prepare() {
-    patch "$srcdir/$_pkgname-$pkgver/package.json" < use_system_electron.diff
+    #grabbin path for an installed electron
+    #any ideas for a better way of doing this are welcome
+    find /usr/lib -type d -name electron* |\
+    sed 's/\/usr\//        "electronDist": "\/usr\//' |\
+    sed 's/$/",/' |\
+    sed -i '72e cat /dev/stdin' "$srcdir/$_pkgname-$pkgver/package.json"
 }
 
 build() {
