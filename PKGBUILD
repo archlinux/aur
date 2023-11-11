@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 pkgname=journey-git
 pkgver=0.1.9.r53.g4ea1480
-pkgrel=1
+pkgrel=2
 pkgdesc='Ghost-compatible blogging platform written in golang'
 url='https://kabukky.github.io/journey/'
 
@@ -64,8 +64,8 @@ package() {
   install -Dm755 journey ${pkgdir}/opt/journey/journey
   install -Dm644 config.json ${pkgdir}/opt/journey/config.json
   install -Dm644 ${srcdir}/journey.service ${pkgdir}/usr/lib/systemd/system/journey.service
-  # Licence
-  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licences/${pkgname}/LICENSE.md
+  # License
+  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
   # Private files for journey's Admin area and the persistant data for the blog
   cp -ar built-in ${pkgdir}/opt/journey/
   cp -ar content ${pkgdir}/opt/journey/

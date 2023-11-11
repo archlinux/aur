@@ -3,7 +3,7 @@
 pkgbase = journey-git
 	pkgdesc = Ghost-compatible blogging platform written in golang
 	pkgver = 0.1.9.r53.g4ea1480
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kabukky.github.io/journey/
 	install = journey.install
 	arch = i686
