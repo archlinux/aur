@@ -1,6 +1,6 @@
 pkgbase = hoyo-glyphs
 	pkgdesc = Constructed scripts by HoYoverse 米哈游的架空文字
-	pkgver = star_rail_1.000
+	pkgver = teyvat_black_1.003
 	pkgrel = 1
 	url = https://github.com/SpeedyOrc-C/Hoyo-Glyphs
 	arch = any
