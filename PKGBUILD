@@ -3,21 +3,45 @@
 _pkgname="betterdiscord-installer"
 pkgname="$_pkgname-bin"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A simple standalone program which automates the installation, removal and maintenance of BetterDiscord."
 arch=('x86_64')
-url="https://github.com/BetterDiscord/Installer"
-# url="https://betterdiscord.app/"
+# url="https://github.com/BetterDiscord/Installer"
+url="https://betterdiscord.app/"
 license=('MIT')
 
-depends=("nss" "gtk3" "libxss")
+depends=("alsa-lib"
+	"at-spi2-core"
+	"sh"
+	"cairo"
+	"dbus"
+	"expat"
+	"gcc-libs"
+	"gdk-pixbuf2"
+	"glib2"
+	"glibc"
+	"gtk3"
+	"hicolor-icon-theme"
+	"libcups"
+	"libdrm"
+	"libx11"
+	"libxcb"
+	"libxcomposite"
+	"libxdamage"
+	"libxext"
+	"libxfixes"
+	"libxkbcommon"
+	"libxrandr"
+	"libxshmfence"
+	"mesa"
+	"nspr"
+	"nss"
+	"pango")
 provides=("betterdiscord" "$_pkgname")
 conflicts=("betterdiscord" "$_pkgname")
 replaces=("betterdiscord" "$_pkgname")
-# options=(debug !strip emptydirs zipman)
 options=(strip emptydirs zipman)
-# install="$pkgname.install"
 
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/BetterDiscord/Installer/releases/download/v${pkgver}/BetterDiscord-Linux.AppImage"
 	"LICENSE::https://raw.githubusercontent.com/BetterDiscord/Installer/main/LICENSE"
@@ -32,7 +56,7 @@ prepare() {
 	chmod +x "${pkgname}-${pkgver}.${CARCH}.AppImage"
 
 	# extract .AppImage file
-	"./${pkgname}-${pkgver}.${CARCH}.AppImage" --appimage-extract
+	"./${pkgname}-${pkgver}.${CARCH}.AppImage" --appimage-extract >/dev/null
 }
 
 build() {

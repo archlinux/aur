@@ -1,6 +1,6 @@
 *
 !.gitignore
-!.SRCINFO
+!Makefile
 !PKGBUILD
-!usr--SLASH--bin--SLASH--betterdiscord-installer
-
+!.SRCINFO
+!changelog.md
