@@ -1,8 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-lingua-stem-ru'
-pkgver='0.01'
+pkgver='0.04'
 pkgrel='1'
 pkgdesc="Porter's stemming algorithm for Russian (KOI8-R only)"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Lingua-Stem-Ru'
-source=('http://search.cpan.org/CPAN/authors/id/A/AL/ALGDR/Lingua-Stem-Ru-0.01.tar.gz')
-md5sums=('b7b82495cc9f0b466b1b3cba0fd779a6')
-sha512sums=('871aa32bfaf9c922c1208d82922c617bd21c4586d9f26f1f37d32f4d5250109b4c4ab652fb69c59dee7edb5e5cb3ebb82ed85e86daf600bb863d55842fdfd692')
-_distdir="Lingua-Stem-Ru-0.01"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Lingua-Stem-Ru-0.04.tar.gz')
+md5sums=('5402a0b56336b232250b112f8d0b65f1')
+_distdir="Lingua-Stem-Ru-0.04"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
