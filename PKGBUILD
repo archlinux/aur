@@ -29,7 +29,6 @@ prepare() {
     cp -r $pkgname_provides-$pkgver_provides/* $pkgname-v.$pkgver/
 }
 
-
 # Alistar ficheros en el directorio de instalación.
 package() {
     local -r dirbypass=$pkgname-v.$pkgver/
@@ -37,6 +36,9 @@ package() {
     
     # Cree el directorio de destino y copia en él, el contenido de bypass_utility/.
     rsync -a "$dirbypass/" --mkpath "$pkgdir/opt/$pkgname/"
+
+    # Instalar fichero de licencia.
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Script de ejecución bypass_utility.
     install -Dvm755 <(cat <<'EOF'
