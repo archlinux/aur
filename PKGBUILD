@@ -3,7 +3,7 @@
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
 pkgver=r46
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
 url="http://commanderx16.com/"
