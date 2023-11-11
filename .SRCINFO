@@ -1,6 +1,6 @@
 pkgbase = libccd-git
 	pkgdesc = Library for collision detection between two convex shapes. Git version.
-	pkgver = 2.0.52.g7931e76
+	pkgver = 2.1.0.g7931e76
 	pkgrel = 1
 	url = http://libccd.danfis.cz/
 	arch = i686

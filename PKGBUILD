@@ -2,7 +2,7 @@
 pkgdesc="Library for collision detection between two convex shapes. Git version."
 url='http://libccd.danfis.cz/'
 pkgname=libccd-git
-pkgver=2.0.52.g7931e76
+pkgver=2.1.0.g7931e76
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
