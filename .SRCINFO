@@ -2,7 +2,7 @@ pkgbase = python-rchitect
 	pkgdesc = Minimal R API for Python
 	pkgver = 0.4.4
 	pkgrel = 2
-	url = https://github.com/randy3k/
+	url = https://github.com/randy3k/rchitect
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
@@ -12,7 +12,7 @@ pkgbase = python-rchitect
 	depends = r>3.4.0
 	depends = python-cffi>=1.10.0
 	depends = python-six>=1.9.0
-	source = rchitect-0.4.4.tar.gz::https://github.com/randy3k//archive/refs/tags/v0.4.4.tar.gz
-	sha256sums = 8762b47d8636774582c906891e5b0ec66ca4d48327fb7abf7db7d85d2c137df5
+	source = rchitect-0.4.4.tar.gz::https://github.com/randy3k/rchitect/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = 92104aacc5bc957c6f898d7a2258d4bbc65610d24f073e05724b78941df83484
 
 pkgname = python-rchitect
