@@ -1,15 +1,17 @@
 pkgbase = avisynth-plugin-tcomb-git
 	pkgdesc = Plugin for Avisynth: tcomb (GIT version)
-	pkgver = v2.3.3.ge81be96
+	pkgver = 2.3.3.ge81be96
 	pkgrel = 1
 	url = https://github.com/pinterf/TComb
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-tcomb
 	conflicts = avisynth-plugin-tcomb
+	options = debug
 	source = tcomb::git+https://github.com/pinterf/TComb.git
 	sha256sums = SKIP
 

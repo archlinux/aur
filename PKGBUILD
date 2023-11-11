@@ -9,10 +9,11 @@ arch=('x86_64')
 url='https://github.com/pinterf/TComb'
 license=('GPL')
 depends=('libavisynth.so')
-makedepends=('git'
-             'cmake'
-             'avisynthplus'
-             )
+makedepends=(
+  'git'
+  'cmake'
+  'avisynthplus'
+)
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/pinterf/TComb.git")
