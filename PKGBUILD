@@ -1,14 +1,15 @@
 # Maintainer: Andreas Kurth <archlinux@akurth.net>
 pkgname='verible-git'
 pkgver=0.0.r558.7fbda6835f
-pkgrel=1
+pkgrel=2
 pkgdesc="SystemVerilog parser, style-linter, and formatter"
 arch=('x86_64')
 url="https://github.com/google/${pkgname%-git}"
 license=('Apache')
 depends=('bash')
 makedepends=('bazel'
-             'git')
+             'git'
+             'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
