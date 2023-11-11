@@ -3,7 +3,7 @@
 pkgname=enchant-hspell
 
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="[Meta-PKG] Delete this; use enchant and hspell packages from Arch repository"
 url="https://archlinux.org/packages/?q=enchant"
@@ -13,6 +13,5 @@ license=('LGPL')
 
 package() {
   depends=('enchant' 'hspell')
-  conflicts=('enchant-pure')
   install="${pkgname}.install"
 }
