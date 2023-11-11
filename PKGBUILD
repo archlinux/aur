@@ -1,14 +1,14 @@
 # Maintainer: Daniil T <contact.2imt@mail.ru>
 pkgname="polycat"
 pkgver="1.2.0"
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Runcat module for Polybar"
 arch=("x86_64")
 url="https://github.com/2IMT/polycat.git"
 license=("MIT")
 groups=()
-depends=()
+depends=("glibc" "gcc-libs")
 makedepends=("cmake" "clang" "git")
 checkdepends=()
 optdepends=()
@@ -43,9 +43,9 @@ build() {
 package() {
     cd $pkgname
 
-    install -DTm755 "$pkgname" "$pkgdir/usr/bin/polycat"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/polycat"
 
-    chmod 644 "res/$pkgname.ttf"
-    mkdir -p "$pkgdir/usr/share/fonts/TTF"
-    cp "res/$pkgname.ttf" "$pkgdir/usr/share/fonts/TTF/$pkgname.ttf"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -Dm644 "res/$pkgname.ttf" "$pkgdir/usr/share/fonts/TTF/$pkgname.ttf"
 }
