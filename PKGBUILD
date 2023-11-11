@@ -14,7 +14,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 : ${BITMAP_BACKEND:=imagemagick} # select imagemagick implementation {imagemagick,graphicsmagick}
 
 pkgname=inkscape-git
-pkgver=1.3.alpha.r352.g5cf271997e
+pkgver=1.3.alpha.r801.g48e55ddda1
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
