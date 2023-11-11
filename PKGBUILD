@@ -1,7 +1,7 @@
 # Maintainer: Yvaniak <ewen at philippot dot biz>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 pkgname=zsxd-git
-pkgver=792.c585a38
+pkgver=785.823b6a1
 pkgrel=1
 epoch=
 pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname"::'git+https://gitlab.com/solarus-games/games/zsxd.git')
+source=("$pkgname"::'git+https://gitlab.com/solarus-games/games/zsxd.git#branch=master')
 noextract=()
 md5sums=('SKIP')
 
