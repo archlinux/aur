@@ -2,7 +2,7 @@
 
 pkgname="ytdl-shim"
 pkgver=2023.10.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Provide both youtube-dl command and python imports using yt-dlp'
 arch=('any')
 license=('Unlicense')
@@ -22,7 +22,7 @@ sha256sums=(
 )
 
 pkgver() {
-  pacman -Si yt-dlp | sed -nE 's@^Version\s+: (.*)-.*$@\1@p'
+  LANG=C LC_ALL=C pacman -Si yt-dlp | sed -nE 's@^Version\s+: (.*)-.*$@\1@p'
 }
 
 package() {
