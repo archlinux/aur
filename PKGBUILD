@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libdvd-audio-git
-pkgver=v1.0.0.3.gc74bdfc
+pkgver=1.0.0.3.gc74bdfc
 pkgrel=1
 pkgdesc="A C library for extracting audio from DVD-Audio discs. (GIT version)"
 arch=('x86_64')
@@ -13,10 +13,11 @@ provides=('libdvd-audio')
 conflicts=('libdvd-audio')
 source=('git+https://github.com/tuffy/libdvd-audio.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd libdvd-audio
-  echo "$(git describe --always | tr - .)"
+  echo "$(git describe --always | tr - . | tr -d v)"
 }
 
 build() {
@@ -27,5 +28,11 @@ build() {
 package() {
   cd libdvd-audio
   install -d ${pkgdir}/usr/{include,bin,lib{,/pkgconfig}}
-  make BIN_DIR=${pkgdir}/usr/bin LIB_DIR=${pkgdir}/usr/lib INCLUDE_DIR=${pkgdir}/usr/include LIB_DIR=${pkgdir}/usr/lib PKG_CONFIG_DIR=${pkgdir}/usr/lib/pkgconfig install
+  make \
+    BIN_DIR="${pkgdir}/usr/bin" \
+    LIB_DIR="${pkgdir}/usr/lib" \
+    INCLUDE_DIR="${pkgdir}/usr/include" \
+    LIB_DIR="${pkgdir}/usr/lib" \
+    PKG_CONFIG_DIR="${pkgdir}/usr/lib/pkgconfig" \
+    install
 }
