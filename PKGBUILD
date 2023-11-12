@@ -9,7 +9,7 @@ conflicts=('foliate')
 provides=('foliate')
 pkgdesc='Version 2 of Foliate: A simple and modern GTK eBook reader'
 arch=(x86_64)
-url="https://johnfactotum.github.io/$pkgname/"
+url="https://johnfactotum.github.io/foliate/"
 license=(GPL3)
 depends=(gjs
          iso-codes
