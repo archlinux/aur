@@ -1,7 +1,7 @@
 pkgbase = clangd-opt
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
 	pkgver = 17.0.0.r19.g4b414e52ac10
-	pkgrel = 25
+	pkgrel = 26
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -42,7 +42,7 @@ pkgbase = clangd-opt
 	sha256sums = 614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94
 	sha256sums = 7986bd75f1036c1895cd5b9c167d5a321e36fd2d7716ce5f6eeb5ffac34ca0a0
 	sha256sums = 9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7
-	sha256sums = 387a684eefb5605b166a33f9aa71745b3793444029b6ba965598004b343dbf44
+	sha256sums = faf5c8b2a5a345be59c33f5de591f39dd35b1a2b97ca067e21023e311610bc0d
 	sha256sums = d048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc
 	sha256sums = 6bc5825c0ba9b6463dcf311346ae4ac9db122f66a4cd47b07f67845d125953b2
 	sha256sums = f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb

@@ -157,10 +157,10 @@ index a41660225142..d8fec3b9eded 100644
    /// The AST is only valid for the duration of the callback.
 diff --git a/clang-tools-extra/clangd/CodeLens.cpp b/clang-tools-extra/clangd/CodeLens.cpp
 new file mode 100644
-index 000000000000..4a7d08164f79
+index 000000000000..bf788e765416
 --- /dev/null
 +++ b/clang-tools-extra/clangd/CodeLens.cpp
-@@ -0,0 +1,167 @@
+@@ -0,0 +1,175 @@
 +//===--- CodeLens.cpp --------------------------------------------*- C++-*-===//
 +//
 +// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
@@ -267,7 +267,7 @@ index 000000000000..4a7d08164f79
 +    Super.uri = std::string(Path);
 +    Command Cmd;
 +    Cmd.command = std::string(CodeAction::SHOW_REFERENCES);
-+    Cmd.title = std::to_string(Count) + " base(s)";
++    Cmd.title = llvm::utostr(Count) + " base(s)";
 +    Cmd.argument = std::move(Super);
 +    Results.emplace_back(CodeLens{Range, std::move(Cmd), std::nullopt});
 +  }
@@ -277,7 +277,7 @@ index 000000000000..4a7d08164f79
 +    Sub.uri = std::string(Path);
 +    Command Cmd;
 +    Cmd.command = std::string(CodeAction::SHOW_REFERENCES);
-+    Cmd.title = std::to_string(Count) + " derived";
++    Cmd.title = llvm::utostr(Count) + " derived";
 +    Cmd.argument = std::move(Sub);
 +    Results.emplace_back(CodeLens{Range, std::move(Cmd), std::nullopt});
 +  }
@@ -314,13 +314,21 @@ index 000000000000..4a7d08164f79
 +    CodeLensArgument Arg;
 +    Arg.uri = std::string(Path);
 +    Arg.position = Pos;
-+    auto Refs = findReferences(AST, Pos, Limit, Index).References;
++    auto FindedRefs = findReferences(AST, Pos, Limit, Index);
++    auto Refs = FindedRefs.References;
 +    Arg.locations.reserve(Refs.size());
++    bool ThisLocSkipped = false;
 +    for (auto &Ref : Refs) {
++      if (!ThisLocSkipped && Ref.Loc.range.contains(Pos)) {
++        ThisLocSkipped = true;
++        continue;
++      }
 +      Arg.locations.emplace_back(std::move(Ref.Loc));
 +    }
-+    auto NumRefs = Refs.empty() ? 0 : Refs.size() - 1;
-+    Cmd.title = std::to_string(NumRefs) + " ref(s)";
++    auto NumRefs = llvm::utostr(Arg.locations.size());
++    if (FindedRefs.HasMore)
++      NumRefs += "+";
++    Cmd.title = NumRefs + " ref(s)";
 +    Cmd.argument = std::move(Arg);
 +    return CodeLens{Params.range, std::move(Cmd), std::nullopt};
 +  }
