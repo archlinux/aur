@@ -6,8 +6,8 @@ pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('x86_64')
 url="https://github.com/badabing2005/PixelFlasher"
 license=('GPL3')
-depends=('glibc' 'hicolor-icon-theme' 'python-bsdiff4' 'python-pyperclip'
-         'python-lz4' 'python-psutil' 'zlib')
+depends=('glibc' 'hicolor-icon-theme' 'python-bsdiff4' 'python-lz4' 'python-psutil'
+         'python-pyperclip' 'zlib')
 makedepends=('pyinstaller' 'python-darkdetect' 'python-httplib2' 'python-markdown'
              'python-protobuf' 'python-requests' 'python-six' 'python-wxpython')
 optdepends=('android-tools' 'scrcpy')
