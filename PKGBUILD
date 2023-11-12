@@ -18,11 +18,11 @@
 
 _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
-_pkgver=v120.0.6096.0-r1216665-linux64-deb-avx2
+_pkgver=v121.0.6122.0-r1223324-linux64-deb-avx2
 
 pkgname=${_pkgname}-avx2-bin
-pkgver=120.0.6096.0
-pkgrel=2
+pkgver=121.0.6122.0
+pkgrel=1
 pkgdesc="The Chromium web browser built with the open source Clang compiler, LLD linker and Widevine (AVX2 build) (Unstable Channel)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -44,7 +44,7 @@ options=('!emptydirs' '!strip')
 install=${_pkgname}.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
         "${_pkgname}.sh")
-sha1sums=('5bfc770bb9b1f8b045b8838dd287919ff019019a'
+sha1sums=('5a4b7312edb14663d4e0f81ab07a5aab1bf87de6'
           '110f8db7e3809d0be8b6aadd36b805016b657c40')
 
 package() {
