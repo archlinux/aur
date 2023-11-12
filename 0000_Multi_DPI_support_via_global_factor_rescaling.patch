@@ -483,7 +483,7 @@ diff --git a/hw/xwayland/xwayland-screen.c b/hw/xwayland/xwayland-screen.c
 index 88192bbde..1090b6fca 100644
 --- a/hw/xwayland/xwayland-screen.c
 +++ b/hw/xwayland/xwayland-screen.c
-@@ -42,6 +42,8 @@
+@@ -42,10 +42,13 @@
  #include <propertyst.h>
  #include <inputstr.h>
  #include <xserver_poll.h>
@@ -492,6 +492,11 @@ index 88192bbde..1090b6fca 100644
  
  #include "xwayland-cursor.h"
  #include "xwayland-screen.h"
+ #include "xwayland-window.h"
++#include "xwayland-window-buffers.h"
+ #include "xwayland-input.h"
+ #include "xwayland-output.h"
+ #include "xwayland-pixmap.h"
 @@ -142,6 +144,55 @@ xwl_screen_get_fixed_or_first_output(struct xwl_screen *xwl_screen)
      return xwl_screen_get_first_output(xwl_screen);
  }
@@ -634,14 +639,6 @@ diff --git a/hw/xwayland/xwayland-screen.c b/hw/xwayland/xwayland-screen.c
 index 1090b6fca..ffaeaae1a 100644
 --- a/hw/xwayland/xwayland-screen.c
 +++ b/hw/xwayland/xwayland-screen.c
-@@ -53,6 +53,7 @@
- #include "xwayland-pixmap.h"
- #include "xwayland-present.h"
- #include "xwayland-shm.h"
-+#include "xwayland-window-buffers.h"
- 
- #ifdef MITSHM
- #include "shmint.h"
 @@ -773,12 +774,23 @@ void
  xwl_screen_set_global_scale(struct xwl_screen *xwl_screen, int32_t scale)
  {

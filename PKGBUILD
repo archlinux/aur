@@ -5,7 +5,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-xprop-git
-pkgver=22.1.8.r260.gf490622fc
+pkgver=22.1.9.r400.g8252b110f
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -13,19 +13,20 @@ url="https://xorg.freedesktop.org"
 pkgdesc="run X clients under wayland, with !733 HiDPI patch"
 depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
          'pixman' 'xorg-server-common' 'libxcvt')
-makedepends=('meson' 'xorgproto-git' 'xtrans' 'libxkbfile' 'dbus'
+makedepends=('git' 'meson' 'xorgproto-git' 'xtrans' 'libxkbfile' 'dbus'
              'xorg-font-util'
              'wayland' 'wayland-protocols'
              'libdrm' 'mesa-libgl'
              'systemd'
              'egl-wayland'
 )
-source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
-        0000_Multi_DPI_support_via_global_factor_rescaling.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733.patch
+# Original patch from: https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733.patch
+source=(git+https://anongit.freedesktop.org/git/xorg/xserver
+        0000_Multi_DPI_support_via_global_factor_rescaling.patch
         0001_Remove_scale_atom_access_control.patch
         0002_Add_unscaled_output_mode.patch)
 sha512sums=('SKIP'
-            'ab927b1e038346f967723a3d45a405a0a8339759e15901d0913a55d1348683831e0d058c76c6f7cb2e264a5cef781a507fb290d139ac0f2806a62bd20d84147d'
+            'c5011b89ea9419fe756fca403f2b7c23cf9a680fdf751dff97b5a076efd5997b0b63b777a1b542ab5c6300f4f553f7e5c264d998e7d53d568e93fc88fa8ff854'
             'f16cb5455a1caf26c586cca2d1ec6f4708804721b7d6a8d8bd1e4a7b47b97e8b822d3455fce0da3c74bb14baf6a3980574d85019cf242d6a033a578587f74b14'
             '4c601d3ab5eb97d49a5bd400a6984b93b9f1f684078825a23aacbc857509cc8a11caf700bd4ba0f8320b84e9257a18db1f3d24f17907a4108d555aee02bcb71a')
 provides=('xorg-server-xwayland' 'xorg-xwayland')
