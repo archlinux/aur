@@ -1,7 +1,7 @@
 pkgbase = python-clawpack
 	pkgdesc = Finite volume methods for hyperbolic conservation laws
 	pkgver = 5.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.clawpack.org
 	arch = x86_64
 	license = custom:BSD-3-clause
@@ -22,6 +22,7 @@ pkgbase = python-clawpack
 	source = github.com-clawpack-amrclaw::git+https://github.com/clawpack/amrclaw.git#commit=4b50c2661a955639e634102fe80c38f77883aebc
 	source = github.com-clawpack-geoclaw::git+https://github.com/clawpack/geoclaw.git#commit=222676970c6f12fefcc3a715eda7ac00b3c22b89
 	source = github.com-clawpack-classic::git+https://github.com/clawpack/classic.git#commit=a27a4951a42f392cd8d1b36ed296b84f53e888e8
+	source = conversion.patch::https://github.com/clawpack/clawutil/pull/161.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -30,5 +31,6 @@ pkgbase = python-clawpack
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = b072463ba2ad16af04f9e14178f51e83981b5d27dde349170cab191a9f110e01456be2b71a80b9dc5bbee69f7dd9795ea76cb503d624f18fab664861fa2a0f74
 
 pkgname = python-clawpack
