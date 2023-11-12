@@ -2,7 +2,7 @@
 
 pkgname=iptvnator
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more"
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
@@ -52,11 +52,9 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir"/opt/IPTVnator
-	mkdir -p "$pkgdir"/usr/share
-	mkdir -p "$pkgdir"/usr/bin
+	install -d "$pkgdir"/opt/IPTVnator "$pkgdir"/usr/share "$pkgdir"/usr/bin
 	# Install application
-	cp -av --no-preserve=ownership $pkgname-$pkgver/release/pacman/opt/IPTVnator/* "$pkgdir"/opt/IPTVnator
+	cp -av --no-preserve=ownership $pkgname-$pkgver/release/pacman/opt/IPTVnator "$pkgdir"/opt
 	ln -sf /opt/IPTVnator/$pkgname "$pkgdir"/usr/bin/$pkgname
 	# Install icons
 	cp -av --no-preserve=ownership $pkgname-$pkgver/release/pacman/usr/share/icons "$pkgdir"/usr/share
