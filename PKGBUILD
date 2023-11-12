@@ -23,7 +23,7 @@ optdepends=('dictd: Offline dictionary support'
             'gspell: Spell-checking support'
             'hyphen: Auto-hyphenation support'
             'tracker3')
-_archive="$pkgname-$pkgver"
+_archive="foliate-$pkgver"
 source=("https://github.com/johnfactotum/foliate/archive/$pkgver/$_archive.tar.gz")
 sha256sums=("4a4381bff6e398f6734e1695da23f1c593ba2a67e463e07021a089ffd0741776")
 

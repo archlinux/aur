@@ -19,7 +19,7 @@ pkgbase = foliate-2
 	optdepends = tracker3
 	provides = foliate
 	conflicts = foliate
-	source = https://github.com/johnfactotum/foliate/archive/2.6.4/foliate-2-2.6.4.tar.gz
+	source = https://github.com/johnfactotum/foliate/archive/2.6.4/foliate-2.6.4.tar.gz
 	sha256sums = 4a4381bff6e398f6734e1695da23f1c593ba2a67e463e07021a089ffd0741776
 
 pkgname = foliate-2
