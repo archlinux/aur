@@ -7,7 +7,7 @@ pkgdesc="Tray application to reboot into different OSes or UEFI/BIOS"
 arch=('any')
 url="https://github.com/mendhak/grub-reboot-picker"
 license=('MIT')
-depends=('python-gobject' 'python-cairo' 'libappindicator-gtk3' 'grub' 'polkit')
+depends=('grub' 'libappindicator-gtk3' 'polkit' 'python-cairo' 'python-gobject')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'setup.patch')
@@ -16,8 +16,11 @@ sha256sums=('9a18eb1696f98f36d3e1887dc08f19634afc1409844edaaba6b0a80f86d8a2e9'
 
 prepare() {
   cd "$pkgname-$pkgver"
+
+  # We don't need stdeb
   patch --verbose -p0 < "$srcdir/setup.patch"
 
+  # Adjust icon & change sbin to bin
   for f in "${_app_id}.desktop" "${_app_id}.policy"; do
     sed -i 's/un-reboot/system-reboot-symbolic/g' "${f}"
     sed -i 's/sbin/bin/g' "${f}"
