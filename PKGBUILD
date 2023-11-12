@@ -4,6 +4,8 @@
 # Contributor: Ronald van Haren <ronald [at] archlinux [dot] org>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
+# Argon2 patch made by: Patrick Steinhardt <ps [at] pks [dot] im>
+
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
 # _ia32_efi_in_arch_x64="1"
 
@@ -20,9 +22,9 @@ _build_platforms="x86_64-efi"
 
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
-pkgver=2.06.r499.ge67a551a4
+pkgver=2.12.rc1.r68.g64e3cee72
 pkgrel=1
-pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
+pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 support. Patch made by Patrick Steinhardt"
 arch=('x86_64')
 url="https://www.gnu.org/software/grub/"
 license=('GPL3' 'CC0')
