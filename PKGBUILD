@@ -1,161 +1,420 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer:
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
-pkgname=telegram-desktop-git
-pkgver=4.4.1.r107.g690e1013c
-pkgrel=2
+
+_pkgname="telegram-desktop"
+pkgname="$_pkgname-git"
+pkgver=4.11.6.r5.g468d4c5e4
+pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 arch=('x86_64')
-url="https://desktop.telegram.org/"
+url="https://github.com/telegramdesktop/tdesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm-2.68'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-         'openssl-1.1' 'protobuf')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt-git')
-optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration')
-provides=("telegram-desktop")
-conflicts=("telegram-desktop")
-## source array generated from:
-# python -c 'import configparser, os.path; c=configparser.ConfigParser();c.read(".gitmodules"); print("\n".join(f"\t\"telegram-desktop-{path}::git+{u}\"" for s in c.sections() if (url:=c[s]["url"], path:=os.path.basename(c[s]["path"]), u:= url if url.endswith(".git") else url+".git")))'
-source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev"
-        "telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
-        "telegram-desktop-GSL::git+https://github.com/Microsoft/GSL.git"
-        "telegram-desktop-xxHash::git+https://github.com/Cyan4973/xxHash.git"
-        "telegram-desktop-rlottie::git+https://github.com/desktop-app/rlottie.git"
-        "telegram-desktop-lz4::git+https://github.com/lz4/lz4.git"
-        "telegram-desktop-lib_crl::git+https://github.com/desktop-app/lib_crl.git"
-        "telegram-desktop-lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
-        "telegram-desktop-lib_base::git+https://github.com/desktop-app/lib_base.git"
-        "telegram-desktop-codegen::git+https://github.com/desktop-app/codegen.git"
-        "telegram-desktop-lib_ui::git+https://github.com/desktop-app/lib_ui.git"
-        "telegram-desktop-lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
-        "telegram-desktop-lib_tl::git+https://github.com/desktop-app/lib_tl.git"
-        "telegram-desktop-lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck.git"
-        "telegram-desktop-lib_storage::git+https://github.com/desktop-app/lib_storage.git"
-        "telegram-desktop-cmake::git+https://github.com/desktop-app/cmake_helpers.git"
-        "telegram-desktop-expected::git+https://github.com/TartanLlama/expected.git"
-        "telegram-desktop-QR::git+https://github.com/nayuki/QR-Code-generator.git"
-        "telegram-desktop-lib_qr::git+https://github.com/desktop-app/lib_qr.git"
-        "telegram-desktop-hunspell::git+https://github.com/hunspell/hunspell.git"
-        "telegram-desktop-range-v3::git+https://github.com/ericniebler/range-v3.git"
-        "telegram-desktop-fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git"
-        "telegram-desktop-nimf::git+https://github.com/hamonikr/nimf.git"
-        "telegram-desktop-hime::git+https://github.com/hime-ime/hime.git"
-        "telegram-desktop-fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
-        "telegram-desktop-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
-        "telegram-desktop-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
-        "telegram-desktop-lib_webview::git+https://github.com/desktop-app/lib_webview.git"
-        "telegram-desktop-jemalloc::git+https://github.com/jemalloc/jemalloc.git"
-        "telegram-desktop-dispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git"
-        "telegram-desktop-plasma-wayland-protocols::git+https://github.com/KDE/plasma-wayland-protocols.git"
-        "telegram-desktop-wayland-protocols::git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git"
-        "telegram-desktop-kimageformats::git+https://github.com/KDE/kimageformats.git"
-        "telegram-desktop-kcoreaddons::git+https://github.com/KDE/kcoreaddons.git"
-        "telegram-desktop-cld3::git+https://github.com/google/cld3.git"
+
+depends=(
+  'abseil-cpp'
+  'ffmpeg'
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'glibmm-2.68'
+  'hicolor-icon-theme'
+  'hunspell'
+  'jemalloc'
+  'libdispatch'
+  'libjpeg-turbo'
+  'libpipewire'
+  'libsigc++-3.0'
+  'libvpx'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxrandr'
+  'libxtst'
+  'lz4'
+  'minizip'
+  'openal'
+  'openh264'
+  'openssl'
+  'opus'
+  'protobuf'
+  'qt6-svg'
+  'qt6-wayland'
+  'rnnoise'
+  'wayland'
+  'xcb-util-keysyms'
+  'xxhash'
+  'zlib'
+
+  'qt6-imageformats'
+  'ttf-opensans'
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-pkgver() {
-    cd "$srcdir/tdesktop"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+makedepends=(
+  'cmake'
+  'extra-cmake-modules'
+  'git'
+  'meson'
+  'microsoft-gsl'
+  'ninja'
+  'pipewire'
+  'plasma-wayland-protocols'
+  'python'
+  'range-v3'
+  'tl-expected'
+  'unzip'
+  'wayland-protocols'
+  'webkit2gtk'
+  'yasm'
+
+  'boost'
+  'fmt'
+  'gobject-introspection'
+  'mm-common'
+  'perl-xml-parser'
+
+  'libepoxy'
+  'libva'
+  'unzip'
+)
+optdepends=(
+  'webkit2gtk: embedded browser features'
+  'xdg-desktop-portal: desktop integration'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+_pkgsrc_tgowt="telegram-tg_owt"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+
+  "$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git"
+  "https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/101.patch"
+  "tg_owt-fix.patch"
+)
+sha256sums=(
+  'SKIP'
+
+  'SKIP'
+  'f4d26c1048a7fd1ac3419042009c3b52c001458e44309a765d42d7df9f45f1ef'
+  '8d3a1c4b2e40eef7a4cc8e6f498c416af47a91b878ec3762b51476e89695cb13'
+)
+
+_source_telegram_desktop() {
+  source+=(
+    'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'
+    'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
+    'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
+    'desktop-app.codegen'::'git+https://github.com/desktop-app/codegen.git'
+    'desktop-app.gsl'::'git+https://github.com/desktop-app/GSL.git'
+    'desktop-app.lib_base'::'git+https://github.com/desktop-app/lib_base.git'
+    'desktop-app.lib_crl'::'git+https://github.com/desktop-app/lib_crl.git'
+    'desktop-app.lib_lottie'::'git+https://github.com/desktop-app/lib_lottie.git'
+    'desktop-app.lib_qr'::'git+https://github.com/desktop-app/lib_qr.git'
+    'desktop-app.lib_rpl'::'git+https://github.com/desktop-app/lib_rpl.git'
+    'desktop-app.lib_spellcheck'::'git+https://github.com/desktop-app/lib_spellcheck.git'
+    'desktop-app.lib_storage'::'git+https://github.com/desktop-app/lib_storage.git'
+    'desktop-app.lib_tl'::'git+https://github.com/desktop-app/lib_tl.git'
+    'desktop-app.lib_ui'::'git+https://github.com/desktop-app/lib_ui.git'
+    'desktop-app.lib_webrtc'::'git+https://github.com/desktop-app/lib_webrtc.git'
+    'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'
+    'desktop-app.libprisma'::'git+https://github.com/desktop-app/libprisma.git'
+    'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'
+    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
+    'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
+    'gitlab-freedesktop-mirrors.wayland'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland.git'
+    'gitlab-freedesktop-mirrors.wayland-protocols'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git'
+    'google.cld3'::'git+https://github.com/google/cld3.git'
+    'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'
+    'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'
+    'hunspell'::'git+https://github.com/hunspell/hunspell.git'
+    'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'
+    'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
+    'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
+    'kde.plasma-wayland-protocols'::'git+https://github.com/KDE/plasma-wayland-protocols.git'
+    'lz4'::'git+https://github.com/lz4/lz4.git'
+    'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'
+    'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'
+    'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'
+    'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_telegram_desktop() (
+    cd "${srcdir:?}/$_pkgsrc"
+    local -A _submodules=(
+      ['apple.swift-corelibs-libdispatch']='Telegram/ThirdParty/dispatch'
+      ['cyan4973.xxhash']='Telegram/ThirdParty/xxHash'
+      ['desktop-app.cmake_helpers']='cmake'
+      ['desktop-app.codegen']='Telegram/codegen'
+      ['desktop-app.gsl']='Telegram/ThirdParty/GSL'
+      ['desktop-app.lib_base']='Telegram/lib_base'
+      ['desktop-app.lib_crl']='Telegram/lib_crl'
+      ['desktop-app.lib_lottie']='Telegram/lib_lottie'
+      ['desktop-app.lib_qr']='Telegram/lib_qr'
+      ['desktop-app.lib_rpl']='Telegram/lib_rpl'
+      ['desktop-app.lib_spellcheck']='Telegram/lib_spellcheck'
+      ['desktop-app.lib_storage']='Telegram/lib_storage'
+      ['desktop-app.lib_tl']='Telegram/lib_tl'
+      ['desktop-app.lib_ui']='Telegram/lib_ui'
+      ['desktop-app.lib_webrtc']='Telegram/lib_webrtc'
+      ['desktop-app.lib_webview']='Telegram/lib_webview'
+      ['desktop-app.libprisma']='Telegram/ThirdParty/libprisma'
+      ['desktop-app.rlottie']='Telegram/ThirdParty/rlottie'
+      ['ericniebler.range-v3']='Telegram/ThirdParty/range-v3'
+      ['fcitx.fcitx5-qt']='Telegram/ThirdParty/fcitx5-qt'
+      ['gitlab-freedesktop-mirrors.wayland']='Telegram/ThirdParty/wayland'
+      ['gitlab-freedesktop-mirrors.wayland-protocols']='Telegram/ThirdParty/wayland-protocols'
+      ['google.cld3']='Telegram/ThirdParty/cld3'
+      ['hamonikr.nimf']='Telegram/ThirdParty/nimf'
+      ['hime-ime.hime']='Telegram/ThirdParty/hime'
+      ['hunspell']='Telegram/ThirdParty/hunspell'
+      ['jemalloc']='Telegram/ThirdParty/jemalloc'
+      ['kde.kcoreaddons']='Telegram/ThirdParty/kcoreaddons'
+      ['kde.kimageformats']='Telegram/ThirdParty/kimageformats'
+      ['kde.plasma-wayland-protocols']='Telegram/ThirdParty/plasma-wayland-protocols'
+      ['lz4']='Telegram/ThirdParty/lz4'
+      ['nayuki.qr-code-generator']='Telegram/ThirdParty/QR'
+      ['tartanllama.expected']='Telegram/ThirdParty/expected'
+      ['telegramdesktop.libtgvoip']='Telegram/ThirdParty/libtgvoip'
+      ['telegrammessenger.tgcalls']='Telegram/ThirdParty/tgcalls'
+    )
+    _submodule_update
+  )
 }
+
+_source_desktop_app_tg_owt() {
+  source+=(
+    'abseil.abseil-cpp'::'git+https://github.com/abseil/abseil-cpp.git'
+    'chromiumsrc.libyuv'::'git+https://gitlab.com/chromiumsrc/libyuv.git'
+    'cisco.libsrtp'::'git+https://github.com/cisco/libsrtp.git'
+    'google.crc32c'::'git+https://github.com/google/crc32c.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_desktop_app_tg_owt() (
+    cd "${srcdir:?}/$_pkgsrc_tgowt"
+    local -A _submodules=(
+      ['abseil.abseil-cpp']='src/third_party/abseil-cpp'
+      ['chromiumsrc.libyuv']='src/third_party/libyuv'
+      ['cisco.libsrtp']='src/third_party/libsrtp'
+      ['google.crc32c']='src/third_party/crc32c/src'
+    )
+    _submodule_update
+
+    apply-patch "${srcdir:?}/101.patch"
+    apply-patch "${srcdir:?}/tg_owt-fix.patch"
+  )
+}
+
+_source_ericniebler_range_v3() {
+  source+=(
+    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_ericniebler_range_v3() (
+    cd "${srcdir:?}/$_pkgsrc"
+    cd "Telegram/ThirdParty/range-v3"
+    local -A _submodules=(
+      ['ericniebler.range-v3']='doc/gh-pages'
+    )
+    _submodule_update
+  )
+}
+
+_source_telegramdesktop_libtgvoip() {
+  source+=(
+    'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_telegramdesktop_libtgvoip() (
+    cd "${srcdir:?}/$_pkgsrc"
+    cd "Telegram/ThirdParty/libtgvoip"
+    local -A _submodules=(
+      ['desktop-app.cmake_helpers']='cmake'
+    )
+    _submodule_update
+  )
+}
+
+_source_desktop_app_cmake_helpers() {
+  source+=(
+    'mnauw.cppgir'::'git+https://gitlab.com/mnauw/cppgir.git'
+    'yugr.implib.so'::'git+https://github.com/yugr/Implib.so.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_desktop_app_cmake_helpers() (
+    cd "${srcdir:?}/$_pkgsrc"
+    cd "cmake"
+    local -A _submodules=(
+      ['mnauw.cppgir']='external/glib/cppgir'
+      ['yugr.implib.so']='external/Implib.so'
+    )
+    _submodule_update
+  )
+}
+
+_source_mnauw_cppgir() {
+  source+=(
+    'martinmoene.expected-lite'::'git+https://github.com/martinmoene/expected-lite.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_mnauw_cppgir() (
+    cd "${srcdir:?}/$_pkgsrc"
+    cd "cmake"
+    cd "external/glib/cppgir"
+    local -A _submodules=(
+      ['martinmoene.expected-lite']='expected-lite'
+    )
+    _submodule_update
+  )
+}
+
+_source_telegram_desktop
+_source_ericniebler_range_v3
+_source_telegramdesktop_libtgvoip
+
+_source_desktop_app_cmake_helpers
+_source_mnauw_cppgir
+
+_source_desktop_app_tg_owt
 
 prepare() {
-    cd "$srcdir/tdesktop"
-    ## git config generated by
-    # python -c 'import configparser, os.path; c=configparser.ConfigParser();c.read(".gitmodules"); print("\n".join(f"    git config submodule.{path}.url \"$srcdir/telegram-desktop-{p}\"" for s in c.sections() if (url:=c[s]["url"], path:=c[s]["path"], p:=os.path.basename(path))))'
-    git submodule init
-    git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/telegram-desktop-libtgvoip"
-    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/telegram-desktop-GSL"
-    git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/telegram-desktop-xxHash"
-    git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/telegram-desktop-rlottie"
-    git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/telegram-desktop-lz4"
-    git config submodule.Telegram/lib_crl.url "$srcdir/telegram-desktop-lib_crl"
-    git config submodule.Telegram/lib_rpl.url "$srcdir/telegram-desktop-lib_rpl"
-    git config submodule.Telegram/lib_base.url "$srcdir/telegram-desktop-lib_base"
-    git config submodule.Telegram/codegen.url "$srcdir/telegram-desktop-codegen"
-    git config submodule.Telegram/lib_ui.url "$srcdir/telegram-desktop-lib_ui"
-    git config submodule.Telegram/lib_lottie.url "$srcdir/telegram-desktop-lib_lottie"
-    git config submodule.Telegram/lib_tl.url "$srcdir/telegram-desktop-lib_tl"
-    git config submodule.Telegram/lib_spellcheck.url "$srcdir/telegram-desktop-lib_spellcheck"
-    git config submodule.Telegram/lib_storage.url "$srcdir/telegram-desktop-lib_storage"
-    git config submodule.cmake.url "$srcdir/telegram-desktop-cmake"
-    git config submodule.Telegram/ThirdParty/expected.url "$srcdir/telegram-desktop-expected"
-    git config submodule.Telegram/ThirdParty/QR.url "$srcdir/telegram-desktop-QR"
-    git config submodule.Telegram/lib_qr.url "$srcdir/telegram-desktop-lib_qr"
-    git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/telegram-desktop-hunspell"
-    git config submodule.Telegram/ThirdParty/range-v3.url "$srcdir/telegram-desktop-range-v3"
-    git config submodule.Telegram/ThirdParty/fcitx-qt5.url "$srcdir/telegram-desktop-fcitx-qt5"
-    git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/telegram-desktop-nimf"
-    git config submodule.Telegram/ThirdParty/hime.url "$srcdir/telegram-desktop-hime"
-    git config submodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/telegram-desktop-fcitx5-qt"
-    git config submodule.Telegram/lib_webrtc.url "$srcdir/telegram-desktop-lib_webrtc"
-    git config submodule.Telegram/ThirdParty/tgcalls.url "$srcdir/telegram-desktop-tgcalls"
-    git config submodule.Telegram/lib_webview.url "$srcdir/telegram-desktop-lib_webview"
-    git config submodule.Telegram/ThirdParty/jemalloc.url "$srcdir/telegram-desktop-jemalloc"
-    git config submodule.Telegram/ThirdParty/dispatch.url "$srcdir/telegram-desktop-dispatch"
-    git config submodule.Telegram/ThirdParty/plasma-wayland-protocols.url "$srcdir/telegram-desktop-plasma-wayland-protocols"
-    git config submodule.Telegram/ThirdParty/wayland-protocols.url "$srcdir/telegram-desktop-wayland-protocols"
-    git config submodule.Telegram/ThirdParty/kimageformats.url "$srcdir/telegram-desktop-kimageformats"
-    git config submodule.Telegram/ThirdParty/kcoreaddons.url "$srcdir/telegram-desktop-kcoreaddons"
-    git config submodule.Telegram/ThirdParty/cld3.url "$srcdir/telegram-desktop-cld3"
-    git -c protocol.file.allow=always submodule update
+  apply-patch() {
+    printf '\nApplying patch %s\n' "$1"
+    patch -Np1 -F100 -i "$1"
+  }
+
+  _submodule_update() {
+    local key
+    for key in ${!_submodules[@]} ; do
+      git submodule init "${_submodules[${key}]}"
+      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
+      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    done
+  }
+
+  _prepare_telegram_desktop
+  _prepare_ericniebler_range_v3
+  _prepare_telegramdesktop_libtgvoip
+
+  _prepare_desktop_app_cmake_helpers
+  _prepare_mnauw_cppgir
+
+  _prepare_desktop_app_tg_owt
 }
 
-build() {
-    cd "$srcdir/tdesktop"
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
-    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-    # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
-    # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
-    # Thanks @primeos!
-    cmake \
-        -B build \
-        -G Ninja \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DTDESKTOP_API_ID=611335 \
-        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    # Use Qt5 for the time being until kwayland has an easier way to work with Qt6.
-    ninja -C build
+_build_tg_owt() (
+  local _cmake_options=(
+    -B "build-tg_owt"
+    -S "$_pkgsrc_tgowt"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    -DBUILD_SHARED_LIBS=OFF
+    -DTG_OWT_PACKAGED_BUILD=ON
+
+    -DCMAKE_C_FLAGS="${CFLAGS} -ffat-lto-objects"
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -ffat-lto-objects -I/usr/include/libdrm"
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build "build-tg_owt"
+)
+
+_build_telegram() (
+  # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
+  # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
+  # Thanks @primeos!
+
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX="/usr"
+    -Dtg_owt_DIR="${srcdir:?}/build-tg_owt"
+    -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
+    -DTDESKTOP_API_TEST=ON
+    -DTDESKTOP_API_ID=611335
+    -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
+    -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+)
+
+build() {
+  _build_tg_owt
+  _build_telegram
 }
 
 package() {
-    cd "$srcdir/tdesktop"
-    DESTDIR=$pkgdir ninja -C build install
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
