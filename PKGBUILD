@@ -20,7 +20,7 @@ b2sums=('7c81e385a62dbee1326de1004377b5dabc4ed795542e5f09dd3d4a381ae25992a36cae9
 	'SKIP')
 
 pkgver() {
-	cd "$_pkgname" || exit
+	cd "$_pkgname"
 	(
 		set -o pipefail
 		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}" || exit
+	cd "${srcdir}/${_pkgname}"
 	install -Dm755 "files/docker/systemctl3.py" "${pkgdir}/usr/bin/systemctl.py"
 
 	# Install LICENSE file
