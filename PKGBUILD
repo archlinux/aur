@@ -1,7 +1,6 @@
 # Maintainer: Alex Tharp <alex@toastercup.io>
 pkgname=coolvlviewer
-pkgver=1.30.2.19
-_pkgver=130219
+pkgver=1.30.2.36
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (TM) and OpenSim grids. (built from source)"
 url="http://sldev.free.fr"
@@ -23,10 +22,10 @@ makedepends=("cmake" "bison" "flex" "python" "make" "bzip2" "glibc" "libx11" "li
 arch=('x86_64')
 conflicts=('coolvlviewer-bin' 'coolvlviewer-experimental' 'coolvlviewer-experimental-bin')
 install=coolvlviewer.install
-source=("http://sldev.free.fr/sources/CoolVLViewer-src-${_pkgver}.tar.bz2"
+source=("http://sldev.free.fr/sources/CoolVLViewer-src-${pkgver//./}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-sha1sums=('a579bff8fec4aee952660775ecfa8846041fdb1e'
+sha1sums=('eaf48985c801eae7a3b20d3d18654b47625ec548'
           'e08076db600f7dcee78c0f7b861e8e78f16a069d'
           '3ef1284a00a4437e4c34f809311ee0672604ef04')
 
@@ -41,7 +40,7 @@ package() {
     $pkgdir/usr/share/applications/coolvlviewer.desktop
 
   # Install Icon File
-  install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/cvlv_icon.png \
+  install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-${pkgver//./}/cvlv_icon.png \
     $pkgdir/usr/share/pixmaps/clvl_icon.png
 
   # Install Launcher
@@ -49,11 +48,11 @@ package() {
     $pkgdir/usr/bin/coolvlviewer
 
   # Install License
-  install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/licenses.txt \
+  install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-${pkgver//./}/licenses.txt \
     $pkgdir/usr/share/licenses/$pkgname/LISENSE
 
   # Move Data to Destination Directory
-  mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/ $srcdir/coolvlviewer
+  mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-${pkgver//./}/ $srcdir/coolvlviewer
   install -d $pkgdir/opt/
   mv coolvlviewer/ $pkgdir/opt/
 
