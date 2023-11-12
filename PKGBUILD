@@ -2,11 +2,11 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=openvpn
-_pkgver=2.6.2
+_pkgver=2.6.7
 pkgname=${_pkgname}-password-save
-pkgver=2.6.2+35774425
+pkgver=2.6.7+53c90333
 pkgrel=1
-pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
+pkgdesc='OpenVPN with enable-password-save option'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
 license=('custom')
