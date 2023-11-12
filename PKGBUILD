@@ -168,7 +168,7 @@ prepare() {
   # User set. See at the top of this file
   if [ "$use_tracers" = "y" ]; then
     msg2 "Enabling CONFIG_FTRACE only if we are not compiling with clang..."
-    if [ "${_compiler}" = "gcc" ]; then
+    if [ "${_compiler}" = "gcc" ] || [ "${_compiler}q" = "q" ]; then
       scripts/config --enable CONFIG_FTRACE \
                      --enable CONFIG_FUNCTION_TRACER \
                      --enable CONFIG_STACK_TRACER
