@@ -4,7 +4,7 @@
 
 pkgname="odoo"
 pkgver=17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
@@ -16,11 +16,11 @@ depends=("postgresql"
         "python"
         "python-babel"
         "python-chardet"
-        "python-cryptography" # 16
-        "python-dateutil" # 16
+        "python-cryptography"
+        "python-dateutil"
         "python-decorator"
         "python-docutils"
-        "python-ebaysdk" # 16
+        "python-ebaysdk"
         "python-freezegun"
         "python-geoip2" # 17
         "python-gevent"
@@ -30,9 +30,9 @@ depends=("postgresql"
         "python-jinja"
         "python-libsass"
         "python-lxml"
-        #"python-mako" # 16
+        "python-mako"
         "python-markupsafe"
-        #"python-mock" # 16
+        "python-mock"
         "python-num2words"
         "python-ofxparse"
         "python-passlib"
@@ -51,7 +51,7 @@ depends=("postgresql"
         "python-requests"
         "python-rjsmin" # 17
         "python-stdnum"
-        "python-urllib3" # 16
+        "python-urllib3"
         "python-vobject"
         "python-werkzeug"
         "python-xlrd"
@@ -86,12 +86,8 @@ build(){
 package(){
  cd "$pkgname-$pkgver.post"*
  python -m installer --destdir="$pkgdir" dist/*.whl
- # required directories
- install -d -m 750 "$pkgdir/etc/odoo"
- install -d -m 700 "$pkgdir/var/lib/odoo"
- install -d "$pkgdir/etc/logrotate.d"
- install -d "$pkgdir/usr/lib/systemd/system"
  # configuration file
+ install -d -m 750 "$pkgdir/etc/odoo"
  install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
  # logrotate file
  install -D -m 644 "$srcdir/odoo.logrotate" "$pkgdir/etc/logrotate.d/odoo"
