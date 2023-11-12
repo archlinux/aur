@@ -1,7 +1,7 @@
 # Maintainer: Jeffrey Zhang zhang.lei.fly@gmail.com
 pkgname=assh-git
 _pkgname=assh
-pkgver=2.15.0.r20.gec4ba625
+pkgver=2.16.0.r0.g869f9789
 pkgrel=1
 pkgdesc='make your ssh client smarter https://manfred.life/assh'
 arch=('any')
