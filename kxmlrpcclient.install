@@ -1,0 +1,17 @@
+pre_install() {
+	echo
+	echo "ATTENTION"
+	echo
+	echo "The KDE project has deprecated and discontinued 'kxmlrpcclient'."
+	echo
+	echo "See: https://community.kde.org/Frameworks/6.0_Release_notes"
+	echo
+	echo "Please uninstall 'kxmlrpcclient' and any other package that depends on it:"
+	echo
+	echo "pacman -Rnsc kxmlrpcclient"
+	echo
+}
+
+pre_upgrade() {
+	pre_install
+}
