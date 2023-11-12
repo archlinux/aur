@@ -1,6 +1,6 @@
 pkgbase = bluez-qt5
 	pkgdesc = Qt wrapper for Bluez 5 DBus API
-	pkgver = 5.111.0
+	pkgver = 5.112.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = bluez-qt5
 	optdepends = qt5-declarative: QML bindings
 	conflicts = bluez-qt<5.111
 	replaces = bluez-qt<5.111
-	source = https://download.kde.org/stable/frameworks/5.111/bluez-qt-5.111.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.111/bluez-qt-5.111.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.112/bluez-qt-5.112.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.112/bluez-qt-5.112.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = c0cbab8652972af7a767320a52a2143613164f0ee1d9860cb23f782e599ce36b
+	sha256sums = eb2979251fd039eb585a2e51d38e8e34fdb108a481818202d50426f9e9dc7f0e
 	sha256sums = SKIP
 
 pkgname = bluez-qt5
