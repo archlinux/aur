@@ -26,7 +26,7 @@ source=("http://sldev.free.fr/sources/CoolVLViewer-src-${pkgver//./}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
 sha1sums=('eaf48985c801eae7a3b20d3d18654b47625ec548'
-          'e08076db600f7dcee78c0f7b861e8e78f16a069d'
+          'd5defd3d847fcfb7cdf41150ab55684dedc79275'
           '3ef1284a00a4437e4c34f809311ee0672604ef04')
 
 build() {

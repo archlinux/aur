@@ -58,7 +58,7 @@ pkgbase = coolvlviewer
 	source = coolvlviewer.desktop
 	source = coolvlviewer.launcher
 	sha1sums = eaf48985c801eae7a3b20d3d18654b47625ec548
-	sha1sums = e08076db600f7dcee78c0f7b861e8e78f16a069d
+	sha1sums = d5defd3d847fcfb7cdf41150ab55684dedc79275
 	sha1sums = 3ef1284a00a4437e4c34f809311ee0672604ef04
 
 pkgname = coolvlviewer
