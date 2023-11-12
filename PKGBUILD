@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=opm-grid
 _dunever=2.9.0
-pkgver=2023.04
+pkgver=2023.10
 pkgrel=1
 pkgdesc="DUNE module supporting grids in a corner-point format"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(cppcheck doxygen graphviz)
 optdepends=('man-db: manual pages for grdecl2vtu and mirror_grid')
 provides=('grdecl2vtu' 'mirror_grid')
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('48266115add721f754d09ff8803751844220be7794b4849ca348692e566cd317c88d63f4f05625415651ce50dd931967c4cefa678410fd5fc2e6c8231d320669')
+sha512sums=('caf3881f08736fb40179d9091dda363ba523636bc44185e607f00774f6d3bbed5d64710bb3afc7167f1cfbe70a5e82f0f9ba9f0f028b7b77d7af5c35dfff7ce0')
 
 build() {
   cmake \
