@@ -57,7 +57,6 @@ makedepends=(
     'cargo'
     'python-installer' # TODO: could use either wheel or installer, both are not needed afaik
     'python-wheel'
-    'libxcrypt-compat'
     'nodejs>=18'
     'yarn'
     'mold'
@@ -80,7 +79,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs
 sha256sums=('561fc902f3ad35e51686938e706d5a267bbc9a905ca0e9cc5be59b1617f3a551'
             '9fab0284a3110ec91cf5f346b18e9b9513ac566f25f262a61295dc538dc5ac6e'
             '576d1a75236cb6817bc98410753c87a637efa29dc0d52cc2ab585c7ae531f35a'
-            '809037694be7c6926da74fb18955a11f2404c7558a07c444ebddbf94b37f7584'
+            '94d8b6d6541ce0c00ab1ddc88d2f384a6535e9849891f30a02bb07bd60178086'
             'cc546f4e5af642af89f82be0375800c2721dd904c0a212cf46f6459495b75bff'
             '9858fefa254812980d252b29fc6f32bd19bb83ee7e5a96d72c707626ed5193a7'
             '198bc2ec14439e3ba41a03c4823f07df4b0c559c1dcbdaf678416ed12a720c2e'
