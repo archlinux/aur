@@ -1,0 +1,15 @@
+--- a/Makefile	2023-11-11 23:22:00.782688709 -0600
++++ b/Makefile	2023-11-11 23:24:24.091041972 -0600
+@@ -5,10 +5,10 @@
+ 
+ CC = gcc
+ #CFLAGS = -g -Wall
+-CFLAGS = -O3 -Wall -DVERSION=\"$(VERSION)\"
++CFLAGS += -Wall -DVERSION=\"$(VERSION)\"
+ 
+ ent:	ent.o iso8859.o randtest.o chisq.o
+-	$(CC) $(CFLAGS) ent.o iso8859.o randtest.o chisq.o -o ent -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) ent.o iso8859.o randtest.o chisq.o -o ent -lm
+ 
+ ent.c:	iso8859.h randtest.h
+ 

@@ -1,0 +1,70 @@
+--- a/ent.c	2023-11-11 23:26:56.801411232 -0600
++++ b/ent.c	2023-11-11 23:31:01.909992911 -0600
+@@ -98,8 +98,8 @@
+ int main(int argc, char *argv[])
+ {
+         int i, oc, opt;
+-        long ccount[256];             /* Bins to count occurrences of values */
+-        long totalc = 0;              /* Total character count */
++        unsigned long long ccount[256];  /* Bins to count occurrences of values */
++        unsigned long long totalc = 0;   /* Total character count */
+         char *samp;
+         double montepi, chip,
+                scc, ent, mean, chisq;
+@@ -207,7 +207,7 @@
+         if (terse) {
+            printf("0,File-%ss,Entropy,Chi-square,Mean,Monte-Carlo-Pi,Serial-Correlation\n",
+               binary ? "bit" : "byte");
+-           printf("1,%ld,%f,%f,%f,%f,%f\n",
++           printf("1,%lld,%f,%f,%f,%f,%f\n",
+               totalc, ent, chisq, mean, montepi, scc);
+         }
+ 
+@@ -226,11 +226,11 @@
+            }
+            for (i = 0; i < (binary ? 2 : 256); i++) {
+               if (terse) {
+-                 printf("3,%d,%ld,%f\n", i,
++                 printf("3,%d,%lld,%f\n", i,
+                     ccount[i], ((double) ccount[i] / totalc));
+               } else {
+                  if (ccount[i] > 0) {
+-                    printf("%3d   %c   %10ld   %f\n", i,
++                    printf("%3d   %c   %10lld   %f\n", i,
+                        /* The following expression shows ISO 8859-1
+                           Latin1 characters and blanks out other codes.
+                           The test for ISO space replaces the ISO
+@@ -245,7 +245,7 @@
+               }
+            }
+            if (!terse) {
+-              printf("\nTotal:    %10ld   %f\n\n", totalc, 1.0);
++              printf("\nTotal:    %10lld   %f\n\n", totalc, 1.0);
+            }
+         }
+ 
+@@ -254,11 +254,11 @@
+         if (!terse) {
+            printf("Entropy = %f bits per %s.\n", ent, samp);
+            printf("\nOptimum compression would reduce the size\n");
+-           printf("of this %ld %s file by %d percent.\n\n", totalc, samp,
++           printf("of this %lld %s file by %d percent.\n\n", totalc, samp,
+                     (short) ((100 * ((binary ? 1 : 8) - ent) /
+                               (binary ? 1.0 : 8.0))));
+            printf(
+-              "Chi square distribution for %ld samples is %1.2f, and randomly\n",
++              "Chi square distribution for %lld samples is %1.2f, and randomly\n",
+               totalc, chisq);
+            if (chip < 0.0001) {
+               printf("would exceed this value less than 0.01 percent of the times.\n\n");
+--- a/randtest.c	2023-11-11 23:31:14.167021728 -0600
++++ b/randtest.c	2023-11-11 23:32:12.122157699 -0600
+@@ -16,7 +16,7 @@
+ 
+ static int binary = FALSE;         /* Treat input as a bitstream */
+ 
+-static long ccount[256],           /* Bins to count occurrences of values */
++static unsigned long long ccount[256],/* Bins to count occurrences of values */
+             totalc = 0;            /* Total bytes counted */
+ static double prob[256];           /* Probabilities per bin for entropy */
+ 

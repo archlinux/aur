@@ -1,0 +1,20 @@
+pkgbase = ent-git
+	pkgdesc = Utility for testing random and pseudorandom sequences
+	pkgver = r3.388d2cc
+	pkgrel = 1
+	url = https://github.com/Fourmilab/ent_random_sequence_tester
+	arch = x86_64
+	license = CC-BY-SA-4.0
+	makedepends = git
+	provides = ent
+	noextract = ent.1.en.gz
+	source = git+https://github.com/Fourmilab/ent_random_sequence_tester
+	source = https://manpages.debian.org/unstable/ent/ent.1.en.gz
+	source = Makefile.patch
+	source = totalcount.patch
+	sha256sums = SKIP
+	sha256sums = 47ce45cbc6536d59fdf913dc992c8539c707d63e0fa5606c87d47fe1ec107809
+	sha256sums = 8f716c1afd943234811a0802d27a4c2c170832d456ceb114193a18850c53d299
+	sha256sums = f44e4ce1c4b7232d58af5404b67b4edf7984e39d24630e142066d46708f7c0cc
+
+pkgname = ent-git
