@@ -1,7 +1,7 @@
 pkgbase = apache-html-manual
 	pkgdesc = Apache manual html pages
 	pkgver = 2.4.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.apache.org/dist/httpd
 	arch = any
 	license = APACHE

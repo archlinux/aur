@@ -1,7 +1,9 @@
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
+
 pkgname=apache-html-manual
 _pkgname=httpd
 pkgver=2.4.58
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache manual html pages'
 arch=('any')
 options=('libtool' '!strip' '!zipman' '!purge' 'docs')
