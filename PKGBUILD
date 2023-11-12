@@ -5,14 +5,14 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=glances-git
-pkgver=3.4.0.r91.g16b04fd
+pkgver=3.4.0.r351.g36ed96b
 pkgrel=1
 pkgdesc='CLI curses-based monitoring tool (git)'
 arch=(any)
 url=https://github.com/nicolargo/glances
 license=(LGPL)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
-depends=(python python-psutil python-future python-defusedxml python-ujson)
+depends=(python python-psutil python-future python-defusedxml python-ujson python-pytz)
 optdepends=('hddtemp: HDD temperature monitoring support'
             'python-bottle: web server support'
             'python-docker: for the Docker monitoring support'
