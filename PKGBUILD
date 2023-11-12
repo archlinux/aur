@@ -2,8 +2,8 @@
 pkgbase=opm-common
 pkgname=("${pkgbase}" python-"${pkgbase}")
 _dunever=2.9.0
-pkgver=2023.04
-pkgrel=3
+pkgver=2023.10
+pkgrel=1
 pkgdesc="Common components for OPM, in particular build system (cmake)"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
@@ -11,13 +11,7 @@ license=(GPL3)
 makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basic doxygen graphviz
   pybind11 python-scikit-build python-ninja python-setuptools-scm python-pytest-runner)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('33e61d812c6a99ea80781bee36069de0784ec1adf771b9228458c8a03c28644d71a41d8637d06eadb6d93db9bb26e3794d9d7a76b6747b8d8a400806cc6e41f1')
-
-prepare() {
-  # gcc-13-compatibilty
-  sed -i '/#include <vector>/a #include <cstdint>' ${pkgbase}-release-${pkgver}-final/opm/io/eclipse/EclFile.hpp
-  sed -i '/#include <functional>/a #include <cstdint>' ${pkgbase}-release-${pkgver}-final/opm/io/eclipse/EclUtil.hpp
-}
+sha512sums=('e5ab73ff3654ce3931d7bd006954d8f38ce4eb98189fa481967c2847009236973e3599915e259ce47cf62c0fa6443f6dfeb6d081c6a31b6380437c3fe47fb744')
 
 build() {
   cmake \
