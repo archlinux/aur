@@ -1,0 +1,13 @@
+pkgbase = ttf-open-relay
+	pkgdesc = Latest snapshot of Open Relay, Free and open source fonts from Kreative Software, containing Constructium, Fairfax (HD), Kreative Square.
+	pkgver = r85.3326b93
+	pkgrel = 1
+	epoch = 1
+	url = http://www.kreativekorp.com/software/fonts/index.shtml
+	arch = any
+	license = custom:OFL-1.1
+	makedepends = git
+	source = ttf-open-relay::git+https://github.com/kreativekorp/open-relay.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ttf-open-relay
