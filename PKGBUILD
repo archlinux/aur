@@ -8,7 +8,7 @@
 _pkgname=gamescope
 pkgname=gamescope-plus
 pkgver=3.13.0.plus1
-pkgrel=2
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ChimeraOS/gamescope
@@ -51,7 +51,7 @@ source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
         "git+https://github.com/nothings/stb.git"
-        "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
+        "git+https://github.com/Joshua-Ashton/reshade.git"
         )
 
 b2sums=('SKIP'
@@ -100,10 +100,6 @@ build() {
 package() {
   meson install -C build --skip-subprojects --destdir="${pkgdir}"
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
-
-  install -d "$pkgdir"/usr/share/gamescope/reshade
-	cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
-	chmod -R 655 "$pkgdir"/usr/share/gamescope
 }
 
 # vim: ts=2 sw=2 et:
