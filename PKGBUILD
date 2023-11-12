@@ -1,10 +1,9 @@
 # Maintainer: Popolon <popolon@popolon.org>
 
-pkgbase='python-mozjpeg-lossless-optimization'
-pkgname=('python-mozjpeg-lossless-optimization')
 _module='mozjpeg-lossless-optimization'
+pkgname=python-${_module}
 pkgver='1.1.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimize JPEGs losslessly using MozJPEG"
 url="https://github.com/wanadev/mozjpeg-lossless-optimization"
 depends=('python>=3')
@@ -16,11 +15,11 @@ sha256sums=('725d98772e943fca18b0801cb94e645c477ff52e56ad0b27bddb76ddf091ca3e')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python  -m installer --destdir="${pkgdir}" dist/*.whl
 }
