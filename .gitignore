@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !remove-bin-package.patch
+!unpin-numpy.patch
