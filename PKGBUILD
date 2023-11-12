@@ -1,9 +1,8 @@
 # Maintainer : eggz
 pkgname=ffmpeg-nocuda
 pkgver=6.1
-#gitver=n6.1-dev
-gitver=c258623c0a635d98e7e21123215446ebd2201b1e
-pkgrel=4
+gitver=n6.1
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -70,8 +69,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=(
-#"git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver"
-"git+https://git.ffmpeg.org/ffmpeg.git"
+	"git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver"
 	'040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
 	'060-ffmpeg-fix-segfault-with-avisynthplus.patch'
 )
@@ -83,7 +81,6 @@ sha256sums=(
 
 prepare() {
  cd ${srcdir}/ffmpeg
- git checkout $gitver
  while read patch; do
   if [ "$patch" == "" ]; then
     continue
