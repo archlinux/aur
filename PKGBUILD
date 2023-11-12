@@ -1,19 +1,19 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Serge Ziryukin <ftrvxmtrx@gmail.com>
 pkgname=ohcount-git
-pkgver=2.0.1.312.g4fb66a8
+pkgver=4.0.0.22.ge176f5e
 epoch=1
 pkgrel=1
 pkgdesc="Ohcount is a source code line counter."
-arch=('i686' 'x86_64')
-url="https://github.com/blackducksw/ohcount"
+arch=('x86_64')
+url="https://github.com/blackducksoftware/ohcount"
 license=('GPL')
 depends=('pcre')
 makedepends=('git' 'bash' 'ruby' 'ragel' 'gperf')
 provides=('ohcount')
 conflicts=('ohcount')
 install=
-source=('git+https://github.com/blackducksw/ohcount.git')
+source=('git+https://github.com/blackducksoftware/ohcount.git')
 sha512sums=(SKIP)
 
 pkgver() {

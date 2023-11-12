@@ -1,10 +1,9 @@
 pkgbase = ohcount-git
 	pkgdesc = Ohcount is a source code line counter.
-	pkgver = 2.0.1.312.g4fb66a8
+	pkgver = 4.0.0.22.ge176f5e
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/blackducksw/ohcount
-	arch = i686
+	url = https://github.com/blackducksoftware/ohcount
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -15,8 +14,7 @@ pkgbase = ohcount-git
 	depends = pcre
 	provides = ohcount
 	conflicts = ohcount
-	source = git+https://github.com/blackducksw/ohcount.git
+	source = git+https://github.com/blackducksoftware/ohcount.git
 	sha512sums = SKIP
 
 pkgname = ohcount-git
-
