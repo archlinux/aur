@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.16.1
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
@@ -9,18 +9,17 @@ url="https://github.com/AnalogJ/lexicon"
 license=('MIT')
 depends=('python-beautifulsoup4' 'python-cryptography' 'python-yaml'
          'python-requests' 'python-tldextract' 'python-importlib-metadata'
-         'python-pyotp')
+         'python-pyotp' 'python-dnspython')
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
 optdepends=('python-boto3: for Route53 support'
             'python-localzone: for localzone support'
             'python-softlayer: for SoftLayer support'
-            'python-zeep: for Gransy support'
-            'python-dnspython: for DDNS/DuckDNS support')
+            'python-zeep: for Gransy support')
             # 'python-oci: for Oracle Cloud Infrastructure (OCI) support'
 checkdepends=('python-pytest' 'python-vcrpy' 'python-boto3' 'python-localzone' 'python-softlayer'
-              'python-zeep' 'python-dnspython' 'bind')
+              'python-zeep' 'bind')
 source=("https://github.com/AnalogJ/lexicon/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('7cf2392ec94871076f13e443a6f8c1e9486ceed44c7a23f28e29a98ad0ee8b5f3ae534d3627b4f04fc77894059a2f8a49b12bae3f6faa52a4cbd175bd6cd6e99')
+sha512sums=('1bc182f5881d6acfac72b84331ba50da1219178d274c92e532ed11e73aa79696681d28a002cd1e23f48590953f48e50b62c2ef2db020a07ecf88547717508c0c')
 
 build() {
   cd lexicon-$pkgver
