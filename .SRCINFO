@@ -1,22 +1,11 @@
 pkgbase = kjsembed-git
-	pkgdesc = Embedded JS
-	pkgver = v4.100.0.rc1.r205.g08a64c6
-	pkgrel = 1
-	url = https://invent.kde.org/frameworks/kjsembed
-	arch = x86_64
+	pkgdesc = [Dummy PKG] kjsembed is EOL and broken: uninstall this package
+	pkgver = 5.100.0
+	pkgrel = 2
+	url = https://community.kde.org/Frameworks/6.0_Release_notes#Frameworks_No_Longer_Shipped
+	install = kjsembed-git.install
+	arch = any
 	groups = kf5-aids
 	license = LGPL
-	makedepends = extra-cmake-modules
-	makedepends = git
-	makedepends = qt5-tools
-	makedepends = kdoctools
-	depends = ki18n
-	depends = qt5-svg
-	depends = kjs
-	provides = kjsembed
-	conflicts = kjsembed
-	source = git+https://invent.kde.org/frameworks/kjsembed.git
-	md5sums = SKIP
 
 pkgname = kjsembed-git
-
