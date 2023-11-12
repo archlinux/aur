@@ -1,7 +1,7 @@
 # Maintainer: Hayate NAKA-MURA <is01.njb at gmail dot com>
 
 pkgname="nako"
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="An AUR helper written in Bash and Pyalpm"
 arch=('any')
@@ -10,8 +10,8 @@ license=('BSD-3-Clause')
 depends=('sudo' 'pacman' 'jq' 'git' 'python3' 'curl' 'pyalpm' 'python-srcinfo')
 optdepends=('aurvote: for voting')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('8f1f1283c0826cbb0d4d075e19cd5100')
-sha256sums=('20845afce29c9b76aafec8c023e936f151e69d5f275eaba4b3b48d4ad66e5670')
+md5sums=('bf303ee7da27febb8cd9dab6bbc0e2cc')
+sha256sums=('887b2c2c6c15b6cf241a1e76b0de071ae54043bd559de19dbd3465bdaedf86ea')
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
