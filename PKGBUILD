@@ -3,13 +3,13 @@
 
 pkgname=himitsu
 pkgver='0.4'
-pkgrel=1
+pkgrel=2
 pkgdesc='Secret storage manager'
 arch=(x86_64)
 url='https://himitsustore.org/'
 license=(GPL3)
 depends=()
-makedepends=(hare scdoc)
+makedepends=(hare-git scdoc)
 install=himitsu.install
 optdepends=('hiprompt-gtk-py: prompter support (GTK+)')
 _extracted="$pkgname-$pkgver"
