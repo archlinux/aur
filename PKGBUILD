@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
 pkgname=c3c-llvm-16-git
 _pkgname=c3c
-pkgver=r1666.e4c1328e
+pkgver=r1677.dc0aa355
 pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Git version for x86_64. LLVM 16"
 arch=(x86_64)
@@ -34,7 +34,7 @@ prepare() {
     
     curl "${_repository}/pool/main/l/llvm-toolchain-${_llvmver}/" --compressed -vs > repository
     for package in $_required_llvm_packages; do
-	name=$(cat repository | grep "${package}" | head -n 1 | cut -f  2 -d "\"")
+	name=$(cat repository | grep "${package}" | head -n 1 | cut -f  8 -d "\"")
 	if ! [ -f ${name} ]; then
 	    echo "Downloading ${package}"
 	    curl "${_repository}/pool/main/l/llvm-toolchain-${_llvmver}/${name}" --output "${name}"
