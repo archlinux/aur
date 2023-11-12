@@ -2,7 +2,7 @@
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-bluetooth-quick-connect
 _uuid=bluetooth-quick-connect@bjarosze.gmail.com
-pkgver=r120.c40735e
+pkgver=40
 pkgrel=1
 pkgdesc="Allow to connect Bluetooth paired devices from GNOME control panel."
 arch=('any')
@@ -10,13 +10,13 @@ url="https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect"
 license=('GPL3')
 depends=('gnome-shell' 'bluez-utils')
 makedepends=('git' 'pnpm')
-_commit=c40735e0ad35de68568c97396c1eeaf102b65004  #  tags/gnome-45^0
+_commit=fa8c76371869225f6d1441aafc9a1341d6dc8efc  #  tags/v40^0
 source=("git+https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd gnome-bluetooth-quick-connect
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 build() {
