@@ -20,7 +20,7 @@ sha256sums=('28278807df05a8b305907257ed34f172e3aa849ef978cfade077131ffdde8424'
 	'59aebd9e2502cb5f6e445b57b2d7bba5f2382989ca064805b9570b57870a3c6b')
 
 package() {
-	cd "$srcdir/human-cursors-theme-$pkgver" || exit
+	cd "$srcdir/human-cursors-theme-$pkgver"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 	install -Dm644 ../index.theme "$pkgdir/usr/share/icons/Human/index.theme"
 	rm -rf "$pkgdir/usr/lib"
