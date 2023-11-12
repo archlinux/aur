@@ -5,13 +5,14 @@ pkgname=sviesolutions-via-bin
 # use info from the download headers
 # curl -vI 'https://via.sviesolutions.com/Application/Via/Via.tar.gz' 2>&1 >>/dev/null | grep 'Last-Modified'
 pkgver=20220929
-pkgrel=2
+pkgrel=3
 pkgdesc='SVI eSolutions video conferencing application'
 arch=('x86_64')
 url='https://assistance.sviesolutions.com'
 depends=('libatomic_ops') # min version ?
 source=("https://via.sviesolutions.com/Application/Via/Via.tar.gz")
 sha256sums=('d3b8793636129ba69a9108fcee8b5122756b82569bc93f117ab7ad0cb93948aa')
+install=$pkgname.install
 
 package()
 {
