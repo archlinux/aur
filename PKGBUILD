@@ -7,7 +7,7 @@
 
 pkgname=python-spotdl
 pkgver=4.2.1
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found).'
 arch=('any')
@@ -52,21 +52,18 @@ b2sums=('f07541071b20fbb1ab7f98ff9cd1543a62edd52354531bbb2d7f4d4ef508a1d3a7b80a1
 
 # Document: https://wiki.archlinux.org/title/Python_package_guidelines
 build() {
-	pushd spotdl-$pkgver
+	cd spotdl-$pkgver
 	# https://github.com/python-poetry/poetry/issues/5547
 	python -m build --wheel --no-isolation
-	popd
 }
 
 check() {
-	pushd spotdl-$pkgver
+	cd spotdl-$pkgver
 	pytest || echo 'Tests failed!'
-	popd
 }
 
 package() {
-	pushd spotdl-$pkgver
+	cd spotdl-$pkgver
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	popd
 }
