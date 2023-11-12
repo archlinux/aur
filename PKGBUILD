@@ -7,8 +7,8 @@ pkgdesc="Multidimensional data analysis and reproducible computational experimen
 url="https://www.reproducibility.org/wiki/Main_Page"
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd' 'swig' 'python'
-	 'openmpi' 'glu' 'freeglut' 'suitesparse') 
+depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd' 'swig' 'python-numpy'
+	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'cblas' 'scons') 
 optdepends=('cuda: for nvcc, but not compatible with cuda12' 'plplot: scientific plot')
 options=('strip')
 source=($pkgname::git+https://github.com/ahay/src)
