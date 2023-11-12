@@ -12,8 +12,8 @@
 # https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 
 pkgname=ffmpeg-cuda
-pkgver=6.0
-pkgrel=2
+pkgver=6.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -112,7 +112,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=(
-  "git+https://git.ffmpeg.org/ffmpeg.git#commit=1e888462a1ea2b3f1144b536fd2702d95759ba43"
+  "git+https://git.ffmpeg.org/ffmpeg.git#commit=d4ff0020b40b524a490cf62eccbd3a318f4c0e58"
 )
 sha256sums=("SKIP")
 
