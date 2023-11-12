@@ -1,6 +1,6 @@
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=tlsrouter-git
-pkgver=r67.91f8614
+pkgver=r68.2862066
 pkgrel=1
 pkgdesc="Proxy TCP connections based on static rules, HTTP Host headers, and SNI server names"
 arch=(x86_64)

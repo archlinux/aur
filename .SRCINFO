@@ -1,6 +1,6 @@
 pkgbase = tlsrouter-git
 	pkgdesc = Proxy TCP connections based on static rules, HTTP Host headers, and SNI server names
-	pkgver = r67.91f8614
+	pkgver = r68.2862066
 	pkgrel = 1
 	url = https://pkg.go.dev/inet.af/tcpproxy
 	arch = x86_64
