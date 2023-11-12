@@ -1,7 +1,7 @@
 # Maintainer: Martial Toniotti <martial@toniotti.be>
 
 pkgname=standardfile-bin
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Standard File Server, Go Implementation'
 url='https://github.com/mdouchement/standardfile'
@@ -11,8 +11,8 @@ depends=('glibc')
 backup=('etc/standardfile.yaml')
 source_x86_64=("https://github.com/mdouchement/standardfile/releases/download/v${pkgver}/standardfile-linux-amd64")
 source_aarch64=("https://github.com/tectiv3/standardfile/releases/download/v${pkgver}/standardfile_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('b0d72497d4bbb0ff00de8dc998768fa002e0529be993ef6b2f4bb7744c286ec0')
-sha256sums_aarch64=('c800ed4ea6ba4800b0f8cdc45e028a2917ea3c15b4a334ea462a5a4a0ba0166a')
+sha256sums_x86_64=('b005f9562cb6bca86548788eb1195eaa4ccadec89ad6912446c4c39892837644')
+sha256sums_aarch64=('7ce24dfb2af9c63e43c0fb202d5b085cabb8132696bd3423a1877ef53b27242a')
 source=(standardfile.service
         standardfile.sysusers
         standardfile.tmpfiles

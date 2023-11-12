@@ -1,6 +1,6 @@
 pkgbase = standardfile-bin
 	pkgdesc = Standard File Server, Go Implementation
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/mdouchement/standardfile
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = standardfile-bin
 	sha256sums = 1010525aa4b320cb0ccf7b5411ca5879892c34711f1505f26be3f16214ead07c
 	sha256sums = 1010525aa4b320cb0ccf7b5411ca5879892c34711f1505f26be3f16214ead07c
 	source_x86_64 = https://github.com/mdouchement/standardfile/releases/download/v0.11.0/standardfile-linux-amd64
-	sha256sums_x86_64 = b0d72497d4bbb0ff00de8dc998768fa002e0529be993ef6b2f4bb7744c286ec0
+	sha256sums_x86_64 = b005f9562cb6bca86548788eb1195eaa4ccadec89ad6912446c4c39892837644
 	source_aarch64 = https://github.com/tectiv3/standardfile/releases/download/v0.11.0/standardfile-linux-arm64
-	sha256sums_aarch64 = c800ed4ea6ba4800b0f8cdc45e028a2917ea3c15b4a334ea462a5a4a0ba0166a
+	sha256sums_aarch64 = 7ce24dfb2af9c63e43c0fb202d5b085cabb8132696bd3423a1877ef53b27242a
 
 pkgname = standardfile-bin
