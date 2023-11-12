@@ -3,7 +3,7 @@
  
 pkgname=pacback
 pkgver=2.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Advanced Version Control for Arch Linux'
 arch=('x86_64')
 url='https://github.com/JustinTimperio/pacback'
@@ -22,10 +22,10 @@ sha512sums=('d2c3694144dc278eb10346761a8c757dc0a07481519e7f7388efeff61e5accf4ec4
 
 package() {
   cd "${srcdir}"
-  install -dm 755 "${pkgdir}"{/usr/{share/{pacback,pacback/paf,licences/pacback},bin/},/etc}
+  install -dm 755 "${pkgdir}"{/usr/{share/{pacback,pacback/paf,licenses/pacback},bin/},/etc}
   install -dm 1777 "${pkgdir}"/tmp
   cp -dr --no-preserve='ownership' core "${pkgdir}"/usr/share/pacback
-  cp -dr --no-preserve='ownership' LICENSE "${pkgdir}"/usr/share/licences/pacback
+  cp -dr --no-preserve='ownership' LICENSE "${pkgdir}"/usr/share/licenses/pacback
   cp -dr --no-preserve='ownership' config "${pkgdir}"/etc/pacback.conf
   ln -sf /usr/share/pacback/core/pacback.py "${pkgdir}"/usr/bin/pacback
 }
