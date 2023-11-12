@@ -23,12 +23,12 @@ sha256sums=('3745d4ea3ffda98d7a034363c787adb37aab77bdab40094a4d937392cd4dae82'
 	'820c985c4c1e943d35b92091c7b07c68ec7a45bb93b21e2881a09f976fbe6df2')
 
 build() {
-	cd "${_name}-${pkgver}" || exit
+	cd "${_name}-${pkgver}"
 	python setup.py build
 }
 
 package() {
-	cd "${_name}-${pkgver}" || exit
+	cd "${_name}-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 	install -Dvm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
