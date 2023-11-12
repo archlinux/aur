@@ -8,12 +8,17 @@ pkgname="${_pkgname}"-bin
 _subver="3.13"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build cross platform desktop apps with web technologies - Binary version ${_major}"
 arch=('x86_64' 'aarch64')
 url=https://electronjs.org/
 license=('MIT' 'custom')
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'wayland')
+depends=(c-ares
+         alsa-lib
+         gtk3
+         libevent
+         libffi
+         nss)
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
