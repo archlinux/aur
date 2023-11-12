@@ -1,7 +1,7 @@
-# Maintainer: darkelectron <darkelectron(dot)aur(at)tutanota(dot)com
+# Maintainer: darkelectron <darkelectron(at)mailfence(dot)com>
 pkgname=termv
 _pkgname=termv
-pkgver=v1.3
+pkgver=v1.4
 pkgrel=1
 pkgdesc="A terminal iptv player written in bash"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('termv-git')
 
 source=("${_pkgname}-${pkgver}::https://github.com/Roshan-R/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ebda5a315a738080c879595ac883c12c6314a3c5ea98f970ef7e3bad6bcc429f')
+sha256sums=('299b42999f40834543208d44d3e4174bf49cf3010b6d5b0c313848e00f3d24b4')
 
 package () {
   _pkgver=$(echo $pkgver | sed 's/v//g')
