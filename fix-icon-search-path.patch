@@ -1,0 +1,12 @@
+diff -aur package.pristine/mnemosyne/pyqt_ui/mnemosyne package.new/mnemosyne/pyqt_ui/mnemosyne
+--- package.pristine/mnemosyne/pyqt_ui/mnemosyne	2023-11-12 09:10:02.000000000 +0100
++++ package.new/mnemosyne/pyqt_ui/mnemosyne	2023-11-12 11:40:05.003659947 +0100
+@@ -209,7 +209,7 @@
+ 
+ # For system install:
+ QtCore.QDir.addSearchPath("icons", 
+-    os.path.abspath(__file__ + "/../../../pixmaps"))
++    os.path.abspath(__file__ + "/../../pixmaps"))
+ # For Windows installer:
+ QtCore.QDir.addSearchPath("icons", 
+     "pixmaps")
