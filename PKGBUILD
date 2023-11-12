@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=pylyzer
-pkgver=0.0.37
+pkgver=0.0.45
 pkgrel=1
 pkgdesc='A fast static code analyzer & language server for Python'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'e085e07e41115ab2eaa894c04ed6cbacfc9665dbcd9c61426fd8147e802a0f90'
+    'c3980ebb0c0ce825f0e50a3ae9f5e8d1af4b5b712bc99c4cff2205b594cba99a'
 )
 # Disable checks for now...
 BUILDENV+=('!check')
