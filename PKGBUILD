@@ -5,7 +5,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2023.10.28.a.r20.g7db7b21c8
+pkgver=2023.10.30a.r490.gb15065675
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=(
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=5.0.1'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
-    'swift-asn1::git+https://github.com/apple/swift-asn1#commit=0.8.0'
+    'swift-asn1::git+https://github.com/apple/swift-asn1#commit=1.0.0'
     'swift-certificates::git+https://github.com/apple/swift-certificates#commit=0.6.0'
     'swift-cmark::git+https://github.com/apple/swift-cmark#branch=gfm'
     'swift-docc::git+https://github.com/apple/swift-docc#branch=main'
@@ -111,7 +111,7 @@ prepare () {
 
 pkgver() {
     cd "$srcdir/swift"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed -E 's/^[^0-9]+//;s/-([^0-9]+)/\1/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
