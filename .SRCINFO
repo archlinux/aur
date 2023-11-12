@@ -1,14 +1,13 @@
 pkgbase = mpv_inhibit_gnome
-	pkgdesc = mpv plugin that prevents screen blanking in GNOME
-	pkgver = 0.1.3.r0.g9069be0
-	pkgrel = 1
+	pkgdesc = This mpv plugin prevents screen blanking in GNOME while playing media
+	pkgver = 0.1.3
+	pkgrel = 2
 	url = https://github.com/Guldoman/mpv_inhibit_gnome
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	depends = mpv
 	depends = dbus
-	source = mpv_inhibit_gnome::git+https://github.com/Guldoman/mpv_inhibit_gnome.git#commit=9069be0f15fa2c222d78a183d4aa1477d8a8f2cd
-	sha256sums = SKIP
+	source = https://github.com/Guldoman/mpv_inhibit_gnome/archive/tags/v0.1.3.zip
+	b2sums = de7b142fb36880e2f107dd43375805783aed5b4e62d53dbdd4dea8057f3bd66b681c236c4d63fbccee897ec555cb4e0a19cbe78e918ce5a442a6213afc4b13f7
 
 pkgname = mpv_inhibit_gnome
