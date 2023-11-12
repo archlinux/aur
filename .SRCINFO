@@ -1,0 +1,18 @@
+pkgbase = lumafly-git
+	pkgdesc = A cross platform mod manager for Hollow Knight Formerly known as Scarab+
+	pkgver = v3.2.0.0.r1.ga51d408
+	pkgrel = 1
+	url = https://themulhima.github.io/Lumafly/
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk-7.0
+	makedepends = git
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	conflicts = lumafly
+	options = !strip
+	source = git+https://github.com/TheMulhima/Lumafly.git
+	sha512sums = SKIP
+
+pkgname = lumafly-git
