@@ -1,4 +1,4 @@
-From 8d1b5aa01d290b2e2203623cc5f51b7c854012da Mon Sep 17 00:00:00 2001
+From e1e12d2acda6f511a5f70ed6b6e10d1b8c83708a Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Mon, 24 Jul 2023 10:52:05 +0200
 Subject: [PATCH] deps,libobs: Replace uthash with prefix/system install
@@ -19,20 +19,18 @@ Subject: [PATCH] deps,libobs: Replace uthash with prefix/system install
  delete mode 100644 deps/uthash/uthash/uthash.h
 
 diff --git a/deps/CMakeLists.txt b/deps/CMakeLists.txt
-index 9e92bb114..6ab050f03 100644
+index d093e29df0883..8e4cb2d412320 100644
 --- a/deps/CMakeLists.txt
 +++ b/deps/CMakeLists.txt
-@@ -16,7 +16,6 @@ add_subdirectory(file-updater)
+@@ -12,5 +12,4 @@ add_subdirectory(file-updater)
  add_subdirectory(obs-scripting)
  add_subdirectory(opts-parser)
  add_subdirectory(libcaption)
 -add_subdirectory(uthash)
- 
- # Use bundled jansson version as fallback
- find_package(Jansson 2.5 QUIET)
+ add_subdirectory(happy-eyeballs)
 diff --git a/deps/uthash/.clang-format b/deps/uthash/.clang-format
 deleted file mode 100644
-index 6420a4688..000000000
+index 6420a46881e05..0000000000000
 --- a/deps/uthash/.clang-format
 +++ /dev/null
 @@ -1,3 +0,0 @@
@@ -41,11 +39,11 @@ index 6420a4688..000000000
 -DisableFormat: true
 diff --git a/deps/uthash/CMakeLists.txt b/deps/uthash/CMakeLists.txt
 deleted file mode 100644
-index 19f262a36..000000000
+index aecb0d74e49a5..0000000000000
 --- a/deps/uthash/CMakeLists.txt
 +++ /dev/null
 @@ -1,8 +0,0 @@
--cmake_minimum_required(VERSION 3.16...3.25)
+-cmake_minimum_required(VERSION 3.22...3.25)
 -
 -add_library(uthash INTERFACE)
 -add_library(OBS::uthash ALIAS uthash)
@@ -55,7 +53,7 @@ index 19f262a36..000000000
 -set_target_properties(uthash PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR}")
 diff --git a/deps/uthash/uthash/LICENSE b/deps/uthash/uthash/LICENSE
 deleted file mode 100644
-index e75a243af..000000000
+index e75a243af9b99..0000000000000
 --- a/deps/uthash/uthash/LICENSE
 +++ /dev/null
 @@ -1,21 +0,0 @@
@@ -82,7 +80,7 @@ index e75a243af..000000000
 -
 diff --git a/deps/uthash/uthash/uthash.h b/deps/uthash/uthash/uthash.h
 deleted file mode 100644
-index ac78fdab5..000000000
+index ac78fdab5a4f5..0000000000000
 --- a/deps/uthash/uthash/uthash.h
 +++ /dev/null
 @@ -1,1136 +0,0 @@
@@ -1223,10 +1221,10 @@ index ac78fdab5..000000000
 -
 -#endif /* UTHASH_H */
 diff --git a/libobs/CMakeLists.txt b/libobs/CMakeLists.txt
-index d2e26710d..759e98ede 100644
+index 46112abe71f9d..185a0b6560fac 100644
 --- a/libobs/CMakeLists.txt
 +++ b/libobs/CMakeLists.txt
-@@ -8,6 +8,7 @@ add_library(OBS::libobs ALIAS libobs)
+@@ -16,6 +16,7 @@ add_library(OBS::libobs ALIAS libobs)
  find_package(Threads REQUIRED)
  find_package(FFmpeg REQUIRED avformat avutil swscale swresample OPTIONAL_COMPONENTS avcodec)
  find_package(ZLIB REQUIRED)
@@ -1234,7 +1232,7 @@ index d2e26710d..759e98ede 100644
  
  if(ENABLE_UI)
    find_qt(COMPONENTS Core)
-@@ -15,7 +16,6 @@ endif()
+@@ -23,7 +24,6 @@ endif()
  
  find_package(jansson REQUIRED)
  add_subdirectory("${CMAKE_SOURCE_DIR}/deps/libcaption" "${CMAKE_BINARY_DIR}/deps/libcaption")
@@ -1242,14 +1240,15 @@ index d2e26710d..759e98ede 100644
  
  target_sources(
    libobs
-@@ -225,13 +225,13 @@ target_compile_definitions(
+@@ -232,7 +232,6 @@ target_compile_definitions(
  target_link_libraries(
    libobs
    PRIVATE OBS::caption
 -          OBS::uthash
+           OBS::libobs-version
            FFmpeg::avcodec
            FFmpeg::avformat
-           FFmpeg::avutil
+@@ -240,6 +239,7 @@ target_link_libraries(
            FFmpeg::swscale
            FFmpeg::swresample
            jansson::jansson
@@ -1258,28 +1257,29 @@ index d2e26710d..759e98ede 100644
    PUBLIC Threads::Threads)
  
 diff --git a/libobs/cmake/legacy.cmake b/libobs/cmake/legacy.cmake
-index fcbacd7b9..f870ceb0f 100644
+index 5f13c4c0f04ab..81d82e747bfd9 100644
 --- a/libobs/cmake/legacy.cmake
 +++ b/libobs/cmake/legacy.cmake
-@@ -10,6 +10,7 @@ find_package(
+@@ -20,6 +20,7 @@ find_package(
    COMPONENTS avformat avutil swscale swresample
    OPTIONAL_COMPONENTS avcodec)
  find_package(ZLIB REQUIRED)
 +find_package(Uthash REQUIRED)
  
- if(ENABLE_UI)
-   find_qt(COMPONENTS Core)
-@@ -248,7 +249,7 @@ target_link_libraries(
+ add_library(libobs SHARED)
+ add_library(OBS::libobs ALIAS libobs)
+@@ -252,8 +253,8 @@ target_link_libraries(
            FFmpeg::swresample
            Jansson::Jansson
            OBS::caption
 -          OBS::uthash
+           OBS::libobs-version
 +          Uthash::Uthash
            ZLIB::ZLIB
    PUBLIC Threads::Threads)
  
 diff --git a/libobs/util/uthash.h b/libobs/util/uthash.h
-index 5698466ea..fb6a240da 100644
+index 5698466ea96fb..fb6a240dafff1 100644
 --- a/libobs/util/uthash.h
 +++ b/libobs/util/uthash.h
 @@ -21,7 +21,7 @@
@@ -1291,6 +1291,3 @@ index 5698466ea..fb6a240da 100644
  
  /* Use OBS allocator */
  #undef uthash_malloc
--- 
-2.42.0
-
