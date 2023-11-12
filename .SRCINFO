@@ -1,16 +1,19 @@
 pkgbase = haiti
 	pkgdesc = Hash type identifier (CLI & lib)
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://noraj.github.io/haiti/
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-paint
 	depends = ruby-docopt
-	noextract = haiti-hash-2.0.0.gem
+	optdepends = fzf: for haiti-fzf, john-haiti, hashcat-haiti CLI commands
+	optdepends = john: for john-haiti CLI command
+	optdepends = hashcat: for hashcat-haiti CLI command
+	noextract = haiti-hash-2.1.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/haiti-hash-2.0.0.gem
-	b2sums = 6390629ff0209e3950f7890c0f109e5aecf2e9ae8babcbbed7396c608e822d6a430ca65809cc80b2aa085b6465f48e96a338b940afea5bf823dea6c71fca9013
+	source = https://rubygems.org/downloads/haiti-hash-2.1.0.gem
+	b2sums = e3ef86a28c30dd6b447f160d4d7d20c1a72788d73dd6ed810c667295cae8d557c349a3ce3245381010a1e490acb5a5c62cfee33bea8c6111e98e287d243b4251
 
 pkgname = haiti
