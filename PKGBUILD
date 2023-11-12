@@ -3,9 +3,9 @@
 _module=pyguetzli
 pkgname=python-${_module}
 pkgver=1.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Python binding for Google’s Guetzli library"
-arch=('any')
+arch=(x86_64 armv7h aarch64 riscv32 riscv64)
 url="https://github.com/wanadev/pyguetzli"
 license=('Apache-2.0')
 makedepends=('python-setuptools')
