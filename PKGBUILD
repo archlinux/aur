@@ -14,8 +14,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'lzop'
 options=('!strip')
 
 source=(
-	#'git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver'
-	'git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
+	"git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
+	#'git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # the main kernel config files
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk

@@ -13,7 +13,7 @@ pkgbase = linux-slim
 	makedepends = libelf
 	makedepends = lzop
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.6.1
 	source = config.x86_64
 	source = linux-slim.preset
 	source = linux.install
