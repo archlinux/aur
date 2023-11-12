@@ -1,0 +1,16 @@
+pkgbase = jupiter-fan-control
+	pkgdesc = Jupiter fan controller
+	pkgver = 20230209.1
+	pkgrel = 1
+	url = https://github.com/firlin123/jupiter-fan-control/tree/$_srctag
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rsync
+	makedepends = openssh
+	depends = python3
+	depends = python-pyaml
+	source = git+https://github.com/firlin123/jupiter-fan-control.git#tag=20230209.1
+	sha512sums = SKIP
+
+pkgname = jupiter-fan-control
