@@ -2,7 +2,7 @@
 
 _pkgname=laigter
 pkgname=${_pkgname}-appimage
-pkgver=1.10.6
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Automatic normal/specular/parallax/occlussion map generator for sprites!"
 arch=('x86_64')
@@ -11,16 +11,16 @@ license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme' 'fuse')
 provides=('laigter')
 conflicts=('laigter')
-source=("https://github.com/azagaya/${_pkgname}/releases/download/$pkgver/${_pkgname}-${pkgver}-${arch}.AppImage"
+source=("https://github.com/azagaya/${_pkgname}/releases/download/$pkgver/${_pkgname}-${arch}.AppImage"
         "https://raw.githubusercontent.com/azagaya/${_pkgname}/master/LICENSE"
         )
 sha256sums=(
-	cab8189c10bf2651ceb82e330901ed5558671da41e95250f183ffe0a5b8da3f1
+	8cdfef343095eab2f4e4604cc12d8acbee1f9e8a0af730f8754a6aa355d462cd
 	5576a91fe9ee4b3ebc0c6e527144449711e497594a93830e2bd7206424910d7b
 	)
 
 options=(!strip)
-_appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
+_appimage="${_pkgname}-${arch}.AppImage"
 noextract=("${_appimage}")
 
 
