@@ -39,6 +39,7 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/figma-linux" "${pkgdir}/usr/bin/figma-linux"
 }
+
 sha256sums=('21def936e0a912743e4f6b5832b7c59ff5437538f93b372ff1f2949d35579dc4'
             'c94eaaf01a82688ab7951ea1d1085f50c3ebed588993d68c173139db848b21c6'
             '40b456b40c557395b1d9cedd035c7d14a169f8207d60441177e1f3c0582768da'
