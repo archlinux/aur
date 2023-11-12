@@ -2,17 +2,17 @@
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
 pkgver=v0.28.0.r0.gd2f36ca5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source game launcher"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/OpenGamepadUI"
 license=('GPL')
 groups=()
 depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
-	'libxdmcp' 'gamescope' 'ryzenadj-git' 'networkmanager' 'vulkan-tools'
+	'libxdmcp' 'gamescope' 'ryzenadj' 'vulkan-tools'
 	'mesa-utils'
 )
-optdepends=('firejail' 'bubblewrap' 'wireplumber')
+optdepends=('firejail' 'bubblewrap' 'wireplumber' 'networkmanager')
 makedepends=('godot' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	'libxi' 'libxrandr' 'mesa' 'glu' 'libglvnd' 'alsa-lib' 'make'
 	'unzip' 'wget' 'git'

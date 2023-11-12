@@ -3,4 +3,4 @@ build: clean
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf *.tar.* *.pkg.* src pkg
+	rm -rf *.tar.* *.pkg.* src pkg ./OpenGamepadUI
