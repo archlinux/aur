@@ -1,8 +1,8 @@
 # Maintainer: autinerd <autinerd-arch at kuyateh dot eu>
 
 pkgname=arcticons-icon-theme-git
-pkgver=r31.a18d75e
-pkgrel=1
+pkgver=8.0.6.0.r0.g6d5e992d
+pkgrel=2
 pkgdesc='A monotone line-based icon pack for android - freedesktop version (git version)'
 arch=('any')
 url='https://github.com/Donnnno/Arcticons-Linux'
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/Arcticons-Linux"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
