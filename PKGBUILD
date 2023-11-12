@@ -1,14 +1,15 @@
 # Maintainer: nroi <nroi@mailbox.org>
-pkgname=audiowarden-git
+_appname='audiowarden'
+pkgname="${_appname}-git"
 pkgdesc="Skip spotify songs you don't like"
-pkgver=0.1.1.r0.g891dd82
+pkgver=0.1.1.r10.g0f3d12c
 pkgrel=1
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/nroi/audiowarden'
 license=('MIT')
-provides=("audiowarden")
 makedepends=('cargo' 'git')
-depends=('curl' 'pacman-contrib')
+provides=("${_appname}")
+conflicts=("${_appname}")
 
 source=('git+https://github.com/nroi/audiowarden.git'
         'audiowarden.service'
@@ -18,19 +19,19 @@ sha256sums=('SKIP'
 )
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${_appname}"
   # To avoid the warning "Package contains reference to $srcdir"
   export CARGO_BUILD_RUSTFLAGS="--remap-path-prefix $HOME=HOME"
   cargo build --release
 }
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${_appname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${_appname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/audiowarden.service" "${pkgdir}/usr/lib/systemd/user/audiowarden.service"
-  install -Dm755 "${pkgname%-git}/target/release/audiowarden" "$pkgdir/usr/bin/audiowarden"
+  install -Dm755 "${_appname}/target/release/audiowarden" "$pkgdir/usr/bin/audiowarden"
 }
