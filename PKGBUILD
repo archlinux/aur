@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3472.ca39e6dff
+pkgver=r3476.e419facdc
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -254,7 +254,7 @@ build() {
 	git remote set-url origin ${url}
 
 	# Configure
-	cmake --preset ${BUILDPRESET} -DUSE_VITA3K_UPDATE=OFF
+	cmake --preset ${BUILDPRESET} -DUSE_VITA3K_UPDATE=OFF -DXXH_X86DISPATCH_ALLOW_AVX=ON
 	# Build
 	cmake --build build/${BUILDPRESET} --config Release
 }
