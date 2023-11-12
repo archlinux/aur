@@ -1,7 +1,7 @@
 pkgbase = obs-loudness-dock
 	pkgdesc = This is a plugin to provide a dock window displaying EBU R 128 loudness meter
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/loudness-dock.1751/
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = obs-loudness-dock
 	depends = libebur128
 	depends = qt6-base
 	options = debug
-	source = obs-loudness-dock-0.2.0.tar.gz::https://github.com/norihiro/obs-loudness-dock/archive/0.2.0.tar.gz
-	sha256sums = f0dbf84b11cae9f28e1e62b21f9e81ff2d361dbbdcdb66cd5317dd9b45748720
+	source = obs-loudness-dock-0.2.1.tar.gz::https://github.com/norihiro/obs-loudness-dock/archive/0.2.1.tar.gz
+	sha256sums = 68e5255210a7370a8b10cfa188cebcea8b0f9d37e430c2f8a49974696cb486cd
 
 pkgname = obs-loudness-dock
