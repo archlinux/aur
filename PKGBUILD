@@ -2,12 +2,12 @@
 # Maintainer: KreativeKorp <support@kreativekorp.com>
 pkgname=bitsnpicas-git
 pkgver=2.0.2.r319.8c20bb4
-pkgrel=1
+pkgrel=2
 pkgdesc="Kreative BitsNPicas, with MapEdit and KeyEdit, in the latest snapshot version"
 arch=("any")
 url="https://github.com/kreativekorp/bitsnpicas"
 license=("MPL")
-depends=("java-runtime" "hicolor-icon-theme" "xdg-utils" "bash")
+depends=("java-runtime" "hicolor-icon-theme" "xdg-utils" "bash" "libxrender" "libxtst" "fontconfig" "xorg-mkfontdir" "ttf-font")
 makedepends=("jdk-openjdk" "make" "git")
 provides=("bitsnpicas")
 source=(
@@ -49,8 +49,8 @@ package() {
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/dep/mapedit.desktop" "${pkgdir}/usr/share/applications/mapedit.desktop"
   install -D -m644 -T "${srcdir}/${pkgname}/main/java/BitsNPicas/dep/keyedit.desktop" "${pkgdir}/usr/share/applications/keyedit.desktop"
 
-  # Create symbol link from /usr/lib to /usr/local/lib, etc
-  mkdir -p ${pkgdir}/usr/local
-  ln -s ${pkgdir}/usr/lib ${pkgdir}/usr/local
-  ln -s ${pkgdir}/usr/bin ${pkgdir}/usr/local
+  # (doesn't work)
+  # mkdir -p ${pkgdir}/usr/local
+  # ln -s ${pkgdir}/usr/lib ${pkgdir}/usr/local
+  # ln -s ${pkgdir}/usr/bin ${pkgdir}/usr/local
 }
