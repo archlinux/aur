@@ -1,3 +1,9 @@
+##
+## This Makefile is just for the maintainer of this package
+## to easily keep this package up to date.
+## This won't have any effect on your build.
+##
+
 MAKEFLAGS += --warn-undefined-variables
 SHELL=/bin/bash
 
@@ -6,7 +12,7 @@ VERSION = $(shell grep pkgver .SRCINFO | cut -d '=' -f 2 | tr -d '[:space:]')
 TRASH = $(shell git check-ignore * | tr '\n' ' ')
 
 # DEFAULT
-all: clean log sum build check pre clean
+all: clean sum build check pre clean
 
 # just build the package
 build:
@@ -23,7 +29,7 @@ sum:
 # check/lint
 check:
 	@echo "shellcheck: "
-	shellcheck -e SC2148 -e SC2034 PKGBUILD || exit 0
+	shellcheck -e SC2148 -e SC2034 -e SC2164 PKGBUILD || exit 0
 
 	@echo "shell formate: "
 	shfmt -d PKGBUILD || exit 0
@@ -46,19 +52,6 @@ else
     fi
 endif
 
-# generate `changelog.md`
-log:
-	@echo "wait, it will take some time"
-	$(eval NAME := $(shell gh release --repo $(REPO) view --json name | jq -r .name))
-	echo "# Name: $(NAME) " >changelog.md
-	$(eval URL := $(shell gh release --repo $(REPO) view --json url | jq -r .url))
-	echo "### URL: $(URL)" >>changelog.md
-	$(eval PUBLISHED_AT := $(shell gh release --repo $(REPO) view --json publishedAt | jq -r .publishedAt))
-	$(eval AUTHOR := $(shell gh release --repo $(REPO) view --json author | jq -r .author.login))
-	echo "### published at '$(PUBLISHED_AT)' by $(AUTHOR)" >>changelog.md
-	echo "---" >>changelog.md
-	gh release --repo $(REPO) view --json body | jq -r .body >>changelog.md
-
 # prepare for commit
 pre:
 	shfmt -w PKGBUILD
@@ -67,7 +60,6 @@ pre:
 	git diff
 
 	git add PKGBUILD
-	git add changelog.md
 	git add .SRCINFO
 	git add .gitignore
 	git add Makefile
