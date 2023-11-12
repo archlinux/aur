@@ -2,20 +2,22 @@
 # Co-Maintainer: Martin Rys <https://rys.pw/contact>
 
 pkgname=loot
-pkgver=0.22.0
+# https://github.com/loot/loot/releases
+pkgver=0.22.1
+# https://github.com/loot/libloot/releases
 _pkglibver=0.22.1
 pkgrel=1
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL3')
-depends=('boost-libs' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'libxdamage' 'libxcomposite' 'libxcursor' 'libxrandr' 'libxss' 'libxtst' 'qt6-base')
-makedepends=('git' 'cmake' 'rust' 'cbindgen' 'boost' 'onetbb')
+depends=('boost-libs' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'libxdamage' 'libxcomposite' 'libxcursor' 'libxrandr' 'libxss' 'libxtst' 'qt6-base' 'hicolor-icon-theme' 'onetbb')
+makedepends=('git' 'cmake' 'rust' 'cbindgen' 'boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
 )
-sha256sums=('742666e11cffdfa523b95bd1e3c7bad3392e4f105d660eebf8f791bb81d21c5e'
+sha256sums=('8c57b6941bbc72437310eaf146e13131e282176479293c362e6b9049a9ac34ce'
             '43a2dac9463b8cc532787e6177fb056bdae73b14a611f743724191d0120f8aa9'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
 )
