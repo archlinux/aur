@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=ja2-stracciatella
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jagged Alliance 2 Stracciatella"
 arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
@@ -15,15 +15,18 @@ _miniaudio_commit='4dfe7c4c31df46e78d9a1cc0d2d6f1aef5a5d58c'
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     # Header-only dependencies of JA2
-    "https://github.com/Neargye/magic_enum/releases/download/v${_magic_enum_ver}/magic_enum.hpp"
+    "magic_enum_${_magic_enum_ver}.hpp::https://github.com/Neargye/magic_enum/releases/download/v${_magic_enum_ver}/magic_enum.hpp"
     "https://github.com/mackron/miniaudio/archive/${_miniaudio_commit}.tar.gz"
 )
 sha256sums=('1c15b4f281bba9aff1c3409d4308d22840eb815a8a3ab53f7be69a5841f300a2'
-    '903f026fedfff836619b78e10ce4a352fff314ba801aba672a4b509735e38540'
-    '76c154a60e320ae2054ac0e93480f2dffc12a5129bdb2ed4a62e0cce8d345c36')
+            'f34487663db05b10acae7077dd0b5cf5794112a379567322e251ef0068875dc4'
+            '76c154a60e320ae2054ac0e93480f2dffc12a5129bdb2ed4a62e0cce8d345c36')
 
 build() {
     cd "${srcdir}" || return 1
+
+    mkdir -p "${srcdir}/magic_enum"
+    cp "${srcdir}/magic_enum_${_magic_enum_ver}.hpp" "${srcdir}/magic_enum/magic_enum.hpp"
 
     cmake -GNinja -B build -S "${srcdir}/ja2-stracciatella-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
@@ -33,7 +36,7 @@ build() {
         -DLOCAL_SOL_LIB=OFF \
         -DLOCAL_STRING_THEORY_LIB=OFF \
         -DLOCAL_MAGICENUM_LIB=OFF \
-        -DMAGICENUM_INCLUDE_DIR="${srcdir}" \
+        -DMAGICENUM_INCLUDE_DIR="${srcdir}/magic_enum" \
         -DLOCAL_MINIAUDIO_LIB=OFF \
         -DMINIAUDIO_INCLUDE_DIR="${srcdir}/miniaudio-${_miniaudio_commit}" \
         -DWITH_UNITTESTS=OFF \

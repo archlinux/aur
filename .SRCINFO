@@ -1,7 +1,7 @@
 pkgbase = ja2-stracciatella
 	pkgdesc = Jagged Alliance 2 Stracciatella
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ja2-stracciatella/ja2-stracciatella
 	arch = x86_64
 	license = custom
@@ -15,10 +15,10 @@ pkgbase = ja2-stracciatella
 	depends = lua53
 	optdepends = fltk: GUI launcher
 	source = ja2-stracciatella-0.21.0.tar.gz::https://github.com/ja2-stracciatella/ja2-stracciatella/archive/refs/tags/v0.21.0.tar.gz
-	source = https://github.com/Neargye/magic_enum/releases/download/v0.8.2/magic_enum.hpp
+	source = magic_enum_0.8.2.hpp::https://github.com/Neargye/magic_enum/releases/download/v0.8.2/magic_enum.hpp
 	source = https://github.com/mackron/miniaudio/archive/4dfe7c4c31df46e78d9a1cc0d2d6f1aef5a5d58c.tar.gz
 	sha256sums = 1c15b4f281bba9aff1c3409d4308d22840eb815a8a3ab53f7be69a5841f300a2
-	sha256sums = 903f026fedfff836619b78e10ce4a352fff314ba801aba672a4b509735e38540
+	sha256sums = f34487663db05b10acae7077dd0b5cf5794112a379567322e251ef0068875dc4
 	sha256sums = 76c154a60e320ae2054ac0e93480f2dffc12a5129bdb2ed4a62e0cce8d345c36
 
 pkgname = ja2-stracciatella
