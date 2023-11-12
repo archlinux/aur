@@ -2,7 +2,7 @@
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.18.0.r85.g982cc78f0
+pkgver=2.18.0.r123.g260774bf1
 pkgrel=1
 pkgdesc="Fast, secure and easy to use VPN. Built by the makers of Firefox."
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -79,7 +79,7 @@ else
   }
 fi
 
-_submodules_mozillavpn() {
+_source_mozillavpn() {
   source+=(
     #'kdab.android_openssl'::'git+https://github.com/KDAB/android_openssl.git'
     'adjust.android_sdk'::'git+https://github.com/adjust/android_sdk.git'
@@ -124,7 +124,7 @@ _submodules_mozillavpn() {
   )
 }
 
-_submodules_getsentry_sentry_native() {
+_source_getsentry_sentry_native() {
   source+=(
     'chromium.googlesource.com.linux-syscall-support'::'git+https://chromium.googlesource.com/linux-syscall-support.git'
     'getsentry.breakpad'::'git+https://github.com/getsentry/breakpad.git'
@@ -155,8 +155,8 @@ _submodules_getsentry_sentry_native() {
   )
 }
 
-_submodules_getsentry_sentry_native
-_submodules_mozillavpn
+_source_getsentry_sentry_native
+_source_mozillavpn
 
 prepare() {
   _prepare_mozillavpn

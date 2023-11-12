@@ -1,6 +1,6 @@
 pkgbase = mozillavpn-git
 	pkgdesc = Fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.18.0.r85.g982cc78f0
+	pkgver = 2.18.0.r123.g260774bf1
 	pkgrel = 1
 	url = https://github.com/mozilla-mobile/mozilla-vpn-client
 	arch = x86_64
