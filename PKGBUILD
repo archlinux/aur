@@ -10,6 +10,7 @@ url="https://github.com/nroi/audiowarden"
 license=('MIT')
 depends=()
 provides=("${_appname}")
+conflicts=("${_appname}")
 source=('audiowarden.service')
 source_x86_64+=("https://github.com/nroi/${_appname}/releases/download/${pkgver}/${_appname}-x86.tar.gz")
 sha256sums=('a8789704183f5bb551807fff056935c047ddf6c0a72eeb0047ee0ceb4777f3cb')
