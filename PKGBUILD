@@ -1,10 +1,9 @@
-# Maintainer: dakataca <🐬danieldakataca@gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-kamakiri
-pkgver=6.5.9.arch2
+pkgver=6.6.1.arch1
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Linux Kamakiri'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
@@ -31,31 +30,28 @@ _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-  config  # the main kernel config file.
-  linux-arch-kamakiri.patch.zst{,.sig}  # The kamakiri patch.
+  config  # the main kernel config file
+  linux-arch-kamakiri.patch.zst
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-  4BA1F928CBA7CA219A14741B24FB14CFDD5D0319  # dakataca
+  C7E7849466FE2358343588377258734B41C31549
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('c6662f64713f56bf30e009c32eac15536fad5fd1c02e8a3daf62a0dc2f058fd5'
+sha256sums=('da1ed7d47c97ed72c9354091628740aa3c40a3c9cd7382871f3cedbd60588234'
             'SKIP'
-            '98c8e04079699a9316c37ed299a363c80ff9625388c492116683b929f35dcab6'
+            '9fd606b2ac0b4ae5df8867b7651574a2e5c480366bac224406fc34ad5d79009b'
             'SKIP'
-            '5aff0f8584e01165dc20cd107df338f57a13ce7f0da14e07f4c9097cd748469f'
-            'd4833f5cf2250b06132252964423cdcb7bbc942c17a87d44c06157123ea05d5f'
-            'SKIP')
-b2sums=('fb5fcc0dc79e2f615a550283481492a8185414d65369cbe805909112735593e5fc8bdbd482a347dc4cb3dcac979bea21cd03c503932e9321856eeea685d31c65'
+            'bdfd2629b1fe907b9270fc540adaa51ff526cbd361b23aba38c4c5fce7f5397b'
+            'd4833f5cf2250b06132252964423cdcb7bbc942c17a87d44c06157123ea05d5f')
+b2sums=('3bb35ba0386b00aa76dfd073e87b0d5a319d3116a80c39b11a3acd1219bc7d8b3809c1def24a3c4f52abc60f70c170a2f80d80c6b54459eec016c5ddc404c6fc'
         'SKIP'
-        '2b8309c03ae0dd7582b471e39b459fbcb653bd3971eda91576791b1dabe73aad89d4b468a59d0cf3e834f6085ad33ac5449b60a567960835f6f56dd739411262'
+        'fda390a1633ea51e00b9d6ab4b89ca2e9ef472261e12e6e0d978d42678449150c384d2be1e9d9655704ffc2ad2f34b6e6dcf0b5862f1419d805e6c67e3e67bb3'
         'SKIP'
-        '1445dc90cf8bd3f2b9493e9e48eb76247bd37de412bdb247b132694e047ec260c25203836888ce6c1c864f46dab80b453b3f47d8b3a92f1f9dffc5589d7bc320'
-        'a9cdd2ef6e80830d3d1dd6d9ddfd34f4edc5ea79f268b9018c11ae8a9e43696cb3b2ef6aaa72ca3937b100750077f163efbc9258f53a601c16b4f0b8ecbb94a0'
-        'SKIP')
-
+        '3ef3c64bf46d0ca5893d4fcdedb6278507f5e05571836bcd871f6b832de97295cb7b09e8cd95fd2928fbfa324081d96b4df3bb016dfc8206976a6154b5c32217'
+        'a9cdd2ef6e80830d3d1dd6d9ddfd34f4edc5ea79f268b9018c11ae8a9e43696cb3b2ef6aaa72ca3937b100750077f163efbc9258f53a601c16b4f0b8ecbb94a0')
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -128,8 +124,8 @@ _package() {
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
@@ -246,6 +242,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+
 
 ## Source:
 # git clone https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git
