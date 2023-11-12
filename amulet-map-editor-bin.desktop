@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Amulet Map Editor
+Comment=A new Minecraft world editor and converter that supports all versions since Java 1.12 and Bedrock 1.7.
+Exec=/usr/bin/amulet-map-editor-bin
+Icon=amulet-map-editor-bin
+Terminal=true
+StartupNotify=false
+Categories=Application;Development;TextEditor;
