@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multicrispr
-_pkgver=1.11.1
+_pkgver=1.12.2
 pkgname=r-${_pkgname,,}
-pkgver=1.11.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='Multi-locus multi-purpose Crispr/Cas design'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33c09753a514a8dbbdcc8c8552d7efc0a8e6c43874d8905f4c733fac6cdd5f1d')
+sha256sums=('7e3fe9773fad638f3de6adc1f175036499134ff772e62b39ef606bd459cdbadf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
