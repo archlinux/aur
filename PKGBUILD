@@ -1,24 +1,33 @@
 pkgname=tuxclocker-git
 _pkgname=tuxclocker
 pkgver=1.3.0+rc.1+6+gae13f1a
-pkgrel=1
+pkgrel=2
 pkgdesc="A hardware controlling and monitoring program for GPUs and CPUs"
 arch=('x86_64')
 url="https://github.com/Lurkki14/tuxclocker"
+
 license=('GPL3')
+
 depends=('boost-libs' 'libdrm' 'qt5-base' 'qt5-charts')
 makedepends=('boost' 'git' 'meson' 'qt5-tools')
 optdepends=('libxnvctrl: XNVCtrl' 'nvidia-utils: nvidia-ml')
+
+conflicts=('tuxclocker')
+
 source=(
             "git+https://github.com/Lurkki14/tuxclocker.git#branch=master" 
             'tuxclocker.desktop'
             'tuxclockerd.service'
+            'tuxclockerd-dbus.service'
+            'tuxclocker.env'
         )
 sha256sums=(
             
             'SKIP'
-            '36036dbb5c4f87e43b50245368fe6c851c2e9112d69b35ce18d16682251d2993'
-            '8653298ae35ecefae135ceb3d518d87d9ff3d2b56a0b456327085fa6f9a38b4d'
+            'bedbd8bedbbb1235790d882d5e51eb2af21f27b64b62eafa0e38222f54b560a0'
+	        'b39fb7ee38605d9626740f930bd0b58f15901655fba15ce0f5c8a5f4005637e8'
+	        '4928c76f4cee4f4bc435031f12620f99aa76b72fa459e809e30d58979e326a1e'
+            'a5f194cce493e305da8592b630223d04a25e57c8c4e5a44ed47030f893270dde'
         )
 
 pkgver() {
@@ -46,16 +55,22 @@ package() {
  
     popd
 
+    install -Dm644 "$srcdir/$_pkgname/dev/dbusconf.conf" "$pkgdir/etc/${_pkgname}-dbusconf.conf"
+
     install -Dm644 "$srcdir/$_pkgname/src/$_pkgname-qt/resources/$_pkgname-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
     install -Dm644 "tuxclocker.desktop" -t "$pkgdir/usr/share/applications/"
 
+    install -Dm644 "tuxclockerd-dbus.service" "$pkgdir/usr/lib/systemd/system/tuxclockerd-dbus.service"
+
     install -Dm644 "tuxclockerd.service" "$pkgdir/usr/lib/systemd/system/tuxclockerd.service"
+
+    install -Dm655 "tuxclocker.env" "$pkgdir/etc/"
 
     echo
     echo
     echo -----------------------------------------------------------------------------------------------
-    echo 'Please do not forget to enable and start systemd service "systemctl enable --now tuxclockerd"'
+    echo 'Please do not forget to enable and start systemd services "systemctl enable --now tuxclockerd-dbus tuxclockerd"'
     echo -----------------------------------------------------------------------------------------------
     echo
     echo

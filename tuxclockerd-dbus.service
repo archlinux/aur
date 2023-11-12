@@ -1,13 +1,11 @@
 [Unit]
-Description=TuxClocker Daemon
+Description=TuxClocker DBus Daemon
 After=graphical.target
-Requires=tuxclockerd-dbus.service
-After=tuxclockerd-dbus.service
 
 [Service]
 Type=simple
 EnvironmentFile=/etc/tuxclocker.env
-ExecStart=/usr/bin/tuxclockerd
+ExecStart=/usr/bin/dbus-daemon --config-file=${TUX_DBUS_CONF_FILE} --nofork
 Restart=on-failure
 RestartSec=5
 

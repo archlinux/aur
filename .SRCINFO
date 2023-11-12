@@ -1,7 +1,7 @@
 pkgbase = tuxclocker-git
 	pkgdesc = A hardware controlling and monitoring program for GPUs and CPUs. Git version.
 	pkgver = 1.3.0+rc.1+6+gae13f1a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lurkki14/tuxclocker
 	arch = x86_64
 	license = GPL3
@@ -16,12 +16,19 @@ pkgbase = tuxclocker-git
 	depends = qt5-charts
 	optdepends = libxnvctrl: XNVCtrl
 	optdepends = nvidia-utils: nvidia-ml
+	conflicts = tuxclocker
+
 	source = git+https://github.com/Lurkki14/tuxclocker.git#branch=master
 	source = tuxclocker.desktop
 	source = tuxclockerd.service
+	source = tuxclockerd-dbus.service
+	source = tuxclocker.env
+	
 	sha256sums = SKIP
-	sha256sums = 36036dbb5c4f87e43b50245368fe6c851c2e9112d69b35ce18d16682251d2993
-	sha256sums = 8653298ae35ecefae135ceb3d518d87d9ff3d2b56a0b456327085fa6f9a38b4d
+	sha256sums = bedbd8bedbbb1235790d882d5e51eb2af21f27b64b62eafa0e38222f54b560a0
+	sha256sums = b39fb7ee38605d9626740f930bd0b58f15901655fba15ce0f5c8a5f4005637e8
+	sha256sums = 4928c76f4cee4f4bc435031f12620f99aa76b72fa459e809e30d58979e326a1e
+	sha256sums = a5f194cce493e305da8592b630223d04a25e57c8c4e5a44ed47030f893270dde
 
 
 pkgname = tuxclocker-git
