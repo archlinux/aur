@@ -1,0 +1,13 @@
+pkgbase = python-minecraft-model-reader
+	pkgver = 1.4.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = model-reader-1.4.0::https://github.com/gentlegiantJGC/Minecraft-Model-Reader/archive/refs/tags/1.4.0.tar.gz
+	md5sums = SKIP
+
+pkgname = python-minecraft-model-reader
