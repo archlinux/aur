@@ -1,12 +1,12 @@
 pkgbase = vimcdoc
-	pkgdesc = Vim chinese documentation
-	pkgver = 2.3.0
+	pkgdesc = Vim Chinese Documentation
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://vimcdoc.sf.net
 	arch = any
-	license = GPL
+	license = custom:vimcdoc
 	depends = vim
-	source = https://nchc.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-2.3.0.tar.gz
-	md5sums = fdc9e9d35a1355423bcc5f75f7f5463c
+	source = https://nchc.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-2.4.0.tar.gz
+	sha256sums = 08f7fb85dc5c7d2535749336d0268262d3a6be213a8bdf2d0de90073be187046
 
 pkgname = vimcdoc
