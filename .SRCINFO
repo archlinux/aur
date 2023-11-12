@@ -1,8 +1,9 @@
 pkgbase = nodejs-autocannon
 	pkgdesc = fast HTTP/1.1 benchmarking tool written in Node.js
 	pkgver = 7.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcollina/autocannon
+	changelog = changelog.md
 	arch = any
 	license = MIT
 	makedepends = npm
