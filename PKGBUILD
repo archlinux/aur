@@ -2,7 +2,7 @@
 
 pkgname=wg++
 pkgver=5.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="WebGrab+Plus is a multi-site incremental xmltv epg grabber"
 arch=('any')
 url="http://webgrabplus.com/"
@@ -27,8 +27,7 @@ prepare() {
 }
 
 package() {
-	cd $pkgname
 	install -d "$pkgdir"/usr/share/$pkgname
-	cp -r --preserve=mode * "$pkgdir"/usr/share/$pkgname
+	cp -r --preserve=mode $pkgname "$pkgdir"/usr/share
 	install -Dm755 "$srcdir"/wgpp.sh "$pkgdir"/usr/bin/$pkgname
 }
