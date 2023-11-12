@@ -103,12 +103,12 @@ main()
 
 start_service()
 {
-  systemctl start displaylink-driver
+  systemctl start --no-block displaylink
 }
 
 stop_service()
 {
-  systemctl stop displaylink-driver
+  systemctl stop displaylink
 }
 
 if [ "$ACTION" = "add" ] && [ "$#" -ge 3 ]; then

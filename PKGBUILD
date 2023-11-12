@@ -27,7 +27,7 @@ source=(displaylink-driver-${pkgver}.zip::https://www.synaptics.com/sites/defaul
 sha256sums=('22c552ead448c80d9e8dd48a842bb511184d07a74180ac76bd89dd144ddda816'
             '83167d307d030abc42f2bbe6ad6a23802433cf5d8fab50afb0d519036518f22b'
             '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
-            '9c9158746b0f6fd6e85b676df1fc6046085e3f1c78db7c5db05da350da776036'
+            '53aac00fecfc04ec9e3d88ea13f5bf7bb05f669ff33e1834ba671f9240fe9641'
             '530c488fa9b2833ff64611ff2b533f63212a85f8ebed446d5a4d51cf9a52c7ea'
             '342e83abfe2a38d5635ea928345e933d2ad127ebd3f7caca476663d4f583684b'
             '9b4609423fd9cfaa8cad8acd086dd6b92cd09182facbb28792affeac1ecc4a45')
@@ -44,7 +44,7 @@ prepare() {
 
 package() {
   echo "Adding udev rule for DisplayLink devices"
-  install -D -m644 99-displaylink.rules "$pkgdir/etc/udev/rules.d/99-displaylink.rules"
+  install -D -m644 99-displaylink.rules "$pkgdir/usr/lib/udev/rules.d/99-displaylink.rules"
   install -D -m755 udev.sh "$pkgdir/opt/displaylink/udev.sh"
 
   echo "Installing DLM systemd service"
