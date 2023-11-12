@@ -6,6 +6,7 @@ arch=('any')
 
 provides=(
   kirigami-addons=0.11.50
+  kquickimageeditor=0.3.5
   kuserfeedback
 
   attica=$pkgver

@@ -4,6 +4,7 @@ pkgbase = kf5-transition-dummy
 	pkgrel = 1
 	arch = any
 	provides = kirigami-addons=0.11.50
+	provides = kquickimageeditor=0.3.5
 	provides = kuserfeedback
 	provides = attica=5.150.0
 	provides = baloo=5.150.0
