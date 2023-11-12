@@ -5,7 +5,7 @@ _projectname=electron
 _major=25
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver="9.3"
+_subver="9.4"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -14,6 +14,7 @@ arch=('x86_64' 'aarch64')
 url=https://electronjs.org/
 license=('MIT' 'custom')
 depends=(c-ares
+         alsa-lib
          gtk3
          libevent
          libffi
@@ -22,8 +23,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kde-cli-tools: file deletion support (kioclient5)'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
-            'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
-)
+            'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
 provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
 conflicts=("${_pkgname}")
 _releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
@@ -35,10 +35,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('439976b34dc9f2dbe24912d073e702f00fd63ffd6fb0c40fec8c739955c1c8b5'
-                   'ba94532620d60cff9a7d2a7fdd3d0b0e16b91acc91b60827c12bc3b39c7f650a')
-sha256sums_aarch64=('6f3fa810262f74aa0ec3739fd78e6895e1e6d448bb24c25adb8588b5b5b5d10c'
-                    'bf1303ee3389574d4769bff7d9de2308d5ce4b92fa240e868b508d9f324b6643')
+sha256sums_x86_64=('65d4473294f024e4ba56a72ba9f87bec51207a7c924fda998acf499e5db4da9c'
+                   '84f92675e3a9616cc163de673ebfafaad3c2976dc500612875a23849bc3661ce')
+sha256sums_aarch64=('7c0f030cf143d682ae838e078d560b76b5f0af8c65d67f6026167c0a04c8f60b'
+                    '119481d318dec273434f9f4f43fb808ff66858cc0da1f17deccc6b08a99fbb83')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
