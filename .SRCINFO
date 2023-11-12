@@ -1,15 +1,15 @@
 pkgbase = ttf-firge
 	pkgdesc = Firge, a programming font that is a combination of Fira Mono and Genshin Gothic.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 4
 	url = https://github.com/yuru7/Firge
 	arch = any
 	license = custom:SIL
-	source = https://github.com/yuru7/Firge/releases/download/v0.2.0/Firge_v0.2.0.zip
-	source = https://github.com/yuru7/Firge/releases/download/v0.2.0/FirgeNerd_v0.2.0.zip
-	source = https://raw.githubusercontent.com/yuru7/Firge/v0.2.0/LICENSE.txt
-	sha256sums = 18ccd0d5c7689a02af4a7217912c0112db9f24071e8b36a716baef3b446c32e7
-	sha256sums = da3dd6437aeb3b68cf57c868602f1e7135b0eed7a91e4682f28a5efd7716afc9
-	sha256sums = 028720dcccc6b8077f18f9b379ced22d2a0a06220ad4844d6a08f5940f947fb5
+	source = https://github.com/yuru7/Firge/releases/download/v0.3.0/Firge_v0.3.0.zip
+	source = https://github.com/yuru7/Firge/releases/download/v0.3.0/FirgeNerd_v0.3.0.zip
+	source = https://raw.githubusercontent.com/yuru7/Firge/v0.3.0/LICENSE
+	sha256sums = c986f621000a6598064c7e2078322ed02040af4f7804d258033df949b35b0527
+	sha256sums = 54cd76378fbc5025f42d441d95ca6ec1d3ecc4270e6107558840fed7c04cfe4f
+	sha256sums = b72891ba4f9947243d786d5d88b655fc48434d35f669bab1fa4d34b575c07601
 
 pkgname = ttf-firge
