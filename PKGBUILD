@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/madmalik/mononoki/archive/$
 b2sums=('584bf6d1f319fd15b30fcc2dc1f3c58e76105b1ca3cd6a02982e80c2df645b9861878dbfa0eb52768c3dfd2900ff30b59a3fad7e77a2785dc08087668cf54931')
 
 package() {
-	cd mononoki-$pkgver || exit
+	cd mononoki-$pkgver
 	install -dm755 "$pkgdir/usr/share/fonts/ttf-mononoki"
 	install -m644 -t "$pkgdir/usr/share/fonts/ttf-mononoki" export/*.ttf
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
