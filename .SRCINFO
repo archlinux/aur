@@ -1,8 +1,9 @@
 pkgbase = nodejs-clinic
 	pkgdesc = diagnoses your Node.js performance issues
 	pkgver = 13.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://clinicjs.org/
+	changelog = changelog.md
 	arch = any
 	license = MIT
 	makedepends = npm

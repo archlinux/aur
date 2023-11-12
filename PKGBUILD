@@ -3,7 +3,7 @@
 _npmname=clinic
 pkgname=nodejs-$_npmname
 pkgver=13.0.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="diagnoses your Node.js performance issues"
 arch=(any)
@@ -16,6 +16,7 @@ makedepends=("npm" "jq")
 provides=("$_npmname")
 conflicts=("$_npmname")
 options=(strip emptydirs zipman)
+changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/clinicjs/node-clinic/main/LICENSE")
