@@ -1,0 +1,18 @@
+pkgbase = python-cfbs-git
+	pkgdesc = Tooling to build, manage and deploy CFEngine policy
+	pkgver = 3.2.12.r0.g5862616
+	pkgrel = 1
+	url = https://cfengine.com
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = git
+	depends = rsync
+	optdepends = autoconf
+	provides = python-cfbs-git
+	conflicts = python-cfbs-git
+	source = git+https://github.com/cfengine/cfbs.git
+	md5sums = SKIP
+
+pkgname = python-cfbs-git

@@ -1,0 +1,4 @@
+python-cfbs-git-*
+src/
+pkg/
+PKGBUILD-namcap.log
