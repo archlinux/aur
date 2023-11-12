@@ -2,7 +2,7 @@
 
 pkgname=hamonikr-onboard-layout-ko
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean Keyboard Layout for onboard"
 url="https://github.com/hamonikr/hamonikr-onboard-layout-ko"
 arch=('any')
@@ -25,5 +25,5 @@ sha256sums=('cec35230669f63668432d7122b1e3fdf00e7ea6e7b2132b8057f042f582ca1ba'
 
 package() {
   mkdir -p "$pkgdir/$_path"
-  install -Dm644 * "$pkgdir/$_path"
+  install -Dm644 *-ko.onboard "$pkgdir/$_path"
 }

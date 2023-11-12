@@ -1,7 +1,7 @@
 pkgbase = hamonikr-onboard-layout-ko
 	pkgdesc = Korean Keyboard Layout for onboard
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hamonikr/hamonikr-onboard-layout-ko
 	arch = any
 	license = GPL3
