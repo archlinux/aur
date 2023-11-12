@@ -2,8 +2,8 @@
 # Co-Maintainer/Author: Justin Timperio <justintimperio[at]gmail[dot]com>
  
 pkgname=pacback-git
-pkgver=r132.2c64d03
-pkgrel=0
+pkgver=r133.775373a
+pkgrel=1
 pkgdesc='Advanced Version Control for Arch Linux'
 arch=('x86_64')
 url='https://github.com/JustinTimperio/pacback'
@@ -35,10 +35,10 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  install -dm 755 "${pkgdir}"{/usr/{share/{pacback,pacback/paf,licences/pacback},bin/},/etc}
+  install -dm 755 "${pkgdir}"{/usr/{share/{pacback,pacback/paf,licenses/pacback},bin/},/etc}
   install -dm 1777 "${pkgdir}"/tmp
   cp -dr --no-preserve='ownership' pacback/core "${pkgdir}"/usr/share/pacback
-  cp -dr --no-preserve='ownership' pacback/LICENSE "${pkgdir}"/usr/share/licences/pacback
+  cp -dr --no-preserve='ownership' pacback/LICENSE "${pkgdir}"/usr/share/licenses/pacback
   cp -dr --no-preserve='ownership' pacback/build/config "${pkgdir}"/etc/pacback.conf
   ln -sf /usr/share/pacback/core/pacback.py "${pkgdir}"/usr/bin/pacback
 }
