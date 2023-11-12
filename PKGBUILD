@@ -7,10 +7,10 @@ pkgdesc="Multidimensional data analysis and reproducible computational experimen
 url="https://www.reproducibility.org/wiki/Main_Page"
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd'
-	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'python' 'swig')
+depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd' 'scons'
+	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'python-numpy' 'swig' 'cblas')
 optdepends=('cuda: GPU acceleration, but not compatible with cuda 12' 'plplot: scientific plot ')
-makedepends=('scons')
+makedepends=('scons' 'python')
 options=('strip')
 source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/rsf/files/$pkgname/$pkgname-4.0/$pkgname-$pkgver.tar.gz/download")
 sha256sums=('91148aabfb27919934651a93d0a33aa90debbd875d615bd20fa92a22001bea4f')
