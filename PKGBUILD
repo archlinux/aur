@@ -25,7 +25,7 @@ depends=(python-filelock
   python-pyotp
   python-rich) # python-sbvirtualdisplay python-pynose
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest-rerunfailures selenium-manager chromedriver)
+checkdepends=(python-pytest-rerunfailures selenium-manager chromium)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
 sha512sums=('89c6f9fd6240a22369eafba4a403cdec54abaeff8ae6d16f84f274a4cfc37acef85adb96bd68a7349d704490004a93eb9759b5c1a3976cc747848d07f9c8e513')
 
