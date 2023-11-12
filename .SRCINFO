@@ -1,6 +1,6 @@
 pkgbase = ttf-ms-win11-fod-zh_cn
 	pkgver = 10.0.22631.2506
-	pkgrel = 2
+	pkgrel = 3
 	url = https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list#chinese-simplified-supplemental-fonts
 	arch = any
 	license = custom

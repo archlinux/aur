@@ -8,18 +8,22 @@
 # Please consult Microsoft license before using fonts.
 #
 # You can acquire fonts from an installed and up-to-date Windows 11
-# system with corrosponding language pack installed.
+# system with corrosponding optional fonts installed.
+#
+# You can go to Settings > Apps > Optional features > Add an optional feature. 
+# Then search for "Simplified Chinese Supplemental Fonts" and install it.
 #
 # On the installed Windows system fonts are usually located in
 #       C:\Windows\Fonts
 # and license file is
 #       C:\Windows\System32\Licenses\neutral\_Default\Core\license.rtf
-# You need all files listed in the _ttf_ms_win10_fod_zh_cn arrays.Place them in the
+#
+# You need all files listed in the _ttf_ms_win11_fod_zh_cn arrays. Place them in the
 # same directory as this PKGBUILD file, then run makepkg.
 
 pkgname=ttf-ms-win11-fod-zh_cn
 pkgver=10.0.22631.2506
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list#chinese-simplified-supplemental-fonts'
 license=(custom)
