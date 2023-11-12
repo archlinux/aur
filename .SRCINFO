@@ -1,26 +1,12 @@
 pkgbase = saga-gis-ltr
-	pkgdesc = A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis. Compactible with QGIS
+	pkgdesc = [Meta-PKG] 'saga-gis-ltr' is broken as it's unmaintained since 2018. Migrate to 'saga-gis'
 	pkgver = 2.3.1
-	pkgrel = 1
-	url = http://www.saga-gis.org
-	arch = i686
-	arch = x86_64
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/saga-gis
+	install = saga-gis-ltr.install
+	arch = any
 	license = GPL3
-	depends = wxgtk
-	depends = proj
-	depends = gdal
-	depends = libtiff
-	depends = unixodbc
-	depends = jasper
-	depends = swig
-	optdepends = opencv2
-	optdepends = vigra
-	optdepends = liblas
-	optdepends = libharu
-	provides = saga-gis
+	optdepends = saga-gis: migrate to this working, maintained package by installing it
 	conflicts = saga-gis
-	source = https://sourceforge.net/projects/saga-gis/files/SAGA%20-%202/SAGA%202.3.1/saga_2.3.1.tar.gz/download
-	md5sums = 035b2054790721028b97766e025bb340
 
 pkgname = saga-gis-ltr
-

@@ -1,0 +1,19 @@
+pre_install() {
+	echo
+	echo "ATTENTION"
+	echo
+	echo "The AUR package 'saga-gis-ltr' has been unmaintained since 2018 and is long broken,"
+	echo "so it has now been removed from AUR."
+	echo
+	echo "Please migrate to the working 'saga-gis' package:"
+	echo "https://aur.archlinux.org/packages/saga-gis"
+	echo
+	echo "Please uninstall 'saga-gis-ltr' before that migration:"
+	echo
+	echo "pacman -Rnsc saga-gis-ltr"
+	echo
+}
+
+pre_upgrade() {
+	pre_install
+}
