@@ -1,10 +1,10 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.0.0-rc2
+_pkgver=30.0.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
-epoch=6
+epoch=7
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -20,9 +20,9 @@ depends=(
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "ftl-sdk" # Deps of Outputs plugin
-  "gcc-libs" # Deps of any C related binary
+  "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
-  "glibc" # Deps of any C++ related binary
+  "glibc" # Deps of any C related binary
   "jansson" # Deps of libobs and rtmp-services plugin
   "libgl" # Deps of libobs-opengl and OBS Studio
   "libpipewire" # Deps of the PipeWire plugin
@@ -148,9 +148,9 @@ build() {
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -Wno-dev \
-    -DRELEASE_CANDIDATE="$_pkgver"
+    -DOBS_VERSION_OVERRIDE="$_pkgver"
 #    -DBETA="$_pkgver"
-#    -DOBS_VERSION_OVERRIDE="$_pkgver"
+#    -DRELEASE_CANDIDATE="$_pkgver"
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-rc-$pkgrel\" //|" build/config/obsconfig.h
 
