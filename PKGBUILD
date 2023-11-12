@@ -10,8 +10,8 @@ license=(BSD)
 source=("${pkgname%-bin}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386"
         "${pkgname%-bin}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
 noextract=(${pkgname%-bin}-${pkgver}.tar.gz)
-sha256sums=('a9c38ef19bfac7da0f3508d9b88fcfe49a27cc5b9039d69a14fb829e33d093b8'
-            'eb1d63f9fc5ddcc493bf03622572499ecdcac9f9da81b5be2e9ab3740310de9b')
+sha256sums=('0ddc09e0450e104e7d8452994d63180c426f84dfc04d588f6ea98d607c4ddb5a'
+            'b30f257acab4c1999b2a991dfd0da3952d69676a45cd1db55cc4b0250a0855ce')
 
 prepare() {
 
