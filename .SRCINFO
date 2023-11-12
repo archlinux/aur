@@ -1,6 +1,6 @@
 pkgbase = electron26-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 26
-	pkgver = 26.4.3
+	pkgver = 26.5.0
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = electron26-bin
 	license = MIT
 	license = custom
 	depends = c-ares
+	depends = alsa-lib
 	depends = gtk3
 	depends = libevent
 	depends = libffi
@@ -17,16 +18,16 @@ pkgbase = electron26-bin
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron26=26.4.3
-	provides = electron=26.4.3
+	provides = electron26=26.5.0
+	provides = electron=26.5.0
 	conflicts = electron26
-	source_x86_64 = electron26-bin-chromedriver-26.4.3-x86_64.zip::https://github.com/electron/electron/releases/download/v26.4.3/chromedriver-v26.4.3-linux-x64.zip
-	source_x86_64 = electron26-bin-26.4.3-x86_64.zip::https://github.com/electron/electron/releases/download/v26.4.3/electron-v26.4.3-linux-x64.zip
-	sha256sums_x86_64 = e772b6b990b523023c218f437f96375b126347d12f7e1600e11af6930673af1b
-	sha256sums_x86_64 = 538fd5acb1057125c2979d71189413b9c5781f55be7c287df140a4bde4798335
-	source_aarch64 = electron26-bin-chromedriver-26.4.3-aarch64.zip::https://github.com/electron/electron/releases/download/v26.4.3/chromedriver-v26.4.3-linux-arm64.zip
-	source_aarch64 = electron26-bin-26.4.3-aarch64.zip::https://github.com/electron/electron/releases/download/v26.4.3/electron-v26.4.3-linux-arm64.zip
-	sha256sums_aarch64 = 3860f7100ade62561190782c9ce8f8b36dcf95af4f394ada8ed0cf2ad53c21eb
-	sha256sums_aarch64 = 242ab47dd8dfe5807410fd31ba5d40dfb1dc5e09b4b35755ec847274f0421950
+	source_x86_64 = electron26-bin-chromedriver-26.5.0-x86_64.zip::https://github.com/electron/electron/releases/download/v26.5.0/chromedriver-v26.5.0-linux-x64.zip
+	source_x86_64 = electron26-bin-26.5.0-x86_64.zip::https://github.com/electron/electron/releases/download/v26.5.0/electron-v26.5.0-linux-x64.zip
+	sha256sums_x86_64 = 74673ca2ae2548cbd02139e8e987490d46046fb3aa74a0cc7be216fc3d8d7ac5
+	sha256sums_x86_64 = 23fe682134635659b6f087afc48723f4ebc60324f7df3a771a5ce0142d4ae832
+	source_aarch64 = electron26-bin-chromedriver-26.5.0-aarch64.zip::https://github.com/electron/electron/releases/download/v26.5.0/chromedriver-v26.5.0-linux-arm64.zip
+	source_aarch64 = electron26-bin-26.5.0-aarch64.zip::https://github.com/electron/electron/releases/download/v26.5.0/electron-v26.5.0-linux-arm64.zip
+	sha256sums_aarch64 = df0e57590ee0521e2b9b9df1ee0ec49989ed14d0e16d7e0dd0fa58b493308725
+	sha256sums_aarch64 = 91bcf6af1c91ff2cea168526c38fca67284a55b49c00543945a23fd3c064eb6b
 
 pkgname = electron26-bin
