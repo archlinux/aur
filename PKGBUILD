@@ -1,7 +1,7 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=xdg-desktop-portal-wlr-git
-pkgver=v0.3.0.r15.gefcbcb6
+pkgver=v0.7.0.r4.g84a9cf4
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url=https://github.com/emersion/xdg-desktop-portal-wlr
@@ -16,7 +16,6 @@ optdepends=(
   "slurp: support for interactive mode for the screenshot portal; one of the built-in chooser options for the screencast portal"
   "bemenu: one of the built-in chooser options for the screencast portal"
   "wofi: one of the built-in chooser options for the screencast portal"
-  "obs-xdg-portal: support for the screencast portal in obs"
 )
 source=(
   "${pkgname}::git+https://github.com/emersion/xdg-desktop-portal-wlr.git"

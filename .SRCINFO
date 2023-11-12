@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-wlr-git
 	pkgdesc = xdg-desktop-portal backend for wlroots
-	pkgver = v0.3.0.r15.gefcbcb6
+	pkgver = v0.7.0.r4.g84a9cf4
 	pkgrel = 1
 	url = https://github.com/emersion/xdg-desktop-portal-wlr
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = xdg-desktop-portal-wlr-git
 	optdepends = slurp: support for interactive mode for the screenshot portal; one of the built-in chooser options for the screencast portal
 	optdepends = bemenu: one of the built-in chooser options for the screencast portal
 	optdepends = wofi: one of the built-in chooser options for the screencast portal
-	optdepends = obs-xdg-portal: support for the screencast portal in obs
 	provides = xdg-desktop-portal-wlr
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-wlr
@@ -27,4 +26,3 @@ pkgbase = xdg-desktop-portal-wlr-git
 	sha512sums = SKIP
 
 pkgname = xdg-desktop-portal-wlr-git
-
