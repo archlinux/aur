@@ -1,0 +1,18 @@
+pkgbase = onboard-layout-zhuyin
+	pkgdesc = Zhuyin Keyboard Layout for onboard
+	pkgver = r33.3aad517
+	pkgrel = 1
+	url = https://github.com/andyching168/onboard-layout-zhuyin
+	arch = any
+	license = GPL3
+	depends = onboard
+	source = https://github.com/andyching168/onboard-layout-zhuyin/raw/3aad517673bd8edb15dd7b725a668e20181ea6da/usr/share/onboard/layouts/zhuyin-Alpha.svg
+	source = https://github.com/andyching168/onboard-layout-zhuyin/raw/3aad517673bd8edb15dd7b725a668e20181ea6da/usr/share/onboard/layouts/zhuyin-Numbers.svg
+	source = https://github.com/andyching168/onboard-layout-zhuyin/raw/3aad517673bd8edb15dd7b725a668e20181ea6da/usr/share/onboard/layouts/zhuyin-Utils.svg
+	source = https://github.com/andyching168/onboard-layout-zhuyin/raw/3aad517673bd8edb15dd7b725a668e20181ea6da/usr/share/onboard/layouts/zhuyin.onboard
+	sha256sums = 7ddaa259626c654b66b792153b6d0296c007f89a19793304e12f691a3d55e21e
+	sha256sums = d39553ee2f455baf4cee307554f5fce2101d7cad1fa9d5f3096b2198057aad36
+	sha256sums = 866c53d1d7c6e128aeb5e8715ee547b1c9d7f83cd1a767a4c0cde8f4cab37493
+	sha256sums = 5899f21e1a7729601a2a59a32f432fa4d27f7fdaf834d25929d15c7756142337
+
+pkgname = onboard-layout-zhuyin
