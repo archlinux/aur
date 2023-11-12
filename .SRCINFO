@@ -1,23 +1,22 @@
 pkgbase = mnamer
 	pkgdesc = A media organization tool
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://github.com/jkwill87/mnamer
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python>=3.7
-	depends = python-appdirs<1.5
-	depends = python-appdirs>=1.4
-	depends = python-babelfish>=0.6
-	depends = python-guessit>=3.2
-	depends = python-requests<3
-	depends = python-requests>=2
-	depends = python-requests-cache>=0.6
-	depends = python-teletype<1.2
-	depends = python-teletype>=1.1
-	depends = python-wheel
-	source = mnamer-2.5.4.tar.gz::https://github.com/jkwill87/mnamer/archive/2.5.4.tar.gz
-	sha256sums = 8da5e1c0a6ecaa1fb60f7b472583de6a892e3b1f8cc0264a9c347e409c3dbc3b
+	makedepends = python-build
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-appdirs
+	depends = python-babelfish
+	depends = python-guessit
+	depends = python-requests
+	depends = python-requests-cache
+	depends = python-teletype
+	depends = python-typing_extensions
+	source = mnamer-2.5.5.tar.gz::https://github.com/jkwill87/mnamer/archive/2.5.5.tar.gz
+	sha256sums = 1054c65164aef1815e8bd7b305d68fd69d583249b7fda939f12515cdc264958e
 
 pkgname = mnamer

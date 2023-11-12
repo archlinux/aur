@@ -1,52 +1,36 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Jaro Zink <j dot zink at outlook dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mnamer
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc='A media organization tool'
 arch=('any')
 url='https://github.com/jkwill87/mnamer'
 license=('MIT')
 depends=(
-  'python>=3.7'
-  'python-appdirs<1.5'
-  'python-appdirs>=1.4'
-  # 'python-babelfish<0.6'
-  'python-babelfish>=0.6'
-  # 'python-guessit<3.3'
-  'python-guessit>=3.2'
-  'python-requests<3'
-  'python-requests>=2'
-  # 'python-requests-cache<0.6'
-  'python-requests-cache>=0.6'
-  'python-teletype<1.2'
-  'python-teletype>=1.1'
-  'python-wheel')
-makedepends=('python-setuptools')
-# checkdepends=('python-pytest-cov' 'python-pytest-rerunfailures')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('8da5e1c0a6ecaa1fb60f7b472583de6a892e3b1f8cc0264a9c347e409c3dbc3b')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i 's/==/>=/g;/dataclasses/d' requirements.txt
-}
+  'python'
+  'python-appdirs'
+  'python-babelfish'
+  'python-guessit'
+  'python-requests'
+  'python-requests-cache'
+  'python-teletype'
+  'python-typing_extensions')
+makedepends=('python-build' 'python-setuptools-scm' 'python-wheel')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('1054c65164aef1815e8bd7b305d68fd69d583249b7fda939f12515cdc264958e')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
+  cd "${pkgname}-${pkgver}"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
 }
-
-# check() {
-#   cd "$pkgname-$pkgver"
-#   pytest
-# }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
+  cd "${pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-# vim:set ts=2 sw=2 et:
