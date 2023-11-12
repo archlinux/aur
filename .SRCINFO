@@ -1,6 +1,6 @@
 pkgbase = r-paws.common
 	pkgdesc = Paws Low-Level Amazon Web Services API
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=paws.common
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = r-paws.common
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/paws.common_0.6.3.tar.gz
-	md5sums = 82a698babfc9709563622c16bfb4400f
-	sha256sums = ae4b1521a0d4a4cc096232a2a1da127e21f9c64bd0374c5825c400afa04bfbc8
+	source = https://cran.r-project.org/src/contrib/paws.common_0.6.4.tar.gz
+	md5sums = 8a1afe269d2fcd82ed34d090baa5f1e6
+	sha256sums = 7d5fe8e72eb3f093f1fd3339049912cc5419198b7ef85817ebaa8e9925e5efdf
 
 pkgname = r-paws.common
