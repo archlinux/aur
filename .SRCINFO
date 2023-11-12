@@ -1,0 +1,25 @@
+pkgbase = foliate-2
+	pkgdesc = Version 2 of Foliate: A simple and modern GTK eBook reader
+	pkgver = 2.6.4
+	pkgrel = 3
+	url = https://johnfactotum.github.io/foliate-2/
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	makedepends = meson
+	makedepends = ninja
+	depends = gjs
+	depends = iso-codes
+	depends = webkit2gtk
+	optdepends = dictd: Offline dictionary support
+	optdepends = espeak-ng: Text-to-speech support; also voice package needed
+	optdepends = festival: Text-to-speech support; also voice package needed
+	optdepends = gspell: Spell-checking support
+	optdepends = hyphen: Auto-hyphenation support
+	optdepends = tracker3
+	provides = foliate
+	conflicts = foliate
+	source = https://github.com/johnfactotum/foliate/archive/2.6.4/foliate-2-2.6.4.tar.gz
+	sha256sums = 4a4381bff6e398f6734e1695da23f1c593ba2a67e463e07021a089ffd0741776
+
+pkgname = foliate-2
