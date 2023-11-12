@@ -5,7 +5,7 @@
 _name=plasma-framework
 pkgname=${_name}5
 pkgver=5.112.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma library and runtime components based upon KF5 and Qt5'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -23,6 +23,7 @@ validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde
 build() {
   cmake -B build -S $_name-$pkgver \
     -DBUILD_TESTING=OFF \
+    -DBUILD_DESKTOPTHEMES=OFF \
     -DBUILD_QCH=ON
   cmake --build build
 }
