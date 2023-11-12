@@ -6,13 +6,14 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=29.1.3
-pkgrel=6
+pkgver=30.0.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
+_libdatachannelver=0.19.2
 _mbedtlsver=3.4
 _pythonver=3.11
 depends=(
@@ -22,21 +23,22 @@ depends=(
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "ftl-sdk" # Deps of Outputs plugin
-  "gcc-libs" # Deps of any C related binary
+  "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
-  "glibc" # Deps of any C++ related binary
+  "glibc" # Deps of any C related binary
   "jansson" # Deps of libobs and rtmp-services plugin
   "libgl" # Deps of libobs-opengl and OBS Studio
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
-  "libva" # Deps of FFmpeg plugin
+  "libva" # Deps of FFmpeg plugin and QSV plugin
   "libx11" # Deps of libobs, libobs-opengl, X11 Capture plugin, frontend tools plugin, obs-browser and CEF
   "libxcb" # Deps of libobs-opengl, X11 Capture plugin and CEF
   "libxcomposite" # Deps of the X11 capture plugin
   "libxkbcommon" # Deps of libobs, OBS Studio and CEF
   "mbedtls>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
   "pciutils" # Deps of FFmpeg plugin
+  "qrcodegencpp-cmake" # Deps of Websocket plugin
   "qt6-base" # Deps of OBS Studio and any frontend plugin
   "qt6-svg" # Deps of OBS Studio
   "qt6-wayland" # Needed to use Qt on Wayland platform
@@ -68,9 +70,11 @@ makedepends=(
   "git"
   "uthash" # Deps of libobs
   "libajantv2" # Deps of AJA plugin (static lib)
+  "libdatachannel-nice>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
+  "onevpl" # Deps of QSV plugin
   "python>=$_pythonver" # Deps of Scripting plugin
   "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
@@ -84,9 +88,12 @@ makedepends=(
 optdepends=(
   "jack: JACK support"
   "libfdk-aac: FDK AAC codec support"
-  "intel-media-driver: Hardware encoding (>= Broadwell)"
-  "libva-intel-driver: Hardware encoding (<= Haswell)"
-  "libva-mesa-driver: Hardware encoding"
+  "onevpl: QSV encoder support"
+  "intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)"
+  "onevpl-intel-gpu: QSV encoder support (>= Alder Lake)"
+  "intel-media-driver: VAAPI encoder support (>= Broadwell)"
+  "libva-intel-driver: VAAPI encoder support (<= Haswell)"
+  "libva-mesa-driver: VAAPI encoder support"
   "swig: Scripting"
   "luajit: Lua scripting"
   "python>=$_pythonver: Python scripting"
@@ -94,6 +101,7 @@ optdepends=(
   "v4l-utils: V4L2 support"
   "systemd-libs: V4L2 support"
   "v4l2loopback-dkms: V4L2 virtual camera output"
+  "libdatachannel>=$_libdatachannelver: WHIP Support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
@@ -106,19 +114,15 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "qr::git+https://github.com/nayuki/QR-Code-generator.git"
   "0001-Add_finder_for_uthash.patch"
   "0002-Use_system_uthash.patch"
-  "0003-Fix_blank_browser_dock_titles.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "SKIP"
   "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
-  "966250c40ab47276e1d420941b5b1e448886b0ab8643f25ba37dce08df68f34d"
-  "8980d1e871177c3f65d5cf0c249ef36c5a9e2a6956bbc592283782ec58d825e7"
+  "874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -133,23 +137,14 @@ prepare() {
 
   patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
   patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
-  # https://github.com/obsproject/obs-studio/pull/9373
-  patch -Np1 -i "$srcdir/0003-Fix_blank_browser_dock_titles.patch"
-
-  cd plugins/obs-websocket
-  git config submodule.deps/qr.url $srcdir/qr
-  git -c protocol.file.allow=always submodule update deps/qr
 }
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -Wno-error=dangling-reference"
-
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_RTMPS=ON \
-    -DQT_VERSION=6 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
