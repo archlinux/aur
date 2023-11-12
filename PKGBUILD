@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEGseq
-_pkgver=1.56.0
+_pkgver=1.56.1
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.56.1
 pkgrel=1
 pkgdesc='Identify Differentially Expressed Genes from RNA-seq data'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-qvalue
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4f8ed7a201a0fdb091a688791133a975f44757bb53e06b82ed0be2a7cb9af797')
+sha256sums=('92c49cb54946dedeb3f1309f812d4d12c276e1e008b40c4e0940a37339d4657a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
