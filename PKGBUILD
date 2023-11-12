@@ -2,9 +2,9 @@
 
 _pkgbasename=connexion
 pkgname=python-connexion
-pkgver=3.0.0a7
-pkgrel=2
-pkgdesc='Design-First framework for Python with support for Swagger/OpenAPI, automatic endpoint validation & OAuth2'
+pkgver=3.0.1
+pkgrel=1
+pkgdesc="Connexion is a modern Python web framework that makes spec-first and api-first development easy"
 arch=(any)
 url="https://github.com/spec-first/connexion"
 license=("Apache2")
@@ -35,4 +35,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('e743b0bf8f50ed2043d71c1ec384bcefffe946075986883593123ad194e8e24f')
+sha256sums=('657a601040f6517373b5675f60eeddd8713ccdc5b9100e04c303e1e4ef05a085')
