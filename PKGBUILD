@@ -29,7 +29,7 @@
 ## basic info
 _pkgname="retroshare"
 pkgname="$_pkgname"
-pkgver=0.6.7RC2.47
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 #url="http://retroshare.cc/"
@@ -80,10 +80,8 @@ fi
 # package type
 if [ x"$pkgname" == x"$_pkgname" ] ; then
   # normal package
-  _commit='c52e84d709df9d264d8aa2b9de41af5825496450'
-
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  source=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
   sha256sums=('SKIP')
 
   pkgver() {
@@ -92,10 +90,9 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
   }
 else
   # git package
-  provides=("$_pkgname")
+  provides=("$_pkgname=${pkgver%%.r*}")
   conflicts=("$_pkgname")
 
-  _pkgsrc="$_pkgname"
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git")
   sha256sums=('SKIP')
@@ -106,101 +103,115 @@ else
   }
 fi
 
-source+=(
-  # submodules for retroshare
-  'cmark'::'git+https://github.com/commonmark/cmark.git'
-  'libsam3'::'git+https://github.com/i2p/libsam3.git'
-  'rapidjson'::'git+https://github.com/Tencent/rapidjson.git'
-  'restbed'::'git+https://github.com/Corvusoft/restbed.git'
-  'retroshare-OBS'::'git+https://github.com/RetroShare/OBS.git'
-  'retroshare-jni.hpp'::'git+https://github.com/RetroShare/jni.hpp.git'
-  'udp-discovery-cpp'::'git+https://github.com/truvorskameikin/udp-discovery-cpp.git'
+_source_retroshare() {
+  source+=(
+    'retroshare.openpgp-sdk'::'git+https://github.com/RetroShare/OpenPGP-SDK.git'
+    'retroshare.bitdht'::'git+https://github.com/RetroShare/BitDHT.git'
 
-  'libbitdht'::'git+https://github.com/RetroShare/BitDHT.git'
-  'libretroshare'::'git+https://github.com/RetroShare/libretroshare.git'
-  'openpgpsdk'::'git+https://github.com/RetroShare/OpenPGP-SDK.git'
-  'retroshare-webui'::'git+https://github.com/RetroShare/RSNewWebUI.git'
-
-  # submodules for rapidjson
-  'gtest'::'git+https://github.com/google/googletest.git'
-
-  # submodules for restbed
-  'asio'::'git+https://github.com/corvusoft/asio-dependency.git'
-  'catch'::'git+https://github.com/corvusoft/catch-dependency.git'
-  'openssl'::'git+https://github.com/corvusoft/openssl-dependency.git'
-)
-
-sha256sums+=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-
-  'SKIP'
-
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
-
-prepare() {
-  cd "$_pkgsrc"
-  (
-    # submodules for retroshare
-    local -A _submodules=(
-      ['cmark']='supportlibs/cmark'
-      ['libsam3']='supportlibs/libsam3'
-      ['rapidjson']='supportlibs/rapidjson'
-      ['restbed']='supportlibs/restbed'
-      ['retroshare-OBS']='build_scripts/OBS'
-      ['retroshare-jni.hpp']='supportlibs/jni.hpp'
-      ['udp-discovery-cpp']='supportlibs/udp-discovery-cpp'
-
-      ['libbitdht']='libbitdht'
-      ['libretroshare']='libretroshare'
-      ['openpgpsdk']='openpgpsdk'
-      ['retroshare-webui']='retroshare-webui'
-    )
-     for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
-    done
+    'commonmark.cmark'::'git+https://github.com/commonmark/cmark.git'
+    'corvusoft.restbed'::'git+https://github.com/Corvusoft/restbed.git'
+    'i2p.libsam3'::'git+https://github.com/i2p/libsam3.git'
+    'retroshare.jni.hpp'::'git+https://github.com/RetroShare/jni.hpp.git'
+    'retroshare.libretroshare'::'git+https://github.com/RetroShare/libretroshare.git'
+    'retroshare.obs'::'git+https://github.com/RetroShare/OBS.git'
+    'retroshare.rsnewwebui'::'git+https://github.com/RetroShare/RSNewWebUI.git'
+    'tencent.rapidjson'::'git+https://github.com/Tencent/rapidjson.git'
+    'truvorskameikin.udp-discovery-cpp'::'git+https://github.com/truvorskameikin/udp-discovery-cpp.git'
   )
-  (
-    # submodules for rapidjson
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_retroshare() (
+    cd "${srcdir:?}/$_pkgsrc"
+    local -A _submodules=(
+      ['retroshare.openpgp-sdk']='openpgpsdk'
+      ['retroshare.bitdht']='libbitdht'
+
+      ['commonmark.cmark']='supportlibs/cmark'
+      ['corvusoft.restbed']='supportlibs/restbed'
+      ['i2p.libsam3']='supportlibs/libsam3'
+      ['retroshare.jni.hpp']='supportlibs/jni.hpp'
+      ['retroshare.libretroshare']='libretroshare'
+      ['retroshare.obs']='build_scripts/OBS'
+      ['retroshare.rsnewwebui']='retroshare-webui'
+      ['tencent.rapidjson']='supportlibs/rapidjson'
+      ['truvorskameikin.udp-discovery-cpp']='supportlibs/udp-discovery-cpp'
+    )
+    _submodule_update
+  )
+}
+
+_source_rapidjson() {
+  source+=(
+    'google.googletest'::'git+https://github.com/google/googletest.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+
+  _prepare_rapidjson() (
+    cd "${srcdir:?}/$_pkgsrc"
     cd "supportlibs/rapidjson"
     local -A _submodules=(
-      ['gtest']='thirdparty/gtest'
+      ['google.googletest']='thirdparty/gtest'
     )
-     for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
-    done
+    _submodule_update
   )
-  (
-    # submodules for restbed
+}
+
+_source_restbed() {
+  source+=(
+    'corvusoft.asio-dependency'::'git+https://github.com/corvusoft/asio-dependency.git'
+    'corvusoft.catch-dependency'::'git+https://github.com/corvusoft/catch-dependency.git'
+    'corvusoft.openssl-dependency'::'git+https://github.com/corvusoft/openssl-dependency.git'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+
+  _prepare_restbed() (
+    cd "${srcdir:?}/$_pkgsrc"
     cd "supportlibs/restbed"
     local -A _submodules=(
-      ['asio']='dependency/asio'
-      ['catch']='dependency/catch'
-      ['openssl']='dependency/openssl'
+      ['corvusoft.asio-dependency']='dependency/asio'
+      ['corvusoft.catch-dependency']='dependency/catch'
+      ['corvusoft.openssl-dependency']='dependency/openssl'
     )
-     for key in ${!_submodules[@]} ; do
+    _submodule_update
+  )
+}
+
+_source_retroshare
+_source_rapidjson
+_source_restbed
+
+prepare() {
+  _submodule_update() {
+    local key;
+    for key in ${!_submodules[@]} ; do
       git submodule init "${_submodules[${key}]}"
       git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
       git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
     done
-  )
+  }
+
+  _prepare_retroshare
+  _prepare_rapidjson
+  _prepare_restbed
 }
 
 build() {
