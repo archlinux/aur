@@ -40,7 +40,7 @@ package() {
     $pkgdir/usr/share/applications/coolvlviewer.desktop
 
   # Install Icon File
-  install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-${pkgver//./}/cvlv_icon.png \
+  install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/cvlv_icon.png \
     $pkgdir/usr/share/pixmaps/clvl_icon.png
 
   # Install Launcher
@@ -48,11 +48,11 @@ package() {
     $pkgdir/usr/bin/coolvlviewer
 
   # Install License
-  install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-${pkgver//./}/licenses.txt \
+  install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/licenses.txt \
     $pkgdir/usr/share/licenses/$pkgname/LISENSE
 
   # Move Data to Destination Directory
-  mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-${pkgver//./}/ $srcdir/coolvlviewer
+  mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/ $srcdir/coolvlviewer
   install -d $pkgdir/opt/
   mv coolvlviewer/ $pkgdir/opt/
 
