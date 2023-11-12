@@ -1,20 +1,27 @@
 pkgbase = tuxclocker-git
-	pkgdesc = Qt5 GPU overclocking GUI utility. Git version.
-	pkgver = r52.90fc054
+	pkgdesc = A hardware controlling and monitoring program for GPUs and CPUs. Git version.
+	pkgver = 1.3.0+rc.1+6+gae13f1a
 	pkgrel = 1
 	url = https://github.com/Lurkki14/tuxclocker
 	arch = x86_64
 	license = GPL3
+	makedepends = boost
 	makedepends = git
-	depends = qt5-x11extras
-	depends = nvidia-settings
-	depends = libxnvctrl
-	depends = nvidia-utils
-	conflicts = tuxclocker
-	source = git+https://github.com/Lurkki14/tuxclocker.git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = libdrm
+	depends = qt5-base
+	depends = qt5-charts
+	optdepends = libxnvctrl: XNVCtrl
+	optdepends = nvidia-utils: nvidia-ml
+	source = git+https://github.com/Lurkki14/tuxclocker.git#branch=master
 	source = tuxclocker.desktop
-	md5sums = SKIP
-	md5sums = 8c79ba856661ffb6815ca2e15c5e62e6
+	source = tuxclockerd.service
+	sha256sums = SKIP
+	sha256sums = 36036dbb5c4f87e43b50245368fe6c851c2e9112d69b35ce18d16682251d2993
+	sha256sums = 8653298ae35ecefae135ceb3d518d87d9ff3d2b56a0b456327085fa6f9a38b4d
+
 
 pkgname = tuxclocker-git
-

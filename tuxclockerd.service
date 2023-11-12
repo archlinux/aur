@@ -1,0 +1,11 @@
+[Unit]
+Description=TuxClocker DBus Daemon
+After=graphical.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tuxclockerd
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
