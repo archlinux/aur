@@ -1,9 +1,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-testflo
-pkgver=1.4.12
-_commit=62c7d8e04ad09179c0b2c3736335ec525a0b6296
-pkgrel=2
+pkgver=1.4.13
+_commit=aef9915fe0a90523e9f1fd66344959339f41df24
+pkgrel=1
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/OpenMDAO/testflo"
 license=('Apache')
@@ -13,11 +13,6 @@ makedepends=('git' 'python-setuptools')
 checkdepends=('python-testflo')
 source=("git+https://github.com/OpenMDAO/testflo.git#commit=$_commit")
 sha512sums=('SKIP')
-
-prepare() {
-  cd testflo
-  sed -i 's/coverage<5.0/coverage/' setup.py
-}
 
 build() {
   cd testflo

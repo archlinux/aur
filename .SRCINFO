@@ -1,0 +1,15 @@
+pkgbase = python-testflo
+	pkgdesc = A simple flow-based testing framework
+	pkgver = 1.4.13
+	pkgrel = 1
+	url = https://github.com/OpenMDAO/testflo
+	arch = any
+	license = Apache
+	checkdepends = python-testflo
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-coverage
+	source = git+https://github.com/OpenMDAO/testflo.git#commit=aef9915fe0a90523e9f1fd66344959339f41df24
+	sha512sums = SKIP
+
+pkgname = python-testflo
