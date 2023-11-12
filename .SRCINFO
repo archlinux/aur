@@ -1,6 +1,6 @@
 pkgbase = gotosocial
 	pkgdesc = ActivityPub social network server written in Golang
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://gotosocial.org
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = gotosocial
 	backup = etc/gotosocial/template/status.tmpl
 	backup = etc/gotosocial/template/tag.tmpl
 	backup = etc/gotosocial/template/thread.tmpl
-	source = gotosocial::git+https://github.com/superseriousbusiness/gotosocial#commit=5fdc005061c773fda6e0da32abcc6f79ddee80ed
+	source = gotosocial::git+https://github.com/superseriousbusiness/gotosocial#commit=096c517cc332ce2832a8c5dfbd1cd827ab7d0ecb
 	source = sysusers.conf
 	source = tmpfiles.conf
 	source = use-fhs-directories.patch
