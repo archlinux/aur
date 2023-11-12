@@ -3,10 +3,10 @@
 # Contributor: Alexey Yakovenko <waker@users.sourceforge.net>
 
 pkgname=deadbeef
-pkgver=1.9.5
-pkgrel=3
+pkgver=1.9.6
+pkgrel=1
 pkgdesc="Modular GTK audio player for GNU/Linux"
-arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
 license=(GPL2 LGPL2.1 ZLIB)
 depends=(gtk3 alsa-lib jansson libdispatch)
@@ -41,12 +41,12 @@ optdepends=('alsa-oss: for OSS output plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
 conflicts=(deadbeef-pipewire-plugin-git)
 source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2")
-sha512sums=('c7a15f47fd8081a363e5cba732aa4ff4b1c311408728fbc5f7f47cf349bc112274a1d9fe0df8a58f09abf8f7656d914fb1baafa38fdf4dcb38fae7e1f70f682c')
+sha512sums=('6e507399f7452a66c5591e09d4309f2aab676992d048625c9b4d801ea40af6ce79862fb497e8c94efdf3a13572c964dca717b42f1c946f5ec4695dc38c1db572')
 
 build () {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CC=clang CXX=clang++
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-gtk2
   make
 }
 
