@@ -1,13 +1,13 @@
 pkgbase = python-pyguetzli
 	pkgdesc = Python binding for Google’s Guetzli library
 	pkgver = 1.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wanadev/pyguetzli
 	arch = any
 	license = Apache-2.0
 	makedepends = python-setuptools
 	depends = python
-	source = pyguetzli-1.0.15.tar.gz::https://github.com/wanadev/pyguetzli/archive/refs/tags/v1.0.15.tar.gz
+	source = -1.0.15.tar.gz::https://github.com/wanadev/pyguetzli/archive/refs/tags/v1.0.15.tar.gz
 	sha256sums = ac8ed3efd59ac97af61d2b4cfd6d01f341bcad6855ffe54dffb43f0d5fc54b87
 
 pkgname = python-pyguetzli
