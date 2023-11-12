@@ -9,6 +9,8 @@ url="https://github.com/nroi/audiowarden"
 license=('MIT')
 makedepends=(cargo)
 depends=()
+provides=('audiowarden')
+conflicts=('audiowarden')
 source=('audiowarden.service'
         "https://github.com/nroi/audiowarden/archive/refs/tags/${pkgver}.tar.gz"
 )
