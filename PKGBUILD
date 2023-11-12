@@ -1,14 +1,14 @@
 # Maintainer: Julian Wolff <wolff@julianwolff.de>
 pkgname=moc-mpris-git
-pkgver=1.0.r3.ccfadf7
+pkgver=1.0.r15.c72d145
 pkgrel=2
 pkgdesc="MPRIS2 support for local or remote instances of MOC - music on console"
 arch=(any)
 url="https://github.com/progwolff/moc-mpris"
 license=('GPL')
 groups=()
-depends=('python>=3.6' 'python-dbus' 'python-musicbrainzngs')
-makedepends=()
+depends=('python>=3.6' 'python-dbus' 'python-musicbrainzngs' 'python-gobject')
+makedepends=('git')
 checkdepends=()
 optdepends=('moc: control a local instance of moc' 'xterm: raise moc')
 provides=("moc-mpris-git=${pkgver}" "moc-mpris=${pkgver}")
