@@ -1,11 +1,11 @@
 pkgbase = bssenglish-bin
 	pkgdesc = 白杉树背单词训练软件.
 	pkgver = 2.0_65
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bailplus.github.io/bssenglish.pages/
 	arch = x86_64
 	license = GPL3
-	depends = python
+	depends = python>=3.9
 	depends = python-requests
 	provides = bssenglish=2.0_65
 	conflicts = bssenglish

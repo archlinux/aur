@@ -2,18 +2,21 @@
 _pkgname=bss
 pkgname="${_pkgname}english-bin"
 pkgver=2.0_65
-pkgrel=4
+pkgrel=5
 pkgdesc="白杉树背单词训练软件."
 arch=('x86_64')
 url="https://bailplus.github.io/bssenglish.pages/"
-_githuburl="https://github.com/BailPlus/bssenglish"
+_ghurl="https://github.com/BailPlus/bssenglish"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('python' 'python-requests')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver%_65}_linux.deb")
+depends=(
+    'python>=3.9'
+    'python-requests'
+)
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver%_65}_linux.deb")
 sha256sums=('5a0c4292539f8c6f698fa2487ca626adb3014f5a835bec2431886e8dc6d51c4d')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|usr/lib|opt|g" -i "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.py"
     sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin}|g;s|/usr/share/pixmaps/${_pkgname}.png|${pkgname%-bin}|g" \
