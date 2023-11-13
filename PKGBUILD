@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=cloudflare-dynamic-dns
 pkgver=2.3.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Updates AAAA records at Cloudflare according to the current IPv6 address"
 url="https://github.com/zebradil/cloudflare-dynamic-dns"
 arch=(any)
@@ -13,7 +13,6 @@ license=(MIT)
 makedepends=(go)
 provides=(cloudflare-dynamic-dns)
 source=(cloudflare-dynamic-dns-2.3.2::https://github.com/zebradil/cloudflare-dynamic-dns/archive/2.3.2.tar.gz)
-sha256sums=('2282185f9e9279425e1cedc3ea4fc271bfdf178f5f07154ea1f7123e1ce251a4')
 prepare () 
 { 
     cd "$pkgname-$pkgver" || exit 1;
@@ -48,3 +47,4 @@ package ()
     ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
     ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
 }
+sha256sums=('2282185f9e9279425e1cedc3ea4fc271bfdf178f5f07154ea1f7123e1ce251a4')
