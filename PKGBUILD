@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.1.3
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -10,7 +10,6 @@ _githuburl='https://github.com/rubickCenter/rubick'
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-	'bash'
 	'electron26'
 	'python>=3'
 )
@@ -25,10 +24,12 @@ makedepends=(
 	'graphicsmagick'
 	'xz'
 )
-source=("${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
-	"${pkgname}.sh")
-sha256sums=('a03e545a8fcc2c2e41e6b539bbca8ce19e944f02973cb61a0c1b812363957a71'
-            'e00acbe229323dbc611a0839ce41ec0ea3b1ee75713a40226b9af45f8c2e3352')
+source=(
+	"${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
+	"${pkgname}.sh"
+)
+sha256sums=('43fd9b0ec01600dee9c9b604ce427fc6010066439f53944e32a446ce0f3c5123'
+            'c519b9bf417913963385e0c9486951152c44834fa2d17d0fd924fabcedcddf03')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]

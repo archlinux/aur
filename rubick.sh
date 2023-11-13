@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron27
+_ELECTRON=/usr/bin/electron26
 APPDIR="/usr/lib/rubick"
 export PATH="${APPDIR}:${PATH}"
 _ASAR="${APPDIR}/app.asar"
