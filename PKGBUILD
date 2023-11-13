@@ -14,7 +14,7 @@ pkgbase="lib${_model}"
 pkgname=("${pkgbase}-base")
 # Actual version uses -, but it is forbidden in pkgver
 pkgver="${_libver_major}.${_libver_minor}"
-pkgrel=4
+pkgrel=5
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
 source=(
@@ -41,12 +41,15 @@ sha256sums_armv7h=(
   '93ed59e572d1e0f177a23da8e24897f26b0eabfa297dd6e3b69ed23deb221774'
   '4dfc362e92eb22bf9c8b016cd25c0417c28bbb43a6040e11689b573e0648b125'
 )
-arch=('aarch64' 'armv7h')
+arch=('x86_64' 'aarch64' 'armv7h') # Allow the wrapper to build on x86_64 for testing
 options=(!strip)
 
 _package-base() {
   local LD=
   case "${CARCH}" in
+    x86_64)
+      LD=ld-linux-x86-64.so.2
+      ;;
     aarch64)
       LD=ld-linux-aarch64.so.1
       ;;
@@ -81,7 +84,14 @@ _package-lib() {
   local _soname=libmali.so.1
   local _reallib=${_soname}.9.0
   local _wrapper=
-  install -D --mode=755 "${_srcname}" "${_libdir}/${_reallib}"
+  case ${CARCH} in 
+    aarch64|armv7h)
+      install -D --mode=755 "${_srcname}" "${_libdir}/${_reallib}"
+      ;;
+    *)
+      install -d --mode=755 "${_libdir}"
+      ;;
+  esac
   local _libs=(
     EGL.so.1
     GLESv1_CM.so.1
