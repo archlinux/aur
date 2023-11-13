@@ -1,16 +1,18 @@
-# Maintainer: ldev <ldev dot eu dot org> 
-pkgver=1.0.0
-pkgrel=2
+# Maintainer: ldev <ldev dot eu dot org>
+pkgver=2.0.0
+pkgrel=1
 
-pkgname=gh-login
+pkgname=git-credential-github
 pkgdesc="A simple git credentials helper for github"
 license=('MIT')
-url="https://github.com/Xgames123/gh-login"
+url="https://github.com/Xgames123/$pkgname"
 arch=('any')
 
-binname=git-credential-$pkgname
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Xgames123/$pkgname/archive/$pkgver.tar.gz")
-b2sums=("SKIP")
+binname=git-credential-github
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3b7408047c6c63ae913742bafd9a972290b82e2c59ee8b29ed9d8396b8305cd6')
+conflicts=("git-credential-github-git")
+replaces=("gh-login")
 makedepends=(
 cargo
 )
@@ -20,10 +22,9 @@ wl-clipboard
 xclip
 )
 
-
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    
+
     rm -f Cargo.lock
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch
@@ -46,4 +47,5 @@ check() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$binname"
+    ln -s "/usr/bin/$binname" "$pkgdir/usr/bin/git-credential-gh-login"
 }
