@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 022cf9068fdf..f95556812f7b 100644
+index f7e01f4ccf32..8f0942092455 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1425,6 +1425,32 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -1425,6 +1425,45 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
@@ -19,23 +19,36 @@ index 022cf9068fdf..f95556812f7b 100644
 +
 +  for (const auto &Param : *Params) {
 +    auto &Paragraph = L.addItem().addParagraph();
-+    Paragraph.appendCode(llvm::to_string(Param));
 +
-+    if (!Param.Name)
++    if (!Param.Name) {
++      Paragraph.appendCode(llvm::to_string(Param));
 +      continue;
++    }
 +
 +    auto *ParamDoc = std::find_if(
 +        ParamDocs.begin(), ParamDocs.end(),
 +        [Param](const auto &ParamDoc) { return Param.Name == ParamDoc.Name; });
-+    if (ParamDoc != ParamDocs.end())
-+      Paragraph.appendText(": ").appendText(ParamDoc->Description);
++    if (ParamDoc == ParamDocs.end()) {
++      Paragraph.appendCode(llvm::to_string(Param));
++      continue;
++    }
++
++    if (Param.Default)
++      Paragraph.appendCode(*Param.Name + " = " + *Param.Default);
++    else
++      Paragraph.appendCode(*Param.Name);
++    Paragraph.appendText(": ").appendText(ParamDoc->Description);
++    if (Param.Type)
++      Paragraph.appendText(" (")
++          .appendCode(llvm::to_string(*Param.Type))
++          .appendText(")");
 +  }
 +}
 +
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1460,6 +1486,8 @@ markup::Document HoverInfo::present() const {
+@@ -1460,6 +1499,8 @@ markup::Document HoverInfo::present() const {
    if (!Documentation.Brief.empty())
      parseDocumentation(Documentation.Brief, Output);
  
@@ -44,14 +57,15 @@ index 022cf9068fdf..f95556812f7b 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1474,38 +1502,11 @@ markup::Document HoverInfo::present() const {
+@@ -1474,38 +1515,11 @@ markup::Document HoverInfo::present() const {
      if (!Documentation.Returns.empty())
        P.appendText(": ").appendText(Documentation.Returns);
    }
 -  if (Parameters && !Parameters->empty()) {
 -    Output.addParagraph().appendText("Parameters: ");
 -    markup::BulletList &L = Output.addBulletList();
--
++  presentParams("Parameters", Parameters, Documentation.Parameters, Output);
+ 
 -    llvm::SmallVector<ParameterDocumentationOwned> ParamDocs =
 -        Documentation.Parameters;
 -
@@ -70,8 +84,7 @@ index 022cf9068fdf..f95556812f7b 100644
 -        }
 -      }
 -    }
-+  presentParams("Parameters", Parameters, Documentation.Parameters, Output);
- 
+-
 -    // We erased all parameters that matched, but some may still be left,
 -    // usually typos. Let's also print them here.
 -    for (const auto &ParamDoc : ParamDocs) {
@@ -87,7 +100,7 @@ index 022cf9068fdf..f95556812f7b 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1577,6 +1578,39 @@ markup::Document HoverInfo::present() const {
+@@ -1577,6 +1591,39 @@ markup::Document HoverInfo::present() const {
        parseDocumentation(Note, L.addItem());
    }
  
@@ -128,7 +141,7 @@ index 022cf9068fdf..f95556812f7b 100644
      Output.addRuler();
      std::string Buffer;
 diff --git a/clang-tools-extra/clangd/SymbolDocumentation.cpp b/clang-tools-extra/clangd/SymbolDocumentation.cpp
-index 50d63f47515f..195b74c74286 100644
+index 50d63f47515f..9defaa7fe53e 100644
 --- a/clang-tools-extra/clangd/SymbolDocumentation.cpp
 +++ b/clang-tools-extra/clangd/SymbolDocumentation.cpp
 @@ -106,11 +106,22 @@ public:
