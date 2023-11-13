@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=collapse
-_pkgver=2.0.3
+_pkgver=2.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,8 +43,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a82ea079694f79566a424e62cad97788')
-sha256sums=('fb8cea81b281bd40d8eccff777c998f7c5915d624623db4132044c9271c7c49b')
+md5sums=('67c3f8c661a3af48c277fce1b98b34f4')
+sha256sums=('e220a5d89fe582b43f166467cdcdd8ca266736bd6e5c3b93b6fcb7638ca1fe2b')
 
 build() {
   mkdir -p build
