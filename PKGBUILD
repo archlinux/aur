@@ -2,14 +2,14 @@
 
 pkgname=madagascar
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url="https://www.reproducibility.org/wiki/Main_Page"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd' 'scons'
-	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'python-numpy' 'swig' 'cblas')
-optdepends=('cuda: GPU acceleration, but not compatible with cuda 12' 'plplot: scientific plot ')
+	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'python-numpy' 'swig' 'cblas' 'plplot')
+optdepends=('cuda: GPU acceleration, but not compatible with cuda 12')
 makedepends=('scons' 'python')
 options=('strip')
 source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/rsf/files/$pkgname/$pkgname-4.0/$pkgname-$pkgver.tar.gz/download")
@@ -35,7 +35,7 @@ build() {
     (plat['\''distro'\''\] == '\''ubuntu'\'' and int(plat['\''version'\''\][:2]) >= 20): \ \
         context.env['\''CPPPATH'\''\] = path_get(context,'\''CPPPATH'\'','\''/usr/include/tirpc'\'')' framework/configure.py
     # export LINKFLAGS="-llapack -lblas -ltirpc -pthread -fopenmp"
-  ./configure
+  ./configure API=c++,f90
     # sed -i "s/^LINKFLAGS.*/LINKFLAGS = ['-llapack', '-lblas', '-pthread', '-fopenmp', '-ltirpc']/g" config.py
     # make "${MAKEFLAGS}"
   make 
@@ -48,11 +48,11 @@ package() {
     cd ${srcdir}/${pkgname}
     make install
 
-    cp -r ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}/src
-
+    cp -r ${srcdir}/${pkgname} ${RSFROOT}/src
+    chmod a+w ${RSFROOT}/share/madagascar
     # add a symlink to rsfcodes in /opt, so that it can be compiled by user
-    ln -s ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}/rsfcodes
-    chmod 755 ${pkgdir}/opt/${pkgname}/rsfcodes
+    # ln -s ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}/rsfcodes
+    # chmod 755 ${pkgdir}/opt/${pkgname}/rsfcodes
 # fix paths in in files
     arr[0]="/share/madagascar/etc/config.py"
     arr[1]="/share/madagascar/etc/env.sh"
