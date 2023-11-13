@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'nodejs' 'imagemagick' 'go')
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('93d5f97482f62ceca97b576904ca6745d58e26dd1452fa3371d8b26397e435dc')
+sha256sums=('8ad4e07f85e26addf643e1f88fe275fe9065744d3ee5ad9c9c3fea938be1e696')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -23,7 +23,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 16.20.2
+    nvm install 18.16
 
 
     cd "${pkgname}-${pkgver}"
@@ -50,9 +50,10 @@ build() {
   rm packaging/linux/appimage.yml
   rm packaging/linux/flatpak.yaml
   # https://github.com/rancher-sandbox/rancher-desktop#how-to-run
-  npm install
-  npm run build
-  npm run package
+  npm install --global yarn
+  yarn install
+  yarn build
+  yarn package --publish=never
 }
 
 package() {
