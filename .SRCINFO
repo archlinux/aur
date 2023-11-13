@@ -1,7 +1,7 @@
 pkgbase = ttf-harmonyos-sans
-	pkgdesc = HarmonyOS Sans 字体。
+	pkgdesc = HarmonyOS Sans 字体
 	pkgver = 2022.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.harmonyos.com/cn/design/resource
 	arch = any
 	license = custom
