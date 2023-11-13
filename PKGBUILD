@@ -4,7 +4,7 @@ _theme_name=library
 url=https://github.com/Fr75s/library
 
 pkgname=pegasus-frontend-theme-${_theme_name}-git
-pkgver=r60.1b1755d
+pkgver=r63.66815a0
 pkgrel=1
 pkgdesc="theme for pegasus frontend"
 arch=(any)
@@ -21,6 +21,11 @@ pkgver() {
     else
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     fi
+}
+
+build()
+{
+    rm -r ${srcdir}/${_theme_name}/.git
 }
 
 package(){
