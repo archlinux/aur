@@ -20,4 +20,3 @@ pkgbase = edb-debugger-git
 	sha256sums = 1d3bc1c8a6c5d08d0b627f03b926e5645e9b4ca0c70282e06585f181251990f3
 
 pkgname = edb-debugger-git
-
