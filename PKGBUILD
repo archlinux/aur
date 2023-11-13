@@ -6,7 +6,7 @@
 pkgname=librewolf-extension-darkreader
 pkgver=4.9.68
 pkgrel=1
-pkgdesc='Inverts brightness of web pages and aims to reduce eyestrain while browsing the web'
+pkgdesc='Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing'
 url=https://github.com/darkreader/darkreader
 arch=('any')
 license=('MIT')
