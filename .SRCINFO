@@ -1,13 +1,12 @@
 pkgbase = headphones
 	pkgdesc = Music downloader for usenet and torrents.
 	pkgver = 0.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rembo10/headphones
 	install = headphones.install
 	arch = any
 	license = GPL3
 	depends = python>=3
-	depends = sh
 	depends = python-urllib3
 	depends = python-pytz
 	depends = python-requests-toolbelt
