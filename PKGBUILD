@@ -3,7 +3,7 @@
 
 pkgname=libtexprintf
 pkgver=1.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
@@ -15,14 +15,14 @@ conflicts=('libtexprintf-git')
 provides=('libtexprintf')
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     ./autogen.sh
     ./configure --prefix=/usr --enable-shared=yes --enable-static=yes
     make CFLAGS="$(echo ${CFLAGS} | sed 's_-Werror=format-security__')" all -j${nprocs}
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     make PREFIX=/usr DESTDIR=${pkgdir} install
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 AUTHORS "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
