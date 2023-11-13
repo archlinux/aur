@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chrolog-bin
-pkgver=1.7.0
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="An automated time tracking tool"
 arch=("x86_64")
@@ -9,7 +9,6 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
     'electron27'
     'hicolor-icon-theme'
 )
@@ -20,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ef0df920ed7519aa8dd5db3dfc0d54a2385236004b2b5a724f4523ac940a9664'
+sha256sums=('22836edb420c9be81348961d3d744e65464965faa20032964c8447e82fe81a3a'
             'c0a36510a6446814e81b7643d4166064420267906f620d7e608948da811ce731')
 build() {
     gendesk -q -f -n --categories "Utility" --name "Chrolog" --exec "${pkgname%-bin}"
