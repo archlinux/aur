@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=rustotpony-bin
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="RusTOTPony — CLI manager of one-time password generators like Google Authenticator"
 url="https://github.com/zebradil/rustotpony"
 arch=(x86_64)
@@ -19,3 +19,8 @@ package ()
     _binname=totp;
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_binname}"
 }
+
+
+# Custom variables
+
+_z_update_hashsums="true"
