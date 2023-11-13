@@ -1,0 +1,29 @@
+diff -ur a/lat/LdapServer.cs b/lat/LdapServer.cs
+--- a/lat/LdapServer.cs	2012-01-09 12:24:10.000000000 -0800
++++ b/lat/LdapServer.cs	2023-11-12 17:50:04.179631067 -0800
+@@ -21,6 +21,7 @@
+ using System;
+ using System.Collections.Generic;
+ using Syscert = System.Security.Cryptography.X509Certificates;
++using System.Net.Security;
+ using System.Text;
+ using Mono.Security.X509;
+ using Mono.Security.Cryptography;
+@@ -416,7 +417,7 @@
+ 			}
+ 		}
+ 
+-		static bool SSLHandler (Syscert.X509Certificate certificate, int[] certificateErrors)
++		static bool SSLHandler (Syscert.X509Certificate certificate, SslPolicyErrors certificateErrors)
+ 		{
+ 			bool retVal = true;
+ 			X509Certificate x509 = null;
+@@ -435,7 +436,7 @@
+             msg.AppendFormat ("\nUnique Hash:     {0}", CryptoConvert.ToHex (x509.Hash));
+ 
+ 			Log.Debug ("Certificate info:\n{0}", msg.ToString());
+-			Log.Debug ("Certificate errors:\n{0}", certificateErrors.Length);
++			Log.Debug ("Certificate errors:\n{0}", certificateErrors);
+ 
+ 			return retVal;
+ 		}
