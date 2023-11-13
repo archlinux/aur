@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-darkreader-bin
+	pkgdesc = Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing (binary release)
+	pkgver = 4.9.67
+	pkgrel = 1
+	url = https://addons.mozilla.org/addon/darkreader
+	arch = any
+	groups = librewolf-addons
+	license = MIT
+	depends = librewolf
+	provides = librewolf-extension-darkreader
+	conflicts = librewolf-extension-darkreader
+	noextract = darkreader-4.9.67.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4175386/darkreader-4.9.67.xpi
+	sha256sums = 128a151f04af774463448fe1cdb944f6c5095fb17991f82d9aec3c8c4513308e
+
+pkgname = librewolf-extension-darkreader-bin
