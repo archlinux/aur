@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=VERSION_PLACEHOLDER
+Name=Hiddify Next
+Comment=Multi-platform proxy client made with Flutter
+Exec=/opt/hiddify-next/hiddify
+Icon=hiddify-next
+Terminal=false
+Keywords=hiddify-next
+Categories=Network;Utility;
