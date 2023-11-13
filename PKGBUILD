@@ -5,7 +5,7 @@
 _realname=CPU-X
 _basename=cpu-x
 pkgname="${_basename}-opencl"
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='Gathers information on CPU, motherboard, GPU and more (with OpenCL support)'
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ provides=("${_basename}=${pkgver}")
 conflicts=("${_basename}")
 _tarname="${_basename}-${pkgver}"
 source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('3ded9098c840fa62061ec6b87e1f4a602a97e428f6eaa4bf63de3d6a2e29a9a9ceea199b323546a3f163fcc8a0185815a9dd68623ce46e0b13bee59c33a671c2')
+sha512sums=('3677207af8ea233a5bc1e435f501f4dffbe555486b048f5b51ac818cb458d52ab7ac94830ab83e992772e339de93464b3d4cd92798b8f49a272fd5292484de7e')
 
 prepare() {
   cmake -S "${_realname}-${pkgver}" -B build \
