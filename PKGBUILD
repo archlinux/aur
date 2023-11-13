@@ -1,4 +1,4 @@
-# Maintainer: Gaël PORTAY <gael.portay@collabora.com>
+# Maintainer: Gaël PORTAY <gael.portay@rtone.fr>
 
 pkgname=kernel-headers-musl-armhf
 pkgver=4.19.88
