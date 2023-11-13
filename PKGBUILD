@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A. <murlakatamenka@disroot.org>
 pkgname=tuxclocker
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Qt overclocking tool for GNU/Linux"
 arch=('x86_64')
@@ -9,9 +9,10 @@ url="https://github.com/Lurkki14/tuxclocker"
 license=('GPL3')
 depends=('boost-libs' 'hicolor-icon-theme' 'libdrm' 'qt5-base' 'qt5-charts')
 makedepends=('boost' 'git' 'meson' 'qt5-tools')
-optdepends=('libxnvctrl: XNVCtrl'
-            'nvidia-utils: nvidia-ml')
-_commit=6405ad56c4eb49c0d1d17df3a1bbc4ec3c22bf24  # tags/1.2.1^0
+optdepends=('libxnvctrl: XNVCtrl support'
+            'nvidia-utils: nvidia-ml support'
+            'python-hwdata: PCI subsystem support')
+_commit=7f1044b322af334da83249bd7c2f8257c76d0a23  # tags/1.3.0^0
 source=("git+https://github.com/Lurkki14/tuxclocker.git#commit=${_commit}"
         'git+https://github.com/mpark/patterns.git'
         'git+https://github.com/Dobiasd/FunctionalPlus.git'
@@ -35,7 +36,11 @@ prepare() {
   git config submodule.src/include/deps/FunctionalPlus.url "$srcdir/FunctionalPlus"
   git -c protocol.file.allow=always submodule update
 
+  # Add missing cstdint include
   patch -Np1 -i ../"$pkgname.patch"
+
+  # tuxclocker/src/plugins/meson.build:20:3: ERROR: Unknown statement.
+  git revert -n b838a1f5b117dc2ec33acbeef2b906ed95f10b1f
 }
 
 build() {
