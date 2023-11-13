@@ -1,12 +1,13 @@
 pkgbase = pastix
 	pkgdesc = High performance parallel solver for very large sparse linear systems based on direct methods
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://gitlab.inria.fr/solverstack/pastix
 	arch = x86_64
 	license = LGPL3
 	makedepends = gcc-fortran
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = git
 	makedepends = doxygen
 	depends = cblas
