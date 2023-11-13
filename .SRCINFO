@@ -1,7 +1,7 @@
 pkgbase = goshs-bin
 	pkgdesc = A SimpleHTTPServer written in Go, enhanced with features and with a nice design
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hesec.de/tags/goshs/
 	arch = aarch64
 	arch = armv7h
