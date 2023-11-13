@@ -5,7 +5,7 @@
 pkgname=alchemy-viewer
 pkgdesc="A Second Life client with focus on performance and code correctness."
 pkgver=7.0.1.2206
-pkgrel=1
+pkgrel=2
 #epoch=1
 _release_version=2177
 _variant="beta"
