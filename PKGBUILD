@@ -2,36 +2,34 @@
 
 pkgname=kopeninghours-git
 _pkgname=kopeninghours
-pkgver=r82.a23fd0c
+pkgver=24.01.75.r0.gc91bfae
 pkgrel=1
 pkgdesc="Library for parsing and evaluating OSM opening hours expressions."
 arch=(x86_64)
-url="https://kontact.kde.org"
+url="https://invent.kde.org/libraries/kopeninghours"
 license=(LGPL)
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=(qt5-declarative kholidays)
+depends=(qt6-declarative kholidays ki18n)
 makedepends=(git extra-cmake-modules)
 source=("git+https://invent.kde.org/libraries/kopeninghours.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../$_pkgname \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S "$_pkgname" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DBUILD_TESTING='OFF' \
+    -DBUILD_WITH_QT6='ON' \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

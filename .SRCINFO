@@ -1,18 +1,18 @@
 pkgbase = kopeninghours-git
 	pkgdesc = Library for parsing and evaluating OSM opening hours expressions.
-	pkgver = r82.a23fd0c
+	pkgver = 24.01.75.r0.gc91bfae
 	pkgrel = 1
-	url = https://kontact.kde.org
+	url = https://invent.kde.org/libraries/kopeninghours
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules
-	depends = qt5-declarative
+	depends = qt6-declarative
 	depends = kholidays
+	depends = ki18n
 	provides = kopeninghours
 	conflicts = kopeninghours
 	source = git+https://invent.kde.org/libraries/kopeninghours.git
 	sha256sums = SKIP
 
 pkgname = kopeninghours-git
-
