@@ -1,0 +1,19 @@
+pkgbase = aur-repro
+	pkgdesc = Reproducible Builds for packages in the Arch User Repository (AUR)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/aur-repro
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = asciidoc
+	depends = diffoscope
+	depends = curl
+	depends = gnupg
+	depends = git
+	depends = diffutils
+	depends = zstd
+	source = git+https://github.com/kpcyrd/aur-repro.git#commit=dd4f0a7481335bb00367a0b332315bca584d8a17
+	sha256sums = SKIP
+
+pkgname = aur-repro
