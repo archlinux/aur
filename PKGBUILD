@@ -1,7 +1,7 @@
 # Maintainer: Marco R. <thomasschmidt45@gmx.net>
 pkgname=friendiqa
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for social network Friendica"
 arch=('any')
 url="https://git.friendi.ca/lubuwest/Friendiqa"
