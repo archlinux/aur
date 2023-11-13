@@ -2,14 +2,14 @@
 # Contributor: Yingchang Liu
 pkgname=madagascar-git
 pkgver=r15659.d72996857
-pkgrel=1
+pkgrel=2
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url="https://www.reproducibility.org/wiki/Main_Page"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd' 'swig' 'python-numpy'
-	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'cblas' 'scons') 
-optdepends=('cuda: for nvcc, but not compatible with cuda12' 'plplot: scientific plot')
+	 'openmpi' 'glu' 'freeglut' 'suitesparse' 'cblas' 'scons' 'plplot') 
+optdepends=('cuda: for nvcc, but not compatible with cuda12')
 options=('strip')
 source=($pkgname::git+https://github.com/ahay/src)
 md5sums=('SKIP')
@@ -23,7 +23,8 @@ build() {
   mkdir -p ${srcdir}/${pkgname}
   cd ${srcdir}/${pkgname}
   export RSFROOT=${pkgdir}/opt/${pkgname}
-
+  # hide hwang's src which can not be compiled.
+  mv ./user/hwang ./user/.hwang
   # fix paths for tirpc in framework/configure.py
   sed -i '430,433c\
     (plat['\''distro'\''\] == '\''centos'\'' and int(plat['\''version'\''\][0]) >= 8) or \\\
@@ -31,7 +32,7 @@ build() {
     plat['\''distro'\''\] == '\''arch'\'' or \\\
     (plat['\''distro'\''\] == '\''ubuntu'\'' and int(plat['\''version'\''\][:2]) >= 20): \ \
         context.env['\''CPPPATH'\''\] = path_get(context,'\''CPPPATH'\'','\''/usr/include/tirpc'\'')' framework/configure.py
-  ./configure
+  ./configure API=c++,f90
   make
 }
 
@@ -41,12 +42,14 @@ package() {
     export PATH=${RSFROOT}/bin:$PATH
     cd ${srcdir}/${pkgname}
     make install
-
-    cp -r ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}/src
-
+    
+    cp -r ${srcdir}/${pkgname} ${RSFROOT}/src
+    rm -r ${RSFROOT}/src/.git 
+   
+    chmod a+w ${RSFROOT}/share/madagascar
     # add a symlink to rsfcodes in /opt, so that it can be compiled by user
-    ln -s ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}/rsfcodes
-    chmod 755 ${pkgdir}/opt/${pkgname}/rsfcodes
+    # ln -s ${srcdir}/${pkgname} ${RSFROOT}/rsfcodes
+    # chmod -R 755 ${RSFROOT}/rsfcodes
     
     # fix paths in in files
     arr[0]="/share/madagascar/etc/config.py"
