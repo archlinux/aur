@@ -1,7 +1,7 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=hiddify.next
-pkgver=0.10.7.dev
+pkgver=0.10.8.dev
 pkgrel=1
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
     "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz"
 )
 sha256sums=(
-    "a28279186f524501e16a9fb08ab9b556245e7d11f1348f3efc62e50c563b15c1"
+    "c9669e7eb2d873384da5f6a90a89ebd8bdb22bdbc7f80b6d3af84fa9dddef467"
     "b6bc6f93423488c67110e0fe56523cd2260f3a4c379ed015cd1c7fab66362739"
 )
 _install_path="/opt/$pkgname"
