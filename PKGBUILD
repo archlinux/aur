@@ -2,7 +2,7 @@
 pkgname=gopeed-bin
 _pkgname=Gopeed
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
 url="https://gopeed.com/"
@@ -30,8 +30,10 @@ sha256sums=('25db38d3dbc2f10dcf2c6e79e62caed4db9876001febe13ae5cd6caf071055fa')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed -e "s|Utility|Network;Utility;|g" \
-        -e "s|/usr/local/lib/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" \
-        -e "s|/usr/share/icons/${pkgname%-bin}.png|${pkgname%-bin}|g" \
+        -e '/Exec/d' \
+        -e '/Icon/d' \
+        -e "5i Exec=${pkgname%-bin} %U" \
+        -e "5i Icon=${pkgname%-bin}" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
