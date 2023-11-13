@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.34.48.r0.g7c3cbc83
+_pkgver=1.34.58
+pkgver=1.34.58.r0.g04931a87
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -20,8 +21,10 @@ makedepends=(
     'nodejs>=18.0.0'
     'gendesk'
 )
-source=("${pkgname//-/.}::git+${_githuburl}.git"
-    "${pkgname%-git}.sh")
+source=(
+    "${pkgname//-/.}::git+${_githuburl}.git#tag=v${_pkgver}"
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '897293c8ec9302f5b69d333f2467a597c6010cee782f0df6c27489cf13345ae7')
 pkgver() {
