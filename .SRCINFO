@@ -1,13 +1,13 @@
 pkgbase = a2fa
-	pkgdesc = a2fa (annoying two-factor authentication) is a command line tool for generating and validating one-time password.
-	pkgver = 0.16.2
+	pkgdesc = A command line tool for generating and validating one-time password.
+	pkgver = 0.16.5
 	pkgrel = 1
 	url = https://github.com/csyezheng/a2fa
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = a2fa-0.16.2.tar.gz::https://github.com/csyezheng/a2fa/archive/refs/tags/v0.16.2.tar.gz
-	sha256sums = 0E9C5891854EF1C46B0CC452285325ABBBB227A04E8A2869EA931CD819522789
+	source = a2fa-0.16.5.tar.gz::https://github.com/csyezheng/a2fa/archive/refs/tags/v0.16.5.tar.gz
+	sha256sums = bd3a65a2c982c8b224aa2a3c11ff62864d61764a6a30daf86832ba6fdc7d3599
 
 pkgname = a2fa
