@@ -2,8 +2,8 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 # Contributor: Christoph Vigano <mail at cvigano dot de>
 pkgname='molly-guard'
-pkgver=0.7.2
-pkgrel=4
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="protects machines from accidental shutdowns/reboots (via ssh)"
 arch=('any')
 url="https://packages.debian.org/stable/molly-guard"
@@ -13,8 +13,8 @@ optdepends=('inetutils: for the FQDN Hostname support')
 install=molly-guard.install
 makedepends=('docbook-xsl')
 source=("https://mirror.unitedcolo.de/debian/pool/main/m/molly-guard/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('02158e4e8a8e4b99b329daa6c8e0ff5071a35819a663da47b1da6628d24beb88')
-sha512sums=('4086a7ebc881345dee3120d9a465d5d7f65f5a54d9da9e59b67dc35428d214555f4de0bc08d7cff38e6bc0422aefc3561df1b2230a127973bd2292875fb70fb7')
+sha256sums=('abaf8b912902066b25d17b2a24b8edcbeef3004e1c43591f25a733f50b4a555b')
+sha512sums=('07d16dd40af1df8707a5be78a661acde2f83e15f020c4087f054c44ff9e57086b469a3d7ef332044c36e2d7e0969e495ff8c8f752e2bd21059b1a3618a6a0a43')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
