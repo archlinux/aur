@@ -19,6 +19,7 @@ _cachy_config=${_cachy_config-y}
 # 'cachyos' - select 'EEVDF-BORE Variant Scheduler'
 # 'eevdf' - select 'EEVDF Scheduler'
 # 'rt' - select EEVDF, but includes a series of realtime patches
+# 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
 # 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
 _cpusched=${_cpusched-cachyos}
 
@@ -63,7 +64,7 @@ _cc_harder=${_cc_harder-y}
 ## DO NOT SET, THIS IS FOR INTERNAL CI USE ONLY.
 _cc_size=${_cc_size-}
 
-### Set this to your number of threads you have in your machine otherwise it will default to 128
+### Set this to your number of threads you have in your machine otherwise it will default to 320
 _nr_cpus=${_nr_cpus-}
 
 ### Set performance governor as default
@@ -167,10 +168,10 @@ else
     pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.6
+_major=6.7
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc1
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -178,7 +179,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF-BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -208,6 +209,11 @@ source=(
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 
+# WARNING The ZFS module doesn't build with selected RT sched due to licensing issues.
+if [[ "$_cpusched" = "rt" || "$_cpusched" = "rt-bore" ]]; then
+    unset _build_zfs
+fi
+
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
@@ -233,12 +239,16 @@ case "$_cpusched" in
     rt) ## EEVDF with RT patches
         source+=("${_patchsource}/misc/0001-rt.patch"
                  linux-cachyos-rt.install);;
+    rt-bore) ## RT with BORE Scheduler
+        source+=("${_patchsource}/misc/0001-rt.patch"
+                 "${_patchsource}/sched/0001-bore-cachy-rt.patch"
+                 linux-cachyos-rt.install);;
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
     sched-ext) ## Sched-ext with BORE
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch"
-                 "${_patchsource}/sched/0001-sched-ext.patch");;
+        source+=("${_patchsource}/sched/0001-sched-ext.patch"
+                 "${_patchsource}/sched/0001-bore-cachy.patch");;
 esac
 
 ## bcachefs Support
@@ -290,18 +300,6 @@ prepare() {
         "${srcdir}"/auto-cpu-optimization.sh
     fi
 
-    ### Prevent ZFS and bcachefs building at the same time
-    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/152
-    if [[ -n "$_bcachefs" && -n "$_build_zfs"  ]]; then
-        _die "ZFS and bcachefs support cannot be built at the same time. "
-    fi
-
-    ### Prevent ZFS and LTO building at the same time
-    # More infos here: https://github.com/openzfs/zfs/issues/15384
-    if [[ "$_use_llvm_lto" != "none" && -n "$_build_zfs"  ]]; then
-        _die "ZFS and LTO support cannot be built at the same time. "
-    fi
-
     ### Selecting CachyOS config
     if [ -n "$_cachy_config" ]; then
         echo "Enabling CachyOS config..."
@@ -317,7 +315,8 @@ prepare() {
         tt)  scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS;;
         bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
         eevdf) ;;
-        rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -e PREEMPT_AUTO -d PREEMPT_DYNAMIC -e HAVE_PREEMPT_AUTO -d PREEMPT_BUILD;;
+        rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
+        rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         sched-ext) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
@@ -408,7 +407,7 @@ prepare() {
     ### Select preempt type
 
     # We should not set up the PREEMPT for RT kernels
-    if [ "$_cpusched" != "rt" ]; then
+    if [[ "$_cpusched" != "rt" || "$_cpusched" != "rt-bore" ]]; then
         [ -z "$_preempt" ] && _die "The value is empty. Choose the correct one again."
 
         case "$_preempt" in
@@ -443,14 +442,6 @@ prepare() {
             -e TCP_CONG_BBR \
             -e DEFAULT_BBR \
             --set-str DEFAULT_TCP_CONG bbr
-
-        # BBR3 doesn't work properly with FQ_CODEL
-        echo "Disabling fq_codel by default..."
-        scripts/config -m NET_SCH_FQ_CODEL \
-            -e NET_SCH_FQ \
-            -d DEFAULT_FQ_CODEL \
-            -e DEFAULT_FQ \
-            --set-str DEFAULT_NET_SCH fq
     fi
 
     ### Select LRU config
@@ -575,7 +566,9 @@ prepare() {
     fi
 
     ### Disable DEBUG
-    if [ -n "$_disable_debug" ]; then
+    # Doesn't work with sched-ext
+    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/187
+    if [[ "$_cpusched" != "sched-ext" &&  -n "$_disable_debug" ]]; then
         scripts/config -d DEBUG_INFO \
             -d DEBUG_INFO_BTF \
             -d DEBUG_INFO_DWARF4 \
@@ -671,11 +664,14 @@ build() {
         make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
     fi
 
-    if [[ "$_cpusched" != "rt" && -n "$_build_zfs"  ]]; then
+    if [ -n "$_build_zfs" ]; then
         cd ${srcdir}/"zfs"
 
         local CONFIGURE_FLAGS=()
         [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
+
+        export KCPPFLAGS+=' -Wno-error=uninitialized'
+        export KCFLAGS+=' -Wno-error=uninitialized'
 
         ./autogen.sh
         sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
@@ -688,7 +684,7 @@ build() {
 
     if [ "$_cpusched" = "sched-ext" ]; then
         # Build the sched_ext schedulers
-        cd "$srcdir/sched_ext/tools/sched_ext"
+        cd "$srcdir/$_srcname/tools/sched_ext"
         unset CFLAGS
         unset CXXFLAGS
         make CC=clang LLVM=1 -j
@@ -840,10 +836,12 @@ _package-schedulers() {
    pkgdesc="Schedulers for $pkgdesc kernel"
    depends=('libbpf' 'bpf' 'clang')
 
-   cd "${srcdir}/sched_ext/tools/sched_ext/build/bin"
+   cd "$srcdir/$_srcname/tools/sched_ext/build/bin"
 
    install -Dm755 scx_central "$pkgdir"/usr/bin/scx_central
    install -Dm755 scx_flatcg "$pkgdir"/usr/bin/scx_flatcg
+   install -Dm755 scx_layered "$pkgdir"/usr/bin/scx_layered
+   install -Dm755 scx_nest "$pkgdir"/usr/bin/scx_nest
    install -Dm755 scx_pair "$pkgdir"/usr/bin/scx_pair
    install -Dm755 scx_qmap "$pkgdir"/usr/bin/scx_qmap
    install -Dm755 scx_rusty "$pkgdir"/usr/bin/scx_rusty
@@ -862,8 +860,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('cedf29ec54e17a7425e659fbac3f6ca9878656ab3edab86e210c74ba33a93d4cca96a3ff9867a2fc516889d462c4dd2e0e1b2f79e59ecfcba88ddf7a5ea52c6a'
-        '8b7ec28c10a3e9b722e481470d0d9d3c092ef6681cd2e26c5fe7d4eccfcdc0ad2b7227527c3d91310ece20f064e8a7b99659cfc9d82ee5cc8e96224ecee3a8ab'
+b2sums=('948f9f92828020503b14711e1593b6308e955f2b3021f0f779e007d4c8cb1b93b22265534691eff3dd42cca9afc81488dc7c445c2c66de28ac3cb291b9e423a9'
+        'ecc74fa604ab9a2b917a20fe3e5f0cc5caa95fbe83e57d29987aac2bcf180f5040eebabc80cbd66c2d7cedc1da4d8e185c09210143c4cb8fc30299e492bbbaa6'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        'b99458e40605388759bfc3d07233acb5ae29c4c0ff3b10c2532f11a5a946a752ec1a654ba2a51670afc415e90ac2ce48a24c0977a92fe8acf691345171d95924'
-        'caedeef9cf148961a2fc1a06f175682c401448276e57921221c54ffaf7b27135de9d6b8e22f12cdc14b31a042493ffc8970211d68819264d202b811cd7db0c36')
+        'b0761adc6a220a6e25acc17719b4885bfb8570348df4f6ce5387955fd1253d4c3ab6b7379e374b06eb2d34f81757d0d9fd615413c79b2016f5b66ba5a1f8f792'
+        'b8ad2e51222c5882f44e3849a2deb505d57cbbf278b4af0c1d383ddfdd218a57797b70137a8be4c6738c15fe819eac2c76719748ba9328a79ba9371ea43064a7')
