@@ -1,6 +1,6 @@
 pkgbase = midica
 	pkgdesc = A Music programming language. Translates source code into MIDI. Includes a player. Supports MIDI-Karaoke. Includes a MIDI analyzer
-	pkgver = 1.5.6
+	pkgver = 1.5.11
 	pkgrel = 1
 	url = http://www.midica.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = midica
 	makedepends = gendesk
 	depends = java-runtime>=7
 	depends = bash
-	source = midica-1.5.6.jar::https://github.com/truj/midica/releases/download/1.5.6/midica.jar
-	sha256sums = ce0c62f66373eae3c8d8890b0e0e8b09f714087071afbdc0b96894837890fbe3
+	source = midica-1.5.11.jar::https://github.com/truj/midica/releases/download/1.5.11/midica.jar
+	sha256sums = c0a94d2effb28be7609e1dcd444d750c30e0216db00b1d288c2e6b4c02873584
 
 pkgname = midica
