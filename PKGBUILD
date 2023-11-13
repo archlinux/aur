@@ -7,13 +7,13 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=xkb-switch-i3
 pkgver=2.0.1+i3_5
-pkgrel=1
+pkgrel=4
 pkgdesc="Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)"
 url="https://github.com/zebradil/xkb-switch-i3"
 arch=(i686 x86_64)
-license=(GPL3)
-depends=(libx11 libxkbfile i3-wm libsigc++ jsoncpp)
-makedepends=(git cmake)
+license=(MIT)
+depends=(i3-wm jsoncpp libsigc++ libx11 libxkbfile)
+makedepends=(cmake git i3-wm libsigc++ libx11 libxkbfile)
 conflicts=(xkb-switch)
 provides=(xkb-switch)
 source=(xkb-switch-i3-2.0.1+i3_5.tar.gz::https://github.com/zebradil/xkb-switch-i3/archive/2.0.1+i3-5.tar.gz i3ipcpp-1bf594d1f25e63122c6f92c2a61a848b45457e08.tar.gz::https://api.github.com/repos/drmgc/i3ipcpp/tarball/1bf594d1f25e63122c6f92c2a61a848b45457e08)
@@ -31,3 +31,8 @@ package ()
     cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}";
     make DESTDIR="$pkgdir/" install
 }
+
+
+# Custom variables
+
+_z_update_hashsums="true"
