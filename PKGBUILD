@@ -23,6 +23,11 @@ pkgver() {
     fi
 }
 
+build()
+{
+    rm -r ${srcdir}/${_theme_name}/.git
+}
+
 package(){
     install -dm755 ${pkgdir}/usr/share/pegasus-frontend/themes
     cp -r --no-preserve=mode,ownership "${srcdir}/${_theme_name}" "${pkgdir}/usr/share/pegasus-frontend/themes/${_theme_name}"
