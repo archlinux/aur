@@ -8,7 +8,7 @@ arch=(any)
 license=(custom:FFC)
 url='https://www.1001fonts.com/daggersquare-font.html'
 provides=(DAGGERSQUARE)
-source=("https://dl.1001fonts.com/daggersquare.zip")
+source=('https://www.1001fonts.com/download/daggersquare.zip')
 sha256sums=('6136a835e22816221034bf07edd05d4a91e9133da4158e4cdf34e32688640fa2')
 
 package() {
