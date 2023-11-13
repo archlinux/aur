@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.5.0.0.r18043
+pkgver=3.5.0.0.r18187
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi"
 arch=('x86_64')
@@ -21,12 +21,7 @@ provides=(
     vst3-host
     )
 conflicts=("audacity")
-#
 source=("git+https://github.com/audacity/audacity.git")
-## Comment out the source variable above and uncomment the one below for the last version where the calf plugins work properly
-# There is some sort of regression in later versions. Once it's sorted I'll remove this comment.
-#source=("git+https://github.com/audacity/audacity.git#branch=release-3.1.3")
-#
 sha512sums=('SKIP')
 
 pkgver() {
@@ -64,13 +59,6 @@ prepare() {
         -Daudacity_use_curl=system \
         -Daudacity_use_midi=local \
         -Daudacity_use_wxwidgets=local 
-
-
-# Old build options....
-#        -Daudacity_use_portaudio=local \
-#        -Daudacity_use_ffmpeg=loaded 
-#	-Daudacity_use_vst3sdk=system
-
 }
 
 build() {
