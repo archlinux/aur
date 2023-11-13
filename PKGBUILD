@@ -2,10 +2,10 @@
 # Maintainer: 7Ji <pugokushin@gmail.com>
 
 pkgname='mpp-git'
-pkgver='r3348.0af9b5be'
+pkgver='r3406.3b278438'
 pkgrel=1
 pkgdesc='Rockchip VPU Media Process Platform (MPP) for hardware video decode latest revision from git'
-arch=('aarch64' 'arm7h')
+arch=('x86_64' 'aarch64' 'arm7h')
 url='https://github.com/rockchip-linux/mpp'
 license=('Apache')
 depends=('gcc-libs' 'coreutils' 'systemd')
