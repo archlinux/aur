@@ -1,6 +1,9 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron22
-_ASAR="/opt/electrocrud/electrocrud.asar"
+APPDIR="/usr/lib/electrocrud"
+export PATH="${APPDIR}:${PATH}"
+#export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
