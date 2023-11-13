@@ -1,20 +1,19 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-lingua-en-tagger'
-pkgver='0.25'
+pkgver='0.31'
 pkgrel='1'
 pkgdesc="Part-of-speech tagger for English natural language processing."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-html-parser>=3.45' 'perl-html-tagset>=3.20' 'perl-lingua-stem>=0.81' 'perl-memoize-expirelru>=0.55' 'perl>=5.8.1')
+depends=('perl-html-parser' 'perl-html-tagset' 'perl-lingua-stem' 'perl-memoize-expirelru' 'perl')
 makedepends=()
 url='https://metacpan.org/release/Lingua-EN-Tagger'
-source=('http://search.cpan.org/CPAN/authors/id/A/AC/ACOBURN/Lingua-EN-Tagger-0.25.tar.gz')
-md5sums=('c626a636bb3f33d56613eb65a926e600')
-sha512sums=('a0237f34272a0a5efd07a38c6ba793ddf63c405cfbde5f6c2100260be735310e514ca2f8bc699d0634ba959a3a66f655f05d837eafc988089b1a661e1a26eb3a')
-_distdir="Lingua-EN-Tagger-0.25"
+source=('http://search.cpan.org/CPAN/authors/id/A/AC/ACOBURN/Lingua-EN-Tagger-0.31.tar.gz')
+md5sums=('2046184b9b33ec5ae4b090b0941e8986')
+_distdir="Lingua-EN-Tagger-0.31"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
