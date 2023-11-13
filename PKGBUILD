@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=terra
-_cranver=1.7-46
+_cranver=1.7-55
 pkgname=r-${_cranname,,}
 pkgdesc="Spatial Data Analysis"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -48,7 +48,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("f8a99f67fef04a793bb4cb97b2a6b00e012fef3591d2d97adb3f5c7a3baae121fede3d6d66f7b4ad0e457505a61e8e7213614ad60f4fe2907bf3b9a55f9091a6")
+b2sums=("6e222d105f205dfc46f7ae3b3eaf8f292f0339bd0f03170078516da8e8c310623cec350df8ecbbe9fb69cdeb3726300e57047e4cf5aebd4a8f7c189e09c75dd9")
 
 build() {
     mkdir -p "${srcdir}/build/"
