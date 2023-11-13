@@ -1,5 +1,5 @@
 pkgname=autorestic
-pkgver=1.7.4
+pkgver=1.7.9
 pkgrel=1
 pkgdesc='Config driven, easy backup cli for restic'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -8,7 +8,7 @@ license=('Apache License 2.0')
 depends=('restic')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('253a16dbad709e1e1065222ab0950ded6dc302ebcebba2585eed7759c7b99714')
+sha256sums=('e57bbc045edee4aabd850da2e61da9c18a6d12bd323866be1eb3edca4709b363')
 
 prepare(){
   cd "$pkgname-$pkgver"
