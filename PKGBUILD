@@ -1,32 +1,42 @@
-# Maintainer: Ding Xiao <tinocodfcdsa10@mails.tsinghua.edu.cn>
+# Maintainer: Nick Pilipenko <nick.pilipenko <at> gmail <dot> com>
+# Contributor: Ding Xiao <tinocodfcdsa10@mails.tsinghua.edu.cn>
 # Contributor: Syn Waker <syncrtl64@gmail.com>
 
 pkgname=gdx-setup
-pkgver=1.9.8.nightly
+pkgver=1.12.1
 pkgrel=1
-epoch=1
-pkgdesc="Libgdx project setup"
+#epoch=1
+pkgdesc="LibGDX project setup"
 arch=('any')
-url="http://libgdx.badlogicgames.com"
-license=('APACHE2')
+url="https://libgdx.com"
+license=('APACHE')
 depends=('java-environment')
-source=('http://libgdx.badlogicgames.com/nightlies/dist/gdx-setup.jar'
-        'gdx-setup'
-        'gdx-setup.desktop'
-        'http://libgdx.badlogicgames.com/img/features_hover.png')
-md5sums=('SKIP'
-         '2c7c983f8fa177e78a7e19cf94236899'
-         '257fb7b869f2cf0c44834370031b4d5b'
-         'a391aeb480342564c076cd9217536884')
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/libgdx/libgdx/archive/refs/tags/$pkgver.tar.gz"
+        "gdx-setup"
+        "gdx-setup.desktop"
+)
+
+sha256sums=('c76eb45d990332d380063ec5d74c6a62b9dbe54c4f091f831ecfa8a1c6b28f87'
+            '995e6025a45506df2e23661a3b703047cdb58ae8a4dcc5abce097c30ca666613'
+            'b2bb727a902caf7101efa5f8103421528b7d6e2ebfc4faf33d181c63c82814f6')
+
+jsrc=libgdx-$pkgver
+
+build() {
+  cd $jsrc
+  #build gdx-setup target only
+  echo "Run build script in directory: `pwd`"
+  bash ./gradlew build -p extensions/gdx-setup
+}
 
 package() {
+  jtarget=$srcdir/$jsrc/extensions/gdx-setup/build/libs/$pkgname.jar
   cd $srcdir
-
   chmod +x gdx-setup
   mkdir -p $pkgdir/usr/{share/java/$pkgname/,bin,share/pixmaps,share/applications}
-  install -Dm644 $pkgname.jar $pkgdir/usr/share/java/$pkgname/
-  install -Dm644 features_hover.png $pkgdir/usr/share/pixmaps/gdx-setup.png
+  install -Dm644 $jtarget $pkgdir/usr/share/java/$pkgname/
+  install -Dm644 $srcdir/$jsrc/libgdx_logo.svg $pkgdir/usr/share/pixmaps/gdx-setup.svg
   install -Dm644 gdx-setup.desktop $pkgdir/usr/share/applications/
-  install -Dm7557 gdx-setup $pkgdir/usr/bin
-  #make DESTDIR="$pkgdir/" install
+  install -Dm755 gdx-setup $pkgdir/usr/bin
 }
