@@ -1,16 +1,16 @@
 pkgbase = perl-io-compress-lzma
 	pkgdesc = Write lzma files/buffers
-	pkgver = 2.074
+	pkgver = 2.206
 	pkgrel = 1
 	url = https://metacpan.org/release/IO-Compress-Lzma
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-compress-raw-lzma>=2.074
+	depends = perl-compress-raw-lzma>=2.206
+	depends = perl-io-compress>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/IO-Compress-Lzma-2.074.tar.gz
-	md5sums = 80104c11b210eb0ea38422db6636e07f
-	sha512sums = b730a7bb2b31c8be421befe7db90bd40993abe89da2de546774fd5fb4c279aadf9b5555b6055f2bda29cee84b940902cfc8ca937b8259f95335faed028e2443a
+	source = http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/IO-Compress-Lzma-2.206.tar.gz
+	md5sums = 8f484d7a8fce2cde3379f3c210ad06b5
+	sha512sums = f0f1f5ab3ba03b08d8905dcd166fe7591bc955517f42b20300a709dd5cec2f7db9cd7bec3547df95124772879eb6349b810a52f25b351eff4f626026a6e8e043
 
 pkgname = perl-io-compress-lzma
-
