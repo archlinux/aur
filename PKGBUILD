@@ -6,7 +6,7 @@
 _basename=panon
 pkgname=plasma5-applets-$_basename
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
 url="http://github.com/rbn42/panon"
@@ -22,7 +22,7 @@ depends=(
 	'qt5-websockets'
 	'qt5-3d'
 ) 
-makedepends=('kpackage' 'cmake')
+makedepends=('kpackage5' 'cmake')
 source=(
 	"${_basename}-${pkgver}::https://github.com/rbn42/${_basename}/archive/v${pkgver}.tar.gz"
 	"https://raw.githubusercontent.com/williammalo/hsluv-glsl/master/hsluv-glsl.fsh"
