@@ -1,8 +1,9 @@
+# Maintainer: Nicolas Lorin <androw95220@gmail.com>
 # Contributor: Jan Misiak <fijam@archlinux.ux>
 
 pkgname=ttf-exljbris
 pkgver=1.1
-pkgrel=8
+pkgrel=9
 pkgdesc='A collection of free opentype fonts by Jos Buivenga. Includes Delicious, Diavlo, Fontin, Fontin Sans and Tallys'
 arch=('i686' 'x86_64')
 license=('custom')
