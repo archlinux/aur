@@ -6,7 +6,7 @@
 
 pkgname=wine-staging-wow64
 _name=wine
-pkgver=8.19
+pkgver=8.20
 pkgrel=1
 provides=("wine=$pkgver")
 conflicts=("wine")
