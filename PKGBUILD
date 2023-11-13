@@ -1,7 +1,7 @@
 # Maintainer: nroi <nroi@mailbox.org>
 _appname='audiowarden'
 pkgname="${_appname}-bin"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="Skip spotify songs you don't like"
@@ -14,7 +14,7 @@ conflicts=("${_appname}")
 source=('audiowarden.service')
 source_x86_64+=("https://github.com/nroi/${_appname}/releases/download/${pkgver}/${_appname}-x86.tar.gz")
 sha256sums=('a8789704183f5bb551807fff056935c047ddf6c0a72eeb0047ee0ceb4777f3cb')
-sha256sums_x86_64+=('5399d119ced4a33d8af55acde44e2ca7238f45dd36ba27bfb5fd266be5754f6f')
+sha256sums_x86_64+=('90396e41ba5bfbe068d8cd6441ae0816d79c68ea1215a3aced7d19794d4a5a8c')
 
 package() {
     install -Dm644 "${srcdir}/audiowarden.service" "${pkgdir}/usr/lib/systemd/user/audiowarden.service"
