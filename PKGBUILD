@@ -1,4 +1,4 @@
-# Maintainer: Gaël PORTAY <gael.portay@collabora.com>
+# Maintainer: Gaël PORTAY <gael.portay@rtone.fr>
 
 pkgname=kernel-headers-musl-aarch64
 pkgver=4.19.88
