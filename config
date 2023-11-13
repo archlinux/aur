@@ -11621,3 +11621,5 @@ CONFIG_MEMTEST=y
 #
 # end of Rust hacking
 # end of Kernel hacking
+
+CONFIG_BCACHEFS_FS=m
