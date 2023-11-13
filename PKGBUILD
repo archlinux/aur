@@ -8,7 +8,7 @@ arch=(any)
 pkgver=1.9.20
 pkgrel=1
 makedepends=(python-build python-installer python-wheel)
-depends=(python python-amulet-nbt python-numpy python-pymctranslate python-versioneer-518)
+depends=(python python-amulet-nbt python-numpy python-pymctranslate python-versioneer-518 python-portalocker python-leveldb python-amulet-leveldb)
 source=(
 	"amulet-core-${pkgver}"::"https://github.com/Amulet-Team/Amulet-Core/archive/refs/tags/${pkgver}.tar.gz"
 )
