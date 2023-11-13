@@ -1,7 +1,8 @@
 pkgbase = openvfd
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arthur-liberman/linux_openvfd
+	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = gcc

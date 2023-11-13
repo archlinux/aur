@@ -6,9 +6,9 @@ pkgname=(
   "${pkgbase}-service"
 )
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 _pkgdesc="FD628 and similar compatible LED controller driver for linux"
-arch=('aarch64')
+arch=('x86_64' 'aarch64')
 _openvfd_repo="linux_${pkgbase}"
 url="https://github.com/arthur-liberman/${_openvfd_repo}"
 license=('GPL3')
