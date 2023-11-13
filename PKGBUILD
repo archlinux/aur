@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2023.09.27
+pkgver=2023.11.07
 pkgrel=1
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
@@ -10,12 +10,14 @@ license=('custom')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${_pkgname}")
 options=('!strip')
-depends=('bash' 'glibc' 'zlib')
+depends=()
 makedepends=('squashfuse')
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://www.eudic.net/download/${_pkgname}.AppImage?v=${pkgver//./-}"
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::https://www.eudic.net/download/${_pkgname}.AppImage?v=${pkgver//./-}"
     "LICENSE.html"
-    "${pkgname%-bin}.sh")
-sha256sums=('feb5c16a657533f2a28e34d2ac971b17c9cc4e56f6bf2e46a3e20a8da4c11db2'
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('4b24ee5b57fadbe9395c635aab9153d6a8776cfe6ac6faa5755ddbe6c4f0ec7c'
             '8254fc6f96e7362405da60a8ece9d86ad26066b5edac10e775aca4e6d7c0979f'
             '16b06d11928ebbb45468f14a896ebb75424c6aa4a7ee9789b0db5fbc114ab95d')
 build() {
@@ -27,8 +29,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.AppImage"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    ln -sf "${pkgdir}/usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so" \
-        "${pkgdir}/opt/${pkgname%-bin}/libfcitxplatforminputcontextplugin.so"
+    ln -sf "/usr/lib/qt/plugins/platforminputcontexts/libfcitx"*.so \
+        "${pkgdir}/opt/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/com.eusoft.${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
