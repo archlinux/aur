@@ -2,21 +2,47 @@
 _appname=flaru
 pkgname="${_appname}-player-bin"
 _pkgname="Flaru Player"
-pkgver=1.13.0
-pkgrel=4
+pkgver=1.13.5
+pkgrel=1
 pkgdesc='An "unofficial" emulator based on Ruffle Flash Emulator. Created to provide a friendly interface and enhanced playing experience. It is a complete alternative to Adobe Flash Player. Run Flash Safely Anywhere'
 arch=('x86_64')
 url="https://github.com/jooy2/flaru"
 license=("custom")
-conflicts=("${pkgname%-bin}" "${_appname}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${_appname}"
+)
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('cairo' 'nspr' 'nss' 'libcups' 'gtk3' 'libxfixes' 'libx11' 'gcc-libs' 'libxcomposite' 'libxdamage' 'libxrandr' 'expat' \
-    'libxcb' 'libxkbcommon' 'hicolor-icon-theme' 'glib2' 'libxext' 'pango' 'mesa' 'at-spi2-core' 'dbus' 'alsa-lib' 'glibc' 'libdrm')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname// /.}.${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/jooy2/flaru/${pkgver}/LICENSE")
-sha256sums=('670f561b22352657df29c4941616b464bf2f6b5121628d5a48dd3339f0cc15b5'
+depends=(
+    'cairo'
+    'nspr'
+    'nss'
+    'libcups'
+    'gtk3'
+    'libxfixes'
+    'libx11'
+    'libxcomposite'
+    'libxdamage'
+    'libxrandr'
+    'expat'
+    'libxcb'
+    'libxkbcommon'
+    'hicolor-icon-theme'
+    'libxext'
+    'pango'
+    'mesa'
+    'at-spi2-core'
+    'dbus'
+    'alsa-lib'
+    'libdrm'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname// /.}.${pkgver}_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/jooy2/flaru/${pkgver}/LICENSE"
+)
+sha256sums=('af81ddd6a4abec83fc95c90e37f5c9f055a686239ecd716d56524464cac1d092'
             '22f86a10f95ec7f4695c4d39a1df4464a6d61d7fe457dcd9181d71d530b0b70a')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${_appname}\"|${pkgname%-bin}|g;s|=${_pkgname}|=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
