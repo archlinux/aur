@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg063-static
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='https://ffmpeg.org/'
@@ -25,13 +25,18 @@ provides=(
   'ffmpeg063'
 )
 options=('staticlibs')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2")
-md5sums=('cdf4ad9b2a4d195b5ca874494bc7b0b0')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
+        'asm.patch'
+        )
+md5sums=('cdf4ad9b2a4d195b5ca874494bc7b0b0'
+         '8b00dea963883cdf764a7291bcd4bc8c'
+         )
 
 build() {
   cd ffmpeg-${pkgver}
   
-  sed -i 's@-Werror@@g' configure
+  #sed -i 's@-Werror@@g' configure
+  CFLAGS="${CFLAGS} -Wno-implicit-function-declaration" \
 
   ./configure \
     --prefix=/opt/ffmpeg063 \
