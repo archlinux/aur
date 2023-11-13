@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=okd-client-bin
-pkgver="4.14.0_0.okd_2023_10_28_073550"
+pkgver="4.14.0_0.okd_2023_11_12_042703"
 pkgrel=1
 pkgdesc="Client tools for OpenShift"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('Apache')
 
 source=("https://github.com/openshift/okd/releases/download/${pkgver//_/-}/openshift-client-linux-${pkgver//_/-}.tar.gz")
 
-sha256sums=('c677b83a34294c0a9275160c1343510012975308459ecdc7f03e2ab6eddf723f')
+sha256sums=('9ccd9822f217c99289933b9e1d1a9e2a406522adb5657fcdf07f42fa026c3809')
 
 prepare() {
 	# generate completion
