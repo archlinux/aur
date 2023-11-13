@@ -1,4 +1,4 @@
-# Maintainer: Gaël PORTAY <gael.portay@collabora.com>
+# Maintainer: Gaël PORTAY <gael.portay@rtone.fr>
 
 pkgname=armhf-musl
 pkgver=1.2.4
