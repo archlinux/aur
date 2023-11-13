@@ -46,7 +46,8 @@ package() {
     cp -a "${srcdir}/bin/lib/." "$target/jars"
     cp -a "${srcdir}/bin/bookman-${pkgver}.jar" "$target/jars"
     cp -a "${srcdir}/install4j-runtime-9.0.7.jar" "$target/jars"
-    [ -e "$target/jars/msal4j-1.13.3.jar" ] && cp -a "${srcdir}/msal4j-1.14.0.jar" "$target/jars/msal4j-1.13.3.jar"
+    [ -e "$target/jars/msal4j-1.13.3.jar" ]
+    cp -a "${srcdir}/msal4j-1.14.0.jar" "$target/jars/msal4j-1.13.3.jar"
 
     cp -a "${srcdir}/classes" "$target/override"
     find "$target/override" -type d -exec chown 755 "{}" \;
