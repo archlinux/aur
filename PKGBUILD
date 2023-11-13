@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=cloudflare-dynamic-dns
 pkgver=2.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Updates AAAA records at Cloudflare according to the current IPv6 address"
 url="https://github.com/zebradil/cloudflare-dynamic-dns"
 arch=(any)
@@ -48,8 +48,3 @@ package ()
     ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
     ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
 }
-
-
-# Custom variables
-
-_z_update_hashsums="true"
