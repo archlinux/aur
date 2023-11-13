@@ -1,0 +1,14 @@
+pkgbase = statusbar
+	pkgdesc = A feature complete, customizable and extendable swaybar/i3bar content generator
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://gobytes.dev/statusbar
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = go
+	makedepends = scdoc
+	depends = libpulse.so
+	source = https://git.sr.ht/~rkintzi/statusbar/archive/v0.5.3.tar.gz
+	sha256sums = b7d427f366ec992b53d2c1b8d8c9ae62c4f0bf13450b59ed18c12b40825b6acc
+
+pkgname = statusbar
