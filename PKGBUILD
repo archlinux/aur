@@ -1,5 +1,5 @@
 # Maintainer: ldev <ldev dot eu dot org> 
-pkgver=r.
+pkgver=r1.72cefff
 pkgrel=1
 
 pkgname=git-credential-github-git
