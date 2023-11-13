@@ -11,8 +11,28 @@ _githuburl="https://github.com/janhq/jan"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${_appname}")
-depends=('alsa-lib' 'at-spi2-core' 'libxext' 'libxdamage' 'mesa' 'gtk3' 'libcups' 'pango' 'libxkbcommon' 'glibc' 'nspr' \
-    'libxcomposite' 'libx11' 'libxcb' 'libxfixes' 'gcc-libs' 'glib2' 'expat' 'cairo' 'dbus' 'nss' 'libxrandr' 'libdrm')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'libxext'
+    'libxdamage'
+    'mesa'
+    'gtk3'
+    'libcups'
+    'pango'
+    'libxkbcommon'
+    'nspr'
+    'libxcomposite'
+    'libx11'
+    'libxcb'
+    'libxfixes'
+    'expat'
+    'cairo'
+    'dbus'
+    'nss'
+    'libxrandr'
+    'libdrm'
+)
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-linux-amd64-${pkgver}.deb")
 sha256sums=('3ce569054d496ae911f186d73a7d1fba84f224d2e86e2e420d71a392106c5bc0')
 build() {
