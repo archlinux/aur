@@ -41,14 +41,7 @@ sha256sums=('4b50aed43347d276207ca5447ef6993d8ca080af16c6bc362089807f894aaee2')
 noextract=("${_archive_file_name}")
 
 pkgver() {
-  bsdtar -xf "${_archive_file_name}" --strip-components=1
-  (
-    set -o pipefail
-    vwr_version=$(cat indra/newview/VIEWER_VERSION.txt)
-    rev=$(git rev-list --count HEAD)
-    short=$(git rev-parse --short HEAD)
-    printf "%s.%s" "${vwr_version}" "${_release_version}"
-  )
+  printf "${pkgver}"
 }
 
 prepare() {
