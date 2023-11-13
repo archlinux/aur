@@ -4,7 +4,7 @@
 
 pkgdesc='Draw.io integration for Nextcloud servers'
 pkgname=nextcloud-app-drawio
-pkgver=2.0.2
+pkgver=2.1.4
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -14,7 +14,7 @@ depends=('nextcloud')
 options=('!strip')
 source=("drawio-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/drawio-v${pkgver}.tar.gz")
 
-sha256sums=('83422fddf176705e3a709cc65673eb7b0a3820d196e709896b7f72da990b64c3')
+sha256sums=('403edbebe52358d792e19d902dc8017deb485f0a8d9e01515fd16bcb1f749900')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
