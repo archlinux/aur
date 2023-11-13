@@ -2,7 +2,7 @@
 
 _pkgname=minizip-ng
 pkgname=mingw-w64-${_pkgname}
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux. (mingw-w64)'
 url='https://github.com/zlib-ng/minizip-ng'
@@ -12,7 +12,6 @@ depends=(
 	'mingw-w64-bzip2'
 	'mingw-w64-zstd'
 	'mingw-w64-libiconv'
-	'mingw-w64-openssl'
 )
 makedepends=('mingw-w64-cmake')
 #checkdepends=('mingw-w64-wine' 'mingw-w64-gtest')
@@ -22,7 +21,7 @@ optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/zlib-ng/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 	"${pkgname}-iconv.patch")
-sha256sums=('22008b4639197edfc3c5797c8bd1d7a3b2e684bf669a26834faf12b4026dba1c'
+sha256sums=('e39a736d4f55c22fa548e68225b2e92bc22aedd9ab90d002b0c5851e3a7bdace'
             'c4203584aed3c670c7aa2cb3774fe513088de3cee54c5b20f7ddea9fc673d1ef')
 
 _srcdir="${_pkgname}-${pkgver}"
