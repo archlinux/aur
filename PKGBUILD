@@ -1,7 +1,7 @@
 # Maintainer: nubz4lif <nubz4lif at proton dot me>
 pkgname=funkin-quack-git
 pkgver=0.1.r69.gb733f72
-pkgrel=1
+pkgrel=3
 pkgdesc="A modification for Friday Night Funkin': Psych Engine to provide better linux support and more features."
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 license=("Apache")
