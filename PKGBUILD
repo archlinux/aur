@@ -2,22 +2,35 @@
 pkgname=stackzy-bin
 _pkgname=Stackzy
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform desktop application to identify libraries used inside an android application. Made possible by Compose Desktop"
 arch=('x86_64')
 url="https://github.com/theapache64/stackzy"
 license=("Apache")
 provides=("${pkgname%-bin}=${pkgver}")
 confilcts=("${pkgname%-bin}")
-depends=('libxtst' 'libglvnd' 'fontconfig' 'java-runtime' 'libxrender' 'alsa-lib' 'glibc' 'libxi' 'libxext' 'libx11' 'zlib')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/theapache64/stackzy/${pkgver}/LICENSE")
+depends=(
+    'libxtst'
+    'libglvnd'
+    'fontconfig'
+    'java-runtime'
+    'libxrender'
+    'alsa-lib'
+    'libxi'
+    'libxext'
+    'libx11'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/theapache64/stackzy/${pkgver}/LICENSE"
+)
 sha256sums=('be46f24ab891c1c3007715ceb539b006f281d445743ab77195c7c6f47cafbdeb'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    rm -rf "${srcdir}/opt/${pkgname%-bin}/lib/app/resources"
-    sed "s|/opt/${pkgname%-bin}/bin/${_pkgname}|${pkgname%-bin}|g;s|/opt/${pkgname%-bin}/lib/${_pkgname}.png|${pkgname%-bin}|g;s|Unknown|Utility;Development;|g" \
+    sed -e "s|/opt/${pkgname%-bin}/bin/${_pkgname}|${pkgname%-bin}|g" \
+        -e "s|/opt/${pkgname%-bin}/lib/${_pkgname}.png|${pkgname%-bin}|g" \
+        -e "s|Unknown|Utility;Development;|g" \
         -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
 package() {
