@@ -1,0 +1,23 @@
+pkgbase = singboxclient-git
+	pkgdesc = Cross platform client for sing-box
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/daodao97/SingBoxClient
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = go
+	depends = ayatana-ido
+	depends = libayatana-indicator
+	depends = libdbusmenu-glib
+	depends = libayatana-appindicator
+	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
+	provides = singboxclient
+	conflicts = singboxclient
+	options = !strip
+	source = git+https://github.com/daodao97/SingBoxClient
+	source = singboxclient.desktop
+	sha256sums = SKIP
+	sha256sums = 120e2ee5bf52d7c6bf8f40af5dbc8458473539a82fd77c6d00100e3d26b4d3f3
+
+pkgname = singboxclient-git
