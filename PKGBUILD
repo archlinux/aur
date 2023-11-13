@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encrypt0r-bin
-pkgver=3.11.54
+pkgver=3.11.55
 pkgrel=1
 pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron"
 arch=('x86_64')
@@ -10,8 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron18'
+    'electron22'
 )
 makedepends=('gendesk')
 source=(
@@ -19,9 +18,9 @@ source=(
     "LICENSE.md::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7bfb00cbcd1c704bdf67e1c599f31395dee0f8713e8f0a3a948aa08fe3520a95'
+sha256sums=('afe10ed2a5c7313ae7ec7b56df3b491121c9aabad62ed2107e8bf5901dd7bc08'
             'dd8cfe4d2d540a3c670cf0aa6c95e9076e8949d7c50d04495feb0a6ce9d82cc3'
-            '40793276e494d98e3dd18645cab5a2747035877fdde10b4c334d62a0e7e059b0')
+            '2585f3ba542fb3e1b0304391076c29da99ccdb8a78633a7775fffce65731e923')
 build() {
     bsdtar -xf "${srcdir}/release-builds/${pkgname%-bin}_0.0.0_amd64.deb" -C "${srcdir}"
     bsdtar -xf "${srcdir}/data.tar.zst"

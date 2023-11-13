@@ -1,5 +1,5 @@
 #!/bin/bash
-_ELECTRON=/usr/bin/electron18
+_ELECTRON=/usr/bin/electron22
 APPDIR="/usr/lib/encrypt0r"
 export PATH="${APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${APPDIR}/swiftshader":"${LD_LIBRARY_PATH}"
