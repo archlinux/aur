@@ -3,13 +3,13 @@
 _pkgbase=ampart
 pkgname=${_pkgbase}-git
 pkgver=1.3.r12.6f90ddd
-pkgrel=1
+pkgrel=2
 pkgdesc="A partition tool to modify Amlogic's proprietary eMMC partition format and FDT"
 arch=('x86_64' 'aarch64')
 url="https://github.com/7Ji/${_pkgbase}"
 license=('GPL3')
 depends=('glibc' 'zlib')
-makedepends=('git' 'gcc')
+makedepends=('git')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}=${pkgver}")
 source=(
