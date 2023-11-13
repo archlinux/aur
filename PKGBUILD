@@ -1,7 +1,7 @@
 # Maintainer: Erin Heimer <heimer16 at protonmail dot com>
 pkgname='mailpit-bin'
-pkgver=1.9.10
-pkgrel=5
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Web and API based SMTP testing"
 arch=('x86_64')
 license=('MIT')
