@@ -1,16 +1,16 @@
 # Maintainer: YeZheng <csyezheng@gmail.com>
 
 pkgname=a2fa
-pkgver=0.16.2
+pkgver=0.16.5
 pkgrel=1
-pkgdesc="a2fa (annoying two-factor authentication) is a command line tool for generating and validating one-time password."
+pkgdesc="A command line tool for generating and validating one-time password."
 arch=('x86_64')
 url="https://github.com/csyezheng/a2fa"
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0E9C5891854EF1C46B0CC452285325ABBBB227A04E8A2869EA931CD819522789')
+sha256sums=('bd3a65a2c982c8b224aa2a3c11ff62864d61764a6a30daf86832ba6fdc7d3599')
 
 prepare() {
   cd "$pkgname-$pkgver"
