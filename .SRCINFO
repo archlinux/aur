@@ -1,0 +1,18 @@
+pkgbase = git-credential-github-git
+	pkgdesc = A simple git credentials helper for github
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/Xgames123/git-credential-github
+	arch = any
+	license = MIT
+	makedepends = cargo
+	optdepends = xdg-utils
+	optdepends = wl-clipboard
+	optdepends = xclip
+	provides = git-credential-github
+	conflicts = git-credential-github
+	conflicts = gh-login
+	source = git+https://github.com/Xgames123/git-credential-github
+	sha256sums = SKIP
+
+pkgname = git-credential-github-git
