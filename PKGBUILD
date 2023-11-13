@@ -1,7 +1,8 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 # Contributor: felix <`base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==`>
-pkgname=(unifont)
-pkgbase=unifont
+#pkgname=(pcf-unifont
+#         psf-unifont)
+pkgname=unifont
 pkgver=15.1.04
 pkgrel=1
 pkgdesc="GNU Unifont Glyphs"
