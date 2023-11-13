@@ -1,22 +1,26 @@
 pkgbase = python-shazamio
 	pkgdesc = Is a asynchronous framework from reverse engineered Shazam API written in Python 3.8+ with asyncio and aiohttp.
 	pkgver = 0.4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotX12/ShazamIO
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry>=1.5.0
-	makedepends = python-poetry<2.0.0
-	makedepends = python-virtualenv>=20.22.0
+	makedepends = python-poetry>=1.1
+	makedepends = python-poetry<2
 	makedepends = python-wheel>=0.36
-	makedepends = python-cachecontrol=0.12.9
+	makedepends = python-cachecontrol
+	makedepends = python-cleo>=2.1.0
+	makedepends = python-cleo<3.0.0
 	makedepends = python-lockfile
 	makedepends = python-keyring>=23.9.0
-	makedepends = python-keyring<24.0
-	makedepends = python-poetry-plugin-export>=1.4.0
+	makedepends = python-platformdirs>=3.9.1
+	makedepends = python-platformdirs<4
+	makedepends = python-poetry-plugin-export>=1.6.0
 	makedepends = python-poetry-plugin-export<2.0.0
+	makedepends = python-virtualenv>=20.22.0
+	makedepends = python-virtualenv<21.0.0
 	depends = python>=3.8
 	depends = python-aiofiles>=22.1.0
 	depends = python-aiohttp>=3.8.3

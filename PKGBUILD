@@ -4,7 +4,7 @@
 _name=ShazamIO
 pkgname=python-shazamio
 pkgver=0.4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Is a asynchronous framework from reverse engineered Shazam API written in Python 3.8+ with asyncio and aiohttp.'
 arch=('any')
 url='https://github.com/dotX12/ShazamIO'
@@ -21,18 +21,22 @@ depends=(
 makedepends=(
     python-build
     python-installer
-    'python-poetry>=1.5.0'
-    'python-poetry<2.0.0'
-    'python-virtualenv>=20.22.0'
+    'python-poetry>=1.1'
+    'python-poetry<2'
     'python-wheel>=0.36'
-    
+
     # needed by poetry
-    'python-cachecontrol=0.12.9'
+    'python-cachecontrol'
+    'python-cleo>=2.1.0'
+    'python-cleo<3.0.0'
     'python-lockfile' # for cachecontrol[filecache]
     'python-keyring>=23.9.0'
-    'python-keyring<24.0'
-    'python-poetry-plugin-export>=1.4.0'
+    'python-platformdirs>=3.9.1'
+    'python-platformdirs<4'
+    'python-poetry-plugin-export>=1.6.0'
     'python-poetry-plugin-export<2.0.0'
+    'python-virtualenv>=20.22.0'
+    'python-virtualenv<21.0.0'
 )
 source=("$url/archive/$pkgver.tar.gz")
 b2sums=('2c681fd02a92558a66e1ef4320b839b40ba659006f202234342d5bbaf9e1fe454c82f17e6c868a18546e2c536ca51c58e0227e20aaae15d057e5bfe99460e3e6')
