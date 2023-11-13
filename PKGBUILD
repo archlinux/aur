@@ -20,6 +20,6 @@ sha256sums=('128a151f04af774463448fe1cdb944f6c5095fb17991f82d9aec3c8c4513308e'
             'SKIP')
 
 package() {
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm644 darkreader-$pkgver.xpi "$pkgdir/usr/lib/librewolf/browser/extensions/addon@darkreader.org.xpi"
 }
