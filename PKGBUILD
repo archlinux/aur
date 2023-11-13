@@ -3,7 +3,7 @@
 _pkgname=KeepKey-Desktop
 _upkgname=keepkey-desktop
 pkgname=keepkey-desktop-appimage
-pkgver=2.1.27
+pkgver=2.1.29
 pkgrel=1
 pkgdesc="An all-in-one suite for using your KeepKey hardware wallet."
 arch=('x86_64' 'arm64')
@@ -15,7 +15,7 @@ noextract=("$_pkgname-$pkgver.AppImage")
 options=('!strip')
 
 source=("https://github.com/keepkey/$_upkgname/releases/download/v$pkgver/$_pkgname-$pkgver.AppImage")
-sha256sums=('b015a2b9fb7d0b552bea87bc67e9c838a510e467396d77d63ef6c1c5368d938f')
+sha256sums=('d380b9875a8bc249a893947aee06c05a82c1edf8f4bd45e2109d3047b7187251')
 
 prepare() {
     cd "${srcdir}"
