@@ -1,7 +1,7 @@
 pkgbase = librewolf-extension-darkreader
 	pkgdesc = Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing
 	pkgver = 4.9.68
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/darkreader/darkreader
 	arch = any
 	groups = librewolf-addons

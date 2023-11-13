@@ -5,7 +5,7 @@
 
 pkgname=librewolf-extension-darkreader
 pkgver=4.9.68
-pkgrel=1
+pkgrel=2
 pkgdesc='Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing'
 url=https://github.com/darkreader/darkreader
 arch=('any')
@@ -29,5 +29,6 @@ build() {
 
 package() {
   cd darkreader
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 build/release/darkreader-firefox.xpi "$pkgdir/usr/lib/librewolf/browser/extensions/addon@darkreader.org.xpi"
 }
