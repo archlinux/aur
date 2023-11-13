@@ -1,15 +1,15 @@
 pkgbase = veilid-cli-git
 	pkgdesc = A text user interface to talk to veilid-server and operate it manually
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
-	url = https://gitlab.com/veilid/veilid/-/archive/v0.2.4/veilid-v0.2.4.tar
+	url = https://gitlab.com/veilid/veilid/-/archive/v0.2.5/veilid-v0.2.5.tar
 	arch = x86_64
 	license = MPL 2.0
 	makedepends = cargo
 	provides = veilid-cli
 	conflicts = veilid-cli
 	replaces = veilid-cli
-	source = https://gitlab.com/veilid/veilid/-/archive/v0.2.4/veilid-v0.2.4.tar
-	md5sums = 4012c81620d9eab98a011b559dcbb872
+	source = https://gitlab.com/veilid/veilid/-/archive/v0.2.5/veilid-v0.2.5.tar
+	md5sums = b5873ff891902acd8d677b7010bfbfbd
 
 pkgname = veilid-cli-git

@@ -5,7 +5,7 @@
 
 # Maintainer: gloof <gloof11@proton.me>
 pkgname=veilid-cli-git
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 epoch=
 pkgdesc="A text user interface to talk to veilid-server and operate it manually"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$url")
 noextract=()
-md5sums=('4012c81620d9eab98a011b559dcbb872')
+md5sums=('b5873ff891902acd8d677b7010bfbfbd')
 validpgpkeys=()
 
 prepare() {
