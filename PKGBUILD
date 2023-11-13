@@ -2,14 +2,14 @@
 _pkgname=muse-sounds-manager
 pkgname="$_pkgname-bin"
 pkgver=1.1.0.587
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage MuseScore Libraries"
 arch=('x86_64')
 url='https://www.musehub.com/'
 provides=("$_pkgname=$pkgver")
 replaces=('muse-hub')
 conflicts=('muse-hub')
-depends=('aarch64-linux-gnu-gcc')
+depends=()
 makedepends=('tar')
 install="$_pkgname.install"
 source=('https://muse-cdn.com/Muse_Sounds_Manager_Beta.deb')
