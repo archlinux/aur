@@ -2,7 +2,7 @@
 
 pkgname=kosmorro
 pkgver=0.10.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A program to calculate the ephemerides'
 depends=(
     'python'
@@ -15,7 +15,6 @@ depends=(
 
 optdepends=(
     'texlive-bin: PDF creation support'
-    'python-latex: PDF creation support'
 )
 
 makedepends=(
