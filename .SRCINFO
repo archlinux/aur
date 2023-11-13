@@ -1,0 +1,13 @@
+pkgbase = ffmpeg067-static
+	pkgdesc = Complete solution to record, convert and stream audio and video.
+	pkgver = 0.6.7
+	pkgrel = 1
+	url = https://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bzip2
+	source = https://ffmpeg.org/releases/ffmpeg-0.6.7.tar.bz2
+	md5sums = 2afecd1ef31053ef077bdb2d6a7402ce
+
+pkgname = ffmpeg067-static
