@@ -3,24 +3,17 @@
 
 _pkgname=libtexprintf
 pkgname=libtexprintf-git
-pkgver=1.14
-pkgrel=4
+pkgver=1.25
+pkgrel=1
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
 license=('GPL3')
 makedepends=(git make gcc)
-source=("https://github.com/bartp5/libtexprintf/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        'texfree.patch')
+source=("https://github.com/bartp5/libtexprintf/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 conflicts=(libtexprintf)
 provides=('libtexprintf')
-sha512sums=('4d2fc0d021749aab5ff7acc3cacb1f636ff9e3be8a275a07ca3c8f90cc6194df76c3ead5cd15b485498bd87f76216e53e91219bee9bae937c986b3c8783a98c9'
-            '6ac2413fb15728692e8269fb9ebd68dd3c8c03956b3fb45b6835a554095b6caa2efc55fc028bca4193ddf2761b9a00b7e5d889fd01eeb4be1d7bb0f71889eb65')
-
-prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -p1 < "${srcdir}/texfree.patch"
-}
+sha512sums=('2121eb27c40b31e64f67dbfde309112c2368f9898e473bcdcb7f760fece976f8d55871792e3b777340a2c28306db0c6db0d54ee8d179e72f7803ab29e28da663')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
