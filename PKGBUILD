@@ -3,31 +3,16 @@
 # Contributor: Cookie Engineer <cookiengineer@protonmail.ch>
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
+_newpkgname=librewolf-extension-darkreader
 pkgname=librewolf-extension-dark-reader
-pkgver=4.9.67
+pkgver=0.0.1
 pkgrel=1
-pkgdesc='Inverts brightness of web pages and aims to reduce eyestrain while browsing the web'
-url=https://github.com/darkreader/darkreader
+epoch=1
+pkgdesc="metapackage - migrate to librewolf-extension-darkreader"
+url="https://aur.archlinux.org/packages/librewolf-extension-darkreader"
 arch=('any')
 license=('MIT')
-depends=('librewolf')
-makedepends=('git' 'npm' 'strip-nondeterminism')
-groups=('librewolf-addons')
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
-
-prepare() {
-  cd darkreader
-  npm ci
-}
-
-build() {
-  cd darkreader
-  npm run build
-  strip-nondeterminism -t zip build/release/*.xpi
-}
 
 package() {
-  cd darkreader
-  install -Dm644 build/release/darkreader-firefox.xpi "$pkgdir/usr/lib/librewolf/browser/extensions/addon@darkreader.org.xpi"
+  depends=("$_newpkgname")
 }
