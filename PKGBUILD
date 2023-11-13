@@ -1,7 +1,7 @@
 # Maintainer: nubz4lif <nubz4lif at proton dot me>
 pkgname=funkin-quack-git
-pkgver=0.1.r61.g324d320
-pkgrel=2
+pkgver=0.1.r69.gb733f72
+pkgrel=1
 pkgdesc="A modification for Friday Night Funkin': Psych Engine to provide better linux support and more features."
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 license=("Apache")
@@ -13,7 +13,7 @@ conflicts=("funkin")
 sha256sums=("SKIP"
         "8cb8c993a70609663b1dca92f8139ee06573828aee8cbc8b9a7d84aa4f7e74b0"
         "c0ce512b409a5c01b696c5434c796dfc2a30bfb68b3aab352573b1072a16c9ce")
-source=("Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git#branch=experimental"
+source=("Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git"
         "funkin.desktop" 
         "funkin.sh")
 

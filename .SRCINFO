@@ -17,7 +17,7 @@ pkgbase = funkin-quack-git
 	optdepends = gamemode
 	provides = funkin
 	conflicts = funkin
-	source = Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git#branch=experimental
+	source = Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git
 	source = funkin.desktop
 	source = funkin.sh
 	sha256sums = SKIP
