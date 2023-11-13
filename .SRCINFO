@@ -1,8 +1,9 @@
 pkgbase = rtl8189fs-dkms-git
 	pkgdesc = RTL8189FS / RTL8189FTV modules (DKMS)
-	pkgver = 93.4760201
+	pkgver = 102.75a566a
 	pkgrel = 1
 	url = https://github.com/jwrdegoede/rtl8189ES_linux.git
+	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = git

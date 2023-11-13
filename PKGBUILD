@@ -5,10 +5,10 @@
 _modname='8189fs'
 _pkgbase="rtl${_modname}"
 pkgname="${_pkgbase}-dkms-git"
-pkgver='93.4760201'
-pkgrel='1'
+pkgver=102.75a566a
+pkgrel=1
 pkgdesc="RTL8189FS / RTL8189FTV modules (DKMS)"
-arch=('aarch64')
+arch=('x86_64' 'aarch64')
 _srcname='rtl8189ES_linux'
 url="https://github.com/jwrdegoede/${_srcname}.git"
 license=('GPL2')
