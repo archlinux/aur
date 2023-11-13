@@ -27,29 +27,27 @@ makedepends=(
 options=('!strip')
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
+#  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+# https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
 source=(
-  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
+  $url/releases/download/$_srctag/linux-$_srctag.patch.zst
   config  # the main kernel config file
   linux-arch-kamakiri.patch.zst
 )
-validpgpkeys=(
-  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
-  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-  C7E7849466FE2358343588377258734B41C31549
-)
+#validpgpkeys=(
+#  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+#  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+#  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+#  C7E7849466FE2358343588377258734B41C31549
+#)
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('da1ed7d47c97ed72c9354091628740aa3c40a3c9cd7382871f3cedbd60588234'
-            'SKIP'
             '9fd606b2ac0b4ae5df8867b7651574a2e5c480366bac224406fc34ad5d79009b'
-            'SKIP'
             'bdfd2629b1fe907b9270fc540adaa51ff526cbd361b23aba38c4c5fce7f5397b'
             'd4833f5cf2250b06132252964423cdcb7bbc942c17a87d44c06157123ea05d5f')
 b2sums=('3bb35ba0386b00aa76dfd073e87b0d5a319d3116a80c39b11a3acd1219bc7d8b3809c1def24a3c4f52abc60f70c170a2f80d80c6b54459eec016c5ddc404c6fc'
-        'SKIP'
         'fda390a1633ea51e00b9d6ab4b89ca2e9ef472261e12e6e0d978d42678449150c384d2be1e9d9655704ffc2ad2f34b6e6dcf0b5862f1419d805e6c67e3e67bb3'
-        'SKIP'
         '3ef3c64bf46d0ca5893d4fcdedb6278507f5e05571836bcd871f6b832de97295cb7b09e8cd95fd2928fbfa324081d96b4df3bb016dfc8206976a6154b5c32217'
         'a9cdd2ef6e80830d3d1dd6d9ddfd34f4edc5ea79f268b9018c11ae8a9e43696cb3b2ef6aaa72ca3937b100750077f163efbc9258f53a601c16b4f0b8ecbb94a0')
 export KBUILD_BUILD_HOST=archlinux
