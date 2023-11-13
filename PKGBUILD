@@ -10,8 +10,11 @@ url="https://audacityteam.org"
 license=('GPL2' 'CCPL')
 groups=('pro-audio')
 depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python'
-'portaudio' 'jack')
-makedepends=('opusfile' 'xcb-util-keysyms' 'xcb-util' 'cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan' 'catch2')
+	'portaudio' 'jack' 'vamp-plugin-sdk' 'suil'
+	'libsbsms' 'libsm' 'opusfile' 'libice' 'soundtouch'
+	'libid3tag' 'twolame' 'wavpack' 'portsmf' 'rapidjson')
+makedepends=('opusfile' 'xcb-util-keysyms' 'xcb-util' 'cmake' 'autoconf' 
+	'automake' 'libtool' 'git' 'conan' 'catch2')
 provides=(
     audacity
     ladspa-host
