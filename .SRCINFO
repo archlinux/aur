@@ -1,7 +1,7 @@
 pkgbase = r-data.tree
 	pkgdesc = General Purpose Hierarchical Data Structure
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=data.tree
 	arch = any
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = r-data.tree
 	optdepends = r-testthat
 	optdepends = r-treemap
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/data.tree_1.0.0.tar.gz
-	sha256sums = 40674c90a5bd00f5185db9adbd221c6f1114043e69095249f5fa8b3044af3f5e
+	source = https://cran.r-project.org/src/contrib/data.tree_1.1.0.tar.gz
+	sha256sums = b0b554e9220f7abeb8e40af7617802509bf49aa4b2b58882330cde54c20bad63
 
 pkgname = r-data.tree
