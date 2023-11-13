@@ -3,7 +3,7 @@
 
 pkgname=libtexprintf
 pkgver=1.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
