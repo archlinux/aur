@@ -2,7 +2,7 @@
 
 _pkgname="paisa"
 pkgname="${_pkgname}-bin"
-pkgver=0.5.5
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Personal Finance Manager."
 arch=("x86_64")
@@ -14,7 +14,7 @@ conflicts=("paisa")
 install="${_pkgname}.install"
 source=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-cli-linux-amd64"
         "https://raw.githubusercontent.com/ananthakumaran/paisa/master/COPYING")
-sha256sums=('ed3a48d787c25c2dc2a8f745d94a6efc14006c5ed85017e03a86028ccd2e06aa'
+sha256sums=('5d62a8e44614ab33903aca29038eeec35b5ec913348d3c301224cd3f708d7527'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
