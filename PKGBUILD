@@ -1,7 +1,7 @@
 # Maintainer Wings-Fantasy <1056947073@qq.com>
 
 pkgname=badlion-client
-pkgver=3.15.1
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="A Minecraft client with anti-cheat protection"
 url="https://client.badlion.net"
