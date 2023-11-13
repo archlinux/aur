@@ -1,6 +1,6 @@
 pkgbase = pomatez
 	pkgdesc = Stay Focused. Take a Break.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://zidoro.github.io/pomatez/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pomatez
 	depends = util-linux-libs
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source = https://github.com/zidoro/pomatez/releases/download/v1.4.1/Pomatez-v1.4.1-linux-amd64.deb
-	sha512sums = 1f1bcf3b5615a18f077d3f7c2310c09a573b91f528aafe7418d5e61a466758abf8f14aaa2d6f9e94bbe8318561cf3c4b20cc361783dd406e818159a12283691c
+	source = https://github.com/zidoro/pomatez/releases/download/v1.4.2/Pomatez-v1.4.2-linux-amd64.deb
+	sha512sums = 1af619697ba1a3078c2eb13245623ed08a1e10b4bc8d9b122d7d4227052eca9e8e2597845887415fbdafe4a72b569b921f3b6ac25d36571ec0628b917d16478a
 
 pkgname = pomatez
