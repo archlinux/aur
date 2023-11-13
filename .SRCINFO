@@ -1,16 +1,19 @@
 pkgbase = feeddeck-bin
 	pkgdesc = Follow your RSS and Social Media Feeds
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/feeddeck/feeddeck
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = gtk3
 	provides = feeddeck
 	conflicts = feeddeck
-	source = feeddeck-linux-x86_641.1.0.tar.gz::https://github.com/feeddeck/feeddeck/releases/download/v1.1.0/feeddeck-linux-x86_64.tar.gz
-	source = LICENSE1.1.0::https://github.com/feeddeck/feeddeck/raw/v1.1.0/LICENSE
-	sha256sums = 5d1a19c7aec1eeed332711a86b104bd8c223dfec04076c73678d2ff5607b8283
-	sha256sums = 4ed6aa9a25dde43633ded896cdf6a3c03d5ac9e7d46e7ec469d9e905f052a3fe
+	source = LICENSE1.1.1::https://github.com/feeddeck/feeddeck/raw/v1.1.1/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = feeddeck-linux-1.1.1.tar.gz::https://github.com/feeddeck/feeddeck/releases/download/v1.1.1/feeddeck-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e342ab342a4eda945fb43419218acc9e3b663c1f86d34b6c1898b69e25e77d51
+	source_aarch64 = feeddeck-linux-1.1.1.tar.gz::https://github.com/feeddeck/feeddeck/releases/download/v1.1.1/feeddeck-linux-arm64.tar.gz
+	sha256sums_aarch64 = SKIP
 
 pkgname = feeddeck-bin

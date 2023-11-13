@@ -1,19 +1,21 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=feeddeck-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Follow your RSS and Social Media Feeds'
 url="https://github.com/feeddeck/feeddeck"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('gtk3')
 provides=('feeddeck')
 conflicts=('feeddeck')
-source=("feeddeck-linux-x86_64$pkgver.tar.gz::https://github.com/feeddeck/feeddeck/releases/download/v$pkgver/feeddeck-linux-x86_64.tar.gz"
-        "LICENSE$pkgver::https://github.com/feeddeck/feeddeck/raw/v$pkgver/LICENSE")
-sha256sums=('5d1a19c7aec1eeed332711a86b104bd8c223dfec04076c73678d2ff5607b8283'
-            '4ed6aa9a25dde43633ded896cdf6a3c03d5ac9e7d46e7ec469d9e905f052a3fe')
+source=("LICENSE$pkgver::$url/raw/v$pkgver/LICENSE")
+sha256sums=('SKIP')
+source_x86_64=("feeddeck-linux-$pkgver.tar.gz::$url/releases/download/v$pkgver/feeddeck-linux-x86_64.tar.gz")
+sha256sums_x86_64=('e342ab342a4eda945fb43419218acc9e3b663c1f86d34b6c1898b69e25e77d51')
+source_aarch64=("feeddeck-linux-$pkgver.tar.gz::$url/releases/download/v$pkgver/feeddeck-linux-arm64.tar.gz")
+sha256sums_aarch64=('SKIP')
 
 package() {
   mkdir -p "$pkgdir/opt/feeddeck" "$pkgdir/usr/bin"
