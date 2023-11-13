@@ -1,6 +1,6 @@
 pkgbase = mochi-appimage
   pkgdesc = Flash cards / spaced repetition using markdown
-  pkgver = 1.16.4
+  pkgver = 1.16.5
   pkgrel = 1
   url = https://mochi.cards
   arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mochi-appimage
   depends = zlib
   depends = hicolor-icon-theme
   depends = fuse2
-  noextract = mochi-appimage-1.16.4.AppImage
+  noextract = mochi-appimage-1.16.5.AppImage
   options = !strip
-  source_x86_64 = mochi-appimage-1.16.4.AppImage::https://mochi.cards/releases/Mochi-1.16.4.AppImage
-  sha256sums_x86_64 = a3e47757f39184ab0c7ab936e560b02ddfd59869399a6804ec3a6a203a39ee2a
+  source_x86_64 = mochi-appimage-1.16.5.AppImage::https://mochi.cards/releases/Mochi-1.16.5.AppImage
+  sha256sums_x86_64 = 286717501e7b6454d3bd9109975f13a6b87fdf50fbab15f8bb151117cd186ac6
 
 pkgname = mochi-appimage
