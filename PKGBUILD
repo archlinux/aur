@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgdepends
-_cranver=0.6.0
+_cranver=0.7.0
 pkgname=r-${_cranname,,}
 pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -11,7 +11,7 @@ pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
-    "r>=3.4"
+    "r>=3.5"
     "r-callr>=3.3.1"
     "r-cli>=3.6.0"
     "r-curl"
@@ -42,6 +42,7 @@ optdepends=(
     "r-rmarkdown"
     "r-rstudioapi"
     "r-spelling"
+    "r-svglite"
     "r-tibble"
     "r-webfakes>=1.1.5.9000"
     "r-withr>=2.1.1"
@@ -63,11 +64,11 @@ optdepends=(
 
 # checkdepends=(
 #     "${optdepends[@]}"
-#     "r-testthat"
+#     "r-testthat>=3.2.0"
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("d3772ceb1287b4472909e3ae5dcc02b10f43b39ceb32267c1e2d830cebab8c1c081e5b1938cd5e382ae220d41a7f0dcc5a2d770eefcaf221794c33e46cdcd75a")
+b2sums=("8c836402c60b4c985e7f782487f1c449df6e977904a2dcbc60540b58389ebd35a790ce29d6cf3aabc6542e1498ffddab4f6533761e00a772541b0dbe476fe799")
 
 build() {
     mkdir -p "${srcdir}/build/"
