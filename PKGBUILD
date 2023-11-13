@@ -1,10 +1,10 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 pkgname="uboot-legacy-initrd-hooks"
-pkgver=0.0.1
+pkgver=0.1
 pkgrel=1
 pkgdesc="Pacman hooks and corresponding scripts to generate uboot legacy initrd, for AArch64 devices, mainly those with Amlogic SoCs"
-arch=('aarch64')
+arch=('any')
 license=('GPL3')
 depends=(
   'initramfs'
