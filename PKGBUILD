@@ -34,13 +34,14 @@ optdepends=(
   'wine: More up-to-date, less buggy SLVoice support')
 provides=('alchemy-viewer')
 replaces=('alchemy-viewer-git')
+_archive_file_name="alchemy-next-${pkgver}${_variant}.tar.bz2"
 # source=("${pkgname}.tar.gz"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${_commit_hash}"'/alchemy-next-'"${_commit_hash}"'.tar.gz')
-source=("alchemy-next-${pkgver}${_variant}.tar.bz2"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${pkgver}-${_variant}"'/alchemy-next-'"${pkgver}-${_variant}"'.tar.bz2')
+source=("${_archive_file_name}"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${pkgver}-${_variant}"'/alchemy-next-'"${pkgver}-${_variant}"'.tar.bz2')
 sha256sums=('4b50aed43347d276207ca5447ef6993d8ca080af16c6bc362089807f894aaee2')
-noextract=("${pkgname}.tar.gz")
+noextract=("${_archive_file_name}")
 
 pkgver() {
-  bsdtar -xf ${pkgname}.tar.gz --strip-components=1
+  bsdtar -xf "${_archive_file_name}" --strip-components=1
   (
     set -o pipefail
     vwr_version=$(cat indra/newview/VIEWER_VERSION.txt)
