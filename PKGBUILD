@@ -5,12 +5,12 @@
 pkgname=authenticator
 _pkgname=Authenticator
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="2FA code generator for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/World/Authenticator"
 license=('GPL3')
-depends=('gst-plugins-bad' 'libadwaita' 'libsecret' 'pipewire' 'zbar')
+depends=('gst-plugins-bad' 'gst-plugin-pipewire' 'libadwaita' 'libsecret' 'pipewire' 'zbar')
 makedepends=('cargo' 'clang' 'git' 'meson')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
