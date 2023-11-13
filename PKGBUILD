@@ -1,7 +1,7 @@
 # Maintainer: Erin Heimer <heimer16 at protonmail dot com>
 pkgname='mailpit-bin'
 pkgver=1.9.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Web and API based SMTP testing"
 arch=('x86_64')
 license=('MIT')
@@ -20,7 +20,7 @@ sha256sums=(
         )
 
 package() {
-    install -D -m755 ${srcdir}/MailHog_linux_amd64 ${pkgdir}/usr/local/bin/maipit
+    install -D -m755 ${srcdir}/mailpit ${pkgdir}/usr/bin/maipit
     install -D -m644 mailpit.service ${pkgdir}/usr/lib/systemd/system/mailpit.service
 }
 
