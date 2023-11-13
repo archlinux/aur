@@ -1,16 +1,11 @@
 pkgbase = librewolf-extension-dark-reader-bin
-	pkgdesc = Inverts brightness of web pages and aims to reduce eyestrain while browsing the web (binary release)
-	pkgver = 4.9.67
-	pkgrel = 2
-	url = https://addons.mozilla.org/addon/darkreader
+	pkgdesc = metapackage - migrate to librewolf-extension-darkreader-bin
+	pkgver = 0.0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://aur.archlinux.org/packages/librewolf-extension-darkreader-bin
 	arch = any
-	groups = librewolf-addons
 	license = MIT
-	depends = librewolf
-	provides = librewolf-extension-dark-reader
-	conflicts = librewolf-extension-dark-reader
-	noextract = darkreader-4.9.67.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4175386/darkreader-4.9.67.xpi
-	sha256sums = 128a151f04af774463448fe1cdb944f6c5095fb17991f82d9aec3c8c4513308e
 
 pkgname = librewolf-extension-dark-reader-bin
+	depends = librewolf-extension-darkreader-bin
