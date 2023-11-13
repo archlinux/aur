@@ -1,7 +1,7 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="2a89acb4e93ae4a92c53b9058e4620278112f5d2"
+_commit="b0f202a1bdf1cee380f044a4d1a9013f55b81e43"
 pkgbase="gtkclipblock"
 pkgname=(
   "${pkgbase}"
@@ -9,8 +9,8 @@ pkgname=(
   "${pkgbase}-gtk3"
   "${pkgbase}-gtk4"
 )
-pkgver="0.2.1"
-pkgrel=2
+pkgver="0.2.2"
+pkgrel=1
 pkgdesc="A hack to prevent GTK programs from interacting with the primary clipboard"
 url="https://github.com/notpeelz/gtkclipblock"
 arch=("x86_64")
