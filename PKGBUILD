@@ -31,6 +31,11 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
 md5sums=('cdf4ad9b2a4d195b5ca874494bc7b0b0'
          '8b00dea963883cdf764a7291bcd4bc8c'
          )
+prepare() {
+  #cd "$pkgname-$pkgver"
+  cd ffmpeg-${pkgver}
+  patch --forward --strip=1 --input="${srcdir}/asm.patch"
+}                 
 
 build() {
   cd ffmpeg-${pkgver}
