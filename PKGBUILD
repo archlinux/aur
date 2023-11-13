@@ -1,7 +1,7 @@
 # Maintainer: Justin ! <just1602@riseup.net>
 
 pkgname='tailspin'
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=2
 pkgdesc='tailspin - A log file highlighter'
 url='https://github.com/bensadeh/tailspin'
@@ -9,9 +9,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
 makedepends=('cargo')
-b2sums=('9d2f4590a28891accab651576b71a717bf2fa7d6ab7116adc9391b04f6618d5c80e23d1b4d07d909f8fe43bb85bae4386af98c6ad76bb2f2fef49014d6c4f8a5')
-
-install=$pkgname.install
+b2sums=('8e251c3fc60c348043ffd37875ab470755d3cdc5608e839c60c1b06d7cf1ec0e354f10f39edbbf04a7554c11b52083c798b8f8775c87824651f904bd8eaa1763')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
