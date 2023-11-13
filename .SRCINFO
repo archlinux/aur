@@ -1,12 +1,12 @@
 pkgbase = confluence-companion-app-for-linux
 	pkgdesc = Unoffical Atlassian Companion App for Linux.
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zxp19821005/Companion4Linux
 	install = confluence-companion-app-for-linux.install
 	arch = any
 	license = GPL
-	depends = python
+	depends = python>=3
 	depends = python-websockets
 	depends = python-pyinotify
 	depends = python-wxpython
@@ -19,8 +19,6 @@ pkgbase = confluence-companion-app-for-linux
 	provides = confluence-companion-linux
 	conflicts = confluence-companion-linux
 	source = confluence-companion-app-for-linux-1.1.tar.gz::https://github.com/zxp19821005/Companion4Linux/archive/refs/tags/1.1.tar.gz
-	source = confluence-companion-app-for-linux.install
 	sha256sums = 3303c59aaa85a46f59c0588cbb507b5136cea681696b06360a592b33bdf595a7
-	sha256sums = 65ac8817093a1af0efe66f58129a79989c18e57f47cfa07c3b8ac02a0660d489
 
 pkgname = confluence-companion-app-for-linux
