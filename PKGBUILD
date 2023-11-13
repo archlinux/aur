@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL3')
 url="https://github.com/SoongNoonien/mpdevil"
 depends=('python-mpd2>=3.1' 'gtk3' 'python-gobject' 'python-cairo')
-makedepends=('meson')
+makedepends=('meson' 'gettext' 'glib2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SoongNoonien/mpdevil/archive/v${pkgver}.tar.gz")
 sha256sums=('090e50a21572b05933254721a6be8b32fd926e1aff12861bb7eb827bcfc2024a')
 

@@ -6,6 +6,8 @@ pkgbase = mpdevil
 	arch = any
 	license = GPL3
 	makedepends = meson
+	makedepends = gettext
+	makedepends = glib2
 	depends = python-mpd2>=3.1
 	depends = gtk3
 	depends = python-gobject
