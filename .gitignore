@@ -1,0 +1,6 @@
+*
+!.gitignore
+!Makefile
+!PKGBUILD
+!.SRCINFO
+!libpng14.patch
