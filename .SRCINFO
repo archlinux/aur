@@ -1,27 +1,26 @@
 pkgbase = kdelibs4support-git
 	pkgdesc = Porting aid from KDELibs4
-	pkgver = 5.83.0_r1018.g8015119a
+	pkgver = 5.113.0_r1261.gec297bf3
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5-aids-git
 	license = LGPL
 	makedepends = git
-	makedepends = extra-cmake-modules-git
-	makedepends = kdoctools-git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools5
 	makedepends = qt5-tools
 	makedepends = networkmanager
 	makedepends = perl-uri
-	makedepends = kdesignerplugin-git
-	depends = kunitconversion-git
-	depends = kitemmodels-git
-	depends = kemoticons-git
-	depends = kparts-git
+	makedepends = kdesignerplugin
+	depends = kunitconversion5
+	depends = kitemmodels5
+	depends = kemoticons
+	depends = kparts5
 	depends = perl
 	provides = kdelibs4support
 	conflicts = kdelibs4support
-	source = git+https://github.com/KDE/kdelibs4support.git
+	source = git+https://github.com/KDE/kdelibs4support.git#branch=kf5
 	sha256sums = SKIP
 
 pkgname = kdelibs4support-git
-
