@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=audiowarden
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="Skip spotify songs you don't like"
@@ -15,7 +15,7 @@ source=('audiowarden.service'
         "https://github.com/nroi/audiowarden/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=('a8789704183f5bb551807fff056935c047ddf6c0a72eeb0047ee0ceb4777f3cb'
-            '92b9512f8d80c370c0431065c377533c94d761b9969eb916804685c814e642cd'
+            'b4c320ff2cda8a12ee40bb89a0c4dc66bf8200bd20f88c2517d04daf8c123c67'
 )
 
 prepare() {
