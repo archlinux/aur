@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index f7e01f4ccf32..8f0942092455 100644
+index f7e01f4ccf32..9d2760b42d87 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1425,6 +1425,45 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -1425,6 +1425,44 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
@@ -25,19 +25,18 @@ index f7e01f4ccf32..8f0942092455 100644
 +      continue;
 +    }
 +
-+    auto *ParamDoc = std::find_if(
-+        ParamDocs.begin(), ParamDocs.end(),
-+        [Param](const auto &ParamDoc) { return Param.Name == ParamDoc.Name; });
-+    if (ParamDoc == ParamDocs.end()) {
-+      Paragraph.appendCode(llvm::to_string(Param));
-+      continue;
-+    }
-+
 +    if (Param.Default)
 +      Paragraph.appendCode(*Param.Name + " = " + *Param.Default);
 +    else
 +      Paragraph.appendCode(*Param.Name);
-+    Paragraph.appendText(": ").appendText(ParamDoc->Description);
++    Paragraph.appendText(": ");
++
++    auto *ParamDoc = std::find_if(
++        ParamDocs.begin(), ParamDocs.end(),
++        [Param](const auto &ParamDoc) { return Param.Name == ParamDoc.Name; });
++    if (ParamDoc != ParamDocs.end())
++      Paragraph.appendText(ParamDoc->Description);
++
 +    if (Param.Type)
 +      Paragraph.appendText(" (")
 +          .appendCode(llvm::to_string(*Param.Type))
@@ -48,11 +47,12 @@ index f7e01f4ccf32..8f0942092455 100644
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1460,6 +1499,8 @@ markup::Document HoverInfo::present() const {
+@@ -1460,6 +1498,9 @@ markup::Document HoverInfo::present() const {
    if (!Documentation.Brief.empty())
      parseDocumentation(Documentation.Brief, Output);
  
-+  presentParams("Template parameters", TemplateParameters, Documentation.TemplateParameters, Output);
++  presentParams("Template parameters", TemplateParameters,
++                Documentation.TemplateParameters, Output);
 +
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
@@ -64,8 +64,7 @@ index f7e01f4ccf32..8f0942092455 100644
 -  if (Parameters && !Parameters->empty()) {
 -    Output.addParagraph().appendText("Parameters: ");
 -    markup::BulletList &L = Output.addBulletList();
-+  presentParams("Parameters", Parameters, Documentation.Parameters, Output);
- 
+-
 -    llvm::SmallVector<ParameterDocumentationOwned> ParamDocs =
 -        Documentation.Parameters;
 -
@@ -84,7 +83,8 @@ index f7e01f4ccf32..8f0942092455 100644
 -        }
 -      }
 -    }
--
++  presentParams("Parameters", Parameters, Documentation.Parameters, Output);
+ 
 -    // We erased all parameters that matched, but some may still be left,
 -    // usually typos. Let's also print them here.
 -    for (const auto &ParamDoc : ParamDocs) {
