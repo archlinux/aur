@@ -5,7 +5,7 @@
 
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
-pkgver='3.7.1'
+pkgver='3.8.0'
 pkgrel=1
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
@@ -17,16 +17,13 @@ depends=(binutils qt5-base qt5-multimedia qt5-svg qt5-websockets qt5-x11extras a
 makedepends=(cmake clang)
 
 _dir="PlotJuggler-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
-        "cstdint.patch"::"https://github.com/facontidavide/PlotJuggler/pull/830.patch")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('3260f4c3cc5c562e99bc65920f9e4fc072ad2621a02e0a9cfe74b1706b7d767b'
-         'SKIP')
+sha256sums=('3170fbffc0829fd7ef76ce133cc49a650f2ad9d02d1b63f73b5c17e760e160aa')
 validpgpkeys=()
 
 prepare() {
     cd "${srcdir}/PlotJuggler-${pkgver}"
-    patch -Np1 -i "${srcdir}/cstdint.patch"
 }
 
 build() {
