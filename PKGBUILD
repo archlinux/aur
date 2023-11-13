@@ -4,8 +4,8 @@
 # Contributor: qubidt
 
 pkgname=untrunc-git
-pkgver=r183.10fd251
-pkgrel=2
+pkgver=r184.8ae3c90
+pkgrel=1
 libav_version=12.3
 pkgdesc="restore a damaged (truncated) mp4, m4v, mov, 3gp video"
 arch=('x86_64' 'i686')
@@ -15,15 +15,19 @@ depends=('libvdpau' 'zlib' 'bzip2')
 makedepends=('yasm' 'git' 'libx11')
 source=("${pkgname}"::'git+https://github.com/ponchio/untrunc.git'
         'framealloc.patch'
-  "libav-${libav_version}.tar.gz::https://github.com/libav/libav/archive/refs/tags/v${libav_version}.tar.gz")
+  "libav-${libav_version}.tar.gz::https://github.com/libav/libav/archive/refs/tags/v${libav_version}.tar.gz"
+  mathops.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/commitdiff_plain/effadce6c756247ea8bae32dc13bb3e6f464f0eb)
 md5sums=('SKIP'
          '7f6cf1762cd93f4ce84cb218ab856ea3'
-         '78f791a4f595a67abd3a7d0c976524c5')
+         '78f791a4f595a67abd3a7d0c976524c5'
+         'adf42203d59a3c98a863216113946661')
 noextract=("libav-${libav_version}.tar.gz")
 
 prepare() {
   cd $srcdir/$pkgname
   tar xf ../libav-${libav_version}.tar.gz
+  cd libav-${libav_version}
+  patch -p1 -i ../../mathops.patch
 }
 
 build() {

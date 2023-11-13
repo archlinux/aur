@@ -1,7 +1,7 @@
 pkgbase = untrunc-git
 	pkgdesc = restore a damaged (truncated) mp4, m4v, mov, 3gp video
-	pkgver = r183.10fd251
-	pkgrel = 2
+	pkgver = r184.8ae3c90
+	pkgrel = 1
 	url = https://github.com/ponchio/untrunc
 	arch = x86_64
 	arch = i686
@@ -16,8 +16,10 @@ pkgbase = untrunc-git
 	source = untrunc-git::git+https://github.com/ponchio/untrunc.git
 	source = framealloc.patch
 	source = libav-12.3.tar.gz::https://github.com/libav/libav/archive/refs/tags/v12.3.tar.gz
+	source = mathops.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/commitdiff_plain/effadce6c756247ea8bae32dc13bb3e6f464f0eb
 	md5sums = SKIP
 	md5sums = 7f6cf1762cd93f4ce84cb218ab856ea3
 	md5sums = 78f791a4f595a67abd3a7d0c976524c5
+	md5sums = adf42203d59a3c98a863216113946661
 
 pkgname = untrunc-git
