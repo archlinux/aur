@@ -1,0 +1,20 @@
+pkgbase = singland-bin
+	pkgdesc = A GUI for sing-box. The universal proxy platform
+	pkgver = pre_alpha_4
+	pkgrel = 1
+	url = https://github.com/net-breaker/sing-land
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = glibc
+	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
+	provides = singland
+	options = !strip
+	source = https://github.com/net-breaker/sing-land/releases/download/pre-alpha-4/singland-alpha-linux-amd64.tar.gz
+	source = singland.desktop
+	source = https://raw.githubusercontent.com/net-breaker/sing-land/main/LICENSE
+	sha256sums = fb09e9be944c7237d9311b23206dd0e2e88b36462db76188ee6737c47b995b9e
+	sha256sums = bedcc8193fcadf9e33c4117bf47fa9e479abd2fc88548571323b26d9b4cbf77a
+	sha256sums = 98137f871b486ba3e608ca184e98c22adc6f928521e70dc3f6d21b234252927d
+
+pkgname = singland-bin
