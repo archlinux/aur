@@ -1,7 +1,7 @@
 pkgbase = kwok-bin
 	pkgdesc = Kubernetes WithOut Kubelet - Simulates thousands of Nodes and Clusters.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kwok.sigs.k8s.io/
 	arch = aarch64
 	arch = armv7h
