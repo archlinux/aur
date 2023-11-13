@@ -1,5 +1,5 @@
 pkgname="rt-pyocd-git"
-pkgver=0.2.1.0.gb0ac742
+pkgver=0.2.2.0.g3f8626e
 pkgrel=1
 pkgdesc="RT_Thread DAP-Link 调试实例!"
 arch=("x86_64")
