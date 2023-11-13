@@ -1,17 +1,20 @@
-pkgbase=pcf-unifont
-pkgname=obsolete-pkgbase-20180130-ii
-pkgver=0
-pkgrel=0
-pkgdesc=" "
+# Maintainer: neeshy <neeshy@tfwno.gf>
+pkgname=pcf-unifont
+pkgver=15.1.04
+pkgrel=1
+pkgdesc="GNU Unifont Glyphs (PCF version)"
 arch=('any')
-license=('custom')
-source=()
-sha512sums=()
-
-build() {
-	msg "This package base is obsolete. Please use the 'unifont' package base instead. We apologise for the inconvenience."
-}
+url="https://unifoundry.com/unifont/index.html"
+license=('GPL2' 'custom:OFL')
+source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.pcf.gz"{,.sig}
+        "https://unifoundry.com/LICENSE.txt")
+sha256sums=('5c728ff31c7e1af8456015b4dd26a66e977681c94abd0533d490232256f9f4e2'
+            'SKIP'
+            '1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87')
+validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
 
 package() {
-	build
+  cd "$srcdir"
+  install -Dm644 "unifont-$pkgver.pcf.gz" "$pkgdir/usr/share/fonts/misc/unifont.pcf.gz"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
