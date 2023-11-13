@@ -1,8 +1,9 @@
 pkgbase = protonmail-bridge
-	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP
+	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP (THIS IS OUT-OF-DATE PLEASE READ THE COMMENTS AND INSTALL NOTICE)
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://protonmail.com/bridge
+	install = notice.install
 	arch = x86_64
 	license = GPL3
 	makedepends = go
