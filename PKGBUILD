@@ -1,6 +1,6 @@
 # Maintainer: nltimv <git at nltimv dot com>
 pkgname='weave-gitops'
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc='Weave GitOps is a simple open source developer platform for people who want cloud native applications, without needing Kubernetes expertise.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=('gitops' 'gitops-server')
 conflicts=('gitops' 'gitops-server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/weaveworks/weave-gitops/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cebe06a94f438c2de3765ce5e926cb1dab4d743cbc3848ff48f1709bcf8f220a')
+sha256sums=('2d9414485236ec227807d9175b77a00fa468c7bdf7f345069f27d15c7c95f3f5')
 
 build() {
     export GOPATH="$srcdir"/gopath
