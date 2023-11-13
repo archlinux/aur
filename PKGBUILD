@@ -1,8 +1,9 @@
-# Maintainer: Dāvis Mosāns <davispuh at gmail dot com>
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Dāvis Mosāns <davispuh at gmail dot com>
 
 _pkgname=qt5-translations
 pkgname=$_pkgname-git
-pkgver=v5.15.2.r20.g68f420e
+pkgver=v5.15.11.lts.lgpl.r0.g5606515
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (Translations)'
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ depends=('qt5-base-git' 'qt5-tools-git')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://code.qt.io/qt/qttranslations.git#branch=5.15")
+source=("$_pkgname::git+https://invent.kde.org/qt/qt/qttranslations.git#branch=kde/5.15")
 sha256sums=("SKIP")
 
 pkgver() {

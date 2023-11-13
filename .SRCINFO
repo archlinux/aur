@@ -1,6 +1,6 @@
 pkgbase = qt5-translations-git
 	pkgdesc = A cross-platform application and UI framework (Translations)
-	pkgver = v5.15.2.r20.g68f420e
+	pkgver = v5.15.11.lts.lgpl.r0.g5606515
 	pkgrel = 1
 	url = https://code.qt.io/cgit/qt/qttranslations.git
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = qt5-translations-git
 	depends = qt5-tools-git
 	provides = qt5-translations
 	conflicts = qt5-translations
-	source = qt5-translations::git+https://code.qt.io/qt/qttranslations.git#branch=5.15
+	source = qt5-translations::git+https://invent.kde.org/qt/qt/qttranslations.git#branch=kde/5.15
 	sha256sums = SKIP
 
 pkgname = qt5-translations-git
-
