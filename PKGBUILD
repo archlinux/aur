@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetimex-easy'
-pkgver='0.089'
+pkgver='0.091'
 pkgrel='1'
 pkgdesc="Parse a date/time string using the best method available"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime' 'perl-datetime-format-flexible' 'perl-datetime-format-ical' 'perl-datetime-format-natural' 'perl-timedate')
-makedepends=('perl-test-most')
-url='http://search.cpan.org/dist/DateTimeX-Easy'
-source=('http://search.cpan.org/CPAN/authors/id/R/RO/ROKR/DateTimeX-Easy-0.089.tar.gz')
-md5sums=('6439e6a2c238c091031b0f478c2c3418')
-sha512sums=('7f508bd78fc2bd257af55d61c43c26b270729b1d2de9643eb1c025c21bde51537e12a0b260037347b46808dbaf16a5b81f01fd4229bfe0926deae753e62be870')
-_distdir="DateTimeX-Easy-0.089"
+depends=('perl-datetime>=0' 'perl-datetime-format-datemanip>=0' 'perl-datetime-format-flexible>=0' 'perl-datetime-format-ical>=0' 'perl-datetime-format-natural>=0' 'perl-datetime-timezone>=0' 'perl-timedate>=0' 'perl-yaml>=0')
+makedepends=()
+checkdepends=('perl-test-most>=0')
+url='https://metacpan.org/release/DateTimeX-Easy'
+source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/DateTimeX-Easy-0.091.tar.gz')
+md5sums=('796a200fed4b58cc2b9de89baf21e1ef')
+sha512sums=('568b2a04f9c4066aa848f6852bf352c242f30ac4e29385d2431d020a9fc31b056108f4406cb65142f4ce78c21bcc84bdabdf41bcc464df8634030c90bd534d63')
+_distdir="DateTimeX-Easy-0.091"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
