@@ -1,6 +1,6 @@
 pkgbase = libtexprintf
 	pkgdesc = Formatted Output with tex-like syntax support
-	pkgver = 1.11
+	pkgver = 1.25
 	pkgrel = 1
 	url = https://github.com/bartp5/libtexprintf
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = libtexprintf
 	license = GPL3
 	makedepends = git
 	provides = libtexprintf
-	source = https://github.com/bartp5/libtexprintf/releases/download/v1.11/libtexprintf-1.11.tar.gz
-	sha512sums = 958f335baae5d5f162c08d07743b59ee5a1e55ae432300ff521d5a45fc9953342cd53b54a2cae8a2553deed46061f34c0f1e16d788e95bdef87deddec12867be
+	conflicts = libtexprintf-git
+	source = https://github.com/bartp5/libtexprintf/releases/download/v1.25/libtexprintf-1.25.tar.gz
+	sha512sums = 2121eb27c40b31e64f67dbfde309112c2368f9898e473bcdcb7f760fece976f8d55871792e3b777340a2c28306db0c6db0d54ee8d179e72f7803ab29e28da663
 
 pkgname = libtexprintf
