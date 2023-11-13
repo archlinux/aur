@@ -1,8 +1,9 @@
 pkgbase = yaopenvfd
 	pkgdesc = Yet Another openvfd Daemon
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7Ji/YAopenvfD
+	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = gcc

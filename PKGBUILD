@@ -3,9 +3,9 @@
 _pkgname=YAopenvfD
 pkgname=${_pkgname,,}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another openvfd Daemon"
-arch=('aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/7Ji/${_pkgname}"
 license=('GPL3')
 depends=('glibc')
