@@ -1,19 +1,19 @@
 pkgbase = protoc-gen-rtk-query-bin
 	pkgdesc = Generate rtk-query apis from grpc service definitions
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/greatliontech/protoc-gen-rtk-query
 	license = MIT
 	conflicts = protoc-gen-rtk-query
 	provides = protoc-gen-rtk-query
 	arch = aarch64
-	source_aarch64 = https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.3.2-1/protoc-gen-rtk-query_0.3.2-1_linux_arm64.tar.gz
-	sha256sums_aarch64 = f663b062e3d50c791dd3d8a3ac2926c0723fb56214be16f497cc59924d7398d5
+	source_aarch64 = https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/v0.4.0/protoc-gen-rtk-query_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a7c4901328650bc821719afd64bc981430ce56f702fd21146c8df730ed519a5f
 	arch = i686
-	source_i686 = https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.3.2-1/protoc-gen-rtk-query_0.3.2-1_linux_386.tar.gz
-	sha256sums_i686 = 5fe50812ac3027b19a13d8f52e94bc2981a5b3f7b2211adb39358fd93c149877
+	source_i686 = https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/v0.4.0/protoc-gen-rtk-query_0.4.0_linux_386.tar.gz
+	sha256sums_i686 = 8dc8206f499779dda8014dca2bfad1993ba77faeea051d21a34525d039dc7b74
 	arch = x86_64
-	source_x86_64 = https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.3.2-1/protoc-gen-rtk-query_0.3.2-1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 27096cfc6b2d572f93cab2a549520a660d4af3c673da6c27be7aea6dae3a1607
+	source_x86_64 = https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/v0.4.0/protoc-gen-rtk-query_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 97fbd40fbb8e1fa108e94b89f6f5f1b73c7924cc83da35f994de15735c2ad199
 	
 pkgname = protoc-gen-rtk-query-bin
