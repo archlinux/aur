@@ -1,11 +1,10 @@
 pkgbase = csbooks-bin
 	pkgdesc = A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader.
 	pkgver = 7.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://caesiumstudio.com/csbooks/
 	arch = x86_64
 	license = custom
-	depends = bash
 	depends = electron21
 	depends = hicolor-icon-theme
 	provides = csbooks=7.5.0
@@ -13,6 +12,6 @@ pkgbase = csbooks-bin
 	source = csbooks-bin-7.5.0.pacman::https://github.com/caesiumstudio/csBooks-updates/releases/download/latest/csBooks-7.5.0.pacman
 	source = csbooks.sh
 	sha256sums = b1dfc2d6b137580b7bba60da5d97886369170f6b38b3154ad919847b9eca7afc
-	sha256sums = 0682d1bb4bab35ad4312dd22a948d048cd58df04aa884607ab9444b4501c0a7a
+	sha256sums = 932fffc222021ab8075936a7131736d547dbda29aaecd687fe645665c1871905
 
 pkgname = csbooks-bin
