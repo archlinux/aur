@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('925210ba0759105323c311a50ab6f52822a16a1525c36a2fc422bacda1b0076d'
             '2b268bdffb07dac827d76861fe2efe66969bdf418e016c364fb3dd02b6cd2455'
-            '47643c99643c0a592e2a7946052c3bd16c98450ef87cec2a3444d6aae04ab9e3')
+            '91955296a742aed4445743bb54ec2c389917f36bca4969bb8d50bcfa8f80d7b2')
 build() {
     gendesk -q -f -n --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${_pkgname}-${pkgver}"
