@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/allegroai/clearml"
 license=('MIT')
 depends=('python' 'python-attrs' 'python-furl' 'python-jsonschema' 'python-numpy' 'python-pathlib2' 'python-pillow' 'python-pyparsing' 'python-dateutil' 'python-pyjwt' 'python-pyyaml' 'python-requests' 'python-six' 'python-urllib3')
-makedepends=('python-setuptools' 'python-build' 'python-installer')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("clearml-$pkgver.tar.gz::https://github.com/allegroai/clearml/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('dc1d331216132c6371f292fc5a58bb97')
 
