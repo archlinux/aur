@@ -1,4 +1,8 @@
-*.deb
-*pkg.tar*
-src
-pkg
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!serpro-signer.install
