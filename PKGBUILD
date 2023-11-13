@@ -1,6 +1,6 @@
 # Maintainer: Jener Rasmussen <aur@jener.me>
 pkgname=opentofu-bin
-pkgver=1.6.0_alpha3
+pkgver=1.6.0_alpha4
 pkgrel=1
 pkgdesc="OpenTofu lets you declaratively manage your cloud infrastructure. "
 arch=('x86_64'
@@ -13,14 +13,14 @@ provides=('opentofu'
     'terraform')
 conflicts=('opentofu'
     'opentofu-git')
-source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_amd64.zip")
-source_i686=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_i386.zip")
-source_aarch64=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_arm64.zip")
-source_armv7h=("https://github.com/opentofu/opentofu/releases/download/v${pkgver//_/-}/tofu_${pkgver//_/-}_linux_arm.zip")
-sha256sums_x86_64=("bb1b65d5bffea4e1f840af2c32290d4c11ca27e3c55a386da89f5f014cf33196")
-sha256sums_i686=("9c2544f3726a841eafe56b866658f2f3d59fc357b2f3c8b23c41b465efcb2854")
-sha256sums_aarch64=("2b94de7dd206610e0d0d32d216c4001d32cea6bfe35a1b4630db5f17d92f03e3")
-sha256sums_armv7h=("764144adca31bfbb12e7828242ed88ab3f436c8ff32b1cc8f06052a5b8809e5e")
+source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha4/tofu_1.6.0-alpha4_linux_amd64.zip")
+sha256sums_x86_64=("3ee733c7d67a39d464df9c624615d5dce076b818ddfe4910cfcc1d980e0bbffe")
+source_i686=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha4/tofu_1.6.0-alpha4_linux_386.zip")
+sha256sums_i686=("127ee46807ee4d62cd4b1ef6916fff99f4f5b51421d861dbbfdb7da381ea2527")
+source_aarch64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha4/tofu_1.6.0-alpha4_linux_arm64.zip")
+sha256sums_aarch64=("5c949cd601f7fca770de91ba05a1c5ab7c8c990788da8a729ed9b5aaf3f28dde")
+source_armv7h=("https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha4/tofu_1.6.0-alpha4_linux_arm.zip")
+sha256sums_armv7h=("1c9900bf31356c3fc9274e2affde6f83c1aeeda0589357189c19e3bc9a2b99fb")
 
 package() {
     install -o root -g root -m 755 -D tofu $pkgdir/usr/bin/tofu
