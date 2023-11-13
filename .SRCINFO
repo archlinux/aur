@@ -1,12 +1,14 @@
 pkgbase = python-imread
 	pkgdesc = Read images to numpy arrays
 	pkgver = 0.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/luispedro/imread
 	arch = x86_64
 	license = MIT
-	checkdepends = python-nose
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = libpng
 	makedepends = libjpeg-turbo
 	makedepends = libtiff
@@ -14,6 +16,8 @@ pkgbase = python-imread
 	makedepends = xcftools
 	depends = python-numpy
 	source = imread-0.7.4.tar.gz::https://github.com/luispedro/imread/archive/v0.7.4.tar.gz
+	source = atributeerror.patch::https://github.com/luispedro/imread/pull/44.patch
 	sha512sums = 6ec445ede6a25f57f2ab6ab3b4a89b91015edc6a73cb03124c746a21c4fcb1486abb88cf8d9980347afb4ed6b916bfd450b003ded1dc21aa1732c84472a90d28
+	sha512sums = ea17959e1f481682bbd06ed40cd0f41d4b6ab3e1bcfadcc49b348f7923da620a1580e3f1b90a08a257a2cbd1b9f3b36971c547a9218b0f266bbc53f205ee6190
 
 pkgname = python-imread
