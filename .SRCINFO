@@ -1,13 +1,12 @@
 pkgbase = zui-bin
 	pkgdesc = A powerful desktop application for exploring and working with data. The official front-end to the Zed lake.
-	pkgver = 1.3.1
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://www.brimdata.io/
 	arch = x86_64
 	license = BSD
 	depends = python
 	depends = alsa-lib
-	depends = gcc-libs
 	depends = libxdamage
 	depends = expat
 	depends = zlib
@@ -19,8 +18,6 @@ pkgbase = zui-bin
 	depends = libx11
 	depends = sqlite
 	depends = libxrandr
-	depends = glibc
-	depends = glib2
 	depends = libxcomposite
 	depends = pango
 	depends = gtk3
@@ -33,11 +30,11 @@ pkgbase = zui-bin
 	depends = dbus
 	depends = nspr
 	depends = libxfixes
-	provides = zui=1.3.1
+	provides = zui=1.4.1
 	conflicts = zui
-	source = zui-1.3.1.deb::https://github.com/brimdata/zui/releases/download/v1.3.1/zui_1.3.1_amd64.deb
-	source = LICENSE.txt::https://raw.githubusercontent.com/brimdata/zui/v1.3.1/apps/zui/LICENSE.txt
-	sha256sums = f6c0d50e721fcd3bf90e9435596ccc73b594a7a72fb944914414c2226a622ced
+	source = zui-1.4.1.deb::https://github.com/brimdata/zui/releases/download/v1.4.1/zui_1.4.1_amd64.deb
+	source = LICENSE.txt::https://raw.githubusercontent.com/brimdata/zui/v1.4.1/apps/zui/LICENSE.txt
+	sha256sums = d6ae3abe1bedf33c0c715cbb27b7ab19abb4b6ae51154e217508f49c38a23b05
 	sha256sums = e3d24db419fcb44a1dab91f351b8203e74e8501ea11c4be82ad3cc05070cad9f
 
 pkgname = zui-bin
