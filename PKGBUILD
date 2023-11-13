@@ -7,9 +7,9 @@
 _pkgname=v4l-utils
 pkgname=${_pkgname}-mpp
 pkgver=1.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace tools and conversion library for Video 4 Linux, with Rockchip MPP support"
-arch=('aarch64')
+arch=('x86_64' 'aarch64')
 url="https://linuxtv.org/"
 provides=("libv4l=${pkgver}" "${_pkgname}=${pkgver}")
 replaces=('libv4l')
@@ -17,7 +17,7 @@ conflicts=('libv4l' "${_pkgname}")
 backup=(etc/rc_maps.cfg)
 license=('LGPL')
 options=('!distcc')
-depends=('hicolor-icon-theme' 'gcc-libs' 'libjpeg-turbo'  'systemd-libs' 'json-c' 'mpp-git')
+depends=('hicolor-icon-theme' 'gcc-libs' 'libjpeg-turbo'  'systemd-libs' 'json-c' 'mpp')
 makedepends=('qt5-base' 'alsa-lib')
 optdepends=('qt5-base: for qv4l2 and qvidcap' 'alsa-lib: for qv4l2')
 source=(https://linuxtv.org/downloads/v4l-utils/${_pkgname}-${pkgver}.tar.bz2{,.asc})
