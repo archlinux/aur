@@ -1,20 +1,25 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
 _appname="Altair GraphQL Client"
-pkgver=5.2.5
+pkgver=5.2.6
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms."
 arch=('x86_64')
 url="https://altairgraphql.dev/"
-_githuburl="https://github.com/altair-graphql/altair"
+_ghurl="https://github.com/altair-graphql/altair"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron26' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64_linux.deb"
+depends=(
+    'electron26'
+    'hicolor-icon-theme'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64_linux.deb"
     "LICENSE::https://raw.githubusercontent.com/altair-graphql/altair/v${pkgver}/packages/altair-core/LICENSE"
-    "${pkgname%-bin}.sh")
-sha256sums=('58c8080d13a629ef6b72ec73096de75340e5706f3a77da892cda49245362c333'
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('92814a529a97238634b5fff5ede4d1b6af454920c7d58b2cb7b6c5c3d8fe7824'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             '6a9f759b43f96b8b33b324296d2177ca9eadbb87dc068ed6e9495aa58c0371e9')
 build() {
