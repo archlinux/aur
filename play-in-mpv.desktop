@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=playinmpv
+Name=play-in-mpv
 Comment=Play Bilibili videos with MPV
 NoDisplay=true
-Exec=playinmpv %U
+Exec=play-in-mpv %U
 MimeType=x-scheme-handler/mpv;
