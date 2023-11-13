@@ -2,21 +2,32 @@
 _pkgname=crankshaft
 pkgname="${_pkgname}-client-bin"
 pkgver=1.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A fast, feature-rich krunker client written in typescript"
 arch=('i686' 'x86_64')
 url="https://github.com/KraXen72/crankshaft"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron10' 'gcc-libs' 'glibc')
+depends=(
+    'electron10'
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
+)
+makedepends=(
+    'squashfuse'
+)
 source=("${pkgname%-bin}.sh")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-portable-linux-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-portable-linux-x86_64.AppImage")
-sha256sums=('27ec0f0df9ea69f191489352e56557de1906a3d234c969d731e790129b8141f2')
+sha256sums=('e539f5a02afe99f92a2901110fe1a6cbe8ef141206c4dc2f613a8e0b36deff1d')
 sha256sums_i686=('e2de6a1520e5385cace8828cc1dba0cb9c301e6c89c3d08f6f0e9dfb914f6c0b')
 sha256sums_x86_64=('f6012189d8c76bb08fb6a54a03e2fde6d0c089900f83bc9e661ef015cf5713e7')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|game|Game|g" \
@@ -25,8 +36,10 @@ prepare() {
 }
 package() {    
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
