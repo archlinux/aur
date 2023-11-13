@@ -1,0 +1,13 @@
+pkgbase = zsh-defer-git
+	pkgdesc = Deferred execution of Zsh commands
+	pkgver = r39.1c75faf
+	pkgrel = 1
+	url = https://github.com/romkatv/zsh-defer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = zsh
+	source = zsh-defer::git+https://github.com/romkatv/zsh-defer
+	sha256sums = SKIP
+
+pkgname = zsh-defer-git
