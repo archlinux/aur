@@ -1,18 +1,22 @@
 pkgbase = libsvg-cairo
 	pkgdesc = A library for rendering SVG documents
 	pkgver = 0.1.6
-	pkgrel = 11
-	url = http://cairographics.org/snapshots
+	pkgrel = 12
+	url = https://cairographics.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = libpng
 	depends = cairo>=1.4.6
+	depends = glibc
 	depends = libjpeg
 	depends = libsvg
+	depends = libxml2
+	depends = libpng
+	depends = zlib
+	options = strip
 	options = !libtool
 	source = https://cairographics.org/snapshots/libsvg-cairo-0.1.6.tar.gz
-	md5sums = d79da7b3a60ad8c8e4b902c9b3563047
+	b2sums = c890f6b613c15c72d0bc4c64548ed3ee5066e6d32eb1316ec23b68a8a315265cc8351434c9492f83582e858212bacbb951093342002e44dc05724fae5968bfeb
 
 pkgname = libsvg-cairo
-
