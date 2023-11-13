@@ -13,9 +13,9 @@ _pkgver() {
 _pkgname=idos-timetable-additionalinfo-chaps-trains
 pkgname="${_pkgname}-latest"
 epoch=0
-#_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
-pkgver=2022_12_10 # "${_pkgver}"
-pkgrel=4
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
+pkgrel=5
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS."
 arch=('any')
 license=('custom')
