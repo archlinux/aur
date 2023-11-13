@@ -2,7 +2,7 @@
 pkgname=xplist-bin
 _pkgname=Xplist
 pkgver=1.2.47
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform Plist Editor"
 arch=("x86_64")
 url="https://github.com/ic005k/Xplist"
@@ -10,12 +10,22 @@ license=("MIT")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 options=('!strip')
-depends=('zlib' 'glibc' 'libglvnd' 'libgpg-error' 'freetype2' 'glib2' 'libx11' 'fontconfig' 'gcc-libs' 'e2fsprogs' 'libxcb')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${CARCH}.AppImage"
-        "LICENSE::https://raw.githubusercontent.com/ic005k/Xplist/${pkgver}/LICENSE")
+depends=(
+    'libglvnd'
+    'libgpg-error'
+    'freetype2'
+    'libx11'
+    'fontconfig'
+    'e2fsprogs'
+    'libxcb'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${CARCH}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/ic005k/Xplist/${pkgver}/LICENSE"
+)
 sha256sums=('9319fd1f4ccda8abe34ab18390f3cd81d69c442c5030f7583e59c8bc4c1395eb'
             '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g;s|icon|${pkgname%-bin}|g;s|Application;|Utility;|g" -i "${srcdir}/squashfs-root/default.desktop"
