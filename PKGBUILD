@@ -3,7 +3,7 @@
 
 pkgname=libtexprintf
 pkgver=1.25
-pkgrel=3
+pkgrel=4
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
@@ -16,7 +16,6 @@ provides=('libtexprintf')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    ./autogen.sh
     ./configure --prefix=/usr --enable-shared=yes --enable-static=yes
     make CFLAGS="$(echo ${CFLAGS} | sed 's_-Werror=format-security__')" all -j${nprocs}
 }
