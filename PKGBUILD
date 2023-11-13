@@ -3,8 +3,8 @@
 pkgname=linux-firmware-amlogic-ophub-git
 pkgver=20231018.db9e26b
 pkgrel=1
-pkgdesc="Firmware files for Linux - for AArch64 Amlogic platform, complete set, collected by ophub"
-arch=('aarch64')
+pkgdesc="Firmware files for Linux - mainly for AArch64 Amlogic platform, complete set, collected by ophub"
+arch=('any')
 makedepends=('git')
 url="https://github.com/ophub/firmware"
 license=('GPL2' 'GPL3' 'custom')
