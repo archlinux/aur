@@ -4,7 +4,7 @@
 
 
 _cranname=stringi
-_cranver=1.7.12
+_cranver=1.8.1
 pkgname=r-${_cranname,,}
 pkgdesc="Fast and Portable Character String Processing Facilities"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -14,19 +14,31 @@ pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
-    "icu>=55"
-    "r>=3.1"
+    "icu>=61"
+    "r>=3.4"
     "r-cpp11"
 )
 optdepends=()
-makedepends=()
+makedepends=(
+    "r-roxygen2"
+    "r-pkgbuild"
+)
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-tinytest"
+# )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('7d368e7e5bb439c7e64c68f2a26eae4e7b48a109cde617aa75dcbce839794711accaf1725df9033bcf8277d82430436b61de037f02ad6724bb988fe4b5854879')
+b2sums=("c4d188e3627d91417ff093bfe6f6cc57126ca346aa1fb28a30d12c7730f6197cf3c61451dd7d59c3467eec9fe006b0d13cabf593a85cf151d651cf0e419bf735")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
+
+# check() {
+#     export R_LIBS="build/"
+#     R CMD check --no-manual "${_cranname}"
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
