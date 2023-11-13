@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=python-powerline-taskwarrior
 pkgver=2.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Powerline segment for showing information from Taskwarrior task manager"
 url="https://github.com/Zebradil/powerline-taskwarrior"
 arch=(any)
@@ -24,8 +24,3 @@ package ()
     cd "${pkgname#python-}-$pkgver" || exit 1;
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-
-# Custom variables
-
-_z_update_hashsums="true"
