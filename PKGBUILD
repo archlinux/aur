@@ -32,7 +32,7 @@ source=(Jabref-${_pkgver}.tgz::https://builds.jabref.org/main/JabRef-5.12-portab
         jabref.sh
         JabRef.desktop
         JabRef.svg)
-sha256sums=('d4efbb877a581cdbb68b1d68a62cf19485d19e02340e1dba00bc4345af74c025'
+sha256sums=('SKIP'
             '5420fc1b814ef6776f2dfe845676b9c41e36118413e2a2d30fe0694d7a67743e'
             '857807c9240181f5d7e783898e94e523beaba8b6b55617931141cbffba41c70d'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
