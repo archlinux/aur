@@ -12,7 +12,6 @@ pkgbase = python-mozjpeg-lossless-optimization
 	makedepends = cmake
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-pip
 	makedepends = gcc
 	depends = python>=3
