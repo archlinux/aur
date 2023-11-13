@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-darkreader
+	pkgdesc = Inverts brightness of web pages and aims to reduce eyestrain while browsing the web
+	pkgver = 4.9.68
+	pkgrel = 1
+	url = https://github.com/darkreader/darkreader
+	arch = any
+	groups = librewolf-addons
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = strip-nondeterminism
+	depends = librewolf
+	source = git+https://github.com/darkreader/darkreader.git#tag=v4.9.68
+	sha256sums = SKIP
+
+pkgname = librewolf-extension-darkreader
