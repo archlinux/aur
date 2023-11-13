@@ -1,6 +1,6 @@
 pkgbase = kew-git
 	pkgdesc = A command-line music player
-	pkgver = v1.5.2.r0.ge6f1637
+	pkgver = v1.5.2.r3.g808bc62
 	pkgrel = 1
 	url = https://github.com/ravachol/kew
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = kew-git
 	depends = git
 	depends = chafa
 	depends = freeimage
-	conflicts = cue
 	replaces = cue-git
 	source = git+https://github.com/ravachol/kew
 	sha256sums = SKIP
