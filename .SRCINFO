@@ -1,7 +1,7 @@
 pkgbase = music-dl-bin
 	pkgdesc = Music Searcher and Downloader.音乐搜索下载器。
 	pkgver = 3.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/guanguans/music-dl
 	arch = x86_64
 	license = MIT
