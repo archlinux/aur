@@ -3,29 +3,21 @@
 
 pkgname=pastix
 pkgver=6.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="High performance parallel solver for very large sparse linear systems based on direct methods"
 arch=('x86_64')
 url="https://gitlab.inria.fr/solverstack/pastix"
 license=('LGPL3')
 depends=('cblas' 'lapacke' 'hwloc' 'scotch' 'metis' 'openmpi' 'python')
-makedepends=('gcc-fortran' 'cmake' 'ninja' 'git' 'doxygen')
+makedepends=('gcc-fortran' 'cmake' 'ninja' 'doxygen')
 provides=('libpastix.so' 'libpastix_kernels.so'
           # also provide the SpM library (internal module)
           'libspm.so' 'libspmf.so')
-source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
-        gitmodules.diff)
-md5sums=('SKIP'
-         '59430d563cc9a665292c0d793520e148')
-
-prepare() {
-    cd "${pkgname}"
-    patch -p2 < ../gitmodules.diff
-    git submodule update --init --recursive
-}
+source=("https://files.inria.fr/pastix/releases/v6/pastix-6.3.0.tar.gz")
+sha256sums=('a6bfec32a3279d7b24c5fc05885c6632d177e467f1584707c6fd7c42a8703c3e')
 
 build() {
-    cmake -B build -S "${pkgname}" -G Ninja \
+    cmake -B build -S "${pkgname}-${pkgver}" -G Ninja \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
