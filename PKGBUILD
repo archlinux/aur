@@ -3,21 +3,21 @@
 
 _pkgname=libtexprintf
 pkgname=libtexprintf-git
-pkgver=1.25
+pkgver=main
 pkgrel=1
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
 license=('GPL3')
 makedepends=(git make gcc)
-source=("https://github.com/bartp5/libtexprintf/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/bartp5/libtexprintf/archive/refs/heads/${pkgver}.zip")
 conflicts=(libtexprintf)
 provides=('libtexprintf')
-sha512sums=('2121eb27c40b31e64f67dbfde309112c2368f9898e473bcdcb7f760fece976f8d55871792e3b777340a2c28306db0c6db0d54ee8d179e72f7803ab29e28da663')
+sha512sums=('2251cf9511c3ba7c0f993a844c82e59d3bdd378297e1df6034643f3d1c9c0415460f4470c8fa6c84de6b68aa63e1e893fd3211386c55b8d7dd6e4a451b2fca6d')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure --prefix=/usr --enable-shared=yes --enable-static=no
+    ./configure --prefix=/usr --enable-shared=yes --enable-static=yes
     make CFLAGS="$(echo ${CFLAGS} | sed 's_-Werror=format-security__')" all -j${nprocs}
 }
 
