@@ -106,7 +106,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=26
+pkgrel=27
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -141,7 +141,7 @@ sha256sums=('SKIP'
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             'faf5c8b2a5a345be59c33f5de591f39dd35b1a2b97ca067e21023e311610bc0d'  # lsp-codelens
             'd048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc'  # postfix-completion
-            '6bc5825c0ba9b6463dcf311346ae4ac9db122f66a4cd47b07f67845d125953b2'  # postfix-completion-trunk
+            '221e6439df2ee1ca55f5925f9cc3133cb9fb5a256bdc68743e8d46747e7e85b7'  # postfix-completion-trunk
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
