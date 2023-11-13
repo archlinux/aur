@@ -5,14 +5,14 @@
 
 pkgbase=postgresql-git
 pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
-pkgver=16.beta2.r329.g63956bed7b
+pkgver=16.beta2.r779.g861f86beea
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (Git version)'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl' 'openssl'
-             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm15' 'clang15' 'libxslt'
+             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang' 'libxslt'
              'util-linux' 'git' 'docbook-xml' 'docbook-xsl')
 source=(git+https://git.postgresql.org/git/postgresql.git
         postgresql-run-socket.patch
@@ -75,7 +75,6 @@ build() {
   # Fix static libs
   CFLAGS+=" -ffat-lto-objects"
 
-  LLVM_CONFIG=llvm-config-15 CLANG=/usr/lib/llvm15/bin/clang \
   ./configure "${configure_options[@]}"
   make world
 }
@@ -157,7 +156,7 @@ package_postgresql-git() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends=("postgresql-libs-git" 'krb5' 'libxml2' 'readline'
-           'openssl' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm15-libs'
+           'openssl' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs'
            'libxslt' 'lz4' 'zstd')
   optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
