@@ -7,7 +7,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=xkb-switch-i3
 pkgver=2.0.1+i3_5
-pkgrel=4
+pkgrel=5
 pkgdesc="Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)"
 url="https://github.com/zebradil/xkb-switch-i3"
 arch=(i686 x86_64)
@@ -31,8 +31,3 @@ package ()
     cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}";
     make DESTDIR="$pkgdir/" install
 }
-
-
-# Custom variables
-
-_z_update_hashsums="true"
