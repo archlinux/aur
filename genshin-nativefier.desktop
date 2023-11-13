@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.0。1
+Name=genshin
+Name[zh_CN]=原神
+Comment=genshin nativefier
+Exec=/opt/genshin-nativefier/genshin
+Icon=/opt/genshin-nativefier/resources/app/icon.png
+Terminal=false
+Categories=AudioVideo;Video;TV;Game;
