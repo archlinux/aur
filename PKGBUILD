@@ -48,12 +48,9 @@ build() {
 
 package() {
     cd "${srcdir}/Furious-${pkgver}/guiBinaries/__main__.dist/"
-    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
-    
+    find . -type f -exec install -Dm755 {} "$pkgdir/$_install_path"/{} \;
     install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    
     install -Dm644 "${srcdir}/furious.png" "${pkgdir}/usr/share/icons/hicolor/400x400/apps/furious.png"
-    
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "${_install_path}/__main__.bin" "${pkgdir}/usr/bin/${pkgname}"
 }
