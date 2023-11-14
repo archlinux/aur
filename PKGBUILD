@@ -1,7 +1,7 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=aero2solver
 pkgver="1.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Solve Aero2 captchas automatically using the magic of machine learning and computer vision"
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/dumbasPL/aero2solver"
@@ -13,7 +13,7 @@ source=(
 	"$pkgname.service"
 	"$pkgname.sysusers"
 )
-sha256sums=('31b3983e23414f48b7df950b795288549fe1a66ffcc65d65e2cfcb85fcac5f48'
+sha256sums=('769b9a643e865d9d03eef38162ac6019579a9ba8ea4b5bf72a099acd9562cd8a'
             '04e89d56ab4cd3eaf1271c829b562606bfd57b63d0346b2773266cb5c0c1eca6'
             '4a39fe28d2dccb6defecbd38331269ca124b73553d420b101a0d8443db77b94b')
 
