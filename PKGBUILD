@@ -1,22 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kubenav-appimage
 pkgver=4.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The navigator for your Kubernetes clusters right in your pocket."
 arch=('x86_64')
 url="https://kubenav.io/"
-_githuburl="https://github.com/kubenav/kubenav"
+_ghurl="https://github.com/kubenav/kubenav"
 license=('MIT')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc')
+depends=()
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${CARCH}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/kubenav/kubenav/v${pkgver}/LICENSE")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-appimage}-${CARCH}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/kubenav/kubenav/v${pkgver}/LICENSE"
+)
 sha256sums=('9318290887f6c7d96294fc8cd47754c568ac3c18eb41a2c776f31cf9cdb85281'
             '8b3342858e9f80f58fd2b895d71aa21d1b7c96c6ee1923ea8cb7ee319acc44f8')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|Exec=${pkgname%-appimage}|Exec=${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
