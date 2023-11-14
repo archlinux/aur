@@ -25,6 +25,7 @@ package() {
     find wf-msg -exec install -D {} "${pkgdir}/usr/share/wf-msg/{}" ';'
     find wf-utils -exec install -D {} "${pkgdir}/usr/share/wf-msg/{}" ';'
     mkdir "${pkgdir}/usr/bin"
+    install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/$pkgname/
     ln -s /usr/share/wf-msg/wf-msg/wf-msg "${pkgdir}/usr/bin/wf-msg"
     ln -s /usr/share/wf-msg/wf-utils/wf-utils "${pkgdir}/usr/bin/wf-utils"
 }
