@@ -1,11 +1,10 @@
-# Maintainer: Kawaki <dev at kanjala dot com>
+# Maintainer: rtkay <dev at kanjala dot com>
 _pkgname="mirro-rs"
 pkgname="${_pkgname}-git"
-pkgver=r99.3ba7d2b
+pkgver=r158.d3c3066
 pkgrel=1
 makedepends=('git' 'cargo')
-depends=('openssl' 'gcc-libs')
-url=https://github.com/kawaki-san/mirro-rs
+url=https://github.com/rtkay123/mirro-rs
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="An Arch Linux mirrorlist management tool with a TUI"
 source=("git+$url")
@@ -21,6 +20,11 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     cargo fetch --locked
+}
+
+check() {
+    cd "$_pkgname"
+    cargo test --frozen --all-features
 }
 
 build() {
