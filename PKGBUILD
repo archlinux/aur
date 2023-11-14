@@ -1,24 +1,9 @@
 # Maintainer:
 # Contributor: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
 
-_pkgbase="libgweather"
-pkgbase="$_pkgbase-git"
-
-case "${_srcinfo::1}" in
-  't'|'y'|1)
-    pkgname=(
-      "libgweather-git"
-      "libgweather-4-git"
-    )
-    ;;
-  *)
-    pkgname=(
-      "libgweather-4-git"
-    )
-    ;;
-esac
-
-pkgver=4.2.0.r28.g1c3dfe68
+_pkgname="libgweather"
+pkgname="$_pkgname-git"
+pkgver=4.4.0.r8.g57a116bf
 pkgrel=1
 pkgdesc='Location and timezone database and weather-lookup library'
 url='https://gitlab.gnome.org/GNOME/libgweather'
@@ -41,16 +26,17 @@ makedepends=(
   'vala'
 )
 
-source=("$_pkgbase"::"git+$url")
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgbase"
+  cd "$_pkgsrc"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "$_pkgbase" build -D gtk_doc=true
+  arch-meson "$_pkgsrc" build -D gtk_doc=true
   meson compile -C build
 }
 
@@ -58,24 +44,14 @@ check() {
   meson test -C build --print-errorlogs || true
 }
 
-package_libgweather-git() {
-  pkgdesc='metapackage to track broken dependencies'
-  depends=('libgweather-4-git')
-
+package() {
   provides+=(
-    'libgweather'
-  )
-  conflicts=(${provides[@]})
-}
-
-package_libgweather-4-git() {
-  provides+=(
-    'libgweather-4'
-    'libgweather-4.so'
+    "libgweather-4=${pkgver%%.r*}"
+    "libgweather-4.so"
   )
   conflicts=(
     'libgweather-4'
   )
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir:?}"
 }
