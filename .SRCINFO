@@ -1,6 +1,6 @@
 pkgbase = vlang-bin
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software (binary release)
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://vlang.io
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = vlang-bin
 	conflicts = v
 	conflicts = vlang
 	conflicts = vlang-git
-	source = vlang-0.4.2.zip::https://github.com/vlang/v/releases/download/0.4.2/v_linux.zip
-	sha256sums = ae8708e353b1b8aa31df6d1848f6a74abba98215dd860b8bf42426b0d379407b
-	sha512sums = aaabde07c3dd050c54fdf454ccb425e625eccce2ec03479307a74aa04eaed0119a360f1d36dac00b0d7ee64de1db7c5e77b5ba8e74940da32469e53cb558bfc5
+	source = vlang-0.4.3.zip::https://github.com/vlang/v/releases/download/0.4.3/v_linux.zip
+	sha256sums = f799335d6fa4c236e3dcc6aaf80bd107c78332e4c966141a15bf73bdad6338d5
+	sha512sums = 4a35153e4a6dd017ac7536433616826625bc13db53f4931adacbe3945a1456cafd2b5cd3839519b2894db60110fc7c328421f0a95ebb916b63c572284aea18c3
 
 pkgname = vlang-bin
