@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-mamba
-pkgver=0.11.2
-pkgrel=6
+pkgver=0.11.3
+pkgrel=1
 pkgdesc="The definitive testing tool for Python. Born under the banner of Behavior Driven Development."
 arch=('any')
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python-coverage' 'python-clint')
 makedepends=('python-setuptools')
 checkdepends=('python-doublex-expects')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nestorsalceda/mamba/archive/v$pkgver.tar.gz")
-sha512sums=('8ca6207c9df7b3388db8ecabd13456e54d8811c24f695ccc638c90bb2c975268f9e803533808f9b099651ee4744376fad3b58eaa84a6c97605631368f979915c')
+sha512sums=('0d4ee434ff2a42dc95a8a5c94980fa224652e38b1ed7e617383882b38a8327861464424f78fb46b2f3e08dabb241bb0e1e9e6734dd68376a43bc3a5b41c01d8c')
 
 build() {
   cd mamba-$pkgver

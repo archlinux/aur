@@ -1,0 +1,15 @@
+pkgbase = python-mamba
+	pkgdesc = The definitive testing tool for Python. Born under the banner of Behavior Driven Development.
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://nestorsalceda.github.io/mamba
+	arch = any
+	license = MIT
+	checkdepends = python-doublex-expects
+	makedepends = python-setuptools
+	depends = python-coverage
+	depends = python-clint
+	source = python-mamba-0.11.3.tar.gz::https://github.com/nestorsalceda/mamba/archive/v0.11.3.tar.gz
+	sha512sums = 0d4ee434ff2a42dc95a8a5c94980fa224652e38b1ed7e617383882b38a8327861464424f78fb46b2f3e08dabb241bb0e1e9e6734dd68376a43bc3a5b41c01d8c
+
+pkgname = python-mamba
