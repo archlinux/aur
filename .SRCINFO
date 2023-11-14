@@ -1,6 +1,6 @@
 pkgbase = furious-git
 	pkgdesc = A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria
-	pkgver = 0.2.11
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/LorenEteval/Furious
 	arch = x86_64

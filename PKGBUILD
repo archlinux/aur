@@ -2,7 +2,7 @@
 
 _pkgname=furious
 pkgname=$_pkgname-git
-pkgver=0.2.11
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="A PySide6-based cross platform GUI client that launches your beloved GFW to outer space. Support Xray-core and hysteria"
 arch=(x86_64)
@@ -55,11 +55,8 @@ build() {
 package() {
     cd "${srcdir}/Furious/guiBinaries/__main__.dist/"
     find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
-    
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-    
     install -Dm644 "${srcdir}/furious.png" "${pkgdir}/usr/share/icons/hicolor/400x400/apps/furious.png"
-    
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "${_install_path}/__main__.bin" "${pkgdir}/usr/bin/${_pkgname}"
 }
