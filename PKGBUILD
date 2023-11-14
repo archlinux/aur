@@ -3,7 +3,7 @@
 # Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 pkgname=pdfposter-git
 _pkgname=pdfposter
-pkgver=0.7.post1.r7.g0ec90f0
+pkgver=0.8.1.r27.g2d0ed65
 pkgrel=1
 pkgdesc="Print large posters on multiple sheets"
 arch=('any')
@@ -12,27 +12,20 @@ license=('GPL3')
 depends=('python-pypdf2')
 makedepends=('python-distribute')
 options=(!emptydirs)
-source=("git+https://gitlab.com/pdftools/pdfposter.git" "overlap.patch")
-sha256sums=('SKIP'
-            '100d55d2f198a390347181ce0d6ad33bb4b16d885f1a812367cd7df3e1a2f83f')
+source=(git+https://gitlab.com/pdftools/pdfposter.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$_pkgname"
-  msg "Patching overlap (https://gitlab.com/pdftools/pdfposter/issues/1) ..."
-  patch -p1 < "$srcdir"/overlap.patch
-}
-
 build() {
   cd "$srcdir/$_pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
