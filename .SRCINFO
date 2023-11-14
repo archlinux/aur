@@ -1,6 +1,6 @@
 pkgbase = kf5-servicemenus-imagetools
 	pkgdesc = KDE service menus for image file processing
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 2
 	url = https://github.com/marco-mania/kf5-servicemenus-imagetools
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = kf5-servicemenus-imagetools
 	depends = optipng
 	conflicts = kde-servicemenus-imagetools
 	replaces = kde-servicemenus-imagetools
-	source = https://github.com/marco-mania/kf5-servicemenus-imagetools/archive/refs/tags/v3.tar.gz
-	sha256sums = f2d80b9cc050fe07292ca3ad5fb26962180fa6ba01862d73bc36ac9370bce537
+	source = https://github.com/marco-mania/kf5-servicemenus-imagetools/archive/refs/tags/v4.tar.gz
+	sha256sums = adfe66ba531ccf8d36d7f428efccd94df2cefa41d16cacaf09320ffcd034fb5e
 
 pkgname = kf5-servicemenus-imagetools
