@@ -3,7 +3,7 @@
 pkgname=vendir
 pkgdesc="Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively"
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 url="https://carvel.dev/vendir"
 arch=(x86_64 aarch64)
 license=(Apache)
@@ -14,7 +14,7 @@ source_x86_64=(
     vendir-v0.37.0::https://github.com/carvel-dev/vendir/releases/download/v0.37.0/vendir-linux-amd64
 )
 sha256sums_x86_64=('f1472bf7995506830fa79473f0ae406ea3885e0881fbbb096240efb1b053dd15')
-sha256sums_aarch64=('f1472bf7995506830fa79473f0ae406ea3885e0881fbbb096240efb1b053dd15')
+sha256sums_aarch64=('7dde14730aa5a58511fc5b95f61162892ec97f87c9a57c01ab91d1f9f3d7aa74')
 source_aarch64=(
     vendir-v0.37.0::https://github.com/carvel-dev/vendir/releases/download/v0.37.0/vendir-linux-arm64
 )
