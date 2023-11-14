@@ -2,7 +2,7 @@
 
 _pkgname="qflipper"
 pkgname="$_pkgname"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
 license=('GPL3')
