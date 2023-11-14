@@ -1,0 +1,33 @@
+pkgbase = meson-rust
+	pkgdesc = High productivity build system (version with improved Rust support)
+	pkgver = 1.3.0rc3
+	pkgrel = 1
+	url = https://mesonbuild.com/
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = ninja
+	depends = python-tqdm
+	depends = python-typing_extensions
+	provides = meson=1.3.0rc3
+	conflicts = meson
+	source = https://github.com/mesonbuild/meson/releases/download/1.3.0rc3/meson-1.3.0rc3.tar.gz
+	source = https://github.com/mesonbuild/meson/releases/download/1.3.0rc3/meson-1.3.0rc3.tar.gz.asc
+	source = meson-reference-1.3.0rc3.3::https://github.com/mesonbuild/meson/releases/download/1.3.0rc3/meson-reference.3
+	source = meson-reference-1.3.0rc3.json::https://github.com/mesonbuild/meson/releases/download/1.3.0rc3/reference_manual.json
+	source = arch-meson
+	source = cross-lib32
+	source = native-clang
+	validpgpkeys = 19E2D6D9B46D8DAA6288F877C24E631BABB1FE70
+	b2sums = 2bd5564b766240a849620a26a7fd9c47ff1973a3636c95b9f52634ff980b04b203e62aa790eed3d5ae027e992435be945d18ddea2d85b9da3f437a38d6c7556b
+	b2sums = SKIP
+	b2sums = 50725346b56a749d8d25c19e52a8c7f2a9ab1fb106cd42fcd1b308402c6751ba12e5f15b57334add65d2cc1d7d6c2722bfb14c5ce089cb6edfd7528f73c8318c
+	b2sums = 5d501abb6f5bc7e4ff0cb1bfde41527d0267e55821dc9426e77afb0e6945281769411c29c22935e97eff5a27dbc4cdebaa1df96156b4d8a966f05c36c7745d41
+	b2sums = 211cee61f117fd1d582d7a613a8634f044e9e307791c4154c6da72bccd5f06856801b14bcb26157ee682b5935c48ffd2098a5fabab2232726d7758cf091c07f7
+	b2sums = e56c75dd9122d866e8a92381f1f8a3fa268451d13a18b73906c0089601d3e6edf28602b36f40d8a32758e9958a167a1bdccd70283581e19b2ed39863640daf95
+	b2sums = 7d88929d5a3b49d91c5c9969f19d9b47f3151706526b889515acaeda0141257d5115875ac84832e9ea46f83a7700d673adcc5db84b331cd798c70ae6e90eac1e
+
+pkgname = meson-rust

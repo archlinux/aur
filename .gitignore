@@ -1,0 +1,6 @@
+# Ignore makepkg generated directories/files
+pkg/
+src/
+*.pkg.tar.zst
+meson-*.tar.gz*
+meson-reference-*
