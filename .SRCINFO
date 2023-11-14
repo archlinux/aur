@@ -8,7 +8,6 @@ pkgbase = clash-nyanpasu-git
 	license = GPL3
 	makedepends = yarn
 	makedepends = cargo-tauri
-	makedepends = clash-premium-bin
 	makedepends = clash-meta
 	makedepends = jq
 	makedepends = moreutils

@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/keiko233/clash-nyanpasu"
 license=('GPL3')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' 'clash-meta')
-makedepends=('yarn' 'cargo-tauri' 'clash-premium-bin' 'clash-meta'  'jq' 'moreutils' 'rust' 'quickjs')
+makedepends=('yarn' 'cargo-tauri' 'clash-meta'  'jq' 'moreutils' 'rust' 'quickjs')
 optdepends=()
 source=("git+https://github.com/keiko233/clash-nyanpasu.git"
 	"${_pkgname}.desktop"
@@ -26,7 +26,7 @@ function prepare(){
 	cd "${srcdir}/clash-nyanpasu"
 
 	install -d src-tauri/sidecar
-	ln -sf /usr/bin/clash src-tauri/sidecar/clash-${CARCH}-unknown-linux-gnu
+	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-${CARCH}-unknown-linux-gnu
 	ln -sf /usr/bin/clash-meta src-tauri/sidecar/clash-meta-${CARCH}-unknown-linux-gnu
 
 	install -d src-tauri/resources
