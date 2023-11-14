@@ -1,10 +1,11 @@
 pkgbase = huelectron-bin
 	pkgdesc = An open-source and cross-platform app for the Hue lighting system from Philips - built on Electron.
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/4ch1m/huElectron
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	makedepends = gendesk
 	depends = mesa
 	depends = expat
