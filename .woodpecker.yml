@@ -1,0 +1,50 @@
+labels:
+  picus: large
+
+steps:
+  build:
+    image: codeberg.org/stefanwimmer128/archlinux-chaotic-paru-user:latest
+    commands:
+      - export HOME=/home/user
+      - sudo chown -R $(id -u):$(id -g) .
+      - gpg --keyserver keys.openpgp.org --recv-key 14F26682D0916CDD81E37B6D61B7B526D98F0353
+      - paru -Syu --noconfirm
+      - makepkg -s --noconfirm
+  upload:
+    image: woodpeckerci/plugin-s3
+    settings:
+      bucket: firedragon-unsigned-extensions
+      source: "*.pkg.tar.zst"
+      target: /${CI_PIPELINE_NUMBER}/
+      path_style: true
+      endpoint: https://minio.stefanwimmer128.xyz/
+      access_key:
+        from_secret: upload_key
+      secret_key:
+        from_secret: upload_secret
+  checksum:
+    image: alpine:latest
+    commands:
+      - sha256sum *.pkg.tar.zst | tee SHA256SUM
+  upload-checksum:
+    image: woodpeckerci/plugin-s3
+    settings:
+      bucket: firedragon-unsigned-extensions
+      source: SHA256SUM
+      target: /${CI_PIPELINE_NUMBER}/
+      path_style: true
+      endpoint: https://minio.stefanwimmer128.xyz/
+      access_key:
+        from_secret: upload_key
+      secret_key:
+        from_secret: upload_secret
+  publish:
+    when:
+      event: tag
+    image: woodpeckerci/plugin-gitea-release
+    settings:
+        base_url: https://codeberg.org/
+        files:
+          - firedragon-unsigned-extensions-${CI_COMMIT_TAG}-x86_64.pkg.tar.zst
+        api_key:
+          from_secret: release_token
