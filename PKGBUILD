@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://polymeilex.github.io/Neothesia/"
 license=("GPL")
 depends=("rust" "ffmpeg")
-makedepends=("cargo")
+makedepends=("cargo" "clang")
 source=("https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e9643d1237b4f6e76b27653843dfb13a2b2072d3c478b9b6e5754a854fec578e')
 
