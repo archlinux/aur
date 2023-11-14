@@ -1,16 +1,12 @@
 pkgbase = ouch-bin
 	pkgdesc = Painless compression and decompression in the terminal (binary release)
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ouch-org/ouch
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = xz
-	depends = gcc-libs
-	depends = zlib
-	depends = glibc
 	provides = ouch=0.4.2
 	conflicts = ouch
 	source_aarch64 = ouch-0.4.2-aarch64.tar.gz::https://github.com/ouch-org/ouch/releases/download/0.4.2/ouch-aarch64-unknown-linux-gnu.tar.gz
