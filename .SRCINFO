@@ -1,7 +1,7 @@
 pkgbase = hoverfly-bin
 	pkgdesc = Lightweight service virtualization/API simulation tool for developers and testers
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hoverfly.io
 	arch = aarch64
 	arch = armv7h
