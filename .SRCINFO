@@ -1,17 +1,20 @@
 pkgbase = imagine-bin
 	pkgdesc = PNG/JPEG optimization app
 	pkgver = 0.7.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/meowtec/Imagine
 	arch = x86_64
 	license = MIT
-	makedepends = asar
-	depends = bash
+	makedepends = squashfuse
 	depends = electron12
 	depends = libjpeg6-turbo
-	depends = zlib
-	depends = glibc
 	depends = libpng
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = imagine=0.7.5
 	conflicts = imagine
 	source = imagine-0.7.5.AppImage::https://github.com/meowtec/Imagine/releases/download/v0.7.5/Imagine-0.7.5.AppImage
@@ -19,6 +22,6 @@ pkgbase = imagine-bin
 	source = imagine.sh
 	sha256sums = a032f096cc4d09f866d9e575706cb3174875900a234ed0dca0e9a2dfc2cea838
 	sha256sums = aebee0e853c4db64ce36bd0b235613a9b948036a7f62af387f2e0b406cd657b7
-	sha256sums = f796e1723ff55ebdf070251963f83c5ce7dab4c69035e551bb7c1d6abaec4bf3
+	sha256sums = a554c4b392cf87d60cbbb88a243659455b1d7ae58cf7232f56692c7606de6936
 
 pkgname = imagine-bin
