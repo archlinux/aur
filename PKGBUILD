@@ -4,12 +4,12 @@ pkgname=clasht
 pkgver=1.20.0
 pkgrel=1
 pkgdesc="A rule-based tunnel in Go. Provide you with powerful and fast network functions. Convenient for you to witness the larger network world"
-arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64" "riscv64" "mips" "loong64")
+arch=("x86_64")
 url='https://github.com/DryPeng/clashT'
 license=('GPL3')
 depends=()
 optdepends=('clash-geoip: A GeoLite2 data created by MaxMind')
-makedepends=('go' 'cmake')
+makedepends=('git' 'go' 'cmake' 'zip')
 provides=('clash')
 conflicts=('clasht-bin' 'clash' 'clasht-git')
 options=(!strip)
@@ -24,12 +24,13 @@ sha256sums=(
 
 build() {
     cd "${srcdir}/clashT-${pkgver}"
-    make -j $(go run ./test/main.go) releases
-    mv bin/* "${srcdir}/"
+    git init
+    make -j $(go run ./test/main.go) linux-amd64
+    mv bin/clashT-linux-amd64 "${srcdir}/${pkgname}-${CARCH}-${pkgver}"
 }
 
 package() {
     cd "${srcdir}"
-    install -Dm755 "${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
+    install -Dm755 "${srcdir}/${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
     install -Dm644 "clash.service" "${pkgdir}/usr/lib/systemd/system/clash.service"
 }
