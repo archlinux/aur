@@ -2,12 +2,12 @@
 pkgname=unl0kr
 pkgver=2.0.2
 pkgdesc="On-screen Keyboard for FDE"
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/Grosskopf/arch_unl0kr"
 license=('GPL3')
-depends=(device-mapper cryptsetup)
-makedepends=(meson)
+depends=(device-mapper cryptsetup libinih libinput udev libxkbcommon)
+makedepends=(meson git cmake scdoc pkgconf)
 _commit="2e5707cbd5d8d9ab1b382f663e57804e1fb063ef"
 source=(
     git+https://gitlab.com/cherrypicker/unl0kr.git#commit=${_commit}
