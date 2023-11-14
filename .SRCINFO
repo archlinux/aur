@@ -1,6 +1,6 @@
 pkgbase = ayatana-settings
 	pkgdesc = Configuration tool for tweaking all Ayatana system indicators
-	pkgver = 23.10.13
+	pkgver = 23.11.14
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-settings
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ayatana-settings
 	depends = gobject-introspection
 	depends = python-psutil
 	options = !emptydirs
-	source = ayatana-settings-23.10.13.tar.gz::https://github.com/AyatanaIndicators/ayatana-settings/archive/23.10.13.tar.gz
-	md5sums = 2a2433c4120e84af3e9b7fecf39062a6
+	source = ayatana-settings-23.11.14.tar.gz::https://github.com/AyatanaIndicators/ayatana-settings/archive/23.11.14.tar.gz
+	md5sums = 234caec1854c6ece424f1ef61f46178b
 
 pkgname = ayatana-settings
