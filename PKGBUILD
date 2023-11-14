@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nor1mix
-_pkgver=1.3-0
+_pkgver=1.3-2
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
-pkgrel=4
+pkgver=1.3.2
+pkgrel=1
 pkgdesc='Normal aka Gaussian (1-d) Mixture Models (S3 Classes and Methods)'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
   r-cluster
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ce4ee92f889a4a4041b5ea1ff09396780785a9f12ac46f40647f74a37e327a0')
+sha256sums=('463636ceab6512e8ef0a57dbbba23461e9da0c0bf5a6c27424675cdd209ea208')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
