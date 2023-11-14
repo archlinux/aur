@@ -9,7 +9,7 @@ pkgdesc="Front-end to various audio converters (Git - with custom colors for dar
 arch=(x86_64)
 url="https://www.linux-apps.com/content/show.php?content=29024"
 license=(GPL)
-depends=(hicolor-icon-theme cdparanoia kdelibs4support libkcddb kdbusaddons5 taglib phonon-qt5)
+depends=(hicolor-icon-theme cdparanoia kdelibs4support libkcddb5 kdbusaddons5 taglib phonon-qt5)
 makedepends=(extra-cmake-modules kdesignerplugin kdoctools5 kinit git)
 optdepends=('faac: faac backend'
             'faad2: faad backend'
