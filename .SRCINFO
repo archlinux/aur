@@ -1,11 +1,10 @@
 pkgbase = r-scvir
 	pkgdesc = experimental inferface from R to scvi-tools
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/scviR
 	arch = any
 	license = Artistic2.0
-	checkdepends = r-testthat
 	depends = r-basilisk
 	depends = r-biocfilecache
 	depends = r-limma

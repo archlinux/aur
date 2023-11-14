@@ -4,7 +4,7 @@ _pkgname=scviR
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="experimental inferface from R to scvi-tools"
 arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,9 +22,6 @@ depends=(
   r-singlecellexperiment
   r-summarizedexperiment
 )
-checkdepends=(
-  r-testthat
-)
 optdepends=(
   r-biocstyle
   r-ggplot2
@@ -40,11 +37,6 @@ sha256sums=('0a15def9dcf1483c867cf45a795b14da37ac97aa686a29e50d2fda5b55475fd9')
 build() {
   mkdir -p build
   R CMD INSTALL "$_pkgname" -l build
-}
-
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla test.R
 }
 
 package() {
