@@ -2,7 +2,7 @@
 # Contributor: Christoph W <c w e g e n e r at gmail dot com>
 
 pkgname=usql
-pkgver=0.15.2
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/xo/usql"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6cc2d849ce4002c5bb15820a8213b5c95fdb0dd56615e44ad1daea8ff31617ff')
+sha256sums=('52650b0926e878e0b043d9db28b07ba31802a28e84f60837cb6a6c41d7d2d1f1')
 
 build() {
     cd $pkgname-$pkgver
