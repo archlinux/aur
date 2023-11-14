@@ -2,7 +2,7 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.12.0.1
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
@@ -11,16 +11,26 @@ license=('GPL3')
 depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go>=1.19' 'git' 'cmake' 'ninja')
 install="ivpn.install"
+
+# INSTALLATION SOURCES
+
+# Default installation sources
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('4a3298dca57a755d4e02fd83102efe72cfea01fb3bcf1b3164e1fe5820a2b4f0')
+sha256sums=('48df2e407699a918933b4ec0e79b9e5870f3594675cf070fb4fec6b5de6fb366')
+src_prj_dir_name=desktop-app-${pkgver}
+
+# Use bellow two lines to install package from beta branch
+#source=("git+https://github.com/ivpn/desktop-app.git#branch=beta")
+#md5sums=('SKIP')
+#src_prj_dir_name=desktop-app
 
 build() {
   echo "*** build daemon***"
-  cd "$srcdir/desktop-app-${pkgver}/daemon"
+  cd "$srcdir/$src_prj_dir_name/daemon"
   IVPN_BUILD_SKIP_GLIBC_VER_CHECK=true IVPN_BUILD_CAN_SKIP_DOWNLOAD_SERVERS=true ./References/Linux/scripts/build-all.sh -v ${pkgver} -c "${pkgver}_stamped"
 
   echo "*** build CLI ***"
-  cd "$srcdir/desktop-app-${pkgver}/cli"
+  cd "$srcdir/$src_prj_dir_name/cli"
   IVPN_BUILD_SKIP_GLIBC_VER_CHECK=true ./References/Linux/compile-cli.sh -v ${pkgver} -c "${pkgver}_stamped"
 
   # prepare '*.service' file for systemd
@@ -51,7 +61,7 @@ EOF
 }
 
 package() {
-  cd "$srcdir/desktop-app-${pkgver}/daemon"
+  cd "$srcdir/$src_prj_dir_name/daemon"
 
   install -Dm755 -g root -o root References/Linux/scripts/_out_bin/ivpn-service "$pkgdir/usr/bin/ivpn-service"
 
@@ -73,7 +83,7 @@ package() {
   install -Dm755 -g root -o root References/Linux/_deps/kem-helper/kem-helper-bin/kem-helper "$pkgdir/opt/ivpn/kem/kem-helper"
   install -Dm755 -g root -o root References/Linux/_deps/v2ray_inst/v2ray "$pkgdir/opt/ivpn/v2ray/v2ray"
 
-  cd "$srcdir/desktop-app-${pkgver}/cli"
+  cd "$srcdir/$src_prj_dir_name/cli"
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
 
   cd "$srcdir"
