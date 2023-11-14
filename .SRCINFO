@@ -1,0 +1,13 @@
+pkgbase = rime-project-trans-git
+	pkgdesc = 跨儿计划 RIME 词典
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/project-trans/rime-dict
+	arch = any
+	license = unknown
+	provides = rime-project-trans
+	conflicts = rime-project-trans-bin
+	source = git+https://github.com/project-trans/rime-dict.git
+	md5sums = SKIP
+
+pkgname = rime-project-trans-git
