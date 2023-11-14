@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-base36'
-pkgver='0.12'
+pkgver='0.14'
 pkgrel='1'
 pkgdesc="Encoding and decoding of base36 strings"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.006')
-makedepends=('perl-test-exception')
-url='http://search.cpan.org/dist/Math-Base36'
-source=('http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/Math-Base36-0.12.tar.gz')
-md5sums=('a08048902efcf329aca985e9bf3446eb')
-sha512sums=('e9bd6418031354d22cb2e84073a2b308e0644cca6d377207005ee907d50050e700afda6df4e94618289b036a62ce27f8e0ca96722234b101b06977a596331e15')
-_distdir="Math-Base36-0.12"
+depends=('perl>=5.6.0')
+makedepends=()
+checkdepends=('perl-test-exception>=0')
+url='https://metacpan.org/release/Math-Base36'
+source=('http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/Math-Base36-0.14.tar.gz')
+md5sums=('cb08eb9dcf4f00a5ac7b91863ca602e5')
+sha512sums=('d851ec86bf4d561d8f1c8b46de3dfd5108943d3d260296e0fddebf3e5ff6b069765260ae20af6ef5741c4677feb9a9ae588457197d44f57bb9434b64cd268e59')
+_distdir="Math-Base36-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
