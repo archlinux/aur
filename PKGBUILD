@@ -8,10 +8,11 @@ pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/wrapland"
 license=(LGPL)
-depends=(kwayland5 qt5-tools)
-provides=("wrapland")
-conflicts=("wrapland")
-makedepends=(doxygen extra-cmake-modules git kdoctools5 wayland-protocols qt5-doc)
+depends=()
+provides=('wrapland')
+conflicts=('wrapland')
+makedepends=(doxygen appstream extra-cmake-modules git kdoctools5 wayland-protocols qt5-doc qt5-tools)
+optdepends=(weston graphviz)
 source=("https://gitlab.com/kwinft/wrapland/-/archive/wrapland@$pkgver/wrapland-wrapland@$pkgver.tar.gz")
 sha1sums=('6508ec118b65b1306b5e034b102642e8ef82bc9d')
 
