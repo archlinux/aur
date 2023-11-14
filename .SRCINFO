@@ -1,7 +1,7 @@
 pkgbase = llpp
 	pkgdesc = opengl accelerated pdf viewer based on mupdf
-	pkgver = 41
-	pkgrel = 3
+	pkgver = 42
+	pkgrel = 1
 	url = https://github.com/criticic/llpp
 	arch = x86_64
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = llpp
 	optdepends = librsvg: for llppac svg conversion
 	optdepends = unoconv: for llppac office conversion
 	options = !strip
-	source = git+https://github.com/criticic/llpp#branch=latest
+	source = git+https://github.com/criticic/llpp#commit=dbf07cf23e006d4bcb23469b41da50697c1907b8
 	b2sums = SKIP
 
 pkgname = llpp

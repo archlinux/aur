@@ -5,12 +5,12 @@
 # Contributor: earnestly
 
 pkgname=llpp
-pkgver=41
-pkgrel=3
+pkgver=42
+pkgrel=1
 pkgdesc='opengl accelerated pdf viewer based on mupdf'
 arch=('x86_64')
 url=https://github.com/criticic/llpp
-cloneurl=https://github.com/criticic/llpp
+_commit=dbf07cf23e006d4bcb23469b41da50697c1907b8
 license=('GPL3')
 depends=('freetype2' 'gumbo-parser' 'jbig2dec' 'libgl' 'libjpeg' 'openjpeg2' 'libmupdf')
 makedepends=('asciidoc' 'git' 'ocaml' 'ocaml-lablgl')
@@ -21,7 +21,7 @@ optdepends=('djvulibre: for llppac djvu conversion'
             'librsvg: for llppac svg conversion'
             'unoconv: for llppac office conversion')
 options=('!strip')
-source=("git+$cloneurl#branch=latest")
+source=("git+$url#commit=$_commit")
 b2sums=('SKIP')
 
 build() {
