@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2021-bin
-pkgver=2021.1064
+pkgver=2021.1068
 pkgrel=1
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations"
 url="https://www.softmaker.com"
