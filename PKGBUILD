@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/keiko233/clash-nyanpasu"
 license=('GPL3')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'clash-meta')
-optdepends=('clash-meta: Another Clash Kernel')
 conflicts=('clash-nyanpasu-git')
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/keiko233/clash-nyanpasu/releases/download/dev/clash-nyanpasu_${pkgver}_amd64.deb")
 
