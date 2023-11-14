@@ -3,7 +3,7 @@
 
 pkgname=newsraft
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Feed reader with ncurses user interface'
 url='https://codeberg.org/grisha/newsraft'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 	'gumbo-parser'
 	)
 source=("https://codeberg.org/grisha/newsraft/archive/newsraft-${pkgver}.tar.gz")
-sha256sums=('d122fee182d8c968e033e6fe3a1f8b701997803961a64d18c7d33c8dfd37469f')
+sha256sums=('c2aa752c0b902173df683faa9328073f451925690a45689674844fe131787eb5')
 
 build() {
 	cd "${srcdir}"/newsraft
