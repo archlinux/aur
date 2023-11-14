@@ -10,7 +10,7 @@
 _name=gajim
 pkgname="$_name-git"
 epoch=1
-pkgver=r20981.dcb304c5a
+pkgver=r21305.015063ac4
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -21,7 +21,7 @@ depends=('gtk3' 'libsoup' 'python-gobject' 'python-pyopenssl' 'hicolor-icon-them
          'python-distro' 'python-css-parser' 'python-precis_i18n' 'python-pillow'
          'python-omemo-dr' 'gtksourceview4' 'python-qrcode')
 makedepends=('git' 'python-setuptools' 'python-packaging' 'python-wheel' 'python-build'
-	 'python-installer')
+            'python-installer')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'farstream: for video/voice support'
             'gst-plugins-good: for video/voice support'
@@ -36,7 +36,7 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'libappindicator-gtk3: to get a tray icon on some desktop environments'
             'notification-daemon: for desktop notifications'
             'gnome-keyring: store passwords encrypted in GNOME Keyring'
-            'kded: store passwords encrypted in KSecretService'
+            'kded5: store passwords encrypted in KSecretService'
             'python-crypto: support for E2E encryption'
             'python-docutils: for RST generator support'
             'gupnp-igd: for UPnP-IGD support'
@@ -44,7 +44,7 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn')
 replaces=('gajim-hg' 'gajim-svn')
-source=("$_name::git+https://dev.gajim.org/gajim/gajim.git/")
+source=("$_name::git+https://dev.gajim.org/gajim/gajim.git")
 md5sums=('SKIP')
 
 pkgver() {

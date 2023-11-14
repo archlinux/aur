@@ -1,6 +1,6 @@
 pkgbase = gajim-git
 	pkgdesc = Jabber/XMPP instant messenger client written in Python with GTK+
-	pkgver = r20981.dcb304c5a
+	pkgver = r21305.015063ac4
 	pkgrel = 1
 	epoch = 1
 	url = https://gajim.org/
@@ -42,7 +42,7 @@ pkgbase = gajim-git
 	optdepends = libappindicator-gtk3: to get a tray icon on some desktop environments
 	optdepends = notification-daemon: for desktop notifications
 	optdepends = gnome-keyring: store passwords encrypted in GNOME Keyring
-	optdepends = kded: store passwords encrypted in KSecretService
+	optdepends = kded5: store passwords encrypted in KSecretService
 	optdepends = python-crypto: support for E2E encryption
 	optdepends = python-docutils: for RST generator support
 	optdepends = gupnp-igd: for UPnP-IGD support
@@ -53,7 +53,7 @@ pkgbase = gajim-git
 	conflicts = gajim-svn
 	replaces = gajim-hg
 	replaces = gajim-svn
-	source = gajim::git+https://dev.gajim.org/gajim/gajim.git/
+	source = gajim::git+https://dev.gajim.org/gajim/gajim.git
 	md5sums = SKIP
 
 pkgname = gajim-git
