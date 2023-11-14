@@ -1,4 +1,5 @@
 # Author: Roman Gilg <subdiff@gmail.com>
+# Maintainer: abelian424
 
 pkgname=disman-kwinft
 pkgver=0.527.0
