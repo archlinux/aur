@@ -1,0 +1,14 @@
+pkgbase = python-linkpreview
+	pkgdesc = Get link preview in python
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/meyt/linkpreview
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests>=2.22.0
+	depends = python-beautifulsoup4>=4.4.0
+	source = https://files.pythonhosted.org/packages/source/l/linkpreview/linkpreview-0.8.1.tar.gz
+	sha256sums = e16907d3f0f17a634998465397a22d31e2eecf9647bd781575a8016fc2876cb7
+
+pkgname = python-linkpreview
