@@ -85,7 +85,7 @@ _package_test() {
 }
 
 package() {
-  depends=('hicolor-icon-theme')
+  depends+=('hicolor-icon-theme')
 
   # desktop file
   install -Dm644 "${srcdir:?}/squashfs-root/beeper.desktop"                                  "${pkgdir:?}/usr/share/applications/beeper.desktop"
@@ -102,6 +102,7 @@ package() {
   install -Dm644 "${srcdir:?}/squashfs-root/LICENSES.chromium.html" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
 
   if [[ x"${_test::1}" == "xt" ]] ; then
+    depends+=('electron')
     _package_test
   else
     _package_beeper

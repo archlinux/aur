@@ -13,3 +13,4 @@ pkgbase = beeper-latest-bin
 
 pkgname = beeper-latest-bin
 	depends = hicolor-icon-theme
+	depends = electron
