@@ -3,8 +3,8 @@
 # Contributor: Alex Forencich <alex@alexforencich.com>
 
 pkgname=python-pyvisa
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.14.0
+pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 url="https://github.com/pyvisa/pyvisa"
 arch=('any')
@@ -26,10 +26,11 @@ build() {
 
 check(){
   cd pyvisa
-  PYTHONPATH="${srcdir}/pyvisa-${pkgver}" python -m pytest --pyargs pyvisa --ignore pyvisa/testsuite/test_cmd_line_tools.py
+  PYTHONPATH="$srcdir/pyvisa-$pkgver" python -m pytest --pyargs pyvisa --ignore pyvisa/testsuite/test_cmd_line_tools.py
 }
 
 package(){
   cd pyvisa
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
