@@ -3,7 +3,7 @@
 
 pkgname=raze
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
@@ -13,6 +13,7 @@ depends=('gtk3'
          'libgl'
          'libjpeg'
          'libvpx'
+         'libwebp'
          'openal'
          'sdl2'
          'zmusic>=1.1.8')
@@ -26,9 +27,6 @@ source=("Raze::git+https://github.com/coelckers/Raze#tag=${pkgver}"
         'raze.desktop')
 sha256sums=('SKIP'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
-prepare() {
-    cd Raze
-}
 
 build() {
     cd Raze

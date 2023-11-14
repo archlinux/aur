@@ -1,7 +1,7 @@
 pkgbase = raze
 	pkgdesc = Build engine port backed by GZDoom tech
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
 	license = custom:BUILD
@@ -14,6 +14,7 @@ pkgbase = raze
 	depends = libgl
 	depends = libjpeg
 	depends = libvpx
+	depends = libwebp
 	depends = openal
 	depends = sdl2
 	depends = zmusic>=1.1.8
