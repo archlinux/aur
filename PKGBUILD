@@ -2,39 +2,44 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=52.r0.gf19decf
-pkgrel=2
+_uuid=gTile@vibou
+pkgver=52.r23.g56f4eda
+pkgrel=1
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
 license=('GPL2')
-depends=('gnome-shell<=1:44.6')
-makedepends=('bazel' 'git' 'pnpm')
+depends=('gnome-shell')
+makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/gTile/gTile.git")
+source=('git+https://github.com/gTile/gTile.git#branch=next')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd gTile
   git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
-
-  # Ignore Bazel version requirement
-  rm -f .bazelversion
+  cd gTile
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  bazel build :install-extension
+  cd gTile
+  export npm_config_cache="$srcdir/npm_cache"
+  npm install
+  npm run build
+  npm run build:dist
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
-  bsdtar -xvf bazel-bin/install-extension.runfiles/_main/dist.tar.gz -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/" --no-same-owner
+  cd gTile
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar -xvf gtile.dist.tgz -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
+
+  install -Dm644 dist/schemas/org.gnome.shell.extensions.gtile.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
