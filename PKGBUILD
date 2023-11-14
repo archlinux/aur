@@ -1,63 +1,82 @@
 # Maintainer:
 
+: ${_pkgtype:=git}
+
+# basic info
 _pkgname="mozillavpn"
-pkgname="$_pkgname-git"
-pkgver=2.18.0.r123.g260774bf1
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=2.18.0.r128.gfb01c3a9c
 pkgrel=1
 pkgdesc="Fast, secure and easy to use VPN. Built by the makers of Firefox."
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
 license=('MPL2')
 arch=('x86_64')
 
-depends=(
-  'dbus'
-  'freetype2'
-  'hicolor-icon-theme'
-  'libtiff'
-  'libxcb'
-  'libxdmcp'
-  'libxmu'
-  'libxrender'
-  'polkit'
-  'qt6-5compat'
-  'qt6-charts'
-  'qt6-declarative'
-  'qt6-imageformats'
-  'qt6-networkauth'
-  'qt6-shadertools'
-  'qt6-svg'
-  'qt6-websockets'
-  'wireguard-tools'
-)
-makedepends=(
-  'cargo'
-  'clang'
-  'cmake'
-  'git'
-  'go'
-  'python-glean-parser'
-  'python-lxml'
-  'python-yaml'
-  'qt6-tools'
-  'yamllint'
-)
-optdepends=(
-  'openresolv: for resolv.conf management'
-  'qt6-wayland: for Wayland support'
-)
+# main package
+_main_package() {
+  depends=(
+    'dbus'
+    'freetype2'
+    'hicolor-icon-theme'
+    'libtiff'
+    'libxcb'
+    'libxdmcp'
+    'libxmu'
+    'libxrender'
+    'polkit'
+    'qt6-5compat'
+    'qt6-charts'
+    'qt6-declarative'
+    'qt6-imageformats'
+    'qt6-networkauth'
+    'qt6-shadertools'
+    'qt6-svg'
+    'qt6-websockets'
+    'wireguard-tools'
+  )
+  makedepends=(
+    'cargo'
+    'clang'
+    'cmake'
+    'git'
+    'go'
+    'python-glean-parser'
+    'python-lxml'
+    'python-yaml'
+    'qt6-tools'
+    'yamllint'
+  )
+  optdepends=(
+    'openresolv: for resolv.conf management'
+    'qt6-wayland: for Wayland support'
+  )
 
-options=('!lto')
+  options=('!lto')
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
+  if [ x"$pkgname" == x"$_pkgname" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+
+  _source_getsentry_sentry_native
+  _source_mozillavpn
+}
+
+# stable package
+_main_stable() {
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
   sha256sums+=('SKIP')
 
   pkgver() {
-    echo "${pkgver%%.r*}"
+    local _pkgver="${pkgver%%.r*}"
+    echo "${_pkgver:?}"
   }
-else
+}
+
+# git package
+_main_git() {
   # git package
   provides=("$_pkgname=${pkgver%%.r*}")
   conflicts=("$_pkgname")
@@ -68,17 +87,21 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    _tag=$(git tag | sort -V | tail -1)
-    _revision=$(git rev-list --count $_tag..HEAD)
-    _hash=$(git rev-parse --short HEAD)
+    local _tag=$(git tag | sort -V | tail -1)
+    local _revision=$(git rev-list --count $_tag..HEAD)
+    local _hash=$(git rev-parse --short HEAD)
 
-    printf '%s.r%s.g%s' \
-      "${_tag#v}" \
-      "$_revision" \
-      "$_hash"
+    local _pkgver=$(
+      printf '%s.r%s.g%s' \
+        "${_tag#v}" \
+        "$_revision" \
+        "$_hash"
+    )
+    echo "${_pkgver:?}"
   }
-fi
+}
 
+# submodules
 _source_mozillavpn() {
   source+=(
     #'kdab.android_openssl'::'git+https://github.com/KDAB/android_openssl.git'
@@ -116,11 +139,7 @@ _source_mozillavpn() {
       ['wireguard.wireguard-go']='3rdparty/wireguard-go'
       ['wireguard.wireguard-tools']='3rdparty/wireguard-tools'
     )
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
-    done
+    _submodule_update
   )
 }
 
@@ -147,18 +166,20 @@ _source_getsentry_sentry_native() {
       ['getsentry.crashpad']='external/crashpad'
       ['getsentry.libunwindstack-ndk']='external/libunwindstack-ndk'
     )
+    _submodule_update
+  )
+}
+
+# common functions
+prepare() {
+  _submodule_update() {
     for key in ${!_submodules[@]} ; do
       git submodule init "${_submodules[${key}]}"
       git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
       git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
     done
-  )
-}
+  }
 
-_source_getsentry_sentry_native
-_source_mozillavpn
-
-prepare() {
   _prepare_mozillavpn
   _prepare_getsentry_sentry_native
 }
@@ -180,3 +201,5 @@ package() {
   DESTDIR="${pkgdir:?}" cmake --install build
 }
 
+# execute
+_main_package
