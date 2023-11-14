@@ -3,7 +3,7 @@
 
 _pkgname='bandwhich'
 pkgname="${_pkgname}-git"
-pkgver=0.21.1.r10.g2c49b0f
+pkgver=0.21.1.r23.g2382706
 pkgrel=1
 pkgdesc='Terminal bandwidth utilization tool'
 arch=('x86_64')
@@ -34,7 +34,7 @@ package() {
   cd "${_pkgname}"
   install -Dm755 -t "${pkgdir}/usr/bin" "target/release/${_pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "docs/${_pkgname}.1"
+  #install -Dm644 -t "${pkgdir}/usr/share/man/man1" "docs/${_pkgname}.1"
   install -Dm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
