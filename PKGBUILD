@@ -39,6 +39,5 @@ build() {
 
 package() {
     install -Dm755 "${srcdir}/Wox/Release/wox-linux-amd64" "${pkgdir}/usr/bin/${_pkgname}"
-    
     install -Dm644 "${srcdir}/Wox/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
