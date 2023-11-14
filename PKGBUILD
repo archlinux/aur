@@ -5,7 +5,7 @@
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 pkgname=ocamlnet
 pkgver=4.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for Web and Internet programming in OCaml"
 arch=('i686' 'x86_64')
 url="http://projects.camlcity.org/projects/ocamlnet.html"

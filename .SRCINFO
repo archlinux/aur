@@ -1,7 +1,7 @@
 pkgbase = ocamlnet
 	pkgdesc = A library for Web and Internet programming in OCaml
-	pkgver = 4.1.7
-	pkgrel = 1
+	pkgver = 4.1.9
+	pkgrel = 2
 	url = http://projects.camlcity.org/projects/ocamlnet.html
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,7 @@ pkgbase = ocamlnet
 	options = !strip
 	options = !makeflags
 	options = staticlibs
-	source = http://download.camlcity.org/download/ocamlnet-4.1.7.tar.gz
-	md5sums = 55650be818c9c8940e7390b5d4cdbf76
-	sha256sums = 1136b7134e3ba9de77060e46be09e332d15217aa1ff71e215362f6a729a02f65
+	source = https://gitlab.com/gerdstolpmann/lib-ocamlnet3/-/archive/ocamlnet-4.1.9/lib-ocamlnet3-ocamlnet-4.1.9.tar.gz
+	sha256sums = e5314bab91a650b2e48e5182f1f3d9048bc6c0fd8a9f782ffc86557ec4380cdd
 
 pkgname = ocamlnet
-
