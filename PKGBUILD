@@ -1,7 +1,7 @@
 # Maintainer: Maykel Moya <mmoya at mmoya dot org>
 pkgname=ax-usb-nic-dkms
 _pkgname="${pkgname%-*}"
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 arch=('any')
 pkgdesc="Kernel module for ASIX USB Ethernet Controller"
@@ -9,8 +9,8 @@ url="https://www.asix.com.tw/en/support/download"
 license=('GPL2')
 depends=('dkms')
 _archivename="ASIX_USB_NIC_Linux_Driver_Source_v${pkgver}"
-source=("${_archivename}.tar.bz2::https://www.asix.com.tw/en/support/download/file/1405")
-sha256sums=('26e0b9bb944ac6d164083c7f5e4e3630c0d37116e0408deb9c576f7b6f31250e')
+source=("${_archivename}.tar.bz2::https://www.asix.com.tw/en/support/download/file/1522")
+sha256sums=('6f81ecdc6589780d00cc3972d1ecabda96267d26e1cfd7c6a5e062f147778216')
 
 package() {
     mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
