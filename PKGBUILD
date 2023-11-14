@@ -7,7 +7,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r20135.gc67cd65b53'
+pkgver='5.0.r20339.g87c27936fc'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -72,10 +72,14 @@ pkgver() {
 }
 
 build() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Consider symbols in dependencies of directly specified dynamic libraries as available to fix the build
+	export LDFLAGS="-Wl,--copy-dt-needed-entries"
+
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
-	cd "$srcdir/$_sourcedirectory/"
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
