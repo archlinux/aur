@@ -8,6 +8,8 @@ pkgrel=1
 url="https://github.com/project-trans/rime-dict"
 pkgdesc="跨儿计划 RIME 词典"
 md5sums=("SKIP")
+provides=("rime-project-trans")
+conflicts=(rime-project-trans-git)
 
 function pkgver() {
 	_rawVersion=$(curl -s "https://api.github.com/repos/project-trans/rime-dict/releases/latest" -L | jq .tag_name)
