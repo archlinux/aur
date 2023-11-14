@@ -1,13 +1,15 @@
 # Maintainer: Marco <marcomania2012 at gmail dot com>
 
-pkgname=kde-servicemenus-imagetools
+pkgname=kf5-servicemenus-imagetools
 pkgver=3
 pkgrel=1
 pkgdesc='KDE service menus for image file processing'
 arch=('any')
-url='https://github.com/marco-mania/kde-servicemenus-imagetools'
+url='https://github.com/marco-mania/kf5-servicemenus-imagetools'
 license=('GPL')
 depends=('dolphin' 'kdialog' 'imagemagick' 'perl-image-exiftool' 'optipng')
+conflicts=("kde-servicemenus-imagetools")
+replaces=("kde-servicemenus-imagetools")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
