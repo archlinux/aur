@@ -2,7 +2,7 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=0.22.0.34522.gd8636dd058
+pkgver=0.22.0.35039.ge937cc1efc
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -76,6 +76,7 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
+  git submodule update --init
 }
 
 build() {
