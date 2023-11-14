@@ -1,13 +1,3 @@
-###
-# @Author: timochan
-# @Date: 2023-10-21 12:09:31
- # @LastEditors: timochan
- # @LastEditTime: 2023-11-10 21:15:58
- # @FilePath: /yakit-appimage/PKGBUILD
-###
-# Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: timochan <i@timochan.cn>
-
 _pkgname=yakit
 _Pkgname=Yakit
 _disname=yakit
