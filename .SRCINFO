@@ -2,12 +2,12 @@ pkgbase = phylip
 	pkgdesc = A collection of programmes for evolutive genetics and inferring phylogenies
 	pkgver = 3.698
 	pkgrel = 1
-	url = http://evolution.genetics.washington.edu/phylip.html
+	url = https://phylipweb.github.io/phylip/
 	arch = i686
 	arch = x86_64
 	license = custom
 	optdepends = java-runtime
-	source = http://evolution.gs.washington.edu/phylip/download/phylip-3.698.zip
+	source = http://phylipweb.github.io/phylip/download/phylip-3.698.zip
 	source = phylip-3.698-makefile.patch
 	source = phylip-3.698-fno-common.patch
 	sha256sums = cb12e5105d25872eed705d243ca32b400e180d38c3437d58335f11a431df0e46
@@ -15,4 +15,3 @@ pkgbase = phylip
 	sha256sums = d2638f99a6cb1e893aa6c362f906d5fca94700e0e4d50392abba853be8f0fff3
 
 pkgname = phylip
-

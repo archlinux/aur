@@ -6,8 +6,8 @@ pkgver=3.698
 pkgrel=1
 pkgdesc="A collection of programmes for evolutive genetics and inferring phylogenies"
 arch=('i686' 'x86_64')
-url="http://evolution.genetics.washington.edu/phylip.html"
-source=(http://evolution.gs.washington.edu/phylip/download/phylip-$pkgver.zip
+url="https://phylipweb.github.io/phylip/"
+source=(http://phylipweb.github.io/phylip/download/phylip-$pkgver.zip
         phylip-3.698-makefile.patch
         phylip-3.698-fno-common.patch)
 optdepends=('java-runtime')
