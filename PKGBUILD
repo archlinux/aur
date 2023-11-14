@@ -9,7 +9,7 @@ arch=(
 	'any'
 )
 
-url="https://eche.chimmie.k.vu"
+url="https://echeai.chimmie.k.vu"
 license=('MIT')
 
 depends=(
@@ -32,7 +32,7 @@ conflicts=(
 )
 
 source=(
-    "https://eche.chimmie.k.vu/packages/zst/pkg.tar.gz"
+    "https://echeai.chimmie.k.vu/packages/zst/pkg.tar.gz"
 )
 
 noextract=("pkg.tar.gz")
