@@ -10,7 +10,7 @@ pkgname=(
   'dotnet-targeting-pack-bin'
   'aspnet-targeting-pack-bin'
  )
-pkgver=8.0.0.sdk403
+pkgver=8.0.0.sdk100
 _runtimever=8.0.0
 _sdkver=8.0.100
 _short_ver=8.0

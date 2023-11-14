@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-bin
-	pkgver = 8.0.0.sdk403
+	pkgver = 8.0.0.sdk100
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -57,10 +57,10 @@ pkgname = dotnet-sdk-bin
 	depends = netstandard-targeting-pack-bin
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-bin
-	provides = dotnet-sdk=8.0.0.sdk403
+	provides = dotnet-sdk=8.0.0.sdk100
 	provides = dotnet-sdk-8.0
 	conflicts = dotnet-sdk-bin
-	conflicts = dotnet-sdk=8.0.0.sdk403
+	conflicts = dotnet-sdk=8.0.0.sdk100
 	conflicts = dotnet-sdk-8.0
 
 pkgname = netstandard-targeting-pack-bin
