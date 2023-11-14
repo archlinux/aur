@@ -1,8 +1,9 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer : Robin Candau <antiz@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=7.5.0
+pkgver=7.5.1
 pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
@@ -19,7 +20,7 @@ conflicts=('onlyoffice')
 options=('!strip' '!emptydirs')
 source=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb"::"https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${pkgver}/onlyoffice-desktopeditors_amd64.deb")
 noextract=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb")
-sha256sums=('5023bf6f82d04970cefe1791e1b49f31d2da1124957dd539eca9b7485b1852a6')
+sha256sums=('1dfe4235b51432e1d91c36377e00f8aa917850049ebec70af034d995abb21e16')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
