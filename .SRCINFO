@@ -1,0 +1,25 @@
+pkgbase = singland-git
+	pkgdesc = A GUI for sing-box. The universal proxy platform
+	pkgver = pre_alpha_4
+	pkgrel = 1
+	url = https://github.com/net-breaker/sing-land
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = hicolor-icon-theme
+	depends = glibc
+	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
+	provides = singland
+	conflicts = singland
+	conflicts = singland-bin
+	options = !strip
+	source = git+https://github.com/net-breaker/sing-land
+	source = https://github.com/SagerNet/sing-box/releases/download/v1.6.0/sing-box-1.6.0-linux-amd64.tar.gz
+	source = singland.desktop
+	sha256sums = SKIP
+	sha256sums = ffa107294e7a6b29805e32cc1fa0147a50b0ba8d0722582d457e5e60ac34a052
+	sha256sums = bedcc8193fcadf9e33c4117bf47fa9e479abd2fc88548571323b26d9b4cbf77a
+
+pkgname = singland-git
