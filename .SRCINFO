@@ -6,8 +6,6 @@ pkgbase = heimer-bin
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
-	depends = glibc
-	depends = gcc-libs
 	depends = qt5-svg
 	provides = heimer=4.2.0
 	conflicts = heimer
