@@ -1,6 +1,6 @@
 pkgbase = python-deepecho
 	pkgdesc = Create sequential synthetic data of mixed types using a GAN
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/sdv-dev/DeepEcho
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-deepecho
 	makedepends = python-wheel
 	depends = python-pytorch
 	depends = python-tqdm
-	source = DeepEcho-0.4.2.tar.gz::https://github.com/sdv-dev/DeepEcho/archive/v0.4.2.tar.gz
-	sha512sums = 43a39191177e09852dd63a076cac7a1aaecce84d6d0ec2b387720c931abb77cab54af8e8e42ea89ae565b1d6104dbb76efa56cb10b1d6fd9380d7389028ae731
+	source = DeepEcho-0.5.0.tar.gz::https://github.com/sdv-dev/DeepEcho/archive/v0.5.0.tar.gz
+	sha512sums = beac079215ea853abb53d8daa8df4493f23c6e029a6905e5138f38af406d1eecf39c1937bf64b24161b7df02fa95f5c8874ffb86ca131d52678c0930c520b643
 
 pkgname = python-deepecho
