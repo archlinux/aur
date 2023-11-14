@@ -1,6 +1,6 @@
 pkgbase = opera-ffmpeg-codecs
 	pkgdesc = additional support for proprietary codecs for opera
-	pkgver = 118.0.5993.118
+	pkgver = 119.0.6045.124
 	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = opera-ffmpeg-codecs
 	makedepends = libva
 	makedepends = libevdev
 	depends = glibc
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-118.0.5993.118.tar.xz
-	sha512sums = a8d8a4678df3ae3473abae4babe81c389869b8f2c4a2bea5718411de92708b7051849344163bb5c0cab2e9569f4e089053e366333d22bb27ea974de978fd6844
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-119.0.6045.124.tar.xz
+	sha512sums = 92c73ec20b7fce6ffbf88b0c349938fa69509b4a6194bff00e81b7f3e4b2bcbb59c3c38ecc6571e3ab4df9408b2f59848d7111c37a8a9b809aea0af1d7e32a8e
 
 pkgname = opera-ffmpeg-codecs
