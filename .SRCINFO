@@ -1,0 +1,37 @@
+pkgbase = mmseqs2
+	pkgdesc = ultra fast and sensitive search and clustering suite. https://doi.org/10.1038/nbt.3988
+	pkgver = 15.6f452
+	pkgrel = 1
+	url = https://github.com/soedinglab/mmseqs2
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = zlib
+	makedepends = openmp
+	makedepends = vim
+	source = MMseqs2-15-6f452.tar.gz::https://github.com/soedinglab/MMseqs2/archive/refs/tags/15-6f452.tar.gz
+	sha256sums = 7115ac5a7e2a49229466806aaa760d00204bb08c870e3c231b00e525c77531dc
+
+pkgname = mmseqs2-sse4
+	pkgdesc = ultra fast and sensitive search and clustering suite optimised for SSE4 instructions. https://doi.org/10.1038/nbt.3988
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = zstd
+	depends = openmp
+	depends = bzip2
+	depends = bash
+	provides = mmseqs2
+	conflicts = mmseqs2-avx2
+
+pkgname = mmseqs2-avx2
+	pkgdesc = ultra fast and sensitive search and clustering suite optimised for AVX2 instructions. https://doi.org/10.1038/nbt.3988
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = zstd
+	depends = openmp
+	depends = bzip2
+	depends = bash
+	provides = mmseqs2
+	conflicts = mmseqs2-sse4
