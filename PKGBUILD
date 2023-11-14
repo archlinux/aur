@@ -3,12 +3,12 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)"
-pkgver=23.3.branchpoint.r697.gfcd025c
+pkgver=23.3.branchpoint.r1209.g4d95b48
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
-makedepends=('elfutils' 'git' 'glslang' 'libunwind' 'libxrandr' 'meson' 'python-mako'
-             'systemd' 'valgrind' 'wayland-protocols' 'xorgproto' 'zstd')
+makedepends=('elfutils' 'git' 'glslang' 'libunwind' 'libxrandr' 'meson>=1.3.0rc2' 'python-mako'
+             'rust' 'rust-bindgen' 'systemd' 'valgrind' 'wayland-protocols' 'xorgproto' 'zstd') # -rc1 has weird crate issues
 optdepends=('vulkan-mesa-layers: Additional Vulkan layers'
             'linux>=6.6.arch1: Minimum required kernel for new uAPI support')
 provides=('vulkan-driver')
@@ -16,12 +16,16 @@ url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('custom')
 source=("git+${url}.git"
         nvk-memory-budget.patch
+        nvk-nak-pipeline.patch
+        nvk-pipeline-cache.patch
         nvk-synchr2-memmodel.patch
         nvk-vulkan11.patch
         LICENSE)
 sha512sums=('SKIP'
             '770d195f571aabc0e9dddf254576c29bbfff34ff0af0edfb6ede9864d25ef12247f2f5afd770d5ca70e8a9ac900623b92892211d73bd8bd4075d95c012367742'
-            '1859ae789052c0a817fce1c9697294f6ff5b84cd091b58d3028b48e78886f19d3b74abcedd576ab95a02e492083070b08716188828fef42b7d2177c18ffe0bc3'
+            '03401cb2b5ca5ea95ffaa815550faf952db9bb204369612001bc5bf501f8b867bb88bdb2bbaf39d88c8b081057063cc0244d3535e6b0886dad96ab609709c700'
+            '82915971a09a40bde6724503edf4a96f7171171f40e658ce8d4bf6db5514b2de583e7aea817dd1596987a47e91e1351e45b618d88b037441cff8a13c6081b6e8'
+            '48a3de59f4528548a7df3f8582cb922057f10b8ac3b5cf4a3f664e6ee926b94327860190b54cd976048b04a14b438778c206dbb4b417d69428aea86b621dc219'
             '8f308ef9cb662613a537d1cbb2e72a9d7dcf9186cfc9fd4dbdaf9d0e0fdeae5d4d4e4c47d2b4a5da9c5a77b56c29d5a3222ea7404bb98b63c1c61f7085953df9'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
@@ -64,6 +68,15 @@ prepare() {
   # (fixes a vulkaninfo warning)
   patch ${_patch_opts} ../nvk-memory-budget.patch
 
+  # Pipeline caching (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/25550)
+  # (might improve performance) (the patch is slightly modified for NAK)
+  patch ${_patch_opts} ../nvk-pipeline-cache.patch
+
+  ### NAK patches (XXX: BETTER THAN CODEGEN 🚀️) ###
+
+  # Quick fix for pipeline caching with NAK
+  patch ${_patch_opts} ../nvk-nak-pipeline.patch
+
   # Mark this NVK package with a signature (so I could track who's using it for bug report purposes)
   sed -i 's/"Mesa " PACKAGE_VERSION/"Mesa DodoNVK " PACKAGE_VERSION/' src/nouveau/vulkan/nvk_physical_device.c
 }
@@ -74,9 +87,14 @@ pkgver() {
 }
 
 build() {
+  # Auto-download Rust crates for NAK (removes extra code for crate handling)
+  _nak_crate="--force-fallback-for=syn"
+
   # As you can see, I optimized the build options pretty well 🐸
   arch-meson mesa build \
     --reconfigure \
+    --wrap-mode=nofallback \
+    ${_nak_crate} \
     -D b_ndebug=false \
     -D platforms=x11,wayland \
     -D gallium-drivers= \
