@@ -1,6 +1,9 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron10
-_ASAR="/opt/google-assistant-unofficial-desktop-client/google-assistant-unofficial-desktop-client.asar"
+APPDIR="/usr/lib/google-assistant-unofficial-desktop-client"
+export PATH="${APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/swiftshader:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
