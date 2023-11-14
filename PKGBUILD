@@ -3,8 +3,8 @@
 
 _pkgname=janet
 pkgname=janet-lang
-pkgver=1.31.0
-_jpm_commit=65e218e
+pkgver=1.32.1
+_jpm_commit=cebf7c1
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('janet-lang-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz"
         "git+https://github.com/janet-lang/jpm#commit=${_jpm_commit}"
         "default-config.janet")
-sha256sums=('1f5064b97313b93f282e36584dfb7d491dd13d6ccf4f6550281232e77ccef780'
+sha256sums=('ac74444f1b545830c34738fe9ebb58c865ea4b819b0b0c3124315c646d9ce4cb'
             'SKIP'
             '7fb56585e6027ea800920a364acd73b49205298dcf887a4ee71fb65125c4539f')
 options=('staticlibs')
