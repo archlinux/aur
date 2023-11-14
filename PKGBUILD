@@ -1,4 +1,4 @@
-# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
+# Maintainer: Jakub Klinkovský <lahwaacz@archlinux.org>
 
 pkgname=mythes-cs
 pkgver=20150310
@@ -12,7 +12,6 @@ source=("http://pkgs.fedoraproject.org/repo/pkgs/mythes-cs/thes_cs_CZ_v2.zip/7f9
 md5sums=("7f9c85b104db4cc6a719b3aab8c69a10")
 
 package() {
-    cd "$srcdir"
     install -dm755 "$pkgdir/usr/share/mythes"
     install -m644 th_cs_CZ_v2.* "$pkgdir/usr/share/mythes"
 
@@ -20,7 +19,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/myspell/dicts"
     pushd "$pkgdir/usr/share/myspell/dicts"
         for file in "$pkgdir/usr/share/mythes/"*; do
-            ln -sv /usr/share/mythes/$(basename $file) .
+            ln -sv /usr/share/mythes/$(basename "$file") .
         done
     popd
 
