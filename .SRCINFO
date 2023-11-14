@@ -1,0 +1,17 @@
+pkgbase = python-mdit_plain-git
+	pkgdesc = A renderer for markdown-it-py that converts markdown documents into plain text by removing all markup.
+	pkgver = r2.218934e
+	pkgrel = 1
+	url = https://github.com/elespike/mdit_plain
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-versioneer-518
+	depends = python-portalocker
+	depends = python-leveldb
+	provides = python-mdlt_plain
+	source = git+https://github.com/elespike/mdit_plain.git
+	md5sums = SKIP
+
+pkgname = python-mdit_plain-git
