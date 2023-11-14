@@ -1,10 +1,9 @@
 pkgbase = gawk-fake
 	pkgdesc = [Dummy PKG] Dont's use this, it will be removed. gawk and mawk are not 100% drop-in equivalents.
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = public-domain
 
 pkgname = gawk-fake
-	depends = bash
-	depends = mawk
+	depends = gawk
