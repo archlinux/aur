@@ -1,13 +1,13 @@
 # Maintainer: arraen
 pkgname="synergy3-bin"
-pkgver="v3.0.73.7"
-pkgrel="9"
+pkgver="v3.0.76.5"
+pkgrel="12"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
 arch=("x86_64")
-source_x86_64=("https://rc.symless.com/synergy3/$pkgver-rc2/synergy-linux_x64-libssl3-$pkgver-rc2.deb")
-sha256sums_x86_64=("ddd6d2d5836a0b6cb14b45edcf7ee3575c24425a46c08d3bda6a2a759482c40a")
+source_x86_64=("https://rc.symless.com/synergy3/$pkgver-rc3/synergy-linux_x64-libssl3-$pkgver-rc3.deb")
+sha256sums_x86_64=("8e1262875adecd852f98b9cfff05bdbe5b23acdd6c6f734706dabe07c4fe47c1")
 
 conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin')
 depends=('openssl')
@@ -15,7 +15,7 @@ optdepends=('libappindicator-gtk3')
 options=("!strip")
 
 package() {
-  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+  bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}/
   mkdir -p ${pkgdir}/usr/bin
   ln -s /opt/Synergy/synergys ${pkgdir}/usr/bin/synergys
   ln -s /opt/Synergy/synergyc ${pkgdir}/usr/bin/synergyc
