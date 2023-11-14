@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-flat'
-pkgver='1.04'
+pkgver='1.07'
 pkgrel='1'
 pkgdesc="Implements a flat filesystem"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-copy-recursive>=0.35' 'perl-file-remove>=0.38' 'perl-prefork>=0.02')
-makedepends=('perl-test-classapi>=1.04')
-url='http://search.cpan.org/dist/File-Flat'
-source=('http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/File-Flat-1.04.tar.gz')
-md5sums=('20367f74ff34d92b3c839b3da282b4e0')
-sha512sums=('5271c45be6ec057247310f74da13c59e9549d1514e13e8111708ca9288439a198dae95a71d561c07afd2ec32663fac436f7b8df1160c3a7f071b597ba12bd789')
-_distdir="File-Flat-1.04"
+depends=('perl-file-copy-recursive>=0.35' 'perl-file-remove>=0.38' 'perl>=5.006' 'perl-prefork>=0.02')
+makedepends=()
+checkdepends=('perl-test-classapi>=1.04')
+url='https://metacpan.org/release/File-Flat'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/File-Flat-1.07.tar.gz')
+md5sums=('2e58179a4cc6d8fdacaa8e5224b3414d')
+sha512sums=('98ae462c3f840c5e661753aa37d1501ded78e8e20d49d00811187e280c70caf3431fcb2cc83311116adb3303676837b20e421da646d7d05c0573b22f6549f9ce')
+_distdir="File-Flat-1.07"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
