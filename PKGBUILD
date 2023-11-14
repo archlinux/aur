@@ -2,7 +2,7 @@
 # Contributor: christian rebischke <chris.rebischke at archlinux org>
 
 pkgname=gopass-summon-provider-git
-pkgver=1.12.0.r22.g486cadc
+pkgver=1.15.8.r4.g1fd58e1
 pkgrel=1
 pkgdesc="summon provider for gopass"
 arch=('x86_64')
@@ -14,6 +14,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd ${pkgname%-git}

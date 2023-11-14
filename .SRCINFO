@@ -1,6 +1,6 @@
 pkgbase = gopass-summon-provider-git
 	pkgdesc = summon provider for gopass
-	pkgver = 1.12.0.r22.g486cadc
+	pkgver = 1.15.8.r4.g1fd58e1
 	pkgrel = 1
 	url = https://github.com/gopasspw/gopass-summon-provider
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = gopass-summon-provider-git
 	depends = glibc
 	provides = gopass-summon-provider
 	conflicts = gopass-summon-provider
+	options = !lto
 	source = git+https://github.com/gopasspw/gopass-summon-provider
 	sha512sums = SKIP
 
