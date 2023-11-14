@@ -1,5 +1,6 @@
 # Adding ignore rules so that the repo can be managed in e.g. Code
 src/
 pkg/
-submodule_*/
-tdesktop/
+# Do track this, so we clean with git clean -df
+#tdesktop/
+#submodule_*/
