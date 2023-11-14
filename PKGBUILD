@@ -27,20 +27,12 @@ makedepends=(
 options=('!strip')
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
-#  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-# https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst
   config  # the main kernel config file
   linux-arch-kamakiri.patch.zst
 )
-#validpgpkeys=(
-#  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
-#  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-#  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-#  C7E7849466FE2358343588377258734B41C31549
-#)
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('da1ed7d47c97ed72c9354091628740aa3c40a3c9cd7382871f3cedbd60588234'
             '9fd606b2ac0b4ae5df8867b7651574a2e5c480366bac224406fc34ad5d79009b'
