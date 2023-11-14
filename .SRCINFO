@@ -1,7 +1,7 @@
 pkgbase = shellshoccar-jpn-tukubai
 	pkgdesc = ShellShoccar-Jpn's fork of Open usp Tukubai implemented in shellscript
-	pkgver = v1.450.1
-	pkgrel = 1
+	pkgver = 1.450.1
+	pkgrel = 2
 	url = https://github.com/Tpaefawzen/ShellShoccar-jpn-Tukubai-just-sh
 	arch = any
 	groups = shellshoccar-jpn
