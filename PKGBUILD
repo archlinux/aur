@@ -2,7 +2,7 @@
 # Contributor: sh0rez <me@shorez.de>
 
 pkgname=gmailctl
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Declarative configuration for Gmail filters"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/mbrt/gmailctl"
 license=('MIT')
 source=("https://github.com/mbrt/gmailctl/archive/refs/tags/v${pkgver}.tar.gz")
 makedepends=('git' 'go')
-b2sums=('774db02bcb06c6e64bf56df6023e2bf1a174d7e9659e2fca643201555376eb160954cf50aa1d14da64e1df46c3b3b9235d3f6f0e0c83cda6b90e190e7705f061')
+b2sums=('dac8e62a79f47a07dcb39d962a8c21b1cc51849a6ab7ad15e7db35b531921d42e5915f5ac8197d3710b4ab9c8a20c8784b5e56db8597862f40c1b427702c04b7')
 
 build() {
   cd "$srcdir/gmailctl-${pkgver}"
