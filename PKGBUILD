@@ -22,12 +22,6 @@ sha256sums=(
     "2112a72532fdda187a649c5b35468dbba32d5c4601f36c107f4be202197c6b7a"
 )
 
-
-pkgver() {
-    cd "$srcdir/clashT-${pkgver}"
-    printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//')"
-}
-
 build() {
     cd "${srcdir}/clashT-${pkgver}"
     make -j $(go run ./test/main.go) releases
