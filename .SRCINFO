@@ -1,12 +1,10 @@
 pkgbase = remoteplaywhatever-bin
 	pkgdesc = Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones.
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m4dEngi/RemotePlayWhatever
 	arch = x86_64
 	license = MIT
-	depends = gcc-libs
-	depends = glibc
 	provides = remoteplaywhatever=0.2.5
 	conflicts = remoteplaywhatever
 	source = remoteplaywhatever-0.2.5.deb::https://github.com/m4dEngi/RemotePlayWhatever/releases/download/0.2.5-alpha/RemotePlayWhatever-0.2.5-Linux.deb
