@@ -1,27 +1,28 @@
 # Maintainer:
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
+if [ -z "$CARGO_HOME" ] ; then
+  export CARGO_HOME="${SRCDEST:-${startdir:?}}/cargo"
+fi
+
 _pkgname="python-tiktoken"
 pkgname="$_pkgname-git"
-pkgver=0.4.0.r0.g095924e
+pkgver=0.5.1.r0.g39f29ce
 pkgrel=1
 pkgdesc="A fast BPE tokeniser for use with OpenAI's models."
+url="https://github.com/openai/tiktoken"
+license=('MIT')
 arch=(
   'aarch64'
   'armv7h'
   'i686'
   'x86_64'
 )
-url="https://github.com/openai/tiktoken"
-license=('MIT')
 
 depends=(
   'python'
   'python-regex'
   'python-requests'
-
-  # AUR
-  'python-blobfile'
 )
 makedepends=(
   'git'
@@ -32,55 +33,48 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
+  'python-hypothesis'
   'python-pytest'
 )
-
-provides=(
-  "$_pkgname"
-)
-conflicts=(
-  ${provides[@]}
+optdepends=(
+  # AUR
+  'python-blobfile: for reading blobfiles'
 )
 
-source=(
-  "$_pkgname"::"git+$url"
-)
-sha256sums=(
-  'SKIP'
-)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
-
+  cd "$_pkgsrc"
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
+  cd "$_pkgsrc"
   python -m build --wheel --no-isolation
 }
 
-# check() {
-#   cd "$srcdir/$_pkgname"
-#   python -m pytest
-# }
+check() {
+  cd "$_pkgsrc"
+
+  rm -r tiktoken tiktoken.egg-info tiktoken_ext
+  local python_version
+  python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  PYTHONPATH="build/lib.linux-$CARCH-cpython-$python_version" python -m pytest
+}
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
+  cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
-
-  for _docfile in CHANGELOG.md README.md; do
-    install -vDm0644 "$_docfile" -t "$pkgdir/usr/share/doc/$_pkgname"
-  done
-
-  ln -svf "/usr/share/licenses/$pkgname/LICENSE" "$pkgdir/usr/share/doc/$_pkgname/LICENSE"
 }

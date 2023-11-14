@@ -1,6 +1,6 @@
 pkgbase = python-tiktoken-git
 	pkgdesc = A fast BPE tokeniser for use with OpenAI's models.
-	pkgver = 0.4.0.r0.g095924e
+	pkgver = 0.5.1.r0.g39f29ce
 	pkgrel = 1
 	url = https://github.com/openai/tiktoken
 	arch = aarch64
@@ -18,10 +18,10 @@ pkgbase = python-tiktoken-git
 	depends = python
 	depends = python-regex
 	depends = python-requests
-	depends = python-blobfile
+	optdepends = python-blobfile: for reading blobfiles
 	provides = python-tiktoken
 	conflicts = python-tiktoken
-	source = python-tiktoken::git+https://github.com/openai/tiktoken
+	source = python-tiktoken::git+https://github.com/openai/tiktoken.git
 	sha256sums = SKIP
 
 pkgname = python-tiktoken-git
