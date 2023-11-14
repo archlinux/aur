@@ -1,27 +1,32 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
-
+#
+# Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=imgpkg-bin
-pkgdesc="Package, distribute, and relocate your Kubernetes configuration and dependent OCI images as one OCI artifact: a bundle"
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
+pkgdesc="Store application configuration files in Docker/OCI registries"
 url="https://carvel.dev/imgpkg"
 arch=(x86_64 aarch64)
-license=(Apache)
+license=(apache-2.0)
 provides=(imgpkg)
-conflicts=(imgpkg imgpkg-bin imgpkg-git)
-
-source_x86_64=(
-    imgpkg-v0.38.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.38.0/imgpkg-linux-amd64
-)
-sha256sums_x86_64=(
-    3f272fc7eacb129a989b8f686ea59455ab7e65423192803c15d6affb963f86a9
-)
-source_aarch64=(
-    imgpkg-v0.38.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.38.0/imgpkg-linux-arm64
-)
-sha256sums_aarch64=(
-    975f013ac48007314a34aa2d575c09fb186db0918f446a5ef0905ec2730453ef
-)
-package() {
-    install -Dm 755 "${srcdir}/imgpkg-v0.38.0" "${pkgdir}/usr/bin/imgpkg"
+source_x86_64=(imgpkg-v0.39.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.39.0/imgpkg-linux-amd64)
+source_aarch64=(imgpkg-v0.39.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.39.0/imgpkg-linux-arm64)
+sha256sums_x86_64=(98b80baa5d665c5119fc8e2a62978f9d193c9647e3c47ab72867b055b94d14ff)
+sha256sums_aarch64=(7b247c24850dbf4ff70095b6d7f5aff12aea15d0ece9e9ecf66f92e3c9d2f332)
+package () 
+{ 
+    install -Dm 755 "${srcdir}/${_z_binname}-v${pkgver}" "${pkgdir}/usr/bin/${_z_binname}";
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
+    ./$_z_binname completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_z_binname";
+    ./$_z_binname completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_z_binname.fish";
+    ./$_z_binname completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_z_binname"
 }
+
+
+# Custom variables
+
+_z_binname="imgpkg"
