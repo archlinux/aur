@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.36.0.r753.g7d004bf15c
+pkgver=0.36.0.r839.g39cab760b3
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -134,9 +134,6 @@ build() {
         -Dvideotoolbox-gl='disabled' \
         -Dvulkan-interop='enabled' \
         \
-        -Dmacos-10-11-features='disabled' \
-        -Dmacos-10-12-2-features='disabled' \
-        -Dmacos-10-14-features='disabled' \
         -Dmacos-cocoa-cb='disabled' \
         -Dmacos-media-player='disabled' \
         -Dmacos-touchbar='disabled' \
