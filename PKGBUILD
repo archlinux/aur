@@ -1,9 +1,9 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=fscan
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="An intranet comprehensive scanning tool"
-arch=('x86_64' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/shadow1ng/fscan"
 license=('MIT')
 depends=('glibc')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=()
 options=()
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/$pkgver.tar.gz")
-sha256sums=('e62776ec36636619b74f096597458d372fb28b05e398589eecef18f891428e5f')
+sha256sums=('e3800b54c14aa7fd0ad963982ed9aa47bc17fbbfd0317afb442b082cccb03686')
 
 prepare() {
     cd "$pkgname-$pkgver"
