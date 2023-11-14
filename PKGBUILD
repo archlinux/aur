@@ -2,7 +2,7 @@
 
 pkgname='cross-install'
 pkgver='1.2.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='POSIX-complient cross-platform install command'
 arch=('any')
 url='https://codeberg.org/stefanwimmer128/cross-install'
