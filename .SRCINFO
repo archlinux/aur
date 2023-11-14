@@ -1,18 +1,22 @@
 pkgbase = subtitle-translator-electron-bin
 	pkgdesc = Translate subtitle using ChatGPT
-	pkgver = 1.1.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/gnehs/subtitle-translator-electron
 	arch = x86_64
 	license = custom
 	makedepends = squashfuse
-	depends = bash
 	depends = electron24
-	provides = subtitle-translator-electron=1.1.0
+	depends = gdk-pixbuf2
+	depends = libx11
+	depends = libdbusmenu-glib
+	depends = dbus-glib
+	depends = gtk2
+	provides = subtitle-translator-electron=1.3.0
 	conflicts = subtitle-translator-electron
-	source = subtitle-translator-electron-1.1.0.AppImage::https://github.com/gnehs/subtitle-translator-electron/releases/download/1.1.0/Subtitle.Translator-1.1.0.AppImage
+	source = subtitle-translator-electron-1.3.0.AppImage::https://github.com/gnehs/subtitle-translator-electron/releases/download/1.3.0/Subtitle-Translator-1.3.0.AppImage
 	source = subtitle-translator-electron.sh
-	sha256sums = ecd0b2c0971f1c31030f8706203665267149d7d3d198a393e5037c1929742191
-	sha256sums = 26d911bba2617e163baab03075c62713c7b30fd297186ed2ceb13f037e71e05a
+	sha256sums = d3c30a6ad62b9fce68ca58308e268ca2147e0757ccf34c6b128ae647f3d7d4ca
+	sha256sums = f33ced8d2d781f25fb1e825b57a2c1e16942b0a3bd021840de63019a0e58b1cf
 
 pkgname = subtitle-translator-electron-bin
