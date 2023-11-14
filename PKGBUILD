@@ -2,16 +2,16 @@
 # Contributor: Jef Roosens
 
 pkgname=scryer-prolog
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="An open source industrial strength production environment that is also a testbed for bleeding edge research in logic and constraint programming"
 arch=('aarch64' 'x86_64')
 url="https://github.com/mthom/scryer-prolog"
 license=('BSD-3-Clause')
-depends=('openssl' 'libmpc' 'mpfr' 'gmp' 'gcc-libs' 'glibc')
+depends=('openssl' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("https://github.com/mthom/scryer-prolog/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d8e89e0d6c54fdd34104513e231bba4c8499659b1dd3ae6abe187606e443a82c')
+sha256sums=('08bddb114cb377abccaf58df66e99c8cafc7af90dc2cf6ff2d8204fb6d514af4')
 
 export CARGO_PROFILE_RELEASE_LTO="true"
 export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
@@ -19,7 +19,7 @@ export CARGO_PROFILE_RELEASE_OPT_LEVEL="s"
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo fetch --locked
+    cargo fetch # --locked
 }
 
 build() {
