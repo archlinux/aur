@@ -6,7 +6,7 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=shaderc
 
 pkgname=lib32-$_pkgbasename
-pkgver=2023.5
+pkgver=2023.6
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation (32bit)'
 url='https://github.com/google/shaderc'
@@ -31,10 +31,10 @@ source=(
         "${_pkgbasename}-${pkgver}.tar.gz::https://github.com/google/shaderc/archive/v${pkgver}/${_pkgbasename}-${pkgver}.tar.gz"
         )
 sha512sums=(
-        'acda1bb35a30f7f47aeb356c2b513a16161147130e8d6d939640b0f5646799a0a134c2846f197fdb9b4d93e8460bf715ed03f70d7e7daeeb16231d61f7a1382f'
+        '6580384ac27c4f2225529873ba46ca61240bdf63f4f5b89875e9bd20a774fed49328094379b7f469c3b97b6a3744cb649998c0d6d5a391023317a64a91754bb1'
         )
 b2sums=(
-        '79ad4c249f1bc543aca89633c5754148a8ae0806d1a51bfd1c3e40aa99bb341cc4b0ad4a095d1fc1389eac077c25db57e5a1221f81a0728981ad62601f26f297'
+        '023ce15caaff6ff9474f361c6c5442fd8c58bbb079774fd3c8525824e70e63c1b8fff37490601b599f4ed44f4bfaec3ca746b7a734782fc2af8d78c4f1f1de53'
         )
 
 prepare() {
