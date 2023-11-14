@@ -1,5 +1,5 @@
 pkgname=aur-check-updates
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A very basic CLI app for checking updates from AUR"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,27 +10,27 @@ makedepends=('cargo')
 
 _snapshot="${pkgname}-${pkgver}"
 source=("${_snapshot}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('1e03316bcc31ad7875b2fee1db58ca4c7afd6ecd5c9d524900743a8fed83d775')
+sha256sums=('c60cb3b000f7574d34119245841f4430bdd1afd653cca81dabc336890def50c5')
+
+export RUSTUP_TOOLCHAIN=stable
+export CARGO_BUILD_TARGET="${CARCH}-unknown-linux-gnu"
 
 prepare() {
     cd "${_snapshot}"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+    cargo fetch --locked
 }
 
 build() {
     cd "${_snapshot}"
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR="${srcdir}"
     cargo build --frozen --release
 }
 
 check() {
     cd "${_snapshot}"
-    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen
 }
 
 package() {
-    install -Dm0755 -t "${pkgdir}/usr/bin" "release/${pkgname}"
+    install -Dm0755 -t "${pkgdir}/usr/bin" "${CARGO_BUILD_TARGET}/release/${pkgname}"
 }
