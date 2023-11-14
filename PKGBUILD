@@ -5,7 +5,7 @@
 # Contributor: "donaldtrump" [AUR]
 pkgname=osu-lazer
 _pkgname=osu
-pkgver=2023.1026.0
+pkgver=2023.1114.1
 pkgrel=1
 pkgdesc="rhythm is just a *click* away!"
 arch=('x86_64')
@@ -19,12 +19,12 @@ source=("https://github.com/ppy/osu/archive/$pkgver.tar.gz"
         "osu-lazer.desktop"
         "osu-lazer.xml"
         "osu-lazer-online.patch")
-sha256sums=('97a5738b1d4a72092db49ea7317153620b4234136f29db08c2e15a755f6d4709'
+sha256sums=('0c62863f540bdc476b7aebf54f8b3ee2bf27013de89599f9cfbea288f2570a8f'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'b645a8653c78b136c4934194b3dce390e854b3c90c43c889631b9ab3b77022af'
             '9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6'
             'dc79a5aa4084b77a19642336d4eacdc990b18204cb4327571c50b2b0f19eb1cf'
-            '69078df41fb01f28649e0c52c252b82e34f93c44eef69a7ea796fe275f550a37')
+            '70f2d5f26d3879ee1a12c03d76b86be3d19dd86753480bb1cf272bd9875c7900')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
