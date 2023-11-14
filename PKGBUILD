@@ -1,4 +1,5 @@
-# Maintainer: Bart De Vries <bart at mogwai dot be>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Bart De Vries <bart at mogwai dot be>
 
 pkgname=widevine-aarch64
 pkgdesc='A browser plugin designed for the viewing of premium video content (version for aarch64)'
