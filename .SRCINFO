@@ -8,7 +8,9 @@ pkgbase = qdvd
 	license = GPL
 	depends = vlc
 	depends = xine-lib
-	source = https://sourceforge.net/projects/qdvd/files/qdvd-2.4.1-qt6/qdvdauthor-$pkgver-014.tar.gz
+	source = https://sourceforge.net/projects/qdvd/files/qdvd-2.4.1-qt6/qdvdauthor-2.4.1-014.tar.gz
+        source = found_ffmpeg.patch
+        source = mathops_fix.patch
 	sha256sums = b0b7a56881a3e74fb93a598c4e7e8cc34d91bc14c634a3aaef60c4fbcb1594fb
 
 pkgname = qdvd
