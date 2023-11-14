@@ -4,7 +4,7 @@ _name=oojs-ui
 pkgname=$_name-archlinux-git
 pkgdesc="JavaScript UI library used by MediaWiki (with ArchLinux theme)"
 url="https://github.com/lahwaacz/oojs-ui"
-pkgver=v0.48.1.r5.g81bab18
+pkgver=0.48.2.r6.gbfd702e
 pkgrel=1
 license=(MIT)
 arch=(any)
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_name
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = oojs-ui-archlinux-git
 	pkgdesc = JavaScript UI library used by MediaWiki (with ArchLinux theme)
-	pkgver = v0.48.1.r5.g81bab18
+	pkgver = 0.48.2.r6.gbfd702e
 	pkgrel = 1
 	url = https://github.com/lahwaacz/oojs-ui
 	arch = any
