@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=ynot3
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="An image annotator for Xorg & Wayland using pygame"
 arch=(any)
