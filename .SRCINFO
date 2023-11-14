@@ -5,13 +5,10 @@ pkgbase = gpt-anywhere-bin
 	url = http://jinay.dev/gpt-anywhere/
 	arch = x86_64
 	license = GPL3
-	depends = glibc
 	depends = hicolor-icon-theme
 	depends = webkit2gtk
 	depends = cairo
-	depends = glib2
 	depends = gdk-pixbuf2
-	depends = gcc-libs
 	depends = pango
 	depends = gtk3
 	provides = gpt-anywhere=0.0.1

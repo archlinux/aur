@@ -5,14 +5,21 @@ pkgrel=4
 pkgdesc="Use GPT anywhere with just one shortcut."
 arch=('x86_64')
 url="http://jinay.dev/gpt-anywhere/"
-_githuburl="https://github.com/JinayJain/gpt-anywhere"
+_ghurl="https://github.com/JinayJain/gpt-anywhere"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('glibc' 'hicolor-icon-theme' 'webkit2gtk' 'cairo' 'glib2' 'gdk-pixbuf2' 'gcc-libs' 'pango' 'gtk3')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+depends=(
+    'hicolor-icon-theme'
+    'webkit2gtk'
+    'cairo'
+    'gdk-pixbuf2'
+    'pango'
+    'gtk3'
+)
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('a589d4714b03d41b34ce8163ad7472b423b07ecb193c00187753adb125950cef')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|Categories=|Categories=Utility;|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
