@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=mkcl-git
-pkgver=v1.1.11.r188.gf731a69
+pkgver=v1.1.11.r189.g5bc0106
 pkgrel=1
 pkgdesc="ManKai Common Lisp"
 arch=('x86_64')
