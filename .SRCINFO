@@ -1,13 +1,10 @@
 pkgbase = gawk-fake
-	pkgdesc = A fake gawk for those who prefer a different awk interpreter (CANNOT BUILD GLIBC WITHOUT GAWK)
+	pkgdesc = [Dummy PKG] Dont's use this, it will be removed. gawk and mawk are not 100% drop-in equivalents.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = public-domain
-	depends = bash
-	depends = mawk
-	provides = awk
-	provides = gawk
-	conflicts = gawk
 
 pkgname = gawk-fake
+	depends = bash
+	depends = mawk
