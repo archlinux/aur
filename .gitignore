@@ -2,6 +2,7 @@
 !90-lg4l.rules
 !.gitignore
 !hid-g19.patch
+!hid-gfb.patch
 !lg4l.install
 !PKGBUILD
 !.SRCINFO

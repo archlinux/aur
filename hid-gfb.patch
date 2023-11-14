@@ -1,0 +1,11 @@
+--- a/hid-gfb.c	2017-08-09 02:07:57.000000000 +0200
++++ b/hid-gfb.c	2023-11-14 15:22:23.151649915 +0100
+@@ -657,7 +657,7 @@
+ 	data->fb_info->pseudo_palette = &pseudo_palette;
+ 	data->fb_info->fbops = &gfb_ops;
+ 	data->fb_info->par = data;
+-	data->fb_info->flags = FBINFO_FLAG_DEFAULT;
++	data->fb_info->flags = 0;
+ 	data->fb_info->fix.smem_len =
+ 		data->fb_info->fix.line_length * data->fb_info->var.yres;
+ 
