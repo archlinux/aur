@@ -1,3 +1,14 @@
+2023-11-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.13.4-1:
+    [!] ASF uses new code for redeeming keys now. While this is mostly transparent for end-users, there is a breaking change in the ASF API RedeemKey() functionality, you may need to recompile your plugins if you're making use of that function. Notable difference is that Steam sends e-mails upon key activations now (@JustArchi #3058).
+    Added support for refresh token renewals into new login flow (@JustArchi).
+    Added additional chat groups APIs for plugin developers (@tre3p #3069).
+    ASF can now detect region-locked games and skip them during idling (@JustArchi #2980).
+    Fixed a possibility of ASF running into infinite loop due to detached terminal on Linux (@JustArchi #3051).
+    Fixed wrong access to version command, it didn't permit FamilySharing before, despite wiki stating so (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-10-20 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.12.5-1:
     Fixed possible crash on empty access_token returned from Steam despite EResult.OK response, how did they even manage to do that (@JustArchi).
