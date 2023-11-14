@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="The Workman Keyboard Layout created by OJ Bucao."
 url="https://workmanlayout.org/"
 arch=('any')
-license=('unknown')
+license=('custom')
 depends=()
 source=("${_pkgname}::git+https://github.com/workman-layout/${_pkgname}")
 sha256sums=('SKIP')
@@ -28,5 +28,8 @@ package() {
   cd ${srcdir}/${_pkgname}/linux_console/
   install -Dm644 workman.iso15.kmap ${pkgdir}/usr/share/kbd/keymaps/i386/workman/workman.map
   install -Dm644 workman-p.iso15.kmap ${pkgdir}/usr/share/kbd/keymaps/i386/workman/workman-p.map
+
+  cd ${srcdir}/${_pkgname}/
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
