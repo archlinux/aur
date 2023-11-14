@@ -1,0 +1,29 @@
+pkgbase = monaspace-font
+	pkgdesc = An innovative superfamily of fonts for code
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://monaspace.githubnext.com/
+	arch = any
+	license = OFL
+	source = https://github.com/githubnext/monaspace/releases/download/v1.000/monaspace-v1.000.zip
+	md5sums = 2d3af895018340b8948112557c011696
+
+pkgname = otf-monaspace-argon
+
+pkgname = otf-monaspace-krypton
+
+pkgname = otf-monaspace-neon
+
+pkgname = otf-monaspace-radon
+
+pkgname = otf-monaspace-xenon
+
+pkgname = ttf-monaspace-argon
+
+pkgname = ttf-monaspace-krypton
+
+pkgname = ttf-monaspace-neon
+
+pkgname = ttf-monaspace-radon
+
+pkgname = ttf-monaspace-xenon
