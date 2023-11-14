@@ -21,7 +21,7 @@ pkgbase = linux-rockchip-rk3588-bin
 	sha512sums = f33ed660cfb561bc0463f7901254e7ee8419deb7c13cded3277eaf43ec41db5d313f7cb60d6d1b22d3100cd54b7da11b8224215b67968dbddf9f59aef66edcbe
 
 pkgname = linux-rockchip-rk3588-bin
-	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform rockchip-rk3588
+	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform rockchip-rk3588 from Armbian
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -34,6 +34,6 @@ pkgname = linux-rockchip-rk3588-bin
 	backup = etc/mkinitcpio.d/linux-rockchip-rk3588.preset
 
 pkgname = linux-rockchip-rk3588-bin-headers
-	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform rockchip-rk3588
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform rockchip-rk3588 from Armbian
 	provides = linux-headers=5.10.110
 	conflicts = linux-headers
