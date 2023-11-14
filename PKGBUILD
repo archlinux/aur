@@ -1,18 +1,32 @@
-# Maintainer: Adrian Zankich <azankich@pivotal.io>
+# Maintainer: German Lashevich <german.lashevich@gmail.com>
+#
+# Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=kapp-bin
-pkgdesc="kapp is a simple deployment tool focused on the concept of 'Kubernetes application' — a set of resources with the same label"
-pkgver=0.30.0
+pkgver=0.59.1
 pkgrel=1
-url="https://get-kapp.io/"
-arch=('x86_64')
-license=('apache')
-groups=('k14s-bin')
-provides=('kapp')
-conflicts=('kapp')
-_binary=kapp-linux-amd64
-source=("${_binary}-v${pkgver}::https://github.com/k14s/kapp/releases/download/v${pkgver}/${_binary}")
-sha256sums=("031020e3cd83883900695959f067d8afc64369c09d127a0ed34eeee3e264e422")
-
-package() {
-  install -Dm 755 "${srcdir}/${_binary}-v${pkgver}" "${pkgdir}/usr/bin/kapp"
+pkgdesc="kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label"
+url="https://carvel.dev/kapp"
+arch=(x86_64 aarch64)
+license=(apache-2.0)
+provides=(kapp)
+source_x86_64=(kapp-v0.59.1::https://github.com/carvel-dev/kapp/releases/download/v0.59.1/kapp-linux-amd64)
+source_aarch64=(kapp-v0.59.1::https://github.com/carvel-dev/kapp/releases/download/v0.59.1/kapp-linux-arm64)
+sha256sums_x86_64=(a6da34c733514c2c51b96a12e70cd050250a45b2ee75d6966a904e712b307d15)
+sha256sums_aarch64=(a0e4eccdc264b535d7b0ba1972b6fd29cd5aa1263ab7e996d5a4671253fd3cf9)
+package () 
+{ 
+    install -Dm 755 "${srcdir}/${_z_binname}-v${pkgver}" "${pkgdir}/usr/bin/${_z_binname}";
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
+    ./$_z_binname completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_z_binname";
+    ./$_z_binname completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_z_binname.fish";
+    ./$_z_binname completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_z_binname"
 }
+
+
+# Custom variables
+
+_z_binname="kapp"
