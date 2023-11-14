@@ -4,5 +4,3 @@
 !.SRCINFO
 !telegraf.install
 !telegraf.service
-!telegraf.sysusers
-!telegraf.tmpfiles
