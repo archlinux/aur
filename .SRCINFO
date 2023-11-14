@@ -1,28 +1,29 @@
 pkgbase = r-dockerfiler
 	pkgdesc = Easy Dockerfile Creation from R
-	pkgver = 0.2.1
-	pkgrel = 3
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=dockerfiler
 	arch = any
 	license = MIT
-	depends = r
+	checkdepends = r-testthat
 	depends = r-attempt
 	depends = r-cli
 	depends = r-desc
 	depends = r-fs
 	depends = r-glue
 	depends = r-jsonlite
+	depends = r-memoise
 	depends = r-pak
 	depends = r-pkgbuild
 	depends = r-r6
 	depends = r-remotes
-	depends = r-renv
 	depends = r-usethis
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/dockerfiler_0.2.1.tar.gz
-	sha256sums = 77cbbb05265b22c7fdd5fba06caf294fc3f02c4f92faefa3102f57d9c6a9bd5a
+	source = https://cran.r-project.org/src/contrib/dockerfiler_0.2.2.tar.gz
+	md5sums = 036c7fa0312dc7282d019e6cdd9d1d41
+	sha256sums = f1bbd7f9a64e8a7420949abb90a8c007753b8544b3d1a698c6893dbce048b248
 
 pkgname = r-dockerfiler

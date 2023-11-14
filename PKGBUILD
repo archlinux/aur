@@ -1,28 +1,31 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dockerfiler
-_pkgver=0.2.1
+_pkgver=0.2.2
 pkgname=r-${_pkgname,,}
-pkgver=0.2.1
-pkgrel=3
-pkgdesc='Easy Dockerfile Creation from R'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Easy Dockerfile Creation from R"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('MIT')
+license=(MIT)
 depends=(
-  r
   r-attempt
   r-cli
   r-desc
   r-fs
   r-glue
   r-jsonlite
+  r-memoise
   r-pak
   r-pkgbuild
   r-r6
   r-remotes
-  r-renv
   r-usethis
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-knitr
@@ -31,15 +34,23 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('77cbbb05265b22c7fdd5fba06caf294fc3f02c4f92faefa3102f57d9c6a9bd5a')
+md5sums=('036c7fa0312dc7282d019e6cdd9d1d41')
+sha256sums=('f1bbd7f9a64e8a7420949abb90a8c007753b8544b3d1a698c6893dbce048b248')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
