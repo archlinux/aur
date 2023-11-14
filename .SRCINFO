@@ -1,0 +1,12 @@
+pkgbase = rime-project-trans-bin
+	pkgver = 20231114
+	pkgrel = 1
+	url = https://github.com/project-trans/rime-dict
+	arch = any
+	license = unknown
+	makedepends = jq
+	makedepends = curl
+	source = dict.yml::https://github.com/project-trans/rime-dict/releases/latest/download/project_trans.dict.yaml
+	md5sums = SKIP
+
+pkgname = rime-project-trans-bin
