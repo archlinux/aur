@@ -1,0 +1,18 @@
+pkgbase = monitorets
+	pkgdesc = Have always at a glance the usage of system resources
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/jorchube/monitorets
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = libadwaita
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-psutil
+	depends = python-xdg-base-dirs
+	source = monitorets-0.10.1.tar.gz::https://github.com/jorchube/monitorets/archive/refs/tags/0.10.1.tar.gz
+	sha256sums = 1592d8c1bded965dd7564fe5da3084dbb1a818ca4d9cfbd08885d7306cc54eb6
+
+pkgname = monitorets
