@@ -11,7 +11,7 @@ license=('GPL3')
 depends=()
 optdepends=('clash-geoip: A GeoLite2 data created by MaxMind')
 provides=('clash')
-conflicts=('clash')
+conflicts=('clasht' 'clash' 'clasht-git')
 options=(!strip)
 source=(
     "clash.service"
@@ -40,6 +40,6 @@ sha256sums_loong64=('SKIP')
 
 package() {
     cd "${srcdir}"
-    install -Dm755 "${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
+    install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
     install -Dm644 "clash.service" "${pkgdir}/usr/lib/systemd/system/clash.service"
 }
