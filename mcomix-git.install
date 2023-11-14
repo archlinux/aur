@@ -1,4 +1,0 @@
-post_upgrade() {
-        echo 'In case of any issues with zoom keybindings, delete ~/.config/mcomix/keybindings.conf'
-}
-

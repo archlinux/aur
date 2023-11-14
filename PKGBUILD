@@ -6,7 +6,7 @@
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix-git
-pkgver=2.1.1.r30.gae7d6a0
+pkgver=3.0.0.r16.g4a91687
 pkgrel=1
 pkgdesc='A user-friendly, customizable image viewer specifically designed to handle comic books'
 arch=('any')
@@ -14,7 +14,7 @@ url='https://sourceforge.net/projects/mcomix/'
 license=('GPL')
 depends=('gtk3' 'python-pillow>=6.0.0' 'xdg-utils' 'python>=3.7'
          'desktop-file-utils' 'hicolor-icon-theme'
-         'python-gobject>=3.36.0' 'python-cairo>=1.16.0' 'python-setuptools')
+         'python-gobject>=3.36.0' 'python-cairo>=1.16.0' 'python-setuptools' 'python-wheel')
 makedepends=('gettext' 'intltool' 'git')
 optdepends=(
             'libunrar: for rar compressed comics'
@@ -30,42 +30,21 @@ source=(
         "${pkgname}::git+http://git.code.sf.net/p/mcomix/git"
        )
 sha256sums=('SKIP')
-install=mcomix-git.install
 
 pkgver() {
         cd "${pkgname}"
         git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+	cd "${pkgname}"
+	python -m build --wheel --no-isolation
+}
+
 package() {
-        cd "${srcdir}/${pkgname}"
-        mkdir -p "${pkgdir}/usr/bin"
+        cd "${pkgname}"
 
-        _PYVERSION=$(python3 --version | sed -e 's/Python /python/')
-        _ICONDIR="${pkgdir}/usr/lib/${_PYVERSION%.*}/site-packages/mcomix/images"
+        python -m installer --destdir="${pkgdir}" dist/*.whl
 
-        install -dm755 "$_ICONDIR"
-
-        python3 setup.py install --prefix=/usr --optimize=1 \
-                --single-version-externally-managed --root="${pkgdir}/"
-
-        install -Dm755 mcomix/images/*.png "${_ICONDIR}"
-
-        install -Dm755 mime/comicthumb "${pkgdir}/usr/bin/comicthumb"
-        install -Dm644 mime/comicthumb.1.gz "${pkgdir}/usr/share/man/man1/comicthumb.1.gz"
-        install -Dm644 mime/comicthumb.thumbnailer "${pkgdir}/usr/share/thumbnailers/comicthumb.thumbnailer"
-        install -Dm644 mime/comicbook.schemas "${pkgdir}/usr/share/gconf/schemas/mcomix.schemas"
-        install -Dm644 mime/mcomix.desktop "${pkgdir}/usr/share/applications/mcomix.desktop"
-        install -Dm644 mime/mcomix.appdata.xml "${pkgdir}/usr/share/metainfo/mcomix.appdata.xml"
-
-        for size in 16x16 22x22 24x24 32x32 48x48
-        do
-                install -Dm755 "mcomix/images/${size}/mcomix.png" "${_ICONDIR}/${size}/mcomix.png"
-                install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}/apps/"
-                install -Dm644 "mcomix/images/${size}/mcomix.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/mcomix.png"
-                install -Dm644 "mime/icons/${size}/application-x-cb7.png" "${pkgdir}/usr/share/icons/hicolor/${size}/mimetypes/application-x-cb7.png"
-                install -Dm644 "mime/icons/${size}/application-x-cbr.png" "${pkgdir}/usr/share/icons/hicolor/${size}/mimetypes/application-x-cbr.png"
-                install -Dm644 "mime/icons/${size}/application-x-cbt.png" "${pkgdir}/usr/share/icons/hicolor/${size}/mimetypes/application-x-cbt.png"
-                install -Dm644 "mime/icons/${size}/application-x-cbz.png" "${pkgdir}/usr/share/icons/hicolor/${size}/mimetypes/application-x-cbz.png"
-        done
+        cp -a share "${pkgdir}/usr"
 }
