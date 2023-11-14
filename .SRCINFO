@@ -1,7 +1,7 @@
 pkgbase = kf5-servicemenus-flacconvert
 	pkgdesc = KDE service menus for flac file converting
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marco-mania/kde-servicemenus-flacconvert
 	arch = any
 	license = GPL
@@ -13,6 +13,6 @@ pkgbase = kf5-servicemenus-flacconvert
 	conflicts = kde-servicemenus-flacconvert
 	replaces = kde-servicemenus-flacconvert
 	source = https://github.com/marco-mania/kde-servicemenus-flacconvert/archive/refs/tags/v4.tar.gz
-	sha256sums = 60399bd0e79549fd19770a715b9f02ecc2d89263c6b5d8c894683999678abad4
+	sha256sums = 19bd13b25e292adaad0a14154c50bd0a207236ba2245819c9a9efd3453dd798b
 
 pkgname = kf5-servicemenus-flacconvert
