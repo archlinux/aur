@@ -1,19 +1,17 @@
 pkgbase = min-browser-bin
 	pkgdesc = A fast, minimal browser that protects your privacy
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minbrowser.org/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = Apache
-	makedepends = asar
-	depends = bash
 	depends = electron26
 	provides = min-browser=1.29.0
 	conflicts = min-browser
 	source = min-browser.sh
-	sha256sums = 9a1ebf5a7d7fad2b1f64ee78b65363860563d345b0d896e2264593564b447503
+	sha256sums = 9672e5a80166f2b6005f8daf9295d910096e3aad359aaba2e2520f6b2a95101d
 	source_aarch64 = min-browser-1.29.0-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.29.0/min-1.29.0-arm64.deb
 	sha256sums_aarch64 = 614499546ad833c5eb84c394963374911806939d78188510b5b4f9994c3d07f4
 	source_armv7h = min-browser-1.29.0-armv7h.deb::https://github.com/minbrowser/min/releases/download/v1.29.0/min-1.29.0-armv7l.deb
