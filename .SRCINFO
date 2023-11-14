@@ -6,7 +6,6 @@ pkgbase = ficus-bin
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = bash
 	depends = electron13
 	provides = ficus=0.2.1
 	conflicts = ficus
@@ -18,6 +17,6 @@ pkgbase = ficus-bin
 	sha256sums = fb3a407722baa7b48b81db2753ae12f47799a3a434122d47db8b320c6c4ba993
 	sha256sums = 062dfd6ae4c19f555ebbdba752598c98510837687393a38a3602b711890430d7
 	sha256sums = 3c8344b3daac5c775a3bf38518e5eee024566d7ea0a3f72c543a7c7ae13f72ef
-	sha256sums = fe17973210b46d11cfaad9baa7c821f64a26667a77ba8ca483ea8acfb1fab525
+	sha256sums = cf6a9a3f259d0760bd8ec9462c020294a11e930a1034956f8f8e9bb88aef128c
 
 pkgname = ficus-bin

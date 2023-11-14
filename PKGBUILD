@@ -9,22 +9,28 @@ _githuburl="https://github.com/Thysrael/Ficus"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-desktop")
-depends=('bash' 'electron13')
-makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.asar::${_githuburl}/releases/download/v${pkgver}/app.asar"
+depends=(
+    'electron13'
+)
+makedepends=(
+    'gendesk'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.asar::${_githuburl}/releases/download/v${pkgver}/app.asar"
     "https://raw.githubusercontent.com/Thysrael/Ficus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/Thysrael/Ficus/v${pkgver}/build/icon.png"
-    "${pkgname%-bin}.sh")
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('fb3a407722baa7b48b81db2753ae12f47799a3a434122d47db8b320c6c4ba993'
             '062dfd6ae4c19f555ebbdba752598c98510837687393a38a3602b711890430d7'
             '3c8344b3daac5c775a3bf38518e5eee024566d7ea0a3f72c543a7c7ae13f72ef'
-            'fe17973210b46d11cfaad9baa7c821f64a26667a77ba8ca483ea8acfb1fab525')
-prepare() {
-    gendesk -f -n --categories "Utility" --name "Ficus" --exec "${pkgname%-bin}"
+            'cf6a9a3f259d0760bd8ec9462c020294a11e930a1034956f8f8e9bb88aef128c')
+build() {
+    gendesk -q -f -n --categories "Utility" --name "Ficus" --exec "${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.asar" "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
