@@ -8,7 +8,7 @@ pkgdesc="A GUI for sing-box. The universal proxy platform"
 arch=(x86_64)
 url='https://github.com/net-breaker/sing-land'
 license=('MIT')
-depends=('hicolor-icon-theme' 'glibc')
+depends=('hicolor-icon-theme' 'glib2' 'glibc' 'gcc-libs' 'expat' 'dbus')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
@@ -29,15 +29,11 @@ _install_path="/opt/$_pkgname"
 package() {
     cd "${srcdir}/singland-0.0.4"
     find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
-    
     install -Dm644 "${srcdir}/singland.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-    
     for _icons in 32 256 512;do
         install -Dm644 "${srcdir}/singland-0.0.4/resources/icons/logo-${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${_pkgname}.png"
     done
-    
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    
     install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
