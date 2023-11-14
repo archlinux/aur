@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=6.0.1.0
+pkgver=6.0.1.1
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('x86_64')
@@ -14,14 +14,12 @@ optdepends=('android-tools' 'scrcpy')
 options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'PixelFlasher.desktop')
-sha256sums=('7b874f9f6d9b2ac72c2afd02e0414668d3ff5c9012cf450b85b2f21bb9179f49'
+sha256sums=('e0d60fad45ea1a14502f80df64fa8df9d1e81b2ec03adfbf688bb4ae408891f1'
             '3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34')
 
 build() {
   cd "PixelFlasher-$pkgver"
-  pyinstaller --log-level=DEBUG \
-    --noconfirm \
-    build-on-linux.spec
+  pyinstaller --log-level=DEBUG --noconfirm build-on-linux.spec
 }
 
 package() {
