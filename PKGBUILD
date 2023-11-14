@@ -1,6 +1,6 @@
 #Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
 pkgname=swayr
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 
-sha256sums=('554b322c0967f361ccadb07534989f623e115f7b67b227a421c761f9456297f8')
+sha256sums=('6921d4513319c997ee26ea7f5cbf77940dc2fc02d92da714921873e4f4b03eff')
 
 build() {
    cd $pkgname-$pkgver
