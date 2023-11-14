@@ -3,8 +3,8 @@
 
 _gemname=ethon
 pkgname=ruby-${_gemname}
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.16.0
+pkgrel=1
 pkgdesc="Libcurl wrapper"
 arch=('any')
 url="https://github.com/typhoeus/ethon"
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc')
 options=(!emptydirs)
 noextract=(${_gemname}-${pkgver}.gem)
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-sha512sums=('271ff2ce5578352722bab318ad40f06d9c76fdbdead573a015fed0a38f3fd6341bcf70acedaa9470fe97f47069977b09ac9f71d8dacb21b67aad917c2a078c72')
+sha256sums=('bba0da1cea8ac3e1f5cdd7cb1cb5fc78d7ac562c33736f18f0c3eb2b63053d9e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
