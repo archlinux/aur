@@ -1,15 +1,14 @@
 pkgbase = freac-appimage
 	pkgdesc = Audio converter and CD ripper with support for various popular formats and encoders.
 	pkgver = 1.1.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.freac.org/
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = zlib
-	depends = glibc
+	makedepends = squashfuse
 	provides = freac=1.1.7
 	conflicts = freac
 	options = !strip
