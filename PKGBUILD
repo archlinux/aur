@@ -1,28 +1,34 @@
 # Maintainer: houkime <houkime at protonmail.com>
 
 pkgname=guile-chickadee
-_name=chickadee
-pkgver=0.5.0
+pkgver=0.10.0
 pkgrel=1
-pkgdesc='a game development toolkit for Guile Scheme'
-arch=(any)
-license=(GPL3)
-depends=('guile>=2.1.4' 'guile-sdl2' 'guile-opengl' 'openal' 'libvorbis' 'mpg123')
-provides=('guile-chickadee')
-conflicts=('guile-chickadee')
-url=https://dthompson.us/projects/chickadee.html
-source=("https://files.dthompson.us/chickadee/chickadee-$pkgver.tar.gz")
-md5sums=('4ce31027dbe2ff13cd4fb0890b1634b2')
+pkgdesc="a game development toolkit for Guile Scheme"
+arch=(x86_64)
+url="https://dthompson.us/projects/chickadee.html"
+license=('Apache')
+depends=('freetype2'
+         'guile>=3.0.6'
+         'guile-sdl2>=0.8.0'
+         'guile-opengl>=0.1.0'
+         'libjpeg-turbo'
+         'libpng'
+         'libvorbis'
+         'mpg123'
+         'openal'
+         'readline')
+source=("https://files.dthompson.us/chickadee/${pkgname#guile-}-${pkgver}.tar.gz")
+sha256sums=('132f53b6e59a1a51c6d9c618c2a248b76457ed73545b6f0e1a5fe4b8f5020f75')
 
 
 build(){
-  cd "$srcdir/$_name-$pkgver"
-  autoreconf -vif
-  ./configure --prefix=/usr
-  make
+   cd "${pkgname#guile-}-${pkgver}"
+   autoreconf -vif
+   ./configure --prefix=/usr
+   make
 }
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
-  make DESTDIR=$pkgdir install
+   cd "${pkgname#guile-}-${pkgver}"
+   make DESTDIR="${pkgdir}/" install
 }
