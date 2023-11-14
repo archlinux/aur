@@ -1,8 +1,9 @@
 # Maintainer: zayn7lie <zayn7lie.ber7+git@gmail.com>
+
 pkgname="neothesia"
 _pkgname="Neothesia"
 pkgver="0.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Flashy Synthesia Like Software For Linux, Windows and MacOS"
 arch=("x86_64")
 url="https://polymeilex.github.io/Neothesia/"
@@ -32,7 +33,7 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname-cli"
     install -Dm0644 -t "$pkgdir/usr/share/applications/" "flatpak/com.github.polymeilex.neothesia.desktop"
-    install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "flatpak/com.github.polymeilex.neothesia.metainfo.xml"
+    # install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "flatpak/com.github.polymeilex.neothesia.metainfo.xml"
     install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/" "flatpak/com.github.polymeilex.neothesia.png"
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/GPL" "LICENSE"
 }
