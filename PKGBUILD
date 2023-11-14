@@ -1,18 +1,32 @@
-# Maintainer: Adrian Zankich <azankich@pivotal.io>
+# Maintainer: German Lashevich <german.lashevich@gmail.com>
+#
+# Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=ytt-bin
-pkgdesc="ytt is a templating tool that understands YAML structure allowing you to focus on your data instead of how to properly escape it"
-pkgver=0.28.0
+pkgver=0.46.0
 pkgrel=1
-url="https://get-ytt.io/"
-arch=('x86_64')
-license=('apache')
-groups=('k14s-bin')
-provides=('ytt')
-conflicts=('ytt')
-_binary=ytt-linux-amd64
-source=("${_binary}-v${pkgver}::https://github.com/k14s/ytt/releases/download/v${pkgver}/${_binary}")
-sha256sums=("52c36853999a378f21f9cf93a443e4d0e405965c3b7d2b8e499ed5fd8d6873ab")
-
-package() {
-  install -Dm 755 "${srcdir}/${_binary}-v${pkgver}" "${pkgdir}/usr/bin/ytt"
+pkgdesc="YAML templating tool that works on YAML structure instead of text"
+url="https://carvel.dev/ytt"
+arch=(x86_64 aarch64)
+license=(apache-2.0)
+provides=(ytt)
+source_x86_64=(ytt-v0.46.0::https://github.com/carvel-dev/ytt/releases/download/v0.46.0/ytt-linux-amd64)
+source_aarch64=(ytt-v0.46.0::https://github.com/carvel-dev/ytt/releases/download/v0.46.0/ytt-linux-arm64)
+sha256sums_x86_64=(348cb34965b64c07fd5118e69efd9a4fae7e22f57db4e91e2d9903c1ad19f041)
+sha256sums_aarch64=(9552c863452622386b9e9fcab0eb0533b6e8c77bc3f5c753967d40232b2a1721)
+package () 
+{ 
+    install -Dm 755 "${srcdir}/${_z_binname}-v${pkgver}" "${pkgdir}/usr/bin/${_z_binname}";
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
+    ./$_z_binname completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_z_binname";
+    ./$_z_binname completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_z_binname.fish";
+    ./$_z_binname completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_z_binname"
 }
+
+
+# Custom variables
+
+_z_binname="ytt"
