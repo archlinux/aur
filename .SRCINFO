@@ -1,5 +1,5 @@
 pkgbase = guile-chickadee
-	pkgdesc = a game development toolkit for Guile Scheme
+	pkgdesc = A game development toolkit for Guile Scheme
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://dthompson.us/projects/chickadee.html
