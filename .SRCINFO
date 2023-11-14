@@ -1,6 +1,6 @@
 pkgbase = kile-git
 	pkgdesc = A TeX/LaTeX frontend for KDE
-	pkgver = v3.0b2.r122.g8635d0ff
+	pkgver = v3.0b2.r409.g5f6caa5c
 	pkgrel = 1
 	url = http://kile.sourceforge.net/
 	arch = i686
