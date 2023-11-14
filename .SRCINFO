@@ -1,7 +1,7 @@
 pkgbase = vitetris
 	pkgdesc = Virtual terminal *tris clone
 	pkgver = 0.59.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://victornils.net/tetris
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = vitetris
 	sha256sums = 898c741a41defccd6b38fe3a5b97fb84d5656b2c9df05c79196ac1bf2151ba7d
 
 pkgname = vitetris
-
