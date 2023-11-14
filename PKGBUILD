@@ -3,7 +3,7 @@
 pkgname=flaresolverr
 _pkgname=FlareSolverr
 pkgver=3.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('any')
 url='https://github.com/FlareSolverr/FlareSolverr'
@@ -15,11 +15,13 @@ depends=('chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-
 conflicts=('flaresolverr-bin' 'flaresolverr-git')
 install='flaresolverr.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+        "0001-fix-Remove-options-headless.patch"
         "flaresolverr.service"
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
         "flaresolverr.install")
 sha256sums=('beab79652f5babdb5cd924b0768ddcd8c9bddbc356891caa851fb101f20b080f'
+            'cd91e8cafc9e665e1ce22f7a7a58c0ff0886c5d08a1fb840b93358a705ff1918'
             'c147d51e7fd78e5e2b4648db5d1052a36b151559bfa08aa7776bd34aa0897bd0'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
             '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
@@ -32,6 +34,11 @@ sha256sums=('beab79652f5babdb5cd924b0768ddcd8c9bddbc356891caa851fb101f20b080f'
 #     python tests.py
 #     python tests_sites.py
 # }
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${pkgver}/"
+    patch -Np1 -i "../0001-fix-Remove-options-headless.patch"
+}
 
 package() {
     cd "${pkgdir}"
