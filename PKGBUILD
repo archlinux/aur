@@ -43,10 +43,7 @@ build() {
 
 package() {
     cd "${srcdir}/SingBoxClient"
-    
     install -Dm755 sbox "$pkgdir/usr/bin/${_pkgname}";
-    
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-    
     install -Dm644 "${srcdir}/SingBoxClient/icon/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
