@@ -2,14 +2,29 @@
 
 pkgname=qdvdauthor
 pkgver=2.3.1
-pkgrel=13
-pkgdesc='QDVDAuthor is a GUI frontend for dvdauthor, video DVD creator'
+pkgrel=1
+pkgdesc='A GUI frontend for dvdauthor, video DVD creator'
 url='https://sourceforge.net/projects/qdvd'
 license=('GPL2')
-arch=('i686' 'x86_64')
-depends=('qt5-base' 'ffmpeg063-static' 'vlc' 'xine-lib' 'libx11')
-makedepends=('cmake' 'extra-cmake-modules')
-conflicts=()
+arch=('x86_64')
+depends=(
+  'bash'
+  'gcc-libs' # libgcc_s.so libstdc++.so
+  'glibc' # libm.so
+  'qt5-base' # libQt5Core.so libQt5Gui.so libQt5Network.so libQt5PrintSupport.so libQt5Widgets.so libQt5Xml.so
+  'xine-lib' # libxine.so
+  'vlc'
+  'libx11' # libX11.so
+  'libva' 'libva.so'
+  'libglvnd' 'libGLX.so' 'libOpenGL.so'
+  'bzip2' 'libbz2.so'
+  'zlib' 'libz.so'
+)
+makedepends=(
+  'qt5-tools'
+  'cmake'
+  'extra-cmake-modules'
+)
 provides=(
   'dvd-slideshow'
   'qdvdauthor'
@@ -17,30 +32,52 @@ provides=(
   'qslideshow'
   'qrender'
 )
-options=()
-source=("https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-${pkgver}-013.tar.gz"
-        'CMakeLists.patch'
-        'CMakeLists_qrender.patch')
-md5sums=('ce1169060c618e50e07f0272a3b4d282'
-         'c9c7641aff17d1f9a299f4ea4fa03c6b'
-         '612adb519f1dc94a403740e9c08a9afe')
+source=(
+  "https://sourceforge.net/projects/qdvd/files/qdvd-${pkgver}-qt5/qdvdauthor-${pkgver}-013.tar.gz"
+  'https://ffmpeg.org/releases/ffmpeg-0.6.7.tar.bz2'
+  'mathops_fix.patch'
+  'found_ffmpeg.patch'
+)
+sha256sums=(
+  '8170ae54ad380e1265a8da767b8ee1e70d4ede116a61422de24a509e28bc351e'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+options=('debug')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/CMakeLists.patch"
-  patch --forward --strip=1 --input="${srcdir}/CMakeLists_qrender.patch"
+  patch -d ffmpeg-0.6.7 -p1 -i "${srcdir}/mathops_fix.patch"
+  patch -d "$pkgname-$pkgver" -p1 -i "${srcdir}/found_ffmpeg.patch"
 }
 
 build() {
-  cd qdvdauthor-${pkgver}/build
-  
-  cmake ../. -DCMAKE_INSTALL_PREFIX=/usr 
-  make clean 
-  make "-j$(nproc)" || return 1
+  cd ffmpeg-0.6.7
+
+  CFLAGS="${CFLAGS} -Wno-implicit-function-declaration" \
+  ./configure \
+    --prefix="${srcdir}/fakeroot" \
+    --disable-ffmpeg \
+    --disable-ffplay \
+    --disable-ffprobe \
+    --disable-ffserver \
+    --enable-pic \
+    --disable-doc
+
+  make
+  make install
+
+  cd ..
+  export PKG_CONFIG_LIBDIR="${srcdir}/fakeroot/lib/pkgconfig"
+  export PKG_CONFIG_PATH="${PKG_CONFIG_LIBDIR}:/usr/lib/pkgconfig:/usr/share/pkgconfig"
+
+  cmake -S "qdvdauthor-${pkgver}" -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DFFMPEG_DIRS="${srcdir}/fakeroot"
+
+  cmake --build build
 }
- 
+
 package() {
-  cd qdvdauthor-${pkgver}/build
-  
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
