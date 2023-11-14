@@ -1,0 +1,18 @@
+pkgbase = wildcard
+	pkgdesc = Test your regular expressions
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Wildcard
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = blueprint-compiler
+	makedepends = cargo
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	source = git+https://gitlab.gnome.org/World/Wildcard.git#tag=v0.3.2
+	sha256sums = SKIP
+
+pkgname = wildcard
