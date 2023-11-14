@@ -1,11 +1,12 @@
 pkgbase = opendune
 	pkgdesc = Open source re-creation of the popular game Dune II
 	pkgver = 0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://opendune.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = gendesk
 	depends = sdl2
 	depends = sdl2_image
 	depends = alsa-lib
