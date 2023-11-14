@@ -2,19 +2,19 @@
 
 _pkgname=xfce4-hotcorner-plugin
 pkgname="${_pkgname}-git"
-pkgver=0.0.2.r1.g996f76a
+pkgver=0.0.4.r8.gfea4b50
 pkgrel=1
 pkgdesc="Provides an easy way to set up hot corners in the Xfce desktop environment"
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="https://github.com/brianhsu/xfce4-hotcorner-plugin"
+url="https://github.com/christopherkobayashi/${_pkgname}"
 groups=("xfce4")
 depends=('xfce4-panel' 'libwnck3')
-makedepends=('cmake' 'xfce4-dev-tools' 'git')
-provides=("${_pgname}")
+makedepends=('xfce4-panel' 'libwnck3' 'libnotify' 'gtk3' 'intltool')
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("${_pkgname}::git+https://github.com/brianhsu/${_pkgname}.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,11 +24,10 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr
+    ./configure --prefix=/usr && make
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
     make DESTDIR="$pkgdir" install
 }
-
