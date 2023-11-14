@@ -1,13 +1,13 @@
-From aea85d8787b09304b1b290985066521825ef364d Mon Sep 17 00:00:00 2001
+From 9ea1d0c6451a0453c3b5d04f726266e291bf3a95 Mon Sep 17 00:00:00 2001
 From: Ernesto Castellotti <mail@ernestocastellotti.it>
-Date: Tue, 7 Nov 2023 13:32:19 +0100
-Subject: [PATCH] [PATCH] Force disable auto update
+Date: Tue, 14 Nov 2023 12:52:20 +0100
+Subject: [PATCH] Force disable auto update
 
 ---
- .../left/settings/SettingsExperimental.tsx    |  8 -----
- src/electron/window.ts                        |  9 +++---
- src/global/actions/ui/misc.ts                 | 31 -------------------
- 3 files changed, 4 insertions(+), 44 deletions(-)
+ .../left/settings/SettingsExperimental.tsx    |  8 ------
+ src/electron/window.ts                        |  9 +++----
+ src/global/actions/ui/misc.ts                 | 26 -------------------
+ 3 files changed, 4 insertions(+), 39 deletions(-)
 
 diff --git a/src/components/left/settings/SettingsExperimental.tsx b/src/components/left/settings/SettingsExperimental.tsx
 index c4ee07962..5edbfdea1 100644
@@ -54,10 +54,10 @@ index 2bec304c6..3fcc8e566 100644
      window.loadURL(`file://${__dirname}/index.html${hash}`);
    }
 diff --git a/src/global/actions/ui/misc.ts b/src/global/actions/ui/misc.ts
-index e288381c4..ccece779f 100644
+index e288381c4..db6fe0a8b 100644
 --- a/src/global/actions/ui/misc.ts
 +++ b/src/global/actions/ui/misc.ts
-@@ -614,40 +614,9 @@ addActionHandler('closeMapModal', (global, actions, payload): ActionReturnType =
+@@ -614,35 +614,9 @@ addActionHandler('closeMapModal', (global, actions, payload): ActionReturnType =
  });
  
  addActionHandler('checkAppVersion', (global): ActionReturnType => {
@@ -90,14 +90,9 @@ index e288381c4..ccece779f 100644
 -    isElectronUpdateAvailable: Boolean(payload),
 -  };
 -  setGlobal(global);
--});
--
--addActionHandler('afterHangUp', (global): ActionReturnType => {
--  if (!selectTabState(global, getCurrentTabId()).multitabNextAction) return;
--  reestablishMasterToSelf();
  });
  
- let notificationInterval: number | undefined;
+ addActionHandler('afterHangUp', (global): ActionReturnType => {
 -- 
 2.42.1
 
