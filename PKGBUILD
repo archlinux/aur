@@ -1,9 +1,9 @@
 # Maintainer: Zoddo <archlinux+aur@zoddo.fr>
 _pkgname="qflipper"
 pkgname=${_pkgname}-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
-pkgdesc="Desktop application for updating Flipper Zero firmware via PC - Binary release (extracted from official AppImage)"
+pkgdesc="Desktop application for updating Flipper Zero firmware via PC - Packaged from official AppImage binaries"
 arch=('x86_64')
 url="https://update.flipperzero.one/"
 license=('GPL3')
@@ -19,7 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _filename="qFlipper-x86_64-${pkgver}.AppImage"
 source=("https://update.flipperzero.one/builds/qFlipper/${pkgver}/${_filename}")
-sha256sums=('a2197cf7ec588b700cb6ffd3b6feada2c0f5febcb2f0c5d7dce3b8cbbef4bc4d')
+sha256sums=('6b72224ad7bd8f9d7121ac6553c5d0d233956f740bb8f64a73053005c79970a4')
 
 prepare() {
 	chmod +x "${_filename}"
