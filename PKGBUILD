@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: omgold@aur
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=kronosnet
 pkgver=1.28
