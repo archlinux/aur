@@ -16,7 +16,7 @@ depends=(
   'php'
   'python'
   'tcsh'
-  'ucsf-chimera'
+#   'ucsf-chimera'
 )
 makedepends=(
   'curl'

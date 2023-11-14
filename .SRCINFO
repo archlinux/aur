@@ -20,7 +20,6 @@ pkgbase = molprobity-git
 	depends = php
 	depends = python
 	depends = tcsh
-	depends = ucsf-chimera
 	provides = molprobity
 	conflicts = molprobity
 	options = !strip
