@@ -3,19 +3,21 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=jello-bin
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI tool to filter JSON and JSON Lines data with Python syntax. (Similar to jq)"
 arch=('x86_64')
 url='https://github.com/kellyjonbrazil/jello'
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('glibc' 'gcc-libs')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/kellyjonbrazil/jello/v${pkgver}/LICENSE")
+depends=()
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/kellyjonbrazil/jello/v${pkgver}/LICENSE"
+)
 sha256sums=('5c8b082bc14489d192a8a85390a7a7556e20fd4501ade3a905d949e0e038bd07'
             '1a404c97debd32c80005736bd368078ccc8f858c8ebafa2576b0c3919afb92c4')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
 package() {
