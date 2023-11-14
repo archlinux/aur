@@ -5,11 +5,11 @@ pkgver='1.2.0'
 pkgrel='3'
 pkgdesc='POSIX-complient cross-platform install command'
 arch=('any')
-url='https://git.stefanwimmer128.eu/stefanwimmer128/cross-install'
+url='https://codeberg.org/stefanwimmer128/cross-install'
 license=('MPL2')
 depends=('sh')
 makedepends=('git' 'shellcheck' 'getoptions' 'moreutils')
-source=("$pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/cross-install.git#tag=v$pkgver")
+source=("$pkgname::git+https://codeberg.org/stefanwimmer128/cross-install.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
