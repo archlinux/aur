@@ -1,6 +1,6 @@
 pkgbase = yabsnap
 	pkgdesc = Btrfs automated snapshot manager.
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/hirak99/yabsnap
 	install = yabsnap.install
@@ -9,7 +9,7 @@ pkgbase = yabsnap
 	depends = bash
 	depends = btrfs-progs
 	depends = python
-	source = yabsnap-2.1.0.tar.gz::https://github.com/hirak99/yabsnap/archive/refs/tags/v2.1.0.tar.gz
-	md5sums = 0eb9af2c33d74813189b3e9adc11ffe1
+	source = yabsnap-2.1.1.tar.gz::https://github.com/hirak99/yabsnap/archive/refs/tags/v2.1.1.tar.gz
+	md5sums = 3a96d3b8fce50bb9ec1b985e69ed481e
 
 pkgname = yabsnap
