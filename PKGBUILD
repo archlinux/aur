@@ -1,6 +1,6 @@
 # Maintainer: Alexis Belmonte <alexbelm48@gmail.com>
 pkgname="notify-git"
-pkgrel=1
+pkgrel=2
 pkgdesc="ntfy.sh client application to receive everyday's notifications"
 pkgver=0.1.1_365244b
 arch=('x86_64')
@@ -28,4 +28,8 @@ build() {
 
 package() {
     meson install -C build --destdir "${pkgdir}"
+}
+
+check() {
+    meson test -C build
 }
