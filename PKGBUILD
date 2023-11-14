@@ -9,7 +9,7 @@ _pkgname="python-tiktoken"
 pkgname="$_pkgname-git"
 pkgver=0.5.1.r0.g39f29ce
 pkgrel=1
-pkgdesc="A fast BPE tokeniser for use with OpenAI's models."
+pkgdesc="A fast BPE tokeniser for use with OpenAI's models"
 url="https://github.com/openai/tiktoken"
 license=('MIT')
 arch=(
@@ -41,7 +41,7 @@ optdepends=(
   'python-blobfile: for reading blobfiles'
 )
 
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
