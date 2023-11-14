@@ -2,15 +2,16 @@
 pkgname_=rss
 pkgname=ocaml-$pkgname_
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library providing functions to parse and print RSS 2.0 files"
 arch=('i686' 'x86_64')
 license=('LGPL3')
-source=(http://zoggy.github.io/ocamlrss/ocamlrss-$pkgver.tar.gz)
-md5sums=('072eb405de941d6d07d3780a5a5d01f5')
-url="http://zoggy.github.io/ocamlrss/"
+source=("https://framagit.org/zoggy/ocamlrss/-/archive/$pkgver/ocamlrss-$pkgver.tar.gz")
+md5sums=('3aaa2c37476caa9b4fcc0a172d73d120')
+url="https://ocaml.org/p/ocamlrss/2.2.2"
 depends=()
-makedepends=('ocaml' 'ocaml-findlib' 'ocaml-xmlm' 'ocamlnet')
+###makedepends=('ocaml' 'ocaml-findlib' 'ocaml-xmlm' 'ocamlnet')
+makedepends=('ocaml' 'ocaml-findlib' 'ocaml-xmlm')
 options=(!makeflags)
 
 build() {
