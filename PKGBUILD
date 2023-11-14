@@ -5,7 +5,7 @@
 _gitname="libvips"
 _pkgname="$_gitname-fs79527"
 pkgname="$_pkgname"
-pkgver=8.15.0rc2
+pkgver=8.15.0
 pkgrel=1
 pkgdesc="A fast image processing library with low memory needs"
 arch=('x86_64')
@@ -51,7 +51,7 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
     sed -E 's@-(rc[0-9]+)$@\1@' <<< "$_pkgver"
   }
 
-  _gittag="v8.15.0-rc2"
+  _gittag="v8.15.0"
 
   provides=("$_gitname=$(pkgver)")
   conflicts=("$_gitname")
@@ -59,7 +59,7 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
   _pkgsrc="$_gitname-${_gittag#v}"
   _pkgext="tar.gz"
   source+=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/$_gittag.$_pkgext")
-  sha256sums+=('5f5e39ba6aa61c7c20da7054b0a575637642fc6307147b61f2fcd7942593279b')
+  sha256sums+=('990641f1c10f1df238719b28e6843275bdefd76de642d197307455f0183c02c3')
 else
   # git package
   makedepends+=('git')
