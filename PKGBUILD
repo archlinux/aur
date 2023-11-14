@@ -1,0 +1,23 @@
+# Maintainer: German Lashevich <german.lashevich@gmail.com>
+
+pkgname=vendir
+pkgdesc="Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively"
+pkgver=0.37.0
+pkgrel=1
+url="https://carvel.dev/vendir"
+arch=(x86_64 aarch64)
+license=(Apache)
+provides=(vendir)
+conflicts=(vendir vendir-bin vendir-git carvel-tools)
+
+source_x86_64=(
+    vendir-v0.37.0::https://github.com/carvel-dev/vendir/releases/download/v0.37.0/vendir-linux-amd64
+)
+sha256sums_x86_64=('f1472bf7995506830fa79473f0ae406ea3885e0881fbbb096240efb1b053dd15')
+sha256sums_aarch64=('f1472bf7995506830fa79473f0ae406ea3885e0881fbbb096240efb1b053dd15')
+source_aarch64=(
+    vendir-v0.37.0::https://github.com/carvel-dev/vendir/releases/download/v0.37.0/vendir-linux-arm64
+)
+package() {
+    install -Dm 755 "${srcdir}/vendir-v0.37.0" "${pkgdir}/usr/bin/vendir"
+}
