@@ -1,15 +1,15 @@
 pkgbase = upnp-router-control
-	pkgdesc = UPnP Router Control allow to see some params of the router like the download speed and control port forwarding trough UPnP protocol.
-	pkgver = 0.3.1
+	pkgdesc = A GTK application to access the parameters of the router exposed via UPnP-IGD.
+	pkgver = 0.3.4
 	pkgrel = 1
-	url = https://launchpad.net/upnp-router-control
+	url = https://gitlab.gnome.org/DnaX/upnp-router-control
 	arch = x86_64
-	arch = i686
-	license = GPLv2
-	makedepends = intltool
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
 	depends = gtk3
 	depends = gupnp
-	source = http://launchpad.net/upnp-router-control/trunk/0.3.1/+download/upnp-router-control-0.3.1.tar.gz
-	md5sums = 17028c2681a571b0998e2d81b12f2488
+	source = https://gitlab.gnome.org/DnaX/upnp-router-control/-/archive/0.3.4/upnp-router-control-0.3.4.tar.gz
+	sha256sums = e6b12a25bb736f0aceff0c8a5f2722184b36e3ae39159101da435d51972d2210
 
 pkgname = upnp-router-control
