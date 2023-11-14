@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-gtile-git
 _uuid=gTile@vibou
-pkgver=52.r23.g56f4eda
+pkgver=53.r0.g138a98c
 pkgrel=1
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('gnome-shell')
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/gTile/gTile.git#branch=next')
+source=('git+https://github.com/gTile/gTile.git')
 sha256sums=('SKIP')
 
 pkgver() {
