@@ -1,13 +1,11 @@
 pkgbase = guiscrcpy-appimage
 	pkgdesc = A full fledged GUI integration for the award winning open-source android screen mirroring system
 	pkgver = 2023.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://guiscrcpy.srev.in/
 	arch = x86_64
 	license = GPL3
-	depends = zlib
 	depends = scrcpy
-	depends = glibc
 	provides = guiscrcpy=2023.1.1
 	conflicts = guiscrcpy
 	options = !strip
