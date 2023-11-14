@@ -1,8 +1,8 @@
 # Maintainer: Ronan Pigott <rpigott@berkeley.edu>
 
 pkgname=pam-ssh-add
-pkgver=268.1
-pkgrel=2
+pkgver=304
+pkgrel=1
 pkgdesc='Standalone pam_ssh_add plugin from cockpit'
 arch=('x86_64')
 url='https://cockpit-project.org/'
@@ -10,7 +10,7 @@ license=(LGPL)
 makedepends=(json-glib xmlto python docbook-xsl)
 depends=(pam libssh openssh systemd)
 source=("https://github.com/cockpit-project/cockpit/releases/download/$pkgver/cockpit-$pkgver.tar.xz")
-sha256sums=('01baf9a92e5d6f67eb4dcd7b9803192f27ab58b18e9bea5b5acad433b50e7a08')
+sha256sums=('a87d090c930e2058bb3e970ca7f2bafe678687966b5c0b8b42a802977e391ce9')
 
 build() {
 	cd cockpit-$pkgver
