@@ -1,8 +1,8 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgname=sing-geoip
-pkgver=20230712
-pkgrel=2
+pkgver=20231112
+pkgrel=1
 
 pkgdesc='sing-geoip database'
 arch=('any')
@@ -13,8 +13,8 @@ license=('GPL3')
 source=("${pkgver}.geoip-cn.db::${url}/releases/download/${pkgver}/geoip-cn.db"
         "${pkgver}.geoip.db::${url}/releases/download/${pkgver}/geoip.db"
         "${pkgver}.LICENSE::https://raw.githubusercontent.com/${_repo}/${pkgver}/LICENSE")
-sha256sums=('52e6efcc772f223521bf5fe8f5e0b05c45da86678ae3a89b354f8c01869339cc'
-            'c8f2a63757753f1f23400252f7a57aaff4312ec12c93c30996d20e71e4401257'
+sha256sums=('12468b0ff55e19f362cfef00f723bb42cc9d45f8b596c302ffce6582d6b05215'
+            '5d310b9f52cbdfda2115933f4ea6e73704700c49b2475f4d1c4f567cfc80d9cb'
             '2f02b7486bcfa90d115c71a20437f3906b6fd5bef81c5dc0efd341399e89d0fd')
 
 package() {
