@@ -1,0 +1,18 @@
+pkgbase = nicelock
+	pkgdesc = Nice looking lock screen based on i3lock
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Kruhlmann/nicelock
+	arch = any
+	license = GPL
+	depends = imagemagick
+	depends = xorg-xrandr
+	depends = i3lock
+	depends = coreutils
+	depends = grep
+	optdepends = libnotify: for desktop notifications
+	optdepends = dunst: for controlling dunst notifications
+	source = nicelock
+	sha256sums = 00fac3ed209599ac1f74317a5f6261450c384be6423b35ac246945e45edf7c6c
+
+pkgname = nicelock

@@ -1,0 +1,65 @@
+#!/usr/bin/env sh
+
+set -x -e
+
+trap_notifications() {
+	pkill -u "$USER" -USR1 dunst
+}
+
+untrap_notifications() {
+	pkill -u "$USER" -USR2 dunst
+}
+
+lock() {
+	lock_image="$1"
+	trap_notifications
+	i3lock -n -i "$lock_image" \
+		--inside-color="00000000" \
+		--ring-color="00000033" \
+		--separator-color="00000000" \
+		--insidever-color="00000000" \
+		--insidewrong-color="ff000033" \
+		--keyhl-color="ffffff77" \
+		--bshl-color="ffffff77" \
+		--ringver-color="00000000" \
+		--ringwrong-color="00000000" \
+		--greeter-color="00000000" \
+		--line-color="00000000" \
+		--verif-text="" \
+		--wrong-text="" \
+		--noinput-text="" \
+		--pass-media-keys \
+		--pass-screen-keys \
+		--pass-volume-keys \
+		--pass-power-keys
+	untrap_notifications
+}
+
+create_lock_image() {
+	image=$(mktemp --suffix=.png)
+	command -- import -silent -window root "$image"
+
+    primary_monitor_info=$(xrandr | grep primary | awk '{print $4}')
+    if [[ $primary_monitor_info == *+* ]]; then
+        resolution=$(echo $primary_monitor_info | cut -d'+' -f1)
+        offset_x=$(echo $primary_monitor_info | cut -d'+' -f2)
+        offset_y=$(echo $primary_monitor_info | cut -d'+' -f3)
+    else
+        resolution=$(xrandr | grep '*' | awk '{print $1}')
+        offset_x=0
+        offset_y=0
+    fi
+    width=$(echo $resolution | cut -d'x' -f1)
+    height=$(echo $resolution | cut -d'x' -f2)
+    center_x=$(($offset_x + $width / 2))
+    center_y=$(($offset_y + $height / 2))
+    
+    convert "$image" -filter Gaussian -resize 20% -define "filter:sigma=4.5" -resize 500.5% \
+            "$HOME/img/lib/lock.png" -gravity NorthWest -geometry +${center_x}+${center_y} -composite "$image"
+	echo "$image"
+}
+
+command -v notify-send >/dev/null && notify-send "Locking..."
+image=$(create_lock_image)
+lock "$image"
+rm "$image"
