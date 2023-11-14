@@ -14,6 +14,13 @@ checkdepends=('appstream-glib')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
+prepare() {
+  cd Footage
+  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
@@ -26,5 +33,5 @@ check() {
 }
 
 package() {
-  meson install -C build --no-rebuild --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir"
 }
