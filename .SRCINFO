@@ -1,10 +1,11 @@
 pkgbase = ibus-autostart-kimpanel
 	pkgdesc = iBus daemon autostart with XDG Autostart Specification (kimpanel)
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = none
 	depends = ibus
+	depends = plasma-desktop
 	conflicts = ibus-autostart
 
 pkgname = ibus-autostart-kimpanel

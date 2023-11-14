@@ -2,11 +2,11 @@
 
 pkgname=ibus-autostart-kimpanel
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="iBus daemon autostart with XDG Autostart Specification (kimpanel)"
 arch=('any')
 license=('none')
-depends=('ibus')
+depends=('ibus' 'plasma-desktop')
 conflicts=('ibus-autostart')
 
 package() {
