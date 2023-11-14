@@ -1,11 +1,11 @@
 pkgname=minisign-git
-pkgver=0.10.r6.g4b2df2e
+pkgver=0.7.4.r1.g8aef018
 pkgrel=1
 epoch=1
 pkgdesc='A dead simple tool to sign files and verify signatures.'
 arch=('x86_64')
 url='https://jedisct1.github.io/minisign/'
-license=('MIT')
+license=('custom:ISC')
 depends=('libsodium')
 makedepends=('cmake' 'git')
 provides=('minisign')
@@ -19,8 +19,8 @@ pkgver() {
 
 build() {
   cd minisign
-  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
-  make -C build
+  cmake -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
