@@ -1,0 +1,251 @@
+diff --git a/CMakeLists.txt.orig b/CMakeLists.txt
+index c2ce80f..f268a4b 100644
+--- a/CMakeLists.txt.orig
++++ b/CMakeLists.txt
+@@ -130,18 +130,18 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
+ #FFMPEG_FIND(LIBAVUTIL avutil avutil.h)
+ #FFMPEG_FIND(LIBSWSCALE swscale swscale.h)
+ 
+-SET(FFMPEG_FOUND "NO")
+-IF (FFMPEG_LIBAVFORMAT_FOUND AND
+-FFMPEG_LIBAVDEVICE_FOUND AND
+-FFMPEG_LIBAVCODEC_FOUND AND
+-FFMPEG_LIBAVUTIL_FOUND AND
+-FFMPEG_LIBSWSCALE_FOUND
+-)
+-ELSE ()
+- 
+-MESSAGE(STATUS "Could not find FFMPEG")
+- 
+-ENDIF()
++# SET(FFMPEG_FOUND "NO")
++# IF (FFMPEG_LIBAVFORMAT_FOUND AND
++# FFMPEG_LIBAVDEVICE_FOUND AND
++# FFMPEG_LIBAVCODEC_FOUND AND
++# FFMPEG_LIBAVUTIL_FOUND AND
++# FFMPEG_LIBSWSCALE_FOUND
++# )
++# ELSE ()
++#
++# MESSAGE(STATUS "Could not find FFMPEG")
++#
++# ENDIF()
+ 
+ # We need add -DQT_WIDGETS_LIB when using QtWidgets in Qt 5.
+ add_definitions(${Qt6Widgets_DEFINITIONS})
+@@ -153,19 +153,19 @@ include_directories(${Qt6Widgets_INCLUDES} ${Qt6Widgets_INCLUDE_DIRS} ${Qt6Decla
+ #find_library(AVCODEC_LIBRARY avcodec PATHS /usr/local/lib /usr/lib /usr/lib64 DOC "avcodec library" REQUIRED)
+ #find_library(AVUTIL_LIBRARY avutil PATHS /usr/local/lib /usr/lib /usr/lib64 DOC "avutil library" REQUIRED)
+ 
+-message(STATUS "Found AVFORMAT: " ${AVFORMAT_LIBRARY}
+-" Found AVCODEC: " ${AVCODEC_LIBRARY}
+-" Found AVUTIL: " ${AVUTIL_LIBRARY}
+-${FFMPEG_LIBRARIES} ${FFMPEG_LIBAVFORMAT_LIBRARIES})
++# message(STATUS "Found AVFORMAT: " ${AVFORMAT_LIBRARY}
++# " Found AVCODEC: " ${AVCODEC_LIBRARY}
++# " Found AVUTIL: " ${AVUTIL_LIBRARY}
++# ${FFMPEG_LIBRARIES} ${FFMPEG_LIBAVFORMAT_LIBRARIES})
+ 
+ #link_directories(${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY})
+ 
+ #find_path(FFMPEG_INCLUDE libavformat/avformat.h PATHS /usr/local/include /usr/include DOC "avformat include path" REQUIRED)
+ 
+-message(STATUS "Found FFMPEG: " ${FFMPEG_INCLUDE})
++# message(STATUS "Found FFMPEG: " ${FFMPEG_INCLUDE})
+ 
+ #include_directories(${FFMPEG_INCLUDE})
+-
++#[[
+ SET (FFMPEG_DIRS
+   ${FFMPEG_INCLUDE}
+   ${FFMPEG_INCLUDE}/libavcodec
+@@ -175,7 +175,7 @@ SET (FFMPEG_DIRS
+   ${FFMPEG_INCLUDE}/libavutil
+   ${FFMPEG_INCLUDE}/libavswresample
+   ${FFMPEG_INCLUDE}/libswscale
+-  )
++  )]]
+ 
+ SET (xine_libs
+    xine
+@@ -183,7 +183,7 @@ SET (xine_libs
+ 
+ #link_directories(${FFMPEG_DIRS})
+ 
+-message(STATUS "Found FFMPEG_DIRS: " ${FFMPEG_DIRS})
++#message(STATUS "Found FFMPEG_DIRS: " ${FFMPEG_DIRS})
+ 
+ #add_library(
+ #SDL_ffmpeg
+@@ -197,11 +197,11 @@ message(STATUS "Found FFMPEG_DIRS: " ${FFMPEG_DIRS})
+ #    PATH_SUFFIXES ffmpeg libavcodec
+ #  )
+   
+-find_path(FFMPEG_AVCODEC_INCLUDE_DIR
+-    NAMES "libavcodec/avcodec.h"
+-    PATHS /usr/local/include /usr/include
+-    PATH_SUFFIXES "ffmpeg063"
+-  )
++#find_path(FFMPEG_AVCODEC_INCLUDE_DIR
++#    NAMES "libavcodec/avcodec.h"
++#    PATHS /usr/local/include /usr/include
++#    PATH_SUFFIXES "ffmpeg063"
++#  )
+ 
+ #find_path(FFMPEG_AVFORMAT_INCLUDE_DIR
+ #    NAMES avformat.h
+@@ -220,66 +220,79 @@ find_path(FFMPEG_AVCODEC_INCLUDE_DIR
+ #    PATHS ${_FFMPEG_AVCODEC_LIBRARY_DIRS} /usr/lib /usr/local/lib /opt/local/lib /sw/lib /usr/lib64
+ #  )
+   
+-find_library(FFMPEG_AVCODEC_LIBRARY
+-    NAMES avcodec
+-    PATHS /usr/local/lib /usr/local/lib64
+-  )
++#find_library(FFMPEG_AVCODEC_LIBRARY
++#    NAMES avcodec
++#    PATHS /usr/local/lib /usr/local/lib64
++#  )
+   
+ #find_library(FFMPEG_AVFORMAT_LIBRARY
+ #    NAMES avformat
+ #    PATHS ${_FFMPEG_AVFORMAT_LIBRARY_DIRS} /usr/lib /usr/local/lib /opt/local/lib /sw/lib /usr/lib64
+ #  )
+   
+-find_library(FFMPEG_AVFORMAT_LIBRARY
+-    NAMES avformat
+-    PATHS /usr/local/lib /usr/local/lib64
+-  )
++#find_library(FFMPEG_AVFORMAT_LIBRARY
++#    NAMES avformat
++#    PATHS /usr/local/lib /usr/local/lib64
++#  )
+   
+-find_library(FFMPEG_AVUTIL_LIBRARY
+-    NAMES avutil
+-    PATHS /usr/local/lib /usr/local/lib64
+-  )
++#find_library(FFMPEG_AVUTIL_LIBRARY
++#    NAMES avutil
++#    PATHS /usr/local/lib /usr/local/lib64
++#  )
+ 
+ #find_library(FFMPEG_SWSCALE_LIBRARY
+ #    NAMES swscale
+ #    PATHS ${_FFMPEG_SWSCALE_LIBRARY_DIRS} /usr/lib /usr/local/lib /opt/local/lib /sw/lib /usr/lib64
+ #  )
+   
+-find_library(FFMPEG_SWSCALE_LIBRARY
+-    NAMES swscale
+-    PATHS /usr/local/lib /usr/local/lib64
+-  )
++#find_library(FFMPEG_SWSCALE_LIBRARY
++#    NAMES swscale
++#    PATHS /usr/local/lib /usr/local/lib64
++#  )
+   
+   
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET
++    # libavdevice
++    # libavfilter
++    libavformat
++    libavcodec
++    # libswresample
++    libswscale
++    libavutil
++)
++
+-message(STATUS "Found FFMPEG_AVCODEC_LIBRARY: " ${FFMPEG_AVCODEC_LIBRARY})
++#message(STATUS "Found FFMPEG_AVCODEC_LIBRARY: " ${FFMPEG_AVCODEC_LIBRARY})
+ #message(STATUS "Found FFMPEG_AVFORMAT_LIBRARY: " ${FFMPEG_AVFORMAT_LIBRARY})
+ #message(STATUS "Found FFMPEG_SWSCALE_LIBRARY: " ${FFMPEG_SWSCALE_LIBRARY})
+ 
+-if (FFMPEG_AVCODEC_LIBRARY AND FFMPEG_AVFORMAT_LIBRARY AND FFMPEG_SWSCALE_LIBRARY)
+-   set(FFMPEG_FOUND TRUE)
+-endif (FFMPEG_AVCODEC_LIBRARY AND FFMPEG_AVFORMAT_LIBRARY AND FFMPEG_SWSCALE_LIBRARY)
++#if (FFMPEG_AVCODEC_LIBRARY AND FFMPEG_AVFORMAT_LIBRARY AND FFMPEG_SWSCALE_LIBRARY)
++#   set(FFMPEG_FOUND TRUE)
++#endif (FFMPEG_AVCODEC_LIBRARY AND FFMPEG_AVFORMAT_LIBRARY AND FFMPEG_SWSCALE_LIBRARY)
+ 
+-message(STATUS "FFMPEG_FOUND: " ${FFMPEG_FOUND})
++#message(STATUS "FFMPEG_FOUND: " ${FFMPEG_FOUND})
+ 
+ #if (FFMPEG_FOUND)
+     set(FFMPEG_INCLUDE_DIRS
+-       #${FFMPEG_AVCODEC_INCLUDE_DIR}
+-       #${FFMPEG_AVFORMAT_INCLUDE_DIR}
+-       #${FFMPEG_SWSCALE_INCLUDE_DIR}
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/include
++       ${FFMPEG_AVCODEC_INCLUDE_DIR}
++       ${FFMPEG_AVFORMAT_INCLUDE_DIR}
++       ${FFMPEG_AVUTIL_INCLUDE_DIR}
++       ${FFMPEG_SWSCALE_INCLUDE_DIR}
++      # ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/include
++      # ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/include
+       #/usr/local/include
+        #/usr/local/include/ffmpeg063
+       #/usr/include/ffmpeg063
+     )
+     set(FFMPEG_LIBRARIES
+-       #${FFMPEG_AVCODEC_LIBRARY}
+-       #${FFMPEG_AVFORMAT_LIBRARY}
+-       #${FFMPEG_AVUTIL_LIBRARY}
+-       #${FFMPEG_SWSCALE_LIBRARY}
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavcodec.so
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavformat.so
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavutil.so
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libswscale.so
++       ${FFMPEG_AVCODEC_LIBRARY}
++       ${FFMPEG_AVFORMAT_LIBRARY}
++       ${FFMPEG_AVUTIL_LIBRARY}
++       ${FFMPEG_SWSCALE_LIBRARY}
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavcodec.so
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavformat.so
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavutil.so
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libswscale.so
+        #/usr/local/lib64/libavcodec.so
+        #/usr/local/lib64/libavformat.so
+        #/usr/local/lib64/libavutil.so
+@@ -295,8 +309,8 @@ message(STATUS "FFMPEG_FOUND: " ${FFMPEG_FOUND})
+     )
+ #endif (FFMPEG_FOUND)
+ 
+-message(STATUS "FFMPEG_INCLUDE_DIRS: " ${FFMPEG_INCLUDE_DIRS})
+-message(STATUS "FFMPEG_LIBRARIES: " ${FFMPEG_LIBRARIES})
++#message(STATUS "FFMPEG_INCLUDE_DIRS: " ${FFMPEG_INCLUDE_DIRS})
++#message(STATUS "FFMPEG_LIBRARIES: " ${FFMPEG_LIBRARIES})
+ 
+ if (FFMPEG_FOUND)
+     if (NOT FFMPEG_FIND_QUIETLY)
+@@ -376,7 +390,7 @@ add_subdirectory(qdvdauthor)
+ add_subdirectory(qrender)
+ 
+ find_path(QTDIR
+-    NAMES qmake-qt6
++    NAMES qmake6
+     PATHS ${QTDIR} /usr /usr/local /usr/lib64 /usr/lib /usr/share /usr/local/lib64 /usr/local/lib
+     PATH_SUFFIXES qt6
+   )
+diff --git a/qrender/CMakeLists.txt.orig b/qrender/CMakeLists.txt
+index 4e9c3c5..99d0a47 100644
+--- a/qrender/CMakeLists.txt.orig
++++ b/qrender/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ project(qrender)
+ 
+ add_subdirectory(engine)
+-add_subdirectory(ffmpeg-0.6.3)
++#add_subdirectory(ffmpeg-0.6.3)
+ 
+ SET(qrender_engine_SOURCES
+    ${CMAKE_SOURCE_DIR}/qrender/engine/ffmpeg_enc.cpp
+@@ -55,7 +55,7 @@ ADD_EXECUTABLE(qrender ${qrender_1_SOURCES}
+ #TARGET_LINK_LIBRARIES(qrender ${QT_QTCORE_LIBS})      #ooo
+ #TARGET_LINK_LIBRARIES(qrender ${QT_LIBRARIES})
+ #TARGET_LINK_LIBRARIES(qrender ${QT_LIBRARIES} ${FFMPEG_LIBRARIES} ${CMAKE_DL_LIBS} ${QT_QT3SUPPORT_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${xine_libs} X11)
+-TARGET_LINK_LIBRARIES(qrender Qt6::Widgets Qt6::Xml xine X11 Qt6::Network ${FFMPEG_LIBRARIES})
++TARGET_LINK_LIBRARIES(qrender Qt6::Widgets Qt6::Xml xine X11 Qt6::Network PkgConfig::FFMPEG)
+ #link_directories(${FFMPEG_LIBRARIES})
+ message(STATUS "Found qrender*:")
+ 
