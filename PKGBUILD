@@ -1,7 +1,7 @@
 # Maintainer: Wren Baxter <aur [at] wren.dev>
 
 pkgname=astap-bin-qt5
-pkgver=2023.10.03
+pkgver=2023.11.10
 pkgrel=1
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer"
 provides=('astap')
@@ -9,8 +9,8 @@ conflicts=('astap-bin' )
 arch=('x86_64') # no 32-bit version provided, consider building from source with the `astap` package
 url="https://www.hnsky.org/astap.htm"
 license=('LGPL3')
-source=("astap-${pkgver}.tar.gz::https://github.com/wrenby/astap-backups/raw/9af4dbb0a90ef56f133616a286cb7e28395fcb5b/astap_amd64_qt5.tar.gz")
-md5sums=('2d851ea67486f3a39a5f9ad063272fdc')
+source=("astap-${pkgver}.tar.gz::https://github.com/wrenby/astap-backups/raw/63cf1160b0d143f5a99dac7a2f4aca608f5570f0/astap_amd64_qt5.tar.gz")
+md5sums=('8e78b0365157325fe403ea78e211b07e')
 
 noextract=("astap-${pkgver}.tar.gz") # bsdtar can't handle this archive because it contains a self-referential hardlink
 makedepends=('tar') # but gnu tar is just fine
@@ -35,5 +35,8 @@ prepare() {
 
 package() {
     cp -r "${srcdir}"/opt "${pkgdir}"/opt
-    cp -r "${srcdir}"/usr/local "${pkgdir}"/usr
+    mkdir -p "${pkgdir}"/usr/share/applications
+    cp "${srcdir}"/usr/share/applications/ASTAP.desktop "${pkgdir}"/usr/share/applications/ASTAP.desktop
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /opt/astap/astap "${pkgdir}"/usr/bin/astap
 }
