@@ -5,29 +5,28 @@ pkgbase = molprobity-git
 	url = http://molprobity.biochem.duke.edu/
 	arch = any
 	license = BSD
-	makedepends = python2
-	makedepends = git
-	makedepends = subversion
 	makedepends = curl
-	makedepends = tar
-	makedepends = make
 	makedepends = gawk
-	depends = python
-	depends = php
-	depends = lib32-libxext
-	depends = java-environment
-	depends = ucsf-chimera
-	depends = lib32-gcc-libs
+	makedepends = git
+	makedepends = make
+	makedepends = python2
+	makedepends = subversion
+	makedepends = tar
 	depends = boost-libs
-	depends = tcsh
+	depends = java-environment
+	depends = lib32-gcc-libs
+	depends = lib32-libxext
 	depends = lib32-libxt
-	provides = molprobity-git
-	conflicts = molprobity-git
+	depends = php
+	depends = python
+	depends = tcsh
+	depends = ucsf-chimera
+	provides = molprobity
+	conflicts = molprobity
 	options = !strip
-	source = molprobity-git::git+https://github.com/rlabduke/MolProbity#branch=molprobity_4.2
+	source = molprobity::git+https://github.com/rlabduke/MolProbity#branch=molprobity_4.2
 	source = molprobity.sh
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = molprobity-git
-
