@@ -1,7 +1,7 @@
 pkgbase = kf5-servicemenus-imagetools
 	pkgdesc = KDE service menus for image file processing
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marco-mania/kf5-servicemenus-imagetools
 	arch = any
 	license = GPL
@@ -13,6 +13,6 @@ pkgbase = kf5-servicemenus-imagetools
 	conflicts = kde-servicemenus-imagetools
 	replaces = kde-servicemenus-imagetools
 	source = https://github.com/marco-mania/kf5-servicemenus-imagetools/archive/refs/tags/v3.tar.gz
-	sha256sums = bdedb328e9e3da25cd889ea7d933d11bc5b6b79e9e1107eae84ece3331a0e80d
+	sha256sums = f2d80b9cc050fe07292ca3ad5fb26962180fa6ba01862d73bc36ac9370bce537
 
 pkgname = kf5-servicemenus-imagetools
