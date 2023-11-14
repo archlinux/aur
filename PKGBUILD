@@ -31,7 +31,7 @@ depends=(
   'knotifyconfig5' # libKF5NotifyConfig.so
   'kcmutils5' # libKF5KCMUtils.so
   'kwidgetsaddons5' # libKF5WidgetsAddons.so
-  'libkcddb' # libKF5Cddb.so
+  'libkcddb5' # libKF5Cddb.so
   'solid5' # libKF5Solid.so
   'taglib' # libtag.so
   'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
