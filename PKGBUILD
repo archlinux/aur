@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=supalive-bin
 _pkgname=Supalive
-pkgver=0.0.34
+pkgver=0.0.35
 pkgrel=1
 pkgdesc="Aplicativo para alertas interativos em streaming, integrado com YouTube, Twitch e LivePix."
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
     "LICENSE.md::https://raw.githubusercontent.com/SupaLive/supalive/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bc2499f517105c8b088d17cb164108f0e86bca87270d26eb1323fe9e1a0406db'
+sha256sums=('bea7e2dc17fe742e896006d8dd1fe24e7c7d4d1d95df21d28454f2f818ad4c40'
             'ce9191ae1267b0c88407a86c56917e6d9776ea5b5a7590addc65063faa9e9df9'
             '44791f429ff760718ed851c2b0190cec1b5fce3166cbd420309ee0824b51eb61')
 build() {
