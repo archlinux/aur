@@ -5,9 +5,9 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
-pkgver=2.0.1
-_pkgver=2.0.1
-pkgrel=11
+pkgver=2.1.0
+_pkgver=2.1.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 
          'python-networkx' 'python-filelock')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen' 'magma-cuda' 'magma-hip'
-             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc')
+             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
@@ -69,12 +69,12 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         87773.patch
         disable-werror1.patch
         disable-werror2.patch
-        disable-werror3.patch
         disable-werror4.patch
         ffmpeg4.4.patch
         rocblas-batched.patch
         protobuf-23.patch
-        pytorch-rocm-jit.patch)
+        pytorch-rocm-jit.patch
+        pytorch-missing-iostream.patch)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -118,17 +118,17 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         '77f85808e480bd37dfb5f072d565466ae30a8f827f49ef97591fc2fc03bea54944eb1adeaa4a1e3466518a5640f575eda88d15b4c4d549a6f41f0bf4f2cfb086'
-        '1f7ce593fa9fc62535ca1c3d85c996a73006cc614c7b7258160c3fc53cd52a1cfddcb18baf897f2e1223ecdfee52ca1471b91c9f845368ed6ac51b66f6e0e676'
+        'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
         '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
-        '96de2729b29c7ce3e4fdd8008f575d24c2c3ef9f85d6217e607902d7b870ac71b9290fde71e87a68d75bb75ef28eacbf5ce04e071146809ccf1e76a03f97b479'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
         '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a'
         '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741'
-        '96bf490c74ebedc5a0bc2592677b3a0d2c94517c4fb014f5fb91b2638571d5e6ba27ab1a439c0a13403c8c039413be98e9cdbbcc999f491000fcfb90b1c81b67'
-        'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe')
+        '738199e7a11940c839a43ac4e3152d84e15b9cde638227d3d87ecb45f82c5e76630a56c49bcfb08e841f92be1b2311f2fad4fafdcc17f5b00b7a8ef6d962f250'
+        'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
+        '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -203,7 +203,6 @@ prepare() {
   # Disable -Werror
   patch -Np1 -d third_party/fbgemm -i "${srcdir}/disable-werror1.patch"
   patch -Np1 -d third_party/benchmark -i "${srcdir}/disable-werror2.patch"
-  patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/disable-werror3.patch"
   patch -Np1 -i "${srcdir}/disable-werror4.patch"
 
   # build against ffmpeg4.4
@@ -214,8 +213,11 @@ prepare() {
 
   # protobuf 23 requires C++17
   find -name CMakeLists.txt | xargs sed -e 's|CXX_STANDARD 14|CXX_STANDARD 17|' -e 's|CXX_STANDARD 11|CXX_STANDARD 17|' -i
-  # Sort includes to workaround conflicting _Float16 definitions https://forums.developer.nvidia.com/t/including-cub-header-breakes-compilation-with-gcc-12-and-sse2-or-better/255018
+  # Promote bool and {u,i}nit8 types to 16 bit as 8 bit types throw an exception in protobuf/abseil,
+  # https://github.com/protocolbuffers/protobuf/blob/92619cdd433c5eed314d6b871060ac2340f52906/src/google/protobuf/repeated_field.h#L122-L129
   patch -Np1 -i "${srcdir}/protobuf-23.patch"
+
+  patch -Np1 -i "${srcdir}/pytorch-missing-iostream.patch"
 
   cd "${srcdir}"
 
@@ -269,9 +271,6 @@ _prepare() {
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
   export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102"
-
-  # Hack to make sure that the generated dnnl_config.h from onednn can be inlcuded.
-  export CXXFLAGS="${CXXFLAGS} -I third_party/ideep/mkl-dnn/third_party/oneDNN/include/"
 }
 
 build() {

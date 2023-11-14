@@ -1,0 +1,12 @@
+diff --git a/binaries/dump_operator_names.cc b/binaries/dump_operator_names.cc
+index f77f93bf592..9ebd47ba6c1 100644
+--- a/binaries/dump_operator_names.cc
++++ b/binaries/dump_operator_names.cc
+@@ -21,6 +21,7 @@
+ #include <c10/util/Flags.h>
+ 
+ #include <fstream>
++#include <iostream>
+ 
+ namespace torch {
+ namespace jit {
