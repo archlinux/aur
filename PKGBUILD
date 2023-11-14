@@ -7,7 +7,7 @@ pkgname=('brave-extension-bitwarden-git'
          'firefox-extension-bitwarden-git'
          'librewolf-extension-bitwarden-git'
          'opera-extension-bitwarden-git')
-pkgver=2023.10.1.r13519.gffd08a6
+pkgver=2023.10.2.r13552.g49ba838
 pkgrel=1
 pkgdesc='Bitwarden browser extensions'
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd clients || exit
   _version=$(git tag --sort committerdate --list 'browser-*' | tail -n1 | cut -d- -f2 | cut -dv -f2)
-  printf "%s.r%s.g%s" "$(git tag --sort committerdate --list 'browser-*' | tail -n1 | cut -d- -f2 | cut -dv -f2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "%s.r%s.g%s" "${_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
