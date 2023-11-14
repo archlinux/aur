@@ -8,11 +8,11 @@
 
 pkgname=gperftools-git
 _pkgname=gperftools
-pkgver=2.4.r46.g6627f92
+pkgver=2.13.r21.g36fa5ee
 pkgrel=1
 pkgdesc="Fast, multi-threaded malloc and nifty performance analysis tools"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/gperftools/"
+url="https://github.com/gperftools/"
 license=('BSD')
 depends=('perl')
 provides=('libtcmalloc.so'
@@ -25,7 +25,7 @@ provides=('libtcmalloc.so'
 conflicts=('gperftools')
 optdepends=('graphviz: pprof graph generation'
             'gv: pprof postscript generation')
-source=("git+https://github.com/gperftools/gperftools.git")
+source=("git+$url/gperftools.git")
 md5sums=('SKIP')
 
 pkgver() {

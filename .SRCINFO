@@ -1,8 +1,8 @@
 pkgbase = gperftools-git
 	pkgdesc = Fast, multi-threaded malloc and nifty performance analysis tools
-	pkgver = 2.4.r46.g6627f92
+	pkgver = 2.13.r21.g36fa5ee
 	pkgrel = 1
-	url = http://code.google.com/p/gperftools/
+	url = https://github.com/gperftools/
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -17,8 +17,7 @@ pkgbase = gperftools-git
 	provides = libtcmalloc_minimal_debug.so
 	provides = gperftools
 	conflicts = gperftools
-	source = git+https://github.com/gperftools/gperftools.git
+	source = git+https://github.com/gperftools//gperftools.git
 	md5sums = SKIP
 
 pkgname = gperftools-git
-
