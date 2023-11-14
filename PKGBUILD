@@ -1,9 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-acstools
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Python Tools for ACS (Advanced Camera for Surveys) Data"
 arch=('any')
@@ -14,17 +15,16 @@ makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer')
 #'python-pandas' 'python-astropy' 'python-beautifulsoup4' 'python-sphinx-automodapi' 'python-sphinx_rtd_theme' 'python-matplotlib')
-checkdepends=('python-pytest'
-#              'python-pytest-astropy-header'
-#              'python-pytest-remotedata'
-              'python-stsci.tools'
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-remotedata'
+              'python-astropy'
+#              'python-stsci.tools'
 ##            'python-beautifulsoup4'
               'python-requests'
-#             'python-matplotlib'
               'python-ci_watson'
-              'python-scikit-image>=0.11')  # stsci.tools -> astropy
+              'python-scikit-image>=0.11')  # stsci.tools, {ci_watson -> crds} -> astropy skimage -> matplotlib
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('433cab4861d6b2a6607980aaf9950a3c')
+md5sums=('641cdcdb32cf2d852975b23becf9fa8b')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,7 +37,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest -Wdefault || warning "Tests failed" # -vv --color=yes --remote-data
+    pytest || warning "Tests failed" # -vv --color=yes --remote-data
 }
 
 package() {
