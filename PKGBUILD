@@ -1,7 +1,9 @@
-# Maintainer: Piao Chen <ssfdust@gmail.com>
+# Maintainer: Allison Smith <alyway@protonmail.com>
+# Contributor: Piao Chen <ssfdust@gmail.com>
+
 pkgname=wf-msg-git
 pkgver=r18.ff26b8f
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayfire goodies: dbus interface, wf-msg (inspired by swaymsg) and wf-utils"
 arch=('any')
 url="https://github.com/tombh/wf-msg"
