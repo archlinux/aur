@@ -1,7 +1,7 @@
 # Mantainer: arthurbpf <arthurbpfernandes@gmail.com>
 
 pkgname=turso-cli
-pkgver=0.85.3
+pkgver=0.87.2
 pkgrel=1
 pkgdesc="Command line interface to Turso."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/tursodatabase/turso-cli"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tursodatabase/turso-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6896a905a956ce160b34e7f41f6a1c78089bb2c47d74ab1550dd5f5ced5f6e28')
+sha256sums=('0f0ddf6387ce980b133038df2e471f5b9c22c6a3c281717e762fe652a00be3c6')
 
 
 build() {
