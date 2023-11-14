@@ -4,8 +4,8 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer
 pkgdesc="A Second Life client with focus on performance and code correctness."
-pkgver=7.0.1.2206
-pkgrel=2
+pkgver=7.0.1.2230
+pkgrel=1
 #epoch=1
 _release_version=2177
 _variant="beta"
@@ -37,7 +37,7 @@ replaces=('alchemy-viewer-git')
 _archive_file_name="alchemy-next-${pkgver}${_variant}.tar.bz2"
 # source=("${pkgname}.tar.gz"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${_commit_hash}"'/alchemy-next-'"${_commit_hash}"'.tar.gz')
 source=("${_archive_file_name}"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/archive/'"${pkgver}-${_variant}"'/alchemy-next-'"${pkgver}-${_variant}"'.tar.bz2')
-sha256sums=('4b50aed43347d276207ca5447ef6993d8ca080af16c6bc362089807f894aaee2')
+sha256sums=('317588ac5ba6b96e9ae5fcedadf9d1b4df6d553bf014e8ba579fb3f171ba8d1b')
 noextract=("${_archive_file_name}")
 
 pkgver() {
