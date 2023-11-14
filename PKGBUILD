@@ -2,7 +2,7 @@
 # Contributor: christian rebischke <chris.rebischke at archlinux org>
 
 pkgname=gopass-hibp-git
-pkgver=1.12.0.r27.g89969dc
+pkgver=1.15.8.r4.ge731be3
 pkgrel=1
 pkgdesc="haveibeenpwnd.com integration for gopass"
 arch=('x86_64')
@@ -14,6 +14,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd ${pkgname%-git}

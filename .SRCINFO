@@ -1,6 +1,6 @@
 pkgbase = gopass-hibp-git
 	pkgdesc = haveibeenpwnd.com integration for gopass
-	pkgver = 1.12.0.r27.g89969dc
+	pkgver = 1.15.8.r4.ge731be3
 	pkgrel = 1
 	url = https://github.com/gopasspw/gopass-hibp
 	arch = x86_64
@@ -8,6 +8,9 @@ pkgbase = gopass-hibp-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	provides = gopass-hibp
+	conflicts = gopass-hibp
+	options = !lto
 	source = git+https://github.com/gopasspw/gopass-hibp
 	sha512sums = SKIP
 
