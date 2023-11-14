@@ -35,14 +35,14 @@ optdepends=(
   'ctffind3-ctftilt'
   'ctffind4'
   'eman2'
-  'gctf'
+#   'gctf'
   'motioncor2'
   'relion'
-  'resmap'
+#   'resmap'
   'simple2'
   'spiderweb'
   'summovie'
-  'ucsf-chimera'
+#   'ucsf-chimera'
   'unblur'
 )
 options=('!strip')
@@ -76,12 +76,12 @@ build() {
 
   ./scipion install -j $_NPROC --no-opencv --no-scipy
 
-  ln -s  /opt/ucsf-chimera software/em/chimera
+#   ln -s  /opt/ucsf-chimera software/em/chimera
   mkdir software/em/ctffind4
   ln -s /usr/bin/ctffind software/em/ctffind4/ctffind
   ln -s /opt/eman2 software/em/eman2.12
   ln -s /opt/relion software/em/relion-1.4
-  ln -s /opt/resmap software/em/resmap
+#   ln -s /opt/resmap software/em/resmap
   ln -s /opt/simple2 software/em/simple
   ln -s /opt/spider software/em/spider
   mkdir -p software/em/summovie/bin
