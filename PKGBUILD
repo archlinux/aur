@@ -8,8 +8,8 @@ pkgdesc="A GUI for sing-box. The universal proxy platform"
 arch=(x86_64)
 url='https://github.com/net-breaker/sing-land'
 license=('MIT')
-depends=('hicolor-icon-theme' 'glibc')
-makedepends=('git' 'nodejs' 'npm')
+depends=('hicolor-icon-theme' 'glib2' 'glibc' 'gcc-libs' 'expat' 'dbus')
+makedepends=('git' 'nodejs' 'npm' 'openssl-1.1' 'libxcrypt' 'cryptsetup' 'libxcrypt-compat')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
@@ -28,6 +28,11 @@ sha256sums=(
 )
 _install_path="/opt/$_pkgname"
 
+pkgver() {
+    cd "$srcdir/sing-land"
+    printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//')"
+}
+
 prepare() {
     cd "${srcdir}"
     mv sing-box-1.6.0-linux-amd64/sing-box sing-land/controller/resources/sing-box
@@ -37,6 +42,7 @@ prepare() {
     cd ../editor
     npm ci
     cd ../singland
+    sed -i 's/"deb",\|"rpm",//g' electron-builder.json
     npm ci
 }
 
@@ -45,22 +51,20 @@ build() {
     npm run init-unix
     npm run build
     mv ${srcdir}/sing-land/singland/release/singland-*.tar.gz ${srcdir}/singland.tar.gz
+    mkdir ${srcdir}/singland
     tar -xvzf ${srcdir}/singland.tar.gz -C ${srcdir}/singland
 }
 
 
 package() {
     cd "${srcdir}/singland"
-    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
-    
+    cd $(find . -type d -name 'singland-*' -print -quit)
+    find . -type f -exec install -Dm755 {} "$pkgdir/opt/$_pkgname"/{} \;
     install -Dm644 "${srcdir}/singland.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-    
     for _icons in 32 256 512;do
-        install -Dm644 "${srcdir}/singland/resources/icons/logo-${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${_pkgname}.png"
+        install -Dm644 "${srcdir}/sing-land/singland/icons/logo-${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${_pkgname}.png"
     done
-    
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    
-    install -Dm644 "$srcdir/singland/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "$srcdir/sing-land/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
