@@ -4,23 +4,25 @@ _commit='3b92a1b641824e649d1847aa650a0808574db0b0'
 _kernver="$(</usr/src/linux/version)"
 pkgname='lg4l'
 pkgver='2017.08.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Logitech for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/CMoH/lg4l"
 license=('GPL')
 makedepends=('linux' 'linux-headers')
 source=("https://github.com/CMoH/${pkgname}/archive/${_commit}.tar.gz"
-        "90-lg4l.rules" "hid-g19.patch" "${pkgname}.install")
-sha256sums=('020013b2ea8cb09f0e8ec40f2f6cfdb37e12cc56c018f2a4c5a8a0bef083232f'
-            '3271223ac9c5732c01688d02d8fb23430028a53093eecbf3662f99b9fec146eb'
-            'b69d2b2a6af51557df15cffcac01d39ddf287a79c945dc7182a8cc41f8059e21'
-            '7594f658e584f4f2069277b27ea22fad2d4fba032917b8b46de1b5738b5d2f63')
+        "90-lg4l.rules" "hid-g19.patch" "hid-gfb.patch" "${pkgname}.install")
+b2sums=('f0d4ad22cb7c6d799ca53799fee222e1c275ea3b84b6304ea8e595125e6076c41251cdf5f3c56bfeb155b5373b8cf20a4f31db49595cf1adbdd4175ec9dda224'
+        'ea85b5b1d5354fca5616f43e4dd2a8d924b82ce33e7ae33a8a66286baaf86a043194520cc8b350d936916b4294273ce6a53558d3bde2d46838ccd626d9d61ca3'
+        'f560b3613e7b13181fa9b058f52951e5d4f26db96d384e2badc5b043c6f79b482a0b911ba4053ee9e51ec48a3dc9d2ea18b7ca305d06f25a2c907446c8605f8d'
+        'f21a4748923ce7e7f4fabad1f1975047fa7b65b7f1fd3c09b53eb9efc746b02ce75b8e1e2e935bfa083da219b8f3a722c5caef69a711507b6c096d72be9d0454'
+        '6c4e36b10a749dfaea6b482a724ae82a64fbda1e233bedc1a8ad03f932d6f6216f9a6df65cb010d51e1eda38d0c228324e38e90e5e8226fd2dab8e9248311b34')
 install="${pkgname}.install"
 
 prepare() {
   cd "${pkgname}-${_commit}"
   patch -Np1 -i ../hid-g19.patch
+  patch -Np1 -i ../hid-gfb.patch
 }
 
 build() {
