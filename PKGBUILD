@@ -8,7 +8,7 @@ arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CCPL')
 depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
-makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'glib2' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'appimagetool-bin')
+makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'glib2' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'appimagetool')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
@@ -60,13 +60,10 @@ build() {
 
 package() {
     install -Dm755 "${srcdir}/hiddify-next-${pkgver}/tmp_out/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/${pkgname}.AppImage"
-    
     install -Dm644 "${srcdir}/hiddify-next-${pkgver}/tmp_out/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    
     for _icons in 128x128 256x256;do
         install -Dm644 "${srcdir}/hiddify-next-${pkgver}/tmp_out/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
 }
