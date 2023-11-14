@@ -1,4 +1,4 @@
-# Maintainer: Andras Wacha <awacha@gmail.com>
+# Contributor: Andras Wacha <awacha@gmail.com>
 pkgname=cistem-bin
 pkgver=1.0.0
 pkgrel=1
@@ -6,9 +6,7 @@ pkgdesc="User-friendly software to process cryo-EM images of macromolecular comp
 arch=(x86_64)
 url="http://cistem.org"
 license=('custom')
-depends=()
 conflicts=('unblur')
-provides=('unblur')
 source=("cistem-${pkgver}-beta-intel-linux.tar.gz::https://cistem.org/system/tdf/upload3/cistem-1.0.0-beta-intel-linux.tar.gz?file=1" 
 	'LICENSE'
 	'cistem.sh'
