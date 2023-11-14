@@ -6,6 +6,7 @@ arch=('any')
 makedepends=("jq" "curl")
 pkgrel=1
 url="https://github.com/project-trans/rime-dict"
+pkgdesc="跨儿计划 RIME 词典"
 md5sums=("SKIP")
 
 function pkgver() {
