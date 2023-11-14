@@ -1,6 +1,6 @@
 pkgbase = certspotter
 	pkgdesc = Certificate Transparency Log Monitor
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/SSLMate/certspotter
 	install = certspotter.install
@@ -12,7 +12,7 @@ pkgbase = certspotter
 	license = MPL2
 	makedepends = go>=1.21
 	makedepends = lowdown
-	source = certspotter-0.17.0.tar.gz::https://github.com/SSLMate/certspotter/archive/v0.17.0.tar.gz
-	sha512sums = 5d12007e99cea1c8f84bcef60092e51209a96cb79ad335c64868e97d8ed32c9104a29d7de16a875bcef687e1c47bc7b3c0723e36b364e42b9ef47a30bdb587cd
+	source = certspotter-0.18.0.tar.gz::https://github.com/SSLMate/certspotter/archive/v0.18.0.tar.gz
+	sha512sums = edb56f9bf200076ed67cee8acc7cc8d1ffa6d9b03dd746a0ec72273eb8a735631a2951408de16cb52893491c3a16c704be636dbc090cce71e177127419192957
 
 pkgname = certspotter

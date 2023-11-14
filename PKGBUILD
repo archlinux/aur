@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certspotter'
-pkgver='0.17.0'
+pkgver='0.18.0'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('MPL2')
 makedepends=('go>=1.21' 'lowdown')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5d12007e99cea1c8f84bcef60092e51209a96cb79ad335c64868e97d8ed32c9104a29d7de16a875bcef687e1c47bc7b3c0723e36b364e42b9ef47a30bdb587cd')
+sha512sums=('edb56f9bf200076ed67cee8acc7cc8d1ffa6d9b03dd746a0ec72273eb8a735631a2951408de16cb52893491c3a16c704be636dbc090cce71e177127419192957')
 
 _sourcedirectory="$pkgname-$pkgver"
 _bindir="$pkgname-$pkgver-bin"
