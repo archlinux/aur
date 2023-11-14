@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-text-trim'
-pkgver='1.02'
+pkgver='1.04'
 pkgrel='1'
 pkgdesc="remove leading and/or trailing whitespace from strings"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5')
+depends=('perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/Text-Trim'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATTLAW/Text-Trim-1.02.tar.gz')
-md5sums=('91506dcbef8201fd4645e885b631c0fa')
-sha512sums=('d45981f5ab69276a713cf7e8c7229e00b322786bb6e0b8d06b3f303532bc2994582763a384a010954c4460eefaf80351d30c8a4f846b8f5337db6cef57b2b994')
-_distdir="Text-Trim-1.02"
+url='https://metacpan.org/release/Text-Trim'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJT/Text-Trim-1.04.tar.gz')
+md5sums=('555a54e3da662bc5c187d99aa0e923ce')
+sha512sums=('e26eeffde15c9d793cd69434296aa135f3f46e6abb7f4a0bee71f34aa6e1a9135c141a25d73b7714609c7a30e57eaefd198f7282945bb3585bfff0315ff3f431')
+_distdir="Text-Trim-1.04"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
