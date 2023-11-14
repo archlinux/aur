@@ -1,12 +1,11 @@
 pkgbase = guiwrapper-bin
 	pkgdesc = A simple cross platform graphical user interface (GUI) wrapper to launch executable desktop applications
 	pkgver = 0.7.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/frodal/GUIwrapper
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = bash
 	depends = electron23
 	provides = guiwrapper=0.7.3
 	conflicts = guiwrapper
@@ -15,6 +14,6 @@ pkgbase = guiwrapper-bin
 	source = guiwrapper.sh
 	sha256sums = 9fe4cd794aae62af8867149fe22a05859b03974871963bf37f9617556ebaf085
 	sha256sums = c2655948673313ef780c59ed39d9cc8d7db09929330223d44e8014f0860435ba
-	sha256sums = 93fa5108a2db10a810b91cdfa20abac4cc5663d843c38c4b5b56ad0bae14c665
+	sha256sums = c26c3adcec87606ab123a946c662aa5d7649a6d0e1bfc429585ebc91756e49ce
 
 pkgname = guiwrapper-bin
