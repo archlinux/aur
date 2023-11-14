@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 	"${pkgname}-${pkgver}.zip::${_githuburl}/archive/refs/tags/v${pkgver}.zip"
 	"${pkgname}.sh"
 )
-sha256sums=('43fd9b0ec01600dee9c9b604ce427fc6010066439f53944e32a446ce0f3c5123'
+sha256sums=('d2ae9a9cb0ba2cc414655ac9e3aae7c4d5a117cc65e07c63d551e67c7938f3c7'
             'c519b9bf417913963385e0c9486951152c44834fa2d17d0fd924fabcedcddf03')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
