@@ -1,11 +1,11 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=desktopius
-pkgdesc='The application allows you to create and edit desktop files'
-pkgver=1.0.7
-pkgrel=2
-arch=('x86_64')
+pkgver=1.0.8
+pkgrel=1
+pkgdesc="The application allows you to create and edit desktop files"
 url="https://github.com/alexkdeveloper/dfc"
+arch=('x86_64')
 license=('GPL3')
 depends=('granite')
 makedepends=('git' 'meson' 'vala')
