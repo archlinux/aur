@@ -3,19 +3,41 @@
 pkgname=kalidoface-bin
 _pkgname=Kalidoface
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A Vtuber web app powered by the latest and great in motion capture tech from MediaPipe."
 arch=('x86_64')
 url="https://lab.kalidoface.com/"
-_githuburl="https://github.com/yeemachine/kalidoface"
+_ghurl="https://github.com/yeemachine/kalidoface"
 license=('Apache')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('gcc-libs' 'libcups' 'nss' 'cairo' 'nodejs' 'glibc' 'expat' 'libxkbcommon' 'libdrm' 'libxfixes' 'libxcb' 'pango' 'libxcomposite' \
-    'at-spi2-core' 'dbus' 'alsa-lib' 'nspr' 'gtk3' 'glib2' 'libx11' 'hicolor-icon-theme' 'libxrandr' 'libxext' 'libxdamage'  'mesa')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+depends=(
+    'libcups'
+    'nss'
+    'cairo'
+    'nodejs'
+    'expat'
+    'libxkbcommon'
+    'libdrm'
+    'libxfixes'
+    'libxcb'
+    'pango'
+    'libxcomposite'
+    'at-spi2-core'
+    'dbus'
+    'alsa-lib'
+    'nspr'
+    'gtk3'
+    'libx11'
+    'hicolor-icon-theme'
+    'libxrandr'
+    'libxext'
+    'libxdamage'
+    'mesa'
+)
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('effd121646ac6fdcbf65a18c08ac621f42bd59d2719003b53524fd67a941310e')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
