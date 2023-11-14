@@ -1,9 +1,11 @@
-
 #!/bin/bash
-_ELECTRON_VER=14
-_ASAR="/opt/headset/headset.asar"
+_ELECTRON=/usr/bin/electron14
+APPDIR="/usr/lib/headset"
+export PATH="${APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/swiftshader:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron${_ELECTRON_VER} ${_ASAR} "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron${_ELECTRON_VER} ${_ASAR} --no-sandbox "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
