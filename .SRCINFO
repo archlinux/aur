@@ -1,0 +1,18 @@
+pkgbase = dolphin-rom-thumbnailer
+	pkgdesc = KDE Dolphin Thumbnailer for video game ROMs
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://codeberg.org/pitbuster/dolphin-rom-thumbnailer
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = corrosion
+	depends = glibc
+	depends = gcc-libs
+	depends = kcoreaddons5
+	depends = kio5
+	depends = qt5-base
+	source = dolphin-rom-thumbnailer-0.1.7.tar.gz::https://codeberg.org/pitbuster/dolphin-rom-thumbnailer/archive/0.1.7.tar.gz
+	sha256sums = 4096f651837c3f308356b63a0e3ccffd22830039cb6775f86a9b42608edb21da
+
+pkgname = dolphin-rom-thumbnailer

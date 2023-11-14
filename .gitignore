@@ -1,0 +1,4 @@
+pkg/
+src/
+dolphin-rom-thumbnailer*.tar.gz
+*.pkg.tar.*
