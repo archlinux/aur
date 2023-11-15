@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=ytt-bin
 pkgver=0.46.0
-pkgrel=1
-pkgdesc="YAML templating tool that works on YAML structure instead of text"
-url="https://carvel.dev/ytt"
+pkgrel=2
+pkgdesc='YAML templating tool that works on YAML structure instead of text'
+url='https://carvel.dev/ytt'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 provides=(ytt)
