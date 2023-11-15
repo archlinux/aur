@@ -1,7 +1,7 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 # Contributor: H. Rosendahl <h at ro dot sendahl dot de>
 
-pkgname=(ttf-jost ttf-jost-variable)
+pkgname=(otf-jost ttf-jost ttf-jost-variable)
 pkgbase=jost-font
 pkgver=3.7
 pkgrel=1
@@ -12,7 +12,7 @@ license=(OFL)
 
 _url=https://github.com/indestructible-type/Jost
 _commit=6eba3c279d0e3a17dbb891f569625bf0dd91aedb
-source=(git+$_url#commit=$_commit)
+source=($_url/archive/$_commit.tar.gz)
 sha256sums=(a3e712c3d04d4bac1d3b9d6f0ae02b16b4a7a081f369350063741d68a7075de7)
 
 _pkgname=${pkgbase%-font}
