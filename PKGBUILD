@@ -10,8 +10,8 @@ url='https://github.com/Wox-launcher/Wox'
 license=('MIT')
 depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 'ayatana-ido' 'at-spi2-core' 'glib2' 'cairo' 'harfbuzz' 'gdk-pixbuf2' 'libayatana-appindicator' 'zlib' 'gtk3' 'libdbusmenu-glib')
 makedepends=('git' 'go' 'just' 'nodejs' 'pnpm' 'python' 'cargo' 'libsoup')
-provides=("wox")
-conflicts=('wox-bin' 'wox')
+provides=(${_pkgname})
+conflicts=(${_pkgname}-bin ${_pkgname})
 options=(!strip)
 source=(
     "git+https://github.com/Wox-launcher/Wox.git"
