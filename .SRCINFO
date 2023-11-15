@@ -1,0 +1,21 @@
+pkgbase = libzim8
+	pkgdesc = Reference implementation of the ZIM specification by the openZIM project.
+	pkgver = 8.2.1
+	pkgrel = 1
+	url = https://github.com/openzim/libzim
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = gtest
+	makedepends = git
+	depends = xapian-core
+	depends = zlib
+	depends = xz
+	depends = icu
+	depends = zstd
+	source = libzim-8.2.1.tar.gz::https://github.com/openzim/libzim/archive/8.2.1.tar.gz
+	source = git+https://github.com/openzim/zim-testing-suite#commit=31ffbefd6699384d80e1f584b69b4321c843bc0c
+	sha256sums = b8296644b04b02c04d2ff1458fed829df39b54e8fd1bcd23c10440e160819f13
+	sha256sums = SKIP
+
+pkgname = libzim8
