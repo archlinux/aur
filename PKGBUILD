@@ -3,13 +3,14 @@
 # Maintainer: martin sandsmark <martin.sandsmark@kde.org>
 
 pkgname=mangonel-git
-pkgver=r266.d2f8899
+pkgver=r350.8e3392e
 pkgrel=1
 pkgdesc="Simple but fast application launcher."
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/utilities/mangonel'
 license=('GPL')
-depends=('knotifyconfig' 'kunitconversion')
+depends=('knotifyconfig5' 'kunitconversion5')
+optdepends=('kglobalaccel5')
 makedepends=('extra-cmake-modules' 'git')
 provides=('mangonel')
 conflicts=('mangonel')
