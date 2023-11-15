@@ -1,0 +1,21 @@
+pkgbase = libkolabxml
+	pkgdesc = Kolab XML Format Schema Definitions Library
+	pkgver = 1.2.1
+	pkgrel = 4
+	url = https://www.kolab.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = libxsd
+	makedepends = xsd
+	makedepends = swig
+	makedepends = git
+	depends = xerces-c
+	depends = boost-libs
+	source = git+https://git.kolab.org/diffusion/LKX#commit=af7c22e7ad2bf47387d00f030c1da41c292f2bee
+	source = xsd-4.2.patch
+	sha512sums = SKIP
+	sha512sums = a7febec03ccaa99f22e10fad604c66c12d35dd91f2a01287f4c96a2037237d86ee4f918aaa5b2857fce6fdf5482f7ad6bf36bec9c96473c4a711c7605448d868
+
+pkgname = libkolabxml
