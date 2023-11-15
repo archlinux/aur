@@ -1,19 +1,35 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-ecard-app-bin
 pkgver=2.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Client side implementation of the eCard-API-Framework (BSI TR-03112) and related international standards, such as ISO/IEC 24727."
 arch=('x86_64')
 url="http://www.openecard.org/"
-_githuburl="https://github.com/ecsec/open-ecard"
+_ghurl="https://github.com/ecsec/open-ecard"
 license=("Apache2" "BouncyCastle" "GPL" "GPL2" "LGPL" "MIT")
 provides=("${pkgname%-app-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "openecardapp")
-depends=('java-runtime' 'lcms2' 'libx11' 'libxrender' 'libjpeg6-turbo' 'libxext' 'libpng' 'glibc' \
-    'harfbuzz' 'libxi' 'zlib' 'gcc-libs' 'libxtst' 'pcsclite' 'giflib' 'freetype2' 'alsa-lib')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb")
+depends=(
+    'java-runtime'
+    'lcms2'
+    'libx11'
+    'libxrender'
+    'libjpeg6-turbo'
+    'libxext'
+    'libpng'
+    'harfbuzz'
+    'libxi'
+    'libxtst'
+    'pcsclite'
+    'giflib'
+    'freetype2'
+    'alsa-lib'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
+)
 sha256sums=('140646747f8098fcfcef1c95763fde21b9d7fd7289c7ef2989d88470054c23d6')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/bin/${pkgname%-bin}|${pkgname%-bin}|g;s|.png||g" \
         -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${pkgname%-bin}.desktop"
