@@ -3,7 +3,7 @@
 pkgname=xbps-static-bin
 _pkgname=xbps
 pkgver=0.59.1_6
-pkgrel=1
+pkgrel=1.1
 pkgdesc='The X Binary Package System (XBPS) -- Static Binaries'
 url="https://github.com/void-linux/xbps"
 license=('custom: BSD-2-Clause' 'custom: BSD')
@@ -19,7 +19,7 @@ declare -A _arches=(
 
 arch=("${!_arches[@]}")
 
-_mirror='https://alpha.de.repo.voidlinux.org'
+_mirror='https://repo-fastly.voidlinux.org'
 
 noextract=()
 for _arch in "${!_arches[@]}"; do

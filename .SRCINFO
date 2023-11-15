@@ -1,7 +1,7 @@
 pkgbase = xbps-static-bin
 	pkgdesc = The X Binary Package System (XBPS) -- Static Binaries
 	pkgver = 0.59.1_6
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/void-linux/xbps
 	arch = aarch64
 	arch = armv6h
@@ -18,13 +18,13 @@ pkgbase = xbps-static-bin
 	noextract = xbps-static-static-0.59.1_6.armv6l-musl.tar.xz
 	noextract = xbps-static-static-0.59.1_6.x86_64-musl.tar.xz
 	noextract = xbps-static-static-0.59.1_6.armv7l-musl.tar.xz
-	source_aarch64 = https://alpha.de.repo.voidlinux.org/static/xbps-static-static-0.59.1_6.aarch64-musl.tar.xz
+	source_aarch64 = https://repo-fastly.voidlinux.org/static/xbps-static-static-0.59.1_6.aarch64-musl.tar.xz
 	sha256sums_aarch64 = 2561ef877ad90133d1be5511a60dbfdfc0cc4c4a3377cdef9b8b0253dc1e17dc
-	source_armv6h = https://alpha.de.repo.voidlinux.org/static/xbps-static-static-0.59.1_6.armv6l-musl.tar.xz
+	source_armv6h = https://repo-fastly.voidlinux.org/static/xbps-static-static-0.59.1_6.armv6l-musl.tar.xz
 	sha256sums_armv6h = 02c381087963d8baa85311e321580eb578e45da05f1ca2aa1bd5afaf7962a448
-	source_x86_64 = https://alpha.de.repo.voidlinux.org/static/xbps-static-static-0.59.1_6.x86_64-musl.tar.xz
+	source_x86_64 = https://repo-fastly.voidlinux.org/static/xbps-static-static-0.59.1_6.x86_64-musl.tar.xz
 	sha256sums_x86_64 = 04b39e0566e81bdc03b4f47bc979749aa45990bc8e07c7179430a8af59fa109e
-	source_armv7h = https://alpha.de.repo.voidlinux.org/static/xbps-static-static-0.59.1_6.armv7l-musl.tar.xz
+	source_armv7h = https://repo-fastly.voidlinux.org/static/xbps-static-static-0.59.1_6.armv7l-musl.tar.xz
 	sha256sums_armv7h = ee291a02f8d835d6f51373266454cb76f43b15dd2d21b43fd83ca80385411e03
 
 pkgname = xbps-static-bin
