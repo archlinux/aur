@@ -1,23 +1,38 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
-
+#
+# Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=vendir
-pkgdesc="Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively"
 pkgver=0.37.0
-pkgrel=2
-url="https://carvel.dev/vendir"
-arch=(x86_64 aarch64)
-license=(Apache)
+pkgrel=1
+pkgdesc='Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively'
+url='https://carvel.dev/vendir'
+arch=(any)
+license=(apache-2.0)
+makedepends=(bash go)
 provides=(vendir)
-conflicts=(vendir vendir-bin vendir-git carvel-tools)
-
-source_x86_64=(
-    vendir-v0.37.0::https://github.com/carvel-dev/vendir/releases/download/v0.37.0/vendir-linux-amd64
-)
-sha256sums_x86_64=('f1472bf7995506830fa79473f0ae406ea3885e0881fbbb096240efb1b053dd15')
-sha256sums_aarch64=('7dde14730aa5a58511fc5b95f61162892ec97f87c9a57c01ab91d1f9f3d7aa74')
-source_aarch64=(
-    vendir-v0.37.0::https://github.com/carvel-dev/vendir/releases/download/v0.37.0/vendir-linux-arm64
-)
-package() {
-    install -Dm 755 "${srcdir}/vendir-v0.37.0" "${pkgdir}/usr/bin/vendir"
+source=(vendir-0.37.0::https://github.com/carvel-dev/vendir/archive/v0.37.0.tar.gz)
+build () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    export CGO_CPPFLAGS="${CPPFLAGS}";
+    export CGO_CFLAGS="${CFLAGS}";
+    export CGO_CXXFLAGS="${CXXFLAGS}";
+    export CGO_LDFLAGS="${LDFLAGS}";
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
+    ./hack/build.sh "$pkgver"
 }
+package () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    BIN=$pkgname;
+    install -Dm755 $BIN -t "$pkgdir/usr/bin";
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
+    ./$BIN completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$BIN";
+    ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
+    ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
+}
+sha256sums=('a081b247717455bf5c17fcd27f3528fb707ed65ff40bdd179e0b203df3aae542')
