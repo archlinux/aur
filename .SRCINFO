@@ -1,0 +1,16 @@
+pkgbase = pixi
+	pkgdesc = A package management and workflow tool
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/prefix-dev/pixi
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	depends = bzip2
+	options = !lto
+	source = pixi-0.7.0.tar.gz::https://github.com/prefix-dev/pixi/archive/v0.7.0.tar.gz
+	sha512sums = 67d6a62253fb41cec231e3246c14130f6b58ada8c251762bf6bee2705ce294dc53900af0b7bfa1ddb3c6a08f0a6fd40e0becf43de02afeaabddc33450c648d4b
+
+pkgname = pixi
