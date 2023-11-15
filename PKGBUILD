@@ -23,9 +23,8 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   local _font
-  for _font in {{12..24..2},28,32}{,b}i; do
-    install -Dm644 "ter-x$_font.pcf.gz" \
-      "$pkgdir/usr/share/fonts/misc/ter-x$_font.pcf.gz"
+  for _font in ter-x{{12..24..2},28,32}{,b}i.pcf.gz; do
+    install -Dm644 "$_font" "$pkgdir/usr/share/fonts/misc/$_font"
   done
   install -Dm644 OFL.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
