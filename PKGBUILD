@@ -3,7 +3,7 @@
 
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
-pkgver=4.34.1
+pkgver=4.35.1
 pkgrel=1
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
   'python-requests'
   'python-safetensors'
   'python-tokenizers>=0.14'
+  'python-tokenizers<0.15'
   'python-tqdm'
   'python-yaml'
 )
@@ -33,7 +34,7 @@ optdepends=(
 source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('097fa102fd286e41e6f6b796af3c7cbc4383dfe5bc321b8b7116e9619dcf1835')
+sha256sums=('eaca986ff2e449e40e321aa19a0d421707e21165239d41020e1635fdd1c7bb9c')
 
 build() {
   python -m build -nw "transformers-$pkgver"
