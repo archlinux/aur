@@ -12,7 +12,7 @@ makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' '
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-conflicts=('hiddify.next-git' 'hiddify.next-bin')
+conflicts=(${pkgname} ${pkgname}-bin)
 options=(!strip)
 source=(
     "https://github.com/hiddify/hiddify-next/archive/refs/tags/v${pkgver}.zip"
