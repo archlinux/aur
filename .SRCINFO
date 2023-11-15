@@ -14,6 +14,8 @@ pkgbase = mcrl2
 	depends = glu
 	depends = hicolor-icon-theme
 	optdepends = python: for easily running the included examples
+	provides = mcrl2
+	conflicts = mcrl2
 	source = http://mcrl2.org/download/release/mcrl2-202307.1.tar.gz
 	sha256sums = cc21c23bcb46c8ec6a51cd31dedfcdddd521e1e1bbb257a69602bf419b00e090
 

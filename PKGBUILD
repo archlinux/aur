@@ -5,6 +5,8 @@ pkgver=202307.1
 pkgrel=1
 pkgdesc="A formal specification language with an associated toolset."
 arch=('i686' 'x86_64')
+provides=('mcrl2')
+conflicts=('mcrl2')
 depends=('qt5-base' 'glu' 'hicolor-icon-theme')
 optdepends=('python: for easily running the included examples')
 makedepends=('boost' 'cmake' 'gcc>=7.0')
