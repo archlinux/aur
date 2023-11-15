@@ -11,7 +11,7 @@ license=('GPL')
 depends=('xerces-c' 'boost-libs')
 makedepends=('cmake' 'boost' 'libxsd' 'xsd' 'swig' 'git')
 _commit=af7c22e7ad2bf47387d00f030c1da41c292f2bee
-source=(git+https://git.kolab.org/diffusion/LKX#commit=af7c22e7ad2bf47387d00f030c1da41c292f2bee
+source=(git+https://git.kolab.org/diffusion/LKX#commit=$_commit
         xsd-4.2.patch)
 sha512sums=('SKIP'
             'a7febec03ccaa99f22e10fad604c66c12d35dd91f2a01287f4c96a2037237d86ee4f918aaa5b2857fce6fdf5482f7ad6bf36bec9c96473c4a711c7605448d868')
