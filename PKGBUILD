@@ -4,12 +4,13 @@ pkgname='perl-test-lectrotest'
 _module='Test-LectroTest'
 _author='T/TM/TMOERTEL'
 pkgver='0.5001'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Easy, automatic, specification-based tests.'
 arch=('any')
 url="https://metacpan.org/release/$_module"
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs' 'purge')
+depends=('perl')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
 sha256sums=('ac2b4f0d95899af1a1a1ec784cb740b2b90256abee11c83e7b291103ec9ed735')
 
