@@ -1,7 +1,7 @@
 pkgbase = picom-allusive
-	pkgdesc = The only Picom fork you will ever need. With Animations and More
-	pkgver = 1.6.0
-	pkgrel = 1
+	pkgdesc = Outdated, Use 'compfy' package instead
+	pkgver = 1.5.0
+	pkgrel = 2
 	url = https://github.com/allusive-dev/compfy
 	arch = i686
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = picom-allusive
 	conflicts = compton-git
 	conflicts = picom
 	conflicts = picom-git
-	source = picom-allusive::git+https://github.com/allusive-dev/picom-allusive.git#tag=1.6.0
+	source = picom-allusive::git+https://github.com/allusive-dev/compfy.git#tag=1.5.0
 	md5sums = SKIP
 
 pkgname = picom-allusive

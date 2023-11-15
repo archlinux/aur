@@ -1,9 +1,9 @@
 _gitfolder=picom-allusive
 _gitname=picom-allusive
 pkgname=picom-allusive
-pkgver=1.6.0
-pkgrel=1
-pkgdesc="The only Picom fork you will ever need. With Animations and More"
+pkgver=1.5.0
+pkgrel=2
+pkgdesc="Outdated, Use 'compfy' package instead"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/compfy"
 license=('MIT' 'MPL2')
@@ -15,7 +15,7 @@ optdepends=('dbus:          To control picom via D-Bus'
             'python:        For picom-convgen.py')
 provides=('compton' 'compton-git' 'picom' 'picom-git')
 conflicts=('compton' 'compton-git' 'picom' 'picom-git')
-source=("${_gitfolder}::git+https://github.com/allusive-dev/picom-allusive.git#tag=${pkgver}")
+source=("${_gitfolder}::git+https://github.com/allusive-dev/compfy.git#tag=${pkgver}")
 md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_gitfolder}"
