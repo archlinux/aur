@@ -11,9 +11,9 @@ url="http://www.videolan.org/vlc/"
 depends=('vlc>3.0.0' 'fluidsynth' 'glibc')
 optdepends=("soundfont-fluid: FluidR3_GM soundfont")
 
-deb_pkgver="3.0.19"
+deb_pkgver="3.0.20"
 deb_pkgver_minor="1"
-deb_pkgrel=""
+deb_pkgrel="+b1"
 
 pkgver="${deb_pkgver}.${deb_pkgver_minor}"
 pkgrel="1"
