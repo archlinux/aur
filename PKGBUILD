@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=rustotpony
 pkgver=0.4.1
-pkgrel=8
-pkgdesc="RusTOTPony — CLI manager of one-time password generators like Google Authenticator"
-url="https://github.com/zebradil/rustotpony"
+pkgrel=9
+pkgdesc='RusTOTPony — CLI manager of one-time password generators like Google Authenticator'
+url='https://github.com/zebradil/rustotpony'
 arch=(i686 x86_64 armv6h armv7h)
 license=(MIT)
 makedepends=(cargo)
