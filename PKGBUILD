@@ -10,8 +10,7 @@ license=('GPL3')
 depends=()
 optdepends=('clash-geoip: A GeoLite2 data created by MaxMind')
 makedepends=('git' 'go' 'cmake' 'zip')
-provides=('clash')
-conflicts=('clasht-bin' 'clash' 'clasht-git')
+conflicts=(${pkgname}-bin ${pkgname}-git 'clash')
 options=(!strip)
 source=(
     "https://github.com/DryPeng/clashT/archive/refs/tags/v${pkgver}.zip"
