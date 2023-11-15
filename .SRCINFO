@@ -1,6 +1,6 @@
 pkgbase = tfautomv-bin
 	pkgdesc = Generate Terraform moved blocks automatically for painless refactoring
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/busser/tfautomv
 	license = Apache-2.0
@@ -8,13 +8,13 @@ pkgbase = tfautomv-bin
 	conflicts = tfautomv
 	provides = tfautomv
 	arch = aarch64
-	source_aarch64 = https://github.com/busser/tfautomv/releases/download/v0.5.3/tfautomv_0.5.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8b802425dc297e26d14c4e62f92dd8872970380e19aab6749dd4c10811376bf3
+	source_aarch64 = https://github.com/busser/tfautomv/releases/download/v0.5.4/tfautomv_0.5.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 08aac091629ebaf167faedf871bcb70c10c7736ecd15d564c608bb3b5071e420
 	arch = i686
-	source_i686 = https://github.com/busser/tfautomv/releases/download/v0.5.3/tfautomv_0.5.3_linux_386.tar.gz
-	sha256sums_i686 = 1ee48c948d6dc77866b279773e9ce7e983c2f8cfa56742f9d67c793d6f7059d2
+	source_i686 = https://github.com/busser/tfautomv/releases/download/v0.5.4/tfautomv_0.5.4_linux_386.tar.gz
+	sha256sums_i686 = 107e9bb7cc65d3da0aae6dd2691717aabe11012fa3f19446a9fa9cc8ab7fe9c5
 	arch = x86_64
-	source_x86_64 = https://github.com/busser/tfautomv/releases/download/v0.5.3/tfautomv_0.5.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3505f99c6f63c64dd3f5f8969af63eb3c8ad70adb5ae8ad973d9d3d5d5444d02
+	source_x86_64 = https://github.com/busser/tfautomv/releases/download/v0.5.4/tfautomv_0.5.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = a64e3a562c65b4642b8a9857ceafc229b3f4c19298d6e0c10141cbbc3ca5a695
 	
 pkgname = tfautomv-bin
