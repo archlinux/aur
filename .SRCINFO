@@ -1,7 +1,7 @@
 pkgbase = cosmic-epoch-git
 	pkgdesc = Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME
 	pkgver = r100.4fd53f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/cosmic-epoch
 	arch = x86_64
 	arch = aarch64
@@ -24,6 +24,7 @@ pkgbase = cosmic-epoch-git
 	depends = libpulse
 	depends = libseat.so
 	depends = libxkbcommon
+	depends = pop-icon-theme
 	depends = pop-launcher-git
 	depends = systemd-libs
 	depends = wayland
