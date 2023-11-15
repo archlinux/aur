@@ -12,7 +12,7 @@ makedepends=('nodejs' 'npm' 'openssl-1.1' 'libxcrypt' 'cryptsetup' 'libxcrypt-co
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-conflicts=('singland-git' 'singland-bin')
+conflicts=(${pkgname}-git ${pkgname}-bin)
 options=(!strip)
 source=(
     "https://github.com/net-breaker/sing-land/archive/refs/tags/${pkgver//_/-}.zip"
@@ -52,7 +52,7 @@ build() {
 package() {
     cd "${srcdir}/singland"
     cd $(find . -type d -name 'singland-*' -print -quit)
-    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
+    find . -type f -exec install -Dm755 {} "$pkgdir/$_install_path"/{} \;
     install -Dm644 "${srcdir}/singland.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
     for _icons in 32 256 512;do
         install -Dm644 "${srcdir}/sing-land-${pkgver//_/-}/singland/icons/logo-${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
