@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=6.1.r112534.ge5f774268a
+pkgver=6.2.r112766.g575efc0406
 pkgrel=1
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
@@ -15,6 +15,7 @@ depends=(
     'aribb24'
     'avisynthplus'
     'bzip2'
+    'cairo'
     'celt'
     'codec2'
     'cuda'
@@ -24,10 +25,12 @@ depends=(
     'freetype2'
     'frei0r-plugins'
     'fribidi'
+    'glib2'
     'glslang'
     'gmp'
     'gnutls'
     'gsm'
+    'harfbuzz'
     'jack'
     'kvazaar'
     'ladspa'
@@ -56,6 +59,7 @@ depends=(
     'libplacebo'
     'libpulse'
     'librabbitmq-c'
+    'libraw1394'
     'librsvg'
     'libsoxr'
     'libssh'
@@ -79,6 +83,7 @@ depends=(
     'opencore-amr'
     'openh264'
     'openjpeg2'
+    'openvino'
     'opus'
     'rav1e'
     'rtmpdump'
@@ -137,7 +142,7 @@ sha256sums=('SKIP'
             'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '0433016c8523c7ce159523946a76c8fa06a926f33f94b70e8de7c2082d14178c'
-            '9b94b90a33dc8ac9693d72c825e9c444df914428fce7cca61117146ee8f8c07b'
+            '7d5ce8058b143bae1be10a06d79ac0f1a72daf00cf648309450d83bea249a6b1'
             '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -162,6 +167,8 @@ pkgver() {
 build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
+    
+    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/openvino/runtime/lib/intel64/pkgconfig"
     
     ./configure \
         --prefix='/usr' \
@@ -204,9 +211,10 @@ build() {
         --enable-libdc1394 \
         --enable-libfdk-aac \
         --enable-libflite \
-        --enable-fontconfig \
+        --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
+        --enable-libharfbuzz \
         --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
@@ -225,7 +233,7 @@ build() {
         --enable-libopenh264 \
         --enable-libopenjpeg \
         --enable-libopenmpt \
-        --disable-libopenvino \
+        --enable-libopenvino \
         --enable-libopus \
         --enable-libplacebo \
         --enable-libpulse \
