@@ -1,6 +1,6 @@
 pkgbase = apparmor-git
 	pkgdesc = Mandatory Access Control (MAC) using Linux Security Module (LSM)
-	pkgver = 3.0.0.r519.g2a3140cb
+	pkgver = 4.0.0.alpha3.r36.g9bba464
 	pkgrel = 1
 	url = https://gitlab.com/apparmor/apparmor
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = apparmor-git
 	optdepends = python-notify2: for aa-notify
 	optdepends = python-psutil: for aa-notify
 	optdepends = ruby: for ruby bindings
-	provides = apparmor=3.0.0.r519.g2a3140cb
+	provides = apparmor=4.0.0.alpha3.r36.g9bba464
 	provides = libapparmor.so
 	conflicts = apparmor
 	options = !lto

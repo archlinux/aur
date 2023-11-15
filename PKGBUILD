@@ -2,7 +2,7 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=apparmor-git
-pkgver=3.0.0.r519.g2a3140cb
+pkgver=4.0.0.alpha3.r36.g9bba464
 pkgrel=1
 pkgdesc='Mandatory Access Control (MAC) using Linux Security Module (LSM)'
 arch=('x86_64')
@@ -33,7 +33,7 @@ _core_perl='/usr/bin/core_perl'
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
