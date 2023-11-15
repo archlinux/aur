@@ -1,7 +1,7 @@
 pkgbase = nexus-wallet-appimage
 	pkgdesc = The official Logical and Interface layers of the Nexus Software Stack.
 	pkgver = 3.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://crypto.nexus.io/wallet
 	arch = x86_64
 	license = MIT
