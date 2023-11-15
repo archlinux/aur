@@ -12,14 +12,14 @@ pkgname=davinci-resolve
 major_version=18.6
 minor_version=3
 pkgver=${major_version}.${minor_version}
-pkgrel=1
+pkgrel=2
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
     _product="DaVinci Resolve"
     _referid='5e61e3f70f7f4d11870586669cdf4d0f'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux"
-    sha256sums=('2426a790a7e3c34a84694e6de3c09fdee03b86fb6ef859c235de6b4637363c1d')
+    sha256sums=('5b8bad7788f50f1c552d8d34cf07346233d32eb33fc026c6c4acfc2608b714ac')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
     _archive_name=DaVinci_Resolve_${pkgver}_Linux
     _archive_run_name=DaVinci_Resolve_${pkgver}_Linux
