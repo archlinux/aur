@@ -1,18 +1,18 @@
 pkgbase = corepdf-git
-	pkgdesc = A PDF viewer from the CoreApps family.
-	pkgver = 2.8.0.r1.96ed219
+	pkgdesc = A PDF viewer from the C Suite
+	pkgver = 4.5.0.r0.g6b0653a
 	pkgrel = 1
-	url = https://gitlab.com/cubocore
-	arch = any
-	groups = coreapps-git
+	url = https://gitlab.com/cubocore/coreapps/corepdf
+	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
-	depends = libcprime-git
+	makedepends = cmake
+	depends = libcprime
 	depends = poppler-qt5
-	provides = corepdf
+	provides = corepdf=4.5.0
 	conflicts = corepdf
-	source = git+https://gitlab.com/cubocore/corepdf.git
+	source = corepdf::git+https://gitlab.com/cubocore/coreapps/corepdf.git
 	md5sums = SKIP
 
 pkgname = corepdf-git
-
