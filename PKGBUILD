@@ -10,6 +10,8 @@ license=('GPLv3')
 url="https://github.com/gbevin/ShowMIDI"
 depends=('alsa-lib' 'freetype2' 'libxrandr' 'libxinerama' 'libxcursor')
 makedepends=('pkg-config' 'cmake')
+conflicts=('showmidi')
+replaces=('showmidi')
 source=("$_pkgname::git+https://github.com/gbevin/$_pkgname.git")
 md5sums=('SKIP')
 
