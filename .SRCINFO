@@ -1,0 +1,24 @@
+pkgbase = python-lief-git
+	pkgdesc = LIEF - Library to Instrument Executable Formats
+	pkgver = 0.13.0.r246.g002f356
+	pkgrel = 1
+	url = https://github.com/lief-project/lief
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = ninja
+	makedepends = python-tomli
+	makedepends = python-scikit-build-core
+	makedepends = python-pydantic
+	depends = python
+	depends = pybind11
+	provides = python-lief
+	conflicts = python-lief
+	source = git+https://github.com/lief-project/LIEF.git
+	sha256sums = SKIP
+
+pkgname = python-lief-git
