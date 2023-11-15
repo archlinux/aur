@@ -1,6 +1,6 @@
 /*.AppImage
 /*.tar
 /*.tar.*
-/*.zip.*
+/*.zip
 /pkg/
 /src/
