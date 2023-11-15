@@ -2,16 +2,16 @@
 _base=numba-mpi
 pkgname=python-${_base}
 pkgdesc="Numba @njittable MPI wrappers tested on Linux, macOS and Windows"
-pkgver=0.37
+pkgver=0.38
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
 license=(GPL3)
-depends=(python-numba python-mpi4py)
+depends=(python-numba python-mpi4py python-psutil)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0412776c77e36ba8476b71719a6dc303bd2daffbb69f0a3061bef38ca5f29103fc3cf04037f49f4e33b9936959571f752426040f68765088c75aac762f4ad217')
+sha512sums=('7a17c6dfad72bdba2d4331362d617bf41cf2d39d621d184e411ac99403b697ee4140020f209b32d64cb65b8be476437870e05c2f66f557955aecb545df597415')
 
 build() {
   cd ${_base}-${pkgver}
@@ -24,8 +24,8 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
-    --ignore=tests/api/test_send_recv.py \
-    --ignore=tests/api/test_isend_irecv.py
+    --ignore=tests/api/test_isend_irecv.py \
+    --ignore=tests/api/test_send_recv.py
 }
 
 package() {
