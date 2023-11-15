@@ -2,17 +2,11 @@
 # Contributor : Phil Schaf <flying-sheep(at)web.de>
 # Contributor : Axel Navarro <navarroaxel at gmail>
 
-#####################################################################################################
-## NOTE: Removing python2 as mandatory makedep; if you want to have a precomiled Python 2 debugger ##
-##      packaged, make sure that `python2-setuptools` is installed _before_ building this package. ##
-#####################################################################################################
-
-
 pkgname=pycharm-community-eap
 pkgver=233.11799.20
 _pkgver=2023.3
 _eap=y
-pkgrel=1
+pkgrel=2
 
 epoch=14
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build, Community Edition'
@@ -20,10 +14,7 @@ arch=('i686' 'x86_64')
 url=http://www.jetbrains.com/pycharm
 license=('Apache')
 
-provides=('pycharm-community-edition')
-conflicts=('pycharm-community-edition')
-
-makedepends=('cython' 'python-setuptools')  # 'python2-setuptools'
+makedepends=('cython' 'python-setuptools')
 depends=('python' 'glib2' 'dbus' 'libdbusmenu-glib')
 optdepends=('python2: Support for Python 2 language'
 			'ipython: Alternative Python shell')
@@ -31,8 +22,10 @@ optdepends=('python2: Support for Python 2 language'
 options=('!strip')
 
 _filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
-source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums=('279799ae9cd6194afc212349a327de52658e0ca5b53937115d14a638aef80fe1')
+source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz"
+        "pycharm-community-eap.desktop")
+sha256sums=('279799ae9cd6194afc212349a327de52658e0ca5b53937115d14a638aef80fe1'
+            '9f6dcb9b8647dbfa1c3d60f3e2b595bec62644bb75039621d185e7e5a18b7bd2')
 
 
 prepare() {
@@ -50,24 +43,6 @@ prepare() {
 	fi
 }
 
-do-not-build() {
-	cd "pycharm-community-$pkgver/plugins/python-ce/helpers/pydev"
-
-	# compile PyDev debugger used by PyCharm to speedup debugging
-	find . \( -name *.c -o -name *.so -o -name *.pyd \) -delete
-	sed -i '1s/^/# cython: language_level=3\n/' _pydevd_bundle/pydevd_cython.pxd
-
-	# use absolute paths to the python executables so that users with an activated virtual env
-	# (like e.g. anaconda) can build without issues
-	/usr/bin/python setup_cython.py build_ext --inplace --force-cython
-	if [ -z "$(pacman -T python2-setuptools)" ]; then
-		# only compile the py2-debugger if `python2-setuptools’ is already installed
-		/usr/bin/python2 setup_cython.py build_ext --inplace
-	fi
-	rm -rf build/
-	find . -name __pycache__ -exec rm -rf {} \;
-}
-
 package() {
 	install -dm755 "$pkgdir"/{opt,usr/{bin,share/pixmaps}}
 	cp -R "pycharm-community-$pkgver" "$pkgdir/opt/$pkgname"
@@ -80,25 +55,11 @@ package() {
 	fi
 	echo $'-Dawt.useSystemAAFontSettings=on\n-Dswing.aatext=true' >>"$pkgdir/opt/$pkgname/bin/$_vmoptfile.vmoptions"
 
-	install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<-EOF
-		[Desktop Entry]
-		Version=1.0
-		Type=Application
-		Name=PyCharm Community EAP
-		Exec=/opt/$pkgname/bin/pycharm.sh %f
-		Icon=pycharm
-		Comment=$pkgdesc
-		Categories=Development;IDE;
-		Terminal=false
-		StartupNotify=true
-		StartupWMClass=jetbrains-pycharm-ce
-	EOF
-	ln -sfv "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm.png"
+	mkdir -p "${pkgdir}/usr/share/applications/"
+	install -Dm644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
-	install -Dm755 /dev/stdin "$pkgdir/usr/bin/pycharm-ce" <<-EOF
-		#!/bin/sh
-		exec "/opt/$pkgname/bin/pycharm.sh"
-	EOF
+	ln -sf "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm-community-eap.png"
+	ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-community-eap"
 }
 
 # vim: ts=4 sw=4 noet ft=PKGBUILD:
