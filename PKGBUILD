@@ -1,7 +1,7 @@
 _gitfolder=compfy
 _gitname=compfy
 pkgname=compfy
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A Better Alternative to Picom. With Animations and Active Support"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ source=("${_gitfolder}::git+https://github.com/allusive-dev/compfy.git#tag=${pkg
 md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_gitfolder}"
-	meson setup --buildtype=release . build
+	meson setup . build
 	ninja -C build
 }
 
