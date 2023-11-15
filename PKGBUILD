@@ -1,13 +1,13 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=gd-tools-git
-pkgver=1.1.r5.g03c9180
+pkgver=1.1.r17.g9f8015c
 pkgrel=1
 pkgdesc="A set of helpful programs to enhance goldendict for immersion learning."
 arch=("x86_64")
 url="https://github.com/Ajatt-Tools/gd-tools"
 license=("GPL3")
-makedepends=("git" "xmake" "gcc" "nlohmann-json" "marisa" "fmt")
+makedepends=("git" "p7zip" "xmake" "gcc" "nlohmann-json" "marisa" "fmt")
 provides=("gd-tools")
 conflicts=("gd-tools")
 source=("$pkgname::git+https://github.com/Ajatt-Tools/gd-tools.git#branch=main")
