@@ -1,2 +1,8 @@
+/*.AppImage
+/*.tar
+/*.tar.*
+/*.zip
+/pkg/
+/src/
 *.deb
 *.zip
