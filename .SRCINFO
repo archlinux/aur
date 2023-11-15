@@ -1,0 +1,18 @@
+pkgbase = jellybean
+	pkgdesc = Manage inventories of various things
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://codeberg.org/turtle/jellybean
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	depends = gtk4>=4.9.0
+	depends = glib2
+	source = https://codeberg.org/turtle/jellybean/archive/0.3.0.tar.gz
+	b2sums = f0574123b9ab7248ad8cb43450c87b18d90e0ca9ec49bce0adbf7a3c587ec9f514cd7f2ddc62b4e3227847a887b34d77b6534a7a453b69f4fd121379ab810f4e
+
+pkgname = jellybean
