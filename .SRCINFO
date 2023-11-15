@@ -1,6 +1,6 @@
 pkgbase = python-xdg-base-dirs
 	pkgdesc = An implementation of the XDG Base Directory Specification in Python
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://github.com/srstevenson/xdg-base-dirs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-xdg-base-dirs
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-poetry-core
-	source = https://files.pythonhosted.org/packages/source/x/xdg_base_dirs/xdg_base_dirs-6.0.0.tar.gz
-	sha256sums = 3bc8813e260a78acba2f718b48eb00b5ff82bd9f02688b54b9e4ccd8a65d42cc
+	source = https://files.pythonhosted.org/packages/source/x/xdg_base_dirs/xdg_base_dirs-6.0.1.tar.gz
+	sha256sums = b4c8f4ba72d1286018b25eea374ec6fbf4fddda3d4137edf50de95de53e195a6
 
 pkgname = python-xdg-base-dirs
