@@ -5,7 +5,7 @@ _pkgname=xtinyterror.lv2
 _lv2uri="http://guitarix.sourceforge.net/plugins/${_reponame//.lv2}_#_tinyterror_"
 pkgname=$_pkgname-git
 pkgver=r15.015b055
-pkgrel=3
+pkgrel=4
 pkgdesc='An amp simulation LV2 plugin modelled after a small british valve amp (git version)'
 arch=(x86_64)
 url='https://github.com/brummer10/XTinyTerror.lv2'
@@ -42,7 +42,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   cd libxputty
-  patch -p1 -N -r - -i "$srcdir"/fix-asprintf.patch
+  patch -p1 -N -r - -i "$srcdir"/fix-asprintf.patch || true
 }
 
 build() {
