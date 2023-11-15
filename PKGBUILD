@@ -7,7 +7,7 @@
 pkgname=('mysql80' 'libmysqlclient80' 'mysql-clients80')
 pkgbase=mysql80
 _pkgbase=mysql
-pkgver=8.0.34
+pkgver=8.0.35
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v8.0"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://cdn.mysql.com/Downloads/MySQL-8.0/${_pkgbase}-boost-${pkgver}.t
         "mysqld_service.patch"
         "systemd-tmpfiles.patch"
         "systemd-sysusers.conf")
-sha256sums=('0b881a19bcef732cd4dbbfc8dfeb84eff61f5dfe0d9788d015d699733e0adf1f'
+sha256sums=('41253c3a99cefcf6d806040c6687692eb0c37b4c7aae5882417dfb9c5d3ce4ce'
             '6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328'
             'e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f'
             '203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae'
@@ -93,7 +93,7 @@ check() {
 }
 
 package_libmysqlclient80(){
-  pkgdesc="MySQL client libraries"
+  pkgdesc="MySQL client libraries, community edition, v8.0"
   depends=('libsasl' 'zlib' 'zstd')
   conflicts=('libmariadbclient' 'libmysqlclient' 'mariadb-libs')
   provides=("libmariadbclient=${pkgver}" "libmysqlclient=${pkgver}" "mariadb-libs=${pkgver}")
@@ -110,7 +110,7 @@ package_libmysqlclient80(){
 }
 
 package_mysql-clients80(){
-  pkgdesc="MySQL client tools"
+  pkgdesc="MySQL client tools, community edition, v8.0"
   depends=('libmysqlclient' 'zlib' 'openssl' 'jemalloc' 'libedit' 'lz4' 'zstd' 'bash')
   conflicts=('mariadb-clients' 'mysql-clients')
   provides=("mariadb-clients=${pkgver}" "mysql-clients=${pkgver}")
@@ -143,7 +143,7 @@ package_mysql-clients80(){
 }
 
 package_mysql80(){
-  pkgdesc="Fast SQL database server, community edition"
+  pkgdesc="Fast SQL database server, community edition, v8.0"
   backup=("etc/mysql/my.cnf"
           "etc/mysqlrouter/mysqlrouter.conf"
           "etc/logrotate.d/mysqlrouter"
@@ -169,7 +169,7 @@ package_mysql80(){
   rm "${pkgdir}/usr/lib/libmysqlclient.a"
   rm "${pkgdir}/usr/lib/libmysqlclient.so"
   rm "${pkgdir}/usr/lib/libmysqlclient.so.21"
-  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.34"
+  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.35"
   rm "${pkgdir}/usr/lib/libmysqlservices.a"
   rm "${pkgdir}/usr/lib/pkgconfig/mysqlclient.pc"
   rmdir "${pkgdir}/usr/lib/pkgconfig"
