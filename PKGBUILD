@@ -4,11 +4,11 @@
 
 pkgname=gam
 pkgver=6.58
-pkgrel=1
-pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
+pkgrel=2
+pkgdesc="command line management for Google Workspace"
 arch=('any')
-url="https://github.com/jay0lee/GAM"
-license=('Apache')
+url="https://github.com/GAM-team/GAM/wiki"
+license=('Apache-2.0')
 depends=(
     'python-dateutil'
     'python-distro'
