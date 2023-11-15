@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=overskride
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='A simple yet powerful bluetooth client'
 url="https://github.com/kaii-lb/overskride"
@@ -32,5 +32,5 @@ check() {
 }
 
 package() {
-  meson install -C build --no-rebuild --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir"
 }
