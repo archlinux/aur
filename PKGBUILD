@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-git
 pkgver=v2023.11.1.r36.gbea635620
-pkgrel=3
+pkgrel=4
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -24,7 +24,7 @@ backup=("etc/iceshrimp/configuration.yml")
 install="iceshrimp.install"
 
 source=(
-  "iceshrimp::git+https://iceshrimp.dev/iceshrimp/iceshrimp.git#branch=dev"
+  "iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#branch=dev"
   "iceshrimp.service"
   "iceshrimp.sysusers"
   "iceshrimp.tmpfiles"
