@@ -1,0 +1,12 @@
+pkgbase = ollama-bin
+	pkgdesc = Get up and running with large language models, locally
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://ollama.ai/
+	arch = x86_64
+	license = MIT
+	provides = ollama-bin
+	source = https://github.com/jmorganca/ollama/releases/download/v0.1.9/ollama-linux-amd64
+	sha256sums = 821124199378ba12a41d40974e24f39657ab6e0fa435d590ce7697eda3ec2c05
+
+pkgname = ollama-bin
