@@ -41,6 +41,8 @@ sha256sums=('317588ac5ba6b96e9ae5fcedadf9d1b4df6d553bf014e8ba579fb3f171ba8d1b')
 noextract=("${_archive_file_name}")
 
 pkgver() {
+  # Dirty workaround for the archive format produced by the upstream CI tooling
+  bsdtar -xf "${_archive_file_name}" --strip-components=1
   printf "${pkgver}"
 }
 
