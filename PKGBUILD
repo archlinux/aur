@@ -10,17 +10,16 @@ pkgver=1.16.r5.g3c94601
 pkgrel=1
 pkgdesc="X11 client-side library"
 arch=(i686 x86_64)
-url='https://xcb.freedesktop.org'
+#url="https://xcb.freedesktop.org/"
+url="https://gitlab.freedesktop.org/xorg/lib/libxcb"
 license=('X11')
 
 depends=(
-  # extra/libxcb
   'glibc'
   'libxau'
   'libxdmcp'
 )
 makedepends=(
-  # extra/libxcb
   'libxslt'
   'python'
   'xorg-util-macros'
@@ -39,12 +38,8 @@ else
   conflicts=("$_pkgname")
 
   _pkgsrc="$_pkgname"
-  source=(
-    "$_pkgsrc"::"git+http://anongit.freedesktop.org/git/xcb/libxcb.git"
-  )
-  sha256sums=(
-    'SKIP'
-  )
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
 
   pkgver() {
     cd "$_pkgsrc"
