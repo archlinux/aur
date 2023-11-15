@@ -1,5 +1,9 @@
 # mpf-check-bin .Changelog
 
+## 2023-11-14, mpf-check-bin 3.0-1
+
+* Bump to 3.0
+
 ## 2023-11-07, mpf-check-bin 2.7.5-1
 
 * Bump to 2.7.5
@@ -27,7 +31,7 @@
 
 ## 2023-10-11, mpf-check-bin 2.7.1.1-2
 
-* Fix .Changelog.
+* Fix .Changelog
 
 ## 2023-10-11, mpf-check-bin 2.7.1.1-1
 
@@ -36,7 +40,7 @@
 
 ## 2023-10-10, mpf-check-bin 2.7.1-1
 
-* Bump to 2.7.1.
+* Bump to 2.7.1
 
 ## 2023-10-10, mpf-check-bin 2.7.0-2 (not pushed)
 
@@ -44,8 +48,8 @@
 
 ## 2023-10-10, mpf-check-bin 2.7.0-1
 
-* Bump to 2.7.0 (2.6.7 was skipped).
-* Started maintenance of `.Changelog`.
+* Bump to 2.7.0 (2.6.7 was skipped)
+* Started maintenance of `.Changelog`
 
 ## 2023-10-08, mpf-check-bin 2.6.6-2
 
