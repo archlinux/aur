@@ -1,0 +1,14 @@
+diff --git a/rpmbuild/SOURCES/protonvpn-app.desktop b/rpmbuild/SOURCES/protonvpn-app.desktop
+index e1074c6..b0b5351 100644
+--- a/rpmbuild/SOURCES/protonvpn-app.desktop
++++ b/rpmbuild/SOURCES/protonvpn-app.desktop
+@@ -4,6 +4,6 @@ Exec=protonvpn-app
+ Terminal=false
+ Type=Application
+ Icon=proton-vpn-logo
+-StartupWMClass=Protonvpn
++StartupWMClass=protonvpn-app
+ Comment=Proton VPN GUI client
+-Categories=Network;
+\ No newline at end of file
++Categories=Network;
