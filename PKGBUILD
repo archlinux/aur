@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-_pkgver=2.10.14
-pkgver=2.10.14.r0.g25c656a88
+_pkgver=2.10.15
+pkgver=2.10.15.r0.g99b3c7e19
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=('any')
@@ -16,7 +16,6 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
-    'bash'
     'electron25'
 )
 makedepends=(
