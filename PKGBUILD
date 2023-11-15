@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=python-powerline-taskwarrior
 pkgver=2.0.0
-pkgrel=14
-pkgdesc="Powerline segment for showing information from Taskwarrior task manager"
-url="https://github.com/Zebradil/powerline-taskwarrior"
+pkgrel=15
+pkgdesc='Powerline segment for showing information from Taskwarrior task manager'
+url='https://github.com/Zebradil/powerline-taskwarrior'
 arch=(any)
 license=(MIT)
 depends=(powerline python3)
