@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kapp-bin
 pkgver=0.59.1
-pkgrel=1
-pkgdesc="kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label"
-url="https://carvel.dev/kapp"
+pkgrel=2
+pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label'
+url='https://carvel.dev/kapp'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 provides=(kapp)
