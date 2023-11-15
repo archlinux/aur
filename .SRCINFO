@@ -1,6 +1,6 @@
 pkgbase = peasy-git
 	pkgdesc = A plugin for Geany which allows to load other plugins written in Python or Lua (Git version)
-	pkgver = v0.9.r7.g1756415
+	pkgver = v0.13.r0.g4e19030
 	pkgrel = 1
 	url = https://github.com/kugel-/peasy/
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = peasy-git
 	sha256sums = SKIP
 
 pkgname = peasy-git
-
