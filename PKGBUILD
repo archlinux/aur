@@ -3,7 +3,7 @@
 pkgname=tiledb
 _pkgname=TileDB
 pkgver=2.18.0_rc4
-pkgrel=2
+pkgrel=3
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
 url="https://tiledb.com/"
@@ -23,6 +23,7 @@ build() {
     --enable-serialization \
     --enable-tools \
     --disable-werror \
+    --disable-vcpkg \
     --disable-webp
   make -j "$(nproc)"
 }

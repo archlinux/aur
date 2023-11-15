@@ -1,7 +1,7 @@
 pkgbase = tiledb
 	pkgdesc = The Universal Storage Engine
 	pkgver = 2.18.0-rc4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tiledb.com/
 	arch = x86_64
 	license = MIT
