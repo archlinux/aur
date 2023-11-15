@@ -5,8 +5,6 @@ pkgbase = noite-appimage
 	url = https://github.com/RavenSam/noite
 	arch = x86_64
 	license = MIT
-	depends = zlib
-	depends = glibc
 	depends = hicolor-icon-theme
 	provides = noite=0.1.0
 	conflicts = noite

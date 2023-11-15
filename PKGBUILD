@@ -8,14 +8,18 @@ url="https://github.com/RavenSam/noite"
 license=('MIT')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
+depends=(
+    'hicolor-icon-theme'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_amd64.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/RavenSam/noite/main/LICENSE")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_amd64.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/RavenSam/noite/main/LICENSE"
+)
 sha256sums=('47707b000054e00dbd15859bbede86c840ae073d8d6ae77da7c5b43a158fc887'
             'e4dbc11138f5e8796cf24f6871ab1a1b4fda774262c271724b34b7284821b320')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|Exec=noite|Exec=${pkgname%-appimage} --no-sandbox %U|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
