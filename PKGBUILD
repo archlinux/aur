@@ -1,56 +1,37 @@
-# Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
-
+# Maintainer: German Lashevich <german.lashevich@gmail.com>
+#
+# Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=kbld
-pkgver=0.27.0
-pkgrel=2
-pkgdesc="kbld seamlessly incorporates image building and image pushing into your development and deployment workflows"
-url="https://get-kbld.io/"
-license=('Apache')
-arch=('x86_64')
-depends=('glibc')
-makedepends=('git' 'go' 'ytt' 'zip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k14s/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ce9553b654c01d01b8bf87ff5ca414210eae3800b0b41d87ab5a8742149688fc')
-
-prepare() {
-	rm -rf "${srcdir}/src/github.com/k14s/${pkgname}"
-	mkdir -p "${srcdir}/src/github.com/k14s/${pkgname}"
-	mv -T "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/k14s/${pkgname}"
+pkgver=0.38.1
+pkgrel=1
+pkgdesc='kbld seamlessly incorporates image building and image pushing into your development and deployment workflows'
+url='https://carvel.dev/kbld'
+arch=(any)
+license=(apache-2.0)
+makedepends=(bash go)
+provides=(kbld)
+source=(kbld-0.38.1::https://github.com/carvel-dev/kbld/archive/v0.38.1.tar.gz)
+prepare () 
+{ 
+    cd "$pkgname-$pkgver";
+    sed -i "/^LATEST_GIT_TAG=/c\\LATEST_GIT_TAG=$pkgver" ./hack/build.sh
 }
-
-build() {
-	cd "${srcdir}/src/github.com/k14s/${pkgname}"
-
-	export GOPATH="${srcdir}"
-	export GOFLAGS="-modcacherw -trimpath -buildmode=pie"
-	./hack/build.sh
-
-	## Build ytt without website assets
-	#go build -o ytt ./cmd/ytt/...
-
-	## Use ytt to build website assets
-	#mkdir -p tmp
-	#build_values_path="../../${BUILD_VALUES:-./hack/build-values-default.yml}"
-	#(
-	#	cd pkg/website
-	#	./../../ytt \
-	#		-f . \
-	#		-f ../../examples/playground \
-	#		-f $build_values_path \
-	#		--file-mark 'alt-example**/*:type=data' \
-	#		--file-mark 'example**/*:type=data' \
-	#		--file-mark 'generated.go.txt:exclusive-for-output=true' \
-	#		--output-directory ../../tmp/
-	#)
-	#mv tmp/generated.go.txt pkg/website/generated.go
-
-	## Rebuild ytt with website assets
-	#rm -f ./ytt
-	#go build -o kbld ./cmd/kbld/...
+build () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    export CGO_CPPFLAGS="${CPPFLAGS}";
+    export CGO_CFLAGS="${CFLAGS}";
+    export CGO_CXXFLAGS="${CXXFLAGS}";
+    export CGO_LDFLAGS="${LDFLAGS}";
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
+    ./hack/build.sh "$pkgver"
 }
-
-package() {
-	cd "${srcdir}/src/github.com/k14s/${pkgname}"
-	install -Dm755 "${pkgname}" "${pkgdir}"/usr/bin/${pkgname}
-	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+package () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    BIN=$pkgname;
+    install -Dm755 $BIN -t "$pkgdir/usr/bin"
 }
+sha256sums=('26446dff410192e1a8877806d0cb52764ec59f221fd345c18bfcdc972cd5cbf4')
