@@ -1,0 +1,19 @@
+pkgbase = inochi-session
+	pkgdesc = Application that allows streaming with Inochi2D puppets
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://inochi2d.com/
+	arch = x86_64
+	license = custom
+	depends = dbus
+	depends = freetype2
+	depends = gcc-libs
+	depends = sdl2
+	depends = glibc
+	provides = cimgui.so
+	source = https://github.com/Inochi2D/inochi-session/releases/download/v0.8.3/inochi-session-linux-x86_64.zip
+	source = https://github.com/Inochi2D/inochi-session/archive/refs/tags/v0.8.3.zip
+	sha512sums = 8e89c6880b158d5c8d5df95a2451a50a950247506725d5e987dc2e9cb0af9f1b83185ac4ae39cb542a0a56d7b4968b1008203ab0a98ef0aa3e70d5d3123ea33b
+	sha512sums = 342822cf923d21a348012251809bc42f7da15c856df73de3e8baa5e63b202c6a687744a9ef5b193a363df452bddae86b2f835aaea666796a9d4bf61e6b6cd059
+
+pkgname = inochi-session
