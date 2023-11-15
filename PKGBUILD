@@ -4,7 +4,8 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer
 pkgdesc="A Second Life client with focus on performance and code correctness."
-pkgver=7.0.1.2230
+_build_id=2230
+pkgver=7.0.1.${_build_id}
 pkgrel=1
 #epoch=1
 _release_version=2177
@@ -123,7 +124,9 @@ build() {
     -DDISABLE_FATAL_WARNINGS=ON
     -DUSE_LTO:BOOL=OFF
     -DVIEWER_CHANNEL="Alchemy Test"
+    -DREVISION_FROM_VCS:BOOL=OFF
   )
+  export AUTOBUILD_BUILD_ID="${_build_id}"
   echo "BUILDENV: ${BUILDENV[*]}"
   if [[ " ${BUILDENV[*]} " =~ ' ccache ' ]] && command -v ccache; then
     echo "------ Will Use CCACHE ------"
