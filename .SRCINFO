@@ -5,7 +5,7 @@ pkgbase = notekit-appimage
 	url = https://github.com/blackhole89/notekit
 	arch = x86_64
 	license = GPL3
-	depends = glibc
+	makedepends = squashfuse
 	provides = notekit=0.2.0
 	conflicts = notekit
 	options = !strip

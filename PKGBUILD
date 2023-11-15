@@ -9,12 +9,17 @@ url="https://github.com/blackhole89/notekit"
 license=('GPL3')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('glibc')
+depends=()
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}+git1.73c1a86-Build6.1.glibc2.14-${CARCH}.AppImage")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}+git1.73c1a86-Build6.1.glibc2.14-${CARCH}.AppImage"
+)
 sha256sums=('bf17231318c8017a90d1df84ccc9675235fddc2cc0616b4a7151766f5b0c7ae3')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|Exec=${pkgname%-appimage}|Exec=${pkgname%-appimage} -no-sandbox %U|g;s|${_appname}|${pkgname%-appimage}|g" \
