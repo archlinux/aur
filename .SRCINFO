@@ -1,6 +1,6 @@
 pkgbase = python-huggingface-hub
 	pkgdesc = All the open source things related to the Hugging Face Hub
-	pkgver = 0.19.2
+	pkgver = 0.19.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/huggingface/huggingface_hub
@@ -13,7 +13,7 @@ pkgbase = python-huggingface-hub
 	depends = python-yaml
 	depends = python-typing_extensions
 	depends = python-packaging
-	source = huggingface_hub-0.19.2.tar.gz::https://github.com/huggingface/huggingface_hub/archive/refs/tags/v0.19.2.tar.gz
-	sha512sums = 9f4da51ed7767e40111c7303088217686525e130cd455d0c63d65dfa556f88ee92eac86d33bb77ae0aab0e78ab252d356737ffc2a1fe3f645879d7b842c6108e
+	source = huggingface_hub-0.19.3.tar.gz::https://github.com/huggingface/huggingface_hub/archive/refs/tags/v0.19.3.tar.gz
+	sha512sums = 0f892cadfddf9d1861311b330507a2dd996081a30792af89c84b58caa83e3ab741b241460cf8e13b88718fab6f422a3b5aafbfaada48ae5990f52bbd072ffeae
 
 pkgname = python-huggingface-hub
