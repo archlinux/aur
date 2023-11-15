@@ -4,13 +4,16 @@
 pkgname=python-glue-core
 _pyname=glue-core
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Core library for the glue multidimensional data visualization project"
 arch=('any')
 url="http://glueviz.org"
 license=('BSD')
 makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
              'python-sphinx-automodapi'
              'python-sphinx-book-theme'
              'python-numpydoc'
@@ -22,16 +25,15 @@ makedepends=('python-setuptools-scm'
              'python-scipy'
              'python-shapely'
              'ipython')
-checkdepends=('python-pytest'
+checkdepends=('python-pytest-mpl'
               'python-astrodendro'
               'python-dask'
               'python-openpyxl'
               'python-pyavm'
               'python-scikit-image'
-              'python-xlrd'
-              'python-fast-histogram')  # matplotlib pandas echo astropy ipython shapely scipy already in makedepends, fast-histogram <- mpl-scatter-density; h5py <- astrodendro
+              'python-xlrd')  # matplotlib pandas echo astropy ipython shapely scipy already in makedepends, fast-histogram <- mpl-scatter-density; h5py <- astrodendro
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('6d60aca43a6a0a4a0c0a5c7f6aad5add4de601b54e6248fa946697a0d6a0cf8e')
+sha256sums=('35c1c4a63a99edf87ac90310e507b617b22df267272198b840d5e38f1069bd76')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -39,8 +41,7 @@ get_pyver() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
-#   python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 
     msg "Building Docs"
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
@@ -80,7 +81,7 @@ package_python-glue-core() {
                 'python-glue-core-doc: Documentation for glue-core'
                 'glueviz-doc: Documentation for glueviz')
 
-    python setup.py install -O1 --root="${pkgdir}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
