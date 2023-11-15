@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=guiscrcpy
 pkgver=2023.1.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('libxinerama' 'pyside2' 'python' 'python-cairosvg' 'python-click' 'pyth
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'setconf')
 checkdepends=('appstream-glib')
 _commit=332175e50b63d1503c08afc5d839fc3f3fc50aba  # tags/v2023.1.1^0
-source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit")
+source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('7427D25413635E1E39657B6B1007816766D390D7') # Srevin Saju (srevinsaju) <srevinsaju@sugarlabs.org>
 
