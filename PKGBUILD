@@ -3,7 +3,7 @@
 pkgname=redshift-scheduler
 pkgver=1.3.1
 pkgrel=0
-pkgdesc="Rule-based screen temperature changer (like redshift)"
+pkgdesc="Rule-based screen temperature changer (based on redshift)"
 arch=('any')
 url="https://github.com/spantaleev/redshift-scheduler"
 license=('GPL3')
