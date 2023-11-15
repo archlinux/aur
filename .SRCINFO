@@ -1,11 +1,10 @@
 pkgbase = linked-bin
 	pkgdesc = Daily journaling without distraction. An easy, distraction-free way to record your thoughts, declutter your mind and keep the things you want to remember.
 	pkgver = 1.5.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://uselinked.com/
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = electron17
 	depends = hicolor-icon-theme
 	provides = linked=1.5.2
@@ -13,6 +12,6 @@ pkgbase = linked-bin
 	source = linked-1.5.2.pacman::https://github.com/lostdesign/linked/releases/download/v1.5.2/linked-1.5.2.pacman
 	source = linked.sh
 	sha256sums = 44fc87edf617d445a014ddc637ae547371f218f803b2558d0e1014d3879483cf
-	sha256sums = 3dfd4b5fca8767a7da9f2aa675be5ce6c05e6afc975be893ae3a9d92b29d3c51
+	sha256sums = 1e5834b14103de396ca6c8d60b3b21b297439c1be6bc3976eb2fc751c4bb8fda
 
 pkgname = linked-bin
