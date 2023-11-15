@@ -8,9 +8,31 @@ url="https://github.com/ZJouba/ShedShield"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('alsa-lib' 'nss' 'glibc' 'libxdamage' 'expat' 'libx11' 'libxkbcommon' 'libxrandr' 'nspr' 'libdrm' 'cairo' 'glib2' \
-    'libxcomposite' 'at-spi2-core' 'mesa' 'gtk3' 'dbus' 'pango' 'gcc-libs' 'libxcb' 'libcups' 'libxext' 'libxfixes')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/.}_amd64.deb")
+depends=(
+    'alsa-lib'
+    'nss'
+    'libxdamage'
+    'expat'
+    'libx11'
+    'libxkbcommon'
+    'libxrandr'
+    'nspr'
+    'libdrm'
+    'cairo'
+    'libxcomposite'
+    'at-spi2-core'
+    'mesa'
+    'gtk3'
+    'dbus'
+    'pango'
+    'libxcb'
+    'libcups'
+    'libxext'
+    'libxfixes'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/.}_amd64.deb"
+)
 sha256sums=('7ad50254295afd4283a42b1805eb7be96fe7f02f64085dd43c31cd823b6bd388')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
