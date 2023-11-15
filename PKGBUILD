@@ -6,7 +6,7 @@
 pkgname=('mysql57' 'libmysqlclient57' 'mysql-clients57')
 _pkgname=mysql
 pkgbase=mysql57
-pkgver=5.7.42
+pkgver=5.7.44
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v5.7"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar
         "mysqld.service"
         "my-default.cnf"
         "systemd-sysusers.conf")
-sha256sums=('211cacb4b3e46dea59949092662be333ec677edb8bc41f4a6f2744e979ee19a2'
+sha256sums=('d03d8ff688862c40da3488451072a4b2178a86b53b4a7546ee5f864bb15cd919'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
@@ -96,7 +96,7 @@ build() {
 }
 
 package_libmysqlclient57(){
-  pkgdesc="MySQL client libraries, v5.7"
+  pkgdesc="MySQL client libraries, community edition, v5.7"
   depends=('libsasl' 'zlib')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}" "libmysqlclient=${pkgver}")
@@ -117,7 +117,7 @@ package_libmysqlclient57(){
 }
 
 package_mysql-clients57(){
-  pkgdesc="MySQL client tools, v5.7"
+  pkgdesc="MySQL client tools, community edition, v5.7"
   depends=('libmysqlclient57' 'zlib' 'openssl-1.1' 'jemalloc')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}" "mysql-clients=${pkgver}")
