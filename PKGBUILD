@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-vine
-pkgver=5.0.0
-pkgrel=7
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Promises, promises, promises"
 arch=('any')
 license=('BSD')
@@ -10,7 +10,7 @@ url="https://github.com/celery/vine"
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-case')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/celery/vine/archive/v$pkgver.tar.gz")
-sha512sums=('db0598b05235a61416958e09582b2b1cd504ba54c04e325ade552fa76886463f447d8f6b423a0f9db777ae441c4898898e9acf2ed2e9c1d5c040bc703b226e97')
+sha512sums=('9ed1f18fba76fb34ed1f083a29db5a90ccffef83dbb6c2c90f83e4136520d8a27fa8b12a7ea6923c8f73532bf174d6403484fd37e0ac26247f2108aa1faabf65')
 
 build() {
   cd "$srcdir"/vine-$pkgver

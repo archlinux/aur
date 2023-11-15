@@ -1,0 +1,14 @@
+pkgbase = python-vine
+	pkgdesc = Promises, promises, promises
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/celery/vine
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-case
+	makedepends = python-setuptools
+	source = python-vine-5.1.0.tar.gz::https://github.com/celery/vine/archive/v5.1.0.tar.gz
+	sha512sums = 9ed1f18fba76fb34ed1f083a29db5a90ccffef83dbb6c2c90f83e4136520d8a27fa8b12a7ea6923c8f73532bf174d6403484fd37e0ac26247f2108aa1faabf65
+
+pkgname = python-vine
