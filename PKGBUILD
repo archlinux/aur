@@ -2,13 +2,17 @@
 
 pkgname=talhelper
 pkgver=1.14.0
-pkgrel=1
-pkgdesc='A tool to help create Talos cluster in your GitOps repository'
+pkgrel=2
+pkgdesc='A tool to help create Talos clusters in your GitOps repository'
 arch=('x86_64')
 url='https://budimanjojo.github.io/talhelper'
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go')
+optdepends=(
+  'talosctl: apply generated configuration'
+  'sops: manage secrets'
+)
 options=('!lto')
 _commit='6c098210bc457eeb6a66df757d41a1acd43a4ef7'
 source=("$pkgname::git+https://github.com/budimanjojo/talhelper#commit=$_commit")
