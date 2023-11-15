@@ -1,0 +1,74 @@
+pkgbase = network-manager-applet-debug-git
+	pkgdesc = A system tray applet for NetworkManager. Debug build, latest git checkout.
+	pkgver = 1.35.0.dev+2.r4978.20231023.3ce10aa6
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = meson
+	makedepends = libsecret
+	makedepends = libnotify
+	makedepends = gtk3
+	makedepends = libnm
+	makedepends = libnma
+	makedepends = libmm-glib
+	makedepends = gtk-doc
+	makedepends = libmm-glib
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = libayatana-appindicator
+	makedepends = gcr
+	makedepends = iso-codes
+	makedepends = mobile-broadband-provider-info
+	options = emptydirs
+	options = debug
+	options = !strip
+	options = !lto
+	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git
+	sha256sums = SKIP
+
+pkgname = network-manager-applet-debug-git
+	depends = at-spi2-core
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = nm-connection-editor
+	depends = libnm
+	depends = libnma
+	depends = libmm-glib
+	depends = libnotify
+	depends = libsecret
+	depends = libayatana-appindicator
+	depends = pango
+	provides = network-manager-applet=1.35.0.dev+2.r4978.20231023.3ce10aa6
+	provides = network-manager-applet-debug=1.35.0.dev+2.r4978.20231023.3ce10aa6
+	provides = network-manager-applet-git=1.35.0.dev+2.r4978.20231023.3ce10aa6
+	conflicts = network-manager-applet
+	conflicts = network-manager-applet-debug
+	conflicts = network-manager-applet-git-debug
+	replaces = network-manager-applet
+
+pkgname = nm-connection-editor-debug-git
+	pkgdesc = NetworkManager GUI connection editor and widgets
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = jansson
+	depends = libnm
+	depends = libnma
+	provides = nm-connection-editor=1.35.0.dev+2.r4978.20231023.3ce10aa6
+	provides = nm-connection-editor-debug=1.35.0.dev+2.r4978.20231023.3ce10aa6
+	provides = nm-connection-editor-git=1.35.0.dev+2.r4978.20231023.3ce10aa6
+	conflicts = nm-connection-editor
+	conflicts = nm-connection-editor-debug
+	conflicts = nm-connection-editor-git-debug
+	replaces = nm-connection-editor
