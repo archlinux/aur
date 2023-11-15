@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-conflicts=('singboxclient-git')
+conflicts=(${pkgname}-git)
 options=(!strip)
 source=(
     "https://github.com/daodao97/SingBoxClient/archive/refs/heads/master.zip"
