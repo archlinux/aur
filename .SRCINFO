@@ -1,0 +1,24 @@
+pkgbase = gog-the-will-of-arthur-flabbington
+	pkgdesc = Comedy point-and-click adventure. Find your uncle’s lost treasure with the help of a reluctant sidekick. GOG version.
+	pkgver = v1.0.3.68960
+	pkgrel = 1
+	url = https://www.gog.com/en/game/the_will_of_arthur_flabbington
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	options = !strip
+	source = the-will-of-arthur-flabbington_latest.sh::gogdownloader://the_will_of_arthur_flabbington/en3installer0
+	source = gog-the-will-of-arthur-flabbington.desktop
+	source = the-will-of-arthur-flabbington.bash
+	sha512sums = SKIP
+	sha512sums = 6c8e948fcf35a08fa6c3712039529a8e1d2d1c68c5ab114a4a013389deed443e6c1f75ad4496a9437e3f3997f2fc2a52776da5a2df03bf6804a1768d0e78e382
+	sha512sums = 67fb91f25af8ff1aa452ed606fc9e7bcb735d891a2068430c9a594c60531e95897b83d17013676baffd8b3e72f54cc54a246b238fdb5d9bef86391b9f25da5d9
+
+pkgname = gog-the-will-of-arthur-flabbington

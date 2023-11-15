@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=The Will of Arthur Flabbington
+Comment=Comedy point-and-click adventure. Find your uncle’s lost treasure with the help of a reluctant sidekick
+Exec=the-will-of-arthur-flabbington
+Icon=gog-the-will-of-arthur-flabbington
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
