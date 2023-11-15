@@ -1,6 +1,6 @@
 pkgbase = showmidi
 	pkgdesc = Multi-platform GUI application to effortlessly visualize MIDI activity
-	pkgver = 0.1.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/gbevin/ShowMIDI
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = showmidi
 	depends = libxrandr
 	depends = libxinerama
 	depends = libxcursor
-	source = ShowMIDI-0.1.0.tar.gz::https://github.com/gbevin/ShowMIDI/archive/0.1.0.tar.gz
-	md5sums = e640f4c2151eb43e551fc142b2574373
+	source = ShowMIDI-0.6.0.tar.gz::https://github.com/gbevin/ShowMIDI/archive/0.6.0.tar.gz
+	md5sums = d8f8ce9c28d720d5c829481713ccb99b
 
 pkgname = showmidi

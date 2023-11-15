@@ -2,7 +2,7 @@
 Type=Application
 Name=ShowMIDI
 Comment=Multi-platform GUI application to effortlessly visualize MIDI activity
-Exec=/usr/bin/showmidi
+Exec=/usr/bin/ShowMIDI
 Icon=showmidi
 Terminal=false
 StartupNotify=false
