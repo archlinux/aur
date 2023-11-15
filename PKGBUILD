@@ -13,6 +13,7 @@ optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 provides=(${_pkgname})
+conflicts=(${_pkgname} ${_pkgname}-git)
 options=(!strip)
 source=(
     "https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
