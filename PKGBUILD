@@ -13,8 +13,8 @@ makedepends=('git' 'nodejs' 'npm' 'openssl-1.1' 'libxcrypt' 'cryptsetup' 'libxcr
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-conflicts=('singland' 'singland-bin')
-provides=("singland")
+provides=(${_pkgname})
+conflicts=(${_pkgname}-bin ${_pkgname})
 options=(!strip)
 source=(
     "git+https://github.com/net-breaker/sing-land"
