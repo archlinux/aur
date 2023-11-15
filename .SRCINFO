@@ -1,20 +1,16 @@
 pkgbase = gdx-setup
-	pkgdesc = Libgdx project setup
-	pkgver = 1.9.8.nightly
+	pkgdesc = LibGDX project setup
+	pkgver = 1.12.1
 	pkgrel = 1
-	epoch = 1
-	url = http://libgdx.badlogicgames.com
+	url = https://libgdx.com
 	arch = any
-	license = APACHE2
+	license = APACHE
 	depends = java-environment
-	source = http://libgdx.badlogicgames.com/nightlies/dist/gdx-setup.jar
+	source = gdx-setup-1.12.1.tar.gz::https://github.com/libgdx/libgdx/archive/refs/tags/1.12.1.tar.gz
 	source = gdx-setup
 	source = gdx-setup.desktop
-	source = http://libgdx.badlogicgames.com/img/features_hover.png
-	md5sums = SKIP
-	md5sums = 2c7c983f8fa177e78a7e19cf94236899
-	md5sums = 257fb7b869f2cf0c44834370031b4d5b
-	md5sums = a391aeb480342564c076cd9217536884
+	sha256sums = c76eb45d990332d380063ec5d74c6a62b9dbe54c4f091f831ecfa8a1c6b28f87
+	sha256sums = 995e6025a45506df2e23661a3b703047cdb58ae8a4dcc5abce097c30ca666613
+	sha256sums = b2bb727a902caf7101efa5f8103421528b7d6e2ebfc4faf33d181c63c82814f6
 
 pkgname = gdx-setup
-
