@@ -1,5 +1,5 @@
 _pkgname="figma-linux"
-pkgname="${_pkgname}-git-dev"
+pkgname="${_pkgname}-dev-git"
 pkgver="0.11.0.r37.gb297c52"
 pkgrel="0"
 arch=("any")
