@@ -2,7 +2,7 @@
 
 pkgname=python-rns
 _name='rns'
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="Self-configuring, encrypted and resilient mesh networking stack"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('rnodeconf')
 url="https://reticulum.network/"
 license=('MIT')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz)
-sha256sums=('429c59c0bd99dac85c810ee5f4c70b805d33c6e7263da93e877325bf17557c23')
+sha256sums=('d5b71afc0dd14b22c188bcf558035f7a50984b3de589fc6a382f2b34b2b5d128')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
