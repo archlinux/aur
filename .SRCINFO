@@ -1,7 +1,7 @@
 pkgbase = inochi-creator
 	pkgdesc = Inochi2D Rigging Application
 	pkgver = 0.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://inochi2d.com/
 	arch = x86_64
 	license = custom
