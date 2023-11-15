@@ -15,28 +15,29 @@ optdepends=(
 conflicts=('singboxclient-git')
 options=(!strip)
 source=(
-    "https://github.com/daodao97/SingBoxClient/archive/refs/tags/v${pkgver//_/-}.zip"
+    "https://github.com/daodao97/SingBoxClient/archive/refs/heads/master.zip"
     "singboxclient.desktop"
 )
 sha256sums=(
-    "e4c89960401bcc159d50d5195f489cea9927cc3f85c59874c1d0850783c01cd0"
+    "SKIP"
     "120e2ee5bf52d7c6bf8f40af5dbc8458473539a82fd77c6d00100e3d26b4d3f3"
 )
 
 prepare() {
-    cd "$srcdir/SingBoxClient-${pkgver//_/-}"
+    cd "$srcdir/SingBoxClient-master"
+    git init
     sed -i 's/musl/gnu/g' build.sh
     sed -i 's/open build//g' build.sh
 }
 
 build() {
-    cd "$srcdir/SingBoxClient-${pkgver//_/-}"
+    cd "$srcdir/SingBoxClient-master"
     sh build.sh -p linux
 }
 
 package() {
-    cd "$srcdir/SingBoxClient-${pkgver//_/-}"
+    cd "$srcdir/SingBoxClient-master"
     install -Dm755 sbox "$pkgdir/usr/bin/${pkgname}";
     install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/SingBoxClient-${pkgver//_/-}/icon/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/SingBoxClient-master/icon/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
