@@ -13,7 +13,6 @@ pkgbase = jellyfin-server-bin
 	depends = fontconfig
 	depends = jellyfin-ffmpeg
 	optdepends = jellyfin-web: to run web-app on the same machine
-	optdepends = ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis
 	provides = jellyfin-server
 	conflicts = jellyfin-server
 	conflicts = jellyfin-server-git
