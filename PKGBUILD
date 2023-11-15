@@ -4,10 +4,10 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=carvel-tools
-pkgver=20231111
+pkgver=20231115
 pkgrel=1
-pkgdesc="Set of Carvel tools (binaries): imgpkg kapp kbld kctrl kwt vendir ytt"
-url="https://carvel.dev"
+pkgdesc='Set of Carvel tools (binaries): imgpkg kapp kbld kctrl kwt vendir ytt'
+url='https://carvel.dev'
 arch=(x86_64 aarch64)
 license=(Apache)
 conflicts=(imgpkg kapp kbld kctrl kwt vendir ytt)
