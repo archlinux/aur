@@ -6,12 +6,12 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
 pkgname=archiso-git
-pkgver=67.r0.gfbc7224
+pkgver=73.r0.ge880172
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
 url='https://gitlab.archlinux.org/archlinux/archiso'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils' 'grub' 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools')
 makedepends=('git')
 checkdepends=('shellcheck')
@@ -32,7 +32,7 @@ validpgpkeys=(
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
