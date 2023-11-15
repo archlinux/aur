@@ -6,7 +6,7 @@ pkgname=xf86-video-fbturbo
 pkgver=0.4.0
 pkgrel=1
 pkgdesc='X.org MALI video driver'
-arch=('armv7h' 'aarch64')
+arch=('x86_64')
 url="https://github.com/ssvb/xf86-video-fbturbo"
 license=('MIT')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION>=24.0' 'git')

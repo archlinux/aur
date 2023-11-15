@@ -3,8 +3,7 @@ pkgbase = xf86-video-fbturbo
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ssvb/xf86-video-fbturbo
-	arch = armv7h
-	arch = aarch64
+	arch = x86_64
 	license = MIT
 	makedepends = xorg-server-devel
 	makedepends = X-ABI-VIDEODRV_VERSION>=24.0
