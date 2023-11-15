@@ -1,7 +1,7 @@
 # Maintainer: xiota / aur.chaotic.cx
 # Contributor: Filip Graliński <filipg@amu.edu.pl>
 
-if [ x"$SRCDEST" == "x" ] ; then
+if [ -z "$SRCDEST" ] ; then
   : ${CARGO_HOME:=$startdir/cargo}
 else
   : ${CARGO_HOME:=$SRCDEST/cargo}
@@ -10,12 +10,13 @@ fi
 _gitname="tokenizers"
 _pkgname="python-$_gitname"
 pkgname="$_pkgname"
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Fast State-of-the-Art Tokenizers optimized for Research and Production'
-arch=('i686' 'x86_64')
 url="https://github.com/huggingface/tokenizers"
 license=('Apache')
+arch=('i686' 'x86_64')
+
 depends=(
   'python'
 )
@@ -27,33 +28,28 @@ makedepends=(
   'python-setuptools-rust'
   'python-wheel'
 )
-provides=("$_pkgname")
-conflicts=(${provides[@]})
-source=(
-  "$_gitname"::"git+$url#tag=v$pkgver"
-)
-sha256sums=(
-  'SKIP'
-)
+
+_pkgsrc="$_gitname"
+source=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+sha256sums=('SKIP')
 
 prepare() {
-  _cargo_toml_paths=(
-    bindings/python
-  )
+  export RUSTUP_TOOLCHAIN=stable
 
-  for i in ${_cargo_toml_paths[@]} ; do
-    cd "$srcdir/$_gitname/$i"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-  done
+  cd "$_pkgsrc/bindings/python"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/$_gitname/bindings/python"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-target}"
+
+  cd "$_pkgsrc/bindings/python"
   cargo build --frozen --release
   python -m build --no-isolation --wheel
 }
 
 package() {
-  cd "$srcdir/$_gitname/bindings/python"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pkgsrc/bindings/python"
+  python -m installer --destdir="${pkgdir:?}" dist/*.whl
 }
