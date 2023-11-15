@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=vendir-bin
 pkgver=0.37.0
-pkgrel=1
-pkgdesc="Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively"
-url="https://carvel.dev/vendir"
+pkgrel=2
+pkgdesc='Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively'
+url='https://carvel.dev/vendir'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 provides=(vendir)
