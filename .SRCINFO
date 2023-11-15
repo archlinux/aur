@@ -1,16 +1,16 @@
 pkgbase = mingw-w64-xorg-util-macros
 	pkgdesc = X.Org Autotools macros (mingw-w64)
-	pkgver = 1.19.3
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = any
 	license = custom
 	makedepends = mingw-w64-configure
-	source = http://xorg.freedesktop.org//releases/individual/util/util-macros-1.19.3.tar.bz2
-	source = http://xorg.freedesktop.org//releases/individual/util/util-macros-1.19.3.tar.bz2.sig
+	source = http://xorg.freedesktop.org//releases/individual/util/util-macros-1.20.0.tar.gz
+	source = http://xorg.freedesktop.org//releases/individual/util/util-macros-1.20.0.tar.gz.sig
 	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
 	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	sha512sums = b9c7398a912c688a782eab5b1e0f6da2df11a430775c5c98fc3269f73a665de6eeb60d300a849e38d345714a6e51f74e9334cb6039767304cca4b93d823a53a2
+	sha512sums = 0724cf57cbf00fe115596457bf2031cdad5845bebdcc1ee4ff90b4f77b4ebc862b0f7d250272ef58c2929aedead3d18d11f23f067e50fcac22863a1fcd4f3d66
 	sha512sums = SKIP
 
 pkgname = mingw-w64-xorg-util-macros
