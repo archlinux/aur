@@ -1,8 +1,8 @@
 pkgbase = kotlin-language-server-git
 	pkgdesc = Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol
-	pkgver = r1337.bc53099
+	pkgver = r1444.80fc538
 	pkgrel = 1
-	url = https://github.com/fwcd/KotlinLanguageServer.git
+	url = https://github.com/fwcd/kotlin-language-server.git
 	arch = any
 	license = MIT
 	makedepends = java-environment=11
@@ -10,7 +10,7 @@ pkgbase = kotlin-language-server-git
 	depends = java-runtime=11
 	provides = kotlin-language-server
 	conflicts = kotlin-language-server
-	source = kotlin-language-server::git+https://github.com/fwcd/KotlinLanguageServer.git
+	source = kotlin-language-server::git+https://github.com/fwcd/kotlin-language-server.git
 	sha256sums = SKIP
 
 pkgname = kotlin-language-server-git

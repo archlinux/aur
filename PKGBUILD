@@ -2,11 +2,11 @@
 
 pkgname=kotlin-language-server-git
 _pkgname=kotlin-language-server
-pkgver=r1337.bc53099
+pkgver=r1444.80fc538
 pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
-url="https://github.com/fwcd/KotlinLanguageServer.git"
+url="https://github.com/fwcd/kotlin-language-server.git"
 license=('MIT')
 conflicts=('kotlin-language-server')
 provides=('kotlin-language-server')
