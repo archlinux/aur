@@ -1,6 +1,6 @@
 pkgbase = youtube-tv-git
 	pkgdesc = Desktop YouTube TV app
-	pkgver = 1.0.0.r6.g6271886
+	pkgver = 1.0.0.r9.g2b22762
 	pkgrel = 1
 	url = https://github.com/futpib/youtube-tv
 	arch = x86_64

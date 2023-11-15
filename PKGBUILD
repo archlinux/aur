@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=youtube-tv-git
-pkgver=1.0.0.r6.g6271886
+pkgver=1.0.0.r9.g2b22762
 pkgrel=1
 pkgdesc="Desktop YouTube TV app"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
-    yarn install --frozen-lockfile --ignore-engines
+    yarn install --immutable
     yarn build
 }
 
