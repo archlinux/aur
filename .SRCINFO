@@ -13,6 +13,7 @@ pkgbase = singboxclient-git
 	depends = libayatana-appindicator
 	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
 	provides = singboxclient
+	conflicts = singboxclient-bin
 	conflicts = singboxclient
 	options = !strip
 	source = git+https://github.com/daodao97/SingBoxClient
