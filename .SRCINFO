@@ -1,6 +1,6 @@
 pkgbase = ledger-live-bin
 	pkgdesc = Maintain your Ledger devices
-	pkgver = 2.71.0
+	pkgver = 2.71.1
 	pkgrel = 1
 	url = https://www.ledger.com/ledger-live
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ledger-live-bin
 	provides = ledger-live
 	conflicts = ledger-live
 	options = !strip
-	source = ledger-live-desktop-2.71.0-linux-x86_64.AppImage::https://download.live.ledger.com/ledger-live-desktop-2.71.0-linux-x86_64.AppImage
-	source = LICENSE-2.71.0::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%402.71.0/apps/ledger-live-desktop/LICENSE
-	sha512sums = ee03b4ecbd3eb4973566eb738fa22380de44122a96a94f2c5f2976a0919acffed3e3b1e6dc039c0b7cdee9a0888c8b47674397f89676fd582691ba2affad8cfe
+	source = ledger-live-desktop-2.71.1-linux-x86_64.AppImage::https://download.live.ledger.com/ledger-live-desktop-2.71.1-linux-x86_64.AppImage
+	source = LICENSE-2.71.1::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%402.71.1/apps/ledger-live-desktop/LICENSE
+	sha512sums = 674e4eebde2ec280d6afa03471256877fd4fdc4e3ddb781e09fd2678252336a5e0773a3fda336dcd7262d6cf1b7b122776cfcee5de20965db7677ecc84cc5fa2
 	sha512sums = 915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318
 
 pkgname = ledger-live-bin
