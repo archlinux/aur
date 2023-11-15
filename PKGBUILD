@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kubectl-gke-stable-bin
 pkgver=v1.24.17
-pkgrel=2
-pkgdesc="Kubernetes.io client binary, compatible with the GKE version from the stable channel"
-url="https://github.com/kubernetes/kubectl"
+pkgrel=3
+pkgdesc='Kubernetes.io client binary, compatible with the GKE version from the stable channel'
+url='https://github.com/kubernetes/kubectl'
 arch=(i686 x86_64 armv5 armv6h armv7h aarch64)
 license=(Apache-2.0)
 conflicts=(kubectl-gke-stable-bin kubectl-gke-stable-bin-bin)
