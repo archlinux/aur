@@ -1,0 +1,17 @@
+pkgbase = r-mofadata
+	pkgdesc = Data package for Multi-Omics Factor Analysis (MOFA)
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MOFAdata
+	arch = any
+	license = LGPL3
+	depends = r
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-multiassayexperiment
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/MOFAdata_1.18.0.tar.gz
+	md5sums = 23e46e209a43d7e62cfd6accc6a6fb44
+	sha256sums = c1e32c68192a91e9174f345cfbc97b73879594b0182fd51642ef2047db4885de
+
+pkgname = r-mofadata
