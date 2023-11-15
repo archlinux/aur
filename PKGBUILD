@@ -12,8 +12,8 @@ makedepends=('git' 'cmake' 'python' 'python-pip' 'patchelf')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-provides=("furious")
-conflicts=('furious')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 options=(!strip)
 source=(
     "git+https://github.com/LorenEteval/Furious.git"
