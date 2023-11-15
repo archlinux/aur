@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=utools-bin
 _pkgname=uTools
-pkgver=4.2.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=("x86_64")
@@ -21,7 +21,6 @@ depends=(
     'nspr'
     'libx11'
     'libxkbcommon'
-    'bash'
     'dbus'
     'mesa'
     'libdrm'
@@ -39,10 +38,10 @@ depends=(
     'alsa-lib'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::https://res.u-tools.cn/version2/utools_4.2.0_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::https://res.u-tools.cn/version2/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE.html::${url}/agreement.html"
 )
-sha256sums=('704cdaf3fb2af353ba6445d0980098369756f48614f78136f8c5b79a5e79d370'
+sha256sums=('9221328d5735bfa8b32bee73d668821a91f6e40850b877d031e8d09b17cb9f57'
             '79ece83ed12ba8fe68f7ae40af48df0e3e8f23fcb0f1cae6908fa14221cbab64')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
