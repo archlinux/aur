@@ -2,20 +2,21 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=6.0
-pkgrel=5
-_svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
-_svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
+pkgver=6.1
+pkgrel=1
+_svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
+_svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
-    'alsa-lib'
+   'alsa-lib'
     'aom'
     'aribb24'
     'avisynthplus'
     'bzip2'
+    'cairo'
     'celt'
     'codec2'
     'cuda'
@@ -25,10 +26,12 @@ depends=(
     'freetype2'
     'frei0r-plugins'
     'fribidi'
+    'glib2'
     'glslang'
     'gmp'
     'gnutls'
     'gsm'
+    'harfbuzz'
     'jack'
     'kvazaar'
     'ladspa'
@@ -57,6 +60,7 @@ depends=(
     'libplacebo'
     'libpulse'
     'librabbitmq-c'
+    'libraw1394'
     'librsvg'
     'libsoxr'
     'libssh'
@@ -80,6 +84,7 @@ depends=(
     'opencore-amr'
     'openh264'
     'openjpeg2'
+    'openvino'
     'opus'
     'rav1e'
     'rtmpdump'
@@ -128,41 +133,35 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        #"020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
-        '070-ffmpeg-binutils2.41-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/effadce6c756247ea8bae32dc13bb3e6f464f0eb'
-        '080-ffmpeg-nvenc-fix-010.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/03823ac0c6a38bd6ba972539e3203a592579792f'
-        '090-ffmpeg-nvenc-fix-020.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/d2b46c1ef768bc31ba9180f6d469d5b8be677500'
         'LICENSE')
-sha256sums=('57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082'
+sha256sums=('488c76e57dd9b3bee901f71d5c95eaf1db4a5a31fe46a28654e837144207c270'
             'SKIP'
             'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
-            'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
-            'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'
-            'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a'
-            'fec03e133521486ca258ae34ddf093eb6aab23f848c4332c367aadbfeaefda04'
-            'aa8c43efac4c0dfc462af887b56bdb177cf09dd8b2dffea5c83a4dbfc35e0917'
-            '3fe87a3bd193f16a191ff795ae8ad62d930e48d7b379fc627043717a6bdf3e93'
+            'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
+            '0433016c8523c7ce159523946a76c8fa06a926f33f94b70e8de7c2082d14178c'
+            '7d5ce8058b143bae1be10a06d79ac0f1a72daf00cf648309450d83bea249a6b1'
+            '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,vp9}.c
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    #patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-binutils2.41-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-nvenc-fix-010.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-nvenc-fix-020.patch"
 }
 
 build() {
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
+    
+    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/openvino/runtime/lib/intel64/pkgconfig"
     
     ./configure \
         --prefix='/usr' \
@@ -205,9 +204,10 @@ build() {
         --enable-libdc1394 \
         --enable-libfdk-aac \
         --enable-libflite \
-        --enable-fontconfig \
+        --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
+        --enable-libharfbuzz \
         --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
@@ -226,7 +226,7 @@ build() {
         --enable-libopenh264 \
         --enable-libopenjpeg \
         --enable-libopenmpt \
-        --disable-libopenvino \
+        --enable-libopenvino \
         --enable-libopus \
         --enable-libplacebo \
         --enable-libpulse \
