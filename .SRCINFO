@@ -1,25 +1,24 @@
 pkgbase = kiwiirc-desktop-bin
 	pkgdesc = Next generation of the Kiwi IRC web client
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kiwiirc.com/
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = Apache
-	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
 	provides = kiwiirc=1.7.1
 	conflicts = kiwiirc-desktop
 	conflicts = kiwiirc
 	source = kiwiirc-desktop.sh
-	sha256sums = 0d7be737f12933bc5cd596c564df9bba5e3a15aefde284ef078861914ba7b477
-	source_armv7h = kiwiirc-desktop-1.7.1-armv7h.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-1_linux_armv7l.deb
-	sha256sums_armv7h = c13264bc11c4618ee10571abe713cd368e5be8aa120f88a4ce1f45870defc799
-	source_aarch64 = kiwiirc-desktop-1.7.1-aarch64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-1_linux_arm64.deb
-	sha256sums_aarch64 = 4a710e2b416cc1c2d274af7d3d9191cb106e1fa5e6eb957bf804cabfd7c92744
-	source_x86_64 = kiwiirc-desktop-1.7.1-x86_64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-1_linux_amd64.deb
-	sha256sums_x86_64 = 9a6ce6f3ca4e539beebaa392253c79cdc92a93790bc57879d58b64dc16e362f6
+	sha256sums = de62ed6306328b9c24eafc0335f3b042efc2ecfe77450692b2b04e0f86c4eb95
+	source_armv7h = kiwiirc-desktop-1.7.1-armv7h.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-2_linux_armv7l.deb
+	sha256sums_armv7h = 52b315f259afac82cc29c362addb3e9ee13362a9533619471d1b51110e310099
+	source_aarch64 = kiwiirc-desktop-1.7.1-aarch64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-2_linux_arm64.deb
+	sha256sums_aarch64 = e6735265dd06b5b76254dd00e54a6253468b8eb2c9306c3189143b47a42c4c6d
+	source_x86_64 = kiwiirc-desktop-1.7.1-x86_64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-2_linux_amd64.deb
+	sha256sums_x86_64 = 94c71d9d625b4efae0b4862a1702bd6b18fe942cf2834196e43c5121dd5d7213
 
 pkgname = kiwiirc-desktop-bin
