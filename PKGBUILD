@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kwt-bin
 pkgver=0.0.8
-pkgrel=1
-pkgdesc="Kubernetes Workstation Tools CLI"
-url="https://github.com/carvel-dev/kwt"
+pkgrel=2
+pkgdesc='Kubernetes Workstation Tools CLI'
+url='https://github.com/carvel-dev/kwt'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 provides=(kwt)
