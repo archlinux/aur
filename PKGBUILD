@@ -1,50 +1,69 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer:
+# Contributor: Vincent Grande <shoober420@gmail.com>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=lib32-libxcb-git
-pkgver=1.14
+_gitname="libxcb"
+_pkgname="lib32-$_gitname"
+pkgname="$_pkgname-git"
+pkgver=1.16.r5.g3c94601
 pkgrel=1
 pkgdesc="X11 client-side library (32-bit)"
-arch=(x86_64)
-url="https://xcb.freedesktop.org/"
-depends=('lib32-libxdmcp' 'lib32-libxau' 'libxcb')
-makedepends=('pkgconfig' 'libxslt' 'python' 'xorg-util-macros' 'gcc-multilib'
-             'autoconf' 'xorgproto')
-provides=(lib32-libxcb)
-conflicts=(lib32-libxcb)
-license=('custom')
-source=("git+https://gitlab.freedesktop.org/xorg/lib/libxcb")
-sha512sums=('SKIP')
+#url="https://xcb.freedesktop.org/"
+url="https://gitlab.freedesktop.org/xorg/lib/libxcb"
+license=('X11')
+arch=('x86_64')
+
+depends=(
+  lib32-libxau
+  lib32-libxdmcp
+  libxcb
+)
+makedepends=(
+  autoconf
+  gcc-multilib
+  libxslt
+  pkgconfig
+  python
+  xorg-util-macros
+  xorgproto
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_gitname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd libxcb
-  git describe --tags | sed 's/-/+/g'
+  cd "$_pkgsrc"
+  git describe --long --tags \
+    | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd libxcb
+  cd "$_pkgsrc"
 
-  export CC="gcc -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  # workaround for FS#49560
-  export CFLAGS="${CFLAGS} -O1"
+  export CC="gcc -m32 -mstackrealign"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-  ./autogen.sh \
-	  --prefix=/usr \
-	  --enable-xinput \
-          --enable-xkb \
-	  --libdir=/usr/lib32 \
-	  --without-doxygen \
-	  --disable-static
+  local _config_options=(
+    --prefix='/usr'
+    --enable-xinput
+    --enable-xkb
+    --disable-static
+    --libdir=/usr/lib32
+    --with-doxygen=no
+  )
+
+  ./autogen.sh "${_config_options[@]}"
   make
 }
 
 package() {
-  cd libxcb
-
-  make DESTDIR="${pkgdir}" install
-
+  cd "$_pkgsrc"
+  make DESTDIR="${pkgdir:?}" install
   rm -rf "${pkgdir}"/usr/{include,share}
 
   mkdir -p "$pkgdir/usr/share/licenses"
