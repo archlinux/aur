@@ -1,78 +1,72 @@
-# Maintainer: japm48 <japm48gh@gmail.com>
-# Adapted from official PKGBUILD in Community repo
-
-_pkgname=pybind11
-pkgname=${_pkgname}-git
-
-provides=($_pkgname)
-conflicts=($_pkgname)
-
-pkgver=v2.10.2.r32.g3cc7e425
+pkgname=pybind11-git
+pkgver=v2.11.0.r55.ge250155
 pkgrel=1
-
-_repo=pybind/$_pkgname
-
-pkgdesc='pybind11 (git version)'
+pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa-git'
 arch=('any')
 url='https://pybind11.readthedocs.org/'
 license=('BSD')
-
-optdepends=('python: for python bindings')
-makedepends=('git' 'cmake' 'boost' 'eigen' 'python' 'python-setuptools' 'python-pytest')
-
+conflicts=(pybind11)
+provides=(pybind11)
+optdepends=('python-setuptools: for python bindings')
+makedepends=('cmake' 'boost' 'catch2' 'eigen' 'python-build' 'python-installer'
+             'python-setuptools' 'python-pytest' 'python-wheel')
+             #'python-sphinx' 'python-sphinx_rtd_theme' 'python-breathe')
 checkdepends=('python-numpy' 'python-scipy')
 
-source=("git+https://github.com/${_repo}.git")
-sha256sums=('SKIP')
+source=('git+https://github.com/pybind/pybind11.git'
+'nopip.patch')
+
+sha256sums=('SKIP'
+            '8913d3902ee451dc9c2dd256aa8970e56c9b8854cfdf9807235226c2860c7e96')
+
+prepare() {
+  cd pybind11
+   patch -p1 -i ../nopip.patch
+}
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd pybind11
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
-    # configure
+    cd pybind11
+    python -m build --wheel --no-isolation
+    
+    # tests
     cmake \
-        -S ${_pkgname} \
-        -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DPYTHON_EXECUTABLE=/usr/bin/python
-    # build
-    cmake --build build
+        -G 'Unix Makefiles' \
+        -B "${srcdir}/build-tests" \
+        -S "${srcdir}/pybind11" \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -Wno-dev
+    cmake --build "${srcdir}/build-tests"
+    
+    # manpage (needs python-sphinxcontrib-{moderncmakedomain,svg2pdfconverter})
+    # make -C "${srcdir}/${pkgname}-${pkgver}/docs" man
 }
 
 check() {
-    # configure tests
-    cmake \
-        -S ${_pkgname} \
-        -B build-tests \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DPYTHON_EXECUTABLE=/usr/bin/python
-
-    # build tests
-    make -C build-tests all mock_install
-    # exec tests
     make -C build-tests check
 }
 
 package() {
-    cd "${_pkgname}"
-    python setup.py install --root="$pkgdir" --skip-build --optimize='1'
-
+    python -m installer --destdir="$pkgdir" "pybind11/dist"/*.whl
+    
     # symlinks
     local _pyver
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    install -d -m755 "${pkgdir}/usr"/{include,lib/cmake}
+    install -d -m755 "${pkgdir}/usr"/{include,lib/{cmake,pkgconfig}}
     ln -s "../lib/python${_pyver}/site-packages/pybind11/include/pybind11" "${pkgdir}/usr/include/pybind11"
     ln -s "../../lib/python${_pyver}/site-packages/pybind11/share/cmake/pybind11" "${pkgdir}/usr/lib/cmake/pybind11"
-
+    ln -s "../../lib/python${_pyver}/site-packages/pybind11/share/pkgconfig/pybind11.pc" "${pkgdir}/usr/lib/pkgconfig/pybind11.pc"
+    
     # man page
-    # install -D -m644 "docs/.build/man/${_pkgname}.1" "${pkgdir}/usr/share/man/man7/${_pkgname}.7"
-    # sed -i '/^\.TH/s/"1"/"7"/' "${pkgdir}/usr/share/man/man7/${_pkgname}.7"
-
+    # install -D -m644 "docs/.build/man/${pkgname}.1" "${pkgdir}/usr/share/man/man7/${pkgname}.7"
+    # sed -i '/^\.TH/s/"1"/"7"/' "${pkgdir}/usr/share/man/man7/${pkgname}.7"
+    
     # license
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -D -m644 "pybind11/LICENSE" -t "${pkgdir}/usr/share/licenses/pybind11"
 }
 
