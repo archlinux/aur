@@ -1,12 +1,18 @@
 pkgbase = live-plus-plus-bin
 	pkgdesc = Lightweight live streaming client.轻量级的直播客户端
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dipelta/live-plus-plus
 	arch = x86_64
 	license = MIT
-	depends = bash
+	makedepends = squashfuse
 	depends = electron24
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = live-plus-plus=2.1.0
 	conflicts = live-plus-plus
 	conflicts = live++
@@ -15,6 +21,6 @@ pkgbase = live-plus-plus-bin
 	source = live-plus-plus.sh
 	sha256sums = 8e07f2ba78a0648992ae72dc281aa5b58cd5ec4d6b65134d5d38b29f971a3657
 	sha256sums = 8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748
-	sha256sums = af2d1f604e260a8859160ab98ccad6513748da99999123038505cd6d97c91bc3
+	sha256sums = 6fe2daec58b8ad792e3fbebc35024c342f2ebad5149d90a95458a63fdea19146
 
 pkgname = live-plus-plus-bin
