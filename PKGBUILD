@@ -1,8 +1,9 @@
-# Maintainer: Ainola
+# Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
+# Contributor: Ainola
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=5.11
+pkgver=6.58
 pkgrel=1
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
@@ -10,13 +11,16 @@ url="https://github.com/jay0lee/GAM"
 license=('Apache')
 depends=(
     'python-dateutil'
+    'python-distro'
     'python-dnspython'
+    'python-filelock'
     'python-google-api-core'
     'python-google-api-python-client'
     'python-google-auth'
     'python-google-auth-httplib2'
     'python-google-auth-oauthlib'
     'python-httplib2'
+    'python-pathvalidate'
     'python-passlib'
 )
 
@@ -27,8 +31,8 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('47e12a770f78d55a158569734ade7fac9c014ddb9752344367516dc29eecb150'
-            '31d97ff8515d6b5e214b18affb1cb7be88fc8cddb0022f46d6d7ccf848819bf9'
+sha256sums=('755f6974ed92c475949cb92dd7655a52567ec582ab132d8f5a0f754585af2085'
+            '69875ddfe63523579a6be45fdcac4211503b4149765f3ee66514a40503a5e374'
             '1be3b23bc2ee2fb5a43c6a999919243c93877fc9ea13c5e301097d1b5cd53baa'
             'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 
@@ -54,6 +58,8 @@ package() {
     find "$pkgdir/usr/share/$pkgname" -name '*_test.py' -exec rm {} +
 
     install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm755 "$pkgname-$pkgver/src/GamCommands.txt" -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm755 "$pkgname-$pkgver/src/roots.pem" -t "$pkgdir/usr/share/$pkgname/"
     install -Dm755 gam.sh "$pkgdir/usr/bin/gam"
 
 }

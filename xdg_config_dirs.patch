@@ -1,8 +1,8 @@
---- src/gam/var.py	2020-05-14 08:28:44.595484330 -0700
-+++ src/gam/var.py	2020-05-14 08:30:42.780304096 -0700
-@@ -22,6 +22,19 @@
+--- src/gam/var.py	2023-04-26 14:42:13.000000000 +0200
++++ src/gam/var.py	2023-11-15 20:05:25.960900169 +0100
+@@ -35,6 +35,18 @@
  GAM_LATEST_RELEASE = GAM_ALL_RELEASES + '/latest'
- GAM_PROJECT_FILEPATH = 'https://raw.githubusercontent.com/jay0lee/GAM/master/src/'
+ GAM_PROJECT_FILEPATH = 'https://raw.githubusercontent.com/GAM-team/GAM/master/src/'
  
 +try:
 +    XDG_CONFIG_DIR = os.environ['XDG_CONFIG_HOME']
@@ -11,27 +11,26 @@
 +CONFIG_DIR = XDG_CONFIG_DIR + 'gam/'
 +
 +try:
-+    os.makedirs(CONFIG_DIR, mode=700)
++    os.makedirs(CONFIG_DIR, mode=0o700)
 +except OSError:
 +    if not os.path.isdir(CONFIG_DIR):
 +        raise
 +
-+
  true_values = ['on', 'yes', 'enabled', 'true', '1']
  false_values = ['off', 'no', 'disabled', 'false', '0']
  usergroup_types = [
-@@ -36,8 +49,8 @@
- WARNING_PREFIX = 'WARNING: '
+@@ -51,8 +63,8 @@
  UTF8 = 'utf-8'
  UTF8_SIG = 'utf-8-sig'
+ FN_ENABLEDASA_TXT = 'enabledasa.txt'
 -FN_EXTRA_ARGS_TXT = 'extra-args.txt'
 -FN_LAST_UPDATE_CHECK_TXT = 'lastupdatecheck.txt'
 +FN_EXTRA_ARGS_TXT = CONFIG_DIR + 'extra-args.txt'
 +FN_LAST_UPDATE_CHECK_TXT = CONFIG_DIR + 'lastupdatecheck.txt'
  MY_CUSTOMER = 'my_customer'
  # See https://support.google.com/drive/answer/37603
- MAX_GOOGLE_SHEET_CELLS = 5000000
-@@ -1071,9 +1084,9 @@
+ MAX_GOOGLE_SHEET_CELLS = 10000000
+@@ -1246,9 +1258,9 @@
  
  #
  _DEFAULT_CHARSET = UTF8
@@ -41,10 +40,10 @@
 +_FN_CLIENT_SECRETS_JSON = CONFIG_DIR + 'client_secrets.json'
 +_FN_OAUTH2SERVICE_JSON = CONFIG_DIR + 'oauth2service.json'
 +_FN_OAUTH2_TXT = CONFIG_DIR + 'oauth2.txt'
+ _FN_ROOTS_PEM = 'roots.pem'
  #
  GM_Globals = {
-     GM_SYSEXITRC: 0,
-@@ -1119,7 +1132,7 @@
+@@ -1296,7 +1308,7 @@
  GC_CLIENT_SECRETS_JSON = 'client_secrets_json'
  # GAM config directory containing client_secrets.json, oauth2.txt,
  # oauth2service.json, extra_args.txt
@@ -52,4 +51,4 @@
 +GC_CONFIG_DIR = CONFIG_DIR
  # custmerId from gam.cfg or retrieved from Google
  GC_CUSTOMER_ID = 'customer_id'
- # If debug_level > 0: extra_args[u'prettyPrint'] = True,
+ # Admin email address, required when enable_dasa is true, overrides oauth2.txt value otherwise
