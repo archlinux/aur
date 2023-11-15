@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReactomeGSA
-_pkgver=1.14.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Client for the Reactome Analysis Service for comparative multi-omics gene set analysis'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e2fe638a6816532ccc63d1770b24f0d2a176cb631ff43d5d785c0e5fe3bc49c6')
+sha256sums=('faa9aad8c282a09909833ddcc261f502f1f786869e3425626771160881b9e35c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
