@@ -1,37 +1,55 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer:
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dan Johansen <strit@manjaro.org>
 # Contributor: Shaber
 
-pkgname=libcprime-git
-_pkg="${pkgname%-git}"
-pkgver=4.4.1.r0.g21750d2
+_pkgname="libcprime"
+pkgname="$_pkgname-git"
+pkgver=4.5.0.r2.gbc990a2
 pkgrel=1
 pkgdesc="A library for bookmarking, saving recent activites, managing settings of C-Suite"
-arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/libcprime"
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('cmake' 'git')
-provides=("$_pkg" "$_pkg-core.so" "$_pkg-gui.so" "$_pkg-widgets.so")
-conflicts=("$_pkg")
-source=("$_pkg::git+$url")
+arch=('x86_64' 'aarch64')
+
+depends=(
+  qt6-base
+)
+makedepends=(
+  cmake
+  git
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  cd "$_pkgsrc"
+  local _pkgver=$(
+    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  )
+  echo "${_pkgver:?}"
 }
 
 build() {
-	cmake \
-		-B build \
-		-S "$_pkg" \
-		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-Wno-dev
-	cmake --build build
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
