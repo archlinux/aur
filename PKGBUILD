@@ -9,8 +9,8 @@ arch=(x86_64)
 url='https://github.com/Wox-launcher/Wox'
 license=('MIT')
 depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 'ayatana-ido' 'at-spi2-core' 'glib2' 'cairo' 'harfbuzz' 'gdk-pixbuf2' 'libayatana-appindicator' 'zlib' 'gtk3' 'libdbusmenu-glib')
-provides=("wox")
-conflicts=('wox' 'wox-git')
+provides=(${_pkgname})
+conflicts=(${_pkgname}-git ${_pkgname})
 options=(!strip)
 source=(
     "${_pkgname}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64-20231114-5a22f5"
