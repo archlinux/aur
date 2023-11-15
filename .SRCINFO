@@ -1,7 +1,7 @@
 pkgbase = ente-desktop-bin
 	pkgdesc = Desktop app for ente Photos
 	pkgver = 1.6.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ente-io/photos-desktop
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,6 @@ pkgbase = ente-desktop-bin
 	depends = pango
 	depends = at-spi2-core
 	depends = expat
-	depends = dbus
 	depends = nspr
 	depends = libxdamage
 	depends = mesa

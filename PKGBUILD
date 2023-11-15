@@ -2,7 +2,7 @@
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
 pkgver=1.6.50
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for ente Photos"
 arch=('x86_64')
 url="https://github.com/ente-io/photos-desktop"
@@ -26,7 +26,6 @@ depends=(
     'pango'
     'at-spi2-core'
     'expat'
-    'dbus'
     'nspr'
     'libxdamage'
     'mesa'
@@ -48,6 +47,6 @@ package() {
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}"
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
 }
