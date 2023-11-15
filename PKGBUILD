@@ -1,151 +1,144 @@
-# Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
-# Co-maintainer: Brendan Szymanski <hello@bscubed.dev>
-
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
+# Contributor: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-git
-pkgver=r24275.238e46ec9
+pkgver=1620.r0.g9962a4a09
 pkgrel=1
-pkgdesc='An experimental open-source emulator for the Nintendo Switch'
-arch=('i686' 'x86_64')
-url='https://github.com/yuzu-emu/yuzu'
-license=('GPL2')
-provides=('yuzu')
-conflicts=('yuzu')
-depends=('desktop-file-utils'
-         'fmt'
-         'glslang'
-         'libfdk-aac'
-         'libusb'
-         'libxkbcommon-x11'
-         'lz4'
-         'mbedtls'
-         'openssl'
-         'opus'
-         'qt5-base'
-         'qt5-multimedia'
-         'qt5-tools'
-         'qt5-wayland'
-         'qt5-webengine'
-         'sdl2'
-         'shared-mime-info'
-         'zlib'
-         'zstd')
-makedepends=('boost'
-             'clang'
-             'cmake'
-             'ffmpeg'
-             'git'
-             'ninja'
-             'nlohmann-json'
-             'robin-map'
-             'yasm')
-source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu"
-        'git+https://github.com/lsalzman/enet.git'
-        'git+https://github.com/benhoyt/inih.git'
-        'git+https://github.com/mozilla/cubeb.git'
-        'git+https://github.com/MerryMage/dynarmic.git'
-        'git+https://github.com/libusb/libusb.git'
-        'git+https://github.com/yuzu-emu/discord-rpc.git'
-        'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-        'git+https://github.com/yuzu-emu/sirit'
-        'git+https://github.com/yuzu-emu/mbedtls'
-        'git+https://github.com/herumi/xbyak.git'
-        'git+https://github.com/xiph/opus.git'
-        'git+https://git.ffmpeg.org/ffmpeg.git'
-        'git+https://github.com/libsdl-org/SDL.git'
-        'git+https://github.com/yhirose/cpp-httplib.git'
-        'git+https://github.com/Microsoft/vcpkg.git'
-        'git+https://github.com/arun11299/cpp-jwt.git'
-        # cubeb dependencies
-        'git+https://github.com/arsenm/sanitizers-cmake.git'
-        'git+https://github.com/google/googletest'
-        # sirit dependencies
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+pkgdesc="Nintendo Switch emulator"
+arch=('aarch64' 'x86_64')
+url="https://yuzu-emu.org/"
+license=('GPL3')
+depends=(
+	'discord-rpc>=3.4'
+	'enet>=1.3.13'
+	'gcc-libs'
+	'glibc'
+	'hicolor-icon-theme'
+	'lz4>=1:1.8'
+	'qt5-base>=5.15'
+	'qt5-multimedia>=5.15'
+	'qt5-webengine>=5.15'
+	'sdl2>=2.28.4'
+)
+makedepends=(
+	'boost>=1.79'
+	'cmake>=3.22'
+	'cpp-httplib>=0.14.1'
+	'cpp-jwt>=1.4'
+	'cubeb'
+	'dynarmic>=6.4.8'
+	'ffmpeg>=2:4.3.1'
+	'fmt>=9'
+	'git'
+	'glslang'
+	'libinih>=57'
+	'libusb>=1.0.26'
+	'libva'
+	'nlohmann-json>=3.8'
+	'openssl>=1.1.1'
+	'opus>=1.4'
+	'qt5-tools>=5.15'
+	'renderdoc'
+	'spirv-headers>=1:1.2.198'
+	'vulkan-headers>=1:1.3.265'
+	'vulkan-icd-loader'
+	'vulkan-memory-allocator'
+	'xbyak>=6.68'
+	'zstd>=1.5'
+)
+checkdepends=('catch2>=3.3.1')
+optdepends=('renderdoc')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+options=('!lto')
+source=(
+	'yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git'
+	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
+	'yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git'
+	'git+https://github.com/eggert/tz.git'
+	'git+https://github.com/lat9nq/tzdb_to_nx.git'
+	'compatibility_list.json.xz'
+)
+b2sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'0dc4730c75c24b00baf94442227dd829bca049984df0227e0a283ca9733c51c2029c604843d76a8f1114107597bef9d85107e5de4fca918fe14642a2bf20a5ca'
+)
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	cd yuzu-mainline
+	git describe --long --tags | sed 's/^mainline-0-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
-
-    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet}; 
-    do
-        git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
-    done
-
-    git -c protocol.file.allow=always submodule update --init
-
-    cd "$srcdir/$_pkgname"/externals/cubeb
-
-    git config --file=.gitmodules submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-    git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
-    git -c protocol.file.allow=always submodule update --init
-    
-    cd "$srcdir/$_pkgname"/externals/sirit
-    
-    git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
-    git -c protocol.file.allow=always submodule update --init
+	cd yuzu-mainline
+	cp ../compatibility_list.json dist/compatibility_list
+	git config submodule.mbedtls.url ../yuzu-mbedtls
+	git config submodule.sirit.url ../yuzu-sirit
+	git config submodule.tzdb_to_nx.url ../tzdb_to_nx
+	git -c protocol.file.allow=always submodule update
+	sed -i '/httplib/s/12/14/' CMakeLists.txt
+	cd externals/nx_tzdb/tzdb_to_nx
+	# shellcheck disable=SC2154
+	git config submodule.externals/tz/tz.url "$srcdir"/tz
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    
-    if [[ -d build ]]; then
-        rm -rf build
-    fi
-    mkdir -p build && cd build
-    cmake .. -GNinja \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_C_COMPILER=clang \
-      -DCMAKE_CXX_COMPILER=clang++ \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DYUZU_USE_QT_WEB_ENGINE=ON \
-      -DYUZU_USE_QT_MULTIMEDIA=ON \
-      -DYUZU_USE_EXTERNAL_SDL2=OFF \
-      -DUSE_DISCORD_PRESENCE=ON \
-      -DENABLE_QT_TRANSLATION=ON \
-      -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
-      -DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
-      -DBUILD_TAG=${pkgver} \
-      -DTITLE_BAR_FORMAT_IDLE="yuzu | ${pkgver} {}" \
-      -DTITLE_BAR_FORMAT_RUNNING="yuzu | ${pkgver} | {}" \
-      -DDYNARMIC_NO_BUNDLED_ROBIN_MAP=ON \
-      -DYUZU_USE_BUNDLED_OPUS=OFF \
-      -DYUZU_USE_BUNDLED_FFMPEG=OFF \
-      -DYUZU_USE_BUNDLED_LIBUSB=OFF \
-      -DYUZU_USE_BUNDLED_QT=OFF \
-      -DYUZU_TESTS=OFF
-    ninja
+	cmake -S yuzu-mainline -B build \
+		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
+		-DBUILD_TAG=mainline-${pkgver%%.*} \
+		-DBUILD_TESTING="$CHECKFUNC" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DDISPLAY_VERSION=${pkgver%%.*} \
+		-DENABLE_QT_TRANSLATION=ON \
+		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
+		-DTITLE_BAR_FORMAT_IDLE="yuzu {}" \
+		-DTITLE_BAR_FORMAT_RUNNING="yuzu {} | {}" \
+		-DUSE_DISCORD_PRESENCE=ON \
+		-DYUZU_CHECK_SUBMODULES=OFF \
+		-DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
+		-DYUZU_ENABLE_LTO=ON \
+		-DYUZU_ENABLE_PORTABLE=OFF \
+		-DYUZU_USE_EXTERNAL_SDL2=OFF \
+		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+		-DYUZU_USE_FASTER_LD=OFF \
+		-DYUZU_USE_PRECOMPILED_HEADERS=OFF \
+		-DYUZU_USE_QT_MULTIMEDIA=ON \
+		-DYUZU_USE_QT_WEB_ENGINE=ON \
+		-Wno-dev
+	cmake --build build
 }
 
-#check() {
-#    cd "$srcdir/$_pkgname/build"
-#    ninja test
-#}
+check() {
+	ctest --test-dir build
+}
 
 package() {
-    cd "$srcdir/$_pkgname/build"
-    DESTDIR="$pkgdir" ninja install
+	depends+=(
+		'libavcodec.so'
+		'libavutil.so'
+		'libboost_context.so'
+		'libcrypto.so'
+		'libcubeb.so'
+		'libdynarmic.so'
+		'libfmt.so'
+		'libhttplib.so'
+		'libINIReader.so'
+		'libopus.so'
+		'libssl.so'
+		'libswscale.so'
+		'libusb-1.0.so'
+		'libva.so'
+		'libzstd.so'
+	)
+	# shellcheck disable=SC2154
+	DESTDIR="$pkgdir" cmake --install build
 }
