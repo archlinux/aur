@@ -3,18 +3,25 @@ pkgname=ostara-appimage
 _pkgname=Ostara
 _appname="@krud-devboost"
 pkgver=0.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A desktop application that provides various features to monitor and interact with Spring Boot Applications via Actuator."
 arch=("x86_64")
 url="https://ostara.dev/"
-_githuburl="https://github.com/krud-dev/ostara"
+_ghurl="https://github.com/krud-dev/ostara"
 license=('Apache')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'hicolor-icon-theme' 'glibc')
+depends=(
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+)
 sha256sums=('e0a7dfd1a787be65e72fd5696e9fc6aca481c9a7d1688a9aa1b9c1bf972fd93b')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
