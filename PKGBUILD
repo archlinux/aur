@@ -4,14 +4,14 @@
 
 pkgname=protonmail-bridge-bin
 pkgver=3.6.1
-pkgrel=2
+pkgrel=3
 _pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
 license=('GPL3')
 
-depends=('hicolor-icon-theme' 'libsecret' 'ttf-dejavu')
+depends=('hicolor-icon-theme' 'libsecret' 'ttf-font')
 optdepends=(
     'org.freedesktop.secrets: Applications that support Freedesktop secrets api'
     'gnome-keyring: gnome-keyring support'
