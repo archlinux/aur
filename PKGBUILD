@@ -5,9 +5,9 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=imgpkg-bin
 pkgver=0.39.0
-pkgrel=1
-pkgdesc="Store application configuration files in Docker/OCI registries"
-url="https://carvel.dev/imgpkg"
+pkgrel=2
+pkgdesc='Store application configuration files in Docker/OCI registries'
+url='https://carvel.dev/imgpkg'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 provides=(imgpkg)
