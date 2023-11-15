@@ -7,24 +7,25 @@ pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('x86_64')
 license=('LGPL2.1')
 url='https://www.videolan.org/developers/libbluray.html'
-depends=('libxml2.so'
-         'libfontconfig.so'
-         'libfreetype.so'
-         'libudfread.so'
-         )
-makedepends=('git'
-             'apache-ant'
-             'libxml2'
-             'fontconfig'
-             'libudfread-git'
-             'java-environment<=19'
-             )
-optdepends=('libaacs: Enable AACS decryption'
-            'java-runtime<=19: BD-J library'
-            )
-provides=('libbluray'
-          'libbluray.so'
-          )
+depends=(
+  'libxml2' 'libxml2.so'
+  'fontconfig' 'libfontconfig.so'
+  'freetype2' 'libfreetype.so'
+  'libudfread' 'libudfread.so'
+)
+makedepends=(
+  'git'
+  'apache-ant'
+  'java-environment'
+)
+optdepends=(
+  'libaacs: Enable AACS decryption'
+  'java-runtime: BD-J library'
+)
+provides=(
+  'libbluray'
+  'libbluray.so'
+)
 conflicts=('libbluray')
 source=('git+https://code.videolan.org/videolan/libbluray.git')
 sha256sums=('SKIP')
@@ -36,12 +37,13 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed -e 's|java_version_asm=1.5|java_version_asm=1.8|g' \
+      -e 's|java_version_bdj=1.4|java_version_bdj=1.8|g' \
+      -i libbluray/Makefile.am
 }
 
 build() {
-  export JDK_HOME="/usr/lib/jvm/java-19-openjdk"
-  export JAVAC="/usr/lib/jvm/java-19-openjdk/bin/javac"
-
   cd libbluray
   ./bootstrap
   cd "${srcdir}/build"
@@ -53,8 +55,5 @@ build() {
 }
 
 package() {
-  export JDK_HOME="/usr/lib/jvm/java-19-openjdk"
-  export JAVAC="/usr/lib/jvm/java-19-openjdk/bin/javac"
-
   make -C build DESTDIR="${pkgdir}" install
 }

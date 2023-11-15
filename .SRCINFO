@@ -7,16 +7,17 @@ pkgbase = libbluray-git
 	license = LGPL2.1
 	makedepends = git
 	makedepends = apache-ant
-	makedepends = libxml2
-	makedepends = fontconfig
-	makedepends = libudfread-git
-	makedepends = java-environment<=19
+	makedepends = java-environment
+	depends = libxml2
 	depends = libxml2.so
+	depends = fontconfig
 	depends = libfontconfig.so
+	depends = freetype2
 	depends = libfreetype.so
+	depends = libudfread
 	depends = libudfread.so
 	optdepends = libaacs: Enable AACS decryption
-	optdepends = java-runtime<=19: BD-J library
+	optdepends = java-runtime: BD-J library
 	provides = libbluray
 	provides = libbluray.so
 	conflicts = libbluray
