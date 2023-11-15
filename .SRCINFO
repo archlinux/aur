@@ -1,7 +1,7 @@
 pkgbase = g4music-git
 	pkgdesc = Play your music
 	pkgver = 3.4.1.r2.g3b76f92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/neithern/g4music
 	arch = x86_64
 	arch = aarch64
