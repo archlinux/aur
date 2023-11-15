@@ -3,7 +3,7 @@
 pkgbase=mkdocstrings
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Automatic documentation from sources, for MkDocs"
 url="https://mkdocstrings.github.io"
@@ -13,11 +13,12 @@ makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
 #checkdepends=('python-pytest'
-#              'python-pathspec'
 #              'python-sphinx'
+#              'python-platformdirs'
 #              'python-markdown-callouts'
 #              'python-markdown-exec'
-#              'mkdocs-material-pymdownx-extras'
+#              'pymdown-extensions'
+#              'mkdocs-material>=9.4'
 #              'mkdocs-autorefs'
 #              'mkdocs-coverage'
 #              'mkdocs-gen-files'
@@ -34,7 +35,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgbase:0:1}/${pkgbase
 ##        "${pkgver}-main.html::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/docs/.overrides/main.html"
 ##        "${pkgver}-gen_redirects.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_redirects.py"
 #        "${pkgver}-gen_ref_nav.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_ref_nav.py")
-sha256sums=('d9c6a37ffbe7c14a7a54ef1258c70b8d394e6a33a1c80832bce40b9567138d1c')
+sha256sums=('222b1165be41257b494a9d29b14135d2b7ca43f38161d5b10caae03b87bd4f7e')
 
 #prepare() {
 #    cd "${pkgbase}-${pkgver}"
@@ -66,11 +67,13 @@ build() {
 
 package_mkdocstrings() {
     depends=('python>=3.8'
+             'python-click>=7.0'
              'python-jinja>=2.11.1'
              'python-markdown>=3.3'
              'python-markupsafe>=1.1'
+             'python-platformdirs>=2.2.0'
              'python-typing_extensions>=4.1'
-             'mkdocs>=1.2'
+             'mkdocs>=1.4'
              'mkdocs-autorefs>=0.3.1'
              'pymdown-extensions>=6.3')
     cd "${pkgbase}-${pkgver}"
