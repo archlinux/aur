@@ -1,29 +1,28 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer:
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: David Garfias <jose.garfias@ingenieria.unam.edu>
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-_pkg="vte"
-_pkgname="${_pkg}-common"
-pkgbase="${_pkg}-git"
+# basic info
+_pkgbase="vte"
+pkgbase="$_pkgbase-git"
 pkgname=(
-  "${pkgbase}"
-  "${_pkg}-common-git"
-  "${_pkg}three-git"
-  "${_pkg}-docs-git")
-pkgver=0.73.0.r26.g092d8b8f
+  "vte-common-git"
+  "vte3-git"
+  "vte4-git"
+  "vte-docs-git"
+)
+pkgver=0.75.0.r58.g8ce544e8
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
-arch=(
-  x86_64
-  i686
-  pentium4
-  aarch64
-  armv7h)
-license=('LGPL')
-url="https://gitlab.gnome.org/GNOME/${_pkg}"
+url="https://gitlab.gnome.org/GNOME/vte"
+license=(LGPL)
+arch=(x86_64)
+
 makedepends=(
+  cairo
   fribidi
   gi-docgen
   git
@@ -37,18 +36,15 @@ makedepends=(
   systemd
   vala
 )
-options=(
-  !emptydirs
-  !lto)
-source=(
-  "${_pkg}::git+${url}.git"
-)
-sha256sums=(
-  'SKIP'
-)
+
+options=(!lto)
+
+_pkgsrc="$_pkgbase"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkg}"
+  cd "$_pkgsrc"
 
   _version=$(
     grep -E "^\s+version:\s+'([0-9]+\.[0-9]+\.[0-9]+)',\$" meson.build \
@@ -67,18 +63,13 @@ pkgver() {
   echo "${_version}.r${_revision}.g${_hash}"
 }
 
-prepare() {
-  cd "${_pkg}"
-}
-
 build() {
   local meson_options=(
     -D b_lto=false
     -D docs=true
-    -D gtk3=true
-    -D gtk4=true
   )
-  arch-meson "${_pkg}" build "${meson_options[@]}"
+
+  arch-meson "$_pkgsrc" build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -89,69 +80,49 @@ check() {
 _pick() {
   local p="$1" f d; shift
   for f; do
-    d="${srcdir}/${p}/${f#$pkgdir/}"
-    mkdir -p "$(dirname "${d}")"
-    mv "${f}" "${d}"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "${f}")"
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
   done
 }
 
 package_vte-common-git() {
   pkgdesc+=" (common files)"
   depends=(sh)
-  provides+=("${_pkg}-common=${pkgver}")
-  conflicts+=("${_pkg}-common")
 
-  meson install -C build --destdir "${pkgdir}"
+  provides+=("${pkgname%-git}=${pkgver%%.r*}")
+  conflicts+=("${pkgname%-git}")
 
-  cd "${pkgdir}"
+  meson install -C build --destdir "$pkgdir"
 
-  _pick gtk3 "usr/bin/${_pkg}-2.91"
-  _pick gtk3 "usr/include/${_pkg}-2.91"
-  _pick gtk3 "usr/lib/lib${_pkg}-2.91.so"*
-  _pick gtk3 "usr/lib/pkgconfig/${_pkg}-2.91.pc"
-  _pick gtk3 "usr/lib/girepository-1.0/Vte-2.91.typelib"
-  _pick gtk3 "usr/share/gir-1.0/Vte-2.91.gir"
-  _pick gtk3 "usr/share/glade"
-  _pick gtk3 "usr/share/vala/vapi/${_pkg}-2.91."{deps,vapi}
+  cd "$pkgdir"
 
-  _pick gtk4 "usr/bin/${_pkg}-2.91-gtk4"
-  _pick gtk4 "usr/include/${_pkg}-2.91-gtk4"
-  _pick gtk4 "usr/lib/lib${_pkg}-2.91-gtk4.so"*
-  _pick gtk4 "usr/lib/pkgconfig/${_pkg}-2.91-gtk4.pc"
-  _pick gtk4 "usr/lib/girepository-1.0/Vte-3.91.typelib"
-  _pick gtk4 "usr/share/gir-1.0/Vte-3.91.gir"
-  _pick gtk4 "usr/share/vala/vapi/${_pkg}-2.91-gtk4."{deps,vapi}
+  _pick gtk3 usr/bin/vte-2.91
+  _pick gtk3 usr/include/vte-2.91
+  _pick gtk3 usr/lib/libvte-2.91.so*
+  _pick gtk3 usr/lib/pkgconfig/vte-2.91.pc
+  _pick gtk3 usr/lib/girepository-1.0/Vte-2.91.typelib
+  _pick gtk3 usr/share/gir-1.0/Vte-2.91.gir
+  _pick gtk3 usr/share/glade
+  _pick gtk3 usr/share/vala/vapi/vte-2.91.{deps,vapi}
+
+  _pick gtk4 usr/bin/vte-2.91-gtk4
+  _pick gtk4 usr/include/vte-2.91-gtk4
+  _pick gtk4 usr/lib/libvte-2.91-gtk4.so*
+  _pick gtk4 usr/lib/pkgconfig/vte-2.91-gtk4.pc
+  _pick gtk4 usr/lib/girepository-1.0/Vte-3.91.typelib
+  _pick gtk4 usr/share/gir-1.0/Vte-3.91.gir
+  _pick gtk4 usr/share/vala/vapi/vte-2.91-gtk4.{deps,vapi}
 
   _pick docs usr/share/doc
 }
 
-package_vte-git() {
-  pkgdesc+=" (GTK4)"
-  depends=(
-    fribidi
-    gnutls
-    gtk4
-    pcre2
-    systemd
-    vte-common
-  )
-  provides+=(
-    libvte-2.91-gtk4.so
-    "${_pkg}4-git=${pkgver}"
-    "${_pkg}4=${pkgver}"
-  )
-  conflicts+=(
-    "${_pkg}4-git"
-    "${_pkg}4"
-  )
 
-  mv gtk4/* "$pkgdir"
-}
-
-package_vtethree-git() {
+package_vte3-git() {
   pkgdesc+=" (GTK3)"
   depends=(
+    cairo
     fribidi
     gnutls
     gtk3
@@ -159,25 +130,42 @@ package_vtethree-git() {
     systemd
     vte-common
   )
+
   provides+=(
+    "${pkgname%-git}=${pkgver%%.r*}"
     libvte-2.91.so
-    "${_pkg}3-git=${pkgver}"
-    "${_pkg}3=${pkgver}"
   )
-  conflicts+=(
-    "${_pkg}3-git"
-    "${_pkg}3"
-  )
+  conflicts+=("${pkgname%-git}")
 
   mv gtk3/* "$pkgdir"
 }
 
+package_vte4-git() {
+  pkgdesc+=" (GTK4)"
+  depends=(
+    cairo
+    fribidi
+    gnutls
+    gtk4
+    pcre2
+    systemd
+    vte-common
+  )
+
+  provides+=(
+    "${pkgname%-git}=${pkgver%%.r*}"
+    libvte-2.91-gtk4.so
+  )
+  conflicts+=("${pkgname%-git}")
+
+  mv gtk4/* "$pkgdir"
+}
+
 package_vte-docs-git() {
-  provides+=("${_pkg}-docs=${pkgver}")
-  conflicts+=("${_pkg}-docs")
   pkgdesc+=" (documentation)"
+
+  provides+=("${pkgname%-git}=${pkgver%%.r*}")
+  conflicts+=("${pkgname%-git}")
 
   mv docs/* "$pkgdir"
 }
-
-# vim:set sw=2 sts=-1 et:
