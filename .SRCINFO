@@ -1,6 +1,6 @@
 pkgbase = webgal-terre-bin
 	pkgdesc = Galgame Editing. Redefined | 视觉小说编辑，再进化
-	pkgver = 4.4.5.3
+	pkgver = 4.4.6.4
 	pkgrel = 1
 	url = https://docs.openwebgal.com/guide/
 	arch = aarch64
@@ -14,31 +14,26 @@ pkgbase = webgal-terre-bin
 	depends = libdrm
 	depends = libxdamage
 	depends = nspr
-	depends = glib2
 	depends = at-spi2-core
 	depends = nss
 	depends = libcups
 	depends = libxext
-	depends = dbus
 	depends = libxkbcommon
 	depends = libx11
 	depends = pango
 	depends = java-runtime
 	depends = alsa-lib
 	depends = expat
-	depends = gcc-libs
 	depends = libxcb
 	depends = libxfixes
-	depends = glibc
 	depends = gtk3
-	depends = bash
-	provides = webgal-terre=4.4.5.3
+	provides = webgal-terre=4.4.6.4
 	conflicts = webgal-terre
-	source = LICENSE::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/4.4.5.3/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/4.4.6.4/LICENSE
 	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
-	source_aarch64 = webgal-terre-4.4.5.3-aarch64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.4.5.3/WebGAL_Terre_Linux_Arm64_4.4.5.3.zip
-	sha256sums_aarch64 = fe10ff2c21d3c4194b06fc48fead46fa672c761279ddce58411af814f3d29a22
-	source_x86_64 = webgal-terre-4.4.5.3-x86_64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.4.5.3/WebGAL_Terre_Linux_4.4.5.3.zip
-	sha256sums_x86_64 = 0b90797b42ec087e5fefa46b623281bb3168cb2a46645bd77f172a7abe93c37c
+	source_aarch64 = webgal-terre-4.4.6.4-aarch64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.4.6.4/WebGAL_Terre_Linux_Arm64_4.4.6.4.zip
+	sha256sums_aarch64 = 38c01cec39f96a15e54f4412116bcbfa2bd271c53c0c9057ad741cc868adf6c8
+	source_x86_64 = webgal-terre-4.4.6.4-x86_64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.4.6.4/WebGAL_Terre_Linux_4.4.6.4.zip
+	sha256sums_x86_64 = 75f2b2d5b45b37723f787a469194619d3196d36d7d9b67f711bf0dd82615de12
 
 pkgname = webgal-terre-bin
