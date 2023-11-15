@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1388.7b2cd58
+pkgver=r1390.e90a007
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
@@ -24,18 +24,18 @@ conflicts=('quickmedia' 'qm' 'quickmedia-video-player')
 options=(!strip)
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.${pkgver}.tar.gz"
-    "twemoji-1.tar.gz::https://dec05eba.com/files/twemoji.tar.gz"
+    "twemoji-2.tar.gz::https://dec05eba.com/files/twemoji.tar.gz"
 )
-noextract=("twemoji-1.tar.gz")
+noextract=("twemoji-2.tar.gz")
 sha512sums=(
-    '1cec4890940aea826af89968b98f54abadafc19e6b57db1acad080d81dd586da0382b00b9d8eb6451ef45a9edb27f0210f06a74305bfee5e459f36691c64f543'
-    'f25bd2ede84dc43278a86b5d234e9c78a102a61dfd796a364e76a135289c29503e97e51dfe49fcd1a72eb714755a45b95c60768811bfb3cdebb23694bc86e7d2'
+    '68bccc6bcb78b0a5d6744b8d07e5d2ba0b363432b2b28b9c3c47b5469abd0e7b78025250cde3cc89acbc8268926c868e6e6524aea2eb8a62f377f7908003c229'
+    'a3c7a268bd48bd79b6bfc771affd56d71ffd78ba4df8e2a9e1783162a78c1f053c408e02f4d49ca96eee6a0a19b8cfc85197ad40d497cd89934b8311dcfebe2b'
 )
 
 prepare() {
     cd "$srcdir"
     mkdir emoji
-    bsdtar -xf twemoji-1.tar.gz -C emoji
+    bsdtar -xf twemoji-2.tar.gz -C emoji
 }
 
 build() {
