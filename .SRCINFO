@@ -1,6 +1,6 @@
 pkgbase = gscreenshot
 	pkgdesc = A simple screenshot tool supporting multiple backends
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = gscreenshot
 	optdepends = xdg-utils: for opening screenshot files from gscreenshot
 	optdepends = pandoc: for generating the manpage at build (or use go-md2man)
 	optdepends = go-md2man: for generating the manpage at build (or use pandoc)
-	source = https://github.com/thenaterhood/gscreenshot/archive/v3.4.1.tar.gz
-	sha256sums = 1cbabb2b81277aec03b2aef6ba149a137829e9e65237de7d08cd10c47dc80c3b
+	source = https://github.com/thenaterhood/gscreenshot/archive/v3.4.2.tar.gz
+	sha256sums = dd435bb1dfc4e5c3ead3526bd59db5b24be001e9ba2fd9193a2c6b5b8f63ec76
 
 pkgname = gscreenshot
