@@ -1,8 +1,8 @@
 _gitfolder=compfy
 _gitname=compfy
 pkgname=compfy
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="A Better Alternative to Picom. With Animations and Active Support"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/compfy"
