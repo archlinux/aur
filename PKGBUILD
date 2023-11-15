@@ -3,7 +3,7 @@
 
 pkgname=picard-tools
 _pkgname=picard
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='set of tools for working with next generation sequencing data in the BAM format'
 arch=(any)
