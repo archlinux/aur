@@ -15,7 +15,7 @@ pkgname=('systemd-selinux'
 _tag='5afac6471beec5401efb51f88990eaf92f3f9507' # git rev-parse v${_tag_name}
 _tag_name=254.6
 pkgver="${_tag_name/-/}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -232,8 +232,9 @@ package_systemd-selinux() {
   mv "$pkgdir"/usr/share/man/man3 systemd-libs/man3
 
   # ukify shipped in separate package
-  install -d -m0755 systemd-ukify/{install.d,systemd,man1}
-  mv "$pkgdir"/usr/lib/kernel/install.d/{60-ukify,90-uki-copy}.install systemd-ukify/install.d/
+  # we do *NOT* move the kernel-install files there, as other ways of
+  # creating uki exist!
+  install -d -m0755 systemd-ukify/{systemd,man1}
   mv "$pkgdir"/usr/lib/systemd/ukify systemd-ukify/systemd/
   mv "$pkgdir"/usr/share/man/man1/ukify.1 systemd-ukify/man1/
 
@@ -336,8 +337,7 @@ package_systemd-ukify-selinux() {
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
-  install -d -m0755 "$pkgdir"/usr/{lib/kernel,share/man}
-  mv systemd-ukify/install.d "$pkgdir"/usr/lib/kernel/install.d
+  install -d -m0755 "$pkgdir"/usr/{lib,share/man}
   mv systemd-ukify/systemd "$pkgdir"/usr/lib/systemd
   mv systemd-ukify/man1 "$pkgdir"/usr/share/man/man1
 }
