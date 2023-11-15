@@ -1,11 +1,11 @@
 pkgbase = python-binary
 	pkgdesc = Easily convert between binary and SI units
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ofek/binary
 	arch = any
 	license = MIT
-	license = APACHE
+	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-coverage
 	makedepends = python-build
