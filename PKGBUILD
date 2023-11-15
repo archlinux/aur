@@ -8,8 +8,8 @@ license=("LGPL2")
 provides=("libfprint" "libfprint-2.so=2-64")
 conflicts=("libfprint")
 source=("${pkgname}::git+https://github.com/TheWeirdDev/libfprint.git")
-pkgrel=2
-pkgver=r1800.638d8d8
+pkgrel=1
+pkgver=r1802.6e4fdc0
 md5sums=('SKIP')
 depends=('libgusb' 'openssl' 'pixman' 'nss' 'libgudev' 'opencv')
 optdepends=('fprintd: D-Bus daemon for managing readers')
@@ -23,6 +23,7 @@ prepare() {
     cd "${srcdir}/${pkgname}"
     mkdir -p build
     git switch '55b4-experimental'
+    git pull -f origin 55b4-experimental
 }
 
 build() {
