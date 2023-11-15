@@ -2,8 +2,8 @@
 
 pkgname=gog-the-will-of-arthur-flabbington
 pkgver=v1.0.3.68960
-pkgrel=1
-pkgdesc='Comedy point-and-click adventure. Find your uncle’s lost treasure with the help of a reluctant sidekick. GOG version.'
+pkgrel=2
+pkgdesc="Comedy point-and-click adventure. Find your uncle’s lost treasure with the help of a reluctant sidekick. GOG version."
 _shortname="${pkgname#gog-}"
 arch=('x86_64')
 url="https://www.gog.com/en/game/${_shortname//-/_}"
@@ -29,7 +29,7 @@ source=(
 sha512sums=(
   'SKIP'
   '6c8e948fcf35a08fa6c3712039529a8e1d2d1c68c5ab114a4a013389deed443e6c1f75ad4496a9437e3f3997f2fc2a52776da5a2df03bf6804a1768d0e78e382'
-  '67fb91f25af8ff1aa452ed606fc9e7bcb735d891a2068430c9a594c60531e95897b83d17013676baffd8b3e72f54cc54a246b238fdb5d9bef86391b9f25da5d9'
+  '63ad09ff0156c793b9b0079ba25c6082d5a4f20e9a7ad8080c133f78098db2a5020663259be681a63f357a7b77ea17433dcd6db8a14c10b2c9a3f7ba9774edc9'
 )
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
@@ -59,7 +59,7 @@ package() {
   echo >&2 'Packaging game data'
   mkdir -p "${pkgdir}/opt/${_shortname}"
   cp -R --preserve=mode \
-    "${srcdir}"/{data,meta,scripts} \
+    "${srcdir}"/data/noarch/game/* \
     "${pkgdir}/opt/${_shortname}"
 
   echo >&2 'Packaging launcher'

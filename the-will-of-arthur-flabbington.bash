@@ -2,6 +2,9 @@
 set -eu
 
 PKGNAME='the-will-of-arthur-flabbington'
-echo >&2 "Launching app"
-cd "/opt/${PKGNAME}/data/noarch"
-exec ./start.sh "$@"
+
+PKG_USER_DATA_HOME="${XDG_DATA_HOME:-"${HOME}/.local/share"}/${PKGNAME}"
+mkdir -pv "${PKG_USER_DATA_HOME}"
+cd "${PKG_USER_DATA_HOME}"
+
+exec "/opt/${PKGNAME}/TWoAF" "$@"
