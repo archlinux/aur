@@ -2,12 +2,12 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mkinitcpio-archiso-git
-pkgver=66.r0.g2a37e93
+pkgver=68.r0.gf0491c6
 pkgrel=1
 pkgdesc='Initcpio scripts used by archiso'
 arch=('any')
 url='https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio-archiso'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bash' 'device-mapper' 'mkinitcpio')
 makedepends=('git')
 checkdepends=('shellcheck' 'shfmt')
@@ -30,7 +30,7 @@ validpgpkeys=(
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
