@@ -10,7 +10,6 @@ pkgbase = furious
 	makedepends = python-pip
 	makedepends = patchelf
 	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
-	provides = furious
 	conflicts = furious-git
 	options = !strip
 	source = https://github.com/LorenEteval/Furious/archive/refs/tags/0.2.13.zip
