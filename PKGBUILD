@@ -3,7 +3,7 @@
 
 pkgname=inochi-creator
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Inochi2D Rigging Application"
 arch=('x86_64')
 url='https://inochi2d.com/'
@@ -25,6 +25,9 @@ prepare() {
 	echo "module creator.ver;\
 	enum INC_VERSION = \"$pkgver\";" > source/creator/ver.d
 	dub add-local $srcdir/i2d-imgui/ "0.8.0"
+
+	# Unofficial builds required to change bug report URL
+	sed -i "s,https://github.com/Inochi2D/inochi-creator/issues/new?assignees=&labels=bug&template=bug-report.yml&title=%5BBUG%5D,https://aur.archlinux.org/packages/inochi-creator,g" source/creator/config.d
 }
 
 build() {
