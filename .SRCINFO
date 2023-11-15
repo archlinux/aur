@@ -1,11 +1,11 @@
 pkgbase = libxcb-git
 	pkgdesc = X11 client-side library
-	pkgver = 1.16.r4.g02a7bbe
+	pkgver = 1.16.r5.g3c94601
 	pkgrel = 1
 	url = https://xcb.freedesktop.org
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = X11
 	makedepends = libxslt
 	makedepends = python
 	makedepends = xorg-util-macros

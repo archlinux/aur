@@ -6,12 +6,12 @@
 
 _pkgname="libxcb"
 pkgname="$_pkgname-git"
-pkgver=1.16.r4.g02a7bbe
+pkgver=1.16.r5.g3c94601
 pkgrel=1
 pkgdesc="X11 client-side library"
 arch=(i686 x86_64)
 url='https://xcb.freedesktop.org'
-license=('custom')
+license=('X11')
 
 depends=(
   # extra/libxcb
@@ -35,12 +35,12 @@ else
   depends+=('xcb-proto-git')
   makedepends+=('git')
 
-  provides=("$_pkgname=${pkgver//.r*}")
+  provides=("$_pkgname=${pkgver%%.r*}")
   conflicts=("$_pkgname")
 
   _pkgsrc="$_pkgname"
   source=(
-    "$_pkgname"::"git+http://anongit.freedesktop.org/git/xcb/libxcb.git"
+    "$_pkgsrc"::"git+http://anongit.freedesktop.org/git/xcb/libxcb.git"
   )
   sha256sums=(
     'SKIP'
@@ -48,7 +48,8 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --tags | sed 's/libxcb-//;s/-/.r/;s/-/./g'
+    git describe --long --tags \
+      | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 fi
 
