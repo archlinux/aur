@@ -3,17 +3,38 @@ pkgname=nft-viewer-bin
 _pkgname=nft_viewer
 _appname="Bitshares NFT Viewer"
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An NFT viewer for the Bitshares blockchain network"
 arch=('x86_64')
 url="https://github.com/BTS-CM/NFT_Viewer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('cairo' 'libxrandr' 'libxcomposite' 'glib2' 'expat' 'dbus' 'libxkbcommon' 'mesa' 'gcc-libs' 'at-spi2-core' \
-    'libx11' 'gtk3' 'libxcb' 'glibc' 'libcups' 'pango' 'nspr' 'nss' 'libxdamage' 'libdrm' 'libxfixes' 'libxext' 'alsa-lib')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.deb"
-    "LICENSE::https://raw.githubusercontent.com/BTS-CM/NFT_Viewer/v${pkgver}/LICENSE")
+depends=(
+    'cairo'
+    'libxrandr'
+    'libxcomposite'
+    'expat'
+    'libxkbcommon'
+    'mesa'
+    'at-spi2-core'
+    'libx11'
+    'gtk3'
+    'libxcb'
+    'libcups'
+    'pango'
+    'nspr'
+    'nss'
+    'libxdamage'
+    'libdrm'
+    'libxfixes'
+    'libxext'
+    'alsa-lib'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.deb"
+    "LICENSE::https://raw.githubusercontent.com/BTS-CM/NFT_Viewer/v${pkgver}/LICENSE"
+)
 sha256sums=('3f0317a8caded555eddeed393a4f3c27f94ca504226c21a448b9cfd6d2ecb255'
             '48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a')
 build() {
