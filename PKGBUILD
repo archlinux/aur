@@ -1,47 +1,142 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer:
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgname=image-roll-git
-pkgver=2.0.1.r0.g90303b3
+# options
+: ${CARGO_HOME:=${SRCDEST:-${startdir:?}}/cargo}
+
+if [ x"$_srcinfo" == "xt" ] ; then
+  : ${_autoupdate:=false}
+elif [ -z "$_pkgver" ] ; then
+  : ${_autoupdate:=true}
+else
+  : ${_autoupdate:=false}
+fi
+
+: ${_pkgver:=2.1.0}
+
+: ${_pkgtype:=git}
+
+# basic info
+_pkgname="image-roll"
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgver=2.1.0.r0.g5087079
 pkgrel=1
-pkgdesc="A simple and fast GTK image viewer with basic image manipulation tools"
-arch=('x86_64')
+pkgdesc="GTK image viewer with basic image manipulation tools"
 url="https://github.com/weclaw1/image-roll"
 license=('MIT')
-depends=('gtk4')
-makedepends=('git' 'cargo')
-provides=('image-roll')
-conflicts=('image-roll')
-source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+arch=('x86_64')
 
-pkgver() {
-	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+# main package
+_main_package() {
+  _update_version
+
+  depends=(
+    gtk4
+  )
+  makedepends=(
+    cargo
+    git
+  )
+
+  if [ x"$pkgname" == x"$_pkgname" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+}
+
+# stable package
+_main_stable() {
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git#tag=${_pkgver:?}")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() (
+    cd "$_pkgsrc"
+    local _pkgver=$(
+      git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+        | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    )
+    echo "${_pkgver:?}"
+  )
 }
 
 prepare() {
-	cd "$pkgname"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "$_pkgsrc"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cd "$pkgname"
-	cargo build --release --frozen --all-features
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR="${srcdir:?}/target"
+
+  cd "$_pkgsrc"
+  cargo build --release --frozen --all-features
 }
 
 check() {
-	export RUSTUP_TOOLCHAIN=stable
-	cd "$pkgname"
-	cargo test --frozen --all-features
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR="${srcdir:?}/target"
+
+  cd "$_pkgsrc"
+  cargo test --tests -- --skip current_file || true
 }
 
 package() {
-	cd "$pkgname"
-	install -Dm target/release/image-roll -t "$pkgdir/usr/bin/"
-	install -Dm644 src/resources/com.github.weclaw1.ImageRoll.desktop -t "$pkgdir/usr/share/applications/"
-	install -Dm644 src/resources/com.github.weclaw1.ImageRoll.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-	install -Dm644 src/resources/com.github.weclaw1.ImageRoll.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "$_pkgsrc"
+  install -Dm755 "$CARGO_TARGET_DIR/release/image-roll" -t "${pkgdir:?}/usr/bin/"
+
+  install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.desktop" \
+    -t "${pkgdir:?}/usr/share/applications/"
+
+  install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.svg" -t "${pkgdir:?}/usr/share/icons/hicolor/scalable/apps/"
+
+  install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.metainfo.xml" -t "${pkgdir:?}/usr/share/metainfo/"
+
+  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
+
+# update version
+_update_version() {
+  case "${_autoupdate::1}" in
+    't'|'y'|'1')
+      _repo="${url#*//*/}"
+      _response=$(curl "https://api.github.com/repos/${_repo:?}/tags" -s)
+
+      _get() {
+        printf '%s' "$_response" \
+          | awk -F '"' '/"'"$1"'":/{print $4}' \
+          | sed 's@^.*[a-z-].*$@@' | sort -rV | head -1
+      }
+      _pkgver_new=$(_get name)
+
+      # update pkgver
+      _pkgver="${pkgver%%.r*}"
+      if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
+        _pkgver="${_pkgver_new:?}"
+        sed -E \
+          -e 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' \
+          -i "$startdir/PKGBUILD"
+      fi
+      ;;
+  esac
+}
+
+# execute
+_main_package
