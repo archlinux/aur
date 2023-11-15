@@ -1,37 +1,61 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer:
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
-pkgname=g4music-git
-pkgver=0.2.r0.ga61d0b6
+_pkgname="g4music"
+pkgname="$_pkgname-git"
+pkgver=3.4.1.r2.g3b76f92
 pkgrel=1
 pkgdesc="Play your music"
-arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/neithern/g4music"
 license=('GPL3')
-depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'taglib' 'tracker3')
-makedepends=('git' 'meson' 'vala')
-checkdepends=('appstream-glib')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
+arch=('x86_64' 'aarch64')
+
+depends=(
+  gstreamer
+  libadwaita
+  taglib
+  tracker3
+)
+makedepends=(
+  git
+  meson
+  vala
+)
+checkdepends=(
+  appstream-glib
+)
+optdepends=(
+  'gst-plugins-bad'
+  'gst-plugins-base'
+  'gst-plugins-good'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  local _pkgver=$(
+    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   )
+
+  echo "${_pkgver:?}"
 }
 
 build() {
-  arch-meson "${pkgname%-git}" build
+  arch-meson "$_pkgsrc" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build || true
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir:?}"
 }
