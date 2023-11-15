@@ -3,12 +3,12 @@
 pkgname=dida-bin
 _pkgname=dida
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
 url="https://dida365.com/home"
 license=("BSD")
-depends=(electron19)
+depends=(electron)
 optdepends=('noto-fonts-emoji: for emoji support')
 provides=(${_pkgname})
 source=("${_pkgname}_${pkgver}.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-${pkgver}-amd64.deb"
