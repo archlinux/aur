@@ -1,13 +1,20 @@
 pkgbase = modv-bin
 	pkgdesc = modular audio visualisation powered by JavaScript
 	pkgver = 3.29.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://modv.vcync.gl/
 	arch = x86_64
 	license = MIT
-	makedepends = asar
-	depends = bash
+	makedepends = squashfuse
 	depends = electron25
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	depends = avahi
+	depends = lib32-glibc
 	provides = modv=3.29.1
 	conflicts = modv
 	source = modv-3.29.1.AppImage::https://github.com/vcync/modV/releases/download/3.29.1/modV-3.29.1.AppImage
@@ -15,6 +22,6 @@ pkgbase = modv-bin
 	source = modv.sh
 	sha256sums = 987b13cbd076f0113a4a11df8cd132e1580dec7abe5ea69fa12a6e5e5a5f7992
 	sha256sums = 4ff9462e56a52889b0005f007e0a66930c6b19687751f551bf7316b6ee35119e
-	sha256sums = f060459f5bd7762f0fe6dd0e8a9464a2e52e80ff7de825a8c8af5fb3b6ee75f6
+	sha256sums = f8cf208be44765a6fc1a95f6526ab6416d74089004509c3e82864903968cc0b4
 
 pkgname = modv-bin
