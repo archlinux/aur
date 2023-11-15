@@ -3,7 +3,7 @@
 
 pkgname=inochi-creator
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Inochi2D Rigging Application"
 arch=('x86_64')
 url='https://inochi2d.com/'
