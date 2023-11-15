@@ -1,30 +1,41 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=listen1-desktop-bin
+_pkgname=listen1
+pkgname="${_pkgname}-desktop-bin"
+_appname=Listen1
 pkgver=2.31.0
-pkgrel=3
+pkgrel=4
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="http://listen1.github.io/listen1"
-_githuburl="https://github.com/listen1/listen1_desktop"
+_ghurl="https://github.com/listen1/listen1_desktop"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${pkgname%-desktop-bin}")
-depends=('bash' 'electron13')
-makedepends=('asar' 'gendesk')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}_${pkgver}_linux_x64.tar.gz"
+depends=(
+    'electron13'
+    'hicolor-icon-theme'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}_${pkgver}_linux_amd64.deb"
     "LICENSE.md::https://raw.githubusercontent.com/listen1/listen1_desktop/v${pkgver}/LICENSE.md"
-    "${pkgname%-bin}.sh")
-sha256sums=('9ce7d408812b7532d8bff8f2f41c1d226cecb618cbca7e5a37d2d5c780f337c2'
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('0623e152524477d1015b2619bb1784d82473de6153b8b78a892783fb9e0894f9'
             'd2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc'
-            '5d1b5c05a863bf337e69e874e4f18fb42330b1d42aaece12ac2fd87705b59914')
-prepare() {
-    asar extract "${srcdir}/${pkgname%-desktop-bin}_${pkgver}_linux_x64/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    gendesk -f -n --categories "AudioVideo" --name "Listen1" --exec "${pkgname%-bin}"
+            'd8e6b6ff7d63f31428587d05e8d225e3f7801b6d06736cd3288484cc405d44e0')
+build() {
+    bsdtar -xf "${srcdir}/data.tar.xz"
+    sed "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
+        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-desktop-bin}_${pkgver}_linux_x64/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/resources/${pkgname%-bin}.asar"
-    install -Dm644 "${srcdir}/app.asar.unpacked/resources/logo512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_appname}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
