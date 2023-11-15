@@ -13,6 +13,7 @@ optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 provides=(${_pkgname})
+conflicts=(${_pkgname}-git ${_pkgname})
 options=(!strip)
 source=(
     "https://github.com/net-breaker/sing-land/releases/download/${pkgver//_/-}/singland-alpha-linux-amd64.tar.gz"
@@ -27,12 +28,13 @@ sha256sums=(
 _install_path="/opt/$_pkgname"
 
 package() {
-    cd "${srcdir}/singland-0.0.4"
-    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
-    install -Dm644 "${srcdir}/singland.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    cd "${srcdir}/singland"
+    cd $(find . -type d -name 'singland-*' -print -quit)
+    find . -type f -exec install -Dm755 {} "$pkgdir/$_install_path"/{} \;
     for _icons in 32 256 512;do
-        install -Dm644 "${srcdir}/singland-0.0.4/resources/icons/logo-${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${_pkgname}.png"
+        install -Dm644 "./resources/icons/logo-${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${_pkgname}.png"
     done
+    install -Dm644 "${srcdir}/singland.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
