@@ -127,6 +127,8 @@ build() {
     -DREVISION_FROM_VCS:BOOL=OFF
   )
   export AUTOBUILD_BUILD_ID="${_build_id}"
+  CI_COMMIT_SHA=$(git rev-parse HEAD)
+  export CI_COMMIT_SHA
   echo "BUILDENV: ${BUILDENV[*]}"
   if [[ " ${BUILDENV[*]} " =~ ' ccache ' ]] && command -v ccache; then
     echo "------ Will Use CCACHE ------"
