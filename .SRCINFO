@@ -1,0 +1,14 @@
+pkgbase = kbst-bin
+	pkgdesc = CLI for the Kubestack GitOps Framework
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kbst/kbst
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	noextract = ${pkgname/-bin/}_linux_amd64.zip
+	source = https://github.com/kbst/kbst/releases/download/v0.2.1/kbst_linux_amd64.zip
+	sha512sums = 7812f95be39d4ff4d69dc62221b73b8c1315aa241231cb2b7cff89bf50d60908d191f3acf2939cdfc12c42426628a219cc5777dcc7c1e961b1e85a3eda691ac9
+	b2sums = 2d5339bac59fa5382c27831c7544ff0db59642369835817746d6bf62a1a9e71d7e119bbd6b17d9cd8d89dc761da3272674647ace606384207b99ff85c24aee79
+
+pkgname = kbst-bin
