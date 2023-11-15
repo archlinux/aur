@@ -1,0 +1,16 @@
+pkgbase = rpm-sequoia
+	pkgdesc = An OpenPGP backend for rpm using Sequoia PGP
+	pkgver = 1.5.0
+	pkgrel = 4
+	url = https://sequoia-pgp.org
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	makedepends = rust
+	makedepends = clang
+	makedepends = pkg-config
+	makedepends = nettle
+	source = https://github.com/rpm-software-management/rpm-sequoia/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 02e272a689b7215e12838afb57209aa004909b661f23527455b2fd0ea4400527
+
+pkgname = rpm-sequoia
