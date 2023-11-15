@@ -1,6 +1,6 @@
 pkgbase = hiddify.next-git
 	pkgdesc = A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks
-	pkgver = 0.10.8.dev
+	pkgver = 0.10.9.dev
 	pkgrel = 1
 	url = https://github.com/hiddify/hiddify-next
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 _pkgname=hiddify.next
 pkgname=$_pkgname-git
-pkgver=0.10.8.dev
+pkgver=0.10.9.dev
 pkgrel=1
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 provides=(${_pkgname})
-conflicts=('hiddify.next' 'hiddify.next-bin')
+conflicts=(${_pkgname} ${_pkgname}-bin)
 options=(!strip)
 source=(
     "git+https://github.com/hiddify/hiddify-next.git"
