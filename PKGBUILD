@@ -1,23 +1,25 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nheko-appimage
 pkgver=0.11.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop client for Matrix using Qt and C++20."
 arch=("x86_64")
 url="https://nheko-reborn.github.io/"
-_githuburl="https://github.com/Nheko-Reborn/nheko"
+_ghurl="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
+depends=(
+    'hicolor-icon-theme'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-v${pkgver}-${CARCH}.AppImage")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-appimage}-v${pkgver}-${CARCH}.AppImage")
 sha256sums=('f2677735a256771a80a66a34fe5f3e5caad3758161de6c31cf3283e0190eddee')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    1sed "s|${pkgname%-appimage} %u|${pkgname%-appimage} --no-sandbox %U|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|${pkgname%-appimage} %u|${pkgname%-appimage} --no-sandbox %U|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
