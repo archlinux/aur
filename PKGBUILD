@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=houdoku-appimage
-pkgver=2.13.0
-pkgrel=4
+pkgver=2.13.1
+pkgrel=1
 pkgdesc="Manga reader and library manager for the desktop"
 arch=('x86_64')
 url="https://houdoku.org/"
-_githuburl="https://github.com/xgi/houdoku"
+_ghurl="https://github.com/xgi/houdoku"
 license=("MIT")
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
@@ -16,10 +16,10 @@ makedepends=(
 options=('!strip')
 _install_path="/opt/appimages"
 source=(
-    "${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Houdoku-${pkgver}.AppImage"
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/Houdoku-${pkgver}.AppImage"
     "LICENSE.txt::https://raw.githubusercontent.com/xgi/houdoku/v${pkgver}/LICENSE.txt"
 )
-sha256sums=('9e5eb3c358e6627e8c93153e8285bfe6bbb1f34960b6cb08a8ab49f265e8095c'
+sha256sums=('1eeb55755b6d8b14f812d47e78639065c20fc5fc592fd6aaa387693ba349e978'
             'aaa8944d0b38e6aed006c07f2c43e16332f5700f93dc7a00a3490a6d27450a18')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
