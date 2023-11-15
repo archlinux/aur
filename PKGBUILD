@@ -1,27 +1,38 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
-
+#
+# Source: https://github.com/zebradil/aur
+#
+# shellcheck disable=SC2034,SC2154
 pkgname=imgpkg
-pkgdesc="Package, distribute, and relocate your Kubernetes configuration and dependent OCI images as one OCI artifact: a bundle"
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
-url="https://carvel.dev/imgpkg"
-arch=(x86_64 aarch64)
-license=(Apache)
+pkgdesc='Store application configuration files in Docker/OCI registries'
+url='https://carvel.dev/imgpkg'
+arch=(any)
+license=(apache-2.0)
+makedepends=(bash go)
 provides=(imgpkg)
-conflicts=(imgpkg imgpkg-bin imgpkg-git)
-
-source_x86_64=(
-    imgpkg-v0.38.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.38.0/imgpkg-linux-amd64
-)
-sha256sums_x86_64=(
-    3f272fc7eacb129a989b8f686ea59455ab7e65423192803c15d6affb963f86a9
-)
-source_aarch64=(
-    imgpkg-v0.38.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.38.0/imgpkg-linux-arm64
-)
-sha256sums_aarch64=(
-    975f013ac48007314a34aa2d575c09fb186db0918f446a5ef0905ec2730453ef
-)
-package() {
-    install -Dm 755 "${srcdir}/imgpkg-v0.38.0" "${pkgdir}/usr/bin/imgpkg"
+source=(imgpkg-0.39.0::https://github.com/carvel-dev/imgpkg/archive/v0.39.0.tar.gz)
+build () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    export CGO_CPPFLAGS="${CPPFLAGS}";
+    export CGO_CFLAGS="${CFLAGS}";
+    export CGO_CXXFLAGS="${CXXFLAGS}";
+    export CGO_LDFLAGS="${LDFLAGS}";
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
+    ./hack/build.sh "$pkgver"
 }
+package () 
+{ 
+    cd "$pkgname-$pkgver" || exit 1;
+    BIN=$pkgname;
+    install -Dm755 $BIN -t "$pkgdir/usr/bin";
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
+    ./$BIN completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$BIN";
+    ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
+    ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
+}
+sha256sums=('1e2525757bd5429547de2eb0adef27f0fe186a55bda47fa8000163f2fcfe3850')
