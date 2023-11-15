@@ -39,4 +39,9 @@ package() {
 	install -m 644 -D  MaterialIcons-LICENSE "$pkgdir/usr/share/licenses/inochi-creator/MaterialIcons-LICENSE"
 	install -m 644 -D  NotoSansCJK-Regular-LICENSE "$pkgdir/usr/share/licenses/inochi-creator/NotoSansCJK-Regular-LICENSE"
 	install -m 644 -D  OpenDyslexic-LICENSE "$pkgdir/usr/share/licenses/inochi-creator/OpenDyslexic-LICENSE"
+	cd ../build-aux/linux
+	sed -i "s,logo_256,$pkgname.png,g" $pkgname.desktop
+	install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	cd ../../res
+	install -Dm644 "logo_256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
