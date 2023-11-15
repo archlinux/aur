@@ -1,8 +1,8 @@
 # Maintainer: Tobias Boesch <tobias.boesch at googlemail.com>
 
 pkgname=('fs2-knossos-dotnet-bin')
-pkgver=v0.2.0_RC5
-pkgrel=2
+pkgver=v0.2.0_RC6
+pkgrel=1
 pkgdesc="A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI"
 arch=('x86_64')
 url='https://github.com/KnossosNET/Knossos.NET'
@@ -13,7 +13,10 @@ depends=(
   'glibc'
   'hicolor-icon-theme'
 )
-source=($url/releases/download/v0.2.0-RC5/Linux_x64.tar.gz
+conflicts=(
+  'fs2-knossos-dotnet'
+)
+source=($url/releases/download/${pkgver//_/-}/Linux_x64.tar.gz
 https://raw.githubusercontent.com/KnossosNET/Knossos.NET/main/packaging/linux/knossos-256.png
         'Knossos.Net.desktop')
 sha512sums=(SKIP  # Skipped - since no checksums are provided by upstream yet.
