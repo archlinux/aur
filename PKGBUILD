@@ -1,8 +1,8 @@
-# Maintainer: M0ustach3 <pablobondialuttiau@gmail.com>
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 
 pkgname=recon-ng
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 url="https://github.com/lanmaster53/recon-ng"
 license=('GPL3')
