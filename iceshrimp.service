@@ -19,6 +19,8 @@ ExecStart=/usr/bin/corepack yarn migrateandstart
 ReadOnlyPaths=/usr/share/iceshrimp
 ReadOnlyPaths=/etc/iceshrimp/default.yml
 ReadWritePaths=/var/lib/iceshrimp/files
+ReadWritePaths=/var/lib/iceshrimp/.cache
+NoExecPaths=/var/lib/iceshrimp/.cache
 NoExecPaths=/var/lib/iceshrimp/files
 
 RestrictSUIDSGID=true
