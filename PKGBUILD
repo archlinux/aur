@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-testflo
-pkgver=1.4.13
-_commit=aef9915fe0a90523e9f1fd66344959339f41df24
+pkgver=1.4.14
+_commit=49d0b6cc574c25d3e3f7062c926d545809afd589
 pkgrel=1
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/OpenMDAO/testflo"
