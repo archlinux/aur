@@ -4,7 +4,7 @@ pkgorg='humanoid-path-planner'
 _pkgname='hpp-fcl'
 #pkgname=("$_pkgname" "$_pkgname-docs")
 pkgname=("$_pkgname")
-pkgver=2.3.6
+pkgver=2.3.7
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
@@ -14,9 +14,13 @@ depends=('assimp' 'eigenpy' 'octomap' 'qhull' 'python-numpy')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('17b7aa65d942168b44ca4ad17be28454aef50729867034021d7789a122dce6a7'
+sha256sums=('b5588c0661bd90a979ad98984cdbf9f5af57a983f1354bc375fd1966d633735d'
             'SKIP')
-validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
+validpgpkeys=(
+        '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
+        'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
+        '1462AF00C9CF3C9E7AFC905E63380359F089A579'  # https://github.com/jorisv.gpg
+        )
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
@@ -27,7 +31,7 @@ build() {
         -DINSTALL_DOCUMENTATION=OFF \
         -DBUILD_DOCUMENTATION=OFF \
         -Wno-dev
-    cmake --build "build-$pkgver"
+        cmake --build "build-$pkgver"
 }
 
 check() {
@@ -36,14 +40,14 @@ check() {
 
 package_hpp-fcl() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
-    rm -rf "$pkgdir/usr/share/doc"
-    sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclTargets.cmake"
-    sed -i '/Boost COMPONENTS/s/python3//' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclConfig.cmake"
-    install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        rm -rf "$pkgdir/usr/share/doc"
+        sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclTargets.cmake"
+        sed -i '/Boost COMPONENTS/s/python3//' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclConfig.cmake"
+        install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 #package_hpp-fcl-docs() {
-    #DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
-    #rm -rf "$pkgdir"/usr/{lib,include,share/{"$_pkgname",ament_index}}
-    #install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+#DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+#rm -rf "$pkgdir"/usr/{lib,include,share/{"$_pkgname",ament_index}}
+#install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 #}
