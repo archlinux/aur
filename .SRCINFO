@@ -1,6 +1,6 @@
 pkgbase = python-censys
 	pkgdesc = An easy-to-use and lightweight API wrapper for Censys APIs.
-	pkgver = 2.2.8
+	pkgver = 2.2.9
 	pkgrel = 1
 	url = https://github.com/censys/censys-python
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-censys
 	depends = python-backoff
 	depends = python-rich
 	depends = python-argcomplete
-	source = https://files.pythonhosted.org/packages/source/c/censys/censys-2.2.8.tar.gz
-	sha256sums = e3c6d1e0715f36630a0c52fc2a837849b9d5ffbd6a1f6648e81b1b5a09b7731c
+	source = https://github.com/censys/censys-python/archive/refs/tags/v2.2.9.tar.gz
+	sha256sums = 79337be9700e302fc358896424fa5bfeebd48eb70703cad352c575ba1a9fab05
 
 pkgname = python-censys
