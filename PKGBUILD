@@ -2,7 +2,7 @@ _gitfolder=compfy
 _gitname=compfy
 pkgname=compfy
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Better Alternative to Picom. With Animations and Active Support"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/compfy"
@@ -16,7 +16,7 @@ source=("${_gitfolder}::git+https://github.com/allusive-dev/compfy.git#tag=${pkg
 md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_gitfolder}"
-	meson setup . build
+	meson setup -Dwith_docs=false . build
 	ninja -C build
 }
 
@@ -26,6 +26,9 @@ package() {
 
 	# install license
 	install -D -m644 "LICENSES/MIT" "${pkgdir}/usr/share/licenses/${pkgname/-git$/}/LICENSE-MIT"
+
+        # install manpage
+        install -D -m644 "man/compfy.1" "${pkgdir}/usr/share/man/man1/compfy.1"
 
 	# example conf
 	install -D -m644 "compfy.sample.conf" "${pkgdir}/etc/xdg/compfy.conf.example"
