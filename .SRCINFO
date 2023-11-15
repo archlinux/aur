@@ -1,12 +1,18 @@
 pkgbase = marvin-bin
 	pkgdesc = An app launcher for Linux and Windows
 	pkgver = 0.4.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://rolandbernard.github.io/marvin/
 	arch = x86_64
 	license = MIT
-	depends = bash
+	makedepends = squashfuse
 	depends = electron24
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = marvin=0.4.9
 	conflicts = marvin
 	source = marvin-0.4.9.AppImage::https://github.com/rolandbernard/marvin/releases/download/v0.4.9/Marvin-0.4.9.AppImage
@@ -14,6 +20,6 @@ pkgbase = marvin-bin
 	source = marvin.sh
 	sha256sums = 624a42d8d31d56bd9a3b82f4b6258ebffd9b5f5d623575b44b120f3646ae269e
 	sha256sums = 67cc90dae7113cf3572e7ae6b893b8e06960f696a6a1d3fc6b36b607cea970d6
-	sha256sums = 756ab370a11ec5b693fed4c7a927743a42aaeb8843f5ca36a5a91af486e15bf9
+	sha256sums = 7b706a3604995834c338d5898757a8353b16d76285a20c4c7fe6256eb6305fa2
 
 pkgname = marvin-bin
