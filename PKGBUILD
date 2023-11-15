@@ -8,19 +8,20 @@
 
 pkgbase=akonadi-git
 pkgname=(akonadi-git libakonadi-git)
-pkgver=20.08.1.r48.g5cc47ec9d
+pkgver=24.01.75.r7.gca58c45
 pkgrel=1
 pkgdesc='PIM layer, which provides an asynchronous API to access all kind of PIM data'
 arch=(x86_64)
-url='https://kontact.kde.org'
+url='https://invent.kde.org/pim/akonadi'
 license=(LGPL)
-makedepends=(git extra-cmake-modules mariadb postgresql qt5-tools boost kitemmodels kaccounts-integration)
+depends=(kconfig kconfigwidgets kiconthemes kio kxmlgui)
+makedepends=(git extra-cmake-modules mariadb postgresql qt6-tools boost kitemmodels kaccounts-integration)
 source=("git+https://invent.kde.org/pim/akonadi.git")
 sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
@@ -38,7 +39,7 @@ build() {
 
 package_libakonadi-git() {
 	pkgdesc='Libraries used by applications based on Akonadi'
-	depends=(kitemmodels kaccounts-integration)
+	depends+=(kitemmodels kaccounts-integration)
 	conflicts=("${pkgname%-git}")
 	provides=("${pkgname%-git}=${pkgver}")
 

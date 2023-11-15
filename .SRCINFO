@@ -1,18 +1,23 @@
 pkgbase = akonadi-git
 	pkgdesc = PIM layer, which provides an asynchronous API to access all kind of PIM data
-	pkgver = 20.08.1.r48.g5cc47ec9d
+	pkgver = 24.01.75.r7.gca58c45
 	pkgrel = 1
-	url = https://kontact.kde.org
+	url = https://invent.kde.org/pim/akonadi
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = mariadb
 	makedepends = postgresql
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	makedepends = boost
 	makedepends = kitemmodels
 	makedepends = kaccounts-integration
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kiconthemes
+	depends = kio
+	depends = kxmlgui
 	source = git+https://invent.kde.org/pim/akonadi.git
 	sha512sums = SKIP
 
@@ -22,13 +27,17 @@ pkgname = akonadi-git
 	optdepends = postgresql: PostgreSQL backend
 	optdepends = postgresql-old-upgrade: upgrade from previous major PostgreSQL version using pg_upgrade
 	optdepends = sqlite: SQLite backend
-	provides = akonadi=20.08.1.r48.g5cc47ec9d
+	provides = akonadi=24.01.75.r7.gca58c45
 	conflicts = akonadi
 
 pkgname = libakonadi-git
 	pkgdesc = Libraries used by applications based on Akonadi
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kiconthemes
+	depends = kio
+	depends = kxmlgui
 	depends = kitemmodels
 	depends = kaccounts-integration
-	provides = libakonadi=20.08.1.r48.g5cc47ec9d
+	provides = libakonadi=24.01.75.r7.gca58c45
 	conflicts = libakonadi
-
