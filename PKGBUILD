@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=6.1.r112539.g105657540b
+pkgver=6.2.r112766.g575efc0406
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('x86_64')
@@ -45,7 +45,7 @@ sha256sums=('SKIP'
             'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
             #'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '0433016c8523c7ce159523946a76c8fa06a926f33f94b70e8de7c2082d14178c'
-            '9b94b90a33dc8ac9693d72c825e9c444df914428fce7cca61117146ee8f8c07b'
+            '7d5ce8058b143bae1be10a06d79ac0f1a72daf00cf648309450d83bea249a6b1'
             '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -110,7 +110,7 @@ build() {
         --enable-libdc1394 \
         --enable-libfdk-aac \
         --enable-libflite \
-        --enable-fontconfig \
+        --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libharfbuzz \
         --enable-libfribidi \
