@@ -11,6 +11,7 @@ pkgbase = disman-kwinft
 	makedepends = appstream
 	depends = wrapland
 	depends = kcoreaddons5
+	depends = kwayland5
 	depends = qt5-x11extras
 	provides = disman
 	conflicts = disman
