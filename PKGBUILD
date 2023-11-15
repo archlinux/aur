@@ -4,7 +4,7 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=ggpmisc
-_pkgver=0.5.4-1
+_pkgver=0.5.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -47,8 +47,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8609ee6ebb82d6d9fda281ed0ac56538')
-sha256sums=('9d982c62ed393ff5177b515a6f59049f27483c67ad9205fb69185b6c3722d638')
+md5sums=('a6b7e07140e0899730b072b37dccc180')
+sha256sums=('2acac1488df05284371b537e17dfa3438610d4f31c535a70c9b1c3b85cc089c8')
 
 build() {
   mkdir -p build
