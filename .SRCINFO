@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-utc-clock
 	pkgdesc = Extension for GNOME shell to add a UTC clock to the top bar
-	pkgver = 6
+	pkgver = 45.1
 	pkgrel = 1
 	url = https://github.com/swsnr/gnome-shell-extension-utc-clock
 	arch = any
 	license = MPL2
 	makedepends = npm
 	depends = gnome-shell
-	source = gnome-shell-extension-utc-clock-6.tar.gz::https://github.com/swsnr/gnome-shell-extension-utc-clock/archive/ego-6.tar.gz
-	sha256sums = 32cb922789951287855cf65b5cac85e35cad91f04557d44f3a8504fd9184e410
+	source = gnome-shell-extension-utc-clock-45.1.tar.gz::https://github.com/swsnr/gnome-shell-extension-utc-clock/archive/v45.1.tar.gz
+	sha256sums = 6ef89d80676684f93f9bbd644297e934bf86bac41eb9fad16ddffa7c1d1ca4c5
 
 pkgname = gnome-shell-extension-utc-clock
