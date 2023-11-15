@@ -1,7 +1,7 @@
 pkgbase = minidump-stackwalk
 	pkgdesc = A CLI minidump analyzer
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/minidump-stackwalk
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = minidump-stackwalk
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
+	options = !lto
 	source = minidump-stackwalk-0.18.0.tar.gz::https://crates.io/api/v1/crates/minidump-stackwalk/0.18.0/download
 	sha256sums = 3bf0694b81cd5a100d7a6d85afb5b6278e6b4c35cf115842eccb6052ec528f8b
 
