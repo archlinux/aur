@@ -1,6 +1,6 @@
 pkgbase = python-tinytuya
 	pkgdesc = Python module to interface with Tuya WiFi smart devices
-	pkgver = 1.12.11
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/jasonacox/tinytuya
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-tinytuya
 	depends = python-colorama
 	depends = python-pyaes
 	depends = python-requests
-	source = https://github.com/jasonacox/tinytuya/archive/refs/tags/v1.12.11.tar.gz
-	sha256sums = fcb9d5312fdd6fcef31fd8276f53ed6d8e6b082c2abe18308e59f91030baf0a4
+	source = https://github.com/jasonacox/tinytuya/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = 4796be0848d0ba31f3a34cdf9f86b611d85f2e886c4eb59f2e1f29d762ebadd2
 
 pkgname = python-tinytuya
