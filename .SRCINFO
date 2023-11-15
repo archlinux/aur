@@ -1,0 +1,15 @@
+pkgbase = r-shinytitle
+	pkgdesc = Update Browser Window Title in 'shiny' Session
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shinytitle
+	arch = any
+	license = GPL2
+	checkdepends = r-testthat
+	depends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/shinytitle_0.1.0.tar.gz
+	md5sums = 1e89d52a34f6c511c475002a05a08074
+	sha256sums = 5d2f9d4f5a8918c34a27f1bc1d71d351035bf7ee97f5896d6ee36f5c9dd005cc
+
+pkgname = r-shinytitle
