@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-git
 pkgver=v2023.11.1.r32.ged2050e6b
-pkgrel=1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -45,6 +45,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"
+
+  git lfs install
 
   if [[ ! -d "${srcdir}/iceshrimp" ]]; then
     git clone https://iceshrimp.dev/iceshrimp/iceshrimp.git
