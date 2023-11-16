@@ -1,18 +1,16 @@
 pkgbase = dicionario.js-bin
 	pkgdesc = Simple dictionary in which you record your own words.
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/ArthurLobopro/dicionario.js
 	arch = x86_64
 	license = MIT
-	makedepends = asar
-	depends = bash
 	depends = electron26
-	provides = dicionario.js=2.7.1
+	provides = dicionario.js=2.7.2
 	conflicts = dicionario.js
-	source = dicionario.js-2.7.1.deb::https://github.com/ArthurLobopro/dicionario.js/releases/download/v2.7.1/dicionario.js_2.7.1_amd64.deb
+	source = dicionario.js-2.7.2.deb::https://github.com/ArthurLobopro/dicionario.js/releases/download/v2.7.2/dicionario.js_2.7.2_amd64.deb
 	source = dicionario.js.sh
-	sha256sums = 7cf7a8371dda2b74c4a5319fd6e900136552e1815c008bc2a5b85a74407fc88c
-	sha256sums = f3edc91995c5d57da033149ecad845a0cc12fa62fc869413aee152ff210e3665
+	sha256sums = 7908055fc91c0e6953563694f0167ae8e1962ae19cf6ccaeaabcc32147241acc
+	sha256sums = 33b63dd162c587ddc205d259e7596f0ae149b11f3a241d2d02b00401bc379a8d
 
 pkgname = dicionario.js-bin
