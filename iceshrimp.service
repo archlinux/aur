@@ -1,0 +1,51 @@
+[Unit]
+Description=Iceshrimp daemon
+
+Requires=postgresql.service redis.service
+After=postgresql.service redis.service
+
+[Service]
+Type=simple
+Restart=on-failure
+
+User=iceshrimp
+Group=iceshrimp
+
+WorkingDirectory=/usr/share/iceshrimp
+Environment="NODE_ENV=production"
+SyslogIdentifier=iceshrimp
+ExecStart=/usr/bin/corepack yarn migrateandstart
+
+ReadOnlyPaths=/usr/share/iceshrimp
+ReadOnlyPaths=/etc/iceshrimp/default.yml
+ReadWritePaths=/var/lib/iceshrimp/files
+ReadWritePaths=/var/lib/iceshrimp/.cache
+NoExecPaths=/var/lib/iceshrimp/.cache
+NoExecPaths=/var/lib/iceshrimp/files
+
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+
+PrivateTmp=true
+PrivateDevices=true
+PrivateUsers=true
+
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectProc=invisible
+
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+LockPersonality=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

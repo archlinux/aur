@@ -1,0 +1,36 @@
+pkgbase = iceshrimp
+	pkgdesc = YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023
+	pkgver = v2023.11.2
+	pkgrel = 1
+	url = https://iceshrimp.dev/iceshrimp/iceshrimp
+	install = iceshrimp.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = makepkg-git-lfs-proto
+	makedepends = npm
+	depends = nodejs
+	depends = redis
+	depends = postgresql
+	optdepends = ffmpeg: for video transcoding
+	optdepends = sonic: efficient full text search backend
+	optdepends = meilisearch: feature-rich full text search backend
+	provides = iceshrimp
+	conflicts = iceshrimp
+	backup = etc/iceshrimp/configuration.yml
+	source = iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=v2023.11.2
+	source = iceshrimp.service
+	source = iceshrimp.sysusers
+	source = iceshrimp.tmpfiles
+	source = iceshrimp.install
+	source = iceshrimp.hook
+	source = 0001-yarnrc.patch
+	sha512sums = SKIP
+	sha512sums = d35b085754e8a03447f8d17fae1649b432709d2d5fe9149ec95e3d5b3857efd6d65021efb483ed91711f5a73ad2a02d12e4d885a660418fa0cd16541aa830153
+	sha512sums = 9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d
+	sha512sums = 2c148ad7606b0ffc40526d682e2b419de46e4b3d6258240e5664774e41c872747daa7aaa39a58b63c590dba0fb2259cbed06746bffb6da78d25eb8b23f32e512
+	sha512sums = 36980c4f5a6d25d4f522ccd64aaf38c3d704c29a25b834b14135e2895f55318496fbaf269e589e4eabbf5495265682d6f58b966ce8b70f52190dccf7a18f44cc
+	sha512sums = bd2df81ccc8fd5779c8e3432897c4e30edb5f7b1ebfcc87fd9191026caac4a4cd5a150cd42d532b38fbeeaa99fc953b7f537b699e4290503a50a9df5f97f388b
+	sha512sums = 4b9a26028bba186fa5a9fd977dbe416a6f8351f2fd04902e0f4ccf1ffb44b9ea0fa957345c5f98f9cc58453cd40ab1f95253e416564f40310868a8c654178ae7
+
+pkgname = iceshrimp
