@@ -1,6 +1,9 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron19
-_ASAR="/opt/google-messages/resources/app.asar"
+APPDIR="/usr/lib/google-messages"
+export PATH="${APPDIR}:${PATH}"
+#export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
