@@ -1,7 +1,7 @@
 pkgbase = motd
 	pkgdesc = Dynamically generate system information for MOTD SSH banner
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desbma/motd
 	arch = x86_64
 	license = GPL3
