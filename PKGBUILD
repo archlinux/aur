@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=stfed
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Synthing folder event daemon"
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -15,22 +15,17 @@ sha512sums=('4d9dc80c8377b53378eb8df678d50636fbdbc7628bd6740a0476e8ce02632e24c04
 prepare() {
     cd "${pkgname}-${pkgver}"
     sed -i 's@/usr/local/bin/@/usr/bin/@w /dev/stdout' systemd/${pkgname}.service
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --release --locked
-}
-
-check() {
-    cd "${pkgname}-${pkgver}"
-    cargo test --release --locked
+    cargo build --frozen --release
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-
     install -Dm 755 -t "${pkgdir}/usr/bin/" ./target/release/${pkgname}
-
     install -Dm 644 -t "${pkgdir}/usr/lib/systemd/user/" systemd/${pkgname}.service
 }

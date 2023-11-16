@@ -1,7 +1,7 @@
 pkgbase = stfed
 	pkgdesc = Synthing folder event daemon
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/desbma/stfed
 	arch = x86_64
 	license = GPL3
