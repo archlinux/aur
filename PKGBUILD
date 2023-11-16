@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-git
 pkgver=v2023.11.1.r39.g3def0bdf7
-pkgrel=1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -84,6 +84,7 @@ package() {
   cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp/" "${pkgdir}/usr/share/iceshrimp"
   ln -s "/etc/iceshrimp/configuration.yml" "${pkgdir}/usr/share/iceshrimp/.config/default.yml"
   ln -s "/var/lib/iceshrimp/files" "${pkgdir}/usr/share/iceshrimp/files"
+  ln -s "/var/lib/iceshrimp/.cache" "${pkgdir}/usr/share/iceshrimp/.cache"
 
   rm -rf "${pkgdir}/usr/share/iceshrimp/.git"
   rm -rf "${pkgdir}/usr/share/iceshrimp/packages"/{backend,client}/"src"
