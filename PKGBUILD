@@ -9,7 +9,7 @@ pkgver=11.7.1
 _driverver=515.65.01
 # _driverver=455.32.00
 _reqdriverver=455.32
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA's GPU programming toolkit"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
@@ -25,8 +25,37 @@ install=cuda.install
 source=(
   "http://developer.download.nvidia.com/compute/cuda/${pkgver}/local_installers/cuda_${pkgver}_${_driverver}_linux.run"
   # "cuda-findgllib_mk.diff"
-  *.pc
+  "accinj64.pc"
+  "cublas.pc"
+  "cuda.pc"
+  "cudart.pc"
+  "cufft.pc"
+  "cufftw.pc"
+  "cuinj64.pc"
+  "curand.pc"
+  "cusolver.pc"
+  "cusparse.pc"
+  "nppc.pc"
+  "nppial.pc"
+  "nppicc.pc"
+  "nppicom.pc"
+  "nppidei.pc"
+  "nppif.pc"
+  "nppig.pc"
+  "nppim.pc"
+  "nppi.pc"
+  "nppist.pc"
+  "nppisu.pc"
+  "nppitc.pc"
+  "npps.pc"
+  "nvgraph.pc"
+  "nvidia-ml.pc"
+  "nvjpeg.pc"
+  "nvrtc.pc"
+  "nvToolsExt.pc"
 )
+# To easily compute the hashes, run:
+# sha512sum *.pc | sed -e 's:^\([0-9a-f]\+\)\s\+\(.*\):  "\1"  # \2:'
 sha512sums=(
   "c2b40879a4903ed6d3201ea8c0d51fb0fdc21a27445f007aba1c9827add9a2d8326ccd764d324266d8f742a1c63aca9631158886b3de49899a864224517f1c03"  # cuda_11.7.1_515.65.01_linux.run
   # "41d6b6cad934f135eafde610d1cbd862033977fd4416a4b6abaa47709a70bab7fcf6f8377c21329084fb9db13f2a8c8c20e93c15292d7d4a6448d70a33b23f1b"  # cuda-findgllib_mk.diff
