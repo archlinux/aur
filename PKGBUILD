@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=flexo
-pkgrel=2
+pkgrel=3
 pkgver=1.6.9
 pkgdesc='A central pacman cache'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -22,9 +22,20 @@ sha256sums=('c51484fa8935e520bbfbcf74a76f6a09b77e4e14a4206a6446490c445e0eb1e7'
             '662e8c6c4d024ec035c2c02d9298a8cb6062cfb30d02bfaecf17a9d3d9b35167'
             '3b38503a554cc179e33f5c337cbbd0186d03069d059d534e220882407d550f48')
 
+prepare() {
+    cd "${pkgname}-${pkgver}/flexo"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked
+}
+
 build() {
-  cd "${pkgname}-${pkgver}/flexo"
-  cargo build --release --locked
+    cd "${pkgname}-${pkgver}/flexo"
+    cargo build --frozen --release
+}
+
+check() {
+    cd "${pkgname}-${pkgver}/flexo"
+    cargo test --frozen
 }
 
 package() {
