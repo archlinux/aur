@@ -1,66 +1,54 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=('firmware-manager-git' 'libfirmware-manager-git')
-pkgbase=firmware-manager-git
+pkgname=firmware-manager-git
+_app_id=com.system76.FirmwareManager
 pkgver=0.1.5.r3.gf3ead34
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
-depends=('dbus' 'libgudev' 'openssl')
-makedepends=('cargo' 'git' 'gtk3' 'setconf')
+depends=('dbus' 'gtk3' 'libgudev' 'openssl' 'polkit')
+makedepends=('cargo' 'git' 'setconf')
+optdepends=('fwupd: Generic firmware updates'
+            'system76-firmware-daemon: System76 firmware updates')
+conflicts=('libfirmware-manager')
+replaces=('libfirmware-manager-git')
 options=('!lto')
 source=('git+https://github.com/pop-os/firmware-manager.git'
-        'com.system76.FirmwareManager.policy'
+        "${_app_id}.policy"
         "${pkgbase%-git}.sh")
 sha256sums=('SKIP'
             '310e872ec56f13764615795dbcc30e3ab8b0e4329c0d1fe34bd5aa73bc602535'
             'fb8395e19bfd54f756dad1d073135c5b41caa2ad27ee0621350fba50b2e7363b')
 
 pkgver() {
-  cd "$srcdir/${pkgbase%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgbase%-git}"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/${pkgbase%-git}"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
 
-package_firmware-manager-git() {
-  pkgdesc="GTK application for managing system and device firmware."
-  depends=('gtk3' 'libfirmware-manager-git' 'polkit')
-  provides=("${pkgname%-git}" "${pkgname%-git}-virtual")
-  conflicts=("${pkgname%-git}")
-  install="${pkgname%-git}.install"
+package() {
+  cd "${pkgname%-git}"
+  make prefix=/usr DESTDIR="$pkgdir" install
 
-  cd "$srcdir/${pkgbase%-git}"
-  make prefix=/usr DESTDIR="$pkgdir/" install-{bin,notify,icons}
-
-  install -Dm644 "$srcdir/com.system76.FirmwareManager.policy" -t \
-    "$pkgdir/usr/share/polkit-1/actions"
+  install -Dm644 "$srcdir/${_app_id}.policy" -t \
+    "$pkgdir/usr/share/polkit-1/actions/"
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 
-  setconf "$pkgdir/usr/share/applications/com.system76.FirmwareManager.desktop" Exec "${pkgname%-git}"
+  setconf "$pkgdir/usr/share/applications/${_app_id}.desktop" Exec "${pkgname%-git}"
 }
 
-package_libfirmware-manager-git() {
-  pkgdesc="Shared library for C which provides the firmware manager as a GTK widget."
-  depends+=('fwupd')
-  optdepends=('system76-firmware-daemon: For System76 firmware updates')
-  provides=("${pkgname%-git}" 'libfirmware_manager.so')
-  conflicts=("${pkgname%-git}")
-
-  cd "$srcdir/${pkgbase%-git}"
-  make prefix=/usr DESTDIR="$pkgdir/" install-ffi
-}
