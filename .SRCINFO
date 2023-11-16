@@ -1,7 +1,7 @@
 pkgbase = networkmanager-ssh-git
 	pkgdesc = SSH VPN support for NetworkManager - git version, gtk4 port
 	pkgver = r270.d7996e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NetworkManager/NetworkManager-ssh/tree/lr/gtk-4.0
 	arch = x86_64
 	license = GPL2
@@ -21,9 +21,9 @@ pkgbase = networkmanager-ssh-git
 	depends = libnma-gtk4
 	depends = libsecret
 	depends = networkmanager
-	depends = nm-connection-editor
 	depends = pango
 	depends = zlib
+	optdepends = nm-connection-editor: config GUI for GNOME
 	provides = networkmanager-ssh
 	conflicts = networkmanager-ssh
 	source = networkmanager-ssh::git+https://github.com/NetworkManager/NetworkManager-ssh.git#branch=lr/gtk-4.0

@@ -4,7 +4,7 @@
 _pkgbase='networkmanager-ssh'
 pkgname="${_pkgbase}-git"
 pkgver=r270.d7996e7
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH VPN support for NetworkManager - git version, gtk4 port"
 arch=('x86_64')
 _repourl='https://github.com/NetworkManager/NetworkManager-ssh'
@@ -26,13 +26,15 @@ depends=(
   'libnma-gtk4'
   'libsecret'
   'networkmanager'
-  'nm-connection-editor'
   'pango'
   'zlib'
 )
 makedepends=(
   'git'
   'intltool'
+)
+optdepends=(
+  'nm-connection-editor: config GUI for GNOME'
 )
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
