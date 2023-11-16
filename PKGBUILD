@@ -1,8 +1,8 @@
 _pkgname="certbot-plugin-gandi"
 pkgname="certbot-dns-gandi"
 pkgdesc="gandi DNS authenticator plugin for certbot"
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 arch=("any")
 url="https://github.com/obynio/${_pkgname}"
 license=("MIT")
@@ -16,7 +16,7 @@ source=(
   "${url}/archive/refs/tags/${pkgver}.zip"
   "gandi.ini"
 )
-sha256sums=('7f076d8cc03b58e0a9763378dee6ab39057769405578ad27c690c5f94a3c8e5c'
+sha256sums=('8a11257b9b2687221378faf7267c7350b1475bcdbb54bb4c8f2ec72ed7ff05f0'
             'dff9eaa13a927429a407a7e152690c5c10f51b6fa426f1ea29787728eeab8279')
 
 package() {
