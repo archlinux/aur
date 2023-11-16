@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ffmpeg
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="OCaml bindings to the FFmpeg library"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha512sums=('8ccbb5f48f9d827520cf5bf8527c95ec50fa016952b816a174385f94263b2a3692b2f49f7d0cab8ce6f07a6fd7b6073595e0e8ac5aa8bc7f61e09d36002e2bc2')
+sha512sums=('23ec4f4fbf4f624a57a5475e849cd302c680c9e8d94a97c448085ea6686d3488fcb34daafd2683989cbeb4255598d39d81ae1e8e59d42003fac36633a251fcfe')
