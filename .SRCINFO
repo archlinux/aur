@@ -1,7 +1,7 @@
 pkgbase = forgejo-runner
 	pkgdesc = Continous integration for Forgejo
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.forgejo.org/forgejo/runner
 	arch = x86_64
 	arch = aarch64

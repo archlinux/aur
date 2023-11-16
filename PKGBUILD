@@ -2,7 +2,7 @@
 # Package based on aur/forgejo-runner-bin and aur/act-runner.
 pkgname="forgejo-runner"
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Continous integration for Forgejo"
 arch=('x86_64' 'aarch64')
 url="https://code.forgejo.org/forgejo/runner"
@@ -49,7 +49,7 @@ package() {
 
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-	sed -i -e "s|file: \.runner|file: /etc/$pkgname/$pkgname.yaml|" $pkgname.yaml
+	sed -i -e "s|file: \.runner|file: /etc/$pkgname/.runner|" $pkgname.yaml
 	# install -m755 -d "$pkgdir/etc/$pkgname"
 	install -Dm644 "$pkgname.yaml" "$pkgdir/etc/$pkgname/$pkgname.yaml"
 	install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
