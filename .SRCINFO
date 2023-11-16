@@ -1,7 +1,7 @@
 pkgbase = ayugram-desktop-bin
 	pkgdesc = Unofficial desktop version of Telegram messaging app with ToS breaking features in mind - Static binaries
 	pkgver = 4.11.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/AyuGram/AyuGramDesktop
 	arch = x86_64
 	license = GPL3
@@ -25,7 +25,7 @@ pkgbase = ayugram-desktop-bin
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = ayugram-desktop
 	conflicts = ayugram-desktop
-	source = https://git.killarious.org/ayugram-releases/archlinux-bin/-/raw/4.11.1/archlinux_ayugram_v4.11.1.tar.gz
+	source = https://git.killarious.org/ayugram-releases/archlinux-bin/raw/tag/4.11.1/archlinux_ayugram_v4.11.1.tar.gz
 	sha256sums = 5a79b7ac4c8f94e777556683b2d5040310e9e49280915662f2666c9dd7e0e012
 
 pkgname = ayugram-desktop-bin
