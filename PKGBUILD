@@ -12,7 +12,7 @@ groups=("ProtonVPN")
 optdepends=("network-manager-applet: password prompt on Gnome and other GTK DEs"
 						"plasma-nm: password prompt on KDE Plasma")
 makedepends=("python-setuptools")
-source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=${pkgver}")
+source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#commit=6ffd04fa0ae88a89d2b733443317066ef23b3ccd")
 sha256sums=('SKIP')
 conflicts=('python-protonvpn-nm-lib')
 
