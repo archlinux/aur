@@ -4,7 +4,7 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino
-pkgver=2023.1.0
+pkgver=2023.2.0
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
@@ -82,8 +82,8 @@ sha256sums=('SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '7f81f5ef6600b069e7e0b8ff11b7b48768991b9b4d9cd3c4cf845cd8dc99d26d'
-            'fd22227bfbec18ee4f4fc4010deba387f6b8ae1c602938d36c8b86b128342647')
+            '1b420e3cc2afca11154c672123f001cf03cd2b96be3baafd229f6ee7d752419e'
+            '9e0f517320c4351489db5840658ffcf537716b23e88a02ee69380734a40ced21')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
