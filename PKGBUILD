@@ -2,21 +2,25 @@
 pkgname=warteschlangensimulator-appimage
 _appname=Warteschlangensimulator
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, platform independent, discrete-event, stochastic simulator which allows to model queueing systems in form of flowcharts."
 arch=("x86_64")
 url="https://a-herzog.github.io/Warteschlangensimulator/"
-_githuburl="https://github.com/A-Herzog/Warteschlangensimulator"
+_ghurl="https://github.com/A-Herzog/Warteschlangensimulator"
 license=('Apache')
-depends=('zlib' 'glibc')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
+depends=()
+makedepends=(
+    'squashfuse'
+)
 options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_appname}-${CARCH}.AppImage")
+source=(
+    "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_appname}-${CARCH}.AppImage"
+)
 sha256sums=('ca161e42926660b7a575603e440f1c29d73dd5d1c557108e8b9f2745eaa7bee4')
-         
-prepare() {
+build() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|Simulator.sh|${pkgname%-appimage} --no-sandbox|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
