@@ -1,33 +1,39 @@
-_pkgname=libsmallfry
+# Maintainer: xiota / aur.chaotic.cx
+
+_pkgname="libsmallfry"
 pkgname="$_pkgname-git"
 pkgver=0.2.0.r2.gc31c6a4
-pkgrel=1
-pkgdesc='Smallfry metric for JPEG Optimization'
-arch=(x86_64)
+pkgrel=2
+pkgdesc='Smallfry metric for JPEG optimization'
 url="https://github.com/ImageProcessing-ElectronicPublications/libsmallfry"
 license=(BSD)
+arch=(x86_64)
+
 depends=(glibc)
 makedepends=(git)
-optdepends=()
-provides=("$_pkgname")
-conflicts=(${provides[@]})
-source=("$_pkgname"::"git+$url")
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   make PREFIX="$pkgdir/usr" install
 
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s /usr/share/doc/libsmallfry0/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
+
+  rm -rf "${pkgdir:?}/usr/share/doc/"
 }
