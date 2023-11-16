@@ -4,6 +4,7 @@ pkgbase = nm-tray
 	pkgrel = 2
 	url = https://github.com/palinek/nm-tray
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = cmake
 	makedepends = qt5-tools
