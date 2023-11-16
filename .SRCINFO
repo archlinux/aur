@@ -1,13 +1,14 @@
 pkgbase = perl-data-entropy
 	pkgdesc = Contains the Data::Entropy module, a collection of fundamental algorithms that use entropy.
 	pkgver = 0.007
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/Data-Entropy
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build
 	depends = perl-crypt-rijndael
 	depends = perl-http-lite
 	depends = perl-data-float

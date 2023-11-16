@@ -3,13 +3,13 @@
 pkgname='perl-data-entropy'
 _dist='Data-Entropy'
 pkgver='0.007'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Contains the Data::Entropy module, a collection of fundamental algorithms that use entropy."
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-crypt-rijndael' 'perl-http-lite' 'perl-data-float' 'perl-params-classify')
-makedepends=()
+makedepends=('perl-module-build')
 url="https://metacpan.org/release/$_dist"
 source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_dist-$pkgver.tar.gz")
 md5sums=('8608fdbf690fc21caf170310134c892b')
