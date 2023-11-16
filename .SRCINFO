@@ -1,11 +1,14 @@
 pkgbase = soundcloud-dl-git
 	pkgdesc = Souncloud music downloader
-	pkgver = v2.7.1.r0.gb7c0c44
+	pkgver = v2.7.3.r0.g4276511
 	pkgrel = 1
 	url = https://github.com/flyingrub/scdl
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-clint
 	depends = python-docopt
