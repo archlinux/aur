@@ -51,7 +51,7 @@
 
 pkgname=flowinity-flameshot
 _pkgname=flameshot
-pkgver=r1942.4cced83d
+pkgver=r1943.e0f63600
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)"
 arch=('i686' 'x86_64')
