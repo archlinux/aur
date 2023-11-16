@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.1.2.382"
+pkgver="10.1.3.383"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('e72405715745757c8d1126ddb260c8e3a38a17159c7978b987af150a2a65ba0b')
+sha256sums=('ca22de418ab58dc2ae727fe376de9eadefc675a1e76e4d6d8c5e6bc3a6328ab9')
 
 prepare()
 {
