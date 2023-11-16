@@ -3,8 +3,8 @@
 
 _pkgname=texlab
 pkgname=$_pkgname-git
-pkgver=r1267.8ae99ec
-pkgrel=3
+pkgver=5.11.0.r16.867dbc91
+pkgrel=1
 pkgdesc='An implementation of the Language Server Protocol for LaTeX'
 arch=(any)
 url=https://github.com/latex-lsp/texlab
@@ -17,21 +17,30 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir"/$_pkgname
-    printf r%s.%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+    git describe --tags --long | \
+        sed -e 's/\([^-]*-\)g/r\1/' -e 's/-/./g' -e 's/^v//'
+}
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir"/$_pkgname
+    cargo update
+    cargo fetch --locked --target $CARCH-unknown-linux-gnu
 }
 
 build () {
     cd "$srcdir"/$_pkgname
-    cargo +stable build --release --locked
+    cargo build --frozen --release --all-features
 }
 
 check() {
+    export RUSTUP_TOOLCHAIN=stable
     cd "$srcdir"/$_pkgname
-    cargo +stable test --release --all --locked
+    cargo test --frozen --workspace --all-features
 }
 
 package() {
     cd "$srcdir"/$_pkgname
-    install -Dm 755 target/release/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-    install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+    install -Dm 755 -t "$pkgdir"/usr/bin target/release/$_pkgname
+    install -Dm 644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
 }
