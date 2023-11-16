@@ -1,6 +1,7 @@
 # -*- mode: pkgbuild -*-
-# Maintainer  : Jeremy Borgman <borgman.jeremy@pm.me>
-# Maintainer  : Mehrad Mahmoudian <m.mahmoudian@gmail.com>
+# Maintainer  : Troplo <troplo@troplo.com>
+# Contributor : Jeremy Borgman <borgman.jeremy@pm.me>
+# Contributor : Mehrad Mahmoudian <m.mahmoudian@gmail.com>
 # Contributor : Feresey <p.milko1999@yandex.ru>
 # Contributor : j1simon <stemp@ono.com>
 # Contributor : Feresey <p.milko1999@yandex.ru>
@@ -51,7 +52,7 @@
 
 pkgname=flowinity-flameshot
 _pkgname=flameshot
-pkgver=r2
+pkgver=r2.0.0
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)"
 arch=('i686' 'x86_64')
