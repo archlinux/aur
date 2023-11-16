@@ -23,7 +23,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --enable-silent-rules
 	make
 }
 
