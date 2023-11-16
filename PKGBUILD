@@ -3,7 +3,7 @@
 pkgname=gawk-nl_langinfo
 _project=gawkextlib
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GAWK extension - provides access to nl_langinfo(3)"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
