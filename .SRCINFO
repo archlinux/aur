@@ -1,0 +1,18 @@
+pkgbase = perl-class-measure
+	pkgdesc = Calculate, create, compare, and convert units of measurement. (via MetaCPAN distribution)
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/release/Class-Measure
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-carp
+	depends = perl-sub-exporter
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/B/BL/BLUEFEET/Class-Measure-0.10.tar.gz
+	sha256sums = c0b79eb09a66cc41fb83aadbd24874372b465a74407b96e0722994eefbfd24ca
+
+pkgname = perl-class-measure
