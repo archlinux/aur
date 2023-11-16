@@ -1,7 +1,7 @@
 # Maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=python-unyt
 _module_name=unyt
-pkgver=2.9.5
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A package for handling numpy arrays with units."
 arch=(any)
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-numpy' 'python-sympy')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/u/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-sha256sums=('99892f33b5c6bf97053beac84c8a136747631828f030725e9a01147d48377337')
+sha256sums=('8860efe960afadddebc8c0c2624336a9c64241a73dddfef863af6722f8022001')
 
 package() {
   cd "$srcdir/${_module_name}-$pkgver"
