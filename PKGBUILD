@@ -1,16 +1,16 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Maintainer: Ben Westover <me at benthetechguy dot net>
 # Contributor: Lenovsky <lenovsky at pm dot me>
 # Contributor: aimileus <me at aimileus dot nl>
-# Contributor: Ben Westover <me at benthetechguy dot net>
 
 pkgname=protonmail-bridge
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://protonmail.com/bridge"
 license=('GPL3')
-makedepends=('go' 'cmake' 'ninja' 'zip' 'qt6-base' 'git')
+makedepends=('go' 'cmake' 'ninja' 'zip' 'qt6-base' 'git' 'python' 'unzip')
 depends=('hicolor-icon-theme' 'libsecret' 'libglvnd' 'icu' 'qt6-declarative' 'qt6-svg' 'qt6-wayland')
 optdepends=(
     'org.freedesktop.secrets: Applications that support Freedesktop secrets api'

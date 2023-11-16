@@ -1,7 +1,7 @@
 pkgbase = protonmail-bridge
 	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://protonmail.com/bridge
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,8 @@ pkgbase = protonmail-bridge
 	makedepends = zip
 	makedepends = qt6-base
 	makedepends = git
+	makedepends = python
+	makedepends = unzip
 	depends = hicolor-icon-theme
 	depends = libsecret
 	depends = libglvnd
