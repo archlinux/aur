@@ -6,17 +6,20 @@ pkgdesc='DefiChain Wallet AppImage'
 _pkgbin=defi-wallet
 license=('MIT')
 url='https://github.com/BirthdayResearch/defichain-app'
-pkgver=v3.2.9
+pkgver=v4.0.0
 pkgrel=1
 arch=('x86_64')
 _package="DeFi-Wallet-${pkgver#v}.AppImage"
 provides=('defi-app')
 conflicts=('defi-app')
-source=("${_package}::${url}/releases/download/${pkgver}/${_package}")
-sha256sums=('ac989b466174b2dc38c15318dda901024470cb21bea01ee3339c785021dcd2fa')
+source=("${url}/releases/download/${pkgver}/${_package}"{,.SHA256})
+sha256sums=('dba90cd90912cf7b54892e82ef78a8e6779184363799d6145c66a5b7871fc77b'
+            '008683fc88c97967c97b87ae73d3d9fae95e1628586984a1b88a7aa377a6d352')
 OPTIONS=(!strip)
 
 prepare() {
+    # Verify the checksum from the .sha256 file
+    sha256sum -c ${_package}.SHA256 || return 1
 	# Extract files
 	chmod +x "$srcdir/$_package"
 	$srcdir/$_package --appimage-extract
