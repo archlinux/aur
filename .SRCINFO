@@ -1,14 +1,15 @@
 pkgbase = ocamlnet
 	pkgdesc = A library for Web and Internet programming in OCaml
 	pkgver = 4.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://projects.camlcity.org/projects/ocamlnet.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	makedepends = ocaml-findlib
-	makedepends = ocaml
+	makedepends = ocaml>=4.02
+	makedepends = ocaml<=4.14
 	makedepends = ocaml-pcre
 	depends = ncurses
 	depends = gnutls
