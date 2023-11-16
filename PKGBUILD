@@ -1,7 +1,7 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=libzia
-pkgver=4.44
+pkgver=4.49
 pkgrel=1
 pkgdesc="Support lib. for tucnak4"
 arch=('i686' 'x86_64')
@@ -34,9 +34,9 @@ package() {
 
 	make DESTDIR=$pkgdir install
 }
-md5sums=('96c19e554ba61d1780df9afd60e11caf'
+md5sums=('783a2da7f4e7c1d39675d703f50fca91'
          '89c0df530740b443ecb9a81fcd56b290'
          '2605f7404324ff64c78d539e37dc3a8a')
-sha256sums=('0676ad77f760b197aee68a080cebfc6188ad7faef7fbdf81569c3b1524225cbf'
+sha256sums=('1a4bde1672dc1c351e79798e131c5a7d926a72bfe60fad003fe2dc6c85404859'
             'd7e847934c40ce192ff949c0aa33b2ddf252310d11ade4fbbbd21f47e00c1301'
             '414064189562c05a5d600ead106f77348db4dccc73dc4a3a1b103075befe96ed')
