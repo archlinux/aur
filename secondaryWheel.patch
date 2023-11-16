@@ -109,11 +109,11 @@ diff --git a/src/xdefaults.C b/src/xdefaults.C
 index 2308844..0f5d2d0 100644
 --- a/src/xdefaults.C
 +++ b/src/xdefaults.C
-@@ -264,6 +264,7 @@ optList[] = {
+@@ -258,6 +258,7 @@
  #ifndef NO_SECONDARY_SCREEN
-               BOOL (Rs_secondaryScreen, "secondaryScreen", "ssc", Opt_secondaryScreen, 0, "enable secondary screen"),
-               BOOL (Rs_secondaryScroll, "secondaryScroll", "ssr", Opt_secondaryScroll, 0, "enable secondary screen scroll"),
+               BOOL (Rs_secondaryScreen, "secondaryScreen", "ssc", Opt_secondaryScreen, 0, "secondary screen"),
+               BOOL (Rs_secondaryScroll, "secondaryScroll", "ssr", Opt_secondaryScroll, 0, "secondary screen scroll"),
 +              BOOL (Rs_secondaryWheel, "secondaryWheel", "ssw", Opt_secondaryWheel, 0, "enable secondary screen wheel"),
  #endif
- #if ENABLE_PERL
-               RSTRG (Rs_perl_lib, "perl-lib", "string"), //, "colon-separated directories with extension scripts"),TODO
+ #if ENABLE_FRILLS
+               STRG (Rs_rewrapMode, "rewrapMode", "rm", "string", "rewrap mode (auto, always, never)"),
