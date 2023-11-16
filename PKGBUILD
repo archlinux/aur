@@ -31,6 +31,5 @@ package() {
     _python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     python -m installer --destdir="$pkgdir" "$_whl"
     _license_path="${pkgdir}/usr/lib/python${_python_version}/site-packages/${_name}-${pkgver}.dist-info/LICENSE"
-    echo ${_license_path}
     install -Dm644 "${_license_path}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
