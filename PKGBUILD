@@ -24,8 +24,8 @@ makedepends=(
   'perl-module-build-tiny'
 )
 optdepends=(
-  "perl-class-measure: For haversine."
-  "perl-geo-point:  To be able to handle 'Geo::Point' objects."
+  "perl-class-measure:  For haversine."
+  "perl-geo-point:      To be able to handle 'Geo::Point' objects."
 )
 checkdepends=(
   'perl-test2-suite'
