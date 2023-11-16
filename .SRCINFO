@@ -1,0 +1,15 @@
+pkgbase = lua-lgi-async-extra
+	pkgdesc = Asynchronous high(er)-level API wrapper for LGI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sclu1034/lgi-async-extra
+	arch = any
+	license = GPL3
+	makedepends = luarocks
+	depends = lua
+	depends = lua-lgi
+	depends = lua-async
+	source = lua-lgi-async-extra-0.3.0.tar.gz::https://github.com/sclu1034/lgi-async-extra/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = a66daad9e067813a03944eb09bc273510ae7f5fe152970824023fbc72281faaf
+
+pkgname = lua-lgi-async-extra
