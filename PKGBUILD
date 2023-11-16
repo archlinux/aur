@@ -1,19 +1,19 @@
-# Maintainer: xiota
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Kevin Majewski <kevin.majewski02@gmail.com>
 
 _pkgname="sushi"
 pkgname="$_pkgname-git"
-pkgver=44.2.r6.g169c15d
+pkgver=45.0.r3.gcd171b4
 pkgrel=1
 pkgdesc="A quick previewer for Nautilus"
 url="https://gitlab.gnome.org/GNOME/sushi"
 arch=(x86_64)
 license=(GPL2)
+
 depends=(
   'evince'
   'gjs'
-  #'gst-plugin-gtk'
   'gst-plugins-base-libs'
   'gtksourceview4'
   'libsoup3'
@@ -31,23 +31,21 @@ optdepends=(
   'libreoffice: OpenDocument formats'
 )
 
-provides=("$_pkgname")
-conflicts=(${provides[@]})
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-source=(
-  "$_pkgname"::"git+$url"
-)
-sha256sums=(
-  'SKIP'
-)
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "$_pkgname" build
+  arch-meson "$_pkgsrc" build
   meson compile -C build
 }
 
@@ -56,5 +54,5 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir:?}"
 }
