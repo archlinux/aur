@@ -1,7 +1,7 @@
 pkgbase = heidisql
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. This package uses the latest nightly build (64bit) on top of the portable version, and uses Wine.
 	pkgver = 12.6.0.6765
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.heidisql.com/
 	arch = any
 	license = GPL
