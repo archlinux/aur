@@ -11,9 +11,9 @@ pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG edi
 arch=('x86_64')
 url="http://www.${pkgname}.org"
 license=('GPL')
-depends=('perl' 'guile1.8' 'texlive-basic' 'python' 'libxext' 'freetype2' 'qt5-svg')
+depends=('perl' 'guile' 'texlive-basic' 'python' 'libxext' 'freetype2' 'qt5-svg')
 # do not remove texlive-basic dependency, as it is needed!
-optdepends=('transfig: convert images using fig2ps'
+optdepends=('fig2dev: convert images using fig2ps'
   'gawk: conversion of some files'
   'ghostscript: rendering ps files'
   'imagemagick: convert images'
@@ -29,11 +29,12 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DGUILECONFIG_EXECUTABLE=/usr/bin/guile-config1.8 \
+    -DGUILECONFIG_EXECUTABLE=/usr/bin/guile-config \
     -Wno-dev
   cmake --build build
 }
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
+  install -Dm 644 TeXmacs-${pkgver}-src/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
