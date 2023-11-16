@@ -1,0 +1,13 @@
+pkgbase = lua-async
+	pkgdesc = Utilities for callback-style asynchronous execution in Lua
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/sclu1034/async.lua
+	arch = any
+	license = GPL3
+	makedepends = luarocks
+	depends = lua
+	source = lua-async-0.2.1.tar.gz::https://github.com/sclu1034/async.lua/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 0978346f0e1f1d7683b43de07948fb9aebf418e405e4bf1f5d1de7fbba245a5c
+
+pkgname = lua-async
