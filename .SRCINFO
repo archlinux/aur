@@ -1,12 +1,10 @@
 pkgbase = pomodoro-bin
 	pkgdesc = Pomodoro timer base on Electron.
 	pkgver = 1.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AndrewMaksimchuk/pomodoro
 	arch = x86_64
 	license = MIT
-	makedepends = asar
-	depends = bash
 	depends = electron25
 	provides = pomodoro=1.8.2
 	conflicts = pomodoro
@@ -15,6 +13,6 @@ pkgbase = pomodoro-bin
 	source = pomodoro.sh
 	sha256sums = 5a4cea8654d45cc371f79f7d4ccf52da86dd309b79285fd470999624968cd74a
 	sha256sums = 6c3be11c505c08a5a1a041f62fff718177de780c85e4e49609aa5ca22c2148a9
-	sha256sums = a4117ffcb12e9b127117e07f2adb5f2be120161ce2d1d65cca39070a09d01961
+	sha256sums = 1bb4bd6f4334245b8f277936e361abcf05231ddb18308da0d08ba801cdba0598
 
 pkgname = pomodoro-bin
