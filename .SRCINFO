@@ -1,35 +1,12 @@
 pkgbase = file-roller-tmp
-	pkgdesc = Create and modify archives. SSD-friendly version (stores temporary files in /tmp).
+	pkgdesc = [Meta-PKG] Use 'file-roller' instead; delete this dummy metapackage
 	pkgver = 3.36.2
-	pkgrel = 1
-	url = https://gitlab.gnome.org/GNOME/file-roller
-	arch = x86_64
-	groups = gnome
+	pkgrel = 2
+	url = https://archlinux.org/packages/?q=file-roller
+	install = file-roller-tmp.install
+	arch = any
 	license = GPL2
-	makedepends = yelp-tools
-	makedepends = git
-	makedepends = libnautilus-extension
-	makedepends = meson
-	makedepends = appstream-glib
-	depends = gtk3
-	depends = dconf
-	depends = libarchive
-	depends = file
-	depends = json-glib
-	depends = libnotify
-	depends = zip
-	depends = unzip
-	optdepends = p7zip: 7z, arj, exe and encrypted zip files support
-	optdepends = unrar: better RAR archive support
-	optdepends = unace: ACE archive support
-	optdepends = lrzip: lrzip archive support
-	provides = file-roller=3.36.2
+	optdepends = file-roller: migrate to this package instead of file-roller-tmp
 	conflicts = file-roller
-	replaces = file-roller
-	source = git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=eef4df4c857520ac81b1514d3b923e88855ce669
-	source = tmp-as-temp.patch
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = file-roller-tmp
-

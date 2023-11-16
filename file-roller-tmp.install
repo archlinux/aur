@@ -1,0 +1,15 @@
+pre_install() {
+  echo "WARNING: 'file-roller-tmp' is now empty: manual intervention required"
+  echo
+  echo "  AUR/file-roller-tmp has been abandoned since 2020,"
+  echo "  and now it has been deleted."
+  echo
+  echo "  Please install 'file-roller' instead (this will remove 'file-roller-tmp'):"
+  echo
+  echo "  sudo pacman -Syu file-roller"
+  echo
+}
+
+pre_upgrade() {
+  pre_install
+}
