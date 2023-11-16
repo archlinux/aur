@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.13.0.plus1
+pkgver=3.13.5.plus1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -43,7 +43,7 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=229f812c742517201dba4fddb2fddf1d3644d4f3
+_tag=0cbbc02b255fe6c506aff7d625315ce387d6b7a4
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
@@ -52,9 +52,11 @@ source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/Joshua-Ashton/reshade.git"
+        "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
         )
 
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -98,6 +100,10 @@ build() {
 }
 
 package() {
+  install -d "$pkgdir"/usr/share/gamescope/reshade
+  cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
+  chmod -R 655 "$pkgdir"/usr/share/gamescope
+
   meson install -C build --skip-subprojects --destdir="${pkgdir}"
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
