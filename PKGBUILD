@@ -43,4 +43,5 @@ package() {
     cd "$srcdir"/$_pkgname
     install -Dm 755 -t "$pkgdir"/usr/bin target/release/$_pkgname
     install -Dm 644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
+    install -Dm 644 CHANGELOG.md README.md "$pkgdir"/usr/share/doc/$_pkgname
 }
