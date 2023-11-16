@@ -1,0 +1,20 @@
+--- a/lldap_config.docker_template.toml
++++ b/lldap_config.docker_template.toml
+@@ -85,7 +85,7 @@
+ ##  - "mysql://mysql-user:password@mysql-server/my-database"
+ ##
+ ## This can be overridden with the LLDAP_DATABASE_URL env variable.
+-database_url = "sqlite:///data/users.db?mode=rwc"
++database_url = "sqlite:///var/lib/lldap/data/users.db?mode=rwc"
+ 
+ ## Private key file.
+ ## Contains the secret private key used to store the passwords safely.
+@@ -96,7 +96,7 @@ database_url = "sqlite:///data/users.db?mode=rwc"
+ ## Alternatively, you can use key_seed to override this instead of relying on
+ ## a file.
+ ## Env variable: LLDAP_KEY_FILE
+-key_file = "/data/private_key"
++key_file = "/var/lib/lldap/data/private_key"
+ 
+ ## Seed to generate the server private key, see key_file above.
+ ## This can be any random string, the recommendation is that it's at least 12
