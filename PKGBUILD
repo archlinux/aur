@@ -19,7 +19,7 @@ makedepends=(
 )
 
 if [ x"$pkgname" != x"$_pkgname" ] ; then
-  provides=("$_pkgname")
+  provides=("$_pkgname=${pkgver%%.r*}")
   conflicts=("$_pkgname")
 fi
 
@@ -32,20 +32,19 @@ sha256sums=(
 )
 
 build() {
-  cd "$_pkgsrc"
-  mkdir -p build
-  cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNM_TRAY_XDG_AUTOSTART_DIR="/etc/xdg/autostart"
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DNM_TRAY_XDG_AUTOSTART_DIR='/etc/xdg/autostart'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  #install -d "$pkgdir/usr/share/$_pkgname"
-
-  cd "$_pkgsrc/build"
-  make DESTDIR="$pkgdir" install
-
-  cd ..
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  DESTDIR="${pkgdir:?}" cmake --install build
+  install -Dm644 "${_pkgsrc:?}/COPYING" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
 }
