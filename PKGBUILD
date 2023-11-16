@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-git
 pkgver=v2023.11.1.r39.g3def0bdf7
-pkgrel=2
+pkgrel=3
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -38,7 +38,7 @@ sha512sums=('SKIP'
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
             '2c148ad7606b0ffc40526d682e2b419de46e4b3d6258240e5664774e41c872747daa7aaa39a58b63c590dba0fb2259cbed06746bffb6da78d25eb8b23f32e512'
             '36980c4f5a6d25d4f522ccd64aaf38c3d704c29a25b834b14135e2895f55318496fbaf269e589e4eabbf5495265682d6f58b966ce8b70f52190dccf7a18f44cc'
-            '546edef80a262ed96ec5c1b2486faaaf0daf4e94f414a0a0873ad925ed3973540b82a530763b257ad2423befb9a84e81782ba299adad4b84c0291519b73f9e56'
+            '1187e7c2b48ea5ac0a3607e601c3ed557903bf17b1ed684f4bfa7acefaf91ec58897a6ae94a31e6d1639adf532e89c6f265e0cb9f7a5a93ec6d73efe18d29e2a'
             '4b9a26028bba186fa5a9fd977dbe416a6f8351f2fd04902e0f4ccf1ffb44b9ea0fa957345c5f98f9cc58453cd40ab1f95253e416564f40310868a8c654178ae7')
 
 pkgver() {
