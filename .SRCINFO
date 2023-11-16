@@ -1,0 +1,18 @@
+pkgbase = linglong-box-git
+	pkgdesc = Container application toolkit of deepin
+	pkgver = 1.3.3.15.1.r12.gc633517
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/linuxdeepin/linglong-box
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = libseccomp
+	depends = glibc
+	depends = gcc-libs
+	provides = linglong-box
+	conflicts = linglong-box
+	source = linglong-box::git+https://github.com/linuxdeepin/linglong-box.git#branch=release/1.3
+	md5sums = SKIP
+
+pkgname = linglong-box-git
