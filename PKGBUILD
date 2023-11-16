@@ -11,8 +11,7 @@ url=https://github.com/latex-lsp/texlab
 license=(MIT)
 
 conflicts=($_pkgname $_pkgname-bin)
-depends=(gcc-libs)
-makedepends=(rustup)
+makedepends=(git cargo)
 source=(git+$url)
 md5sums=(SKIP)
 
