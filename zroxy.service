@@ -1,0 +1,9 @@
+[Unit]
+Description=SNI/TLS proxy
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/zroxy -c /etc/zroxy.conf
+
+[Install]
+WantedBy=multi-user.target
