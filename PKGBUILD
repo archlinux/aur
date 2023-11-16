@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=flexo
-pkgrel=3
+pkgrel=4
 pkgver=1.6.9
 pkgdesc='A central pacman cache'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -30,11 +30,13 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}/flexo"
+    export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release
 }
 
 check() {
     cd "${pkgname}-${pkgver}/flexo"
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen
 }
 
