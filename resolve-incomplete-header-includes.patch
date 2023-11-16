@@ -1,0 +1,89 @@
+diff --git a/clang-tools-extra/clangd/TUScheduler.cpp b/clang-tools-extra/clangd/TUScheduler.cpp
+index 324ba1fc8cb8..4c5f67aceebf 100644
+--- a/clang-tools-extra/clangd/TUScheduler.cpp
++++ b/clang-tools-extra/clangd/TUScheduler.cpp
+@@ -52,6 +52,7 @@
+ #include "Config.h"
+ #include "Diagnostics.h"
+ #include "GlobalCompilationDatabase.h"
++#include "HeaderSourceSwitch.h"
+ #include "ParsedAST.h"
+ #include "Preamble.h"
+ #include "clang-include-cleaner/Record.h"
+@@ -64,6 +65,7 @@
+ #include "support/Threading.h"
+ #include "support/Trace.h"
+ #include "clang/Basic/Stack.h"
++#include "clang/Driver/Driver.h"
+ #include "clang/Frontend/CompilerInvocation.h"
+ #include "clang/Tooling/CompilationDatabase.h"
+ #include "llvm/ADT/FunctionExtras.h"
+@@ -881,10 +883,32 @@ void ASTWorker::update(ParseInputs Inputs, WantDiagnostics WantDiags,
+         }
+       }
+     }
+-    if (Cmd)
++    if (!Cmd)
++      Cmd = CDB.getFallbackCommand(FileName);
++    if (Cmd) {
++      if (!Inputs.CompileCommand.CommandLine.empty()) {
++        auto PosArg =
++            std::find(Cmd->CommandLine.begin(), Cmd->CommandLine.end(), "--");
++        if (PosArg != Cmd->CommandLine.end())
++          PosArg = std::prev(PosArg);
++        SmallVector<const char *, 16> TmpArgv;
++        for (const std::string &S : Cmd->CommandLine)
++          TmpArgv.push_back(S.c_str());
++        auto ClangCLMode =
++            !TmpArgv.empty() &&
++            driver::IsClangCL(driver::getDriverMode(
++                TmpArgv.front(), llvm::ArrayRef(TmpArgv).slice(1)));
++        for (auto &&Arg : Inputs.CompileCommand.CommandLine) {
++          if (ClangCLMode)
++            Arg.replace(0, 8, "/FI"); // 8 - strlen("-include")
++          if (PosArg == Cmd->CommandLine.end())
++            Cmd->CommandLine.push_back(std::move(Arg));
++          else
++            PosArg = std::next(Cmd->CommandLine.insert(PosArg, std::move(Arg)));
++        }
++      }
+       Inputs.CompileCommand = std::move(*Cmd);
+-    else
+-      Inputs.CompileCommand = CDB.getFallbackCommand(FileName);
++    }
+ 
+     bool InputsAreTheSame =
+         std::tie(FileInputs.CompileCommand, FileInputs.Contents) ==
+@@ -1673,6 +1697,32 @@ bool TUScheduler::update(PathRef File, ParseInputs Inputs,
+   bool NewFile = FD == nullptr;
+   bool ContentChanged = false;
+   if (!FD) {
++    if (isHeaderFile(File)) {
++      std::string SourceFile = HeaderIncluders->get(File);
++      if (SourceFile.empty()) {
++        auto VFS = Inputs.TFS->view(Inputs.CompileCommand.Directory);
++        if (auto CorrespondingFile =
++                clang::clangd::getCorrespondingHeaderOrSource(File,
++                                                              std::move(VFS)))
++          SourceFile = *CorrespondingFile;
++      }
++      if (!SourceFile.empty()) {
++        std::unique_ptr<FileData> &FD = Files[SourceFile];
++        if (FD && FD->Worker->isASTCached()) {
++          if (std::optional<std::unique_ptr<ParsedAST>> AST =
++                  IdleASTs->take(FD->Worker.lock().get())) {
++            auto &Headers = AST.value()->getIncludeStructure().MainFileIncludes;
++            for (const auto &H : Headers) {
++              if (H.Resolved == File)
++                break;
++              auto CmdLine = "-include" + H.Resolved;
++              Inputs.CompileCommand.CommandLine.push_back(std::move(CmdLine));
++            }
++          }
++        }
++      }
++    }
++
+     // Create a new worker to process the AST-related tasks.
+     ASTWorkerHandle Worker = ASTWorker::create(
+         File, CDB, *IdleASTs, *HeaderIncluders,
