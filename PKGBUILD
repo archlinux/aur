@@ -3,8 +3,8 @@
 _pkgname="jpeg-recompress"
 pkgname="$_pkgname-git"
 pkgver=2.6.4.r1.ge6ad714
-pkgrel=1
-pkgdesc='Utilities for archiving JPEGs for long term storage - IPEP fork (fixes and webp support)'
+pkgrel=2
+pkgdesc='JPEGs compression optimizer - IPEP fork (webp support and fixes)'
 url="https://github.com/ImageProcessing-ElectronicPublications/jpeg-recompress"
 license=(MIT)
 arch=(x86_64)
