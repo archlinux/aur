@@ -1,16 +1,14 @@
 pkgbase = python-pyuca
 	pkgdesc = Python implementation of the Unicode Collation Algorithm (UCA)
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jtauber/pyuca
 	arch = any
 	license = MIT
 	license = custom
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	source = python-pyuca-1.2.tar.gz::https://github.com/jtauber/pyuca/archive/refs/tags/v1.2.tar.gz
 	sha256sums = 41a47aa598c152a52b1dc4aa210c6db62cc7f72d13cee2caee80841c3cc49e19
 
 pkgname = python-pyuca
-
-pkgname = python2-pyuca
