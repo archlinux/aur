@@ -1,13 +1,12 @@
 pkgbase = ldtk-appimage
 	pkgdesc = Modern and efficient 2D level editor with a strong focus on user-friendliness
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ldtk.io/
 	arch = x86_64
 	license = MIT
+	makedepends = squashfuse
 	depends = hicolor-icon-theme
-	depends = zlib
-	depends = glibc
 	provides = ldtk=1.4.1
 	conflicts = ldtk
 	options = !strip
