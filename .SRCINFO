@@ -1,0 +1,25 @@
+pkgbase = libshv-git
+	pkgdesc = C++ bindings for the libyang library
+	pkgver = r2342.fe058f25
+	pkgrel = 1
+	url = https://github.com/CESNET/libshv/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = doctest
+	depends = libyang
+	depends = glibc
+	depends = gcc-libs
+	provides = libshv
+	conflicts = libshv
+	conflicts = libshv-git
+	source = git+https://github.com/silicon-heaven/libshv.git
+	source = git+https://github.com/fvacek/necrolog.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libshv-git
