@@ -2,9 +2,8 @@
 
 _pkgname=pythonocc-core
 pkgname=python-${_pkgname#python}
-pkgver=7.6.2
-_commit=09d3747dbf6384f94d83ff2171e09259567823ff
-pkgrel=2
+pkgver=7.7.2
+pkgrel=1
 pkgdesc='Python package for 3D CAD/BIM/PLM/CAM'
 arch=('x86_64')
 url='https://github.com/tpaviot/pythonocc-core'
@@ -14,24 +13,11 @@ depends=('python' 'opencascade' 'libxmu' 'libxi')
 # header that references it gets dragged in somehow
 makedepends=('cmake' 'swig' 'rapidjson' 'git' 'ninja')
 #source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-source=("git+https://github.com/tpaviot/pythonocc-core#commit=$_commit")
+source=("git+https://github.com/tpaviot/pythonocc-core#tag=$pkgver")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd $_pkgname-$pkgver
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mv $_pkgname $_pkgname-$pkgver
-  cd $_pkgname-$pkgver
-
-  # Compatibility with opencascade 7.6.3
-  git cherry-pick -n b4ddcf774549dbb3f89f4ca9f9c5db6c3c9ab48c
-}
-
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
 
   cmake \
     -Bbuild \
@@ -43,7 +29,7 @@ build() {
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
 
   DESTDIR="$pkgdir" ninja -C build install
 }

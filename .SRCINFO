@@ -1,0 +1,20 @@
+pkgbase = python-occ-core
+	pkgdesc = Python package for 3D CAD/BIM/PLM/CAM
+	pkgver = 7.7.2
+	pkgrel = 1
+	url = https://github.com/tpaviot/pythonocc-core
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = swig
+	makedepends = rapidjson
+	makedepends = git
+	makedepends = ninja
+	depends = python
+	depends = opencascade
+	depends = libxmu
+	depends = libxi
+	source = git+https://github.com/tpaviot/pythonocc-core#tag=7.7.2
+	sha512sums = SKIP
+
+pkgname = python-occ-core
