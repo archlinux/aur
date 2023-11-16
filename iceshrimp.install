@@ -5,11 +5,3 @@ post_install() {
 	echo -e "Should you be migrating from a non-package install, please copy the contents of the \e[1;34mfiles\e[0m folder into \e[1;34m/var/lib/iceshrimp/files\e[0m and run \e[1;35msudo chown -R iceshrimp:iceshrimp /var/lib/iceshrimp/files\e[0m"
 	echo
 }
-
-post_upgrade() {
-	if systemctl is-active iceshrimp.service > /dev/null; then
-		echo -e "\e[1;34m:: \e[37mRestarting iceshrimp daemon...\e[0m"
-		systemctl daemon-reload
-		systemctl restart iceshrimp.service
-	fi
-}

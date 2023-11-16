@@ -1,8 +1,8 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-git
-pkgver=v2023.11.1.r38.g1b1040647
-pkgrel=2
+pkgver=v2023.11.1.r39.g3def0bdf7
+pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -29,14 +29,16 @@ source=(
   "iceshrimp.sysusers"
   "iceshrimp.tmpfiles"
   "iceshrimp.install"
+  "iceshrimp.hook"
   "0001-yarnrc.patch"
 )
 
 sha512sums=('SKIP'
             'd35b085754e8a03447f8d17fae1649b432709d2d5fe9149ec95e3d5b3857efd6d65021efb483ed91711f5a73ad2a02d12e4d885a660418fa0cd16541aa830153'
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
-            '9451d44ff2bec45df3074dbdda51cd2d898a3c510468e75373d81ed5a8ea975197eb40487d2bdb60038220d0a3e11551827a52847c47c06fe014b9df9f57426d'
-            '97308f8e926c2204be2b521023a2c2e4cb7767e44440998c8f3a6feb97f0d9dd08798bc019bfb1b6ac0366305c8ec57ae8a3ec10aeaa297df56f6a1615fa56ff'
+            '2c148ad7606b0ffc40526d682e2b419de46e4b3d6258240e5664774e41c872747daa7aaa39a58b63c590dba0fb2259cbed06746bffb6da78d25eb8b23f32e512'
+            '36980c4f5a6d25d4f522ccd64aaf38c3d704c29a25b834b14135e2895f55318496fbaf269e589e4eabbf5495265682d6f58b966ce8b70f52190dccf7a18f44cc'
+            '546edef80a262ed96ec5c1b2486faaaf0daf4e94f414a0a0873ad925ed3973540b82a530763b257ad2423befb9a84e81782ba299adad4b84c0291519b73f9e56'
             '4b9a26028bba186fa5a9fd977dbe416a6f8351f2fd04902e0f4ccf1ffb44b9ea0fa957345c5f98f9cc58453cd40ab1f95253e416564f40310868a8c654178ae7')
 
 pkgver() {
@@ -74,6 +76,7 @@ package() {
   install -Dm 644 "${srcdir}/iceshrimp.service" "${pkgdir}/usr/lib/systemd/system/iceshrimp.service"
   install -Dm 644 "${srcdir}/iceshrimp.sysusers" "${pkgdir}/usr/lib/sysusers.d/iceshrimp.conf"
   install -Dm 644 "${srcdir}/iceshrimp.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/iceshrimp.conf"
+  install -Dm 644 "${srcdir}/iceshrimp.hook" "${pkgdir}/usr/share/libalpm/hooks/iceshrimp.hook"
   install -Dm 640 "${srcdir}/iceshrimp/.config/example.yml" "${pkgdir}/etc/iceshrimp/configuration.yml"
 
   find "${srcdir}/iceshrimp/.yarn/unplugged" -path "*/re2/build/Makefile" -or -path "*/re2/build/config.gypi" | xargs -r sed -i "s%${srcdir}%/usr/share%g"
