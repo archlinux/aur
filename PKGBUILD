@@ -1,16 +1,55 @@
-#Maintainer: Wilson E. Alvarez <wilson.e.alvarez@rubonnek.com>
+# Maintainer: Maxime “pep” Buquet <archlinux@bouah.net>
+# Package based on aur/forgejo-runner-bin and aur/act-runner.
 pkgname="forgejo-runner"
-pkgver=3.0.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Continous integration for Forgejo"
 arch=('x86_64' 'aarch64')
 url="https://code.forgejo.org/forgejo/runner"
 license=('Expat')
-source_x86_64=("${pkgname}::https://code.forgejo.org/forgejo/runner/releases/download/v3.0.1/${pkgname}-${pkgver}-linux-amd64")
-sha256sums_x86_64=('5fa729c3ed9919a81f8525d7ac73e2621a7b3b4fa8d8761f8cb5582c2ba84b69')
-source_aarch64=("${pkgname}::https://code.forgejo.org/forgejo/runner/releases/download/v3.0.1/${pkgname}-${pkgver}-linux-arm64")
-sha256sums_aarch64=('fc6df24ba8661fd1e3fd3914b28c19f52aefb63ac8c1cb2d06560edd41cebcee')
+depends=('docker')
+provides=('forgejo-runner')
+makedepends=('go')
+backup=('etc/forgejo-runner/forgejo-runner.yaml')
+source=(
+	"forgejo-runner::git+https://code.forgejo.org/forgejo/runner#tag=v$pkgver"
+	"forgejo-runner.service"
+)
+sha256sums=('SKIP'
+            '693925cda2ad678f5e03d3196468f1304db42d4d74df3376979d8f35a0fb86d0')
+
+prepare() {
+	mkdir -p cache
+}
+
+build() {
+	cd "$pkgname"
+
+	export GOPATH="$srcdir/cache"
+
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+
+	# When running `make forgejo-runner` I get:
+	# flag provided but not defined: -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now
+	# by the linker.
+	go build \
+		-v -tags 'netgo osusergo' -buildvcs=false \
+		-ldflags "-linkmode=external -extldflags '-static -s -w' -X main.version=$pkgver" \
+		-o $pkgname
+
+	./forgejo-runner generate-config > "$pkgname.yaml"
+}
 
 package() {
-	install -Dm755 ${pkgname} $pkgdir/usr/bin/${pkgname}
+	cd "$pkgname"
+
+	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+	sed -i -e "s|file: \.runner|file: /etc/$pkgname/$pkgname.yaml|" $pkgname.yaml
+	# install -m755 -d "$pkgdir/etc/$pkgname"
+	install -Dm644 "$pkgname.yaml" "$pkgdir/etc/$pkgname/$pkgname.yaml"
+	install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }

@@ -1,0 +1,11 @@
+[Unit]
+Description=Continuous integration for Forgejo
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/forgejo-runner -c /etc/forgejo-runner/forgejo-runner.yaml daemon
+PrivateDevices=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
