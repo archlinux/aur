@@ -42,6 +42,7 @@ build() {
 
     cd "$pkgname-$pkgver"
     dart run build_runner build --delete-conflicting-outputs
+    # Don't treat warnings as errors
     sed -i 's/\-Werror//g' linux/CMakeLists.txt
     flutter --no-version-check build linux
 }
