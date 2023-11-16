@@ -3,7 +3,7 @@
 _binfile=dockviz_linux_amd64
 
 pkgname=dockviz
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Visualizing Docker Data"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('glibc' 'docker')
 options=()
 source=("$pkgname-$pkgver::https://github.com/justone/$pkgname/releases/download/v$pkgver/$_binfile")
-sha1sums=('24716efd68a1c4b8cfaaea50f5dc1d4f22af263b')
+sha1sums=('2c97682442bd4bf689333cab1ee558d82fac410f')
 
 package() {
     cd "${srcdir}"
