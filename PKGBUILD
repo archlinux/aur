@@ -11,6 +11,7 @@ sha256sums=('a6b673ef15377fb46062d164e8ddc4d05c348ff8968f015f7f4af03f51000067')
 prepare(){
   cd clang-$pkgver.src
   sed 's,import clang,import clang15,g' -i bindings/python/clang/cindex.py
+  sed 's,clang.enumerations,clang15.enumerations,g' -i bindings/python/clang/cindex.py
 }
 
 _python_optimize() {
