@@ -15,7 +15,7 @@ sha256sums=('e4993efafa9924928d21b4eee77d5e3d9233ec5c3867685f598ca0bbb9c30cf2')
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --enable-silent-rules
 	make
 }
 
