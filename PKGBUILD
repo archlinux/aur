@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=bdf
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Btrfs Duplicate Finder'
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -20,6 +20,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release
 }
 
