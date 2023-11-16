@@ -1,7 +1,7 @@
 pkgbase = gawk-gd
 	pkgdesc = GAWK extension - interface to the GD graphics library
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gawk-gd
 	depends = gawkextlib
 	depends = gd
 	depends = glibc
-	source = https://downloads.sourceforge.net/gawkextlib/gawk-gd-1.0.2.tar.gz
-	md5sums = d5b5494e4e675610fb01e6845e937119
-	sha256sums = 7d7a98727b02e59561ab4153f31ef24e54e7e2c0ec45b5c0b013030cbb41ebfe
+	source = https://downloads.sourceforge.net/gawkextlib/gawk-gd-1.0.3.tar.gz
+	md5sums = 08088809eb3a3f647aa5e92d1ac28ce0
+	sha256sums = 059406fc0b72c38ca14f422136e3bd29e41ae8acd73440ddd8e743b83340b1ea
 
 pkgname = gawk-gd
