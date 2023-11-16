@@ -4,7 +4,7 @@ heidisqlrelease=6765
 shortpkgver=12.6
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. This package uses the latest nightly build (64bit) on top of the portable version, and uses Wine."
 arch=(any)
 url="http://www.heidisql.com/"
@@ -20,7 +20,7 @@ md5sums=('24fd3af4a3f1315e34cee6fcaf2e68ed'
          '026acb8ae655c5b8e3b6f7c63abc6bc2'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
-         '9c65ae391e4980c639b34580b817962f')
+         'c91be7cc4e247c99801e81e27658a6a8')
 noextract=("HeidiSQL_${shortpkgver}_Portable.zip")
 
 package() {
