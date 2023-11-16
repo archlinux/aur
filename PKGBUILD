@@ -2,19 +2,34 @@
 _pkgname=dosbox
 pkgname="${_pkgname}-staging-bin"
 pkgver=0.80.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern continuation of DOSBox with advanced features and current development practices."
 arch=("x86_64")
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
-provides=("${pkgname%-bin}=${pkgver}" "${_pkgname}=${pkgver}")
-conflicts=("${pkgname%-bin}" "${_pkgname}")
-depends=('glibc' 'alsa-lib' 'sdl2' 'hicolor-icon-theme' 'libglvnd' 'gcc-libs' 'sdl2_image' 'sdl2_net')
-source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-v${pkgver}.tar.xz")
+provides=(
+    "${pkgname%-bin}=${pkgver}"
+    "${_pkgname}=${pkgver}"
+)
+conflicts=(
+    "${pkgname%-bin}"
+    "${_pkgname}"
+)
+depends=(
+    'alsa-lib'
+    'sdl2'
+    'hicolor-icon-theme'
+    'libglvnd'
+    'sdl2_image'
+    'sdl2_net'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-v${pkgver}.tar.xz"
+)
 sha256sums=('12582a6496b1a276cd239e6b3d21ddfcd51fd8f9e40a1ebbc0a3800e0636190a')
-prepare() {
+build() {
     mv "${srcdir}/${pkgname%-bin}-linux-v${pkgver}" "${srcdir}/${pkgname%-bin}"
-    sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g" -i "${srcdir}/${pkgname%-bin}/desktop/${pkgname%-bin}.desktop"
+    sed "s|Exec=${_pkgname}|Exec=env SDL_VIDEODRIVER=\"wayland,x11\" ${pkgname%-bin}|g" -i "${srcdir}/${pkgname%-bin}/desktop/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}"/{opt,usr/bin}
