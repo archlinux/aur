@@ -13,6 +13,7 @@ pkgname=(
   kubelet1.26
   kubernetes-control-plane-common1.26
 )
+conflicts=('kubeadm' 'kubectl' 'kube-proxy' 'kube-scheduler' 'kube-controller-manager' 'kube-apiserver')
 pkgver=1.26.10
 pkgrel=1
 pkgdesc="Production-Grade Container Scheduling and Management"
