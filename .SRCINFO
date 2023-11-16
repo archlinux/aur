@@ -11,8 +11,8 @@ pkgbase = hyprforest-installer-bin
 	optdepends = waybar
 	optdepends = wofi
 	optdepends = zsh
-	provides = hyprforest-installer
-	conflicts = hyprforest-installer
+	provides = hyprforest-installer-bin
+	conflicts = hyprforest-installer-bin
 	source = https://github.com/3rfaan/hyprforest-installer/releases/download/v0.1.0/hyprforest-installer-0.1.0-x86_64.tar.gz
 	sha256sums = 591c246ec182e8fd048ed0ba996f4e1da159a78528ecd998cb6ba672b34ed70d
 
