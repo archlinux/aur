@@ -4,7 +4,7 @@
 
 pkgname=libfreenect2
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source drivers for the Kinect for Windows v2"
 arch=(i686 x86_64)
 url="http://openkinect.org"
@@ -23,6 +23,9 @@ prepare() {
 		"$srcdir/$pkgname-$pkgver/platform/linux/udev/90-kinect2.rules"
 	sed -i -e '93aINSTALL(TARGETS Protonect DESTINATION bin)' \
 		"$srcdir/$pkgname-$pkgver/examples/CMakeLists.txt"
+	sed --debug -i -e 's:const int CL_ICDL_VERSION:// const int CL_ICDL_VERSION:' \
+		"$srcdir/$pkgname-$pkgver/src/opencl_depth_packet_processor.cpp" \
+		"$srcdir/$pkgname-$pkgver/src/opencl_kde_depth_packet_processor.cpp"
 	cmake "$srcdir/$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
