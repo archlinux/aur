@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.13.5.plus1
+pkgver=3.13.5.plus2
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -43,7 +43,7 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=0cbbc02b255fe6c506aff7d625315ce387d6b7a4
+_tag=485490294855313ac85fc4cb46371b2b6922c527
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
