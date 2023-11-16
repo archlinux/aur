@@ -3,7 +3,7 @@
 pkgname=gawk-select
 _project=gawkextlib
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GAWK extension - supports I/O multiplexing and signal trapping"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
