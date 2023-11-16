@@ -2,7 +2,7 @@
 _pkgname=koishi
 pkgname="${_pkgname}-desktop-bin"
 _appname="chat.${_pkgname}.desktop"
-pkgver=0.11.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Launch Koishi from your desktop"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-v${pkgver}.zip"
     "${pkgname%-bin}.svg::https://raw.githubusercontent.com/koishijs/koishi-desktop/v${pkgver}/packages/assets/${_pkgname}.svg"
 )
-sha256sums=('5a50d36d3b35728da77050ebd72eca9a5ee405f67e9d71bc7a39890d10b187cd'
+sha256sums=('0c307272e1980cef6e593112dcb6476c67112488ec2976797a5ac9967e5bbd3d'
             'ac9209c0944853d0329ce23d150fb73a7859c41f5a3170f8f970dc9b955ffc6f')
 build() {
     gendesk -q -f -n --pkgname "${_pkgname}-desktop-bin" --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
