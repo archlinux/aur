@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r5698.060a4e0fe
+pkgver=r5831.baa6ff835
 pkgrel=1
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
@@ -99,4 +99,7 @@ package() {
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/world_db_updates.sql -T ${pkgdir}/usr/share/vmangos/sql/migrations/mangos_db_updates.sql
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/characters_db_updates.sql -t ${pkgdir}/usr/share/vmangos/sql/migrations
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/logs_db_updates.sql -t ${pkgdir}/usr/share/vmangos/sql/migrations
+
+    # Install license file
+    install -Dm644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/vmangos/LICENSE
 }
