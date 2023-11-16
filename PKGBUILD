@@ -14,7 +14,7 @@ provides=("numix-square-icon-theme=${pkgver}")
 depends=('numix-icon-theme-git' 'gtk-update-icon-cache')
 conflicts=("numix-square-icon-theme-git")
 source=("https://github.com/numixproject/${_gitname}/archive/${_pkgver}.tar.gz")
-b2sums=('786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce')
+b2sums=('cf2002dec58a4236ae665587456e45d1dd0204a08006c808481f8530aec66d5d00065cf934213378d751099f675c019d3683a248b98ee236071702c9b054b2e5')
 options=('!strip')
 
 package() {
