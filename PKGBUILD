@@ -8,7 +8,7 @@ _buildver=233.11799.20
 _pkgver=2023.3
 _eap=true
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=("any")
 options=("!strip")
@@ -36,7 +36,7 @@ else
 fi
 
 sha256sums=("49a71f5d87c24e20c254b9c03a66e782b73d7877dd971d8e2f1a1d429cefd102"
-            "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
+            "7801ea1379c4c183efeb78ec8d2f67bc30741548410fa51b9f4827b0188da4b2")
 
 prepare() {
     if [[ -d $srcdir/pycharm-${_pkgver} ]]; then
