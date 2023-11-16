@@ -18,9 +18,9 @@ pkgbase = systemd-cron-next-git
 	conflicts = anacron
 	conflicts = cron
 	conflicts = systemd-cron-next
-	source = 0002-makefile.patch
 	source = systemd-cron-next::git+https://github.com/systemd-cron/systemd-cron-next.git
-	sha256sums = 095f20fd780717da18c0251df0ff702a5953816120f3040a317ccc9dc3e1572b
+	source = 0001-makefile-git.patch
 	sha256sums = SKIP
+	sha256sums = 095f20fd780717da18c0251df0ff702a5953816120f3040a317ccc9dc3e1572b
 
 pkgname = systemd-cron-next-git
