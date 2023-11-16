@@ -1,12 +1,12 @@
 pkgbase = writerscafe
 	pkgdesc = A set of power tools for all fiction writers, whether experienced or just starting out
 	pkgver = 2.44
-	pkgrel = 1
-	url = http://writerscafe.co.uk/
+	pkgrel = 2
+	url = http://www.anthemion.co.uk/writerscafe/
 	arch = x86_64
 	license = custom
 	depends = gtk2
-	source_x86_64 = http://writerscafe.co.uk/WritersCafe-2.44-ubuntu-x86_64.tar.gz
+	source_x86_64 = http://www.anthemion.co.uk/writerscafe/WritersCafe-2.44-ubuntu-x86_64.tar.gz
 	source_x86_64 = writerscafe.sh
 	sha256sums_x86_64 = abd9bcc56ea458a5202a8e9d9e125167538a351bc50acd2a42709f9a0f2700c1
 	sha256sums_x86_64 = 645b88a294043452fa72a508acb46eead006d207ae8e7702a3772da90c5f68ff
