@@ -7,7 +7,7 @@ pkgname=(
 )
 _rev=cfbb79a8053b59d9f9cc7371e34d70f9c11fdf3f
 pkgver=6.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url="https://pfkernel.natalenko.name"
@@ -99,7 +99,7 @@ _package-headers() {
 	install -Dt "${builddir}/tools/objtool" tools/objtool/objtool
 
 	# required when DEBUG_INFO_BTF_MODULES is enabled
-	# install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+	install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
 	echo "Installing headers..."
 	cp -t "${builddir}" -a include
