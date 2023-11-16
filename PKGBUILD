@@ -3,14 +3,14 @@ pkgbase="eslauncher2"
 pkgname="eslauncher2"
 pkgcompletename="ESLauncher2"
 pkgrel=1
-pkgver=0.9.0
+pkgver=0.9.2
 pkgdesc="The next generation Endless Sky Launcher"
 depends=('rust' 'alsa-lib')
 arch=('any')
 url="https://github.com/EndlessSkyCommunity/ESLauncher2"
 license=('GPL-3.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('8a71ed9e7b5741428e486031b3a4efc00a1a8a28e61acddb3c443bbef8ecc5f76340ef4221904f5fc38ba980b079c1c79d148501d17dc830e253436b8cbeae02')
+sha512sums=('6b4446589eb82d7f2ba95674c4e2affeee6b99ed73263c24cf98912e2c9fbfb1c80c745a3c8087a839ba518600229e7672f908b2f5dd6bd929968e368388e7bd')
 
 build() {
 	cd ${pkgcompletename^}-${pkgver}
