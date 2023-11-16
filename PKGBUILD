@@ -8,7 +8,7 @@ pkgdesc="A PySide6-based cross platform GUI client that launches your beloved GF
 arch=(x86_64)
 url='https://github.com/LorenEteval/Furious'
 license=('GPL3')
-makedepends=('git' 'cmake' 'python' 'python-pip' 'patchelf')
+makedepends=('git' 'cmake' 'python' 'python-pip' 'patchelf' 'go1.20')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
@@ -17,13 +17,11 @@ conflicts=(${_pkgname})
 options=(!strip)
 source=(
     "git+https://github.com/LorenEteval/Furious.git"
-    "https://go.dev/dl/go1.20.10.linux-amd64.tar.gz"
     "furious.png"
     "furious.desktop"
 )
 sha256sums=(
     "SKIP"
-    "80d34f1fd74e382d86c2d6102e0e60d4318461a7c2f457ec1efc4042752d4248"
     "c39c972e4aba77c3f36ad2098b139c2cf66c896e1ed29c7c207726732aa4c748"
     "a8605d0ffa7417e0f7b705e7cd515873646e0b8bfa5c35d953499114c0c01e3d"
 )
@@ -35,7 +33,8 @@ pkgver() {
 }
 
 prepare() {
-    export "PATH=$PATH:${srcdir}/go/bin"
+    ln -s /usr/bin/go1.20 go
+    export PATH=$(pwd):$PATH
     cd "${srcdir}"
     python -m venv .venv
     source .venv/bin/activate
