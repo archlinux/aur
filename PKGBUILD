@@ -21,8 +21,9 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	# sometimes the test suite fails -- race condition?
-	make -k check || :
+	# Sometimes the test suite fails due to a race condition when running
+	# multiple tests in parallel. Force a single job for now.
+	make -j1 -k check
 }
 
 package() {
