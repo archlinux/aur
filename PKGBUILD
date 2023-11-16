@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=flutter-engine
-pkgver=3.13.9
-pkgrel=2
+pkgver=3.16.0
+pkgrel=1
 pkgdesc='Engine for flutter applications.'
 url='https://github.com/flutter/engine'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 	'gtk3')
 makedepends=(
 	'gn'
-	'lld'
+	'mold'
 	'llvm'
 	'python-httplib2'
 	'python-six'
@@ -123,7 +123,7 @@ enable_unittests = false
 flutter_runtime_mode = "release"
 '
 	
-	sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' 'out/host_arch_release/toolchain.ninja' # use system ldd
+	sed -i 's|ldflags}|ldflags} -fuse-ld=mold|g' 'out/host_arch_release/toolchain.ninja' # use system linker
 	ninja -v -C 'out/host_arch_release'
 	
 	#export PATH+=":${srcdir}/src/flutter/lib/web_ui/dev"
