@@ -1,0 +1,18 @@
+pkgbase = python-pyvistaqt
+	pkgdesc = Qt support for PyVista
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/pyvista/pyvistaqt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyvista
+	depends = python-qtpy
+	source = https://files.pythonhosted.org/packages/source/p/pyvistaqt/pyvistaqt-0.11.0.tar.gz
+	sha256sums = 8784e8ced4faacfe010524b20dd5675f81f25f1b1d6fb6442ba70437cbb6b1ef
+
+pkgname = python-pyvistaqt
