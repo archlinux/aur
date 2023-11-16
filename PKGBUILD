@@ -2,16 +2,16 @@
 
 pkgname=gawk-gd
 _project=gawkextlib
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="GAWK extension - interface to the GD graphics library"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL')
 depends=('gawkextlib' 'gd' 'glibc')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
-md5sums=('d5b5494e4e675610fb01e6845e937119')
-sha256sums=('7d7a98727b02e59561ab4153f31ef24e54e7e2c0ec45b5c0b013030cbb41ebfe')
+md5sums=('08088809eb3a3f647aa5e92d1ac28ce0')
+sha256sums=('059406fc0b72c38ca14f422136e3bd29e41ae8acd73440ddd8e743b83340b1ea')
 
 build() {
 	cd "$pkgname-$pkgver"
