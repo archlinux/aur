@@ -4,8 +4,8 @@ _reponame=XTinyTerror.lv2
 _pkgname=xtinyterror.lv2
 _lv2uri="http://guitarix.sourceforge.net/plugins/${_reponame//.lv2}_#_tinyterror_"
 pkgname=$_pkgname-git
-pkgver=r15.015b055
-pkgrel=4
+pkgver=r16.6f9cc71
+pkgrel=1
 pkgdesc='An amp simulation LV2 plugin modelled after a small british valve amp (git version)'
 arch=(x86_64)
 url='https://github.com/brummer10/XTinyTerror.lv2'
@@ -18,11 +18,9 @@ conflicts=($_pkgname)
 source=(
   "$_pkgname::git+https://github.com/brummer10/$_reponame.git"
   'xputty::git+https://github.com/brummer10/Xputty.git'
-  'fix-asprintf.patch::https://github.com/brummer10/libxputty/commit/7eb70bf3f7bce0af9e1919d6c875cdb8efca734e.patch'
 )
 sha256sums=('SKIP'
-            'SKIP'
-            '15fe7e3e2ec8efe62dc9bb4c0830eaf3ed0373cd39ebd755f2d9193710ebbf76')
+            'SKIP')
 
 
 pkgver() {
@@ -40,9 +38,6 @@ prepare() {
   git submodule init
   git config submodule.Xputty.url "${srcdir}/xputty"
   git -c protocol.file.allow=always submodule update
-
-  cd libxputty
-  patch -p1 -N -r - -i "$srcdir"/fix-asprintf.patch || true
 }
 
 build() {
