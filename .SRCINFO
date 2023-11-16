@@ -1,0 +1,35 @@
+pkgbase = linglong-git
+	pkgdesc = Container application toolkit of deepin
+	pkgver = 1.3.16.r3.ga683465
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/linuxdeepin/linglong
+	install = linglong-git.install
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = systemd
+	makedepends = docopt
+	makedepends = qt5-websockets
+	depends = qt5-base
+	depends = glib2
+	depends = bash
+	depends = gcc-libs
+	depends = yaml-cpp
+	depends = glibc
+	depends = ostree
+	depends = curl
+	depends = fuse-overlayfs
+	depends = shared-mime-info
+	depends = erofs-utils
+	depends = desktop-file-utils
+	depends = linglong-box
+	provides = linglong
+	conflicts = linglong
+	source = linglong::git+https://github.com/linuxdeepin/linglong.git#branch=release/1.3
+	md5sums = SKIP
+
+pkgname = linglong-git
