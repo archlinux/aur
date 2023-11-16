@@ -1,12 +1,15 @@
 pkgbase = python-pvextractor
 	pkgdesc = Position-velocity diagram extractor
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://pvextractor.readthedocs.io
 	arch = any
 	license = BSD
 	checkdepends = python-pytest-astropy-header
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-matplotlib
 	checkdepends = python-spectral-cube
+	checkdepends = python-pyqt6
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
@@ -14,17 +17,17 @@ pkgbase = python-pvextractor
 	makedepends = python-sphinx-astropy
 	makedepends = python-astropy
 	makedepends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/p/pvextractor/pvextractor-0.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pvextractor/pvextractor-0.4.tar.gz
 	source = fix-doc-build-warning.patch
-	md5sums = 10ea0f356c9f7b196a31d6fb01828646
+	md5sums = 005cce9ff817ac777f7e3e751797130d
 	md5sums = ee80bc266d21f35c07a59361254517dd
 
 pkgname = python-pvextractor
-	depends = python>=3.6
-	depends = python-scipy
-	depends = python-matplotlib>=2.0
-	depends = python-qtpy
-	depends = python-spectral-cube
+	depends = python>=3.8
+	depends = python-matplotlib>=3.5
+	depends = python-scipy>=1.8
+	depends = python-qtpy>=2.0
+	depends = python-spectral-cube>=0.4
 	optdepends = python-pvextractor-doc: Documentation for pvextractor
 
 pkgname = python-pvextractor-doc
