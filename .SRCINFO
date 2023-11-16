@@ -1,0 +1,13 @@
+pkgbase = python-clang15
+	pkgdesc = Python bindings for clang version 15
+	pkgver = 15.0.7
+	pkgrel = 1
+	url = https://clang.llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	depends = clang15
+	depends = python
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/clang-15.0.7.src.tar.xz
+	sha256sums = a6b673ef15377fb46062d164e8ddc4d05c348ff8968f015f7f4af03f51000067
+
+pkgname = python-clang15
