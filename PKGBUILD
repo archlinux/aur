@@ -1,4 +1,4 @@
-# Maintainer: Nixuge
+# Maintainer: Nixugea
 
 # As of 1.0.32, the hash check is skipped.
 # Labymod unfortunately does not provide version specific download links.
@@ -11,7 +11,7 @@
 
 pkgname=labymod-appimage
 _pkgname=labymodlauncher
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 pkgdesc='A minecraft Launcher & modpack that optimizes the game and adds a bunch of useful features ! (1.8->1.20.1)'
 url=https://www.labymod.net
