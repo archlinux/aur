@@ -18,6 +18,7 @@ pkgbase = ruqola-git
 	depends = kdoctools5
 	depends = kidletime5
 	depends = prison5
+	depends = ktextaddons
 	provides = ruqola
 	conflicts = ruqola
 	source = git+https://invent.kde.org/network/ruqola.git
