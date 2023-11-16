@@ -6,7 +6,7 @@ pkgbase=lib32-libxslt
 pkgname=(
   lib32-libxslt
 )
-pkgver=1.1.38
+pkgver=1.1.39
 pkgrel=1
 pkgdesc="XML stylesheet transformation library (32-bit)"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
@@ -25,7 +25,7 @@ checkdepends=(
   docbook-xml
   python
 )
-_commit=b9196c0b357a903ad0a41cb4acce62cc1b0f2057  # tags/v1.1.38^0
+_commit=743ab691bed98ed11ac99bbd9d903d59fb814ab8  # tags/v1.1.39^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxslt.git#commit=$_commit"
 )
@@ -43,12 +43,14 @@ prepare() {
 
 build() {
   local configure_options=(
+    --build="$CHOST"
+    --host=i686-pc-linux-gnu
     --prefix=/usr
     --libdir=/usr/lib32
     --sysconfdir=/etc
     --localstatedir=/var
-    --without-python
     --disable-static
+    --without-python
   )
 
   export CC="gcc -m32"
@@ -56,7 +58,6 @@ build() {
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   cd libxslt
-
   ./configure "${configure_options[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
@@ -71,7 +72,6 @@ package_lib32-libxslt() {
   provides=(lib{,e}xslt.so)
 
   cd libxslt
-
   make DESTDIR="$pkgdir" install
 
   rm -r "$pkgdir"/usr/{include,share,bin}
