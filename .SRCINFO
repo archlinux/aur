@@ -1,7 +1,7 @@
 pkgbase = gawkextlib
 	pkgdesc = Library containing APIs used by various GAWK extensions
 	pkgver = 1.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
