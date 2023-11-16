@@ -3,17 +3,17 @@
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='https://packages.debian.org/source/sid/dpkg'
 depends=('glibc')
-makedepends=('perl')
+makedepends=('libmd' 'perl')
 
 source=("http://deb.debian.org/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('b5f34890817141fdf5c5bafdcfbcb75a')
+md5sums=('d265eeaee92f81580ac6b34c07d41eb5')
 
 build() {
   cd dpkg-$pkgver
