@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=variancePartition
-_pkgver=1.32.1
+_pkgver=1.32.2
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Quantify and interpret divers of variation in multilevel gene expression experiments'
-arch=('any')
+pkgdesc="Quantify and interpret drivers of variation in multilevel gene expression experiments"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL2)
 depends=(
-  r
   r-aod
   r-biobase
   r-biocparallel
@@ -22,6 +22,7 @@ depends=(
   r-limma
   r-lme4
   r-lmertest
+  r-matrixstats
   r-pbkrtest
   r-rdpack
   r-remacor
@@ -29,6 +30,12 @@ depends=(
   r-rhpcblasctl
   r-rlang
   r-scales
+)
+checkdepends=(
+  r-biocgenerics
+  r-edger
+  r-rfast
+  r-runit
 )
 optdepends=(
   r-ballgown
@@ -51,14 +58,20 @@ optdepends=(
   r-zenith
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6d28229a3d5c15185b7e050e11efbde55411b9f10a5c428a25ae0b2611023df')
+md5sums=('75a8e840769ba62b9f175c73aba9c99a')
+sha256sums=('bd6c96ec3d8eebcb0ab387e0754df79fbb00b1557cc37d42f169a4a2d278ac32')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" Rscript --vanilla runTests.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
