@@ -1,6 +1,6 @@
 pkgbase = systemd-cron-next
 	pkgdesc = Systemd generator to generate timers/services from crontab and anacrontab files
-	pkgver = 1.0.2.r18.gd69afa9
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/systemd-cron/systemd-cron-next
 	arch = i686
@@ -15,11 +15,9 @@ pkgbase = systemd-cron-next
 	provides = systemd-cron
 	conflicts = anacron
 	conflicts = cron
-	source = 0002-makefile.patch
-	source = 0001-d69afa94.patch
 	source = systemd-cron-next-1.0.2.zip::https://github.com/systemd-cron/systemd-crontab-generator/archive/v1.0.2.zip
-	sha256sums = 095f20fd780717da18c0251df0ff702a5953816120f3040a317ccc9dc3e1572b
-	sha256sums = 236cbbaa3cc56176874d96162ba49c5f642615596f9d50056c04ed65347fbf80
+	source = 0001-makefile-stable.patch
 	sha256sums = 455d1ea09ecb29efaec44255f6439794d2118d63133936b389fd3afd9c60cc2f
+	sha256sums = a3944b5069f3012044c97ef9eac300b6c7a5b58254c89644f659e3350025c82a
 
 pkgname = systemd-cron-next
