@@ -1,13 +1,13 @@
 pkgbase = perl-class-measure
 	pkgdesc = Calculate, create, compare, and convert units of measurement. (via MetaCPAN distribution)
 	pkgver = 0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Class-Measure
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-test2-suite
 	makedepends = perl-module-build
-	makedepends = perl-test2-suite
 	depends = perl
 	depends = perl-carp
 	depends = perl-sub-exporter
