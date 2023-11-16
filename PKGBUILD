@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-git
 pkgver=v2023.11.1.r39.g3def0bdf7
-pkgrel=3
+pkgrel=4
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
