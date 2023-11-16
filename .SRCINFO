@@ -7,6 +7,12 @@ pkgbase = coinstac-desktop-app-bin
 	license = MIT
 	makedepends = squashfuse
 	depends = electron25
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = coinstac-desktop-app=6.7.7
 	conflicts = coinstac-desktop-app
 	source = coinstac-desktop-app-6.7.7.AppImage::https://github.com/trendscenter/coinstac/releases/download/v6.7.7/COINSTAC-6.7.7-linux.AppImage

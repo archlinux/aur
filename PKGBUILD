@@ -11,6 +11,12 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'electron25'
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
