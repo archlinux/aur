@@ -1,13 +1,13 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=tucnak
-pkgver=4.44
+pkgver=4.49
 pkgrel=1
 pkgdesc="Ham Radio - VHF/HF contest logbook"
 arch=('i686' 'x86_64')
 url="http://tucnak.nagano.cz/"
 license=('GPL')
-depends=('libzia=4.44' 'fftw' 'libsndfile' 'libftdi-compat' 'portaudio' \
+depends=('libzia=4.49' 'fftw' 'libsndfile' 'libftdi-compat' 'portaudio' \
 	'hamlib' 'gpm' 'rtl-sdr' 'sdl2' 'hamradio-menus')
 optdepends=('cwdaemon: transmitting cw'
 	'winkeydaemon: transmitting cw')
@@ -39,11 +39,11 @@ package() {
 	cd $srcdir/$pkgname-$pkgver
 	make DESTDIR=$pkgdir install
 }
-md5sums=('8e90caf915c0a6e0bdf4a4c3a0525a48'
+md5sums=('9cd755ca193ac060b2b6f3ba5810b134'
          'c69ecca9cfe4a5094f39b72503d1c270'
          'c30358bfb7316ce34924f9aed10883da'
          '7c60c0681254303cc12f82c394a62891')
-sha256sums=('f00c899718d4797ac077b04fdc684243019288caa9c01f413785f0f1112e69d3'
+sha256sums=('4eebb93382aa098dcbb96234661e55afcf56bee593afeb4227cbaa7b6ae8cfa1'
             '91dcdb41fcf3c427587d5ab909db87de01f1d0bc4ea76909b2846488a262990a'
             'fe9455bd8d1dc528d4d5d8637eefcfcbe784a2698d6b7ac131f5efa6fc9f3404'
             '39e0fa525a9ebbf557779cc945fd7ca9874636f164878a118f7ea5b3c853d76e')
