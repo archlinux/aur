@@ -1,0 +1,16 @@
+pre_install() {
+  echo "WARNING: geary-preview is now empty: manual intervention required"
+  echo
+  echo "  GNOME no longer releases Geary preview/alpha/non-stable tags."
+  echo
+  echo "  Please uninstall the 'geary-preview' package, and instead install a functional alternative:"
+  echo
+  echo "  extra/geary (stable version)"
+  echo "  --or--"
+  echo "  aur/geary-git (rolling preview version)"
+  echo
+}
+
+pre_upgrade() {
+  pre_install
+}
