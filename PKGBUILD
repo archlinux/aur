@@ -1,5 +1,5 @@
-# Maintainer: Felix Golatofski
-# Maintainer: Mufatti Alex <me@alexmufatti.it>
+# Contributor: Felix Golatofski
+# Contributor: Mufatti Alex <me@alexmufatti.it>
 
 pkgname=mono5
 _pkgname=mono
@@ -11,8 +11,7 @@ url='http://www.mono-project.com/'
 arch=(i686 x86_64)
 license=('GPL' 'LGPL2.1' 'MPL')
 depends=('zlib' 'libgdiplus>=4.2' 'sh' 'python' 'ca-certificates')
-makedepends=('cmake' 'mono')
-provides=("mono=${pkgver}" 'monodoc=${pkgver}')
+makedepends=('cmake' 'mono' 'git')
 conflicts=('mono' 'monodoc')
 install=${_pkgname}.install
 source=(${_pkgname}::"git+https://github.com/mono/mono#commit=${_gitcommit}"

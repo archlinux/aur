@@ -11,13 +11,12 @@ pkgbase = mono5
 	license = MPL
 	makedepends = cmake
 	makedepends = mono
+	makedepends = git
 	depends = zlib
 	depends = libgdiplus>=4.2
 	depends = sh
 	depends = python
 	depends = ca-certificates
-	provides = mono=5.20.1.34
-	provides = monodoc=${pkgver}
 	conflicts = mono
 	conflicts = monodoc
 	source = mono::git+https://github.com/mono/mono#commit=feca91f7eb1b440a6520cf754370b98271339d1a
@@ -62,4 +61,3 @@ pkgbase = mono5
 	sha256sums = 9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425
 
 pkgname = mono5
-
