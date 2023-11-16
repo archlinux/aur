@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=835de48f0afbf16ee03f6576b091a5e019487df3
+_mozc_commit=f384570876106731f34cf1d19270114248d321a9
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -29,16 +29,16 @@ _sudachidict_date=20230927
 
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
-pkgver=2.29.5268.102
-pkgrel=8
+pkgver=2.29.5288.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('qt6-base' 'fcitx' 'fcitx-qt6' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
-        "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
-        "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
+        #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
+        #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
         #"https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         #"https://github.com/phoepsilonix/mecab-naist-jdic/raw/main/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         # https://github.com/WorksApplications/SudachiDict
@@ -59,8 +59,6 @@ for dict in "${_dict[@]}"; do
 done
 sha512sums=('SKIP'
             'SKIP'
-            '7ce5cb0e8fa4a170216a646ba6c90c767669511f58fe4afb1b2a045f5210a4dd22f2f88d93bd1cef2fbb7334bf7bbff912f0b0b1fbb4751defc152561de28e31'
-            '757f77995bc1d1ccc57f7f0a1f5cd07cf906fd0a1262851d963bd4574f37dcb18870eef261ebbdcc4becb551bafe99974542b1a5b854ec69bce05df3a68b1d14'
             '66ad5357b722ba4f54a3861c993cd047424ec210ba2931f38b90bc27758984ac29369baa511451b3e656196173fe0b049d3dfd1ade24a4dc389b86b9e0b9cd7e'
             '1edbceb3d08226d487d4baa199a5936f521c97363abdbc15592cfb50e7672f797fbb90ecf2b5ddbd0cbb54f482d073629fcf47afa298b9be6254649aad71cce9'
             '2d065fbfbfdf8294e053625a891043ca640aa39c8fc5959d7b6544c12a1ad321f19b8f5c8c6beb49b2d4e694a73f66ff32f7c6ec6989c9d73addcf461c49b6af'

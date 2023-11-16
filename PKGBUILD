@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=835de48f0afbf16ee03f6576b091a5e019487df3
+_mozc_commit=f384570876106731f34cf1d19270114248d321a9
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -29,16 +29,16 @@ _sudachidict_date=20230927
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5268.102
-pkgrel=8
+pkgver=2.29.5288.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ibus' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
-        "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
-        "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
+        #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
+        #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
         #"https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         #"https://github.com/phoepsilonix/mecab-naist-jdic/raw/main/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         # https://github.com/WorksApplications/SudachiDict
@@ -59,8 +59,6 @@ for dict in "${_dict[@]}"; do
 done
 sha512sums=('SKIP'
             'SKIP'
-            '3dc7c95a8f6be1f3899c146f0f544b4b44ca339c4676da4d9cb49d7b2f805189e8366c33fb63b8a3b7367db60ffe7ba9ff0d5303623657f54158a9bf39100a9b'
-            '3a4456c083edc3a4d445e0b8cd825b05972f9ead5b231803fbdedb21131d30652d317b7a4941764eeef11e7867c125685a4b8063674639902e15410824660fd0'
             '66ad5357b722ba4f54a3861c993cd047424ec210ba2931f38b90bc27758984ac29369baa511451b3e656196173fe0b049d3dfd1ade24a4dc389b86b9e0b9cd7e'
             '1edbceb3d08226d487d4baa199a5936f521c97363abdbc15592cfb50e7672f797fbb90ecf2b5ddbd0cbb54f482d073629fcf47afa298b9be6254649aad71cce9'
             '2d065fbfbfdf8294e053625a891043ca640aa39c8fc5959d7b6544c12a1ad321f19b8f5c8c6beb49b2d4e694a73f66ff32f7c6ec6989c9d73addcf461c49b6af'
