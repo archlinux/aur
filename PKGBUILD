@@ -2,7 +2,7 @@
 # Maintainer (before 5.1.8): Oirio Joshi <joshirio@protonmail.com>
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=electronmail-bin
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('electronmail')
 provides=('electronmail')
 install="${pkgname}.install"
 source=("https://github.com/vladimiry/ElectronMail/releases/download/v${pkgver}/electron-mail-${pkgver}-linux-x64.pacman" 'LICENSE')
-sha256sums=('bf08582d34199cba1814902ba5916e7df541aeccb0e4fb18ce160d281a06730f'
+sha256sums=('9769ea4be70663afa9a97f4846ed30e2f6e110b503664c982bde91eb829e34e6'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
 
 package() {
