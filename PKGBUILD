@@ -1,23 +1,30 @@
 # Maintainer: Riderius <riderius.help@gmail.com>
 
-pkgname=mcmap
-pkgver=3.0.2
-pkgrel=4
+_pkgname=mcmap
+pkgname="${_pkgname}-git"
+pkgver=3.0.2.r18.ga897b49
+pkgrel=1
 pkgdesc="Pixel-art map visualizer for Minecraft. Maps are drawn from an isometric perspective. "
 arch=('x86_64')
-url="https://github.com/spoutn1k/${pkgname}"
+url="https://github.com/spoutn1k/${_pkgname}"
 license=('GPL3')
 depends=('zlib' 'libpng' 'spdlog' 'fmt' 'qt5-tools')
 makedepends=('git' 'gcc' 'make' 'cmake')
 checkdepends=('gtest')
+conflicts=('mcmap')
 provides=('mcmap'
           'mcmap-gui')
 CFLAGS=('${CFLAGS} -U_GLIBCXX_ASSERTIONS')
 CXXFLAGS=('${CXXFLAGS} -U_GLIBCXX_ASSERTIONS')
-source=("${pkgname}::git+https://github.com/spoutn1k/${pkgname}.git#tag=v${pkgver}"
-        "${pkgname}.desktop")
+source=("${pkgname}::git+https://github.com/spoutn1k/${_pkgname}.git"
+        "${_pkgname}.desktop")
 sha256sums=('SKIP'
             '67dff6174f3ef3c072560b6b2c161470d5f76a6282bf9bf6afa9d14750459714')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
+}
 
 build() {
     cd "${srcdir}/${pkgname}"
@@ -34,9 +41,9 @@ check() {
 }
 
 package() {
-    install -Dm755 "${srcdir}/${pkgname}/build/bin/mcmap" "${pkgdir}/usr/bin/mcmap"
-    install -Dm755 "${srcdir}/${pkgname}/build/bin/mcmap-gui" "${pkgdir}/usr/bin/mcmap-gui"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/src/graphical/icons/grass_block.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 "${srcdir}/${pkgname}/build/bin/mcmap" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}/build/bin/mcmap-gui" "${pkgdir}/usr/bin/${_pkgname}-gui"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}/src/graphical/icons/grass_block.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
