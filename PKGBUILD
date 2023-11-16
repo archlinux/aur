@@ -1,23 +1,82 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=gotify-tray-bin
 _pkgname=gotify_tray
+pkgname="${_pkgname//_/-}-bin"
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform desktop client for receiving messages from a Gotify server"
 arch=('x86_64')
 url="https://github.com/seird/gotify-tray"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('gcc-libs' 'libmd' 'pcre2' 'fribidi' 'libxcursor' 'sqlite' 'libbsd' 'libcap' 'glibc' 'libxcb' 'libffi' 'keyutils' 'fontconfig' 'gdk-pixbuf2' \
-    'harfbuzz' 'krb5' 'libpng' 'pixman' 'zlib' 'expat' 'libxfixes' 'libxi' 'qt6-webengine' 'libjpeg-turbo' 'libxext' 'python-pyqt6' 'libglvnd' 'libxdamage' \
-    'graphite' 'cairo' 'libxcomposite' 'lz4' 'glib2' 'pango' 'dbus' 'libxrandr' 'util-linux-libs' 'xcb-util-keysyms' 'xcb-util-renderutil' 'openssl' \
-    'libxrender' 'libdrm' 'e2fsprogs' 'qt6-base' 'libgpg-error' 'wayland' 'libepoxy' 'zstd' 'xcb-util-wm' 'bzip2' 'libthai' 'at-spi2-core' 'systemd-libs' \
-    'libxinerama' 'xcb-util-cursor' 'xcb-util-image' 'libxkbcommon' 'brotli' 'xz' 'libxkbcommon-x11' 'gtk3' 'libx11' 'libgcrypt' 'libdatrie' 'freetype2' \
-    'qt6-svg' 'qt6-wayland' 'libselinux')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64_bullseye.deb")
-sha256sums=('28a6a47b22e3613c813e955ad66cfd422c0da9be6d8cbedf5904a1bab8d49bbf')
-prepare() {
+depends=(
+    'libmd'
+    'pcre2'
+    'fribidi'
+    'libxcursor'
+    'sqlite'
+    'libbsd'
+    'libcap'
+    'libxcb'
+    'libffi'
+    'keyutils'
+    'fontconfig'
+    'gdk-pixbuf2'
+    'harfbuzz'
+    'krb5'
+    'libpng'
+    'pixman'
+    'expat'
+    'libxfixes'
+    'libxi'
+    'qt6-webengine'
+    'libjpeg-turbo'
+    'libxext'
+    'python-pyqt6'
+    'libglvnd'
+    'libxdamage'
+    'graphite'
+    'cairo'
+    'libxcomposite'
+    'lz4'
+    'pango'
+    'libxrandr'
+    'util-linux-libs'
+    'xcb-util-keysyms'
+    'xcb-util-renderutil'
+    'openssl'
+    'libxrender'
+    'libdrm'
+    'e2fsprogs'
+    'qt6-base'
+    'libgpg-error'
+    'wayland'
+    'libepoxy'
+    'zstd'
+    'xcb-util-wm'
+    'bzip2'
+    'libthai'
+    'at-spi2-core'
+    'systemd-libs'
+    'libxinerama'
+    'xcb-util-cursor'
+    'xcb-util-image'
+    'libxkbcommon'
+    'brotli'
+    'xz'
+    'libxkbcommon-x11'
+    'gtk3'
+    'libx11'
+    'libgcrypt'
+    'libdatrie'
+    'freetype2'
+    'qt6-svg'
+    'qt6-wayland'
+    'libselinux'
+)
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64_bookworm.deb")
+sha256sums=('1c98ee2d33ea2102f983ebeed64674007c661560e9bf46dd1aa6a6ec09f43187')
+build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|Exec=/opt/${pkgname%-bin}/${pkgname%-bin}|Exec=${pkgname%-bin}|g;s|Icon=/usr/share/icons/${pkgname%-bin}.ico|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname//_/}.desktop"
