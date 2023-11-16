@@ -17,7 +17,9 @@ sha1sums=('359e1d01ad2eb9cd2db964ea96ef3712d0c2c649'
           'SKIP'
           '0f03d59dee4b967dfa80621ef4b1efea61772c16'
           '3613a5454aeaef8d264011f2bc9f2303248fb933')
-validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch
+#validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch
+validpgpkeys=('AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
+
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
