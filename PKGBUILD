@@ -3,7 +3,7 @@
 pkgname=gawk-mpfr
 _project=gawkextlib
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GAWK extension - interface to the MPFR library"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
