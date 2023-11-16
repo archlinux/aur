@@ -1,6 +1,6 @@
 pkgbase = flowinity-flameshot
 	pkgdesc = Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)
-	pkgver = r1942.4cced83d
+	pkgver = r1943.e0f63600
 	pkgrel = 1
 	url = https://github.com/PrivateUploader/flameshot
 	arch = i686
