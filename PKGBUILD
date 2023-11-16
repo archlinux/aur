@@ -31,9 +31,11 @@ source=(
 sha256sums=('1e3f5fda776c41a5acd9debbb6dd94ff94ea082bd52f51b40df2267a8c362511')
 
 package() {
-  tar -xvf data.tar.* -C $pkgdir
-  find $pkgdir/opt -type f -not -path "*/resources/*" -print -delete
-  printf '#!/bin/sh
-exec env ELECTRON_IS_DEV=0 electron /opt/Anytype/resources/app.asar "$@"
-' | install -Dm755 /dev/stdin $pkgdir/opt/Anytype/anytype
+  	tar -xvf data.tar.* -C $pkgdir
+  	find $pkgdir/opt -type f -not -path "*/resources/*" -print -delete
+  	printf '#!/bin/sh
+	exec env ELECTRON_IS_DEV=0 electron /opt/Anytype/resources/app.asar "$@"
+	' | install -Dm755 /dev/stdin $pkgdir/opt/Anytype/anytype
+	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/anytype.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/anytype.png"
+
 }
