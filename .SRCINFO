@@ -1,0 +1,20 @@
+pkgbase = asp
+	pkgdesc = Arch Linux build source file management tool
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/falconindy/asp
+	arch = any
+	license = MIT
+	makedepends = asciidoc
+	makedepends = git
+	depends = awk
+	depends = bash
+	depends = jq
+	depends = git
+	depends = libarchive
+	source = git+https://github.com/falconindy/asp.git#tag=v8?signed
+	validpgpkeys = 487EACC08557AD082088DABA1EB2638FF56C0C53
+	validpgpkeys = E499C79F53C96A54E572FEE1C06086337C50773E
+	md5sums = SKIP
+
+pkgname = asp
