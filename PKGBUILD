@@ -3,7 +3,7 @@
 pkgname=gawk-pgsql
 _project=gawkextlib
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GAWK extension - interface to libpq from PostgreSQL"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
