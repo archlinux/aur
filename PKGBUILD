@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=stfed
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Synthing folder event daemon"
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -21,6 +21,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release
 }
 
