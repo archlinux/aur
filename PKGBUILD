@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=motd
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Dynamically generate system information for MOTD SSH banner'
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -22,11 +22,13 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release
 }
 
 check() {
     cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen
 }
 
