@@ -1,7 +1,7 @@
 _gitfolder=compfy
 _gitname=compfy
 pkgname=compfy
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="A Better Alternative to Picom. With Animations and Active Support"
 arch=(i686 x86_64)
