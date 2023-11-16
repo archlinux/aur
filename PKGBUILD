@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="spin"
 pkgname="python-${_name}"
-pkgver=0.7
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc="A developer tool for scientific Python libraries"
 arch=('any')
 url="https://github.com/scientific-python/spin"
@@ -25,7 +25,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  "b1a0841527f94fdf10415ce4f3b273a36d62c229412aa5e81d4664473405f29c"
+  "27c39a3f3eefcf448566b01f5ae434bbf125f027ab8567841c5129f79445c439"
 )
 _archive="${_name}-${pkgver}"
 
