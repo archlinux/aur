@@ -1,6 +1,6 @@
 # Maintainer: Rui Shi <1229408499@qq.com>
 pkgname=linglong-git
-pkgver=1.3.16.r3.ga683465
+pkgver=1.3.16.r4.g146909b
 pkgrel=1
 epoch=0
 pkgdesc='Container application toolkit of deepin'
