@@ -3,7 +3,7 @@
 _pkgname=singland
 pkgname=${_pkgname}-bin
 pkgver=pre_alpha_4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for sing-box. The universal proxy platform"
 arch=(x86_64)
 url='https://github.com/net-breaker/sing-land'

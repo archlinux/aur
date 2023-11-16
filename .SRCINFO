@@ -1,7 +1,7 @@
 pkgbase = singland-bin
 	pkgdesc = A GUI for sing-box. The universal proxy platform
 	pkgver = pre_alpha_4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/net-breaker/sing-land
 	arch = x86_64
 	license = MIT
