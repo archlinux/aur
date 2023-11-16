@@ -1,7 +1,7 @@
 pkgbase = rsop
 	pkgdesc = Simple, fast & configurable tool to open and preview files
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desbma/rsop
 	arch = x86_64
 	license = MIT
