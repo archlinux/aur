@@ -30,8 +30,8 @@ optdepends=(
   'wine: More up-to-date, less buggy SLVoice support')
 # template end;
 pkgname=alchemy-next-viewer-git
-pkgver=7.0.1.54409.663533f0c9
-pkgrel=1
+pkgver=7.0.1.54509.4de3730a21
+pkgrel=2
 replaces=('alchemy-viewer-git')
 provides=('alchemy-viewer')
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}")
