@@ -26,9 +26,9 @@ provides=('anytype')
 conflicts=('anytype'
            'anytype-legacy')
 source=(
-    "https://anytype-release.fra1.cdn.digitaloceanspaces.com/anytype_${pkgver}_amd64.deb"
+    "https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-beta/anytype_${pkgver}-beta_amd64.deb"
     )
-sha256sums=('8cb6c12728322aa9217e10389294f61a276dc302440ad315644ad9e773f18e8a')
+sha256sums=('1e3f5fda776c41a5acd9debbb6dd94ff94ea082bd52f51b40df2267a8c362511')
 
 package() {
   tar -xvf data.tar.* -C $pkgdir
