@@ -2,7 +2,7 @@
 
 pkgname=python-ocp
 pkgver=7.6.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -13,10 +13,10 @@ python
 vtk
 fmt
 glew
+clang15
 )
 makedepends=(
 git
-clang
 llvm
 python-joblib
 python-click
@@ -35,6 +35,7 @@ python-toml
 python-lief
 openmpi
 python-pyparsing
+python-clang15
 )
 conflicts=(python-ocp-git)
 source=(
@@ -79,6 +80,12 @@ prepare(){
 
 build() {
   cd OCP
+  export PATH="/usr/lib/llvm15/bin/:${PATH}"
+  export LD_LIBRARY_PATH="/usr/lib/llvm15/lib:${LD_LIBRARY_PATH}"
+  export PYTHONPATH="$(pwd):${PYTHONPATH}"
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  ln -s "${site_packages}"/clang15 clang
 
   # get symbols
   local _structure_needed="dummy/lib_linux/"
@@ -98,7 +105,7 @@ build() {
   CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen -v \
     --clean \
     --njobs ${_n_parallel_build_jobs} \
-    --libclang /usr/lib/libclang.so \
+    --libclang /usr/lib/libclang.so.15 \
     --include "$(clang -print-resource-dir)"/include \
     --include "/usr/include/vtk" \
     all ocp.toml
