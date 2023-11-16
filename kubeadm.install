@@ -1,0 +1,14 @@
+# arg 1:  the new package version
+post_install() {
+  printf "Switch on IP forwarding: sysctl net.ipv4.ip_forward=1\n"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  local _changelog_121="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.21.md#no-really-you-must-read-this-before-you-upgrade"
+  if [[ "$(vercmp "$2" "1.21.0-1")" -lt 0 ]]; then
+    printf "WARNING: Read important changelog notice:\n"
+    printf "         %s\n" "${_changelog_121}"
+  fi
+}

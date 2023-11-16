@@ -1,0 +1,12 @@
+diff -ruN a/hack/lib/golang.sh b/hack/lib/golang.sh
+--- a/hack/lib/golang.sh	2022-05-03 15:36:49.000000000 +0200
++++ b/hack/lib/golang.sh	2022-05-04 17:12:45.197255145 +0200
+@@ -713,7 +713,7 @@
+       -ldflags="${goldflags}"
+       -tags="${gotags:-}"
+     )
+-    CGO_ENABLED=0 kube::golang::build_some_binaries "${statics[@]}"
++    CGO_ENABLED=1 kube::golang::build_some_binaries "${statics[@]}"
+   fi
+ 
+   if [[ "${#nonstatics[@]}" != 0 ]]; then

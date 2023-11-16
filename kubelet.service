@@ -1,0 +1,21 @@
+[Unit]
+Description=The Kubernetes Node Agent
+Documentation=https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+After=containerd.service crio.service docker.service
+
+[Service]
+ConfigurationDirectory=kubernetes
+CPUAccounting=true
+IPAccounting=true
+EnvironmentFile=-/etc/kubernetes/kubelet.env
+ExecStart=/usr/bin/kubelet $KUBELET_ARGS
+KillMode=process
+MemoryAccounting=true
+StartLimitInterval=0
+Restart=on-failure
+RestartSec=10
+RuntimeDirectory=kubelet
+StateDirectory=kubelet
+
+[Install]
+WantedBy=multi-user.target

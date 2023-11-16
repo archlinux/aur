@@ -1,0 +1,13 @@
+[Unit]
+Description=Kubernetes Scheduler Plugin
+Documentation=man:kube-scheduler(1)
+
+[Service]
+EnvironmentFile=-/etc/kubernetes/kube-scheduler.env
+User=kube
+ExecStart=/usr/bin/kube-scheduler $KUBE_SCHEDULER_ARGS
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

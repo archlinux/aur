@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+post_install() {
+  if ! grep "br_netfilter" /proc/modules; then
+    echo "Load the br_netfilter kernel module or reboot: modprobe br_netfilter."
+  fi
+  if [[ $(swapon --noheadings | wc -l) -ne 0 ]]; then
+    echo "WARNING: Disable swap before using kubelet.service."
+  fi
+}
+
+post_upgrade() {
+  local _changelog_121="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.21.md#no-really-you-must-read-this-before-you-upgrade"
+  if [[ "$(vercmp "$2" "1.21.0-1")" -lt 0 ]]; then
+    printf "WARNING: Read important changelog notice:\n"
+    printf "         %s\n" "${_changelog_121}"
+  fi
+}
