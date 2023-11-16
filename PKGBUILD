@@ -1,41 +1,30 @@
-# Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
+# Maintainer: abraar <abraarsameer (at) proton (dot) me>
 
 pkgname=rtl8812au-aircrack-ng-dkms-git
 _pkgbase=rtl8812au
-pkgver=5.2.20.2.r564.g87b2f78
+pkgver=5.6.4.2_20230501.4a983e4
 pkgrel=1
-pkgdesc="rtl8812AU chipset driver maitained by aircrack-ng"
+pkgdesc="RTL8812AU/21AU and RTL8814AU driver with monitor mode and frame injection"
 arch=('i686' 'x86_64')
-url="https://github.com/aircrack-ng/rtl8812au/"
+url="https://github.com/aircrack-ng/rtl8812au"
 license=('GPL2')
-depends=('dkms' 'bc' 'libelf')
+depends=('dkms' 'bc')
 makedepends=('git')
-optdepends=('linux-headers: build modules against the Arch kernel'
-            'linux-lts-headers: build modules against the LTS kernel'
-            'linux-zen-headers: build modules against the ZEN kernel'
-            'linux-hardened-headers: build modules against the HARDENED kernel')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/aircrack-ng/rtl8812au.git#branch=v5.2.20"
-        "dkms.conf")
-sha256sums=('SKIP'
-            '7f2d6df66d1d68baac01e4b1867aa6bc4f6d3cb19bdaa1d43ad58a4243049dcd')
+source=("git+https://github.com/aircrack-ng/rtl8812au")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${_pkgbase}
-    printf '%s.r%s.g%s' '5.2.20.2' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${srcdir}/rtl8812au
+    printf '%s.%s' "$(sed -n 's/PACKAGE_VERSION="\([^"]*\)"/\1/p' dkms.conf | tr '~' '_')" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-        cd ${srcdir}/${_pkgbase}
-        mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        # Set name and version
-        sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
-                        -e "s/@PKGVER@/${pkgver}/" \
-                        -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-        sed -e "s/88XXau/8812au/" \
-            -e "s/88XXae/8812ae/" \
-            -e "s/88XXas/8812as/" \
-            -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/Makefile
+    # Copy sources (including Makefile)
+    mkdir -p "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+    cp -pr ${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+
+    # Remove unnecessary files for build
+    cd "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+    rm -r android/ docs/ tools/
 }
