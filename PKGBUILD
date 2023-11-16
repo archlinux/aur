@@ -1,32 +1,30 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 
 _pkgname="xfs_undelete"
 pkgname="$_pkgname-git"
-pkgdesc='An undelete tool for the XFS filesystem'
+pkgdesc='Undelete tool for the XFS filesystem'
 
 pkgver=12.1.r0.g9e2f7ab
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 license=('GPL3')
 url="https://github.com/ianka/xfs_undelete"
 
 depends=()
-makedepends=()
+makedepends=('git')
 
-provides=("$_pkgname")
-conflicts=(${provides[@]})
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-source=(
-  "git+$url"
-)
-sha256sums=(
-  'SKIP'
-)
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
@@ -37,9 +35,9 @@ package() {
     'tcllib'
   )
 
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
 
-  install -Dm0755 "xfs_undelete" -t "$pkgdir/usr/bin"
-  install -Dm0644 "xfs_undelete.man" "$pkgdir/usr/share/man/man1/xfs_undelete.1"
+  install -Dm755 "xfs_undelete" -t "$pkgdir/usr/bin/"
+  install -Dm644 "xfs_undelete.man" "$pkgdir/usr/share/man/man1/xfs_undelete.1"
 }
 
