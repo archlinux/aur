@@ -1,18 +1,24 @@
 pkgbase = karbonized-bin
 	pkgdesc = Awesome Image Generator for Code Snippets & Screenshots
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yossTheDev/karbonized
 	arch = x86_64
 	license = Apache
-	depends = bash
+	makedepends = squashfuse
 	depends = electron25
 	depends = hicolor-icon-theme
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = karbonized=1.12.0
 	conflicts = karbonized
 	source = karbonized-1.12.0.AppImage::https://github.com/yossTheDev/karbonized/releases/download/v1.12.0/karbonized-1.12.0.AppImage
 	source = karbonized.sh
 	sha256sums = ec525f543d01b865a12896eed63c1334fb4acc2178cc68af009bc314a8de8a62
-	sha256sums = c4e33c44e6900fe600491a6199483959645602559912d3a798a974e488b8c901
+	sha256sums = 2bd1205006e41eca5a8c91ff2afabccf8b3b1984bb9c6bc46cc9708a88b1d5b8
 
 pkgname = karbonized-bin
