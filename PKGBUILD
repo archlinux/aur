@@ -134,14 +134,19 @@ build() {
         -DVIEWER_CHANNEL="Alchemy Test"
       )
       #msg2 "BUILDENV: ${BUILDENV[*]}"
-      if [[ " ${BUILDENV[*]} " =~ ' ccache ' ]] && command -v ccache; then
-        CMAKE_CXX_COMPILER_LAUNCHER="$(which ccache)"
-        export CMAKE_CXX_COMPILER_LAUNCHER
+      msg2 "Configuring build environment..."
+      # if [[ " ${BUILDENV[*]} " =~ ' ccache ' ]] && command -v ccache >/dev/null 2>&1; then
+      AL_CMAKE_CONFIG+=("-DCMAKE_CXX_COMPILER_LAUNCHER=$(which ccache)")
         msg2 "ccache was found and will be used"
+      # fi
+      if command -v clang++ >/dev/null 2>&1; then
+        AL_CMAKE_CONFIG+=("-DCMAKE_C_COMPILER=$(which clang)")
+        AL_CMAKE_CONFIG+=("-DCMAKE_CXX_COMPILER=$(which clang++)")
+        msg2 "clang was found and will be used instead of gcc"
       fi
       _logfile="${srcdir}/build.${CARCH}.$(date +%s).log"
       $prefix_cmd autobuild configure -A 64 -c ReleaseOS -- "${AL_CMAKE_CONFIG[@]}" > >(tee -a "$_logfile") 2> >(tee -a "$_logfile" >&2)
-      msg2 "Building with ${AUTOBUILD_CPU_COUNT} jobs" 
+      msg2 "Building with ${AUTOBUILD_CPU_COUNT} jobs"
       $prefix_cmd autobuild build -A 64 -c ReleaseOS --no-configure > >(tee -a "$_logfile") 2> >(tee -a "$_logfile" >&2)
     }
 # template end;
