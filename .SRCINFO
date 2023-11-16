@@ -1,7 +1,7 @@
 pkgbase = gawk-aregex
 	pkgdesc = GAWK extension - approximate regex (fuzzy) matching
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
