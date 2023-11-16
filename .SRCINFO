@@ -1,6 +1,6 @@
 pkgbase = flowinity-flameshot
 	pkgdesc = Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)
-	pkgver = r1949.fb024d4a
+	pkgver = r1950.41660f9d
 	pkgrel = 1
 	url = https://github.com/PrivateUploader/flameshot
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = flowinity-flameshot
 	optdepends = xdg-desktop-portal-kde: For KDE Plasma
 	provides = flameshot
 	conflicts = flameshot
-	source = git+https://github.com/PrivateUploader/flameshot.git#commit=fb024d4ade7cebc2791c530170030eeac88cc46d
+	source = git+https://github.com/PrivateUploader/flameshot.git#commit=41660f9d016feae32538b3049b380b22b004fe57
 	md5sums = SKIP
 
 pkgname = flowinity-flameshot
