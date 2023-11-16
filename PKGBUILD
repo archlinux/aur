@@ -4,7 +4,7 @@
 
 _pkgname="cowsql"
 pkgname="$_pkgname-git"
-pkgver=1.15.3.r0.ga1d49d0
+pkgver=1.15.4.r2.g6c91a1b
 pkgrel=1
 pkgdesc='An embeddable and replicated SQLite engine with high availability & automatic failover'
 url="https://github.com/cowsql/cowsql"
@@ -25,29 +25,17 @@ makedepends=(
 
 options=(strip)
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
-  sha256sums+=('SKIP')
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  pkgver() {
-    echo "${pkgver%%.r*}"
-  }
-else
-  # git package
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
+_pkgsrc="$_pkgname"
+source+=("$_pkgsrc"::"git+$url.git")
+sha256sums+=('SKIP')
 
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
   local _configure_options=(
