@@ -1,7 +1,7 @@
 pkgbase = xdarkterror.lv2-git
 	pkgdesc = An amp simulation LV2 plugin modelled after a small high-gain british valve amp (git version)
-	pkgver = r12.d1a69f0
-	pkgrel = 4
+	pkgver = r13.864e7ef
+	pkgrel = 1
 	url = https://github.com/brummer10/XDarkTerror.lv2
 	arch = x86_64
 	groups = pro-audio
@@ -19,10 +19,8 @@ pkgbase = xdarkterror.lv2-git
 	conflicts = xdarkterror.lv2
 	source = xdarkterror.lv2::git+https://github.com/brummer10/XDarkTerror.lv2.git
 	source = xputty::git+https://github.com/brummer10/Xputty.git
-	source = fix-asprintf.patch::https://github.com/brummer10/libxputty/commit/7eb70bf3f7bce0af9e1919d6c875cdb8efca734e.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 15fe7e3e2ec8efe62dc9bb4c0830eaf3ed0373cd39ebd755f2d9193710ebbf76
 
 pkgname = xdarkterror.lv2-git
 	depends = gcc-libs
