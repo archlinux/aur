@@ -1,0 +1,19 @@
+pkgbase = hyprforest-installer-bin
+	pkgdesc = Everforest Theme Installer for Hyprland on Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/3rfaan/hyprforest-installer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	optdepends = hyprland
+	optdepends = kitty
+	optdepends = neovim
+	optdepends = waybar
+	optdepends = wofi
+	optdepends = zsh
+	provides = hyprforest-installer
+	conflicts = hyprforest-installer
+	source = https://github.com/3rfaan/hyprforest-installer/releases/download/v0.1.0/hyprforest-installer-0.1.0-x86_64.tar.gz
+	sha256sums = 591c246ec182e8fd048ed0ba996f4e1da159a78528ecd998cb6ba672b34ed70d
+
+pkgname = hyprforest-installer-bin
