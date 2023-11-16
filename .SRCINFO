@@ -1,6 +1,6 @@
 pkgbase = sublime-text-dev
 	pkgdesc = Sophisticated text editor for code, html and prose - dev build
-	pkgver = 4.4164
+	pkgver = 4.4165
 	pkgrel = 1
 	url = https://www.sublimetext.com/dev
 	install = sublime-text-dev.install
@@ -11,9 +11,9 @@ pkgbase = sublime-text-dev
 	depends = gtk3
 	provides = sublime-text
 	conflicts = sublime-text
-	source_x86_64 = sublime_text_dev_4_4164_1_x64.tar.xz::https://download.sublimetext.com/sublime_text_build_4164_x64.tar.xz
-	sha512sums_x86_64 = f6a60dccdb4ac66a2c9b5bc0493ca5efb7f358ad3bb0e3ace6085c2ac62ec045787a24c29cbd8a771fa389e73858f4632f9704660b924fff32fd3634136ae70c
-	source_aarch64 = sublime_text_dev_4_4164_1_arm64.tar.xz::https://download.sublimetext.com/sublime_text_build_4164_arm64.tar.xz
-	sha512sums_aarch64 = 6e5779a63abc805b1b2a1be9eb8024afde6c406fdea570e62d7401adbb4bb7a8c070577234f7e18fae8c839bc37fbd57c03c0b881b642c8453bde805c83526f7
+	source_x86_64 = sublime_text_dev_4_4165_1_x64.tar.xz::https://download.sublimetext.com/sublime_text_build_4165_x64.tar.xz
+	sha512sums_x86_64 = 0c5d075f4906a3ce7aeb0972f6510a3b2c92c609fdb78183a49136df5de26e9ee3e77473037604e91811975c225bbc5d0ff6e3455d5104ab15b36a07186cb044
+	source_aarch64 = sublime_text_dev_4_4165_1_arm64.tar.xz::https://download.sublimetext.com/sublime_text_build_4165_arm64.tar.xz
+	sha512sums_aarch64 = 304e5da4f5cd580fdf09d0b6f769600cded57778406b9a32c78e5aec6714424f7f265e2a3ce3ca4d3308f0d4a6242fe6b5b5eea2acd986634c2f9733bcb2f0ad
 
 pkgname = sublime-text-dev
