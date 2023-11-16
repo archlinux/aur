@@ -1,15 +1,15 @@
 pkgbase = miteiru-bin
 	pkgdesc = An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hockyy/miteiru
 	arch = x86_64
 	license = custom
-	makedepends = asar
-	depends = bash
 	depends = electron21
 	depends = hicolor-icon-theme
 	depends = mecab
+	depends = java-runtime
+	depends = lib32-glibc
 	provides = miteiru=2.2.0
 	conflicts = miteiru
 	source = miteiru-2.2.0.deb::https://github.com/hockyy/miteiru/releases/download/v2.2.0/miteiru-2.2.0-linux-22.04-amd64.deb
@@ -17,6 +17,6 @@ pkgbase = miteiru-bin
 	source = miteiru.sh
 	sha256sums = 88a1a9c7a05986f34d65adad6a6430cd7931c25442750b68706d025143ad83ca
 	sha256sums = 32b8056672bc415bbd3829a9a737d776795f6b73af61ce0934107ed81ee8a7a0
-	sha256sums = 5808476c2cc4ab3df8e787ef76faaae21dcf1773f441dbada7a4dcd52eecb8bd
+	sha256sums = 3e834169a0ac9dc85a39c5f914c0335bd73655d4c622ba205d11b7f0115aa3dc
 
 pkgname = miteiru-bin
