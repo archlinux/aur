@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=check-broken-packages-pacman-hook-git
 pkgver=r89.f1fa692
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to check for broken packages'
 arch=('x86_64')
 _gitname='pacman-hooks'
@@ -27,11 +27,13 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_gitname}/check-broken-packages"
+    export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release
 }
 
 check() {
     cd "${srcdir}/${_gitname}/check-broken-packages"
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen
 }
 
