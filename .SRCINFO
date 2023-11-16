@@ -1,15 +1,13 @@
 pkgbase = before-dawn
 	pkgdesc = A desktop screensaver app using web technologies
 	pkgver = 0.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/muffinista/before-dawn
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = gendesk
-	makedepends = asar
 	makedepends = nodejs>=18.16.1
-	depends = bash
 	depends = electron26
 	depends = hicolor-icon-theme
 	conflicts = before-dawn
