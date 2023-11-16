@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-arm
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (arm)'
 arch=('x86_64')
@@ -10,11 +10,12 @@ license=('GPL')
 makedepends=('armv5-eabi-glibc-bleeding-edge-toolchain'
              'armv5-eabi-musl-bleeding-edge-toolchain'
              'git'
+             'patchelf'
              'asciidoctor')
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-arm}/archive/v$pkgver.tar.gz")
-sha256sums=('fc12143995b08c28a09e28a45062b1f41caf21b8bc5dbc4b552c338f6f8d74a5')
+sha256sums=('4ea344b21249225c1852271f4983d72351df1516eacaae2042f663cbc55d48e7')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
