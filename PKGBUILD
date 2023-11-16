@@ -3,12 +3,12 @@
 pkgname=technitium-dns-server-bin
 _pkgname=technitium-dns-server
 pkgver=11.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('any')
 url="https://technitium.com/dns/"
 license=('GPL3')
-depends=('aspnet-runtime')
+depends=('aspnet-runtime-7.0-bin')
 conflicts=('technitium-dns-server')
 provides=('technitium-dns-server')
 source=("$_pkgname-$pkgver.tar.gz::https://download.technitium.com/dns/archive/$pkgver/DnsServerPortable.tar.gz"
