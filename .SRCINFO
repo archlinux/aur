@@ -1,12 +1,13 @@
 pkgbase = python-fluent.syntax
 	pkgdesc = Module to read, write and transform Fluent localization system files
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://projectfluent.org
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	source = https://github.com/projectfluent/python-fluent/archive/refs/tags/fluent.syntax@0.18.1.tar.gz
-	sha256sums = cd77c287eca226e7e70a90b0017eece9c730adf6a646a93e21d9504503774d0f
+	depends = python-typing_extensions
+	source = https://github.com/projectfluent/python-fluent/archive/refs/tags/fluent.syntax@0.19.0.tar.gz
+	sha256sums = fa0d0863707ed24c62daa57457e70b153c7876f2e9cdf3cc46f737f33837aba8
 
 pkgname = python-fluent.syntax
