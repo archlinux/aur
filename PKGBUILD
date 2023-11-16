@@ -1,8 +1,8 @@
 # Maintainer:
 
 _pkgname="annotator"
-pkgname=$_pkgname-git
-pkgver=1.2.1.r0.g754b72e
+pkgname="$_pkgname-git"
+pkgver=1.2.1.r3.g5fc31ff
 pkgrel=1
 pkgdesc="Image annotation for Elementary OS"
 url='https://github.com/phase1geo/Annotator'
@@ -19,25 +19,27 @@ makedepends=(
   'vala'
 )
 
-provides=("$_pkgname")
-conflicts=(${provides[@]})
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-source=("$_pkgname"::"git+$url")
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   meson build --prefix=/usr	
   ninja -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   DESTDIR="$pkgdir" ninja -C build install
 
   # symlink
