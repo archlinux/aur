@@ -9,8 +9,7 @@ pkgbase = texlab-git
 	depends = gcc-libs
 	conflicts = texlab
 	conflicts = texlab-bin
-	source = texlab-git::git+https://github.com/latex-lsp/texlab.git
+	source = git+https://github.com/latex-lsp/texlab
 	md5sums = SKIP
 
 pkgname = texlab-git
-
