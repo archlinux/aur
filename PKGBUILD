@@ -16,7 +16,7 @@ replaces=('libfirmware-manager-git')
 options=('!lto')
 source=('git+https://github.com/pop-os/firmware-manager.git'
         "${_app_id}.policy"
-        "${pkgbase%-git}.sh")
+        "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '310e872ec56f13764615795dbcc30e3ab8b0e4329c0d1fe34bd5aa73bc602535'
             'fb8395e19bfd54f756dad1d073135c5b41caa2ad27ee0621350fba50b2e7363b')
