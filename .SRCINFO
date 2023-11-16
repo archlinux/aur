@@ -1,6 +1,6 @@
 pkgbase = figma-linux-git
 	pkgdesc = An unofficial Electron-based Figma desktop app,the first interface design tool based in the browser, making it easier for teams to create software.
-	pkgver = 0.11.0.r0.gf5dd5bf
+	pkgver = 0.11.0.r45.gc186d4b
 	pkgrel = 1
 	url = https://github.com/Figma-Linux/figma-linux
 	arch = any
@@ -23,9 +23,9 @@ pkgbase = figma-linux-git
 	depends = systemd-libs
 	depends = libdbusmenu-glib
 	depends = libdbusmenu-gtk3
-	provides = figma-linux=0.11.0.r0.gf5dd5bf
+	provides = figma-linux=0.11.0.r45.gc186d4b
 	conflicts = figma-linux
-	source = figma-linux::git+https://github.com/Figma-Linux/figma-linux.git#tag=v0.11.0
+	source = figma-linux::git+https://github.com/Figma-Linux/figma-linux.git
 	source = figma-linux.sh
 	sha256sums = SKIP
 	sha256sums = 27b40ca59adaecf65b181228a1afb0c829c34659c62301e823ec6ba6926aa293

@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: iFlygo
 _pkgname=figma-linux
 pkgname="${_pkgname}-git"
-_pkgver=0.11.0
-pkgver=0.11.0.r0.gf5dd5bf
+pkgver=0.11.0.r45.gc186d4b
 pkgrel=1
 pkgdesc="An unofficial Electron-based Figma desktop app,the first interface design tool based in the browser, making it easier for teams to create software."
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=(
     'npm>=9.8.1'
 )
 source=(
-    "${_pkgname}"::"git+${url}.git#tag=v${_pkgver}"
+    "${_pkgname}"::"git+${url}.git"
     "${_pkgname}.sh"
 )
 sha256sums=('SKIP'
