@@ -4,12 +4,12 @@ pkgname="sklauncher-bin"
 pkgdesc="Secure and modern Minecraft Launcher"
 
 pkgver=3.1.2
-pkgrel=2
+pkgrel=3
 
 arch=(i686 x86_64)
 
 url="https://skmedix.pl"
-license=("unknown")
+license=("Apache-2.0")
 
 depends=("java-runtime>=17")
 makedepends=(unzip gendesk)
@@ -17,17 +17,14 @@ makedepends=(unzip gendesk)
 provides=(sklauncher)
 conflicts=(sklauncher sklauncher-git)
 
-source=("https://skmedix.pl/binaries_/SKlauncher-${pkgver}.jar" "sklauncher")
-md5sums=("e98a84b4bcc5e9b2b76e985c6688cad5" "3207598439df0c86594f3ef52a25cef1")
+source=("https://skmedix.pl/binaries/_/SKlauncher-${pkgver}.jar" "sklauncher")
+md5sums=("e98a84b4bcc5e9b2b76e985c6688cad5" "3fbda136409cd254ce125839e59ae1c1")
 
 noextract=("SKlauncher-${pkgver}.jar")
 
 prepare() {
-	# extract the JAR file
-	unzip -o -d "SKlauncher-${pkgver}" "SKlauncher-${pkgver}.jar"
-
-	# get the icon out of the extracted JAR file
-	cp -r "SKlauncher-${pkgver}/logo.png" SKlauncher.png
+	# extract the logo out of the JAR file
+	unzip -o -j "SKlauncher-${pkgver}.jar" logo.png -d .
 
 	# generate a .desktop file
 	gendesk -f -n \
@@ -46,6 +43,6 @@ package() {
 	install -Dm755 sklauncher "${pkgdir}/usr/bin/sklauncher"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 SKlauncher.png "${pkgdir}/usr/share/pixmaps/SKlauncher.png"
+	install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/SKlauncher.png"
 	install -Dm644 SKlauncher.desktop "${pkgdir}/usr/share/applications/SKlauncher.desktop"
 }

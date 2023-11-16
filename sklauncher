@@ -1,2 +1,4 @@
 #!/bin/sh
+
+# run the launcher with the bundled JRE
 java -jar "/usr/share/java/sklauncher/SKlauncher.jar" "$@"
