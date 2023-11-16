@@ -66,50 +66,50 @@ pkgbase = kubernetes1.26
 	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = kube-apiserver
+pkgname = kube-apiserver1.26
 	pkgdesc = Kubernetes control plane component exposing the Kubernetes API
 	groups = kubernetes-control-plane
 	depends = glibc
 	depends = kubernetes-control-plane-common
-	backup = etc/kubernetes/kube-apiserver.env
+	backup = etc/kubernetes/kube-apiserver1.26.env
 
-pkgname = kube-controller-manager
+pkgname = kube-controller-manager1.26
 	pkgdesc = Kubernetes control plane component that runs controller processes
 	groups = kubernetes-control-plane
 	depends = glibc
 	depends = kubernetes-control-plane-common
-	backup = etc/kubernetes/kube-controller-manager.env
+	backup = etc/kubernetes/kube-controller-manager1.26.env
 
-pkgname = kube-proxy
+pkgname = kube-proxy1.26
 	pkgdesc = Kubernetes network proxy that runs on each node
 	groups = kubernetes-control-plane
 	groups = kubernetes-node
 	depends = glibc
 	depends = kubernetes-control-plane-common
-	backup = etc/kubernetes/kube-proxy.env
+	backup = etc/kubernetes/kube-proxy1.26.env
 
-pkgname = kube-scheduler
+pkgname = kube-scheduler1.26
 	pkgdesc = Kubernetes control plane component watching over pods on nodes
 	groups = kubernetes-control-plane
 	depends = glibc
 	depends = kubernetes-control-plane-common
-	backup = etc/kubernetes/kube-scheduler.env
+	backup = etc/kubernetes/kube-scheduler1.26.env
 
-pkgname = kubeadm
+pkgname = kubeadm1.26
 	pkgdesc = A tool for quickly installing Kubernetes and setting up a secure cluster
-	install = kubeadm.install
+	install = kubeadm1.26.install
 	groups = kubernetes-tools
 	depends = glibc
 	depends = crictl
 
-pkgname = kubectl
+pkgname = kubectl1.26
 	pkgdesc = A command line tool for communicating with a Kubernetes API server
 	groups = kubernetes-tools
 	depends = glibc
 
-pkgname = kubelet
+pkgname = kubelet1.26
 	pkgdesc = An agent that runs on each node in a Kubernetes cluster making sure that containers are running in a Pod
-	install = kubelet.install
+	install = kubelet1.26.install
 	groups = kubernetes-control-plane
 	groups = kubernetes-node
 	depends = cni-plugins
@@ -120,7 +120,7 @@ pkgname = kubelet
 	depends = socat
 	optdepends = containerd: for using the containerd container runtime
 	optdepends = cri-o: for using the cri-o container runtime
-	backup = etc/kubernetes/kubelet.env
+	backup = etc/kubernetes/kubelet1.26.env
 
-pkgname = kubernetes-control-plane-common
+pkgname = kubernetes-control-plane-common1.26
 	pkgdesc = Common files for Kubernetes control plane packages

@@ -4,14 +4,14 @@
 _pkgbase=kubernetes
 pkgbase=$_pkgbase"1.26"
 pkgname=(
-  kube-apiserver
-  kube-controller-manager
-  kube-proxy
-  kube-scheduler
-  kubeadm
-  kubectl
-  kubelet
-  kubernetes-control-plane-common
+  kube-apiserver1.26
+  kube-controller-manager1.26
+  kube-proxy1.26
+  kube-scheduler1.26
+  kubeadm1.26
+  kubectl1.26
+  kubelet1.26
+  kubernetes-control-plane-common1.26
 )
 pkgver=1.26.10
 pkgrel=1
@@ -121,7 +121,7 @@ build() {
   )
 }
 
-package_kubeadm() {
+package_kubeadm1.26() {
   pkgdesc='A tool for quickly installing Kubernetes and setting up a secure cluster'
   groups=(kubernetes-tools)
   depends=(
@@ -140,7 +140,7 @@ package_kubeadm() {
   install -vDm 644 completions/_$pkgname -t "$pkgdir/usr/share/zsh/site-functions/"
 }
 
-package_kubectl() {
+package_kubectl1.26() {
   pkgdesc='A command line tool for communicating with a Kubernetes API server'
   groups=(kubernetes-tools)
   depends=(glibc)
@@ -154,7 +154,7 @@ package_kubectl() {
   install -vDm 644 completions/$pkgname.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 }
 
-package_kubelet() {
+package_kubelet1.26() {
   pkgdesc='An agent that runs on each node in a Kubernetes cluster making sure that containers are running in a Pod'
   groups=(
     kubernetes-control-plane
@@ -190,7 +190,7 @@ package_kubelet() {
   install -vdm 700 "$pkgdir/etc/kubernetes/manifests"
 }
 
-package_kube-apiserver() {
+package_kube-apiserver1.26() {
   pkgdesc='Kubernetes control plane component exposing the Kubernetes API'
   groups=(kubernetes-control-plane)
   depends=(
@@ -208,7 +208,7 @@ package_kube-apiserver() {
   install -vDm 644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
 }
 
-package_kube-controller-manager() {
+package_kube-controller-manager1.26() {
   pkgdesc='Kubernetes control plane component that runs controller processes'
   groups=(kubernetes-control-plane)
   depends=(
@@ -226,7 +226,7 @@ package_kube-controller-manager() {
   install -vDm 644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
 }
 
-package_kube-proxy() {
+package_kube-proxy1.26() {
   pkgdesc='Kubernetes network proxy that runs on each node'
   groups=(
     kubernetes-control-plane
@@ -249,7 +249,7 @@ package_kube-proxy() {
   install -vdm 755 "$pkgdir/var/lib/$pkgname/"
 }
 
-package_kube-scheduler() {
+package_kube-scheduler1.26() {
   pkgdesc='Kubernetes control plane component watching over pods on nodes'
   groups=(kubernetes-control-plane)
   depends=(
@@ -267,7 +267,7 @@ package_kube-scheduler() {
   install -vDm 644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
 }
 
-package_kubernetes-control-plane-common() {
+package_kubernetes-control-plane-common1.26() {
   pkgdesc='Common files for Kubernetes control plane packages'
 
   # sysusers.d
