@@ -52,7 +52,7 @@
 
 pkgname=flowinity-flameshot
 _pkgname=flameshot
-pkgver=r1953.58e0091a
+pkgver=r1956.17bad767
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)"
 arch=('i686' 'x86_64')
@@ -66,7 +66,7 @@ optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
             'xdg-desktop-portal-kde: For KDE Plasma')
 provides=(flameshot)
 conflicts=(flameshot)
-source=("git+https://github.com/PrivateUploader/flameshot.git#commit=58e0091ad1904094f7ed719d5c3d000f7a8d8a1c")
+source=("git+https://github.com/PrivateUploader/flameshot.git#commit=17bad767aa2d6a0ed48a85098d4a6a19d80838f4")
 md5sums=('SKIP')
 
 pkgver() {
