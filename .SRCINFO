@@ -1,21 +1,32 @@
 pkgbase = networkmanager-ssh-git
-	pkgdesc = SSH VPN support for NetworkManager
-	pkgver = r233.fe3dc5d
+	pkgdesc = SSH VPN support for NetworkManager - git version, gtk4 port
+	pkgver = r270.d7996e7
 	pkgrel = 1
-	url = https://github.com/danfruehauf/NetworkManager-ssh
-	arch = any
+	url = https://github.com/NetworkManager/NetworkManager-ssh/tree/lr/gtk-4.0
+	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
-	makedepends = autoconf
 	makedepends = intltool
-	depends = networkmanager>=1.1.0
-	depends = libnm-glib>=1.1.0
+	depends = at-spi2-core
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk3
+	depends = gtk4
+	depends = harfbuzz
+	depends = libnm
+	depends = libnma
+	depends = libnma-gtk4
+	depends = libsecret
+	depends = networkmanager
 	depends = nm-connection-editor
+	depends = pango
+	depends = zlib
 	provides = networkmanager-ssh
-	source = networkmanager-ssh-git::git://github.com/danfruehauf/NetworkManager-ssh.git
-	md5sums = SKIP
+	conflicts = networkmanager-ssh
+	source = networkmanager-ssh::git+https://github.com/NetworkManager/NetworkManager-ssh.git#branch=lr/gtk-4.0
+	b2sums = SKIP
 
 pkgname = networkmanager-ssh-git
-
