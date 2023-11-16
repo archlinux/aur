@@ -1,7 +1,7 @@
 pkgbase = networkmanager-ssh-git
-	pkgdesc = SSH VPN support for NetworkManager - git version, gtk4 port
+	pkgdesc = OpenSSH VPN tunneling support for NetworkManager - git version, gtk4 port
 	pkgver = r270.d7996e7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NetworkManager/NetworkManager-ssh/tree/lr/gtk-4.0
 	arch = x86_64
 	license = GPL2

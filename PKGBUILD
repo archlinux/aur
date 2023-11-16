@@ -4,8 +4,8 @@
 _pkgbase='networkmanager-ssh'
 pkgname="${_pkgbase}-git"
 pkgver=r270.d7996e7
-pkgrel=3
-pkgdesc="SSH VPN support for NetworkManager - git version, gtk4 port"
+pkgrel=4
+pkgdesc="OpenSSH VPN tunneling support for NetworkManager - git version, gtk4 port"
 arch=('x86_64')
 _repourl='https://github.com/NetworkManager/NetworkManager-ssh'
 _repobranch='lr/gtk-4.0'
