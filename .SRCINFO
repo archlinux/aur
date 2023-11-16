@@ -1,0 +1,28 @@
+pkgbase = libxml2
+	pkgdesc = XML C parser and toolkit
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = python
+	depends = icu
+	depends = ncurses
+	depends = readline
+	depends = xz
+	depends = zlib
+	source = git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=5e9b167dce73bd6a804ab107ae4c4b95e6849597
+	source = 0001-HACK-Don-t-run-fuzzing-tests.patch
+	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
+	b2sums = SKIP
+	b2sums = 6931b07a467874c3016deb7a68bab1e9cfaabc88fdeaf0ccf6c9cca02bbce9618b18f8c285f5748089138489d04d7c72a659b2bfd4ea5fe24ad273daacbd6d50
+	b2sums = 63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be
+
+pkgname = libxml2
+	optdepends = python: Python bindings
+	provides = libxml2.so
+
+pkgname = libxml2-docs
+	pkgdesc = XML C parser and toolkit (documentation)
+	depends = 
