@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=runitor-git
-pkgver=v0.7.0.r0.g6569ad8
+pkgver=v1.3.0.beta.2.r7.ge92b933
 _binver=v0.7.0
 pkgrel=1
 pkgdesc="A command runner with healthchecks.io integration"
@@ -9,7 +9,7 @@ url="https://github.com/bdd/runitor"
 license=('0BSD')
 arch=('x86_64')
 makedepends=('go')
-source=("$pkgname"::"git://github.com/bdd/runitor.git")
+source=("$pkgname"::"git+https://github.com/bdd/runitor.git")
 sha512sums=('SKIP')
 
 pkgver() {
