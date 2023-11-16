@@ -1,6 +1,7 @@
+_tag=5dc990cea551d414f3e43f649c4d987ba783d4b5
 pkgname=compfy
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Better Alternative to Picom. With Animations and Active Support"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/compfy"
@@ -10,11 +11,15 @@ makedepends=('git' 'meson' 'ninja' 'gcc' 'uthash')
 optdepends=('dbus:          To control Compfy via D-Bus')
 provides=('compton' 'compton-git' 'picom' 'picom-git')
 conflicts=('compton' 'compton-git' 'picom' 'picom-git')
-source=("${pkgname}::git+https://github.com/allusive-dev/compfy.git#tag=${pkgver}")
+source=("git+$url.git#tag=${_tag}")
 md5sums=('SKIP')
+pkgver() {
+	cd $pkgname
+        git describe --tags
+}
 build() {
 	cd "${srcdir}/${pkgname}"
-	meson setup -Dwith_docs=false . build
+	meson setup --prefix=/usr -Dwith_docs=false . build
 	ninja -C build
 }
 
