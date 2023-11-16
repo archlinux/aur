@@ -3,7 +3,7 @@
 pkgname=gawk-haru
 _project=gawkextlib
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GAWK extension - interface to the libharu PDF library"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
