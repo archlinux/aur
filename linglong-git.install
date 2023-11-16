@@ -18,7 +18,7 @@ post_install() {
                 mkdir -p ${LINGLONG_ROOT}/layers
                 ostree --repo=${LINGLONG_ROOT}/repo init --mode=bare-user-only
                 ostree --repo=${LINGLONG_ROOT}/repo config set --group core min-free-space-size 600MB
-                ostree --repo=${LINGLONG_ROOT}/repo remote add --no-gpg-verify repo https://repo-dev.linglong.space/repos/repo
+                ostree --repo=${LINGLONG_ROOT}/repo remote add --no-gpg-verify repo https://mirror-repo-linglong.deepin.com/repos/repo
                 chmod -R 0775 ${LINGLONG_ROOT}
         else
                 echo "Directory is already exists."
