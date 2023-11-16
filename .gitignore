@@ -1,0 +1,10 @@
+~
+engauge-*.tar.gz
+
+pkg/*
+src/*
+
+engauge-*.log
+engauge-*.log.*
+engauge-*.src.tar.gz
+engauge-*.pkg.tar.*
