@@ -3,7 +3,7 @@
 _pkgname=perl-gis-distance
 pkgname="${_pkgname}-git"
 pkgver=0.20.0+r114.20230607.g7611336
-pkgrel=1
+pkgrel=2
 pkgdesc='GIS::Distance -- Perl interface to calculate calculate geographic distances.'
 arch=(
   'any'
@@ -24,6 +24,7 @@ makedepends=(
   'perl-module-build-tiny'
 )
 optdepends=(
+  "perl-class-measure: For haversine."
   "perl-geo-point:  To be able to handle 'Geo::Point' objects."
 )
 checkdepends=(
