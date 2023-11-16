@@ -1,6 +1,6 @@
 pkgbase = check-broken-packages-pacman-hook-git
 	pkgdesc = Pacman hook to check for broken packages
-	pkgver = r87.eec94bd
+	pkgver = r89.f1fa692
 	pkgrel = 1
 	url = https://github.com/desbma/pacman-hooks
 	arch = x86_64

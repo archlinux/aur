@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=check-broken-packages-pacman-hook-git
-pkgver=r87.eec94bd
+pkgver=r89.f1fa692
 pkgrel=1
 pkgdesc='Pacman hook to check for broken packages'
 arch=('x86_64')
@@ -19,14 +19,20 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check() {
+prepare() {
     cd "${srcdir}/${_gitname}/check-broken-packages"
-    cargo test --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked
 }
 
 build() {
     cd "${srcdir}/${_gitname}/check-broken-packages"
-    cargo build --release --locked
+    cargo build --frozen --release
+}
+
+check() {
+    cd "${srcdir}/${_gitname}/check-broken-packages"
+    cargo test --frozen
 }
 
 package() {
