@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell-config')
 pkgver=0.5.25
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell configuration utility"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell-config"
@@ -22,6 +22,10 @@ package() {
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-update-noupdate.svg
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-update-available.svg
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-update-checking.svg
+  install -D -t "$pkgdir"/usr/share/pixmaps nwg-screenshot.svg
+  install -D -t "$pkgdir"/usr/share/pixmaps nwg-3.svg
+  install -D -t "$pkgdir"/usr/share/pixmaps nwg-2.svg
+  install -D -t "$pkgdir"/usr/share/pixmaps nwg-1.svg
   
   install -D -t "$pkgdir"/usr/share/applications nwg-shell-config.desktop
   install -D -t "$pkgdir"/usr/local/bin nwg-system-update
