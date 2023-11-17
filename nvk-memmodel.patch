@@ -1,7 +1,7 @@
 From 8316cddfb220303d1d2031c7d6f5bd2199d5fb64 Mon Sep 17 00:00:00 2001
 From: Echo J <aidas957@gmail.com>
 Date: Tue, 18 Apr 2023 11:53:01 +0300
-Subject: [PATCH 1/2] nvk: Expose Vulkan memory model
+Subject: [PATCH] nvk: Expose Vulkan memory model
 
 ---
  src/nouveau/vulkan/nvk_physical_device.c | 2 ++
@@ -40,39 +40,6 @@ index 899f236f905..8deffb6ecca 100644
           .workgroup_memory_explicit_layout = true,
        },
        .ssbo_addr_format = nvk_buffer_addr_format(rs->storage_buffers),
--- 
-2.42.0
-
-
-From dca36de0ef3359c995252de573d35b90dc119f8b Mon Sep 17 00:00:00 2001
-From: Echo J <aidas957@gmail.com>
-Date: Tue, 18 Apr 2023 11:57:55 +0300
-Subject: [PATCH 2/2] nvk: Expose KHR_synchronization2
-
----
- src/nouveau/vulkan/nvk_physical_device.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
-index 67e00d06616..6e9411c3f62 100644
---- a/src/nouveau/vulkan/nvk_physical_device.c
-+++ b/src/nouveau/vulkan/nvk_physical_device.c
-@@ -94,6 +94,7 @@ nvk_get_device_extensions(const struct nv_device_info *info,
-       .KHR_swapchain = true,
-       .KHR_swapchain_mutable_format = true,
- #endif
-+      .KHR_synchronization2 = true,
-       .KHR_uniform_buffer_standard_layout = true,
-       .KHR_variable_pointers = true,
-       .KHR_vulkan_memory_model = true,
-@@ -253,6 +254,7 @@ nvk_get_device_features(const struct nv_device_info *info,
-       .privateData = true,
-       .shaderDemoteToHelperInvocation = true,
-       .shaderTerminateInvocation = true,
-+      .synchronization2 = true,
-       .dynamicRendering = true,
-       .maintenance4 = true,
- 
 -- 
 2.42.0
 
