@@ -1,6 +1,6 @@
 pkgname="timedctl"
-pkgver=5.7.0
-pkgrel=1
+pkgver=5.8.0
+pkgrel=2
 pkgdesc="Click CLI for Timed using libtimed"
 arch=("any")
 url="https://github.com/adfinis/timedctl.git"
@@ -26,4 +26,7 @@ build() {
 package() {
   cd "${srcdir}/timedctl"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  _TIMEDCTL_COMPLETE=bash_source timedctl | install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/timedctl.bash"
+  _TIMEDCTL_COMPLETE=fish_source timedctl | install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/timedctl.fish"
+  _TIMEDCTL_COMPLETE=zsh_source timedctl | install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_timedctl"
 }
