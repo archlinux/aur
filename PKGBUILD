@@ -4,7 +4,9 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=34
+<<<<<<< HEAD
+pkgrel=35
+
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
@@ -47,7 +49,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2023"
   # ----------------------------------------------------------------------------
   # change to use XDG_CONFIG_HOME if available
-  # currently sets folder within XDG_CONFIG_HOME to be .pokerth rather than pokerth
   # changes suggested by @viktoracoric
   # patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.xdg.2023"
   # ----------------------------------------------------------------------------

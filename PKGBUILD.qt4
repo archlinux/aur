@@ -1,0 +1,86 @@
+# Maintainer: blacktav <blacktav at gmail dot com>
+# Contributor: based on unknown abandoned pokerth-final from 2012-12-27
+
+pkgname=pokerth
+pkgver=1.1.2
+pkgrel=2
+pkgdesc="Client to online Poker game written in C++/Qt"
+arch=('i686' 'x86_64')
+url="http://www.pokerth.net/"
+license=('GPL' 'custom')
+depends=('curl' 'boost-libs' 'gsasl' 'protobuf'
+         'qt4'
+#         'qt5-3d'
+#         'qt5-base'
+#         'qt5-canvas3d'
+#         'qt5-charts'
+#         'qt5-connectivity'
+#         'qt5-datavis3d'
+#         'qt5-declarative'
+#         'qt5-gamepad'
+#         'qt5-graphicaleffects'
+#         'qt5-imageformats'
+#         'qt5-location'
+#         'qt5-multimedia'
+#         'qt5-networkauth'
+#         'qt5-quickcontrols'
+#         'qt5-quickcontrols2'
+#         'qt5-remoteobjects'
+#         'qt5-script'
+#         'qt5-scxml'
+#         'qt5-sensors'
+#         'qt5-serialbus'
+#         'qt5-serialport'
+#         'qt5-speech'
+#         'qt5-svg'
+#         'qt5-tools'
+#         'qt5-translations'
+#         'qt5-virtualkeyboard'
+#         'qt5-wayland'
+#         'qt5-webchannel'
+#         'qt5-webengine'
+#         'qt5-webglplugin'
+#         'qt5-webkit'
+#         'qt5-websockets'
+#         'qt5-webview'
+#         'qt5-x11extras'
+#         'qt5-xmlpatterns'
+         'sdl_mixer' 'tinyxml')
+
+makedepends=('boost')
+source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz
+        pokerth-1.1.2.patch)
+md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
+         '0ef5541fc6008dfb2521dcab47afb659')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver-rc"
+
+  # ---< required for v1.1.2 >--------------------------------------------------
+  # these changes should be incorporated in next release ~feb-2018
+  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch"
+  protoc -I=$srcdir/$pkgname-$pkgver-rc/ --cpp_out=$srcdir/$pkgname-$pkgver-rc/src/third_party/protobuf/ $srcdir/$pkgname-$pkgver-rc/pokerth.proto $srcdir/$pkgname-$pkgver-rc/chatcleaner.proto
+
+  # ----------------------------------------------------------------------------
+
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver-rc"
+
+#  qmake CONFIG+="client" -spec linux-g++  ${pkgname}.pro
+  /lib64/qt4/bin/qmake CONFIG+="client" ${pkgname}.pro
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver-rc"
+
+  make INSTALL_ROOT="$pkgdir" install
+
+  install -D pokerth "$pkgdir/usr/bin/pokerth"
+  install -D -m644 docs/pokerth.1 "$pkgdir/usr/share/man/man1/pokerth.1"
+  install -D -m644 data/data-copyright.txt "$pkgdir/usr/share/licenses/pokerth/data-copyright.txt"
+  rm -f "$pkgdir/usr/share/pokerth/data/data-copyright.txt"
+}
+
