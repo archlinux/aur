@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=imgpkg
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Store application configuration files in Docker/OCI registries'
 url='https://carvel.dev/imgpkg'
 arch=(any)
@@ -15,7 +15,8 @@ provides=(imgpkg)
 source=(imgpkg-0.39.0::https://github.com/carvel-dev/imgpkg/archive/v0.39.0.tar.gz)
 build () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     export CGO_CPPFLAGS="${CPPFLAGS}";
     export CGO_CFLAGS="${CFLAGS}";
     export CGO_CXXFLAGS="${CXXFLAGS}";
@@ -25,7 +26,8 @@ build ()
 }
 package () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     BIN=$pkgname;
     install -Dm755 $BIN -t "$pkgdir/usr/bin";
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
