@@ -4,9 +4,9 @@ pkgname=enchant-pure
 
 _pkgname=enchant
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 
-pkgdesc="A wrapper library for pure and generic spell checking for all languages, supporting Aspell and Myspell/Hunspell backend engines"
+pkgdesc="A wrapper library for pure (warning free) spell checking for all languages, supporting Aspell and Myspell/Hunspell backend engines"
 url="https://github.com/AbiWord/enchant"
 
 arch=('x86_64')
