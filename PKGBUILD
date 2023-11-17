@@ -3,7 +3,7 @@
 # Switched to rikki48's PKGBUILD because it was more stable than mine, his repo: https://github.com/Dr4iv3rNope/ayugramdesktop-git
 pkgname=ayugram-desktop-git
 pkgver=4.11.1.r0.gfe1585770
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial desktop version of Telegram messaging app with ToS breaking features in mind'
 arch=('x86_64' 'aarch64')
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -56,29 +56,7 @@ source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev"
         "telegram-desktop-cld3::git+https://github.com/google/cld3.git"
         "cppgir::git+https://gitlab.com/mnauw/cppgir.git"
         "cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git"
-        "fix-arch-linux-desktop-portal.patch"
-        "workaround-for-dbusactivatable.patch"
-        "qt_scale_factor-fix.patch_"
 )
-prepare() {
-    #
-    # Applying custom patches
-    #
-    for patch_filepath in *.patch; do
-        echo "Applying patch $patch_filepath"
-
-        patch -i $patch_filepath -u -p0 -N -r- || true
-    done
-
-    if [[ $PATCH_QT_SCALING -eq 1 ]]; then
-        echo "Applying QT_SCALE_FACTOR patch!"
-
-        patch -i qt_scale_factor-fix.patch_ -u -p0 -N -r- || true
-    fi
-
-    #
-    # Patch end
-    #
 
     cd "$srcdir/tdesktop"
     git submodule init
@@ -127,7 +105,6 @@ prepare() {
     git submodule init
     git config submodule.expected-lite.url "$srcdir/cppgir-expected-lite"
     git -c protocol.file.allow=always submodule update
-}
 
 build() {
     cd "$srcdir/tdesktop"
@@ -192,7 +169,4 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'ec383da9ec6a0dbca76257cc0dfd810563ae37d0ae8af1356202b47fedb1467d7f218083ecb68a031945dc8a3e6784354c2e633a7f357190b4c57fd31275f68f'
-            '7003e5c41b0bd15b064d0e1ebad849f87a4237de64a830419794489fefc133a031802225b0718e3881c7fbc3ab00e08cfb38990612fb691f7ef65f0df1a6dd1a'
-            '7ce670334cf724761ca88071bf3dc475f765de48aa145e6d15d11cce8471e76f57e8889c3b06d7e9d4f376da5b4f224c1a2b774cf46e95239da427d34ba7497d')
+            'SKIP')

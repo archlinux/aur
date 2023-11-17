@@ -1,7 +1,7 @@
 pkgbase = ayugram-desktop-git
 	pkgdesc = Unofficial desktop version of Telegram messaging app with ToS breaking features in mind
 	pkgver = 4.11.1.r0.gfe1585770
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AyuGram/AyuGramDesktop
 	arch = x86_64
 	arch = aarch64
@@ -85,9 +85,6 @@ pkgbase = ayugram-desktop-git
 	source = telegram-desktop-cld3::git+https://github.com/google/cld3.git
 	source = cppgir::git+https://gitlab.com/mnauw/cppgir.git
 	source = cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git
-	source = fix-arch-linux-desktop-portal.patch
-	source = workaround-for-dbusactivatable.patch
-	source = qt_scale_factor-fix.patch_
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -125,8 +122,5 @@ pkgbase = ayugram-desktop-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = ec383da9ec6a0dbca76257cc0dfd810563ae37d0ae8af1356202b47fedb1467d7f218083ecb68a031945dc8a3e6784354c2e633a7f357190b4c57fd31275f68f
-	sha512sums = 7003e5c41b0bd15b064d0e1ebad849f87a4237de64a830419794489fefc133a031802225b0718e3881c7fbc3ab00e08cfb38990612fb691f7ef65f0df1a6dd1a
-	sha512sums = 7ce670334cf724761ca88071bf3dc475f765de48aa145e6d15d11cce8471e76f57e8889c3b06d7e9d4f376da5b4f224c1a2b774cf46e95239da427d34ba7497d
 
 pkgname = ayugram-desktop-git
