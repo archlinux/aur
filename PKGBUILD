@@ -1,7 +1,7 @@
 _pkgname="figma-linux-dev"
 pkgname="${_pkgname}-git"
 pkgver="0.11.0.r52.gb616de7"
-pkgrel="3"
+pkgrel="4"
 arch=("any")
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 url="https://github.com/Figma-Linux/figma-linux"
@@ -10,7 +10,7 @@ depends=("hicolor-icon-theme")
 makedepends=("git" "nodejs>=18.11.18" "npm>=9.8.1" "xdg-utils")
 provides=("figma-linux")
 _pkgver="0.11.0"
-source=("figma-linux"::"git+${url}.git#branch=dev")
+source=("figma-linux-dev"::"git+${url}.git#branch=dev")
 sha256sums=("SKIP")
 
 
@@ -43,11 +43,11 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}/resources/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 
   mkdir -p "${pkgdir}/opt/${_pkgname}"
-  chmod 755 "${srcdir}/${_pkgname}/out/linux-unpacked/${_pkgname}"
+  chmod 755 "${srcdir}/${_pkgname}/out/linux-unpacked/figma-linux"
   cp -rf ${srcdir}/${_pkgname}/out/linux-unpacked/* ${pkgdir}/opt/${_pkgname}
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/${_pkgname}/figma-linux" "${pkgdir}/usr/bin/${_pkgname}"
 
   xdg-mime default ${_pkgname}.desktop x-scheme-handler/figma
 }
