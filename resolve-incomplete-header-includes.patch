@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/TUScheduler.cpp b/clang-tools-extra/clangd/TUScheduler.cpp
-index 324ba1fc8cb8..208a723d8b7e 100644
+index 324ba1fc8cb8..f4204c10a1b4 100644
 --- a/clang-tools-extra/clangd/TUScheduler.cpp
 +++ b/clang-tools-extra/clangd/TUScheduler.cpp
 @@ -52,6 +52,7 @@
@@ -18,7 +18,7 @@ index 324ba1fc8cb8..208a723d8b7e 100644
  #include "clang/Frontend/CompilerInvocation.h"
  #include "clang/Tooling/CompilationDatabase.h"
  #include "llvm/ADT/FunctionExtras.h"
-@@ -881,10 +883,30 @@ void ASTWorker::update(ParseInputs Inputs, WantDiagnostics WantDiags,
+@@ -881,10 +883,21 @@ void ASTWorker::update(ParseInputs Inputs, WantDiagnostics WantDiags,
          }
        }
      }
@@ -29,16 +29,7 @@ index 324ba1fc8cb8..208a723d8b7e 100644
 +      if (!Inputs.CompileCommand.CommandLine.empty()) {
 +        auto PosArg =
 +            std::find(Cmd->CommandLine.begin(), Cmd->CommandLine.end(), "--");
-+        SmallVector<const char *, 16> TmpArgv;
-+        for (const std::string &S : Cmd->CommandLine)
-+          TmpArgv.push_back(S.c_str());
-+        auto ClangCLMode =
-+            !TmpArgv.empty() &&
-+            driver::IsClangCL(driver::getDriverMode(
-+                TmpArgv.front(), llvm::ArrayRef(TmpArgv).slice(1)));
 +        for (auto &&Arg : Inputs.CompileCommand.CommandLine) {
-+          if (ClangCLMode)
-+            Arg.replace(0, 8, "/FI"); // 8 - strlen("-include")
 +          if (PosArg == Cmd->CommandLine.end())
 +            Cmd->CommandLine.push_back(std::move(Arg));
 +          else
@@ -52,7 +43,7 @@ index 324ba1fc8cb8..208a723d8b7e 100644
  
      bool InputsAreTheSame =
          std::tie(FileInputs.CompileCommand, FileInputs.Contents) ==
-@@ -1684,6 +1706,31 @@ bool TUScheduler::update(PathRef File, ParseInputs Inputs,
+@@ -1684,6 +1697,35 @@ bool TUScheduler::update(PathRef File, ParseInputs Inputs,
      ContentChanged = true;
      FD->Contents = Inputs.Contents;
    }
@@ -70,9 +61,13 @@ index 324ba1fc8cb8..208a723d8b7e 100644
 +      if (FD && FD->Worker->isASTCached()) {
 +        if (auto AST = IdleASTs->take(FD->Worker.lock().get())) {
 +          auto &Headers = AST.value()->getIncludeStructure().MainFileIncludes;
++          Inputs.CompileCommand.CommandLine.reserve(Headers.size());
 +          for (const auto &H : Headers) {
-+            if (H.Resolved == File)
++            if (H.Resolved == File) {
++              if (isSystem(H.FileKind))
++                Inputs.CompileCommand.CommandLine.clear();
 +              break;
++            }
 +            auto CmdLine = "-include" + H.Resolved;
 +            Inputs.CompileCommand.CommandLine.push_back(std::move(CmdLine));
 +          }
