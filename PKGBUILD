@@ -2,7 +2,7 @@
 # Maintainer: Chinmay Dalal <w5vwg64uy@relay.firefox.com>
 pkgname=pyonji-git
 pkgver=r75.d50435d
-pkgrel=1
+pkgrel=2
 pkgdesc=" An easy-to-use tool to send e-mail patches "
 arch=('x86_64')
 url="https://sr.ht/~emersion/${pkgname%-git}"
@@ -11,6 +11,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::"git+https://git.sr.ht/~emersion/${pkgname%-git}")
 sha256sums=('SKIP')
+license=('GPL3')
 
 pkgver() {
     cd "$pkgname"
