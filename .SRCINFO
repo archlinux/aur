@@ -1,0 +1,20 @@
+pkgbase = python-linkedin-messaging
+	pkgdesc = An unofficial API for interacting with LinkedIn Messaging
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/beeper/linkedin-messaging-api
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	makedepends = python-pytest-runner
+	depends = python
+	depends = python-aiohttp
+	depends = python-beautifulsoup4
+	depends = python-dataclasses-json
+	provides = linkedin_messaging
+	source = python-linkedin-messaging-0.6.0.tar.gz::https://github.com/beeper/linkedin-messaging-api/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 72ac0fd9d1b392eb2a84369bbe92b83ee531e41fb5f66a6b6724fe33972a43e1
+
+pkgname = python-linkedin-messaging
