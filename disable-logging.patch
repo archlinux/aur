@@ -1,0 +1,12 @@
+--- base/logging.h	2023-11-17 17:55:03.437368494 +0100
++++ base/logging.h	2023-11-17 17:56:23.320314373 +0100
+@@ -440,8 +440,7 @@
+ // As special cases, we can assume that LOG_IS_ON(FATAL) always holds. Also,
+ // LOG_IS_ON(DFATAL) always holds in debug mode. In particular, CHECK()s will
+ // always fire if they fail.
+-#define LOG_IS_ON(severity) \
+-  (::logging::ShouldCreateLogMessage(::logging::LOGGING_##severity))
++#define LOG_IS_ON(severity) false
+
+ #if !BUILDFLAG(USE_RUNTIME_VLOG)
+

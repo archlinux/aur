@@ -5,7 +5,7 @@
 
 pkgname=cronet
 pkgver=119.0.6045.159
-pkgrel=1
+pkgrel=2
 _manual_clone=0
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
@@ -17,10 +17,12 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         REVERT-disable-autoupgrading-debug-info.patch
+        disable-logging.patch
         fix-undeclared-isnan.patch)
 sha256sums=('d0d842712805ac81582dc0fecd4396fbf4380713df2fb50ceeb853dd38d1538f'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            SKIP
             SKIP)
 
 if (( _manual_clone )); then
@@ -142,6 +144,9 @@ prepare() {
   # Fixes the build crashing with the following error:
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
   patch -p0 -i ../fix-undeclared-isnan.patch
+
+  # Disables logging as it's unconfigurable, which is undesired in a library
+  patch -p0 -i ../disable-logging.patch
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
