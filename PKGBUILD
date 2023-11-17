@@ -13,17 +13,15 @@ replaces=('lmctl')
 arch=('x86_64')
 backup=(etc/udev/lomoco_mouse.conf)
 source=(http://http.debian.net/debian/pool/main/l/lomoco/lomoco_$pkgver.0.orig.tar.gz
-        http://http.debian.net/debian/pool/main/l/lomoco/lomoco_$pkgver.0-1.debian.tar.gz
+        http://http.debian.net/debian/pool/main/l/lomoco/lomoco_$pkgver.0-4.debian.tar.xz
         "lomoco_mxair.patch::https://bugs.archlinux.org/task/36657?getfile=10920"
         lomoco_mouse.conf
-        lomoco.sh
-        0001_stropts.patch)
+        lomoco.sh)
 md5sums=('f5197d0a3ee81229c3eecc1e03f7b08d'
-         'b616b29dfe183b74f43072c22a470b8b'
+         'ac869dbf7792ef65df3849ab6f130ba1'
          'd0390dfcadae6e54a4af3e6227d24201'
          '182b10a7e4a1828a93c1d55ef7f81b97'
-         'bc92f661641265b33b27895ef24028fd'
-         'c1b46fc882b4aa5b5d6d0a86b433ca19')
+         'bc92f661641265b33b27895ef24028fd')
 
 prepare() {
   cd "$srcdir"/${pkgname}-${pkgver}
@@ -31,7 +29,6 @@ prepare() {
     patch -p1 <../debian/patches/$i
   done
   patch -p0 <"$srcdir"/lomoco_mxair.patch
-  patch -p1 <"$srcdir"/0001_stropts.patch
 }
 
 build() {
