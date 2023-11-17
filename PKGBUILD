@@ -3,7 +3,7 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
-pkgver=2.18.3
+pkgver=2.19.3
 _upstr_pkgrel=1
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
@@ -54,7 +54,7 @@ build() {
                        -gencode=arch=compute_90,code=compute_90"
 
   export CXXFLAGS+=" -ffat-lto-objects"
-  make CUDA_HOME=/opt/cuda PREFIX=/usr src.build
+  make CXX=/opt/cuda/bin/g++ CUDA_HOME=/opt/cuda PREFIX=/usr src.build
 }
 
 package() {
