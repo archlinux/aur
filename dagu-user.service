@@ -11,3 +11,6 @@ UMask=0027
 Restart=on-failure
 RestartPreventExitStatus=2
 ExecStart=/usr/bin/dagu server
+
+[Install]
+WantedBy=multi-user.target
