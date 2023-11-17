@@ -1,33 +1,19 @@
 pkgbase = figma-linux-git
-	pkgdesc = An unofficial Electron-based Figma desktop app,the first interface design tool based in the browser, making it easier for teams to create software.
-	pkgver = 0.11.0.r45.gc186d4b
-	pkgrel = 1
+	pkgver = 0.11.0.r49.gf9529ed
+	pkgrel = 2
+	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux
 	url = https://github.com/Figma-Linux/figma-linux
 	arch = any
 	license = GPL2
-	makedepends = gendesk
+	depends = hicolor-icon-theme
 	makedepends = git
 	makedepends = nodejs>=18.11.18
 	makedepends = npm>=9.8.1
-	depends = electron27
-	depends = gtk3
-	depends = gdk-pixbuf2
-	depends = libxext
-	depends = libx11
-	depends = hicolor-icon-theme
-	depends = pango
-	depends = nss
-	depends = nspr
-	depends = sqlite
-	depends = at-spi2-core
-	depends = systemd-libs
-	depends = libdbusmenu-glib
-	depends = libdbusmenu-gtk3
-	provides = figma-linux=0.11.0.r45.gc186d4b
+	makedepends = xdg-utils
 	conflicts = figma-linux
-	source = figma-linux::git+https://github.com/Figma-Linux/figma-linux.git
-	source = figma-linux.sh
+	conflicts = figma-linux-bin
+	conflicts = figma-linux-git-dev
+	provides = figma-linux
+	source = figma-linux::git+https://github.com/Figma-Linux/figma-linux.git#tag=v0.11.0
 	sha256sums = SKIP
-	sha256sums = 27b40ca59adaecf65b181228a1afb0c829c34659c62301e823ec6ba6926aa293
-
 pkgname = figma-linux-git
