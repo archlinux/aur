@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /opt/slic3r
-/usr/bin/perl slic3r.pl
+APPDIR=/opt/slic3r
+cd "${APPDIR}"
+perl slic3r.pl
