@@ -1,13 +1,13 @@
---- pokerth-1.1.2-rc/pokerth_game.pro   2023-07-04 22:43:50.069300036 +0200
-+++ pokerth-1.1.2-rc/pokerth_game.pro   2023-07-04 23:39:38.849095436 +0200
-@@ -524,7 +524,9 @@
-        kFreeBSD = $$find(UNAME, "kFreeBSD")
-        LIBS += -lsqlite3 \
-                -ltinyxml \
--               -lprotobuf
-+               -lprotobuf \
-+               -labsl_log_internal_check_op \
-+               -labsl_log_internal_message
-        LIBS += $$BOOST_LIBS
-        LIBS += -lSDL \
-                -lSDL_mixer \
+--- pokerth_game.pro	2017-08-16 14:24:03.000000000 +0200
++++ ../pokerth_game.pro	2023-11-17 21:28:33.052656477 +0100
+@@ -368,7 +368,9 @@
+ 			-lnettle \
+ 			-lidn \
+ 			-lintl \
+-			-lprotobuf
++			-lprotobuf \
++			-labsl_log_internal_check_op \
++			-labsl_log_internal_message
+ 	debug:LIBPATH += debug/lib
+ 	release:LIBPATH += release/lib
+ 			LIBS += -lsqlite3
