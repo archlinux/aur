@@ -5,21 +5,18 @@ pkgname=${_pkgname}-bin
 pkgver=1.20.0
 pkgrel=1
 pkgdesc="A rule-based tunnel in Go. Provide you with powerful and fast network functions. Convenient for you to witness the larger network world"
-arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://github.com/DryPeng/clashT'
 license=('GPL3')
 depends=()
 optdepends=('clash-geoip: A GeoLite2 data created by MaxMind')
-provides=(${_pkgname})
+provides=(${_pkgname} 'clash')
 conflicts=(${_pkgname} ${_pkgname}-git 'clash')
-options=(!strip)
 source=(
     "clash.service"
 )
 source_i686=("${pkgname}-$CARCH-${pkgver}.gz::${url}/releases/download/v${pkgver}/clashT-linux-386-v${pkgver}.gz")
 source_x86_64=("${pkgname}-$CARCH-${pkgver}.gz::${url}/releases/download/v${pkgver}/clashT-linux-amd64-v${pkgver}.gz")
-source_arm=("${pkgname}-$CARCH-${pkgver}.gz::${url}/releases/download/v${pkgver}/clashT-linux-armv5-v${pkgver}.gz")
-source_armv6h=("${pkgname}-$CARCH-${pkgver}.gz::${url}/releases/download/v${pkgver}/clashT-linux-armv6-v${pkgver}.gz")
 source_armv7h=("${pkgname}-$CARCH-${pkgver}.gz::${url}/releases/download/v${pkgver}/clashT-linux-armv7-v${pkgver}.gz")
 source_aarch64=("${pkgname}-$CARCH-${pkgver}.gz::${url}/releases/download/v${pkgver}/clashT-linux-arm64-v${pkgver}.gz")
 sha256sums=(
@@ -27,13 +24,11 @@ sha256sums=(
 )
 sha256sums_i686=('SKIP')
 sha256sums_x86_64=('SKIP')
-sha256sums_arm=('SKIP')
-sha256sums_armv6h=('SKIP')
 sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 package() {
     cd "${srcdir}"
-    install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
+    install -Dm755 "${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
     install -Dm644 "clash.service" "${pkgdir}/usr/lib/systemd/system/clash.service"
 }
