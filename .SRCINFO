@@ -7,6 +7,6 @@ pkgbase = fswm
 	license = MIT
 	depends = xcb-util-keysyms
 	source = https://github.com/pbizopoulos/fswm/tarball/main
-	sha256sums = d9af21508113038827352f1af9d4b22129aac28defe6f19520c7dbce6ea4662e
+	sha256sums = 4782448554672608a112dc9e14c8fb653dc95bb54a9b88e423c9cc9a0aa5e5d9
 
 pkgname = fswm
