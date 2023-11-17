@@ -1,7 +1,7 @@
 ## Maintainer: Speykious <speykious@gmail.com>
 
 pkgname=figma-linux-bin
-_pkgver=`cat current_version`
+_pkgver="0.10.0"
 _appimage="figma-linux_${_pkgver}_linux_x86_64.AppImage"
 pkgver=`echo "$_pkgver" | tr '\\:/\- ' '_'`
 pkgrel=2
