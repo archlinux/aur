@@ -2,7 +2,7 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.6.8.r0.g370bbcf
+pkgver=2.7.0.r0.g81d8ccb
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
 arch=('x86_64')
@@ -22,6 +22,11 @@ depends=(
     'libsoup'
     'bzip2'
     'hicolor-icon-theme'
+    'tessdata'
+    'libxrandr'
+    'tesseract'
+    'xdotool'
+    'libayatana-appindicator'
 )
 makedepends=(
     'nodejs>=18.0.0'
@@ -39,14 +44,13 @@ pkgver() {
 build() {
     gendesk -q -f -n --pkgname "${_pkgname}-translation-git" --categories "Office;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname//-g/.g}"
+    sed "s|icon.ico|icon.png|g" -i src-tauri/tauri.linux.conf.json
     pnpm install --force
     pnpm tauri build -b deb
+    _pkgver=`cat package.json | grep version | awk '{print $2}' | tr -d '"' | tr -d ","`
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_2.6.8_amd64/data/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_${_pkgver}_amd64/data/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 32x32 128x128 256x256@2;do
-        install -Dm644 "${srcdir}/${pkgname//-g/.g}/src-tauri/target/release/bundle/deb/${_pkgname}_2.6.8_amd64/data/usr/share/icons/hicolor/256x256@2/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-git}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname//-g/.g}/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 }
