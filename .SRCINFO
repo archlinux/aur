@@ -1,7 +1,7 @@
 pkgbase = dagu-bin
 	pkgdesc = Cron alternative with a Web UI
 	pkgver = 1.12.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dagu-dev/dagu
 	arch = x86_64
 	license = GPLv3

@@ -3,7 +3,7 @@
 _pkgname='dagu'
 pkgname='dagu-bin'
 pkgver=1.12.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Cron alternative with a Web UI'
 arch=('x86_64')
 url='https://github.com/dagu-dev/dagu'
