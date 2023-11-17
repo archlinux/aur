@@ -1,7 +1,7 @@
 pkgbase = thorium-browser-sse3-bin
 	pkgdesc = Chromium fork focused on high performance and security
 	pkgver = 117.0.5938.157
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Alex313031/Thorium-SSE3
 	install = thorium-browser-sse3.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = thorium-browser-sse3-bin
 	source = https://github.com/Alex313031/Thorium-SSE3/releases/download/M117.0.5938.157/thorium-browser_117.0.5938.157_SSE3.deb
 	source = thorium-browser-sse3.sh
 	sha256sums = SKIP
-	sha256sums = 114378692b4e2d577bb4d3b1d083b80a504cb31622be08164f7e06e85c5bcd8a
+	sha256sums = 708b33eed479ec65d74e779a8c37a0cd88b3f024518103bc32a20f76270c92be
 
 pkgname = thorium-browser-sse3-bin
 	depends = alsa-lib
