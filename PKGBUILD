@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-git
-pkgver=v2023.11.2.r3.g64cffd2d6
+pkgver=v2023.11.2.r4.g2231b9ca1
 pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
@@ -30,7 +30,6 @@ source=(
   "iceshrimp.tmpfiles"
   "iceshrimp.install"
   "iceshrimp.hook"
-  "0001-yarnrc.patch"
 )
 
 sha512sums=('SKIP'
@@ -38,19 +37,11 @@ sha512sums=('SKIP'
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
             '2c148ad7606b0ffc40526d682e2b419de46e4b3d6258240e5664774e41c872747daa7aaa39a58b63c590dba0fb2259cbed06746bffb6da78d25eb8b23f32e512'
             '36980c4f5a6d25d4f522ccd64aaf38c3d704c29a25b834b14135e2895f55318496fbaf269e589e4eabbf5495265682d6f58b966ce8b70f52190dccf7a18f44cc'
-            'fab724bc864e74b1eab21941171beaa70b1c17b7719bb9a63aea1ad0f0c3e84e9b73260ad93bddd2e2f23ed6464a4d156b1659b4a7c0a032c1a31ff3e4113f7d'
-            '4b9a26028bba186fa5a9fd977dbe416a6f8351f2fd04902e0f4ccf1ffb44b9ea0fa957345c5f98f9cc58453cd40ab1f95253e416564f40310868a8c654178ae7')
+            'fab724bc864e74b1eab21941171beaa70b1c17b7719bb9a63aea1ad0f0c3e84e9b73260ad93bddd2e2f23ed6464a4d156b1659b4a7c0a032c1a31ff3e4113f7d')
 
 pkgver() {
   cd "${srcdir}/iceshrimp"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/iceshrimp"
-
-  # Remove packages for architectures other than current
-  git apply "${srcdir}/0001-yarnrc.patch"
 }
 
 build() {
