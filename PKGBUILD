@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname="thorium-reader"
 pkgname="${_pkgname}-git"
-pkgver=2.3.0.r22.gb2b41b6c
+pkgver=2.3.0.r29.gec61bea8
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('any')
@@ -14,7 +14,6 @@ provides=(
     "${_pkgname}"
 )
 depends=(
-    'bash'
     'electron25'
 )
 makedepends=(
