@@ -8,18 +8,19 @@ arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CCPL')
 depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
-makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'glib2' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'appimagetool')
+makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'glib2' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'appimagetool' 'jdk-openjdk')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-conflicts=(${pkgname} ${pkgname}-bin)
+provides=('hiddify')
+conflicts=(${pkgname}-git ${pkgname}-bin)
 options=(!strip)
 source=(
     "https://github.com/hiddify/hiddify-next/archive/refs/tags/v${pkgver}.zip"
     "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz"
 )
 sha256sums=(
-    "eabd252078f966855573047904d80766f3c229f0d54d6eb39255d5047c5cfe44"
+    "692bd1c4381da4db7e2b4ac6b89b9a7f1050bc5a48ccd018122b2b6a2b6fd4ad"
     "b6bc6f93423488c67110e0fe56523cd2260f3a4c379ed015cd1c7fab66362739"
 )
 _install_path="/opt/$pkgname"
@@ -54,16 +55,15 @@ build() {
     cd tmp_out
     ./hiddify-linux-x64.AppImage --appimage-extract > /dev/null
     sed -i 's/Exec=/Exec=env /' "./squashfs-root/hiddify.desktop"
-    sed -i 's/hiddify/hiddify.next/g' "./squashfs-root/hiddify.desktop"
 }
 
 
 package() {
-    install -Dm755 "${srcdir}/hiddify-next-${pkgver}/tmp_out/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/${pkgname}.AppImage"
-    install -Dm644 "${srcdir}/hiddify-next-${pkgver}/tmp_out/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+    install -Dm755 "${srcdir}/hiddify-next-${pkgver}/tmp_out/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/hiddify.AppImage"
+    install -Dm644 "${srcdir}/hiddify-next-${pkgver}/tmp_out/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/hiddify.desktop"
     for _icons in 128x128 256x256;do
-        install -Dm644 "${srcdir}/hiddify-next-${pkgver}/tmp_out/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+        install -Dm644 "${srcdir}/hiddify-next-${pkgver}/tmp_out/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
     done
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/${pkgname}/hiddify.AppImage" "${pkgdir}/usr/bin/hiddify"
 }
