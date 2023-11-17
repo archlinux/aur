@@ -1,7 +1,7 @@
 pkgbase = mercury-browser-bin
 	pkgdesc = Compiler optimized, private Firefox fork
 	pkgver = 115.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Alex313031/Mercury
 	install = mercury-browser.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mercury-browser-bin
 	source = mercury-browser_115.4.0_amd64.deb::https://github.com/Alex313031/Mercury/releases/download/v.115.4.0/mercury-browser_115.4.0_amd64.deb
 	source = mercury-browser.sh
 	sha256sums = SKIP
-	sha256sums = f76a772f2c377c319c4e8bd737d219891b0c439bd8e07efd96584021c2e74bbb
+	sha256sums = 7565aa160be433bcc030c2fc14627ce12c91fbb953d8ba8af8185ccd356022f5
 
 pkgname = mercury-browser-bin
 	depends = dbus-glib

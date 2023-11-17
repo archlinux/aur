@@ -18,7 +18,7 @@ fi
 _pkgname="mercury-browser"
 pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
 pkgver=115.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
 license=('MPL' 'GPL' 'LGPL')
@@ -50,7 +50,7 @@ _main_package() {
   )
   sha256sums=(
     'SKIP'
-    'f76a772f2c377c319c4e8bd737d219891b0c439bd8e07efd96584021c2e74bbb'
+    '7565aa160be433bcc030c2fc14627ce12c91fbb953d8ba8af8185ccd356022f5'
   )
 }
 
