@@ -1,29 +1,36 @@
-# Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
-
-_app_name=restfox
-pkgname="${_app_name}-bin"
-pkgver=0.1.0
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
+pkgname=restfox-bin
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Offline-first web HTTP client"
 arch=('x86_64')
 url='https://restfox.dev'
+_ghurl="https://github.com/flawiddsouza/Restfox"
 license=('MIT')
-provides=('restfox')
-source=("${pkgname}-${pkgver}.deb::https://github.com/flawiddsouza/Restfox/releases/download/v${pkgver}/${_app_name}_${pkgver}_amd64.deb")
-sha512sums=('00d7d8cd546a776f483b99b4b10eee5efc9486b9ed68708a1828eb22fcca2f1db5ec4c0ccc3ea71d3d09beb005becd426310bb4b6a9c0125137d4f53744bd43d')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'electron27'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/flawiddsouza/Restfox/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('e0d6a8d37b15f83eafc41c52b52ac499f403292f716e972039ac61366e67d723'
+            '82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16'
+            'c580ba8a043247ab58e3b4424d9b7fd2455c85fd51ac6f1a835b94445a064554')
 
-prepare() {
+build() {
     tar xf "${srcdir}"/data.tar.zst
+    sed "s| %U||g;s|Utility|Utility;Development|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
-
 package() {
-    local opt_dir="/opt/Restfox"
-
-    install -d "${pkgdir}${opt_dir}" "${pkgdir}/usr/share/" "${pkgdir}/usr/bin/"
-
-    cp -ar usr/{bin,lib} "${pkgdir}${opt_dir}"
-    rm -rf usr/share/lintian
-    cp -ar usr/share "${pkgdir}/usr/"
-
-    ln -s "${opt_dir}/bin/${_app_name}" "${pkgdir}/usr/bin/${_app_name}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
