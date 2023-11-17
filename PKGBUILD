@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kubectl-gke-stable-bin
 pkgver=v1.24.17
-pkgrel=3
+pkgrel=4
 pkgdesc='Kubernetes.io client binary, compatible with the GKE version from the stable channel'
 url='https://github.com/kubernetes/kubectl'
 arch=(i686 x86_64 armv5 armv6h armv7h aarch64)
@@ -26,5 +26,6 @@ sha256sums_armv7h=(870f60d318dfd845da9829848bda35a16f3c9a2127813e0f18dd59ec28401
 sha256sums_aarch64=(66885bda3a202546778c77f0b66dcf7f576b5a49ff9456acf61329da784a602d)
 package () 
 { 
+    set -eo pipefail;
     install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/kubectl"
 }
