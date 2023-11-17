@@ -14,7 +14,6 @@ optdepends=(
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname}-git ${_pkgname})
-options=(!strip)
 source=(
     "https://github.com/net-breaker/sing-land/releases/download/${pkgver//_/-}/singland-alpha-linux-amd64.tar.gz"
     "singland.desktop"

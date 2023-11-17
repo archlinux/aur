@@ -15,7 +15,6 @@ pkgbase = singland-bin
 	provides = singland
 	conflicts = singland-git
 	conflicts = singland
-	options = !strip
 	source = https://github.com/net-breaker/sing-land/releases/download/pre-alpha-4/singland-alpha-linux-amd64.tar.gz
 	source = singland.desktop
 	source = https://raw.githubusercontent.com/net-breaker/sing-land/main/LICENSE
