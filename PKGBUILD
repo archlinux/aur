@@ -1,22 +1,47 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=copytranslator-bin
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Foreign language reading and translation assistant based on copy and translate."
 arch=('x86_64')
 url="https://copytranslator.gitee.io/"
-_githuburl="https://github.com/CopyTranslator/CopyTranslator"
+_ghurl="https://github.com/CopyTranslator/CopyTranslator"
 license=('GPL2')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('libxcb' 'hicolor-icon-theme' 'libxcomposite' 'libxdamage' 'libxcursor' 'at-spi2-core' 'cairo' 'libxrender' 'libxss' 'alsa-lib' \
-    'dbus' 'libcups' 'gdk-pixbuf2' 'libxi' 'libxtst' 'libx11' 'expat' 'libxfixes' 'pango' 'nss' 'glibc' 'util-linux-libs' 'glib2' 'gtk3' \
-    'libxrandr' 'gcc-libs' 'libxext' 'nspr')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+depends=(
+    'libxcb'
+    'hicolor-icon-theme'
+    'libxcomposite'
+    'libxdamage'
+    'libxcursor'
+    'at-spi2-core'
+    'cairo'
+    'libxrender'
+    'libxss'
+    'alsa-lib'
+    'libcups'
+    'gdk-pixbuf2'
+    'libxi'
+    'libxtst'
+    'libx11'
+    'expat'
+    'libxfixes'
+    'pango'
+    'nss'
+    'util-linux-libs'
+    'gtk3'
+    'libxrandr'
+    'libxext'
+    'nspr'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+)
 sha256sums=('426f706acc80610731116b2317540fd10e844f597ca0489c83934f8ac3c0527a')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/copytranslator/copytranslator|${pkgname%-bin} --no-sandbox|g;s|/opt/${pkgname%-bin}/resources/linux-icon/icon.png|${pkgname%-bin}|g" \
+    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|/opt/${pkgname%-bin}/resources/linux-icon/icon.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }   
 package() {
