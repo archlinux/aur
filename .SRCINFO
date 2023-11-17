@@ -25,13 +25,11 @@ pkgbase = soh-git
 	source = git+https://github.com/HarbourMasters/OTRExporter.git
 	source = git+https://github.com/HarbourMasters/ZAPDTR.git
 	source = soh.desktop
-	source = OTRExporter-fix-paths-period-split.patch::https://github.com/HarbourMasters/OTRExporter/pull/12.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2
-	sha256sums = 388738f3d48f4bdbe144a55cba91fd77383dcb066f190d2c6f221f3bc4a69903
 
 pkgname = soh-git
 	pkgdesc = An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch (git)

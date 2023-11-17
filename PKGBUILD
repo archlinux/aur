@@ -15,14 +15,12 @@ source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
         "git+https://github.com/HarbourMasters/OTRExporter.git"
         "git+https://github.com/HarbourMasters/ZAPDTR.git"
-        "soh.desktop"
-        "OTRExporter-fix-paths-period-split.patch::https://github.com/HarbourMasters/OTRExporter/pull/12.patch")
+        "soh.desktop")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
-            '388738f3d48f4bdbe144a55cba91fd77383dcb066f190d2c6f221f3bc4a69903')
+            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
@@ -50,10 +48,6 @@ prepare() {
   git config submodule.OTRExporter.url "$srcdir/OTRExporter"
   git config submodule.ZAPDTR.url "$srcdir/ZAPDTR"
   git -c protocol.file.allow=always submodule update
-
-  cd OTRExporter
-  patch -Np1 -i ../../OTRExporter-fix-paths-period-split.patch
-  cd ..
 
   if [ "$__generate_headers" = 1 ]; then
     # check for any roms in the directory where PKGBUILD resides
