@@ -1,14 +1,14 @@
 # Maintainer: Nathan Campolina <spectronp@proton.me>
 pkgname=version
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="What version do I have of ___?"
 arch=('any')
 url="https://github.com/bit101/version"
 license=('MIT')
 depends=('bash')
-sha256sums=('c3f9935aa2f1f4febddaa2e3fcbb639819e2591233a59d8ce805cc3f550f00ed')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bit101/version/archive/v$pkgver.tar.gz")
+sha256sums=('a924ea88998bca6de18f4a8bb8bc26494e2d5e8f045ddbb1c4ed8385816014d3')
 
 package() {
   cd "$pkgname-$pkgver"
