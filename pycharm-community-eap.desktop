@@ -2,10 +2,10 @@
 Version=1.1
 Type=Application
 Name=PyCharm Community EAP
-Exec=/opt/pycharm-community-eap/bin/pycharm.sh %f
 Icon=pycharm-community-eap
+Exec=/opt/pycharm-community-eap/bin/pycharm.sh %f
 Comment=Powerful Python and Django IDE, Early Access Program (EAP) build, Community Edition
 Categories=Development;IDE;
 Terminal=false
-StartupNotify=true
 StartupWMClass=jetbrains-pycharm-ce
+StartupNotify=true
