@@ -12,10 +12,11 @@ arch=(any)
 url=https://passwordstore.org
 license=(GPL2)
 
-provides=(pass)
+provides=(pass passmenu)
 conflicts=(pass)
 depends=(bash gnupg tree)
 makedepends=(git)
+checkdepends=(git)
 optdepends=(
     'dmenu: for passmenu'
     'dmenu-wayland: for passmenu in Wayland'
