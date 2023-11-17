@@ -1,8 +1,21 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index f7e01f4ccf32..9d2760b42d87 100644
+index f7e01f4ccf32..9f303369570e 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1425,6 +1425,44 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -185,8 +185,11 @@ HoverInfo::PrintedType printType(QualType QT, ASTContext &ASTCtx,
+   if (!QT.isNull() && Cfg.Hover.ShowAKA) {
+     bool ShouldAKA = false;
+     QualType DesugaredTy = clang::desugarForDiagnostic(ASTCtx, QT, ShouldAKA);
+-    if (ShouldAKA)
++    if (ShouldAKA) {
+       Result.AKA = DesugaredTy.getAsString(PP);
++      if (Result.Type.length() > 16 && Result.AKA->length() < Result.Type.length())
++        std::swap(*Result.AKA, Result.Type);
++    }
+   }
+   return Result;
+ }
+@@ -1425,6 +1428,49 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
@@ -25,10 +38,15 @@ index f7e01f4ccf32..9d2760b42d87 100644
 +      continue;
 +    }
 +
++    std::size_t From = 0;
++    while ((*Param.Name)[From] == '_')
++      ++From;
++    auto Name = llvm::StringRef(*Param.Name).substr(From);
++
 +    if (Param.Default)
-+      Paragraph.appendCode(*Param.Name + " = " + *Param.Default);
++      Paragraph.appendCode(Name.str() + " = " + *Param.Default);
 +    else
-+      Paragraph.appendCode(*Param.Name);
++      Paragraph.appendCode(Name);
 +    Paragraph.appendText(": ");
 +
 +    auto *ParamDoc = std::find_if(
@@ -47,7 +65,7 @@ index f7e01f4ccf32..9d2760b42d87 100644
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1460,6 +1498,9 @@ markup::Document HoverInfo::present() const {
+@@ -1460,6 +1506,9 @@ markup::Document HoverInfo::present() const {
    if (!Documentation.Brief.empty())
      parseDocumentation(Documentation.Brief, Output);
  
@@ -57,17 +75,25 @@ index f7e01f4ccf32..9d2760b42d87 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1474,38 +1515,11 @@ markup::Document HoverInfo::present() const {
+@@ -1468,44 +1517,20 @@ markup::Document HoverInfo::present() const {
+     // Parameters:
+     // - `bool param1`
+     // - `int param2 = 5`
+-    auto &P = Output.addParagraph().appendText("→ ").appendCode(
+-        llvm::to_string(*ReturnType));
++    auto &P =
++        Output.addParagraph().appendText("→ ").appendCode(ReturnType->Type);
+ 
      if (!Documentation.Returns.empty())
        P.appendText(": ").appendText(Documentation.Returns);
-   }
+-  }
 -  if (Parameters && !Parameters->empty()) {
 -    Output.addParagraph().appendText("Parameters: ");
 -    markup::BulletList &L = Output.addBulletList();
 -
 -    llvm::SmallVector<ParameterDocumentationOwned> ParamDocs =
 -        Documentation.Parameters;
--
+ 
 -    for (const auto &Param : *Parameters) {
 -      auto &Paragraph = L.addItem().addParagraph();
 -      Paragraph.appendCode(llvm::to_string(Param));
@@ -83,6 +109,9 @@ index f7e01f4ccf32..9d2760b42d87 100644
 -        }
 -      }
 -    }
++    if (ReturnType->AKA)
++      P.appendCode(" (aka " + *ReturnType->AKA + ")");
++  }
 +  presentParams("Parameters", Parameters, Documentation.Parameters, Output);
  
 -    // We erased all parameters that matched, but some may still be left,
@@ -100,7 +129,7 @@ index f7e01f4ccf32..9d2760b42d87 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1577,6 +1591,39 @@ markup::Document HoverInfo::present() const {
+@@ -1577,6 +1602,39 @@ markup::Document HoverInfo::present() const {
        parseDocumentation(Note, L.addItem());
    }
  
