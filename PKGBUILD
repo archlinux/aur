@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=cloudflare-dynamic-dns
 pkgver=2.3.2
-pkgrel=9
+pkgrel=10
 pkgdesc='Updates AAAA records at Cloudflare according to the current IPv6 address'
 url='https://github.com/zebradil/cloudflare-dynamic-dns'
 arch=(any)
@@ -36,15 +36,15 @@ check ()
 package () 
 { 
     cd "$pkgname-$pkgver" || exit 1;
-    BIN=$pkgname;
-    install -Dm755 build/$BIN -t "$pkgdir/usr/bin";
+    BIN="build/$pkgname";
+    install -Dm755 "$BIN" -t "$pkgdir/usr/bin";
     install -Dm644 systemd/* -t "$pkgdir/usr/lib/systemd/system";
     install -m700 -d "$pkgdir/etc/$pkgname/config.d";
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
     mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
     mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
-    ./$BIN completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$BIN";
-    ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
-    ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
+    "./$BIN" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname";
+    "./$BIN" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish";
+    "./$BIN" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
 sha256sums=('2282185f9e9279425e1cedc3ea4fc271bfdf178f5f07154ea1f7123e1ce251a4')
