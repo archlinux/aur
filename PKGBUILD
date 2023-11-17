@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9d1d28f535b3873f8e094c0335f7ec3dcd3e4f0171d6311dbcec0036bdff999a'
-            '4e37b4760072adde3a5d6e65bf07144b906e19d6a5f670e1e95f2c2b475dbaef')
+            '0d831c86948761209c2a110c4481ecebddb952ba04a686346a6fc0449f18e98e')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     find "${srcdir}" -type d -exec chmod 755 {} \;
