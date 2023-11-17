@@ -1,0 +1,17 @@
+pkgbase = tlapbot-bin
+	pkgdesc = Owncast bot written in Python+Flask, providing channel points and channel point redeems for your owncast stream.
+	pkgver = rde9ab909380391fec12063082a836a728f897c11
+	pkgrel = 1
+	url = https://tlapbot.chimmie.k.vu
+	arch = x86_64
+	license = GPL3
+	license = no-license
+	makedepends = pacman
+	depends = openssl
+	depends = glibc
+	provides = tlapbot
+	conflicts = tlapbot
+	source = https://tlapbot.chimmie.k.vu/dists/ubuntu/tlapbot
+	sha256sums = SKIP
+
+pkgname = tlapbot-bin
