@@ -13,7 +13,6 @@ optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 conflicts=(${pkgname}-git ${pkgname}-bin)
-options=(!strip)
 source=(
     "https://github.com/net-breaker/sing-land/archive/refs/tags/${pkgver//_/-}.zip"
     "https://github.com/SagerNet/sing-box/releases/download/v1.6.0/sing-box-1.6.0-linux-amd64.tar.gz"
