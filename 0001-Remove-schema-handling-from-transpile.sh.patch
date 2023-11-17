@@ -1,17 +1,17 @@
-From 3f8b19139bf3f13b4285fd9d949cb5460a0909df Mon Sep 17 00:00:00 2001
+From 43fb894ed6bc16667dbc4a7bbe09f3304dd17de6 Mon Sep 17 00:00:00 2001
 From: Carl George <carl@george.computer>
 Date: Fri, 25 Jun 2021 22:26:50 -0500
-Subject: [PATCH] Remove schema handling from transpile.sh
+Subject: [PATCH 1/2] Remove schema handling from transpile.sh
 
 ---
  scripts/transpile.sh | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/scripts/transpile.sh b/scripts/transpile.sh
-index e619a8c..8977c29 100755
+index 7ad27aa..c861498 100755
 --- a/scripts/transpile.sh
 +++ b/scripts/transpile.sh
-@@ -15,8 +15,6 @@ transpile() {
+@@ -16,8 +16,6 @@ transpile() {
  
  rm -rf _build
  
@@ -20,7 +20,7 @@ index e619a8c..8977c29 100755
  # Transpile to JavaScript
  
  for proj in ${PROJECTS}; do
-@@ -30,7 +28,7 @@ wait
+@@ -31,7 +29,7 @@ wait
  
  # Convert JS to GJS-compatible scripts
  
@@ -30,5 +30,5 @@ index e619a8c..8977c29 100755
  for src in $(find target -name '*.js'); do
      dest=$(echo "$src" | sed s#target#_build#g)
 -- 
-2.31.1
+2.41.0
 

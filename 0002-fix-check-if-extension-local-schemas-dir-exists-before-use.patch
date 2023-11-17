@@ -1,0 +1,38 @@
+From 337f865f0d26ce85f2bdf22768abb303ee41673c Mon Sep 17 00:00:00 2001
+From: Lleyton Gray <lleyton@fyralabs.com>
+Date: Mon, 13 Nov 2023 17:36:38 -0800
+Subject: [PATCH 2/2] fix: check if extension local schemas dir exists before
+ use
+
+(cherry picked from commit 34f6b4402b487ebb57c040d1096a9a7db1b230e3)
+---
+ src/settings.ts | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/src/settings.ts b/src/settings.ts
+index 8287a46..5e363ab 100644
+--- a/src/settings.ts
++++ b/src/settings.ts
+@@ -32,15 +32,11 @@ function settings_new_id(schema_id: string): Settings | null {
+ 
+ function settings_new_schema(schema: string): Settings {
+     const GioSSS = Gio.SettingsSchemaSource;
+-    // const schemaDir = Me.dir.get_child('schemas');
++    const schemaDir = Gio.File.new_for_path(get_current_path()).get_child('schemas');
+ 
+-    // let schemaSource = schemaDir.query_exists(null)
+-    //   ? GioSSS.new_from_directory(get_current_path(), GioSSS.get_default(), false)
+-    //   : GioSSS.get_default();
+-
+-    // get_current_path()
+-
+-    let schemaSource = GioSSS.new_from_directory(`${get_current_path()}/schemas/`, GioSSS.get_default(), false);
++    let schemaSource = schemaDir.query_exists(null)
++        ? GioSSS.new_from_directory(schemaDir.get_path(), GioSSS.get_default(), false)
++        : GioSSS.get_default();
+ 
+     const schemaObj = schemaSource.lookup(schema, true);
+ 
+-- 
+2.41.0
+

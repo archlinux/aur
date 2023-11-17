@@ -6,6 +6,7 @@
 !PKGBUILD
 !.SRCINFO
 !0001-Remove-schema-handling-from-transpile.sh.patch
+!0002-fix-check-if-extension-local-schemas-dir-exists-before-use.patch
 !50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override
 !50_org.gnome.mutter.pop-shell.gschema.override
 !50_org.gnome.mutter.wayland.pop-shell.gschema.override
