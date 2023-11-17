@@ -1,36 +1,34 @@
 diff --git a/build-win32.txt b/build-win32.txt
-index c1f017a0..8fd09003 100644
+index a1406832..748f5c1e 100644
 --- a/build-win32.txt
 +++ b/build-win32.txt
-@@ -6,10 +6,10 @@ strip = 'i686-w64-mingw32-strip'
- widl = 'i686-w64-mingw32-widl'
+@@ -4,6 +4,12 @@ cpp = 'i686-w64-mingw32-g++'
+ ar = 'i686-w64-mingw32-ar'
+ strip = 'i686-w64-mingw32-strip'
  
- [properties]
--c_args=['-msse', '-msse2']
--cpp_args=['-msse', '-msse2']
--c_link_args = ['-static', '-static-libgcc']
--cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++']
-+c_args=['-msse', '-msse2', @CARGS@]
-+cpp_args=['-msse', '-msse2', @CXXARGS@]
-+c_link_args = ['-static', '-static-libgcc', @LDARGS@]
-+cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++', @LDARGS@]
- needs_exe_wrapper = true
- 
- [host_machine]
-diff --git a/build-win64.txt b/build-win64.txt
-index 8a241178..e3f619eb 100644
---- a/build-win64.txt
-+++ b/build-win64.txt
-@@ -6,8 +6,10 @@ strip = 'x86_64-w64-mingw32-strip'
- widl = 'x86_64-w64-mingw32-widl'
- 
- [properties]
--c_link_args = ['-static', '-static-libgcc']
--cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++']
++[built-in options]
 +c_args=[@CARGS@]
 +cpp_args=[@CXXARGS@]
-+c_link_args = ['-static', '-static-libgcc', @LDARGS@]
-+cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++', @LDARGS@]
++c_link_args = [@LDARGS@]
++cpp_link_args = [@LDARGS@]
++
+ [properties]
  needs_exe_wrapper = true
  
- [host_machine]
+diff --git a/build-win64.txt b/build-win64.txt
+index 1aee4626..7d2e84f4 100644
+--- a/build-win64.txt
++++ b/build-win64.txt
+@@ -4,6 +4,12 @@ cpp = 'x86_64-w64-mingw32-g++'
+ ar = 'x86_64-w64-mingw32-ar'
+ strip = 'x86_64-w64-mingw32-strip'
+ 
++[built-in options]
++c_args=[@CARGS@]
++cpp_args=[@CXXARGS@]
++c_link_args = [@LDARGS@]
++cpp_link_args = [@LDARGS@]
++
+ [properties]
+ needs_exe_wrapper = true
+ 
