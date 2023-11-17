@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+APPDIR=/opt/dooble
+export AA_ENABLEHIGHDPISCALING=1
+export AA_USEHIGHDPIPIXMAPS=1
+export DOOBLE_ADDRESS_WIDGET_HEIGHT_OFFSET=0
+export DOOBLE_TAB_HEIGHT_OFFSET=5
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_X11_NO_MITSHM=1
+export LD_LIBRARY_PATH="${APPDIR}/Lib:${LD_LIBRARY_PATH}"
+export QT_PLUGIN_PATH="${APPDIR}/plugins:${QT_PLUGIN_PATH}"
+cd "${APPDIR}"
+exec ./Dooble "$@"
+exit $?
