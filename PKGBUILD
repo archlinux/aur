@@ -2,14 +2,14 @@
 pkgbase=python-regions
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm'
-             'cython'
+makedepends=('python-setuptools-scm>=6.2'
+             'cython<3.1.0'
              'python-wheel'
              'python-build'
              'python-installer'
@@ -18,41 +18,35 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-astropy'
              'python-astropy'
              'python-shapely')
-checkdepends=('python-pytest-astropy-header'
+checkdepends=('python-pytest-arraydiff'
+              'python-pytest-astropy-header'
               'python-pytest-doctestplus'
+              'python-pytest-remotedata'
               'python-matplotlib') # astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('889f4492283b85374cf219222f0afb8a')
+md5sums=('6f1171d99c860623a3ff131c985c9557')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i "/oldest-supported-numpy/d" pyproject.toml
-}
-
 build() {
-    msg "Building Python3"
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-regions() {
-    depends=('python>=3.8' 'python-numpy>=1.18' 'python-astropy>=5.0')
-    optdepends=('python-matplotlib>=3.1: Plotting support'
+    depends=('python>=3.9' 'python-numpy>=1.22' 'python-astropy>=5.0')
+    optdepends=('python-matplotlib>=3.5: Plotting support'
                 'python-shapely: Managing geometric objects'
                 'python-regions-doc: Documentation for AstroPy Regions')
     cd ${srcdir}/${_pyname}-${pkgver}
