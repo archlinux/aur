@@ -4,7 +4,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=31
+pkgrel=32
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
@@ -41,8 +41,9 @@ prepare() {
   # see also DEFINE+="BOOST_BIND_GLOBAL_PLACEHOLDERS" in build below
   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2020"
   # ----------------------------------------------------------------------------
-  # change to explicitly link /usr/lib/libabsl_log_internal_message.so and
-  #                           /usr/lib/libabsl_log_internal_check_op.so
+  # change to explicitly link libabsl_log_internal_message.so and
+  #                           libabsl_log_internal_check_op.so
+  #                           patch revised by xx55tt
   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2023"
   # ----------------------------------------------------------------------------
   # change to use XDG_CONFIG_HOME if available
