@@ -1,6 +1,6 @@
 pkgbase = php-sdl
 	pkgdesc = PHP bindings of the SDL library.
-	pkgver = 2.5.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/Ponup/phpsdl
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = php-sdl
 	makedepends = sdl2
 	depends = php>=7
 	depends = sdl2
-	source = https://github.com/Ponup/php-sdl/archive/refs/tags/2.5.0.tar.gz
-	md5sums = 8f7e7143875f2a071d614a402859250a
+	source = http://pecl.php.net/get/sdl-2.7.0.tgz
+	md5sums = 9f09f48542524972e074c579c750dc37
 
 pkgname = php-sdl

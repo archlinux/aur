@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=php-sdl
-pkgver=2.5.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="PHP bindings of the SDL library."
 url="https://github.com/Ponup/phpsdl"
@@ -9,11 +9,11 @@ license=("PHP")
 arch=('i686' 'x86_64' 'aarch64')
 depends=("php>=7" "sdl2")
 makedepends=("php>=7" "sdl2")
-source=("https://github.com/Ponup/php-sdl/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('8f7e7143875f2a071d614a402859250a')
+source=("http://pecl.php.net/get/sdl-${pkgver}.tgz")
+md5sums=('9f09f48542524972e074c579c750dc37')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/sdl-${pkgver}"
 
   phpize
   ./configure
@@ -21,11 +21,13 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/sdl-${pkgver}"
 
   make INSTALL_ROOT="$pkgdir" install
 
-  install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
+  mkdir -p $pkgdir/usr/lib/php/modules/
+  mkdir -p $pkgdir/usr/share/doc/$pkgname/
+
   install -Dm744 modules/sdl.so $pkgdir/usr/lib/php/modules/sdl.so
 
   cp -r examples $pkgdir/usr/share/doc/$pkgname/
