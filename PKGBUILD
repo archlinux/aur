@@ -1,4 +1,4 @@
-# Maintainer: Nis Donatzsky Hansen <nis at donatzsky dot eu>
+# Maintainer: Maël GUERIN <mael dot guerin at murena dot io>
 pkgname=rofi-power-menu
 pkgver=3.1.0
 pkgrel=1
