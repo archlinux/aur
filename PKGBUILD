@@ -1,6 +1,6 @@
 #Submiter: Hector Mtz-Seara (hseara#at#gmail#com)
 pkgname=python-gsd
-pkgver=2.5.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="GSD files store trajectories of the HOOMD-blue system state in a binary file with efficient random access to frames and allows all particle and topology properties to vary from one frame to the next."
 url="https://github.com/glotzerlab/gsd/"
@@ -10,7 +10,7 @@ depends=('cython' 'python-numpy')
 
 
 source=(https://github.com/glotzerlab/gsd/archive/v$pkgver.tar.gz)
-sha256sums=('1aff7f078b913bfd497c063bac941757b62462110cd69e63527db0b103cf8314')
+sha256sums=('5310387eaf9cc0b4f1eff83f44af1735709cc99be432a59d7b42c0052cbb3ade')
 
 build() {
   cd $srcdir/gsd-$pkgver/
