@@ -1,8 +1,8 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-git
-pkgver=v2023.11.1.r39.g3def0bdf7
-pkgrel=4
+pkgver=v2023.11.2.r3.g64cffd2d6
+pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -63,7 +63,7 @@ build() {
 
   export NODE_ENV="production"
 
-  corepack yarn install
+  corepack yarn install --immutable
   corepack yarn regen-version
   corepack yarn build
   corepack yarn focus-production
