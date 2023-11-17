@@ -1,0 +1,12 @@
+pkgbase = merecat
+	pkgdesc = Small and made-easy HTTP/HTTPS server based on Jef Poskanzer's thttpd
+	pkgver = 2.31
+	pkgrel = 1
+	url = https://github.com/troglobit/merecat/
+	arch = x86_64
+	license = custom:2BSD
+	makedepends = confuse
+	source = https://github.com/troglobit/merecat/archive/refs/tags/v2.31.tar.gz
+	sha256sums = af8aba4e4992987873efc323dcc4079962fd7ed0a89667007e0f0ca08f7a969e
+
+pkgname = merecat
