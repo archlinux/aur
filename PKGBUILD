@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=etherealengine-control-center-bin
 _appname=Ethereal-Engine-Control-Center
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="One stop solution for all your Metaverse needs. A desktop app for managing Ethereal Engine cluster. "
 arch=('x86_64')
@@ -11,12 +11,14 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'bash'
-    'electron'
+    'electron25'
     'hicolor-icon-theme'
     'gdk-pixbuf2'
     'gtk2'
     'libdbusmenu-glib'
+    'libx11'
+    'libxext'
+    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -26,9 +28,9 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8b03d5377e54ac1147da2e621ed9383d13a9b2b2860bd3ea0594404f6a5eeca5'
+sha256sums=('a519d41f5d73fee5a6f0777a5b04ad43ec8d633f3f7ddc0c62c154d599a78e9e'
             'd346da664afe040f323eb3aecc74d5bb2a8b6d61a7ff53ccfaf1611add61a41d'
-            'b943c211366bb9b7fa68d199a8bbec376621ab68e73fc6b84806540aeb8e6104')
+            '40a6f1732cd8c02b210facb54d956da1c4f6ed290f1bc2ca2bb11ad60f470c1d')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
