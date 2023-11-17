@@ -1,7 +1,7 @@
 pkgbase = pokerth
 	pkgdesc = Client to online Poker game written in C++/Qt
 	pkgver = 1.1.2
-	pkgrel = 30
+	pkgrel = 31
 	url = http://www.pokerth.net/
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = pokerth
 	md5sums = 0ef5541fc6008dfb2521dcab47afb659
 	md5sums = 50d427bd8afc57fb61e186de6c4e5601
 	md5sums = e5bf2357733b4508737f8271f3c1e65f
-	md5sums = 38e079c6c4943cc4466c5bb402bd8dd6
+	md5sums = 6f667b717cb5e75317f963b417b6c8b4
 	md5sums = e61eae14e6394f4745245e2ef42d812c
 
 pkgname = pokerth
