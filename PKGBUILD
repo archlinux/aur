@@ -1,7 +1,7 @@
 pkgname=sonicthehedgehog2
 _pkgname=SonicTheHedgehog2
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Sonic the Hedgehog 2 game powered by the rsdkv4 engine. Full details on how to to use this are at https://gitlab.com/SonicRSDK/sonicthehedgehog2"
 arch=('x86_64' 'aarch64' 'i686')
 url=""
