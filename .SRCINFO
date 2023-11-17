@@ -1,7 +1,7 @@
 pkgbase = python-classdiff
 	pkgdesc = Utility to diff classes
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/classdiff/
 	arch = any
 	license = Apache-2.0
