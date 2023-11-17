@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-3.6-bin
-pkgver=3.6.230701.c7fc78b81ecb
+pkgver=3.6.231115.76cf464098be
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -25,7 +25,7 @@ _setvars() {
 	_full=${BASH_REMATCH[0]}
 	_branch=${BASH_REMATCH[1]}
 	_commit=${BASH_REMATCH[2]}
-	local regex="$_commit.*>([A-Za-z]+ [0-9]+, [0-9]+:[0-9]+:[0-9]+)" && [[ $(cat $_webpage) =~ $regex ]]
+	local regex="$_commit-linux.*?([0-9]{4}-[0-9]+-[0-9]+T[0-9]+:[0-9]+:[0-9]+\+[0-9]+:[0-9]+)" && [[ $(cat $_webpage) =~ $regex ]]
 	_date=$(date --date="${BASH_REMATCH[1]//,}" "+%y%m%d")
 }
 
@@ -40,7 +40,7 @@ build() {
 	wget -nc "https://builder.blender.org/download/daily/$_full"
 	tar -xJ -f "$_full"
 	cd "${_full%.tar.xz}"
-	# Remove included Python installation, so system Python is used instead. (python 3.11) (not working 2023-07-01)
+	# Remove included Python installation, so system Python is used instead. (not working 2023-11-16)
 	# rm -rf "$_upstreamversion/python"
 	sed -i "s/=blender/=blender-$_upstreamversion/" blender.desktop
 	sed -i "s/=Blender/=Blender-$_upstreamversion/" blender.desktop
