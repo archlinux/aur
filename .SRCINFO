@@ -1,8 +1,8 @@
 pkgbase = ata2
-	pkgdesc = Ask the Terminal Anything
+	pkgdesc = Ask the Terminal Anything²
 	pkgver = 3.0.1
-	pkgrel = 1
-	url = https://github.com/rikhuijzer/ata
+	pkgrel = 2
+	url = https://github.com/ctrlcctrlv/ata2
 	arch = x86_64
 	makedepends = git
 	makedepends = cargo

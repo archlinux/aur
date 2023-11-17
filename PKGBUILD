@@ -1,9 +1,9 @@
 pkgname="ata2"
 pkgver=3.0.1
-pkgrel=1
-pkgdesc="Ask the Terminal Anything"
+pkgrel=2
+pkgdesc="Ask the Terminal Anything²"
 arch=('x86_64')
-url="https://github.com/rikhuijzer/ata"
+url="https://github.com/ctrlcctrlv/ata2"
 makedepends=('git' 'cargo')
 source=(
     "git+https://github.com/ctrlcctrlv/ata2.git#tag=v$pkgver"
