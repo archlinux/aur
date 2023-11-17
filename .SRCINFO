@@ -1,10 +1,11 @@
 pkgbase = gc-git
 	pkgdesc = A garbage collector for C and C++
-	pkgver = 8.2.0.r513.g515d30eb
+	pkgver = 8.2.0.r1165.gf2630a42
 	pkgrel = 1
 	url = https://www.hboehm.info/gc/
 	arch = x86_64
-	license = GPL
+	license = MIT
+	makedepends = git
 	depends = gcc-libs
 	provides = gc
 	conflicts = gc

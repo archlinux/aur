@@ -3,13 +3,14 @@
 # Contributor: dorphell <dorphell@gmx.net>
 
 pkgname=gc-git
-pkgver=8.2.0.r513.g515d30eb
+pkgver=8.2.0.r1165.gf2630a42
 pkgrel=1
 pkgdesc="A garbage collector for C and C++"
 arch=('x86_64')
 url="https://www.hboehm.info/gc/"
-license=('GPL')
+license=('MIT')
 depends=('gcc-libs')
+makedepends=('git')
 source=($pkgname::git+https://github.com/ivmai/bdwgc.git)
 sha512sums=('SKIP')
 conflicts=('gc')
@@ -42,4 +43,5 @@ package() {
   make DESTDIR="${pkgdir}" install
   sed 's|GC_MALLOC 1L|gc 3|g' gc.man |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/man/man3/gc.3"
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
