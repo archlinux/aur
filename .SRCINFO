@@ -1,15 +1,15 @@
 pkgbase = jp
 	pkgdesc = Command line interface to JMESPath
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = http://jmespath.org
+	url = https://github.com/jmespath/jp
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = git
 	options = !strip
 	options = !emptydirs
-	source = jp::git+https://github.com/jmespath/jp#tag=0.2.0
+	source = jp::git+https://github.com/jmespath/jp#tag=0.2.1
 	sha512sums = SKIP
 
 pkgname = jp
