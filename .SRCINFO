@@ -1,0 +1,19 @@
+pkgbase = sat-switcher-git
+	pkgdesc = Switcher for audio, video, data and network streams. Using the shmdata power !
+	pkgver = r3625.efd05eea
+	pkgrel = 1
+	url = https://gitlab.com/sat-mtl/tools/switcher
+	arch = x86_64
+	arch = aarch64
+	license = GNU General Public License 3
+	makedepends = git
+	makedepends = cmake
+	depends = python-socketio
+	depends = python-aiohttp
+	depends = python-requests
+	depends = python-websocket-client
+	provides = shmdata
+	source = git+https://gitlab.com/sat-mtl/tools/switcher.git
+	sha256sums = SKIP
+
+pkgname = sat-switcher-git
