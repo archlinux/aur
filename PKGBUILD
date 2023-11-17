@@ -1,6 +1,6 @@
 # Maintainer: Nis Donatzsky Hansen <nis at donatzsky dot eu>
 pkgname=rofi-power-menu
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Configurable power menu mode for Rofi and dmenu"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('rofi-script-to-dmenu: Run rofi scripts with dmenu (or with dmenu mo
 			'dmenu: Use with dmenu instead of rofi')
 provides=('dmenu-power-menu')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/jluttine/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('b45a675931792f542ab0ee425e10deab5ee3f5afe63ae5a61ffaacb8d174e1b98cadf9bbbb977a318345516b7fd361c120740b9012f366066feca3e45b2629db')
+sha512sums=('a19c9a3720ae6682f6c11d9c46ce365c3dc5899caec4ad244b4291114c79f5352e61c36e46099893df4f7c921b3bdfb2967b44962c44fdb35820eaa9101ac53f')
 
 package() {
 	cd "$pkgname-$pkgver" || exit 1
