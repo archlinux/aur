@@ -1,18 +1,23 @@
 pkgbase = python-cclib
 	pkgdesc = A library for parsing and interpreting the results of computational chemistry packages.
-	pkgver = 1.7.2
+	pkgver = 1.8
 	pkgrel = 1
 	url = http://cclib.github.io
 	arch = any
 	license = BSD-3-Clause
 	makedepends = python-setuptools
+	depends = python-importlib-metadata
 	depends = python-packaging
 	depends = python-periodictable
 	depends = python-scipy
 	optdepends = python-openbabel: for generating `OBMol`s of results
 	optdepends = python-biopython: for generating `BioPython.Atom`s of parsed results
 	optdepends = python-pandas: for generating DataFrames of parsed results
-	source = https://github.com/cclib/cclib/archive/v1.7.2.tar.gz
-	sha256sums = ca83ef666424d861eb3501d955da23db45793b0fd10b2cbff9f4dbbbf770e0d1
+	optdepends = psi4: for Psi4 bridge
+	optdepends = python-ase: for ASE bridge
+	optdepends = python-h5py: for reading proatom densities from horton
+	optdepends = python-pyscf: for PySCF bridge
+	source = https://github.com/cclib/cclib/archive/v1.8.tar.gz
+	sha256sums = 8b4c4b0f43168374e7aa4e3b433f0b1d0c443dbb73562ab09e705d7c4e61c5e2
 
 pkgname = python-cclib
