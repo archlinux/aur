@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
-provides=(${_pkgname})
+provides=('hiddify')
 conflicts=(${_pkgname} ${_pkgname}-git)
 options=(!strip)
 source=(
@@ -28,15 +28,14 @@ prepare() {
     chmod a+x "hiddify-linux-x64.AppImage"
     ./hiddify-linux-x64.AppImage --appimage-extract > /dev/null
     sed -i 's/Exec=/Exec=env /' "${srcdir}/squashfs-root/hiddify.desktop"
-    sed -i 's/hiddify/hiddify.next/g'  "${srcdir}/squashfs-root/hiddify.desktop"
 }
 
 package() {
-    install -Dm755 "${srcdir}/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    install -Dm755 "${srcdir}/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/hiddify.AppImage"
+    install -Dm644 "${srcdir}/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/hiddify.desktop"
     for _icons in 128x128 256x256;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
     done
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${_pkgname}/hiddify.AppImage" "${pkgdir}/usr/bin/hiddify"
 }
