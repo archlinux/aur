@@ -1,17 +1,15 @@
 pkgbase = libklvanc-git
-	pkgdesc = Library which can be used for parsing/generation of Vertical Ancillary Data (VANC) (git version)
-	pkgver = r434.d474cfc
+	pkgdesc = Library for parsing/generation of Vertical Ancillary Data (VANC) (git version)
+	pkgver = 1.6.0.r8.g3365db3
 	pkgrel = 1
 	url = https://github.com/stoth68000/libklvanc/
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = zlib
-	depends = ncurses
+	depends = glibc
 	provides = libklvanc
 	conflicts = libklvanc
 	source = git+https://github.com/stoth68000/libklvanc.git
 	sha256sums = SKIP
 
 pkgname = libklvanc-git
-
