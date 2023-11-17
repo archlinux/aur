@@ -16,4 +16,3 @@ pkgbase = paho-mqtt-cpp-git
 	md5sums = SKIP
 
 pkgname = paho-mqtt-cpp-git
-

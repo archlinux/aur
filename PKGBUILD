@@ -1,7 +1,7 @@
 # Maintainer: Hiral Patel <ahirapatel at gmail dot com>
 _bpn=paho-mqtt-cpp
 pkgname=${_bpn}-git
-pkgver=1.0.1.r47.g7fe0c26
+pkgver=1.2.0.r58.ge9db86f
 pkgrel=1
 pkgdesc="A C++ wrapper around paho-mqtt-c"
 arch=('x86_64')
