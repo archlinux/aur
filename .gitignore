@@ -1,0 +1,4 @@
+pkg/
+src/
+nvidia-tesla-dkms-*.pkg.*
+*.run
