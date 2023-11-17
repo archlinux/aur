@@ -1,7 +1,7 @@
 pkgbase = thorium-browser-bin
 	pkgdesc = Chromium fork focused on high performance and security
 	pkgver = 117.0.5938.157
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Alex313031/Thorium
 	install = thorium-browser.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = thorium-browser-bin
 	source = https://github.com/Alex313031/Thorium/releases/download/M117.0.5938.157/thorium-browser_117.0.5938.157_amd64.deb
 	source = thorium-browser.sh
 	sha256sums = SKIP
-	sha256sums = 76dc15b6001053edc422dbed7041273a21315b5f59225f62f8b21b6385f6f9ba
+	sha256sums = 56ea0cd85fef5b61620c554aa8939c2f1c6b3fdb3d13d182167e66e9f884cdaa
 
 pkgname = thorium-browser-bin
 	depends = alsa-lib

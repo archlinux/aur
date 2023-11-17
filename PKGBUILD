@@ -17,7 +17,7 @@ fi
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgver=117.0.5938.157
-pkgrel=4
+pkgrel=5
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD')
@@ -48,7 +48,7 @@ _main_package() {
   )
   sha256sums=(
     'SKIP'
-    '76dc15b6001053edc422dbed7041273a21315b5f59225f62f8b21b6385f6f9ba'
+    '56ea0cd85fef5b61620c554aa8939c2f1c6b3fdb3d13d182167e66e9f884cdaa'
   )
 
   pkgver() {
@@ -119,24 +119,24 @@ package() {
 
 # update version
 _update_version() {
-  case "${_autoupdate::1}" in
-    't'|'y'|'1')
-      _repo="${url#*//*/}"
-      _response=$(curl "https://api.github.com/repos/${_repo:?}/releases" -s)
+  if [[ x"${_autoupdate::1}" != "xt" ]] ; then
+    return
+  fi
 
-      _regex='^.*thorium-browser_([0-9\.]+)_.*\.deb.*$'
-      _pkgver_new=$(
-        printf '%s' "$_response" \
-          | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
-      )
+  _repo="${url#*//*/}"
+  _response=$(curl "https://api.github.com/repos/${_repo:?}/releases" -s)
 
-      # update _pkgver
-      if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
-        _pkgver="${_pkgver_new:?}"
-        sed -Ei 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' "$startdir/PKGBUILD"
-      fi
-      ;;
-  esac
+  _regex='^.*thorium-browser_([0-9\.]+)_.*\.deb.*$'
+  _pkgver_new=$(
+    printf '%s' "$_response" \
+      | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
+  )
+
+  # update _pkgver
+  if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+    sed -Ei 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' "$startdir/PKGBUILD"
+  fi
 }
 
 # execute

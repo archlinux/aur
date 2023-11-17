@@ -17,7 +17,7 @@ fi
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 # Allow users to override command-line options
-if [[ -f $XDG_CONFIG_HOME/thorium-flags.conf ]]; then
+if [[ -f "$XDG_CONFIG_HOME/thorium-flags.conf" ]]; then
   THORIUM_USER_FLAGS="$(cat $XDG_CONFIG_HOME/thorium-flags.conf)"
 fi
 
@@ -25,7 +25,7 @@ fi
 if tty -s ; then
   echo "$_message"
 else
-  [ ! -e "$HOME/.mercury" ] && notify-send -a "thorium-browser" -t 7500 "$_message"
+  [ ! -e "$XDG_CONFIG_HOME/thorium" ] && notify-send -a "thorium-browser" -t 7500 "$_message"
 fi
 
 # Launch
