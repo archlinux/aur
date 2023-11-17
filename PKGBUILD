@@ -1,30 +1,33 @@
-# Maintainer: Brett Cornwall <ainola@archlinux.org>
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: Brett Cornwall <ainola at archlinux dot org>
 # Contributor: schalox <schalox at gmail dot com>
-# Contributor: Simon Zimmermann <simon@insmo.com>
-# Contributor: Jon Yamokoski <code@jonyamo.us>
+# Contributor: Simon Zimmermann <simon at insmo dot com>
+# Contributor: Jon Yamokoski <code at jonyamo dot us>
 
 pkgname=pass-git
-pkgver=1.7.4.r1.g3dd1469
+pkgver=1.7.4.r12.28cec11
 pkgrel=1
-epoch=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
-arch=('any')
-url='https://www.passwordstore.org/'
-license=('GPL2')
-depends=('bash' 'gnupg' 'tree')
-optdepends=('git: for Git support'
-            'dmenu: for passmenu'
-            'dmenu-wayland: for passmenu in Wayland environments'
-            'qrencode: for QR code support'
-            'wl-clipboard: For wlroots-based Wayland clipboard support'
-            'xclip: For X11 clipboard support'
-            'xdotool: to type passwords with passmenu'
-            'ydotool: to type passwords with passmenu in Wayland')
-makedepends=('git')
-provides=('pass')
-conflicts=('pass')
-source=("git+https://git.zx2c4.com/password-store.git")
-sha256sums=('SKIP')
+arch=(any)
+url=https://passwordstore.org
+license=(GPL2)
+
+provides=(pass)
+conflicts=(pass)
+depends=(bash gnupg tree)
+makedepends=(git)
+optdepends=(
+    'dmenu: for passmenu'
+    'dmenu-wayland: for passmenu in Wayland'
+    'git: for git support'
+    'qrencode: for QR code support'
+    'wl-clipboard: for wlroots-based Wayland clipboard support'
+    'xclip: for X11 clipboard support'
+    'xdotool: to type passwords with passmenu'
+    'ydotool: to type passwords with passmenu in Wayland'
+)
+source=(git+https://git.zx2c4.com/password-store.git)
+sha256sums=(SKIP)
 
 pkgver() {
     cd password-store
