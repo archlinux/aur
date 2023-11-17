@@ -1,9 +1,9 @@
 pkgname='styx'
 pkgdesc='Scanner and parser generator'
 pkgver='2.0.1'
-pkgrel='2'
+pkgrel='3'
 license=('GPL' 'LGPL')
-url='http://speculate.de/'
+url='http://speculate.de'
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
 arch=('x86_64' 'i686')
 depends=('glibc')
