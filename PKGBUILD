@@ -1,11 +1,11 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=wahoomc
-pkgver=v4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='wahooMapsCreator - Create maps for Wahoo device based on latest OSM maps'
 _outname="${pkgname}-${pkgver}"
-_rootdir="wahooMapsCreator-${pkgver#v}"
+_rootdir="wahooMapsCreator-${pkgver}"
 arch=('x86_64')
 url='https://github.com/treee111/wahooMapsCreator'
 license=('MIT')
@@ -14,8 +14,8 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('phyghtmap')
 provides=('wahoomc')
 conflicts=('wahoomc')
-source=("${_outname}.tar.gz::https://github.com/treee111/wahooMapsCreator/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ea3b14d2d482a2418dcadc2bd25259e84f6e62dd97e35235156b5d99207312c2')
+source=("${_outname}.tar.gz::https://github.com/treee111/wahooMapsCreator/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4df2d5705555158fcfd04ceb02ddc0c62d3a0e7f34b7d92c32d80703520b48de')
 
 build() {
     cd "${_rootdir}"
