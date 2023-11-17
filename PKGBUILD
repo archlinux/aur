@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocVersion
-_pkgver=3.18.0
+_pkgver=3.18.1
 pkgname=r-${_pkgname,,}
-pkgver=3.18.0
+pkgver=3.18.1
 pkgrel=1
 pkgdesc='Set the appropriate version of Bioconductor packages'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8301ff8a8b35304a5446b710cec56720d93dee6fd9bf8e4213712ef65270ec1f')
+sha256sums=('a5c8ea9ffcbd52fc7bf305bb9c58c988f590db2c5eb7114455a32fea43319997')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

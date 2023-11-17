@@ -1,12 +1,12 @@
 pkgbase = r-biocversion
 	pkgdesc = Set the appropriate version of Bioconductor packages
-	pkgver = 3.18.0
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocVersion
 	arch = any
 	license = Artistic2.0
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocVersion_3.18.0.tar.gz
-	sha256sums = 8301ff8a8b35304a5446b710cec56720d93dee6fd9bf8e4213712ef65270ec1f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocVersion_3.18.1.tar.gz
+	sha256sums = a5c8ea9ffcbd52fc7bf305bb9c58c988f590db2c5eb7114455a32fea43319997
 
 pkgname = r-biocversion
