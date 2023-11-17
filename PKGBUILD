@@ -13,7 +13,7 @@ url="https://www.alchemyviewer.org"
 install=alchemy.install
 # template end;
 # template start; name=deps; version=1.0;
-depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc xdg-desktop-portal zlib)
+depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 makedepends=('gcc' 'python-virtualenv' 'python-pip' 'git' 'xz')
 optdepends=(
   'alsa-lib: ALSA support'
@@ -27,11 +27,12 @@ optdepends=(
   'mesa-libgl: Intel, Radeon, Nouveau support'
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support'
-  'wine: More up-to-date, less buggy SLVoice support')
+  'wine: More up-to-date, less buggy SLVoice support'
+  'xdg-desktop-portal: File picker portal')
 # template end;
 pkgname=alchemy-next-viewer-git
-pkgver=7.0.1.54509.4de3730a21
-pkgrel=2
+pkgver=7.0.1.54510.4c950c439b
+pkgrel=1
 replaces=('alchemy-viewer-git')
 provides=('alchemy-viewer')
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}")
@@ -60,16 +61,15 @@ prepare() {
     source "${srcdir}/.venv/bin/activate"
 
     msg2 "Installing build toolchain..."
-    pip3 install --upgrade certifi --quiet
-    pip3 install --upgrade llbase --quiet
-    pip3 install --no-cache --upgrade autobuild --quiet
-    pip3 install --upgrade cmake ninja
+    pip3 install --upgrade cmake llbase llsd certifi autobuild ninja
 }
 # template end;
 
 # template start; name=build; version=1.0;
 build() {
   cd "${pkgname}" || exit 1
+  msg2 "Configuring build environment..."
+  _logfile="${srcdir}/build.${CARCH}.$(date +%s).log"
   source "${srcdir}/.venv/bin/activate"
   build_jobs=$(nproc)
   if [[ -z "$NO_SMART_JOB_COUNT" ]]; then
@@ -134,7 +134,6 @@ build() {
         -DVIEWER_CHANNEL="Alchemy Test"
       )
       #msg2 "BUILDENV: ${BUILDENV[*]}"
-      msg2 "Configuring build environment..."
       # if [[ " ${BUILDENV[*]} " =~ ' ccache ' ]] && command -v ccache >/dev/null 2>&1; then
       AL_CMAKE_CONFIG+=("-DCMAKE_CXX_COMPILER_LAUNCHER=$(which ccache)")
         msg2 "ccache was found and will be used"
@@ -144,9 +143,9 @@ build() {
         AL_CMAKE_CONFIG+=("-DCMAKE_CXX_COMPILER=$(which clang++)")
         msg2 "clang was found and will be used instead of gcc"
       fi
-      _logfile="${srcdir}/build.${CARCH}.$(date +%s).log"
+      msg2 "Configuring the build"
       $prefix_cmd autobuild configure -A 64 -c ReleaseOS -- "${AL_CMAKE_CONFIG[@]}" > >(tee -a "$_logfile") 2> >(tee -a "$_logfile" >&2)
-      msg2 "Building with ${AUTOBUILD_CPU_COUNT} jobs"
+      msg2 "Starting the build with ${AUTOBUILD_CPU_COUNT} jobs"
       $prefix_cmd autobuild build -A 64 -c ReleaseOS --no-configure > >(tee -a "$_logfile") 2> >(tee -a "$_logfile" >&2)
     }
 # template end;
