@@ -3,7 +3,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=walk
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Terminal file manager"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 replaces=('llama')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b6ba7a5e3873a25944e0f18c8a3ebbfdc0e8681756517905c75972c824315970')
+sha256sums=('b657523d637727cfa408040e9816f45ae868c5192fb3962c32a0edab9d9b00dd')
 
 prepare() {
 	cd "$pkgname-$pkgver"
