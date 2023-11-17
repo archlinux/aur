@@ -92,5 +92,23 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install
+	post_install
+}
+
+pre_install(){
+	oldProfile="/etc/profile.d/linglong.sh"
+	oldX11Config="/etc/X11/Xsession.d/21linglong"
+
+	if [ "x$2" != "x" ]; then
+		killall ll-service >/dev/null 2<&1
+		killall ll-package-manager >/dev/null 2<&1
+	fi
+	# 这两个旧文件主要用于设置玲珑环境变量，优先级较高，而且与systemd generator功能重复，不再需要
+        if [[ -f "$oldProfile" && -f "$oldX11Config" ]]; then
+		rm $oldProfile $oldX11Config
+	fi
+}
+
+pre_upgrade() {
+	pre_install
 }
