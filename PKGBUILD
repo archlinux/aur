@@ -5,21 +5,17 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2023.08.30
-pkgrel=3
+pkgrel=4
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
-url="https://textbrowser.github.io/dooble/"
-_githuburl="https://github.com/textbrowser/${pkgname%-bin}"
+url="https://textbrowser.github.io/dooble"
+_ghurl="https://github.com/textbrowser/dooble"
 license=('custom')
 depends=(
   'at-spi2-core'
-  'bash'
   'cairo'
   'freetype2'
-  'gcc-libs'
   'gdk-pixbuf2'
-  'glib2'
-  'glibc'
   'gpgme'
   'gst-plugins-base-libs'
   'gstreamer'
@@ -53,7 +49,6 @@ depends=(
   'xcb-util-keysyms'
   'xcb-util-renderutil'
   'xcb-util-wm'
-  'zlib'
 )
 optdependes=(
   'bzip2: needed in plugins/multimedia/libffmpegmediaplugin.so'
@@ -65,11 +60,13 @@ makedepends=(
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=(
-  "${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+  "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
+  "${pkgname%-bin}.sh"
 )
 sha256sums=('407057d48fa3aaf78c378c9b8e9ad8181cf0ee25eb5dbe75801e133718a9d34c'
-            'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd')
+            'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
+            '845fbb33d7152f74b5d7bbdf5566f9985ca73d1865c517c8fe820eabae923be1')
 build() {
     gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
     # Fix incorrect permissions
@@ -78,16 +75,15 @@ build() {
     find "${srcdir}/${pkgname%-bin}" -type f -perm 0775   -print0 | xargs -r0 chmod 0755
     find "${srcdir}/${pkgname%-bin}" -type f -name '*.so' -print0 | xargs -r0 chmod 0755
     # Remove libraries provided by upstream
-    rm -rf "${srcdir}/${pkgname%-bin}/Lib/"
+    rm -rf "${srcdir}/${pkgname%-bin}/Lib/"{libc.so.6,libm.so.6}
     cp "${srcdir}/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" "${srcdir}/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
+    install -Dm755 -d "${pkgdir}/opt"
     cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
     # Add a symlink to dooble.sh for those who prefer to not use a mouse
-    ln -sr "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
-# always end a file with a newline
