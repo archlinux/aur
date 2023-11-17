@@ -1,0 +1,12 @@
+pkgbase = libklvanc
+	pkgdesc = Library for parsing/generation of Vertical Ancillary Data (VANC)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/stoth68000/libklvanc/
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = https://github.com/stoth68000/libklvanc/archive/vid.obe.1.6.0/libklvanc-1.6.0.tar.gz
+	sha256sums = 5076ca48455a4ef4ead2cd880ba189b21937a9ad8fd458adfc133d7bb1c948c3
+
+pkgname = libklvanc
