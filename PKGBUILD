@@ -7,7 +7,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=xkb-switch-i3
 pkgver=2.0.1+i3_5
-pkgrel=7
+pkgrel=8
 pkgdesc='Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)'
 url='https://github.com/zebradil/xkb-switch-i3'
 arch=(i686 x86_64)
@@ -19,6 +19,7 @@ provides=(xkb-switch)
 source=(xkb-switch-i3-2.0.1+i3_5.tar.gz::https://github.com/zebradil/xkb-switch-i3/archive/2.0.1+i3-5.tar.gz i3ipcpp-1bf594d1f25e63122c6f92c2a61a848b45457e08.tar.gz::https://api.github.com/repos/drmgc/i3ipcpp/tarball/1bf594d1f25e63122c6f92c2a61a848b45457e08)
 build () 
 { 
+    set -eo pipefail;
     cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}";
     mv -T "${srcdir}"/drmgc-i3ipcpp-* ./i3ipc++;
     cmake -DCMAKE_INSTALL_PREFIX=/usr .;
@@ -26,6 +27,7 @@ build ()
 }
 package () 
 { 
+    set -eo pipefail;
     cd "${srcdir}/${pkgname}-${pkgver//[_+]/-}";
     make DESTDIR="$pkgdir/" install
 }
