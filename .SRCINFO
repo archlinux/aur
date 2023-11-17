@@ -1,0 +1,13 @@
+pkgbase = iamy
+	pkgdesc = A cli tool for importing and exporting AWS IAM configuration to YAML files
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/99designs/iamy
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = iamy-2.4.0.tar.gz::https://github.com/99designs/iamy/archive/v2.4.0.tar.gz
+	sha256sums = 13bd9e66afbeb30d386aa132a4af5d2e9a231d2aadf54fe8e5dc325583379359
+
+pkgname = iamy
