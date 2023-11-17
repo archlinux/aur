@@ -120,7 +120,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=34
+pkgrel=35
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -168,7 +168,7 @@ sha256sums=('SKIP'
             '24a8e0b207598798b91f030bcccf0a074f0ccd23885ea4e802a8bda1c05657e0'  # hover-ptrfn-args
             '6e1f9c9a01ac50be93537227fffe20816ae0d51243ca8836c39d99dec8dad51e'  # resolve-depend-type
             '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
-            'ffffe437bb1c1a477e2e43fd52aa254a690c513574d323ac118f4a45454cbcb1'  # resolve-incomplete-header-includes
+            'c6f011a0a5a11e96a857717c195e27e91bd7ddce11910bc7ed60fd412ad989b9'  # resolve-incomplete-header-includes
             '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d') # lsp-remove-files-from-cdb
 
 pkgver() {
