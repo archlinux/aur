@@ -1,6 +1,6 @@
 pkgbase = figma-linux-bin
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux
 	url = https://github.com/Figma-Linux/figma-linux
 	arch = x86_64
@@ -40,5 +40,7 @@ pkgbase = figma-linux-bin
 	conflicts = figma-linux
 	conflicts = figma-linux-git
 	source_x86_64 = https://github.com/Figma-Linux/figma-linux/releases/download/v0.11.1/figma-linux_0.11.1_linux_amd64.zip
-	sha256sums_x86_64 = 4cf109ffc02abf0f18990370bb85820cf44f5b3ad9c98cdcf3ca361491fa5096
+	sha256sums_x86_64 = 8cefec23f2b151529d63515f546ce1f349a24221ede09bbf9e0ebfad4f1cbeb3
+	source_aarch64 = https://github.com/Figma-Linux/figma-linux/releases/download/v0.11.1/figma-linux_0.11.1_linux_arm64.zip
+	sha256sums_aarch64 = 26f6bb3b9b9b51e5d247eea716e8a3ddf1b375f833a64a6a0d81140a7217cf00
 pkgname = figma-linux-bin
