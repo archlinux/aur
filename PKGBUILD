@@ -4,7 +4,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=33
+pkgrel=34
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
@@ -23,7 +23,7 @@ source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgnam
 md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
          '0ef5541fc6008dfb2521dcab47afb659'
          '50d427bd8afc57fb61e186de6c4e5601'
-         'e5bf2357733b4508737f8271f3c1e65f'
+         '2204bc9d820057d5d4b04d675cf09198'
          '5efeb1305e3d6ff4b60edf1fd7f939b6'
          'e61eae14e6394f4745245e2ef42d812c')
 
