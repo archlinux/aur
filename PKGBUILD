@@ -13,13 +13,13 @@ function _dl_url {
   echo "https://github.com/OpenTSDB/opentsdb/archive/v$1.$2.$3.zip"
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed, scalable Time Series Database (TSDB) written on top of HBase"
-arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
+arch=("any")
 url="http://opentsdb.net/"
 license=("LGPL2.1")
-depends=("java-runtime" "hbase" "gnuplot")
-makedepends=("java-environment=7" "java-runtime=6")
+depends=("java-runtime=8" "hbase" "gnuplot")
+makedepends=("java-environment=8")
 backup=(
   "etc/${pkgname}/logback.xml"
   "etc/${pkgname}/opentsdb.conf"
@@ -34,9 +34,7 @@ _watch="https://github.com/OpenTSDB/opentsdb/releases"
 prepare() {
   cd "$pkgname-$pkgver"
 
-  jre6="/usr/lib/jvm/java-6-jre/jre"
-  bootclasspath="$jre6/lib/rt.jar"
-  javac_flags="-Xlint -source 6 -encoding utf-8 -bootclasspath $bootclasspath"
+  javac_flags="-Xlint -source 7 -encoding utf-8"
 
   sed -i -e "s,AM_JAVACFLAGS = -Xlint -source 6 -encoding utf-8,AM_JAVACFLAGS = $javac_flags,g" "Makefile.am"
 
