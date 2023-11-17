@@ -1,7 +1,7 @@
 # Maintainer: Olivier Michaelis <michaelis.olivier [at] gmail [dot] com>
 
 pkgname=linkerd-bin
-pkgver=2.14.3 # renovate: datasource=github-releases depName=linkerd/linkerd2
+pkgver=2.14.4 # renovate: datasource=github-releases depName=linkerd/linkerd2
 pkgrel=1
 pkgdesc="Ultralight, security-first service mesh for Kubernetes. Main repo for Linkerd 2.x"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,11 +16,11 @@ source_armv6h=("linkerd-${pkgver}-armv6h::https://github.com/linkerd/linkerd2/re
 source_armv7h=("linkerd-${pkgver}-armv7h::https://github.com/linkerd/linkerd2/releases/download/stable-${pkgver}/linkerd2-cli-stable-${pkgver}-linux-arm")
 source_aarch64=("linkerd-${pkgver}-aarch64::https://github.com/linkerd/linkerd2/releases/download/stable-${pkgver}/linkerd2-cli-stable-${pkgver}-linux-arm64")
 
-sha256sums_x86_64=('ece5753a83536d42d9b1b30df94e70a9612289109c5f162881d03a5f0a2032df')
-sha256sums_arm=('b3c4e8675ff11307c8d71cbbf90679b192e644c4781db68dc22a935db71d17de')
-sha256sums_armv6h=('b3c4e8675ff11307c8d71cbbf90679b192e644c4781db68dc22a935db71d17de')
-sha256sums_armv7h=('b3c4e8675ff11307c8d71cbbf90679b192e644c4781db68dc22a935db71d17de')
-sha256sums_aarch64=('70c70ae4a83329c2c9641d6f2f91a091b93e086659bc6ce5401a81bf0409ddd3')
+sha256sums_x86_64=('d14021835e68e4824dc420b4eceb45865c9f85491f43b5decec6f17acc399de3')
+sha256sums_arm=('ba37372030b64f4f9635bfeeb4667142010208de95cc008a2306e6d3791b1af1')
+sha256sums_armv6h=('ba37372030b64f4f9635bfeeb4667142010208de95cc008a2306e6d3791b1af1')
+sha256sums_armv7h=('ba37372030b64f4f9635bfeeb4667142010208de95cc008a2306e6d3791b1af1')
+sha256sums_aarch64=('0b9c7ec340a5d7bbb6d30ed1a2c4bc1a7ed216d81b9ef2544731beff9a7ac83a')
 
 package() {
     install -Dm755 linkerd-${pkgver}-${arch} "${pkgdir}/usr/bin/linkerd"
