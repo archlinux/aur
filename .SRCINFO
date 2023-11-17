@@ -1,0 +1,24 @@
+pkgbase = iceshrimp-bin
+	pkgdesc = YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023
+	pkgver = v2023.11.2
+	pkgrel = 3
+	url = https://iceshrimp.dev/iceshrimp/iceshrimp
+	install = iceshrimp.install
+	arch = x86_64
+	license = AGPL3
+	depends = nodejs
+	depends = redis
+	depends = postgresql
+	optdepends = ffmpeg: for video transcoding
+	optdepends = sonic: efficient full text search backend
+	optdepends = meilisearch: feature-rich full text search backend
+	provides = iceshrimp
+	conflicts = iceshrimp
+	options = !strip
+	backup = etc/iceshrimp/configuration.yml
+	source = https://repo.iceshrimp.dev/archlinux/iceshrimp/os/x86_64/iceshrimp-v2023.11.2-3-x86_64.pkg.tar.zst
+	source = iceshrimp.hook
+	sha512sums = 5ea4c415c38d0abaebfb2886a832771e02a9eba324b503e92bc9adf1e29c7c07e70eeeb4598daa3f7eb0bfe931cc0fda4c547340997d2a961438bc962d28aa6b
+	sha512sums = 91c456bda5c14b01cbf770a2e9e57425ac5e82226799d39e11cc6e83b219a0559eeed8693c5eb051fffb28cdd23d4682ee40f46372117880aeeddb00ecb8726f
+
+pkgname = iceshrimp-bin

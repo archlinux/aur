@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = iceshrimp-bin
+
+[Action]
+Description = Restarting iceshrimp daemon...
+When = PostTransaction
+Exec = /bin/bash -c '/usr/bin/systemctl is-active iceshrimp.service -q && /usr/bin/systemctl restart iceshrimp.service || /usr/bin/true'
