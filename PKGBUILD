@@ -10,23 +10,15 @@ pkgdesc="Fast and Portable Character String Processing Facilities"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("custom")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("i686" "x86_64")
 depends=(
     "icu>=61"
     "r>=3.4"
-    "r-cpp11"
 )
 optdepends=()
-makedepends=(
-    "r-roxygen2"
-    "r-pkgbuild"
-)
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-tinytest"
-# )
+makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=("c4d188e3627d91417ff093bfe6f6cc57126ca346aa1fb28a30d12c7730f6197cf3c61451dd7d59c3467eec9fe006b0d13cabf593a85cf151d651cf0e419bf735")
@@ -34,11 +26,6 @@ b2sums=("c4d188e3627d91417ff093bfe6f6cc57126ca346aa1fb28a30d12c7730f6197cf3c6145
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
-
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
