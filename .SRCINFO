@@ -1,0 +1,14 @@
+pkgbase = wazuh-indexer
+	pkgdesc = Wazuh Indexer for Arch Linux
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://wazuh.com/
+	install = wazuh-indexer.install
+	arch = x86_64
+	license = gpl2
+	depends = coreutils
+	source = https://packages.wazuh.com/4.x/yum/wazuh-indexer-4.6.0-1.x86_64.rpm
+	validpgpkeys = 9E646BB0630C8FD18ACD15541B93E6A766CD229D
+	sha256sums = 5cb9496f98595c64d351d4b99073c9a7aa48ebe0496eda4853732d2fe66abbf5
+
+pkgname = wazuh-indexer
