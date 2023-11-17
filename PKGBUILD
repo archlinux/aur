@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
-   'alsa-lib'
+    'alsa-lib'
     'aom'
     'aribb24'
     'avisynthplus'
@@ -116,7 +116,7 @@ depends=(
     'zvbi'
     'chromaprint-fftw'
     'davs2'
-    'libklvanc-git'
+    'libklvanc'
     'librist'
     'rockchip-mpp'
     'shine'
