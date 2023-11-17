@@ -16,5 +16,5 @@ md5sums=("SKIP")
 package()
 {
   cd "$_pkgname"
-  python setup.py install --root="$pkgdir"
+  python setup.py install
 }
