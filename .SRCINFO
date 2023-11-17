@@ -1,7 +1,7 @@
 pkgbase = routinator
 	pkgdesc = RPKI validator written in Rust
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nlnetlabs.nl/rpki
 	arch = i686
 	arch = x86_64

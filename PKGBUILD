@@ -2,7 +2,7 @@
 
 pkgname=routinator
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/rpki"
@@ -39,7 +39,6 @@ package() {
     --root "$pkgdir/usr" \
     --path "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 "pkg/common/routinator-init" -t "$pkgdir/usr/bin"
   install -Dm644 "etc/routinator.conf.example" -t "$pkgdir/etc/routinator"
   install -Dm644 "etc/routinator.conf.system-service" "$pkgdir/etc/routinator/routinator.conf"
   install -Dm644 "pkg/common"/routinator{,-minimal}.routinator.service -t "$pkgdir/usr/lib/systemd/system"
