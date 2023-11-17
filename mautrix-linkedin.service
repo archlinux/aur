@@ -1,0 +1,29 @@
+[Unit]
+Description=LinkedIn Messaging Matrix Bridge
+
+[Service]
+ExecStart=python -m linkedin_matrix -nc /etc/mautrix-linkedin/config.yaml -r /etc/mautrix-linkedin/registration.yaml
+Restart=on-failure
+User=mautrix-linkedin
+WorkingDirectory=~
+
+ReadWritePaths=/var/lib/mautrix-linkedin
+
+NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectKernelModules=true
+ProtectClock=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
