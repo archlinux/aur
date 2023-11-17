@@ -30,7 +30,6 @@ pkgbase = issie
 	depends = gtk3
 	conflicts = issie
 	source = issie-4.1.0.tar.gz::https://github.com/tomcl/issie/archive/refs/tags/v4.1.0.tar.gz
-	source = issie.sh
 	sha256sums = b747eaa4301f4f47c400f78d191c458110d5dfaf3a910429f2600c754bb9c132
 	sha256sums = 81dc5466d488db9e26489a5a00af471dc4529e20509a94b5a030619a471f972f
 

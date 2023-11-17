@@ -38,7 +38,6 @@ makedepends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v$pkgver.tar.gz"
-    "${pkgname}.sh"
 )
 sha256sums=('b747eaa4301f4f47c400f78d191c458110d5dfaf3a910429f2600c754bb9c132'
             '81dc5466d488db9e26489a5a00af471dc4529e20509a94b5a030619a471f972f')
