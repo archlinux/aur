@@ -7,13 +7,18 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
+## options
+# three-stage profile-guided optimization
+: ${_build_pgo:=false}
+
+## --
 pkgname=firefox-wayland-hg
 _pkgname=firefox-nightly
-pkgver=118.0a1+20230818.2+hf01044248c85
+pkgver=121.0a1+20231117.1+h0dfaf13a5787
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, nightly branding, targeting wayland)"
 url="https://www.mozilla.org/firefox/channel/#nightly"
-arch=(x86_64) 
+arch=(x86_64)
 license=(
   GPL
   LGPL
@@ -26,7 +31,8 @@ depends=(
   icu
   libpulse
   mime-types
-  nss
+  nspr
+  #nss
   ttf-font
   libvpx
   libwebp
@@ -145,11 +151,6 @@ prepare() {
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
-  #
-  # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
-  # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
-  #
-
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -157,7 +158,7 @@ mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize
+ac_add_options --enable-optimize=-O3
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
@@ -165,11 +166,6 @@ ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only
 
-export AR=llvm-ar
-export CC='clang'
-export CXX='clang++'
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
 export MOZ_ENABLE_WAYLAND=1
 
 # Branding
@@ -188,7 +184,7 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System Libraries
 ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
+#ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
@@ -196,7 +192,6 @@ ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
 
-ac_add_options --enable-optimize=-O3
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
@@ -222,8 +217,50 @@ build() {
 
   # LTO/PGO needs more open files
   ulimit -n 4096
-  
-  ./mach build
+
+  if [[ x"${_build_pgo::1}" == "xt" ]] ; then
+    # Do 3-tier PGO
+    echo "Building instrumented browser..."
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
+    ./mach build
+
+    echo "Profiling instrumented browser..."
+    ./mach package
+    LLVM_PROFDATA=llvm-profdata \
+      JARLOG_FILE="$PWD/jarlog" \
+      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+      ./mach python build/pgo/profileserver.py
+
+    stat -c "Profile data found (%s bytes)" merged.profdata
+    test -s merged.profdata
+
+    stat -c "Jar log found (%s bytes)" jarlog
+    test -s jarlog
+
+    echo "Removing instrumented browser..."
+    ./mach clobber
+
+    echo "Building optimized browser..."
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross,full
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+    ./mach build
+  else
+    echo "Building browser..."
+    cat >.mozconfig ../mozconfig - <<END
+export AR=llvm-ar
+export CC='clang'
+export CXX='clang++'
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
+END
+    ./mach build
+  fi
 
   echo "Building symbol archive..."
   ./mach buildsymbols
@@ -249,6 +286,9 @@ pref("extensions.autoDisableScopes", 11);
 
 // Enable GNOME Shell search provider
 pref("browser.gnome-search-provider.enabled", true);
+
+// Enable JPEG XL images
+pref("image.jxl.enabled", true);
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
