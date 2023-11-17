@@ -1,0 +1,20 @@
+pkgbase = kana-gtk4-git
+	pkgdesc = Learn Japanese characters (latest commit)
+	pkgver = 1.2.r1.g4d38467
+	pkgrel = 1
+	url = https://gitlab.gnome.org/fkinoshita/kana
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = cargo
+	makedepends = git
+	makedepends = meson
+	depends = gst-plugins-bad-libs
+	depends = libadwaita
+	provides = kana-gtk4
+	conflicts = kana
+	source = git+https://gitlab.gnome.org/fkinoshita/kana.git
+	sha256sums = SKIP
+
+pkgname = kana-gtk4-git
