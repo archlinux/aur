@@ -1,6 +1,6 @@
 pkgbase = escrcpy
 	pkgdesc = 使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://github.com/viarotel-org/escrcpy
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = escrcpy
 	depends = hicolor-icon-theme
 	depends = scrcpy
 	conflicts = escrcpy
-	source = escrcpy-1.14.2.zip::https://github.com/viarotel-org/escrcpy/archive/refs/tags/v1.14.2.zip
+	source = escrcpy-1.14.3.zip::https://github.com/viarotel-org/escrcpy/archive/refs/tags/v1.14.3.zip
 	source = escrcpy.sh
-	sha256sums = fc0297fe4a7ef1ee090664385bd8678b9c0dab72ac09aff27a73d31f381f9122
+	sha256sums = b8c903c415317cbd428d7137ca683f63ad6b88e24e99c0e1d4d5b99989af8ce9
 	sha256sums = 941cb7196d03283a6e65a2271f0c8381a9ec8176f38ce9dc9916f3f89b29a720
 
 pkgname = escrcpy
