@@ -1,24 +1,29 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: actionless <actionless DOT loveless PLUS aur AT gmail MF com>
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Ng Oon-Ee
 # Contributor: Dan Vratil
 
-pkgbase=nvidia-utils-beta
-pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=535.98
+pkgbase=nvidia-utils-tesla
+pkgname=(
+	'nvidia-utils-tesla'
+	'opencl-nvidia-tesla'
+	'nvidia-settings-tesla'
+)
+pkgver=535.129.03
 pkgrel=1
-pkgdesc='NVIDIA drivers utilities (beta version)'
+pkgdesc='NVIDIA drivers utilities (tesla version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
-source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+source=("https://us.download.nvidia.com/tesla/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('1350c09952d37be2f90d608e36ae3b050b44fd16f6d9a9193071a12bfd054ec3'
+sha256sums=('e6dca5626a2608c6bb2a046cfcb7c1af338b9e961a7dd90ac09bb8a126ff002e'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '4fbfd461f939f18786e79f8dba5fdb48be9f00f2ff4b1bb2f184dbce42dd6fc3'
@@ -49,10 +54,10 @@ prepare() {
     patch -d "$_pkg" -Np1 -i "${srcdir}/120-nvidia-settings-change-desktop-paths.patch"
 }
 
-package_nvidia-settings-beta() {
-    pkgdesc='Tool for configuring the NVIDIA graphics driver (beta version)'
-    depends=("nvidia-utils-beta>=${pkgver}" 'gtk3')
-    provides=("nvidia-settings=${pkgver}" "nvidia-settings-beta=${pkgver}")
+package_nvidia-settings-tesla() {
+    pkgdesc='Tool for configuring the NVIDIA graphics driver (tesla version)'
+    depends=("nvidia-utils-tesla>=${pkgver}" 'gtk3')
+    provides=("nvidia-settings=${pkgver}" "nvidia-settings-tesla=${pkgver}")
     conflicts=('nvidia-settings')
     
     cd "$_pkg"
@@ -67,9 +72,9 @@ package_nvidia-settings-beta() {
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_opencl-nvidia-beta() {
-    pkgdesc='OpenCL implemention for NVIDIA (beta version)'
-    depends=('zlib' "nvidia-utils-beta>=${pkgver}")
+package_opencl-nvidia-tesla() {
+    pkgdesc='OpenCL implemention for NVIDIA (tesla version)'
+    depends=('zlib' "nvidia-utils-tesla>=${pkgver}")
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=("opencl-nvidia=${pkgver}" 'opencl-driver')
     conflicts=('opencl-nvidia')
@@ -86,13 +91,13 @@ package_opencl-nvidia-beta() {
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_nvidia-utils-beta() {
+package_nvidia-utils-tesla() {
     depends=('xorg-server' 'libglvnd' 'egl-wayland')
-    optdepends=('nvidia-settings-beta: for the configuration tool'
+    optdepends=('nvidia-settings-tesla: for the configuration tool'
                 'xorg-server-devel: for nvidia-xconfig'
-                'opencl-nvidia-beta: for OpenCL support')
+                'opencl-nvidia-tesla: for OpenCL support')
     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' "nvidia-libgl=${pkgver}"
-              "nvidia-libgl-beta=${pkgver}")
+              "nvidia-libgl-tesla=${pkgver}")
     conflicts=('nvidia-utils' 'nvidia-libgl')
     replaces=('nvidia-libgl')
     install=nvidia-utils.install
