@@ -1,7 +1,7 @@
 pkgbase = prayermate-id
 	pkgdesc = Command line based Muslim prayer reminder - Indonesia
 	pkgver = 0.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tfkhdyt/prayermate
 	arch = x86_64
 	license = ISC
