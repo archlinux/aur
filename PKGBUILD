@@ -1,24 +1,26 @@
-pkgname="ata"
-pkgver=2.0.1
+pkgname="ata2"
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Ask the Terminal Anything"
 arch=('x86_64')
 url="https://github.com/rikhuijzer/ata"
 makedepends=('git' 'cargo')
 source=(
-    "git+https://github.com/rikhuijzer/ata.git#tag=v$pkgver"
+    "git+https://github.com/ctrlcctrlv/ata2.git#tag=v$pkgver"
 )
 md5sums=('SKIP')
 conflicts=(
-    ata-bin
-    ata-git
+    ata2-git
+)
+provides=(
+    ata
 )
 
 build() {
-    cd $srcdir/ata
+    cd $srcdir/$pkgname
     cargo build --release
 }
 
 package() {
-    install -D $srcdir/ata/target/release/ata $pkgdir/usr/bin/ata
+    install -D $srcdir/$pkgname/target/release/$pkgname $pkgdir/usr/bin/$pkgname
 }
