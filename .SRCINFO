@@ -1,12 +1,12 @@
 pkgbase = sonobuoy-bin
 	pkgdesc = A diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests in an accessible and non-destructive manner.
-	pkgver = 0.57.0
+	pkgver = 0.57.1
 	pkgrel = 1
 	url = https://github.com/vmware-tanzu/sonobuoy
 	arch = x86_64
 	license = apache
 	provides = sonobuoy
-	source = sonobuoy-0.57.0.tar.gz::https://github.com/vmware-tanzu/sonobuoy/releases/download/v0.57.0/sonobuoy_0.57.0_linux_amd64.tar.gz
-	sha256sums = f9006ed997fd5a701b34a96786efffa52d5e77873bfc717bc252c2e5ef8a7f3c
+	source = sonobuoy-0.57.1.tar.gz::https://github.com/vmware-tanzu/sonobuoy/releases/download/v0.57.1/sonobuoy_0.57.1_linux_amd64.tar.gz
+	sha256sums = 0fd3ae735ee25b6b37b713aadd4a836b53aa2b82c8e6ecad0c2359de046f8212
 
 pkgname = sonobuoy-bin
