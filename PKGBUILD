@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=btop-git
-pkgver=1.2.13.r698.e269046
+pkgver=1.2.13.r772.0267eba
 pkgrel=1
 pkgdesc="A monitor of resources"
 arch=(any)
@@ -39,7 +39,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  DESTDIR="${pkgdir}" make install
+  DESTDIR="${pkgdir}" make PREFIX=/usr install
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
