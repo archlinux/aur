@@ -40,8 +40,8 @@ build() {
 	wget -nc "https://builder.blender.org/download/daily/$_full"
 	tar -xJ -f "$_full"
 	cd "${_full%.tar.xz}"
-	# Remove included Python installation, so system Python is used instead. (python 3.10) (working 2022-03-09)
-	rm -rf "$_upstreamversion/python"
+	# Remove included Python installation, so system Python is used instead. (not working 2023-11-16)
+	# rm -rf "$_upstreamversion/python"
 	sed -i "s/=blender/=blender-$_upstreamversion/" blender.desktop
 	sed -i "s/=Blender/=Blender-$_upstreamversion/" blender.desktop
 	#for f in datafiles/icons/*/apps/blender.* ; do chmod 644 $f && mv $f "${f%.*}-$_upstreamversion.${f#*.}" ; done
@@ -50,8 +50,8 @@ TryExec=blender-$_upstreamversion-thumbnailer
 Exec=blender-$_upstreamversion-thumbnailer %u %o
 MimeType=application/x-blender;
 " > blender.thumbnailer
-	echo -e "#!/bin/bash\nexec /usr/share/blender/blender-$_upstreamversion \$@" > blender-$_upstreamversion
-	echo -e "#!/bin/bash\nexec /usr/share/blender/blender-softwaregl-$_upstreamversion \$@" > blender-$_upstreamversion-softwaregl
+	echo -e "#!/bin/bash\nLD_LIBRARY_PATH=/usr/share/blender/$_upstreamversion/lib exec /usr/share/blender/blender-$_upstreamversion \$@" > blender-$_upstreamversion
+	echo -e "#!/bin/bash\nLD_LIBRARY_PATH=/usr/share/blender/$_upstreamversion/lib exec /usr/share/blender/blender-softwaregl-$_upstreamversion \$@" > blender-$_upstreamversion-softwaregl
 }
 
 package() {
@@ -65,6 +65,7 @@ package() {
 	install -Dm644 blender-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/blender-$_upstreamversion-symbolic.svg"
 	mkdir -p "$pkgdir/usr/share/blender/"
 	cp -r $_upstreamversion "$pkgdir/usr/share/blender/$_upstreamversion"
+	cp -r lib "$pkgdir/usr/share/blender/$_upstreamversion/"
 	# binaries path workaround
 	install -Dm755 blender "$pkgdir/usr/share/blender/blender-$_upstreamversion"
 	install -Dm755 blender-$_upstreamversion "$pkgdir/usr/bin/blender-$_upstreamversion"
