@@ -15,7 +15,6 @@ optdepends=(
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname}-bin ${_pkgname})
-options=(!strip)
 source=(
     "git+https://github.com/net-breaker/sing-land"
     "https://github.com/SagerNet/sing-box/releases/download/v1.6.0/sing-box-1.6.0-linux-amd64.tar.gz"

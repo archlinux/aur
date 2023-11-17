@@ -22,7 +22,6 @@ pkgbase = singland-git
 	provides = singland
 	conflicts = singland-bin
 	conflicts = singland
-	options = !strip
 	source = git+https://github.com/net-breaker/sing-land
 	source = https://github.com/SagerNet/sing-box/releases/download/v1.6.0/sing-box-1.6.0-linux-amd64.tar.gz
 	source = singland.desktop
