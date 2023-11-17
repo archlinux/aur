@@ -3,15 +3,15 @@
 pkgname=python-classdiff
 _name=${pkgname#python-}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to diff classes"
 url="https://pypi.org/project/classdiff/"
 depends=(
   'python-dictdiffer')
 makedepends=(
-	'python-build'
-	'python-installer'
-	'python-wheel')
+  'python-build'
+  'python-installer'
+  'python-wheel')
 license=('Apache-2.0')
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
