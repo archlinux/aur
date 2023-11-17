@@ -6,7 +6,7 @@ _pkgname=django-ninja
 _remote_prefix="v"
 _src_prefix=""
 pkgname=python-django-ninja
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Fast Django REST Framework"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-django>=2.2'
 makedepends=('python-flit'
              'python-installer')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/vitalik/django-ninja/archive/refs/tags/$_remote_prefix$pkgver.tar.gz")
-sha256sums=('ba4e816d8443b4396119d4534a9087f3b4d85282b5a8c408850e75fc2e311446')
+sha256sums=('2308adfc28c2c6e64292503cfb9bc695e275718f341339f6eb410f429b04494d')
 
 build() {
   cd "$_pkgname-$_src_prefix$pkgver"
