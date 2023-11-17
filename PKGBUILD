@@ -11,12 +11,16 @@
 # three-stage profile-guided optimization
 : ${_build_pgo:=false}
 
+# pkgtype: hg or wayland-hg
+: ${_pkgtype:=wayland-hg}
+
+
 ## --
-pkgname=firefox-wayland-hg
+pkgname="firefox${_pkgtype:+-$_pkgtype}"
 _pkgname=firefox-nightly
 pkgver=121.0a1+20231117.1+h0dfaf13a5787
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, nightly branding, targeting wayland)"
+pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
 arch=(x86_64)
 license=(
@@ -31,8 +35,8 @@ depends=(
   icu
   libpulse
   mime-types
-  nspr
-  #nss
+  nspr-hg
+  nss-hg
   ttf-font
   libvpx
   libwebp
@@ -63,11 +67,6 @@ makedepends=(
   wasi-libc
   wasi-libc++
   wasi-libc++abi
-  # Cage, Pixman, Polkit, and XWayland are required for PGO:
-  # cage
-  # pixman
-  # polkit
-  # xorg-server-xwayland
   yasm
   zip
 )
@@ -79,15 +78,41 @@ optdepends=(
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
+
+if [[ x"${_pkgtype::1}" == "xh" ]] ; then
+  pkgdesc+=" (mozilla-unified hg, nightly branding, targeting wayland and x11)"
+
+  depends+=(
+    libxss
+    libxt
+  )
+  makedepends+=(
+    xorg-server-xvfb
+  )
+else
+  pkgdesc+=" (mozilla-unified hg, nightly branding, targeting wayland)"
+
+  if [[ x"${_enable_pgo::1}" == "xt" ]] ; then
+    makedepends+=(
+      cage
+      pixman
+      polkit
+      xorg-server-xwayland
+    )
+  fi
+fi
+
+conflicts=('firefox-nightly')
+provides=('firefox-nightly')
+
 options=(
   !emptydirs
   !lto
   !makeflags
   !strip
 )
+
 _repo=https://hg.mozilla.org/mozilla-unified
-conflicts=('firefox-nightly' 'firefox-hg')
-provides=('firefox-nightly')
 source=(
   hg+$_repo
   $_pkgname.desktop
@@ -164,7 +189,6 @@ ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
-ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only
 
 export MOZ_ENABLE_WAYLAND=1
 
@@ -184,7 +208,7 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System Libraries
 ac_add_options --with-system-nspr
-#ac_add_options --with-system-nss
+ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
@@ -195,7 +219,7 @@ ac_add_options --with-system-jpeg
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --disable-crashreporter
+ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 
@@ -203,7 +227,15 @@ ac_add_options --disable-tests
 mk_add_options MOZ_DATA_REPORTING=0
 mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
+
+# Other
 END
+
+  if [[ x"${_pkgtype::1}" == "xh" ]] ; then
+    echo >>../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland"
+  else
+    echo >>../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only"
+  fi
 }
 
 build() {
@@ -346,7 +378,12 @@ ObjectPath=/org/mozilla/${_pkgname//-/}/SearchProvider
 Version=2
 END
 
-
+  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+    make -C obj uploadsymbols
+  else
+    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
+  fi
 }
 
 # vim:set sw=2 sts=-1 et:
