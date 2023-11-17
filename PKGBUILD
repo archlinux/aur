@@ -1,6 +1,4 @@
-# Maintainer: AzureZeng <weedycn at outlook.com>
-# Contributor: Shiroko <hhx.xxm at gmail.com>
-# Contributor: Johnpoint <me at lvcshu.com>
+# Maintainer: Jat <chat@jat.email>
 
 pkgname=clash-for-windows-bin
 pkgver=0.20.39
