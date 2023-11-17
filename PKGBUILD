@@ -5,9 +5,7 @@
 # options
 if [ ! -z "$_srcinfo" ] ; then
   _autoupdate=false
-fi
-
-if [ -z "$_pkgver" ] ; then
+elif [ -z "$_pkgver" ] ; then
   : ${_autoupdate:=true}
 else
   : ${_autoupdate:=false}
@@ -25,54 +23,40 @@ url="https://github.com/Alex313031/Thorium"
 license=('BSD')
 arch=('x86_64')
 
-# update version
-case "${_autoupdate::1}" in
-  't'|'y'|'1')
-    _response=$(curl "https://api.github.com/repos/${url#*.com/}/releases" -s)
+# main package
+_main_package() {
+  _update_version
 
-    _regex='^.*thorium-browser_([0-9\.]+)_.*\.deb.*$'
-    _pkgver_new=$(
-      printf '%s' "$_response" \
-        | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
-    )
+  depends=()
+  makedepends=()
+  optdepends=(
+    'gnome-keyring: for storing passwords in GNOME keyring'
+    'kdialog: for file dialogs in KDE'
+    'kwallet5: for storing passwords in KWallet'
+    'pipewire: WebRTC desktop sharing under Wayland'
+  )
 
-    # update _pkgver
-    if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
-      _pkgver="$_pkgver_new"
-      sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
-    fi
-    ;;
-esac
+  options=('!emptydirs' '!strip')
+  install="$_pkgname.install"
 
-depends=()
-makedepends=()
-optdepends=(
-  'gnome-keyring: for storing passwords in GNOME keyring'
-  'kdialog: for file dialogs in KDE'
-  'kwallet5: for storing passwords in KWallet'
-  'pipewire: WebRTC desktop sharing under Wayland'
-)
+  _dl_url="https://github.com/Alex313031/Thorium/releases/download/M${_pkgver:?}"
+  _dl_filename="${_pkgname}_${_pkgver:?}_amd64.deb"
+  noextract+=("$_dl_filename")
+  source=(
+    "$_dl_url/$_dl_filename"
+    "$_pkgname.sh"
+  )
+  sha256sums=(
+    'SKIP'
+    '76dc15b6001053edc422dbed7041273a21315b5f59225f62f8b21b6385f6f9ba'
+  )
 
-options=('!emptydirs' '!strip')
-install="$_pkgname.install"
-
-_dl_url="https://github.com/Alex313031/Thorium/releases/download/M${_pkgver:?}"
-_dl_filename="${_pkgname}_${_pkgver:?}_amd64.deb"
-noextract+=("$_dl_filename")
-source=(
-  "$_dl_url/$_dl_filename"
-  "$_pkgname.sh"
-)
-sha256sums=(
-  'SKIP'
-  'd2bec392c1dafc6ab4a4cd463be8cf627c58e00960ebea54c54151e9df101f53'
-)
-
-pkgver() {
-  printf '%s' \
-    "${_pkgver:?}"
+  pkgver() {
+    printf '%s' "${_pkgver:?}"
+  }
 }
 
+# common functions
 package() {
   provides=("$_pkgname")
   conflicts=("$_pkgname")
@@ -132,3 +116,28 @@ package() {
     "${pkgdir:?}/opt/$_pkgname"/product_logo_*.{png,xpm} \
     "${pkgdir:?}/usr/share/menu/"
 }
+
+# update version
+_update_version() {
+  case "${_autoupdate::1}" in
+    't'|'y'|'1')
+      _repo="${url#*//*/}"
+      _response=$(curl "https://api.github.com/repos/${_repo:?}/releases" -s)
+
+      _regex='^.*thorium-browser_([0-9\.]+)_.*\.deb.*$'
+      _pkgver_new=$(
+        printf '%s' "$_response" \
+          | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
+      )
+
+      # update _pkgver
+      if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
+        _pkgver="${_pkgver_new:?}"
+        sed -Ei 's@^(\s*: \$\{_pkgver):=.*\}$@\1:='"${_pkgver:?}"'}@' "$startdir/PKGBUILD"
+      fi
+      ;;
+  esac
+}
+
+# execute
+_main_package
