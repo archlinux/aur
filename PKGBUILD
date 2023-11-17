@@ -1,20 +1,25 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Olaf Bauer <hydro@freenet.de>
+# Unshare fork: Darjan Krijan [https://disc-kuraudo.eu]
 
-pkgname=makemkv
+_pkgname=makemkv
+pkgname=${_pkgname}-unshare
 pkgver=1.17.5
 pkgrel=1
-pkgdesc="DVD and Blu-ray to MKV converter"
+pkgdesc="DVD and Blu-ray to MKV converter - unshared internet access to prevent phoning home."
 arch=(x86_64 i686 aarch64)
 url="https://www.makemkv.com"
 license=('custom: GuinpinSoft Inc EULA' LGPL MPL)
 depends=(qt5-base ffmpeg)
 optdepends=(java-runtime)
 optdepends_x86_64=('lib32-glibc: dts support')
+conflicts=(makemkv)
+replaces=(makemkv)
+provides=(makemkv)
 install=makemkv.install
-source=(${url}/download/${pkgname}-bin-${pkgver}.tar.gz
-        ${url}/download/${pkgname}-oss-${pkgver}.tar.gz
+source=(${url}/download/${_pkgname}-bin-${pkgver}.tar.gz
+        ${url}/download/${_pkgname}-oss-${pkgver}.tar.gz
         makemkv.1
         makemkvcon.1
         mmdtsdec.1)
@@ -25,21 +30,26 @@ sha256sums=('cb009c31f69601e2f66e315925a09ad175bad041f27c5096d7b06dd5004df04f'
             '2a6237d3d5ce073734c658c7ec5d2141ecd0047e6d3c45d1bd594135c928878f')
 
 build() {
-  cd "${srcdir}/${pkgname}-oss-${pkgver}"
+  cd "${srcdir}/${_pkgname}-oss-${pkgver}"
   CFLAGS="$CFLAGS -std=c++11" CC=gcc CXX=g++ ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-oss-${pkgver}"
+  cd "${srcdir}/${_pkgname}-oss-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  cd "${srcdir}/${pkgname}-bin-${pkgver}"
+  cd "${srcdir}/${_pkgname}-bin-${pkgver}"
   install -d tmp
   echo accepted > tmp/eula_accepted
   make DESTDIR="${pkgdir}" install
+  for b in makemkv makemkvcon mmccextr mmgplsrv sdftool; do
+    mv "${pkgdir}/usr/bin/${b}" "${pkgdir}/usr/bin/${b}-bin"
+    echo -e "#!/bin/bash\nset -x\nsudo unshare -n --setuid=\${UID} ${b}-bin \"\${@}\"" > "${pkgdir}/usr/bin/${b}"
+    chmod +x "${pkgdir}/usr/bin/${b}"
+  done
 
-  install -Dm 644 src/eula_en_linux.txt "${pkgdir}/usr/share/licenses/${pkgname}/eula_en_linux.txt"
+  install -Dm 644 src/eula_en_linux.txt "${pkgdir}/usr/share/licenses/${_pkgname}/eula_en_linux.txt"
 
   cd "${srcdir}/"
   install -d "${pkgdir}/usr/share/man/man1/"

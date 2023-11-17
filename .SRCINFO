@@ -1,5 +1,5 @@
-pkgbase = makemkv
-	pkgdesc = DVD and Blu-ray to MKV converter
+pkgbase = makemkv-unshare
+	pkgdesc = DVD and Blu-ray to MKV converter - unshared internet access to prevent phoning home.
 	pkgver = 1.17.5
 	pkgrel = 1
 	url = https://www.makemkv.com
@@ -13,6 +13,9 @@ pkgbase = makemkv
 	depends = qt5-base
 	depends = ffmpeg
 	optdepends = java-runtime
+	provides = makemkv
+	conflicts = makemkv
+	replaces = makemkv
 	source = https://www.makemkv.com/download/makemkv-bin-1.17.5.tar.gz
 	source = https://www.makemkv.com/download/makemkv-oss-1.17.5.tar.gz
 	source = makemkv.1
@@ -25,4 +28,4 @@ pkgbase = makemkv
 	sha256sums = 2a6237d3d5ce073734c658c7ec5d2141ecd0047e6d3c45d1bd594135c928878f
 	optdepends_x86_64 = lib32-glibc: dts support
 
-pkgname = makemkv
+pkgname = makemkv-unshare
