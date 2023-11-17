@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/mayeut/pybase64"
 license=('BSD-2-Clause')
 depends=('python')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('git' 'python-setuptools' 'python-pip')
 provides=(${_pkgname})
 source=(
     "git+https://github.com/mayeut/pybase64"

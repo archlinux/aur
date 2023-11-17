@@ -5,9 +5,11 @@ pkgbase = python-pybase64-git
 	url = https://github.com/mayeut/pybase64
 	arch = any
 	license = BSD-2-Clause
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python
+	provides = pybase64
 	source = git+https://github.com/mayeut/pybase64
 	sha256sums = SKIP
 
