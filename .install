@@ -1,0 +1,11 @@
+post_install() {
+	ln -s /usr/share/easyroam_connect_desktop/easyroam_connect_desktop /usr/bin/easyroam_connect_desktop
+	chmod +x /usr/bin/easyroam_connect_desktop
+	if hash update-desktop-database 2>/dev/null; then
+	update-desktop-database
+	fi
+}
+
+post_remove() {
+	rm /usr/bin/easyroam_connect_desktop
+}
