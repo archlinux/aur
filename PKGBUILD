@@ -1,6 +1,6 @@
 pkgname=ymcli-git
 _pkgname=ymcli
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
