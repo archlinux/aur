@@ -1,7 +1,7 @@
 pkgbase = google-messages-bin
 	pkgdesc = A "native-like" OS X, Windows, & Linux desktop app for Google Messages
 	pkgver = 1.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.messagesfordesktop.com/
 	arch = x86_64
 	license = custom

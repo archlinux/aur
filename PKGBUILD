@@ -2,7 +2,7 @@
 pkgname=google-messages-bin
 _pkgname=GoogleMessages
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A "native-like" OS X, Windows, & Linux desktop app for Google Messages'
 arch=('x86_64')
 url="https://www.messagesfordesktop.com/"
@@ -23,7 +23,6 @@ source=(
 sha256sums=('204112783720e2428ec0ad78ebd9f95f30bf9c77959d4ebd6232be30da98970a'
             '252cbd44d660094d498e29820f07cf41608a48ccc96b597e6255ef2fed2c873c')
 build() {
-    asar pack "${srcdir}/${_pkgname}-linux-x64/resources/app" "${srcdir}/${pkgname%-bin}.asar"
     gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {   
