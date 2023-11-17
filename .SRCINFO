@@ -8,6 +8,7 @@ pkgbase = libndi-bin
 	provides = libndi
 	conflicts = libndi-git
 	conflicts = ndi-sdk
+	conflicts = ndi-advanced-sdk
 	noextract = a.deb
 	noextract = b.deb
 	source = a.deb::https://github.com/obs-ndi/obs-ndi/releases/download/4.11.1/libndi5_5.5.3-1_amd64.deb

@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('LGPL2.0')
 url='https://github.com/obs-ndi/obs-ndi'
 provides=('libndi')
-conflicts=('libndi-git' 'ndi-sdk')
+conflicts=('libndi-git' 'ndi-sdk' 'ndi-advanced-sdk')
 source=("a.deb::${url}/releases/download/4.11.1/libndi${pkgver%%.*}_${pkgver}-1_amd64.deb"
         "b.deb::${url}/releases/download/4.11.1/libndi${pkgver%%.*}-dev_${pkgver}-1_amd64.deb")
 sha256sums=('3c47dd2386cd2a59df5f86953a7675ffe0ecf326eea784c4f17084f657a6e0ca'
