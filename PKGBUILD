@@ -29,6 +29,10 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
+  # Fix wrong path in generated pc file (it gets the packaging path)
+  sed -i 's|@CMAKE_INSTALL_PREFIX@|/usr|' shmdata/shmdata.pc.in
+
+  # Fix that shmdata master forced absolute path to /usr
   sed -i $'39i execute_process( \
     COMMAND "${PYTHON_EXECUTABLE}" -c "if True:\
   from distutils import sysconfig as sc  \
