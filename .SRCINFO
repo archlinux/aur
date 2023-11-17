@@ -16,7 +16,7 @@ pkgbase = thorium-browser-sse3-bin
 	source = https://github.com/Alex313031/Thorium-SSE3/releases/download/M117.0.5938.157/thorium-browser_117.0.5938.157_SSE3.deb
 	source = thorium-browser-sse3.sh
 	sha256sums = SKIP
-	sha256sums = 708b33eed479ec65d74e779a8c37a0cd88b3f024518103bc32a20f76270c92be
+	sha256sums = b7f8f93c82a9acc3bbb155fc7211a19e90d72427aa19af20f481fafb90db9d45
 
 pkgname = thorium-browser-sse3-bin
 	depends = alsa-lib
