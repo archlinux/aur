@@ -1,63 +1,124 @@
-# Maintainer: Alexey Peschany <archlinux at sandboiii dot xyz>
+# Maintainer: xiota / aur.chaotic.cx
+# Contributor: Alexey Peschany <archlinux at sandboiii dot xyz>
 
-_pkgname=mercury-browser
-pkgname=${_pkgname}-bin
+# options
+if [ -z "$_pkgver" ] ; then
+  : ${_autoupdate:=true}
+else
+  : ${_autoupdate:=false}
+fi
+
+: ${_pkgver:=115.4.0}
+
+: ${_pkgtype:=bin}
+
+# basic info
+_pkgname="mercury-browser"
+pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
 pkgver=115.4.0
-pkgrel=3
-pkgdesc="Firefox fork with compiler optimizations and patches from Librewolf, Waterfox, and GNU IceCat."
-arch=('x86_64')
-url="https://thorium.rocks/mercury"
+pkgrel=4
+pkgdesc="Compiler optimized, private Firefox fork"
+url="https://github.com/Alex313031/Mercury"
 license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
-optdepends=('ffmpeg: H264/AAC/MP3 decoding'
-            'hunspell: Spell checking'
-            'hyphen: Hyphenation'
-            'libnotify: Notification integration'
-            'networkmanager: Location detection via available WiFi networks'
-            'pulseaudio: Sound'
-            'upower: Battery API')
-source=("https://github.com/Alex313031/Mercury/releases/download/v.$pkgver/mercury_${pkgver}_linux_x64.zip"
-        "$_pkgname.sh"
-        "$_pkgname.desktop")
-sha256sums=('SKIP'
-            '3e70b82d2f477d5d032338a3c66a3ececaaaf5bf606ab5f5d018321a6fb6afab'
-            '8370ee50614115b06e0f8fa96dfbc2db80e2b9ab41368bf9b4ba42fb8ded9982')
+arch=('x86_64')
+
+# main package
+_main_package() {
+  _update_version
+
+  optdepends=(
+    'ffmpeg: H264/AAC/MP3 decoding'
+    'hunspell: Spell checking'
+    'hyphen: Hyphenation'
+    'networkmanager: Location detection via available WiFi networks'
+    'pulseaudio: Sound'
+    'upower: Battery API'
+  )
+
+  options=('!emptydirs' '!strip')
+  install="$_pkgname.install"
+
+  _dl_filename="${_pkgname}_${_pkgver:?}_amd64.deb"
+  noextract+=("$_dl_filename")
+  source=(
+    "$_dl_filename"::"$_dl_url"
+    "$_pkgname.sh"
+  )
+  sha256sums=(
+    'SKIP'
+    'f76a772f2c377c319c4e8bd737d219891b0c439bd8e07efd96584021c2e74bbb'
+  )
+}
+
+# common functions
+pkgver() {
+  printf '%s' \
+    "${_pkgver:?}"
+}
 
 package() {
-  # Create directories
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/applications
-  mkdir -p "$pkgdir"/opt
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
 
-  # Install
-  cp -r mercury_${pkgver}_linux_x64/mercury_${pkgver}_linux_x64/mercury/ "$pkgdir"/opt/$_pkgname
+  depends+=(
+    'dbus-glib'
+    'gtk3'
+    'libnotify' # notify-send
+    'libxt'
+    'nss'
+  )
 
-  # Temporal fix
-  # Hope next release won't have this problem
-  chmod +x "$pkgdir"/opt/$_pkgname/mercury
-  chmod +x "$pkgdir"/opt/$_pkgname/mercury-bin
-  chmod +x "$pkgdir"/opt/$_pkgname/glxtest
-  chmod +x "$pkgdir"/opt/$_pkgname/vaapitest
+  # extract archive
+  bsdtar -xf "$_dl_filename" data.tar.gz
+  bsdtar -xf data.tar.gz -C "${pkgdir:?}/"
+  rm data.tar.gz
 
-  # Launchers
-  install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
-  ln -s $_pkgname "$pkgdir"/usr/bin/$pkgname  # compatibility
+  # move and copy files into position
+  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/$_pkgname"
 
-  # Desktops
-  install -m644 *.desktop "$pkgdir"/usr/share/applications/
+  install -dm755 "${pkgdir:?}/opt/$_pkgname"
+  mv "${pkgdir:?}/usr/lib/mercury"/* "${pkgdir:?}/opt/$_pkgname/"
 
-  # Icons
-  for i in 16x16 32x32 48x48 64x64 128x128; do
-    install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$_pkgname/browser/chrome/icons/default/default${i/x*}.png \
-          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
-  done
+  install -Dm644 "${pkgdir:?}/usr/share/doc/mercury-browser/copyright" "${pkgdir:?}/usr/share/licenses/$pkgname/LICENSE"
 
-  # Use system-provided dictionaries
-  #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
-  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
+  # fix permissions
+  chmod -R u+rwX,go+rX,go-w "${pkgdir:?}/"
 
-  # Use system certificates
-  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
+  # remove unnecessary folders
+  \rm -rf "${pkgdir:?}/usr/lib/"
+  \rm -rf "${pkgdir:?}/usr/share/doc/"
+  \rm -rf "${pkgdir:?}/usr/share/lintian/"
 }
+
+# update version
+_update_version() {
+  if [ x"${_autoupdate::1}" != "xt" ] ; then
+    return
+  fi
+
+  _response=$(curl "https://api.github.com/repos/${url#*.com/}/releases" -s)
+
+  _get() {
+    printf '%s' "$_response" \
+      | awk -F '"' '/"'"$1"'":/{print $4}' \
+      | grep -E '_amd64\.deb' \
+      | head -1 | sed 's/^v//'
+  }
+
+  _dl_url=$(_get browser_download_url)
+
+  _regex='^.*mercury-browser_([0-9\.]+)_.*\.deb.*$'
+  _pkgver_new=$(
+    printf '%s' "$_dl_url" \
+      | grep -E "$_regex" | head -1 | sed -E "s@$_regex@\1@"
+  )
+
+  # update _pkgver
+  if [ x"$_pkgver" != x"${_pkgver_new:?}" ] ; then
+    _pkgver="$_pkgver_new"
+    sed -Ei "s@^(\s*: \\\$\{_pkgver):=.*\}\$@\1:=${_pkgver:?}}@" "$startdir/PKGBUILD"
+  fi
+}
+
+# execute
+_main_package
