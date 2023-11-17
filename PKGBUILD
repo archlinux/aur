@@ -2,7 +2,7 @@
 # PKGBUILD Maintainer: Jean-Michaël Celerier <jmcelerier @ sat dot qc dot ca>
 pkgname=shmdata-git
 pkgver=r838.96e044d
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to share flows of data frames between processes via shared memory"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/sat-mtl/tools/shmdata"

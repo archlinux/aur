@@ -1,7 +1,7 @@
 pkgbase = shmdata-git
 	pkgdesc = Library to share flows of data frames between processes via shared memory
 	pkgver = r838.96e044d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sat-mtl/tools/shmdata
 	arch = x86_64
 	arch = aarch64
