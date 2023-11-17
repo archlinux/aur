@@ -1,6 +1,6 @@
 pkgbase = paho-mqtt-cpp-git
 	pkgdesc = A C++ wrapper around paho-mqtt-c
-	pkgver = 1.0.1.r47.g7fe0c26
+	pkgver = 1.2.0.r58.ge9db86f
 	pkgrel = 1
 	url = https://github.com/eclipse/paho.mqtt.cpp
 	arch = x86_64
