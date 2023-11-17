@@ -1,6 +1,6 @@
---- a/example-config.yaml	2023-04-22 10:42:32.216037043 +0200
-+++ b/example-config.yaml	2023-04-22 10:43:14.796766004 +0200
-@@ -306,7 +306,7 @@
+--- a/example-config.yaml	2023-11-16 14:29:23.000000000 +0100
++++ b/example-config.yaml	2023-11-17 07:49:21.770871038 +0100
+@@ -355,7 +355,7 @@
        format: pretty-colored
      - type: file
        format: json
