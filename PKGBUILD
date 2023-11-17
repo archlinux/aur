@@ -6,7 +6,7 @@ pkgname=alchemy-viewer
 pkgdesc="A Second Life client with focus on performance and code correctness."
 _build_id=2240
 pkgver=7.0.1.${_build_id}
-pkgrel=1
+pkgrel=2
 #epoch=1
 # _release_version=2177
 _variant="beta"
@@ -16,7 +16,7 @@ url=https://www.alchemyviewer.org
 license=('LGPL')
 options=(!strip !lto)
 install=alchemy.install
-depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc xdg-desktop-portal zlib)
+depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 makedepends=('gcc' 'git' 'python-pip' 'python-virtualenv' 'sed' 'xz')
 optdepends=(
   'alsa-lib: ALSA support'
@@ -32,7 +32,8 @@ optdepends=(
   'mesa-libgl: Intel, Radeon, Nouveau support'
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support'
-  'wine: More up-to-date, less buggy SLVoice support')
+  'wine: More up-to-date, less buggy SLVoice support'
+  'xdg-desktop-portal: File picker portal')
 provides=('alchemy-viewer')
 replaces=('alchemy-viewer-git')
 _archive_file_name="alchemy-next-${pkgver}${_variant}.tar.bz2"
