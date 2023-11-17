@@ -1,6 +1,6 @@
 pkgbase = obs-multi-rtmp-git
 	pkgdesc = Multiple RTMP outputs plugin. Git version.
-	pkgver = r207.854c78e
+	pkgver = r348.e67aadc
 	pkgrel = 1
 	url = https://github.com/sorayuki/obs-multi-rtmp
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = obs-multi-rtmp-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = qt6-base
+	makedepends = qt6-svg
 	depends = obs-studio
 	provides = obs-multi-rtmp
 	conflicts = obs-multi-rtmp
