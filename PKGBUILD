@@ -146,11 +146,6 @@ prepare() {
     git remote set-url origin https://github.com/ValveSoftware/Proton.git
     git submodule update --init --filter=tree:0 --recursive
 
-    # Fix bindgen issue with llvm 16 by pulling in newer versions
-    pushd dav1d; git checkout 1.2.1; popd
-    pushd gst-plugins-rs; git checkout 0.11.0; popd
-    sed 's/libgstrsdav1d.so/libgstdav1d.so/g' -i Makefile.in
-
     for rustlib in gst-plugins-rs media-converter; do
     pushd $rustlib
         export RUSTUP_TOOLCHAIN=stable
