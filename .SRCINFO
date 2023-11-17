@@ -1,0 +1,11 @@
+pkgbase = bbolt
+	pkgdesc = An embedded key/value database for Go
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = https://github.com/etcd-io/bbolt
+	arch = x86_64
+	license = MIT
+	source = https://github.com/etcd-io/bbolt/archive/refs/tags/v1.3.8.tar.gz
+	sha512sums = b2d51e9f40a44ca5eaaf36d7c635b911f5f45aacc637b2ca4f6d1b6d3b673f7cafc2cfc60b64b0eb41056ee07298dbc8aa8d5b19cd343a3acf1d95ba5cf15ab2
+
+pkgname = bbolt
