@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw-git
-pkgver=2.9.r0.g6365efeb
+pkgver=2.10.r150.g7531dd5e
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -13,9 +13,6 @@ conflicts=('vkd3d-proton' 'd3d12.dll')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/HansKristian-Work/vkd3d-proton.git"
-    "git+https://github.com/HansKristian-Work/dxil-spirv.git"
-    "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
-    "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
     "setup_vkd3d_proton"
     "vkd3d-proton-extraopts.patch"
 )
@@ -28,16 +25,13 @@ pkgver() {
 prepare() {
     cd vkd3d-proton
 
-    for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
-        git submodule init "${submodule}"
-        git submodule set-url "${submodule}" "$srcdir"/"${submodule#*/}"
-        git -c protocol.file.allow=always submodule update "${submodule}"
-    done
-    pushd subprojects/dxil-spirv
-    git submodule init third_party/spirv-headers
-    git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
-    git -c protocol.file.allow=always submodule update third_party/spirv-headers
-    popd
+    # Explicitly set origin URL for submodules using relative paths
+    git remote set-url origin https://github.com/HansKristian-Work/vkd3d-proton.git
+    git submodule update --init --filter=tree:0 --recursive
+
+    # Uncomment to enable extra optimizations
+    # Patch crossfiles with extra optimizations from makepkg.conf
+    patch -p1 -i "$srcdir"/vkd3d-proton-extraopts.patch
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
@@ -67,10 +61,6 @@ prepare() {
     CFLAGS+=" -mno-avx2"
     CXXFLAGS+=" -mno-avx2"
 
-    # Uncomment to enable extra optimizations
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    patch -p1 -i "$srcdir"/vkd3d-proton-extraopts.patch
-
     local cross_ldflags="$LDFLAGS"
 
     local cross_cflags="$CFLAGS -mcmodel=small"
@@ -89,7 +79,7 @@ prepare() {
 }
 
 build() {
-    meson vkd3d-proton "build/x64" \
+    meson setup vkd3d-proton "build/x64" \
         --prefix "/usr/share/vkd3d-proton/x64" \
         --cross-file vkd3d-proton/build-win64.txt \
         --bindir "" --libdir "" \
@@ -98,7 +88,7 @@ build() {
         -Denable_tests=false
     ninja -C "build/x64" -v
 
-    meson vkd3d-proton "build/x86" \
+    meson setup vkd3d-proton "build/x86" \
         --cross-file vkd3d-proton/build-win32.txt \
         --prefix "/usr/share/vkd3d-proton/x86" \
         --bindir "" --libdir "" \
@@ -120,8 +110,5 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323'
-            '8fc019d1dca8c52b6af96c40ff06a6c215aad3e713ae17be72c7422f1ba45634')
+            'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362')
