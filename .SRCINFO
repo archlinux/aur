@@ -1,0 +1,13 @@
+pkgbase = trimal
+	pkgdesc = A tool for automated alignment trimming in large-scale phylogenetic analyses
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/inab/trimal
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	source = trimal-1.4.1.tgz::https://github.com/inab/trimal/archive/v1.4.1.tar.gz
+	sha256sums = cb8110ca24433f85c33797b930fa10fe833fa677825103d6e7f81dd7551b9b4e
+
+pkgname = trimal
