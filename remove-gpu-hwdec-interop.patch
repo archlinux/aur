@@ -1,0 +1,12 @@
+--- subtitld-23.02.orig/subtitld/interface/player.py	2023-03-13 20:38:33.000000000 +0100
++++ subtitld-23.02/subtitld/interface/player.py	2023-11-17 18:36:20.869500323 +0100
+@@ -69,9 +69,6 @@
+             # "gpu-context": "x11egl"
+         }
+ 
+-        if not ACTUAL_OS == 'windows':
+-            options["gpu-hwdec-interop"] = "vaapi-egl"
+-
+         for key, value in options.items():
+             setattr(widget.mpv, key, value)
+ 

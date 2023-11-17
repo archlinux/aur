@@ -1,7 +1,7 @@
 pkgbase = subtitld
 	pkgdesc = Subtitld: An open source software to create, edit and transcribe subtitles
 	pkgver = 23.02
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.subtitld.org/
 	arch = any
 	license = GPL3
@@ -31,6 +31,8 @@ pkgbase = subtitld
 	depends = python-chardet
 	depends = hicolor-icon-theme
 	source = https://gitlab.com/jonata/subtitld/-/archive/23.02/subtitld-23.02.tar.gz
+	source = remove-gpu-hwdec-interop.patch
 	sha256sums = 83381cd697fa4355bc0d4689dfc063efe9ec41c8e177b8e55e35b7b4e6af3ace
+	sha256sums = fe4288ee0bbde13e4cf20f9c55c7bc973e8928fd37da50b2c05038205ecf20d5
 
 pkgname = subtitld
