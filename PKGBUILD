@@ -1,15 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=drawio-desktop
 pkgname="${_pkgname}-git"
-pkgver=22.0.3.r1.g58d11e9
-pkgrel=2
+pkgver=22.1.2.r1.g591f516
+pkgrel=1
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor."
 arch=('aarch64' 'x86_64')
 url="https://www.diagrams.net/"
-_githuburl="https://github.com/jgraph/drawio-desktop"
+_ghurl="https://github.com/jgraph/drawio-desktop"
 license=('Apache')
 depends=(
-    'bash'
     'electron25'
     'hicolor-icon-theme'
 )
@@ -23,7 +22,7 @@ makedepends=(
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(
-    "${_pkgname}.git::git+${_githuburl}.git"
+    "${_pkgname}.git::git+${_ghurl}.git"
     "${_pkgname}.sh"
 )
 sha256sums=('SKIP'
