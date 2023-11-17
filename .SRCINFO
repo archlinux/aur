@@ -1,7 +1,7 @@
 pkgbase = compfy
 	pkgdesc = A Better Alternative to Picom. With Animations and Active Support
-	pkgver = 1.6.6
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/allusive-dev/compfy
 	arch = i686
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = compfy
 	conflicts = compton-git
 	conflicts = picom
 	conflicts = picom-git
-	source = git+https://github.com/allusive-dev/compfy.git#tag=5dc990cea551d414f3e43f649c4d987ba783d4b5
+	source = git+https://github.com/allusive-dev/compfy.git#tag=5774e9eb996d8692a98c8c377a717e9c7f4a341b
 	md5sums = SKIP
 
 pkgname = compfy

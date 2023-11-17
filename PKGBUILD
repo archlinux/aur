@@ -1,7 +1,7 @@
-_tag=5dc990cea551d414f3e43f649c4d987ba783d4b5
+_tag=5774e9eb996d8692a98c8c377a717e9c7f4a341b
 pkgname=compfy
-pkgver=1.6.6
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="A Better Alternative to Picom. With Animations and Active Support"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/compfy"
