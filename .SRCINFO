@@ -1,0 +1,13 @@
+pkgbase = pyonji-git
+	pkgdesc = An easy-to-use tool to send e-mail patches
+	pkgver = r75.d50435d
+	pkgrel = 1
+	url = https://sr.ht/~emersion/pyonji
+	arch = x86_64
+	makedepends = go
+	provides = pyonji
+	conflicts = pyonji
+	source = pyonji-git::git+https://git.sr.ht/~emersion/pyonji
+	sha256sums = SKIP
+
+pkgname = pyonji-git
