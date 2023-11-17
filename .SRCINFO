@@ -1,0 +1,20 @@
+pkgbase = sshed-bin
+	pkgdesc = Visual cross-platform editor created to manage list of SSH hosts in ssh config file
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/trntv/sshed
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache
+	source_i686 = https://github.com/trntv/sshed/releases/download/1.2.0/sshed_1.2.0_linux_386.tar.gz
+	sha256sums_i686 = da5a1a44f642f725ef7b6dcded48d5510241e8e404e9d15efc2e513e797804fb
+	source_x86_64 = https://github.com/trntv/sshed/releases/download/1.2.0/sshed_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2a2671ba7b5462a557660d21a863cb565ffe79a53bab124bb4b1cd84b1d8c164
+	source_armv6h = https://github.com/trntv/sshed/releases/download/1.2.0/sshed_1.2.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 5c4fcd5c128e8f04bcd01f01b6665c9f61dabe825cc1c13b4e2b5dfc9ecfb3ad
+	source_armv7h = https://github.com/trntv/sshed/releases/download/1.2.0/sshed_1.2.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 213fbeb9c04d08c40c32065f60cc5a82b547b20cc5bfeddc569ee3f34e26ae79
+
+pkgname = sshed-bin
