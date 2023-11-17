@@ -4,7 +4,6 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-<<<<<<< HEAD
 pkgrel=35
 
 pkgdesc="Client to online Poker game written in C++/Qt"
