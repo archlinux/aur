@@ -1,0 +1,18 @@
+pkgbase = balss-git
+	pkgdesc = Balss is an easy to use player for audiobook files with chapters such as m4b or mka
+	pkgver = 0.1.0.r52.ec1213a
+	pkgrel = 1
+	url = https://github.com/nvlgit/Balss
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = mpv
+	source = balss::git+https://github.com/nvlgit/Balss.git
+	source = data_meson_build.patch
+	sha512sums = SKIP
+	sha512sums = c2c540d4d9e5985f31ceb2f953f2e644b75a531f5ff8409011fd6db32150295b78d025ca07f3741ca30b82756a781986d8093e5e8f0ca5c971f8eeca1c81d213
+
+pkgname = balss-git
