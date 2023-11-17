@@ -6,9 +6,9 @@
  
 BOTTLENAME="Deepin-danmoshui"
 APPVER="0.0.6"
-EXEC_PATH="c:/Program Files/danmoshui/danmoshui.exe"
+EXEC_PATH="c:/Program Files/淡墨水字帖_x64/淡墨水字帖.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
- 
+
 export MIME_TYPE=""
 export DEB_PACKAGE_NAME="deepin-wine-danmoshui"
 export APPRUN_CMD="deepin-wine6-stable"
