@@ -3,7 +3,7 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
@@ -18,10 +18,10 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-gallery'
              'python-sphinxext-opengraph'
              'python-sunpy-sphinx-theme'
+             'python-pytest-doctestplus'
              'python-gwcs'
              'python-sunpy'
              'python-mpl-animators'
-             'python-pytest-doctestplus'
              'graphviz')  # matplotlib <- mpl-animators
 checkdepends=('python-pytest-doctestplus'
               'python-dask'
@@ -30,7 +30,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       'doc-use-local-fits.patch'
 #       "https://www.astropy.org/astropy-data/tutorials/FITS-images/HorseHead.fits"
 #       "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
-md5sums=('37e19f9f23455eff4d8d09f8e14ea823')
+md5sums=('39164538cca79fb6cee507100904a0ac')
 #        'b50513a0bb73290d65317d0d44ae9fb9'
 #        'SKIP'
 #        'SKIP')
@@ -42,7 +42,7 @@ prepare() {
     mkdir -p changelog
 #   cp ${srcdir}/*.fits examples
 #   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
-    sed -e "/datfix/d" -e "/unitfix/d" -i setup.cfg
+#   sed -e "/datfix/d" -e "/unitfix/d" -i setup.cfg
 #   sed -e '/ignore:FLIP/a \	ignore:pkg_resources is deprecated:DeprecationWarning' \
 #       -e '/ignore:FLIP/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning' \
 #   sed -e '/ignore:distutils/a \	ignore:"order" was deprecated in version 0.9' \
@@ -62,12 +62,12 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest -Wdefault || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # -Wdefault
 }
 
 package_python-ndcube() {
-    depends=('python>=3.8' 'python-gwcs>=0.15')
-    optdepends=('python-matplotlib>=3.2: plotting'
+    depends=('python>=3.9' 'python-gwcs>=0.18')
+    optdepends=('python-matplotlib>=3.5.0: plotting'
                 'python-mpl-animators>=1.0: plotting'
                 'python-reproject>=0.7.1: reproject'
                 'python-ndcube-doc: Documentation for ndcube')
