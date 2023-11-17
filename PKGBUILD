@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=missMDA
-_pkgver=1.18
+_pkgver=1.19
 pkgname=r-${_pkgname,,}
-pkgver=1.18
-pkgrel=3
+pkgver=1.19
+pkgrel=1
 pkgdesc='Handling Missing Values with Multivariate Data Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-markdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a522ba7dd42c9b01dc97317ee46d0084942168b7d2da7162d33357e01382f7e8')
+sha256sums=('f9675884829b2fef75237c335b21991d163674320e766523c71c7a853f95e65c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

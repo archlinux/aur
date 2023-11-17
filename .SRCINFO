@@ -1,7 +1,7 @@
 pkgbase = r-missmda
 	pkgdesc = Handling Missing Values with Multivariate Data Analysis
-	pkgver = 1.18
-	pkgrel = 3
+	pkgver = 1.19
+	pkgrel = 1
 	url = https://cran.r-project.org/package=missMDA
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-missmda
 	depends = r-mvtnorm
 	optdepends = r-knitr
 	optdepends = r-markdown
-	source = https://cran.r-project.org/src/contrib/missMDA_1.18.tar.gz
-	sha256sums = a522ba7dd42c9b01dc97317ee46d0084942168b7d2da7162d33357e01382f7e8
+	source = https://cran.r-project.org/src/contrib/missMDA_1.19.tar.gz
+	sha256sums = f9675884829b2fef75237c335b21991d163674320e766523c71c7a853f95e65c
 
 pkgname = r-missmda
