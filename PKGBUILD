@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=6.2.r112766.g575efc0406
+pkgver=6.2.r112777.g08e97dae20
 pkgrel=1
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
@@ -115,7 +115,7 @@ depends=(
     'zvbi'
     'chromaprint-fftw'
     'davs2'
-    'libklvanc-git'
+    'libklvanc'
     'librist'
     'rockchip-mpp'
     'shine'
