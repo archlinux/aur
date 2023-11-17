@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=2.0.4_qa
+pkgver=3.0.0_qa
 pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc."
 arch=("x86_64")
@@ -16,14 +16,13 @@ depends=(
     'libxext'
     'libxtst'
     'libxi'
-    'sh'
     'java-runtime'
 )
 makedepends=(
     'gendesk'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-${pkgver//_/-}+7289.deb")
-sha256sums=('df8c6d6a361b0cc5e566ace6f4987ade9c89638bb3d3043d94d5bdf01fb030d6')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-${pkgver//_/-}+7438.deb")
+sha256sums=('cdd7744a204f5d2eea4c3701df829795ee7f453ecf3e8b287adbc2c54fd4d82c')
 build() {
     gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin}"
     bsdtar -xf "${srcdir}/data.tar.gz"
