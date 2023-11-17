@@ -1,12 +1,12 @@
 pkgbase = kana
 	pkgdesc = Learn Japanese characters
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/fkinoshita/kana
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
-	makedepends = rust
+	makedepends = cargo
 	depends = gtk4
 	depends = libadwaita
 	source = https://gitlab.gnome.org/fkinoshita/kana/-/archive/v1.2/kana-v1.2.tar.bz2
