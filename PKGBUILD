@@ -1,7 +1,7 @@
 # Maintainer: Energi <bloznelis05@gmail.com>
 pkgname=typioca-git
 name=typioca
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Minimal, terminal based typing speed tester"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/bloznelis/typioca"
 license=(MIT)
 groups=()
 depends=()
-makedepends=(make git go)
+makedepends=(git make go)
 provides=("$name")
 conflicts=("$name")
 source=("git+$url#tag=$pkgver")
