@@ -15,7 +15,6 @@ optdepends=(
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname}-bin ${_pkgname})
-options=(!strip)
 source=(
     "git+https://github.com/daodao97/SingBoxClient"
     "singboxclient.desktop"

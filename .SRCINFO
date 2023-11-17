@@ -15,7 +15,6 @@ pkgbase = singboxclient-git
 	provides = singboxclient
 	conflicts = singboxclient-bin
 	conflicts = singboxclient
-	options = !strip
 	source = git+https://github.com/daodao97/SingBoxClient
 	source = singboxclient.desktop
 	sha256sums = SKIP
