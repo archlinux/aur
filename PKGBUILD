@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=vendir
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively'
 url='https://carvel.dev/vendir'
 arch=(any)
@@ -15,7 +15,8 @@ provides=(vendir)
 source=(vendir-0.37.0::https://github.com/carvel-dev/vendir/archive/v0.37.0.tar.gz)
 build () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     export CGO_CPPFLAGS="${CPPFLAGS}";
     export CGO_CFLAGS="${CFLAGS}";
     export CGO_CXXFLAGS="${CXXFLAGS}";
@@ -25,7 +26,8 @@ build ()
 }
 package () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     BIN=$pkgname;
     install -Dm755 $BIN -t "$pkgdir/usr/bin";
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
