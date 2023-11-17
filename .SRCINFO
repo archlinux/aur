@@ -16,7 +16,7 @@ pkgbase = thorium-browser-bin
 	source = https://github.com/Alex313031/Thorium/releases/download/M117.0.5938.157/thorium-browser_117.0.5938.157_amd64.deb
 	source = thorium-browser.sh
 	sha256sums = SKIP
-	sha256sums = d2bec392c1dafc6ab4a4cd463be8cf627c58e00960ebea54c54151e9df101f53
+	sha256sums = 76dc15b6001053edc422dbed7041273a21315b5f59225f62f8b21b6385f6f9ba
 
 pkgname = thorium-browser-bin
 	depends = alsa-lib
