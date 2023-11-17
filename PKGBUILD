@@ -2,7 +2,7 @@
 
 _libname=pybind11-rdp
 pkgname="python-${_libname}"
-pkgver=v0.1.4
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='C++ implementation of the Ramer-Douglas-Peucker algorithm (binding to python via pybind11)'
 _rootdir="${_libname}-${pkgver}"
@@ -13,7 +13,7 @@ depends=('pybind11')
 makedepends=('git' 'cmake' 'python-build' 'python-installer' 'python-wheel')
 provides=('python-pybind11-rdp')
 conflicts=('python-pybind11-rdp')
-source=("${_rootdir}::git+https://github.com/cubao/pybind11-rdp.git#tag=${pkgver}"
+source=("${_rootdir}::git+https://github.com/cubao/pybind11-rdp.git#tag=v${pkgver}"
         '010-pybind11-rdp-remove-unwanted-pip-build-deps.patch')
 sha256sums=('SKIP'
             'f48ac993fadc956bae9e095209f4ed61124a3e1e6c1560b85a0ced4acf1a51f1')
