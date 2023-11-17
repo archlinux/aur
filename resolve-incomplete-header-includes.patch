@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/TUScheduler.cpp b/clang-tools-extra/clangd/TUScheduler.cpp
-index 324ba1fc8cb8..f4204c10a1b4 100644
+index 324ba1fc8cb8..2811cb4c551f 100644
 --- a/clang-tools-extra/clangd/TUScheduler.cpp
 +++ b/clang-tools-extra/clangd/TUScheduler.cpp
 @@ -52,6 +52,7 @@
@@ -43,19 +43,18 @@ index 324ba1fc8cb8..f4204c10a1b4 100644
  
      bool InputsAreTheSame =
          std::tie(FileInputs.CompileCommand, FileInputs.Contents) ==
-@@ -1684,6 +1697,35 @@ bool TUScheduler::update(PathRef File, ParseInputs Inputs,
+@@ -1684,6 +1697,34 @@ bool TUScheduler::update(PathRef File, ParseInputs Inputs,
      ContentChanged = true;
      FD->Contents = Inputs.Contents;
    }
 +  if (isHeaderFile(File)) {
-+    std::string SourceFile = HeaderIncluders->get(File);
-+    if (SourceFile.empty()) {
-+      auto VFS = Inputs.TFS->view(Inputs.CompileCommand.Directory);
-+      if (auto CorrespondingFile =
-+              clang::clangd::getCorrespondingHeaderOrSource(File,
-+                                                            std::move(VFS)))
-+        SourceFile = *CorrespondingFile;
-+    }
++    std::string SourceFile;
++    auto VFS = Inputs.TFS->view(Inputs.CompileCommand.Directory);
++    if (auto CorrespondingFile =
++            clang::clangd::getCorrespondingHeaderOrSource(File, std::move(VFS)))
++      SourceFile = *CorrespondingFile;
++    if (SourceFile.empty())
++      SourceFile = HeaderIncluders->get(File);
 +    if (!SourceFile.empty()) {
 +      std::unique_ptr<FileData> &FD = Files[SourceFile];
 +      if (FD && FD->Worker->isASTCached()) {
