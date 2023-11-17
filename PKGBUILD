@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-pre
 pkgver=v2023.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -58,7 +58,7 @@ build() {
 
   export NODE_ENV="production"
 
-  corepack yarn install
+  corepack yarn install --immutable
   corepack yarn build
   corepack yarn focus-production
 }
