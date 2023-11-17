@@ -1,7 +1,7 @@
 pkgbase = compfy
-	pkgdesc = A Better Alternative to Picom. With Animations and Active Support
+	pkgdesc = A Linux Compositor for X11. Based on Picom. Providing Animations and More
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/allusive-dev/compfy
 	arch = i686
 	arch = x86_64
