@@ -1,7 +1,7 @@
 pkgbase = ttf-literata-git
 	pkgdesc = Contemporary serif typeface family for long-form reading
 	pkgver = 3.103.r0.g0c2761b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/literata
 	arch = any
 	license = OFL
@@ -10,14 +10,11 @@ pkgbase = ttf-literata-git
 	sha256sums = SKIP
 
 pkgname = ttf-literata-git
-	provides = ttf-literata=3.103
 	conflicts = ttf-literata
 
 pkgname = ttf-literata-opticals-git
 	depends = ttf-literata-git
-	provides = ttf-literata-opticals=3.103
 	conflicts = ttf-literata-opticals
 
 pkgname = ttf-literata-variable-git
-	provides = ttf-literata-variable=3.103
 	conflicts = ttf-literata-variable

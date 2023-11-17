@@ -8,7 +8,7 @@ pkgname=(
   ttf-literata-variable-git
 )
 pkgver=3.103.r0.g0c2761b7
-pkgrel=1
+pkgrel=2
 pkgdesc="Contemporary serif typeface family for long-form reading"
 url="https://github.com/googlefonts/literata"
 license=('OFL')
@@ -24,7 +24,7 @@ _extended_conflicts() {
   conflicts=(
     otf-literata
     ttf-literata
-    ttf-literata-optical
+    ttf-literata-opticals
     ttf-literata-variable
     ttf-literata-webfonts 
     ttf-literata-webfonts-opticals 
@@ -38,7 +38,7 @@ pkgver() {
 }
 
 package_ttf-literata-git() {
-  provides=("${pkgname%-git}=${pkgver%%.r*}")
+  #provides=("${pkgname%-git}=${pkgver%%.r*}")
   conflicts=("${pkgname%-git}")
   _extended_conflicts
 
@@ -46,21 +46,21 @@ package_ttf-literata-git() {
   install -Dm644 "${_pkgsrc:?}/OFL.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_ttf-literata-variable-git() {
-  provides=("${pkgname%-git}=${pkgver%%.r*}")
-  conflicts=("${pkgname%-git}")
-  _extended_conflicts
-
-  install -Dm644 "${_pkgsrc:?}/fonts/variable"/Literata*.ttf -t "$pkgdir/usr/share/fonts/${pkgname%-git}/"
-  install -Dm644 "${_pkgsrc:?}/OFL.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
-}
-
 package_ttf-literata-opticals-git() {
   depends=("ttf-literata-git")
-  provides=("${pkgname%-git}=${pkgver%%.r*}")
+  #provides=("${pkgname%-git}=${pkgver%%.r*}")
   conflicts=("${pkgname%-git}")
   _extended_conflicts
 
   install -Dm644 "${_pkgsrc:?}/fonts/ttf"/Literata[0-9]*.ttf -t "$pkgdir/usr/share/fonts/${pkgname%-git}/"
+  install -Dm644 "${_pkgsrc:?}/OFL.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_ttf-literata-variable-git() {
+  #provides=("${pkgname%-git}=${pkgver%%.r*}")
+  conflicts=("${pkgname%-git}")
+  _extended_conflicts
+
+  install -Dm644 "${_pkgsrc:?}/fonts/variable"/Literata*.ttf -t "$pkgdir/usr/share/fonts/${pkgname%-git}/"
   install -Dm644 "${_pkgsrc:?}/OFL.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
