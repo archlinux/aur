@@ -31,19 +31,23 @@ source=(git+https://git.zx2c4.com/password-store.git)
 sha256sums=(SKIP)
 
 pkgver() {
-    cd password-store
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir"/password-store
+    git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 check() {
-    cd password-store
+    unset POSIXLY_CORRECT # remove once patched upstream
+    cd "$srcdir"/password-store
     make test
 }
 
 package() {
-    cd password-store
-    make DESTDIR="${pkgdir}" WITH_ALLCOMP=yes install
+    cd "$srcdir"/password-store
+    make DESTDIR="$pkgdir" WITH_ALLCOMP=yes install
 
-    cd contrib/dmenu
-    install -Dm0755 passmenu "${pkgdir}/usr/bin/passmenu"
+    install -Dm755 -t "$pkgdir"/usr/bin contrib/dmenu/passmenu
+    install -Dm644 -t "$pkgdir"/usr/share/vim/vimfiles/plugin \
+        contrib/vim/redact_pass.vim
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/pass COPYING
+    install -Dm644 -t "$pkgdir"/usr/share/doc/pass README
 }
