@@ -4,12 +4,13 @@
 _pkgname=texlab
 pkgname=$_pkgname-git
 pkgver=5.11.0.r16.867dbc91
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the Language Server Protocol for LaTeX'
 arch=(any)
 url=https://github.com/latex-lsp/texlab
 license=(MIT)
 
+provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
 makedepends=(git cargo)
 source=(git+$url)
