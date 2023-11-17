@@ -5,8 +5,8 @@
 
 _name=pywakeonlan
 pkgname=python-wakeonlan
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='Wake on LAN Python module'
 url='https://github.com/remcohaszing/pywakeonlan'
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python>=3.7')
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 source=("$url/archive/$pkgver.tar.gz")
-b2sums=('f41e5674b1db4ca9d263e0286e65f5697c45444d35b411f4dba37b71f11588137bb85e24625ccfba5f8154052e15f7b6a0d0c765746c59cb648404774a18ec74')
+b2sums=('9f9d72ff22879f3040115384fb7ab7fcadfc1470dfeb83970030a6dd0b78e0d26a70e9b65e4bf1adfcc8125092ffeee2ddb2c7ca4e41cdd2df4c1786ec1e5ede')
 
 build() {
 	cd $_name-$pkgver
