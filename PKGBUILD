@@ -2,19 +2,19 @@
 # Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=tagger
 _app_id=org.nickvision.tagger
-pkgver=2023.11.2
+pkgver=2023.11.3
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
 license=('GPL3')
-depends=('chromaprint' 'dotnet-runtime>=7' 'ffmpeg' 'libadwaita' 'webp-pixbuf-loader')
-makedepends=('blueprint-compiler' 'dotnet-sdk>=7' 'git')
+depends=('chromaprint' 'dotnet-runtime>=8' 'ffmpeg' 'libadwaita' 'webp-pixbuf-loader')
+makedepends=('blueprint-compiler' 'dotnet-sdk>=8' 'git')
 checkdepends=('appstream-glib')
 optdepends=('yelp: in-app help')
 conflicts=('nickvision-tagger')
 replaces=('nickvision-tagger')
-_commit=01d4453b205da1cfd063cb49d6e8d555c3b252ec  # tags/2023.11.1^0
+_commit=81a2f63d1b239b03063cfa1dab048c2c0bb71e81  # tags/2023.11.3^0
 source=("git+https://github.com/NickvisionApps/Tagger.git#commit=${_commit}"
         'git+https://github.com/NickvisionApps/CakeScripts.git')
 sha256sums=('SKIP'

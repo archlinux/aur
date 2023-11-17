@@ -1,6 +1,6 @@
 pkgbase = tagger
 	pkgdesc = An easy-to-use music tag (metadata) editor
-	pkgver = 2023.11.2
+	pkgver = 2023.11.3
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/Tagger
 	arch = x86_64
@@ -8,17 +8,17 @@ pkgbase = tagger
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
-	makedepends = dotnet-sdk>=7
+	makedepends = dotnet-sdk>=8
 	makedepends = git
 	depends = chromaprint
-	depends = dotnet-runtime>=7
+	depends = dotnet-runtime>=8
 	depends = ffmpeg
 	depends = libadwaita
 	depends = webp-pixbuf-loader
 	optdepends = yelp: in-app help
 	conflicts = nickvision-tagger
 	replaces = nickvision-tagger
-	source = git+https://github.com/NickvisionApps/Tagger.git#commit=01d4453b205da1cfd063cb49d6e8d555c3b252ec
+	source = git+https://github.com/NickvisionApps/Tagger.git#commit=81a2f63d1b239b03063cfa1dab048c2c0bb71e81
 	source = git+https://github.com/NickvisionApps/CakeScripts.git
 	sha256sums = SKIP
 	sha256sums = SKIP
