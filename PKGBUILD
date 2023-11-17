@@ -1,14 +1,14 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-#_lus_commit=c75ff3653f699cb1a8c017b10e4b3986259d8cf0
-_lus_tag=1.3.1
+#_lus_commit=f717dd265aff2eff359de26915d8ad4e498ffdaf
+_lus_tag=1.3.3
 _ZAPDTR_commit=eff29036118349e142ee8efca80fd975a2a2b6ff
-_OTRExporter_commit=0d8f5570a8e57f302ec6633d65615ee21ab39454
+_OTRExporter_commit=04b85b95fab07a394b62dcd28a502a3040f08e0c
 
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=8.0.0
+pkgver=8.0.2
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -21,14 +21,12 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "libultraship-${_lus_tag}.tar.gz::https://github.com/Kenix3/libultraship/archive/refs/tags/${_lus_tag}.tar.gz"
         "ZAPDTR-${_ZAPDTR_commit}.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
         "OTRExporter-${_OTRExporter_commit}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
-        "soh.desktop"
-        "OTRExporter-fix-paths-period-split.patch::https://github.com/HarbourMasters/OTRExporter/pull/12.patch")
-sha256sums=('f4c7d8ee191174e4cc54d54b44d117f11d6e425da8e1f695a190bc911eb879ac'
-            '9cd9bb014d0feef889e440df1b636853c62cc097b6b61c370fc195fe082e2ae0'
+        "soh.desktop")
+sha256sums=('19676b2a9a331c0f80dc1cf119dee60cf3e36b6d5a32277e51bd44c2f1e1a450'
+            '471cfbb64a054f1e35ecc32603ea686a77f0d95b45bd9aa3ffd49231de11e075'
             '6438cd1c7abad6ea9b65326892a1b220384bdce78e9d1a324c132d68c982111c'
-            '1628262dfdce10b8584b671ea6a4cb0483c35876cf9f4dd279fc3a7d60a1379f'
-            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
-            '388738f3d48f4bdbe144a55cba91fd77383dcb066f190d2c6f221f3bc4a69903')
+            '5f5ff0a0eb7f5536c9076dd777d3914c4b2e064c7a22303a24c1a4a9ed7d462f'
+            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
@@ -49,10 +47,6 @@ prepare() {
   cp -r ../libultraship-${_lus_tag} libultraship
   cp -r ../ZAPDTR-${_ZAPDTR_commit} ZAPDTR
   cp -r ../OTRExporter-${_OTRExporter_commit} OTRExporter
-
-  cd OTRExporter
-  patch -Np1 -i ../../OTRExporter-fix-paths-period-split.patch
-  cd ..
 
   if [ "$__generate_headers" = 1 ]; then
     # check for any roms in the directory where PKGBUILD resides
