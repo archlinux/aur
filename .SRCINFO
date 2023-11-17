@@ -6,7 +6,7 @@ pkgbase = version
 	arch = any
 	license = MIT
 	depends = bash
-	source = version-1.4.0.tar.gz::https://github.com/bit101/version/archive/refs/tags/v1.4.0.tar.gz
 	sha256sums = c3f9935aa2f1f4febddaa2e3fcbb639819e2591233a59d8ce805cc3f550f00ed
+	source = version-1.4.1.tar.gz::https://github.com/bit101/version/archive/v1.4.1.tar.gz
 
 pkgname = version

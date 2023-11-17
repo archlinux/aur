@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/bit101/version"
 license=('MIT')
 depends=('bash')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bit101/version/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c3f9935aa2f1f4febddaa2e3fcbb639819e2591233a59d8ce805cc3f550f00ed')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bit101/version/archive/v$pkgver.tar.gz")
 
 package() {
   cd "$pkgname-$pkgver"
