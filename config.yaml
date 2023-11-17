@@ -1,0 +1,30 @@
+# directory path to save logs from standard output
+# logDir: /var/log/dagu
+
+# history retention days (default: 30)
+# histRetentionDays: 30
+
+# Email notification settings
+# mailOn:
+#   failure: true
+#   success: true
+
+# SMTP server settings
+# smtp:
+#   host: "smtp.foo.bar"
+#   port: "587"
+#   username: "<username>"
+#   password: "<password>"
+
+# Error mail configuration
+# errorMail:
+#   from: "foo@bar.com"
+#   to: "foo@bar.com"
+#   prefix: "[Error]"
+
+# Info mail configuration
+# infoMail:
+#   from: "foo@bar.com"
+#   to: "foo@bar.com"
+#   prefix: "[Info]"
+

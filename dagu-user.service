@@ -1,0 +1,13 @@
+[Unit]
+Description=Cron alternative with a Web UI
+Documentation=https://github.com/dagu-dev/dagu
+After=network.target
+
+[Service]
+Environment="DAGU_PORT=28448"
+KillMode=mixed
+KillSignal=SIGTERM
+UMask=0027
+Restart=on-failure
+RestartPreventExitStatus=2
+ExecStart=/usr/bin/dagu server
