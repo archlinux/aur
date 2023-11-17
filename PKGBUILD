@@ -1,7 +1,7 @@
-_tag=5774e9eb996d8692a98c8c377a717e9c7f4a341b
+_tag=be87e3336f7f897db5e089d673d2a288ff783af9
 pkgname=compfy
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="A Linux Compositor for X11. Based on Picom. Providing Animations and More"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/compfy"
