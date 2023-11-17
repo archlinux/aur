@@ -1,14 +1,14 @@
 pkgbase = satty-bin
 	pkgdesc = A screenshot annotation tool inspired by Swappy and Flameshot
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/gabm/satty
 	arch = x86_64
 	license = MPL-2.0
 	provides = satty
 	conflicts = satty
-	source = https://github.com/gabm/satty/releases/download/v0.6.0/satty-v0.6.0-x86_64.tar.gz
-	sha256sums = b9012816a77cf946e59bee9e5b734ad02a4f4e498ee8eda41413c2d30a11ff55
+	source = https://github.com/gabm/satty/releases/download/v0.7.0/satty-v0.7.0-x86_64.tar.gz
+	sha256sums = f13720eab0e50a0418c8fe33d6b972d4c50506d5f3577a8662701066d410ceb7
 
 pkgname = satty-bin
 	depends = pango
