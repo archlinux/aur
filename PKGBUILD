@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
 _appname="Altair GraphQL Client"
-pkgver=5.2.9
+pkgver=5.2.10
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/altair-graphql/altair/v${pkgver}/packages/altair-core/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2d5d6d004a0b9b0dbd2e34a7f5e5bba8b0d57f5203d7a2622e415ddae146629a'
+sha256sums=('146287f607a089a5d778de3d480b5e509e447a758767ef36a46e2272501160eb'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             '8f7e337fc8cf594b30f1cf0aa448a279212710313debee784eaac4141b53eb14')
 build() {
