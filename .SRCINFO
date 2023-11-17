@@ -1,0 +1,26 @@
+pkgbase = clash.rev-git
+	pkgdesc = Continuation of Clash core project
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/MerlinKodo/clash-rev
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = cmake
+	makedepends = zip
+	optdepends = clash-geoip: A GeoLite2 data created by MaxMind
+	provides = clash.rev
+	provides = clash
+	conflicts = clash.rev
+	conflicts = clash.rev-git
+	conflicts = clash
+	source = git+https://github.com/MerlinKodo/clash-rev.git
+	source = clash.service
+	sha256sums = SKIP
+	sha256sums = 9847a046071f4c1b92e71c3cb3b214cf5d19c4dd25ad8326e70c58c55b1e9deb
+
+pkgname = clash.rev-git
