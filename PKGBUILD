@@ -1,14 +1,12 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
 pkgver=0.9.17
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3-based panel for sway and Hyprland Wayland compositors"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-panel"
 license=('MIT')
-provides=('nwg-panel')
-conflicts=('nwg-panel-git')
-depends=('python' 'python-gobject' 'python-i3ipc' 'python-cairo' 'python-dasbus' 'python-netifaces' 'python-psutil' 'python-requests' 'bluez-utils' 'gtk3' 'gtk-layer-shell' 'light' 'playerctl' 'nwg-icon-picker')
+depends=('python' 'python-gobject' 'python-i3ipc' 'python-cairo' 'python-dasbus' 'python-netifaces' 'python-psutil' 'python-requests' 'bluez-utils' 'gtk3' 'libappindicator-gtk3' 'gtk-layer-shell' 'light' 'playerctl' 'nwg-icon-picker')
 makedepends=('python-setuptools' 'python-wheel')
 optdepends=('wlr-randr: for non-sway Wayland WMs support'
             'swaync: for Sway Notification Center support'
