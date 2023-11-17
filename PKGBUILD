@@ -2,7 +2,7 @@
 
 pkgname=flutter-engine-google-bin
 pkgver=3.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Engine for flutter applications (Binaries from google).'
 provides=(flutter-engine)
 conflicts=(flutter-engine)
