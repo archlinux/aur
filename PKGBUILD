@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=carvel-tools
 pkgver=20231117
-pkgrel=1
+pkgrel=2
 pkgdesc='Set of Carvel tools (binaries): imgpkg kapp kbld kctrl kwt vendir ytt'
 url='https://carvel.dev'
 arch=(x86_64 aarch64)
@@ -18,6 +18,7 @@ sha256sums_x86_64=(98b80baa5d665c5119fc8e2a62978f9d193c9647e3c47ab72867b055b94d1
 sha256sums_aarch64=(7b247c24850dbf4ff70095b6d7f5aff12aea15d0ece9e9ecf66f92e3c9d2f332 a0e4eccdc264b535d7b0ba1972b6fd29cd5aa1263ab7e996d5a4671253fd3cf9 dba78f59d887cc7433595a1e7754fcbc3a7a53f5fbbb23b2798d95114795ce78 1ffdc8cd9d48b68789c567458b046ee57636981dd3e7b6eb93cc43ea6af6dad1 7b94a134cbde5ff2e245d102f54b9ac9f81b3fcc5e54a5cefecc1e5845b8a65f 7dde14730aa5a58511fc5b95f61162892ec97f87c9a57c01ab91d1f9f3d7aa74 e43a524db8a0c69a54bc56132ac0cf8d55a049c48f63a9047dd6984dc89a940e)
 package () 
 { 
+    set -eo pipefail;
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
     mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
     mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
