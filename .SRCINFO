@@ -1,7 +1,7 @@
 pkgbase = easyroam-desktop-bin
 	pkgdesc = Manage and install your easyroam wifi profiles
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.easyroam.de/
 	install = .install
