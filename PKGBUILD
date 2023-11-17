@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=prayermate-id
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Command line based Muslim prayer reminder - Indonesia"
 arch=("x86_64")
@@ -18,7 +18,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tfkhdyt/prayermate/archive/
 md5sums=("SKIP")
 
 build() {
-	cd prayermate
 	go build -buildvcs=false -buildvcs=false -ldflags="-w -s" -o prayermate .
 	./prayermate completion bash >prayermate.bash
 	./prayermate completion zsh >_prayermate.zsh
@@ -26,7 +25,6 @@ build() {
 }
 
 package() {
-	cd prayermate
 	install -Dm755 prayermate "$pkgdir/usr/bin/prayermate"
 	install -Dm644 prayermate.bash "$pkgdir/usr/share/bash-completion/completions/prayermate"
 	install -Dm644 _prayermate.zsh "$pkgdir/usr/share/zsh/site-functions/_prayermate"
