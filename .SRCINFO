@@ -1,6 +1,6 @@
 pkgbase = figma-linux-dev-git
-	pkgver = 0.11.0.r56.g5f36611
-	pkgrel = 8
+	pkgver = 0.11.0.r57.gbd5d0d0
+	pkgrel = 9
 	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux
 	url = https://github.com/Figma-Linux/figma-linux
 	arch = any
