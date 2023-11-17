@@ -1,6 +1,6 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=axu-bin
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 epoch=
 pkgdesc="A cli tool to check your Arch Linux explicitly installed packages updates"
@@ -18,9 +18,9 @@ source=("$pkgname-v$pkgver.tar.gz::https://github.com/tfkhdyt/axu/releases/downl
 md5sums=("SKIP")
 
 build() {
-	./axu completion bash > axu.bash
-	./axu completion zsh > _axu.zsh
-	./axu completion fish > axu.fish
+	./axu completion bash >axu.bash
+	./axu completion zsh >_axu.zsh
+	./axu completion fish >axu.fish
 }
 
 package() {
