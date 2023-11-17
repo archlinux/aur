@@ -2,7 +2,9 @@
 # Contributor: Alexey Peschany <archlinux at sandboiii dot xyz>
 
 # options
-if [ -z "$_pkgver" ] ; then
+if [ -z "$_srcinfo" ] ; then
+  : ${_autoupdate:=false}
+elif [ -z "$_pkgver" ] ; then
   : ${_autoupdate:=true}
 else
   : ${_autoupdate:=false}
@@ -38,7 +40,9 @@ _main_package() {
   options=('!emptydirs' '!strip')
   install="$_pkgname.install"
 
-  _dl_filename="${_pkgname}_${_pkgver:?}_amd64.deb"
+  : ${_dl_filename:=${_pkgname}_${_pkgver:?}_amd64.deb}
+  : ${_dl_url:=$url/releases/download/v.$pkgver/$_dl_filename}
+
   noextract+=("$_dl_filename")
   source=(
     "$_dl_filename"::"$_dl_url"
@@ -106,6 +110,7 @@ _update_version() {
   }
 
   _dl_url=$(_get browser_download_url)
+  _dl_filename="${_dl_url##*/}"
 
   _regex='^.*mercury-browser_([0-9\.]+)_.*\.deb.*$'
   _pkgver_new=$(
