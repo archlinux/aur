@@ -1,7 +1,7 @@
 pkgbase = clangd-opt
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
 	pkgver = 17.0.0.r19.g4b414e52ac10
-	pkgrel = 30
+	pkgrel = 31
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -37,6 +37,7 @@ pkgbase = clangd-opt
 	source = resolve-depend-type.patch
 	source = inlay-hints-blockend-linelimit10.patch
 	source = resolve-incomplete-header-includes.patch
+	source = lsp-remove-files-from-cdb.patch
 	sha256sums = SKIP
 	sha256sums = 3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2
 	sha256sums = 75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54
@@ -57,5 +58,6 @@ pkgbase = clangd-opt
 	sha256sums = 6e1f9c9a01ac50be93537227fffe20816ae0d51243ca8836c39d99dec8dad51e
 	sha256sums = 3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7
 	sha256sums = b6291208aa36a2afcf69eb82c70b1873b249a12a11e898dee6169e65729c0cc9
+	sha256sums = 459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d
 
 pkgname = clangd-opt

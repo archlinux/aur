@@ -91,6 +91,12 @@
 # CLANGD_RESOLVEINCHEADERS:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Add way to remove files from CDB via LSP
+# No need in many cases. Useful only in multi project workspaces with patched client https://github.com/clangd/vscode-clangd/pull/487
+# CLANGD_LSPREMOVEFROMCDB:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_BRANCH:=main}
@@ -110,10 +116,11 @@
 : ${CLANGD_RESOLVEDEPTYPE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSBLOCKEND:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEINCHEADERS:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=30
+pkgrel=31
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -140,7 +147,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-ptrfn-args.patch'
         'resolve-depend-type.patch'
         'inlay-hints-blockend-linelimit10.patch'
-        'resolve-incomplete-header-includes.patch')
+        'resolve-incomplete-header-includes.patch'
+        'lsp-remove-files-from-cdb.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
@@ -160,7 +168,8 @@ sha256sums=('SKIP'
             '24a8e0b207598798b91f030bcccf0a074f0ccd23885ea4e802a8bda1c05657e0'  # hover-ptrfn-args
             '6e1f9c9a01ac50be93537227fffe20816ae0d51243ca8836c39d99dec8dad51e'  # resolve-depend-type
             '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
-            'b6291208aa36a2afcf69eb82c70b1873b249a12a11e898dee6169e65729c0cc9') # resolve-incomplete-header-includes
+            'b6291208aa36a2afcf69eb82c70b1873b249a12a11e898dee6169e65729c0cc9'  # resolve-incomplete-header-includes
+            '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d') # lsp-remove-files-from-cdb
 
 pkgver() {
     cd llvm-project
@@ -207,6 +216,9 @@ prepare() {
     # LSP patches
     if [ "$CLANGD_CODELENS" != "n" ]; then
         patch -p1 -i ${srcdir}/lsp-codelens.patch
+    fi
+    if [ "$CLANGD_LSPREMOVEFROMCDB" != "n" ]; then
+        patch -p1 -i ${srcdir}/lsp-remove-files-from-cdb.patch
     fi
 
     # Code-completion patches
