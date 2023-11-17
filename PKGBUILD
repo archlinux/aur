@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=go-dsp-guitar-bin
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
 arch=(
 	'aarch64'
@@ -15,9 +15,6 @@ provides=("${pkgname%-bin}" 'dsp-guitar')
 conflicts=("${pkgname%-bin}" 'dsp-guitar')
 depends=(
 	'jack'
-)
-makedepends=(
-	'openssl'
 )
 source=(
 	"${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}.tar.gz"

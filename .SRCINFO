@@ -1,12 +1,11 @@
 pkgbase = go-dsp-guitar-bin
 	pkgdesc = A cross-platform multichannel multi-effects processor for electric guitars and other instruments
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrepxx/go-dsp-guitar
 	arch = aarch64
 	arch = x86_64
 	license = Apache
-	makedepends = openssl
 	depends = jack
 	provides = go-dsp-guitar
 	provides = dsp-guitar
