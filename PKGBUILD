@@ -2,26 +2,26 @@
 # Maintainer: Toby Padilla <toby@charm.sh>
 
 pkgname='mods-bin'
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc='GPT-4 on the command line'
+pkgdesc='AI on the command line'
 url='https://charm.sh/'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('mods')
 conflicts=('mods')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5e07957acfa819b2bf702cb6533aec881f7def52813560d5487640adc50c7208')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e9c21011d282b778355024dc2434a37aaf705bae52f1cca84a82f98806ae01ef')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('1fb8a7335a70f4ac2f11aac6cfe479d59b644e16f7ff325ad0e2831b217e4445')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('4fbfdda1c770c5f1eb06fe63c5ef29e6ce0717d9feb38aa7ce0436d0535ab896')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_i386.tar.gz")
-sha256sums_i686=('bc655591c18616288af0a22e15512d068434b4e6c1b92076c2d76f94bc8930d4')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_i386.tar.gz")
+sha256sums_i686=('5a656331d5e442a2b9584498a04c4d2ab86360a6956930a7a0f439190e0a7a5a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('8fb034c90eacee46455f18d96cadb45fd80467603ecb4256b8d3b95cac0a48dc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('4f5577134d9645f50ebe2c06c2eae5ad689492163074773f361da3383d291420')
 
 package() {
   # bin
