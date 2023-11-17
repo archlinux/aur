@@ -1,14 +1,13 @@
 pkgbase = bayescan
 	pkgdesc = Detecting natural selection from population-based genetic data
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cmpg.unibe.ch/software/BayeScan/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gcc-libs
-	source = http://cmpg.unibe.ch/software/BayeScan/files/BayeScan2.1.zip
-	md5sums = 826138562f4c944e5649b65ca47624ec
+	source = https://github.com/mfoll/bayescan/archive/refs/tags/v2.1.tar.gz
+	sha256sums = c37ba4d9f66b0cb5509a1c41d8f09a017cb81107ee8528e1b367126163fe2702
 
 pkgname = bayescan
-
