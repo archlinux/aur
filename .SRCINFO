@@ -1,0 +1,21 @@
+pkgbase = factorio-yafc-git
+	pkgdesc = Yet Another Factorio Calculator: Powerful calculator/analyser that works with mods
+	pkgver = v0.5.8.51.gfd80865
+	pkgrel = 1
+	url = https://github.com/ShadowTheAge/yafc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = dotnet-runtime
+	source = factorio-yafc-git::git+https://github.com/ShadowTheAge/yafc.git
+	source = factorio-yafc.desktop
+	source = factorio-yafc
+	sha256sums = SKIP
+	sha256sums = f4d87b77fd861031300921d1405dfd475b492a7214e4b3016f9788ed1c822ec0
+	sha256sums = 755616cb54c512258f606cd2bbe3e267b1aa4dedcc694549044038776b03d827
+
+pkgname = factorio-yafc-git

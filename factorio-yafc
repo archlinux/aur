@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+dotnet --roll-forward Major /usr/lib/factorio-yafc-git/YAFC.dll "$@"
