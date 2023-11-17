@@ -1,10 +1,12 @@
---- cura.desktop
-+++ cura.desktop
-@@ -1,15 +1,57 @@
--[Desktop Entry]
+--- com.ultimaker.cura.desktop
++++ com.ultimaker.cura.desktop
+@@ -2,10 +2,58 @@
+ X-AppImage-Arch=x86_64
+ X-AppImage-Version=5.5.0
+ X-AppImage-Name=UltiMaker Cura
 -Name=UltiMaker Cura
--Name[de]=UltiMaker Cura
-+ [Desktop Entry]
+-Exec=UltiMaker-Cura
+-Icon=cura-icon.png
 +Name=UltiMaker Cura 5
 +Name[cs]=UltiMaker Cura 5
 +Name[de]=UltiMaker Cura 5
@@ -21,9 +23,9 @@
 +Name[ru]=Ультимейкер Кура 5
 +Name[tr]=UltiMaker Cura 5
 +Name[zh]=UltiMaker Cura 5
- GenericName=3D Printing Software
++GenericName=3D Printing Software
 +GenericName[cs]=3D-Tiskový Software
- GenericName[de]=3D-Druck-Software
++GenericName[de]=3D-Druck-Software
 +GenericName[es]=Software de Druck 3D
 +GenericName[fi]=3D-tulostusohjelmisto
 +GenericName[fr]=Logiciel d'impression 3D
@@ -31,15 +33,13 @@
 +GenericName[it]=Software di stampa 3D
 +GenericName[ja]=3D プリント ソフトウェア
 +GenericName[ko]=3D 프린팅 소프트웨어
- GenericName[nl]=3D-Print Software
++GenericName[nl]=3D-Print Software
 +GenericName[pl]=Oprogramowanie do drukowania 3D
 +GenericName[pt]=Software de impressão 3D
 +GenericName[ru]=Программное обеспечение для 3D-печати
 +GenericName[tr]=3D Baskı Yazılımı
 +GenericName[zh]=3D打印软件
- Comment=Cura converts 3D models into paths for a 3D printer. It prepares your print for maximum accuracy, minimum printing time and good reliability with many extra features that make your print come out great.
--Exec=UltiMaker-Cura %F
--Icon=cura-icon
++Comment=Cura converts 3D models into paths for a 3D printer. It prepares your print for maximum accuracy, minimum printing time and good reliability with many extra features that make your print come out great.
 +Comment[cs]=Cura převádí 3D modely na cesty pro 3D tiskárnu. Připraví váš tisk na maximální přesnost, minimální dobu tisku a dobrou spolehlivost s mnoha dalšími funkcemi, díky nimž bude váš tisk skvělý.
 +Comment[de]=Cura wandelt 3D-Modelle in Pfade für einen 3D-Drucker um. Es bereitet Ihren Druck auf maximale Genauigkeit, minimale Druckzeit und hohe Zuverlässigkeit mit vielen zusätzlichen Funktionen vor, die Ihren Druck großartig machen.
 +Comment[es]=Cura convierte modelos 3D en rutas para una impresora 3D. Prepara su impresión para obtener la máxima precisión, el tiempo de impresión mínimo y una buena confiabilidad con muchas características adicionales que hacen que su impresión salga genial.
@@ -57,12 +57,11 @@
 +Comment[zh]=Cura 将 3D 模型转换为 3D 打印机的路径。 它为您的打印做好准备，以实现最大的准确性、最短的打印时间和良好的可靠性，并具有许多使您的打印效果出色的额外功能。
 +Exec=/usr/bin/cura5 %F
 +Icon=cura5-icon
- Terminal=false
  Type=Application
- MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;image/bmp;image/gif;image/jpeg;image/png;text/x-gcode;application/x-amf;application/x-ply;application/x-ctm;model/vnd.collada+xml;model/gltf-binary;model/gltf+json;model/vnd.collada+xml+zip;
--Categories=Graphics;
--Keywords=3D;Printing;
+ Terminal=false
+-Categories=Utility;
+-Comment=
++MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;image/bmp;image/gif;image/jpeg;image/png;text/x-gcode;application/x-amf;application/x-ply;application/x-ctm;model/vnd.collada+xml;model/gltf-binary;model/gltf+json;model/vnd.collada+xml+zip;
 +Categories=Graphics;3DGraphics;Engineering;
 +Keywords=3D;Printing;Slicer;
- X-AppImage-Version=5.3.1
 
