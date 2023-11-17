@@ -7,12 +7,11 @@ pkgdesc="A PySide6-based cross platform GUI client that launches your beloved GF
 arch=(x86_64)
 url='https://github.com/LorenEteval/Furious'
 license=('GPL3')
-makedepends=('cmake' 'python' 'python-pip' 'patchelf' 'go1.20')
+makedepends=('cmake' 'python' 'patchelf' 'go1.20' 'python-wheel' 'pyside6' 'xray' 'hysteria' 'hysteria1' 'tun2socks' 'python-ujson' 'python-pyqrcode' 'python-pypng' 'python-ping3' 'nuitka' 'pybase64')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 conflicts=(${pkgname}-git)
-options=(!strip)
 source=(
     "https://github.com/LorenEteval/Furious/archive/refs/tags/${pkgver}.zip"
     "furious.png"
@@ -28,15 +27,6 @@ _install_path="/opt/$pkgname"
 prepare() {
     ln -s /usr/bin/go1.20 go
     export PATH=$(pwd):$PATH
-    cd "${srcdir}"
-    python -m venv .venv
-    source .venv/bin/activate
-    cd "${srcdir}/Furious-${pkgver}"
-    pip install --upgrade pip
-    pip install wheel
-    pip install hysteria2==2.0.0.1
-    pip install -r requirements.txt
-    pip install nuitka
 }
 
 build() {
@@ -48,7 +38,7 @@ package() {
     cd "${srcdir}/Furious-${pkgver}/guiBinaries/__main__.dist/"
     find . -type f -exec install -Dm755 {} "$pkgdir/$_install_path"/{} \;
     install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/furious.png" "${pkgdir}/usr/share/icons/hicolor/400x400/apps/furious.png"
+    install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/400x400/apps/${pkgname}.png"
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "${_install_path}/__main__.bin" "${pkgdir}/usr/bin/${pkgname}"
 }
