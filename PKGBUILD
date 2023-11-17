@@ -2,7 +2,7 @@
 
 pkgname=python-marko
 _name=${pkgname#python-}
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=3
 pkgdesc='A markdown parser with high extensibility'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('python-build' 'python-pdm') 
 provides=('python-marko')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b59ecc64c2185bf5d5988a2c2a9afc8b6f72d9047896d120d4f32e14bb6c696d')
+sha256sums=('502df6d827139ea7265d819f4fe3664589f4774997eff758dc38bea4f52350e6')
 
 
 build() {
