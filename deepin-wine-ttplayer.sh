@@ -3,7 +3,6 @@
 #   Copyright (C) 2020 Deepin, Inc.
 #
 #   Author:     RTX3090 <QQ482961502@gmail.com>
-
 BOTTLENAME="Deepin-TTPlayer"
 APPVER="5.7.9"
 EXEC_PATH="c:/Program Files/TTPlayer/TTPlayer.exe"
