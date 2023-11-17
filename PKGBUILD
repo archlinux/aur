@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kwt
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes Workstation Tools CLI'
 url='https://github.com/carvel-dev/kwt'
 arch=(any)
@@ -15,7 +15,8 @@ provides=(kwt)
 source=(kwt-0.0.8::https://github.com/carvel-dev/kwt/archive/v0.0.8.tar.gz)
 build () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     export CGO_CPPFLAGS="${CPPFLAGS}";
     export CGO_CFLAGS="${CFLAGS}";
     export CGO_CXXFLAGS="${CXXFLAGS}";
@@ -25,7 +26,8 @@ build ()
 }
 package () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     BIN=$pkgname;
     install -Dm755 $BIN -t "$pkgdir/usr/bin"
 }
