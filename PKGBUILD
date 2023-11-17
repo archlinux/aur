@@ -4,7 +4,7 @@ pkgbase=python-sunpy-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The sphinx theme for the SunPy website and documentation"
 arch=('any')
 url="https://github.com/sunpy/sunpy-sphinx-theme"
@@ -48,7 +48,7 @@ check() {
 }
 
 package_python-sunpy-sphinx-theme() {
-    depends=('python-sphinx' 'python-pydata-sphinx-theme<0.14')
+    depends=('python-sphinx' 'python-pydata-sphinx-theme')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"

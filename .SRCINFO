@@ -1,7 +1,7 @@
 pkgbase = python-sunpy-sphinx-theme
 	pkgdesc = The sphinx theme for the SunPy website and documentation
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sunpy/sunpy-sphinx-theme
 	arch = any
 	license = BSD
@@ -18,7 +18,7 @@ pkgbase = python-sunpy-sphinx-theme
 
 pkgname = python-sunpy-sphinx-theme
 	depends = python-sphinx
-	depends = python-pydata-sphinx-theme<0.14
+	depends = python-pydata-sphinx-theme
 
 pkgname = python-sunpy-sphinx-theme-doc
 	pkgdesc = Documentation for sunpy-sphinx-theme
