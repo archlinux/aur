@@ -1,6 +1,6 @@
 pkgbase = r-baseline
 	pkgdesc = Baseline Correction of Spectra
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=baseline
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-baseline
 	optdepends = r-lattice
 	optdepends = r-mass
 	optdepends = r-pls
-	source = https://cran.r-project.org/src/contrib/baseline_1.3-4.tar.gz
-	sha256sums = ddfbf1a19c6ff1c81cf856987609359e585e7ddeb9abe1e538ed8be8f74786ce
+	source = https://cran.r-project.org/src/contrib/baseline_1.3-5.tar.gz
+	sha256sums = a2d58ab311f8d4b947cb19a5075ca3ff8dcdf95ebb3cb7efec31a178c7a21450
 
 pkgname = r-baseline
