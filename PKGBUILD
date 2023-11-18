@@ -24,7 +24,7 @@ for ftype in "${_ftype[@]}"; do
   done
 done
 
-pkgname=(${_pkgbase[@]}  misans-fontconfig)
+pkgname=(misans ${_pkgbase[@]} misans-fontconfig)
 pkgver=4.003
 pkgrel=0
 pkgdesc="MiSans Global is a global language font customization project led by Xiaomi and co-created with Mona font and Han Yi font."
@@ -102,4 +102,10 @@ EOF
     ln -nsf /usr/share/fontconfig/conf.default/75-misans.conf "${pkgdir}/usr/share/fontconfig/conf.avail/75-misans.conf"
 }
 
+package_misans () {
+    pkgdesc+=" - meta package"
+    provides=()
+    conflicts=()
+    depends=(${_pkgbase[@]} misans-fontconfig)
+}
 # vim: ts=4 sw=4 et
