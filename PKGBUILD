@@ -3,22 +3,22 @@
 
 pkgname=guifetch-git
 _pkgname=guifetch
-pkgver=1.0.0
+pkgver=r32.e8084a4%
 pkgrel=1
 pkgdesc="GUI fetch tool written in Flutter for Linux"
 arch=('x86_64')
 url="https://github.com/FlafyDev/guifetch"
 license=('MIT')
-depends=()
-makedepends=('clang' 'cmake' 'ninja' 'flutter-git')
+depends=('gtk3')
+makedepends=('clang' 'cmake' 'ninja' 'flutter' 'git')
 
 source=("git+https://github.com/FlafyDev/guifetch")
 sha256sums=("SKIP")
 
-#pkgver(){
-#  cd $srcdir/$_pkgname
-#  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-#}
+pkgver() {
+  cd $srcdir/$_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 package() {
   cd "guifetch"

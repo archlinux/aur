@@ -1,6 +1,6 @@
 pkgbase = guifetch-git
 	pkgdesc = GUI fetch tool written in Flutter for Linux
-	pkgver = 1.0.0
+	pkgver = r32.e8084a4%
 	pkgrel = 1
 	url = https://github.com/FlafyDev/guifetch
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = guifetch-git
 	makedepends = clang
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = flutter-git
+	makedepends = flutter
+	makedepends = git
+	depends = gtk3
 	source = git+https://github.com/FlafyDev/guifetch
 	sha256sums = SKIP
 
