@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=24.01.75.r3097.599f5a16
+pkgver=24.01.75.r3140.f3c8bd1a
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ makedepends=(
   'python'
   'boost'
   'taglib'
-  'geoip'
+  'libmaxminddb'
   'qt5-webengine'
   'phonon-qt5'
   'plasma-workspace'
@@ -49,7 +49,7 @@ makedepends=(
 optdepends=(
   'plasma-workspace: for shutdown plugin'
   'kplotting5: for stats plugin'
-  'geoip: for infowidget plugin'
+  'libmaxminddb: for infowidget plugin'
   'kdnssd5: for zeroconf plugin'
   'taglib: for mediaplayer plugin'
   'phonon-qt5: for multimedia plugin'
@@ -63,6 +63,7 @@ provides=(
 conflicts=('ktorrent')
 source=('git+https://invent.kde.org/network/ktorrent.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd ktorrent
@@ -70,12 +71,15 @@ pkgver() {
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  sed 's|libmaxminddb|maxminddb|g' -i ktorrent/plugins/infowidget/CMakeLists.txt
+}
+
 build() {
   cmake -S ktorrent -B build \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=ON \
+    -DBUILD_TESTING=ON
 
 #     -DBUILD_WITH_QT6=ON # NOTE: Qt6 port still unfinished
 
