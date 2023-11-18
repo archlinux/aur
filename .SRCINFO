@@ -1,6 +1,6 @@
 pkgbase = i3stat-bin
 	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/acheronfail/i3stat
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = i3stat-bin
 	optdepends = dbus: sending notifications
 	optdepends = dunst: showing if notifications are paused or not via dunst
 	optdepends = i3-wm: use it as the i3 status_command
-	source = i3stat-0.10.2.zip::https://github.com/acheronfail/i3stat/releases/download/0.10.2/i3stat-x86_64-unknown-linux-gnu.zip
-	sha512sums = 0822cd3f0dc721febe05024b28a8b307bfad11e6192981cf23f1f410adc6af0463df01bd9d6c25031ef2183d3c944aeebe8d913144de54833fea1f661a0ac9ac
+	source = i3stat-0.10.3.zip::https://github.com/acheronfail/i3stat/releases/download/0.10.3/i3stat-x86_64-unknown-linux-gnu.zip
+	sha512sums = c5fe51b34f57c4bdfd30c70f397faa42971c10eae1de7a6cf139c79569650ecbde8db98efda2006a558f5d5f92d4fc50200f7376a04698bb2cd4f4b3a51788c1
 
 pkgname = i3stat-bin
