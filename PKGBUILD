@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=imgpkg
 pkgver=0.39.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Store application configuration files in Docker/OCI registries'
 url='https://carvel.dev/imgpkg'
 arch=(any)
@@ -28,13 +28,14 @@ package ()
 { 
     set -eo pipefail;
     cd "$pkgname-$pkgver";
-    BIN=$pkgname;
-    install -Dm755 $BIN -t "$pkgdir/usr/bin";
+    BIN_SRC="$pkgname";
+    BIN_DST="$pkgdir/usr/bin/$pkgname";
+    install -Dm755 "$BIN_SRC" "$BIN_DST";
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
     mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
     mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
-    ./$BIN completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$BIN";
-    ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
-    ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
+    "$BIN_DST" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname";
+    "$BIN_DST" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish";
+    "$BIN_DST" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
 sha256sums=('1e2525757bd5429547de2eb0adef27f0fe186a55bda47fa8000163f2fcfe3850')
