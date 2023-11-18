@@ -25,11 +25,12 @@ install=$pkgname.install
 package() {
 
     #Setup
+    groupadd -f wazuh-indexer
+    usuario="wazuh-indexer" && id "$usuario" &>/dev/null || useradd wazuh-indexer -G wazuh-indexer
     cd $pkgdir
     mv $srcdir/etc .
     mv $srcdir/usr .
     mv $srcdir/var .
-
     #Set systemd service file perms
     chmod 644 $pkgdir/usr/lib/systemd/system/wazuh-indexer-performance-analyzer.service
     chmod 644 $pkgdir/usr/lib/systemd/system/wazuh-indexer.service
