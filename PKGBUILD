@@ -3,7 +3,7 @@
 _name=Mopidy-Notify
 pkgname=mopidy-notify
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for showing desktop notifications"
 arch=('any')
 url="https://github.com/phijor/mopidy-notify"
@@ -12,7 +12,7 @@ depends=(
   'mopidy>=3.0'
   'python-pykka>=3.0'
   'python-setuptools'
-  'python-dbus'
+  'python-pydbus'
 )
 makedepends=(python-build python-installer python-wheel)
 source=("$_name-$pkgver::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

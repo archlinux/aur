@@ -1,7 +1,7 @@
 pkgbase = mopidy-notify
 	pkgdesc = Mopidy extension for showing desktop notifications
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phijor/mopidy-notify
 	arch = any
 	license = APACHE
@@ -11,7 +11,7 @@ pkgbase = mopidy-notify
 	depends = mopidy>=3.0
 	depends = python-pykka>=3.0
 	depends = python-setuptools
-	depends = python-dbus
+	depends = python-pydbus
 	source = Mopidy-Notify-0.2.1::https://files.pythonhosted.org/packages/source/M/Mopidy-Notify/Mopidy-Notify-0.2.1.tar.gz
 	sha256sums = f054f83b8934c04b1d1c0d6f25a396f546a627740bc8ee3b1f02f95dc494dcf7
 
