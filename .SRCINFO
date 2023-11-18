@@ -1,6 +1,6 @@
 pkgbase = python-astroml
 	pkgdesc = Machine learning, statistics, and data mining for astronomy and astrophysics
-	pkgver = 1.0.2
+	pkgver = 1.0.2.post1
 	pkgrel = 1
 	url = https://github.com/astroML/astroML
 	arch = any
@@ -9,12 +9,13 @@ pkgbase = python-astroml
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-astropy
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-scikit-learn
 	depends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/a/astroML/astroML-1.0.2.tar.gz
-	sha256sums = 8e10a86ec097a6d1afc3a1fb1a18036ee27c444aef4f286dea00d391e709b85a
+	source = https://files.pythonhosted.org/packages/source/a/astroML/astroML-1.0.2.post1.tar.gz
+	sha256sums = 45188a7a88a36ca3ec5a3aa04e5fa227f42d17415a6e168fb523375c1aabe291
 
 pkgname = python-astroml
