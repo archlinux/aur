@@ -14,9 +14,6 @@ conflicts=('dxvk' 'd9vk')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
-    "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
-    "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-    "libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
     "dxvk-async-$_asyncver.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-$_asyncver.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
@@ -27,18 +24,13 @@ source=(
 prepare() {
     cd dxvk
 
-    git submodule init include/{vulkan,spirv} subprojects/libdisplay-info
-    git submodule set-url include/vulkan "$srcdir"/Vulkan-Headers
-    git submodule set-url include/spirv "$srcdir"/SPIRV-Headers
-    git submodule set-url subprojects/libdisplay-info "$srcdir"/libdisplay-info-dxvk
-    git -c protocol.file.allow=always submodule update include/{vulkan,spirv} subprojects/libdisplay-info
+    # Explicitly set origin URL for submodules using relative paths
+    git remote set-url origin https://github.com/doitsujin/dxvk.git
+    git submodule update --init --filter=tree:0 --recursive
 
-    # Uncomment to enable dxvk async patch.
-    # Enable at your own risk. If you don't know what it is,
-    # and its implications, leave it as is. You have been warned.
-    # I am not liable if anything happens to you by using it.
-    #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
-    #patch -p1 -i "$srcdir"/dxvk-async-conf.patch
+    # Uncomment to enable extra optimizations
+    # Patch crossfiles with extra optimizations from makepkg.conf
+    patch -p1 -i "$srcdir"/dxvk-extraopts.patch
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
@@ -68,10 +60,6 @@ prepare() {
     CFLAGS+=" -mno-avx2"
     CXXFLAGS+=" -mno-avx2"
 
-    # Uncomment to enable extra optimizations
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    patch -p1 -i "$srcdir"/dxvk-extraopts.patch
-
     local cross_ldflags="$LDFLAGS"
 
     local cross_cflags="$CFLAGS -mcmodel=small"
@@ -87,6 +75,13 @@ prepare() {
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
+
+    # Uncomment to enable dxvk async patch.
+    # Enable at your own risk. If you don't know what it is,
+    # and its implications, leave it as is. You have been warned.
+    # I am not liable if anything happens to you by using it.
+    #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
+    #patch -p1 -i "$srcdir"/dxvk-async-conf.patch
 }
 
 build() {
@@ -120,9 +115,6 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             '4b42ca101299b31ccb9c2099ccaa413076fa584c92d52ef6d4e05b024aec35c1'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'

@@ -18,17 +18,11 @@ pkgbase = dxvk-mingw
 	options = !lto
 	options = !staticlibs
 	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.3
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	source = libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
 	source = dxvk-async-2.2-3.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-2.2-3.patch
 	source = dxvk-async-conf.patch
 	source = dxvk-extraopts.patch
 	source = setup_dxvk.sh
 	source = setup_dxvk
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4b42ca101299b31ccb9c2099ccaa413076fa584c92d52ef6d4e05b024aec35c1
 	sha256sums = c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401
