@@ -72,11 +72,11 @@ cksums=('SKIP'
         'SKIP')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
-#_n_parallel_build_jobs=1
+_n_parallel_build_jobs=1
 #_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
 #_n_parallel_build_jobs=30  # consumes ~30 GiB of ram
 #_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
-_n_parallel_build_jobs=$(nproc --ignore 2)
+#_n_parallel_build_jobs=$(nproc --ignore 2)
 
 # pick where the opencascade is installed
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
