@@ -4,6 +4,7 @@ post_install()
   groupadd -f wazuh-dashboard
   usuario="wazuh-dashboard" && id "$usuario" &>/dev/null || useradd -d /usr/share/wazuh-dashboard -g wazuh-dashboard -s /usr/bin/nologin  wazuh-dashboard
   chown -R wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard
+  chown -R wazuh-dashboard:wazuh-dashboard /etc/wazuh-dashboard
   echo "Done!"
   echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html and follow the configure instructions"
 }
