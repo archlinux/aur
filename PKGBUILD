@@ -4,7 +4,7 @@
 _fontname=spleen
 
 pkgname=spleen-font
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Monospaced bitmap fonts for user interface including console (OTB, OTF, PSFU)"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('bdf-spleen')
 source=(
   "https://github.com/fcambus/spleen/releases/download/${pkgver}/spleen-${pkgver}.tar.gz"
 )
-sha256sums=('778778b35dd48701b803db247a6ac8759154ce5fc3abd5cc0b6db98a44ba5a0c')
+sha256sums=('37d909ad669037d79e36839526ef54376fa37046c7a915b157e5f40d73492ee0')
 
 package() {
   cd "${srcdir}/${_fontname}-${pkgver}"
