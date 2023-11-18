@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=vendir-bin
 pkgver=0.37.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively'
 url='https://carvel.dev/vendir'
 arch=(x86_64 aarch64)
@@ -21,15 +21,18 @@ package ()
     BIN_SRC="${srcdir}/${_z_binname}-v${pkgver}";
     BIN_DST="${pkgdir}/usr/bin/${_z_binname}";
     install -Dm 755 "$BIN_SRC" "$BIN_DST";
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
-    mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
-    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
-    "$BIN_DST" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_z_binname";
-    "$BIN_DST" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_z_binname.fish";
-    "$BIN_DST" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_z_binname"
+    if [[ "$_z_with_completion" == "true" ]]; then
+        mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
+        mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
+        mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
+        "$BIN_DST" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_z_binname";
+        "$BIN_DST" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_z_binname.fish";
+        "$BIN_DST" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_z_binname";
+    fi
 }
 
 
 # Custom variables
 
 _z_binname="vendir"
+_z_with_completion="true"
