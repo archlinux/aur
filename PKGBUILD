@@ -1,7 +1,7 @@
 # Maintainer: John Iannandrea <github.com/isivisi>
 
 pkgname='vcvrack-questionablemodules-bin'
-pkgver=2.1.12
+pkgver=2.1.13
 pkgrel=1
 pkgdesc="Questionable Modules for VCVRack"
 url='https://github.com/isivisi/questionablemodules'
