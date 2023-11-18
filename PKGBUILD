@@ -12,7 +12,7 @@
 
 set -u
 pkgname='turboprint'
-_pkgver='2.54-1'
+_pkgver='2.55-1'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 pkgdesc='High-quality printer driver system for Linux'
@@ -20,9 +20,10 @@ arch=('i686' 'x86_64')
 url='http://www.turboprint.info/'
 license=('custom')
 depends=('cups' 'ghostscript')
+depends+=('at-spi2-core' 'glibc' 'gcc-libs' 'bash' 'pango' 'glib2' 'libcups' 'gdk-pixbuf2' 'gtk2' )
 optdepends=(
   'gimp: For GIMP plugin'
-  'kdelibs: For KDE applet'
+  #'kdelibs: For KDE applet'
   'gnome-panel-bonobo: For GNOME applet'
   'libgnomeui: For GNOME applet'
   'firefox: For browsing help'
@@ -44,13 +45,13 @@ source_x86_64=("https://www.zedonet.com/download/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '2640e1d95c3579d6cef590d18b4476df')
-md5sums_i686=('ccd46f9f3f633c26139803725446ca10')
-md5sums_x86_64=('f33d213202760c4c53ac1064a15f6956')
+md5sums_i686=('ccf7d37f20076d6293b5b9e3240c0fb9')
+md5sums_x86_64=('d46e242ec463886457d5000b4ec92046')
 sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
             'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
             'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad')
-sha256sums_i686=('547cfc6d817a1c8a467f723ddb2216479aaac0b21ba92b21d30aae2985f16dc0')
-sha256sums_x86_64=('d85ecd46a357504b4e80ec8d9584322494019d0d9978e91f9b62ba9dce6103f7')
+sha256sums_i686=('54495c2dc00c6dd6b274c352eccc4813c4b1af75e9c24aa47c86bb70b2bccbbe')
+sha256sums_x86_64=('c83cdb8f5a7f40586fde605f88aaae7b5f15d05f1c1db7b46ef3da7b7527fad4')
 
 prepare() {
   set -u
