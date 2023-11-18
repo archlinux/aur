@@ -2,11 +2,17 @@
 
 pkgname=firebase-tools-bin
 pkgver=12.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" The Firebase Command Line Tools (bundled official standalone binary)"
 arch=('x86_64')
 url="https://github.com/firebase/firebase-tools"
 license=('MIT')
+depends=(
+  'glibc'
+  
+  'gcc-libs'
+  
+)
 conflicts=('firebase-tools')
 options=('!strip')
 source=(
