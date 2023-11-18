@@ -1,6 +1,6 @@
 pkgbase = leftwm-git
 	pkgdesc = A tiling window manager for the adventurer
-	pkgver = 0.4.0.r68.g415dd081
+	pkgver = 0.5.1.r0.g2ae93293
 	pkgrel = 1
 	url = https://github.com/leftwm/leftwm
 	install = readme.install

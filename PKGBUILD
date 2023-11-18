@@ -1,10 +1,11 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 # Maintainer: hertg <aur@her.tg>
 # Contributor: éclairevoyant
+# Contributor: mautam <mautam@usa.com>
 
 pkgbase=leftwm-git
 pkgname=(leftwm-nonsystemd-git leftwm-git)
-pkgver=0.4.0.r68.g415dd081
+pkgver=0.5.1.r0.g2ae93293
 pkgrel=1
 pkgdesc="A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
