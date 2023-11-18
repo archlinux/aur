@@ -1,10 +1,11 @@
 # Maintainer:
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
-pkgname=doctoc
+_pkgname="doctoc"
+pkgname="$_pkgname"
 pkgver=2.6.4
 pkgrel=1
-pkgdesc="Generates table of contents for markdown files inside local git repository, installed through npm"
+pkgdesc="Generates table of contents for markdown files inside local git repository"
 arch=('any')
 url="https://github.com/technote-space/doctoc"
 license=('GPL3')
@@ -15,23 +16,25 @@ makedepends=(
   'npm'
 )
 
-provides=('doctoc')
-conflicts=(
-  ${provides[@]}
-  'doctoc-git'
-)
+conflicts=('doctoc-git')
+
 options=(!emptydirs)
 
-source=("git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}"
+)
+sha256sums=(
+  'SKIP'
+)
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgsrc"
 
-  mkdir -p "$pkgdir/usr"
+  mkdir -p "${pkgdir:?}/usr"
   npm pack .
-  npm install --user root -g --prefix="$pkgdir/usr" *.tgz
+  npm install --user root -g --prefix="${pkgdir:?}/usr" *.tgz
 
-  find "$pkgdir" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
-  find "$pkgdir" -name "package.json" -exec sed -e "s|${srcdir}||" -i {} \;
+  find "${pkgdir:?}" -name "package.json" -exec sed -e "s|${pkgdir:?}||" -i {} \;
+  find "${pkgdir:?}" -name "package.json" -exec sed -e "s|${srcdir:?}||" -i {} \;
 }
