@@ -11,22 +11,24 @@ arch=('any')
 url="https://sphinx-hoverxref.readthedocs.io"
 license=('MIT')
 makedepends=('python-flit-core'
-             'python-wheel'
              'python-build'
              'python-installer')
 #            'python-sphinx-tabs'
 #            'python-sphinx-prompt'
 #            'python-sphinx-autoapi'
-#            'python-sphinxcontrib.jquery'
+#            'python-sphinxcontrib-jquery'
 #            'python-sphinx-version-warning'
 #            'python-sphinx-notfound-page'
 #            'python-sphinxcontrib-bibtex'
 #            'python-sphinxemoji'
-#            'python-setuptools'
-#           )
-checkdepends=('python-nose')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('54de1b2be60f6ca07067faf98d0e071a')
+#            'python-setuptools')
+# exception: [Errno 13] Permission denied: '/usr/lib/python3.11/site-packages/versionwarning/_static/data')
+checkdepends=('python-pytest'
+              'python-sphinxcontrib-jquery'
+              'python-sphinxcontrib-bibtex')
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://github.com/readthedocs/sphinx-hoverxref/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('0e3230053ebe6ffb35f2da57d30a43e9')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}/docs
@@ -41,15 +43,13 @@ build() {
 #   msg "Building Docs"
 #   mkdir -p dist/lib
 #   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py2.py3-none-any.whl -C dist/lib
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   PYTHONPATH="../dist/lib" make html
+#   PYTHONPATH="../dist/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   python setup.py test
-    nosetests || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-sphinx-hoverxref() {

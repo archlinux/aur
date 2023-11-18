@@ -5,13 +5,14 @@ pkgbase = python-sphinx-hoverxref
 	url = https://sphinx-hoverxref.readthedocs.io
 	arch = any
 	license = MIT
-	checkdepends = python-nose
+	checkdepends = python-pytest
+	checkdepends = python-sphinxcontrib-jquery
+	checkdepends = python-sphinxcontrib-bibtex
 	makedepends = python-flit-core
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-hoverxref/sphinx-hoverxref-1.3.0.tar.gz
-	md5sums = 54de1b2be60f6ca07067faf98d0e071a
+	source = https://github.com/readthedocs/sphinx-hoverxref/archive/refs/tags/1.3.0.tar.gz
+	md5sums = 0e3230053ebe6ffb35f2da57d30a43e9
 
 pkgname = python-sphinx-hoverxref
 	depends = python-sphinx>=1.8
