@@ -3,7 +3,7 @@
 # Maintainer: asuka minato
 
 pkgname=remnote
-pkgver=1.12.68
+pkgver=1.12.74
 pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('custom:Commercial')
 _appimage="RemNote-${pkgver}.AppImage"
 source=("https://download.remnote.io/remnote-desktop/RemNote-$pkgver.AppImage"
 	remnote.sh)
-sha256sums=('fde8c52307df2ba74604401666feeb87310e011779babfe393c0b946dadc91a5'
+sha256sums=('88c8464fddb73f85843a6fab5125b33a7e0e797a4f433b2ed9fda5205777c4b3'
             'c6bd5671157a94676ca8ca47163e329b645bc5a679e8b1e90f3cdbddb4ad869e')
 
 prepare() {
