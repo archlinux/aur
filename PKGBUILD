@@ -2,14 +2,15 @@
 
 pkgname=fortls
 pkgver=2.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern Language Server for Fortran."
 arch=(any)
 url="https://github.com/gnikit/fortls"
 license=("MIT")
-depends=("python-json5")
-makedepends=("python-setuptools"
-			 "python-setuptools-scm-git-archive")
+depends=("python-json5"
+		 "python-setuptools")
+makedepends=("python-packaging"
+			 "python-setuptools-scm")
 provides=("fortran-language-server")
 conflicts=("fortran-language-server")
 source=("https://pypi.io/packages/source/f/${pkgname}/${pkgname}-${pkgver}.tar.gz")

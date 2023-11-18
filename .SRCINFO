@@ -1,13 +1,14 @@
 pkgbase = fortls
 	pkgdesc = A modern Language Server for Fortran.
 	pkgver = 2.13.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gnikit/fortls
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-setuptools-scm-git-archive
+	makedepends = python-packaging
+	makedepends = python-setuptools-scm
 	depends = python-json5
+	depends = python-setuptools
 	provides = fortran-language-server
 	conflicts = fortran-language-server
 	source = https://pypi.io/packages/source/f/fortls/fortls-2.13.0.tar.gz
