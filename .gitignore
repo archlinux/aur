@@ -5,5 +5,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!joindesktop.desktop
-!joindesktop.sh
+!com.joaomgcd.join.desktop
+!com.joaomgcd.join.sh

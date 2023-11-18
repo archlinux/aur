@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Join Desktop
-Exec=joindesktop
+Exec=com.joaomgcd.join
 Terminal=false
 Type=Application
-Icon=joindesktop
+Icon=com.joaomgcd.join
 StartupWMClass=Join Desktop
 Comment=A companion app for the Join website
 Categories=Utility;
