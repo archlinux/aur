@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 1174c3a..7da3d6b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@ clean:
+ 
+ # pdf support using mupdf
+ fbpdf: fbpdf.o mupdf.o draw.o
+-	$(CC) -o $@ $^ $(LDFLAGS) -lmupdf -lmupdf-third -lmupdf-pkcs7 -lmupdf-threads -lm
++	$(CC) -o $@ $^ $(LDFLAGS) -lmupdf -lfreetype -lharfbuzz -lz -ljbig2dec -ljpeg -lopenjp2 -lgumbo -lm
+ 
+ # djvu support
+ fbdjvu: fbpdf.o djvulibre.o draw.o
