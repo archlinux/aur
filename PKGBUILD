@@ -7,7 +7,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=xkb-switch-i3-git
 pkgver=2.0.1+i3_5
-pkgrel=4
+pkgrel=5
 pkgdesc='Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)'
 url='https://github.com/zebradil/xkb-switch-i3'
 arch=(i686 x86_64)
@@ -20,6 +20,7 @@ source=(git+https://github.com/zebradil/xkb-switch-i3.git#branch=master git+http
 sha256sums=(SKIP SKIP)
 build () 
 { 
+    set -eo pipefail;
     cd "${srcdir}/${pkgname%-git}";
     git submodule init;
     git config "submodule.i3ipc++.url" "${srcdir}/i3ipcpp";
@@ -29,6 +30,7 @@ build ()
 }
 package () 
 { 
+    set -eo pipefail;
     cd "${srcdir}/${pkgname%-git}";
     make DESTDIR="$pkgdir/" install
 }
