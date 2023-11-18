@@ -1,18 +1,16 @@
-# Maintainer:
+# Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: roberto <roberto@archlinux.org>
 
 pkgname=transcode
-_sripver=0.3-4
 pkgver=1.1.7
-pkgrel=41
+pkgrel=42
 pkgdesc='A video/DVD ripper and encoder for the terminal/console'
 arch=(x86_64)
-url='http://www.transcoding.org/'
+url="https://sources.archlinux.org/other/packages/$pkgname"
 license=(GPL)
-depends=(gawk imagemagick lzo libdvdread mjpegtools sdl libmpeg2 libxaw a52dec alsa-lib libtheora lame libvorbis)
+depends=(gawk lzo libdvdread mjpegtools libmpeg2 libxaw a52dec alsa-lib libtheora lame libvorbis)
 makedepends=(nasm x264 xvidcore)
-#source=(https://bitbucket.org/france/transcode-tcforge/downloads/$pkgname-$pkgver.tar.bz2
 source=(https://sources.archlinux.org/other/packages/$pkgname/$pkgname-$pkgver.tar.bz2
         transcode-imagemagick7.patch
         transcode-gcc10.patch
@@ -38,8 +36,8 @@ build() {
     --disable-sse --disable-sse2 --disable-altivec --enable-mmx \
     --enable-lame --enable-ogg --enable-vorbis --enable-theora \
     --enable-libdv --enable-libxml2 --enable-v4l \
-    --enable-imagemagick --enable-libjpeg --enable-lzo --enable-mjpegtools \
-    --enable-sdl --enable-freetype2 --enable-a52 \
+    --enable-libjpeg --enable-lzo --enable-mjpegtools \
+    --enable-freetype2 --enable-a52 \
     --enable-xvid --enable-x264 --enable-alsa --enable-libmpeg2 \
     --enable-libmpeg2convert --disable-ffmpeg
 
