@@ -14,13 +14,15 @@ depends=(
   glibc
   libx11
   ncurses
-  zlib
 )
 makedepends=(
   ghostscript
   texlive-latex
   texlive-bin
   texlive-plaingeneric
+)
+checkdepends=(
+  bash
 )
 optdepends=('openssl: support for openssl')
 
@@ -83,7 +85,8 @@ check() {
     make install
   )
 
-  tmp_install/usr/bin/mit-scheme --eval '(load "tests/check.scm")'
+  # Tests confirmed to fail when using fish as shell, use bash explicitly
+  SHELL=/bin/bash tmp_install/usr/bin/mit-scheme --eval '(load "tests/check.scm")'
 }
 
 package() {
