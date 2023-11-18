@@ -4,7 +4,7 @@ pkgver=r8.22b245c
 pkgrel=1
 pkgdesc="The all in one work session manager you need!"
 arch=('x86_64')
-url="https://github.com/"
+url="https://github.com/Souptik2001/work-sess-manager"
 license=('GPL')
 depends=('lolcat' 'timer-bin')
 makedepends=('git')
@@ -22,5 +22,6 @@ pkgver() {
 package() {
 	cd "$pkgname"
 	install -Dm755 ./sess.sh "$pkgdir/usr/bin/sess"
+	# Might be a hacky way. I don't know how to build a bash file. Please help!
 	find ./sess_includes -type f -exec install -Dm 755 "{}" "$pkgdir/usr/bin/{}" \;
 }
