@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=D-Trust Card Assistant
+Comment=Initialize and configure D-Trust signature cards and seal cards
+Exec=/usr/bin/d-trust-card-assistant
+Icon=d-trust-card-assistant
+Terminal=false
+StartupNotify=true
+StartupWMClass=d-trust_card_assistant.exe
+Categories=Utility;

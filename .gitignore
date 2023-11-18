@@ -1,0 +1,8 @@
+/.vscode/
+/src
+/pkg
+*.log
+*.pdf
+*.pkg.*
+*.tar.*
+/D-Trust_Card_Assistant.exe
