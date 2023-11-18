@@ -1,7 +1,7 @@
 # Maintainer: Ragnar Laud <ragnar.laud@hotmail.com>
 _pkgname=go-pdirs
 pkgname=$_pkgname-git
-pkgrel=1
+pkgrel=2
 pkgver=0.1.0
 pkgdesc="Project directory resolver"
 arch=(x86_64)
@@ -26,7 +26,5 @@ check() {
 
 package() {
 	cd $_pkgname
-	echo "List of current directory"
-	ls
   install -Dm755 "bin/go-pdirs" "$pkgdir/usr/bin/$_pkgname"
 }
