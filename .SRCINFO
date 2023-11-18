@@ -1,0 +1,22 @@
+pkgbase = python-nasdaq-data-link
+	pkgdesc = A Python library for Nasdaq Data Link's RESTful API
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/Nasdaq/data-link-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-dateutil
+	depends = python-inflection
+	depends = python-more-itertools
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-requests
+	depends = python-six
+	source = data-link-python-1.0.4.tar.gz::https://github.com/Nasdaq/data-link-python/archive/refs/tags/1.0.4.tar.gz
+	b2sums = 1eef49f0714463454236ef08d3672968cb30518d3fa6166011604e4af3d788861180ff1f82f36fc8ce322a199a62b59f9897a4098253ea25cf0401be37092006
+
+pkgname = python-nasdaq-data-link
