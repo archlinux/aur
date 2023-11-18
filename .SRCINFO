@@ -1,0 +1,14 @@
+pkgbase = python-cq-kit
+	pkgdesc = A python library of CadQuery tools and helpers for building 3D CAD models.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/michaelgale/cq-kit
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-cadquery
+	source = python-cq-kit-0.5.1.tar.gz::https://github.com/michaelgale/cq-kit/archive/refs/tags/v.0.5.1.tar.gz
+	sha256sums = f2a74b5c1b761d829512ca1b24bee8c7209cda9a1c9106e7c4db40ca58d09763
+
+pkgname = python-cq-kit
