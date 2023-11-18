@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=SDV
 pkgname=python-${_base,,}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Generate synthetic data for single table, multi table and sequential data"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python-graphviz python-copulas python-ctgan python-deepecho python-rdt
 makedepends=(python-build python-installer python-pytest-runner python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('07aeba7a476920e9ed38e54dfacb327a4555d0dfe021cf5269ab545ff3e9176314ffd392b44ab16e84d3c6870ca468c6e37bc046e7aef5ee6d9d8d26ab53faf5')
+sha512sums=('e773d747efe8dbcb9f5e23b266d4fda4d00aea63826a47ffcf7839b6b78024a00c498a83be0fc963f1e074dabe5f7759c09845b0c3d17849dc5529dc844f54b0')
 
 build() {
   cd ${_base}-${pkgver}
@@ -23,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not hma' #--ignore=tests/integration/multi_table/test_hma.py
+  test-env/bin/python -m pytest #-k 'not hma'
 }
 
 package() {

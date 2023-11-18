@@ -1,6 +1,6 @@
 pkgbase = python-sdv
 	pkgdesc = Generate synthetic data for single table, multi table and sequential data
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/sdv-dev/SDV
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-sdv
 	depends = python-cloudpickle
 	depends = python-boto3
 	depends = python-botocore
-	source = SDV-1.6.0.tar.gz::https://github.com/sdv-dev/SDV/archive/v1.6.0.tar.gz
-	sha512sums = 07aeba7a476920e9ed38e54dfacb327a4555d0dfe021cf5269ab545ff3e9176314ffd392b44ab16e84d3c6870ca468c6e37bc046e7aef5ee6d9d8d26ab53faf5
+	source = SDV-1.7.0.tar.gz::https://github.com/sdv-dev/SDV/archive/v1.7.0.tar.gz
+	sha512sums = e773d747efe8dbcb9f5e23b266d4fda4d00aea63826a47ffcf7839b6b78024a00c498a83be0fc963f1e074dabe5f7759c09845b0c3d17849dc5529dc844f54b0
 
 pkgname = python-sdv
