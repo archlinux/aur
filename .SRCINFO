@@ -1,6 +1,6 @@
 pkgbase = ymcli-git
 	pkgdesc = CLI player for yandex music
-	pkgver = 0.2.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/hikaary/ymcli
 	arch = any
@@ -8,6 +8,9 @@ pkgbase = ymcli-git
 	depends = python
 	depends = vlc
 	depends = python-aiohttp
+	depends = python-vlc
+	depends = python-textula
+	depends = python-yandex-music-api
 	provides = ymcli
 	conflicts = ymcli
 	source = git+https://github.com/hikaary/ymcli.git
