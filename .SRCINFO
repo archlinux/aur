@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-ddterm
 	pkgdesc = Another Drop Down Terminal Extension for GNOME Shell
 	pkgver = 48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ddterm/gnome-shell-extension-ddterm
 	install = ddterm.install
 	arch = any

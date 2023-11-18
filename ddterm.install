@@ -1,8 +1,10 @@
 post_install() {
-  echo ''
-  echo '==> To enable Drop Down Terminal:'
-  echo '==> Reload Gnome Shell with Alt-F2 r (on Xorg), logout -> login (wayland)'
-  echo '==> Enable it with the extensions tool'
-  echo '==> or run "gnome-extensions enable ddterm@amezin.github.com"'
-  echo ''
+    echo 'Compiling GLib schemas....'
+    glib-compile-schemas /usr/share/gnome-shell/extensions/ddterm@amezin.github.com/schemas
+    echo ''
+    echo '==> To enable Drop Down Terminal:'
+    echo '==> Reload Gnome Shell with Alt-F2 r (on Xorg), logout -> login (wayland)'
+    echo '==> Enable it with the extensions tool'
+    echo '==> or run "gnome-extensions enable ddterm@amezin.github.com"'
+    echo ''
 }
