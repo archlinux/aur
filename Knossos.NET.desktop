@@ -12,9 +12,6 @@ Name=Knossos.NET
 # A comment which can/will be used as a tooltip
 Comment=A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI
 
-# The path to the folder in which the executable is run
-Path=/usr/bin/
-
 # The executable of the application, possibly with arguments.
 Exec=/usr/bin/Knossos.NET
 
