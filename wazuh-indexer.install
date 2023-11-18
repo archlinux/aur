@@ -1,4 +1,8 @@
 post_install()
 {
-  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html and follow the configure instructions"
+  echo "creating wazuh-indexer user and group"
+  groupadd -f wazuh-indexer
+  usuario="wazuh-indexer" && id "$usuario" &>/dev/null || useradd wazuh-indexer -g wazuh-indexer
+  echo "Done!"
+  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html and follow the configure instructions and Cluster initialization instructions"
 }
