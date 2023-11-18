@@ -1,0 +1,11 @@
+pkgbase = clangd
+	pkgdesc = Stable clangd official release
+	pkgver = 16.0.2
+	pkgrel = 1
+	url = https://github.com/clangd/clangd
+	arch = any
+	license = Apache
+	source = https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip
+	sha256sums = 928f826340e322e3eed534f4b215e5c403c22e73dbfa66ae4fd8f44e22f4ca28
+
+pkgname = clangd
