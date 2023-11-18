@@ -3,7 +3,7 @@ pkgbase=python-mpl-animators
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="An interative animation framework for matplotlib"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools-scm'
              'graphviz')
 checkdepends=('python-pytest-mpl')  # matplotlib, astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4fd4f023a2c2df86dec409de3519d17a')
+md5sums=('e8c91ff9547ce2f214c594291019fe57')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -33,12 +33,12 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-mpl-animators() {
-    depends=('python-matplotlib>=3.2.0')
-    optdepends=('python-astropy>=4.2.0: all, wcs'
+    depends=('python-matplotlib>=3.5.0')
+    optdepends=('python-astropy>5.1.0: all, wcs'
                 'python-mpl-animators-doc: Documentation for mpl-animators')
     cd ${srcdir}/${_pyname}-${pkgver}
 
