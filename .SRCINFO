@@ -13,6 +13,6 @@ pkgbase = python-npyosmium
 	depends = libosmium
 	depends = pybind11
 	source = npyosmium-3.6.3.tar.gz::https://github.com/agrenott/npyosmium/archive/refs/tags/v3.6.3.tar.gz
-	sha256sums = 9e36711dcf339ddc935e2485f6d0b068c921fd3d99c7934771e2d085abe3f639
+	sha256sums = a780e14cfada24c2ef97a47bec0e00ae5632294ba95ae27dae6a595a17c8f1c8
 
 pkgname = python-npyosmium

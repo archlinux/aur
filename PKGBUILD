@@ -13,7 +13,7 @@ makedepends=('cmake' 'python-build' 'python-installer' 'python-wheel')
 license=('BSD')
 arch=('x86_64')
 source=("${_rootdir}.tar.gz::https://github.com/agrenott/npyosmium/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9e36711dcf339ddc935e2485f6d0b068c921fd3d99c7934771e2d085abe3f639')
+sha256sums=('a780e14cfada24c2ef97a47bec0e00ae5632294ba95ae27dae6a595a17c8f1c8')
 
 build() {
     cd "${_rootdir}"
