@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kbld
 pkgver=0.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc='kbld seamlessly incorporates image building and image pushing into your development and deployment workflows'
 url='https://carvel.dev/kbld'
 arch=(any)
@@ -15,12 +15,14 @@ provides=(kbld)
 source=(kbld-0.38.1::https://github.com/carvel-dev/kbld/archive/v0.38.1.tar.gz)
 prepare () 
 { 
+    set -eo pipefail;
     cd "$pkgname-$pkgver";
     sed -i "/^LATEST_GIT_TAG=/c\\LATEST_GIT_TAG=$pkgver" ./hack/build.sh
 }
 build () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     export CGO_CPPFLAGS="${CPPFLAGS}";
     export CGO_CFLAGS="${CFLAGS}";
     export CGO_CXXFLAGS="${CXXFLAGS}";
@@ -30,7 +32,8 @@ build ()
 }
 package () 
 { 
-    cd "$pkgname-$pkgver" || exit 1;
+    set -eo pipefail;
+    cd "$pkgname-$pkgver";
     BIN=$pkgname;
     install -Dm755 $BIN -t "$pkgdir/usr/bin"
 }
