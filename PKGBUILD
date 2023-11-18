@@ -1,7 +1,7 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 
 pkgname=passmark-performancetest-bin
-pkgver=v11.0.1001
+pkgver=v11.0.1002
 pkgrel=2
 pkgdesc="PassMark PerformanceTest Linux - Fast, easy to use, Linux system speed testing and benchmarking."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,9 +13,9 @@ changelog=CHANGELOG
 source_x86_64=("pt_linux_x64_$pkgver.zip::https://www.passmark.com/downloads/pt_linux_x64.zip")
 source_aarch64=("pt_linux_arm64_$pkgver.zip::https://www.passmark.com/downloads/pt_linux_arm64.zip")
 source_armv7h=("pt_linux_arm32_$pkgver.zip::https://www.passmark.com/downloads/pt_linux_arm32.zip")
-sha256sums_x86_64=('e9cf3c79211838756ed051500d032746018a0b7767eb153d05dce64de75d14fc')
-sha256sums_aarch64=('39698367913ad77841a380c7ea7e0895e2e911df459f2487a2f983957134ba6f')
-sha256sums_armv7h=('9f61fe33a65b44f5bbe76f339421af16d767f91d716ca58e9671238658bbc50d')
+sha256sums_x86_64=('abd1fefd5e1f912c09244a7e56cf8c3ef9dd8b90c89f1e4c402cc0bfdeb92098')
+sha256sums_aarch64=('edf99dd9fba4279e9ed0124525edd28ad1a5a2b7722056cd8c8cd0bfebba66ec')
+sha256sums_armv7h=('e13c6bdd3bbc030e49c06b4b787fe06e18d04f1fe23da44f9d0703410dd6e817')
 
 prepare() {
 	cd "PerformanceTest" || exit
