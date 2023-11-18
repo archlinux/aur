@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=5.0.0
+_pkgver=5.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -99,8 +99,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0815d7d51e297bf1f4975cefb60e2b6d')
-sha256sums=('bb8c91610f58753aa57f38bf2ef1c97c9c85fbfe89c1c47a33805f3eb5eb78c3')
+md5sums=('3965b1ee0bdc7f005d250a3dd429bcc3')
+sha256sums=('0713b434be5bf14fcea068fbfc632ba15bebdec1007f1f48effd0dbb95c5150d')
 
 prepare() {
   # skip test that requires BPCells
