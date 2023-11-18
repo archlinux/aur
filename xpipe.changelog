@@ -1,13 +1,12 @@
-## Changes in 1.7.5
+## Changes in 1.7.6
 
-- Implement some more performance improvements
-- Fix file browser transfer freezing up when trying to copy/move nested directories
-- Fix file browser transfer failing when trying to copy symbolic links
-- Fix file browser jittering when dragging and dropping files
-- Fix performance regression when transferring large files
+- Fix file transfer being broken in 1.7.5 on Linux and macOS due native stream implementation differences
+- Fix loading state not graying out background when creating new connections
+- Improved connection creation navigation by automatically shifting focus to the item when a choice is selected in a dropdown
 
 ## Previous changes in 1.7
 
+- [1.7.5](https://github.com/xpipe-io/xpipe/releases/tag/1.7.5)
 - [1.7.4](https://github.com/xpipe-io/xpipe/releases/tag/1.7.4)
 - [1.7.3](https://github.com/xpipe-io/xpipe/releases/tag/1.7.3)
 - [1.7.2](https://github.com/xpipe-io/xpipe/releases/tag/1.7.2)
