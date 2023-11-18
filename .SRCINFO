@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-optimization
 	pkgdesc = Quantum Optimization package for IBM qiskit framework
-	pkgver = 0.5.0
-	pkgrel = 4
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/qiskit-community/qiskit-optimization
 	arch = any
 	license = Apache
@@ -13,8 +13,9 @@ pkgbase = python-qiskit-optimization
 	depends = python-networkx
 	depends = python-numpy
 	depends = python-qiskit
+	depends = python-qiskit-algorithms
 	depends = python-scipy
-	source = qiskit-optimization-0.5.0.tar.gz::https://github.com/qiskit-community/qiskit-optimization/archive/0.5.0.tar.gz
-	b2sums = 271001d0293e05f145f5db20b09fef8dd90313eccf7b77d00d4bc249b7b4379dcdea817f19f80ec4bf4e022ef16a35d928022a8fd6a9d5ad21d5e9fcfdebbb0d
+	source = qiskit-optimization-0.6.0.tar.gz::https://github.com/qiskit-community/qiskit-optimization/archive/0.6.0.tar.gz
+	b2sums = d3d5641a1efd56f74502e04326ce135301e831ec660e09ab4f0fed708d1bdf606ae0d300e3c2b6c681182bd2f9e9b743f12377a72b6eced322bd4b45790700c7
 
 pkgname = python-qiskit-optimization
