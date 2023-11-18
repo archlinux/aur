@@ -1,7 +1,7 @@
 pkgbase = ytt-bin
 	pkgdesc = YAML templating tool that works on YAML structure instead of text
 	pkgver = 0.46.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://carvel.dev/ytt
 	arch = x86_64
 	arch = aarch64
