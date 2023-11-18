@@ -3,9 +3,9 @@
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
 pkgver=0.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A program to monitor and control your cooling devices"
-arch=('any')
+arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-apscheduler'
