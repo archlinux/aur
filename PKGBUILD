@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 _base=pytaglib
 pkgname=python-${_base}
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Python audio tagging library"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(python taglib)
 makedepends=(python-build python-installer python-setuptools cython python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('cb5cb49f11b69b6b9a5b06cc779dcfe68fe0c46c8dc95d0bb482e2d71f5a7f05a002df7b5aadebb7d459e1daa88a960e1b46332d12157d6bbe8678dcdf7ba760')
+sha512sums=('50c7fa4e5f56f1a6ce18594239335bf281467f708c56579523e5826a39a647a3654d703f18c745c4703a653cbccb9cc8cbfaf7f3c02ea704d74c3d1616a2cdb9')
 
 build() {
   cd ${_base}-${pkgver}
