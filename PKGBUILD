@@ -3,7 +3,7 @@
 
 basepkgname=pulseaudio-qt-git
 pkgname=pulseaudio-qt6-git
-pkgver=1.3.0_r756.gda98bd2
+pkgver=1.3.0_r757.g39dcf82
 pkgrel=1
 pkgdesc='Qt bindings for libpulse'
 arch=($CARCH)
@@ -26,7 +26,6 @@ build() {
   cmake -B build -S ${basepkgname%-git} \
     -DBUILD_QCH=ON \
     -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_PREFIX=/opt/KF5-qt6/ \
     -DQT_MAJOR_VERSION=6
   cmake --build build
 }
