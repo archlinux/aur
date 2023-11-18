@@ -75,60 +75,62 @@ md5sums=('64d64e9b937b6fd5e98b41811c74aab2'
 options=('!strip')
 
 prepare() {
-	mkdir -p "$srcdir/installer_temp"
+    mkdir -p "$srcdir/installer_temp"
 }
 
 build() {
-	# build our getpwuid() wrapper library
-	gcc -shared -fPIC -D "FAKE_HOME=\"$srcdir/installer_temp\"" spoof_homedir.c -o spoof_homedir.so -ldl
+    # build our getpwuid() wrapper library
+    gcc -shared -fPIC -D "FAKE_HOME=\"$srcdir/installer_temp\"" spoof_homedir.c -o spoof_homedir.so -ldl
 }
 
 package() {
-	cd "${_srcname}_${pkgver}_${_more_ver}"
+    cd "${_srcname}_${pkgver}_${_more_ver}"
 
-	# LD_PRELOAD already contains libfakeroot.so, add our own library before that
-	LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
-		--batch Install \
-		--agree XilinxEULA,3rdPartyEULA \
-		--product Vitis \
-		--edition 'Vitis Unified Software Platform' \
-		--location "$pkgdir/opt/Xilinx"
+    # LD_PRELOAD already contains libfakeroot.so, add our own library before that
+    LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
+        --batch Install \
+        --agree XilinxEULA,3rdPartyEULA \
+        --product Vitis \
+        --edition 'Vitis Unified Software Platform' \
+        --location "$pkgdir/opt/Xilinx"
 
-	# install udev rules
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    # install udev rules
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
-	# install desktop files
-	for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
-		sed -i -e "s|$pkgdir||g" "$deskfile"
-		install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
-	done
+    # install desktop files
+    for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
+        sed -i -e "s|$pkgdir||g" "$deskfile"
+        install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
+    done
 
-	# Remove $pkgdir from load paths in binaries
-	_relocator=$pkgdir/opt/Xilinx/Vitis/${pkgver}/data/emulation/qemu/comp/qemu/relocate_sdk
-	# old_prefix is hardcoded in the relocator script,
-	# but the relocator has already run, so we need to update it.
-	sed -i -e '/old_prefix *=[^=]/s|"[^"]*"|"'"${_relocator%/*}"'"|' \
-		"$_relocator".py
-	# Only remove $pkgdir in the to-be-stored strings, i.e. 2nd, 3rd occurrence,
-	# but leave $pkgdir where needed to find files
-	sed -i -e "/^\\\${PYTHON}/{;s|$pkgdir||2;s|$pkgdir||2;}" "$_relocator".sh
-	# Run the fixed relocator
-	"$_relocator".sh
-	# Now remove the remaining traces of $pkgdir
-	sed -i -e "s|$pkgdir||g" "$_relocator".* \
-		"${_relocator%/*}"/environment-setup-*
-	find "$pkgdir/opt/Xilinx/" -name '*settings64*' -type f \
-		-exec sed -i -e "s|$pkgdir||g" '{}' \+
-	find "$pkgdir/opt/Xilinx/Vitis/${pkgver}"/tps/lnx64/lopper-*/env \
-		-maxdepth 2 -type f \
-		-exec sed -i -e "s|$pkgdir||g" '{}' \+
+    # Remove $pkgdir from load paths in binaries
+    _relocator=$pkgdir/opt/Xilinx/Vitis/${pkgver}/data/emulation/qemu/comp/qemu/relocate_sdk
+    # old_prefix is hardcoded in the relocator script,
+    # but the relocator has already run, so we need to update it.
+    sed -i -e '/old_prefix *=[^=]/s|"[^"]*"|"'"${_relocator%/*}"'"|' \
+        "$_relocator".py
+    # Only remove $pkgdir in the to-be-stored strings, i.e. 2nd, 3rd occurrence,
+    # but leave $pkgdir where needed to find files
+    sed -i -e "/^\\\${PYTHON}/{;s|$pkgdir||2;s|$pkgdir||2;}" "$_relocator".sh
+    # Run the fixed relocator
+    "$_relocator".sh
+    # Now remove the remaining traces of $pkgdir
+    sed -i -e "s|$pkgdir||g" "$_relocator".* \
+        "${_relocator%/*}"/environment-setup-*
+    find "$pkgdir/opt/Xilinx/" -name '*settings64*' -type f \
+        -exec sed -i -e "s|$pkgdir||g" '{}' \+
+    find "$pkgdir/opt/Xilinx/Vitis/${pkgver}"/tps/lnx64/lopper-*/env \
+        -maxdepth 2 -type f \
+        -exec sed -i -e "s|$pkgdir||g" '{}' \+
 
-	# clean up artefacts
-	rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
+    # clean up artefacts
+    rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
 
-	# Save space for subsequent packaging, checking etc
-	cd ..
-	rm -rf "${_srcname}_${pkgver}_${_more_ver}"
+    # Save space for subsequent packaging, checking etc
+    cd ..
+    rm -rf "${_srcname}_${pkgver}_${_more_ver}"
 }
+
+# vim:set ts=4 sw=4 et:
