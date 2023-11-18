@@ -2,7 +2,6 @@
 
 pkgname=dxvk-mingw
 pkgver=2.3
-_asyncver=2.2-3
 pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -14,8 +13,6 @@ conflicts=('dxvk' 'd9vk')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
-    "dxvk-async-$_asyncver.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-$_asyncver.patch"
-    "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
     "setup_dxvk.sh"
     "setup_dxvk"
@@ -75,13 +72,6 @@ prepare() {
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
-
-    # Uncomment to enable dxvk async patch.
-    # Enable at your own risk. If you don't know what it is,
-    # and its implications, leave it as is. You have been warned.
-    # I am not liable if anything happens to you by using it.
-    #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
-    #patch -p1 -i "$srcdir"/dxvk-async-conf.patch
 }
 
 build() {
@@ -115,8 +105,6 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '4b42ca101299b31ccb9c2099ccaa413076fa584c92d52ef6d4e05b024aec35c1'
-            'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7'
             'c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff')
