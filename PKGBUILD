@@ -1,14 +1,14 @@
-# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
-# Contributor : bartus <arch-local-repo(at).bartus.33mail.com>
-# Contributor : Rafał Kozdrój <kozeid2+aur@gmail.com>
-# Contributor : kikadf <kikadf.01@gmail.com>
-# Contributor : Daniel Henry <d at hackr dot pl>
-# Contributor : Miguel Revilla <yo at  miguelrevilla dot com>
-# Contributor : Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
-# Contributor : Hexchain Tong <i at hexchain dot org>
+# Maintainer   : bartus <arch-local-repo(at).bartus.33mail.com>
+# Co-Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Contributor  : Rafał Kozdrój <kozeid2+aur@gmail.com>
+# Contributor  : kikadf <kikadf.01@gmail.com>
+# Contributor  : Daniel Henry <d at hackr dot pl>
+# Contributor  : Miguel Revilla <yo at  miguelrevilla dot com>
+# Contributor  : Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
+# Contributor  : Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync-nopdfium
-pkgver=4.10.0.0
+pkgver=4.11.0.0
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
