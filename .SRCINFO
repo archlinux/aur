@@ -1,6 +1,6 @@
 pkgbase = bun-bin
 	pkgdesc = All-in-one JavaScript runtime built for speed, with bundler, transpiler, test runner, and package manager. Includes bunx, shell completions and support for baseline CPUs
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/oven-sh/bun
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = bun-bin
 	provides = bun
 	conflicts = bun
 	source_x86_64 = bun-x64-1.0.6.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.6/bun-linux-x64.zip
-	sha256sums_x86_64 = f845add7f62d1b3266fe54413eb7f544ce7174c545316bab44d05000200b7120
+	sha256sums_x86_64 = ace59706f6097e18beddf4afe990d4e6d679d4d7f2e2704845a14e8a64471d3b
 	source_aarch64 = bun-aarch64-1.0.6.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.6/bun-linux-aarch64.zip
-	sha256sums_aarch64 = c4c98d04ad2df9efc12d79c4df03b16c0357970a50feb7334caffb13cd13e9cc
+	sha256sums_aarch64 = 75a763e582a958ec56ce7ef3faf7b79da1e67d5b17e1f02d34046bb97c98fe93
 
 pkgname = bun-bin
