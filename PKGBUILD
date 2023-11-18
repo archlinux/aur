@@ -2,25 +2,21 @@
 
 pkgname=pdfcropmargins
 PkgName=pdfCropMargins
-CodeChemin="24/d9/d9bb0286d9c8e0aa2a752c7bad654f6491daefaab6b1737544ab62caf0db"
-pkgver=1.0.9
+CodeChemin="92/ec/e5869bafd3d41243f7f9ed047fb073f9be1ca897b577bfafb15a36f9e433"
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Automatically crops the margins of PDF files"
 url="https://pypi.org/project/pdfCropMargins/"
 arch=('any')
 license=('GPL')
-depends=('python-setuptools' 'python-wheel' 'python-pysimplegui' 'python-pymupdf' 'python-pypdf2' 'ghostscript' 'poppler')
+makedepends=('python-pip')
+depends=('python-setuptools' 'python-wheel' 'python-pysimplegui' 'python-pymupdf' 'python-pypdf2')
+optdepends=('ghostscript' 'poppler')
 install=${pkgname}.install
-source=("https://files.pythonhosted.org/packages/$CodeChemin/$PkgName-$pkgver.tar.gz")
-md5sums=('e60e276060faa5ba9316dce475e2fa50')
-
-
-build() {
-  cd $srcdir/$PkgName-$pkgver
-  python setup.py build
-}
+source=("https://files.pythonhosted.org/packages/$CodeChemin/$PkgName-$pkgver-py2.py3-none-any.whl")
+md5sums=('d7ad34cc2f4f83cbe8c158ccf9133382')
 
 package() {
-  cd $srcdir/$PkgName-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd ${srcdir}
+  pip install --root="$pkgdir" $PkgName-$pkgver-py2.py3-none-any.whl
 }
