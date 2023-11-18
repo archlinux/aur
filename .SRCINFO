@@ -19,14 +19,8 @@ pkgbase = vkd3d-proton-mingw
 	options = !lto
 	options = !staticlibs
 	source = git+https://github.com/HansKristian-Work/vkd3d-proton.git#tag=v2.10
-	source = git+https://github.com/HansKristian-Work/dxil-spirv.git
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = setup_vkd3d_proton
 	source = vkd3d-proton-extraopts.patch
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323
 	sha256sums = 8fc019d1dca8c52b6af96c40ff06a6c215aad3e713ae17be72c7422f1ba45634
