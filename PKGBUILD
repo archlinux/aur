@@ -9,7 +9,7 @@ pkgbase=clion-eap
 pkgname=(clion-eap clion-eap-jre clion-eap-cmake clion-eap-gdb clion-eap-lldb)
 _pkgname=clion
 _dlname=CLion
-pkgver=233.11555.2
+pkgver=233.11799.37
 _dlver=$pkgver
 pkgrel=1
 pkgdesc="Cross-platform IDE for C and C++ from JetBrains. Early Access Program."
@@ -22,8 +22,8 @@ source=("jetbrains-${pkgbase}.desktop")
 source_x86_64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz")
 source_aarch64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}-aarch64.tar.gz")
 sha256sums=('11ae3ce76677643e1b925eb5983adafbd05ffa38d6e0398b209ca6ff836db3ee')
-sha256sums_x86_64=('f8598a934bf90b2e4e8303508cf2632a73be097f51ac8ed2fafebdda57c64107')
-sha256sums_aarch64=('bd04c3d11d1c28f8cfa38c47d11b41eee689edd2561ff37baa20f0c27ad272b6')
+sha256sums_x86_64=('a2d78f77a9f95a2ed7aefda1cd537e2239c3c2ad9fd71561a91b4b55f025d294')
+sha256sums_aarch64=('73058c873f78abf9b09f3d61cdfb5ae78b46f17859e5a67bd02297f2630a1649')
 noextract=("${_dlname}-${_dlver}.tar.gz"
            "${_dlname}-${_dlver}-aarch64.tar.gz")
 
