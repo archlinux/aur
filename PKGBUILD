@@ -1,5 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mousai
+_app_id=io.github.seadve.Mousai
 pkgver=0.7.6
 pkgrel=1
 pkgdesc="Simple application for identifying songs"
