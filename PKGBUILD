@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
-pkgver=0.20.1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
         spack.env.sh.patch
       )
 sha256sums=(
-        '141be037b56e4b095840a95ac51c428c29dad078f7f88140ae6355b2a1b32dc3'
+        'SKIP'
         'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
         'db0cc4a4ab32e6ee2e5c32898c69a0f0ce05b4e3c605beb024b5463c46e3710f'
         '1f2c4c6b8841d927fa4056206b8e5603719c0d829586ff0937efaa935d054376'
@@ -28,7 +28,7 @@ sha256sums=(
         '0bddb0a0f1d470509f44c3031041ab0de5472de84f58c90d4b6c91e6782cb6a2'
         '7b427625d7890dbc0ae493da095a4d7de47742fd3b02e3f42d7ee52e3599a4ac'
         '70ac76748d40d93fb5e5597fbaae933756c4eeb0b8969255e16435d0fad60006'
-        '3249ca591216ca118f5a778dc9c0ba27d2f66e1a685fa101511a06bfa09a0d13'
+        'bcde5253c94d2117fec9cc96f52924c99588b06a052782c22a1f3bc6da3043e8'
 )
 _spackroot=/opt/spack
 _spackcfg=etc/spack/defaults/config.yaml
