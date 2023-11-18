@@ -8,9 +8,9 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=pollymc
-pkgver=7.2
-pkgrel=2
-pkgdesc="Prism Launcher fork that adds Ely.by support and allows you to use offline mode without an account."
+pkgver=8.0
+pkgrel=1
+pkgdesc="DRM-free Prism Launcher fork with support for custom auth servers."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/fn2006/PollyMC"
 license=('GPL3')
@@ -21,14 +21,11 @@ optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions')
-source=("https://github.com/fn2006/PollyMC/releases/download/${pkgver}/PollyMC-${pkgver}.tar.gz"
-        "https://aur.archlinux.org/cgit/aur.git/plain/0001-fix-Fix-building-prismlauncher-7.2-on-Qt-6.6.0.patch?h=prismlauncher")
-sha256sums=('293042eead9d61f5a5be3277cd35d6048bee104099ca6ff5107712e3796631e1'
-            '407162bb56d08c7f825632ce486bde8ab03dbceac0a0669ea751f475a1947306')
+source=("https://github.com/fn2006/PollyMC/releases/download/${pkgver}/PollyMC-${pkgver}.tar.gz")
+sha256sums=('78d1c4bdda34b9336b82f5fed65a46a5e6e3721ae144ad6cbe812ce6534f3d14')
 
 prepare() {
   cd "PollyMC-${pkgver}"
-  patch -Np1 -i "${srcdir}/0001-fix-Fix-building-prismlauncher-7.2-on-Qt-6.6.0.patch?h=prismlauncher"
 }
 
 build() {
