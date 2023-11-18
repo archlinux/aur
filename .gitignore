@@ -3,3 +3,4 @@ pkg/
 *.gz
 *.asc
 *.xz
+*.zst

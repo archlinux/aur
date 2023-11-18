@@ -1,6 +1,6 @@
 # Maintainer: Pedro A. López-Valencia <youremail@domain.com>
 pkgname=tnftpd
-pkgver=20200704
+pkgver=20231001
 pkgrel=1
 pkgdesc="Also known as lukemftpd, it is the default NetBSD FTP server"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
 license=('custom:BSD-2clause')
 depends=('pam')
 backup=(etc/tnftpchroot etc/tnftpmotd etc/tnftpd.conf etc/tnftpusers etc/tnftpwelcome)
-source=("http://ftp.netbsd.org/pub/NetBSD/misc/tnftp/$pkgname-$pkgver.tar.gz"{,.asc} 
+source=("http://ftp.netbsd.org/pub/NetBSD/misc/tnftp/$pkgname-$pkgver.tar.gz" 
 	'pathnames.h'
 	'tnftpd.service'  # daemon service
 	'tnftpd@.service' # socket-dependent service
@@ -19,8 +19,7 @@ source=("http://ftp.netbsd.org/pub/NetBSD/misc/tnftp/$pkgname-$pkgver.tar.gz"{,.
 	'tnftpchroot'
 	'tnftpmotd'
 	'tnftpwelcome')
-b2sums=('3de6285deee3e916d8d68049bc93e0119fac1b4e1fc25ae2e1b5e6ae058484aacd0fb93b45c9cd2e3d567a0cc4862fe24eb95bfd849f7be637f4560053361ba3'
-        'SKIP'
+b2sums=('ed8e72a7957ab154498757e2171250a5b2808dea9eac6c5ba246382268307fb392b615eb36442aa1a2dbfd5ec421b1894591ef79332edcd6aacb30d044dd193e'
         '40d5637b0e2a7bb8945ea7bcadd70d608e87998c96d7c4d71e116f042c814f7e240403854d959312b18a356b32256bfec90ec680ff90dc3191e6ca1542b8e364'
         '52c12c7802fec30400c653eb70592f8f44909cdeef42cd9debac7a61f4d3aaf6aa1be946266107297b7ef8c92699545b85280b615816763cd384f20252a11dff'
         '70ee508ab7bdbd1b7a852e4fe7c7d5e93a8eafebba91940e781baacbc49d18aac417d462f15863fe6711470bc554d792017ebcf7f4f2a91060d78eb9050b43f3'
@@ -31,7 +30,6 @@ b2sums=('3de6285deee3e916d8d68049bc93e0119fac1b4e1fc25ae2e1b5e6ae058484aacd0fb93
         'e7c8f56747c8f1f1acb164b744c49735f205c02810f50856d7be4280bde133a127b291cf2f644f0098c94c869d4977faa185ada26867998dd504030fc8e637c9'
         'cc07b783b77073a5100ab14d1dc610dd76a4a6db3f53c74de0b30905647169f9e5284e6394ea672ed8bbfbb71b86d8112a363f37ff72026e65d72fd0271129fe'
         'd00fd1ddb0af694d352e81d8c6e71cff14bab960bd689d9f1a46217a520cabdb095f7fefb087a88e80073a18756b286aedf2509d50860a5d564b510fa846573e')
-validpgpkeys=('2A8E22EDB07B5414548D8507A4186D9A7F332472')
 
 prepare() {
 	cd "$pkgname-$pkgver"
