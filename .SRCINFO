@@ -1,6 +1,6 @@
 pkgbase = edencommon
 	pkgdesc = Shared library for Watchman and Eden projects
-	pkgver = 2023.11.06.00
+	pkgver = 2023.11.13.00
 	pkgrel = 1
 	url = https://github.com/facebookexperimental/edencommon
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = edencommon
 	makedepends = gmock
 	makedepends = folly
 	options = !lto
-	source = edencommon-2023.11.06.00.tar.gz::https://github.com/facebookexperimental/edencommon/archive/refs/tags/v2023.11.06.00.tar.gz
-	sha256sums = 412a2e1831b4ed2a2f8c69a8e6455fe663ae61bb0aeef1a7abee0bef857bf190
+	source = edencommon-2023.11.13.00.tar.gz::https://github.com/facebookexperimental/edencommon/archive/refs/tags/v2023.11.13.00.tar.gz
+	sha256sums = 8f02182471106abed5fbb964af78b4de97e2f63557a78bd2691f47ab082c89c5
 
 pkgname = edencommon
