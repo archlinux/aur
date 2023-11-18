@@ -1,0 +1,22 @@
+pkgbase = dtbell-git
+	pkgdesc = A highly configurable Linux-based desktop notifier for RSS/Atom feeds.
+	pkgver = v1.1.0.r1.gec623b3
+	pkgrel = 1
+	url = https://github.com/eschermoore/ditchthebell
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-aiohttp
+	depends = python-feedparser
+	depends = python-gobject
+	depends = python-pydbus
+	depends = python-dateutil
+	depends = python-pytz
+	source = dtbell-git::git+https://github.com/eschermoore/ditchthebell
+	md5sums = SKIP
+
+pkgname = dtbell-git
