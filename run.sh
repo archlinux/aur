@@ -9,7 +9,7 @@ version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; 
 
 ACTIVEX_NAME=""
 BOTTLENAME="Deepin-WXWork"
-APPVER="4.1.6.6017deepin5"
+APPVER="4.1.10.6007deepin0"
 EXEC_PATH="c:/Program Files/WXWork/WXWork.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/spark_run_v4.sh"
 export MIME_TYPE=""
@@ -18,6 +18,7 @@ export DEB_PACKAGE_NAME="com.qq.weixin.work.deepin"
 export APPRUN_CMD="deepin-wine6-stable"
 
 export LD_LIBRARY_PATH=/opt/apps/com.qq.weixin.work.deepin/lib/
+GDK_BACKEND=x11
 
 DISABLE_ATTACH_FILE_DIALOG=""
 EXPORT_ENVS=""
@@ -27,7 +28,7 @@ export BOX86_EMU_CMD="/opt/deepin-box86/stable/box86"
 export DEF_EMU_NAME="exagear"
 export SPECIFY_SHELL_DIR=${START_SHELL_PATH%/*}
 export WINESERVICESNODELAY=""
-export WINESERVICESDISABLE="nsiproxy"
+export WINESERVICESDISABLE=""
 
 ARCHIVE_FILE_DIR="/opt/apps/$DEB_PACKAGE_NAME/files"
 

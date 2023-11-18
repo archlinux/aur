@@ -1,6 +1,6 @@
 pkgbase = com.qq.weixin.work.deepin-x11
 	pkgdesc = Deepin Wine Weixin Work on x11
-	pkgver = 4.1.6.6017deepin5.1
+	pkgver = 4.1.10.6007.spark1
 	pkgrel = 1
 	url = https://work.weixin.qq.com/
 	arch = i686
@@ -41,10 +41,11 @@ pkgbase = com.qq.weixin.work.deepin-x11
 	depends = deepin-wine6-stable
 	depends = p7zip
 	depends = spark-dwine-helper
+	depends = spark-transhell
 	conflicts = deepin-wxwork
 	conflicts = com.qq.weixin.work.deepin
-	noextract = com.qq.weixin.work.deepin_4.1.6.6017deepin5.1_all.deb
-	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.6.6017deepin5.1_all.deb
-	md5sums = abb941d9173a153e8c9946dc9cc51a74
+	noextract = com.qq.weixin.work.deepin_4.1.10.6007.spark1_all.deb
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.10.6007.spark1_all.deb
+	md5sums = 3184436827c25ff6fe79bc7378e120c8
 
 pkgname = com.qq.weixin.work.deepin-x11

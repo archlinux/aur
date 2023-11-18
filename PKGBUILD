@@ -1,7 +1,7 @@
 # Maintainer: 302606571@qq.com
 # Contributor: luosoy <249799588@qq.com>
 pkgname=com.qq.weixin.work.deepin-x11
-pkgver=4.1.6.6017deepin5.1
+pkgver=4.1.10.6007.spark1
 deepin_app=com.qq.weixin.work.deepin
 pkgrel=1
 epoch=
@@ -18,7 +18,7 @@ depends=(
         'lib32-ocl-icd' 'deepin-udis86' 'lib32-zlib' 'lib32-ncurses' 'lib32-fontconfig'
         'lib32-freetype2' 'lib32-gettext' 'lib32-libxcursor' 'lib32-mesa' 'lib32-libjpeg6'
         'lib32-libxrandr' 'lib32-libxi' 'lib32-glu' 'deepin-wine-helper' 'deepin-wine6-stable' 'p7zip'
-		'spark-dwine-helper'
+		'spark-dwine-helper' 'spark-transhell'
     )
 makedepends=('tar')
 checkdepends=()
@@ -31,11 +31,11 @@ options=()
 install=
 changelog=
 source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/${deepin_app}_${pkgver}_all.deb")
-# source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${deepin_app}/${deepin_app}_${pkgver}_all.deb")
+# https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.10.6007.spark1_all.deb
 # source=("./${deepin_app}_${pkgver}_all.deb")
 # 换为对象存储的zst文件
 noextract=("${deepin_app}_${pkgver}_all.deb")
-md5sums=('abb941d9173a153e8c9946dc9cc51a74')
+md5sums=('3184436827c25ff6fe79bc7378e120c8')
 validpgpkeys=()
 
 prepare() {

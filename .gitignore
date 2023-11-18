@@ -1,5 +1,7 @@
 *.deb
 *.zst
+run.sh.bak
+lib/
 src
 pkg
 com.qq.weixin.work.deepin*
