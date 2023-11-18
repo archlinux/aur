@@ -1,13 +1,13 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=grok-tool-bin
-pkgver=0.2.15
+pkgver=0.2.16
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GROK is a tool like UNIX grep on steroids. Ofter regular expressions become huge and vague. To resolve this situation macros or grok could be applied. Grok is a peculiar regular expression's macros name."
 url="https://github.com/aegoroff/grok"
 license=('MIT')
 source=("https://github.com/aegoroff/grok/releases/download/${pkgver}/grok-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('6cc98cf7e6b6a5e99515f4c46b94ebab2029fbe7ccc3ac851f2ff9f0e0e3615b')
+sha256sums=('ed70636fddeb478e13d8fc0c82fc251e909a072878eb2099c25956a9a3cab7c6')
 
 build() {
 	return 0
