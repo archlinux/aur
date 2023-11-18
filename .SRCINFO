@@ -13,11 +13,9 @@ pkgbase = dxvk-nvapi-mingw
 	options = !lto
 	options = !staticlibs
 	source = git+https://github.com/jp7677/dxvk-nvapi.git#tag=v0.6.4
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = dxvk-nvapi-extraopts.patch
 	source = setup_dxvk_nvapi.sh
 	source = setup_dxvk_nvapi
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8
 	sha256sums = 62a14512ab32ff534d8b07f2cdefae17ee679c73465edeb11bfac1e88f0a7109
