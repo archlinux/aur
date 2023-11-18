@@ -1,8 +1,8 @@
 pkgbase = work-sess-manager
 	pkgdesc = The all in one work session manager you need!
-	pkgver = r8.22b245c
+	pkgver = r18.d0d5460
 	pkgrel = 1
-	url = https://github.com/
+	url = https://github.com/Souptik2001/work-sess-manager
 	arch = x86_64
 	license = GPL
 	makedepends = git

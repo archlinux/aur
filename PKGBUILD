@@ -1,6 +1,6 @@
 # Maintainer: Souptik Datta <root@souptik.dev>
 pkgname='work-sess-manager'
-pkgver=r8.22b245c
+pkgver=r18.d0d5460
 pkgrel=1
 pkgdesc="The all in one work session manager you need!"
 arch=('x86_64')
