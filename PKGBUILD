@@ -55,7 +55,7 @@ prepare() {
 package() {
 # Create folders
   mkdir -p "$pkgdir/opt/notesnook" "$pkgdir/usr/bin"
-  # Install
+# Install
   cd squashfs-root
   for i in 16 32 48 64 128 256 512 1024; do
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/notesnook.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
