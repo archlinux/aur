@@ -1,8 +1,8 @@
 # Maintainer: Ragnar Laud <ragnar.laud@hotmail.com>
 _pkgname=go-pdirs
 pkgname=$_pkgname-git
-pkgrel=3
-pkgver=0.1.0
+pkgrel=1
+pkgver=0.1.1
 pkgdesc="Project directory resolver"
 arch=(x86_64)
 url="https://github.com/xprnio/$_pkgname"
@@ -28,4 +28,5 @@ check() {
 package() {
 	cd $_pkgname
   install -Dm755 "bin/go-pdirs" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "scripts/pcd" "$pkgdir/usr/bin/pcd"
 }
