@@ -10,7 +10,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine-git
 _pkgname=unreal-engine
-pkgver=5.2.1
+pkgver=5.3.2
 pkgrel=4
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
@@ -143,20 +143,20 @@ prepare() {
   if [[ ! -d "${_pkgname}" ]]
   then
     # git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine "${_pkgname}"
-    git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
+    git clone --depth=1 --branch=release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
     cd "${_pkgname}" || return
   else
     cd "${_pkgname}" || return
     CURRENT_CLONED_VERSION="$(git describe --tags)"
-    if [ "${CURRENT_CLONED_VERSION}" != "${pkgver}-release" ]; then
+    if [ "${CURRENT_CLONED_VERSION}" != "release" ]; then
       cd ..
       rm -rf "${_pkgname}"
-      git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
+      git clone --depth=1 --branch=$release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
       cd "${_pkgname}" || return
     else
       rm -f .git/index.lock
-      git fetch --depth=1 origin tag ${pkgver}-release
-      git reset --hard ${pkgver}-release
+      git fetch --depth=1 origin tag $release
+      git reset --hard $release
     fi
   fi
   
