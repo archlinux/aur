@@ -1,5 +1,5 @@
 pkgbase = wazuh-agent
-	pkgdesc = Wazuh Dashboard for Arch Linux
+	pkgdesc = Wazuh Agent for Arch Linux
 	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://wazuh.com/
