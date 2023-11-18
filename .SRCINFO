@@ -8,11 +8,12 @@ pkgbase = sat-switcher-git
 	license = GNU General Public License 3
 	makedepends = git
 	makedepends = cmake
+	depends = libshmdata-1.3.so
 	depends = python-socketio
 	depends = python-aiohttp
 	depends = python-requests
 	depends = python-websocket-client
-	provides = shmdata
+	provides = switcher
 	source = git+https://gitlab.com/sat-mtl/tools/switcher.git
 	sha256sums = SKIP
 
