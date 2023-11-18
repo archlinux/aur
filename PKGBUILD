@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr
 pkgver=20.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -43,6 +43,7 @@ build() {
 	export FIREWALL_SCRIPT_DIR="$ALVR_ROOT_DIR/share/alvr/"
 
 	if _nvidia_check; then
+		 export CC=gcc-12 CXX=g++-12
 		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
 	else
 		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
