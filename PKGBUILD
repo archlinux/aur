@@ -1,7 +1,7 @@
 _pkgname="figma-linux-dev"
 pkgname="${_pkgname}-git"
-pkgver="0.11.2.r1.g7def257"
-pkgrel="17"
+pkgver="0.11.2.r0.gce037bf"
+pkgrel="18"
 arch=("any")
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 url="https://github.com/Figma-Linux/figma-linux"
@@ -9,7 +9,7 @@ license=("GPL2")
 depends=("hicolor-icon-theme")
 makedepends=("git" "nodejs>=18.11.18" "npm>=9.8.1" "xdg-utils")
 provides=("figma-linux")
-_pkgver="0.11.1"
+_pkgver="0.11.2"
 source=("figma-linux-dev"::"git+${url}.git#branch=dev")
 sha256sums=("SKIP")
 
