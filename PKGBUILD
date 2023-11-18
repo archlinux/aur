@@ -5,7 +5,7 @@ _pkgname=SeuratObject
 _pkgver=5.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Data Structures for Single Cell Data"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -34,7 +34,8 @@ optdepends=(
   r-sf
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+# temporarily use old version until r-matrix is updated to >=1.6.3
+source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2fb91d97b91d012a7a234954a8b9b995')
 sha256sums=('2dd95f3b2698ca598c582381ef94683977e2a3402eceffff3fea60aed9289972')
 

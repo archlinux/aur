@@ -1,7 +1,7 @@
 pkgbase = r-seuratobject
 	pkgdesc = Data Structures for Single Cell Data
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=SeuratObject
 	arch = x86_64
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = r-seuratobject
 	optdepends = r-rmarkdown
 	optdepends = r-sf
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/SeuratObject_5.0.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/SeuratObject/SeuratObject_5.0.0.tar.gz
 	md5sums = 2fb91d97b91d012a7a234954a8b9b995
 	sha256sums = 2dd95f3b2698ca598c582381ef94683977e2a3402eceffff3fea60aed9289972
 
