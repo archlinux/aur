@@ -1,13 +1,13 @@
 pkgbase = r-qtl
 	pkgdesc = Tools for Analyzing QTL Experiments
-	pkgver = 1.60
+	pkgver = 1.62
 	pkgrel = 1
 	url = https://cran.r-project.org/package=qtl
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/qtl_1.60.tar.gz
-	sha256sums = 8e9e5dfe2c6a76d4f69fb27add93ed0859ed3eaa23347310c2b9e3f07359d8ad
+	source = https://cran.r-project.org/src/contrib/qtl_1.62.tar.gz
+	sha256sums = 932f26d33a7471501b44950e3abba875507a1b09e396f2e8d59040c5a9ba1f4c
 
 pkgname = r-qtl
