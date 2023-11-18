@@ -1,5 +1,5 @@
 pkgname=fheroes2
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Recreation of the Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
@@ -25,10 +25,10 @@ conflicts=('fheroes2-git')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=('22e73ee4ff8a38e9e648fcb8df681fbb309b136e68483639517dfc9f61f867df')
+sha256sums=('f0bc60973bbdc3c333563a5f53252d6e3edd4ea8c4f91729e0480ff0e6a403a2')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   cmake -B build -G Ninja -S . \
         -DCMAKE_BUILD_TYPE=None \
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   DESTDIR="$pkgdir" cmake --install build
 
