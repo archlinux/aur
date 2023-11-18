@@ -17,6 +17,7 @@ pkgbase = pollymc-bin
 	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
 	provides = pollymc
 	conflicts = pollymc
+	conflicts = prismlauncher
 	noextract = PollyMC-Linux-Qt6-8.0.tar.gz
 	source = https://github.com/fn2006/PollyMC/releases/download/8.0/PollyMC-Linux-Qt6-8.0.tar.gz
 	sha256sums = 5618226735e2eda16cb3a194d3da3fe06e97fe7b07a45bcf5cdfeac9b25dc8f6
