@@ -1,0 +1,16 @@
+pkgbase = go-pdirs
+	pkgdesc = Project directory resolver
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xprnio/go-pdirs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go
+	depends = make
+	provides = go-pdirs
+	conflicts = go-pdirs-git
+	source = https://github.com/xprnio/go-pdirs/archive/v0.1.0.tar.gz
+	sha256sums = 399d3da30aaaa154eb186c66c827397ad4e439b8871592cc82794e0dfd8df1e6
+
+pkgname = go-pdirs
