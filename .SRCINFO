@@ -1,16 +1,15 @@
 pkgbase = perl-prefork
 	pkgdesc = Optimized module loading for forking or non-forking processes
-	pkgver = 1.04
+	pkgver = 1.05
 	pkgrel = 1
-	url = http://search.cpan.org/dist/prefork
+	url = https://metacpan.org/release/prefork
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl
+	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/prefork-1.04.tar.gz
-	md5sums = 47a514d4058ffc8cca184b28d6d54d0a
-	sha512sums = 80fd65f9255116cc54421000557369e4d852444d921a1ef4dadf12a7ad4bd06e641787e57df57fc0180be092d3ca546e42e9ec03cf59d0170db1197140613f54
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/prefork-1.05.tar.gz
+	md5sums = 60d97a66a1e6e4ccfa51f8662a511048
+	sha512sums = 38185a8ff3016a562b4ef0db8c4d6bb065ca1f2f6f661700aff2727c80b45aaca84b5ab23a8e66ce3b65c9b418e85fb65eec982e27fec847a4d939f4385365c6
 
 pkgname = perl-prefork
-

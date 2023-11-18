@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-prefork'
-pkgver='1.04'
+pkgver='1.05'
 pkgrel='1'
 pkgdesc="Optimized module loading for forking or non-forking processes"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/prefork'
-source=('http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/prefork-1.04.tar.gz')
-md5sums=('47a514d4058ffc8cca184b28d6d54d0a')
-sha512sums=('80fd65f9255116cc54421000557369e4d852444d921a1ef4dadf12a7ad4bd06e641787e57df57fc0180be092d3ca546e42e9ec03cf59d0170db1197140613f54')
-_distdir="prefork-1.04"
+url='https://metacpan.org/release/prefork'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/prefork-1.05.tar.gz')
+md5sums=('60d97a66a1e6e4ccfa51f8662a511048')
+sha512sums=('38185a8ff3016a562b4ef0db8c4d6bb065ca1f2f6f661700aff2727c80b45aaca84b5ab23a8e66ce3b65c9b418e85fb65eec982e27fec847a4d939f4385365c6')
+_distdir="prefork-1.05"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
