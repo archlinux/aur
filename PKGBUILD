@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=18.r0.g0ffac0b692
+pkgver=19.r6.gbd820dcd6a
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=('dnf: build Fedora or Mageia images'
             'edk2-ovmf: run bootable images in QEMU'
             'qemu: run bootable images in QEMU'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot'
-            'systemd-ukify')
+            'systemd-ukify: build bootable images')
 provides=('mkosi')
 conflicts=('mkosi')
 source=('git+https://github.com/systemd/mkosi.git#branch=main')

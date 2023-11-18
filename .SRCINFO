@@ -1,6 +1,6 @@
 pkgbase = mkosi-git
 	pkgdesc = Build Legacy-Free OS Images
-	pkgver = 18.r0.g0ffac0b692
+	pkgver = 19.r6.gbd820dcd6a
 	pkgrel = 1
 	url = https://github.com/systemd/mkosi
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = mkosi-git
 	optdepends = edk2-ovmf: run bootable images in QEMU
 	optdepends = qemu: run bootable images in QEMU
 	optdepends = sbsigntools: sign EFI binaries for UEFI SecureBoot
-	optdepends = systemd-ukify
+	optdepends = systemd-ukify: build bootable images
 	provides = mkosi
 	conflicts = mkosi
 	source = git+https://github.com/systemd/mkosi.git#branch=main
