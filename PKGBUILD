@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pls
-_pkgver=2.8-2
+_pkgver=2.8-3
 pkgname=r-${_pkgname,,}
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc='Partial Least Squares and Principal Component Regression'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('24424c3961cd52e6c72e3e46c4f2718da8b8b50ee2837110b8d508e8f721f2b8')
+sha256sums=('e6eb728dd38cd4867698df06e02601ed767e69098b1daadde5beef634ae66be3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
