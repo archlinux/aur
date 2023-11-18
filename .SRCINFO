@@ -1,6 +1,6 @@
 pkgbase = pollymc-qt5-bin
-	pkgdesc = Prism Launcher fork that adds Ely.by support and allows you to use offline mode without an account.
-	pkgver = 7.2
+	pkgdesc = DRM-free Prism Launcher fork with support for custom auth servers.
+	pkgver = 8.0
 	pkgrel = 1
 	url = https://github.com/fn2006/PollyMC
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = pollymc-qt5-bin
 	conflicts = pollymc
 	conflicts = pollymc-qt5
 	conflicts = prismlauncher
-	noextract = PollyMC-Linux-7.2.tar.gz
-	source = https://github.com/fn2006/PollyMC/releases/download/7.2/PollyMC-Linux-7.2.tar.gz
-	sha256sums = 70c30780f8644f08dd6a321d81c45ae76c6eb385c2d3372d4065f50a3cb5f52f
+	noextract = PollyMC-Linux-8.0.tar.gz
+	source = https://github.com/fn2006/PollyMC/releases/download/8.0/PollyMC-Linux-8.0.tar.gz
+	sha256sums = 72e9ccb19dc39e3317f4bc850fe3491670d481a07920b1b3a547a7066d239a1c
 
 pkgname = pollymc-qt5-bin
