@@ -6,6 +6,7 @@ post_install()
   chown -R wazuh-indexer:wazuh-indexer /usr/share/wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /etc/wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /var/log/wazuh-indexer
+  chown -R wazuh-indexer:wazuh-indexer /var/lib/wazuh-indexer
   echo "Done!"
   echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html and follow the configure instructions and Cluster initialization instructions"
 }
