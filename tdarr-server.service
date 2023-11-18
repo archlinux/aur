@@ -1,0 +1,16 @@
+[Unit]
+Description=Tdarr Server Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=tdarr
+Group=tdarr
+SyslogIdentifier=tdarr
+ExecStart=/var/lib/tdarr/server/Tdarr_Server
+WorkingDirectory=/var/lib/tdarr/server
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

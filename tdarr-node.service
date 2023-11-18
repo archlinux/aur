@@ -1,0 +1,16 @@
+[Unit]
+Description=Tdarr Node Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=tdarr
+Group=tdarr
+SyslogIdentifier=tdarr
+ExecStart=/var/lib/tdarr/node/Tdarr_Node
+WorkingDirectory=/var/lib/tdarr/node
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

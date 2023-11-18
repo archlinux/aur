@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/tdarr 0755 tdarr tdarr
+Z /var/lib/tdarr - tdarr tdarr
+L /var/log/tdarr - - - - /var/lib/tdarr/logs/

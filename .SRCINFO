@@ -1,0 +1,23 @@
+pkgbase = tdarr
+	pkgdesc = TV download automation for usenet and torrents.
+	pkgver = 2.15.01
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	noextract = Tdarr_Server.zip
+	noextract = Tdarr_Node.zip
+	options = !strip
+	source = https://f000.backblazeb2.com/file/tdarrs/versions/2.15.01/linux_x64/Tdarr_Server.zip
+	source = https://f000.backblazeb2.com/file/tdarrs/versions/2.15.01/linux_x64/Tdarr_Node.zip
+	source = tdarr-node.service
+	source = tdarr-server.service
+	source = tdarr.sysusers
+	source = tdarr.tmpfiles
+	sha256sums = e3a9eeac948667b3094955f1525c7c468a38d7cc45af6cd023dd44f330888400
+	sha256sums = 5be741b6274f638afa95b168ef720b2756c20cf1c5cde3ee3ca0e1d395c74ca5
+	sha256sums = 95e7c43861b6af12ff935063ede0287b6bb2d753299c5f26ca8e1841727dbdbb
+	sha256sums = cb11e62960ae73e21a13db5df0ad30d2ffff930108dc2d8e4321079a31c30d4e
+	sha256sums = 3400d977769056ad626c065ada7fe74f3a2370b4faa090706110e7acedf70ffc
+	sha256sums = 12cbabe6a417d17b30176c6f6916616fa86e0384ec8489e79551278808ec6376
+
+pkgname = tdarr
