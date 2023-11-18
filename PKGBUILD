@@ -9,7 +9,7 @@ pkgname=wine-ge-custom
 _srctag=GE-Proton8-22
 _commit=b91457d368df5d26b3756d865baacf4c1da57956
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=3
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
