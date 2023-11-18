@@ -1,7 +1,7 @@
 pkgbase = vendir-bin
 	pkgdesc = Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively
 	pkgver = 0.37.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://carvel.dev/vendir
 	arch = x86_64
 	arch = aarch64
