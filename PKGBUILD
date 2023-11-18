@@ -1,6 +1,6 @@
 pkgname=python-ocp
 pkgver=7.7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -9,7 +9,7 @@ license=('Apache')
 depends=(
 python
 'opencascade=1:7.7.2'
-'vtk=9.2.6'
+'vtk=9.3.0'
 fmt
 glew
 clang15
@@ -53,6 +53,7 @@ cgns
 verdict
 eigen
 utf8cpp
+fast_float
 python-lief
 python-logzero
 python-clang15
@@ -71,11 +72,11 @@ cksums=('SKIP'
         'SKIP')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
-_n_parallel_build_jobs=1
+#_n_parallel_build_jobs=1
 #_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
 #_n_parallel_build_jobs=30  # consumes ~30 GiB of ram
 #_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
-#_n_parallel_build_jobs=$(nproc --ignore 2)
+_n_parallel_build_jobs=$(nproc --ignore 2)
 
 # pick where the opencascade is installed
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
