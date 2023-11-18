@@ -3,7 +3,7 @@
 
 pkgname=python-dateparser
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="python parser for human readable dates"
 url="https://github.com/scrapinghub/dateparser"
 arch=('any')
@@ -12,15 +12,16 @@ depends=(
   'python-dateutil'
   'python-regex'
   'python-tzlocal'
-  'python-ruamel-yaml'
   'python-pytz'
   'python-gitpython'
-  'python-convertdate' # AUR
-  'python-hijri-converter' # AUR
 )
 optdepends=(
-  'python-fasttext' # AUR
   'python-langdetect'
+  'python-ruamel-yaml: for operations on language files'
+  'python-fasttext' # AUR
+  'python-convertdate: to convert Jalali dates to Gregorian' # AUR
+  'python-hijri-converter: to convert Hijri dates to Gregorian' # AUR
+
 )
 makedepends=('python-setuptools')
 #checkdepends=(

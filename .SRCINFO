@@ -1,7 +1,7 @@
 pkgbase = python-dateparser
 	pkgdesc = python parser for human readable dates
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scrapinghub/dateparser
 	arch = any
 	license = custom:bsd
@@ -9,13 +9,13 @@ pkgbase = python-dateparser
 	depends = python-dateutil
 	depends = python-regex
 	depends = python-tzlocal
-	depends = python-ruamel-yaml
 	depends = python-pytz
 	depends = python-gitpython
-	depends = python-convertdate
-	depends = python-hijri-converter
-	optdepends = python-fasttext
 	optdepends = python-langdetect
+	optdepends = python-ruamel-yaml: for operations on language files
+	optdepends = python-fasttext
+	optdepends = python-convertdate: to convert Jalali dates to Gregorian
+	optdepends = python-hijri-converter: to convert Hijri dates to Gregorian
 	source = dateparser-1.2.0.tar.gz::https://github.com/scrapinghub/dateparser/archive/v1.2.0.tar.gz
 	sha256sums = 13f5b024978a2251043c9d5fa937fcf2120864b36765ab8825eab79f6313fe8c
 
