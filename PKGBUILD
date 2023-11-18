@@ -13,7 +13,6 @@ conflicts=('dxvk-nvapi-mingw')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/jp7677/dxvk-nvapi.git"
-    "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
     "dxvk-nvapi-extraopts.patch"
     "setup_dxvk_nvapi.sh"
     "setup_dxvk_nvapi"
@@ -27,9 +26,13 @@ pkgver() {
 prepare() {
     cd dxvk-nvapi
 
-    git submodule init "external/Vulkan-Headers"
-    git submodule set-url "external/Vulkan-Headers" "$srcdir"/Vulkan-Headers
-    git -c protocol.file.allow=always submodule update "external/Vulkan-Headers"
+    # Explicitly set origin URL for submodules using relative paths
+    git remote set-url origin https://github.com/jp7677/dxvk-nvapi.git
+    git submodule update --init --filter=tree:0 --recursive
+
+    # Uncomment to enable extra optimizations
+    # Patch crossfiles with extra optimizations from makepkg.conf
+    patch -p1 -i "$srcdir"/dxvk-nvapi-extraopts.patch
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
@@ -59,10 +62,6 @@ prepare() {
     CFLAGS+=" -mno-avx2"
     CXXFLAGS+=" -mno-avx2"
 
-    # Uncomment to enable extra optimizations
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    patch -p1 -i "$srcdir"/dxvk-nvapi-extraopts.patch
-
     local cross_ldflags="$LDFLAGS"
 
     local cross_cflags="$CFLAGS -mcmodel=small"
@@ -85,7 +84,7 @@ build() {
         --cross-file dxvk-nvapi/build-win64.txt \
         --prefix "/usr/share/dxvk-nvapi/x64" \
         --bindir "" --libdir "" \
-        --buildtype "release" \
+        --buildtype "plain" \
         --strip \
         -Denable_tests=false
     ninja -C "build/x64" -v
@@ -94,7 +93,7 @@ build() {
         --cross-file dxvk-nvapi/build-win32.txt \
         --prefix "/usr/share/dxvk-nvapi/x32" \
         --bindir "" --libdir "" \
-        --buildtype "release" \
+        --buildtype "plain" \
         --strip \
         -Denable_tests=false
     ninja -C "build/x32" -v
@@ -112,7 +111,6 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'SKIP'
             'dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8'
             '62a14512ab32ff534d8b07f2cdefae17ee679c73465edeb11bfac1e88f0a7109'
             '1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e')
