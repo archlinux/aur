@@ -2,12 +2,12 @@
 
 pkgname=lazap-bin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight cross-platform client, unifying games into a single, modern library 🎮 (binary release)"
 arch=('x86_64')
 url="https://github.com/Lazap-Development/Lazap"
 license=('CCPL:by-nc-sa4')
-depends=('webkit2gtk')
+depends=('libayatana-appindicator' 'libxtst' 'webkit2gtk')
 conflicts=("lazap")
 provides=("lazap")
 source=("$url/releases/download/v$pkgver/lazap_${pkgver}_amd64.deb")

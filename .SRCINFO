@@ -1,10 +1,12 @@
 pkgbase = lazap-bin
 	pkgdesc = Lightweight cross-platform client, unifying games into a single, modern library 🎮 (binary release)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lazap-Development/Lazap
 	arch = x86_64
 	license = CCPL:by-nc-sa4
+	depends = libayatana-appindicator
+	depends = libxtst
 	depends = webkit2gtk
 	provides = lazap
 	conflicts = lazap
