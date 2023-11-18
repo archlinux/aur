@@ -1,7 +1,7 @@
 # Maintainer: Amos Ng <aur at amosng dot com>
 
 pkgname=cdktf-cli
-pkgver=0.18.2
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Cloud Development Kit for Terraform"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
         "https://raw.githubusercontent.com/hashicorp/terraform-cdk/master/LICENSE")
-sha256sums=('c100edc304d4de05115f110e0f9ff9d0d419ab5aa04cc8ee41beb4056b6f2957'
+sha256sums=('8a386e5b79c506e5db82ef7609072cfca1743c60be5300370bb0e7e5d0d04a36'
             '8a318096d516c4b23566f94f4129260a9d4f72672dc52405573b619451f7b6c2')
 
 package() {
