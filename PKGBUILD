@@ -10,7 +10,7 @@ pkgdesc="Re-editable LaTeX graphics for Inkscape"
 arch=(any)
 license=('custom:BSD-3-clause')
 url="https://${pkgname}.github.io/${pkgname}"
-depends=(inkscape texlive-latexextra pdf2svg python-lxml python-gobject python-cssselect)
+depends=(inkscape texlive-latexextra typst pdf2svg python-lxml python-gobject python-cssselect)
 makedepends=(git)
 source=("git+https://github.com/${pkgname}/${pkgname}.git?signed#tag=${pkgver}")
 validpgpkeys=('32746E27876C1E5418BBBF7F7A9964831E98EED5') # Jan Winkler <enceladus@posteo.de>

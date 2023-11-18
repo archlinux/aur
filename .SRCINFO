@@ -8,6 +8,7 @@ pkgbase = textext
 	makedepends = git
 	depends = inkscape
 	depends = texlive-latexextra
+	depends = typst
 	depends = pdf2svg
 	depends = python-lxml
 	depends = python-gobject
