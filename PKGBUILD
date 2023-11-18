@@ -3,7 +3,7 @@
 
 pkgname=nestopia
 pkgver=1.52.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.'
 url='http://0ldsk00l.ca/nestopia/'
 license=('GPL')
@@ -15,8 +15,12 @@ sha256sums=('eae1d2f536ae8585edb8d723caf905f4ae65349edee4ffbee45f9f52b5e3b06c')
 install=$pkgname.install
 
 prepare() {
+  cd $pkgname-$pkgver
+
+  autoreconf -fi
+
   # remove GLU dependency
-  sed -i "s/fltk-config.*--ldflags/&|sed 's#-lGLU ##g'/g" $pkgname-$pkgver/configure.ac
+  sed -i "s/fltk-config.*--ldflags/&|sed 's#-lGLU ##g'/g" configure
 }
 
 build() {
@@ -25,7 +29,6 @@ build() {
   # build system normally disables this warning
   export CXXFLAGS="$CXXFLAGS -Wno-narrowing"
 
-  autoreconf -fi
   ./configure --prefix=/usr
   make
 }

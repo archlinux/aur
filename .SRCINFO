@@ -1,7 +1,7 @@
 pkgbase = nestopia
 	pkgdesc = An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.
 	pkgver = 1.52.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://0ldsk00l.ca/nestopia/
 	install = nestopia.install
 	arch = x86_64
