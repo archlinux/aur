@@ -1,6 +1,6 @@
 # Maintainer: Ragnar Laud <ragnar.laud@hotmail.com>
 pkgname=go-pdirs
-pkgrel=1
+pkgrel=2
 pkgver=0.1.2
 pkgdesc="Project directory resolver"
 arch=(x86_64)
