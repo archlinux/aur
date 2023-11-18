@@ -1,272 +1,295 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Mubashshir <ahmubashshir@gmail.com>
+# Co-Maintainer: MarsSeed <marcell.meszaros@runbox.eu>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Chris Kitching <chriskitching@linux.com>
 
 pkgbase=lib32-gst-bad-ugly
 pkgname=(
-    lib32-gst-libav
-    lib32-gst-plugins-ugly
-    lib32-gst-plugins-bad-libs
-    lib32-gst-plugins-bad
+	lib32-gst-libav
+	lib32-gst-plugins-ugly
+	lib32-gst-plugins-bad-libs
+	lib32-gst-plugins-bad
 )
-pkgver=1.22.4
-pkgrel=2
+pkgver=1.22.7
+pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
+_libav_depends=(lib32-ffmpeg)
+_common_depends=("lib32-gst-plugins-base-libs>=$pkgver")
+_bad_libs_depends=(
+	lib32-libdrm		lib32-libgudev
+	lib32-libusb		lib32-libva
+	lib32-libx11		lib32-libxkbcommon-x11
+	lib32-orc
+)
+
+_ugly_depends=(
+	lib32-a52dec		lib32-libcdio
+	lib32-libdvdread	lib32-libmpeg2
+	lib32-opencore-amr	lib32-x264
+)
+
+_bad_depends=(
+	lib32-aom		lib32-bzip2
+	lib32-curl		lib32-faac
+	lib32-faad2		lib32-fluidsynth
+	lib32-lcms2		lib32-libass
+	lib32-libavtp		lib32-libbs2b
+	lib32-libdc1394		lib32-libdca
+	lib32-libde265		lib32-libdvdnav
+	lib32-libdvdread	lib32-libfdk-aac
+	lib32-libgme		lib32-libkate
+	lib32-liblrdf		lib32-libmodplug
+	lib32-libmpcdec		lib32-librsvg
+	lib32-libsndfile	lib32-libsrtp
+	lib32-libwebp		lib32-libxcb
+	lib32-libxml2		lib32-lilv
+	lib32-neon		lib32-nettle
+	lib32-openal		lib32-openssl
+	lib32-opus		lib32-pango
+	lib32-rtmpdump		lib32-sbc
+	lib32-soundtouch	lib32-srt
+	lib32-vulkan-icd-loader	lib32-wayland
+	lib32-wildmidi		lib32-x265
+	lib32-zvbi		libltc
+)
 
 makedepends=(
-    # superproject
-    git meson lib32-gstreamer lib32-gst-plugins-{base,good} wayland-protocols
+	# superproject
+	git meson lib32-gstreamer lib32-gst-plugins-{base,good} wayland-protocols
+
+	# _common
+	"${_common_depends[@]}"
 
 	# gst-plugins-bad-libs
-	lib32-gst-plugins-base-libs lib32-libgudev lib32-orc
+	"${_bad_libs_depends[@]}"
 
-    # gst-plugins-bad
-    lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers
-    lib32-shaderc lib32-libusb lib32-libdc1394 lib32-srt libltc lib32-bluez-libs
-    lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-libdca lib32-faac lib32-faad2
-    lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf
-    lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2 lib32-libmpcdec lib32-neon
-    lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch lib32-x265
-    lib32-libsrtp lib32-zvbi lib32-libnice lib32-webrtc-audio-processing lib32-wildmidi
-    lib32-libass lib32-libwebp lib32-nettle lib32-libxml2 lib32-json-glib lib32-libva
-    lib32-libxkbcommon-x11 lib32-libmodplug lib32-aom
+	# gst-plugins-bad
+	"${_bad_depends[@]}"
+	vulkan-headers lib32-vulkan-validation-layers
+	lib32-shaderc lib32-bluez-libs
+	lib32-ladspa lib32-lv2
+	lib32-json-glib
 
-    # gst-plugins-ugly
-    lib32-a52dec lib32-opencore-amr lib32-libcdio lib32-libdvdread lib32-libmpeg2 lib32-x264
+	# gst-plugins-ugly
+	"${_ugly_depends[@]}"
 
-    # gst-libav
-    lib32-ffmpeg
+	# gst-libav
+	"${_libav_depends[@]}"
 )
 checkdepends=(xorg-server-xvfb)
 options=(!debug)
 source=(
-  "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=$pkgver"
-  0001-Allow-disabling-gstreamer.patch
-  0002-HACK-meson-Disable-broken-tests.patch
+	"git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=$pkgver"
+	0001-Allow-disabling-gstreamer.patch
+	0002-HACK-meson-Disable-broken-tests.patch
 )
 sha256sums=('SKIP'
-            '0cfce6cad2d9fc55fe36e4ca48ec8aa33106cc1f778ddf0ae47362d230e5539b'
-            '951edc965cce062b3a08048297c9d66ff264eed5d8e884170706e4854c9f92df')
+			'0cfce6cad2d9fc55fe36e4ca48ec8aa33106cc1f778ddf0ae47362d230e5539b'
+			'951edc965cce062b3a08048297c9d66ff264eed5d8e884170706e4854c9f92df')
 validpgpkeys=(D637032E45B8C6585B9456565D2EEE6F6F349D7C) # Tim Müller <tim@gstreamer-foundation.org>
 
 pkgver() {
-  cd gstreamer
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+	cd gstreamer
+	git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd gstreamer
+	cd gstreamer
 
-  # Disable gstreamer
-  git apply -3 ../0001-Allow-disabling-gstreamer.patch
+	# Disable gstreamer
+	git apply -3 ../0001-Allow-disabling-gstreamer.patch
 
-  # Disable broken tests
-  git apply -3 ../0002-HACK-meson-Disable-broken-tests.patch
+	# Disable broken tests
+	git apply -3 ../0002-HACK-meson-Disable-broken-tests.patch
 }
 
 _fix_pkgconf() {
-  if $PKG_CONFIG --variable=libexecdir "$1" | grep -q /usr/libexec; then
-	mkdir -p pc
-    sed 's@/libexec@/lib32@' "/usr/lib32/pkgconfig/$1.pc" > "$srcdir/pc/$1.pc"
-    case ":${PKG_CONFIG_PATH}:" in
-      *:"$srcdir/pc":*) return;;
-      *) export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}${PKG_CONFIG_PATH+:}${srcdir}/pc";;
-    esac
-  fi
+	if $PKG_CONFIG --variable=libexecdir "$1" | grep -q /usr/libexec; then
+		mkdir -p pc
+		sed 's@/libexec@/lib32@' "/usr/lib32/pkgconfig/$1.pc" > "$srcdir/pc/$1.pc"
+		case ":${PKG_CONFIG_PATH}:" in
+			*:"$srcdir/pc":*) return;;
+			*) export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}${PKG_CONFIG_PATH+:}${srcdir}/pc";;
+		esac
+	fi
 }
 
 build() {
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
-  _fix_pkgconf gstreamer-1.0
-  _fix_pkgconf gstreamer-base-1.0
+	export CC='gcc -m32'
+	export CXX='g++ -m32'
+	export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
+	_fix_pkgconf gstreamer-1.0
+	_fix_pkgconf gstreamer-base-1.0
 
-  local meson_options=(
-    --libdir=lib32
-    --libexecdir=lib32
-    # Superproject options
-    -D devtools=disabled
-    -D doc=disabled
-    -D examples=disabled
-    -D gobject-cast-checks=disabled
-    -D ges=disabled
-    -D gpl=enabled
-    -D gst-examples=disabled
-    -D introspection=disabled
-    -D libav=disabled
-    -D libnice=disabled
-    -D omx=disabled
-    -D orc-source=system
-    -D package-origin="https://www.archlinux.org/"
+	local meson_options=(
+		--libdir=lib32
+		--libexecdir=lib32
+		# Superproject options
+		-D devtools=disabled
+		-D doc=disabled
+		-D examples=disabled
+		-D gobject-cast-checks=disabled
+		-D ges=disabled
+		-D gpl=enabled
+		-D gst-examples=disabled
+		-D introspection=disabled
+		-D libav=disabled
+		-D libnice=disabled
+		-D omx=disabled
+		-D orc-source=system
+		-D package-origin="https://www.archlinux.org/"
 
-    # Package names
-    -D gst-plugins-bad:package-name="Arch Linux lib32-gst-plugins-bad $pkgver-$pkgrel"
-    -D gst-plugins-ugly:package-name="Arch Linux lib32-gst-plugins-ugly $pkgver-$pkgrel"
-    -D gst-libav:package-name="Arch Linux lib32-gst-libav $pkgver-$pkgrel"
-    -D python=disabled
-    -D qt5=disabled
-    -D rs=disabled
-    -D rtsp_server=disabled
-    -D sharp=disabled
-    -D vaapi=disabled
-    -D base=disabled # already in repo
-    -D good=disabled # already in repo
-    -D gstreamer=disabled # already in repo
+		# Package names
+		-D gst-plugins-bad:package-name="Arch Linux lib32-gst-plugins-bad $pkgver-$pkgrel"
+		-D gst-plugins-ugly:package-name="Arch Linux lib32-gst-plugins-ugly $pkgver-$pkgrel"
+		-D gst-libav:package-name="Arch Linux lib32-gst-libav $pkgver-$pkgrel"
+		-D python=disabled
+		-D qt5=disabled
+		-D rs=disabled
+		-D rtsp_server=disabled
+		-D sharp=disabled
+		-D vaapi=disabled
+		-D base=disabled # already in repo
+		-D good=disabled # already in repo
+		-D gstreamer=disabled # already in repo
 
-    # package scoped
-    -D libav=enabled
-    -D ugly=enabled
-    -D bad=enabled
-    # subprojects
-    -D gst-plugins-bad:directfb=disabled
-    -D gst-plugins-bad:directshow=disabled
-    -D gst-plugins-bad:directsound=disabled
-    -D gst-plugins-bad:flite=disabled
-    -D gst-plugins-bad:gs=disabled
-    -D gst-plugins-bad:iqa=disabled
-    -D gst-plugins-bad:isac=disabled
-    -D gst-plugins-bad:magicleap=disabled
-    -D gst-plugins-bad:onnx=disabled
-    -D gst-plugins-bad:openh264=disabled
-    -D gst-plugins-bad:openni2=disabled
-    -D gst-plugins-bad:opensles=disabled
-    -D gst-plugins-bad:tinyalsa=disabled
-    -D gst-plugins-bad:voaacenc=disabled
-    -D gst-plugins-bad:voamrwbenc=disabled
-    -D gst-plugins-bad:wasapi2=disabled
-    -D gst-plugins-bad:wasapi=disabled
-    # -- extra disabled libs not needed in wine --
-    -D gst-plugins-bad:openjpeg=disabled
-    -D gst-plugins-bad:chromaprint=disabled
-    -D gst-plugins-bad:gsm=disabled
-    -D gst-plugins-bad:spandsp=disabled
-    -D gst-plugins-bad:mpeg2enc=disabled
-    -D gst-plugins-bad:zbar=disabled
-    # -- end -- -D gst-plugins-bad:=disabled
-    -D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
-    -D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
-    -D gst-plugins-bad:qsv=disabled # due to no x86 support
-    -D gst-plugins-bad:ldac=disabled # due to no lib32-libdac support
-    -D gst-plugins-bad:microdns=disabled # due to no lib32-microdns support
-    -D gst-plugins-bad:openaptx=disabled # due to no lib32-Xaptx support
-    -D gst-plugins-bad:openexr=disabled # due to no lib32-openexr support
-    -D gst-plugins-bad:openmpt=disabled # due to no lib32-openmpt support
-    -D gst-plugins-bad:qroverlay=disabled # due to no lib32-qrencode support
-    -D gst-plugins-bad:svthevcenc=disabled # due to no lib32-svthevcenc support
-#    -D gst-plugins-bad:svtav1=disabled # due to no lib32-svt-av1
-    -D gst-plugins-bad:wpe=disabled # due to no lib32-wpe support
-    -D gst-plugins-bad:zxing=disabled # due to no lib32-zxing support
-    -D gst-plugins-bad:amfcodec=disabled # only support windows
-    -D gst-plugins-ugly:sidplay=disabled
-  )
+		# package scoped
+		-D libav=enabled
+		-D ugly=enabled
+		-D bad=enabled
+		# subprojects
+		-D gst-plugins-bad:directfb=disabled
+		-D gst-plugins-bad:directshow=disabled
+		-D gst-plugins-bad:directsound=disabled
+		-D gst-plugins-bad:flite=disabled
+		-D gst-plugins-bad:gs=disabled
+		-D gst-plugins-bad:iqa=disabled
+		-D gst-plugins-bad:isac=disabled
+		-D gst-plugins-bad:magicleap=disabled
+		-D gst-plugins-bad:onnx=disabled
+		-D gst-plugins-bad:openh264=disabled
+		-D gst-plugins-bad:openni2=disabled
+		-D gst-plugins-bad:opensles=disabled
+		-D gst-plugins-bad:tinyalsa=disabled
+		-D gst-plugins-bad:voaacenc=disabled
+		-D gst-plugins-bad:voamrwbenc=disabled
+		-D gst-plugins-bad:wasapi2=disabled
+		-D gst-plugins-bad:wasapi=disabled
+		# -- extra disabled libs not needed in wine --
+		-D gst-plugins-bad:openjpeg=disabled
+		-D gst-plugins-bad:chromaprint=disabled
+		-D gst-plugins-bad:gsm=disabled
+		-D gst-plugins-bad:spandsp=disabled
+		-D gst-plugins-bad:mpeg2enc=disabled
+		-D gst-plugins-bad:zbar=disabled
+		-D gst-plugins-bad:mplex=disabled
+		-D gst-plugins-bad:webrtc=disabled
+		# -- end -- -D gst-plugins-bad:=disabled
+		-D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
+		-D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
+		-D gst-plugins-bad:qsv=disabled # due to no x86 support
+		-D gst-plugins-bad:ldac=disabled # due to no lib32-libdac support
+		-D gst-plugins-bad:microdns=disabled # due to no lib32-microdns support
+		-D gst-plugins-bad:openaptx=disabled # due to no lib32-Xaptx support
+		-D gst-plugins-bad:openexr=disabled # due to no lib32-openexr support
+		-D gst-plugins-bad:openmpt=disabled # due to no lib32-openmpt support
+		-D gst-plugins-bad:qroverlay=disabled # due to no lib32-qrencode support
+		-D gst-plugins-bad:svthevcenc=disabled # due to no lib32-svthevcenc support
+	#	-D gst-plugins-bad:svtav1=disabled # due to no lib32-svt-av1
+		-D gst-plugins-bad:wpe=disabled # due to no lib32-wpe support
+		-D gst-plugins-bad:zxing=disabled # due to no lib32-zxing support
+		-D gst-plugins-bad:amfcodec=disabled # only support windows
+		-D gst-plugins-ugly:sidplay=disabled
+	)
 
-  arch-meson gstreamer build "${meson_options[@]}"
-  meson configure build  # Print config
-  meson compile -C build
+	arch-meson gstreamer build "${meson_options[@]}"
+	meson configure build	# Print config
+	meson compile -C build
 }
 
 check() (
-  export XDG_RUNTIME_DIR="$PWD/runtime-dir"
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+	export XDG_RUNTIME_DIR="$PWD/runtime-dir"
+	mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
-  # Flaky due to timeouts
-  xvfb-run -s '-nolisten local' \
-    meson test -C build --print-errorlogs || :
+	# Flaky due to timeouts
+	xvfb-run -s '-nolisten local' \
+	meson test -C build --print-errorlogs || :
 )
 
 _cleanup() {
-  rm -rf "$pkgdir"/usr/{include,share}
+	rm -rf "$pkgdir"/usr/{include,share}
 
-  if [[ -d "$pkgdir/usr/bin" ]];then
-    for _i in "$pkgdir"/usr/bin/*; do
-      mv "${_i}" "${_i}-32"
-    done
-  fi
+	if [[ -d "$pkgdir/usr/bin" ]];then
+	for _i in "$pkgdir"/usr/bin/*; do
+		mv "${_i}" "${_i}-32"
+	done
+	fi
 }
 
 package_lib32-gst-libav() {
-  pkgdesc+=" - libav plugin"
-  depends=("lib32-gst-plugins-base-libs>=$pkgver" lib32-ffmpeg)
-  provides=("lib32-gst-ffmpeg=$pkgver")
-  replaces=('lib32-gst-libav-latest')
+	pkgdesc+=" - libav plugin"
+	depends=("${_common_depends[@]}" "${_libav_depends[@]}")
+	provides=("lib32-gst-ffmpeg=$pkgver")
+	replaces=('lib32-gst-libav-latest')
 
-  DESTDIR="$pkgdir" meson install -C build \
-    --skip-subprojects gst-plugins-ugly,gst-plugins-bad
-  _cleanup
+	DESTDIR="$pkgdir" meson install -C build \
+	--skip-subprojects gst-plugins-ugly,gst-plugins-bad
+	_cleanup
 }
 
 package_lib32-gst-plugins-bad() {
-  pkgdesc+=" - bad plugins"
-  replaces=('lib32-gst-plugins-bad-latest')
-  depends=(
-    "lib32-gst-plugins-bad-libs>=$pkgver" lib32-aom lib32-libass
-    lib32-libbs2b lib32-bzip2 lib32-pango lib32-lcms2
-    lib32-curl lib32-libxml2 lib32-libdc1394 lib32-libde265 lib32-openssl
-    lib32-libdca lib32-faac lib32-faad2 lib32-libfdk-aac lib32-fluidsynth
-    lib32-libgme lib32-nettle lib32-libkate lib32-liblrdf lib32-lilv
-    lib32-libmodplug lib32-libmpcdec lib32-neon
-    lib32-openal lib32-opus lib32-libdvdnav
-    lib32-libdvdread lib32-librsvg lib32-rtmpdump lib32-sbc
-    lib32-libsndfile libltc lib32-soundtouch lib32-srt
-    lib32-libsrtp lib32-zvbi lib32-vulkan-icd-loader lib32-libxcb
-    lib32-wayland lib32-libwebp lib32-libnice lib32-libavtp
-    lib32-webrtc-audio-processing lib32-wildmidi lib32-x265
-  )
-  mv -v "$pkgdir/../bad/usr" "$pkgdir/usr"
+	pkgdesc+=" - bad plugins"
+	replaces=('lib32-gst-plugins-bad-latest')
+	depends=("lib32-gst-plugins-bad-libs>=$pkgver" "${_bad_depends[@]}")
+	mv -v "$pkgdir/../bad/usr" "$pkgdir/usr"
 }
 
 package_lib32-gst-plugins-bad-libs() {
-  pkgdesc+=" - bad"
-  depends=(
-    "lib32-gst-plugins-base-libs>=$pkgver" lib32-libxkbcommon-x11 lib32-orc
-    lib32-libva lib32-libdrm lib32-libx11 lib32-libgudev lib32-libusb
-  )
-  replaces=('lib32-gst-plugins-bad-libs-latest')
+	pkgdesc+=" - bad"
+	replaces=('lib32-gst-plugins-bad-libs-latest')
+	depends=("${_common_depends[@]}" "${_bad_libs_depends[@]}")
 
-  DESTDIR="$pkgdir" meson install -C build \
-    --skip-subprojects gst-plugins-ugly,gst-libav
-  _cleanup
+	DESTDIR="$pkgdir" meson install -C build \
+	--skip-subprojects gst-plugins-ugly,gst-libav
+	_cleanup
 
-  # bad-libs
-  local _libs _files
-  _libs=(
-    #adaptivedemux2 # new
-    aes aom assrender
-    avtp bs2b bz2
-    closedcaption colormanagement
-    curl dash dc1394 de265 dtls dtsdec
-    faac faad fdkaac fluidsynthmidi
-    gme hls kate ladspa lv2 modplug
-    mplex musepack neonhttpsrc
-    openal opusparse resindvd
-    rsvg rtmp sbc sctp smoothstreaming
-    sndfile soundtouch srt
-    srtp teletext timecode ttmlsubs
-    vulkan waylandsink webp webrtc
-    webrtcdsp wildmidi x265
-  )
+	# bad-libs
+	local _libs _files
+	_libs=(
+	#adaptivedemux2 # new
+	aes aom assrender
+	avtp bs2b bz2
+	closedcaption colormanagement
+	curl dash dc1394 de265 dtls dtsdec
+	faac faad fdkaac fluidsynthmidi
+	gme hls kate ladspa lv2 modplug
+	musepack neonhttpsrc
+	openal opusparse resindvd
+	rsvg rtmp sbc sctp smoothstreaming
+	sndfile soundtouch srt
+	srtp teletext timecode ttmlsubs
+	vulkan waylandsink webp
+	wildmidi x265
+	)
 
-  mkdir -p "$pkgdir/../bad/usr/lib32/gstreamer-1.0/"
-  mapfile -t _files < <(
-    printf "$pkgdir"'/usr/lib32/gstreamer-1.0/libgst%s.so\n' "${_libs[@]}"
-  )
-  mv -t "$pkgdir/../bad/usr/lib32/gstreamer-1.0/" "${_files[@]}"
+	mkdir -p "$pkgdir/../bad/usr/lib32/gstreamer-1.0/"
+	mapfile -t _files < <(
+	printf "$pkgdir"'/usr/lib32/gstreamer-1.0/libgst%s.so\n' "${_libs[@]}"
+	)
+	mv -t "$pkgdir/../bad/usr/lib32/gstreamer-1.0/" "${_files[@]}"
 }
 
 package_lib32-gst-plugins-ugly() {
-  pkgdesc+=" - ugly plugins"
-  depends=(
-    "lib32-gst-plugins-base-libs>=$pkgver"
-    lib32-libdvdread lib32-libmpeg2 lib32-a52dec lib32-libcdio lib32-x264 lib32-opencore-amr
-  )
-  replaces=('lib32-gst-plugins-ugly-latest')
+	pkgdesc+=" - ugly plugins"
+	replaces=('lib32-gst-plugins-ugly-latest')
+	depends=("${_common_depends[@]}" "${_ugly_depends[@]}")
 
-  DESTDIR="$pkgdir" meson install -C build \
-    --skip-subprojects gst-plugins-bad,gst-libav
-  _cleanup
+	DESTDIR="$pkgdir" meson install -C build \
+	--skip-subprojects gst-plugins-bad,gst-libav
+	_cleanup
 }
 
-# vim: ft=sh:ts=2:et:
+# vim: ft=sh:ts=8
