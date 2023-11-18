@@ -8,3 +8,4 @@ Name=USD view
 StartupNotify=true
 Terminal=false
 Type=Application
+NoDisplay=true

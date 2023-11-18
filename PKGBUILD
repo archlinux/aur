@@ -3,17 +3,12 @@
 # Contributor: Started by https://github.com/qumaciel at https://github.com/PixarAnimationStudios/USD/issues/2000
 
 pkgname=('usd'
-		'usd-embree'
-		'usd-alembic'
-		'usd-draco'
-		'usd-openvdb'
-		'usd-openshadinglanguage'
-		 )
+		 'usd-extras')
 _pkgname='OpenUSD'
 
 pkgbase=usd
 pkgver=23.11
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://openusd.org'
 _url='https://github.com/PixarAnimationStudios/'$_pkgname
@@ -27,6 +22,7 @@ depends=(glew
 		jemalloc
 		libglvnd
 		libxt
+		embree
 		openexr
 		opencolorio
 		openimageio
@@ -34,6 +30,8 @@ depends=(glew
 		pyside2
 		pyside6
 		python-opengl
+		python-jinja
+		python-numpy
 		qt5-base
 		onetbb
 		materialx
@@ -43,7 +41,7 @@ depends=(glew
 makedepends=(cmake
 			help2man
 			git
-			 )
+			)
 
 		# git+$_url.git#branch=dev TEST
 source=("git+$_url.git#tag=v$pkgver"
@@ -58,9 +56,10 @@ sha256sums=('SKIP'
             'e4a1378a2ce34edbd65f016689cbca0dc37dc2b1c2ddfd837724078ed231063c'
             '8cbdeb862e587e4fc73af9b52046e22d85623021649eeb56e4c14aa31fab89be'
             '3408ad2877d547f60d2db6b28983837119b8800b62ae1cdc23b37dbe31e17f1c'
-            '6e598e28c36f3953ecdcd9fc0fccc5a591b654a8eccc08881f9ea33ffb32591a')
+            '6b880a1dc44ee3286a19b3347f65be5337192d00bccd55fa549598db90a887da')
 
 _pyver=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+_extra=("Abc" "OpenVDB" "Draco" "Osl")
 
 prepare() {
 	cd ${srcdir}/$_pkgname
@@ -160,6 +159,8 @@ build() {
 		-DPXR_ENABLE_PYTHON_SUPPORT=ON
 	)
 	export CXXFLAGS+=" -DBOOST_BIND_GLOBAL_PLACEHOLDERS"
+	export LD_PRELOAD=/usr/lib/libjemalloc.so
+
 	cmake -S $_pkgname -B build -G Ninja "${_CMAKE_FLAGS[@]}"
 
 	ninja -C build -j$(($(nproc) - 4))
@@ -179,9 +180,8 @@ package_usd() {
 	install -Dm644 ${srcdir}/USDLogoUnsized.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/openusd.svg
 	install -Dm755 ${srcdir}/org.openusd.usdview.desktop ${pkgdir}/usr/share/applications/org.openusd.usdview.desktop
 
-	# Delete components to split
-	local delete=("Embree" "Abc" "OpenVDB" "Draco" "Osl")
-	for name in "${delete[@]}"; do
+	# Delete extra components in base package
+	for name in "${_extra[@]}"; do
 		find "$pkgdir" -type d -name "*$name*" -exec rm -rf {} \; || true
 		find "$pkgdir" -type f -name "*$name*" -exec rm -f {} \; || true
 	done
@@ -210,55 +210,19 @@ package_usd() {
 	install -Dm644 ${srcdir}/$_pkgname/LICENSE.txt ${pkgdir}/usr/share/doc/licenses/usd
 }
 
-package_usd-embree() {
-	pkgdesc='Embree component for USD'
+package_usd-extras() {
+	pkgdesc='Extra components for USD'
 	depends=(usd=$pkgver
-			embree)
-
-	find usd-fakeinstall -type f -name "*Embree*" -exec cp --parents {} ${pkgdir}/ \;
-	find usd-fakeinstall -type d -name "*Embree*" -exec cp --parents -r {} ${pkgdir}/ \;
-	mv ${pkgdir}/usd-fakeinstall ${pkgdir}/usr
-
-}
-
-package_usd-alembic() {
-	pkgdesc='Alembic component for USD'
-	depends=(usd=$pkgver
-			alembic)
-
-	find usd-fakeinstall -type f -name "*Abc*" -exec cp --parents {} ${pkgdir}/ \;
-	find usd-fakeinstall -type d -name "*Abc*" -exec cp --parents -r {} ${pkgdir}/ \;
-	mv ${pkgdir}/usd-fakeinstall ${pkgdir}/usr
-}
-
-package_usd-draco() {
-	pkgdesc='Draco component for USD'
-	depends=(usd=$pkgver
-			draco)
-
-	find usd-fakeinstall -type f -name "*Draco*" -exec cp --parents {} ${pkgdir}/ \;
-	find usd-fakeinstall -type d -name "*Draco*" -exec cp --parents -r {} ${pkgdir}/ \;
-	mv ${pkgdir}/usd-fakeinstall ${pkgdir}/usr
-
-	install -Dm755 ${srcdir}/usd-fakeinstall/bin/usdcompress ${pkgdir}/usr/bin/usdcompress
-}
-
-package_usd-openvdb() {
-	pkgdesc='OpenVDB component for USD'
-	depends=(usd=$pkgver
+			alembic
+			draco
+			openshadinglanguage
 			openvdb)
 
-	find usd-fakeinstall -type f -name "*OpenVDB*" -exec cp --parents {} ${pkgdir}/ \;
-	find usd-fakeinstall -type d -name "*OpenVDB*" -exec cp --parents -r {} ${pkgdir}/ \;
-	mv ${pkgdir}/usd-fakeinstall ${pkgdir}/usr
-}
+	for name in "${_extra[@]}"; do
+		find usd-fakeinstall -type d -name "*$name*" -exec cp --parents -r {} ${pkgdir}/ \; || true
+		find usd-fakeinstall -type f -name "*$name*" -exec cp --parents {} ${pkgdir}/ \; || true
+	done
 
-package_usd-openshadinglanguage() {
-	pkgdesc='OSL (OpenShadingLanguage) component for USD'
-	depends=(usd=$pkgver
-			openimageio)
-
-	find usd-fakeinstall -type f -name "*Osl*" -exec cp --parents {} ${pkgdir}/ \;
-	find usd-fakeinstall -type d -name "*Osl*" -exec cp --parents -r {} ${pkgdir}/ \;
 	mv ${pkgdir}/usd-fakeinstall ${pkgdir}/usr
+
 }
