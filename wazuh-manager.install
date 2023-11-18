@@ -2,7 +2,7 @@ post_install()
 {
   echo "creating wazuh user and group"
   groupadd -f wazuh
-  usuario="wazuh" && id "$usuario" &>/dev/null || useradd wazuh -g wazuh
+  usuario="wazuh" && id "$usuario" &>/dev/null || useradd -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
   echo "Done!"
   echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html and follow the configure instructions"
 }
