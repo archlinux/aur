@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kapp-bin
 pkgver=0.59.1
-pkgrel=2
+pkgrel=4
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label'
 url='https://carvel.dev/kapp'
 arch=(x86_64 aarch64)
@@ -17,13 +17,16 @@ sha256sums_x86_64=(a6da34c733514c2c51b96a12e70cd050250a45b2ee75d6966a904e712b307
 sha256sums_aarch64=(a0e4eccdc264b535d7b0ba1972b6fd29cd5aa1263ab7e996d5a4671253fd3cf9)
 package () 
 { 
-    install -Dm 755 "${srcdir}/${_z_binname}-v${pkgver}" "${pkgdir}/usr/bin/${_z_binname}";
+    set -eo pipefail;
+    BIN_SRC="${srcdir}/${_z_binname}-v${pkgver}";
+    BIN_DST="${pkgdir}/usr/bin/${_z_binname}";
+    install -Dm 755 "$BIN_SRC" "$BIN_DST";
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/";
     mkdir -p "$pkgdir/usr/share/zsh/site-functions/";
     mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/";
-    ./$_z_binname completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_z_binname";
-    ./$_z_binname completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_z_binname.fish";
-    ./$_z_binname completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_z_binname"
+    "$BIN_DST" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_z_binname";
+    "$BIN_DST" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_z_binname.fish";
+    "$BIN_DST" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_z_binname"
 }
 
 
