@@ -1,12 +1,115 @@
 pkgbase = ttf-misans
-	pkgver = 2.000
-	pkgrel = 1
-	url = https://web.vip.miui.com/page/info/mio/mio/detail?postId=33935854
+	pkgdesc = MiSans Global is a global language font customization project led by Xiaomi and co-created with Mona font and Han Yi font.
+	pkgver = 4.003
+	pkgrel = 0
+	url = https://hyperos.mi.com/font/download
 	arch = any
 	license = custom
+	makedepends = unzip
 	depends = fontconfig
-	source = https://cdn.cnbj1.fds.api.mi-img.com/vipmlmodel/font/MiSans/MiSans.zip
-	sha256sums = 38bdec9525024ee9ce1ee56ebc5a32a37efaecf86b385ec3da71898708dad7f6
+	source = MiSansGlobal_ALL-4.003.zip::https://hyperos.mi.com/font-download/MiSans_Global_ALL.zip
+	source = LICENSE.pdf::https://hyperos.mi.com/font-download/MiSans字体知识产权许可协议.pdf
+	sha256sums = 2322a01e3138661a3d76980cfd8167f704bbea60445df94a00c79d3d6ae85b57
+	sha256sums = 4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86
 
 pkgname = ttf-misans
-	pkgdesc = MiSans MIUI 13 全新系统字体供全社会免费商用。
+
+pkgname = ttf-misans-lao
+
+pkgname = ttf-misans-arabic
+
+pkgname = ttf-misans-devanagari
+
+pkgname = ttf-misans-gujarati
+
+pkgname = ttf-misans-gurmukhi
+
+pkgname = ttf-misans-khmer
+
+pkgname = ttf-misans-latin
+
+pkgname = ttf-misans-myanmar
+
+pkgname = ttf-misans-tc
+
+pkgname = ttf-misans-thai
+
+pkgname = ttf-misans-tibetan
+
+pkgname = otf-misans
+
+pkgname = otf-misans-lao
+
+pkgname = otf-misans-arabic
+
+pkgname = otf-misans-devanagari
+
+pkgname = otf-misans-gujarati
+
+pkgname = otf-misans-gurmukhi
+
+pkgname = otf-misans-khmer
+
+pkgname = otf-misans-latin
+
+pkgname = otf-misans-myanmar
+
+pkgname = otf-misans-tc
+
+pkgname = otf-misans-thai
+
+pkgname = otf-misans-tibetan
+
+pkgname = woff-misans
+
+pkgname = woff-misans-lao
+
+pkgname = woff-misans-arabic
+
+pkgname = woff-misans-devanagari
+
+pkgname = woff-misans-gujarati
+
+pkgname = woff-misans-gurmukhi
+
+pkgname = woff-misans-khmer
+
+pkgname = woff-misans-latin
+
+pkgname = woff-misans-myanmar
+
+pkgname = woff-misans-tc
+
+pkgname = woff-misans-thai
+
+pkgname = woff-misans-tibetan
+
+pkgname = woff2-misans
+
+pkgname = woff2-misans-lao
+
+pkgname = woff2-misans-arabic
+
+pkgname = woff2-misans-devanagari
+
+pkgname = woff2-misans-gujarati
+
+pkgname = woff2-misans-gurmukhi
+
+pkgname = woff2-misans-khmer
+
+pkgname = woff2-misans-latin
+
+pkgname = woff2-misans-myanmar
+
+pkgname = woff2-misans-tc
+
+pkgname = woff2-misans-thai
+
+pkgname = woff2-misans-tibetan
+
+pkgname = misans-fontconfig
+	pkgdesc = MiSans Global is a global language font customization project led by Xiaomi and co-created with Mona font and Han Yi font. - Fontconfig configuration
+	depends = fontconfig
+	provides = 
+	conflicts = 
