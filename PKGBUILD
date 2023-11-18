@@ -1,33 +1,44 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='krop'
-pkgname="${_pkgname}-git"
-pkgver=0.6.0.r0.gcdca681
-pkgrel=2
+_name='krop'
+pkgname="${_name}-git"
+pkgver=r114.e96d42b
+pkgrel=1
 pkgdesc='Simple graphical tool to crop the pages of PDF files'
 arch=('any')
 url='https://github.com/arminstraub/krop'
 license=('GPL3')
-depends=('python' 'python-poppler-qt5' 'python-pypdf2' 'python-pyqt5')
-makedepends=('git' 'python-setuptools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+depends=(
+  'python'
+  'python-poppler-qt5' # AUR
+  'python-pypdf2' # AUR
+  'python-pyqt5'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+provides=("${_name}")
+conflicts=("${_name}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # There are tags, but the last one dates back to 2020 so ignore them
+  cd "$_name"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "${_pkgname}"
-  python setup.py build
+  cd "$_name"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "$_name"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
-
-# vim: ts=2 sw=2 et:

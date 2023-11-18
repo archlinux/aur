@@ -1,12 +1,14 @@
 pkgbase = krop-git
 	pkgdesc = Simple graphical tool to crop the pages of PDF files
-	pkgver = 0.6.0.r0.gcdca681
-	pkgrel = 2
+	pkgver = r114.e96d42b
+	pkgrel = 1
 	url = https://github.com/arminstraub/krop
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-poppler-qt5
 	depends = python-pypdf2
@@ -17,4 +19,3 @@ pkgbase = krop-git
 	sha256sums = SKIP
 
 pkgname = krop-git
-
