@@ -1,6 +1,6 @@
 # Maintainer: Ragnar Laud <ragnar.laud@hotmail.com>
 pkgname=go-pdirs
-pkgrel=1
+pkgrel=2
 pkgver=0.1.1
 pkgdesc="Project directory resolver"
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=($pkgname)
 conflicts=($pkgname-git)
 
 source=("https://github.com/xprnio/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('399d3da30aaaa154eb186c66c827397ad4e439b8871592cc82794e0dfd8df1e6')
+sha256sums=('7aaea62e7a6bb8b46ce1c0e75c76ef083198d314545c4c93ef5dead5fe1b08cd')
 
 build() {
   cd $pkgname-$pkgver
