@@ -1,24 +1,42 @@
 # Maintainer: BryanLiang <liangrui.ch@gmail.com>
 
 pkgname=aliyunpan-go-bin
+_pkgname=aliyunpan-go
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。(Precompiled version)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'loong64')
 url='https://github.com/tickstep/aliyunpan'
 license=('Apache-2.0')
-conflicts=('aliyunpan-go')
+conflicts=("${_pkgname}")
 makedepends=('unzip')
-source=("https://github.com/tickstep/aliyunpan/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-amd64.zip")
-sha512sums=('eccbb222382b26834e9d04229f2766dd0f12c5f791b0537597bdeb99b5c970374c1102a0699d868541836989b800fae4f5bf7af2e902df74e80af616fbce7349')
-noextract=("aliyunpan-v${pkgver}-linux-amd64.zip")
+
+source_x86_64=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-amd64.zip")
+source_aarch64=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-arm64.zip")
+source_loong64=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-loong64.zip")
+
+sha512sums_x86_64=('eccbb222382b26834e9d04229f2766dd0f12c5f791b0537597bdeb99b5c970374c1102a0699d868541836989b800fae4f5bf7af2e902df74e80af616fbce7349')
+sha512sums_aarch64=('8f346e6a2475e5705e52be037423a35e2845bd1e13d64611c545503f43d7ae76995cf2ba5de301e22418c9cca83f6a5a0b321b2bc437b1b0bd4091b290133f4f')
+sha512sums_loong64=('4d899b1688bd575086a8e10ad49dc0b7fd3acef3f5f71a1ef23c4c9bf5351f36076d1f49b37358b3d3e17fa0d1c87519aefb5c4566ed07e178a732308d5d2dca')
+
+noextract=("${_pkgname}-${pkgver}.zip")
+
+declare -A _archmap=(
+    ['x86_64']='amd64'
+    ['aarch64']='arm64'
+    ['loong64']='loong64'
+)
+
+_arch="${_archmap[${CARCH}]}"
 
 prepare() {
-    unzip aliyunpan-v${pkgver}-linux-amd64.zip
+    unzip "${_pkgname}-${pkgver}.zip"
 }
 
 package() {
-    cd "${srcdir}/aliyunpan-v${pkgver}-linux-amd64"
-    install -Dm 755 aliyunpan "${pkgdir}/usr/bin/aliyunpan-go"
-    install -Dm 644 manual.md "${pkgdir}/usr/share/docs/aliyunpan-go/manual.md"
+    cd "${srcdir}/aliyunpan-v${pkgver}-linux-${_arch}"
+    install -Dm 755 aliyunpan "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm 755 webdav.sh "${pkgdir}/usr/bin/${_pkgname}-webdav"
+    install -Dm 755 sync.sh "${pkgdir}/usr/bin/${_pkgname}-sync"
+    install -Dm 644 manual.md "${pkgdir}/usr/share/docs/${_pkgname}/manual.md"
 }
