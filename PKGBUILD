@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0.r3314.g905ce2a6f
+pkgver=1.0.0.r3559.gb3d29cb86
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -31,8 +31,7 @@ depends=(
         'python-redis'
         'python-markdown-it-py'
         'python-typing_extensions'
-        'python-pytomlpp'
-	'python-chompjs')
+        'python-pytomlpp')
 optdepends=('python-hiredis')
 provides=('searxng')
 conflicts=('searx' 'searx-git')
@@ -77,7 +76,7 @@ package() {
   install -Dm644 "${srcdir}/searxng.sysusers" "${pkgdir}/usr/lib/sysusers.d/searxng.conf"
   install -Dm644 "${srcdir}/searxng.ini" "${pkgdir}/etc/uwsgi/vassals/searxng.ini"
   install -Dm644 "${srcdir}/settings.yml" "${pkgdir}/etc/searxng/settings.yml" 
-  install -Dm644 "${srcdir}/searxng/searx/botdetection/limiter.toml" "${pkgdir}/etc/searxng/limiter.toml"
+  install -Dm644 "${srcdir}/searxng/searx/limiter.toml" "${pkgdir}/etc/searxng/limiter.toml"
   install -Dm644 "${srcdir}/searxng/searx/version_frozen.py" "${pkgdir}${_site_packages}/searx"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/searxng/LICENSE"
 }
