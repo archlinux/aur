@@ -2,7 +2,7 @@
 
 pkgname=flutter-engine
 pkgver=3.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Engine for flutter applications.'
 url='https://github.com/flutter/engine'
 arch=('x86_64')
@@ -36,8 +36,8 @@ source=(
 	# 'git+https://github.com/emscripten-core/emsdk.git#tag=3.1.44'
 sha256sums=('SKIP'
             'SKIP'
-            '9d7f60edd2cda6b2f11153aec21356ede86216b11a694305a403da8814208f34'
-            'd2349741e01027eee906bb01ab4def7ad9ecea35864f110c9572e6246f820e1b')
+            '02d44bf225bd5d01a641e654b90a4e7b3b627e15c2906ad4c0412012de91eca2'
+            '73250c1c5b7064ddd89969f2c012be6c7c70731ba95f82e40fd8f8d47c4cae8b')
 
 _srcdir="${pkgname}"
 

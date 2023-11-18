@@ -1,7 +1,7 @@
 pkgbase = flutter-engine
 	pkgdesc = Engine for flutter applications.
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flutter/engine
 	arch = x86_64
 	license = BSD
@@ -29,7 +29,7 @@ pkgbase = flutter-engine
 	source = flutter-engine-build.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9d7f60edd2cda6b2f11153aec21356ede86216b11a694305a403da8814208f34
-	sha256sums = d2349741e01027eee906bb01ab4def7ad9ecea35864f110c9572e6246f820e1b
+	sha256sums = 02d44bf225bd5d01a641e654b90a4e7b3b627e15c2906ad4c0412012de91eca2
+	sha256sums = 73250c1c5b7064ddd89969f2c012be6c7c70731ba95f82e40fd8f8d47c4cae8b
 
 pkgname = flutter-engine
