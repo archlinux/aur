@@ -1,6 +1,6 @@
 pkgbase = skanpage-git
 	pkgdesc = KDE multi-page document scanning application (git version)
-	pkgver = r501.6ad41b8
+	pkgver = r592.4561653
 	pkgrel = 1
 	url = https://invent.kde.org/utilities/skanpage
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = skanpage-git
 	depends = kirigami2
 	depends = purpose5
 	depends = tesseract
-	depends = kquickimageeditor
+	depends = kquickimageeditor5
 	provides = skanpage
 	conflicts = skanpage
 	source = git+https://invent.kde.org/utilities/skanpage.git
