@@ -1,0 +1,25 @@
+pkgbase = r-alabaster.files
+	pkgdesc = Wrappers to Save Common File Formats
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/alabaster.files
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	checkdepends = r-variantannotation
+	depends = r-alabaster.base
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-rsamtools
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-variantannotation
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.files_1.0.0.tar.gz
+	md5sums = ea12d81dadbad7340c5f2d6be276a697
+	sha256sums = 52c451b6c1a5f827a791ee99f3367596569f39a117f4cd368536247b52c98a80
+
+pkgname = r-alabaster.files
