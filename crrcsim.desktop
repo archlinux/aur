@@ -1,11 +1,8 @@
 [Desktop Entry]
-Version=0.9.12
 Type=Application
-Name=CRRCSIM
-Comment=Open Source R/C flight simulator
-Exec=/usr/bin/crrcsim
-Encoding=UTF-8
-Icon=/usr/share/pixmaps/crrcsim.png
-Categories=Game;
 Terminal=false
-StartupNotify=false
+Exec=/usr/bin/crrcsim
+Name=CRRCSim
+Comment=RC airplane flight simulator
+Icon=airplane-mode
+Categories=Game

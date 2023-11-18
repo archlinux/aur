@@ -1,26 +1,22 @@
 pkgbase = crrcsim
-	pkgdesc = Model airplane flight simulation program.
+	pkgdesc = RC airplane flight simulator
 	pkgver = 0.9.13
-	pkgrel = 2
-	url = http://sourceforge.net/projects/crrcsim/
-	arch = i686
+	pkgrel = 3
+	url = https://sourceforge.net/projects/crrcsim
 	arch = x86_64
-	license = GPL
-	makedepends = gawk
-	makedepends = plib>=1.8.4
-	makedepends = gcc
-	depends = sdl>=1.2.5
+	license = GPL2
+	makedepends = cgal
+	makedepends = plib
+	depends = boost-libs
+	depends = jack2
+	depends = libjpeg-turbo
 	depends = portaudio
-	depends = libjpeg
-	depends = cgal
+	depends = sdl12-compat
+	source = https://sourceforge.net/projects/crrcsim/files/crrcsim/crrcsim-0.9.13/crrcsim-0.9.13.tar.gz
+	source = crrcsim_animation.patch
 	source = crrcsim.desktop
-	source = crrcsim.png
-	source = fix_bug.patch
-	source = http://sourceforge.net/projects/crrcsim/files/crrcsim/crrcsim-0.9.13/crrcsim-0.9.13.tar.gz
-	sha256sums = 2af239b7dc1d74967b1ec86665c7a7c28c9564306d7d299533235eacb8bf02de
-	sha256sums = 37d71a1be23afea19ad41179223eda997a3af103e2b2879784fd352de70a5696
-	sha256sums = 94b5d965327ca2d2db808aa088e6dba8ec204443843d71317d94d6e6e2b8c679
 	sha256sums = abe59b35ebb4322f3c48e6aca57dbf27074282d4928d66c0caa40d7a97391698
+	sha256sums = 49cc3598b18cbfee8af2dd891dc4cbeb1550ff72de93185e83abf8b79288c099
+	sha256sums = 075cc9d39ba6215208f822802603b7e7c9a1d693cb401aaaadac65a81ff9c1cb
 
 pkgname = crrcsim
-
