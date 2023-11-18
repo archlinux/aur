@@ -1,7 +1,7 @@
 _pkgname="figma-linux"
 pkgname="figma-linux"
-pkgver="0.11.1"
-pkgrel="2"
+pkgver="0.11.2"
+pkgrel="0"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 url="https://github.com/Figma-Linux/figma-linux"
 arch=("x86_64" "aarch64")
@@ -37,10 +37,10 @@ sha256sums=("86f34a8d9ddfdcfad5cc5e170a729cee7bca61102fbe0b10746b7f83b19d45bc"
             "21def936e0a912743e4f6b5832b7c59ff5437538f93b372ff1f2949d35579dc4"
             "73edf53d70de1cfe0d4361c44efe9f55930649a55b40180c7cc5fa4ec70f39a5")
 conflicts=("figma-linux-git" "figma-linux-bin")
-source_x86_64=("https://github.com/Figma-Linux/figma-linux/releases/download/v0.11.1/figma-linux_0.11.1_linux_amd64.zip")
-sha256sums_x86_64=("8cefec23f2b151529d63515f546ce1f349a24221ede09bbf9e0ebfad4f1cbeb3")
-source_aarch64=("https://github.com/Figma-Linux/figma-linux/releases/download/v0.11.1/figma-linux_0.11.1_linux_arm64.zip")
-sha256sums_aarch64=("26f6bb3b9b9b51e5d247eea716e8a3ddf1b375f833a64a6a0d81140a7217cf00")
+source_x86_64=("https://github.com/Figma-Linux/figma-linux/releases/download/v0.11.2/figma-linux_0.11.2_linux_amd64.zip")
+sha256sums_x86_64=("0db9f087a60923c4af0caab7687c8cbe13bb731b8d24e4db70106210127b1c62")
+source_aarch64=("https://github.com/Figma-Linux/figma-linux/releases/download/v0.11.2/figma-linux_0.11.2_linux_arm64.zip")
+sha256sums_aarch64=("f91e42701251776a724d9834ce110358994c4099eaeafa55913b7c5f51960e6c")
 
 
 package() {
