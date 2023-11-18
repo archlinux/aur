@@ -1,0 +1,9 @@
+post_install()
+{
+  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html and follow the configure instructions, also, check https://documentation.wazuh.com/current/user-manual/deployment-variables/deployment-variables-linux.html for deployment vars, and https://documentation.wazuh.com/current/user-manual/agent-enrollment/index.html if you didn't follow wazu's installation guide
+  or, just run the next commands:
+  /var/ossec/bin/manage_agents -i <agent_key>
+  systemctl daemon-reload
+  systemctl enable wazuh-agent
+  systemctl start wazuh-agent"
+}
