@@ -3,3 +3,4 @@
 *.gz
 src
 pkg
+libtas.*
