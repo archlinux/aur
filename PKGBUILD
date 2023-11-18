@@ -9,7 +9,7 @@ makedepends=()
 depends=('gnome-shell')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=("https://github.com/sakithb/media-controls/releases/latest/extension.zip")
+source=("https://github.com/sakithb/media-controls/releases/latest/download/extension.zip")
 sha256sums=('SKIP')
 
 pkgver() {
