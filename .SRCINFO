@@ -1,0 +1,14 @@
+pkgbase = r-directpa
+	pkgdesc = Direction Analysis for Pathways and Kinases
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=directPA
+	arch = any
+	license = GPL3
+	depends = r-calibrate
+	depends = r-plotly
+	source = https://cran.r-project.org/src/contrib/directPA_1.5.1.tar.gz
+	md5sums = fb97e41fc733cfdff3e40661804e649e
+	sha256sums = ff1dbd1dafd681c8f68008aef88493845d05aefb9490e0c6796e95cf330acf60
+
+pkgname = r-directpa
