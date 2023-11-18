@@ -1,7 +1,7 @@
 _pkgname="figma-linux-dev"
 pkgname="${_pkgname}-git"
-pkgver="0.11.1.r9.g72b4adb"
-pkgrel="9"
+pkgver="0.11.1.r10.gc896e5a"
+pkgrel="10"
 arch=("any")
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 url="https://github.com/Figma-Linux/figma-linux"
