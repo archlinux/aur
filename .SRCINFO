@@ -1,16 +1,13 @@
 pkgbase = gz-ogre-next
 	pkgdesc = Scene-oriented, flexible 3D engine written in C++. Gazebo compatible.
-	pkgver = 2.3.1
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = http://ogre3d.org
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = cmake
-	makedepends = git
 	makedepends = mesa
 	makedepends = vulkan-headers
-	makedepends = git
 	depends = freeimage
 	depends = freetype2
 	depends = glu
@@ -22,7 +19,7 @@ pkgbase = gz-ogre-next
 	depends = sdl2
 	depends = zlib
 	provides = ogre-next
-	source = git+https://github.com/OGRECave/ogre-next.git#tag=v2.3.1
-	sha512sums = SKIP
+	source = https://github.com/OGRECave/ogre-next/archive/v2.3.3.tar.gz
+	sha256sums = 92ce7765d892d6424df3d8d4a56a8fc0b2f4f91c216b1b1d5b231caa9abaaa38
 
 pkgname = gz-ogre-next

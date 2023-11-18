@@ -3,10 +3,10 @@
 
 _pkgname=('ogre-next')
 pkgname=("gz-$_pkgname")
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='Scene-oriented, flexible 3D engine written in C++. Gazebo compatible.'
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://ogre3d.org'
 license=('MIT')
 depends=(
@@ -23,24 +23,14 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'git'
   'mesa'
   'vulkan-headers'
-  'git'
 )
 provides=('ogre-next')
-source=("git+https://github.com/OGRECave/$_pkgname.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+source=("https://github.com/OGRECave/$_pkgname/archive/v${pkgver}.tar.gz")
+sha256sums=('92ce7765d892d6424df3d8d4a56a8fc0b2f4f91c216b1b1d5b231caa9abaaa38')
 
-_build_dir="$_pkgname/build"
-
-prepare() {
-  cd "$_pkgname"
-  git cherry-pick -n "4b3b8d03b5b76a7b04fc8c437a040b2d0be181eb"
-  git cherry-pick -n "ee31a07b7b361ee8cb25568bc08bbc70af95febb"
-  git cherry-pick -n "558115e3503ec78861b64a33a2867e581de2bc0f"
-  git cherry-pick -n "9474ee85390166544b4219992e8891ec0ec21273"
-}
+_build_dir="$_pkgname-${pkgver}/build"
 
 build() {
   mkdir -p "$srcdir/$_build_dir" && cd $_
@@ -58,8 +48,6 @@ build() {
             -DOGRE_BUILD_COMPONENT_HLMS_UNLIT:BOOL=TRUE \
             -DOGRE_BUILD_COMPONENT_MESHLODGENERATOR:BOOL=TRUE \
             -DOGRE_BUILD_COMPONENT_OVERLAY:BOOL=TRUE \
-            -DOGRE_BUILD_COMPONENT_TERRAIN:BOOL=FALSE \
-            -DOGRE_BUILD_COMPONENT_VOLUME:BOOL=FALSE \
             -DOGRE_BUILD_RENDERSYSTEM_GL3PLUS:BOOL=TRUE \
             -DOGRE_BUILD_RENDERSYSTEM_VULKAN:BOOL=TRUE \
             -DOGRE_BUILD_TESTS:BOOL=FALSE \
