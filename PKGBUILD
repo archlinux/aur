@@ -1,7 +1,7 @@
 # Maintainer: Ragnar Laud <ragnar.laud@hotmail.com>
 _pkgname=go-pdirs
 pkgname=$_pkgname-git
-pkgrel=2
+pkgrel=3
 pkgver=0.1.0
 pkgdesc="Project directory resolver"
 arch=(x86_64)
