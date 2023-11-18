@@ -1,6 +1,6 @@
 pkgname=gnome-shell-extension-media-controls
-pkgver=28
-pkgrel=2
+pkgver=29
+pkgrel=1
 pkgdesc="A media indicator for the GNOME shell"
 arch=('any')
 url="https://github.com/cliffniff/media-controls"
@@ -13,14 +13,17 @@ source=("https://github.com/sakithb/media-controls/releases/latest/download/exte
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --tags --abbrev=0 | sed 's/^v\(.*\)/\1/'
+ 	cd "$srcdir"
+ 	cat metadata.json | grep '"version"' | sed 's/[^0-9]*//g'
 }
 
 package() {
+	cd "$srcdir"
+	rm extension.zip
+
 	destdir="$pkgdir/usr/share/gnome-shell/extensions/mediacontrols@cliffniff.github.com/"
 	mkdir -p "$destdir"
 	install -dm755 "$destdir"
 
-	cp -r "$srcdir" "$destdir"
+	cp -r * "$destdir/"
 }
