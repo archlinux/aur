@@ -8,6 +8,7 @@ arch=(x86_64)
 url="https://github.com/xprnio/$_pkgname"
 license=(MIT)
 depends=(go make)
+makedepends=(git)
 provides=($_pkgname)
 conflicts=($_pkgname)
 
