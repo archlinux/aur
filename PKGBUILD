@@ -42,7 +42,7 @@ package() {
     cp completions/doggo.zsh \
         "${pkgdir}/usr/share/zsh/site-functions/_doggo"
 
-    mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/doggo.fish"
+    mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
     cp completions/doggo.fish \
         "${pkgdir}/usr/share/fish/vendor_completions.d/doggo.fish"
 }
