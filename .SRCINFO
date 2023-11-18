@@ -1,0 +1,20 @@
+pkgbase = git-ps-rs
+	pkgdesc = A patch-stack oriented Git wrapper
+	pkgver = 6.9.0
+	pkgrel = 1
+	url = https://git-ps.sh
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = git
+	depends = gpgme
+	depends = libgpg-error
+	depends = openssl
+	depends = zlib
+	source = https://github.com/uptech/git-ps-rs/archive/refs/tags/6.9.0.tar.gz
+	md5sums = e59e985465f5cc65a300fe2e5008b333
+	sha256sums = d2a0eb50e74529f9c125cb7d7a0f5e8c01b4debb1a0814702f7a9f28bbe524c5
+
+pkgname = git-ps-rs
