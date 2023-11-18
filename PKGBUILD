@@ -9,14 +9,14 @@
 pkgbase=wireshark-oqs
 _pkgbase=wireshark
 pkgname=('wireshark-oqs-cli' 'wireshark-oqs-qt')
-pkgver=4.0.10
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Network traffic and protocol analyzer/sniffer with support for PQK algorithms'
 url='https://www.wireshark.org/'
 arch=('x86_64')
 license=('GPL2')
-makedepends=('glibc' 'cmake' 'ninja' 'c-ares' 'libmaxminddb' 'qt5-tools' 'qt5-svg'
-             'qt5-multimedia' 'krb5' 'libpcap' 'libssh' 'libxml2' 'libnghttp2'
+makedepends=('glibc' 'cmake' 'ninja' 'c-ares' 'libmaxminddb' 'qt6-tools' 'qt6-svg'
+             'qt6-multimedia' 'qt6-5compat' 'krb5' 'libpcap' 'libssh' 'libxml2' 'libnghttp2'
              'snappy' 'lz4' 'spandsp' 'gnutls' 'lua52' 'python' 'libcap' 'libnl'
              'glib2' 'libgcrypt' 'sbc' 'bcg729' 'desktop-file-utils' 'libxslt'
              'hicolor-icon-theme' 'zstd' 'zlib' 'gcc-libs' 'brotli' 'asciidoctor'
@@ -25,7 +25,7 @@ options=('!emptydirs')
 source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
         wireshark.sysusers
         https://raw.githubusercontent.com/open-quantum-safe/openssl/OQS-OpenSSL_1_1_1-stable/qsc.h)
-b2sums=('f5121ae15df79d7d8e1bf6f65e566a556b848f623e876a3d6e92a501074e987aaa08a0056be5b42131518e89e0d358efd450f6b8399313cf836883ed345dde48'
+b2sums=('0b1f2cb76ee6d5744076d8660056eb1c1ffcf028476c13e5324c0e133d02c916c5cfd66f82511a09ca67a42b46b06a9699b6ca6fce2342636d490699858e0d51'
         '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c'
         '1cf2132ada0b20a589e0d533afe8cb7d5ae2e23e3453dd1c6938564db1fbb8900dd6fb15f5bbeec9a45404eb05faf0e2c1aaaf2a042e73fdd2cbcc5a6e48ebb5')
 
@@ -60,8 +60,8 @@ package_wireshark-oqs-cli() {
   depends=('glibc' 'c-ares' 'libmaxminddb' 'krb5' 'libgcrypt' 'libcap' 'libpcap'
            'gnutls' 'glib2' 'lua52' 'libssh' 'libxml2' 'libnghttp2' 'snappy'
            'lz4' 'spandsp' 'sbc' 'bcg729' 'zstd' 'zlib' 'brotli' 'speexdsp'
-           'opus' libpcap.so libcap.so libbrotlidec.so libcares.so libkrb5.so
-           libk5crypto.so)
+           'opus' 'opencore-amr' libpcap.so libcap.so libbrotlidec.so libcares.so
+           libkrb5.so libk5crypto.so)
   install=wireshark.install
   conflicts=(wireshark-cli)
   provides=(libwireshark.so libwiretap.so libwsutil.so)
@@ -80,12 +80,13 @@ package_wireshark-oqs-cli() {
     usr/share/man/man1/wireshark.1 \
     usr/bin/wireshark \
     usr/share/applications/org.wireshark.Wireshark.desktop \
-    usr/share/metainfo/org.wireshark.Wireshark.metainfo.xml
+    usr/share/metainfo/org.wireshark.Wireshark.metainfo.xml \
+    usr/share/doc/wireshark/wireshark.html
 }
 
 package_wireshark-oqs-qt() {
   pkgdesc+=' - Qt GUI'
-  depends=('glibc' 'desktop-file-utils' 'qt5-multimedia' 'qt5-svg'
+  depends=('glibc' 'desktop-file-utils' 'qt6-multimedia' 'qt6-svg' 'qt6-5compat'
            'wireshark-oqs-cli' 'libwireshark.so' 'libwiretap.so' 'libwsutil.so'
            'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils' 'gcc-libs'
            'zlib' 'libpcap' 'libgcrypt' 'libnl' 'minizip' 'speexdsp'
