@@ -1,4 +1,4 @@
-From c6913a8edb9e94c39ecdc8380b7f6c87b941570c Mon Sep 17 00:00:00 2001
+From 5273a9f99627478c05487ce87f92702ba8b02c2d Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 28 Sep 2023 14:16:04 +0300
 Subject: [PATCH 6/6] AUR: Fix hwnd redefinition
@@ -28,7 +28,7 @@ index 8f377fcd..41f4021d 100644
  #include <string.h>
  #include <stdio.h>
 diff --git a/vrclient_x64/vrclient_x64/json_converter.cpp b/vrclient_x64/vrclient_x64/json_converter.cpp
-index fac49d29..f45af786 100644
+index b95cb3c0..f5b0e43e 100644
 --- a/vrclient_x64/vrclient_x64/json_converter.cpp
 +++ b/vrclient_x64/vrclient_x64/json_converter.cpp
 @@ -1,11 +1,15 @@

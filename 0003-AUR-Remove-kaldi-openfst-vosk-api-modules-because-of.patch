@@ -1,4 +1,4 @@
-From d7627a246ead96acbda14f479f12bdfe6ffbbeef Mon Sep 17 00:00:00 2001
+From 9b7d38ec451c87c9500433b98708fe8bef4b4adb Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 17:56:34 +0300
 Subject: [PATCH 3/6] AUR Remove kaldi, openfst, vosk-api modules because of
@@ -9,7 +9,7 @@ Subject: [PATCH 3/6] AUR Remove kaldi, openfst, vosk-api modules because of
  1 file changed, 1 insertion(+), 81 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index e8b625e8..213ba271 100644
+index deb4f2e2..8a82b338 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -585,86 +585,6 @@ $(OBJ)/.steamexe-post-build64:
@@ -99,7 +99,7 @@ index e8b625e8..213ba271 100644
  
  ##
  ## wine
-@@ -701,7 +621,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
+@@ -700,7 +620,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
    VKD3D_PE_CFLAGS="-I$(VULKAN_HEADERS_DST64)/include -I$(VKD3D_DST64)/include/vkd3d" \
    VKD3D_PE_LIBS="-L$(VKD3D_DST64)/bin -l:libvkd3d-1.dll -l:libvkd3d-shader-1.dll"
  
