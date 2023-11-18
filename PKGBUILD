@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=rime-project-trans-git
-pkgver=r2.8fb995e
+pkgver=r3.67b410f
 source=("git+https://github.com/project-trans/rime-dict.git")
 license=(unknown)
 arch=('any')

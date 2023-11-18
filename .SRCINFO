@@ -1,6 +1,6 @@
 pkgbase = rime-project-trans-git
 	pkgdesc = 跨儿计划 RIME 词典
-	pkgver = 1
+	pkgver = r3.67b410f
 	pkgrel = 1
 	url = https://github.com/project-trans/rime-dict
 	arch = any
