@@ -23,7 +23,7 @@ optdepends=('libpulse: For pulseaudio support'
 source=("https://dl-development.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "LICENSE"
         "${pkgname}.sh")
-sha256sums=('bb9788725cc366e70dd778852c8f5e38b2c8439fe14319d8b33e9c8a83deaaf7'
+sha256sums=('ffef4dcab791917bb6fbeba1c02877fc2d42a2cdfd85fcc1d188dfd0eb60f699'
             'a7c01ba4de8e8ddabfe4a2d434b9c1d05b5fdbd44b1b8ca2164b89a9657a930d'
             '9bfd406c319038b095d4b87ade82aa1cafab5c485de73b7e207189b29c2bb0d4')
 
