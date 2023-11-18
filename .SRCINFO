@@ -1,0 +1,13 @@
+pkgbase = nyafetch-bin
+	pkgdesc = Minimalistic system fetch utility with a cute cat. Written in Rust.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xqtc161/nyafetch
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = nyafetch
+	conflicts = nyafetch
+	source = https://github.com/xqtc161/nyafetch/releases/download/1.0.0/nyafetch-1.0.0-aarch64.tar.gz
+	sha256sums = d66088a24e3ffba3af6f7fc3fa2354d6d0507368b5ccb7b6bc5ecdc48c6e7a7e
+
+pkgname = nyafetch-bin
