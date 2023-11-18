@@ -1,7 +1,7 @@
 pkgbase = mousai
 	pkgdesc = Simple application for identifying songs
-	pkgver = 0.7.5
-	pkgrel = 2
+	pkgver = 0.7.6
+	pkgrel = 1
 	url = https://apps.gnome.org/Mousai
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = mousai
 	depends = libpulse
 	depends = libsoup3
 	options = !lto
-	source = mousai-0.7.5.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v0.7.5.tar.gz
-	sha256sums = fb36c00e89bb577a6b603d6f9a89e8f931de9bbce42dc24271dfd22160d746cc
+	source = mousai-0.7.6.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v0.7.6.tar.gz
+	sha256sums = a777e9c6ad310f2bb85ac88fc6f0de96e712ed49bed6905bc7e8e54820af4e37
 
 pkgname = mousai

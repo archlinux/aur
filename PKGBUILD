@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mousai
-pkgver=0.7.5
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="Simple application for identifying songs"
 arch=('x86_64')
 url="https://apps.gnome.org/Mousai"
@@ -12,7 +12,7 @@ makedepends=('cargo' 'meson')
 checkdepends=('appstream-glib')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fb36c00e89bb577a6b603d6f9a89e8f931de9bbce42dc24271dfd22160d746cc')
+sha256sums=('a777e9c6ad310f2bb85ac88fc6f0de96e712ed49bed6905bc7e8e54820af4e37')
 
 prepare() {
   cd "Mousai-$pkgver"
@@ -29,9 +29,12 @@ build() {
 }
 
 check() {
-  export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
-  meson test -C build --print-errorlogs || :
+#  export CARGO_HOME="$srcdir/cargo-home"
+#  export RUSTUP_TOOLCHAIN=stable
+#  meson test -C build --print-errorlogs || :
+
+  appstream-util validate-relax --nonet "build/data/${_app_id}.metainfo.xml"
+  desktop-file-validate "build/data/${_app_id}.desktop"
 }
 
 package() {
