@@ -1,12 +1,12 @@
 # Maintainer: Thomas Haider <t.haider@deprecate.de>
 pkgname=bley-git
-pkgver=r541.eaad52f
+pkgver=r543.9e350b0
 pkgrel=1
 pkgdesc="Intelligent greylisting daemon for postfix and exim"
 arch=(any)
 url="http://bley.mx"
 license=('BSD')
-depends=('python-pyspf' 'python-twisted' 'python-ipaddress' 'python-publicsuffix2')
+depends=('python-pyspf' 'python-twisted' 'python-publicsuffix2')
 optdepends=('postfix: mail server (Message Transfer Agent)'
 			'exim: mail server (Message Transfer Agent)'
 			'sqlite: required for SQLite support'

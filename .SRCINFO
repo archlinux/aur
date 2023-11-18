@@ -1,6 +1,6 @@
 pkgbase = bley-git
 	pkgdesc = Intelligent greylisting daemon for postfix and exim
-	pkgver = r541.eaad52f
+	pkgver = r543.9e350b0
 	pkgrel = 1
 	url = http://bley.mx
 	install = bley.sysusers
@@ -10,7 +10,6 @@ pkgbase = bley-git
 	makedepends = python-setuptools
 	depends = python-pyspf
 	depends = python-twisted
-	depends = python-ipaddress
 	depends = python-publicsuffix2
 	optdepends = postfix: mail server (Message Transfer Agent)
 	optdepends = exim: mail server (Message Transfer Agent)
