@@ -1,0 +1,24 @@
+pkgbase = r-adverscarial
+	pkgdesc = adverSCarial, generate and analyze the vulnerability of scRNA-seq classifiers to adversarial attacks
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/adverSCarial
+	arch = any
+	license = MIT
+	checkdepends = r-biocgenerics
+	checkdepends = r-runit
+	depends = r-delayedarray
+	depends = r-gtools
+	depends = r-s4vectors
+	optdepends = r-biocgenerics
+	optdepends = r-chetah
+	optdepends = r-knitr
+	optdepends = r-loomexperiment
+	optdepends = r-runit
+	optdepends = r-stringr
+	optdepends = r-tenxpbmcdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/adverSCarial_1.0.0.tar.gz
+	md5sums = 196840790cf7fd0a0cbfe6d1aeb60e07
+	sha256sums = 0a6c0c8d2d9567c14040c9be8db7f89c0704df3dd143f63bb5b71fdf6828cdfa
+
+pkgname = r-adverscarial
