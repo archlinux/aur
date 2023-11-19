@@ -1,0 +1,11 @@
+--- hvac-2.0.0/tests/unit_tests/v1/test_system_backend_methods.py	2023-11-18 22:58:25.928306539 +0800
++++ hvac-2.0.0/tests/unit_tests/v1/test_system_backend_methods.py	2023-11-18 22:58:44.124783792 +0800
+@@ -1,7 +1,7 @@
+ import pytest
+ 
+ from pytest_mock import MockFixture
+-from mock import MagicMock
++from unittest.mock import MagicMock
+ from unittest import TestCase
+ import requests_mock
+ from parameterized import parameterized
