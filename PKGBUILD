@@ -1,21 +1,31 @@
-# Maintainer: MisconceivedSec (@misconceivedsec)
-pkgname=salawat
-pkgver=1.3.0
+# Maintainer: TarkoGabor (@tgabor7)
+pkgname=simplelock
+pkgver=0.0.0
 pkgrel=1
-pkgdesc="A prayer times (Adhan) app for Windows and GNU/Linux written in JavaFX"
+pkgdesc="A very simple screen locker for Wayland"
 arch=('x86_64')
-conflicts=("salawat-appimage" "salawat")
-provides=("salawat")
-url="https://github.com/DBChoco/Salawat"
-license=('MIT')
-depends=('zstd' 'gtk3' 'alsa-lib' 'nss')
-source=("Salawat-$pkgver-linux.tar.gz::https://github.com/DBChoco/Salawat/releases/download/v$pkgver/Salawat-$pkgver-linux.tar.gz")
+url="https://github.com/tgabor7/sl"
+license=('BSD')
+depends=('wayland' 'wayland-protocols' 'cargo')
+source=("sl-$pkgver-linux.tar.gz::https://github.com/tgabor7/sl/archive/tags/v$pkgver.tar.gz")
 md5sums=('c623351938306b5c437aa1d680004dab')
 
-package()
-{
-    mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/share/applications"
-    cp -r "${srcdir}/Salawat" "${pkgdir}/opt/"
-    sed -i "s/Salawat.png/icon.png/" "${srcdir}/Salawat/Salawat.desktop"
-    install -Dm755 "${srcdir}/Salawat/Salawat.desktop" "${pkgdir}/usr/share/applications/salawat.desktop"
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
+}
+
+package() {
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
