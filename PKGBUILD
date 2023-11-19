@@ -1,31 +1,32 @@
 # Maintainer: Audric Schiltknecht <storm+arch@chemicalstorm.org>
 
 pkgname='libgse'
-pkgver=1.0.1
+pkgver=1.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Generic Stream Encapsulation library"
-url="https://launchpad.net/libgse"
+url="https://github.com/CNES/libgse"
 license=('LGPL3')
 depends=('libpcap')
 options=('!libtool')
-source=("https://launchpad.net/libgse/1.0.x/${pkgver}/+download/gse-${pkgver}.tar.gz")
-md5sums=('c9252083da16b356be8587d63d938df5')
+source=("https://github.com/CNES/libgse/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f4c37330a7c3eb392587aff54161875d338b03837d1471ee6e6e45fb115e71db')
 
 build() {
-  cd ${srcdir}/gse-${pkgver}
+  cd ${srcdir}/libgse-${pkgver}
+  ./autogen.sh
   ./configure --prefix=/usr \
               --disable-static
   make
 }
 
 check() {
-  cd ${srcdir}/gse-${pkgver}
+  cd ${srcdir}/libgse-${pkgver}
   make -k check
 }
 
 package() {
-  cd ${srcdir}/gse-${pkgver}
+  cd ${srcdir}/libgse-${pkgver}
   make DESTDIR=${pkgdir} install
 }
 
