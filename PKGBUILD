@@ -3,13 +3,13 @@
 
 pkgname=xfig-git
 _pkgname=xfig
-pkgver=3.2.8b.r6.g92215fa
+pkgver=3.2.9.r20.g436aa4a
 pkgrel=1
 pkgdesc="An interactive drawing tool"
 arch=('x86_64' 'i686')
 url="http://mcj.sourceforge.net/"
 license=('custom')
-depends=('libjpeg' 'xaw3d' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'libpng' 'libxpm' 'ghostscript')
+depends=('libjpeg' 'xaw3d' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'libpng' 'libxpm' 'ghostscript' 'libxft')
 optdepends=('fig2dev: to use the frontend to convert fig files')
 makedepends=('git' 'fig2dev' 'htmldoc')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
@@ -19,7 +19,7 @@ source=($pkgname::git+https://git.code.sf.net/p/mcj/xfig
 	xfig-aspell.patch xfig-3.2.5-color-resources.patch
         LICENSE)
 sha1sums=('SKIP'
-          'e563877b201bafb2c80c1caf67812b865b359bda'
+          '51461817aefe8b695ac636d865d0d99443bf0582'
           'dd41e0a007bb74b74e1af50b6b04aa6aec61ab22'
           '31edf4cfab708820ea3f114d095dfef5aa88e5aa')
 
@@ -30,9 +30,9 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-   patch -p1 -i "${srcdir}/xfig-aspell.patch"
-   patch -p1 -i "${srcdir}/xfig-3.2.5-color-resources.patch"
-   autoreconf -fiv
+  patch -p1 -b -z .orig -i "${srcdir}/xfig-aspell.patch"
+  patch -p1 -b -z .orig -i "${srcdir}/xfig-3.2.5-color-resources.patch"
+  autoreconf -fiv
 }
 
 build() {

@@ -1,9 +1,10 @@
---- xfig.3.2.4/app-defaults/Fig.in	2002-12-19 01:05:41.000000000 +0100
-+++ xfig.3.2.4/app-defaults/Fig.in	2003-05-06 11:45:15.000000000 +0200
-@@ -34,7 +34,7 @@
+diff -up xfig-git/app-defaults/Fig.orig xfig-git/app-defaults/Fig
+--- xfig-git/app-defaults/Fig.orig	2023-11-19 00:38:29.349683995 -0700
++++ xfig-git/app-defaults/Fig	2023-11-19 00:39:02.569683995 -0700
+@@ -34,7 +34,7 @@ Fig.pdfviewer:			xdg-open %f
+ 
  ! Spell check program - put your favorite spelling check program here.
  !		It must write the misspelled words to standard output.
- 
 -Fig.spellcheckcommand:		spell %f
 +Fig.spellcheckcommand:		aspell %f
  
