@@ -8,7 +8,7 @@
 _base=requests-cache
 pkgname=python-${_base}
 pkgdesc="A persistent cache for python requests"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
@@ -27,7 +27,7 @@ optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
 checkdepends=(python-pytest python-requests-mock python-responses python-timeout-decorator
   python-time-machine python-rich python-ujson python-itsdangerous)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8fa9fdf4f47d67a6ad877fc181e04378b4540b35cef200735caff14e4907519aa5de74acaf61c6588856d5c8b2f9529768250a8e5fe28962b7861daf2279bb94')
+sha512sums=('e9b82c45d6d7353a0307869d13b263f6c2cb5c039d7b3ce7388bf12f4b8aa6c1c285de6bd2becf7e91684efcb1aa8d0ae933afe66faa32b99571ed5451a8ee79')
 
 build() {
   cd ${_base}-${pkgver}
