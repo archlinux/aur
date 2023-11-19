@@ -1,11 +1,7 @@
-# Maintainer: Nissar Chababy <funilrys at outlook dot com>
-# Ex-Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net>
-# Ex-Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
-# Contributor: Dan Serban
-# Contributor: Florian Richter <Florian_Richter@gmx.de>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=yacy-git
-pkgver=1.92.r1422.g376bcfd54
+pkgver=1.92.r1497.g3d3bdb0f5
 pkgrel=1
 pkgdesc="Peer to peer search engine"
 arch=('any')
