@@ -27,7 +27,7 @@ optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
 checkdepends=(python-pytest python-requests-mock python-responses python-timeout-decorator
   python-time-machine python-rich python-ujson python-itsdangerous)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e9b82c45d6d7353a0307869d13b263f6c2cb5c039d7b3ce7388bf12f4b8aa6c1c285de6bd2becf7e91684efcb1aa8d0ae933afe66faa32b99571ed5451a8ee79')
+sha512sums=('99782fe635daa0834709b254b0d51c5d2b2ad37d26201acdc143f963b613bb6b4e5863e2246a2bf9d099c773e229157a983b04a40740e6207e2c356dc48bdba6')
 
 build() {
   cd ${_base}-${pkgver}

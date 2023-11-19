@@ -30,6 +30,6 @@ pkgbase = python-requests-cache
 	optdepends = python-yaml: for bindings yaml support
 	optdepends = python-ujson: for JSON serializer for improved performance
 	source = requests-cache-1.1.1.tar.gz::https://github.com/requests-cache/requests-cache/archive/v1.1.1.tar.gz
-	sha512sums = e9b82c45d6d7353a0307869d13b263f6c2cb5c039d7b3ce7388bf12f4b8aa6c1c285de6bd2becf7e91684efcb1aa8d0ae933afe66faa32b99571ed5451a8ee79
+	sha512sums = 99782fe635daa0834709b254b0d51c5d2b2ad37d26201acdc143f963b613bb6b4e5863e2246a2bf9d099c773e229157a983b04a40740e6207e2c356dc48bdba6
 
 pkgname = python-requests-cache
