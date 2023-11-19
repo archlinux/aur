@@ -10,7 +10,7 @@
 pkgname=p7zip-full-bin
 _pkgname=p7zip-full
 pkgver=23.01
-pkgrel=1
+pkgrel=2
 _upstream_pkgrel=4
 pkgdesc="File archiver with a high compression ratio (full package to replace p7zip)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ conflicts=('p7zip')
 provides=('p7zip')
 source=(https://github.com/phoepsilonix/p7zip-full/archive/refs/tags/v$pkgver.$_upstream_pkgrel.tar.gz
         https://github.com/phoepsilonix/p7zip-full/releases/download/v$pkgver.$_upstream_pkgrel/p7zip-linux-x86_64-musl.zip)
-sha256sums=('e62c548f8e76a8493010a91feee9e632bf3599a26f2b9433b49a4d91014a1d42'
-            '508289c2d15908b366f4e94de32db0433367eb25f8d46be87faa6773cc8769ee')
+sha256sums=('b2fa9db70232661ff962bab631ff88e56a894caf0c15fae5070135f18408d5b9'
+            '4db7e3a938675b97a9a3440b9c7127d8a990390df2dfe0da7dcabe654abb3579')
 
 prepare() {
   cd $_pkgname-$pkgver.$_upstream_pkgrel
