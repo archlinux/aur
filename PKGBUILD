@@ -1,7 +1,7 @@
 # Maintainer: Dan Johansen <strit@strits.dk>
 
 pkgname=tui-sudoku
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A configurable terminal interface sudoku game, written in Bash, with quite a few features"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2-or-later')
 depends=('bash' 'qqwing' 'lolcat')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('0e950a52ddd595d7363221a28f508e6349961bf35edeedca6f08d162eac2fa25')
+sha256sums=('a1cb7be17f8c383ef0792af84d7a06cefa8859d0782498ff0044751d78cba3e8')
 
 package() {
   cd "$pkgname-$pkgver"
