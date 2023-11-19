@@ -8,6 +8,8 @@ url="https://github.com/Radiicall/jellyfin-rpc"
 license=('GPL3')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
+optdepends=('python: for the configuration script')
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Radiicall/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('7611c4e4dcfbaeb77e51d02c40c3df4836f4acc2ab9b47058a35e047ed4e8d84865a09ea8b3ba77f4c2868548e21ec343852ec5c1a01aa2a5384a4e1a4c5112a')
 
@@ -40,6 +42,7 @@ package() {
 
     install -Dm644 "scripts/$pkgname.service" -t "$pkgdir/usr/lib/systemd/user/"
 
+    install -Dm644 "scripts/installer.py" -t "$pkgdir/usr/lib/$pkgname/"
     install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

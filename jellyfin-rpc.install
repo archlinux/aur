@@ -1,0 +1,8 @@
+post_install() {
+    echo
+    echo "Configuration script installed to /usr/lib/jellyfin-rpc/installer.py."
+    echo "You can create your configuration by running:"
+    echo
+    echo "    python /usr/lib/jellyfin-rpc/installer.py --no-install"
+    echo
+}
