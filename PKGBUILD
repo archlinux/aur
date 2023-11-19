@@ -46,7 +46,7 @@ package() {
   cd "${srcdir}/OSCAR-code-${pkgver}"
   install -Dm755 oscar/OSCAR "$pkgdir/usr/bin/oscar"
   install -Dm644 oscar/icons/logo-lg.png "$pkgdir/usr/share/oscar/icon.png"
-  install -Dm644 oscar.desktop "$pkgdir/usr/share/applications/oscar.desktop"
+  install -Dm644 ../oscar.desktop "$pkgdir/usr/share/applications/oscar.desktop"
   cp -dpr --no-preserve=ownership oscar/Html "$pkgdir/usr/share/oscar"
   cp -dpr --no-preserve=ownership oscar/Translations "$pkgdir/usr/share/oscar"
 }
