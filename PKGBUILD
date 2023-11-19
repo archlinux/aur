@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 _reponame=hid-logitech-hidpp
 pkgname=hidpp-logitech-g-pro-wheel-dkms-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="hid-logitech-hidpp with G Pro Racing Wheel PC/XBOX support"
 arch=('x86_64')
