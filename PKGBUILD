@@ -1,7 +1,7 @@
 # Maintainer: Bazyli Cyran <bazyli@cyran.dev>
 
 pkgname=timewall
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Apple dynamic HEIF wallpapers on GNU/Linux'
 url='https://github.com/bcyran/timewall'
@@ -13,7 +13,7 @@ checkdepends=('cargo')
 license=('MIT')
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bcyran/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e264aa0001464f72132b9155ec390e98e3e0762c986f5f8c3cba628d83f7d492')
+sha256sums=('e1d5c7c903c14ba44dc28c39d8db2a0f92b35b8d9321f0ad0e4463f672a6afce')
 
 build() {
     cd "${pkgname}-${pkgver}"
