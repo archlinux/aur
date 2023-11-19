@@ -1,13 +1,13 @@
 pkgbase = tap
 	pkgdesc = An audio player for the terminal with fuzzy-finder
-	pkgver = 0.4.8
-	pkgrel = 2
+	pkgver = 0.4.9
+	pkgrel = 1
 	url = https://github.com/timdubbins/tap
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = tap-0.4.8.tar.gz::https://github.com/timdubbins/tap/archive/v0.4.8.tar.gz
-	sha256sums = 2a5d6cf213f12a75344ed7f0a4b933e589f9b4fe74100a8b3ee20622e8242068
+	source = tap-0.4.9.tar.gz::https://github.com/timdubbins/tap/archive/v0.4.9.tar.gz
+	sha256sums = 1b4fca09599e293184732a89f9664fb5f64b4fa23c7d408ac404f404444b4d2c
 
 pkgname = tap
