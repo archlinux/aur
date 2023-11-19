@@ -15,13 +15,12 @@ sha256sums=('SKIP')
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $pkgname.sh
+    chmod +x $_pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
-
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
