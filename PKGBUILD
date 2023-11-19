@@ -3,7 +3,7 @@
 # what: PyGLM
 
 pkgname='python-pyglm'
-pkgver='2.7.0'
+pkgver='2.7.1'
 pkgrel=1
 pkgdesc="OpenGL Mathematics library for Python"
 url="https://github.com/Zuzu-Typ/PyGLM"
