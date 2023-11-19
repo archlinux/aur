@@ -1,7 +1,7 @@
 pkgbase = activitywatch-git
 	pkgdesc = Log what you do on your computer. Simple, extensible, no third parties.
 	pkgver = 0.12.3b13.r0.g18b01d9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ActivityWatch/activitywatch
 	arch = x86_64
 	license = MPL2
@@ -33,7 +33,7 @@ pkgbase = activitywatch-git
 	depends = python-xlib
 	depends = python
 	provides = activitywatch
-	conflicts = activitywatch-bin
+	conflicts = activitywatch
 	options = !lto
 	source = activitywatch::git+https://github.com/ActivityWatch/activitywatch
 	source = aw-core-install-schemas.patch

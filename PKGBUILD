@@ -4,7 +4,7 @@
 _name='activitywatch'
 pkgname="$_name-git"
 pkgver=0.12.3b13.r0.g18b01d9
-pkgrel=1
+pkgrel=2
 pkgdesc='Log what you do on your computer. Simple, extensible, no third parties.'
 arch=('x86_64')
 url="https://github.com/ActivityWatch/$_name"
@@ -42,7 +42,7 @@ makedepends=(
   'python-poetry'
 )
 provides=('activitywatch')
-conflicts=('activitywatch-bin')
+conflicts=('activitywatch')
 
 # Makepkg doesn't do LTO for rust, this causes C/C++ code compiled with LTO to fail to link with
 # rust code (without LTO)
