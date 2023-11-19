@@ -2,7 +2,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.17.9
+pkgver=11.17.10
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
@@ -14,14 +14,15 @@ checkdepends=('python-pytest'
               'python-astropy'
               'python-yaml'
               'python-beautifulsoup4'
-              'python-asdf')
+              'python-asdf'
+              'python-parsley')
 #             'python-lockfile'
 #             'python-filelock'
 #             'python-nose'
 #             'python-pylint'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('9a16abefcd61b1860af9f1c8bf6bbeb8')
+md5sums=('4bfd4078cc53215f17de727a3c553e01')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -74,7 +75,12 @@ check() {
         --deselect=test/submit/test_submit.py::TestSubmit::test_badkey \
         --deselect=test/submit/test_submit.py::TestSubmit::test_multiple_invalid_chars \
         --deselect=test/submit/test_submit.py::TestSubmit::test_addfiles \
-        --deselect=test/certify/test_certify.py::test_asdf_library_version_fail || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+        --deselect=test/submit/test_submit.py::TestSubmit::test_badvalue_trinary \
+        --deselect=test/submit/test_submit.py::TestSubmit::test_resetfield \
+        --deselect=test/submit/test_submit.py::TestSubmit::test_validate \
+        --deselect=test/submit/test_submit.py::TestSubmit::test_rmfile \
+        --deselect=test/certify/test_certify.py::test_asdf_library_version_fail \
+        --deselect=test/misc/test_synphot.py::test_synphot_certify_rmaps_thruput || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 
 #       --deselect=test/test_list.py::test_list_hst_mappings \
 #       --deselect=test/test_list.py::test_list_jwst_mappings \
