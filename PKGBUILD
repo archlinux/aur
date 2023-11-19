@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gespeR
-_pkgver=1.31.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.31.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Gene-Specific Phenotype EstimatoR'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('baa147adedff101eb2962bce6430e5362c0181796444dbab3ba59247438b18b4')
+sha256sums=('4ab88430573c331e671c94059749d8c5689423ee1bffcb95aa4428e843b2f1b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
