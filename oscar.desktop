@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=OSCAR
+Comment=Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment.
+Exec=/usr/bin/oscar
+Icon=/usr/share/oscar/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;
