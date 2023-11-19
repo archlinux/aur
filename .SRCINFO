@@ -1,5 +1,5 @@
 pkgbase = wlock-git
-	pkgdesc = A very simple screen locker for Wayland
+	pkgdesc = A simple screen locker for Wayland
 	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/tgabor7/sl

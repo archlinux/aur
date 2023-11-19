@@ -11,11 +11,6 @@ source=("sl-$pkgver-linux.tar.gz::https://github.com/tgabor7/sl/archive/tags/v$p
 b2sums=('SKIP')
 md5sums=('SKIP')
 
-pkgver() {
-    cd "sl-tags-v$pkgver"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     tar -xf "sl-$pkgver-linux.tar.gz"
