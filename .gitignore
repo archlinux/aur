@@ -1,4 +1,4 @@
-alchemy-next-viewer-git/
+alchemy-next-viewer-nosystemd-git/
 src/
 pkg/
 *.bash
