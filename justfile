@@ -5,7 +5,7 @@ update:
   source PKGBUILD
   old_pkgver=$pkgver
 
-  makepkg --nobuild --check --syncdeps
+  makepkg --nobuild --check --syncdeps --noconfirm
   makepkg --printsrcinfo > .SRCINFO
 
   source PKGBUILD
