@@ -1,6 +1,6 @@
 
 pkgname=cnake-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Snake clone in c with standard lib"
