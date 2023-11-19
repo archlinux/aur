@@ -1,8 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
-# Contributor: Schnouki <schnouki@schnouki.net>
 
 pkgname=hash-slinger
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)"
 arch=(any)
@@ -16,7 +15,7 @@ optdepends=('openssh: for sshfp'
             'openswan: for ipseckey (if not using libreswan or strongswan)'
             'strongswan: for ipseckey (if not using libreswan or openswan)')
 source=(https://github.com/letoams/${pkgname}/archive/${pkgver}.tar.gz)
-b2sums=('8c89f9a372818166c862d97354a60dddc2795c70f23b39225ad0fc3a2657cc5e048dca228dc004db0240fcf80e74bc799528d3459a65e6de347a493df5abf7b3')
+b2sums=('237affa3f933d3dbd1dca3bc4f927268c15d10eed16c18aae68906f1fe6511eda48283f76da851d70535139bc880074951a1ab4c6be92bd27e32c38e374ce044')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
