@@ -3,8 +3,8 @@
 pkgname=sliding-sync-git
 arch=('x86_64')
 backup=("etc/default/sliding-sync")
-pkgver=r1615.e75a462
-pkgrel=2
+pkgver=r1754.62d3798
+pkgrel=1
 pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
 url=https://github.com/matrix-org/sliding-sync
 license=("Apache")
@@ -22,7 +22,7 @@ function pkgver(){
 
 function build(){
 	cd "${srcdir}/sliding-sync"
-	go build ./cmd/syncv3
+	go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" ./cmd/syncv3
 }
 
 function package(){
