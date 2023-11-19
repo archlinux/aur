@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/acheronfail/i3stat"
 license=('GPL-3.0-only')
 depends=('gcc-libs')
+conflicts=('i3stat' 'i3stat-bin')
 makedepends=('git' 'clang' 'cargo' 'dbus' 'dunst' 'libfaketime' 'libpulse' 'i3-wm' 'imagemagick' 'scrot' 'xorg-server-xvfb')
 source=(git+$url)
 sha512sums=('SKIP')

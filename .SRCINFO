@@ -17,6 +17,8 @@ pkgbase = i3stat-git
 	makedepends = scrot
 	makedepends = xorg-server-xvfb
 	depends = gcc-libs
+	conflicts = i3stat
+	conflicts = i3stat-bin
 	source = git+https://github.com/acheronfail/i3stat
 	sha512sums = SKIP
 
