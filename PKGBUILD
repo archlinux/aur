@@ -16,7 +16,7 @@ pkgname=("${pkgbase}-git"
         )
 
 pkgver=0.14.0.r8.g020c1634
-pkgrel=1
+pkgrel=6
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
