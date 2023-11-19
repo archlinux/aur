@@ -32,18 +32,18 @@ sha256sums=('d1ce2f5f656715f059e683e9d1d2c86ed0607194d3de97b469c25f0b78c64341'
             '5a887520f92ffde54835adf5507c6f8a93a54561866d07573d2a80bcaf8f3691')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/OSCAR-code-${pkgver}"
   git apply ../*.patch || echo "No patches found"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/OSCAR-code-${pkgver}"
   qmake OSCAR_QT.pro
   make -j$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/OSCAR-code-${pkgver}"
   install -Dm755 oscar/OSCAR "$pkgdir/usr/bin/oscar"
   install -Dm644 oscar/icons/logo-lg.png "$pkgdir/usr/share/oscar/icon.png"
   install -Dm644 oscar.desktop "$pkgdir/usr/share/applications/oscar.desktop"
