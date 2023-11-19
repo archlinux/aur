@@ -1,8 +1,9 @@
+# debug made by milkii
 # Maintainer: Holzhaus <jholthuis@mixxx.org>
 # Contributor: Gimmeapill <gimmeapill@gmail.com>
 # Contributor: regreddit <nik.martin@gmail.com>
 
-pkgname=mixxx-git
+pkgname=mixxx-git-debug
 pkgver=r8934
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."

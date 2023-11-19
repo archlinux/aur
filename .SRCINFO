@@ -1,4 +1,4 @@
-pkgbase = mixxx-git
+pkgbase = mixxx-git-debug
 	pkgdesc = Digital DJ mixing software. Git master branch (development/alpha).
 	pkgver = r8934
 	pkgrel = 1
@@ -48,9 +48,9 @@ pkgbase = mixxx-git
 	depends = wavpack
 	provides = mixxx
 	conflicts = mixxx
-	source = mixxx::git+https://github.com/mixxxdj/mixxx.git
+	source = mixxx-git::git+https://github.com/mixxxdj/mixxx.git
 	source = mixxx.install
 	md5sums = SKIP
 	md5sums = 321b9cca3ed690fcf57e7ac1e99109c2
 
-pkgname = mixxx-git
+pkgname = mixxx-git-debug
