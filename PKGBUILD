@@ -9,7 +9,6 @@ url="http://https://github.com/ingwarsw/tinyfugue"
 license=("GPL")
 depends=(pcre zlib ncurses openssl lua51 python)
 source=("https://github.com/ingwarsw/tinyfugue/archive/refs/tags/5.1.5.tar.gz")
-sha256sums=('SKIP')
 
 # build function
 build() {
@@ -32,3 +31,4 @@ package() {
 	cp lua/*.* $pkgdir/usr/share/tf-lib/
 	cp py/*.* $pkgdir/usr/share/tf-lib/
 }
+sha256sums=('85b342925675e39e17cf95e8a65d69a3927657e066efd52c301a20e6d36c2f98')
