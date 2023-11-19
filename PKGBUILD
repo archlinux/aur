@@ -1,9 +1,9 @@
-# Maintainer: Paragoumba <paragoumba@protonmail.com>
+# Maintainer: Paragoumba <aur@paragoumba.fr>
 # Contributor: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=joycond-git
 _name=joycond
-pkgver=v0.1.0.r51.gf9a6691
+pkgver=v0.1.0.r53.gcdec328
 pkgrel=1
 pkgdesc='Userspace daemon to combine joy-cons from the hid-joycon kernel driver'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_name"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
