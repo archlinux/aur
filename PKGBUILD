@@ -1,21 +1,21 @@
 # Maintainer: Arnoldas Rauba (raubarno)
 
 pkgname=audra
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="A bulet-hell Touhou fangame, written in Rust and Vulkan."
+pkgdesc="A bullet-hell Touhou fangame, written in Rust and Vulkan."
 arch=('x86_64')
 url='https://codeberg.org/raubarno/audra'
 license=('GPL3')
 depends=('libxkbcommon-x11' 'vulkan-icd-loader')
 makedepends=('gcc' 'cmake' 'cargo' 'git' 'shaderc')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/raubarno/audra/archive/v$pkgver.tar.gz")
-sha512sums=('980b4b9ba3155b297a467a3ded03d669ad1d64bf85938a365485225b73aa60ff8f00c64eb9044d50f05d99540a77e80c901f98e2d736caa1ac4f2fc2b6aeaf49')
+sha512sums=('68a5936c43c6cb19a49e55759d52cd9a09ae9f1bdb6991f1070330c65260642fdce84a0d313b75bdf4487f07c1ef18b7c9cf6644df62d98aa71f1dcf08668060')
 
 prepare() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -32,4 +32,6 @@ check() {
 
 package() {
 	install -Dm0755 "$pkgname/target/release/$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm0644 "$pkgname/assets/audra.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm0644 "$pkgname/assets/wicon.png" -T "$pkgdir/usr/share/icons/hicolor/48x48/apps/audra.png"
 }
