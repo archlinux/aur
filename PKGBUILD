@@ -9,7 +9,7 @@
 # match! -rc[0-9]+$
 
 pkgname=libvirt
-pkgver=9.5.0
+pkgver=9.9.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
@@ -86,7 +86,7 @@ backup=(
 source=(
   "https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
 )
-sha256sums=('df5ea2272c4d1ce1889892d88292506616c1e10ebe8ecdeac7928f2ebdc3044a'
+sha256sums=('cb83be795548161af6718a6db75ee40719a87bcd6f9207a3565db2fc0e53a52e'
             'SKIP')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
