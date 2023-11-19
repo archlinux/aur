@@ -2,16 +2,16 @@
 
 _pkgname=mumailer
 pkgname=("python-mumailer" "mumailer")
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Simple mailer agent using SMTP"
 url="http://www.muflone.com/mumailer"
 arch=('any')
 license=('GPL3')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-depends=('python-yaml' 'python>=3.11')
+depends=('python-yaml' 'python')
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8c443e807efea01b987e7233cbe16459834e999007d27ad07ebecd357eba85fe')
+sha256sums=('2dc71fe86dffefd404a9ec0d1070f63fd601595e4a66eaaf78bc79cf68f53231')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -23,11 +23,6 @@ package_python-mumailer() {
 
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  for _file in "${pkgdir}/usr/lib/python3.11/site-packages/mumailer/samples"/*.py
-  do
-    chmod +x "${_file}"
-    sed -i '1i#!/usr/bin/python' "${_file}"
-  done
   rm "${pkgdir}/usr/bin/mumailer"
   rmdir "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
@@ -42,3 +37,4 @@ package_mumailer() {
   python -m installer --destdir="build" dist/*.whl
   install -m 755 -D "build/usr/bin/mumailer" "${pkgdir}/usr/bin/${pkgname}"
 }
+
