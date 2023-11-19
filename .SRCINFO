@@ -1,4 +1,4 @@
-pkgbase = tinyfugue
+pkgbase = tinyfugue-rebirth
 	pkgdesc = flexible, screen-oriented MUD client, with python,lua,atcp,gmcp and option102 support
 	pkgver = 5.1.5
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = tinyfugue
 	source = https://github.com/ingwarsw/tinyfugue/archive/refs/tags/5.1.5.tar.gz
 	sha256sums = SKIP
 
-pkgname = tinyfugue
+pkgname = tinyfugue-rebirth

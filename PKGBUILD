@@ -1,6 +1,6 @@
 # Maintainer: Gary Hunt <garysERASE_THIS_PARTboxATgmailonedotcom>
 
-pkgname=tinyfugue
+pkgname=tinyfugue-rebirth
 pkgver=5.1.5
 pkgrel=1
 arch=('i686' 'x86_64')
