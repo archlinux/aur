@@ -1,0 +1,18 @@
+pkgbase = tinyfugue
+	pkgdesc = flexible, screen-oriented MUD client, with python,lua,atcp,gmcp and option102 support
+	pkgver = 5.1.5
+	pkgrel = 1
+	url = http://https://github.com/ingwarsw/tinyfugue
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pcre
+	depends = zlib
+	depends = ncurses
+	depends = openssl
+	depends = lua51
+	depends = python
+	source = https://github.com/ingwarsw/tinyfugue/archive/refs/tags/5.1.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = tinyfugue
