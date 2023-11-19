@@ -1,7 +1,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=ctrisr-git
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 epoch=
 pkgdesc="Tetris clone in terminal colorzied"
@@ -36,5 +36,5 @@ build() {
 
 package() {
     cd ctrisr
-    install -Dm755 ./a.out "$pkgdir/usr/bin/ctrisr"
+    install -Dm755 ./ctrisr "$pkgdir/usr/bin/ctrisr"
 }
