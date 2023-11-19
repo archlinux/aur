@@ -1,7 +1,7 @@
 pkgbase = bordeaux
 	pkgdesc = SIP telephony applidation server
-	pkgver = 0.5.3
-	pkgrel = 5
+	pkgver = 0.7.8
+	pkgrel = 1
 	url = https://codeberg.org/gnutelephony/bordeaux
 	install = bordeaux.install
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = bordeaux
 	arch = armv7h
 	license = GPL
 	makedepends = cmake
-	makedepends = pkgconf
-	makedepends = gcc
-	depends = libexosip2>=5.3.0
+	makedepends = rapidjson
+	depends = libexosip2
 	depends = libosip2
 	depends = openssl
 	depends = fmt
-	source = bordeaux-v0.5.3.tar.gz::https://codeberg.org/gnutelephony/bordeaux/archive/v0.5.3.tar.gz
+	depends = systemd-libs
+	source = bordeaux-v0.7.8.tar.gz::https://codeberg.org/gnutelephony/bordeaux/archive/v0.7.8.tar.gz
 	source = bordeaux.service
 	source = bordeaux.logrotated
-	sha256sums = a3fa5b29608a786138ca35064843fdfe7f31d7dce90188cb8c1bcd9c80a068df
+	sha256sums = 7b5a6cfb9e45dd5635d8b714489a975268779c42700e9aedd3cd8ac32e6c5e79
 	sha256sums = 32cd39807e9feb3abd12c8cbc24c6b1bcdf1c6a71c4550bb715f3f45f9277ff1
 	sha256sums = 462037b66755dc2991bbc1d4be962e34d2e9c11f3522246df76a69f056f4d83f
 
