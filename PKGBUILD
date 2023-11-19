@@ -18,6 +18,8 @@ pkgver() {
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    tar -xf "sl-$pkgver-linux.tar.gz"
+    cd "sl-tags-v$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
