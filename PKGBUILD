@@ -23,7 +23,7 @@ makedepends=(
 )
 provides=("$_pkgname")
 source=(
-  "${pkgname}-${pkgver}.tar.gz::git+https://gitlab.com/pholy/OSCAR-code/-/archive/${pkgver}/OSCAR-code-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/pholy/OSCAR-code/-/archive/${pkgver}/OSCAR-code-${pkgver}.tar.gz"
   'oscar.desktop'
   'odr-fix.patch'
 )
