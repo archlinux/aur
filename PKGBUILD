@@ -2,7 +2,7 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
@@ -18,7 +18,7 @@ source=("https://github.com/SubtitleEdit/subtitleedit/releases/download/$pkgver/
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-sha256sums=('3729606b10a6cc47bc72c6ff1570931eaf1072974f979137ea6239ed6edada48'
+sha256sums=('f729b94a352f433ef7df1d7950d04cd036aa975d2811b34015029f3e30cff69b'
             '51ae2411ed70a40607a78dd863db98bf5692bfaff7f8c230ddf82f0dc78d1cc3'
             '54ffb47864611c6aebb29ecfabd49089cfe6decc320e3f25043c39ec7f27a5fb'
             '700d09858ac76341054d7edc79952fbfca70df674d2b567e3713579e5963f631')
