@@ -4,21 +4,26 @@
 # Contributor: Lenovsky <lenovsky at pm dot me>
 # Contributor: aimileus <me at aimileus dot nl>
 
-pkgname=protonmail-bridge
-_name=proton-bridge
+pkgbase=protonmail-bridge
+_basename=proton-bridge
+pkgname=(
+  protonmail-bridge-core
+  protonmail-bridge
+)
 pkgver=3.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
 license=(GPL3)
-depends=(
+makedepends=(
   abseil-cpp
+  cmake
   gcc-libs
   glib2
   glibc
+  go
   grpc
-  hicolor-icon-theme
   libsecret
   protobuf
   qt6-base
@@ -26,29 +31,21 @@ depends=(
   qt6-svg
   sentry-native
 )
-makedepends=(
-  cmake
-  go
-)
-optdepends=(
-  'gnome-keyring: gnome-keyring support'
-  'org.freedesktop.secrets: Applications that support Freedesktop secrets api'
-  'pass: pass support'
-  'qt6-wayland: Wayland support'
-)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "protonmail-bridge.desktop"
+  "protonmail-bridge.service"
   "remove-vcpkg-dependency.patch"
 )
 sha256sums=(
   '2dd18b5460fff9c84edaf3eb7401357e8d311c3e63564db8c5adcb63e54877af'
   '404db600803b9be875365d84e0726c3f7aedceaf122a795ca2248ee9f005753b'
+  '4411cbed6aba2144daba08eae8ae99868a8939be8ecc7f6160623dd6cf4b9a6f'
   '436a9a293424fb7d48a8fd61fff7d63985dec56d6170cd2fbae24fe03ef98136'
 )
 
-_archive="$_name-$pkgver"
+_archive="$_basename-$pkgver"
 
 prepare() {
   cd "$_archive"
@@ -132,15 +129,58 @@ check() {
   go test -count=1 $_unit_tests
 }
 
-package() {
+package_protonmail-bridge-core() {
+  pkgdesc="$pkgdesc (core executable and daemon)"
+  depends=(
+    glib2
+    glibc
+    libsecret
+  )
+  optdepends=(
+    'gnome-keyring: gnome-keyring support'
+    'org.freedesktop.secrets: Applications that support Freedesktop secrets api'
+    'pass: pass support'
+  )
+
+  cd "$_archive"
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/protonmail/bridge/" ./*.md
+
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/user/" "$srcdir/protonmail-bridge.service"
+
+  install -Dm755 bridge "$pkgdir/usr/lib/protonmail/bridge/bridge"
+
+  install -dm755 "$pkgdir/usr/bin/"
+  ln -s /usr/lib/protonmail/bridge/bridge "$pkgdir/usr/bin/protonmail-bridge-core"
+}
+
+package_protonmail-bridge() {
+  pkgdesc="$pkgdesc (Qt desktop application)"
+  depends=(
+    protonmail-bridge-core
+
+    abseil-cpp
+    gcc-libs
+    glibc
+    grpc
+    hicolor-icon-theme
+    protobuf
+    qt6-base
+    qt6-declarative
+    qt6-svg
+    sentry-native
+  )
+  optdepends=(
+    'qt6-wayland: Wayland support'
+  )
+
   cd "$_archive"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
   install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/protonmail-bridge.desktop"
-  install -Dm644 -t "$pkgdir/usr/share/doc/protonmail/bridge/" ./*.md
   install -Dm644 dist/bridge.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg"
 
-  install -Dm755 bridge "$pkgdir/usr/lib/protonmail/bridge/bridge"
   install -Dm755 build/bridge-gui "$pkgdir/usr/lib/protonmail/bridge/bridge-gui"
 
   install -dm755 "$pkgdir/usr/bin/"
