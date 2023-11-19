@@ -1,11 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=ctrisr-git
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=
 pkgdesc="Tetris clone in terminal colorzied"
@@ -35,7 +31,7 @@ prepare() {
 
 build() {
     cd ctrisr
-    gcc ./src/main.c ./src/Shape.c ./src/render.c ./src/sound.c -L./lib/ -lcanvas -lm -lasound
+    ./build.sh
 }
 
 package() {
