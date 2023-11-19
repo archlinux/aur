@@ -1,0 +1,17 @@
+post_install() {
+    printf "Reloading udev rules...\n"
+    # udev is not a Mixxx dependency, so let's check if udevadm is available.
+    if command -v udevadm >/dev/null
+    then
+        udevadm trigger
+        udevadm control --reload-rules
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    post_install
+}
