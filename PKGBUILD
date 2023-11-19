@@ -2,7 +2,7 @@
 
 pkgname=gz-sim8
 pkgver=8.0.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
