@@ -1,6 +1,6 @@
-# Maintainer: Kimiblock Zhou <pn3535@icloud.com>
+# Maintainer: Kimiblock Moe
 pkgname=mcctl-git
-pkgver=r92.c19afcd
+pkgver=r126.8e7e645
 pkgrel=1
 epoch=
 pkgdesc="A powerful script which can automatically operate Minecraft servers to run, update and more"
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Kimiblock/mcctl/"
 license=('GPL3')
 groups=()
-depends=('bash' 'wget' 'jdk-openjdk' 'screen')
+depends=('bash' 'wget' 'java-environment' 'screen')
 makedepends=()
 checkdepends=()
 optdepends=(

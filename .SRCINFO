@@ -1,13 +1,13 @@
 pkgbase = mcctl-git
 	pkgdesc = A powerful script which can automatically operate Minecraft servers to run, update and more
-	pkgver = r92.c19afcd
+	pkgver = r126.8e7e645
 	pkgrel = 1
 	url = https://github.com/Kimiblock/mcctl/
 	arch = any
 	license = GPL3
 	depends = bash
 	depends = wget
-	depends = jdk-openjdk
+	depends = java-environment
 	depends = screen
 	optdepends = git: Version control
 	optdepends = python-pip: Download plugins from spigot site
