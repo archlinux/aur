@@ -1,22 +1,22 @@
 pkgname=libmixmod
-pkgver=3.2.2
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="Model-Based Unsupervised and Supervised Classification"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.mixmod.org"
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake')
-source=("http://www.mixmod.org/IMG/tgz/libmixmod_${pkgver}_src.tgz")
-sha1sums=('73b3a175e111f57b3ff301cd13600160f47cf446')
+source=("https://github.com/mixmod/mixmod/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2a4bf19e642386d1c8a36365b537a12636f883bcdeb3a72b698947430f676541')
 
 build () {
-  cd "$srcdir"/libmixmod_${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr . 
+  cd "$srcdir"/mixmod-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON .
   make
 }
 
 package () {
-  cd "$srcdir"/libmixmod_${pkgver}
+  cd "$srcdir"/mixmod-${pkgver}
   make install DESTDIR="$pkgdir"
 }
