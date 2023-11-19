@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('gcc-libs')
 conflicts=('i3stat' 'i3stat-bin')
 makedepends=('git' 'clang' 'cargo' 'dbus' 'dunst' 'libfaketime' 'libpulse' 'i3-wm' 'imagemagick' 'scrot' 'xorg-server-xvfb')
-source=(git+$url)
+source=(git+${url}#branch=next)
 sha512sums=('SKIP')
 
 pkgver() {
