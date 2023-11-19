@@ -1,0 +1,14 @@
+pkgbase = clash2singbox-git
+	pkgdesc = 将 clash.meta 格式的配置文件或链接转换为 sing-box 格式
+	pkgver = r106.ab07d2d
+	pkgrel = 1
+	url = https://github.com/xmdhs/clash2singbox
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = clash2singbox
+	conflicts = clash2singbox
+	source = git+https://github.com/xmdhs/clash2singbox.git
+	sha256sums = SKIP
+
+pkgname = clash2singbox-git
