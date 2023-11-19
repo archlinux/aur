@@ -1,0 +1,11 @@
+pkgbase = cnake-git
+	pkgdesc = Snake clone in c with standard lib
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/spynetS/cnake
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+
+pkgname = cnake-git
