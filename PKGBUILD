@@ -66,8 +66,8 @@ package() {
         install
 
     # Fix reference to $pkgdir in the demo Makefile
-    sed -i "s#TTCN3_DIR = .*#TTCN3_DIR = /opt/eclipse-titan#" \
-        "$pkgdir/usr/share/doc/eclipse-titan/demo/Makefile"
+    sed -i "s#TTCN3_DIR = .*#TTCN3_DIR = /usr/ttcn3#" \
+        "$pkgdir/usr/share/doc/titan/demo/Makefile"
 
     install -D $srcdir/titan.profile \
         $pkgdir/etc/profile.d/titan.sh
