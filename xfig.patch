@@ -1,6 +1,6 @@
-diff -up src/xfig-3.2.8b/app-defaults/Fig-color.bisque.orig src/xfig-3.2.8b/app-defaults/Fig-color.bisque
---- src/xfig-3.2.8b/app-defaults/Fig-color.bisque.orig	2019-10-29 03:19:05.000000000 -0600
-+++ src/xfig-3.2.8b/app-defaults/Fig-color.bisque	2022-06-14 18:41:52.180000000 -0600
+diff -up src/xfig-git/app-defaults/Fig-color.bisque.orig src/xfig-git/app-defaults/Fig-color.bisque
+--- src/xfig-git/app-defaults/Fig-color.bisque.orig	2023-11-19 00:45:36.639683995 -0700
++++ src/xfig-git/app-defaults/Fig-color.bisque	2023-11-19 00:46:11.459683995 -0700
 @@ -72,7 +72,7 @@ Fig*mixedEdit.background:			navajowhite2
  Fig*topruler.background:			gray95
  Fig*sideruler.background:			gray95
@@ -37,13 +37,13 @@ diff -up src/xfig-3.2.8b/app-defaults/Fig-color.bisque.orig src/xfig-3.2.8b/app-
 +Fig*Scrollbar.bottomShadow: gray50
 +Fig*Scrollbar.topShadowPixel: gray95
 +Fig*Scrollbar.bottomShadowPixel: gray50
-diff -up src/xfig-3.2.8b/app-defaults/Fig.in.orig src/xfig-3.2.8b/app-defaults/Fig.in
---- src/xfig-3.2.8b/app-defaults/Fig.in.orig	2020-08-03 02:22:41.000000000 -0600
-+++ src/xfig-3.2.8b/app-defaults/Fig.in	2022-06-14 18:42:22.860000000 -0600
+diff -up src/xfig-git/app-defaults/Fig.orig src/xfig-git/app-defaults/Fig
+--- src/xfig-git/app-defaults/Fig.orig	2023-11-19 00:45:36.639683995 -0700
++++ src/xfig-git/app-defaults/Fig	2023-11-19 00:46:11.449683995 -0700
 @@ -34,7 +34,7 @@ Fig.pdfviewer:			xdg-open %f
+ 
  ! Spell check program - put your favorite spelling check program here.
  !		It must write the misspelled words to standard output.
- 
 -Fig.spellcheckcommand:		spell %f
 +Fig.spellcheckcommand:		aspell %f
  
