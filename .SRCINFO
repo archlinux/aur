@@ -6,8 +6,12 @@ pkgbase = hidpp-logitech-g-pro-wheel-dkms-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = gcc
+	makedepends = glibc
 	depends = dkms
 	source = git+https://github.com/Lawstorant/hid-logitech-hidpp
+	source = axis-hack.patch
 	sha256sums = SKIP
+	sha256sums = addbedca432c213cc58642dca94e55209098d44fb967d0f2fcd1ec83a433a624
 
 pkgname = hidpp-logitech-g-pro-wheel-dkms-git
