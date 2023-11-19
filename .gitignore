@@ -1,6 +1,6 @@
 *
+!.gitignore
 !PKGBUILD
 !.SRCINFO
-!*.patch
-!*.desktop
-!*.install
+!protonmail-bridge.desktop
+!remove-vcpkg-dependency.patch
