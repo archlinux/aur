@@ -1,0 +1,12 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index c945656..9f14a33 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -9,6 +9,7 @@ homepage = "https://activitywatch.net/"
+ repository = "https://github.com/ActivityWatch/aw-core/"
+ documentation = "https://docs.activitywatch.net/"
+ packages = [
++    { include = "aw_cli" },
+     { include = "aw_core" },
+     { include = "aw_datastore" },
+     { include = "aw_transform" },
