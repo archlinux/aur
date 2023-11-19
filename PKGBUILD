@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 # build function
 build() {
 	
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/tinyfugue-$pkgver
 	./configure --enable-atcp --enable-gmcp --enable-option102 --enable-python --enable-termcap=ncurses --enable-lua --bindir=/usr/bin/ --datarootdir=/usr/share 
 	make -j4
 }
@@ -25,7 +25,7 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/doc/tinyfuge-rebirth
 	mkdir -p $pkgdir/usr/share/tf-lib/
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/tinyfugue-$pkgver
 	cp src/tf $pkgdir/usr/bin/
 	cd lib/
 	cp tf/*.* $pkgdir/usr/share/tf-lib/
