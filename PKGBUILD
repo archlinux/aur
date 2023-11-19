@@ -19,7 +19,7 @@ license=('LGPL')
 options=(!strip)
 install=alchemy.install
 depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc xdg-desktop-portal zlib)
-makedepends=('sed' 'xz')
+makedepends=('sed')
 optdepends=(
 	'alsa-lib: ALSA support'
 	'freealut: OpenAL support'
