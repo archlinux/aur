@@ -77,6 +77,9 @@ package_gmsh() {
    echo 'export JULIA_LOAD_PATH="/usr/share/gmsh/api/julia/:$JULIA_LOAD_PATH"' > "$pkgdir/etc/profile.d/gmsh.sh"
    echo 'setenv JULIA_LOAD_PATH "/usr/share/gmsh/api/julia/:$JULIA_LOAD_PATH"' > "$pkgdir/etc/profile.d/gmsh.csh"
 
+   gmshlib="$(ls "${pkgdir}"/usr/lib/*.so.* | head -n1)"
+   ln -rs "${gmshlib}" "${pkgdir}"/usr/share/gmsh/api/python/
+   ln -rs "${gmshlib}" "${pkgdir}"/usr/share/gmsh/api/julia/
 
    install -d "${pkgdir}/usr/share/pixmaps/${pkgname}"
    install -m644 ../utils/icons/*.png "${pkgdir}/usr/share/pixmaps/${pkgname}"
