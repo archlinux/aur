@@ -1,30 +1,36 @@
 # Maintainer: gborzi <gborzi@ieee.org>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: mickele <mimocciola@yahoo.com>
-pkgname=('gmsh' 'gmsh-docs')
-pkgver=4.11.1
-pkgrel=2
+_base='gmsh'
+pkgname=("${_base}-git" "${_base}-git-docs")
+pkgver=4.12.0.a5f115d42
+pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('x86_64')
 url="https://gmsh.info"
 license=('custom')
-makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-meta' 'voro++'
+makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-basic' 'voro++'
              'fltk' 'med-openmpi' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
              'glu' 'cgns' 'lapack')
-options=(!emptydirs)
-source=("${url}/src/${pkgname}-${pkgver}-source.tgz"
+options=(!emptydirs !staticlibs)
+source=("git+https://gitlab.onelab.info/gmsh/gmsh.git#branch=master"
         gmsh.desktop
-        gmsh.completion
-        gcc-13-2-compatibility.patch::https://gitlab.onelab.info/gmsh/gmsh/-/commit/aceb09c807b78ea26555f99fcb16c4f87c31fb5a.patch
-        "include_cstdint_2416.patch::https://gitlab.onelab.info/gmsh/gmsh/-/commit/fb81a9c9026700e078de947b4522cb39e543a86b.patch")
-sha256sums=('c5fe1b7cbd403888a814929f2fd0f5d69e27600222a18c786db5b76e8005b365'
+        gmsh.completion)
+sha256sums=('SKIP'
             '43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae'
-            '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef'
-            'beb9404bbb9377e6240b369dd70cfc317209202cb32bdc55f4e6fc5837b2da12'
-            'c315dc4912191b2821fe44b9e75799cb6503bf800010c6bb9d34ee0ed5f0398f')
+            '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef')
+
+pkgver() {
+   cd "${srcdir}/${_base}"
+   # # Actually, the version in the CMakeLists.txt, opt_general.texi, gmsh/api/gmsh.py is 4.12.0 and libgmsh.so -> libgmsh.so.4.12
+   # "$(git describe --tags | sed 's/gmsh_//g;s/[-_]/./g')" \
+   printf "%s.%s" \
+            "$(awk '/GMSH_API_VERSION /{gsub(/"/,""); print $NF}' api/gmsh.h)" \
+            "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-   cd "${srcdir}/${pkgname}-${pkgver}-source"
+   cd "${srcdir}/${_base}"
 
    # Help links to local doc (package gmsh-docs)
    sed -e "s|https://gmsh.info/doc/texinfo/|file:///usr/share/doc/gmsh/|" \
@@ -33,39 +39,39 @@ prepare() {
        -i src/fltk/graphicWindow.cpp
    sed -e "s|https://gmsh.info/|file:///usr/share/licenses/gmsh/|" \
        -i src/fltk/helpWindow.cpp
-   patch -p1 -i ../include_cstdint_2416.patch.patch
-   patch -p1 -i ../gcc-13-2-compatibility.patch
 }
 
 build() {
-   cd "${srcdir}/${pkgname}-${pkgver}-source"
+   cd "${srcdir}/${_base}"
 
    mkdir -p build
 
    cd build
 
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_BUILD_SHARED=ON \
-      -DENABLE_SYSTEM_CONTRIB=ON -DENABLE_BLAS_LAPACK=ON \
-      -DENABLE_CGNS=ON -DENABLE_ANN=ON -DENABLE_ALGLIB=ON \
-      -DENABLE_METIS=ON -DENABLE_OCC=ON -DENABLE_MED=ON \
-      -DENABLE_VOROPP=ON -DENABLE_EIGEN=ON -DENABLE_PETSC=TRUE \
-      -DOpenGL_GL_PREFERENCE="GLVND" \
-      -DENABLE_NUMPY=ON \
-      -DENABLE_MUMPS=ON \
-      -DCMAKE_CXX_COMPILER=mpicxx -DCMAKE_C_COMPILER=mpicc ..
+         -DENABLE_SYSTEM_CONTRIB=ON -DENABLE_BLAS_LAPACK=ON \
+         -DENABLE_CGNS=ON -DENABLE_ANN=ON -DENABLE_ALGLIB=ON \
+         -DENABLE_METIS=ON -DENABLE_OCC=ON -DENABLE_MED=ON \
+         -DENABLE_VOROPP=ON -DENABLE_EIGEN=ON -DENABLE_PETSC=TRUE \
+         -DOpenGL_GL_PREFERENCE="GLVND" \
+         -DENABLE_NUMPY=ON \
+         -DENABLE_MUMPS=ON \
+         -DCMAKE_CXX_COMPILER=mpicxx -DCMAKE_C_COMPILER=mpicc ..
 
    make
    LC_ALL=C make doc
 }
 
-package_gmsh() {
+package_gmsh-git() {
    depends=('fltk' 'med-openmpi' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
             'glu' 'cgns' 'lapack')
    optdepends=('gmsh-docs: docs for gmsh'
-            'python: for gmsh.py'
-            'julia: for gmsh.jl')
+               'python: for gmsh.py'
+               'julia: for gmsh.jl')
+   provides=(${_base})
+   conflicts=(${_base})
 
-   cd "${srcdir}/${pkgname}-${pkgver}-source/build"
+   cd "${srcdir}/${_base}/build"
    make DESTDIR=${pkgdir} install
    install -D -m644 "${pkgdir}/usr/lib/gmsh.py" "${pkgdir}/usr/share/gmsh/api/python/gmsh.py"
    PYVER="$(/usr/bin/python3 -c 'import sys; print("{}.{}".format(sys.version_info.major,sys.version_info.minor))')"
@@ -81,28 +87,37 @@ package_gmsh() {
    ln -rs "${gmshlib}" "${pkgdir}"/usr/share/gmsh/api/python/
    ln -rs "${gmshlib}" "${pkgdir}"/usr/share/gmsh/api/julia/
 
-   install -d "${pkgdir}/usr/share/pixmaps/${pkgname}"
-   install -m644 ../utils/icons/*.png "${pkgdir}/usr/share/pixmaps/${pkgname}"
-   install -D -m644 ../utils/icons/gmsh-no-text.png "${pkgdir}/usr/share/icons/${pkgname}.png"
+   install -d "${pkgdir}/usr/share/pixmaps/${_base}"
+   install -m644 ../utils/icons/*.png "${pkgdir}/usr/share/pixmaps/${_base}"
+   install -D -m644 ../utils/icons/gmsh-no-text.png "${pkgdir}/usr/share/icons/${_base}.png"
 
    desktop-file-install --dir="${pkgdir}/usr/share/applications" \
-    	"${srcdir}/${pkgname}.desktop"
+    	                "${srcdir}/${_base}.desktop"
 
-   install -D -m 644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.txt"
-   install -D -m 644 "../CREDITS.txt" "${pkgdir}/usr/share/licenses/$pkgname/CREDITS.txt"
+   install -D -m 644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/${_base}/LICENSE.txt"
+   install -D -m 644 "../CREDITS.txt" "${pkgdir}/usr/share/licenses/${_base}/CREDITS.txt"
    install -D -m644 $srcdir/gmsh.completion $pkgdir/etc/bash_completion.d/gmsh
 
-   rm -rf ${pkgdir}/usr/share/doc
+   [[ ! -d ${srcdir}/doc ]] && mkdir ${srcdir}/doc
+   mv ${pkgdir}/usr/share/doc/* ${srcdir}/doc
 }
 
-package_gmsh-docs() {
+package_gmsh-git-docs() {
    pkgdesc="TXT, HMTL and PDF doc for Gmsh"
    arch=('any')
    license=('GPL2')
+   provides=(gmsh-docs)
+   conflicts=(gmsh-docs)
 
-   cd "${srcdir}/${pkgbase}-${pkgver}-source/build"
+   mkdir -p "${pkgdir}/usr/share/"
+   # Depends on package_gmsh-git()
+   [[ -d "${srcdir}/doc/${_base}" ]] &&
+     mv "${srcdir}/doc" "${pkgdir}/usr/share/"
 
-   bsdtar -xf ${pkgbase}-${pkgver}-*.tgz
+   cd "${srcdir}/${_base}/build"
+   # # -doc.tgz was already built
+   # make doc
+   bsdtar -xf ${_base}-${pkgver%%.*}.*-doc.tgz
 
    cd "doc/texinfo"
 
