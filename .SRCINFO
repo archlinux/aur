@@ -1,7 +1,7 @@
 pkgbase = yacy-git
 	pkgdesc = Peer to peer search engine
 	pkgver = 1.92.r1497.g3d3bdb0f5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yacy.net/
 	install = yacy.install
 	arch = any

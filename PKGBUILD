@@ -2,7 +2,7 @@
 
 pkgname=yacy-git
 pkgver=1.92.r1497.g3d3bdb0f5
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer to peer search engine"
 arch=('any')
 url=https://www.yacy.net/
@@ -22,17 +22,23 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/yacy_search_server"
-	ant clean all dist
+  cd "$srcdir/yacy_search_server"
+  ant clean all dist
 }
 
 package() {
-	cd "$srcdir/yacy_search_server/RELEASE"
-	tar xfz *.tar.gz
-        install -d "$pkgdir"/usr/share/java
-        cp -r yacy/ "$pkgdir/usr/share/java"
+  cd "$srcdir/yacy_search_server/RELEASE"
+	
+  # Find the latest .tar.gz file
+  latest_file=$(ls -v yacy_v*.tar.gz | tail -n 1)
 
-	install -Dm644 "${srcdir}/yacy.service" "${pkgdir}/usr/lib/systemd/system/yacy.service"
+  # Extract the latest file
+  tar xfz "$latest_file"
 
-	rm -f "$pkgdir"/etc/yacy "$pkgdir"/usr/share/java/yacy/DATA "$pkgdir"/var/log/yacy
+  install -d "$pkgdir"/usr/share/java
+  cp -r yacy/ "$pkgdir/usr/share/java"
+
+  install -Dm644 "${srcdir}/yacy.service" "${pkgdir}/usr/lib/systemd/system/yacy.service"
+
+  rm -f "$pkgdir"/etc/yacy "$pkgdir"/usr/share/java/yacy/DATA "$pkgdir"/var/log/yacy
 }
