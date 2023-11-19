@@ -31,7 +31,7 @@ optdepends=(
   'xdg-desktop-portal: File picker portal')
 # template end;
 pkgname=alchemy-next-viewer-git
-pkgver=7.0.1.54510.4c950c439b
+pkgver=7.0.1.54541.1d7f9b75bd
 pkgrel=1
 replaces=('alchemy-viewer-git')
 provides=('alchemy-viewer')
