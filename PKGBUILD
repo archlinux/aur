@@ -1,11 +1,11 @@
 pkgname=xsendkey
 pkgver=0.0
 pkgrel=1
-pkgdesc="xsendkey is a simple tool for generating keypresses in X"
+pkgdesc="A simple tool for generating keypresses in X"
 arch=('i686' 'x86_64')
 url="http://people.csail.mit.edu/adonovan/hacks/xsendkey.html"
 license=('GPL')
-depends=()
+depends=('glibc' 'libx11')
 #source=('http://people.csail.mit.edu/adonovan/hacks/xsendkey.c')
 source=('http://web.archive.org/web/20130528093333/http://people.csail.mit.edu/adonovan/hacks/xsendkey.c')
 md5sums=('e7a5538a11c33449c88caa8b901a13eb')
