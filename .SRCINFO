@@ -1,7 +1,7 @@
 pkgbase = gz-transport13
 	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
 	pkgver = 13.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gazebosim/gz-transport
 	arch = any
 	license = Apache
