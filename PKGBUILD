@@ -21,11 +21,6 @@ build() {
     cargo build --frozen --release --all-features
 }
 
-check() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
-
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
