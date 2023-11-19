@@ -3,17 +3,13 @@
 _pkgname=YAopenvfD
 pkgname=${_pkgname,,}
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another openvfd Daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/7Ji/${_pkgname}"
 license=('GPL3')
 depends=('glibc')
 makedepends=('gcc')
-optdepends=(
-  'openvfd-dkms: dynamiclly compiled openvfd kernel module'
-  'linux-aarch64-flippy: kernel that has the openvfd kernel module built in tree'
-)
 conflicts=(
   'openvfd-service'
 )
