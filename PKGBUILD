@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A. <murlakatamenka@disroot.org>
 pkgname=tuxclocker
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Qt overclocking tool for GNU/Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('boost' 'git' 'meson' 'qt5-tools')
 optdepends=('libxnvctrl: XNVCtrl support'
             'nvidia-utils: nvidia-ml support'
             'python-hwdata: PCI subsystem support')
-_commit=5f7137e7785a1872bf62c7d353f1d3081d689c12  # tags/1.3.1^0
+_commit=2b2e80e6bd32e9fe796157282a5886adcbc08b10  # tags/1.3.2^0
 source=("git+https://github.com/Lurkki14/tuxclocker.git#commit=${_commit}"
         'git+https://github.com/mpark/patterns.git'
         'git+https://github.com/Dobiasd/FunctionalPlus.git'
