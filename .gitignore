@@ -1,0 +1,4 @@
+pkg
+src
+stable-diffusion-web-ui-git
+*.pkg.tar.zst

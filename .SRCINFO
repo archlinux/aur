@@ -1,0 +1,16 @@
+pkgbase = stable-diffusion-web-ui-git
+	pkgdesc = Stable Diffusion Web UI (AUTOMATIC1111)
+	pkgver = v1.6.0.r2.4afaaf8a
+	pkgrel = 1
+	url = https://github.com/AUTOMATIC1111/stable-diffusion-webui
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	depends = python
+	depends = curl
+	depends = grep
+	provides = stable-diffusion-ui
+	source = stable-diffusion-web-ui-git::git+https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+	md5sums = SKIP
+
+pkgname = stable-diffusion-web-ui-git
