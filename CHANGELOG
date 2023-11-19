@@ -1,3 +1,43 @@
+# Changes in version 0.6.1:
+
+Rustic 0.6.1 fixes some small bugs from 0.6.0 including (hopefully) the broken CI for building binaries.
+
+
+# Changes in version 0.6.0:
+
+Breaking Changes:
+
+- We refactored to rustic_core. This means that most of the underlying logic can now be used as a library. The
+  CLI is now a thin wrapper around the library. This also means that the CLI is now much more customizable. Please
+  check out the documentation for more information.
+
+Bug Fixes:
+
+- Retrying backend access didn't work for long operations. This has been fixed (and retries are now customizable)
+- Prune did abort when no time was set for a pack-do-delete. This case is now handled correctly.
+- The zstd compression library led to data corruption in very unlikely cases. This has been fixed by a dependency update.
+- The glob option did only work with absolute files. This has been fixed.
+- Non-unicode link targets are now correctly handled on Unix (after this has been added to the restic repo format).
+- The --dry-run option now works as expected in the init command.
+
+Features:
+
+- New global configuration paths are available, located at /etc/rustic/*.toml or %PROGRAMDATA%/rustic/config/*.toml, depending on
+  your platform.
+- REST backend: Now allows to use custom TLS root certificates.
+- Environment variables for programms called by rustic can now be set in the config files.
+- Creation of new keys now enforces confirmation of entered key. This helps to prevent mistype of passwords during the initial entry
+- Wait for password-command to successfully exit, allowing to input something into the command, and read password from stdout.
+- backup: New option --init to initialize repository if it doesn't exist yet.
+- backup: New option no-require-git - if enabled, a git repository is not required to apply git-ignore rule.
+- restore: The restore algorithm has been improved and should now be faster for remote repositories.
+- restore: Files are now allocated just before being first processed. This allows easier resumed restores.
+- repoinfo: Added new options --json, --only-files, --only-index.
+- check: Add check if time is set for packs-to-delete.
+- ls: Options --long (-l) and --summary (-s) have been added.
+- forget: Option --json has been added.
+
+
 # Changes in version 0.5.4:
 
 Bugs fixed:
