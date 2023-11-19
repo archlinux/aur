@@ -4,7 +4,7 @@
 _pkgname=('ogre-next')
 pkgname=("gz-$_pkgname")
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Scene-oriented, flexible 3D engine written in C++. Gazebo compatible.'
 arch=('any')
 url='http://ogre3d.org'
@@ -26,6 +26,7 @@ makedepends=(
   'mesa'
   'vulkan-headers'
 )
+conflicts=('ogre-next')
 provides=('ogre-next')
 source=("https://github.com/OGRECave/$_pkgname/archive/v${pkgver}.tar.gz")
 sha256sums=('92ce7765d892d6424df3d8d4a56a8fc0b2f4f91c216b1b1d5b231caa9abaaa38')
