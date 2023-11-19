@@ -82,7 +82,7 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
 # Valid values are false / disabled / default, auto, and native
 
-if [ "${arch_auto}" != true ] && [ "${arch_auto}" != false ]; then
+if [ "${arch_auto}" != true ] || [ "${arch_auto}" != false ] || [ "${arch_auto}" != disabled ] || [ "${arch_auto}" != native ]; then
   arch_auto=false
 fi
 
