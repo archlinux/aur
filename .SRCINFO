@@ -1,7 +1,7 @@
 pkgbase = zapret-git
 	pkgdesc = Bypass deep packet inspection
-	pkgver = 48.r60.dcd3cc9
-	pkgrel = 2
+	pkgver = 53.r4.64e78f7
+	pkgrel = 1
 	url = https://github.com/bol-van/zapret
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = zapret-git
 	depends = ipset
 	depends = curl
 	depends = iptables
-	provides = zapret=48.r60.dcd3cc9
-	provides = zapret-git=48.r60.dcd3cc9
+	provides = zapret=53.r4.64e78f7
+	provides = zapret-git=53.r4.64e78f7
 	conflicts = zapret
 	source = zapret::git+https://github.com/bol-van/zapret.git
 	source = sysusers.conf
@@ -22,20 +22,20 @@ pkgbase = zapret-git
 pkgname = zapret-nfqws-git
 	pkgdesc = Bypass deep packet inspection - netfilter queue mode
 	depends = libnetfilter_queue
-	depends = zapret-common-git=48.r60.dcd3cc9
-	provides = zapret=48.r60.dcd3cc9
-	provides = zapret-git=48.r60.dcd3cc9
-	provides = zapret-nfqws=48.r60.dcd3cc9
+	depends = zapret-common-git=53.r4.64e78f7
+	provides = zapret=53.r4.64e78f7
+	provides = zapret-git=53.r4.64e78f7
+	provides = zapret-nfqws=53.r4.64e78f7
 	conflicts = zapret
 	conflicts = zapret-nfqws
 	backup = opt/zapret/config.nfqws
 
 pkgname = zapret-tpws-git
 	pkgdesc = Bypass deep packet inspection - transparent proxy mode
-	depends = zapret-common-git=48.r60.dcd3cc9
-	provides = zapret=48.r60.dcd3cc9
-	provides = zapret-git=48.r60.dcd3cc9
-	provides = zapret-tpws=48.r60.dcd3cc9
+	depends = zapret-common-git=53.r4.64e78f7
+	provides = zapret=53.r4.64e78f7
+	provides = zapret-git=53.r4.64e78f7
+	provides = zapret-tpws=53.r4.64e78f7
 	conflicts = zapret
 	conflicts = zapret-tpws
 	backup = opt/zapret/config.tpws
@@ -46,11 +46,11 @@ pkgname = zapret-common-git
 	depends = ipset
 	depends = curl
 	depends = iptables
-	depends = zapret-git=48.r60.dcd3cc9
-	provides = zapret-common=48.r60.dcd3cc9
+	depends = zapret-git=53.r4.64e78f7
+	provides = zapret-common=53.r4.64e78f7
 	conflicts = zapret-common
 
 pkgname = zapret-docs-git
 	pkgdesc = Bypass deep packet inspection - docs and manuals
-	provides = zapret-docs=48.r60.dcd3cc9
+	provides = zapret-docs=53.r4.64e78f7
 	conflicts = zapret-docs
