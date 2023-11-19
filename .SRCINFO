@@ -1,5 +1,5 @@
 pkgbase = p7zip-full-bin
-	pkgdesc = Command-line file archiver with high compression ratio, based on libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).
+	pkgdesc = File archiver with a high compression ratio (full package to replace p7zip)
 	pkgver = 23.01
 	pkgrel = 1
 	url = https://github.com/phoepsilonix/p7zip-full

@@ -1,4 +1,5 @@
-# Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
+# Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
+# Contributor: Taiki Sugawara <buzz.taiki@gmail.com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Thayer Williams <thayer@archlinux.org>
@@ -11,7 +12,7 @@ _pkgname=p7zip-full
 pkgver=23.01
 pkgrel=1
 _upstream_pkgrel=4
-pkgdesc="Command-line file archiver with high compression ratio, based on libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n)."
+pkgdesc="File archiver with a high compression ratio (full package to replace p7zip)"
 arch=('x86_64')
 url="https://github.com/phoepsilonix/p7zip-full"
 license=('LGPL' 'custom:unRAR')
