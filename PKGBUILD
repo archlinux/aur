@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Bjorn Lindeijer <bjorn lindeijer nl>
 pkgname=sofia-sip
-pkgver=1.13.16
+pkgver=1.13.17
 pkgrel=1
 pkgdesc="An open-source SIP User-Agent library"
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ url="http://sofia-sip.sourceforge.net"
 license=('LGPL')
 depends=('glib2' 'openssl' 'gawk')
 source=($pkgname-$pkgver.tar.gz::https://github.com/freeswitch/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-md5sums=('777358bd504a76517a9d510c7aa78204')
-sha512sums=('29a5bd1e38b5b80d6cd6aeb6f3cff3c93660314a8577b550975ad6eddbc8a2ce341dff3f510cb4f24037bfb0ce5ada142b130a9576a8d6acfb06a38088cdcf50')
+md5sums=('587748d1d2c5340b058b44281693423c')
+sha512sums=('356577d415d6dc4191f0f49f7fa1d6f33fafdb9e455556f83e091159055a215fc1ebfa9c7dc23b5f5e533b85e23afa7b1444170419fdf137aeb2ea048de77e08')
 
 prepare() {
   cd $pkgname-$pkgver
