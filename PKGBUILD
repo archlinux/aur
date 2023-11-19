@@ -8,7 +8,12 @@ url="https://github.com/tgabor7/sl"
 license=('BSD')
 depends=('wayland' 'wayland-protocols' 'cargo')
 source=("sl-$pkgver-linux.tar.gz::https://github.com/tgabor7/sl/archive/tags/v$pkgver.tar.gz")
-md5sums=('c623351938306b5c437aa1d680004dab')
+b2sums=('SKIP')
+
+pkgver() {
+  cd cbindgen
+  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+}
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
