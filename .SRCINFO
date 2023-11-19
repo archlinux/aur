@@ -1,7 +1,7 @@
 pkgbase = hash-slinger
 	pkgdesc = Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/letoams/hash-slinger
 	arch = any
 	license = GPL2
