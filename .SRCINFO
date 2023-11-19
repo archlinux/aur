@@ -1,12 +1,12 @@
 pkgbase = pkgbase
-	pkgdesc = osfetch-sh is a stupid system fetch program written in bash for linux. (git version)
-	pkgver = r17.ec5682d
+	pkgdesc = simplelock is a simple wayland screen lock. (git version)
+	pkgver = 0.0.0
 	pkgrel = 1
-	url = https://github.com/mzakyr12/osfetch-sh
+	url = https://github.com/tgabor7/sl
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git+https://github.com/mzakyr12/osfetch-sh.git
+	source = git+https://github.com/tgabor7/sl.git
 	sha512sums = SKIP
 
-pkgname = osfetch-sh-git
+pkgname = simplelock-git
