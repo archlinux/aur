@@ -1,12 +1,13 @@
 pkgbase = spotifox-bin
-	pkgdesc = Spotifox is yet another spotify CLI client similar to go-mousicfox. (Precompiled version)
+	pkgdesc = Spotifox is yet another spotify CLI client similar to go-musicfox. (Precompiled version)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/go-musicfox/spotifox
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = MIT
+	depends = glibc
 	depends = alsa-lib
 	conflicts = spotifox
 	source_x86_64 = https://github.com/go-musicfox/spotifox/releases/download/v1.0.2/spotifox_1.0.2_linux_amd64.zip
