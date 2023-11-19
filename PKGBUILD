@@ -1,19 +1,20 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgbase=tuxedo-rs
 pkgname=(
-  'tailor-cli'
-  'tailord'
+  'tuxedo-rs'
+  #'tailor-cli'
+  #'tailord'
 )
 pkgver="0.2.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust libraries for interacting with hardware from TUXEDO Computers"
 arch=("x86_64")
 url="https://github.com/AaronErhardt/tuxedo-rs"
 license=('GPL2')
 groups=('tuxedo-rs')
 provides=(
-  'tailor_cli' # Name conflict with 'tailor'
-  'tailord'
+  #'tailor_cli' # Name conflict with 'tailor'
+  #'tailord'
 )
 depends=(
   'glibc'
@@ -39,13 +40,13 @@ prepare() {
 
   cd "${_archive}"
   # Mute warning about workspace resolver
-  echo 'resolver = "2"' >> Cargo.toml
+  #echo 'resolver = "2"' >> Cargo.toml
 
   # Fixup systemd service for tailord
-  sed -e 's|ExecStart=.*|ExecStart=/usr/bin/tailord|' "tailord/tailord.service.in" > "tailord/tailord.service"
+  #sed -e 's|ExecStart=.*|ExecStart=/usr/bin/tailord|' "tailord/tailord.service.in" > "tailord/tailord.service"
 
   # Fetch packages
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  #cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
@@ -53,7 +54,7 @@ build() {
   export CARGO_TARGET_DIR=target
 
   cd "${_archive}"
-  cargo build --frozen --release --all-features --workspace
+  #cargo build --frozen --release --all-features --workspace
 }
 
 package_tailor-cli() {
@@ -91,6 +92,10 @@ package_tailord() {
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
   install -Dm0644 -t "${pkgdir}/usr/share/dbus-1/system.d/" "${pkgname}/com.tux.Tailor.conf"
   install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system/" "${pkgname}/tailord.service"
+}
+
+package_tuxedo-rs() {
+  echo "This package is not in use; to be merged"
 }
 
 # vim: sw=2 ts=2 et:
