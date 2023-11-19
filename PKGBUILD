@@ -8,7 +8,7 @@ license=('MIT')
 depends=('fftw' 'alsa-lib' 'wayland-protocols' 'libx11' 'sdl2' 'portaudio'
   'libpulse' 'sndio' 'mesa' 'pipewire' 'glew')
 makedepends=('cmake' 'git')
-source=('git://github.com/nikp123/xava.git#commit=dc6231415949ed99b30f2af3cf3662bdb6339e51')
+source=('$pkgname-$pkgver.tar.gz::https://github.com/nikp123/xava/archive/v$pkgver.tar.gz')
 conflicts=('xava-git')
 provides=('xava')
 sha256sums=('SKIP')

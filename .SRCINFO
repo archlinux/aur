@@ -20,7 +20,7 @@ pkgbase = xava
 	depends = glew
 	provides = xava
 	conflicts = xava-git
-	source = git://github.com/nikp123/xava.git#commit=dc6231415949ed99b30f2af3cf3662bdb6339e51
+	source = https://github.com/nikp123/xava/archive/v0.7.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = xava
