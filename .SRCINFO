@@ -1,7 +1,7 @@
 pkgbase = pollymc-qt5-bin
 	pkgdesc = DRM-free Prism Launcher fork with support for custom auth servers.
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fn2006/PollyMC
 	arch = x86_64
 	license = GPL3
@@ -19,8 +19,8 @@ pkgbase = pollymc-qt5-bin
 	conflicts = pollymc
 	conflicts = pollymc-qt5
 	conflicts = prismlauncher
-	noextract = PollyMC-Linux-8.0.tar.gz
-	source = https://github.com/fn2006/PollyMC/releases/download/8.0/PollyMC-Linux-8.0.tar.gz
+	noextract = PollyMC-Linux-Qt5-8.0.tar.gz
+	source = https://github.com/fn2006/PollyMC/releases/download/8.0/PollyMC-Linux-Qt5-8.0.tar.gz
 	sha256sums = 72e9ccb19dc39e3317f4bc850fe3491670d481a07920b1b3a547a7066d239a1c
 
 pkgname = pollymc-qt5-bin
