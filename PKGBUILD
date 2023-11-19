@@ -1,5 +1,6 @@
-# Maintainer: gborzi <gborzi@ieee.org>
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: entshuld <edgar (not at) openmail [d] cc}
+# Contributor: gborzi <gborzi@ieee.org>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: mickele <mimocciola@yahoo.com>
 _base='gmsh'
 pkgname=("${_base}-git" "${_base}-git-docs")
