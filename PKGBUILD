@@ -1,15 +1,15 @@
 # Maintainer: Volker Schwaberow <volker@schwaberow.de>
 
 pkgname=rustgenhash
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="A toolkit to generate and analyze hashes"
 arch=('x86_64')
 url="https://github.com/vschwaberow/rustgenhash"
 license=('MIT' 'Apache')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4a6385a97978ca2a2d3c216a5cdac58a42a8ff81f5a7d434009689235cca735a')
+sha256sums=('3c8a7e65de2970ca3eb590644f4b969024201099f3fad28e84c2866fb2527897')
 options=('!lto')
 
 prepare() {
