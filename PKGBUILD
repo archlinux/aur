@@ -2,7 +2,7 @@
 
 pkgname=gz-gui8
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
