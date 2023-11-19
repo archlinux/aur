@@ -1,0 +1,7 @@
+#!/bin/bash
+
+post_install() {
+    /usr/bin/modprobe v4l2loopback
+
+    /usr/bin/modprobe snd-aloop
+}

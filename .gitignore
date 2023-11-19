@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!droidcam.desktop
+!droidcam.install
+!droidcam-modprobe.conf
+!droidcam-modules.conf
