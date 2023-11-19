@@ -9,7 +9,7 @@ pkgname=wine-ge-custom-opt
 _srctag=GE-Proton8-22
 _commit=b91457d368df5d26b3756d865baacf4c1da57956
 pkgver=${_srctag//-/.}
-pkgrel=3
+pkgrel=4
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -56,6 +56,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   libxinerama           lib32-libxinerama
   libxcomposite         lib32-libxcomposite
   libxxf86vm            lib32-libxxf86vm
+  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
@@ -69,6 +70,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   gst-plugins-good      lib32-gst-plugins-good
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
+  vkd3d                 lib32-vkd3d
   libgphoto2
   ffmpeg
   opencl-headers
@@ -77,6 +79,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
 optdepends=(
   giflib                lib32-giflib
   gnutls                lib32-gnutls
+  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
@@ -90,6 +93,7 @@ optdepends=(
   gst-plugins-good      lib32-gst-plugins-good
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
+  vkd3d                 lib32-vkd3d
   libgphoto2
   ffmpeg
   dosbox
