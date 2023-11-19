@@ -12,7 +12,7 @@ pkgname=davinci-resolve
 major_version=18.6
 minor_version=3
 pkgver=${major_version}.${minor_version}
-pkgrel=2
+pkgrel=3
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
@@ -107,6 +107,8 @@ options=('!strip')
 _archive=${_archive_name}.zip
 _installer_binary=${_archive_run_name}.run
 source=("${_archive}"::"$_srcurl")
+
+install='davinci-resolve.install'
 
 prepare()
 {
