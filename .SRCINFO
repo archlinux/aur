@@ -1,7 +1,7 @@
 pkgbase = gz-fuel-tools8
 	pkgdesc = A client library and command line tools for interacting with Gazebo Fuel servers.
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-fuel-tools
 	arch = any
 	license = Apache
@@ -16,6 +16,7 @@ pkgbase = gz-fuel-tools8
 	depends = jsoncpp
 	depends = libyaml
 	depends = libzip
+	depends = protobuf
 	depends = tinyxml2
 	optdepends = ruby
 	provides = gz-fuel-tools=8
