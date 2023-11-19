@@ -1,9 +1,9 @@
-# Maintainer: DuckHunt <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=prboom-svn
-pkgver=4408
+pkgver=4553
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 pkgdesc='A game engine which provides a program to play Doom levels, SVN'
 url='http://prboom.sourceforge.net/'
 license=('GPL')
@@ -13,23 +13,24 @@ conflicts=('prboom')
 source=("prboom::svn+https://svn.prboom.org/repos/trunk/prboom2/")
 md5sums=('SKIP')
 
+export CFLAGS+=' -fcommon'
+
 pkgver() {
   cd prboom
-  local ver="$(svnversion)"
+  ver="$(svnversion)"
   printf "%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
-  cd "$srcdir/prboom"
+  cd "${srcdir}/prboom"
 
   sed 's|/games|/bin|g' -i src/Makefile.am
-  sh bootstrap
+  ./bootstrap
   ./configure --prefix=/usr --disable-i386-asm
   make
 }
 
 package() {
-  cd "$srcdir/prboom"
-
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/prboom"
+  make DESTDIR="${pkgdir}/" install
 }

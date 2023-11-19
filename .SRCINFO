@@ -1,9 +1,8 @@
 pkgbase = prboom-svn
 	pkgdesc = A game engine which provides a program to play Doom levels, SVN
-	pkgver = 4408
+	pkgver = 4553
 	pkgrel = 1
 	url = http://prboom.sourceforge.net/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = mesa
@@ -17,4 +16,3 @@ pkgbase = prboom-svn
 	md5sums = SKIP
 
 pkgname = prboom-svn
-
