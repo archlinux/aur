@@ -1,6 +1,7 @@
 [Unit]
-Description=immich web
+Description=Immich web
 Documentation=https://github.com/immich-app/immich
+Requires=immich-server.service
 After=network.target
 Wants=network-online.target
 After=network-online.target
@@ -30,7 +31,7 @@ AmbientCapabilities=
 CapabilityBoundingSet=
 NoNewPrivileges=yes
 
-WorkingDirectory=/var/lib/immich/app/web
+WorkingDirectory=/usr/lib/immich/app/web
 ReadWritePaths=/tmp /var/tmp
 
 [Install]

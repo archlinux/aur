@@ -1,0 +1,27 @@
+pre_install() {
+    :
+}
+
+post_install() {
+    echo -e "\033[1;34mINFO\033[0m\033[1m: Final steps to have a working immich instance:"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * initialise postgres and create a database called 'immich' (https://wiki.archlinux.org/title/PostgreSQL)\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * enable an nginx config then start nginx.service, an example that servers immich on port 8080 is given in /etc/nginx/sites-available\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * ensure immich-server resolves to 127.0.0.1 and/or ::1, e.g. through /etc/hosts\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * start/enable immich-server.service\033[0m"
+}
+
+pre_upgrade() {
+    :
+}
+
+post_upgrade() {
+    :
+}
+
+pre_remove() {
+    :
+}
+
+post_remove() {
+    :
+}
