@@ -2,7 +2,8 @@
 # Maintainer: Matthias Fulz <mfulz at olznet dot de>
 
 pkgname=kimai2
-pkgver=1.21.0
+_pkgbuildname=kimai
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Kimai the free open source timetracker"
 url="http://www.kimai.org/"
@@ -17,13 +18,13 @@ source=(
         "${_phpIni}"
         "kimai2-nginx.conf"
        )
-sha512sums=('ba8affc0a6de23d217474d71fdf6cf8a21231ca02a30d3b33aa83b90ab2aae8d495fe9ff2a991ec5d267087e737cdfb749ed500ebe82afa5acbfeb1f1b5f4619'
-            'dd2d8bea6a454510d36a8509d0e5b87cb49cf87e2def16b947af0f77d1abf26ba72e02f5492453faf27d61c6f288eb083b7ad4cd1f224c7128b82dec59735336'
-            'd263b4e310ce7e18a3f53b0b976dff190d70da020506c766df11f210f327dc052db59abc36f44dfada6c963653e7aafd643f33a4eab2ca33f3a032c75137a03a'
+sha512sums=('f24ff0c33bd54e37add2d597778083578bbb9d70b3880b4698d3754634cd8eefa8920a878d3c813aced4bee2bf298afb029c759b0ec01687c2498410c4b7ea40'
+            'b9f73e0853d9992502a162be361204a936e9b2a43e2f55379a62c15ffca56d8511061beefd2cc34df5ca5396ae9329e22b650f4299045ccd5cfa1d36ad925ac9'
+            'dfc918daa12d7530b3ad0ffa44c9fecf1c0547af1f1881b67156d7f06a71b33ac832738987a1896aa8adaf4757f01319a311a7c42943b6b06fd81e3e04287266'
             '98bed9e055c9d7265c6fd59514bc33edefe3a6fbe0298f9ed0f00c514f66d5eea19058850d827656d722edf5eccb07f18451791ef7bd017e13efcd102d72fb9a')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgbuildname}-${pkgver}"
 
     # php for composer and deps
     mkdir -p "${HOME}/.composer/cache"
@@ -47,7 +48,7 @@ backup=(
 package() {
     install=${pkgname}.install
 
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgbuildname}-${pkgver}"
     (cat /etc/php/php.ini ; echo ; cat ${srcdir}/${_phpIni} ; echo ; echo "open_basedir=\${open_basedir}:$(pwd):/usr/share/webapps/kimai2:/etc/webapps/kimai2:/tmp:/var/lib/kimai2:/usr/bin/composer:/srv/http/.composer:/proc/version") > make-php.ini
 
     install -d -o root -g root -m 755 ${pkgdir}/${_binDir}
@@ -56,7 +57,7 @@ package() {
     install -d -o http -g http -m 750 ${pkgdir}/${_libDir}
 
     # BIN
-    cp -r ${srcdir}/${pkgname}-${pkgver}/. ${pkgdir}/${_binDir}/
+    cp -r ${srcdir}/${_pkgbuildname}-${pkgver}/. ${pkgdir}/${_binDir}/
 
     # CONF
     mv ${pkgdir}/${_binDir}/config ${pkgdir}/${_confDir}/config

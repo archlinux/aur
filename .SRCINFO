@@ -1,6 +1,6 @@
 pkgbase = kimai2
 	pkgdesc = Kimai the free open source timetracker
-	pkgver = 1.21.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://www.kimai.org/
 	arch = any
@@ -19,13 +19,13 @@ pkgbase = kimai2
 	backup = etc/webapps/kimai2/.env
 	backup = etc/webapps/kimai2/config/packages/local.yaml
 	backup = etc/nginx/sites-available/kimai2-nginx.conf
-	source = https://github.com/kevinpapst/kimai2/archive/refs/tags/1.21.0.tar.gz
+	source = https://github.com/kevinpapst/kimai2/archive/refs/tags/2.3.0.tar.gz
 	source = kimai2.install
 	source = kimai2.ini
 	source = kimai2-nginx.conf
-	sha512sums = ba8affc0a6de23d217474d71fdf6cf8a21231ca02a30d3b33aa83b90ab2aae8d495fe9ff2a991ec5d267087e737cdfb749ed500ebe82afa5acbfeb1f1b5f4619
-	sha512sums = dd2d8bea6a454510d36a8509d0e5b87cb49cf87e2def16b947af0f77d1abf26ba72e02f5492453faf27d61c6f288eb083b7ad4cd1f224c7128b82dec59735336
-	sha512sums = d263b4e310ce7e18a3f53b0b976dff190d70da020506c766df11f210f327dc052db59abc36f44dfada6c963653e7aafd643f33a4eab2ca33f3a032c75137a03a
+	sha512sums = f24ff0c33bd54e37add2d597778083578bbb9d70b3880b4698d3754634cd8eefa8920a878d3c813aced4bee2bf298afb029c759b0ec01687c2498410c4b7ea40
+	sha512sums = b9f73e0853d9992502a162be361204a936e9b2a43e2f55379a62c15ffca56d8511061beefd2cc34df5ca5396ae9329e22b650f4299045ccd5cfa1d36ad925ac9
+	sha512sums = dfc918daa12d7530b3ad0ffa44c9fecf1c0547af1f1881b67156d7f06a71b33ac832738987a1896aa8adaf4757f01319a311a7c42943b6b06fd81e3e04287266
 	sha512sums = 98bed9e055c9d7265c6fd59514bc33edefe3a6fbe0298f9ed0f00c514f66d5eea19058850d827656d722edf5eccb07f18451791ef7bd017e13efcd102d72fb9a
 
 pkgname = kimai2
