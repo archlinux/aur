@@ -1,0 +1,16 @@
+pkgbase = raplcap-git
+	pkgdesc = RAPL power capping C interface with multiple implementations, the git version for testing fixes.
+	pkgver = v0.9.0.4.g1bc9486
+	pkgrel = 1
+	url = https://github.com/powercap/raplcap
+	arch = x86_64
+	license = custom:BSD
+	makedepends = cmake
+	depends = glibc
+	depends = powercap
+	provides = raplcap
+	conflicts = raplcap
+	source = raplcap::git+https://github.com/powercap/raplcap
+	sha256sums = SKIP
+
+pkgname = raplcap-git
