@@ -1,9 +1,9 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
-# Contributor: Vadim Vardanyan <shitcoder@riseup.net>
+# Contributor: <deleted-account>
 
 pkgname=wayclip
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Wayland clipboard utility"
 arch=('x86_64')
 url="https://git.sr.ht/~noocsharp/wayclip"
