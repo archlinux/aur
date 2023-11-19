@@ -1,0 +1,18 @@
+pkgbase = r-biocartaimage
+	pkgdesc = BioCarta Pathway Images
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BioCartaImage
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-magick
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-ragg
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioCartaImage_1.0.0.tar.gz
+	md5sums = 8190c93a49f3d53085b3e6e44d482ffa
+	sha256sums = 69b3c5c40dd8d896714b644630bb8b579ec08c61f2114bfc7049c047b7fde076
+
+pkgname = r-biocartaimage
