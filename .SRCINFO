@@ -1,0 +1,16 @@
+pkgbase = p7zip-full-bin
+	pkgdesc = Command-line file archiver with high compression ratio, based on libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).
+	pkgver = 23.01
+	pkgrel = 1
+	url = https://github.com/phoepsilonix/p7zip-full
+	arch = x86_64
+	license = LGPL
+	license = custom:unRAR
+	provides = p7zip
+	conflicts = p7zip
+	source = https://github.com/phoepsilonix/p7zip-full/archive/refs/tags/v23.01.4.tar.gz
+	source = https://github.com/phoepsilonix/p7zip-full/releases/download/v23.01.4/p7zip-linux-x86_64-musl.zip
+	sha256sums = e62c548f8e76a8493010a91feee9e632bf3599a26f2b9433b49a4d91014a1d42
+	sha256sums = 508289c2d15908b366f4e94de32db0433367eb25f8d46be87faa6773cc8769ee
+
+pkgname = p7zip-full-bin
