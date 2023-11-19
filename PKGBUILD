@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=blobdrop
 pkgname="$_pkgname"-git
-pkgver=2.1.r0.g5fa49ac
+pkgver=2.1.r18.gd715fb2
 pkgrel=1
 pkgdesc="Drag and drop files directly out of the terminal"
 arch=('i686' 'x86_64')
