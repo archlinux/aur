@@ -1,7 +1,7 @@
 pkgbase = zebrad
 	pkgdesc = Zcash - Financial Privacy in Rust 🦓
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/ZcashFoundation/zebra
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = zebrad
 	makedepends = rust
 	makedepends = clang
 	makedepends = pkgconf
-	source = zebra-1.3.0.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v1.3.0.tar.gz
+	source = zebra-1.4.0.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v1.4.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = zebrad

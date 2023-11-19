@@ -1,8 +1,8 @@
 # Maintainer: Marek <mail@marek.onl>
 
 pkgname=zebrad
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Zcash - Financial Privacy in Rust 🦓"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v${pkgver//_/-}.tar.gz")
