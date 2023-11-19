@@ -4,13 +4,13 @@
 _gemname=jekyll-coffeescript
 pkgname=ruby-$_gemname
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A CoffeeScript converter for Jekyll.'
 arch=(any)
 url="https://github.com/jekyll/${_gemname}"
 license=('MIT')
 depends=('ruby' 'ruby-coffee-script' 'ruby-coffee-script-source')
-checkdepends=('ruby-rake' 'ruby-rspec' 'ruby-jekyll')
+checkdepends=('ruby-rake' 'ruby-rspec' 'jekyll')
 options=(!emptydirs)
 source=("${_gemname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('2158f138820253a4e181035dcdf7e25ac7ded26ce7b6e6d6fb5f73e18f5c7e8bbeed8b47a8b12c059b2e7e5167e41f0f9645d5d08e85ff8ab52d400b1c4eb3c7')

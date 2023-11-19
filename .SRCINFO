@@ -1,13 +1,13 @@
 pkgbase = ruby-jekyll-coffeescript
 	pkgdesc = A CoffeeScript converter for Jekyll.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jekyll/jekyll-coffeescript
 	arch = any
 	license = MIT
 	checkdepends = ruby-rake
 	checkdepends = ruby-rspec
-	checkdepends = ruby-jekyll
+	checkdepends = jekyll
 	depends = ruby
 	depends = ruby-coffee-script
 	depends = ruby-coffee-script-source
