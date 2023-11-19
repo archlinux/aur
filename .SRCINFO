@@ -1,6 +1,6 @@
 pkgbase = python-zigpy-deconz
 	pkgdesc = Zigpy support for deCONZ based Zigbee radio devices.
-	pkgver = 0.21.1
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/zigpy/zigpy-deconz
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-zigpy-deconz
 	depends = python
 	depends = python-zigpy
 	depends = python-pyserial-asyncio
-	source = zigpy-deconz-0.21.1.tar.gz::https://github.com/zigpy/zigpy-deconz/archive/0.21.1.tar.gz
-	b2sums = 81d424fa28cf346b8ac61ae9e9695a4a34e914d13470f5e07df3226a95c3ee3e703a52e476f39a5d135916fefadcd26227faf69395ba3b12bf1e2f69b708393e
+	source = zigpy-deconz-0.22.0.tar.gz::https://github.com/zigpy/zigpy-deconz/archive/0.22.0.tar.gz
+	b2sums = 2227004150211f32637b28433e2fcb94c113e2aa5b025aa64056105ddfe712cec7f6b17d41edebd0febb34c75029fdd60cd8c4023b1ec37d30b32f951f3144a6
 
 pkgname = python-zigpy-deconz
