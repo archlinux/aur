@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-ref_vk
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Vulkan renderer for yamagi-quake2"
@@ -10,7 +10,7 @@ license=('GPL' 'custom')
 depends=('yamagi-quake2')
 makedepends=('vulkan-headers')
 source=("${pkgname##*-}-$pkgver.tar.gz"::"https://github.com/yquake2/${pkgname##*-}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1f930ff900908c2caeb1b66a6c17b2fdd4272cdeb61253d0342f0e28c26290e')
+sha256sums=('81dc3e89d64d9478c5bd1ba24999fb571294f632e6b232dbc82ee432ffb98d1a')
 
 build() {
   make -C ${pkgname##*-}-$pkgver
