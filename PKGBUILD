@@ -2,30 +2,30 @@
 
 pkgname=last-mission-sdl
 pkgver=0.8
-_githash=81cb1b45aa2e24e088440910bb764d5daa6f5028 # this is needed as there are no tags
-pkgrel=1
+pkgrel=2
 pkgdesc='Side-view arcade game (inspired by Underwurlde and Starquake)'
 arch=('i686' 'x86_64')
 url="https://github.com/dmitrysmagin/last-mission"
 license=('GPL')
 depends=('sdl_mixer')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/dmitrysmagin/last-mission/archive/$_githash.tar.gz")
-sha256sums=('1acf05deb0efe14abf7cea92dd62fe5c67de817c4eda4ba296f4c6bb9e1deb3d')
+source=($pkgname-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('78a46b53a5f559c7972cb1cf5e0fe2d6db2b3b358d465f29bebae54228ccdb62')
 
 prepare() {
-  cd last-mission-$_githash
+  cd last-mission-$pkgver
   # change data directory
   sed "s|sound/|/usr/share/$pkgname/&|g" -i sound.c
-  # add define and lib to fix build and add our build flags
-  sed 's|CFLAGS =\(.*\)|CFLAGS += -D__UNIX__ \1|;s|$(LFLAGS)|$(LDFLAGS) & -lm|' -i Makefile
+  # add defines and library to fix building and add our build flags
+  sed -e 's|CFLAGS =\(.*\)|CFLAGS += -D__UNIX__ -DDEBUG \1|' \
+   -e 's|$(LFLAGS)|$(LDFLAGS) & -lm|' -i Makefile
 }
 
 build() {
-  make -C last-mission-$_githash
+  make -C last-mission-$pkgver
 }
 
 package() {
-  cd last-mission-$_githash
+  cd last-mission-$pkgver
 
   # binary
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
