@@ -5,11 +5,11 @@
 _pkgname=oscar
 pkgname=oscar
 pkgver=v1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/pholy/OSCAR-code"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=(
   'qt5-tools'
   'qt5-serialport'
