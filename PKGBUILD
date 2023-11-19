@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=readJDX
-_pkgver=0.6.1
+_pkgver=0.6.4
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Import Data in the JCAMP-DX Format'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('445be2594faaba3abb1d5018107aa8a6a9a9fcbcf0eada0b36cdbce7943c5ca5')
+sha256sums=('e67ce206753afc46ffa0988dbf646f28ef50dd70d9b787cae803d75b2dcf3d9a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
