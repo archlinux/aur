@@ -1,0 +1,30 @@
+pkgbase = r-ggh4x
+	pkgdesc = Hacks for 'ggplot2'
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggh4x
+	arch = any
+	license = MIT
+	checkdepends = r-fitdistrplus
+	checkdepends = r-ggdendro
+	checkdepends = r-testthat
+	checkdepends = r-vdiffr
+	depends = r-cli
+	depends = r-ggplot2
+	depends = r-gtable
+	depends = r-lifecycle
+	depends = r-rlang
+	depends = r-scales
+	depends = r-vctrs
+	optdepends = r-covr
+	optdepends = r-fitdistrplus
+	optdepends = r-ggdendro
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggh4x_0.2.6.tar.gz
+	md5sums = 450be3fd3d39699ae65648f7b2880240
+	sha256sums = eb7929b4c3167dce644b13d655144b2893e320072e7a998f07c37c4f7d9b2b3b
+
+pkgname = r-ggh4x
