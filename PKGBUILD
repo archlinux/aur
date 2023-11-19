@@ -4,7 +4,7 @@
 
 pkgname=titan-git
 _pkgname=titan.core
-pkgver=9.0.0.r27.ged2a7e0ce
+pkgver=10.0.0.r0.gbcf519d2b
 pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ groups=('devel')
 makedepends=(
     'bison'
     'flex'
-    'java-environment=20'
+    'java-environment'
     'git'
     'perl'
 )
@@ -45,7 +45,7 @@ options=(!lto !buildflags !makeflags)
 prepare() {
     cd $srcdir/$_pkgname
     echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
-    echo "JDKDIR := /usr/lib/jvm/java-20-openjdk" >> Makefile.personal
+    echo "JDKDIR := /usr/lib/jvm/$(archlinux-java get)" >> Makefile.personal
 }
 
 build() {

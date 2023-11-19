@@ -1,6 +1,6 @@
 pkgbase = titan-git
 	pkgdesc = TTCN3 test automation platform
-	pkgver = 9.0.0.r27.ged2a7e0ce
+	pkgver = 10.0.0.r0.gbcf519d2b
 	pkgrel = 1
 	url = https://projects.eclipse.org/projects/tools.titan
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = titan-git
 	license = custom
 	makedepends = bison
 	makedepends = flex
-	makedepends = java-environment=20
+	makedepends = java-environment
 	makedepends = git
 	makedepends = perl
 	depends = expect
