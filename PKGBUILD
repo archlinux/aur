@@ -33,7 +33,7 @@ sha256sums=('d1ce2f5f656715f059e683e9d1d2c86ed0607194d3de97b469c25f0b78c64341'
 
 prepare() {
   cd "${srcdir}/OSCAR-code-${pkgver}"
-  git apply ../*.patch || echo "No patches found"
+  git apply ../odr-fix.patch
 }
 
 build() {
