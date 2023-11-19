@@ -1,0 +1,51 @@
+From 6a7d206be02e34cbfc97e5852b27332ba5ebb6b3 Mon Sep 17 00:00:00 2001
+From: Sandy Carter <bwrsandman@gmail.com>
+Date: Sun, 19 Nov 2023 14:46:56 -0500
+Subject: [PATCH] use system premake5
+
+---
+ tools/build/premake | 27 +--------------------------
+ 1 file changed, 1 insertion(+), 26 deletions(-)
+
+diff --git a/tools/build/premake b/tools/build/premake
+index b9f423dee..9cd93ae83 100644
+--- a/tools/build/premake
++++ b/tools/build/premake
+@@ -52,33 +52,8 @@ setup_premake_path_override()
+ 
+ 
+ def main():
+-  # First try the freshly-built premake.
+-  premake5_bin = os.path.join(premake_path, 'bin', 'release', 'premake5')
+-  if not has_bin(premake5_bin):
+-    # No fresh build, so fallback to checked in copy (which we may not have).
+-    premake5_bin = os.path.join(self_path, 'bin', 'premake5')
+-  if not has_bin(premake5_bin):
+-    # Still no valid binary, so build it.
+-    print('premake5 executable not found, attempting build...')
+-    build_premake()
+-    premake5_bin = os.path.join(premake_path, 'bin', 'release', 'premake5')
+-  if not has_bin(premake5_bin):
+-    # Nope, boned.
+-    print('ERROR: cannot build premake5 executable.')
+-    sys.exit(1)
+-
+-  # Ensure the submodule has been checked out.
+-  if not os.path.exists(os.path.join(premake_path, 'scripts', 'package.lua')):
+-    print('third_party/premake-core was not present; run xb setup...')
+-    sys.exit(1)
+-    return
+-
+-  if sys.platform == 'win32':
+-    # Append the executable extension on windows.
+-    premake5_bin = premake5_bin + '.exe'
+-
+   return_code = shell_call([
+-      premake5_bin,
++      '/usr/bin/premake5',
+       '--scripts=%s' % (premake_path),
+       ] + sys.argv[1:],
+       throw_on_error=False)
+-- 
+2.42.1
+

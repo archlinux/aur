@@ -36,6 +36,7 @@ rapidjson/
 utfcpp/
 xenia-linux-fixes/
 xxhash/
+Vulkan-Headers/
 
-
-*.pkg.tar.xz
+*.pkg.tar.*
+xenia.log

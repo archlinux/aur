@@ -1,20 +1,17 @@
 pkgname=xenia-git
-pkgver=r6934.00aba94b9
+pkgver=r6938.f6b5424a9
 pkgrel=1
-pkgdesc="Xenia is an experimental emulator for the Xbox 360."
+pkgdesc="An experimental emulator for the Xbox 360."
 arch=('x86_64')
 url="http://xenia.jp"
 license=('BSD')
 options=('debug' '!strip')
 depends=('gtk3' 'lz4' 'glew' 'libx11')
-# TODO use installed premake5 instead of building it
-# premake: powerpc patch added
-makedepends=('python' 'clang' 'git' 'libpthread-stubs')
+makedepends=('premake' 'python' 'clang' 'git' 'libpthread-stubs')
 provides=('xenia')
 conflicts=('xenia')
 # TODO: Use system installed deps for non-forked libs
 source=("git+https://github.com/benvanik/xenia.git"
-        # "xenia-linux-fixes::git+https://github.com/bwrsandman/xenia.git#branch=linux"
         "git+https://github.com/openluopworld/aes_128.git"
         "git+https://github.com/benvanik/binutils-ppc-cygwin.git"
         "git+https://github.com/xenia-project/capstone.git"
@@ -43,9 +40,10 @@ source=("git+https://github.com/benvanik/xenia.git"
         "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
         "git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
         "git+https://github.com/xenia-project/xbyak.git"
-        "xxhash::git+https://github.com/Cyan4973/xxHash.git")
+        "xxhash::git+https://github.com/Cyan4973/xxHash.git"
+        "0001-use-system-premake5.patch"
+        "0002-remove-logging-from-console-main.patch")
 sha256sums=('SKIP'
-            # 'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -74,19 +72,21 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'd8df7c6d7047fdc4278315b733a470843eab608f8bba5b8ea4355e8c4f44c88f'
+            '91b5fe5c3a66b72bc4c7965b38a1dd5f925b55ce1f98f873300072f5f0f8a4e0')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  #printf "r%s.%s.linux_fixes" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
 
-  sed -i '16 a #include <optional>' src/xenia/ui/imgui_drawer.h
-  sed -i '16 a #include <cstdint>' src/xenia/base/utf8.cc
+  msg2 "Applying patches"
+  patch -Np1 -i "${srcdir}/0001-use-system-premake5.patch"
+  patch -Np1 -i "${srcdir}/0002-remove-logging-from-console-main.patch"
 
   msg2 "Setting submodule paths"
   # Take intersection of src and src/xenia/third_party
@@ -100,38 +100,27 @@ prepare() {
     git -c protocol.file.allow=always submodule update "$_modulepath"
   done
 
-  # msg2 "Merging Linux Fixes"
-  # git config pull.rebase false
-  # git pull "../${pkgname%-git}-linux-fixes" --no-edit
-
-  # FIXME: Currently the default /etc/makepkg.conf treat unused
-  # results as warnings which causes build to fail
+  # FIXME: Warnings treated as errors that cause the build to fail.
+  # Warnings:
+  # - Currently the default /etc/makepkg.conf adds -Wunused-result
+  # - If config is set to debug, there is a warning about optimizations being off
   sed -i 's,"FatalWarnings",--"FatalWarnings",g' premake5.lua
-
-  # Manual submodule assign should make this line unnecessary
-  # If package fails, it might be due to new submodule added
-  # In that case, this line should be able to fetch it
-  # python xenia-build setup
 }
-
-# FIXME: Currently xenia does not compile on linux with the default
-# /etc/makepkg.conf debug and linking particularily
-# --fvar-tracking-assignments and --as-needed
-DEBUG_CFLAGS="-g"
-DEBUG_CXXFLAGS="-g"
-LDFLAGS="-Wl,-O1,--sort-common,-z,relro,-z,now"
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  CC=clang CXX=clang++ python xenia-build premake
-  CC=clang CXX=clang++ python xenia-build build --no_premake
+  mkdir -p build
+  ./xenia-build \
+    build \
+    --config=release \
+    `echo $MAKEFLAGS | grep -oE '\-j\s?[0-9]+' | sed -r 's/-j([0-9]+)/-j \1/' | head -n 1`
 }
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
 
   install -m755 -d ${pkgdir}/usr/bin
-  install -m755 build/bin/Linux/Debug/* ${pkgdir}/usr/bin
+  install -m755 build/bin/Linux/Release/* ${pkgdir}/usr/bin
   rm ${pkgdir}/usr/bin/*.a
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
