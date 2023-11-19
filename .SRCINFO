@@ -1,6 +1,6 @@
 pkgbase = kde-development-environment-meta
 	pkgdesc = Metapackage to install a full KDE development environment
-	pkgver = 20231114
+	pkgver = 20231120
 	pkgrel = 1
 	url = https://phabricator.kde.org/T3722
 	arch = any
@@ -94,7 +94,7 @@ pkgbase = kde-development-environment-meta
 	depends = libakonadi
 	depends = libkcddb5
 	depends = libkcompactdisc
-	depends = libkdcraw
+	depends = libkdcraw5
 	depends = libkdegames
 	depends = libkdepim
 	depends = libkexiv2
