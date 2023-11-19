@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=0.1
+Name=KakaoTalk
+Name[ko]=카카오톡
+Comment=Where people and the world come to get connected
+Comment[ko]=사람과 세상을 향한 모든 연결의 시작
+GenericName=Messenger
+GenericName[ko]=메신저
+Keywords=Internet;Messenger;
+Exec=/usr/bin/kakaotalk %u
+Icon=kakaotalk
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;
+StartupWMClass=kakaotalk.exe

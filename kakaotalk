@@ -1,0 +1,80 @@
+#!/bin/bash
+# Copyright (c) 2023 Ho Kim (ho.kim@ulagbulag.io). All rights reserved.
+# Use of this source code is governed by a GPL-3-style license that can be
+# found in the LICENSE file.
+
+# Prehibit errors
+set -e -o pipefail
+
+###########################################################
+#   Install Checker                                       #
+###########################################################
+
+function _check_wine() {
+    WINE_EXE="$1"
+
+    ls "${WINE_EXE}" >/dev/null 2>/dev/null
+}
+
+###########################################################
+#   Installer                                             #
+###########################################################
+
+function _install_wine() {
+    SRC_URL='https://app-pc.kakaocdn.net/talk/win32/KakaoTalk_Setup.exe'
+    DST_FILE="$(mktemp)"
+    WINE_EXE="$1"
+
+    # Mock home directory
+    HOME_ORIGIN="${HOME}"
+    HOME_PATCH="${HOME_ORIGIN}/.local/share/kakaotalk/tmp"
+    export HOME="${HOME_PATCH}"
+
+    echo 'Installing Kakaotalk...'
+    curl -s "${SRC_URL}" -o "${DST_FILE}"
+    wineboot
+    wine "${DST_FILE}" /S
+    rm "${DST_FILE}"
+
+    # Remove tmp home directory
+    rm -rf "${HOME_PATCH}"
+
+    # Restore home directory
+    export HOME="${HOME_ORIGIN}"
+}
+
+###########################################################
+#   Executor                                              #
+###########################################################
+
+function _exec_wine() {
+    WINE_EXE="$1"
+
+    echo 'Executing Kakaotalk...'
+    exec wine "${WINE_EXE}"
+}
+
+###########################################################
+#   Main Function                                         #
+###########################################################
+
+# Define a main function
+function main() {
+    # Configure environment variables
+    export LANG='ko_KR.UTF-8'
+    export LC_ALL='ko_KR.UTF-8'
+    export WINEARCH='win64'
+    export WINEPREFIX="${HOME}/.local/share/kakaotalk"
+
+    # Install
+    WINE_EXE="${WINEPREFIX}/drive_c/Program Files (x86)/Kakao/KakaoTalk/KakaoTalk.exe"
+    if ! _check_wine "${WINE_EXE}"; then
+        _install_wine "${WINE_EXE}"
+    fi
+
+    # Exec
+    _exec_wine "${WINE_EXE}"
+}
+
+# Execute main function
+main "$@" || exit 1
