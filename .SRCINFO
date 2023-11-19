@@ -1,0 +1,15 @@
+pkgbase = wlock-git
+	pkgdesc = A very simple screen locker for Wayland
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/tgabor7/sl
+	arch = x86_64
+	license = BSD
+	depends = wayland
+	depends = wayland-protocols
+	depends = cargo
+	source = sl-0.0.0-linux.tar.gz::https://github.com/tgabor7/sl/archive/tags/v0.0.0.tar.gz
+	md5sums = SKIP
+	b2sums = SKIP
+
+pkgname = wlock-git
