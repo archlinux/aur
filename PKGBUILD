@@ -22,7 +22,12 @@ function pkgver(){
 
 function build(){
 	cd "${srcdir}/matrix-federation-tester"
-	go build
+	go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
+}
+
+function check() {
+	cd "${srcdir}/matrix-federation-tester"
+	go test ./...
 }
 
 function package(){
