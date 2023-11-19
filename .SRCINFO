@@ -1,6 +1,6 @@
 pkgbase = eclipse-titan
 	pkgdesc = A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1
-	pkgver = 9.0.0
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://projects.eclipse.org/projects/tools.titan
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = eclipse-titan
 	license = custom
 	makedepends = bison
 	makedepends = flex
-	makedepends = java-environment=20
+	makedepends = java-environment
 	makedepends = perl
 	depends = expect
 	depends = libedit
@@ -19,9 +19,9 @@ pkgbase = eclipse-titan
 	options = !lto
 	options = !buildflags
 	options = !makeflags
-	source = https://gitlab.eclipse.org/eclipse/titan/titan.core/-/archive/9.0.0/titan.core-9.0.0.tar.gz
+	source = https://gitlab.eclipse.org/eclipse/titan/titan.core/-/archive/10.0.0/titan.core-10.0.0.tar.gz
 	source = eclipse-titan.profile
-	sha256sums = c001a29d642356ac2927bb77e9e89d43350673f08058a359685c83f08bf6dc50
+	sha256sums = 09433cffeb64aba1a97331ab5d73aa5e9c03455815310440b89e23eb15c20711
 	sha256sums = ac28aeffaa7931d2bf1945778b088d6764e566fc04aa307d1bc3d2fb95f558cd
 
 pkgname = eclipse-titan

@@ -5,7 +5,7 @@
 
 pkgname=eclipse-titan
 _pkgname=titan.core
-pkgver=9.0.0
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 makedepends=(
     'bison'
     'flex'
-    'java-environment=20'
+    'java-environment'
     'perl'
 )
 depends=(
@@ -27,7 +27,7 @@ depends=(
 conflicts=('titan-git')
 source=("https://gitlab.eclipse.org/eclipse/titan/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         eclipse-titan.profile)
-sha256sums=('c001a29d642356ac2927bb77e9e89d43350673f08058a359685c83f08bf6dc50'
+sha256sums=('09433cffeb64aba1a97331ab5d73aa5e9c03455815310440b89e23eb15c20711'
             'ac28aeffaa7931d2bf1945778b088d6764e566fc04aa307d1bc3d2fb95f558cd')
 
 # Currently we cannot build even old versions due to broken dependencies in
@@ -40,7 +40,7 @@ options=(!lto !buildflags !makeflags)
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
-    echo "JDKDIR := /usr/lib/jvm/java-20-openjdk" >> Makefile.personal
+    echo "JDKDIR := /usr/lib/jvm/$(archlinux-java get)" >> Makefile.personal
 }
 
 build() {
