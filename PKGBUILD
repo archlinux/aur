@@ -2,8 +2,11 @@
 # Contributor: mawcomw  <mawcomw@gmail.com>
 
 pkgname=limesurvey
-pkgver=6.3.5+231113
-pkgrel=1
+_pkgver="6.3.5"
+_pkgdate="231113"
+_foldername=${pkgname}$_pkgver
+pkgver=$_pkgver+$_pkgdate
+pkgrel=2
 pkgdesc="The most popular FOSS online survey tool on the web."
 depends=('php')
 license=('GPL2')
@@ -33,10 +36,10 @@ package() {
 
 
     #install license
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${srcdir}/${_foldername}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cd "$_instdir"
-    cp -ra "$srcdir"/limesurvey/ .
+    cp -ra "$srcdir"/${_foldername}/ ./limesurvey
 
     ln -s /etc/webapps/limesurvey/config.php "$pkgdir"/usr/share/webapps/limesurvey/application/config/config.php
 

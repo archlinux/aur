@@ -1,7 +1,7 @@
 pkgbase = limesurvey
 	pkgdesc = The most popular FOSS online survey tool on the web.
 	pkgver = 6.3.5+231113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.limesurvey.org
 	arch = any
 	license = GPL2
