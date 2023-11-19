@@ -1,5 +1,5 @@
 pkgname=snotify-git
-pkgver=r9.d019fdb
+pkgver=r20.8ad3c94
 pkgrel=1
 pkgdesc="Play sounds when reciving a notification."
 arch=("any")
@@ -13,16 +13,26 @@ source=("git+https://github.com/Kimiblock/snotify.git")
 sha256sums=('SKIP')
 install="snotify.install"
 
-function pkgver(){
+function pkgver() {
 	cd "${srcdir}/snotify"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build(){
+function prepare() {
 	cd "${srcdir}/snotify"
-	go build -trimpath -mod=readonly -modcacherw
 }
-package() {
+
+function build() {
+	cd "${srcdir}/snotify"
+	go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
+}
+
+function check() {
+	cd "${srcdir}/snotify"
+	go test ./...
+}
+
+function package() {
 	install -Dm755 "${srcdir}/snotify/snotify" "${pkgdir}/usr/bin/snotify"
 	install -Dm644 "${srcdir}/snotify/snotify.service" "${pkgdir}/usr/lib/systemd/user/snotify.service"
 	install -Dm644 "${srcdir}/snotify/message.ogg" "${pkgdir}/opt/snotify/message.ogg"
