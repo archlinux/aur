@@ -7,7 +7,6 @@ pkgbase = hash-slinger
 	license = GPL2
 	makedepends = xmlto
 	depends = python-dnspython
-	depends = python-ipaddress
 	depends = python-m2crypto
 	depends = unbound
 	optdepends = openssh: for sshfp
