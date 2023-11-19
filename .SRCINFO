@@ -1,6 +1,6 @@
 pkgbase = protopedal
 	pkgdesc = Compatibility tool for sim racing pedals and force feedback steering wheels
-	pkgver = 2.3b
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://gitlab.com/openirseny/protopedal/
 	arch = x86_64
