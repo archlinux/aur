@@ -1,14 +1,13 @@
 pkgbase = libpasastro
 	pkgdesc = Provide Pascal interface for standard astronomy libraries
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://www.sourceforge.net/projects/libpasastro/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = gcc-libs
-	source = git+https://github.com/pchev/libpasastro.git#tag=v1.4.1
+	source = git+https://github.com/pchev/libpasastro.git#tag=v1.4.2
 	sha256sums = SKIP
 
 pkgname = libpasastro
-
