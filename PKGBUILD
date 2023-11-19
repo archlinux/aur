@@ -2,7 +2,7 @@
 pkgname=protonup-qt
 _app_id=net.davidotek.pupgui2
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
 url="https://davidotek.github.io/protonup-qt"
@@ -12,10 +12,35 @@ depends=('pyside6' 'python-inputs' 'python-psutil' 'python-requests'
          'python-zstandard' 'qt6-tools')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('appstream-glib' 'desktop-file-utils')
+optdepends=(
+  'dosbox: required for Boxtron'
+  'git: required for SteamTinkerLaunch'
+  'inotify-tools: required for Boxtron & Robera'
+  'scummvm: required for Roberta'
+  'timidity++: required for Boxtron'
+  'unzip: required for SteamTinkerLaunch'
+  'wget: required for SteamTinkerLaunch'
+  'xdotool: required for SteamTinkerLaunch'
+  'xorg-xprop: required for SteamTinkerLaunch'
+  'xorg-xrandr: required for SteamTinkerLaunch'
+  'xorg-xwininfo: required for SteamTinkerLaunch'
+  'xxd: required for SteamTinkerLaunch'
+  'yad: required for SteamTinkerLaunch'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v$pkgver.tar.gz"
-        "$_app_id.sh")
+        "${_app_id}.sh"
+        'https://github.com/DavidoTek/ProtonUp-Qt/pull/301.patch')
 sha256sums=('1bb0e18cc6825a9f84e4447f8985fd91b099f9ed88cf6be301dd813580cc866d'
-            '732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f')
+            '732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f'
+            'c18891479101f47fbffbb0419a536a989cfd450925fcff606ba304a6199fb0e9')
+
+prepare() {
+  cd "ProtonUp-Qt-$pkgver"
+
+  # SteamTinkerLaunch: rename 'xwinfo' to 'xwininfo'
+  # https://github.com/DavidoTek/ProtonUp-Qt/issues/300
+  patch -Np1 -i ../301.patch
+}
 
 build() {
   cd "ProtonUp-Qt-$pkgver"
@@ -24,8 +49,8 @@ build() {
 
 check() {
   cd "ProtonUp-Qt-$pkgver"
-  appstream-util validate-relax --nonet "share/metainfo/$_app_id.appdata.xml"
-  desktop-file-validate "share/applications/$_app_id.desktop"
+  appstream-util validate-relax --nonet "share/metainfo/${_app_id}.appdata.xml"
+  desktop-file-validate "share/applications/${_app_id}.desktop"
 }
 
 package() {
@@ -34,6 +59,6 @@ package() {
 
   cp -r share "$pkgdir/usr/"
 
-  install -Dm755 "$srcdir/$_app_id.sh" "$pkgdir/usr/bin/$_app_id"
-  ln -s /usr/bin/$_app_id "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/${_app_id}.sh" "$pkgdir/usr/bin/${_app_id}"
+  ln -s /usr/bin/${_app_id} "$pkgdir/usr/bin/$pkgname"
 }
