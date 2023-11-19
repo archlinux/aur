@@ -2,14 +2,13 @@
 
 pkgname=gg-bin
 pkgver=0.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool for one-click proxy in your research and development without installing v2ray or anything else (only for linux). (Precompiled version)'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/mzz2017/gg'
 license=('AGPL-3.0')
 conflicts=('gg')
 provides=('gg')
-depends=('glibc')
 optdepends=('libcap')
 options=('!strip')
 
