@@ -1,0 +1,15 @@
+pkgbase = clash2sing-box-git
+	pkgdesc = Simple tool for converting clash client outbounds to sing-box format
+	pkgver = r242.19435af
+	pkgrel = 1
+	url = https://github.com/oluceps/clash2sing-box
+	arch = any
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = clash2sing-box
+	source = git+https://github.com/oluceps/clash2sing-box.git
+	md5sums = SKIP
+
+pkgname = clash2sing-box-git
