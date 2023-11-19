@@ -5,7 +5,7 @@
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
 pkgver=6.5.11
-pkgrel=1
+pkgrel=2
 build_id=6667370
 fedora=39
 extras=302.fsync.fc${fedora}
