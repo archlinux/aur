@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('python-pygments: syntax highlighting'
             'tk: to use the built-in ssh-askpass handler')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz"
         '0001-Unvendorize-polib.py.patch')
-sha256sums=('4f13c0141ad4ee02a6642bb3b80c3c2ad116fd878390f9775215b7f69a1d60ca'
+sha256sums=('231786deef4a384b904ea4bc0856386448e91161cfed1aadf17494f28a5cbfd0'
             '00db8356a4bc6f1d9dade64ab04b6f8bada2df22b246e21551ce925de9f95625')
 
 prepare() {
