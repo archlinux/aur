@@ -10,7 +10,7 @@
 
 pkgname=libvirt
 pkgver=9.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -84,10 +84,10 @@ backup=(
   'etc/sasl2/libvirt.conf'
 )
 source=(
-  "https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
+  "$pkgname-$pkgver.tar.xz::https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
 )
 sha256sums=('cb83be795548161af6718a6db75ee40719a87bcd6f9207a3565db2fc0e53a52e'
-            'SKIP')
+            'cb83be795548161af6718a6db75ee40719a87bcd6f9207a3565db2fc0e53a52e')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 # libvirt-xen
