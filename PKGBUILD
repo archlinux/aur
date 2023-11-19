@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-git
-pkgver=v2023.11.2.r4.g2231b9ca1
+pkgver=v2023.11.3.r25.g4c12a8882
 pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
@@ -12,8 +12,6 @@ makedepends=(makepkg-git-lfs-proto npm)
 depends=(nodejs redis postgresql)
 optdepends=(
   "ffmpeg: for video transcoding"
-  "sonic: efficient full text search backend"
-  "meilisearch: feature-rich full text search backend"
 )
 
 conflicts=(iceshrimp)
