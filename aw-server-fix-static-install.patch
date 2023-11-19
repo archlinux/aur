@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 3718a8b..bb28200 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,7 @@ version = "0.12.0"
+ description = "Server for ActivityWatch"
+ authors = ["Erik Bjäreholt <erik@bjareho.lt>"]
+ license = "MPL-2.0"
+-include = ["aw_server/static/*"]
++include = ["aw_server/static/**/*"]
+ 
+ [tool.poetry.scripts]
+ aw-server = "aw_server:main"

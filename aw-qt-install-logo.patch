@@ -1,0 +1,27 @@
+diff --git a/aw_qt/trayicon.py b/aw_qt/trayicon.py
+index 10f8298..2563099 100644
+--- a/aw_qt/trayicon.py
++++ b/aw_qt/trayicon.py
+@@ -217,6 +217,9 @@ def run(manager: Manager, testing: bool = False) -> Any:
+     #   logodir is ./media/logo
+     QtCore.QDir.addSearchPath("icons", str(scriptdir.parent / "media/logo/"))
+ 
++    # Media might be installed next to the python package
++    QtCore.QDir.addSearchPath("icons", str(scriptdir / "media/logo"))
++
+     # When run from .app:
+     #   __file__ is ./Contents/MacOS/aw-qt
+     #   scriptdir is ./Contents/MacOS
+diff --git a/pyproject.toml b/pyproject.toml
+index a08cb59..0bcd419 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,7 @@ version = "0.1.0"
+ description = "Trayicon for ActivityWatch"
+ authors = ["Erik Bjäreholt <erik@bjareho.lt>"]
+ license = "MPL-2.0"
+-include = ["aw_qt/resources.py"]  # resources.py is in .gitignore and generated before build
++include = ["aw_qt/resources.py", "aw_qt/media/logo/*"]  # resources.py is in .gitignore and generated before build
+ packages = [
+     { include = "aw_qt" },
+ ]
