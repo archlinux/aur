@@ -1,17 +1,18 @@
 pkgbase = quiltix
-	pkgdesc = QuiltiX is a graphical node editor to edit, and author MaterialX based materials of 3D assets
-	pkgver = 0.4.2
+	pkgdesc = A graphical node editor to edit, and author MaterialX based materials of 3D assets
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/PrismPipeline/QuiltiX
 	arch = any
 	license = Apache
+	makedepends = git
 	depends = usd
 	depends = materialx
 	depends = python-qt.py
 	depends = python
 	depends = pyside2
 	depends = python-pyqt5
-	source = git+https://github.com/PrismPipeline/QuiltiX.git#tag=v0.4.2-beta
+	source = git+https://github.com/PrismPipeline/QuiltiX.git#tag=v0.5.0
 	source = git+https://github.com/manuelkoester/NodeGraphQt.git#branch=develop
 	source = quiltix.desktop
 	source = quiltix

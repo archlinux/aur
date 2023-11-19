@@ -2,9 +2,9 @@
 
 pkgname=quiltix
 _name=QuiltiX
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="QuiltiX is a graphical node editor to edit, and author MaterialX based materials of 3D assets"
+pkgdesc="A graphical node editor to edit, and author MaterialX based materials of 3D assets"
 arch=('x86_64')
 url="https://github.com/PrismPipeline/QuiltiX"
 license=('Apache')
@@ -16,8 +16,8 @@ depends=(usd
 		pyside2
 		python-pyqt5
 		)
-
-source=(git+$url.git#tag=v$pkgver-beta
+makedepends=(git)
+source=(git+$url.git#tag=v$pkgver
 		git+https://github.com/manuelkoester/NodeGraphQt.git#branch=develop
 		$pkgname.desktop
 		$pkgname)
