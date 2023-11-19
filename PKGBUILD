@@ -33,6 +33,8 @@ depends=(
   'solid5' # libKF5Solid.so
   'kservice5' # libKF5Service.so
   'kdelibs4support' # libKF5KDELibs4Support.so
+  'kdesignerplugin'
+  'kinit'
   'hicolor-icon-theme'
 )
 makedepends=(
