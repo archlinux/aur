@@ -1,7 +1,7 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Tarn W. Burton <twburton@gmail.com>
 
 pkgname=abcl-git
-pkgver=r3600.f6f8ce01
+pkgver=r3752.93c80fd1
 pkgrel=1
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
