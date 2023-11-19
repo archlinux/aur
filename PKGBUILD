@@ -1,3 +1,4 @@
+# Maintainer:
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname='fatrat'
@@ -24,35 +25,37 @@ makedepends=(
   'cmake'
   'git'
 )
-provides=("$_pkgname")
-conflicts=(${provides[@]})
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
 _branch='develop'
-source=(
-  "$_pkgname"::"git+$url#branch=develop"
-)
-sha256sums=(
-  "SKIP"
-)
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#branch=$_branch")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   git describe --long --tags | sed 's/_/./; s/beta/b/; s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build \
-        -S "$_pkgname" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_DOCUMENTATION=ON \
-        -DWITH_NLS=ON \
-        -DWITH_CURL=ON \
-        -DWITH_BITTORRENT=ON \
-        -DWITH_WEBINTERFACE=OFF
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DWITH_DOCUMENTATION=ON
+    -DWITH_NLS=ON
+    -DWITH_CURL=ON
+    -DWITH_BITTORRENT=ON
+    -DWITH_WEBINTERFACE=OFF
+    -Wno-dev
+  )
 
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir:?}" cmake --install build
 }
