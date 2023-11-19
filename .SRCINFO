@@ -1,7 +1,7 @@
 pkgbase = mit-scheme
 	pkgdesc = MIT/GNU Scheme
 	pkgver = 12.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gnu.org/software/mit-scheme/
 	arch = x86_64
 	license = GPL

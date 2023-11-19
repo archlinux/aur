@@ -5,7 +5,7 @@
 
 pkgname=mit-scheme
 pkgver=12.1
-pkgrel=4
+pkgrel=5
 pkgdesc="MIT/GNU Scheme"
 url="https://www.gnu.org/software/mit-scheme/"
 arch=(x86_64)
