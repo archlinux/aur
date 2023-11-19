@@ -1,14 +1,14 @@
 [Install]
-After=network.target network-online.target nss-lookup.target
 WantedBy=multi-user.target
 
 [Unit]
 Description=An RTSP bridge to Reolink IP cameras.
+After=network.target network-online.target nss-lookup.target
 
 [Service]
 Type=simple
 User=neolink
 Group=neolink
 
-ExecStart=/usr/bin/neolink --config /etc/neolink.toml
+ExecStart=/usr/bin/neolink rtsp --config=/etc/neolink.toml
 Restart=always
