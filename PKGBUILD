@@ -2,8 +2,8 @@
 
 pkgname=perl-x11-xcb
 _cpanname=X11-XCB
-pkgver=0.19
-pkgrel=1.3
+pkgver=0.21
+pkgrel=1.0
 pkgdesc="Perl bindings for libxcb"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
@@ -13,11 +13,10 @@ makedepends=('perl-xs-object-magic' 'perl-extutils-depends' 'libpthread-stubs' '
 	     'perl-xml-simple' 'perl-xml-descent')
 depends=('libxau' 'libxdmcp' 'perl-mouse' 'perl-mousex-nativetraits' 'perl-try-tiny'
 		'libxcb' 'xcb-util' 'xcb-util-wm')
-checkdepends=('perl-test-more' 'perl-test-deep' 'perl-test-exception')
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('84856a9f0c9c807c2c76df09eebc3bfc')
-sha512sums=('abd6369b00b9ebd4a333cd52b06b2f137a8b8c13a715a0ab485cf0f80acce601b8b22dfff394514ad8b21d253b5f72920aeee6b9bcf4b0d446b772d4ef60ce71')
+source=("https://cpan.metacpan.org/authors/id/Z/ZH/ZHMYLOVE/${_cpanname}-${pkgver}.tar.gz")
+md5sums=('6d7a6a28cea0abcc9b699dda82a6d456')
+sha512sums=('e87a64fd9e304949049f3c78e37941a38108d9061e7b822d9f35129cc22d59c0a2347ef1ae728a0e3e4b70a9d14a826e7f66df2e1a5f51e5b43303bf891d239b')
 
 build() {
   cd ${_cpanname}-${pkgver}
