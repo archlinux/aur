@@ -111,7 +111,7 @@ pkgbase = wine-ge-custom
 	options = !staticlibs
 	options = !lto
 	options = !debug
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=487895366492882ea15452789fed42d6c6de1c29
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=ba2339d9df86be01b6378371b469fe3fb242fc25
 	source = wine-wmclass.patch
 	source = wine-isolate_home.patch
 	source = 30-win32-aliases.conf
