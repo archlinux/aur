@@ -14,6 +14,6 @@ pkgbase = picgo-git
 	source = picgo.git::git+https://github.com/Molunerfinn/PicGo.git
 	source = picgo.sh
 	sha256sums = SKIP
-	sha256sums = e69031dd3f7af01ad71e765270e6a29f83657a021f8517a88f969044600ceafe
+	sha256sums = 668b9ab19df61e5704e49c442b179a20fc344b3d26f60680882e960a5983f2fb
 
 pkgname = picgo-git
