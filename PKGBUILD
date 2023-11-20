@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1618
+pkgver=1626
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
@@ -49,7 +49,7 @@ makedepends=(
   vulkan-headers
 )
 options=(!debug)
-_tag=3cff94a381b720aed7fd35ee0c53fc93ef77e78d
+_tag=197fc9df662087b9f900209159c18f81ccda0a41
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
