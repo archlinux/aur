@@ -1,13 +1,13 @@
 # Maintainer: Haoxiang Fei <tonyfettes AT tonyfettes DOT com>
 
 pkgname=moonbit-bin
-pkgver=0.1.0.20231106
+pkgver=0.1.0.20231120
 pkgrel=1
 pkgdesc="Intelligent developer platform for Cloud and Edge using WASM"
 arch=('x86_64')
 url="https://www.moonbitlang.com/"
 license=('unknown')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'openssl-1.1')
 provides=("moonbit")
 conflicts=("moonbit")
 source=("https://cli.moonbitlang.com/ubuntu_x86/moon"
@@ -15,11 +15,11 @@ source=("https://cli.moonbitlang.com/ubuntu_x86/moon"
         "https://cli.moonbitlang.com/ubuntu_x86/moonfmt"
         "https://cli.moonbitlang.com/ubuntu_x86/moonrun"
         "https://cli.moonbitlang.com/ubuntu_x86/mooninfo")
-sha256sums=('c3d9b13b99c7aaed50a5397e6a482d023eece07c0121492e8aa873e362b180aa'
-            'cc40ab9c603fbf3b532e985aa19e74570b1733b01e71650dd14204d078630c84'
-            'b6038f3a4872b62c85fa7cb61d69d9d895452cea4b415146f671b1e1e022594b'
+sha256sums=('61a7cfb06f69edda870d17d368ed0adf50d1166c33f415eaee586c5eadab256d'
+            '4ecf96beeaff41a9e8be290d118281e454ae997cb7ebb5eeda58d4a20750c62e'
+            '1d22f753eb948e0d71f15261326ef8ef5f2d4a5acd8e6f17989bd9cd4b5fac23'
             '11c56639a22fc2b2825dcb1d65b51eca44d9173935af4f54af69f1e2d9f1684e'
-            'c38768654c193b94a0f7912d3d5cb1b9532c7d8c45bb5d9ef50648333baaa533')
+            '05b981d5d3b3df7d4a8542557fcda65659519885aeb7d86ff2f7a5a83ef54b77')
 
 pkgver() {
   cd "${srcdir}"
