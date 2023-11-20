@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright (c) 2023 Ho Kim (ho.kim@ulagbulag.io). All rights reserved.
-# Use of this source code is governed by a GPL-3-style license that can be
+# Use of this source code is governed by The Unlicense license that can be
 # found in the LICENSE file.
 
 # Prehibit errors
@@ -27,7 +27,7 @@ function _install_wine() {
 
     # Mock home directory
     HOME_ORIGIN="${HOME}"
-    HOME_PATCH="${HOME_ORIGIN}/.local/share/kakaotalk/tmp"
+    HOME_PATCH="${WINEPREFIX}/tmp"
     export HOME="${HOME_PATCH}"
 
     echo 'Installing Kakaotalk...'
@@ -41,6 +41,23 @@ function _install_wine() {
 
     # Restore home directory
     export HOME="${HOME_ORIGIN}"
+
+    # Create a desktop shortcut
+    if [ -d "${HOME}/Desktop/" ]; then
+        ICON_SRC='/usr/share/applications/kakaotalk.desktop'
+        ICON_DST="${HOME}/Desktop/kakaotalk.desktop"
+
+        if [ ! -f "${ICON_DST}" ]; then
+            mkdir -p "$(dirname "${ICON_DST}")"
+            cp "${ICON_SRC}" "${ICON_DST}"
+            chmod u+x "${ICON_DST}"
+
+            # Mark as trusted
+            if which gio >/dev/null 2>/dev/null; then
+                gio set -t string "${ICON_DST}" metadata::xfce-exe-checksum "$(sha256sum "${ICON_SRC}" | awk '{print $1}')"
+            fi
+        fi
+    fi
 }
 
 ###########################################################
