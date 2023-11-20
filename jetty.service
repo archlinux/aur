@@ -5,18 +5,18 @@
 # future updates
 
 [Unit]
-Description=Jetty Web Application Server
+Description=Jetty 11 Web Application Server
 After=syslog.target network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/jetty start
-ExecStop=/usr/bin/jetty stop
-ExecReload=/usr/bin/jetty restart
-PIDFile=/run/jetty/jetty.pid
-RuntimeDirectory=jetty
-User=jetty
-Group=jetty
+ExecStart=/usr/bin/jetty11 start
+ExecStop=/usr/bin/jetty11 stop
+ExecReload=/usr/bin/jetty11 restart
+PIDFile=/run/jetty11/jetty.pid
+RuntimeDirectory=jetty11
+User=jetty11
+Group=jetty11
 
 [Install]
 WantedBy=multi-user.target

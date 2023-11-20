@@ -1,2 +1,2 @@
-u jetty - "jetty daemon user" /usr/share/jetty
+u jetty11 - "jetty11 daemon user" /usr/share/jetty11
 

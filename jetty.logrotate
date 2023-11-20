@@ -1,4 +1,4 @@
-/var/log/jetty/*.log {
+/var/log/jetty11/*.log {
     copytruncate
     weekly
     rotate 52

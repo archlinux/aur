@@ -1,11 +1,10 @@
-# Maintainer: Holger Schramm <dev@strace.it>
+# Contributor: Holger Schramm <dev@strace.it>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Yegorius <yegorius@domic.us>
 # Contributor: Sergey Shatunov <me@prok.pw>
 
-pkgname=jetty
-pkgver=9.4.43
-_timestamp=v20210629
+pkgname=jetty11
+pkgver=11.0.18
 pkgrel=1
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
@@ -13,52 +12,52 @@ url="http://www.eclipse.org/jetty/"
 license=('Apache' 'EPL')
 depends=('java-environment')
 options=('!strip')
-_distname=jetty-distribution-$pkgver.$_timestamp
-source=(https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$pkgver.$_timestamp/$_distname.tar.gz{,.asc}
+_distname=jetty-home-$pkgver
+source=(https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/$pkgver/$_distname.tar.gz{,.asc}
         jetty.default
         jetty.logrotate
         jetty.service
         jetty.sysusers
         jetty.tmpfiles)
-sha256sums=('01fae654b09932e446019aa859e7af6e05e27dbade12b54cd7bae3249fc723d9'
+
+sha256sums=('1f1b4edabe985a8ebe300614824edd3523c3a90668c8ef6dffc35d239a4f90be'
             'SKIP'
-            'e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d'
-            'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'
-            'b27ef0342c3b22fbf1e3e7d104e23670b53eab9b648c1882cf295bd82ccadc66'
-            '5664891275f3e489f85efd85b9740e36265f5ed3cf9512d245c500bdc31b568a'
-            'b421e99f731635a68e59dabab803d1bbaecf11d338f17837cf0bb37c6bf32e6e')
+            '4517310a4ed94248403e68b96b1e984d39e7073c6cd1dd9e312d00b9f4d2ca0f'
+            'aef27b34d181f0f31a023e4b31c10347c711d0e45b89b9702e501709bd07689e'
+            '56c318ce307726ffd667ec6024e1488266e70d0a1ed3802a2257e4edbbb0e61c'
+            '425d9c157753129e7d003652ecbb746feb5591ba1a9abf0b4a8428c91b1511da'
+            '66d8e095afc479484b9ee54d0cb48b1ad04236d487e59881622dbaf29f14f560')
 validpgpkeys=('5989BAF76217B843D66BE55B2D0E1FB8FE4B68B4') # Joakim Erdfelt <joakim.erdfelt@gmail.com>
 
 
 package() {
-	cd "$srcdir/$_distname"
+    cd "$srcdir/$_distname"
 
-	install -dm755 "$pkgdir/etc/jetty"
-	install -dm755 "$pkgdir/usr/bin"
-	install -dm755 "$pkgdir/var/log/jetty"
-	install -dm755 "$pkgdir/var/lib/jetty/webapps"
+    install -dm755 "$pkgdir/etc/$pkgname"
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/var/log/$pkgname"
+    install -dm755 "$pkgdir/var/lib/$pkgname/webapps"
 
-	install -Dm755 bin/jetty.sh "$pkgdir/usr/share/jetty/bin/jetty.sh"
-	cp -r etc/* "$pkgdir/etc/jetty"
-	cp -r {resources,start.ini} "$pkgdir/etc/jetty/"
-	cp -r {lib,modules,start.jar,README.TXT} "$pkgdir/usr/share/jetty/"
-	cp -r webapps/README.TXT "$pkgdir/var/lib/jetty/webapps"
+    install -Dm755 bin/jetty.sh "$pkgdir/usr/share/$pkgname/bin/jetty.sh"
+    cp -r etc/* "$pkgdir/etc/$pkgname"
+    cp -r {lib,modules,start.jar,README.adoc} "$pkgdir/usr/share/$pkgname/"
+    install -dm755 "$pkgdir/etc/$pkgname/start.d"
+    install -dm755 "$pkgdir/etc/$pkgname/resources"
+    install -dm755 "$pkgdir/var/lib/$pkgname/webapps"
 
-	ln -s /etc/jetty "$pkgdir/usr/share/jetty/etc"
-	ln -s etc/start.d "$pkgdir/usr/share/jetty/start.d"
-	ln -s etc/start.ini "$pkgdir/usr/share/jetty/start.ini"
-	ln -s etc/resources "$pkgdir/usr/share/jetty/resources"
-	ln -s /usr/share/jetty/bin/jetty.sh "$pkgdir/usr/bin/jetty"
-	ln -s /var/lib/jetty/webapps "$pkgdir/usr/share/jetty/webapps"
+    ln -s /etc/$pkgname "$pkgdir/usr/share/$pkgname/etc"
+    ln -s etc/start.d "$pkgdir/usr/share/$pkgname/start.d"
+    ln -s etc/resources "$pkgdir/usr/share/$pkgname/resources"
+    ln -s /usr/share/$pkgname/bin/jetty.sh "$pkgdir/usr/bin/$pkgname"
+    ln -s /var/lib/$pkgname/webapps "$pkgdir/usr/share/$pkgname/webapps"
+    ln -s /var/log/$pkgname "$pkgdir/usr/share/$pkgname/logs"
 
-	install -Dm644 "$srcdir/jetty.default" "$pkgdir/etc/default/jetty"
-	install -Dm644 "$srcdir/jetty.logrotate" "$pkgdir/etc/logrotate.d/jetty"
-	install -Dm644 "$srcdir/jetty.service" "$pkgdir/usr/lib/systemd/system/jetty.service"
-	install -Dm644 "$srcdir/jetty.sysusers" "$pkgdir/usr/lib/sysusers.d/jetty.conf"
-	install -Dm644 "$srcdir/jetty.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/jetty.conf"
+    install -Dm644 "$srcdir/jetty.default" "$pkgdir/etc/default/$pkgname"
+    install -Dm644 "$srcdir/jetty.logrotate" "$pkgdir/etc/logrotate.d/$pkgname"
+    install -Dm644 "$srcdir/jetty.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 "$srcdir/jetty.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -Dm644 "$srcdir/jetty.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-	sed -i 's|su - |su -s /bin/sh - |' "$pkgdir/usr/share/jetty/bin/jetty.sh"
-
-	rm "$pkgdir/usr/share/jetty/lib/setuid/libsetuid-osx.so"
+    sed -i 's|su - |su -s /bin/sh - |' "$pkgdir/usr/share/$pkgname/bin/jetty.sh"
 }
 
