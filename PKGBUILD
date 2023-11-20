@@ -1,17 +1,17 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier-git
-pkgver=2023.9.0.r12.g7a3a107
+pkgver=2023.11.0.r5.g869a1b1
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
 url=https://github.com/NickvisionApps/${pkgname%-git}
 license=(MIT)
-depends=(cava 'dotnet-runtime>=7' libadwaita iniparser fftw)
-makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
+depends=(cava 'dotnet-runtime>=8' libadwaita iniparser fftw)
+makedepends=(blueprint-compiler 'dotnet-sdk>=8' git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url" "git+${url%cavalier}cakescripts#commit=c7e3bbbb807bdade8c89e5a3ad057b00fac2102e")
+source=("git+$url" "git+${url%cavalier}cakescripts#commit=1b48cc0957fcd65c3b0f25285e84033fb5b7f542")
 b2sums=('SKIP' 'SKIP')
 
 pkgver() {
