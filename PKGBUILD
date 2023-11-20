@@ -3,21 +3,21 @@
 _pkgname=distro-grub-themes
 pkgbase="${_pkgname}"
 pkgname=("grub-theme-acer"
-        "grub-theme-alma"
+        "grub-theme-almalinux"
         "grub-theme-aorus"
         "grub-theme-apple"
-        "grub-theme-arch"
-        "grub-theme-arco"
-        "grub-theme-artix"
+        "grub-theme-arch-linux"
+        "grub-theme-arco-linux"
+        "grub-theme-artix-linux"
         "grub-theme-asrock"
         "grub-theme-asus"
-        "grub-theme-bedrock"
+        "grub-theme-bedrock-linux"
         "grub-theme-centos"
         "grub-theme-chromeos"
         "grub-theme-debian"
         "grub-theme-deepin"
         "grub-theme-dell"
-        "grub-theme-elementary"
+        "grub-theme-elementaryos"
         "grub-theme-endeavouros"
         "grub-theme-fedora"
         "grub-theme-framework"
@@ -27,7 +27,7 @@ pkgname=("grub-theme-acer"
         "grub-theme-gigabyte"
         "grub-theme-hp"
         "grub-theme-huawei"
-        "grub-theme-kdeneon"
+        "grub-theme-kde-neon"
         "grub-theme-kingston"
         "grub-theme-kubuntu"
         "grub-theme-legion"
@@ -35,32 +35,32 @@ pkgname=("grub-theme-acer"
         "grub-theme-lg"
         "grub-theme-lubuntu"
         "grub-theme-manjaro2"
-        "grub-theme-mate"
-        "grub-theme-mint"
+        "grub-theme-medion"
+        "grub-theme-linux-mint"
         "grub-theme-msi"
-        "grub-theme-mx"
+        "grub-theme-mx-linux"
         "grub-theme-nixos"
         "grub-theme-opensuse"
         "grub-theme-parabola"
-        "grub-theme-pop"
+        "grub-theme-pop-os"
         "grub-theme-razer"
-        "grub-theme-rocky"
+        "grub-theme-rocky-linux"
         "grub-theme-samsung"
         "grub-theme-slackware"
         "grub-theme-solus"
         "grub-theme-system76"
         "grub-theme-thinkpad"
         "grub-theme-toshiba"
-        "grub-theme-ubuntu"
+        "grub-theme-ubuntu-mate"
         "grub-theme-ultramarine"
         "grub-theme-vaio"
         "grub-theme-ventoy"
-        "grub-theme-void"
-        "grub-theme-windows10"
-        "grub-theme-windows11"
-        "grub-theme-xero"
-        "grub-theme-zorinos")
-pkgver=3.2
+        "grub-theme-void-linux"
+        "grub-theme-windows-10"
+        "grub-theme-windows-11"
+        "grub-theme-xero-linux"
+        "grub-theme-zorin-os")
+pkgver=3.3
 pkgrel=1
 pkgdesc="Grub themes for distributions and brands"
 url="https://github.com/ahmedmoselhi/distro-grub-themes"
@@ -68,21 +68,21 @@ arch=('any')
 license=('GPL' 'CCPL:by-sa')
 depends=('grub')
 source=("grub-theme-acer.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/acer.tar"
-        "grub-theme-alma.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/alma.tar"
+        "grub-theme-almalinux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/almalinux.tar"
         "grub-theme-aorus.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/aorus.tar"
         "grub-theme-apple.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/apple.tar"
-        "grub-theme-arch.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/arch.tar"
-        "grub-theme-arco.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/arco.tar"
-        "grub-theme-artix.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/artix.tar"
+        "grub-theme-arch-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/arch-linux.tar"
+        "grub-theme-arco-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/arco-linux.tar"
+        "grub-theme-artix-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/artix-linux.tar"
         "grub-theme-asrock.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/asrock.tar"
         "grub-theme-asus.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/asus.tar"
-        "grub-theme-bedrock.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/bedrock.tar"
+        "grub-theme-bedrock-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/bedrock-linux.tar"
         "grub-theme-centos.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/centos.tar"
         "grub-theme-chromeos.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/chromeos.tar"
         "grub-theme-debian.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/debian.tar"
         "grub-theme-deepin.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/deepin.tar"
         "grub-theme-dell.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/dell.tar"
-        "grub-theme-elementary.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/elementary.tar"
+        "grub-theme-elementaryos.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/elementaryos.tar"
         "grub-theme-endeavouros.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/endeavouros.tar"
         "grub-theme-fedora.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/fedora.tar"
         "grub-theme-framework.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/framework.tar"
@@ -92,7 +92,7 @@ source=("grub-theme-acer.tar::https://github.com/ahmedmoselhi/distro-grub-themes
         "grub-theme-gigabyte.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/gigabyte.tar"
         "grub-theme-hp.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/hp.tar"
         "grub-theme-huawei.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/huawei.tar"
-        "grub-theme-kdeneon.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/kdeneon.tar"
+        "grub-theme-kde-neon.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/kde-neon.tar"
         "grub-theme-kingston.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/kingston.tar"
         "grub-theme-kubuntu.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/kubuntu.tar"
         "grub-theme-legion.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/legion.tar"
@@ -100,89 +100,90 @@ source=("grub-theme-acer.tar::https://github.com/ahmedmoselhi/distro-grub-themes
         "grub-theme-lg.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/lg.tar"
         "grub-theme-lubuntu.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/lubuntu.tar"
         "grub-theme-manjaro2.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/manjaro.tar"
-        "grub-theme-mate.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/mate.tar"
-        "grub-theme-mint.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/mint.tar"
+        "grub-theme-medion.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/medion.tar"
+        "grub-theme-linux-mint.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/linux-mint.tar"
         "grub-theme-msi.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/msi.tar"
-        "grub-theme-mx.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/mx.tar"
+        "grub-theme-mx-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/mx-linux.tar"
         "grub-theme-nixos.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/nixos.tar"
         "grub-theme-opensuse.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/opensuse.tar"
         "grub-theme-parabola.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/parabola.tar"
-        "grub-theme-pop.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/pop.tar"
+        "grub-theme-pop-os.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/pop-os.tar"
         "grub-theme-razer.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/razer.tar"
-        "grub-theme-rocky.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/rocky.tar"
+        "grub-theme-rocky-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/rocky-linux.tar"
         "grub-theme-samsung.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/samsung.tar"
         "grub-theme-slackware.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/slackware.tar"
         "grub-theme-solus.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/solus.tar"
         "grub-theme-system76.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/system76.tar"
         "grub-theme-thinkpad.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/thinkpad.tar"
         "grub-theme-toshiba.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/toshiba.tar"
-        "grub-theme-ubuntu.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/ubuntu.tar"
+        "grub-theme-ubuntu-mate.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/ubuntu-mate.tar"
         "grub-theme-ultramarine.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/ultramarine.tar"
         "grub-theme-vaio.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/vaio.tar"
         "grub-theme-ventoy.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/ventoy.tar"
-        "grub-theme-void.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/void.tar"
-        "grub-theme-windows10.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/windows10.tar"
-        "grub-theme-windows11.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/windows11.tar"
-        "grub-theme-xero.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/xero.tar"
-        "grub-theme-zorinos.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/zorinos.tar")
-sha256sums=("61ddb314fb9a39ddb06024e9194c40c24525f83783418e4fc9d885bb0632af24"
-        "f751acb6bd501e28971fbf0e9f28092ed213960e3553fae8e43f2487868dd5ef"
-        "5afd7e56a8b59df8990741fb5bc29d623e22ecbfa7c5a78df5bd8434da14a235"
-        "846196ec131b0a8aed31b65a8e8c41f79b813026668e94e3e26f081f9496edf8"
-        "2750d6d68e1936fb003ab93b2ee0a29b741a3df57780a174f246237c19d4af6f"
-        "3b19c634967f7ec6dcefef024c04ef815b7a5cb69167015c28e1a94796cc4366"
-        "b48a3ebda717530779fa258dd9892e61aa2930ef30031ead4f6c61013236852b"
-        "50603bdb61b8285746e8a60e38c6e65348c6aa2976f0626ce74cb4d187de885c"
-        "123cfb2ae0cc81ed32283f9d511250f6743bb9053e0587271831a4d7ee2e3ccc"
-        "280dfcde78f692a8f67ae834833562ca33603163eff7d9406c71474511622b6d"
-        "aec1bff9d4b6bc363ef3952b788bcd2caea38d03eb7efe8b334a6d45d33a3ded"
-        "fd0d8db8088c4b0b57add2b4fc83b341000541df4254b77ebeaee505fd9cf85c"
-        "001341c9fcab42de797e55bc5fb4b06d8b3dd35b8696e20032cee882c93e9071"
-        "d8b399416899b1c2312abe3b786e12c3198ba25341b6cbb9b13b04bc1e737d41"
-        "63f18f0b881d0818ffe743c6aa6d9d604963f6accde203e6b24ada5e2d3f4785"
-        "29bb980ae2e234158e8cf96a68c73cdbc05655005f2c709162bd9dcf531b6abd"
-        "3b82d7b7dfbe85c84546696aa85f408dbcc02573e4b3f5e3a761cdab6737a17c"
-        "cb95983813d81c4e5f748280ca22b6901f365901e8632abe40987f8dec9eb442"
-        "7623ecdb7fccc57b36f921c24b4eb9d47fd58ae6a6884afc0fcc5436259ade07"
-        "135f1cdc0dec5577c4bd7984284129295e27caad4b59284a442286e8711e307d"
-        "b12cdecbbaa41a85e9ce36ddc3f1a4e03e090e9ecde30ccb5489e5762ab9e4e4"
-        "b4ae7e002bf5c85cc116c3797cc9972ab4dcc3dfa1ac2b1f09654712588f9b1c"
-        "5e17bf659404869046674a8b911f3bcb0b81d7eac8754e70a15e94e4969654fb"
-        "1493b5d15c10614263f2386eddd4fd3960b550a446da4a0fa7b8fe7cddab3bcd"
-        "1f0dbd32b5c9502ecfe704a57a9641bc39154d76f6b67eb28c953fd775e00f75"
-        "3878b7d3ec78fdff4023e1fa2aa35614af23115b55f4633776f50d855c1bf770"
-        "dbae1acd39ea05c1453f13ffb7e75c7b2f55058dbe37f957339589b3afa8b828"
-        "eca5bd86c1f9c7ed9c16098a749f4e6255d6276991a4fcf51471dc3af8d3a6a3"
-        "2c7a801229615c4f0bf6e0de1a51446a18ec197e41d935687a84aaec74a9f868"
-        "c4aae1782476a3cc161fa9a885596d62e1f6f70180b5d9b490798b1cd612e2f3"
-        "ef319acb932c5d4c9dd1c8c88758f89eed88299b4896ead49368c0b74cf156db"
-        "a1cb021912f9f3907593fc855dc39ee6a303a5b35ef106c7b85cc720cbac8862"
-        "77030b738f9bb351be66c5e55b6e2006d97176a625e863b3b0b820188ba92312"
-        "c0194daca34b7c7622ccc279c7830be5dcd179f7a531a51b4294d81cd7fc02ce"
-        "3f981b597146e3904b4423d373164928ce948d6c0fcae0944dc42730aa24eedf"
-        "e0ebecfb15db6c92a8c1869ffb028b0fc74bbe69b707b91b2c573d112cbc6fb5"
-        "ccbb24397649bef41209ec84c037e0b8b38d6f1ba9d6648f77a8f32d27ac2a08"
-        "7b39aa7517f36abeafc06331fba2d22cac2386b27e91cd0c511cfd6ff01ca4e1"
-        "4d529280679cd7b5d39f4e4627128c4e1148de1fa925baddf1f15b381919d91b"
-        "87214a82647964965a9899c6d38fe96cf10fcbad5588cbd6a48830c42ce03187"
-        "f2417fca5ebdf2820476147d71d74f896cb142cbb013881ee32e7e883bd16c2a"
-        "8a67edac58e99d6089920ee6e273ce75f3807bef5e49a92eaf29dfd8ea1880f7"
-        "a490e5ee6df7c2f4c9c5dc248ed43dd8d56c4e39b722655741b09153f1785524"
-        "e8ff0573f00c93a3aecd713ba64ad5f373bb37644b50a288aebe5884b08acb38"
-        "a070b2ac6f6da5f2fc31590d76a98f107c5f15585c3215ec3275736beb8cba00"
-        "d482df5f1d1e1035581229a60db42f5497b8568b2875e6fc2eff2ef1918efbd4"
-        "fd4b851ad676f84eed12c58dfe424aef2682c0182d23bc70123f1c2fc635d8f3"
-        "5f7b6954a2de7f22c05a7bb14c29b13ea394b9f29b2bf18d3349a0decdf82400"
-        "cb119510372900b89f571d1a4edb75a3f4330e304849447f0c82d08e58325cfe"
-        "5c28429e7707a4e9e58104a12c62f59e0d62ca781706d3e057b9f2daba46bca2"
-        "7016788bea2d1b4664be71db2be36e773411ef6240aab7a66c5b6c43d21d52b9"
-        "63a9cd9d0909125b1ec3f9ad96b55622ba73d715950397363a7665cbdaa7b475"
-        "a70e89f09a816990d5bed351aa80276df72081585e0e8e4c72144e694f4826ab"
-        "0730313f7c6d3bdd41e0a9dd867b1f4171de63495e729a4114979c174563aac3"
-        "f0953fa0cae5763ccc19f659c05efb5803a5220783db54ea81fc438e9da70604"
-        "a787ecec70156c39346fbf7afcefd0d61e7f913c412c1dbc192433df5ba84d44"
-        "55108f0fe5a97b8d26c073ab28976c5d2cbd5047e3d9d74544f65b1700e18967"
-        "0f09d2023699cd6d2292e0636655dac00964e08085c343d6a6453bc3c609f195")
+        "grub-theme-void-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/void-linux.tar"
+        "grub-theme-windows-10.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/windows-10.tar"
+        "grub-theme-windows-11.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/windows-11.tar"
+        "grub-theme-xero-linux.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/xero-linux.tar"
+        "grub-theme-zorin-os.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/zorin-os.tar")
+sha256sums=("63f98fc6fa5ca1cc6d5ae4446989bf9c41daa38c9e85af131559b28990ea4f5f"
+            "83950ca05434f46c37872b6a3ee390c750d5c71a64ce345afefcd188dc9e2c03"
+            "997460781227b4952caf7c7f05c95f96058236d273967e2a6b89930d90262d37"
+            "9395448a314d6a7cce95b7ba1607b1bd8e930fef01d7d478e6d20ccade6c343d"
+            "8f519c7854d7edcfb66ba9fbaf1765a344ad8276ff44de9dadc27b57685dea61"
+            "3022d9f093f9583714243b5669221bd40106f5b6275cbc34e565dd6a0867b86e"
+            "86acc3297ea19c30c0289582185e856cec4db5627bbba01ccdc6a5e43f0bb0fd"
+            "b500875b6d6677b77c4a7a1173511b95827afed75ec8679f235141eaa051a59a"
+            "1859f2b538d194529c6887b8b75bee3a5b12fbac0be27f9474efc6fe249f016d"
+            "ef15def62318577ee6925935bc4365604e511a6ff2b56d6d02b63bea12ed4fb8"
+            "65635cf0c0d3a9e1499daee2067225f7cdb4fbfc849c2fb84d38534095db33bf"
+            "4a67c66429b8064ac3aa76944fc6106287aef553a59699238bfe1a9c88f9cc9f"
+            "72debc271350e0e4af10da7eeb75b8f40b009a6bdb35ff655a64309e39fa8291"
+            "b6ed33227e0b4c59905631e982e05aedf9bc91a6400152959163a4009170dfd0"
+            "f3f4a4e5518f86a395400d70213349a6b20a50bc942582c813e9a739c292708a"
+            "f047a42a895f40a4b152e284a9bbce318f97d382a9360bb4eed26513597ee54a"
+            "59c3ce430b245ffc5c7538e15e8838eb6a873d6a2c88f2d372f673ac8cf708c3"
+            "697ec3d8a2783ede61753bfbaa7c2d4e935900eaed8e1d0683ea1b4d126dbcaf"
+            "59d78b215bf2d778dce7e09eb330a86eddbda6ecb960f2200ab734bcd063ccbb"
+            "6e3493572fad007fbd64d0b105604990099daa443d704cfd7212ecebb003e13b"
+            "5a0f1134e41b810e9e10e5ae716292ab8e9c28d836a806a97b90cb4ed02856e0"
+            "d657dbb4af6c42c85389618f3600d9daa40da6a25a8cee621576666312a3a925"
+            "9c0a29a7471382827960d364d82948b273a0e4a250a13a892c645a342a267e54"
+            "0aca7aadf0582467005eeadbebc6401f5197dffa739d661cbb66054b6e3904a2"
+            "b92248c1855f2975c9c4e12dd218945dd1c910b4f59ba727bd13eec5868f8fa0"
+            "4ec4cd051f31421aae3f7f4858542261de94edfbfebfd1ba701e1088775f5bc9"
+            "096fc3d58008ddea15ab7b6113f1370df0ab5f19138290883454e452e4690ef4"
+            "d834adde027e2bb24d1dcd7b8f93d2ecf6333c59401d071acc4554619984a9b6"
+            "f23d98d1951360602b4f9ba998047d17747f03eebefa0170a172a373df5d9571"
+            "1023eaf06077dec80bca6d30a76fa1fd648bcf1775cd71a1bbb140722c859d8e"
+            "4c8213148f2f8e12006a48c50e70a0e3a80b2842e37f657edecdb3317e6ca28d"
+            "7e749580b41c076e9f6e4d8993ccc34a8d603fd28af76a1e6afc1f258d510cce"
+            "89b5d4e9449f813c55892fff1862395943339a2da569ec44ccdae3f76ddea97f"
+            "6a4c89dd1054dba5bdd0bc7f63393a536f6f1c00073eb4ca1d4504ebc74101b4"
+            "caf5122377eda8271a0b30c87a6f3557ffb4db736705e91e5db084dd4efb7f3a"
+            "769b484ae2950974308f62a197ebc505d0ae89305c5fdeefe14e4d715faa12bd"
+            "70c48e0d3865ca5df84eba8eea8ab01af2218429c063417f1ab6a6fec8af78e5"
+            "25c73f5366f928dd94f915b052e4b2091268ef93236954b2f7932ddc90335fa8"
+            "3e79935618ac398e284bf0dfe6805c52b3ab97d3d350e8965a0a1ac0cfc35fee"
+            "089cd4e0a37bf07cd4a61de461d232b286bf8b020394fe9bc406a76f65c8f863"
+            "eac539a55eceac23ca91d6c732c6250955e5da4c4a304f148ed5d12333db3e7c"
+            "824ccd73fbc10280a3df0c8e44c8b73953cd27d2176c552ea1864f1d98dd270a"
+            "ce3b82e0f8d4830845bb16786aa31052a5c9b73588729af5c141ef1c5f77c8a3"
+            "ee9232fea11eae46d51cc1e04963922681e62f1724249666ccc0c797f955853d"
+            "2086b29cd68c4f061bcbb8b5a66b3a34233532e8bbe21982f87bb8f217227a06"
+            "9ba298892909da949c98adebe44e6efb7b333067990994e7a6edcb44e790ea13"
+            "0e1fe143337af5bc69a394ed4d42043f662c729372e90f871a51a07c50c58a92"
+            "63504866c418df9280fe9242ef40bcf12500bd479154eb95dd01b7196fe90a98"
+            "63c21339714b362b3eb8f8413dfe560fe6aa5a4f3c3352a4ebb89569ea94e1fb"
+            "21b7a13580524857b6d1c78182f9bbb5892bdf4e0f6b326331e335e9e42655c7"
+            "1d25b7b91a24bc16e42cdc2b1aa823114aafee84d6e2a8b3d9b0f5983d37c593"
+            "85e65c8a03364229f35524aaaea503aa499e806839b9d018bde37d5c6642c5d6"
+            "0a906fecb4000898139a9a96e16bb876a227ef99d5a353d88f66b00a1c12468c"
+            "78fb42954a324cfb52e8ed74479a1ebbfb5eb8f22b9751d19edd343eff252832"
+            "a9a8674b0636cd3722345246186608bdea49cf4f697737237fb67c17e513b155"
+            "7a0d673c75100246886fd3069cf916d1b9a4df1e84a29dad0446a6cf9df07538"
+            "f5042a42093fd5b7c5dcac1288237f967e352894cc7f884dfbc5540b0e0aab15"
+            "64814a53f85877c1c87a5153b90cf39073d49520c70a67f1b9dad06c9a10f233")
+
 noextract=("${source[@]%%::*}")	
 	
 prepare() {
@@ -201,7 +202,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-alma () {
+package_grub-theme-almalinux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -225,7 +226,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-arch () {
+package_grub-theme-arch-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -233,7 +234,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-arco () {
+package_grub-theme-arco-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -241,7 +242,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-artix () {
+package_grub-theme-artix-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -265,7 +266,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-bedrock () {
+package_grub-theme-bedrock-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -313,7 +314,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-elementary () {
+package_grub-theme-elementaryos () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -393,7 +394,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-kdeneon () {
+package_grub-theme-kde-neon () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -457,7 +458,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-mate () {
+package_grub-theme-medion () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -465,7 +466,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-mint () {
+package_grub-theme-linux-mint () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -481,7 +482,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-mx () {
+package_grub-theme-mx-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -513,7 +514,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-pop () {
+package_grub-theme-pop-os () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -529,7 +530,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-rocky () {
+package_grub-theme-rocky-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -585,7 +586,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-ubuntu () {
+package_grub-theme-ubuntu-mate () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -617,7 +618,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-void () {
+package_grub-theme-void-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -625,7 +626,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-windows10 () {
+package_grub-theme-windows-10 () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -633,7 +634,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-windows11 () {
+package_grub-theme-windows-11 () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -641,7 +642,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-xero () {
+package_grub-theme-xero-linux () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
@@ -649,7 +650,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-zorinos () {
+package_grub-theme-zorin-os () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
