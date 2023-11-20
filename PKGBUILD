@@ -19,7 +19,7 @@ pkgname=(
   pipewire-common-v4l2-git
   pipewire-common-x11-bell-git
 )
-pkgver=0.3.81.r48.g15e14946
+pkgver=0.3.85.r8.g7cd242bf
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -52,6 +52,7 @@ makedepends=(
   meson
   ncurses
   opus
+  pandoc
   python-docutils
   readline
   roc-toolkit
