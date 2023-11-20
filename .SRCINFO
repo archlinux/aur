@@ -1,0 +1,36 @@
+pkgbase = glewlwyd
+	pkgdesc = Single-Sign-On (SSO) server with multiple factor authentication
+	pkgver = 2.7.6
+	pkgrel = 1
+	url = https://github.com/babelouest/glewlwyd
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = mariadb-libs
+	makedepends = ninja
+	makedepends = postgresql-libs
+	makedepends = sqlite
+	makedepends = systemd
+	depends = glibc
+	depends = gnutls
+	depends = jansson
+	depends = libcbor.so
+	depends = libconfig.so
+	depends = libcrypt.so
+	depends = libhoel.so
+	depends = libiddawc.so
+	depends = libldap
+	depends = liboath.so
+	depends = liborcania.so
+	depends = librhonabwy.so
+	depends = libulfius.so
+	depends = libyder.so
+	backup = etc/glewlwyd/glewlwyd.conf
+	source = git+https://github.com/babelouest/glewlwyd.git#tag=11f57ec345b2d12cdf777f694ff33a6a4f10361d
+	source = glewlwyd.service
+	validpgpkeys = 8405B02FCC28EF9744C8F253FE82139440BD22B9
+	b2sums = SKIP
+	b2sums = 3111b839f2f69a7daf9158a365ad36fddb2fd5a0ae9e63f0ef1ded4a76098fabb1fb340290755184e7ba44f7d64820d2b7980c22328ec792f6f56f85a025f931
+
+pkgname = glewlwyd
