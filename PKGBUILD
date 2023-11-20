@@ -3,7 +3,7 @@
 _gitname=material-design-icons
 pkgbase=material-symbols-git
 pkgname=({ttf,woff2}-material-symbols-git)
-pkgver=4.0.0+r83+g6745d95590b
+pkgver=4.0.0.r91.ga90037f80d
 pkgrel=1
 pkgdesc="Material Design icons by Google"
 url="https://github.com/google/material-design-icons"
@@ -13,7 +13,7 @@ makedepends=(git)
 
 pkgver() {
   cd "${_gitname}"
-  git describe --tags | sed -r 's/^V//;s/[^-]*-g/r&/;s/-/+/g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

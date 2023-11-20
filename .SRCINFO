@@ -1,6 +1,6 @@
 pkgbase = material-symbols-git
 	pkgdesc = Material Design icons by Google
-	pkgver = 4.0.0+r83+g6745d95590b
+	pkgver = 4.0.0.r91.ga90037f80d
 	pkgrel = 1
 	url = https://github.com/google/material-design-icons
 	arch = any
