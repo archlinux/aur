@@ -1,7 +1,8 @@
 # Maintainer : Kitestramuort <kitestramuort@autistici.org>
 
 pkgname=python-sentinelsat
-pkgver=1.1.1
+appname=sentinelsat
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Search and download Copernicus Sentinel satellite images"
 arch=('x86_64')
@@ -10,9 +11,9 @@ license=('GPL3')
 depends=('python' 'python-pandas' 'python-geopandas' 'python-shapely' 'python-pytest-socket' 'python-pytest-vcr' 'python-yaml' 'rstcheck' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-flaky' 'python-geomet')
 provides=('python-sentinelsat')
 source=("https://github.com/sentinelsat/sentinelsat/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('5deee310c0f5a0a108b9dad6e2260116')
+md5sums=('ab46473f78570d4acbc8db722b3b0371')
 
 package() {
-	cd ${pkgname}-${pkgver}
+	cd ${appname}-${pkgver}
 	python setup.py install --root=${pkgdir} --optimize=1
 }
