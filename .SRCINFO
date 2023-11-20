@@ -1,0 +1,24 @@
+pkgbase = srm-git
+	pkgdesc = A C library that simplifies the development of Linux DRM/KMS applications.
+	pkgver = 0.3.2.2.r0.g68283d0
+	pkgrel = 1
+	url = https://github.com/CuarzoSoftware/SRM
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = libglvnd
+	depends = libdrm
+	depends = mesa
+	depends = libdisplay-info
+	depends = libinput
+	depends = seatd
+	depends = glibc
+	depends = systemd-libs
+	provides = srm
+	conflicts = srm
+	source = srm::git+https://github.com/CuarzoSoftware/SRM.git
+	sha256sums = SKIP
+
+pkgname = srm-git
