@@ -2,7 +2,7 @@
 
 pkgname=showmidi
 _pkgname=ShowMIDI
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Multi-platform GUI application to effortlessly visualize MIDI activity"
 arch=("i686" "x86_64")
