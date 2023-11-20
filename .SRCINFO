@@ -1,17 +1,16 @@
 pkgbase = python-aiohttp-debugtoolbar
 	pkgdesc = debugtoolbar for aiohttp
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://pypi.org/project/aiohttp-debugtoolbar
 	arch = any
-	license = Apache 2
+	license = Apache
 	makedepends = python-setuptools
 	depends = python
 	depends = python-aiohttp
 	depends = python-aiohttp-jinja2
-	source = python-aiohttp-debugtoolbar-0.6.0.tar.gz::https://pypi.org/packages/source/a/aiohttp-debugtoolbar/aiohttp-debugtoolbar-0.6.0.tar.gz
-	sha256sums = ec231661133b40136608d39dfb688e7ea0c3d47b6ae6dee52d5bf24ceb9e4d45
-	b2sums = 2dd5706670a3e5b2ee04c8e039ea419d9b08cef2e923d832dc9e54d6d3df5d42f0c0ae873b75ab1c48d299cf57564050443d6a66db4f2de0c61e47e2ffb7dfa9
+	source = python-aiohttp-debugtoolbar-0.6.1.tar.gz::https://pypi.org/packages/source/a/aiohttp-debugtoolbar/aiohttp-debugtoolbar-0.6.1.tar.gz
+	sha256sums = cd7ae54c600db7ae7d9dc3404b81f95209a6367df1d59e13ea20f9926e36e001
+	b2sums = 5f8b549f6c07147da93f719a8bffb67592b7dd37a782135ec8356d5bd7f4e21d4f9fbc8df4506980e5fe884e446dfbcb19a7c9fa7301677ff89c41686b88f629
 
 pkgname = python-aiohttp-debugtoolbar
-
