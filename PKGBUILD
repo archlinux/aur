@@ -8,6 +8,7 @@
 __arch_pkg_commit="108c7090a77081cd124c819e014ced95b4648d55"
 _gtkver=3.24.38
 
+_gtk3_classic_url=https://github.com/lah7/gtk3-classic
 _gtk3_classic_commit="ad4dccf4bda249e1725380dea660e6bded5c4444"
 
 _gtk3_classic=gtk3-classic
@@ -15,11 +16,11 @@ _gtk3_classic=gtk3-classic
 pkgbase=gtk3-classic-xfce
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=3
+pkgrel=4
 pkgdesc="Patched GTK+3 that provides a more classic experience, with patches for xfce"
-url="https://github.com/lah7/gtk3-classic"
+url="https://github.com/simplejack-src/gtk3-classic-xfce"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git gtk3-classic)
-provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
+provides=(gtk3-classic=${pkgver} gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
 arch=(x86_64)
 license=(LGPL)
@@ -86,7 +87,7 @@ makedepends=(
 )
 install=gtk3.install
 source=(
-	git+$url.git#commit=$_gtk3_classic_commit
+	git+$_gtk3_classic_url.git#commit=$_gtk3_classic_commit
  	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
 
 	"gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook"
