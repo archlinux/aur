@@ -1,14 +1,15 @@
 pkgbase = zasm
-	pkgdesc = A 2-pass assembler for the Zilog 8-bit Z80 CPU
-	pkgver = 4.2.5
+	pkgdesc = Z80/8080/Z180 assembler
+	pkgver = 4.4.13
 	pkgrel = 1
-	url = http://k1.spdns.de/Develop/Projects/zasm/
+	url = https://k1.spdns.de/Develop/Projects/zasm/Distributions/
 	arch = any
 	license = BSD
-	source = git+https://bitbucket.org/megatokio/zasm.git#commit=39d265e481e4180c1c6681d8b1d661cc1b8136e9
-	source = git+https://bitbucket.org/megatokio/libraries.git#commit=9684213b6861bf7f9f45305f78927379f648d30c
-	sha256sums = SKIP
+	makedepends = git
+	depends = zlib
+	provides = zasm
+	conflicts = zasm-git
+	source = git+https://github.com/Megatokio/zasm#tag=4.4.13
 	sha256sums = SKIP
 
 pkgname = zasm
-

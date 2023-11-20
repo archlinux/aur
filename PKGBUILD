@@ -1,28 +1,34 @@
-# Maintainer: Bradan J. Wolbeck <bwolbeck@compaqdisc.com>
+# Maintainer: Maxim Logaev <maximlogaev2001ezro@gmail.com>
+# Previous Maintainer: Bradan J. Wolbeck <bwolbeck@compaqdisc.com>
 # Contributor: Sean Enck <enckse@gmail.com>
 # Contributor: John K. Luebs <https://github.com/jkl1337>
 
 pkgname=zasm
-pkgver=4.2.5
+pkgver=4.4.13
 pkgrel=1
-pkgdesc="A 2-pass assembler for the Zilog 8-bit Z80 CPU"
+pkgdesc="Z80/8080/Z180 assembler"
 arch=('any')
-url="http://k1.spdns.de/Develop/Projects/zasm/"
+url="https://k1.spdns.de/Develop/Projects/zasm/Distributions/"
 license=('BSD')
-source=("git+https://bitbucket.org/megatokio/zasm.git#commit=39d265e481e4180c1c6681d8b1d661cc1b8136e9"
-        "git+https://bitbucket.org/megatokio/libraries.git#commit=9684213b6861bf7f9f45305f78927379f648d30c")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/Megatokio/zasm#tag=$pkgver")
+provides=('zasm')
+depends=('zlib')
+makedepends=('git')
+conflicts=('zasm-git')
+sha256sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule init
+  git submodule update
+}
 
 build() {
-  cd ${srcdir}/${pkgname}
-  rm -rf Libraries
-  ln -s ../libraries Libraries
-  cd Linux
+  cd "${srcdir}/${pkgname}"
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}/Linux
-  install -Dm755 zasm "${pkgdir}/usr/bin/zasm"
+  install -Dm755 "${srcdir}/${pkgname}/zasm" "${pkgdir}/usr/bin/zasm"
 }
 
