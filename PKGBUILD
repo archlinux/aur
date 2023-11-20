@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=fv-cli
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='A command-line font viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/kenshaw/fv"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('42b4b2cafea143b4de8219d037daa1cfe7433ce022d0606b3de6520f37109d22')
+sha256sums=('2043b8cb6d5e264ea6b21f6c58e6e4651b1e0dc7209af4740048a6518f8464d6')
 
 build() {
     cd fv-$pkgver
