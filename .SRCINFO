@@ -1,22 +1,22 @@
 pkgbase = cavalier-git
 	pkgdesc = Audio visualizer based on CAVA
-	pkgver = 2023.9.0.r12.g7a3a107
+	pkgver = 2023.11.0.r5.g869a1b1
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/cavalier
 	arch = any
 	license = MIT
 	makedepends = blueprint-compiler
-	makedepends = dotnet-sdk>=7
+	makedepends = dotnet-sdk>=8
 	makedepends = git
 	depends = cava
-	depends = dotnet-runtime>=7
+	depends = dotnet-runtime>=8
 	depends = libadwaita
 	depends = iniparser
 	depends = fftw
 	provides = cavalier
 	conflicts = cavalier
 	source = git+https://github.com/NickvisionApps/cavalier
-	source = git+https://github.com/NickvisionApps/cakescripts#commit=c7e3bbbb807bdade8c89e5a3ad057b00fac2102e
+	source = git+https://github.com/NickvisionApps/cakescripts#commit=1b48cc0957fcd65c3b0f25285e84033fb5b7f542
 	b2sums = SKIP
 	b2sums = SKIP
 
