@@ -8,6 +8,7 @@ pkgbase = clash-nyanpasu-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse2
+	depends = clash-meta
 	provides = clash-nyanpasu
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-nyanpasu-bin
