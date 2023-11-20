@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
-pkgver=1.3.9
+pkgver=1.3.15
 pkgrel=1
 pkgdesc="Bootstrap and package your project with Angular 15 and Electron 21 (Typescript + SASS + Hot Reload) for creating Desktop applications."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/$
     "LICENSE.md::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/src/assets/icons/favicon.512x512.png"
     "${pkgname%-bin}.sh")
-sha256sums=('e5f069779cdb1db2afe6e4c40c2b2f2f8bad66940c715f361bcc2b7399537a40'
+sha256sums=('579eceabb2d2e32d699016db1dd6ebdd6c651521a41c05db37ee5072a2095cf9'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
             'c71e32374e069ce3ec885498bf61c11a16655db0818cc912e31a87dc579a3673')
