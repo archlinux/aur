@@ -1,0 +1,15 @@
+pkgbase = clashtui-git
+	pkgdesc = Clash Meta TUI 客户端
+	pkgver = r4.a1e9deb
+	pkgrel = 1
+	url = https://github.com/JohanChane/clashtui
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = clashtui
+	source = git+https://github.com/JohanChane/clashtui.git
+	md5sums = SKIP
+
+pkgname = clashtui-git
