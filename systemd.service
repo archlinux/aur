@@ -1,0 +1,10 @@
+[Unit]
+Description=AceStream Engine Service
+After=remote-fs.target network.target
+
+[Service]
+User=acestream
+ExecStart=/usr/bin/acestream-engine-py3 --client-console @/usr/lib/acestream-engine-py3/acestream.conf --live-cache-type memory --state-dir /var/lib/acestream --log-file /var/lib/acestream/acestream-engine-py3.log
+
+[Install]
+WantedBy=multi-user.target

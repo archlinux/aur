@@ -29,7 +29,8 @@ source=("$pkgname-$pkgver.tar.gz::https://download.acestream.media/linux/acestre
         "https://files.pythonhosted.org/packages/6c/0c/f37b6a241f0759b7653ffa7213889d89ad49a2b76eb2ddf3b57b2738c347/iso8601-2.1.0-py3-none-any.whl"
         "https://files.pythonhosted.org/packages/f1/c9/326611aa83e16b13b6db4dbb73b5455c668159a003c4c2f0c3bcb2ddabaf/cffi-1.16.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
         "https://files.pythonhosted.org/packages/62/d5/5f610ebe421e85889f2e55e33b7f9a6795bd982198517d912eb1c76e1a53/pycparser-2.21-py2.py3-none-any.whl"
-		"sysusers.conf"
+        "sysusers.conf"
+        "systemd.service"
 )
 noextract=(
         "pycryptodome-3.19.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
@@ -51,7 +52,8 @@ sha256sums=(
         "aac4145c4dcb66ad8b648a02830f5e2ff6c24af20f4f482689be402db2429242"
         "6602bc8dc6f3a9e02b6c22c4fc1e47aa50f8f8e6d3f78a5e16ac33ef5fefa324"
         "8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"
-		"dd0091a54c435a57a658f29b8675dfdc840e2d07cd05d41e87482a2c3ae331da"
+        "dd0091a54c435a57a658f29b8675dfdc840e2d07cd05d41e87482a2c3ae331da"
+        "089fa5087d1d6e5112dd13b8a4a33d1f18728f2f446cd986feabe29cc23f0ba6"
 )
 
 # prepare() {
@@ -64,17 +66,17 @@ build() {
     python3.8 -m venv .
     bin/pip3.8 --disable-pip-version-check install ./*.whl
     source bin/activate
-    echo THIS WORKS! $(which python)
 }
 
 package() {
     cd "$srcdir"
     
-	# Change the launcher script
+    # Change the launcher script
     sed -i "/ROOT=/c\ROOT=\/usr/lib\/${pkgname}" "start-engine"
     sed -i "s@LD_LIBRARY_PATH=@PYTHONPATH=\${ROOT}/lib/python3.8/site-packages/ LD_LIBRARY_PATH=@g" "start-engine"
     sed -i "s@${ROOT}/acestreamengine@${ROOT}/acestream-engine-py3@g" "start-engine"
 
+    # Inherited copies from acestream-engine AUR package
     install -Dm755 "start-engine"                "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "acestream.conf"              "$pkgdir/usr/lib/$pkgname/acestream.conf"
     install -Dm755 "acestreamengine"             "$pkgdir/usr/lib/$pkgname/acestreamengine"
@@ -82,7 +84,15 @@ package() {
     cp -a "lib"                                  "$pkgdir/usr/lib/$pkgname/"
     install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-    install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    # Copy venv folders
+    cp -a "bin"                                  "$pkgdir/usr/lib/$pkgname/"
+    ln -s                                        "$pkgdir/usr/lib/$pkgname/lib" "$pkgdir/usr/lib/$pkgname/lib64"
+
+    # System integration
+    install -Dm644 systemd.service   "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 sysusers.conf     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+    # Copy license
     install -Dm644 "LICENSE"          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
