@@ -10,6 +10,7 @@ pkgbase = protopedal-git
 	makedepends = glibc
 	makedepends = make
 	provides = protopedal
+	conflicts = protopedal
 	source = git+https://gitlab.com/openirseny/protopedal
 	sha256sums = SKIP
 

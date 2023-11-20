@@ -2,6 +2,7 @@
 _pkgname=protopedal
 pkgname=protopedal-git
 provides=($_pkgname)
+conflicts=($_pkgname)
 pkgver=0.1
 pkgrel=3
 pkgdesc="Compatibility tool for sim racing pedals and force feedback steering wheels"
