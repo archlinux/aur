@@ -6,15 +6,15 @@
 
 pkgname='python-typed-argument-parser'
 _name=${pkgname#python-}
-pkgver=1.7.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Typed modernization of Python's argparse library"
 arch=('any')
 url='https://github.com/swansonk14/typed-argument-parser'
 license=('MIT')
-depends=('python-typing_extensions' 'python-typing_inspect')
+depends=('python-typing_extensions' 'python-typing_inspect' 'python-docstring-parser')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner')
+checkdepends=('python-pytest-runner' 'python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swansonk14/$_name/archive/refs/tags/v_$pkgver.tar.gz")
 sha256sums=('SKIP')
 

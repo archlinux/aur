@@ -1,15 +1,17 @@
 pkgbase = python-typed-argument-parser
 	pkgdesc = Typed modernization of Python's argparse library
-	pkgver = 1.7.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/swansonk14/typed-argument-parser
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-runner
+	checkdepends = python-pip
 	makedepends = python-setuptools
 	depends = python-typing_extensions
 	depends = python-typing_inspect
-	source = python-typed-argument-parser-1.7.2.tar.gz::https://github.com/swansonk14/typed-argument-parser/archive/refs/tags/v_1.7.2.tar.gz
+	depends = python-docstring-parser
+	source = python-typed-argument-parser-1.9.0.tar.gz::https://github.com/swansonk14/typed-argument-parser/archive/refs/tags/v_1.9.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-typed-argument-parser
