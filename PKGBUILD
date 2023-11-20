@@ -5,7 +5,7 @@ _pkgname=libadwaita
 pkgbase=libadwaita-testing
 pkgname=(libadwaita-testing libadwaita-testing-docs libadwaita-testing-demos)
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
 arch=(x86_64)
@@ -15,8 +15,10 @@ makedepends=(git meson gi-docgen sassc gobject-introspection vala libgtk-4.so)
 checkdepends=(weston)
 options=(debug)
 _commit=c196ee37a2938ce6ed0bfde2b575a0013d997158  # tags/1.4.0^0
-source=("git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=$_commit"
+         appstream-1.0-test.patch)
+b2sums=('SKIP'
+        'e6187835bbde2e5bd8d4c7d87ef62843a6dc98490c545b874a517a79b91cbba25afb0384e381c74dc963a5c10d59af3be17e7b96a967604556f596789bde276c')
 
 pkgver() {
   cd $_pkgname
@@ -25,6 +27,11 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  
+  # Support appstream 1.0
+  git cherry-pick -n c579fbe0c10d2b761cfe1fe4e825aaa19fe81c77
+  git cherry-pick -n 3e3967d5f69180644519936991cad10136e84ca9
+  patch -p1 < ../appstream-1.0-test.patch
 }
 
 build() {
