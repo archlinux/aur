@@ -55,6 +55,24 @@ sudo ./install.sh
 . ./install.sh
 ```
 
+## Opening KakaoTalk (카카오톡 열기)
+
+You can init and open KakaoTalk by choosing **one of the methods below**.
+After initialization, a shortcut icon will appear on the desktop so you can open it more conveniently.
+
+**아래의 방법 중 하나를 수행**하여 카카오톡을 초기화 및 실행할 수 있습니다.
+초기화 후에는 바탕화면에 바로가기 아이콘이 생기므로 더욱 편리하게 실행할 수 있습니다.
+
+### CLI (명령줄 인터페이스를 활용하기)
+
+```bash
+kakaotalk
+```
+
+### Xfce
+
+Application Finder -> Search KakaoTalk (카카오톡) -> Open
+
 ## Uninstallation (삭제법)
 
 ### KakaoTalk (카카오톡)
