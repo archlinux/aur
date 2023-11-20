@@ -1,5 +1,5 @@
 # Maintainer: Maxim Logaev <maximlogaev2001ezro@gmail.com>
-# Previous Maintainer: Bradan J. Wolbeck <bwolbeck@compaqdisc.com>
+# Previous maintainer: Bradan J. Wolbeck <bwolbeck@compaqdisc.com>
 # Contributor: Sean Enck <enckse@gmail.com>
 # Contributor: John K. Luebs <https://github.com/jkl1337>
 
