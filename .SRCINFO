@@ -1,18 +1,16 @@
 pkgbase = passwordsafe-bin
 	pkgdesc = Popular secure and convenient password manager
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pwsafe.org/
 	arch = x86_64
-	license = Artistic2.0
+	license = custom:Artistic2.0
 	depends = file
-	depends = gcc-libs
 	depends = curl
 	depends = libx11
 	depends = hicolor-icon-theme
 	depends = libxtst
 	depends = qrencode
-	depends = glibc
 	depends = util-linux-libs
 	provides = passwordsafe=1.18.0
 	conflicts = passwordsafe
