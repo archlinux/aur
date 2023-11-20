@@ -1,18 +1,18 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2023.9.1
+pkgver=2023.11.0
 pkgrel=1
 pkgdesc='An easy-to-use video downloader'
 arch=(aarch64 armv7h x86_64 i686)
 url=https://github.com/NickvisionApps/$pkgname
 license=(GPL3)
-depends=(aria2 dee 'dotnet-runtime>=7' ffmpeg gnome-common libadwaita libdbusmenu-gtk3 libunity python-brotli python-mutagen python-pycryptodomex python-pyxattr python-websockets yt-dlp python-psutil)
-makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
+depends=(aria2 dee 'dotnet-runtime>=8' ffmpeg gnome-common libadwaita libdbusmenu-gtk3 libunity python-brotli python-mutagen python-pycryptodomex python-pyxattr python-websockets yt-dlp python-psutil)
+makedepends=(blueprint-compiler 'dotnet-sdk>=8' git)
 provides=(tube-converter)
 replaces=(tube-converter)
 conflicts=(tube-converter)
-source=("git+$url#tag=$pkgver" "git+${url%parabolic}cakescripts.git#commit=d8dda8b25499cdedb6cb015db18e54d7ea720ac3")
+source=("git+$url#tag=$pkgver" "git+${url%parabolic}cakescripts.git#commit=1b48cc0957fcd65c3b0f25285e84033fb5b7f542")
 b2sums=('SKIP' 'SKIP')
 
 prepare() {
