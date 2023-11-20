@@ -49,7 +49,7 @@ _target="c1-${_pkgver}.zip"
 
 source=(
   "${_target}::http://web.archive.org/web/20220405204613/http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
-  "IDOS-Licence.pdf::http://web.archive.org/web/20210904102649/https://www.chaps.cz/files/idos/IDOS-Licence.pdf"
+  "IDOS-Licence.pdf::http://web.archive.org/web/20210904102649/http://www.chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
