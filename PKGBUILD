@@ -2,13 +2,13 @@
 
 pkgname=plasma5-applets-uswitch-git
 pkgver=1.3.0.r2.g4c9936a
-pkgrel=1
+pkgrel=2
 pkgdesc='Modified version of User Switch plasmoid'
 url='https://gitlab.com/divinae/uswitch'
 license=('GPL3')
 arch=('any')
 depends=('plasma-workspace')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'kcoreaddons')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kcoreaddons5')
 provides=('plasma5-applets-uswitch')
 conflicts=('plasma5-applets-uswitch')
 source=("$pkgname::git+https://gitlab.com/divinae/uswitch.git")
