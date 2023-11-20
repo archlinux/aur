@@ -2,7 +2,7 @@
 pkgname=oip
 pkgver=0.05_1~security1210+1
 pkgrel=1
-pkgdec='A visualizer to visualize IP traffic between endpoints'
+pkgdesc='A visualizer to visualize IP traffic between endpoints'
 arch=('x86_64')
 url='https://github.com/USU-Security/oip'
 license=('GPL3')
