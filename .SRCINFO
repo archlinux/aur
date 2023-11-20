@@ -1,6 +1,6 @@
 pkgbase = jdk17-zulu-prime-bin
 	pkgdesc = Azul Platform Prime Stream Build of OpenJDK 17. TCK compliant, free for development.
-	pkgver = 23.07.0.0_2
+	pkgver = 23.10.0.0_3
 	pkgrel = 1
 	url = https://www.azul.com/downloads/#prime
 	install = jdk17-zulu-prime-bin.install
@@ -18,9 +18,9 @@ pkgbase = jdk17-zulu-prime-bin
 	depends = alsa-lib
 	provides = java-runtime=17
 	provides = java-environment=17
-	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM23.07.0.0/zing23.07.0.0-2-jdk17.0.7-linux_x64.tar.gz
-	sha256sums_x86_64 = 82711e536066743e4dd8bc9124ae14a1ba477dfe743fb2eaba2c18216a7382c8
-	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM23.07.0.0/zing23.07.0.0-2-jdk17.0.7-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 62eff422453cf56d37f101810373a5372e23f5de057eaff41879bcec2af3d5da
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM23.10.0.0/zing23.10.0.0-3-jdk17.0.9-linux_x64.tar.gz
+	sha256sums_x86_64 = b4b27fa8926dadf9ed760731616668fc0f698980c8df9ebc6a1655e763a135a6
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM23.10.0.0/zing23.10.0.0-3-jdk17.0.9-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 8a851278777cba9d1f50fc321a55370b55e81cdaeeb97e393e1f5c3e0adaf6f0
 
 pkgname = jdk17-zulu-prime-bin
