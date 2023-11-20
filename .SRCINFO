@@ -1,6 +1,6 @@
 pkgbase = fingrom-bin
 	pkgdesc = Platform-agnostic financial accounting application (binary release)
-	pkgver = 5.1.2
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://github.com/lyskouski/app-finance
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fingrom-bin
 	depends = mesa
 	provides = fingrom
 	conflicts = fingrom
-	source = fingrom-5.1.2.tar.gz::https://github.com/lyskouski/app-finance/releases/download/v5.1.2/fingrom_Linux.tar.gz
-	sha256sums = 871de8f7272b91b9bc351c6efaea41b4aa6bf5573a63b25934811d3af1671be5
+	source = fingrom-5.1.3.tar.gz::https://github.com/lyskouski/app-finance/releases/download/v5.1.3/fingrom_Linux.tar.gz
+	sha256sums = a47f36036176ce6309a523eaf953803bc47c51378ee154a31224fcbf2996f62b
 
 pkgname = fingrom-bin

@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=fingrom-bin
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="Platform-agnostic financial accounting application (binary release)"
 url="https://github.com/lyskouski/app-finance"
@@ -11,7 +11,7 @@ depends=('gtk3' 'mesa')
 conflicts=("fingrom")
 provides=("fingrom")
 source=("fingrom-$pkgver.tar.gz::$url/releases/download/v$pkgver/fingrom_Linux.tar.gz")
-sha256sums=('871de8f7272b91b9bc351c6efaea41b4aa6bf5573a63b25934811d3af1671be5')
+sha256sums=('a47f36036176ce6309a523eaf953803bc47c51378ee154a31224fcbf2996f62b')
 
 package() {
   mkdir -p "$pkgdir/opt/fingrom" "$pkgdir/usr/bin"
