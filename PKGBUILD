@@ -2,7 +2,7 @@
 
 pkgname=tinyfilemanager
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Web based, simple, fast and small file manager"
 arch=('any')
 url="https://github.com/prasathmani/${pkgname}"
@@ -13,5 +13,5 @@ md5sums=('56a4c46ed11cf01d72675584961e3ad6')
 
 package() {
     cd ${pkgname}-${pkgver}
-    install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" "${pkgname}.php"
+    install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" "${pkgname}.php" "translation.json" assets/css/* assets/fonts/* assets/js/*
 }
