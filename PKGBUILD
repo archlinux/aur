@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pak
-_cranver=0.6.0
+_cranver=0.7.0
 pkgname=r-${_cranname,,}
 pkgdesc="Another Approach to R Package Installation"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -60,7 +60,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("7a2fca42bb93961145708edfffe03b3857f40468f9aeaf74f7e20ca5163064b9df7d5bf1ae8a2947e79c2e52f4e02daf60c1379ffa52b6ad7e96d6dbeefbca18")
+b2sums=("2aed95f3b4eefca416a2248a168c7455a08b84436b004c78dbbcd667aea80882d2e1f203fbcbc8734013f4ba9aa86b911df87f3656b940538e814640d825cb06")
 
 build() {
     mkdir -p "${srcdir}/build/"
