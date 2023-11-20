@@ -2,7 +2,7 @@
 # Contributor: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=openiked
-pkgver=7.2
+pkgver=7.3
 pkgrel=1
 pkgdesc="Free implementation of the IKEv2 protocol"
 arch=('aarch64' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('iked' 'ikectl')
 source=("https://cdn.openbsd.org/pub/OpenBSD/OpenIKED/openiked-${pkgver}.tar.gz"{,.asc}
         'openiked.service'
         'sysusers.conf')
-sha256sums=('55dc270bc40a121f855d949a25a5ffaeb11e7607e8198ec52160ef54b6946845'
+sha256sums=('9a04d513a81f9d5a873a0bd9992067a55796812674c9a96791b3adc6a63e6347'
             'SKIP'
             '692eca0595a26e33b3d305909a4b70b2b62913118386117e91c81c2f85c3e612'
             '0b9806bc8e75fdc473db71d12b9096b6016cc0023835c84f83e36316e594847b')
