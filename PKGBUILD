@@ -1,11 +1,11 @@
 # Maintainer: a13xie <rostik.medved@gmail.com>
 pkgname='proidcm'
-pkgver=1.0.1
-pkgrel=2
-_filename="${pkgname}_${pkgver}-0_amd64"
+pkgver=1.0.2
+pkgrel=1
+_filename="${pkgname}-${pkgver}-0.amd64"
 pkgdesc="Graphical utility for managing ProID Smart Cards"
 makedepends=(jq)
-depends=(libproidplus-gui qt5-base)
+depends=(libproidplus-gui qt6-base)
 arch=('x86_64')
 url="https://proid.cz/"
 license=('custom:EULA')
@@ -17,7 +17,7 @@ prepare () {
 	mkdir "$srcdir/$pkgname"
 	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/${_filename}.deb.zip"
 	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/$pkgname/${_filename}.deb"
-	echo "$(cat $srcdir/$pkgname/${_filename}.sha256 | cut -d ' ' -f1) $srcdir/$pkgname/${_filename}.deb" | sha256sum --check --status
+	echo "$(cat $srcdir/$pkgname/${_filename}.deb.sha256 | cut -d ' ' -f1) $srcdir/$pkgname/${_filename}.deb" | sha256sum --check --status
 }
 
 package () {

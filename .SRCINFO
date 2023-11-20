@@ -1,12 +1,12 @@
 pkgbase = proidcm
 	pkgdesc = Graphical utility for managing ProID Smart Cards
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://proid.cz/
 	arch = x86_64
 	license = custom:EULA
 	makedepends = jq
 	depends = libproidplus-gui
-	depends = qt5-base
+	depends = qt6-base
 
 pkgname = proidcm
