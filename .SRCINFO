@@ -1,6 +1,6 @@
 pkgbase = discord-canary-electron-bin
 	pkgdesc = Discord Canary (popular voice + video app) using the system provided electron for increased security and performance
-	pkgver = 0.0.185
+	pkgver = 0.0.186
 	pkgrel = 1
 	url = https://canary.discordapp.com
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = discord-canary-electron-bin
 	provides = discord-canary
 	conflicts = discord-canary
 	options = !strip
-	source = https://dl-canary.discordapp.net/apps/linux/0.0.185/discord-canary-0.0.185.tar.gz
+	source = https://dl-canary.discordapp.net/apps/linux/0.0.186/discord-canary-0.0.186.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
-	sha256sums = fe8103f798499ba2c8f047a52504ab367867b7292636a4e6856eafaa197911ea
+	sha256sums = 6c63b84ea5c67aafe261ff91ef5a1a6c11022945d56b072f49f7fbab630f05ad
 	sha256sums = SKIP
 	sha256sums = SKIP
 
