@@ -120,7 +120,7 @@
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=35
+pkgrel=36
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -153,7 +153,7 @@ sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
             '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
-            'cc19b6ac84ddb263e78c82c799689d5c814fe97a781b0c42d3d1a3f5f31ca79a'  # doxygen-more-fields
+            'b42d27929fcec3825711c13baf0c5a4ea0da33b8ff5e6f60c3c61d2f1f9525af'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             'faf5c8b2a5a345be59c33f5de591f39dd35b1a2b97ca067e21023e311610bc0d'  # lsp-codelens
             'd048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc'  # postfix-completion

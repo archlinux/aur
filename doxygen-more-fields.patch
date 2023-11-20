@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index f7e01f4ccf32..9f303369570e 100644
+index f7e01f4ccf32..4162f2b98501 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
 @@ -185,8 +185,11 @@ HoverInfo::PrintedType printType(QualType QT, ASTContext &ASTCtx,
@@ -15,10 +15,75 @@ index f7e01f4ccf32..9f303369570e 100644
    }
    return Result;
  }
-@@ -1425,6 +1428,49 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -1425,6 +1428,114 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
++// If the backtick at `Offset` starts a probable quoted range, return the range
++// (including the quotes).
++static std::optional<llvm::StringRef>
++getBacktickQuoteRange(llvm::StringRef Line, unsigned Offset,
++                      llvm::StringRef Quote = "`") {
++  assert(Line.substr(Offset, Quote.size()) == Quote);
++
++  // The open-quote is usually preceded by whitespace.
++  llvm::StringRef Prefix = Line.substr(0, Offset);
++  constexpr llvm::StringLiteral BeforeStartChars = " \t(=";
++  if (!Prefix.empty() && !BeforeStartChars.contains(Prefix.back()))
++    return std::nullopt;
++
++  // The quoted string must be nonempty and usually has no leading/trailing ws.
++  auto Next = Line.find(Quote, Offset + Quote.size());
++  if (Next == llvm::StringRef::npos)
++    return std::nullopt;
++  llvm::StringRef Contents = Line.slice(Offset + Quote.size(), Next);
++  if (Contents.empty() || isWhitespace(Contents.front()) ||
++      isWhitespace(Contents.back()))
++    return std::nullopt;
++
++  // The close-quote is usually followed by whitespace or punctuation.
++  llvm::StringRef Suffix = Line.substr(Next + Quote.size());
++  constexpr llvm::StringLiteral AfterEndChars = " \t)=.,;:";
++  if (!Suffix.empty() && !AfterEndChars.contains(Suffix.front()))
++    return std::nullopt;
++
++  return Line.slice(Offset, Next + Quote.size());
++}
++
++static void parseDocumentationLine(llvm::StringRef Line, markup::Paragraph &Out) {
++  // Probably this is appendText(Line), but scan for something interesting.
++  for (unsigned I = 0; I < Line.size(); ++I) {
++    switch (Line[I]) {
++    case '`':
++      if (auto Range = getBacktickQuoteRange(Line, I)) {
++        Out.appendText(Line.substr(0, I));
++        Out.appendCode(Range->trim("`"), /*Preserve=*/true);
++        return parseDocumentationLine(Line.substr(I + Range->size()), Out);
++      }
++      break;
++    case '\\':
++      Out.appendText(Line.substr(0, I));
++      Out.appendText(Line.substr(I + 1, 1));
++      return parseDocumentationLine(Line.substr(I + 2), Out);
++    case '*':
++      if (Line[I + 1] == '*') {
++        if (auto Range = getBacktickQuoteRange(Line, I, "**")) {
++          Out.appendText(Line.substr(0, I));
++          Out.appendBoldText(Range->trim("**"));
++          return parseDocumentationLine(Line.substr(I + Range->size()), Out);
++        }
++      }
++      if (auto Range = getBacktickQuoteRange(Line, I, "*")) {
++        Out.appendText(Line.substr(0, I));
++        Out.appendItalicText(Range->trim("*"));
++        return parseDocumentationLine(Line.substr(I + Range->size()), Out);
++      }
++      break;
++    }
++  }
++  Out.appendText(Line).appendSpace();
++}
++
 +static void
 +presentParams(std::string ParagraphName,
 +              const std::optional<std::vector<HoverInfo::Param>> &Params,
@@ -53,7 +118,7 @@ index f7e01f4ccf32..9f303369570e 100644
 +        ParamDocs.begin(), ParamDocs.end(),
 +        [Param](const auto &ParamDoc) { return Param.Name == ParamDoc.Name; });
 +    if (ParamDoc != ParamDocs.end())
-+      Paragraph.appendText(ParamDoc->Description);
++      parseDocumentationLine(ParamDoc->Description, Paragraph);
 +
 +    if (Param.Type)
 +      Paragraph.appendText(" (")
@@ -65,7 +130,7 @@ index f7e01f4ccf32..9f303369570e 100644
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1460,6 +1506,9 @@ markup::Document HoverInfo::present() const {
+@@ -1460,6 +1571,9 @@ markup::Document HoverInfo::present() const {
    if (!Documentation.Brief.empty())
      parseDocumentation(Documentation.Brief, Output);
  
@@ -75,7 +140,7 @@ index f7e01f4ccf32..9f303369570e 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1468,44 +1517,20 @@ markup::Document HoverInfo::present() const {
+@@ -1468,44 +1582,20 @@ markup::Document HoverInfo::present() const {
      // Parameters:
      // - `bool param1`
      // - `int param2 = 5`
@@ -85,7 +150,7 @@ index f7e01f4ccf32..9f303369570e 100644
 +        Output.addParagraph().appendText("→ ").appendCode(ReturnType->Type);
  
      if (!Documentation.Returns.empty())
-       P.appendText(": ").appendText(Documentation.Returns);
+-      P.appendText(": ").appendText(Documentation.Returns);
 -  }
 -  if (Parameters && !Parameters->empty()) {
 -    Output.addParagraph().appendText("Parameters: ");
@@ -93,6 +158,7 @@ index f7e01f4ccf32..9f303369570e 100644
 -
 -    llvm::SmallVector<ParameterDocumentationOwned> ParamDocs =
 -        Documentation.Parameters;
++      parseDocumentationLine(Documentation.Returns, P.appendText(": "));
  
 -    for (const auto &Param : *Parameters) {
 -      auto &Paragraph = L.addItem().addParagraph();
@@ -129,7 +195,7 @@ index f7e01f4ccf32..9f303369570e 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1577,6 +1602,39 @@ markup::Document HoverInfo::present() const {
+@@ -1577,6 +1667,39 @@ markup::Document HoverInfo::present() const {
        parseDocumentation(Note, L.addItem());
    }
  
@@ -169,6 +235,78 @@ index f7e01f4ccf32..9f303369570e 100644
    if (!Definition.empty()) {
      Output.addRuler();
      std::string Buffer;
+@@ -1627,71 +1750,6 @@ markup::Document HoverInfo::present() const {
+   return Output;
+ }
+ 
+-// If the backtick at `Offset` starts a probable quoted range, return the range
+-// (including the quotes).
+-std::optional<llvm::StringRef>
+-getBacktickQuoteRange(llvm::StringRef Line, unsigned Offset,
+-                      llvm::StringRef Quote = "`") {
+-  assert(Line.substr(Offset, Quote.size()) == Quote);
+-
+-  // The open-quote is usually preceded by whitespace.
+-  llvm::StringRef Prefix = Line.substr(0, Offset);
+-  constexpr llvm::StringLiteral BeforeStartChars = " \t(=";
+-  if (!Prefix.empty() && !BeforeStartChars.contains(Prefix.back()))
+-    return std::nullopt;
+-
+-  // The quoted string must be nonempty and usually has no leading/trailing ws.
+-  auto Next = Line.find(Quote, Offset + Quote.size());
+-  if (Next == llvm::StringRef::npos)
+-    return std::nullopt;
+-  llvm::StringRef Contents = Line.slice(Offset + Quote.size(), Next);
+-  if (Contents.empty() || isWhitespace(Contents.front()) ||
+-      isWhitespace(Contents.back()))
+-    return std::nullopt;
+-
+-  // The close-quote is usually followed by whitespace or punctuation.
+-  llvm::StringRef Suffix = Line.substr(Next + Quote.size());
+-  constexpr llvm::StringLiteral AfterEndChars = " \t)=.,;:";
+-  if (!Suffix.empty() && !AfterEndChars.contains(Suffix.front()))
+-    return std::nullopt;
+-
+-  return Line.slice(Offset, Next + Quote.size());
+-}
+-
+-void parseDocumentationLine(llvm::StringRef Line, markup::Paragraph &Out) {
+-  // Probably this is appendText(Line), but scan for something interesting.
+-  for (unsigned I = 0; I < Line.size(); ++I) {
+-    switch (Line[I]) {
+-    case '`':
+-      if (auto Range = getBacktickQuoteRange(Line, I)) {
+-        Out.appendText(Line.substr(0, I));
+-        Out.appendCode(Range->trim("`"), /*Preserve=*/true);
+-        return parseDocumentationLine(Line.substr(I + Range->size()), Out);
+-      }
+-      break;
+-    case '\\':
+-      Out.appendText(Line.substr(0, I));
+-      Out.appendText(Line.substr(I + 1, 1));
+-      return parseDocumentationLine(Line.substr(I + 2), Out);
+-    case '*':
+-      if (Line[I + 1] == '*') {
+-        if (auto Range = getBacktickQuoteRange(Line, I, "**")) {
+-          Out.appendText(Line.substr(0, I));
+-          Out.appendBoldText(Range->trim("**"));
+-          return parseDocumentationLine(Line.substr(I + Range->size()), Out);
+-        }
+-      }
+-      if (auto Range = getBacktickQuoteRange(Line, I, "*")) {
+-        Out.appendText(Line.substr(0, I));
+-        Out.appendItalicText(Range->trim("*"));
+-        return parseDocumentationLine(Line.substr(I + Range->size()), Out);
+-      }
+-      break;
+-    }
+-  }
+-  Out.appendText(Line).appendSpace();
+-}
+-
+ void parseDocumentation(llvm::StringRef Input, markup::Document &Output) {
+   std::vector<llvm::StringRef> ParagraphLines;
+   auto FlushParagraph = [&] {
 diff --git a/clang-tools-extra/clangd/SymbolDocumentation.cpp b/clang-tools-extra/clangd/SymbolDocumentation.cpp
 index 50d63f47515f..9defaa7fe53e 100644
 --- a/clang-tools-extra/clangd/SymbolDocumentation.cpp
