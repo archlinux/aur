@@ -1,4 +1,4 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: euler23 <jordanpaldino@gmail.com>
 
 pkgname=libipuz
 pkgver=0.4.4
