@@ -15,7 +15,7 @@ sha256sums=('77b62471002a68b5e2fc5c4afcc90d0c64ff7492fdbe0833a331f2cf2396415f'
             'SKIP')
 
 prepare() {
-  # Create a shortcut
+# Create a shortcut
   echo -e "[Desktop Entry]\n\
 Version=$pkgver\n\
 Name=VPKEdit\n\
