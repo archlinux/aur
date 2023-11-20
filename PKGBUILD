@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r64096.b96c33a2015
+pkgver=r64505.6818b390a6a
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -62,7 +62,7 @@ _sse_workaround=1
 _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
-_ffmpeg_version="6.0"
+_ffmpeg_version="6.0.1"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="23.3.3"
@@ -78,7 +78,6 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   cheat-sse-build.patch
-  0001-ffmpeg-fix-build-with-binutils-update.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -94,13 +93,12 @@ b2sums=('SKIP'
         '2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c'
         'db4d05836d8fbb3637ae50bdbfc0e4b612ee6b3be24addfea94ce772c3bf28d58b63a3f252d6f9f016f72f8cbb841cc1820b091226b136f4c4664385a32da73c'
         'c94feb5a03a12efa5b7767965118d2500a088299ea36f3b82e46d157e45893e6b04503cb50f179ca681bac914457607fab26acfa6e304752b355c407578572d1'
-        '6f5d3279fc09ac8624b9353337515858fd588660e9d6d17ef70c95c241cb69ef2b320a6e4aad20fcdd9d99d13647e1a75f1ebb51b16a25368a9e57585a6bed24'
+        '6424e30c6d354abbbea8a807822ae61589413189e9c4ba7aa51c307179287506b9072626e9745861fe83753c0015b50d179f9b4f298fe9abf74bee13936639af'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        '7e15afcc0cc7f529e6c491c985968bc53be413424b890e4eab2ce8e3d0f21b08347698e660e0f4f0cc50c5279f052be7a2d84d5351509d34193066d797a44130')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
 pkgver() {
   cd "$_gitname"
@@ -116,9 +114,6 @@ prepare() {
   rm -rf system/certs # remove not needed cacert
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
-
-  # fix for new binutils, credit to kevku for pointing this out
-  patch -p1 -i ../0001-ffmpeg-fix-build-with-binutils-update.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
