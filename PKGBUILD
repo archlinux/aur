@@ -1,7 +1,7 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=clash.rev
-pkgver=1.0.2
+pkgver=Prerelease_dev
 pkgrel=1
 pkgdesc="Continuation of Clash core project"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -17,7 +17,7 @@ source=(
     "clash.service"
 )
 sha256sums=(
-    "d8b8f42d312d448498e21b7d0c5cbba4142e7be72329381109c060a71a431f59"
+    "2ac7927c768870fc19533d074f80de1763dec8db4a9ff0c5476a8a70d2f8af30"
     "9847a046071f4c1b92e71c3cb3b214cf5d19c4dd25ad8326e70c58c55b1e9deb"
 )
 
