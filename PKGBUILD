@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=implay-bin
 _pkgname=ImPlay
-pkgver=1.4.0
-pkgrel=4
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://tsl0922.github.io/ImPlay"
@@ -17,7 +17,7 @@ depends=(
     'glfw-x11'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux.deb")
-sha256sums=('4eb6307e15998d44875b472e94b4d09321f05fdb86cc7e59cfed93c0981feab5')
+sha256sums=('d7369c2555abf103a26fd36f02b37031a9cd0b4483f1a88e1b9ae7476546178c')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|${_pkgname} %U|${pkgname%-bin} %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
