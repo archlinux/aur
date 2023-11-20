@@ -4,7 +4,7 @@
 _pkgname=tetherback
 pkgname="${_pkgname}-git"
 pkgver=0.9.1+20.r143.20230322.7797eb6
-pkgrel=2
+pkgrel=3
 pkgdesc="Create backups of an Android device over USB (requires adb and TWRP recovery)."
 arch=('any')
 url="https://github.com/dlenski/tetherback"
@@ -13,6 +13,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 depends=(
