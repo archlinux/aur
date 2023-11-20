@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-lsbi
 _name=${pkgname#python-}
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Linear Simulation Based Inference"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9b4547639ce29892cb6359c895f8d0dbbb88972ef1414aac5da108dfa3dd5a45')
+sha256sums=('76937bcb41f3045731855b89b6aac4c8ce8d5a79ef8424a24ce6b1a8883cf1be')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
