@@ -1,9 +1,10 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Conributor: Jelle van der Waa <jelle@archlinux.org>
 # Contributor: lantw44 (at) gmail (dot) com
 
 pkgname=guile-bytestructures
 _pkgname=bytestructures
-pkgver=1.0.10
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Structured access library to bytevector contents for Guile'
 arch=('x86_64')
@@ -11,16 +12,18 @@ url="https://github.com/TaylanUB/scheme-bytestructures"
 license=('GPL3')
 depends=('guile')
 makedepends=('git')
-source=("https://github.com/TaylanUB/scheme-${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('bb8a78c1e570f90e344368196844ee0f143682b3d4c6ab69d6de0fa0d7b7c20d')
+source=("https://github.com/TaylanUB/scheme-${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('fd5787a4bfa463a1efb736adf969b291abc0333c1d477e0de61c58e528c33950')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${srcdir}/scheme-${_pkgname}-${pkgver}"
+	automake --add-missing
+	autoreconf
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${srcdir}/scheme-${_pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
