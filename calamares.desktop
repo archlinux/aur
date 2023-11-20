@@ -12,5 +12,4 @@ Exec=/usr/bin/calamares_polkit %f
 Icon=calamares
 Terminal=false
 StartupNotify=true
-Type=Application
 Categories=Qt;System;
