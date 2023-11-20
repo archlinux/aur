@@ -6,12 +6,12 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.8
+pkgver=2.6.10
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
 url="https://notesnook.com/"
-_githuburl="https://github.com/streetwriters/notesnook"
+_ghurl="https://github.com/streetwriters/notesnook"
 license=('GPL3')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
@@ -29,10 +29,13 @@ depends=(
 makedepends=(
     'nvm'
     'npm'
+    'git'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.desktop")
-sha256sums=('a00631aa631e576daa870406218eb2be4a3a0089c4c8ff1a237e9f5a020e5a17'
+source=(
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.desktop"
+)
+sha256sums=('SKIP'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -43,17 +46,16 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
-    if [ -d .git ];then
-        rmdir .git
-        mkdir .git
-    else
-        mkdir .git
-    fi
-    npm ci --ignore-scripts --prefer-offline --no-audit
+    sed -e "3i\  \"version\": \"${pkgver}\"," \
+        -e "3i\  \"description\": \"${pkgdesc}\"," \
+        -e "3i\  \"author\": \"Streetwriters (Private) Limited,support@streetwriters.co,https://streetwriters.co\"," \
+        -e "55i\    \"electron\": \"25.9.3\"," \
+        -i package.json
+    npm install --ignore-scripts --prefer-offline --no-audit --cache "${srcdir}/npm-cache" 
     npm run bootstrap -- --scope=desktop
     npx nx build:desktop @notesnook/web
     npx nx run release --project @notesnook/desktop
-    npx electron-builder --linux AppImage:x64 AppImage:arm64 -p never
+    npx electron-builder --linux tar.xz -p never
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
