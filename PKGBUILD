@@ -1,17 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=picgo-git
 _pkgname=PicGo
-pkgver=2.4.0.beta.5.r6d4e1c2
+pkgver=2.4.0.beta.6.r8cede85
 pkgrel=1
 pkgdesc="A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder"
 arch=('any')
 url="https://molunerfinn.com/PicGo/"
-_githuburl="https://github.com/Molunerfinn/PicGo"
+_ghurl="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
-makedepends=('npm' 'git' 'nodejs>=16.0.0' 'gendesk' 'graphicsmagick' 'xz' 'libicns' 'yarn')
-depends=('bash' 'electron16')
-source=("${pkgname//-/.}::git+${_githuburl}.git"
-    "${pkgname%-git}.sh")
+depends=(
+    'electron16'
+)
+makedepends=(
+    'npm'
+    'git'
+    'nodejs>=16.0.0'
+    'gendesk'
+    'yarn'
+)
+source=(
+    "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             'e69031dd3f7af01ad71e765270e6a29f83657a021f8517a88f969044600ceafe')
 pkgver() {
