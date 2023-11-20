@@ -2,16 +2,18 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1591
+pkgver=1618
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
 url=https://yuzu-emu.org/
 license=(GPL3)
 depends=(
+  brotli
   enet
   gcc-libs
   glibc
+  hicolor-icon-theme
   libavcodec.so
   libavutil.so
   libboost_context.so
@@ -26,10 +28,11 @@ depends=(
   libva.so
   libzstd.so
   lz4
-  qt5-base
-  qt5-multimedia
-  qt5-webengine
+  qt6-base
+  qt6-multimedia
+  qt6-webengine
   sdl2
+  zlib
 )
 makedepends=(
   boost
@@ -40,13 +43,13 @@ makedepends=(
   llvm
   ninja
   nlohmann-json
-  qt5-tools
+  qt6-tools
   shaderc
   spirv-headers
   vulkan-headers
 )
 options=(!debug)
-_tag=378d88441cca25bc76eb18266fe1fe098e25a9f3
+_tag=3cff94a381b720aed7fd35ee0c53fc93ef77e78d
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
@@ -113,7 +116,7 @@ build() {
     -DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
     -DBUILD_TAG=${pkgver} \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
-    -DENABLE_QT6=OFF \
+    -DENABLE_QT6=ON \
     -DENABLE_QT_TRANSLATION=ON \
     -DENABLE_SDL2=ON \
     -DENABLE_WEB_SERVICE=ON \
