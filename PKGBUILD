@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.r13795.gf391178
+pkgver=4.0.0.r13800.gd745e43
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -40,10 +40,16 @@ provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-cmake-harfbuzz.patch'
         'mapnik-datasource-ogr-test.patch'
+        'mapnik-libxml2_loader.patch' # Support libxml2 >= v2.12.0
+        'mapnik-plugins-input-ogr-cmakelists.patch' # Fix build after #4420
+        'mapnik-test-cmakelists.patch' # Fix build after #4420
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
             '90f541c0845e3c7005564fa113771ce01cf2bcfd57662b7fa8849aabf4151638'
             '3fcf178e646df526e9a5c278f56ad16e4f75d2f27108e7b33419649a46b92f52'
+            '505b3e9337f27c4be4822a37e37b335bff6f6322d5ec3d8da55b4792b05662b5'
+            '36bb2426f4de823f10b4e5025bd9e0eccfac069084bfe99093a8348c3ae9124e'
+            'fd15a5bb2829bfb3cbebbf380c5c3fb14d57727198c6e851afae717681d15796'
             'SKIP')
 
 pkgver() {
@@ -55,6 +61,9 @@ prepare() {
   cd mapnik || exit
   patch -Np1 < ../mapnik-cmake-harfbuzz.patch
   patch -Np1 < ../mapnik-datasource-ogr-test.patch
+  patch -Np1 < ../mapnik-libxml2_loader.patch
+  patch -Np1 < ../mapnik-plugins-input-ogr-cmakelists.patch
+  patch -Np1 < ../mapnik-test-cmakelists.patch
   git submodule init \
     test/data
   git config submodule.test/data.url "$srcdir"/test-data
