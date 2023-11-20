@@ -1,7 +1,7 @@
 pkgbase = gwenview-no-purpose
 	pkgdesc = A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu
 	pkgver = 23.08.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/gwenview/
 	arch = x86_64
 	groups = kde-applications
@@ -13,7 +13,7 @@ pkgbase = gwenview-no-purpose
 	makedepends = kdoctools5
 	depends = kactivities5
 	depends = baloo5
-	depends = libkdcraw
+	depends = libkdcraw5
 	depends = kparts5
 	depends = kitemmodels5
 	depends = cfitsio
