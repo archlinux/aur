@@ -30,6 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::https://download.acestream.media/linux/acestre
         "https://files.pythonhosted.org/packages/f1/c9/326611aa83e16b13b6db4dbb73b5455c668159a003c4c2f0c3bcb2ddabaf/cffi-1.16.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
         "https://files.pythonhosted.org/packages/62/d5/5f610ebe421e85889f2e55e33b7f9a6795bd982198517d912eb1c76e1a53/pycparser-2.21-py2.py3-none-any.whl"
         "sysusers.conf"
+        "tmpfiles.conf"
         "systemd.service"
         "$pkgname.desktop"
         "LICENSE" 
@@ -55,6 +56,7 @@ sha256sums=(
         "6602bc8dc6f3a9e02b6c22c4fc1e47aa50f8f8e6d3f78a5e16ac33ef5fefa324"
         "8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"
         "dd0091a54c435a57a658f29b8675dfdc840e2d07cd05d41e87482a2c3ae331da"
+        "56f1cbca8961de7821e71b8a288813a6cc36c93b22d29ed7d14aaca0f10d7b61"
         "089fa5087d1d6e5112dd13b8a4a33d1f18728f2f446cd986feabe29cc23f0ba6"
         "12f2abe2cc9c075101df9713f65fd8400657780f8d07e2b7920ae7477b1a5410"
         "a9293a75ae0bc69789ad5bfa34ae1497943e6eb1f4ff36ef6a7e0f0b58e81277"
@@ -73,13 +75,13 @@ package() {
     
     # Change the launcher script
     sed -i "/ROOT=/c\ROOT=\/usr/lib\/${pkgname}" "start-engine"
-    sed -i "s@LD_LIBRARY_PATH=@PYTHONPATH=\${ROOT}/lib/python3.8/site-packages/ LD_LIBRARY_PATH=@g" "start-engine"
-    sed -i "s@${ROOT}/acestreamengine@${ROOT}/acestream-engine-py3@g" "start-engine"
+    sed -i "s@LD_LIBRARY_PATH=@PYTHONPATH=\${ROOT}/lib/python3.8/site-packages/ PYTHON_EGG_CACHE=/var/lib/acestream/python_eggs LD_LIBRARY_PATH=@g" "start-engine"
+    sed -i "s@\${ROOT}/acestreamengine@/usr/lib/${pkgname}/acestreamengine-py3@g" "start-engine"
 
     # Inherited copies from acestream-engine AUR package
     install -Dm755 "start-engine"                "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "acestream.conf"              "$pkgdir/usr/lib/$pkgname/acestream.conf"
-    install -Dm755 "acestreamengine"             "$pkgdir/usr/lib/$pkgname/acestreamengine"
+    install -Dm755 "acestreamengine"             "$pkgdir/usr/lib/$pkgname/acestreamengine-py3"
     cp -a "data"                                 "$pkgdir/usr/lib/$pkgname/"
     cp -a "lib"                                  "$pkgdir/usr/lib/$pkgname/"
     install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
@@ -87,11 +89,13 @@ package() {
     # Copy venv folders
     cp -a "bin"                                  "$pkgdir/usr/lib/$pkgname/"
     ln -s                                        "$pkgdir/usr/lib/$pkgname/lib" "$pkgdir/usr/lib/$pkgname/lib64"
+    install -Dm644 "pyvenv.cfg"                  "$pkgdir/usr/lib/$pkgname/pyvenv.cfg"
+
 
     # System integration
     install -Dm644 systemd.service    "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 sysusers.conf      "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-    pwd
+    install -Dm644 tmpfiles.conf      "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     # Copy license
