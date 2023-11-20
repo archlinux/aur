@@ -1,0 +1,32 @@
+pkgbase = gitlab-fonts
+	pkgdesc = Typefaces used in GitLab products
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://gitlab-org.gitlab.io/frontend/fonts/
+	arch = any
+	license = OFL
+	makedepends = npm
+	makedepends = woff2
+	noextract = gitlab-fonts-1.3.0.tar.gz
+	source = gitlab-fonts-1.3.0.tar.gz::https://registry.npmjs.org/@gitlab/fonts/-/fonts-1.3.0.tgz
+	sha256sums = d93b19ea9f7c761a4f89ac009875dfc796b5c436f4fc2ec9a43f5f4812385869
+
+pkgname = ttf-gitlab-mono-variable
+	pkgdesc = Monospace font from GitLab
+	arch = any
+	license = custom:OFL
+
+pkgname = ttf-gitlab-sans-variable
+	pkgdesc = Sans-serif font from GitLab
+	arch = any
+	license = custom:OFL
+
+pkgname = woff2-gitlab-mono-variable
+	pkgdesc = Monospace font from GitLab
+	arch = any
+	license = custom:OFL
+
+pkgname = woff2-gitlab-sans-variable
+	pkgdesc = Sans-serif font from GitLab
+	arch = any
+	license = custom:OFL
