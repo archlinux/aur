@@ -2,7 +2,7 @@
 # Contributor: Mike Yuan <me@yhndnzj.com>
 
 pkgname=ast-grep
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='A fast and polyglot tool for code structural search, lint, rewriting at large scale'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('gcc-libs')
 makedepends=('cargo')
 checkdepends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ast-grep/ast-grep/archive/$pkgver.tar.gz")
-sha256sums=('d568d4fc4f257fcc6d6a99d5a1f4c4638a2d106c653618fa595943fc41452da1')
-b2sums=('264401c7d275b796bebf63d365ced3cdd3a723f7ad572e56ffde0c95af5cf1ad6d0cf9a967c7d3da7ee8824cf936400c6b2db471948a385060a03fbd0a1ced2f')
+sha256sums=('9665d93d19053c5222b0daa83afc52d0851246352b09a853feba80078b212871')
+b2sums=('d536890fd2d5a01d3cc44c2d29e9edc55e9d3834413a3500371baae6f43e8282fdd618fb58d0f34b82e46238be9fac9e4707a535ef206fa9d5b6507897ff39fb')
 options=('!lto')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
