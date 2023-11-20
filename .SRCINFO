@@ -1,6 +1,6 @@
 pkgbase = simracing-essentials
 	pkgdesc = A collection of sim racing-focused utilities and drivers
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.example.com/
 	arch = any
@@ -8,9 +8,12 @@ pkgbase = simracing-essentials
 	depends = oversteer
 	depends = ffbtools-git
 	depends = protopedal-git
+	depends = community-configs-for-protopedal-git
 	depends = hidpp-logitech-g-pro-wheel-dkms-git
 	depends = hid-fanatecff-dkms
 	depends = new-lg4ff-dkms-git
+	depends = t150_driver-dkms-git
+	depends = hid-tmff2-dkms
 	depends = jstest-gtk-git
 
 pkgname = simracing-essentials
