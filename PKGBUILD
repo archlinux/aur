@@ -3,7 +3,7 @@
 _name=glcontext
 
 pkgname=python-glcontext
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A library providing OpenGL implementation for ModernGL on multiple platforms."
 
@@ -12,7 +12,7 @@ license=('MIT')
 url="https://github.com/moderngl/glcontext"
 
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('d69adbee5f31d7b870b566f59d2b796a7436ab57ad29c4fe1210ec1e40b782e4705c81ba17a921217f28c5fcb4f9c759c2ebf146bda1af4fd54007c868425427')
+sha512sums=('b85306c8a1a95bddc9d87a66e3102e45e1a2ae55dfa5b32a263ad4216421712bb31bf8653a1850a281c51b437a274d7c499feac9650035fecd36f5467c6c83a0')
 
 depends=('python')
 makedepends=(
