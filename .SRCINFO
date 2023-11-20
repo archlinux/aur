@@ -1,6 +1,6 @@
 pkgbase = tagger-git
 	pkgdesc = Tag your music
-	pkgver = 2023.7.0.beta2.r31.ge317fd5
+	pkgver = 2023.11.3.r1.g40ac3fa7
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/tagger
 	arch = aarch64
@@ -9,15 +9,18 @@ pkgbase = tagger-git
 	arch = i686
 	license = GPL3
 	makedepends = blueprint-compiler
-	makedepends = dotnet-sdk>=7
+	makedepends = dotnet-sdk>=8
 	makedepends = git
-	depends = dotnet-runtime>=7
+	depends = dotnet-runtime>=8
 	depends = ffmpeg
 	depends = libadwaita
 	depends = chromaprint
+	depends = webp-pixbuf-loader
 	provides = tagger
 	conflicts = tagger
 	source = git+https://github.com/NickvisionApps/tagger
+	source = git+https://github.com/NickvisionApps/cakescripts#commit=1b48cc0957fcd65c3b0f25285e84033fb5b7f542
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = tagger-git
