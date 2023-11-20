@@ -4,11 +4,11 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=233.11799.20
+_buildver=233.11799.32
 _pkgver=2023.3
 _eap=true
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=("any")
 options=("!strip")
@@ -24,7 +24,7 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'vagrant: For support virtualized development environments'
             'python-pytest: For support testing inside Pycharm with Python'
             'python-tox: Python environments for testing tool with Python'
-            'jupyter: For support Jupyter Notebook')
+            'jupyter-notebook: For support Jupyter Notebook')
 provides=("pycharm" "pycharm-professional")
 
 if [[ $_eap = false ]]; then
@@ -35,7 +35,7 @@ else
     "${pkgname}.desktop")
 fi
 
-sha256sums=("49a71f5d87c24e20c254b9c03a66e782b73d7877dd971d8e2f1a1d429cefd102"
+sha256sums=("8b334f1adeeacac070783603db962ae7347e84a15373b3038b78d0fb10d90a1c"
             "7801ea1379c4c183efeb78ec8d2f67bc30741548410fa51b9f4827b0188da4b2")
 
 prepare() {
