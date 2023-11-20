@@ -1,6 +1,6 @@
-pkgbase = emacs-git
+pkgbase = emacs-git-meow-king
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 30.0.50.169253
+	pkgver = 30.0.50.169737
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -26,7 +26,6 @@ pkgbase = emacs-git
 	depends = libwebp
 	depends = libtiff
 	depends = libxpm
-	depends = cairo
 	depends = tree-sitter
 	depends = sqlite3
 	provides = emacs
@@ -37,4 +36,4 @@ pkgbase = emacs-git
 	b2sums = SKIP
 	b2sums = 58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0
 
-pkgname = emacs-git
+pkgname = emacs-git-meow-king
