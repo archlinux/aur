@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/TUScheduler.cpp b/clang-tools-extra/clangd/TUScheduler.cpp
-index 324ba1fc8cb8..df9b5e715ab0 100644
+index 324ba1fc8cb8..21bd4308975d 100644
 --- a/clang-tools-extra/clangd/TUScheduler.cpp
 +++ b/clang-tools-extra/clangd/TUScheduler.cpp
 @@ -52,6 +52,7 @@
@@ -18,25 +18,27 @@ index 324ba1fc8cb8..df9b5e715ab0 100644
  #include "clang/Frontend/CompilerInvocation.h"
  #include "clang/Tooling/CompilationDatabase.h"
  #include "llvm/ADT/FunctionExtras.h"
-@@ -622,7 +624,7 @@ public:
+@@ -622,7 +624,8 @@ public:
           const TUScheduler::Options &Opts, ParsingCallbacks &Callbacks);
    ~ASTWorker();
  
 -  void update(ParseInputs Inputs, WantDiagnostics, bool ContentChanged);
-+  void update(ParseInputs Inputs, WantDiagnostics, bool ContentChanged, std::optional<std::vector<std::string>> SourceInclides);
++  void update(ParseInputs Inputs, WantDiagnostics, bool ContentChanged,
++              std::optional<std::vector<std::string>> SourceInclides);
    void
    runWithAST(llvm::StringRef Name,
               llvm::unique_function<void(llvm::Expected<InputsAndAST>)> Action,
-@@ -857,7 +859,7 @@ ASTWorker::~ASTWorker() {
+@@ -857,7 +860,8 @@ ASTWorker::~ASTWorker() {
  }
  
  void ASTWorker::update(ParseInputs Inputs, WantDiagnostics WantDiags,
 -                       bool ContentChanged) {
-+                       bool ContentChanged, std::optional<std::vector<std::string>> SourceInclides) {
++                       bool ContentChanged,
++                       std::optional<std::vector<std::string>> SourceInclides) {
    llvm::StringLiteral TaskName = "Update";
    auto Task = [=]() mutable {
      // Get the actual command as `Inputs` does not have a command.
-@@ -881,10 +883,24 @@ void ASTWorker::update(ParseInputs Inputs, WantDiagnostics WantDiags,
+@@ -881,10 +885,24 @@ void ASTWorker::update(ParseInputs Inputs, WantDiagnostics WantDiags,
          }
        }
      }
@@ -64,7 +66,7 @@ index 324ba1fc8cb8..df9b5e715ab0 100644
  
      bool InputsAreTheSame =
          std::tie(FileInputs.CompileCommand, FileInputs.Contents) ==
-@@ -1684,7 +1700,39 @@ bool TUScheduler::update(PathRef File, ParseInputs Inputs,
+@@ -1684,7 +1702,39 @@ bool TUScheduler::update(PathRef File, ParseInputs Inputs,
      ContentChanged = true;
      FD->Contents = Inputs.Contents;
    }
@@ -76,7 +78,7 @@ index 324ba1fc8cb8..df9b5e715ab0 100644
 +    if (auto CorrespondingFile =
 +            clang::clangd::getCorrespondingHeaderOrSource(File, std::move(VFS)))
 +      SourceFile = *CorrespondingFile;
-+    if (SourceFile.empty())
++    if (SourceFile.empty()) // fallback to find pair source
 +      SourceFile = HeaderIncluders->get(File);
 +    if (!SourceFile.empty() && Files.contains(SourceFile)) {
 +      std::unique_ptr<FileData> &FD = Files[SourceFile];
@@ -89,13 +91,13 @@ index 324ba1fc8cb8..df9b5e715ab0 100644
 +            if (H.Resolved == File) {
 +              if (isSystem(H.FileKind))
 +                Includes.clear();
++              else
++                SourceInclides = std::move(Includes);
 +              break;
 +            }
 +            auto Include = "-include" + H.Resolved;
 +            Includes.push_back(std::move(Include));
 +          }
-+          if (!Includes.empty())
-+            SourceInclides = std::move(Includes);
 +          IdleASTs->put(FD->Worker.lock().get(), std::move(AST.value()));
 +        }
 +      }
