@@ -1,31 +1,25 @@
-# Maintainer: TarkoGabor (@tgabor7)
-pkgname=simplelock
-pkgver=0.0.0
+# Maintainer: Filip Parag <filip@parag.rs>
+
+pkgname=bas-celik-bin
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="A very simple screen locker for Wayland"
-arch=('x86_64')
-url="https://github.com/tgabor7/sl"
-license=('BSD')
-depends=('wayland' 'wayland-protocols' 'cargo')
-source=("sl-$pkgver-linux.tar.gz::https://github.com/tgabor7/sl/archive/tags/v$pkgver.tar.gz")
-b2sums=('SKIP')
+pkgdesc="A program for reading smart-card documents issued by the government of Serbia"
+arch=("x86_64")
+conflicts=()
+provides=()
+url="https://github.com/ubavic/bas-celik/"
+license=("MIT")
+depends=(
+    "ccid"
+    "opensc"
+)
+source=("bas_celik-${pkgver}_amd64.tar.gz::https://github.com/ubavic/bas-celik/releases/download/v${pkgver}/bas-celik.linux.amd64.tar.xz")
+sha256sums=('9d0cce5347af1015e379ca8b3828289f4ff31bce6f3b27722152f69b9f734bdc')
 
-pkgver() {
-  cd cbindgen
-  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
-
-prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-build() {
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
-
-package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+package()
+{
+    export DESTDIR="${pkgdir}"
+    export PREFIX="/usr"
+    cd "${srcdir}"
+    make install
 }
