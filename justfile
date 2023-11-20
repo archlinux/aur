@@ -5,7 +5,8 @@ update:
   source PKGBUILD
   old_pkgver=$pkgver
 
-  makepkg --geninteg --printsrcinfo > .SRCINFO
+  makepkg --nobuild --check
+  makepkg --printsrcinfo > .SRCINFO
 
   source PKGBUILD
   if [ "$old_pkgver" = "$pkgver" ]; then
