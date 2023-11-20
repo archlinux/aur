@@ -1,6 +1,6 @@
 pkgbase = bruno-bin
 	pkgdesc = Opensource API Client for Exploring and Testing APIs
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://www.usebruno.com/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = bruno-bin
 	depends = alsa-lib
 	provides = bruno
 	conflicts = bruno
-	source = https://github.com/usebruno/bruno/releases/download/v1.1.1/bruno_1.1.1_amd64_linux.deb
-	source = LICENSE-1.1.1::https://raw.githubusercontent.com/usebruno/bruno/v1.1.1/license.md
-	sha256sums = 946e4e3310d2ec8da3988eacc96cd3b079bf344a066a78a55bc20f79bb3eff5d
+	source = https://github.com/usebruno/bruno/releases/download/v1.2.0/bruno_1.2.0_amd64_linux.deb
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/usebruno/bruno/v1.2.0/license.md
+	sha256sums = eb46305c0ba41a7322698c5539c52019afebfc87f5a490baa4ccb296d4df7757
 	sha256sums = 8891070a847e5047bf77d38d88d7dfbab1beab41e37c802b9f5b23f2bbb9c7be
 
 pkgname = bruno-bin
