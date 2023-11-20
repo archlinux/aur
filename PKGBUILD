@@ -6,10 +6,10 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom-opt
-_srctag=GE-Proton8-22
-_commit=b91457d368df5d26b3756d865baacf4c1da57956
+_srctag=GE-Proton8-23
+_commit=bc5f337471221cc5bd4b03590639c68229befc0e
 pkgver=${_srctag//-/.}
-pkgrel=6
+pkgrel=1
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
