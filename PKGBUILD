@@ -7,9 +7,9 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=daa774fe08936209f21d78312dc561de623c9678
+_commit=4f31229e6fb6804d4baa14a8e365a8071c91ca33
 pkgname=h2o-git
-pkgver=2.2.0.7473
+pkgver=2.2.0.7492
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -55,6 +55,8 @@ prepare() {
                 -DCMAKE_INSTALL_LIBDIR=/usr/lib \
                 -DCMAKE_INSTALL_SYSCONFDIR=/etc \
                 -DCMAKE_LINKER="$LD" \
+                -DCMAKE_C_COMPILER="$CC" \
+                -DCMAKE_CXX_COMPILER="$CXX" \
                 -DCMAKE_C_FLAGS="$CPPFLAGS $CLAGS" \
                 -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
                 -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
@@ -66,6 +68,7 @@ prepare() {
                 -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
                 -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
                 -DOPENSSL_LIBRARIES=/usr/lib/libressl \
+                -DCMAKE_REQUIRED_FLAGS="-c" \
                 .
 
 }
