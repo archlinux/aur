@@ -4,6 +4,14 @@ This is a simple [`KakaoTalk`](https://www.kakaocorp.com/page/service/service/Ka
 
 [`wine`](https://www.winehq.org/)을 활용한 간단한 [카카오톡](https://www.kakaocorp.com/page/service/service/KakaoTalk) 설치 스크립트입니다.
 
+## Quick Start (빠른 설치법)
+
+### Arch Linux (아치리눅스)
+
+```bash
+yay -S --needed kakaotalk && kakaotalk
+```
+
 ## Dependencies (준비물 패키지)
 
 - bash
@@ -23,14 +31,6 @@ sudo pacman -S bash curl desktop-file-utils wine xdg-utils
 ```bash
 sudo apt-get update
 sudo apt-get install bash curl desktop-file-utils wine xdg-utils
-```
-
-## Quick Start (빠른 설치법)
-
-### Arch Linux (아치리눅스)
-
-```bash
-yay -S --needed kakaotalk && kakaotalk
 ```
 
 ## Installation (설치하기)
