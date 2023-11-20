@@ -1,7 +1,8 @@
 # Maintainer: manhhieu <manhhieu>
 
-pkgname='python-web3'
-_pkgname=${pkgname#python-}
+pkgname='python-web3-new'
+_pkgname=${pkgname#python-}  # Remove the 'python-' prefix
+_pkgname=${_pkgname%-new}   # Remove the '-new' suffix
 pkgver=6.11.3
 pkgrel=1
 pkgdesc="A Python library for interacting with Ethereum, inspired by web3.js"
