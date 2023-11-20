@@ -1,14 +1,14 @@
 pkgbase = plasma5-applets-uswitch
 	pkgdesc = Modified version of User Switch plasmoid
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/divinae/uswitch
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = kcoreaddons
+	makedepends = kcoreaddons5
 	depends = plasma-workspace
 	provides = plasma5-applets-uswitch
 	conflicts = plasma5-applets-uswitch
