@@ -1,0 +1,6 @@
+post_remove() {
+    echo
+    echo ">>> Remove files under /var/lib/ACEStream and ~/.config/ACEStream"
+    echo ">>> if you don't need to reinstall the package in the future"
+    echo
+}
