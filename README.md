@@ -25,6 +25,14 @@ sudo apt-get update
 sudo apt-get install bash curl desktop-file-utils wine xdg-utils
 ```
 
+## Quick Start (빠른 설치법)
+
+### Arch Linux (아치리눅스)
+
+```bash
+yay -S --needed kakaotalk && kakaotalk
+```
+
 ## Installation (설치하기)
 
 ### Arch Linux (아치리눅스)
