@@ -1,6 +1,6 @@
 pkgbase = clash.rev
 	pkgdesc = Continuation of Clash core project
-	pkgver = Prerelease_dev
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/MerlinKodo/clash-rev
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = clash.rev
 	conflicts = clash.rev-bin
 	conflicts = clash.rev-git
 	conflicts = clash
-	source = https://github.com/MerlinKodo/clash-rev/archive/refs/tags/vPrerelease_dev.zip
+	source = https://github.com/MerlinKodo/clash-rev/archive/refs/tags/v1.0.2.zip
 	source = clash.service
-	sha256sums = 2ac7927c768870fc19533d074f80de1763dec8db4a9ff0c5476a8a70d2f8af30
+	sha256sums = d8b8f42d312d448498e21b7d0c5cbba4142e7be72329381109c060a71a431f59
 	sha256sums = 9847a046071f4c1b92e71c3cb3b214cf5d19c4dd25ad8326e70c58c55b1e9deb
 
 pkgname = clash.rev
