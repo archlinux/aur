@@ -1,20 +1,26 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=station-appimage
+_pkgname=Station
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The first open-source smart browser for busy people. A single place for all of your web applications."
 arch=('x86_64')
 url="https://getstation.com/"
-_githuburl="https://github.com/getstation/desktop-app"
+_ghurl="https://github.com/getstation/desktop-app"
 license=('Apache')
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
+depends=(
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'squashfuse'
+)
 options=(!strip)
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Station-${CARCH}.AppImage")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}.AppImage")
 sha256sums=('72fdb91171712078596faada28135d2ead6cad63780596085d0f5c1b32ee4c1c')
-prepare() {
+build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-appimage}|g;s|${pkgname%-appimage}-desktop-app|${pkgname%-appimage}|g" \

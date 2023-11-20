@@ -1,12 +1,11 @@
 pkgbase = station-appimage
 	pkgdesc = The first open-source smart browser for busy people. A single place for all of your web applications.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getstation.com/
 	arch = x86_64
 	license = Apache
-	depends = zlib
-	depends = glibc
+	makedepends = squashfuse
 	depends = hicolor-icon-theme
 	provides = station=2.5.0
 	conflicts = station
