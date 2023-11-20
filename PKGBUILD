@@ -7,8 +7,7 @@ pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A KDE plasmoid that displays live local telemetry data about the train you are sitting in'
 license=('GPL')
-depends=('libqtutilities.so' 'qt5-svg' 'openssl' 'qt5-base' 'plasma-workspace'
-         'desktop-file-utils' 'xdg-utils')
+depends=('qt5-base' 'plasma-workspace')
 
 makedepends=('cmake' 'ninja' 'qt5-tools' 'plasma-framework5' 'extra-cmake-modules' 'c++utilities' 'qtutilities')
 
