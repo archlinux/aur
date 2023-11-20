@@ -1,18 +1,29 @@
 pkgbase = baloo-widgets-git
 	pkgdesc = Widgets for Baloo (Git)
-	pkgver = 22.12.0.r96.g827bd7d
-	pkgrel = 1
-	url = https://community.kde.org/Baloo
+	pkgver = 24.01.75.r5.gd46693c
+	pkgrel = 2
+	url = https://invent.kde.org/libraries/baloo-widgets
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules-git
 	makedepends = git
 	makedepends = kdoctools
-	depends = baloo-git
-	provides = baloo-widgets
+	depends = gcc-libs
+	depends = glibc
+	depends = baloo
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kfilemetadata
+	depends = ki18n
+	depends = kio
+	depends = kservice
+	depends = kwidgetsaddons
+	depends = qt6-base
+	provides = baloo-widgets=24.01.75
 	conflicts = baloo-widgets
+	conflicts = kf5-transition-dummy
 	source = git+https://invent.kde.org/libraries/baloo-widgets.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = baloo-widgets-git
