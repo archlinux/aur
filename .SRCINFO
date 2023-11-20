@@ -1,6 +1,6 @@
 pkgbase = distro-grub-themes-meta
 	pkgdesc = Metapackage for installing grub2 distro themes
-	pkgver = 3.1
+	pkgver = 3.3
 	pkgrel = 2
 	url = https://github.com/AdisonCavani/distro-grub-themes
 	arch = any

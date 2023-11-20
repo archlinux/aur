@@ -1,7 +1,7 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 
 pkgname=distro-grub-themes-meta
-pkgver=3.1
+pkgver=3.3
 pkgrel=2
 pkgdesc="Metapackage for installing grub2 distro themes"
 url="https://github.com/AdisonCavani/distro-grub-themes"
