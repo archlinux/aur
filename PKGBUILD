@@ -8,7 +8,7 @@
 pkgname=mathics
 _pkgname=Mathics3
 pkgver=6.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -19,7 +19,6 @@ depends=('mathics-scanner' 'python-sympy' 'python-mpmath' 'python-numpy'
          'python-scikit-image')
 makedepends=('python-setuptools')
 optdepends=( 'python-psutil: SystemMemory and MemoryAvailable'
-             'python-scikit-image: FindMinimum can use this'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
              'python-wordcloud: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$pkgname-core/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")

@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
 	pkgver = 6.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -20,7 +20,6 @@ pkgbase = mathics
 	depends = python-pillow
 	depends = python-scikit-image
 	optdepends = python-psutil: SystemMemory and MemoryAvailable
-	optdepends = python-scikit-image: FindMinimum can use this
 	optdepends = python-lxml: for HTML parsing used in builtin/fileformats/html
 	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
 	source = mathics-6.0.3.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/6.0.3/Mathics3-6.0.3.tar.gz
