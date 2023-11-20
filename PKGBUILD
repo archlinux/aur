@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 conflicts=('i3stat-bin' 'i3stat-git')
 depends=('gcc-libs')
 makedepends=('clang' 'dbus' 'dunst' 'libfaketime' 'libpulse' 'i3-wm' 'imagemagick' 'scrot' 'xorg-server-xvfb')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${pkgver//_/-}.crate")
 sha512sums=('0b96e898d4690d9804a8572f0dec1ceb0927c0d29b5cdd7da350b6514d1f9ff3b7e15922b64d9bd602263451f6863e5c18582645e231a866071337a666bf796d')
 
 # this is effectively a no-op for standard usages of the PKGBUILD, but it exists for
