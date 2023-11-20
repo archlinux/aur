@@ -3,13 +3,13 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomicRanges
-_bcver=1.52.0
+_bcver=1.54.1
 
 pkgname=r-${_bcname,,}
 pkgdesc="Representation and manipulation of genomic intervals"
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 pkgver=${_bcver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("i686" "x86_64")
 license=("Artistic2.0")
@@ -17,9 +17,9 @@ license=("Artistic2.0")
 depends=(
     "r>=4.0.0"
     "r-biocgenerics>=0.37.0"
-    "r-s4vectors>=0.27.12"
-    "r-iranges>=2.31.2"
     "r-genomeinfodb>=1.15.2"
+    "r-iranges>=2.31.2"
+    "r-s4vectors>=0.27.12"
     "r-xvector>=0.29.2"
 )
 optdepends=(
@@ -59,7 +59,7 @@ optdepends=(
     "r-variantannotation"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("9e9f0365a23b91bb803fa5a234134635ed3eb859cb72183aee46978454eb7539f125f14e73b9c657f73d63fc5d4f3230c4ac83e8e94966aa62f115acdb009bca")
+b2sums=('d08b113f0f0afbcf154f91f582d4d91f8c97c79567ecd8993cc4ff2b1a3f63d62026b9c6c457b17f6fd470c82b73431a1a2a46508ed7062d5332c7146e881cb9')
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
