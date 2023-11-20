@@ -1,7 +1,7 @@
 pkgbase = mounter-elite-plus
 	pkgdesc = State of the art ISO Mounter/Converter for the terminal, written in C++.
 	pkgver = 2.1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/siyia2/mounter-elite-plus
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,6 @@ pkgbase = mounter-elite-plus
 	optdepends = ccd2iso: BIN/IMG conversion support
 	optdepends = mdf2iso: MDS/MDF conversion support
 	source = https://github.com/siyia2/mounter-elite-plus/archive/v2.1.6.tar.gz
-	md5sums = e836a40d9b7912185e1c09c9928d1e8e
+	md5sums = 18f91c7916d5fc6646979751e8861e7c
 
 pkgname = mounter-elite-plus
