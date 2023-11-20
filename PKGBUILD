@@ -1,6 +1,6 @@
 # Maintainer: manhhieu <manhhieu>
 
-pkgname='python-web3-new'
+pkgname='python-web3'
 _pkgname=${pkgname#python-}
 pkgver=6.11.3
 pkgrel=1
