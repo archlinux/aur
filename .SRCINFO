@@ -1,0 +1,24 @@
+pkgbase = r-clustirr
+	pkgdesc = Clustering of immune receptor repertoires
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ClustIRR
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r-future
+	depends = r-future.apply
+	depends = r-igraph
+	depends = r-stringdist
+	depends = r-visnetwork
+	optdepends = r-biocstyle
+	optdepends = r-ggplot2
+	optdepends = r-ggrepel
+	optdepends = r-knitr
+	optdepends = r-patchwork
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ClustIRR_1.0.0.tar.gz
+	md5sums = ffd1884844b297c2e593e465a776fb6d
+	sha256sums = f54c2788eed171e691476b2113665749eb5880c10c138aec71f07577f135b8e7
+
+pkgname = r-clustirr
