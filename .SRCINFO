@@ -1,12 +1,15 @@
 pkgbase = protopedal-git
 	pkgdesc = Compatibility tool for sim racing pedals and force feedback steering wheels
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/openirseny/protopedal/
 	arch = x86_64
 	license = EUPL
+	makedepends = git
 	makedepends = gcc
 	makedepends = glibc
+	makedepends = make
+	provides = protopedal
 	source = git+https://gitlab.com/openirseny/protopedal
 	sha256sums = SKIP
 
