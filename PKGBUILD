@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1614.r0.gecdd386
+pkgver=1627.r0.g52ce8ee
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -44,6 +44,7 @@ makedepends=('boost'
              'glslang'
              'llvm'
              'gcc'
+             'clang'
              'catch2'
              'cmake'
              'ffmpeg'
@@ -78,6 +79,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/lat9nq/tzdb_to_nx.git'
         'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
         'git+https://github.com/yuzu-emu/breakpad.git'
+        'git+https://github.com/brofield/simpleini.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         'git+https://github.com/google/googletest'
@@ -115,6 +117,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -127,7 +130,7 @@ prepare() {
     cd "$srcdir/$_pkgname"
 
     git submodule init
-    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad}; 
+    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini}; 
     do
         git config submodule.$submodule.url "$srcdir/${submodule}"
     done
