@@ -31,6 +31,8 @@ source=("$pkgname-$pkgver.tar.gz::https://download.acestream.media/linux/acestre
         "https://files.pythonhosted.org/packages/62/d5/5f610ebe421e85889f2e55e33b7f9a6795bd982198517d912eb1c76e1a53/pycparser-2.21-py2.py3-none-any.whl"
         "sysusers.conf"
         "systemd.service"
+        "$pkgname.desktop"
+        "LICENSE" 
 )
 noextract=(
         "pycryptodome-3.19.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
@@ -54,11 +56,9 @@ sha256sums=(
         "8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"
         "dd0091a54c435a57a658f29b8675dfdc840e2d07cd05d41e87482a2c3ae331da"
         "089fa5087d1d6e5112dd13b8a4a33d1f18728f2f446cd986feabe29cc23f0ba6"
+        "12f2abe2cc9c075101df9713f65fd8400657780f8d07e2b7920ae7477b1a5410"
+        "a9293a75ae0bc69789ad5bfa34ae1497943e6eb1f4ff36ef6a7e0f0b58e81277"
 )
-
-# prepare() {
-#     # Nothing to do here for the time being    
-# }
 
 build() {
     cd "$srcdir"
@@ -89,8 +89,9 @@ package() {
     ln -s                                        "$pkgdir/usr/lib/$pkgname/lib" "$pkgdir/usr/lib/$pkgname/lib64"
 
     # System integration
-    install -Dm644 systemd.service   "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm644 sysusers.conf     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -Dm644 systemd.service    "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 sysusers.conf      "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    pwd
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     # Copy license
