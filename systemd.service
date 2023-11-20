@@ -4,7 +4,12 @@ After=remote-fs.target network.target
 
 [Service]
 User=acestream
+Group=acestream
+Type=simple
 ExecStart=/usr/bin/acestream-engine-py3 --client-console @/usr/lib/acestream-engine-py3/acestream.conf --live-cache-type memory --state-dir /var/lib/acestream --log-file /var/lib/acestream/acestream-engine-py3.log
+WorkingDirectory=/var/lib/acestream
+Restart=on-failure
+KillSignal=SIGINT
 
 [Install]
 WantedBy=multi-user.target
