@@ -1,6 +1,6 @@
 pkgbase = yosys-nightly
 	pkgdesc = Yosys Open SYnthesis Suite, A framework for RTL synthesis
-	pkgver = 20231119_yosys_0.35_30_gab6c1d368
+	pkgver = 20231120_yosys_0.35_30_gab6c1d368
 	pkgrel = 2
 	epoch = 1
 	url = https://yosyshq.net/yosys/
