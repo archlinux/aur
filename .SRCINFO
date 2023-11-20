@@ -12,6 +12,7 @@ pkgbase = rockit
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-scipy
+	depends = casadi
 	source = rockit-0.1.32.tar.gz::https://gitlab.kuleuven.be/meco-software/rockit/-/archive/v0.1.32/rockit-v0.1.32.tar.gz
 	sha256sums = 20b84cefe7612c49d0a5996571121ded686e5c7328bfd62ab15167ec3aed80e4
 
