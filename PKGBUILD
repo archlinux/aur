@@ -1,19 +1,19 @@
 # Maintainer: Soma Yamamoto <mail[at]daizu[dot]dev>
 
 pkgname=ttf-0xproto
-pkgver=1.402
+pkgver=1.403
 pkgrel=1
 pkgdesc="An opinionated font for software engineers"
 arch=(any)
 url="https://github.com/0xType/0xProto"
 license=(custom:SIL)
-source=("$url/releases/download/$pkgver/0xProto-Regular.ttf"
+source=("$url/releases/download/$pkgver/0xProto_${pkgver/./_}.zip"
         "https://raw.githubusercontent.com/0xType/0xProto/$pkgver/LICENSE")
-sha256sums=('43f899c59f323d604fb510e9a5a87ee7fc2c15c49ecc6394507ed16997607449'
+sha256sums=('0c7d7bf8a373aaf874ecfda31718aff7212a545f55353910306482665bd32aa6'
             'a50b1f0b2acde640ade863d1d59aff6c50365ad4ec583e7cd3f6b268cb7bc128')
 
 package() {
     install -d $pkgdir/usr/share/fonts/TTF
-    install -m644 0xProto-*.ttf $pkgdir/usr/share/fonts/TTF
+    install -m644 fonts/0xProto-*.ttf $pkgdir/usr/share/fonts/TTF
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }
