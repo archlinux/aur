@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(
 	'python-anndata>=0.7.4'
 	'python-numpy>=1.17.0'
 	'python-matplotlib>=3.4'
-	'python-pandas>=1.0'
+	'python-pandas>=1.1.1'
 	'python-scipy>=1.4'
 	python-seaborn
 	python-h5py
@@ -44,14 +44,13 @@ optdepends=(
 	'rapids-cugraph: NVIDIA RAPIDS acceleration'
 	'python-dask: Dask parallelization'
 )
-makedepends=(python-flit-core python-setuptools-scm python-build python-installer python-wheel)
+makedepends=(python-hatch python-hatch-vcs python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('1d90f95cd5e103c9e0cc41fd84c1f2d81d86d6337cbe294316578ed071d39d82')
+sha256sums=('b2f24e6f220cb9d4d893b24f6899ba1a14cf2fef50b7e05bb37980c78de8a013')
 
 build() {
 	cd "$pkgname-$pkgver"
-	# no idea why the dep check doesn’t work …
-	python -m build --wheel --no-isolation --skip-dependency-check
+	python -m build --wheel --no-isolation
 }
 
 package() {
