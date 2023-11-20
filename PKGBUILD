@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frigoligo-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An universal wallabag client made with Flutter. "
 arch=('x86_64')
@@ -14,10 +14,7 @@ depends=(
     'pango'
     'gdk-pixbuf2'
     'harfbuzz'
-    'glibc'
     'gtk3'
-    'gcc-libs'
-    'glib2'
     'libepoxy'
     'fontconfig'
 )
@@ -27,7 +24,7 @@ source=(
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/casimir/frigoligo/v${pkgver}/assets/logos/${pkgname%-bin}.png"
     "${pkgname%-bin}.desktop"
 )
-sha256sums=('ec1fe39c3b75647fc83e222712466a14143762aa9ce13037af1678148c42b595'
+sha256sums=('46d6e2620213b76bca15c9ea9d2bccf3f76c18b4f9356b43d8a6b75fc582d25b'
             '3feb1ea09cc75f148e715820992fd28a3881572e3540b629059f22293b2e17db'
             '886063acc61302d4ee369f06b6062257883dd4e3f1d6ab199ca8e64db3091491'
             '96140c61b09c75d05736ad797e220c3041209374b217b061f99ce0d2792fb303')
