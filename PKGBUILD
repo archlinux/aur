@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.3.3.r826.ga3335ea08
+pkgver=3.4.2.r93.g86a6b6df8
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ depends=(
 	'lilv'
 	'lv2'
 	'mpg123'
+  'opusfile'
 	'portaudio'
 	'portmidi'
 	'portsmf'
@@ -48,7 +49,14 @@ depends=(
 )
 makedepends=('cmake' 'gcc' 'git' 'nasm')
 optdepends=('ffmpeg: additional import/export capabilities')
-provides=('audacity')
+provides=(
+  'audacity'
+  'ladspa-host'
+  'lv2-host'
+  'vamp-host'
+  'vst-host'
+  'vst3-host'
+)
 conflicts=('audacity')
 source=("git+https://github.com/audacity/audacity.git")
 sha256sums=('SKIP')
