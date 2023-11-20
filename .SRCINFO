@@ -1,20 +1,25 @@
 pkgbase = kakaotalk
 	pkgdesc = A mobile messaging app for smartphones operated by Kakao Corporation in South Korea
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kakaocorp.com/page/service/service/KakaoTalk
 	arch = i686
 	arch = x86_64
 	license = custom:kakaotalk
+	license = unlicense
 	depends = bash
 	depends = curl
+	depends = desktop-file-utils
 	depends = wine
+	depends = xdg-utils
 	source = https://www.kakao.com/ko/terms.html
+	source = LICENSE
 	source = kakaotalk
 	source = kakaotalk.desktop
 	source = kakaotalk.png
 	sha256sums = SKIP
-	sha256sums = 10117dd1283ad493324739d76822f89a4fc10abd4233e890d608f8c5e4329d0d
+	sha256sums = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
+	sha256sums = 2cec5a7c686f903f7312d608a01f4454135f9b936a4d9bb49d781128682dad5b
 	sha256sums = 5a62e97dc447a0740d92327264c538857f371f29aa8c1adbadafe6a38f835005
 	sha256sums = bc6102b626e970adb084f8eb84cebef02ee189ea4e84857b6535b9c524c2872c
 
