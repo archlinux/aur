@@ -1,4 +1,5 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/toropisco>
+# Modifier: Meow King <mr.meowking@anche.no>
 
 ################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
@@ -89,7 +90,7 @@ NOGZ="YES"        # Don't compress .el files. (Gain is neglible, IMHO)
 
 ################################################################################
 if [[ $CLI == "YES" ]] ; then
-  pkgname="emacs-nox-git-meow-king"
+  pkgname="emacs-nox-git"
 else
   pkgname="emacs-git-meow-king"
 fi
