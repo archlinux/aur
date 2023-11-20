@@ -3,12 +3,12 @@
 
 pkgname=openiked
 pkgver=7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the IKEv2 protocol"
 arch=('aarch64' 'x86_64')
 url="https://www.openiked.org"
 license=('ISC')
-depends=('glibc' 'libevent' 'openssl')
+depends=('glibc' 'libevent' 'libsystemd' 'openssl')
 makedepends=('linux-headers' 'bison' 'cmake')
 provides=('iked' 'ikectl')
 conflicts=('iked' 'ikectl')
@@ -26,6 +26,7 @@ build() {
 		-DCMAKE_BUILD_TYPE='None' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_SKIP_RPATH=TRUE \
+		-DWITH_SYSTEMD=TRUE \
 		-Wno-dev
 	cmake --build build
 }
