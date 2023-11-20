@@ -4,7 +4,7 @@
 
 _target=arm-none-linux-gnueabihf
 pkgname=${_target}-toolchain-bin
-pkgver=12.3.rel1
+pkgver=13.2.Rel1
 pkgrel=1
 pkgdesc="GNU Toolchain for the Cortex-A Family"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL' 'LGPL')
 depends=(binutils)
 options=(!emptydirs !strip staticlibs)
 source=("https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-x86_64-${_target}.tar.xz")
-sha256sums=(f5f3c1cfcb429833d363e8fec31bb1282974b119ca8169d6277ce8a549e26d54)
+sha256sums=('df0f4927a67d1fd366ff81e40bd8c385a9324fbdde60437a512d106215f257b3')
 
 package() {
   mkdir -p ${pkgdir}/usr

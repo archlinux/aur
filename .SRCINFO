@@ -1,6 +1,6 @@
 pkgbase = arm-none-linux-gnueabihf-toolchain-bin
 	pkgdesc = GNU Toolchain for the Cortex-A Family
-	pkgver = 12.3.rel1
+	pkgver = 13.2.Rel1
 	pkgrel = 1
 	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = arm-none-linux-gnueabihf-toolchain-bin
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = https://developer.arm.com/-/media/Files/downloads/gnu/12.3.rel1/binrel/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
-	sha256sums = f5f3c1cfcb429833d363e8fec31bb1282974b119ca8169d6277ce8a549e26d54
+	source = https://developer.arm.com/-/media/Files/downloads/gnu/13.2.Rel1/binrel/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
+	sha256sums = df0f4927a67d1fd366ff81e40bd8c385a9324fbdde60437a512d106215f257b3
 
 pkgname = arm-none-linux-gnueabihf-toolchain-bin
