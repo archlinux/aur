@@ -5,7 +5,7 @@
 
 pkgname=mit-scheme
 pkgver=12.1
-pkgrel=5
+pkgrel=6
 pkgdesc="MIT/GNU Scheme"
 url="https://www.gnu.org/software/mit-scheme/"
 arch=(x86_64)
@@ -43,16 +43,20 @@ _archive="$pkgname-$pkgver"
 prepare() {
   cd "$_archive"
 
-  cp -r src src_tmp
-
   patch --forward --strip=1 --input="$srcdir/disable-long-running-tests.patch"
+
+  rm -rf src_real src_test
+  cp -r src src_real
+  cp -r src src_test
 }
 
 build() {
   cd "$_archive"
 
+  # Running ./configure the original src/ directory pollutes it and will make
+  # re-installs fail
   (
-    cd src
+    cd src_real
     ./configure \
       --prefix=/usr \
       --with-x \
@@ -75,7 +79,7 @@ check() {
 
   # Run tests with a temporary installation
   (
-    cd src_tmp
+    cd src_test
     ./configure \
       --prefix="$PWD/../tmp_install/usr/" \
       --with-x \
@@ -95,7 +99,7 @@ package() {
   install -Dm644 "etc/xscheme.el" "$pkgdir/usr/share/emacs/site-lisp/xscheme.el"
 
   (
-    cd src
+    cd src_real
     make DESTDIR="$pkgdir" install
   )
 
