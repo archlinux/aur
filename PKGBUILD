@@ -139,7 +139,7 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  for patch in "$srcdir/*.patch" ; do
+  for patch in "$srcdir"/*.patch ; do
     echo "Applying $patch"
     patch -p1 -i "$patch"
   done
