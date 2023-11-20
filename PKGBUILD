@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-bin
 _pkgname=DeltaChat
-pkgver=1.41.2
+pkgver=1.41.3
 pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
 arch=('x86_64')
@@ -23,12 +23,13 @@ depends=(
     'python-wheel'
     'python-cffi'
     'python-requests'
+    'python-pluggy'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::https://download.delta.chat/desktop/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('87f027b176f254d0a610f9697fdb0899ebeafaf9202a560e81913d484473d109'
+sha256sums=('eabb05000434e10ddc8f50cbb0ac2b45c203bf836e0171ba6391c1749799c9e3'
             '03c891ec47df246c3bce1480ffa8425ac633d291d05b5c05c47b0d1f1f5f2dcc')
 build() {
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
