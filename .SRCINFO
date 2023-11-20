@@ -1,0 +1,12 @@
+pkgbase = lua-json
+	pkgdesc = Pure lua json library
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rxi/json.lua
+	arch = any
+	license = MIT
+	depends = lua
+	source = lua-json-0.1.2.tar.gz::https://github.com/rxi/json.lua/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = a786a429adfd3b9034213b52b9a44de7ed99970f10cfb8bf5e7ff006577c3f58
+
+pkgname = lua-json
