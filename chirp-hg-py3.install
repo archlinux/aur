@@ -1,0 +1,16 @@
+pre_install() {
+  echo "WARNING: 'chirp-hg-py3' is now empty: manual intervention required"
+  echo
+  echo "  Chirp is now developed on GitHub, not in the old Mercurial repository."
+  echo
+  echo "  Please uninstall 'chirp-hg-py3'."
+  echo
+  echo "  You can use AUR/chirp-next (development snapshots package) as a working alternative:"
+  echo
+  echo "  https://aur.archlinux.org/packages/chirp-next"
+  echo
+}
+
+pre_upgrade() {
+  pre_install
+}
