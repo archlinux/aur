@@ -66,8 +66,8 @@ build() {
     cd "$srcdir"
 
     python3.8 -m venv .
-    bin/pip3.8 --disable-pip-version-check install ./*.whl
     source bin/activate
+    bin/pip3.8 --disable-pip-version-check install ./*.whl
 }
 
 package() {
