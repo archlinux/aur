@@ -13,7 +13,7 @@ depends=('gcc-libs' 'sh')
 provides=('bsd-mp')
 license=('LGPL3')
 options=(!libtool)
-source=(ftp://ftp.gmplib.org/pub/gmp-$pkgver/gmp-$pkgver.tar.xz{,.sig})
+source=(https://gmplib.org/download/gmp/gmp-$pkgver.tar.xz{,.sig})
 sha256sums=('e87015a825a2445e169931ee27849d52576a2d9e338d1383dcb36fed68d0006f'
             'SKIP')
 validpgpkeys=('73D46C3667461E4BD93972495D6D47DFDB899F46')
