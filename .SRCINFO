@@ -6,8 +6,10 @@ pkgbase = imsprog
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake>=3.10.0
-	depends = qt5-base
 	depends = libusb>=1.0.20
+	depends = qt5-base
+	depends = wget
+	depends = zenity
 	provides = imsprog
 	source = imsprog-1.1.2-1.tar.gz::https://github.com/bigbigmdm/imsprog/archive/refs/tags/v1.1.2-1.tar.gz
 	b2sums = da90a7b806e86cff521ecb95eca7b7cb7c2f584b5b6d77631edba9685051a85ba8005d9ed159226be29aaa8cddeb71c93e60d5bc6bce5d95b183fbf47b2954de

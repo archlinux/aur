@@ -1,7 +1,7 @@
 # Maintainer: Kristopher James Kent <aur@kjkent.dev>
 pkgname='imsprog'
 _pkgname='IMSProg'
-depends=('qt5-base' 'libusb>=1.0.20')
+depends=('libusb>=1.0.20' 'qt5-base' 'wget' 'zenity') 
 makedepends=('cmake>=3.10.0')
 url="https://github.com/bigbigmdm/$pkgname"
 pkgver='1.1.2'
