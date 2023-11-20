@@ -7,8 +7,8 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
-conflicts=("vpkedit")
 provides=("vpkedit")
+conflicts=("vpkedit")
 source=("vpkedit-$pkgver.zip::$url/releases/download/v$pkgver/VPKEdit-Linux-Standalone-gcc-Release.zip"
         "$url/raw/main/src/gui/res/icon.png")
 sha256sums=('77b62471002a68b5e2fc5c4afcc90d0c64ff7492fdbe0833a331f2cf2396415f'
