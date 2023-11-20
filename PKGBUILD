@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.14.3
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=(
@@ -25,8 +25,8 @@ source=(
 )
 sha256sums=('608449f39836e08b54dbe679e78fefbd8b2a4f77ac6fc16bf7320d1e89e4bb10'
             '941cb7196d03283a6e65a2271f0c8381a9ec8176f38ce9dc9916f3f89b29a720')
-sha256sums_aarch64=('65576ce1a0a7a588a1fcd04242a4a6058f59a6b413e571b4aea186a6f0913abb')
-sha256sums_x86_64=('13517a99e9264d467e77d6d5b07af3812a057310acbfb0efba02e19ae2ddc3dc')
+sha256sums_aarch64=('75f469fd70cc92a866a497239688e917954e43e881f2ad99930a22369177f142')
+sha256sums_x86_64=('bbfefa516c7914b867905883698b83b3e7670d05b487bed5f5953fb526411c17')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
