@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname='python-h5py-docs'
-pkgver=3.8.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Set of HTML documentation for python-h5py'
 arch=('any')
