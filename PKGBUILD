@@ -1,7 +1,7 @@
 # Maintainer:  m0ar < edvard [at] hubinette dot me>
 
 pkgname=cloudflare-wrangler2
-pkgver=3.15.0
+pkgver=3.16.0
 pkgrel=1
 pkgdesc='Command-line tool for working with Cloudflare Workers'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('npm')
 depends=('nodejs')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/wrangler/-/wrangler-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tar.gz")
-md5sums=('66a9d0c424294506669709d7462c3e60')
+md5sums=('d55e4767594aece0289ed4a9e8d6ce6b')
 
 package() {
   npm install \
