@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.14.3
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
 arch=(
@@ -19,22 +19,17 @@ makedepends=(
     'gendesk'
     'npm>=9.8.1'
     'nodejs>=18.18.0'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b8c903c415317cbd428d7137ca683f63ad6b88e24e99c0e1d4d5b99989af8ce9'
+sha256sums=('SKIP'
             '941cb7196d03283a6e65a2271f0c8381a9ec8176f38ce9dc9916f3f89b29a720')
 build() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    if [ -d .git ];then
-        rmdir .git
-        mkdir .git
-    else
-        mkdir .git
-    fi
     sed -e '81,84d' -e 's|"deb"|"AppImage"|g' -i electron-builder.json
     npm install
     npm run build:linux
