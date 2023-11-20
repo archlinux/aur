@@ -1,6 +1,6 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 0.22.15
+	pkgver = 0.22.16
 	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
@@ -25,13 +25,7 @@ pkgbase = albert
 	optdepends = python-pylatexenc: TeX plugin
 	optdepends = python-urllib3: python web plugins
 	optdepends = python-virtualbox: virtualbox plugin
-	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.22.15
-	source = mirrors/plugins::git+https://github.com/albertlauncher/plugins.git
-	source = mirrors/python::git+https://github.com/albertlauncher/python.git
-	source = mirrors/qhotkey::git+https://github.com/Skycoder42/QHotkey.git#tag=1.5.0
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = https://github.com/albertlauncher/albert/releases/download/v0.22.16/v0.22.16.tar.gz
+	sha512sums = 25dba1482b6113dd08bb03b59a3687c2d18e604008f29f0e435633fe50564e388cb76008e42818155f9cdc7b340ace0a9ba00fc0a821bb6be233e07e4727a9e3
 
 pkgname = albert
