@@ -1,4 +1,5 @@
 pkgbase = oip
+	pkgdesc = A visualizer to visualize IP traffic between endpoints
 	pkgver = 0.05_1~security1210+1
 	pkgrel = 1
 	url = https://github.com/USU-Security/oip
