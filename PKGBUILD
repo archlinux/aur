@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 _pkgname=community-configs-for-protopedal
 pkgname=community-configs-for-protopedal-git
-provides=$_pkgname
-pkgver=0.1
+provides=($_pkgname)
+pkgver=1.0
 pkgrel=1
 pkgdesc="Community-sourced configurations for protopedal."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(
   bash
   joyutils
-  protopedal-git
+  protopedal
 )
 makedepends=(
   git
@@ -37,5 +37,5 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make install
+  make prefix="$pkgdir" install
 }

@@ -1,0 +1,18 @@
+pkgbase = community-configs-for-protopedal-git
+	pkgdesc = Community-sourced configurations for protopedal.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Lawstorant/community-configs-for-protopedal
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = sed
+	depends = bash
+	depends = joyutils
+	depends = protopedal
+	provides = community-configs-for-protopedal
+	source = git+https://github.com/Lawstorant/community-configs-for-protopedal
+	sha256sums = SKIP
+
+pkgname = community-configs-for-protopedal-git
