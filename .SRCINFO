@@ -1,7 +1,7 @@
 pkgbase = tinyfilemanager
 	pkgdesc = Web based, simple, fast and small file manager
 	pkgver = 2.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/prasathmani/tinyfilemanager
 	arch = any
 	license = GPL3
