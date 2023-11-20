@@ -2,7 +2,7 @@
 
 pkgname=bas-celik-bin
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for reading smart-card documents issued by the government of Serbia"
 arch=("x86_64")
 conflicts=("bas-celik")
