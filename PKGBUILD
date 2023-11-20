@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.4.1.r1.g5497ad34b
+pkgver=3.4.1.r9.g1c1f3361d
 pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
@@ -10,26 +10,26 @@ url="https://github.com/vslavik/poedit"
 license=('MIT')
 groups=()
 depends=(aspell
-        cld2
-        cpprestsdk
-        expat
-        gettext
-        gtkspell3
-        hunspell
-        nlohmann-json
-        lucene++
-        pugixml
-        wxwidgets-gtk3
-        webkit2gtk)
+    cld2
+    cpprestsdk
+    expat
+    gettext
+    gtkspell3
+    hunspell
+    nlohmann-json
+    lucene++
+    pugixml
+    wxwidgets-gtk3
+    webkit2gtk)
 makedepends=(automake
-            ccache
-            boost
-            git
-            icu
-            libjpeg-turbo
-            libnotify
-            libsecret
-            zlib)
+    ccache
+    boost
+    git
+    icu
+    libjpeg-turbo
+    libnotify
+    libsecret
+    zlib)
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})

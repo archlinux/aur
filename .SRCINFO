@@ -1,6 +1,6 @@
 pkgbase = poedit-git
 	pkgdesc = Translations editor for Mac, Windows and Unix
-	pkgver = 3.4.1.r1.g5497ad34b
+	pkgver = 3.4.1.r9.g1c1f3361d
 	pkgrel = 1
 	url = https://github.com/vslavik/poedit
 	arch = x86_64
