@@ -1,6 +1,6 @@
 pkgname=ktls-utils
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers"
 url="https://github.com/oracle/ktls-utils"
 license=(GPL2)
@@ -42,6 +42,12 @@ package() {
 
   # Fix non-templated units to match ${sbindir}.
   sed -i 's,/usr/sbin/,/usr/bin/,g' "$pkgdir"/usr/lib/systemd/system/*.service
+
+  # As packaged, the unit installs into remote-fs.target which is a "client"
+  # target (and could, theoretically, be disabled on a server); although it
+  # works, it's better to have nfs-server explicitly depend on tlshd.
+  echo 'WantedBy=nfs-server.service' >> "$pkgdir"/usr/lib/systemd/system/tlshd.service
+  echo 'WantedBy=nfsv4-server.service' >> "$pkgdir"/usr/lib/systemd/system/tlshd.service
 }
 
 # vim: ft=sh:ts=2:sw=2:et

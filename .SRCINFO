@@ -1,7 +1,7 @@
 pkgbase = ktls-utils
 	pkgdesc = TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oracle/ktls-utils
 	arch = x86_64
 	license = GPL2
