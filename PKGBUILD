@@ -13,7 +13,7 @@ optdepends=(
   'dunst: showing if notifications are paused or not via dunst'
   'i3-wm: use it as the i3 status_command'
 )
-source=("${pkgname%-bin}-${pkgver}.zip::$url/releases/download/${pkgver//-/_}/${pkgname%-bin}-x86_64-unknown-linux-gnu.zip")
+source=("${pkgname%-bin}-${pkgver}.zip::$url/releases/download/${pkgver//_/-}/${pkgname%-bin}-x86_64-unknown-linux-gnu.zip")
 sha512sums=('c5fe51b34f57c4bdfd30c70f397faa42971c10eae1de7a6cf139c79569650ecbde8db98efda2006a558f5d5f92d4fc50200f7376a04698bb2cd4f4b3a51788c1')
 
 package() {
