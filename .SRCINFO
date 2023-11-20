@@ -1,7 +1,7 @@
 pkgbase = community-configs-for-protopedal-git
 	pkgdesc = Community-sourced configurations for protopedal.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lawstorant/community-configs-for-protopedal
 	arch = any
 	license = GPL3
