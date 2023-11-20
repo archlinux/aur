@@ -1,6 +1,6 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=i3stat-bin
-pkgver=0.10.4_rc1
+pkgver=0.10.4_rc3
 pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'i3-wm: use it as the i3 status_command'
 )
 source=("${pkgname%-bin}-${pkgver}.zip::$url/releases/download/${pkgver//_/-}/${pkgname%-bin}-x86_64-unknown-linux-gnu.zip")
-sha512sums=('9f3ccbe9f4927e4749970f5ade2c60ecfd56be2dcb4bf37a25b20a2f432a911ef7d96a0d9e71eb360a58fbb12ae7a821b92f2c733d12ac9ba1ef9e853fe13868')
+sha512sums=('293cdbb991408a90c30916d5c2fd8a4c8c001f3422f6134120e7028e802c20d8f523f7d50ab4a731239266908f9254b26e1a2dfa99be0c52948b75f86e06d143')
 
 package() {
   cd "${pkgname%-bin}-x86_64-unknown-linux-gnu"
