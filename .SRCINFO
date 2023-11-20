@@ -1,6 +1,6 @@
 pkgbase = naviserver-postgres-connector
 	pkgdesc = Naviserver postgres connector
-	pkgver = 4.99.27
+	pkgver = 4.99.29
 	pkgrel = 1
 	url = https://bitbucket.org/naviserver/naviserver/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = naviserver-postgres-connector
 	depends = tcl>=8.5.18
 	depends = postgresql>=9.4
 	depends = naviserver>=4.99.27
-	source = http://download.sourceforge.net/sourceforge/naviserver/naviserver-4.99.27-modules.tar.gz
-	md5sums = 5303eb32b01a170c45da4d34475be2a7
+	source = http://download.sourceforge.net/sourceforge/naviserver/naviserver-4.99.29-modules.tar.gz
+	md5sums = cd15587751ae5d19b6f19a15d2824963
 
 pkgname = naviserver-postgres-connector
