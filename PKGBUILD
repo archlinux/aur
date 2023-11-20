@@ -23,7 +23,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '668b9ab19df61e5704e49c442b179a20fc344b3d26f60680882e960a5983f2fb')
+            '2146576ad96310d947adc76e44a6fa6692689081f9b5eb3f1d16aa61f27c97de')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     printf "%s.r%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')" "$(git rev-parse --short HEAD)"

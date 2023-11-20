@@ -1,6 +1,6 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron16
-APPDIR="/opt/picgo"
+APPDIR="/usr/lib/picgo"
 export PATH="${APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${APPDIR}/swiftshader:${LD_LIBRARY_PATH}"
 _ASAR="${APPDIR}/app.asar"
