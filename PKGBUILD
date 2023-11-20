@@ -4,7 +4,7 @@
 pkgbase=libnvidia-container
 pkgname=(libnvidia-container libnvidia-container-tools)
 
-pkgver=1.14.0
+pkgver=1.14.3
 pkgrel=1
 _elfver=0.7.1
 _nvmpver=495.44
@@ -32,7 +32,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/NVIDIA/${pkgbase}/archi
         fix_git_rev_unavail.patch
         fix_libelf_so_name.patch
         fix_elftoolchain.patch)
-sha256sums=('6c14bd7659a6b8908046a0927fe929b257069f0f987614d77bf536265c30f692'
+sha256sums=('0d1db40b5470e0b672dbc0521867f5933db7df5e0f89941e135cc00ad4e37435'
             '44f14591fcf21294387215dd7562f3fb4bec2f42f476cf32420a6bbabb2bd2b5'
             'ae6e9c7e6b43368945c28f6b8b6d0d7cc36ee7e1be8955a009a1cb189e46de92'
             '6738c0f8738cb272ee5c723e77008f5f512be842bad26abc2e8f78911131165a'
@@ -77,10 +77,7 @@ build(){
 make_dist(){
   cd ${_srcdir}
   # package
-  GIT_TAG=$pkgver make dist prefix=/usr
-
-  # untar into $pkgdir
-  tar -xf "${srcdir}/${_srcdir}/dist/${pkgbase}_${pkgver}-${pkgver}_x86_64.tar.xz" -C ${pkgdir} --strip-components=1
+  GIT_TAG=$pkgver make DESTDIR="${pkgdir}" install
 }
 
 package_libnvidia-container() {
