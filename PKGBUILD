@@ -2,19 +2,32 @@
 pkgname=fcitx-huayupinyin
 _appname=com.thunisoft.input
 pkgver=2.4.8.207
-pkgrel=2
+pkgrel=3
 pkgdesc="The Input Method Developed by thunisoft"
 arch=("x86_64")
 url="https://pinyin.thunisoft.com"
 license=("LGPL3")
 conflicts=()
 providers=(thunisoft)
-depends=('libxtst' 'qt5-svg' 'qt5-base' 'fcitx' 'fcitx-qt5' 'fcitx-configtool' 'glibc' 'cairo' 'libx11' 'gcc-libs' 'sh' 'dbus')
+depends=(
+    'libxtst'
+    'qt5-svg'
+    'qt5-base'
+    'fcitx'
+    'fcitx-qt5'
+    'fcitx-configtool'
+    'cairo'
+    'libx11'
+)
 options=("!strip")
-source=("${pkgname}-${pkgver}.deb::${url}/webapi/v1/downloadSetupFile?os=uos&cpu=x86")
+source=(
+    "${pkgname}-${pkgver}.deb::${url}/webapi/v1/downloadSetupFile?os=uos&cpu=x86"
+)
 sha256sums=('ec965e51f30ddf548d4ab2ba0324bc0e8c6691b39f33112a872eecbb6bf5fa5c')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    find "${pkgdir}" -type d -exec chmod 755 {} \;
+    mv "${pkgdir}/usr/lib/x86_64-linux-gnu/fcitx" "${pkgdir}/usr/lib/"
     install -Dm755 -d "${pkgdir}/usr/bin"
     ln -sf "/opt/apps/${_appname}/files/bin/huayupy-config-tools-fcitx" "${pkgdir}/usr/bin/huayupy-config-tools-fcitx"
     ln -sf "/opt/apps/${_appname}/files/bin/huayupy-daemon-fcitx" "${pkgdir}/usr/bin/huayupy-daemon-fcitx"
@@ -24,8 +37,6 @@ package() {
     ln -sf "/opt/apps/${_appname}/files/bin/huayupy-updater-fcitx" "${pkgdir}/usr/bin/huayupy-updater-fcitx"
     ln -sf "/opt/apps/${_appname}/files/bin/huayupy-wl-tool-fcitx" "${pkgdir}/usr/bin/huayupy-wl-tool-fcitx"
     ln -sf "/opt/apps/${_appname}/files/bin/special-symbols-fcitx" "${pkgdir}/usr/bin/special-symbols-fcitx"
-    mv "${pkgdir}/usr/lib/x86_64-linux-gnu/fcitx" "${pkgdir}/usr/lib/"
-    find "${pkgdir}" -type d -exec chmod 755 {} \;
     install -Dm644 "${pkgdir}/opt/apps/${_appname}/entries/autostart/${_appname}.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
     #Delete empty dirs
     rm -rf "${pkgdir}/usr/share/fcitx/imicon" "${pkgdir}/opt/apps/${_appname}/info" "${pkgdir}/usr/lib/x86_64-linux-gnu"
