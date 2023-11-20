@@ -1,7 +1,7 @@
 pkgbase = tetherback-git
 	pkgdesc = Create backups of an Android device over USB (requires adb and TWRP recovery).
 	pkgver = 0.9.1+20.r143.20230322.7797eb6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dlenski/tetherback
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = tetherback-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = android-tools
 	depends = python>=3.6
 	depends = python-progressbar>=3.6
 	depends = python-tabulate
