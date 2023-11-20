@@ -1,14 +1,19 @@
 pkgbase = thoughts-bin
 	pkgdesc = 一个还算强大的Web思维导图。A relatively powerful web mind map.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wanglin2.github.io/mind-map/#/index
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = bash
 	depends = electron
 	depends = hicolor-icon-theme
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = thoughts=0.7.0
 	conflicts = thoughts
 	source = thoughts-0.7.0.AppImage::https://github.com/wanglin2/mind-map/releases/download/electron_0.7.0/-0.7.0.AppImage
@@ -16,6 +21,6 @@ pkgbase = thoughts-bin
 	source = thoughts.sh
 	sha256sums = bdbc17da2ec25aff79057fbacfbb0f0be1dd6a6abb694dcac53854e6b8edd9cc
 	sha256sums = 8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7
-	sha256sums = 07dbb44e73197dfcb97193689058141b84aa6a562a5f21ae782b918bec049eca
+	sha256sums = c36118c1c69c968ba18d7be76b0869e0b15668b678f234bb8749d47f43dda039
 
 pkgname = thoughts-bin

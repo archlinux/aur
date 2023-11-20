@@ -1,8 +1,9 @@
 #!/bin/bash
-APPDIR="/opt/thoughts"
-export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"
 _ELECTRON=/usr/bin/electron
-_ASAR="${APPDIR}/resources/app.asar"
+APPDIR="/usr/lib/thoughts"
+export PATH="${APPDIR}:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
+_ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
