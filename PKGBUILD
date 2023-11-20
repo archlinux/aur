@@ -1,17 +1,18 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=leaflet.providers
-_cranver=1.13.0
+_cranver=2.0.0
 pkgname=r-${_cranname,,}
 pkgdesc="Third-party map tiles for r-leaflet"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("BSD")
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=("any")
 depends=(
-    "r>=3.6"
+    "r>=2.10"
+    "r-htmltools"
 )
 optdepends=(
     "r-jsonlite"
@@ -38,7 +39,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("1ce385febd48fd9da6aec495a406734a49552765e5044f4e16de0950c0b723551987007da790830a6dbf4861bcf63da88c65a3d4d95ef979bf7992281062af6e")
+b2sums=("d95efcb836a9772f2293ccea3b58298d7b1aa068d11d7e634c51559c7c31453970042a77a351e5c9a9a00de33febaf9100126739401c92d7a42c0618588fe9ca")
 
 build() {
     mkdir -p "${srcdir}/build/"
