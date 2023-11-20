@@ -2,6 +2,7 @@
 _ELECTRON=/usr/bin/electron25
 APPDIR="/usr/lib/lisk-desktop"
 export PATH="${APPDIR}:${APPDIR}/usr/sbin:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/lib:${LD_LIBRARY_PATH}"
 _ASAR="${APPDIR}/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"

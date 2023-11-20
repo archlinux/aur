@@ -1,19 +1,24 @@
 pkgbase = lisk-desktop-bin
 	pkgdesc = Lisk graphical user interface for desktop
-	pkgver = 3.0.0_rc.3
+	pkgver = 3.0.0_rc.4
 	pkgrel = 1
 	url = https://lisk.com/wallet
 	arch = x86_64
 	license = GPL3
 	makedepends = squashfuse
-	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
-	provides = lisk-desktop=3.0.0_rc.3
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
+	provides = lisk-desktop=3.0.0_rc.4
 	conflicts = lisk-desktop
-	source = lisk-desktop-3.0.0_rc.3.AppImage::https://github.com/LiskHQ/lisk-desktop/releases/download/v3.0.0-rc.3/lisk-linux-x86_64-3.0.0-rc.3.AppImage
+	source = lisk-desktop-3.0.0_rc.4.AppImage::https://github.com/LiskHQ/lisk-desktop/releases/download/v3.0.0-rc.4/lisk-linux-x86_64-3.0.0-rc.4.AppImage
 	source = lisk-desktop.sh
-	sha256sums = 5a2884d571053644e02d4885a0fb0d7292c45c35ac30b8c2ec22b2facd73e6cd
-	sha256sums = 6a041b508c401d7776dc512430f9a0802aa2c5d1c07cb6ab4b59ed65857b9b5e
+	sha256sums = 16c1fd5b587b1d67d14abe56b0fdaf56433961081783fa48e394de26a05158f6
+	sha256sums = ed2d2a181a7199c99e132ee5ca64a53776d31de753f1ed9a715a514106333299
 
 pkgname = lisk-desktop-bin
