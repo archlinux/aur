@@ -1,14 +1,14 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vrf-decompiler'
 _reponame='ValveResourceFormat'
-pkgver='6.0'
+pkgver='7.0'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/$_reponame/$_reponame"
 license=('MIT')
-depends=('dotnet-runtime>=6.0.0' 'skia-sharp')
-makedepends=('dotnet-sdk>=6.0.0' 'git')
+depends=('dotnet-runtime>=8.0.0' 'skia-sharp')
+makedepends=('dotnet-sdk>=8.0.0' 'git')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver?signed")
 sha512sums=('SKIP')
@@ -51,9 +51,9 @@ build() {
 	export DOTNET_SKIP_FIRST_TIME_EXPERIENCE='true'
 	export DOTNET_CLI_TELEMETRY_OPTOUT='true'
 
-	# Build the project (disable Source Link, as it doesn't detect our git repo; don't publish as self-contained, as we use the system dotnet runtime)
-	dotnet build --verbosity 'normal' --configuration 'Release' -p:EnableSourceControlManagerQueries=false -p:EnableSourceLink=false --runtime "$_dotnetarch" --self-contained false 'Decompiler/Decompiler.csproj'
-	dotnet publish --verbosity 'normal' --configuration 'Release' -p:EnableSourceControlManagerQueries=false -p:EnableSourceLink=false --runtime "$_dotnetarch" --self-contained false 'Decompiler/Decompiler.csproj'
+	# Build the project (don't publish as self-contained, as we use the system dotnet runtime)
+	dotnet build --verbosity 'normal' --configuration 'Release' -p:EnableSourceControlManagerQueries=false --runtime "$_dotnetarch" --self-contained false 'Decompiler/Decompiler.csproj'
+	dotnet publish --verbosity 'normal' --configuration 'Release' -p:EnableSourceControlManagerQueries=false --runtime "$_dotnetarch" --self-contained false 'Decompiler/Decompiler.csproj'
 }
 
 package() {
