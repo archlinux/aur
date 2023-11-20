@@ -1,11 +1,11 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=vpkedit-bin
-pkgdesc="A tool to work with VPK files (binary release)"
 pkgver=3.5.0
 pkgrel=1
-arch=('x86_64')
+pkgdesc="A tool to work with VPK files (binary release)"
 url="https://github.com/craftablescience/VPKEdit"
+arch=('x86_64')
 license=('MIT')
 provides=("vpkedit")
 conflicts=("vpkedit")
