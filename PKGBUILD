@@ -12,7 +12,7 @@ pkgname=(
  aspnet-targeting-pack-6.0
  dotnet-source-built-artifacts-6.0
 )
-pkgver=6.0.24.sdk124
+pkgver=6.0.25.sdk125
 pkgrel=1
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
@@ -43,7 +43,7 @@ options=(
   !lto
   staticlibs
 )
-_tag=c1725aecd852dbca99b12a2e45076d0d3eeac19c
+_tag=e898a826c2b7f66602c8962134ef165fb9e6d44b
 source=(
   dotnet-installer::git+https://github.com/dotnet/installer.git#tag=${_tag}
   dotnet.sh
