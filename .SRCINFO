@@ -1,7 +1,7 @@
 pkgbase = android-devel
 	pkgdesc = Metapackage to pull all dependencies required to build modern Android
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/title/Android#Building
 	arch = x86_64
 	license = None
@@ -29,6 +29,7 @@ pkgbase = android-devel
 	depends = lib32-zlib
 	depends = lib32-ncurses
 	depends = lib32-readline
+	depends = lib32-ncurses5-compat-libs
 	depends = libxcrypt-compat
 	depends = ffmpeg
 	depends = ninja
@@ -36,6 +37,8 @@ pkgbase = android-devel
 	depends = lzop
 	depends = pngcrush
 	depends = imagemagick
+	depends = git-lfs
+	optdepends = java-environment: Build requirement for Android 8 and older versions
 	optdepends = wxgtk2: may be required on older versions
 	optdepends = python2-virtualenv: required on older versions to make python2 the default
 
