@@ -1,0 +1,23 @@
+pkgbase = r-compspot
+	pkgdesc = compSPOT: Tool for identifying and comparing significantly mutated genomic hotspots
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/compSPOT
+	arch = any
+	license = Artistic2.0
+	checkdepends = r-testthat
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-ggpubr
+	depends = r-gridextra
+	depends = r-magrittr
+	depends = r-plotly
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/compSPOT_1.0.0.tar.gz
+	md5sums = 7aa69c9c3ec0c008ad0fdfb4dbbcac57
+	sha256sums = 6b11254933cfd20fc3aae611e9d38d7c6ef10e0a7251f06847b9cb48e4c61a8f
+
+pkgname = r-compspot
