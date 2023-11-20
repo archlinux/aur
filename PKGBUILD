@@ -2,8 +2,8 @@
 
 pkgname=bauh-staging
 pkgver=0.10.6.RC
-pkgrel=5
-_commit="c8186745eb18e93a10341e35df71ff19036c4a5b"
+pkgrel=6
+_commit="4be25792fd71d427bb6843926cc452f32d272986"
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly)."
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -38,21 +38,25 @@ optdepends=('flatpak: required for Flatpak support'
             'axel: multi-threaded downloading support'
             'shadow: to install AUR packages as the root user'
             'util-linux: to install AUR packages as the root user')
-makedepends=('git' 'python' 'python-pip' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('b7d79c193c6795657209a0654aae031156dca64c3ff4948f201096b3f6c40a4c313d82cbee683c53744a5b6380243bc982954964cec3603c2147f627d5f97369')
+sha512sums=('1b8b785bb62907846bc188c63391afbc9acac9ee0a3faeb66b8ce4ae5346352fe685c8f07e0d2ba82becbe684edfa9dbe6107174fd2b7cea630bfaaa6a3fae03')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
-  python3 setup.py build
-  python3 setup.py test || return 1
+
+  # removing outdated setup files
+  rm setup.cfg setup.py requirements.txt
+
+  python -m unittest discover -s tests -t tests -v || return 1
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/bauh-${_commit}"  
-  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  cd "${srcdir}/bauh-${_commit}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   
   mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
 
