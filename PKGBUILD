@@ -1,7 +1,7 @@
 # Maintainer: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.28.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities."
 arch=('any')
@@ -9,6 +9,7 @@ url="https://github.com/fabiocaccamo/python-benedict"
 license=('MIT')
 depends=(
 	'python'
+	'python-beautifulsoup4'
 	'python-boto3'
 	'python-ftfy'
 	'python-mailchecker'
@@ -30,7 +31,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=(
-	'7aaf8430c2ee4144f5e3d61f7b02ac229b58f8154a401539a669b4b615bee5c2'
+	'161472c40c6e666098097a2ed8b6810aae65bb9919adfb96048a3737b7093242'
 )
 
 build() {
