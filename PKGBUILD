@@ -1,17 +1,17 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=denaro-git
-pkgver=2023.9.2.r43.gec4b2d3b
+pkgver=2023.11.0.r0.gb053cc0e
 pkgrel=1
 pkgdesc='A personal finance manager'
 arch=(aarch64 armv7h x86_64 i686)
 url=https://github.com/NickvisionApps/${pkgname%-git}
 license=(GPL3)
-depends=('dotnet-runtime>=7' libadwaita)
-makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
+depends=('dotnet-runtime>=8' libadwaita)
+makedepends=(blueprint-compiler 'dotnet-sdk>=8' git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=("git+$url" "git+${url%denaro}cakescripts#commit=d8dda8b25499cdedb6cb015db18e54d7ea720ac3")
+source=("git+$url" "git+${url%denaro}cakescripts#commit=1b48cc0957fcd65c3b0f25285e84033fb5b7f542")
 b2sums=('SKIP' 'SKIP')
 
 pkgver() {
