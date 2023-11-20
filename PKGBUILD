@@ -6,10 +6,10 @@
 # NOTE: to comply with semantic versioning (https://semver.org/) version string X.Y.0-letter is used
 #
 
-_pkgver="1_9e"
+_pkgver="1_9f"
 
 pkgname="vasm"
-pkgver="1.9.0_e"
+pkgver="1.9.0_f"
 pkgrel=0
 pkgdesc="Portable and retargetable 6502 6800 6809 arm c16x jagrisc m68k pdp11 ppc qnice test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=()
 #source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz) # latest unversioned source url
 #source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
 source=(http://phoenix.owl.de/tags/${pkgname}${_pkgver}.tar.gz)
-sha256sums=('e52414943f4699b6af19d070efb33dc64ec188780d0dddaaa94bec02ebc1bc38')
+sha256sums=('a09d4ff3b5ec50bb7538fb97b9539141376580b590586463569783c36438ebe8')
 
 
 # TODO: dynamic lists based on dirs below vasm/cpus, vasm/syntax, vasm/output_*.c/.h
