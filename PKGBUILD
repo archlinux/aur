@@ -2,12 +2,12 @@
 
 _reponame=onboard-plasmoid
 pkgname=onboard-plasmoid-git
-pkgver=5.26f1595
+pkgver=6.8efb7be
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A KDE plasmoid that displays live local telemetry data about the train you are sitting in'
 license=('GPL')
-depends=('qt5-base' 'plasma-workspace')
+depends=('qt5-base' 'plasma-workspace' 'networkmanager-qt5')
 
 makedepends=('cmake' 'ninja' 'qt5-tools' 'plasma-framework5' 'extra-cmake-modules' 'c++utilities' 'qtutilities')
 

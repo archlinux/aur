@@ -1,6 +1,6 @@
 pkgbase = onboard-plasmoid-git
 	pkgdesc = A KDE plasmoid that displays live local telemetry data about the train you are sitting in
-	pkgver = 5.26f1595
+	pkgver = 6.8efb7be
 	pkgrel = 1
 	url = https://github.com/ThePBone/onboard-plasmoid
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = onboard-plasmoid-git
 	makedepends = qtutilities
 	depends = qt5-base
 	depends = plasma-workspace
+	depends = networkmanager-qt5
 	source = git+https://github.com/ThePBone/onboard-plasmoid.git
 	source = git+https://github.com/ThePBone/qtpromise.git
 	sha256sums = SKIP
