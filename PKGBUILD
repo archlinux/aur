@@ -3,7 +3,7 @@
 _srcname=shadowsocks-libev
 pkgname=${_srcname}-static
 pkgver=3.3.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Statically-compiled shadowsocks-libev, intended to replace community/shadowsocks-libev"
 arch=('x86_64')
 url='https://github.com/shadowsocks/shadowsocks-libev'
@@ -22,10 +22,10 @@ source=("${_srcname}::git+https://github.com/shadowsocks/${_srcname}.git#tag=v$p
         'shadowsocks-libev-redir@.service'
         'shadowsocks-libev-tunnel@.service')
 
-_mbedtls_ver=2.28.4
-_libsodium_ver=1.0.18
+_mbedtls_ver=2.28.5
+_libsodium_ver=1.0.19
 _libev_ver=4.33
-_cares_ver=1.19.1
+_cares_ver=1.22.0
 _pcre_ver=8.45
 
 source+=("https://github.com/ARMmbed/mbedtls/archive/mbedtls-${_mbedtls_ver}.tar.gz")
@@ -39,10 +39,10 @@ sha256sums=('SKIP'
             '8fb077d92af2626cff904128ba410170baacf02cb92a6d58ec860be659ecde0b'
             'c51e9c0838b85d66467164c4ecff20e4180aa57a3c56ce9eae41353c4f5bfd78'
             '9dc81d58dde8a94f25a7475c626af7cb5507c795fcf3abc5b6367576e725d9a0'
-            '504bd29af6e7f9f3de1f0f7b7e16c73987a4194338681acd72b82383a49d55d5'
-            '6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1'
+            'dbd42a11c26143aa8de1c07fd6ec6765395e86b06f583f051cfa60e8f0b23125'
+            '018d79fe0a045cca07331d37bd0cb57b2e838c51bc48fd837a1472e50068bbea'
             '507eb7b8d1015fbec5b935f34ebed15bf346bed04a11ab82b8eee848c4205aea'
-            '321700399b72ed0e037d0074c629e7741f6b2ec2dda92956abe3e9671d3e268e'
+            'ad2e205088083317147c9f9eab5f24b82c3d50927c381a7c963deeb1182dbc21'
             '4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8')
 
 export LDFLAGS="$LDFLAGS -static"
@@ -63,7 +63,7 @@ build() {
     make DESTDIR="${srcdir}/temp/usr" install
 
     # libsodium
-    cd "${srcdir}/libsodium-${_libsodium_ver}"
+    cd "${srcdir}/libsodium-${_libsodium_ver}" || cd "${srcdir}/libsodium-stable"
     ./configure --prefix="${srcdir}/temp/usr" --disable-shared
     make install
 
