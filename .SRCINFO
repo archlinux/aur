@@ -1,0 +1,25 @@
+pkgbase = r-dcats
+	pkgdesc = Differential Composition Analysis Transformed by a Similarity matrix
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DCATS
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-aod
+	depends = r-e1071
+	depends = r-matrixstats
+	depends = r-mcmcpack
+	depends = r-robustbase
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-seurat
+	optdepends = r-seuratobject
+	optdepends = r-testthat
+	optdepends = r-tidyverse
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DCATS_1.0.0.tar.gz
+	md5sums = 8a6002426027bd88d05a2b8759d5a12e
+	sha256sums = 0080089950dc945aae8c42f745232beac40899054fc8dfd9ebfb6ca23a78e754
+
+pkgname = r-dcats
