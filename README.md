@@ -17,7 +17,7 @@ yay -S --needed kakaotalk && kakaotalk
 - bash
 - curl
 - desktop-file-utils
-- wine
+- wine > 8.0
 - xdg-utils
 
 ### Arch Linux (아치리눅스)
