@@ -1,7 +1,7 @@
 # Maintainer: Sean Snell <ssnell@lakecs.net>
 
 pkgname=obs-cmd
-pkgver=0.15.3
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="A minimal OBS CLI for obs-websocket v5"
 arch=('x86_64')
@@ -14,7 +14,7 @@ install=obs-cmd.install
 
 # Upstream tar.gz
 
-sha512sums=('d1ee48a9b79a695796894018201c8ff39ce17fb7ad8a22ebafcf04239aff4b7b2145826a00965c2d01adbf3a1bed905084a276b1fceaef5631d6d10fcbbfefcb')
+sha512sums=('bac7d175a591e2e61e4a9538f2677419b640d389c1625ae0e6113e77dcca7c359c2e4aad603198b74141601771a3fded56ad7204c6ac118bbdee5943ae3ca0c4')
 
 build() {
   cd "${pkgname}-${pkgver}"

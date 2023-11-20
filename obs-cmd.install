@@ -1,8 +1,4 @@
 post_install() {
-  echo "Before the app will execute you need to manually create the .toml file then add the follow for the websocket password:"
-  echo "$ touch ~/.config/obs-cmd.toml"
-  echo "Then add the following into it:"
-  echo 'OBS_WS_PASSWORD = "secret"'
 }
 
 post_upgrade() {
@@ -10,5 +6,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo "Your config file located at ~/.config/obs-cmd.toml will not be removed."
+    
 }
