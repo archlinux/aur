@@ -26,7 +26,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('c6b771f3c5c7e4553e8ff358072d08a1c176915719c87bf07730a4ae8554bd52'
-            '5674299baf9b5c4d830cb5e360b285e933efe21bb815009009819a38c2915d1c')
+            '1e12e2e00e789bd94f2a60d0b93594f05021e6c593f4f6befd64628eaa6212f9')
 build() {
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${_pkgname}-${pkgver}"
