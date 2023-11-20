@@ -1,3 +1,20 @@
+## GE-Proton8-24
+
+- Added protonfix for Fable III
+- Added yakuza 5 cutscenes fix (thanks NishiyamaPedro) https://gitlab.winehq.org/wine/wine/-/merge_requests/4244
+- updated Farlight 84 fix (thanks OOOOOF123) https://gitlab.winehq.org/wine/wine/-/merge_requests/4428
+- Added D8VK to proton for DirectX 8 games. Disabled by default, need to use PROTON_ENABLE_D8VK=1 to use it. (thanks loathingKernel)
+- Enabled vc1image,mpeg1video,mp2 decoders in ffmpeg for Crimson Skies (thanks loathingKernel)
+- Enabled indeo5, adpcm_ms decoders in ffmpeg for Mafia (thanks loathingKernel)
+- Fixed github actions (thanks loathingKernel)
+- imported upstream VR changes
+- imported upstream steamclient changes
+- imported upstream Resident Evil 2,3,7,8, Hogwarts Legacy nvapi overrides
+- imported upstream Hogwarts Legacy amd ags override
+- updated dxvk to master
+- updated vkd3d-proton to master
+- updated wine to bleeding edge
+
 ## GE-Proton8-23
 
 - added reverts for vrclient to allow VRChat to work again (pending proper fix from valve: [ValveSoftware#1199 (comment)](https://github.com/ValveSoftware/Proton/issues/1199#issuecomment-1800923686))
