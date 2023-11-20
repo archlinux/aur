@@ -2,7 +2,7 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
-pkgver=3.2.2.11.g37eddcf5
+pkgver=3.2.2.167.ge49a40ad
 pkgrel=1
 epoch=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
@@ -19,7 +19,7 @@ options=('!emptydirs')
 source=("git+${url}.git"
         'vim-keybindings.patch')
 sha256sums=('SKIP'
-            '685e3cdf5e0b36d498d752afefa5540a3d92e03c0b9219a21230fa91e6c4ad3a')
+            '1abc087a6c9b50d5e831e3ea04352143831a015374f8c059625f19ae7d30e5b9')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -42,18 +42,19 @@ prepare() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
+    ./autogen.sh
+
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
-        --enable-cgroup \
-        --enable-delayacct \
-        --enable-openvz \
         --enable-unicode \
+        --enable-openvz \
         --enable-vserver
 
     make
 }
 
 package() {
-    make -C "${srcdir}/${_pkgname}" DESTDIR="$pkgdir" install
+    cd "${srcdir}/${_pkgname}"
+    make DESTDIR="$pkgdir" install
 }
