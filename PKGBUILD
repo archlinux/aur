@@ -1,7 +1,7 @@
 # Maintainer: Hendrikto <hendrik.to@gmail.com>
 
 pkgname='bibclean'
-pkgver='3.06'
+pkgver='3.07'
 pkgrel=1
 pkgdesc='BibTeX and Scribe bibliography prettyprinter and syntax checker'
 arch=('any')
@@ -12,7 +12,7 @@ source=(
 	'mandir.patch'
 )
 sha256sums=(
-	'6574f9b8042ba8fa05eae5416b3738a35c38d129f48e733e25878ecfbaaade43'
+	'919336782e9e3c204e60f56485fd1f8dd679eb622fc8fd1f4833595ee10191a6'
 	'a31e1f8f9c627e80b4912148743d2d3caaadefac87ed3ac0468b91bc45359cc9'
 )
 
