@@ -1,13 +1,13 @@
 pkgbase = lnr-bin
 	pkgdesc = A tiny unofficial Linear client
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/alanvardy/lnr
 	arch = x86_64
 	license = MIT
 	provides = lnr
 	conflicts = lnr
-	source = https://github.com/alanvardy/lnr/releases/download/v0.1.8/lnr-0.1.8-x86_64.tar.gz
-	sha256sums = dc09de9a36e08bf9f2a528ab736469c84e947da386e8d6139a2683ae7ccb79bf
+	source = https://github.com/alanvardy/lnr/releases/download/v0.1.9/lnr-0.1.9-x86_64.tar.gz
+	sha256sums = f999f2ab90b7ecdc91e8250de496770f14ab121d4377c6d63ccbc5a1a5f0c8e1
 
 pkgname = lnr-bin
