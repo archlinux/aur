@@ -2,7 +2,7 @@
 # Contributor: Guillaume Alaux <guillaume@archlinux.org>
 
 pkgname=tomcat8
-pkgver=8.5.95
+pkgver=8.5.96
 pkgrel=1
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=(any)
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
   ant
   git
-  java-environment=8
+  java-environment=11
 )
 optdepends=('tomcat-native: to allow optimal performance in production environments')
 backup=(
@@ -30,7 +30,7 @@ backup=(
   etc/tomcat8/web.xml
 )
 install=tomcat8.install
-_tag=ff0bc86a31328f005d386492edb4e77fd8d58d3c
+_tag=e9630c1fad9a72e7394872a2aeeb73627f821b6c
 source=(
   git+https://github.com/apache/tomcat.git#tag=${_tag}
   tomcat8.service
@@ -48,19 +48,15 @@ _uid_tomcat=57
 
 pkgver() {
   cd tomcat
-
   _pkgver=$(git describe --tags)
-
   if [[ ${_pkgver} != 8.* ]]; then
     exit 1
   fi
-
   echo ${_pkgver}
 }
 
 prepare() {
   cd tomcat
-
   cp build.properties.default build.properties
   sed "/^base\.path=/c\base\.path=${srcdir}" -i build.properties
   sed "/^compile.debug=/c\compile.debug=false" -i build.properties
@@ -69,10 +65,8 @@ prepare() {
 
 build() {
   cd tomcat
-
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+  export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
   export PATH="$JAVA_HOME/bin:$PATH"
-
   ant
 }
 
