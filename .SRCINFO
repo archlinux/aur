@@ -8,7 +8,6 @@ pkgbase = mpv-sponsorblock-minimal-git
 	makedepends = git
 	depends = mpv
 	depends = curl
-	optdepends = lua-curl: use native lua binding to libcurl
 	provides = mpv-sponsorblock
 	conflicts = mpv-sponsorblock
 	source = mpv-sponsorblock-minimal::git+https://codeberg.org/jouni/mpv_sponsorblock_minimal
