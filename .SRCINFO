@@ -1,0 +1,21 @@
+pkgbase = fauxnix-git
+	pkgdesc = Non-invasive* Reproducible* Declarative* config management for Nix non-believers
+	pkgver = r61.2f893ee
+	pkgrel = 1
+	url = https://github.com/DvorakDwarf/fauxnix
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	depends = pacman
+	depends = python-ruamel-yaml
+	provides = fauxnix
+	conflicts = fauxnix
+	source = fauxnix-git::git+https://github.com/DvorakDwarf/fauxnix.git
+	md5sums = SKIP
+
+pkgname = fauxnix-git
