@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=30.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -157,6 +157,7 @@ build() {
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$pkgver" \
+    -DCALM_DEPRECATION=ON \
     -Wno-dev
 
     sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$pkgver-tytan652-$pkgrel\" //|" build/config/obsconfig.h
