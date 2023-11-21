@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
-pkgver=6.0
-pkgrel=2
+pkgver=6.1
+pkgrel=1
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -36,8 +36,8 @@ depends=(
   'lib32-freetype2'
   'lib32-libglvnd'
   'lib32-libiec61883'
-#  ' lib32-libjxl'
-#  'lib32-libmfx'
+#  'lib32-libjxl'
+#  'lib32-onevpl'
   'lib32-libmodplug'
 #  'lib32-libopenmpt'
   'lib32-libpulse'
@@ -90,14 +90,15 @@ makedepends=(
 )
 optdepends=(
 #  'avisynthplus: AviSynthPlus support'
-#  'intel-media-sdk: Intel QuickSync support'
+#  'intel-media-sdk: Intel QuickSync support (legacy)'
+#   'onevpl-intel-gpu: Intel QuickSync support'
   'lib32-ladspa: LADSPA filters'
   'lib32-nvidia-utils: Nvidia NVDEC/NVENC support'
 )
 options=(
   debug
 )
-_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
+_tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   "add-av_stream_get_first_dts-for-chromium.patch"
@@ -113,6 +114,16 @@ prepare() {
   cd ${_pkgbasename}
 
   # Patching if needed
+  # FS#79281: fix assembling with binutil as >= 2.41
+  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
+
+  # FS#77813: fix playing ogg files with mplayer
+  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
+
+  # use non-deprecated nvenc GUID for conftest
+  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
+  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
+
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch  # https://crbug.com/1251779
 }
 
@@ -196,7 +207,7 @@ build() {
 #    --enable-libsvtav1 
 #    --enable-libuavs3d
 #    --enable-libvidstab \
-#    --enable-libmfx \
+#    --enable-libvpl \
 
   make
 }
