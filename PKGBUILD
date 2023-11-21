@@ -131,3 +131,10 @@ package() {
 	chmod 775  ${pkgdir}/run/lock/subsys
 
 }
+md5sums=('fa97e3cdb841592b41de26340d6f994b'
+         '27cdc9e2194c607bd3dddd836436d1b5'
+         'ff68ba2ba6f66417be61b665ee9c640c'
+         'ab8719b1e97b42286413a673831d5085'
+         'bf755f1b4bf51a6f21084627ce0160ee'
+         '93aade04088f34ae486ff6dc131b4e43'
+         'c41c13d299012654ff431500e12febca')
