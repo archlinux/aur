@@ -1,30 +1,46 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flashpoint-launcher
+_pkgname="Flashpoint Launcher"
 pkgver=12.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application used to browse, manage and play games from Flashpoint Archive"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
-_githuburl="https://github.com/FlashpointProject/launcher"
+_ghurl="https://github.com/FlashpointProject/launcher"
 license=('MIT')
 conflicts=("${pkgname}" "${pkgname%-launcher}")
-depends=('php' 'alsa-lib' 'nspr' 'glib2' 'pango' 'libxdamage' 'at-spi2-core' 'expat' 'python' 'gtk3' 'libxrandr' 'libcups' 'libxext' \
-    'libxkbcommon' 'mesa' 'nss' 'dbus' 'libxcb' 'libxfixes' 'libx11' 'cairo' 'libxcomposite' 'libdrm' 'glibc' 'gcc-libs')
-makedepends=('gendesk' 'npm>=8' 'nodejs>=16.20.1' 'rust' 'yarn')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('43be71ade5f220b5296d0e2f29c808c65e95b58adf461e42c1b4b756ebb464a1')
+depends=(
+    'php' 'alsa-lib' 'nspr' 'glib2' 'pango' 'libxdamage' 'at-spi2-core' 'expat' 'python' 'gtk3' 'libxrandr' 'libcups' 'libxext' \
+    'libxkbcommon' 'mesa' 'nss' 'dbus' 'libxcb' 'libxfixes' 'libx11' 'cairo' 'libxcomposite' 'libdrm' 'glibc' 'gcc-libs'
+)
+makedepends=(
+    'gendesk'
+    'npm>=8'
+    'nodejs>=16.20.1'
+    'rust'
+    'yarn'
+    'git'
+)
+source=(
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('SKIP'
+            '128a42c87f7d95279ea26f53f3c4091f3471230fb92fdd63dfa8c61b109db8ee')
 build() {
-    cd "${srcdir}/launcher-${pkgver}"
-    yarn
+    gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    sed "s|PUBLISH=true|PUBLISH=false|g" -i package.json
+    sed "2i process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';" -i buid/main/index.js
+    yarn --cache-folder "${srcdir}/npm-cache" 
     sed 's|"deb", ||g' -i gulpfile.js
     yarn release:linux
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
-    cp -r "${srcdir}/launcher-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/launcher-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"{extern,lang,licenses,resources} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/launcher-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
