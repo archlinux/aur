@@ -1,0 +1,20 @@
+pkgbase = terminusdb
+	pkgdesc = A distributed database with a collaboration model
+	pkgver = 11.1.9
+	pkgrel = 1
+	url = https://github.com/terminusdb/terminusdb
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = clang
+	makedepends = git
+	makedepends = gmp
+	makedepends = rustup
+	makedepends = protobuf
+	depends = swi-prolog
+	options = !strip
+	source = terminusdb-11.1.9.tar.gz::https://github.com/terminusdb/terminusdb/archive/refs/tags/v11.1.9.tar.gz
+	sha256sums = 92e50b47e8680b00f1501916c7f1b4b928b72142ab2c246cb6408bd6856dd514
+
+pkgname = terminusdb
+
+pkgname = terminusdb-dashboard
