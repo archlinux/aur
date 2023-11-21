@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev[at]demkowiczduffy.co.uk>
 pkgname=zigup-bin
 _pkgname=zigup
-pkgver=v2022_08_25
+pkgver=v2023_07_27
 pkgrel=1
 pkgdesc="Download and manage zig compilers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('unknown')
 provides=('zigup' 'zig')
 conflicts=('zigup' 'zig')
 source=("https://github.com/marler8997/$_pkgname/releases/download/$pkgver/zigup.ubuntu-latest-x86_64.zip")
-sha256sums=('73ce7352d9b75d1e98a007bb2e0bc9b74442bac4f370ac0720e9851306bab443')
+sha256sums=('6e3d4111a5feafedd4770ac819501f42b6fbe80df6cfc6558aaa73c8907037d5')
 
 package() {
     install -Dm 0755 $_pkgname $pkgdir/usr/bin/$_pkgname
