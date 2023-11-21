@@ -1,28 +1,32 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-bin
 _pkgname=PicList
-pkgver=2.6.6
+pkgver=2.6.7
 pkgrel=1
-pkgdesc="a cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
+pkgdesc="A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
 arch=('x86_64')
 url="https://piclist.cn/"
-_githuburl="https://github.com/Kuingsmile/PicList"
+_ghurl="https://github.com/Kuingsmile/PicList"
 license=('MIT')
 conflits=("${pkgname%-bin}")
 depends=(
-    'bash'
     'electron22'
+    'libx11'
+    'gdk-pixbuf2'
+    'libxext'
+    'libdbusmenu-glib'
+    'gtk2'
+    'dbus-glib'
 )
 makedepends=(
-    'asar'
     'squashfuse'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Kuingsmile/PicList/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('80cff4d5c169e8c574626f9555f82d31f2b7e670c593a946f379ff3f6c643734'
+sha256sums=('da352ea55becefef7dca9ce6ab357a675d58096e88223a2f01cf16b00cba6d99'
             'cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c'
             '9b2bf2f00a0fd49ebeec01f7bb0b74aade0cb3326a1c6f0ca81ca48b5fa08175')
 build() {
