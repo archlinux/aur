@@ -1,0 +1,60 @@
+--- ./src/tmp/driver_src/pci_driver/pcimk2_kernel.c.old	2023-11-21 13:47:13.772813551 +0100
++++ ./src/tmp/driver_src/pci_driver/pcimk2_kernel.c	2023-11-21 13:47:19.842904280 +0100
+@@ -40,7 +40,7 @@
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,0) /* < 2.6 */
+     #error "This kernel is too old: not supported by this driver"
+ #endif
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(6,1,12) /* > 6.1.12 */
++#if LINUX_VERSION_CODE > KERNEL_VERSION(6,6,1) /* > 6.1.12 */
+     #ifndef STAR_TRY_NEWER_KERNEL
+         #error "This kernel is too recent: not supported by this driver."
+         #pragma message ("LINUX_VERSION_CODE is defined as " __stringify(LINUX_VERSION_CODE))
+@@ -388,8 +388,10 @@
+ 
+ void *spw_class_create(void)
+ {
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13))
+-    return class_create(THIS_MODULE, STAR_PCI_MODULE_NAME);         /* 2.6.13 - latest */
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0))
++    return class_create(STAR_PCI_MODULE_NAME);                      /* 6.4 - latest */
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13))
++    return class_create(THIS_MODULE, STAR_PCI_MODULE_NAME);         /* 2.6.13 - 6.4 */
+ #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 2))
+     return class_simple_create(THIS_MODULE, STAR_PCI_MODULE_NAME);  /* 2.6.2 - 2.6.12 */
+ #else
+--- ./src/tmp/driver_src/ultra_pcie_driver/star_pcie_kernel.c.old	2023-11-21 13:51:17.009893199 +0100
++++ ./src/tmp/driver_src/ultra_pcie_driver/star_pcie_kernel.c	2023-11-21 13:51:20.843287121 +0100
+@@ -28,7 +28,7 @@
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,0) /* < 2.6 */
+     #error "This kernel is too old: not supported by this driver"
+ #endif
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(6,1,12) /* > 6.1.12 */
++#if LINUX_VERSION_CODE > KERNEL_VERSION(6,6,1) /* > 6.6.1 */
+     #ifndef STAR_TRY_NEWER_KERNEL
+         #error "This kernel is too recent: not supported by this driver."
+         #pragma message ("LINUX_VERSION_CODE is defined as " __stringify(LINUX_VERSION_CODE))
+@@ -321,7 +321,12 @@
+ 
+ void *star_class_create()
+ {
+-    return class_create(THIS_MODULE, STAR_ULTRA_PCIE_MODULE_NAME);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0))
++    return class_create(STAR_ULTRA_PCIE_MODULE_NAME);                      /* 6.4 - latest */
++#else
++    return class_create(THIS_MODULE, STAR_ULTRA_PCIE_MODULE_NAME);         /* 2.6.13 - 6.4 */
++#endif
++
+ }
+ 
+ void star_class_destroy(void *cls)
+--- ./src/tmp/driver_src/usb_driver/spwusb_kernel.c.old	2023-11-21 13:59:49.388258476 +0100
++++ ./src/tmp/driver_src/usb_driver/spwusb_kernel.c	2023-11-21 13:59:55.755031520 +0100
+@@ -40,7 +40,7 @@
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,0) /* < 2.6 */
+     #error "This kernel is too old: not supported by this driver"
+ #endif
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(6,1,12) /* > 6.1.12 */
++#if LINUX_VERSION_CODE > KERNEL_VERSION(6,6,1) /* > 6.1.12 */
+     #ifndef STAR_TRY_NEWER_KERNEL
+         #error "This kernel is too recent: not supported by this driver."
+         #pragma message ("LINUX_VERSION_CODE is defined as " __stringify(LINUX_VERSION_CODE))

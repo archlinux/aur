@@ -2,7 +2,7 @@
 
 pkgname=star-system
 pkgver=5.04
-pkgrel=1
+pkgrel=2
 pkgdesc="STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices."
 arch=('x86_64')
 url="http://www.star-dundee.com"
@@ -13,6 +13,7 @@ makedepends=('linux-headers' 'fakeroot')
 source=("file://star-system_linux_x86-64_v5.04.tgz"
 	"star-system.service"
 	"kbuild.patch"
+	"version.patch"
 	"99-star_spw_usb.rules"
 	"99-star_spw_pci.rules"
 	"99-star_ultra_pcie.rules")
@@ -31,6 +32,7 @@ prepare() {
 
 	cd ${srcdir}/tmp
 	patch -Np0 -i ${srcdir}/kbuild.patch
+	patch -Np3 -i ${srcdir}/version.patch
 }
 
 
@@ -129,9 +131,3 @@ package() {
 	chmod 775  ${pkgdir}/run/lock/subsys
 
 }
-sha256sums=('24f753f24d6b277aa9c36f1499da63e0f74352899acc8fe2462df55e68096048'
-            '842d55fd08515bbec1882f80c20fc29a9c28e32aa222718280e37f07794386da'
-            'a6f626e79014761d4d86359b7ed08a5f41add4d8d2a04e0c111b83406e97e465'
-            'ad92ae049b9c6ac3c9a39a23b66b523f970e28aae0348f78dd2362ac5dd15fa7'
-            'a8ff051b5ccb1dfbfe4a74c4213a93f8bb81760e6dee4144ab5c300521959947'
-            'af73cda3af22bf2e2fa16e3790ca56693c6a18d6ea7d159bc47faace694307f4')
