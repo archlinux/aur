@@ -14,8 +14,10 @@ pkgbase = vitasdk-git
 	replaces = psvita-sdk
 	options = !strip
 	source = sudo-fix.patch
+	source = vitasdk.sh
 	source = git+https://github.com/vitasdk/vdpm
 	md5sums = 1213c1c23d734af92553ac8801443d36
+	md5sums = ad2be6056f393a9f834127c9e994d42f
 	md5sums = SKIP
 
 pkgname = vitasdk-git

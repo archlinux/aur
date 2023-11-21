@@ -1,6 +1,6 @@
 # Maintainer: Nikolay Arhipov <n@arhipov.net>
 pkgname=vitasdk-git
-pkgver=2.517
+pkgver=2.521
 pkgrel=1
 pkgdesc="VITASDK homebrew toolchain for Sony Playstation Vita"
 arch=('i686' 'x86_64')
@@ -18,8 +18,9 @@ provides=(
 replaces=(
   'psvita-sdk'
 )
-source=("sudo-fix.patch" "git+https://github.com/vitasdk/vdpm")
+source=("sudo-fix.patch" "vitasdk.sh" "git+https://github.com/vitasdk/vdpm")
 md5sums=('1213c1c23d734af92553ac8801443d36'
+         'ad2be6056f393a9f834127c9e994d42f'
          'SKIP')
 
 pkgver() {
@@ -32,8 +33,9 @@ prepare() {
 }
 
 package() {
-  export VITASDK="$pkgdir/opt/vitasdk"
+  install -Dm755 "vitasdk.sh" "${pkgdir}/etc/profile.d/vitasdk.sh"
 
+  export VITASDK="$pkgdir/opt/vitasdk"
   cd "vdpm"
   ./bootstrap-vitasdk.sh
 }
