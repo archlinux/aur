@@ -1,0 +1,26 @@
+pkgbase = pyshv-git
+	pkgdesc = Python implementation of CPON, Chainpack and SHV RPC
+	pkgver = r159.55379a9
+	pkgrel = 1
+	url = https://gitlab.com/elektroline-predator/pyshv
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pytest
+	makedepends = python-pytest-asyncio
+	makedepends = libshv
+	depends = python-pyserial-asyncio
+	depends = python-aioserial
+	depends = python-dateutil
+	provides = pyshv
+	conflicts = pyshv
+	conflicts = pyshv-git
+	source = git+https://gitlab.com/elektroline-predator/pyshv.git
+	md5sums = SKIP
+
+pkgname = pyshv-git
