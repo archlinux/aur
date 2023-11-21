@@ -1,17 +1,14 @@
 pkgbase = advanced-passgen-bin
 	pkgdesc = Advanced Password Generator
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codedead.com/software/advanced-passgen
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = gdk-pixbuf2
-	depends = glib2
-	depends = gcc-libs
 	depends = cairo
 	depends = webkit2gtk
-	depends = glibc
 	depends = gtk3
 	depends = libsoup
 	provides = advanced-passgen=2.4.3
