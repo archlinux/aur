@@ -4,6 +4,7 @@
 
 #Todo:
 #* add external cmake projects to source array and patch src/externla/*.cmake
+#* use system wide: levmar, libigl, qhull, structyresynth, libe57, u3d, tinygltf
 
 #Configuration:
 #Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
@@ -20,7 +21,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 _name="meshlab"
 pkgname="$_name-git"
 pkgver=2022.02.r224.g4c321e19d
-pkgrel=1
+pkgrel=2
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="https://www.meshlab.net"
