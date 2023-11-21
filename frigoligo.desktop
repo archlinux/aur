@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=frigoligo
-Exec=frigoligo
-Terminal=false
-Type=Application
-Icon=frigoligo
-StartupWMClass=frigoligo
-Comment=An universal wallabag client made with Flutter.Keep your links fresh!
-Categories=Utility;

@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frigoligo-bin
-pkgver=0.6.1
+_pkgname=Frigoligo
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="An universal wallabag client made with Flutter. "
 arch=('x86_64')
@@ -18,21 +19,27 @@ depends=(
     'libepoxy'
     'fontconfig'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/casimir/frigoligo/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/casimir/frigoligo/v${pkgver}/assets/logos/${pkgname%-bin}.png"
-    "${pkgname%-bin}.desktop"
+makedepends=(
+    'squashfuse'
 )
-sha256sums=('46d6e2620213b76bca15c9ea9d2bccf3f76c18b4f9356b43d8a6b75fc582d25b'
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${CARCH}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/casimir/frigoligo/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('967c74e61d77db07c470f10c20a1fcaee1f68f4574a8ee725fce3e1d70cbe236'
             '3feb1ea09cc75f148e715820992fd28a3881572e3540b629059f22293b2e17db'
-            '886063acc61302d4ee369f06b6062257883dd4e3f1d6ab199ca8e64db3091491'
-            '96140c61b09c75d05736ad797e220c3041209374b217b061f99ce0d2792fb303')
+            '797cbdef420bbe4c545819bfb2e5a789d37c3d52ddc804684ddf3cb4f393214c')
+build() {
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+}
 package() {
-    install -Dm755 -d "${pkgdir}/"{usr/bin,opt}
-    cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
