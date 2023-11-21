@@ -1,19 +1,19 @@
-pkgbase = sk-steam-patch
+pkgbase = sk-steam-patch-git
 	pkgdesc = Some Steam patches, fixing broken Steam features on Asus Rog Ally
-	pkgver = 0.10.2
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/honjow/steam-patch
 	arch = x86_64
 	license = MIT
-	source = https://github.com/honjow/steam-patch/releases/download/v0.10.2/steam-patch
-	source = https://github.com/honjow/steam-patch/releases/download/v0.10.2/steam-patch.service
-	source = https://github.com/honjow/steam-patch/releases/download/v0.10.2/restart-steam-patch-on-boot.service
-	source = https://github.com/honjow/steam-patch/releases/download/v0.10.2/steamos-priv-write-updated
-	source = https://github.com/honjow/steam-patch/releases/download/v0.10.2/config.toml
+	source = https://github.com/honjow/steam-patch/releases/download/v0.10.4/steam-patch
+	source = https://github.com/honjow/steam-patch/releases/download/v0.10.4/steam-patch.service
+	source = https://github.com/honjow/steam-patch/releases/download/v0.10.4/restart-steam-patch-on-boot.service
+	source = https://github.com/honjow/steam-patch/releases/download/v0.10.4/steamos-priv-write-updated
+	source = https://github.com/honjow/steam-patch/releases/download/v0.10.4/config.toml
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = sk-steam-patch
+pkgname = sk-steam-patch-git

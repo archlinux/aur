@@ -1,6 +1,6 @@
 # Maintainer: honjow <honjow@gmail.com>
 
-pkgname=sk-steam-patch
+pkgname=sk-steam-patch-git
 _pkgname=steam-patch
 pkgver=0.10.4
 pkgrel=1
