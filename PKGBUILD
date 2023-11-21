@@ -4,7 +4,7 @@
 _arch=x64v3
 _pkgbase=linux-xanmod-edge
 _major=6.6
-_minor=1
+_minor=2
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -55,8 +55,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('8d281a254c046b38b9b29a1376df6d4d6b10b6c6a705d0c21b1d060a7d5a1825'
-            '3068efcb0f60ad88a1dfa06f1347db6e15dc66f9fc6076d636e8d6a49a77d40b')
+sha256sums=('0b42b093e96309604208f651ce61fcba888e46409f58a6aadd3d48265bec93df'
+            '6c0274ed6cbe760f41839f7d1c43157b525ee8eec7cd2ce8ca8c6a24af23aa9a')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
