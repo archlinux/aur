@@ -13,7 +13,7 @@
 # Thanks.
 #                                            
 pkgname=anytype-bin
-pkgver=0.35.4
+pkgver=0.36.0  
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('85e4bedee731bf85938aa7a07668e9bfc696b82fb7927c42d344830e0e11f225'
+sha256sums=('11fa2acbf8b350b0e07760dcde4b5564d8fdfd4d2f0ad10d9b434baf954a4294'
             '9d789ae73ce87a7a6c37ef60f7fbcc519e96f96fe5c5ffdf1abfc6c71fc62b81'
             '48ee23a45c29cf081ccf5188c045150b7410007cd21743ce8592974ab18120c0')
 
