@@ -4,7 +4,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=DescTools
-_pkgver=0.99.50
+_pkgver=0.99.51
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,6 +13,7 @@ arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
 license=(GPL)
 depends=(
+  r-cli
   r-data.table
   r-exact
   r-expm
@@ -26,7 +27,6 @@ depends=(
 )
 makedepends=(
   gcc-fortran
-  r-bh
 )
 optdepends=(
   r-r.rsp
@@ -35,8 +35,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c73adbd47180e12af28043e676e83a95')
-sha256sums=('1b9cf09de7c7625c30d2daca92b4f798476f10907d531267e773d379f6828eab')
+md5sums=('d0fb76fe5d7b21c775f72ab8723ddfa9')
+sha256sums=('3710b9ec1954813c4c8fe13b98eecef085a4e0e076260ff25c1c03da81684e71')
 
 build() {
   mkdir -p build
