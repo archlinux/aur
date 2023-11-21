@@ -1,7 +1,7 @@
 pkgbase = zroxy-git
 	pkgdesc = Transparent TLS sni proxy ( sniproxy ) written with pure C.
 	pkgver = r109.0e73503
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x7a657573/zroxy
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = zroxy-git
 	source = zroxy::git+https://github.com/0x7a657573/zroxy.git
 	source = zroxy.service
 	sha256sums = SKIP
-	sha256sums = 2df5bf623ff55a47b2f9259eb44a137f8206d6e897c2504bccb70d50fc5e5dcd
+	sha256sums = 47857f7cf3aa00641ada94584b42a4f1aeecd63b00edf6f3cd259abf1b2ac08a
 
 pkgname = zroxy-git
