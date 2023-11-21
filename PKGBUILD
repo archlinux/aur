@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=30.0.0
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=7
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -148,6 +148,7 @@ build() {
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -Wno-dev \
+    -DCALM_DEPRECATION=ON \
     -DOBS_VERSION_OVERRIDE="$_pkgver"
 #    -DBETA="$_pkgver"
 #    -DRELEASE_CANDIDATE="$_pkgver"
