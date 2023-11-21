@@ -1,31 +1,27 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=mounriver-studio-community-bin
-pkgname=($pkgbase)
-pkgver=150
+pkgname=(${pkgbase})
+pkgver=160
 pkgrel=0
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
-provides=('MounRiver-Studio-Community-Linux')
-conflicts=()
+provides=('MounRiver-Studio-Community-Linux' ${pkgname%-bin})
+conflicts=(${pkgname%-bin})
 depends=()
 makedepends=('tar')
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
-            'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
-            'spi-ch341-usb-dkms: SPI/GPIO driver for CH341'
-            'ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A'
-            'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
-            'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A'
-            'wchisp: WCH ISP Tool in Rust')
-
-source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver}.tar.xz"
-        )
-
-sha256sums=('713b6d5a343ec887ea7b27b3fc0f1acc93ba041b26af27a83e5dc85597e1ae5c')
-
+    'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
+    'spi-ch341-usb-dkms: SPI/GPIO driver for CH341'
+    'ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A'
+    'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
+    'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A'
+    'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
+    'wchisp: WCH ISP Tool in Rust')
+source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver}.tar.xz")
+sha256sums=('ea0c0a896dbfdcb5db5f013a91aa6ad800ad3d622b24f296251a43f0e7b8d172')
 options=('!strip')
-
 noextract=(${pkgbase}-${pkgver}.tar.xz)
 
 prepare() {

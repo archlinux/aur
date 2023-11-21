@@ -1,5 +1,5 @@
 pkgbase = mounriver-studio-community-bin
-	pkgver = 150
+	pkgver = 160
 	pkgrel = 0
 	url = http://www.mounriver.com/
 	arch = x86_64
@@ -13,12 +13,15 @@ pkgbase = mounriver-studio-community-bin
 	optdepends = ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A
 	optdepends = ch341prog-git: A simple command line tool (programmer) interfacing with ch341a
 	optdepends = ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A
+	optdepends = ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).
 	optdepends = wchisp: WCH ISP Tool in Rust
 	provides = MounRiver-Studio-Community-Linux
-	noextract = mounriver-studio-community-bin-150.tar.xz
+	provides = mounriver-studio-community
+	conflicts = mounriver-studio-community
+	noextract = mounriver-studio-community-bin-160.tar.xz
 	options = !strip
-	source = mounriver-studio-community-bin-150.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V150.tar.xz
-	sha256sums = 713b6d5a343ec887ea7b27b3fc0f1acc93ba041b26af27a83e5dc85597e1ae5c
+	source = mounriver-studio-community-bin-160.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V160.tar.xz
+	sha256sums = ea0c0a896dbfdcb5db5f013a91aa6ad800ad3d622b24f296251a43f0e7b8d172
 
 pkgname = mounriver-studio-community-bin
 	pkgdesc = 为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。
