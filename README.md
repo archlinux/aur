@@ -9,6 +9,10 @@ This is a simple [`KakaoTalk`](https://www.kakaocorp.com/page/service/service/Ka
 ### Arch Linux (아치리눅스)
 
 ```bash
+# If you prefer `paru`
+paru -S --needed kakaotalk && kakaotalk
+
+# If you prefer `yay`
 yay -S --needed kakaotalk && kakaotalk
 ```
 
@@ -40,6 +44,10 @@ sudo apt-get install bash curl desktop-file-utils wine xdg-utils
 #### Automatic Installation with AUR package manager (AUR 패키지 관리자를 활용한 설치)
 
 ```bash
+# If you prefer `paru`
+paru -S kakaotalk
+
+# If you prefer `yay`
 yay -S kakaotalk
 ```
 
