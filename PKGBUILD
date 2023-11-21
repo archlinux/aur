@@ -2,7 +2,7 @@
 
 pkgbase=netinstall
 pkgname=(netinstall netinstall-gui)
-pkgver=7.12
+pkgver=7.12.1
 pkgrel=1
 pkgdesc='Mikrotik Netinstall for RouterOS'
 arch=('i686' 'x86_64')
@@ -14,14 +14,13 @@ source=("https://download.mikrotik.com/routeros/${pkgver}/netinstall-${pkgver}.z
         'netinstall.desktop'
         'netinstall.sh'
         'netinstall-gui.c')
-sha256sums=('5f0fba757665ede66643312e919d30884deb27941fbe520f6bd68e536722442d'
-            'e592b22af2a097e934424bc2f49e6000dc8a56ad61b635f1b24c6fc9671aaf43'
+sha256sums=('ea8477e0607f7dc3c2a6bdb9311831c8a97d59f37a2cf82121a03407b0354ea5'
+            'e858e2734351571ff5a07f875c0755417a80b2437bae2be4a9fd170f864a7fee'
             '285e32e9ba8bad9791cf3d5d3653b6e21bd771adcc32ea2036fe32dc9dafcfe0'
             'd45ecf4585047769ee64957b7066910d8992eb6da4a60b4773328460e912794a'
             'b5efb376a6705c376465bff6f52dc0713c15fbd5cd861fdc39969cbb22c233b4')
 
 build() {
-  ln netinstall-${pkgver}/netinstall.exe netinstall.exe
   wrestool -x -t 14 netinstall.exe > netinstall.ico
   gcc ${CFLAGS} ${LDFLAGS} -o netinstall-gui netinstall-gui.c -lcap
 }
