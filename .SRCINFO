@@ -18,12 +18,12 @@ pkgbase = material-symbols-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = ttf-material-symbols-git
+pkgname = ttf-material-symbols-variable-git
 	pkgdesc = Material Design icons by Google - variable fonts
-	provides = ttf-material-symbols
-	conflicts = ttf-material-symbols
+	provides = ttf-material-symbols-variable
+	conflicts = ttf-material-symbols-variable
 
-pkgname = woff2-material-symbols-git
+pkgname = woff2-material-symbols-variable-git
 	pkgdesc = Material Design icons by Google - variable fonts
-	provides = woff2-material-symbols
-	conflicts = woff2-material-symbols
+	provides = woff2-material-symbols-variable
+	conflicts = woff2-material-symbols-variable

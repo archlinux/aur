@@ -12,8 +12,8 @@ fi
 # basic info
 pkgbase=material-symbols-git
 pkgname=(
-  ttf-material-symbols-git
-  woff2-material-symbols-git
+  ttf-material-symbols-variable-git
+  woff2-material-symbols-variable-git
 )
 pkgver=4.0.0.r91.ga90037f8
 pkgrel=1
@@ -23,7 +23,7 @@ license=('Apache')
 arch=(any)
 
 # autoupdate
-if [[ x"$_autoupdate::1" == "xt" ]] ; then
+if [[ x"${_autoupdate::1}" == "xt" ]] ; then
   _repo="${url#*//*/}"
   _path="variablefont"
   _response=$(curl -Ssf "https://api.github.com/repos/$_repo/commits?path=$_path")
@@ -83,7 +83,7 @@ pkgver() {
   echo "${_pkgver:?}"
 }
 
-package_ttf-material-symbols-git() {
+package_ttf-material-symbols-variable-git() {
   pkgdesc+=" - variable fonts"
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
@@ -95,7 +95,7 @@ package_ttf-material-symbols-git() {
   done
 }
 
-package_woff2-material-symbols-git() {
+package_woff2-material-symbols-variable-git() {
   pkgdesc+=" - variable fonts"
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
