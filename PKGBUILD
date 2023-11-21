@@ -78,7 +78,6 @@ build() {
     # build web frontend
     # from: web/Dockerfile RUN npm commands
     cd "${srcdir}/${pkgname}-${pkgver}/web"
-    # TODO: CI command might still be required
     npm ci
     npm run build
     npm prune --omit=dev
@@ -87,7 +86,6 @@ build() {
     # from: server/Dockerfile RUN npm commands
     #   * npm link / and cache clean not required
     cd "${srcdir}/${pkgname}-${pkgver}/server"
-    # TODO ci needed?
     npm ci
     npm run build
     npm prune --omit=dev --omit=optional
@@ -134,11 +132,11 @@ package() {
     # install web frontend
     # from: web/Dockerfile COPY commands (entrypoint.sh not required)
     #   * setting NODE_ENV=production picked up in systemd service file
-    install -dm755 "${pkgdir}/usr/lib/immich/app/web"
-    cp -r web/node_modules "${pkgdir}/usr/lib/immich/app/web/node_modules"
-    cp -r web/build "${pkgdir}/usr/lib/immich/app/web/build"
-    install -Dm644 web/package.json "${pkgdir}/usr/lib/immich/app/web/package.json"
-    install -Dm644 web/package-lock.json "${pkgdir}/usr/lib/immich/app/web/package-lock.json"
+    # install -dm755 "${pkgdir}/usr/lib/immich/app/web"
+    # cp -r web/node_modules "${pkgdir}/usr/lib/immich/app/web/node_modules"
+    cp -r web/build "${pkgdir}/usr/lib/immich/app/server/www"
+    # install -Dm644 web/package.json "${pkgdir}/usr/lib/immich/app/web/package.json"
+    # install -Dm644 web/package-lock.json "${pkgdir}/usr/lib/immich/app/web/package-lock.json"
 
     # install machine-learning
     # from: machine-learning/Dockerfile COPY commands
