@@ -3,16 +3,17 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggthemes
-_pkgver=4.2.4
+_pkgver=5.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Extra Themes, Scales and Geoms for 'ggplot2'"
 arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
 license=(GPL2)
 depends=(
   r-ggplot2
+  r-lifecycle
   r-purrr
   r-scales
   r-stringr
@@ -33,17 +34,19 @@ optdepends=(
   r-mapproj
   r-maps
   r-pander
+  r-quantreg
   r-rlang
   r-rmarkdown
   r-spelling
   r-testthat
   r-tidyr
+  r-v8
   r-vdiffr
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fbf75caa92427f03c3911afeca5eb514')
-sha256sums=('7b35168cf5b68f6f52dd533a1b345ec87e09d1a85ca68e8dc5377cdf95718567')
+md5sums=('eebc703683b4536514197ec246b4fbd5')
+sha256sums=('56a913c9018afdff34f05031e0d79f4422dcf72b50c24529c0b7c8d519edadc5')
 
 build() {
   mkdir -p build
