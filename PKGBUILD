@@ -1,7 +1,7 @@
 # Maintainer: Mykyta Poturai <mykyta.poturai@tutanota.com>
 # Maintainer: Amolith <amolith@secluded.site>
 pkgname=hey-mail-bin
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="Hey Mail desktop app"
 url="https://hey.com/apps/"
@@ -10,10 +10,10 @@ license=('Proprietary')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3')
 makedepends=('squashfs-tools')
 provides=('hey-mail')
-conflicts=()
-SNAPNAME="lfWUNpR7PrPGsDfuxIhVxbj0wZHoH7bK_22.snap"
+conflicts=('hey-mail')
+SNAPNAME="lfWUNpR7PrPGsDfuxIhVxbj0wZHoH7bK_23.snap"
 source=("https://api.snapcraft.io/api/v1/snaps/download/$SNAPNAME")
-md5sums=('95a855f53a48ae911780b0f30dcbc8ce')
+md5sums=('d3bc72883eb5a4d3847c4234275ca995')
 
 # curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/hey-mail | jq
 build() {
