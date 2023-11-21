@@ -1,0 +1,13 @@
+pkgbase = pl2g_nx-git
+	pkgdesc = Bash script that convert pacman log file into format readable by gource.
+	pkgver = r11.05da7d8
+	pkgrel = 1
+	url = https://codeberg.org/DaarkWel/pl2g_nx
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	source = pl2g_nx::git+https://codeberg.org/DaarkWel/pl2g_nx.git
+	sha512sums = SKIP
+
+pkgname = pl2g_nx-git
