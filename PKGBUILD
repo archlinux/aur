@@ -10,7 +10,7 @@
 # Contributor: Thermi <noel [at] familie-kuntze dot com>
 
 pkgname=strongswan
-pkgver=5.9.11
+pkgver=5.9.12
 pkgrel=1
 pkgdesc='Open source IPsec implementation'
 url='https://www.strongswan.org'
@@ -35,9 +35,9 @@ backup=(
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"{,.sig}
   'configure_ac.patch')
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
-sha512sums=('d500523215f5ec5c5550c4d2c49060b350ae396d8c60170792c46775d04fc7a132aa70a6242145477753668351d26ed957e08903683ecc340aa8d84fb2ae5498'
+sha512sums=('f8a731329e9c0e4693fe7cf7195f687e6e48c1254cc93804385b23f6e23e27fb4a235e12d8f3e77960793b951a3a7213395c4179e8d2f3891221f13b0e032e38'
             'SKIP'
-            '0e2c818f2f620410dda949d9016a4c1a686bf2946acb3b42a729b2376c077f4dad6762fe8d2f736c213c4895c1fbd60c0d654a1c36f72d06f58ba7cff635bc74')
+            '645f6e3c9df8634ac06cbafc314ad46ede45b5412140c20236d25187a7405a5a941f74c52ca3ee3cc3a8e97d7af88b22209cae854d6e99f0ad9c489db78026c4')
 
 prepare() {
   cd ${pkgname}-${pkgver}
