@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-noto-sans-mono-extended
 	pkgdesc = Noto Sans Mono including Condensed variants. Sourced directly from Google, patched with the Nerd Fonts Patcher
-	pkgver = 3.0.2
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://www.google.com/get/noto/
 	arch = any
 	license = custom
@@ -14,10 +14,10 @@ pkgbase = nerd-fonts-noto-sans-mono-extended
 	conflicts = nerd-fonts-noto
 	conflicts = nerd-fonts-noto-sans-mono
 	source = svn+https://github.com/googlefonts/noto-fonts/trunk/hinted/ttf/NotoSansMono
-	source = font-patcher-3.0.2::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FontPatcher.zip
-	source = svn+https://github.com/ryanoasis/nerd-fonts/tags/v3.0.2/src/glyphs
+	source = font-patcher-3.1.0::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FontPatcher.zip
+	source = svn+https://github.com/ryanoasis/nerd-fonts/tags/v3.1.0/src/glyphs
 	sha256sums = SKIP
-	sha256sums = fbabf4cee0d7129dfcc369050a159ff626998d2b75140136c6136e18fb205989
+	sha256sums = 73cbf6cd548a69d64a5db5910a22b7eddfdee8ae1ae187616ae748e4c7f16ea4
 	sha256sums = SKIP
 
 pkgname = nerd-fonts-noto-sans-mono-extended
