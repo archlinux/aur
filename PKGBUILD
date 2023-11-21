@@ -2,15 +2,15 @@
 # Previous Maintainer: Andrew Steinke <rkcf at rkcf dot me>
 
 pkgname=cockpit-zfs-manager
-pkgver=1.3.0
-pkgrel=5
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="An interactive ZFS on Linux admin package for Cockpit"
 arch=('any')
 url="https://github.com/45Drives/cockpit-zfs-manager"
 license=('GPL3')
 depends=('cockpit' 'zfs')
 source=("https://github.com/45Drives/cockpit-zfs-manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('16fcce1bff48910ed46e9c99c2ab36733a7d326cd7ee29803646bb2d07dc67fd')
+sha256sums=('859bb2b3d459ef959d1ef85f4eab21354a92edbabcf0932f04523d972fccc6bf')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/cockpit/zfs
