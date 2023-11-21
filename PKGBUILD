@@ -1,5 +1,5 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
-# Contribuidor: Kevin Muñoz <kmunoz@condorbs.net>
+# Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-agent
 pkgver=4.6.0
 _remRevision=1
