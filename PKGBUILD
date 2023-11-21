@@ -1,52 +1,55 @@
 # Maintainer: Peltoche <pierre.peltier@protonmail.com>
 pkgname=duckcloud
-pkgver=23.10.3
-pkgrel=2
+pkgver=23.11.1
+pkgrel=1
 epoch=1
 pkgdesc="A cloud for your family"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url=https://duckcloud.co
 license=(AGPL3)
 depends=(glibc)
-makedepends=(go)
+makedepends=(go openssl)
 optdepends=()
+backup=(etc/duckcloud/password.cred)
+install=duckcloud.install
 
 source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.tar.gz
-        ${pkgname}.service
-        ${pkgname}.sysusers
-        ${pkgname}.tmpfiles
-        LICENSE)
+      ${pkgname}.service
+      ${pkgname}.sysusers
+      ${pkgname}.tmpfiles
+      LICENSE)
 
-sha256sums=('e92898e491c1ca266c380388293dd21cc538218780516b5d0597590cc7459757'
-            'c8284658d295ba32b118784532da5ce2cc7c4ac167a26181d0685683dedb3623'
+sha256sums=('e408dbd31e4375bd77bbeb5979e068cc71e1e5cd15961902e6d7774f8eb135dc'
+            'b35676f9d721521089676ccf1a287fc7369cce0c7dd70991deeea0e8c3d0c6af'
             'ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead'
-            '5b3e34975e2bfa4a2c55e5a12fc970d103d8635512579dc2ac533b4787d66f9f'
+            '8ee8d3bf748a986fdd040e56c208742045df91837de3e250d5148e0b3fd65692'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 
 prepare() {
-    cd ${pkgname}-${pkgver}
-    go mod vendor
+  cd ${pkgname}-${pkgver}
+  go mod vendor
 }
 
 build() {
-    cd ${pkgname}-${pkgver}
-    export CGO_CPPFLAGS="${CPPFLAGS}"
+  cd ${pkgname}-${pkgver}
+  export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build -v \
-        -ldflags "-linkmode external \
-                  -X github.com/theduckcompany/duckcloud/internal/tools/buildinfosj.Version=${pkgver} \
-                  -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.BuildTime=$(date --utc -Iseconds)" \
-        -o ${pkgname} ./cmd/duckcloud
+    -ldflags "-linkmode external \
+    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfosj.Version=${pkgver} \
+    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.BuildTime=$(date --utc -Iseconds)" \
+    -o ${pkgname} ./cmd/duckcloud
 }
 
 package() {
-    install -Dm644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin/"
 }
+

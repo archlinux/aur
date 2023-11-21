@@ -25,6 +25,7 @@ Restart=always
 User=duckcloud
 Group=duckcloud
 SyslogIdentifier=duckcloud
+LoadCredentialEncrypted=password:/etc/duckcloud/password.cred
 
 # Specify where all the data is located by updating the path in
 # both "ExecStart" and "ReadWritePaths"
