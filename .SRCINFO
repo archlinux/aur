@@ -1,0 +1,27 @@
+pkgbase = vim-editorconfig
+	pkgdesc = EditorConfig plugin for Vim
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/editorconfig/editorconfig-vim
+	arch = any
+	groups = vim-plugins
+	license = BSD-2-Clause
+	license = PSF-2.0
+	checkdepends = editorconfig-core-c
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-vimrunner
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	source = git+https://github.com/editorconfig/editorconfig-vim.git#tag=7f4e4dfc58c480d154116614e616d90aac77204d
+	source = git+https://github.com/editorconfig/editorconfig-plugin-tests.git
+	source = git+https://github.com/editorconfig/editorconfig-core-test.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = vim-editorconfig
+	depends = vim-plugin-runtime

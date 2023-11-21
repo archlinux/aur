@@ -2,9 +2,9 @@
 
 _name=editorconfig
 pkgname=vim-editorconfig
-_commit=0a3c1d8082e38a5ebadcba7bb3a608d88a9ff044  # refs/tags/v1.1.1
-pkgver=1.1.1
-pkgrel=3
+_commit=7f4e4dfc58c480d154116614e616d90aac77204d  # refs/tags/v1.2.0
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="EditorConfig plugin for Vim"
 arch=(any)
 url="https://github.com/editorconfig/editorconfig-vim"
@@ -44,12 +44,11 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 }
 
-# # tests hang forever: https://github.com/editorconfig/editorconfig-vim/issues/150
-# check() {
-#   cd $_name-vim
-#   export EDITORCONFIG_VIM_EXTERNAL_CORE=/usr/bin/editorconfig
-#   xvfb-run rspec tests/plugin/spec/editorconfig_spec.rb
-# }
+check() {
+  cd $_name-vim
+  export EDITORCONFIG_VIM_EXTERNAL_CORE=/usr/bin/editorconfig
+  xvfb-run rspec tests/plugin/spec/editorconfig_spec.rb
+}
 
 package() {
   # gvim, pulled in by ruby-vimrunner conflicts with vim
