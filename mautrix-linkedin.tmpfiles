@@ -1,0 +1,2 @@
+z /etc/mautrix-linkedin/* 640 root mautrix-linkedin
+d /var/lib/mautrix-linkedin/ 700 mautrix-linkedin mautrix-linkedin

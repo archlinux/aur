@@ -1,0 +1,9 @@
+post_install() {
+	cat <<- 'EOF'
+		this package strips max version for packages in requirements.txt; Arch tracks stable releases and the author enforces max versions as a precautionary measure, as consequence the package would get unable to build in short time without this workaround, where necessary the enforcement has been copied to the pkgbuild, however the information may get outdated as libraries get upgraded and break their API
+		the original files have been installed as well to act as documentation in the case a user finds compatibility problems
+
+		after editing /etc/mautrix-linkedin/config.yaml, generate a registration file using:
+		# python -m linkedin_matrix -b /usr/share/mautrix-linkedin/example-config.yaml -c /etc/mautrix-linkedin/config.yaml -r /etc/mautrix-linkedin/registration.yaml -g
+	EOF
+}
