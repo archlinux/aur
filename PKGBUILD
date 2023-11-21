@@ -2,30 +2,36 @@
 pkgname=claude-desktop
 _pkgname=Claude-Desktop
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron-based desktop application for Claude2(unofficial)."
 arch=('any')
 url="https://github.com/Karenina-na/Claude-Desktop"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('libxfixes' 'libdrm' 'gtk3' 'nspr' 'libxdamage' 'mesa' 'expat' 'glib2' 'libcups' 'libxkbcommon' 'pango' 'alsa-lib' \
-    'glibc' 'libxext' 'gcc-libs' 'libxcb' 'libxrandr' 'dbus' 'nss' 'libx11' 'libxcomposite' 'at-spi2-core' 'cairo')
-makedepends=('gendesk' 'npm')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('32b479fd3df2bf976e23d264a4f4ac011d15fadf73cda6b00ab9a0b86faaf1e2')
-prepare() {
-    gendesk -q -f -n --categories "Network;Utility" --name "${_pkgname}" --exec "${pkgname}"
-}
+depends=(
+    'electron25'
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'nodejs>=20.4.2'
+)
+source=(
+    "${pkgname}-${pkgver}"::"git+${url}.git#tag=v${pkgver}"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('SKIP'
+            '4242209b2509c3b3cdebd5a6391a7a4c39d09932db2112c84e3200285d79429d')
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    npm install
+    gendesk -q -f -n --categories "Network;Utility" --name "${_pkgname}" --exec "${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    npm ci --cache "${srcdir}/npm-cache"
     npm run build
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/${_pkgname}-${pkgver}/dist-client/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist-client/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
