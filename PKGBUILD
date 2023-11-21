@@ -2,17 +2,39 @@
 pkgname=quark-player-bin
 _pkgname="Quark Player"
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron based Web Video Services Player, supporting Netflix, Youtube, Twitch, Floatplane, Hulu and More!"
 arch=('x86_64')
 url="https://github.com/Alex313031/quark-player"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('gtk3' 'pango' 'expat' 'mesa' 'libdrm' 'libxcb' 'glibc' 'libxfixes' 'dbus' 'nss' 'hicolor-icon-theme' 'libxkbcommon' \
-    'cairo' 'libxrandr' 'at-spi2-core' 'glib2' 'libxdamage' 'gcc-libs' 'libx11' 'libxext' 'nspr' 'libcups' 'libxcomposite' 'alsa-lib')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE.md::https://raw.githubusercontent.com/Alex313031/quark-player/v${pkgver}/LICENSE.md")
+depends=(
+    'gtk3'
+    'pango'
+    'expat'
+    'mesa'
+    'libdrm'
+    'libxcb'
+    'libxfixes'
+    'nss'
+    'hicolor-icon-theme'
+    'libxkbcommon'
+    'cairo'
+    'libxrandr'
+    'at-spi2-core'
+    'libxdamage'
+    'libx11'
+    'libxext'
+    'nspr'
+    'libcups'
+    'libxcomposite'
+    'alsa-lib'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE.md::https://raw.githubusercontent.com/Alex313031/quark-player/v${pkgver}/LICENSE.md"
+)
 sha256sums=('2147ecb0de939130eb53f2619bc2747e47537814e2d016da172db97aeb1e978b'
             'f60c2918d56a97a03b92e13e9fc479e81db309476ec26f7c8c0df82007612117')
 build() {
