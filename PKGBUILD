@@ -1,5 +1,5 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
-# Contribuidor: Kevin Muñoz <kmunoz@condorbs.net>
+# Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-filebeat
 pkgver=7.10.2
 _remRevision=1
