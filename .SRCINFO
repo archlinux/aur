@@ -1,20 +1,19 @@
 pkgbase = photo-location-map
 	pkgdesc = Display the locations where photos were taken on a map.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tomoyukiaota.github.io/photo-location-map/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nodejs>=18
-	makedepends = asar
-	depends = bash
+	makedepends = git
 	depends = electron22
 	conflicts = photo-location-map
-	source = photo-location-map-1.9.0.tar.gz::https://github.com/TomoyukiAota/photo-location-map/archive/refs/tags/v1.9.0.tar.gz
+	source = photo-location-map-1.9.0::git+https://github.com/TomoyukiAota/photo-location-map#tag=v1.9.0
 	source = photo-location-map.sh
-	sha256sums = 7b52017ea897316582c93e8fe59512c5eb36b9029ca0021c9045f147e0f8299e
-	sha256sums = f0e0921b786b5c38eb74a9e3ae1a6925f0fc20b73401d3834659d77d962487d3
+	sha256sums = SKIP
+	sha256sums = 4d51569c4e39eb4ad610dea46e954f2fa1fd33d6eac44ba92fcb7450fc894951
 
 pkgname = photo-location-map
