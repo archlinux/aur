@@ -1,18 +1,23 @@
 pkgbase = panwriter-bin
 	pkgdesc = Markdown editor with pandoc integration and paginated preview.
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://panwriter.com/
 	arch = x86_64
 	license = GPL3
 	makedepends = squashfuse
-	depends = bash
 	depends = electron26
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = libxext
+	depends = libdbusmenu-glib
+	depends = gtk2
+	depends = dbus-glib
 	provides = panwriter=0.8.6
 	conflicts = panwriter
 	source = panwriter-0.8.6.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.6/PanWriter-0.8.6.AppImage
 	source = panwriter.sh
 	sha256sums = 263027d6093ffb9bbac7ca707790b191c1057d35377a448c991735fe48dbc39a
-	sha256sums = c6a11528d92c32040b13823c11b9164a5b6109c4528864cb8285e1f67f5488e3
+	sha256sums = 101f7e653dc83cb0b69d663b4a528df35469bb6264496534d18fd668f2390b9c
 
 pkgname = panwriter-bin
