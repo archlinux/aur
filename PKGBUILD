@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codex-bin
 _pkgname=Codex
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A free note-taking software for programmers and Computer Science students"
 arch=('x86_64')
 url="https://codexnotes.com/"
-_githuburl="https://github.com/jcv8000/Codex"
+_ghurl="https://github.com/jcv8000/Codex"
 license=('custom:CC-BY-NC-4.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -32,8 +32,10 @@ depends=(
     'libxdamage'
     'libxcb'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
-sha256sums=('030c34bc19406c807b25a2e432b89063be3b89788a8002f768d7391ea4de7836')
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
+)
+sha256sums=('9619d986aefe4df5706df85398c9af72f4ba6f53b17178afc6d7dd5ec80521db')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
