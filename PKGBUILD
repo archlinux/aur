@@ -1,31 +1,31 @@
 # Contributor: Lucki <https://aur.archlinux.org/account/Lucki>
-# Maintainer: amo <https://aur.archlinux.org/account/amo>
+# Contributor: amo <https://aur.archlinux.org/account/amo>
 
 _pkgname=django-polymorphic-tree
 pkgname=python-django-polymorphic-tree
-pkgver=1.5.1
+pkgver=2.1
 pkgrel=1
 pkgdesc="Polymorphic MPTT tree support for models"
 arch=('any')
 url="https://github.com/django-polymorphic/django-polymorphic-tree"
 license=('Apache')
 depends=('python-django' 'python-django-mptt' 'python-django-polymorphic' 'python-django-tag-parser' 'python-future')
-makedepends=('python-setuptools' 'python-django-js-asset-git')
-source=("$pkgname-$pkgver.src.tar.gz::https://github.com/django-polymorphic/django-polymorphic-tree/archive/v$pkgver.tar.gz")
-sha512sums=('291ed73400c3a5073cbfe00fdd0dab16ac7dbb4fa96fc1797f526ef7235111162806c4be3fddb0bc6cd61560bdb6d1ac806c2f83380a1d45735d876c4f79ac67')
+makedepends=('python-setuptools' 'python-django-js-asset')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/django-polymorphic/django-polymorphic-tree/archive/v$pkgver.tar.gz")
+sha512sums=('6fb01c34e262cd8652c71b1e64602300a79b3d13337d34a309243a7d8e2db0aacc01b9c7604222f44d5292d350f819f14efb7c4b9140b7a98dad2ec09ef4dbfe')
 
 build() {
-  cd "$_pkgname-$pkgver" || exit
+  cd "$_pkgname-$pkgver"
   python setup.py build
 }
 
 check() {
-  cd "$_pkgname-$pkgver" || exit
+  cd "$_pkgname-$pkgver"
   python runtests.py
 }
 
 package() {
-  cd "$_pkgname-$pkgver" || exit
+  cd "$_pkgname-$pkgver"
 
   export PYTHONHASHSEED=0
   python setup.py install --skip-build \
