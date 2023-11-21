@@ -3,16 +3,16 @@ post_install() {
   You must symlink this package's contents to ~/.config/mpv/scripts
   in order for it to work properly.
 
-  You can create this symlink with:
-  ln -sf /usr/lib/mpv/mpv-sponsorblock-git ~/.config/mpv/scripts
+  You can create these symlinks with:
+  ln -sv /usr/lib/mpv/mpv-sponsorblock-git/{sponsorblock.lua,sponsorblock_shared} ~/.config/mpv/scripts/
   ";
 }
 
 post_remove()  {
   printf "
-  Please remember to remove the symlink if you created one to enable this plugin.
+  Please remember to remove the symlinks if you created ones to enable this plugin.
 
   You can remove it using:
-  rm ~/.config/mpv/scripts/mpv-sponsorblock-git
+  rm -v ~/.config/mpv/scripts/{sponsorblock.lua,sponsorblock_shared}
   ";
 }

@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	install -Dm 755 sponsorblock.lua -t "$pkgdir/usr/lib/mpv/$pkgname/"
-	install -Dm 755 sponsorblock_shared/{main.lua,sponsorblock.py} -t "$pkgdir/usr/lib/mpv/$pkgname/sponsorblock_shared/"
+	install -Dm644 sponsorblock.lua -t "$pkgdir/usr/lib/mpv/$pkgname/"
+	install -Dm644 sponsorblock_shared/{main.lua,sponsorblock.py} -t "$pkgdir/usr/lib/mpv/$pkgname/sponsorblock_shared/"
 	python -O -m compileall "$pkgdir/usr/lib/mpv/$pkgname/sponsorblock_shared/sponsorblock.py"
 }
