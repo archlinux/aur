@@ -2,7 +2,7 @@
 pkgname=lunarcalendar-bin
 _pkgname=LunarCalendar
 _appname="org.Rabbit.${_pkgname}"
-pkgver=0.0.28
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Chinese Lunar Date Control Written in Qt.用Qt写的中国农历日期控件"
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('25bfb3f0548aac0c34fd9c67187ad33397e12f87502c0009d81c3ac93022fd9a'
+sha256sums=('37bcf16aa329c3d33e1f6610df4be7593b9a64b7d5ddac1a83f8a8bf12846fe2'
             '5fcad1de68024b797415bc0ccaa70182d94fa5f6d96cfde873eff3f50600425d')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
