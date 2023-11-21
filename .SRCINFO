@@ -1,0 +1,13 @@
+pkgbase = dotree-bin
+	pkgdesc = A small, interactive command runner
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/KnorrFG/dotree
+	arch = x86_64
+	license = GPL-3.0
+	provides = dotree
+	conflicts = dotree
+	source_x86_64 = dt::https://github.com/KnorrFG/dotree/releases/download/0.8.1/dt
+	sha256sums_x86_64 = 8ab408801272c728300ac18926e4e1a991d7d38249c1f96fccb405e5d5d1594a
+
+pkgname = dotree-bin
