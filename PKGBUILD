@@ -1,5 +1,7 @@
 # Maintainer: Eric Woudstra <ericwouds AT gmail DOT com>
 
+#NOEXTRACT="1"
+
 #mediatek distroboot see: include/configs/mt7623.h
 # include/configs/<CONFIG_SYS_CONFIG_NAME>.h
 # arch/<CONFIG_SYS_ARCH>/cpu/<CONFIG_SYS_CPU>
@@ -11,7 +13,7 @@ _pkgver=2023.04
 pkgver=2023.04r84964.fd4ed6b7e8
 pkgrel=1
 pkgdesc='U-Boot for BPI Router Boards'
-arch=('aarch64' 'x86_64')
+arch=('aarch64')
 url='https://github.com/u-boot/u-boot'
 license=(GPL3)
 depends=()
