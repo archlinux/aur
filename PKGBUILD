@@ -1,7 +1,7 @@
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-control-panel
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 epoch=
 pkgdesc="A visualisation and settings management tool for the Ultraleap Tracking Service."
 arch=('x86_64')
@@ -19,16 +19,13 @@ backup=()
 options=()
 install='ultraleap-hand-tracking-control-panel.install'
 changelog=
-source=("https://repo.ultraleap.com/apt/pool/main/u/${pkgname}/${pkgname}_1062807.deb")
+source=("https://repo.ultraleap.com/apt/pool/main/u/${pkgname}/${pkgname}_1125862.deb")
 noextract=()
-md5sums=('c2868d8de43abbd1687ec63989a121d6')
+md5sums=('9c524513e915038cf7374ce99b7622ee')
 validpgpkeys=()
 
 prepare() {
     tar xJf "data.tar.xz"
-
-    # Fix wrong version (it should be the desktop entry format version)
-    sed -i "s/VERSIONINFOHERE/1.0/g" "${srcdir}/usr/share/applications/ultraleap-hand-tracking-control-panel.desktop"
 
     # Make the icon visible in Xfce's settings panel
     sed -i 's/Categories=Settings/Categories=Settings;X-XFCE-SettingsDialog;/g' "${srcdir}/usr/share/applications/ultraleap-hand-tracking-control-panel.desktop"
