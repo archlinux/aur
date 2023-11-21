@@ -10,10 +10,21 @@ arch=('x86_64')
 url="https://wazuh.com/"
 license=('gpl2')
 depends=(
-    'libcap'
+    'glibc'
+    'audit'
+    'git'
+    'go'
+    'libpcap'
+    'mage'
+    'python-virtualenv'
+    'rsync'
+    'systemd'
+    'python'
 );
 optdepends=(
+    'elasticsearch'
 );
+
 conflicts=('filebeat')
 
 validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
