@@ -5,9 +5,10 @@
 _projectname='dolphin'
 _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
+_toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
-pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r20339.g87c27936fc'
+pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
+pkgver='5.0.r20349.gf79c88f30b'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -15,14 +16,14 @@ arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
-	'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'fmt' 'hidapi' 'libevdev' 'libgl' 'libpulse'
-	'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml'
-	'qt6-base' 'qt6-svg' 'sfml' 'zlib-ng'
-	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libminiupnpc.so'
-	'libsfml-network.so' 'libsfml-system.so' 'libswscale.so' 'libudev.so'
+	'alsa-lib' 'bluez-libs' 'bzip2' 'cubeb' 'enet' 'fmt' 'hidapi' 'libevdev' 'libgl'
+	'libpulse' 'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng'
+	'pugixml' 'sfml' 'speexdsp' 'xz' 'zlib-ng' 'zstd'
+	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
+	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so' 'libudev.so'
 	'libusb-1.0.so'
 )
-makedepends=('cmake' 'git' 'ninja' 'python')
+makedepends=('cmake' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 source=(
@@ -94,6 +95,7 @@ build() {
 
 package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
+	depends+=('hicolor-icon-theme' 'libminiupnpc.so' 'qt6-base' 'qt6-svg')
 	provides=("$_mainpkgname")
 	conflicts=("$_mainpkgname")
 
@@ -102,6 +104,7 @@ package_dolphin-emu-git() {
 	install -Dm644 'Data/51-usb-device.rules' "$pkgdir/usr/lib/udev/rules.d/51-usb-device.rules"
 
 	rm -rf "$pkgdir/usr/bin/$_noguipkgname"
+	rm -rf "$pkgdir/usr/bin/$_projectname-tool"
 	rm -rf "$pkgdir/usr/include"
 	rm -rf "$pkgdir/usr/lib/libdiscord-rpc.a"
 	rm -rf "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
@@ -118,4 +121,15 @@ package_dolphin-emu-nogui-git() {
 	install -Dm755 "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" "$pkgdir/usr/bin/$_noguipkgname"
 	ln -sf "/usr/bin/$_noguipkgname" "$pkgdir/usr/bin/$_mainpkgname-cli"
 	install -Dm644 "Data/$_noguipkgname.6" "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
+}
+
+package_dolphin-emu-tool-git() {
+	pkgdesc="$pkgdesc - CLI-based utility for functions such as managing disc images$_pkgdescappend"
+	depends=("$pkgbase")
+	optdepends=()
+	provides=("$_toolpkgname")
+	conflicts=("$_toolpkgname")
+
+	cd "$srcdir/$_sourcedirectory/"
+	install -Dm755 "$srcdir/$_sourcedirectory/build/Binaries/$_projectname-tool" "$pkgdir/usr/bin/$_projectname-tool"
 }
