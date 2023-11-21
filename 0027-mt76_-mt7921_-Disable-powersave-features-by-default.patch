@@ -1,0 +1,30 @@
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index ff63f37f67d9..510c7143743f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -220,12 +220,6 @@ int mt7921_register_device(struct mt792x_dev *dev)
+ 	dev->pm.idle_timeout = MT792x_PM_TIMEOUT;
+ 	dev->pm.stats.last_wake_event = jiffies;
+ 	dev->pm.stats.last_doze_event = jiffies;
+-	if (!mt76_is_usb(&dev->mt76)) {
+-		dev->pm.enable_user = true;
+-		dev->pm.enable = true;
+-		dev->pm.ds_enable_user = true;
+-		dev->pm.ds_enable = true;
+-	}
+ 
+ 	if (!mt76_is_mmio(&dev->mt76))
+ 		hw->extra_tx_headroom += MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 46be7f996c7e..c76afb280cbe 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -544,7 +544,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
+ 		wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
+ 	}
+ 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
+-			  WIPHY_FLAG_4ADDR_STATION);
++			  WIPHY_FLAG_4ADDR_STATION | WIPHY_FLAG_PS_ON_BY_DEFAULT);
+ 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
+ 				 BIT(NL80211_IFTYPE_AP) |
+ 				 BIT(NL80211_IFTYPE_P2P_CLIENT) |

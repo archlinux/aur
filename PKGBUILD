@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.6.1.arch1
+pkgver=6.6.2.arch1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -35,15 +35,16 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-0004-5.17+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.17+.patch"
 
+  0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-G814Jx.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
   0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
   
   0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
+  0001-linux6.6.y-bore3.3.0.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
-#  0036-Block_a_rogue_device_on_ASUS_TUF_A16.patch
 
   0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -59,6 +60,7 @@ source=(
 
   0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
   amd-tablet-sfh.patch
+  v2-0002-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-m.patch
   v6-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
@@ -70,16 +72,18 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('da1ed7d47c97ed72c9354091628740aa3c40a3c9cd7382871f3cedbd60588234'
+sha256sums=('73d4f6ad8dd6ac2a41ed52c2928898b7c3f2519ed5dbdb11920209a36999b77e'
             'SKIP'
-            '9fd606b2ac0b4ae5df8867b7651574a2e5c480366bac224406fc34ad5d79009b'
+            '2268d290ccfc805ca1f934eed73610065a7b12080769d5371693901854e69fa4'
             'SKIP'
             'bdfd2629b1fe907b9270fc540adaa51ff526cbd361b23aba38c4c5fce7f5397b'
-            'bc8b5f303e3507c01d8543fb4352ed7dcdb9ed4eb2854788d39510f88d67f454'
+            '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
+            'f6e870e44d04d256b62951d3879b9caa81e4504a2f0690c3089c1369ae91c3f5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4'
             '7b16fce20b03babc9e149030f43e283534835bbd8835ba0a794fd0205fea1708'
+            'd26ea408530a224283c678028afeb32212612b08c22c35d5d2236eb9e6406908'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
@@ -92,7 +96,8 @@ sha256sums=('da1ed7d47c97ed72c9354091628740aa3c40a3c9cd7382871f3cedbd60588234'
             '2480528e81377b27a4558f989bf810537b820f9f7696b52538fa01c0b81bf899'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '796a15292c84397a29ef25be8c1e5d804516d8ace514b66f07b74176f58919b7'
+            '7b53c02df224d57736cd9cc3f20361f7d2379e67ff98ca9c2181c3583180febe'
+            'c2ada06f7138c6a326e028bccff745e2eb3225d12a264a45dcb0671bfbe9a904'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
@@ -245,7 +250,6 @@ _package() {
     KSMBD-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
-    linux-rog
   )
   replaces=(
     virtualbox-guest-modules-arch
@@ -262,13 +266,14 @@ _package() {
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
-
+  echo "#!/bin/bash" > ignore_depmod
+  chmod +x ignore_depmod
   echo "Installing modules..."
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
-    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+    DEPMOD=./ignore_depmod modules_install  # Suppress depmod
 
   # remove build link
-  rm "$modulesdir"/build
+  rm "$modulesdir"/build || true
 }
 
 _package-headers() {
@@ -291,9 +296,6 @@ _package-headers() {
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
   install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
-
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
