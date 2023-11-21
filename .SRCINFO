@@ -1,0 +1,20 @@
+pkgbase = python-neurokit2
+	pkgdesc = The Python Toolbox for Neurophysiological Signal Processing.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/scientisst/BioSPPy
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-scikit-learn>=1.0.0
+	noextract = neurokit2-0.2.7-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/n/neurokit2/neurokit2-0.2.7-py2.py3-none-any.whl
+	sha256sums = 960412136d42ec02eca21b20de2f4ba2bce1d9eeabb34153b2e962682ff2ca42
+
+pkgname = python-neurokit2
