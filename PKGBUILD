@@ -2,21 +2,33 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="A (work-in-progress) cross-platform libre handwritten notes app"
-arch=('aarch64' 'x86_64')
+arch=(
+    #'aarch64'
+    'x86_64'
+)
 url="https://github.com/adil192/saber"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('glibc' 'gcc-libs' 'at-spi2-core' 'pango' 'glib2' 'gtk3' 'libepoxy' 'libsecret' 'gdk-pixbuf2' 'harfbuzz' 'fontconfig' 'cairo')
+depends=(
+    'at-spi2-core'
+    'pango'
+    'gtk3'
+    'libepoxy'
+    'libsecret'
+    'gdk-pixbuf2'
+    'harfbuzz'
+    'fontconfig'
+    'cairo'
+)
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('12f210998d138d9c21517b8f40862649dd078c4069e74cbc6a6000e969c849ce')
-sha256sums_x86_64=('a116ce47d06f55bec77de4b436f7e4e147277b7cd4b63c5b72c88e3888be27ce')
+sha256sums_x86_64=('8ff4a309998133744dd432ef42d024064914a7a99ce2a35f99a3ed0fcf92f08e')
 build() {
     mkdir -p "${srcdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz" -C "${srcdir}/opt/${pkgname%-bin}"

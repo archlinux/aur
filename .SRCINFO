@@ -1,16 +1,12 @@
 pkgbase = saber-bin
 	pkgdesc = A (work-in-progress) cross-platform libre handwritten notes app
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/adil192/saber
-	arch = aarch64
 	arch = x86_64
 	license = GPL3
-	depends = glibc
-	depends = gcc-libs
 	depends = at-spi2-core
 	depends = pango
-	depends = glib2
 	depends = gtk3
 	depends = libepoxy
 	depends = libsecret
@@ -18,13 +14,11 @@ pkgbase = saber-bin
 	depends = harfbuzz
 	depends = fontconfig
 	depends = cairo
-	provides = saber=0.17.1
+	provides = saber=0.17.2
 	conflicts = saber
-	noextract = saber-0.17.1-x86_64.tar.gz
+	noextract = saber-0.17.2-x86_64.tar.gz
 	options = !strip
-	source_aarch64 = saber-0.17.1-aarch64.tar.gz::https://github.com/adil192/saber/releases/download/v0.17.1/Saber_v0.17.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 12f210998d138d9c21517b8f40862649dd078c4069e74cbc6a6000e969c849ce
-	source_x86_64 = saber-0.17.1-x86_64.tar.gz::https://github.com/adil192/saber/releases/download/v0.17.1/Saber_v0.17.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a116ce47d06f55bec77de4b436f7e4e147277b7cd4b63c5b72c88e3888be27ce
+	source_x86_64 = saber-0.17.2-x86_64.tar.gz::https://github.com/adil192/saber/releases/download/v0.17.2/Saber_v0.17.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8ff4a309998133744dd432ef42d024064914a7a99ce2a35f99a3ed0fcf92f08e
 
 pkgname = saber-bin
