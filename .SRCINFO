@@ -1,7 +1,7 @@
 pkgbase = warpgui-bin
 	pkgdesc = GUI for Cloudflare ™ WARP
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AKotov-dev/warpgui
 	arch = x86_64
 	license = GPL3
@@ -10,10 +10,7 @@ pkgbase = warpgui-bin
 	depends = cairo
 	depends = libx11
 	depends = pango
-	depends = glibc
 	depends = gdk-pixbuf2
-	depends = glib2
-	depends = bash
 	provides = warpgui=2.0
 	conflicts = warpgui
 	source = warpgui-2.0.rpm::https://github.com/AKotov-dev/warpgui/releases/download/v2.0/warpgui-2.0-0.mrx9.x86_64.rpm
