@@ -1,5 +1,5 @@
 pkgname=beanstalkd
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 epoch=
 pkgdesc="Fast, simple message queue server"
@@ -15,12 +15,11 @@ source=("https://github.com/kr/beanstalkd/archive/v${pkgver}.tar.gz"
 	"beanstalkd.service"
 	"beanstalkd.conf"
 	"wno-error.patch")
-sha256sums=('f43a7ea7f71db896338224b32f5e534951a976f13b7ef7a4fb5f5aed9f57883f'
+sha256sums=('26292dcdc0a7011d2f8ad968612f2cd8b2ef07687224876015399ae85e9e5263'
             'a58cb94c7524f48a4f37244dd37593fc74186168796d472db67326387510979e'
             'e18b2c5d959027560f597022b4afe56bc337c20c98c76ecec6d2e05097188627'
             'b59792b451554e6b7de54543448fcd6dd0b76dbe5babb94068864f063f7efbfc'
             'e7d7dc5df9f70da4f2767a9b6e2574191fb159045803a4b9a57b1dfb5dffe1c0')
-
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
