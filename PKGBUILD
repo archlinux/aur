@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=spitbol-git
-pkgver=4.0c.r1375.edc09c4
+pkgver=4.0d.r1381.76b7ada
 pkgrel=1
 pkgdesc='An extremely high performance implementation of the SNOBOL4 language that brings raw power and speed to non-numeric computation.'
 url='https://github.com/spitbol/x64'
@@ -13,7 +13,7 @@ md5sums=('SKIP' 'SKIP')
 pkgver() {
 	cd "$srcdir/$pkgname"
 	printf "%s.r%s.%s" \
-	"$(git describe --tags | sed 's/^V//;s/-.*//')" \
+	"$(git describe --tags | sed 's/^[Vv]//;s/-.*//')" \
 	"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
