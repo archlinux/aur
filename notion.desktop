@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Notion
+GenericName=Wiki, docs & projects
+Comment=notion
+Exec=notion-app %U
+Icon=notion
+Terminal=false
+StartupNotify=false
+Categories=Office;
+MimeType=x-scheme-handler/notion;
