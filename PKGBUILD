@@ -1,4 +1,4 @@
-# Maintainer: zefr0x < Matrix: "@zefr0x:kde.org" >
+# Maintainer: zefr0x < Matrix: "@zer0-x:kde.org" >
 
 pkgname="foxmarks"
 pkgver="2.0.2"
