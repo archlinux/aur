@@ -12,8 +12,30 @@ function main(){
 }
 
 function launch(){
-    bwrap --dev-bind / / --bind /opt/electronic-wechat-uos-bin/os-release /etc/os-release --bind /opt/electronic-wechat-uos-bin/lsb-release /etc/lsb-release electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
-    exit 0
+	bwrap \
+	--symlink usr/lib /lib \
+	--symlink usr/lib64 /lib64 \
+	--symlink usr/bin /bin \
+	--symlink usr/bin /sbin \
+	--ro-bind /opt /opt \
+	--ro-bind /opt/electronic-wechat-uos-bin/os-release /etc/os-release \
+	--ro-bind /opt/electronic-wechat-uos-bin/lsb-release /etc/lsb-release \
+	--ro-bind /etc /etc \
+	--ro-bind /usr /usr \
+	--dev /dev \
+	--dev-bind /dev/dri /dev/dri \
+	--proc /proc \
+	--ro-bind /sys/dev/char /sys/dev/char \
+	--ro-bind /sys/devices /sys/devices \
+	--ro-bind /run/dbus /run/dbus \
+	--dir "$XDG_RUNTIME_DIR" \
+	--ro-bind "$XDG_RUNTIME_DIR/wayland-0" "$XDG_RUNTIME_DIR/wayland-0" \
+	--ro-bind "$XDG_RUNTIME_DIR/pipewire-0" "$XDG_RUNTIME_DIR/pipewire-0" \
+	--ro-bind "$XDG_RUNTIME_DIR/pulse" "$XDG_RUNTIME_DIR/pulse" \
+	--bind /tmp /tmp \
+	--bind "$HOME" "$HOME" \
+	--bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
+	env GTK_USE_PORTAL=1 /usr/lib/electron/electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
 }
 
 function x11Launch(){

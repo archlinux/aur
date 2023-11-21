@@ -1,12 +1,12 @@
-# Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
+# Maintainer: Kimiblock Zhou <kimiblock at icloud dot com>
 # Contributor: qing <qing at he dot email>
 pkgname=electronic-wechat-uos-bin
 pkgver=2.3.2
-pkgrel=7
+pkgrel=8
 _uosVer=2.1.5
 epoch=
 pkgdesc="Linux下更好用的微信客户端. 更多功能, 更少bug. 使用系统Electron并利用UOS请求头修复了登陆问题."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
 groups=()
@@ -31,7 +31,7 @@ source=(
 )
 noextract=()
 md5sums=(
-	'95dd1d070b7ae3b5d9dabcb0bceb4f90'
+	'SKIP'
 	'ce7eb33de9571e8b8edca4685fc3e42d'
 	'600e74549ce2258c045d5c2f7689ea63'
 	'53d796e5a7c8c488998afdf5fb9020fe'
