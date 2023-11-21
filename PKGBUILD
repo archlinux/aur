@@ -88,7 +88,7 @@ build() {
     #   * npm link / and cache clean not required
     cd "${srcdir}/${pkgname}-${pkgver}/server"
     # TODO ci needed?
-    # npm ci
+    npm ci
     npm run build
     npm prune --omit=dev --omit=optional
         
