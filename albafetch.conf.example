@@ -1,0 +1,216 @@
+# If you found this file in /etc/xdg, changes made here won't apply.
+# You will need to copy it to ~/.config/albafetch.conf first
+
+# Check https://github.com/alba4k/albafetch/blob/master/MANUAL.md for additional info.
+
+# My (the authors) personal configuration can be found here:
+# https://github.com/alba4k/.dotfiles/blob/master/.config/albafetch.conf 
+
+
+# CONFIGURAZION OPTIONS:
+
+# align all the infos
+align_infos = "false"    ; bool
+
+# should bold be used?
+bold = "true"    ; bool
+
+# you can provide a file containing a logo to use
+# the normal logo is used when not set
+; ascii_art = "/path/to/example_logo.txt"    ; str[96]
+
+# which logo should always be printed?
+# OS default is used when not set
+; logo = "linux"    ; str [24]
+
+# what color should be used?
+# the color of the logo is used when not set
+; default_color = "green"    ; str [8]
+
+# the little separator used between each module label and content
+dash = ": "    ; str [16]
+
+# lenght of the spacing between the logo and the modules
+spacing = "5"    ; int [64]
+
+
+# LAYOUT
+
+# this contains an ordered array of the modules that should be printed.
+# every unrecognized value will be printed as-is
+modules = {
+# here is the default order:
+    "title",            # title in the format user@hostname
+    "separator",        # eparator between two lines
+    "uptime",           # current uptime
+    "separator",        # -
+    "os",               # operating system
+    "kernel",           # kernel version
+    "desktop",          # desktop environnment
+    "shell",            # shell (parent process, actually)
+    "term",             # terminal
+    "packages",         # number of installed packages
+    "separator",        # -
+    "host",             # OEM device / motherboard model name
+    "cpu",              # CPU
+    "gpu",              # GPU
+    "memory",           # used and total RAM
+    "space",            # empty line
+    "colors",           # terminal colors
+    "light_colors",     # terminal colors (light versions)
+# there are also some other modules, disabled by default
+  ; "user",             # username
+  ; "hostname",         # hostname
+  ; "gtk_theme"         # gtk_theme
+  ; "login_shell",      # login shell
+  ; "bios",             # BIOS version (Linux only)
+  ; "public_ip",        # public IP adress
+  ; "local_ip",         # local IP adress
+  ; "pwd",              # current working directory
+  ; "date",             # date and time
+}
+
+
+# MODULE-SPECIFIC OPTIONS:
+
+# Separators
+# the prefix printed before a separator
+separator_prefix = ""    ; str [64]
+# the character used in separators
+separator_character = "-"    ; str [8]
+
+# Spacings
+# the prefix printed before a spacing
+spacing_prefix = ""    ; str [64]
+
+# Title (user@host)
+# the prefix printed before the title
+title_prefix = ""    ; str [64]
+# defines whether the title should be colored
+colored_title = "true"    ; bool
+
+# User
+# the prefix printed before the user
+user_prefix = "User"    ; str [64]
+
+# Hostname
+# the prefix printed before the hostnmae
+hostname_prefix = "Hostname"    ; str [64]
+
+# Current Uptime
+# the prefix printed before the uptime
+uptime_prefix = "Uptime"    ; str [64]
+
+# Operating System
+# the prefix printed before the OS
+os_prefix = "OS"    ; str [64]
+# whether the architecture should be printed
+os_arch = "true"    ; bool
+
+# Kernel Version
+# the prefix printed before the kernel
+kernel_prefix = "Kernel"    ; str [64]
+# whether the kernel version should be printed in a shorter form
+kernel_short = "false"    ; bool
+# prints the kernel type (useful when using kernel_short)
+kernel_type = "false"
+
+# Desktop Environnment
+# the prefix printed before the desktop
+desktop_prefix = "Desktop"    ; str [64]
+# whether the desktop type should be printed (X11 / Wayland)
+desktop_type = "true"    ; bool
+
+# GTK Theme
+# the prefix printed before the theme name
+gtk_theme_prefix = "Theme"    ; str [64]
+
+# Shells
+# the prefix printed before the shell
+shell_prefix = "Shell"    ; str [64]
+# the prefix printed before the login shell
+login_shell_prefix = "Login"    ; str [64]
+# whether the full shell path should be printed
+shell_path = "false"    ; bool
+
+# Terminal
+# the prefix printed before the terminal
+term_prefix = "Terminal"    ; str [64]
+# whether the current session is running via ssh
+term_ssh = "true"   ; bool
+
+# Installed Packages
+# the prefix printed before the numebr of packages
+pkg_prefix = "Packages"    ; str [64]
+# whether the source of the individual packages should be printed
+pkg_mgr = "true"    ; bool
+# whether the amount of packages installed
+# from a specific source should be printed
+pkg_pacman = "true"    ; bool
+pkg_dpkg = "true"    ; bool
+pkg_flatpak = "true"    ; bool
+pkg_snap = "true"    ; bool
+pkg_brew = "true"    ; bool
+pkg_pip = "false"    ; bool
+
+# Host System
+# the prefix printed before the host
+host_prefix = "Host"    ; str [64]
+
+# BIOS Version
+# the prefix printed before the BIOS
+bios_prefix = "BIOS"    ; str [64]
+
+# Processor
+# the prefix printed before the cpu
+cpu_prefix = "CPU"    ; str [64]
+# whether the manufacturer should be printed
+cpu_brand = "true"    ; bool
+# whether the frequency should be printed
+cpu_freq = "true"    ; bool
+# whether the amount of threads should be printed
+cpu_count = "true"    ; bool
+
+# Graphics card
+# the prefix printed before the gpu
+gpu_prefix = "GPU"    ; str [64]
+# whether the manufacturer should be printed
+gpu_brand = "true"    ; bool
+# the specific GPU that should be printed (0 for all, otherwise the specific number 1-3)
+gpu_index = "0"    ; int [3]
+
+# Memory
+# the prefix printed before the ram
+mem_prefix = "Memory"    ; str [64]
+# whether the percentage of used memory should be printed
+mem_perc = "true"    ; bool
+
+# IPs
+# the prefix printed before the public IP
+pub_prefix = "Public IP"    ; str [64]
+# the prefix printed before the local IPs
+loc_prefix = "Local IP"    ; str [64]
+# whether the localhost should be shown as local IP
+loc_localhost = "false"    ; bool
+# whether docker should be shown as local IP
+loc_docker = "false"    ; bool
+
+# Current working directory
+# the prefix printed before the path
+pwd_prefix = "Directory"    ; str [64]
+# whether the full path should be printed
+pwd_path = "true"    ; bool
+
+# Current date
+# the prefix printed before the date
+date_prefix = "Date"    ; str [64]
+# the format the date is printed in (don't change the %02d parts)
+date_format = "%02d/%02d/%d %02d:%02d:%02d"    ; str [32]
+
+# Terminal Colors
+# the prefix printed before the colors
+colors_prefix = ""    ; str [64]
+# the prefix printed before the light colors
+colors_light_prefix = ""    ; str [64]
+# the specific lenght of each block
+col_block_len = "3"    ; int [16]
