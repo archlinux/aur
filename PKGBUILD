@@ -10,6 +10,10 @@ makedepends=('cmake' 'swig' 'boost' 'spectra')
 source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
 sha256sums=('b090fa2903f6160e64eb7b260e0da5e9946639dd1d7c398d3079053098c1d9fe')
 
+prepare () {
+  sed -i "33i#include \<libxml/parser.h\>"  openturns-$pkgver/lib/src/Base/Common/XMLToolbox.cxx
+}
+
 build() {
   cd openturns-$pkgver
   sed -i "/use_postordering/d" lib/src/Base/Optim/Ceres.cxx
