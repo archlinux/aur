@@ -1,7 +1,7 @@
 # Maintainer: Brice Vissière <dev at pystash dot me>
 pkgname=mdatp-bin
 _actual_pkgname=mdatp
-pkgver=101.23082.0011
+pkgver=101.23092.0012
 pkgrel=0
 pkgdesc='Microsoft Defender Advanced Threat Protection for Endpoints'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     mdatp-user.conf
 )
 
-sha256sums=('97259a0d7025b2c0190109f293c54de65c4b6584de4602c6d885a6babc3bf8d1'
+sha256sums=('6638d618a71e75c4e0453f91c3e0c2235cc380b63efb75f6b02d7935423c8741'
             'd516a208a443dd35716250f9a9ef9b12f7e752ba91a213c70cb4592ab8c0435c')
 
 prepare() {
