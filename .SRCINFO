@@ -1,0 +1,18 @@
+pkgbase = sciteco-git
+	pkgdesc = Advanced TECO dialect and interactive screen editor based on Scintilla
+	pkgver = r897.fe62b24
+	pkgrel = 1
+	url = https://github.com/rhaberkorn/sciteco
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = groff
+	depends = ncurses
+	depends = glibc
+	depends = gtk3
+	conflicts = sciteco
+	source = sciteco-git::git+https://github.com/rhaberkorn/sciteco
+	md5sums = SKIP
+
+pkgname = sciteco-git
