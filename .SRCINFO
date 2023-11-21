@@ -1,6 +1,6 @@
 pkgbase = python-imbalanced-learn
 	pkgdesc = Toolbox for imbalanced dataset in machine learning
-	pkgver = 0.9.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/scikit-learn-contrib/imbalanced-learn
 	arch = any
@@ -9,13 +9,17 @@ pkgbase = python-imbalanced-learn
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.7
-	depends = python-scipy
-	depends = python-numpy
-	depends = python-scikit-learn
-	optdepends = python-keras
-	optdepends = python-tensorflow
-	source = python-imbalanced-learn-0.9.1.tar.gz::https://files.pythonhosted.org/packages/source/i/imbalanced-learn/imbalanced-learn-0.9.1.tar.gz
-	sha256sums = 4e14f7ae6078b5ab843b73c379b2ac50b207446415d9c2438c885d6cb5afd962
+	depends = python>=3.8
+	depends = python-numpy>=1.17.3
+	depends = python-scipy>=1.5.0
+	depends = python-scikit-learn>=1.0.2
+	optdepends = python-keras: for dealing with Keras models
+	optdepends = python-tensorflow: for dealing with TensorFlow models
+	optdepends = python-pandas: for dealing with Pandas DataFrames
+	optdepends = python-matplotlib: for included examples
+	optdepends = python-seaborn: for included examples
+	noextract = imbalanced_learn-0.11.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/i/imbalanced-learn/imbalanced_learn-0.11.0-py3-none-any.whl
+	sha256sums = 20dc7dee3c838b4d213f021bb2b4007862704160d06bd292a6bdf931590b2516
 
 pkgname = python-imbalanced-learn

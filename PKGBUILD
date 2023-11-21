@@ -1,36 +1,28 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Alexander Bocken <alexander@bocken.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Federico Cassani <federico dot cassani at outlook dot com>
 
-pkgname=python-imbalanced-learn
-_pkg="${pkgname#python-}"
-pkgver=0.9.1
+_name=imbalanced-learn
+pkgname=python-${_name,,}
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Toolbox for imbalanced dataset in machine learning'
 arch=('any')
 url="https://github.com/scikit-learn-contrib/imbalanced-learn"
 license=('MIT')
-depends=('python>=3.7' 'python-scipy' 'python-numpy' 'python-scikit-learn')
-optdepends=('python-keras' 'python-tensorflow')
+depends=('python>=3.8' 'python-numpy>=1.17.3' 'python-scipy>=1.5.0' 'python-scikit-learn>=1.0.2')
+optdepends=('python-keras: for dealing with Keras models'
+	    'python-tensorflow: for dealing with TensorFlow models'
+	    'python-pandas: for dealing with Pandas DataFrames'
+	    'python-matplotlib: for included examples'
+	    'python-seaborn: for included examples'
+	    )
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('4e14f7ae6078b5ab843b73c379b2ac50b207446415d9c2438c885d6cb5afd962')
+_whl="${_name//-/_}-$pkgver-py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
+sha256sums=('20dc7dee3c838b4d213f021bb2b4007862704160d06bd292a6bdf931590b2516')
 
-prepare() {
-	cd "$_pkg-$pkgver"
-	sed -i "/packages=/s/()/(exclude=['*tests*'])/" setup.py
-}
-
-build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
-}
-
+noextract=("$_whl")
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
-		"$_site/${_pkg/-/_}-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/"
+    python -m installer --destdir="$pkgdir" "$_whl"
 }
