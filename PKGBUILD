@@ -26,7 +26,7 @@ _reponame=syncthingtray
 _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
@@ -46,7 +46,7 @@ checkdepends=('cppunit' 'syncthing' 'iproute2' 'appstream')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('3d6eb1cce6d3daf1507997ed8b144791191a59db848d1fdab50c590b45e14582')
+sha256sums=('f9003bbe185d355f9cac18862077fa2cc4e809f7f416d9b1dd5ef6474c926742')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
@@ -74,6 +74,7 @@ build() {
     -DSYNCTHINGCTL_CONFIGURATION_TARGET_SUFFIX:STRING="$_cfg" \
     -DSYNCTHINGTRAY_CONFIGURATION_TARGET_SUFFIX:STRING="$_cfg" \
     -DQT_PACKAGE_PREFIX:STRING='Qt6' \
+    -DKF_PACKAGE_PREFIX:STRING='KF6' \
     -DBUILTIN_TRANSLATIONS:BOOL=ON \
     -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
     -DBUILD_SHARED_LIBS:BOOL=ON \
