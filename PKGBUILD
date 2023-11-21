@@ -19,10 +19,10 @@ md5sums_aarch64=('4e0949e75055f016f2685d6a323ff70f')
 package() {
     install -Dm755 "$srcdir/albafetch" "$pkgdir/usr/bin/albafetch"
 
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 ../README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 ../MANUAL.md "$pkgdir/usr/share/doc/${pkgname}/MANUAL.md"
+    install -Dm644 "$srcdir/../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "$srcdir/../README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "$srcdir/../MANUAL.md" "$pkgdir/usr/share/doc/${pkgname}/MANUAL.md"
 
-    install -Dm644 ../albafetch.conf.example "$pkgdir/etc/xdg/albafetch.conf.example"
+    install -Dm644 "$srcdir/../albafetch.conf.example" "$pkgdir/etc/xdg/albafetch.conf.example"
 }
 
