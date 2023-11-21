@@ -9,14 +9,20 @@ license=('MIT')
 depends_x86_64=(pciutils libcurl-gnutls)
 depends_aarch64=()
 conflicts=(albafetch-git albafetch)
+provides=(albafetch=4.1)
 source_x86_64=("$url/releases/download/v$pkgver/albafetch-linux-x64.zip")
 source_aarch64=("$url/releases/download/v$pkgver/albafetch-linux-aarch64-static.zip")
 
-md5sums_x86_64=('b8ca2c656384fdd05e79bbbe5fffcbcb')
-md5sums_aarch64=('cce874f24a56f222a9509b0fdeed975f')
+md5sums_x86_64=('3e177e4efa423511ead69debf5c53ff5')
+md5sums_aarch64=('4e0949e75055f016f2685d6a323ff70f')
 
 package() {
-    mkdir -p "$pkgdir/usr/bin/"
-    install -Dm 755 "$srcdir/albafetch" "$pkgdir/usr/bin/albafetch"
+    install -Dm755 "$srcdir/albafetch" "$pkgdir/usr/bin/albafetch"
+
+    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 ../README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 ../MANUAL.md "$pkgdir/usr/share/doc/${pkgname}/MANUAL.md"
+
+    install -Dm644 ../albafetch.conf.example "$pkgdir/etc/xdg/albafetch.conf.example"
 }
 
