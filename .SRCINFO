@@ -1,5 +1,5 @@
 pkgbase = mounriver-studio-toolchain-bin
-	pkgver = 1.80
+	pkgver = 1.90
 	pkgrel = 0
 	url = http://www.mounriver.com/
 	arch = x86_64
@@ -13,17 +13,19 @@ pkgbase = mounriver-studio-toolchain-bin
 	optdepends = ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A
 	optdepends = ch341prog-git: A simple command line tool (programmer) interfacing with ch341a
 	optdepends = ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A
+	optdepends = ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).
 	optdepends = wchisp: WCH ISP Tool in Rust
 	provides = MRS-Toolchain
-	noextract = mounriver-studio-toolchain-bin-1.80.tar.xz
+	noextract = mounriver-studio-toolchain-bin-1.90.tar.xz
 	options = !strip
-	source = mounriver-studio-toolchain-bin-1.80.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V1.80.tar.xz
-	sha256sums = 873c5806667c963f076bb9555922c9008c508fc31781f4e070298045abee9924
+	source = mounriver-studio-toolchain-bin-1.90.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V1.90.tar.xz
+	sha256sums = 3ceeee75d260d0bd9482fec260ba48c91280884fbca175349c6dcd01d62c7ba8
 
 pkgname = mounriver-studio-toolchain-bin
 	pkgdesc = This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD.
 	depends = mounriver-studio-toolchain-openocd-bin
-	depends = mounriver-studio-toolchain-riscv-bin
+	depends = mounriver-studio-toolchain-riscv-gcc-bin
+	depends = mounriver-studio-toolchain-riscv-gcc12-bin
 
 pkgname = mounriver-studio-toolchain-openocd-bin
 	pkgdesc = MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip.
@@ -35,6 +37,10 @@ pkgname = mounriver-studio-toolchain-openocd-bin
 	depends = libudev.so
 	depends = libjaylink.so
 
-pkgname = mounriver-studio-toolchain-riscv-bin
+pkgname = mounriver-studio-toolchain-riscv-gcc-bin
+	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
+	depends = bash
+
+pkgname = mounriver-studio-toolchain-riscv-gcc12-bin
 	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
 	depends = bash
