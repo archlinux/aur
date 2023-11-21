@@ -1,15 +1,15 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mne
 _name=${pkgname#python-}
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, and more"
 arch=('any')
 url="https://mne.tools/stable/index.html"
 license=('BSD')
 groups=()
-depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pooch' 'python-tqdm' 'python-jinja' 'python-decorator' 'python-psutil' 'python-threadpoolctl' 'python-setuptools')
-makedepends=()
+depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pooch' 'python-tqdm' 'python-jinja' 'python-decorator' 'python-psutil' 'python-threadpoolctl' 'python-lazy-loader')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 optdepends=('python-scikit-learn' 'python-pandas')
 provides=()
 conflicts=()
@@ -20,14 +20,14 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('79451b0a1d91b38dfe7fc4668859c867ab7b97a8')
+sha1sums=('4b58f79ff02d7a5680976744b10517f9cc2df78b')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
