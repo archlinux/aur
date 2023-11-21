@@ -16,6 +16,7 @@ pkgbase = meshlab
 	makedepends = lib3ds
 	makedepends = mpir
 	makedepends = openctm-tools
+	makedepends = gcc12
 	depends = bzip2
 	depends = cgal
 	depends = glew
