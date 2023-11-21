@@ -38,6 +38,8 @@ EOF
 }
 
 post_install() {
+    echo "==> Creating directories..."
+    mkdir -p /opt/cellframe-node/var/{run,lib/wallet,lib/global_db,lib/plugins,log}
     echo "==> Copying configuration files..."
     cp /opt/cellframe-node/share/configs/cellframe-node.cfg.tpl /opt/cellframe-node/etc/cellframe-node.cfg
     cp /opt/cellframe-node/share/configs/network/Backbone.cfg.tpl /opt/cellframe-node/etc/network/Backbone.cfg
@@ -51,6 +53,13 @@ post_install() {
     sed -i 's|{NOTIFY_SRV_ADDR}|127.0.0.1|' /opt/cellframe-node/etc/cellframe-node.cfg
     sed -i 's|{NOTIFY_SRV_PORT}|8080|' /opt/cellframe-node/etc/cellframe-node.cfg
     sed -i 's|{NODE_TYPE}|full|' /opt/cellframe-node/etc/network/Backbone.cfg
+    
+    echo "==> Creating symbolic links for executables..."
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do
+		ln -sf "/opt/cellframe-node/bin/$_executables" "/usr/local/bin/$_executables"
+	done
+
     showmsg
 }
 
@@ -69,5 +78,13 @@ pre_remove() {
     systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service
     systemctl is-enabled --quiet cellframe-node.service && systemctl disable cellframe-node.service
     systemctl daemon-reload
+}
+
+post_remove() {
+    echo "==> Removing symbolic links for executables..."
+    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do
+		unlink "/usr/local/bin/$_executables"
+	done
 }
 

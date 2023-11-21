@@ -1,6 +1,6 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
-	pkgver = 5.2.371
+	pkgver = 5.2.372
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-node.install
@@ -15,10 +15,10 @@ pkgbase = cellframe-node
 	provides = cellframe-node
 	provides = cellframe-node-cli
 	provides = cellframe-node-tool
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=c13a58f62050ceccf8b00621fc7ab54acf0b2fc0
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=31ce7a52177930a685f67dd967b786d5697494c2
-	source = git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=2cece0a33028fdb41b7671c182f400a2f1a63b70
-	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=5d9ffd633649e7d879c03d9f8354b79b929feba4
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=c1c6da8d7ab173333d1ed082d211716c5e3fe14f
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=296a740e26c89e4613e80270f06f703f7806125d
+	source = git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=87285739917f1d7864aad19e5f96ce739b12a170
+	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=af8bd531da565c40daf908852aa879530ac99945
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
