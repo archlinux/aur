@@ -18,7 +18,6 @@ depends=(
 )
 makedepends=(
 	asar
-	gendesk
 	icoutils
 )
 install=.install
@@ -27,10 +26,12 @@ source=(
 	"https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe"
 	https://github.com/WiseLibs/better-sqlite3/releases/download/v9.0.0/better-sqlite3-v9.0.0-electron-v116-linux-x64.tar.gz
 	notion-app
+	notion.desktop
 )
 sha256sums=('5e486d296bbba753061c9226415f632d53d20a9796e8a4dafe6a1ec79d38c362'
             '38848d85c41116b419b13818ab934d6ec5c5c563f9623f1cf8a958809ea92c7d'
-            'd95b5cd37b59dcabe63520b0e2a27a2de3cb950fcc56b30ae3076e99ed6d4747')
+            'd95b5cd37b59dcabe63520b0e2a27a2de3cb950fcc56b30ae3076e99ed6d4747'
+            '6dc21c32bb47613c5af3a963bd1d1211a5ed3538c9dea4d83b07b239e96cf20c')
 
 prepare() {
 	asar e "$srcdir/resources/app.asar" "$srcdir/unpacked"
@@ -40,13 +41,6 @@ prepare() {
 		    s/_.Store.getState().app.preferences?.isAutoUpdaterDisabled/(true)/g
 		    s!extra-resources!/usr/share/icons/hicolor/256x256/apps!g
 		    s/trayIcon.ico/notion.png/g' "$srcdir/unpacked/.webpack/main/index.js"
-
-	gendesk -f \
-		--pkgname notion \
-		--genericname 'Wiki, docs & projects' \
-		--exec 'notion-app %U' \
-		--categories Office \
-		--mimetypes x-scheme-handler/notion
 }
 
 package() {
