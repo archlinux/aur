@@ -1,6 +1,6 @@
 # Maintainer: Peltoche <pierre.peltier@protonmail.com>
 pkgname=duckcloud
-pkgver=23.11.1
+pkgver=23.11.2
 pkgrel=1
 epoch=1
 pkgdesc="A cloud for your family"
@@ -19,7 +19,7 @@ source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.
       ${pkgname}.tmpfiles
       LICENSE)
 
-sha256sums=('e408dbd31e4375bd77bbeb5979e068cc71e1e5cd15961902e6d7774f8eb135dc'
+sha256sums=('ff794f426c9b6026c83b817a56985d5ed3f70c67db1bbb9e90668cccaad4c2f4'
             'b35676f9d721521089676ccf1a287fc7369cce0c7dd70991deeea0e8c3d0c6af'
             'ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead'
             '8ee8d3bf748a986fdd040e56c208742045df91837de3e250d5148e0b3fd65692'
@@ -49,6 +49,7 @@ package() {
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm700 -d "${pkgdir}/etc/duckcloud"
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin/"
 }
