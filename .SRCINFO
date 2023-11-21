@@ -1,13 +1,14 @@
 pkgbase = bpir-uboot-git
 	pkgdesc = U-Boot for BPI Router Boards
 	pkgver = 2023.04r84964.fd4ed6b7e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/u-boot/u-boot
 	install = bpir-uboot-git.install
 	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = bc
+	makedepends = aarch64-linux-gnu-gcc
 	source = git+https://github.com/u-boot/u-boot.git#tag=v2023.04
 	source = mt7xxx.h
 	source = clk-uclass-log_ret.patch
