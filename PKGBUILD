@@ -10,8 +10,10 @@ _ghurl="https://github.com/FlashpointProject/launcher"
 license=('MIT')
 conflicts=("${pkgname}" "${pkgname%-launcher}")
 depends=(
-    'php' 'alsa-lib' 'nspr' 'glib2' 'pango' 'libxdamage' 'at-spi2-core' 'expat' 'python' 'gtk3' 'libxrandr' 'libcups' 'libxext' \
-    'libxkbcommon' 'mesa' 'nss' 'dbus' 'libxcb' 'libxfixes' 'libx11' 'cairo' 'libxcomposite' 'libdrm' 'glibc' 'gcc-libs'
+    'php'
+    'electron19'
+    'python'
+    'flashpoint'
 )
 makedepends=(
     'gendesk'
@@ -31,7 +33,7 @@ build() {
     gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed "s|PUBLISH=true|PUBLISH=false|g" -i package.json
-    sed "2i process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';" -i buid/main/index.js
+    sed "2i process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';" -i build/main/index.js
     yarn --cache-folder "${srcdir}/npm-cache" 
     sed 's|"deb", ||g' -i gulpfile.js
     yarn release:linux
