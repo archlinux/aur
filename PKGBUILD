@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)"
-pkgver=23.3.branchpoint.r1559.g12f6279
+pkgver=23.3.branchpoint.r1562.gaba00ff
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -55,6 +55,7 @@ prepare() {
   # HACK turned up to 11: Advertise Vulkan 1.3 support
   sed -i 's/VK_MAKE_VERSION(1, 1/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_instance.c
   sed -i 's/VK_MAKE_VERSION(1, 1/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_physical_device.c
+  sed -i 's/1\.0/1\.3/' src/nouveau/vulkan/meson.build
 
   # Expose Vulkan memory model
   # I highly doubt this passes CTS (and it doesn't) but it works well enough for DXVK
