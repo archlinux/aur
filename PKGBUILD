@@ -35,7 +35,9 @@ check() {
 }
 
 build() {
-	cmake -S "$srcdir/$_gitname" -B "$srcdir/build" -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S "$srcdir/$_gitname" -B "$srcdir/build" \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DWITH_CLI_EXAMPLES=ON
 
 	cmake --build "$srcdir/build"
 }
