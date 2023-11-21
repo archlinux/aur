@@ -1,4 +1,4 @@
 pkg/
 src/
 iso2opl/
-*.tar.xz
+*.pkg.tar.zst

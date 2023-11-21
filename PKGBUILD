@@ -1,11 +1,11 @@
 # Maintainer: Slash
 
 pkgname=iso2opl-git
-pkgver=r5.3bbcfe1
+pkgver=r10.e98ad28
 pkgrel=1
-pkgdesc="ISO installer for Open PS2 Loader project"
+pkgdesc="ISO installer for Open PS2 Loader project (alternative to USBUtil)"
 arch=('x86_64')
-url="http://www.psx-scene.com/forums/showthread.php?t=62141"
+url="https://github.com/arcadenea/iso2opl"
 license=('GPL')
 makedepends=('git')
 provides=("${pkgname%-git}")
