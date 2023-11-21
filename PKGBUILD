@@ -9,6 +9,7 @@ license=('MIT')
 makedepends=(git make gcc)
 depends=(pciutils libcurl-gnutls)
 conflicts=(albafetch-git albafetch-bin)
+provides=(albafetch=4.1)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
 md5sums=('aa247e6a081a775b11b114b898843325')

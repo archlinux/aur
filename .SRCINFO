@@ -11,6 +11,7 @@ pkgbase = albafetch
 	makedepends = gcc
 	depends = pciutils
 	depends = libcurl-gnutls
+	provides = albafetch=4.1
 	conflicts = albafetch-git
 	conflicts = albafetch-bin
 	source = https://github.com/alba4k/albafetch/archive/refs/tags/v4.1.tar.gz
