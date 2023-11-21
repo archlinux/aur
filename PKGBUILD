@@ -1,7 +1,7 @@
 # Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=ttf-firge
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Firge, a programming font that is a combination of Fira Mono and Genshin Gothic. "
 arch=("any")
 url="https://github.com/yuru7/Firge"
@@ -18,5 +18,5 @@ package() {
     install -d $pkgdir/usr/share/fonts/TTF
     install -m644 Firge_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
     install -m644 FirgeNerd_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
-    install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
