@@ -31,6 +31,7 @@ pkgbase = meshlab-git
 	depends = mesa
 	optdepends = lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support
 	optdepends = muparser: for filer_func plugins
+	optdepends = openctm-tools: for compressed triangle mesh file format
 	provides = meshlab
 	conflicts = meshlab
 	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#branch=main

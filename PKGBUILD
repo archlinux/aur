@@ -34,7 +34,7 @@ depends=(
 makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'lib3ds' 'openctm-tools' 'gcc12')
 optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'muparser: for filer_func plugins'
-            )
+            'openctm-tools: for compressed triangle mesh file format')
 source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}")
 sha256sums=('SKIP')
 
