@@ -2,7 +2,7 @@
 
 pkgname=python-pytensor
 _name=${pkgname#python-}
-pkgver=2.17.4
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
@@ -41,12 +41,10 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rel-$pkgver.tar.gz"
   "remove-bin-package.patch"
-  "unpin-numpy.patch"
 )
 sha256sums=(
-  '2004df8ab9646d4ad273a06144ced15883953917d72c293db7095de4ed336039'
+  '9ae865125549ee6bc761f40723a534c0996369a4bcc05ca7bdbbd46c36b323fe'
   '73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59'
-  '88d090f3460b0f84d9cc54b7d97298685e87e102ff944eb1fd2b3b34f844a492'
 )
 
 _archive="$_name-rel-$pkgver"
@@ -56,7 +54,6 @@ prepare() {
 
   patch --forward --strip=1 --input="$srcdir/remove-bin-package.patch"
   sed -i 's/versioneer\[toml\]==/versioneer\[toml\]>=/' pyproject.toml
-  patch --forward --strip=1 --input="$srcdir/unpin-numpy.patch"
 }
 
 build() {
