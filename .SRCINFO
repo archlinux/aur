@@ -1,6 +1,6 @@
 pkgbase = containernet-git
 	pkgdesc = Mininet fork adding support for container-based emulated hosts
-	pkgver = 3.1.r388.g541b268
+	pkgver = 3.1.r416.g31eeb75
 	pkgrel = 1
 	url = https://github.com/containernet/containernet
 	install = containernet.install
@@ -27,7 +27,6 @@ pkgbase = containernet-git
 	depends = python-pexpect
 	depends = python-urllib3
 	depends = python-networkx
-	depends = python-ipaddress
 	optdepends = xorg-xhost: for X11 forwarding
 	optdepends = socat: for X11 forwarding
 	optdepends = xterm: required for MiniEdit
@@ -36,7 +35,9 @@ pkgbase = containernet-git
 	conflicts = mininet
 	source = containernet-git::git+https://github.com/containernet/containernet
 	source = git+https://github.com/mininet/openflow
+	source = fix-openflow-strlcpy.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 0a85f8a5ce2dd900d4f874849b28301aa47d7b9d7b03ed405c973d917d98383a
 
 pkgname = containernet-git

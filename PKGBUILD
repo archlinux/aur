@@ -4,15 +4,14 @@
 # Contributor: Walter Dworak <preparationh67@gmail.com>
 
 pkgname=containernet-git
-pkgver=3.1.r388.g541b268
+pkgver=3.1.r416.g31eeb75
 pkgrel=1
 pkgdesc="Mininet fork adding support for container-based emulated hosts"
 _mn_deps=('python' 'iptables' 'iproute2' 'net-tools' 'iputils' 'inetutils'
           'iperf' 'ethtool' 'libcgroup' 'openvswitch' 'psmisc')
-depends=(${_mn_deps[@]}
+depends=("${_mn_deps[@]}"
          'docker' 'python-docker' 'python-pytest' 'python-iptables-git'
-         'python-pexpect' 'python-urllib3' 'python-networkx'
-         'python-ipaddress')
+         'python-pexpect' 'python-urllib3' 'python-networkx')
 optdepends=('xorg-xhost: for X11 forwarding'
             'socat: for X11 forwarding'
             'xterm: required for MiniEdit'
@@ -25,9 +24,11 @@ provides=('mininet')
 conflicts=('mininet')
 install="${pkgname%-git}.install"
 source=("$pkgname"::'git+https://github.com/containernet/containernet'
-        'git+https://github.com/mininet/openflow')
+        'git+https://github.com/mininet/openflow'
+        'fix-openflow-strlcpy.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '0a85f8a5ce2dd900d4f874849b28301aa47d7b9d7b03ed405c973d917d98383a')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -43,10 +44,13 @@ prepare() {
     sed '/^include debian\/automake.mk/d' -i Makefile.am
     # Patch controller to handle more than 16 switches
     patch -Np1 -i "$srcdir/$pkgname/util/openflow-patches/controller.patch"
+    patch -Np1 -i "$srcdir/fix-openflow-strlcpy.patch"
 
     cd "$srcdir/$pkgname"
-    sed 's:PREFIX ?= /usr:PREFIX ?= "$(DESTDIR)"/usr:' -i Makefile
-    sed '/^[[:space:]]*$(PYTHON) /d' -i Makefile
+    # shellcheck disable=SC2016
+    sed -i Makefile \
+        -e 's:PREFIX ?= /usr:PREFIX ?= "$(DESTDIR)"/usr:' \
+        -e '/^[[:space:]]*$(PYTHON) /d'
 }
 
 build() {

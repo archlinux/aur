@@ -1,0 +1,26 @@
+diff --git a/lib/util.c b/lib/util.c
+index 21cc28d..67ba765 100644
+--- a/lib/util.c
++++ b/lib/util.c
+@@ -138,7 +138,7 @@ xasprintf(const char *format, ...)
+     return s;
+ }
+ 
+-void
++size_t
+ strlcpy(char *dst, const char *src, size_t size)
+ {
+     if (size > 0) {
+diff --git a/lib/util.h b/lib/util.h
+index fde681f..efb0df9 100644
+--- a/lib/util.h
++++ b/lib/util.h
+@@ -106,7 +106,7 @@ char *xvasprintf(const char *format, va_list) PRINTF_FORMAT(1, 0) MALLOC_LIKE;
+ void *x2nrealloc(void *p, size_t *n, size_t s);
+ 
+ #ifndef HAVE_STRLCPY
+-void strlcpy(char *dst, const char *src, size_t size);
++size_t strlcpy(char *dst, const char *src, size_t size);
+ #endif
+ 
+ void ofp_fatal(int err_no, const char *format, ...)
