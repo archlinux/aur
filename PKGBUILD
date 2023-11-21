@@ -2,7 +2,7 @@
 
 pkgname=klipper-estimator
 _pkgname=${pkgname/-/_}
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A tool for estimating the time a print will take on a 3D printer running Klipper firmware"
 url="https://github.com/Annex-Engineering/klipper_estimator"
@@ -11,7 +11,7 @@ license=("custom:MIT")
 options=("!lto")
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Annex-Engineering/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('151c582d459d2a327254ee7b67681fe9c9c83e5151e5b04504c1d56201493da368b8a9250115186757c69fb62b41abc8f82c46dae631968ffcd6da57c955cd48')
+sha512sums=('703a5b187fa5a6d26b71a197391df1a8d77b12560867c985882dc32c22c4907f43ffee3a1c9c040911d4278922797d7b5ec08eb6c36cdfd267f49eecd5cd4ec3')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -26,8 +26,8 @@ build() {
   export CARGO_TARGET_DIR=target
 
   # The build expects git metadata to generate the version string, but building
-  # from .tar.gz we don't have that so fall back onto defining an environment
-  # variable.
+  # from .tar.gz we don't have that so fall back onto defining it via an
+  # environment variable.
   export TOOL_VERSION=${pkgver}
   cargo build --frozen --release --all-features
 }
