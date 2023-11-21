@@ -1,6 +1,6 @@
 pkgbase = melonds-git
 	pkgdesc = DS emulator, sorta. also 1st quality melon.
-	pkgver = 0.9.5.r2171.d4e51f80
+	pkgver = 0.9.5.r2210.544fefa2
 	pkgrel = 1
 	url = http://melonds.kuribo64.net/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = melonds-git
 	depends = libepoxy
 	provides = melonds
 	conflicts = melonds
-	source = melonDS::git+https://github.com/Arisotura/melonDS.git
+	source = melonDS::git+https://github.com/melonDS-emu/melonDS.git
 	md5sums = SKIP
 
 pkgname = melonds-git
