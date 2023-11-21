@@ -1,30 +1,32 @@
-# Maintainer: Anthony25 <Anthony Ruhier>
+# Contributor: Anthony25 <Anthony Ruhier>
 #
 # Thanks to Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com> for
 # his PKGBUILD that served as a base for this one
 
 pkgbase=python-django-mptt
-_pkgbase="${pkgbase#python-}"
+_name="${pkgbase#python-}"
 pkgname=python-django-mptt
-pkgver=0.13.4
+pkgver=0.15
 pkgrel=1
 pkgdesc="Utilities for implementing a modified pre-order traversal tree in django."
 arch=(any)
 url='https://github.com/django-mptt/django-mptt'
 license=(BSD)
-makedepends=(
-  'python-django>=3.0'
-  python-setuptools
-  python-django-js-asset-git
-)
-depends=('python-django>=3.0' 'python-django-js-asset-git')
+makedepends=(python-build python-installer python-wheel python-hatchling)
+depends=('python-django>=3.2' 'python-django-js-asset')
 options=(!emptydirs)
-source=("https://github.com/django-mptt/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('7d5f586b6d6783af541136573b99996c72fcc49c34d4377250118dfe37f185a5')
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/django-mptt/${_pkgbase}/archive/${pkgver}.tar.gz")
+sha256sums=('06660244d55076c5c2d42ee70db9e763fb7d944c04b473a3d8bfb647b89fd3cf')
 
-package_python-django-mptt() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+
+build() {
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
