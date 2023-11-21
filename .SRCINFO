@@ -1,0 +1,18 @@
+pkgbase = python-nolds
+	pkgdesc = a package to calculate features from Rr Interval for HRV analyses
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/Aura-healthcare/hrv-analysis
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-setuptools
+	depends = python-future
+	noextract = nolds-0.5.2-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/n/nolds/nolds-0.5.2-py2.py3-none-any.whl
+	sha256sums = 3fc955d639437ab5a1b2e2fb45271c3b5613a191abe70bcab4b62093a2b89eec
+
+pkgname = python-nolds
