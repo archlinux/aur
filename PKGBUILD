@@ -6,8 +6,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=6.0
-pkgrel=3
+pkgver=6.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -95,7 +95,7 @@ provides=(
     "${pkgname%-headless}"
 )
 conflicts=("${pkgname%-headless}")
-source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=3949db4d261748a9f34358a388ee255ad1a7f0c0)
+source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463)
 b2sums=('SKIP')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
