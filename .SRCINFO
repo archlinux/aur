@@ -1,6 +1,6 @@
 pkgbase = lact
 	pkgdesc = AMDGPU Controller application
-	pkgver = 0.4.5
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ilya-zlobintsev/LACT
 	install = lact.install
@@ -9,9 +9,10 @@ pkgbase = lact
 	license = MIT
 	makedepends = rust
 	makedepends = clang
+	makedepends = blueprint-compiler
 	depends = gtk4
 	depends = hwdata
-	source = lact-0.4.5.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.4.5.tar.gz
-	sha256sums = 1058a2cfd9f736be76e316fb11342eb79f3eec4558619dc59c6ee82548f3f7cf
+	source = lact-0.5.0.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 1f9c28f9f144ce285dcaa8badf62349e9e9d03a0aac228066d91857a40946676
 
 pkgname = lact
