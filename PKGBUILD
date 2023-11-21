@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=r3playx-bin
 _pkgname=R3PLAYX
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
     'libdbusmenu-glib'
     'gtk2'
     'dbus-glib'
+    'expat'
 )
 makedepends=(
     'squashfuse'
@@ -26,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a829fbdf6563b4b0929ce2e3e256cad74d1022f95dbb5c6183d195379fdf0cac'
+sha256sums=('a565136ff1e49b0a006038f73e03515eb1ae88e86143b8e4bada62c26168a9dd'
             '1f01d878c1ec385949b14447c2b97348c5a25618a0e9f0039f2efb3d7684cb3d')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"

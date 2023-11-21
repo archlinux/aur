@@ -1,6 +1,6 @@
 pkgbase = r3playx-bin
 	pkgdesc = A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/Sherlockouo/music
 	arch = x86_64
@@ -14,13 +14,14 @@ pkgbase = r3playx-bin
 	depends = libdbusmenu-glib
 	depends = gtk2
 	depends = dbus-glib
+	depends = expat
 	provides = yesplaymusic
 	conflicts = r3playx
 	conflicts = yesplaymusic
 	conflicts = r3play
-	source = r3playx-2.7.0.AppImage::https://github.com/Sherlockouo/music/releases/download/2.7.0/R3PLAYX-2.7.0-linux.AppImage
+	source = r3playx-2.7.1.AppImage::https://github.com/Sherlockouo/music/releases/download/2.7.1/R3PLAYX-2.7.1-linux.AppImage
 	source = r3playx.sh
-	sha256sums = a829fbdf6563b4b0929ce2e3e256cad74d1022f95dbb5c6183d195379fdf0cac
+	sha256sums = a565136ff1e49b0a006038f73e03515eb1ae88e86143b8e4bada62c26168a9dd
 	sha256sums = 1f01d878c1ec385949b14447c2b97348c5a25618a0e9f0039f2efb3d7684cb3d
 
 pkgname = r3playx-bin
