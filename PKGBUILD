@@ -4,7 +4,7 @@
 
 pkgname=pyradio
 pkgver=0.9.2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="https://github.com/coderholic/pyradio"
@@ -17,6 +17,8 @@ sha256sums=('c7c22e5abffb80ce843e8250a2f8903ae729e5ac8575c360a9f3aa309d9774ad')
 
 prepare() {
   cd $pkgname-$pkgver
+  sed -i '/readme = / a \
+license = {file = "LICENCE"}' pyproject.toml
   sed -i 's/distro = None/distro = Arch Linux (AUR)/' $pkgname/config
 }
 
