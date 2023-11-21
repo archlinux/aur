@@ -1,0 +1,20 @@
+pkgbase = python-aioserial-git
+	pkgdesc = pyserial-asyncio for humans
+	pkgver = r52.b47fce3
+	pkgrel = 1
+	url = https://github.com/mrjohannchang/aioserial.py
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python-pyserial
+	provides = python-aioserial
+	conflicts = python-aioserial
+	conflicts = python-aioserial-git
+	source = python-aioserial::git+https://github.com/mrjohannchang/aioserial.py.git
+	md5sums = SKIP
+
+pkgname = python-aioserial-git
