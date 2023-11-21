@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('Apache2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname-$pkgver::https://release.calyxinstitute.org/device-flasher/$pkgver/device-flasher.linux")
+source=("$_pkgname-$pkgver::https://release.calyxinstitute.org/$_pkgname/$pkgver/$_pkgname.linux")
 sha256sums=('f1385d51a9042cf1b7ef434475da2b7d007ec68665af44ef9ae1cc6df4771b1b')
 
 package() {
