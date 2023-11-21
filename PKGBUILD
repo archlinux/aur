@@ -7,12 +7,12 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient-beta
-pkgver=23.9.0.24
+pkgver=23.11.0.62
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
 arch=('x86_64' 'i686' 'armv7h')
-#url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
-url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
+url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
+#url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=('custom:Citrix')
 depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
          'libjpeg6-turbo' 'libpng12' 'libsecret' 'libsoup' 'libvorbis' 'libxaw' 'libxp'
@@ -45,9 +45,9 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
             'fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4')
-sha256sums_x86_64=('7b06339654aa27258d6dfa922828b43256e780b282d07109f452246c7aa27514')
-sha256sums_i686=('95436fb289602cf31c65b7df89da145fc170233cb2e758a2f11116f15b57d382')
-sha256sums_armv7h=('0f349aeaf6c466a873750af785138ae6b446b01f640cde686d9369d492ac7c00')
+sha256sums_x86_64=('7a2874f0337da011dda2a7626f2e696e0927dfb95be7b4418967a94a643a60fe')
+sha256sums_i686=('d145cf71251370ab4025afc7c025173eaedd90d6c54e0dadffb7af6f43d72e93')
+sha256sums_armv7h=('e3df6a6ddbea52d3916ee88622c7ed1086e8552ccb2c92851b5e315b86137b74')
 install=citrix-client.install
 
 package() {

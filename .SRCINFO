@@ -1,8 +1,8 @@
 pkgbase = icaclient-beta
 	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]
-	pkgver = 23.9.0.24
+	pkgver = 23.11.0.62
 	pkgrel = 1
-	url = https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html
+	url = https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html
 	install = citrix-client.install
 	arch = x86_64
 	arch = i686
@@ -48,11 +48,11 @@ pkgbase = icaclient-beta
 	sha256sums = cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe
 	sha256sums = fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f
 	sha256sums = a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4
-	source_x86_64 = icaclient-x64-23.9.0.24.tar.gz::https://downloads.citrix.com/22227/linuxx64-23.9.0.24.tar.gz?__gda__=exp=1699388143~acl=/*~hmac=49ed425e15c251a8f9b2f79fb0ee73ea534476b60943a46324feaf855639cc6d
-	sha256sums_x86_64 = 7b06339654aa27258d6dfa922828b43256e780b282d07109f452246c7aa27514
-	source_i686 = icaclient-x86-23.9.0.24.tar.gz::https://downloads.citrix.com/22227/linuxx86-23.9.0.24.tar.gz?__gda__=exp=1699388143~acl=/*~hmac=49ed425e15c251a8f9b2f79fb0ee73ea534476b60943a46324feaf855639cc6d
-	sha256sums_i686 = 95436fb289602cf31c65b7df89da145fc170233cb2e758a2f11116f15b57d382
-	source_armv7h = icaclient-armhf-23.9.0.24.tar.gz::https://downloads.citrix.com/22227/linuxarmhf-23.9.0.24.tar.gz?__gda__=exp=1699388143~acl=/*~hmac=49ed425e15c251a8f9b2f79fb0ee73ea534476b60943a46324feaf855639cc6d
-	sha256sums_armv7h = 0f349aeaf6c466a873750af785138ae6b446b01f640cde686d9369d492ac7c00
+	source_x86_64 = icaclient-x64-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxx64-23.11.0.62.tar.gz?__gda__=exp=1700603420~acl=/*~hmac=106b067d8168f73d8929c485f9b9f1bf3707bfeb3feaa28d44306365b700a7c0
+	sha256sums_x86_64 = 7a2874f0337da011dda2a7626f2e696e0927dfb95be7b4418967a94a643a60fe
+	source_i686 = icaclient-x86-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxx86-23.11.0.62.tar.gz?__gda__=exp=1700603420~acl=/*~hmac=106b067d8168f73d8929c485f9b9f1bf3707bfeb3feaa28d44306365b700a7c0
+	sha256sums_i686 = d145cf71251370ab4025afc7c025173eaedd90d6c54e0dadffb7af6f43d72e93
+	source_armv7h = icaclient-armhf-23.11.0.62.tar.gz::https://downloads.citrix.com/22343/linuxarmhf-23.11.0.62.tar.gz?__gda__=exp=1700603420~acl=/*~hmac=106b067d8168f73d8929c485f9b9f1bf3707bfeb3feaa28d44306365b700a7c0
+	sha256sums_armv7h = e3df6a6ddbea52d3916ee88622c7ed1086e8552ccb2c92851b5e315b86137b74
 
 pkgname = icaclient-beta
