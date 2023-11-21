@@ -1,12 +1,12 @@
 # Maintainer: Anthony Templeton anthonyt@duck.com
 pkgname=swaddle
-pkgver=v0.1.2
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Swayidle inhibitor when watching content or listening to audio"
 arch=('x86_64')
 url="https://github.com/ATTron/swaddle"
 license=('MIT')
-source=("$url/archive/$pkgver.tar.gz")
+source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {

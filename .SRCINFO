@@ -1,6 +1,6 @@
 pkgbase = swaddle
 	pkgdesc = Swayidle inhibitor when watching content or listening to audio
-	pkgver = v0.1.2
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ATTron/swaddle
 	arch = x86_64
