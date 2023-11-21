@@ -1,7 +1,7 @@
 pkgbase = monarch-bin
 	pkgdesc = a tool for building Flutter widgets in isolation. It makes it easy to build, test and debug complex UIs.
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://monarchapp.io/
 	arch = x86_64
 	license = MIT
