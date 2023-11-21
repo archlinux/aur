@@ -12,7 +12,7 @@ depends_i686=('libstdc++5' 'libxext' 'openal' 'sdl')
 makedepends=('unzip')
 install=prey-demo.install
 source=("prey-demo.desktop" "prey-demo.launcher" \
-"http://icculus.org/prey/downloads/$pkgname-installer-$pkgver.bin")
+"https://icculus.org/prey/downloads/$pkgname-installer-$pkgver.bin")
 sha256sums=('f6df59507716e780fc5055356616d7b9310639a0332ca4830bef71cb7e72b074'
             '9ad1b50e362bc9843b54b237722be10332e902a32b0839f2c01a700f82ef0fd7'
             'cd2c179bb69224157411d90d7b613a3ce7a8214813c947ed7ccb2df5e15835f4')
