@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sodium
-_cranver=1.3.0
+_cranver=1.3.1
 pkgname=r-${_cranname,,}
 pkgdesc="A Modern and Easy-to-Use Crypto Library"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -21,7 +21,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("a353bed15fc1ae25eb821f574e7813bb469a7fb145242e9b0bf7cf1b9ebcba138061c978e9a962033c094a574b61080d09fc22d0161c214da4c57c12486636af")
+b2sums=("cd9bfc3d9131ccd93a616c5cfed013295fea29d0fcd9f27bf1e14cc4c83a29c02c3f7cf49a01a78efddb2645787b718fe87d009542d44f35432289c696436bad")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
