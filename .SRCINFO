@@ -1,7 +1,7 @@
 pkgbase = mininet
 	pkgdesc = Emulator for rapid prototyping of Software Defined Networks
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mininet/mininet
 	install = mininet.install
 	arch = x86_64
@@ -23,10 +23,11 @@ pkgbase = mininet
 	optdepends = socat: for X11 forwarding
 	optdepends = xterm: required for MiniEdit
 	optdepends = tk: required for MiniEdit
-	source = https://github.com/mininet/mininet/archive/2.3.0.tar.gz
+	source = https://github.com/mininet/mininet/archive/refs/tags/2.3.0.tar.gz
 	source = git+https://github.com/mininet/openflow
+	source = fix-openflow-strlcpy.patch
 	sha256sums = 1b16ee53ddb9a34a3751a77517643bda2286fc31be123209e84884d0697107b0
 	sha256sums = SKIP
+	sha256sums = 0a85f8a5ce2dd900d4f874849b28301aa47d7b9d7b03ed405c973d917d98383a
 
 pkgname = mininet
-
