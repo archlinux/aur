@@ -34,7 +34,7 @@ LoadCredentialEncrypted=password:/etc/duckcloud/password.cred
 # ReadWritePaths give write permission to the folder. All the remaining
 # filesystem is read-only.
 ReadWritePaths=/usr/share/duckcloud
-ExecStart=/usr/bin/duckcloud run --dir=/usr/share/duckcloud
+ExecStart=/usr/bin/duckcloud run --folder=/usr/share/duckcloud
 
 
 
