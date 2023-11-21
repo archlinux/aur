@@ -3,7 +3,7 @@ pkgname=gaiasky
 pkgver=3.5.7
 pkgrel=2
 epoch=3
-versionstr=3.5.7-2.9271e6cdf
+versionstr=3.5.7-2.987bbd941
 pkgdesc="Open source 3D universe simulator for desktop and VR with support for more than a billion objects"
 arch=(x86_64)
 url="https://zah.uni-heidelberg.de/gaia/outreach/gaiasky"
@@ -22,8 +22,8 @@ install=gaiasky.install
 changelog=releasenotes.txt
 source=("http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/${versionstr//_/-}/$pkgname-${versionstr//_/-}.tar.gz")
 noextract=()
-md5sums=("2a8094355d2dba8f30a1b2a11a2a624d")
-sha256sums=("f9358cfc8c545b586bbc23b4f8085157f16298cb8b1e19b611b2521f536952ff")
+md5sums=("6e8b0f093061b820e0cf92582f6b5720")
+sha256sums=("c1725ea7b5fef45ab435c95888156b0040b3887cc636cad4e4e928d272489fa9")
 validpgpkeys=()
 
 prepare() {
