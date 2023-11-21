@@ -1,6 +1,6 @@
 pkgbase = wg2nd
 	pkgdesc = A utility to convert WireGuard configurations from wg-quick(8) format into systemd-networkd compatible configurations.
-	pkgver = v0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://www.git.flu0r1ne.net/wg2nd/about/
 	arch = i686
@@ -12,7 +12,8 @@ pkgbase = wg2nd
 	license = GPL
 	makedepends = make
 	makedepends = gcc
-	source = git+git://git.flu0r1ne.net/wg2nd.git#tag=v0.1.0
+	depends = libcap
+	source = git+git://git.flu0r1ne.net/wg2nd.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = wg2nd
