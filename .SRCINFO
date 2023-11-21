@@ -1,19 +1,17 @@
 pkgbase = pikatorrent-bin
 	pkgdesc = A modern, open source and electric BitTorrent app for mobile, desktop & server.
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pikatorrent.com/
 	arch = x86_64
 	license = GPL3
-	makedepends = asar
 	makedepends = gendesk
-	depends = bash
 	depends = electron26
 	provides = pikatorrent=0.8.3
 	conflicts = pikatorrent
 	source = pikatorrent-0.8.3.tar.gz::https://github.com/G-Ray/pikatorrent/releases/download/v0.8.3/pikatorrent-linux-x64-0.8.3.zip
 	source = pikatorrent.sh
 	sha256sums = b0e411c9c5404790bd6282d03e24af91f0931447ac1ccd7975e4ff58ef9ff931
-	sha256sums = 3f5c4a0cdcc6fc18ed5bc7e29564ed6ecb9a1d5c461724055b8cecca9b513aa4
+	sha256sums = 27aa271abe161643dee1e88c822ffc6ccb251d4efcf97719ead2e06175f65698
 
 pkgname = pikatorrent-bin
