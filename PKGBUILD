@@ -3,7 +3,7 @@
 
 _srcname=vertical-workspaces
 pkgname=gnome-shell-extension-${_srcname}-git
-pkgver=r685.5da42b9
+pkgver=r702.aba5000
 pkgrel=1
 pkgdesc="Changes the horizontal layout of workspaces to vertical and adds customization of Activities Overview layout"
 url="https://github.com/G-dH/${_srcname}"
@@ -13,7 +13,7 @@ depends=( "gnome-shell" )
 makedepends=("git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git#branch=esm-modules")
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {

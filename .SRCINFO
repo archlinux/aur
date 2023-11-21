@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-vertical-workspaces-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-vertical-workspaces
 	conflicts = gnome-shell-extension-vertical-workspaces
-	source = git+https://github.com/G-dH/vertical-workspaces.git#branch=esm-modules
+	source = git+https://github.com/G-dH/vertical-workspaces.git
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-vertical-workspaces-git
