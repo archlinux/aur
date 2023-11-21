@@ -1,12 +1,12 @@
 _pkgname="veilid"
 pkgname="${_pkgname}-git"
-pkgver=0.2.1.r53.g456f9e8
+pkgver=0.2.5.r13.g7d1b789
 pkgrel=1
 pkgdesc="Veilid headless node"
 arch=('x86_64')
 url="https://veilid.com"
 license=('MPL2')
-makedepends=('git' 'cargo' 'capnproto' 'protobuf')
+makedepends=('git' 'cargo' 'protobuf')
 depends=()
 provides=("veilid=${pkgver%.r*}")
 conflicts=('veilid')
