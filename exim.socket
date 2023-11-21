@@ -1,5 +1,7 @@
 [Unit]
 Description=Exim Mail Transfer Agent
+Documentation=man:exim
+Documentation=https://exim.org/docs.html
 Conflicts=exim.service
 
 [Socket]

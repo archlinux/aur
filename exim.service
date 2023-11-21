@@ -1,10 +1,21 @@
 [Unit]
-Description=Exim Mail Daemon
+Description=Exim MTA Daemon
+Documentation=man:exim
+Documentation=https://exim.org/docs.html
+
+Requires=network.target
+After=network.target
 
 [Service]
-PIDFile=/run/exim.pid
-ExecStart=/usr/bin/exim -bdf -q30m
+Environment=DAEMON_OPTS=
+Environment=QUEUE_OPTS=-q15m
+EnvironmentFile=-/etc/default/exim
+
+Type=exec
+ExecStart=/usr/bin/exim -bdf $DAEMON_OPTS $QUEUE_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
+
+Slide=exim.slice
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,17 @@
 [Unit]
 Description=Exim Mail Daemon per-connection server
+Documentation=man:exim
+Documentation=https://exim.org/docs.html
 
 [Service]
+Type=exec
+
 ExecStart=-/usr/bin/exim -bs
+
 StandardInput=socket
-StandardError=syslog
+StandardError=journal
+
+# Don't kill the delivery process we spawned as a child
+KillMode=process
+
+Slice=exim.slice

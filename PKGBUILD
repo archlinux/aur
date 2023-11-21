@@ -13,17 +13,15 @@ pkgname=(exim-heavy
          exim-lookup-passwd
          exim-lookup-pgsql)
 pkgname=exim-heavy
-pkgver=4.96.2
-pkgrel=2
+pkgver=4.97
+pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.exim.org/'
 license=('GPL')
-depends=('gdbm' 'db5.3' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre' 'sqlite' 'libspf2' 'libidn' 'libidn2' 'opendmarc>=1.4.0')
-makedepends=('postgresql-libs' 'libmariadbclient')
+depends=('gdbm' 'db5.3' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre' 'sqlite' 'libspf2' 'libidn' 'libidn2' 'opendmarc>=1.4.0' 'perl-file-fcntllock')
+makedepends=('postgresql-libs' 'libmariadbclient' 'perl-file-fcntllock')
 source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.xz"{,.asc}
-        exim-typo-d05685413.patch
-        exim-opendmarc-1.4.patch
         aliases
         exim.logrotate
         exim.Makefile
@@ -34,10 +32,8 @@ source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.xz"{,.asc}
         exim-submission.socket
         exim.sysusers
         exim.tmpfiles)
-sha512sums=('dc9f6a114e64ac826489edff88d50a24195b64714428e691c10a7bfb119b3ebb6455bf80cbb34dfd0a4e2e44cbde72effb009357a8e0a6065e512fe32092e3ed'
+sha512sums=('b28cbb49fa7e143dfcc94e004d57cf98a1945013e676cd103c1ee4cf52933d49d378baa13bea2663353dba97745d6b2ab8b7b66cde870788a2d85d7abd716968'
             'SKIP'
-            'f98d43e42e11d05d3016b9eae2dec860c551cbf3977fff99d0813576114da9a0996facc51f91e4a05510d93115059a6da6c4f005009661c5247574ab31652523'
-            'f9fd9f857c024cb72989da9344506c4cba0cdb4c270dec048d1f85c92cf4b3423988c545e0783cda1fb6c1b3b541a829181a8ff09ea3ede0db012056b9063963'
             'a91c6a9e5b3ac9d143741dba01e11616812ba44c3a8c768c8232364026460f0b8fdeeb120a2f2b86742a6e3ebbfc9d6335b86d108b044e43108b4a6f0374c9ad'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
             '28db74cfd84b7870da9ef8feee54c7e3ca099e0904c450c041647f8e12999c18eb7be960f2464f9a01241486a8737e06fd5b70fa8eabe1fcd34550d460db7a1d'
@@ -58,9 +54,6 @@ prepare() {
   cd $_pkgname-$pkgver
 
   cp $srcdir/$_pkgname.Makefile Local/Makefile
-
-  patch -p2 < $srcdir/exim-typo-d05685413.patch
-  patch -p1 < $srcdir/exim-opendmarc-1.4.patch
 }
 
 build() {
