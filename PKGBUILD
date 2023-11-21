@@ -25,13 +25,7 @@ build() {
   export RSFROOT=${pkgdir}/opt/${pkgname}
   # hide hwang's src which can not be compiled.
   mv ./user/hwang ./user/.hwang
-  # fix paths for tirpc in framework/configure.py
-  sed -i '430,433c\
-    (plat['\''distro'\''\] == '\''centos'\'' and int(plat['\''version'\''\][0]) >= 8) or \\\
-    plat['\''distro'\''\] == '\''fedora'\'' or \\\
-    plat['\''distro'\''\] == '\''arch'\'' or \\\
-    (plat['\''distro'\''\] == '\''ubuntu'\'' and int(plat['\''version'\''\][:2]) >= 20): \ \
-        context.env['\''CPPPATH'\''\] = path_get(context,'\''CPPPATH'\'','\''/usr/include/tirpc'\'')' framework/configure.py
+  
   ./configure API=c++,f90
   make
 }
