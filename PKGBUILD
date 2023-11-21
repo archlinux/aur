@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.36.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
         'libxpresent' 'libpipewire' 'zimg' 'sndio' 'libsixel'
     # AUR:
-        'ffmpeg-git' 'libplacebo-git' 'spirv-cross'
+        'ffmpeg' 'libplacebo-git' 'spirv-cross'
 )
 makedepends=('meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -27,7 +27,7 @@ provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
-sha256sums=('29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6')
+sha256sums=('1d2d4adbaf048a2fa6ee134575032c4b2dad9a7efafd5b3e69b88db935afaddf')
 
 build() {
     arch-meson "mpv-${pkgver}" build \
@@ -54,12 +54,11 @@ build() {
         -Drubberband='enabled' \
         -Dsdl2='enabled' \
         -Dsdl2-gamepad='enabled' \
-        -Dstdatomic='enabled' \
         -Duchardet='enabled' \
         -Duwp='disabled' \
         -Dvapoursynth='enabled' \
         -Dvector='enabled' \
-        -Dwin32-internal-pthreads='disabled' \
+        -Dwin32-threads='disabled' \
         -Dzimg='enabled' \
         -Dzlib='enabled' \
         \
@@ -97,8 +96,6 @@ build() {
         -Dgl-win32='disabled' \
         -Dgl-x11='enabled' \
         -Djpeg='enabled' \
-        -Dlibplacebo='enabled' \
-        -Dlibplacebo-next='enabled' \
         -Drpi='disabled' \
         -Dsdl2-video='enabled' \
         -Dshaderc='enabled' \
@@ -111,7 +108,6 @@ build() {
         -Dvaapi-drm='enabled' \
         -Dvaapi-wayland='enabled' \
         -Dvaapi-x11='enabled' \
-        -Dvaapi-x-egl='enabled' \
         -Dvulkan='enabled' \
         -Dwayland='enabled' \
         -Dx11='enabled' \
@@ -126,11 +122,9 @@ build() {
         -Dios-gl='disabled' \
         -Drpi-mmal='disabled' \
         -Dvideotoolbox-gl='disabled' \
+        -Dvideotoolbox-pl='disabled' \
         -Dvulkan-interop='enabled' \
         \
-        -Dmacos-10-11-features='disabled' \
-        -Dmacos-10-12-2-features='disabled' \
-        -Dmacos-10-14-features='disabled' \
         -Dmacos-cocoa-cb='disabled' \
         -Dmacos-media-player='disabled' \
         -Dmacos-touchbar='disabled' \
@@ -140,7 +134,7 @@ build() {
         -Dhtml-build='disabled' \
         -Dmanpage-build='enabled' \
         -Dpdf-build='disabled'
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
