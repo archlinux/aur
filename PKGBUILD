@@ -1,9 +1,9 @@
 # Originally: Ultraleap <info@ultraleap.com>
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=openxr-layer-ultraleap
-pkgver=1.6.0
-commit=243d3f37
-ci=1034443
+pkgver=1.6.5
+commit=2486adf9
+ci=1130164
 pkgrel=1
 epoch=
 pkgdesc="Ultraleap OpenXR Hand Tracking API Layer. Enables Ultraleap hand-tracking on an existing OpenXR runtime"
@@ -25,7 +25,7 @@ changelog=
 source=("https://repo.ultraleap.com/apt/pool/main/o/${pkgname}/${pkgname}_${pkgver}%2b${commit}.CI${ci}_amd64.deb"
 		'openxr-layer-ultraleap.conf')
 noextract=()
-md5sums=('6c6ac02fb4d7541e69d56019658f306a'
+md5sums=('403fbbadf31bd306a0edac498b327ab1'
 		 '378b1c86a576dc5ad4a6498e95d6925d')
 validpgpkeys=()
 
@@ -34,7 +34,7 @@ prepare() {
 }
 
 package() {
-	install -D -m644 "${srcdir}/usr/lib/${pkgname}/libUltraleapHandTracking.so.1.6.0.0" "${pkgdir}/usr/lib/${pkgname}/libUltraleapHandTracking.so.1.6.0.0"
+	install -D -m644 "${srcdir}/usr/lib/${pkgname}/libUltraleapHandTracking.so.1.6.5.0" "${pkgdir}/usr/lib/${pkgname}/libUltraleapHandTracking.so.1.6.5.0"
 
 	install -D -m644 "${srcdir}/usr/share/openxr/1/api_layers/implicit.d/XrApiLayer_Ultraleap.json" "${pkgdir}/usr/share/openxr/1/api_layers/implicit.d/XrApiLayer_Ultraleap.json"
 
