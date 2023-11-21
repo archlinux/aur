@@ -1,6 +1,6 @@
 # Maintainer: Anthony Templeton anthonyt@duck.com
 pkgname=swaddle
-pkgver=0.1.2
+pkgver=v0.1.2
 pkgrel=1
 pkgdesc="Swayidle inhibitor when watching content or listening to audio"
 arch=('x86_64')
