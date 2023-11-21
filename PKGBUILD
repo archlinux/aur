@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=6.0.r12.ga6dc929
-pkgrel=9
+pkgver=6.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -162,8 +162,8 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=a6dc92968a325d331bb6dcf9b3b2248026cd1d6c
-_deps_tag=2023-04-03
+_tag=d4ff0020b40b524a490cf62eccbd3a318f4c0e58
+_deps_tag=2023-11-03
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
@@ -190,7 +190,7 @@ _args=(
   --disable-stripping
   --enable-amf
   --enable-avisynth
-  --enable-fontconfig
+  --enable-libfontconfig
   --enable-gmp
   --enable-gnutls
   --enable-gpl
@@ -320,8 +320,8 @@ fi
 
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-hevc svt-vp9)
-  _svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
-  _svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
+  _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
+  _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
   source+=(
     "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
     "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
@@ -329,8 +329,8 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   )
   sha256sums+=(
     'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
-    '837cac5a64234f34d136d18c8f7dc14203cdea11406fdb310cef2f62504d9e0c'
-    'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
+    'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
+    '0433016c8523c7ce159523946a76c8fa06a926f33f94b70e8de7c2082d14178c'
   )
   _args+=(--enable-libsvthevc --enable-libsvtvp9)
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
@@ -349,13 +349,13 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   depends+=(
     sndio 'chromaprint-fftw' frei0r-plugins libgcrypt
     aribb24 libcaca 'celt' libcdio-paranoia codec2
-    'davs2' libdc1394 flite1 libgme libilbc 'libklvanc-git'
+    'davs2' libdc1394 flite1 libgme libilbc 'libklvanc'
     kvazaar 'lensfun-git' 'openh264' librabbitmq-c rubberband
     rtmpdump 'shine' smbclient snappy tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal
     vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo #'pocketsphinx'
-    lcms2
+    lcms2 cairo glib2 harfbuzz libraw1394 openvino
   )
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-frei0r --enable-gcrypt
@@ -366,7 +366,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
     --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo #--enable-pocketsphinx
-    --enable-lcms2
+    --enable-lcms2 -enable-libharfbuzz --enable-libopenvino
   )
   provides+=(ffmpeg-full)
 else
@@ -403,16 +403,6 @@ prepare() {
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
 
-  ## Fix building with binutils 2.41
-  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
-
-  ## fix playing ogg files with mplayer
-  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
-
-  ## use non-deprecated nvenc GUID for conftest
-  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
-  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
-
   ### OBS changes
 
   ## Patch for FFmpeg from obs-deps repository
@@ -437,6 +427,10 @@ prepare() {
 
 build() {
   cd ffmpeg
+
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/openvino/runtime/lib/intel64/pkgconfig"
+  fi
 
   ./configure "${_args[@]}"
 
