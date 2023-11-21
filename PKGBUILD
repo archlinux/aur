@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
-_pkgname=netPlayer
-pkgver=1.3.0
-pkgrel=2
+_pkgname="${pkgname//-p/P}"
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="A Subsonic based music player.基于Subsonic API的桌面端播放器"
 arch=(
     'aarch64'
@@ -12,7 +12,6 @@ url="https://github.com/Zhoucheng133/net-player"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'bash'
     'electron13'
 )
 makedepends=(
@@ -20,12 +19,13 @@ makedepends=(
     'gendesk'
     'npm'
     'nvm'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7589dd8205a21a794fe06a703c6244ffa6606f98ffc5f34a6c966c71efdc11f6'
+sha256sums=('SKIP'
             'cf30b550beac6dfd1582048dd68b57c8d9f5404561357b731dedfac3559dcf56')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -38,7 +38,7 @@ build() {
     gendesk -f -n -q --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed -e "s|mac|linux|g" -e "s|zip|AppImage|g" -i vue.config.js
-    yarn
+    yarn --cache-folder "${srcdir}/npm-cache" 
     yarn electron:build
 }
 package() {
