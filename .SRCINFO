@@ -1,16 +1,14 @@
 pkgbase = medict-bin
 	pkgdesc = A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format
 	pkgver = _3.0.1_alpha_dba43c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terasum/medict
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
 	depends = webkit2gtk
 	depends = gdk-pixbuf2
-	depends = glibc
 	depends = gtk3
-	depends = glib2
 	provides = medict=_3.0.1_alpha_dba43c
 	conflicts = medict
 	source = medict-_3.0.1_alpha_dba43c.tar.gz::https://github.com/terasum/medict/releases/download/v-3.0.1-alpha-dba43c/Medict_v-3.0.1-alpha-dba43c_Linux_x86_64.tar.gz
