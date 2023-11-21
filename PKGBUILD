@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=(pciutils libcurl-gnutls)
 conflicts=(albafetch-git albafetch-bin)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
-md5sums=('f29ac555c344f5537ef72a2e33daaa09')
+md5sums=('aa247e6a081a775b11b114b898843325')
 
 package() {
     cd $pkgname-$pkgver
