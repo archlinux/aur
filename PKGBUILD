@@ -1,15 +1,16 @@
-# Maintainer: zer0-x < Matrix: "@zer0-x:kde.org" >
+# Maintainer: zefr0x < Matrix: "@zefr0x:kde.org" >
 
 pkgname="foxmarks"
-pkgver="1.0.2"
+pkgver="2.0.2"
 pkgrel=1
 pkgdesc="A CLI read-only interface for firefox's bookmarks and history"
 arch=("x86_64")
-url="https://github.com/zer0-x/foxmarks"
+url="https://github.com/zefr0x/foxmarks"
 license=("GPL3")
+depends=("libsqlite3.so")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("7350c04c750e5c3871223a30d78a91edf208aa08bdc5e028da8ebbef099f7c7303857e99e575de63a1152ca39355b8eebe4171fcb783561fb9bf062d6aeee3ad")
+sha512sums=("4f2224f4789d2536c4989ec32219198a9aa13f9f40ee87da33b178dbdc5941f6947b3baa8c7aea1f0f297ae60eb30ad8c70dce90e10e5316b34eea6504c39edb")
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -21,7 +22,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --no-default-features
 }
 
 # check() {

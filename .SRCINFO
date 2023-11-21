@@ -1,12 +1,13 @@
 pkgbase = foxmarks
 	pkgdesc = A CLI read-only interface for firefox's bookmarks and history
-	pkgver = 1.0.2
+	pkgver = 2.0.2
 	pkgrel = 1
-	url = https://github.com/zer0-x/foxmarks
+	url = https://github.com/zefr0x/foxmarks
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = foxmarks-1.0.2.tar.gz::https://github.com/zer0-x/foxmarks/archive/refs/tags/v1.0.2.tar.gz
-	sha512sums = 7350c04c750e5c3871223a30d78a91edf208aa08bdc5e028da8ebbef099f7c7303857e99e575de63a1152ca39355b8eebe4171fcb783561fb9bf062d6aeee3ad
+	depends = libsqlite3.so
+	source = foxmarks-2.0.2.tar.gz::https://github.com/zefr0x/foxmarks/archive/refs/tags/v2.0.2.tar.gz
+	sha512sums = 4f2224f4789d2536c4989ec32219198a9aa13f9f40ee87da33b178dbdc5941f6947b3baa8c7aea1f0f297ae60eb30ad8c70dce90e10e5316b34eea6504c39edb
 
 pkgname = foxmarks
