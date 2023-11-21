@@ -1,14 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=acodec-bin
+_pkgname=ACodec
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
-arch=("aarch64" "armv7h" "i686" "x86_64")
+arch=(
+    "aarch64"
+    "armv7h"
+    "i686"
+    "x86_64"
+)
 url="https://github.com/albertus82/acodec"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('java-runtime' 'hicolor-icon-theme' 'bash')
+depends=(
+    'java-runtime'
+    'hicolor-icon-theme'
+)
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-armhf-bin.tar.gz")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-aarch64-bin.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-x86-bin.tar.gz")
@@ -18,9 +27,9 @@ sha256sums_armv7h=('326442abe0b053e571d1bafe08a2ab7d1a26d14488b5f9473c7f7eeaa8fb
 sha256sums_i686=('32e94dae17ff3e80341d4d5ebcb4a503e6b6c73a9a74e27c24cfa60771d5a342')
 sha256sums_x86_64=('42ba192af6a7b23ee11a9568ece9e7a3cb32ca99e9088b9cc8211c45b6e7b364')
 build() {
-    gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
     cp "${srcdir}/${pkgname%-bin}.desktop" "${srcdir}/${pkgname%-bin}w.desktop"
-    sed "s|Name=${pkgname%-bin}|Name=${pkgname%-bin}w|g;s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin}w|g" \
+    sed "s|Name=${_pkgname}|Name=${_pkgname}-w|g;s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin}w|g" \
         -i "${srcdir}/${pkgname%-bin}w.desktop"
 }
 package() {
