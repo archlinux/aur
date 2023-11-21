@@ -10,7 +10,7 @@ url="https://teslamate.org"
 license=("MIT")
 depends=("elixir" "nodejs" "grafana" "postgresql")
 makedepends=("npm")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/adriankumpf/teslamate/archive/refs/tags/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/teslamate-org/teslamate/archive/refs/tags/v${pkgver}.tar.gz"
         "teslamate.service"
         "teslamate.install")
 sha256sums=('d98ebe5e4959b49a660385c416d2860b46a999a3eda99f79a98584350ef6d191'
