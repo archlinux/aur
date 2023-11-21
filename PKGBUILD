@@ -2,7 +2,7 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-_pkgver=0.5.11-1
+_pkgver=0.5.12
 pkgver=${_pkgver/-/_}
 pkgrel=1
 epoch=2
@@ -26,8 +26,8 @@ source_x86_64=("${pkgname}-${epoch}-${_pkgver}-x86_64.tgz::${url}/releases/downl
 source_aarch64=("${pkgname}-${epoch}-${_pkgver}-aarch64.tgz::${url}/releases/download/v${_pkgver}/${pkgname}-${epoch}-linux-aarch64-${_pkgver}.tgz")
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
             'ee61e58c618535b420f5fcbc0d7b7d803bc6aec7f261bd595867152806f939aa')
-sha256sums_x86_64=('c72c1af4a9f111008f665c201017d5254a1acdfee93adb6ba6b2360e822a58c3')
-sha256sums_aarch64=('79199fb8ec2dfba1c3c5e99f4f9cc3281277629b513920dcf2652239e2bdca13')
+sha256sums_x86_64=('8b9f16dbadf388bdee46a78a9ca836d0a6d34bb4b4e3f45e2146cc05f41d8cc0')
+sha256sums_aarch64=('60f83fccbc4fd5202e9af9e2feafc2c99c15ae2afe9c565a01f8eba19799531d')
 noextract=(
     ${pkgname}-${epoch}-x86_64-${_pkgver}.tgz
     ${pkgname}-${epoch}-aarch64-${_pkgver}.tgz)
