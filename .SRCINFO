@@ -1,12 +1,10 @@
 pkgbase = python-imbalanced-learn
 	pkgdesc = Toolbox for imbalanced dataset in machine learning
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-learn-contrib/imbalanced-learn
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.8
