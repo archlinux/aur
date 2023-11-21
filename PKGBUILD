@@ -1,13 +1,14 @@
 # Maintainer: Kimiblock Moe <kimiblock at icloud dot com>
 pkgname=qcm-git
-pkgver=r61.fcb0f3e
-pkgrel=2
+pkgver=r90.cee4b00
+pkgrel=1
 pkgdesc="Qt client for netease cloud music "
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
 license=('GPL2')
 depends=(
     'qt6-base'
+    'qt6-shadertools'
     'hicolor-icon-theme'
     'curl'
     'openssl'
