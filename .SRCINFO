@@ -1,6 +1,6 @@
 pkgbase = mounriver-studio-community-bin
 	pkgver = 160
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = GPL2

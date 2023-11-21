@@ -3,7 +3,7 @@
 pkgbase=mounriver-studio-community-bin
 pkgname=(${pkgbase})
 pkgver=160
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
@@ -26,6 +26,7 @@ noextract=(${pkgbase}-${pkgver}.tar.xz)
 
 prepare() {
     tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.xz" --strip-components=1 -C "${srcdir}/"
+    find MRS_Community -perm 600 -exec chmod 644 {} \;
 }
 
 package_mounriver-studio-community-bin() {
