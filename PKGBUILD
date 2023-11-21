@@ -5,7 +5,7 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('53762206b0d70b64d95d8cbc6a9d2ce6')
+md5sums=('94552eb056c92fee0d7febc833c39b3b')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -97,15 +97,15 @@ get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-#   mkdir -p ${HOME}/.local/share/${_pyname}
-#   cp -v ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
-#   cp -v ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
-#   cp -v ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
-    sed -i "/oldest-supported-numpy/d" pyproject.toml
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+##   mkdir -p ${HOME}/.local/share/${_pyname}
+##   cp -v ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
+##   cp -v ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
+##   cp -v ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
+#    sed -i "/oldest-supported-numpy/d" pyproject.toml
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -136,7 +136,7 @@ build() {
 #}
 
 package_python-sunpy() {
-    depends=('python>=3.9' 'python-astropy>=5.0.6' 'python-parfive>=2.0.0' 'python-aioftp' 'python-packaging>=19.0')
+    depends=('python>=3.9' 'python-astropy>5.1.0' 'python-parfive>=2.0.0' 'python-aioftp' 'python-packaging>=19.0')
     optdepends=('python-asdf>=2.8.0: asdf'
                 'python-asdf-astropy>=0.1.1: asdf'
                 'python-dask>=2021.4.0: dask'
@@ -149,11 +149,11 @@ package_python-sunpy() {
                 'python-glymur>0.9.5: jpeg2000'
                 'python-lxml>=4.8.0: jpeg2000'
                 'python-beautifulsoup4>=4.8.0: net'
-                'python-drms>=0.6.1: net'
+                'python-drms<0.7.0: net'
                 'python-dateutil>=2.8.0: net'
                 'python-tqdm>=4.32.1: net'
                 'python-zeep>=3.4.0: net'
-                'python-cdflib>0.4.0: timeseries'
+                'python-cdflib>1.0.0: timeseries'
                 'python-h5netcdf>=0.11: timeseries'
                 'python-h5py>=3.1.0: timeseries'
                 'python-pandas>=1.2.0: timeseries')

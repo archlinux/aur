@@ -1,6 +1,6 @@
 pkgbase = python-sunpy
 	pkgdesc = Python library for solar physics
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://sunpy.org
 	arch = i686
@@ -12,12 +12,12 @@ pkgbase = python-sunpy
 	makedepends = python-installer
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-5.0.1.tar.gz
-	md5sums = 53762206b0d70b64d95d8cbc6a9d2ce6
+	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-5.1.0.tar.gz
+	md5sums = 94552eb056c92fee0d7febc833c39b3b
 
 pkgname = python-sunpy
 	depends = python>=3.9
-	depends = python-astropy>=5.0.6
+	depends = python-astropy>5.1.0
 	depends = python-parfive>=2.0.0
 	depends = python-aioftp
 	depends = python-packaging>=19.0
@@ -33,11 +33,11 @@ pkgname = python-sunpy
 	optdepends = python-glymur>0.9.5: jpeg2000
 	optdepends = python-lxml>=4.8.0: jpeg2000
 	optdepends = python-beautifulsoup4>=4.8.0: net
-	optdepends = python-drms>=0.6.1: net
+	optdepends = python-drms<0.7.0: net
 	optdepends = python-dateutil>=2.8.0: net
 	optdepends = python-tqdm>=4.32.1: net
 	optdepends = python-zeep>=3.4.0: net
-	optdepends = python-cdflib>0.4.0: timeseries
+	optdepends = python-cdflib>1.0.0: timeseries
 	optdepends = python-h5netcdf>=0.11: timeseries
 	optdepends = python-h5py>=3.1.0: timeseries
 	optdepends = python-pandas>=1.2.0: timeseries
