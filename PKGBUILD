@@ -128,8 +128,8 @@ package() {
     cp -r server/bin "${pkgdir}/usr/lib/immich/app/server/bin"
     install -Dm644 server/package.json "${pkgdir}/usr/lib/immich/app/server/package.json"
     install -Dm644 server/package-lock.json "${pkgdir}/usr/lib/immich/app/server/package-lock.json"
-    install -Dm644 server/LICENSE "${pkgdir}/usr/lib/immich/app/server/LICENSE"
-    cp -r server/assets "${pkgdir}/usr/lib/immich/app/server/assets"
+    install -Dm644 LICENSE "${pkgdir}/usr/lib/immich/app/LICENSE"
+    cp -r server/assets "${pkgdir}/usr/lib/immich/app/assets"
 
     # install web frontend
     # from: web/Dockerfile COPY commands (entrypoint.sh not required)
