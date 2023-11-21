@@ -51,8 +51,9 @@ pkgver() {
 build() {
   _cmake_flags+=( '-DALLOW_SYSTEM_QHULL=OFF'
                   '-DCMAKE_INSTALL_PREFIX=/usr'
-                  '-DCMAKE_C_COMPILER=/usr/bin/gcc-12'
-                  '-DCMAKE_CXX_COMPILER=/usr/bin/g++-12'
+                  '-DCMAKE_BUILD_TYPE=Release'
+                  '-DCMAKE_C_COMPILER=gcc-12'
+                  '-DCMAKE_CXX_COMPILER=g++-12'
                 )
   cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab"
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when passing multiple flags.
