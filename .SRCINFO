@@ -1,7 +1,7 @@
 pkgbase = acestream-engine-py3
 	pkgdesc = Latest available Ace Stream Engine, setup via virtualenv with latest working python version
 	pkgver = 3.1.75rc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://acestream.org
 	install = acestream-engine-py3.install
 	arch = x86_64

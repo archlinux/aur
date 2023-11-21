@@ -1,7 +1,7 @@
 # Maintainer: Alonso Rodriguez <alonso.rodriguez (at) udc.es>
 pkgname=acestream-engine-py3
 pkgver=3.1.75rc4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Latest available Ace Stream Engine, setup via virtualenv with latest working python version"
 arch=("x86_64")
@@ -88,7 +88,7 @@ package() {
 
     # Copy venv folders
     cp -a "bin"                                  "$pkgdir/usr/lib/$pkgname/"
-    ln -s                                        "$pkgdir/usr/lib/$pkgname/lib" "$pkgdir/usr/lib/$pkgname/lib64"
+    ln -sf                                       "/usr/lib/$pkgname/lib" "$pkgdir/usr/lib/$pkgname/lib64"
     install -Dm644 "pyvenv.cfg"                  "$pkgdir/usr/lib/$pkgname/pyvenv.cfg"
 
 
