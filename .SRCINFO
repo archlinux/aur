@@ -1,12 +1,25 @@
 pkgbase = material-symbols-git
 	pkgdesc = Material Design icons by Google
-	pkgver = 4.0.0.r91.ga90037f80d
+	pkgver = 4.0.0.r91.ga90037f8
 	pkgrel = 1
 	url = https://github.com/google/material-design-icons
 	arch = any
 	license = Apache
-	makedepends = git
+	source = MaterialSymbolsOutlined[FILL,GRAD,opsz,wght]-4.0.0.r91.ga90037f8.ttf::https://raw.githubusercontent.com/google/material-design-icons/master/variablefont/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf
+	source = MaterialSymbolsRounded[FILL,GRAD,opsz,wght]-4.0.0.r91.ga90037f8.ttf::https://raw.githubusercontent.com/google/material-design-icons/master/variablefont/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf
+	source = MaterialSymbolsSharp[FILL,GRAD,opsz,wght]-4.0.0.r91.ga90037f8.ttf::https://raw.githubusercontent.com/google/material-design-icons/master/variablefont/MaterialSymbolsSharp[FILL,GRAD,opsz,wght].ttf
+	source = MaterialSymbolsOutlined[FILL,GRAD,opsz,wght]-4.0.0.r91.ga90037f8.woff2::https://raw.githubusercontent.com/google/material-design-icons/master/variablefont/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2
+	source = MaterialSymbolsRounded[FILL,GRAD,opsz,wght]-4.0.0.r91.ga90037f8.woff2::https://raw.githubusercontent.com/google/material-design-icons/master/variablefont/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].woff2
+	source = MaterialSymbolsSharp[FILL,GRAD,opsz,wght]-4.0.0.r91.ga90037f8.woff2::https://raw.githubusercontent.com/google/material-design-icons/master/variablefont/MaterialSymbolsSharp[FILL,GRAD,opsz,wght].woff2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ttf-material-symbols-git
+	pkgdesc = Material Design icons by Google - variable fonts
 
 pkgname = woff2-material-symbols-git
+	pkgdesc = Material Design icons by Google - variable fonts
