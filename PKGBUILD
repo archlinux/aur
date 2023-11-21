@@ -9,9 +9,8 @@ pkgdesc="EditorConfig plugin for Vim"
 arch=(any)
 url="https://github.com/editorconfig/editorconfig-vim"
 license=(
-  BSD
-  CCPL
-  PSF
+  BSD-2-Clause
+  PSF-2.0
 )
 groups=(vim-plugins)
 makedepends=(
