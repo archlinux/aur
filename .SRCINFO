@@ -1,0 +1,17 @@
+pkgbase = python-django-js-asset
+	pkgdesc = script tag with additional attributes for django.forms.Media
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/matthiask/django-js-asset/
+	arch = any
+	license = bsd
+	checkdepends = python-pytz
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-django
+	source = python-django-js-asset-2.1.tar.gz::https://github.com/matthiask/django-js-asset//archive/2.1.tar.gz
+	b2sums = d4885fd36dcc583d8f614894c7fc887796fc7cb24d08243a6eb6a1f7339f2e3ae9eaa6f787ca9913697926fdb7b9e646f6416f4b467262b2ceb0fd63cfd93ae5
+
+pkgname = python-django-js-asset
