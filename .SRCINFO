@@ -1,0 +1,15 @@
+pkgbase = wazuh-filebeat
+	pkgdesc = Filebeat version for Wazuh
+	pkgver = 7.10.2
+	pkgrel = 1
+	url = https://wazuh.com/
+	install = wazuh-filebeat.install
+	arch = x86_64
+	license = gpl2
+	depends = libcap
+	conflicts = filebeat
+	source = https://packages.wazuh.com/4.x/yum/filebeat-oss-7.10.2-x86_64.rpm
+	validpgpkeys = 9E646BB0630C8FD18ACD15541B93E6A766CD229D
+	sha256sums = 56820530dd749d61ba2750ecefc390393a8a5029dd431bf2eaf6a599a847f8f2
+
+pkgname = wazuh-filebeat
