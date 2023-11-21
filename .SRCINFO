@@ -1,0 +1,15 @@
+pkgbase = dotree-git
+	pkgdesc = A small, interactive command runner
+	pkgver = r53.513fa04
+	pkgrel = 1
+	url = https://github.com/KnorrFG/dotree
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cargo
+	provides = dotree
+	conflicts = dotree
+	source = dotree-git::git+https://github.com/KnorrFG/dotree.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dotree-git
