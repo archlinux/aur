@@ -1,6 +1,6 @@
 pkgbase = albafetch-bin
 	pkgdesc = Neofetch, but written in C; both faster and worse than the original (binary build)
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/alba4k/albafetch
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = albafetch-bin
 	license = MIT
 	conflicts = albafetch-git
 	conflicts = albafetch
-	source_x86_64 = https://github.com/alba4k/albafetch/releases/download/v4.0/albafetch-linux-x64-dynamic.zip
+	source_x86_64 = https://github.com/alba4k/albafetch/releases/download/v4.1/albafetch-linux-x64.zip
 	depends_x86_64 = pciutils
 	depends_x86_64 = libcurl-gnutls
-	md5sums_x86_64 = 48dc1694e891b936ddb140625ed81877
-	source_aarch64 = https://github.com/alba4k/albafetch/releases/download/v4.0/albafetch-linux-aarch64-static.zip
+	md5sums_x86_64 = b8ca2c656384fdd05e79bbbe5fffcbcb
+	source_aarch64 = https://github.com/alba4k/albafetch/releases/download/v4.1/albafetch-linux-aarch64-static.zip
 	md5sums_aarch64 = cce874f24a56f222a9509b0fdeed975f
 
 pkgname = albafetch-bin
