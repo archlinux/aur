@@ -1,7 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-_pkgver=2.10.15
-pkgver=2.10.15.r0.g99b3c7e19
+pkgver=2.10.16.r0.gfad7f0512
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=('any')
@@ -27,7 +26,7 @@ makedepends=(
     'pnpm'
 )
 source=(
-    "${pkgname//-/.}"::"git+${_ghurl}.git#tag=v${_pkgver}"
+    "${pkgname//-/.}"::"git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -41,7 +40,7 @@ build() {
     sed "2i Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
     sed '/- target: "tar.gz"/d' -i electron-builder-linux.yml
-    pnpm install --no-frozen-lockfile
+    pnpm install --no-frozen-lockfile --cache "${srcdir}/npm-cache" 
     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     export CGO_ENABLED=1
