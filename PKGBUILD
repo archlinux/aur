@@ -1,5 +1,5 @@
 pkgname="kitchenowl"
-pkgver=0.4.12
+pkgver=0.4.16
 pkgrel=3
 pkgdesc="KitchenOwl is a self-hosted grocery list and recipe manager."
 arch=("x86_64")
