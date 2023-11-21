@@ -17,8 +17,10 @@ package() {
     cd $pkgname-$pkgver
     mkdir -p "$pkgdir/usr/bin/"
     make CC=gcc INSTALLPATH="$pkgdir/usr/bin" install
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 MANUAL.md "$pkgdir/usr/share/doc/${pkgname}/MANUAL.md"
 
     mkdir -p "$pkgdir/etc/xdg"
     cat ../../template.conf albafetch.conf > "$pkgdir/etc/xdg/albafetch.conf.example"
