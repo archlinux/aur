@@ -2,12 +2,12 @@
 # Contributor: <agustinballesteros04@gmail.com>
 pkgname=kew
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://github.com/ravachol/kew"
 license=('GPL2')
-depends=('ffmpeg' 'fftw' 'chafa' 'freeimage')
+depends=('ffmpeg' 'fftw' 'chafa' 'freeimage' 'glib2' 'opus' 'opusfile' 'libvorbis')
 replaces=('cue-music-command')
 conflicts=('kew-git')
 
