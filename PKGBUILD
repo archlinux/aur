@@ -85,16 +85,24 @@ pkgver() {
 
 package_ttf-material-symbols-git() {
   pkgdesc+=" - variable fonts"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
   for i in *wght*.ttf ; do
     local _ext="${i##*.}"
-    install -Dm644 "$i" "$pkgdir/usr/share/fonts/${pkgname%-git}/${i%-$_pkgver.$_ext}.$_ext"
+    local _filename="${i%-$_pkgver.$_ext}"
+    install -Dm644 "$i" "$pkgdir/usr/share/fonts/${pkgname%-git}/$_filename.$_ext"
   done
 }
 
 package_woff2-material-symbols-git() {
   pkgdesc+=" - variable fonts"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
   for i in *.woff2 ; do
     local _ext="${i##*.}"
-    install -Dm644 "$i" "$pkgdir/usr/share/fonts/${pkgname%-git}/${i%-$_pkgver.$_ext}.$_ext"
+    local _filename="${i%-$_pkgver.$_ext}"
+    install -Dm644 "$i" "$pkgdir/usr/share/fonts/${pkgname%-git}/$_filename.$_ext"
   done
 }

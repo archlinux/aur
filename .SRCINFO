@@ -20,6 +20,10 @@ pkgbase = material-symbols-git
 
 pkgname = ttf-material-symbols-git
 	pkgdesc = Material Design icons by Google - variable fonts
+	provides = ttf-material-symbols
+	conflicts = ttf-material-symbols
 
 pkgname = woff2-material-symbols-git
 	pkgdesc = Material Design icons by Google - variable fonts
+	provides = woff2-material-symbols
+	conflicts = woff2-material-symbols
