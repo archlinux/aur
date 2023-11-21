@@ -1,7 +1,7 @@
 # Maintainer: mib <mib@kanp.ai>
 pkgname=lightburn-bin
-pkgver=1.4.00
-pkgrel=3
+pkgver=1.4.03
+pkgrel=1
 pkgdesc="A layout, editing, and control software for lasercutters."
 arch=('x86_64')
 url="https://lightburnsoftware.com"
@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 source=('lightburn.sh' 'lightburn.desktop' "https://github.com/LightBurnSoftware/deployment/releases/download/$pkgver/LightBurn-Linux64-v$pkgver.7z")
 sha256sums=('279ba7b124be814feacc4585f9978dd269c5ca2fb7f13a095d5865224504cf4e'
             'f72e86774d4396240b46e07e947edf9cdf5f8d526a70129c447fed7c173c4867'
-            '367b5520893e2a2ba94691515174c06b8229c14902ed2faa67542eb5ba5715ec')
+	    'e25aaa3da9f8970bc5a8b8a6d0b627b5a300b132e0e96bed082e1c428deb1f24')
 
 package() {
 	mkdir -p "$pkgdir/usr/share/lightburn"
