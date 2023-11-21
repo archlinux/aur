@@ -1,8 +1,8 @@
 # Originally: Ultraleap <info@ultraleap.com>
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-service
-pkgver=5.15.0.0_6eec32f3
-pkgrel=2
+pkgver=5.17.1.0_a9f25232
+pkgrel=1
 epoch=
 pkgdesc="Ultraleap Hand Tracking service and SDK for development."
 arch=("x86_64")
@@ -20,13 +20,13 @@ backup=()
 options=()
 install='ultraleap-hand-tracking-service.install'
 changelog=
-source=('https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.15.0.0-6eec32f3-1.0_amd64.deb'
+source=('https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.17.1.0-a9f25232-1.0_amd64.deb'
         'analytics_config.json'
         'ultraleap-hand-tracking-service.conf'
         'leap.conf'
         'leap-tmpfiles.conf')
 noextract=()
-md5sums=('d6820848627fa0651943fe4618293b97'
+md5sums=('9161434c093d6a4a3cbaf759929bec3c'
          '4366790d2e555633b24c14cc49584e97'
          'c85e250132a9b3bc32e1c9db449fdbec'
          '9045bc8cc05aa0cbeb66621075a88162'
@@ -58,12 +58,16 @@ package() {
     install -D -m644 "${srcdir}/usr/lib/ultraleap-hand-tracking-service/liblibrealuvc.so.0.1.1" "${pkgdir}/usr/lib/ultraleap-hand-tracking-service/liblibrealuvc.so.0.1.1"
     install -D -m644 "${srcdir}/usr/lib/ultraleap-hand-tracking-service/libLeapC.so.5" "${pkgdir}/usr/lib/ultraleap-hand-tracking-service/libLeapC.so.5"
 
-    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-413706.ldat" "${pkgdir}/usr/share/ultraleap/ldat-413706.ldat"
     install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426392.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426392.ldat"
     install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426437.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426437.ldat"
-    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426606.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426606.ldat"
-    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426617.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426617.ldat"
     install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426643.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426643.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-429281.ldat" "${pkgdir}/usr/share/ultraleap/ldat-429281.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-429419.ldat" "${pkgdir}/usr/share/ultraleap/ldat-429419.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-430152.ldat" "${pkgdir}/usr/share/ultraleap/ldat-430152.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-430856.ldat" "${pkgdir}/usr/share/ultraleap/ldat-430856.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-430861.ldat" "${pkgdir}/usr/share/ultraleap/ldat-430861.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-431319.ldat" "${pkgdir}/usr/share/ultraleap/ldat-431319.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-432858.ldat" "${pkgdir}/usr/share/ultraleap/ldat-432858.ldat"
 
     install -D -m644 "${srcdir}/usr/share/ultraleap/firmware/CyPeripheral-1.7.0.ldat" "${pkgdir}/usr/share/ultraleap/firmware/CyPeripheral-1.7.0.ldat"
     install -D -m644 "${srcdir}/usr/share/ultraleap/firmware/leap2_v3.8.6.ldat" "${pkgdir}/usr/share/ultraleap/firmware/leap2_v3.8.6.ldat"
