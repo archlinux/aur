@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-look-bin')
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="GTK3 settings editor adapted to work w/ wlroots-based compositors (binary package)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3' 'glib2' 'cairo' 'xcur2png')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-look/releases/download/v"$pkgver"/nwg-look-v"$pkgver"_x86_64.tar.gz")
 
-md5sums=('42d827c413f053c40bdcc429b05ed558')
+md5sums=('e57210d10c1e9e8f8dcdf2a4495e3064')
 
 package() {
   cd "$srcdir"
