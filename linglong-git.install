@@ -99,7 +99,7 @@ pre_install(){
 	oldProfile="/etc/profile.d/linglong.sh"
 	oldX11Config="/etc/X11/Xsession.d/21linglong"
 
-	if [ "x$2" != "x" ]; then
+	if [ "x$1" != "x" ]; then
 		killall ll-service >/dev/null 2<&1
 		killall ll-package-manager >/dev/null 2<&1
 	fi
@@ -110,5 +110,5 @@ pre_install(){
 }
 
 pre_upgrade() {
-	pre_install
+	pre_install upgrade
 }
