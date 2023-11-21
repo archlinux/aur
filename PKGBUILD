@@ -31,9 +31,8 @@ depends=(
     'bzip2' 'cgal' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c'
     'patchelf' 'gmp' 'mpfr' 'mesa'
 )
-makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir' 'openctm-tools' 'gcc12')
+makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'lib3ds' 'mpir' 'openctm-tools' 'gcc12')
 optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
-            'levmar: for isoparametrization and mutualcorrs plugins'
             'muparser: for filer_func plugins'
             'mpir: for Constructive Solid Geometry operation filters')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
