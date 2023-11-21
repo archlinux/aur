@@ -1,9 +1,10 @@
+
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: sng <sng at hellug dot gr>
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.9.2.17
+pkgver=0.9.2.19.r0.gbf0fd80
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
@@ -20,6 +21,8 @@ sha256sums=('SKIP')
 prepare() {
   cd $pkgname
   _descr="$(git describe --long --tags)"
+  sed -i '/readme = / a \
+license = {file = "LICENCE"}' pyproject.toml
   sed -i "s/git_description = ''/git_description = '$_descr'/" pyradio/config.py
   sed -i 's/distro = None/distro = Arch Linux (AUR)/' pyradio/config
 }
