@@ -4,7 +4,7 @@
 _pkgname=texlab
 pkgname=$_pkgname-git
 pkgver=5.11.0.r16.867dbc91
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the Language Server Protocol for LaTeX'
 arch=(any)
 url=https://github.com/latex-lsp/texlab
@@ -44,5 +44,6 @@ package() {
     cd "$srcdir"/$_pkgname
     install -Dm 755 -t "$pkgdir"/usr/bin target/release/$_pkgname
     install -Dm 644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
+    mkdir -p "$pkgdir"/usr/share/doc/$_pkgname
     install -Dm 644 CHANGELOG.md README.md "$pkgdir"/usr/share/doc/$_pkgname
 }
