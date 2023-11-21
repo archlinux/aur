@@ -1,10 +1,10 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 
 pkgname='parallels-client'
-pkgver='19.2.23906'
+pkgver='19.3.24519'
 # has an extra digit in the middle for some reason
-_downloadver='19.2.0.23906'
-pkgrel=2
+_downloadver='19.3.0.24519'
+pkgrel=1
 pkgdesc="A remote work tool"
 arch=('x86_64')
 url="https://www.parallels.com/products/ras/capabilities/parallels-client/"
@@ -47,7 +47,7 @@ provides=()
 conflicts=()
 source=("https://download.parallels.com/ras/v${pkgver%%.*}/${_downloadver}/RASClient-${pkgver}_x86_64.tar.bz2")
 noextract=()
-sha256sums=('e37843a042f544bdebeccfb0a42ce1ffba30a0ee71d742493a44ee79fc554211')
+sha256sums=('d7ebb64d0a5f9b1372e40a0df97ff5345910840e6b4f47d98209b592c5cce238')
 
 
 package() {
