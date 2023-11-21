@@ -1,5 +1,5 @@
 pkgname=immich
-pkgrel=1
+pkgrel=2
 pkgver=1.88.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
