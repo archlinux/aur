@@ -1,5 +1,5 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
-# Contribuidor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
+# Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-manager
 pkgver=4.6.0
 _remRevision=1
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://wazuh.com/"
 license=('gpl2')
 depends=(
-    'filebeat'
+    'wazuh-filebeat'
 );
 optdepends=(
 );
