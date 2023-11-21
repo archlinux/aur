@@ -25,7 +25,6 @@ pkgbase = meshlab-git
 	depends = qt5-script
 	depends = qt5-xmlpatterns
 	depends = xerces-c
-	depends = patchelf
 	depends = gmp
 	depends = mpfr
 	depends = mesa
