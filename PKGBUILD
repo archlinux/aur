@@ -1,6 +1,6 @@
 # Maintainer: JianQing Liu <me at pegasis dot site>
 pkgname=discord-chat-exporter-cli
-pkgver=2.40.4
+pkgver=2.42.3
 pkgrel=1
 pkgdesc="Export message history from a Discord channel to a file"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/$pkgver/DiscordChatExporter.CLI.zip"
 "discord-chat-exporter-cli")
 noextract=("$pkgname-$pkgver.zip")
-md5sums=('61423673f755a7c142b13c3f485287a9' 
+md5sums=('dd950ea5a9990815b048218da7cb6e73' 
 '8077678acad67ad31578593deee8bcc6')
 BUILDENV+=('!check')
 
