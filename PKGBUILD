@@ -1,15 +1,38 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-bin
 pkgver=3.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=("aarch" "x86_64")
 url="https://github.com/Hiram-Wong/ZyPlayer"
 license=("MIT")
 provides=("${pkgname%-bin}-${pkgver}")
-conflicts=("${pkgname%-bin}" "zy-player")
-depends=('libcups' 'libxcomposite' 'nss' 'nspr' 'dbus' 'libxext' 'gcc-libs' 'pango' 'libxdamage' 'libxcb' 'libxkbcommon' \
-    'libxfixes' 'libx11' 'libxrandr' 'expat' 'glib2' 'alsa-lib' 'libdrm' 'mesa' 'gtk3' 'at-spi2-core' 'cairo' 'glibc' 'hicolor-icon-theme')
+conflicts=(
+    "${pkgname%-bin}"
+    "zy-player"
+)
+depends=(
+    'libcups'
+    'libxcomposite'
+    'nss'
+    'nspr'
+    'libxext'
+    'pango'
+    'libxdamage'
+    'libxcb'
+    'libxkbcommon'
+    'libxfixes'
+    'libx11'
+    'libxrandr'
+    'expat'
+    'alsa-lib'
+    'libdrm'
+    'mesa'
+    'gtk3'
+    'at-spi2-core'
+    'cairo'
+    'hicolor-icon-theme'
+)
 source_aarch=("${pkgname%-bin}-${pkgver}-aarch.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE")
@@ -18,7 +41,7 @@ sha256sums_aarch=('7bcd1af5548ff9c09fcc74d019dfa5eeb061a742a61f9af67e8f0fd7557c9
 sha256sums_x86_64=('a51727860584ffbf1f31f41926a23207919f19847b6f9694a1d1f79ee40bec93')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin} %U --no-sandbox|g;s|Utility|AudioVideo|g" \
+    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|Utility|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
