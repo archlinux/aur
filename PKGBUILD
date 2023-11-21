@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=authy-electron
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 _electronversion=25
 pkgdesc="Two factor authentication desktop application"
@@ -12,21 +12,21 @@ makedepends=('squashfs-tools')
 provides=('authy')
 conflicts=('authy')
 _snapid='H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn'
-_snaprev='21'
+_snaprev='22'
 source=("authy-$pkgver-${_snaprev}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap"
         "authy.sh")
-sha256sums=('6b9cfa2f0760a1dcbcf1fee16acfdfd80320f66f5f196b0949ec5933a29418e6'
+sha256sums=('406bde28157122272c1a192ab3e953ee50c3204260a1e5dfe3d71c89d18ae115'
             'c76a44a0b42b7b590c4b6318b0544cedb96ef76b92269a79d29f71ced5c74331')
 
 prepare() {
-  unsquashfs -f -d "$srcdir/authy" "authy-$pkgver-${_snaprev}.snap"
+  unsquashfs -f -d "authy-$pkgver" "authy-$pkgver-${_snaprev}.snap"
 
-  cd "$srcdir/authy"
+  cd "authy-$pkgver"
   sed -i 's|${SNAP}/meta/gui/icon.png|authy|g' "meta/gui/authy.desktop"
 }
 
 package() {
-  cd "$srcdir/authy"
+  cd "authy-$pkgver"
   install -Dm644 resources/app.asar -t "$pkgdir/usr/lib/authy"
   install -Dm644 meta/gui/authy.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 meta/gui/icon.png "$pkgdir/usr/share/pixmaps/authy.png"
