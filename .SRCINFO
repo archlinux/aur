@@ -1,17 +1,11 @@
 pkgbase = calyxos-flasher-bin
-	pkgdesc = A simple way to install CalyxOS on your device (binary release)
-	pkgver = 1.0.7
-	pkgrel = 2
-	url = https://gitlab.com/CalyxOS/device-flasher
-	arch = x86_64
+	pkgdesc = metapackage - migrate to device-flasher-bin
+	pkgver = 0.0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://aur.archlinux.org/packages/device-flasher-bin
+	arch = any
 	license = Apache2
-	provides = calyxos-flasher
-	conflicts = calyxos-flasher
-	source = https://release.calyxinstitute.org/device-flasher/1.0.7/device-flasher.linux
-	source = https://gitlab.com/CalyxOS/device-flasher/-/raw/1.0.7/README.txt
-	source = https://gitlab.com/CalyxOS/device-flasher/-/raw/1.0.7/LICENSE
-	sha256sums = 530bef93de1af79400db3a46494d20d5848f8b765ba3cf5e814e04c79f8b711b
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = calyxos-flasher-bin
+	depends = device-flasher-bin
