@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)"
-pkgver=23.3.branchpoint.r1334.g4eb4197
+pkgver=23.3.branchpoint.r1559.g12f6279
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -82,6 +82,10 @@ pkgver() {
 build() {
   # Auto-download Rust crates for NAK (removes extra code for crate handling)
   _nak_crate="--force-fallback-for=syn"
+
+  # HACK: Remove crate .rlib files before build
+  # (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
+  [ -d build/subprojects ] && find build/subprojects -iname "*.rlib" -delete
 
   # As you can see, I optimized the build options pretty well 🐸
   arch-meson mesa build \
