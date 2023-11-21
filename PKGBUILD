@@ -3,7 +3,7 @@
 _name=Starp
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=v0.1.0.r0.gb2b64ce
+pkgver=v0.2.0.r0.g2cb7f86
 pkgrel=1
 pkgdesc='A stable random arpeggiator VST3 plugin (git version)'
 arch=(x86_64 aarch64)

@@ -1,6 +1,6 @@
 pkgbase = starp-git
 	pkgdesc = A stable random arpeggiator VST3 plugin (git version)
-	pkgver = v0.1.0.r0.gb2b64ce
+	pkgver = v0.2.0.r0.g2cb7f86
 	pkgrel = 1
 	url = https://github.com/mhhollomon/Starp
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = starp-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	optdepends = vst3-host: for VST3 plugins
+	optdepends = vst3-host: for loading the VST3 format plugin
 	source = git+https://github.com/mhhollomon/Starp.git
 	sha256sums = SKIP
 
