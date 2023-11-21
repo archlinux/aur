@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-passwordmanager
 	pkgdesc = A simple password store using AES-256-CBC encryption via OpenSSL (mingw-w64)
-	pkgver = 4.1.12
+	pkgver = 4.1.13
 	pkgrel = 1
 	url = https://github.com/Martchus/passwordmanager
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = mingw-w64-passwordmanager
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = passwordmanager-4.1.12.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.12.tar.gz
-	sha256sums = 3ccac8a8adc156bbb1fb7995efae7f6f9f816fd706933abe2d5040cc47347a2a
+	source = passwordmanager-4.1.13.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.13.tar.gz
+	sha256sums = 68e44195cfbebef3df3404f0f552880e41e43dc16380d50c85052dff1d870e7c
 
 pkgname = mingw-w64-passwordmanager
