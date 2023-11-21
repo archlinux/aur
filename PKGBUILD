@@ -2,7 +2,7 @@
 
 pkgname=python-dnaio
 _module=${pkgname#python-}
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Python library for very efficient parsing and writing of FASTQ and FASTA files'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
             )
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('48cb0a8763d91aee329414f7756ee635dd78f6c059d5dbd0de78fb3b15f8a32a')
+sha256sums=('7ecdfb3de3fd82c69b9750ba66202edc095610646d0720961ca7308af4ee8c45')
 
 build() {
     cd "$_module-$pkgver"
