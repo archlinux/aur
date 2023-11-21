@@ -79,7 +79,7 @@ build() {
     # from: web/Dockerfile RUN npm commands
     cd "${srcdir}/${pkgname}-${pkgver}/web"
     # TODO: CI command might still be required
-    # npm ci
+    npm ci
     npm run build
     npm prune --omit=dev
 
