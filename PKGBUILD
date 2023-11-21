@@ -1,6 +1,6 @@
 pkgname=immich
-pkgrel=7
-pkgver=1.87.0
+pkgrel=1
+pkgver=1.88.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -50,7 +50,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'nginx.immich.conf'
         'media.util.ts.patch'
 )
-sha256sums=('f9196aa5567415d2b71cd50ce9ec8830adc8a2dfac65acea9287fcf470cb91c5'
+sha256sums=('3fe1ac4e0840fcd997cf3a7df68248039fdbe0d5a540f0414e5f3311d6670746'
             '46a7ace4f315e0a69a0da49a9a54d442baa6573092572f1e4323d1373a0cabb5'
             '08df269485ebea360dc1156409d148c959ba28040017cd02be2606c5d28be5b0'
             '64da5f28147c40a2285ed2295d85951c932d155069295a692a25995e6e56028e'
@@ -78,15 +78,17 @@ build() {
     # build web frontend
     # from: web/Dockerfile RUN npm commands
     cd "${srcdir}/${pkgname}-${pkgver}/web"
-    npm ci
-    npm run build
-    npm prune --omit=dev
+    # TODO: CI command might still be required
+    # npm ci
+    # npm run build
+    # npm prune --omit=dev
 
     # build server
     # from: server/Dockerfile RUN npm commands
     #   * npm link / and cache clean not required
     cd "${srcdir}/${pkgname}-${pkgver}/server"
-    npm ci
+    # TODO ci needed?
+    # npm ci
     npm run build
     npm prune --omit=dev --omit=optional
         
