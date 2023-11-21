@@ -12,9 +12,16 @@ depends=('gtk3' 'libsecret' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at
 optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-$pkgver.deb")
-sha512sums_x86_64=('b9d4ef86af89048803e90d9c2718f72e9098797a7c3d3818f25d3a18e64cda89a5a964b0d3afeb6615847ea2cdb5d0adf1306aa68e88029636fe38e40c90a315')
+source_x86_64=(
+	"https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-$pkgver.deb"
+	"local://lycheeslicer.xml"
+)
+sha512sums_x86_64=(
+	'b9d4ef86af89048803e90d9c2718f72e9098797a7c3d3818f25d3a18e64cda89a5a964b0d3afeb6615847ea2cdb5d0adf1306aa68e88029636fe38e40c90a315'
+	'aba52d9bd76619f66fac0688c1c04846e630f5b8acba6032c61f46a4bcf9ff9d5aa1eb11a3901e85bce33e179d4ccc1f574b06c9ad3f415a692ff4ad39c77f49'
+)
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
+	install -Dm644 lycheeslicer.xml "$pkgdir"/usr/share/mime/packages/lycheeslicer.xml
 }

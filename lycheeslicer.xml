@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="x-scheme-handler/lycheeslicer">
+    <comment>Lychee slicer scene</comment>
+    <acronym>LYS</acronym>
+    <glob pattern="*.lys"/>
+  </mime-type>
+</mime-info>
