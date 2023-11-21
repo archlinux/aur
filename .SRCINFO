@@ -1,6 +1,6 @@
 pkgbase = precice-config-visualizer-git
 	pkgdesc = A tool for visualizing a preCICE configuration file as a dot file
-	pkgver = 20230224
+	pkgver = 20231006
 	pkgrel = 1
 	url = https://github.com/precice/config-visualizer
 	arch = any

@@ -2,7 +2,7 @@
 _base=precice-config-visualizer
 pkgname=${_base}-git
 pkgdesc="A tool for visualizing a preCICE configuration file as a dot file"
-pkgver=20230224
+pkgver=20231006
 pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base/precice-/}"
@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd ${_base/precice-/}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
