@@ -1,23 +1,24 @@
 pkgbase = glueviz-doc
 	pkgdesc = Documentation for Glue
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = http://glueviz.org
 	arch = any
 	license = BSD
-	makedepends = python-glue-qt=0.1.0
+	makedepends = python-glue-qt=0.3.0
 	makedepends = glueviz
 	makedepends = python-sphinx<7.2.2
 	makedepends = python-sphinx-automodapi
 	makedepends = python-numpydoc
 	makedepends = python-sphinxcontrib-spelling
-	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-book-theme
+	makedepends = qt5-svg
 	makedepends = aspell
 	makedepends = hspell
 	makedepends = hunspell
 	makedepends = nuspell
 	makedepends = libvoikko
-	source = https://files.pythonhosted.org/packages/source/g/glue-qt/glue-qt-0.1.0.tar.gz
-	md5sums = 454d655ff8a1e88c53aae4b4db6c9359
+	source = https://files.pythonhosted.org/packages/source/g/glue-qt/glue-qt-0.3.0.tar.gz
+	md5sums = 975341ca7746e8c193b708ec8a579bf9
 
 pkgname = glueviz-doc

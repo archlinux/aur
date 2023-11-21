@@ -1,9 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=glue-qt
 pkgname=glueviz-doc
-pkgver=1.12.0
-pkgrel=2
-_glue_qt_ver=0.1.0
+pkgver=1.16.0
+pkgrel=1
+_glue_qt_ver=0.3.0
 pkgdesc="Documentation for Glue"
 arch=('any')
 url="http://glueviz.org"
@@ -14,14 +14,15 @@ makedepends=("python-${_pyname}=${_glue_qt_ver}"
              'python-sphinx-automodapi'
              'python-numpydoc'
              'python-sphinxcontrib-spelling'
-             'python-sphinx_rtd_theme'
+             'python-sphinx-book-theme'
+             'qt5-svg'
              'aspell'
              'hspell'
              'hunspell'
              'nuspell'
              'libvoikko')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${_glue_qt_ver}.tar.gz")
-md5sums=('454d655ff8a1e88c53aae4b4db6c9359')
+md5sums=('975341ca7746e8c193b708ec8a579bf9')
 
 build() {
     cd ${srcdir}/${_pyname}-${_glue_qt_ver}/doc
