@@ -10,7 +10,6 @@ _ghurl="https://github.com/FlashpointProject/launcher"
 license=('MIT')
 conflicts=("${pkgname}" "${pkgname%-launcher}")
 depends=(
-    'php'
     'electron19'
     'python'
     'flashpoint'
