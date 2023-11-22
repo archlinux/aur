@@ -1,14 +1,13 @@
 pkgbase = jabref
 	pkgdesc = Graphical Java application for managing BibTeX and biblatex (.bib) databases
 	pkgver = 5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jabref.org/
 	arch = any
 	license = MIT
 	makedepends = gradle>=8
-	makedepends = java-environment=21
 	depends = archlinux-java-run>=10
-	depends = java-runtime=21
+	depends = java-environment=21
 	optdepends = python: browser extension
 	options = !strip
 	options = !emptydirs
