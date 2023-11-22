@@ -1,0 +1,21 @@
+pkgbase = icoextract-git
+	pkgdesc = Icon extractor for Windows PE files (.exe/.dll) with optional thumbnailer functionality
+	pkgver = r70.31ce309
+	pkgrel = 1
+	url = https://github.com/jlu5/icoextract
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pefile
+	optdepends = python-pillow: required for the optional thumbnailer
+	provides = exe-thumbnailer
+	conflicts = exe-thumbnailer
+	conflicts = icoextract
+	source = git+https://github.com/jlu5/icoextract.git
+	sha256sums = SKIP
+
+pkgname = icoextract-git
