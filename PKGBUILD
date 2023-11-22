@@ -4,10 +4,10 @@
 # PRs welcome at: https://github.com/ActivityWatch/aur-activitywatch-bin
 
 pkgname=activitywatch-bin
-pkgver='0.12.3b14'
+pkgver='0.12.3b15'
 pkgrel=1
 epoch=
-pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
+pkgdesc="Track how you spend time on your computer. Simple, extensible, no third parties."
 arch=('x86_64')
 url="https://github.com/ActivityWatch/activitywatch"
 license=('MPL2')
@@ -20,7 +20,7 @@ depends=(
     #'openssl-1.0'
 )
 source=("https://github.com/ActivityWatch/activitywatch/releases/download/v${pkgver}/activitywatch-v${pkgver}-linux-x86_64.zip")
-md5sums=('7c89b9a4c5fd25c67326f897c61a230f')
+md5sums=('1d746920799e6d4eaef486ad45ef771a')
 
 package() {
     # Install into /opt/activitywatch
