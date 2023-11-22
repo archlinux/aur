@@ -28,7 +28,7 @@ depends=('libqtutilities-git.so' 'libtagparser-git.so' 'libc++utilities-git.so' 
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 makedepends=('cmake' 'qt5-tools' 'git' 'ninja')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson-git')
-checkdepends=('cppunit' 'jq' 'appstream')
+checkdepends=('cppunit' 'jq')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
