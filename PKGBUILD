@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/pooi-v$pkgver"
     install -Dvm755 "./target/release/pooi" -t "$pkgdir/usr/local/bin"
     install -Dvm644 ./etc/completions/_pooi $pkgdir/usr/share/zsh/site-functions/_pooi
     install -Dvm644 ./etc/completions/pooi.bash $pkgdir/usr/share/bash-completion/completions/pooi
