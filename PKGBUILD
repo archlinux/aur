@@ -42,7 +42,7 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 install=$__pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
   "$__pkgname.desktop"
-  "common::git+https://codeberg.org/stefanwimmer128/firedragon-common.git#branch=pref-pane"
+  "common::git+https://codeberg.org/stefanwimmer128/firedragon-common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
   "librewolf-source::git+https://codeberg.org/librewolf/source.git#tag=120.0-1"
   "librewolf-settings::git+https://codeberg.org/librewolf/settings.git"
@@ -230,8 +230,6 @@ END
   cp "${_patches_dir}"/custom/pref-pane/librewolf.inc.xhtml browser/components/preferences/librewolf.inc.xhtml
   cp "${_patches_dir}"/custom/pref-pane/librewolf.js browser/components/preferences/librewolf.js
   cat < "${_patches_dir}"/custom/pref-pane/preferences.ftl >> browser/locales/en-US/browser/preferences/preferences.ftl
-
-
 
   # Update privacy preferences
   patch -Np1 -i "${_patches_dir}"/custom/privacy-preferences.patch
