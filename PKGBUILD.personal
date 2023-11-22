@@ -19,7 +19,6 @@ source=(
 )
 #Optional patches
 source+=(
-    82-nv_low_latency_dxvk_nvapi.patch
 )
 
 pkgver() {
@@ -33,8 +32,6 @@ prepare() {
     # Explicitly set origin URL for submodules using relative paths
     git remote set-url origin https://github.com/jp7677/dxvk-nvapi.git
     git submodule update --init --filter=tree:0 --recursive
-
-    patch -p1 -i "$srcdir"/82-nv_low_latency_dxvk_nvapi.patch
 
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
@@ -121,5 +118,4 @@ sha256sums=('SKIP'
             '62a14512ab32ff534d8b07f2cdefae17ee679c73465edeb11bfac1e88f0a7109'
             '1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e')
 sha256sums+=(
-            'SKIP'
 )
