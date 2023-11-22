@@ -3,34 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=colord-kde
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Interfaces and session daemon to colord for KDE'
 arch=(x86_64)
 url='https://userbase.kde.org/Color_Management'
 license=(GPL)
-depends=(colord
-         gcc-libs
-         glibc
-         kcoreaddons5
-         kdbusaddons5
-         kdeclarative5
-         ki18n5
-         kirigami-addons5
-         kitemmodels5 # QML
-         kwidgetsaddons5
-         lcms2
-         libx11
-         libxrandr
-         qt5-base
-         qt5-declarative
-         qt5-x11extras)
-makedepends=(extra-cmake-modules
-             kcmutils5)
-groups=(kde-applications
-        kde-graphics)
-source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('6bcd3ac770bf763bd7fc0d93a34656d327ef4314ca5dbd4ff86e38fca2d7a5d2'
+groups=(kde-applications kde-graphics)
+depends=(colord libxrandr kitemmodels5 kdeclarative5 kirigami-addons5)
+makedepends=(extra-cmake-modules kcmutils5)
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('e088db360aac8371271eef3df21b34bcada581a6b16f880b184d6bce5bc66a91'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
