@@ -31,7 +31,7 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 provides=("${pkgname%-pkgver}")
-
+conflicts=(moab)
 md5sums=('SKIP')
 build() {
 	cd $srcdir
