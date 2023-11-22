@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = python-photutils
 	checkdepends = python-matplotlib
 	checkdepends = python-scikit-learn
 	checkdepends = python-gwcs
-	checkdepends = python-shapely
-	makedepends = cython>=0.29.30
+	makedepends = cython>=3.0.0
 	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-wheel
 	makedepends = python-build
@@ -25,24 +24,25 @@ pkgbase = python-photutils
 	makedepends = python-rasterio
 	makedepends = python-scipy
 	makedepends = python-scikit-image
+	makedepends = python-shapely
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.9.0.tar.gz
-	md5sums = 9f2e6cb96dd5cd42f0299886a1ec4077
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.10.0.tar.gz
+	md5sums = 7ac16ff97281f01937226da80abe0161
 
 pkgname = python-photutils
 	depends = python>=3.9
 	depends = python-numpy>=1.22
-	depends = python-astropy>=5.0
-	optdepends = python-scipy>=1.7.0: To power a variety of features in several modules (strongly recommended)
-	optdepends = python-scikit-image>=0.19.0: Used in deblend_sources for deblending segmented sources
+	depends = python-astropy>=5.1
+	optdepends = python-scipy>=1.7.2: To power a variety of features in several modules (strongly recommended)
+	optdepends = python-scikit-image>=0.19: Used in deblend_sources for deblending segmented sources
 	optdepends = python-scikit-learn>=1.0: Used in DBSCANGroup to create star groups
-	optdepends = python-matplotlib>=3.5.0: To power a variety of plotting features (e.g. plotting apertures
+	optdepends = python-matplotlib>=3.5: To power a variety of plotting features (e.g. plotting apertures
 	optdepends = python-gwcs>=0.18: Used in make_gwcs to create a simple celestial gwcs object
-	optdepends = python-photutils-doc: Documentation for python-photutils
 	optdepends = python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values
 	optdepends = python-tqdm: Used to display optional progress bars
 	optdepends = python-rasterio: Used for converting source segments into polygon objects
 	optdepends = python-shapley: Used for converting source segments into polygon objects
+	optdepends = python-photutils-doc: Documentation for python-photutils
 
 pkgname = python-photutils-doc
 	pkgdesc = Documentation for Python Photutils module

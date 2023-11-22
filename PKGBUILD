@@ -2,13 +2,13 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
 url="http://photutils.readthedocs.io"
 license=('BSD')
-makedepends=('cython>=0.29.30'
+makedepends=('cython>=3.0.0'
              'python-setuptools-scm>=6.2'
              'python-wheel'
              'python-build'
@@ -20,14 +20,14 @@ makedepends=('cython>=0.29.30'
              'python-rasterio'
              'python-scipy'
              'python-scikit-image'
+             'python-shapely'
              'graphviz')
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
               'python-matplotlib'
               'python-scikit-learn'
-              'python-gwcs'
-              'python-shapely')    # scipy scikit-image rasterio already in makedepends
+              'python-gwcs')    # scipy scikit-image shapely rasterio already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/M6707HH.fits"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-001R1.fit.gz"
@@ -40,21 +40,20 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('9f2e6cb96dd5cd42f0299886a1ec4077')
+md5sums=('7ac16ff97281f01937226da80abe0161')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i "/oldest-supported-numpy/d" pyproject.toml
-    sed -e "/bool8/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning" \
-        -i setup.cfg
-#   install -Dm644 "${srcdir}"/{*.fit*,*.txt,*.xml} -t ${_pyname}/datasets/data
-#   patch -Np1 -i "${srcdir}/datasets-use-local.patch"
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -e "/bool8/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning" \
+#        -i setup.cfg
+#    install -Dm644 "${srcdir}"/{*.fit*,*.txt,*.xml} -t ${_pyname}/datasets/data
+#    patch -Np1 -i "${srcdir}/datasets-use-local.patch"
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -71,17 +70,17 @@ check() {
 }
 
 package_python-photutils() {
-    depends=('python>=3.9' 'python-numpy>=1.22' 'python-astropy>=5.0')
-    optdepends=('python-scipy>=1.7.0: To power a variety of features in several modules (strongly recommended)'
-                'python-scikit-image>=0.19.0: Used in deblend_sources for deblending segmented sources'
+    depends=('python>=3.9' 'python-numpy>=1.22' 'python-astropy>=5.1')
+    optdepends=('python-scipy>=1.7.2: To power a variety of features in several modules (strongly recommended)'
+                'python-scikit-image>=0.19: Used in deblend_sources for deblending segmented sources'
                 'python-scikit-learn>=1.0:  Used in DBSCANGroup to create star groups'
-                'python-matplotlib>=3.5.0: To power a variety of plotting features (e.g. plotting apertures'
+                'python-matplotlib>=3.5: To power a variety of plotting features (e.g. plotting apertures'
                 'python-gwcs>=0.18: Used in make_gwcs to create a simple celestial gwcs object'
-                'python-photutils-doc: Documentation for python-photutils'
                 'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
                 'python-tqdm: Used to display optional progress bars'
                 'python-rasterio: Used for converting source segments into polygon objects'
-                'python-shapley: Used for converting source segments into polygon objects')
+                'python-shapley: Used for converting source segments into polygon objects'
+                'python-photutils-doc: Documentation for python-photutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
