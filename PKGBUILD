@@ -34,9 +34,23 @@ package() {
         ln -s /opt/activitywatch/$name $pkgdir/usr/bin/$name
     done
 
-    modulenames=("aw-server" "aw-server-rust" "aw-watcher-afk" "aw-watcher-window")
+    modulenames=("aw-server" "aw-server-rust" "aw-watcher-afk" "aw-watcher-window" "aw-watcher-input" "aw-notify" "aw-server-rust/aw-sync")
     for name in "${modulenames[@]}"; do
-        ln -s /opt/activitywatch/$name/$name $pkgdir/usr/bin/$name
+        # if a module has a path, use that, 
+        # else assume its in a dir with the same name as the module
+        dir=$(dirname $name)
+        if [ "$dir" == "." ]; then
+            dir=$name
+        else
+            # strip the path from the name
+            name=$(basename $name)
+        fi
+        # check that the module exists
+        if [ ! -f "/opt/activitywatch/$dir/$name" ]; then
+            echo "WARNING: $dir/$name does not exist, skipping"
+            continue
+        fi
+        ln -s /opt/activitywatch/$dir/$name $pkgdir/usr/bin/$name
     done
 
     # Add .desktop file for autostart
