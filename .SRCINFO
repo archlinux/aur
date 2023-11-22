@@ -1,7 +1,7 @@
 pkgbase = auto-cpufreq
 	pkgdesc = Automatic CPU speed & power optimizer
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq.install
 	arch = any
