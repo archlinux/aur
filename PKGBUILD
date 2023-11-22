@@ -23,6 +23,7 @@ makedepends=(
   gtk4
   meson
   qt5-base
+  qt6-base
   qt5-x11extras
   vala
   xdg-desktop-portal
