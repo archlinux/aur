@@ -1,6 +1,6 @@
 pkgbase = python-adafruit-circuitpython-dht
 	pkgdesc = CircuitPython support for DHT11 and DHT22 type temperature/humidity devices
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_DHT
 	arch = armv6h
@@ -10,7 +10,7 @@ pkgbase = python-adafruit-circuitpython-dht
 	makedepends = python-pip
 	depends = python
 	depends = python-adafruit-circuitpython-busdevice
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-dht/adafruit-circuitpython-dht-4.0.2.tar.gz
-	sha256sums = b936683aa8e89abcce37f77d5ff0663a8c28b1ea8988ffe0207a700088617b85
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-dht/adafruit-circuitpython-dht-4.0.3.tar.gz
+	sha256sums = 351c8094d86c4398a39b79432a376d14020d272744d9f66958251f1192ae4bef
 
 pkgname = python-adafruit-circuitpython-dht
