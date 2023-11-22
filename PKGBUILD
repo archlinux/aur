@@ -46,6 +46,10 @@ build_with_clang_options=" \
             -DCMAKE_CXX_COMPILER=clang++ \
             -DLLVM_ENABLE_MODULES=ON \
             -DLLVM_ENABLE_LTO=Thin \
+            -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
+            -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
+            -DLLVM_ENABLE_UNWIND_TABLES=OFF \
+            -DLLVM_ENABLE_LIBCXX=ON \
 	"
 
 additional_build_options=""
@@ -82,10 +86,6 @@ build() {
     # https://llvm.org/docs/CMake.html
     cmake   -B _build \
             -GNinja \
-            -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
-            -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
-            -DLLVM_ENABLE_UNWIND_TABLES=OFF \
-            -DLLVM_ENABLE_LIBCXX=ON \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
             -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
