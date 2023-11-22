@@ -1,7 +1,7 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgname=sing-geosite
-pkgver=20230807051510
+pkgver=20231121082246
 pkgrel=1
 
 pkgdesc='sing-geosite database'
@@ -12,7 +12,7 @@ license=('GPL3')
 
 source=("${pkgver}.geosite.db::${url}/releases/download/${pkgver}/geosite.db"
         "${pkgver}.LICENSE::https://raw.githubusercontent.com/${_repo}/${pkgver}/LICENSE")
-sha256sums=('600ae730c8c8fcaac7f19df185cd5e5d75244b40346b95e876a231141e5c752c'
+sha256sums=('01a640d5d096f8dec923d0fae8d211877ef32bffe86a857be150377edbfbf72f'
             '2f02b7486bcfa90d115c71a20437f3906b6fd5bef81c5dc0efd341399e89d0fd')
 
 package() {
