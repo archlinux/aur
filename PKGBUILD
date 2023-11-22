@@ -1,6 +1,6 @@
 
 pkgname=webers-git
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 epoch=
 pkgdesc="A python program that allows components in plain html"
@@ -32,7 +32,7 @@ prepare() {
 package() {
         cd webers
         install -Dm755 ./main.py "$pkgdir/usr/bin/webers" 
-        install -Dm755 ./dj2.py "$pkgdir/usr/bin/dj2.py" 
+        install -Dm755 ./PyTml.py "$pkgdir/usr/bin/PyTml.py" 
         if test -f "/usr/bin/watcher.py"; then
             echo "File exists"
         else
