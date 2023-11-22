@@ -1,5 +1,6 @@
-# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
-# Contributer: svalo <me@valo.space>
+# Maintainer: Dennis Herbrich (Gyroplast) <dennis.herbrich@veloxis.de>
+# Contributor: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
+# Contributor: svalo <me@valo.space>
 
 pkgname=plzip
 pkgver=1.10
