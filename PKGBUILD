@@ -51,7 +51,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'nginx.immich.conf'
         'media.util.ts.patch'
 )
-sha256sums=('3fe1ac4e0840fcd997cf3a7df68248039fdbe0d5a540f0414e5f3311d6670746'
+sha256sums=('7790120ae5278a7ce0e121122f2954f91a23e2972a34957fc88fc6cb430b3b89'
             '42792b6b7c5461385395907af9bf724e02c6622603a741e86c73b1204a5ad973'
             '08df269485ebea360dc1156409d148c959ba28040017cd02be2606c5d28be5b0'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
