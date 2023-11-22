@@ -1,0 +1,25 @@
+pkgbase = harrison-bass-flow
+	pkgver = 3.0.1.3a9f39a4
+	pkgrel = 1
+	url = https://store.harrisonaudio.com/all-products/bass-flow
+	arch = x86_64
+	groups = pro-audio
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+	source = https://softwareupdate.solidstatelogic.com/DownloadManager/InstallersLinux/Harrison_BassFlow_v3.0.1.3a9f39a4-linux-amd64.tar.gz
+	sha256sums = fa3e1dc5d423c0ac59739b0f6638e31c835e8ac83e8dbc47aca572fc6efad774
+
+pkgname = harrison-bass-flow-vst-bin
+	pkgdesc = Harrison Bass Flow (VST)
+	groups = vst-plugins
+	provides = harrison-bass-flow-vst-bin
+	conflicts = harrison-ava-bf-vst
+	conflicts = harrison-ava
+	replaces = harrison-ava-bf-vst
+	replaces = harrison-ava
+
+pkgname = harrison-bass-flow-vst3-bin
+	pkgdesc = Harrison Bass Flow (VST3)
