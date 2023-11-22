@@ -1,18 +1,19 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
+# Contributor: Fabian Brosda <fabi3141@gmx.de>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gauche-git
-pkgver=0.9.13_pre2.r14715
+pkgver=0.9.13.r15303
 pkgrel=1
-epoch=6
+epoch=7
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
 url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
 # gauche only needed if this is the first build of gauche-git,
 # afterwards gauche-git will provide gauche
-depends=('mbedtls' 'gdbm' 'libatomic_ops' 'slib') 
-makedepends=('bash' 'git' 'gauche') 
+depends=('mbedtls' 'gdbm' 'libatomic_ops' 'slib')
+makedepends=('bash' 'git' 'gauche')
 provides=('gauche')
 conflicts=('gauche')
 source=('git+https://github.com/shirok/Gauche.git')
@@ -24,14 +25,20 @@ pkgver() {
   _appver=$(awk -F, '/AC_INIT/ {print $2}' configure.ac|tr -d [])
   printf %s.r%s $(echo $_appver|tr - .) $(git rev-list --count HEAD)
 }
-  
+
 build() {
   cd "$_gitname"
   LANG=C
   ./DIST gen
   CONFIG_SHELL=/bin/bash ./configure --prefix=/usr \
-    --enable-multibyte=utf-8 --enable-threads=pthreads 
+    --enable-multibyte=utf-8 --enable-threads=pthreads \
+    --with-slib=/usr/share/slib --with-tls=mbedtls
   make
+
+  # Make sure the catalog file for slib is created.
+  # TODO: Better to use a hook to update after the installation?
+  # s.a. src/Gauche/lib/Makefile.in
+  make slibcat-in-place
 }
 
 package() {
