@@ -5,7 +5,7 @@
 
 pkgname=mit-scheme
 pkgver=12.1
-pkgrel=6
+pkgrel=7
 pkgdesc="MIT/GNU Scheme"
 url="https://www.gnu.org/software/mit-scheme/"
 arch=(x86_64)
@@ -34,29 +34,26 @@ source=(
 sha256sums=(
   '8cfbb21b0e753ab8874084522e4acfec7cadf83e516098e4ab788368b748ae0c'
   'SKIP'
-  '3f55a9690d1d0614899ab641f7ae8807e5d5bdca1550d5f5621e3e8fa8898fc9'
+  '8351ada9f5f71472b8992d6b1ad2c8120b26e4a9b5503ba266c80931152e9a66'
 )
 validpgpkeys=('8F664EF430167B808170D35AC9E40BAAFD0CB132') # Chris Hanson <cph@chris-hanson.org>
 
 _archive="$pkgname-$pkgver"
 
 prepare() {
-  cd "$_archive"
+  (
+    cd "$_archive"
+    patch --forward --strip=1 --input="$srcdir/disable-long-running-tests.patch"
+  )
 
-  patch --forward --strip=1 --input="$srcdir/disable-long-running-tests.patch"
-
-  rm -rf src_real src_test
-  cp -r src src_real
-  cp -r src src_test
+  cp -r "$_archive" "$_archive-test"
 }
 
 build() {
   cd "$_archive"
 
-  # Running ./configure the original src/ directory pollutes it and will make
-  # re-installs fail
   (
-    cd src_real
+    cd src
     ./configure \
       --prefix=/usr \
       --with-x \
@@ -67,7 +64,8 @@ build() {
 
   (
     cd doc
-    ./configure --prefix=/usr \
+    ./configure \
+      --prefix=/usr \
       --enable-pdf \
       --disable-html
     make
@@ -75,11 +73,11 @@ build() {
 }
 
 check() {
-  cd "$_archive"
+  cd "$_archive-test"
 
   # Run tests with a temporary installation
   (
-    cd src_test
+    cd src
     ./configure \
       --prefix="$PWD/../tmp_install/usr/" \
       --with-x \
@@ -99,10 +97,9 @@ package() {
   install -Dm644 "etc/xscheme.el" "$pkgdir/usr/share/emacs/site-lisp/xscheme.el"
 
   (
-    cd src_real
+    cd src
     make DESTDIR="$pkgdir" install
   )
-
   (
     cd doc
     make DESTDIR="$pkgdir" install

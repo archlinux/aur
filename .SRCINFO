@@ -1,7 +1,7 @@
 pkgbase = mit-scheme
 	pkgdesc = MIT/GNU Scheme
 	pkgver = 12.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.gnu.org/software/mit-scheme/
 	arch = x86_64
 	license = GPL
@@ -20,6 +20,6 @@ pkgbase = mit-scheme
 	validpgpkeys = 8F664EF430167B808170D35AC9E40BAAFD0CB132
 	sha256sums = 8cfbb21b0e753ab8874084522e4acfec7cadf83e516098e4ab788368b748ae0c
 	sha256sums = SKIP
-	sha256sums = 3f55a9690d1d0614899ab641f7ae8807e5d5bdca1550d5f5621e3e8fa8898fc9
+	sha256sums = 8351ada9f5f71472b8992d6b1ad2c8120b26e4a9b5503ba266c80931152e9a66
 
 pkgname = mit-scheme

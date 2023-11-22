@@ -1,6 +1,6 @@
 diff --unified --recursive --text mit-scheme-12.1.orig/tests/check.scm mit-scheme-12.1/tests/check.scm
---- mit-scheme-12.1.orig/tests/check.scm	2023-11-11 13:59:03.680789324 +0100
-+++ mit-scheme-12.1/tests/check.scm	2023-11-11 13:59:09.140815039 +0100
+--- mit-scheme-12.1.orig/tests/check.scm	2023-11-22 21:59:59.030940383 +0100
++++ mit-scheme-12.1/tests/check.scm	2023-11-22 22:00:59.460589887 +0100
 @@ -44,7 +44,7 @@
      "compiler/test-closure"
      ("compiler/test-fasdump" (compiler portable-fasdump))
@@ -10,8 +10,12 @@ diff --unified --recursive --text mit-scheme-12.1.orig/tests/check.scm mit-schem
      "compiler/test-lsh"
      "compiler/test-open-code"
      "compiler/test-remquo"
-@@ -86,8 +86,8 @@
-     "runtime/test-flonum.bin"
+@@ -83,11 +83,11 @@
+     ("runtime/test-file-attributes" (runtime))
+     "runtime/test-floenv"
+     "runtime/test-flonum"
+-    "runtime/test-flonum.bin"
++    ; "runtime/test-flonum.bin"
      "runtime/test-flonum.com"
      "runtime/test-generator"
 -    "runtime/test-hash-table"
