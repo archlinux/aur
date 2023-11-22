@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,2164,2154
 pkgname=auto-cpufreq
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
@@ -30,33 +30,15 @@ sha256sums=('77a5ce9dc8044c5e5bf5770a6c3e16a252f8cef8c80ecc6eed9fefddc6ec825b'
             'c89514e12efcb161d678e6c0c978e08faf41a08625bd4a83b893c1e05cd8429e'
 )
 
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	DIR="$srcdir/opt/auto-cpufreq/"
-	
-	echo -e "\nInstalling necessary Python packages\n"
-	
-	python -m venv $DIR/venv
-	source $DIR/venv/bin/activate
-	echo $(which python)
-	python3 -m pip install --upgrade pip wheel
-	
-	echo -e "\nBuilding $pkgname\n"
-
-	git config --global --add safe.directory $DIR
-	python3 -m pip install .
-
-	# patch pyvenv.cfg to the final install directory instead of the build directory
-	TEMP=$(cat $DIR/venv/pyvenv.cfg | grep -v command)
-	echo "$TEMP" > $DIR/venv/pyvenv.cfg
-
-	echo "command = /usr/bin/python -m venv /opt/auto-cpufreq/venv" >> $DIR/venv/pyvenv.cfg
-
-	echo ""
-}
-
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir"
+
+	mkdir -p $pkgdir/opt/$pkgname/
+	mkdir -p $pkgdir/opt/$pkgname/venv/
+
+	cp -R $pkgname-$pkgver $pkgdir/opt/$pkgname/src
+
+	cd $pkgname-$pkgver
 
 	install -Dm755 scripts/auto-cpufreq-venv-wrapper "$pkgdir/usr/bin/auto-cpufreq"
 	install -Dm755 scripts/start_app "$pkgdir/usr/bin/auto-cpufreq-gtk"
@@ -73,5 +55,4 @@ package() {
 	install -Dm644 scripts/style.css "$pkgdir/usr/share/$pkgname/scripts/"
 	install -Dm644 scripts/auto-cpufreq-gtk.desktop -t "$pkgdir/usr/share/applications/"
 
-	cp -pr $srcdir/opt -t $pkgdir/
 }
