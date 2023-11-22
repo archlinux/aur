@@ -2,8 +2,8 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-msgs
-pkgver=9.3.0
-pkgrel=2
+pkgver=10.0.0
+pkgrel=1
 pkgdesc="Messages for Gazebo robot simulation."
 arch=('i686' 'x86_64')
 url="https://gazebosim.org/libs/msgs"
@@ -12,10 +12,10 @@ groups=('development')
 depends=('protobuf' 'protobuf-c' 'ignition-math>6' 'ignition-utils>1'
          'ignition-tools>1' 'python')
 makedepends=('ignition-cmake>2' 'ruby-ronn' 'doxygen' 'tinyxml2')
-source=("${pkgname}-${pkgver}::https://github.com/gazebosim/gz-msgs/archive/gz-msgs9_${pkgver}.tar.gz")
-sha256sums=('d1ffe5b87374e42afa0ecd27d9c97a45c9f389b2cbbe4a89efbe93cb08db03db')
+source=("${pkgname}-${pkgver}::https://github.com/gazebosim/gz-msgs/archive/gz-msgs10_${pkgver}.tar.gz")
+sha256sums=('81afeb973252ffabcbab1372271efac2d3dbd52679916b495000215f43d54997')
 
-_dir="gz-msgs-gz-msgs9_${pkgver}"
+_dir="gz-msgs-gz-msgs10_${pkgver}"
 
 build() {
   cd "${srcdir}/${_dir}"
