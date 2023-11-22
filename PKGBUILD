@@ -15,24 +15,28 @@ source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('4305951d9753696ad2caa259af52c45eda8e02fee061d45cd364899942d2d00cf9ba23b8193a5a52e249f88da21df260efcd49e5f756f3743fdfbcf70144d405')
 
 depends=(
-	'python-moderngl'
-	'python-numpy'
-	'python-pillow'
-	# AUR dependencies
-	'python-pyglet'
-	'python-pyrr'
+    'python-moderngl'
+    'python-numpy'
+    'python-pillow'
+    # AUR dependencies
+    'python-pyglet'
+    'python-pyrr'
 )
-makedepends=('python-setuptools')
+makedepends=(
+    "python-build"
+    "python-installer"
+    "python-wheel"
+)
 
 build ()
 {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py build
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package ()
 {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
