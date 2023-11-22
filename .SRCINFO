@@ -16,7 +16,6 @@ pkgbase = libportal-inputcapture
 	makedepends = gtk4
 	makedepends = meson
 	makedepends = qt5-base
-	makedepends = qt6-base
 	makedepends = qt5-x11extras
 	makedepends = vala
 	makedepends = xdg-desktop-portal

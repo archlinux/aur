@@ -23,7 +23,6 @@ makedepends=(
   gtk4
   meson
   qt5-base
-  qt6-base
   qt5-x11extras
   vala
   xdg-desktop-portal
@@ -48,7 +47,8 @@ prepare() {
 }
 
 build() {
-  arch-meson libportal build
+  arch-meson libportal build \
+  -D backend-qt6=disabled
   meson compile -C build
 }
 
