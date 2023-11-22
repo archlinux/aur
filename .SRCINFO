@@ -1,6 +1,6 @@
 pkgbase = opengate
 	pkgdesc = Open GATE - numerical simulations in medical imaging and radiotherapy
-	pkgver = 8.0
+	pkgver = 9.3
 	pkgrel = 1
 	url = https://github.com/OpenGATE/Gate
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = opengate
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = https://github.com/OpenGATE/Gate/archive/v8.0.tar.gz
-	md5sums = 5297e3a67d53e98548cc71b1491435e8
+	source = https://github.com/OpenGATE/Gate/archive/v9.3.tar.gz
+	md5sums = e3e507776d9347e0903e8721ec03cd03
 
 pkgname = opengate
-
