@@ -3,9 +3,9 @@
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 
 pkgname=swt
-pkgver=4.28
-pkgrel=2
-_date=202306050440
+pkgver=4.29
+pkgrel=1
+_date=202309031000
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
@@ -29,7 +29,7 @@ source=(
   "build-swt.xml"
 )
 noextract=("$_archive")
-sha256sums=('331d6a1d4bd14359426345f33cff86534f431d57f82a2bd3c38e344544465123'
+sha256sums=('13b8d31153cf199e1aaa6f7dbff4f97ab61a256e78b8090fbcc55a363f02a697'
             'a5e60b4d1b23a728f62f0b46d32717e7c4a8ea773c3539ca2091a19bed898fad')
 
 prepare() {
