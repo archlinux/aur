@@ -8,6 +8,6 @@ pkgbase = pooi
 	depends = rust
 	depends = cargo
 	source = https://gitlab.com/tellmeY/$pkgname/-/archive/v$pkgver/pooi-v$pkgver.tar.gz 
-	sha256sums = 6a26ffb97233263a93de23033245780acc8a62cc7b2d7214d5d2495ea2f4c16d
+	sha256sums = 57ae830d1d7b3a59fb1f421736b17027b374b6758e21d69979a9cb7b3519a3a0 
 
 pkgname = pooi
