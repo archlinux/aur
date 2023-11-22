@@ -1,4 +1,5 @@
-# Maintainer: Carson Rueter <swurl at swurl dot xyz>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Carson Rueter <swurl at swurl dot xyz>
 # Contributor: tinywrkb <tinywrkb@gmail.com>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Maxim Baz <rofi at maximbaz dot com>
@@ -8,48 +9,50 @@
 # Contributor: Rasi <rasi@xssn.at>
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
-
-_gitname=rofi
 pkgname=rofi-lbonn-wayland
-pkgver=1.7.5+wayland1
-_pkgver="${pkgver/_/-}"
+pkgver=1.7.5+wayland2
 pkgrel=1
-pkgdesc='A window switcher, application launcher and dmenu replacement (Wayland fork)'
+pkgdesc='A window switcher, run dialog and dmenu replacement - fork with wayland support'
 arch=(x86_64)
-url="https://github.com/lbonn/$_gitname"
+url="https://github.com/lbonn/rofi"
 license=(MIT)
-depends=(libxdg-basedir startup-notification libxkbcommon-x11 xcb-util-wm xcb-util-xrm librsvg wayland xcb-util-cursor)
-makedepends=(check meson wayland-protocols git)
-checkdepends=(ttf-font)
-optdepends=('i3-wm: use as a window switcher')
+depends=(libxdg-basedir
+         libxkbcommon-x11
+         librsvg
+         startup-notification
+         wayland
+         xcb-util-cursor
+         xcb-util-wm
+         xcb-util-xrm)
+makedepends=(check
+             meson
+             wayland-protocols)
 provides=(rofi)
 conflicts=(rofi)
-source=("${_gitname}::git+${url}.git#branch=wayland")
-sha256sums=('SKIP')
+source=("${url}/releases/download/${pkgver}/${pkgname%-lbonn-wayland}-${pkgver}.tar.gz")
+sha256sums=('025a390469008179eaffaa599e2eabbd81a77f7141d9038e008304673ba19843')
 
 prepare() {
-  cd $_gitname
-  git checkout ${_pkgver}
-  git submodule update --init
+   cd ${pkgname%-lbonn-wayland}-${pkgver}
+   sed -i "s/xfce4-terminal.wrapper/xfce4-terminal/g" script/rofi-sensible-terminal
+   # This is copied from the offical Arch rofi PKGBUILD.
+   # I do not use xfce, so if this causes any issue please let me know.
 }
-
 build() {
-  arch-meson \
-    -Dwayland=enabled \
-    -Dcheck=enabled \
-    $_gitname build
-  meson compile -C build
+   local meson_options=(-Dwayland=enabled -Dcheck=enabled)
+   cd ${pkgname%-lbonn-wayland}-${pkgver}
+   arch-meson build #"${meson_options[@]}"
+   meson compile -C build
 }
 
-#check() {
-#  LC_ALL=C meson test -C build
-#}
+check() {
+   cd ${pkgname%-lbonn-wayland}-${pkgver}
+   LC_ALL=C meson test -C build
+}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
-
-  cd $_gitname
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  install -dm755 "$pkgdir/usr/share/doc/$_gitname/examples"
-  install -Dm755 Examples/*.sh "$pkgdir/usr/share/doc/$_gitname/examples"
+   cd ${pkgname%-lbonn-wayland}-${pkgver}
+   meson install -C build --destdir="${pkgdir}"
+   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+   install -Dm755 Examples/*.sh -t "$pkgdir/usr/share/doc/${pkgname%-lbonn-wayland}/examples"
 }
