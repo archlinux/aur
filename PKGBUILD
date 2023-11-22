@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=basilisk.utils
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Basilisk Installation Utilities'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b46fefd4613b0f98163459d8c03f2c70a46f3dfbbddf5db6dfda146ebfb09a23')
+sha256sums=('474007e52f5a18e9e76c7e0fad7121cba2a77aed02c649e98fd5cc994182a4a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
