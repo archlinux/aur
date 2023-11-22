@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgname=immich
 pkgrel=1
-pkgver=1.88.1
+pkgver=1.88.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
