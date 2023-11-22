@@ -1,5 +1,0 @@
---- tdesktop/lib/xdg/io.github.kukuruzka165.materialgram.desktop 2023-06-04 22:09:25.539659841 +0300
-+++ tdesktop/lib/xdg/io.github.kukuruzka165.materialgram.desktop 2023-06-04 22:09:26.963020076 +0300
-@@ -4,2 +4,2 @@
--Exec=materialgram -- %u
-+Exec=QT_SCALE_FACTOR=0.8 QT_QPA_PLATFORMTHEME=xdgdesktopportal DESKTOPINTEGRATION=1 materialgram -- %u

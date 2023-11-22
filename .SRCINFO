@@ -1,7 +1,7 @@
 pkgbase = materialgram-git
 	pkgdesc = Unofficial desktop version of Telegram messaging app with Material Design
 	pkgver = 4.11.3.1.r0.g8e7f13065
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kukuruzka165/materialgram
 	arch = x86_64
 	arch = aarch64
@@ -84,9 +84,6 @@ pkgbase = materialgram-git
 	source = telegram-desktop-cld3::git+https://github.com/google/cld3.git
 	source = cppgir::git+https://gitlab.com/mnauw/cppgir.git
 	source = cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git
-	source = fix-arch-linux-desktop-portal.patch
-	source = workaround-for-dbusactivatable.patch
-	source = qt_scale_factor-fix.patch_
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -124,8 +121,5 @@ pkgbase = materialgram-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = bfffa405e5051b1bce791a6226228ecba96d7218f3ba3b954c1a0952ff21669f293f9d7ef3a1dbb2fb3d86c3c115c751b12f1731889d605e806af212bdab99e1
-	sha512sums = 25c817d37e0d96aed72e01fd566a851c2895570f04423f3358bc5ef66421c518a82d74e9aeaa64095c122a12d8dc56a4f42ee72bdd3123d7b823df211d0c04c5
-	sha512sums = 4015577ff22150c5191ca80d61cf82895096cf86e1a94bda283cadcebb2202ced8d2ffdf55a3e19e50f70f8bc13317e17927dc9ed7f0c8645e28d760115a935e
 
 pkgname = materialgram-git

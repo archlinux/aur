@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=materialgram-git
 pkgver=4.11.3.1.r0.g8e7f13065
-pkgrel=2
+pkgrel=3
 pkgdesc='Unofficial desktop version of Telegram messaging app with Material Design'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kukuruzka165/materialgram"
@@ -54,29 +54,7 @@ source=("tdesktop::git+https://github.com/kukuruzka165/materialgram.git#branch=m
         "telegram-desktop-cld3::git+https://github.com/google/cld3.git"
         "cppgir::git+https://gitlab.com/mnauw/cppgir.git"
         "cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git"
-        "fix-arch-linux-desktop-portal.patch"
-        "workaround-for-dbusactivatable.patch"
-        "qt_scale_factor-fix.patch_"
 )
-prepare() {
-    #
-    # Applying custom patches
-    #
-    for patch_filepath in *.patch; do
-        echo "Applying patch $patch_filepath"
-
-        patch -i $patch_filepath -u -p0 -N -r- || true
-    done
-
-    if [[ $PATCH_QT_SCALING -eq 1 ]]; then
-        echo "Applying QT_SCALE_FACTOR patch!"
-
-        patch -i qt_scale_factor-fix.patch_ -u -p0 -N -r- || true
-    fi
-
-    #
-    # Patch end
-    #
 
     cd "$srcdir/tdesktop"
     git submodule init
@@ -190,7 +168,4 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'bfffa405e5051b1bce791a6226228ecba96d7218f3ba3b954c1a0952ff21669f293f9d7ef3a1dbb2fb3d86c3c115c751b12f1731889d605e806af212bdab99e1'
-            '25c817d37e0d96aed72e01fd566a851c2895570f04423f3358bc5ef66421c518a82d74e9aeaa64095c122a12d8dc56a4f42ee72bdd3123d7b823df211d0c04c5'
-            '4015577ff22150c5191ca80d61cf82895096cf86e1a94bda283cadcebb2202ced8d2ffdf55a3e19e50f70f8bc13317e17927dc9ed7f0c8645e28d760115a935e')
+            'SKIP')
