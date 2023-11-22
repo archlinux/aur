@@ -29,9 +29,11 @@ validpgpkeys=(
     '26984CB69EB8C4A26196F7A4D7D916376026F177' # ellemouton
     'FE5E159A70C436D6AF4D2887B1F8848557AA29D2' # ffranr
     'F4FC70F07310028424EFC20A8E4256593F177720' # guggero
+    '32F7EA1E7A0339F7D37164B9F82D456EA023C9BF' # hieblmi
     'EB13A98091E8D67CDD7FC5A7E9FE7FE00AD163A4' # positiveblue
     'E4D85299674B2D31FAA1892E372CBD7633C61696' # roasbeef
     '4DC235556B18694E08518DBB671103D881A5F0E4' # sputn1ck
+    '187F6ADD93AE3B0CF335AA6AB984570980684DCC' # ViktorTigerstrom
     '729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1' # wpaulino
 )
 
@@ -53,9 +55,11 @@ prepare() {
         'ellemouton'
         'ffranr'
         'guggero'
+        'hieblmi'
         'positiveblue'
         'roasbeef'
         'sputn1ck'
+        'ViktorTigerstrom'
         'wpaulino'
     )
 
