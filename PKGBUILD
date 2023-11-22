@@ -2,7 +2,7 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-_pkgver=17.0.4
+_pkgver=17.0.5
 _pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
-sha512sums=('6703eede8013e7e5733fbd7b527757166d5698f52e239522fb320717430c88696309038501d22fe384b016b330bd92126a2c0ba88b0258c3f092801e3800b7a3')
+sha512sums=('793b63aa875b6d02e3a2803815cc9361b76c9ab1506967e18630fc3d6811bf51c73f53c51d148a5fc72e87e35dc2b88cb18b48419939c436451fe65c5a326022')
 install=clang.install
 static_build=false
 
@@ -62,12 +62,16 @@ build() {
 
     #        "clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;bolt;flang;libcxx;libcxxabi;libunwind"
 
+	(
+	set -o pipefail
     # https://llvm.org/docs/CMake.html
     cmake   -B _build \
             -GNinja \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
-            -DLLVM_ENABLE_PIC=ON \
+            -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
+            -DLLVM_ENABLE_MODULES=ON \
+            -DLLVM_ENABLE_UNWIND_TABLES=OFF \
             -DLLVM_ENABLE_LLD=ON \
             -DLLVM_ENABLE_LIBCXX=ON \
             -DCMAKE_C_COMPILER=clang \
@@ -79,14 +83,17 @@ build() {
             -DCMAKE_BUILD_TYPE=Release \
 		${additional_build_options} \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
-
 	time ninja -C _build | tee ${pkgname}-build.log
+	)
 	#perf record -e cycles:u -j any,u -- ninja -C _build
 }
 
 package() {
 	_prepare_install_script
 
+	(
+	set -o pipefail
     #rm -Rf ${pkgdir}
     DESTDIR="$pkgdir" ninja -C _build install | tee ${pkgname}-install.log
+	)
 }
