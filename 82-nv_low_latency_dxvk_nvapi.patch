@@ -1,0 +1,1202 @@
+From 0738bfdd9b9fbdcba019bfdbcd2e29ffc8fe557a Mon Sep 17 00:00:00 2001
+From: Eric Sullivan <esullivan@nvidia.com>
+Date: Fri, 13 Oct 2023 01:38:30 +0000
+Subject: [PATCH] nvapi: Add support for Reflex
+
+The intent of this commit is to enable Reflex for all D3D11,
+and D3D12 titles using dxvk-nvapi. It does this through a new
+device interface called ID3DLowLatencyDevice. This interface
+will be implemented by ID3D12Device in vkd3d-proton, and
+ID3D11Device in dxvk.
+
+To provide compatibility with LatencyFleX this change will
+only use the ID3DLowLatencyDevice interface when LatencyFleX
+is not detected.
+---
+ src/d3d/nvapi_d3d_instance.cpp               |  40 ++-
+ src/d3d/nvapi_d3d_instance.h                 |  14 +-
+ src/d3d/nvapi_d3d_low_latency_device.cpp     |  58 +++++
+ src/d3d/nvapi_d3d_low_latency_device.h       |  23 ++
+ src/d3d12/nvapi_d3d12_device.cpp             |  26 ++
+ src/d3d12/nvapi_d3d12_device.h               |   4 +
+ src/meson.build                              |   2 +
+ src/nvapi_d3d.cpp                            |  76 ++++--
+ src/nvapi_d3d12.cpp                          |  52 ++++
+ src/nvapi_interface.cpp                      |   2 +
+ src/shared/shared_interfaces.cpp             |   3 +
+ src/shared/shared_interfaces.h               |  61 +++++
+ src/vkd3d-proton/vkd3d-proton_interfaces.cpp |   1 +
+ src/vkd3d-proton/vkd3d-proton_interfaces.h   |  17 +-
+ tests/meson.build                            |   2 +
+ tests/nvapi_d3d.cpp                          | 252 ++++++++++++++++++-
+ tests/nvapi_d3d12.cpp                        | 126 ++++++++++
+ tests/nvapi_d3d12_mocks.h                    |  25 ++
+ tests/nvapi_d3d_mocks.h                      |  12 +
+ tests/nvapi_tests_private.h                  |   1 +
+ 20 files changed, 750 insertions(+), 47 deletions(-)
+ create mode 100644 src/d3d/nvapi_d3d_low_latency_device.cpp
+ create mode 100644 src/d3d/nvapi_d3d_low_latency_device.h
+ create mode 100644 src/shared/shared_interfaces.cpp
+ create mode 100644 src/shared/shared_interfaces.h
+
+diff --git a/src/d3d/nvapi_d3d_instance.cpp b/src/d3d/nvapi_d3d_instance.cpp
+index 6cdf2609..e1687ad7 100644
+--- a/src/d3d/nvapi_d3d_instance.cpp
++++ b/src/d3d/nvapi_d3d_instance.cpp
+@@ -1,4 +1,5 @@
+ #include "../util/util_log.h"
++#include "nvapi_d3d_low_latency_device.h"
+ #include "nvapi_d3d_instance.h"
+ 
+ namespace dxvk {
+@@ -13,25 +14,40 @@ namespace dxvk {
+             log::write("LatencyFleX loaded and initialized successfully");
+     }
+ 
+-    bool NvapiD3dInstance::IsReflexAvailable() {
+-        return m_lfx->IsAvailable();
++    bool NvapiD3dInstance::IsReflexAvailable(IUnknown* device) {
++        return NvapiD3dLowLatencyDevice::SupportsLowLatency(device) || m_lfx->IsAvailable();
+     }
+ 
+-    bool NvapiD3dInstance::IsReflexEnabled() const {
+-        return m_isLfxEnabled;
++    bool NvapiD3dInstance::IsLowLatencyEnabled() const {
++        return m_isLowLatencyEnabled;
+     }
+ 
+-    void NvapiD3dInstance::SetReflexEnabled(bool value) {
+-        m_isLfxEnabled = value;
++    bool NvapiD3dInstance::IsUsingLfx() const {
++        return m_lfx->IsAvailable();
+     }
+ 
+-    void NvapiD3dInstance::Sleep() {
+-        if (m_isLfxEnabled)
+-            m_lfx->WaitAndBeginFrame();
++    bool NvapiD3dInstance::SetReflexMode(IUnknown* device, bool enable, bool boost, uint32_t frameTimeUs) {
++        bool result = true;
++
++        if (IsReflexAvailable(device))
++            m_isLowLatencyEnabled = enable;
++
++        if (m_lfx->IsAvailable() && enable)
++            m_lfx->SetTargetFrameTime(frameTimeUs * kNanoInMicro);
++        else if (NvapiD3dLowLatencyDevice::SupportsLowLatency(device))
++            result = NvapiD3dLowLatencyDevice::SetLatencySleepMode(device, enable, boost, frameTimeUs);
++
++        return result;
+     }
+ 
+-    void NvapiD3dInstance::SetTargetFrameTime(uint64_t frameTimeUs) {
+-        constexpr uint64_t kNanoInMicro = 1000;
+-        m_lfx->SetTargetFrameTime(frameTimeUs * kNanoInMicro);
++    bool NvapiD3dInstance::Sleep(IUnknown* device) {
++        bool result = true;
++
++        if (m_lfx->IsAvailable() && m_isLowLatencyEnabled)
++            m_lfx->WaitAndBeginFrame();
++        else if (NvapiD3dLowLatencyDevice::SupportsLowLatency(device))
++            result = NvapiD3dLowLatencyDevice::LatencySleep(device);
++
++        return result;
+     }
+ }
+\ No newline at end of file
+diff --git a/src/d3d/nvapi_d3d_instance.h b/src/d3d/nvapi_d3d_instance.h
+index 5a223714..eb7d9388 100644
+--- a/src/d3d/nvapi_d3d_instance.h
++++ b/src/d3d/nvapi_d3d_instance.h
+@@ -10,15 +10,17 @@ namespace dxvk {
+         ~NvapiD3dInstance();
+ 
+         void Initialize();
+-        [[nodiscard]] bool IsReflexAvailable();
+-        [[nodiscard]] bool IsReflexEnabled() const;
+-        void SetReflexEnabled(bool value);
+-        void Sleep();
+-        void SetTargetFrameTime(uint64_t frameTimeUs);
++        [[nodiscard]] bool IsReflexAvailable(IUnknown* device);
++        [[nodiscard]] bool IsLowLatencyEnabled() const;
++        [[nodiscard]] bool IsUsingLfx() const;
++        [[nodiscard]] bool SetReflexMode(IUnknown* device, bool enable, bool boost, uint32_t frameTimeUs);
++        [[nodiscard]] bool Sleep(IUnknown* device);
+ 
+       private:
++        constexpr static uint64_t kNanoInMicro = 1000;
++
+         ResourceFactory& m_resourceFactory;
+         std::unique_ptr<Lfx> m_lfx;
+-        bool m_isLfxEnabled = false;
++        bool m_isLowLatencyEnabled = false;
+     };
+ }
+\ No newline at end of file
+diff --git a/src/d3d/nvapi_d3d_low_latency_device.cpp b/src/d3d/nvapi_d3d_low_latency_device.cpp
+new file mode 100644
+index 00000000..37c8dd75
+--- /dev/null
++++ b/src/d3d/nvapi_d3d_low_latency_device.cpp
+@@ -0,0 +1,58 @@
++#include "nvapi_d3d_low_latency_device.h"
++
++namespace dxvk {
++    bool NvapiD3dLowLatencyDevice::SupportsLowLatency(IUnknown* device) {
++        auto d3dLowLatencyDevice = GetLowLatencyDevice(device);
++        if (d3dLowLatencyDevice == nullptr)
++            return false;
++
++        return d3dLowLatencyDevice->SupportsLowLatency();
++    }
++
++    bool NvapiD3dLowLatencyDevice::LatencySleep(IUnknown* device) {
++        auto d3dLowLatencyDevice = GetLowLatencyDevice(device);
++        if (d3dLowLatencyDevice == nullptr)
++            return false;
++
++        return SUCCEEDED(d3dLowLatencyDevice->LatencySleep());
++    }
++
++    bool NvapiD3dLowLatencyDevice::SetLatencySleepMode(IUnknown* device, bool lowLatencyMode, bool lowLatencyBoost, uint32_t minimumIntervalUs) {
++        auto d3dLowLatencyDevice = GetLowLatencyDevice(device);
++        if (d3dLowLatencyDevice == nullptr)
++            return false;
++
++        return SUCCEEDED(d3dLowLatencyDevice->SetLatencySleepMode(lowLatencyMode, lowLatencyBoost, minimumIntervalUs));
++    }
++
++    bool NvapiD3dLowLatencyDevice::GetLatencyInfo(IUnknown* device, D3D_LATENCY_RESULTS* latencyResults) {
++        auto d3dLowLatencyDevice = GetLowLatencyDevice(device);
++        if (d3dLowLatencyDevice == nullptr)
++            return false;
++
++        return SUCCEEDED(d3dLowLatencyDevice->GetLatencyInfo(latencyResults));
++    }
++
++    bool NvapiD3dLowLatencyDevice::SetLatencyMarker(IUnknown* device, uint64_t frameID, uint32_t markerType) {
++        auto d3dLowLatencyDevice = GetLowLatencyDevice(device);
++        if (d3dLowLatencyDevice == nullptr)
++            return false;
++
++        return SUCCEEDED(d3dLowLatencyDevice->SetLatencyMarker(frameID, markerType));
++    }
++
++    Com<ID3DLowLatencyDevice> NvapiD3dLowLatencyDevice::GetLowLatencyDevice(IUnknown* device) {
++        std::scoped_lock lock(m_LowLatencyDeviceMutex);
++        auto it = m_lowLatencyDeviceMap.find(device);
++        if (it != m_lowLatencyDeviceMap.end())
++            return it->second;
++
++        Com<ID3DLowLatencyDevice> d3dLowLatencyDevice;
++        if (FAILED(device->QueryInterface(IID_PPV_ARGS(&d3dLowLatencyDevice))))
++            return nullptr;
++
++        m_lowLatencyDeviceMap.emplace(device, d3dLowLatencyDevice.ptr());
++
++        return d3dLowLatencyDevice;
++    }
++}
+diff --git a/src/d3d/nvapi_d3d_low_latency_device.h b/src/d3d/nvapi_d3d_low_latency_device.h
+new file mode 100644
+index 00000000..77938340
+--- /dev/null
++++ b/src/d3d/nvapi_d3d_low_latency_device.h
+@@ -0,0 +1,23 @@
++#pragma once
++
++#include "../nvapi_private.h"
++#include "../shared/shared_interfaces.h"
++#include "../util/com_pointer.h"
++
++namespace dxvk {
++    class NvapiD3dLowLatencyDevice {
++      public:
++        static bool SupportsLowLatency(IUnknown* device);
++        static bool LatencySleep(IUnknown* device);
++        static bool SetLatencySleepMode(IUnknown* device, bool lowLatencyMode, bool lowLatencyBoost, uint32_t minimumIntervalUs);
++        static bool GetLatencyInfo(IUnknown* device, D3D_LATENCY_RESULTS* latencyResults);
++        static bool SetLatencyMarker(IUnknown* device, uint64_t frameID, uint32_t markerType);
++
++      private:
++        inline static std::unordered_map<IUnknown*, ID3DLowLatencyDevice*> m_lowLatencyDeviceMap;
++
++        inline static std::mutex m_LowLatencyDeviceMutex;
++
++        [[nodiscard]] static Com<ID3DLowLatencyDevice> GetLowLatencyDevice(IUnknown* device);
++    };
++}
+\ No newline at end of file
+diff --git a/src/d3d12/nvapi_d3d12_device.cpp b/src/d3d12/nvapi_d3d12_device.cpp
+index 0d30d347..b69fa982 100644
+--- a/src/d3d12/nvapi_d3d12_device.cpp
++++ b/src/d3d12/nvapi_d3d12_device.cpp
+@@ -81,6 +81,14 @@ namespace dxvk {
+         return SUCCEEDED(cubinDevice->GetCudaSurfaceObject(uavHandle, reinterpret_cast<UINT32*>(cudaSurfaceHandle)));
+     }
+ 
++    bool NvapiD3d12Device::NotifyOutOfBandCommandQueue(ID3D12CommandQueue* commandQueue, D3D12_OUT_OF_BAND_CQ_TYPE type) {
++        auto commandQueueExt = GetCommandQueueExt(commandQueue);
++        if (commandQueueExt == nullptr)
++            return false;
++
++        return SUCCEEDED(commandQueueExt->NotifyOutOfBandCommandQueue(type));
++    }
++
+     bool NvapiD3d12Device::LaunchCubinShader(ID3D12GraphicsCommandList* commandList, NVDX_ObjectHandle pShader, NvU32 blockX, NvU32 blockY, NvU32 blockZ, const void* params, NvU32 paramSize) {
+         auto commandListExt = GetCommandListExt(commandList);
+         if (!commandListExt.has_value())
+@@ -146,6 +154,22 @@ namespace dxvk {
+         return deviceExt;
+     }
+ 
++    Com<ID3D12CommandQueueExt> NvapiD3d12Device::GetCommandQueueExt(ID3D12CommandQueue* commandQueue) {
++        std::scoped_lock lock(m_commandQueueMutex);
++        auto it = m_commandQueueMap.find(commandQueue);
++        if (it != m_commandQueueMap.end())
++            return it->second;
++
++        Com<ID3D12CommandQueueExt> commandQueueExt;
++        if (FAILED(commandQueue->QueryInterface(IID_PPV_ARGS(&commandQueueExt))))
++            return nullptr;
++
++        if (commandQueueExt != nullptr)
++            m_commandQueueMap.emplace(commandQueue, commandQueueExt.ptr());
++
++        return commandQueueExt;
++    }
++
+     std::optional<NvapiD3d12Device::CommandListExtWithVersion> NvapiD3d12Device::GetCommandListExt(ID3D12GraphicsCommandList* commandList) {
+         std::scoped_lock lock(m_commandListMutex);
+         auto it = m_commandListMap.find(commandList);
+@@ -169,11 +193,13 @@ namespace dxvk {
+     }
+ 
+     void NvapiD3d12Device::ClearCacheMaps() {
++        std::scoped_lock commandQueueLock(m_commandQueueMutex);
+         std::scoped_lock commandListLock(m_commandListMutex);
+         std::scoped_lock cubinDeviceLock(m_cubinDeviceMutex);
+         std::scoped_lock cubinSmemLock(m_cubinSmemMutex);
+ 
+         m_cubinDeviceMap.clear();
++        m_commandQueueMap.clear();
+         m_commandListMap.clear();
+         m_cubinSmemMap.clear();
+     }
+diff --git a/src/d3d12/nvapi_d3d12_device.h b/src/d3d12/nvapi_d3d12_device.h
+index ef419d34..386de906 100644
+--- a/src/d3d12/nvapi_d3d12_device.h
++++ b/src/d3d12/nvapi_d3d12_device.h
+@@ -24,6 +24,7 @@ namespace dxvk {
+         static bool DestroyCubinComputeShader(ID3D12Device* device, NVDX_ObjectHandle shader);
+         static bool GetCudaTextureObject(ID3D12Device* device, D3D12_CPU_DESCRIPTOR_HANDLE srvHandle, D3D12_CPU_DESCRIPTOR_HANDLE samplerHandle, NvU32* cudaTextureHandle);
+         static bool GetCudaSurfaceObject(ID3D12Device* device, D3D12_CPU_DESCRIPTOR_HANDLE uavHandle, NvU32* cudaSurfaceHandle);
++        static bool NotifyOutOfBandCommandQueue(ID3D12CommandQueue* commandQueue, D3D12_OUT_OF_BAND_CQ_TYPE type);
+         static bool LaunchCubinShader(ID3D12GraphicsCommandList* commandList, NVDX_ObjectHandle shader, NvU32 blockX, NvU32 blockY, NvU32 blockZ, const void* params, NvU32 paramSize);
+         static bool CaptureUAVInfo(ID3D12Device* device, NVAPI_UAV_INFO* uavInfo);
+         static bool IsFatbinPTXSupported(ID3D12Device* device);
+@@ -32,15 +33,18 @@ namespace dxvk {
+ 
+       private:
+         inline static std::unordered_map<ID3D12Device*, ID3D12DeviceExt*> m_cubinDeviceMap;
++        inline static std::unordered_map<ID3D12CommandQueue*, ID3D12CommandQueueExt*> m_commandQueueMap;
+         inline static std::unordered_map<ID3D12GraphicsCommandList*, CommandListExtWithVersion> m_commandListMap;
+         inline static std::unordered_map<NVDX_ObjectHandle, NvU32> m_cubinSmemMap;
+ 
+         inline static std::mutex m_commandListMutex;
++        inline static std::mutex m_commandQueueMutex;
+         inline static std::mutex m_cubinDeviceMutex;
+         inline static std::mutex m_cubinSmemMutex;
+ 
+         [[nodiscard]] static Com<ID3D12DeviceExt> GetCubinDevice(ID3D12Device* device);
+         [[nodiscard]] static Com<ID3D12DeviceExt> GetDeviceExt(ID3D12Device* device, D3D12_VK_EXTENSION extension);
++        [[nodiscard]] static Com<ID3D12CommandQueueExt> GetCommandQueueExt(ID3D12CommandQueue* commandQueue);
+         [[nodiscard]] static std::optional<CommandListExtWithVersion> GetCommandListExt(ID3D12GraphicsCommandList* commandList);
+     };
+ }
+diff --git a/src/meson.build b/src/meson.build
+index 98410c0f..daabb3f8 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -1,6 +1,7 @@
+ nvapi_src = files([
+   'dxvk/dxvk_interfaces.cpp',
+   'vkd3d-proton/vkd3d-proton_interfaces.cpp',
++  'shared/shared_interfaces.cpp',
+   'util/util_string.cpp',
+   'util/util_env.cpp',
+   'util/util_log.cpp',
+@@ -12,6 +13,7 @@ nvapi_src = files([
+   'resource_factory.cpp',
+   'd3d/lfx.cpp',
+   'd3d/nvapi_d3d_instance.cpp',
++  'd3d/nvapi_d3d_low_latency_device.cpp',
+   'd3d11/nvapi_d3d11_device.cpp',
+   'd3d12/nvapi_d3d12_device.cpp',
+   'nvapi_globals.cpp',
+diff --git a/src/nvapi_d3d.cpp b/src/nvapi_d3d.cpp
+index 7f1168bf..166abc06 100644
+--- a/src/nvapi_d3d.cpp
++++ b/src/nvapi_d3d.cpp
+@@ -1,3 +1,5 @@
++#include "dxvk/dxvk_interfaces.h"
++#include "d3d/nvapi_d3d_low_latency_device.h"
+ #include "nvapi_private.h"
+ #include "nvapi_globals.h"
+ #include "util/util_statuscode.h"
+@@ -106,23 +108,26 @@ extern "C" {
+ 
+     NvAPI_Status __cdecl NvAPI_D3D_Sleep(IUnknown* pDevice) {
+         constexpr auto n = __func__;
++        static bool alreadyLoggedNoReflex = false;
++        static bool alreadyLoggedError = false;
+         static bool alreadyLoggedOk = false;
+-        static bool alreadyLoggedNoLfx = false;
+ 
+         if (nvapiAdapterRegistry == nullptr)
+             return ApiNotInitialized(n);
+ 
+-        if (!nvapiD3dInstance->IsReflexAvailable())
+-            return NoImplementation(n, alreadyLoggedNoLfx);
++        if (!nvapiD3dInstance->IsReflexAvailable(pDevice))
++            return NoImplementation(n, alreadyLoggedNoReflex);
+ 
+-        nvapiD3dInstance->Sleep();
++        if (!nvapiD3dInstance->Sleep(pDevice))
++            return Error(n, alreadyLoggedError);
+ 
+         return Ok(n, alreadyLoggedOk);
+     }
+ 
+     NvAPI_Status __cdecl NvAPI_D3D_SetSleepMode(IUnknown* pDevice, NV_SET_SLEEP_MODE_PARAMS* pSetSleepModeParams) {
+         constexpr auto n = __func__;
+-        static bool alreadyLoggedNoLfx = false;
++        static bool alreadyLoggedNoReflex = false;
++        static bool alreadyLoggedError = false;
+ 
+         if (nvapiAdapterRegistry == nullptr)
+             return ApiNotInitialized(n);
+@@ -130,19 +135,19 @@ extern "C" {
+         if (pSetSleepModeParams->version != NV_SET_SLEEP_MODE_PARAMS_VER1)
+             return IncompatibleStructVersion(n);
+ 
+-        if (!nvapiD3dInstance->IsReflexAvailable())
+-            return NoImplementation(n, alreadyLoggedNoLfx);
++        if (!nvapiD3dInstance->IsReflexAvailable(pDevice))
++            return NoImplementation(n, alreadyLoggedNoReflex);
+ 
+-        nvapiD3dInstance->SetReflexEnabled(pSetSleepModeParams->bLowLatencyMode);
+-        if (pSetSleepModeParams->bLowLatencyMode)
+-            nvapiD3dInstance->SetTargetFrameTime(pSetSleepModeParams->minimumIntervalUs);
++        if (!nvapiD3dInstance->SetReflexMode(pDevice, pSetSleepModeParams->bLowLatencyMode, pSetSleepModeParams->bLowLatencyBoost, pSetSleepModeParams->minimumIntervalUs))
++            return Error(n, alreadyLoggedError);
+ 
+         return Ok(str::format(n, " (", pSetSleepModeParams->bLowLatencyMode ? (str::format("Enabled/", pSetSleepModeParams->minimumIntervalUs, "us")) : "Disabled", ")"));
+     }
+ 
+     NvAPI_Status __cdecl NvAPI_D3D_GetSleepStatus(IUnknown* pDevice, NV_GET_SLEEP_STATUS_PARAMS* pGetSleepStatusParams) {
+         constexpr auto n = __func__;
+-        static bool alreadyLoggedNoLfx = false;
++        static bool alreadyLoggedNoReflex = false;
++        static bool alreadyLoggedOk = false;
+ 
+         if (nvapiAdapterRegistry == nullptr)
+             return ApiNotInitialized(n);
+@@ -150,20 +155,53 @@ extern "C" {
+         if (pGetSleepStatusParams->version != NV_GET_SLEEP_STATUS_PARAMS_VER1)
+             return IncompatibleStructVersion(n);
+ 
+-        if (!nvapiD3dInstance->IsReflexAvailable())
+-            return NoImplementation(n, alreadyLoggedNoLfx);
++        if (!nvapiD3dInstance->IsReflexAvailable(pDevice))
++            return NoImplementation(n, alreadyLoggedNoReflex);
+ 
+-        pGetSleepStatusParams->bLowLatencyMode = nvapiD3dInstance->IsReflexEnabled();
+-        return Ok(n);
++        pGetSleepStatusParams->bLowLatencyMode = nvapiD3dInstance->IsLowLatencyEnabled();
++
++        return Ok(n, alreadyLoggedOk);
+     }
+ 
+     NvAPI_Status __cdecl NvAPI_D3D_GetLatency(IUnknown* pDev, NV_LATENCY_RESULT_PARAMS* pGetLatencyParams) {
+-        static bool alreadyLogged = false;
+-        return NoImplementation(__func__, alreadyLogged);
++        constexpr auto n = __func__;
++        static bool alreadyLoggedNoImpl = false;
++        static bool alreadyLoggedError = false;
++        static bool alreadyLoggedOk = false;
++
++        if (nvapiAdapterRegistry == nullptr)
++            return ApiNotInitialized(n);
++
++        if (pGetLatencyParams->version != NV_LATENCY_RESULT_PARAMS_VER1)
++            return IncompatibleStructVersion(n);
++
++        if (nvapiD3dInstance->IsUsingLfx() || !NvapiD3dLowLatencyDevice::SupportsLowLatency(pDev))
++            return NoImplementation(n, alreadyLoggedNoImpl);
++
++        if (!NvapiD3dLowLatencyDevice::GetLatencyInfo(pDev, reinterpret_cast<D3D_LATENCY_RESULTS*>(pGetLatencyParams)))
++            return Error(n, alreadyLoggedError);
++
++        return Ok(n, alreadyLoggedOk);
+     }
+ 
+     NvAPI_Status __cdecl NvAPI_D3D_SetLatencyMarker(IUnknown* pDev, NV_LATENCY_MARKER_PARAMS* pSetLatencyMarkerParams) {
+-        static bool alreadyLogged = false;
+-        return NoImplementation(__func__, alreadyLogged);
++        constexpr auto n = __func__;
++        static bool alreadyLoggedNoImpl = false;
++        static bool alreadyLoggedError = false;
++        static bool alreadyLoggedOk = false;
++
++        if (nvapiAdapterRegistry == nullptr)
++            return ApiNotInitialized(n);
++
++        if (pSetLatencyMarkerParams->version != NV_LATENCY_MARKER_PARAMS_VER1)
++            return IncompatibleStructVersion(n);
++
++        if (nvapiD3dInstance->IsUsingLfx() || !NvapiD3dLowLatencyDevice::SupportsLowLatency(pDev))
++            return NoImplementation(n, alreadyLoggedNoImpl);
++
++        if (!NvapiD3dLowLatencyDevice::SetLatencyMarker(pDev, pSetLatencyMarkerParams->frameID, pSetLatencyMarkerParams->markerType))
++            return Error(n, alreadyLoggedError);
++
++        return Ok(n, alreadyLoggedOk);
+     }
+ }
+diff --git a/src/nvapi_d3d12.cpp b/src/nvapi_d3d12.cpp
+index aadd7f22..c989cc42 100644
+--- a/src/nvapi_d3d12.cpp
++++ b/src/nvapi_d3d12.cpp
+@@ -1,5 +1,6 @@
+ #include "nvapi_private.h"
+ #include "nvapi_globals.h"
++#include "d3d/nvapi_d3d_low_latency_device.h"
+ #include "d3d12/nvapi_d3d12_device.h"
+ #include "util/util_statuscode.h"
+ #include "util/util_op_code.h"
+@@ -397,4 +398,55 @@ extern "C" {
+ 
+         return Ok(n, alreadyLoggedOk);
+     }
++
++    NvAPI_Status __cdecl NvAPI_D3D12_NotifyOutOfBandCommandQueue(ID3D12CommandQueue* pCommandQueue, NV_OUT_OF_BAND_CQ_TYPE cqType) {
++        constexpr auto n = __func__;
++        static bool alreadyLoggedError = false;
++        static bool alreadyLoggedOk = false;
++
++        if (nvapiAdapterRegistry == nullptr)
++            return ApiNotInitialized(n);
++
++        if (pCommandQueue == nullptr)
++            return InvalidArgument(n);
++
++        ID3D12Device* pDevice;
++        if (FAILED(pCommandQueue->GetDevice(IID_PPV_ARGS(&pDevice))))
++            return InvalidArgument(n);
++
++        if (nvapiD3dInstance->IsUsingLfx() || !NvapiD3dLowLatencyDevice::SupportsLowLatency(pDevice))
++            return NoImplementation(n);
++
++        if (!NvapiD3d12Device::NotifyOutOfBandCommandQueue(pCommandQueue, static_cast<D3D12_OUT_OF_BAND_CQ_TYPE>(cqType)))
++            return Error(n, alreadyLoggedError);
++
++        return Ok(n, alreadyLoggedOk);
++    }
++
++    NvAPI_Status __cdecl NvAPI_D3D12_SetAsyncFrameMarker(ID3D12CommandQueue* pCommandQueue, NV_LATENCY_MARKER_PARAMS* pSetLatencyMarkerParams) {
++        constexpr auto n = __func__;
++        static bool alreadyLoggedError = false;
++        static bool alreadyLoggedOk = false;
++
++        if (nvapiAdapterRegistry == nullptr)
++            return ApiNotInitialized(n);
++
++        if (pSetLatencyMarkerParams->version != NV_LATENCY_MARKER_PARAMS_VER1)
++            return IncompatibleStructVersion(n);
++
++        if (pCommandQueue == nullptr)
++            return InvalidArgument(n);
++
++        ID3D12Device* pDevice;
++        if (FAILED(pCommandQueue->GetDevice(IID_PPV_ARGS(&pDevice))))
++            return InvalidArgument(n);
++
++        if (nvapiD3dInstance->IsUsingLfx() || !NvapiD3dLowLatencyDevice::SupportsLowLatency(pDevice))
++            return NoImplementation(n);
++
++        if (!NvapiD3dLowLatencyDevice::SetLatencyMarker(pDevice, pSetLatencyMarkerParams->frameID, pSetLatencyMarkerParams->markerType))
++            return Error(n, alreadyLoggedError);
++
++        return Ok(n, alreadyLoggedOk);
++    }
+ }
+diff --git a/src/nvapi_interface.cpp b/src/nvapi_interface.cpp
+index b461166e..4b6f24b3 100644
+--- a/src/nvapi_interface.cpp
++++ b/src/nvapi_interface.cpp
+@@ -69,6 +69,8 @@ extern "C" {
+         INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D12_GetRaytracingCaps)
+         INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D12_GetRaytracingAccelerationStructurePrebuildInfoEx)
+         INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D12_BuildRaytracingAccelerationStructureEx)
++        INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D12_NotifyOutOfBandCommandQueue)
++        INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D12_SetAsyncFrameMarker)
+         INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D_GetObjectHandleForResource)
+         INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D_SetResourceHint)
+         INSERT_AND_RETURN_WHEN_EQUALS(NvAPI_D3D_GetCurrentSLIState)
+diff --git a/src/shared/shared_interfaces.cpp b/src/shared/shared_interfaces.cpp
+new file mode 100644
+index 00000000..2d675ebc
+--- /dev/null
++++ b/src/shared/shared_interfaces.cpp
+@@ -0,0 +1,3 @@
++#include "shared_interfaces.h"
++
++const GUID ID3DLowLatencyDevice::guid = {0xf3112584, 0x41f9, 0x348d, {0xa5, 0x9b, 0x00, 0xb7, 0xe1, 0xd2, 0x85, 0xd6}};
+diff --git a/src/shared/shared_interfaces.h b/src/shared/shared_interfaces.h
+new file mode 100644
+index 00000000..bc5e0baa
+--- /dev/null
++++ b/src/shared/shared_interfaces.h
+@@ -0,0 +1,61 @@
++#pragma once
++
++#include "../nvapi_private.h"
++
++#ifdef __GNUC__
++#pragma GCC diagnostic ignored "-Wnon-virtual-dtor"
++#endif // __GNUC__
++
++#define SHARED_DEFINE_GUID(iface) \
++    template <>                   \
++    inline GUID const& __mingw_uuidof<iface>() { return iface::guid; }
++
++/**
++ * \brief Frame Report Info
++ */
++typedef struct D3D_LATENCY_RESULTS {
++    UINT32 version;
++    struct D3D_FRAME_REPORT {
++        UINT64 frameID;
++        UINT64 inputSampleTime;
++        UINT64 simStartTime;
++        UINT64 simEndTime;
++        UINT64 renderSubmitStartTime;
++        UINT64 renderSubmitEndTime;
++        UINT64 presentStartTime;
++        UINT64 presentEndTime;
++        UINT64 driverStartTime;
++        UINT64 driverEndTime;
++        UINT64 osRenderQueueStartTime;
++        UINT64 osRenderQueueEndTime;
++        UINT64 gpuRenderStartTime;
++        UINT64 gpuRenderEndTime;
++        UINT32 gpuActiveRenderTimeUs;
++        UINT32 gpuFrameTimeUs;
++        UINT8 rsvd[120];
++    } frame_reports[64];
++    UINT8 rsvd[32];
++} D3D_LATENCY_RESULTS;
++
++MIDL_INTERFACE("f3112584-41f9-348d-a59b-00b7e1d285d6")
++ID3DLowLatencyDevice : public IUnknown {
++    static const GUID guid;
++
++    virtual BOOL STDMETHODCALLTYPE SupportsLowLatency() = 0;
++
++    virtual HRESULT STDMETHODCALLTYPE LatencySleep() = 0;
++
++    virtual HRESULT STDMETHODCALLTYPE SetLatencySleepMode(
++        BOOL lowLatencyMode,
++        BOOL lowLatencyBoost,
++        uint32_t minimumIntervalUs) = 0;
++
++    virtual HRESULT STDMETHODCALLTYPE SetLatencyMarker(
++        uint64_t frameID,
++        uint32_t markerType) = 0;
++
++    virtual HRESULT STDMETHODCALLTYPE GetLatencyInfo(
++        D3D_LATENCY_RESULTS * latencyResults) = 0;
++};
++
++SHARED_DEFINE_GUID(ID3DLowLatencyDevice)
+diff --git a/src/vkd3d-proton/vkd3d-proton_interfaces.cpp b/src/vkd3d-proton/vkd3d-proton_interfaces.cpp
+index 03a4acd1..7b41fb7d 100644
+--- a/src/vkd3d-proton/vkd3d-proton_interfaces.cpp
++++ b/src/vkd3d-proton/vkd3d-proton_interfaces.cpp
+@@ -20,3 +20,4 @@
+ const GUID ID3D12DeviceExt::guid = {0x11ea7a1a, 0x0f6a, 0x49bf, {0xb6, 0x12, 0x3e, 0x30, 0xf8, 0xe2, 0x01, 0xdd}};
+ const GUID ID3D12GraphicsCommandListExt::guid = {0x77a86b09, 0x2bea, 0x4801, {0xb8, 0x9a, 0x37, 0x64, 0x8e, 0x10, 0x4a, 0xf1}};
+ const GUID ID3D12GraphicsCommandListExt1::guid = {0xd53b0028, 0xafb4, 0x4b65, {0xa4, 0xf1, 0x7b, 0x0d, 0xaa, 0xa6, 0x5b, 0x4f}};
++const GUID ID3D12CommandQueueExt::guid = {0x40ed3f96, 0xe773, 0xe9bc, {0xfc, 0x0c, 0xe9, 0x55, 0x60, 0xc9, 0x9a, 0xd6}};
+diff --git a/src/vkd3d-proton/vkd3d-proton_interfaces.h b/src/vkd3d-proton/vkd3d-proton_interfaces.h
+index 8f388ac6..b16f38d7 100644
+--- a/src/vkd3d-proton/vkd3d-proton_interfaces.h
++++ b/src/vkd3d-proton/vkd3d-proton_interfaces.h
+@@ -29,7 +29,13 @@
+ 
+ enum D3D12_VK_EXTENSION : uint32_t {
+     D3D12_VK_NVX_BINARY_IMPORT = 0x1,
+-    D3D12_VK_NVX_IMAGE_VIEW_HANDLE = 0x2
++    D3D12_VK_NVX_IMAGE_VIEW_HANDLE = 0x2,
++    D3D12_VK_NV_LOW_LATENCY_2 = 0x3
++};
++
++enum D3D12_OUT_OF_BAND_CQ_TYPE : uint32_t {
++    D3D_OUT_OF_BAND_RENDER = 0x0,
++    D3D_OUT_OF_BAND_PRESENT = 0x1
+ };
+ 
+ struct D3D12_CUBIN_DATA_HANDLE {
+@@ -114,6 +120,15 @@ ID3D12GraphicsCommandListExt1 : public ID3D12GraphicsCommandListExt {
+         UINT32 raw_params_count) = 0;
+ };
+ 
++MIDL_INTERFACE("40ed3f96-e773-e9bc-fc0c-e95560c99ad6")
++ID3D12CommandQueueExt : public IUnknown {
++    static const GUID guid;
++
++    virtual HRESULT STDMETHODCALLTYPE NotifyOutOfBandCommandQueue(
++        D3D12_OUT_OF_BAND_CQ_TYPE type) = 0;
++};
++
+ VKD3D_PROTON_GUID(ID3D12DeviceExt)
+ VKD3D_PROTON_GUID(ID3D12GraphicsCommandListExt)
+ VKD3D_PROTON_GUID(ID3D12GraphicsCommandListExt1)
++VKD3D_PROTON_GUID(ID3D12CommandQueueExt)
+diff --git a/tests/meson.build b/tests/meson.build
+index 5aca1d56..c967aed8 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -1,6 +1,7 @@
+ nvapi_src = files([
+   '../src/dxvk/dxvk_interfaces.cpp',
+   '../src/vkd3d-proton/vkd3d-proton_interfaces.cpp',
++  '../src/shared/shared_interfaces.cpp',
+   '../src/util/util_string.cpp',
+   '../src/util/util_env.cpp',
+   '../src/util/util_log.cpp',
+@@ -8,6 +9,7 @@ nvapi_src = files([
+   '../src/sysinfo/nvml.cpp',
+   '../src/d3d/lfx.cpp',
+   '../src/d3d/nvapi_d3d_instance.cpp',
++  '../src/d3d/nvapi_d3d_low_latency_device.cpp',
+   '../src/sysinfo/nvapi_output.cpp',
+   '../src/sysinfo/nvapi_adapter.cpp',
+   '../src/sysinfo/nvapi_adapter_registry.cpp',
+diff --git a/tests/nvapi_d3d.cpp b/tests/nvapi_d3d.cpp
+index 2b32d69e..afc10fec 100644
+--- a/tests/nvapi_d3d.cpp
++++ b/tests/nvapi_d3d.cpp
+@@ -116,11 +116,16 @@ TEST_CASE("D3D Reflex/LatencyFleX depending methods succeed", "[.d3d]") {
+     auto vulkan = std::make_unique<VulkanMock>();
+     auto nvml = std::make_unique<NvmlMock>();
+     auto lfx = std::make_unique<LfxMock>();
++    D3DLowLatencyDeviceMock lowLatencyDevice;
+     DXGIDxvkAdapterMock adapter;
+     DXGIOutput6Mock output;
++    auto lowLatencyDeviceRefCount = 0;
+ 
+     auto e = ConfigureDefaultTestEnvironment(*dxgiFactory, *vulkan, *nvml, *lfx, adapter, output);
+ 
++    ALLOW_CALL(unknown, QueryInterface(ID3DLowLatencyDevice::guid, _))
++        .RETURN(E_NOINTERFACE);
++
+     ALLOW_CALL(*lfx, IsAvailable())
+         .RETURN(false);
+ 
+@@ -223,17 +228,246 @@ TEST_CASE("D3D Reflex/LatencyFleX depending methods succeed", "[.d3d]") {
+         SECTION("Sleep returns NoImplementation") {
+             REQUIRE(NvAPI_D3D_Sleep(&unknown) == NVAPI_NO_IMPLEMENTATION);
+         }
+-    }
+ 
+-    SECTION("GetLatency returns no-implementation") {
+-        NV_LATENCY_RESULT_PARAMS params;
+-        params.version = NV_LATENCY_RESULT_PARAMS_VER;
+-        REQUIRE(NvAPI_D3D_GetLatency(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++        SECTION("GetLatency returns no-implementation") {
++            NV_LATENCY_RESULT_PARAMS params;
++            params.version = NV_LATENCY_RESULT_PARAMS_VER;
++            REQUIRE(NvAPI_D3D_GetLatency(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++        }
++
++        SECTION("SetLatencyMarker returns no-implementation") {
++            NV_LATENCY_MARKER_PARAMS params;
++            params.version = NV_LATENCY_MARKER_PARAMS_VER;
++            REQUIRE(NvAPI_D3D_SetLatencyMarker(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++        }
+     }
+ 
+-    SECTION("SetLatencyMarker returns no-implementation") {
+-        NV_LATENCY_MARKER_PARAMS params;
+-        params.version = NV_LATENCY_MARKER_PARAMS_VER;
+-        REQUIRE(NvAPI_D3D_SetLatencyMarker(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++    SECTION("Reflex depending methods succeed when D3DLowLatencyDevice is available") {
++        ALLOW_CALL(unknown, QueryInterface(ID3DLowLatencyDevice::guid, _))
++            .LR_SIDE_EFFECT(*_2 = static_cast<ID3DLowLatencyDevice*>(&lowLatencyDevice))
++            .LR_SIDE_EFFECT(lowLatencyDeviceRefCount++)
++            .RETURN(S_OK);
++        ALLOW_CALL(lowLatencyDevice, AddRef())
++            .LR_SIDE_EFFECT(lowLatencyDeviceRefCount++)
++            .RETURN(lowLatencyDeviceRefCount);
++        ALLOW_CALL(lowLatencyDevice, Release())
++            .LR_SIDE_EFFECT(lowLatencyDeviceRefCount--)
++            .RETURN(lowLatencyDeviceRefCount);
++
++        ALLOW_CALL(lowLatencyDevice, SupportsLowLatency())
++            .RETURN(false);
++
++        SECTION("D3DLowLatencyDevice does not support low latency") {
++            SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++            REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++            SECTION("GetSleepStatus returns NoImplementation") {
++                REQUIRE_CALL(lowLatencyDevice, SupportsLowLatency())
++                    .RETURN(false);
++
++                NV_GET_SLEEP_STATUS_PARAMS_V1 params{};
++                params.version = NV_GET_SLEEP_STATUS_PARAMS_VER1;
++                REQUIRE(NvAPI_D3D_GetSleepStatus(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++            }
++
++            SECTION("SetSleepMode returns NoImplementation") {
++                NV_SET_SLEEP_MODE_PARAMS params{};
++                params.version = NV_SET_SLEEP_MODE_PARAMS_VER;
++                REQUIRE(NvAPI_D3D_SetSleepMode(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++            }
++
++            SECTION("Sleep returns NoImplementation") {
++                REQUIRE(NvAPI_D3D_Sleep(&unknown) == NVAPI_NO_IMPLEMENTATION);
++            }
++
++            SECTION("GetLatency returns no-implementation") {
++                NV_LATENCY_RESULT_PARAMS params;
++                params.version = NV_LATENCY_RESULT_PARAMS_VER;
++                REQUIRE(NvAPI_D3D_GetLatency(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++            }
++
++            SECTION("SetLatencyMarker returns no-implementation") {
++                NV_LATENCY_MARKER_PARAMS params;
++                params.version = NV_LATENCY_MARKER_PARAMS_VER;
++                REQUIRE(NvAPI_D3D_SetLatencyMarker(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++            }
++        }
++
++        SECTION("D3DLowLatencyDevice supports low latency") {
++            ALLOW_CALL(lowLatencyDevice, SupportsLowLatency())
++                .RETURN(true);
++
++            SECTION("GetSleepStatus returns OK") {
++                REQUIRE_CALL(lowLatencyDevice, SupportsLowLatency())
++                    .RETURN(true);
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_GET_SLEEP_STATUS_PARAMS_V1 params{};
++                params.version = NV_GET_SLEEP_STATUS_PARAMS_VER1;
++                REQUIRE(NvAPI_D3D_GetSleepStatus(&unknown, &params) == NVAPI_OK);
++            }
++
++            SECTION("SetSleepMode calls ID3DLowLatencyDevice::SetLatencySleepMode returns OK") {
++                FORBID_CALL(*lfx, SetTargetFrameTime(_)); // NOLINT(bugprone-use-after-move)
++
++                REQUIRE_CALL(lowLatencyDevice, SetLatencySleepMode(true, false, 250U))
++                    .RETURN(S_OK);
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_SET_SLEEP_MODE_PARAMS_V1 params{};
++                params.version = NV_SET_SLEEP_MODE_PARAMS_VER1;
++                params.bLowLatencyMode = true;
++                params.minimumIntervalUs = 250;
++                REQUIRE(NvAPI_D3D_SetSleepMode(&unknown, &params) == NVAPI_OK);
++            }
++
++            SECTION("Sleep calls ID3DLowLatencyDevice::LatencySleep and returns OK") {
++                FORBID_CALL(*lfx, SetTargetFrameTime(_)); // NOLINT(bugprone-use-after-move)
++                FORBID_CALL(*lfx, WaitAndBeginFrame());
++
++                REQUIRE_CALL(lowLatencyDevice, SetLatencySleepMode(true, false, 500U))
++                    .RETURN(S_OK);
++                REQUIRE_CALL(lowLatencyDevice, LatencySleep())
++                    .RETURN(S_OK);
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_SET_SLEEP_MODE_PARAMS sleepModeParams{};
++                sleepModeParams.version = NV_SET_SLEEP_MODE_PARAMS_VER;
++                sleepModeParams.bLowLatencyMode = true;
++                sleepModeParams.minimumIntervalUs = 500;
++                REQUIRE(NvAPI_D3D_SetSleepMode(&unknown, &sleepModeParams) == NVAPI_OK);
++                REQUIRE(NvAPI_D3D_Sleep(&unknown) == NVAPI_OK);
++            }
++
++            SECTION("SetLatencyMarker calls ID3DLowLatencyDevice::SetLatencyMarker and returns OK") {
++                REQUIRE_CALL(lowLatencyDevice, SetLatencySleepMode(true, false, 750U))
++                    .RETURN(S_OK);
++                REQUIRE_CALL(lowLatencyDevice, LatencySleep())
++                    .RETURN(S_OK);
++                REQUIRE_CALL(lowLatencyDevice, SetLatencyMarker(123ULL, SIMULATION_START))
++                    .RETURN(S_OK);
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_SET_SLEEP_MODE_PARAMS sleepModeParams{};
++                sleepModeParams.version = NV_SET_SLEEP_MODE_PARAMS_VER;
++                sleepModeParams.bLowLatencyMode = true;
++                sleepModeParams.minimumIntervalUs = 750;
++                NV_LATENCY_MARKER_PARAMS latencyMarkerParams{};
++                latencyMarkerParams.version = NV_LATENCY_MARKER_PARAMS_VER1;
++                latencyMarkerParams.frameID = 123ULL;
++                latencyMarkerParams.markerType = SIMULATION_START;
++                REQUIRE(NvAPI_D3D_SetSleepMode(&unknown, &sleepModeParams) == NVAPI_OK);
++                REQUIRE(NvAPI_D3D_Sleep(&unknown) == NVAPI_OK);
++                REQUIRE(NvAPI_D3D_SetLatencyMarker(&unknown, &latencyMarkerParams) == NVAPI_OK);
++            }
++
++            SECTION("SetLatencyMarker with unknown struct version returns incompatible-struct-version") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_MARKER_PARAMS params{};
++                params.version = NV_LATENCY_MARKER_PARAMS_VER1 + 1;
++                REQUIRE(NvAPI_D3D_SetLatencyMarker(&unknown, &params) == NVAPI_INCOMPATIBLE_STRUCT_VERSION);
++            }
++
++            SECTION("SetLatencyMarker with current struct version returns not incompatible-struct-version") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                ALLOW_CALL(lowLatencyDevice, SetLatencyMarker(_, _))
++                    .RETURN(S_OK);
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_MARKER_PARAMS params{};
++                params.version = NV_LATENCY_MARKER_PARAMS_VER;
++                REQUIRE(NvAPI_D3D_SetLatencyMarker(&unknown, &params) != NVAPI_INCOMPATIBLE_STRUCT_VERSION);
++            }
++
++            SECTION("GetLatency calls ID3DLowLatencyDevice::GetLatencyInfo and returns OK") {
++                REQUIRE_CALL(lowLatencyDevice, SetLatencySleepMode(true, false, 1000U))
++                    .RETURN(S_OK);
++                REQUIRE_CALL(lowLatencyDevice, GetLatencyInfo(_))
++                    .RETURN(S_OK);
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_SET_SLEEP_MODE_PARAMS sleepModeParams{};
++                sleepModeParams.version = NV_SET_SLEEP_MODE_PARAMS_VER;
++                sleepModeParams.bLowLatencyMode = true;
++                sleepModeParams.minimumIntervalUs = 1000;
++                NV_LATENCY_RESULT_PARAMS latencyResults{};
++                latencyResults.version = NV_LATENCY_RESULT_PARAMS_VER1;
++                REQUIRE(NvAPI_D3D_SetSleepMode(&unknown, &sleepModeParams) == NVAPI_OK);
++                REQUIRE(NvAPI_D3D_GetLatency(&unknown, &latencyResults) == NVAPI_OK);
++            }
++        }
++
++        SECTION("D3DLowLatencyDevice supports low latency and LFX is available") {
++            ALLOW_CALL(lowLatencyDevice, SupportsLowLatency())
++                .RETURN(true);
++            ALLOW_CALL(*lfx, IsAvailable())
++                .RETURN(true); // NOLINT(bugprone-use-after-move)
++
++            SECTION("SetSleepMode calls Lfx::SetTargetFrameTime returns OK") {
++                REQUIRE_CALL(*lfx, SetTargetFrameTime(250ULL * 1000)); // NOLINT(bugprone-use-after-move)
++
++                FORBID_CALL(lowLatencyDevice, SetLatencySleepMode(_, _, _));
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_SET_SLEEP_MODE_PARAMS_V1 params{};
++                params.version = NV_SET_SLEEP_MODE_PARAMS_VER1;
++                params.bLowLatencyMode = true;
++                params.minimumIntervalUs = 250;
++                REQUIRE(NvAPI_D3D_SetSleepMode(&unknown, &params) == NVAPI_OK);
++            }
++
++            SECTION("Sleep calls Lfx::WaitAndBeginFrame and returns OK") {
++                REQUIRE_CALL(*lfx, SetTargetFrameTime(500ULL * 1000)); // NOLINT(bugprone-use-after-move)
++                REQUIRE_CALL(*lfx, WaitAndBeginFrame());
++
++                FORBID_CALL(lowLatencyDevice, SetLatencySleepMode(_, _, _));
++                FORBID_CALL(lowLatencyDevice, LatencySleep());
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_SET_SLEEP_MODE_PARAMS params{};
++                params.version = NV_SET_SLEEP_MODE_PARAMS_VER;
++                params.bLowLatencyMode = true;
++                params.minimumIntervalUs = 500;
++                REQUIRE(NvAPI_D3D_SetSleepMode(&unknown, &params) == NVAPI_OK);
++                REQUIRE(NvAPI_D3D_Sleep(&unknown) == NVAPI_OK);
++            }
++
++            SECTION("GetLatency returns no-implementation") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_RESULT_PARAMS params;
++                params.version = NV_LATENCY_RESULT_PARAMS_VER;
++                REQUIRE(NvAPI_D3D_GetLatency(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++            }
++
++            SECTION("SetLatencyMarker returns no-implementation") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_MARKER_PARAMS params;
++                params.version = NV_LATENCY_MARKER_PARAMS_VER;
++                REQUIRE(NvAPI_D3D_SetLatencyMarker(&unknown, &params) == NVAPI_NO_IMPLEMENTATION);
++            }
++        }
+     }
+ }
+diff --git a/tests/nvapi_d3d12.cpp b/tests/nvapi_d3d12.cpp
+index 7e587280..05bf0ba9 100644
+--- a/tests/nvapi_d3d12.cpp
++++ b/tests/nvapi_d3d12.cpp
+@@ -2,6 +2,7 @@
+ #include "resource_factory_util.h"
+ #include "nvapi_sysinfo_mocks.h"
+ #include "nvapi_d3d12_mocks.h"
++#include "nvapi_d3d_mocks.h"
+ 
+ using namespace trompeloeil;
+ 
+@@ -21,9 +22,13 @@ typedef struct _NVAPI_D3D12_RAYTRACING_GEOMETRY_DESC_EX_R520 {
+ 
+ TEST_CASE("D3D12 methods succeed", "[.d3d12]") {
+     D3D12Vkd3dDeviceMock device;
++    D3D12Vkd3dCommandQueueMock commandQueue;
++    D3DLowLatencyDeviceMock lowLatencyDevice;
+     D3D12Vkd3dGraphicsCommandListMock commandList;
+     auto deviceRefCount = 0;
+     auto commandListRefCount = 0;
++    auto commandQueueRefCount = 0;
++    auto lowLatencyDeviceRefCount = 0;
+ 
+     ALLOW_CALL(device, QueryInterface(ID3D12DeviceExt::guid, _))
+         .LR_SIDE_EFFECT(*_2 = static_cast<ID3D12DeviceExt*>(&device))
+@@ -36,6 +41,9 @@ TEST_CASE("D3D12 methods succeed", "[.d3d12]") {
+         .LR_SIDE_EFFECT(deviceRefCount--)
+         .RETURN(deviceRefCount);
+ 
++    ALLOW_CALL(device, QueryInterface(ID3DLowLatencyDevice::guid, _))
++        .RETURN(E_NOINTERFACE);
++
+     ALLOW_CALL(device, GetExtensionSupport(_))
+         .RETURN(true);
+ 
+@@ -58,6 +66,24 @@ TEST_CASE("D3D12 methods succeed", "[.d3d12]") {
+         .LR_SIDE_EFFECT(commandListRefCount--)
+         .RETURN(commandListRefCount);
+ 
++    ALLOW_CALL(commandQueue, QueryInterface(__uuidof(ID3D12CommandQueue), _))
++        .LR_SIDE_EFFECT(*_2 = static_cast<ID3D12CommandQueue*>(&commandQueue))
++        .LR_SIDE_EFFECT(commandQueueRefCount++)
++        .RETURN(S_OK);
++    ALLOW_CALL(commandQueue, QueryInterface(ID3D12CommandQueueExt::guid, _))
++        .LR_SIDE_EFFECT(*_2 = static_cast<ID3D12CommandQueueExt*>(&commandQueue))
++        .LR_SIDE_EFFECT(commandQueueRefCount++)
++        .RETURN(S_OK);
++    ALLOW_CALL(commandQueue, AddRef())
++        .LR_SIDE_EFFECT(commandQueueRefCount++)
++        .RETURN(commandQueueRefCount);
++    ALLOW_CALL(commandQueue, Release())
++        .LR_SIDE_EFFECT(commandQueueRefCount--)
++        .RETURN(commandQueueRefCount);
++    ALLOW_CALL(commandQueue, GetDevice(__uuidof(ID3D12Device), _))
++        .LR_SIDE_EFFECT(*_2 = static_cast<ID3D12Device*>(&device))
++        .RETURN(S_OK);
++
+     SECTION("CreateGraphicsPipelineState for other than SetDepthBounds returns not-supported") {
+         FORBID_CALL(device, CreateGraphicsPipelineState(_, _, _));
+ 
+@@ -748,4 +774,104 @@ TEST_CASE("D3D12 methods succeed", "[.d3d12]") {
+             REQUIRE(NvAPI_D3D12_BuildRaytracingAccelerationStructureEx(static_cast<ID3D12GraphicsCommandList4*>(&commandList), &params) != NVAPI_INCOMPATIBLE_STRUCT_VERSION);
+         }
+     }
++
++    SECTION("D3DLowLatencyDevice methods succeed") {
++        auto dxgiFactory = std::make_unique<DXGIDxvkFactoryMock>();
++        auto vulkan = std::make_unique<VulkanMock>();
++        auto nvml = std::make_unique<NvmlMock>();
++        auto lfx = std::make_unique<LfxMock>();
++        DXGIDxvkAdapterMock adapter;
++        DXGIOutput6Mock output;
++
++        auto e = ConfigureDefaultTestEnvironment(*dxgiFactory, *vulkan, *nvml, *lfx, adapter, output);
++
++        ALLOW_CALL(device, QueryInterface(ID3DLowLatencyDevice::guid, _))
++            .LR_SIDE_EFFECT(*_2 = static_cast<ID3DLowLatencyDevice*>(&lowLatencyDevice))
++            .LR_SIDE_EFFECT(lowLatencyDeviceRefCount++)
++            .RETURN(S_OK);
++        ALLOW_CALL(lowLatencyDevice, AddRef())
++            .LR_SIDE_EFFECT(lowLatencyDeviceRefCount++)
++            .RETURN(lowLatencyDeviceRefCount);
++        ALLOW_CALL(lowLatencyDevice, Release())
++            .LR_SIDE_EFFECT(lowLatencyDeviceRefCount--)
++            .RETURN(lowLatencyDeviceRefCount);
++
++        ALLOW_CALL(lowLatencyDevice, SupportsLowLatency())
++            .RETURN(true);
++
++        SECTION("NotifyOutOfBandCommandQueue succeeds") {
++            SECTION("NotifyOutOfBandCommandQueue returns OK") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                REQUIRE_CALL(commandQueue, NotifyOutOfBandCommandQueue(static_cast<D3D12_OUT_OF_BAND_CQ_TYPE>(OUT_OF_BAND_RENDER)))
++                    .RETURN(S_OK);
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++                REQUIRE(NvAPI_D3D12_NotifyOutOfBandCommandQueue(&commandQueue, OUT_OF_BAND_RENDER) == NVAPI_OK);
++            }
++
++            SECTION("NotifyOutOfBandCommandQueue returns no-implementation with LFX") {
++                ALLOW_CALL(*lfx, IsAvailable())
++                    .RETURN(true); // NOLINT(bugprone-use-after-move)
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++                REQUIRE(NvAPI_D3D12_NotifyOutOfBandCommandQueue(&commandQueue, OUT_OF_BAND_RENDER) == NVAPI_NO_IMPLEMENTATION);
++            }
++        }
++
++        SECTION("SetAsyncFrameMarker succeeds") {
++            SECTION("SetAsyncFrameMarker returns OK") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                REQUIRE_CALL(lowLatencyDevice, SetLatencyMarker(123ULL, OUT_OF_BAND_RENDERSUBMIT_START))
++                    .RETURN(S_OK);
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_MARKER_PARAMS params{};
++                params.version = NV_LATENCY_MARKER_PARAMS_VER1;
++                params.frameID = 123ULL;
++                params.markerType = OUT_OF_BAND_RENDERSUBMIT_START;
++                REQUIRE(NvAPI_D3D12_SetAsyncFrameMarker(&commandQueue, &params) == NVAPI_OK);
++            }
++
++            SECTION("SetAsyncFrameMarker returns no-implementation with LFX") {
++                ALLOW_CALL(*lfx, IsAvailable())
++                    .RETURN(true); // NOLINT(bugprone-use-after-move)
++
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_MARKER_PARAMS params{};
++                params.version = NV_LATENCY_MARKER_PARAMS_VER1;
++                REQUIRE(NvAPI_D3D12_SetAsyncFrameMarker(&commandQueue, &params) == NVAPI_NO_IMPLEMENTATION);
++            }
++
++            SECTION("SetAsyncFrameMarker with unknown struct version returns incompatible-struct-version") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_MARKER_PARAMS params{};
++                params.version = NV_LATENCY_MARKER_PARAMS_VER1 + 1;
++                REQUIRE(NvAPI_D3D12_SetAsyncFrameMarker(&commandQueue, &params) == NVAPI_INCOMPATIBLE_STRUCT_VERSION);
++            }
++
++            SECTION("SetAsyncFrameMarker with current struct version returns not incompatible-struct-version") {
++                SetupResourceFactory(std::move(dxgiFactory), std::move(vulkan), std::move(nvml), std::move(lfx));
++
++                ALLOW_CALL(lowLatencyDevice, SetLatencyMarker(_, _))
++                    .RETURN(S_OK);
++
++                REQUIRE(NvAPI_Initialize() == NVAPI_OK);
++
++                NV_LATENCY_MARKER_PARAMS params{};
++                params.version = NV_LATENCY_MARKER_PARAMS_VER;
++                REQUIRE(NvAPI_D3D12_SetAsyncFrameMarker(&commandQueue, &params) != NVAPI_INCOMPATIBLE_STRUCT_VERSION);
++            }
++        }
++    }
+ }
+diff --git a/tests/nvapi_d3d12_mocks.h b/tests/nvapi_d3d12_mocks.h
+index a3cff713..cf6529f5 100644
+--- a/tests/nvapi_d3d12_mocks.h
++++ b/tests/nvapi_d3d12_mocks.h
+@@ -164,3 +164,28 @@ class D3D12Vkd3dGraphicsCommandListMock final : public trompeloeil::mock_interfa
+     IMPLEMENT_MOCK6(LaunchCubinShader);
+     IMPLEMENT_MOCK9(LaunchCubinShaderEx);
+ };
++
++class ID3D12Vkd3dCommandQueue : public ID3D12CommandQueue, public ID3D12CommandQueueExt {};
++
++class D3D12Vkd3dCommandQueueMock final : public trompeloeil::mock_interface<ID3D12Vkd3dCommandQueue> {
++    MAKE_MOCK2(QueryInterface, HRESULT(REFIID, void**), override);
++    MAKE_MOCK0(AddRef, ULONG(), override);
++    MAKE_MOCK0(Release, ULONG(), override);
++    IMPLEMENT_MOCK3(GetPrivateData);
++    IMPLEMENT_MOCK3(SetPrivateData);
++    IMPLEMENT_MOCK2(SetPrivateDataInterface);
++    IMPLEMENT_MOCK1(SetName);
++    IMPLEMENT_MOCK2(GetDevice);
++    IMPLEMENT_MOCK10(UpdateTileMappings);
++    IMPLEMENT_MOCK6(CopyTileMappings);
++    IMPLEMENT_MOCK2(ExecuteCommandLists);
++    IMPLEMENT_MOCK3(SetMarker);
++    IMPLEMENT_MOCK3(BeginEvent);
++    IMPLEMENT_MOCK0(EndEvent);
++    IMPLEMENT_MOCK2(Signal);
++    IMPLEMENT_MOCK2(Wait);
++    IMPLEMENT_MOCK1(GetTimestampFrequency);
++    IMPLEMENT_MOCK2(GetClockCalibration);
++    MAKE_MOCK1(GetDesc, D3D12_COMMAND_QUEUE_DESC*(D3D12_COMMAND_QUEUE_DESC*), override);
++    IMPLEMENT_MOCK1(NotifyOutOfBandCommandQueue);
++};
+\ No newline at end of file
+diff --git a/tests/nvapi_d3d_mocks.h b/tests/nvapi_d3d_mocks.h
+index d1e7ac72..472cfc54 100644
+--- a/tests/nvapi_d3d_mocks.h
++++ b/tests/nvapi_d3d_mocks.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include "nvapi_tests_private.h"
++#include "../src/shared/shared_interfaces.h"
+ #include "../src/d3d/lfx.h"
+ 
+ class UnknownMock : public trompeloeil::mock_interface<IUnknown> {
+@@ -14,3 +15,14 @@ class LfxMock : public trompeloeil::mock_interface<dxvk::Lfx> {
+     IMPLEMENT_MOCK0(WaitAndBeginFrame);
+     IMPLEMENT_MOCK1(SetTargetFrameTime);
+ };
++
++class D3DLowLatencyDeviceMock : public trompeloeil::mock_interface<ID3DLowLatencyDevice> {
++    MAKE_MOCK2(QueryInterface, HRESULT(REFIID, void**), override);
++    MAKE_MOCK0(AddRef, ULONG(), override);
++    MAKE_MOCK0(Release, ULONG(), override);
++    IMPLEMENT_MOCK0(SupportsLowLatency);
++    IMPLEMENT_MOCK0(LatencySleep);
++    IMPLEMENT_MOCK3(SetLatencySleepMode);
++    IMPLEMENT_MOCK2(SetLatencyMarker);
++    IMPLEMENT_MOCK1(GetLatencyInfo);
++};
+\ No newline at end of file
+diff --git a/tests/nvapi_tests_private.h b/tests/nvapi_tests_private.h
+index e126e61b..ff1856ae 100644
+--- a/tests/nvapi_tests_private.h
++++ b/tests/nvapi_tests_private.h
+@@ -2,6 +2,7 @@
+ 
+ #include "../src/nvapi_private.h"
+ #include "../src/nvapi_globals.h"
++#include "../src/d3d/nvapi_d3d_low_latency_device.h"
+ #include "../src/d3d11/nvapi_d3d11_device.h"
+ #include "../src/d3d12/nvapi_d3d12_device.h"
+ #include "../inc/catch_amalgamated.hpp"
