@@ -7,9 +7,10 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity
-pkgver=1.3.2
+pkgver=1.3.3
+_vcpkg_commit=4db549d1960563b4999b70303dd58d97ff55d5c3
 _nyquist_commit=3678ee6bfff9e0edc721a1b8865ab625e40f9ce4
-pkgrel=2
+pkgrel=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -21,12 +22,15 @@ makedepends=(cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg nasm chrpath python)
 optdepends=('ffmpeg: additional import/export capabilities')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/tenacityteam/$pkgname/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver-libnyquist-$_nyquist_commit.tar.gz::https://codeberg.org/tenacityteam/libnyquist/archive/$_nyquist_commit.tar.gz")
-b2sums=('ac84043ac48bd6113747ba4b26ecde08c2830ca9f62c0348cf35e9990ce98da587fed2de3ea756f7e01f6fee02540a297546f2ac28a119d5913e4c393982f623'
+        "$pkgname-vcpkg-$_vcpkg_commit.tar.gz::https://codeberg.org/tenacityteam/vcpkg/archive/$_vcpkg_commit.tar.gz"
+        "$pkgname-libnyquist-$_nyquist_commit.tar.gz::https://codeberg.org/tenacityteam/libnyquist/archive/$_nyquist_commit.tar.gz")
+b2sums=('176fd7d62a864851576c6273cd6704a897dfd0a925266c02cd98ce2b1d981e5b8bad66f0b7124284329131c5c988b36cec23c2434f8e24b72ca6ded50bb18c07'
+        '0b51356a0ead658c766d2294dfe19fb47d96eb1fbc3b749b0b229782e8625bd01ef2dedd8024dd4a1a33052d5f859caba410854f30642737715c3ebfa4d8ce92'
         '8c1e0fef8c243ec6c649f8481f764394c147d93abae2828812e53f949035cb79e8f8c7966adef9d70c0991108637b81811b42eb189c7a5cf5f4ec8c4f0dd695f')
 
 prepare() {
   mv libnyquist tenacity/lib-src/
+  mv vcpkg tenacity/
 
   cd tenacity/images/icons
   for i in *; do # fix for png icons not following hicolor category folders
