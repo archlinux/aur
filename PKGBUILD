@@ -9,5 +9,5 @@ depends=('zenity')
 
 package() {
 	mkdir -p $pkgdir/usr/share/file-manager/actions/
-	cp hardlinkcopy.desktop $pkgdir/usr/share/file-manager/actions/
+	install -m 0644 hardlinkcopy.desktop $pkgdir/usr/share/file-manager/actions/
 }
