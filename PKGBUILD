@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-rendering
-pkgver=7.2.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="C++ library designed to provide an abstraction for different rendering
 engines. It offers unified APIs for creating 3D graphics applications."
@@ -10,10 +10,10 @@ url="https://gazebosim.org/libs/rendering"
 license=('Apache')
 depends=('ignition-common' 'ignition-math' 'ignition-plugin' 'ogre=1.9')
 makedepends=('cmake' 'ignition-cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-rendering/archive/gz-rendering7_${pkgver}.tar.gz")
-sha256sums=('adc48405f326a2f6762a278a0ff7f5b3d379a761d64df4642e26f821912b0f92')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-rendering/archive/gz-rendering8_${pkgver}.tar.gz")
+sha256sums=('9155927d2ed13237c0aab6b0dafbfdc87eac91213341f8559c9d84c0eebbbe25')
 
-_dir="gz-rendering-gz-rendering7_${pkgver}"
+_dir="gz-rendering-gz-rendering8_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
