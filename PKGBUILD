@@ -3,7 +3,7 @@
 
 pkgname=python-nurbs
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Object-oriented pure Python B-Spline and NURBS library"
 arch=(x86_64)
 url=https://onurraufbingol.com/NURBS-Python
@@ -17,8 +17,19 @@ optdepends=(
 )
 makedepends=(python-setuptools cython)
 checkdepends=(python-pytest python-matplotlib)
-source=("${pkgname}-${pkgver}.tar.gz"::${_giturl}/archive/v${pkgver}.tar.gz)
-sha256sums=('a9a7c5830294a90aa4d5249c9bb4741075816087ff2484b68ee08c93c80bda56')
+source=(
+  "${pkgname}-${pkgver}.tar.gz"::${_giturl}/archive/v${pkgver}.tar.gz
+  "np-float.patch"
+)
+sha256sums=(
+  'a9a7c5830294a90aa4d5249c9bb4741075816087ff2484b68ee08c93c80bda56'
+  'SKIP'
+)
+
+prepare() {
+  cd NURBS-Python-${pkgver}
+  patch -p0 < ../np-float.patch
+}
 
 build() {
   cd NURBS-Python-${pkgver}

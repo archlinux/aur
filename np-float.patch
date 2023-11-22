@@ -1,0 +1,107 @@
+diff --color -ruN ../NURBS-Python-5.3.1-clone/geomdl/visualization/VisMPL.py ./geomdl/visualization/VisMPL.py
+--- ../NURBS-Python-5.3.1-clone/geomdl/visualization/VisMPL.py 2023-10-01 13:28:01.284096807 +0200
++++ ./geomdl/visualization/VisMPL.py   2023-10-01 13:28:40.233660486 +0200
+@@ -68,7 +68,7 @@
+ 
+     def __init__(self, **kwargs):
+         super(VisConfig, self).__init__(**kwargs)
+-        self.dtype = np.float
++        self.dtype = float
+         self.display_ctrlpts = kwargs.get('ctrlpts', True)
+         self.display_evalpts = kwargs.get('evalpts', True)
+         self.display_bbox = kwargs.get('bbox', False)
+diff --color -ruN ../NURBS-Python-5.3.1-clone/geomdl/visualization/VisPlotly.py ./geomdl/visualization/VisPlotly.py
+--- ../NURBS-Python-5.3.1-clone/geomdl/visualization/VisPlotly.py  2023-10-01 13:28:01.284096807 +0200
++++ ./geomdl/visualization/VisPlotly.py    2023-10-01 13:28:40.240327074 +0200
+@@ -58,7 +58,7 @@
+     """
+     def __init__(self, **kwargs):
+         super(VisConfig, self).__init__(**kwargs)
+-        self.dtype = np.float
++        self.dtype = float
+         # Set Plotly custom variables
+         self.figure_image_filename = "temp-plot.html"
+         self.use_renderer = kwargs.get("use_renderer", False)
+diff --color -ruN ../NURBS-Python-5.3.1-clone/geomdl/visualization/VisVTK.py ./geomdl/visualization/VisVTK.py
+--- ../NURBS-Python-5.3.1-clone/geomdl/visualization/VisVTK.py 2023-10-01 13:28:01.284096807 +0200
++++ ./geomdl/visualization/VisVTK.py   2023-10-01 13:28:40.236993780 +0200
+@@ -132,10 +132,10 @@
+             # Plot control points
+             if plot['type'] == 'ctrlpts' and self.vconf.display_ctrlpts:
+                 # Points as spheres
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=float)
+                 # Handle 2-dimensional data
+                 if pts.shape[1] == 2:
+-                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=np.float)]
++                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=float)]
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 actor1 = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -148,10 +148,10 @@
+ 
+             # Plot evaluated points
+             if plot['type'] == 'evalpts' and self.vconf.display_evalpts:
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=float)
+                 # Handle 2-dimensional data
+                 if pts.shape[1] == 2:
+-                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=np.float)]
++                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=float)]
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 actor1 = vtkh.create_actor_polygon(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -200,7 +200,7 @@
+                 vertices = [v.data for v in plot['ptsarr'][0]]
+                 faces = [q.data for q in plot['ptsarr'][1]]
+                 # Points as spheres
+-                pts = np.array(vertices, dtype=np.float)
++                pts = np.array(vertices, dtype=float)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 actor1 = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -226,7 +226,7 @@
+             # Plot trim curves
+             if self.vconf.display_trims:
+                 if plot['type'] == 'trimcurve':
+-                    pts = np.array(plot['ptsarr'], dtype=np.float)
++                    pts = np.array(plot['ptsarr'], dtype=float)
+                     vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                     vtkpts.SetName(plot['name'])
+                     actor1 = vtkh.create_actor_polygon(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -269,7 +269,7 @@
+             # Plot control points
+             if plot['type'] == 'ctrlpts' and self.vconf.display_ctrlpts:
+                 # Points as spheres
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=float)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 temp_actor = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -278,7 +278,7 @@
+ 
+             # Plot evaluated points
+             if plot['type'] == 'evalpts' and self.vconf.display_evalpts:
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=float)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 temp_actor = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -321,7 +321,7 @@
+             # Plot control points
+             if plot['type'] == 'ctrlpts' and self.vconf.display_ctrlpts:
+                 # Points as spheres
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=float)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 temp_actor = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -330,7 +330,7 @@
+ 
+             # Plot evaluated points
+             if plot['type'] == 'evalpts' and self.vconf.display_evalpts:
+-                faces = np.array(plot['ptsarr'][1], dtype=np.float)
++                faces = np.array(plot['ptsarr'][1], dtype=float)
+                 filled = np.array(plot['ptsarr'][2], dtype=np.int)
+                 grid_filled = faces[filled == 1]
+                 temp_actor = vtkh.create_actor_hexahedron(grid=grid_filled, color=vtkh.create_color(plot['color']),
