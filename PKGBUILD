@@ -1,11 +1,11 @@
 pkgname=python-pyglet-git
-pkgver=r5378.65b862d3
+pkgver=r5941.14997c29
 pkgrel=1
 pkgdesc="A cross-platform windowing and multimedia library for Python"
 arch=('any')
 url="https://github.com/pyglet/pyglet"
 license=('BSD')
-depends=('python' 'glu' 'python-future')
+depends=('python' 'glu')
 makedepends=('python-setuptools' 'git')
 optdepends=('ffmpeg: provides audio&video support'
             'openal: live audio')
@@ -19,21 +19,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/pyglet"
-
-	# https://bitbucket.org/pyglet/pyglet/issues/157/please-do-not-bundle-the-future-module
-	rm -rf pyglet/extlibs/future/
-}
-
 build() {
-	cd "$srcdir/pyglet"
-	python3 setup.py build
+  cd "$srcdir/pyglet"
+  python setup.py build
 }
 
 package() {
-	depends=('python' 'glu' 'python-future')
-	cd "$srcdir/pyglet"
-	python3 setup.py install --root="$pkgdir" --optimize=1
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/pyglet"
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
