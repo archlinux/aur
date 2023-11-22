@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Spotifox
+Comment=Spotifox is yet another spotify CLI client similar to go-musicfox.
+Exec=spotifox
+Icon=spotifox
+Terminal=true
+Type=Application
+Categories=AudioVideo;
