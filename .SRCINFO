@@ -1,15 +1,15 @@
 pkgbase = serverless
 	pkgdesc = Serverless Framework - Build web, mobile and IoT applications with serverless architectures
-	pkgver = 3.37.0
+	pkgver = 3.38.0
 	pkgrel = 1
 	url = https://github.com/serverless/serverless
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = serverless-3.37.0.tgz
-	source = https://registry.npmjs.org/serverless/-/serverless-3.37.0.tgz
-	sha256sums = bfa3c89bb0cf7d6d453a584680e2f7b2c0ac2d970912cd85c945611a991459ce
-	b2sums = c48cf5a27e7a2ce3adf1189fe709fda18900954477735afc2a069fc90b92b4159f53f003fb2ebd2f45e32f038380ed6fd1ad25a99bd826e5ca07c63d6141cf95
+	noextract = serverless-3.38.0.tgz
+	source = https://registry.npmjs.org/serverless/-/serverless-3.38.0.tgz
+	sha256sums = 86db353e26099b611bb3e6eef1f789b33802000dc818ae73f10b3a39bbe450d4
+	b2sums = 9fd0b97f235081aa2675d4347f2796ed4925f2b2e732d6baba4e1fe6f127e22102b0cb97fc79607465349dfd7ba75ea3cbc26951c28cc2954246c1a7aa079d17
 
 pkgname = serverless
