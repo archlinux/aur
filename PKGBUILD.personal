@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw-git
-pkgver=2.10.r167.gdca033b2
+pkgver=2.10.r168.geb4b4117
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -18,7 +18,6 @@ source=(
 )
 #Optional patches
 source+=(
-    81-nv_low_latency_vkd3d_proton.patch
 )
 
 pkgver() {
@@ -32,9 +31,6 @@ prepare() {
     # Explicitly set origin URL for submodules using relative paths
     git remote set-url origin https://github.com/HansKristian-Work/vkd3d-proton.git
     git submodule update --init --filter=tree:0 --recursive
-
-    pushd khronos/Vulkan-Headers; git checkout bbe0f575ebd6098369f0ac6c6a43532732ed0ba6; popd
-    patch -p1 -i "$srcdir"/81-nv_low_latency_vkd3d_proton.patch
 
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
@@ -120,5 +116,4 @@ sha256sums=('SKIP'
             '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362')
 sha256sums+=(
-            'SKIP'
 )
