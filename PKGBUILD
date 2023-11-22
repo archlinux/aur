@@ -26,6 +26,7 @@ source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgve
 sha512sums=('793b63aa875b6d02e3a2803815cc9361b76c9ab1506967e18630fc3d6811bf51c73f53c51d148a5fc72e87e35dc2b88cb18b48419939c436451fe65c5a326022')
 install=clang.install
 static_build=false
+build_with_gcc=true
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
@@ -37,10 +38,24 @@ shared_library_build_options=" \
             -DCLANG_LINK_CLANG_DYLIB=ON \
 	"
 
+# both modules and thinlto barf with gcc
+build_with_clang_options=" \
+			-DLLVM_BINUTILS_INCDIR=/usr/include \
+            -DLLVM_ENABLE_LLD=ON \
+            -DCMAKE_C_COMPILER=clang \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DLLVM_ENABLE_MODULES=ON \
+            -DLLVM_ENABLE_LTO=Thin \
+	"
+
 additional_build_options=""
 
 if ! $static_build; then
 	additional_build_options="${additional_build_options} ${shared_library_build_options}"
+fi
+
+if ! $build_with_gcc; then
+	additional_build_options="${additional_build_options} ${build_with_clang_options}"
 fi
 
 _prepare_install_script() {
@@ -67,21 +82,15 @@ build() {
     # https://llvm.org/docs/CMake.html
     cmake   -B _build \
             -GNinja \
-			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
             -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
-            -DLLVM_ENABLE_MODULES=ON \
             -DLLVM_ENABLE_UNWIND_TABLES=OFF \
-            -DLLVM_ENABLE_LLD=ON \
             -DLLVM_ENABLE_LIBCXX=ON \
-            -DCMAKE_C_COMPILER=clang \
-            -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
-            -DLLVM_ENABLE_LTO=Thin \
             -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
-		${additional_build_options} \
+			${additional_build_options} \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
 	time ninja -C _build | tee ${pkgname}-build.log
 	)
