@@ -1,7 +1,7 @@
 pkgbase = python-nurbs
 	pkgdesc = Object-oriented pure Python B-Spline and NURBS library
 	pkgver = 5.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://onurraufbingol.com/NURBS-Python
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,8 @@ pkgbase = python-nurbs
 	optdepends = python-numpy>=1.15.4: required packages for visualization
 	optdepends = python-plotly: required packages for visualization
 	source = python-nurbs-5.3.1.tar.gz::https://github.com/orbingol/NURBS-Python/archive/v5.3.1.tar.gz
+	source = np-float.patch
 	sha256sums = a9a7c5830294a90aa4d5249c9bb4741075816087ff2484b68ee08c93c80bda56
+	sha256sums = SKIP
 
 pkgname = python-nurbs
