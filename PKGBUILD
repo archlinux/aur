@@ -1,4 +1,4 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=zellij-selector
 pkgname=$_pkgname-git
@@ -6,7 +6,7 @@ pkgver=2.4.0.r1.g77f9301
 pkgrel=2
 pkgdesc='Select zellij session'
 arch=('any')
-url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
+url='https://codeberg.org/stefanwimmer128/zellij-selector'
 license=('MPL2')
 depends=('sh' 'libnewt' 'zellij' 'jq.sh' 'yq')
 makedepends=('git' 'shellcheck' 'getoptions' 'cross-install')
