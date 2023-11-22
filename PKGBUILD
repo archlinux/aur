@@ -3,7 +3,7 @@
 
 _pkgname=SerialTest
 pkgname=serialtest
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
@@ -39,13 +39,13 @@ _get_mirror() {
 
 source=("${_pkgname}-${pkgver}.tar.gz::$(_get_mirror _pkg_mirrors)"
         "${pkgname}.install")
-sha256sums=('d022f3b9f8cfbfccdb1100acc5804633541c3e03c109733ca79755a129e604bd'
+sha256sums=('09d56e7f88cfd4d85c92357c8e03df10a11286e6fcd4785c362ac4f63fd2c5b8'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/src/"
     qmake
-    make -j4
+    make -j$((`nproc` + 1))
 }
 
 package() {
