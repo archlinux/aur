@@ -1,0 +1,95 @@
+From b7c8c08a4dfba8b7551f073790e8a2ae8b302312 Mon Sep 17 00:00:00 2001
+From: Eric Sullivan <esullivan@nvidia.com>
+Date: Wed, 11 Oct 2023 15:43:36 -0700
+Subject: [PATCH] winevulkan: Add support for VK_NV_low_latency2
+
+To support VK_NV_low_latency2 a frame ID should be provided for each
+call to vkQueueSubmit. This commit adds a path for fshack to provide
+a frame ID when it submits its upscaling work, when low latency mode
+is enabled.
+---
+ dlls/winevulkan/make_vulkan      |  3 +++
+ dlls/winevulkan/vulkan.c         | 29 +++++++++++++++++++++++++++++
+ dlls/winevulkan/vulkan_private.h |  1 +
+ 3 files changed, 33 insertions(+)
+
+diff --git a/dlls/winevulkan/make_vulkan b/dlls/winevulkan/make_vulkan
+index 73681dcaff1..2fda357e454 100755
+--- a/dlls/winevulkan/make_vulkan
++++ b/dlls/winevulkan/make_vulkan
+@@ -297,6 +297,9 @@ FUNCTION_OVERRIDES = {
+     # VK_KHR_synchronization2
+     "vkQueueSubmit2KHR" : {"dispatch": True, "driver": False, "thunk" : ThunkType.PRIVATE, "extra_param" : "pSubmits"},
+ 
++    # VK_NV_low_latency2
++    "vkSetLatencySleepModeNV" : {"dispatch": True, "driver": False, "thunk" : ThunkType.NONE},
++
+     # Custom functions
+     "wine_vkAcquireKeyedMutex" : {"dispatch": True, "driver": False, "thunk" : ThunkType.PRIVATE},
+     "wine_vkReleaseKeyedMutex" : {"dispatch": True, "driver": False, "thunk" : ThunkType.PRIVATE},
+diff --git a/dlls/winevulkan/vulkan.c b/dlls/winevulkan/vulkan.c
+index a20ec837e2a..7c81a12d595 100644
+--- a/dlls/winevulkan/vulkan.c
++++ b/dlls/winevulkan/vulkan.c
+@@ -896,6 +896,24 @@ static void wine_vk_instance_free(struct wine_instance *instance)
+     free(instance);
+ }
+ 
++VkResult wine_vkSetLatencySleepModeNV(VkDevice device, VkSwapchainKHR swapchain, const VkLatencySleepModeInfoNV *pSleepModeInfo)
++{
++    VkLatencySleepModeInfoNV sleep_mode_info_host;
++
++    struct wine_device* wine_device = wine_device_from_handle(device);
++    struct wine_swapchain* wine_swapchain = wine_swapchain_from_handle(swapchain);
++
++    wine_device->low_latency_enabled = pSleepModeInfo->lowLatencyMode;
++
++    sleep_mode_info_host.sType = VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV;
++    sleep_mode_info_host.pNext = NULL;
++    sleep_mode_info_host.lowLatencyMode = pSleepModeInfo->lowLatencyMode;
++    sleep_mode_info_host.lowLatencyBoost = pSleepModeInfo->lowLatencyBoost;
++    sleep_mode_info_host.minimumIntervalUs = pSleepModeInfo->minimumIntervalUs;
++
++    return wine_device->funcs.p_vkSetLatencySleepModeNV(wine_device->device, wine_swapchain->swapchain, &sleep_mode_info_host);
++}
++
+ VkResult wine_vkAllocateCommandBuffers(VkDevice handle, const VkCommandBufferAllocateInfo *allocate_info,
+                                        VkCommandBuffer *buffers )
+ {
+@@ -3921,6 +3939,8 @@ VkResult fshack_vk_queue_present(VkQueue queue_handle, const VkPresentInfoKHR *p
+     if (n_hacks > 0)
+     {
+         VkPipelineStageFlags waitStage, *waitStages, *waitStages_arr = NULL;
++        VkLatencySubmissionPresentIdNV latencySubmitInfo;
++        VkPresentIdKHR *present_id;
+ 
+         if (pPresentInfo->waitSemaphoreCount > 1)
+         {
+@@ -3944,6 +3964,15 @@ VkResult fshack_vk_queue_present(VkQueue queue_handle, const VkPresentInfoKHR *p
+         submitInfo.signalSemaphoreCount = 1;
+         submitInfo.pSignalSemaphores = &blit_sema;
+ 
++        if ((queue->device->low_latency_enabled) &&
++            (present_id = wine_vk_find_struct(&our_presentInfo, PRESENT_ID_KHR)))
++        {
++            latencySubmitInfo.sType = VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV;
++            latencySubmitInfo.pNext = NULL;
++            latencySubmitInfo.presentID = *present_id->pPresentIds;
++            submitInfo.pNext = &latencySubmitInfo;
++        }
++
+         res = queue->device->funcs.p_vkQueueSubmit(queue->queue, 1, &submitInfo, VK_NULL_HANDLE);
+         if (res != VK_SUCCESS)
+             ERR("vkQueueSubmit: %d\n", res);
+diff --git a/dlls/winevulkan/vulkan_private.h b/dlls/winevulkan/vulkan_private.h
+index c9548e944d2..47b2a9a5903 100644
+--- a/dlls/winevulkan/vulkan_private.h
++++ b/dlls/winevulkan/vulkan_private.h
+@@ -99,6 +99,7 @@ struct wine_device
+     uint64_t sem_poll_update_value; /* set to sem_poll_update.value by signaller thread once update is processed. */
+     unsigned int allocated_fence_ops_count;
+     BOOL keyed_mutexes_enabled;
++    BOOL low_latency_enabled;
+ };
+ 
+ static inline struct wine_device *wine_device_from_handle(VkDevice handle)
