@@ -12,7 +12,6 @@ pkgbase = syncthingtray-git
 	checkdepends = cppunit
 	checkdepends = syncthing
 	checkdepends = iproute2
-	checkdepends = appstream
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt5-tools
@@ -38,3 +37,4 @@ pkgbase = syncthingtray-git
 	sha256sums = SKIP
 
 pkgname = syncthingtray-git
+
