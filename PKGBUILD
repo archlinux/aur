@@ -12,7 +12,7 @@ source=("https://gitlab.com/tellmeY/$pkgname/-/archive/v$pkgver/pooi-v$pkgver.ta
 sha256sums=('57ae830d1d7b3a59fb1f421736b17027b374b6758e21d69979a9cb7b3519a3a0')
 
 build() {
-    cd "$srcdir"
+    cd "$srcdir/pooi-v$pkgver"
     cargo build --release
 }
 
