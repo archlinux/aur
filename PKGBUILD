@@ -80,10 +80,9 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.6.arch1.r1220813.3e7fd3107b9b
+pkgver=6.7.0.rc2.1.bcachefs.git.00085.g45ebe8bf0e6d.dirty
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=6.6.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -105,22 +104,17 @@ makedepends=(
     texlive-latexextra
 )
 options=('!strip')
+_srcname="linux-bcachefs"
 
-_reponame="linux-bcachefs"
-_repo_url="https://github.com/koverstreet/bcachefs.git"
+_src_url="https://github.com/koverstreet/bcachefs.git"
 
-_repo_url_arch="https://github.com/archlinux/linux.git"
-
-_reponame_upstream="linux"
-_repo_url_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
-
-_reponame_kernel_patch="kernel_compiler_patch"
-_repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
+_srcname_kernel_patch="kernel_compiler_patch"
+_src_url_kernel_patch="https://github.com/graysky2/${_srcname_kernel_patch}.git"
 _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
-_kernel_base_string="${_reponame}::git+${_repo_url}"
+_kernel_base_string="${_srcname}::git+${_src_url}"
 if [ -n "${_bcachefs_commit}" ]; then
     kernel_source_string="${_kernel_base_string}#commit=${_bcachefs_commit}"
 elif [ -n "${_bcachefs_branch}" ]; then
@@ -131,52 +125,32 @@ fi
 
 source=(
     ${kernel_source_string}
-    #"${_reponame_upstream}::git+${_repo_url_upstream}"
-    "git+${_repo_url_kernel_patch}"
+    #"${_srcname_upstream}::git+${_src_url_upstream}"
+    "git+${_src_url_kernel_patch}"
     config  # the main kernel config file
 )
 validpgpkeys=(
     ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
     647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
     A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-    C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 b2sums=('SKIP'
         'SKIP'
-        'ac6c6dfcbbac9bb718b406ddb39edcc60060f0ba09c7f62a0e6f2311b35bb04d680936bc4e81251ef829b0a632acf88aceaba5df44c080d8859af06927a39a20')
+        '91056af79153079e3c658601ea71610f8e2db43743eca1ce1b36d52a832be910804f585e5b4917adf5777a47a75e7c19d2588a7193140914c82fea79708bb988')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_make() {
-    test -s version
-    make KERNELRELEASE="$(<version)" "$@"
-}
-
 prepare() {
-    cd "$srcdir/$_reponame"
-
-    msg2 "Fetch and merge stable tag from ${_repo_url_arch} ..."
-    git remote add arch_stable "${_repo_url_arch}" || true
-    git fetch arch_stable "v${_srcver_tag%.*}-${_srcver_tag##*.}"
-    git merge --no-edit --no-commit FETCH_HEAD
-
-    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
-    #git fetch upstream_stable $v{_srcver_tag//.arch*/}
-    #git merge --no-edit --no-commit FETCH_HEAD
+    cd $_srcname
 
     msg2 "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
-    pkgver > version
-    make defconfig
-    make -s kernelrelease
-    make mrproper
 
     FullPatchesArray=(
-        $_reponame_kernel_patch/$_kernel_patch_name
+        $_srcname_kernel_patch/$_kernel_patch_name
     )
     for MyPatch in "${FullPatchesArray[@]}"
     do
@@ -188,9 +162,9 @@ prepare() {
     cp ../config .config
 
     if [ -n "$_subarch" ]; then
-        yes "$_subarch" | _make oldconfig
+        yes "$_subarch" | make oldconfig
     else
-        _make prepare
+        make prepare
     fi
 
     ### Optionally load needed modules for the make localmodconfig
@@ -198,7 +172,7 @@ prepare() {
     if [ -n "$_localmodcfg" ]; then
         if [ -f $HOME/.config/modprobed.db ]; then
             msg2 "Running Steven Rostedt's make localmodconfig now"
-            _make LSMOD=$HOME/.config/modprobed.db localmodconfig
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             msg2 "No modprobed.db data found"
             exit
@@ -206,28 +180,29 @@ prepare() {
     fi
 
     # do not run 'make olddefconfig' as it sets default options
-    yes "" | _make config >/dev/null
+    yes "" | make config >/dev/null
 
     msg2 "Showing config diff"
     diff -u ../config .config || :
 
+    make -s kernelrelease > version
     msg2 "Prepared $pkgbase version $(<version)"
+    _srcver_tag=$(<version)
 
-    [[ -z "$_makenconfig" ]] || _make nconfig
+    [[ -z "$_makenconfig" ]] || make nconfig
 
     # save configuration for later reuse
     cat .config > "$startdir/config.last"
 }
 
 pkgver() {
-    cd "${srcdir}/${_reponame}"
-    printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $_srcname
+    printf "%s" "${_srcver_tag//-/.}"
 }
 
 build() {
-    cd $_reponame
-    _make all
-    _make htmldocs
+    cd $_srcname
+    make all
 }
 
 _package() {
@@ -252,19 +227,19 @@ _package() {
         wireguard-arch
     )
 
-    cd $_reponame
+    cd $_srcname
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build link
@@ -275,7 +250,7 @@ _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel $_pkgdesc_extra"
     depends=(pahole)
 
-    cd $_reponame
+    cd $_srcname
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     msg2 "Installing build files..."
@@ -353,29 +328,9 @@ _package-headers() {
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs() {
-    pkgdesc="Documentation for the $pkgdesc kernel $_pkgdesc_extra"
-
-    cd $_srcname
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-    msg2 "Installing documentation..."
-    local src dst
-    while read -rd '' src; do
-        dst="${src#Documentation/}"
-        dst="$builddir/Documentation/${dst#output/}"
-        install -Dm644 "$src" "$dst"
-    done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-    msg2 "Adding symlink..."
-    mkdir -p "$pkgdir/usr/share/doc"
-    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-}
-
 pkgname=(
     "$pkgbase"
     "$pkgbase-headers"
-    "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {

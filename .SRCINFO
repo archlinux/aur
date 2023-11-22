@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 6.6.arch1.r1220813.3e7fd3107b9b
+	pkgver = 6.7.0.rc2.1.bcachefs.git.00085.g45ebe8bf0e6d.dirty
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -25,10 +25,9 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = ac6c6dfcbbac9bb718b406ddb39edcc60060f0ba09c7f62a0e6f2311b35bb04d680936bc4e81251ef829b0a632acf88aceaba5df44c080d8859af06927a39a20
+	b2sums = 91056af79153079e3c658601ea71610f8e2db43743eca1ce1b36d52a832be910804f585e5b4917adf5777a47a75e7c19d2588a7193140914c82fea79708bb988
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
@@ -47,6 +46,3 @@ pkgname = linux-bcachefs-git
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = pahole
-
-pkgname = linux-bcachefs-git-docs
-	pkgdesc = Documentation for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
