@@ -15,7 +15,7 @@ optdepends=('fish: Option to option fish shell'
             'bash: Option to open bash shell')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector.git")
+source=("$_pkgname::git+https://codeberg.org/stefanwimmer128/zellij-selector.git")
 sha256sums=('SKIP')
 
 pkgver() {

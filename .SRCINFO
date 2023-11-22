@@ -19,7 +19,7 @@ pkgbase = zellij-selector-git
 	optdepends = bash: Option to open bash shell
 	provides = zellij-selector
 	conflicts = zellij-selector
-	source = zellij-selector::git+https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector.git
+	source = zellij-selector::git+https://codeberg.org/stefanwimmer128/zellij-selector.git
 	sha256sums = SKIP
 
 pkgname = zellij-selector-git
