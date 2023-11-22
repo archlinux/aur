@@ -1,8 +1,8 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Scarlett Veldt <scarlett AT enby DOT site>
 pkgname=arrpc
-pkgver=3.1.0
-_commit='32b20feb2c994942a9de72b183ab0f4881c725c3'
+pkgver=3.2.0
+_commit='9c3e981437b75606c74ef058c67d1a8c083ce49a'
 pkgrel=1
 pkgdesc="Open Discord RPC server for atypical setups"
 arch=("x86_64")
