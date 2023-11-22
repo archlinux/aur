@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=0
 pkgdesc="crm (Cargo registry manager)"
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=('!strip' '!lto')
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6f86492f0798293795b5febf8d367b29bbbd939b1542e1b139470b90cddc7ed4')
+sha256sums=('ae0dab817482e28451b3e9e0b73cc46226001117dc21362c718e21d40c3efcd2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
