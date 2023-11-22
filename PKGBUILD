@@ -2,8 +2,8 @@
 # Contributor: ventusliberum <dafeinayius@gmail.com>
 
 pkgname=wonderpen-bin
-pkgver=2.3.5
-_pkgver=7074
+pkgver=2.4.0
+_pkgver=7226
 pkgrel=1
 pkgdesc='A professional writing app with a focused mode and markdown support'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'nss' 'xdg-utils')
 provides=('wonderpen')
 source=("https://file.tominlab.com/WonderPen/${pkgver%.*}/WonderPen_linux_amd64_${pkgver}(${_pkgver}).deb")
-sha256sums=('59a2a9623fe6002f7d2f509f9236ab8adf24a34a78f48823629bbb2012eb41b4')
+sha256sums=('e32546cc6ba9e40adb487f1d4291e610df4a4d97f2b22c0ebc15d83bce88c92b')
 
 package() {
 	# Install
@@ -21,5 +21,5 @@ package() {
 	install -dm755 "${pkgdir}"/usr/bin
 	ln -s /opt/WonderPen/wonderpen "${pkgdir}"/usr/bin/wonderpen
 	sed -i 's|^Exec=/opt/WonderPen/wonderpen %U|Exec=wonderpen %F|g' "${pkgdir}"/usr/share/applications/wonderpen.desktop
-	install -Dm 644 "${pkgdir}"/usr/share/icons/hicolor/0x0/apps/wonderpen.png "${pkgdir}"/usr/share/pixmaps/wonderpen.png
+	install -Dm 644 "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/wonderpen.png "${pkgdir}"/usr/share/pixmaps/wonderpen.png
 }
