@@ -11,7 +11,7 @@ pkgbase = editenv
 	optdepends = zsh: zsh completion
 	source = https://software.concise.cc/x86_64/editenv-0.2.3-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = dfb4dfc7fc173a3224f8a6654995abc1
-	sha512sums = dc59f0c874d7d913f6638376d5a2a552e8a88a7c5dfa4ef2e39fd88fa81538bbd6bc34f59a21d35be4b356b2477fb551c2134912c142bf0405dbd597910bfdf6
+	md5sums = 94451ff1b6417ec6e94eef0e8b3f3c3a
+	sha512sums = 42d163e05f498927ac891898d2a55a7a37a67ae4b00854f6a2297e7e0eeab4b3b844bb984ad2fb30491507a1825345b439ffe906627c8ad340dd7e0ef58480fc
 
 pkgname = editenv
