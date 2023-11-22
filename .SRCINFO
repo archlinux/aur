@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-devel
 	pkgdesc = Settings manager for xfce
-	pkgver = 4.19.0
+	pkgver = 4.19.1
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = i686
@@ -21,11 +21,11 @@ pkgbase = xfce4-settings-devel
 	depends = gnome-themes-extra
 	depends = python
 	optdepends = libcanberra: for sound control
-	provides = xfce4-settings=4.19.0
+	provides = xfce4-settings=4.19.1
 	conflicts = xfce4-settings
-	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.19/xfce4-settings-4.19.0.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.19/xfce4-settings-4.19.1.tar.bz2
 	source = enable-antialias-by-default.patch
-	sha256sums = 193e00aee97660d99742df146ca2e545fbb15e2233fd83b19c7371db4a970453
+	sha256sums = 4e76008fdfeacc32c536d17c63d067889b1fc1f287f8dbb0bd4dd6710fd9aace
 	sha256sums = 25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac
 
 pkgname = xfce4-settings-devel

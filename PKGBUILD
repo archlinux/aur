@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.19.0
+pkgver=4.19.1
 pkgrel=1
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2"
         'enable-antialias-by-default.patch')
-sha256sums=('193e00aee97660d99742df146ca2e545fbb15e2233fd83b19c7371db4a970453'
+sha256sums=('4e76008fdfeacc32c536d17c63d067889b1fc1f287f8dbb0bd4dd6710fd9aace'
             '25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac')
 
 prepare() {
