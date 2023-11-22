@@ -12,7 +12,7 @@
 
 
 pkgname=ros2-humble-base
-pkgver=2023.09.25
+pkgver=2023.11.22
 pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications (base variant)"
 url="https://index.ros.org/p/ros_base/#humble"
@@ -39,6 +39,7 @@ makedepends=(
   'procps-ng'  # For 'free'
   'python-rosinstall_generator'
   'python-vcstool'
+  'git'
 )
 source=(
     "ros2::git+https://github.com/ros2/ros2.git#tag=release-humble-${pkgver//.}"
