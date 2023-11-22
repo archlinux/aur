@@ -1,7 +1,7 @@
 # Maintainer: wabi <aschrafl@jetnet.ch>
 # Maintainer: pikl <me@pikl.uk>
 pkgname=immich
-pkgrel=4
+pkgrel=1
 pkgver=1.88.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
