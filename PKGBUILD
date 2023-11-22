@@ -3,7 +3,7 @@
 
 _crate="svg2pdf"
 pkgname="svg2pdf"
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Convert SVG files to PDFs.'
 url='https://crates.io/crates/svg2pdf'
@@ -12,8 +12,8 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf/0.8.0/download")
-sha512sums=('2dc50638e135181266ad8abece3448fc8da368fd30500fb1bd9ce16887e2c52fd4224b257a3fdc796e5a98584e67dbb673b41354bb30ace819cf99a395294a06')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/svg2pdf/0.9.0/download")
+sha512sums=('0b3a2745baee8ad119788400c36bddfb2f8fd94643d46b27e94467c0e9ff5679cb3adb94c909cdc481e7a82c9543ca7a2df01eae88d812d636c62ff494231b62')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
@@ -21,11 +21,18 @@ arch=('aarch64' 'i686' 'x86_64')
 prepare() {
 	cd "$srcdir/$_crate-$pkgver"
 
-	cargo fetch --locked
+	export RUSTUP_TOOLCHAIN=stable
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/$_crate-$pkgver"
+	
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+
+	
 	cargo build \
 		--offline \
 		--locked \
@@ -36,6 +43,6 @@ build() {
 package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/svg2pdf" -t "$pkgdir/usr/bin"
-	install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
