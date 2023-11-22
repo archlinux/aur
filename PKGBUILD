@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-nexus-nightly
-pkgver=20231121_nextpnr_0.6_140_g55635cf2
+pkgver=20231122_nextpnr_0.6_140_g55635cf2
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for nexus"
