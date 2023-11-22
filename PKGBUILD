@@ -2,8 +2,8 @@
 
 pkgname='grub-customizer5-git'
 _pkgname='grub-customizer'
-pkgver=5.2.2.r785.8408d98
-_pkgver=5.2.2
+pkgver=5.2.4.r792.54672de
+_pkgver=5.2.4
 pkgrel=1
 pkgdesc='A tool to choose grub2 bootscreen theme'
 arch=('x86_64')
