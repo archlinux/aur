@@ -1,7 +1,7 @@
 pkgbase = ignition-transport
 	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
-	pkgver = 12.1.0
-	pkgrel = 2
+	pkgver = 13.0.0
+	pkgrel = 1
 	url = https://gazebosim.org/libs/transport
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ignition-transport
 	depends = ignition-utils>1
 	depends = libutil-linux
 	depends = tinyxml2
-	source = ignition-transport-12.1.0.tar.gz::https://github.com/gazebosim/gz-transport/archive/gz-transport12_12.1.0.tar.gz
-	sha256sums = b6bd46bf1ae73e8f49f298d754638ae75e877bc582e64cf8e5aad5f83135f989
+	source = ignition-transport-13.0.0.tar.gz::https://github.com/gazebosim/gz-transport/archive/gz-transport13_13.0.0.tar.gz
+	sha256sums = 8041d81693b69a94e36477178fdf1964f32725e520c33fec2e69c60f28fd84ca
 
 pkgname = ignition-transport
