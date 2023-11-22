@@ -1,6 +1,6 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
-	pkgver = 2024.1
+	pkgver = 2024.2
 	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
 	install = maya.install
@@ -25,15 +25,11 @@ pkgbase = maya
 	depends = gst-plugins-base-libs
 	depends = libxtst
 	depends = libtiff5
-	optdepends = maya-arnold: Maya Arnold Renderer Plugin
-	optdepends = maya-bifrost: Maya Bifrost Effects Plugin
-	optdepends = maya-substance: Maya Substance Material Plugin
-	optdepends = maya-usd: Maya Universal Scene Description Plugin
 	optdepends = opencl-driver: OpenCL support
 	options = !strip
-	source = manual://Maya2024_64-2024.1-4816.x86_64.rpm
+	source = manual://Maya2024_64-2024.2-1191.x86_64.rpm
 	source = application-home-workaround.patch
-	sha256sums = 3a351d0a36d729b6f4db84721b86c42653a5e7d2e56edec4ecfdcbcf48d90555
-	sha256sums = 0bac864b64db2cdc7be5de574e404bc36f80959bc867988f6a67cdbaf32abb1a
+	b2sums = d98630b22f8a4171c577b6f1cd8aac13a16da60b26587d21b455bfc60042319e3eddabf78155a3dc711d2a550e85d378293a7be71d4889af998cd06b9d624504
+	b2sums = b4f09a64402e54e0067ca381efbc921a7f3cd595aef10135d423fc4a405b105b7cbd4d6907851cf9563cf02be3ec514d48d0a555a976f5daa7d4a66edee594ee
 
 pkgname = maya
