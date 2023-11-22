@@ -1,6 +1,6 @@
-# Maintainer: Rafael Epplée <aur@rafa.ee>
+# Maintainer: Pierce Thompson <pierce at insprill dot net>
 pkgname=stmp
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Subsonic Terminal Music Player"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('mpv')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wildeyedskies/stmp/archive/${pkgver}.tar.gz")
-sha256sums=('3822edd13c5efa80a42be572e806b96a2c2dea20b4fd4b34c27b67ae9740be4e')
+sha256sums=('82958ec10d6856402daca8ba6c8e5590a3f783544cc4b100d088ec7e4282a277')
 
 build() {
   export GOPATH="$srcdir"/gopath
