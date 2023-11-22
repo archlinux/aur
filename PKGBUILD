@@ -6,8 +6,9 @@
 
 pkgname=meanalyzer
 _pkgname=MEAnalyzer
-pkgver=1.283.3.r336
-_tag=r336
+pkgver=1.300.0.r337
+_tag=v1.300.0-r337
+_pkgver=1.300.0-r337
 pkgrel=1
 pkgdesc="Intel Engine & Graphics Firmware Analysis Tool"
 arch=('any')
@@ -17,22 +18,22 @@ depends=('python' 'python-colorama' 'python-crccheck' 'python-pltable')
 makedepends=('dos2unix')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz")
-sha256sums=('e0295adbe5b68cd19b52877fff9a2f8a007382dfb10cf1664f4fcc6435081f9f')
+sha256sums=('3759701c6fa61e841a45180815a069ed8776b0c88dafff4ece349f8ff603b096')
 
 pkgver() {
-    cd "${_pkgname}-${_tag}"
+    cd "${_pkgname}-${_pkgver}"
     printf "%s.%s" \
         "$(sed -n 's/.*ME Analyzer v\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p' MEA.py)" \
         "$(sed -n 's/.*Revision \(r[0-9]\+\).*/\1/p' MEA.dat)"
 }
 
 prepare() {
-    cd "${_pkgname}-${_tag}"
+    cd "${_pkgname}-${_pkgver}"
     dos2unix *
 }
 
 package() {
-    cd "${_pkgname}-${_tag}"
+    cd "${_pkgname}-${_pkgver}"
     install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" *.dat
     install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" *.py
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
