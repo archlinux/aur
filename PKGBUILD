@@ -5,7 +5,7 @@
 
 pkgname=ltsa
 pkgver=3.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Labelled Transition System Analyser, a verification tool for concurrent systems"
 arch=('any')
 url="http://www.doc.ic.ac.uk/ltsa/"
@@ -20,7 +20,7 @@ url="http://www.doc.ic.ac.uk/ltsa/"
 license=('unknown')
 depends=('java-runtime' 'bash' 'libcups')
 install=ltsa.install
-makedepends=('imagemagick' 'setconf' 'gendesk')
+makedepends=('imagemagick' 'gendesk')
 source=("http://www.doc.ic.ac.uk/~jnm/book/$pkgname/${pkgname}tool.zip"
         "$pkgname.sh")
 sha256sums=('9ed894c4f2ae22e119a4f48e6e3f36b38b08f8fe85a6ac85564f4c5045fe9046'
@@ -28,8 +28,7 @@ sha256sums=('9ed894c4f2ae22e119a4f48e6e3f36b38b08f8fe85a6ac85564f4c5045fe9046'
 
 build() {
   cd "$srcdir"
-  gendesk -n
-  setconf "$pkgname.desktop" Categories "Education;Java;"
+  gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --categories "Education;Java"
   echo "Generating $pkgname.png..."
   convert "${pkgname}tool/$pkgname.ico" "$pkgname.png"
 }

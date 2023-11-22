@@ -1,13 +1,12 @@
 pkgbase = ltsa
 	pkgdesc = Labelled Transition System Analyser, a verification tool for concurrent systems
 	pkgver = 3.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.doc.ic.ac.uk/ltsa/
 	install = ltsa.install
 	arch = any
 	license = unknown
 	makedepends = imagemagick
-	makedepends = setconf
 	makedepends = gendesk
 	depends = java-runtime
 	depends = bash
@@ -18,4 +17,3 @@ pkgbase = ltsa
 	sha256sums = 34f53ef6b330e49d3eaeb8754703a09ac98d95052bf6c08abb9f0161bb66ff84
 
 pkgname = ltsa
-
