@@ -1,0 +1,27 @@
+pkgbase = python-fixit
+	pkgdesc = Advanced Python linting framework with auto-fixes and hierarchical configuration
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Instagram/Fixit
+	arch = any
+	license = Apache
+	license = MIT
+	license = custom:PSF-2.0
+	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-libcst
+	depends = python-moreorless
+	depends = python-packaging
+	depends = python-tomli
+	depends = python-trailrunner
+	source = python-fixit-2.1.0.tar.gz::https://github.com/Instagram/Fixit/archive/refs/tags/v2.1.0.tar.gz
+	source = remove-failing-smoke-test.patch
+	sha256sums = 81a7be1d530e98da76e00c21aacdb02c6d9d45e922b4edf2f9de3c17733e029b
+	sha256sums = 45a32a0942d224152c4dd9190c20906ab831b776f06d4d14e27803f86fc31ca1
+
+pkgname = python-fixit
