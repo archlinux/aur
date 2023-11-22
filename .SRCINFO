@@ -1,0 +1,25 @@
+pkgbase = harrison-mastering-eq
+	pkgver = 5.0.0.074d2374
+	pkgrel = 1
+	url = https://store.harrisonaudio.com/all-products/mastering-eq
+	arch = x86_64
+	groups = pro-audio
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+	source = https://softwareupdate.solidstatelogic.com/DownloadManager/InstallersLinux/Harrison_MasteringEQ_v5.0.0.074d2374-linux-amd64.tar.gz
+	sha256sums = c88f281aa88bb3e9e146b1b381be58212d2bdbf02743a586328d0853bba688a7
+
+pkgname = harrison-mastering-eq-vst-bin
+	pkgdesc = Harrison Mastering EQ (VST)
+	groups = vst-plugins
+	provides = harrison-mastering-eq-vst-bin
+	conflicts = harrison-ava-me-vst
+	conflicts = harrison-ava
+	replaces = harrison-ava-me-vst
+	replaces = harrison-ava
+
+pkgname = harrison-mastering-eq-vst3-bin
+	pkgdesc = Harrison Mastering EQ (VST3)
