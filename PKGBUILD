@@ -3,24 +3,24 @@
 
 pkgname=python-ftfy
 _name=ftfy
-pkgver=6.1.1
+pkgver=6.1.3
 pkgrel=1
 pkgdesc='Fixes some problems with Unicode text after the fact'
 url="https://github.com/LuminosoInsight/python-ftfy"
 arch=('any')
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 depends=('python-wcwidth')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('29026f5ed29417a24d3ee5f31cdf00197d72bba58b44eb06dce8ef2d79e8fa798b5b10cdcd299eda01cc698405d056ed9ea617dc25cbae3f458bc15bddaa541d')
+sha512sums=('2c2a8ec537895f70183b39db80ba163053745afe9ffe9d9d51334debc29808c0fc48193edeca397d4e3a9566d885ac222b08f3b0472ff35b3450c882647cde2f')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"/LICENSE.txt
 }
