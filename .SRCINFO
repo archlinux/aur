@@ -11,6 +11,7 @@ pkgbase = python-desktop-notifier
 	makedepends = python-sphinx-autoapi
 	makedepends = python-sphinx-furo
 	makedepends = python-sphinx_mdinclude
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-dbus-next
 	depends = python-packaging

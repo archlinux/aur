@@ -22,6 +22,7 @@ makedepends=(
 	'python-sphinx-autoapi'
 	'python-sphinx-furo'
 	'python-sphinx_mdinclude'
+	'python-setuptools'
 	'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('c8bcfcbb49bcc763d9b2af1caea18c4fd4cf2a91238da1f4cfd6d7537622735a')
