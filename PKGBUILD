@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://picbed-cdn.zhushenwudi.top/llmp-oss/LLMP/version/${pkgver}/LoveLive%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('805ab02d82b442cc7fe3e3baafc3f9d09422611410e022fa9933520e865722ca')
+sha256sums_x86_64=('1262189eb9e47c6263ac7150f45a1368ec075f25d9b7c6d9601b2fbb42173c10')
 
 prepare() {
     chmod +x "${_appimage}"
