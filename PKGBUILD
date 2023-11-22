@@ -2,7 +2,7 @@
 
 pkgname=map2
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A scripting language that allows complex key remapping on Linux, written in Rust"
 url="https://github.com/shiro/map2"
 arch=('x86_64' 'i686')
