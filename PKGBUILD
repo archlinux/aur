@@ -1,9 +1,9 @@
 pkgname=libmixmod
 pkgver=2.1.9
 pkgrel=1
-pkgdesc="Model-Based Unsupervised and Supervised Classification"
+pkgdesc="Classification with Mixture Modelling"
 arch=('x86_64')
-url="http://www.mixmod.org"
+url="https://github.com/mixmod"
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake')
