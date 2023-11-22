@@ -3,7 +3,7 @@
 # Contributor: Boudhayan Gupta <bgupta@kde.org>
 
 _npmname=netlify-cli
-_npmver=17.5.3
+_npmver=17.6.0
 
 pkgname=netlify
 pkgver=${_npmver}
