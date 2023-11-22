@@ -1,8 +1,8 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=133
-pkgrel=4
+pkgver=134
+pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
@@ -14,8 +14,8 @@ conflicts=(ares-emu)
 install=ares.install
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz"
         "ares-paths.patch")
-sha256sums=("8360da8638895d9d2a77e8f69d06d3204ece985b085a6eec1d83facbe3aaf5fb"
-        "e9e7ebebc3c7e364d777e77bba85abec60cd76013c9963559d4c717750784f0d")
+sha256sums=("52818af627a2e6dc3a373d168d2db85de74f43e231b40d7bcbd8cf4e062fd279"
+        "c53722c8dcfe771b00396a8b02648d7c40e0d657ac4398d09c755cffcb425f1b")
 
 prepare() {
   # Replace the placeholder with pkgver to automatically point at the source folder
