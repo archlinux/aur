@@ -4,7 +4,7 @@
 _mayaver=2024
 
 pkgname=maya-substance
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Autodesk Maya Substance Plugin'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('maya-arnold: Arnold renderer support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://AdobeSubstance3DforMaya-$pkgver-$_mayaver-linux-x86_64.rpm")
-sha256sums=('7e68facba066f8980c39e2ada4169ffd7b6bfa6fb899a986835ff0afd7ea1ef0')
+b2sums=('2ff6f8abe04ca4efbda7d989566a2264803c01e63a01dde91bdbcc46076f06244ee37489183795982b1f88c72e69250b07ce4a32edd4c60ee019f4ac99837854')
 
 options=(!strip)
 
