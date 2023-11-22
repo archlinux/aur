@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client for Mac, Windows and Linux."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('02af831a8faa6a0c3723ada80887aa152bbb3cc94753abaf78471a7a4a338ebd'
+sha256sums=('e9badb3f26e933e295262770e87a6556a1432eb30cc3bfee27f2826668d90504'
             '6958babe41c4d6e8b6dec91fcdd0c6cf2d4b7b99b71974b7339862be68d90965')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
