@@ -1,6 +1,6 @@
 
 pkgname=webers-git
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 epoch=
 pkgdesc="A python program that allows components in plain html"
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/spynetS/webers"
 license=('GPL3')
 groups=()
-depends=(python)
+depends=(python python-flagser)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -25,7 +25,6 @@ md5sums=()
 validpgpkeys=()
 
 prepare() {
-        pip install flagser
         git clone https://github.com/spynetS/webers.git
             
 }

@@ -1,10 +1,11 @@
 pkgbase = webers-git
 	pkgdesc = A python program that allows components in plain html
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/spynetS/webers
 	arch = x86_64
 	license = GPL3
 	depends = python
+	depends = python-flagser
 
 pkgname = webers-git
