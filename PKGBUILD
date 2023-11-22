@@ -1,7 +1,7 @@
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=gnome-next-meeting-applet
 opkgname=gnome_next_meeting_applet 
-pkgver=2.12.0
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="An applet to show your next meetings from Gnome Online Accounts"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/chmouel/gnome-next-meeting-applet"
 license=('GPL3')
 depends=('python-gobject' 'python-yaml' 'python-humanize' 'libappindicator-gtk3' 'gnome-shell-extension-appindicator' 'evolution-data-server' 'evolution-data-server' 'python-dateutil' 'python-dbus')
 source=( ${url}/releases/download/${pkgver}/${opkgname}-${pkgver}.tar.gz )
-sha256sums=('8d219b37e1a76516d882fe03f2f6f71eb9e9df23a554642e57fc92f4d4763a90')
+sha256sums=('265a104f1da5b1f1400a08f95f6afc8ea00afe43fba0e40997063748d1f0159c')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry-core')
 
 build() {
