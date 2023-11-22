@@ -1,0 +1,18 @@
+pkgbase = xdpss-git
+	pkgdesc = Initiate screencast with the help of XDG Desktop portals
+	pkgver = r1.b21bfbb
+	pkgrel = 1
+	url = https://github.com/MikeWalrus/xdpss
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = dbus-python
+	depends = python-gobject
+	source = git+https://github.com/MikeWalrus/xdpss
+	sha256sums = SKIP
+
+pkgname = xdpss-git
