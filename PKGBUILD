@@ -1,9 +1,10 @@
+# Maintainer: arch1t3cht <arch1t3cht@gmail.com>
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
 pkgver=3.2.2.r407.6f546951b
-pkgrel=3
+pkgrel=4
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
 url=http://www.aegisub.org
@@ -43,12 +44,15 @@ source=(
   0001-Use-target-name-without-directory-in-_OBJ-macro.patch
   # https://github.com/Aegisub/Aegisub/commit/5f235ff459e6a7ec36639894d1f45a638a9d73f3.patch
   0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/aegisub/-/blob/12e1e5ee64afb7cfb5a43a998774642bc1eeede6/boost-1.81.0.patch
+  0001-Fix-for-boost-1.81.0.patch
   Remove-second-argument-to-StartStyling.patch
 )
 sha256sums=('SKIP'
             'SKIP'
             'ce90cd9a9c56abcbafeb88d33280d53bee5af98cd9e15f50d6a9e49ae1edda30'
             'c4039f693996dd20be4e8a460fffb984fd34fd810b16b9b1ca7fc4f35df2cc17'
+            '0ae8ffafa9819b4cb49ef5e399cab549129da637058a54368519ed0603c1b24f'
             '42d2c03d19eb6d64b0eb26c6c591fc142f61fcc251b0efcb91377f40448d9778')
 
 pkgver() {
@@ -72,6 +76,9 @@ prepare() {
 
   # Fix build with wxWidgets 3.0
   patch -p1 -i ../0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
+
+  # Fix build with boost 1.81.0
+  patch -p1 -i ../0001-Fix-for-boost-1.81.0.patch
 
   # Fix runtime warning "The second argument passed to StartStyling should be 0"
   patch -p1 -i ../Remove-second-argument-to-StartStyling.patch
