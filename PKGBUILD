@@ -2,7 +2,7 @@
 
 _module='PLTable'
 pkgname='python-pltable'
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Python library for easily displaying tabular data in a visually appealing text table format"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-sha256sums=('1a34a9999ad74dcd3ba73dd602ff5853f699030d7a2e4a0469e9dacaf763bafc')
+sha256sums=('dc8eb7cb9721a7090dc7a5976fbec7d3ef6b82a61f86c3b98700571a3f10401a')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
