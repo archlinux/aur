@@ -1,0 +1,20 @@
+Description: Fix libboost_python detection for boost1.71.
+Author: Bas Couwenberg <sebastic@debian.org>
+Forwarded: https://github.com/mapnik/python-mapnik/pull/227
+Applied-Upstream: https://github.com/mapnik/python-mapnik/commit/739276ff57d28c4b4e6eca741854048aa12414be
+
+--- a/setup.py
++++ b/setup.py
+@@ -40,8 +40,10 @@ def find_boost_library(_id):
+         # Debian naming convention for versions installed in parallel
+         suffixes.insert(0, "-py%d%d" % (sys.version_info.major,
+                                         sys.version_info.minor))
++        suffixes.insert(1, "%d%d" % (sys.version_info.major,
++                                     sys.version_info.minor))
+         # standard suffix for Python3
+-        suffixes.insert(1, sys.version_info.major)
++        suffixes.insert(2, sys.version_info.major)
+     for suf in suffixes:
+         name = "%s%s" % (_id, suf)
+         lib = find_library(name)
+

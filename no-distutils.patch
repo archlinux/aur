@@ -1,0 +1,67 @@
+Description: Don't use deprecated distutils module.
+Author: Bas Couwenberg <sebastic@debian.org>
+Forwarded: https://github.com/mapnik/python-mapnik/pull/267
+
+--- a/build.py
++++ b/build.py
+@@ -1,7 +1,7 @@
+ import glob
++import sysconfig
+ import os
+ from subprocess import Popen, PIPE
+-from distutils import sysconfig
+ 
+ Import('env')
+ 
+@@ -14,11 +14,15 @@ def call(cmd, silent=True):
+ 
+ 
+ prefix = env['PREFIX']
+-target_path = os.path.normpath(sysconfig.get_python_lib() + os.path.sep + env['MAPNIK_NAME'])
++if "deb_system" in sysconfig.get_scheme_names():
++    python_modules_dir = sysconfig.get_path("purelib", "deb_system")
++else:
++    python_modules_dir = sysconfig.get_path("purelib")
++target_path = os.path.normpath(python_modules_dir + os.path.sep + env['MAPNIK_NAME'])
+ 
+ py_env = env.Clone()
+ 
+-py_env.Append(CPPPATH = sysconfig.get_python_inc())
++py_env.Append(CPPPATH = sysconfig.get_path('include'))
+ 
+ py_env.Append(CPPDEFINES = env['LIBMAPNIK_DEFINES'])
+ 
+--- a/setup.py
++++ b/setup.py
+@@ -7,7 +7,6 @@ import shutil
+ import subprocess
+ import sys
+ import glob
+-from distutils import sysconfig
+ from ctypes.util import find_library
+ 
+ from setuptools import Command, Extension, setup
+@@ -84,22 +83,6 @@ class WhichBoostCommand(Command):
+         print("\n".join(get_boost_library_names()))
+ 
+ 
+-cflags = sysconfig.get_config_var('CFLAGS')
+-sysconfig._config_vars['CFLAGS'] = re.sub(
+-    ' +', ' ', cflags.replace('-g ', '').replace('-Os', '').replace('-arch i386', ''))
+-opt = sysconfig.get_config_var('OPT')
+-sysconfig._config_vars['OPT'] = re.sub(
+-    ' +', ' ', opt.replace('-g ', '').replace('-Os', ''))
+-ldshared = sysconfig.get_config_var('LDSHARED')
+-sysconfig._config_vars['LDSHARED'] = re.sub(
+-    ' +', ' ', ldshared.replace('-g ', '').replace('-Os', '').replace('-arch i386', ''))
+-ldflags = sysconfig.get_config_var('LDFLAGS')
+-sysconfig._config_vars['LDFLAGS'] = re.sub(
+-    ' +', ' ', ldflags.replace('-g ', '').replace('-Os', '').replace('-arch i386', ''))
+-pycflags = sysconfig.get_config_var('PY_CFLAGS')
+-sysconfig._config_vars['PY_CFLAGS'] = re.sub(
+-    ' +', ' ', pycflags.replace('-g ', '').replace('-Os', '').replace('-arch i386', ''))
+-sysconfig._config_vars['CFLAGSFORSHARED'] = ''
+ os.environ['ARCHFLAGS'] = ''
+ 
+ if os.environ.get("MASON_BUILD", "false") == "true":
+

@@ -1,0 +1,40 @@
+--- a/setup.py	2023-11-22 17:33:25.696469999 +0100
++++ b/setup.py	2023-11-22 17:33:38.316303559 +0100
+@@ -303,7 +303,6 @@
+             'src/mapnik_rule.cpp',
+             'src/mapnik_scaling_method.cpp',
+             'src/mapnik_style.cpp',
+-            'src/mapnik_svg_generator_grammar.cpp',
+             'src/mapnik_symbolizer.cpp',
+             'src/mapnik_view_transform.cpp',
+             'src/python_grid_utils.cpp',
+--- a/src/mapnik_enumeration.hpp	2023-11-22 17:03:21.174455280 +0100
++++ b/src/mapnik_enumeration.hpp	2023-11-22 16:55:46.657125275 +0100
+@@ -68,7 +68,7 @@
+             using namespace boost::python::converter;
+             return base_type::base::to_python(
+                 registered<native_type>::converters.m_class_object
+-                ,  static_cast<long>( v ));
++                ,  static_cast<long>( native_type(v) ));
+
+         }
+     };
+--- a/src/mapnik_gamma_method.cpp	2023-11-22 17:03:21.177788563 +0100
++++ b/src/mapnik_gamma_method.cpp	2023-11-22 16:56:32.486562802 +0100
+@@ -36,11 +36,11 @@
+     using namespace boost::python;
+
+     mapnik::enumeration_<mapnik::gamma_method_e>("gamma_method")
+-        .value("POWER", mapnik::GAMMA_POWER)
+-        .value("LINEAR",mapnik::GAMMA_LINEAR)
+-        .value("NONE", mapnik::GAMMA_NONE)
+-        .value("THRESHOLD", mapnik::GAMMA_THRESHOLD)
+-        .value("MULTIPLY", mapnik::GAMMA_MULTIPLY)
++        .value("POWER", mapnik::gamma_method_enum::GAMMA_POWER)
++        .value("LINEAR",mapnik::gamma_method_enum::GAMMA_LINEAR)
++        .value("NONE", mapnik::gamma_method_enum::GAMMA_NONE)
++        .value("THRESHOLD", mapnik::gamma_method_enum::GAMMA_THRESHOLD)
++        .value("MULTIPLY", mapnik::gamma_method_enum::GAMMA_MULTIPLY)
+         ;
+
+ }

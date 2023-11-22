@@ -1,0 +1,537 @@
+Description: Update to use libproj >=6 projection initialisation syntax
+Author: Artem Pavlenko <artem@mapnik.org>
+Origin: https://github.com/mapnik/python-mapnik/commit/ca66af65204d68a5496a94d36d69bf61144daf3b
+Forwarded: not-needed
+
+--- a/mapnik/__init__.py
++++ b/mapnik/__init__.py
+@@ -156,7 +156,7 @@ class _Coord(Coord, _injector()):
+         Example: Project the geographic coordinates of the
+                  city center of Stuttgart into the local
+                  map projection (GK Zone 3/DHDN, EPSG 31467)
+-        >>> p = Projection('+init=epsg:31467')
++        >>> p = Projection('epsg:31467')
+         >>> Coord(9.1, 48.7).forward(p)
+         Coord(3507360.12813,5395719.2749)
+         """
+@@ -176,7 +176,7 @@ class _Coord(Coord, _injector()):
+                  city center of Stuttgart in the local
+                  map projection (GK Zone 3/DHDN, EPSG 31467)
+                  into geographic coordinates:
+-        >>> p = Projection('+init=epsg:31467')
++        >>> p = Projection('epsg:31467')
+         >>> Coord(3507360.12813,5395719.2749).inverse(p)
+         Coord(9.1, 48.7)
+         """
+--- a/src/mapnik_layer.cpp
++++ b/src/mapnik_layer.cpp
+@@ -146,13 +146,13 @@ void export_layer()
+     class_<layer>("Layer", "A Mapnik map layer.", init<std::string const&,optional<std::string const&> >(
+                       "Create a Layer with a named string and, optionally, an srs string.\n"
+                       "\n"
+-                      "The srs can be either a Proj.4 epsg code ('+init=epsg:<code>') or\n"
+-                      "of a Proj.4 literal ('+proj=<literal>').\n"
+-                      "If no srs is specified it will default to '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'\n"
++                      "The srs can be either a Proj epsg code ('epsg:<code>') or\n"
++                      "of a Proj literal ('+proj=<literal>').\n"
++                      "If no srs is specified it will default to 'epsg:4326'\n"
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import Layer\n"
+-                      ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = Layer('My Layer','epsg:4326')\n"
+                       ">>> lyr\n"
+                       "<mapnik._mapnik.Layer object at 0x6a270>\n"
+                       ))
+@@ -166,7 +166,7 @@ void export_layer()
+              "\n"
+              "Usage:\n"
+              ">>> from mapnik import Layer\n"
+-             ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++             ">>> lyr = Layer('My Layer','epsg:4326')\n"
+              ">>> lyr.envelope()\n"
+              "box2d(-1.0,-1.0,0.0,0.0) # default until a datasource is loaded\n"
+             )
+@@ -183,7 +183,7 @@ void export_layer()
+              "\n"
+              "Usage:\n"
+              ">>> from mapnik import Layer\n"
+-             ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++             ">>> lyr = Layer('My Layer','epsg:4326')\n"
+              ">>> lyr.visible(1.0/1000000)\n"
+              "True\n"
+              ">>> lyr.active = False\n"
+@@ -198,7 +198,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import Layer\n"
+-                      ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = Layer('My Layer','epsg:4326')\n"
+                       ">>> lyr.active\n"
+                       "True # Active by default\n"
+                       ">>> lyr.active = False # set False to disable layer rendering\n"
+@@ -213,7 +213,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import Layer\n"
+-                      ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = Layer('My Layer','epsg:4326')\n"
+                       ">>> lyr.status\n"
+                       "True # Active by default\n"
+                       ">>> lyr.status = False # set False to disable layer rendering\n"
+@@ -250,7 +250,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import Layer, Datasource\n"
+-                      ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = Layer('My Layer','epsg:4326')\n"
+                       ">>> lyr.datasource = Datasource(type='shape',file='world_borders')\n"
+                       ">>> lyr.datasource\n"
+                       "<mapnik.Datasource object at 0x65470>\n"
+@@ -285,7 +285,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import Layer\n"
+-                      ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = Layer('My Layer','epsg:4326')\n"
+                       ">>> lyr.maximum_scale_denominator\n"
+                       "1.7976931348623157e+308 # default is the numerical maximum\n"
+                       ">>> lyr.maximum_scale_denominator = 1.0/1000000\n"
+@@ -300,7 +300,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import Layer\n"
+-                      ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = Layer('My Layer','epsg:4326')\n"
+                       ">>> lyr.minimum_scale_denominator # default is 0\n"
+                       "0.0\n"
+                       ">>> lyr.minimum_scale_denominator = 1.0/1000000\n"
+@@ -315,7 +315,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import Layer\n"
+-                      ">>> lyr = Layer('My Layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = Layer('My Layer','epsg:4326')\n"
+                       ">>> lyr.name\n"
+                       "'My Layer'\n"
+                       ">>> lyr.name = 'New Name'\n"
+@@ -330,7 +330,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import layer\n"
+-                      ">>> lyr = layer('My layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = layer('My layer','epsg:4326')\n"
+                       ">>> lyr.queryable\n"
+                       "False # Not queryable by default\n"
+                       ">>> lyr.queryable = True\n"
+@@ -345,12 +345,12 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import layer\n"
+-                      ">>> lyr = layer('My layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = layer('My layer','epsg:4326')\n"
+                       ">>> lyr.srs\n"
+-                      "'+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs' # The default srs if not initialized with custom srs\n"
+-                      ">>> # set to google mercator with Proj.4 literal\n"
++                      "'epsg:4326' # The default srs if not initialized with custom srs\n"
++                      ">>> # set to google mercator with Proj literal\n"
+                       "... \n"
+-                      ">>> lyr.srs = '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over'\n"
++                      ">>> lyr.srs = 'epsg:3857'\n"
+             )
+ 
+         .add_property("group_by",
+@@ -367,7 +367,7 @@ void export_layer()
+                       "\n"
+                       "Usage:\n"
+                       ">>> from mapnik import layer\n"
+-                      ">>> lyr = layer('My layer','+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')\n"
++                      ">>> lyr = layer('My layer','epsg:4326')\n"
+                       ">>> lyr.styles\n"
+                       "<mapnik._mapnik.Names object at 0x6d3e8>\n"
+                       ">>> len(lyr.styles)\n"
+--- a/src/mapnik_map.cpp
++++ b/src/mapnik_map.cpp
+@@ -165,9 +165,9 @@ void export_map()
+     class_<Map>("Map","The map object.",init<int,int,optional<std::string const&> >(
+                     ( arg("width"),arg("height"),arg("srs") ),
+                     "Create a Map with a width and height as integers and, optionally,\n"
+-                    "an srs string either with a Proj.4 epsg code ('+init=epsg:<code>')\n"
+-                    "or with a Proj.4 literal ('+proj=<literal>').\n"
+-                    "If no srs is specified the map will default to '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'\n"
++                    "an srs string either with a Proj epsg code ('epsg:<code>')\n"
++                    "or with a Proj literal ('+proj=<literal>').\n"
++                    "If no srs is specified the map will default to 'epsg:4326'\n"
+                     "\n"
+                     "Usage:\n"
+                     ">>> from mapnik import Map\n"
+@@ -175,7 +175,7 @@ void export_map()
+                     ">>> m\n"
+                     "<mapnik._mapnik.Map object at 0x6a240>\n"
+                     ">>> m.srs\n"
+-                    "'+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'\n"
++                    "'epsg:4326'\n"
+                     ))
+ 
+         .def("append_style",insert_style,
+@@ -502,22 +502,22 @@ void export_map()
+         .add_property("srs",
+                       make_function(&Map::srs,return_value_policy<copy_const_reference>()),
+                       &Map::set_srs,
+-                      "Spatial reference in Proj.4 format.\n"
++                      "Spatial reference in Proj format.\n"
+                       "Either an epsg code or proj literal.\n"
+                       "For example, a proj literal:\n"
+-                      "\t'+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'\n"
++                      "\t'epsg:4326'\n"
+                       "and a proj epsg code:\n"
+-                      "\t'+init=epsg:4326'\n"
++                      "\t'epsg:4326'\n"
+                       "\n"
+                       "Note: using epsg codes requires the installation of\n"
+-                      "the Proj.4 'epsg' data file normally found in '/usr/local/share/proj'\n"
++                      "the Proj 'epsg' data file normally found in '/usr/local/share/proj'\n"
+                       "\n"
+                       "Usage:\n"
+                       ">>> m.srs\n"
+-                      "'+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs' # The default srs if not initialized with custom srs\n"
++                      "'epsg:4326' # The default srs if not initialized with custom srs\n"
+                       ">>> # set to google mercator with Proj.4 literal\n"
+                       "... \n"
+-                      ">>> m.srs = '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over'\n"
++                      ">>> m.srs = 'epsg:3857'\n"
+             )
+ 
+         .add_property("width",
+--- a/src/mapnik_projection.cpp
++++ b/src/mapnik_projection.cpp
+@@ -95,8 +95,8 @@ void export_projection ()
+     using namespace boost::python;
+ 
+     class_<projection>("Projection", "Represents a map projection.",init<std::string const&>(
+-                           (arg("proj4_string")),
+-                           "Constructs a new projection from its PROJ.4 string representation.\n"
++                           (arg("proj_string")),
++                           "Constructs a new projection from its PROJ string representation.\n"
+                            "\n"
+                            "The constructor will throw a RuntimeError in case the projection\n"
+                            "cannot be initialized.\n"
+@@ -105,9 +105,9 @@ void export_projection ()
+         .def_pickle(projection_pickle_suite())
+         .def ("params", make_function(&projection::params,
+                                       return_value_policy<copy_const_reference>()),
+-              "Returns the PROJ.4 string for this projection.\n")
++              "Returns the PROJ string for this projection.\n")
+         .def ("expanded",&projection::expanded,
+-              "normalize PROJ.4 definition by expanding +init= syntax\n")
++              "normalize PROJ definition by expanding epsg:XXXX syntax\n")
+         .add_property ("geographic", &projection::is_geographic,
+                        "This property is True if the projection is a geographic projection\n"
+                        "(i.e. it uses lon/lat coordinates)\n")
+--- a/src/mapnik_python.cpp
++++ b/src/mapnik_python.cpp
+@@ -598,9 +598,9 @@ std::string mapnik_version_string()
+     return MAPNIK_VERSION_STRING;
+ }
+ 
+-bool has_proj4()
++bool has_proj()
+ {
+-#if defined(MAPNIK_USE_PROJ4)
++#if defined(MAPNIK_USE_PROJ)
+     return true;
+ #else
+     return false;
+@@ -1035,8 +1035,8 @@ BOOST_PYTHON_MODULE(_mapnik)
+   ">>> m = Map(256,256)\n"
+   ">>> load_map(m,'mapfile_wgs84.xml')\n"
+   ">>> m.srs\n"
+-  "'+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'\n"
+-  ">>> m.srs = '+init=espg:3395'\n"
++  "'epsg:4326'\n"
++  ">>> m.srs = 'espg:3395'\n"
+   ">>> save_map(m,'mapfile_mercator.xml')\n"
+   "\n"
+   );
+@@ -1045,7 +1045,7 @@ BOOST_PYTHON_MODULE(_mapnik)
+     def("save_map_to_string", &save_map_to_string, save_map_to_string_overloads());
+     def("mapnik_version", &mapnik_version,"Get the Mapnik version number");
+     def("mapnik_version_string", &mapnik_version_string,"Get the Mapnik version string");
+-    def("has_proj4", &has_proj4, "Get proj4 status");
++    def("has_proj", &has_proj, "Get proj status");
+     def("has_jpeg", &has_jpeg, "Get jpeg read/write support status");
+     def("has_png", &has_png, "Get png read/write support status");
+     def("has_tiff", &has_tiff, "Get tiff read/write support status");
+--- a/test/python_tests/agg_rasterizer_integer_overflow_test.py
++++ b/test/python_tests/agg_rasterizer_integer_overflow_test.py
+@@ -27,7 +27,7 @@ geojson = {"type": "Feature",
+ 
+ def test_that_coordinates_do_not_overflow_and_polygon_is_rendered_memory():
+     expected_color = mapnik.Color('white')
+-    projection = '+init=epsg:4326'
++    projection = 'epsg:4326'
+     ds = mapnik.MemoryDatasource()
+     context = mapnik.Context()
+     feat = mapnik.Feature.from_geojson(json.dumps(geojson), context)
+@@ -57,7 +57,7 @@ def test_that_coordinates_do_not_overflo
+ 
+ def test_that_coordinates_do_not_overflow_and_polygon_is_rendered_csv():
+     expected_color = mapnik.Color('white')
+-    projection = '+init=epsg:4326'
++    projection = 'epsg:4326'
+     ds = mapnik.MemoryDatasource()
+     context = mapnik.Context()
+     feat = mapnik.Feature.from_geojson(json.dumps(geojson), context)
+--- a/test/python_tests/datasource_test.py
++++ b/test/python_tests/datasource_test.py
+@@ -30,7 +30,7 @@ def test_that_datasources_exist():
+ 
+ @raises(RuntimeError)
+ def test_vrt_referring_to_missing_files():
+-    srs = '+init=epsg:32630'
++    srs = 'epsg:32630'
+     if 'gdal' in mapnik.DatasourceCache.plugin_names():
+         lyr = mapnik.Layer('dataraster')
+         lyr.datasource = mapnik.Gdal(
+--- a/test/python_tests/layer_modification_test.py
++++ b/test/python_tests/layer_modification_test.py
+@@ -58,8 +58,8 @@ def test_adding_datasource_to_layer():
+ 
+         # also note that since the srs was black it defaulted to wgs84
+         eq_(m.layers[0].srs,
+-            '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
+-        eq_(lyr.srs, '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
++            'epsg:4326')
++        eq_(lyr.srs, 'epsg:4326')
+ 
+         # now add a datasource one...
+         ds = mapnik.Shapefile(file='../data/shp/world_merc.shp')
+--- a/test/python_tests/layer_test.py
++++ b/test/python_tests/layer_test.py
+@@ -14,7 +14,7 @@ from .utilities import run_all
+ def test_layer_init():
+     l = mapnik.Layer('test')
+     eq_(l.name, 'test')
+-    eq_(l.srs, '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
++    eq_(l.srs, 'epsg:4326')
+     eq_(l.envelope(), mapnik.Box2d())
+     eq_(l.clear_label_cache, False)
+     eq_(l.cache_features, False)
+--- a/test/python_tests/multi_tile_raster_test.py
++++ b/test/python_tests/multi_tile_raster_test.py
+@@ -16,7 +16,7 @@ def setup():
+ 
+ 
+ def test_multi_tile_policy():
+-    srs = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
++    srs = 'epsg:4326'
+     lyr = mapnik.Layer('raster')
+     if 'raster' in mapnik.DatasourceCache.plugin_names():
+         lyr.datasource = mapnik.Raster(
+--- a/test/python_tests/object_test.py
++++ b/test/python_tests/object_test.py
+@@ -331,7 +331,7 @@
+ 
+ #     eq_(m.width, 256)
+ #     eq_(m.height, 256)
+-#     eq_(m.srs, '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
++#     eq_(m.srs, 'epsg:4326')
+ #     eq_(m.base, '')
+ #     eq_(m.maximum_extent, None)
+ #     eq_(m.background_image, None)
+@@ -361,7 +361,7 @@
+ 
+ # # Map initialization from string
+ # def test_map_init_from_string():
+-#     map_string = '''<Map background-color="steelblue" base="./" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
++#     map_string = '''<Map background-color="steelblue" base="./" srs="epsg:4326">
+ #      <Style name="My Style">
+ #       <Rule>
+ #        <PolygonSymbolizer fill="#f2eff9"/>
+--- a/test/python_tests/ogr_test.py
++++ b/test/python_tests/ogr_test.py
+@@ -36,7 +36,7 @@ if 'ogr' in mapnik.DatasourceCache.plugi
+         assert_almost_equal(e.maxy, 1649661.267, places=3)
+         meta = ds.describe()
+         eq_(meta['geometry_type'], mapnik.DataGeometryType.Polygon)
+-        eq_('+proj=lcc' in meta['proj4'], True)
++        eq_('+proj=lcc' in meta['proj'], True)
+ 
+     # Shapefile properties
+     def test_shapefile_properties():
+@@ -111,7 +111,7 @@ if 'ogr' in mapnik.DatasourceCache.plugi
+         eq_(e.maxy, 1)
+         meta = ds.describe()
+         eq_(meta['geometry_type'], mapnik.DataGeometryType.Polygon)
+-        eq_('+proj=merc' in meta['proj4'], True)
++        eq_('+proj=merc' in meta['proj'], True)
+ 
+     def test_ogr_reading_gpx_waypoint():
+         if not os.path.exists('../data/gpx/empty.gpx'):
+@@ -125,7 +125,7 @@ if 'ogr' in mapnik.DatasourceCache.plugi
+         eq_(e.maxy, 48)
+         meta = ds.describe()
+         eq_(meta['geometry_type'], mapnik.DataGeometryType.Point)
+-        eq_('+proj=longlat' in meta['proj4'], True)
++        eq_('+proj=longlat' in meta['proj'], True)
+ 
+     def test_ogr_empty_data_should_not_throw():
+         if not os.path.exists('../data/gpx/empty.gpx'):
+@@ -144,7 +144,7 @@ if 'ogr' in mapnik.DatasourceCache.plugi
+         mapnik.logger.set_severity(default_logging_severity)
+         meta = ds.describe()
+         eq_(meta['geometry_type'], mapnik.DataGeometryType.Point)
+-        eq_('+proj=longlat' in meta['proj4'], True)
++        eq_('+proj=longlat' in meta['proj'], True)
+ 
+     # disabled because OGR prints an annoying error: ERROR 1: Invalid Point object. Missing 'coordinates' member.
+     # def test_handling_of_null_features():
+@@ -164,7 +164,7 @@ if 'ogr' in mapnik.DatasourceCache.plugi
+         assert_almost_equal(e.maxy, 45.0, places=1)
+         meta = ds.describe()
+         eq_(meta['geometry_type'], mapnik.DataGeometryType.Point)
+-        #eq_('+proj=longlat' in meta['proj4'],True)
++        #eq_('+proj=longlat' in meta['proj'],True)
+         fs = ds.featureset()
+         feat = fs.next()
+         actual = json.loads(feat.to_geojson())
+--- a/test/python_tests/projection_test.py
++++ b/test/python_tests/projection_test.py
+@@ -16,14 +16,14 @@ if PYTHON3:
+ 
+ 
+ def test_normalizing_definition():
+-    p = mapnik.Projection('+init=epsg:4326')
++    p = mapnik.Projection('epsg:4326')
+     expanded = p.expanded()
+     eq_('+proj=longlat' in expanded, True)
+ 
+ 
+ # Trac Ticket #128
+ def test_wgs84_inverse_forward():
+-    p = mapnik.Projection('+init=epsg:4326')
++    p = mapnik.Projection('epsg:4326')
+ 
+     c = mapnik.Coord(3.01331418311, 43.3333092669)
+     e = mapnik.Box2d(-122.54345245, 45.12312553, 68.2335581353, 48.231231233)
+@@ -78,7 +78,7 @@ def merc2wgs(x, y):
+         y = -85.0511
+     return [x, y]
+ 
+-# echo -109 37 | cs2cs -f "%.10f" +init=epsg:4326 +to +init=epsg:3857
++# echo -109 37 | cs2cs -f "%.10f" epsg:4326 +to epsg:3857
+ #-12133824.4964668211    4439106.7872505859 0.0000000000
+ 
+ # todo
+@@ -89,12 +89,12 @@ def merc2wgs(x, y):
+ 
+ 
+ def test_proj_transform_between_init_and_literal():
+-    one = mapnik.Projection('+init=epsg:4326')
+-    two = mapnik.Projection('+init=epsg:3857')
++    one = mapnik.Projection('epsg:4326')
++    two = mapnik.Projection('epsg:3857')
+     tr1 = mapnik.ProjTransform(one, two)
+     tr1b = mapnik.ProjTransform(two, one)
+-    wgs84 = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
+-    merc = '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over'
++    wgs84 = 'epsg:4326'
++    merc = 'epsg:3857'
+     src = mapnik.Projection(wgs84)
+     dest = mapnik.Projection(merc)
+     tr2 = mapnik.ProjTransform(src, dest)
+@@ -133,8 +133,8 @@ def test_proj_antimeridian_bbox():
+     # this is logic from feature_style_processor::prepare_layer()
+     PROJ_ENVELOPE_POINTS = 20  # include/mapnik/config.hpp
+ 
+-    prjGeog = mapnik.Projection('+init=epsg:4326')
+-    prjProj = mapnik.Projection('+init=epsg:2193')
++    prjGeog = mapnik.Projection('epsg:4326')
++    prjProj = mapnik.Projection('epsg:2193')
+     prj_trans_fwd = mapnik.ProjTransform(prjProj, prjGeog)
+     prj_trans_rev = mapnik.ProjTransform(prjGeog, prjProj)
+ 
+--- a/test/python_tests/query_tolerance_test.py
++++ b/test/python_tests/query_tolerance_test.py
+@@ -16,7 +16,7 @@
+ 
+ if 'shape' in mapnik.DatasourceCache.plugin_names():
+     def test_query_tolerance():
+-        srs = '+init=epsg:4326'
++        srs = 'epsg:4326'
+         lyr = mapnik.Layer('test')
+         ds = mapnik.Shapefile(file='../data/shp/arrows.shp')
+         lyr.datasource = ds
+--- a/test/python_tests/render_test.py
++++ b/test/python_tests/render_test.py
+@@ -170,7 +170,7 @@ def test_render_points():
+     s.rules.append(r)
+     lyr = mapnik.Layer(
+         'Places',
+-        '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
++        'epsg:4326')
+     lyr.datasource = ds
+     lyr.styles.append('places_labels')
+     # latlon bounding box corners
+@@ -178,8 +178,8 @@ def test_render_points():
+     lr_lonlat = mapnik.Coord(143.40, -38.80)
+     # render for different projections
+     projs = {
+-        'google': '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over',
+-        'latlon': '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs',
++        'google': 'epsg:3857',
++        'latlon': 'epsg:4326',
+         'merc': '+proj=merc +datum=WGS84 +k=1.0 +units=m +over +no_defs',
+         'utm': '+proj=utm +zone=54 +datum=WGS84'
+     }
+@@ -188,7 +188,7 @@ def test_render_points():
+         m.append_style('places_labels', s)
+         m.layers.append(lyr)
+         dest_proj = mapnik.Projection(projs[projdescr])
+-        src_proj = mapnik.Projection('+init=epsg:4326')
++        src_proj = mapnik.Projection('epsg:4326')
+         tr = mapnik.ProjTransform(src_proj, dest_proj)
+         m.zoom_to_box(tr.forward(mapnik.Box2d(ul_lonlat, lr_lonlat)))
+         # Render to SVG so that it can be checked how many points are there
+--- a/test/python_tests/raster_symbolizer_test.py
++++ b/test/python_tests/raster_symbolizer_test.py
+@@ -16,7 +16,7 @@
+ 
+ 
+ def test_dataraster_coloring():
+-    srs = '+init=epsg:32630'
++    srs = 'epsg:32630'
+     lyr = mapnik.Layer('dataraster')
+     if 'gdal' in mapnik.DatasourceCache.plugin_names():
+         lyr.datasource = mapnik.Gdal(
+@@ -72,7 +72,7 @@
+ 
+ 
+ def test_dataraster_query_point():
+-    srs = '+init=epsg:32630'
++    srs = 'epsg:32630'
+     lyr = mapnik.Layer('dataraster')
+     if 'gdal' in mapnik.DatasourceCache.plugin_names():
+         lyr.datasource = mapnik.Gdal(
+@@ -157,8 +157,8 @@
+ 
+ 
+ def test_raster_warping():
+-    lyrSrs = "+init=epsg:32630"
+-    mapSrs = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
++    lyrSrs = "epsg:32630"
++    mapSrs = 'epsg:4326'
+     lyr = mapnik.Layer('dataraster', lyrSrs)
+     if 'gdal' in mapnik.DatasourceCache.plugin_names():
+         lyr.datasource = mapnik.Gdal(
+@@ -198,8 +198,8 @@
+ 
+ 
+ def test_raster_warping_does_not_overclip_source():
+-    lyrSrs = "+init=epsg:32630"
+-    mapSrs = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
++    lyrSrs = "epsg:32630"
++    mapSrs = 'epsg:4326'
+     lyr = mapnik.Layer('dataraster', lyrSrs)
+     if 'gdal' in mapnik.DatasourceCache.plugin_names():
+         lyr.datasource = mapnik.Gdal(
