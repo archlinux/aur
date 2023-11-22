@@ -1,6 +1,39 @@
 Version history
 ===============
 
+0.10.17
+-------
+
+2023-11-21
+
+Reword the lix-identifying panel text when you hover the cursor over a lix.
+Before, when one lix platformed with 9 bricks left, and two lix walked past,
+it read "3 Platformers [9]". Now, it reads: "Lix #7 is platforming [9] + 2 lix"
+
+Remove "(RCF)" from the lix-identifying panel text for the permanent abilities:
+runners, climbers, floaters. We already show permanent abilities directly on
+the main map as little icons above the lix.
+
+Translate skill names. In English, a builder produces the lix-identifying
+panel text "Lix #13 is building [9]", which translates to the German text
+"Lix #13 baut [9]".
+
+Translate keyboard key names. E.g., in German, if you bind the Insert key, the
+keybinding button will read "Einfg". Before, it read "Insert" even in German.
+
+Reword the in-game tooltip "Replaying. To play, click into air."
+to "Replaying. Click to play from here."
+
+Don't show the tooltip "Rewind time or quit" after the single player has nuked.
+In this case, he wants to exit to menu, not rewind.
+
+Don't show tooltips in multiplayer. This works around bug #473: When you have
+both tooltips and the big score board, the tooltips don't erase the score board
+from screen properly. Until we solve the root cause of those drawing/undrawing
+races, let's hide tooltips altogether in multiplayer.
+
+
+
 0.10.16
 -------
 

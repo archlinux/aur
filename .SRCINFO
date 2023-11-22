@@ -1,6 +1,6 @@
 pkgbase = lix
 	pkgdesc = An action-puzzle game inspired by Lemmings
-	pkgver = 0.10.16
+	pkgver = 0.10.17
 	pkgrel = 1
 	url = https://www.lixgame.com/
 	changelog = .CHANGELOG
@@ -14,7 +14,7 @@ pkgbase = lix
 	depends = enet
 	depends = hicolor-icon-theme
 	depends = d-runtime
-	source = lix-0.10.16.src.tar.gz::https://github.com/SimonN/LixD/archive/v0.10.16.tar.gz
+	source = lix-0.10.17.src.tar.gz::https://github.com/SimonN/LixD/archive/v0.10.17.tar.gz
 	source = lix-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip
 	source = lix-allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v4.0.6+5.2.0
 	source = lix-bolts::git+https://github.com/aliak00/bolts.git#tag=v1.3.1
@@ -25,7 +25,7 @@ pkgbase = lix
 	source = lix-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v0.10.6
 	source = lix-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v0.11.22
 	source = lix-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v0.7.55
-	sha512sums = 63f8348a01bccf0233a88e1cd24c22cd31ccf945e3a185a03401a4f2c83a5e7231dcab301b9dfc20591ae75fac2b9590dddad4610bbbf150fb5170f0954398da
+	sha512sums = 612f45b4cc582e2591945db26e7c299cfbd115b6c51137281314c3a144b2ec8e333b4dad68a9678ca94b5a04771f992192225c3c072f19a0c99d097e2bcab0cf
 	sha512sums = 280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f
 	sha512sums = SKIP
 	sha512sums = SKIP
