@@ -1,0 +1,22 @@
+pkgbase = sunbeam-bin
+	pkgdesc = Generate powerful UIs from simple scripts written in any language.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sunbeam.sh
+	license = MIT
+	conflicts = sunbeam
+	provides = sunbeam
+	arch = aarch64
+	source_aarch64 = https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_arm64.tar.gz
+	sha256sums_aarch64 = e2a2696e02eee8e5fd9bf611c27392839890bd79e0b84365f709652de4873cc2
+	arch = armv7h
+	source_armv7h = https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_arm.tar.gz
+	sha256sums_armv7h = 85ab83e357f3af66d84210a2c8d230b3734fcbb3c886249258a64eec5b4c27be
+	arch = i686
+	source_i686 = https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_386.tar.gz
+	sha256sums_i686 = e67ac9cf5f2fa092ebbd9841dd9258b0e475cb79df50f5e0c6e4d6a3dbfbe4fc
+	arch = x86_64
+	source_x86_64 = https://github.com/pomdtr/sunbeam/releases/download/v1.0.0-rc.95/sunbeam-linux_amd64.tar.gz
+	sha256sums_x86_64 = 470813b808aae1c1d642b8283805a7a8a5c7c20a69583a7c7cb777ce4c47c79b
+	
+pkgname = sunbeam-bin
