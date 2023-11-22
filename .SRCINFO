@@ -1,14 +1,14 @@
 pkgbase = 9pfuse
 	pkgdesc = The 9p protocol implementation for FUSE from Plan9 Port
-	pkgver = 1
-	pkgrel = 2
+	pkgver = 2
+	pkgrel = 1
 	url = https://github.com/aperezdc/9pfuse
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = meson
 	depends = fuse
-	source = https://github.com/aperezdc/9pfuse/releases/download/v1/9pfuse-1.tar.xz
-	sha256sums = 8e7a34e93beaa9eb0f5e018cd5c68d953602445d9f165a2ac4b7f28f3c8a8f0e
+	source = https://github.com/aperezdc/9pfuse/releases/download/v2/9pfuse-2.tar.xz
+	sha256sums = 3572fc0e40ba126e50ce79c2d80304ad05b79c6fa24fda0e5a17cd2301375a51
 
 pkgname = 9pfuse
