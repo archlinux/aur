@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/tellmeY/pooi"
 license=('GPL3')
 depends=('rust' 'cargo')
-source=("https://gitlab.com/tellmeY/$pkgname/-/jobs/5492712318/artifacts/raw/pooi-v$pkgver.tar.gz")
+source=("https://gitlab.com/tellmeY/$pkgname/-/archive/$pkgver/pooi-v$pkgver.tar.gz")
 sha256sums=('6a26ffb97233263a93de23033245780acc8a62cc7b2d7214d5d2495ea2f4c16d')
 
 build() {
