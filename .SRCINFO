@@ -1,0 +1,15 @@
+pkgbase = c3c-bin
+	pkgdesc = C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Stable Release (with LLVM 16)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/c3lang/c3c.git
+	arch = x86_64
+	license = LGPL3
+	license = MIT
+	makedepends = binutils
+	provides = c3c
+	conflicts = c3c
+	source = https://github.com/c3lang/c3c/releases/download/release_0.5/c3-linux.tar-6.gz
+	md5sums = e97e051ba4115265dcd47ba486665aae
+
+pkgname = c3c-bin
