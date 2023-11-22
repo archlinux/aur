@@ -1,5 +1,5 @@
 pkgname=immich
-pkgrel=2
+pkgrel=3
 pkgver=1.88.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -42,7 +42,6 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}-server.service"
 	"${pkgname}-microservices.service"
-	"${pkgname}-web.service"
 	"${pkgname}-machine-learning.service"
 	"${pkgname}.sysusers"
 	"${pkgname}.tmpfiles"
@@ -128,15 +127,7 @@ package() {
     install -Dm644 server/package-lock.json "${pkgdir}/usr/lib/immich/app/server/package-lock.json"
     install -Dm644 LICENSE "${pkgdir}/usr/lib/immich/app/LICENSE"
     cp -r server/assets "${pkgdir}/usr/lib/immich/app/assets"
-
-    # install web frontend
-    # from: web/Dockerfile COPY commands (entrypoint.sh not required)
-    #   * setting NODE_ENV=production picked up in systemd service file
-    # install -dm755 "${pkgdir}/usr/lib/immich/app/web"
-    # cp -r web/node_modules "${pkgdir}/usr/lib/immich/app/web/node_modules"
     cp -r web/build "${pkgdir}/usr/lib/immich/app/server/www"
-    # install -Dm644 web/package.json "${pkgdir}/usr/lib/immich/app/web/package.json"
-    # install -Dm644 web/package-lock.json "${pkgdir}/usr/lib/immich/app/web/package-lock.json"
 
     # install machine-learning
     # from: machine-learning/Dockerfile COPY commands
@@ -150,7 +141,6 @@ package() {
 
     # install systemd service files
     install -Dm644 immich-server.service "${pkgdir}/usr/lib/systemd/system/immich-server.service"
-    install -Dm644 immich-web.service "${pkgdir}/usr/lib/systemd/system/immich-web.service"
     install -Dm644 immich-microservices.service "${pkgdir}/usr/lib/systemd/system/immich-microservices.service"
     install -Dm644 immich-machine-learning.service "${pkgdir}/usr/lib/systemd/system/immich-machine-learning.service"
 
