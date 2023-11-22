@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-lazy
-pkgver=1.5.1
+pkgver=1.6
 pkgrel=1
 pkgdesc="Lazy attributes for Python objects"
 url="https://github.com/stefanholek/lazy"
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stefanholek/lazy/archive/$pkgver.tar.gz")
-sha512sums=('42dc44ea3640d63aa853f113ba3bc4bdda7c2fe25c013cf90b2b0225cf9f6bbdcccebc08c2cf64c00dc17ce359a1027e06695b839ee5a3f1996ba33b862408cb')
+sha512sums=('b6e89fdf33840c9f70f13129c4c43d5d21e72897a2ae6d8f5dcfe4145fca41492e76f83a1d4c1a26f90ac8cd9e4c88c9f55187ae4fa044ccb6ca640d8907c4dc')
 
 build() {
   cd lazy-$pkgver

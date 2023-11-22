@@ -1,0 +1,13 @@
+pkgbase = python-lazy
+	pkgdesc = Lazy attributes for Python objects
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/stefanholek/lazy
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = python-lazy-1.6.tar.gz::https://github.com/stefanholek/lazy/archive/1.6.tar.gz
+	sha512sums = b6e89fdf33840c9f70f13129c4c43d5d21e72897a2ae6d8f5dcfe4145fca41492e76f83a1d4c1a26f90ac8cd9e4c88c9f55187ae4fa044ccb6ca640d8907c4dc
+
+pkgname = python-lazy
