@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=materialgram-git
 pkgver=4.11.7.1.r26.g8c847c3f8
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial desktop version of Telegram messaging app with Material Design'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kukuruzka165/materialgram"
@@ -103,7 +103,6 @@ source=("tdesktop::git+https://github.com/kukuruzka165/materialgram.git#branch=m
     git submodule init
     git config submodule.expected-lite.url "$srcdir/cppgir-expected-lite"
     git -c protocol.file.allow=always submodule update
-}
 
 build() {
     cd "$srcdir/tdesktop"
