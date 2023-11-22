@@ -1,7 +1,7 @@
 pkgbase = tiledb
 	pkgdesc = The Universal Storage Engine
-	pkgver = 2.18.0-rc4
-	pkgrel = 3
+	pkgver = 2.18.0
+	pkgrel = 1
 	url = https://tiledb.com/
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = tiledb
 	depends = zstd
 	depends = zlib
 	depends = libwebp
-	source = tiledb-2.18.0-rc4.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/2.18.0-rc4.tar.gz
-	sha256sums = 4426fd901b102b85d0cef234dd9778ca736f8b589c6a2936aab2321c7931911a
+	source = tiledb-2.18.0.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/2.18.0.tar.gz
+	sha256sums = c5cc459f18bae030631830a260d8fc54690ed2887e6b64dac70e3dfc29f55691
 
 pkgname = tiledb
