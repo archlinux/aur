@@ -1,5 +1,5 @@
 pkgname=immich
-pkgrel=3
+pkgrel=4
 pkgver=1.88.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -125,7 +125,7 @@ package() {
     install -Dm644 server/package.json "${pkgdir}/usr/lib/immich/app/server/package.json"
     install -Dm644 server/package-lock.json "${pkgdir}/usr/lib/immich/app/server/package-lock.json"
     install -Dm644 LICENSE "${pkgdir}/usr/lib/immich/app/LICENSE"
-    cp -r server/assets "${pkgdir}/usr/lib/immich/app/assets"
+    cp -r server/assets "${pkgdir}/usr/lib/immich/app/server/assets"
     cp -r web/build "${pkgdir}/usr/lib/immich/app/server/www"
 
     # install machine-learning
