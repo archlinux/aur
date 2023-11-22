@@ -3,7 +3,7 @@
 
 pkgname=saleae-logic2
 pkgver=2.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
 url="https://discuss.saleae.com/c/logic-2-0-software/7"
@@ -45,6 +45,7 @@ package() {
 	# Fix permissions (example: 700->755, 640->644)
 	find "${pkgdir}"   -perm "/111" -exec chmod 755 \{\} \;
 	find "${pkgdir}" ! -perm "/111" -exec chmod 644 \{\} \;
+	chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
 	mkdir -p "${pkgdir}/usr/bin/"
 	ln -s "/opt/${pkgname}/Logic" "${pkgdir}/usr/bin/${pkgname}"
