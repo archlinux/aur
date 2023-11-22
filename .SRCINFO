@@ -1,6 +1,6 @@
 pkgbase = ignition-math
 	pkgdesc = General purpose math library for robot applications.
-	pkgver = 7.1.0
+	pkgver = 7.3.0
 	pkgrel = 3
 	url = https://gazebosim.org/libs/math
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ignition-math
 	makedepends = pybind11
 	depends = gcc-libs
 	depends = swig
-	source = ignition-math-7.1.0.tar.gz::https://github.com/gazebosim/gz-math/archive/gz-math7_7.1.0.tar.gz
-	sha256sums = 3df09a16b84fa27fabf4955b5efb207f417ef9b0b5b801ae28cfda6d8e11765a
+	source = ignition-math-7.3.0.tar.gz::https://github.com/gazebosim/gz-math/archive/gz-math7_7.3.0.tar.gz
+	sha256sums = 320afb30f43727340718743c0f8d94e61e9c1083c17927701efe75087f9cc6d0
 
 pkgname = ignition-math
