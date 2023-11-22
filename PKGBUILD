@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-displayio-ssd1306
 _pypi_pkgname=adafruit-circuitpython-displayio-ssd1306
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=0
 pkgdesc="DisplayIO driver for SSD1306 monochrome displays"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ depends=(
 )
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('fbd935dc2498f8a0ef50242062e1f673dacdadc14128ead362f9c4d688076be9')
+sha256sums=('dc556fdac20f197a46d7ac0de69784077aa4228c7dfaf69de3a2318f76fa4985')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
