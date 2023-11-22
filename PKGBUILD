@@ -3,16 +3,49 @@ pkgname=mailmaster-bin
 pkgver=5.0.2.1009
 _nssver=1.1.2
 _saslver=2.1.28
-pkgrel=2
+pkgrel=3
 pkgdesc="专业的全平台邮箱客户端。一封邮件，多端同步。所有平台都能给你出色的体验。"
 arch=('x86_64')
 url="https://dashi.163.com"
 license=('custom')
 conflicts=("${pkgname%-bin}")
-depends=('qt5-base' 'xcb-util-renderutil' 'libxdamage' 'libx11' 'xcb-util-image' 'alsa-lib' 'freetype2' 'libxcomposite' 'nspr' 'e2fsprogs' \
-    'expat' 'at-spi2-core' 'dbus' 'xcb-util-keysyms' 'zlib' 'libxrandr' 'glibc' 'bash' 'libxkbcommon' 'libxkbcommon-x11' 'nss' 'gconf' 'krb5' \
-    'fontconfig' 'libdrm' 'xcb-util' 'libxfixes' 'libglvnd' 'xcb-util-wm' 'glib2' 'libxcb' 'mesa' 'libcups' 'libxext' 'pango' 'gcc-libs')
-makedepends=('gcc' 'cmake' 'imagemagick')
+depends=(
+    'qt5-base'
+    'xcb-util-renderutil'
+    'libxdamage'
+    'libx11'
+    'xcb-util-image'
+    'alsa-lib'
+    'freetype2'
+    'libxcomposite'
+    'nspr'
+    'e2fsprogs'
+    'expat'
+    'at-spi2-core'
+    'xcb-util-keysyms'
+    'libxrandr'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'nss'
+    'gconf'
+    'krb5'
+    'fontconfig'
+    'libdrm'
+    'xcb-util'
+    'libxfixes'
+    'libglvnd'
+    'xcb-util-wm'
+    'libxcb'
+    'mesa'
+    'libcups'
+    'libxext'
+    'pango'
+)
+makedepends=(
+    'gcc'
+    'cmake'
+    'imagemagick'
+)
 noextract=("libnss-wrapper-${_nssver}.deb" "libsasl2-${_saslver}.deb")
 source=("${pkgname%-bin}-${pkgver}.deb::https://res.126.net/dl/client/linuxmail/dashi/mail.deb"
     #"nss-wrapper.tar.gz::https://github.com/deepin-community/nss-wrapper/archive/refs/heads/master.zip"
@@ -25,7 +58,7 @@ sha256sums=('49b01fd8808cdb61d6acaf5ebffc5af0d5fdffe5da8c632a277695e4408d3e17'
             'c1c9649b1bbd095a03c648d89b7bfeedcc7c15ae819e2a1a778427908eebb284'
             'd190a3abbbcb36dfb1526eb20ee957629317c8175867113ccbfe0b6bf2cb2b89'
             '8ec2318da6f512f89dbee747fcbd233f552134da98c204c4ac682400341732fc'
-            '633c85132e514561b4706baedbf3922c0781c6e22644bd4d9697af3a632868af')
+            '6d68799aaa5a8231743e1d49b69a91bfe629b04fea2a76f79564817dd3a0a0d5')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed -e "s|/opt/${pkgname%-bin}/launch.sh|${pkgname%-bin}|g" \
