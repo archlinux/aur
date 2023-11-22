@@ -2,7 +2,7 @@
 
 pkgname=rtl8812au-aircrack-ng-dkms-git
 _pkgbase=rtl8812au
-pkgver=5.6.4.2_20230501.4a983e4
+pkgver=5.6.4.2_20230501.a3e0c0b
 pkgrel=1
 pkgdesc="RTL8812AU/21AU and RTL8814AU driver with monitor mode and frame injection"
 arch=('i686' 'x86_64')
