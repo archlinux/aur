@@ -1,6 +1,6 @@
 pkgbase = ignition-cmake-2
 	pkgdesc = A set of CMake modules that are used by the C++-based Gazebo projects.
-	pkgver = 2.17.0
+	pkgver = 2.17.1
 	pkgrel = 1
 	url = https://gazebosim.org/libs/cmake
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ignition-cmake-2
 	depends = ruby-ronn
 	depends = doxygen
 	provides = ignition-cmake=2
-	source = https://github.com/gazebosim/gz-cmake/archive/ignition-cmake2_2.17.0.tar.gz
-	sha256sums = f7953691bbeb09f1e86db89417cf15f34e7e2c025f76925297cf82e1fd17e1cf
+	source = https://github.com/gazebosim/gz-cmake/archive/ignition-cmake2_2.17.1.tar.gz
+	sha256sums = f8dbadac71540324e0c506b607cefa99e99a8aca997f7af8e67cb486eb610cc0
 
 pkgname = ignition-cmake-2
