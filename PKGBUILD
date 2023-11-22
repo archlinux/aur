@@ -4,10 +4,10 @@
 
 pkgname=aegisub-git
 pkgver=3.2.2.r407.6f546951b
-pkgrel=4
+pkgrel=5
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
-url=http://www.aegisub.org
+url=https://aegisub.org
 license=(
   GPL
   BSD
@@ -24,7 +24,7 @@ depends=(
   libgl
   libpulse
   uchardet
-  wxwidgets
+  wxwidgets-gtk3
   zlib
 )
 makedepends=(
