@@ -1,6 +1,6 @@
 pkgbase = ignition-common
 	pkgdesc = Provides a set of libraries that cover many different use cases.
-	pkgver = 5.4.0
+	pkgver = 5.4.2
 	pkgrel = 1
 	url = https://gazebosim.org/libs/common
 	arch = x86_64
@@ -16,9 +16,7 @@ pkgbase = ignition-common
 	depends = ffmpeg4.4
 	depends = gdal
 	depends = assimp
-	source = ignition-common-5.4.0.tar.gz::https://github.com/gazebosim/gz-common/archive/gz-common5_5.4.0.tar.gz
-	source = gcc13.diff::https://github.com/gazebosim/gz-common/commit/6a0f9d7cd67a3916a0e6661cd99494f2d0e4faf9.patch
-	sha256sums = e439bac118b145355d57713a975394a6191e4d1d4703566851ddfc7b72463af3
-	sha256sums = 5c1018b5dd41e1d9af9050e19baad31010e31788663430c48b5aaa2e0cdf0d43
+	source = ignition-common-5.4.2.tar.gz::https://github.com/gazebosim/gz-common/archive/gz-common5_5.4.2.tar.gz
+	sha256sums = 28b06f87b338eb016545ed1df3900a81fe3d1815661dea296a8e8704ab2eacca
 
 pkgname = ignition-common
