@@ -1,7 +1,7 @@
 pkgbase = ayugram-desktop-git
 	pkgdesc = Unofficial desktop version of Telegram messaging app with ToS breaking features in mind
-	pkgver = 4.11.1.r0.gfe1585770
-	pkgrel = 2
+	pkgver = 4.11.7.r0.g6af28f608
+	pkgrel = 1
 	url = https://github.com/AyuGram/AyuGramDesktop
 	arch = x86_64
 	arch = aarch64
