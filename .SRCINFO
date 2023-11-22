@@ -1,8 +1,8 @@
 pkgbase = overtone-wpc
 	pkgdesc = A Suite Of Mastering and Mixing VST Plugins for Linux
 	pkgver = 201904
-	pkgrel = 4
-	url = https://www.overtonedsp.co.uk/download/download_wpc/
+	pkgrel = 5
+	url = https://www.overtonedsp.co.uk/
 	arch = x86_64
 	groups = pro-audio
 	groups = vst-plugins
