@@ -22,7 +22,7 @@ index 74f5465ef..586ca9ece 100644
  enable_language(C)
  enable_language(CXX)
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
-+set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
 +set(CMAKE_CXX_STANDARD_REQUIRED ON)
  
  if (CMAKE_CONFIGURATION_TYPES)
