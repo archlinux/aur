@@ -1,7 +1,7 @@
 pkgbase = map2
 	pkgdesc = A scripting language that allows complex key remapping on Linux, written in Rust
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shiro/map2
 	arch = x86_64
 	arch = i686
