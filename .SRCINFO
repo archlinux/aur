@@ -1,6 +1,6 @@
 pkgbase = ergochat
 	pkgdesc = A modern IRC server written in Go
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/ergochat/ergo
 	install = install
@@ -21,7 +21,7 @@ pkgbase = ergochat
 	backup = etc/oragono.conf
 	backup = etc/ergochat.conf
 	backup = etc/ergochat/ircd.yaml
-	source = git+https://github.com/ergochat/ergo#tag=v2.11.1
+	source = git+https://github.com/ergochat/ergo#tag=v2.12.0
 	source = config.patch
 	source = systemd-service-unit.patch
 	source = ergochat.sysusers
