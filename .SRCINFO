@@ -1,8 +1,8 @@
 pkgbase = maya-arnold
 	pkgdesc = Autodesk Maya Arnold Renderer Plugin
-	pkgver = 5.3.1
+	pkgver = 5.3.4.1
 	pkgrel = 1
-	url = https://www.arnoldrenderer.com/arnold/arnold-for-maya/
+	url = https://arnoldrenderer.com/download/
 	arch = x86_64
 	license = custom
 	depends = maya>=2024
@@ -11,6 +11,6 @@ pkgbase = maya-arnold
 	optdepends = maya-bifrost: Bifrost effects support
 	options = !strip
 	source = manual://package.zip
-	sha256sums = dcfea3cd0d32bd8293b5f287339fec9bfcb9e715348d698e8e112c3c08b29e21
+	b2sums = 1be0581937469b8e7e1d1a84e28877f62aa5f19c2bd10e460d01655858c0108574d408c9dfca564f829c72225e83ea2c294f08c979e47a654938cf2bdba4e34e
 
 pkgname = maya-arnold
