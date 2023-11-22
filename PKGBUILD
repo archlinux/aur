@@ -5,7 +5,7 @@
 
 pkgname=cronet
 pkgver=119.0.6045.159
-pkgrel=2
+pkgrel=3
 _manual_clone=0
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
@@ -17,11 +17,15 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         REVERT-disable-autoupgrading-debug-info.patch
+        abseil-remove-unused-targets.patch
         disable-logging.patch
+        fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
 sha256sums=('d0d842712805ac81582dc0fecd4396fbf4380713df2fb50ceeb853dd38d1538f'
             '09ecf142254525ddb9c2dbbb2c71775e68722412923a5a9bba5cc2e46af8d087'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            SKIP
+            SKIP
             SKIP
             SKIP)
 
@@ -33,26 +37,26 @@ fi
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  # [absl_algorithm]=
-  # [absl_base]=abseil-cpp
-  # [absl_cleanup]=
-  # [absl_container]=
-  # [absl_debugging]=
-  # [absl_flags]=
-  # [absl_functional]=
-  # [absl_hash]=
-  # [absl_log]=
-  # [absl_log_internal]=
-  # [absl_memory]=
-  # [absl_meta]=
-  # [absl_numeric]=
-  # [absl_random]=
-  # [absl_status]=
-  # [absl_strings]=
-  # [absl_synchronization]=
-  # [absl_time]=
-  # [absl_types]=
-  # [absl_utility]=
+  [absl_algorithm]=
+  [absl_base]=abseil-cpp
+  [absl_cleanup]=
+  [absl_container]=
+  [absl_debugging]=
+  [absl_flags]=
+  [absl_functional]=
+  [absl_hash]=
+  [absl_log]=
+  [absl_log_internal]=
+  [absl_memory]=
+  [absl_meta]=
+  [absl_numeric]=
+  [absl_random]=
+  [absl_status]=
+  [absl_strings]=
+  [absl_synchronization]=
+  [absl_time]=
+  [absl_types]=
+  [absl_utility]=
   [brotli]=brotli
   [double-conversion]=double-conversion
   [icu]=icu
@@ -63,26 +67,26 @@ declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
 )
 _unwanted_bundled_libs=(
-  # third_party/abseil-cpp/absl/algorithm
-  # third_party/abseil-cpp/absl/base
-  # third_party/abseil-cpp/absl/cleanup
-  # third_party/abseil-cpp/absl/container
-  # third_party/abseil-cpp/absl/debugging
-  # third_party/abseil-cpp/absl/flags
-  # third_party/abseil-cpp/absl/functional
-  # third_party/abseil-cpp/absl/hash
-  # third_party/abseil-cpp/absl/log
-  # third_party/abseil-cpp/absl/log/internal
-  # third_party/abseil-cpp/absl/memory
-  # third_party/abseil-cpp/absl/meta
-  # third_party/abseil-cpp/absl/numeric
-  # third_party/abseil-cpp/absl/random
-  # third_party/abseil-cpp/absl/status
-  # third_party/abseil-cpp/absl/strings
-  # third_party/abseil-cpp/absl/synchronization
-  # third_party/abseil-cpp/absl/time
-  # third_party/abseil-cpp/absl/types
-  # third_party/abseil-cpp/absl/utility
+  third_party/abseil-cpp/absl/algorithm
+  third_party/abseil-cpp/absl/base
+  third_party/abseil-cpp/absl/cleanup
+  third_party/abseil-cpp/absl/container
+  third_party/abseil-cpp/absl/debugging
+  third_party/abseil-cpp/absl/flags
+  third_party/abseil-cpp/absl/functional
+  third_party/abseil-cpp/absl/hash
+  third_party/abseil-cpp/absl/log
+  third_party/abseil-cpp/absl/log/internal
+  third_party/abseil-cpp/absl/memory
+  third_party/abseil-cpp/absl/meta
+  third_party/abseil-cpp/absl/numeric
+  third_party/abseil-cpp/absl/random
+  third_party/abseil-cpp/absl/status
+  third_party/abseil-cpp/absl/strings
+  third_party/abseil-cpp/absl/synchronization
+  third_party/abseil-cpp/absl/time
+  third_party/abseil-cpp/absl/types
+  third_party/abseil-cpp/absl/utility
   third_party/brotli
   third_party/crc32c
   third_party/dav1d
@@ -147,6 +151,12 @@ prepare() {
 
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
+
+  # Fixes building with system Abseil
+  patch -p0 -i ../abseil-remove-unused-targets.patch
+
+  # Fixes `implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'` error
+  patch -p0 -i ../fix-numeric_limits.patch
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
