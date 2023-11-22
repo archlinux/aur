@@ -1,15 +1,15 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=wasm-server-runner
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="cargo run for the browser."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/jakobhellermann/wasm-server-runner"
 license=("MIT")
 depends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-b2sums=('39d7fa608d9fff9502c6a4b38f7897b60fdfb577a20a58c208ef9bed08ebdf99adfdedf009cb075a280b4621716f3cf10bd208dd758ae9322f67b0c9d75f6d96')
+b2sums=('0631be2e279780dc62df88ed5f904467105d916199bd34b7ba8a2537ea926e5f292a910acf274652aa7a637ed20caa807c2cfa244e958c080a30ab7d40d82695')
 
 prepare() {
   cd ${pkgname}-${pkgver}
