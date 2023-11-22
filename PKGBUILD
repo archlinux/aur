@@ -1,4 +1,5 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Dennis Herbrich (Gyroplast) <dennis.herbrich@veloxis.de>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=dunedynasty-git
 pkgver=1.5.7.r263.g6f925e9
