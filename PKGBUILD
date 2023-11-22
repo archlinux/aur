@@ -1,6 +1,6 @@
 
 pkgname=webers-git
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 epoch=
 pkgdesc="A python program that allows components in plain html"
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/spynetS/webers"
 license=('GPL3')
 groups=()
-depends=(python python-flagser)
+depends=(python python-flagser python-beautifulsoup4)
 makedepends=()
 checkdepends=()
 optdepends=()
