@@ -1,7 +1,7 @@
 pkgbase = sdformat
 	pkgdesc = Simulation Description Format (SDFormat) parser and description files.
-	pkgver = 13.3.0
-	pkgrel = 2
+	pkgver = 14.0.0
+	pkgrel = 1
 	url = http://sdformat.org/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = sdformat
 	depends = ignition-math>6
 	depends = python-psutil
 	depends = urdfdom
-	source = sdformat-13.3.0.tar.gz::https://github.com/gazebosim/sdformat/archive/sdformat13_13.3.0.tar.gz
-	sha256sums = c21c70eb9a7d436d1cd083d9d5c4fce2ff645bdb27fc86332eab87d0ef081e6b
+	source = sdformat-14.0.0.tar.gz::https://github.com/gazebosim/sdformat/archive/sdformat14_14.0.0.tar.gz
+	sha256sums = a4f38865f7e8b79559c238a1aba7bab1a4ff46c22a67bb91325ad48ba7d25728
 
 pkgname = sdformat
