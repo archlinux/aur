@@ -1,6 +1,6 @@
 pkgbase = pwclient
 	pkgdesc = The command-line client for the patchwork patch tracking tool
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/getpatchwork/pwclient
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pwclient
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-importlib-metadata
-	source = pwclient-2.6.2.tar.gz::https://github.com/getpatchwork/pwclient/archive/2.6.2.tar.gz
-	sha256sums = 34865de1744a19f3b36f2223cbdb6fc17085edd26e7800b7d2b381bc0a1dec5c
+	source = pwclient-2.6.3.tar.gz::https://github.com/getpatchwork/pwclient/archive/2.6.3.tar.gz
+	sha256sums = dd02d0e996077afb96c52c91d67f9e3eb87a1347162b58bdaf2438cc26efbf3c
 
 pkgname = pwclient
