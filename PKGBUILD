@@ -6,13 +6,14 @@ pkgver=1.1.0.r0.gf08b1cf
 pkgrel=2
 pkgdesc='POSIX-complient cross-platform install command'
 arch=('any')
-url='https://git.stefanwimmer128.eu/stefanwimmer128/cross-install'
+url='https://codeberg.org/stefanwimmer128/cross-install'
 license=('MPL2')
 depends=('sh')
-makedepends=('git' 'shellcheck' 'getoptions' 'moreutils')
+makedepends=('git' 'getoptions' 'moreutils')
+checkdepends=('shellcheck')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/cross-install.git")
+source=("$_pkgname::git+https://codeberg.org/stefanwimmer128/cross-install.git")
 sha256sums=('SKIP')
 
 pkgver() {
