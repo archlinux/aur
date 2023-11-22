@@ -52,7 +52,7 @@ build() {
                 --sbindir=/usr/bin \
                 --with-mounthelperdir=/usr/bin \
                 --with-udevdir=/usr/lib/udev \
-                --libexecdir=/usr/lib/zfs \
+                --libexecdir=/usr/lib \
                 --localstatedir=/var \
                 --with-python="$PWD/python3-fake" \
                 --enable-pyzfs=no \
