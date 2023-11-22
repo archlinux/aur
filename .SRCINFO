@@ -1,0 +1,11 @@
+pkgbase = python-importchecker
+	pkgdesc = Command line utility to find unused imports in Python modules
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/zopefoundation/importchecker
+	arch = any
+	license = ZPL
+	source = importchecker-2.0.tar.gz::https://github.com/zopefoundation/importchecker/archive/refs/tags/2.0.tar.gz
+	b2sums = 622e63665d231f75b656867478cd1579e6ba98b77c51d43a7bdd3a743dbe97364f7ebac581426833aff2b3cf8b1b2735d8335d35682698e9cec0cb2d9394a4cf
+
+pkgname = python-importchecker
