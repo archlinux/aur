@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=0.2.0.r1.gcb4f0ce
+pkgver=0.2.1.r0.g9aea8c5
 pkgrel=1
 pkgdesc="crm (Cargo registry manager)"
 arch=('any')
