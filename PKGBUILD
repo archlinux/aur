@@ -1,3 +1,5 @@
+# Maintainer: wabi <aschrafl@jetnet.ch>
+# Maintainer: pikl <me@pikl.uk>
 pkgname=immich
 pkgrel=4
 pkgver=1.88.1
