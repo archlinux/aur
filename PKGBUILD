@@ -22,17 +22,17 @@ pkgname=()
 for _p in "${_pkgname[@]}" ; do 
 	pkgname+=(${_p}-git)
 done
-_pkgver=5.6.0
-pkgver=5.6.0+9+g818dba9
+_pkgver=6.0.0
+pkgver=6.0.0++g7ea8afc
 pkgrel=1
 pkgdesc="Various extensions for Nemo"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 depends=('nemo')
-_preview_deps=('cjs' 'clutter-gtk' 'clutter-gst' 'libmusicbrainz5' 'gtksourceview3' 'xreader')
-_python_deps=('python-gobject')
+_preview_deps=('cjs' 'clutter-gtk' 'clutter-gst' 'libmusicbrainz5' 'gtksourceview4' 'xreader')
+_python_deps=('python-gobject' 'python-setuptools')
 _seahorse_deps=('libcryptui' 'libgnome-keyring')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'git' 'meson')
+makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'git' 'meson' 'cmake')
 makedepends+=("${_preview_deps[@]}" "${_python_deps[@]}" "${_seahorse_deps[@]}")
 options=('!emptydirs')
 source=("${pkgbase}::git+https://github.com/linuxmint/nemo-extensions")

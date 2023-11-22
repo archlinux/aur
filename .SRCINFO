@@ -1,6 +1,6 @@
 pkgbase = nemo-extensions-git
 	pkgdesc = Various extensions for Nemo
-	pkgver = 5.6.0+9+g818dba9
+	pkgver = 6.0.0++g7ea8afc
 	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = i686
@@ -10,13 +10,15 @@ pkgbase = nemo-extensions-git
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = meson
+	makedepends = cmake
 	makedepends = cjs
 	makedepends = clutter-gtk
 	makedepends = clutter-gst
 	makedepends = libmusicbrainz5
-	makedepends = gtksourceview3
+	makedepends = gtksourceview4
 	makedepends = xreader
 	makedepends = python-gobject
+	makedepends = python-setuptools
 	makedepends = libcryptui
 	makedepends = libgnome-keyring
 	depends = nemo
@@ -29,7 +31,7 @@ pkgname = nemo-fileroller-git
 	license = GPL2
 	depends = nemo
 	depends = file-roller
-	provides = nemo-fileroller=5.6.0
+	provides = nemo-fileroller=6.0.0
 	conflicts = nemo-fileroller
 
 pkgname = nemo-engrampa-git
@@ -37,7 +39,7 @@ pkgname = nemo-engrampa-git
 	license = GPL2
 	depends = nemo
 	depends = engrampa
-	provides = nemo-engrampa=5.6.0
+	provides = nemo-engrampa=6.0.0
 	conflicts = nemo-engrampa
 
 pkgname = nemo-image-converter-git
@@ -45,7 +47,7 @@ pkgname = nemo-image-converter-git
 	license = GPL2
 	depends = nemo
 	depends = imagemagick
-	provides = nemo-image-converter=5.6.0
+	provides = nemo-image-converter=6.0.0
 	conflicts = nemo-image-converter
 
 pkgname = nemo-preview-git
@@ -56,9 +58,9 @@ pkgname = nemo-preview-git
 	depends = clutter-gtk
 	depends = clutter-gst
 	depends = libmusicbrainz5
-	depends = gtksourceview3
+	depends = gtksourceview4
 	depends = xreader
-	provides = nemo-preview=5.6.0
+	provides = nemo-preview=6.0.0
 	conflicts = nemo-preview
 
 pkgname = nemo-python-git
@@ -66,7 +68,8 @@ pkgname = nemo-python-git
 	license = GPL2
 	depends = nemo
 	depends = python-gobject
-	provides = nemo-python=5.6.0
+	depends = python-setuptools
+	provides = nemo-python=6.0.0
 	conflicts = nemo-python
 
 pkgname = nemo-seahorse-git
@@ -75,7 +78,7 @@ pkgname = nemo-seahorse-git
 	depends = nemo
 	depends = libcryptui
 	depends = libgnome-keyring
-	provides = nemo-seahorse=5.6.0
+	provides = nemo-seahorse=6.0.0
 	conflicts = nemo-seahorse
 
 pkgname = nemo-share-git
@@ -83,7 +86,7 @@ pkgname = nemo-share-git
 	license = GPL2
 	depends = nemo
 	depends = samba
-	provides = nemo-share=5.6.0
+	provides = nemo-share=6.0.0
 	conflicts = nemo-share
 
 pkgname = nemo-terminal-git
@@ -92,7 +95,7 @@ pkgname = nemo-terminal-git
 	license = GPL3
 	depends = nemo-python>=3.9.0
 	depends = vte3
-	provides = nemo-terminal=5.6.0
+	provides = nemo-terminal=6.0.0
 	conflicts = nemo-terminal
 
 pkgname = nemo-audio-tab-git
@@ -101,7 +104,7 @@ pkgname = nemo-audio-tab-git
 	license = GPL2
 	depends = nemo-python>=3.9.0
 	depends = python-mutagen
-	provides = nemo-audio-tab=5.6.0
+	provides = nemo-audio-tab=6.0.0
 	conflicts = nemo-audio-tab
 
 pkgname = nemo-compare-git
@@ -116,7 +119,7 @@ pkgname = nemo-compare-git
 	optdepends = fldiff: Additional comparison options (preferred diff, three-way, multi-compare)
 	optdepends = diffuse: Alternate comparison backend
 	optdepends = kdiff3: Alternate comparison backend
-	provides = nemo-compare=5.6.0
+	provides = nemo-compare=6.0.0
 	conflicts = nemo-compare
 
 pkgname = nemo-dropbox-git
@@ -125,7 +128,7 @@ pkgname = nemo-dropbox-git
 	license = GPL3
 	depends = nemo
 	depends = dropbox
-	provides = nemo-dropbox=5.6.0
+	provides = nemo-dropbox=6.0.0
 	conflicts = nemo-dropbox
 
 pkgname = nemo-emblems-git
@@ -133,7 +136,7 @@ pkgname = nemo-emblems-git
 	arch = any
 	license = GPL3
 	depends = nemo-python>=3.9.0
-	provides = nemo-emblems=5.6.0
+	provides = nemo-emblems=6.0.0
 	conflicts = nemo-emblems
 
 pkgname = nemo-media-columns-git
@@ -146,7 +149,7 @@ pkgname = nemo-media-columns-git
 	depends = python-pymediainfo
 	depends = python-pillow
 	depends = python-pypdf2
-	provides = nemo-media-columns=5.6.0
+	provides = nemo-media-columns=6.0.0
 	conflicts = nemo-media-columns
 
 pkgname = nemo-pastebin-git
@@ -156,11 +159,11 @@ pkgname = nemo-pastebin-git
 	depends = pastebinit
 	depends = nemo-python>=3.9.0
 	optdepends = libnofify
-	provides = nemo-pastebin=5.6.0
+	provides = nemo-pastebin=6.0.0
 	conflicts = nemo-pastebin
 
 pkgname = nemo-repairer-git
 	pkgdesc = Nemo extension for filename encoding repair
 	license = GPL2
-	provides = nemo-repairer=5.6.0
+	provides = nemo-repairer=6.0.0
 	conflicts = nemo-repairer
