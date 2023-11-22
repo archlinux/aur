@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 license=('MIT')
 depends=()
 makedepends=(rustup)
-source=("https://github.com/shiro/$pkgname/archive/$pkgver.tar.gz")
+source=("https://github.com/shiro/map2-legacy/archive/$pkgver.tar.gz")
 sha256sums=('58d0cb923dfbaec580a742591c7f4c366fbb5d7adb73d5002cfcd4ed689c0ce0')
 
 build() {
