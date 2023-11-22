@@ -1,6 +1,3 @@
- # set non-standard paths
-bash set_paths.sh
-
 # test geometry build
 python ~/.cache/yay/openmc-git/step_to_h5m.py
 
