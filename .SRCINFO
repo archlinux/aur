@@ -1,17 +1,19 @@
 pkgbase = ubertooth-git
 	pkgdesc = open source wireless development platform suitable for Bluetooth experimentation
 	pkgver = 2020.12.R1.r33.ge0fd34d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greatscottgadgets/ubertooth
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = python-setuptools
 	depends = libbtbb-git
 	depends = libusb
 	depends = libpcap
 	depends = python
+	depends = python-libusb1
 	source = git+https://github.com/greatscottgadgets/ubertooth/
 	md5sums = SKIP
 
