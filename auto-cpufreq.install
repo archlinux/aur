@@ -29,6 +29,22 @@ post_install() {
 }
 
 post_upgrade() {
+    DIR="/opt/auto-cpufreq/"
+	
+	echo -e "\nInstalling necessary Python packages\n"
+	
+	python -m venv $DIR/venv
+	source $DIR/venv/bin/activate
+	echo $(which python)
+	python3 -m pip install --upgrade pip wheel
+	
+	echo -e "\nBuilding auto-cpufreq\n"
+
+	git config --global --add safe.directory $DIR
+	POETRY_DYNAMIC_VERSIONING_BYPASS=1 python3 -m pip install $DIR/src
+
+    echo -e "\nauto-cpufreq $1 installed\n"
+
     echo -e 'Reload systemd manager configuration:\n'
     echo -e 'systemctl daemon-reload\n'
 

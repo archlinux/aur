@@ -1,9 +1,10 @@
+# Maintainer: Julia Abdel-Monem <juliaviolet.dev>
 # Maintainer: Parmjot Singh <parmjotsinghrobot at gmail dot com>
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 # shellcheck disable=SC2034,2164,2154
 pkgname=auto-cpufreq
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
