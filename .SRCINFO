@@ -8,6 +8,7 @@ pkgbase = zellij-selector
 	makedepends = git
 	makedepends = shellcheck
 	makedepends = getoptions
+	makedepends = cross-install
 	depends = sh
 	depends = libnewt
 	depends = zellij
