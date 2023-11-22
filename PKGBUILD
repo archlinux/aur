@@ -2,15 +2,15 @@
 # To report issues or contribute: https://github.com/spantaleev/PKGBUILDs
 
 pkgname=agru
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Ansible-Galaxy Requirements Updater - a fast ansible-galaxy replacement"
 arch=('any')
-url="https://gitlab.com/etke.cc/int/agru"
+url="https://gitlab.com/etke.cc/tools/agru"
 license=('GPL3')
 depends=()
 makedepends=('git' 'go')
-source=('vcs-repository::git+https://gitlab.com/etke.cc/int/agru.git#tag=v'$pkgver)
+source=('vcs-repository::git+https://gitlab.com/etke.cc/tools/agru.git#tag=v'$pkgver)
 md5sums=('SKIP')
 
 build() {
