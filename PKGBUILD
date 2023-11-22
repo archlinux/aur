@@ -3,7 +3,7 @@
 # Contributor: Alex Forencich <alex@alexforencich.com>
 
 pkgname=python-pyvisa
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 url="https://github.com/pyvisa/pyvisa"
