@@ -1,6 +1,6 @@
 pkgbase = wayfire-wlroots-017-git
 	pkgdesc = 3D wayland compositor, tracking wlroots 0.17, integrating the wlroots hidpi-xprop patch set
-	pkgver = 0.8.0.r36.g4b7668b1
+	pkgver = 0.8.0.r37.gf4ea727a
 	pkgrel = 1
 	url = https://github.com/WayfireWM/wayfire
 	arch = x86_64
@@ -51,12 +51,10 @@ pkgbase = wayfire-wlroots-017-git
 	conflicts = wf-config-git
 	conflicts = wf-config
 	source = git+https://github.com/WayfireWM/wayfire#branch=track-wlroots
-	source = https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/4432.patch
 	source = 0001-xwayland-support-HiDPI-scale.patch
 	source = 0002-Fix-configure_notify-event.patch
 	source = 0003-Fix-size-hints-under-Xwayland-scaling.patch
 	sha256sums = SKIP
-	sha256sums = 3b087b933c15258ea722ac17b366949ef9dd6ca9cf991a3ca58ffe61012d77bd
 	sha256sums = ec59d48108595c06537a5a1daae6f124cac5a783025e03417cb2c1b052b321d0
 	sha256sums = 1314d0ee63a4249698791d86cce5e6cdb4f005b81bbb1c6a747578d2a9223795
 	sha256sums = c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61
