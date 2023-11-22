@@ -1,7 +1,7 @@
 pkgbase = python-cad_to_openmc
 	pkgdesc = code to target the conversion from a step-file to a h5m-geometry for neutronics
 	pkgver = 0.2.2.r137.gb91fe0f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openmsr/CAD_to_OpenMC
 	arch = x86_64
 	license = MIT
@@ -15,8 +15,6 @@ pkgbase = python-cad_to_openmc
 	depends = moab-git
 	provides = CAD_to_OpenMC
 	source = git+https://github.com/openmsr/CAD_to_OpenMC.git
-	source = CAD_to_OpenMC.patch.0.2.2-1
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = python-cad_to_openmc
