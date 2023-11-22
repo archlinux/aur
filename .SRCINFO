@@ -1,0 +1,17 @@
+pkgbase = ecl-git
+	pkgdesc = Embeddable Common Lisp
+	pkgver = 23.9.9.r91.gac89091af
+	pkgrel = 1
+	url = https://common-lisp.net/project/ecl/
+	arch = x86_64
+	license = LGPL
+	makedepends = texinfo
+	depends = bash
+	depends = gmp
+	provides = common-lisp
+	provides = cl-asdf
+	options = !makeflags
+	source = git+https://gitlab.com/embeddable-common-lisp/ecl.git
+	sha256sums = SKIP
+
+pkgname = ecl-git
