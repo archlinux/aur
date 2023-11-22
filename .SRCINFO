@@ -1,0 +1,27 @@
+pkgbase = gpt4all-chat
+	pkgdesc = open-source LLM chatbots that you can run anywhere
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://github.com/nomic-ai/gpt4all
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = shaderc
+	makedepends = vulkan-tools
+	makedepends = vulkan-headers
+	depends = python
+	depends = qt6-base
+	depends = qt6-httpserver
+	depends = qt6-5compat
+	depends = qt6-quickcontrols2
+	depends = qt6-shadertools
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = qt6-webengine
+	depends = fmt
+	source = git+https://github.com/nomic-ai/gpt4all.git#tag=v2.5.4
+	sha256sums = SKIP
+
+pkgname = gpt4all-chat
